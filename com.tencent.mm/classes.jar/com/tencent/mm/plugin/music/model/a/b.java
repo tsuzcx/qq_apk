@@ -2,208 +2,173 @@ package com.tencent.mm.plugin.music.model.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.j;
-import com.tencent.mm.plugin.music.cache.e;
-import com.tencent.mm.plugin.music.cache.h;
-import com.tencent.mm.plugin.music.h.c;
 import com.tencent.mm.plugin.music.model.e.a;
+import com.tencent.mm.protocal.protobuf.dsn;
+import com.tencent.mm.protocal.protobuf.dsp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.LruCache;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/cache/MusicLiveLinkCacheHelper;", "", "()V", "TAG", "", "URL_MAX_VALID_TIME", "", "cacheSaveCallBack", "Lcom/tencent/mm/plugin/music/model/cache/MusicLiveLinkCacheHelper$CacheSaveCallBack;", "playMid2JoinTicket", "Lcom/tencent/mm/sdk/platformtools/LruCache;", "", "playUrl2TempAudioType", "playUrl2TempUrlCache", "playUrl2TimeCache", "", "getAudioType", "mid", "(Ljava/lang/String;)Ljava/lang/Integer;", "getJoinTicket", "(Ljava/lang/String;)Ljava/lang/Boolean;", "getPlayUrl", "removeCacheSaveCallBack", "", "saveMid2urlMap", "map", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MusicLiveGetLinkRespInfo;", "saveTempPlayUrl", "url", "audioType", "joinTicket", "setCacheSaveCallBack", "shouldGetMusicLiveLink", "music", "Lcom/tencent/mm/plugin/music/model/storage/Music;", "CacheSaveCallBack", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static LruCache<String, String> FRX;
-  private static LruCache<String, Long> FRY;
+  public static final b LMO;
+  private static final LruCache<String, String> LMP;
+  private static final LruCache<String, Long> LMQ;
+  private static final LruCache<String, Integer> LMR;
+  private static final LruCache<String, Boolean> LMS;
+  private static a LMT;
   
   static
   {
-    AppMethodBeat.i(63047);
-    FRX = new LruCache(20);
-    FRY = new LruCache(20);
-    AppMethodBeat.o(63047);
+    AppMethodBeat.i(271238);
+    LMO = new b();
+    LMP = new LruCache(20);
+    LMQ = new LruCache(20);
+    LMR = new LruCache(20);
+    LMS = new LruCache(20);
+    AppMethodBeat.o(271238);
   }
   
-  public static String aRF(String paramString)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(63046);
-    String str = aqw(paramString);
-    if ((!TextUtils.isEmpty(str)) && (!str.equalsIgnoreCase(paramString)))
-    {
-      Log.i("MicroMsg.Music.MusicUrlParser", "use temp shake music url to play:%s", new Object[] { str });
-      AppMethodBeat.o(63046);
-      return str;
-    }
-    if (aSh(paramString))
-    {
-      paramString = aSi(str);
-      Log.i("MicroMsg.Music.MusicUrlParser", "play url :%s", new Object[] { paramString });
-      AppMethodBeat.o(63046);
-      return paramString;
-    }
-    AppMethodBeat.o(63046);
-    return "";
+    AppMethodBeat.i(271205);
+    s.u(parama, "cacheSaveCallBack");
+    LMT = parama;
+    AppMethodBeat.o(271205);
   }
   
-  public static boolean aSh(String paramString)
+  public static Integer aOZ(String paramString)
   {
-    AppMethodBeat.i(63044);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(63044);
-      return false;
-    }
-    if (paramString.contains("wxshakemusic"))
-    {
-      AppMethodBeat.o(63044);
-      return true;
-    }
-    AppMethodBeat.o(63044);
-    return false;
-  }
-  
-  public static String aSi(String paramString)
-  {
-    AppMethodBeat.i(63045);
-    if (aSh(paramString))
-    {
-      int i = paramString.lastIndexOf("wxshakemusic");
-      if (i > 1)
-      {
-        paramString = paramString.substring(0, i - 1);
-        AppMethodBeat.o(63045);
-        return paramString;
-      }
-      AppMethodBeat.o(63045);
-      return paramString;
-    }
-    AppMethodBeat.o(63045);
+    AppMethodBeat.i(271218);
+    paramString = (Integer)LMR.get(paramString);
+    AppMethodBeat.o(271218);
     return paramString;
   }
   
-  public static String aqw(String paramString)
+  public static Boolean aPa(String paramString)
   {
-    AppMethodBeat.i(63042);
-    if ((!TextUtils.isEmpty(paramString)) && (FRX.check(paramString))) {}
-    for (String str = (String)FRX.get(paramString); str == null; str = null)
+    AppMethodBeat.i(271224);
+    paramString = (Boolean)LMS.get(paramString);
+    AppMethodBeat.o(271224);
+    return paramString;
+  }
+  
+  public static String ajV(String paramString)
+  {
+    AppMethodBeat.i(271221);
+    if (paramString == null)
     {
-      AppMethodBeat.o(63042);
-      return paramString;
+      AppMethodBeat.o(271221);
+      return null;
     }
-    AppMethodBeat.o(63042);
-    return str;
+    paramString = (String)LMP.get(paramString);
+    AppMethodBeat.o(271221);
+    return paramString;
+  }
+  
+  public static void bG(LinkedList<dsp> paramLinkedList)
+  {
+    AppMethodBeat.i(271230);
+    if (paramLinkedList == null)
+    {
+      AppMethodBeat.o(271230);
+      return;
+    }
+    Log.i("MicroMsg.Music.MusicLiveLinkCacheHelper", s.X("saveMid2urlMap, map size:", Integer.valueOf(paramLinkedList.size())));
+    Iterator localIterator = ((Iterable)paramLinkedList).iterator();
+    while (localIterator.hasNext())
+    {
+      paramLinkedList = (dsp)localIterator.next();
+      if (paramLinkedList.ret == 0)
+      {
+        label77:
+        String str1;
+        String str2;
+        int i;
+        boolean bool;
+        if (paramLinkedList.aaYh == null)
+        {
+          paramLinkedList = null;
+          if (paramLinkedList == null) {
+            Log.e("MicroMsg.Music.MusicLiveLinkCacheHelper", "linkInfo.info is null");
+          }
+        }
+        else
+        {
+          str1 = paramLinkedList.aaYh.oOZ;
+          s.s(str1, "linkInfo.info.mid");
+          str2 = paramLinkedList.url;
+          s.s(str2, "linkInfo.url");
+          i = paramLinkedList.aaYi;
+          bool = paramLinkedList.aaYj;
+          Log.i("MicroMsg.Music.MusicLiveLinkCacheHelper", "saveTempPlayUrl, mid:" + str1 + ", url:" + str2);
+          if ((!TextUtils.isEmpty((CharSequence)str1)) && (!TextUtils.isEmpty((CharSequence)str2))) {
+            break label191;
+          }
+        }
+        for (;;)
+        {
+          paramLinkedList = ah.aiuX;
+          break label77;
+          break;
+          label191:
+          LMP.put(str1, str2);
+          LMR.put(str1, Integer.valueOf(i));
+          LMS.put(str1, Boolean.valueOf(bool));
+          LMQ.put(str1, Long.valueOf(System.currentTimeMillis()));
+          paramLinkedList = LMT;
+          if (paramLinkedList != null) {
+            paramLinkedList.goi();
+          }
+        }
+      }
+      else
+      {
+        Log.e("MicroMsg.Music.MusicLiveLinkCacheHelper", "errCode:" + paramLinkedList.ret + ", errMsg:" + paramLinkedList.hNw);
+      }
+    }
+    AppMethodBeat.o(271230);
   }
   
   public static boolean c(a parama)
   {
-    AppMethodBeat.i(63043);
-    if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
+    AppMethodBeat.i(271234);
+    if (parama == null)
     {
-      AppMethodBeat.o(63043);
+      Log.e("MicroMsg.Music.MusicLiveLinkCacheHelper", "music is null.");
+      AppMethodBeat.o(271234);
       return false;
     }
-    if (!aSh(parama.playUrl))
+    if (Util.isNullOrNil(parama.field_mid))
     {
-      AppMethodBeat.o(63043);
+      Log.i("MicroMsg.Music.MusicLiveLinkCacheHelper", "no mid, no need to get new link");
+      AppMethodBeat.o(271234);
       return false;
     }
-    if (c.ZB(parama.field_musicType))
-    {
-      if ((parama == null) || (TextUtils.isEmpty(parama.playUrl)))
-      {
-        i = 0;
-        if ((i == 0) || (!h.aRV(parama.playUrl))) {
-          break label139;
-        }
-      }
-      label139:
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label238;
-        }
-        Log.i("MicroMsg.Music.MusicUrlParser", "qq music pieceFile cache is valid");
-        AppMethodBeat.o(63043);
-        return false;
-        j localj = e.aRG(com.tencent.mm.plugin.music.h.b.aSt(parama.playUrl));
-        if ((localj != null) && (localj.lWb == 1))
-        {
-          i = 1;
-          break;
-        }
-        i = 0;
-        break;
-      }
-    }
-    boolean bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
-    if (bool) {
-      if (parama.field_wifiEndFlag == 1)
-      {
-        i = 1;
-        if ((i == 0) || (!new q(com.tencent.mm.plugin.music.h.b.cc(parama.field_musicId, bool)).ifE())) {
-          break label233;
-        }
-      }
-    }
-    label233:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label238;
-      }
-      Log.i("MicroMsg.Music.MusicUrlParser", "music cache is valid");
-      AppMethodBeat.o(63043);
-      return false;
-      i = 0;
-      break;
-      if (parama.field_endFlag == 1)
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-    }
-    label238:
-    if (!FRX.check(parama.playUrl))
-    {
-      AppMethodBeat.o(63043);
-      return true;
-    }
-    long l = 0L;
-    if (FRY.check(parama.playUrl)) {
-      l = ((Long)FRY.get(parama.playUrl)).longValue();
-    }
-    if (System.currentTimeMillis() - l > 86400000L)
-    {
-      FRX.remove(parama.playUrl);
-      FRY.remove(parama.playUrl);
-      Log.i("MicroMsg.Music.MusicUrlParser", "shake music url in cache is timeout");
-      AppMethodBeat.o(63043);
-      return true;
-    }
-    AppMethodBeat.o(63043);
-    return false;
+    AppMethodBeat.o(271234);
+    return true;
   }
   
-  public static void jk(String paramString1, String paramString2)
+  public static void goh()
   {
-    AppMethodBeat.i(63041);
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      AppMethodBeat.o(63041);
-      return;
-    }
-    FRX.put(paramString1, paramString2);
-    FRY.put(paramString1, Long.valueOf(System.currentTimeMillis()));
-    AppMethodBeat.o(63041);
+    LMT = null;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/model/cache/MusicLiveLinkCacheHelper$CacheSaveCallBack;", "", "onCallBack", "", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a
+  {
+    public abstract void goi();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.v;
+import com.tencent.mm.ui.tools.u;
 import junit.framework.Assert;
 
 @Deprecated
 public class HelperHeaderPreference
   extends Preference
 {
-  private a GZS;
-  private as contact;
-  private ImageView jiu;
-  private TextView jmj;
-  private boolean mRv = false;
-  private TextView mZA;
-  private TextView nmi;
+  private a MXX;
+  private au contact;
+  private ImageView lKK;
+  private TextView lPf;
+  private boolean pOc = false;
+  private TextView pWj;
+  private TextView qjr;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,12 +39,12 @@ public class HelperHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void TB(String paramString)
+  private void LB(String paramString)
   {
     AppMethodBeat.i(27252);
     Log.d("MicroMsg.HelperHeaderPreference", "updateAvatar : user = ".concat(String.valueOf(paramString)));
-    if ((this.jiu != null) && (this.contact.field_username.equals(paramString))) {
-      a.b.c(this.jiu, paramString);
+    if ((this.lKK != null) && (this.contact.field_username.equals(paramString))) {
+      a.b.g(this.lKK, paramString);
     }
     AppMethodBeat.o(27252);
   }
@@ -52,41 +52,63 @@ public class HelperHeaderPreference
   private void initView()
   {
     AppMethodBeat.i(27254);
-    if ((!this.mRv) || (this.contact == null))
+    if ((!this.pOc) || (this.contact == null))
     {
-      Log.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.mRv + "contact = " + this.contact);
+      Log.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.pOc + "contact = " + this.contact);
       AppMethodBeat.o(27254);
       return;
     }
-    TB(this.contact.field_username);
-    if (this.mZA != null) {
-      this.mZA.setText(this.contact.ayr());
+    LB(this.contact.field_username);
+    if (this.pWj != null) {
+      this.pWj.setText(this.contact.aSU());
     }
-    if (this.GZS != null)
+    if (this.MXX != null)
     {
-      this.GZS.a(this);
-      CharSequence localCharSequence = this.GZS.getHint();
+      this.MXX.a(this);
+      CharSequence localCharSequence = this.MXX.getHint();
       if (localCharSequence != null)
       {
-        this.nmi.setText(localCharSequence);
-        this.nmi.setVisibility(0);
+        this.qjr.setText(localCharSequence);
+        this.qjr.setVisibility(0);
         AppMethodBeat.o(27254);
         return;
       }
-      this.nmi.setVisibility(8);
+      this.qjr.setVisibility(8);
     }
     AppMethodBeat.o(27254);
   }
   
-  public final void a(as paramas, a parama)
+  public final void Ay(boolean paramBoolean)
+  {
+    AppMethodBeat.i(27253);
+    if (this.MXX == null)
+    {
+      AppMethodBeat.o(27253);
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.lPf.setTextColor(u.nF(this.mContext));
+      this.lPf.setText(R.l.settings_plugins_installed);
+      this.lPf.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
+      AppMethodBeat.o(27253);
+      return;
+    }
+    this.lPf.setTextColor(u.nG(this.mContext));
+    this.lPf.setText(R.l.settings_plugins_uninstalled);
+    this.lPf.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
+    AppMethodBeat.o(27253);
+  }
+  
+  public final void a(au paramau, a parama)
   {
     AppMethodBeat.i(27255);
-    if (paramas != null) {}
+    if (paramau != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.contact = paramas;
-      this.GZS = parama;
+      this.contact = paramau;
+      this.MXX = parama;
       initView();
       AppMethodBeat.o(27255);
       return;
@@ -96,36 +118,14 @@ public class HelperHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27251);
-    this.jiu = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
-    this.jmj = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
-    this.mZA = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
-    this.nmi = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
-    this.mRv = true;
+    this.lKK = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
+    this.lPf = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
+    this.pWj = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
+    this.qjr = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
+    this.pOc = true;
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(27251);
-  }
-  
-  public final void wb(boolean paramBoolean)
-  {
-    AppMethodBeat.i(27253);
-    if (this.GZS == null)
-    {
-      AppMethodBeat.o(27253);
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.jmj.setTextColor(v.lC(this.mContext));
-      this.jmj.setText(R.l.settings_plugins_installed);
-      this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
-      AppMethodBeat.o(27253);
-      return;
-    }
-    this.jmj.setTextColor(v.lD(this.mContext));
-    this.jmj.setText(R.l.settings_plugins_uninstalled);
-    this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
-    AppMethodBeat.o(27253);
   }
   
   public static abstract interface a

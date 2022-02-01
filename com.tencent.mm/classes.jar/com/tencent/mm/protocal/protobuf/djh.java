@@ -1,136 +1,180 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class djh
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RPq;
-  public String TQI;
-  public String TQJ;
-  public String TQK;
-  public String TQL;
-  public String TQM;
-  public String TQN;
-  public int rVU;
+  public String FSU;
+  public String FSW;
+  public boolean GZQ;
+  public boolean GZR;
+  public bqj aaOZ;
+  public String aaPa;
+  public boolean aaPb;
+  public LinkedList<dji> mediaList;
+  public String musicFeedId;
+  public int soundTrackType;
+  
+  public djh()
+  {
+    AppMethodBeat.i(169078);
+    this.mediaList = new LinkedList();
+    AppMethodBeat.o(169078);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91577);
+    AppMethodBeat.i(169079);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TQI != null) {
-        paramVarArgs.f(1, this.TQI);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.mediaList);
+      if (this.aaOZ != null)
+      {
+        paramVarArgs.qD(2, this.aaOZ.computeSize());
+        this.aaOZ.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.rVU);
-      if (this.TQJ != null) {
-        paramVarArgs.f(3, this.TQJ);
+      if (this.FSW != null) {
+        paramVarArgs.g(3, this.FSW);
       }
-      if (this.TQK != null) {
-        paramVarArgs.f(4, this.TQK);
+      if (this.FSU != null) {
+        paramVarArgs.g(4, this.FSU);
       }
-      if (this.TQL != null) {
-        paramVarArgs.f(5, this.TQL);
+      if (this.aaPa != null) {
+        paramVarArgs.g(5, this.aaPa);
       }
-      paramVarArgs.aY(6, this.RPq);
-      if (this.TQM != null) {
-        paramVarArgs.f(7, this.TQM);
+      paramVarArgs.di(6, this.GZQ);
+      paramVarArgs.di(7, this.GZR);
+      paramVarArgs.bS(8, this.soundTrackType);
+      if (this.musicFeedId != null) {
+        paramVarArgs.g(9, this.musicFeedId);
       }
-      if (this.TQN != null) {
-        paramVarArgs.f(8, this.TQN);
-      }
-      AppMethodBeat.o(91577);
+      paramVarArgs.di(10, this.aaPb);
+      AppMethodBeat.o(169079);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.TQI == null) {
-        break label610;
-      }
-    }
-    label610:
-    for (paramInt = g.a.a.b.b.a.g(1, this.TQI) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.rVU);
+      i = i.a.a.a.c(1, 8, this.mediaList) + 0;
       paramInt = i;
-      if (this.TQJ != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.TQJ);
+      if (this.aaOZ != null) {
+        paramInt = i + i.a.a.a.qC(2, this.aaOZ.computeSize());
       }
       i = paramInt;
-      if (this.TQK != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.TQK);
+      if (this.FSW != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.FSW);
       }
       paramInt = i;
-      if (this.TQL != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.TQL);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(6, this.RPq);
-      paramInt = i;
-      if (this.TQM != null) {
-        paramInt = i + g.a.a.b.b.a.g(7, this.TQM);
+      if (this.FSU != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.FSU);
       }
       i = paramInt;
-      if (this.TQN != null) {
-        i = paramInt + g.a.a.b.b.a.g(8, this.TQN);
+      if (this.aaPa != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.aaPa);
       }
-      AppMethodBeat.o(91577);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(91577);
-        return 0;
+      i = i + (i.a.a.b.b.a.ko(6) + 1) + (i.a.a.b.b.a.ko(7) + 1) + i.a.a.b.b.a.cJ(8, this.soundTrackType);
+      paramInt = i;
+      if (this.musicFeedId != null) {
+        paramInt = i + i.a.a.b.b.a.h(9, this.musicFeedId);
       }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        djh localdjh = (djh)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(91577);
-          return -1;
-        case 1: 
-          localdjh.TQI = locala.abFh.readString();
-          AppMethodBeat.o(91577);
-          return 0;
-        case 2: 
-          localdjh.rVU = locala.abFh.AK();
-          AppMethodBeat.o(91577);
-          return 0;
-        case 3: 
-          localdjh.TQJ = locala.abFh.readString();
-          AppMethodBeat.o(91577);
-          return 0;
-        case 4: 
-          localdjh.TQK = locala.abFh.readString();
-          AppMethodBeat.o(91577);
-          return 0;
-        case 5: 
-          localdjh.TQL = locala.abFh.readString();
-          AppMethodBeat.o(91577);
-          return 0;
-        case 6: 
-          localdjh.RPq = locala.abFh.AK();
-          AppMethodBeat.o(91577);
-          return 0;
-        case 7: 
-          localdjh.TQM = locala.abFh.readString();
-          AppMethodBeat.o(91577);
-          return 0;
-        }
-        localdjh.TQN = locala.abFh.readString();
-        AppMethodBeat.o(91577);
-        return 0;
-      }
-      AppMethodBeat.o(91577);
-      return -1;
+      i = i.a.a.b.b.a.ko(10);
+      AppMethodBeat.o(169079);
+      return paramInt + (i + 1);
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.mediaList.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(169079);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+      djh localdjh = (djh)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(169079);
+        return -1;
+      case 1: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new dji();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((dji)localObject2).parseFrom((byte[])localObject1);
+          }
+          localdjh.mediaList.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(169079);
+        return 0;
+      case 2: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bqj();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bqj)localObject2).parseFrom((byte[])localObject1);
+          }
+          localdjh.aaOZ = ((bqj)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(169079);
+        return 0;
+      case 3: 
+        localdjh.FSW = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(169079);
+        return 0;
+      case 4: 
+        localdjh.FSU = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(169079);
+        return 0;
+      case 5: 
+        localdjh.aaPa = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(169079);
+        return 0;
+      case 6: 
+        localdjh.GZQ = ((i.a.a.a.a)localObject1).ajGk.aai();
+        AppMethodBeat.o(169079);
+        return 0;
+      case 7: 
+        localdjh.GZR = ((i.a.a.a.a)localObject1).ajGk.aai();
+        AppMethodBeat.o(169079);
+        return 0;
+      case 8: 
+        localdjh.soundTrackType = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(169079);
+        return 0;
+      case 9: 
+        localdjh.musicFeedId = ((i.a.a.a.a)localObject1).ajGk.readString();
+        AppMethodBeat.o(169079);
+        return 0;
+      }
+      localdjh.aaPb = ((i.a.a.a.a)localObject1).ajGk.aai();
+      AppMethodBeat.o(169079);
+      return 0;
+    }
+    AppMethodBeat.o(169079);
+    return -1;
   }
 }
 

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="@dimen/bt" android:bottomRightRadius="@dimen/bt" />
-            <gradient android:startColor="@color/qo" android:endColor="@color/UN_BW_0_Alpha_0_3" android:angle="270.0" />
-        </shape>
+        <rotate android:fromDegrees="45.0" android:pivotX="134.99756%" android:pivotY="14.999998%">
+            <shape android:shape="rectangle">
+                <size android:height="@dimen/cp" android:width="@dimen/cp" />
+                <solid android:color="@color/az" />
+                <corners android:radius="4.0px" />
+            </shape>
+        </rotate>
     </item>
-</selector>
+</layer-list>

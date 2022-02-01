@@ -3,14 +3,12 @@ package com.google.android.gms.wearable;
 import android.net.Uri;
 import android.util.Log;
 import com.google.android.gms.common.internal.Asserts;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.internal.wearable.zze;
 import com.google.android.gms.internal.wearable.zzf;
 import com.google.android.gms.internal.wearable.zzt;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
-@VisibleForTesting
 public class PutDataMapRequest
 {
   private final DataMap zzr;
@@ -127,7 +125,7 @@ public class PutDataMapRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.PutDataMapRequest
  * JD-Core Version:    0.7.0.1
  */

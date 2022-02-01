@@ -1,71 +1,71 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
-import com.google.b.a.g;
+import com.google.d.a.b;
+import com.google.d.a.c;
+import com.google.d.a.e;
+import com.google.d.a.g;
 import java.util.Arrays;
 
 public final class a$p
   extends e
 {
-  private static volatile p[] Zfv;
-  public int Zfw = 0;
-  public int Zfx = 0;
-  public byte[] fJr = g.ccX;
+  private static volatile p[] ahdY;
+  public int ahdZ = 0;
+  public int ahea = 0;
+  public byte[] hOU = g.dXB;
   
   public a$p()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public static p[] ikM()
+  public static p[] jRd()
   {
-    if (Zfv == null) {}
-    synchronized (c.ccQ)
+    if (ahdY == null) {}
+    synchronized (c.dXu)
     {
-      if (Zfv == null) {
-        Zfv = new p[0];
+      if (ahdY == null) {
+        ahdY = new p[0];
       }
-      return Zfv;
+      return ahdY;
     }
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.Zfw != 0) {
-      i = j + b.bM(1, this.Zfw);
-    }
-    j = i;
-    if (!Arrays.equals(this.fJr, g.ccX)) {
-      j = i + b.c(2, this.fJr);
-    }
-    i = j;
-    if (this.Zfx != 0) {
-      i = j + b.bN(3, this.Zfx);
-    }
-    return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.Zfw != 0) {
-      paramb.bJ(1, this.Zfw);
+    if (this.ahdZ != 0) {
+      paramb.cF(1, this.ahdZ);
     }
-    if (!Arrays.equals(this.fJr, g.ccX)) {
-      paramb.b(2, this.fJr);
+    if (!Arrays.equals(this.hOU, g.dXB)) {
+      paramb.b(2, this.hOU);
     }
-    if (this.Zfx != 0) {
-      paramb.bK(3, this.Zfx);
+    if (this.ahea != 0) {
+      paramb.cG(3, this.ahea);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.ahdZ != 0) {
+      i = j + b.cJ(1, this.ahdZ);
+    }
+    j = i;
+    if (!Arrays.equals(this.hOU, g.dXB)) {
+      j = i + b.c(2, this.hOU);
+    }
+    i = j;
+    if (this.ahea != 0) {
+      i = j + b.cK(3, this.ahea);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.p
  * JD-Core Version:    0.7.0.1
  */

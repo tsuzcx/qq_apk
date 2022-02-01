@@ -1,27 +1,32 @@
 package androidx.core.g;
 
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
+import android.view.VelocityTracker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@Deprecated
 public final class y
 {
-  public static int b(ViewGroup paramViewGroup)
+  @Deprecated
+  public static float a(VelocityTracker paramVelocityTracker, int paramInt)
   {
-    AppMethodBeat.i(251804);
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      int i = paramViewGroup.getLayoutMode();
-      AppMethodBeat.o(251804);
-      return i;
-    }
-    AppMethodBeat.o(251804);
-    return 0;
+    AppMethodBeat.i(195682);
+    float f = paramVelocityTracker.getXVelocity(paramInt);
+    AppMethodBeat.o(195682);
+    return f;
+  }
+  
+  @Deprecated
+  public static float b(VelocityTracker paramVelocityTracker, int paramInt)
+  {
+    AppMethodBeat.i(195689);
+    float f = paramVelocityTracker.getYVelocity(paramInt);
+    AppMethodBeat.o(195689);
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.y
  * JD-Core Version:    0.7.0.1
  */

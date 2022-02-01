@@ -7,13 +7,13 @@ public class ADTSUtils
 {
   public static ByteBuffer getADTSCodecSpecificData(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(189788);
+    AppMethodBeat.i(216063);
     paramInt2 = getFreqIndex(paramInt2);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(2);
     localByteBuffer.put(0, (byte)(paramInt1 << 3 | paramInt2 >> 1));
     localByteBuffer.put(1, (byte)(paramInt2 << 7 & 0x80 | paramInt3 << 3));
     localByteBuffer.flip();
-    AppMethodBeat.o(189788);
+    AppMethodBeat.o(216063);
     return localByteBuffer;
   }
   
@@ -52,7 +52,7 @@ public class ADTSUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.ADTSUtils
  * JD-Core Version:    0.7.0.1
  */

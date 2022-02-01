@@ -2,57 +2,68 @@ package com.tencent.mm.plugin.finder.live.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.live.plugin.d;
-import com.tencent.mm.ui.au;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.g;
+import com.tencent.mm.plugin.finder.live.report.j;
+import com.tencent.mm.plugin.finder.live.report.q.r;
+import com.tencent.mm.plugin.finder.live.report.q.s;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorLuckyMoneyEntranceWidget;", "", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;)V", "TAG", "", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "luckyMoneyGroup", "Landroid/view/View;", "kotlin.jvm.PlatformType", "luckyMoneyIcon", "Landroid/widget/ImageView;", "luckyMoneyTip", "Landroid/widget/TextView;", "getRoot", "()Landroid/view/ViewGroup;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "checkVisible", "", "isVisible", "", "setClickListener", "listener", "Landroid/view/View$OnClickListener;", "setVisible", "visible", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorCameraOptionWidget;", "", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;)V", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "clickArea", "Landroid/view/View;", "firstShow", "", "icon", "Landroid/widget/ImageView;", "getRoot", "()Landroid/view/ViewGroup;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "checkVisible", "", "isVisible", "setVisible", "visible", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private final String TAG;
-  private final b kCL;
-  public final ViewGroup kiF;
-  public final d xYq;
-  public final View zlD;
-  private final TextView zlE;
-  private final ImageView zlF;
+  public final com.tencent.mm.plugin.finder.live.plugin.b CwG;
+  public boolean ElK;
+  private final View clickArea;
+  private final ImageView dpM;
+  public final ViewGroup mJe;
+  private final com.tencent.mm.live.b.b nfT;
   
-  public f(ViewGroup paramViewGroup, b paramb, d paramd)
+  public f(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb, com.tencent.mm.plugin.finder.live.plugin.b paramb1)
   {
-    AppMethodBeat.i(269378);
-    this.kiF = paramViewGroup;
-    this.kCL = paramb;
-    this.xYq = paramd;
-    this.TAG = "Finder.FinderLiveAnchorLuckyMoneyEntranceWidget";
-    this.zlD = this.kiF.findViewById(b.f.finder_live_anchor_lucky_money_entrance_icon_group);
-    this.zlE = ((TextView)this.kiF.findViewById(b.f.finder_live_anchor_lucky_money_entrance_tip));
-    this.zlF = ((ImageView)this.kiF.findViewById(b.f.finder_live_anchor_lucky_money_entrance_icon));
-    paramViewGroup = this.zlF;
-    paramb = this.kiF.getContext();
-    p.j(paramb, "root.context");
-    paramViewGroup.setImageDrawable(au.e(paramb.getResources().getDrawable(b.i.icon_finder_post_lucky_money), -1));
-    AppMethodBeat.o(269378);
+    AppMethodBeat.i(361014);
+    this.mJe = paramViewGroup;
+    this.nfT = paramb;
+    this.CwG = paramb1;
+    paramViewGroup = this.mJe.findViewById(p.e.BIf);
+    s.s(paramViewGroup, "root.findViewById(R.id.f…ve_camera_opt_click_area)");
+    this.clickArea = paramViewGroup;
+    paramViewGroup = this.mJe.findViewById(p.e.BIg);
+    s.s(paramViewGroup, "root.findViewById(R.id.f…der_live_camera_opt_icon)");
+    this.dpM = ((ImageView)paramViewGroup);
+    this.ElK = true;
+    this.clickArea.setOnClickListener(new f..ExternalSyntheticLambda0(this));
+    this.dpM.setImageDrawable(bb.e(this.mJe.getContext().getResources().getDrawable(p.g.finder_live_view_setting_icon), -1));
+    AppMethodBeat.o(361014);
   }
   
-  public final boolean isVisible()
+  private static final void a(f paramf, View paramView)
   {
-    AppMethodBeat.i(269376);
-    if (this.kiF.getVisibility() == 0)
-    {
-      AppMethodBeat.o(269376);
-      return true;
-    }
-    AppMethodBeat.o(269376);
-    return false;
+    AppMethodBeat.i(361023);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramf);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorCameraOptionWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramf, "this$0");
+    paramView = j.Dob;
+    localObject1 = q.s.DuW;
+    localObject2 = j.Dob;
+    paramView.a((q.s)localObject1, j.a(q.r.Duf));
+    paramView = new Bundle();
+    paramView.putInt("PARAM_FINDER_LIVE_CAMERA_OPT_SCENE", 1);
+    paramf.nfT.statusChange(b.c.nef, paramView);
+    a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveAnchorCameraOptionWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(361023);
   }
 }
 

@@ -26,7 +26,7 @@ public class TPVideoCapture
   
   public TPVideoCapture(String paramString)
   {
-    AppMethodBeat.i(219918);
+    AppMethodBeat.i(228371);
     this.mWidth = 0;
     this.mHeight = 0;
     this.mRequestedTimeMsToleranceBefore = 0L;
@@ -37,58 +37,58 @@ public class TPVideoCapture
     try
     {
       this.mTpImageGenerator.init();
-      AppMethodBeat.o(219918);
+      AppMethodBeat.o(228371);
       return;
     }
     catch (Exception paramString)
     {
       g.e("TPThumbPlayer[TPVideoCapture.java]", "init: " + Log.getStackTraceString(paramString));
-      AppMethodBeat.o(219918);
+      AppMethodBeat.o(228371);
     }
   }
   
   private String generateOpaqueKey(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(219931);
+    AppMethodBeat.i(228376);
     String str = "opaque_" + paramLong1 + "time_" + paramLong2;
-    AppMethodBeat.o(219931);
+    AppMethodBeat.o(228376);
     return str;
   }
   
   private TPImageGeneratorParams getParameters()
   {
-    AppMethodBeat.i(219928);
+    AppMethodBeat.i(228373);
     TPImageGeneratorParams localTPImageGeneratorParams = new TPImageGeneratorParams();
     localTPImageGeneratorParams.format = 37;
     localTPImageGeneratorParams.width = this.mWidth;
     localTPImageGeneratorParams.height = this.mHeight;
     localTPImageGeneratorParams.requestedTimeMsToleranceAfter = this.mRequestedTimeMsToleranceAfter;
     localTPImageGeneratorParams.requestedTimeMsToleranceBefore = this.mRequestedTimeMsToleranceBefore;
-    AppMethodBeat.o(219928);
+    AppMethodBeat.o(228373);
     return localTPImageGeneratorParams;
   }
   
   public void generateImageAsyncAtTime(long paramLong, TPVideoCaptureCallBack paramTPVideoCaptureCallBack)
   {
-    AppMethodBeat.i(219923);
+    AppMethodBeat.i(228389);
     this.mOpaque += 1L;
     this.mCallBackMap.put(generateOpaqueKey(this.mOpaque, paramLong), paramTPVideoCaptureCallBack);
     try
     {
       this.mTpImageGenerator.generateImageAsyncAtTime(paramLong, this.mOpaque, getParameters());
-      AppMethodBeat.o(219923);
+      AppMethodBeat.o(228389);
       return;
     }
     catch (Exception paramTPVideoCaptureCallBack)
     {
       g.e("TPThumbPlayer[TPVideoCapture.java]", "generateImageAsyncAtTime: " + Log.getStackTraceString(paramTPVideoCaptureCallBack));
-      AppMethodBeat.o(219923);
+      AppMethodBeat.o(228389);
     }
   }
   
   public void generateImagesAsyncForTimes(long[] paramArrayOfLong, TPVideoCaptureCallBack paramTPVideoCaptureCallBack)
   {
-    AppMethodBeat.i(219925);
+    AppMethodBeat.i(228392);
     this.mOpaque += 1L;
     int j = paramArrayOfLong.length;
     int i = 0;
@@ -101,19 +101,19 @@ public class TPVideoCapture
     try
     {
       this.mTpImageGenerator.generateImagesAsyncForTimes(paramArrayOfLong, this.mOpaque, getParameters());
-      AppMethodBeat.o(219925);
+      AppMethodBeat.o(228392);
       return;
     }
     catch (Exception paramArrayOfLong)
     {
       g.e("TPThumbPlayer[TPVideoCapture.java]", "generateImagesAsyncForTimes: " + Log.getStackTraceString(paramArrayOfLong));
-      AppMethodBeat.o(219925);
+      AppMethodBeat.o(228392);
     }
   }
   
   public void onImageGenerationCompleted(int paramInt, long paramLong1, long paramLong2, long paramLong3, TPVideoFrame paramTPVideoFrame)
   {
-    AppMethodBeat.i(219933);
+    AppMethodBeat.i(228404);
     TPVideoCaptureCallBack localTPVideoCaptureCallBack = (TPVideoCaptureCallBack)this.mCallBackMap.get(generateOpaqueKey(paramLong3, paramLong1));
     if (localTPVideoCaptureCallBack != null)
     {
@@ -129,7 +129,7 @@ public class TPVideoCapture
     for (;;)
     {
       this.mCallBackMap.remove(generateOpaqueKey(paramLong3, paramLong1));
-      AppMethodBeat.o(219933);
+      AppMethodBeat.o(228404);
       return;
       label100:
       Bitmap[] arrayOfBitmap = new Bitmap[paramTPVideoFrame.data.length];
@@ -148,14 +148,14 @@ public class TPVideoCapture
   
   public void release()
   {
-    AppMethodBeat.i(219927);
+    AppMethodBeat.i(228398);
     try
     {
       this.mTpImageGenerator.cancelAllImageGenerations();
       this.mTpImageGenerator.unInit();
       this.mCallBackMap.clear();
       this.mTpImageGenerator = null;
-      AppMethodBeat.o(219927);
+      AppMethodBeat.o(228398);
       return;
     }
     catch (Exception localException)
@@ -169,30 +169,30 @@ public class TPVideoCapture
   
   public void setSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(219919);
+    AppMethodBeat.i(228379);
     if ((paramInt1 < 0) || (paramInt2 < 0))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Size is illegal");
-      AppMethodBeat.o(219919);
+      AppMethodBeat.o(228379);
       throw localIllegalArgumentException;
     }
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    AppMethodBeat.o(219919);
+    AppMethodBeat.o(228379);
   }
   
   public void setTimeMsTolerance(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(219921);
+    AppMethodBeat.i(228383);
     if (paramLong1 > paramLong2)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Tolerance is illegal");
-      AppMethodBeat.o(219921);
+      AppMethodBeat.o(228383);
       throw localIllegalArgumentException;
     }
     this.mRequestedTimeMsToleranceBefore = paramLong1;
     this.mRequestedTimeMsToleranceAfter = paramLong2;
-    AppMethodBeat.o(219921);
+    AppMethodBeat.o(228383);
   }
   
   public static abstract interface TPVideoCaptureCallBack
@@ -204,7 +204,7 @@ public class TPVideoCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPVideoCapture
  * JD-Core Version:    0.7.0.1
  */

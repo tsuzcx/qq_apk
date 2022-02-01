@@ -11,21 +11,7 @@ import java.util.TimeZone;
 
 public final class b
 {
-  public static String GN(long paramLong)
-  {
-    AppMethodBeat.i(110228);
-    if (paramLong < 3600000L) {}
-    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
-    {
-      localObject = new SimpleDateFormat((String)localObject);
-      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
-      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
-      AppMethodBeat.o(110228);
-      return localObject;
-    }
-  }
-  
-  private static float dS(Context paramContext)
+  private static float eM(Context paramContext)
   {
     AppMethodBeat.i(110227);
     paramContext = paramContext.getContentResolver();
@@ -44,13 +30,13 @@ public final class b
     return f;
   }
   
-  public static float dT(Context paramContext)
+  public static float eN(Context paramContext)
   {
     AppMethodBeat.i(110226);
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = dS(paramContext);
+      f = eM(paramContext);
       AppMethodBeat.o(110226);
       return f;
     }
@@ -58,10 +44,24 @@ public final class b
     AppMethodBeat.o(110226);
     return f;
   }
+  
+  public static String iY(long paramLong)
+  {
+    AppMethodBeat.i(110228);
+    if (paramLong < 3600000L) {}
+    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
+    {
+      localObject = new SimpleDateFormat((String)localObject);
+      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
+      AppMethodBeat.o(110228);
+      return localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.b
  * JD-Core Version:    0.7.0.1
  */

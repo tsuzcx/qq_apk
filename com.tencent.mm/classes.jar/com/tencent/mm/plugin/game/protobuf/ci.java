@@ -1,134 +1,115 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class ci
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CQs;
-  public String CQt;
-  public LinkedList<cj> CQw;
-  public String fwr;
-  
-  public ci()
-  {
-    AppMethodBeat.i(41793);
-    this.CQw = new LinkedList();
-    AppMethodBeat.o(41793);
-  }
+  public String IKF;
+  public String desc;
+  public String nPr;
+  public String title;
+  public String xlO;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41794);
+    AppMethodBeat.i(41792);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.fwr == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Title");
-        AppMethodBeat.o(41794);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.g(1, this.title);
       }
-      if (this.fwr != null) {
-        paramVarArgs.f(1, this.fwr);
+      if (this.nPr != null) {
+        paramVarArgs.g(2, this.nPr);
       }
-      paramVarArgs.e(2, 8, this.CQw);
-      if (this.CQs != null) {
-        paramVarArgs.f(3, this.CQs);
+      if (this.xlO != null) {
+        paramVarArgs.g(3, this.xlO);
       }
-      if (this.CQt != null) {
-        paramVarArgs.f(4, this.CQt);
+      if (this.desc != null) {
+        paramVarArgs.g(4, this.desc);
       }
-      AppMethodBeat.o(41794);
+      if (this.IKF != null) {
+        paramVarArgs.g(5, this.IKF);
+      }
+      AppMethodBeat.o(41792);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.fwr == null) {
-        break label504;
+      if (this.title == null) {
+        break label450;
       }
     }
-    label504:
-    for (paramInt = g.a.a.b.b.a.g(1, this.fwr) + 0;; paramInt = 0)
+    label450:
+    for (int i = i.a.a.b.b.a.h(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.a.c(2, 8, this.CQw);
       paramInt = i;
-      if (this.CQs != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.CQs);
+      if (this.nPr != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.nPr);
       }
       i = paramInt;
-      if (this.CQt != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.CQt);
+      if (this.xlO != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.xlO);
       }
-      AppMethodBeat.o(41794);
+      paramInt = i;
+      if (this.desc != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.desc);
+      }
+      i = paramInt;
+      if (this.IKF != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.IKF);
+      }
+      AppMethodBeat.o(41792);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.CQw.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.fwr == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Title");
-          AppMethodBeat.o(41794);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41794);
+        AppMethodBeat.o(41792);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         ci localci = (ci)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41794);
+          AppMethodBeat.o(41792);
           return -1;
         case 1: 
-          localci.fwr = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(41794);
+          localci.title = locala.ajGk.readString();
+          AppMethodBeat.o(41792);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            cj localcj = new cj();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localcj.parseFrom((byte[])localObject);
-            }
-            localci.CQw.add(localcj);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(41794);
+          localci.nPr = locala.ajGk.readString();
+          AppMethodBeat.o(41792);
           return 0;
         case 3: 
-          localci.CQs = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(41794);
+          localci.xlO = locala.ajGk.readString();
+          AppMethodBeat.o(41792);
+          return 0;
+        case 4: 
+          localci.desc = locala.ajGk.readString();
+          AppMethodBeat.o(41792);
           return 0;
         }
-        localci.CQt = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(41794);
+        localci.IKF = locala.ajGk.readString();
+        AppMethodBeat.o(41792);
         return 0;
       }
-      AppMethodBeat.o(41794);
+      AppMethodBeat.o(41792);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.ci
  * JD-Core Version:    0.7.0.1
  */

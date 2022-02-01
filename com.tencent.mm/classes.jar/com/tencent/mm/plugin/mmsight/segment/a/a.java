@@ -4,21 +4,21 @@ import android.view.Surface;
 
 public abstract interface a
 {
-  public abstract void a(a.a parama);
+  public abstract void a(a parama);
   
-  public abstract void a(a.b paramb);
+  public abstract void a(b paramb);
   
-  public abstract void a(a.c paramc);
+  public abstract void a(c paramc);
   
-  public abstract void a(a.d paramd);
+  public abstract void a(d paramd);
   
   public abstract int getCurrentPosition();
   
   public abstract int getDuration();
   
-  public abstract void ih(int paramInt1, int paramInt2);
-  
   public abstract boolean isPlaying();
+  
+  public abstract void jM(int paramInt1, int paramInt2);
   
   public abstract void pause();
   
@@ -39,6 +39,26 @@ public abstract interface a
   public abstract void start();
   
   public abstract void stop();
+  
+  public static abstract interface a
+  {
+    public abstract boolean jL(int paramInt1, int paramInt2);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void fX(Object paramObject);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void fY(Object paramObject);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void aS(int paramInt1, int paramInt2, int paramInt3);
+  }
 }
 
 

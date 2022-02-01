@@ -15,13 +15,13 @@ import com.tencent.mm.ah.a.h;
 public class CheckPreference
   extends Preference
 {
-  private int OAB;
-  private String OAC;
-  private int OAD;
-  private TextView OEk;
-  private CheckBox WqD;
-  public int WqE;
-  public boolean bBh;
+  private int VpO;
+  private String VpP;
+  private int VpQ;
+  private TextView Vtv;
+  private CheckBox adXS;
+  public int adXT;
+  public boolean duj;
   
   public CheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,11 +32,11 @@ public class CheckPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142518);
-    this.bBh = false;
-    this.OAB = -1;
-    this.OAC = "";
-    this.OAD = 8;
-    this.WqE = -1;
+    this.duj = false;
+    this.VpO = -1;
+    this.VpP = "";
+    this.VpQ = 8;
+    this.adXT = -1;
     setLayoutResource(a.h.mm_preference_summary_check);
     AppMethodBeat.o(142518);
   }
@@ -45,29 +45,29 @@ public class CheckPreference
   {
     AppMethodBeat.i(142520);
     super.onBindView(paramView);
-    this.WqD = ((CheckBox)paramView.findViewById(a.g.checkbox));
-    this.WqD.setChecked(this.bBh);
-    this.OEk = ((TextView)paramView.findViewById(a.g.tipicon));
-    paramView = this.OAC;
-    int i = this.OAB;
-    this.OAB = i;
-    this.OAC = paramView;
-    if (this.OEk != null)
+    this.adXS = ((CheckBox)paramView.findViewById(a.g.checkbox));
+    this.adXS.setChecked(this.duj);
+    this.Vtv = ((TextView)paramView.findViewById(a.g.tipicon));
+    paramView = this.VpP;
+    int i = this.VpO;
+    this.VpO = i;
+    this.VpP = paramView;
+    if (this.Vtv != null)
     {
       if (i > 0) {
-        this.OEk.setBackgroundResource(this.OAB);
+        this.Vtv.setBackgroundResource(this.VpO);
       }
-      if (!TextUtils.isEmpty(this.OAC)) {
-        this.OEk.setText(this.OAC);
+      if (!TextUtils.isEmpty(this.VpP)) {
+        this.Vtv.setText(this.VpP);
       }
     }
-    this.OAD = this.OAD;
-    if (this.OEk != null) {
-      this.OEk.setVisibility(this.OAD);
+    this.VpQ = this.VpQ;
+    if (this.Vtv != null) {
+      this.Vtv.setVisibility(this.VpQ);
     }
-    paramView = (LinearLayout.LayoutParams)this.WqD.getLayoutParams();
-    if (-1 != this.WqE) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.WqE, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.adXS.getLayoutParams();
+    if (-1 != this.adXT) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.adXT, paramView.bottomMargin);
     }
     AppMethodBeat.o(142520);
   }

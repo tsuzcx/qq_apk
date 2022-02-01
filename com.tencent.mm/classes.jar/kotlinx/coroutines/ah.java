@@ -1,55 +1,22 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.a;
-import kotlin.d.f;
-import kotlin.d.f.c;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CompletionHandlerException;", "Ljava/lang/RuntimeException;", "Lkotlin/RuntimeException;", "message", "", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ah
+  extends RuntimeException
 {
-  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
+  public ah(String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(118053);
-    if (paramThrowable1 == paramThrowable2)
-    {
-      AppMethodBeat.o(118053);
-      return paramThrowable1;
-    }
-    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
-    a.a((Throwable)paramThrowable2, paramThrowable1);
-    paramThrowable1 = (Throwable)paramThrowable2;
-    AppMethodBeat.o(118053);
-    return paramThrowable1;
-  }
-  
-  public static final void b(f paramf, Throwable paramThrowable)
-  {
-    AppMethodBeat.i(204222);
-    try
-    {
-      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.abww);
-      if (localCoroutineExceptionHandler != null)
-      {
-        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
-        AppMethodBeat.o(204222);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      ag.a(paramf, b(paramThrowable, localThrowable));
-      AppMethodBeat.o(204222);
-      return;
-    }
-    ag.a(paramf, paramThrowable);
-    AppMethodBeat.o(204222);
+    super(paramString, paramThrowable);
+    AppMethodBeat.i(118265);
+    AppMethodBeat.o(118265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlinx.coroutines.ah
  * JD-Core Version:    0.7.0.1
  */

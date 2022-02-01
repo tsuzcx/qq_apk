@@ -9,47 +9,47 @@ import java.util.List;
 
 public final class c
 {
-  Sensor GxY;
-  d GxZ;
-  boolean Gya;
-  List<b> Gyb;
-  long Gyc;
+  Sensor Mug;
+  d Muh;
+  boolean Mui;
+  List<b> Muj;
+  long Muk;
   
   public c(Sensor paramSensor)
   {
-    AppMethodBeat.i(257574);
-    this.GxZ = new d();
-    this.Gya = false;
-    this.Gyb = new ArrayList();
-    this.Gyc = 0L;
-    this.GxY = paramSensor;
-    AppMethodBeat.o(257574);
+    AppMethodBeat.i(261902);
+    this.Muh = new d();
+    this.Mui = false;
+    this.Muj = new ArrayList();
+    this.Muk = 0L;
+    this.Mug = paramSensor;
+    AppMethodBeat.o(261902);
   }
   
   final void a(SensorEvent paramSensorEvent)
   {
-    AppMethodBeat.i(257575);
+    AppMethodBeat.i(261907);
     a(new d(paramSensorEvent));
-    AppMethodBeat.o(257575);
+    AppMethodBeat.o(261907);
   }
   
   final void a(d paramd)
   {
-    AppMethodBeat.i(257576);
+    AppMethodBeat.i(261915);
     b localb = new b();
-    localb.fa = paramd.fkN[0];
-    localb.fb = paramd.fkN[1];
-    localb.fc = paramd.fkN[2];
+    localb.fa = paramd.hpa[0];
+    localb.fb = paramd.hpa[1];
+    localb.fc = paramd.hpa[2];
     localb.fd = paramd.timestamp;
-    this.Gyb.add(localb);
-    this.Gyc = paramd.timestamp;
-    this.GxZ.reset();
-    AppMethodBeat.o(257576);
+    this.Muj.add(localb);
+    this.Muk = paramd.timestamp;
+    this.Muh.reset();
+    AppMethodBeat.o(261915);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.a.c
  * JD-Core Version:    0.7.0.1
  */

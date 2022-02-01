@@ -1,21 +1,21 @@
 package kotlin.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.k.e;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.k.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class f
 {
-  public final e abvC;
+  public final g ajuK;
   public final String value;
   
-  public f(String paramString, e parame)
+  public f(String paramString, g paramg)
   {
     AppMethodBeat.i(129350);
     this.value = paramString;
-    this.abvC = parame;
+    this.ajuK = paramg;
     AppMethodBeat.o(129350);
   }
   
@@ -27,7 +27,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.h(this.value, paramObject.value)) || (!p.h(this.abvC, paramObject.abvC))) {}
+        if ((!s.p(this.value, paramObject.value)) || (!s.p(this.ajuK, paramObject.ajuK))) {}
       }
     }
     else
@@ -47,7 +47,7 @@ public final class f
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.abvC;
+      localObject = this.ajuK;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,14 +59,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129351);
-    String str = "MatchGroup(value=" + this.value + ", range=" + this.abvC + ")";
+    String str = "MatchGroup(value=" + this.value + ", range=" + this.ajuK + ")";
     AppMethodBeat.o(129351);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.n.f
  * JD-Core Version:    0.7.0.1
  */

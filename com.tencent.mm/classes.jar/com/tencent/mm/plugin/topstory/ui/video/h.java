@@ -4,110 +4,110 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import androidx.recyclerview.widget.RecyclerView.v;
-import com.tencent.mm.protocal.protobuf.esy;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class h
   extends RecyclerView.v
   implements a
 {
-  public esy MWs;
-  public b MZd;
-  private boolean MZe;
-  protected View.OnClickListener bwV = new h.1(this);
+  public foh TIW;
+  public b TLM;
+  private boolean TLN;
+  protected View.OnClickListener dpY = new h.1(this);
   
   public h(View paramView, b paramb)
   {
     super(paramView);
-    this.MZd = paramb;
-    hd(paramView);
+    this.TLM = paramb;
+    ko(paramView);
   }
   
-  public void Ah(boolean paramBoolean)
+  public void FD(boolean paramBoolean)
   {
-    this.MZd.a(this.MWs);
+    this.TLM.a(this.TIW);
   }
   
   protected final void a(b paramb, Context paramContext, f paramf, int paramInt)
   {
-    esy localesy = paramb.gqL().ajJ(paramInt);
-    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.gqA(), localesy, paramInt, 5, "");
-    if (localesy != null)
+    foh localfoh = paramb.hNK().apc(paramInt);
+    ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(paramb.hNz(), localfoh, paramInt, 5, "");
+    if (localfoh != null)
     {
-      if (this.MZd.gqC().ehu())
+      if (this.TLM.hNB().fjy())
       {
-        this.MZd.gqC().dmi();
-        this.MZe = true;
+        this.TLM.hNB().bck();
+        this.TLN = true;
       }
-      com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
-      locale.ODT = new h.2(this);
-      locale.ODU = new h.3(this, paramf, paramContext, localesy, paramb, paramInt);
-      locale.XbB = new h.4(this);
-      locale.eik();
+      com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f(paramContext, 1, false);
+      localf.Vtg = new h.2(this);
+      localf.GAC = new h.3(this, paramf, paramContext, localfoh, paramb, paramInt);
+      localf.aeLi = new h.4(this);
+      localf.dDn();
     }
   }
   
-  public final void d(esy paramesy)
+  public final void d(foh paramfoh)
   {
-    this.MWs = paramesy;
-    Log.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramesy.title });
-    gri();
+    this.TIW = paramfoh;
+    Log.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "onBindItemHolder %s", new Object[] { paramfoh.title });
+    hOh();
   }
   
   public abstract View getWowView();
   
-  public void gqu()
+  public void hNt()
   {
-    this.MZd.gqu();
+    this.TLM.hNt();
   }
   
-  public void gqv()
+  public void hNu()
   {
-    this.MZd.gqv();
+    this.TLM.hNu();
   }
   
-  public int gqw()
+  public int hNv()
   {
-    return md() - this.MZd.gqH().gqR();
+    return KJ() - this.TLM.hNG().hNP();
   }
   
-  public boolean grh()
+  public boolean hOg()
   {
     return false;
   }
   
-  public abstract void gri();
+  public abstract void hOh();
   
-  public abstract f grj();
+  public abstract f hOi();
   
-  public void hd(View paramView) {}
+  public void ko(View paramView) {}
   
-  protected void he(View paramView)
+  protected void kp(View paramView)
   {
-    if (this.MZd.gqE() != gqw())
+    if (this.TLM.hND() != hNv())
     {
-      this.MZd.gqy().NaF = 2;
-      this.MZd.ajA(gqw());
-      com.tencent.mm.plugin.websearch.api.a.a.rE(4);
-      this.MZd.gqy().k(this.MWs);
-      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.MZd.gqA(), this.MWs, gqw(), 2, "");
+      this.TLM.hNx().TNo = 2;
+      this.TLM.aoT(hNv());
+      com.tencent.mm.plugin.websearch.api.a.a.rG(4);
+      this.TLM.hNx().k(this.TIW);
+      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.TLM.hNz(), this.TIW, hNv(), 2, "");
     }
     do
     {
       return;
-      hf(paramView);
-    } while (!grh());
-    gqv();
-    this.MZd.gqv();
-    gqu();
-    this.MZd.gqu();
+      kq(paramView);
+    } while (!hOg());
+    hNu();
+    this.TLM.hNu();
+    hNt();
+    this.TLM.hNt();
   }
   
-  public void hf(View paramView) {}
+  public void kq(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.h
  * JD-Core Version:    0.7.0.1
  */

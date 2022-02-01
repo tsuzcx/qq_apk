@@ -9,7 +9,7 @@ import java.util.Arrays;
 public abstract class c
   extends a
 {
-  private volatile boolean bfI;
+  private volatile boolean cZB;
   public byte[] data;
   private int limit;
   
@@ -19,24 +19,32 @@ public abstract class c
     this.data = paramArrayOfByte;
   }
   
-  protected abstract void f(byte[] paramArrayOfByte, int paramInt);
+  public final void Tb()
+  {
+    this.cZB = true;
+  }
   
-  public final void tA()
+  public final boolean Tc()
+  {
+    return this.cZB;
+  }
+  
+  public final void Td()
   {
     int i = 0;
     for (;;)
     {
       try
       {
-        this.aRo.a(this.bgL);
+        this.cLk.a(this.daF);
         this.limit = 0;
-        if ((i == -1) || (this.bfI)) {
+        if ((i == -1) || (this.cZB)) {
           break;
         }
         if (this.data == null)
         {
           this.data = new byte[16384];
-          int j = this.aRo.read(this.data, this.limit, 16384);
+          int j = this.cLk.read(this.data, this.limit, 16384);
           i = j;
           if (j == -1) {
             continue;
@@ -51,34 +59,26 @@ public abstract class c
       }
       finally
       {
-        x.a(this.aRo);
+        x.a(this.cLk);
       }
       this.data = Arrays.copyOf(this.data, this.data.length + 16384);
     }
-    if (!this.bfI) {
+    if (!this.cZB) {
       f(this.data, this.limit);
     }
-    x.a(this.aRo);
+    x.a(this.cLk);
   }
   
-  public final long tL()
+  public final long To()
   {
     return this.limit;
   }
   
-  public final void ty()
-  {
-    this.bfI = true;
-  }
-  
-  public final boolean tz()
-  {
-    return this.bfI;
-  }
+  protected abstract void f(byte[] paramArrayOfByte, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,92 +1,87 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.ArrayMap;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.b.a.cx;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.cgi.dc;
-import com.tencent.mm.plugin.finder.report.e;
-import com.tencent.mm.plugin.finder.report.e.a;
-import com.tencent.mm.plugin.findersdk.a.aa;
+import com.tencent.mm.am.p;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.accessibility.v;
+import com.tencent.mm.plugin.finder.accessibility.w;
+import com.tencent.mm.plugin.finder.accessibility.x;
+import com.tencent.mm.plugin.finder.accessibility.y;
+import com.tencent.mm.plugin.finder.cgi.ec;
+import com.tencent.mm.plugin.finder.report.j.a;
+import com.tencent.mm.plugin.findersdk.a.bh;
+import com.tencent.mm.plugin.findersdk.a.bn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.ScreenShotUtil;
 import com.tencent.mm.sdk.platformtools.ScreenShotUtil.ScreenShotCallback;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.component.l;
+import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.ui.widget.SwipeBackLayout.a;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.x;
-import org.json.JSONObject;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ai;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "activeFinish", "", "callOnce", "needChangeOrientation", "getNeedChangeOrientation", "()Z", "setNeedChangeOrientation", "(Z)V", "screenShotCallback", "com/tencent/mm/plugin/finder/ui/MMFinderUI$screenShotCallback$1", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$screenShotCallback$1;", "unInitTask", "Ljava/lang/Runnable;", "finish", "", "getCommentScene", "", "getLayoutId", "getReportTag", "", "getReportType", "importUIComponents", "set", "Ljava/util/HashSet;", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "initBusiness", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "setRequestedOrientation", "requestedOrientation", "uninitBusiness", "uninitBusinessCheck", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "activeFinish", "", "callOnce", "needChangeOrientation", "getNeedChangeOrientation", "()Z", "setNeedChangeOrientation", "(Z)V", "screenShotCallback", "com/tencent/mm/plugin/finder/ui/MMFinderUI$screenShotCallback$1", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$screenShotCallback$1;", "simpleLifecycle", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$SimpleLifecycleCallback;", "getSimpleLifecycle", "()Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$SimpleLifecycleCallback;", "setSimpleLifecycle", "(Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$SimpleLifecycleCallback;)V", "unInitTask", "Ljava/lang/Runnable;", "finish", "", "getCommentScene", "", "getLayoutId", "getReportTag", "", "getReportType", "getUIComponents", "", "Lcom/tencent/mm/ui/component/UIComponent;", "importAccessibility", "set", "Ljava/util/HashSet;", "Ljava/lang/Class;", "initBusiness", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "onStart", "onStop", "onSwipeStartDrag", "edgeFlags", "setMMOrientation", "setRequestedOrientation", "requestedOrientation", "superImportUIComponents", "uninitBusiness", "uninitBusinessCheck", "Companion", "SimpleLifecycleCallback", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class MMFinderUI
   extends MMActivity
 {
-  public static final a AwW = new a((byte)0);
+  public static final a FVG = new a((byte)0);
   private static final String TAG = "Finder.MMFinderUI";
-  public boolean AwU;
-  private final d AwV = new d(this);
-  private HashMap _$_findViewCache;
-  private boolean xZp;
-  private Runnable xZq;
-  private boolean xZr;
+  private Runnable CxA;
+  private boolean Cxz;
+  public boolean FVH;
+  public b FVI;
+  private final e FVJ = new e(this);
+  private boolean callOnce;
   
-  private final void dxl()
+  private final void ehS()
   {
-    if (this.xZr) {
+    if (this.callOnce) {
       return;
     }
-    this.xZr = true;
+    this.callOnce = true;
   }
   
-  public void _$_clearFindViewByIdCache()
+  private static final void f(MMFinderUI paramMMFinderUI)
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
+    kotlin.g.b.s.u(paramMMFinderUI, "this$0");
+    paramMMFinderUI.ehS();
   }
   
-  public View _$_findCachedViewById(int paramInt)
-  {
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    return localView1;
-  }
+  public void TH(int paramInt) {}
   
-  public int duR()
+  public void _$_clearFindViewByIdCache() {}
+  
+  public int edC()
   {
     return 0;
   }
   
-  public String dvl()
+  public String efe()
   {
     String str = getClass().getSimpleName();
-    p.j(str, "this.javaClass.simpleName");
+    kotlin.g.b.s.s(str, "this.javaClass.simpleName");
     return str;
+  }
+  
+  public final Set<UIComponent> fcj()
+  {
+    return (Set)getUiComponents();
   }
   
   public void finish()
@@ -94,9 +89,9 @@ public abstract class MMFinderUI
     super.finish();
     Log.i(TAG, "finish " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + isPaused());
     if (!isPaused()) {
-      this.xZq = ((Runnable)new b(this));
+      this.CxA = new MMFinderUI..ExternalSyntheticLambda0(this);
     }
-    this.xZp = true;
+    this.Cxz = true;
   }
   
   public int getCommentScene()
@@ -109,171 +104,191 @@ public abstract class MMFinderUI
     return 0;
   }
   
-  public void importUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
-  {
-    p.k(paramHashSet, "set");
-    super.importUIComponents(paramHashSet);
-    p.k(aa.class, "$this$uicClass");
-    Object localObject1 = com.tencent.mm.ui.component.g.Xox;
-    Object localObject2 = com.tencent.mm.ui.component.g.hUc().get(aa.class.getName());
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof Class)) {
-      localObject1 = null;
-    }
-    localObject1 = (Class)localObject1;
-    if (localObject1 == null) {
-      throw ((Throwable)new RuntimeException(aa.class + " never import any instance."));
-    }
-    paramHashSet.add(localObject1);
-    paramHashSet.add(com.tencent.mm.plugin.secdata.ui.a.class);
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
-    Object localObject = e.zUG;
-    localObject = dvl();
+    Object localObject = com.tencent.mm.plugin.finder.report.j.Fpm;
+    localObject = efe();
     int i = hashCode();
-    p.k(localObject, "tag");
-    e.a locala = e.ap(i, true);
+    kotlin.g.b.s.u(localObject, "tag");
+    j.a locala = com.tencent.mm.plugin.finder.report.j.aJ(i, true);
     if (locala != null)
     {
-      p.k(localObject, "<set-?>");
+      kotlin.g.b.s.u(localObject, "<set-?>");
       locala.tag = ((String)localObject);
-      locala.zUH = e.zUF;
-      locala.zUI = cm.bfE();
+      locala.EQt = com.tencent.mm.plugin.finder.report.j.AxK;
+      locala.Fpo = cn.bDw();
     }
     super.onCreate(paramBundle);
     Log.i(TAG, "onCreate " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + '}');
-    ((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).onEnterFinder(this);
+    paramBundle = (com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class);
+    if (paramBundle != null) {
+      paramBundle.onEnterFinder(this);
+    }
     com.tencent.mm.ae.d.a(0L, (kotlin.g.a.a)new c(this));
+    paramBundle = this.FVI;
+    if (paramBundle != null) {
+      paramBundle.azK("onCreate");
+    }
+    if (isSupportNavigationSwipeBack())
+    {
+      paramBundle = getSwipeBackLayout();
+      if (paramBundle != null) {
+        paramBundle.setDragListener((SwipeBackLayout.a)new d(this));
+      }
+    }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    Log.i(TAG, "onDestroy " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + this.xZp);
-    if (!this.xZp) {
-      dxl();
+    Object localObject = this.FVI;
+    if (localObject != null) {
+      ((b)localObject).azK("onDestroy");
     }
-    ((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).onExitFinder(this);
+    Log.i(TAG, "onDestroy " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + this.Cxz);
+    if (!this.Cxz) {
+      ehS();
+    }
+    localObject = com.tencent.mm.plugin.finder.report.j.Fpm;
+    com.tencent.mm.plugin.finder.report.j.b(hashCode(), (Activity)this);
+    localObject = (com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.h)localObject).onExitFinder(this);
+    }
+    this.FVI = null;
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    b localb = this.FVI;
+    if (localb != null) {
+      localb.azK("onNewIntent");
+    }
+    super.onNewIntent(paramIntent);
   }
   
   public void onPause()
   {
     super.onPause();
-    ((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).getFinderSyncExtension().b(this);
-    Log.i(TAG, "onPause " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + this.xZq);
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dUR().aSr()).intValue() == 1)
+    Object localObject = com.tencent.mm.plugin.finder.utils.j.Gge;
+    com.tencent.mm.plugin.finder.utils.j.aM((Activity)this);
+    localObject = this.FVI;
+    if (localObject != null) {
+      ((b)localObject).azK("onPause");
+    }
+    localObject = (com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class);
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.h)localObject).getFinderSyncExtension();
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.finder.api.j)localObject).d(this);
+      }
+    }
+    Log.i(TAG, "onPause " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId() + ", " + this.CxA);
+    localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.eTq().bmg()).intValue() == 1)
     {
       Log.i(TAG, "REPORT_WHEN_SCREEN_SHOT remove");
       ScreenShotUtil.setScreenShotCallback((Context)this, null);
     }
-    localObject1 = this.xZq;
-    if (localObject1 != null) {
-      ((Runnable)localObject1).run();
+    localObject = this.CxA;
+    if (localObject != null) {
+      ((Runnable)localObject).run();
     }
-    this.xZq = null;
-    e.a locala;
-    Object localObject2;
-    int i;
+    this.CxA = null;
     if (isFinishing())
     {
-      localObject1 = e.zUG;
-      int j = hashCode();
-      localObject1 = (Activity)this;
-      p.k(localObject1, "activity");
-      locala = e.Pe(j);
-      if (locala != null)
-      {
-        localObject2 = e.zUG;
-        if ((locala.zUH > 0L) && (locala.zUI > 0L) && (locala.zUJ > 0L) && (locala.zUK >= 0L) && (locala.zUL > 0L) && (locala.zUL > locala.zUK) && (locala.zUJ > locala.zUI) && (locala.zUI > locala.zUH))
-        {
-          i = 1;
-          if (i != 0) {
-            break label377;
-          }
-          Log.w("FinderEnterCostReporter", "report21680: invalid data ".concat(String.valueOf(locala)));
-          label305:
-          e.zUE.remove(Integer.valueOf(j));
-        }
-      }
-      else if (((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).dy((Context)localObject1))
-      {
-        Log.i("FinderEnterCostReporter", "notifyFinish: remain size " + e.zUE.size());
-        e.zUE.clear();
-      }
+      localObject = com.tencent.mm.plugin.finder.report.j.Fpm;
+      com.tencent.mm.plugin.finder.report.j.b(hashCode(), (Activity)this);
     }
-    label377:
+    int i;
     do
     {
       return;
-      i = 0;
-      break;
-      localObject2 = new cx();
-      ((cx)localObject2).ahR();
-      ((cx)localObject2).gK(4L);
-      String str = e.a(locala).toString();
-      p.j(str, "buildJson(data).toString()");
-      ((cx)localObject2).nX(n.l(str, ",", ";", false));
-      ((cx)localObject2).nY(locala.tag);
-      ((cx)localObject2).nZ(String.valueOf(locala.zUL - locala.zUH));
-      ((cx)localObject2).bpa();
-      Log.i("FinderEnterCostReporter", "report21680 info:" + ((cx)localObject2).agI());
-      break label305;
-      localObject1 = e.zUG;
+      localObject = com.tencent.mm.plugin.finder.report.j.Fpm;
       i = hashCode();
-      localObject1 = e.Pe(i);
-    } while ((localObject1 == null) || (((e.a)localObject1).zUK != 0L) || (((e.a)localObject1).zUL != 0L));
-    Log.i("FinderEnterCostReporter", "notifyOnPause: abandon useless data ".concat(String.valueOf(localObject1)));
-    e.zUE.remove(Integer.valueOf(i));
+      localObject = com.tencent.mm.plugin.finder.report.j.Sg(i);
+    } while ((localObject == null) || (((j.a)localObject).Fpq != 0L) || (((j.a)localObject).Fpr != 0L));
+    Log.i("FinderEnterCostReporter", kotlin.g.b.s.X("notifyOnPause: abandon useless data ", localObject));
+    com.tencent.mm.plugin.finder.report.j.Fpn.remove(Integer.valueOf(i));
   }
   
   public void onResume()
   {
-    Object localObject = e.zUG;
-    localObject = e.Pe(hashCode());
+    Object localObject = com.tencent.mm.plugin.finder.report.j.Fpm;
+    localObject = com.tencent.mm.plugin.finder.report.j.Sg(hashCode());
     int i;
-    if (localObject != null)
-    {
-      if (((e.a)localObject).zUJ != 0L) {
-        break label272;
-      }
-      i = 1;
-      if (i == 0) {
-        break label277;
+    if (localObject != null) {
+      if (((j.a)localObject).Fpp == 0L)
+      {
+        i = 1;
+        if (i == 0) {
+          break label318;
+        }
       }
     }
     for (;;)
     {
       if (localObject != null) {
-        ((e.a)localObject).zUJ = cm.bfE();
+        ((j.a)localObject).Fpp = cn.bDw();
+      }
+      localObject = this.FVI;
+      if (localObject != null) {
+        ((b)localObject).azK("onResume");
       }
       super.onResume();
-      ((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).getFinderSyncExtension().a(this);
+      localObject = com.tencent.mm.plugin.finder.utils.j.Gge;
+      com.tencent.mm.plugin.finder.utils.j.aL((Activity)this);
+      localObject = (com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class);
+      if (localObject != null)
+      {
+        localObject = ((com.tencent.mm.plugin.h)localObject).getFinderSyncExtension();
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.finder.api.j)localObject).c(this);
+        }
+      }
       Log.i(TAG, "onResume " + getClass().getSimpleName() + ", " + hashCode() + ", " + getTaskId());
-      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-      if (((Boolean)com.tencent.mm.plugin.finder.storage.d.dUy().aSr()).booleanValue())
+      localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (((Boolean)com.tencent.mm.plugin.finder.storage.d.eSX().bmg()).booleanValue())
       {
         localObject = new Intent((Context)this, Class.forName("com.tencent.testcrash"));
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/finder/ui/MMFinderUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/finder/ui/MMFinderUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/finder/ui/MMFinderUI", "onResume", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-      if (((Number)com.tencent.mm.plugin.finder.storage.d.dUR().aSr()).intValue() == 1)
+      localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (((Number)com.tencent.mm.plugin.finder.storage.d.eTq().bmg()).intValue() == 1)
       {
         Log.i(TAG, "REPORT_WHEN_SCREEN_SHOT register");
-        ScreenShotUtil.setScreenShotCallback((Context)this, (ScreenShotUtil.ScreenShotCallback)this.AwV);
+        ScreenShotUtil.setScreenShotCallback((Context)this, (ScreenShotUtil.ScreenShotCallback)this.FVJ);
       }
       return;
-      label272:
       i = 0;
       break;
-      label277:
+      label318:
       localObject = null;
     }
+  }
+  
+  public void onStart()
+  {
+    ((com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class)).a(this);
+    b localb = this.FVI;
+    if (localb != null) {
+      localb.azK("onStart");
+    }
+    super.onStart();
+  }
+  
+  public void onStop()
+  {
+    b localb = this.FVI;
+    if (localb != null) {
+      localb.azK("onStop");
+    }
+    super.onStop();
+    ((com.tencent.mm.plugin.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.h.class)).b(this);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -282,10 +297,17 @@ public abstract class MMFinderUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @SuppressLint({"SourceLockedOrientationActivity"})
+  public void setMMOrientation()
+  {
+    if (!this.FVH) {
+      super.setMMOrientation();
+    }
+  }
+  
   public void setRequestedOrientation(int paramInt)
   {
-    if (!this.AwU)
+    Log.i(TAG, "setRequestedOrientation: requestedOrientation = " + paramInt + ", needChangeOrientation = " + this.FVH + ", this=" + efe());
+    if (!this.FVH)
     {
       super.setRequestedOrientation(1);
       return;
@@ -293,27 +315,32 @@ public abstract class MMFinderUI
     super.setRequestedOrientation(paramInt);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
   {
-    b(MMFinderUI paramMMFinderUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(258517);
-      MMFinderUI.c(this.AwX);
-      AppMethodBeat.o(258517);
-    }
+    kotlin.g.b.s.u(paramHashSet, "set");
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(l.a(ai.cz(bn.class)));
+    paramHashSet.add(l.a(ai.cz(bh.class)));
+    paramHashSet.add(com.tencent.mm.plugin.secdata.ui.a.class);
+    paramHashSet.add(l.a(ai.cz(x.class)));
+    paramHashSet.add(l.a(ai.cz(w.class)));
+    paramHashSet.add(l.a(ai.cz(v.class)));
+    paramHashSet.add(l.a(ai.cz(y.class)));
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/MMFinderUI$SimpleLifecycleCallback;", "", "reportLifeCycle", "", "lifecycle", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface b
+  {
+    public abstract void azK(String paramString);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     c(MMFinderUI paramMMFinderUI)
     {
@@ -321,54 +348,95 @@ public abstract class MMFinderUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/MMFinderUI$screenShotCallback$1", "Lcom/tencent/mm/sdk/platformtools/ScreenShotUtil$ScreenShotCallback;", "onScreenShot", "", "path", "", "dateAdded", "", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/MMFinderUI$onCreate$2", "Lcom/tencent/mm/ui/widget/SwipeBackLayout$DragListener;", "onSettleReset", "", "onStartDrag", "edgeFlags", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
+    implements SwipeBackLayout.a
+  {
+    d(MMFinderUI paramMMFinderUI) {}
+    
+    private static final void a(SwipeBackLayout paramSwipeBackLayout, MMFinderUI paramMMFinderUI)
+    {
+      AppMethodBeat.i(346927);
+      kotlin.g.b.s.u(paramSwipeBackLayout, "$it");
+      kotlin.g.b.s.u(paramMMFinderUI, "this$0");
+      paramSwipeBackLayout.setNeedRequestActivityTranslucent(true);
+      paramSwipeBackLayout.Nl(false);
+      com.tencent.mm.ui.base.b.bZ((Activity)paramMMFinderUI);
+      AppMethodBeat.o(346927);
+    }
+    
+    public final void TJ(int paramInt)
+    {
+      AppMethodBeat.i(346935);
+      this.FVK.TH(paramInt);
+      AppMethodBeat.o(346935);
+    }
+    
+    public final void fck()
+    {
+      AppMethodBeat.i(346944);
+      SwipeBackLayout localSwipeBackLayout = this.FVK.getSwipeBackLayout();
+      if (localSwipeBackLayout != null) {
+        localSwipeBackLayout.post(new MMFinderUI.d..ExternalSyntheticLambda0(localSwipeBackLayout, this.FVK));
+      }
+      AppMethodBeat.o(346944);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/MMFinderUI$screenShotCallback$1", "Lcom/tencent/mm/sdk/platformtools/ScreenShotUtil$ScreenShotCallback;", "onScreenShot", "", "path", "", "dateAdded", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
     implements ScreenShotUtil.ScreenShotCallback
   {
+    e(MMFinderUI paramMMFinderUI) {}
+    
     public final void onScreenShot(String paramString, long paramLong)
     {
-      AppMethodBeat.i(262593);
+      AppMethodBeat.i(346945);
+      List localList;
+      int i;
+      try
+      {
+        paramString = k.aeZF;
+        localList = ((bn)k.d((AppCompatActivity)this.FVK).cq(bn.class)).foB();
+        if (((Collection)localList).isEmpty()) {
+          break label146;
+        }
+        i = 1;
+      }
+      finally
+      {
+        Log.printErrStackTrace(MMFinderUI.access$getTAG$cp(), paramString, "onScreenShot", new Object[0]);
+        AppMethodBeat.o(346945);
+        return;
+      }
+      if (paramString == null)
+      {
+        Log.i(MMFinderUI.access$getTAG$cp(), "[onScreenShot] extStats is empty");
+        AppMethodBeat.o(346945);
+        return;
+      }
+      label129:
+      label146:
+      label155:
       for (;;)
       {
-        List localList;
-        int i;
-        try
-        {
-          paramString = com.tencent.mm.ui.component.g.Xox;
-          localList = ((aa)com.tencent.mm.ui.component.g.b((AppCompatActivity)this.AwX).bE(aa.class)).ekZ();
-          if (((Collection)localList).isEmpty()) {
-            break label129;
-          }
-          i = 1;
-        }
-        catch (Throwable paramString)
-        {
-          Log.printErrStackTrace(MMFinderUI.access$getTAG$cp(), paramString, "onScreenShot", new Object[0]);
-          AppMethodBeat.o(262593);
-          return;
-        }
-        if (paramString != null)
-        {
-          paramString = new dc(localList);
-          h.aGY().b((com.tencent.mm.an.q)paramString);
-          AppMethodBeat.o(262593);
-          return;
-        }
-        Log.i(MMFinderUI.access$getTAG$cp(), "[onScreenShot] extStats is empty");
-        AppMethodBeat.o(262593);
+        paramString = new ec(localList);
+        boolean bool = com.tencent.mm.kernel.h.aZW().a((p)paramString, 0);
+        paramString = Boolean.valueOf(bool);
+        break;
+        AppMethodBeat.o(346945);
         return;
-        for (;;)
+        if (i != 0) {}
+        for (paramString = localList;; paramString = null)
         {
-          if (i == 0) {
-            break label135;
+          if (paramString != null) {
+            break label155;
           }
-          paramString = localList;
+          paramString = null;
           break;
-          label129:
           i = 0;
+          break label129;
         }
-        label135:
-        paramString = null;
       }
     }
   }

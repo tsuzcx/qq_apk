@@ -16,13 +16,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  private static final int[] bvX = { 16843848 };
+  private static final int[] dpa = { 16843848 };
   
   static void a(View paramView, AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(234817);
+    AppMethodBeat.i(210024);
     Context localContext = paramView.getContext();
-    paramAttributeSet = k.a(localContext, paramAttributeSet, bvX, 0, paramInt, new int[0]);
+    paramAttributeSet = k.a(localContext, paramAttributeSet, dpa, 0, paramInt, new int[0]);
     try
     {
       if (paramAttributeSet.hasValue(0)) {
@@ -33,20 +33,20 @@ final class b
     finally
     {
       paramAttributeSet.recycle();
-      AppMethodBeat.o(234817);
+      AppMethodBeat.o(210024);
     }
   }
   
-  static void cc(View paramView)
+  static void cy(View paramView)
   {
-    AppMethodBeat.i(234815);
+    AppMethodBeat.i(210020);
     paramView.setOutlineProvider(ViewOutlineProvider.BOUNDS);
-    AppMethodBeat.o(234815);
+    AppMethodBeat.o(210020);
   }
   
-  static void p(View paramView, float paramFloat)
+  static void q(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(234819);
+    AppMethodBeat.i(210033);
     int i = paramView.getResources().getInteger(a.g.app_bar_elevation_anim_duration);
     StateListAnimator localStateListAnimator = new StateListAnimator();
     int j = a.b.state_liftable;
@@ -58,12 +58,12 @@ final class b
     localObjectAnimator = ObjectAnimator.ofFloat(paramView, "elevation", new float[] { 0.0F }).setDuration(0L);
     localStateListAnimator.addState(new int[0], localObjectAnimator);
     paramView.setStateListAnimator(localStateListAnimator);
-    AppMethodBeat.o(234819);
+    AppMethodBeat.o(210033);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.appbar.b
  * JD-Core Version:    0.7.0.1
  */

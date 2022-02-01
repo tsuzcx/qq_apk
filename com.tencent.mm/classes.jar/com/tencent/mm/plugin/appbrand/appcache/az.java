@@ -2,48 +2,25 @@ package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public final class az
+class az
   extends a
 {
-  final int nGn;
-  final int nGo;
-  final bq.a nGp;
+  public final String qGf;
   
-  az(String paramString1, int paramInt1, int paramInt2, String paramString2, bq.a parama)
+  az(String paramString1, int paramInt, String paramString2, String paramString3, a.a parama)
   {
-    super(B(paramString1, paramInt1, paramInt2), bc.bHt() + String.format(Locale.US, "_%s_%d_%d.wxapkg.diff", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, 0, paramInt2);
-    AppMethodBeat.i(90591);
-    this.nGn = paramInt1;
-    this.nGo = paramInt2;
-    this.nGp = parama;
-    if (!"@LibraryAppId".equals(paramString1)) {
-      bool = true;
-    }
-    this.nIE = bool;
-    AppMethodBeat.o(90591);
-  }
-  
-  static String B(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90590);
-    paramString = String.format(Locale.US, "WxaPkgDiff_%s_%d_%d", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(90590);
-    return paramString;
-  }
-  
-  public final String bHi()
-  {
-    AppMethodBeat.i(90592);
-    String str = bd.bl(this.appId, this.nGo);
-    AppMethodBeat.o(90592);
-    return str;
+    super(str1, str2 + String.format("debug_%d_%d_%d", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(Util.nullAsNil(parama.append()).hashCode()) }), paramString3, paramString1, String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), Util.nullAsNil(parama.append()) }).hashCode(), paramInt);
+    AppMethodBeat.i(320226);
+    this.qGf = paramString2;
+    AppMethodBeat.o(320226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.az
  * JD-Core Version:    0.7.0.1
  */

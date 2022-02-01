@@ -1,44 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="anim" name="g">false</item>
-    <item type="anim" name="h">false</item>
-    <item type="anim" name="i">false</item>
-    <item type="anim" name="j">false</item>
-    <item type="anim" name="a2">false</item>
-    <item type="anim" name="a6">false</item>
-    <item type="anim" name="aa">false</item>
-    <item type="anim" name="ag">false</item>
-    <item type="anim" name="ah">false</item>
-    <item type="anim" name="aj">false</item>
-    <item type="anim" name="at">false</item>
-    <item type="anim" name="au">false</item>
-    <item type="anim" name="b5">false</item>
-    <item type="anim" name="b6">false</item>
-    <item type="anim" name="bk">false</item>
-    <item type="anim" name="bl">false</item>
-    <item type="anim" name="c7">false</item>
-    <item type="anim" name="c_">false</item>
-    <item type="anim" name="ce">false</item>
-    <item type="anim" name="ci">false</item>
-    <item type="anim" name="cj">false</item>
-    <item type="anim" name="ck">false</item>
-    <item type="anim" name="cn">false</item>
-    <item type="anim" name="cp">false</item>
-    <item type="anim" name="cq">false</item>
-    <item type="anim" name="ct">false</item>
-    <item type="anim" name="cu">false</item>
-    <item type="anim" name="d2">false</item>
-    <item type="anim" name="e2">false</item>
-    <item type="anim" name="e3">false</item>
-    <item type="anim" name="e4">false</item>
-    <item type="anim" name="ec">false</item>
-    <item type="anim" name="ee">false</item>
-    <item type="anim" name="ef">false</item>
-    <item type="anim" name="eg">false</item>
-    <item type="anim" name="ey">false</item>
-    <item type="anim" name="ez">false</item>
-    <item type="anim" name="f5">false</item>
-    <item type="anim" name="f6">false</item>
-    <item type="anim" name="f7">false</item>
-    <item type="anim" name="fg">false</item>
+    <item type="anim" name="APKTOOL_DUMMY_34" />
+    <item type="anim" name="APKTOOL_DUMMY_35" />
+    <item type="anim" name="APKTOOL_DUMMY_36" />
+    <item type="anim" name="APKTOOL_DUMMY_37" />
+    <item type="anim" name="APKTOOL_DUMMY_38" />
+    <item type="anim" name="APKTOOL_DUMMY_39" />
+    <item type="anim" name="APKTOOL_DUMMY_3a" />
+    <item type="anim" name="APKTOOL_DUMMY_3b" />
+    <item type="anim" name="APKTOOL_DUMMY_3c" />
+    <item type="anim" name="APKTOOL_DUMMY_3d" />
+    <item type="anim" name="APKTOOL_DUMMY_3e" />
+    <item type="anim" name="APKTOOL_DUMMY_3f" />
 </resources>

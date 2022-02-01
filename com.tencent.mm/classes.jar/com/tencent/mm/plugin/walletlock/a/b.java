@@ -7,37 +7,42 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract void a(Activity paramActivity, b.b paramb, a parama);
+  public abstract void a(Activity paramActivity, b paramb, a parama);
   
-  public abstract boolean a(Activity paramActivity, b.b paramb);
+  public abstract boolean a(Activity paramActivity, b paramb);
   
-  public abstract void aV(Activity paramActivity);
+  public abstract void asE(int paramInt);
   
-  public abstract void amN(int paramInt);
+  public abstract void bA(Activity paramActivity);
   
-  public abstract void b(Activity paramActivity, int paramInt1, int paramInt2);
+  public abstract void c(Activity paramActivity, int paramInt1, int paramInt2);
   
-  public abstract void e(Activity paramActivity, Intent paramIntent, int paramInt);
+  public abstract void h(Activity paramActivity, Intent paramIntent, int paramInt);
   
-  public abstract b.b gNk();
+  public abstract boolean imA();
   
-  public abstract boolean gNl();
+  public abstract boolean imB();
   
-  public abstract boolean gNm();
+  public abstract b imz();
   
   public abstract void init();
   
-  public abstract void m(Activity paramActivity, int paramInt);
+  public abstract void o(Activity paramActivity, int paramInt);
   
-  public abstract void n(Activity paramActivity, int paramInt);
+  public abstract void p(Activity paramActivity, int paramInt);
   
-  public abstract void n(Activity paramActivity, Intent paramIntent);
+  public abstract void t(Activity paramActivity, Intent paramIntent);
   
   public static abstract interface a {}
+  
+  public static abstract interface b
+  {
+    public abstract boolean bB(Activity paramActivity);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.a.b
  * JD-Core Version:    0.7.0.1
  */

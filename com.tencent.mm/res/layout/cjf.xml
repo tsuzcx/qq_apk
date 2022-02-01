@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/kiu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/kiv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <ListView android:id="@id/byv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:importantForAccessibility="no" />
+</LinearLayout>

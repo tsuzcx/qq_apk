@@ -1,75 +1,175 @@
 package androidx.recyclerview.widget;
 
+import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class x
+public abstract class x
+  extends RecyclerView.j
 {
-  static int a(RecyclerView.s params, u paramu, View paramView1, View paramView2, RecyclerView.LayoutManager paramLayoutManager, boolean paramBoolean)
+  private final RecyclerView.l bZo = new RecyclerView.l()
   {
-    AppMethodBeat.i(262769);
-    if ((paramLayoutManager.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null))
+    boolean cbf = false;
+    
+    public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
     {
-      AppMethodBeat.o(262769);
-      return 0;
+      AppMethodBeat.i(195065);
+      super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
+      if ((paramAnonymousInt == 0) && (this.cbf))
+      {
+        this.cbf = false;
+        x.this.KX();
+      }
+      AppMethodBeat.o(195065);
     }
-    if (!paramBoolean)
+    
+    public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      i = Math.abs(paramLayoutManager.getPosition(paramView1) - paramLayoutManager.getPosition(paramView2));
-      AppMethodBeat.o(262769);
-      return i + 1;
+      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
+        this.cbf = true;
+      }
     }
-    int i = paramu.ba(paramView2);
-    int j = paramu.aZ(paramView1);
-    i = Math.min(paramu.kV(), i - j);
-    AppMethodBeat.o(262769);
-    return i;
+  };
+  private Scroller cbe;
+  RecyclerView mRecyclerView;
+  
+  final void KX()
+  {
+    if (this.mRecyclerView == null) {}
+    Object localObject;
+    do
+    {
+      View localView;
+      do
+      {
+        do
+        {
+          return;
+          localObject = this.mRecyclerView.getLayoutManager();
+        } while (localObject == null);
+        localView = a((RecyclerView.LayoutManager)localObject);
+      } while (localView == null);
+      localObject = a((RecyclerView.LayoutManager)localObject, localView);
+    } while ((localObject[0] == 0) && (localObject[1] == 0));
+    this.mRecyclerView.br(localObject[0], localObject[1]);
   }
   
-  static int a(RecyclerView.s params, u paramu, View paramView1, View paramView2, RecyclerView.LayoutManager paramLayoutManager, boolean paramBoolean1, boolean paramBoolean2)
+  public abstract int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2);
+  
+  public abstract View a(RecyclerView.LayoutManager paramLayoutManager);
+  
+  public void a(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(262768);
-    if ((paramLayoutManager.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null))
+    if (this.mRecyclerView == paramRecyclerView) {}
+    do
     {
-      AppMethodBeat.o(262768);
-      return 0;
+      return;
+      if (this.mRecyclerView != null)
+      {
+        this.mRecyclerView.b(this.bZo);
+        this.mRecyclerView.setOnFlingListener(null);
+      }
+      this.mRecyclerView = paramRecyclerView;
+    } while (this.mRecyclerView == null);
+    if (this.mRecyclerView.getOnFlingListener() != null) {
+      throw new IllegalStateException("An instance of OnFlingListener already set.");
     }
-    int i = Math.min(paramLayoutManager.getPosition(paramView1), paramLayoutManager.getPosition(paramView2));
-    int j = Math.max(paramLayoutManager.getPosition(paramView1), paramLayoutManager.getPosition(paramView2));
-    if (paramBoolean2) {}
-    for (i = Math.max(0, params.getItemCount() - j - 1); !paramBoolean1; i = Math.max(0, i))
-    {
-      AppMethodBeat.o(262768);
-      return i;
-    }
-    j = Math.abs(paramu.ba(paramView2) - paramu.aZ(paramView1));
-    int k = Math.abs(paramLayoutManager.getPosition(paramView1) - paramLayoutManager.getPosition(paramView2));
-    float f = j / (k + 1);
-    i = Math.round(i * f + (paramu.kT() - paramu.aZ(paramView1)));
-    AppMethodBeat.o(262768);
-    return i;
+    this.mRecyclerView.a(this.bZo);
+    this.mRecyclerView.setOnFlingListener(this);
+    this.cbe = new Scroller(this.mRecyclerView.getContext(), new DecelerateInterpolator());
+    KX();
   }
   
-  static int b(RecyclerView.s params, u paramu, View paramView1, View paramView2, RecyclerView.LayoutManager paramLayoutManager, boolean paramBoolean)
+  public abstract int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView);
+  
+  public final boolean bC(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(262770);
-    if ((paramLayoutManager.getChildCount() == 0) || (params.getItemCount() == 0) || (paramView1 == null) || (paramView2 == null))
+    RecyclerView.LayoutManager localLayoutManager = this.mRecyclerView.getLayoutManager();
+    if (localLayoutManager == null) {}
+    for (;;)
     {
-      AppMethodBeat.o(262770);
-      return 0;
+      return false;
+      if (this.mRecyclerView.getAdapter() != null)
+      {
+        int i = this.mRecyclerView.getMinFlingVelocity();
+        if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
+        {
+          if (!(localLayoutManager instanceof RecyclerView.r.b)) {
+            paramInt1 = 0;
+          }
+          while (paramInt1 != 0)
+          {
+            return true;
+            RecyclerView.r localr = g(localLayoutManager);
+            if (localr == null)
+            {
+              paramInt1 = 0;
+            }
+            else
+            {
+              paramInt1 = a(localLayoutManager, paramInt1, paramInt2);
+              if (paramInt1 == -1)
+              {
+                paramInt1 = 0;
+              }
+              else
+              {
+                localr.cag = paramInt1;
+                localLayoutManager.startSmoothScroll(localr);
+                paramInt1 = 1;
+              }
+            }
+          }
+        }
+      }
     }
-    if (!paramBoolean)
+  }
+  
+  public final int[] bI(int paramInt1, int paramInt2)
+  {
+    this.cbe.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+    return new int[] { this.cbe.getFinalX(), this.cbe.getFinalY() };
+  }
+  
+  @Deprecated
+  protected o f(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    if (!(paramLayoutManager instanceof RecyclerView.r.b)) {
+      return null;
+    }
+    new o(this.mRecyclerView.getContext())
     {
-      i = params.getItemCount();
-      AppMethodBeat.o(262770);
-      return i;
-    }
-    int i = paramu.ba(paramView2);
-    int j = paramu.aZ(paramView1);
-    int k = Math.abs(paramLayoutManager.getPosition(paramView1) - paramLayoutManager.getPosition(paramView2));
-    i = (int)((i - j) / (k + 1) * params.getItemCount());
-    AppMethodBeat.o(262770);
-    return i;
+      protected final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
+      {
+        AppMethodBeat.i(195069);
+        if (x.this.mRecyclerView == null)
+        {
+          AppMethodBeat.o(195069);
+          return;
+        }
+        paramAnonymousView = x.this.a(x.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
+        int i = paramAnonymousView[0];
+        int j = paramAnonymousView[1];
+        int k = fO(Math.max(Math.abs(i), Math.abs(j)));
+        if (k > 0) {
+          paramAnonymousa.a(i, j, k, this.bXY);
+        }
+        AppMethodBeat.o(195069);
+      }
+      
+      protected final float c(DisplayMetrics paramAnonymousDisplayMetrics)
+      {
+        return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
+      }
+    };
+  }
+  
+  protected RecyclerView.r g(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    return f(paramLayoutManager);
   }
 }
 

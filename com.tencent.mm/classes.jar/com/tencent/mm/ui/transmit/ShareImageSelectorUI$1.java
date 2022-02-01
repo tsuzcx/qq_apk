@@ -15,16 +15,16 @@ final class ShareImageSelectorUI$1
   {
     AppMethodBeat.i(39454);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/transmit/ShareImageSelectorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    ShareImageSelectorUI.a(this.XYR);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/transmit/ShareImageSelectorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ShareImageSelectorUI.a(this.afPC);
     a.a(this, "com/tencent/mm/ui/transmit/ShareImageSelectorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(39454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.ShareImageSelectorUI.1
  * JD-Core Version:    0.7.0.1
  */

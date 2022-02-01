@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="center_horizontal" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/wn" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bca" android:contentDescription="@string/ty" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/ipp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/bz4" android:singleLine="true" android:shadowColor="#99000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="10.0" />
-        </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/cm3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@color/lw" android:scaleType="centerCrop" />
+        <ImageView android:background="@drawable/pu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
-</merge>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/jcx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:src="@drawable/bj2" android:contentDescription="@string/ccr" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cfa" />
+    </LinearLayout>
+    <LinearLayout android:background="@null" style="@style/r8">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/i8v" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ListView android:id="@id/cmh" android:background="@null" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:cacheColorHint="#00000000" android:divider="@drawable/ry" android:dividerHeight="0.0dip" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:overScrollHeader="@null" android:overScrollFooter="@android:color/transparent" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <RelativeLayout android:id="@id/hif" android:padding="@dimen/m2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/m4" android:gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/cf_" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mm.plugin.exdevice.ui.ExdeviceRankChampionInfoView android:id="@id/az7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</RelativeLayout>

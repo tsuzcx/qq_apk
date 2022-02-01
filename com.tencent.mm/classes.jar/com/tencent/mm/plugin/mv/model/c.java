@@ -1,63 +1,67 @@
 package com.tencent.mm.plugin.mv.model;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.att;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.ayl;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/FinderFeedDetailCache;", "", "response", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "timestamp", "", "(Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;J)V", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "getTimestamp", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/FinderFeedDetailCache;", "", "response", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "timestamp", "", "(Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;J)V", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "getTimestamp", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  final att GaS;
+  final ayl LWS;
   final long timestamp;
   
-  public c(att paramatt, long paramLong)
+  public c(ayl paramayl, long paramLong)
   {
-    AppMethodBeat.i(242727);
-    this.GaS = paramatt;
+    AppMethodBeat.i(286085);
+    this.LWS = paramayl;
     this.timestamp = paramLong;
-    AppMethodBeat.o(242727);
+    AppMethodBeat.o(286085);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(242735);
-    if (this != paramObject)
+    AppMethodBeat.i(286110);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof c))
-      {
-        paramObject = (c)paramObject;
-        if ((!p.h(this.GaS, paramObject.GaS)) || (this.timestamp != paramObject.timestamp)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(242735);
+      AppMethodBeat.o(286110);
       return true;
     }
-    AppMethodBeat.o(242735);
-    return false;
+    if (!(paramObject instanceof c))
+    {
+      AppMethodBeat.o(286110);
+      return false;
+    }
+    paramObject = (c)paramObject;
+    if (!s.p(this.LWS, paramObject.LWS))
+    {
+      AppMethodBeat.o(286110);
+      return false;
+    }
+    if (this.timestamp != paramObject.timestamp)
+    {
+      AppMethodBeat.o(286110);
+      return false;
+    }
+    AppMethodBeat.o(286110);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(242732);
-    att localatt = this.GaS;
-    if (localatt != null) {}
-    for (int i = localatt.hashCode();; i = 0)
-    {
-      long l = this.timestamp;
-      int j = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(242732);
-      return i * 31 + j;
-    }
+    AppMethodBeat.i(286104);
+    int i = this.LWS.hashCode();
+    int j = q.a..ExternalSyntheticBackport0.m(this.timestamp);
+    AppMethodBeat.o(286104);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(242728);
-    String str = "FinderFeedDetailCache(response=" + this.GaS + ", timestamp=" + this.timestamp + ")";
-    AppMethodBeat.o(242728);
+    AppMethodBeat.i(286094);
+    String str = "FinderFeedDetailCache(response=" + this.LWS + ", timestamp=" + this.timestamp + ')';
+    AppMethodBeat.o(286094);
     return str;
   }
 }

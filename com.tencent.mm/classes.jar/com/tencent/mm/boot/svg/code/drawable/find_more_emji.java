@@ -84,7 +84,7 @@ public class find_more_emji
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.find_more_emji
  * JD-Core Version:    0.7.0.1
  */

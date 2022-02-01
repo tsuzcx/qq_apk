@@ -1,11 +1,9 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.c;
+import com.tencent.mm.autogen.b.c;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class a
   extends c
@@ -15,45 +13,7 @@ public final class a
   static
   {
     AppMethodBeat.i(153150);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[8];
-    localMAutoDBInfo.columns = new String[9];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "abtestkey";
-    localMAutoDBInfo.colsMap.put("abtestkey", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" abtestkey TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "abtestkey";
-    localMAutoDBInfo.columns[1] = "value";
-    localMAutoDBInfo.colsMap.put("value", "TEXT");
-    localStringBuilder.append(" value TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "expId";
-    localMAutoDBInfo.colsMap.put("expId", "TEXT");
-    localStringBuilder.append(" expId TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "sequence";
-    localMAutoDBInfo.colsMap.put("sequence", "LONG");
-    localStringBuilder.append(" sequence LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "prioritylevel";
-    localMAutoDBInfo.colsMap.put("prioritylevel", "INTEGER");
-    localStringBuilder.append(" prioritylevel INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "startTime";
-    localMAutoDBInfo.colsMap.put("startTime", "LONG");
-    localStringBuilder.append(" startTime LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "endTime";
-    localMAutoDBInfo.colsMap.put("endTime", "LONG");
-    localStringBuilder.append(" endTime LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "noReport";
-    localMAutoDBInfo.colsMap.put("noReport", "INTEGER");
-    localStringBuilder.append(" noReport INTEGER");
-    localMAutoDBInfo.columns[8] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = c.aJm();
     AppMethodBeat.o(153150);
   }
   
@@ -77,7 +37,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.a
  * JD-Core Version:    0.7.0.1
  */

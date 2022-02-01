@@ -1,11 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h8z" android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="@dimen/i6"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/eq9" android:background="@drawable/bpa" android:visibility="gone" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/k5" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="@dimen/i6" android:layout_marginLeft="@dimen/ir" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/eb0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/eaz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item price]" android:singleLine="true" />
-        <TextView android:textSize="@dimen/ka" android:textColor="@color/wx" android:id="@id/eay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item desc]" android:singleLine="true" />
-    </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hi2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:src="@raw/radio_on" android:scaleType="fitXY" app:iconColor="#ff1aad19" />
-</LinearLayout>
+<com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iw" android:src="@raw/icons_outlined_qrcode" app:iconColor="@color/FG_1"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

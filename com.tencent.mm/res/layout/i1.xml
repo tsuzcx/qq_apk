@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hi" android:layout_marginRight="@dimen/hs">
-        <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/hu" android:src="@drawable/bry" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/hs">
-        <TextView android:textSize="18.0dip" android:textColor="@color/a2x" android:id="@id/zf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_o" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/zg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i2" android:text="@string/a_p" />
-    </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+<LinearLayout android:orientation="vertical" android:id="@id/a5z" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ScrollView android:id="@id/a60" android:background="@color/a" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
+            <LinearLayout android:orientation="vertical" android:id="@id/a61" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.mm.wallet_core.ui.WcPayBannerView android:id="@id/ll5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="15.0dip" />
+                <LinearLayout android:id="@id/a62" android:background="@drawable/eo" android:focusable="true" android:focusableInTouchMode="true" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:dividerPadding="20.0dip" style="@style/a0o">
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/aiu" android:background="@null" android:minHeight="58.0dip" wallet:contentHint="@string/ahu" wallet:contentTextColor="@color/a7b" wallet:encryptType="kh9" wallet:infoIvColorRes="@color/Brand_100" wallet:infoIvRes="@raw/bank_remit_history" wallet:infoIvVisibility="l_6" wallet:titleText="@string/ahw" style="@style/fd" />
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/ait" android:background="@null" android:minHeight="58.0dip" wallet:contentHint="@string/ahs" wallet:titleText="@string/aht" style="@style/zt" />
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/ais" android:background="@drawable/ep" android:minHeight="58.0dip" wallet:contentHint="@string/ahq" wallet:contentTextColor="@color/a7b" wallet:infoIvRes="@raw/bank_remit_arrow" wallet:layoutRes="@layout/i0" wallet:titleText="@string/ahr" style="@style/hj" />
+                    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/air" android:background="@drawable/ep" android:visibility="gone" android:minHeight="58.0dip" wallet:contentTextColor="@color/a7b" wallet:infoIvRes="@raw/bank_remit_arrow" wallet:titleText="@string/ahx" style="@style/hj" />
+                </LinearLayout>
+                <Button android:id="@id/aiv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="15.0dip" android:text="@string/ahp" style="@style/og" />
+            </LinearLayout>
+        </ScrollView>
+        <include android:layout_gravity="bottom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+        <ListView android:id="@id/h_h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="78.0dip" android:layout_marginRight="15.0dip" />
+    </FrameLayout>
 </LinearLayout>

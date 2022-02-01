@@ -1,78 +1,79 @@
 package com.tencent.mm.plugin.game.chatroom.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.game.autogen.chatroom.ExportExternInfo;
-import com.tencent.mm.plugin.game.autogen.chatroom.JoinChatroomRequest;
-import com.tencent.mm.plugin.game.autogen.chatroom.JoinChatroomResponse;
-import com.tencent.mm.plugin.game.autogen.chatroom.Lbs;
+import com.tencent.mm.plugin.game.autogen.chatroom.GetMyChatroomRequest;
+import com.tencent.mm.plugin.game.autogen.chatroom.GetMyChatroomResponse;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.List;
 
 public final class i
-  extends q
+  extends p
   implements m
 {
-  private boolean Cux;
-  private long Cuy;
-  private long Cuz;
-  private com.tencent.mm.an.i callback;
-  public final com.tencent.mm.an.d jTk;
+  public int DD;
+  private h callback;
+  public final c mtC;
   
-  public i(String paramString, Lbs paramLbs, boolean paramBoolean, long paramLong1, long paramLong2)
+  public i(List<String> paramList, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211981);
-    Object localObject = new com.tencent.mm.an.d.a();
-    ((com.tencent.mm.an.d.a)localObject).lBU = new JoinChatroomRequest();
-    ((com.tencent.mm.an.d.a)localObject).lBV = new JoinChatroomResponse();
-    ((com.tencent.mm.an.d.a)localObject).uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/joinchatroom";
-    ((com.tencent.mm.an.d.a)localObject).funcId = getType();
-    ((com.tencent.mm.an.d.a)localObject).lBW = 0;
-    ((com.tencent.mm.an.d.a)localObject).respCmdId = 0;
-    this.Cux = paramBoolean;
-    this.Cuy = paramLong1;
-    this.Cuz = paramLong2;
-    this.jTk = ((com.tencent.mm.an.d.a)localObject).bgN();
-    localObject = (JoinChatroomRequest)d.b.b(this.jTk.lBR);
-    ((JoinChatroomRequest)localObject).chatroom_name = paramString;
-    if (paramLbs != null) {
-      ((JoinChatroomRequest)localObject).lbs_info = paramLbs;
-    }
-    paramString = new ExportExternInfo();
-    paramString.sourceid = paramLong2;
-    paramString.ssid = paramLong1;
-    ((JoinChatroomRequest)localObject).extern_info = paramString;
-    AppMethodBeat.o(211981);
+    AppMethodBeat.i(275795);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new GetMyChatroomRequest();
+    ((c.a)localObject).otF = new GetMyChatroomResponse();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/getmychatroom";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    ((c.a)localObject).longPolling = true;
+    ((c.a)localObject).longPollingTimeout = 25000;
+    this.DD = paramInt2;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (GetMyChatroomRequest)c.b.b(this.mtC.otB);
+    Util.isNullOrNil(paramList);
+    ((GetMyChatroomRequest)localObject).first_chatroom_name = paramString1;
+    ((GetMyChatroomRequest)localObject).version = paramString2;
+    ((GetMyChatroomRequest)localObject).scene_type = paramInt1;
+    Log.i("GameChatRoom.CgiGetMyChatRoom", "request params, version:%s, scene:%d", new Object[] { paramString2, Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(275795);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(211982);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
-    AppMethodBeat.o(211982);
+    AppMethodBeat.i(275812);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
+    AppMethodBeat.o(275812);
     return i;
+  }
+  
+  public final GetMyChatroomResponse fCB()
+  {
+    AppMethodBeat.i(275826);
+    GetMyChatroomResponse localGetMyChatroomResponse = (GetMyChatroomResponse)c.c.b(this.mtC.otC);
+    AppMethodBeat.o(275826);
+    return localGetMyChatroomResponse;
   }
   
   public final int getType()
   {
-    return 4897;
+    return 4989;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(211983);
-    Log.i("GameChatRoom.CgiJoinChatRoom", "errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (this.Cux))
-    {
-      params = com.tencent.mm.game.report.d.jTj;
-      com.tencent.mm.game.report.d.a.b(1L, 14L, 0L, this.Cuy, this.Cuz);
-    }
+    AppMethodBeat.i(275817);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(211983);
+    AppMethodBeat.o(275817);
   }
 }
 

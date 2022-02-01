@@ -1,123 +1,175 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.net.Uri;
+import android.content.Context;
+import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.l;
-import org.xwalk.core.Log;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/util/WebViewLongClickReportHelper;", "", "()V", "currentOpResult", "", "getCurrentOpResult", "()I", "setCurrentOpResult", "(I)V", "getA8KeyScene", "getGetA8KeyScene", "setGetA8KeyScene", "hasQrCode", "", "getHasQrCode", "()Z", "setHasQrCode", "(Z)V", "imageId", "", "getImageId", "()Ljava/lang/String;", "setImageId", "(Ljava/lang/String;)V", "opScene", "getOpScene", "setOpScene", "scanResult", "getScanResult", "setScanResult", "scanType", "getScanType", "setScanType", "startLongClickTime", "", "getStartLongClickTime", "()J", "setStartLongClickTime", "(J)V", "url", "getUrl", "setUrl", "initScanType", "", "codeType", "report", "opResult", "reset", "Companion", "webview-sdk_release"})
 public final class m
 {
-  public static final a QAp;
-  private static final String TAG = "MicroMsg.WebViewLongClickReportHelper";
-  public String EKt = "";
-  private long QAk;
-  public boolean QAl;
-  private int QAm;
-  private String QAn = "";
-  private int QAo = -1;
-  public int gco;
-  public String scanResult = "";
-  public String url = "";
-  
-  static
+  public static void Jf(boolean paramBoolean)
   {
-    AppMethodBeat.i(177336);
-    QAp = new a((byte)0);
-    TAG = "MicroMsg.WebViewLongClickReportHelper";
-    AppMethodBeat.o(177336);
+    AppMethodBeat.i(160473);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WebViewFontUtil", 2);
+    localMultiProcessMMKV.putBoolean("webview_key_font_use_system", paramBoolean);
+    localMultiProcessMMKV.apply();
+    AppMethodBeat.o(160473);
   }
   
-  public final void apf(int paramInt)
+  public static int a(Context paramContext, e parame, String paramString)
   {
-    if (paramInt == 22) {}
-    for (String str = "WX_CODE";; str = "QR_CODE")
+    AppMethodBeat.i(82379);
+    try
     {
-      this.QAn = str;
-      return;
-    }
-  }
-  
-  public final void fs(int paramInt)
-  {
-    AppMethodBeat.i(177334);
-    this.QAm = paramInt;
-    this.QAk = System.currentTimeMillis();
-    AppMethodBeat.o(177334);
-  }
-  
-  public final void rE(int paramInt)
-  {
-    AppMethodBeat.i(177335);
-    if (this.QAo > 0)
-    {
-      AppMethodBeat.o(177335);
-      return;
-    }
-    this.QAo = paramInt;
-    long l2 = System.currentTimeMillis() - this.QAk;
-    long l1;
-    if (l2 >= 0L)
-    {
-      l1 = l2;
-      if (l2 <= 86400000L) {}
-    }
-    else
-    {
-      l1 = 0L;
-    }
-    h localh = h.IzE;
-    String str1 = ab.aXb(this.url);
-    String str2 = a.apQ(this.url);
-    if (this.QAl) {}
-    for (int i = 1;; i = 0)
-    {
-      localh.a(19208, new Object[] { str1, str2, Integer.valueOf(i), Integer.valueOf(this.gco), Integer.valueOf(this.QAm), Long.valueOf(l1), ab.aXb(this.scanResult), this.QAn, Integer.valueOf(paramInt), this.EKt });
-      AppMethodBeat.o(177335);
-      return;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/util/WebViewLongClickReportHelper$Companion;", "", "()V", "TAG", "", "opResultCancel", "", "opResultFav", "opResultRecQrCode", "opResultSavePic", "opResultSendToFriend", "opResultSoso", "opResultTranslate", "getUrlId", "url", "webview-sdk_release"})
-  public static final class a
-  {
-    public static String apQ(String paramString)
-    {
-      AppMethodBeat.i(177333);
-      if (paramString == null)
+      localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WebViewFontUtil", 2);
+      bool = localMultiProcessMMKV.getBoolean("webview_key_font_use_system", false);
+      Log.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
+      if (bool)
       {
-        AppMethodBeat.o(177333);
-        return "";
+        i = lg(paramContext);
+        AppMethodBeat.o(82379);
+        return i;
       }
-      String str;
-      long l;
-      int i;
-      try
+      bool = localMultiProcessMMKV.getBoolean("webview_key_font_has_set", false);
+      if ((!Util.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.Wuh.matcher(paramString).matches()))
       {
-        paramString = Uri.parse(paramString);
-        str = paramString.getQueryParameter("__biz");
-        l = Util.getLong(paramString.getQueryParameter("mid"), 0L);
-        i = Util.getInt(paramString.getQueryParameter("idx"), 0);
-        if ((Util.isNullOrNil(str)) || (l < 0L))
-        {
-          AppMethodBeat.o(177333);
-          return "";
+        j = parame.no(16388, 2);
+        if ((j == 2) && (!bool)) {
+          i = j;
         }
       }
-      catch (Exception paramString)
-      {
-        Log.e(m.access$getTAG$cp(), "getUrlId ex " + paramString.getMessage());
-        AppMethodBeat.o(177333);
-        return "";
-      }
-      paramString = "id://local/i.html?__biz=" + str + "&mid=" + l + "&idx=" + i;
-      Log.d(m.access$getTAG$cp(), "urlId=".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(177333);
-      return paramString;
     }
+    catch (Exception paramContext)
+    {
+      MultiProcessMMKV localMultiProcessMMKV;
+      boolean bool;
+      int j;
+      int k;
+      i = 2;
+    }
+    try
+    {
+      j = lg(paramContext);
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    catch (Exception paramContext)
+    {
+      break label312;
+    }
+    int i = j;
+    bool = localMultiProcessMMKV.getBoolean("webview_key_has_transfer_mp", false);
+    if (bool)
+    {
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    k = avc(j);
+    i = j;
+    localMultiProcessMMKV.putBoolean("webview_key_has_transfer_mp", true);
+    i = j;
+    parame.np(16388, k);
+    AppMethodBeat.o(82379);
+    return k;
+    j = parame.no(16384, 2);
+    if ((j == 2) && (!bool))
+    {
+      i = j;
+      j = lg(paramContext);
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    bool = localMultiProcessMMKV.getBoolean("webview_key_has_transfer_reader", false);
+    if (bool)
+    {
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    k = avc(j);
+    i = j;
+    localMultiProcessMMKV.putBoolean("webview_key_has_transfer_reader", true);
+    i = j;
+    parame.np(16384, k);
+    AppMethodBeat.o(82379);
+    return k;
+    label312:
+    Log.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
+    AppMethodBeat.o(82379);
+    return i;
+  }
+  
+  private static int avc(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 4;
+    }
+    if (paramInt == 4) {
+      return 6;
+    }
+    return 2;
+  }
+  
+  public static int lg(Context paramContext)
+  {
+    AppMethodBeat.i(82380);
+    float f = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("current_text_size_scale_key", 1.0F);
+    if ((f == com.tencent.mm.cd.a.mc(paramContext)) || (f == 0.8F))
+    {
+      AppMethodBeat.o(82380);
+      return 1;
+    }
+    if ((f == com.tencent.mm.cd.a.md(paramContext)) || (f == 1.0F))
+    {
+      AppMethodBeat.o(82380);
+      return 2;
+    }
+    if ((f == com.tencent.mm.cd.a.me(paramContext)) || (f == 1.1F))
+    {
+      AppMethodBeat.o(82380);
+      return 3;
+    }
+    if ((f == com.tencent.mm.cd.a.mf(paramContext)) || (f == 1.12F))
+    {
+      AppMethodBeat.o(82380);
+      return 4;
+    }
+    if ((f == com.tencent.mm.cd.a.mg(paramContext)) || (f == 1.125F))
+    {
+      AppMethodBeat.o(82380);
+      return 5;
+    }
+    if ((f == com.tencent.mm.cd.a.mh(paramContext)) || (f == 1.4F))
+    {
+      AppMethodBeat.o(82380);
+      return 6;
+    }
+    if ((f == com.tencent.mm.cd.a.mi(paramContext)) || (f == 1.55F))
+    {
+      AppMethodBeat.o(82380);
+      return 7;
+    }
+    if ((f == com.tencent.mm.cd.a.mj(paramContext)) || (f == 1.65F))
+    {
+      AppMethodBeat.o(82380);
+      return 8;
+    }
+    AppMethodBeat.o(82380);
+    return 2;
   }
 }
 

@@ -8,66 +8,66 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.widget.input.af;
 import com.tencent.mm.plugin.appbrand.widget.input.k.a;
 
 public final class c
 {
-  final af ryS;
-  final e ryT;
-  public final k.a rzf;
-  public ad rzg;
-  int rzh;
-  boolean rzi;
+  final af uJV;
+  final e uJW;
+  public final k.a uKi;
+  public ad uKj;
+  int uKk;
+  boolean uKl;
   
   c(af paramaf, e parame)
   {
     AppMethodBeat.i(136641);
-    this.rzf = new k.a()
+    this.uKi = new k.a()
     {
-      public final void coC()
+      public final void cRe()
       {
         AppMethodBeat.i(136637);
-        c.this.rzh = -2147483648;
-        c.this.DV(3);
+        c.this.uKk = -2147483648;
+        c.this.Ev(3);
         AppMethodBeat.o(136637);
       }
       
-      public final void coD()
+      public final void cRf()
       {
         AppMethodBeat.i(136638);
-        c.this.rzh = -2147483648;
-        c.this.DV(3);
+        c.this.uKk = -2147483648;
+        c.this.Ev(3);
         AppMethodBeat.o(136638);
       }
     };
-    this.rzh = -2147483648;
-    this.rzi = false;
-    this.ryS = paramaf;
-    this.ryT = parame;
+    this.uKk = -2147483648;
+    this.uKl = false;
+    this.uJV = paramaf;
+    this.uJW = parame;
     AppMethodBeat.o(136641);
   }
   
-  final void DV(final int paramInt)
+  final void Ev(final int paramInt)
   {
     AppMethodBeat.i(136642);
-    final AutoFillListPopupWindowBase.a locala = this.ryT.rzm;
+    final AutoFillListPopupWindowBase.a locala = this.uJW.uKp;
     if (locala == null)
     {
       AppMethodBeat.o(136642);
       return;
     }
-    if (!this.ryT.ty.isShowing())
+    if (!this.uJW.ux.isShowing())
     {
       AppMethodBeat.o(136642);
       return;
     }
-    if ((1 == paramInt) && (this.rzi))
+    if ((1 == paramInt) && (this.uKl))
     {
-      this.rzh = -2147483648;
-      this.rzi = false;
+      this.uKk = -2147483648;
+      this.uKl = false;
     }
     locala.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
     {
@@ -76,17 +76,17 @@ public final class c
         AppMethodBeat.i(136640);
         locala.getViewTreeObserver().removeOnPreDrawListener(this);
         c localc = c.this;
-        if ((!localc.ryT.ty.isShowing()) || (localc.ryT.rzm == null) || (localc.ryT.rzm.getAdapter() == null) || (localc.ryT.rzm.getAdapter().getCount() <= 0)) {}
+        if ((!localc.uJW.ux.isShowing()) || (localc.uJW.uKp == null) || (localc.uJW.uKp.getAdapter() == null) || (localc.uJW.uKp.getAdapter().getCount() <= 0)) {}
         Object localObject;
         do
         {
           AppMethodBeat.o(136640);
           return true;
-          localObject = localc.ryS.getInputPanel();
+          localObject = localc.uJV.getInputPanel();
         } while (localObject == null);
-        int m = a.fromDPToPix(localc.ryS.getContext(), 8);
-        int n = localc.ryT.rzm.getChildAt(0).getHeight();
-        int i = localc.ryT.rzm.getAdapter().getCount() * n;
+        int m = a.fromDPToPix(localc.uJV.getContext(), 8);
+        int n = localc.uJW.uKp.getChildAt(0).getHeight();
+        int i = localc.uJW.uKp.getAdapter().getCount() * n;
         int k = i + m * 2;
         int j = n * 3 + m * 2;
         if (k > j) {
@@ -94,47 +94,47 @@ public final class c
         }
         for (;;)
         {
-          localc.ryT.sZ = j;
+          localc.uJW.tY = j;
           int[] arrayOfInt = new int[2];
-          localc.ryS.getView().getLocationInWindow(arrayOfInt);
+          localc.uJV.getView().getLocationInWindow(arrayOfInt);
           j = arrayOfInt[1];
-          j = localc.ryS.getView().getHeight() + j;
+          j = localc.uJV.getView().getHeight() + j;
           ((View)localObject).getLocationInWindow(arrayOfInt);
           k = arrayOfInt[1];
           label249:
-          if (((localc.rzh == -2147483648) || (localc.rzh >= 0 - m)) && (k - j >= i + m))
+          if (((localc.uKk == -2147483648) || (localc.uKk >= 0 - m)) && (k - j >= i + m))
           {
-            localc.ryT.tl = localc.ryS.getView();
-            localc.ryT.sZ = (m * 2 + i);
-            localc.ryT.ah(0 - m);
-            localc.ryT.show();
-            localObject = localc.ryT;
-            if (((AutoFillListPopupWindowBase)localObject).td) {
+            localc.uJW.ul = localc.uJV.getView();
+            localc.uJW.tY = (m * 2 + i);
+            localc.uJW.ad(0 - m);
+            localc.uJW.show();
+            localObject = localc.uJW;
+            if (((AutoFillListPopupWindowBase)localObject).uc) {
               break label539;
             }
           }
           label325:
-          for (i = 0;; i = ((AutoFillListPopupWindowBase)localObject).tb)
+          for (i = 0;; i = ((AutoFillListPopupWindowBase)localObject).ua)
           {
-            localc.rzh = i;
+            localc.uKk = i;
             break;
-            if (j - localc.ryS.getView().getHeight() >= i)
+            if (j - localc.uJV.getView().getHeight() >= i)
             {
-              localc.ryT.tl = localc.ryS.getView();
-              localc.ryT.sZ = (m * 2 + i);
-              localc.ryT.ah(-(i + m) - localc.ryS.getView().getHeight());
+              localc.uJW.ul = localc.uJV.getView();
+              localc.uJW.tY = (m * 2 + i);
+              localc.uJW.ad(-(i + m) - localc.uJV.getView().getHeight());
               break label325;
             }
             if (i <= n)
             {
-              localc.ryT.sZ = n;
-              localc.ryT.tl = localc.ryS.getView();
-              if (localc.rzh < 0 - m)
+              localc.uJW.tY = n;
+              localc.uJW.ul = localc.uJV.getView();
+              if (localc.uKk < 0 - m)
               {
-                localc.ryT.ah(-(i + m) - localc.ryS.getView().getHeight());
+                localc.uJW.ad(-(i + m) - localc.uJV.getView().getHeight());
                 break label325;
               }
-              localc.ryT.ah(0 - m);
+              localc.uJW.ad(0 - m);
               break label325;
             }
             i -= n;
@@ -150,7 +150,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="@color/ac_" android:endColor="@color/u_" android:angle="270.0" />
-    <corners android:radius="@dimen/x2" android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="@dimen/x2" android:bottomRightRadius="@dimen/x2" />
-</shape>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="@dimen/df" android:bottomRightRadius="@dimen/df" />
+            <solid android:color="@color/a1e" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:bottomLeftRadius="@dimen/df" android:bottomRightRadius="@dimen/df" />
+            <solid android:color="@color/f" />
+        </shape>
+    </item>
+</selector>

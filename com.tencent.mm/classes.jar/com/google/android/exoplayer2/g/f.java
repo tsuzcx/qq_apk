@@ -5,29 +5,29 @@ import com.google.android.exoplayer2.source.q;
 
 public abstract interface f
 {
-  public abstract void ai(long paramLong);
+  public abstract int Tq();
   
-  public abstract Format fm(int paramInt);
+  public abstract Object Tr();
   
-  public abstract int fn(int paramInt);
+  public abstract q Uc();
   
-  public abstract int fo(int paramInt);
+  public abstract Format Ud();
+  
+  public abstract int Ue();
+  
+  public abstract void cw(long paramLong);
+  
+  public abstract int es(int paramInt);
   
   public abstract int getSelectedIndex();
+  
+  public abstract Format iB(int paramInt);
+  
+  public abstract int iC(int paramInt);
   
   public abstract boolean k(int paramInt, long paramLong);
   
   public abstract int length();
-  
-  public abstract int tN();
-  
-  public abstract Object tO();
-  
-  public abstract Format uA();
-  
-  public abstract int uB();
-  
-  public abstract q uz();
   
   public static abstract interface a
   {

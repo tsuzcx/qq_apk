@@ -1,15 +1,10 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.kernel.c.a;
+import java.util.List;
 
 public abstract interface av
-  extends a
 {
-  public abstract void Gi(long paramLong);
-  
-  public abstract void beq();
-  
-  public abstract void x(String paramString, long paramLong);
+  public abstract List<au> getDataTransferList();
 }
 
 

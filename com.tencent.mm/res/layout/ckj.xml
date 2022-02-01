@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/km2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/czt" android:layout_width="@dimen/c3" android:layout_height="@dimen/c3" android:layout_marginTop="@dimen/a4u">
-        <TextView android:textSize="48.0dip" android:textColor="@color/am" android:layout_gravity="center_horizontal" android:id="@id/kkx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:layout_gravity="center_horizontal" android:id="@id/kso" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/ct" android:text="@string/jxh" />
-    </LinearLayout>
-</FrameLayout>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cr" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cr" android:layout_marginBottom="@dimen/d0" app:cornerRadius="@dimen/bv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditText android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_9" android:textColorHint="@color/BW_0_Alpha_0_3" android:gravity="center_vertical" android:id="@id/lwk" android:background="@color/BW_97" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:hint="@string/lr1" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/c15" android:padding="@dimen/df" android:layout_width="@dimen/d1" android:layout_height="@dimen/d1" android:src="@drawable/bxf" />
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

@@ -3,51 +3,73 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bob
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int SZd;
+  public int ZWu;
+  public int bitrate;
+  public int percent;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152541);
+    AppMethodBeat.i(258453);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).aY(1, this.SZd);
-      AppMethodBeat.o(152541);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.type);
+      paramVarArgs.bS(2, this.percent);
+      paramVarArgs.bS(3, this.ZWu);
+      paramVarArgs.bS(4, this.bitrate);
+      AppMethodBeat.o(258453);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.SZd);
-      AppMethodBeat.o(152541);
-      return paramInt + 0;
+      paramInt = i.a.a.b.b.a.cJ(1, this.type);
+      int i = i.a.a.b.b.a.cJ(2, this.percent);
+      int j = i.a.a.b.b.a.cJ(3, this.ZWu);
+      int k = i.a.a.b.b.a.cJ(4, this.bitrate);
+      AppMethodBeat.o(258453);
+      return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(152541);
+      AppMethodBeat.o(258453);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bob localbob = (bob)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(152541);
+        AppMethodBeat.o(258453);
         return -1;
+      case 1: 
+        localbob.type = locala.ajGk.aar();
+        AppMethodBeat.o(258453);
+        return 0;
+      case 2: 
+        localbob.percent = locala.ajGk.aar();
+        AppMethodBeat.o(258453);
+        return 0;
+      case 3: 
+        localbob.ZWu = locala.ajGk.aar();
+        AppMethodBeat.o(258453);
+        return 0;
       }
-      localbob.SZd = locala.abFh.AK();
-      AppMethodBeat.o(152541);
+      localbob.bitrate = locala.ajGk.aar();
+      AppMethodBeat.o(258453);
       return 0;
     }
-    AppMethodBeat.o(152541);
+    AppMethodBeat.o(258453);
     return -1;
   }
 }

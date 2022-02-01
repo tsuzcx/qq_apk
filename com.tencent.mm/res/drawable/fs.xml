@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="16.0dip" />
-            <solid android:color="@color/fm" />
-            <stroke android:width="2.0dip" android:color="@color/afz" />
-        </shape>
-    </item>
-    <item>
-        <inset android:inset="4.0dip">
-            <shape android:shape="rectangle">
-                <corners android:radius="12.0dip" />
-                <solid android:color="@color/fm" />
-                <stroke android:width="2.0dip" android:color="@color/afz" />
-            </shape>
-        </inset>
-    </item>
-</selector>
+    <size android:height="20.0dip" android:width="20.0dip" />
+    <solid android:color="#ffcccccc" />
+    <corners android:radius="10.0dip" />
+</shape>

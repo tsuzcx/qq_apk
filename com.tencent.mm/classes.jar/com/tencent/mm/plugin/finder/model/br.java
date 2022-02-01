@@ -2,47 +2,46 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.protocal.protobuf.bkr;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.epd;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderTopicInfoFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "topicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "type", "", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;I)V", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "getTopicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "getType", "()I", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderPoiRelateData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "info", "Lcom/tencent/mm/protocal/protobuf/RelativePoiInfo;", "(Lcom/tencent/mm/protocal/protobuf/RelativePoiInfo;)V", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/RelativePoiInfo;", "isCheck", "", "()Z", "setCheck", "(Z)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class br
-  implements bu
+  implements cc
 {
-  public final bkr fGc;
-  private final int type;
-  public boolean xUg;
+  public final epd EDy;
+  public boolean tGP;
   
-  public br(bkr parambkr, int paramInt)
+  public br(epd paramepd)
   {
-    AppMethodBeat.i(221485);
-    this.fGc = parambkr;
-    this.type = paramInt;
-    AppMethodBeat.o(221485);
+    AppMethodBeat.i(331887);
+    this.EDy = paramepd;
+    AppMethodBeat.o(331887);
   }
   
   public final int a(k paramk)
   {
-    AppMethodBeat.i(221483);
-    p.k(paramk, "obj");
-    if (((paramk instanceof br)) && (((br)paramk).fGc.xee == this.fGc.xee))
-    {
-      AppMethodBeat.o(221483);
-      return 0;
-    }
-    AppMethodBeat.o(221483);
+    AppMethodBeat.i(331909);
+    s.u(paramk, "obj");
+    AppMethodBeat.o(331909);
     return -1;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return this.type;
+    AppMethodBeat.i(331894);
+    long l = hashCode();
+    AppMethodBeat.o(331894);
+    return l;
   }
   
-  public final long mf()
+  public final int bZB()
   {
-    return this.fGc.xee;
+    AppMethodBeat.i(331902);
+    int i = br.class.getName().hashCode();
+    AppMethodBeat.o(331902);
+    return i;
   }
 }
 

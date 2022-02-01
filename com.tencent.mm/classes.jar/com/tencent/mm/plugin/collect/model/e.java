@@ -8,7 +8,7 @@ import java.util.Date;
 
 public final class e
 {
-  public static String IJ(int paramInt)
+  public static String Jm(int paramInt)
   {
     AppMethodBeat.i(63781);
     String str = String.format("%.2f", new Object[] { Double.valueOf(paramInt / 100.0D) });
@@ -39,7 +39,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.e
  * JD-Core Version:    0.7.0.1
  */

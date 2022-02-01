@@ -43,7 +43,7 @@ public class e
     return null;
   }
   
-  public Bitmap H(Bitmap paramBitmap)
+  public Bitmap P(Bitmap paramBitmap)
   {
     AppMethodBeat.i(176005);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -52,7 +52,7 @@ public class e
       return paramBitmap;
     }
     Object localObject = d.a(MMApplicationContext.getResources(), paramBitmap);
-    ((b)localObject).gB();
+    ((b)localObject).DL();
     localObject = drawableToBitmap((Drawable)localObject);
     if (localObject != paramBitmap) {
       paramBitmap.recycle();
@@ -68,7 +68,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

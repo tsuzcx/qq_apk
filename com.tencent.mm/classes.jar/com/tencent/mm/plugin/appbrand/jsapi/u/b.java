@@ -1,50 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils.TruncateAt;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.luggage.k.j;
-import com.tencent.luggage.wxa.c.a.a;
-import com.tencent.luggage.wxa.c.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.page.bb;
-import com.tencent.mm.plugin.appbrand.page.bh;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/JsApiNoticePerformanceMetrics;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends c<v>
+  extends c<g>
 {
-  private static final int CTRL_INDEX = 107;
-  private static final String NAME = "showActionSheet";
-  public static a plS;
+  @Deprecated
+  public static final int CTRL_INDEX = -2;
+  @Deprecated
+  public static final String NAME = "noticePerformanceMetrics";
+  private static final b.a spL;
   
-  public static abstract interface a
+  static
   {
-    public abstract void AH(int paramInt);
+    AppMethodBeat.i(325821);
+    spL = new b.a((byte)0);
+    AppMethodBeat.o(325821);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.b
  * JD-Core Version:    0.7.0.1
  */

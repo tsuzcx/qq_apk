@@ -13,178 +13,174 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.ui.a.d;
-import com.tencent.xweb.h.b;
-import kotlin.g.b.p;
-import kotlin.x;
+import com.tencent.mm.plugin.multitalk.ui.a.c;
+import com.tencent.mm.view.l;
+import com.tencent.xweb.j.b;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/MultiTalkStrokeLayout;", "", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "config", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "getConfig", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "setConfig", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "value", "", "currentPageIndex", "getCurrentPageIndex", "()I", "setCurrentPageIndex", "(I)V", "editorPlugin", "Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkScreenEditContainerPlugin;", "getEditorPlugin", "()Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkScreenEditContainerPlugin;", "setEditorPlugin", "(Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkScreenEditContainerPlugin;)V", "isShowEditContainer", "", "mCurrentPageHeight", "getMCurrentPageHeight", "setMCurrentPageHeight", "mCurrentPageWidth", "getMCurrentPageWidth", "setMCurrentPageWidth", "", "mCurrentScale", "setMCurrentScale", "(F)V", "mCurrentViewStatus", "Lcom/tencent/xweb/FileReaderXWeb$ViewStatus;", "getMCurrentViewStatus", "()Lcom/tencent/xweb/FileReaderXWeb$ViewStatus;", "setMCurrentViewStatus", "(Lcom/tencent/xweb/FileReaderXWeb$ViewStatus;)V", "mFilePath", "", "getMFilePath", "()Ljava/lang/String;", "setMFilePath", "(Ljava/lang/String;)V", "mStrokeLayout", "Landroid/widget/FrameLayout;", "getMStrokeLayout", "()Landroid/widget/FrameLayout;", "setMStrokeLayout", "(Landroid/widget/FrameLayout;)V", "mToken", "getMToken", "setMToken", "maxPageIndex", "getMaxPageIndex", "setMaxPageIndex", "onSwitchReaderPageCallback", "Lkotlin/Function1;", "", "getOnSwitchReaderPageCallback", "()Lkotlin/jvm/functions/Function1;", "setOnSwitchReaderPageCallback", "(Lkotlin/jvm/functions/Function1;)V", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "clearScreen", "doEnterDoodle", "getScreenBitmap", "canvas", "Landroid/graphics/Canvas;", "loadDoodle", "onViewStatusChange", "zoom", "transX", "transY", "refreshDoodleLayout", "isLand", "refreshEditLayout", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "callback", "Lkotlin/Function0;", "setDrawingEnable", "enable", "setView", "newScale", "left", "top", "needCorrect", "setXWeb", "show", "Companion", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/MultiTalkStrokeLayout;", "", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "config", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "getConfig", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "setConfig", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "value", "", "currentPageIndex", "getCurrentPageIndex", "()I", "setCurrentPageIndex", "(I)V", "editorPlugin", "Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkScreenEditContainerPlugin;", "getEditorPlugin", "()Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkScreenEditContainerPlugin;", "setEditorPlugin", "(Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkScreenEditContainerPlugin;)V", "isShowEditContainer", "", "mCurrentPageHeight", "getMCurrentPageHeight", "setMCurrentPageHeight", "mCurrentPageWidth", "getMCurrentPageWidth", "setMCurrentPageWidth", "", "mCurrentScale", "setMCurrentScale", "(F)V", "mCurrentViewStatus", "Lcom/tencent/xweb/FileReaderXWeb$ViewStatus;", "getMCurrentViewStatus", "()Lcom/tencent/xweb/FileReaderXWeb$ViewStatus;", "setMCurrentViewStatus", "(Lcom/tencent/xweb/FileReaderXWeb$ViewStatus;)V", "mFilePath", "", "getMFilePath", "()Ljava/lang/String;", "setMFilePath", "(Ljava/lang/String;)V", "mStrokeLayout", "Landroid/widget/FrameLayout;", "getMStrokeLayout", "()Landroid/widget/FrameLayout;", "setMStrokeLayout", "(Landroid/widget/FrameLayout;)V", "mToken", "getMToken", "setMToken", "maxPageIndex", "getMaxPageIndex", "setMaxPageIndex", "onSwitchReaderPageCallback", "Lkotlin/Function1;", "", "getOnSwitchReaderPageCallback", "()Lkotlin/jvm/functions/Function1;", "setOnSwitchReaderPageCallback", "(Lkotlin/jvm/functions/Function1;)V", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "clearScreen", "doEnterDoodle", "getScreenBitmap", "canvas", "Landroid/graphics/Canvas;", "loadDoodle", "onViewStatusChange", "zoom", "transX", "transY", "refreshDoodleLayout", "isLand", "refreshEditLayout", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "callback", "Lkotlin/Function0;", "setDrawingEnable", "enable", "setView", "newScale", "left", "top", "needCorrect", "setXWeb", "show", "Companion", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final a FBB;
-  boolean FBA;
-  FrameLayout FBs;
-  float FBt;
-  int FBu;
-  int FBv;
-  h.b FBw;
-  int FBx;
-  com.tencent.mm.plugin.multitalk.ui.a.b FBy;
-  kotlin.g.a.b<? super Integer, x> FBz;
-  private e FvZ;
-  private a Fwg;
+  public static final b.a Lxv;
+  int FsK;
+  private e Lsc;
+  private a Lsq;
+  j.b LxA;
+  com.tencent.mm.plugin.multitalk.ui.a.b LxB;
+  kotlin.g.a.b<? super Integer, ah> LxC;
+  boolean LxD;
+  FrameLayout Lxw;
+  float Lxx;
+  int Lxy;
+  int Lxz;
   private Context context;
   String mFilePath;
   String mToken;
-  int zXe;
+  int yag;
   
   static
   {
-    AppMethodBeat.i(196015);
-    FBB = new a((byte)0);
-    AppMethodBeat.o(196015);
+    AppMethodBeat.i(285682);
+    Lxv = new b.a((byte)0);
+    AppMethodBeat.o(285682);
   }
   
   public b(Context paramContext, a parama, e parame)
   {
-    AppMethodBeat.i(196013);
+    AppMethodBeat.i(285676);
     this.context = paramContext;
-    this.Fwg = parama;
-    this.FvZ = parame;
-    this.FBt = 1.0F;
-    this.FBu = -1;
-    this.FBv = -1;
-    this.FBs = new FrameLayout(this.context);
-    this.FBy = new com.tencent.mm.plugin.multitalk.ui.a.b(this.context, this.Fwg, this.FvZ);
-    paramContext = this.FBy;
+    this.Lsq = parama;
+    this.Lsc = parame;
+    this.Lxx = 1.0F;
+    this.Lxy = -1;
+    this.Lxz = -1;
+    this.Lxw = new FrameLayout(this.context);
+    this.LxB = new com.tencent.mm.plugin.multitalk.ui.a.b(this.context, this.Lsq, this.Lsc);
+    paramContext = this.LxB;
     if (paramContext != null) {
       paramContext.setDrawingEnable(false);
     }
-    paramContext = this.FBs;
+    paramContext = this.Lxw;
     if (paramContext != null) {
-      paramContext.addView((View)this.FBy);
+      paramContext.addView((View)this.LxB);
     }
-    paramContext = this.FBs;
-    if (paramContext != null)
-    {
+    paramContext = this.Lxw;
+    if (paramContext != null) {
       paramContext.setVisibility(8);
-      AppMethodBeat.o(196013);
-      return;
     }
-    AppMethodBeat.o(196013);
+    AppMethodBeat.o(285676);
   }
   
-  public final void eYZ()
+  public final void ghY()
   {
-    AppMethodBeat.i(195988);
-    com.tencent.mm.plugin.multitalk.ui.a.b localb = this.FBy;
-    if (localb != null)
-    {
-      localb.Fwe.onClick(null);
-      AppMethodBeat.o(195988);
-      return;
+    AppMethodBeat.i(285688);
+    com.tencent.mm.plugin.multitalk.ui.a.b localb = this.LxB;
+    if (localb != null) {
+      localb.Lsr.onClick(null);
     }
-    AppMethodBeat.o(195988);
+    AppMethodBeat.o(285688);
   }
   
-  public final void eZa()
+  public final void ghZ()
   {
-    AppMethodBeat.i(195993);
-    Object localObject = this.FBy;
+    AppMethodBeat.i(285700);
+    Object localObject = this.LxB;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject).Fwf;
-      ((com.tencent.mm.plugin.multitalk.ui.a.a)localObject).FvT = null;
-      localObject = ((com.tencent.mm.plugin.multitalk.ui.a.a)localObject).FvR;
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject).Lss;
+      ((com.tencent.mm.plugin.multitalk.ui.a.a)localObject).Lsh = null;
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.a.a)localObject).Lsf;
       if (localObject != null)
       {
-        localObject = (com.tencent.mm.view.b.b)((com.tencent.mm.view.l)localObject).getBaseBoardView();
+        localObject = (com.tencent.mm.view.b.b)((l)localObject).getBaseBoardView();
         if (localObject != null)
         {
-          ((com.tencent.mm.view.b.b)localObject).getPresenter().hox();
+          ((com.tencent.mm.view.b.b)localObject).getPresenter().iPr();
           ((com.tencent.mm.view.b.b)localObject).postInvalidate();
-          AppMethodBeat.o(195993);
-          return;
         }
       }
-      AppMethodBeat.o(195993);
-      return;
     }
-    AppMethodBeat.o(195993);
+    AppMethodBeat.o(285700);
   }
   
-  public final void v(Canvas paramCanvas)
+  public final void q(Canvas paramCanvas)
   {
-    AppMethodBeat.i(196005);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(285714);
+    s.u(paramCanvas, "canvas");
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
     paramCanvas.setDrawFilter((DrawFilter)new PaintFlagsDrawFilter(0, 3));
-    Object localObject1 = this.FBy;
-    int i;
+    Object localObject1 = this.LxB;
     int j;
-    label101:
+    int i;
+    label69:
     float f;
     Object localObject2;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      i = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).getHeight();
-      localObject1 = this.FBy;
-      if (localObject1 == null) {
-        break label218;
+      j = 0;
+      localObject1 = this.LxB;
+      if (localObject1 != null) {
+        break label183;
       }
-      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).getMultiTalkEditPhotoWrapper();
-      if (localObject1 == null) {
-        break label218;
-      }
-      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.a.a)localObject1).FvR;
-      if (localObject1 == null) {
-        break label218;
-      }
-      j = ((com.tencent.mm.view.l)localObject1).getHeight();
-      f = i - j;
-      localObject1 = this.FBy;
-      if (localObject1 == null) {
-        break label385;
-      }
-      localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Fwf.FvR;
-      if (localObject2 == null) {
-        break label224;
-      }
-      i = ((com.tencent.mm.view.l)localObject2).getWidth();
-      label139:
-      localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Fwf.FvR;
-      if (localObject2 == null) {
-        break label229;
-      }
-      j = ((com.tencent.mm.view.l)localObject2).getHeight();
-      label161:
-      if ((i > 0) && (j > 0)) {
-        break label235;
+      i = 0;
+      f = j - i;
+      localObject1 = this.LxB;
+      if (localObject1 != null)
+      {
+        localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Lss.Lsf;
+        if (localObject2 != null) {
+          break label226;
+        }
+        i = 0;
+        label103:
+        localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Lss.Lsf;
+        if (localObject2 != null) {
+          break label235;
+        }
+        j = 0;
+        label121:
+        if ((i > 0) && (j > 0)) {
+          break label245;
+        }
       }
     }
     for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).bitmap)
     {
-      if (localObject1 == null) {
-        break label385;
+      if (localObject1 != null)
+      {
+        localObject2 = new Matrix();
+        ((Matrix)localObject2).postTranslate(0.0F, f / 2.0F);
+        paramCanvas.drawBitmap((Bitmap)localObject1, (Matrix)localObject2, localPaint);
       }
-      localObject2 = new Matrix();
-      ((Matrix)localObject2).postTranslate(0.0F, f / 2.0F);
-      paramCanvas.drawBitmap((Bitmap)localObject1, (Matrix)localObject2, localPaint);
-      AppMethodBeat.o(196005);
+      AppMethodBeat.o(285714);
       return;
-      i = 0;
+      j = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).getHeight();
       break;
-      label218:
-      j = 0;
-      break label101;
-      label224:
-      i = 0;
-      break label139;
-      label229:
-      j = 0;
-      break label161;
+      label183:
+      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).getMultiTalkEditPhotoWrapper();
+      if (localObject1 == null)
+      {
+        i = 0;
+        break label69;
+      }
+      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.a.a)localObject1).Lsf;
+      if (localObject1 == null)
+      {
+        i = 0;
+        break label69;
+      }
+      i = ((l)localObject1).getHeight();
+      break label69;
+      label226:
+      i = ((l)localObject2).getWidth();
+      break label103;
       label235:
+      j = ((l)localObject2).getHeight();
+      break label121;
+      label245:
       if ((((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).bitmap == null) || (((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).mWidth != i) || (((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).mHeight != j))
       {
         ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).mWidth = i;
@@ -192,50 +188,38 @@ public final class b
         ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).bitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
       }
       localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).bitmap;
-      if (localObject2 == null) {
-        p.iCn();
-      }
+      s.checkNotNull(localObject2);
       localObject2 = new Canvas((Bitmap)localObject2);
       ((Canvas)localObject2).drawPaint(new Paint());
       ((Canvas)localObject2).setDrawFilter((DrawFilter)new PaintFlagsDrawFilter(0, 3));
       ((Canvas)localObject2).drawColor(0, PorterDuff.Mode.CLEAR);
-      com.tencent.mm.view.l locall = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Fwf.FvR;
+      l locall = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Lss.Lsf;
       if (locall != null) {
         locall.draw((Canvas)localObject2);
       }
     }
-    label385:
-    AppMethodBeat.o(196005);
   }
   
-  public final void ve(boolean paramBoolean)
+  public final void zs(boolean paramBoolean)
   {
-    AppMethodBeat.i(196007);
-    Object localObject1 = this.FBy;
+    AppMethodBeat.i(285724);
+    Object localObject1 = this.LxB;
     if (localObject1 != null)
     {
-      Object localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Fwe;
-      localObject1 = ((d)localObject2).Fwj;
+      Object localObject2 = ((com.tencent.mm.plugin.multitalk.ui.a.b)localObject1).Lsr;
+      localObject1 = ((c)localObject2).Lsv;
       ((RelativeLayout)localObject1).removeAllViews();
-      localObject2 = ((d)localObject2).Fwi;
-      if (localObject2 != null)
-      {
+      localObject2 = ((c)localObject2).Lsu;
+      if (localObject2 != null) {
         ((com.tencent.mm.plugin.recordvideo.plugin.doodle.b)localObject2).a(paramBoolean, (RelativeLayout)localObject1);
-        AppMethodBeat.o(196007);
-        return;
       }
-      AppMethodBeat.o(196007);
-      return;
     }
-    AppMethodBeat.o(196007);
+    AppMethodBeat.o(285724);
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/MultiTalkStrokeLayout$Companion;", "", "()V", "TAG", "", "plugin-multitalk_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.projector.b
  * JD-Core Version:    0.7.0.1
  */

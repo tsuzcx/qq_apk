@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/kv2" android:background="@color/BW_0_Alpha_0_5" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/g13" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ake" style="@style/a5p" />
-    <TextView android:id="@id/g1v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hs3" style="@style/a5p" />
-    <TextView android:id="@id/g1s" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghb" style="@style/a5p" />
-    <TextView android:id="@id/g1r" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghc" style="@style/a5p" />
-    <TextView android:id="@id/g1b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bk4" style="@style/a5p" />
-    <TextView android:id="@id/g1a" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bj4" style="@style/a5p" />
-    <TextView android:id="@id/g1n" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fjl" style="@style/a5p" />
-    <TextView android:id="@id/g1c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bla" style="@style/a5p" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/kv0" android:background="@drawable/f4" android:layout_width="@dimen/a3w" android:layout_height="@dimen/a3v" android:paddingStart="13.0dip" android:paddingEnd="16.0dip">
+        <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/kv1" android:background="@drawable/ad7" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ka2" android:layout_weight="1.0" android:layout_marginStart="7.0dip" android:layout_marginEnd="7.0dip" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/kuy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/kuz" android:background="@drawable/f4" android:visibility="invisible" android:layout_width="@dimen/a3w" android:layout_height="@dimen/a3v">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ka1" />
+    </LinearLayout>
+</FrameLayout>

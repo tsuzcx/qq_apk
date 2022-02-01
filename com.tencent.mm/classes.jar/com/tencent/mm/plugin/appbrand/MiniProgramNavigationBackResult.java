@@ -13,8 +13,8 @@ public class MiniProgramNavigationBackResult
   implements Parcelable
 {
   public static final Parcelable.Creator<MiniProgramNavigationBackResult> CREATOR;
-  public JSONObject nyM;
-  public JSONObject nyN;
+  public JSONObject qxT;
+  public JSONObject qxU;
   
   static
   {
@@ -30,8 +30,8 @@ public class MiniProgramNavigationBackResult
     AppMethodBeat.i(134628);
     try
     {
-      this.nyM = new JSONObject(Util.nullAs(paramParcel.readString(), "{}"));
-      this.nyN = new JSONObject(Util.nullAs(paramParcel.readString(), "{}"));
+      this.qxT = new JSONObject(Util.nullAs(paramParcel.readString(), "{}"));
+      this.qxU = new JSONObject(Util.nullAs(paramParcel.readString(), "{}"));
       AppMethodBeat.o(134628);
       return;
     }
@@ -55,7 +55,7 @@ public class MiniProgramNavigationBackResult
     if (paramJSONObject1 == null)
     {
       paramJSONObject1 = localJSONObject;
-      localMiniProgramNavigationBackResult.nyM = ((JSONObject)paramJSONObject1);
+      localMiniProgramNavigationBackResult.qxT = ((JSONObject)paramJSONObject1);
       paramJSONObject1 = new JSONObject();
       if (paramJSONObject2 != null) {
         break label80;
@@ -63,7 +63,7 @@ public class MiniProgramNavigationBackResult
     }
     for (;;)
     {
-      localMiniProgramNavigationBackResult.nyN = ((JSONObject)paramJSONObject1);
+      localMiniProgramNavigationBackResult.qxU = ((JSONObject)paramJSONObject1);
       AppMethodBeat.o(134626);
       return localMiniProgramNavigationBackResult;
       break;
@@ -79,9 +79,9 @@ public class MiniProgramNavigationBackResult
   
   public String toString()
   {
-    AppMethodBeat.i(250044);
-    String str = "MiniProgramNavigationBackResult{extraData=" + this.nyM + ", privateData=" + this.nyN + '}';
-    AppMethodBeat.o(250044);
+    AppMethodBeat.i(316874);
+    String str = "MiniProgramNavigationBackResult{extraData=" + this.qxT + ", privateData=" + this.qxU + '}';
+    AppMethodBeat.o(316874);
     return str;
   }
   
@@ -89,21 +89,21 @@ public class MiniProgramNavigationBackResult
   {
     Object localObject2 = null;
     AppMethodBeat.i(134627);
-    if (this.nyM == null)
+    if (this.qxT == null)
     {
       localObject1 = null;
       paramParcel.writeString((String)localObject1);
-      if (this.nyN != null) {
+      if (this.qxU != null) {
         break label54;
       }
     }
     label54:
-    for (Object localObject1 = localObject2;; localObject1 = this.nyN.toString())
+    for (Object localObject1 = localObject2;; localObject1 = this.qxU.toString())
     {
       paramParcel.writeString((String)localObject1);
       AppMethodBeat.o(134627);
       return;
-      localObject1 = this.nyM.toString();
+      localObject1 = this.qxT.toString();
       break;
     }
   }

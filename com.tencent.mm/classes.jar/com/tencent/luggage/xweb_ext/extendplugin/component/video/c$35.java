@@ -1,29 +1,29 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.w;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.jsapi.z;
 
 final class c$35
-  implements y
+  implements z
 {
-  private w cKo;
+  private y eDZ;
   
   c$35(c paramc)
   {
-    AppMethodBeat.i(222406);
-    this.cKo = new com.tencent.mm.plugin.appbrand.jsapi.ai.e.b.c();
-    AppMethodBeat.o(222406);
+    AppMethodBeat.i(220925);
+    this.eDZ = new com.tencent.mm.plugin.appbrand.jsapi.al.e.b.c();
+    AppMethodBeat.o(220925);
   }
   
-  public final w Tx()
+  public final y auc()
   {
-    return this.cKo;
+    return this.eDZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.c.35
  * JD-Core Version:    0.7.0.1
  */

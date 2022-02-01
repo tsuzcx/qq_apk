@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.y;
 
 public final class d
 {
-  private static c FjM;
-  public static boolean FjN = false;
+  private static c Lfj;
+  public static boolean Lfk = false;
   
   public static void a(c paramc)
   {
-    FjM = paramc;
+    Lfj = paramc;
   }
   
-  public static c eUZ()
+  public static c gdL()
   {
-    return FjM;
+    return Lfj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.y.d
  * JD-Core Version:    0.7.0.1
  */

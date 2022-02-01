@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.MMPullDownView;
 
@@ -22,7 +22,7 @@ public class CollectPullDownView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void cPg()
+  public final void dsM()
   {
     AppMethodBeat.i(64191);
     View localView1 = inflate(this.context, a.g.collect_bill_list_loading_view, null);
@@ -34,7 +34,7 @@ public class CollectPullDownView
   
   public void setLoadDataEnd(boolean paramBoolean)
   {
-    this.Wlp = paramBoolean;
+    this.adSH = paramBoolean;
   }
 }
 

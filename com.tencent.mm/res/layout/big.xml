@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/aol" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="@dimen/cp" android:layout_height="wrap_content" android:minHeight="@dimen/cs">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dt5" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="@dimen/cb" app:iconColor="@color/a41" />
-        <TextView android:textSize="@dimen/eo" android:textColor="@color/a41" android:gravity="center_horizontal" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/cb" android:maxLines="2" android:includeFontPadding="false" />
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/h53" android:background="@drawable/aio" android:layout_width="fill_parent" android:layout_height="@dimen/c9" />
+    <FrameLayout android:layout_gravity="center|top" android:id="@id/j3u" android:background="@drawable/aa9" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginTop="22.0dip" />
+    <FrameLayout android:layout_gravity="bottom|center" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/j3z" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_marginBottom="18.0dip" />
+    </FrameLayout>
+</FrameLayout>

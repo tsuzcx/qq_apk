@@ -21,9 +21,9 @@ import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIModal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.pulldown.c;
+import com.tencent.mm.ui.y;
 
 @c(0)
 public class ModalFragment
@@ -37,7 +37,7 @@ public class ModalFragment
   private int getBlackMaskColorRes()
   {
     AppMethodBeat.i(178766);
-    if (ar.isDarkMode())
+    if (aw.isDarkMode())
     {
       i = R.color.wallet_action_bar_black_mask_dark;
       AppMethodBeat.o(178766);
@@ -54,7 +54,7 @@ public class ModalFragment
     if (paramView != null)
     {
       this.mViewCenterPadding = paramView.findViewById(R.id.view_center_padding);
-      int i = ar.getStatusBarHeight(getContext());
+      int i = aw.getStatusBarHeight(getContext());
       this.mViewCenterPadding.setVisibility(0);
       paramView = this.mViewCenterPadding.getLayoutParams();
       paramView.height = i;
@@ -118,7 +118,7 @@ public class ModalFragment
     }
     if ((this.mPreFragment instanceof ModalFragment))
     {
-      ((ModalFragment)this.mPreFragment).getController().hHI();
+      ((ModalFragment)this.mPreFragment).getController().jjR();
       setCenterPaddingColor(getContext().getResources().getColor(R.color.transparent));
       setActionBarColor(0);
       AppMethodBeat.o(178764);
@@ -126,7 +126,7 @@ public class ModalFragment
     }
     if ((this.mPreFragment instanceof MainFragment))
     {
-      i = ((MainFragment)this.mPreFragment).getController().hHI();
+      i = ((MainFragment)this.mPreFragment).getController().jjR();
       int j = getContext().getResources().getColor(getBlackMaskColorRes());
       setActionBarColor((int)ColorUtil.MergeColors(i, j));
       setCenterPaddingColor(j);
@@ -147,17 +147,17 @@ public class ModalFragment
     AppMethodBeat.o(18554);
   }
   
-  public int getIUIHashCode()
+  public String getReportUrl()
   {
-    AppMethodBeat.i(18562);
+    AppMethodBeat.i(226470);
     if (this.page != null)
     {
-      int i = this.page.hashCode();
-      AppMethodBeat.o(18562);
-      return i;
+      String str = this.page.getReportUrl();
+      AppMethodBeat.o(226470);
+      return str;
     }
-    AppMethodBeat.o(18562);
-    return 0;
+    AppMethodBeat.o(226470);
+    return "";
   }
   
   public String getTagName()
@@ -211,17 +211,20 @@ public class ModalFragment
   {
     AppMethodBeat.i(18549);
     super.onDestroy();
+    if (this.page != null) {
+      this.page.onDestroy();
+    }
     this.page = null;
     AppMethodBeat.o(18549);
   }
   
   public void onFirstRenderFinish()
   {
-    AppMethodBeat.i(263989);
+    AppMethodBeat.i(226445);
     if (this.page != null) {
       this.page.onFirstRenderFinish();
     }
-    AppMethodBeat.o(263989);
+    AppMethodBeat.o(226445);
   }
   
   public void onFragmentOnResume()
@@ -234,11 +237,11 @@ public class ModalFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(263994);
+    AppMethodBeat.i(226455);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(263994);
+    AppMethodBeat.o(226455);
   }
   
   public void onStart()
@@ -267,10 +270,10 @@ public class ModalFragment
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    AppMethodBeat.i(263979);
+    AppMethodBeat.i(226433);
     super.onViewCreated(paramView, paramBundle);
     setupActionAndStatusBarColor();
-    AppMethodBeat.o(263979);
+    AppMethodBeat.o(226433);
   }
   
   public void restoreActionBarColor()
@@ -295,27 +298,27 @@ public class ModalFragment
   
   public boolean useKeyboardCoverMode()
   {
-    AppMethodBeat.i(263990);
+    AppMethodBeat.i(226449);
     if (this.page != null)
     {
       boolean bool = this.page.useKeyboardCoverMode();
-      AppMethodBeat.o(263990);
+      AppMethodBeat.o(226449);
       return bool;
     }
-    AppMethodBeat.o(263990);
+    AppMethodBeat.o(226449);
     return false;
   }
   
   public boolean usePanelModalMode()
   {
-    AppMethodBeat.i(263987);
+    AppMethodBeat.i(226439);
     if (this.page != null)
     {
       boolean bool = this.page.usePanelModalMode();
-      AppMethodBeat.o(263987);
+      AppMethodBeat.o(226439);
       return bool;
     }
-    AppMethodBeat.o(263987);
+    AppMethodBeat.o(226439);
     return false;
   }
   
@@ -335,7 +338,7 @@ public class ModalFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.app.ModalFragment
  * JD-Core Version:    0.7.0.1
  */

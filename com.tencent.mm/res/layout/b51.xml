@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView android:id="@id/d9j" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:clipChildren="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/ai5" android:layout="@layout/bso" android:layout_width="fill_parent" android:layout_height="240.0dip" />
-    <View android:id="@id/ai3" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignLeft="@id/ai5" android:layout_alignTop="@id/ai5" android:layout_alignRight="@id/ai5" android:layout_alignBottom="@id/ai5" />
-    <View android:id="@id/c2k" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hf7" android:background="@color/fm" android:paddingLeft="13.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aj6">
-        <LinearLayout android:orientation="horizontal" android:id="@id/d9k" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
-        <EditText android:textSize="@dimen/is" android:textColor="@color/ag2" android:textColorHint="#7fffffff" android:ellipsize="end" android:layout_gravity="center" android:id="@id/bxz" android:background="@drawable/ca2" android:paddingLeft="10.0dip" android:paddingRight="@dimen/ip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minWidth="1024.0dip" android:hint="@string/yn" android:singleLine="true" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@null" />
-        <TextView android:textColor="@color/ag2" android:gravity="center_vertical" android:id="@id/hde" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/h2d" android:singleLine="true" style="@style/mp" />
-    </LinearLayout>
-    <com.tencent.mm.plugin.sight.encode.ui.MainSightSelectContactView android:id="@id/hhj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hf7" />
-    <View android:id="@id/ite" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/f6h" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
-        <ImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_quit_webview_icon" />
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/a5j" android:clipChildren="false" android:layout_width="56.0dip" android:layout_height="56.0dip" android:contentDescription="@string/gya" android:animateLayoutChanges="true">
+        <FrameLayout android:layout_gravity="center" android:id="@id/hpw" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_multitask" android:scaleType="centerCrop" />
+        </FrameLayout>
     </FrameLayout>
-    <FrameLayout android:id="@id/f6i" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
-        <TextView android:text="@string/cw" style="@style/p5" />
-    </FrameLayout>
-</com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView>
+</merge>

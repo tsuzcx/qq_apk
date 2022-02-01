@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/bj" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/ffn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
-        <TextView android:textSize="@dimen/bj" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/ffm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_content" android:maxLines="1" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/i6">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/bli" android:layout_width="@dimen/bi" android:layout_height="@dimen/bi" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/g3o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a74" />
+        </FrameLayout>
+        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.edittext.PasterEditText android:textSize="@dimen/j7" android:textColor="@color/a1_" android:ellipsize="end" android:id="@id/bll" android:background="@drawable/bxv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="0.0dip" android:maxLines="3" />
+        </ScrollView>
     </LinearLayout>
-    <ImageView android:id="@id/ffl" android:visibility="gone" android:layout_width="@dimen/ado" android:layout_height="@dimen/ado" android:scaleType="centerCrop" />
 </LinearLayout>

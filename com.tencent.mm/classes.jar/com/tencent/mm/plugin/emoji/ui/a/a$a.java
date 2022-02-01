@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.emoji.ui.a;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.m;
-import com.tencent.mm.emoji.panel.a.p;
-import com.tencent.mm.emoji.panel.a.s;
-import kotlin.l;
+import com.tencent.mm.emoji.c.b.m;
+import com.tencent.mm.emoji.panel.a.n;
+import com.tencent.mm.emoji.panel.a.q;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/ui/adapter/EmojiCustomAdapter$EmojiCustomAddViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "plugin-emoji_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/ui/adapter/EmojiCustomAdapter$EmojiCustomAddViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
-  extends s<m>
+  extends q<m>
 {
-  public a$a(View paramView, p paramp)
+  public a$a(View paramView, n paramn)
   {
-    super(paramView, paramp);
-    AppMethodBeat.i(256005);
-    AppMethodBeat.o(256005);
+    super(paramView, paramn);
+    AppMethodBeat.i(270379);
+    AppMethodBeat.o(270379);
   }
 }
 

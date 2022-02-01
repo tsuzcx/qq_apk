@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import androidx.fragment.app.FragmentActivity;
@@ -19,305 +17,411 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
 import com.tencent.mm.plugin.secdata.ui.a.a;
 import com.tencent.mm.plugin.story.a.g;
-import com.tencent.mm.plugin.textstatus.b.e;
-import com.tencent.mm.plugin.textstatus.b.f;
-import com.tencent.mm.plugin.textstatus.b.h;
+import com.tencent.mm.plugin.textstatus.a.e;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.mm.view.RefreshLoadMoreLayout.b;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d<Ljava.lang.Object;>;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.k;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.g;
+import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.m;
+import com.tencent.mm.view.recyclerview.o;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/StatusAlbumUI;", "Lcom/tencent/mm/ui/MMFragment;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "canContinue", "", "getCanContinue", "()Z", "setCanContinue", "(Z)V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lkotlin/collections/ArrayList;", "dataLoader", "Lcom/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$HistoryItemLoader;", "hasShowStoryEntry", "isInitLoaded", "setInitLoaded", "lastLoadContext", "Lcom/tencent/mm/protobuf/ByteString;", "getLastLoadContext", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastLoadContext", "(Lcom/tencent/mm/protobuf/ByteString;)V", "longClickListener", "Landroid/view/View$OnLongClickListener;", "getLongClickListener", "()Landroid/view/View$OnLongClickListener;", "setLongClickListener", "(Landroid/view/View$OnLongClickListener;)V", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getProgressDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setProgressDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "rvSelfHistory", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "dealContentView", "", "v", "Landroid/view/View;", "getCal", "Ljava/util/Calendar;", "timeStamp", "", "getLayoutId", "", "initActionBar", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onVisibilityChanged", "visible", "preData", "supportNavigationSwipeBack", "Companion", "HistoryItemLoader", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/StatusAlbumUI;", "Lcom/tencent/mm/ui/MMFragment;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "canContinue", "", "getCanContinue", "()Z", "setCanContinue", "(Z)V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lkotlin/collections/ArrayList;", "dataLoader", "Lcom/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$HistoryItemLoader;", "hasShowStoryEntry", "isInitLoaded", "setInitLoaded", "lastLoadContext", "Lcom/tencent/mm/protobuf/ByteString;", "getLastLoadContext", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastLoadContext", "(Lcom/tencent/mm/protobuf/ByteString;)V", "longClickListener", "Landroid/view/View$OnLongClickListener;", "getLongClickListener", "()Landroid/view/View$OnLongClickListener;", "setLongClickListener", "(Landroid/view/View$OnLongClickListener;)V", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getProgressDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setProgressDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "rvSelfHistory", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "dealContentView", "", "v", "Landroid/view/View;", "getCal", "Ljava/util/Calendar;", "timeStamp", "", "getLayoutId", "", "initActionBar", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onVisibilityChanged", "visible", "preData", "supportNavigationSwipeBack", "Companion", "HistoryItemLoader", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class StatusAlbumUI
   extends MMFragment
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final StatusAlbumUI.a MKw;
-  private WxRecyclerView MKr;
-  private StatusAlbumUI.b MKs;
-  private boolean MKt;
-  private boolean MKu;
-  private boolean MKv;
-  s iYE;
-  private ArrayList<com.tencent.mm.view.recyclerview.a> mXB;
-  private RefreshLoadMoreLayout tCU;
-  View.OnLongClickListener wOt;
+  public static final StatusAlbumUI.a TwB;
+  View.OnLongClickListener AkV;
+  private WxRecyclerView TwC;
+  private StatusAlbumUI.b TwD;
+  private boolean TwE;
+  private boolean TwF;
+  private boolean TwG;
+  private ArrayList<com.tencent.mm.view.recyclerview.a> pUj;
+  private w psR;
+  private RefreshLoadMoreLayout wGX;
   
   static
   {
-    AppMethodBeat.i(238099);
-    MKw = new StatusAlbumUI.a((byte)0);
-    AppMethodBeat.o(238099);
+    AppMethodBeat.i(291568);
+    TwB = new StatusAlbumUI.a((byte)0);
+    AppMethodBeat.o(291568);
   }
   
   public StatusAlbumUI()
   {
-    AppMethodBeat.i(238097);
-    this.mXB = new ArrayList();
-    this.wOt = ((View.OnLongClickListener)new h(this));
-    this.MKv = true;
-    AppMethodBeat.o(238097);
+    AppMethodBeat.i(291482);
+    this.pUj = new ArrayList();
+    this.AkV = new StatusAlbumUI..ExternalSyntheticLambda1(this);
+    this.TwG = true;
+    AppMethodBeat.o(291482);
   }
   
-  private final void gmB()
+  private static final void a(StatusAlbumUI paramStatusAlbumUI, Activity paramActivity, String paramString, MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(238091);
-    Iterator localIterator = this.mXB.iterator();
+    AppMethodBeat.i(291522);
+    kotlin.g.b.s.u(paramStatusAlbumUI, "this$0");
+    kotlin.g.b.s.u(paramActivity, "$context");
+    kotlin.g.b.s.u(paramString, "$statusId");
+    if (paramMenuItem.getItemId() == a.e.TdG)
+    {
+      paramMenuItem = (Context)paramActivity;
+      paramActivity.getResources().getString(a.h.Tgd);
+      paramStatusAlbumUI.psR = com.tencent.mm.ui.base.k.a(paramMenuItem, paramActivity.getResources().getString(a.h.Tgd), false, null);
+      paramStatusAlbumUI = new com.tencent.mm.plugin.textstatus.h.a(paramString, 2);
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)paramStatusAlbumUI, 0);
+      paramStatusAlbumUI = com.tencent.mm.plugin.textstatus.i.b.Trt;
+      com.tencent.mm.plugin.textstatus.i.b.a((Context)paramActivity, 43L, null, null, 0L, 0L, 0L, 124);
+    }
+    AppMethodBeat.o(291522);
+  }
+  
+  private static final boolean a(StatusAlbumUI paramStatusAlbumUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(291504);
+    kotlin.g.b.s.u(paramStatusAlbumUI, "this$0");
+    paramStatusAlbumUI = paramStatusAlbumUI.getActivity();
+    if (paramStatusAlbumUI != null) {
+      paramStatusAlbumUI.finish();
+    }
+    AppMethodBeat.o(291504);
+    return true;
+  }
+  
+  private static final boolean a(StatusAlbumUI paramStatusAlbumUI, View paramView)
+  {
+    AppMethodBeat.i(291530);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramStatusAlbumUI);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(paramStatusAlbumUI, "this$0");
+    paramView = paramView.getTag(a.e.TdF);
+    if ((paramView instanceof com.tencent.mm.plugin.textstatus.h.a.a)) {}
+    for (paramView = (com.tencent.mm.plugin.textstatus.h.a.a)paramView; paramView == null; paramView = null)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(291530);
+      return true;
+    }
+    localObject1 = paramStatusAlbumUI.getContext();
+    if (localObject1 == null)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(291530);
+      return true;
+    }
+    localObject2 = new l((Context)localObject1);
+    ((l)localObject2).Vtg = StatusAlbumUI..ExternalSyntheticLambda2.INSTANCE;
+    paramView = paramView.Tnj;
+    if (paramView == null) {}
+    for (paramView = null; paramView == null; paramView = paramView.field_StatusID)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(291530);
+      return true;
+    }
+    ((l)localObject2).GAC = new StatusAlbumUI..ExternalSyntheticLambda3(paramStatusAlbumUI, (Activity)localObject1, paramView);
+    ((l)localObject2).jDd();
+    com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+    AppMethodBeat.o(291530);
+    return true;
+  }
+  
+  private final void hIy()
+  {
+    AppMethodBeat.i(291496);
+    Iterator localIterator = this.pUj.iterator();
     int i = 0;
     int j = 0;
     while (localIterator.hasNext())
     {
       com.tencent.mm.view.recyclerview.a locala = (com.tencent.mm.view.recyclerview.a)localIterator.next();
-      if ((locala instanceof com.tencent.mm.plugin.textstatus.g.a.a))
+      if ((locala instanceof com.tencent.mm.plugin.textstatus.h.a.a))
       {
-        Object localObject = ((com.tencent.mm.plugin.textstatus.g.a.a)locala).MDH;
+        Object localObject = ((com.tencent.mm.plugin.textstatus.h.a.a)locala).Tnj;
         if (localObject != null)
         {
-          int n = ((com.tencent.mm.plugin.textstatus.g.e.a)localObject).field_CreateTime;
+          int n = ((com.tencent.mm.plugin.textstatus.h.f.b)localObject).field_CreateTime;
           long l = n;
           localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
           localObject = ((SimpleDateFormat)localObject).parse(((SimpleDateFormat)localObject).format(Long.valueOf(l * 1000L)));
           Calendar localCalendar = Calendar.getInstance();
-          p.j(localCalendar, "cal");
           localCalendar.setTime((Date)localObject);
+          kotlin.g.b.s.s(localCalendar, "cal");
           int m = localCalendar.get(1);
           int k = localCalendar.get(6);
           if (m != j)
           {
-            ((com.tencent.mm.plugin.textstatus.g.a.a)locala).MDI = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(b.h.Mzk), n * 1000L).toString();
+            ((com.tencent.mm.plugin.textstatus.h.a.a)locala).Tnk = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(a.h.Thk), n * 1000L).toString();
             j = m;
           }
           for (;;)
           {
             if (k == i) {
-              break label241;
+              break label244;
             }
-            ((com.tencent.mm.plugin.textstatus.g.a.a)locala).MDJ = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(b.h.MyW), n * 1000L).toString();
+            ((com.tencent.mm.plugin.textstatus.h.a.a)locala).Tnl = DateFormat.format((CharSequence)MMApplicationContext.getContext().getString(a.h.TgP), n * 1000L).toString();
             i = k;
             break;
-            ((com.tencent.mm.plugin.textstatus.g.a.a)locala).MDI = "";
+            ((com.tencent.mm.plugin.textstatus.h.a.a)locala).Tnk = "";
           }
-          label241:
-          ((com.tencent.mm.plugin.textstatus.g.a.a)locala).MDJ = "";
+          label244:
+          ((com.tencent.mm.plugin.textstatus.h.a.a)locala).Tnl = "";
         }
       }
     }
-    AppMethodBeat.o(238091);
+    AppMethodBeat.o(291496);
+  }
+  
+  private static final void u(com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(291512);
+    params.c(a.e.TdG, (CharSequence)"删除");
+    AppMethodBeat.o(291512);
   }
   
   public final void dealContentView(View paramView)
   {
-    AppMethodBeat.i(238086);
-    p.k(paramView, "v");
+    Object localObject2 = null;
+    AppMethodBeat.i(291618);
+    kotlin.g.b.s.u(paramView, "v");
     super.dealContentView(paramView);
     Object localObject1 = getActivity();
-    Object localObject2;
+    Object localObject3;
     if (localObject1 != null)
     {
-      localObject2 = g.Xox;
-      p.j(localObject1, "it");
-      ((com.tencent.mm.plugin.secdata.ui.a)g.lm((Context)localObject1).i(com.tencent.mm.plugin.secdata.ui.a.class)).a((com.tencent.mm.plugin.secdata.h)new com.tencent.mm.plugin.secdata.c(com.tencent.mm.plugin.textstatus.proto.f.class, 9, (byte)0));
-      localObject2 = com.tencent.mm.plugin.secdata.ui.a.JbV;
-      localObject2 = (com.tencent.mm.plugin.textstatus.proto.f)a.a.a((Context)localObject1, 9, com.tencent.mm.plugin.textstatus.proto.f.class);
-      if (localObject2 != null)
+      localObject3 = com.tencent.mm.ui.component.k.aeZF;
+      ((com.tencent.mm.plugin.secdata.ui.a)com.tencent.mm.ui.component.k.nq((Context)localObject1).q(com.tencent.mm.plugin.secdata.ui.a.class)).a((com.tencent.mm.plugin.secdata.h)new com.tencent.mm.plugin.secdata.c(com.tencent.mm.plugin.textstatus.proto.p.class, 9, (byte)0));
+      localObject3 = com.tencent.mm.plugin.secdata.ui.a.PlI;
+      localObject3 = (com.tencent.mm.plugin.textstatus.proto.p)a.a.a((Context)localObject1, 9, com.tencent.mm.plugin.textstatus.proto.p.class);
+      if (localObject3 != null)
       {
-        localObject1 = com.tencent.mm.plugin.textstatus.h.a.MGJ;
-        localObject1 = com.tencent.mm.plugin.textstatus.h.a.gmn();
-        if (localObject1 == null) {
-          break label376;
+        localObject1 = com.tencent.mm.plugin.textstatus.i.b.Trt;
+        localObject1 = com.tencent.mm.plugin.textstatus.i.b.hHY();
+        if (localObject1 != null) {
+          break label382;
         }
+        localObject1 = null;
+        ((com.tencent.mm.plugin.textstatus.proto.p)localObject3).sessionId = ((String)localObject1);
       }
     }
-    label376:
-    for (localObject1 = ((com.tencent.mm.plugin.textstatus.proto.f)localObject1).sessionId;; localObject1 = null)
+    localObject1 = paramView.findViewById(a.e.recycler_view);
+    kotlin.g.b.s.s(localObject1, "v.findViewById(R.id.recycler_view)");
+    this.TwC = ((WxRecyclerView)localObject1);
+    localObject1 = this.TwC;
+    if (localObject1 == null)
     {
-      ((com.tencent.mm.plugin.textstatus.proto.f)localObject2).sessionId = ((String)localObject1);
-      localObject1 = paramView.findViewById(b.e.recycler_view);
-      p.j(localObject1, "v.findViewById(R.id.recycler_view)");
-      this.MKr = ((WxRecyclerView)localObject1);
-      localObject1 = this.MKr;
-      if (localObject1 == null) {
-        p.bGy("rvSelfHistory");
+      kotlin.g.b.s.bIx("rvSelfHistory");
+      localObject1 = null;
+      label156:
+      getContext();
+      ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
+      localObject3 = new WxRecyclerAdapter((g)new c(this), this.pUj, true);
+      ((WxRecyclerAdapter)localObject3).agOS = ((o)new d((WxRecyclerAdapter)localObject3, this));
+      localObject1 = this.TwC;
+      if (localObject1 != null) {
+        break label393;
       }
-      if (localObject1 != null)
-      {
-        getContext();
-        ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
+      kotlin.g.b.s.bIx("rvSelfHistory");
+      localObject1 = null;
+      label237:
+      ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject3);
+      localObject1 = this.TwC;
+      if (localObject1 != null) {
+        break label396;
       }
-      localObject1 = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.f)new c(this), this.mXB, true);
-      ((WxRecyclerAdapter)localObject1).YTa = ((com.tencent.mm.view.recyclerview.m)new e(this, (WxRecyclerAdapter)localObject1));
-      localObject2 = this.MKr;
-      if (localObject2 == null) {
-        p.bGy("rvSelfHistory");
+      kotlin.g.b.s.bIx("rvSelfHistory");
+      localObject1 = null;
+      label263:
+      ((RecyclerView)localObject1).a((RecyclerView.h)new e(this));
+      paramView = paramView.findViewById(a.e.rl_layout);
+      kotlin.g.b.s.s(paramView, "v.findViewById(R.id.rl_layout)");
+      this.wGX = ((RefreshLoadMoreLayout)paramView);
+      paramView = this.wGX;
+      if (paramView != null) {
+        break label399;
       }
-      if (localObject2 != null) {
-        ((WxRecyclerView)localObject2).setAdapter((RecyclerView.a)localObject1);
+      kotlin.g.b.s.bIx("mRefreshLayout");
+      paramView = null;
+      label318:
+      paramView.setActionCallback((RefreshLoadMoreLayout.b)new f(this, (WxRecyclerAdapter)localObject3));
+      paramView = this.wGX;
+      if (paramView != null) {
+        break label402;
       }
-      localObject2 = this.MKr;
-      if (localObject2 == null) {
-        p.bGy("rvSelfHistory");
-      }
-      if (localObject2 != null) {
-        ((WxRecyclerView)localObject2).b((RecyclerView.h)new f(this));
-      }
-      paramView = paramView.findViewById(b.e.rl_layout);
-      p.j(paramView, "v.findViewById(R.id.rl_layout)");
-      this.tCU = ((RefreshLoadMoreLayout)paramView);
-      paramView = this.tCU;
-      if (paramView == null) {
-        p.bGy("mRefreshLayout");
-      }
-      paramView.setActionCallback((RefreshLoadMoreLayout.a)new g(this, (WxRecyclerAdapter)localObject1));
-      paramView = this.tCU;
-      if (paramView == null) {
-        p.bGy("mRefreshLayout");
-      }
-      this.MKs = new StatusAlbumUI.b((WxRecyclerAdapter)localObject1, paramView);
+      kotlin.g.b.s.bIx("mRefreshLayout");
+      paramView = localObject2;
+    }
+    label393:
+    label396:
+    label399:
+    label402:
+    for (;;)
+    {
+      this.TwD = new StatusAlbumUI.b((WxRecyclerAdapter)localObject3, paramView);
       Log.i("MicroMsg.TextStatus.StatusAlbumUI", "init OK");
-      AppMethodBeat.o(238086);
+      AppMethodBeat.o(291618);
       return;
+      label382:
+      localObject1 = ((com.tencent.mm.plugin.textstatus.proto.p)localObject1).sessionId;
+      break;
+      break label156;
+      break label237;
+      break label263;
+      break label318;
     }
   }
   
   public final int getLayoutId()
   {
-    return b.f.Myg;
+    return a.f.TfK;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(238080);
+    AppMethodBeat.i(291598);
     super.onCreate(paramBundle);
     setMMTitle(a.g.album_title);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
-    com.tencent.mm.kernel.h.aGY().a(5967, (i)this);
-    AppMethodBeat.o(238080);
+    setBackBtn(new StatusAlbumUI..ExternalSyntheticLambda0(this));
+    com.tencent.mm.kernel.h.aZW().a(5967, (com.tencent.mm.am.h)this);
+    ((com.tencent.mm.plugin.textstatus.a.u)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.textstatus.a.u.class)).hFB();
+    ((com.tencent.mm.plugin.textstatus.a.u)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.textstatus.a.u.class)).hFD();
+    AppMethodBeat.o(291598);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(238082);
+    AppMethodBeat.i(291602);
     super.onDestroy();
-    StatusAlbumUI.b localb = this.MKs;
-    if (localb == null) {
-      p.bGy("dataLoader");
+    StatusAlbumUI.b localb2 = this.TwD;
+    StatusAlbumUI.b localb1 = localb2;
+    if (localb2 == null)
+    {
+      kotlin.g.b.s.bIx("dataLoader");
+      localb1 = null;
     }
-    com.tencent.mm.kernel.h.aGY().b(4245, localb.jxB);
-    com.tencent.mm.kernel.h.aGY().b(5967, (i)this);
-    AppMethodBeat.o(238082);
+    com.tencent.mm.kernel.h.aZW().b(4245, localb1.maV);
+    com.tencent.mm.kernel.h.aZW().b(5967, (com.tencent.mm.am.h)this);
+    ((com.tencent.mm.plugin.textstatus.a.u)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.textstatus.a.u.class)).hFC();
+    ((com.tencent.mm.plugin.textstatus.a.u)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.textstatus.a.u.class)).hFE();
+    AppMethodBeat.o(291602);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(238096);
-    Iterator localIterator;
-    if ((paramq instanceof com.tencent.mm.plugin.textstatus.g.a))
+    Object localObject = null;
+    AppMethodBeat.i(291633);
+    if ((paramp instanceof com.tencent.mm.plugin.textstatus.h.a))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label165;
+        break label168;
       }
       paramInt1 = 1;
-      if (paramInt1 != 0) {
-        localIterator = this.mXB.iterator();
-      }
-    }
-    label165:
-    label197:
-    label200:
-    for (;;)
-    {
-      com.tencent.mm.view.recyclerview.a locala;
-      if (localIterator.hasNext())
+      if (paramInt1 != 0)
       {
-        locala = (com.tencent.mm.view.recyclerview.a)localIterator.next();
-        if (!(locala instanceof com.tencent.mm.plugin.textstatus.g.a.a)) {
-          continue;
-        }
-        paramString = ((com.tencent.mm.plugin.textstatus.g.a.a)locala).MDH;
-        if (paramString == null) {
-          break label197;
-        }
-      }
-      for (paramString = paramString.field_StatusID;; paramString = null)
-      {
-        if (!p.h(paramString, ((com.tencent.mm.plugin.textstatus.g.a)paramq).MBU)) {
-          break label200;
-        }
-        this.mXB.remove(locala);
-        gmB();
-        paramString = this.MKr;
-        if (paramString == null) {
-          p.bGy("rvSelfHistory");
-        }
-        if (paramString != null)
+        Iterator localIterator = this.pUj.iterator();
+        label40:
+        while (localIterator.hasNext())
         {
-          paramString = paramString.getAdapter();
-          if (paramString != null) {
-            paramString.notifyDataSetChanged();
+          com.tencent.mm.view.recyclerview.a locala = (com.tencent.mm.view.recyclerview.a)localIterator.next();
+          if ((locala instanceof com.tencent.mm.plugin.textstatus.h.a.a))
+          {
+            paramString = ((com.tencent.mm.plugin.textstatus.h.a.a)locala).Tnj;
+            if (paramString != null) {
+              break label201;
+            }
+            paramString = null;
+            label85:
+            if (!kotlin.g.b.s.p(paramString, ((com.tencent.mm.plugin.textstatus.h.a)paramp).Tly)) {
+              break label207;
+            }
+            this.pUj.remove(locala);
           }
         }
-        paramString = this.iYE;
-        if (paramString == null) {
-          break label202;
-        }
-        paramString.dismiss();
-        AppMethodBeat.o(238096);
-        return;
-        paramString = getContext();
+        hIy();
+        paramString = this.TwC;
         if (paramString != null) {
-          com.tencent.mm.ui.base.h.af((Context)paramString, paramString.getString(b.h.Myu), "");
+          break label209;
         }
-        paramInt1 = 0;
-        break;
+        kotlin.g.b.s.bIx("rvSelfHistory");
+        paramString = localObject;
       }
     }
-    label202:
-    AppMethodBeat.o(238096);
+    label168:
+    label201:
+    label207:
+    label209:
+    for (;;)
+    {
+      paramString = paramString.getAdapter();
+      if (paramString != null) {
+        paramString.bZE.notifyChanged();
+      }
+      paramString = this.psR;
+      if (paramString != null) {
+        paramString.dismiss();
+      }
+      AppMethodBeat.o(291633);
+      return;
+      paramString = getContext();
+      if (paramString != null) {
+        com.tencent.mm.ui.base.k.c((Context)paramString, paramString.getString(a.h.Tgb), "", true);
+      }
+      paramInt1 = 0;
+      break;
+      paramString = paramString.field_StatusID;
+      break label85;
+      break label40;
+    }
   }
   
   public final void onVisibilityChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(238087);
+    AppMethodBeat.i(291623);
     super.onVisibilityChanged(paramBoolean);
-    Log.i("MicroMsg.TextStatus.StatusAlbumUI", "[onVisibilityChanged]" + paramBoolean + ' ' + this.MKu);
-    if ((paramBoolean) && (!this.MKu))
+    Log.i("MicroMsg.TextStatus.StatusAlbumUI", "[onVisibilityChanged]" + paramBoolean + ' ' + this.TwF);
+    if ((paramBoolean) && (!this.TwF))
     {
-      StatusAlbumUI.b localb = this.MKs;
-      if (localb == null) {
-        p.bGy("dataLoader");
+      StatusAlbumUI.b localb2 = this.TwD;
+      StatusAlbumUI.b localb1 = localb2;
+      if (localb2 == null)
+      {
+        kotlin.g.b.s.bIx("dataLoader");
+        localb1 = null;
       }
-      localb.eZs();
-      this.MKu = true;
+      localb1.gir();
+      this.TwF = true;
     }
-    AppMethodBeat.o(238087);
+    AppMethodBeat.o(291623);
   }
   
   public final boolean supportNavigationSwipeBack()
@@ -325,308 +429,212 @@ public final class StatusAlbumUI
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$buildItemConverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-textstatus_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$buildItemConverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
-    implements com.tencent.mm.view.recyclerview.f
+    implements g
   {
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(237999);
-      switch (paramInt)
-      {
-      default: 
-        locale = (e)new com.tencent.mm.plugin.textstatus.b.a.a();
-        AppMethodBeat.o(237999);
-        return locale;
-      }
-      e locale = (e)new com.tencent.mm.plugin.textstatus.b.a.b(this.MKA.wOt);
-      AppMethodBeat.o(237999);
-      return locale;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
-  {
-    d(StatusAlbumUI paramStatusAlbumUI) {}
+    c(StatusAlbumUI paramStatusAlbumUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    public final f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(233080);
-      paramMenuItem = this.MKA.getActivity();
-      if (paramMenuItem != null) {
-        paramMenuItem.finish();
+      AppMethodBeat.i(291532);
+      if (paramInt == 0)
+      {
+        localf = (f)new com.tencent.mm.plugin.textstatus.b.a.a(this.TwJ.AkV);
+        AppMethodBeat.o(291532);
+        return localf;
       }
-      AppMethodBeat.o(233080);
-      return true;
+      f localf = (f)new com.tencent.mm.plugin.textstatus.b.a.a(this.TwJ.AkV);
+      AppMethodBeat.o(291532);
+      return localf;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$1", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "onScrollStatsChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "data", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "plugin-textstatus_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$1", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "onScrollStatsChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "data", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements o
+  {
+    d(WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> paramWxRecyclerAdapter, StatusAlbumUI paramStatusAlbumUI) {}
+    
+    public final void a(RecyclerView paramRecyclerView, m paramm)
+    {
+      AppMethodBeat.i(291536);
+      kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+      kotlin.g.b.s.u(paramm, "data");
+      if ((paramm.AOt >= this.BaD.getItemCount() - 1) && (!StatusAlbumUI.a(jdField_this)))
+      {
+        paramRecyclerView = com.tencent.mm.plugin.textstatus.i.b.Trt;
+        com.tencent.mm.plugin.textstatus.i.b.a(14L, null, null, 0L, null, 30);
+        StatusAlbumUI.b(jdField_this);
+      }
+      AppMethodBeat.o(291536);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "itemPosition", "", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class e
-    implements com.tencent.mm.view.recyclerview.m
-  {
-    e(WxRecyclerAdapter paramWxRecyclerAdapter) {}
-    
-    public final void a(RecyclerView paramRecyclerView, k paramk)
-    {
-      AppMethodBeat.i(238609);
-      p.k(paramRecyclerView, "recyclerView");
-      p.k(paramk, "data");
-      if ((paramk.xrj >= this.xjD.getItemCount() - 1) && (!StatusAlbumUI.a(this.MKA)))
-      {
-        paramRecyclerView = com.tencent.mm.plugin.textstatus.h.a.MGJ;
-        com.tencent.mm.plugin.textstatus.h.a.a(14L, null, null, 0L, 14);
-        StatusAlbumUI.b(this.MKA);
-      }
-      AppMethodBeat.o(238609);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "itemPosition", "", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-textstatus_release"})
-  public static final class f
     extends RecyclerView.h
   {
+    e(StatusAlbumUI paramStatusAlbumUI) {}
+    
     public final void a(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
     {
-      AppMethodBeat.i(238890);
-      p.k(paramRect, "outRect");
-      p.k(paramRecyclerView, "parent");
-      paramRecyclerView = StatusAlbumUI.c(this.MKA);
-      if (paramRecyclerView != null)
+      AppMethodBeat.i(291575);
+      kotlin.g.b.s.u(paramRect, "outRect");
+      kotlin.g.b.s.u(paramRecyclerView, "parent");
+      WxRecyclerView localWxRecyclerView = StatusAlbumUI.c(this.TwJ);
+      paramRecyclerView = localWxRecyclerView;
+      if (localWxRecyclerView == null)
       {
-        paramRecyclerView = paramRecyclerView.getAdapter();
-        if (paramRecyclerView == null) {}
+        kotlin.g.b.s.bIx("rvSelfHistory");
+        paramRecyclerView = null;
       }
-      for (int i = paramRecyclerView.getItemCount(); paramInt == i - 1; i = 1)
+      paramRecyclerView = paramRecyclerView.getAdapter();
+      if (paramRecyclerView == null) {}
+      for (int i = 1; paramInt == i - 1; i = paramRecyclerView.getItemCount())
       {
-        paramRect.bottom = com.tencent.mm.ci.a.fromDPToPix((Context)this.MKA.getContext(), 16);
-        AppMethodBeat.o(238890);
+        paramRect.bottom = com.tencent.mm.cd.a.fromDPToPix((Context)this.TwJ.getContext(), 16);
+        AppMethodBeat.o(291575);
         return;
       }
-      paramRect.bottom = com.tencent.mm.ci.a.fromDPToPix((Context)this.MKA.getContext(), 8);
-      AppMethodBeat.o(238890);
+      paramRect.bottom = com.tencent.mm.cd.a.fromDPToPix((Context)this.TwJ.getContext(), 8);
+      AppMethodBeat.o(291575);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-textstatus_release"})
-  public static final class g
-    extends RefreshLoadMoreLayout.a
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback2;", "onLoadMoreBegin", "", "loadMoreType", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    extends RefreshLoadMoreLayout.b
   {
-    g(WxRecyclerAdapter paramWxRecyclerAdapter) {}
+    f(StatusAlbumUI paramStatusAlbumUI, WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> paramWxRecyclerAdapter) {}
     
-    public final void Ie(int paramInt)
+    private static final void b(StatusAlbumUI paramStatusAlbumUI, View paramView)
     {
-      AppMethodBeat.i(237295);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aFi());
-      super.Ie(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(237295);
+      AppMethodBeat.i(291581);
+      Object localObject1 = new Object();
+      Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramStatusAlbumUI);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+      kotlin.g.b.s.u(paramStatusAlbumUI, "this$0");
+      localObject2 = new Intent();
+      paramView = paramStatusAlbumUI.getActivity();
+      if (paramView == null) {
+        paramView = null;
+      }
+      for (;;)
+      {
+        localObject1 = paramView;
+        if (paramView == null) {
+          localObject1 = new Bundle();
+        }
+        paramView = ((Intent)localObject2).putExtras((Bundle)localObject1);
+        kotlin.g.b.s.s(paramView, "Intent().putExtras(activ…intent?.extras?:Bundle())");
+        paramView.putExtra("story_only", true);
+        com.tencent.mm.br.c.b((Context)paramStatusAlbumUI.getContext(), "", "com.tencent.mm.ui.AlbumUI", paramView);
+        paramStatusAlbumUI = com.tencent.mm.plugin.textstatus.i.b.Trt;
+        com.tencent.mm.plugin.textstatus.i.b.a(15L, null, null, 0L, null, 30);
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(291581);
+        return;
+        paramView = paramView.getIntent();
+        if (paramView == null) {
+          paramView = null;
+        } else {
+          paramView = paramView.getExtras();
+        }
+      }
     }
     
-    public final void a(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void a(RefreshLoadMoreLayout.d<Object> paramd)
     {
-      AppMethodBeat.i(237293);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      p.k(paramc, "reason");
+      Object localObject1 = null;
+      AppMethodBeat.i(291597);
+      kotlin.g.b.s.u(paramd, "reason");
       Log.i("MicroMsg.TextStatus.StatusAlbumUI", "onLoadMoreEnd");
-      if (!StatusAlbumUI.d(this.MKA).xcp)
+      Object localObject2 = StatusAlbumUI.d(this.TwJ);
+      paramd = (RefreshLoadMoreLayout.d<Object>)localObject2;
+      if (localObject2 == null)
       {
-        RefreshLoadMoreLayout.e(StatusAlbumUI.e(this.MKA));
-        if (this.xjD.YSl.size() == 0)
+        kotlin.g.b.s.bIx("dataLoader");
+        paramd = null;
+      }
+      if (!paramd.ABD)
+      {
+        localObject2 = StatusAlbumUI.e(this.TwJ);
+        paramd = (RefreshLoadMoreLayout.d<Object>)localObject2;
+        if (localObject2 == null)
         {
-          paramc = ad.kS(StatusAlbumUI.c(this.MKA).getContext()).inflate(b.f.Myl, (ViewGroup)StatusAlbumUI.c(this.MKA), false);
-          localObject = this.xjD;
-          p.j(paramc, "footer");
-          com.tencent.mm.view.recyclerview.h.b((com.tencent.mm.view.recyclerview.h)localObject, paramc, 2147483647);
-          paramc.findViewById(b.e.Mwg).setOnClickListener((View.OnClickListener)new b(this));
+          kotlin.g.b.s.bIx("mRefreshLayout");
+          paramd = null;
+        }
+        RefreshLoadMoreLayout.e(paramd);
+        if (this.BaD.agOc.size() == 0)
+        {
+          localObject2 = StatusAlbumUI.c(this.TwJ);
+          paramd = (RefreshLoadMoreLayout.d<Object>)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("rvSelfHistory");
+            paramd = null;
+          }
+          LayoutInflater localLayoutInflater = af.mU(paramd.getContext());
+          int i = a.f.TfO;
+          localObject2 = StatusAlbumUI.c(this.TwJ);
+          paramd = (RefreshLoadMoreLayout.d<Object>)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("rvSelfHistory");
+            paramd = null;
+          }
+          paramd = localLayoutInflater.inflate(i, (ViewGroup)paramd, false);
+          localObject2 = (i)this.BaD;
+          kotlin.g.b.s.s(paramd, "footer");
+          i.b((i)localObject2, paramd, 2147483647);
+          paramd.findViewById(a.e.Tdu).setOnClickListener(new StatusAlbumUI.f..ExternalSyntheticLambda0(this.TwJ));
         }
         Log.i("MicroMsg.TextStatus.StatusAlbumUI", "hasMoreData true");
       }
-      StatusAlbumUI.f(this.MKA);
-      paramc = StatusAlbumUI.c(this.MKA);
-      if (paramc != null)
+      StatusAlbumUI.f(this.TwJ);
+      paramd = StatusAlbumUI.c(this.TwJ);
+      if (paramd == null)
       {
-        paramc = paramc.getAdapter();
-        if (paramc != null) {
-          paramc.notifyDataSetChanged();
-        }
+        kotlin.g.b.s.bIx("rvSelfHistory");
+        paramd = localObject1;
       }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(237293);
+      for (;;)
+      {
+        paramd = paramd.getAdapter();
+        if (paramd != null) {
+          paramd.bZE.notifyChanged();
+        }
+        AppMethodBeat.o(291597);
+        return;
+      }
     }
     
-    public final void cKQ()
+    public final void qI(int paramInt)
     {
-      AppMethodBeat.i(237290);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      d.uiThread((kotlin.g.a.a)new a(this));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-      AppMethodBeat.o(237290);
+      AppMethodBeat.i(291589);
+      d.uiThread((kotlin.g.a.a)new a(this.TwJ));
+      AppMethodBeat.o(291589);
     }
     
-    public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
-    {
-      AppMethodBeat.i(237297);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      super.onRefreshEnd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(237297);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      a(StatusAlbumUI.g paramg)
+      a(StatusAlbumUI paramStatusAlbumUI)
       {
         super();
       }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class b
-      implements View.OnClickListener
-    {
-      b(StatusAlbumUI.g paramg) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(235685);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3$onLoadMoreEnd$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        Intent localIntent = new Intent();
-        paramView = this.MKB.MKA.getActivity();
-        if (paramView != null)
-        {
-          paramView = paramView.getIntent();
-          if (paramView != null)
-          {
-            localObject = paramView.getExtras();
-            paramView = (View)localObject;
-            if (localObject != null) {
-              break label85;
-            }
-          }
-        }
-        paramView = new Bundle();
-        label85:
-        paramView = localIntent.putExtras(paramView);
-        p.j(paramView, "Intent().putExtras(activ…intent?.extras?:Bundle())");
-        paramView.putExtra("story_only", true);
-        com.tencent.mm.by.c.b((Context)this.MKB.MKA.getContext(), "", "com.tencent.mm.ui.AlbumUI", paramView);
-        paramView = com.tencent.mm.plugin.textstatus.h.a.MGJ;
-        com.tencent.mm.plugin.textstatus.h.a.a(15L, null, null, 0L, 14);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$initView$3$onLoadMoreEnd$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(235685);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
-  static final class h
-    implements View.OnLongClickListener
-  {
-    h(StatusAlbumUI paramStatusAlbumUI) {}
-    
-    public final boolean onLongClick(final View paramView)
-    {
-      AppMethodBeat.i(233675);
-      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$longClickListener$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-      localObject1 = paramView.getTag(b.e.Mwo);
-      paramView = (View)localObject1;
-      if (!(localObject1 instanceof com.tencent.mm.plugin.textstatus.g.a.a)) {
-        paramView = null;
-      }
-      Object localObject2 = (com.tencent.mm.plugin.textstatus.g.a.a)paramView;
-      if (localObject2 == null)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$longClickListener$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(233675);
-        return true;
-      }
-      paramView = this.MKA.getContext();
-      if (paramView == null)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$longClickListener$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(233675);
-        return true;
-      }
-      p.j(paramView, "context?:return@OnLongClickListener true");
-      localObject1 = new com.tencent.mm.ui.tools.m((Context)paramView);
-      ((com.tencent.mm.ui.tools.m)localObject1).a((q.f)1.MKC);
-      localObject2 = ((com.tencent.mm.plugin.textstatus.g.a.a)localObject2).MDH;
-      if (localObject2 != null)
-      {
-        localObject2 = ((com.tencent.mm.plugin.textstatus.g.e.a)localObject2).field_StatusID;
-        if (localObject2 != null) {}
-      }
-      else
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$longClickListener$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(233675);
-        return true;
-      }
-      ((com.tencent.mm.ui.tools.m)localObject1).a((q.g)new q.g()
-      {
-        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(237971);
-          p.j(paramAnonymousMenuItem, "menuItem");
-          StatusAlbumUI localStatusAlbumUI;
-          Context localContext;
-          if (paramAnonymousMenuItem.getItemId() == b.e.Mwp)
-          {
-            localStatusAlbumUI = this.MKD.MKA;
-            localContext = (Context)paramView;
-            paramAnonymousMenuItem = paramView;
-            if (paramAnonymousMenuItem == null) {
-              break label145;
-            }
-            paramAnonymousMenuItem = paramAnonymousMenuItem.getResources();
-            paramAnonymousMenuItem.getString(b.h.Myw);
-            paramAnonymousMenuItem = paramView;
-            if (paramAnonymousMenuItem == null) {
-              break label150;
-            }
-          }
-          label145:
-          label150:
-          for (paramAnonymousMenuItem = paramAnonymousMenuItem.getResources();; paramAnonymousMenuItem = null)
-          {
-            localStatusAlbumUI.iYE = com.tencent.mm.ui.base.h.a(localContext, paramAnonymousMenuItem.getString(b.h.Myw), false, null);
-            paramAnonymousMenuItem = new com.tencent.mm.plugin.textstatus.g.a(this.MCL, 2);
-            com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)paramAnonymousMenuItem);
-            paramAnonymousMenuItem = com.tencent.mm.plugin.textstatus.h.a.MGJ;
-            com.tencent.mm.plugin.textstatus.h.a.a((Context)paramView, 43L, null, null, 12);
-            AppMethodBeat.o(237971);
-            return;
-            paramAnonymousMenuItem = null;
-            break;
-          }
-        }
-      });
-      ((com.tencent.mm.ui.tools.m)localObject1).hYu();
-      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$longClickListener$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(233675);
-      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.StatusAlbumUI
  * JD-Core Version:    0.7.0.1
  */

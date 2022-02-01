@@ -5,7 +5,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.luggage.a.e;
 import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.d;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public class GetStorageSizeTask
@@ -13,7 +13,7 @@ public class GetStorageSizeTask
 {
   public static final Parcelable.Creator<GetStorageSizeTask> CREATOR;
   public String appId;
-  public Runnable otv;
+  public Runnable rxj;
   public int size;
   
   static
@@ -28,35 +28,35 @@ public class GetStorageSizeTask
   protected GetStorageSizeTask(Parcel paramParcel)
   {
     AppMethodBeat.i(147226);
-    f(paramParcel);
+    h(paramParcel);
     AppMethodBeat.o(147226);
   }
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(147222);
-    if (e.K(a.class) == null) {}
-    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).QF())
+    if (e.T(a.class) == null) {}
+    for (g localg = null; localg == null; localg = ((a)e.T(a.class)).aqR())
     {
-      bPt();
+      cpA();
       AppMethodBeat.o(147222);
       return;
     }
-    this.size = locald.adw(this.appId);
-    bPt();
+    this.size = localg.VT(this.appId);
+    cpA();
     AppMethodBeat.o(147222);
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(147223);
-    if (this.otv != null) {
-      this.otv.run();
+    if (this.rxj != null) {
+      this.rxj.run();
     }
     AppMethodBeat.o(147223);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     AppMethodBeat.i(147225);
     this.appId = paramParcel.readString();
@@ -75,7 +75,7 @@ public class GetStorageSizeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.GetStorageSizeTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,72 @@
 package com.tencent.mm.plugin.textstatus.d;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.proto.TextStatusJumpInfo;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.textstatus.proto.TextStatusExtInfo;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/jump/TextStatusJumpManager;", "", "()V", "TAG", "", "doJumpDetail", "", "context", "Landroid/content/Context;", "sourceId", "customParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "doJumpInner", "customRes", "doJumpSource", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"isBlur", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusExtInfo;", "isDuplicateBg", "isHideBlur", "isSameElements", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;", "topicInfo", "resetMedia", "", "reverseBlur", "setDuplicateBg", "isDuplicate", "setSendToSquare", "isSwitchOpen", "plugin-textstatus_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a MBv;
-  
-  static
+  public static final void a(TextStatusExtInfo paramTextStatusExtInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(237512);
-    MBv = new a();
-    AppMethodBeat.o(237512);
+    AppMethodBeat.i(289742);
+    s.u(paramTextStatusExtInfo, "<this>");
+    if (paramBoolean)
+    {
+      paramTextStatusExtInfo.option |= 0x8;
+      AppMethodBeat.o(289742);
+      return;
+    }
+    paramTextStatusExtInfo.option &= 0xFFFFFFF7;
+    AppMethodBeat.o(289742);
   }
   
-  public static boolean a(Context paramContext, boolean paramBoolean, List<? extends TextStatusJumpInfo> paramList)
+  public static final boolean a(TextStatusExtInfo paramTextStatusExtInfo)
   {
-    AppMethodBeat.i(237510);
-    p.k(paramContext, "context");
-    p.k(paramList, "jumpInfos");
-    AppMethodBeat.o(237510);
-    return paramBoolean;
+    AppMethodBeat.i(289748);
+    s.u(paramTextStatusExtInfo, "<this>");
+    s.u(paramTextStatusExtInfo, "<this>");
+    if ((paramTextStatusExtInfo.option & 0x8) != 0L) {}
+    for (int i = 1; (i != 0) && (b(paramTextStatusExtInfo)); i = 0)
+    {
+      AppMethodBeat.o(289748);
+      return true;
+    }
+    AppMethodBeat.o(289748);
+    return false;
+  }
+  
+  public static final boolean b(TextStatusExtInfo paramTextStatusExtInfo)
+  {
+    AppMethodBeat.i(289754);
+    s.u(paramTextStatusExtInfo, "<this>");
+    if ((paramTextStatusExtInfo.option & 1L) != 0L)
+    {
+      AppMethodBeat.o(289754);
+      return true;
+    }
+    AppMethodBeat.o(289754);
+    return false;
+  }
+  
+  public static final void c(TextStatusExtInfo paramTextStatusExtInfo)
+  {
+    AppMethodBeat.i(289760);
+    s.u(paramTextStatusExtInfo, "<this>");
+    paramTextStatusExtInfo.mediaType = 0;
+    paramTextStatusExtInfo.mediaUrl = "";
+    paramTextStatusExtInfo.mediaThumbUrl = "";
+    paramTextStatusExtInfo.mediaAesKey = "";
+    paramTextStatusExtInfo.mediaThumbAesKey = "";
+    paramTextStatusExtInfo.mediaWidth = 0;
+    paramTextStatusExtInfo.mediaHeight = 0;
+    AppMethodBeat.o(289760);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.d.a
  * JD-Core Version:    0.7.0.1
  */

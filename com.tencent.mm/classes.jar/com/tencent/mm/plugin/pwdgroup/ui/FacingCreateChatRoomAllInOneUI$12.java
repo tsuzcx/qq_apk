@@ -1,25 +1,37 @@
 package com.tencent.mm.plugin.pwdgroup.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 final class FacingCreateChatRoomAllInOneUI$12
-  implements MenuItem.OnMenuItemClickListener
+  extends MMHandler
 {
   FacingCreateChatRoomAllInOneUI$12(FacingCreateChatRoomAllInOneUI paramFacingCreateChatRoomAllInOneUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(27633);
-    this.Hjr.finish();
-    AppMethodBeat.o(27633);
-    return false;
+    AppMethodBeat.i(27632);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(27632);
+      return;
+      if (FacingCreateChatRoomAllInOneUI.b(this.Nhe) != null)
+      {
+        FacingCreateChatRoomAllInOneUI.b(this.Nhe).setData(FacingCreateChatRoomAllInOneUI.c(this.Nhe));
+        AppMethodBeat.o(27632);
+        return;
+        FacingCreateChatRoomAllInOneUI.d(this.Nhe);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.12
  * JD-Core Version:    0.7.0.1
  */

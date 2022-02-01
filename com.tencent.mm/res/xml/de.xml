@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:key="refund_way_detail" android:title="" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference android:key="refund_way_detail_lq" android:layout="@layout/b8j" android:summary="" android:title="" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.RadioBelowSummarytAndIconPreference android:key="refund_way_detail_origin" android:layout="@layout/b8j" android:summary="" android:title="" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailHeaderPreference android:key="wallet_wxcredit_header" android:layout="@layout/chg" android:title="@string/lcm" />
+    <Preference android:key="wallet_wxcredit_total_amount" android:layout="@layout/bdi" android:title="@string/lc3" />
+    <PreferenceTitleCategory android:title=" " />
+    <Preference android:key="wallet_wxcredit_change_amount" android:layout="@layout/bdi" android:title="@string/lbz" />
+    <PreferenceTitleCategory android:title="@string/lc4" />
+    <Preference android:key="wallet_wxcredit_bill" android:layout="@layout/bdi" android:title="@string/lbs" />
+    <Preference android:key="wallet_wxcredit_repayment" android:layout="@layout/bdi" android:title="@string/lcp" />
+    <Preference android:key="wallet_wxcredit_repayment_tips" android:layout="@layout/bf0" android:title="@string/lcq" />
+    <PreferenceTitleCategory android:title="@string/lbr" />
+    <Preference android:key="wallet_wxcredit_card_info" android:layout="@layout/bdi" android:title="@string/lbw" />
+    <Preference android:key="wallet_wxcredit_right" android:layout="@layout/bdi" android:title="@string/lcr" />
+    <PreferenceTitleCategory android:title=" " />
+    <Preference android:key="wallet_wxcredit_bank_name" android:layout="@layout/bdi" android:title="@string/lbt" />
+    <com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailFooterPreference android:key="wallet_wxcredit_footer" android:layout="@layout/chf" android:title="@string/lcq" />
 </PreferenceScreen>

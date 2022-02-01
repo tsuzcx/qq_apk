@@ -37,144 +37,136 @@ final class zzn
     // Byte code:
     //   0: sipush 2540
     //   3: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 55	java/io/FileInputStream
+    //   6: new 53	java/io/FileInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 58	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   14: astore 4
-    //   16: new 60	java/util/Properties
-    //   19: dup
-    //   20: invokespecial 61	java/util/Properties:<init>	()V
-    //   23: astore_0
+    //   11: invokespecial 56	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   14: astore_0
+    //   15: new 58	java/util/Properties
+    //   18: dup
+    //   19: invokespecial 59	java/util/Properties:<init>	()V
+    //   22: astore_3
+    //   23: aload_3
     //   24: aload_0
-    //   25: aload 4
-    //   27: invokevirtual 65	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   30: aload_0
-    //   31: ldc 67
-    //   33: invokevirtual 71	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   36: astore_3
-    //   37: aload_0
-    //   38: ldc 73
-    //   40: invokevirtual 71	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   43: astore 5
-    //   45: aload_3
+    //   25: invokevirtual 63	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   28: aload_3
+    //   29: ldc 65
+    //   31: invokevirtual 69	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   34: astore 4
+    //   36: aload_3
+    //   37: ldc 71
+    //   39: invokevirtual 69	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   42: astore 5
+    //   44: aload 4
     //   46: ifnull +8 -> 54
     //   49: aload 5
-    //   51: ifnonnull +17 -> 68
+    //   51: ifnonnull +16 -> 67
     //   54: aconst_null
-    //   55: aload 4
-    //   57: invokestatic 76	com/google/android/gms/iid/zzn:zzd	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
-    //   60: sipush 2540
-    //   63: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   66: aconst_null
-    //   67: areturn
-    //   68: aload_3
+    //   55: aload_0
+    //   56: invokestatic 74	com/google/android/gms/iid/zzn:zzd	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
+    //   59: sipush 2540
+    //   62: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: aconst_null
+    //   66: areturn
+    //   67: aload 4
     //   69: aload 5
     //   71: invokestatic 41	com/google/android/gms/iid/zzn:zzg	(Ljava/lang/String;Ljava/lang/String;)Ljava/security/KeyPair;
-    //   74: astore_3
-    //   75: aload_0
-    //   76: ldc 78
-    //   78: invokevirtual 71	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   81: invokestatic 84	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   84: lstore_1
-    //   85: new 37	com/google/android/gms/iid/zzo
-    //   88: dup
-    //   89: aload_3
-    //   90: lload_1
-    //   91: invokespecial 48	com/google/android/gms/iid/zzo:<init>	(Ljava/security/KeyPair;J)V
-    //   94: astore_0
-    //   95: aconst_null
-    //   96: aload 4
-    //   98: invokestatic 76	com/google/android/gms/iid/zzn:zzd	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
-    //   101: sipush 2540
-    //   104: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   107: aload_0
-    //   108: areturn
-    //   109: astore_0
-    //   110: new 86	com/google/android/gms/iid/zzp
-    //   113: dup
-    //   114: aload_0
-    //   115: invokespecial 89	com/google/android/gms/iid/zzp:<init>	(Ljava/lang/Exception;)V
-    //   118: astore_0
-    //   119: sipush 2540
-    //   122: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   125: aload_0
-    //   126: athrow
-    //   127: astore_3
-    //   128: sipush 2540
-    //   131: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   134: aload_3
-    //   135: athrow
-    //   136: astore_0
-    //   137: aload_3
-    //   138: aload 4
-    //   140: invokestatic 76	com/google/android/gms/iid/zzn:zzd	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
-    //   143: sipush 2540
-    //   146: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   149: aload_0
-    //   150: athrow
-    //   151: astore_0
-    //   152: aconst_null
-    //   153: astore_3
-    //   154: goto -17 -> 137
+    //   74: astore 4
+    //   76: aload_3
+    //   77: ldc 76
+    //   79: invokevirtual 69	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   82: invokestatic 82	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   85: lstore_1
+    //   86: new 37	com/google/android/gms/iid/zzo
+    //   89: dup
+    //   90: aload 4
+    //   92: lload_1
+    //   93: invokespecial 48	com/google/android/gms/iid/zzo:<init>	(Ljava/security/KeyPair;J)V
+    //   96: astore_3
+    //   97: aconst_null
+    //   98: aload_0
+    //   99: invokestatic 74	com/google/android/gms/iid/zzn:zzd	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
+    //   102: sipush 2540
+    //   105: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: aload_3
+    //   109: areturn
+    //   110: astore_3
+    //   111: new 84	com/google/android/gms/iid/zzp
+    //   114: dup
+    //   115: aload_3
+    //   116: invokespecial 87	com/google/android/gms/iid/zzp:<init>	(Ljava/lang/Exception;)V
+    //   119: astore_3
+    //   120: sipush 2540
+    //   123: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: aload_3
+    //   127: athrow
+    //   128: astore_3
+    //   129: sipush 2540
+    //   132: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: aload_3
+    //   136: athrow
+    //   137: astore 4
+    //   139: aload_3
+    //   140: aload_0
+    //   141: invokestatic 74	com/google/android/gms/iid/zzn:zzd	(Ljava/lang/Throwable;Ljava/io/FileInputStream;)V
+    //   144: sipush 2540
+    //   147: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: aload 4
+    //   152: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	157	0	paramFile	File
-    //   84	7	1	l	long
-    //   36	54	3	localObject1	Object
-    //   127	11	3	localThrowable	Throwable
-    //   153	1	3	localObject2	Object
-    //   14	125	4	localFileInputStream	java.io.FileInputStream
-    //   43	27	5	str	String
+    //   0	153	0	paramFile	File
+    //   85	8	1	l	long
+    //   22	87	3	localObject1	Object
+    //   110	6	3	localNumberFormatException	NumberFormatException
+    //   119	8	3	localzzp	zzp
+    //   128	12	3	localThrowable	java.lang.Throwable
+    //   34	57	4	localObject2	Object
+    //   137	14	4	localObject3	Object
+    //   42	28	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   75	85	109	java/lang/NumberFormatException
-    //   16	45	127	java/lang/Throwable
-    //   68	75	127	java/lang/Throwable
-    //   75	85	127	java/lang/Throwable
-    //   85	95	127	java/lang/Throwable
-    //   110	127	127	java/lang/Throwable
-    //   128	136	136	finally
-    //   16	45	151	finally
-    //   68	75	151	finally
-    //   75	85	151	finally
-    //   85	95	151	finally
-    //   110	127	151	finally
+    //   76	86	110	java/lang/NumberFormatException
+    //   15	44	128	finally
+    //   67	76	128	finally
+    //   76	86	128	finally
+    //   86	97	128	finally
+    //   111	128	128	finally
+    //   129	137	137	finally
   }
   
   private static void zzd(Context paramContext, String paramString, zzo paramzzo)
   {
-    Object localObject = null;
     AppMethodBeat.i(2537);
     try
     {
       Log.isLoggable("InstanceID", 3);
-      paramContext = zzj(paramContext, paramString);
-      paramContext.createNewFile();
-      paramString = new Properties();
-      paramString.setProperty("pub", zzo.zzd(paramzzo));
-      paramString.setProperty("pri", zzo.zze(paramzzo));
-      paramString.setProperty("cre", String.valueOf(zzo.zzf(paramzzo)));
-      paramzzo = new FileOutputStream(paramContext);
-      paramContext = localObject;
+      paramString = zzj(paramContext, paramString);
+      paramString.createNewFile();
+      paramContext = new Properties();
+      paramContext.setProperty("pub", zzo.zzd(paramzzo));
+      paramContext.setProperty("pri", zzo.zze(paramzzo));
+      paramContext.setProperty("cre", String.valueOf(zzo.zzf(paramzzo)));
+      paramString = new FileOutputStream(paramString);
       try
       {
-        paramString.store(paramzzo, null);
-        zzd(null, paramzzo);
+        paramContext.store(paramString, null);
+        zzd(null, paramString);
         AppMethodBeat.o(2537);
         return;
       }
-      catch (Throwable paramString)
-      {
-        paramContext = paramString;
-        AppMethodBeat.o(2537);
-        paramContext = paramString;
-        throw paramString;
-      }
       finally
       {
-        zzd(paramContext, paramzzo);
-        AppMethodBeat.o(2537);
+        try
+        {
+          AppMethodBeat.o(2537);
+          throw paramContext;
+        }
+        finally
+        {
+          zzd(paramContext, paramString);
+          AppMethodBeat.o(2537);
+        }
       }
       return;
     }
@@ -236,40 +228,40 @@ final class zzn
     //   3: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: bipush 8
-    //   9: invokestatic 204	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   9: invokestatic 202	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   12: astore_0
     //   13: aload_1
     //   14: bipush 8
-    //   16: invokestatic 204	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   16: invokestatic 202	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   19: astore_1
-    //   20: ldc 206
-    //   22: invokestatic 212	java/security/KeyFactory:getInstance	(Ljava/lang/String;)Ljava/security/KeyFactory;
+    //   20: ldc 204
+    //   22: invokestatic 210	java/security/KeyFactory:getInstance	(Ljava/lang/String;)Ljava/security/KeyFactory;
     //   25: astore_2
-    //   26: new 214	java/security/KeyPair
+    //   26: new 212	java/security/KeyPair
     //   29: dup
     //   30: aload_2
-    //   31: new 216	java/security/spec/X509EncodedKeySpec
+    //   31: new 214	java/security/spec/X509EncodedKeySpec
     //   34: dup
     //   35: aload_0
-    //   36: invokespecial 219	java/security/spec/X509EncodedKeySpec:<init>	([B)V
-    //   39: invokevirtual 223	java/security/KeyFactory:generatePublic	(Ljava/security/spec/KeySpec;)Ljava/security/PublicKey;
+    //   36: invokespecial 217	java/security/spec/X509EncodedKeySpec:<init>	([B)V
+    //   39: invokevirtual 221	java/security/KeyFactory:generatePublic	(Ljava/security/spec/KeySpec;)Ljava/security/PublicKey;
     //   42: aload_2
-    //   43: new 225	java/security/spec/PKCS8EncodedKeySpec
+    //   43: new 223	java/security/spec/PKCS8EncodedKeySpec
     //   46: dup
     //   47: aload_1
-    //   48: invokespecial 226	java/security/spec/PKCS8EncodedKeySpec:<init>	([B)V
-    //   51: invokevirtual 230	java/security/KeyFactory:generatePrivate	(Ljava/security/spec/KeySpec;)Ljava/security/PrivateKey;
-    //   54: invokespecial 233	java/security/KeyPair:<init>	(Ljava/security/PublicKey;Ljava/security/PrivateKey;)V
+    //   48: invokespecial 224	java/security/spec/PKCS8EncodedKeySpec:<init>	([B)V
+    //   51: invokevirtual 228	java/security/KeyFactory:generatePrivate	(Ljava/security/spec/KeySpec;)Ljava/security/PrivateKey;
+    //   54: invokespecial 231	java/security/KeyPair:<init>	(Ljava/security/PublicKey;Ljava/security/PrivateKey;)V
     //   57: astore_0
     //   58: sipush 2535
     //   61: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aload_0
     //   65: areturn
     //   66: astore_0
-    //   67: new 86	com/google/android/gms/iid/zzp
+    //   67: new 84	com/google/android/gms/iid/zzp
     //   70: dup
     //   71: aload_0
-    //   72: invokespecial 89	com/google/android/gms/iid/zzp:<init>	(Ljava/lang/Exception;)V
+    //   72: invokespecial 87	com/google/android/gms/iid/zzp:<init>	(Ljava/lang/Exception;)V
     //   75: astore_0
     //   76: sipush 2535
     //   79: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -277,25 +269,25 @@ final class zzn
     //   83: athrow
     //   84: astore_0
     //   85: aload_0
-    //   86: invokestatic 142	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   86: invokestatic 140	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   89: astore_1
-    //   90: new 144	java/lang/StringBuilder
+    //   90: new 142	java/lang/StringBuilder
     //   93: dup
     //   94: aload_1
-    //   95: invokestatic 142	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   98: invokevirtual 148	java/lang/String:length	()I
+    //   95: invokestatic 140	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   98: invokevirtual 146	java/lang/String:length	()I
     //   101: bipush 19
     //   103: iadd
-    //   104: invokespecial 150	java/lang/StringBuilder:<init>	(I)V
-    //   107: ldc 235
-    //   109: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokespecial 148	java/lang/StringBuilder:<init>	(I)V
+    //   107: ldc 233
+    //   109: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: aload_1
-    //   113: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   116: pop
-    //   117: new 86	com/google/android/gms/iid/zzp
+    //   117: new 84	com/google/android/gms/iid/zzp
     //   120: dup
     //   121: aload_0
-    //   122: invokespecial 89	com/google/android/gms/iid/zzp:<init>	(Ljava/lang/Exception;)V
+    //   122: invokespecial 87	com/google/android/gms/iid/zzp:<init>	(Ljava/lang/Exception;)V
     //   125: astore_0
     //   126: sipush 2535
     //   129: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -334,7 +326,7 @@ final class zzn
     //   6: aload_0
     //   7: aload_1
     //   8: aload_2
-    //   9: invokespecial 246	com/google/android/gms/iid/zzn:zzi	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
+    //   9: invokespecial 244	com/google/android/gms/iid/zzn:zzi	(Landroid/content/Context;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
     //   12: astore_3
     //   13: aload_3
     //   14: ifnull +18 -> 32
@@ -342,7 +334,7 @@ final class zzn
     //   18: aload_1
     //   19: aload_2
     //   20: aload_3
-    //   21: invokespecial 248	com/google/android/gms/iid/zzn:zze	(Landroid/content/Context;Ljava/lang/String;Lcom/google/android/gms/iid/zzo;)V
+    //   21: invokespecial 246	com/google/android/gms/iid/zzn:zze	(Landroid/content/Context;Ljava/lang/String;Lcom/google/android/gms/iid/zzo;)V
     //   24: sipush 2534
     //   27: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: aload_3
@@ -350,18 +342,18 @@ final class zzn
     //   32: aconst_null
     //   33: astore_3
     //   34: aload_1
-    //   35: ldc 167
+    //   35: ldc 165
     //   37: iconst_0
-    //   38: invokevirtual 173	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   38: invokevirtual 171	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   41: aload_2
-    //   42: invokestatic 175	com/google/android/gms/iid/zzn:zzd	(Landroid/content/SharedPreferences;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
+    //   42: invokestatic 173	com/google/android/gms/iid/zzn:zzd	(Landroid/content/SharedPreferences;Ljava/lang/String;)Lcom/google/android/gms/iid/zzo;
     //   45: astore 4
     //   47: aload 4
     //   49: ifnull +23 -> 72
     //   52: aload_1
     //   53: aload_2
     //   54: aload 4
-    //   56: invokestatic 250	com/google/android/gms/iid/zzn:zzd	(Landroid/content/Context;Ljava/lang/String;Lcom/google/android/gms/iid/zzo;)V
+    //   56: invokestatic 248	com/google/android/gms/iid/zzn:zzd	(Landroid/content/Context;Ljava/lang/String;Lcom/google/android/gms/iid/zzo;)V
     //   59: sipush 2534
     //   62: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: aload 4
@@ -456,7 +448,7 @@ final class zzn
   private static File zzj(Context paramContext)
   {
     AppMethodBeat.i(2538);
-    File localFile = a.R(paramContext);
+    File localFile = a.ac(paramContext);
     if ((localFile != null) && (localFile.isDirectory()))
     {
       AppMethodBeat.o(2538);
@@ -532,7 +524,7 @@ final class zzn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzn
  * JD-Core Version:    0.7.0.1
  */

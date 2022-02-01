@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.hld.view.ImeTouchSoundView android:id="@id/h8v" android:background="@drawable/cxv" android:layout_width="fill_parent" android:layout_height="@dimen/asm"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/aso" android:textColor="@color/ah5" android:ellipsize="end" android:id="@id/ka9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/ast" android:textColor="@color/ah6" android:id="@id/ka_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ass" android:layout_marginRight="@dimen/asr" android:text="@string/jkg" android:layout_alignParentRight="true" android:lineSpacingExtra="@dimen/asq" />
-</com.tencent.mm.plugin.hld.view.ImeTouchSoundView>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0" android:minHeight="@dimen/m1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:gravity="center" android:id="@id/lkg" android:clickable="true" android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:text="@string/lbt" android:layout_weight="1.0" />
+    <TextView android:id="@id/lud" android:background="#ffeeeeee" android:layout_width="2.0px" android:layout_height="32.0dip" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a1_" android:gravity="center" android:id="@id/lke" android:clickable="true" android:layout_width="0.0dip" android:layout_height="@dimen/m1" android:text="@string/lc5" android:layout_weight="1.0" />
+</LinearLayout>

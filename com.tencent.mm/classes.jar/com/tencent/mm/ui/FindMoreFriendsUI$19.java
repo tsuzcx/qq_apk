@@ -1,19 +1,31 @@
 package com.tencent.mm.ui;
 
 import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.setting.ui.setting.SettingsManageFindMoreUI;
 
 final class FindMoreFriendsUI$19
-  implements Runnable
+  implements View.OnClickListener
 {
-  FindMoreFriendsUI$19(FindMoreFriendsUI paramFindMoreFriendsUI, Intent paramIntent) {}
+  FindMoreFriendsUI$19(FindMoreFriendsUI paramFindMoreFriendsUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(290403);
-    c.b(this.VUs.getContext(), "webview", ".ui.tools.WebViewUI", this.val$intent);
-    AppMethodBeat.o(290403);
+    AppMethodBeat.i(249109);
+    Object localObject = new b();
+    ((b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/FindMoreFriendsUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    paramView = this.adyF;
+    localObject = new Intent(this.adyF.getContext(), SettingsManageFindMoreUI.class);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/ui/FindMoreFriendsUI$19", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/ui/FindMoreFriendsUI$19", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/FindMoreFriendsUI$19", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(249109);
   }
 }
 

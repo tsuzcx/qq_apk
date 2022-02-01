@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
-  public static boolean brI(String paramString)
+  public static boolean brx(String paramString)
   {
     AppMethodBeat.i(152380);
     if ((paramString == null) || (paramString.length() == 0))
@@ -20,24 +20,24 @@ public final class d
       AppMethodBeat.o(152380);
       return false;
     }
-    ao localao = h.aHG().aHp();
-    if (localao == null)
+    aq localaq = h.baE().ban();
+    if (localaq == null)
     {
       Log.e("MicroMsg.AppNewIconUtil", "markNew fail, cfgStg is null");
       AppMethodBeat.o(152380);
       return false;
     }
     a locala = new a((byte)0);
-    locala.aXl((String)localao.b(69121, null));
-    if (!locala.JhO.contains(paramString)) {
-      locala.JhO.add(paramString);
+    locala.aUQ((String)localaq.d(69121, null));
+    if (!locala.PtA.contains(paramString)) {
+      locala.PtA.add(paramString);
     }
-    localao.i(69121, locala.hnc());
+    localaq.B(69121, locala.iNS());
     AppMethodBeat.o(152380);
     return true;
   }
   
-  public static boolean brJ(String paramString)
+  public static boolean bry(String paramString)
   {
     AppMethodBeat.i(152381);
     if ((paramString == null) || (paramString.length() == 0))
@@ -46,38 +46,38 @@ public final class d
       AppMethodBeat.o(152381);
       return false;
     }
-    ao localao = h.aHG().aHp();
-    if (localao == null)
+    aq localaq = h.baE().ban();
+    if (localaq == null)
     {
       Log.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, cfgStg is null");
       AppMethodBeat.o(152381);
       return false;
     }
     a locala = new a((byte)0);
-    locala.aXl((String)localao.b(69121, null));
-    if (locala.JhO.contains(paramString)) {
-      locala.JhO.remove(paramString);
+    locala.aUQ((String)localaq.d(69121, null));
+    if (locala.PtA.contains(paramString)) {
+      locala.PtA.remove(paramString);
     }
-    localao.i(69121, locala.hnc());
+    localaq.B(69121, locala.iNS());
     AppMethodBeat.o(152381);
     return true;
   }
   
   static final class a
   {
-    List<String> JhO;
+    List<String> PtA;
     
     private a()
     {
       AppMethodBeat.i(152377);
-      this.JhO = new ArrayList();
+      this.PtA = new ArrayList();
       AppMethodBeat.o(152377);
     }
     
-    final void aXl(String paramString)
+    final void aUQ(String paramString)
     {
       AppMethodBeat.i(152379);
-      this.JhO = new ArrayList();
+      this.PtA = new ArrayList();
       if ((paramString == null) || (paramString.length() == 0))
       {
         AppMethodBeat.o(152379);
@@ -89,22 +89,22 @@ public final class d
       while (i < j)
       {
         Object localObject = paramString[i];
-        this.JhO.add(localObject);
+        this.PtA.add(localObject);
         i += 1;
       }
       AppMethodBeat.o(152379);
     }
     
-    final String hnc()
+    final String iNS()
     {
       AppMethodBeat.i(152378);
-      if ((this.JhO == null) || (this.JhO.size() == 0))
+      if ((this.PtA == null) || (this.PtA.size() == 0))
       {
         AppMethodBeat.o(152378);
         return "";
       }
       Object localObject = new StringBuffer();
-      Iterator localIterator = this.JhO.iterator();
+      Iterator localIterator = this.PtA.iterator();
       while (localIterator.hasNext())
       {
         ((StringBuffer)localObject).append((String)localIterator.next());

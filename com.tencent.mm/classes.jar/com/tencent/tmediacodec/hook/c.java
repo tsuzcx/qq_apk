@@ -4,7 +4,7 @@ import android.graphics.SurfaceTexture;
 
 public abstract interface c
 {
-  public abstract void v(SurfaceTexture paramSurfaceTexture);
+  public abstract void x(SurfaceTexture paramSurfaceTexture);
 }
 
 

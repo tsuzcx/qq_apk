@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/iwp" android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/hb1" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.3" />
-    <ImageView android:layout_gravity="top" android:id="@id/hb2" android:background="@drawable/cmc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/haz" android:background="@drawable/arf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" />
-</FrameLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="?uy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/bb">
+        <ImageView android:id="@id/f1c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/df" />
+        <TextView android:id="@id/khu" style="@style/zp" />
+    </LinearLayout>
+</LinearLayout>

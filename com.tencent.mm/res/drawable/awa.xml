@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/sos_back_pressed" />
-    <item android:drawable="@raw/sos_back" />
-</selector>
+    <solid android:color="@color/BW_BG_30" />
+    <corners android:topLeftRadius="18.0dip" android:bottomLeftRadius="18.0dip" />
+</shape>

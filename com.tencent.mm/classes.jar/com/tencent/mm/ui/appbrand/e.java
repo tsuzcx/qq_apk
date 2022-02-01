@@ -5,24 +5,21 @@ import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.aad;
-import com.tencent.mm.f.a.aad.a;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.abz;
+import com.tencent.mm.autogen.a.abz.a;
 import com.tencent.mm.model.bh;
+import com.tencent.mm.modelappbrand.q;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.protocal.protobuf.epv;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.protocal.protobuf.fku;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.aa;
 import java.util.LinkedList;
 
 public final class e
 {
-  public static String afi(String paramString)
+  public static String XJ(String paramString)
   {
     AppMethodBeat.i(33813);
     if (TextUtils.isEmpty(paramString))
@@ -30,8 +27,8 @@ public final class e
       AppMethodBeat.o(33813);
       return null;
     }
-    paramString = ((com.tencent.mm.plugin.appbrand.service.q)h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).aeW(paramString);
-    if ((paramString != null) && (paramString.bLF() != null))
+    paramString = ((com.tencent.mm.plugin.appbrand.service.s)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.s.class)).Xy(paramString);
+    if ((paramString != null) && (paramString.cld() != null))
     {
       paramString = paramString.field_appId;
       AppMethodBeat.o(33813);
@@ -42,7 +39,7 @@ public final class e
     return null;
   }
   
-  public static String byw(String paramString)
+  public static String bzU(String paramString)
   {
     AppMethodBeat.i(33812);
     if (TextUtils.isEmpty(paramString))
@@ -50,10 +47,10 @@ public final class e
       AppMethodBeat.o(33812);
       return null;
     }
-    paramString = ((com.tencent.mm.plugin.appbrand.service.q)h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).aeW(paramString);
-    if ((paramString != null) && (paramString.bLF() != null))
+    paramString = ((com.tencent.mm.plugin.appbrand.service.s)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.s.class)).Xy(paramString);
+    if ((paramString != null) && (paramString.cld() != null))
     {
-      paramString = paramString.bLF().obc;
+      paramString = paramString.cld().rbO;
       AppMethodBeat.o(33812);
       return paramString;
     }
@@ -62,7 +59,7 @@ public final class e
     return null;
   }
   
-  public static String byx(String paramString)
+  public static String bzV(String paramString)
   {
     AppMethodBeat.i(33814);
     if (TextUtils.isEmpty(paramString))
@@ -70,7 +67,7 @@ public final class e
       AppMethodBeat.o(33814);
       return null;
     }
-    paramString = ((com.tencent.mm.plugin.appbrand.service.q)h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).aeW(paramString);
+    paramString = ((com.tencent.mm.plugin.appbrand.service.s)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.s.class)).Xy(paramString);
     if (paramString != null)
     {
       paramString = paramString.field_nickname;
@@ -86,57 +83,57 @@ public final class e
   {
     int j = 1;
     AppMethodBeat.i(33811);
-    Object localObject1 = new aad();
-    ((aad)localObject1).fZt.fuO = paramString;
-    Object localObject2 = ((aad)localObject1).fZt;
+    Object localObject1 = new abz();
+    ((abz)localObject1).ify.hzi = paramString;
+    Object localObject2 = ((abz)localObject1).ify;
     if (paramBoolean)
     {
       i = 2;
-      ((aad.a)localObject2).action = i;
-      ((aad)localObject1).fZt.option = 2;
-      EventCenter.instance.publish((IEvent)localObject1);
+      ((abz.a)localObject2).action = i;
+      ((abz)localObject1).ify.option = 2;
+      ((abz)localObject1).publish();
       localObject1 = new LinkedList();
-      localObject2 = new epv();
-      ((epv)localObject2).Usr = paramString;
+      localObject2 = new fku();
+      ((fku)localObject2).abLu = paramString;
       if (!paramBoolean) {
-        break label163;
+        break label160;
       }
     }
-    label163:
+    label160:
     for (int i = j;; i = 0)
     {
-      ((epv)localObject2).Usq = i;
-      ((epv)localObject2).rWu = 3;
+      ((fku)localObject2).abLt = i;
+      ((fku)localObject2).vhJ = 3;
       ((LinkedList)localObject1).add(localObject2);
-      bh.aGY().a(1176, new i()
+      bh.aZW().a(1176, new com.tencent.mm.am.h()
       {
-        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.q paramAnonymousq)
+        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           int i = 1;
           AppMethodBeat.i(33809);
-          bh.aGY().b(1176, this);
+          bh.aZW().b(1176, this);
           Log.d("MicroMsg.AppBrandServiceHelper", "onSceneEnd(errType : %d, errCode : %d, errMsg : %s, toBan : %s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.TRUE });
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
-            w.makeText(this.val$context, R.l.eOm, 0).show();
-            paramAnonymousString = new aad();
-            paramAnonymousString.fZt.fuO = paramString;
-            paramAnonymousq = paramAnonymousString.fZt;
+            aa.makeText(e.this, R.l.gQz, 0).show();
+            paramAnonymousString = new abz();
+            paramAnonymousString.ify.hzi = paramString;
+            paramAnonymousp = paramAnonymousString.ify;
             paramAnonymousInt1 = i;
             if (!paramBoolean) {
               paramAnonymousInt1 = 2;
             }
-            paramAnonymousq.action = paramAnonymousInt1;
-            paramAnonymousString.fZt.option = 2;
-            EventCenter.instance.publish(paramAnonymousString);
+            paramAnonymousp.action = paramAnonymousInt1;
+            paramAnonymousString.ify.option = 2;
+            paramAnonymousString.publish();
             AppMethodBeat.o(33809);
             return;
           }
           AppMethodBeat.o(33809);
         }
       });
-      paramContext = new com.tencent.mm.modelappbrand.q((LinkedList)localObject1);
-      bh.aGY().a(paramContext, 0);
+      paramContext = new q((LinkedList)localObject1);
+      bh.aZW().a(paramContext, 0);
       AppMethodBeat.o(33811);
       return;
       i = 1;
@@ -146,7 +143,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.e
  * JD-Core Version:    0.7.0.1
  */

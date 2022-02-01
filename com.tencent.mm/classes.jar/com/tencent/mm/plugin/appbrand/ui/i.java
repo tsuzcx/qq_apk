@@ -1,254 +1,184 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import com.tencent.luggage.k.l;
+import android.view.View.AccessibilityDelegate;
+import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
+import android.view.accessibility.AccessibilityManager;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.animation.Animation;
+import com.tencent.luggage.l.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ag.g;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.au.h;
-import com.tencent.mm.plugin.appbrand.bd;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
-import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.f;
-import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandSingleCloseCapsuleBar;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.vfs.u;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.aa;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.g.b.z;
+import kotlin.l.o;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashUtils;", "", "()V", "TAG", "", "<set-?>", "", "isBlockSplashHideForDebug", "()Z", "setBlockSplashHideForDebug", "(Z)V", "isBlockSplashHideForDebug$delegate", "Lcom/tencent/luggage/util/LuggageMMKVProperty;", "setupSplashAccessibilityTraversalOrder", "", "order", "", "", "splashView", "Landroid/view/View;", "fromDPToPix", "Landroid/content/Context;", "dp", "hideImmediately", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "safeDetachFromWindow", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  private static final androidx.b.a<AppBrandRuntime, Bitmap> qVC;
+  public static final i ubj;
+  static final g ubk;
   
   static
   {
-    AppMethodBeat.i(48662);
-    qVC = new androidx.b.a();
-    AppMethodBeat.o(48662);
+    AppMethodBeat.i(160939);
+    aYe = new o[] { (o)ai.a((z)new aa(i.class, "isBlockSplashHideForDebug", "isBlockSplashHideForDebug()Z", 0)) };
+    ubj = new i();
+    ubk = new g(Boolean.FALSE);
+    AppMethodBeat.o(160939);
   }
   
-  private static AppBrandUILoadingSplash a(Context paramContext, t paramt, boolean paramBoolean)
+  public static final void a(ah paramah)
   {
-    AppMethodBeat.i(266790);
-    AppBrandUILoadingSplash localAppBrandUILoadingSplash = (AppBrandUILoadingSplash)paramt.bDh().a(AppBrandUILoadingSplash.class, paramContext);
-    if (localAppBrandUILoadingSplash != null)
+    int i = 1;
+    AppMethodBeat.i(160938);
+    Object localObject;
+    if (paramah != null)
     {
-      localAppBrandUILoadingSplash.jM(paramBoolean);
-      localAppBrandUILoadingSplash.ao(paramt);
-      paramContext = localAppBrandUILoadingSplash;
+      localObject = paramah.getView();
+      if ((localObject == null) || (((View)localObject).isAttachedToWindow() != true)) {}
     }
-    for (;;)
+    while (i != 0)
     {
-      AppMethodBeat.o(266790);
-      return paramContext;
-      paramContext = new AppBrandUILoadingSplash(em(paramContext), paramt);
-      paramContext.jM(paramBoolean);
+      localObject = paramah.getView().getAnimation();
+      if (localObject != null) {
+        ((Animation)localObject).cancel();
+      }
+      paramah.getView().animate().cancel();
+      paramah.getView().setVisibility(8);
+      localObject = paramah.getView().getParent();
+      if (localObject == null)
+      {
+        paramah = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(160938);
+        throw paramah;
+        i = 0;
+      }
+      else
+      {
+        ((ViewGroup)localObject).removeView(paramah.getView());
+      }
     }
+    AppMethodBeat.o(160938);
   }
   
-  public static aa a(Context paramContext, t paramt)
+  public static final void b(List<Integer> paramList, View paramView)
   {
-    AppMethodBeat.i(48659);
-    Object localObject = (Bitmap)qVC.remove(paramt);
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+    int i = 0;
+    AppMethodBeat.i(322087);
+    s.u(paramList, "order");
+    s.u(paramView, "splashView");
+    Object localObject = (AccessibilityManager)MMApplicationContext.getContext().getSystemService("accessibility");
+    if (localObject == null) {}
+    for (boolean bool = false; (!bool) || (Build.VERSION.SDK_INT < 22); bool = ((AccessibilityManager)localObject).isEnabled())
     {
-      paramContext = new m(paramContext, (Bitmap)localObject);
-      AppMethodBeat.o(48659);
-      return paramContext;
-    }
-    localObject = a(paramContext, paramt.bDy());
-    if (localObject != null)
-    {
-      ((z)localObject).setRuntime(paramt);
-      AppMethodBeat.o(48659);
-      return localObject;
-    }
-    if (g.ap(paramt))
-    {
-      paramContext = new com.tencent.mm.plugin.appbrand.ag.b(em(paramContext), paramt);
-      AppMethodBeat.o(48659);
-      return paramContext;
-    }
-    if ((p.an(paramt)) || (bd.s(paramt)) || (paramt.bDK()))
-    {
-      if (paramt.Qv()) {
-        localObject = new e(em(paramContext), paramt, paramt.bDy().cwY);
-      }
-      while (paramt.bDK())
-      {
-        HalfScreenConfig localHalfScreenConfig = paramt.bDy().nBE;
-        if (localHalfScreenConfig.nZH == HalfScreenConfig.f.oac)
-        {
-          localObject = a(paramContext, paramt, localHalfScreenConfig.nnk);
-          paramContext = new AppBrandSingleCloseCapsuleBar(em(paramContext));
-          paramContext.setTitle(paramt.bDy().fzM);
-          paramContext.setWxaIconUrl(paramt.bDy().iconUrl);
-          ((AppBrandUILoadingSplash)localObject).setActionBar(paramContext);
-          ((AppBrandUILoadingSplash)localObject).GZ(true);
-          AppMethodBeat.o(48659);
-          return localObject;
-          localObject = new k(em(paramContext), paramt, paramt.bDy().cwY);
-        }
-        else
-        {
-          ((k)localObject).GZ(true);
-        }
-      }
-      AppMethodBeat.o(48659);
-      return localObject;
-    }
-    if (paramt.Qv())
-    {
-      localObject = new f(em(paramContext), paramt);
-      if (paramt.bCA())
-      {
-        paramContext = new a(em(paramContext), paramt, (aa)localObject, paramt.nwE);
-        AppMethodBeat.o(48659);
-        return paramContext;
-      }
-      AppMethodBeat.o(48659);
-      return localObject;
-    }
-    localObject = a(paramContext, paramt, false);
-    ((AppBrandUILoadingSplash)localObject).setLabelInjector(new AppBrandUILoadingSplash.a()
-    {
-      public final void a(ViewStub paramAnonymousViewStub)
-      {
-        AppMethodBeat.i(258318);
-        if ((com.tencent.luggage.sdk.config.e.iO(this.nsw.bDy().nYq)) && (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXL, 0) == 1))
-        {
-          paramAnonymousViewStub.setLayoutResource(au.g.app_brand_splash_brand_official_label);
-          paramAnonymousViewStub.inflate();
-        }
-        AppMethodBeat.o(258318);
-      }
-      
-      @SuppressLint({"ResourceType"})
-      public final void b(ViewStub paramAnonymousViewStub)
-      {
-        AppMethodBeat.i(258320);
-        if ((com.tencent.luggage.sdk.config.e.iP(this.nsw.bDy().nYp)) && (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUA, 0) == 1))
-        {
-          paramAnonymousViewStub.setLayoutResource(au.g.app_brand_splash_trading_guarantee_label);
-          paramAnonymousViewStub = (ImageView)paramAnonymousViewStub.inflate().findViewById(au.f.icon);
-          if (!ar.isDarkMode()) {
-            break label84;
-          }
-        }
-        label84:
-        for (int i = au.h.appbrand_trading_guarantee_icon_white;; i = au.h.appbrand_trading_guarantee_icon_gray)
-        {
-          paramAnonymousViewStub.setImageResource(i);
-          AppMethodBeat.o(258320);
-          return;
-        }
-      }
-    });
-    if (paramt.bCA())
-    {
-      paramContext = new a(em(paramContext), paramt, (aa)localObject, paramt.nwE);
-      AppMethodBeat.o(48659);
-      return paramContext;
-    }
-    AppMethodBeat.o(48659);
-    return localObject;
-  }
-  
-  public static z a(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC)
-  {
-    AppMethodBeat.i(266783);
-    if (paramAppBrandInitConfigWC.nYb)
-    {
-      if (!TextUtils.isEmpty(l.eo(paramAppBrandInitConfigWC.nBq)))
-      {
-        AppMethodBeat.o(266783);
-        return null;
-      }
-      if (!com.tencent.mm.plugin.appbrand.ui.c.a.b.clP())
-      {
-        Log.i("MicroMsg.AppBrandLoadingSplashFactory", "createSnapshotDisplayLoadingSplash but switch off, appId:%s", new Object[] { paramAppBrandInitConfigWC.appId });
-        AppMethodBeat.o(266783);
-        return null;
-      }
-      String str = paramAppBrandInitConfigWC.nYo;
-      if (u.agG(str))
-      {
-        Log.i("MicroMsg.AppBrandLoadingSplashFactory", "createScreenshotSplash with appId:%s, path:%s", new Object[] { paramAppBrandInitConfigWC.appId, str });
-        paramAppBrandInitConfigWC = BitmapUtil.decodeFile(str);
-        if ((paramAppBrandInitConfigWC != null) && (!paramAppBrandInitConfigWC.isRecycled()))
-        {
-          paramContext = new z(paramContext, paramAppBrandInitConfigWC);
-          AppMethodBeat.o(266783);
-          return paramContext;
-        }
-      }
-      AppMethodBeat.o(266783);
-      return null;
-    }
-    AppMethodBeat.o(266783);
-    return null;
-  }
-  
-  public static void a(AppBrandRuntime paramAppBrandRuntime, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(48661);
-    if ((paramAppBrandRuntime == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
-    {
-      AppMethodBeat.o(48661);
+      AppMethodBeat.o(322087);
       return;
     }
-    qVC.put(paramAppBrandRuntime, paramBitmap);
-    AppMethodBeat.o(48661);
+    localObject = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      View localView = paramView.findViewById(((Number)((Iterator)localObject).next()).intValue());
+      if (localView != null) {
+        paramList.add(localView);
+      }
+    }
+    paramList = (List)paramList;
+    paramView = ((Iterable)paramList).iterator();
+    for (;;)
+    {
+      int j;
+      if (paramView.hasNext())
+      {
+        localObject = paramView.next();
+        j = i + 1;
+        if (i < 0) {
+          p.kkW();
+        }
+        localObject = (View)localObject;
+        ((View)localObject).setAccessibilityTraversalAfter(-1);
+        ((View)localObject).setAccessibilityTraversalBefore(-1);
+        if (i > 0)
+        {
+          ((View)localObject).setAccessibilityDelegate((View.AccessibilityDelegate)new a((View)paramList.get(i - 1)));
+          i = j;
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(322087);
+        return;
+      }
+      i = j;
+    }
   }
   
-  public static boolean cjJ()
+  public static final void dI(View paramView)
   {
-    AppMethodBeat.i(161867);
-    if (MMApplicationContext.isMainProcess())
+    AppMethodBeat.i(322082);
+    if (paramView == null)
     {
-      AppMethodBeat.o(161867);
-      return false;
+      AppMethodBeat.o(322082);
+      return;
     }
-    if ((!com.tencent.mm.cj.a.hrp()) && (com.tencent.mm.cj.a.hrh())) {}
-    for (int i = 1; (i != 0) && (!com.tencent.mm.cj.a.hro()); i = 0)
+    paramView.setVisibility(8);
+    Object localObject = paramView.getParent();
+    if ((localObject instanceof ViewGroup)) {}
+    for (localObject = (ViewGroup)localObject;; localObject = null)
     {
-      AppMethodBeat.o(161867);
-      return true;
+      if (localObject != null) {
+        ((ViewGroup)localObject).removeView(paramView);
+      }
+      AppMethodBeat.o(322082);
+      return;
     }
-    AppMethodBeat.o(161867);
-    return false;
   }
   
-  private static Context em(Context paramContext)
+  public final boolean cKW()
   {
-    AppMethodBeat.i(48660);
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = MMApplicationContext.getContext();
+    AppMethodBeat.i(322094);
+    boolean bool = ((Boolean)ubk.a(this, aYe[0])).booleanValue();
+    AppMethodBeat.o(322094);
+    return bool;
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashUtils$setupSplashAccessibilityTraversalOrder$1$1", "Landroid/view/View$AccessibilityDelegate;", "onInitializeAccessibilityNodeInfo", "", "host", "Landroid/view/View;", "info", "Landroid/view/accessibility/AccessibilityNodeInfo;", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends View.AccessibilityDelegate
+  {
+    a(View paramView) {}
+    
+    public final void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+    {
+      AppMethodBeat.i(322107);
+      super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+      if ((paramAccessibilityNodeInfo == null) || (paramAccessibilityNodeInfo.isSelected()))
+      {
+        AppMethodBeat.o(322107);
+        return;
+      }
+      paramAccessibilityNodeInfo.setTraversalAfter(this.ubl);
+      paramAccessibilityNodeInfo.setTraversalBefore(null);
+      AppMethodBeat.o(322107);
     }
-    paramContext = localContext;
-    if (cjJ()) {
-      paramContext = com.tencent.mm.plugin.appbrand.page.f.eg(localContext);
-    }
-    AppMethodBeat.o(48660);
-    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.i
  * JD-Core Version:    0.7.0.1
  */

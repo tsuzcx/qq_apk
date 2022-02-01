@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="xq" parent="@style/xo" />
-    <style name="xr" parent="@style/xo" />
-    <style name="xs" parent="@style/xx" />
-    <style name="xt" parent="@style/xy" />
-    <style name="xu" parent="@style/xz" />
-    <style name="xv" parent="@style/y0" />
-    <style name="xw" parent="@style/y8" />
+    <style name="xc" parent="@style/xa" />
+    <style name="xd" parent="@style/xa" />
+    <style name="xe" parent="@style/xj" />
+    <style name="xf" parent="@style/xk" />
+    <style name="xg" parent="@style/xl" />
+    <style name="xh" parent="@style/xm" />
+    <style name="xi" parent="@style/xv" />
 </resources>

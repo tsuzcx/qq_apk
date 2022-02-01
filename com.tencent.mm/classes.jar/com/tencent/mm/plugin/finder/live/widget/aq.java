@@ -2,229 +2,107 @@ package com.tencent.mm.plugin.finder.live.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.Vibrator;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.live.model.an;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.protocal.protobuf.bgy;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.ui.au;
-import kotlin.g.a.r;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.view.FinderLiveShadeView;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.widget.a.f;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveVisitorLikeWidget;", "", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;)V", "MAX_LIKE_ONE_TIME", "", "TAG", "", "getBasePlugin", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "filterVisitorZeroLikeValue", "", "getFilterVisitorZeroLikeValue", "()Z", "setFilterVisitorZeroLikeValue", "(Z)V", "likeClickArea", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "likeContainer", "Landroid/widget/LinearLayout;", "likeCount", "likeIcon", "Landroid/widget/ImageView;", "likeTv", "Landroid/widget/TextView;", "postLikeTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getRoot", "()Landroid/view/ViewGroup;", "getStatusMonitor", "()Lcom/tencent/mm/live/plugin/ILiveStatus;", "vibrator", "checkVisible", "", "isVisible", "postHightLightLike", "postLike", "refreshLikeCount", "", "scaleAnimate", "target", "Landroid/view/View;", "targetValue", "", "setVisible", "visible", "shakeIt", "uploadLike", "plugin-finder_release"})
-public final class aq
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMicBottomStateWidget;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveMicStateWidget;", "root", "Landroid/view/ViewGroup;", "basePlugin", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "shadeView", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;)V", "confirmBottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "micBottomActionCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "itemId", "", "micBottomClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "buildMicBottomActionSheet", "callback", "prepareLinkMenuItems", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "refreshMuteState", "showToast", "", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class aq
+  extends as
 {
-  final String TAG;
-  final com.tencent.mm.live.c.b kCL;
-  final Object kEK;
-  final MTimerHandler kEM;
-  final TextView kEc;
-  public final ViewGroup kiF;
-  int likeCount;
-  final ImageView vsK;
-  public final com.tencent.mm.plugin.finder.live.plugin.d xYq;
-  final int zsq;
-  private final LinearLayout zsr;
-  public final RelativeLayout zss;
-  boolean zst;
+  public static final aq.a Esr = new aq.a((byte)0);
+  private f Ess;
+  private kotlin.g.a.b<? super Integer, ah> Est;
+  private u.i Esu = new aq..ExternalSyntheticLambda1(this);
   
-  public aq(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb, com.tencent.mm.plugin.finder.live.plugin.d paramd)
+  public aq(ViewGroup paramViewGroup, com.tencent.mm.plugin.finder.live.plugin.b paramb, FinderLiveShadeView paramFinderLiveShadeView)
   {
-    AppMethodBeat.i(280266);
-    this.kiF = paramViewGroup;
-    this.kCL = paramb;
-    this.xYq = paramd;
-    this.TAG = "Finder.FinderLiveVisitorLikeWidget";
-    this.zsq = 9;
-    this.zsr = ((LinearLayout)this.kiF.findViewById(b.f.finder_live_like_container));
-    this.zss = ((RelativeLayout)this.kiF.findViewById(b.f.finder_live_like_click_area));
-    this.vsK = ((ImageView)this.kiF.findViewById(b.f.finder_live_like_icon));
-    paramViewGroup = this.kiF.getParent();
-    if (paramViewGroup == null)
-    {
-      paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(280266);
-      throw paramViewGroup;
+    super(paramViewGroup, paramb, paramFinderLiveShadeView);
+  }
+  
+  private static final void a(aq paramaq, MenuItem paramMenuItem, int paramInt)
+  {
+    kotlin.g.b.s.u(paramaq, "this$0");
+    kotlin.g.a.b localb = paramaq.Est;
+    if (localb != null) {
+      if (paramMenuItem != null) {
+        break label46;
+      }
     }
-    this.kEc = ((TextView)((ViewGroup)paramViewGroup).findViewById(b.f.finder_live_like_tv));
-    this.kEK = this.kiF.getContext().getSystemService("vibrator");
-    paramViewGroup = com.tencent.c.a.a.a.a.a.Zlt;
-    if (((Number)com.tencent.c.a.a.a.a.a.ilY().aSr()).intValue() == 0) {}
-    for (boolean bool = true;; bool = false)
+    label46:
+    for (paramInt = -1;; paramInt = paramMenuItem.getItemId())
     {
-      this.zst = bool;
-      this.kEM = new MTimerHandler("FinderLiveLikePlugin::Timer", (MTimerHandler.CallBack)new c(this), true);
-      paramViewGroup = this.vsK;
-      paramb = this.kiF.getContext();
-      p.j(paramb, "root.context");
-      paramViewGroup.setImageDrawable(au.e(paramb.getResources().getDrawable(b.i.icons_filled_call_good), -1));
-      this.zsr.setOnTouchListener((View.OnTouchListener)new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(273540);
-          p.j(paramAnonymousMotionEvent, "event");
-          switch (paramAnonymousMotionEvent.getActionMasked())
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(273540);
-            return true;
-            paramAnonymousView = this.zsu.kEc;
-            p.j(paramAnonymousView, "likeTv");
-            paramAnonymousView.setVisibility(4);
-            aq.u((View)this.zsu.kiF, 1.5F);
-            this.zsu.kEM.startTimer(0L, 200L);
-            paramAnonymousView = this.zsu.vsK;
-            p.j(paramAnonymousView, "likeIcon");
-            paramAnonymousView.setAlpha(0.3F);
-            continue;
-            this.zsu.kEM.stopTimer();
-            paramAnonymousView = this.zsu.kEc;
-            p.j(paramAnonymousView, "likeTv");
-            paramAnonymousView.setVisibility(0);
-            aq.u((View)this.zsu.kiF, 1.0F);
-            paramAnonymousView = this.zsu;
-            paramAnonymousMotionEvent = com.tencent.mm.plugin.finder.live.plugin.d.getFinderLiveAssistant();
-            if (paramAnonymousMotionEvent != null) {
-              paramAnonymousMotionEvent.Nn(paramAnonymousView.likeCount);
-            }
-            paramAnonymousView.LW(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)paramAnonymousView.xYq.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zfk);
-            paramAnonymousView.likeCount = 0;
-            paramAnonymousView = this.zsu.vsK;
-            p.j(paramAnonymousView, "likeIcon");
-            paramAnonymousView.setAlpha(1.0F);
-          }
-        }
-      });
-      AppMethodBeat.o(280266);
+      localb.invoke(Integer.valueOf(paramInt));
+      paramaq = paramaq.Ess;
+      if (paramaq != null) {
+        paramaq.cyW();
+      }
       return;
     }
   }
   
-  public final void LW(final long paramLong)
+  private static final void a(aq paramaq, com.tencent.mm.ui.base.s params)
   {
-    AppMethodBeat.i(280263);
-    this.kiF.post((Runnable)new d(this, paramLong));
-    AppMethodBeat.o(280263);
-  }
-  
-  public final boolean isVisible()
-  {
-    AppMethodBeat.i(280265);
-    if (this.kiF.getVisibility() == 0)
-    {
-      AppMethodBeat.o(280265);
-      return true;
+    kotlin.g.b.s.u(paramaq, "this$0");
+    f localf = paramaq.Ess;
+    if (localf != null) {
+      localf.setFooterView(null);
     }
-    AppMethodBeat.o(280265);
-    return false;
+    params.clear();
+    kotlin.g.b.s.s(params, "menu");
+    params.a(1, paramaq.mJe.getContext().getResources().getColor(p.b.live_title_host_close_btn_color), (CharSequence)paramaq.mJe.getContext().getResources().getString(p.h.ClF));
   }
   
-  public final void tU(int paramInt)
+  private static final void b(aq paramaq)
   {
-    AppMethodBeat.i(280264);
-    this.kiF.setVisibility(paramInt);
-    LinearLayout localLinearLayout = this.zsr;
-    p.j(localLinearLayout, "likeContainer");
-    localLinearLayout.setVisibility(this.kiF.getVisibility());
-    AppMethodBeat.o(280264);
+    kotlin.g.b.s.u(paramaq, "this$0");
+    paramaq.Ess = null;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+  protected final void ar(kotlin.g.a.b<? super Integer, ah> paramb)
   {
-    a(aq paramaq)
+    if (this.Ess == null)
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(aq paramaq)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-  static final class c
-    implements MTimerHandler.CallBack
-  {
-    c(aq paramaq) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(286149);
-      aq localaq;
-      if (this.zsu.likeCount < this.zsu.zsq - 1)
-      {
-        localaq = this.zsu;
-        if ((localaq.kEK instanceof Vibrator)) {
-          ((Vibrator)localaq.kEK).vibrate(10L);
-        }
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new aq.b(localaq));
-        AppMethodBeat.o(286149);
-        return true;
+      this.Ess = new f(this.mJe.getContext(), 1, true);
+      localf = this.Ess;
+      if (localf != null) {
+        localf.NyV = true;
       }
-      if (this.zsu.likeCount == this.zsu.zsq - 1)
-      {
-        localaq = this.zsu;
-        if ((localaq.kEK instanceof Vibrator)) {
-          ((Vibrator)localaq.kEK).vibrate(10L);
-        }
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new aq.a(localaq));
-      }
-      AppMethodBeat.o(286149);
-      return false;
+    }
+    f localf = this.Ess;
+    if (localf != null) {
+      localf.NE(true);
+    }
+    localf = this.Ess;
+    if (localf != null) {
+      localf.agfb = true;
+    }
+    localf = this.Ess;
+    if (localf != null) {
+      localf.Vtg = new aq..ExternalSyntheticLambda0(this);
+    }
+    localf = this.Ess;
+    if (localf != null) {
+      localf.GAC = this.Esu;
+    }
+    localf = this.Ess;
+    if (localf != null) {
+      localf.aeLi = new aq..ExternalSyntheticLambda2(this);
+    }
+    this.Est = paramb;
+    paramb = this.Ess;
+    if (paramb != null) {
+      paramb.dDn();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(aq paramaq, long paramLong) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(241434);
-      Object localObject = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      if ((!com.tencent.mm.plugin.finder.live.utils.a.dEy()) && (this.zsu.zst) && (paramLong == 0L))
-      {
-        AppMethodBeat.o(241434);
-        return;
-      }
-      localObject = this.zsu.kEc;
-      p.j(localObject, "likeTv");
-      aj localaj = aj.AGc;
-      ((TextView)localObject).setText((CharSequence)aj.Nh(paramLong));
-      AppMethodBeat.o(241434);
-    }
-  }
+  public abstract void sD(boolean paramBoolean);
 }
 
 

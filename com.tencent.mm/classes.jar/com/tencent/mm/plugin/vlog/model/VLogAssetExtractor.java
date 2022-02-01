@@ -7,36 +7,36 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.tav.extractor.IExtractorDelegate;
 import java.nio.ByteBuffer;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogAssetExtractor;", "Lcom/tencent/tav/extractor/IExtractorDelegate;", "()V", "TAG", "", "alignDtsToZero", "", "audioFormat", "Landroid/media/MediaFormat;", "audioRetTrackIndex", "", "audioTrackIndex", "nPtr", "", "videoFormat", "videoRetTrackIndex", "videoTrackIndex", "advance", "getSampleTime", "getSampleTrackIndex", "getTrackCount", "getTrackFormat", "index", "initTrackData", "", "nAudioTrackIndex", "nContainAudio", "nContainVideo", "nCreate", "path", "nCurrentSelectTrackIndex", "nDestroy", "nGetAudioBitrate", "nGetAudioChannelCount", "nGetAudioCsdData", "", "nGetAudioDuration", "", "nGetAudioMime", "nGetAudioSampleRate", "nGetFps", "nGetHeight", "nGetHevcHead", "nGetSampleData", "byteBuffer", "Ljava/nio/ByteBuffer;", "nGetSampleDataByteArray", "nGetSampleDataDtsUs", "nGetSampleDataPtsUs", "nGetTrackCount", "nGetVideoBitrate", "nGetVideoDuration", "nGetVideoExtraData", "nGetVideoMime", "nGetVideoPPS", "nGetVideoPixelFormat", "nGetVideoRotate", "nGetVideoSPS", "nGetWidth", "nReadNextSample", "nSeekTo", "timeUs", "nSelectTrack", "trackIndex", "nUnSelectTrack", "nVideoTrackIndex", "needMirror", "readSampleData", "byteBuf", "offset", "release", "seekTo", "mode", "selectTrack", "setDataSource", "unselectTrack", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/VLogAssetExtractor;", "Lcom/tencent/tav/extractor/IExtractorDelegate;", "()V", "TAG", "", "alignDtsToZero", "", "audioFormat", "Landroid/media/MediaFormat;", "audioRetTrackIndex", "", "audioTrackIndex", "nPtr", "", "videoFormat", "videoRetTrackIndex", "videoTrackIndex", "advance", "getSampleTime", "getSampleTrackIndex", "getTrackCount", "getTrackFormat", "index", "initTrackData", "", "nAudioTrackIndex", "nContainAudio", "nContainVideo", "nCreate", "path", "nCurrentSelectTrackIndex", "nDestroy", "nGetAudioBitrate", "nGetAudioChannelCount", "nGetAudioCsdData", "", "nGetAudioDuration", "", "nGetAudioMime", "nGetAudioSampleRate", "nGetFps", "nGetHeight", "nGetHevcHead", "nGetSampleData", "byteBuffer", "Ljava/nio/ByteBuffer;", "nGetSampleDataByteArray", "nGetSampleDataDtsUs", "nGetSampleDataPtsUs", "nGetTrackCount", "nGetVideoBitrate", "nGetVideoDuration", "nGetVideoExtraData", "nGetVideoMime", "nGetVideoPPS", "nGetVideoPixelFormat", "nGetVideoRotate", "nGetVideoSPS", "nGetWidth", "nReadNextSample", "nSeekTo", "timeUs", "nSelectTrack", "trackIndex", "nUnSelectTrack", "nVideoTrackIndex", "needMirror", "readSampleData", "byteBuf", "offset", "release", "seekTo", "mode", "selectTrack", "setDataSource", "unselectTrack", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class VLogAssetExtractor
   implements IExtractorDelegate
 {
-  private long NmO;
-  private boolean NmP;
-  private int NmQ;
-  private int NmR;
   private String TAG;
+  private boolean Uar;
+  private int Uas;
+  private int Uat;
   private MediaFormat audioFormat;
   private int audioTrackIndex;
+  private long nNg;
   private MediaFormat videoFormat;
   private int videoTrackIndex;
   
   public VLogAssetExtractor()
   {
-    AppMethodBeat.i(243363);
-    this.TAG = ("MicroMsg.VLogAssetExtractor@" + this.NmO);
+    AppMethodBeat.i(283265);
+    this.TAG = s.X("MicroMsg.VLogAssetExtractor@", Long.valueOf(this.nNg));
     this.videoFormat = new MediaFormat();
     this.audioFormat = new MediaFormat();
     this.videoTrackIndex = -1;
     this.audioTrackIndex = -1;
-    this.NmR = 1;
+    this.Uat = 1;
     Log.i(this.TAG, "create VLogAssetExtractor");
     SightVideoJNI.registerALL();
-    AppMethodBeat.o(243363);
+    AppMethodBeat.o(283265);
   }
   
   private final native int nAudioTrackIndex(long paramLong);
@@ -109,81 +109,81 @@ public final class VLogAssetExtractor
   
   public final boolean advance()
   {
-    AppMethodBeat.i(243352);
+    AppMethodBeat.i(283551);
     boolean bool = false;
-    if (this.NmO != 0L) {
-      bool = nReadNextSample(this.NmO);
+    if (this.nNg != 0L) {
+      bool = nReadNextSample(this.nNg);
     }
-    AppMethodBeat.o(243352);
+    AppMethodBeat.o(283551);
     return bool;
   }
   
   public final long getSampleTime()
   {
-    AppMethodBeat.i(243345);
-    if (this.NmO != 0L)
+    AppMethodBeat.i(283485);
+    if (this.nNg != 0L)
     {
-      long l = nGetSampleDataPtsUs(this.NmO);
-      AppMethodBeat.o(243345);
+      long l = nGetSampleDataPtsUs(this.nNg);
+      AppMethodBeat.o(283485);
       return l;
     }
-    AppMethodBeat.o(243345);
+    AppMethodBeat.o(283485);
     return -1L;
   }
   
   public final int getSampleTrackIndex()
   {
-    AppMethodBeat.i(243357);
-    if (this.NmO != 0L)
+    AppMethodBeat.i(283576);
+    if (this.nNg != 0L)
     {
       int i;
-      if (nCurrentSelectTrackIndex(this.NmO) == this.videoTrackIndex)
+      if (nCurrentSelectTrackIndex(this.nNg) == this.videoTrackIndex)
       {
-        i = this.NmQ;
-        AppMethodBeat.o(243357);
+        i = this.Uas;
+        AppMethodBeat.o(283576);
         return i;
       }
-      if (nCurrentSelectTrackIndex(this.NmO) == this.audioTrackIndex)
+      if (nCurrentSelectTrackIndex(this.nNg) == this.audioTrackIndex)
       {
-        i = this.NmR;
-        AppMethodBeat.o(243357);
+        i = this.Uat;
+        AppMethodBeat.o(283576);
         return i;
       }
     }
-    AppMethodBeat.o(243357);
+    AppMethodBeat.o(283576);
     return -1;
   }
   
   public final int getTrackCount()
   {
-    AppMethodBeat.i(243348);
-    if (this.NmO != 0L)
+    AppMethodBeat.i(283514);
+    if (this.nNg != 0L)
     {
-      int i = nGetTrackCount(this.NmO);
-      AppMethodBeat.o(243348);
+      int i = nGetTrackCount(this.nNg);
+      AppMethodBeat.o(283514);
       return i;
     }
-    AppMethodBeat.o(243348);
+    AppMethodBeat.o(283514);
     return 0;
   }
   
   public final MediaFormat getTrackFormat(int paramInt)
   {
-    AppMethodBeat.i(243356);
-    if (paramInt == this.NmQ)
+    AppMethodBeat.i(283569);
+    if (paramInt == this.Uas)
     {
       localMediaFormat = this.videoFormat;
-      AppMethodBeat.o(243356);
+      AppMethodBeat.o(283569);
       return localMediaFormat;
     }
-    if (paramInt == this.NmR)
+    if (paramInt == this.Uat)
     {
       localMediaFormat = this.audioFormat;
-      AppMethodBeat.o(243356);
+      AppMethodBeat.o(283569);
       return localMediaFormat;
     }
     MediaFormat localMediaFormat = new MediaFormat();
-    AppMethodBeat.o(243356);
+    AppMethodBeat.o(283569);
     return localMediaFormat;
   }
   
@@ -194,122 +194,127 @@ public final class VLogAssetExtractor
   
   public final int readSampleData(ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(243346);
-    p.k(paramByteBuffer, "byteBuf");
-    if (this.NmO != 0L)
+    AppMethodBeat.i(283501);
+    s.u(paramByteBuffer, "byteBuf");
+    if (this.nNg != 0L)
     {
       paramByteBuffer.clear();
-      paramInt = nGetSampleData(this.NmO, paramByteBuffer);
+      paramInt = nGetSampleData(this.nNg, paramByteBuffer);
       if (paramInt > 0)
       {
         paramByteBuffer.position(0);
         paramByteBuffer.limit(paramInt);
       }
-      AppMethodBeat.o(243346);
+      AppMethodBeat.o(283501);
       return paramInt;
     }
-    AppMethodBeat.o(243346);
+    AppMethodBeat.o(283501);
     return -1;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(243354);
+    AppMethodBeat.i(283559);
     Log.i(this.TAG, "release");
-    if (this.NmO != 0L)
+    if (this.nNg != 0L)
     {
-      nDestroy(this.NmO);
-      this.NmO = 0L;
+      nDestroy(this.nNg);
+      this.nNg = 0L;
     }
-    AppMethodBeat.o(243354);
+    AppMethodBeat.o(283559);
   }
   
   public final void seekTo(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(243344);
-    if (this.NmO != 0L)
+    AppMethodBeat.i(283476);
+    if (this.nNg != 0L)
     {
       long l = Util.currentTicks();
-      boolean bool = nSeekTo(this.NmO, paramLong);
+      boolean bool = nSeekTo(this.nNg, paramLong);
       Log.d(this.TAG, "seekTo " + paramLong + ", ret:" + bool + ", cost:" + Util.ticksToNow(l));
     }
-    AppMethodBeat.o(243344);
+    AppMethodBeat.o(283476);
   }
   
   public final void selectTrack(int paramInt)
   {
-    AppMethodBeat.i(243343);
-    Log.i(this.TAG, "selectTrack:".concat(String.valueOf(paramInt)));
-    if (this.NmO != 0L)
+    AppMethodBeat.i(283470);
+    Log.i(this.TAG, s.X("selectTrack:", Integer.valueOf(paramInt)));
+    if (this.nNg != 0L)
     {
-      if (paramInt == this.NmQ)
+      if (paramInt == this.Uas)
       {
         Log.i(this.TAG, "select video track");
-        nSelectTrack(this.NmO, this.videoTrackIndex);
-        AppMethodBeat.o(243343);
+        nSelectTrack(this.nNg, this.videoTrackIndex);
+        AppMethodBeat.o(283470);
         return;
       }
-      if (paramInt == this.NmR)
+      if (paramInt == this.Uat)
       {
         Log.i(this.TAG, "select audio track");
-        nSelectTrack(this.NmO, this.audioTrackIndex);
+        nSelectTrack(this.nNg, this.audioTrackIndex);
       }
     }
-    AppMethodBeat.o(243343);
+    AppMethodBeat.o(283470);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(243351);
-    p.k(paramString, "path");
+    AppMethodBeat.i(283532);
+    s.u(paramString, "path");
     long l = Util.currentTicks();
-    if (this.NmO != 0L)
+    if (this.nNg != 0L)
     {
-      nDestroy(this.NmO);
-      this.NmO = 0L;
+      nDestroy(this.nNg);
+      this.nNg = 0L;
     }
-    this.NmO = nCreate(paramString, this.NmP);
-    Log.i(this.TAG, "setDataSource, path:" + paramString + ", nPtr:" + this.NmO + ", cost:" + Util.ticksToNow(l));
-    this.TAG = ("MicroMsg.VLogAssetExtractor@" + this.NmO);
+    this.nNg = nCreate(paramString, this.Uar);
+    Log.i(this.TAG, "setDataSource, path:" + paramString + ", nPtr:" + this.nNg + ", cost:" + Util.ticksToNow(l));
+    this.TAG = s.X("MicroMsg.VLogAssetExtractor@", Long.valueOf(this.nNg));
     boolean bool1;
     boolean bool2;
-    if (this.NmO != 0L)
+    if (this.nNg != 0L)
     {
-      bool1 = nContainVideo(this.NmO);
-      bool2 = nContainAudio(this.NmO);
+      bool1 = nContainVideo(this.nNg);
+      bool2 = nContainAudio(this.nNg);
       if (bool1)
       {
-        this.videoTrackIndex = nVideoTrackIndex(this.NmO);
-        paramString = nGetVideoMime(this.NmO);
+        this.videoTrackIndex = nVideoTrackIndex(this.nNg);
+        paramString = nGetVideoMime(this.nNg);
         this.videoFormat.setString("mime", paramString);
-        this.videoFormat.setInteger("width", nGetWidth(this.NmO));
-        this.videoFormat.setInteger("height", nGetHeight(this.NmO));
-        this.videoFormat.setInteger("bitrate", nGetVideoBitrate(this.NmO));
-        this.videoFormat.setLong("durationUs", nGetVideoDuration(this.NmO) * 1000L);
-        this.videoFormat.setInteger("frame-rate", (int)nGetFps(this.NmO));
-        this.videoFormat.setInteger("max-input-size", nGetWidth(this.NmO) * nGetHeight(this.NmO));
-        this.videoFormat.setInteger("rotation-degrees", nGetVideoRotate(this.NmO));
-        if (!n.L(paramString, "video/avc", false)) {
-          break label715;
+        this.videoFormat.setInteger("width", nGetWidth(this.nNg));
+        this.videoFormat.setInteger("height", nGetHeight(this.nNg));
+        this.videoFormat.setInteger("bitrate", nGetVideoBitrate(this.nNg));
+        this.videoFormat.setLong("durationUs", nGetVideoDuration(this.nNg) * 1000L);
+        int j = (int)nGetFps(this.nNg);
+        int i = j;
+        if (j <= 0) {
+          i = 1;
         }
-        paramString = nGetVideoSPS(this.NmO);
+        this.videoFormat.setInteger("frame-rate", i);
+        this.videoFormat.setInteger("max-input-size", nGetWidth(this.nNg) * nGetHeight(this.nNg));
+        this.videoFormat.setInteger("rotation-degrees", nGetVideoRotate(this.nNg));
+        if (!n.T(paramString, "video/avc", false)) {
+          break label720;
+        }
+        paramString = nGetVideoSPS(this.nNg);
         if (paramString != null) {
           this.videoFormat.setByteBuffer("csd-0", ByteBuffer.wrap(paramString));
         }
-        paramString = nGetVideoPPS(this.NmO);
+        paramString = nGetVideoPPS(this.nNg);
         if (paramString != null) {
           this.videoFormat.setByteBuffer("csd-1", ByteBuffer.wrap(paramString));
         }
       }
       if (bool2)
       {
-        this.audioTrackIndex = nAudioTrackIndex(this.NmO);
-        this.audioFormat.setString("mime", nGetAudioMime(this.NmO));
-        this.audioFormat.setInteger("bitrate", nGetAudioBitrate(this.NmO));
-        this.audioFormat.setInteger("sample-rate", nGetAudioSampleRate(this.NmO));
-        this.audioFormat.setLong("durationUs", nGetAudioDuration(this.NmO) * 1000L);
-        this.audioFormat.setInteger("channel-count", nGetAudioChannelCount(this.NmO));
-        paramString = nGetAudioCsdData(this.NmO);
+        this.audioTrackIndex = nAudioTrackIndex(this.nNg);
+        this.audioFormat.setString("mime", nGetAudioMime(this.nNg));
+        this.audioFormat.setInteger("bitrate", nGetAudioBitrate(this.nNg));
+        this.audioFormat.setInteger("sample-rate", nGetAudioSampleRate(this.nNg));
+        this.audioFormat.setLong("durationUs", nGetAudioDuration(this.nNg) * 1000L);
+        this.audioFormat.setInteger("channel-count", nGetAudioChannelCount(this.nNg));
+        paramString = nGetAudioCsdData(this.nNg);
         if (paramString != null)
         {
           this.audioFormat.setByteBuffer("csd-0", ByteBuffer.wrap(paramString));
@@ -319,63 +324,63 @@ public final class VLogAssetExtractor
       }
       Log.i(this.TAG, "init track data finished, hasVideo:" + bool1 + ", hasAudio:" + bool2 + ", videoFormat:" + this.videoFormat + ", audioFormat:" + this.audioFormat + ", videoTrackIndex:" + this.videoTrackIndex + ", audioTrackIndex:" + this.audioTrackIndex);
       if ((!bool1) || (!bool2)) {
-        break label786;
+        break label791;
       }
-      this.NmQ = 0;
-      this.NmR = 1;
+      this.Uas = 0;
+      this.Uat = 1;
     }
     for (;;)
     {
-      Log.i(this.TAG, "videoRetTrackIndex:" + this.NmQ + ", audioRetTrackIndex:" + this.NmR);
-      AppMethodBeat.o(243351);
+      Log.i(this.TAG, "videoRetTrackIndex:" + this.Uas + ", audioRetTrackIndex:" + this.Uat);
+      AppMethodBeat.o(283532);
       return;
-      label715:
-      if (n.L(paramString, "video/hevc", false))
+      label720:
+      if (n.T(paramString, "video/hevc", false))
       {
-        paramString = nGetHevcHead(this.NmO);
+        paramString = nGetHevcHead(this.nNg);
         if (paramString == null) {
           break;
         }
         this.videoFormat.setByteBuffer("csd-0", ByteBuffer.wrap(paramString));
         break;
       }
-      paramString = nGetVideoExtraData(this.NmO);
+      paramString = nGetVideoExtraData(this.nNg);
       if (paramString == null) {
         break;
       }
       this.videoFormat.setByteBuffer("csd-0", ByteBuffer.wrap(paramString));
       break;
-      label786:
+      label791:
       if ((bool1) && (!bool2))
       {
-        this.NmQ = 0;
-        this.NmR = -1;
+        this.Uas = 0;
+        this.Uat = -1;
       }
       else if ((bool2) && (!bool1))
       {
-        this.NmR = 0;
-        this.NmQ = -1;
+        this.Uat = 0;
+        this.Uas = -1;
       }
       else
       {
-        this.NmR = -1;
-        this.NmQ = -1;
+        this.Uat = -1;
+        this.Uas = -1;
       }
     }
   }
   
   public final void unselectTrack(int paramInt)
   {
-    AppMethodBeat.i(243347);
-    if (this.NmO != 0L) {
-      nUnSelectTrack(this.NmO);
+    AppMethodBeat.i(283509);
+    if (this.nNg != 0L) {
+      nUnSelectTrack(this.nNg);
     }
-    AppMethodBeat.o(243347);
+    AppMethodBeat.o(283509);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.VLogAssetExtractor
  * JD-Core Version:    0.7.0.1
  */

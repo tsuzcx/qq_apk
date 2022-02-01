@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.mv.model;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/FinderFeedDetailCacheKey;", "", "feedId", "", "nonceId", "", "(JLjava/lang/String;)V", "getFeedId", "()J", "getNonceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/FinderFeedDetailCacheKey;", "", "feedId", "", "nonceId", "", "(JLjava/lang/String;)V", "getFeedId", "()J", "getNonceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
   private final long feedId;
@@ -12,51 +13,54 @@ public final class d
   
   public d(long paramLong, String paramString)
   {
-    AppMethodBeat.i(226523);
+    AppMethodBeat.i(286075);
     this.feedId = paramLong;
     this.nonceId = paramString;
-    AppMethodBeat.o(226523);
+    AppMethodBeat.o(286075);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(226528);
-    if (this != paramObject)
+    AppMethodBeat.i(286102);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof d))
-      {
-        paramObject = (d)paramObject;
-        if ((this.feedId != paramObject.feedId) || (!p.h(this.nonceId, paramObject.nonceId))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(226528);
+      AppMethodBeat.o(286102);
       return true;
     }
-    AppMethodBeat.o(226528);
-    return false;
+    if (!(paramObject instanceof d))
+    {
+      AppMethodBeat.o(286102);
+      return false;
+    }
+    paramObject = (d)paramObject;
+    if (this.feedId != paramObject.feedId)
+    {
+      AppMethodBeat.o(286102);
+      return false;
+    }
+    if (!s.p(this.nonceId, paramObject.nonceId))
+    {
+      AppMethodBeat.o(286102);
+      return false;
+    }
+    AppMethodBeat.o(286102);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(226526);
-    long l = this.feedId;
-    int j = (int)(l ^ l >>> 32);
-    String str = this.nonceId;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      AppMethodBeat.o(226526);
-      return i + j * 31;
-    }
+    AppMethodBeat.i(286091);
+    int i = q.a..ExternalSyntheticBackport0.m(this.feedId);
+    int j = this.nonceId.hashCode();
+    AppMethodBeat.o(286091);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(226525);
-    String str = "FinderFeedDetailCacheKey(feedId=" + this.feedId + ", nonceId=" + this.nonceId + ")";
-    AppMethodBeat.o(226525);
+    AppMethodBeat.i(286083);
+    String str = "FinderFeedDetailCacheKey(feedId=" + this.feedId + ", nonceId=" + this.nonceId + ')';
+    AppMethodBeat.o(286083);
     return str;
   }
 }

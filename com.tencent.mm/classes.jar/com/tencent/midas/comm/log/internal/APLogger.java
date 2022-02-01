@@ -15,7 +15,7 @@ public class APLogger
   
   public static void log(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(254005);
+    AppMethodBeat.i(217233);
     int j;
     for (int i = 0;; i = j)
     {
@@ -29,13 +29,13 @@ public class APLogger
           }
         }
       }
-      catch (Throwable paramString1)
+      finally
       {
         String.format(Locale.CHINA, "print log error: <%s>%s", new Object[] { paramString1.getClass().getName(), paramString1.getMessage() });
-        AppMethodBeat.o(254005);
+        AppMethodBeat.o(217233);
         return;
       }
-      AppMethodBeat.o(254005);
+      AppMethodBeat.o(217233);
       return;
       j = i + 3600;
       i = j;
@@ -47,48 +47,48 @@ public class APLogger
   
   public static APLogger open()
   {
-    AppMethodBeat.i(254002);
+    AppMethodBeat.i(217221);
     APLogger localAPLogger = new APLogger();
     localAPLogger.openAppender();
-    AppMethodBeat.o(254002);
+    AppMethodBeat.o(217221);
     return localAPLogger;
   }
   
   private void openAppender()
   {
-    AppMethodBeat.i(254001);
+    AppMethodBeat.i(217212);
     this.appender = APLogAppender.open();
-    AppMethodBeat.o(254001);
+    AppMethodBeat.o(217212);
   }
   
   public void flush()
   {
-    AppMethodBeat.i(254003);
+    AppMethodBeat.i(217242);
     try
     {
       if (this.appender != null) {
         this.appender.flushAndWrite();
       }
-      AppMethodBeat.o(254003);
+      AppMethodBeat.o(217242);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      String.format(Locale.CHINA, "flush log error: %s\n, stackTrace: %s", new Object[] { localThrowable.toString(), localThrowable.getStackTrace()[3] });
-      AppMethodBeat.o(254003);
+      String.format(Locale.CHINA, "flush log error: %s\n, stackTrace: %s", new Object[] { localObject.toString(), localObject.getStackTrace()[3] });
+      AppMethodBeat.o(217242);
     }
   }
   
   public void write(String paramString)
   {
-    AppMethodBeat.i(254004);
+    AppMethodBeat.i(217250);
     this.appender.append(paramString);
-    AppMethodBeat.o(254004);
+    AppMethodBeat.o(217250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.log.internal.APLogger
  * JD-Core Version:    0.7.0.1
  */

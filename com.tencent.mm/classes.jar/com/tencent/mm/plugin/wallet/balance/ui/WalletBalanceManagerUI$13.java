@@ -2,39 +2,37 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.z;
-import com.tencent.mm.ui.f.r;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.ui.k;
 
 final class WalletBalanceManagerUI$13
-  implements View.OnClickListener
+  extends k
 {
   WalletBalanceManagerUI$13(WalletBalanceManagerUI paramWalletBalanceManagerUI) {}
   
-  public final void onClick(View paramView)
+  public final void dr(View paramView)
   {
-    AppMethodBeat.i(68659);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceManagerUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    paramView = new Intent();
-    paramView.putExtra("rawUrl", WalletBalanceManagerUI.access$500());
-    paramView.putExtra("showShare", false);
-    paramView.putExtra("geta8key_username", z.bcZ());
-    paramView.putExtra(f.r.VSX, true);
-    g.aJ(this.OnZ.getContext(), paramView);
-    g.azK(17);
-    a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceManagerUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(68659);
+    AppMethodBeat.i(316290);
+    h.baF();
+    h.baE().ban().set(at.a.acSy, Integer.valueOf(-1));
+    Object localObject = new Intent(this.VcP, WalletLqtDetailUI.class);
+    ((Intent)localObject).putExtra("key_account_type", 1);
+    paramView = this.VcP;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceManagerUI$8", "onRealClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceManagerUI$8", "onRealClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(316290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI.13
  * JD-Core Version:    0.7.0.1
  */

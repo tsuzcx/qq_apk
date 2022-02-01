@@ -5,20 +5,20 @@ import com.tencent.mm.audio.mix.h.b;
 
 public final class a
 {
-  public static boolean L(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean ab(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136884);
-    if (!ky(paramInt1))
+    if (!of(paramInt1))
     {
       AppMethodBeat.o(136884);
       return false;
     }
-    if (!kz(paramInt2))
+    if (!og(paramInt2))
     {
       AppMethodBeat.o(136884);
       return false;
     }
-    if (!kA(paramInt3))
+    if (!oh(paramInt3))
     {
       AppMethodBeat.o(136884);
       return false;
@@ -27,22 +27,7 @@ public final class a
     return true;
   }
   
-  private static boolean kA(int paramInt)
-  {
-    AppMethodBeat.i(136887);
-    if (paramInt <= 0) {
-      b.e("MicroMsg.Mix.AudioMixConfig", "encode is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
-    }
-    if (paramInt == 2)
-    {
-      AppMethodBeat.o(136887);
-      return true;
-    }
-    AppMethodBeat.o(136887);
-    return false;
-  }
-  
-  private static boolean ky(int paramInt)
+  private static boolean of(int paramInt)
   {
     AppMethodBeat.i(136885);
     if (paramInt <= 0)
@@ -60,7 +45,7 @@ public final class a
     return false;
   }
   
-  private static boolean kz(int paramInt)
+  private static boolean og(int paramInt)
   {
     AppMethodBeat.i(136886);
     if (paramInt <= 0)
@@ -77,10 +62,25 @@ public final class a
     AppMethodBeat.o(136886);
     return false;
   }
+  
+  private static boolean oh(int paramInt)
+  {
+    AppMethodBeat.i(136887);
+    if (paramInt <= 0) {
+      b.e("MicroMsg.Mix.AudioMixConfig", "encode is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    if (paramInt == 2)
+    {
+      AppMethodBeat.o(136887);
+      return true;
+    }
+    AppMethodBeat.o(136887);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.a
  * JD-Core Version:    0.7.0.1
  */

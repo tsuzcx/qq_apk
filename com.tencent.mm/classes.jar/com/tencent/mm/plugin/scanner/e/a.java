@@ -7,115 +7,117 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.util.a.b;
 import com.tencent.mm.plugin.scanner.util.a.e;
 import com.tencent.mm.plugin.scanner.util.a.h;
+import com.tencent.mm.plugin.scanner.util.a.i;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.nio.charset.Charset;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.d.b.a.j;
+import kotlin.ah;
+import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.bc;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil;", "", "()V", "DEFAULT_DATA_LENGTH_FOR_IMAGE_OCR_CDN", "", "DEFAULT_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "Image_Search_Status_Local_Add_Cdn_Task_Error", "Image_Search_Status_Server_Error", "Image_Search_status_OK", "MAX_DATA_LENGTH_FOR_IMAGE_OCR_CDN", "MAX_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "MIN_DATA_LENGTH_FOR_IMAGE_OCR_CDN", "MIN_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "TAG", "", "configOCRMaxImageSize", "getConfigOCRMaxImageSize", "()I", "configOCRMaxImageSize$delegate", "Lkotlin/Lazy;", "configSearchMaxImageSize", "getConfigSearchMaxImageSize", "configSearchMaxImageSize$delegate", "imageCompressStrategy", "Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "getImageCompressStrategy", "()Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "imageCompressStrategy$delegate", "cancelUploadImage", "", "mediaId", "checkCDNImage", "", "checkRequest", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckRequest;", "callback", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckCallback;", "decodeBitmap", "Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "imagePath", "maxImageSize", "(Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getMaxImageSize", "opImageType", "getMediaIdByPath", "filePath", "getOCRMaxImageSize", "getSearchMaxImageSize", "isImageSizeLargerThanConfig", "imageSize", "Landroid/graphics/Point;", "configMaxImageSize", "saveBitmapToFile", "bitmap", "Landroid/graphics/Bitmap;", "targetImagePath", "(Landroid/graphics/Bitmap;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "uploadImage", "Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchCdnUploadResult;", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "ImageSearchCdnUploadResult", "ImageSearchDecodeResult", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil;", "", "()V", "DEFAULT_DATA_LENGTH_FOR_IMAGE_OCR_CDN", "", "DEFAULT_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "Image_Search_Status_Local_Add_Cdn_Task_Error", "Image_Search_Status_Server_Error", "Image_Search_status_OK", "MAX_DATA_LENGTH_FOR_IMAGE_OCR_CDN", "MAX_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "MIN_DATA_LENGTH_FOR_IMAGE_OCR_CDN", "MIN_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "TAG", "", "configOCRMaxImageSize", "getConfigOCRMaxImageSize", "()I", "configOCRMaxImageSize$delegate", "Lkotlin/Lazy;", "configSearchMaxImageSize", "getConfigSearchMaxImageSize", "configSearchMaxImageSize$delegate", "imageCompressStrategy", "Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "getImageCompressStrategy", "()Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "imageCompressStrategy$delegate", "cancelUploadImage", "", "mediaId", "checkCDNImage", "", "checkRequest", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckRequest;", "callback", "Lcom/tencent/mm/plugin/scanner/image/AiScanImageCDNCheckCallback;", "decodeBitmap", "Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "imagePath", "maxImageSize", "(Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getMaxImageSize", "opImageType", "getMediaIdByPath", "filePath", "getOCRMaxImageSize", "getSearchMaxImageSize", "isImageSizeLargerThanConfig", "imageSize", "Landroid/graphics/Point;", "configMaxImageSize", "saveBitmapToFile", "bitmap", "Landroid/graphics/Bitmap;", "targetImagePath", "(Landroid/graphics/Bitmap;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "uploadImage", "Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchCdnUploadResult;", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "ImageSearchCdnUploadResult", "ImageSearchDecodeResult", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static final kotlin.f IIZ;
-  private static final kotlin.f IJa;
-  private static final kotlin.f IJb;
-  public static final a IJc;
+  public static final a OPN;
+  private static final j OPO;
+  private static final j OPP;
+  private static final j OPQ;
   
   static
   {
-    AppMethodBeat.i(217909);
-    IJc = new a();
-    IIZ = kotlin.g.ar((kotlin.g.a.a)d.IJj);
-    IJa = kotlin.g.ar((kotlin.g.a.a)c.IJi);
-    IJb = kotlin.g.ar((kotlin.g.a.a)f.IJl);
-    AppMethodBeat.o(217909);
+    AppMethodBeat.i(313625);
+    OPN = new a();
+    OPO = kotlin.k.cm((kotlin.g.a.a)d.OPX);
+    OPP = kotlin.k.cm((kotlin.g.a.a)c.OPW);
+    OPQ = kotlin.k.cm((kotlin.g.a.a)f.OPZ);
+    AppMethodBeat.o(313625);
   }
   
   public static final boolean a(Point paramPoint, int paramInt)
   {
-    AppMethodBeat.i(217905);
+    AppMethodBeat.i(313603);
     if (paramPoint == null)
     {
-      AppMethodBeat.o(217905);
+      AppMethodBeat.o(313603);
       return false;
     }
     Log.d("MicroMsg.AIScanImageCdnUploadUtil", "alvinluo isImageSizeLargerThanConfig image size: %s", new Object[] { paramPoint });
     if (paramPoint.x * paramPoint.y > paramInt)
     {
-      AppMethodBeat.o(217905);
+      AppMethodBeat.o(313603);
       return true;
     }
-    AppMethodBeat.o(217905);
+    AppMethodBeat.o(313603);
     return false;
   }
   
-  public static final int adm(int paramInt)
+  public static final int ahJ(int paramInt)
   {
-    AppMethodBeat.i(217900);
+    AppMethodBeat.i(313597);
     switch (paramInt)
     {
     case 2: 
     default: 
-      paramInt = fCB();
-      AppMethodBeat.o(217900);
+      paramInt = gQD();
+      AppMethodBeat.o(313597);
       return paramInt;
     case 1: 
-      paramInt = fCB();
-      AppMethodBeat.o(217900);
+      paramInt = gQD();
+      AppMethodBeat.o(313597);
       return paramInt;
     }
-    paramInt = ((Number)IJa.getValue()).intValue();
-    AppMethodBeat.o(217900);
+    paramInt = ((Number)OPP.getValue()).intValue();
+    AppMethodBeat.o(313597);
     return paramInt;
   }
   
-  public static Object b(String paramString, final int paramInt, kotlin.d.d<? super a> paramd)
+  public static Object e(String paramString, final int paramInt, kotlin.d.d<? super a> paramd)
   {
-    AppMethodBeat.i(217903);
-    paramString = kotlinx.coroutines.i.a((kotlin.d.f)bc.iRs(), (m)new e(paramString, paramInt, null), paramd);
-    AppMethodBeat.o(217903);
+    AppMethodBeat.i(313602);
+    paramString = l.a((f)bg.kCi(), (m)new e(paramString, paramInt, null), paramd);
+    AppMethodBeat.o(313602);
     return paramString;
   }
   
-  private static int fCB()
+  private static int gQD()
   {
-    AppMethodBeat.i(217898);
-    int i = ((Number)IIZ.getValue()).intValue();
-    AppMethodBeat.o(217898);
+    AppMethodBeat.i(313591);
+    int i = ((Number)OPO.getValue()).intValue();
+    AppMethodBeat.o(313591);
     return i;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "", "()V", "newHeight", "", "getNewHeight", "()I", "setNewHeight", "(I)V", "newWidth", "getNewWidth", "setNewWidth", "originHeight", "getOriginHeight", "setOriginHeight", "originWidth", "getOriginWidth", "setOriginWidth", "resultImagePath", "", "getResultImagePath", "()Ljava/lang/String;", "setResultImagePath", "(Ljava/lang/String;)V", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "", "()V", "newHeight", "", "getNewHeight", "()I", "setNewHeight", "(I)V", "newWidth", "getNewWidth", "setNewWidth", "originHeight", "getOriginHeight", "setOriginHeight", "originWidth", "getOriginWidth", "setOriginWidth", "resultImagePath", "", "getResultImagePath", "()Ljava/lang/String;", "setResultImagePath", "(Ljava/lang/String;)V", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public int BXA;
-    public int BXB;
-    String IJd;
-    int IJe;
-    int IJf;
+    public int HJN;
+    public int HJO;
+    String OPR;
+    int OPS;
+    int OPT;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<Integer>
   {
-    public static final c IJi;
+    public static final c OPW;
     
     static
     {
-      AppMethodBeat.i(218676);
-      IJi = new c();
-      AppMethodBeat.o(218676);
+      AppMethodBeat.i(313651);
+      OPW = new c();
+      AppMethodBeat.o(313651);
     }
     
     c()
@@ -124,18 +126,18 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<Integer>
   {
-    public static final d IJj;
+    public static final d OPX;
     
     static
     {
-      AppMethodBeat.i(218538);
-      IJj = new d();
-      AppMethodBeat.o(218538);
+      AppMethodBeat.i(313649);
+      OPX = new d();
+      AppMethodBeat.o(313649);
     }
     
     d()
@@ -144,159 +146,162 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/scanner/image/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends j
-    implements m<ak, kotlin.d.d<? super a.a>, Object>
+    extends kotlin.d.b.a.k
+    implements m<aq, kotlin.d.d<? super a.a>, Object>
   {
-    Object L$0;
+    Object Uf;
+    Object VC;
     int label;
-    Object oDA;
-    private ak p$;
-    Object pGq;
-    Object pGr;
-    Object rdb;
-    Object sPl;
     
-    e(String paramString, int paramInt, kotlin.d.d paramd)
+    e(String paramString, int paramInt, kotlin.d.d<? super e> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(223680);
-      p.k(paramd, "completion");
-      paramd = new e(this.nVF, paramInt, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(223680);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(223681);
-      paramObject1 = ((e)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(223681);
-      return paramObject1;
+      AppMethodBeat.i(313689);
+      paramd = new e(this.qVp, paramInt, paramd);
+      paramd.L$0 = paramObject;
+      paramObject = (kotlin.d.d)paramd;
+      AppMethodBeat.o(313689);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
+      boolean bool2 = true;
       int j = 0;
-      AppMethodBeat.i(223679);
-      Object localObject4 = kotlin.d.a.a.aaAA;
-      Object localObject3;
+      AppMethodBeat.i(313680);
+      Object localObject3 = kotlin.d.a.a.aiwj;
       int i;
       Object localObject1;
       Object localObject2;
+      Bitmap localBitmap;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(223679);
+        AppMethodBeat.o(313680);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        localObject3 = this.p$;
-        com.tencent.mm.plugin.scanner.util.a.a locala = new com.tencent.mm.plugin.scanner.util.a.a(this.nVF);
-        if (paramInt < 0) {
-          paramObject = a.IJc;
-        }
-        for (i = a.fCC();; i = paramInt)
+        paramObject = new com.tencent.mm.plugin.scanner.util.a.a(this.qVp);
+        int k = paramInt;
+        i = k;
+        if (k < 0)
         {
-          locala.maxImageSize = i;
-          paramObject = (com.tencent.mm.plugin.scanner.util.a.g)locala;
-          localObject1 = a.IJc;
-          localObject2 = e.a(paramObject, (com.tencent.mm.plugin.scanner.util.a.i)a.fCD());
-          paramObject = ((h)localObject2).bitmap;
-          if (paramObject != null) {
-            break;
-          }
+          localObject1 = a.OPN;
+          i = a.gQF();
+        }
+        paramObject.maxImageSize = i;
+        paramObject = (com.tencent.mm.plugin.scanner.util.a.g)paramObject;
+        localObject1 = a.OPN;
+        localObject2 = e.a(paramObject, (i)a.gQE());
+        localBitmap = ((h)localObject2).bitmap;
+        if (localBitmap == null)
+        {
           Log.e("MicroMsg.AIScanImageCdnUploadUtil", "decode error, bitmap is null");
-          AppMethodBeat.o(223679);
+          AppMethodBeat.o(313680);
           return null;
         }
-        Log.i("MicroMsg.AIScanImageCdnUploadUtil", "decode result,width:" + paramObject.getWidth() + ", height:" + paramObject.getHeight());
-        localObject1 = this.nVF;
-        Object localObject5 = kotlin.n.d.UTF_8;
-        if (localObject1 == null)
+        Log.i("MicroMsg.AIScanImageCdnUploadUtil", "decode result,width:" + localBitmap.getWidth() + ", height:" + localBitmap.getHeight());
+        paramObject = this.qVp;
+        localObject1 = kotlin.n.d.UTF_8;
+        if (paramObject == null)
         {
-          paramObject = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(223679);
+          paramObject = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(313680);
           throw paramObject;
         }
-        localObject1 = ((String)localObject1).getBytes((Charset)localObject5);
-        p.j(localObject1, "(this as java.lang.String).getBytes(charset)");
-        localObject5 = com.tencent.mm.b.g.getMessageDigest((byte[])localObject1);
-        localObject1 = "wcf://ImageSearchFilePath/".concat(String.valueOf(localObject5));
-        a locala1 = a.IJc;
-        this.L$0 = localObject3;
-        this.oDA = locala;
-        this.pGq = localObject2;
-        this.pGr = paramObject;
-        this.rdb = localObject5;
-        this.sPl = localObject1;
+        paramObject = paramObject.getBytes((Charset)localObject1);
+        s.s(paramObject, "(this as java.lang.String).getBytes(charset)");
+        localObject1 = s.X("wcf://ImageSearchFilePath/", com.tencent.mm.b.g.getMessageDigest(paramObject));
+        paramObject = a.OPN;
+        paramObject = (kotlin.d.d)this;
+        this.L$0 = localObject2;
+        this.Uf = localBitmap;
+        this.VC = localObject1;
         this.label = 1;
-        localObject3 = a.a(paramObject, (String)localObject1, this);
-        if (localObject3 == localObject4)
+        paramObject = a.a(localBitmap, (String)localObject1, paramObject);
+        if (paramObject == localObject3)
         {
-          AppMethodBeat.o(223679);
-          return localObject4;
+          AppMethodBeat.o(313680);
+          return localObject3;
         }
         break;
       case 1: 
-        localObject1 = (String)this.sPl;
-        localObject4 = (Bitmap)this.pGr;
-        localObject2 = (h)this.pGq;
+        localObject1 = (String)this.VC;
+        localBitmap = (Bitmap)this.Uf;
+        localObject2 = (h)this.L$0;
         ResultKt.throwOnFailure(paramObject);
-        localObject3 = paramObject;
-        paramObject = localObject4;
       }
       for (;;)
       {
-        boolean bool1 = ((Boolean)localObject3).booleanValue();
-        boolean bool2 = u.agG((String)localObject1);
-        if ((!bool1) || (!bool2))
+        boolean bool1 = ((Boolean)paramObject).booleanValue();
+        boolean bool3 = y.ZC((String)localObject1);
+        if ((!bool1) || (!bool3))
         {
-          Log.i("MicroMsg.AIScanImageCdnUploadUtil", "save Image Fail, saveSuccess:" + bool1 + ", fileExist:" + bool2);
-          AppMethodBeat.o(223679);
-          return null;
-        }
-        localObject3 = new a.a();
-        localObject4 = ((h)localObject2).Jag;
-        if (localObject4 != null) {}
-        for (i = ((Point)localObject4).y;; i = 0)
-        {
-          ((a.a)localObject3).BXB = i;
-          localObject2 = ((h)localObject2).Jag;
-          i = j;
-          if (localObject2 != null) {
-            i = ((Point)localObject2).x;
+          paramObject = new StringBuilder("save Image Fail, saveSuccess:");
+          if (bool1)
+          {
+            bool1 = true;
+            paramObject = paramObject.append(bool1).append(", fileExist:");
+            if (!bool3) {
+              break label420;
+            }
           }
-          ((a.a)localObject3).BXA = i;
-          ((a.a)localObject3).IJe = paramObject.getWidth();
-          ((a.a)localObject3).IJf = paramObject.getHeight();
-          ((a.a)localObject3).IJd = ((String)localObject1);
-          AppMethodBeat.o(223679);
-          return localObject3;
+          label420:
+          for (bool1 = bool2;; bool1 = false)
+          {
+            Log.i("MicroMsg.AIScanImageCdnUploadUtil", bool1);
+            AppMethodBeat.o(313680);
+            return null;
+            bool1 = false;
+            break;
+          }
+        }
+        paramObject = new a.a();
+        localObject3 = ((h)localObject2).PjY;
+        if (localObject3 == null)
+        {
+          i = 0;
+          paramObject.HJO = i;
+          localObject2 = ((h)localObject2).PjY;
+          if (localObject2 != null) {
+            break label512;
+          }
+        }
+        label512:
+        for (i = j;; i = ((Point)localObject2).x)
+        {
+          paramObject.HJN = i;
+          paramObject.OPS = localBitmap.getWidth();
+          paramObject.OPT = localBitmap.getHeight();
+          paramObject.OPR = ((String)localObject1);
+          AppMethodBeat.o(313680);
+          return paramObject;
+          i = ((Point)localObject3).y;
+          break;
         }
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/scanner/util/compress/AiImageCompressStrategy;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
+    extends u
     implements kotlin.g.a.a<b>
   {
-    public static final f IJl;
+    public static final f OPZ;
     
     static
     {
-      AppMethodBeat.i(217685);
-      IJl = new f();
-      AppMethodBeat.o(217685);
+      AppMethodBeat.i(313657);
+      OPZ = new f();
+      AppMethodBeat.o(313657);
     }
     
     f()
@@ -305,64 +310,59 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends j
-    implements m<ak, kotlin.d.d<? super Boolean>, Object>
+    extends kotlin.d.b.a.k
+    implements m<aq, kotlin.d.d<? super Boolean>, Object>
   {
     int label;
-    private ak p$;
     
-    g(Bitmap paramBitmap, String paramString, kotlin.d.d paramd)
+    g(Bitmap paramBitmap, String paramString, kotlin.d.d<? super g> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(221156);
-      p.k(paramd, "completion");
-      paramd = new g(this.cLr, this.IJm, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(221156);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(221158);
-      paramObject1 = ((g)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(221158);
-      return paramObject1;
+      AppMethodBeat.i(313647);
+      paramObject = (kotlin.d.d)new g(this.eGL, this.OQa, paramd);
+      AppMethodBeat.o(313647);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(221150);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      boolean bool2 = true;
+      AppMethodBeat.i(313638);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(221150);
+        AppMethodBeat.o(313638);
         throw paramObject;
       }
       ResultKt.throwOnFailure(paramObject);
-      boolean bool1 = false;
       try
       {
-        boolean bool2 = BitmapUtil.saveBitmapToImage(this.cLr, 100, Bitmap.CompressFormat.JPEG, this.IJm, true);
-        bool1 = bool2;
+        bool1 = BitmapUtil.saveBitmapToImage(this.eGL, 100, Bitmap.CompressFormat.JPEG, this.OQa, true);
+        if (bool1)
+        {
+          bool1 = bool2;
+          AppMethodBeat.o(313638);
+          return Boolean.valueOf(bool1);
+        }
       }
-      catch (Throwable paramObject)
+      finally
       {
         for (;;)
         {
-          Log.i("MicroMsg.AIScanImageCdnUploadUtil", "save bitmap to image fail:" + paramObject.getLocalizedMessage());
+          Log.i("MicroMsg.AIScanImageCdnUploadUtil", s.X("save bitmap to image fail:", paramObject.getLocalizedMessage()));
+          boolean bool1 = false;
+          continue;
+          bool1 = false;
         }
       }
-      AppMethodBeat.o(221150);
-      return Boolean.valueOf(bool1);
     }
   }
 }

@@ -1,125 +1,110 @@
 package com.tencent.mm.plugin.finder.view;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.matrix.trace.f.c;
+import com.tencent.mm.plugin.finder.e.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderFeedBubbleTipsLayout;", "Lcom/tencent/mm/plugin/finder/view/SimpleTouchableLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "temLocation1", "", "temLocation2", "getView", "T", "Landroid/view/View;", "viewId", "(I)Landroid/view/View;", "moveViewAboveLikeTargetView", "", "tipsView", "targetView", "onLayout", "changed", "", "left", "top", "right", "bottom", "onViewRemoved", "child", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderFeedBubbleTipsLayout;", "Lcom/tencent/mm/plugin/finder/view/SimpleTouchableLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "temLocation1", "", "temLocation2", "getView", "T", "Landroid/view/View;", "viewId", "(I)Landroid/view/View;", "moveViewAboveLikeTargetView", "", "tipsView", "targetView", "isCenterAlign", "", "onLayout", "changed", "left", "top", "right", "bottom", "onViewRemoved", "child", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFeedBubbleTipsLayout
   extends SimpleTouchableLayout
 {
-  public static final a AXi;
-  private final int[] AXg;
-  private final int[] AXh;
+  public static final a GyK;
+  private final int[] GyL;
+  private final int[] GyM;
   
   static
   {
-    AppMethodBeat.i(277723);
-    AXi = new a((byte)0);
-    AppMethodBeat.o(277723);
+    AppMethodBeat.i(344815);
+    GyK = new a((byte)0);
+    AppMethodBeat.o(344815);
   }
   
   public FinderFeedBubbleTipsLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(277720);
-    this.AXg = new int[2];
-    this.AXh = new int[2];
-    AppMethodBeat.o(277720);
+    AppMethodBeat.i(344791);
+    this.GyL = new int[2];
+    this.GyM = new int[2];
+    AppMethodBeat.o(344791);
   }
   
   public FinderFeedBubbleTipsLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(277721);
-    this.AXg = new int[2];
-    this.AXh = new int[2];
-    AppMethodBeat.o(277721);
+    AppMethodBeat.i(344797);
+    this.GyL = new int[2];
+    this.GyM = new int[2];
+    AppMethodBeat.o(344797);
   }
   
-  private <T extends View> T RD(int paramInt)
+  private <T extends View> T UH(int paramInt)
   {
-    AppMethodBeat.i(277719);
+    AppMethodBeat.i(344809);
     View localView = findViewById(paramInt);
-    if (localView != null)
+    if (localView == null)
     {
-      AppMethodBeat.o(277719);
-      return localView;
+      AppMethodBeat.o(344809);
+      return null;
     }
-    AppMethodBeat.o(277719);
-    return null;
+    AppMethodBeat.o(344809);
+    return localView;
   }
   
-  private final void k(View paramView1, View paramView2)
+  private final void o(View paramView1, View paramView2)
   {
-    AppMethodBeat.i(277718);
+    AppMethodBeat.i(344805);
+    int i;
     if (paramView1 != null)
     {
-      int i;
-      if (paramView1.getVisibility() == 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label163;
-        }
+      if (paramView1.getVisibility() != 0) {
+        break label122;
       }
-      for (;;)
-      {
-        if (paramView1 != null)
-        {
-          if (paramView2 != null)
-          {
-            paramView2.getLocationInWindow(this.AXg);
-            getLocationInWindow(this.AXh);
-            i = this.AXg[1] - this.AXh[1];
-            if (i > 0)
-            {
-              d locald = d.AjH;
-              if (((Number)d.dXx().aSr()).intValue() == 1)
-              {
-                int j = (paramView2.getHeight() - paramView1.getHeight()) / 2;
-                int k = (int)paramView1.getResources().getDimension(b.d.Edge_2A);
-                paramView1.layout(paramView1.getLeft() - paramView2.getWidth() - k, i + j, paramView1.getRight() - paramView2.getWidth() - k, j + i + paramView1.getHeight());
-                AppMethodBeat.o(277718);
-                return;
-                i = 0;
-                break;
-                label163:
-                paramView1 = null;
-                continue;
-              }
-              paramView1.layout(paramView1.getLeft(), i - paramView1.getHeight(), paramView1.getRight(), i);
-            }
-            AppMethodBeat.o(277718);
-            return;
-          }
-          AppMethodBeat.o(277718);
-          return;
-        }
+      i = 1;
+      if (i == 0) {
+        break label127;
       }
     }
-    AppMethodBeat.o(277718);
+    for (;;)
+    {
+      if ((paramView1 != null) && (paramView2 != null))
+      {
+        paramView2.getLocationInWindow(this.GyL);
+        getLocationInWindow(this.GyM);
+        i = this.GyL[1] - this.GyM[1];
+        int j = this.GyL[0] + paramView2.getMeasuredWidth() / 2;
+        int k = paramView1.getMeasuredWidth() / 2;
+        int m = paramView1.getMeasuredWidth() / 2;
+        if (i > 0) {
+          paramView1.layout(j - k, i - paramView1.getHeight(), j + m, i);
+        }
+      }
+      AppMethodBeat.o(344805);
+      return;
+      label122:
+      i = 0;
+      break;
+      label127:
+      paramView1 = null;
+    }
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = 1;
-    AppMethodBeat.i(277717);
+    AppMethodBeat.i(344830);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    View localView1 = RD(b.f.profile_timeline_like_posting);
+    View localView1 = UH(e.e.profile_timeline_like_posting);
     View localView2;
     if (localView1 != null)
     {
-      localView2 = RD(b.f.profile_upload_tip_container);
+      localView2 = UH(e.e.profile_upload_tip_container);
       if ((localView2 != null) && (localView2.getVisibility() == 0))
       {
         paramInt1 = 1;
@@ -128,85 +113,77 @@ public final class FinderFeedBubbleTipsLayout
         }
         label61:
         if (localView1 == null) {
-          break label151;
-        }
-        label66:
-        if (localView1 != null) {
-          break label168;
-        }
-        localView2 = ((FinderFeedBubbleTipsLayout)this).RD(b.f.awesome_icon_container);
-        if (localView2 == null) {
-          break label168;
-        }
-        if (localView2.getVisibility() != 0) {
-          break label157;
-        }
-        paramInt1 = i;
-        label99:
-        if (paramInt1 == 0) {
-          break label162;
-        }
-        label103:
-        if (localView2 == null) {
-          break label168;
+          break label169;
         }
       }
     }
     for (;;)
     {
-      k(RD(b.f.finder_self_feed_like_tips_layout), localView2);
-      k(RD(b.f.finder_private_feed_like_tips_layout), localView2);
-      AppMethodBeat.o(277717);
-      return;
-      paramInt1 = 0;
-      break;
-      label145:
+      if (localView1 == null)
+      {
+        localView2 = ((FinderFeedBubbleTipsLayout)this).UH(e.e.awesome_icon_container);
+        if (localView2 != null) {
+          if (localView2.getVisibility() == 0)
+          {
+            paramInt1 = i;
+            label99:
+            if (paramInt1 == 0) {
+              break label156;
+            }
+            label103:
+            if (localView2 == null) {
+              break label162;
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        o(UH(e.e.finder_self_feed_like_tips_layout), localView2);
+        o(UH(e.e.finder_private_feed_like_tips_layout), localView2);
+        AppMethodBeat.o(344830);
+        return;
+        paramInt1 = 0;
+        break;
+        label145:
+        localView1 = null;
+        break label61;
+        paramInt1 = 0;
+        break label99;
+        label156:
+        localView2 = null;
+        break label103;
+        label162:
+        localView2 = localView1;
+      }
+      label169:
       localView1 = null;
-      break label61;
-      label151:
-      localView1 = null;
-      break label66;
-      label157:
-      paramInt1 = 0;
-      break label99;
-      label162:
-      localView2 = null;
-      break label103;
-      label168:
-      localView2 = localView1;
     }
   }
   
   public final void onViewRemoved(View paramView)
   {
-    AppMethodBeat.i(277716);
-    p.k(paramView, "child");
+    AppMethodBeat.i(344823);
+    s.u(paramView, "child");
     super.onViewRemoved(paramView);
-    Object localObject = Looper.getMainLooper();
-    p.j(localObject, "Looper.getMainLooper()");
-    localObject = ((Looper)localObject).getThread();
-    p.j(localObject, "Looper.getMainLooper().thread");
-    long l = ((Thread)localObject).getId();
-    localObject = Thread.currentThread();
-    p.j(localObject, "Thread.currentThread()");
-    if (l != ((Thread)localObject).getId())
+    if (Looper.getMainLooper().getThread().getId() != Thread.currentThread().getId())
     {
-      Log.e("Finder.FeedBubbleTipsLayout", "[onViewRemoved] in other thread. child=" + paramView + ' ' + com.tencent.matrix.trace.g.b.getStack() + ' ');
-      AppMethodBeat.o(277716);
+      Log.e("Finder.FeedBubbleTipsLayout", "[onViewRemoved] in other thread. child=" + paramView + ' ' + c.getStack() + ' ');
+      AppMethodBeat.o(344823);
       return;
     }
     if (isInLayout()) {
-      Log.e("Finder.FeedBubbleTipsLayout", "[onViewRemoved] isInLayout child=" + paramView + ' ' + com.tencent.matrix.trace.g.b.getStack() + ' ');
+      Log.e("Finder.FeedBubbleTipsLayout", "[onViewRemoved] isInLayout child=" + paramView + ' ' + c.getStack() + ' ');
     }
-    AppMethodBeat.o(277716);
+    AppMethodBeat.o(344823);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderFeedBubbleTipsLayout$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderFeedBubbleTipsLayout$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout
  * JD-Core Version:    0.7.0.1
  */

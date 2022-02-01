@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.wallet_core.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.djl;
-import com.tencent.mm.protocal.protobuf.djm;
+import com.tencent.mm.protocal.protobuf.ebv;
+import com.tencent.mm.protocal.protobuf.ebw;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private d rr;
+  private h callback;
+  private c rr;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
     AppMethodBeat.i(69967);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new djl();
-    ((d.a)localObject).lBV = new djm();
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/payibgcheckjsapisign";
-    ((d.a)localObject).funcId = 1767;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (djl)d.b.b(this.rr.lBR);
-    ((djl)localObject).lVG = paramString1;
-    ((djl)localObject).Slz = paramString4;
-    ((djl)localObject).Sly = paramString2;
-    ((djl)localObject).SlA = paramString5;
-    ((djl)localObject).SlB = paramString6;
-    ((djl)localObject).RQH = paramString3;
-    ((djl)localObject).SkB = paramString7;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ebv();
+    ((c.a)localObject).otF = new ebw();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/payibgcheckjsapisign";
+    ((c.a)localObject).funcId = 1767;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ebv)c.b.b(this.rr.otB);
+    ((ebv)localObject).oOI = paramString1;
+    ((ebv)localObject).ZjJ = paramString4;
+    ((ebv)localObject).ZjI = paramString2;
+    ((ebv)localObject).ZjK = paramString5;
+    ((ebv)localObject).ZjL = paramString6;
+    ((ebv)localObject).YNW = paramString3;
+    ((ebv)localObject).ZiL = paramString7;
     AppMethodBeat.o(69967);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(69969);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69969);
     return i;
@@ -61,7 +61,7 @@ public final class a
   {
     AppMethodBeat.i(69968);
     Log.i("MicroMsg.NetSceneIbgCheckJsapi", "check jsapi: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramArrayOfByte = (djm)d.c.b(((d)params).lBS);
+    paramArrayOfByte = (ebw)c.c.b(((c)params).otC);
     paramInt1 = paramInt3;
     params = paramString;
     if (paramInt3 == 0)
@@ -70,8 +70,8 @@ public final class a
       params = paramString;
       if (paramInt2 == 0)
       {
-        paramInt1 = paramArrayOfByte.vht;
-        params = paramArrayOfByte.vhu;
+        paramInt1 = paramArrayOfByte.ytv;
+        params = paramArrayOfByte.ytw;
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt1, params, this);

@@ -1,82 +1,73 @@
 package com.tencent.matrix.a.a;
 
-import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.os.Process;
 import com.tencent.matrix.a;
-import com.tencent.matrix.a.a.a.g.a;
-import com.tencent.matrix.a.a.a.g.b.a;
-import com.tencent.matrix.a.a.a.j;
 import com.tencent.matrix.a.a.a.j.a;
-import com.tencent.matrix.a.a.a.j.a.a;
-import com.tencent.matrix.a.a.a.j.a.c.b;
-import com.tencent.matrix.a.a.a.j.a.c.c;
-import com.tencent.matrix.a.a.a.k.a;
-import com.tencent.matrix.a.a.a.k.b;
-import com.tencent.matrix.a.a.a.m.a;
-import com.tencent.matrix.a.a.a.m.c.b;
-import com.tencent.matrix.a.b.h;
-import com.tencent.matrix.a.b.h.c;
+import com.tencent.matrix.a.a.a.j.b.a;
+import com.tencent.matrix.a.a.a.m;
+import com.tencent.matrix.a.a.a.m.a.c.c;
+import com.tencent.matrix.a.a.a.n.a;
+import com.tencent.matrix.a.a.a.n.b;
+import com.tencent.matrix.a.a.a.p.a;
+import com.tencent.matrix.a.a.a.p.c.b;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
 public class d
-  implements Handler.Callback, com.tencent.matrix.a.a.a.d.a, g.a, k.b, m.a
+  implements Handler.Callback, com.tencent.matrix.a.a.a.d.a, j.a, n.b, p.a
 {
-  public final c cUb;
-  public c cUc;
-  public a cUd;
-  public com.tencent.matrix.a.a.a.b.a cUe;
-  Callable<String> cUf = new Callable() {};
-  public volatile boolean cUg = false;
-  public boolean cUh = a.cQs.cQt;
-  public boolean cUi;
-  public boolean cUj;
-  public final long cUk;
-  private final long cUl;
-  public final long cUm;
-  public int cUn = -1;
+  public final c ePD;
+  public b ePE;
+  public a ePF;
+  Callable<String> ePG = new Callable() {};
+  public volatile boolean ePH = false;
+  public boolean ePI = a.eLw.eLx;
+  public boolean ePJ;
+  public boolean ePK;
+  public final long ePL;
+  private final long ePM;
+  public final long ePN;
   public final Handler mHandler;
   
-  @SuppressLint({"VisibleForTests"})
   public d(c paramc)
   {
-    this.cUb = paramc;
-    if ((paramc.cTz instanceof b.a)) {
-      ((b.a)paramc.cTz).cTa = this;
+    this.ePD = paramc;
+    if ((paramc.ePb instanceof b.a)) {
+      ((b.a)paramc.ePb).a(this);
     }
-    if (paramc.cTA != null) {
-      this.cUf = paramc.cTA;
+    if (paramc.ePc != null) {
+      this.ePG = paramc.ePc;
     }
-    this.mHandler = new Handler(com.tencent.matrix.e.b.Yt().getLooper(), this);
-    this.cUi = paramc.cTK;
-    if (this.cUi) {
-      this.cUc = new c((byte)0);
+    this.mHandler = new Handler(com.tencent.matrix.e.b.aAo().getLooper(), this);
+    this.ePJ = paramc.ePm;
+    if (this.ePJ) {
+      this.ePE = new b((byte)0);
     }
-    this.cUj = paramc.cTL;
-    this.cUk = paramc.cTD;
-    this.cUl = paramc.cTE;
-    this.cUm = paramc.cTF;
-    paramc = paramc.cTY.iterator();
+    this.ePK = paramc.ePn;
+    this.ePL = paramc.ePf;
+    this.ePM = paramc.ePg;
+    this.ePN = paramc.ePh;
+    paramc = paramc.ePA.iterator();
     while (paramc.hasNext()) {
-      ((j)paramc.next()).f(this);
+      ((m)paramc.next()).g(this);
     }
   }
   
-  public static int bh(Context paramContext)
+  public static int bR(Context paramContext)
   {
     try
     {
-      int i = com.tencent.matrix.a.b.b.bk(paramContext);
+      int i = com.tencent.matrix.a.b.b.bU(paramContext);
+      com.tencent.matrix.e.c.i("Matrix.battery.BatteryMonitorCore", "onGetTemperature, battery = ".concat(String.valueOf(i)), new Object[0]);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
       com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BatteryMonitorCore", paramContext, "#currentBatteryTemperature error", new Object[0]);
     }
@@ -85,19 +76,52 @@ public class d
   
   public static Context getContext()
   {
-    return com.tencent.matrix.b.Vu().application;
+    return com.tencent.matrix.c.avW().application;
   }
   
-  public final c VX()
+  public final void a(int paramInt, p.c.b paramb)
   {
-    return this.cUb;
+    this.ePD.ePb.a(paramInt, paramb);
   }
   
-  public final boolean VY()
+  public final void a(m.a.c.c<? extends j.b.a> paramc)
+  {
+    this.ePD.ePb.a(paramc);
+  }
+  
+  public final void a(n.a parama)
+  {
+    this.ePD.ePb.a(parama);
+  }
+  
+  public final void a(p.c.b paramb, long paramLong)
+  {
+    this.ePD.ePb.a(paramb, paramLong);
+  }
+  
+  public final void a(boolean paramBoolean, int paramInt1, int paramInt2, ComponentName paramComponentName, long paramLong)
+  {
+    this.ePD.ePb.a(paramBoolean, paramInt1, paramInt2, paramComponentName, paramLong);
+  }
+  
+  public final <T extends m> T aj(Class<T> paramClass)
+  {
+    Iterator localIterator = this.ePD.ePA.iterator();
+    while (localIterator.hasNext())
+    {
+      m localm = (m)localIterator.next();
+      if (paramClass.isAssignableFrom(localm.getClass())) {
+        return localm;
+      }
+    }
+    return null;
+  }
+  
+  public final boolean awH()
   {
     try
     {
-      boolean bool = this.cUg;
+      boolean bool = this.ePH;
       return bool;
     }
     finally
@@ -107,49 +131,11 @@ public class d
     }
   }
   
-  public final <T extends j> T Z(Class<T> paramClass)
-  {
-    Iterator localIterator = this.cUb.cTY.iterator();
-    while (localIterator.hasNext())
-    {
-      j localj = (j)localIterator.next();
-      if (paramClass.isAssignableFrom(localj.getClass())) {
-        return localj;
-      }
-    }
-    return null;
-  }
-  
-  public final void a(int paramInt, m.c.b paramb)
-  {
-    this.cUb.cTz.a(paramInt, paramb);
-  }
-  
-  public final void a(j.a.c.c<? extends g.b.a> paramc)
-  {
-    this.cUb.cTz.a(paramc);
-  }
-  
-  public final void a(k.a parama)
-  {
-    this.cUb.cTz.a(parama);
-  }
-  
-  public final void a(m.c.b paramb, long paramLong)
-  {
-    this.cUb.cTz.a(paramb, paramLong);
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt1, int paramInt2, ComponentName paramComponentName, long paramLong)
-  {
-    this.cUb.cTz.a(paramBoolean, paramInt1, paramInt2, paramComponentName, paramLong);
-  }
-  
   public final String getScene()
   {
     try
     {
-      String str = (String)this.cUf.call();
+      String str = (String)this.ePG.call();
       return str;
     }
     catch (Exception localException) {}
@@ -161,7 +147,7 @@ public class d
     if (paramMessage.what == 1)
     {
       com.tencent.matrix.e.c.d("Matrix.battery.BatteryMonitorCore", "#onTraceBegin", new Object[0]);
-      this.cUb.cTz.VT();
+      this.ePD.ePb.awC();
       return true;
     }
     if (paramMessage.what == 2)
@@ -170,117 +156,68 @@ public class d
       for (boolean bool = true;; bool = false)
       {
         com.tencent.matrix.e.c.d("Matrix.battery.BatteryMonitorCore", "#onTraceEnd", new Object[0]);
-        this.cUb.cTz.cQ(bool);
+        this.ePD.ePb.dx(bool);
         return true;
       }
     }
     return false;
   }
   
-  public final com.tencent.matrix.a.a.a.b.a jq(int paramInt)
-  {
-    com.tencent.matrix.a.a.a.b.a locala = new com.tencent.matrix.a.a.a.b.a();
-    locala.tid = paramInt;
-    locala.cUD = com.tencent.matrix.a.b.b.k(com.tencent.matrix.b.Vu().application, this.cUh);
-    locala.cUE = com.tencent.matrix.a.b.b.bl(com.tencent.matrix.b.Vu().application);
-    for (;;)
-    {
-      try
-      {
-        localObject = this.cUb.cTA;
-        if (localObject != null) {
-          continue;
-        }
-        localObject = "";
-        locala.scene = ((String)localObject);
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        locala.scene = "";
-        continue;
-        locala.cUC = j.a.c.b.c(Long.valueOf(localException.WF()));
-        locala.name = localException.cXB;
-      }
-      localObject = h.cy(Process.myPid(), paramInt);
-      if (localObject != null) {
-        continue;
-      }
-      return null;
-      localObject = (String)((Callable)localObject).call();
-    }
-    return locala;
-  }
-  
   public final class a
     implements Runnable
   {
-    int cUp = 0;
+    int ePP = 0;
     
     private a() {}
     
     public final void run()
     {
-      this.cUp += 1;
-      com.tencent.matrix.e.c.i("Matrix.battery.BatteryMonitorCore", "#onBackgroundLoopCheck, round = " + this.cUp, new Object[0]);
-      if (!d.this.cUh) {
+      this.ePP += 1;
+      com.tencent.matrix.e.c.i("Matrix.battery.BatteryMonitorCore", "#onBackgroundLoopCheck, round = " + this.ePP, new Object[0]);
+      if (!d.this.ePI) {
         try
         {
-          Iterator localIterator = d.d(d.this).cTY.iterator();
+          Iterator localIterator = d.e(d.this).ePA.iterator();
           while (localIterator.hasNext()) {
-            ((j)localIterator.next()).bm(d.e(d.this) * this.cUp);
+            ((m)localIterator.next()).dE(d.f(d.this) * this.ePP);
           }
         }
         finally {}
       }
-      if (!d.this.cUh) {
-        d.b(d.this).postDelayed(this, d.e(d.this));
+      if (!d.this.ePI) {
+        d.c(d.this).postDelayed(this, d.f(d.this));
       }
     }
   }
   
-  public static abstract interface b<T extends j.a<T>>
-  {
-    public abstract void a(T paramT);
-  }
-  
-  public final class c
+  public final class b
     implements Runnable
   {
-    public int cUq = 1;
+    public int ePQ = 1;
     
-    private c() {}
+    private b() {}
     
     public final void run()
     {
       int i = 2;
-      if (d.a(d.this))
+      if (d.b(d.this))
       {
-        Message localMessage = Message.obtain(d.b(d.this));
-        localMessage.what = this.cUq;
+        Message localMessage = Message.obtain(d.c(d.this));
+        localMessage.what = this.ePQ;
         localMessage.arg1 = 3;
-        d.b(d.this).sendMessageAtFrontOfQueue(localMessage);
-        if (this.cUq == 2) {
+        d.c(d.this).sendMessageAtFrontOfQueue(localMessage);
+        if (this.ePQ == 2) {
           i = 1;
         }
-        this.cUq = i;
-        d.b(d.this).postDelayed(this, d.c(d.this));
+        this.ePQ = i;
+        d.c(d.this).postDelayed(this, d.d(d.this));
       }
     }
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void VT();
-    
-    public abstract void a(j.a.a<com.tencent.matrix.a.a.a.b.a> parama);
-    
-    public abstract void cQ(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.d
  * JD-Core Version:    0.7.0.1
  */

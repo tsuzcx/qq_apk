@@ -7,7 +7,6 @@ public class SandboxBuildInfo
   private static final String TAG = "SandboxBuildInfo";
   private static String[] mSandboxBuildInfo = null;
   
-  @CalledByNative
   public static String[] getAll()
   {
     AppMethodBeat.i(53816);

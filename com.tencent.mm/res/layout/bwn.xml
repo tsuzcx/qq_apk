@@ -1,16 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/epm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
-        <ImageView android:id="@id/ki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ape" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/h82" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:id="@id/gu9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_marginBottom="8.0dip">
-        <TextView android:layout_gravity="center" android:background="@color/a7t" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_marginLeft="60.0dip" android:layout_weight="1.0" />
-        <TextView android:textColor="@color/uj" android:gravity="center" android:id="@id/gu_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h9v" />
-        <TextView android:layout_gravity="center" android:background="@color/a7t" android:layout_width="wrap_content" android:layout_height="2.0dip" android:layout_marginRight="60.0dip" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:layout_gravity="center" android:id="@id/epf" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="25.0dip" android:layout_marginBottom="5.0dip">
-        <ImageView android:gravity="center" android:layout_gravity="center" android:background="@drawable/bkb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+<CheckedTextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?a54" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@android:id/text1" android:paddingLeft="@dimen/pc" android:paddingRight="?je" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?ut" android:drawableLeft="?android:listChoiceIndicatorSingle" android:drawablePadding="20.0dip" android:drawableStart="?android:listChoiceIndicatorSingle" android:paddingStart="@dimen/pc" android:paddingEnd="?je"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

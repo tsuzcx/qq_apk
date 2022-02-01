@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.b.g;
 
 public class SightRangeWidget
   extends RangeWidget
@@ -29,7 +29,7 @@ public class SightRangeWidget
         break label46;
       }
       paramAtContactWidget.setVisibility(4);
-      paramAtContactWidget.fTh();
+      paramAtContactWidget.hlx();
     }
     for (;;)
     {
@@ -42,7 +42,7 @@ public class SightRangeWidget
   
   protected int getLayoutResource()
   {
-    return i.g.sight_range_layout;
+    return b.g.sight_range_layout;
   }
   
   protected int getMaxTagNameLen()
@@ -52,7 +52,7 @@ public class SightRangeWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SightRangeWidget
  * JD-Core Version:    0.7.0.1
  */

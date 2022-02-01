@@ -14,17 +14,17 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  private int EAR;
-  public List<i> GIc;
-  public List<d> GId;
-  public String GIe;
-  public int tVd;
+  private int KtO;
+  public List<i> MES;
+  public List<d> MET;
+  public String MEU;
+  public int wYz;
   
   public e(int paramInt, String paramString)
   {
     AppMethodBeat.i(66681);
-    this.GIc = null;
-    this.GId = null;
+    this.MES = null;
+    this.MET = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("Limit", "10");
     localHashMap.put("Offset", String.valueOf(paramInt));
@@ -43,12 +43,12 @@ public final class e
     int i = 0;
     AppMethodBeat.i(66682);
     Log.d("MicroMsg.NetScenePatchQueryUserRoll", "errCode " + paramInt + " errMsg: " + paramString);
-    this.GIc = new LinkedList();
+    this.MES = new LinkedList();
     try
     {
-      this.tVd = paramJSONObject.getInt("TotalNum");
-      this.EAR = paramJSONObject.getInt("RecNum");
-      this.GIe = paramJSONObject.optString("Extbuf");
+      this.wYz = paramJSONObject.getInt("TotalNum");
+      this.KtO = paramJSONObject.getInt("RecNum");
+      this.MEU = paramJSONObject.optString("Extbuf");
       paramString = paramJSONObject.getJSONArray("UserRollList");
       Object localObject;
       if (paramString != null)
@@ -58,24 +58,24 @@ public final class e
         {
           localObject = new i();
           JSONObject localJSONObject = paramString.getJSONObject(paramInt);
-          ((i)localObject).GIo = localJSONObject.optInt("PayType");
-          ((i)localObject).GIh = localJSONObject.optString("Transid");
-          ((i)localObject).GIi = localJSONObject.optDouble("TotalFee");
-          ((i)localObject).GIj = localJSONObject.optString("GoodsName");
+          ((i)localObject).MFe = localJSONObject.optInt("PayType");
+          ((i)localObject).MEX = localJSONObject.optString("Transid");
+          ((i)localObject).MEY = localJSONObject.optDouble("TotalFee");
+          ((i)localObject).MEZ = localJSONObject.optString("GoodsName");
           ((i)localObject).CreateTime = localJSONObject.optInt("CreateTime");
-          ((i)localObject).GIl = localJSONObject.optInt("ModifyTime");
-          ((i)localObject).GIm = localJSONObject.optString("FeeType");
-          ((i)localObject).GIr = localJSONObject.optString("AppThumbUrl");
-          ((i)localObject).GIk = localJSONObject.optString("TradeStateName");
-          ((i)localObject).GIw = localJSONObject.optString("StatusColor");
-          ((i)localObject).GIx = localJSONObject.optString("FeeColor");
-          ((i)localObject).GIy = localJSONObject.optDouble("ActualPayFee");
-          ((i)localObject).GIz = localJSONObject.optString("BillId");
-          this.GIc.add(localObject);
+          ((i)localObject).MFb = localJSONObject.optInt("ModifyTime");
+          ((i)localObject).MFc = localJSONObject.optString("FeeType");
+          ((i)localObject).MFh = localJSONObject.optString("AppThumbUrl");
+          ((i)localObject).MFa = localJSONObject.optString("TradeStateName");
+          ((i)localObject).MFm = localJSONObject.optString("StatusColor");
+          ((i)localObject).MFn = localJSONObject.optString("FeeColor");
+          ((i)localObject).MFo = localJSONObject.optDouble("ActualPayFee");
+          ((i)localObject).MFp = localJSONObject.optString("BillId");
+          this.MES.add(localObject);
           paramInt += 1;
         }
       }
-      this.GId = new LinkedList();
+      this.MET = new LinkedList();
       paramString = paramJSONObject.optJSONArray("month_info");
       if (paramString != null)
       {
@@ -86,8 +86,8 @@ public final class e
           localObject = new d();
           ((d)localObject).year = paramJSONObject.optInt("year");
           ((d)localObject).month = paramJSONObject.optInt("month");
-          ((d)localObject).GIb = paramJSONObject.optString("feetext");
-          this.GId.add(localObject);
+          ((d)localObject).MER = paramJSONObject.optString("feetext");
+          this.MET.add(localObject);
           paramInt += 1;
         }
       }
@@ -103,7 +103,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.e
  * JD-Core Version:    0.7.0.1
  */

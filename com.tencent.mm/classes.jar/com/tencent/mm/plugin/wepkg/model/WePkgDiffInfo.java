@@ -9,12 +9,12 @@ public class WePkgDiffInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WePkgDiffInfo> CREATOR;
-  public String QMr;
-  public int QMs;
+  public String XFP;
+  public int XFQ;
   public String downloadUrl;
   public int fileSize;
-  public String jTB;
   public String md5;
+  public String mtT;
   public String oldVersion;
   public String version;
   
@@ -33,14 +33,14 @@ public class WePkgDiffInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110681);
-    paramParcel.writeString(this.jTB);
+    paramParcel.writeString(this.mtT);
     paramParcel.writeString(this.oldVersion);
-    paramParcel.writeString(this.QMr);
+    paramParcel.writeString(this.XFP);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.downloadUrl);
     paramParcel.writeString(this.md5);
     paramParcel.writeInt(this.fileSize);
-    paramParcel.writeInt(this.QMs);
+    paramParcel.writeInt(this.XFQ);
     AppMethodBeat.o(110681);
   }
 }

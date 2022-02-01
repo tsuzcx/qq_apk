@@ -11,7 +11,7 @@ public final class j
   public static final int CTRL_INDEX = 299;
   public static final String NAME = "removeHTMLWebView";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(47018);
     int i = paramJSONObject.getInt("htmlId");
@@ -21,7 +21,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.webview.j
  * JD-Core Version:    0.7.0.1
  */

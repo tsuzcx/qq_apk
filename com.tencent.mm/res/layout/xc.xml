@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/c" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/agx" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/d9r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs">
-        <ImageView android:layout_gravity="center" android:id="@id/baa" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:src="@drawable/bar" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <View android:id="@id/bab" android:background="@drawable/gy" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:layout_centerInParent="true" android:contentDescription="@string/a4u" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/d9r" android:layout_alignTop="@id/d9r">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bt">
-            <TextView android:textSize="@dimen/hd" android:textColor="@color/fr" android:ellipsize="end" android:id="@id/bb8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick_name}" style="@style/mi" />
-        </LinearLayout>
-        <TextView android:textColor="@color/l4" android:id="@id/bc2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{user_name}" style="@style/mi" />
-    </LinearLayout>
-    <ImageView android:id="@id/a5d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/star_mark" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/bnw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="@color/mx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a7a" android:id="@id/ab6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cv" />
+    <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/ab_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_marginBottom="@dimen/cp" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" app:labelBackground="@drawable/gt" app:labelTextColor="@drawable/gu" app:labelTextHeight="@dimen/cw" app:labelTextPaddingBottom="@dimen/g" app:labelTextPaddingLeft="@dimen/m2" app:labelTextPaddingRight="@dimen/m2" app:labelTextPaddingTop="@dimen/g" app:labelTextSize="@dimen/hq" app:labelTextWidth="lu3" app:lineMargin="@dimen/cd" app:selectType="m" app:wordMargin="@dimen/df" />
+</LinearLayout>

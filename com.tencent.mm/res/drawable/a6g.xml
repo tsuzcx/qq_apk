@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <padding android:left="2.0dip" android:top="2.0dip" android:right="2.0dip" android:bottom="2.0dip" />
-    <stroke android:width="1.0px" android:color="#ffb2b2b2" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:startColor="#00000000" android:endColor="#00000000" android:angle="-90.0" android:type="linear" android:centerY="0.7" android:centerColor="#44000000" />
+        </shape>
+    </item>
+</layer-list>

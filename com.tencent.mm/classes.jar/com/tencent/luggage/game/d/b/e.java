@@ -4,10 +4,10 @@ import com.tencent.luggage.game.widget.input.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 
 public final class e
-  extends c<v>
+  extends c<y>
 {
   private static final int CTRL_INDEX = 70;
   private static final String NAME = "hideKeyboard";

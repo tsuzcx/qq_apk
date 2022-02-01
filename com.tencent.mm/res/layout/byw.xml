@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="@dimen/d0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/a25" android:background="@drawable/azp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/amh">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/g30" android:layout_width="@dimen/k9" android:layout_height="@dimen/k9" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_filled_error" />
-        <TextView android:textSize="@dimen/amj" android:textColor="@color/abs" android:id="@id/g2y" android:layout_weight="1.0" style="@style/mk" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/b4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:src="@drawable/azu" />
-    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b31" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/j3t" />
 </LinearLayout>

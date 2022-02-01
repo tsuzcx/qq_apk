@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/i3p" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/jko" android:background="@drawable/dm" android:paddingLeft="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/im6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/glr" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a62" />
-        <TextView android:textSize="32.0dip" android:textColor="@color/afz" android:layout_gravity="center" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="SPLASH" />
-    </FrameLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/pb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/so" />
-</RelativeLayout>
+    <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/i7q" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a76" />
+    <ImageView android:id="@id/fd7" android:layout_width="41.0dip" android:layout_height="41.0dip" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/ko8" android:paddingBottom="2.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:layout_marginTop="@dimen/r" android:layout_marginRight="@dimen/k" android:layout_marginBottom="18.0dip" android:maxLines="1" />
+</LinearLayout>

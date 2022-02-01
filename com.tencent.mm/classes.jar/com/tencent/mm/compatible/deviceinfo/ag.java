@@ -6,24 +6,24 @@ import java.lang.reflect.Method;
 
 public final class ag
 {
-  private static Class<?> aFS;
-  private static Method juU;
-  private static Method juV;
+  private static Class<?> clazz;
+  private static Method lYl;
+  private static Method lYm;
   
   static
   {
     AppMethodBeat.i(155827);
-    aFS = null;
-    juU = null;
-    juV = null;
+    clazz = null;
+    lYl = null;
+    lYm = null;
     try
     {
       Class localClass = Class.forName("android.os.SystemProperties");
-      aFS = localClass;
-      juU = localClass.getDeclaredMethod("get", new Class[] { String.class });
-      juV = aFS.getDeclaredMethod("getInt", new Class[] { String.class, Integer.TYPE });
-      juU.setAccessible(true);
-      juV.setAccessible(true);
+      clazz = localClass;
+      lYl = localClass.getDeclaredMethod("get", new Class[] { String.class });
+      lYm = clazz.getDeclaredMethod("getInt", new Class[] { String.class, Integer.TYPE });
+      lYl.setAccessible(true);
+      lYm.setAccessible(true);
       AppMethodBeat.o(155827);
       return;
     }
@@ -34,19 +34,19 @@ public final class ag
     }
   }
   
-  public static int df(String paramString)
+  public static int ew(String paramString)
   {
-    AppMethodBeat.i(209969);
+    AppMethodBeat.i(240854);
     try
     {
-      int i = ((Integer)juV.invoke(null, new Object[] { paramString, Integer.valueOf(0) })).intValue();
-      AppMethodBeat.o(209969);
+      int i = ((Integer)lYm.invoke(null, new Object[] { paramString, Integer.valueOf(0) })).intValue();
+      AppMethodBeat.o(240854);
       return i;
     }
     catch (Exception paramString)
     {
       Log.printErrStackTrace("MicroMsg.SystemProperties", paramString, "", new Object[0]);
-      AppMethodBeat.o(209969);
+      AppMethodBeat.o(240854);
     }
     return 0;
   }
@@ -56,7 +56,7 @@ public final class ag
     AppMethodBeat.i(155826);
     try
     {
-      paramString = (String)juU.invoke(null, new Object[] { paramString });
+      paramString = (String)lYl.invoke(null, new Object[] { paramString });
       AppMethodBeat.o(155826);
       return paramString;
     }
@@ -70,7 +70,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.ag
  * JD-Core Version:    0.7.0.1
  */

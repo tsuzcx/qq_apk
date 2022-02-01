@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -17,51 +16,50 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.j;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.luckymoney.f2f.a.c;
-import com.tencent.mm.plugin.luckymoney.model.ag;
+import com.tencent.mm.plugin.luckymoney.model.ah;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBeforeDetailUI;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.plugin.wallet_core.utils.g;
+import com.tencent.mm.plugin.wallet_core.utils.j.a;
 import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.plugin.wxpay.a.e;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.aqf;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.protocal.protobuf.eme;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.d.a;
+import com.tencent.mm.wallet_core.e.a;
 import java.io.IOException;
 
 @com.tencent.mm.ui.base.a(3)
 public class LuckyMoneyF2FReceiveUI
   extends LuckyMoneyBaseUI
 {
-  private String EvN;
-  private String EvP;
-  private String EvQ;
-  private TextView Ewm;
-  private View Exm;
-  private CdnImageView Exn;
-  private TextView Exo;
-  private ImageView Exp;
-  private ValueAnimator Exq;
-  private ValueAnimator Exr;
-  private Intent Exs;
-  private boolean Ext = false;
+  private String CAf;
+  private TextView KoV;
+  private String Kov;
+  private String Kox;
+  private String Koy;
+  private View KpV;
+  private CdnImageView KpW;
+  private TextView KpX;
+  private ImageView KpY;
+  private ValueAnimator KpZ;
+  private ValueAnimator Kqa;
+  private Intent Kqb;
+  private boolean Kqc = false;
   private int amount;
-  private String gby;
+  private String ihI;
   private DisplayMetrics metrics;
-  private String vhY;
-  private String ybP;
+  private String ytZ;
   
   public int getLayoutId()
   {
@@ -72,19 +70,19 @@ public class LuckyMoneyF2FReceiveUI
   {
     AppMethodBeat.i(65109);
     super.onCreate(paramBundle);
-    this.Exm = findViewById(a.f.lucky_money_receive_ll_1);
-    this.Exn = ((CdnImageView)findViewById(a.f.lucky_money_receive_sender_avatar));
-    this.Ewm = ((TextView)findViewById(a.f.lucky_money_receive_sender_nickname));
-    this.Exo = ((TextView)findViewById(a.f.lucky_money_receive_tips));
-    this.Exp = ((ImageView)findViewById(a.f.lucky_money_recieve_close_btn));
-    this.Exp.setOnClickListener(new View.OnClickListener()
+    this.KpV = findViewById(a.f.lucky_money_receive_ll_1);
+    this.KpW = ((CdnImageView)findViewById(a.f.lucky_money_receive_sender_avatar));
+    this.KoV = ((TextView)findViewById(a.f.lucky_money_receive_sender_nickname));
+    this.KpX = ((TextView)findViewById(a.f.lucky_money_receive_tips));
+    this.KpY = ((ImageView)findViewById(a.f.lucky_money_recieve_close_btn));
+    this.KpY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(65102);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         LuckyMoneyF2FReceiveUI.a(LuckyMoneyF2FReceiveUI.this).cancel();
         LuckyMoneyF2FReceiveUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/f2f/ui/LuckyMoneyF2FReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -92,14 +90,14 @@ public class LuckyMoneyF2FReceiveUI
       }
     });
     getContentView().setVisibility(8);
-    this.vhY = getIntent().getStringExtra("key_share_url");
-    com.tencent.mm.plugin.wallet_core.model.k.amw(6);
-    doSceneProgress(new c(this.vhY), true);
+    this.ytZ = getIntent().getStringExtra("key_share_url");
+    com.tencent.mm.plugin.wallet_core.model.k.asj(6);
+    doSceneProgress(new c(this.ytZ), true);
     this.metrics = getResources().getDisplayMetrics();
-    this.Exq = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F }).setDuration(300L);
-    this.Exr = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(300L);
-    this.Exr.setStartDelay(1000L);
-    this.Exq.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.KpZ = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F }).setDuration(300L);
+    this.Kqa = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(300L);
+    this.Kqa.setStartDelay(1000L);
+    this.KpZ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -109,7 +107,7 @@ public class LuckyMoneyF2FReceiveUI
         AppMethodBeat.o(65103);
       }
     });
-    this.Exq.addListener(new Animator.AnimatorListener()
+    this.KpZ.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -125,7 +123,7 @@ public class LuckyMoneyF2FReceiveUI
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
     });
-    this.Exr.addListener(new Animator.AnimatorListener()
+    this.Kqa.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -156,34 +154,47 @@ public class LuckyMoneyF2FReceiveUI
     AppMethodBeat.i(65110);
     super.onResume();
     addSceneEndListener(1997);
-    if (this.Ext) {
+    if (this.Kqc) {
       finish();
     }
     AppMethodBeat.o(65110);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(65112);
     Log.i("LuckyMoneyF2FReceiveUI", "errType: %d,errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!(paramq instanceof c))
+    if (!(paramp instanceof c))
     {
       AppMethodBeat.o(65112);
       return true;
     }
-    Object localObject1 = (c)paramq;
-    paramInt1 = ((c)localObject1).gbp;
-    paramInt2 = ((c)localObject1).EvI;
+    Object localObject1 = (c)paramp;
+    paramInt1 = ((c)localObject1).ihz;
+    paramInt2 = ((c)localObject1).Koq;
     this.amount = ((c)localObject1).amount;
-    int i = ((c)localObject1).EvK;
-    Object localObject2 = ((c)localObject1).EvL;
-    String str = ((c)localObject1).EvM;
-    Log.i("LuckyMoneyF2FReceiveUI", "hbStatus: %d, recvStatus:%d, errorType:%d", new Object[] { Integer.valueOf(((c)localObject1).gbp), Integer.valueOf(((c)localObject1).EvI), Integer.valueOf(((c)localObject1).fyO) });
-    if (g.a(((c)localObject1).EvH.SwQ))
+    int i = ((c)localObject1).Kos;
+    Object localObject2 = ((c)localObject1).Kot;
+    Object localObject3 = ((c)localObject1).Kou;
+    Log.i("LuckyMoneyF2FReceiveUI", "hbStatus: %d, recvStatus:%d, errorType:%d", new Object[] { Integer.valueOf(((c)localObject1).ihz), Integer.valueOf(((c)localObject1).Koq), Integer.valueOf(((c)localObject1).hDx) });
+    if (com.tencent.mm.plugin.wallet_core.utils.j.a(((c)localObject1).Kop.ZxA))
     {
-      paramString = new g(this);
-      paramString.b(((c)localObject1).EvH.SwQ);
-      paramString.Phv = true;
+      new com.tencent.mm.plugin.wallet_core.utils.j(this).a(((c)localObject1).Kop.ZxA, new j.a()
+      {
+        public final void a(dfc paramAnonymousdfc)
+        {
+          AppMethodBeat.i(283858);
+          if ((paramAnonymousdfc.action == 2) && (this.Kqe.Koz != null))
+          {
+            paramAnonymousdfc = new c(LuckyMoneyF2FReceiveUI.e(LuckyMoneyF2FReceiveUI.this), this.Kqe.Koz);
+            LuckyMoneyF2FReceiveUI.this.doSceneProgress(paramAnonymousdfc, true);
+            AppMethodBeat.o(283858);
+            return;
+          }
+          LuckyMoneyF2FReceiveUI.this.finish();
+          AppMethodBeat.o(283858);
+        }
+      });
       AppMethodBeat.o(65112);
       return true;
     }
@@ -192,69 +203,69 @@ public class LuckyMoneyF2FReceiveUI
     {
       if (paramInt1 == 5)
       {
-        h.d(this, getString(a.i.lucky_money_f2f_has_expired), "", new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.k.d(this, getString(a.i.lucky_money_f2f_has_expired), "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(65106);
+            AppMethodBeat.i(65107);
             LuckyMoneyF2FReceiveUI.this.finish();
-            AppMethodBeat.o(65106);
+            AppMethodBeat.o(65107);
           }
         });
         AppMethodBeat.o(65112);
         return true;
       }
-      this.ybP = ((c)localObject1).ybP;
-      this.gby = ((c)localObject1).gby;
-      this.EvP = ((c)localObject1).EvP;
-      this.EvQ = ((c)localObject1).EvQ;
-      this.EvN = ((c)localObject1).EvN;
-      this.Exs = new Intent();
-      if (Util.isNullOrNil(this.EvP))
+      this.CAf = ((c)localObject1).CAf;
+      this.ihI = ((c)localObject1).ihI;
+      this.Kox = ((c)localObject1).Kox;
+      this.Koy = ((c)localObject1).Koy;
+      this.Kov = ((c)localObject1).Kov;
+      this.Kqb = new Intent();
+      if (Util.isNullOrNil(this.Kox))
       {
-        if ((!Util.isNullOrNil(this.gby)) && (!ab.Ql(this.gby)))
+        if ((!Util.isNullOrNil(this.ihI)) && (!ab.IR(this.ihI)))
         {
-          paramString = new j();
-          paramString.username = this.gby;
-          com.tencent.mm.am.q.bhP().b(paramString);
+          paramString = new com.tencent.mm.modelavatar.j();
+          paramString.username = this.ihI;
+          com.tencent.mm.modelavatar.q.bFE().b(paramString);
         }
-        ag.a(this.Exn, null, this.gby);
-        label379:
+        ah.a(this.KpW, null, this.ihI);
+        label382:
         paramString = new com.tencent.mm.plugin.luckymoney.model.q();
-        paramString.gbJ = this.amount;
-        paramString.ybP = this.ybP;
-        paramString.gbp = paramInt1;
-        paramString.gbq = paramInt2;
-        paramString.EvM = str;
-        paramString.EvK = i;
-        paramString.Ezw = this.gby;
-        paramString.EvL = ((String)localObject2);
-        if (!Util.isNullOrNil(this.EvQ)) {
-          break label707;
+        paramString.ihV = this.amount;
+        paramString.CAf = this.CAf;
+        paramString.ihz = paramInt1;
+        paramString.ihA = paramInt2;
+        paramString.Kou = ((String)localObject3);
+        paramString.Kos = i;
+        paramString.Ksi = this.ihI;
+        paramString.Kot = ((String)localObject2);
+        if (!Util.isNullOrNil(this.Koy)) {
+          break label710;
         }
-        paramString.Eza = ag.PI(this.gby);
-        label461:
-        paramString.EvN = this.EvN;
-        paramString.gbo = 2;
-        Log.i("LuckyMoneyF2FReceiveUI", "is most lucky %d", new Object[] { Integer.valueOf(((c)localObject1).EvO) });
-        if (((c)localObject1).EvO > 0) {
-          paramString.EyZ = getString(a.i.lucky_money_lucky_best);
+        paramString.KrN = ah.ID(this.ihI);
+        label464:
+        paramString.Kov = this.Kov;
+        paramString.ihy = 2;
+        Log.i("LuckyMoneyF2FReceiveUI", "is most lucky %d", new Object[] { Integer.valueOf(((c)localObject1).Kow) });
+        if (((c)localObject1).Kow > 0) {
+          paramString.KrM = getString(a.i.lucky_money_lucky_best);
         }
-        if (!Util.isNullOrNil(this.EvP)) {
-          break label718;
+        if (!Util.isNullOrNil(this.Kox)) {
+          break label721;
         }
       }
-      for (paramString.Ezb = ag.aNF(this.gby);; paramString.Ezb = this.EvP)
+      for (paramString.KrO = ah.aKC(this.ihI);; paramString.KrO = this.Kox)
       {
         try
         {
-          this.Exs.putExtra("key_detail_info", paramString.toByteArray());
-          paramString = ((c)localObject1).EvJ;
+          this.Kqb.putExtra("key_detail_info", paramString.toByteArray());
+          paramString = ((c)localObject1).Kor;
           if (paramString != null)
           {
             localObject1 = new RealnameGuideHelper();
-            ((RealnameGuideHelper)localObject1).a(String.valueOf(paramString.REc), paramString.EBN, paramString.oDJ, paramString.oDK, paramString.EBO, paramq.getType());
-            this.Exs.putExtra("key_realname_guide_helper", (Parcelable)localObject1);
+            ((RealnameGuideHelper)localObject1).a(String.valueOf(paramString.YAF), paramString.KuO, paramString.rGU, paramString.right_button_wording, paramString.KuP, paramp.getType());
+            this.Kqb.putExtra("key_realname_guide_helper", (Parcelable)localObject1);
           }
         }
         catch (IOException paramString)
@@ -262,73 +273,80 @@ public class LuckyMoneyF2FReceiveUI
           for (;;)
           {
             int j;
-            label707:
-            label718:
+            label710:
+            label721:
             Log.e("LuckyMoneyF2FReceiveUI", "lucky detail toBytes error: " + paramString.getMessage());
             continue;
-            if (!Util.isNullOrNil(new String[] { this.ybP, this.gby })) {
-              ag.a(this, this.Ewm, ag.PI(this.gby));
+            if (!Util.isNullOrNil(new String[] { this.CAf, this.ihI })) {
+              ah.a(this, this.KoV, ah.ID(this.ihI));
             }
           }
         }
-        if (Util.isNullOrNil(this.EvQ)) {
-          break label758;
+        if (Util.isNullOrNil(this.Koy)) {
+          break label761;
         }
-        ag.a(this, this.Ewm, this.EvQ);
-        ag.a(this, this.Exo, this.EvN);
-        this.Exq.start();
+        ah.a(this, this.KoV, this.Koy);
+        ah.a(this, this.KpX, this.Kov);
+        this.KpZ.start();
         getContentView().setVisibility(0);
         break;
         j = BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 48.0F);
-        this.Exn.setRoundCorner(true);
-        this.Exn.w(this.EvP, j, j, a.e.default_avatar_shadow);
-        break label379;
-        paramString.Eza = this.EvQ;
-        break label461;
+        this.KpW.setRoundCorner(true);
+        this.KpW.w(this.Kox, j, j, a.e.default_avatar_shadow);
+        break label382;
+        paramString.KrN = this.Koy;
+        break label464;
       }
     }
-    label758:
-    if (((c)localObject1).EvJ != null)
+    label761:
+    if (((c)localObject1).Kor != null)
     {
       Log.i("LuckyMoneyF2FReceiveUI", "need real name verify");
-      localObject2 = ((c)localObject1).EvJ;
-      localObject1 = new RealnameGuideHelper();
-      ((RealnameGuideHelper)localObject1).a(String.valueOf(((dtj)localObject2).REc), ((dtj)localObject2).EBN, ((dtj)localObject2).oDJ, ((dtj)localObject2).oDK, ((dtj)localObject2).EBO, paramq.getType());
-      paramq = new Bundle();
-      paramq.putString("realname_verify_process_jump_activity", ".f2f.ui.LuckyMoneyF2FReceiveUI");
-      paramq.putString("realname_verify_process_jump_plugin", "luckymoney");
-      if (((RealnameGuideHelper)localObject1).a(this, paramq, new DialogInterface.OnClickListener()new d.a
+      localObject3 = ((c)localObject1).Kor;
+      localObject2 = new RealnameGuideHelper();
+      ((RealnameGuideHelper)localObject2).a(String.valueOf(((eme)localObject3).YAF), ((eme)localObject3).KuO, ((eme)localObject3).rGU, ((eme)localObject3).right_button_wording, ((eme)localObject3).KuP, paramp.getType());
+      paramp = new Bundle();
+      paramp.putString("realname_verify_process_jump_activity", ".f2f.ui.LuckyMoneyF2FReceiveUI");
+      paramp.putString("realname_verify_process_jump_plugin", "luckymoney");
+      if (((RealnameGuideHelper)localObject2).a(this, paramp, new DialogInterface.OnClickListener()new e.a
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(65107);
+          AppMethodBeat.i(283860);
+          if ((this.Kqe.Koz != null) && (this.Kqe.Koz.Op.length > 0))
+          {
+            paramAnonymousDialogInterface = new c(LuckyMoneyF2FReceiveUI.e(LuckyMoneyF2FReceiveUI.this), this.Kqe.Koz);
+            LuckyMoneyF2FReceiveUI.this.doSceneProgress(paramAnonymousDialogInterface, true);
+            AppMethodBeat.o(283860);
+            return;
+          }
           LuckyMoneyF2FReceiveUI.this.finish();
-          AppMethodBeat.o(65107);
+          AppMethodBeat.o(283860);
         }
-      }, new d.a()
+      }, new e.a()
       {
-        public final Intent s(int paramAnonymousInt, Bundle paramAnonymousBundle)
+        public final Intent v(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           return null;
         }
       }, false))
       {
-        this.Ext = true;
+        this.Kqc = true;
         AppMethodBeat.o(65112);
         return true;
       }
     }
-    paramq = paramString;
+    paramp = paramString;
     if (Util.isNullOrNil(paramString)) {
-      paramq = getString(a.i.lucky_money_f2f_receive_fail);
+      paramp = getString(a.i.lucky_money_f2f_receive_fail);
     }
-    h.d(this, paramq, "", new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.k.d(this, paramp, "", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(65108);
+        AppMethodBeat.i(283859);
         LuckyMoneyF2FReceiveUI.this.finish();
-        AppMethodBeat.o(65108);
+        AppMethodBeat.o(283859);
       }
     });
     AppMethodBeat.o(65112);
@@ -351,7 +369,7 @@ public class LuckyMoneyF2FReceiveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FReceiveUI
  * JD-Core Version:    0.7.0.1
  */

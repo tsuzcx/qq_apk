@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.internal.CheckableImageButton android:layout_gravity="end|center" android:id="@id/ikb" android:background="?yr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="48.0dip" android:minHeight="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/bae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/m1" style="@style/ov" />
+</LinearLayout>

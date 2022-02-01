@@ -9,16 +9,16 @@ import java.lang.reflect.Method;
 public class XWalkApplication
   extends Application
 {
-  private static final String TAG = "XWalkLib";
+  private static final String TAG = "XWalkApplication";
   private static XWalkApplication gApp = null;
   private Resources mRes = null;
   
-  static XWalkApplication getApplication()
+  public static XWalkApplication getApplication()
   {
     return gApp;
   }
   
-  void addResource(Resources paramResources)
+  protected void addResource(Resources paramResources)
   {
     AppMethodBeat.i(154627);
     if (this.mRes != null)
@@ -30,7 +30,7 @@ public class XWalkApplication
     AppMethodBeat.o(154627);
   }
   
-  void addResource(String paramString)
+  protected void addResource(String paramString)
   {
     AppMethodBeat.i(154628);
     if (this.mRes != null)
@@ -48,9 +48,9 @@ public class XWalkApplication
       AppMethodBeat.o(154628);
       return;
     }
-    catch (Exception paramString)
+    finally
     {
-      Log.e("XWalkLib", paramString.getMessage());
+      Log.e("XWalkApplication", "addResource, error:".concat(String.valueOf(paramString)));
       AppMethodBeat.o(154628);
     }
   }
@@ -79,7 +79,7 @@ public class XWalkApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkApplication
  * JD-Core Version:    0.7.0.1
  */

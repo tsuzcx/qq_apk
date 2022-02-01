@@ -1,126 +1,86 @@
 package kotlin.l.b.a.b.j.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.f.a;
-import kotlin.l.b.a.b.f.b;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.e;
+import kotlin.l.b.a.b.c.a.b;
+import kotlin.l.b.a.b.c.a.d;
+import kotlin.l.b.a.b.d.a.e.ac;
 
 public final class c
 {
-  private b aaLC;
-  public final String aaYB;
+  private final kotlin.l.b.a.b.d.a.a.g aiRP;
+  public final kotlin.l.b.a.b.d.a.c.g ajkc;
   
-  private c(String paramString)
+  public c(kotlin.l.b.a.b.d.a.c.g paramg, kotlin.l.b.a.b.d.a.a.g paramg1)
   {
-    AppMethodBeat.i(60168);
-    this.aaYB = paramString;
-    AppMethodBeat.o(60168);
+    AppMethodBeat.i(60164);
+    this.ajkc = paramg;
+    this.aiRP = paramg1;
+    AppMethodBeat.o(60164);
   }
   
-  public static c bHl(String paramString)
+  public final e c(kotlin.l.b.a.b.d.a.e.g paramg)
   {
-    AppMethodBeat.i(60165);
-    if (paramString == null) {
-      aDG(0);
-    }
-    paramString = new c(paramString);
-    AppMethodBeat.o(60165);
-    return paramString;
-  }
-  
-  public static c e(a parama)
-  {
-    AppMethodBeat.i(60166);
-    if (parama == null) {
-      aDG(1);
-    }
-    b localb = parama.iNs();
-    parama = parama.iNt().qu().replace('.', '$');
-    if (localb.isRoot())
+    AppMethodBeat.i(60163);
+    s.u(paramg, "javaClass");
+    Object localObject1 = paramg.koY();
+    if ((localObject1 != null) && (paramg.kqF() == ac.aiUC))
     {
-      parama = new c(parama);
-      AppMethodBeat.o(60166);
-      return parama;
+      paramg = this.aiRP.q((kotlin.l.b.a.b.f.c)localObject1);
+      AppMethodBeat.o(60163);
+      return paramg;
     }
-    parama = new c(localb.qu().replace('.', '/') + "/" + parama);
-    AppMethodBeat.o(60166);
-    return parama;
-  }
-  
-  public static c q(b paramb)
-  {
-    AppMethodBeat.i(60167);
-    if (paramb == null) {
-      aDG(2);
-    }
-    c localc = new c(paramb.qu().replace('.', '/'));
-    localc.aaLC = paramb;
-    AppMethodBeat.o(60167);
-    return localc;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(60172);
-    if (this == paramObject)
+    Object localObject2 = paramg.kqQ();
+    if (localObject2 != null)
     {
-      AppMethodBeat.o(60172);
-      return true;
-    }
-    if ((paramObject == null) || (getClass() != paramObject.getClass()))
-    {
-      AppMethodBeat.o(60172);
-      return false;
-    }
-    boolean bool = this.aaYB.equals(((c)paramObject).aaYB);
-    AppMethodBeat.o(60172);
-    return bool;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(60173);
-    int i = this.aaYB.hashCode();
-    AppMethodBeat.o(60173);
-    return i;
-  }
-  
-  public final b iNs()
-  {
-    AppMethodBeat.i(60170);
-    int i = this.aaYB.lastIndexOf("/");
-    if (i == -1)
-    {
-      localb = b.abfD;
-      if (localb == null) {
-        aDG(7);
+      localObject1 = c((kotlin.l.b.a.b.d.a.e.g)localObject2);
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        if (localObject1 != null) {
+          break label110;
+        }
       }
-      AppMethodBeat.o(60170);
-      return localb;
+      label110:
+      for (paramg = null;; paramg = ((kotlin.l.b.a.b.j.g.h)localObject1).c(paramg.kok(), (b)d.aiNN))
+      {
+        if (!(paramg instanceof e)) {
+          break label132;
+        }
+        paramg = (e)paramg;
+        AppMethodBeat.o(60163);
+        return paramg;
+        localObject1 = ((e)localObject1).kou();
+        break;
+      }
+      label132:
+      AppMethodBeat.o(60163);
+      return null;
     }
-    b localb = new b(this.aaYB.substring(0, i).replace('/', '.'));
-    AppMethodBeat.o(60170);
-    return localb;
-  }
-  
-  public final String iOY()
-  {
-    AppMethodBeat.i(60171);
-    String str = this.aaYB;
-    if (str == null) {
-      aDG(8);
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(60163);
+      return null;
     }
-    AppMethodBeat.o(60171);
-    return str;
-  }
-  
-  public final String toString()
-  {
-    return this.aaYB;
+    localObject2 = this.ajkc;
+    localObject1 = ((kotlin.l.b.a.b.f.c)localObject1).kxS();
+    s.s(localObject1, "fqName.parent()");
+    localObject1 = (kotlin.l.b.a.b.d.a.c.a.h)p.oL(((kotlin.l.b.a.b.d.a.c.g)localObject2).f((kotlin.l.b.a.b.f.c)localObject1));
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(60163);
+      return null;
+    }
+    paramg = ((kotlin.l.b.a.b.d.a.c.a.h)localObject1).d(paramg);
+    AppMethodBeat.o(60163);
+    return paramg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.e.c
  * JD-Core Version:    0.7.0.1
  */

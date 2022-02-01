@@ -26,37 +26,37 @@ public final class g
   extends Dialog
   implements DialogInterface
 {
-  private LinearLayout UWb;
-  private a XYZ;
-  private Button XZa;
+  private LinearLayout acrm;
+  private a afPK;
+  private Button afPL;
   private Context mContext;
   
   private g(Context paramContext)
   {
     super(paramContext, R.m.mmalertdialog);
     AppMethodBeat.i(180117);
-    this.XYZ = null;
+    this.afPK = null;
     this.mContext = paramContext;
-    this.UWb = ((LinearLayout)View.inflate(this.mContext, R.i.ely, null));
-    this.XZa = ((Button)this.UWb.findViewById(R.h.dXJ));
-    paramContext = (ImageView)this.UWb.findViewById(R.h.dXF);
+    this.acrm = ((LinearLayout)View.inflate(this.mContext, R.i.goC, null));
+    this.afPL = ((Button)this.acrm.findViewById(R.h.gap));
+    paramContext = (ImageView)this.acrm.findViewById(R.h.gal);
     if (LocaleUtil.isChineseAppLang()) {
       paramContext.setImageResource(R.g.todo_introduce_chinease);
     }
     for (;;)
     {
-      this.XZa.setOnClickListener(new View.OnClickListener()
+      this.afPL.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(180115);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           Log.i("MicroMsg.grouptodo.TodoIntroduceView", "click i know");
           g.this.dismiss();
           if (g.a(g.this) != null) {
-            g.a(g.this).hTM();
+            g.a(g.this).jxp();
           }
           a.a(this, "com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(180115);
@@ -72,7 +72,7 @@ public final class g
   {
     AppMethodBeat.i(180121);
     paramContext = new g(paramContext);
-    paramContext.XYZ = parama;
+    paramContext.afPK = parama;
     paramContext.setCancelable(false);
     paramContext.show();
     AppMethodBeat.o(180121);
@@ -123,7 +123,7 @@ public final class g
   {
     AppMethodBeat.i(180118);
     super.onCreate(paramBundle);
-    setContentView(this.UWb);
+    setContentView(this.acrm);
     AppMethodBeat.o(180118);
   }
   
@@ -145,12 +145,12 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void hTM();
+    public abstract void jxp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.g
  * JD-Core Version:    0.7.0.1
  */

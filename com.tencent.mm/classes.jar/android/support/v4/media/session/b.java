@@ -19,11 +19,11 @@ import java.util.List;
 public abstract interface b
   extends IInterface
 {
+  public abstract void I(int paramInt);
+  
+  public abstract void J(int paramInt);
+  
   public abstract void K(int paramInt);
-  
-  public abstract void L(int paramInt);
-  
-  public abstract void M(int paramInt);
   
   public abstract void a(int paramInt1, int paramInt2, String paramString);
   
@@ -43,37 +43,21 @@ public abstract interface b
   
   public abstract boolean a(KeyEvent paramKeyEvent);
   
-  public abstract boolean aa();
+  public abstract boolean aS();
   
-  public abstract PendingIntent ac();
+  public abstract PendingIntent aT();
   
-  public abstract long ae();
+  public abstract long aU();
   
-  public abstract ParcelableVolumeInfo af();
+  public abstract ParcelableVolumeInfo aV();
   
-  public abstract MediaMetadataCompat am();
+  public abstract MediaMetadataCompat aW();
   
-  public abstract PlaybackStateCompat an();
+  public abstract PlaybackStateCompat aX();
   
-  public abstract List<MediaSessionCompat.QueueItem> ao();
+  public abstract List<MediaSessionCompat.QueueItem> aY();
   
-  public abstract CharSequence ap();
-  
-  public abstract int aq();
-  
-  public abstract boolean ar();
-  
-  public abstract int as();
-  
-  public abstract boolean at();
-  
-  public abstract int au();
-  
-  public abstract void av();
-  
-  public abstract void aw();
-  
-  public abstract void ax();
+  public abstract CharSequence aZ();
   
   public abstract void b(int paramInt1, int paramInt2, String paramString);
   
@@ -83,11 +67,27 @@ public abstract interface b
   
   public abstract void b(a parama);
   
-  public abstract void c(long paramLong);
+  public abstract int ba();
+  
+  public abstract boolean bb();
+  
+  public abstract int bc();
+  
+  public abstract boolean bd();
+  
+  public abstract int be();
+  
+  public abstract void bf();
+  
+  public abstract void bg();
+  
+  public abstract void bh();
   
   public abstract void e(String paramString, Bundle paramBundle);
   
   public abstract void f(String paramString, Bundle paramBundle);
+  
+  public abstract void g(long paramLong);
   
   public abstract void g(String paramString, Bundle paramBundle);
   
@@ -103,19 +103,19 @@ public abstract interface b
   
   public abstract void next();
   
-  public abstract void p(boolean paramBoolean);
-  
   public abstract void pause();
   
   public abstract void play();
   
   public abstract void prepare();
   
-  public abstract void q(boolean paramBoolean);
-  
   public abstract void seekTo(long paramLong);
   
   public abstract void stop();
+  
+  public abstract void t(boolean paramBoolean);
+  
+  public abstract void u(boolean paramBoolean);
   
   public static abstract class a
     extends Binder
@@ -195,7 +195,7 @@ public abstract interface b
         return true;
       case 5: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = aa();
+        bool1 = aS();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool1) {
@@ -217,7 +217,7 @@ public abstract interface b
         return true;
       case 8: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = ac();
+        paramParcel1 = aT();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -229,13 +229,13 @@ public abstract interface b
         return true;
       case 9: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        long l = ae();
+        long l = aU();
         paramParcel2.writeNoException();
         paramParcel2.writeLong(l);
         return true;
       case 10: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = af();
+        paramParcel1 = aV();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -257,7 +257,7 @@ public abstract interface b
         return true;
       case 27: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = am();
+        paramParcel1 = aW();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -269,7 +269,7 @@ public abstract interface b
         return true;
       case 28: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = an();
+        paramParcel1 = aX();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -281,13 +281,13 @@ public abstract interface b
         return true;
       case 29: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = ao();
+        paramParcel1 = aY();
         paramParcel2.writeNoException();
         paramParcel2.writeTypedList(paramParcel1);
         return true;
       case 30: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = ap();
+        paramParcel1 = aZ();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -311,13 +311,13 @@ public abstract interface b
         return true;
       case 32: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramInt1 = aq();
+        paramInt1 = ba();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 45: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = ar();
+        bool1 = bb();
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool1) {
@@ -327,13 +327,13 @@ public abstract interface b
         return true;
       case 37: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramInt1 = as();
+        paramInt1 = bc();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
       case 38: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = at();
+        bool1 = bd();
         paramParcel2.writeNoException();
         paramInt1 = k;
         if (bool1) {
@@ -343,7 +343,7 @@ public abstract interface b
         return true;
       case 47: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramInt1 = au();
+        paramInt1 = be();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -376,7 +376,7 @@ public abstract interface b
         }
       case 44: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        K(paramParcel1.readInt());
+        I(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 33: 
@@ -465,7 +465,7 @@ public abstract interface b
         }
       case 17: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        c(paramParcel1.readLong());
+        g(paramParcel1.readLong());
         paramParcel2.writeNoException();
         return true;
       case 18: 
@@ -485,17 +485,17 @@ public abstract interface b
         return true;
       case 21: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        av();
+        bf();
         paramParcel2.writeNoException();
         return true;
       case 22: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        aw();
+        bg();
         paramParcel2.writeNoException();
         return true;
       case 23: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        ax();
+        bh();
         paramParcel2.writeNoException();
         return true;
       case 24: 
@@ -534,12 +534,12 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        p(bool1);
+        t(bool1);
         paramParcel2.writeNoException();
         return true;
       case 39: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        L(paramParcel1.readInt());
+        J(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 40: 
@@ -548,7 +548,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        q(bool1);
+        u(bool1);
         paramParcel2.writeNoException();
         return true;
       case 48: 
@@ -557,7 +557,7 @@ public abstract interface b
         label1512:
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
         label1699:
-        M(paramParcel1.readInt());
+        K(paramParcel1.readInt());
         label1948:
         paramParcel2.writeNoException();
         return true;
@@ -583,7 +583,7 @@ public abstract interface b
         this.mRemote = paramIBinder;
       }
       
-      public final void K(int paramInt)
+      public final void I(int paramInt)
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -602,7 +602,7 @@ public abstract interface b
         }
       }
       
-      public final void L(int paramInt)
+      public final void J(int paramInt)
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -621,7 +621,7 @@ public abstract interface b
         }
       }
       
-      public final void M(int paramInt)
+      public final void K(int paramInt)
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -1047,7 +1047,7 @@ public abstract interface b
         }
       }
       
-      public final boolean aa()
+      public final boolean aS()
       {
         boolean bool = false;
         Parcel localParcel1 = Parcel.obtain();
@@ -1071,7 +1071,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final PendingIntent ac()
+      public final PendingIntent aT()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1127,7 +1127,7 @@ public abstract interface b
         //   8	53	68	finally
       }
       
-      public final long ae()
+      public final long aU()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -1147,7 +1147,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final ParcelableVolumeInfo af()
+      public final ParcelableVolumeInfo aV()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1204,7 +1204,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final MediaMetadataCompat am()
+      public final MediaMetadataCompat aW()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1261,7 +1261,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final PlaybackStateCompat an()
+      public final PlaybackStateCompat aX()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1317,7 +1317,7 @@ public abstract interface b
         //   8	53	68	finally
       }
       
-      public final List<MediaSessionCompat.QueueItem> ao()
+      public final List<MediaSessionCompat.QueueItem> aY()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -1337,7 +1337,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final CharSequence ap()
+      public final CharSequence aZ()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1393,166 +1393,9 @@ public abstract interface b
         //   8	53	68	finally
       }
       
-      public final int aq()
-      {
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(32, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          return i;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      public final boolean ar()
-      {
-        boolean bool = false;
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(45, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      public final int as()
-      {
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(37, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          return i;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
       public final IBinder asBinder()
       {
         return this.mRemote;
-      }
-      
-      public final boolean at()
-      {
-        boolean bool = false;
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(38, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          if (i != 0) {
-            bool = true;
-          }
-          return bool;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      public final int au()
-      {
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(47, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          int i = localParcel2.readInt();
-          return i;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      public final void av()
-      {
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(21, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      public final void aw()
-      {
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(22, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
-      public final void ax()
-      {
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          this.mRemote.transact(23, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
       }
       
       public final void b(int paramInt1, int paramInt2, String paramString)
@@ -1729,15 +1572,153 @@ public abstract interface b
         //   25	48	62	finally
       }
       
-      public final void c(long paramLong)
+      public final int ba()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          localParcel1.writeLong(paramLong);
-          this.mRemote.transact(17, localParcel1, localParcel2, 0);
+          this.mRemote.transact(32, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final boolean bb()
+      {
+        boolean bool = false;
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(45, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final int bc()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(37, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final boolean bd()
+      {
+        boolean bool = false;
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(38, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final int be()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(47, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final void bf()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(21, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final void bg()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(22, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final void bh()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          this.mRemote.transact(23, localParcel1, localParcel2, 0);
           localParcel2.readException();
           return;
         }
@@ -1876,6 +1857,25 @@ public abstract interface b
         //   66	71	74	finally
       }
       
+      public final void g(long paramLong)
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          localParcel1.writeLong(paramLong);
+          this.mRemote.transact(17, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
       /* Error */
       public final void g(String paramString, Bundle paramBundle)
       {
@@ -1964,7 +1964,7 @@ public abstract interface b
         //   33: aload_3
         //   34: invokevirtual 96	android/os/Parcel:readInt	()I
         //   37: ifeq +26 -> 63
-        //   40: getstatic 173	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
+        //   40: getstatic 172	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
         //   43: aload_3
         //   44: invokeinterface 112 2 0
         //   49: checkcast 63	android/os/Bundle
@@ -2181,29 +2181,6 @@ public abstract interface b
         }
       }
       
-      public final void p(boolean paramBoolean)
-      {
-        int i = 0;
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          if (paramBoolean) {
-            i = 1;
-          }
-          localParcel1.writeInt(i);
-          this.mRemote.transact(46, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
       public final void pause()
       {
         Parcel localParcel1 = Parcel.obtain();
@@ -2258,29 +2235,6 @@ public abstract interface b
         }
       }
       
-      public final void q(boolean paramBoolean)
-      {
-        int i = 0;
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-          if (paramBoolean) {
-            i = 1;
-          }
-          localParcel1.writeInt(i);
-          this.mRemote.transact(40, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-      
       public final void seekTo(long paramLong)
       {
         Parcel localParcel1 = Parcel.obtain();
@@ -2317,12 +2271,58 @@ public abstract interface b
           localParcel1.recycle();
         }
       }
+      
+      public final void t(boolean paramBoolean)
+      {
+        int i = 0;
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          if (paramBoolean) {
+            i = 1;
+          }
+          localParcel1.writeInt(i);
+          this.mRemote.transact(46, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final void u(boolean paramBoolean)
+      {
+        int i = 0;
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+          if (paramBoolean) {
+            i = 1;
+          }
+          localParcel1.writeInt(i);
+          this.mRemote.transact(40, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.media.session.b
  * JD-Core Version:    0.7.0.1
  */

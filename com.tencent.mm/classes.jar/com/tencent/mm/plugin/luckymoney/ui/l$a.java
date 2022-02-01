@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(65970);
-    EOr = new a("NOTSET", 0);
-    EOs = new a("ON", 1);
-    EOt = new a("OFF", 2);
-    EOu = new a[] { EOr, EOs, EOt };
+    KIQ = new a("NOTSET", 0);
+    KIR = new a("ON", 1);
+    KIS = new a("OFF", 2);
+    KIT = new a[] { KIQ, KIR, KIS };
     AppMethodBeat.o(65970);
   }
   
@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.l.a
  * JD-Core Version:    0.7.0.1
  */

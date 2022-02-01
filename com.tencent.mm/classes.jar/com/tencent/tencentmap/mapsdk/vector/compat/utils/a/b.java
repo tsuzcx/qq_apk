@@ -23,15 +23,15 @@ public class b
   
   public String toString()
   {
-    AppMethodBeat.i(247350);
+    AppMethodBeat.i(217663);
     String str = "Point{x=" + this.a + ", y=" + this.b + '}';
-    AppMethodBeat.o(247350);
+    AppMethodBeat.o(217663);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.a.b
  * JD-Core Version:    0.7.0.1
  */

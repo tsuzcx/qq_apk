@@ -1,74 +1,79 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eiy;
-import com.tencent.mm.protocal.protobuf.eov;
-import com.tencent.mm.protocal.protobuf.eow;
-import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends q
-  implements m
+  extends com.tencent.mm.bx.a
 {
-  public String GTu;
-  private i callback;
-  private d rr;
+  public String icon_url;
+  public String url;
   
-  public k(eiy parameiy)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(66903);
-    d.a locala = new d.a();
-    locala.lBU = new eov();
-    locala.lBV = new eow();
-    locala.uri = "/cgi-bin/micromsg-bin/submitmallfreeorder";
-    locala.funcId = 557;
-    locala.lBW = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((eov)d.b.b(this.rr.lBR)).Urq = parameiy;
-    AppMethodBeat.o(66903);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(66905);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(66905);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 557;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(66904);
-    params = (eow)d.c.b(((d)params).lBS);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(91277);
+    if (paramInt == 0)
     {
-      Log.d("MicroMsg.NetSceneMallSubmitMallFreeOrder", "resp.PrepareId " + params.Urr);
-      this.GTu = params.Urr;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.icon_url != null) {
+        paramVarArgs.g(1, this.icon_url);
+      }
+      if (this.url != null) {
+        paramVarArgs.g(2, this.url);
+      }
+      AppMethodBeat.o(91277);
+      return 0;
     }
-    Log.d("MicroMsg.NetSceneMallSubmitMallFreeOrder", "errCode " + paramInt3 + ", errMsg " + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(66904);
+    if (paramInt == 1) {
+      if (this.icon_url == null) {
+        break label270;
+      }
+    }
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.icon_url) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.url != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.url);
+      }
+      AppMethodBeat.o(91277);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91277);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        k localk = (k)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91277);
+          return -1;
+        case 1: 
+          localk.icon_url = locala.ajGk.readString();
+          AppMethodBeat.o(91277);
+          return 0;
+        }
+        localk.url = locala.ajGk.readString();
+        AppMethodBeat.o(91277);
+        return 0;
+      }
+      AppMethodBeat.o(91277);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.k
  * JD-Core Version:    0.7.0.1
  */

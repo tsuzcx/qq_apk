@@ -1,86 +1,87 @@
 package com.tencent.mm.be;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.app.ActivityManager;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.storagebase.h;
-import junit.framework.Assert;
+import com.tencent.mm.memory.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
-  extends MStorage
+  extends a<byte[]>
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS chattingbginfo ( username text  PRIMARY KEY , bgflag int  , path text  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int  ) " };
-  public h lvy;
+  public static final b pcg;
+  private static int pch;
   
-  public b(h paramh)
+  static
   {
-    this.lvy = paramh;
+    AppMethodBeat.i(127065);
+    pcg = new b();
+    pch = 0;
+    AppMethodBeat.o(127065);
   }
   
-  public final a WM(String paramString)
+  public final void as(byte[] paramArrayOfByte)
   {
-    Object localObject = null;
-    AppMethodBeat.i(150789);
-    paramString = "select chattingbginfo.username,chattingbginfo.bgflag,chattingbginfo.path,chattingbginfo.reserved1,chattingbginfo.reserved2,chattingbginfo.reserved3,chattingbginfo.reserved4 from chattingbginfo   where chattingbginfo.username = \"" + Util.escapeSqlValue(String.valueOf(paramString)) + "\"";
-    Cursor localCursor = this.lvy.rawQuery(paramString, null, 2);
-    if (localCursor == null)
+    try
     {
-      AppMethodBeat.o(150789);
-      return null;
+      AppMethodBeat.i(127056);
+      super.dn(paramArrayOfByte);
+      AppMethodBeat.o(127056);
+      return;
     }
-    paramString = localObject;
-    if (localCursor.moveToFirst())
+    finally
     {
-      paramString = new a();
-      paramString.convertFrom(localCursor);
+      paramArrayOfByte = finally;
+      throw paramArrayOfByte;
     }
-    localCursor.close();
-    AppMethodBeat.o(150789);
-    return paramString;
   }
   
-  public final boolean a(a parama)
+  public final long bvE()
   {
-    AppMethodBeat.i(150787);
-    parama.cUP = -1;
-    ContentValues localContentValues = parama.convertTo();
-    if ((int)this.lvy.insert("chattingbginfo", "username", localContentValues) != -1)
-    {
-      doNotify(parama.getUsername());
-      AppMethodBeat.o(150787);
-      return true;
+    AppMethodBeat.i(127058);
+    if (pch <= 0) {
+      pch = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     }
-    AppMethodBeat.o(150787);
-    return false;
+    if (pch >= 512)
+    {
+      AppMethodBeat.o(127058);
+      return 41943040L;
+    }
+    AppMethodBeat.o(127058);
+    return 20971520L;
   }
   
-  public final boolean b(a parama)
+  public final long bvF()
   {
-    AppMethodBeat.i(150788);
-    if (parama != null) {}
-    for (boolean bool = true;; bool = false)
+    return 10485760L;
+  }
+  
+  public final void bvG()
+  {
+    AppMethodBeat.i(127059);
+    super.bvG();
+    AppMethodBeat.o(127059);
+  }
+  
+  public final byte[] m(Integer paramInteger)
+  {
+    try
     {
-      Assert.assertTrue(bool);
-      ContentValues localContentValues = parama.convertTo();
-      if (localContentValues.size() <= 0) {
-        break;
+      AppMethodBeat.i(127057);
+      byte[] arrayOfByte2 = (byte[])super.h(paramInteger);
+      byte[] arrayOfByte1 = arrayOfByte2;
+      if (arrayOfByte2 == null) {
+        arrayOfByte1 = new byte[paramInteger.intValue()];
       }
-      if (this.lvy.update("chattingbginfo", localContentValues, "username= ?", new String[] { parama.getUsername() }) <= 0) {
-        break;
-      }
-      doNotify(parama.getUsername());
-      AppMethodBeat.o(150788);
-      return true;
+      AppMethodBeat.o(127057);
+      return arrayOfByte1;
     }
-    AppMethodBeat.o(150788);
-    return false;
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.be.b
  * JD-Core Version:    0.7.0.1
  */

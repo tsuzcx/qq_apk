@@ -4,15 +4,13 @@ import android.content.Intent;
 
 public abstract interface c
 {
-  public abstract boolean aS(int paramInt, long paramLong);
+  public abstract void C(String paramString, byte[] paramArrayOfByte);
   
-  public abstract void aT(Intent paramIntent);
+  public abstract boolean aZ(int paramInt, long paramLong);
   
-  public abstract boolean aT(int paramInt, long paramLong);
+  public abstract void aiL(int paramInt);
   
-  public abstract void aeg(int paramInt);
-  
-  public abstract void aeh(int paramInt);
+  public abstract void aiM(int paramInt);
   
   public abstract void asyncReportNewInstallAppThroughCgi(Intent paramIntent);
   
@@ -22,21 +20,23 @@ public abstract interface c
   
   public abstract void asyncReportTuringOwnerThroughCgi(byte[] paramArrayOfByte);
   
-  public abstract void cq(byte[] paramArrayOfByte);
+  public abstract boolean ba(int paramInt, long paramLong);
   
-  public abstract void fFu();
+  public abstract void br(Intent paramIntent);
   
-  public abstract void jq(int paramInt1, int paramInt2);
+  public abstract void cs(byte[] paramArrayOfByte);
   
-  public abstract void jr(int paramInt1, int paramInt2);
+  public abstract void gUC();
   
-  public abstract void s(int paramInt, byte[] paramArrayOfByte);
+  public abstract void kY(int paramInt1, int paramInt2);
   
-  public abstract void z(String paramString, byte[] paramArrayOfByte);
+  public abstract void kZ(int paramInt1, int paramInt2);
+  
+  public abstract void t(int paramInt, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.a.c
  * JD-Core Version:    0.7.0.1
  */

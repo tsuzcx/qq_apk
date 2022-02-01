@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.forcenotify.ui.view.KeyEventFrameLayout android:background="@drawable/d2e" android:paddingBottom="@dimen/cn" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/k03" android:background="@drawable/cv7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/ct" android:layout_marginBottom="@dimen/ct">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dtx" android:padding="2.0dip" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="@dimen/cb" android:src="@raw/wechat_icon" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" app:iconColor="@color/ajp" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/ajp" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/dgy" android:layout_alignParentTop="true" android:layout_marginStart="2.0dip" android:layout_toEndOf="@id/dtx" />
-            <RelativeLayout android:id="@id/jtk" android:background="@drawable/bxp" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c5" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hmf" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_close" android:layout_centerInParent="true" />
-            </RelativeLayout>
-        </RelativeLayout>
-        <View android:id="@id/l08" android:background="@color/ajm" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/ct" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/h_1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
-            <View android:id="@id/jzo" android:background="@color/ajg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:layout_alignTop="@id/h_1" />
-            <ImageView android:id="@id/jzn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:src="@drawable/cv5" android:layout_below="@id/jzo" />
-            <ImageView android:id="@id/jzm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:src="@drawable/cv3" android:layout_above="@id/jzl" />
-            <View android:id="@id/jzl" android:background="@color/ajg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:layout_alignBottom="@id/h_1" />
-        </RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/b24" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:paddingTop="11.0dip" android:paddingBottom="12.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="14.0dip" android:textColor="@color/ajc" android:id="@id/gbe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" />
+        <TextView android:textSize="14.0dip" android:textColor="@drawable/b21" android:id="@id/gbd" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{desc}" />
     </LinearLayout>
-</com.tencent.mm.plugin.forcenotify.ui.view.KeyEventFrameLayout>
+    <RadioButton android:layout_gravity="center_vertical" android:id="@id/gbg" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/o4" />
+</LinearLayout>

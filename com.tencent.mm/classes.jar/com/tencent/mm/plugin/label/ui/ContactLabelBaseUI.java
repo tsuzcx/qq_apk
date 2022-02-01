@@ -1,42 +1,41 @@
 package com.tencent.mm.plugin.label.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 public class ContactLabelBaseUI
   extends MMActivity
 {
-  private ProgressDialog mRa;
+  private ProgressDialog pNH;
   
-  public final void aMS(String paramString)
+  public final void aJO(String paramString)
   {
     AppMethodBeat.i(26159);
     getString(R.l.app_tip);
-    this.mRa = h.a(this, paramString, true, new DialogInterface.OnCancelListener()
+    this.pNH = k.a(this, paramString, true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26158);
-        bh.aGY().cancel(636);
+        bh.aZW().cancel(636);
         AppMethodBeat.o(26158);
       }
     });
     AppMethodBeat.o(26159);
   }
   
-  public final void auQ(String paramString)
+  public final void aoP(String paramString)
   {
     AppMethodBeat.i(26161);
-    h.d(this, paramString, "", new DialogInterface.OnClickListener()
+    k.d(this, paramString, "", new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
@@ -51,8 +50,8 @@ public class ContactLabelBaseUI
   public final void hideLoading()
   {
     AppMethodBeat.i(26160);
-    if ((this.mRa != null) && (this.mRa.isShowing())) {
-      this.mRa.dismiss();
+    if ((this.pNH != null) && (this.pNH.isShowing())) {
+      this.pNH.dismiss();
     }
     AppMethodBeat.o(26160);
   }

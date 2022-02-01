@@ -5,10 +5,10 @@ import com.tencent.mm.plugin.report.f;
 
 public final class a
 {
-  public static final void rE(int paramInt)
+  public static final void rG(int paramInt)
   {
     AppMethodBeat.i(90971);
-    f.Iyx.idkeyStat(1137L, paramInt, 1L, false);
+    f.Ozc.idkeyStat(1137L, paramInt, 1L, false);
     AppMethodBeat.o(90971);
   }
 }

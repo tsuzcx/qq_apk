@@ -23,9 +23,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
 import androidx.core.g.a.d;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import androidx.customview.a.c;
 import androidx.customview.a.c.a;
 import androidx.customview.view.AbsSavedState;
@@ -37,24 +36,24 @@ import java.util.ArrayList;
 public class SlidingPaneLayout
   extends ViewGroup
 {
-  private final Rect Si;
-  int anE;
-  private int anF;
-  private Drawable anG;
-  private Drawable anH;
-  private final int anI;
-  View anJ;
-  float anK;
-  private float anL;
-  int anM;
-  int anN;
-  private d anO;
-  final c anP;
-  boolean anQ;
-  final ArrayList<b> anR;
-  private Method anS;
-  private Field anT;
-  private boolean anU;
+  private final Rect byy;
+  private boolean ccA;
+  int cck;
+  private int ccl;
+  private Drawable ccm;
+  private Drawable ccn;
+  private final int cco;
+  View ccp;
+  float ccq;
+  private float ccr;
+  int ccs;
+  int cct;
+  private d ccu;
+  final c ccv;
+  boolean ccw;
+  final ArrayList<b> ccx;
+  private Method ccy;
+  private Field ccz;
   private boolean mCanSlide;
   private boolean mFirstLayout;
   private float mInitialMotionX;
@@ -69,129 +68,214 @@ public class SlidingPaneLayout
   public SlidingPaneLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(204678);
-    this.anE = -858993460;
+    AppMethodBeat.i(192788);
+    this.cck = -858993460;
     this.mFirstLayout = true;
-    this.Si = new Rect();
-    this.anR = new ArrayList();
+    this.byy = new Rect();
+    this.ccx = new ArrayList();
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.anI = ((int)(32.0F * f + 0.5F));
+    this.cco = ((int)(32.0F * f + 0.5F));
     setWillNotDraw(false);
-    w.a(this, new a());
-    w.p(this, 1);
-    this.anP = c.a(this, 0.5F, new c());
-    this.anP.Rr = (f * 400.0F);
-    AppMethodBeat.o(204678);
+    z.a(this, new a());
+    z.p(this, 1);
+    this.ccv = c.a(this, 0.5F, new c());
+    this.ccv.bxI = (f * 400.0F);
+    AppMethodBeat.o(192788);
   }
   
-  private boolean mT()
+  private boolean Lv()
   {
-    AppMethodBeat.i(204701);
-    if ((this.mFirstLayout) || (t(0.0F)))
+    AppMethodBeat.i(192797);
+    if ((this.mFirstLayout) || (aA(0.0F)))
     {
-      this.anQ = false;
-      AppMethodBeat.o(204701);
+      this.ccw = false;
+      AppMethodBeat.o(192797);
       return true;
     }
-    AppMethodBeat.o(204701);
+    AppMethodBeat.o(192797);
     return false;
   }
   
-  private boolean t(float paramFloat)
+  private boolean aA(float paramFloat)
   {
-    AppMethodBeat.i(204706);
+    AppMethodBeat.i(192809);
     if (!this.mCanSlide)
     {
-      AppMethodBeat.o(204706);
+      AppMethodBeat.o(192809);
       return false;
     }
-    boolean bool = mU();
-    LayoutParams localLayoutParams = (LayoutParams)this.anJ.getLayoutParams();
+    boolean bool = Lw();
+    LayoutParams localLayoutParams = (LayoutParams)this.ccp.getLayoutParams();
     int j;
     int k;
     if (bool)
     {
       i = getPaddingRight();
       j = localLayoutParams.rightMargin;
-      k = this.anJ.getWidth();
+      k = this.ccp.getWidth();
     }
-    for (int i = (int)(getWidth() - (j + i + this.anM * paramFloat + k)); this.anP.f(this.anJ, i, this.anJ.getTop()); i = (int)(localLayoutParams.leftMargin + i + this.anM * paramFloat))
+    for (int i = (int)(getWidth() - (j + i + this.ccs * paramFloat + k)); this.ccv.f(this.ccp, i, this.ccp.getTop()); i = (int)(localLayoutParams.leftMargin + i + this.ccs * paramFloat))
     {
-      mS();
-      w.G(this);
-      AppMethodBeat.o(204706);
+      Lu();
+      z.Q(this);
+      AppMethodBeat.o(192809);
       return true;
       i = getPaddingLeft();
     }
-    AppMethodBeat.o(204706);
+    AppMethodBeat.o(192809);
+    return false;
+  }
+  
+  final void Lu()
+  {
+    AppMethodBeat.i(192875);
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = getChildAt(i);
+      if (localView.getVisibility() == 4) {
+        localView.setVisibility(0);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(192875);
+  }
+  
+  final boolean Lw()
+  {
+    AppMethodBeat.i(193132);
+    if (z.U(this) == 1)
+    {
+      AppMethodBeat.o(193132);
+      return true;
+    }
+    AppMethodBeat.o(193132);
     return false;
   }
   
   final void a(View paramView, float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(204702);
+    AppMethodBeat.i(192950);
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if ((paramFloat > 0.0F) && (paramInt != 0))
     {
       int i = (int)(((0xFF000000 & paramInt) >>> 24) * paramFloat);
-      if (localLayoutParams.anZ == null) {
-        localLayoutParams.anZ = new Paint();
+      if (localLayoutParams.ccF == null) {
+        localLayoutParams.ccF = new Paint();
       }
-      localLayoutParams.anZ.setColorFilter(new PorterDuffColorFilter(i << 24 | 0xFFFFFF & paramInt, PorterDuff.Mode.SRC_OVER));
+      localLayoutParams.ccF.setColorFilter(new PorterDuffColorFilter(i << 24 | 0xFFFFFF & paramInt, PorterDuff.Mode.SRC_OVER));
       if (paramView.getLayerType() != 2) {
-        paramView.setLayerType(2, localLayoutParams.anZ);
+        paramView.setLayerType(2, localLayoutParams.ccF);
       }
-      bx(paramView);
-      AppMethodBeat.o(204702);
+      bR(paramView);
+      AppMethodBeat.o(192950);
       return;
     }
     if (paramView.getLayerType() != 0)
     {
-      if (localLayoutParams.anZ != null) {
-        localLayoutParams.anZ.setColorFilter(null);
+      if (localLayoutParams.ccF != null) {
+        localLayoutParams.ccF.setColorFilter(null);
       }
       paramView = new b(paramView);
-      this.anR.add(paramView);
-      w.a(this, paramView);
+      this.ccx.add(paramView);
+      z.b(this, paramView);
     }
-    AppMethodBeat.o(204702);
+    AppMethodBeat.o(192950);
   }
   
-  final void bw(View paramView)
+  final void aB(float paramFloat)
   {
-    AppMethodBeat.i(204682);
-    boolean bool = mU();
+    AppMethodBeat.i(193076);
+    boolean bool = Lw();
+    Object localObject = (LayoutParams)this.ccp.getLayoutParams();
+    int i;
+    label49:
+    int j;
+    if (((LayoutParams)localObject).ccE) {
+      if (bool)
+      {
+        i = ((LayoutParams)localObject).rightMargin;
+        if (i > 0) {
+          break label183;
+        }
+        i = 1;
+        int n = getChildCount();
+        j = 0;
+        label58:
+        if (j >= n) {
+          break label198;
+        }
+        localObject = getChildAt(j);
+        if (localObject != this.ccp)
+        {
+          int k = (int)((1.0F - this.ccr) * this.cct);
+          this.ccr = paramFloat;
+          int m = k - (int)((1.0F - paramFloat) * this.cct);
+          k = m;
+          if (bool) {
+            k = -m;
+          }
+          ((View)localObject).offsetLeftAndRight(k);
+          if (i != 0) {
+            if (!bool) {
+              break label188;
+            }
+          }
+        }
+      }
+    }
+    label183:
+    label188:
+    for (float f = this.ccr - 1.0F;; f = 1.0F - this.ccr)
+    {
+      a((View)localObject, f, this.ccl);
+      j += 1;
+      break label58;
+      i = ((LayoutParams)localObject).leftMargin;
+      break;
+      i = 0;
+      break label49;
+    }
+    label198:
+    AppMethodBeat.o(193076);
+  }
+  
+  final void bQ(View paramView)
+  {
+    AppMethodBeat.i(192868);
+    boolean bool = Lw();
     int i;
     int j;
-    label36:
+    label37:
     int k;
-    label68:
+    label69:
     int i1;
     int n;
     int m;
-    label97:
+    label98:
     int i2;
-    label106:
+    label107:
     Object localObject;
     if (bool)
     {
       i = getWidth() - getPaddingRight();
       if (!bool) {
-        break label259;
+        break label260;
       }
       j = getPaddingLeft();
       int i4 = getPaddingTop();
       int i5 = getHeight();
       int i6 = getPaddingBottom();
       if (paramView == null) {
-        break label318;
+        break label319;
       }
       if (!paramView.isOpaque()) {
-        break label272;
+        break label273;
       }
       k = 1;
       if (k == 0) {
-        break label318;
+        break label319;
       }
       i1 = paramView.getLeft();
       n = paramView.getRight();
@@ -200,48 +284,48 @@ public class SlidingPaneLayout
       int i7 = getChildCount();
       i2 = 0;
       if (i2 >= i7) {
-        break label351;
+        break label352;
       }
       localObject = getChildAt(i2);
       if (localObject == paramView) {
-        break label351;
+        break label352;
       }
       if (((View)localObject).getVisibility() != 8)
       {
         if (!bool) {
-          break label333;
+          break label334;
         }
         i3 = j;
-        label145:
+        label146:
         int i8 = Math.max(i3, ((View)localObject).getLeft());
         int i9 = Math.max(i4, ((View)localObject).getTop());
         if (!bool) {
-          break label339;
+          break label340;
         }
         i3 = i;
-        label177:
+        label178:
         i3 = Math.min(i3, ((View)localObject).getRight());
         int i10 = Math.min(i5 - i6, ((View)localObject).getBottom());
         if ((i8 < i1) || (i9 < m) || (i3 > n) || (i10 > k)) {
-          break label345;
+          break label346;
         }
       }
     }
-    label259:
-    label272:
-    label318:
-    label333:
-    label339:
-    label345:
+    label260:
+    label273:
+    label319:
+    label334:
+    label340:
+    label346:
     for (int i3 = 4;; i3 = 0)
     {
       ((View)localObject).setVisibility(i3);
       i2 += 1;
-      break label106;
+      break label107;
       i = getPaddingLeft();
       break;
       j = getWidth() - getPaddingRight();
-      break label36;
+      break label37;
       if (Build.VERSION.SDK_INT < 18)
       {
         localObject = paramView.getBackground();
@@ -250,61 +334,61 @@ public class SlidingPaneLayout
           if (((Drawable)localObject).getOpacity() == -1)
           {
             k = 1;
-            break label68;
+            break label69;
           }
           k = 0;
-          break label68;
+          break label69;
         }
       }
       k = 0;
-      break label68;
+      break label69;
       k = 0;
       m = 0;
       n = 0;
       i1 = 0;
-      break label97;
+      break label98;
       i3 = i;
-      break label145;
+      break label146;
       i3 = j;
-      break label177;
+      break label178;
     }
-    label351:
-    AppMethodBeat.o(204682);
+    label352:
+    AppMethodBeat.o(192868);
   }
   
-  final void bx(View paramView)
+  final void bR(View paramView)
   {
-    AppMethodBeat.i(204705);
+    AppMethodBeat.i(192968);
     if (Build.VERSION.SDK_INT >= 17)
     {
-      w.a(paramView, ((LayoutParams)paramView.getLayoutParams()).anZ);
-      AppMethodBeat.o(204705);
+      z.a(paramView, ((LayoutParams)paramView.getLayoutParams()).ccF);
+      AppMethodBeat.o(192968);
       return;
     }
-    if ((Build.VERSION.SDK_INT < 16) || (!this.anU)) {}
+    if ((Build.VERSION.SDK_INT < 16) || (!this.ccA)) {}
     try
     {
-      this.anS = View.class.getDeclaredMethod("getDisplayList", null);
+      this.ccy = View.class.getDeclaredMethod("getDisplayList", null);
       try
       {
         label63:
-        this.anT = View.class.getDeclaredField("mRecreateDisplayList");
-        this.anT.setAccessible(true);
+        this.ccz = View.class.getDeclaredField("mRecreateDisplayList");
+        this.ccz.setAccessible(true);
         label83:
-        this.anU = true;
-        if ((this.anS == null) || (this.anT == null))
+        this.ccA = true;
+        if ((this.ccy == null) || (this.ccz == null))
         {
           paramView.invalidate();
-          AppMethodBeat.o(204705);
+          AppMethodBeat.o(192968);
           return;
         }
         try
         {
-          this.anT.setBoolean(paramView, true);
-          this.anS.invoke(paramView, null);
+          this.ccz.setBoolean(paramView, true);
+          this.ccy.invoke(paramView, null);
           label132:
-          w.f(this, paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-          AppMethodBeat.o(204705);
+          z.f(this, paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
+          AppMethodBeat.o(192968);
           return;
         }
         catch (Exception localException)
@@ -323,60 +407,60 @@ public class SlidingPaneLayout
     }
   }
   
-  final boolean by(View paramView)
+  final boolean bS(View paramView)
   {
-    AppMethodBeat.i(204716);
+    AppMethodBeat.i(193085);
     if (paramView == null)
     {
-      AppMethodBeat.o(204716);
+      AppMethodBeat.o(193085);
       return false;
     }
     paramView = (LayoutParams)paramView.getLayoutParams();
-    if ((this.mCanSlide) && (paramView.anY) && (this.anK > 0.0F))
+    if ((this.mCanSlide) && (paramView.ccE) && (this.ccq > 0.0F))
     {
-      AppMethodBeat.o(204716);
+      AppMethodBeat.o(193085);
       return true;
     }
-    AppMethodBeat.o(204716);
+    AppMethodBeat.o(193085);
     return false;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(204719);
+    AppMethodBeat.i(193109);
     if (((paramLayoutParams instanceof LayoutParams)) && (super.checkLayoutParams(paramLayoutParams)))
     {
-      AppMethodBeat.o(204719);
+      AppMethodBeat.o(193109);
       return true;
     }
-    AppMethodBeat.o(204719);
+    AppMethodBeat.o(193109);
     return false;
   }
   
   public void computeScroll()
   {
-    AppMethodBeat.i(204707);
-    if (this.anP.hM())
+    AppMethodBeat.i(192976);
+    if (this.ccv.Fx())
     {
       if (!this.mCanSlide)
       {
-        this.anP.hL();
-        AppMethodBeat.o(204707);
+        this.ccv.Fw();
+        AppMethodBeat.o(192976);
         return;
       }
-      w.G(this);
+      z.Q(this);
     }
-    AppMethodBeat.o(204707);
+    AppMethodBeat.o(192976);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(204714);
+    AppMethodBeat.i(193064);
     super.draw(paramCanvas);
     Drawable localDrawable;
-    if (mU())
+    if (Lw())
     {
-      localDrawable = this.anH;
+      localDrawable = this.ccn;
       if (getChildCount() <= 1) {
         break label65;
       }
@@ -387,9 +471,9 @@ public class SlidingPaneLayout
       if ((localView != null) && (localDrawable != null)) {
         break label71;
       }
-      AppMethodBeat.o(204714);
+      AppMethodBeat.o(193064);
       return;
-      localDrawable = this.anG;
+      localDrawable = this.ccm;
       break;
     }
     label71:
@@ -398,7 +482,7 @@ public class SlidingPaneLayout
     int n = localDrawable.getIntrinsicWidth();
     int j;
     int i;
-    if (mU())
+    if (Lw())
     {
       j = localView.getRight();
       i = j + n;
@@ -407,7 +491,7 @@ public class SlidingPaneLayout
     {
       localDrawable.setBounds(j, k, i, m);
       localDrawable.draw(paramCanvas);
-      AppMethodBeat.o(204714);
+      AppMethodBeat.o(193064);
       return;
       i = localView.getLeft();
       j = i - n;
@@ -416,129 +500,101 @@ public class SlidingPaneLayout
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    AppMethodBeat.i(204703);
+    AppMethodBeat.i(192957);
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int i = paramCanvas.save();
-    if ((this.mCanSlide) && (!localLayoutParams.anX) && (this.anJ != null))
+    if ((this.mCanSlide) && (!localLayoutParams.ccD) && (this.ccp != null))
     {
-      paramCanvas.getClipBounds(this.Si);
-      if (!mU()) {
+      paramCanvas.getClipBounds(this.byy);
+      if (!Lw()) {
         break label116;
       }
-      this.Si.left = Math.max(this.Si.left, this.anJ.getRight());
+      this.byy.left = Math.max(this.byy.left, this.ccp.getRight());
     }
     for (;;)
     {
-      paramCanvas.clipRect(this.Si);
+      paramCanvas.clipRect(this.byy);
       boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
       paramCanvas.restoreToCount(i);
-      AppMethodBeat.o(204703);
+      AppMethodBeat.o(192957);
       return bool;
       label116:
-      this.Si.right = Math.min(this.Si.right, this.anJ.getLeft());
+      this.byy.right = Math.min(this.byy.right, this.ccp.getLeft());
     }
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(204717);
+    AppMethodBeat.i(193095);
     LayoutParams localLayoutParams = new LayoutParams();
-    AppMethodBeat.o(204717);
+    AppMethodBeat.o(193095);
     return localLayoutParams;
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(204720);
+    AppMethodBeat.i(193113);
     paramAttributeSet = new LayoutParams(getContext(), paramAttributeSet);
-    AppMethodBeat.o(204720);
+    AppMethodBeat.o(193113);
     return paramAttributeSet;
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(204718);
+    AppMethodBeat.i(193104);
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
       paramLayoutParams = new LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
-      AppMethodBeat.o(204718);
+      AppMethodBeat.o(193104);
       return paramLayoutParams;
     }
     paramLayoutParams = new LayoutParams(paramLayoutParams);
-    AppMethodBeat.o(204718);
+    AppMethodBeat.o(193104);
     return paramLayoutParams;
   }
   
   public int getCoveredFadeColor()
   {
-    return this.anF;
+    return this.ccl;
   }
   
   public int getParallaxDistance()
   {
-    return this.anN;
+    return this.cct;
   }
   
   public int getSliderFadeColor()
   {
-    return this.anE;
-  }
-  
-  final void mS()
-  {
-    AppMethodBeat.i(204685);
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = getChildAt(i);
-      if (localView.getVisibility() == 4) {
-        localView.setVisibility(0);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(204685);
-  }
-  
-  final boolean mU()
-  {
-    AppMethodBeat.i(204724);
-    if (w.I(this) == 1)
-    {
-      AppMethodBeat.o(204724);
-      return true;
-    }
-    AppMethodBeat.o(204724);
-    return false;
+    return this.cck;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(204686);
+    AppMethodBeat.i(192883);
     super.onAttachedToWindow();
     this.mFirstLayout = true;
-    AppMethodBeat.o(204686);
+    AppMethodBeat.o(192883);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(204688);
+    AppMethodBeat.i(192892);
     super.onDetachedFromWindow();
     this.mFirstLayout = true;
-    int j = this.anR.size();
+    int j = this.ccx.size();
     int i = 0;
     while (i < j)
     {
-      ((b)this.anR.get(i)).run();
+      ((b)this.ccx.get(i)).run();
       i += 1;
     }
-    this.anR.clear();
-    AppMethodBeat.o(204688);
+    this.ccx.clear();
+    AppMethodBeat.o(192892);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204699);
+    AppMethodBeat.i(192934);
     int i = paramMotionEvent.getActionMasked();
     if ((!this.mCanSlide) && (i == 0) && (getChildCount() > 1))
     {
@@ -552,19 +608,19 @@ public class SlidingPaneLayout
     label113:
     for (boolean bool = true;; bool = false)
     {
-      this.anQ = bool;
+      this.ccw = bool;
       if ((this.mCanSlide) && ((!this.mIsUnableToDrag) || (i == 0))) {
         break;
       }
-      this.anP.cancel();
+      this.ccv.cancel();
       bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(204699);
+      AppMethodBeat.o(192934);
       return bool;
     }
     if ((i == 3) || (i == 1))
     {
-      this.anP.cancel();
-      AppMethodBeat.o(204699);
+      this.ccv.cancel();
+      AppMethodBeat.o(192934);
       return false;
     }
     switch (i)
@@ -576,17 +632,17 @@ public class SlidingPaneLayout
     {
       for (i = 0;; i = 1)
       {
-        if ((!this.anP.i(paramMotionEvent)) && (i == 0)) {
+        if ((!this.ccv.i(paramMotionEvent)) && (i == 0)) {
           break label328;
         }
-        AppMethodBeat.o(204699);
+        AppMethodBeat.o(192934);
         return true;
         this.mIsUnableToDrag = false;
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
         this.mInitialMotionX = f1;
         this.mInitialMotionY = f2;
-        if ((!c.g(this.anJ, (int)f1, (int)f2)) || (!by(this.anJ))) {
+        if ((!c.g(this.ccp, (int)f1, (int)f2)) || (!bS(this.ccp))) {
           break;
         }
       }
@@ -594,20 +650,20 @@ public class SlidingPaneLayout
       f1 = paramMotionEvent.getY();
       f2 = Math.abs(f2 - this.mInitialMotionX);
       f1 = Math.abs(f1 - this.mInitialMotionY);
-    } while ((f2 <= this.anP.mTouchSlop) || (f1 <= f2));
-    this.anP.cancel();
+    } while ((f2 <= this.ccv.mTouchSlop) || (f1 <= f2));
+    this.ccv.cancel();
     this.mIsUnableToDrag = true;
-    AppMethodBeat.o(204699);
+    AppMethodBeat.o(192934);
     return false;
     label328:
-    AppMethodBeat.o(204699);
+    AppMethodBeat.o(192934);
     return false;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(204696);
-    boolean bool = mU();
+    AppMethodBeat.i(192911);
+    boolean bool = Lw();
     label41:
     label52:
     int m;
@@ -620,7 +676,7 @@ public class SlidingPaneLayout
     int j;
     if (bool)
     {
-      this.anP.Rt = 2;
+      this.ccv.bxK = 2;
       int k = paramInt3 - paramInt1;
       if (!bool) {
         break label364;
@@ -634,11 +690,11 @@ public class SlidingPaneLayout
       m = getChildCount();
       if (this.mFirstLayout)
       {
-        if ((!this.mCanSlide) || (!this.anQ)) {
+        if ((!this.mCanSlide) || (!this.ccw)) {
           break label381;
         }
         f = 1.0F;
-        this.anK = f;
+        this.ccq = f;
       }
       paramInt4 = 0;
       i = paramInt1;
@@ -654,13 +710,13 @@ public class SlidingPaneLayout
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
       i1 = localView.getMeasuredWidth();
       j = 0;
-      if (!localLayoutParams.anX) {
+      if (!localLayoutParams.ccD) {
         break label402;
       }
       i = localLayoutParams.leftMargin;
       int i2 = localLayoutParams.rightMargin;
-      i2 = Math.min(paramInt1, k - paramInt3 - this.anI) - paramInt2 - (i + i2);
-      this.anM = i2;
+      i2 = Math.min(paramInt1, k - paramInt3 - this.cco) - paramInt2 - (i + i2);
+      this.ccs = i2;
       if (!bool) {
         break label387;
       }
@@ -671,10 +727,10 @@ public class SlidingPaneLayout
       }
       paramBoolean = true;
       label236:
-      localLayoutParams.anY = paramBoolean;
-      i2 = (int)(i2 * this.anK);
+      localLayoutParams.ccE = paramBoolean;
+      i2 = (int)(i2 * this.ccq);
       paramInt2 += i + i2;
-      this.anK = (i2 / this.anM);
+      this.ccq = (i2 / this.ccs);
       i = j;
       if (!bool) {
         break label438;
@@ -695,7 +751,7 @@ public class SlidingPaneLayout
       paramInt2 = paramInt4;
       paramInt4 = i;
       break label105;
-      this.anP.Rt = 1;
+      this.ccv.bxK = 1;
       break;
       label364:
       paramInt1 = getPaddingLeft();
@@ -713,8 +769,8 @@ public class SlidingPaneLayout
       paramBoolean = false;
       break label236;
       label402:
-      if ((this.mCanSlide) && (this.anN != 0)) {}
-      for (paramInt2 = (int)((1.0F - this.anK) * this.anN);; paramInt2 = 0)
+      if ((this.mCanSlide) && (this.cct != 0)) {}
+      for (paramInt2 = (int)((1.0F - this.ccq) * this.cct);; paramInt2 = 0)
       {
         i = paramInt2;
         paramInt2 = paramInt1;
@@ -729,24 +785,24 @@ public class SlidingPaneLayout
           if (!this.mCanSlide) {
             break label535;
           }
-          if (this.anN != 0) {
-            u(this.anK);
+          if (this.cct != 0) {
+            aB(this.ccq);
           }
-          if (((LayoutParams)this.anJ.getLayoutParams()).anY) {
-            a(this.anJ, this.anK, this.anE);
+          if (((LayoutParams)this.ccp.getLayoutParams()).ccE) {
+            a(this.ccp, this.ccq, this.cck);
           }
         }
         for (;;)
         {
-          bw(this.anJ);
+          bQ(this.ccp);
           this.mFirstLayout = false;
-          AppMethodBeat.o(204696);
+          AppMethodBeat.o(192911);
           return;
           label535:
           paramInt1 = 0;
           while (paramInt1 < m)
           {
-            a(getChildAt(paramInt1), 0.0F, this.anE);
+            a(getChildAt(paramInt1), 0.0F, this.cck);
             paramInt1 += 1;
           }
         }
@@ -760,7 +816,7 @@ public class SlidingPaneLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204695);
+    AppMethodBeat.i(192903);
     int k = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     int i = View.MeasureSpec.getMode(paramInt2);
@@ -799,7 +855,7 @@ public class SlidingPaneLayout
         bool1 = false;
         i2 = i - getPaddingLeft() - getPaddingRight();
         i3 = getChildCount();
-        this.anJ = null;
+        this.ccp = null;
         i1 = 0;
         m = i2;
         k = paramInt1;
@@ -814,11 +870,11 @@ public class SlidingPaneLayout
           if (((View)localObject).getVisibility() != 8) {
             break;
           }
-          localLayoutParams.anY = false;
+          localLayoutParams.ccE = false;
           i1 += 1;
         }
         localObject = new IllegalStateException("Width must have an exact value or MATCH_PARENT");
-        AppMethodBeat.o(204695);
+        AppMethodBeat.o(192903);
         throw ((Throwable)localObject);
         if (i != 0) {
           break label1064;
@@ -835,7 +891,7 @@ public class SlidingPaneLayout
           break;
         }
         localObject = new IllegalStateException("Height must not be UNSPECIFIED");
-        AppMethodBeat.o(204695);
+        AppMethodBeat.o(192903);
         throw ((Throwable)localObject);
         paramInt1 = paramInt1 - getPaddingTop() - getPaddingBottom();
         j = paramInt1;
@@ -843,9 +899,9 @@ public class SlidingPaneLayout
         j = paramInt1 - getPaddingTop() - getPaddingBottom();
         paramInt1 = k;
       }
-      if (localLayoutParams.pO > 0.0F)
+      if (localLayoutParams.qL > 0.0F)
       {
-        f = localLayoutParams.pO + f;
+        f = localLayoutParams.qL + f;
         if (localLayoutParams.width == 0) {}
       }
       for (;;)
@@ -882,9 +938,9 @@ public class SlidingPaneLayout
         label575:
         for (boolean bool2 = true;; bool2 = false)
         {
-          localLayoutParams.anX = bool2;
-          if (localLayoutParams.anX) {
-            this.anJ = ((View)localObject);
+          localLayoutParams.ccD = bool2;
+          if (localLayoutParams.ccD) {
+            this.ccp = ((View)localObject);
           }
           bool1 = bool2 | bool1;
           k = m;
@@ -907,7 +963,7 @@ public class SlidingPaneLayout
         label581:
         if ((bool1) || (f > 0.0F))
         {
-          i1 = i2 - this.anI;
+          i1 = i2 - this.cco;
           m = 0;
           if (m < i3)
           {
@@ -917,7 +973,7 @@ public class SlidingPaneLayout
               localLayoutParams = (LayoutParams)((View)localObject).getLayoutParams();
               if (((View)localObject).getVisibility() != 8)
               {
-                if ((localLayoutParams.width != 0) || (localLayoutParams.pO <= 0.0F)) {
+                if ((localLayoutParams.width != 0) || (localLayoutParams.qL <= 0.0F)) {
                   break label761;
                 }
                 paramInt2 = 1;
@@ -925,10 +981,10 @@ public class SlidingPaneLayout
                   break label766;
                 }
                 n = 0;
-                if ((!bool1) || (localObject == this.anJ)) {
+                if ((!bool1) || (localObject == this.ccp)) {
                   break label827;
                 }
-                if ((localLayoutParams.width < 0) && ((n > i1) || (localLayoutParams.pO > 0.0F)))
+                if ((localLayoutParams.width < 0) && ((n > i1) || (localLayoutParams.qL > 0.0F)))
                 {
                   if (paramInt2 == 0) {
                     break label812;
@@ -961,7 +1017,7 @@ public class SlidingPaneLayout
               break label738;
               paramInt2 = View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredHeight(), 1073741824);
               break label738;
-              if (localLayoutParams.pO > 0.0F)
+              if (localLayoutParams.qL > 0.0F)
               {
                 if (localLayoutParams.width == 0) {
                   if (localLayoutParams.height == -2) {
@@ -994,7 +1050,7 @@ public class SlidingPaneLayout
                 }
                 label968:
                 i4 = Math.max(0, paramInt1);
-                ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.pO * i4 / f) + n, 1073741824), paramInt2);
+                ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.qL * i4 / f) + n, 1073741824), paramInt2);
               }
             }
           }
@@ -1006,10 +1062,10 @@ public class SlidingPaneLayout
         setMeasuredDimension(i, getPaddingTop() + k + getPaddingBottom());
         label776:
         this.mCanSlide = bool1;
-        if ((this.anP.Rh != 0) && (!bool1)) {
-          this.anP.hL();
+        if ((this.ccv.bxy != 0) && (!bool1)) {
+          this.ccv.Fw();
         }
-        AppMethodBeat.o(204695);
+        AppMethodBeat.o(192903);
         return;
         break;
       }
@@ -1022,91 +1078,91 @@ public class SlidingPaneLayout
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(204723);
+    AppMethodBeat.i(193125);
     if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(204723);
+      AppMethodBeat.o(193125);
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Rb);
-    if (paramParcelable.gZ) {
-      if ((this.mFirstLayout) || (t(1.0F))) {
-        this.anQ = true;
+    super.onRestoreInstanceState(paramParcelable.bxs);
+    if (paramParcelable.hU) {
+      if ((this.mFirstLayout) || (aA(1.0F))) {
+        this.ccw = true;
       }
     }
     for (;;)
     {
-      this.anQ = paramParcelable.gZ;
-      AppMethodBeat.o(204723);
+      this.ccw = paramParcelable.hU;
+      AppMethodBeat.o(193125);
       return;
-      mT();
+      Lv();
     }
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(204722);
+    AppMethodBeat.i(193118);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     boolean bool;
     if (this.mCanSlide) {
-      if ((!this.mCanSlide) || (this.anK == 1.0F)) {
+      if ((!this.mCanSlide) || (this.ccq == 1.0F)) {
         bool = true;
       }
     }
     for (;;)
     {
-      localSavedState.gZ = bool;
-      AppMethodBeat.o(204722);
+      localSavedState.hU = bool;
+      AppMethodBeat.o(193118);
       return localSavedState;
       bool = false;
       continue;
-      bool = this.anQ;
+      bool = this.ccw;
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(204697);
+    AppMethodBeat.i(192915);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramInt1 != paramInt3) {
       this.mFirstLayout = true;
     }
-    AppMethodBeat.o(204697);
+    AppMethodBeat.o(192915);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204700);
+    AppMethodBeat.i(192944);
     if (!this.mCanSlide)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(204700);
+      AppMethodBeat.o(192944);
       return bool;
     }
-    this.anP.j(paramMotionEvent);
+    this.ccv.j(paramMotionEvent);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(204700);
+      AppMethodBeat.o(192944);
       return true;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       this.mInitialMotionX = f1;
       this.mInitialMotionY = f2;
       continue;
-      if (by(this.anJ))
+      if (bS(this.ccp))
       {
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
         float f3 = f1 - this.mInitialMotionX;
         float f4 = f2 - this.mInitialMotionY;
-        int i = this.anP.mTouchSlop;
-        if ((f3 * f3 + f4 * f4 < i * i) && (c.g(this.anJ, (int)f1, (int)f2))) {
-          mT();
+        int i = this.ccv.mTouchSlop;
+        if ((f3 * f3 + f4 * f4 < i * i) && (c.g(this.ccp, (int)f1, (int)f2))) {
+          Lv();
         }
       }
     }
@@ -1114,184 +1170,127 @@ public class SlidingPaneLayout
   
   public void requestChildFocus(View paramView1, View paramView2)
   {
-    AppMethodBeat.i(204698);
+    AppMethodBeat.i(192923);
     super.requestChildFocus(paramView1, paramView2);
     if ((!isInTouchMode()) && (!this.mCanSlide)) {
-      if (paramView1 != this.anJ) {
+      if (paramView1 != this.ccp) {
         break label48;
       }
     }
     label48:
     for (boolean bool = true;; bool = false)
     {
-      this.anQ = bool;
-      AppMethodBeat.o(204698);
+      this.ccw = bool;
+      AppMethodBeat.o(192923);
       return;
     }
   }
   
   public void setCoveredFadeColor(int paramInt)
   {
-    this.anF = paramInt;
+    this.ccl = paramInt;
   }
   
   public void setPanelSlideListener(d paramd)
   {
-    this.anO = paramd;
+    this.ccu = paramd;
   }
   
   public void setParallaxDistance(int paramInt)
   {
-    AppMethodBeat.i(204679);
-    this.anN = paramInt;
+    AppMethodBeat.i(192816);
+    this.cct = paramInt;
     requestLayout();
-    AppMethodBeat.o(204679);
+    AppMethodBeat.o(192816);
   }
   
   @Deprecated
   public void setShadowDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(204708);
+    AppMethodBeat.i(192985);
     setShadowDrawableLeft(paramDrawable);
-    AppMethodBeat.o(204708);
+    AppMethodBeat.o(192985);
   }
   
   public void setShadowDrawableLeft(Drawable paramDrawable)
   {
-    this.anG = paramDrawable;
+    this.ccm = paramDrawable;
   }
   
   public void setShadowDrawableRight(Drawable paramDrawable)
   {
-    this.anH = paramDrawable;
+    this.ccn = paramDrawable;
   }
   
   @Deprecated
   public void setShadowResource(int paramInt)
   {
-    AppMethodBeat.i(204710);
+    AppMethodBeat.i(193040);
     setShadowDrawable(getResources().getDrawable(paramInt));
-    AppMethodBeat.o(204710);
+    AppMethodBeat.o(193040);
   }
   
   public void setShadowResourceLeft(int paramInt)
   {
-    AppMethodBeat.i(204711);
+    AppMethodBeat.i(193047);
     setShadowDrawableLeft(androidx.core.content.a.m(getContext(), paramInt));
-    AppMethodBeat.o(204711);
+    AppMethodBeat.o(193047);
   }
   
   public void setShadowResourceRight(int paramInt)
   {
-    AppMethodBeat.i(204712);
+    AppMethodBeat.i(193053);
     setShadowDrawableRight(androidx.core.content.a.m(getContext(), paramInt));
-    AppMethodBeat.o(204712);
+    AppMethodBeat.o(193053);
   }
   
   public void setSliderFadeColor(int paramInt)
   {
-    this.anE = paramInt;
-  }
-  
-  final void u(float paramFloat)
-  {
-    AppMethodBeat.i(204715);
-    boolean bool = mU();
-    Object localObject = (LayoutParams)this.anJ.getLayoutParams();
-    int i;
-    label49:
-    int j;
-    if (((LayoutParams)localObject).anY) {
-      if (bool)
-      {
-        i = ((LayoutParams)localObject).rightMargin;
-        if (i > 0) {
-          break label183;
-        }
-        i = 1;
-        int n = getChildCount();
-        j = 0;
-        label58:
-        if (j >= n) {
-          break label198;
-        }
-        localObject = getChildAt(j);
-        if (localObject != this.anJ)
-        {
-          int k = (int)((1.0F - this.anL) * this.anN);
-          this.anL = paramFloat;
-          int m = k - (int)((1.0F - paramFloat) * this.anN);
-          k = m;
-          if (bool) {
-            k = -m;
-          }
-          ((View)localObject).offsetLeftAndRight(k);
-          if (i != 0) {
-            if (!bool) {
-              break label188;
-            }
-          }
-        }
-      }
-    }
-    label183:
-    label188:
-    for (float f = this.anL - 1.0F;; f = 1.0F - this.anL)
-    {
-      a((View)localObject, f, this.anF);
-      j += 1;
-      break label58;
-      i = ((LayoutParams)localObject).leftMargin;
-      break;
-      i = 0;
-      break label49;
-    }
-    label198:
-    AppMethodBeat.o(204715);
+    this.cck = paramInt;
   }
   
   public static class LayoutParams
     extends ViewGroup.MarginLayoutParams
   {
-    private static final int[] oG = { 16843137 };
-    boolean anX;
-    boolean anY;
-    Paint anZ;
-    public float pO;
+    private static final int[] pD = { 16843137 };
+    boolean ccD;
+    boolean ccE;
+    Paint ccF;
+    public float qL;
     
     public LayoutParams()
     {
       super(-1);
-      this.pO = 0.0F;
+      this.qL = 0.0F;
     }
     
     public LayoutParams(byte paramByte)
     {
       super(-1);
-      this.pO = 0.0F;
+      this.qL = 0.0F;
     }
     
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(204640);
-      this.pO = 0.0F;
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, oG);
-      this.pO = paramContext.getFloat(0, 0.0F);
+      AppMethodBeat.i(192820);
+      this.qL = 0.0F;
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, pD);
+      this.qL = paramContext.getFloat(0, 0.0F);
       paramContext.recycle();
-      AppMethodBeat.o(204640);
+      AppMethodBeat.o(192820);
     }
     
     public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
     {
       super();
-      this.pO = 0.0F;
+      this.qL = 0.0F;
     }
     
     public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
     {
       super();
-      this.pO = 0.0F;
+      this.qL = 0.0F;
     }
   }
   
@@ -1299,24 +1298,24 @@ public class SlidingPaneLayout
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    boolean gZ;
+    boolean hU;
     
     static
     {
-      AppMethodBeat.i(204662);
+      AppMethodBeat.i(192817);
       CREATOR = new Parcelable.ClassLoaderCreator() {};
-      AppMethodBeat.o(204662);
+      AppMethodBeat.o(192817);
     }
     
     SavedState(Parcel paramParcel)
     {
       super(null);
-      AppMethodBeat.i(204660);
+      AppMethodBeat.i(192807);
       if (paramParcel.readInt() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.gZ = bool;
-        AppMethodBeat.o(204660);
+        this.hU = bool;
+        AppMethodBeat.o(192807);
         return;
       }
     }
@@ -1328,13 +1327,13 @@ public class SlidingPaneLayout
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(204661);
+      AppMethodBeat.i(192829);
       super.writeToParcel(paramParcel, paramInt);
-      if (this.gZ) {}
+      if (this.hU) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        AppMethodBeat.o(204661);
+        AppMethodBeat.o(192829);
         return;
       }
     }
@@ -1343,93 +1342,86 @@ public class SlidingPaneLayout
   final class a
     extends androidx.core.g.a
   {
-    private final Rect Si;
+    private final Rect byy;
     
     a()
     {
-      AppMethodBeat.i(204587);
-      this.Si = new Rect();
-      AppMethodBeat.o(204587);
+      AppMethodBeat.i(192790);
+      this.byy = new Rect();
+      AppMethodBeat.o(192790);
     }
     
-    private boolean bz(View paramView)
+    private boolean bT(View paramView)
     {
-      AppMethodBeat.i(204593);
-      boolean bool = SlidingPaneLayout.this.by(paramView);
-      AppMethodBeat.o(204593);
+      AppMethodBeat.i(192802);
+      boolean bool = SlidingPaneLayout.this.bS(paramView);
+      AppMethodBeat.o(192802);
       return bool;
     }
     
     public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      AppMethodBeat.i(204591);
+      AppMethodBeat.i(192827);
       super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
       paramAccessibilityEvent.setClassName(SlidingPaneLayout.class.getName());
-      AppMethodBeat.o(204591);
+      AppMethodBeat.o(192827);
     }
     
     public final void onInitializeAccessibilityNodeInfo(View paramView, d paramd)
     {
-      int j = 0;
-      AppMethodBeat.i(204590);
+      AppMethodBeat.i(192815);
       d locald = d.a(paramd);
       super.onInitializeAccessibilityNodeInfo(paramView, locald);
-      Rect localRect = this.Si;
-      locald.e(localRect);
-      paramd.f(localRect);
-      locald.g(localRect);
-      paramd.h(localRect);
-      paramd.Z(locald.hs());
-      paramd.s(locald.Ov.getPackageName());
-      paramd.t(locald.Ov.getClassName());
-      paramd.setContentDescription(locald.Ov.getContentDescription());
-      paramd.setEnabled(locald.Ov.isEnabled());
-      paramd.setClickable(locald.Ov.isClickable());
-      paramd.setFocusable(locald.Ov.isFocusable());
-      paramd.Y(locald.Ov.isFocused());
-      paramd.aa(locald.ht());
-      paramd.setSelected(locald.Ov.isSelected());
-      paramd.setLongClickable(locald.Ov.isLongClickable());
-      paramd.bA(locald.Ov.getActions());
-      if (Build.VERSION.SDK_INT >= 16) {}
-      for (int i = locald.Ov.getMovementGranularities();; i = 0)
-      {
-        if (Build.VERSION.SDK_INT >= 16) {
-          paramd.Ov.setMovementGranularities(i);
-        }
-        locald.Ov.recycle();
-        paramd.t(SlidingPaneLayout.class.getName());
-        paramd.ax(paramView);
-        paramView = w.J(paramView);
-        if ((paramView instanceof View)) {
-          paramd.setParent((View)paramView);
-        }
-        int k = SlidingPaneLayout.this.getChildCount();
-        i = j;
-        while (i < k)
-        {
-          paramView = SlidingPaneLayout.this.getChildAt(i);
-          if ((!bz(paramView)) && (paramView.getVisibility() == 0))
-          {
-            w.p(paramView, 1);
-            paramd.ay(paramView);
-          }
-          i += 1;
-        }
+      Rect localRect = this.byy;
+      locald.j(localRect);
+      paramd.k(localRect);
+      locald.l(localRect);
+      paramd.m(localRect);
+      paramd.aF(locald.EL());
+      paramd.u(locald.EQ());
+      paramd.v(locald.ER());
+      paramd.setContentDescription(locald.getContentDescription());
+      paramd.setEnabled(locald.isEnabled());
+      paramd.setClickable(locald.isClickable());
+      paramd.setFocusable(locald.isFocusable());
+      paramd.aE(locald.isFocused());
+      paramd.aG(locald.EM());
+      paramd.setSelected(locald.isSelected());
+      paramd.setLongClickable(locald.EN());
+      paramd.eu(locald.EJ());
+      paramd.ev(locald.EK());
+      locald.recycle();
+      paramd.v(SlidingPaneLayout.class.getName());
+      paramd.aL(paramView);
+      paramView = z.V(paramView);
+      if ((paramView instanceof View)) {
+        paramd.setParent((View)paramView);
       }
-      AppMethodBeat.o(204590);
+      int j = SlidingPaneLayout.this.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        paramView = SlidingPaneLayout.this.getChildAt(i);
+        if ((!bT(paramView)) && (paramView.getVisibility() == 0))
+        {
+          z.p(paramView, 1);
+          paramd.aM(paramView);
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(192815);
     }
     
     public final boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      AppMethodBeat.i(204592);
-      if (!bz(paramView))
+      AppMethodBeat.i(192839);
+      if (!bT(paramView))
       {
         boolean bool = super.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
-        AppMethodBeat.o(204592);
+        AppMethodBeat.o(192839);
         return bool;
       }
-      AppMethodBeat.o(204592);
+      AppMethodBeat.o(192839);
       return false;
     }
   }
@@ -1437,23 +1429,23 @@ public class SlidingPaneLayout
   final class b
     implements Runnable
   {
-    final View anW;
+    final View ccC;
     
     b(View paramView)
     {
-      this.anW = paramView;
+      this.ccC = paramView;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(204604);
-      if (this.anW.getParent() == SlidingPaneLayout.this)
+      AppMethodBeat.i(192811);
+      if (this.ccC.getParent() == SlidingPaneLayout.this)
       {
-        this.anW.setLayerType(0, null);
-        SlidingPaneLayout.this.bx(this.anW);
+        this.ccC.setLayerType(0, null);
+        SlidingPaneLayout.this.bR(this.ccC);
       }
-      SlidingPaneLayout.this.anR.remove(this);
-      AppMethodBeat.o(204604);
+      SlidingPaneLayout.this.ccx.remove(this);
+      AppMethodBeat.o(192811);
     }
   }
   
@@ -1462,96 +1454,46 @@ public class SlidingPaneLayout
   {
     c() {}
     
-    public final void G(int paramInt)
+    public final void D(View paramView, int paramInt)
     {
-      AppMethodBeat.i(204611);
-      if (SlidingPaneLayout.this.anP.Rh == 0)
+      AppMethodBeat.i(192831);
+      SlidingPaneLayout.this.Lu();
+      AppMethodBeat.o(192831);
+    }
+    
+    public final void F(int paramInt)
+    {
+      AppMethodBeat.i(192819);
+      if (SlidingPaneLayout.this.ccv.bxy == 0)
       {
-        if (SlidingPaneLayout.this.anK == 0.0F)
+        if (SlidingPaneLayout.this.ccq == 0.0F)
         {
-          SlidingPaneLayout.this.bw(SlidingPaneLayout.this.anJ);
+          SlidingPaneLayout.this.bQ(SlidingPaneLayout.this.ccp);
           SlidingPaneLayout.this.sendAccessibilityEvent(32);
-          SlidingPaneLayout.this.anQ = false;
-          AppMethodBeat.o(204611);
+          SlidingPaneLayout.this.ccw = false;
+          AppMethodBeat.o(192819);
           return;
         }
         SlidingPaneLayout.this.sendAccessibilityEvent(32);
-        SlidingPaneLayout.this.anQ = true;
+        SlidingPaneLayout.this.ccw = true;
       }
-      AppMethodBeat.o(204611);
-    }
-    
-    public final void L(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(204620);
-      SlidingPaneLayout.this.anP.x(SlidingPaneLayout.this.anJ, paramInt2);
-      AppMethodBeat.o(204620);
-    }
-    
-    public final void a(View paramView, float paramFloat1, float paramFloat2)
-    {
-      AppMethodBeat.i(204614);
-      SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
-      int i;
-      int j;
-      if (SlidingPaneLayout.this.mU())
-      {
-        i = SlidingPaneLayout.this.getPaddingRight();
-        j = localLayoutParams.rightMargin + i;
-        if (paramFloat1 >= 0.0F)
-        {
-          i = j;
-          if (paramFloat1 == 0.0F)
-          {
-            i = j;
-            if (SlidingPaneLayout.this.anK <= 0.5F) {}
-          }
-        }
-        else
-        {
-          i = j + SlidingPaneLayout.this.anM;
-        }
-        j = SlidingPaneLayout.this.anJ.getWidth();
-        i = SlidingPaneLayout.this.getWidth() - i - j;
-      }
-      for (;;)
-      {
-        SlidingPaneLayout.this.anP.I(i, paramView.getTop());
-        SlidingPaneLayout.this.invalidate();
-        AppMethodBeat.o(204614);
-        return;
-        i = SlidingPaneLayout.this.getPaddingLeft();
-        j = localLayoutParams.leftMargin + i;
-        if (paramFloat1 <= 0.0F)
-        {
-          i = j;
-          if (paramFloat1 == 0.0F)
-          {
-            i = j;
-            if (SlidingPaneLayout.this.anK <= 0.5F) {}
-          }
-        }
-        else
-        {
-          i = j + SlidingPaneLayout.this.anM;
-        }
-      }
+      AppMethodBeat.o(192819);
     }
     
     public final void a(View paramView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(204613);
+      AppMethodBeat.i(192840);
       paramView = SlidingPaneLayout.this;
-      if (paramView.anJ == null)
+      if (paramView.ccp == null)
       {
-        paramView.anK = 0.0F;
+        paramView.ccq = 0.0F;
         SlidingPaneLayout.this.invalidate();
-        AppMethodBeat.o(204613);
+        AppMethodBeat.o(192840);
         return;
       }
-      boolean bool = paramView.mU();
-      SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.anJ.getLayoutParams();
-      int i = paramView.anJ.getWidth();
+      boolean bool = paramView.Lw();
+      SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.ccp.getLayoutParams();
+      int i = paramView.ccp.getWidth();
       paramInt2 = paramInt1;
       if (bool) {
         paramInt2 = paramView.getWidth() - paramInt1 - i;
@@ -1567,74 +1509,124 @@ public class SlidingPaneLayout
       label168:
       for (i = localLayoutParams.rightMargin;; i = localLayoutParams.leftMargin)
       {
-        paramView.anK = ((paramInt2 - (i + paramInt1)) / paramView.anM);
-        if (paramView.anN != 0) {
-          paramView.u(paramView.anK);
+        paramView.ccq = ((paramInt2 - (i + paramInt1)) / paramView.ccs);
+        if (paramView.cct != 0) {
+          paramView.aB(paramView.ccq);
         }
-        if (!localLayoutParams.anY) {
+        if (!localLayoutParams.ccE) {
           break;
         }
-        paramView.a(paramView.anJ, paramView.anK, paramView.anE);
+        paramView.a(paramView.ccp, paramView.ccq, paramView.cck);
         break;
         paramInt1 = paramView.getPaddingLeft();
         break label89;
       }
     }
     
-    public final int aC(View paramView)
+    public final void aG(int paramInt1, int paramInt2)
     {
-      return SlidingPaneLayout.this.anM;
+      AppMethodBeat.i(192878);
+      SlidingPaneLayout.this.ccv.B(SlidingPaneLayout.this.ccp, paramInt2);
+      AppMethodBeat.o(192878);
+    }
+    
+    public final int aQ(View paramView)
+    {
+      return SlidingPaneLayout.this.ccs;
+    }
+    
+    public final void b(View paramView, float paramFloat1, float paramFloat2)
+    {
+      AppMethodBeat.i(192848);
+      SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
+      int i;
+      int j;
+      if (SlidingPaneLayout.this.Lw())
+      {
+        i = SlidingPaneLayout.this.getPaddingRight();
+        j = localLayoutParams.rightMargin + i;
+        if (paramFloat1 >= 0.0F)
+        {
+          i = j;
+          if (paramFloat1 == 0.0F)
+          {
+            i = j;
+            if (SlidingPaneLayout.this.ccq <= 0.5F) {}
+          }
+        }
+        else
+        {
+          i = j + SlidingPaneLayout.this.ccs;
+        }
+        j = SlidingPaneLayout.this.ccp.getWidth();
+        i = SlidingPaneLayout.this.getWidth() - i - j;
+      }
+      for (;;)
+      {
+        SlidingPaneLayout.this.ccv.aD(i, paramView.getTop());
+        SlidingPaneLayout.this.invalidate();
+        AppMethodBeat.o(192848);
+        return;
+        i = SlidingPaneLayout.this.getPaddingLeft();
+        j = localLayoutParams.leftMargin + i;
+        if (paramFloat1 <= 0.0F)
+        {
+          i = j;
+          if (paramFloat1 == 0.0F)
+          {
+            i = j;
+            if (SlidingPaneLayout.this.ccq <= 0.5F) {}
+          }
+        }
+        else
+        {
+          i = j + SlidingPaneLayout.this.ccs;
+        }
+      }
     }
     
     public final boolean b(View paramView, int paramInt)
     {
-      AppMethodBeat.i(204610);
+      AppMethodBeat.i(192810);
       if (SlidingPaneLayout.this.mIsUnableToDrag)
       {
-        AppMethodBeat.o(204610);
+        AppMethodBeat.o(192810);
         return false;
       }
-      boolean bool = ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).anX;
-      AppMethodBeat.o(204610);
+      boolean bool = ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).ccD;
+      AppMethodBeat.o(192810);
       return bool;
     }
     
     public final int c(View paramView, int paramInt)
     {
-      AppMethodBeat.i(204619);
+      AppMethodBeat.i(192871);
       paramInt = paramView.getTop();
-      AppMethodBeat.o(204619);
+      AppMethodBeat.o(192871);
       return paramInt;
     }
     
     public final int d(View paramView, int paramInt)
     {
-      AppMethodBeat.i(204617);
-      paramView = (SlidingPaneLayout.LayoutParams)SlidingPaneLayout.this.anJ.getLayoutParams();
+      AppMethodBeat.i(192862);
+      paramView = (SlidingPaneLayout.LayoutParams)SlidingPaneLayout.this.ccp.getLayoutParams();
       int i;
       int j;
-      if (SlidingPaneLayout.this.mU())
+      if (SlidingPaneLayout.this.Lw())
       {
         i = SlidingPaneLayout.this.getWidth();
         j = SlidingPaneLayout.this.getPaddingRight();
-        i -= paramView.rightMargin + j + SlidingPaneLayout.this.anJ.getWidth();
-        j = SlidingPaneLayout.this.anM;
+        i -= paramView.rightMargin + j + SlidingPaneLayout.this.ccp.getWidth();
+        j = SlidingPaneLayout.this.ccs;
       }
       for (paramInt = Math.max(Math.min(paramInt, i), i - j);; paramInt = Math.min(Math.max(paramInt, i), j + i))
       {
-        AppMethodBeat.o(204617);
+        AppMethodBeat.o(192862);
         return paramInt;
         i = SlidingPaneLayout.this.getPaddingLeft();
         i = paramView.leftMargin + i;
-        j = SlidingPaneLayout.this.anM;
+        j = SlidingPaneLayout.this.ccs;
       }
-    }
-    
-    public final void z(View paramView, int paramInt)
-    {
-      AppMethodBeat.i(204612);
-      SlidingPaneLayout.this.mS();
-      AppMethodBeat.o(204612);
     }
   }
   
@@ -1642,7 +1634,7 @@ public class SlidingPaneLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.slidingpanelayout.widget.SlidingPaneLayout
  * JD-Core Version:    0.7.0.1
  */

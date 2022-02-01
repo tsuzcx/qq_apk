@@ -6,17 +6,17 @@ public abstract interface aj
 {
   public abstract void a(String paramString, int paramInt, a parama);
   
-  public abstract void f(String paramString1, int paramInt, String paramString2, String paramString3);
+  public abstract void b(String paramString1, int paramInt, String paramString2, String paramString3);
   
   public static enum a
   {
     static
     {
       AppMethodBeat.i(131516);
-      rxy = new a("COMPLETE", 0);
-      rxz = new a("CONFIRM", 1);
-      rxA = new a("CHANGED", 2);
-      rxB = new a[] { rxy, rxz, rxA };
+      uIC = new a("COMPLETE", 0);
+      uID = new a("CONFIRM", 1);
+      uIE = new a("CHANGED", 2);
+      uIF = new a[] { uIC, uID, uIE };
       AppMethodBeat.o(131516);
     }
     
@@ -25,7 +25,7 @@ public abstract interface aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.aj
  * JD-Core Version:    0.7.0.1
  */

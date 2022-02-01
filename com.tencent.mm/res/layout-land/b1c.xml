@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/ekb" android:background="@color/xg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_horizontal" android:background="@color/a0n" android:layout_width="fill_parent" android:layout_height="@dimen/adl"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ek_" android:background="@drawable/ade" android:layout_width="@dimen/bw" android:layout_height="@dimen/bw" android:layout_marginBottom="@dimen/bu" android:layout_above="@id/ek9" android:layout_centerHorizontal="true">
-        <TextView android:textSize="40.0dip" android:textColor="@color/ag2" android:id="@id/eka" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <RelativeLayout android:layout_width="@dimen/aen" android:layout_height="@dimen/adl">
+        <com.tencent.mm.plugin.hld.candidate.ImeCandidateView android:id="@id/aq_" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/acn" />
+        <RelativeLayout android:id="@id/f7o" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adp" android:layout_below="@id/aq_">
+            <FrameLayout android:id="@id/f7n" android:layout_width="fill_parent" android:layout_height="@dimen/adp" />
+            <View android:id="@id/f7p" android:background="@color/a0n" android:layout_width="fill_parent" android:layout_height="@dimen/adp" />
+            <FrameLayout android:id="@id/f86" android:layout_width="fill_parent" android:layout_height="@dimen/adp" />
+        </RelativeLayout>
+        <FrameLayout android:id="@id/f87" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adl" />
+        <FrameLayout android:id="@id/f7x" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adl" />
+        <FrameLayout android:id="@id/f7y" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adl" />
     </RelativeLayout>
-    <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/ek9" android:background="@drawable/add" android:layout_width="@dimen/bu" android:layout_height="@dimen/ci" android:layout_marginBottom="@dimen/a_v" android:text="@string/ehz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/g3" android:background="@color/zx" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/aen" android:layout_height="@dimen/adl">
+        <TextView android:textSize="@dimen/hp" android:textStyle="bold" android:textColor="@color/zs" android:gravity="center_horizontal" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:text="@string/fpe" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/aec" android:textColor="@color/zs" android:gravity="center_horizontal" android:id="@id/c2g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/fpa" android:layout_below="@id/kpx" android:layout_centerHorizontal="true" />
+        <Button android:textSize="@dimen/t" android:textStyle="bold" android:id="@id/jdx" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/cv" android:text="@string/fpc" android:layout_below="@id/c2g" android:layout_centerHorizontal="true" style="@style/og" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/l0z" android:background="@color/zx" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/aen" android:layout_height="@dimen/adl">
+        <ProgressBar android:id="@id/j6z" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a85" />
+        <TextView android:textSize="@dimen/aec" android:textColor="@color/zs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:text="@string/fpj" />
+    </LinearLayout>
 </RelativeLayout>

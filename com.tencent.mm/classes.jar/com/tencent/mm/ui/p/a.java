@@ -20,12 +20,12 @@ import java.util.List;
 
 public final class a
 {
-  public static Bitmap a(View paramView, int paramInt1, int paramInt2, Bitmap.Config paramConfig)
+  public static Bitmap a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, Bitmap.Config paramConfig)
   {
-    AppMethodBeat.i(188410);
+    AppMethodBeat.i(249771);
     if (paramView == null)
     {
-      AppMethodBeat.o(188410);
+      AppMethodBeat.o(249771);
       return null;
     }
     paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
@@ -37,19 +37,19 @@ public final class a
     if (localObject != null) {
       ((Drawable)localObject).draw(localCanvas);
     }
-    a(localCanvas, paramView, true);
+    a(localCanvas, paramView, paramBoolean);
     BitmapUtil.setBitmapDensity(paramConfig);
     paramView = BitmapTracer.trace(paramConfig);
-    AppMethodBeat.o(188410);
+    AppMethodBeat.o(249771);
     return paramView;
   }
   
   public static Bitmap a(View paramView, Bitmap.Config paramConfig)
   {
-    AppMethodBeat.i(188411);
+    AppMethodBeat.i(249776);
     if (paramView == null)
     {
-      AppMethodBeat.o(188411);
+      AppMethodBeat.o(249776);
       return null;
     }
     paramConfig = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), paramConfig);
@@ -61,67 +61,92 @@ public final class a
     a(localCanvas, paramView, false);
     BitmapUtil.setBitmapDensity(paramConfig);
     paramView = BitmapTracer.trace(paramConfig);
-    AppMethodBeat.o(188411);
+    AppMethodBeat.o(249776);
     return paramView;
   }
   
   private static void a(Canvas paramCanvas, View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(188412);
-    paramView.draw(paramCanvas);
-    paramView = c(paramView, (int)paramView.getX(), (int)paramView.getY(), paramBoolean);
-    if (paramView.size() > 0)
+    AppMethodBeat.i(249783);
+    Object localObject1 = c(paramView, (int)paramView.getX(), (int)paramView.getY(), paramBoolean);
+    Object localObject2 = new ArrayList();
+    Iterator localIterator = ((List)localObject1).iterator();
+    Object localObject3;
+    while (localIterator.hasNext())
     {
-      paramView = paramView.iterator();
+      localObject3 = (a)localIterator.next();
+      if ((localObject3 != null) && ((((a)localObject3).afCz instanceof IWebView)) && (((a)localObject3).afCz.getX5WebViewExtension() != null)) {
+        ((List)localObject2).add(localObject3);
+      }
+    }
+    localIterator = ((List)localObject2).iterator();
+    while (localIterator.hasNext())
+    {
+      localObject3 = ((a)localIterator.next()).afCz;
+      if (((IWebView)localObject3).getWebViewUI() != null) {
+        ((IWebView)localObject3).getWebViewUI().setWillNotDraw(true);
+      }
+    }
+    paramView.draw(paramCanvas);
+    paramView = ((List)localObject2).iterator();
+    while (paramView.hasNext())
+    {
+      localObject2 = ((a)paramView.next()).afCz;
+      if (((IWebView)localObject2).getWebViewUI() != null) {
+        ((IWebView)localObject2).getWebViewUI().setWillNotDraw(false);
+      }
+    }
+    if (((List)localObject1).size() > 0)
+    {
+      paramView = ((List)localObject1).iterator();
       while (paramView.hasNext())
       {
-        a locala = (a)paramView.next();
-        Object localObject;
-        if ((locala != null) && (locala.XMk != null))
+        localObject1 = (a)paramView.next();
+        if ((localObject1 != null) && (((a)localObject1).afCy != null))
         {
-          localObject = locala.XMk;
-          localObject = ((TextureView)localObject).getBitmap(((TextureView)localObject).getWidth(), ((TextureView)localObject).getHeight());
-          if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
+          localObject2 = ((a)localObject1).afCy;
+          localObject2 = ((TextureView)localObject2).getBitmap(((TextureView)localObject2).getWidth(), ((TextureView)localObject2).getHeight());
+          if ((localObject2 == null) || (((Bitmap)localObject2).isRecycled())) {
             Log.e("MicroMsg.BitmapUtil", "get thumb bitmap null or is recycled");
           } else {
-            paramCanvas.drawBitmap((Bitmap)localObject, locala.left, locala.top, null);
+            paramCanvas.drawBitmap((Bitmap)localObject2, ((a)localObject1).left, ((a)localObject1).top, null);
           }
         }
-        else if ((locala != null) && ((locala.XMl instanceof IWebView)) && (paramBoolean))
+        else if ((localObject1 != null) && ((((a)localObject1).afCz instanceof IWebView)) && (paramBoolean))
         {
-          localObject = locala.XMl.captureBitmap();
-          if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
+          localObject2 = ((a)localObject1).afCz.captureBitmap();
+          if ((localObject2 == null) || (((Bitmap)localObject2).isRecycled())) {
             Log.e("MicroMsg.BitmapUtil", "get thumb bitmap null or is recycled");
           } else {
-            paramCanvas.drawBitmap((Bitmap)localObject, locala.left, locala.top, null);
+            paramCanvas.drawBitmap((Bitmap)localObject2, ((a)localObject1).left, ((a)localObject1).top, null);
           }
         }
       }
     }
-    AppMethodBeat.o(188412);
+    AppMethodBeat.o(249783);
   }
   
   private static List<a> c(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(188413);
+    AppMethodBeat.i(249786);
     ArrayList localArrayList = new ArrayList();
     a locala;
     if ((paramView instanceof TextureView))
     {
       locala = new a();
-      locala.XMk = ((TextureView)paramView);
+      locala.afCy = ((TextureView)paramView);
       locala.left = paramInt1;
       locala.top = paramInt2;
       localArrayList.add(locala);
     }
     for (;;)
     {
-      AppMethodBeat.o(188413);
+      AppMethodBeat.o(249786);
       return localArrayList;
       if ((paramBoolean) && ((paramView instanceof WebView)))
       {
         locala = new a();
-        locala.XMl = ((WebView)paramView);
+        locala.afCz = ((WebView)paramView);
         locala.left = paramInt1;
         locala.top = paramInt2;
         localArrayList.add(locala);
@@ -139,25 +164,17 @@ public final class a
     }
   }
   
-  public static Bitmap iC(View paramView)
-  {
-    AppMethodBeat.i(293086);
-    paramView = a(paramView, Bitmap.Config.ARGB_8888);
-    AppMethodBeat.o(293086);
-    return paramView;
-  }
-  
   static final class a
   {
-    TextureView XMk;
-    IWebView XMl;
+    TextureView afCy;
+    IWebView afCz;
     int left = 0;
     int top = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.p.a
  * JD-Core Version:    0.7.0.1
  */

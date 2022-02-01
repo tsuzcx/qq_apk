@@ -7,54 +7,54 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.plugin.brandservice.b.e.a;
 import com.tencent.mm.plugin.brandservice.d.e;
 import com.tencent.mm.plugin.brandservice.d.f;
+import com.tencent.mm.plugin.brandservice.model.e;
+import com.tencent.mm.plugin.brandservice.model.e.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.aez;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.ecj;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.ahl;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.ewa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.base.sortview.a.a;
 import java.io.IOException;
 
 public final class b
   extends com.tencent.mm.plugin.brandservice.ui.base.a
 {
-  private static com.tencent.mm.ui.base.sortview.a.b swV;
+  private static com.tencent.mm.ui.base.sortview.a.b vCC;
   protected String iconUrl;
-  CharSequence mMY;
-  protected CharSequence swK;
-  protected boolean swN;
-  protected boolean swO;
-  protected String swW;
+  CharSequence pJG;
   protected String username;
+  protected String vCD;
+  protected CharSequence vCr;
+  protected boolean vCu;
+  protected boolean vCv;
   
   public b(Object paramObject, String paramString)
   {
     super(6, paramObject);
-    this.swW = paramString;
+    this.vCD = paramString;
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(5612);
-    if (this.Wta)
+    if (this.aeau)
     {
       AppMethodBeat.o(5612);
       return;
     }
-    if ((paramContext == null) || (parama == null) || (this.bnW == null))
+    if ((paramContext == null) || (parama == null) || (this.cpt == null))
     {
       Log.e("MicroMsg.BizRecommDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
       AppMethodBeat.o(5612);
@@ -66,24 +66,24 @@ public final class b
       AppMethodBeat.o(5612);
       return;
     }
-    if (!(this.bnW instanceof ecj))
+    if (!(this.cpt instanceof ewa))
     {
       Log.e("MicroMsg.BizRecommDataItem", "The data is not a instance of SearchOrRecommendItem.");
       AppMethodBeat.o(5612);
       return;
     }
     a locala = (a)parama;
-    paramVarArgs = (ecj)this.bnW;
-    if (paramVarArgs.TtX != null) {
-      parama = paramVarArgs.TtX.toString();
+    paramVarArgs = (ewa)this.cpt;
+    if (paramVarArgs.aaIz != null) {
+      parama = paramVarArgs.aaIz.toString();
     }
     try
     {
       for (;;)
       {
-        this.mMY = l.b(paramContext, parama, locala.iZH.getTextSize());
-        this.iconUrl = paramVarArgs.SjJ;
-        this.username = paramVarArgs.SrH.toString();
+        this.pJG = p.b(paramContext, parama, locala.lBD.getTextSize());
+        this.iconUrl = paramVarArgs.ZhP;
+        this.username = paramVarArgs.ZqL.toString();
         AppMethodBeat.o(5612);
         return;
         parama = "";
@@ -93,16 +93,16 @@ public final class b
     {
       for (;;)
       {
-        this.mMY = "";
+        this.pJG = "";
       }
     }
   }
   
-  public final com.tencent.mm.ui.base.sortview.a.b czw()
+  public final com.tencent.mm.ui.base.sortview.a.b dco()
   {
     AppMethodBeat.i(5610);
-    if (swV == null) {
-      swV = new com.tencent.mm.ui.base.sortview.a.b()
+    if (vCC == null) {
+      vCC = new com.tencent.mm.ui.base.sortview.a.b()
       {
         public final void a(Context paramAnonymousContext, a.a paramAnonymousa, com.tencent.mm.ui.base.sortview.a paramAnonymousVarArgs)
         {
@@ -120,7 +120,7 @@ public final class b
             AppMethodBeat.o(5608);
             return;
           }
-          if (!(paramAnonymousVarArgs.getData() instanceof ecj))
+          if (!(paramAnonymousVarArgs.getData() instanceof ewa))
           {
             Log.e("MicroMsg.BizRecommDataItem", "The ViewHolder is not a instance of SearchOrRecommendItem.");
             AppMethodBeat.o(5608);
@@ -130,15 +130,15 @@ public final class b
           paramAnonymousa = (b)paramAnonymousVarArgs;
           paramAnonymousContext.username = paramAnonymousa.username;
           paramAnonymousContext.iconUrl = paramAnonymousa.iconUrl;
-          com.tencent.mm.pluginsdk.ui.a.b.d(paramAnonymousContext.iZG, paramAnonymousa.username);
-          paramAnonymousContext.iZH.setText(paramAnonymousa.mMY, TextView.BufferType.SPANNABLE);
-          paramAnonymousVarArgs = paramAnonymousContext.swU;
-          if (paramAnonymousa.swO)
+          com.tencent.mm.pluginsdk.ui.a.b.h(paramAnonymousContext.lBC, paramAnonymousa.username);
+          paramAnonymousContext.lBD.setText(paramAnonymousa.pJG, TextView.BufferType.SPANNABLE);
+          paramAnonymousVarArgs = paramAnonymousContext.vCB;
+          if (paramAnonymousa.vCv)
           {
             i = 0;
             paramAnonymousVarArgs.setVisibility(i);
-            paramAnonymousVarArgs = paramAnonymousContext.swQ;
-            if (!paramAnonymousa.swN) {
+            paramAnonymousVarArgs = paramAnonymousContext.vCx;
+            if (!paramAnonymousa.vCu) {
               break label221;
             }
           }
@@ -146,8 +146,8 @@ public final class b
           for (int i = j;; i = 8)
           {
             paramAnonymousVarArgs.setVisibility(i);
-            paramAnonymousContext.swR.setText(paramAnonymousa.swK, TextView.BufferType.SPANNABLE);
-            e.c(paramAnonymousContext.swP, paramAnonymousa.swW);
+            paramAnonymousContext.vCy.setText(paramAnonymousa.vCr, TextView.BufferType.SPANNABLE);
+            e.c(paramAnonymousContext.vCw, paramAnonymousa.vCD);
             AppMethodBeat.o(5608);
             return;
             i = 8;
@@ -161,12 +161,12 @@ public final class b
           if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof b.a)))
           {
             paramAnonymousa = (b.a)paramAnonymousa;
-            paramAnonymousa.iZG = ((ImageView)paramAnonymousView.findViewById(d.e.dsd));
-            paramAnonymousa.iZH = ((TextView)paramAnonymousView.findViewById(d.e.dPq));
-            paramAnonymousa.swP = ((TextView)paramAnonymousView.findViewById(d.e.dCx));
-            paramAnonymousa.swU = paramAnonymousView.findViewById(d.e.dti);
-            paramAnonymousa.swQ = paramAnonymousView.findViewById(d.e.dYC);
-            paramAnonymousa.swR = ((TextView)paramAnonymousView.findViewById(d.e.dJj));
+            paramAnonymousa.lBC = ((ImageView)paramAnonymousView.findViewById(d.e.avatarIV));
+            paramAnonymousa.lBD = ((TextView)paramAnonymousView.findViewById(d.e.nicknameTV));
+            paramAnonymousa.vCw = ((TextView)paramAnonymousView.findViewById(d.e.contactitem_catalog));
+            paramAnonymousa.vCB = paramAnonymousView.findViewById(d.e.bizTrademarkProtectionIV);
+            paramAnonymousa.vCx = paramAnonymousView.findViewById(d.e.verifyIV);
+            paramAnonymousa.vCy = ((TextView)paramAnonymousView.findViewById(d.e.introduceTV));
           }
           AppMethodBeat.o(5609);
         }
@@ -180,17 +180,17 @@ public final class b
             return false;
           }
           b localb = (b)paramAnonymousa;
-          ecj localecj = (ecj)paramAnonymousa.getData();
+          ewa localewa = (ewa)paramAnonymousa.getData();
           String str2;
-          if (localecj.TtX != null)
+          if (localewa.aaIz != null)
           {
-            str2 = localecj.TtX.Ufy;
-            if (localecj.SrH == null) {
+            str2 = localewa.aaIz.abwM;
+            if (localewa.ZqL == null) {
               break label101;
             }
           }
           label101:
-          for (String str1 = localecj.SrH.Ufy;; str1 = null)
+          for (String str1 = localewa.ZqL.abwM;; str1 = null)
           {
             if (!Util.isNullOrNil(str1)) {
               break label107;
@@ -202,16 +202,16 @@ public final class b
             break;
           }
           label107:
-          as localas = ((n)h.ae(n.class)).bbL().RG(str1);
+          au localau = ((n)h.ax(n.class)).bzA().JE(str1);
           Intent localIntent = new Intent();
-          if (d.rk(localas.field_type))
+          if (d.rs(localau.field_type))
           {
             localIntent.putExtra("Contact_User", str1);
             localIntent.putExtra("Contact_Scene", 55);
           }
           for (;;)
           {
-            com.tencent.mm.plugin.brandservice.b.mIG.c(localIntent, paramAnonymousContext);
+            com.tencent.mm.plugin.brandservice.b.pFn.c(localIntent, paramAnonymousContext);
             str2 = null;
             paramAnonymousContext = str2;
             if (paramAnonymousVarArgs != null)
@@ -225,28 +225,28 @@ public final class b
                 }
               }
             }
-            paramAnonymousVarArgs = localb.czN();
+            paramAnonymousVarArgs = localb.dcF();
             if ((paramAnonymousVarArgs != null) && (paramAnonymousContext != null)) {
-              paramAnonymousVarArgs.a(paramAnonymousContext, paramAnonymousa, 1, str1, localb.czO(), localb.getPosition());
+              paramAnonymousVarArgs.a(paramAnonymousContext, paramAnonymousa, 1, str1, localb.dcG(), localb.getPosition());
             }
             AppMethodBeat.o(5606);
             return true;
             localIntent.putExtra("Contact_User", str1);
-            localIntent.putExtra("Contact_Alias", localecj.mVD);
+            localIntent.putExtra("Contact_Alias", localewa.pSk);
             localIntent.putExtra("Contact_Nick", str2);
-            localIntent.putExtra("Contact_Signature", localecj.mVB);
-            localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.bl(localecj.mVH, localecj.mVz, localecj.mVA));
-            localIntent.putExtra("Contact_Sex", localecj.mVy);
-            localIntent.putExtra("Contact_VUser_Info", localecj.TxG);
-            localIntent.putExtra("Contact_VUser_Info_Flag", localecj.TxF);
-            localIntent.putExtra("Contact_KWeibo_flag", localecj.TxJ);
-            localIntent.putExtra("Contact_KWeibo", localecj.TxH);
-            localIntent.putExtra("Contact_KWeiboNick", localecj.TxI);
+            localIntent.putExtra("Contact_Signature", localewa.pSi);
+            localIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.bI(localewa.pSo, localewa.pSg, localewa.pSh));
+            localIntent.putExtra("Contact_Sex", localewa.pSf);
+            localIntent.putExtra("Contact_VUser_Info", localewa.aaMn);
+            localIntent.putExtra("Contact_VUser_Info_Flag", localewa.aaMm);
+            localIntent.putExtra("Contact_KWeibo_flag", localewa.aaMq);
+            localIntent.putExtra("Contact_KWeibo", localewa.aaMo);
+            localIntent.putExtra("Contact_KWeiboNick", localewa.aaMp);
             localIntent.putExtra("Contact_Scene", 55);
-            if (localecj.TxM != null) {
+            if (localewa.aaMt != null) {
               try
               {
-                localIntent.putExtra("Contact_customInfo", localecj.TxM.toByteArray());
+                localIntent.putExtra("Contact_customInfo", localewa.aaMt.toByteArray());
               }
               catch (IOException localIOException)
               {
@@ -261,19 +261,19 @@ public final class b
           AppMethodBeat.i(5607);
           View localView = paramAnonymousView;
           if (paramAnonymousView == null) {
-            localView = View.inflate(paramAnonymousContext, d.f.ekH, null);
+            localView = View.inflate(paramAnonymousContext, d.f.search_or_recommend_biz_item, null);
           }
           AppMethodBeat.o(5607);
           return localView;
         }
       };
     }
-    com.tencent.mm.ui.base.sortview.a.b localb = swV;
+    com.tencent.mm.ui.base.sortview.a.b localb = vCC;
     AppMethodBeat.o(5610);
     return localb;
   }
   
-  public final a.a czx()
+  public final a.a dcp()
   {
     AppMethodBeat.i(5611);
     a locala = new a();
@@ -285,16 +285,16 @@ public final class b
     extends e.a
     implements a.a
   {
-    public TextView iZH;
-    public TextView swP;
-    public View swQ;
-    public TextView swR;
-    public View swU;
+    public TextView lBD;
+    public View vCB;
+    public TextView vCw;
+    public View vCx;
+    public TextView vCy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b
  * JD-Core Version:    0.7.0.1
  */

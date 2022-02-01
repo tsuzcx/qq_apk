@@ -10,21 +10,24 @@ import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.m;
 import java.util.LinkedList;
+import org.xwalk.core.Log;
 
 public class FlowLayout
   extends ViewGroup
 {
-  protected int Whu;
-  protected int Whv;
-  private LinkedList<Integer> Whw;
+  public int aYP;
+  protected int adOr;
+  protected int adOs;
+  private LinkedList<Integer> adOt;
   
   public FlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141630);
-    this.Whu = 0;
-    this.Whv = 0;
-    this.Whw = new LinkedList();
+    this.adOr = 0;
+    this.adOs = 0;
+    this.adOt = new LinkedList();
+    this.aYP = 0;
     b(paramContext, paramAttributeSet);
     AppMethodBeat.o(141630);
   }
@@ -33,9 +36,10 @@ public class FlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141631);
-    this.Whu = 0;
-    this.Whv = 0;
-    this.Whw = new LinkedList();
+    this.adOr = 0;
+    this.adOs = 0;
+    this.adOt = new LinkedList();
+    this.aYP = 0;
     b(paramContext, paramAttributeSet);
     AppMethodBeat.o(141631);
   }
@@ -46,8 +50,8 @@ public class FlowLayout
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.FlowLayout);
     try
     {
-      this.Whu = paramContext.getDimensionPixelSize(a.m.FlowLayout_horizontalSpacing, 0);
-      this.Whv = paramContext.getDimensionPixelSize(a.m.FlowLayout_verticalSpacing, 0);
+      this.adOr = paramContext.getDimensionPixelSize(a.m.FlowLayout_horizontalSpacing, 0);
+      this.adOs = paramContext.getDimensionPixelSize(a.m.FlowLayout_verticalSpacing, 0);
       return;
     }
     finally
@@ -57,20 +61,20 @@ public class FlowLayout
     }
   }
   
-  public final int aun(int paramInt)
+  public final int aAJ(int paramInt)
   {
-    AppMethodBeat.i(202681);
-    int j = Math.max(0, Math.min(this.Whw.size(), paramInt));
+    AppMethodBeat.i(251300);
+    int j = Math.max(0, Math.min(this.adOt.size(), paramInt));
     paramInt = getPaddingTop();
     int i = 0;
     while (i < j - 1)
     {
-      paramInt += ((Integer)this.Whw.get(i)).intValue() + this.Whv;
+      paramInt += ((Integer)this.adOt.get(i)).intValue() + this.adOs;
       i += 1;
     }
-    i = ((Integer)this.Whw.get(j - 1)).intValue();
+    i = ((Integer)this.adOt.get(j - 1)).intValue();
     j = getPaddingBottom();
-    AppMethodBeat.o(202681);
+    AppMethodBeat.o(251300);
     return i + paramInt + j;
   }
   
@@ -106,9 +110,14 @@ public class FlowLayout
   public int getLineCount()
   {
     AppMethodBeat.i(141633);
-    int i = this.Whw.size();
+    int i = this.adOt.size();
     AppMethodBeat.o(141633);
     return i;
+  }
+  
+  public int getRealLineCount()
+  {
+    return this.aYP;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -117,6 +126,7 @@ public class FlowLayout
     int i1 = getChildCount();
     int i = getPaddingLeft();
     paramInt2 = getPaddingTop();
+    this.aYP = 1;
     paramInt4 = 0;
     int j = 0;
     View localView;
@@ -134,19 +144,20 @@ public class FlowLayout
         k = localView.getMeasuredWidth();
         m = localView.getMeasuredHeight();
         if (i + k + getPaddingRight() <= paramInt3 - paramInt1) {
-          break label220;
+          break label235;
         }
         i = getPaddingLeft();
-        paramInt2 += ((Integer)this.Whw.get(paramInt4)).intValue() + this.Whv;
+        paramInt2 += ((Integer)this.adOt.get(paramInt4)).intValue() + this.adOs;
+        this.aYP += 1;
         paramInt4 += 1;
       }
     }
-    label220:
+    label235:
     for (;;)
     {
-      n = (((Integer)this.Whw.get(paramInt4)).intValue() - m) / 2;
+      n = (((Integer)this.adOt.get(paramInt4)).intValue() - m) / 2;
       localView.layout(i, paramInt2 + n, i + k, n + paramInt2 + m);
-      n = this.Whu + k + i;
+      n = this.adOr + k + i;
       k = paramInt2;
       m = paramInt4;
       j += 1;
@@ -162,10 +173,13 @@ public class FlowLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141634);
+    if (View.MeasureSpec.getMode(paramInt1) == 0) {
+      Log.e("MicroMsg.FlowLayout", " getMode(widthMeasureSpec) == MeasureSpec.UNSPECIFIED");
+    }
     int i5 = View.MeasureSpec.getSize(paramInt1) - getPaddingLeft() - getPaddingRight();
     int i4 = View.MeasureSpec.getSize(paramInt2) - getPaddingTop() - getPaddingBottom();
     int i6 = getChildCount();
-    this.Whw.clear();
+    this.adOt.clear();
     int k = 0;
     int j = 0;
     int i = 0;
@@ -189,12 +203,12 @@ public class FlowLayout
           if (k + i7 > i5)
           {
             i2 = 0;
-            m = j + (this.Whv + i);
-            this.Whw.add(Integer.valueOf(i));
+            m = j + (this.adOs + i);
+            this.adOt.add(Integer.valueOf(i));
             i3 = 0;
           }
           i3 = Math.max(i3, localView.getMeasuredHeight());
-          i2 += this.Whu + i7;
+          i2 += this.adOr + i7;
         }
         i1 += 1;
         i = i3;
@@ -202,7 +216,7 @@ public class FlowLayout
         k = i2;
       }
     }
-    this.Whw.add(Integer.valueOf(i));
+    this.adOt.add(Integer.valueOf(i));
     if (View.MeasureSpec.getMode(paramInt2) == 0) {
       paramInt2 = j + i + getPaddingTop() + getPaddingBottom();
     }
@@ -221,7 +235,7 @@ public class FlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

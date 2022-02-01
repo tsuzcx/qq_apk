@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/dmr" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
-    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/dmq" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
-    <View android:id="@id/bc3" android:layout_width="0.5dip" android:layout_height="18.0dip" app:layout_constraintBottom_toBottomOf="@id/dmq" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="@id/dmr" style="@style/hx" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/g_" android:gravity="center" android:id="@id/bas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="@string/b_b" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/dmq" app:layout_constraintRight_toLeftOf="@id/bc3" app:layout_constraintTop_toTopOf="@id/dmr" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/g_" android:gravity="center" android:id="@id/baj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/b_i" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/dmq" app:layout_constraintLeft_toRightOf="@id/bc3" app:layout_constraintTop_toTopOf="@id/dmr" />
-    <View android:id="@id/bat" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" style="@style/hx" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<TextView android:textSize="@dimen/m3" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i6"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

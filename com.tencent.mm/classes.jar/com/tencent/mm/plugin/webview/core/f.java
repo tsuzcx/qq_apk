@@ -1,28 +1,13 @@
 package com.tencent.mm.plugin.webview.core;
 
-import android.net.http.SslError;
-import com.tencent.xweb.WebResourceRequest;
-import com.tencent.xweb.WebResourceResponse;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.r;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "", "()V", "doUpdateVisitedHistory", "", "webview", "Lcom/tencent/xweb/WebView;", "url", "", "isReload", "", "onPageCommitVisible", "onPageFinished", "onPageStarted", "onReceivedError", "errorCode", "", "description", "failingUrl", "onReceivedHttpError", "webResourceRequest", "Lcom/tencent/xweb/WebResourceRequest;", "webResourceResponse", "Lcom/tencent/xweb/WebResourceResponse;", "onReceivedSslError", "handler", "Lcom/tencent/xweb/SslErrorHandler;", "error", "Landroid/net/http/SslError;", "webview-sdk_release"})
-public class f
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnectionBinder;", "", "onConnected", "", "conn", "Lcom/tencent/mm/plugin/webview/core/IWebViewUIConnection;", "onDisconnected", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface f
 {
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
+  public abstract void a(e parame);
   
-  public void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse) {}
-  
-  public void a(WebView paramWebView, r paramr, SslError paramSslError) {}
-  
-  public void b(WebView paramWebView, String paramString) {}
-  
-  public void bjz(String paramString) {}
-  
-  public void e(WebView paramWebView, String paramString) {}
-  
-  public void h(WebView paramWebView, String paramString) {}
+  public abstract boolean fTZ();
 }
 
 

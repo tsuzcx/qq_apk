@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public abstract interface d
 {
-  public abstract void Nw(String paramString);
+  public abstract void FP(String paramString);
   
   public abstract void a(TRTCCloudDef.TRTCQuality paramTRTCQuality);
   
@@ -42,7 +42,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.sdkadapter.d
  * JD-Core Version:    0.7.0.1
  */

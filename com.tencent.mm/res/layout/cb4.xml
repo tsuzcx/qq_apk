@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/f" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/icons_outlined_pay_safe" wallet:iconColor="@color/Brand_100" />
-    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/fq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/ipp" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/fq" android:gravity="center" android:id="@id/jqx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/hju" />
-    <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <Button android:id="@id/jr0" android:text="@string/img" style="@style/ov" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/jqy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_marginBottom="24.0dip">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/icons_outlined_pay_safe" wallet:iconColor="@color/FG_2" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/jqz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:text="" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="8.0dip" android:layout_height="16.0dip" android:src="@raw/icons_outlined_arrow" wallet:iconColor="@color/FG_2" />
-    </LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/uy" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/edl" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+    <TextView android:textSize="14.0dip" android:textColor="#99ffffff" android:layout_gravity="center" android:id="@id/edh" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/htb" />
 </LinearLayout>

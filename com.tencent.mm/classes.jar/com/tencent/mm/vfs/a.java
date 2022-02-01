@@ -14,8 +14,8 @@ public abstract class a
 {
   private static FileSystem.b a(FileSystem.b paramb, String paramString, int paramInt)
   {
-    while ((paramb instanceof d)) {
-      paramb = ((d)paramb).hX(paramString, paramInt);
+    while ((paramb instanceof f)) {
+      paramb = ((f)paramb).jk(paramString, paramInt);
     }
     return paramb;
   }
@@ -50,7 +50,7 @@ public abstract class a
   
   protected long b(String paramString1, FileSystem.b paramb, String paramString2, boolean paramBoolean)
   {
-    return ad.a(paramb, paramString2, this, paramString1);
+    return ah.a(paramb, paramString2, this, paramString1);
   }
   
   protected boolean b(String paramString1, FileSystem.b paramb, String paramString2)
@@ -58,34 +58,34 @@ public abstract class a
     return false;
   }
   
-  public ReadableByteChannel bBy(String paramString)
+  public ReadableByteChannel bDS(String paramString)
   {
-    return Channels.newChannel(Tf(paramString));
+    return Channels.newChannel(Lh(paramString));
   }
   
-  public ByteChannel bBz(String paramString)
+  public ByteChannel bDT(String paramString)
   {
     throw new FileNotFoundException("Not supported by the filesystem.");
   }
   
-  public WritableByteChannel dH(String paramString, boolean paramBoolean)
+  public WritableByteChannel et(String paramString, boolean paramBoolean)
   {
-    return Channels.newChannel(dI(paramString, paramBoolean));
+    return Channels.newChannel(ev(paramString, paramBoolean));
   }
   
-  public ParcelFileDescriptor oh(String paramString1, String paramString2)
+  public ParcelFileDescriptor qf(String paramString1, String paramString2)
   {
     throw new FileNotFoundException("Not supported by the filesystem.");
   }
   
   public String toString()
   {
-    return "State -> " + ieX().toString();
+    return "State -> " + jKa().toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.a
  * JD-Core Version:    0.7.0.1
  */

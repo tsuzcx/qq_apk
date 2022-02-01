@@ -10,8 +10,8 @@ public final class PrivFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<PrivFrame> CREATOR;
-  public final String bec;
-  public final byte[] bed;
+  public final String cXV;
+  public final byte[] cXW;
   
   static
   {
@@ -24,16 +24,16 @@ public final class PrivFrame
   {
     super("PRIV");
     AppMethodBeat.i(92445);
-    this.bec = paramParcel.readString();
-    this.bed = paramParcel.createByteArray();
+    this.cXV = paramParcel.readString();
+    this.cXW = paramParcel.createByteArray();
     AppMethodBeat.o(92445);
   }
   
   public PrivFrame(String paramString, byte[] paramArrayOfByte)
   {
     super("PRIV");
-    this.bec = paramString;
-    this.bed = paramArrayOfByte;
+    this.cXV = paramString;
+    this.cXW = paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
@@ -50,7 +50,7 @@ public final class PrivFrame
       return false;
     }
     paramObject = (PrivFrame)paramObject;
-    if ((x.h(this.bec, paramObject.bec)) && (Arrays.equals(this.bed, paramObject.bed)))
+    if ((x.p(this.cXV, paramObject.cXV)) && (Arrays.equals(this.cXW, paramObject.cXW)))
     {
       AppMethodBeat.o(92446);
       return true;
@@ -62,10 +62,10 @@ public final class PrivFrame
   public final int hashCode()
   {
     AppMethodBeat.i(92447);
-    if (this.bec != null) {}
-    for (int i = this.bec.hashCode();; i = 0)
+    if (this.cXV != null) {}
+    for (int i = this.cXV.hashCode();; i = 0)
     {
-      int j = Arrays.hashCode(this.bed);
+      int j = Arrays.hashCode(this.cXW);
       AppMethodBeat.o(92447);
       return (i + 527) * 31 + j;
     }
@@ -74,8 +74,8 @@ public final class PrivFrame
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92448);
-    paramParcel.writeString(this.bec);
-    paramParcel.writeByteArray(this.bed);
+    paramParcel.writeString(this.cXV);
+    paramParcel.writeByteArray(this.cXW);
     AppMethodBeat.o(92448);
   }
 }

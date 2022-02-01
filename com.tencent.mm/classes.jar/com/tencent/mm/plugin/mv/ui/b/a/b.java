@@ -1,69 +1,66 @@
 package com.tencent.mm.plugin.mv.ui.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.livebase.redux.a;
-import com.tencent.mm.protocal.protobuf.doi;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.egz;
+import com.tencent.mm.sdk.statecenter.BaseStateAction;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/redux/album/InitAction;", "Lcom/tencent/mm/plugin/livebase/redux/IReduxAction;", "previewDataObj", "Lcom/tencent/mm/protocal/protobuf/PreviewItemObj;", "(Lcom/tencent/mm/protocal/protobuf/PreviewItemObj;)V", "getPreviewDataObj", "()Lcom/tencent/mm/protocal/protobuf/PreviewItemObj;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/state/album/InitAction;", "Lcom/tencent/mm/sdk/statecenter/BaseStateAction;", "previewDataObj", "Lcom/tencent/mm/protocal/protobuf/PreviewItemObj;", "(Lcom/tencent/mm/protocal/protobuf/PreviewItemObj;)V", "getPreviewDataObj", "()Lcom/tencent/mm/protocal/protobuf/PreviewItemObj;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements a
+  extends BaseStateAction
 {
-  public final doi Ghi;
+  public final egz McW;
   
-  public b(doi paramdoi)
+  public b(egz paramegz)
   {
-    AppMethodBeat.i(230778);
-    this.Ghi = paramdoi;
-    AppMethodBeat.o(230778);
+    AppMethodBeat.i(286463);
+    this.McW = paramegz;
+    AppMethodBeat.o(286463);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(230785);
-    if (this != paramObject)
+    AppMethodBeat.i(286487);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if (!p.h(this.Ghi, paramObject.Ghi)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(230785);
+      AppMethodBeat.o(286487);
       return true;
     }
-    AppMethodBeat.o(230785);
-    return false;
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(286487);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (!s.p(this.McW, paramObject.McW))
+    {
+      AppMethodBeat.o(286487);
+      return false;
+    }
+    AppMethodBeat.o(286487);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(230782);
-    doi localdoi = this.Ghi;
-    if (localdoi != null)
-    {
-      int i = localdoi.hashCode();
-      AppMethodBeat.o(230782);
-      return i;
-    }
-    AppMethodBeat.o(230782);
-    return 0;
+    AppMethodBeat.i(286477);
+    int i = this.McW.hashCode();
+    AppMethodBeat.o(286477);
+    return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(230780);
-    String str = "InitAction(previewDataObj=" + this.Ghi + ")";
-    AppMethodBeat.o(230780);
+    AppMethodBeat.i(286469);
+    String str = "InitAction(previewDataObj=" + this.McW + ')';
+    AppMethodBeat.o(286469);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.b.a.b
  * JD-Core Version:    0.7.0.1
  */

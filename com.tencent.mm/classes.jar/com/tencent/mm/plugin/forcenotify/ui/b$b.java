@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyWindow;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/forcenotify/ui/MsgWindow;"}, k=3, mv={1, 5, 1}, xi=48)
 final class b$b
-  extends q
+  extends u
   implements a<b>
 {
-  public static final b BET;
+  public static final b Hpn;
   
   static
   {
-    AppMethodBeat.i(252766);
-    BET = new b();
-    AppMethodBeat.o(252766);
+    AppMethodBeat.i(275036);
+    Hpn = new b();
+    AppMethodBeat.o(275036);
   }
   
   b$b()

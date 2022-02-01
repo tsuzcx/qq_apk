@@ -3,43 +3,42 @@ package com.tencent.mm.plugin.scanner.util;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.uj;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.vz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.c.d;
 
 public class ScanCameraLightDetector
 {
-  public static final ScanCameraLightDetector IYP;
-  private final int IYQ = 2;
-  private int IYR;
-  private long IYS = -1L;
-  private HandlerThread IYT;
+  public static final ScanCameraLightDetector Pio;
+  private final int Pip = 2;
+  private int Piq;
+  private long Pir = -1L;
+  private HandlerThread Pis;
   private MMHandler handler;
-  private String lbS;
-  private float wws = -1.0F;
+  private String nGP;
+  private float zSy = -1.0F;
   
   static
   {
     AppMethodBeat.i(91077);
-    IYP = new ScanCameraLightDetector();
+    Pio = new ScanCameraLightDetector();
     AppMethodBeat.o(91077);
   }
   
   private static native int calcLumNative(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  private void fER()
+  private void gTP()
   {
     AppMethodBeat.i(91074);
     Log.i("MicroMsg.ScanCameraLightDetector", "alvinluo initDetectThread");
     stop();
-    this.IYT = d.il("ScanCameraLightDetector_detectThread", 5);
-    this.IYT.start();
-    this.handler = new MMHandler(this.IYT.getLooper())
+    this.Pis = d.jx("ScanCameraLightDetector_detectThread", 5);
+    this.Pis.start();
+    this.handler = new MMHandler(this.Pis.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -50,7 +49,7 @@ public class ScanCameraLightDetector
           if (paramAnonymousMessage != null)
           {
             long l = Util.currentTicks();
-            boolean bool = ScanCameraLightDetector.Q(paramAnonymousMessage.FaK, paramAnonymousMessage.width, paramAnonymousMessage.height);
+            boolean bool = ScanCameraLightDetector.O(paramAnonymousMessage.KWt, paramAnonymousMessage.width, paramAnonymousMessage.height);
             Log.i("MicroMsg.ScanCameraLightDetector", "isYuvDark: %s, currentLight: %s, used %sms", new Object[] { Boolean.valueOf(bool), Float.valueOf(ScanCameraLightDetector.a(ScanCameraLightDetector.this)), Long.valueOf(Util.ticksToNow(l)) });
             if (bool)
             {
@@ -67,9 +66,9 @@ public class ScanCameraLightDetector
                 public final void run()
                 {
                   AppMethodBeat.i(91069);
-                  uj localuj = new uj();
-                  localuj.fTH.fTI = true;
-                  EventCenter.instance.publish(localuj);
+                  vz localvz = new vz();
+                  localvz.hZF.hZG = true;
+                  localvz.publish();
                   AppMethodBeat.o(91069);
                 }
               });
@@ -83,9 +82,9 @@ public class ScanCameraLightDetector
               public final void run()
               {
                 AppMethodBeat.i(91070);
-                uj localuj = new uj();
-                localuj.fTH.fTI = false;
-                EventCenter.instance.publish(localuj);
+                vz localvz = new vz();
+                localvz.hZF.hZG = false;
+                localvz.publish();
                 AppMethodBeat.o(91070);
               }
             });
@@ -97,20 +96,20 @@ public class ScanCameraLightDetector
     AppMethodBeat.o(91074);
   }
   
-  public final void P(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void N(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91075);
-    if (((this.IYS < 0L) || (Util.ticksToNow(this.IYS) >= 1000L)) && (this.handler != null) && (this.IYT != null) && (this.IYT.isAlive()))
+    if (((this.Pir < 0L) || (Util.ticksToNow(this.Pir) >= 1000L)) && (this.handler != null) && (this.Pis != null) && (this.Pis.isAlive()))
     {
       a locala = new a((byte)0);
-      locala.FaK = paramArrayOfByte;
+      locala.KWt = paramArrayOfByte;
       locala.width = paramInt1;
       locala.height = paramInt2;
       paramArrayOfByte = Message.obtain();
       paramArrayOfByte.what = 233;
       paramArrayOfByte.obj = locala;
       this.handler.sendMessage(paramArrayOfByte);
-      this.IYS = Util.currentTicks();
+      this.Pir = Util.currentTicks();
     }
     AppMethodBeat.o(91075);
   }
@@ -120,8 +119,8 @@ public class ScanCameraLightDetector
     AppMethodBeat.i(91072);
     try
     {
-      this.lbS = paramString;
-      fER();
+      this.nGP = paramString;
+      gTP();
       AppMethodBeat.o(91072);
       return;
     }
@@ -137,9 +136,9 @@ public class ScanCameraLightDetector
     AppMethodBeat.i(91073);
     try
     {
-      this.IYS = -1L;
-      if (this.IYT != null) {
-        this.IYT.quit();
+      this.Pir = -1L;
+      if (this.Pis != null) {
+        this.Pis.quit();
       }
       AppMethodBeat.o(91073);
       return;
@@ -153,7 +152,7 @@ public class ScanCameraLightDetector
   
   final class a
   {
-    byte[] FaK;
+    byte[] KWt;
     int height;
     int width;
     
@@ -162,7 +161,7 @@ public class ScanCameraLightDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.ScanCameraLightDetector
  * JD-Core Version:    0.7.0.1
  */

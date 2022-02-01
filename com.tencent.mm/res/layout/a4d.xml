@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/p5" android:padding="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_horizontal" android:background="@color/a" android:paddingTop="@dimen/hw" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/esk" android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:src="@drawable/bzb" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/is" android:id="@id/c4e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw" android:text="@string/bz1" android:layout_below="@id/esk" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/c4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:text="" android:layout_below="@id/c4e" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <ScrollView android:id="@id/bou" android:background="#ffeeeeee" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.MaxListView android:id="@id/ed2" android:background="@color/n_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="@dimen/iu" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/x0" android:id="@id/h_s" android:paddingLeft="@dimen/i1" android:paddingRight="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i2" android:maxLines="4" android:singleLine="false" />
-        </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+    <ImageView android:id="@id/cm1" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:src="@drawable/b__" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/m2" android:layout_toLeftOf="@id/cml" android:layout_toRightOf="@id/cm1">
+        <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/cms" android:layout_width="180.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/n7" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:id="@id/cmm" android:layout_width="180.0dip" android:layout_height="0.0dip" android:layout_marginTop="@dimen/m2" android:layout_weight="1.0" style="@style/n7" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:id="@id/cml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/n7" />
+</RelativeLayout>

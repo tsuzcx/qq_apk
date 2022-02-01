@@ -6,28 +6,28 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.wallet_core.e.a.a
+  extends com.tencent.mm.wallet_core.d.a.a
 {
-  public String OUL;
-  public String Pla;
-  public String Plb;
-  public String Pll;
-  public String Plm;
-  public String Pln;
+  public String Wcu;
+  public String Wcv;
+  public String Wcw;
+  public String Wcx;
+  public String Wcy;
+  public String Wcz;
   public String description;
-  public String gaq;
+  public String igz;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     AppMethodBeat.i(71973);
-    this.Pll = paramString1;
-    this.OUL = paramString2;
-    this.gaq = paramString3;
-    this.Plm = paramString4;
-    this.Pln = paramString5;
+    this.Wcu = paramString1;
+    this.Wcv = paramString2;
+    this.igz = paramString3;
+    this.Wcw = paramString4;
+    this.Wcx = paramString5;
     this.description = paramString6;
-    this.Plb = paramString7;
-    this.Pla = paramString8;
+    this.Wcy = paramString7;
+    this.Wcz = paramString8;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
     localHashMap.put("information", paramString2);
@@ -41,7 +41,7 @@ public final class a
     AppMethodBeat.o(71973);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 0;
   }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="settings_my_username" android:title="@string/gw_" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="settings_show_username" android:summary="@string/gtx" android:title="@string/gtu" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android1:contentDescription="@string/cvu" android:defaultValue="true" android:icon="@raw/icons_outlined_finder_icon" android:iconColor="@color/Orange" android:key="settings_finder_switch" android:title="@string/cvu" />
+    <CheckBoxPreference android1:contentDescription="@string/cwc" android:defaultValue="false" android:icon="@raw/icons_outlined_news" android:iconColor="@color/Yellow_100" android:key="settings_look_switch" android:title="@string/cwc" />
+    <CheckBoxPreference android1:contentDescription="@string/cwh" android:defaultValue="false" android:icon="@raw/icons_outlined_searchlogo" android:iconColor="@color/Red" android:key="settings_search_switch" android:title="@string/cwh" />
 </PreferenceScreen>

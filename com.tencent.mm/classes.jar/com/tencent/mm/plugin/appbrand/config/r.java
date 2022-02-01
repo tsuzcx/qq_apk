@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.os.Looper;
-import com.tencent.e.j.a;
-import com.tencent.mm.plugin.appbrand.app.m;
-import com.tencent.mm.sdk.storage.IStorage;
-import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
-import com.tencent.mm.sdk.storage.MStorage.IOnStorageLoaded;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.cp.g;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.protocal.protobuf.aeo;
+import com.tencent.mm.protocal.protobuf.gkt;
+import com.tencent.mm.protocal.protobuf.gkv;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Objects;
+import junit.framework.Assert;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/MStorageProxyForWxaAttrStorage;", "Lcom/tencent/mm/sdk/storage/IStorage;", "()V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "Lcom/tencent/threadpool/serial/Serial;", "", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "doNotify", "", "p2", "", "lock", "lockCount", "remove", "removeLoadedListener", "unlock", "plugin-appbrand-integration_release"})
-public abstract class r
-  implements IStorage
+public final class r
+  extends com.tencent.mm.plugin.appbrand.networking.b<gkv>
 {
-  public r()
+  final c rr;
+  
+  public r(String paramString1, String paramString2)
   {
-    z localz = m.bFF();
-    p.j(localz, "SubCoreAppBrand.getWxaContactStorage()");
-    this.oaf = localz;
+    this(paramString1, paramString2, null, 0, localaeo);
+    AppMethodBeat.i(44853);
+    AppMethodBeat.o(44853);
   }
   
-  public void add(a parama, MStorage.IOnStorageChange paramIOnStorageChange)
+  public r(String paramString1, String paramString2, String paramString3, int paramInt, aeo paramaeo)
   {
-    this.oaf.add(parama, paramIOnStorageChange);
+    super(paramString2, paramString1);
+    AppMethodBeat.i(323362);
+    if ((BuildInfo.DEBUG) && (Util.isNullOrNil(paramString1)) && (Util.isNullOrNil(paramString2))) {
+      Assert.fail("username and appId should not be null or nil!");
+    }
+    if ((BuildInfo.DEBUG) && (!Util.isNullOrNil(paramString1)) && (!paramString1.endsWith("@app"))) {
+      Assert.fail("username should end with '@app', call @smoothieli to fix this");
+    }
+    com.tencent.mm.am.c.a locala = new com.tencent.mm.am.c.a();
+    gkt localgkt = new gkt();
+    localgkt.aaLU = paramString1;
+    Object localObject;
+    if (Util.isNullOrNil(paramString1))
+    {
+      localObject = n.cfc().e(paramString2, new String[] { "syncVersion" });
+      if (localObject == null) {
+        localObject = new com.tencent.mm.bx.b(new byte[0]);
+      }
+    }
+    for (;;)
+    {
+      localgkt.YRt = ((com.tencent.mm.bx.b)localObject);
+      localgkt.acgG = paramString2;
+      localgkt.aaLT = paramString3;
+      localgkt.acgH = paramInt;
+      localgkt.YMR = ((aeo)Objects.requireNonNull(paramaeo));
+      locala.otE = localgkt;
+      locala.otF = new gkv();
+      locala.funcId = 1151;
+      locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/wxaattrsync";
+      localObject = locala.bEF();
+      this.rr = ((c)localObject);
+      c((c)localObject);
+      Log.i("MicroMsg.CgiWxaAttrSync", "<init> hash:%d, username:%s, appId:%s, cleanUpdate:%b, instanceId:%s, scene:%d, source:%s", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString2, Boolean.FALSE, paramString3, Integer.valueOf(paramInt), com.tencent.mm.ak.a.b(paramaeo) });
+      AppMethodBeat.o(323362);
+      return;
+      localObject = ac.d((WxaAttributes)localObject);
+      continue;
+      localObject = ac.d(n.cfc().d(paramString1, new String[] { "syncVersion" }));
+    }
   }
   
-  public void add(MStorage.IOnStorageChange paramIOnStorageChange)
+  public final f<b.a<gkv>> ckO()
   {
-    this.oaf.add(paramIOnStorageChange);
-  }
-  
-  public void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
-  {
-    this.oaf.add(paramIOnStorageChange, paramLooper);
-  }
-  
-  public void add(String paramString, MStorage.IOnStorageChange paramIOnStorageChange)
-  {
-    this.oaf.add(paramString, paramIOnStorageChange);
-  }
-  
-  public void addLoadedListener(MStorage.IOnStorageLoaded paramIOnStorageLoaded)
-  {
-    this.oaf.addLoadedListener(paramIOnStorageLoaded);
-  }
-  
-  public void doNotify()
-  {
-    this.oaf.doNotify();
-  }
-  
-  public void doNotify(String paramString)
-  {
-    this.oaf.doNotify(paramString);
-  }
-  
-  public void doNotify(String paramString, int paramInt, Object paramObject)
-  {
-    this.oaf.doNotify(paramString, paramInt, paramObject);
-  }
-  
-  public void lock()
-  {
-    this.oaf.lock();
-  }
-  
-  public int lockCount()
-  {
-    return this.oaf.lockCount();
-  }
-  
-  public void remove(MStorage.IOnStorageChange paramIOnStorageChange)
-  {
-    this.oaf.remove(paramIOnStorageChange);
-  }
-  
-  public void removeLoadedListener(MStorage.IOnStorageLoaded paramIOnStorageLoaded)
-  {
-    this.oaf.removeLoadedListener(paramIOnStorageLoaded);
-  }
-  
-  public void unlock()
-  {
-    this.oaf.unlock();
+    AppMethodBeat.i(323366);
+    if (!com.tencent.mm.plugin.appbrand.networking.a.ff(((gkt)c.b.b(this.rr.otB)).acgG, ((gkt)c.b.b(this.rr.otB)).aaLU))
+    {
+      f localf = g.c(new com.tencent.mm.vending.g.c.a() {});
+      AppMethodBeat.o(323366);
+      return localf;
+    }
+    AppMethodBeat.o(323366);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.r
  * JD-Core Version:    0.7.0.1
  */

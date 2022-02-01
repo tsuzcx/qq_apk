@@ -14,8 +14,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class BridgedAndroidWebView
   extends BridgedAndroidWebViewBase
 {
-  private o cqI;
-  private WebChromeClient cqX;
+  private o eiB;
+  private WebChromeClient eiQ;
   private WebViewClient mWebViewClient;
   
   public BridgedAndroidWebView(Context paramContext)
@@ -37,7 +37,7 @@ public class BridgedAndroidWebView
       public final void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(140350);
-        BridgedAndroidWebView.a(BridgedAndroidWebView.this).cqP.NR();
+        BridgedAndroidWebView.a(BridgedAndroidWebView.this).eiI.onReady();
         AppMethodBeat.o(140350);
       }
       
@@ -48,12 +48,12 @@ public class BridgedAndroidWebView
         AppMethodBeat.o(140349);
       }
     };
-    this.cqX = new WebChromeClient()
+    this.eiQ = new WebChromeClient()
     {
       public boolean onJsPrompt(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, JsPromptResult paramAnonymousJsPromptResult)
       {
         AppMethodBeat.i(140351);
-        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).cqP.dm(paramAnonymousString2);
+        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).eiI.ez(paramAnonymousString2);
         if (paramAnonymousWebView != null)
         {
           paramAnonymousJsPromptResult.confirm(paramAnonymousWebView);
@@ -64,15 +64,15 @@ public class BridgedAndroidWebView
         return false;
       }
     };
-    this.cqI = new o(this);
+    this.eiB = new o(this);
     setWebViewClient(this.mWebViewClient);
-    setWebChromeClient(this.cqX);
+    setWebChromeClient(this.eiQ);
     AppMethodBeat.o(140352);
   }
   
   public o getBridge()
   {
-    return this.cqI;
+    return this.eiB;
   }
 }
 

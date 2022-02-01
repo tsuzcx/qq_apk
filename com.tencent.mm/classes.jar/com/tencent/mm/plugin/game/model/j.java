@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.model;
 public final class j
 {
   public static String countryCode = null;
-  public static int fGH = 0;
-  public static int fGI = 0;
+  public static int hMd = 0;
+  public static int hMe = 0;
 }
 
 

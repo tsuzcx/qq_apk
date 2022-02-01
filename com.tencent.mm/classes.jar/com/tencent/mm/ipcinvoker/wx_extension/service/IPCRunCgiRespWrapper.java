@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.ipcinvoker.extension.c;
 import com.tencent.mm.ipcinvoker.wx_extension.a;
 
 public class IPCRunCgiRespWrapper
@@ -15,7 +13,7 @@ public class IPCRunCgiRespWrapper
   public int errCode;
   public String errMsg;
   public int errType;
-  public d rr;
+  public com.tencent.mm.am.c rr;
   
   static
   {
@@ -32,19 +30,19 @@ public class IPCRunCgiRespWrapper
     this.errType = paramParcel.readInt();
     this.errCode = paramParcel.readInt();
     this.errMsg = paramParcel.readString();
-    this.rr = ((d)c.a(a.class.getName(), paramParcel));
+    this.rr = ((com.tencent.mm.am.c)com.tencent.mm.ipcinvoker.extension.c.a(a.class.getName(), paramParcel));
     AppMethodBeat.o(146436);
   }
   
-  public static IPCRunCgiRespWrapper b(d paramd)
+  public static IPCRunCgiRespWrapper b(com.tencent.mm.am.c paramc)
   {
-    AppMethodBeat.i(205314);
+    AppMethodBeat.i(235720);
     IPCRunCgiRespWrapper localIPCRunCgiRespWrapper = new IPCRunCgiRespWrapper();
-    localIPCRunCgiRespWrapper.rr = paramd;
+    localIPCRunCgiRespWrapper.rr = paramc;
     localIPCRunCgiRespWrapper.errMsg = null;
     localIPCRunCgiRespWrapper.errType = 3;
     localIPCRunCgiRespWrapper.errCode = -2;
-    AppMethodBeat.o(205314);
+    AppMethodBeat.o(235720);
     return localIPCRunCgiRespWrapper;
   }
   
@@ -59,13 +57,13 @@ public class IPCRunCgiRespWrapper
     paramParcel.writeInt(this.errType);
     paramParcel.writeInt(this.errCode);
     paramParcel.writeString(this.errMsg);
-    c.a(this.rr, paramParcel);
+    com.tencent.mm.ipcinvoker.extension.c.a(this.rr, paramParcel);
     AppMethodBeat.o(146435);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.IPCRunCgiRespWrapper
  * JD-Core Version:    0.7.0.1
  */

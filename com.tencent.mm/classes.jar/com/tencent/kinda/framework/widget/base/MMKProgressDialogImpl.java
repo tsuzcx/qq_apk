@@ -12,8 +12,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.ui.l;
 
 public class MMKProgressDialogImpl
   implements KProgressDialog
@@ -25,15 +25,15 @@ public class MMKProgressDialogImpl
   
   private void runInMainThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(264459);
+    AppMethodBeat.i(226562);
     if (MMHandlerThread.isMainThread())
     {
       paramRunnable.run();
-      AppMethodBeat.o(264459);
+      AppMethodBeat.o(226562);
       return;
     }
     MMHandlerThread.postToMainThread(paramRunnable);
-    AppMethodBeat.o(264459);
+    AppMethodBeat.o(226562);
   }
   
   public void dismiss()
@@ -51,6 +51,51 @@ public class MMKProgressDialogImpl
     AppMethodBeat.o(19101);
   }
   
+  public void showCustomLoading(final String paramString, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(226579);
+    final Context localContext = KindaContext.get();
+    if (localContext == null)
+    {
+      Log.e("MMKProgressDialogImpl", "MMKProgressDialogImpl showImpl() KindaContext.get() return null! case 1");
+      AppMethodBeat.o(226579);
+      return;
+    }
+    runInMainThread(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(226524);
+        MMKProgressDialogImpl localMMKProgressDialogImpl = MMKProgressDialogImpl.this;
+        Context localContext = localContext;
+        String str = paramString;
+        if (!paramBoolean) {}
+        for (boolean bool = true;; bool = false)
+        {
+          MMKProgressDialogImpl.access$202(localMMKProgressDialogImpl, l.c(localContext, str, bool, new DialogInterface.OnCancelListener()
+          {
+            public void onCancel(DialogInterface paramAnonymous2DialogInterface)
+            {
+              AppMethodBeat.i(226616);
+              if (MMKProgressDialogImpl.this.mLoadingImpl != null)
+              {
+                MMKProgressDialogImpl.this.mLoadingImpl.dismiss();
+                MMKProgressDialogImpl.access$202(MMKProgressDialogImpl.this, null);
+              }
+              AppMethodBeat.o(226616);
+            }
+          }));
+          if ((localContext instanceof MMActivity)) {
+            ((MMActivity)localContext).addDialog(MMKProgressDialogImpl.this.mLoadingImpl);
+          }
+          AppMethodBeat.o(226524);
+          return;
+        }
+      }
+    });
+    AppMethodBeat.o(226579);
+  }
+  
   public void showImpl(final String paramString, final boolean paramBoolean, final VoidCallback paramVoidCallback)
   {
     AppMethodBeat.i(19098);
@@ -65,21 +110,21 @@ public class MMKProgressDialogImpl
     {
       public void run()
       {
-        AppMethodBeat.i(264059);
-        MMKProgressDialogImpl.access$002(MMKProgressDialogImpl.this, i.a(paramString, paramBoolean, new DialogInterface.OnCancelListener()
+        AppMethodBeat.i(226519);
+        MMKProgressDialogImpl.access$002(MMKProgressDialogImpl.this, l.a(paramString, paramBoolean, new DialogInterface.OnCancelListener()
         {
           public void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
-            AppMethodBeat.i(264210);
+            AppMethodBeat.i(226584);
             MMKProgressDialogImpl.1.this.val$cancel.call();
             MMKProgressDialogImpl.access$002(MMKProgressDialogImpl.this, null);
-            AppMethodBeat.o(264210);
+            AppMethodBeat.o(226584);
           }
         }));
         if ((paramString instanceof MMActivity)) {
           ((MMActivity)paramString).addDialog(MMKProgressDialogImpl.this.mDialogImpl);
         }
-        AppMethodBeat.o(264059);
+        AppMethodBeat.o(226519);
       }
     });
     AppMethodBeat.o(19098);
@@ -87,9 +132,9 @@ public class MMKProgressDialogImpl
   
   public void showNormalGlobalLoading(boolean paramBoolean)
   {
-    AppMethodBeat.i(264457);
+    AppMethodBeat.i(226576);
     showNormalLoading(paramBoolean);
-    AppMethodBeat.o(264457);
+    AppMethodBeat.o(226576);
   }
   
   public void showNormalLoading(final boolean paramBoolean)
@@ -106,30 +151,30 @@ public class MMKProgressDialogImpl
     {
       public void run()
       {
-        AppMethodBeat.i(263756);
+        AppMethodBeat.i(226523);
         MMKProgressDialogImpl localMMKProgressDialogImpl = MMKProgressDialogImpl.this;
         Context localContext = localContext;
         String str = this.val$text;
         if (!paramBoolean) {}
         for (boolean bool = true;; bool = false)
         {
-          MMKProgressDialogImpl.access$202(localMMKProgressDialogImpl, i.c(localContext, str, bool, new DialogInterface.OnCancelListener()
+          MMKProgressDialogImpl.access$202(localMMKProgressDialogImpl, l.c(localContext, str, bool, new DialogInterface.OnCancelListener()
           {
             public void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
-              AppMethodBeat.i(264105);
+              AppMethodBeat.i(226626);
               if (MMKProgressDialogImpl.this.mLoadingImpl != null)
               {
                 MMKProgressDialogImpl.this.mLoadingImpl.dismiss();
                 MMKProgressDialogImpl.access$202(MMKProgressDialogImpl.this, null);
               }
-              AppMethodBeat.o(264105);
+              AppMethodBeat.o(226626);
             }
           }));
           if ((localContext instanceof MMActivity)) {
             ((MMActivity)localContext).addDialog(MMKProgressDialogImpl.this.mLoadingImpl);
           }
-          AppMethodBeat.o(263756);
+          AppMethodBeat.o(226523);
           return;
         }
       }
@@ -139,7 +184,7 @@ public class MMKProgressDialogImpl
   
   public void showPayGlobalLoading(boolean paramBoolean)
   {
-    AppMethodBeat.i(264458);
+    AppMethodBeat.i(226577);
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
@@ -147,7 +192,7 @@ public class MMKProgressDialogImpl
       {
         public void call() {}
       });
-      AppMethodBeat.o(264458);
+      AppMethodBeat.o(226577);
       return;
     }
   }
@@ -166,21 +211,21 @@ public class MMKProgressDialogImpl
     {
       public void run()
       {
-        AppMethodBeat.i(263604);
-        MMKProgressDialogImpl.access$102(MMKProgressDialogImpl.this, i.a(localContext, paramBoolean, new DialogInterface.OnCancelListener()
+        AppMethodBeat.i(226532);
+        MMKProgressDialogImpl.access$102(MMKProgressDialogImpl.this, l.a(localContext, paramBoolean, new DialogInterface.OnCancelListener()
         {
           public void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
-            AppMethodBeat.i(263297);
+            AppMethodBeat.i(226621);
             MMKProgressDialogImpl.2.this.val$cancel.call();
             MMKProgressDialogImpl.access$102(MMKProgressDialogImpl.this, null);
-            AppMethodBeat.o(263297);
+            AppMethodBeat.o(226621);
           }
         }));
         if ((localContext instanceof MMActivity)) {
           ((MMActivity)localContext).addDialog(MMKProgressDialogImpl.this.mPayProcessImpl);
         }
-        AppMethodBeat.o(263604);
+        AppMethodBeat.o(226532);
       }
     });
     AppMethodBeat.o(19099);
@@ -196,7 +241,7 @@ public class MMKProgressDialogImpl
       AppMethodBeat.o(19100);
       return;
     }
-    h.cO(localContext, paramString);
+    k.cZ(localContext, paramString);
     AppMethodBeat.o(19100);
   }
   
@@ -214,30 +259,30 @@ public class MMKProgressDialogImpl
     {
       public void run()
       {
-        AppMethodBeat.i(264399);
+        AppMethodBeat.i(226535);
         MMKProgressDialogImpl localMMKProgressDialogImpl = MMKProgressDialogImpl.this;
         Context localContext = paramString;
         String str = this.val$text;
         if (!paramBoolean) {}
         for (boolean bool = true;; bool = false)
         {
-          MMKProgressDialogImpl.access$202(localMMKProgressDialogImpl, i.c(localContext, str, bool, new DialogInterface.OnCancelListener()
+          MMKProgressDialogImpl.access$202(localMMKProgressDialogImpl, l.c(localContext, str, bool, new DialogInterface.OnCancelListener()
           {
             public void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
-              AppMethodBeat.i(263624);
+              AppMethodBeat.i(226531);
               if (MMKProgressDialogImpl.this.mLoadingImpl != null)
               {
                 MMKProgressDialogImpl.this.mLoadingImpl.dismiss();
                 MMKProgressDialogImpl.access$202(MMKProgressDialogImpl.this, null);
               }
-              AppMethodBeat.o(263624);
+              AppMethodBeat.o(226531);
             }
           }));
           if ((paramString instanceof MMActivity)) {
             ((MMActivity)paramString).addDialog(MMKProgressDialogImpl.this.mLoadingImpl);
           }
-          AppMethodBeat.o(264399);
+          AppMethodBeat.o(226535);
           return;
         }
       }
@@ -247,7 +292,7 @@ public class MMKProgressDialogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKProgressDialogImpl
  * JD-Core Version:    0.7.0.1
  */

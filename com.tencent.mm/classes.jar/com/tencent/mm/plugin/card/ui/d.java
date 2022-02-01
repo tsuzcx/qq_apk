@@ -7,18 +7,18 @@ import com.tencent.mm.plugin.card.model.am;
 public final class d
   implements a
 {
-  private c tuR;
+  private c wzo;
   
   public d(c paramc)
   {
-    this.tuR = paramc;
+    this.wzo = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113185);
-    if (this.tuR != null) {
-      am.cHs().add(this.tuR);
+    if (this.wzo != null) {
+      am.dkJ().add(this.wzo);
     }
     AppMethodBeat.o(113185);
   }
@@ -26,11 +26,11 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113186);
-    if (this.tuR != null)
+    if (this.wzo != null)
     {
-      am.cHs().remove(this.tuR);
-      this.tuR.release();
-      this.tuR = null;
+      am.dkJ().remove(this.wzo);
+      this.wzo.release();
+      this.wzo = null;
     }
     AppMethodBeat.o(113186);
   }
@@ -38,15 +38,15 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113187);
-    if (this.tuR != null) {
-      this.tuR.onNotifyChange(null, null);
+    if (this.wzo != null) {
+      this.wzo.onNotifyChange(null, null);
     }
     AppMethodBeat.o(113187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.d
  * JD-Core Version:    0.7.0.1
  */

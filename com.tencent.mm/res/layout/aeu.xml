@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/j6s" android:background="@drawable/a0l" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/cp">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j63" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/bv" android:src="@raw/icons_outlined_search" android:layout_centerVertical="true" app:iconColor="@color/BW_70" />
+        <EditText android:textColor="@color/BW_100_Alpha_0_5" android:textColorHint="@color/BW_100_Alpha_0_5" android:id="@id/j6t" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/dg3" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/j6q" android:layout_toRightOf="@id/j63" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/a0m" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j6q" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/cd" android:src="@raw/icons_filled_close2" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_70" />
+    </RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j6s" layout="@layout/aek" />
+</RelativeLayout>

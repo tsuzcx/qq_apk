@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<whilte-list>
-    <checker name="ExplainQueryPlanChecker">
-        <element>sqlite_master</element>
-    </checker>
-    <checker name="AvoidAutoIncrementChecker" />
-    <checker name="AvoidSelectAllChecker" />
-    <checker name="WithoutRowIdBetterChecker">
-        <element>AppBrandStarApp</element>
-    </checker>
-    <checker name="PreparedStatementBetterChecker" />
-    <checker name="RedundantIndexChecker" />
-</whilte-list>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:key="backup_move_to_device" android:layout="@layout/bdi" android:title="@string/ac0" />
+    <Preference android:key="backup_to_pc" android:layout="@layout/bdi" android:title="@string/aej" />
+</PreferenceScreen>

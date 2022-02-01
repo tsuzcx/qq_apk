@@ -1,45 +1,46 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$NetStatus;", "", "()V", "NET_BAD", "", "getNET_BAD", "()I", "NET_DISABLE", "getNET_DISABLE", "NET_GOOD", "getNET_GOOD", "NET_NORMAL", "getNET_NORMAL", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicUserStatus;", "", "()V", "micUserStatusAudioMode", "", "getMicUserStatusAudioMode", "()I", "micUserStatusIsInOtherRoom", "getMicUserStatusIsInOtherRoom", "micUserStatusIsOtherAnchor", "getMicUserStatusIsOtherAnchor", "micUserStatusNotTalking", "getMicUserStatusNotTalking", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$m
 {
-  private static final int kkE = 0;
-  private static final int kkF = 1;
-  private static final int kkG = 2;
-  private static final int kkH = 3;
-  public static final m kkI;
+  public static final m mLr;
+  private static final int mLs;
+  private static final int mLt;
+  private static final int mLu;
+  private static final int mLv;
   
   static
   {
-    AppMethodBeat.i(199262);
-    kkI = new m();
-    kkF = 1;
-    kkG = 2;
-    kkH = 3;
-    AppMethodBeat.o(199262);
+    AppMethodBeat.i(248186);
+    mLr = new m();
+    mLs = 1;
+    mLt = 2;
+    mLu = 4;
+    mLv = 8;
+    AppMethodBeat.o(248186);
   }
   
-  public static int aKG()
+  public static int bdw()
   {
-    return kkE;
+    return mLs;
   }
   
-  public static int aKH()
+  public static int bdx()
   {
-    return kkF;
+    return mLt;
   }
   
-  public static int aKI()
+  public static int bdy()
   {
-    return kkG;
+    return mLu;
   }
   
-  public static int aKJ()
+  public static int bdz()
   {
-    return kkH;
+    return mLv;
   }
 }
 

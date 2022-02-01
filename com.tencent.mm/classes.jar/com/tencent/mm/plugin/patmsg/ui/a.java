@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.patmsg.ui;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Looper;
 import android.os.Message;
@@ -9,69 +10,82 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.jq;
-import com.tencent.mm.f.b.a.kc;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.autogen.mmdata.rpt.mc;
+import com.tencent.mm.autogen.mmdata.rpt.mt;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.patmsg.PluginPatMsg;
-import com.tencent.mm.plugin.patmsg.a.c.a;
 import com.tencent.mm.plugin.patmsg.a.d;
+import com.tencent.mm.plugin.patmsg.d.b;
 import com.tencent.mm.plugin.patmsg.d.f;
-import com.tencent.mm.protocal.protobuf.dit;
-import com.tencent.mm.protocal.protobuf.diu;
+import com.tencent.mm.protocal.protobuf.ebd;
+import com.tencent.mm.protocal.protobuf.ebe;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
 import com.tencent.mm.util.g;
 
 public final class a
 {
-  private static final int GKJ;
-  com.tencent.mm.plugin.patmsg.a.c GKK;
-  d GKL;
-  View.OnClickListener GKM;
-  private com.tencent.mm.plugin.patmsg.b.c GKi;
-  private MMHandler knk;
+  private static final int MHD;
+  private com.tencent.mm.plugin.patmsg.b.c MGX;
+  com.tencent.mm.plugin.patmsg.a.c MHE;
+  d MHF;
+  View.OnClickListener MHG;
+  private MMHandler mRi;
   
   static
   {
-    AppMethodBeat.i(186740);
-    GKJ = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vYa, ViewConfiguration.getDoubleTapTimeout());
-    AppMethodBeat.o(186740);
+    AppMethodBeat.i(266446);
+    MHD = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.zqQ, ViewConfiguration.getDoubleTapTimeout());
+    AppMethodBeat.o(266446);
   }
   
   public a()
   {
-    AppMethodBeat.i(186716);
-    this.GKM = new a.1(this);
-    this.knk = new MMHandler(Looper.getMainLooper())
+    AppMethodBeat.i(266383);
+    this.MHG = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(266410);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/patmsg/ui/PatHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        a.a(a.this).sendMessageAtFrontOfQueue(a.a(a.this).obtainMessage(290, paramAnonymousView));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/patmsg/ui/PatHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(266410);
+      }
+    };
+    this.mRi = new MMHandler(Looper.getMainLooper())
     {
       private long lastClickTime = 0L;
       
       public final void handleMessage(Message paramAnonymousMessage)
       {
         boolean bool2 = false;
-        AppMethodBeat.i(186609);
+        AppMethodBeat.i(266420);
         Log.i("MicroMsg.PatHandler", "click msg %d", new Object[] { Integer.valueOf(paramAnonymousMessage.what) });
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(186609);
+          AppMethodBeat.o(266420);
           return;
           long l = System.currentTimeMillis();
-          if ((this.lastClickTime > 0L) && (l - this.lastClickTime < a.GKJ))
+          if ((this.lastClickTime > 0L) && (l - this.lastClickTime < a.MHD))
           {
             Log.i("MicroMsg.PatHandler", "double click");
             removeMessages(291);
@@ -80,9 +94,9 @@ public final class a
           for (;;)
           {
             this.lastClickTime = l;
-            AppMethodBeat.o(186609);
+            AppMethodBeat.o(266420);
             return;
-            sendMessageDelayed(a.a(a.this).obtainMessage(291, paramAnonymousMessage.obj), a.GKJ);
+            sendMessageDelayed(a.a(a.this).obtainMessage(291, paramAnonymousMessage.obj), a.MHD);
           }
           if ((a.b(a.this) != null) && (a.b(a.this).getOnClickListener() != null))
           {
@@ -90,94 +104,94 @@ public final class a
             a.b(a.this).getOnClickListener().onClick((View)paramAnonymousMessage.obj);
           }
           this.lastClickTime = 0L;
-          AppMethodBeat.o(186609);
+          AppMethodBeat.o(266420);
           return;
           boolean bool1 = bool2;
           if (a.b(a.this) != null)
           {
             bool1 = bool2;
             if (a.b(a.this).getDoubleClickListener() != null) {
-              bool1 = a.b(a.this).getDoubleClickListener().fH((View)paramAnonymousMessage.obj);
+              bool1 = a.b(a.this).getDoubleClickListener().iA((View)paramAnonymousMessage.obj);
             }
           }
           if ((!bool1) && (a.b(a.this) != null)) {
             a.c(a.this);
           }
           this.lastClickTime = 0L;
-          AppMethodBeat.o(186609);
+          AppMethodBeat.o(266420);
           return;
-          a.d(a.this).fmW();
+          a.d(a.this).gxK();
         }
       }
     };
-    AppMethodBeat.o(186716);
+    AppMethodBeat.o(266383);
   }
   
-  private boolean aaY(int paramInt)
+  private boolean afr(int paramInt)
   {
-    AppMethodBeat.i(186721);
-    if ((((PluginPatMsg)h.ag(PluginPatMsg.class)).isRevokePatMsgEnable()) && (h.aHG().aHp().getBoolean(ar.a.VDy, true)))
+    AppMethodBeat.i(266397);
+    if ((((PluginPatMsg)h.az(PluginPatMsg.class)).isRevokePatMsgEnable()) && (h.baE().ban().getBoolean(at.a.adgv, true)))
     {
-      if ((paramInt == 5) && (h.aHG().aHp().getBoolean(ar.a.VDv, true))) {}
+      if ((paramInt == 5) && (h.baE().ban().getBoolean(at.a.adgs, true))) {}
       for (String str = MMApplicationContext.getResources().getString(d.f.revoke_pat_avatar_tip);; str = MMApplicationContext.getResources().getString(d.f.revoke_send_pat_msg))
       {
-        jx(str, MMApplicationContext.getResources().getString(d.f.revoke_send_pat_msg_hint, new Object[] { Integer.valueOf(2) }));
-        h.aHG().aHp().set(ar.a.VDy, Boolean.FALSE);
+        kR(str, MMApplicationContext.getResources().getString(d.f.revoke_send_pat_msg_hint, new Object[] { Integer.valueOf(2) }));
+        h.baE().ban().set(at.a.adgv, Boolean.FALSE);
         if (paramInt == 5) {
-          h.aHG().aHp().set(ar.a.VDv, Boolean.FALSE);
+          h.baE().ban().set(at.a.adgs, Boolean.FALSE);
         }
-        AppMethodBeat.o(186721);
+        AppMethodBeat.o(266397);
         return true;
       }
     }
-    if ((paramInt == 5) && (h.aHG().aHp().getBoolean(ar.a.VDv, true)))
+    if ((paramInt == 5) && (h.baE().ban().getBoolean(at.a.adgs, true)))
     {
-      jx(MMApplicationContext.getResources().getString(d.f.profile_pat_avatar_tip), MMApplicationContext.getResources().getString(d.f.profile_pat_avatar_hint));
-      h.aHG().aHp().set(ar.a.VDv, Boolean.FALSE);
-      AppMethodBeat.o(186721);
+      kR(MMApplicationContext.getResources().getString(d.f.profile_pat_avatar_tip), MMApplicationContext.getResources().getString(d.f.profile_pat_avatar_hint));
+      h.baE().ban().set(at.a.adgs, Boolean.FALSE);
+      AppMethodBeat.o(266397);
       return true;
     }
-    AppMethodBeat.o(186721);
+    AppMethodBeat.o(266397);
     return false;
   }
   
-  private void jx(String paramString1, String paramString2)
+  private void kR(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186725);
-    final l locall = new l(((View)this.GKK).getContext());
-    locall.byC(paramString1).byD(paramString2).h(new View.OnClickListener()
+    AppMethodBeat.i(266404);
+    final o localo = new o(((View)this.MHE).getContext());
+    localo.bAc(paramString1).bAd(paramString2).i(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(186555);
+        AppMethodBeat.i(266418);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/patmsg/ui/PatHandler$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        locall.bYF();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/patmsg/ui/PatHandler$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        localo.cyW();
         a.e(a.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/patmsg/ui/PatHandler$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(186555);
+        AppMethodBeat.o(266418);
       }
     });
-    locall.eik();
-    AppMethodBeat.o(186725);
+    localo.dDn();
+    AppMethodBeat.o(266404);
   }
   
-  public final void fmX()
+  public final void gxL()
   {
-    AppMethodBeat.i(186718);
+    AppMethodBeat.i(266449);
     Log.d("MicroMsg.PatHandler", "onDetachPatMsgView");
-    this.knk.removeMessages(292);
-    this.GKi = null;
-    AppMethodBeat.o(186718);
+    this.mRi.removeMessages(292);
+    this.MGX = null;
+    AppMethodBeat.o(266449);
   }
   
-  public final void fmY()
+  public final void gxM()
   {
-    AppMethodBeat.i(186720);
+    AppMethodBeat.i(266452);
     Log.d("MicroMsg.PatHandler", "onDetachPatTipView");
-    this.knk.removeMessages(293);
-    AppMethodBeat.o(186720);
+    this.mRi.removeMessages(293);
+    AppMethodBeat.o(266452);
   }
 }
 

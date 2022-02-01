@@ -2,127 +2,122 @@ package com.tencent.mm.plugin.sns.ui.helper;
 
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.l;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class FloatWebViewHelper
-  implements k
+  implements p
 {
-  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e LkA;
-  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e LkB;
-  private ViewGroup LkC;
+  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e RKp;
+  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e RKq;
+  private ViewGroup RKr;
   
   private FloatWebViewHelper(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
-    this.LkA = parame;
-    this.LkC = paramViewGroup;
+    this.RKp = parame;
+    this.RKr = paramViewGroup;
   }
   
   public static FloatWebViewHelper a(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(199323);
+    AppMethodBeat.i(308121);
     parame = new FloatWebViewHelper(parame, paramViewGroup);
-    AppMethodBeat.o(199323);
+    AppMethodBeat.o(308121);
     return parame;
   }
   
-  @t(jl=h.a.ON_CREATE)
-  public final void onCreate(l paraml)
+  @z(Ho=j.a.ON_CREATE)
+  public final void onCreate(q paramq)
   {
-    AppMethodBeat.i(199327);
+    AppMethodBeat.i(308129);
     try
     {
-      if (this.LkA != null)
+      if (this.RKp != null)
       {
-        paraml = this.LkA;
-        ViewGroup localViewGroup = this.LkC;
-        if ((localViewGroup != null) && (paraml != null))
+        paramq = this.RKp;
+        ViewGroup localViewGroup = this.RKr;
+        if ((localViewGroup != null) && (paramq != null))
         {
-          this.LkB = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e(localViewGroup.getContext(), paraml, localViewGroup);
-          if (this.LkB != null)
+          this.RKq = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e(localViewGroup.getContext(), paramq, localViewGroup);
+          if (this.RKq != null)
           {
-            paraml = this.LkB.getView();
-            if ((paraml != null) && (this.LkC != null))
+            paramq = this.RKq.getView();
+            if ((paramq != null) && (this.RKr != null))
             {
-              localViewGroup = (ViewGroup)paraml.getParent();
+              localViewGroup = (ViewGroup)paramq.getParent();
               if (localViewGroup == null)
               {
-                this.LkC.addView(paraml, this.LkC.getChildCount() - 1);
-                AppMethodBeat.o(199327);
+                this.RKr.addView(paramq, this.RKr.getChildCount() - 1);
                 return;
               }
-              if (localViewGroup != this.LkC)
+              if (localViewGroup != this.RKr)
               {
-                localViewGroup.removeView(paraml);
-                this.LkC.addView(paraml, this.LkC.getChildCount() - 1);
+                localViewGroup.removeView(paramq);
+                this.RKr.addView(paramq, this.RKr.getChildCount() - 1);
               }
             }
           }
         }
       }
-      AppMethodBeat.o(199327);
       return;
     }
-    catch (Throwable paraml)
+    finally
     {
-      AppMethodBeat.o(199327);
+      AppMethodBeat.o(308129);
     }
   }
   
-  @t(jl=h.a.ON_DESTROY)
-  public final void onDestroy(l paraml)
+  @z(Ho=j.a.ON_DESTROY)
+  public final void onDestroy(q paramq)
   {
-    AppMethodBeat.i(199330);
+    AppMethodBeat.i(308137);
     try
     {
-      if (this.LkB != null) {
-        this.LkB.fKo();
+      if (this.RKq != null) {
+        this.RKq.has();
       }
-      AppMethodBeat.o(199330);
       return;
     }
-    catch (Throwable paraml)
+    finally
     {
-      AppMethodBeat.o(199330);
+      AppMethodBeat.o(308137);
     }
   }
   
-  @t(jl=h.a.ON_PAUSE)
-  public final void onPause(l paraml)
+  @z(Ho=j.a.ON_PAUSE)
+  public final void onPause(q paramq)
   {
-    AppMethodBeat.i(199329);
+    AppMethodBeat.i(308136);
     try
     {
-      if (this.LkB != null) {
-        this.LkB.fKl();
+      if (this.RKq != null) {
+        this.RKq.hap();
       }
-      AppMethodBeat.o(199329);
       return;
     }
-    catch (Throwable paraml)
+    finally
     {
-      AppMethodBeat.o(199329);
+      AppMethodBeat.o(308136);
     }
   }
   
-  @t(jl=h.a.ON_RESUME)
-  public final void onResume(l paraml)
+  @z(Ho=j.a.ON_RESUME)
+  public final void onResume(q paramq)
   {
-    AppMethodBeat.i(199328);
+    AppMethodBeat.i(308132);
     try
     {
-      if (this.LkB != null) {
-        this.LkB.fKk();
+      if (this.RKq != null) {
+        this.RKq.hao();
       }
-      AppMethodBeat.o(199328);
       return;
     }
-    catch (Throwable paraml)
+    finally
     {
-      AppMethodBeat.o(199328);
+      AppMethodBeat.o(308132);
     }
   }
 }

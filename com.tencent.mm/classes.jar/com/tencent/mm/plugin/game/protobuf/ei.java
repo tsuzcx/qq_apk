@@ -1,121 +1,108 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.jg;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class ei
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String CRQ;
-  public String jUi;
+  public ed IIx;
+  public long vhU;
+  public long vhV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41842);
+    AppMethodBeat.i(276894);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jUi == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IIx == null)
       {
-        paramVarArgs = new b("Not all required fields were included: AppID");
-        AppMethodBeat.o(41842);
+        paramVarArgs = new b("Not all required fields were included: Tab");
+        AppMethodBeat.o(276894);
         throw paramVarArgs;
       }
-      if (this.BaseRequest != null)
+      paramVarArgs.bv(1, this.vhU);
+      paramVarArgs.bv(2, this.vhV);
+      if (this.IIx != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(3, this.IIx.computeSize());
+        this.IIx.writeFields(paramVarArgs);
       }
-      if (this.jUi != null) {
-        paramVarArgs.f(2, this.jUi);
-      }
-      if (this.CRQ != null) {
-        paramVarArgs.f(3, this.CRQ);
-      }
-      AppMethodBeat.o(41842);
+      AppMethodBeat.o(276894);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label456;
-      }
-    }
-    label456:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    int i;
+    if (paramInt == 1)
     {
+      i = i.a.a.b.b.a.q(1, this.vhU) + 0 + i.a.a.b.b.a.q(2, this.vhV);
       paramInt = i;
-      if (this.jUi != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.jUi);
+      if (this.IIx != null) {
+        paramInt = i + i.a.a.a.qC(3, this.IIx.computeSize());
       }
-      i = paramInt;
-      if (this.CRQ != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CRQ);
-      }
-      AppMethodBeat.o(41842);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.jUi == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: AppID");
-          AppMethodBeat.o(41842);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(41842);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        ei localei = (ei)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(41842);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localei.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(41842);
-          return 0;
-        case 2: 
-          localei.jUi = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(41842);
-          return 0;
-        }
-        localei.CRQ = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(41842);
-        return 0;
-      }
-      AppMethodBeat.o(41842);
-      return -1;
+      AppMethodBeat.o(276894);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      if (this.IIx == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Tab");
+        AppMethodBeat.o(276894);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(276894);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      ei localei = (ei)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(276894);
+        return -1;
+      case 1: 
+        localei.vhU = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(276894);
+        return 0;
+      case 2: 
+        localei.vhV = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(276894);
+        return 0;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        ed localed = new ed();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localed.parseFrom((byte[])localObject);
+        }
+        localei.IIx = localed;
+        paramInt += 1;
+      }
+      AppMethodBeat.o(276894);
+      return 0;
+    }
+    AppMethodBeat.o(276894);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.ei
  * JD-Core Version:    0.7.0.1
  */

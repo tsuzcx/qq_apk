@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory mm:key="settings_netstat_info" />
-    <Preference mm:key="settings_netstat_mobile" mm:layout="@layout/b8j" mm:title="@string/grj" />
-    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_mobile_detail" mm:layout="@layout/b8j" mm:srcType="fgi" />
-    <PreferenceCategory />
-    <Preference mm:key="settings_netstat_wifi" mm:layout="@layout/b8j" mm:title="@string/grn" />
-    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_wifi_detail" mm:layout="@layout/b8j" mm:srcType="iu3" />
-    <Preference mm:key="settings_netstat_tip" mm:layout="@layout/b_7" mm:title="@string/gvf" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="settings_new_voip_msg_notification" android:summary="@string/ivy" android:title="@string/ivo" />
+    <CheckBoxPreference android1:defaultValue="true" android:key="settings_show_detail" android:persistent="false" android:title="@string/ivj" />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="settings_ringtone" android:layout="@layout/bdi" android:title="@string/ixz" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.SummaryTextPreference android:key="settings_notification_type" android:layout="@layout/bdi" android:summary="@string/iw5" android:title="@string/iw7" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

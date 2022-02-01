@@ -1,39 +1,31 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicSettingFlag;", "", "()V", "EnableBuyProductAudience", "", "getEnableBuyProductAudience", "()I", "EnableFollowedAnchorAudience", "getEnableFollowedAnchorAudience", "EnableRewardedAnchorAudience", "getEnableRewardedAnchorAudience", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$LiveScene;", "", "()V", "LIVE_SCENE_FINDER", "", "getLIVE_SCENE_FINDER", "()I", "LIVE_SCENE_ROOM", "getLIVE_SCENE_ROOM", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$h
 {
-  private static final int kkn = 1;
-  private static final int kko = 2;
-  private static final int kkp = 4;
-  public static final h kkq;
+  public static final h mKY;
+  private static final int mKZ = 0;
+  private static final int mLa;
   
   static
   {
-    AppMethodBeat.i(199444);
-    kkq = new h();
-    kkn = 1;
-    kko = 2;
-    kkp = 4;
-    AppMethodBeat.o(199444);
+    AppMethodBeat.i(248051);
+    mKY = new h();
+    mLa = 1;
+    AppMethodBeat.o(248051);
   }
   
-  public static int aKu()
+  public static int bdi()
   {
-    return kkn;
+    return mKZ;
   }
   
-  public static int aKv()
+  public static int bdj()
   {
-    return kko;
-  }
-  
-  public static int aKw()
-  {
-    return kkp;
+    return mLa;
   }
 }
 

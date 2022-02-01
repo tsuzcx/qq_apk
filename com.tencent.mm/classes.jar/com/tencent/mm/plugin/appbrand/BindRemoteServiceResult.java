@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/BindRemoteServiceResult;", "Landroid/os/Parcelable;", "errCode", "", "errMsg", "", "(ILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "component1", "component2", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/BindRemoteServiceResult;", "Landroid/os/Parcelable;", "errCode", "", "errMsg", "", "(ILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "component1", "component2", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class BindRemoteServiceResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
+  public static final Parcelable.Creator<BindRemoteServiceResult> CREATOR;
   final int errCode;
   final String errMsg;
   
   static
   {
-    AppMethodBeat.i(275081);
-    CREATOR = new a();
-    AppMethodBeat.o(275081);
+    AppMethodBeat.i(316990);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(316990);
   }
   
   public BindRemoteServiceResult(int paramInt, String paramString)
@@ -35,76 +35,69 @@ final class BindRemoteServiceResult
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(275079);
-    if (this != paramObject)
+    AppMethodBeat.i(317005);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof BindRemoteServiceResult))
-      {
-        paramObject = (BindRemoteServiceResult)paramObject;
-        if ((this.errCode != paramObject.errCode) || (!p.h(this.errMsg, paramObject.errMsg))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(275079);
+      AppMethodBeat.o(317005);
       return true;
     }
-    AppMethodBeat.o(275079);
-    return false;
+    if (!(paramObject instanceof BindRemoteServiceResult))
+    {
+      AppMethodBeat.o(317005);
+      return false;
+    }
+    paramObject = (BindRemoteServiceResult)paramObject;
+    if (this.errCode != paramObject.errCode)
+    {
+      AppMethodBeat.o(317005);
+      return false;
+    }
+    if (!s.p(this.errMsg, paramObject.errMsg))
+    {
+      AppMethodBeat.o(317005);
+      return false;
+    }
+    AppMethodBeat.o(317005);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(275078);
+    AppMethodBeat.i(317003);
     int j = this.errCode;
-    String str = this.errMsg;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
+    if (this.errMsg == null) {}
+    for (int i = 0;; i = this.errMsg.hashCode())
     {
-      AppMethodBeat.o(275078);
+      AppMethodBeat.o(317003);
       return i + j * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(275077);
-    String str = "BindRemoteServiceResult(errCode=" + this.errCode + ", errMsg=" + this.errMsg + ")";
-    AppMethodBeat.o(275077);
+    AppMethodBeat.i(316996);
+    String str = "BindRemoteServiceResult(errCode=" + this.errCode + ", errMsg=" + this.errMsg + ')';
+    AppMethodBeat.o(316996);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(275080);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(317011);
+    s.u(paramParcel, "out");
     paramParcel.writeInt(this.errCode);
     paramParcel.writeString(this.errMsg);
-    AppMethodBeat.o(275080);
+    AppMethodBeat.o(317011);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(271645);
-      p.k(paramParcel, "in");
-      paramParcel = new BindRemoteServiceResult(paramParcel.readInt(), paramParcel.readString());
-      AppMethodBeat.o(271645);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new BindRemoteServiceResult[paramInt];
-    }
-  }
+    implements Parcelable.Creator<BindRemoteServiceResult>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.BindRemoteServiceResult
  * JD-Core Version:    0.7.0.1
  */

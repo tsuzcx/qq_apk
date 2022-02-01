@@ -1,17 +1,8 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import com.tencent.mm.ui.widget.MMWebView;
-
 public abstract interface e
-  extends d
 {
-  public abstract boolean Su(String paramString);
-  
-  public abstract boolean bgr();
-  
-  public abstract void bgs();
-  
-  public abstract void c(MMWebView paramMMWebView);
+  public abstract boolean Kx(String paramString);
 }
 
 

@@ -1,23 +1,23 @@
 package com.tencent.mm.view;
 
 import android.view.View;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/ExposeElves$OnViewExposedListener;", "", "()V", "getExposedId", "", "view", "Landroid/view/View;", "onViewExposed", "", "oldExposedId", "newExposedId", "isExposed", "", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/ExposeElves$OnViewExposedListener;", "", "()V", "getExposedId", "", "view", "Landroid/view/View;", "onViewExposed", "", "oldExposedId", "newExposedId", "isExposed", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class e$b
 {
-  public long er(View paramView)
+  public abstract void a(View paramView, long paramLong1, long paramLong2, boolean paramBoolean);
+  
+  public long fq(View paramView)
   {
-    p.k(paramView, "view");
+    s.u(paramView, "view");
     return paramView.hashCode();
   }
-  
-  public abstract void p(View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.e.b
  * JD-Core Version:    0.7.0.1
  */

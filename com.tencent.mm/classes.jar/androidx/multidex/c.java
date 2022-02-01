@@ -10,7 +10,7 @@ final class c
 {
   private static long a(RandomAccessFile paramRandomAccessFile, a parama)
   {
-    AppMethodBeat.i(260811);
+    AppMethodBeat.i(201160);
     CRC32 localCRC32 = new CRC32();
     long l = parama.size;
     paramRandomAccessFile.seek(parama.offset);
@@ -25,19 +25,19 @@ final class c
       }
     }
     l = localCRC32.getValue();
-    AppMethodBeat.o(260811);
+    AppMethodBeat.o(201160);
     return l;
   }
   
   private static a b(RandomAccessFile paramRandomAccessFile)
   {
     long l1 = 0L;
-    AppMethodBeat.i(260809);
+    AppMethodBeat.i(201147);
     long l2 = paramRandomAccessFile.length() - 22L;
     if (l2 < 0L)
     {
       paramRandomAccessFile = new ZipException("File too short to be a zip file: " + paramRandomAccessFile.length());
-      AppMethodBeat.o(260809);
+      AppMethodBeat.o(201147);
       throw paramRandomAccessFile;
     }
     long l3 = l2 - 65536L;
@@ -55,7 +55,7 @@ final class c
         l2 = l3;
       } while (l3 >= l1);
       paramRandomAccessFile = new ZipException("End Of Central Directory signature not found");
-      AppMethodBeat.o(260809);
+      AppMethodBeat.o(201147);
       throw paramRandomAccessFile;
       paramRandomAccessFile.skipBytes(2);
       paramRandomAccessFile.skipBytes(2);
@@ -64,7 +64,7 @@ final class c
       a locala = new a();
       locala.size = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
       locala.offset = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
-      AppMethodBeat.o(260809);
+      AppMethodBeat.o(201147);
       return locala;
       l1 = l3;
     }
@@ -72,7 +72,7 @@ final class c
   
   static long p(File paramFile)
   {
-    AppMethodBeat.i(260807);
+    AppMethodBeat.i(201132);
     paramFile = new RandomAccessFile(paramFile, "r");
     try
     {
@@ -82,7 +82,7 @@ final class c
     finally
     {
       paramFile.close();
-      AppMethodBeat.o(260807);
+      AppMethodBeat.o(201132);
     }
   }
   
@@ -94,7 +94,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.multidex.c
  * JD-Core Version:    0.7.0.1
  */

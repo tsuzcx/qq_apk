@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -9,17 +8,17 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.plugin.setting.b.k;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y.b;
 
 public class SelectSexUI
   extends MMPreference
 {
-  private SelectPreference AuI;
-  private SelectPreference AuJ;
+  private SelectPreference FTP;
+  private SelectPreference FTQ;
   private com.tencent.mm.ui.base.preference.f screen;
   private int sex = -1;
   
@@ -32,11 +31,11 @@ public class SelectSexUI
   {
     AppMethodBeat.i(73949);
     this.screen = getPreferenceScreen();
-    this.AuI = ((SelectPreference)this.screen.byG("select_male"));
-    this.AuJ = ((SelectPreference)this.screen.byG("select_female"));
-    int i = Util.nullAs((Integer)h.aHG().aHp().b(12290, null), 0);
+    this.FTP = ((SelectPreference)this.screen.bAi("select_male"));
+    this.FTQ = ((SelectPreference)this.screen.bAi("select_female"));
+    int i = Util.nullAs((Integer)h.baE().ban().d(12290, null), 0);
     if (i == 1) {
-      this.AuI.isSelected = true;
+      this.FTP.isSelected = true;
     }
     for (;;)
     {
@@ -62,11 +61,11 @@ public class SelectSexUI
           AppMethodBeat.o(73947);
           return true;
         }
-      }, null, w.b.Wao);
+      }, null, y.b.adEJ);
       AppMethodBeat.o(73949);
       return;
       if (i == 2) {
-        this.AuJ.isSelected = true;
+        this.FTQ.isSelected = true;
       }
     }
   }
@@ -86,8 +85,8 @@ public class SelectSexUI
     if (paramPreference.equals("select_male"))
     {
       this.sex = 1;
-      this.AuI.isSelected = true;
-      this.AuJ.isSelected = false;
+      this.FTP.isSelected = true;
+      this.FTQ.isSelected = false;
       paramf.notifyDataSetChanged();
     }
     for (;;)
@@ -97,8 +96,8 @@ public class SelectSexUI
       if (paramPreference.equals("select_female"))
       {
         this.sex = 2;
-        this.AuI.isSelected = false;
-        this.AuJ.isSelected = true;
+        this.FTP.isSelected = false;
+        this.FTQ.isSelected = true;
         paramf.notifyDataSetChanged();
       }
     }
@@ -112,7 +111,7 @@ public class SelectSexUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelectSexUI
  * JD-Core Version:    0.7.0.1
  */

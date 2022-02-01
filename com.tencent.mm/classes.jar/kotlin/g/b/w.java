@@ -1,59 +1,21 @@
 package kotlin.g.b;
 
-import kotlin.l.a;
-import kotlin.l.n;
+import kotlin.l.g;
 
 public abstract class w
-  extends e
-  implements n
+  extends ac
+  implements g
 {
   public w() {}
   
-  public w(Object paramObject)
+  public w(Object paramObject, Class paramClass, String paramString1, String paramString2, int paramInt)
   {
-    super(paramObject);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof w)) {
-        break;
-      }
-      paramObject = (w)paramObject;
-    } while ((Vc().equals(paramObject.Vc())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (p.h(iBY(), paramObject.iBY())));
-    return false;
-    if ((paramObject instanceof n)) {
-      return paramObject.equals(iBZ());
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return (Vc().hashCode() * 31 + getName().hashCode()) * 31 + getSignature().hashCode();
-  }
-  
-  protected final n iCr()
-  {
-    return (n)super.iCa();
-  }
-  
-  public String toString()
-  {
-    a locala = iBZ();
-    if (locala != this) {
-      return locala.toString();
-    }
-    return "property " + getName() + " (Kotlin reflection is not available)";
+    super(paramObject, paramClass, paramString1, paramString2, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.w
  * JD-Core Version:    0.7.0.1
  */

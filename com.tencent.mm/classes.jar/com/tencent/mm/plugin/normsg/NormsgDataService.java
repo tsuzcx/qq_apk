@@ -16,9 +16,9 @@ import com.tencent.mm.util.HotpotService.c;
 public final class NormsgDataService
   extends HotpotService
 {
-  public static String H(Context paramContext, String paramString)
+  public static String M(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(257867);
+    AppMethodBeat.i(261923);
     Bundle localBundle = new Bundle();
     localBundle.putString("package_name", paramString);
     try
@@ -27,7 +27,7 @@ public final class NormsgDataService
       if (paramContext != null)
       {
         paramContext = paramContext.getString("result", "");
-        AppMethodBeat.o(257867);
+        AppMethodBeat.o(261923);
         return paramContext;
       }
     }
@@ -35,7 +35,7 @@ public final class NormsgDataService
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.NormsgDS", paramContext.YyT, "Fail to call m1.", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NormsgDS", paramContext.agtr, "Fail to call m1.", new Object[0]);
         paramContext = null;
       }
     }
@@ -46,31 +46,30 @@ public final class NormsgDataService
         Log.printErrStackTrace("MicroMsg.NormsgDS", paramContext, "Fail to call m1.", new Object[0]);
         paramContext = null;
       }
-      AppMethodBeat.o(257867);
+      AppMethodBeat.o(261923);
     }
     return "";
   }
   
-  private String aTd(String paramString)
+  private String aQd(String paramString)
   {
-    AppMethodBeat.i(257870);
+    AppMethodBeat.i(261930);
     try
     {
       PackageManager localPackageManager = getApplicationContext().getPackageManager();
       paramString = localPackageManager.getApplicationInfo(paramString, 0).loadLabel(localPackageManager).toString();
-      AppMethodBeat.o(257870);
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(257870);
+      AppMethodBeat.o(261930);
     }
     return "";
   }
   
-  public static boolean dk(Context paramContext)
+  public static boolean ec(Context paramContext)
   {
-    AppMethodBeat.i(257868);
+    AppMethodBeat.i(261927);
     try
     {
       Log.i("MicroMsg.NormsgDS", "hit getPhoneState");
@@ -78,7 +77,7 @@ public final class NormsgDataService
       Log.i("MicroMsg.NormsgDS", "hit getPhoneState end.");
       if ((paramContext != null) && (paramContext.getBoolean("result", false)))
       {
-        AppMethodBeat.o(257868);
+        AppMethodBeat.o(261927);
         return true;
       }
     }
@@ -86,7 +85,7 @@ public final class NormsgDataService
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.NormsgDS", paramContext.YyT, "Fail to call m2.", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NormsgDS", paramContext.agtr, "Fail to call m2.", new Object[0]);
         paramContext = null;
       }
     }
@@ -97,57 +96,56 @@ public final class NormsgDataService
         Log.printErrStackTrace("MicroMsg.NormsgDS", paramContext, "Fail to call m2.", new Object[0]);
         paramContext = null;
       }
-      AppMethodBeat.o(257868);
+      AppMethodBeat.o(261927);
     }
     return false;
   }
   
-  private static boolean fji()
+  private static boolean gty()
   {
-    AppMethodBeat.i(257873);
+    AppMethodBeat.i(261933);
     try
     {
-      boolean bool = d.GxJ.fjr();
-      AppMethodBeat.o(257873);
+      boolean bool = d.MtP.gtI();
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(257873);
+      AppMethodBeat.o(261933);
     }
     return false;
   }
   
   public final void a(int paramInt, Bundle paramBundle1, Bundle paramBundle2)
   {
-    AppMethodBeat.i(257869);
+    AppMethodBeat.i(261937);
     if (paramInt == 1)
     {
-      paramBundle2.putString("result", aTd(paramBundle1.getString("package_name")));
-      AppMethodBeat.o(257869);
+      paramBundle2.putString("result", aQd(paramBundle1.getString("package_name")));
+      AppMethodBeat.o(261937);
       return;
     }
     if (paramInt == 2)
     {
-      paramBundle2.putBoolean("result", fji());
-      AppMethodBeat.o(257869);
+      paramBundle2.putBoolean("result", gty());
+      AppMethodBeat.o(261937);
       return;
     }
     Log.w("MicroMsg.NormsgDS", "unknown op: %s", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(257869);
+    AppMethodBeat.o(261937);
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(257866);
+    AppMethodBeat.i(261935);
     super.onCreate();
-    d.a(b.Gxy);
-    AppMethodBeat.o(257866);
+    d.a(b.MtE);
+    AppMethodBeat.o(261935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.NormsgDataService
  * JD-Core Version:    0.7.0.1
  */

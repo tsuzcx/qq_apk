@@ -11,11 +11,13 @@ import com.tencent.liteav.audio.a;
 import com.tencent.liteav.basic.b.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
+import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
+import com.tencent.liteav.basic.module.TXCKeyPointReportProxy.a;
 import com.tencent.liteav.basic.opengl.p;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.basic.util.g.a;
-import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.beauty.TXBeautyManager;
 import com.tencent.liteav.renderer.e;
 import com.tencent.liteav.trtc.impl.TRTCCloudImpl;
@@ -40,9 +42,9 @@ public class TRTCSubCloud
   
   static
   {
-    AppMethodBeat.i(216426);
+    AppMethodBeat.i(211700);
     TAG = TRTCSubCloud.class.getName();
-    AppMethodBeat.o(216426);
+    AppMethodBeat.o(211700);
   }
   
   public TRTCSubCloud(Context paramContext, WeakReference<TRTCCloudImpl> paramWeakReference, f paramf)
@@ -53,23 +55,73 @@ public class TRTCSubCloud
     this.mMainCloud = paramWeakReference;
   }
   
+  private void setFramework(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(211296);
+    apiLog("setFramework params: " + paramJSONObject.toString());
+    if (paramJSONObject == null)
+    {
+      apiLog("setFramework[lack parameter]");
+      AppMethodBeat.o(211296);
+      return;
+    }
+    if (!paramJSONObject.has("framework"))
+    {
+      apiLog("setFramework[lack parameter]: framework");
+      AppMethodBeat.o(211296);
+      return;
+    }
+    if (!paramJSONObject.has("scene"))
+    {
+      apiLog("setFramework[lack parameter]: scene");
+      AppMethodBeat.o(211296);
+      return;
+    }
+    if (!paramJSONObject.has("sdkappid"))
+    {
+      apiLog("setFramework[lack parameter]: sdkappid");
+      AppMethodBeat.o(211296);
+      return;
+    }
+    int i = paramJSONObject.getInt("framework");
+    int j = paramJSONObject.getInt("scene");
+    int k = paramJSONObject.getInt("sdkappid");
+    paramJSONObject = TXCBuild.Version();
+    String str = TXCBuild.Model();
+    TXCKeyPointReportProxy.a locala = new TXCKeyPointReportProxy.a();
+    locala.d = j;
+    locala.e = str;
+    locala.f = paramJSONObject;
+    if (this.mContext != null) {}
+    for (paramJSONObject = this.mContext.getPackageName();; paramJSONObject = "")
+    {
+      locala.h = paramJSONObject;
+      locala.b = k;
+      locala.g = TXCCommonUtil.getSDKVersionStr();
+      locala.c = i;
+      TXCKeyPointReportProxy.a(locala);
+      AppMethodBeat.o(211296);
+      return;
+    }
+  }
+  
   public void ConnectOtherRoom(String paramString)
   {
-    AppMethodBeat.i(216281);
+    AppMethodBeat.i(211776);
     super.ConnectOtherRoom(paramString);
-    AppMethodBeat.o(216281);
+    AppMethodBeat.o(211776);
   }
   
   public void DisconnectOtherRoom()
   {
-    AppMethodBeat.i(216282);
+    AppMethodBeat.i(211784);
     super.DisconnectOtherRoom();
-    AppMethodBeat.o(216282);
+    AppMethodBeat.o(211784);
   }
   
   public void callExperimentalAPI(final String paramString)
   {
-    AppMethodBeat.i(216335);
+    AppMethodBeat.i(212034);
     Object localObject2;
     Object localObject1;
     if (paramString != null)
@@ -94,7 +146,7 @@ public class TRTCSubCloud
         {
           localObject1 = localObject2;
           apiLog("callExperimentalAPI[lack api or illegal type]: ".concat(String.valueOf(paramString)));
-          AppMethodBeat.o(216335);
+          AppMethodBeat.o(212034);
           return;
           label129:
           localObject1 = this.mRoomInfo.strRoomId;
@@ -107,7 +159,7 @@ public class TRTCSubCloud
           boolean bool = localJSONObject.has("params");
           if (!bool)
           {
-            AppMethodBeat.o(216335);
+            AppMethodBeat.o(212034);
             return;
           }
           localObject1 = localObject2;
@@ -130,29 +182,29 @@ public class TRTCSubCloud
         {
           public final void run()
           {
-            AppMethodBeat.i(216612);
+            AppMethodBeat.i(211242);
             try
             {
               if (localObject4.equals("setSEIPayloadType"))
               {
                 TRTCSubCloud.access$7100(TRTCSubCloud.this, localObject3);
-                AppMethodBeat.o(216612);
+                AppMethodBeat.o(211242);
                 return;
               }
               if ((localObject4.equals("setLocalAudioMuteMode")) || (localObject4.equals("setVideoEncodeParamEx")) || (localObject4.equals("setAudioSampleRate"))) {
-                break label350;
+                break label379;
               }
               if (localObject4.equals("muteRemoteAudioInSpeaker"))
               {
                 TRTCSubCloud.access$7200(TRTCSubCloud.this, localObject3);
-                AppMethodBeat.o(216612);
+                AppMethodBeat.o(211242);
                 return;
               }
             }
             catch (Exception localException)
             {
-              TRTCSubCloud.access$7800(TRTCSubCloud.this, "callExperimentalAPI[failed]: " + paramString);
-              AppMethodBeat.o(216612);
+              TRTCSubCloud.access$7900(TRTCSubCloud.this, "callExperimentalAPI[failed]: " + paramString);
+              AppMethodBeat.o(211242);
               return;
             }
             if ((!localObject4.equals("enableAudioAGC")) && (!localObject4.equals("enableAudioAEC")) && (!localObject4.equals("enableAudioANS")))
@@ -160,7 +212,7 @@ public class TRTCSubCloud
               if (localObject4.equals("setPerformanceMode"))
               {
                 TRTCSubCloud.access$7300(TRTCSubCloud.this, localObject3);
-                AppMethodBeat.o(216612);
+                AppMethodBeat.o(211242);
                 return;
               }
               if ((!localObject4.equals("setCustomRenderMode")) && (!localObject4.equals("setMediaCodecConfig")) && (!localObject4.equals("setKeepAVCaptureOption")))
@@ -168,35 +220,41 @@ public class TRTCSubCloud
                 if (localObject4.equals("sendJsonCMD"))
                 {
                   TRTCSubCloud.access$7400(TRTCSubCloud.this, localObject3, paramString);
-                  AppMethodBeat.o(216612);
+                  AppMethodBeat.o(211242);
                   return;
                 }
                 if (localObject4.equals("updatePrivateMapKey"))
                 {
                   TRTCSubCloud.access$7500(TRTCSubCloud.this, localObject3);
-                  AppMethodBeat.o(216612);
+                  AppMethodBeat.o(211242);
                   return;
                 }
                 if (localObject4.equals("setRoomType"))
                 {
                   TRTCSubCloud.access$7600(TRTCSubCloud.this, localObject3);
-                  AppMethodBeat.o(216612);
+                  AppMethodBeat.o(211242);
                   return;
                 }
-                TRTCSubCloud.access$7700(TRTCSubCloud.this, "callExperimentalAPI[illegal api]: " + localObject4);
+                if (localObject4.equals("setFramework"))
+                {
+                  TRTCSubCloud.access$7700(TRTCSubCloud.this, localObject3);
+                  AppMethodBeat.o(211242);
+                  return;
+                }
+                TRTCSubCloud.access$7800(TRTCSubCloud.this, "callExperimentalAPI[illegal api]: " + localObject4);
               }
             }
-            label350:
-            AppMethodBeat.o(216612);
+            label379:
+            AppMethodBeat.o(211242);
           }
         });
-        AppMethodBeat.o(216335);
+        AppMethodBeat.o(212034);
       }
     }
     if (localObject4.equals("setEncodedDataProcessingListener"))
     {
       setEncodedDataProcessingListener((JSONObject)localObject2);
-      AppMethodBeat.o(216335);
+      AppMethodBeat.o(212034);
       return;
     }
   }
@@ -210,12 +268,12 @@ public class TRTCSubCloud
   
   public void destroy()
   {
-    AppMethodBeat.i(216263);
+    AppMethodBeat.i(211706);
     runOnSDKThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(216604);
+        AppMethodBeat.i(211290);
         synchronized (TRTCSubCloud.this.mNativeLock)
         {
           if (TRTCSubCloud.this.mNativeRtcContext != 0L)
@@ -229,21 +287,21 @@ public class TRTCSubCloud
           TRTCSubCloud.this.mCurrentPublishClouds.clear();
           TRTCSubCloud.this.mSubClouds.clear();
           a.a().a(TRTCSubCloud.this.hashCode());
-          AppMethodBeat.o(216604);
+          AppMethodBeat.o(211290);
           return;
         }
       }
     });
-    AppMethodBeat.o(216263);
+    AppMethodBeat.o(211706);
   }
   
   public void enableAudioEarMonitoring(boolean paramBoolean) {}
   
   public void enableAudioVolumeEvaluation(int paramInt)
   {
-    AppMethodBeat.i(216322);
+    AppMethodBeat.i(212009);
     super.enableAudioVolumeEvaluation(paramInt);
-    AppMethodBeat.o(216322);
+    AppMethodBeat.o(212009);
   }
   
   public void enableCustomAudioCapture(boolean paramBoolean) {}
@@ -262,12 +320,12 @@ public class TRTCSubCloud
   
   public void enterRoom(final TRTCCloudDef.TRTCParams paramTRTCParams, final int paramInt)
   {
-    AppMethodBeat.i(216276);
+    AppMethodBeat.i(211747);
     if (paramTRTCParams == null)
     {
       apiLog("enter room, param nil!");
       onEnterRoom(-3316, "enter room param null");
-      AppMethodBeat.o(216276);
+      AppMethodBeat.o(211747);
       return;
     }
     TRTCCloudDef.TRTCParams localTRTCParams = new TRTCCloudDef.TRTCParams(paramTRTCParams);
@@ -283,7 +341,7 @@ public class TRTCSubCloud
       if (TextUtils.isEmpty(localTRTCParams.userId)) {
         onEnterRoom(-3319, "enter room userId invalid.");
       }
-      AppMethodBeat.o(216276);
+      AppMethodBeat.o(211747);
       return;
     }
     final long l = localTRTCParams.roomId & 0xFFFFFFFF;
@@ -326,7 +384,7 @@ public class TRTCSubCloud
         if (TextUtils.isEmpty((CharSequence)localObject1))
         {
           onEnterRoom(-3318, "room id invalid.");
-          AppMethodBeat.o(216276);
+          AppMethodBeat.o(211747);
           return;
         }
       }
@@ -337,13 +395,13 @@ public class TRTCSubCloud
       {
         public final void run()
         {
-          AppMethodBeat.i(215892);
+          AppMethodBeat.i(211298);
           if (TRTCSubCloud.this.mRoomState != 0)
           {
             if (((!TextUtils.isEmpty(this.a)) && (this.a.equalsIgnoreCase(TRTCSubCloud.this.mRoomInfo.strRoomId))) || (TRTCSubCloud.this.mRoomInfo.roomId == l))
             {
               TRTCSubCloud.access$1300(TRTCSubCloud.this, String.format("enter the same room[%d] again, ignore!!!", new Object[] { Long.valueOf(l) }));
-              AppMethodBeat.o(215892);
+              AppMethodBeat.o(211298);
               return;
             }
             TRTCSubCloud.access$1500(TRTCSubCloud.this, String.format("enter another room[%d] when in room[%d], exit the old room!!!", new Object[] { Long.valueOf(l), Long.valueOf(TRTCSubCloud.this.mRoomInfo.roomId) }));
@@ -352,7 +410,7 @@ public class TRTCSubCloud
           }
           TRTCSubCloud.access$1700(TRTCSubCloud.this, "========================================================================================================");
           TRTCSubCloud.access$1800(TRTCSubCloud.this, "========================================================================================================");
-          TRTCSubCloud.access$1900(TRTCSubCloud.this, String.format("============= SDK Version:%s Device Name:%s System Version:%s =============", new Object[] { TXCCommonUtil.getSDKVersionStr(), h.c(), h.d() }));
+          TRTCSubCloud.access$1900(TRTCSubCloud.this, String.format("============= SDK Version:%s Device Name:%s System Version:%s =============", new Object[] { TXCCommonUtil.getSDKVersionStr(), TXCBuild.Model(), TXCBuild.Version() }));
           TRTCSubCloud.access$2000(TRTCSubCloud.this, "========================================================================================================");
           TRTCSubCloud.access$2100(TRTCSubCloud.this, "========================================================================================================");
           Object localObject2 = new StringBuilder("enterRoom(sub) roomId:");
@@ -452,7 +510,7 @@ public class TRTCSubCloud
           for (String str = paramInt.streamId;; str = "")
           {
             i = TRTCEncodeTypeDecision.getEnterRoomCodecSupportValue();
-            TRTCSubCloud.access$4000(TRTCSubCloud.this, TRTCSubCloud.this.mNativeRtcContext, l, (String)localObject3, (String)localObject1, (String)localObject2, this.f, 255, 0, paramTRTCParams, TRTCSubCloud.this.mPerformanceMode, h.c(), h.d(), TRTCSubCloud.this.mRecvMode, (String)localObject4, str, TRTCSubCloud.this.mRoomType, i, g.a.a.a());
+            TRTCSubCloud.access$4000(TRTCSubCloud.this, TRTCSubCloud.this.mNativeRtcContext, l, (String)localObject3, (String)localObject1, (String)localObject2, this.f, 255, 0, paramTRTCParams, TRTCSubCloud.this.mPerformanceMode, TXCBuild.Model(), TXCBuild.Version(), TRTCSubCloud.this.mRecvMode, (String)localObject4, str, TRTCSubCloud.this.mRoomType, i, g.a.a.a());
             TRTCSubCloud.access$4102(TRTCSubCloud.this, this.f);
             TRTCSubCloud.access$4202(TRTCSubCloud.this, this.f);
             TRTCSubCloud.access$4300(TRTCSubCloud.this);
@@ -463,7 +521,7 @@ public class TRTCSubCloud
             TRTCSubCloud.this.mRoomInfo.userSig = paramInt.userSig;
             TRTCSubCloud.this.mRoomInfo.privateMapKey = ((String)localObject1);
             TRTCSubCloud.this.mRoomInfo.enterTime = this.g;
-            AppMethodBeat.o(215892);
+            AppMethodBeat.o(211298);
             return;
             localObject1 = Integer.valueOf(paramInt.roomId);
             break;
@@ -498,7 +556,7 @@ public class TRTCSubCloud
           }
         }
       });
-      AppMethodBeat.o(216276);
+      AppMethodBeat.o(211747);
       return;
       label413:
       localObject1 = paramTRTCParams;
@@ -514,30 +572,30 @@ public class TRTCSubCloud
   
   public void exitRoom()
   {
-    AppMethodBeat.i(216278);
+    AppMethodBeat.i(211755);
     runOnSDKThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(216444);
+        AppMethodBeat.i(211289);
         String str = "exitRoom " + TRTCSubCloud.this.mRoomInfo.getRoomId();
         TRTCSubCloud.access$5200(TRTCSubCloud.this, str);
         TRTCSubCloud.this.exitRoomInternal(true, "call from api");
-        AppMethodBeat.o(216444);
+        AppMethodBeat.o(211289);
       }
     });
-    AppMethodBeat.o(216278);
+    AppMethodBeat.o(211755);
   }
   
   public void exitRoomInternal(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(216279);
+    AppMethodBeat.i(211761);
     apiLog("exitRoomInternal reqExit: " + paramBoolean + ", reason: " + paramString + ", mRoomState: " + this.mRoomState);
     if (this.mRoomState == 0)
     {
       clearRemoteMuteStates();
       apiLog("exitRoom ignore when no in room");
-      AppMethodBeat.o(216279);
+      AppMethodBeat.o(211761);
       return;
     }
     this.mRoomState = 0;
@@ -547,7 +605,7 @@ public class TRTCSubCloud
     {
       public final void accept(String paramAnonymousString, TRTCRoomInfo.UserInfo paramAnonymousUserInfo)
       {
-        AppMethodBeat.i(216559);
+        AppMethodBeat.i(211285);
         TRTCSubCloud.access$5300(TRTCSubCloud.this, paramAnonymousUserInfo);
         a.a().a(String.valueOf(paramAnonymousUserInfo.tinyID), TRTCSubCloud.this.hashCode());
         if (paramAnonymousUserInfo.mainRender.render != null) {
@@ -556,7 +614,7 @@ public class TRTCSubCloud
         if (paramAnonymousUserInfo.subRender.render != null) {
           paramAnonymousUserInfo.subRender.render.setVideoFrameListener(null, b.a);
         }
-        AppMethodBeat.o(216559);
+        AppMethodBeat.o(211285);
       }
     });
     if (paramBoolean) {
@@ -564,15 +622,15 @@ public class TRTCSubCloud
     }
     this.mRoomInfo.clear();
     this.mRenderListenerMap.clear();
-    AppMethodBeat.o(216279);
+    AppMethodBeat.o(211761);
   }
   
   public void finalize()
   {
-    AppMethodBeat.i(216267);
+    AppMethodBeat.i(211711);
     this.mSDKHandler = null;
     super.finalize();
-    AppMethodBeat.o(216267);
+    AppMethodBeat.o(211711);
   }
   
   public int getAudioCaptureVolume()
@@ -617,108 +675,108 @@ public class TRTCSubCloud
   
   public void muteAllRemoteAudio(boolean paramBoolean)
   {
-    AppMethodBeat.i(216315);
+    AppMethodBeat.i(211992);
     super.muteAllRemoteAudio(paramBoolean);
-    AppMethodBeat.o(216315);
+    AppMethodBeat.o(211992);
   }
   
   public void muteAllRemoteVideoStreams(boolean paramBoolean)
   {
-    AppMethodBeat.i(216305);
+    AppMethodBeat.i(211872);
     super.muteAllRemoteVideoStreams(paramBoolean);
-    AppMethodBeat.o(216305);
+    AppMethodBeat.o(211872);
   }
   
   public void muteLocalAudio(final boolean paramBoolean)
   {
-    AppMethodBeat.i(216312);
+    AppMethodBeat.i(211989);
     runOnSDKThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(216151);
+        AppMethodBeat.i(211280);
         TRTCSubCloud.access$6200(TRTCSubCloud.this, "muteLocalAudio " + paramBoolean + ", roomId=" + TRTCSubCloud.this.mRoomInfo.getRoomId());
         TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)TRTCSubCloud.this.mMainCloud.get();
         if (localTRTCCloudImpl != null) {
           localTRTCCloudImpl.muteLocalAudio(paramBoolean, TRTCSubCloud.this);
         }
-        AppMethodBeat.o(216151);
+        AppMethodBeat.o(211280);
       }
     });
-    AppMethodBeat.o(216312);
+    AppMethodBeat.o(211989);
   }
   
   public void muteLocalVideo(final boolean paramBoolean)
   {
-    AppMethodBeat.i(216303);
+    AppMethodBeat.i(211860);
     runOnSDKThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(216658);
+        AppMethodBeat.i(211283);
         TRTCSubCloud.access$6000(TRTCSubCloud.this, "muteLocalVideo mute:" + paramBoolean + ", roomId=" + TRTCSubCloud.this.mRoomInfo.getRoomId());
         TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)TRTCSubCloud.this.mMainCloud.get();
         if (localTRTCCloudImpl != null) {
           localTRTCCloudImpl.muteLocalVideo(paramBoolean, TRTCSubCloud.this);
         }
-        AppMethodBeat.o(216658);
+        AppMethodBeat.o(211283);
       }
     });
-    AppMethodBeat.o(216303);
+    AppMethodBeat.o(211860);
   }
   
   public void muteRemoteAudio(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(216313);
+    AppMethodBeat.i(211990);
     super.muteRemoteAudio(paramString, paramBoolean);
-    AppMethodBeat.o(216313);
+    AppMethodBeat.o(211990);
   }
   
   public void muteRemoteVideoStream(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(216304);
+    AppMethodBeat.i(211866);
     super.muteRemoteVideoStream(paramString, paramBoolean);
-    AppMethodBeat.o(216304);
+    AppMethodBeat.o(211866);
   }
   
   public void onAudioQosChanged(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(216362);
+    AppMethodBeat.i(212189);
     TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mMainCloud.get();
     if (localTRTCCloudImpl != null) {
       localTRTCCloudImpl.onAudioQosChanged(this, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(216362);
+    AppMethodBeat.o(212189);
   }
   
   public void onIdrFpsChanged(int paramInt)
   {
-    AppMethodBeat.i(216365);
+    AppMethodBeat.i(212203);
     TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mMainCloud.get();
     if (localTRTCCloudImpl != null) {
       localTRTCCloudImpl.onIdrFpsChanged(this, paramInt);
     }
-    AppMethodBeat.o(216365);
+    AppMethodBeat.o(212203);
   }
   
   public void onVideoConfigChanged(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(216366);
+    AppMethodBeat.i(212211);
     TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mMainCloud.get();
     if (localTRTCCloudImpl != null) {
       localTRTCCloudImpl.onVideoConfigChanged(this, paramInt, paramBoolean);
     }
-    AppMethodBeat.o(216366);
+    AppMethodBeat.o(212211);
   }
   
   public void onVideoQosChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    AppMethodBeat.i(216364);
+    AppMethodBeat.i(212196);
     TRTCCloudImpl localTRTCCloudImpl = (TRTCCloudImpl)this.mMainCloud.get();
     if (localTRTCCloudImpl != null) {
       localTRTCCloudImpl.onVideoQosChanged(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
     }
-    AppMethodBeat.o(216364);
+    AppMethodBeat.o(212196);
   }
   
   public void pauseAudioEffect(int paramInt) {}
@@ -739,9 +797,9 @@ public class TRTCSubCloud
   
   public boolean sendCustomCmdMsg(int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(216356);
+    AppMethodBeat.i(212172);
     paramBoolean1 = super.sendCustomCmdMsg(paramInt, paramArrayOfByte, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(216356);
+    AppMethodBeat.o(212172);
     return paramBoolean1;
   }
   
@@ -749,9 +807,9 @@ public class TRTCSubCloud
   
   public boolean sendSEIMsg(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(216358);
+    AppMethodBeat.i(212176);
     boolean bool = super.sendSEIMsg(paramArrayOfByte, paramInt);
-    AppMethodBeat.o(216358);
+    AppMethodBeat.o(212176);
     return bool;
   }
   
@@ -763,41 +821,41 @@ public class TRTCSubCloud
   
   public void setAudioFrameListener(final TRTCCloudListener.TRTCAudioFrameListener paramTRTCAudioFrameListener)
   {
-    AppMethodBeat.i(216360);
+    AppMethodBeat.i(212183);
     runOnSDKThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(216641);
-        TRTCSubCloud.access$7900(TRTCSubCloud.this, "SubCloud setAudioFrameListener " + paramTRTCAudioFrameListener);
-        TRTCSubCloud.access$8002(TRTCSubCloud.this, paramTRTCAudioFrameListener);
+        AppMethodBeat.i(211231);
+        TRTCSubCloud.access$8000(TRTCSubCloud.this, "SubCloud setAudioFrameListener " + paramTRTCAudioFrameListener);
+        TRTCSubCloud.access$8102(TRTCSubCloud.this, paramTRTCAudioFrameListener);
         if (TRTCSubCloud.this.mAudioFrameListener == null)
         {
           TRTCSubCloud.this.mRoomInfo.forEachUser(new TRTCRoomInfo.UserAction()
           {
             public final void accept(String paramAnonymous2String, TRTCRoomInfo.UserInfo paramAnonymous2UserInfo)
             {
-              AppMethodBeat.i(215875);
+              AppMethodBeat.i(211272);
               TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(String.valueOf(paramAnonymous2UserInfo.tinyID), null);
-              AppMethodBeat.o(215875);
+              AppMethodBeat.o(211272);
             }
           });
-          AppMethodBeat.o(216641);
+          AppMethodBeat.o(211231);
           return;
         }
         TRTCSubCloud.this.mRoomInfo.forEachUser(new TRTCRoomInfo.UserAction()
         {
           public final void accept(String paramAnonymous2String, TRTCRoomInfo.UserInfo paramAnonymous2UserInfo)
           {
-            AppMethodBeat.i(216086);
+            AppMethodBeat.i(211270);
             TXCAudioEngine.getInstance().setSetAudioEngineRemoteStreamDataListener(String.valueOf(paramAnonymous2UserInfo.tinyID), TRTCSubCloud.this);
-            AppMethodBeat.o(216086);
+            AppMethodBeat.o(211270);
           }
         });
-        AppMethodBeat.o(216641);
+        AppMethodBeat.o(211231);
       }
     });
-    AppMethodBeat.o(216360);
+    AppMethodBeat.o(212183);
   }
   
   public void setAudioPlayoutVolume(int paramInt) {}
@@ -821,16 +879,16 @@ public class TRTCSubCloud
   
   public void setDebugViewMargin(String paramString, TRTCCloud.TRTCViewMargin paramTRTCViewMargin)
   {
-    AppMethodBeat.i(216349);
+    AppMethodBeat.i(212133);
     super.setDebugViewMargin(paramString, paramTRTCViewMargin);
-    AppMethodBeat.o(216349);
+    AppMethodBeat.o(212133);
   }
   
   public void setDefaultStreamRecvMode(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(216284);
+    AppMethodBeat.i(211790);
     super.setDefaultStreamRecvMode(paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(216284);
+    AppMethodBeat.o(211790);
   }
   
   public void setEyeScaleLevel(int paramInt) {}
@@ -856,16 +914,16 @@ public class TRTCSubCloud
   
   public void setListener(TRTCCloudListener paramTRTCCloudListener)
   {
-    AppMethodBeat.i(216271);
+    AppMethodBeat.i(211718);
     super.setListener(paramTRTCCloudListener);
-    AppMethodBeat.o(216271);
+    AppMethodBeat.o(211718);
   }
   
   public void setListenerHandler(Handler paramHandler)
   {
-    AppMethodBeat.i(216274);
+    AppMethodBeat.i(211730);
     super.setListenerHandler(paramHandler);
-    AppMethodBeat.o(216274);
+    AppMethodBeat.o(211730);
   }
   
   public int setLocalVideoRenderListener(int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener)
@@ -883,9 +941,9 @@ public class TRTCSubCloud
   
   public void setMixTranscodingConfig(TRTCCloudDef.TRTCTranscodingConfig paramTRTCTranscodingConfig)
   {
-    AppMethodBeat.i(216355);
+    AppMethodBeat.i(212168);
     super.setMixTranscodingConfig(paramTRTCTranscodingConfig);
-    AppMethodBeat.o(216355);
+    AppMethodBeat.o(212168);
   }
   
   public void setMotionMute(boolean paramBoolean) {}
@@ -896,61 +954,61 @@ public class TRTCSubCloud
   
   public int setPriorRemoteVideoStreamType(int paramInt)
   {
-    AppMethodBeat.i(216310);
+    AppMethodBeat.i(211977);
     paramInt = super.setPriorRemoteVideoStreamType(paramInt);
-    AppMethodBeat.o(216310);
+    AppMethodBeat.o(211977);
     return paramInt;
   }
   
   public void setRemoteAudioVolume(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216316);
+    AppMethodBeat.i(211994);
     super.setRemoteAudioVolume(paramString, paramInt);
-    AppMethodBeat.o(216316);
+    AppMethodBeat.o(211994);
   }
   
   public void setRemoteSubStreamViewFillMode(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216296);
+    AppMethodBeat.i(211834);
     super.setRemoteSubStreamViewFillMode(paramString, paramInt);
-    AppMethodBeat.o(216296);
+    AppMethodBeat.o(211834);
   }
   
   public void setRemoteSubStreamViewRotation(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216298);
+    AppMethodBeat.i(211841);
     super.setRemoteSubStreamViewRotation(paramString, paramInt);
-    AppMethodBeat.o(216298);
+    AppMethodBeat.o(211841);
   }
   
   public int setRemoteVideoRenderListener(String paramString, int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoRenderListener paramTRTCVideoRenderListener)
   {
-    AppMethodBeat.i(216337);
+    AppMethodBeat.i(212043);
     paramInt1 = super.setRemoteVideoRenderListener(paramString, paramInt1, paramInt2, paramTRTCVideoRenderListener);
-    AppMethodBeat.o(216337);
+    AppMethodBeat.o(212043);
     return paramInt1;
   }
   
   public int setRemoteVideoStreamType(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216311);
+    AppMethodBeat.i(211986);
     paramInt = super.setRemoteVideoStreamType(paramString, paramInt);
-    AppMethodBeat.o(216311);
+    AppMethodBeat.o(211986);
     return paramInt;
   }
   
   public void setRemoteViewFillMode(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216307);
+    AppMethodBeat.i(211968);
     super.setRemoteViewFillMode(paramString, paramInt);
-    AppMethodBeat.o(216307);
+    AppMethodBeat.o(211968);
   }
   
   public void setRemoteViewRotation(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216308);
+    AppMethodBeat.i(211970);
     super.setRemoteViewRotation(paramString, paramInt);
-    AppMethodBeat.o(216308);
+    AppMethodBeat.o(211970);
   }
   
   public void setReverbType(int paramInt) {}
@@ -974,20 +1032,20 @@ public class TRTCSubCloud
   
   public void showDebugView(int paramInt)
   {
-    AppMethodBeat.i(216348);
+    AppMethodBeat.i(212127);
     super.showDebugView(paramInt);
-    AppMethodBeat.o(216348);
+    AppMethodBeat.o(212127);
   }
   
   public void snapshotVideo(final String paramString, final int paramInt, final TRTCCloudListener.TRTCSnapshotListener paramTRTCSnapshotListener)
   {
-    AppMethodBeat.i(216301);
+    AppMethodBeat.i(211854);
     apiLog(String.format("snapshotVideo user:%s streamType:%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
     runOnSDKThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(215864);
+        AppMethodBeat.i(211287);
         if (paramString != null)
         {
           TRTCRoomInfo.UserInfo localUserInfo = TRTCSubCloud.this.mRoomInfo.getUser(paramString);
@@ -1016,22 +1074,22 @@ public class TRTCSubCloud
             {
               public final void onTakePhotoComplete(final Bitmap paramAnonymous2Bitmap)
               {
-                AppMethodBeat.i(216147);
+                AppMethodBeat.i(211249);
                 TRTCSubCloud.access$5700(TRTCSubCloud.this, new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(215938);
-                    if (TRTCSubCloud.5.this.ZQW != null) {
-                      TRTCSubCloud.5.this.ZQW.onSnapshotComplete(paramAnonymous2Bitmap);
+                    AppMethodBeat.i(211281);
+                    if (TRTCSubCloud.5.this.ahVs != null) {
+                      TRTCSubCloud.5.this.ahVs.onSnapshotComplete(paramAnonymous2Bitmap);
                     }
-                    AppMethodBeat.o(215938);
+                    AppMethodBeat.o(211281);
                   }
                 });
-                AppMethodBeat.o(216147);
+                AppMethodBeat.o(211249);
               }
             });
-            AppMethodBeat.o(215864);
+            AppMethodBeat.o(211287);
             return;
             localObject1 = localObject2;
             if (localUserInfo != null)
@@ -1052,18 +1110,18 @@ public class TRTCSubCloud
           {
             public final void run()
             {
-              AppMethodBeat.i(216521);
-              if (TRTCSubCloud.5.this.ZQW != null) {
-                TRTCSubCloud.5.this.ZQW.onSnapshotComplete(null);
+              AppMethodBeat.i(211241);
+              if (TRTCSubCloud.5.this.ahVs != null) {
+                TRTCSubCloud.5.this.ahVs.onSnapshotComplete(null);
               }
-              AppMethodBeat.o(216521);
+              AppMethodBeat.o(211241);
             }
           });
         }
-        AppMethodBeat.o(215864);
+        AppMethodBeat.o(211287);
       }
     });
-    AppMethodBeat.o(216301);
+    AppMethodBeat.o(211854);
   }
   
   public int startAudioRecording(TRTCCloudDef.TRTCAudioRecordingParams paramTRTCAudioRecordingParams)
@@ -1077,37 +1135,37 @@ public class TRTCSubCloud
   
   public void startPublishCDNStream(TRTCCloudDef.TRTCPublishCDNParam paramTRTCPublishCDNParam)
   {
-    AppMethodBeat.i(216351);
+    AppMethodBeat.i(212143);
     super.startPublishCDNStream(paramTRTCPublishCDNParam);
-    AppMethodBeat.o(216351);
+    AppMethodBeat.o(212143);
   }
   
   public void startPublishing(String paramString, int paramInt)
   {
-    AppMethodBeat.i(216354);
+    AppMethodBeat.i(212163);
     super.startPublishing(paramString, paramInt);
-    AppMethodBeat.o(216354);
+    AppMethodBeat.o(212163);
   }
   
   public void startRemoteSubStreamView(String paramString, TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(216293);
+    AppMethodBeat.i(211823);
     super.startRemoteSubStreamView(paramString, paramTXCloudVideoView);
-    AppMethodBeat.o(216293);
+    AppMethodBeat.o(211823);
   }
   
   public void startRemoteView(String paramString, TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(216287);
+    AppMethodBeat.i(211807);
     super.startRemoteView(paramString, paramTXCloudVideoView);
-    AppMethodBeat.o(216287);
+    AppMethodBeat.o(211807);
   }
   
   public void startSpeedTest(int paramInt, String paramString1, String paramString2) {}
   
   public void startVolumeLevelCal(boolean paramBoolean)
   {
-    AppMethodBeat.i(216321);
+    AppMethodBeat.i(212006);
     TXCAudioEngine.getInstance();
     TXCAudioEngine.enableAudioVolumeEvaluation(paramBoolean, this.mAudioVolumeEvalInterval);
     if (paramBoolean)
@@ -1116,7 +1174,7 @@ public class TRTCSubCloud
       {
         this.mVolumeLevelCalTask = new a(this);
         this.mSDKHandler.postDelayed(this.mVolumeLevelCalTask, this.mAudioVolumeEvalInterval);
-        AppMethodBeat.o(216321);
+        AppMethodBeat.o(212006);
       }
     }
     else
@@ -1124,16 +1182,16 @@ public class TRTCSubCloud
       this.mVolumeLevelCalTask = null;
       this.mAudioVolumeEvalInterval = 0;
     }
-    AppMethodBeat.o(216321);
+    AppMethodBeat.o(212006);
   }
   
   public void stopAllAudioEffects() {}
   
   public void stopAllRemoteView()
   {
-    AppMethodBeat.i(216299);
+    AppMethodBeat.i(211847);
     super.stopAllRemoteView();
-    AppMethodBeat.o(216299);
+    AppMethodBeat.o(211847);
   }
   
   public void stopAudioEffect(int paramInt) {}
@@ -1148,30 +1206,30 @@ public class TRTCSubCloud
   
   public void stopPublishCDNStream()
   {
-    AppMethodBeat.i(216353);
+    AppMethodBeat.i(212156);
     super.stopPublishCDNStream();
-    AppMethodBeat.o(216353);
+    AppMethodBeat.o(212156);
   }
   
   public void stopPublishing()
   {
-    AppMethodBeat.i(216352);
+    AppMethodBeat.i(212149);
     super.stopPublishing();
-    AppMethodBeat.o(216352);
+    AppMethodBeat.o(212149);
   }
   
   public void stopRemoteSubStreamView(String paramString)
   {
-    AppMethodBeat.i(216295);
+    AppMethodBeat.i(211829);
     super.stopRemoteSubStreamView(paramString);
-    AppMethodBeat.o(216295);
+    AppMethodBeat.o(211829);
   }
   
   public void stopRemoteView(String paramString)
   {
-    AppMethodBeat.i(216291);
+    AppMethodBeat.i(211813);
     super.stopRemoteView(paramString);
-    AppMethodBeat.o(216291);
+    AppMethodBeat.o(211813);
   }
   
   public void stopSpeedTest() {}
@@ -1186,9 +1244,9 @@ public class TRTCSubCloud
   
   public void switchRole(int paramInt)
   {
-    AppMethodBeat.i(216280);
+    AppMethodBeat.i(211765);
     super.switchRole(paramInt);
-    AppMethodBeat.o(216280);
+    AppMethodBeat.o(211765);
   }
   
   static class a
@@ -1198,14 +1256,14 @@ public class TRTCSubCloud
     
     a(TRTCSubCloud paramTRTCSubCloud)
     {
-      AppMethodBeat.i(216069);
+      AppMethodBeat.i(211258);
       this.a = new WeakReference(paramTRTCSubCloud);
-      AppMethodBeat.o(216069);
+      AppMethodBeat.o(211258);
     }
     
     public void run()
     {
-      AppMethodBeat.i(216072);
+      AppMethodBeat.i(211261);
       TRTCSubCloud localTRTCSubCloud = null;
       if (this.a != null) {
         localTRTCSubCloud = (TRTCSubCloud)this.a.get();
@@ -1225,7 +1283,7 @@ public class TRTCSubCloud
         {
           public final void accept(String paramAnonymousString, TRTCRoomInfo.UserInfo paramAnonymousUserInfo)
           {
-            AppMethodBeat.i(216126);
+            AppMethodBeat.i(211252);
             int i = TXCAudioEngine.getInstance().getRemotePlayoutVolumeLevel(String.valueOf(paramAnonymousUserInfo.tinyID));
             if (i > 0)
             {
@@ -1234,31 +1292,31 @@ public class TRTCSubCloud
               paramAnonymousString.volume = i;
               localArrayList.add(paramAnonymousString);
             }
-            AppMethodBeat.o(216126);
+            AppMethodBeat.o(211252);
           }
         });
         TRTCSubCloud.access$6600(localTRTCSubCloud, new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(216517);
-            if (this.ZRe != null) {
-              this.ZRe.onUserVoiceVolume(localArrayList, 0);
+            AppMethodBeat.i(211244);
+            if (this.ahVA != null) {
+              this.ahVA.onUserVoiceVolume(localArrayList, 0);
             }
-            AppMethodBeat.o(216517);
+            AppMethodBeat.o(211244);
           }
         });
         if (localTRTCSubCloud.mAudioVolumeEvalInterval > 0) {
           localTRTCSubCloud.mSDKHandler.postDelayed(localTRTCSubCloud.mVolumeLevelCalTask, localTRTCSubCloud.mAudioVolumeEvalInterval);
         }
       }
-      AppMethodBeat.o(216072);
+      AppMethodBeat.o(211261);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.trtc.TRTCSubCloud
  * JD-Core Version:    0.7.0.1
  */

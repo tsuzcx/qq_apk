@@ -1,77 +1,53 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.accessibility.r;
+import com.tencent.mm.plugin.finder.post.g;
+import com.tencent.mm.plugin.finder.viewmodel.component.at;
+import com.tencent.mm.plugin.finder.viewmodel.teenmode.b;
+import com.tencent.mm.plugin.findersdk.a.av;
+import com.tencent.mm.plugin.findersdk.a.ax;
+import com.tencent.mm.plugin.findersdk.a.bo;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.l;
 import java.util.Set;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSelfUI;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderSelfUI
   extends MMFinderUI
+  implements bo
 {
-  private static final int AuU = 1;
-  private static final int AuV = 2;
-  private static final String AuW = "INNER_ITEM_COUNT";
-  private static final String AuX = "RED_DOT_EXIST_ON_ENTER";
-  private static final String AuY = "key_from_sns_post";
-  private static final String AuZ = "key_auto_show_post_bottom_sheet";
-  private static final String Ava = "key_is_from_discovery";
-  public static final a Avb;
-  private final String TAG = "Finder.FinderSelfUI";
-  private HashMap _$_findViewCache;
+  public static final a FTZ;
   
   static
   {
-    AppMethodBeat.i(249635);
-    Avb = new a((byte)0);
-    AuU = 1;
-    AuV = 2;
-    AuW = "INNER_ITEM_COUNT";
-    AuX = "RED_DOT_EXIST_ON_ENTER";
-    AuY = "key_from_sns_post";
-    AuZ = "key_auto_show_post_bottom_sheet";
-    Ava = "key_is_from_discovery";
-    AppMethodBeat.o(249635);
+    AppMethodBeat.i(347268);
+    FTZ = new a((byte)0);
+    AppMethodBeat.o(347268);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  private static final boolean a(FinderSelfUI paramFinderSelfUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(249640);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(249640);
+    AppMethodBeat.i(347264);
+    s.u(paramFinderSelfUI, "this$0");
+    paramFinderSelfUI.onBackPressed();
+    AppMethodBeat.o(347264);
+    return true;
   }
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(249639);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(249639);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(249634);
-    Set localSet = kotlin.a.ak.setOf(new Class[] { com.tencent.mm.plugin.finder.viewmodel.component.ak.class, com.tencent.mm.plugin.finder.live.viewmodel.component.d.class, com.tencent.mm.plugin.finder.live.ui.post.d.class });
-    AppMethodBeat.o(249634);
+    AppMethodBeat.i(347283);
+    Set localSet = ar.setOf(new Class[] { at.class, l.a(ai.cz(av.class)), l.a(ai.cz(ax.class)), g.class, b.class, r.class });
+    AppMethodBeat.o(347283);
     return localSet;
   }
   
@@ -80,7 +56,7 @@ public final class FinderSelfUI
     AppMethodBeat.i(167589);
     super.onCreate(paramBundle);
     setMMTitle("");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
+    setBackBtn(new FinderSelfUI..ExternalSyntheticLambda0(this));
     AppMethodBeat.o(167589);
   }
   
@@ -90,23 +66,8 @@ public final class FinderSelfUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI$Companion;", "", "()V", "ENTER_FAV_UI_REQ_CODE", "", "getENTER_FAV_UI_REQ_CODE", "()I", "ENTER_LIKE_UI_REQ_CODE", "getENTER_LIKE_UI_REQ_CODE", "INNER_ITEM_COUNT", "", "getINNER_ITEM_COUNT", "()Ljava/lang/String;", "KEY_AUTO_SHOW_POST_BOTTOM_SHEET", "getKEY_AUTO_SHOW_POST_BOTTOM_SHEET", "KEY_FROM_SNS_POST", "getKEY_FROM_SNS_POST", "KEY_IS_FROM_DISCOVERY", "getKEY_IS_FROM_DISCOVERY", "RED_DOT_EXIST_ON_ENTER", "getRED_DOT_EXIST_ON_ENTER", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderSelfUI$Companion;", "", "()V", "ENTER_FAV_UI_REQ_CODE", "", "ENTER_LIKE_UI_REQ_CODE", "INNER_ITEM_COUNT", "", "KEY_AUTO_SHOW_POST_BOTTOM_SHEET", "KEY_FROM_SNS_POST", "KEY_IS_FROM_DISCOVERY", "KEY_NEED_DONE_POST_ACTION", "RED_DOT_EXIST_ON_ENTER", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(FinderSelfUI paramFinderSelfUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(167585);
-      this.Avc.onBackPressed();
-      AppMethodBeat.o(167585);
-      return true;
-    }
-  }
 }
 
 

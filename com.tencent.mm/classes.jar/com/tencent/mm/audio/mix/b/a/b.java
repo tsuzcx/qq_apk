@@ -14,13 +14,13 @@ public final class b
     this.appId = paramString;
   }
   
-  public final void adj()
+  public final void aFi()
   {
     AppMethodBeat.i(136750);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackCleanTask", "runTask, appId:%s", new Object[] { this.appId });
-    com.tencent.mm.audio.mix.b.f.ads().clearCache();
+    com.tencent.mm.audio.mix.b.f.aFr().clearCache();
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackCleanTask", "delete all pcm cache File");
-    ArrayList localArrayList = com.tencent.mm.audio.mix.b.f.ads().adu();
+    ArrayList localArrayList = com.tencent.mm.audio.mix.b.f.aFr().aFt();
     if (localArrayList.size() > 0) {
       a.c(this.appId, localArrayList);
     }

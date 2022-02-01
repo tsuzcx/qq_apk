@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="be" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Menu" />
-    <style name="bo" parent="@android:style/TextAppearance.Material.Widget.Button.Inverse" />
-    <style name="by" parent="@style/a7s" />
-    <style name="c5" parent="@style/a7t" />
-    <style name="dz" parent="@android:style/Widget.Material.Button.Borderless.Colored" />
-    <style name="e1" parent="@android:style/Widget.Material.Button.Colored" />
-    <style name="ev" parent="@android:style/Widget.Material.RatingBar.Indicator" />
-    <style name="ew" parent="@android:style/Widget.Material.RatingBar.Small" />
-    <style name="f2" parent="@android:style/Widget.Material.Spinner.Underlined" />
-    <style name="g8" parent="@style/ak">
-        <item name="dr">?android:colorBackgroundFloating</item>
+    <style name="bg" parent="@android:style/TextAppearance.Material.Widget.ActionBar.Menu" />
+    <style name="bq" parent="@android:style/TextAppearance.Material.Widget.Button.Inverse" />
+    <style name="c0" parent="@style/a8w" />
+    <style name="c7" parent="@style/a8x" />
+    <style name="e1" parent="@android:style/Widget.Material.Button.Borderless.Colored" />
+    <style name="e3" parent="@android:style/Widget.Material.Button.Colored" />
+    <style name="ex" parent="@android:style/Widget.Material.RatingBar.Indicator" />
+    <style name="ey" parent="@android:style/Widget.Material.RatingBar.Small" />
+    <style name="f4" parent="@android:style/Widget.Material.Spinner.Underlined" />
+    <style name="gd" parent="@style/am">
+        <item name="dy">?android:colorBackgroundFloating</item>
     </style>
-    <style name="nx">
+    <style name="ni">
         <item name="android:textAppearance">?android:textAppearanceMediumInverse</item>
         <item name="android:textColor">?android:editTextColor</item>
         <item name="android:gravity">center_vertical</item>
@@ -23,30 +23,30 @@
         <item name="android:breakStrategy">simple</item>
         <item name="android:defaultFocusHighlightEnabled">false</item>
     </style>
-    <style name="pg" parent="@style/pi">
-        <item name="a_">@style/a7u</item>
+    <style name="p5" parent="@style/p7">
+        <item name="aa">@style/a8y</item>
     </style>
-    <style name="pq" parent="@style/lb">
+    <style name="pe" parent="@style/kv">
         <item name="android:windowActionBar">true</item>
-        <item name="a_">@style/a7u</item>
+        <item name="aa">@style/a8y</item>
     </style>
-    <style name="a7s" parent="@style/a7q">
-        <item name="x">?android:actionBarItemBackground</item>
-        <item name="a_">?android:actionMenuTextAppearance</item>
-        <item name="aa">?android:actionMenuTextColor</item>
-        <item name="i7">@drawable/b71</item>
-        <item name="xq">?android:ratingBarStyleIndicator</item>
-        <item name="xr">?android:ratingBarStyleSmall</item>
+    <style name="a8w" parent="@style/a8u">
+        <item name="y">?android:actionBarItemBackground</item>
+        <item name="aa">?android:actionMenuTextAppearance</item>
+        <item name="ab">?android:actionMenuTextColor</item>
+        <item name="ig">@drawable/b58</item>
+        <item name="a0h">?android:ratingBarStyleIndicator</item>
+        <item name="a0i">?android:ratingBarStyleSmall</item>
     </style>
-    <style name="a7t" parent="@style/a7r">
-        <item name="x">?android:actionBarItemBackground</item>
-        <item name="a_">?android:actionMenuTextAppearance</item>
-        <item name="aa">?android:actionMenuTextColor</item>
-        <item name="i7">@drawable/b71</item>
-        <item name="xq">?android:ratingBarStyleIndicator</item>
-        <item name="xr">?android:ratingBarStyleSmall</item>
+    <style name="a8x" parent="@style/a8v">
+        <item name="y">?android:actionBarItemBackground</item>
+        <item name="aa">?android:actionMenuTextAppearance</item>
+        <item name="ab">?android:actionMenuTextColor</item>
+        <item name="ig">@drawable/b58</item>
+        <item name="a0h">?android:ratingBarStyleIndicator</item>
+        <item name="a0i">?android:ratingBarStyleSmall</item>
     </style>
-    <style name="a7u" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
+    <style name="a8y" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ffffffff</item>

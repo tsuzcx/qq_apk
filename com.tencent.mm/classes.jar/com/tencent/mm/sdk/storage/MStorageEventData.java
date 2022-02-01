@@ -55,16 +55,10 @@ public class MStorageEventData
     AppMethodBeat.o(158086);
     return str;
   }
-  
-  public static abstract interface EventType
-  {
-    public static final String BATCH = "batch";
-    public static final String SINGLE = "single";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MStorageEventData
  * JD-Core Version:    0.7.0.1
  */

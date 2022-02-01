@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ksb" android:background="@color/ac_" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" style="@style/nn"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kl3" android:layout_width="@dimen/cn" android:layout_height="@dimen/cp">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kl2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_minus" app:iconColor="@color/Red" />
-    </LinearLayout>
-    <com.tencent.mm.pluginsdk.ui.MMPhoneNumberEditText android:textColor="@color/BW_0_Alpha_0_9" android:textColorHint="@color/ro" android:layout_gravity="bottom" android:id="@id/gai" android:paddingLeft="0.0dip" android:paddingTop="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_marginLeft="@dimen/cn" android:minHeight="@dimen/cp" android:text="@string/jzl" android:hint="@string/dd" android:maxLength="40" android:inputType="phone" style="@style/nn"
-      xmlns:android="http://schemas.android.com/apk/res/android" />
-    <View android:id="@id/ebr" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/ct" android:minHeight="1.0px" android:layout_alignParentBottom="true" />
+<RelativeLayout android:id="@id/iwo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/l7y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/l5w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:text="02:24" android:layout_alignParentBottom="true" />
+    <CheckBox android:gravity="center" android:id="@id/eab" android:background="@drawable/agp" android:focusable="false" android:clickable="false" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/df" android:layout_marginEnd="@dimen/df" android:layout_alignParentEnd="true" />
 </RelativeLayout>

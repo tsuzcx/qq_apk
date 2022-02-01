@@ -1,211 +1,301 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.b.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.publish.l.e;
+import com.tencent.mm.plugin.finder.publish.l.f;
+import com.tencent.mm.plugin.finder.publish.l.i;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.utils.ab;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.utils.f;
-import com.tencent.mm.plugin.findersdk.a.ae;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.protocal.protobuf.ead;
-import com.tencent.mm.protocal.protobuf.ehy;
+import com.tencent.mm.plugin.finder.utils.am;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.utils.i;
+import com.tencent.mm.plugin.findersdk.a.bw;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.awt;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.protocal.protobuf.etj;
+import com.tencent.mm.protocal.protobuf.fby;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.s;
-import java.util.HashMap;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderSharePostUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fromOpenSdk", "", "getFromOpenSdk", "()Z", "setFromOpenSdk", "(Z)V", "loadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getLoadingDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setLoadingDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "onCancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "getOnCancelListener", "()Landroid/content/DialogInterface$OnCancelListener;", "setOnCancelListener", "(Landroid/content/DialogInterface$OnCancelListener;)V", "shareData", "Lcom/tencent/mm/protocal/protobuf/SharePostData;", "getShareData", "()Lcom/tencent/mm/protocal/protobuf/SharePostData;", "setShareData", "(Lcom/tencent/mm/protocal/protobuf/SharePostData;)V", "tipsMask", "Landroid/view/View;", "getTipsMask", "()Landroid/view/View;", "setTipsMask", "(Landroid/view/View;)V", "wording", "getWording", "()Ljava/lang/String;", "setWording", "(Ljava/lang/String;)V", "back", "", "checkPermission", "dealShare", "fallback", "errcode", "", "errMsg", "businessType", "appid", "getLayoutId", "getReportTag", "hasExtStatusFlag", "flag", "", "initMaskView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "showTipsDialog", "showTipsToast", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderSharePostUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "fromOpenSdk", "", "getFromOpenSdk", "()Z", "setFromOpenSdk", "(Z)V", "loadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getLoadingDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setLoadingDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "onCancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "getOnCancelListener", "()Landroid/content/DialogInterface$OnCancelListener;", "setOnCancelListener", "(Landroid/content/DialogInterface$OnCancelListener;)V", "shareData", "Lcom/tencent/mm/protocal/protobuf/SharePostData;", "getShareData", "()Lcom/tencent/mm/protocal/protobuf/SharePostData;", "setShareData", "(Lcom/tencent/mm/protocal/protobuf/SharePostData;)V", "tipsMask", "Landroid/view/View;", "getTipsMask", "()Landroid/view/View;", "setTipsMask", "(Landroid/view/View;)V", "wording", "getWording", "()Ljava/lang/String;", "setWording", "(Ljava/lang/String;)V", "back", "", "checkPermission", "checkRemoteVideo", "rawPath", "videoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MultiMediaVideoChecker$VideoInfo;", "businessType", "appid", "dealShare", "fallback", "errcode", "", "errMsg", "getLayoutId", "getReportTag", "hasExtStatusFlag", "flag", "", "initMaskView", "insertMiaojianExtInfo", "miaojianExtInfo", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "showTipsDialog", "showTipsToast", "Companion", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderSharePostUI
   extends MMFinderUI
 {
+  public static final FinderSharePostUI.a BrG;
+  View BrH;
+  public fby BrI;
+  private boolean BrJ;
   private final String TAG;
-  private HashMap _$_findViewCache;
-  s loadingDialog;
-  private DialogInterface.OnCancelListener nbU;
+  w loadingDialog;
+  private DialogInterface.OnCancelListener qbI;
   private String wording;
-  View xSk;
-  public ehy xSl;
-  private boolean xSm;
+  
+  static
+  {
+    AppMethodBeat.i(365789);
+    BrG = new FinderSharePostUI.a((byte)0);
+    AppMethodBeat.o(365789);
+  }
   
   public FinderSharePostUI()
   {
-    AppMethodBeat.i(239498);
+    AppMethodBeat.i(365626);
     this.TAG = "Finder.FinderSharePostUI";
-    String str = MMApplicationContext.getContext().getString(b.j.app_waiting);
-    p.j(str, "MMApplicationContext.get…ing(R.string.app_waiting)");
+    String str = MMApplicationContext.getContext().getString(l.i.app_waiting);
+    s.s(str, "getContext().getString(R.string.app_waiting)");
     this.wording = str;
-    AppMethodBeat.o(239498);
+    AppMethodBeat.o(365626);
   }
   
-  private final void MQ(final int paramInt)
+  private final void Oq(final int paramInt)
   {
-    AppMethodBeat.i(239488);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new h(this, paramInt));
-    AppMethodBeat.o(239488);
+    AppMethodBeat.i(365649);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new j(this, paramInt));
+    AppMethodBeat.o(365649);
   }
   
-  private final void ckA()
+  private static final ah a(ah.f paramf, FinderSharePostUI paramFinderSharePostUI, kotlin.g.a.b paramb, b.a parama)
   {
-    AppMethodBeat.i(239487);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-    AppMethodBeat.o(239487);
-  }
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(239517);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    AppMethodBeat.i(365712);
+    s.u(paramf, "$eventInfo");
+    s.u(paramFinderSharePostUI, "this$0");
+    s.u(paramb, "$callback");
+    label48:
+    int i;
+    if ((parama.errType == 0) && (parama.errCode == 0)) {
+      if (parama == null)
+      {
+        parama = null;
+        paramf.aqH = parama;
+        Log.i(paramFinderSharePostUI.TAG, s.X("eventInfo = ", paramf.aqH));
+        paramFinderSharePostUI = (awt)paramf.aqH;
+        if ((paramFinderSharePostUI == null) || (paramFinderSharePostUI.ZHK != 1)) {
+          break label238;
+        }
+        i = 1;
+        label87:
+        if (i == 0) {
+          break label244;
+        }
+        com.tencent.mm.plugin.report.service.h.OAn.p(1253L, 72L, 1L);
+        paramb.invoke(null);
+      }
     }
-    AppMethodBeat.o(239517);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(239514);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    for (;;)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      paramf = ah.aiuX;
+      AppMethodBeat.o(365712);
+      return paramf;
+      parama = (buq)parama.ott;
+      if (parama == null)
+      {
+        parama = null;
+        break;
+      }
+      parama = parama.aabt;
+      if (parama == null)
+      {
+        parama = null;
+        break;
+      }
+      parama = (awt)p.oL((List)parama);
+      break;
+      com.tencent.mm.plugin.report.service.h.OAn.p(1253L, 71L, 1L);
+      Log.i(paramFinderSharePostUI.TAG, "errorType = " + parama.errType + " errorCode = " + parama.errCode + "  errorMsg = " + parama.errMsg);
+      break label48;
+      label238:
+      i = 0;
+      break label87;
+      label244:
+      paramb.invoke(paramf.aqH);
     }
-    AppMethodBeat.o(239514);
-    return localView1;
   }
   
-  public final ehy dvW()
+  private static final void a(FinderSharePostUI paramFinderSharePostUI, DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(239480);
-    ehy localehy = this.xSl;
-    if (localehy == null) {
-      p.bGy("shareData");
-    }
-    AppMethodBeat.o(239480);
-    return localehy;
+    AppMethodBeat.i(365666);
+    s.u(paramFinderSharePostUI, "this$0");
+    paramFinderSharePostUI.cLO();
+    AppMethodBeat.o(365666);
   }
   
-  public final String dvl()
+  private static final void a(FinderSharePostUI paramFinderSharePostUI, DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(365692);
+    s.u(paramFinderSharePostUI, "this$0");
+    paramDialogInterface = paramFinderSharePostUI.efS().abBz;
+    Object localObject;
+    if (paramDialogInterface == null)
+    {
+      paramDialogInterface = "";
+      localObject = paramFinderSharePostUI.efS().abBz;
+      if (localObject != null) {
+        break label84;
+      }
+      localObject = "";
+    }
+    for (;;)
+    {
+      paramFinderSharePostUI.e(-6, "teenmode", paramDialogInterface, (String)localObject);
+      paramFinderSharePostUI.finish();
+      AppMethodBeat.o(365692);
+      return;
+      localObject = paramDialogInterface.businessType;
+      paramDialogInterface = (DialogInterface)localObject;
+      if (localObject != null) {
+        break;
+      }
+      paramDialogInterface = "";
+      break;
+      label84:
+      String str = ((etj)localObject).appid;
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+    }
+  }
+  
+  private static final void a(FinderSharePostUI paramFinderSharePostUI, View paramView)
+  {
+    AppMethodBeat.i(365677);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderSharePostUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderSharePostUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderSharePostUI, "this$0");
+    paramFinderSharePostUI.cLO();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderSharePostUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(365677);
+  }
+  
+  private final void cLO()
+  {
+    AppMethodBeat.i(365639);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this));
+    AppMethodBeat.o(365639);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final void e(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(365898);
+    s.u(paramString1, "errMsg");
+    Log.i(this.TAG, "fallback errcode:" + paramInt + ", " + paramString1 + ", " + paramString3);
+    if (!this.BrJ)
+    {
+      am localam = am.GhD;
+      am.e(paramInt, paramString1, paramString2, paramString3);
+    }
+    AppMethodBeat.o(365898);
+  }
+  
+  public final fby efS()
+  {
+    AppMethodBeat.i(365849);
+    fby localfby = this.BrI;
+    if (localfby != null)
+    {
+      AppMethodBeat.o(365849);
+      return localfby;
+    }
+    s.bIx("shareData");
+    AppMethodBeat.o(365849);
+    return null;
+  }
+  
+  public final String efe()
   {
     return this.TAG;
   }
   
-  public final void e(int paramInt, String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(239491);
-    p.k(paramString1, "errMsg");
-    Log.i(this.TAG, "fallback errcode:" + paramInt + ", " + paramString1 + ", " + paramString3);
-    if (!this.xSm)
-    {
-      ab localab = ab.AEA;
-      ab.e(paramInt, paramString1, paramString2, paramString3);
-    }
-    AppMethodBeat.o(239491);
-  }
-  
   public final int getLayoutId()
   {
-    return b.g.finder_share_post_ui;
+    return l.f.finder_share_post_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    int m = 0;
-    AppMethodBeat.i(239484);
+    int k = 0;
+    AppMethodBeat.i(365873);
     super.onCreate(paramBundle);
     paramBundle = getSupportActionBar();
     if (paramBundle != null) {
       paramBundle.hide();
     }
-    this.xSk = findViewById(b.f.mask_finder_entrance_hide_tips);
-    paramBundle = (TextView)findViewById(b.f.finder_entrance_hide_tips_title);
-    p.j(paramBundle, "titleTv");
-    f.i(paramBundle);
-    paramBundle = (TextView)findViewById(b.f.finder_entrance_hide_tips_btn);
-    p.j(paramBundle, "okBtn");
-    f.i(paramBundle);
-    paramBundle.setOnClickListener((View.OnClickListener)new d(this));
-    this.nbU = ((DialogInterface.OnCancelListener)new e(this));
-    this.loadingDialog = s.a((Context)getContext(), (CharSequence)this.wording, true, 0, this.nbU);
-    paramBundle = (com.tencent.mm.cd.a)new ehy();
+    this.BrH = findViewById(l.e.mask_finder_entrance_hide_tips);
+    paramBundle = (TextView)findViewById(l.e.finder_entrance_hide_tips_title);
+    s.s(paramBundle, "titleTv");
+    i.setTextBold(paramBundle);
+    paramBundle = (TextView)findViewById(l.e.finder_entrance_hide_tips_btn);
+    s.s(paramBundle, "okBtn");
+    i.setTextBold(paramBundle);
+    paramBundle.setOnClickListener(new FinderSharePostUI..ExternalSyntheticLambda2(this));
+    this.qbI = new FinderSharePostUI..ExternalSyntheticLambda0(this);
+    this.loadingDialog = w.a((Context)getContext(), (CharSequence)this.wording, true, 0, this.qbI);
+    paramBundle = (com.tencent.mm.bx.a)new fby();
     byte[] arrayOfByte = getIntent().getByteArrayExtra("KEY_POST_FROM_SHARE");
     try
     {
       paramBundle.parseFrom(arrayOfByte);
-      paramBundle = (ehy)paramBundle;
+      paramBundle = (fby)paramBundle;
       if (paramBundle != null)
       {
-        this.xSl = paramBundle;
-        paramBundle = this.xSl;
-        if (paramBundle == null) {
-          p.bGy("shareData");
-        }
-        paramBundle = paramBundle.UjV;
-        if (paramBundle != null)
+        s.u(paramBundle, "<set-?>");
+        this.BrI = paramBundle;
+        paramBundle = efS().abBz;
+        if (paramBundle == null)
         {
-          bool = paramBundle.xSm;
-          this.xSm = bool;
-          bool = ((ak)com.tencent.mm.kernel.h.ag(ak.class)).showFinderEntry();
-          if ((z.bde() & 0x0) == 0L) {
-            break label432;
+          bool1 = false;
+          this.BrJ = bool1;
+          bool2 = ((cn)com.tencent.mm.kernel.h.az(cn.class)).showFinderEntry();
+          if ((z.bAR() & 0x0) == 0L) {
+            break label384;
           }
           i = 1;
           if (i != 0) {
-            break label437;
+            break label389;
           }
-          j = 1;
-          paramBundle = aj.AGc;
-          i = aj.eei();
-          paramBundle = com.tencent.mm.kernel.h.ae(ae.class);
-          p.j(paramBundle, "MMKernel.service(IFinder…enModeConfig::class.java)");
-          if (!((ae)paramBundle).dYT())
-          {
-            paramBundle = com.tencent.mm.kernel.h.ae(ae.class);
-            p.j(paramBundle, "MMKernel.service(IFinder…enModeConfig::class.java)");
-            if (!((ae)paramBundle).dYV()) {
-              break label442;
-            }
-          }
-          k = 1;
-          paramBundle = com.tencent.mm.plugin.finder.storage.d.AjH;
-          switch (((Number)com.tencent.mm.plugin.finder.storage.d.dTZ().aSr()).intValue())
+          i = 1;
+          paramBundle = av.GiL;
+          j = av.fgg();
+          bool1 = ((bw)com.tencent.mm.kernel.h.ax(bw.class)).aBu();
+          paramBundle = com.tencent.mm.plugin.finder.storage.d.FAy;
+          switch (((Number)com.tencent.mm.plugin.finder.storage.d.eSs().bmg()).intValue())
           {
           default: 
-            if (!bool)
+            if (!bool2)
             {
-              MQ(b.j.finder_share_post_tips1);
-              i = m;
+              Oq(l.i.finder_share_post_tips1);
+              i = k;
               if (i == 0) {
-                break label580;
+                break label524;
               }
-              com.tencent.mm.ae.d.h((kotlin.g.a.a)new f(this));
-              AppMethodBeat.o(239484);
+              com.tencent.mm.ae.d.B((kotlin.g.a.a)new h(this));
+              AppMethodBeat.o(365873);
             }
             break;
           }
@@ -219,52 +309,49 @@ public final class FinderSharePostUI
         Log.printDebugStack("safeParser", "", new Object[] { paramBundle });
         paramBundle = null;
         continue;
-        boolean bool = false;
+        boolean bool1 = paramBundle.BrJ;
         continue;
-        label432:
+        label384:
         int i = 0;
         continue;
-        label437:
-        int j = 0;
+        label389:
+        i = 0;
         continue;
-        label442:
-        int k = 0;
+        boolean bool2 = false;
         continue;
-        bool = false;
+        int j = 1;
         continue;
-        i = 1;
+        i = 0;
         continue;
-        j = 0;
+        bool1 = true;
         continue;
-        k = 1;
-        continue;
-        if (j == 0)
+        if (i == 0)
         {
-          com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new g(this));
-          i = m;
+          com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new i(this));
+          i = k;
         }
-        else if (i == 1)
+        else if (j == 1)
         {
-          MQ(b.j.finder_share_post_tips2);
-          i = m;
+          Oq(l.i.finder_share_post_tips2);
+          i = k;
         }
-        else if (k != 0)
+        else if (bool1)
         {
           paramBundle = this.loadingDialog;
           if (paramBundle != null) {
             paramBundle.dismiss();
           }
-          com.tencent.mm.ui.base.h.a((Context)getContext(), getResources().getString(b.j.finder_teen_mode_title_enable), "", false, (DialogInterface.OnClickListener)new b(this));
-          i = m;
+          k.a((Context)getContext(), getResources().getString(l.i.finder_teen_mode_title_enable), "", false, new FinderSharePostUI..ExternalSyntheticLambda1(this));
+          i = k;
         }
         else
         {
           i = 1;
         }
       }
-      ckA();
-      label580:
-      AppMethodBeat.o(239484);
+      cLO();
+      label524:
+      AppMethodBeat.o(365873);
     }
   }
   
@@ -276,130 +363,138 @@ public final class FinderSharePostUI
   
   public final void setTipsMask(View paramView)
   {
-    this.xSk = paramView;
+    this.BrH = paramView;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    a(FinderSharePostUI paramFinderSharePostUI)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements DialogInterface.OnClickListener
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    b(FinderSharePostUI paramFinderSharePostUI) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(287680);
-      paramDialogInterface = this.xSn.dvW().UjV;
-      if (paramDialogInterface != null)
-      {
-        localObject = paramDialogInterface.businessType;
-        paramDialogInterface = (DialogInterface)localObject;
-        if (localObject != null) {}
-      }
-      else
-      {
-        paramDialogInterface = "";
-      }
-      p.j(paramDialogInterface, "shareData.sdkPost?.businessType ?: \"\"");
-      Object localObject = this.xSn.dvW().UjV;
-      if (localObject != null)
-      {
-        String str = ((ead)localObject).appid;
-        localObject = str;
-        if (str != null) {}
-      }
-      else
-      {
-        localObject = "";
-      }
-      p.j(localObject, "shareData.sdkPost?.appid ?: \"\"");
-      this.xSn.e(-6, "teenmode", paramDialogInterface, (String)localObject);
-      this.xSn.finish();
-      AppMethodBeat.o(287680);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    c(FinderSharePostUI paramFinderSharePostUI, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, aa.a parama, aa.f paramf, String paramString6, String paramString7)
+    b(FinderSharePostUI paramFinderSharePostUI)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    c(FinderSharePostUI paramFinderSharePostUI, String paramString1, String paramString2)
+    {
+      super();
+    }
+    
+    private static final void a(FinderSharePostUI paramFinderSharePostUI, String paramString1, String paramString2, DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(364283);
+      s.u(paramFinderSharePostUI, "this$0");
+      paramFinderSharePostUI.e(-7, "", paramString1, paramString2);
+      FinderSharePostUI.b(paramFinderSharePostUI);
+      AppMethodBeat.o(364283);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements View.OnClickListener
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    d(FinderSharePostUI paramFinderSharePostUI) {}
-    
-    public final void onClick(View paramView)
+    d(FinderSharePostUI paramFinderSharePostUI, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(277371);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderSharePostUI$initMaskView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      FinderSharePostUI.a(this.xSn);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderSharePostUI$initMaskView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(277371);
+      super();
+    }
+    
+    private static final void a(FinderSharePostUI paramFinderSharePostUI, String paramString1, String paramString2, DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(364355);
+      s.u(paramFinderSharePostUI, "this$0");
+      paramFinderSharePostUI.e(-8, "", paramString1, paramString2);
+      FinderSharePostUI.b(paramFinderSharePostUI);
+      AppMethodBeat.o(364355);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    implements DialogInterface.OnCancelListener
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    e(FinderSharePostUI paramFinderSharePostUI) {}
-    
-    public final void onCancel(DialogInterface paramDialogInterface)
+    e(FinderSharePostUI paramFinderSharePostUI, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(264040);
-      FinderSharePostUI.a(this.xSn);
-      AppMethodBeat.o(264040);
+      super();
+    }
+    
+    private static final void a(FinderSharePostUI paramFinderSharePostUI, String paramString1, String paramString2, DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(364358);
+      s.u(paramFinderSharePostUI, "this$0");
+      paramFinderSharePostUI.e(-9, "", paramString1, paramString2);
+      FinderSharePostUI.b(paramFinderSharePostUI);
+      AppMethodBeat.o(364358);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     f(FinderSharePostUI paramFinderSharePostUI)
     {
       super();
     }
+    
+    private static final void b(FinderSharePostUI paramFinderSharePostUI, DialogInterface paramDialogInterface, int paramInt)
+    {
+      AppMethodBeat.i(364383);
+      s.u(paramFinderSharePostUI, "this$0");
+      FinderSharePostUI.b(paramFinderSharePostUI);
+      AppMethodBeat.o(364383);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "eventInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.b<awt, ah>
   {
-    g(FinderSharePostUI paramFinderSharePostUI)
+    g(String paramString1, int paramInt1, String paramString2, FinderSharePostUI paramFinderSharePostUI, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, ah.a parama, String paramString7, String paramString8, ah.f<String> paramf)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    h(FinderSharePostUI paramFinderSharePostUI, int paramInt)
+    h(FinderSharePostUI paramFinderSharePostUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    i(FinderSharePostUI paramFinderSharePostUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    j(FinderSharePostUI paramFinderSharePostUI, int paramInt)
     {
       super();
     }
@@ -407,7 +502,7 @@ public final class FinderSharePostUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderSharePostUI
  * JD-Core Version:    0.7.0.1
  */

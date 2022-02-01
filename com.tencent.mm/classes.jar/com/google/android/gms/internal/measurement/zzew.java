@@ -1,10 +1,8 @@
 package com.google.android.gms.internal.measurement;
 
 import android.net.Uri;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public final class zzew
 {
   private static final zzxc zzagc;
@@ -128,7 +126,7 @@ public final class zzew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzew
  * JD-Core Version:    0.7.0.1
  */

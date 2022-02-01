@@ -1,448 +1,410 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.compatible.util.r;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.appbrand.widget.recyclerview.b;
 import com.tencent.mm.plugin.fts.a.e;
-import com.tencent.mm.plugin.fts.ui.FTSMainUI;
-import com.tencent.mm.plugin.fts.ui.k;
-import com.tencent.mm.plugin.fts.ui.l;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.at;
-import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
-import com.tencent.mm.plugin.websearch.webview.f;
-import com.tencent.mm.plugin.websearch.webview.g;
-import com.tencent.mm.protocal.protobuf.dio;
-import com.tencent.mm.protocal.protobuf.fks;
-import com.tencent.mm.protocal.protobuf.fll;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.plugin.fts.ui.FTSBaseMainUI;
+import com.tencent.mm.plugin.fts.ui.p.d;
+import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.protocal.protobuf.aqp;
+import com.tencent.mm.protocal.protobuf.dfv;
+import com.tencent.mm.protocal.protobuf.dhb;
+import com.tencent.mm.protocal.protobuf.eqy;
+import com.tencent.mm.protocal.protobuf.fkk;
+import com.tencent.mm.protocal.protobuf.fkl;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.xweb.ad;
-import com.tencent.xweb.x;
-import java.util.HashMap;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
+import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.m;
+import com.tencent.mm.view.recyclerview.n;
+import com.tencent.mm.view.recyclerview.o;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.am;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fts/ui/widget/KeyboardSugLogic;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "ftsMainUI", "Lcom/tencent/mm/plugin/fts/ui/FTSBaseMainUI;", "(Lcom/tencent/mm/plugin/fts/ui/FTSBaseMainUI;)V", "TAG", "", "clickListener", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/OnItemClickListener;", "getClickListener", "()Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/OnItemClickListener;", "currentQuery", "getCurrentQuery", "()Ljava/lang/String;", "setCurrentQuery", "(Ljava/lang/String;)V", "currentSearchId", "getCurrentSearchId", "setCurrentSearchId", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/fts/ui/widget/KeyboardSugItem;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "getFtsMainUI", "()Lcom/tencent/mm/plugin/fts/ui/FTSBaseMainUI;", "isKeyboardShow", "", "isScrolled", "()Z", "setScrolled", "(Z)V", "lastStartTime", "", "netSceneKeyboardSug", "Lcom/tencent/mm/plugin/fts/ui/model/NetSceneKeyboardSug;", "getNetSceneKeyboardSug", "()Lcom/tencent/mm/plugin/fts/ui/model/NetSceneKeyboardSug;", "setNetSceneKeyboardSug", "(Lcom/tencent/mm/plugin/fts/ui/model/NetSceneKeyboardSug;)V", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "response", "Lcom/tencent/mm/protocal/protobuf/KeyBoardSugSearchResponse;", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/KeyBoardSugSearchResponse;", "setResponse", "(Lcom/tencent/mm/protocal/protobuf/KeyBoardSugSearchResponse;)V", "scrollListener", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "getScrollListener", "()Lcom/tencent/mm/view/recyclerview/WxRVListener;", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "destroy", "", "onKeyboardHide", "onKeyboardShow", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "reportSugAction", "sugItem", "Lcom/tencent/mm/protocal/protobuf/FTSRelatedSugItem;", "action", "clickType", "reset", "startSearch", "query", "searchId", "startWebSearch", "stopSearch", "updateView", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  implements com.tencent.mm.an.i, d
+  implements com.tencent.mm.am.h
 {
-  private static final int maxHeight;
-  i BNE;
-  private boolean BSQ;
-  public WebSearchWebView BTk;
-  private FrameLayout BTl;
-  private fll BTm;
-  public g<fll> BTn;
-  private com.tencent.mm.plugin.fts.ui.e.a BTo;
-  String fOc;
-  private boolean fwi;
-  private FrameLayout soh;
+  public WxRecyclerView AZd;
+  final b HDF;
+  private final FTSBaseMainUI HDH;
+  boolean HDI;
+  private final o HDJ;
+  public String HDK;
+  public dfv HDL;
+  public com.tencent.mm.plugin.fts.ui.d.c HDM;
+  public String HDN;
+  public boolean HDO;
+  private final String TAG;
+  private ArrayList<i> pUj;
+  private long teM;
   
-  static
+  public j(FTSBaseMainUI paramFTSBaseMainUI)
   {
-    AppMethodBeat.i(176953);
-    maxHeight = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 163);
-    AppMethodBeat.o(176953);
+    AppMethodBeat.i(265884);
+    this.HDH = paramFTSBaseMainUI;
+    this.TAG = "MicroMsg.FTS.KeyboardSugLogic";
+    this.AZd = ((WxRecyclerView)this.HDH.findViewById(p.d.fts_keyboard_sug_rv));
+    this.pUj = new ArrayList();
+    this.HDJ = ((o)new c(this));
+    this.HDF = new j..ExternalSyntheticLambda0(this);
+    com.tencent.mm.kernel.h.aZW().a(4591, (com.tencent.mm.am.h)this);
+    paramFTSBaseMainUI = this.AZd;
+    this.HDH.getContext();
+    paramFTSBaseMainUI.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(0, false));
+    paramFTSBaseMainUI = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.g)new a(this), this.pUj, true);
+    this.AZd.setAdapter((RecyclerView.a)paramFTSBaseMainUI);
+    paramFTSBaseMainUI.agOS = this.HDJ;
+    this.HDK = "";
+    this.HDN = "";
+    AppMethodBeat.o(265884);
   }
   
-  public j(i parami, FrameLayout paramFrameLayout)
+  private static final void a(j paramj, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(176944);
-    this.fOc = "";
-    this.soh = paramFrameLayout;
-    this.BNE = parami;
-    this.BTm = new fll();
-    this.BTm.sessionId = e.eqP();
-    this.BTm.scene = 1;
-    Object localObject1 = this.BTm;
-    Object localObject2 = new HashMap();
-    ((HashMap)localObject2).put("scene", "1");
-    ((HashMap)localObject2).put("lang", LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
-    ((HashMap)localObject2).put("platform", "android");
-    ((HashMap)localObject2).put("version", String.valueOf(ai.anf(5).bkM()));
-    ((HashMap)localObject2).put("netType", ai.anV());
-    ((HashMap)localObject2).put("wechatVersion", BuildInfo.CLIENT_VERSION);
-    ((HashMap)localObject2).put("webSearchVersion", String.valueOf(ai.anf(0).bkM()));
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("file://");
-    localStringBuffer.append(ai.anf(5).gRd());
-    localStringBuffer.append("/");
-    localStringBuffer.append("app.html");
-    localStringBuffer.append("?");
-    localStringBuffer.append(ai.toUrlParams((Map)localObject2));
-    ((fll)localObject1).url = localStringBuffer.toString();
-    this.BTn = new g(this);
-    this.BTo = new com.tencent.mm.plugin.fts.ui.e.a(this);
-    localObject1 = new f((byte)0);
-    localObject2 = new com.tencent.mm.plugin.fts.ui.e.b();
-    this.BTk = new WebSearchWebView(parami.BSg);
-    this.BTk.a((x)localObject2, (ad)localObject1);
-    this.BTk.addJavascriptInterface(this.BTo, "pardusJSApi");
-    int i = com.tencent.mm.ci.a.kr(MMApplicationContext.getContext());
-    this.BTl = new FrameLayout(MMApplicationContext.getContext());
-    this.BTl.addView(this.BTk, new FrameLayout.LayoutParams(i, maxHeight));
-    paramFrameLayout.addView(this.BTl, new FrameLayout.LayoutParams(i, maxHeight));
-    paramFrameLayout.measure(i, -2);
-    paramFrameLayout.requestLayout();
-    Log.i("MicroMsg.FTS.PardusWebViewLogic", "containerWidth: %s webviewWidth: %s", new Object[] { Integer.valueOf(paramFrameLayout.getMeasuredWidth()), Integer.valueOf(this.BTk.getMeasuredWidth()) });
-    this.BTk.loadUrl(this.BTm.url);
-    com.tencent.mm.kernel.h.aGY().a(2975, this);
-    AppMethodBeat.o(176944);
+    AppMethodBeat.i(265904);
+    kotlin.g.b.s.u(paramj, "this$0");
+    paramView = paramj.pUj.get(paramInt);
+    kotlin.g.b.s.s(paramView, "dataList[position]");
+    paramView = ((i)paramView).HDG;
+    aqp localaqp;
+    com.tencent.mm.plugin.websearch.api.ah localah;
+    if (paramView != null)
+    {
+      paramj.HDH.hideVKB();
+      localaqp = new aqp();
+      localaqp.crs = paramInt;
+      localaqp.ZxJ = paramView;
+      kotlin.g.b.s.u(localaqp, "sugItem");
+      String str = localaqp.ZxJ.abiz;
+      paramj.HDH.HxP.HyQ = true;
+      paramView = (CharSequence)str;
+      if ((paramView != null) && (paramView.length() != 0)) {
+        break label502;
+      }
+      paramInt = 1;
+      if ((paramInt == 0) && (System.currentTimeMillis() - paramj.teM > 1000L))
+      {
+        paramj.teM = System.currentTimeMillis();
+        localah = new com.tencent.mm.plugin.websearch.api.ah();
+        localah.context = ((Context)paramj.HDH.getContext());
+        localah.scene = 74;
+        localah.sessionId = String.valueOf(e.HrM);
+        localah.query = str;
+        localah.WoH = true;
+        Object localObject = localaqp.ZxJ.abLm;
+        paramView = (View)localObject;
+        if (localObject == null) {
+          paramView = "";
+        }
+        localah.WoO = paramView;
+        paramView = paramj.HDL;
+        if (paramView != null)
+        {
+          localObject = am.aixg;
+          paramView = String.format("%s:%s:%s:%s", Arrays.copyOf(new Object[] { Integer.valueOf(36), paramView.aayf, str, paramj.HDN }, 4));
+          kotlin.g.b.s.s(paramView, "java.lang.String.format(format, *args)");
+          localah.WoP = paramView;
+          Map localMap = localah.hVt;
+          kotlin.g.b.s.s(localMap, "params.extParams");
+          localObject = localaqp.ZxJ.abgw;
+          paramView = (View)localObject;
+          if (localObject == null) {
+            paramView = "";
+          }
+          localMap.put("sugId", paramView);
+          paramView = localah.hVt;
+          kotlin.g.b.s.s(paramView, "params.extParams");
+          paramView.put("isSug", "1");
+          paramView = localah.hVt;
+          kotlin.g.b.s.s(paramView, "params.extParams");
+          paramView.put("prefixSug", str);
+          paramView = localah.hVt;
+          kotlin.g.b.s.s(paramView, "params.extParams");
+          paramView.put("sceneActionType", "6");
+          paramView = (CharSequence)localah.WoO;
+          if ((paramView != null) && (paramView.length() != 0)) {
+            break label507;
+          }
+        }
+      }
+    }
+    label502:
+    label507:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0)
+      {
+        paramView = localah.hVt;
+        kotlin.g.b.s.s(paramView, "params.extParams");
+        paramView.put("hasCacheJsonResult", "1");
+      }
+      ((com.tencent.mm.plugin.websearch.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.websearch.api.h.class)).a(localah);
+      paramj.a(localaqp, 2, 1);
+      AppMethodBeat.o(265904);
+      return;
+      paramInt = 0;
+      break;
+    }
   }
   
-  public final void aW(final JSONObject paramJSONObject)
+  private final void a(aqp paramaqp, int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(191336);
+    Object localObject1 = null;
+    AppMethodBeat.i(265900);
+    Object localObject2 = this.HDL;
+    eqy localeqy;
+    StringBuilder localStringBuilder1;
+    StringBuilder localStringBuilder2;
+    if (localObject2 != null)
+    {
+      localeqy = new eqy();
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder2 = localStringBuilder1.append("iskeyboardsug=1&searchid=").append(((dfv)localObject2).aayf).append("&query=").append(r.as(this.HDK, "utf8")).append("&action=").append(paramInt1).append("&scene=74&clienttimestamp=").append(cn.bDw()).append("&docid=").append(paramaqp.ZxJ.abgw).append("&resultcount=");
+      localObject2 = ((dfv)localObject2).aaLt;
+      if (localObject2 != null) {
+        break label304;
+      }
+      paramInt1 = 0;
+      localStringBuilder2 = localStringBuilder2.append(paramInt1).append("&words=").append(r.as(paramaqp.ZxJ.abiz, "utf8")).append("&requestId=").append(this.HDN).append("&longitude=");
+      paramaqp = aj.dch();
+      if (paramaqp != null) {
+        break label330;
+      }
+      paramaqp = null;
+      label192:
+      localStringBuilder2 = localStringBuilder2.append(paramaqp).append("&latitude=");
+      paramaqp = aj.dch();
+      if (paramaqp != null) {
+        break label341;
+      }
+    }
+    label304:
+    label330:
+    label341:
+    for (paramaqp = localObject1;; paramaqp = Float.valueOf(paramaqp.ZaH))
+    {
+      localStringBuilder2.append(paramaqp).append("&sessionid=").append(e.HrM).append("&clicktype=");
+      localStringBuilder1.append(paramInt2);
+      localeqy.abuE = localStringBuilder1.toString();
+      Log.i(this.TAG, kotlin.g.b.s.X("reportSugAction ", localeqy.abuE));
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)new ae(localeqy), 0);
+      AppMethodBeat.o(265900);
+      return;
+      localObject2 = ((fkl)localObject2).YIB;
+      if (localObject2 == null)
+      {
+        paramInt1 = 0;
+        break;
+      }
+      paramInt1 = ((LinkedList)localObject2).size();
+      break;
+      paramaqp = Float.valueOf(paramaqp.ZaG);
+      break label192;
+    }
+  }
+  
+  private void updateView()
+  {
+    AppMethodBeat.i(265893);
+    Object localObject1 = this.HDL;
+    if (localObject1 == null) {
+      localObject1 = null;
+    }
     for (;;)
     {
-      try
+      if (localObject1 == null) {
+        ((j)this).AZd.setVisibility(8);
+      }
+      AppMethodBeat.o(265893);
+      return;
+      localObject1 = ((dfv)localObject1).aaLt;
+      if (localObject1 == null)
       {
-        final int j = paramJSONObject.optInt("height");
-        JSONArray localJSONArray = paramJSONObject.optJSONArray("sugList");
-        paramJSONObject = paramJSONObject.optString("docId");
-        final int i;
-        if (localJSONArray != null)
+        localObject1 = null;
+      }
+      else
+      {
+        localObject1 = ((fkl)localObject1).YIB;
+        if (localObject1 == null)
         {
-          i = localJSONArray.length();
-          break label124;
-          this.BSQ = bool1;
-          if (!Util.isNullOrNil(paramJSONObject))
-          {
-            bool1 = bool2;
-            this.fwi = bool1;
-            this.BNE.BSg.runOnUiThread(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(194382);
-                int i = Math.round(com.tencent.mm.cj.a.hrl() * j);
-                Log.i("MicroMsg.FTS.PardusWebViewLogic", "start to update webview %d， height: %d， isXWalkKernel: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(j.a(j.this).isXWalkKernel()) });
-                j.a(j.this).getLayoutParams().height = i;
-                j.a(j.this).requestLayout();
-                j.b(j.this).getLayoutParams().height = 0;
-                j.b(j.this).requestLayout();
-                ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, i });
-                localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-                {
-                  public final void onAnimationUpdate(ValueAnimator paramAnonymous2ValueAnimator)
-                  {
-                    AppMethodBeat.i(189346);
-                    int i = ((Integer)paramAnonymous2ValueAnimator.getAnimatedValue()).intValue();
-                    Log.i("MicroMsg.FTS.PardusWebViewLogic", "webview onAnimationUpdate %d", new Object[] { Integer.valueOf(i) });
-                    j.b(j.this).getLayoutParams().height = i;
-                    j.b(j.this).requestLayout();
-                    AppMethodBeat.o(189346);
-                  }
-                });
-                i locali = j.c(j.this);
-                localValueAnimator.addListener(new i.a(locali, locali.BNf));
-                localValueAnimator.setDuration(400L);
-                localValueAnimator.start();
-                j.d(j.this).setVisibility(0);
-                j.d(j.this).post(new Runnable()
-                {
-                  public final void run()
-                  {
-                    int j = 0;
-                    AppMethodBeat.i(190063);
-                    Log.i("MicroMsg.FTS.PardusWebViewLogic", "update footer view");
-                    Object localObject = j.c(j.this);
-                    boolean bool1 = j.e(j.this);
-                    boolean bool2 = j.f(j.this);
-                    ((i)localObject).BSQ = bool1;
-                    ((i)localObject).fwi = bool2;
-                    ((i)localObject).cVU();
-                    localObject = j.c(j.this).BSg.BNX.BND;
-                    int k = j.5.this.BTs;
-                    if (j.f(j.this)) {}
-                    for (int i = 2;; i = 0)
-                    {
-                      ((com.tencent.mm.plugin.fts.ui.c.b)localObject).hy(k, i);
-                      if (j.e(j.this)) {
-                        j.c(j.this).BSg.BNX.BND.A(System.currentTimeMillis(), "PardusSug");
-                      }
-                      if (j.f(j.this))
-                      {
-                        i = j;
-                        if (j.e(j.this)) {
-                          i = 1;
-                        }
-                        j.c(j.this).BSg.BNX.BND.a(i, System.currentTimeMillis(), "PardusMore", 3, j.5.this.BTt);
-                        j.c(j.this).BSg.BNX.BND.a(i + 1, System.currentTimeMillis(), j.5.this.BTt, 3, j.5.this.BTt);
-                      }
-                      AppMethodBeat.o(190063);
-                      return;
-                    }
-                  }
-                });
-                AppMethodBeat.o(194382);
-              }
-            });
-            AppMethodBeat.o(191336);
-          }
+          localObject1 = null;
         }
         else
         {
-          i = 0;
-          break label124;
-          bool1 = false;
-          continue;
-        }
-        bool1 = false;
-        continue;
-        if (i <= 0) {
-          continue;
+          this.pUj.clear();
+          this.pUj.add(new i());
+          localObject1 = ((Iterable)localObject1).iterator();
+          int i = 0;
+          while (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = ((Iterator)localObject1).next();
+            if (i < 0) {
+              kotlin.a.p.kkW();
+            }
+            localObject2 = (fkk)localObject2;
+            localObject2 = new i(i + 1L, 1, (fkk)localObject2);
+            this.pUj.add(localObject2);
+            i += 1;
+          }
+          if (this.HDO) {
+            this.AZd.setVisibility(0);
+          }
+          for (;;)
+          {
+            localObject1 = this.AZd.getAdapter();
+            if (localObject1 != null) {
+              break label204;
+            }
+            localObject1 = null;
+            break;
+            this.AZd.setVisibility(8);
+          }
+          label204:
+          ((RecyclerView.a)localObject1).bZE.notifyChanged();
+          localObject1 = kotlin.ah.aiuX;
         }
       }
-      catch (Exception paramJSONObject)
-      {
-        AppMethodBeat.o(191336);
-        return;
-      }
-      label124:
-      boolean bool1 = true;
     }
   }
   
-  public final void b(int paramInt, final JSONObject paramJSONObject)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(191363);
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    switch (paramInt)
+    Object localObject = null;
+    AppMethodBeat.i(265915);
+    Log.i(this.TAG, "onSceneEnd " + paramInt1 + ' ' + paramInt2 + ' ' + paramString);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-    default: 
-      AppMethodBeat.o(191363);
-      return;
-    case 1: 
-      try
+      if (paramp == null)
       {
-        localObject1 = paramJSONObject.optJSONObject("actionInfo");
-        paramJSONObject = ((JSONObject)localObject1).optString("query");
-        localObject1 = new JSONObject(((JSONObject)localObject1).optString("extParams"));
-        localObject2 = new HashMap();
-        localObject3 = ((JSONObject)localObject1).keys();
-        while (((Iterator)localObject3).hasNext())
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.fts.ui.model.NetSceneKeyboardSug");
+        AppMethodBeat.o(265915);
+        throw paramString;
+      }
+      paramString = ((com.tencent.mm.plugin.fts.ui.d.c)paramp).oDw;
+      if (paramString == null) {}
+      for (paramString = localObject; paramString == null; paramString = c.c.b(paramString.otC))
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.KeyBoardSugSearchResponse");
+        AppMethodBeat.o(265915);
+        throw paramString;
+      }
+      this.HDL = ((dfv)paramString);
+      updateView();
+      AppMethodBeat.o(265915);
+      return;
+    }
+    this.HDL = null;
+    AppMethodBeat.o(265915);
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(265911);
+    this.HDI = false;
+    this.HDL = null;
+    this.HDK = "";
+    this.HDN = "";
+    com.tencent.mm.plugin.fts.ui.d.c localc = this.HDM;
+    if (localc != null)
+    {
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localc);
+      this.HDM = null;
+    }
+    d.uiThread((a)new j.b(this));
+    AppMethodBeat.o(265911);
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/fts/ui/widget/KeyboardSugLogic$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements com.tencent.mm.view.recyclerview.g
+  {
+    a(j paramj) {}
+    
+    public final f<?> yF(int paramInt)
+    {
+      AppMethodBeat.i(265923);
+      if (paramInt == 0)
+      {
+        localf = (f)new h();
+        AppMethodBeat.o(265923);
+        return localf;
+      }
+      f localf = (f)new g(this.HDP.HDF);
+      AppMethodBeat.o(265923);
+      return localf;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/fts/ui/widget/KeyboardSugLogic$scrollListener$1", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "onScrollStatsChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "data", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements o
+  {
+    c(j paramj) {}
+    
+    public final void a(RecyclerView paramRecyclerView, m paramm)
+    {
+      AppMethodBeat.i(265927);
+      kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+      kotlin.g.b.s.u(paramm, "data");
+      if (paramm.state == 1) {
+        this.HDP.HDI = true;
+      }
+      paramm = (Iterable)paramm.agOF;
+      paramRecyclerView = this.HDP;
+      paramm = paramm.iterator();
+      int i = 0;
+      if (paramm.hasNext())
+      {
+        Object localObject = paramm.next();
+        if (i < 0) {
+          kotlin.a.p.kkW();
+        }
+        localObject = ((i)((n)localObject).agOG).HDG;
+        aqp localaqp;
+        if (localObject != null)
         {
-          localObject4 = (String)((Iterator)localObject3).next();
-          ((HashMap)localObject2).put(localObject4, ((JSONObject)localObject1).optString((String)localObject4));
+          localaqp = new aqp();
+          localaqp.crs = i;
+          localaqp.ZxJ = ((fkk)localObject);
+          if (!paramRecyclerView.HDI) {
+            break label147;
+          }
         }
-        this.BNE.l((Map)localObject2, paramJSONObject);
-      }
-      catch (Exception paramJSONObject)
-      {
-        Log.printErrStackTrace("MicroMsg.FTS.PardusWebViewLogic", paramJSONObject, "pardusAction", new Object[0]);
-        AppMethodBeat.o(191363);
-        return;
-      }
-      this.BNE.BSg.BNX.BND.SJ(28);
-      this.BNE.BSg.BNX.BNy = true;
-      this.BNE.SN(6);
-      l.a(this.fOc, 1, 1, this.BNE.BSg.ptD, this.BNE.BSg.BNX.BND, 28, "", "", "");
-      AppMethodBeat.o(191363);
-      return;
-    case 2: 
-      localObject1 = paramJSONObject.optJSONObject("actionInfo");
-      paramJSONObject = ((JSONObject)localObject1).optString("query");
-      localObject3 = ((JSONObject)localObject1).optString("extParams");
-      localObject2 = ((JSONObject)localObject1).optString("cachePageResult");
-      localObject3 = new JSONObject((String)localObject3);
-      localObject4 = new HashMap();
-      Iterator localIterator = ((JSONObject)localObject3).keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        ((HashMap)localObject4).put(str, ((JSONObject)localObject3).optString(str));
-      }
-      ((HashMap)localObject4).put("cachePageResult", localObject2);
-      ((com.tencent.mm.plugin.websearch.api.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.websearch.api.h.class)).a(this.BNE.BSg, 3, paramJSONObject, String.valueOf(e.BHi), (Map)localObject4);
-      this.BNE.BSg.BNX.BND.SJ(27);
-      this.BNE.BSg.BNX.BNy = true;
-      this.BNE.SN(5);
-      if (!this.BSQ) {
-        break;
-      }
-    }
-    for (paramInt = 2;; paramInt = 1)
-    {
-      localObject2 = ((JSONObject)localObject1).optString("nickname");
-      localObject3 = ((JSONObject)localObject1).optString("docId");
-      localObject1 = ((JSONObject)localObject1).optString("appId");
-      l.a(paramJSONObject, paramInt, 2, this.BNE.BSg.ptD, this.BNE.BSg.BNX.BND, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, (String)localObject1);
-      AppMethodBeat.o(191363);
-      return;
-      localObject2 = new dio();
-      ((dio)localObject2).RXp = paramJSONObject.optInt("actionType");
-      localObject1 = paramJSONObject.optJSONObject("actionInfo");
-      ((dio)localObject2).UserName = ((JSONObject)localObject1).optString("userName");
-      ((dio)localObject2).SsP = ((JSONObject)localObject1).optString("relativeURL");
-      ((dio)localObject2).SsQ = ((JSONObject)localObject1).optInt("appVersion");
-      ((dio)localObject2).query = ((JSONObject)localObject1).optString("query", "");
-      ((dio)localObject2).TPY = ((JSONObject)localObject1).optString("extParams");
-      ((dio)localObject2).CMD = ((JSONObject)localObject1).optString("jumpUrl");
-      this.BNE.a((dio)localObject2);
-      localObject2 = new JSONObject();
-      paramJSONObject.put("type", "pardusAction");
-      paramJSONObject.put("actionId", "1");
-      paramJSONObject.put("params", paramJSONObject);
-      paramJSONObject = ((JSONObject)localObject2).toString();
-      this.BNE.BSg.runOnUiThread(new Runnable()
-      {
-        public final void run()
+        label147:
+        for (int j = 2;; j = 0)
         {
-          AppMethodBeat.i(184536);
-          j.this.hH("pardusActionCallBack", paramJSONObject);
-          AppMethodBeat.o(184536);
+          j.a(paramRecyclerView, localaqp, j);
+          i += 1;
+          break;
         }
-      });
-      this.BNE.SN(4);
-      this.BNE.BSg.BNX.BND.SJ(27);
-      this.BNE.BSg.BNX.BNy = true;
-      if (this.BSQ) {}
-      for (paramInt = 2;; paramInt = 1)
-      {
-        paramJSONObject = ((JSONObject)localObject1).optString("query");
-        localObject2 = ((JSONObject)localObject1).optString("nickname");
-        localObject3 = ((JSONObject)localObject1).optString("docId");
-        localObject1 = ((JSONObject)localObject1).optString("appId");
-        l.a(paramJSONObject, paramInt, 1, this.BNE.BSg.ptD, this.BNE.BSg.BNX.BND, 27, "3$".concat(String.valueOf(localObject2)), (String)localObject3, (String)localObject1);
-        break;
       }
-    }
-  }
-  
-  public final void clearData()
-  {
-    this.BSQ = false;
-    this.fwi = false;
-    this.fOc = "";
-  }
-  
-  public final void esA()
-  {
-    AppMethodBeat.i(191374);
-    i locali = this.BNE;
-    com.tencent.e.h.ZvG.bc(new i.5(locali));
-    AppMethodBeat.o(191374);
-  }
-  
-  public final void esF()
-  {
-    AppMethodBeat.i(176945);
-    if (this.soh != null) {
-      this.soh.setVisibility(8);
-    }
-    AppMethodBeat.o(176945);
-  }
-  
-  public final WebSearchWebView esG()
-  {
-    return this.BTk;
-  }
-  
-  public final g<fll> esH()
-  {
-    return this.BTn;
-  }
-  
-  public final com.tencent.mm.plugin.websearch.webview.h<fll> esI()
-  {
-    return this.BTo;
-  }
-  
-  public final Context getActivityContext()
-  {
-    return this.BNE.BSg;
-  }
-  
-  final void hH(final String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(176946);
-    try
-    {
-      boolean bool = Util.isNullOrNil(paramString1);
-      if (bool)
-      {
-        AppMethodBeat.o(176946);
-        return;
-      }
-      paramString2 = Util.nullAsNil(paramString2);
-      Log.i("MicroMsg.FTS.PardusWebViewLogic", "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
-      paramString1 = String.format("javascript:window['%s'] && %s(%s)", new Object[] { paramString1, paramString1, paramString2 });
-      this.BNE.BSg.runOnUiThread(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(193363);
-          j.a(j.this).evaluateJavascript(paramString1, null);
-          AppMethodBeat.o(193363);
-        }
-      });
-      AppMethodBeat.o(176946);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      Log.printErrStackTrace("MicroMsg.FTS.PardusWebViewLogic", paramString1, "notifyJsEvent", new Object[0]);
-      AppMethodBeat.o(176946);
-    }
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
-  {
-    AppMethodBeat.i(191367);
-    Log.i("MicroMsg.FTS.PardusWebViewLogic", "onSceneEnd errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    w localw;
-    String str;
-    if ((paramq instanceof w))
-    {
-      localw = (w)paramq;
-      str = Util.nullAs(localw.gpT().UJk, "");
-      paramq = new JSONObject();
-    }
-    try
-    {
-      paramq.put("retCode", paramInt2);
-      paramq.put("errMsg", paramString);
-      paramq.put("json", str);
-      paramq.put("requestId", localw.fIY);
-      label120:
-      paramString = paramq.toString();
-      this.BNE.BSg.runOnUiThread(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(176943);
-          j.this.hH("pardusCommCgiReady", paramString);
-          AppMethodBeat.o(176943);
-        }
-      });
-      AppMethodBeat.o(191367);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      break label120;
+      AppMethodBeat.o(265927);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.t.g;
-import com.tencent.mm.plugin.appbrand.jsapi.t.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.w.h.a;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.u;
 import com.tencent.mm.plugin.appbrand.pip.a.a;
-import com.tencent.mm.plugin.appbrand.pip.f;
-import com.tencent.mm.plugin.appbrand.pip.f.4;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.pip.g.4;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import java.util.Objects;
@@ -16,7 +14,7 @@ import org.json.JSONObject;
 
 public abstract class b<PipInfoProvider extends c>
 {
-  private f b(ad paramad)
+  private com.tencent.mm.plugin.appbrand.pip.g b(ad paramad)
   {
     paramad = paramad.getRuntime();
     if (paramad == null)
@@ -24,7 +22,7 @@ public abstract class b<PipInfoProvider extends c>
       Log.w(getLogTag(), "handlePipInfo, null == runtime");
       return null;
     }
-    paramad = paramad.nuc;
+    paramad = paramad.qsM;
     if (paramad == null)
     {
       Log.w(getLogTag(), "handlePipInfo, null == pipManager");
@@ -35,21 +33,19 @@ public abstract class b<PipInfoProvider extends c>
   
   public static ad e(com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
-    parama = parama.QK();
+    parama = parama.aqX();
     if (!(parama instanceof ad))
     {
       Log.w("MicroMsg.AppBrand.PipPluginHandlerCommons", "getPageView, component(%s) is not AppBrandPageView", new Object[] { parama });
-      if (!(parama instanceof v))
+      if (!(parama instanceof y))
       {
         Log.w("MicroMsg.AppBrand.PipPluginHandlerCommons", "getPageView, component(%s) is not AppBrandService", new Object[] { parama });
         return null;
       }
-      return ((v)parama).getCurrentPageView();
+      return ((y)parama).getCurrentPageView();
     }
     return (ad)parama;
   }
-  
-  protected abstract PipInfoProvider SW();
   
   public final void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, String paramString)
   {
@@ -61,12 +57,12 @@ public abstract class b<PipInfoProvider extends c>
     Object localObject4;
     Object localObject3;
     int i;
-    g localg;
+    com.tencent.mm.plugin.appbrand.jsapi.w.g localg;
     h.a locala;
     do
     {
       return;
-      localObject4 = ((ad)localObject1).qsG;
+      localObject4 = ((ad)localObject1).txk;
       if (localObject4 == null)
       {
         Log.w(getLogTag(), "handlePipInfo, null == page");
@@ -78,49 +74,51 @@ public abstract class b<PipInfoProvider extends c>
         Log.w(getLogTag(), "handlePipInfo, null == pipManager");
         return;
       }
-      if ((com.tencent.mm.plugin.appbrand.pip.a)((f)localObject2).qFp.get(Integer.valueOf(localObject1.hashCode())) == null)
+      if ((com.tencent.mm.plugin.appbrand.pip.a)((com.tencent.mm.plugin.appbrand.pip.g)localObject2).tKf.get(Integer.valueOf(localObject1.hashCode())) == null)
       {
         localObject3 = new com.tencent.mm.plugin.appbrand.pip.a((ad)localObject1);
-        if (((f)localObject2).qFx == null) {
-          ((f)localObject2).qFx = new f.4((f)localObject2);
+        if (((com.tencent.mm.plugin.appbrand.pip.g)localObject2).tKn == null) {
+          ((com.tencent.mm.plugin.appbrand.pip.g)localObject2).tKn = new g.4((com.tencent.mm.plugin.appbrand.pip.g)localObject2);
         }
-        ((com.tencent.mm.plugin.appbrand.pip.a)localObject3).pKZ = ((f)localObject2).qFx;
-        Log.i(((f)localObject2).cED, "createPageScopedPipInfoIfNeed for " + f.t(((ad)localObject1).qsG));
-        ((f)localObject2).qFp.put(Integer.valueOf(localObject1.hashCode()), localObject3);
+        ((com.tencent.mm.plugin.appbrand.pip.a)localObject3).sPS = ((com.tencent.mm.plugin.appbrand.pip.g)localObject2).tKn;
+        Log.i(((com.tencent.mm.plugin.appbrand.pip.g)localObject2).exO, "createPageScopedPipInfoIfNeed for " + com.tencent.mm.plugin.appbrand.pip.g.u(((ad)localObject1).txk));
+        ((com.tencent.mm.plugin.appbrand.pip.g)localObject2).tKf.put(Integer.valueOf(localObject1.hashCode()), localObject3);
       }
-      parama = parama.SR();
+      parama = parama.atw();
       if (parama == null)
       {
         Log.w(getLogTag(), "handlePipInfo, null == dataJsonObj");
         return;
       }
-      localObject3 = SW();
-      parama = ((c)localObject3).es(parama.toString());
+      localObject3 = atB();
+      parama = ((c)localObject3).fP(parama.toString());
       if (parama == null)
       {
         Log.w(getLogTag(), "handlePipInfo, null == pipExtra");
         return;
       }
-      paramString = new com.tencent.mm.plugin.appbrand.pip.c(((f)localObject2).nxs.mAppId, ((u)localObject4).getCurrentUrl(), paramString);
+      paramString = new com.tencent.mm.plugin.appbrand.pip.c(((com.tencent.mm.plugin.appbrand.pip.g)localObject2).qwG.mAppId, ((u)localObject4).getCurrentUrl(), paramString);
       localObject4 = getKey();
       i = getId();
-      localg = ((c)localObject3).Th();
-      locala = ((c)localObject3).Ti();
-      localObject3 = ((c)localObject3).Tj();
-      localObject1 = ((f)localObject2).z((ad)localObject1);
+      localg = ((c)localObject3).atM();
+      locala = ((c)localObject3).atN();
+      localObject3 = ((c)localObject3).atO();
+      localObject1 = ((com.tencent.mm.plugin.appbrand.pip.g)localObject2).A((ad)localObject1);
     } while (localObject1 == null);
-    Log.d(((com.tencent.mm.plugin.appbrand.pip.a)localObject1).cED, "processPipInfo, key: ".concat(String.valueOf(localObject4)));
-    Object localObject2 = (a.a)((com.tencent.mm.plugin.appbrand.pip.a)localObject1).qEa.get(localObject4);
+    Log.d(((com.tencent.mm.plugin.appbrand.pip.a)localObject1).exO, "processPipInfo, key: ".concat(String.valueOf(localObject4)));
+    Object localObject2 = (a.a)((com.tencent.mm.plugin.appbrand.pip.a)localObject1).tIP.get(localObject4);
     if (localObject2 == null)
     {
-      Log.i(((com.tencent.mm.plugin.appbrand.pip.a)localObject1).cED, "processPipInfo, create PipVideoSession for key: ".concat(String.valueOf(localObject4)));
-      ((com.tencent.mm.plugin.appbrand.pip.a)localObject1).qEa.put(localObject4, new a.a(i, parama, localg, locala, (com.tencent.mm.plugin.appbrand.jsapi.t.c)localObject3, paramString, ((com.tencent.mm.plugin.appbrand.pip.a)localObject1).pKZ));
+      Log.i(((com.tencent.mm.plugin.appbrand.pip.a)localObject1).exO, "processPipInfo, create PipVideoSession for key: ".concat(String.valueOf(localObject4)));
+      ((com.tencent.mm.plugin.appbrand.pip.a)localObject1).tIP.put(localObject4, new a.a(i, parama, localg, locala, (com.tencent.mm.plugin.appbrand.jsapi.w.c)localObject3, paramString, ((com.tencent.mm.plugin.appbrand.pip.a)localObject1).sPS));
       return;
     }
-    Log.i(((com.tencent.mm.plugin.appbrand.pip.a)localObject1).cED, "processPipInfo, pipVideoSession for key: " + (String)localObject4 + " exists");
+    Log.i(((com.tencent.mm.plugin.appbrand.pip.a)localObject1).exO, "processPipInfo, pipVideoSession for key: " + (String)localObject4 + " exists");
     ((a.a)localObject2).a(parama);
-    ((a.a)localObject2).qEi = paramString;
+    ((a.a)localObject2).tIX = paramString;
   }
+  
+  protected abstract PipInfoProvider atB();
   
   public final void b(com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
@@ -129,16 +127,16 @@ public abstract class b<PipInfoProvider extends c>
     if (localObject == null) {}
     do
     {
-      f localf;
+      com.tencent.mm.plugin.appbrand.pip.g localg;
       do
       {
         return;
-        localf = b((ad)localObject);
-      } while (localf == null);
+        localg = b((ad)localObject);
+      } while (localg == null);
       parama = getKey();
-      localObject = localf.z((ad)localObject);
+      localObject = localg.A((ad)localObject);
     } while (localObject == null);
-    ((com.tencent.mm.plugin.appbrand.pip.a)localObject).amt(parama);
+    ((com.tencent.mm.plugin.appbrand.pip.a)localObject).afG(parama);
   }
   
   public final boolean c(com.tencent.luggage.xweb_ext.extendplugin.a parama)
@@ -151,7 +149,7 @@ public abstract class b<PipInfoProvider extends c>
       return false;
       parama = b(parama);
     } while (parama == null);
-    return parama.CA(getId());
+    return parama.CR(getId());
   }
   
   public final boolean d(com.tencent.luggage.xweb_ext.extendplugin.a parama)
@@ -168,7 +166,7 @@ public abstract class b<PipInfoProvider extends c>
       parama = b(parama);
     } while (parama == null);
     String str = getKey();
-    return Objects.equals(parama.qFt, str);
+    return Objects.equals(parama.tKj, str);
   }
   
   protected abstract int getId();
@@ -179,7 +177,7 @@ public abstract class b<PipInfoProvider extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.b
  * JD-Core Version:    0.7.0.1
  */

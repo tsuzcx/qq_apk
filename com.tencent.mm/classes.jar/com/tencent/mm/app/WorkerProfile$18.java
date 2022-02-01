@@ -1,18 +1,22 @@
 package com.tencent.mm.app;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ub;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.lg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.modelsimple.p;
 import com.tencent.mm.sdk.event.IListener;
 
-final class WorkerProfile$18
-  extends IListener<ub>
+class WorkerProfile$18
+  extends IListener<lg>
 {
-  WorkerProfile$18(WorkerProfile paramWorkerProfile)
+  WorkerProfile$18(WorkerProfile paramWorkerProfile, q paramq)
   {
-    super(0);
-    AppMethodBeat.i(161247);
-    this.__eventId = ub.class.getName().hashCode();
-    AppMethodBeat.o(161247);
+    super(paramq);
+    AppMethodBeat.i(239143);
+    this.__eventId = lg.class.getName().hashCode();
+    AppMethodBeat.o(239143);
   }
 }
 

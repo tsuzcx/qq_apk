@@ -1,47 +1,71 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlinx.coroutines.d.c;
-import kotlinx.coroutines.internal.o;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.Metadata;
+import kotlin.d.a.b;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlinx.coroutines.internal.i;
+import kotlinx.coroutines.internal.y;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/Dispatchers;", "", "()V", "Default", "Lkotlinx/coroutines/CoroutineDispatcher;", "Default$annotations", "getDefault", "()Lkotlinx/coroutines/CoroutineDispatcher;", "IO", "IO$annotations", "getIO", "Main", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Main$annotations", "getMain", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "Unconfined", "Unconfined$annotations", "getUnconfined", "kotlinx-coroutines-core"})
-public final class bc
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DispatchedCoroutine;", "T", "Lkotlin/coroutines/CoroutineContext;", "context", "Lkotlin/coroutines/Continuation;", "uCont", "<init>", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "", "state", "", "afterCompletion", "(Ljava/lang/Object;)V", "afterResume", "getResult", "()Ljava/lang/Object;", "", "tryResume", "()Z", "trySuspend", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/ScopeCoroutine;"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bc<T>
+  extends y<T>
 {
-  private static final af abwU;
-  private static final af abwV;
-  private static final af abwW;
-  public static final bc abwX;
-  
   static
   {
-    AppMethodBeat.i(118048);
-    abwX = new bc();
-    abwU = ae.iRc();
-    abwV = (af)db.abxR;
-    c localc = c.abAj;
-    abwW = c.iRs();
-    AppMethodBeat.o(118048);
+    AppMethodBeat.i(188841);
+    ajvo = AtomicIntegerFieldUpdater.newUpdater(bc.class, "_decision");
+    AppMethodBeat.o(188841);
   }
   
-  public static final af iRq()
+  public bc(f paramf, d<? super T> paramd)
   {
-    return abwU;
+    super(paramf, paramd);
   }
   
-  public static final ci iRr()
+  private final boolean kBE()
   {
-    return o.abzr;
+    AppMethodBeat.i(188835);
+    do
+    {
+      switch (this._decision)
+      {
+      default: 
+        Throwable localThrowable = (Throwable)new IllegalStateException("Already resumed".toString());
+        AppMethodBeat.o(188835);
+        throw localThrowable;
+      }
+    } while (!ajvo.compareAndSet(this, 0, 2));
+    AppMethodBeat.o(188835);
+    return true;
+    AppMethodBeat.o(188835);
+    return false;
   }
   
-  public static final af iRs()
+  public final void iv(Object paramObject)
   {
-    return abwW;
+    AppMethodBeat.i(188855);
+    if (kBE())
+    {
+      AppMethodBeat.o(188855);
+      return;
+    }
+    i.a(b.au(this.ajzY), ai.e(paramObject, this.ajzY));
+    AppMethodBeat.o(188855);
+  }
+  
+  public final void iw(Object paramObject)
+  {
+    AppMethodBeat.i(188848);
+    iv(paramObject);
+    AppMethodBeat.o(188848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bc
  * JD-Core Version:    0.7.0.1
  */

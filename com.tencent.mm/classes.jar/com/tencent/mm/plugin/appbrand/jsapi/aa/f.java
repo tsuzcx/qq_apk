@@ -1,108 +1,57 @@
 package com.tencent.mm.plugin.appbrand.jsapi.aa;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
-import com.tencent.mm.plugin.appbrand.utils.q;
-import com.tencent.mm.plugin.appbrand.utils.q.a;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class f
-  extends c
+public class f
+  extends c<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
-  public static final int CTRL_INDEX = 488;
-  public static final String NAME = "enableGyroscope";
+  private static final int CTRL_INDEX = 64;
+  private static final String NAME = "reportIDKey";
   
-  public final void a(final e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137638);
-    final l locall = new l("enableGyroscope");
-    paramJSONObject = locall.a(parame, paramJSONObject, new b(parame)
+    AppMethodBeat.i(107802);
+    paramJSONObject = paramJSONObject.optJSONArray("dataArray");
+    if (paramJSONObject == null)
     {
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(137636);
-        com.tencent.mm.plugin.appbrand.k.b(parame.getAppId(), this);
-        locall.a(this);
-        AppMethodBeat.o(137636);
-      }
-    }, "JsApi#SensorGyroscope" + parame.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(4) })));
-    parame.j(paramInt, m(paramJSONObject.errMsg, paramJSONObject.values));
-    AppMethodBeat.o(137638);
-  }
-  
-  public static final class a
-    extends az
-  {
-    private static final int CTRL_INDEX = 489;
-    private static final String NAME = "onGyroscopeChange";
-  }
-  
-  static abstract class b
-    extends l.a
-    implements SensorEventListener
-  {
-    f.a poN = new f.a();
-    private q poo;
-    private boolean poq;
-    
-    b(final e parame)
+      paramf.callback(paramInt, ZP("fail"));
+      AppMethodBeat.o(107802);
+      return;
+    }
+    int i = 0;
+    for (;;)
     {
-      this.poN.j(parame);
-      this.poo = new q(i.poU.bUl(), new q.a()
-      {
-        public final boolean i(Object... paramAnonymousVarArgs)
+      if (i < paramJSONObject.length()) {
+        try
         {
-          AppMethodBeat.i(137637);
-          paramAnonymousVarArgs = (float[])paramAnonymousVarArgs[0];
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("x", Float.valueOf(paramAnonymousVarArgs[0]));
-          localHashMap.put("y", Float.valueOf(paramAnonymousVarArgs[1]));
-          localHashMap.put("z", Float.valueOf(paramAnonymousVarArgs[2]));
-          f.b.this.poN.E(localHashMap);
-          boolean bool = k.a.ppe.a(f.b.this.poN, parame);
-          AppMethodBeat.o(137637);
-          return bool;
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          int j = localJSONObject.optInt("id");
+          int k = localJSONObject.optInt("key");
+          int m = localJSONObject.optInt("value");
+          h.OAn.idkeyStat(j, k, m, false);
+          i += 1;
         }
-      });
-    }
-    
-    public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-    
-    public void onSensorChanged(SensorEvent paramSensorEvent)
-    {
-      if (this.poq) {}
-      while (paramSensorEvent.sensor.getType() != 4) {
-        return;
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.JsApiReportIDKey", "parse json failed : %s", new Object[] { localException.getMessage() });
+          }
+        }
       }
-      paramSensorEvent = paramSensorEvent.values;
-      if ((paramSensorEvent == null) || (paramSensorEvent.length < 3))
-      {
-        Log.w("MicroMsg.JsApiEnableGyroscope", "deviceMotion sensor callback data invalidate.");
-        return;
-      }
-      Log.v("MicroMsg.JsApiEnableGyroscope", "try to do frequency limit action(%s).", new Object[] { Boolean.valueOf(this.poo.k(new Object[] { paramSensorEvent })) });
     }
-    
-    public final void setDisable(boolean paramBoolean)
-    {
-      this.poq = paramBoolean;
-    }
+    paramf.callback(paramInt, ZP("ok"));
+    AppMethodBeat.o(107802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.aa.f
  * JD-Core Version:    0.7.0.1
  */

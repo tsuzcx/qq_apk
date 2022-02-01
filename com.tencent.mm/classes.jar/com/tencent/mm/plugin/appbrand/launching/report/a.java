@@ -1,64 +1,31 @@
 package com.tencent.mm.plugin.appbrand.launching.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.launching.ag.a;
-import com.tencent.mm.plugin.report.service.h;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.m;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/report/LaunchGetWxaAttrsIDKeyConstants;", "", "()V", "ID", "", "KEY_APP_VERSION_LESS_THAN_SYNC_VERSION", "KEY_SYNC_GET_BY_ATTRS_NOT_FOUND", "KEY_SYNC_GET_BY_CMD_UPDATE_VERSION", "KEY_SYNC_GET_BY_INVALID_FIELDS", "KEY_SYNC_GET_BY_MISSING_PKG", "KEY_SYNC_GET_BY_NO_USE_RECENT", "KEY_SYNC_GET_BY_PATH_NOT_FOUND", "KEY_SYNC_GET_BY_VERSION_NOT_FOUND", "KEY_SYNC_GET_TOTAL", "KEY_USERNAME_INVALID", "reportSyncGet", "", "reason", "Lcom/tencent/mm/plugin/appbrand/launching/LaunchStepCostReporter$GetAttrsReason;", "plugin-appbrand-integration_release"})
-public final class a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/launching/report/AppBrandRuntimeReloadReasonEnum;", "", "stringValue", "", "(Ljava/lang/String;ILjava/lang/String;)V", "NeedLatestVersion", "LocalVersionFallback", "UpdateApp", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum a
 {
-  public static final a pZR;
+  public final String stringValue;
   
   static
   {
-    AppMethodBeat.i(282758);
-    pZR = new a();
-    AppMethodBeat.o(282758);
+    AppMethodBeat.i(321199);
+    teU = new a("NeedLatestVersion", 0, "NeedLatestVersion");
+    teV = new a("LocalVersionFallback", 1, "LocalVersionFallback");
+    teW = new a("UpdateApp", 2, "updateApp");
+    teX = new a[] { teU, teV, teW };
+    AppMethodBeat.o(321199);
   }
   
-  public static final void a(ag.a parama)
+  private a(String paramString)
   {
-    AppMethodBeat.i(282757);
-    p.k(parama, "reason");
-    h.IzE.el(648, 10);
-    int i;
-    switch (b.$EnumSwitchMapping$0[parama.ordinal()])
-    {
-    default: 
-      parama = new m();
-      AppMethodBeat.o(282757);
-      throw parama;
-    case 1: 
-      AppMethodBeat.o(282757);
-      return;
-    case 2: 
-      i = 11;
-    }
-    for (;;)
-    {
-      h.IzE.el(648, i);
-      AppMethodBeat.o(282757);
-      return;
-      i = 12;
-      continue;
-      i = 13;
-      continue;
-      i = 14;
-      continue;
-      i = 15;
-      continue;
-      i = 16;
-      continue;
-      i = 17;
-    }
+    this.stringValue = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.report.a
  * JD-Core Version:    0.7.0.1
  */

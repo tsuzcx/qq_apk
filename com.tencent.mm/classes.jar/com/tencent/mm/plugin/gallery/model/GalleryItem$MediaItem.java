@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.gallery.model;
 
 import android.os.Parcelable;
-import com.tencent.mm.loader.h.a.c;
+import com.tencent.mm.loader.g.a.c;
 import java.util.HashMap;
 
 public abstract class GalleryItem$MediaItem
   implements Parcelable, c, Comparable<MediaItem>
 {
-  public String AAz;
-  public String BVj;
-  public String BVk;
-  public long BVl;
-  public long BVm;
-  public String BVn;
-  public long BVo;
-  public double BVp = 181.0D;
-  public double BVq = 91.0D;
-  public String BVr;
-  public boolean BVs = false;
-  public HashMap<String, Object> BVt = new HashMap();
-  public boolean fXF = false;
-  public Object lCh;
+  public String Gcc;
+  public String HHH;
+  public String HHI;
+  public long HHJ;
+  public long HHK;
+  public String HHL;
+  public long HHM;
+  public double HHN = 181.0D;
+  public double HHO = 91.0D;
+  public String HHP;
+  public boolean HHQ = false;
+  public HashMap<String, Object> HHR = new HashMap();
+  public Object extra;
+  public boolean idG = false;
   public String mMimeType;
-  public String wAy;
+  public String zWJ;
   
   public GalleryItem$MediaItem()
   {
@@ -36,9 +36,9 @@ public abstract class GalleryItem$MediaItem
   
   public GalleryItem$MediaItem(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    this.BVl = paramLong;
-    this.AAz = paramString1;
-    this.wAy = paramString2;
+    this.HHJ = paramLong;
+    this.Gcc = paramString1;
+    this.zWJ = paramString2;
     this.mMimeType = paramString3;
   }
   
@@ -50,7 +50,7 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public static MediaItem aw(int paramInt, long paramLong)
+  public static MediaItem aD(int paramInt, long paramLong)
   {
     if (paramInt == 1) {
       return new GalleryItem.ImageMediaItem(paramLong);
@@ -58,16 +58,30 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong);
   }
   
-  public final String aBv()
+  public final void G(String paramString, Object paramObject)
   {
-    return this.BVl + "_" + this.AAz.hashCode();
+    this.HHR.put(paramString, paramObject);
   }
   
-  public abstract String aZe();
-  
-  public final int d(MediaItem paramMediaItem)
+  public final <T> T H(String paramString, T paramT)
   {
-    return (int)((this.BVm - paramMediaItem.BVm) / 1000L);
+    paramString = this.HHR.get(paramString);
+    if (paramString != null) {
+      paramT = paramString;
+    }
+    return paramT;
+  }
+  
+  public final String aUt()
+  {
+    return this.HHJ + "_" + this.Gcc.hashCode();
+  }
+  
+  public abstract String bud();
+  
+  public final int c(MediaItem paramMediaItem)
+  {
+    return (int)((this.HHK - paramMediaItem.HHK) / 1000L);
   }
   
   public boolean equals(Object paramObject)
@@ -77,7 +91,7 @@ public abstract class GalleryItem$MediaItem
     if ((paramObject instanceof MediaItem))
     {
       paramObject = (MediaItem)paramObject;
-      if ((this.AAz == null) || (!this.AAz.equals(paramObject.AAz)))
+      if ((this.Gcc == null) || (!this.Gcc.equals(paramObject.Gcc)))
       {
         bool1 = bool2;
         if (this.mMimeType != null)
@@ -86,10 +100,10 @@ public abstract class GalleryItem$MediaItem
           if (this.mMimeType.equals("edit"))
           {
             bool1 = bool2;
-            if (this.BVj != null)
+            if (this.HHH != null)
             {
               bool1 = bool2;
-              if (!this.BVj.equals(paramObject.AAz)) {}
+              if (!this.HHH.equals(paramObject.Gcc)) {}
             }
           }
         }
@@ -102,50 +116,21 @@ public abstract class GalleryItem$MediaItem
     return bool1;
   }
   
-  public final String etI()
-  {
-    return this.AAz;
-  }
-  
-  public final String etM()
-  {
-    return this.BVk;
-  }
-  
-  public final String getMimeType()
-  {
-    return this.mMimeType;
-  }
-  
   public abstract int getType();
-  
-  public final void t(String paramString, Object paramObject)
-  {
-    this.BVt.put(paramString, paramObject);
-  }
   
   public final String toSimpleString()
   {
-    return this.BVl + " " + this.mMimeType + " " + this.BVm + "| " + this.BVn + " | " + this.BVo + " | " + this.fXF;
+    return this.HHJ + " " + this.mMimeType + " " + this.HHK + "| " + this.HHL + " | " + this.HHM + " | " + this.idG;
   }
   
   public String toString()
   {
-    return "MediaItem{mOriginalPath='" + this.AAz + '\'' + ", mThumbPath='" + this.wAy + '\'' + ", origId=" + this.BVl + ", generateDate=" + this.BVm + ", dateTag=" + this.BVn + ", isChecked=" + this.fXF + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.BVp + '\'' + ", mLatitude='" + this.BVq + '\'' + ", mBusinessTag='" + this.BVr + '\'' + '}';
-  }
-  
-  public final <T> T u(String paramString, T paramT)
-  {
-    paramString = this.BVt.get(paramString);
-    if (paramString != null) {
-      paramT = paramString;
-    }
-    return paramT;
+    return "MediaItem{mOriginalPath='" + this.Gcc + '\'' + ", mThumbPath='" + this.zWJ + '\'' + ", origId=" + this.HHJ + ", generateDate=" + this.HHK + ", dateTag=" + this.HHL + ", isChecked=" + this.idG + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.HHN + '\'' + ", mLatitude='" + this.HHO + '\'' + ", mBusinessTag='" + this.HHP + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem
  * JD-Core Version:    0.7.0.1
  */

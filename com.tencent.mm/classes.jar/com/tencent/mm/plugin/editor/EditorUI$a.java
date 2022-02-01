@@ -9,38 +9,38 @@ final class EditorUI$a
 {
   EditorUI$a(EditorUI paramEditorUI) {}
   
-  public final void cRA()
+  public final void dvT()
   {
     AppMethodBeat.i(181547);
-    EditorUI.m(this.upk);
+    EditorUI.m(this.xvH);
     AppMethodBeat.o(181547);
   }
   
-  public final void cRB()
+  public final void dvU()
   {
     AppMethodBeat.i(181548);
-    this.upk.showActionbarLine();
-    EditorUI.m(this.upk);
+    this.xvH.showActionbarLine();
+    EditorUI.m(this.xvH);
     AppMethodBeat.o(181548);
   }
   
-  public final void cRC()
+  public final void dvV()
   {
     AppMethodBeat.i(181549);
-    this.upk.hideActionbarLine();
+    this.xvH.hideActionbarLine();
     AppMethodBeat.o(181549);
   }
   
   public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(187589);
+    AppMethodBeat.i(270813);
     super.onScrollStateChanged(paramRecyclerView, paramInt);
-    AppMethodBeat.o(187589);
+    AppMethodBeat.o(270813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.EditorUI.a
  * JD-Core Version:    0.7.0.1
  */

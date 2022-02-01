@@ -1,27 +1,53 @@
 package kotlin.l.b.a.b.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
 public enum m
 {
-  static
+  private m() {}
+  
+  public abstract String EQ(String paramString);
+  
+  static final class a
+    extends m
   {
-    AppMethodBeat.i(59858);
-    m localm1 = new m("RENDER_OVERRIDE", 0);
-    abjB = localm1;
-    m localm2 = new m("RENDER_OPEN", 1);
-    abjC = localm2;
-    m localm3 = new m("RENDER_OPEN_OVERRIDE", 2);
-    abjD = localm3;
-    abjE = new m[] { localm1, localm2, localm3 };
-    AppMethodBeat.o(59858);
+    a()
+    {
+      super(1, (byte)0);
+    }
+    
+    public final String EQ(String paramString)
+    {
+      AppMethodBeat.i(59867);
+      s.u(paramString, "string");
+      paramString = n.m(n.m(paramString, "<", "&lt;", false), ">", "&gt;", false);
+      AppMethodBeat.o(59867);
+      return paramString;
+    }
   }
   
-  private m() {}
+  static final class b
+    extends m
+  {
+    b()
+    {
+      super(0, (byte)0);
+    }
+    
+    public final String EQ(String paramString)
+    {
+      AppMethodBeat.i(59868);
+      s.u(paramString, "string");
+      AppMethodBeat.o(59868);
+      return paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.i.m
  * JD-Core Version:    0.7.0.1
  */

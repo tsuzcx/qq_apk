@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -26,58 +25,59 @@ import com.tencent.luggage.b.a.a.e;
 import com.tencent.luggage.b.a.a.f;
 import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.ae;
+import com.tencent.mm.plugin.appbrand.utils.aj;
 import com.tencent.mm.plugin.appbrand.utils.b;
 import com.tencent.mm.plugin.appbrand.utils.b.a;
-import com.tencent.mm.plugin.appbrand.utils.s;
+import com.tencent.mm.plugin.appbrand.utils.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class c
   extends FrameLayout
 {
-  private boolean isAnimating;
-  TextView pMY;
-  private s rCA;
-  private com.tencent.mm.plugin.appbrand.jsapi.s.c rCo;
-  private FrameLayout rCp;
-  View rCq;
-  View rCr;
-  View rCs;
-  private a rCt;
-  private boolean rCu;
-  private View rCv;
-  View rCw;
-  private int rCx;
-  private Runnable rCy;
-  private b rCz;
+  TextView sRO;
+  private com.tencent.mm.plugin.appbrand.jsapi.v.c uND;
+  private FrameLayout uNE;
+  View uNF;
+  View uNG;
+  View uNH;
+  private a uNI;
+  private boolean uNJ;
+  private View uNK;
+  View uNL;
+  private boolean uNM;
+  private boolean uNN;
+  private int uNO;
+  private Runnable uNP;
+  private b uNQ;
+  private v uNR;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(138049);
-    this.rCA = null;
-    this.rCx = getResources().getConfiguration().uiMode;
+    this.uNR = null;
+    this.uNO = getResources().getConfiguration().uiMode;
     setClickable(true);
     setLongClickable(true);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    this.rCv = LayoutInflater.from(getContext()).inflate(a.f.app_brand_picker_container, this, false);
-    this.rCp = ((FrameLayout)this.rCv.findViewById(a.e.app_brand_picker_panel_internal_picker));
-    this.rCw = this.rCv.findViewById(a.e.app_brand_picker_no_title_place_holder);
-    this.rCr = this.rCv.findViewById(a.e.picker_toolbar);
-    this.rCs = this.rCr.findViewById(a.e.view);
-    cpL();
-    this.rCr.findViewById(a.e.bt_picker_confirm).setOnClickListener(new c.4(this));
-    this.rCr.findViewById(a.e.bt_picker_cancel).setOnClickListener(new c.5(this));
-    this.rCr.setOnClickListener(new c.6(this));
-    View localView = this.rCv.findViewById(a.e.app_brand_picker_panel_internal_picker);
+    this.uNK = LayoutInflater.from(getContext()).inflate(a.f.app_brand_picker_container, this, false);
+    this.uNE = ((FrameLayout)this.uNK.findViewById(a.e.app_brand_picker_panel_internal_picker));
+    this.uNL = this.uNK.findViewById(a.e.app_brand_picker_no_title_place_holder);
+    this.uNG = this.uNK.findViewById(a.e.picker_toolbar);
+    this.uNH = this.uNG.findViewById(a.e.view);
+    cSr();
+    this.uNG.findViewById(a.e.bt_picker_confirm).setOnClickListener(new c.4(this));
+    this.uNG.findViewById(a.e.bt_picker_cancel).setOnClickListener(new c.5(this));
+    this.uNG.setOnClickListener(new c.6(this));
+    View localView = this.uNK.findViewById(a.e.app_brand_picker_panel_internal_picker);
     localView.setOnClickListener(new c.7(this));
     localView.setBackgroundColor(a.w(localView.getContext(), a.b.BG_5));
-    addView(this.rCv, paramContext);
-    this.pMY = ((TextView)findViewById(a.e.app_brand_picker_header));
-    this.pMY.setClickable(true);
-    this.rCq = findViewById(a.e.app_brand_picker_divider);
+    addView(this.uNK, paramContext);
+    this.sRO = ((TextView)findViewById(a.e.app_brand_picker_header));
+    this.sRO.setClickable(true);
+    this.uNF = findViewById(a.e.app_brand_picker_divider);
     addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
@@ -91,41 +91,40 @@ public class c
     AppMethodBeat.o(138049);
   }
   
-  private void b(boolean paramBoolean, Object paramObject)
+  private void cSo()
   {
-    AppMethodBeat.i(138048);
-    if ((!this.rCu) && (this.rCt != null))
-    {
-      this.rCu = true;
-      this.rCt.a(paramBoolean, paramObject);
-      this.rCu = false;
-    }
-    AppMethodBeat.o(138048);
+    this.uNI = null;
+    this.uNQ = null;
   }
   
-  private void cpJ()
+  private void cSp()
   {
-    this.rCt = null;
-    this.rCz = null;
+    AppMethodBeat.i(324662);
+    setBackgroundResource(a.b.transparent);
+    clearAnimation();
+    super.setVisibility(8);
+    requestLayout();
+    this.uNN = false;
+    AppMethodBeat.o(324662);
   }
   
-  private void cpK()
+  private void cSq()
   {
-    AppMethodBeat.i(206939);
+    AppMethodBeat.i(324663);
     if (isLandscape()) {}
     for (int i = 0;; i = getContext().getResources().getDimensionPixelSize(a.c.Edge_3A))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.rCw.getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.uNL.getLayoutParams();
       localLayoutParams.height = i;
-      this.rCw.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(206939);
+      this.uNL.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(324663);
       return;
     }
   }
   
-  private void cpL()
+  private void cSr()
   {
-    AppMethodBeat.i(206941);
+    AppMethodBeat.i(324664);
     int k;
     int j;
     if (isLandscape())
@@ -135,92 +134,77 @@ public class c
     }
     for (int i = getContext().getResources().getDimensionPixelSize(a.c.picker_toolbar_height_land_space);; i = getContext().getResources().getDimensionPixelSize(a.c.picker_toolbar_height_portrait))
     {
-      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.rCs.getLayoutParams();
+      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.uNH.getLayoutParams();
       localLayoutParams.topMargin = k;
       localLayoutParams.bottomMargin = j;
-      this.rCs.setLayoutParams(localLayoutParams);
-      this.rCr.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
-      AppMethodBeat.o(206941);
+      this.uNH.setLayoutParams(localLayoutParams);
+      this.uNG.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
+      AppMethodBeat.o(324664);
       return;
       k = getContext().getResources().getDimensionPixelSize(a.c.Edge_5A);
       j = getContext().getResources().getDimensionPixelSize(a.c.Edge_4A);
     }
   }
   
-  private s cpM()
+  private v cSs()
   {
-    AppMethodBeat.i(206948);
-    if (this.rCA == null)
+    AppMethodBeat.i(324666);
+    if (this.uNR == null)
     {
       Log.w("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "requireOrientationGetter, orientationGetter is null, use AndroidOrientationGetter as fallback");
-      localObject = b.rip;
-      this.rCA = b.a.b(null);
+      localObject = b.uql;
+      this.uNR = b.a.b(null);
     }
-    Object localObject = this.rCA;
-    AppMethodBeat.o(206948);
+    Object localObject = this.uNR;
+    AppMethodBeat.o(324666);
     return localObject;
   }
   
-  private boolean isLandscape()
+  private void d(boolean paramBoolean, Object paramObject)
   {
-    AppMethodBeat.i(206943);
-    if (ae.rjk == cpM().cgT())
+    AppMethodBeat.i(138048);
+    if ((!this.uNJ) && (this.uNI != null))
     {
-      AppMethodBeat.o(206943);
-      return true;
+      this.uNJ = true;
+      this.uNI.c(paramBoolean, paramObject);
+      this.uNJ = false;
     }
-    AppMethodBeat.o(206943);
-    return false;
+    AppMethodBeat.o(138048);
   }
   
-  protected final void cV(Object paramObject)
+  private void gc(boolean paramBoolean)
   {
-    AppMethodBeat.i(138059);
-    if (this.rCz != null) {
-      this.rCz.cI(paramObject);
-    }
-    AppMethodBeat.o(138059);
-  }
-  
-  @SuppressLint({"WrongCall"})
-  protected final void fn(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(138054);
-    super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(138054);
-  }
-  
-  public com.tencent.mm.plugin.appbrand.jsapi.s.c getPicker()
-  {
-    return this.rCo;
-  }
-  
-  public void hide()
-  {
-    AppMethodBeat.i(138052);
-    if (this.isAnimating)
+    AppMethodBeat.i(324661);
+    if (this.uNM)
     {
-      AppMethodBeat.o(138052);
+      clearAnimation();
+      this.uNM = false;
+    }
+    if ((this.uNN) || (getVisibility() != 0))
+    {
+      AppMethodBeat.o(324661);
       return;
     }
-    b(false, null);
-    if (this.rCo != null)
+    d(false, null);
+    if (this.uND != null)
     {
-      this.rCo.onHide(this);
-      this.isAnimating = true;
+      this.uND.onHide(this);
+      if (!paramBoolean)
+      {
+        cSp();
+        AppMethodBeat.o(324661);
+        return;
+      }
+      this.uNN = true;
       Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.out_to_bottom);
-      this.rCv.startAnimation(localAnimation);
+      this.uNK.startAnimation(localAnimation);
       startAnimation(AnimationUtils.loadAnimation(getContext(), a.a.app_brand_faded_out));
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(138042);
-          c.this.setBackgroundResource(a.b.transparent);
-          c.this.clearAnimation();
           c.b(c.this);
-          c.this.requestLayout();
-          c.a(c.this);
           AppMethodBeat.o(138042);
         }
         
@@ -229,39 +213,79 @@ public class c
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
     }
+    AppMethodBeat.o(324661);
+  }
+  
+  private boolean isLandscape()
+  {
+    AppMethodBeat.i(324665);
+    if (aj.urz == cSs().cHR())
+    {
+      AppMethodBeat.o(324665);
+      return true;
+    }
+    AppMethodBeat.o(324665);
+    return false;
+  }
+  
+  protected final void er(Object paramObject)
+  {
+    AppMethodBeat.i(138059);
+    if (this.uNQ != null) {
+      this.uNQ.ed(paramObject);
+    }
+    AppMethodBeat.o(138059);
+  }
+  
+  public com.tencent.mm.plugin.appbrand.jsapi.v.c getPicker()
+  {
+    return this.uND;
+  }
+  
+  protected final void gg(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(138054);
+    super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(138054);
+  }
+  
+  public void hide()
+  {
+    AppMethodBeat.i(138052);
+    gc(true);
     AppMethodBeat.o(138052);
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(206949);
+    AppMethodBeat.i(324701);
     super.onConfigurationChanged(paramConfiguration);
-    if ((paramConfiguration.uiMode != this.rCx) && (this.rCy == null)) {
-      this.rCy = new Runnable()
+    if ((paramConfiguration.uiMode != this.uNO) && (this.uNP == null)) {
+      this.uNP = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(206584);
+          AppMethodBeat.i(324660);
           c.f(c.this).setBackground(a.m(c.this.getContext(), a.d.app_brand_picker_bg));
-          c.this.pMY.setTextColor(a.w(c.this.getContext(), a.b.BW_0_Alpha_0_9));
-          c.this.rCr.setBackgroundColor(a.w(c.this.getContext(), a.b.BG_5));
-          ((Button)c.this.rCr.findViewById(a.e.bt_picker_confirm)).setTextColor(a.w(c.this.getContext(), a.b.color_btn_text_selector));
-          ((Button)c.this.rCr.findViewById(a.e.bt_picker_confirm)).setBackground(a.m(c.this.getContext(), a.d.btn_solid_green));
-          ((Button)c.this.rCr.findViewById(a.e.bt_picker_cancel)).setTextColor(a.w(c.this.getContext(), a.b.white_btn_text_selector));
-          ((Button)c.this.rCr.findViewById(a.e.bt_picker_cancel)).setBackground(a.m(c.this.getContext(), a.d.btn_solid_white));
-          AppMethodBeat.o(206584);
+          c.this.sRO.setTextColor(a.w(c.this.getContext(), a.b.BW_0_Alpha_0_9));
+          c.this.uNG.setBackgroundColor(a.w(c.this.getContext(), a.b.BG_5));
+          ((Button)c.this.uNG.findViewById(a.e.bt_picker_confirm)).setTextColor(a.w(c.this.getContext(), a.b.color_btn_text_selector));
+          ((Button)c.this.uNG.findViewById(a.e.bt_picker_confirm)).setBackground(a.m(c.this.getContext(), a.d.btn_solid_green));
+          ((Button)c.this.uNG.findViewById(a.e.bt_picker_cancel)).setTextColor(a.w(c.this.getContext(), a.b.white_btn_text_selector));
+          ((Button)c.this.uNG.findViewById(a.e.bt_picker_cancel)).setBackground(a.m(c.this.getContext(), a.d.btn_solid_white));
+          AppMethodBeat.o(324660);
         }
       };
     }
-    this.rCx = paramConfiguration.uiMode;
-    AppMethodBeat.o(206949);
+    this.uNO = paramConfiguration.uiMode;
+    AppMethodBeat.o(324701);
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(138058);
     super.onDetachedFromWindow();
-    cpJ();
+    cSo();
     removeAllViews();
     AppMethodBeat.o(138058);
   }
@@ -280,11 +304,11 @@ public class c
     AppMethodBeat.i(138056);
     if (Util.isNullOrNil(paramString))
     {
-      cpK();
-      this.rCw.setVisibility(0);
-      this.pMY.setText("");
-      this.rCq.setVisibility(8);
-      this.pMY.setVisibility(8);
+      cSq();
+      this.uNL.setVisibility(0);
+      this.sRO.setText("");
+      this.uNF.setVisibility(8);
+      this.sRO.setVisibility(8);
       AppMethodBeat.o(138056);
       return;
     }
@@ -294,10 +318,10 @@ public class c
     }
     for (;;)
     {
-      this.rCw.setVisibility(8);
-      this.rCq.setVisibility(0);
-      this.pMY.setVisibility(0);
-      this.pMY.setText(str);
+      this.uNL.setVisibility(8);
+      this.uNF.setVisibility(0);
+      this.sRO.setVisibility(0);
+      this.sRO.setText(str);
       AppMethodBeat.o(138056);
       return;
       if ("设置地区".equals(paramString))
@@ -320,42 +344,42 @@ public class c
   
   public void setOnResultListener(a parama)
   {
-    this.rCt = parama;
+    this.uNI = parama;
   }
   
   public void setOnValueUpdateListener(b paramb)
   {
-    this.rCz = paramb;
+    this.uNQ = paramb;
   }
   
-  public void setOrientationGetter(s params)
+  public void setOrientationGetter(v paramv)
   {
-    AppMethodBeat.i(206946);
-    Log.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + params.getName());
-    this.rCA = params;
-    AppMethodBeat.o(206946);
+    AppMethodBeat.i(324698);
+    Log.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + paramv.getName());
+    this.uNR = paramv;
+    AppMethodBeat.o(324698);
   }
   
-  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.s.c paramc)
+  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.v.c paramc)
   {
     AppMethodBeat.i(138050);
-    if (this.rCo != null) {
-      this.rCo.onDetach(this);
+    if (this.uND != null) {
+      this.uND.onDetach(this);
     }
-    this.rCo = paramc;
-    if (this.rCo != null) {
-      this.rCo.onAttach(this);
+    this.uND = paramc;
+    if (this.uND != null) {
+      this.uND.onAttach(this);
     }
-    if ((this.rCp == null) || (this.rCo == null) || (this.rCo.getView() == null))
+    if ((this.uNE == null) || (this.uND == null) || (this.uND.getView() == null))
     {
       AppMethodBeat.o(138050);
       return;
     }
-    this.rCp.removeAllViews();
-    cpJ();
+    this.uNE.removeAllViews();
+    cSo();
     paramc = new FrameLayout.LayoutParams(-1, -1);
     paramc.gravity = 17;
-    this.rCp.addView(this.rCo.getView(), paramc);
+    this.uNE.addView(this.uND.getView(), paramc);
     AppMethodBeat.o(138050);
   }
   
@@ -364,7 +388,7 @@ public class c
     AppMethodBeat.i(138053);
     if (paramInt != 0)
     {
-      hide();
+      gc(false);
       AppMethodBeat.o(138053);
       return;
     }
@@ -375,28 +399,33 @@ public class c
   public void show()
   {
     AppMethodBeat.i(138051);
-    if (this.isAnimating)
+    if (this.uNN)
+    {
+      clearAnimation();
+      this.uNN = false;
+    }
+    if (this.uNM)
     {
       AppMethodBeat.o(138051);
       return;
     }
-    if (this.rCo == null)
+    if (this.uND == null)
     {
       setVisibility(8);
       AppMethodBeat.o(138051);
       return;
     }
-    if (this.rCy != null)
+    if (this.uNP != null)
     {
-      this.rCy.run();
-      this.rCy = null;
+      this.uNP.run();
+      this.uNP = null;
     }
-    this.rCo.onShow(this);
+    this.uND.onShow(this);
     clearAnimation();
     setVisibility(0);
-    this.isAnimating = true;
+    this.uNM = true;
     Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.app_brand_in_from_bottom);
-    this.rCv.startAnimation(localAnimation);
+    this.uNK.startAnimation(localAnimation);
     startAnimation(AnimationUtils.loadAnimation(getContext(), a.a.app_brand_faded_in));
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
@@ -417,17 +446,17 @@ public class c
   
   public static abstract interface a<T>
   {
-    public abstract void a(boolean paramBoolean, T paramT);
+    public abstract void c(boolean paramBoolean, T paramT);
   }
   
   public static abstract interface b<T>
   {
-    public abstract void cI(T paramT);
+    public abstract void ed(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.c
  * JD-Core Version:    0.7.0.1
  */

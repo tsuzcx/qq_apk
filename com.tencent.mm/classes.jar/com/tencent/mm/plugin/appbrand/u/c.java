@@ -1,40 +1,45 @@
 package com.tencent.mm.plugin.appbrand.u;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.g;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.g.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.s;
 
-public final class c
+public enum c
+  implements g.a.a
 {
-  private static Set<String> qlr;
-  
   static
   {
-    AppMethodBeat.i(47770);
-    HashSet localHashSet = new HashSet();
-    qlr = localHashSet;
-    localHashSet.add(MD5Util.getMD5String("wx9a3998a6d8b89d42"));
-    AppMethodBeat.o(47770);
+    AppMethodBeat.i(317050);
+    tql = new c("INSTANCE");
+    tqm = new c[] { tql };
+    AppMethodBeat.o(317050);
   }
   
-  public static boolean ale(String paramString)
+  private c() {}
+  
+  public final g a(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.f paramf)
   {
-    AppMethodBeat.i(47769);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(317056);
+    a locala = a.tqf;
+    s.u(paramString, "appId");
+    s.u(paramActivity, "activity");
+    s.u(paramf, "component");
+    Log.i("MicroMsg.AppBrand.WxaNFCDiscoverableFactory", s.X("get#useReaderMode, value: ", Boolean.valueOf(a.tqg)));
+    if (a.tqg) {}
+    for (paramActivity = (com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.b)new com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.f(paramString, paramActivity);; paramActivity = (com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.b)new b(paramString, paramActivity, paramf))
     {
-      AppMethodBeat.o(47769);
-      return true;
+      paramString = new g(paramString, paramActivity);
+      AppMethodBeat.o(317056);
+      return paramString;
     }
-    boolean bool = qlr.contains(MD5Util.getMD5String(paramString));
-    AppMethodBeat.o(47769);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.c
  * JD-Core Version:    0.7.0.1
  */

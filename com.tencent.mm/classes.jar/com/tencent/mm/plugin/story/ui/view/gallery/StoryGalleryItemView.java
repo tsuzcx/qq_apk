@@ -12,253 +12,269 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.ui.editor.f;
-import com.tencent.mm.plugin.story.c.a.e;
-import com.tencent.mm.plugin.story.f.d.j;
-import com.tencent.mm.plugin.story.h.b;
+import com.tencent.mm.plugin.story.g.b;
+import com.tencent.mm.plugin.story.model.d.j;
 import com.tencent.mm.plugin.story.ui.view.CommentsContainer;
 import com.tencent.mm.plugin.story.ui.view.StoryActionView;
 import com.tencent.mm.plugin.story.ui.view.StoryCommentView;
 import com.tencent.mm.plugin.story.ui.view.StoryMsgInputView;
 import com.tencent.mm.plugin.story.ui.view.StoryMsgView;
 import com.tencent.mm.plugin.vlog.ui.preview.VLogFakeVideoView;
+import com.tencent.mm.plugin.vlog.ui.preview.VLogPlayView;
 import com.tencent.mm.plugin.vlog.ui.preview.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 import java.util.LinkedHashMap;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "commentView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "getCommentView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "imageVideoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryImageVideoViewMgr;", "msgView", "Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "getMsgView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "params", "Landroid/view/ViewGroup$LayoutParams;", "position", "getPosition", "()I", "setPosition", "(I)V", "postTipView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "getPostTipView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "setPostTipView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;)V", "thumbView", "Landroid/widget/ImageView;", "getThumbView", "()Landroid/widget/ImageView;", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getVideoItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "setVideoItem", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;)V", "videoParams", "Landroid/widget/FrameLayout$LayoutParams;", "videoViewContainer", "Landroid/view/ViewGroup;", "videoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "vlogFakeVideoViewMgr", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr;", "changeVideoItem", "", "item", "checkVisitEnable", "getPlayStatus", "", "initPostTipView", "onActiveItem", "onBackPressed", "onDestroy", "onDetachedFromWindow", "onPause", "onResume", "onUnactiveItem", "postVisit", "reBindBitmap", "resetLastView", "setImageVideoViewMgr", "setMute", "isMute", "setVLogFakeVideoViewMgr", "setVideoViewMgr", "setupCurView", "onMsgPanelStateCallback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "state", "index", "isSelf", "onPageSelectedCallback", "Lkotlin/Function2;", "stateChangeCallback", "Lkotlin/Function1;", "outClickListener", "Lkotlin/Function0;", "sessionId", "switchImageMode", "switchVideoMode", "toggleActiveState", "newActive", "updateCommentId", "success", "storyId", "", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryItemView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "commentView", "Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "getCommentView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryCommentView;", "imageVideoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryImageVideoViewMgr;", "msgView", "Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "getMsgView", "()Lcom/tencent/mm/plugin/story/ui/view/StoryMsgView;", "params", "Landroid/view/ViewGroup$LayoutParams;", "position", "getPosition", "()I", "setPosition", "(I)V", "postTipView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "getPostTipView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "setPostTipView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;)V", "thumbView", "Landroid/widget/ImageView;", "getThumbView", "()Landroid/widget/ImageView;", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getVideoItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "setVideoItem", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;)V", "videoParams", "Landroid/widget/FrameLayout$LayoutParams;", "videoViewContainer", "Landroid/view/ViewGroup;", "videoViewMgr", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewMgr;", "vlogFakeVideoViewMgr", "Lcom/tencent/mm/plugin/vlog/ui/preview/VLogFakeVideoViewMgr;", "changeVideoItem", "", "item", "checkVisitEnable", "getPlayStatus", "", "initPostTipView", "onActiveItem", "onBackPressed", "onDestroy", "onDetachedFromWindow", "onPause", "onResume", "onUnactiveItem", "postVisit", "reBindBitmap", "resetLastView", "setImageVideoViewMgr", "setMute", "isMute", "setVLogFakeVideoViewMgr", "setVideoViewMgr", "setupCurView", "onMsgPanelStateCallback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "state", "index", "isSelf", "onPageSelectedCallback", "Lkotlin/Function2;", "stateChangeCallback", "Lkotlin/Function1;", "outClickListener", "Lkotlin/Function0;", "sessionId", "switchImageMode", "switchVideoMode", "toggleActiveState", "newActive", "updateCommentId", "success", "storyId", "", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class StoryGalleryItemView
   extends RelativeLayout
 {
-  private final ViewGroup.LayoutParams FfH;
-  j LIV;
-  final StoryCommentView LSi;
-  final StoryMsgView LSj;
-  private StoryGalleryPostTip LSk;
-  ViewGroup Maa;
-  final FrameLayout.LayoutParams Mab;
-  n Mac;
-  l Mad;
-  a Mae;
+  final ImageView AlJ;
+  a SBA;
+  ViewGroup SBw;
+  final FrameLayout.LayoutParams SBx;
+  k SBy;
+  i SBz;
+  j Smr;
+  private StoryGalleryPostTip SuA;
+  final StoryCommentView Suy;
+  final StoryMsgView Suz;
   final String TAG;
-  int position;
-  final ImageView wPh;
+  private final ViewGroup.LayoutParams nxi;
+  private int position;
   
   public StoryGalleryItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120412);
     this.TAG = "MircoMsg.StoryGalleryItemView";
-    this.FfH = new ViewGroup.LayoutParams(-1, -1);
-    this.Mab = new FrameLayout.LayoutParams(-1, -1);
+    this.nxi = new ViewGroup.LayoutParams(-1, -1);
+    this.SBx = new FrameLayout.LayoutParams(-1, -1);
     setBackgroundColor(-16777216);
-    this.Maa = ((ViewGroup)new FrameLayout(paramContext));
-    this.wPh = new ImageView(paramContext);
-    this.wPh.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    addView((View)this.wPh, this.FfH);
-    addView((View)this.Maa, this.FfH);
-    this.LSi = new StoryCommentView(paramContext);
-    addView((View)this.LSi, this.FfH);
-    this.LSj = new StoryMsgView(paramContext);
-    addView((View)this.LSj, this.FfH);
+    this.SBw = ((ViewGroup)new FrameLayout(paramContext));
+    this.AlJ = new ImageView(paramContext);
+    this.AlJ.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    addView((View)this.AlJ, this.nxi);
+    addView((View)this.SBw, this.nxi);
+    this.Suy = new StoryCommentView(paramContext);
+    addView((View)this.Suy, this.nxi);
+    this.Suz = new StoryMsgView(paramContext);
+    addView((View)this.Suz, this.nxi);
     paramContext = getContext();
-    p.j(paramContext, "context");
-    this.LSk = new StoryGalleryPostTip(paramContext);
-    paramContext = new RelativeLayout.LayoutParams(-1, ax.ew(getContext()) + ax.at(getContext()));
+    s.s(paramContext, "context");
+    this.SuA = new StoryGalleryPostTip(paramContext);
+    paramContext = new RelativeLayout.LayoutParams(-1, bf.fs(getContext()) + bf.be(getContext()));
     paramContext.addRule(10);
-    addView((View)this.LSk, (ViewGroup.LayoutParams)paramContext);
-    if (e.LFp.gbz())
+    addView((View)this.SuA, (ViewGroup.LayoutParams)paramContext);
+    if (com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      this.LSj.setVisibility(0);
-      this.LSi.setVisibility(8);
+      this.Suz.setVisibility(0);
+      this.Suy.setVisibility(8);
       AppMethodBeat.o(120412);
       return;
     }
-    this.LSj.setVisibility(8);
-    this.LSi.setVisibility(0);
+    this.Suz.setVisibility(8);
+    this.Suy.setVisibility(0);
     AppMethodBeat.o(120412);
   }
   
-  public final void aLr()
+  public final void EU(boolean paramBoolean)
+  {
+    AppMethodBeat.i(120410);
+    if (com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
+    {
+      StoryActionView localStoryActionView = this.Suz.Szm;
+      if (paramBoolean) {}
+      for (int i = 0;; i = 8)
+      {
+        localStoryActionView.setVisibility(i);
+        AppMethodBeat.o(120410);
+        return;
+      }
+    }
+    this.Suy.EU(paramBoolean);
+    AppMethodBeat.o(120410);
+  }
+  
+  public final void bew()
   {
     AppMethodBeat.i(120403);
     Log.i(this.TAG, "switchVideoMode");
-    Object localObject1 = this.LIV;
+    Object localObject1 = this.Smr;
     Object localObject2;
     boolean bool;
     if (localObject1 != null)
     {
-      if (!((j)localObject1).gdr()) {
-        break label238;
+      if (!((j)localObject1).hwM()) {
+        break label241;
       }
-      localObject2 = this.Mac;
-      if (localObject2 == null) {
-        break label223;
+      localObject2 = this.SBy;
+      if (localObject2 != null) {
+        break label220;
       }
-      bool = ((n)localObject2).Mbk;
+      bool = false;
       if (!bool)
       {
-        localObject2 = this.Mae;
-        if (localObject2 == null) {
+        localObject2 = this.SBA;
+        if (localObject2 != null) {
           break label228;
         }
-        bool = ((a)localObject2).Mbk;
-        label62:
+        bool = false;
+        label58:
         if (!bool) {
-          break label233;
+          break label236;
         }
       }
       bool = true;
-      label68:
-      localObject2 = this.Mac;
+      label64:
+      localObject2 = this.SBy;
       if (localObject2 != null) {
-        ((n)localObject2).aI(true, false);
+        ((k)localObject2).bf(true, false);
       }
-      localObject2 = this.Mae;
+      localObject2 = this.SBA;
       if (localObject2 != null) {
-        ((a)localObject2).zH(true);
+        ((a)localObject2).EZ(true);
       }
-      localObject2 = this.Mad;
+      localObject2 = this.SBz;
       if (localObject2 != null) {
-        ((l)localObject2).a(this.Maa, (ViewGroup.LayoutParams)this.Mab);
+        ((i)localObject2).a(this.SBw, (ViewGroup.LayoutParams)this.SBx);
       }
-      localObject2 = this.Mad;
+      localObject2 = this.SBz;
       if (localObject2 != null) {
-        ((l)localObject2).a((j)localObject1, bool);
+        ((i)localObject2).a((j)localObject1, bool);
       }
     }
-    this.Maa.setVisibility(0);
-    if (e.LFp.gbz())
+    this.SBw.setVisibility(0);
+    if (com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      this.LSj.setVisibility(0);
-      this.LSi.setVisibility(8);
-      this.LSj.show();
+      this.Suz.setVisibility(0);
+      this.Suy.setVisibility(8);
+      this.Suz.show();
     }
     for (;;)
     {
-      localObject1 = this.LIV;
-      if (localObject1 == null) {
-        break label529;
+      localObject1 = this.Smr;
+      if (localObject1 != null)
+      {
+        localObject2 = com.tencent.mm.plugin.story.g.c.SqL;
+        com.tencent.mm.plugin.story.g.c.bJ(((j)localObject1).username, ((j)localObject1).idH);
+        localObject2 = b.Sqn;
+        b.r(((j)localObject1).username, ((j)localObject1).idH, -1);
       }
-      localObject2 = com.tencent.mm.plugin.story.h.c.LOg;
-      com.tencent.mm.plugin.story.h.c.bx(((j)localObject1).username, ((j)localObject1).fXG);
-      localObject2 = b.LNM;
-      b.o(((j)localObject1).username, ((j)localObject1).fXG, -1);
       AppMethodBeat.o(120403);
       return;
-      label223:
-      bool = false;
+      label220:
+      bool = ((k)localObject2).SCA;
       break;
       label228:
+      bool = ((a)localObject2).SCA;
+      break label58;
+      label236:
       bool = false;
-      break label62;
-      label233:
-      bool = false;
-      break label68;
-      label238:
-      if (((j)localObject1).gds())
+      break label64;
+      label241:
+      if (((j)localObject1).hwN())
       {
-        localObject2 = this.Mac;
-        if (localObject2 != null)
+        localObject2 = this.SBy;
+        if (localObject2 == null)
         {
-          bool = ((n)localObject2).Mbk;
+          bool = false;
           if (!bool)
           {
-            localObject2 = this.Mad;
-            if (localObject2 == null) {
+            localObject2 = this.SBz;
+            if (localObject2 != null) {
               break label362;
             }
-            bool = ((l)localObject2).Mbk;
+            bool = false;
             if (!bool) {
-              break label367;
+              break label370;
             }
           }
         }
-        label367:
+        label370:
         for (bool = true;; bool = false)
         {
-          localObject2 = this.Mac;
+          localObject2 = this.SBy;
           if (localObject2 != null) {
-            ((n)localObject2).aI(true, false);
+            ((k)localObject2).bf(true, false);
           }
-          localObject2 = this.Mad;
+          localObject2 = this.SBz;
           if (localObject2 != null) {
-            ((l)localObject2).zH(true);
+            ((i)localObject2).EZ(true);
           }
-          localObject2 = this.Mae;
+          localObject2 = this.SBA;
           if (localObject2 != null) {
-            ((a)localObject2).a(this.Maa, (ViewGroup.LayoutParams)this.Mab);
+            ((a)localObject2).a(this.SBw, (ViewGroup.LayoutParams)this.SBx);
           }
-          localObject2 = this.Mae;
+          localObject2 = this.SBA;
           if (localObject2 == null) {
             break;
           }
-          ((a)localObject2).a(((j)localObject1).LJg, bool);
+          ((a)localObject2).a(((j)localObject1).Smy, bool);
           break;
-          bool = false;
+          bool = ((k)localObject2).SCA;
           break label259;
-          bool = false;
-          break label277;
+          bool = ((i)localObject2).SCA;
+          break label274;
         }
       }
       label259:
-      label277:
+      label274:
       label362:
-      localObject2 = this.Mad;
-      if (localObject2 != null)
+      localObject2 = this.SBz;
+      if (localObject2 == null)
       {
-        bool = ((l)localObject2).Mbk;
+        bool = false;
         label386:
         if (!bool)
         {
-          localObject2 = this.Mae;
-          if (localObject2 == null) {
+          localObject2 = this.SBA;
+          if (localObject2 != null) {
             break label485;
           }
-          bool = ((a)localObject2).Mbk;
-          label404:
+          bool = false;
+          label401:
           if (!bool) {
-            break label490;
+            break label493;
           }
         }
       }
       label485:
-      label490:
+      label493:
       for (bool = true;; bool = false)
       {
-        localObject2 = this.Mad;
+        localObject2 = this.SBz;
         if (localObject2 != null) {
-          ((l)localObject2).zH(true);
+          ((i)localObject2).EZ(true);
         }
-        localObject2 = this.Mae;
+        localObject2 = this.SBA;
         if (localObject2 != null) {
-          ((a)localObject2).zH(true);
+          ((a)localObject2).EZ(true);
         }
-        localObject2 = this.Mac;
+        localObject2 = this.SBy;
         if (localObject2 != null) {
-          ((n)localObject2).a(this.Maa, (ViewGroup.LayoutParams)this.Mab);
+          ((k)localObject2).a(this.SBw, (ViewGroup.LayoutParams)this.SBx);
         }
-        localObject2 = this.Mac;
+        localObject2 = this.SBy;
         if (localObject2 == null) {
           break;
         }
-        ((n)localObject2).a((j)localObject1, bool);
+        ((k)localObject2).a((j)localObject1, bool);
         break;
-        bool = false;
+        bool = ((i)localObject2).SCA;
         break label386;
-        bool = false;
-        break label404;
+        bool = ((a)localObject2).SCA;
+        break label401;
       }
-      this.LSj.setVisibility(8);
-      this.LSi.setVisibility(0);
-      localObject1 = this.LSi;
+      this.Suz.setVisibility(8);
+      this.Suy.setVisibility(0);
+      localObject1 = this.Suy;
       ((StoryCommentView)localObject1).isActive = true;
       ((StoryCommentView)localObject1).show();
     }
-    label529:
-    AppMethodBeat.o(120403);
   }
   
   public final boolean e(j paramj)
@@ -266,50 +282,57 @@ public final class StoryGalleryItemView
     AppMethodBeat.i(120401);
     if (paramj != null)
     {
-      if (paramj.gdr())
+      Object localObject;
+      if (paramj.hwM())
       {
-        localObject = this.Mad;
+        localObject = this.SBz;
         if (localObject != null)
         {
-          p.k(paramj, "item");
-          if (((l)localObject).Mbf != null)
+          s.u(paramj, "item");
+          if (((i)localObject).SCv != null)
           {
-            paramj = ((l)localObject).Mbf;
+            paramj = ((i)localObject).SCv;
             if (paramj != null) {
               paramj.isPlaying();
             }
           }
+          AppMethodBeat.o(120401);
+          return false;
         }
-        AppMethodBeat.o(120401);
-        return false;
       }
-      if (paramj.gds())
+      else if (paramj.hwN())
       {
-        paramj = this.Mae;
-        if ((paramj != null) && (paramj.NBQ != null))
+        paramj = this.SBA;
+        if (paramj != null)
         {
-          paramj = paramj.NBQ;
-          if (paramj != null) {
-            paramj.isPlaying();
+          if (paramj.Uoy != null)
+          {
+            paramj = paramj.Uoy;
+            if (paramj != null) {
+              boolean bool = paramj.getVlogVideoView().UoE;
+            }
           }
+          AppMethodBeat.o(120401);
+          return false;
         }
-        AppMethodBeat.o(120401);
-        return false;
       }
-      Object localObject = this.Mac;
-      if (localObject != null)
+      else
       {
-        p.k(paramj, "item");
-        if (((n)localObject).Mcc != null)
+        localObject = this.SBy;
+        if (localObject != null)
         {
-          paramj = ((n)localObject).Mcc;
-          if (paramj != null) {
-            paramj.isPlaying();
+          s.u(paramj, "item");
+          if (((k)localObject).SDp != null)
+          {
+            paramj = ((k)localObject).SDp;
+            if (paramj != null) {
+              paramj.isPlaying();
+            }
           }
+          AppMethodBeat.o(120401);
+          return false;
         }
       }
-      AppMethodBeat.o(120401);
-      return false;
     }
     AppMethodBeat.o(120401);
     return false;
@@ -317,12 +340,12 @@ public final class StoryGalleryItemView
   
   public final StoryCommentView getCommentView()
   {
-    return this.LSi;
+    return this.Suy;
   }
   
   public final StoryMsgView getMsgView()
   {
-    return this.LSj;
+    return this.Suz;
   }
   
   public final int getPosition()
@@ -332,7 +355,7 @@ public final class StoryGalleryItemView
   
   public final StoryGalleryPostTip getPostTipView()
   {
-    return this.LSk;
+    return this.SuA;
   }
   
   public final String getTAG()
@@ -342,107 +365,86 @@ public final class StoryGalleryItemView
   
   public final ImageView getThumbView()
   {
-    return this.wPh;
+    return this.AlJ;
   }
   
   public final j getVideoItem()
   {
-    return this.LIV;
+    return this.Smr;
   }
   
-  public final void ggH()
+  public final void hAa()
   {
     AppMethodBeat.i(120408);
-    if (e.LFp.gbz()) {
-      this.LSj.ggH();
+    if (com.tencent.mm.plugin.story.c.a.e.Sjb.huS()) {
+      this.Suz.hAa();
     }
     AppMethodBeat.o(120408);
   }
   
-  public final void ggN()
+  public final void hAg()
   {
     AppMethodBeat.i(120409);
-    if (e.LFp.gbz())
+    if (com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      this.LSj.setVisibility(0);
-      this.LSi.setVisibility(8);
+      this.Suz.setVisibility(0);
+      this.Suy.setVisibility(8);
       AppMethodBeat.o(120409);
       return;
     }
-    this.LSj.setVisibility(8);
-    this.LSi.setVisibility(0);
+    this.Suz.setVisibility(8);
+    this.Suy.setVisibility(0);
     AppMethodBeat.o(120409);
   }
   
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(120407);
-    if (e.LFp.gbz())
+    if (com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      localObject = this.LSj;
-      if (((StoryMsgView)localObject).LXD.getVisibility() == 0)
+      StoryMsgView localStoryMsgView = this.Suz;
+      if (localStoryMsgView.Szk.getVisibility() == 0)
       {
-        if (((StoryMsgView)localObject).LXI.getInputType() != -1) {
-          ((StoryMsgView)localObject).LXI.ggC();
+        if (localStoryMsgView.Szp.getInputType() != -1) {
+          localStoryMsgView.Szp.hzW();
         }
         for (;;)
         {
           AppMethodBeat.o(120407);
           return true;
-          if (((StoryMsgView)localObject).LXI.getVisibility() == 0)
+          if (localStoryMsgView.Szp.getVisibility() == 0)
           {
-            if (((StoryMsgView)localObject).fCB) {
-              ((StoryMsgView)localObject).LXI.setVisibility(8);
+            if (localStoryMsgView.hHq) {
+              localStoryMsgView.Szp.setVisibility(8);
             } else {
-              ((StoryMsgView)localObject).ggG();
+              localStoryMsgView.hzZ();
             }
           }
           else {
-            ((StoryMsgView)localObject).ggG();
+            localStoryMsgView.hzZ();
           }
         }
       }
       AppMethodBeat.o(120407);
       return false;
     }
-    Object localObject = this.LSi;
-    if (((StoryCommentView)localObject).lvW == 1)
-    {
-      ((StoryCommentView)localObject).Bl(2);
-      AppMethodBeat.o(120407);
-      return true;
-    }
-    if (((StoryCommentView)localObject).lvW == 3)
-    {
-      ((StoryCommentView)localObject).Bl(2);
-      AppMethodBeat.o(120407);
-      return true;
-    }
-    if (((StoryCommentView)localObject).lvW == 5)
-    {
-      ((StoryCommentView)localObject).Bl(2);
-      AppMethodBeat.o(120407);
-      return true;
-    }
+    boolean bool = this.Suy.aAx();
     AppMethodBeat.o(120407);
-    return false;
+    return bool;
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(120406);
-    if (!e.LFp.gbz())
+    if (!com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      Object localObject = this.LSi;
-      ((StoryCommentView)localObject).LWg.pause();
-      ((StoryCommentView)localObject).LWC.clear();
-      ((StoryCommentView)localObject).LWv.clear();
-      localObject = ((StoryCommentView)localObject).LWr;
-      if (localObject != null)
-      {
+      Object localObject = this.Suy;
+      ((StoryCommentView)localObject).SxZ.pause();
+      ((StoryCommentView)localObject).Syv.clear();
+      ((StoryCommentView)localObject).Syo.clear();
+      localObject = ((StoryCommentView)localObject).Syk;
+      if (localObject != null) {
         ((com.tencent.mm.plugin.story.ui.view.c)localObject).dismiss();
-        AppMethodBeat.o(120406);
-        return;
       }
     }
     AppMethodBeat.o(120406);
@@ -453,20 +455,20 @@ public final class StoryGalleryItemView
     AppMethodBeat.i(120411);
     Log.d(this.TAG, "onDetachedFromWindow");
     super.onDetachedFromWindow();
-    this.Mac = null;
-    this.Mad = null;
-    this.Mae = null;
+    this.SBy = null;
+    this.SBz = null;
+    this.SBA = null;
     AppMethodBeat.o(120411);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(120405);
-    if (!e.LFp.gbz())
+    if (!com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      StoryCommentView localStoryCommentView = this.LSi;
+      StoryCommentView localStoryCommentView = this.Suy;
       Log.i(StoryCommentView.TAG, "LogStory: pause");
-      localStoryCommentView.LWg.pause();
+      localStoryCommentView.SxZ.pause();
     }
     AppMethodBeat.o(120405);
   }
@@ -474,44 +476,40 @@ public final class StoryGalleryItemView
   public final void onResume()
   {
     AppMethodBeat.i(120404);
-    if (!e.LFp.gbz())
+    if (!com.tencent.mm.plugin.story.c.a.e.Sjb.huS())
     {
-      StoryCommentView localStoryCommentView = this.LSi;
+      StoryCommentView localStoryCommentView = this.Suy;
       Log.i(StoryCommentView.TAG, "LogStory: resume");
-      if ((localStoryCommentView.contentView.getVisibility() == 0) && (localStoryCommentView.lvW == 2) && (localStoryCommentView.LWg.fEs)) {
-        localStoryCommentView.LWg.resume();
+      if ((localStoryCommentView.contentView.getVisibility() == 0) && (localStoryCommentView.onv == 2) && (localStoryCommentView.SxZ.hJi)) {
+        localStoryCommentView.SxZ.resume();
       }
     }
     AppMethodBeat.o(120404);
   }
   
-  public final void setImageVideoViewMgr(l paraml)
+  public final void setImageVideoViewMgr(i parami)
   {
-    this.Mad = paraml;
+    this.SBz = parami;
   }
   
   public final void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(120402);
-    Object localObject = this.Mac;
+    Object localObject = this.SBy;
     if (localObject != null) {
-      ((n)localObject).setMute(paramBoolean);
+      ((k)localObject).setMute(paramBoolean);
     }
-    localObject = this.Mad;
+    localObject = this.SBz;
     if (localObject != null)
     {
-      p.j("", "if(BuildConfig.DEBUG) Ut…tack().toString() else \"\"");
-      Log.i(((l)localObject).TAG, "setMute " + paramBoolean + " ret " + "");
-      ((l)localObject).iYs = paramBoolean;
+      Log.i(((i)localObject).TAG, "setMute " + paramBoolean + " ret " + "");
+      ((i)localObject).lAj = paramBoolean;
     }
-    localObject = this.Mae;
+    localObject = this.SBA;
     if (localObject != null)
     {
-      p.j("", "if(BuildConfig.DEBUG) Ut…tack().toString() else \"\"");
-      ((a)localObject).iYs = paramBoolean;
+      ((a)localObject).lAj = paramBoolean;
       Log.i("MicroMsg.VLogFakeVideoViewMgr", "setMute " + paramBoolean + " ret " + "");
-      AppMethodBeat.o(120402);
-      return;
     }
     AppMethodBeat.o(120402);
   }
@@ -523,53 +521,27 @@ public final class StoryGalleryItemView
   
   public final void setPostTipView(StoryGalleryPostTip paramStoryGalleryPostTip)
   {
-    this.LSk = paramStoryGalleryPostTip;
+    this.SuA = paramStoryGalleryPostTip;
   }
   
   public final void setVLogFakeVideoViewMgr(a parama)
   {
-    this.Mae = parama;
+    this.SBA = parama;
   }
   
   public final void setVideoItem(j paramj)
   {
-    this.LIV = paramj;
+    this.Smr = paramj;
   }
   
-  public final void setVideoViewMgr(n paramn)
+  public final void setVideoViewMgr(k paramk)
   {
-    this.Mac = paramn;
-  }
-  
-  public final void zG(boolean paramBoolean)
-  {
-    AppMethodBeat.i(120410);
-    if (e.LFp.gbz())
-    {
-      localObject = this.LSj.LXF;
-      if (paramBoolean) {}
-      for (int i = 0;; i = 8)
-      {
-        ((StoryActionView)localObject).setVisibility(i);
-        AppMethodBeat.o(120410);
-        return;
-      }
-    }
-    Object localObject = this.LSi;
-    Log.i(StoryCommentView.TAG, "toggleActiveState ".concat(String.valueOf(paramBoolean)));
-    if (paramBoolean)
-    {
-      ((StoryCommentView)localObject).show();
-      AppMethodBeat.o(120410);
-      return;
-    }
-    ((StoryCommentView)localObject).hide();
-    AppMethodBeat.o(120410);
+    this.SBy = paramk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryItemView
  * JD-Core Version:    0.7.0.1
  */

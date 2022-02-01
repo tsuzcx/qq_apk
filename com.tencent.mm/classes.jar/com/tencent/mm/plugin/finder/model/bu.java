@@ -1,13 +1,33 @@
 package com.tencent.mm.plugin.finder.model;
 
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.view.recyclerview.a;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.view.recyclerview.i.b;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "plugin-finder-base_release"})
-public abstract interface bu
-  extends k, a
-{}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderSearchData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "searchHint", "", "(I)V", "getSearchHint", "()I", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bu
+  extends i.b
+{
+  public final int EDB;
+  
+  public bu(int paramInt)
+  {
+    this.EDB = paramInt;
+  }
+  
+  public final long bZA()
+  {
+    return 100L;
+  }
+  
+  public final int bZB()
+  {
+    AppMethodBeat.i(331898);
+    int i = bu.class.getName().hashCode();
+    AppMethodBeat.o(331898);
+    return i;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

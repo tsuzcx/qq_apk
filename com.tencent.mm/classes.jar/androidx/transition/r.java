@@ -12,16 +12,16 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class r
 {
-  private static final Class<?>[] ase;
-  private static final a<String, Constructor> asf;
+  private static final Class<?>[] cgN;
+  private static final a<String, Constructor> cgO;
   private final Context mContext;
   
   static
   {
-    AppMethodBeat.i(192801);
-    ase = new Class[] { Context.class, AttributeSet.class };
-    asf = new a();
-    AppMethodBeat.o(192801);
+    AppMethodBeat.i(201659);
+    cgN = new Class[] { Context.class, AttributeSet.class };
+    cgO = new a();
+    AppMethodBeat.o(201659);
   }
   
   private r(Context paramContext)
@@ -31,7 +31,7 @@ public final class r
   
   private Transition a(XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Transition paramTransition)
   {
-    AppMethodBeat.i(192765);
+    AppMethodBeat.i(201629);
     int i = paramXmlPullParser.getDepth();
     TransitionSet localTransitionSet;
     Object localObject;
@@ -127,7 +127,7 @@ public final class r
                 if (paramTransition == null)
                 {
                   paramXmlPullParser = new RuntimeException("Invalid use of arcMotion element");
-                  AppMethodBeat.o(192765);
+                  AppMethodBeat.o(201629);
                   throw paramXmlPullParser;
                 }
                 paramTransition.a(new ArcMotion(this.mContext, paramAttributeSet));
@@ -138,7 +138,7 @@ public final class r
                 if (paramTransition == null)
                 {
                   paramXmlPullParser = new RuntimeException("Invalid use of pathMotion element");
-                  AppMethodBeat.o(192765);
+                  AppMethodBeat.o(201629);
                   throw paramXmlPullParser;
                 }
                 paramTransition.a((PathMotion)a(paramAttributeSet, PathMotion.class, "pathMotion"));
@@ -149,20 +149,20 @@ public final class r
                 if (paramTransition == null)
                 {
                   paramXmlPullParser = new RuntimeException("Invalid use of patternPathMotion element");
-                  AppMethodBeat.o(192765);
+                  AppMethodBeat.o(201629);
                   throw paramXmlPullParser;
                 }
                 paramTransition.a(new PatternPathMotion(this.mContext, paramAttributeSet));
                 continue;
               }
               paramXmlPullParser = new RuntimeException("Unknown scene name: " + paramXmlPullParser.getName());
-              AppMethodBeat.o(192765);
+              AppMethodBeat.o(201629);
               throw paramXmlPullParser;
             }
             if (paramTransition != null)
             {
               paramXmlPullParser = new InflateException("Could not add transition to another transition.");
-              AppMethodBeat.o(192765);
+              AppMethodBeat.o(201629);
               throw paramXmlPullParser;
             }
           }
@@ -170,7 +170,7 @@ public final class r
       }
     }
     label646:
-    AppMethodBeat.o(192765);
+    AppMethodBeat.o(201629);
     return localObject;
   }
   
@@ -203,11 +203,11 @@ public final class r
     //   50: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   53: aload_1
     //   54: athrow
-    //   55: getstatic 36	androidx/transition/r:asf	Landroidx/b/a;
+    //   55: getstatic 36	androidx/transition/r:cgO	Landroidx/b/a;
     //   58: astore 6
     //   60: aload 6
     //   62: monitorenter
-    //   63: getstatic 36	androidx/transition/r:asf	Landroidx/b/a;
+    //   63: getstatic 36	androidx/transition/r:cgO	Landroidx/b/a;
     //   66: aload 5
     //   68: invokevirtual 202	androidx/b/a:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   71: checkcast 204	java/lang/reflect/Constructor
@@ -229,13 +229,13 @@ public final class r
     //   105: aload 7
     //   107: ifnull +27 -> 134
     //   110: aload 7
-    //   112: getstatic 29	androidx/transition/r:ase	[Ljava/lang/Class;
+    //   112: getstatic 29	androidx/transition/r:cgN	[Ljava/lang/Class;
     //   115: invokevirtual 222	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   118: astore_3
     //   119: aload_3
     //   120: iconst_1
     //   121: invokevirtual 226	java/lang/reflect/Constructor:setAccessible	(Z)V
-    //   124: getstatic 36	androidx/transition/r:asf	Landroidx/b/a;
+    //   124: getstatic 36	androidx/transition/r:cgO	Landroidx/b/a;
     //   127: aload 5
     //   129: aload_3
     //   130: invokevirtual 230	androidx/b/a:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -307,17 +307,17 @@ public final class r
     //   165	175	175	java/lang/Exception
   }
   
-  public static r aa(Context paramContext)
+  public static r av(Context paramContext)
   {
-    AppMethodBeat.i(192742);
+    AppMethodBeat.i(201611);
     paramContext = new r(paramContext);
-    AppMethodBeat.o(192742);
+    AppMethodBeat.o(201611);
     return paramContext;
   }
   
   private void b(XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Transition paramTransition)
   {
-    AppMethodBeat.i(192798);
+    AppMethodBeat.i(201650);
     int i = paramXmlPullParser.getDepth();
     int j;
     do
@@ -329,10 +329,10 @@ public final class r
     } while (j != 2);
     if (paramXmlPullParser.getName().equals("target"))
     {
-      TypedArray localTypedArray = this.mContext.obtainStyledAttributes(paramAttributeSet, q.ari);
+      TypedArray localTypedArray = this.mContext.obtainStyledAttributes(paramAttributeSet, q.cfR);
       j = g.b(localTypedArray, paramXmlPullParser, "targetId", 1);
       if (j != 0) {
-        paramTransition.dx(j);
+        paramTransition.gH(j);
       }
       for (;;)
       {
@@ -341,14 +341,14 @@ public final class r
         j = g.b(localTypedArray, paramXmlPullParser, "excludeId", 2);
         if (j != 0)
         {
-          paramTransition.l(j, true);
+          paramTransition.z(j, true);
         }
         else
         {
           Object localObject = g.c(localTypedArray, paramXmlPullParser, "targetName", 4);
           if (localObject != null)
           {
-            paramTransition.S((String)localObject);
+            paramTransition.aT((String)localObject);
           }
           else
           {
@@ -371,7 +371,7 @@ public final class r
                 {
                   localTypedArray.recycle();
                   paramXmlPullParser = new RuntimeException("Could not create ".concat(String.valueOf(localObject)), paramXmlPullParser);
-                  AppMethodBeat.o(192798);
+                  AppMethodBeat.o(201650);
                   throw paramXmlPullParser;
                 }
               }
@@ -382,7 +382,7 @@ public final class r
                 if (str != null)
                 {
                   localObject = str;
-                  paramTransition.j(Class.forName(str));
+                  paramTransition.s(Class.forName(str));
                 }
               }
             }
@@ -391,13 +391,13 @@ public final class r
       }
     }
     paramXmlPullParser = new RuntimeException("Unknown scene name: " + paramXmlPullParser.getName());
-    AppMethodBeat.o(192798);
+    AppMethodBeat.o(201650);
     throw paramXmlPullParser;
-    AppMethodBeat.o(192798);
+    AppMethodBeat.o(201650);
   }
   
   /* Error */
-  public final Transition dy(int paramInt)
+  public final Transition gI(int paramInt)
   {
     // Byte code:
     //   0: ldc_w 331
@@ -484,7 +484,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.r
  * JD-Core Version:    0.7.0.1
  */

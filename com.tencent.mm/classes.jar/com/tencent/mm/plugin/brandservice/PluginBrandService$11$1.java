@@ -1,27 +1,23 @@
 package com.tencent.mm.plugin.brandservice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.webcanvas.l;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.protocal.protobuf.eqg;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.webcanvas.j;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.flj;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.r;
-import com.tencent.mm.storage.s;
 import java.util.Map;
-import kotlin.g.b.p;
 
 final class PluginBrandService$11$1
   implements Runnable
 {
-  PluginBrandService$11$1(PluginBrandService.11 param11, h.a parama, Map paramMap) {}
+  PluginBrandService$11$1(PluginBrandService.11 param11, g.a parama, Map paramMap) {}
   
   public final void run()
   {
@@ -29,35 +25,33 @@ final class PluginBrandService$11$1
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if ((this.lrj != null) && (this.lrj.jQG != null) && (this.lrj.jQG.RIF != null))
+    if ((this.oiK != null) && (this.oiK.mpN != null) && (this.oiK.mpN.YFG != null))
     {
-      localObject1 = this.iVZ;
-      localObject2 = z.a(this.lrj.jQG.RIF);
-      p.k(localObject1, "values");
-      p.k(localObject2, "content");
-      if (af.hxA())
+      localObject1 = this.lxX;
+      localObject2 = w.a(this.oiK.mpN.YFG);
+      kotlin.g.b.s.u(localObject1, "values");
+      kotlin.g.b.s.u(localObject2, "content");
+      if (ah.iZd())
       {
-        localObject3 = af.cc((Map)localObject1);
-        if (localObject3 == null)
+        localObject3 = ah.cA((Map)localObject1);
+        if (localObject3 != null)
         {
-          AppMethodBeat.o(5547);
-          return;
-        }
-        if (!af.b((eqg)localObject3, null))
-        {
-          Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] onBizRecommendExpt illegal");
-          AppMethodBeat.o(5547);
-          return;
-        }
-        switch (((eqg)localObject3).Uax)
-        {
+          if (!ah.c((flj)localObject3, null))
+          {
+            Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] onBizRecommendExpt illegal");
+            AppMethodBeat.o(5547);
+            return;
+          }
+          switch (((flj)localObject3).abrz)
+          {
+          }
         }
       }
     }
     for (;;)
     {
-      localObject2 = l.PuB;
-      l.Tt(81L);
+      localObject2 = j.WkY;
+      j.xC(81L);
       long l = Util.getLong((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.RecID"), 0L);
       int i = Util.getInt((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.Pos"), -1);
       int j = Util.getInt((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.Weight"), -1);
@@ -65,29 +59,26 @@ final class PluginBrandService$11$1
       localObject2 = (String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.CardID");
       localObject3 = (String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.ExpType");
       localObject1 = (String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.ExtraData");
-      Object localObject4 = s.Vdo;
-      s.a(i, j, k, 5, 1001, l, (String)localObject2, (String)localObject3, (String)localObject1);
+      Object localObject4 = com.tencent.mm.storage.s.acEH;
+      com.tencent.mm.storage.s.a(i, j, k, 5, 1001, l, (String)localObject2, (String)localObject3, (String)localObject1);
       AppMethodBeat.o(5547);
       return;
-      localObject4 = MultiProcessMMKV.getSingleMMKV("brandService");
-      StringBuilder localStringBuilder = new StringBuilder("BizLatestRecommendCardInfo");
-      p.j(h.aHE(), "MMKernel.account()");
-      ((MultiProcessMMKV)localObject4).encode(b.aGq(), (String)localObject2);
-      r.VcW.b((eqg)localObject3);
+      ad.bvD((String)localObject2);
+      r.a(r.acDM, (flj)localObject3);
       continue;
-      af.f((eqg)localObject3);
+      ah.d((flj)localObject3);
       continue;
-      localObject4 = ac.VeT;
-      ac.bvw((String)localObject2);
-      r.VcW.b((eqg)localObject3);
-      localObject2 = ac.VeT;
-      ac.UO(2L);
+      localObject4 = ae.acGm;
+      ae.bvF((String)localObject2);
+      r.a(r.acDM, (flj)localObject3);
+      localObject2 = ae.acGm;
+      ae.yX(2L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.PluginBrandService.11.1
  * JD-Core Version:    0.7.0.1
  */

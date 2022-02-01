@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
@@ -13,14 +12,13 @@ import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 
-@TargetApi(14)
 public class MMTextureView
   extends TextureView
 {
-  boolean ANp = false;
-  private Object ANq;
-  private Object ANr;
-  private Field MUm;
+  boolean GpP = false;
+  private Object GpQ;
+  private Object GpR;
+  private Field TGT;
   
   public MMTextureView(Context paramContext)
   {
@@ -37,7 +35,7 @@ public class MMTextureView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void ehj()
+  private void fjn()
   {
     AppMethodBeat.i(164151);
     try
@@ -45,11 +43,11 @@ public class MMTextureView
       Log.i("MicroMsg.MMTextureView", "hookInnerDetach");
       Field localField = TextureView.class.getDeclaredField("mLayer");
       localField.setAccessible(true);
-      this.ANq = localField.get(this);
+      this.GpQ = localField.get(this);
       localField.set(this, null);
       localField = TextureView.class.getDeclaredField("mSurface");
       localField.setAccessible(true);
-      this.ANr = localField.get(this);
+      this.GpR = localField.get(this);
       localField.set(this, null);
       AppMethodBeat.o(164151);
       return;
@@ -61,26 +59,26 @@ public class MMTextureView
     }
   }
   
-  private void ehk()
+  private void fjo()
   {
     AppMethodBeat.i(164152);
     try
     {
       Log.i("MicroMsg.MMTextureView", "unHookInnerDetach");
       Field localField;
-      if (this.ANq != null)
+      if (this.GpQ != null)
       {
         localField = TextureView.class.getDeclaredField("mLayer");
         localField.setAccessible(true);
-        localField.set(this, this.ANq);
-        this.ANq = null;
+        localField.set(this, this.GpQ);
+        this.GpQ = null;
       }
-      if (this.ANr != null)
+      if (this.GpR != null)
       {
         localField = TextureView.class.getDeclaredField("mSurface");
         localField.setAccessible(true);
-        localField.set(this, this.ANr);
-        this.ANr = null;
+        localField.set(this, this.GpR);
+        this.GpR = null;
       }
       AppMethodBeat.o(164152);
       return;
@@ -96,28 +94,28 @@ public class MMTextureView
   {
     AppMethodBeat.i(164149);
     super.destroyDrawingCache();
-    if (this.ANp) {
-      ehk();
+    if (this.GpP) {
+      fjo();
     }
     AppMethodBeat.o(164149);
   }
   
-  public final void hKg()
+  public final void jmM()
   {
     AppMethodBeat.i(142223);
-    if (d.qW(16))
+    if (d.rc(16))
     {
       Log.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(142223);
       return;
     }
-    if (d.qX(20))
+    if (d.rd(20))
     {
       Log.i("MicroMsg.MMTextureView", "current API Level %d, do not do sly", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(142223);
       return;
     }
-    if (af.juS.jrW == 2)
+    if (af.lYj.lVm == 2)
     {
       Log.i("MicroMsg.MMTextureView", "do not do sly textureView, config ERROR");
       AppMethodBeat.o(142223);
@@ -126,18 +124,18 @@ public class MMTextureView
     Log.i("MicroMsg.MMTextureView", "detect texture problem, sly");
     try
     {
-      if (this.MUm == null)
+      if (this.TGT == null)
       {
-        this.MUm = TextureView.class.getDeclaredField("mSurface");
-        this.MUm.setAccessible(true);
+        this.TGT = TextureView.class.getDeclaredField("mSurface");
+        this.TGT.setAccessible(true);
       }
-      SurfaceTexture localSurfaceTexture = (SurfaceTexture)this.MUm.get(this);
+      SurfaceTexture localSurfaceTexture = (SurfaceTexture)this.TGT.get(this);
       if (localSurfaceTexture != null) {
-        if (!(localSurfaceTexture instanceof u))
+        if (!(localSurfaceTexture instanceof y))
         {
-          u localu = new u();
-          localu.mSurfaceTexture = localSurfaceTexture;
-          this.MUm.set(this, localu);
+          y localy = new y();
+          localy.mSurfaceTexture = localSurfaceTexture;
+          this.TGT.set(this, localy);
           Log.i("MicroMsg.MMTextureView", "detect texture problem, wrap");
           AppMethodBeat.o(142223);
           return;
@@ -175,23 +173,22 @@ public class MMTextureView
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(164150);
-    if (this.ANp) {
-      ehj();
+    if (this.GpP) {
+      fjn();
     }
     super.onAttachedToWindow();
-    if (this.ANp) {
-      ehk();
+    if (this.GpP) {
+      fjo();
     }
     AppMethodBeat.o(164150);
   }
   
-  @TargetApi(14)
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(142222);
-    if (this.ANp)
+    if (this.GpP)
     {
-      ehj();
+      fjn();
       AppMethodBeat.o(142222);
       return;
     }
@@ -210,21 +207,20 @@ public class MMTextureView
   
   public void setInterceptDetach(boolean paramBoolean)
   {
-    this.ANp = paramBoolean;
+    this.GpP = paramBoolean;
   }
   
-  @TargetApi(16)
   public void setSurfaceTexture(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(142224);
     super.setSurfaceTexture(paramSurfaceTexture);
-    hKg();
+    jmM();
     AppMethodBeat.o(142224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,38 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.f;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/StandaloneCoroutine;", "Lkotlinx/coroutines/AbstractCoroutine;", "", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "handleJobException", "exception", "", "kotlinx-coroutines-core"})
-class cr
-  extends a<x>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/RemoveOnCancel;", "Lkotlinx/coroutines/BeforeResumeCancelHandler;", "node", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "(Lkotlinx/coroutines/internal/LockFreeLinkedListNode;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class cr
+  extends g
 {
-  public cr(f paramf, boolean paramBoolean)
+  private final p ajwL;
+  
+  public cr(p paramp)
   {
-    super(paramf, paramBoolean);
-    AppMethodBeat.i(118146);
-    AppMethodBeat.o(118146);
+    this.ajwL = paramp;
   }
   
-  protected final boolean F(Throwable paramThrowable)
+  public final void N(Throwable paramThrowable)
   {
-    AppMethodBeat.i(204251);
-    ah.b(getContext(), paramThrowable);
-    AppMethodBeat.o(204251);
-    return true;
+    AppMethodBeat.i(188982);
+    this.ajwL.remove();
+    AppMethodBeat.o(188982);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(188990);
+    String str = "RemoveOnCancel[" + this.ajwL + ']';
+    AppMethodBeat.o(188990);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.cr
  * JD-Core Version:    0.7.0.1
  */

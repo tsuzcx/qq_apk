@@ -4,31 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class b$a
 {
-  public static void bha(String paramString)
+  public static void bgK(String paramString)
   {
     int k = 0;
-    AppMethodBeat.i(269423);
+    AppMethodBeat.i(301177);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(269423);
+      AppMethodBeat.o(301177);
       return;
     }
-    h.aHH();
-    String str2 = (String)h.aHG().aHp().get(ar.a.Vkr, null);
+    h.baF();
+    String str2 = (String)h.baE().ban().get(at.a.acLL, null);
     String str1;
     if (Util.isNullOrNil(str2)) {
       str1 = paramString;
     }
     for (;;)
     {
-      h.aHH();
-      h.aHG().aHp().set(ar.a.Vkr, str1);
-      AppMethodBeat.o(269423);
+      h.baF();
+      h.baE().ban().set(at.a.acLL, str1);
+      AppMethodBeat.o(301177);
       return;
       String[] arrayOfString = str2.split(",");
       str1 = paramString;
@@ -64,26 +64,26 @@ public final class b$a
     }
   }
   
-  public static boolean bhb(String paramString)
+  public static boolean bgL(String paramString)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(269424);
+    AppMethodBeat.i(301178);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(269424);
+      AppMethodBeat.o(301178);
       return true;
     }
-    h.aHH();
-    Object localObject = (String)h.aHG().aHp().get(ar.a.Vkr, null);
+    h.baF();
+    Object localObject = (String)h.baE().ban().get(at.a.acLL, null);
     if (Util.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(269424);
+      AppMethodBeat.o(301178);
       return false;
     }
     localObject = ((String)localObject).split(",");
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(269424);
+      AppMethodBeat.o(301178);
       return false;
     }
     int i = 0;
@@ -98,7 +98,7 @@ public final class b$a
       }
       else
       {
-        AppMethodBeat.o(269424);
+        AppMethodBeat.o(301178);
         return bool1;
       }
       i += 1;

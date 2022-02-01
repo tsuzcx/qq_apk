@@ -1,63 +1,96 @@
 package com.tencent.mm.plugin.gamelife.f;
 
-import android.graphics.Bitmap;
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.c.e;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationInfo;", "", "talker", "", "msgId", "", "externInfo", "msgType", "", "(Ljava/lang/String;JLjava/lang/String;I)V", "getExternInfo", "()Ljava/lang/String;", "setExternInfo", "(Ljava/lang/String;)V", "getMsgId", "()J", "setMsgId", "(J)V", "getMsgType", "()I", "setMsgType", "(I)V", "getTalker", "setTalker", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends com.tencent.mm.loader.b.a.a<a>
 {
-  public final boolean a(com.tencent.mm.loader.h.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public String ICw;
+  public long msgId;
+  public int msgType;
+  public String talker;
+  
+  public b(String paramString1, long paramLong, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(202980);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    AppMethodBeat.o(202980);
-    return true;
+    this.talker = paramString1;
+    this.msgId = paramLong;
+    this.ICw = paramString2;
+    this.msgType = paramInt;
   }
   
-  public final boolean a(com.tencent.mm.loader.h.a.a<a> parama, com.tencent.mm.loader.h.f<?> paramf, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(202977);
-    p.k(parama, "url");
-    p.k(paramf, "httpResponse");
-    p.k(parame, "opts");
-    p.k(paramf1, "reaper");
-    AppMethodBeat.o(202977);
-    return true;
-  }
-  
-  public final com.tencent.mm.loader.h.b.a b(com.tencent.mm.loader.h.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
-  {
-    AppMethodBeat.i(202991);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    parama = ((a)parama.aSr()).getPath();
-    if (u.agG(parama))
+    AppMethodBeat.i(268170);
+    if (this == paramObject)
     {
-      parama = com.tencent.mm.loader.h.b.a.Ov(parama);
-      AppMethodBeat.o(202991);
-      return parama;
+      AppMethodBeat.o(268170);
+      return true;
     }
-    AppMethodBeat.o(202991);
-    return null;
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(268170);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (!s.p(this.talker, paramObject.talker))
+    {
+      AppMethodBeat.o(268170);
+      return false;
+    }
+    if (this.msgId != paramObject.msgId)
+    {
+      AppMethodBeat.o(268170);
+      return false;
+    }
+    if (!s.p(this.ICw, paramObject.ICw))
+    {
+      AppMethodBeat.o(268170);
+      return false;
+    }
+    if (this.msgType != paramObject.msgType)
+    {
+      AppMethodBeat.o(268170);
+      return false;
+    }
+    AppMethodBeat.o(268170);
+    return true;
   }
   
-  public final String c(com.tencent.mm.loader.h.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public final int hashCode()
   {
-    AppMethodBeat.i(202984);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    parama = ((a)parama.aSr()).getPath();
-    AppMethodBeat.o(202984);
-    return parama;
+    int j = 0;
+    AppMethodBeat.i(268158);
+    int i;
+    int k;
+    if (this.talker == null)
+    {
+      i = 0;
+      k = q.a..ExternalSyntheticBackport0.m(this.msgId);
+      if (this.ICw != null) {
+        break label71;
+      }
+    }
+    for (;;)
+    {
+      int m = this.msgType;
+      AppMethodBeat.o(268158);
+      return ((i * 31 + k) * 31 + j) * 31 + m;
+      i = this.talker.hashCode();
+      break;
+      label71:
+      j = this.ICw.hashCode();
+    }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(268147);
+    String str = "GameLifeConversationInfo(talker=" + this.talker + ", msgId=" + this.msgId + ", externInfo=" + this.ICw + ", msgType=" + this.msgType + ')';
+    AppMethodBeat.o(268147);
+    return str;
   }
 }
 

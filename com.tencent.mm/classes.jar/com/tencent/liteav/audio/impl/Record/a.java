@@ -19,7 +19,7 @@ public class a
   
   private void a(byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(246513);
+    AppMethodBeat.i(230445);
     c localc = null;
     try
     {
@@ -29,21 +29,21 @@ public class a
       if (localc != null)
       {
         localc.onAudioRecordPCM(paramArrayOfByte, paramInt, paramLong);
-        AppMethodBeat.o(246513);
+        AppMethodBeat.o(230445);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(246513);
+      AppMethodBeat.o(230445);
     }
     TXCLog.e("AudioCenter:TXCAudioBGMRecord", "onRecordPcmData:no callback");
-    AppMethodBeat.o(246513);
+    AppMethodBeat.o(230445);
   }
   
   private void b()
   {
-    AppMethodBeat.i(246514);
+    AppMethodBeat.i(230449);
     c localc = null;
     try
     {
@@ -53,21 +53,21 @@ public class a
       if (localc != null)
       {
         localc.onAudioRecordStart();
-        AppMethodBeat.o(246514);
+        AppMethodBeat.o(230449);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(246514);
+      AppMethodBeat.o(230449);
     }
     TXCLog.e("AudioCenter:TXCAudioBGMRecord", "onRecordStart:no callback");
-    AppMethodBeat.o(246514);
+    AppMethodBeat.o(230449);
   }
   
   private void c()
   {
-    AppMethodBeat.i(246515);
+    AppMethodBeat.i(230455);
     c localc = null;
     try
     {
@@ -77,21 +77,21 @@ public class a
       if (localc != null)
       {
         localc.onAudioRecordStop();
-        AppMethodBeat.o(246515);
+        AppMethodBeat.o(230455);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(246515);
+      AppMethodBeat.o(230455);
     }
     TXCLog.e("AudioCenter:TXCAudioBGMRecord", "onRecordStop:no callback");
-    AppMethodBeat.o(246515);
+    AppMethodBeat.o(230455);
   }
   
   public void a()
   {
-    AppMethodBeat.i(246512);
+    AppMethodBeat.i(230462);
     this.e = false;
     long l = System.currentTimeMillis();
     if ((this.f != null) && (this.f.isAlive()) && (Thread.currentThread().getId() != this.f.getId())) {}
@@ -100,7 +100,7 @@ public class a
       this.f.join();
       TXCLog.i("AudioCenter:TXCAudioBGMRecord", "stop record cost time(MS): " + (System.currentTimeMillis() - l));
       this.f = null;
-      AppMethodBeat.o(246512);
+      AppMethodBeat.o(230462);
       return;
     }
     catch (Exception localException)
@@ -114,11 +114,11 @@ public class a
   
   public void run()
   {
-    AppMethodBeat.i(246516);
+    AppMethodBeat.i(230473);
     if (!this.e)
     {
       TXCLog.w("AudioCenter:TXCAudioBGMRecord", "audio record: abandom start audio sys record thread!");
-      AppMethodBeat.o(246516);
+      AppMethodBeat.o(230473);
       return;
     }
     b();
@@ -146,12 +146,12 @@ public class a
       }
     }
     c();
-    AppMethodBeat.o(246516);
+    AppMethodBeat.o(230473);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Record.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,44 +2,45 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.plugin.appbrand.widget.input.e.e;
 import com.tencent.mm.plugin.appbrand.widget.input.e.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tenpay.miniapp.MiniAppSecureEditText;
+import com.tenpay.ndk.FitScLibraryLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.v;
+import kotlin.Metadata;
+import kotlin.a.ab;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/SecureInputLogic;", "", "()V", "TAG", "", "encryptCompat", "secureInput", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "rawSafePasswordCompatList", "", "timeStamp", "", "nonce", "parseSafePasswordCompatList", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "Lcom/tencent/mm/plugin/appbrand/widget/input/CompatAction;", "prepareInvokeParams", "data", "Lorg/json/JSONObject;", "params", "Lcom/tencent/mm/plugin/appbrand/widget/input/params/UpdateParams;", "applyParams", "newParams", "luggage-wxa-app-input-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/SecureInputLogic;", "", "()V", "TAG", "", "encryptCompat", "secureInput", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "rawSafePasswordCompatList", "", "timeStamp", "", "nonce", "parseSafePasswordCompatList", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "Lcom/tencent/mm/plugin/appbrand/widget/input/CompatAction;", "prepareInvokeParams", "data", "Lorg/json/JSONObject;", "params", "Lcom/tencent/mm/plugin/appbrand/widget/input/params/UpdateParams;", "applyParams", "newParams", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class au
 {
-  public static final au ryC;
+  public static final au uJG;
   
   static
   {
-    AppMethodBeat.i(215210);
-    ryC = new au();
-    AppMethodBeat.o(215210);
+    AppMethodBeat.i(324483);
+    uJG = new au();
+    FitScLibraryLoader.setLoader(au..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(324483);
   }
   
   public static String a(MiniAppSecureEditText paramMiniAppSecureEditText, List<String> paramList, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(215205);
-    p.k(paramMiniAppSecureEditText, "secureInput");
-    p.k(paramList, "rawSafePasswordCompatList");
+    AppMethodBeat.i(324471);
+    s.u(paramMiniAppSecureEditText, "secureInput");
+    s.u(paramList, "rawSafePasswordCompatList");
     paramMiniAppSecureEditText.beginCustomHash();
     if (paramList.isEmpty()) {}
     ArrayList localArrayList;
-    for (paramList = (List)v.aaAd;; paramList = (List)localArrayList)
+    for (paramList = (List)ab.aivy;; paramList = (List)localArrayList)
     {
       paramList = ((Iterable)paramList).iterator();
       while (paramList.hasNext()) {
@@ -51,37 +52,37 @@ public final class au
       if (i < k)
       {
         String str = (String)paramList.get(i);
-        if (p.h("sm3", str)) {
-          localArrayList.add(a.ryD);
+        if (s.p("sm3", str)) {
+          localArrayList.add(au.a.uJH);
         }
         for (;;)
         {
           i += 1;
           break;
-          if (p.h("sha256", str))
+          if (s.p("sha256", str))
           {
-            localArrayList.add(b.ryE);
+            localArrayList.add(au.b.uJI);
           }
-          else if (p.h("sha1", str))
+          else if (s.p("sha1", str))
           {
-            localArrayList.add(c.ryF);
+            localArrayList.add(au.c.uJJ);
           }
-          else if (p.h("md5", str))
+          else if (s.p("md5", str))
           {
-            localArrayList.add(d.ryG);
+            localArrayList.add(au.d.uJK);
           }
-          else if (p.h("addSaltBefore", str))
+          else if (s.p("addSaltBefore", str))
           {
             i += 1;
-            localArrayList.add(new e((String)paramList.get(i)));
+            localArrayList.add(new au.e((String)paramList.get(i)));
           }
           else
           {
             int j = i;
-            if (p.h("addSaltAfter", str))
+            if (s.p("addSaltAfter", str))
             {
               j = i + 1;
-              localArrayList.add(new f((String)paramList.get(j)));
+              localArrayList.add(new au.f((String)paramList.get(j)));
             }
             i = j;
           }
@@ -89,52 +90,52 @@ public final class au
       }
     }
     paramMiniAppSecureEditText = paramMiniAppSecureEditText.endCustomHashAndEncrypt(paramLong1, paramLong2);
-    AppMethodBeat.o(215205);
+    AppMethodBeat.o(324471);
     return paramMiniAppSecureEditText;
   }
   
   public static void a(h paramh1, h paramh2)
   {
-    AppMethodBeat.i(215202);
-    p.k(paramh1, "$this$applyParams");
-    p.k(paramh2, "newParams");
-    Object localObject = paramh2.rAS;
+    AppMethodBeat.i(324462);
+    s.u(paramh1, "<this>");
+    s.u(paramh2, "newParams");
+    Object localObject = paramh2.uMi;
     if (localObject != null) {
-      paramh1.rAS = ((Integer)localObject);
+      paramh1.uMi = ((Integer)localObject);
     }
-    if (paramh2.rAT != null) {
-      paramh1.rAT = paramh2.rAT;
+    if (paramh2.uMj != null) {
+      paramh1.uMj = paramh2.uMj;
     }
-    if (paramh2.rAU != null) {
-      paramh1.rAU = paramh2.rAU;
+    if (paramh2.uMk != null) {
+      paramh1.uMk = paramh2.uMk;
     }
-    if (paramh2.rAV != null) {
-      paramh1.rAV = paramh2.rAV;
+    if (paramh2.uMl != null) {
+      paramh1.uMl = paramh2.uMl;
     }
-    localObject = paramh2.rAW;
-    p.j(localObject, "newParams.safePasswordCompatList");
+    localObject = paramh2.uMm;
+    s.s(localObject, "newParams.safePasswordCompatList");
     if (!((Collection)localObject).isEmpty()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        paramh1.rAW = paramh2.rAW;
+        paramh1.uMm = paramh2.uMm;
       }
-      AppMethodBeat.o(215202);
+      AppMethodBeat.o(324462);
       return;
     }
   }
   
   public static final void a(JSONObject paramJSONObject, h paramh)
   {
-    AppMethodBeat.i(215199);
-    p.k(paramJSONObject, "data");
-    p.k(paramh, "params");
+    AppMethodBeat.i(324457);
+    s.u(paramJSONObject, "data");
+    s.u(paramh, "params");
     if ((paramh instanceof e))
     {
       if (!paramJSONObject.has("viewId")) {
-        break label73;
+        break label76;
       }
-      ((e)paramh).rAh = Integer.valueOf(paramJSONObject.optInt("viewId"));
+      ((e)paramh).uLy = Integer.valueOf(paramJSONObject.optInt("viewId"));
     }
     for (;;)
     {
@@ -143,158 +144,73 @@ public final class au
         break;
       }
       Log.i("MicroMsg.AppBrand.SecureInputLogic", "prepareInvokeParams, safePasswordJsonObj is null");
-      AppMethodBeat.o(215199);
+      AppMethodBeat.o(324457);
       return;
-      label73:
+      label76:
       Log.e("MicroMsg.AppBrand.SecureInputLogic", "prepareInvokeParams, viewId is null");
     }
     if ((paramJSONObject.has("certPath")) && (!paramJSONObject.isNull("certPath"))) {
-      paramh.rAR = paramJSONObject.optString("certPath");
+      paramh.uMh = paramJSONObject.optString("certPath");
     }
     if ((paramJSONObject.has("passwordLength")) && (!paramJSONObject.isNull("passwordLength"))) {
-      paramh.rAS = Integer.valueOf(paramJSONObject.optInt("passwordLength"));
+      paramh.uMi = Integer.valueOf(paramJSONObject.optInt("passwordLength"));
     }
     if ((paramJSONObject.has("salt")) && (!paramJSONObject.isNull("salt"))) {
-      paramh.rAT = paramJSONObject.optString("salt");
+      paramh.uMj = paramJSONObject.optString("salt");
     }
     if ((paramJSONObject.has("timestamp")) && (!paramJSONObject.isNull("timestamp"))) {
-      paramh.rAU = Long.valueOf(paramJSONObject.optLong("timestamp"));
+      paramh.uMk = Long.valueOf(paramJSONObject.optLong("timestamp"));
     }
     if ((paramJSONObject.has("nonce")) && (!paramJSONObject.isNull("nonce"))) {
-      paramh.rAV = Long.valueOf(paramJSONObject.optLong("nonce"));
+      paramh.uMl = Long.valueOf(paramJSONObject.optLong("nonce"));
     }
+    int k;
+    List localList;
+    int i;
     if (paramJSONObject.has("customHash"))
     {
       paramJSONObject = paramJSONObject.optJSONArray("customHash");
       if (paramJSONObject != null)
       {
-        int j = paramJSONObject.length();
-        if (j > 0)
+        k = paramJSONObject.length();
+        if (k > 0)
         {
-          List localList = (List)new ArrayList(j);
-          int i = 0;
-          while (i < j)
-          {
-            String str = paramJSONObject.optString(i);
-            if (!TextUtils.isEmpty((CharSequence)str))
-            {
-              p.j(str, "safePasswordCompat");
-              localList.add(str);
-            }
-            i += 1;
-          }
-          paramh.rAW = localList;
+          localList = (List)new ArrayList(k);
+          i = 0;
+          if (k <= 0) {}
         }
       }
     }
-    AppMethodBeat.o(215199);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "invoke"})
-  static final class a
-    extends q
-    implements b<MiniAppSecureEditText, x>
-  {
-    public static final a ryD;
-    
-    static
+    for (;;)
     {
-      AppMethodBeat.i(214593);
-      ryD = new a();
-      AppMethodBeat.o(214593);
-    }
-    
-    a()
-    {
-      super();
+      int j = i + 1;
+      String str = paramJSONObject.optString(i);
+      if (!TextUtils.isEmpty((CharSequence)str))
+      {
+        s.s(str, "safePasswordCompat");
+        localList.add(str);
+      }
+      if (j >= k)
+      {
+        paramh.uMm = localList;
+        AppMethodBeat.o(324457);
+        return;
+      }
+      i = j;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "invoke"})
-  static final class b
-    extends q
-    implements b<MiniAppSecureEditText, x>
+  private static final void aha(String paramString)
   {
-    public static final b ryE;
-    
-    static
-    {
-      AppMethodBeat.i(214807);
-      ryE = new b();
-      AppMethodBeat.o(214807);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "invoke"})
-  static final class c
-    extends q
-    implements b<MiniAppSecureEditText, x>
-  {
-    public static final c ryF;
-    
-    static
-    {
-      AppMethodBeat.i(214015);
-      ryF = new c();
-      AppMethodBeat.o(214015);
-    }
-    
-    c()
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "invoke"})
-  static final class d
-    extends q
-    implements b<MiniAppSecureEditText, x>
-  {
-    public static final d ryG;
-    
-    static
-    {
-      AppMethodBeat.i(213982);
-      ryG = new d();
-      AppMethodBeat.o(213982);
-    }
-    
-    d()
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "invoke"})
-  static final class e
-    extends q
-    implements b<MiniAppSecureEditText, x>
-  {
-    e(String paramString)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tenpay/miniapp/MiniAppSecureEditText;", "invoke"})
-  static final class f
-    extends q
-    implements b<MiniAppSecureEditText, x>
-  {
-    f(String paramString)
-    {
-      super();
-    }
+    AppMethodBeat.i(324479);
+    Log.d("MicroMsg.AppBrand.SecureInputLogic", s.X("loadLibrary, libName: ", paramString));
+    k.load(paramString);
+    AppMethodBeat.o(324479);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.au
  * JD-Core Version:    0.7.0.1
  */

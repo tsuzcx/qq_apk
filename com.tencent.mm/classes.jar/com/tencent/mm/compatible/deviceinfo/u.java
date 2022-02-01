@@ -6,22 +6,22 @@ import java.lang.reflect.Method;
 
 public final class u
 {
-  public static boolean avb()
+  public static boolean aPw()
   {
-    AppMethodBeat.i(261692);
+    AppMethodBeat.i(240856);
     try
     {
       Object localObject = Class.forName("com.huawei.system.BuildEx");
       localObject = (String)((Class)localObject).getMethod("getOsBrand", new Class[0]).invoke(localObject, new Object[0]);
       Log.i("MicroMsg.HarmonyOSHelper", "OsBrand: %s", new Object[] { localObject });
       boolean bool = "harmony".equals(localObject);
-      AppMethodBeat.o(261692);
+      AppMethodBeat.o(240856);
       return bool;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       Log.e("MicroMsg.HarmonyOSHelper", "occured ClassNotFoundException");
-      AppMethodBeat.o(261692);
+      AppMethodBeat.o(240856);
       return false;
     }
     catch (NoSuchMethodException localNoSuchMethodException)

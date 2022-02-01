@@ -1,15 +1,34 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.kernel.b.a;
-
 public abstract interface y
-  extends a
 {
-  public abstract t getReceiver();
+  public abstract int aBA();
+  
+  public abstract int aBB();
+  
+  public abstract boolean aBC();
+  
+  public abstract boolean aBD();
+  
+  public abstract int aBE();
+  
+  public abstract boolean aBF();
+  
+  public abstract String aBG();
+  
+  public abstract String aBH();
+  
+  public abstract int aBx();
+  
+  public abstract int aBy();
+  
+  public abstract int aBz();
+  
+  public abstract int getTextColor();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.api.y
  * JD-Core Version:    0.7.0.1
  */

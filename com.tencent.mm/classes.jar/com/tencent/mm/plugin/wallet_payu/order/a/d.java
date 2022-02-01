@@ -7,11 +7,12 @@ import com.tencent.mm.plugin.order.a.a;
 import com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderDetailUI;
 import com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderRecordListUI;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.e;
 
 public class d
   extends a
 {
-  public final com.tencent.mm.wallet_core.d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72065);
     Log.d("MicroMsg.PayUShowOrdersInfoProcess", "start Process : ShowOrdersInfo");

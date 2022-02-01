@@ -1,152 +1,168 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.c.e;
+import com.tencent.mm.plugin.voip.f.g;
+import java.util.Arrays;
 
 public final class o
 {
-  public long NKQ;
-  public long NKR;
-  byte NNA;
-  int NNB;
-  public int NNC;
-  public int NND;
-  public int NNE;
-  public int NNF;
-  public int NNG;
-  public int NNH;
-  public int NNI;
-  int NNJ;
-  int NNK;
-  int NNL;
-  int NNM;
-  int NNN;
-  int NNO;
-  int NNP;
-  int NNQ;
-  public long NNR;
-  long NNS;
-  long NNT;
-  long NNU;
-  long NNV;
-  public long NNW;
-  long NNX;
-  long NNY;
-  long NNZ;
-  public int NNq;
-  public int NNr;
-  public int NNs;
-  public int NNt;
-  byte NNu;
-  byte NNv;
-  byte NNw;
-  byte NNx;
-  byte NNy;
-  byte NNz;
-  long NOa;
-  public int NOb;
+  public long LiJ;
+  public long LiK;
+  int UAA;
+  int UAB;
+  int UAC;
+  int UAD;
+  int UAE;
+  int UAF;
+  int UAG;
+  int UAH;
+  public long UAI;
+  long UAJ;
+  long UAK;
+  long UAL;
+  public long UAM;
+  public long UAN;
+  public long UAO;
+  public long UAP;
+  public long UAQ;
+  public long UAR;
+  public long UAS;
+  long UAT;
+  long UAU;
+  long UAV;
+  long[] UAW;
+  long UAX;
+  public int UAY;
+  public int UAh;
+  public int UAi;
+  public int UAj;
+  public int UAk;
+  byte UAl;
+  byte UAm;
+  byte UAn;
+  byte UAo;
+  byte UAp;
+  byte UAq;
+  byte UAr;
+  int UAs;
+  public int UAt;
+  public int UAu;
+  public int UAv;
+  public int UAw;
+  public int UAx;
+  public int UAy;
+  public int UAz;
   long beginTime;
-  String myn;
+  String psF;
   
   public o()
   {
     AppMethodBeat.i(114954);
     this.beginTime = 0L;
-    this.NKQ = 0L;
-    this.NKR = 0L;
-    this.NOb = 0;
-    gzk();
+    this.UAW = new long[6];
+    this.LiJ = 0L;
+    this.LiK = 0L;
+    this.UAY = 0;
+    hXg();
     AppMethodBeat.o(114954);
   }
   
-  public final void gzf()
+  public final void hXb()
   {
     AppMethodBeat.i(114955);
     if (this.beginTime == 0L) {}
-    for (this.NNt = 0;; this.NNt = ((int)(System.currentTimeMillis() - this.beginTime)))
+    for (this.UAk = 0;; this.UAk = ((int)(System.currentTimeMillis() - this.beginTime)))
     {
-      e.Logi("MicroMsg.VoipDailReport", "devin:beginTime:" + this.beginTime + ", CurrentTime: " + System.currentTimeMillis());
-      e.Logi("MicroMsg.VoipDailReport", "devin:endDial:" + this.NNt);
+      g.Logi("MicroMsg.VoipDailReport", "devin:beginTime:" + this.beginTime + ", CurrentTime: " + System.currentTimeMillis());
+      g.Logi("MicroMsg.VoipDailReport", "devin:endDial:" + this.UAk);
       AppMethodBeat.o(114955);
       return;
     }
   }
   
-  public final void gzg()
+  public final void hXc()
   {
     AppMethodBeat.i(114956);
-    if (0L == this.NNS)
+    if (0L == this.UAJ)
     {
-      this.NNS = System.currentTimeMillis();
-      e.Logi("MicroMsg.VoipDailReport", "accept received timestamp:" + this.NNS);
+      this.UAJ = System.currentTimeMillis();
+      g.Logi("MicroMsg.VoipDailReport", "accept received timestamp:" + this.UAJ);
     }
     AppMethodBeat.o(114956);
   }
   
-  public final void gzh()
+  public final void hXd()
   {
     AppMethodBeat.i(114957);
-    if (0L == this.NNT)
+    if (0L == this.UAK)
     {
-      this.NNT = System.currentTimeMillis();
-      e.Logi("MicroMsg.VoipDailReport", "sync accept received timestamp:" + this.NNT);
+      this.UAK = System.currentTimeMillis();
+      g.Logi("MicroMsg.VoipDailReport", "sync accept received timestamp:" + this.UAK);
     }
     AppMethodBeat.o(114957);
   }
   
-  public final void gzi()
+  public final void hXe()
   {
     AppMethodBeat.i(114958);
-    this.NNX = System.currentTimeMillis();
-    e.Logd("MicroMsg.VoipDailReport", "devin:acceptCallTime:" + this.NNX);
+    this.UAT = System.currentTimeMillis();
+    g.Logd("MicroMsg.VoipDailReport", "devin:acceptCallTime:" + this.UAT);
     AppMethodBeat.o(114958);
   }
   
-  public final void gzj()
+  public final void hXf()
   {
     AppMethodBeat.i(114959);
-    if (this.NNW == 0L) {}
-    for (this.NNM = 0;; this.NNM = ((int)(System.currentTimeMillis() - this.NNW)))
+    if (this.UAN == 0L) {}
+    for (this.UAD = 0;; this.UAD = ((int)(System.currentTimeMillis() - this.UAN)))
     {
-      e.Logi("MicroMsg.VoipDailReport", "devin:answerInvite current:" + System.currentTimeMillis());
-      e.Logi("MicroMsg.VoipDailReport", "devin:answerInvite:" + this.NNM);
+      g.Logi("MicroMsg.VoipDailReport", "devin:answerInvite current:" + System.currentTimeMillis());
+      g.Logi("MicroMsg.VoipDailReport", "devin:answerInvite:" + this.UAD);
       AppMethodBeat.o(114959);
       return;
     }
   }
   
-  public final void gzk()
+  public final void hXg()
   {
-    this.NNR = 0L;
-    this.NNV = 0L;
-    this.NNW = 0L;
-    this.NNX = 0L;
-    this.NNY = 0L;
-    this.NNZ = 0L;
-    this.NNS = 0L;
-    this.NNT = 0L;
-    this.NNU = 0L;
-    this.NNC = 0;
-    this.NND = 0;
-    this.NNE = 0;
-    this.NNF = 0;
-    this.NNG = 0;
-    this.NNH = 0;
-    this.NNI = 0;
-    this.NNJ = 0;
-    this.NNK = 0;
-    this.NNL = 0;
-    this.NNM = 0;
-    this.NNN = 0;
-    this.NNO = 0;
-    this.NNP = 0;
-    this.NNQ = 0;
+    AppMethodBeat.i(293305);
+    this.UAI = 0L;
+    this.UAM = 0L;
+    this.UAN = 0L;
+    this.UAT = 0L;
+    this.UAU = 0L;
+    this.UAV = 0L;
+    this.UAJ = 0L;
+    this.UAK = 0L;
+    this.UAL = 0L;
+    this.UAO = 0L;
+    this.UAP = 0L;
+    this.UAQ = 0L;
+    this.UAR = 0L;
+    this.UAS = 0L;
+    this.UAt = 0;
+    this.UAu = 0;
+    this.UAv = 0;
+    this.UAw = 0;
+    this.UAx = 0;
+    this.UAy = 0;
+    this.UAz = 0;
+    this.UAA = 0;
+    this.UAB = 0;
+    this.UAC = 0;
+    this.UAD = 0;
+    this.UAE = 0;
+    this.UAF = 0;
+    this.UAG = 0;
+    this.UAH = 0;
+    Arrays.fill(this.UAW, 0L);
+    AppMethodBeat.o(293305);
   }
   
-  public final String gzl()
+  public final String hXh()
   {
     AppMethodBeat.i(114960);
-    String str = "," + this.NNA;
+    String str = "," + this.UAr;
     AppMethodBeat.o(114960);
     return str;
   }
@@ -154,23 +170,62 @@ public final class o
   public final void reset()
   {
     this.beginTime = 0L;
-    this.NNq = 0;
-    this.NNr = 0;
-    this.NNs = 0;
-    this.NNt = 0;
-    this.NNu = 0;
-    this.NNv = 0;
-    this.NNw = 0;
-    this.NNx = 0;
-    this.NNy = 0;
-    this.NNz = 0;
-    this.NNA = 0;
-    this.NNB = 0;
+    this.UAh = 0;
+    this.UAi = 0;
+    this.UAj = 0;
+    this.UAk = 0;
+    this.UAl = 0;
+    this.UAm = 0;
+    this.UAn = 0;
+    this.UAo = 0;
+    this.UAp = 0;
+    this.UAq = 0;
+    this.UAr = 0;
+    this.UAs = 0;
+  }
+  
+  public final void wS(long paramLong)
+  {
+    if ((0L <= paramLong) && (paramLong <= 500L))
+    {
+      arrayOfLong = this.UAW;
+      arrayOfLong[0] += 1L;
+    }
+    do
+    {
+      return;
+      if ((500L < paramLong) && (paramLong <= 1000L))
+      {
+        arrayOfLong = this.UAW;
+        arrayOfLong[1] += 1L;
+        return;
+      }
+      if ((1000L < paramLong) && (paramLong <= 2000L))
+      {
+        arrayOfLong = this.UAW;
+        arrayOfLong[2] += 1L;
+        return;
+      }
+      if ((2000L < paramLong) && (paramLong <= 4000L))
+      {
+        arrayOfLong = this.UAW;
+        arrayOfLong[3] += 1L;
+        return;
+      }
+      if ((4000L < paramLong) && (paramLong <= 8000L))
+      {
+        arrayOfLong = this.UAW;
+        arrayOfLong[4] += 1L;
+        return;
+      }
+    } while (paramLong <= 8000L);
+    long[] arrayOfLong = this.UAW;
+    arrayOfLong[5] += 1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.o
  * JD-Core Version:    0.7.0.1
  */

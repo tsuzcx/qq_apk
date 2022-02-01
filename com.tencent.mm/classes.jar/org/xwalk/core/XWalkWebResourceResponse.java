@@ -2,14 +2,12 @@ package org.xwalk.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class XWalkWebResourceResponse
 {
+  public static final String TAG = "XWalkWebResourceResponse";
   private Object bridge;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod getDataMethod;
   private ReflectMethod getEncodingMethod;
@@ -17,7 +15,6 @@ public class XWalkWebResourceResponse
   private ReflectMethod getReasonPhraseMethod;
   private ReflectMethod getResponseHeadersMethod;
   private ReflectMethod getStatusCodeMethod;
-  private ReflectMethod postWrapperMethod;
   private ReflectMethod setDataInputStreamMethod;
   private ReflectMethod setEncodingStringMethod;
   private ReflectMethod setMimeTypeStringMethod;
@@ -41,6 +38,30 @@ public class XWalkWebResourceResponse
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(155170);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(155182);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(155182);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.setMimeTypeStringMethod.init(this.bridge, null, "setMimeTypeSuper", new Class[] { String.class });
+    this.getMimeTypeMethod.init(this.bridge, null, "getMimeTypeSuper", new Class[0]);
+    this.setEncodingStringMethod.init(this.bridge, null, "setEncodingSuper", new Class[] { String.class });
+    this.getEncodingMethod.init(this.bridge, null, "getEncodingSuper", new Class[0]);
+    this.setDataInputStreamMethod.init(this.bridge, null, "setDataSuper", new Class[] { InputStream.class });
+    this.getDataMethod.init(this.bridge, null, "getDataSuper", new Class[0]);
+    this.setStatusCodeAndReasonPhraseintStringMethod.init(this.bridge, null, "setStatusCodeAndReasonPhraseSuper", new Class[] { Integer.TYPE, String.class });
+    this.getStatusCodeMethod.init(this.bridge, null, "getStatusCodeSuper", new Class[0]);
+    this.getReasonPhraseMethod.init(this.bridge, null, "getReasonPhraseSuper", new Class[0]);
+    this.setResponseHeadersMapMethod.init(this.bridge, null, "setResponseHeadersSuper", new Class[] { Map.class });
+    this.getResponseHeadersMethod.init(this.bridge, null, "getResponseHeadersSuper", new Class[0]);
+    AppMethodBeat.o(155182);
   }
   
   protected Object getBridge()
@@ -192,31 +213,6 @@ public class XWalkWebResourceResponse
     return 0;
   }
   
-  void reflectionInit()
-  {
-    AppMethodBeat.i(155182);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(155182);
-      return;
-    }
-    this.setMimeTypeStringMethod.init(this.bridge, null, "setMimeTypeSuper", new Class[] { String.class });
-    this.getMimeTypeMethod.init(this.bridge, null, "getMimeTypeSuper", new Class[0]);
-    this.setEncodingStringMethod.init(this.bridge, null, "setEncodingSuper", new Class[] { String.class });
-    this.getEncodingMethod.init(this.bridge, null, "getEncodingSuper", new Class[0]);
-    this.setDataInputStreamMethod.init(this.bridge, null, "setDataSuper", new Class[] { InputStream.class });
-    this.getDataMethod.init(this.bridge, null, "getDataSuper", new Class[0]);
-    this.setStatusCodeAndReasonPhraseintStringMethod.init(this.bridge, null, "setStatusCodeAndReasonPhraseSuper", new Class[] { Integer.TYPE, String.class });
-    this.getStatusCodeMethod.init(this.bridge, null, "getStatusCodeSuper", new Class[0]);
-    this.getReasonPhraseMethod.init(this.bridge, null, "getReasonPhraseSuper", new Class[0]);
-    this.setResponseHeadersMapMethod.init(this.bridge, null, "setResponseHeadersSuper", new Class[] { Map.class });
-    this.getResponseHeadersMethod.init(this.bridge, null, "getResponseHeadersSuper", new Class[0]);
-    AppMethodBeat.o(155182);
-  }
-  
   public void setData(InputStream paramInputStream)
   {
     AppMethodBeat.i(155175);
@@ -329,7 +325,7 @@ public class XWalkWebResourceResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkWebResourceResponse
  * JD-Core Version:    0.7.0.1
  */

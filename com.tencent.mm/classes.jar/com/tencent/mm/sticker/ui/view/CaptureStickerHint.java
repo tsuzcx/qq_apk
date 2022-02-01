@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.ao.a.a;
-import com.tencent.mm.plugin.ao.a.b;
-import com.tencent.mm.plugin.ao.a.c;
-import com.tencent.mm.plugin.ao.a.d;
+import com.tencent.mm.plugin.aq.a.a;
+import com.tencent.mm.plugin.aq.a.b;
+import com.tencent.mm.plugin.aq.a.c;
+import com.tencent.mm.plugin.aq.a.d;
 import com.tencent.mm.sticker.d;
 import com.tencent.mm.sticker.e;
 import com.tencent.mm.sticker.e.a;
@@ -24,213 +24,213 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "actionIndex", "actions", "Ljava/util/LinkedList;", "hintIcon", "Landroid/widget/ImageView;", "hintText", "Landroid/widget/TextView;", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "switchStickerHintRunnable", "Ljava/lang/Runnable;", "hideStickerHint", "", "onFinishInflate", "setStickerPack", "showStickerHint", "switchHint", "Companion", "plugin-sticker_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "actionIndex", "actions", "Ljava/util/LinkedList;", "hintIcon", "Landroid/widget/ImageView;", "hintText", "Landroid/widget/TextView;", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "switchStickerHintRunnable", "Ljava/lang/Runnable;", "hideStickerHint", "", "onFinishInflate", "setStickerPack", "showStickerHint", "switchHint", "Companion", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class CaptureStickerHint
   extends LinearLayout
 {
-  private static final SparseArray<int[]> Vcp;
-  private static final SparseArray<int[]> Vcq;
-  public static final a Vcr;
-  private final TextView AbR;
+  private static final SparseArray<int[]> acDB;
+  private static final SparseArray<int[]> acDC;
+  public static final CaptureStickerHint.a acDx;
+  private final TextView FxM;
   private final String TAG;
-  private final ImageView Vcm;
-  private int Vcn;
-  private final Runnable Vco;
-  private LinkedList<Integer> pSC;
-  private f uVs;
+  private final Runnable acDA;
+  private final ImageView acDy;
+  private int acDz;
+  private LinkedList<Integer> sXD;
+  private f yhU;
   
   static
   {
-    AppMethodBeat.i(232968);
-    Vcr = new a((byte)0);
-    Vcp = new SparseArray();
-    Vcq = new SparseArray();
-    SparseArray localSparseArray = Vcp;
-    e.a locala = e.Vba;
-    localSparseArray.put(e.huC(), new int[] { a.a.sticker_tips_action_mouth_open_1, a.a.sticker_tips_action_mouth_open_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huD(), new int[] { a.a.sticker_tips_action_mouth_kiss_1, a.a.sticker_tips_action_mouth_kiss_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huE(), new int[] { a.a.sticker_tips_action_lefteye_blink_1, a.a.sticker_tips_action_lefteye_blink_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huF(), new int[] { a.a.sticker_tips_action_righteye_blink_1, a.a.sticker_tips_action_righteye_blink_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huG(), new int[] { a.a.sticker_tips_action_eye_blink_1, a.a.sticker_tips_action_eye_blink_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huH(), new int[] { a.a.sticker_tips_action_eyebrow_up_1, a.a.sticker_tips_action_eyebrow_up_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huI(), new int[] { a.a.sticker_tips_action_head_shake_1, a.a.sticker_tips_action_head_shake_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huJ(), new int[] { a.a.sticker_tips_action_head_nod_1, a.a.sticker_tips_action_head_nod_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huK(), new int[] { a.a.sticker_tips_hand_action_heart_1, a.a.sticker_tips_hand_action_heart_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huL(), new int[] { a.a.sticker_tips_hand_action_paper_1, a.a.sticker_tips_hand_action_paper_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huM(), new int[] { a.a.sticker_tips_hand_action_scissor_1, a.a.sticker_tips_hand_action_scissor_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huN(), new int[] { a.a.sticker_tips_hand_action_fist_1, a.a.sticker_tips_hand_action_fist_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huO(), new int[] { a.a.sticker_tips_hand_action_one_1, a.a.sticker_tips_hand_action_one_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huP(), new int[] { a.a.sticker_tips_hand_action_love_1, a.a.sticker_tips_hand_action_love_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huQ(), new int[] { a.a.sticker_tips_hand_action_like_1, a.a.sticker_tips_hand_action_like_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huR(), new int[] { a.a.sticker_tips_hand_action_ok_1, a.a.sticker_tips_hand_action_ok_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huS(), new int[] { a.a.sticker_tips_hand_action_rock_1, a.a.sticker_tips_hand_action_rock_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huT(), new int[] { a.a.sticker_tips_hand_action_six_1, a.a.sticker_tips_hand_action_six_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huU(), new int[] { a.a.sticker_tips_hand_action_eight_1, a.a.sticker_tips_hand_action_eight_2 });
-    localSparseArray = Vcp;
-    locala = e.Vba;
-    localSparseArray.put(e.huV(), new int[] { a.a.sticker_tips_hand_action_good_fortune_1, a.a.sticker_tips_hand_action_good_fortune_2 });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huC(), new int[] { a.d.sticker_tips_action_mouth_open, a.d.sticker_tips_action_mouth_open_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huD(), new int[] { a.d.sticker_tips_action_mouth_kiss, a.d.sticker_tips_action_mouth_kiss_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huE(), new int[] { a.d.sticker_tips_action_lefteye_blink, a.d.sticker_tips_action_lefteye_blink_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huF(), new int[] { a.d.sticker_tips_action_righteye_blink, a.d.sticker_tips_action_righteye_blink_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huG(), new int[] { a.d.sticker_tips_action_eye_blink, a.d.sticker_tips_action_eye_blink_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huH(), new int[] { a.d.sticker_tips_action_eyebrow_up, a.d.sticker_tips_action_eyebrow_up_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huI(), new int[] { a.d.sticker_tips_action_head_shake, a.d.sticker_tips_action_head_shake_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huJ(), new int[] { a.d.sticker_tips_action_head_nod, a.d.sticker_tips_action_head_nod_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huK(), new int[] { a.d.sticker_tips_hand_action_heart, a.d.sticker_tips_hand_action_heart_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huL(), new int[] { a.d.sticker_tips_hand_action_paper, a.d.sticker_tips_hand_action_paper_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huM(), new int[] { a.d.sticker_tips_hand_action_scissor, a.d.sticker_tips_hand_action_scissor_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huN(), new int[] { a.d.sticker_tips_hand_action_fist, a.d.sticker_tips_hand_action_fist_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huO(), new int[] { a.d.sticker_tips_hand_action_one, a.d.sticker_tips_hand_action_one_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huP(), new int[] { a.d.sticker_tips_hand_action_love, a.d.sticker_tips_hand_action_love_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huQ(), new int[] { a.d.sticker_tips_hand_action_like, a.d.sticker_tips_hand_action_like_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huR(), new int[] { a.d.sticker_tips_hand_action_ok, a.d.sticker_tips_hand_action_ok_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huS(), new int[] { a.d.sticker_tips_hand_action_rock, a.d.sticker_tips_hand_action_rock_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huT(), new int[] { a.d.sticker_tips_hand_action_six, a.d.sticker_tips_hand_action_six_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huU(), new int[] { a.d.sticker_tips_hand_action_eight, a.d.sticker_tips_hand_action_eight_next });
-    localSparseArray = Vcq;
-    locala = e.Vba;
-    localSparseArray.put(e.huV(), new int[] { a.d.sticker_tips_hand_action_good_fortune, a.d.sticker_tips_hand_action_good_fortune_next });
-    AppMethodBeat.o(232968);
+    AppMethodBeat.i(233923);
+    acDx = new CaptureStickerHint.a((byte)0);
+    acDB = new SparseArray();
+    acDC = new SparseArray();
+    SparseArray localSparseArray = acDB;
+    e.a locala = e.acBV;
+    localSparseArray.put(e.iWe(), new int[] { a.a.sticker_tips_action_mouth_open_1, a.a.sticker_tips_action_mouth_open_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWf(), new int[] { a.a.sticker_tips_action_mouth_kiss_1, a.a.sticker_tips_action_mouth_kiss_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWg(), new int[] { a.a.sticker_tips_action_lefteye_blink_1, a.a.sticker_tips_action_lefteye_blink_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWh(), new int[] { a.a.sticker_tips_action_righteye_blink_1, a.a.sticker_tips_action_righteye_blink_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWi(), new int[] { a.a.sticker_tips_action_eye_blink_1, a.a.sticker_tips_action_eye_blink_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWj(), new int[] { a.a.sticker_tips_action_eyebrow_up_1, a.a.sticker_tips_action_eyebrow_up_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWk(), new int[] { a.a.sticker_tips_action_head_shake_1, a.a.sticker_tips_action_head_shake_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWl(), new int[] { a.a.sticker_tips_action_head_nod_1, a.a.sticker_tips_action_head_nod_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWm(), new int[] { a.a.sticker_tips_hand_action_heart_1, a.a.sticker_tips_hand_action_heart_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWn(), new int[] { a.a.sticker_tips_hand_action_paper_1, a.a.sticker_tips_hand_action_paper_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWo(), new int[] { a.a.sticker_tips_hand_action_scissor_1, a.a.sticker_tips_hand_action_scissor_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWp(), new int[] { a.a.sticker_tips_hand_action_fist_1, a.a.sticker_tips_hand_action_fist_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWq(), new int[] { a.a.sticker_tips_hand_action_one_1, a.a.sticker_tips_hand_action_one_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWr(), new int[] { a.a.sticker_tips_hand_action_love_1, a.a.sticker_tips_hand_action_love_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWs(), new int[] { a.a.sticker_tips_hand_action_like_1, a.a.sticker_tips_hand_action_like_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWt(), new int[] { a.a.sticker_tips_hand_action_ok_1, a.a.sticker_tips_hand_action_ok_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWu(), new int[] { a.a.sticker_tips_hand_action_rock_1, a.a.sticker_tips_hand_action_rock_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWv(), new int[] { a.a.sticker_tips_hand_action_six_1, a.a.sticker_tips_hand_action_six_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWw(), new int[] { a.a.sticker_tips_hand_action_eight_1, a.a.sticker_tips_hand_action_eight_2 });
+    localSparseArray = acDB;
+    locala = e.acBV;
+    localSparseArray.put(e.iWx(), new int[] { a.a.sticker_tips_hand_action_good_fortune_1, a.a.sticker_tips_hand_action_good_fortune_2 });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWe(), new int[] { a.d.sticker_tips_action_mouth_open, a.d.sticker_tips_action_mouth_open_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWf(), new int[] { a.d.sticker_tips_action_mouth_kiss, a.d.sticker_tips_action_mouth_kiss_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWg(), new int[] { a.d.sticker_tips_action_lefteye_blink, a.d.sticker_tips_action_lefteye_blink_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWh(), new int[] { a.d.sticker_tips_action_righteye_blink, a.d.sticker_tips_action_righteye_blink_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWi(), new int[] { a.d.sticker_tips_action_eye_blink, a.d.sticker_tips_action_eye_blink_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWj(), new int[] { a.d.sticker_tips_action_eyebrow_up, a.d.sticker_tips_action_eyebrow_up_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWk(), new int[] { a.d.sticker_tips_action_head_shake, a.d.sticker_tips_action_head_shake_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWl(), new int[] { a.d.sticker_tips_action_head_nod, a.d.sticker_tips_action_head_nod_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWm(), new int[] { a.d.sticker_tips_hand_action_heart, a.d.sticker_tips_hand_action_heart_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWn(), new int[] { a.d.sticker_tips_hand_action_paper, a.d.sticker_tips_hand_action_paper_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWo(), new int[] { a.d.sticker_tips_hand_action_scissor, a.d.sticker_tips_hand_action_scissor_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWp(), new int[] { a.d.sticker_tips_hand_action_fist, a.d.sticker_tips_hand_action_fist_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWq(), new int[] { a.d.sticker_tips_hand_action_one, a.d.sticker_tips_hand_action_one_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWr(), new int[] { a.d.sticker_tips_hand_action_love, a.d.sticker_tips_hand_action_love_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWs(), new int[] { a.d.sticker_tips_hand_action_like, a.d.sticker_tips_hand_action_like_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWt(), new int[] { a.d.sticker_tips_hand_action_ok, a.d.sticker_tips_hand_action_ok_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWu(), new int[] { a.d.sticker_tips_hand_action_rock, a.d.sticker_tips_hand_action_rock_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWv(), new int[] { a.d.sticker_tips_hand_action_six, a.d.sticker_tips_hand_action_six_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWw(), new int[] { a.d.sticker_tips_hand_action_eight, a.d.sticker_tips_hand_action_eight_next });
+    localSparseArray = acDC;
+    locala = e.acBV;
+    localSparseArray.put(e.iWx(), new int[] { a.d.sticker_tips_hand_action_good_fortune, a.d.sticker_tips_hand_action_good_fortune_next });
+    AppMethodBeat.o(233923);
   }
   
   public CaptureStickerHint(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(232965);
-    AppMethodBeat.o(232965);
+    AppMethodBeat.i(233910);
+    AppMethodBeat.o(233910);
   }
   
   public CaptureStickerHint(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(232964);
+    AppMethodBeat.i(233907);
     this.TAG = "MicroMsg.CaptureStickerHint";
-    this.pSC = new LinkedList();
-    this.Vco = ((Runnable)new b(this));
+    this.sXD = new LinkedList();
+    this.acDA = new CaptureStickerHint..ExternalSyntheticLambda0(this);
     View.inflate(paramContext, a.c.sticker_preview_hint, (ViewGroup)this);
     paramContext = findViewById(a.b.sticker_preview_hint_icon);
-    p.j(paramContext, "findViewById(R.id.sticker_preview_hint_icon)");
-    this.Vcm = ((ImageView)paramContext);
+    s.s(paramContext, "findViewById(R.id.sticker_preview_hint_icon)");
+    this.acDy = ((ImageView)paramContext);
     paramContext = findViewById(a.b.sticker_preview_hint_text);
-    p.j(paramContext, "findViewById(R.id.sticker_preview_hint_text)");
-    this.AbR = ((TextView)paramContext);
-    AppMethodBeat.o(232964);
+    s.s(paramContext, "findViewById(R.id.sticker_preview_hint_text)");
+    this.FxM = ((TextView)paramContext);
+    AppMethodBeat.o(233907);
   }
   
-  private void hvw()
+  private static final void a(CaptureStickerHint paramCaptureStickerHint)
   {
-    AppMethodBeat.i(232962);
-    this.Vcm.setImageDrawable(null);
-    setVisibility(8);
-    AppMethodBeat.o(232962);
+    AppMethodBeat.i(233917);
+    s.u(paramCaptureStickerHint, "this$0");
+    paramCaptureStickerHint.iWV();
+    AppMethodBeat.o(233917);
   }
   
-  public final void hvv()
+  private void iWV()
   {
     int i = 0;
-    AppMethodBeat.i(232960);
-    if (this.Vcn >= this.pSC.size())
+    AppMethodBeat.i(233913);
+    if (this.acDz >= this.sXD.size())
     {
-      hvw();
-      AppMethodBeat.o(232960);
+      iWW();
+      AppMethodBeat.o(233913);
       return;
     }
     setVisibility(0);
-    Object localObject1 = Vcq;
-    Object localObject2 = this.pSC.get(this.Vcn);
-    p.j(localObject2, "actions[actionIndex]");
+    Object localObject1 = acDC;
+    Object localObject2 = this.sXD.get(this.acDz);
+    s.s(localObject2, "actions[actionIndex]");
     localObject1 = (int[])((SparseArray)localObject1).get(((Number)localObject2).intValue());
     if (localObject1 != null) {
-      if (this.Vcn == 0) {
-        this.AbR.setText(localObject1[0]);
+      if (this.acDz == 0) {
+        this.FxM.setText(localObject1[0]);
       }
     }
     for (;;)
     {
-      localObject1 = Vcp;
-      localObject2 = this.pSC.get(this.Vcn);
-      p.j(localObject2, "actions[actionIndex]");
+      localObject1 = acDB;
+      localObject2 = this.sXD.get(this.acDz);
+      s.s(localObject2, "actions[actionIndex]");
       localObject1 = (int[])((SparseArray)localObject1).get(((Number)localObject2).intValue());
       if (localObject1 == null) {
-        break label283;
+        break label280;
       }
       localObject2 = new a();
       int j = localObject1.length;
@@ -238,54 +238,60 @@ public final class CaptureStickerHint
       {
         int k = localObject1[i];
         Drawable localDrawable = getContext().getDrawable(k);
-        if (localDrawable == null) {
-          p.iCn();
-        }
+        s.checkNotNull(localDrawable);
         ((a)localObject2).addFrame(localDrawable, 300);
         i += 1;
       }
-      this.AbR.setText(localObject1[1]);
+      this.FxM.setText(localObject1[1]);
       continue;
-      this.AbR.setText(null);
+      this.FxM.setText(null);
     }
-    this.Vcm.setImageDrawable((Drawable)localObject2);
+    this.acDy.setImageDrawable((Drawable)localObject2);
     ((a)localObject2).start();
     for (;;)
     {
-      this.Vcn += 1;
-      postDelayed(this.Vco, 2000L);
-      AppMethodBeat.o(232960);
+      this.acDz += 1;
+      postDelayed(this.acDA, 2000L);
+      AppMethodBeat.o(233913);
       return;
-      label283:
-      this.Vcm.setImageDrawable(null);
+      label280:
+      this.acDy.setImageDrawable(null);
     }
+  }
+  
+  private void iWW()
+  {
+    AppMethodBeat.i(233915);
+    this.acDy.setImageDrawable(null);
+    setVisibility(8);
+    AppMethodBeat.o(233915);
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(232957);
+    AppMethodBeat.i(233925);
     super.onFinishInflate();
     setOrientation(1);
     setGravity(17);
-    AppMethodBeat.o(232957);
+    AppMethodBeat.o(233925);
   }
   
   public final void setStickerPack(f paramf)
   {
-    AppMethodBeat.i(232958);
-    if ((p.h(this.uVs, paramf) ^ true))
+    AppMethodBeat.i(233927);
+    if (!s.p(this.yhU, paramf))
     {
-      removeCallbacks(this.Vco);
-      this.uVs = paramf;
-      this.pSC.clear();
+      removeCallbacks(this.acDA);
+      this.yhU = paramf;
+      this.sXD.clear();
       if (paramf != null)
       {
-        LinkedList localLinkedList = this.pSC;
+        LinkedList localLinkedList = this.sXD;
         Object localObject1 = new LinkedList();
-        Object localObject2 = paramf.Vbc;
+        Object localObject2 = paramf.acCw;
         if (localObject2 != null)
         {
-          localObject2 = ((e)localObject2).VaD;
+          localObject2 = ((e)localObject2).acBX;
           if (localObject2 != null)
           {
             localObject2 = ((HashMap)localObject2).values();
@@ -294,10 +300,10 @@ public final class CaptureStickerHint
             }
           }
         }
-        localObject2 = paramf.Vbd;
+        localObject2 = paramf.acCx;
         if (localObject2 != null)
         {
-          localObject2 = ((e)localObject2).VaD;
+          localObject2 = ((e)localObject2).acBX;
           if (localObject2 != null)
           {
             localObject2 = ((HashMap)localObject2).values();
@@ -306,10 +312,10 @@ public final class CaptureStickerHint
             }
           }
         }
-        paramf = paramf.Vbe;
+        paramf = paramf.acCy;
         if (paramf != null)
         {
-          paramf = paramf.VaD;
+          paramf = paramf.acBX;
           if (paramf != null)
           {
             paramf = paramf.values();
@@ -321,15 +327,15 @@ public final class CaptureStickerHint
         paramf = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList();
         localObject2 = paramf.iterator();
-        label255:
+        label253:
         while (((Iterator)localObject2).hasNext())
         {
           paramf = (d)((Iterator)localObject2).next();
-          if (paramf.Vax > 0) {}
-          for (paramf = Integer.valueOf(paramf.Vax);; paramf = null)
+          if (paramf.acBQ > 0) {}
+          for (paramf = Integer.valueOf(paramf.acBQ);; paramf = null)
           {
             if (paramf == null) {
-              break label255;
+              break label253;
             }
             ((Collection)localObject1).add(paramf);
             break;
@@ -337,38 +343,21 @@ public final class CaptureStickerHint
         }
         localLinkedList.addAll((Collection)localObject1);
       }
-      if (this.pSC.size() > 0)
+      if (this.sXD.size() > 0)
       {
-        this.Vcn = 0;
-        hvv();
-        AppMethodBeat.o(232958);
+        this.acDz = 0;
+        iWV();
+        AppMethodBeat.o(233927);
         return;
       }
-      hvw();
+      iWW();
     }
-    AppMethodBeat.o(232958);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint$Companion;", "", "()V", "tipsIconIds", "Landroid/util/SparseArray;", "", "getTipsIconIds", "()Landroid/util/SparseArray;", "tipsStrIds", "getTipsStrIds", "plugin-sticker_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(CaptureStickerHint paramCaptureStickerHint) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(232787);
-      this.Vcs.hvv();
-      AppMethodBeat.o(232787);
-    }
+    AppMethodBeat.o(233927);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.sticker.ui.view.CaptureStickerHint
  * JD-Core Version:    0.7.0.1
  */

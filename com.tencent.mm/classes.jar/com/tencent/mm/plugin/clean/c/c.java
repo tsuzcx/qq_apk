@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.clean.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.h.b.a;
+import com.tencent.mm.plugin.calcwx.b.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,27 +10,27 @@ import java.util.List;
 public final class c
 {
   public String filePath;
-  public long fxU;
-  public long mhP;
+  public long hCz;
   public int msgType;
+  public long pba;
   public long size;
-  public List<a> tOs;
   public String thumbPath;
   public int type;
   public String userName;
+  public List<a> wRI;
   
   public c()
   {
     AppMethodBeat.i(22824);
-    this.tOs = new ArrayList();
+    this.wRI = new ArrayList();
     AppMethodBeat.o(22824);
   }
   
-  public final long cNg()
+  public final long dqM()
   {
     AppMethodBeat.i(22826);
     Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(this.mhP);
+    localCalendar.setTimeInMillis(this.pba);
     int i = localCalendar.get(1);
     long l = localCalendar.get(2) + i * 100;
     AppMethodBeat.o(22826);
@@ -65,7 +65,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.c
  * JD-Core Version:    0.7.0.1
  */

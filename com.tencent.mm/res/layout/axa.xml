@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="15.0sp" android:textColor="@color/am" android:id="@id/e31" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c5" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/al2" android:paddingLeft="@dimen/j6" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="@dimen/k">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/elz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/f7d" android:layout_weight="1.0" />
+        <com.tencent.mm.plugin.game.ui.GameDropdownView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center_vertical" android:id="@id/ely" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

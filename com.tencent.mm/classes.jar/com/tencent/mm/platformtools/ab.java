@@ -1,303 +1,366 @@
 package com.tencent.mm.platformtools;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Debug;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.y.c;
+import com.tencent.mm.plugin.y.d;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.f;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+@Deprecated
 public final class ab
 {
-  private static final ab mET;
-  public static AtomicBoolean mEU;
-  public com.tencent.mm.storagebase.f mEV;
+  private static final TimeZone GMT;
+  private static final long[] VIRBRATOR_PATTERN;
   
   static
   {
-    AppMethodBeat.i(196833);
-    mET = new ab();
-    mEU = new AtomicBoolean(true);
-    AppMethodBeat.o(196833);
+    AppMethodBeat.i(20749);
+    VIRBRATOR_PATTERN = new long[] { 300L, 200L, 300L, 200L };
+    GMT = TimeZone.getTimeZone("GMT");
+    AppMethodBeat.o(20749);
   }
   
-  /* Error */
-  public static int a(com.tencent.mm.storagebase.f paramf)
+  @Deprecated
+  public static long EP(String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 43
-    //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: ldc 45
-    //   10: aconst_null
-    //   11: iconst_0
-    //   12: invokevirtual 51	com/tencent/mm/storagebase/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
-    //   15: astore_3
-    //   16: aload_3
-    //   17: invokeinterface 57 1 0
-    //   22: pop
-    //   23: aload_3
-    //   24: iconst_0
-    //   25: invokeinterface 61 2 0
-    //   30: istore_1
-    //   31: aload_3
-    //   32: ifnull +9 -> 41
-    //   35: aload_3
-    //   36: invokeinterface 64 1 0
-    //   41: ldc 43
-    //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   46: iload_1
-    //   47: ireturn
-    //   48: astore_2
-    //   49: ldc 43
-    //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   54: aload_2
-    //   55: athrow
-    //   56: astore_0
-    //   57: aload_3
-    //   58: ifnull +13 -> 71
-    //   61: aload_2
-    //   62: ifnull +25 -> 87
-    //   65: aload_3
-    //   66: invokeinterface 64 1 0
-    //   71: ldc 43
-    //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   76: aload_0
-    //   77: athrow
-    //   78: astore_3
-    //   79: aload_2
-    //   80: aload_3
-    //   81: invokevirtual 68	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   84: goto -13 -> 71
-    //   87: aload_3
-    //   88: invokeinterface 64 1 0
-    //   93: goto -22 -> 71
-    //   96: astore_0
-    //   97: goto -40 -> 57
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	paramf	com.tencent.mm.storagebase.f
-    //   30	17	1	i	int
-    //   1	1	2	localObject	Object
-    //   48	32	2	localThrowable1	java.lang.Throwable
-    //   15	51	3	localCursor	android.database.Cursor
-    //   78	10	3	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   16	31	48	java/lang/Throwable
-    //   49	56	56	finally
-    //   65	71	78	java/lang/Throwable
-    //   16	31	96	finally
-  }
-  
-  public static boolean a(com.tencent.mm.storagebase.f paramf, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(196818);
-    Object localObject = null;
+    AppMethodBeat.i(20743);
+    if (paramString == null) {}
     try
     {
-      paramf.execSQL("DROP INDEX ".concat(String.valueOf(paramString1)));
-      paramf = localObject;
+      AppMethodBeat.o(20743);
+      return -1L;
     }
-    catch (Exception paramf)
+    catch (NumberFormatException paramString)
+    {
+      long l;
+      AppMethodBeat.o(20743);
+    }
+    l = Long.parseLong(paramString);
+    AppMethodBeat.o(20743);
+    return l;
+    return -1L;
+  }
+  
+  public static boolean a(Context paramContext, View paramView)
+  {
+    AppMethodBeat.i(20748);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(20748);
+      return false;
+    }
+    paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(20748);
+      return false;
+    }
+    paramView = paramView.getWindowToken();
+    if (paramView == null)
+    {
+      AppMethodBeat.o(20748);
+      return false;
+    }
+    try
+    {
+      bool = paramContext.hideSoftInputFromWindow(paramView, 0);
+      AppMethodBeat.o(20748);
+      return bool;
+    }
+    catch (IllegalArgumentException paramContext)
     {
       for (;;)
       {
-        Log.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1457L, 0L, 1L, true);
-        com.tencent.mm.plugin.report.f.Iyx.a(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
+        Log.e("MicroMsg.Util", "hide VKB(View) exception %s", new Object[] { paramContext });
+        boolean bool = false;
       }
-      AppMethodBeat.o(196818);
     }
-    if (paramf == null) {
-      Log.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
-    }
-    if (paramf == null)
-    {
-      AppMethodBeat.o(196818);
-      return true;
-    }
-    return false;
   }
   
-  public static boolean a(com.tencent.mm.storagebase.f paramf, String paramString1, String paramString2, String paramString3)
+  public static void bTP()
   {
-    AppMethodBeat.i(196824);
-    if (Util.isNullOrNil(paramString1))
+    AppMethodBeat.i(20732);
+    Log.w("MicroMsg.Util", "memory usage: h=%s/%s, e=%s/%s, n=%s/%s", new Object[] { getSizeKB(Debug.getGlobalAllocSize()), getSizeKB(Debug.getGlobalAllocSize() + Debug.getGlobalFreedSize()), getSizeKB(Debug.getGlobalExternalAllocSize()), getSizeKB(Debug.getGlobalExternalAllocSize() + Debug.getGlobalExternalFreedSize()), getSizeKB(Debug.getNativeHeapAllocatedSize()), getSizeKB(Debug.getNativeHeapSize()) });
+    AppMethodBeat.o(20732);
+  }
+  
+  public static ab.a bTQ()
+  {
+    AppMethodBeat.i(20745);
+    ab.a locala = new ab.a();
+    AppMethodBeat.o(20745);
+    return locala;
+  }
+  
+  public static List<String> ck(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(20746);
+    String str = null;
+    if (paramString1 != null)
     {
-      Log.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
-      AppMethodBeat.o(196824);
-      return false;
+      paramString2 = Pattern.compile(paramString2).matcher(paramString1);
+      int j = paramString2.groupCount();
+      int i = 1;
+      paramString1 = new ArrayList();
+      str = paramString1;
+      if (paramString2.find()) {
+        for (;;)
+        {
+          str = paramString1;
+          if (i > j) {
+            break;
+          }
+          paramString1.add(paramString2.group(i));
+          i += 1;
+        }
+      }
     }
-    Object localObject = null;
-    paramString1 = paramString3.replaceAll(paramString2, paramString1);
-    try
+    AppMethodBeat.o(20746);
+    return str;
+  }
+  
+  public static int dE(Object paramObject)
+  {
+    AppMethodBeat.i(20740);
+    if (paramObject == null)
     {
-      paramf.execSQL(paramString1);
-      paramf = localObject;
+      AppMethodBeat.o(20740);
+      return 0;
     }
-    catch (Exception paramf)
+    int i;
+    if ((paramObject instanceof Integer))
     {
+      i = ((Integer)paramObject).intValue();
+      AppMethodBeat.o(20740);
+      return i;
+    }
+    if ((paramObject instanceof Long))
+    {
+      i = ((Long)paramObject).intValue();
+      AppMethodBeat.o(20740);
+      return i;
+    }
+    AppMethodBeat.o(20740);
+    return 0;
+  }
+  
+  public static boolean ej(Context paramContext)
+  {
+    AppMethodBeat.i(20747);
+    if (d.gdL() != null) {
+      d.gdL().gdJ();
+    }
+    if ((ChannelUtil.updateMode & 0x1) != 0)
+    {
+      Log.e("MicroMsg.Util", "package has set external update mode");
+      Object localObject = Uri.parse(ChannelUtil.marketURL);
+      Intent localIntent = new Intent("android.intent.action.VIEW", (Uri)localObject).addFlags(268435456);
+      int i;
+      if ((localObject != null) && (localIntent != null))
+      {
+        if (paramContext.getPackageManager().queryIntentActivities(localIntent, 65536).size() > 0)
+        {
+          i = 1;
+          if (i != 0) {
+            break label193;
+          }
+        }
+      }
+      else
+      {
+        Log.e("MicroMsg.Util", "parse market uri failed, jump to weixin.qq.com");
+        localObject = new Intent("android.intent.action.VIEW", Uri.parse(f.adwb)).addFlags(268435456);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      }
       for (;;)
       {
-        Log.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1457L, 5L, 1L, true);
-        com.tencent.mm.plugin.report.f.Iyx.a(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
-      }
-      AppMethodBeat.o(196824);
-    }
-    if (paramf == null) {
-      Log.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
-    }
-    if (paramf == null)
-    {
-      AppMethodBeat.o(196824);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(String[] paramArrayOfString, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(196815);
-    if (paramString1.startsWith("sqlite_"))
-    {
-      AppMethodBeat.o(196815);
-      return false;
-    }
-    if (paramString1.equals(paramString2))
-    {
-      AppMethodBeat.o(196815);
-      return false;
-    }
-    if (paramString1.startsWith(paramString2))
-    {
-      AppMethodBeat.o(196815);
-      return false;
-    }
-    int i = 0;
-    while (i < 2)
-    {
-      if (paramString2.equalsIgnoreCase(paramArrayOfString[i]))
-      {
-        AppMethodBeat.o(196815);
+        AppMethodBeat.o(20747);
         return true;
+        i = 0;
+        break;
+        label193:
+        Log.i("MicroMsg.Util", "parse market uri ok");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      i += 1;
     }
-    AppMethodBeat.o(196815);
+    MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", System.currentTimeMillis() / 1000L).commit();
+    if (d.gdL() != null)
+    {
+      paramContext = d.gdL().b(paramContext, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
+      });
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(20747);
+        return false;
+      }
+      paramContext.update(3);
+    }
+    AppMethodBeat.o(20747);
+    return true;
+  }
+  
+  @Deprecated
+  public static int ew(String paramString)
+  {
+    AppMethodBeat.i(234077);
+    if (paramString != null) {}
+    try
+    {
+      if (paramString.length() <= 0)
+      {
+        AppMethodBeat.o(234077);
+        return 0;
+      }
+      int i = Integer.parseInt(paramString);
+      AppMethodBeat.o(234077);
+      return i;
+    }
+    catch (NumberFormatException paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.Util", paramString, "", new Object[0]);
+      AppMethodBeat.o(234077);
+    }
+    return 0;
+  }
+  
+  public static String getSizeKB(long paramLong)
+  {
+    AppMethodBeat.i(20720);
+    float f;
+    if (paramLong >> 20 > 0L)
+    {
+      f = Math.round((float)paramLong * 10.0F / 1048576.0F) / 10.0F;
+      str = f + "MB";
+      AppMethodBeat.o(20720);
+      return str;
+    }
+    if (paramLong >> 9 > 0L)
+    {
+      f = Math.round((float)paramLong * 10.0F / 1024.0F) / 10.0F;
+      str = f + "KB";
+      AppMethodBeat.o(20720);
+      return str;
+    }
+    String str = paramLong + "B";
+    AppMethodBeat.o(20720);
+    return str;
+  }
+  
+  public static boolean isLongHorizontal(int paramInt1, int paramInt2)
+  {
+    return paramInt1 > paramInt2 * 2.0D;
+  }
+  
+  public static boolean isLongVertical(int paramInt1, int paramInt2)
+  {
+    return paramInt2 > paramInt1 * 2.0D;
+  }
+  
+  public static boolean isNullOrNil(String paramString)
+  {
+    AppMethodBeat.i(20741);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(20741);
+      return true;
+    }
+    AppMethodBeat.o(20741);
     return false;
   }
   
-  /* Error */
-  public static int b(com.tencent.mm.storagebase.f paramf)
+  public static List<String> j(String[] paramArrayOfString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 181
-    //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: ldc 183
-    //   10: aconst_null
-    //   11: iconst_0
-    //   12: invokevirtual 51	com/tencent/mm/storagebase/f:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
-    //   15: astore_3
-    //   16: aload_3
-    //   17: invokeinterface 57 1 0
-    //   22: pop
-    //   23: aload_3
-    //   24: iconst_0
-    //   25: invokeinterface 61 2 0
-    //   30: istore_1
-    //   31: aload_3
-    //   32: ifnull +9 -> 41
-    //   35: aload_3
-    //   36: invokeinterface 64 1 0
-    //   41: ldc 181
-    //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   46: iload_1
-    //   47: ireturn
-    //   48: astore_2
-    //   49: ldc 181
-    //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   54: aload_2
-    //   55: athrow
-    //   56: astore_0
-    //   57: aload_3
-    //   58: ifnull +13 -> 71
-    //   61: aload_2
-    //   62: ifnull +25 -> 87
-    //   65: aload_3
-    //   66: invokeinterface 64 1 0
-    //   71: ldc 181
-    //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   76: aload_0
-    //   77: athrow
-    //   78: astore_3
-    //   79: aload_2
-    //   80: aload_3
-    //   81: invokevirtual 68	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   84: goto -13 -> 71
-    //   87: aload_3
-    //   88: invokeinterface 64 1 0
-    //   93: goto -22 -> 71
-    //   96: astore_0
-    //   97: goto -40 -> 57
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	100	0	paramf	com.tencent.mm.storagebase.f
-    //   30	17	1	i	int
-    //   1	1	2	localObject	Object
-    //   48	32	2	localThrowable1	java.lang.Throwable
-    //   15	51	3	localCursor	android.database.Cursor
-    //   78	10	3	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   16	31	48	java/lang/Throwable
-    //   49	56	56	finally
-    //   65	71	78	java/lang/Throwable
-    //   16	31	96	finally
-  }
-  
-  public static ab bvB()
-  {
-    return mET;
-  }
-  
-  public static String d(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
-  {
-    AppMethodBeat.i(196810);
-    int i = 0;
-    while (i < 2)
+    AppMethodBeat.i(20719);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      if (paramArrayOfString1[i].equalsIgnoreCase(paramString))
-      {
-        paramString = paramArrayOfString2[i];
-        AppMethodBeat.o(196810);
-        return paramString;
-      }
+      AppMethodBeat.o(20719);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      localArrayList.add(paramArrayOfString[i]);
       i += 1;
     }
-    AppMethodBeat.o(196810);
-    return "";
+    AppMethodBeat.o(20719);
+    return localArrayList;
   }
   
-  public final class a
+  public static int n(Integer paramInteger)
   {
-    public String sql;
-    public String table;
-    
-    public a(String paramString1, String paramString2)
+    AppMethodBeat.i(20737);
+    if (paramInteger == null)
     {
-      this.table = paramString1;
-      this.sql = paramString2;
+      AppMethodBeat.o(20737);
+      return 0;
     }
+    int i = paramInteger.intValue();
+    AppMethodBeat.o(20737);
+    return i;
+  }
+  
+  public static String nullAs(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return paramString2;
+    }
+    return paramString1;
+  }
+  
+  public static String nullAsNil(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
+  
+  public static boolean yc(int paramInt)
+  {
+    AppMethodBeat.i(20731);
+    long l1 = paramInt * 1000L;
+    long l2 = l1 - System.currentTimeMillis();
+    Log.d("MicroMsg.Util", "time " + l1 + "  systime " + System.currentTimeMillis() + " diff " + l2);
+    if (l2 < 0L)
+    {
+      AppMethodBeat.o(20731);
+      return true;
+    }
+    AppMethodBeat.o(20731);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.ab
  * JD-Core Version:    0.7.0.1
  */

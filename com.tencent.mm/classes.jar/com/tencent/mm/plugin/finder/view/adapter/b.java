@@ -5,223 +5,217 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.feed.an;
-import com.tencent.mm.plugin.finder.loader.r;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.feed.au;
+import com.tencent.mm.plugin.finder.loader.n;
+import com.tencent.mm.plugin.finder.loader.p;
+import com.tencent.mm.plugin.finder.loader.p.a;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.storage.FeedData;
 import com.tencent.mm.plugin.finder.storage.FeedData.a;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.u;
+import com.tencent.mm.plugin.finder.storage.v;
 import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
+import com.tencent.mm.plugin.finder.video.l;
 import com.tencent.mm.plugin.finder.view.FinderFeedAlbumView.a;
 import com.tencent.mm.plugin.finder.view.FinderFeedAlbumView.c;
-import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.protocal.protobuf.dji;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter;", "Lcom/tencent/mm/plugin/finder/view/FinderFeedAlbumView$Adapter;", "Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$AlbumHolder;", "mediaList", "", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "isAliveMode", "", "(Ljava/util/List;Z)V", "onItemClick", "Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;", "getOnItemClick", "()Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;", "setOnItemClick", "(Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;)V", "getCardFeed", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "getFinderVideoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "getItemType", "", "position", "getSize", "onBindView", "", "itemView", "Landroid/view/View;", "holder", "Lcom/tencent/mm/plugin/finder/view/FinderFeedAlbumView$Holder;", "onCreateView", "layoutInflater", "Landroid/view/LayoutInflater;", "parent", "Landroid/widget/FrameLayout;", "AlbumHolder", "Companion", "OnItemClickListener", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter;", "Lcom/tencent/mm/plugin/finder/view/FinderFeedAlbumView$Adapter;", "Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$AlbumHolder;", "mediaList", "", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "isAliveMode", "", "(Ljava/util/List;Z)V", "onItemClick", "Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;", "getOnItemClick", "()Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;", "setOnItemClick", "(Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;)V", "getCardFeed", "Lcom/tencent/mm/plugin/finder/feed/FinderStreamCardFeed;", "getFinderVideoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "getItemType", "", "position", "getSize", "onBindView", "", "itemView", "Landroid/view/View;", "holder", "Lcom/tencent/mm/plugin/finder/view/FinderFeedAlbumView$Holder;", "onCreateView", "layoutInflater", "Landroid/view/LayoutInflater;", "parent", "Landroid/widget/FrameLayout;", "AlbumHolder", "Companion", "OnItemClickListener", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class b
   extends FinderFeedAlbumView.a<a>
 {
-  public static final b Bdo;
-  public c Bdm;
-  private final boolean Bdn;
-  private final List<csg> rUa;
+  public static final b GFZ;
+  private final boolean GGa;
+  public c GGb;
+  private final List<dji> nZr;
   
   static
   {
-    AppMethodBeat.i(278965);
-    Bdo = new b((byte)0);
-    AppMethodBeat.o(278965);
+    AppMethodBeat.i(345466);
+    GFZ = new b((byte)0);
+    AppMethodBeat.o(345466);
   }
   
-  public b(List<? extends csg> paramList, boolean paramBoolean)
+  public b(List<? extends dji> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(278964);
-    this.rUa = paramList;
-    this.Bdn = paramBoolean;
-    AppMethodBeat.o(278964);
+    AppMethodBeat.i(345455);
+    this.nZr = paramList;
+    this.GGa = paramBoolean;
+    AppMethodBeat.o(345455);
   }
   
-  public final int RC(int paramInt)
+  private static final void a(c paramc, int paramInt, View paramView)
   {
-    AppMethodBeat.i(278962);
+    AppMethodBeat.i(345460);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.sc(paramInt);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "$listener");
+    s.s(paramView, "it");
+    paramc.h(paramInt, paramView);
+    a.a(new Object(), "com/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(345460);
+  }
+  
+  public final int UG(int paramInt)
+  {
+    AppMethodBeat.i(345506);
     if (paramInt == 0)
     {
-      paramInt = ((csg)this.rUa.get(paramInt)).mediaType;
-      AppMethodBeat.o(278962);
+      paramInt = ((dji)this.nZr.get(paramInt)).mediaType;
+      AppMethodBeat.o(345506);
       return paramInt;
     }
-    AppMethodBeat.o(278962);
+    AppMethodBeat.o(345506);
     return 2;
   }
   
-  public final void a(final View paramView, final int paramInt, FinderFeedAlbumView.c paramc)
+  public final void a(View paramView, int paramInt, FinderFeedAlbumView.c paramc)
   {
-    AppMethodBeat.i(278960);
-    p.k(paramView, "itemView");
-    p.k(paramc, "holder");
-    csg localcsg = (csg)this.rUa.get(paramInt);
-    int i = RC(paramInt);
+    AppMethodBeat.i(345492);
+    s.u(paramView, "itemView");
+    s.u(paramc, "holder");
+    dji localdji = (dji)this.nZr.get(paramInt);
+    int i = UG(paramInt);
     Object localObject1;
     Object localObject2;
-    if ((paramInt == 0) && (i == 4) && (this.Bdn))
+    if ((paramInt == 0) && (i == 4) && (this.GGa))
     {
-      localObject1 = paramView.findViewById(b.f.finder_banner_video_layout);
-      paramc = (FinderFeedAlbumView.c)localObject1;
-      if (!(localObject1 instanceof FinderVideoLayout)) {
-        paramc = null;
-      }
-      paramc = (FinderVideoLayout)paramc;
-      localObject1 = dpL();
-      if (localObject1 != null)
+      paramc = paramView.findViewById(e.e.finder_banner_video_layout);
+      if ((paramc instanceof FinderVideoLayout))
       {
-        localObject1 = ((an)localObject1).rvFeedList;
+        paramc = (FinderVideoLayout)paramc;
+        localObject1 = dYd();
         if (localObject1 != null)
         {
-          localObject1 = (BaseFinderFeed)((LinkedList)localObject1).getFirst();
+          localObject1 = ((au)localObject1).rvFeedList;
           if (localObject1 != null)
           {
-            localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+            localObject1 = (BaseFinderFeed)((LinkedList)localObject1).getFirst();
             if (localObject1 != null)
             {
-              localObject2 = dpM();
-              if (localObject2 != null)
+              localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+              if (localObject1 != null)
               {
-                if (paramc != null) {
-                  paramc.setVideoCore((com.tencent.mm.plugin.finder.video.l)localObject2);
-                }
-                if (paramc != null)
+                localObject2 = dYe();
+                if (localObject2 != null)
                 {
-                  localObject2 = FeedData.Companion;
-                  FinderVideoLayout.a(paramc, paramInt, FeedData.a.j((FinderItem)localObject1), 0, false, false, 220);
-                }
-                if (paramc != null) {
-                  paramc.setMute(true);
-                }
-                if (paramc != null) {
-                  paramc.setEnableShowLoading(false);
+                  if (paramc != null) {
+                    paramc.setVideoCore((l)localObject2);
+                  }
+                  if (paramc != null)
+                  {
+                    localObject2 = FeedData.Companion;
+                    FinderVideoLayout.a(paramc, paramInt, FeedData.a.n((FinderItem)localObject1), 0, false, false, 220);
+                  }
+                  if (paramc != null) {
+                    paramc.setMute(true);
+                  }
+                  if (paramc != null) {
+                    paramc.setEnableShowLoading(false);
+                  }
                 }
               }
             }
           }
         }
-      }
-      paramc = (CharSequence)localcsg.thumbUrl;
-      if ((paramc != null) && (paramc.length() != 0)) {
-        break label398;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        paramc = this.Bdm;
-        if (paramc != null)
-        {
-          paramView.setOnClickListener((View.OnClickListener)new d(paramc, paramView, paramInt));
-          AppMethodBeat.o(278960);
-          return;
-          paramc = (ImageView)paramView;
-          localObject1 = (CharSequence)localcsg.thumbUrl;
-          if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
-          for (i = 1;; i = 0)
-          {
-            if (i == 0) {
-              break label345;
-            }
-            localObject1 = paramc.getContext();
-            p.j(localObject1, "thumbIv.context");
-            paramc.setImageDrawable((Drawable)new ColorDrawable(((Context)localObject1).getResources().getColor(com.tencent.mm.plugin.finder.b.c.BW_93)));
-            break;
-          }
-          label345:
-          localObject1 = t.ztT;
-          localObject1 = t.dJe();
-          localObject2 = new r(localcsg, u.Alz, null, null, 12);
-          t localt = t.ztT;
-          ((d)localObject1).a(localObject2, t.a(t.a.ztU)).c(paramc);
-          break;
-          label398:
-          i = 0;
-          continue;
+        label190:
+        paramc = (CharSequence)localdji.thumbUrl;
+        if ((paramc != null) && (paramc.length() != 0)) {
+          break label380;
         }
-        AppMethodBeat.o(278960);
-        return;
       }
     }
+    label327:
+    label380:
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {
+        break label386;
+      }
+      paramc = this.GGb;
+      if (paramc == null) {
+        break label391;
+      }
+      paramView.setOnClickListener(new b..ExternalSyntheticLambda0(paramc, paramInt));
+      AppMethodBeat.o(345492);
+      return;
+      paramc = null;
+      break;
+      paramc = (ImageView)paramView;
+      localObject1 = (CharSequence)localdji.thumbUrl;
+      if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label327;
+        }
+        paramc.setImageDrawable((Drawable)new ColorDrawable(paramc.getContext().getResources().getColor(e.b.BW_93)));
+        break;
+      }
+      localObject1 = p.ExI;
+      localObject1 = p.eCl();
+      localObject2 = new n(localdji, v.FKZ, null, null, 12);
+      p localp = p.ExI;
+      ((d)localObject1).a(localObject2, p.a(p.a.ExJ)).d(paramc);
+      break label190;
+    }
+    label386:
     paramView.setOnClickListener(null);
-    AppMethodBeat.o(278960);
+    label391:
+    AppMethodBeat.o(345492);
   }
   
-  public an dpL()
+  public au dYd()
   {
     return null;
   }
   
-  public com.tencent.mm.plugin.finder.video.l dpM()
+  public l dYe()
   {
     return null;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(278961);
-    int i = this.rUa.size();
-    AppMethodBeat.o(278961);
+    AppMethodBeat.i(345499);
+    int i = this.nZr.size();
+    AppMethodBeat.o(345499);
     return i;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$AlbumHolder;", "Lcom/tencent/mm/plugin/finder/view/FinderFeedAlbumView$Holder;", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$AlbumHolder;", "Lcom/tencent/mm/plugin/finder/view/FinderFeedAlbumView$Holder;", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends FinderFeedAlbumView.c
   {
     public a(View paramView)
     {
       super();
-      AppMethodBeat.i(291607);
-      AppMethodBeat.o(291607);
+      AppMethodBeat.i(345456);
+      AppMethodBeat.o(345456);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;", "", "onClick", "", "position", "", "view", "Landroid/view/View;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$OnItemClickListener;", "", "onClick", "", "position", "", "view", "Landroid/view/View;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface c
   {
-    public abstract void f(int paramInt, View paramView);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$onBindView$2$1"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(b.c paramc, View paramView, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(286421);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$onBindView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      localObject = this.Bdp;
-      int i = paramInt;
-      p.j(paramView, "it");
-      ((b.c)localObject).f(i, paramView);
-      a.a(this, "com/tencent/mm/plugin/finder/view/adapter/FinderFeedAlbumAdapter$onBindView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(286421);
-    }
+    public abstract void h(int paramInt, View paramView);
   }
 }
 

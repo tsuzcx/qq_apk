@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.wallet_ecard.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.br.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.e;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletOpenECardProxyUI
@@ -58,21 +57,21 @@ public class WalletOpenECardProxyUI
     paramBundle = getProcess();
     if (paramBundle != null)
     {
-      int i = getInput().getInt(com.tencent.mm.plugin.wallet_ecard.a.a.PhY, 0);
-      boolean bool = getInput().getBoolean(com.tencent.mm.plugin.wallet_ecard.a.a.Piq, false);
+      int i = getInput().getInt(com.tencent.mm.plugin.wallet_ecard.a.a.VYM, 0);
+      boolean bool = getInput().getBoolean(com.tencent.mm.plugin.wallet_ecard.a.a.VZe, false);
       Log.i("MicroMsg.WalletOpenECardProxyUI", "onCreate, openScene: %s, isReuseExistCard: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
       if (bool)
       {
-        getNetController().r(new Object[] { Integer.valueOf(2), Integer.valueOf(i), Boolean.TRUE });
+        getNetController().t(new Object[] { Integer.valueOf(2), Integer.valueOf(i), Boolean.TRUE });
         AppMethodBeat.o(71792);
         return;
       }
-      String str = getInput().getString(com.tencent.mm.plugin.wallet_ecard.a.a.PhZ);
-      bool = getInput().getBoolean(com.tencent.mm.plugin.wallet_ecard.a.a.Pib, false);
+      String str = getInput().getString(com.tencent.mm.plugin.wallet_ecard.a.a.VYN);
+      bool = getInput().getBoolean(com.tencent.mm.plugin.wallet_ecard.a.a.VYP, false);
       Log.i("MicroMsg.WalletOpenECardProxyUI", "onCreate, openScene: %s, token==null:%s, isTokenInvalid: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(Util.isNullOrNil(str)), Boolean.valueOf(bool) });
       if (!Util.isNullOrNil(str))
       {
-        getNetController().r(new Object[] { Integer.valueOf(1), Integer.valueOf(i), str });
+        getNetController().t(new Object[] { Integer.valueOf(1), Integer.valueOf(i), str });
         AppMethodBeat.o(71792);
         return;
       }
@@ -114,12 +113,12 @@ public class WalletOpenECardProxyUI
       setResult(0);
     }
     if (paramIntent != null) {
-      paramIntent.bH(getContext());
+      paramIntent.co(getContext());
     }
     AppMethodBeat.o(71794);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -132,7 +131,7 @@ public class WalletOpenECardProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.ui.WalletOpenECardProxyUI
  * JD-Core Version:    0.7.0.1
  */

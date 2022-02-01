@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.view.FinderHotCommentLayout android:id="@id/lzk" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="12.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_gravity="center|left|top" android:id="@id/lzn" android:background="@drawable/b6o" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/bu" android:paddingRight="@dimen/df" android:paddingBottom="@dimen/bu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lru" android:paddingHorizontal="@dimen/df" android:paddingVertical="@dimen/bu" />
+    <com.tencent.mm.plugin.finder.view.FlowTextMixView android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.finder.view.HotCommentSpacingTextView android:textSize="15.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:ellipsize="end" android:layout_gravity="center|left|top" android:id="@id/lzj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingMultiplier="1.1" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/lzm" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/finder_full_like" app:iconColor="@color/BW_F_Alpha_0_8" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/BW_F_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/lzl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1232" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.finder.view.FlowTextMixView>
+</com.tencent.mm.plugin.finder.view.FinderHotCommentLayout>

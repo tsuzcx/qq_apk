@@ -7,20 +7,20 @@ import com.tencent.mm.hellhoundlib.b.b;
 public abstract class a
   extends RecyclerView.l
 {
-  private int uqo;
+  private int xwL;
   
-  public abstract void cRA();
+  public abstract void dvT();
   
-  public abstract void cRB();
+  public abstract void dvU();
   
-  public abstract void cRC();
+  public abstract void dvV();
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
     super.onScrollStateChanged(paramRecyclerView, paramInt);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
   }
@@ -28,11 +28,11 @@ public abstract class a
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt1);
-    localb.sg(paramInt2);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
-    if (Math.abs(paramInt2) > this.uqo)
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt1);
+    localb.sc(paramInt2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
+    if (Math.abs(paramInt2) > this.xwL)
     {
       paramInt1 = 1;
       if (paramInt1 != 0)
@@ -40,7 +40,7 @@ public abstract class a
         if (paramRecyclerView.canScrollVertically(-1)) {
           break label91;
         }
-        cRC();
+        dvV();
       }
     }
     for (;;)
@@ -52,9 +52,9 @@ public abstract class a
       label91:
       if (paramRecyclerView.canScrollVertically(1)) {
         if (paramInt2 < 0) {
-          cRA();
+          dvT();
         } else if (paramInt2 > 0) {
-          cRB();
+          dvU();
         }
       }
     }
@@ -62,7 +62,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a
  * JD-Core Version:    0.7.0.1
  */

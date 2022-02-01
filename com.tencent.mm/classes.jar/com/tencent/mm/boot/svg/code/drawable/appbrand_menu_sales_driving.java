@@ -82,7 +82,7 @@ public class appbrand_menu_sales_driving
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.appbrand_menu_sales_driving
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class XWalkNavigationItem
 {
+  private static final String TAG = "XWalkNavigationItem";
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
@@ -23,6 +24,22 @@ public class XWalkNavigationItem
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(154824);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154828);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154828);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.getUrlMethod.init(this.bridge, null, "getUrlSuper", new Class[0]);
+    this.getOriginalUrlMethod.init(this.bridge, null, "getOriginalUrlSuper", new Class[0]);
+    this.getTitleMethod.init(this.bridge, null, "getTitleSuper", new Class[0]);
+    AppMethodBeat.o(154828);
   }
   
   protected Object getBridge()
@@ -101,27 +118,10 @@ public class XWalkNavigationItem
     }
     return null;
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154828);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154828);
-      return;
-    }
-    this.getUrlMethod.init(this.bridge, null, "getUrlSuper", new Class[0]);
-    this.getOriginalUrlMethod.init(this.bridge, null, "getOriginalUrlSuper", new Class[0]);
-    this.getTitleMethod.init(this.bridge, null, "getTitleSuper", new Class[0]);
-    AppMethodBeat.o(154828);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkNavigationItem
  * JD-Core Version:    0.7.0.1
  */

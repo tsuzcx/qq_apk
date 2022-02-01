@@ -1,32 +1,19 @@
 package com.tencent.xweb.xwalk;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 final class d$52
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  d$52(d paramd, CheckBox paramCheckBox) {}
+  d$52(d paramd, String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(154212);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    paramView = this.aahZ;
-    if (!this.aahZ.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(154212);
-      return;
-    }
+    AppMethodBeat.i(212809);
+    this.ainW.R(this.aioy, this.aioz, this.aioA);
+    AppMethodBeat.o(212809);
   }
 }
 

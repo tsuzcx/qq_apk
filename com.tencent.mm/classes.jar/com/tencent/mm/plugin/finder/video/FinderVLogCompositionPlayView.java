@@ -10,513 +10,490 @@ import android.view.View;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.f;
+import com.tencent.mm.plugin.finder.loader.x;
 import com.tencent.mm.plugin.finder.storage.FeedData;
 import com.tencent.mm.plugin.recordvideo.ui.editor.b.c;
-import com.tencent.mm.plugin.vlog.model.i;
+import com.tencent.mm.plugin.vlog.model.ac;
 import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.protocal.protobuf.acu;
-import com.tencent.mm.protocal.protobuf.acv;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.protocal.protobuf.dhd;
-import com.tencent.mm.protocal.protobuf.duz;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.afc;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.dzm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.videocomposition.j;
 import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
 import com.tencent.mm.videocomposition.play.a.a.a;
 import com.tencent.mm.xeffect.effect.EffectManager;
 import java.lang.reflect.Field;
-import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderVLogCompositionPlayView;", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "_callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "_isPreviewing", "", "get_isPreviewing", "()Z", "set_isPreviewing", "(Z)V", "effectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "finderMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameSeeker;", "isFirstTimeStarted", "isFullScreen", "isInterceptedDetach", "setInterceptedDetach", "isNeverStart", "setNeverStart", "isShouldPlayResume", "setShouldPlayResume", "isShowFullscreen", "setShowFullscreen", "isViewFocused", "setViewFocused", "lastPlayTime", "", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "getLifecycle", "()Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setLifecycle", "(Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;)V", "mediaId", "", "mediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getMediaInfo", "()Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "setMediaInfo", "(Lcom/tencent/mm/plugin/finder/video/MediaInfo;)V", "muteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "getMuteListener", "()Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setMuteListener", "(Lcom/tencent/mm/plugin/finder/video/OnMuteListener;)V", "originLayer", "", "originSurface", "sessionId", "createPlayer", "", "destroyDrawingCache", "getCurrentPlayMs", "getCurrentPlaySecond", "getIsNeverStart", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getPlayStart", "getVideoDuration", "getVideoDurationMs", "getVideoMediaId", "getVideoMediaInfo", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "hookInnerDetach", "isFullScreenEnjoy", "isPreviewing", "onAttachedToWindow", "onDetachedFromWindow", "onRelease", "onSurfaceTextureDestroyed", "surface", "Landroid/graphics/SurfaceTexture;", "onUIDestroy", "pause", "pauseWithCancel", "play", "prepareToPlay", "removeVideoFooterView", "reset", "seekTo", "seconds", "", "afterPlay", "timestamp", "afterSeekPlay", "mode", "time", "setFinderVideoPlayTrace", "videoPlayTrace", "Lcom/tencent/mm/plugin/findersdk/trace/FinderVideoPlayTrace;", "setFullScreenEnjoy", "isFull", "setIMMVideoViewCallback", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setMute", "mute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "isLocal", "feedData", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "setVideoMuteListener", "setVideoPlayLifecycle", "setVideoViewFocused", "focused", "start", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "startOrPlay", "stop", "unHookInnerDetach", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/FinderVLogCompositionPlayView;", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "Lcom/tencent/mm/plugin/finder/video/IFinderVLogCompositionPlayView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "_callback", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "_isPreviewing", "", "get_isPreviewing", "()Z", "set_isPreviewing", "(Z)V", "contextTag", "effectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "finderMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "frameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameSeeker;", "isFirstTimeStarted", "isFullScreen", "isInterceptedDetach", "setInterceptedDetach", "isNeverStart", "setNeverStart", "isReplay", "isShouldPlayResume", "setShouldPlayResume", "isShowFullscreen", "setShowFullscreen", "isViewFocused", "setViewFocused", "lastPlayTime", "", "lifecycle", "Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "getLifecycle", "()Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;", "setLifecycle", "(Lcom/tencent/mm/plugin/finder/video/VideoPlayLifecycle;)V", "mediaId", "", "mediaInfo", "Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "getMediaInfo", "()Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "setMediaInfo", "(Lcom/tencent/mm/plugin/finder/video/MediaInfo;)V", "muteListener", "Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "getMuteListener", "()Lcom/tencent/mm/plugin/finder/video/OnMuteListener;", "setMuteListener", "(Lcom/tencent/mm/plugin/finder/video/OnMuteListener;)V", "originLayer", "", "originSurface", "sessionId", "createPlayer", "", "destroyDrawingCache", "getContextTag", "getCurrentPlayMs", "getCurrentPlaySecond", "getFinderFluentSwitchParams", "Lcom/tencent/mm/plugin/finder/live/fluent/FinderFluentSwitchParams;", "feedId", "getIsNeverStart", "getIsShouldPlayResume", "getParentView", "Landroid/view/ViewParent;", "getPlayStart", "getPlayer", "getVideoDuration", "getVideoDurationMs", "getVideoMediaId", "getVideoMediaInfo", "getVideoView", "Landroid/view/View;", "getVideoViewFocused", "hookInnerDetach", "isEnableFluentSwitchExit", "isFullScreenEnjoy", "isPreviewing", "onAttachedToWindow", "onDetachedFromWindow", "onRelease", "onSurfaceTextureDestroyed", "surface", "Landroid/graphics/SurfaceTexture;", "onUIDestroy", "pause", "pauseWithCancel", "play", "prepareToPlay", "prepareforReuse", "removeVideoFooterView", "reset", "seekTo", "seconds", "", "afterPlay", "timestamp", "afterSeekPlay", "mode", "time", "setContextTag", "tag", "setFinderVideoPlayTrace", "videoPlayTrace", "Lcom/tencent/mm/plugin/findersdk/trace/FinderVideoPlayTrace;", "setFullScreenEnjoy", "isFull", "setFullscreen", "setIMMVideoViewCallback", "setIOnlineVideoProxy", "_proxy", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "setInterceptDetach", "isInterceptDetach", "setIsShouldPlayResume", "shouldPlayResume", "setIsShowBasicControls", "isShow", "setLivePlayer", "txPlayer", "Lcom/tencent/mm/live/core/core/player/ILivePlayer;", "setMute", "mute", "setPreview", "isPreview", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setVideoMediaInfo", "video", "Lcom/tencent/mm/plugin/finder/loader/IFinderMediaLoaderData;", "isLocal", "feedData", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "setVideoMuteListener", "setVideoPlayLifecycle", "setVideoViewFocused", "focused", "start", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "startOrPlay", "offset", "(Ljava/lang/Integer;)Z", "stop", "unHookInnerDetach", "Companion", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderVLogCompositionPlayView
   extends VideoCompositionPlayView
-  implements s
+  implements q
 {
-  public static final a ANs;
-  private boolean AJP;
-  private c AJT;
-  private z ALf;
-  private t ALh;
-  private boolean ALj;
-  private boolean ALk;
-  private volatile boolean ALl;
-  private boolean ANj;
-  private u ANk;
-  private i.b ANl;
-  private csg ANm;
-  private boolean ANn;
-  private EffectManager ANo;
-  private boolean ANp;
-  private Object ANq;
-  private Object ANr;
+  public static final FinderVLogCompositionPlayView.a GpH;
+  private v BtQ;
+  private boolean ECP;
+  private boolean Flq;
+  private boolean Flr;
+  private boolean Fls;
+  private ab Flu;
+  private long FsW;
+  private c GmE;
+  private volatile boolean GnV;
+  private boolean GpI;
+  private w GpJ;
+  private i.b GpK;
+  private dji GpL;
+  private boolean GpM;
+  private boolean GpN;
+  private EffectManager GpO;
+  private boolean GpP;
+  private Object GpQ;
+  private Object GpR;
+  private int contextTag;
   private String mediaId;
   private String sessionId;
-  private boolean zAH;
-  private long zXq;
   
   static
   {
-    AppMethodBeat.i(283539);
-    ANs = new a((byte)0);
-    AppMethodBeat.o(283539);
+    AppMethodBeat.i(335121);
+    GpH = new FinderVLogCompositionPlayView.a((byte)0);
+    AppMethodBeat.o(335121);
   }
   
   public FinderVLogCompositionPlayView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(283538);
-    this.ALj = true;
-    this.ALl = true;
+    AppMethodBeat.i(335057);
+    this.Flr = true;
+    this.GnV = true;
     this.sessionId = String.valueOf(hashCode());
     this.mediaId = String.valueOf(hashCode());
-    this.ANn = true;
+    this.GpM = true;
+    this.contextTag = -1;
     setPlayerCallback((a.a.a)new a.a.a()
     {
-      private long ANd = -1L;
+      private long FlA = -1L;
       
-      public final void Np(long paramAnonymousLong)
+      public final void fiA()
       {
-        AppMethodBeat.i(279631);
-        z localz = this.ANt.getLifecycle();
-        if (localz != null)
-        {
-          FinderVLogCompositionPlayView.f(this.ANt);
-          localz.U(paramAnonymousLong - FinderVLogCompositionPlayView.g(this.ANt), this.ANt.getVideoDurationMs());
-        }
-        if ((this.ANd == -1L) || (paramAnonymousLong - this.ANd > 1000L) || (paramAnonymousLong < this.ANd))
-        {
-          localz = this.ANt.getLifecycle();
-          if (localz != null) {
-            localz.a(FinderVLogCompositionPlayView.f(this.ANt), (int)((paramAnonymousLong - FinderVLogCompositionPlayView.g(this.ANt)) / 1000L), this.ANt.getVideoDuration());
-          }
-          this.ANd = paramAnonymousLong;
-        }
-        AppMethodBeat.o(279631);
-      }
-      
-      public final void egA()
-      {
-        AppMethodBeat.i(279629);
-        Object localObject = FinderVLogCompositionPlayView.a(this.ANt);
+        AppMethodBeat.i(335325);
+        Object localObject = FinderVLogCompositionPlayView.a(this.GpS);
         if (localObject != null) {
-          ((i.b)localObject).dV(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
+          ((i.b)localObject).gE(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
         }
-        if ((FinderVLogCompositionPlayView.d(this.ANt)) || (!this.ANt.loop))
-        {
-          localObject = this.ANt.getLifecycle();
-          if (localObject != null)
-          {
-            FinderVLogCompositionPlayView.f(this.ANt);
-            ((z)localObject).dJV();
-          }
-        }
-        for (;;)
-        {
-          FinderVLogCompositionPlayView.e(this.ANt);
-          AppMethodBeat.o(279629);
-          return;
-          if (this.ANt.loop)
-          {
-            localObject = this.ANt.getLifecycle();
-            if (localObject != null)
-            {
-              FinderVLogCompositionPlayView.f(this.ANt);
-              ((z)localObject).dJU();
-            }
-          }
-        }
-      }
-      
-      public final void egB() {}
-      
-      public final void egC()
-      {
-        AppMethodBeat.i(279630);
-        i.b localb = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localb != null)
-        {
-          localb.dT(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
-          AppMethodBeat.o(279630);
-          return;
-        }
-        AppMethodBeat.o(279630);
-      }
-      
-      public final void egD()
-      {
-        AppMethodBeat.i(279632);
-        Object localObject = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localObject != null) {
-          ((i.b)localObject).fC(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
-        }
-        localObject = this.ANt.getLifecycle();
+        localObject = this.GpS.getLifecycle();
         if (localObject != null)
         {
-          FinderVLogCompositionPlayView.f(this.ANt);
-          ((z)localObject).Ma(0L);
-          AppMethodBeat.o(279632);
-          return;
+          FinderVLogCompositionPlayView.e(this.GpS);
+          ((ab)localObject).ph(0L);
         }
-        AppMethodBeat.o(279632);
+        AppMethodBeat.o(335325);
       }
       
-      public final void egE()
+      public final void fiB()
       {
-        AppMethodBeat.i(279633);
-        i.b localb = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localb != null)
-        {
-          localb.c(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt), "", -1, -1);
-          AppMethodBeat.o(279633);
-          return;
+        AppMethodBeat.i(335333);
+        i.b localb = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localb != null) {
+          localb.d(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS), "", -1, -1);
         }
-        AppMethodBeat.o(279633);
+        AppMethodBeat.o(335333);
+      }
+      
+      public final void fix()
+      {
+        AppMethodBeat.i(335300);
+        Object localObject = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localObject != null) {
+          ((i.b)localObject).eo(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
+        }
+        if ((FinderVLogCompositionPlayView.d(this.GpS)) || (!this.GpS.loop))
+        {
+          localObject = this.GpS.getLifecycle();
+          if (localObject != null)
+          {
+            FinderVLogCompositionPlayView.e(this.GpS);
+            ((ab)localObject).egu();
+          }
+        }
+        FinderVLogCompositionPlayView.f(this.GpS);
+        FinderVLogCompositionPlayView.a(this.GpS, false);
+        AppMethodBeat.o(335300);
+      }
+      
+      public final void fiy() {}
+      
+      public final void fiz()
+      {
+        AppMethodBeat.i(335314);
+        i.b localb = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localb != null) {
+          localb.em(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
+        }
+        AppMethodBeat.o(335314);
+      }
+      
+      public final void qT(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(335319);
+        ab localab = this.GpS.getLifecycle();
+        if (localab != null)
+        {
+          FinderVLogCompositionPlayView.e(this.GpS);
+          localab.ar(paramAnonymousLong - FinderVLogCompositionPlayView.g(this.GpS), this.GpS.getVideoDurationMs());
+        }
+        if ((this.FlA == -1L) || (paramAnonymousLong - this.FlA > 1000L) || (paramAnonymousLong < this.FlA))
+        {
+          localab = this.GpS.getLifecycle();
+          if (localab != null) {
+            localab.a(FinderVLogCompositionPlayView.e(this.GpS), (int)((paramAnonymousLong - FinderVLogCompositionPlayView.g(this.GpS)) / 1000L), this.GpS.getVideoDuration());
+          }
+          this.FlA = paramAnonymousLong;
+        }
+        if ((this.GpS.getVideoDurationMs() > 0L) && (paramAnonymousLong > 0L) && (this.GpS.getVideoDurationMs() - paramAnonymousLong <= 500L) && (!FinderVLogCompositionPlayView.h(this.GpS)) && (this.GpS.loop))
+        {
+          localab = this.GpS.getLifecycle();
+          if (localab != null)
+          {
+            FinderVLogCompositionPlayView.e(this.GpS);
+            localab.eCP();
+          }
+          FinderVLogCompositionPlayView.a(this.GpS, true);
+        }
+        AppMethodBeat.o(335319);
       }
     });
-    AppMethodBeat.o(283538);
+    AppMethodBeat.o(335057);
   }
   
   public FinderVLogCompositionPlayView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(283537);
-    this.ALj = true;
-    this.ALl = true;
+    AppMethodBeat.i(335049);
+    this.Flr = true;
+    this.GnV = true;
     this.sessionId = String.valueOf(hashCode());
     this.mediaId = String.valueOf(hashCode());
-    this.ANn = true;
+    this.GpM = true;
+    this.contextTag = -1;
     setPlayerCallback((a.a.a)new a.a.a()
     {
-      private long ANd = -1L;
+      private long FlA = -1L;
       
-      public final void Np(long paramAnonymousLong)
+      public final void fiA()
       {
-        AppMethodBeat.i(279631);
-        z localz = this.ANt.getLifecycle();
-        if (localz != null)
-        {
-          FinderVLogCompositionPlayView.f(this.ANt);
-          localz.U(paramAnonymousLong - FinderVLogCompositionPlayView.g(this.ANt), this.ANt.getVideoDurationMs());
-        }
-        if ((this.ANd == -1L) || (paramAnonymousLong - this.ANd > 1000L) || (paramAnonymousLong < this.ANd))
-        {
-          localz = this.ANt.getLifecycle();
-          if (localz != null) {
-            localz.a(FinderVLogCompositionPlayView.f(this.ANt), (int)((paramAnonymousLong - FinderVLogCompositionPlayView.g(this.ANt)) / 1000L), this.ANt.getVideoDuration());
-          }
-          this.ANd = paramAnonymousLong;
-        }
-        AppMethodBeat.o(279631);
-      }
-      
-      public final void egA()
-      {
-        AppMethodBeat.i(279629);
-        Object localObject = FinderVLogCompositionPlayView.a(this.ANt);
+        AppMethodBeat.i(335325);
+        Object localObject = FinderVLogCompositionPlayView.a(this.GpS);
         if (localObject != null) {
-          ((i.b)localObject).dV(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
+          ((i.b)localObject).gE(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
         }
-        if ((FinderVLogCompositionPlayView.d(this.ANt)) || (!this.ANt.loop))
-        {
-          localObject = this.ANt.getLifecycle();
-          if (localObject != null)
-          {
-            FinderVLogCompositionPlayView.f(this.ANt);
-            ((z)localObject).dJV();
-          }
-        }
-        for (;;)
-        {
-          FinderVLogCompositionPlayView.e(this.ANt);
-          AppMethodBeat.o(279629);
-          return;
-          if (this.ANt.loop)
-          {
-            localObject = this.ANt.getLifecycle();
-            if (localObject != null)
-            {
-              FinderVLogCompositionPlayView.f(this.ANt);
-              ((z)localObject).dJU();
-            }
-          }
-        }
-      }
-      
-      public final void egB() {}
-      
-      public final void egC()
-      {
-        AppMethodBeat.i(279630);
-        i.b localb = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localb != null)
-        {
-          localb.dT(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
-          AppMethodBeat.o(279630);
-          return;
-        }
-        AppMethodBeat.o(279630);
-      }
-      
-      public final void egD()
-      {
-        AppMethodBeat.i(279632);
-        Object localObject = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localObject != null) {
-          ((i.b)localObject).fC(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
-        }
-        localObject = this.ANt.getLifecycle();
+        localObject = this.GpS.getLifecycle();
         if (localObject != null)
         {
-          FinderVLogCompositionPlayView.f(this.ANt);
-          ((z)localObject).Ma(0L);
-          AppMethodBeat.o(279632);
-          return;
+          FinderVLogCompositionPlayView.e(this.GpS);
+          ((ab)localObject).ph(0L);
         }
-        AppMethodBeat.o(279632);
+        AppMethodBeat.o(335325);
       }
       
-      public final void egE()
+      public final void fiB()
       {
-        AppMethodBeat.i(279633);
-        i.b localb = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localb != null)
-        {
-          localb.c(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt), "", -1, -1);
-          AppMethodBeat.o(279633);
-          return;
+        AppMethodBeat.i(335333);
+        i.b localb = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localb != null) {
+          localb.d(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS), "", -1, -1);
         }
-        AppMethodBeat.o(279633);
+        AppMethodBeat.o(335333);
+      }
+      
+      public final void fix()
+      {
+        AppMethodBeat.i(335300);
+        Object localObject = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localObject != null) {
+          ((i.b)localObject).eo(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
+        }
+        if ((FinderVLogCompositionPlayView.d(this.GpS)) || (!this.GpS.loop))
+        {
+          localObject = this.GpS.getLifecycle();
+          if (localObject != null)
+          {
+            FinderVLogCompositionPlayView.e(this.GpS);
+            ((ab)localObject).egu();
+          }
+        }
+        FinderVLogCompositionPlayView.f(this.GpS);
+        FinderVLogCompositionPlayView.a(this.GpS, false);
+        AppMethodBeat.o(335300);
+      }
+      
+      public final void fiy() {}
+      
+      public final void fiz()
+      {
+        AppMethodBeat.i(335314);
+        i.b localb = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localb != null) {
+          localb.em(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
+        }
+        AppMethodBeat.o(335314);
+      }
+      
+      public final void qT(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(335319);
+        ab localab = this.GpS.getLifecycle();
+        if (localab != null)
+        {
+          FinderVLogCompositionPlayView.e(this.GpS);
+          localab.ar(paramAnonymousLong - FinderVLogCompositionPlayView.g(this.GpS), this.GpS.getVideoDurationMs());
+        }
+        if ((this.FlA == -1L) || (paramAnonymousLong - this.FlA > 1000L) || (paramAnonymousLong < this.FlA))
+        {
+          localab = this.GpS.getLifecycle();
+          if (localab != null) {
+            localab.a(FinderVLogCompositionPlayView.e(this.GpS), (int)((paramAnonymousLong - FinderVLogCompositionPlayView.g(this.GpS)) / 1000L), this.GpS.getVideoDuration());
+          }
+          this.FlA = paramAnonymousLong;
+        }
+        if ((this.GpS.getVideoDurationMs() > 0L) && (paramAnonymousLong > 0L) && (this.GpS.getVideoDurationMs() - paramAnonymousLong <= 500L) && (!FinderVLogCompositionPlayView.h(this.GpS)) && (this.GpS.loop))
+        {
+          localab = this.GpS.getLifecycle();
+          if (localab != null)
+          {
+            FinderVLogCompositionPlayView.e(this.GpS);
+            localab.eCP();
+          }
+          FinderVLogCompositionPlayView.a(this.GpS, true);
+        }
+        AppMethodBeat.o(335319);
       }
     });
-    AppMethodBeat.o(283537);
+    AppMethodBeat.o(335049);
   }
   
   public FinderVLogCompositionPlayView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(283536);
-    this.ALj = true;
-    this.ALl = true;
+    AppMethodBeat.i(335042);
+    this.Flr = true;
+    this.GnV = true;
     this.sessionId = String.valueOf(hashCode());
     this.mediaId = String.valueOf(hashCode());
-    this.ANn = true;
+    this.GpM = true;
+    this.contextTag = -1;
     setPlayerCallback((a.a.a)new a.a.a()
     {
-      private long ANd = -1L;
+      private long FlA = -1L;
       
-      public final void Np(long paramAnonymousLong)
+      public final void fiA()
       {
-        AppMethodBeat.i(279631);
-        z localz = this.ANt.getLifecycle();
-        if (localz != null)
-        {
-          FinderVLogCompositionPlayView.f(this.ANt);
-          localz.U(paramAnonymousLong - FinderVLogCompositionPlayView.g(this.ANt), this.ANt.getVideoDurationMs());
-        }
-        if ((this.ANd == -1L) || (paramAnonymousLong - this.ANd > 1000L) || (paramAnonymousLong < this.ANd))
-        {
-          localz = this.ANt.getLifecycle();
-          if (localz != null) {
-            localz.a(FinderVLogCompositionPlayView.f(this.ANt), (int)((paramAnonymousLong - FinderVLogCompositionPlayView.g(this.ANt)) / 1000L), this.ANt.getVideoDuration());
-          }
-          this.ANd = paramAnonymousLong;
-        }
-        AppMethodBeat.o(279631);
-      }
-      
-      public final void egA()
-      {
-        AppMethodBeat.i(279629);
-        Object localObject = FinderVLogCompositionPlayView.a(this.ANt);
+        AppMethodBeat.i(335325);
+        Object localObject = FinderVLogCompositionPlayView.a(this.GpS);
         if (localObject != null) {
-          ((i.b)localObject).dV(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
+          ((i.b)localObject).gE(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
         }
-        if ((FinderVLogCompositionPlayView.d(this.ANt)) || (!this.ANt.loop))
-        {
-          localObject = this.ANt.getLifecycle();
-          if (localObject != null)
-          {
-            FinderVLogCompositionPlayView.f(this.ANt);
-            ((z)localObject).dJV();
-          }
-        }
-        for (;;)
-        {
-          FinderVLogCompositionPlayView.e(this.ANt);
-          AppMethodBeat.o(279629);
-          return;
-          if (this.ANt.loop)
-          {
-            localObject = this.ANt.getLifecycle();
-            if (localObject != null)
-            {
-              FinderVLogCompositionPlayView.f(this.ANt);
-              ((z)localObject).dJU();
-            }
-          }
-        }
-      }
-      
-      public final void egB() {}
-      
-      public final void egC()
-      {
-        AppMethodBeat.i(279630);
-        i.b localb = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localb != null)
-        {
-          localb.dT(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
-          AppMethodBeat.o(279630);
-          return;
-        }
-        AppMethodBeat.o(279630);
-      }
-      
-      public final void egD()
-      {
-        AppMethodBeat.i(279632);
-        Object localObject = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localObject != null) {
-          ((i.b)localObject).fC(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt));
-        }
-        localObject = this.ANt.getLifecycle();
+        localObject = this.GpS.getLifecycle();
         if (localObject != null)
         {
-          FinderVLogCompositionPlayView.f(this.ANt);
-          ((z)localObject).Ma(0L);
-          AppMethodBeat.o(279632);
-          return;
+          FinderVLogCompositionPlayView.e(this.GpS);
+          ((ab)localObject).ph(0L);
         }
-        AppMethodBeat.o(279632);
+        AppMethodBeat.o(335325);
       }
       
-      public final void egE()
+      public final void fiB()
       {
-        AppMethodBeat.i(279633);
-        i.b localb = FinderVLogCompositionPlayView.a(this.ANt);
-        if (localb != null)
-        {
-          localb.c(FinderVLogCompositionPlayView.b(this.ANt), FinderVLogCompositionPlayView.c(this.ANt), "", -1, -1);
-          AppMethodBeat.o(279633);
-          return;
+        AppMethodBeat.i(335333);
+        i.b localb = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localb != null) {
+          localb.d(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS), "", -1, -1);
         }
-        AppMethodBeat.o(279633);
+        AppMethodBeat.o(335333);
+      }
+      
+      public final void fix()
+      {
+        AppMethodBeat.i(335300);
+        Object localObject = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localObject != null) {
+          ((i.b)localObject).eo(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
+        }
+        if ((FinderVLogCompositionPlayView.d(this.GpS)) || (!this.GpS.loop))
+        {
+          localObject = this.GpS.getLifecycle();
+          if (localObject != null)
+          {
+            FinderVLogCompositionPlayView.e(this.GpS);
+            ((ab)localObject).egu();
+          }
+        }
+        FinderVLogCompositionPlayView.f(this.GpS);
+        FinderVLogCompositionPlayView.a(this.GpS, false);
+        AppMethodBeat.o(335300);
+      }
+      
+      public final void fiy() {}
+      
+      public final void fiz()
+      {
+        AppMethodBeat.i(335314);
+        i.b localb = FinderVLogCompositionPlayView.a(this.GpS);
+        if (localb != null) {
+          localb.em(FinderVLogCompositionPlayView.b(this.GpS), FinderVLogCompositionPlayView.c(this.GpS));
+        }
+        AppMethodBeat.o(335314);
+      }
+      
+      public final void qT(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(335319);
+        ab localab = this.GpS.getLifecycle();
+        if (localab != null)
+        {
+          FinderVLogCompositionPlayView.e(this.GpS);
+          localab.ar(paramAnonymousLong - FinderVLogCompositionPlayView.g(this.GpS), this.GpS.getVideoDurationMs());
+        }
+        if ((this.FlA == -1L) || (paramAnonymousLong - this.FlA > 1000L) || (paramAnonymousLong < this.FlA))
+        {
+          localab = this.GpS.getLifecycle();
+          if (localab != null) {
+            localab.a(FinderVLogCompositionPlayView.e(this.GpS), (int)((paramAnonymousLong - FinderVLogCompositionPlayView.g(this.GpS)) / 1000L), this.GpS.getVideoDuration());
+          }
+          this.FlA = paramAnonymousLong;
+        }
+        if ((this.GpS.getVideoDurationMs() > 0L) && (paramAnonymousLong > 0L) && (this.GpS.getVideoDurationMs() - paramAnonymousLong <= 500L) && (!FinderVLogCompositionPlayView.h(this.GpS)) && (this.GpS.loop))
+        {
+          localab = this.GpS.getLifecycle();
+          if (localab != null)
+          {
+            FinderVLogCompositionPlayView.e(this.GpS);
+            localab.eCP();
+          }
+          FinderVLogCompositionPlayView.a(this.GpS, true);
+        }
+        AppMethodBeat.o(335319);
       }
     });
-    AppMethodBeat.o(283536);
+    AppMethodBeat.o(335042);
   }
   
-  private void ehj()
+  private void fjn()
   {
-    AppMethodBeat.i(283532);
+    AppMethodBeat.i(335066);
     try
     {
       Log.i("MicroMsg.FinderVLogCompositionPlayView", "hookInnerDetach");
       Field localField = TextureView.class.getDeclaredField("mLayer");
-      p.j(localField, "TextureView::class.java.getDeclaredField(\"mLayer\")");
       localField.setAccessible(true);
-      this.ANq = localField.get(this);
+      this.GpQ = localField.get(this);
       localField.set(this, null);
       localField = TextureView.class.getDeclaredField("mSurface");
-      p.j(localField, "TextureView::class.java.…DeclaredField(\"mSurface\")");
       localField.setAccessible(true);
-      this.ANr = localField.get(this);
+      this.GpR = localField.get(this);
       localField.set(this, null);
-      AppMethodBeat.o(283532);
+      AppMethodBeat.o(335066);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.FinderVLogCompositionPlayView", (Throwable)localException, "", new Object[0]);
-      AppMethodBeat.o(283532);
+      AppMethodBeat.o(335066);
     }
   }
   
-  private void ehk()
+  private void fjo()
   {
-    AppMethodBeat.i(283533);
+    AppMethodBeat.i(335077);
     try
     {
       Log.i("MicroMsg.FinderVLogCompositionPlayView", "unHookInnerDetach");
       Field localField;
-      if (this.ANq != null)
+      if (this.GpQ != null)
       {
         localField = TextureView.class.getDeclaredField("mLayer");
-        p.j(localField, "TextureView::class.java.getDeclaredField(\"mLayer\")");
         localField.setAccessible(true);
-        localField.set(this, this.ANq);
-        this.ANq = null;
+        localField.set(this, this.GpQ);
+        this.GpQ = null;
       }
-      if (this.ANr != null)
+      if (this.GpR != null)
       {
         localField = TextureView.class.getDeclaredField("mSurface");
-        p.j(localField, "TextureView::class.java.…DeclaredField(\"mSurface\")");
         localField.setAccessible(true);
-        localField.set(this, this.ANr);
-        this.ANr = null;
-        AppMethodBeat.o(283533);
+        localField.set(this, this.GpR);
+        this.GpR = null;
+        AppMethodBeat.o(335077);
         return;
       }
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.FinderVLogCompositionPlayView", (Throwable)localException, "", new Object[0]);
-      AppMethodBeat.o(283533);
+      AppMethodBeat.o(335077);
     }
   }
   
   private final long getPlayStart()
   {
-    AppMethodBeat.i(283530);
+    AppMethodBeat.i(335060);
     j localj = getComposition();
-    if (localj != null)
+    if (localj == null)
     {
-      long l = localj.getPlayStart();
-      AppMethodBeat.o(283530);
-      return l;
+      AppMethodBeat.o(335060);
+      return 0L;
     }
-    AppMethodBeat.o(283530);
-    return 0L;
+    long l = localj.getPlayStart();
+    AppMethodBeat.o(335060);
+    return l;
   }
   
   private final void reset()
   {
-    this.ALl = true;
-    this.ANn = true;
-    this.ALj = false;
+    this.GnV = true;
+    this.GpM = true;
+    this.Flr = false;
   }
   
-  public final void a(com.tencent.mm.plugin.finder.loader.ac paramac, boolean paramBoolean, FeedData paramFeedData)
+  public final void a(com.tencent.mm.live.core.core.c.b paramb, long paramLong)
   {
-    AppMethodBeat.i(283521);
-    p.k(paramac, "video");
-    p.k(paramFeedData, "feedData");
-    Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " setVideoMedia video:" + paramac + ", isLocal:" + paramBoolean);
-    this.ANm = paramac.dJw();
-    this.mediaId = paramac.aBv();
-    this.ALh = new t("", "", this.mediaId, this.ANm, paramac, paramFeedData);
-    AppMethodBeat.o(283521);
+    AppMethodBeat.i(335199);
+    s.u(paramb, "txPlayer");
+    AppMethodBeat.o(335199);
+  }
+  
+  public final void a(x paramx, boolean paramBoolean, FeedData paramFeedData)
+  {
+    AppMethodBeat.i(335369);
+    s.u(paramx, "video");
+    s.u(paramFeedData, "feedData");
+    Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " setVideoMedia video:" + paramx + ", isLocal:" + paramBoolean);
+    this.GpL = paramx.eCF();
+    this.mediaId = paramx.aUt();
+    this.BtQ = new v("", "", this.mediaId, this.GpL, paramx, paramFeedData);
+    AppMethodBeat.o(335369);
   }
   
   public final void a(j paramj)
   {
-    AppMethodBeat.i(283517);
-    p.k(paramj, "composition");
+    AppMethodBeat.i(335348);
+    s.u(paramj, "composition");
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " start");
-    if (!this.ALj)
+    if (!this.Flr)
     {
-      Log.w("MicroMsg.FinderVLogCompositionPlayView", "isViewFocused=" + this.ALj);
-      AppMethodBeat.o(283517);
+      Log.w("MicroMsg.FinderVLogCompositionPlayView", s.X("isViewFocused=", Boolean.valueOf(this.Flr)));
+      AppMethodBeat.o(335348);
       return;
     }
-    if (this.ALl)
+    if (this.GnV)
     {
-      z localz = this.ALf;
-      if (localz != null) {
-        localz.a(this.ALh, 0);
+      ab localab = this.Flu;
+      if (localab != null) {
+        localab.a(this.BtQ, 0);
       }
     }
     if (isStarted()) {
@@ -526,52 +503,52 @@ public final class FinderVLogCompositionPlayView
     }
     for (;;)
     {
-      this.ALl = false;
-      AppMethodBeat.o(283517);
+      this.GnV = false;
+      AppMethodBeat.o(335348);
       return;
       super.a(paramj);
     }
   }
   
-  public final boolean a(double paramDouble, boolean paramBoolean)
-  {
-    AppMethodBeat.i(283527);
-    super.seekTo((1000.0D * paramDouble) + getPlayStart());
-    if (paramBoolean) {
-      egV();
-    }
-    AppMethodBeat.o(283527);
-    return true;
-  }
-  
   public final boolean a(double paramDouble, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(283528);
-    paramBoolean = a(paramDouble, paramBoolean);
-    AppMethodBeat.o(283528);
+    AppMethodBeat.i(335457);
+    paramBoolean = b(paramDouble, paramBoolean);
+    AppMethodBeat.o(335457);
     return paramBoolean;
   }
   
-  public final boolean bqo()
+  public final boolean b(double paramDouble, boolean paramBoolean)
   {
-    AppMethodBeat.i(283511);
+    AppMethodBeat.i(335449);
+    super.seekTo((1000.0D * paramDouble) + getPlayStart());
+    if (paramBoolean) {
+      ((t)this).r(null);
+    }
+    AppMethodBeat.o(335449);
+    return true;
+  }
+  
+  public final boolean bNU()
+  {
+    AppMethodBeat.i(335303);
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " play");
     if (getComposition() == null)
     {
-      egV();
-      seekTo(this.zXq);
+      ((t)this).r(null);
+      seekTo(this.FsW);
     }
     for (;;)
     {
-      Object localObject = this.ANl;
+      Object localObject = this.GpK;
       if (localObject != null) {
-        ((i.b)localObject).dV(this.sessionId, this.mediaId);
+        ((i.b)localObject).eo(this.sessionId, this.mediaId);
       }
-      localObject = this.ALf;
+      localObject = this.Flu;
       if (localObject != null) {
-        ((z)localObject).dJV();
+        ((ab)localObject).egu();
       }
-      AppMethodBeat.o(283511);
+      AppMethodBeat.o(335303);
       return true;
       if (!isStarted())
       {
@@ -583,250 +560,181 @@ public final class FinderVLogCompositionPlayView
     }
   }
   
+  public final boolean boa()
+  {
+    return this.GpI;
+  }
+  
   public final void destroyDrawingCache()
   {
-    AppMethodBeat.i(283534);
+    AppMethodBeat.i(335489);
     super.destroyDrawingCache();
-    if (this.ANp) {
-      ehk();
+    if (this.GpP) {
+      fjo();
     }
-    AppMethodBeat.o(283534);
+    AppMethodBeat.o(335489);
   }
   
-  public final boolean egV()
-  {
-    AppMethodBeat.i(283516);
-    Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " startOrPlay, " + isStarted() + ", " + isPlaying());
-    boolean bool = this.ALl;
-    if (!isStarted()) {
-      setFirstFrame(true);
-    }
-    Object localObject1;
-    Object localObject2;
-    label231:
-    Object localObject3;
-    if (getComposition() == null)
-    {
-      localObject1 = this.AJT;
-      if (localObject1 != null) {
-        ((c)localObject1).destroy();
-      }
-      this.AJT = null;
-      localObject1 = this.ANo;
-      if (localObject1 != null) {
-        ((EffectManager)localObject1).destroy();
-      }
-      this.ANo = null;
-      localObject1 = this.ANm;
-      if (localObject1 != null)
-      {
-        localObject1 = ((csg)localObject1).TpG;
-        if (localObject1 != null)
-        {
-          this.AJT = i.c((acu)localObject1);
-          localObject2 = this.AJT;
-          if (localObject2 != null) {
-            ((c)localObject2).start();
-          }
-          localObject2 = new EffectManager();
-          this.ANo = ((EffectManager)localObject2);
-          localObject2 = i.d((acu)localObject1, (EffectManager)localObject2);
-          if ((((acu)localObject1).NkX.SoJ != null) || (((acu)localObject1).NkX.SoK != null)) {
-            break label286;
-          }
-          if (this.zAH) {
-            ((com.tencent.mm.plugin.vlog.model.ac)localObject2).x(new Rect(0, 0, ((acu)localObject1).NkX.BXA, ((acu)localObject1).NkX.BXB));
-          }
-          localObject3 = this.AJT;
-          if (localObject3 == null) {
-            p.iCn();
-          }
-          ((com.tencent.mm.plugin.vlog.model.ac)localObject2).aa((b)localObject3);
-          ((com.tencent.mm.plugin.vlog.model.ac)localObject2).akf(((acu)localObject1).NkX.fps);
-          a(((com.tencent.mm.plugin.vlog.model.ac)localObject2).getComposition());
-        }
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(283516);
-      return bool;
-      localObject1 = null;
-      break;
-      label286:
-      if (this.zAH)
-      {
-        localObject3 = new Rect();
-        localduz = ((acu)localObject1).NkX.SoJ.Sro;
-        p.j(localduz, "compositionInfo.outputCo…fullScreenConfig.cropRect");
-        i.a(localduz, (Rect)localObject3);
-        ((com.tencent.mm.plugin.vlog.model.ac)localObject2).x((Rect)localObject3);
-        break label231;
-      }
-      localObject3 = new Rect();
-      duz localduz = ((acu)localObject1).NkX.SoK.Sro;
-      p.j(localduz, "compositionInfo.outputConfig.cropConfig.cropRect");
-      i.a(localduz, (Rect)localObject3);
-      ((com.tencent.mm.plugin.vlog.model.ac)localObject2).x((Rect)localObject3);
-      break label231;
-      if (!isPlaying()) {
-        resume();
-      }
-    }
-  }
-  
-  public final int egW()
-  {
-    AppMethodBeat.i(283504);
-    Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + "  pauseWithCancel");
-    this.ALh = null;
-    super.pause();
-    AppMethodBeat.o(283504);
-    return 0;
-  }
-  
-  public final void egX() {}
-  
-  public final boolean egw()
+  public final boolean eLI()
   {
     return false;
   }
   
-  public final boolean egx()
+  public final int eLK()
   {
-    return this.ANj;
+    AppMethodBeat.i(335217);
+    Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + "  pauseWithCancel");
+    this.BtQ = null;
+    super.pause();
+    AppMethodBeat.o(335217);
+    return 0;
   }
   
-  public final void ehi()
+  public final void eLL() {}
+  
+  public final void eLM() {}
+  
+  public final boolean eLN()
   {
-    AppMethodBeat.i(283503);
+    return false;
+  }
+  
+  public final void fjm()
+  {
+    AppMethodBeat.i(335208);
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " createPlayer");
-    super.ehi();
-    Object localObject = this.ANl;
+    super.fjm();
+    Object localObject = this.GpK;
     if (localObject != null) {
-      ((i.b)localObject).dS(this.sessionId, this.mediaId);
+      ((i.b)localObject).el(this.sessionId, this.mediaId);
     }
     localObject = getComposition();
-    if (localObject != null) {
-      localObject = ((j)localObject).igJ();
-    }
-    while (localObject != null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((j)localObject).jLX())
     {
-      i.b localb = this.ANl;
-      if (localb != null)
+      if (localObject != null)
       {
-        localb.d(this.sessionId, this.mediaId, ((Size)localObject).getWidth(), ((Size)localObject).getHeight());
-        AppMethodBeat.o(283503);
-        return;
-        localObject = null;
+        i.b localb = this.GpK;
+        if (localb != null) {
+          localb.e(this.sessionId, this.mediaId, ((Size)localObject).getWidth(), ((Size)localObject).getHeight());
+        }
       }
-      else
-      {
-        AppMethodBeat.o(283503);
-        return;
-      }
+      AppMethodBeat.o(335208);
+      return;
     }
-    AppMethodBeat.o(283503);
+  }
+  
+  public final int getContextTag()
+  {
+    return this.contextTag;
   }
   
   public final long getCurrentPlayMs()
   {
-    AppMethodBeat.i(283507);
+    AppMethodBeat.i(335237);
     com.tencent.mm.videocomposition.play.a locala = getPlayer();
-    if (locala != null) {}
-    for (long l1 = locala.igQ();; l1 = 0L)
+    if (locala == null) {}
+    for (long l1 = 0L;; l1 = locala.jMf())
     {
       long l2 = getPlayStart();
-      AppMethodBeat.o(283507);
+      AppMethodBeat.o(335237);
       return l1 - l2;
     }
   }
   
   public final int getCurrentPlaySecond()
   {
-    AppMethodBeat.i(283506);
+    AppMethodBeat.i(335233);
     com.tencent.mm.videocomposition.play.a locala = getPlayer();
-    if (locala != null) {}
-    for (long l = locala.igQ();; l = 0L)
+    if (locala == null) {}
+    for (long l = 0L;; l = locala.jMf())
     {
       int i = (int)(l - getPlayStart()) / 1000;
-      AppMethodBeat.o(283506);
+      AppMethodBeat.o(335233);
       return i;
     }
   }
   
   public final boolean getIsNeverStart()
   {
-    return this.ALl;
+    return this.GnV;
   }
   
   public final boolean getIsShouldPlayResume()
   {
-    return this.ALk;
+    return this.Fls;
   }
   
-  public final z getLifecycle()
+  public final ab getLifecycle()
   {
-    return this.ALf;
+    return this.Flu;
   }
   
-  public final t getMediaInfo()
+  public final v getMediaInfo()
   {
-    return this.ALh;
+    return this.BtQ;
   }
   
-  public final u getMuteListener()
+  public final w getMuteListener()
   {
-    return this.ANk;
+    return this.GpJ;
   }
   
   public final ViewParent getParentView()
   {
-    AppMethodBeat.i(283510);
+    AppMethodBeat.i(335274);
     ViewParent localViewParent = getParent();
-    AppMethodBeat.o(283510);
+    AppMethodBeat.o(335274);
     return localViewParent;
+  }
+  
+  public final Object getPlayer()
+  {
+    AppMethodBeat.i(335443);
+    com.tencent.mm.videocomposition.play.a locala = getPlayer();
+    AppMethodBeat.o(335443);
+    return locala;
   }
   
   public final int getVideoDuration()
   {
-    AppMethodBeat.i(283508);
+    AppMethodBeat.i(335243);
     j localj = getComposition();
-    if (localj != null) {}
-    for (long l = localj.getDurationMs();; l = 0L)
+    if (localj == null) {}
+    for (long l = 0L;; l = localj.getDurationMs())
     {
       int i = (int)l / 1000;
-      AppMethodBeat.o(283508);
+      AppMethodBeat.o(335243);
       return i;
     }
   }
   
   public final long getVideoDurationMs()
   {
-    AppMethodBeat.i(283509);
+    AppMethodBeat.i(335248);
     j localj = getComposition();
-    if (localj != null)
+    if (localj == null)
     {
-      long l = localj.getDurationMs();
-      AppMethodBeat.o(283509);
-      return l;
+      AppMethodBeat.o(335248);
+      return 0L;
     }
-    AppMethodBeat.o(283509);
-    return 0L;
+    long l = localj.getDurationMs();
+    AppMethodBeat.o(335248);
+    return l;
   }
   
   public final String getVideoMediaId()
   {
-    t localt = this.ALh;
-    if (localt != null) {
-      return localt.mediaId;
+    v localv = this.BtQ;
+    if (localv == null) {
+      return null;
     }
-    return null;
+    return localv.mediaId;
   }
   
-  public final t getVideoMediaInfo()
+  public final v getVideoMediaInfo()
   {
-    return this.ALh;
+    return this.BtQ;
   }
   
   public final View getVideoView()
@@ -836,46 +744,46 @@ public final class FinderVLogCompositionPlayView
   
   public final boolean getVideoViewFocused()
   {
-    return this.ALj;
+    return this.Flr;
   }
   
   public final boolean get_isPreviewing()
   {
-    return this.ANj;
+    return this.GpI;
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(283535);
-    if (this.ANp) {
-      ehj();
+    AppMethodBeat.i(335500);
+    if (this.GpP) {
+      fjn();
     }
     super.onAttachedToWindow();
-    if (this.ANp) {
-      ehk();
+    if (this.GpP) {
+      fjo();
     }
-    AppMethodBeat.o(283535);
+    AppMethodBeat.o(335500);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(283531);
-    if (this.ANp)
+    AppMethodBeat.i(335480);
+    if (this.GpP)
     {
-      ehj();
-      AppMethodBeat.o(283531);
+      fjn();
+      AppMethodBeat.o(335480);
       return;
     }
     try
     {
       super.onDetachedFromWindow();
-      AppMethodBeat.o(283531);
+      AppMethodBeat.o(335480);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.FinderVLogCompositionPlayView", (Throwable)localException, "unkown error", new Object[0]);
-      AppMethodBeat.o(283531);
+      AppMethodBeat.o(335480);
     }
   }
   
@@ -883,202 +791,287 @@ public final class FinderVLogCompositionPlayView
   
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(283529);
-    this.zXq = getCurrentPlayMs();
-    Object localObject = this.AJT;
+    AppMethodBeat.i(335465);
+    s.u(paramSurfaceTexture, "surface");
+    this.FsW = getCurrentPlayMs();
+    Object localObject = this.GmE;
     if (localObject != null) {
       ((c)localObject).destroy();
     }
-    this.AJT = null;
-    localObject = this.ANo;
+    this.GmE = null;
+    localObject = this.GpO;
     if (localObject != null) {
       ((EffectManager)localObject).destroy();
     }
-    this.ANo = null;
+    this.GpO = null;
     setComposition(null);
     boolean bool = super.onSurfaceTextureDestroyed(paramSurfaceTexture);
     setPlayer(null);
-    AppMethodBeat.o(283529);
+    AppMethodBeat.o(335465);
     return bool;
   }
   
   public final void onUIDestroy()
   {
-    AppMethodBeat.i(283513);
+    AppMethodBeat.i(335323);
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " onUIDestroy");
-    this.ALj = false;
+    this.Flr = false;
     reset();
     release();
-    Object localObject = this.AJT;
+    Object localObject = this.GmE;
     if (localObject != null) {
       ((c)localObject).destroy();
     }
-    localObject = this.ANo;
-    if (localObject != null)
-    {
+    localObject = this.GpO;
+    if (localObject != null) {
       ((EffectManager)localObject).destroy();
-      AppMethodBeat.o(283513);
-      return;
     }
-    AppMethodBeat.o(283513);
+    AppMethodBeat.o(335323);
   }
   
   public final boolean pause()
   {
-    AppMethodBeat.i(283505);
+    AppMethodBeat.i(335226);
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + "  pause");
     boolean bool = super.pause();
-    Object localObject = this.ANl;
+    Object localObject = this.GpK;
     if (localObject != null) {
-      ((i.b)localObject).dU(this.sessionId, this.mediaId);
+      ((i.b)localObject).en(this.sessionId, this.mediaId);
     }
-    localObject = this.ALf;
+    localObject = this.Flu;
     if (localObject != null) {
-      ((z)localObject).a(null);
+      ((ab)localObject).a(null);
     }
-    AppMethodBeat.o(283505);
+    AppMethodBeat.o(335226);
     return bool;
+  }
+  
+  public final com.tencent.mm.plugin.finder.live.fluent.h pu(long paramLong)
+  {
+    return null;
+  }
+  
+  public final boolean r(Integer paramInteger)
+  {
+    AppMethodBeat.i(335339);
+    Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " startOrPlay, " + isStarted() + ", " + isPlaying());
+    boolean bool = this.GnV;
+    if (!isStarted()) {
+      setFirstFrame(true);
+    }
+    Object localObject1;
+    label228:
+    Object localObject2;
+    if (getComposition() == null)
+    {
+      paramInteger = this.GmE;
+      if (paramInteger != null) {
+        paramInteger.destroy();
+      }
+      this.GmE = null;
+      paramInteger = this.GpO;
+      if (paramInteger != null) {
+        paramInteger.destroy();
+      }
+      this.GpO = null;
+      paramInteger = this.GpL;
+      if (paramInteger == null)
+      {
+        paramInteger = null;
+        if (paramInteger != null)
+        {
+          this.GmE = com.tencent.mm.plugin.vlog.model.h.e(paramInteger);
+          localObject1 = this.GmE;
+          if (localObject1 != null) {
+            ((c)localObject1).start();
+          }
+          localObject1 = new EffectManager();
+          this.GpO = ((EffectManager)localObject1);
+          localObject1 = com.tencent.mm.plugin.vlog.model.h.d(paramInteger, (EffectManager)localObject1);
+          if ((paramInteger.TYB.Znv != null) || (paramInteger.TYB.Znw != null)) {
+            break label283;
+          }
+          if (this.ECP) {
+            ((ac)localObject1).F(new Rect(0, 0, paramInteger.TYB.HJN, paramInteger.TYB.HJO));
+          }
+          localObject2 = this.GmE;
+          s.checkNotNull(localObject2);
+          ((ac)localObject1).aK((kotlin.g.a.b)localObject2);
+          ((ac)localObject1).apz(paramInteger.TYB.fps);
+          a(((ac)localObject1).getComposition());
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(335339);
+      return bool;
+      paramInteger = paramInteger.aaDI;
+      break;
+      label283:
+      if (this.ECP)
+      {
+        localObject2 = new Rect();
+        com.tencent.mm.plugin.vlog.model.h.a(paramInteger.TYB.Znv.Zqq, (Rect)localObject2);
+        ((ac)localObject1).F((Rect)localObject2);
+        break label228;
+      }
+      localObject2 = new Rect();
+      com.tencent.mm.plugin.vlog.model.h.a(paramInteger.TYB.Znw.Zqq, (Rect)localObject2);
+      ((ac)localObject1).F((Rect)localObject2);
+      break label228;
+      if (!isPlaying()) {
+        resume();
+      }
+    }
+  }
+  
+  public final void setContextTag(int paramInt)
+  {
+    this.contextTag = paramInt;
   }
   
   public final void setFinderVideoPlayTrace(com.tencent.mm.plugin.findersdk.f.a parama) {}
   
   public final void setFullScreenEnjoy(boolean paramBoolean)
   {
-    this.AJP = paramBoolean;
+    this.Flq = paramBoolean;
+  }
+  
+  public final void setFullscreen(boolean paramBoolean)
+  {
+    this.ECP = paramBoolean;
   }
   
   public final void setIMMVideoViewCallback(i.b paramb)
   {
-    AppMethodBeat.i(283522);
-    p.k(paramb, "_callback");
-    this.ANl = paramb;
-    AppMethodBeat.o(283522);
+    AppMethodBeat.i(335385);
+    s.u(paramb, "_callback");
+    this.GpK = paramb;
+    AppMethodBeat.o(335385);
   }
   
   public final void setIOnlineVideoProxy(f paramf)
   {
-    AppMethodBeat.i(283524);
-    p.k(paramf, "_proxy");
-    AppMethodBeat.o(283524);
+    AppMethodBeat.i(335391);
+    s.u(paramf, "_proxy");
+    AppMethodBeat.o(335391);
   }
   
   public final void setInterceptDetach(boolean paramBoolean)
   {
-    this.ANp = paramBoolean;
+    this.GpP = paramBoolean;
   }
   
   public final void setInterceptedDetach(boolean paramBoolean)
   {
-    this.ANp = paramBoolean;
+    this.GpP = paramBoolean;
   }
   
   public final void setIsShouldPlayResume(boolean paramBoolean)
   {
-    this.ALk = paramBoolean;
+    this.Fls = paramBoolean;
   }
   
   public final void setIsShowBasicControls(boolean paramBoolean) {}
   
-  public final void setLifecycle(z paramz)
+  public final void setLifecycle(ab paramab)
   {
-    this.ALf = paramz;
+    this.Flu = paramab;
   }
   
-  public final void setMediaInfo(t paramt)
+  public final void setMediaInfo(v paramv)
   {
-    this.ALh = paramt;
+    this.BtQ = paramv;
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(283512);
+    AppMethodBeat.i(335313);
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + "  setMute:" + paramBoolean);
-    super.Ib(paramBoolean);
-    AppMethodBeat.o(283512);
+    super.NX(paramBoolean);
+    AppMethodBeat.o(335313);
   }
   
-  public final void setMuteListener(u paramu)
+  public final void setMuteListener(w paramw)
   {
-    this.ANk = paramu;
+    this.GpJ = paramw;
   }
   
   public final void setNeverStart(boolean paramBoolean)
   {
-    this.ALl = paramBoolean;
+    this.GnV = paramBoolean;
   }
   
   public final void setPreview(boolean paramBoolean)
   {
-    this.ANj = paramBoolean;
+    this.GpI = paramBoolean;
   }
   
   public final void setScaleType(i.e parame)
   {
-    AppMethodBeat.i(283523);
-    p.k(parame, "scaleType");
-    AppMethodBeat.o(283523);
+    AppMethodBeat.i(335388);
+    s.u(parame, "scaleType");
+    AppMethodBeat.o(335388);
   }
   
   public final void setShouldPlayResume(boolean paramBoolean)
   {
-    this.ALk = paramBoolean;
+    this.Fls = paramBoolean;
   }
   
   public final void setShowFullscreen(boolean paramBoolean)
   {
-    this.zAH = paramBoolean;
+    this.ECP = paramBoolean;
   }
   
-  public final void setVideoMuteListener(u paramu)
+  public final void setVideoMuteListener(w paramw)
   {
-    AppMethodBeat.i(283526);
-    p.k(paramu, "muteListener");
-    this.ANk = paramu;
-    AppMethodBeat.o(283526);
+    AppMethodBeat.i(335416);
+    s.u(paramw, "muteListener");
+    this.GpJ = paramw;
+    AppMethodBeat.o(335416);
   }
   
-  public final void setVideoPlayLifecycle(z paramz)
+  public final void setVideoPlayLifecycle(ab paramab)
   {
-    AppMethodBeat.i(283525);
-    p.k(paramz, "lifecycle");
-    this.ALf = paramz;
-    AppMethodBeat.o(283525);
+    AppMethodBeat.i(335408);
+    s.u(paramab, "lifecycle");
+    this.Flu = paramab;
+    AppMethodBeat.o(335408);
   }
   
   public final void setVideoViewFocused(boolean paramBoolean)
   {
-    this.ALj = paramBoolean;
+    this.Flr = paramBoolean;
   }
   
   public final void setViewFocused(boolean paramBoolean)
   {
-    this.ALj = paramBoolean;
+    this.Flr = paramBoolean;
   }
   
   public final void set_isPreviewing(boolean paramBoolean)
   {
-    this.ANj = paramBoolean;
+    this.GpI = paramBoolean;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(283520);
+    AppMethodBeat.i(335358);
     Log.i("MicroMsg.FinderVLogCompositionPlayView", hashCode() + " stop");
     super.stop();
-    z localz = this.ALf;
-    if (localz != null) {
-      z.a.a(localz, this.ALh);
+    ab localab = this.Flu;
+    if (localab != null) {
+      ab.a.a(localab, this.BtQ);
     }
     reset();
-    AppMethodBeat.o(283520);
+    AppMethodBeat.o(335358);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderVLogCompositionPlayView$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderVLogCompositionPlayView
  * JD-Core Version:    0.7.0.1
  */

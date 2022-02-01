@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.music.b;
 
 public abstract interface f
 {
-  public abstract void aRh(String paramString);
+  public abstract void aNZ(String paramString);
   
-  public abstract void aRi(String paramString);
+  public abstract void aOa(String paramString);
   
-  public abstract void azE(String paramString);
+  public abstract void atL(String paramString);
   
-  public abstract void hL(String paramString);
+  public abstract void jm(String paramString);
   
   public abstract void onError(String paramString);
 }

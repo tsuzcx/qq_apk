@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:id="@id/c30" android:visibility="gone" android:text="@string/gb3" style="@style/mh" />
-        <ListView android:id="@id/ho0" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
-    </LinearLayout>
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <EditText android:id="@id/ikk" android:hint="@string/hxl" style="@style/n9" />
+            <View style="@style/ot" />
+            <TextView android:text="@string/hxm" android:layout_weight="1.0" style="@style/n_" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

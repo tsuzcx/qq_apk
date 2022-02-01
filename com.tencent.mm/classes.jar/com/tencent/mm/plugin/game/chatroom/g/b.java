@@ -1,179 +1,68 @@
 package com.tencent.mm.plugin.game.chatroom.g;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.plugin.game.autogen.chatroom.GetMyChatroomRequest;
-import com.tencent.mm.plugin.game.autogen.chatroom.GetMyChatroomResponse;
-import com.tencent.mm.plugin.game.autogen.chatroom.LocalMyChatRoom;
-import com.tencent.mm.plugin.game.chatroom.b.a;
-import com.tencent.mm.plugin.game.chatroom.b.a;
-import com.tencent.mm.plugin.game.chatroom.c.g;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.LinkedList;
+import com.tencent.mm.loader.b.e;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/chatroom/loader/ChatRoomAvatarDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/game/chatroom/loader/ChatRoomAvatarData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "game-chatroom_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements com.tencent.mm.an.i
+  extends com.tencent.mm.loader.cache.a.a<a>
 {
-  private a CuI;
-  private b.a CuJ;
-  private boolean mIsRunning = false;
-  private boolean puH = true;
-  
-  public b(b.a parama, a parama1)
+  public final boolean a(com.tencent.mm.loader.g.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
-    this.CuJ = parama;
-    this.CuI = parama1;
+    AppMethodBeat.i(275890);
+    s.u(parama, "url");
+    s.u(parame, "opts");
+    s.u(paramf, "reaper");
+    AppMethodBeat.o(275890);
+    return true;
   }
   
-  public final void evE()
+  public final boolean a(com.tencent.mm.loader.g.a.a<a> parama, com.tencent.mm.loader.g.f<?> paramf, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
   {
-    AppMethodBeat.i(212469);
-    Log.i("GameChatRoom.GetMyChatRoomKeepAliveService", "stopKeepAlive");
-    this.puH = false;
-    this.CuI = null;
-    com.tencent.mm.kernel.h.aGY().b(4989, this);
-    AppMethodBeat.o(212469);
+    AppMethodBeat.i(275882);
+    s.u(parama, "url");
+    s.u(paramf, "httpResponse");
+    s.u(parame, "opts");
+    s.u(paramf1, "reaper");
+    AppMethodBeat.o(275882);
+    return true;
   }
   
-  /* Error */
-  public final void g(java.util.List<String> paramList, String paramString1, String paramString2)
+  public final com.tencent.mm.loader.g.b.a b(com.tencent.mm.loader.g.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 70
-    //   4: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 24	com/tencent/mm/plugin/game/chatroom/g/b:mIsRunning	Z
-    //   11: ifne +10 -> 21
-    //   14: aload_0
-    //   15: getfield 22	com/tencent/mm/plugin/game/chatroom/g/b:puH	Z
-    //   18: ifne +42 -> 60
-    //   21: ldc 50
-    //   23: ldc 72
-    //   25: iconst_2
-    //   26: anewarray 4	java/lang/Object
-    //   29: dup
-    //   30: iconst_0
-    //   31: aload_0
-    //   32: getfield 24	com/tencent/mm/plugin/game/chatroom/g/b:mIsRunning	Z
-    //   35: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   38: aastore
-    //   39: dup
-    //   40: iconst_1
-    //   41: aload_0
-    //   42: getfield 22	com/tencent/mm/plugin/game/chatroom/g/b:puH	Z
-    //   45: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   48: aastore
-    //   49: invokestatic 81	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   52: ldc 70
-    //   54: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: return
-    //   60: aload_0
-    //   61: iconst_1
-    //   62: putfield 24	com/tencent/mm/plugin/game/chatroom/g/b:mIsRunning	Z
-    //   65: new 83	com/tencent/mm/plugin/game/chatroom/c/g
-    //   68: dup
-    //   69: aload_1
-    //   70: aload_2
-    //   71: aload_3
-    //   72: aload_0
-    //   73: invokevirtual 87	java/lang/Object:hashCode	()I
-    //   76: invokespecial 90	com/tencent/mm/plugin/game/chatroom/c/g:<init>	(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;I)V
-    //   79: astore_1
-    //   80: invokestatic 63	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
-    //   83: aload_1
-    //   84: iconst_0
-    //   85: invokevirtual 93	com/tencent/mm/an/t:a	(Lcom/tencent/mm/an/q;I)Z
-    //   88: pop
-    //   89: ldc 70
-    //   91: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: goto -37 -> 57
-    //   97: astore_1
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: aload_1
-    //   101: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	b
-    //   0	102	1	paramList	java.util.List<String>
-    //   0	102	2	paramString1	String
-    //   0	102	3	paramString2	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	97	finally
-    //   21	57	97	finally
-    //   60	94	97	finally
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(212477);
-    final GetMyChatroomRequest localGetMyChatroomRequest;
-    int i;
-    if (paramq.getType() == 4989)
+    AppMethodBeat.i(275916);
+    s.u(parama, "url");
+    s.u(parame, "opts");
+    s.u(paramf, "reaper");
+    parama = ((a)parama.bmg()).getPath();
+    if (y.ZC(parama))
     {
-      if (((g)paramq).mInstanceId != hashCode())
-      {
-        Log.i("GameChatRoom.GetMyChatRoomKeepAliveService", "instanceId is diff");
-        AppMethodBeat.o(212477);
-        return;
-      }
-      localGetMyChatroomRequest = (GetMyChatroomRequest)d.b.b(((g)paramq).jTk.lBR);
-      paramq = (GetMyChatroomResponse)d.c.b(((g)paramq).jTk.lBS);
-      if ((paramInt1 != 0) || (paramInt2 != 0) || (paramq == null) || (Util.nullAsNil(localGetMyChatroomRequest.version).equals(paramq.next_version))) {
-        break label309;
-      }
-      localGetMyChatroomRequest.version = paramq.next_version;
-      if ((this.CuI == null) || (paramq.my_chatroom_info_list == null)) {
-        break label321;
-      }
-      LocalMyChatRoom localLocalMyChatRoom = new LocalMyChatRoom();
-      localLocalMyChatRoom.my_chatroom_info_list.addAll(paramq.my_chatroom_info_list);
-      Log.d("GameChatRoom.GetMyChatRoomKeepAliveService", "before reorder size:%d, after reorder size:%d", new Object[] { Integer.valueOf(paramq.my_chatroom_info_list.size()), Integer.valueOf(localLocalMyChatRoom.my_chatroom_info_list.size()) });
-      this.CuI.a(this.CuJ, localLocalMyChatRoom);
-      i = 0;
+      parama = com.tencent.mm.loader.g.b.a.GJ(parama);
+      AppMethodBeat.o(275916);
+      return parama;
     }
-    for (;;)
-    {
-      Log.i("GameChatRoom.GetMyChatRoomKeepAliveService", "hashcode = %d, newVersion:%s, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(hashCode()), localGetMyChatroomRequest.version, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      paramString = com.tencent.e.h.ZvG;
-      paramq = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(212032);
-          b.a(b.this);
-          b.a(b.this, localGetMyChatroomRequest.chatroom_name_list, localGetMyChatroomRequest.first_chatroom_name, localGetMyChatroomRequest.version);
-          AppMethodBeat.o(212032);
-        }
-      };
-      if (i != 0) {}
-      for (long l = 2000L;; l = 0L)
-      {
-        paramString.o(paramq, l);
-        AppMethodBeat.o(212477);
-        return;
-        label309:
-        i = 1;
-        break;
-      }
-      label321:
-      i = 0;
-    }
+    AppMethodBeat.o(275916);
+    return null;
+  }
+  
+  public final String c(com.tencent.mm.loader.g.a.a<a> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  {
+    AppMethodBeat.i(275899);
+    s.u(parama, "url");
+    s.u(parame, "opts");
+    s.u(paramf, "reaper");
+    parama = ((a)parama.bmg()).getPath();
+    AppMethodBeat.o(275899);
+    return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.g.b
  * JD-Core Version:    0.7.0.1
  */

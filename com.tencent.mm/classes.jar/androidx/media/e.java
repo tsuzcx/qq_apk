@@ -1,20 +1,8 @@
 package androidx.media;
 
-import android.util.Log;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class e
+class e
 {
-  static final boolean DEBUG;
-  private static final Object sLock;
-  
-  static
-  {
-    AppMethodBeat.i(242833);
-    DEBUG = Log.isLoggable("MediaSessionManager", 3);
-    sLock = new Object();
-    AppMethodBeat.o(242833);
-  }
+  private static final boolean DEBUG = b.DEBUG;
 }
 
 

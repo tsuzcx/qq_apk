@@ -1,27 +1,27 @@
 package com.tencent.mm.timelineedit.a.a;
 
-import com.google.b.be.b;
-import com.google.b.cl;
+import com.google.d.bj.d;
+import com.google.d.cw;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum p
-  implements cl
+  implements cw
 {
-  private static final p[] VMO;
-  private static final be.b<p> bRT;
+  private static final p[] adqT;
+  private static final bj.d<p> dLG;
   private final int value;
   
   static
   {
-    AppMethodBeat.i(260817);
-    VMK = new p("Custom", 0, 0);
-    VML = new p("CenterCrop", 1, 1);
-    VMM = new p("CenterInside", 2, 2);
-    VMN = new p("UNRECOGNIZED", 3, -1);
-    VMP = new p[] { VMK, VML, VMM, VMN };
-    bRT = new be.b() {};
-    VMO = values();
-    AppMethodBeat.o(260817);
+    AppMethodBeat.i(232124);
+    adqP = new p("Custom", 0, 0);
+    adqQ = new p("CenterCrop", 1, 1);
+    adqR = new p("CenterInside", 2, 2);
+    adqS = new p("UNRECOGNIZED", 3, -1);
+    adqU = new p[] { adqP, adqQ, adqR, adqS };
+    dLG = new bj.d() {};
+    adqT = values();
+    AppMethodBeat.o(232124);
   }
   
   private p(int paramInt)
@@ -30,37 +30,37 @@ public enum p
   }
   
   @Deprecated
-  public static p atk(int paramInt)
+  public static p azA(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return VMK;
+      return adqP;
     case 1: 
-      return VML;
+      return adqQ;
     }
-    return VMM;
+    return adqR;
   }
   
   public final int getNumber()
   {
-    AppMethodBeat.i(260816);
-    if (this == VMN)
+    AppMethodBeat.i(232132);
+    if (this == adqS)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Can't get the number of an unknown enum value.");
-      AppMethodBeat.o(260816);
+      AppMethodBeat.o(232132);
       throw localIllegalArgumentException;
     }
     int i = this.value;
-    AppMethodBeat.o(260816);
+    AppMethodBeat.o(232132);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.timelineedit.a.a.p
  * JD-Core Version:    0.7.0.1
  */

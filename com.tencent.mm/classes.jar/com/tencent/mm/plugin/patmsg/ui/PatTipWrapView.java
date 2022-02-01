@@ -10,7 +10,7 @@ import com.tencent.mm.plugin.patmsg.d.e;
 public class PatTipWrapView
   extends FrameLayout
 {
-  private View GLc;
+  private View MHV;
   
   public PatTipWrapView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,9 +20,9 @@ public class PatTipWrapView
   public PatTipWrapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(186585);
-    this.GLc = View.inflate(getContext(), d.e.pat_tips_view, null);
-    AppMethodBeat.o(186585);
+    AppMethodBeat.i(266434);
+    this.MHV = View.inflate(getContext(), d.e.pat_tips_view, null);
+    AppMethodBeat.o(266434);
   }
 }
 

@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.be.o;
-import com.tencent.mm.f.a.abm;
-import com.tencent.mm.f.a.zx;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.abu;
+import com.tencent.mm.autogen.a.adj;
 import com.tencent.mm.model.be;
-import com.tencent.mm.model.ck;
-import com.tencent.mm.model.ck.a;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cl.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.modelpackage.p;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.wallet_core.d.d;
 import com.tencent.mm.plugin.wallet_core.d.g;
 import com.tencent.mm.plugin.wallet_core.d.i;
-import com.tencent.mm.plugin.wallet_core.d.k;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.wallet_core.d.j;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
@@ -31,40 +31,40 @@ public class u
   implements be
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private ck.a EOX;
-  private volatile y OSI;
-  private com.tencent.mm.cw.h<ao> OSJ;
-  private volatile ai OSK;
-  private com.tencent.mm.cw.h<al> OSL;
-  private com.tencent.mm.cw.h<k> OSM;
-  private com.tencent.mm.cw.h<d> OSN;
-  private com.tencent.mm.cw.h<com.tencent.mm.plugin.wallet_core.d.c> OSO;
-  private com.tencent.mm.cw.h<com.tencent.mm.plugin.wallet_core.d.a> OSP;
-  private com.tencent.mm.cw.h<g> OSQ;
-  private com.tencent.mm.cw.h<com.tencent.mm.plugin.wallet_core.d.e> OSR;
-  private ab OSS;
-  private com.tencent.mm.cw.h<com.tencent.mm.plugin.wallet_core.d.f> OST;
-  private com.tencent.mm.cw.h<com.tencent.mm.plugin.wallet_core.d.j> OSU;
-  private com.tencent.mm.cw.h<i> OSV;
-  private com.tencent.mm.cw.h<com.tencent.mm.plugin.wallet_core.d.h> OSW;
-  private com.tencent.mm.plugin.wallet_core.id_verify.util.a OSX;
-  private IListener OSY;
-  private String OSZ;
-  private IListener<zx> OTa;
-  private IListener<abm> OTb;
+  private cl.a KJv;
+  private volatile y VIP;
+  private com.tencent.mm.cp.h<am> VIQ;
+  private volatile ag VIR;
+  private com.tencent.mm.cp.h<aj> VIS;
+  private com.tencent.mm.cp.h<com.tencent.mm.plugin.wallet_core.d.k> VIT;
+  private com.tencent.mm.cp.h<d> VIU;
+  private com.tencent.mm.cp.h<com.tencent.mm.plugin.wallet_core.d.c> VIV;
+  private com.tencent.mm.cp.h<com.tencent.mm.plugin.wallet_core.d.a> VIW;
+  private com.tencent.mm.cp.h<g> VIX;
+  private com.tencent.mm.cp.h<com.tencent.mm.plugin.wallet_core.d.e> VIY;
+  private WalletGetBulletinEventListener VIZ;
+  private com.tencent.mm.cp.h<com.tencent.mm.plugin.wallet_core.d.f> VJa;
+  private com.tencent.mm.cp.h<j> VJb;
+  private com.tencent.mm.cp.h<i> VJc;
+  private com.tencent.mm.cp.h<com.tencent.mm.plugin.wallet_core.d.h> VJd;
+  private com.tencent.mm.plugin.wallet_core.id_verify.util.a VJe;
+  private IListener VJf;
+  private String VJg;
+  private IListener<abu> VJh;
+  private IListener<adj> VJi;
   
   static
   {
     AppMethodBeat.i(70405);
     u.class.getClassLoader();
-    com.tencent.mm.compatible.util.j.KW("tenpay_utils");
+    com.tencent.mm.compatible.util.k.DA("tenpay_utils");
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("WALLET_USER_INFO_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return k.SQL_CREATE;
+        return com.tencent.mm.plugin.wallet_core.d.k.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("WALLET_BANKCARD_TABLE".hashCode()), new h.b()
@@ -81,14 +81,14 @@ public class u
         return com.tencent.mm.plugin.wallet_core.d.c.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("LOAN_ENTRY_INFO_TABLE".hashCode()), new u.13());
-    baseDBFactories.put(Integer.valueOf("WALLET_KIND_INFO_TABLE".hashCode()), new h.b()
+    baseDBFactories.put(Integer.valueOf("LOAN_ENTRY_INFO_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return g.SQL_CREATE;
+        return com.tencent.mm.plugin.wallet_core.d.a.SQL_CREATE;
       }
     });
+    baseDBFactories.put(Integer.valueOf("WALLET_KIND_INFO_TABLE".hashCode()), new u.11());
     baseDBFactories.put(Integer.valueOf("WALLET_BULLETIN_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -96,7 +96,7 @@ public class u
         return com.tencent.mm.plugin.wallet_core.d.e.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("WALLET_PREF_INFO_TABLE".hashCode()), new u.16());
+    baseDBFactories.put(Integer.valueOf("WALLET_PREF_INFO_TABLE".hashCode()), new u.13());
     baseDBFactories.put(Integer.valueOf("WALLET_FUNCTIOIN_INFO_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -104,311 +104,316 @@ public class u
         return com.tencent.mm.plugin.wallet_core.d.f.SQL_CREATE;
       }
     });
-    baseDBFactories.put(Integer.valueOf("WALLET_GREY_ITEM_TABLE".hashCode()), new u.18());
-    baseDBFactories.put(Integer.valueOf("WALLET_LUKCY_MONEY".hashCode()), new u.19());
+    baseDBFactories.put(Integer.valueOf("WALLET_GREY_ITEM_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return j.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("WALLET_LUKCY_MONEY".hashCode()), new u.16());
     AppMethodBeat.o(70405);
   }
   
   public u()
   {
     AppMethodBeat.i(70383);
-    this.OSI = new y();
-    this.OSJ = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSK = null;
-    this.OSL = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSM = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSN = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSO = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSP = new com.tencent.mm.cw.h(new u.23(this));
-    this.OSQ = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSR = new com.tencent.mm.cw.h(new com.tencent.mm.cw.c() {});
-    this.OSS = new ab();
-    this.OST = new com.tencent.mm.cw.h(new u.26(this));
-    this.OSU = new com.tencent.mm.cw.h(new u.2(this));
-    this.OSV = new com.tencent.mm.cw.h(new u.3(this));
-    this.OSW = new com.tencent.mm.cw.h(new u.4(this));
-    this.OSX = new com.tencent.mm.plugin.wallet_core.id_verify.util.a();
-    this.OSY = new u.5(this);
-    this.OSZ = "";
-    this.OTa = new u.6(this);
-    this.OTb = new IListener() {};
-    this.EOX = new u.8(this);
+    this.VIP = new y();
+    this.VIQ = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIR = null;
+    this.VIS = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIT = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIU = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIV = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIW = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIX = new com.tencent.mm.cp.h(new u.21(this));
+    this.VIY = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VIZ = new WalletGetBulletinEventListener();
+    this.VJa = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VJb = new com.tencent.mm.cp.h(new com.tencent.mm.cp.c() {});
+    this.VJc = new com.tencent.mm.cp.h(new u.3(this));
+    this.VJd = new com.tencent.mm.cp.h(new u.4(this));
+    this.VJe = new com.tencent.mm.plugin.wallet_core.id_verify.util.a();
+    this.VJf = new SubCoreWalletCore.13(this, com.tencent.mm.app.f.hfK);
+    this.VJg = "";
+    this.VJh = new SubCoreWalletCore.14(this, com.tencent.mm.app.f.hfK);
+    this.VJi = new SubCoreWalletCore.15(this, com.tencent.mm.app.f.hfK);
+    this.KJv = new u.5(this);
     AppMethodBeat.o(70383);
   }
   
-  public static boolean a(MMActivity paramMMActivity, com.tencent.mm.wallet_core.d.e parame)
+  public static boolean a(MMActivity paramMMActivity, com.tencent.mm.wallet_core.c.e parame)
   {
     AppMethodBeat.i(70402);
-    boolean bool = gJi().OSX.a(paramMMActivity, parame, 1008);
+    boolean bool = iiw().VJe.a(paramMMActivity, parame, 1008);
     AppMethodBeat.o(70402);
     return bool;
   }
   
-  public static void az(Context paramContext, Intent paramIntent)
+  public static void aI(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(70400);
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    if (z.bdr())
+    if (z.bBj())
     {
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VqP, Integer.valueOf(0));
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VqQ, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acSr, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acSs, Integer.valueOf(0));
       localIntent.setFlags(536870912);
       Log.i("MicroMsg.SubCoreWalletCore", "entryWalletIndexPage wallet type is h5,jump to ibg");
-      com.tencent.mm.by.c.b(paramContext, "wallet_core", ".ui.ibg.WalletIbgAdapterUI", localIntent);
+      com.tencent.mm.br.c.b(paramContext, "wallet_core", ".ui.ibg.WalletIbgAdapterUI", localIntent);
       AppMethodBeat.o(70400);
       return;
     }
-    if (z.bds())
+    if (z.bBk())
     {
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VqP, Integer.valueOf(0));
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VqQ, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acSr, Integer.valueOf(0));
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acSs, Integer.valueOf(0));
       localIntent.setFlags(536870912);
-      com.tencent.mm.by.c.b(paramContext, "mall", ".ui.MallIndexOSUI", localIntent);
+      com.tencent.mm.br.c.b(paramContext, "mall", ".ui.MallIndexOSUI", localIntent);
       AppMethodBeat.o(70400);
       return;
     }
     Log.i("MicroMsg.SubCoreWalletCore", "entryWalletIndexPage wallet type is native");
     localIntent.setFlags(536870912);
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHh, true);
+    boolean bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXg, true);
     Log.i("MicroMsg.SubCoreWalletCore", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      com.tencent.mm.by.c.b(paramContext, "mall", ".ui.MallIndexUIv2", localIntent);
+      com.tencent.mm.br.c.b(paramContext, "mall", ".ui.MallIndexUIv2", localIntent);
     }
     for (;;)
     {
-      com.tencent.mm.kernel.h.aHH();
-      if (com.tencent.mm.kernel.h.aHG().isSDCardAvailable())
+      com.tencent.mm.kernel.h.baF();
+      if (com.tencent.mm.kernel.h.baE().isSDCardAvailable())
       {
-        paramContext = new o(11);
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHF().kcd.a(paramContext, 0);
+        paramContext = new p(11);
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baD().mCm.a(paramContext, 0);
       }
       AppMethodBeat.o(70400);
       return;
-      com.tencent.mm.by.c.b(paramContext, "mall", ".ui.MallIndexUI", localIntent);
+      com.tencent.mm.br.c.b(paramContext, "mall", ".ui.MallIndexUI", localIntent);
     }
   }
   
-  public static boolean b(MMActivity paramMMActivity, com.tencent.mm.wallet_core.d.e parame, int paramInt)
+  public static boolean b(MMActivity paramMMActivity, com.tencent.mm.wallet_core.c.e parame, int paramInt)
   {
     AppMethodBeat.i(70403);
-    boolean bool = gJi().OSX.a(paramMMActivity, parame, paramInt);
+    boolean bool = iiw().VJe.a(paramMMActivity, parame, paramInt);
     AppMethodBeat.o(70403);
     return bool;
   }
   
-  public static u gJi()
-  {
-    AppMethodBeat.i(70384);
-    u localu = (u)com.tencent.mm.model.y.as(u.class);
-    AppMethodBeat.o(70384);
-    return localu;
-  }
-  
-  public static k gJj()
-  {
-    AppMethodBeat.i(70385);
-    if (!com.tencent.mm.kernel.h.aHB())
-    {
-      localObject = new com.tencent.mm.model.b();
-      AppMethodBeat.o(70385);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = (k)gJi().OSM.get();
-    AppMethodBeat.o(70385);
-    return localObject;
-  }
-  
-  public static com.tencent.mm.plugin.wallet_core.d.h gJk()
-  {
-    AppMethodBeat.i(70386);
-    if (!com.tencent.mm.kernel.h.aHB())
-    {
-      localObject = new com.tencent.mm.model.b();
-      AppMethodBeat.o(70386);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = (com.tencent.mm.plugin.wallet_core.d.h)gJi().OSW.get();
-    AppMethodBeat.o(70386);
-    return localObject;
-  }
-  
-  public static d gJl()
-  {
-    AppMethodBeat.i(70387);
-    if (!com.tencent.mm.kernel.h.aHB())
-    {
-      localObject = new com.tencent.mm.model.b();
-      AppMethodBeat.o(70387);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = (d)gJi().OSN.get();
-    AppMethodBeat.o(70387);
-    return localObject;
-  }
-  
-  public static com.tencent.mm.plugin.wallet_core.d.c gJm()
+  public static com.tencent.mm.plugin.wallet_core.d.c iiA()
   {
     AppMethodBeat.i(70388);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70388);
       throw ((Throwable)localObject);
     }
-    Object localObject = (com.tencent.mm.plugin.wallet_core.d.c)gJi().OSO.get();
+    Object localObject = (com.tencent.mm.plugin.wallet_core.d.c)iiw().VIV.get();
     AppMethodBeat.o(70388);
     return localObject;
   }
   
-  public static i gJn()
+  public static i iiB()
   {
     AppMethodBeat.i(70389);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70389);
       throw ((Throwable)localObject);
     }
-    Object localObject = (i)gJi().OSV.get();
+    Object localObject = (i)iiw().VJc.get();
     AppMethodBeat.o(70389);
     return localObject;
   }
   
-  public static ao gJo()
+  public static am iiC()
   {
     AppMethodBeat.i(70390);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70390);
       throw ((Throwable)localObject);
     }
-    Object localObject = (ao)gJi().OSJ.get();
+    Object localObject = (am)iiw().VIQ.get();
     AppMethodBeat.o(70390);
     return localObject;
   }
   
-  public static al gJp()
+  public static aj iiD()
   {
     AppMethodBeat.i(70391);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70391);
       throw ((Throwable)localObject);
     }
-    Object localObject = (al)gJi().OSL.get();
+    Object localObject = (aj)iiw().VIS.get();
     AppMethodBeat.o(70391);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.wallet_core.d.a gJq()
+  public static com.tencent.mm.plugin.wallet_core.d.a iiE()
   {
     AppMethodBeat.i(70392);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70392);
       throw ((Throwable)localObject);
     }
-    Object localObject = (com.tencent.mm.plugin.wallet_core.d.a)gJi().OSP.get();
+    Object localObject = (com.tencent.mm.plugin.wallet_core.d.a)iiw().VIW.get();
     AppMethodBeat.o(70392);
     return localObject;
   }
   
-  public static g gJr()
+  public static g iiF()
   {
     AppMethodBeat.i(70393);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70393);
       throw ((Throwable)localObject);
     }
-    Object localObject = (g)gJi().OSQ.get();
+    Object localObject = (g)iiw().VIX.get();
     AppMethodBeat.o(70393);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.wallet_core.d.e gJs()
+  public static com.tencent.mm.plugin.wallet_core.d.e iiG()
   {
     AppMethodBeat.i(70394);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70394);
       throw ((Throwable)localObject);
     }
-    Object localObject = (com.tencent.mm.plugin.wallet_core.d.e)gJi().OSR.get();
+    Object localObject = (com.tencent.mm.plugin.wallet_core.d.e)iiw().VIY.get();
     AppMethodBeat.o(70394);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.wallet_core.d.f gJt()
+  public static com.tencent.mm.plugin.wallet_core.d.f iiH()
   {
     AppMethodBeat.i(70395);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70395);
       throw ((Throwable)localObject);
     }
-    Object localObject = (com.tencent.mm.plugin.wallet_core.d.f)gJi().OST.get();
+    Object localObject = (com.tencent.mm.plugin.wallet_core.d.f)iiw().VJa.get();
     AppMethodBeat.o(70395);
     return localObject;
   }
   
-  public static com.tencent.mm.plugin.wallet_core.d.j gJu()
+  public static j iiI()
   {
     AppMethodBeat.i(70396);
-    if (!com.tencent.mm.kernel.h.aHB())
+    if (!com.tencent.mm.kernel.h.baz())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(70396);
       throw ((Throwable)localObject);
     }
-    Object localObject = (com.tencent.mm.plugin.wallet_core.d.j)gJi().OSU.get();
+    Object localObject = (j)iiw().VJb.get();
     AppMethodBeat.o(70396);
     return localObject;
   }
   
-  public static ai gJv()
+  public static ag iiJ()
   {
     AppMethodBeat.i(70397);
-    ai localai = gJi().OSK;
+    ag localag = iiw().VIR;
     AppMethodBeat.o(70397);
-    return localai;
+    return localag;
   }
   
-  public static y gJw()
+  public static y iiK()
   {
     AppMethodBeat.i(70401);
-    y localy = gJi().OSI;
+    y localy = iiw().VIP;
     AppMethodBeat.o(70401);
     return localy;
   }
   
-  public static boolean gJx()
+  public static boolean iiL()
   {
     AppMethodBeat.i(70404);
-    boolean bool = z.bdu();
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQT, 0);
-    Log.i("MicroMsg.SubCoreWalletCore", "isSupportMobileRemit() isCN:%s mobileRemitSwitch:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-    if ((bool) && (i == 1))
+    boolean bool = z.bBm();
+    Log.i("MicroMsg.SubCoreWalletCore", "isSupportMobileRemit() isCN:%s mobileRemitSwitch:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(1) });
+    if (bool)
     {
       AppMethodBeat.o(70404);
       return true;
     }
     AppMethodBeat.o(70404);
     return false;
+  }
+  
+  public static u iiw()
+  {
+    AppMethodBeat.i(70384);
+    u localu = (u)com.tencent.mm.model.y.aL(u.class);
+    AppMethodBeat.o(70384);
+    return localu;
+  }
+  
+  public static com.tencent.mm.plugin.wallet_core.d.k iix()
+  {
+    AppMethodBeat.i(70385);
+    if (!com.tencent.mm.kernel.h.baz())
+    {
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(70385);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = (com.tencent.mm.plugin.wallet_core.d.k)iiw().VIT.get();
+    AppMethodBeat.o(70385);
+    return localObject;
+  }
+  
+  public static com.tencent.mm.plugin.wallet_core.d.h iiy()
+  {
+    AppMethodBeat.i(70386);
+    if (!com.tencent.mm.kernel.h.baz())
+    {
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(70386);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = (com.tencent.mm.plugin.wallet_core.d.h)iiw().VJd.get();
+    AppMethodBeat.o(70386);
+    return localObject;
+  }
+  
+  public static d iiz()
+  {
+    AppMethodBeat.i(70387);
+    if (!com.tencent.mm.kernel.h.baz())
+    {
+      localObject = new com.tencent.mm.model.b();
+      AppMethodBeat.o(70387);
+      throw ((Throwable)localObject);
+    }
+    Object localObject = (d)iiw().VIU.get();
+    AppMethodBeat.o(70387);
+    return localObject;
   }
   
   public void clearPluginData(int paramInt) {}
@@ -422,47 +427,78 @@ public class u
   {
     AppMethodBeat.i(70398);
     Log.i("MicroMsg.SubCoreWalletCore", "onAccountPostReset subcore walletCore");
-    com.tencent.mm.wallet_core.c.b.iiL().init(MMApplicationContext.getContext());
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("paymsg", this.EOX, true);
-    gJo().gKe();
-    this.OSK = ai.gJA();
-    ai localai = this.OSK;
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("paymsg", localai.tUv, true);
-    EventCenter.instance.add(this.OSY);
-    EventCenter.instance.add(this.OSS);
-    EventCenter.instance.add(this.OTb);
-    EventCenter.instance.add(this.OTa);
-    com.tencent.mm.pluginsdk.cmd.b.a(new u.a(), new String[] { "//cleanpaycn" });
+    com.tencent.mm.wallet_core.model.b.jOG().init(MMApplicationContext.getContext());
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("paymsg", this.KJv, true);
+    iiC().ijv();
+    this.VIR = ag.iiO();
+    ag localag = this.VIR;
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("paymsg", localag.wXR, true);
+    this.VJf.alive();
+    this.VIZ.alive();
+    this.VJi.alive();
+    this.VJh.alive();
+    com.tencent.mm.pluginsdk.cmd.b.a(new a(), new String[] { "//cleanpaycn" });
     AppMethodBeat.o(70398);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(70399);
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("paymsg", this.EOX, true);
-    gJo().ate();
-    Object localObject = gJp();
-    ((al)localObject).OTQ = null;
-    ((al)localObject).OTP.clear();
-    ((al)localObject).OTP = new ArrayList();
-    localObject = this.OSK;
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("paymsg", ((ai)localObject).tUv, true);
-    if (ai.aeb != null) {
-      ai.aeb.clear();
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("paymsg", this.KJv, true);
+    iiC().aNm();
+    Object localObject = iiD();
+    ((aj)localObject).VJW = null;
+    ((aj)localObject).VJV.clear();
+    ((aj)localObject).VJV = new ArrayList();
+    localObject = this.VIR;
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("paymsg", ((ag)localObject).wXR, true);
+    if (ag.zTV != null) {
+      ag.zTV.clear();
     }
-    this.OSK = null;
-    EventCenter.instance.removeListener(this.OSY);
-    EventCenter.instance.removeListener(this.OSS);
-    EventCenter.instance.removeListener(this.OTb);
-    EventCenter.instance.removeListener(this.OTa);
+    this.VIR = null;
+    this.VJf.dead();
+    this.VIZ.dead();
+    this.VJi.dead();
+    this.VJh.dead();
     AppMethodBeat.o(70399);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
+  
+  static final class a
+    implements com.tencent.mm.pluginsdk.cmd.a
+  {
+    public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
+    {
+      AppMethodBeat.i(70382);
+      paramContext = paramArrayOfString[0];
+      int i = -1;
+      switch (paramContext.hashCode())
+      {
+      }
+      for (;;)
+      {
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(70382);
+          return false;
+          if (paramContext.equals("//cleanpaycn")) {
+            i = 0;
+          }
+          break;
+        }
+      }
+      com.tencent.mm.wallet_core.model.b.jOG();
+      com.tencent.mm.wallet_core.model.b.clean();
+      AppMethodBeat.o(70382);
+      return true;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.u
  * JD-Core Version:    0.7.0.1
  */

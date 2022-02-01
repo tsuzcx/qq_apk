@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bzi" android:layout_width="47.0dip" android:layout_height="24.0dip" android:layout_marginTop="24.0dip" android:layout_marginBottom="24.0dip" android:src="@raw/icons_panel_close" app:layout_constraintBottom_toTopOf="@id/bzg" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/bzg" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintTop_toBottomOf="@id/bzi" />
-</merge>
+    <ProgressBar android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_margin="8.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/a74" />
+</androidx.constraintlayout.widget.ConstraintLayout>

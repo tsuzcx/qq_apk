@@ -1,80 +1,81 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "displayFromUser", "", "getDisplayFromUser", "()Ljava/lang/CharSequence;", "setDisplayFromUser", "(Ljava/lang/CharSequence;)V", "fileLen", "getFileLen", "setFileLen", "fileName", "getFileName", "setFileName", "filePath", "", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "isDownloaded", "", "()Z", "setDownloaded", "(Z)V", "legalType", "", "getLegalType", "()I", "setLegalType", "(I)V", "msgId", "getMsgId", "setMsgId", "clone", "", "des", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "createTime", "", "getCreateTime", "()J", "setCreateTime", "(J)V", "displayFromUser", "", "getDisplayFromUser", "()Ljava/lang/CharSequence;", "setDisplayFromUser", "(Ljava/lang/CharSequence;)V", "fileLen", "getFileLen", "setFileLen", "fileName", "getFileName", "setFileName", "filePath", "", "getFilePath", "()Ljava/lang/String;", "setFilePath", "(Ljava/lang/String;)V", "isDownloaded", "", "()Z", "setDownloaded", "(Z)V", "legalType", "", "getLegalType", "()I", "setLegalType", "(I)V", "msgId", "getMsgId", "setMsgId", "clone", "", "des", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class FileSelectorUI$j
   extends FileSelectorUI.l
 {
-  CharSequence Rwc;
-  public CharSequence Rwd;
-  long Rwe;
-  int Rwf;
-  boolean Rwg;
+  int YsA;
+  boolean YsB;
+  CharSequence Ysx;
+  public CharSequence Ysy;
+  long Ysz;
   long createTime;
   String filePath;
   long msgId;
   
   public FileSelectorUI$j()
   {
-    super(localFileSelectorUI);
+    super(localObject);
+    AppMethodBeat.i(245721);
+    AppMethodBeat.o(245721);
   }
   
-  public final void a(j paramj)
+  public final void aO(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(285473);
-    p.k(paramj, "des");
-    paramj.a(this.Rwj);
+    AppMethodBeat.i(245734);
+    s.u(paramCharSequence, "<set-?>");
+    this.Ysy = paramCharSequence;
+    AppMethodBeat.o(245734);
+  }
+  
+  public final void b(j paramj)
+  {
+    AppMethodBeat.i(245745);
+    s.u(paramj, "des");
+    paramj.a(this.YsE);
     paramj.title = this.title;
-    paramj.d(hnv());
+    paramj.d(iOn());
     paramj.msgId = this.msgId;
     paramj.createTime = this.createTime;
-    paramj.Rwc = this.Rwc;
-    CharSequence localCharSequence = this.Rwd;
-    if (localCharSequence == null) {
-      p.bGy("fileName");
-    }
-    paramj.Rwd = localCharSequence;
+    paramj.Ysx = this.Ysx;
+    paramj.aO(iOm());
     paramj.filePath = this.filePath;
-    paramj.Rwe = this.Rwe;
-    paramj.Rwf = this.Rwf;
-    paramj.Rwg = this.Rwg;
-    AppMethodBeat.o(285473);
+    paramj.Ysz = this.Ysz;
+    paramj.YsA = this.YsA;
+    paramj.YsB = this.YsB;
+    AppMethodBeat.o(245745);
   }
   
-  public final void aA(CharSequence paramCharSequence)
+  public j iOl()
   {
-    AppMethodBeat.i(285471);
-    p.k(paramCharSequence, "<set-?>");
-    this.Rwd = paramCharSequence;
-    AppMethodBeat.o(285471);
-  }
-  
-  public j hnt()
-  {
-    AppMethodBeat.i(285472);
-    j localj = new j(this.Rvw);
-    a(localj);
-    AppMethodBeat.o(285472);
+    AppMethodBeat.i(245740);
+    j localj = new j(this.YrS);
+    b(localj);
+    AppMethodBeat.o(245740);
     return localj;
   }
   
-  public final CharSequence hnu()
+  public final CharSequence iOm()
   {
-    AppMethodBeat.i(285470);
-    CharSequence localCharSequence = this.Rwd;
-    if (localCharSequence == null) {
-      p.bGy("fileName");
+    AppMethodBeat.i(245727);
+    CharSequence localCharSequence = this.Ysy;
+    if (localCharSequence != null)
+    {
+      AppMethodBeat.o(245727);
+      return localCharSequence;
     }
-    AppMethodBeat.o(285470);
-    return localCharSequence;
+    s.bIx("fileName");
+    AppMethodBeat.o(245727);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.j
  * JD-Core Version:    0.7.0.1
  */

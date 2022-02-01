@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 final class g
 {
-  static boolean B(Object paramObject1, Object paramObject2)
+  static boolean M(Object paramObject1, Object paramObject2)
   {
     AppMethodBeat.i(144623);
     if ((paramObject1 == null) || (paramObject2 == null))
@@ -77,7 +77,7 @@ final class g
     return bool;
   }
   
-  static String cG(Object paramObject)
+  static String ca(Object paramObject)
   {
     AppMethodBeat.i(144621);
     if (paramObject == null)
@@ -110,7 +110,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.g
  * JD-Core Version:    0.7.0.1
  */

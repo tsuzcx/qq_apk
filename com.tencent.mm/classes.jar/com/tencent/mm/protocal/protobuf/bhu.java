@@ -3,60 +3,60 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bhu
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long SSg;
-  public int SSh;
+  public String ZRa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209577);
+    AppMethodBeat.i(257567);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.SSg);
-      paramVarArgs.aY(2, this.SSh);
-      AppMethodBeat.o(209577);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.p(1, this.SSg);
-      int i = g.a.a.b.b.a.bM(2, this.SSh);
-      AppMethodBeat.o(209577);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZRa != null) {
+        paramVarArgs.g(1, this.ZRa);
       }
-      AppMethodBeat.o(209577);
+      AppMethodBeat.o(257567);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.ZRa == null) {
+        break label209;
+      }
+    }
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ZRa) + 0;; paramInt = 0)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      bhu localbhu = (bhu)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(257567);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(209577);
-        return -1;
-      case 1: 
-        localbhu.SSg = locala.abFh.AN();
-        AppMethodBeat.o(209577);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(257567);
         return 0;
       }
-      localbhu.SSh = locala.abFh.AK();
-      AppMethodBeat.o(209577);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        bhu localbhu = (bhu)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(257567);
+          return -1;
+        }
+        localbhu.ZRa = locala.ajGk.readString();
+        AppMethodBeat.o(257567);
+        return 0;
+      }
+      AppMethodBeat.o(257567);
+      return -1;
     }
-    AppMethodBeat.o(209577);
-    return -1;
   }
 }
 

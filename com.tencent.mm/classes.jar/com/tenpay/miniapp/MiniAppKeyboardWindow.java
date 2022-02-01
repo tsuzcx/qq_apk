@@ -11,10 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MiniAppKeyboardWindow
@@ -26,56 +26,56 @@ public class MiniAppKeyboardWindow
   private Context mContext;
   private EditText mInputEditText;
   private RelativeLayout mKeyD;
-  private Button[] mKeys;
+  private TextView[] mKeys;
   private OnTouchListener mOnTouchListener;
   private int mXMode;
   
   public MiniAppKeyboardWindow(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(231243);
+    AppMethodBeat.i(208588);
     this.mXMode = 0;
-    this.mKeys = new Button[11];
+    this.mKeys = new TextView[11];
     init(paramContext);
-    AppMethodBeat.o(231243);
+    AppMethodBeat.o(208588);
   }
   
   public MiniAppKeyboardWindow(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(231244);
+    AppMethodBeat.i(208598);
     this.mXMode = 0;
-    this.mKeys = new Button[11];
+    this.mKeys = new TextView[11];
     init(paramContext);
-    AppMethodBeat.o(231244);
+    AppMethodBeat.o(208598);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(231249);
+    AppMethodBeat.i(208606);
     this.mContext = paramContext.getApplicationContext();
     TenpayTTSUtil.init(paramContext);
     paramContext = LayoutInflater.from(paramContext).inflate(this.mContext.getResources().getIdentifier("tenpay_number_keyboard", "layout", this.mContext.getPackageName()), this, true);
-    this.mKeys[1] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_1")));
-    this.mKeys[2] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_2")));
-    this.mKeys[3] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_3")));
-    this.mKeys[4] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_4")));
-    this.mKeys[5] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_5")));
-    this.mKeys[6] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_6")));
-    this.mKeys[7] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_7")));
-    this.mKeys[8] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_8")));
-    this.mKeys[9] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_9")));
-    this.mKeys[10] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_x")));
-    this.mKeys[0] = ((Button)paramContext.findViewById(getId("tenpay_keyboard_0")));
+    this.mKeys[1] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_1")));
+    this.mKeys[2] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_2")));
+    this.mKeys[3] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_3")));
+    this.mKeys[4] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_4")));
+    this.mKeys[5] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_5")));
+    this.mKeys[6] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_6")));
+    this.mKeys[7] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_7")));
+    this.mKeys[8] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_8")));
+    this.mKeys[9] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_9")));
+    this.mKeys[10] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_x")));
+    this.mKeys[0] = ((TextView)paramContext.findViewById(getId("tenpay_keyboard_0")));
     this.mKeyD = ((RelativeLayout)paramContext.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(231359);
+        AppMethodBeat.i(208586);
         if (MiniAppKeyboardWindow.this.mInputEditText == null)
         {
-          AppMethodBeat.o(231359);
+          AppMethodBeat.o(208586);
           return;
         }
         if (paramAnonymousView.getId() == MiniAppKeyboardWindow.this.getId("tenpay_keyboard_x"))
@@ -85,14 +85,14 @@ public class MiniAppKeyboardWindow
           }
           for (;;)
           {
-            AppMethodBeat.o(231359);
+            AppMethodBeat.o(208586);
             return;
-            AppMethodBeat.o(231359);
+            AppMethodBeat.o(208586);
             return;
             MiniAppKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, 59));
             MiniAppKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, 52));
             MiniAppKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(1, 59));
-            AppMethodBeat.o(231359);
+            AppMethodBeat.o(208586);
             return;
             MiniAppKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, 56));
           }
@@ -105,7 +105,7 @@ public class MiniAppKeyboardWindow
         {
           MiniAppKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(0, i));
           MiniAppKeyboardWindow.this.mInputEditText.dispatchKeyEvent(new KeyEvent(1, i));
-          AppMethodBeat.o(231359);
+          AppMethodBeat.o(208586);
           return;
           if (paramAnonymousView.getId() == MiniAppKeyboardWindow.this.getId("tenpay_keyboard_2")) {
             i = 9;
@@ -151,12 +151,12 @@ public class MiniAppKeyboardWindow
       i += 1;
     }
     this.mKeyD.setOnClickListener(paramContext);
-    AppMethodBeat.o(231249);
+    AppMethodBeat.o(208606);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(231262);
+    AppMethodBeat.i(208651);
     try
     {
       if (this.mOnTouchListener != null) {
@@ -164,10 +164,10 @@ public class MiniAppKeyboardWindow
       }
       label24:
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(231262);
+      AppMethodBeat.o(208651);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       break label24;
     }
@@ -175,31 +175,31 @@ public class MiniAppKeyboardWindow
   
   protected int getDrawableId(String paramString)
   {
-    AppMethodBeat.i(231259);
+    AppMethodBeat.i(208645);
     int i = this.mContext.getResources().getIdentifier(paramString, "drawable", this.mContext.getPackageName());
-    AppMethodBeat.o(231259);
+    AppMethodBeat.o(208645);
     return i;
   }
   
   protected int getId(String paramString)
   {
-    AppMethodBeat.i(231257);
+    AppMethodBeat.i(208643);
     int i = this.mContext.getResources().getIdentifier(paramString, "id", this.mContext.getPackageName());
-    AppMethodBeat.o(231257);
+    AppMethodBeat.o(208643);
     return i;
   }
   
   public void onDetachedFromWindow()
   {
-    AppMethodBeat.i(231260);
+    AppMethodBeat.i(208646);
     super.onDetachedFromWindow();
     TenpayTTSUtil.destroy();
-    AppMethodBeat.o(231260);
+    AppMethodBeat.o(208646);
   }
   
   public void resetSecureAccessibility()
   {
-    AppMethodBeat.i(231252);
+    AppMethodBeat.i(208628);
     int i = 0;
     while (i < this.mKeys.length)
     {
@@ -207,12 +207,12 @@ public class MiniAppKeyboardWindow
       i += 1;
     }
     this.mKeyD.setAccessibilityDelegate(null);
-    AppMethodBeat.o(231252);
+    AppMethodBeat.o(208628);
   }
   
   public void setInputEditText(EditText paramEditText)
   {
-    AppMethodBeat.i(231255);
+    AppMethodBeat.i(208634);
     if (paramEditText != null)
     {
       this.mInputEditText = paramEditText;
@@ -227,7 +227,7 @@ public class MiniAppKeyboardWindow
     }
     for (;;)
     {
-      AppMethodBeat.o(231255);
+      AppMethodBeat.o(208634);
       return;
       this.mXMode = 0;
       if (TextUtils.isEmpty(paramEditText)) {
@@ -243,7 +243,7 @@ public class MiniAppKeyboardWindow
   
   public void setSecureAccessibility(View.AccessibilityDelegate paramAccessibilityDelegate)
   {
-    AppMethodBeat.i(231251);
+    AppMethodBeat.i(208623);
     int i = 0;
     while (i < this.mKeys.length)
     {
@@ -251,7 +251,34 @@ public class MiniAppKeyboardWindow
       i += 1;
     }
     this.mKeyD.setAccessibilityDelegate(paramAccessibilityDelegate);
-    AppMethodBeat.o(231251);
+    AppMethodBeat.o(208623);
+  }
+  
+  public void setXMode(int paramInt)
+  {
+    AppMethodBeat.i(208639);
+    this.mXMode = paramInt;
+    TextView localTextView = this.mKeys[10];
+    switch (paramInt)
+    {
+    default: 
+      this.mXMode = 0;
+      AppMethodBeat.o(208639);
+      return;
+    case 0: 
+      localTextView.setText("");
+      localTextView.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom_new"));
+      AppMethodBeat.o(208639);
+      return;
+    case 1: 
+      localTextView.setText("X");
+      localTextView.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom_new"));
+      AppMethodBeat.o(208639);
+      return;
+    }
+    localTextView.setText(".");
+    localTextView.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom_new"));
+    AppMethodBeat.o(208639);
   }
   
   public static abstract interface OnTouchListener
@@ -261,7 +288,7 @@ public class MiniAppKeyboardWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.miniapp.MiniAppKeyboardWindow
  * JD-Core Version:    0.7.0.1
  */

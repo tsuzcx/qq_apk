@@ -1,6 +1,5 @@
 package com.tencent.soter.core.biometric;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.CancellationSignal;
 import android.os.Handler;
@@ -11,7 +10,6 @@ import java.security.Signature;
 import javax.crypto.Cipher;
 import javax.crypto.Mac;
 
-@SuppressLint({"NewApi"})
 final class FaceidManagerProxy
 {
   public static final String FACEMANAGER_FACTORY_CLASS_NAME = "com.tencent.soter.core.biometric.SoterFaceManagerFactory";
@@ -303,7 +301,7 @@ final class FaceidManagerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.core.biometric.FaceidManagerProxy
  * JD-Core Version:    0.7.0.1
  */

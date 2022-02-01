@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -21,22 +20,22 @@ import com.tencent.mm.R.e;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelvoiceaddr.ui.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.chatting.f.b.a;
-import com.tencent.mm.ui.chatting.f.b.b;
-import com.tencent.mm.ui.chatting.l.d;
-import com.tencent.mm.ui.chatting.l.g;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.chatting.e.b.a;
+import com.tencent.mm.ui.chatting.e.b.b;
+import com.tencent.mm.ui.chatting.presenter.d;
+import com.tencent.mm.ui.chatting.presenter.g;
 import com.tencent.mm.ui.tools.e;
-import com.tencent.mm.ui.tools.t;
+import com.tencent.mm.ui.tools.s;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(3)
@@ -44,98 +43,100 @@ public class MediaHistoryListUI
   extends MMActivity
   implements b.b
 {
-  private b.a WQK;
-  private b WWt;
-  private String jkq;
-  private TextView jks;
+  private b.a aeAe;
+  private b aeFZ;
+  private String lMU;
+  private TextView lMW;
+  private boolean lzR = false;
   private RecyclerView mRecyclerView;
-  private ProgressDialog tND;
+  private ProgressDialog wQT;
   
-  private void lG(boolean paramBoolean)
+  private void na(boolean paramBoolean)
   {
     AppMethodBeat.i(36391);
     Log.i("MicroMsg.MediaHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.tND = s.a(this, getString(R.l.loading_tips), true, 0, null);
+      this.wQT = w.a(this, getString(R.l.loading_tips), true, 0, null);
       AppMethodBeat.o(36391);
       return;
     }
-    if ((this.tND != null) && (this.tND.isShowing()))
+    if ((this.wQT != null) && (this.wQT.isShowing()))
     {
-      this.tND.dismiss();
-      this.tND = null;
+      this.wQT.dismiss();
+      this.wQT = null;
     }
     AppMethodBeat.o(36391);
   }
   
-  public final void H(boolean paramBoolean, int paramInt)
+  public final void F(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(36388);
-    lG(false);
+    na(false);
     Log.i("MicroMsg.MediaHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      this.jks.setVisibility(0);
+      this.lMW.setVisibility(0);
       this.mRecyclerView.setVisibility(8);
-      this.jks.setText(getString(R.l.ewF));
+      this.lMW.setText(getString(R.l.gzi));
       AppMethodBeat.o(36388);
       return;
     }
-    this.jks.setVisibility(8);
+    this.lMW.setVisibility(8);
     this.mRecyclerView.setVisibility(0);
-    this.mRecyclerView.getAdapter().alc.notifyChanged();
+    this.mRecyclerView.getAdapter().bZE.notifyChanged();
     AppMethodBeat.o(36388);
   }
   
-  public final void dD(String paramString, boolean paramBoolean)
+  public final void em(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36390);
     if (paramBoolean)
     {
-      String str = getString(R.l.ewH, new Object[] { paramString });
-      this.jks.setVisibility(0);
+      String str = getString(R.l.gzk, new Object[] { paramString });
+      this.lMW.setVisibility(0);
       this.mRecyclerView.setVisibility(8);
-      TextView localTextView = this.jks;
-      this.jks.getContext();
+      TextView localTextView = this.lMW;
+      this.lMW.getContext();
       localTextView.setText(com.tencent.mm.plugin.fts.a.f.b(str, paramString));
       AppMethodBeat.o(36390);
       return;
     }
-    this.jks.setVisibility(8);
+    this.lMW.setVisibility(8);
     this.mRecyclerView.setVisibility(0);
     AppMethodBeat.o(36390);
   }
   
   public int getLayoutId()
   {
-    return R.i.eiF;
-  }
-  
-  public final void hRy()
-  {
-    AppMethodBeat.i(36387);
-    lG(true);
-    AppMethodBeat.o(36387);
+    return R.i.glE;
   }
   
   public void initView()
   {
     AppMethodBeat.i(36380);
-    this.WWt = new b();
-    this.WWt.He(false);
-    this.WWt.a(this.WQK.hRw());
-    this.WWt.mni = false;
-    this.jks = ((TextView)findViewById(R.h.search_nothing_hint));
+    this.lzR = getIntent().getBooleanExtra("detail_user_dismiss", false);
+    this.aeFZ = new b();
+    this.aeFZ.MY(false);
+    this.aeFZ.a(this.aeAe.juT());
+    this.aeFZ.pgU = false;
+    this.lMW = ((TextView)findViewById(R.h.search_nothing_hint));
     this.mRecyclerView = ((RecyclerView)findViewById(R.h.history_recycler_view));
     findViewById(R.h.content_history).setBackgroundColor(getResources().getColor(R.e.BG_2));
     this.mRecyclerView.setBackgroundColor(getResources().getColor(R.e.BG_2));
-    this.mRecyclerView.setLayoutManager(this.WQK.hRs());
-    this.mRecyclerView.a(this.WQK.hRt());
-    this.mRecyclerView.setAdapter(this.WQK.bzt(this.jkq));
+    this.mRecyclerView.setLayoutManager(this.aeAe.juP());
+    this.mRecyclerView.a(this.aeAe.juQ());
+    this.mRecyclerView.setAdapter(this.aeAe.bBf(this.lMU));
     this.mRecyclerView.setHasFixedSize(true);
-    setMMTitle(this.WQK.bwJ());
+    setMMTitle(this.aeAe.bVz());
     AppMethodBeat.o(36380);
+  }
+  
+  public final void juV()
+  {
+    AppMethodBeat.i(36387);
+    na(true);
+    AppMethodBeat.o(36387);
   }
   
   public void onBackPressed()
@@ -149,6 +150,7 @@ public class MediaHistoryListUI
   
   public void onCreate(Bundle paramBundle)
   {
+    int i = 2;
     AppMethodBeat.i(36379);
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21)
@@ -158,10 +160,10 @@ public class MediaHistoryListUI
       paramBundle.excludeTarget(16908335, true);
       getWindow().setEnterTransition(paramBundle);
     }
-    this.jkq = getIntent().getStringExtra("kintent_talker");
-    int i = getIntent().getIntExtra("key_media_type", -1);
+    this.lMU = getIntent().getStringExtra("kintent_talker");
+    int j = getIntent().getIntExtra("key_media_type", -1);
     paramBundle = null;
-    switch (i)
+    switch (j)
     {
     }
     while (paramBundle == null)
@@ -171,97 +173,169 @@ public class MediaHistoryListUI
       return;
       paramBundle = new d(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.l.h(this);
+      paramBundle = new com.tencent.mm.ui.chatting.presenter.h(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.l.f(this);
+      paramBundle = new com.tencent.mm.ui.chatting.presenter.f(this);
       continue;
       paramBundle = new g(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.l.a(this);
+      paramBundle = new com.tencent.mm.ui.chatting.presenter.a(this);
     }
     paramBundle.a(this);
     setActionbarColor(androidx.core.content.a.w(getContext(), R.e.normal_actionbar_color));
     hideActionbarLine();
     initView();
-    this.WQK.hRu();
-    boolean bool = ab.Lj(this.jkq);
-    bh.beI();
-    paramBundle = c.bbV().Rx(this.jkq);
+    this.aeAe.juR();
+    boolean bool = au.bwE(this.lMU);
+    bh.bCz();
+    paramBundle = c.bzK().Jv(this.lMU);
     if (bool)
     {
-      if (this.WQK.getType() == 6)
+      com.tencent.mm.plugin.report.service.h localh;
+      if (this.aeAe.getType() == 6)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1) });
-        AppMethodBeat.o(36379);
-        return;
+        localh = com.tencent.mm.plugin.report.service.h.OAn;
+        j = paramBundle.bHw().size();
+        if (this.lzR) {}
+        for (;;)
+        {
+          localh.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(j), Integer.valueOf(i) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 1;
+        }
       }
-      if (this.WQK.getType() == -1)
+      if (this.aeAe.getType() == -1)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1) });
-        AppMethodBeat.o(36379);
-        return;
+        localh = com.tencent.mm.plugin.report.service.h.OAn;
+        j = paramBundle.bHw().size();
+        if (this.lzR) {}
+        for (;;)
+        {
+          localh.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(j), Integer.valueOf(i) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 1;
+        }
       }
-      if (this.WQK.getType() == 3)
+      if (this.aeAe.getType() == 3)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1) });
-        AppMethodBeat.o(36379);
-        return;
+        localh = com.tencent.mm.plugin.report.service.h.OAn;
+        j = paramBundle.bHw().size();
+        if (this.lzR) {}
+        for (;;)
+        {
+          localh.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(j), Integer.valueOf(i) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 1;
+        }
       }
-      if (this.WQK.getType() == 5)
+      if (this.aeAe.getType() == 5)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1), Integer.valueOf(1) });
-        AppMethodBeat.o(36379);
-        return;
+        localh = com.tencent.mm.plugin.report.service.h.OAn;
+        j = paramBundle.bHw().size();
+        if (this.lzR) {}
+        for (;;)
+        {
+          localh.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(1) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 1;
+        }
       }
-      if (this.WQK.getType() == 33)
+      if (this.aeAe.getType() == 33)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(8) });
-        AppMethodBeat.o(36379);
+        localh = com.tencent.mm.plugin.report.service.h.OAn;
+        j = paramBundle.bHw().size();
+        if (this.lzR) {}
+        for (;;)
+        {
+          localh.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(8) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 1;
+        }
       }
     }
     else
     {
-      if (this.WQK.getType() == 6)
+      if (this.aeAe.getType() == 6)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-        AppMethodBeat.o(36379);
-        return;
+        paramBundle = com.tencent.mm.plugin.report.service.h.OAn;
+        if (this.lzR) {}
+        for (;;)
+        {
+          paramBundle.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 0;
+        }
       }
-      if (this.WQK.getType() == -1)
+      if (this.aeAe.getType() == -1)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-        AppMethodBeat.o(36379);
-        return;
+        paramBundle = com.tencent.mm.plugin.report.service.h.OAn;
+        if (this.lzR) {}
+        for (;;)
+        {
+          paramBundle.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 0;
+        }
       }
-      if (this.WQK.getType() == 3)
+      if (this.aeAe.getType() == 3)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
-        AppMethodBeat.o(36379);
-        return;
+        paramBundle = com.tencent.mm.plugin.report.service.h.OAn;
+        if (this.lzR) {}
+        for (;;)
+        {
+          paramBundle.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(i) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 0;
+        }
       }
-      if (this.WQK.getType() == 5)
+      if (this.aeAe.getType() == 5)
       {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
-        AppMethodBeat.o(36379);
-        return;
+        paramBundle = com.tencent.mm.plugin.report.service.h.OAn;
+        if (this.lzR) {}
+        for (;;)
+        {
+          paramBundle.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(1) });
+          AppMethodBeat.o(36379);
+          return;
+          i = 0;
+        }
       }
-      if (this.WQK.getType() == 33) {
-        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(8) });
+      if (this.aeAe.getType() == 33)
+      {
+        paramBundle = com.tencent.mm.plugin.report.service.h.OAn;
+        if (!this.lzR) {
+          break label1529;
+        }
       }
     }
-    AppMethodBeat.o(36379);
+    for (;;)
+    {
+      paramBundle.b(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(8) });
+      AppMethodBeat.o(36379);
+      return;
+      label1529:
+      i = 0;
+    }
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(36383);
-    if (this.WWt != null)
+    if (this.aeFZ != null)
     {
-      this.WWt.a(this, paramMenu);
-      paramMenu = this.WWt;
-      String str = this.WQK.hRx();
-      if ((paramMenu.XUk != null) && (!Util.isNullOrNil(str))) {
-        paramMenu.XUk.setSelectedTag(str);
+      this.aeFZ.a(this, paramMenu);
+      paramMenu = this.aeFZ;
+      String str = this.aeAe.juU();
+      if ((paramMenu.afKy != null) && (!Util.isNullOrNil(str))) {
+        paramMenu.afKy.setSelectedTag(str);
       }
       getContentView().postDelayed(new Runnable()
       {
@@ -283,7 +357,7 @@ public class MediaHistoryListUI
   {
     AppMethodBeat.i(36381);
     super.onDestroy();
-    this.WQK.onDetach();
+    this.aeAe.onDetach();
     AppMethodBeat.o(36381);
   }
   
@@ -316,7 +390,7 @@ public class MediaHistoryListUI
     AppMethodBeat.i(36382);
     super.onKeyboardStateChanged();
     if (keyboardState() == 2) {
-      this.WWt.clearFocus();
+      this.aeFZ.clearFocus();
     }
     AppMethodBeat.o(36382);
   }
@@ -324,7 +398,7 @@ public class MediaHistoryListUI
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(36384);
-    this.WWt.a(this, paramMenu);
+    this.aeFZ.a(this, paramMenu);
     AppMethodBeat.o(36384);
     return true;
   }
@@ -337,7 +411,7 @@ public class MediaHistoryListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI
  * JD-Core Version:    0.7.0.1
  */

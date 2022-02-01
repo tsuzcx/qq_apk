@@ -1,7 +1,7 @@
 package com.tencent.qafpapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 
 public class QAFPNative
 {
@@ -9,7 +9,7 @@ public class QAFPNative
   {
     AppMethodBeat.i(39594);
     QAFPNative.class.getClassLoader();
-    j.KW("wechatQAFP");
+    k.DA("wechatQAFP");
     AppMethodBeat.o(39594);
   }
   
@@ -31,7 +31,7 @@ public class QAFPNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.qafpapi.QAFPNative
  * JD-Core Version:    0.7.0.1
  */

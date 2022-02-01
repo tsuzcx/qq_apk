@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ap_" />
+    <include android:id="@id/iic" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ap6" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ap8" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/e6j" android:background="@color/ahb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

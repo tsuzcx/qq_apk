@@ -17,7 +17,7 @@ public abstract interface c
   
   public static abstract interface a
   {
-    public abstract boolean fH(View paramView);
+    public abstract boolean iA(View paramView);
   }
 }
 

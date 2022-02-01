@@ -3,7 +3,7 @@ package kotlin.l.b.a.b.j.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
-  extends p<Integer>
+  extends o<Integer>
 {
   public m(int paramInt)
   {
@@ -14,7 +14,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.m
  * JD-Core Version:    0.7.0.1
  */

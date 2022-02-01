@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideAvatarIcon", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showAvatarIcon", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "", "getStatusBarHeight", "", "getTalkingAvatarContainerSize", "", "hideActionView", "", "hideMiniAction", "", "hideAvatarIcon", "hideScreenCastPageElement", "is2GOr3G", "isCameraOpen", "setToNormal", "setToScreenCast", "showActionView", "showAvatarIcon", "showNickName", "name", "", "autoDismiss", "showScreenCastPageElement", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
 {
-  public abstract boolean aXN();
+  public abstract boolean bsA();
   
-  public abstract void bX(String paramString, boolean paramBoolean);
+  public abstract void ct(String paramString, boolean paramBoolean);
   
-  public abstract int dvN();
+  public abstract int efM();
   
-  public abstract int[] eVT();
+  public abstract int[] geK();
   
-  public abstract boolean eVU();
+  public abstract boolean geL();
   
-  public abstract void eVV();
+  public abstract void geM();
   
-  public abstract void eVW();
+  public abstract void geN();
   
-  public abstract void eVX();
+  public abstract void geO();
   
-  public abstract void eVY();
+  public abstract void geP();
   
-  public abstract void eVZ();
+  public abstract void geQ();
   
-  public abstract void eWa();
+  public abstract void geR();
   
-  public abstract void eWb();
+  public abstract void geS();
   
-  public abstract void eWc();
+  public abstract void geT();
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.b
  * JD-Core Version:    0.7.0.1
  */

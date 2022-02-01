@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/br" />
-            <corners android:radius="@dimen/p2" />
-        </shape>
-    </item>
-    <item android:state_focused="true">
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/br" />
-            <corners android:radius="@dimen/p2" />
-        </shape>
-    </item>
-    <item android:state_focused="false" android:state_pressed="true">
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/br" />
-            <corners android:radius="@dimen/p2" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle" android:useLevel="true">
-            <solid android:color="@color/ac_" />
-            <corners android:radius="@dimen/p2" />
-        </shape>
-    </item>
-</selector>
+    <solid android:color="@color/yr" />
+    <corners android:radius="10.0dip" />
+</shape>

@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wepkg.model;
 
 public final class d
 {
-  public String QMp;
-  public String coY;
+  public String XFN;
+  public String egJ;
   public String filePath;
-  public String loN;
-  public String loO;
+  public String nTQ;
+  public String nTR;
 }
 
 

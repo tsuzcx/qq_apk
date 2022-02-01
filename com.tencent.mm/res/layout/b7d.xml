@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.address.ui.MMScrollView android:id="@id/e0q" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:invoice="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip">
-        <ViewStub android:id="@id/j8_" android:layout="@layout/c64" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="0.0dip" />
-        <LinearLayout android:orientation="vertical" android:id="@id/h9a" android:padding="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center_vertical" android:id="@id/izm" android:paddingLeft="8.0dip" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginRight="@dimen/g" android:minWidth="68.0dip" android:text="@string/e54" android:singleLine="true" android:layout_centerVertical="true" />
-            <RelativeLayout android:background="@null" android:paddingLeft="8.0dip" android:paddingTop="10.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:gravity="center_vertical" android:id="@id/ior" android:text="@string/e5o" android:layout_centerVertical="true" style="@style/mu" />
-                <Button android:textSize="@dimen/hc" android:textColor="@color/w3" android:layout_gravity="center_vertical" android:id="@id/e0h" android:background="@drawable/jt" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="4.0dip" android:minWidth="@dimen/al" android:text="@string/e59" android:layout_toRightOf="@id/ior" android:layout_centerInParent="true" />
-                <Button android:textSize="@dimen/hc" android:textColor="@color/w3" android:layout_gravity="center_vertical" android:id="@id/e0f" android:background="@drawable/jt" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="30.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="4.0dip" android:minWidth="@dimen/al" android:text="@string/e53" android:layout_toRightOf="@id/e0h" android:layout_centerInParent="true" />
+<LinearLayout android:gravity="right" android:orientation="vertical" android:id="@id/fyk" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="right" android:orientation="vertical" android:id="@id/bsb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fy5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+            <RelativeLayout android:id="@id/fy3" android:background="@drawable/acq" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/bv">
+                <ImageView android:id="@id/fy2" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
             </RelativeLayout>
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0t" android:visibility="gone" android:layout_height="5.0dip" android:inputType="text" app:invoice_editable="false" app:invoice_hint="" app:invoice_tipmsg="" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0s" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="text" app:invoice_hint="@string/e5n" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e5l" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0i" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="text" app:invoice_hint="@string/e58" app:invoice_tipmsg="@string/e5l" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0r" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="phone" app:invoice_editType="iii" app:invoice_hint="@string/e5i" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e5g" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0e" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="text" app:invoice_hint="@string/e52" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e51" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0j" android:inputType="phone" android:imeOptions="actionDone" app:invoice_editType="ga7" app:invoice_hint="@string/e5b" app:invoice_tipmsg="@string/e5b" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0b" android:inputType="text" app:invoice_hint="@string/e4v" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e4u" style="@style/mv" />
-            <com.tencent.mm.plugin.address.ui.InvoiceEditView android:gravity="center_vertical" android:id="@id/e0c" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:inputType="number" app:invoice_editType="a0u" app:invoice_hint="@string/e4y" app:invoice_singleLine="false" app:invoice_tipmsg="@string/e4w" style="@style/mv" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:id="@id/fy4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g7p" />
         </LinearLayout>
-        <TextView android:textSize="14.0dip" android:textColor="@color/a2t" android:gravity="bottom" android:id="@id/e5b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/e4o" android:layout_below="@id/h9a" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</com.tencent.mm.plugin.address.ui.MMScrollView>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fy9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp">
+            <RelativeLayout android:id="@id/fy7" android:background="@drawable/acq" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/bv">
+                <ImageView android:id="@id/fy6" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:id="@id/fy8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g7q" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/fyc" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="right" android:orientation="vertical" android:id="@id/fya" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <RelativeLayout android:background="@drawable/acq" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/bv">
+                    <ImageView android:id="@id/fy_" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
+                    <ImageView android:id="@id/fyd" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/acn" android:layout_alignParentRight="true" />
+                </RelativeLayout>
+                <TextView android:textSize="12.0dip" android:textColor="@color/al6" android:id="@id/fyb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g7n" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/frr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:id="@id/frq" android:background="@drawable/acz" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/d4">
+                    <ImageView android:id="@id/fro" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginStart="@dimen/cd" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/a1k" android:gravity="center_vertical" android:id="@id/fwq" android:layout_width="wrap_content" android:layout_height="@dimen/d4" android:text="@string/g_t" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/cd" />
+                </LinearLayout>
+                <ImageView android:id="@id/frp" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:src="@drawable/acn" android:layout_marginEnd="3.0dip" android:layout_alignEnd="@id/frq" />
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

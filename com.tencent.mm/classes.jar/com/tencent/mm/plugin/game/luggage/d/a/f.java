@@ -3,41 +3,41 @@ package com.tencent.mm.plugin.game.luggage.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.lite.jsapi.b;
-import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.plugin.lite.api.e;
+import com.tencent.mm.plugin.lite.api.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class f
-  extends b
+  extends e
 {
   public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(231715);
+    AppMethodBeat.i(277078);
     long l = paramJSONObject.optLong("download_id");
     if (l <= 0L)
     {
       Log.i("LiteAppJsApiInstallDownloadTask", "data is null");
-      this.Ega.aNa("fail_invalid_data");
-      AppMethodBeat.o(231715);
+      this.JZj.aJV("fail_invalid_data");
+      AppMethodBeat.o(277078);
       return;
     }
-    paramString = com.tencent.mm.plugin.downloader.model.f.cPZ().Ix(l);
+    paramString = com.tencent.mm.plugin.downloader.model.f.duv().kS(l);
     if (paramString.status == -1)
     {
       Log.e("LiteAppJsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
-      this.Ega.aNa("fail");
-      AppMethodBeat.o(231715);
+      this.JZj.aJV("fail");
+      AppMethodBeat.o(277078);
       return;
     }
     if (paramString.status != 3)
     {
       Log.e("LiteAppJsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
-      this.Ega.aNa("fail");
-      AppMethodBeat.o(231715);
+      this.JZj.aJV("fail");
+      AppMethodBeat.o(277078);
       return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(l);
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(l);
     if (locala != null)
     {
       int i = paramJSONObject.optInt("scene");
@@ -50,25 +50,25 @@ public class f
       locala.field_ssid = m;
       d.e(locala);
     }
-    com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
+    com.tencent.mm.plugin.downloader.h.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
     {
-      public final void ia(boolean paramAnonymousBoolean)
+      public final void iZ(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(231963);
+        AppMethodBeat.i(277083);
         if (paramAnonymousBoolean)
         {
-          f.a(f.this).eLC();
-          AppMethodBeat.o(231963);
+          f.a(f.this).fTW();
+          AppMethodBeat.o(277083);
           return;
         }
-        f.b(f.this).aNa("fail");
-        AppMethodBeat.o(231963);
+        f.b(f.this).aJV("fail");
+        AppMethodBeat.o(277083);
       }
     });
-    AppMethodBeat.o(231715);
+    AppMethodBeat.o(277078);
   }
   
-  public final int ewF()
+  public final int fEx()
   {
     return 1;
   }

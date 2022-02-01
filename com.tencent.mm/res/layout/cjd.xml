@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/cyt" android:paddingTop="8.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="16.0dip" android:paddingEnd="16.0dip"
+<LinearLayout android:orientation="horizontal" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="start|bottom|center" android:id="@id/bn3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:layout_weight="1.0" android:layout_marginEnd="8.0dip">
-        <LinearLayout android:id="@id/dty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentStart="true">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/kim" android:layout_width="9.0dip" android:layout_height="8.0dip" android:scaleType="centerCrop" android:layout_marginEnd="5.0dip" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/kin" android:layout_width="wrap_content" android:layout_height="14.0dip" android:text="this is a sns_ad_icon_desc" />
-        </LinearLayout>
-        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:ellipsize="end" android:id="@id/bmr" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="this is a desc" android:singleLine="true" android:shadowColor="@color/BW_0_Alpha_0_8" android:shadowDx="0.0" android:shadowDy="1.0" android:layout_above="@id/dty" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:ellipsize="end" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="this is a title" android:singleLine="true" android:shadowColor="@color/BW_0_Alpha_0_8" android:shadowDx="0.0" android:shadowDy="1.0" android:layout_above="@id/bmr" />
-    </RelativeLayout>
-    <FrameLayout android:layout_gravity="end|bottom|center" android:id="@id/aev" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.0">
-        <RelativeLayout android:layout_gravity="center" android:background="@drawable/cys" android:paddingLeft="8.0dip" android:paddingTop="2.0dip" android:paddingRight="8.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/jtd" android:visibility="gone" android:layout_width="11.0dip" android:layout_height="11.0dip" android:layout_centerVertical="true" android:layout_marginEnd="4.0dip" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/jua" android:layout_width="wrap_content" android:layout_height="20.0dip" android:maxWidth="164.0dip" android:text="this is btn tv" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" android:layout_toEndOf="@id/jtd" />
-        </RelativeLayout>
-    </FrameLayout>
+    <com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepViewIndicator android:id="@id/k23" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/ivo" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" />
 </LinearLayout>

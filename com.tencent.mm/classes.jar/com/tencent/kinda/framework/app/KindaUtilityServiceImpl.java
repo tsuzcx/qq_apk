@@ -11,19 +11,19 @@ public class KindaUtilityServiceImpl
 {
   public String get3DesEncryptResult(String paramString)
   {
-    AppMethodBeat.i(263972);
+    AppMethodBeat.i(226369);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(263972);
+      AppMethodBeat.o(226369);
       return "";
     }
     paramString = new Encrypt().desedeEncode(paramString);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(263972);
+      AppMethodBeat.o(226369);
       return "";
     }
-    AppMethodBeat.o(263972);
+    AppMethodBeat.o(226369);
     return paramString;
   }
   
@@ -52,7 +52,7 @@ public class KindaUtilityServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaUtilityServiceImpl
  * JD-Core Version:    0.7.0.1
  */

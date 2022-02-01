@@ -3,16 +3,16 @@ package com.tencent.mm.modelappbrand;
 public abstract class ae
   implements o
 {
-  public abstract void bb(String paramString1, String paramString2);
+  public abstract void b(boolean paramBoolean1, String paramString, boolean paramBoolean2);
   
   public final String getName()
   {
-    return "OnDataPush";
+    return "OnTapCallback";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ae
  * JD-Core Version:    0.7.0.1
  */

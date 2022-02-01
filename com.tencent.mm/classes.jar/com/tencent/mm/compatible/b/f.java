@@ -1,6 +1,5 @@
 package com.tencent.mm.compatible.b;
 
-import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.AcousticEchoCanceler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -9,29 +8,27 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class f
   implements h.a
 {
-  private AcousticEchoCanceler jmY;
+  private AcousticEchoCanceler lQj;
   
-  @TargetApi(16)
   public f(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155557);
-    this.jmY = null;
+    this.lQj = null;
     boolean bool = AcousticEchoCanceler.isAvailable();
     Log.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.jmY = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
+      this.lQj = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155557);
   }
   
-  @TargetApi(16)
-  public final boolean atG()
+  public final boolean aOe()
   {
     AppMethodBeat.i(155559);
-    if (this.jmY != null) {}
+    if (this.lQj != null) {}
     try
     {
-      int i = this.jmY.setEnabled(true);
+      int i = this.lQj.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155559);
@@ -50,7 +47,6 @@ public final class f
     return false;
   }
   
-  @TargetApi(16)
   public final boolean isAvailable()
   {
     AppMethodBeat.i(155558);
@@ -61,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.b.f
  * JD-Core Version:    0.7.0.1
  */

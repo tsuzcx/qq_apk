@@ -2,7 +2,6 @@ package com.google.android.gms.iid;
 
 import android.util.Base64;
 import com.google.android.gms.common.internal.Objects;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.security.KeyPair;
 import java.security.PrivateKey;
@@ -13,7 +12,6 @@ final class zzo
   private final KeyPair zzbw;
   private final long zzbx;
   
-  @VisibleForTesting
   zzo(KeyPair paramKeyPair, long paramLong)
   {
     this.zzbw = paramKeyPair;
@@ -74,7 +72,7 @@ final class zzo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzo
  * JD-Core Version:    0.7.0.1
  */

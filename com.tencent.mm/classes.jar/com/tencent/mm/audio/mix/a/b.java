@@ -6,9 +6,9 @@ import java.util.LinkedList;
 public class b
 {
   public int channels;
-  public int fmx;
-  public byte[] fmy;
-  public volatile LinkedList<String> fmz;
+  public int hqI;
+  public byte[] hqJ;
+  public volatile LinkedList<String> hqK;
   public int sampleRate;
   
   public b()
@@ -16,8 +16,8 @@ public class b
     AppMethodBeat.i(136708);
     this.sampleRate = 0;
     this.channels = 0;
-    this.fmx = 2;
-    this.fmz = new LinkedList();
+    this.hqI = 2;
+    this.hqK = new LinkedList();
     AppMethodBeat.o(136708);
   }
 }

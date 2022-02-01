@@ -5,22 +5,22 @@ import java.util.Arrays;
 public final class c
   extends s.a.a<c>
 {
-  public int[] ZIk;
+  public int[] ahNn;
   
   public c(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.ZIk = paramArrayOfInt;
+    this.ahNn = paramArrayOfInt;
   }
   
   private int a(c paramc)
   {
     int k = 0;
-    int m = this.ZIk.length;
-    int i = paramc.ZIk.length;
+    int m = this.ahNn.length;
+    int i = paramc.ahNn.length;
     if (m != i)
     {
-      i = com.tencent.tinker.a.a.b.c.nU(m, i);
+      i = com.tencent.tinker.a.a.b.c.pR(m, i);
       return i;
     }
     int j = 0;
@@ -30,8 +30,8 @@ public final class c
       if (j >= m) {
         break;
       }
-      if (this.ZIk[j] != paramc.ZIk[j]) {
-        return com.tencent.tinker.a.a.b.c.nU(this.ZIk[j], paramc.ZIk[j]);
+      if (this.ahNn[j] != paramc.ahNn[j]) {
+        return com.tencent.tinker.a.a.b.c.pR(this.ahNn[j], paramc.ahNn[j]);
       }
       j += 1;
     }
@@ -48,12 +48,12 @@ public final class c
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.ZIk);
+    return Arrays.hashCode(this.ahNn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.c
  * JD-Core Version:    0.7.0.1
  */

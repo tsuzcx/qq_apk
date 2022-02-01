@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopViewModel;", "", "()V", "getInitialDataList", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopView$AppBrandItem;", "getNextPageDataList", "", "callback", "Lkotlin/Function1;", "hasMore", "", "title", "", "viewType", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopViewModel;", "", "()V", "getInitialDataList", "", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopView$AppBrandItem;", "getNextPageDataList", "", "callback", "Lkotlin/Function1;", "hasMore", "", "title", "", "viewType", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class c
 {
-  public abstract String aBd();
+  public abstract String aUa();
   
-  public boolean aDl()
+  public boolean aWl()
   {
     return false;
   }
   
-  public abstract int cnA();
+  public abstract void ab(b<? super List<? extends AppBrandDesktopView.a>, ah> paramb);
   
-  public abstract List<AppBrandDesktopView.a> cnB();
+  public abstract int cPD();
   
-  public abstract void z(b<? super List<? extends AppBrandDesktopView.a>, x> paramb);
+  public abstract List<AppBrandDesktopView.a> cPE();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.c
  * JD-Core Version:    0.7.0.1
  */

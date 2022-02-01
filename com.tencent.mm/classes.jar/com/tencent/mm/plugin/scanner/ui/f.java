@@ -17,11 +17,11 @@ public final class f
     super(paramContext);
     AppMethodBeat.i(51812);
     this.mView = null;
-    setLayoutResource(l.g.IEl);
+    setLayoutResource(l.g.OKo);
     AppMethodBeat.o(51812);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51813);
     if (this.mView == null) {
@@ -35,14 +35,14 @@ public final class f
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(292833);
+    AppMethodBeat.i(369996);
     super.onBindView(paramView);
-    AppMethodBeat.o(292833);
+    AppMethodBeat.o(369996);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.f
  * JD-Core Version:    0.7.0.1
  */

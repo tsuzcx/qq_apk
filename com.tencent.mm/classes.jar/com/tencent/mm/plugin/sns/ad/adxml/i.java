@@ -2,131 +2,133 @@ package com.tencent.mm.plugin.sns.ad.adxml;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.d;
-import com.tencent.mm.protocal.protobuf.cvt;
-import com.tencent.mm.protocal.protobuf.cvv;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.sns.ad.j.d;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-public final class i
+public class i
 {
-  public float JyC;
-  public l JyD;
-  public AdClickActionInfo clickActionInfo;
-  public String desc;
-  public cvt fVT;
-  private int mediaType;
-  public String title;
+  public String PML;
+  public List<String> PMM;
+  public List<String> PMN;
+  public List<String> PMO;
+  public boolean PMP;
+  public float PMQ;
+  public List<a> PMR;
+  public String finderLiveId;
+  public String finderUsername;
+  public int liveType;
   
-  public static i G(Map<String, String> paramMap, String paramString)
+  public static i O(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(236265);
+    AppMethodBeat.i(309848);
     if (d.isEmpty(paramMap))
     {
-      AppMethodBeat.o(236265);
+      AppMethodBeat.o(309848);
       return null;
     }
-    if (TextUtils.isEmpty(Util.nullAsNil((String)paramMap.get(paramString + ".media.id"))))
+    String str = (String)paramMap.get(paramString + ".liveType");
+    if (str == null)
     {
-      AppMethodBeat.o(236265);
+      AppMethodBeat.o(309848);
       return null;
     }
     try
     {
       i locali = new i();
-      locali.title = Util.nullAsNil((String)paramMap.get(paramString + ".title"));
-      locali.desc = Util.nullAsNil((String)paramMap.get(paramString + ".desc"));
-      locali.JyC = Util.safeParseFloat((String)paramMap.get(paramString + ".markMaxAlpha"));
-      Object localObject = paramString + ".media";
-      cvt localcvt = new cvt();
-      localcvt.Id = ("SlideFullCardAd_" + Util.nullAsNil((String)paramMap.get(new StringBuilder().append((String)localObject).append(".id").toString())));
-      localcvt.isAd = true;
-      localcvt.rWu = Util.safeParseInt((String)paramMap.get((String)localObject + ".type"));
-      localcvt.subType = Util.safeParseInt((String)paramMap.get((String)localObject + ".subtype"));
-      localcvt.Url = Util.nullAsNil((String)paramMap.get((String)localObject + ".url"));
-      localcvt.TlV = Util.safeParseInt((String)paramMap.get((String)localObject + ".url.$type"));
-      localcvt.TDM = Util.nullAsNil((String)paramMap.get((String)localObject + ".url.$md5"));
-      localcvt.TDF = Util.nullAsNil((String)paramMap.get((String)localObject + ".thumb"));
-      localcvt.TDG = Util.safeParseInt((String)paramMap.get((String)localObject + ".thumb.$type"));
-      localcvt.TDH = new cvv();
-      localcvt.TDH.TEv = Util.safeParseInt((String)paramMap.get((String)localObject + ".size.$height"));
-      localcvt.TDH.TEu = Util.safeParseInt((String)paramMap.get((String)localObject + ".size.$width"));
-      localcvt.TDH.TEw = Util.safeParseInt((String)paramMap.get((String)localObject + ".size.$totalSize"));
-      locali.fVT = localcvt;
-      if (locali.fVT.rWu == 6) {}
-      for (int i = 1;; i = 0)
+      locali.liveType = Util.safeParseInt(str);
+      locali.PML = Util.nullAsNil((String)paramMap.get(paramString + ".liveParams"));
+      locali.finderUsername = Util.nullAsNil((String)paramMap.get(paramString + ".finderUsername"));
+      locali.finderLiveId = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveId"));
+      locali.PMM = P(paramMap, paramString + ".pendingDescList");
+      locali.PMN = P(paramMap, paramString + ".livingDescList");
+      locali.PMO = P(paramMap, paramString + ".endDescList");
+      if (Util.safeParseInt((String)paramMap.get(paramString + ".showLikeAnimation")) > 0) {}
+      for (boolean bool = true;; bool = false)
       {
-        locali.mediaType = i;
-        locali.clickActionInfo = AdClickActionInfo.t(paramMap, paramString + ".clickActionInfo");
-        locali.clickActionInfo.scene = 3;
-        paramString = paramString + ".buttonInfo";
-        localObject = new l();
-        ((l)localObject).icon = Util.nullAsNil((String)paramMap.get(paramString + ".icon"));
-        ((l)localObject).title = Util.nullAsNil((String)paramMap.get(paramString + ".title"));
-        ((l)localObject).JyK = AdClickActionInfo.t(paramMap, paramString + ".clickActionInfo");
-        ((l)localObject).JyK.scene = 4;
-        locali.JyD = ((l)localObject);
-        AppMethodBeat.o(236265);
+        locali.PMP = bool;
+        locali.PMQ = Util.safeParseFloat((String)paramMap.get(paramString + ".likeAnimationInterval"));
+        locali.PMR = Q(paramMap, paramString + ".liveCheerIconList");
         return locali;
       }
       return null;
     }
-    catch (Throwable paramMap)
+    finally
     {
-      Log.e("AdSlideFullCardItemInfo", "parse AdSlideFullCardItemInfo error " + paramMap.getMessage());
-      AppMethodBeat.o(236265);
+      AppMethodBeat.o(309848);
     }
   }
   
-  public static i a(i parami, int paramInt)
+  private static List<String> P(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(236270);
-    try
+    AppMethodBeat.i(309852);
+    if (d.isEmpty(paramMap))
     {
-      i locali = new i();
-      locali.title = parami.title;
-      locali.desc = parami.desc;
-      locali.JyC = parami.JyC;
-      cvt localcvt1 = parami.fVT;
-      cvt localcvt2 = new cvt();
-      localcvt2.Id = (localcvt1.Id + "_" + paramInt);
-      localcvt2.isAd = true;
-      localcvt2.rWu = localcvt1.rWu;
-      localcvt2.subType = localcvt1.subType;
-      localcvt2.Url = localcvt1.Url;
-      localcvt2.TlV = localcvt1.TlV;
-      localcvt2.TDM = localcvt1.TDM;
-      localcvt2.TDF = localcvt1.TDF;
-      localcvt2.TDG = localcvt1.TDG;
-      localcvt2.TDH = new cvv();
-      localcvt2.TDH.TEv = localcvt1.TDH.TEv;
-      localcvt2.TDH.TEu = localcvt1.TDH.TEu;
-      localcvt2.TDH.TEw = localcvt1.TDH.TEw;
-      locali.fVT = localcvt2;
-      locali.mediaType = parami.mediaType;
-      locali.clickActionInfo = parami.clickActionInfo;
-      locali.clickActionInfo.scene = 3;
-      locali.JyD = parami.JyD;
-      AppMethodBeat.o(236270);
-      return locali;
+      AppMethodBeat.o(309852);
+      return null;
     }
-    catch (Throwable parami)
+    String str = (String)paramMap.get(paramString + ".descText");
+    if (str == null)
     {
-      Log.e("AdSlideFullCardItemInfo", "cloneAdSlideFullCardItemInfo AdSlideFullCardItemInfo error " + parami.getMessage());
-      AppMethodBeat.o(236270);
+      AppMethodBeat.o(309852);
+      return null;
     }
-    return null;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(str);
+    int i = 1;
+    for (;;)
+    {
+      str = (String)paramMap.get(paramString + ".descText" + i);
+      if (str == null) {
+        break;
+      }
+      localArrayList.add(str);
+      i += 1;
+    }
+    AppMethodBeat.o(309852);
+    return localArrayList;
   }
   
-  public final boolean fJE()
+  private static List<a> Q(Map<String, String> paramMap, String paramString)
   {
-    return this.mediaType == 1;
+    AppMethodBeat.i(309859);
+    ArrayList localArrayList = new ArrayList();
+    if (d.isEmpty(paramMap))
+    {
+      AppMethodBeat.o(309859);
+      return localArrayList;
+    }
+    Object localObject = paramString + ".iconInfo";
+    int i = 0;
+    while (paramMap.containsKey(localObject))
+    {
+      String str = Util.nullAsNil((String)paramMap.get((String)localObject + ".iconUrl"));
+      int j = Util.safeParseInt((String)paramMap.get((String)localObject + ".sampleRate"));
+      if ((!TextUtils.isEmpty(str)) && (j > 0) && (j <= 100))
+      {
+        localObject = new a();
+        ((a)localObject).iconUrl = str;
+        ((a)localObject).sampleRate = j;
+        localArrayList.add(localObject);
+      }
+      i += 1;
+      localObject = paramString + ".iconInfo" + i;
+    }
+    AppMethodBeat.o(309859);
+    return localArrayList;
+  }
+  
+  public static final class a
+  {
+    public String iconUrl;
+    public int sampleRate;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.adxml.i
  * JD-Core Version:    0.7.0.1
  */

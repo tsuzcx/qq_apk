@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="72px" viewBox="0 0 36 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_outlined_arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons_outlined_arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="common_icons_arrow" transform="translate(18.000000, 36.000000) rotate(-180.000000) translate(-18.000000, -36.000000) translate(0.000000, 0.000000)" fill="#000000">
+            <path d="M28.6378246,52.2580524 L25.4558441,55.440033 L8.11915302,38.1033419 C6.94877712,36.932966 6.9515663,35.0326225 8.11915302,33.8650358 L25.4558441,16.5283447 L28.6378246,19.7103252 L12.363961,35.9841888 L28.6378246,52.2580524 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

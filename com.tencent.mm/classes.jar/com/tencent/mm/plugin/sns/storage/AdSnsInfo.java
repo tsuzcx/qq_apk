@@ -3,24 +3,22 @@ package com.tencent.mm.plugin.sns.storage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.f;
 import com.tencent.mm.b.g;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.f.c.f;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.modelsns.o;
 import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adw;
-import com.tencent.mm.protocal.protobuf.ci;
-import com.tencent.mm.protocal.protobuf.dwf;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.agh;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.epj;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Keep
 public class AdSnsInfo
   extends f
 {
@@ -55,7 +53,7 @@ public class AdSnsInfo
   
   public ContentValues convertFrom(ContentValues paramContentValues)
   {
-    AppMethodBeat.i(265336);
+    AppMethodBeat.i(306673);
     this.field_snsId = paramContentValues.getAsLong("snsId").longValue();
     this.field_userName = paramContentValues.getAsString("userName");
     this.field_localFlag = paramContentValues.getAsInteger("localFlag").intValue();
@@ -80,7 +78,7 @@ public class AdSnsInfo
     this.systemRowid = paramContentValues.getAsLong("rowid").longValue();
     this.field_atAdinfo = paramContentValues.getAsString("atAdinfo");
     this.field_remindInfoGroup = paramContentValues.getAsByteArray("remindInfoGroup");
-    AppMethodBeat.o(265336);
+    AppMethodBeat.o(306673);
     return paramContentValues;
   }
   
@@ -115,8 +113,8 @@ public class AdSnsInfo
     localSnsInfo.setTimeLine(localTimeLineObject);
     if (localTimeLineObject.ContentObj != null)
     {
-      localSnsInfo.setTypeFlag(localTimeLineObject.ContentObj.Sqq);
-      localSnsInfo.setSubTypeFlag(localTimeLineObject.ContentObj.Sqs);
+      localSnsInfo.setTypeFlag(localTimeLineObject.ContentObj.Zpq);
+      localSnsInfo.setSubTypeFlag(localTimeLineObject.ContentObj.Zps);
     }
     localSnsInfo.setAdSnsInfo(this);
     AppMethodBeat.o(97429);
@@ -152,7 +150,6 @@ public class AdSnsInfo
     }
   }
   
-  @Keep
   public ADXml getAdXml()
   {
     AppMethodBeat.i(97410);
@@ -214,9 +211,9 @@ public class AdSnsInfo
   public b getAtFriendRemindInfoSelfInfo()
   {
     AppMethodBeat.i(97426);
-    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().RHY != null) && (getRemindInfoGroup().RHY.Uci != null))
+    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().YFa != null) && (getRemindInfoGroup().YFa.abtA != null))
     {
-      b localb = getRemindInfoGroup().RHY.Uci.Tkb;
+      b localb = getRemindInfoGroup().YFa.abtA.aaxD;
       AppMethodBeat.o(97426);
       return localb;
     }
@@ -227,9 +224,9 @@ public class AdSnsInfo
   public b getAtFriendRemindInfoSourceInfo()
   {
     AppMethodBeat.i(97425);
-    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().RHY != null) && (getRemindInfoGroup().RHY.Uch != null))
+    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().YFa != null) && (getRemindInfoGroup().YFa.abtz != null))
     {
-      b localb = getRemindInfoGroup().RHY.Uch.Tkb;
+      b localb = getRemindInfoGroup().YFa.abtz.aaxD;
       AppMethodBeat.o(97425);
       return localb;
     }
@@ -258,9 +255,9 @@ public class AdSnsInfo
   
   public String getLocalid()
   {
-    AppMethodBeat.i(265333);
-    String str = y.bt("ad_table_", this.localid);
-    AppMethodBeat.o(265333);
+    AppMethodBeat.i(306659);
+    String str = ai.bF("ad_table_", this.localid);
+    AppMethodBeat.o(306659);
     return str;
   }
   
@@ -308,40 +305,40 @@ public class AdSnsInfo
   }
   
   /* Error */
-  public ci getRemindInfoGroup()
+  public cs getRemindInfoGroup()
   {
     // Byte code:
-    //   0: ldc_w 411
-    //   3: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 409
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 228	com/tencent/mm/plugin/sns/storage/AdSnsInfo:field_remindInfoGroup	[B
+    //   7: getfield 227	com/tencent/mm/plugin/sns/storage/AdSnsInfo:field_remindInfoGroup	[B
     //   10: ifnull +63 -> 73
-    //   13: new 360	com/tencent/mm/protocal/protobuf/ci
+    //   13: new 358	com/tencent/mm/protocal/protobuf/cs
     //   16: dup
-    //   17: invokespecial 412	com/tencent/mm/protocal/protobuf/ci:<init>	()V
+    //   17: invokespecial 410	com/tencent/mm/protocal/protobuf/cs:<init>	()V
     //   20: astore_1
     //   21: aload_1
     //   22: aload_0
-    //   23: getfield 228	com/tencent/mm/plugin/sns/storage/AdSnsInfo:field_remindInfoGroup	[B
-    //   26: invokevirtual 416	com/tencent/mm/protocal/protobuf/ci:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   23: getfield 227	com/tencent/mm/plugin/sns/storage/AdSnsInfo:field_remindInfoGroup	[B
+    //   26: invokevirtual 414	com/tencent/mm/protocal/protobuf/cs:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   29: pop
-    //   30: ldc_w 411
-    //   33: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   30: ldc_w 409
+    //   33: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: aload_1
     //   37: areturn
     //   38: astore_2
     //   39: aconst_null
     //   40: astore_1
-    //   41: ldc 33
-    //   43: new 418	java/lang/StringBuilder
+    //   41: ldc 32
+    //   43: new 416	java/lang/StringBuilder
     //   46: dup
-    //   47: ldc_w 420
-    //   50: invokespecial 421	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   47: ldc_w 418
+    //   50: invokespecial 419	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   53: aload_2
-    //   54: invokevirtual 424	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   57: invokevirtual 428	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 431	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: invokestatic 435	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: invokevirtual 422	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   57: invokevirtual 426	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokevirtual 429	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokestatic 433	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   66: goto -36 -> 30
     //   69: astore_2
     //   70: goto -29 -> 41
@@ -351,7 +348,7 @@ public class AdSnsInfo
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	78	0	this	AdSnsInfo
-    //   20	55	1	localci	ci
+    //   20	55	1	localcs	cs
     //   38	16	2	localException1	Exception
     //   69	1	2	localException2	Exception
     // Exception table:
@@ -363,7 +360,7 @@ public class AdSnsInfo
   public String getSnsId()
   {
     AppMethodBeat.i(97428);
-    String str = y.bs("ad_table_", this.field_snsId);
+    String str = ai.bE("ad_table_", this.field_snsId);
     AppMethodBeat.o(97428);
     return str;
   }
@@ -388,7 +385,7 @@ public class AdSnsInfo
     TimeLineObject localTimeLineObject1;
     if (this.field_content == null)
     {
-      localTimeLineObject1 = o.bpc();
+      localTimeLineObject1 = o.bMJ();
       AppMethodBeat.o(97420);
       return localTimeLineObject1;
     }
@@ -414,7 +411,7 @@ public class AdSnsInfo
     catch (Exception localException)
     {
       Log.e("MicroMsg.AdSnsInfo", "error get snsinfo timeline!");
-      TimeLineObject localTimeLineObject2 = o.bpc();
+      TimeLineObject localTimeLineObject2 = o.bMJ();
       AppMethodBeat.o(97420);
       return localTimeLineObject2;
     }
@@ -423,9 +420,9 @@ public class AdSnsInfo
   public b getTimelineRemindInfoSelfInfo()
   {
     AppMethodBeat.i(97424);
-    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().RHX != null) && (getRemindInfoGroup().RHX.Uci != null))
+    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().YEZ != null) && (getRemindInfoGroup().YEZ.abtA != null))
     {
-      b localb = getRemindInfoGroup().RHX.Uci.Tkb;
+      b localb = getRemindInfoGroup().YEZ.abtA.aaxD;
       AppMethodBeat.o(97424);
       return localb;
     }
@@ -436,9 +433,9 @@ public class AdSnsInfo
   public b getTimelineRemindInfoSourceInfo()
   {
     AppMethodBeat.i(97423);
-    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().RHX != null) && (getRemindInfoGroup().RHX.Uch != null))
+    if ((getRemindInfoGroup() != null) && (getRemindInfoGroup().YEZ != null) && (getRemindInfoGroup().YEZ.abtz != null))
     {
-      b localb = getRemindInfoGroup().RHX.Uch.Tkb;
+      b localb = getRemindInfoGroup().YEZ.abtz.aaxD;
       AppMethodBeat.o(97423);
       return localb;
     }
@@ -504,7 +501,7 @@ public class AdSnsInfo
   public boolean setContent(String paramString)
   {
     AppMethodBeat.i(97419);
-    paramString = o.Xk(paramString);
+    paramString = o.Pm(paramString);
     try
     {
       this.field_content = paramString.toByteArray();
@@ -540,39 +537,39 @@ public class AdSnsInfo
     this.field_localFlag &= 0xFFFFFF7F;
   }
   
-  public void setRemindInfoGroup(ci paramci)
+  public void setRemindInfoGroup(cs paramcs)
   {
     AppMethodBeat.i(97421);
     try
     {
-      this.field_remindInfoGroup = paramci.toByteArray();
+      this.field_remindInfoGroup = paramcs.toByteArray();
       AppMethodBeat.o(97421);
       return;
     }
-    catch (Exception paramci)
+    catch (Exception paramcs)
     {
-      Log.e("MicroMsg.AdSnsInfo", "remindInfo toBytes error! " + paramci.getMessage());
+      Log.e("MicroMsg.AdSnsInfo", "remindInfo toBytes error! " + paramcs.getMessage());
       AppMethodBeat.o(97421);
     }
   }
   
   public void setSnsId(long paramLong)
   {
-    AppMethodBeat.i(265331);
+    AppMethodBeat.i(306616);
     this.field_snsId = paramLong;
     if (paramLong != 0L) {
       setStringSeq(paramLong);
     }
-    AppMethodBeat.o(265331);
+    AppMethodBeat.o(306616);
   }
   
   public void setStringSeq(long paramLong)
   {
-    AppMethodBeat.i(265332);
-    this.field_stringSeq = t.Qu(paramLong);
-    this.field_stringSeq = t.aZn(this.field_stringSeq);
+    AppMethodBeat.i(306641);
+    this.field_stringSeq = t.uA(paramLong);
+    this.field_stringSeq = t.aXy(this.field_stringSeq);
     Log.d("MicroMsg.AdSnsInfo", paramLong + " stringSeq " + this.field_stringSeq);
-    AppMethodBeat.o(265332);
+    AppMethodBeat.o(306641);
   }
   
   public void setTimeLine(TimeLineObject paramTimeLineObject)
@@ -603,7 +600,7 @@ public class AdSnsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdSnsInfo
  * JD-Core Version:    0.7.0.1
  */

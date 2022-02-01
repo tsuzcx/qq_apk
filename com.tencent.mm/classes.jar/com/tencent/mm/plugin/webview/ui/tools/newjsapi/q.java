@@ -1,143 +1,213 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import com.tencent.luggage.xweb_ext.extendplugin.b.c;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.plugin.websearch.ui.a.g;
+import com.tencent.mm.plugin.websearch.webview.q.a.a;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.MMWebView;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
-import org.xwalk.core.XWalkEnvironment;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleVideoAction;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/BasePluginJsApi;", "()V", "TAG", "", "actionInsertSameLayerVideo", "actionOperateSameLayerVideo", "actionRemoveSameLayerVideo", "actionUpdateSameLayerVideo", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "getPluginType", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleHaoKanAction;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "compatibilityMode", "", "getCompatibilityMode", "()Z", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleCheckSyncCommentPermission", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "handleCheckSyncHanKanPermissionAction", "handleMsg", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
   extends a
 {
-  private static final int IIl = 371;
-  public static final q Qvt;
-  private static final String fXz = "handleVideoAction";
+  private static final boolean WFo;
+  public static final q Xnm;
   
   static
   {
-    AppMethodBeat.i(219718);
-    Qvt = new q();
-    IIl = 371;
-    fXz = "handleVideoAction";
-    AppMethodBeat.o(219718);
+    AppMethodBeat.i(297739);
+    Xnm = new q();
+    WFo = true;
+    AppMethodBeat.o(297739);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, final p paramp)
   {
-    AppMethodBeat.i(219717);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Object localObject1 = (String)paramn.params.get("action");
-    Log.i("MicroMsg.JsApiHandleVideoAction", "HandleVideoAction action=%s", new Object[] { localObject1 });
-    if (Util.isNullOrNil((String)localObject1))
+    AppMethodBeat.i(298423);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Object localObject1 = (String)paramp.params.get("action");
+    Log.i("MicroMsg.JsApiHandleHaoKanAction", "JsApiHandleHaoKanAction action=%s", new Object[] { localObject1 });
+    Object localObject2 = (CharSequence)localObject1;
+    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramf.PNo.h(paramn.POu, paramn.function + ":fail action is empty", null);
-      AppMethodBeat.o(219717);
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail action is empty"), null);
+      AppMethodBeat.o(298423);
       return true;
     }
-    if ((p.h("insertSameLayerVideo", localObject1)) || (p.h("updateSameLayerVideo", localObject1)) || (p.h("operateSameLayerVideo", localObject1)) || (p.h("removeSameLayerVideo", localObject1)))
+    if (s.p(localObject1, "checkSyncHaoKanPermission"))
     {
-      ab.hnS();
-      boolean bool = d(paramf, paramn);
-      if ((p.h("removeSameLayerVideo", localObject1)) && (paramn.POv != null) && (paramn.POv.has("viewId")))
+      if (!MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("tophitory_show_init_dialog", false))
       {
-        paramf = c(paramf);
-        if (paramf != null) {
-          paramf.z("video", paramn.POv.optInt("viewId"));
+        localObject2 = AppForegroundDelegate.aCe();
+        s.s(localObject2, "getTopActivity()");
+        if ((Activity)((WeakReference)localObject2).get() != null)
+        {
+          localObject1 = com.tencent.mm.plugin.websearch.webview.q.Wsi;
+          localObject1 = (Activity)((WeakReference)localObject2).get();
+          s.checkNotNull(localObject1);
+          s.s(localObject1, "weakReferenceActivity?.get()!!");
+          localObject1 = (Context)localObject1;
+          paramp = (q.a.a)new b(paramh, paramp);
+          paramh = (Activity)((WeakReference)localObject2).get();
+          if (paramh == null)
+          {
+            paramh = null;
+            com.tencent.mm.plugin.websearch.webview.q.a.a((Context)localObject1, paramp, paramh);
+          }
         }
-      }
-      AppMethodBeat.o(219717);
-      return bool;
-    }
-    if (p.h("supportIFrameSameLayer", localObject1))
-    {
-      localObject1 = paramf.PNp;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      if ((((MMWebView)localObject1).isXWalkKernel()) && (XWalkEnvironment.isCurrentVersionSupportNativeView())) {
-        paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
       }
       for (;;)
       {
-        AppMethodBeat.o(219717);
+        AppMethodBeat.o(298423);
         return true;
-        paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
+        paramh = paramh.getResources();
+        if (paramh == null)
+        {
+          paramh = null;
+          break;
+        }
+        paramh = paramh.getString(a.g.top_story_video_click_haokan_education_publish);
+        break;
+        Log.i("MicroMsg.JsApiHandleHaoKanAction", "handleCheckSyncHanKanPermissionAction activity is null");
+        localObject1 = new HashMap();
+        ((Map)localObject1).put("result", Integer.valueOf(0));
+        ((Map)localObject1).put("dialogShowed", Integer.valueOf(0));
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject1);
+        continue;
+        localObject1 = new HashMap();
+        ((Map)localObject1).put("result", Integer.valueOf(1));
+        ((Map)localObject1).put("dialogShowed", Integer.valueOf(0));
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject1);
       }
     }
-    Object localObject2 = com.tencent.mm.plugin.webview.ui.tools.video.a.QvS;
-    if ((com.tencent.mm.plugin.webview.ui.tools.video.a.hbB()) && (p.h("getInitialParams", localObject1)))
+    if (s.p(localObject1, "checkSyncCommentPermission"))
     {
-      localObject1 = com.tencent.mm.plugin.webview.ui.tools.video.a.QvS;
-      HashMap localHashMap = new HashMap();
-      String str = com.tencent.mm.plugin.webview.ui.tools.video.a.QvR.decodeString("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
-      if (Util.isNullOrNil(str)) {
-        Log.i("MicroMsg.MPVideoPreviewDataMgr", "getInitialParams vid null");
-      }
-      for (localObject1 = null;; localObject1 = (Map)localHashMap)
+      if (!MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("tophitory_show_comment_dialog", false))
       {
-        paramf.PNo.h(paramn.POu, paramn.function + ":ok", (Map)localObject1);
-        AppMethodBeat.o(219717);
+        localObject1 = AppForegroundDelegate.aCe();
+        s.s(localObject1, "getTopActivity()");
+        if ((Activity)((WeakReference)localObject1).get() != null)
+        {
+          localObject2 = com.tencent.mm.plugin.websearch.webview.q.Wsi;
+          localObject1 = (Activity)((WeakReference)localObject1).get();
+          s.checkNotNull(localObject1);
+          s.s(localObject1, "weakReferenceActivity?.get()!!");
+          com.tencent.mm.plugin.websearch.webview.q.a.a((Context)localObject1, (q.a.a)new a(paramh, paramp), true);
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(298423);
         return true;
-        Map localMap1 = com.tencent.mm.plugin.webview.ui.tools.video.a.bni(str);
-        Map localMap2 = (Map)localHashMap;
-        if (localMap1 != null)
-        {
-          localObject2 = localMap1.get("videoInitialTime");
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          localObject1 = new Object();
-        }
-        localMap2.put("videoInitialTime", localObject1);
-        localMap2 = (Map)localHashMap;
-        if (localMap1 != null)
-        {
-          localObject2 = localMap1.get("videoInitialSnapshot");
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          localObject1 = new Object();
-        }
-        localMap2.put("videoInitialSnapshot", localObject1);
-        ((MultiProcessMMKV)com.tencent.mm.plugin.webview.ui.tools.video.a.QvR.getSlotForWrite()).encode("MicroMsg.MPVideoPreviewDataMgr_prepareOnReceivePageData_vid", "");
-        Log.i("MicroMsg.MPVideoPreviewDataMgr", "getInitialParams vid = " + str + ", time = " + localHashMap.get("videoInitialTime"));
+        Log.i("MicroMsg.JsApiHandleHaoKanAction", "handleCheckSyncCommentPermission activity is null");
+        localObject1 = new HashMap();
+        ((Map)localObject1).put("result", Integer.valueOf(0));
+        ((Map)localObject1).put("dialogShowed", Integer.valueOf(0));
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject1);
+        continue;
+        localObject1 = new HashMap();
+        ((Map)localObject1).put("result", Integer.valueOf(1));
+        ((Map)localObject1).put("dialogShowed", Integer.valueOf(0));
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject1);
       }
     }
-    AppMethodBeat.o(219717);
+    AppMethodBeat.o(298423);
     return false;
   }
   
-  public final String bNT()
+  public final String gPX()
   {
-    return "video";
+    return "handleHaokanAction";
   }
   
-  public final String fCm()
+  public final int gPZ()
   {
-    return fXz;
+    return 335;
   }
   
-  public final int fCn()
+  public final boolean itW()
   {
-    return IIl;
+    return WFo;
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleHaoKanAction$handleCheckSyncCommentPermission$1", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchUtils$Companion$IDismissDialogClickCallBack;", "dismiss", "", "actionOk", "", "onPosition", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements q.a.a
+  {
+    a(h paramh, p paramp) {}
+    
+    public final void hNq()
+    {
+      AppMethodBeat.i(297698);
+      Object localObject = new HashMap();
+      ((Map)localObject).put("result", Integer.valueOf(1));
+      ((Map)localObject).put("dialogShowed", Integer.valueOf(1));
+      this.XmY.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject);
+      localObject = com.tencent.mm.plugin.websearch.webview.q.Wsi;
+      com.tencent.mm.plugin.websearch.webview.q.a.t(1L, 2L, 1L);
+      AppMethodBeat.o(297698);
+    }
+    
+    public final void hNr()
+    {
+      AppMethodBeat.i(297703);
+      Log.i("MicroMsg.JsApiHandleHaoKanAction", "dismiss is null");
+      Object localObject = new HashMap();
+      ((Map)localObject).put("result", Integer.valueOf(0));
+      ((Map)localObject).put("dialogShowed", Integer.valueOf(1));
+      this.XmY.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject);
+      localObject = com.tencent.mm.plugin.websearch.webview.q.Wsi;
+      com.tencent.mm.plugin.websearch.webview.q.a.t(2L, 2L, 1L);
+      AppMethodBeat.o(297703);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleHaoKanAction$handleCheckSyncHanKanPermissionAction$1", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchUtils$Companion$IDismissDialogClickCallBack;", "dismiss", "", "actionOk", "", "onPosition", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements q.a.a
+  {
+    b(h paramh, p paramp) {}
+    
+    public final void hNq()
+    {
+      AppMethodBeat.i(297695);
+      Object localObject = new HashMap();
+      ((Map)localObject).put("result", Integer.valueOf(1));
+      ((Map)localObject).put("dialogShowed", Integer.valueOf(1));
+      this.XmY.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject);
+      localObject = com.tencent.mm.plugin.websearch.webview.q.Wsi;
+      com.tencent.mm.plugin.websearch.webview.q.a.t(1L, 1L, 1L);
+      AppMethodBeat.o(297695);
+    }
+    
+    public final void hNr()
+    {
+      AppMethodBeat.i(297702);
+      Log.i("MicroMsg.JsApiHandleHaoKanAction", "dismiss is null");
+      Object localObject = new HashMap();
+      ((Map)localObject).put("result", Integer.valueOf(0));
+      ((Map)localObject).put("dialogShowed", Integer.valueOf(1));
+      this.XmY.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), (Map)localObject);
+      localObject = com.tencent.mm.plugin.websearch.webview.q.Wsi;
+      com.tencent.mm.plugin.websearch.webview.q.a.t(2L, 1L, 1L);
+      AppMethodBeat.o(297702);
+    }
   }
 }
 

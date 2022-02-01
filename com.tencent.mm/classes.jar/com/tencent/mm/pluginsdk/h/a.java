@@ -2,29 +2,30 @@ package com.tencent.mm.pluginsdk.h;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.aq.f;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.z;
+import com.tencent.mm.modelcdntran.d;
+import com.tencent.mm.modelcdntran.k;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.comm.c.h;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
-import com.tencent.mm.protocal.protobuf.ji;
-import com.tencent.mm.protocal.protobuf.jj;
-import com.tencent.mm.protocal.protobuf.yb;
-import com.tencent.mm.protocal.protobuf.yc;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.protocal.protobuf.ke;
+import com.tencent.mm.protocal.protobuf.kf;
+import com.tencent.mm.protocal.protobuf.zy;
+import com.tencent.mm.protocal.protobuf.zz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -33,66 +34,66 @@ import java.util.List;
 import java.util.Map;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private final a QXZ;
-  private i callback;
-  private d rr;
+  private final a XTX;
+  private h callback;
+  private c rr;
   
   public a(List<b> paramList, a parama)
   {
-    AppMethodBeat.i(219008);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ji();
-    ((d.a)localObject).lBV = new jj();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/batchcheckbigfileupload";
-    ((d.a)localObject).funcId = 3939;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (ji)d.b.b(this.rr.lBR);
+    AppMethodBeat.i(244547);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ke();
+    ((c.a)localObject).otF = new kf();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/batchcheckbigfileupload";
+    ((c.a)localObject).funcId = 3939;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ke)c.b.b(this.rr.otB);
     paramList = paramList.iterator();
     if (paramList.hasNext())
     {
       b localb = (b)paramList.next();
-      yb localyb = new yb();
+      zy localzy = new zy();
       String str1 = localb.filePath;
       String str2 = localb.toUser;
-      if ((!Util.isNullOrNil(localb.aesKey)) && (!Util.isNullOrNil(localb.smU)))
+      if ((!Util.isNullOrNil(localb.aesKey)) && (!Util.isNullOrNil(localb.vyS)))
       {
-        localyb.ScV = localb.aesKey;
-        localyb.CqS = localb.smU;
-        localyb.CqQ = localb.fileName;
-        localyb.RNe = localb.jmx;
+        localzy.ZaN = localb.aesKey;
+        localzy.Ida = localb.vyS;
+        localzy.IcZ = localb.fileName;
+        localzy.YKs = localb.lPJ;
       }
-      for (localyb.RNd = localb.fileSize;; localyb.RNd = ((int)u.bBQ(str1)))
+      for (localzy.YKr = localb.fileSize;; localzy.YKr = ((int)y.bEl(str1)))
       {
-        localyb.RLs = com.tencent.mm.i.a.iTW;
-        localyb.CRQ = str2;
-        localyb.CRR = z.bcZ();
-        Log.i("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig NetSceneBatchCheckBigFileUpload, aesKey[%s] md5[%s] FileName[%s] FileSize[%d] FileExt[%s] talker[%s], fromUserName[%s], stack[%s]", new Object[] { localyb.ScV, localyb.CqS, localyb.CqQ, Long.valueOf(localyb.RNd), localyb.RNe, localyb.CRQ, localyb.CRR, Util.getStack() });
-        ((ji)localObject).rVy.add(localyb);
+        localzy.YIE = com.tencent.mm.g.a.lwb;
+        localzy.IMg = str2;
+        localzy.IMh = z.bAM();
+        Log.i("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig NetSceneBatchCheckBigFileUpload, aesKey[%s] md5[%s] FileName[%s] FileSize[%d] FileExt[%s] talker[%s], fromUserName[%s], stack[%s]", new Object[] { localzy.ZaN, localzy.Ida, localzy.IcZ, Long.valueOf(localzy.YKr), localzy.YKs, localzy.IMg, localzy.IMh, Util.getStack() });
+        ((ke)localObject).vgO.add(localzy);
         break;
-        f.bkh();
-        localyb.ScV = com.tencent.mm.aq.a.bjV();
-        f.bkh();
-        localyb.CqS = com.tencent.mm.aq.a.Vs(str1);
-        localyb.CqQ = u.bBW(str1);
-        localyb.RNe = u.asq(str1);
+        k.bHX();
+        localzy.ZaN = d.bHI();
+        k.bHX();
+        localzy.Ida = d.Ns(str1);
+        localzy.IcZ = y.bEq(str1);
+        localzy.YKs = y.alV(str1);
       }
     }
-    ((ji)localObject).rVx = ((ji)localObject).rVy.size();
-    this.QXZ = parama;
-    AppMethodBeat.o(219008);
+    ((ke)localObject).vgN = ((ke)localObject).vgO.size();
+    this.XTX = parama;
+    AppMethodBeat.o(244547);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(219010);
-    this.callback = parami;
+    AppMethodBeat.i(244557);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(219010);
+    AppMethodBeat.o(244557);
     return i;
   }
   
@@ -103,104 +104,104 @@ public final class a
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(219031);
+    AppMethodBeat.i(244573);
     Log.d("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig onGYNetEnd [%d, %d, %s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       Log.e("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig onGYNetEnd errType = " + paramInt2 + ", errCode = " + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      if (this.QXZ != null)
+      if (this.XTX != null)
       {
         params = paramString;
         if (Util.isNullOrNil(paramString)) {
           params = MMApplicationContext.getContext().getString(c.h.check_big_file_error_svr);
         }
-        paramString = this.QXZ;
+        paramString = this.XTX;
         if (paramInt3 == 0) {
           break label145;
         }
       }
       for (;;)
       {
-        paramString.bQ(paramInt3, params);
-        AppMethodBeat.o(219031);
+        paramString.cy(paramInt3, params);
+        AppMethodBeat.o(244573);
         return;
         label145:
         paramInt3 = -1001;
       }
     }
-    paramArrayOfByte = (ji)d.b.b(((d)params).lBR);
-    params = (jj)d.c.b(((d)params).lBS);
-    paramInt1 = params.getBaseResponse().CqV;
+    paramArrayOfByte = (ke)c.b.b(((c)params).otB);
+    params = (kf)c.c.b(((c)params).otC);
+    paramInt1 = params.getBaseResponse().Idd;
     if (paramInt1 != 0)
     {
-      paramString = params.getBaseResponse().Tef.toString();
+      paramString = params.getBaseResponse().akjO.toString();
       Log.e("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig outer resp.getBaseResponse().Ret: " + paramInt1 + ", errMsg:" + paramString);
       this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
-      if (this.QXZ != null) {
-        this.QXZ.bQ(paramInt1, paramString);
+      if (this.XTX != null) {
+        this.XTX.cy(paramInt1, paramString);
       }
-      AppMethodBeat.o(219031);
+      AppMethodBeat.o(244573);
       return;
     }
-    if ((paramArrayOfByte.rVx != params.rVx) || (paramArrayOfByte.rVy.size() != params.rVy.size()) || (params.rVx != params.rVy.size()))
+    if ((paramArrayOfByte.vgN != params.vgN) || (paramArrayOfByte.vgO.size() != params.vgO.size()) || (params.vgN != params.vgO.size()))
     {
-      Log.e("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig  req.count: " + paramArrayOfByte.rVx + " not equals resp.Count:" + params.rVx + ", resp.List.size() = " + params.rVy.size());
+      Log.e("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig  req.count: " + paramArrayOfByte.vgN + " not equals resp.Count:" + params.vgN + ", resp.List.size() = " + params.vgO.size());
       this.callback.onSceneEnd(paramInt2, -1000, "req-count mismatch resp-count", this);
-      if (this.QXZ != null) {
-        this.QXZ.bQ(-1000, MMApplicationContext.getContext().getString(c.h.check_big_file_error_invalid_resp));
+      if (this.XTX != null) {
+        this.XTX.cy(-1000, MMApplicationContext.getContext().getString(c.h.check_big_file_error_invalid_resp));
       }
-      AppMethodBeat.o(219031);
+      AppMethodBeat.o(244573);
       return;
     }
-    Object localObject = params.rVy.iterator();
+    Object localObject = params.vgO.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      yc localyc = (yc)((Iterator)localObject).next();
-      paramInt1 = localyc.getBaseResponse().CqV;
-      String str = localyc.getBaseResponse().Tef.toString();
+      zz localzz = (zz)((Iterator)localObject).next();
+      paramInt1 = localzz.getBaseResponse().Idd;
+      String str = localzz.getBaseResponse().akjO.toString();
       if (paramInt1 != 0)
       {
-        Log.e("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig inner resp.getBaseResponse().Ret: " + localyc + ", errMsg:" + str);
+        Log.e("MicroMsg.NetSceneBatchCheckBigFileUpload", "summerbig inner resp.getBaseResponse().Ret: " + localzz + ", errMsg:" + str);
         paramString = XmlParser.parseXml(str, "e", null);
         if (paramString == null) {}
         for (paramString = MMApplicationContext.getContext().getString(c.h.check_big_file_error_parse_resp);; paramString = (String)paramString.get(".e.Content"))
         {
           this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
-          if (this.QXZ != null) {
-            this.QXZ.bQ(paramInt1, paramString);
+          if (this.XTX != null) {
+            this.XTX.cy(paramInt1, paramString);
           }
-          AppMethodBeat.o(219031);
+          AppMethodBeat.o(244573);
           return;
         }
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    if (this.QXZ != null)
+    if (this.XTX != null)
     {
       paramString = Collections.synchronizedList(new ArrayList());
       paramInt1 = 0;
-      while (paramInt1 < params.rVx)
+      while (paramInt1 < params.vgN)
       {
         localObject = new c();
-        ((c)localObject).smU = ((yb)paramArrayOfByte.rVy.get(paramInt1)).CqS;
-        ((c)localObject).totalLen = ((yb)paramArrayOfByte.rVy.get(paramInt1)).RNd;
-        ((c)localObject).aesKey = ((yb)paramArrayOfByte.rVy.get(paramInt1)).ScV;
-        ((c)localObject).signature = ((yc)params.rVy.get(paramInt1)).mVB;
-        ((c)localObject).QYa = ((yc)params.rVy.get(paramInt1)).Skj;
-        ((c)localObject).QYb = ((yc)params.rVy.get(paramInt1)).Skk;
-        Log.d("MicroMsg.NetSceneBatchCheckBigFileUpload", "summersafecdn onGYNetEnd Signature[%s], fuin[%d], faeskey[%s], fSignature[%s]", new Object[] { ((c)localObject).signature, Integer.valueOf(((yc)params.rVy.get(paramInt1)).Ski), ((c)localObject).QYa, ((c)localObject).QYb });
+        ((c)localObject).vyS = ((zy)paramArrayOfByte.vgO.get(paramInt1)).Ida;
+        ((c)localObject).totalLen = ((zy)paramArrayOfByte.vgO.get(paramInt1)).YKr;
+        ((c)localObject).aesKey = ((zy)paramArrayOfByte.vgO.get(paramInt1)).ZaN;
+        ((c)localObject).signature = ((zz)params.vgO.get(paramInt1)).pSi;
+        ((c)localObject).XTY = ((zz)params.vgO.get(paramInt1)).Zit;
+        ((c)localObject).XTZ = ((zz)params.vgO.get(paramInt1)).Ziu;
+        Log.d("MicroMsg.NetSceneBatchCheckBigFileUpload", "summersafecdn onGYNetEnd Signature[%s], fuin[%d], faeskey[%s], fSignature[%s]", new Object[] { ((c)localObject).signature, Integer.valueOf(((zz)params.vgO.get(paramInt1)).Zis), ((c)localObject).XTY, ((c)localObject).XTZ });
         paramString.add(localObject);
         paramInt1 += 1;
       }
-      this.QXZ.bQ(0, "");
+      this.XTX.cy(0, "");
     }
-    AppMethodBeat.o(219031);
+    AppMethodBeat.o(244573);
   }
   
   public static abstract interface a
   {
-    public abstract void bQ(int paramInt, String paramString);
+    public abstract void cy(int paramInt, String paramString);
   }
   
   public static final class b
@@ -209,26 +210,26 @@ public final class a
     public String fileName;
     public String filePath;
     public long fileSize;
-    public String jmx;
-    public String smU;
+    public String lPJ;
     public String toUser;
+    public String vyS;
   }
   
   public final class c
   {
-    public String QYa;
-    public String QYb;
+    public String XTY;
+    public String XTZ;
     public String aesKey;
     public String signature;
-    public String smU;
     public long totalLen;
+    public String vyS;
     
     public c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.h.a
  * JD-Core Version:    0.7.0.1
  */

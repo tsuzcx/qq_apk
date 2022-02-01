@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.protocal.protobuf.cuy;
-import com.tencent.mm.protocal.protobuf.cuz;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.protocal.protobuf.cin;
+import com.tencent.mm.protocal.protobuf.cio;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  extends c<cuz>
+  extends b<cio>
 {
-  public g(int paramInt1, int paramInt2, String paramString)
+  public g(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(68404);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cuy();
-    ((d.a)localObject).lBV = new cuz();
-    ((d.a)localObject).funcId = 2507;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/manageplan";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).bgN();
-    cuy localcuy = (cuy)d.b.b(((d)localObject).lBR);
-    localcuy.type = paramInt1;
-    localcuy.Olc = paramInt2;
-    localcuy.RIU = paramString;
-    c((d)localObject);
-    Log.i("MicroMsg.CgiLqtManagePlan", "type: %s, planId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(68404);
+    AppMethodBeat.i(316168);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cin();
+    ((c.a)localObject).otF = new cio();
+    ((c.a)localObject).funcId = 5075;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/getdistributepreview";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    cin localcin = (cin)c.b.b(((c)localObject).otB);
+    localcin.ihV = paramLong;
+    localcin.scene = paramInt;
+    localcin.Vbl = ai.ieD();
+    c((c)localObject);
+    Log.i("MicroMsg.CgiLqtGetDistributePreview", "init amount: %s, scene: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(316168);
   }
 }
 

@@ -1,32 +1,16 @@
 package com.tencent.mm.api;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.core.BaseWebViewController.d;
-import com.tencent.mm.plugin.webview.d.e;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.ui.widget.MMWebView;
-
 public abstract interface aa
-  extends a
 {
-  public abstract BaseWebViewController a(MMWebView paramMMWebView);
+  public abstract void a(i parami);
   
-  public abstract BaseWebViewController a(MMWebView paramMMWebView, BaseWebViewController.d paramd, e parame);
+  public abstract void a(i parami, int paramInt, Object paramObject);
   
-  public abstract boolean a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract h b(MMWebView paramMMWebView);
-  
-  public abstract void c(Activity paramActivity, String paramString);
-  
-  public abstract String gw(String paramString);
+  public abstract void dP(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.api.aa
  * JD-Core Version:    0.7.0.1
  */

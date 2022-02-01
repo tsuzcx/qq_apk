@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/bd9" android:background="@drawable/akn" android:paddingLeft="@dimen/bv" android:paddingRight="@dimen/bv" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.HardTouchableLayout android:id="@id/kd7" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.google.android.material.tabs.TabLayout android:id="@id/kdb" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicatorHeight="0.0dip" app:tabMaxWidth="@dimen/d2" app:tabMinWidth="@dimen/cw" app:tabMode="j4k" app:tabPaddingEnd="@dimen/bv" app:tabPaddingStart="@dimen/bv" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/a7b" app:tabTextColor="@color/m4" />
+    </com.tencent.mm.view.HardTouchableLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lnd" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <View android:background="@drawable/iy" android:layout_width="20.0dip" android:layout_height="24.0dip" app:layout_constraintBottom_toBottomOf="@id/lnd" app:layout_constraintRight_toLeftOf="@id/lnd" app:layout_constraintTop_toTopOf="@id/lnd" />
+</androidx.constraintlayout.widget.ConstraintLayout>

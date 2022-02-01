@@ -6,24 +6,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b$1
   implements b.a
 {
-  public final String eA(String paramString)
+  public final String fX(String paramString)
   {
-    AppMethodBeat.i(203619);
+    AppMethodBeat.i(228920);
     paramString = i.findLibPath(paramString);
-    AppMethodBeat.o(203619);
+    AppMethodBeat.o(228920);
     return paramString;
   }
   
   public final void loadLibrary(String paramString)
   {
     AppMethodBeat.i(139955);
-    i.eG(paramString);
+    i.ge(paramString);
     AppMethodBeat.o(139955);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.a.b.1
  * JD-Core Version:    0.7.0.1
  */

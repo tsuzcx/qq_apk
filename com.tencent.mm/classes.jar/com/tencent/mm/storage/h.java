@@ -15,18 +15,18 @@ public final class h
     super(parami);
     AppMethodBeat.i(32815);
     e(getDB(), "appbrandmessage");
-    a(new i.b(256, "appbrandmessage", i.b.b(3000001L, 3500000L, 102000001L, 105000000L)));
+    a(new i.b(256, "appbrandmessage", i.b.d(3000001L, 3500000L, 102000001L, 105000000L)));
     AppMethodBeat.o(32815);
   }
   
-  public final String aEK(String paramString)
+  public final String aAD(String paramString)
   {
     AppMethodBeat.i(32816);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!as.OS(paramString)) {
+      if (!au.Hh(paramString)) {
         break;
       }
       AppMethodBeat.o(32816);

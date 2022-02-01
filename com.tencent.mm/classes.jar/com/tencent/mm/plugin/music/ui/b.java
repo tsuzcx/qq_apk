@@ -1,9 +1,6 @@
 package com.tencent.mm.plugin.music.ui;
 
 import android.content.Context;
-import android.graphics.LinearGradient;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
 import android.graphics.drawable.PaintDrawable;
 import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 import android.graphics.drawable.shapes.RectShape;
@@ -40,13 +37,13 @@ public final class b
   extends d
   implements i.a
 {
-  MMHandler FRC;
-  private boolean FSb;
-  private final int FUo;
-  private final int FUp;
-  HashMap<Integer, View> FUq;
-  i FUr;
-  private int FUs;
+  private boolean LMW;
+  MMHandler LMx;
+  private final int LPo;
+  private final int LPp;
+  HashMap<Integer, View> LPq;
+  i LPr;
+  private int LPs;
   int count;
   private int scene;
   
@@ -54,14 +51,14 @@ public final class b
   {
     super(paramContext);
     AppMethodBeat.i(63222);
-    this.FUo = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 26);
-    this.FUp = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 260);
-    this.FRC = new MMHandler(Looper.getMainLooper());
-    this.FUq = new HashMap();
-    this.FUr = new i();
-    this.FUr.FRA = this;
+    this.LPo = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 26);
+    this.LPp = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 260);
+    this.LMx = new MMHandler(Looper.getMainLooper());
+    this.LPq = new HashMap();
+    this.LPr = new i();
+    this.LPr.LMu = this;
     this.scene = paramInt;
-    this.FSb = paramBoolean;
+    this.LMW = paramBoolean;
     AppMethodBeat.o(63222);
   }
   
@@ -72,27 +69,27 @@ public final class b
     {
       paramView = LayoutInflater.from(this.context).inflate(a.g.music_item, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.FUu = ((MusicItemLayout)paramView.findViewById(a.e.music_item_bg));
-      paramViewGroup.FUz = ((TextView)paramView.findViewById(a.e.music_name_tv));
-      paramViewGroup.FUB = ((LyricView)paramView.findViewById(a.e.lyric_view));
-      paramViewGroup.FUv = paramView.findViewById(a.e.album_bg_area);
-      paramViewGroup.FUw = paramView.findViewById(a.e.album_bg_mask1);
-      paramViewGroup.FUx = paramView.findViewById(a.e.album_bg_mask2);
-      paramViewGroup.FUy = ((CdnImageView)paramView.findViewById(a.e.album_bg));
-      paramViewGroup.FUA = ((TextView)paramView.findViewById(a.e.music_singer_tv));
+      paramViewGroup.LPu = ((MusicItemLayout)paramView.findViewById(a.e.music_item_bg));
+      paramViewGroup.LPz = ((TextView)paramView.findViewById(a.e.music_name_tv));
+      paramViewGroup.LPB = ((LyricView)paramView.findViewById(a.e.lyric_view));
+      paramViewGroup.LPv = paramView.findViewById(a.e.album_bg_area);
+      paramViewGroup.LPw = paramView.findViewById(a.e.album_bg_mask1);
+      paramViewGroup.LPx = paramView.findViewById(a.e.album_bg_mask2);
+      paramViewGroup.LPy = ((CdnImageView)paramView.findViewById(a.e.album_bg));
+      paramViewGroup.LPA = ((TextView)paramView.findViewById(a.e.music_singer_tv));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      Object localObject = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fek();
+      Object localObject = ((com.tencent.mm.plugin.music.logic.e)com.tencent.mm.plugin.music.e.c.b.bU(com.tencent.mm.plugin.music.logic.e.class)).gnn();
       int j = (paramInt - 100000) % ((List)localObject).size();
       int i = j;
       if (j < 0) {
         i = j + ((List)localObject).size();
       }
       Log.d("MicroMsg.Music.MusicMainAdapter", "play music index %d", new Object[] { Integer.valueOf(i) });
-      localObject = o.feW().aSm((String)((List)localObject).get(i));
-      this.FUq.put(Integer.valueOf(paramInt), paramView);
+      localObject = o.god().aPg((String)((List)localObject).get(i));
+      this.LPq.put(Integer.valueOf(paramInt), paramView);
       paramViewGroup.b((com.tencent.mm.plugin.music.model.e.a)localObject, false);
       AppMethodBeat.o(63223);
       return paramView;
@@ -103,37 +100,37 @@ public final class b
   public final void a(com.tencent.mm.plugin.music.model.e.a parama, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(63227);
-    Iterator localIterator = this.FUq.entrySet().iterator();
+    Iterator localIterator = this.LPq.entrySet().iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)((View)((Map.Entry)localIterator.next()).getValue()).getTag();
-      if (locala.FRG.field_musicId.equals(parama.field_musicId))
+      if (locala.LMB.field_musicId.equals(parama.field_musicId))
       {
-        Log.i("MicroMsg.Music.MusicMainAdapter", "onColorReady: %s", new Object[] { locala.FRG.field_songName });
+        Log.i("MicroMsg.Music.MusicMainAdapter", "onColorReady: %s", new Object[] { locala.LMB.field_songName });
         int i = paramArrayOfInt[0];
         int j = paramArrayOfInt[1];
-        locala.FUu.setBackgroundColor(i);
-        locala.FUB.setLyricColor(j);
-        locala.FUy.setBackgroundColor(i);
+        locala.LPu.setBackgroundColor(i);
+        locala.LPB.setLyricColor(j);
+        locala.LPy.setBackgroundColor(i);
         Object localObject = new b.a.1(locala, i);
         PaintDrawable localPaintDrawable = new PaintDrawable();
         localPaintDrawable.setShape(new RectShape());
         localPaintDrawable.setShaderFactory((ShapeDrawable.ShaderFactory)localObject);
-        locala.FUw.setBackgroundDrawable(localPaintDrawable);
+        locala.LPw.setBackgroundDrawable(localPaintDrawable);
         localObject = new b.a.2(locala, i & 0xFFFFFF | 0x55000000);
         localPaintDrawable = new PaintDrawable();
         localPaintDrawable.setShape(new RectShape());
         localPaintDrawable.setShaderFactory((ShapeDrawable.ShaderFactory)localObject);
-        locala.FUx.setBackgroundDrawable(localPaintDrawable);
-        locala.FUz.setTextColor(j);
-        locala.FUA.setTextColor(j);
-        ((MusicMainUI)this.context).l(parama);
+        locala.LPx.setBackgroundDrawable(localPaintDrawable);
+        locala.LPz.setTextColor(j);
+        locala.LPA.setTextColor(j);
+        ((MusicMainUI)this.context).k(parama);
       }
     }
     AppMethodBeat.o(63227);
   }
   
-  public final void aE(final int paramInt, final long paramLong)
+  public final void aL(final int paramInt, final long paramLong)
   {
     AppMethodBeat.i(63226);
     MMHandlerThread.postToMainThread(new Runnable()
@@ -143,7 +140,7 @@ public final class b
         AppMethodBeat.i(63211);
         View localView = (View)b.a(b.this).get(Integer.valueOf(paramInt));
         if (localView != null) {
-          ((b.a)localView.getTag()).FUB.setCurrentTime(paramLong);
+          ((b.a)localView.getTag()).LPB.setCurrentTime(paramLong);
         }
         AppMethodBeat.o(63211);
       }
@@ -151,10 +148,10 @@ public final class b
     AppMethodBeat.o(63226);
   }
   
-  public final int bAR()
+  public final int bZC()
   {
     AppMethodBeat.i(63225);
-    int i = ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).fek().size();
+    int i = ((com.tencent.mm.plugin.music.logic.e)com.tencent.mm.plugin.music.e.c.b.bU(com.tencent.mm.plugin.music.logic.e.class)).gnn().size();
     AppMethodBeat.o(63225);
     return i;
   }
@@ -164,37 +161,37 @@ public final class b
     return this.count;
   }
   
-  public final void yy(int paramInt)
+  public final void yG(int paramInt)
   {
     AppMethodBeat.i(63224);
-    this.FUq.remove(Integer.valueOf(paramInt));
+    this.LPq.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(63224);
   }
   
   public final class a
   {
-    com.tencent.mm.plugin.music.model.e.a FRG;
-    TextView FUA;
-    LyricView FUB;
-    boolean FUC;
-    private Animation.AnimationListener FUD;
-    MusicItemLayout FUu;
-    View FUv;
-    View FUw;
-    View FUx;
-    CdnImageView FUy;
-    TextView FUz;
+    com.tencent.mm.plugin.music.model.e.a LMB;
+    TextView LPA;
+    LyricView LPB;
+    boolean LPC;
+    private Animation.AnimationListener LPD;
+    MusicItemLayout LPu;
+    View LPv;
+    View LPw;
+    View LPx;
+    CdnImageView LPy;
+    TextView LPz;
     private int mode;
     
     public a()
     {
       AppMethodBeat.i(63217);
       this.mode = 1;
-      this.FUD = new Animation.AnimationListener()
+      this.LPD = new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          b.a.this.FUC = false;
+          b.a.this.LPC = false;
         }
         
         public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
@@ -210,112 +207,112 @@ public final class b
       if (parama != null)
       {
         Log.i("MicroMsg.Music.MusicMainAdapter", "updateView %s", new Object[] { parama.field_songName });
-        this.FRG = parama;
+        this.LMB = parama;
         if (Util.isNullOrNil(parama.field_songHAlbumUrl)) {
-          ((com.tencent.mm.plugin.music.e.e)com.tencent.mm.plugin.music.f.c.b.bm(com.tencent.mm.plugin.music.e.e.class)).a(parama, b.b(b.this), true);
+          ((com.tencent.mm.plugin.music.logic.e)com.tencent.mm.plugin.music.e.c.b.bU(com.tencent.mm.plugin.music.logic.e.class)).a(parama, b.b(b.this), true);
         }
-        this.FUu.setTag(this);
+        this.LPu.setTag(this);
         if (((m.a(parama)) && (b.c(b.this) != 3)) || (Util.isNullOrNil(parama.field_songSinger))) {
           break label227;
         }
-        this.FUA.setText(parama.field_songSinger);
-        this.FUA.setVisibility(0);
+        this.LPA.setText(parama.field_songSinger);
+        this.LPA.setVisibility(0);
       }
       for (;;)
       {
-        this.FUz.setText(parama.field_songName);
-        this.FUz.setTag(parama.field_songName);
-        this.FUB.setLyricObj(o.feW().a(parama, b.b(b.this)));
+        this.LPz.setText(parama.field_songName);
+        this.LPz.setTag(parama.field_songName);
+        this.LPB.setLyricObj(o.god().a(parama, b.b(b.this)));
         if ((!m.a(parama)) || (b.b(b.this))) {
-          this.FUB.setCurrentTime(1L);
+          this.LPB.setCurrentTime(1L);
         }
-        ffB();
-        b.d(b.this).a(parama, this.FUy, b.this.context, paramBoolean, b.b(b.this));
+        goP();
+        b.d(b.this).a(parama, this.LPy, b.this.context, paramBoolean, b.b(b.this));
         AppMethodBeat.o(63218);
         return;
         label227:
-        this.FUA.setVisibility(8);
+        this.LPA.setVisibility(8);
       }
     }
     
-    public final boolean ffA()
+    public final boolean goO()
     {
       return this.mode == 2;
     }
     
-    public final void ffB()
+    public final void goP()
     {
       AppMethodBeat.i(63219);
-      if ((this.FUC) || (this.mode == 1))
+      if ((this.LPC) || (this.mode == 1))
       {
         AppMethodBeat.o(63219);
         return;
       }
-      com.tencent.mm.plugin.music.model.d.e.iy(3, b.c(b.this));
+      com.tencent.mm.plugin.music.model.d.e.kc(3, b.c(b.this));
       if (b.e(b.this) == 0)
       {
-        b.a(b.this, this.FUv.getMeasuredHeight());
+        b.a(b.this, this.LPv.getMeasuredHeight());
         localObject = new LinearLayout.LayoutParams(-1, b.e(b.this));
         ((LinearLayout.LayoutParams)localObject).weight = 0.0F;
-        this.FUv.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.LPv.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      com.tencent.mm.plugin.music.model.d.e.FSF = true;
-      com.tencent.mm.plugin.music.model.d.e.ffe();
+      com.tencent.mm.plugin.music.model.d.e.LNB = true;
+      com.tencent.mm.plugin.music.model.d.e.gon();
       this.mode = 1;
-      this.FUC = true;
-      Object localObject = new b.a.a(this, this.FUB, b.f(b.this));
+      this.LPC = true;
+      Object localObject = new b.a.a(this, this.LPB, b.f(b.this));
       ((b.a.a)localObject).setDuration(500L);
-      ((b.a.a)localObject).setAnimationListener(this.FUD);
-      this.FUB.startAnimation((Animation)localObject);
+      ((b.a.a)localObject).setAnimationListener(this.LPD);
+      this.LPB.startAnimation((Animation)localObject);
       AppMethodBeat.o(63219);
     }
     
-    public final void ffC()
+    public final void goQ()
     {
       AppMethodBeat.i(63220);
-      if ((this.FUC) || (this.mode == 2))
+      if ((this.LPC) || (this.mode == 2))
       {
         AppMethodBeat.o(63220);
         return;
       }
-      com.tencent.mm.plugin.music.model.d.e.iy(2, b.c(b.this));
+      com.tencent.mm.plugin.music.model.d.e.kc(2, b.c(b.this));
       if (b.e(b.this) == 0)
       {
-        b.a(b.this, this.FUv.getMeasuredHeight());
+        b.a(b.this, this.LPv.getMeasuredHeight());
         localObject = new LinearLayout.LayoutParams(-1, b.e(b.this));
         ((LinearLayout.LayoutParams)localObject).weight = 0.0F;
-        this.FUv.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.LPv.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      com.tencent.mm.plugin.music.model.d.e.FSF = true;
-      com.tencent.mm.plugin.music.model.d.e.ffe();
+      com.tencent.mm.plugin.music.model.d.e.LNB = true;
+      com.tencent.mm.plugin.music.model.d.e.gon();
       this.mode = 2;
-      this.FUC = true;
-      Object localObject = new b.a.a(this, this.FUB, b.g(b.this));
+      this.LPC = true;
+      Object localObject = new b.a.a(this, this.LPB, b.g(b.this));
       ((b.a.a)localObject).setDuration(500L);
-      ((b.a.a)localObject).setAnimationListener(this.FUD);
-      this.FUB.startAnimation((Animation)localObject);
+      ((b.a.a)localObject).setAnimationListener(this.LPD);
+      this.LPB.startAnimation((Animation)localObject);
       AppMethodBeat.o(63220);
     }
     
-    public final void ffD()
+    public final void goR()
     {
       AppMethodBeat.i(63221);
-      com.tencent.mm.plugin.music.model.d.e.FSF = true;
-      com.tencent.mm.plugin.music.model.d.e.ffe();
+      com.tencent.mm.plugin.music.model.d.e.LNB = true;
+      com.tencent.mm.plugin.music.model.d.e.gon();
       if (this.mode == 1)
       {
-        ffC();
+        goQ();
         AppMethodBeat.o(63221);
         return;
       }
-      ffB();
+      goP();
       AppMethodBeat.o(63221);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.b
  * JD-Core Version:    0.7.0.1
  */

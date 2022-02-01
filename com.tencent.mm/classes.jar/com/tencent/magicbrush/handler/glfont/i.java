@@ -14,64 +14,64 @@ import java.util.HashMap;
 public final class i
   implements IMBFontHandler
 {
-  public b cNN;
-  private g cNX;
-  private e cNY;
-  public f cOg;
-  private j cOh;
-  private c cOi;
-  private boolean cOj = false;
+  public f eJB;
+  private j eJC;
+  private c eJD;
+  private boolean eJE = false;
+  public b eJi;
+  private g eJs;
+  private e eJt;
   
   private void clear()
   {
     AppMethodBeat.i(140046);
     c.c.i("MicroMsg.MBFontManagerImpl", "FontManager clear", new Object[0]);
-    if (this.cNY != null) {
-      this.cNY.clear();
+    if (this.eJt != null) {
+      this.eJt.clear();
     }
-    if (this.cNX != null) {
-      this.cNX.clear();
+    if (this.eJs != null) {
+      this.eJs.clear();
     }
-    this.cOj = true;
+    this.eJE = true;
     AppMethodBeat.o(140046);
   }
   
   public final void a(c paramc)
   {
-    this.cOi = paramc;
-    if (this.cNX != null)
+    this.eJD = paramc;
+    if (this.eJs != null)
     {
-      paramc = this.cNX;
-      c localc = this.cOi;
-      paramc.cNP.cOc = localc;
+      paramc = this.eJs;
+      c localc = this.eJD;
+      paramc.eJk.eJx = localc;
     }
   }
   
   public final boolean checkAndFlushClearSignal()
   {
-    boolean bool = this.cOj;
-    this.cOj = false;
+    boolean bool = this.eJE;
+    this.eJE = false;
     return bool;
   }
   
   public final int[] checkAndFlushDirtySignal()
   {
     AppMethodBeat.i(140045);
-    if (this.cNY != null)
+    if (this.eJt != null)
     {
-      Object localObject = this.cNY;
-      if (!((e)localObject).cNJ.isEmpty()) {}
+      Object localObject = this.eJt;
+      if (!((e)localObject).eJe.isEmpty()) {}
       for (int i = 1; i == 0; i = 0)
       {
         AppMethodBeat.o(140045);
         return null;
       }
-      ((e)localObject).cNK[0] = ((e)localObject).cNJ.left;
-      ((e)localObject).cNK[1] = ((e)localObject).cNJ.top;
-      ((e)localObject).cNK[2] = ((e)localObject).cNJ.right;
-      ((e)localObject).cNK[3] = ((e)localObject).cNJ.bottom;
-      ((e)localObject).cNJ.setEmpty();
-      localObject = ((e)localObject).cNK;
+      ((e)localObject).eJf[0] = ((e)localObject).eJe.left;
+      ((e)localObject).eJf[1] = ((e)localObject).eJe.top;
+      ((e)localObject).eJf[2] = ((e)localObject).eJe.right;
+      ((e)localObject).eJf[3] = ((e)localObject).eJe.bottom;
+      ((e)localObject).eJe.setEmpty();
+      localObject = ((e)localObject).eJf;
       AppMethodBeat.o(140045);
       return localObject;
     }
@@ -82,18 +82,18 @@ public final class i
   public final FloatBuffer drawText(String paramString)
   {
     AppMethodBeat.i(140044);
-    this.cNX.a(this.cOh);
-    FloatBuffer localFloatBuffer2 = this.cNX.eC(paramString);
+    this.eJs.a(this.eJC);
+    FloatBuffer localFloatBuffer2 = this.eJs.fZ(paramString);
     FloatBuffer localFloatBuffer1 = localFloatBuffer2;
     if (localFloatBuffer2 == null)
     {
-      c.c.i("MicroMsg.MBFontManagerImpl", "drawText() load result is null. atlas may be full. first time, clear and retry; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.cOh });
+      c.c.i("MicroMsg.MBFontManagerImpl", "drawText() load result is null. atlas may be full. first time, clear and retry; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.eJC });
       clear();
-      localFloatBuffer1 = this.cNX.eC(paramString);
+      localFloatBuffer1 = this.eJs.fZ(paramString);
     }
     if (localFloatBuffer1 == null)
     {
-      c.c.i("MicroMsg.MBFontManagerImpl", "drawText() load result is null. atlas may be full. second time, just returned; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.cOh });
+      c.c.i("MicroMsg.MBFontManagerImpl", "drawText() load result is null. atlas may be full. second time, just returned; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.eJC });
       AppMethodBeat.o(140044);
       return null;
     }
@@ -103,13 +103,13 @@ public final class i
   
   public final void enableStroke(boolean paramBoolean)
   {
-    this.cOh.cOl = paramBoolean;
+    this.eJC.eJG = paramBoolean;
   }
   
   public final Bitmap getBitmapAtlas()
   {
-    if (this.cNY != null) {
-      return this.cNY.cNH;
+    if (this.eJt != null) {
+      return this.eJt.eJc;
     }
     return null;
   }
@@ -122,20 +122,20 @@ public final class i
       AppMethodBeat.o(140049);
       return 0.0F;
     }
-    if ((this.cOg == null) || (this.cNX == null))
+    if ((this.eJB == null) || (this.eJs == null))
     {
       AppMethodBeat.o(140049);
       return 0.0F;
     }
-    this.cNX.a(this.cOh);
-    paramString = this.cNX.cNP;
-    if (paramString.cOf == null)
+    this.eJs.a(this.eJC);
+    paramString = this.eJs.eJk;
+    if (paramString.eJA == null)
     {
       AppMethodBeat.o(140049);
       return 0.0F;
     }
-    float f1 = paramString.cOf.bottom;
-    float f2 = paramString.cOf.ascent;
+    float f1 = paramString.eJA.bottom;
+    float f2 = paramString.eJA.ascent;
     AppMethodBeat.o(140049);
     return f1 - f2 + 1.0F;
   }
@@ -144,46 +144,46 @@ public final class i
   {
     AppMethodBeat.i(140041);
     c.c.i("MicroMsg.MBFontManagerImpl", "init() called with: m_atlasWidth = [" + paramInt1 + "], m_atlasHeight = [" + paramInt2 + "]", new Object[0]);
-    this.cNY = new e(paramInt1, paramInt2);
-    this.cOg = new f(this.cNN);
-    this.cNX = new g(this.cNY, this.cOi);
-    this.cOh = new j("normal", j.a.cOn);
+    this.eJt = new e(paramInt1, paramInt2);
+    this.eJB = new f(this.eJi);
+    this.eJs = new g(this.eJt, this.eJD);
+    this.eJC = new j("normal", j.a.eJI);
     AppMethodBeat.o(140041);
   }
   
   public final String loadFont(String paramString)
   {
     AppMethodBeat.i(140042);
-    f localf = this.cOg;
+    f localf = this.eJB;
     if ((paramString == null) || (paramString.length() == 0))
     {
       AppMethodBeat.o(140042);
       return null;
     }
-    if (localf.cNN == null)
+    if (localf.eJi == null)
     {
       c.c.i("MicroMsg.MBFont", "[MBFontHandler] FaceProvider is null", new Object[0]);
       AppMethodBeat.o(140042);
       return null;
     }
-    paramString = localf.cNN.dC(paramString);
-    Typeface localTypeface = localf.cNN.dB(paramString);
+    paramString = localf.eJi.eN(paramString);
+    Typeface localTypeface = localf.eJi.eM(paramString);
     if (localTypeface == null)
     {
       AppMethodBeat.o(140042);
       return null;
     }
-    String str = f.eB(paramString);
+    String str = f.fY(paramString);
     paramString = str;
     if (com.tencent.magicbrush.utils.i.isNullOrNil(str))
     {
-      if (a.Vh() != null) {
-        a.Vh().jn(0);
+      if (a.avK() != null) {
+        a.avK().mQ(0);
       }
       paramString = "font" + localTypeface.hashCode();
     }
     c.c.i("MicroMsg.MBFont", "familyName:".concat(String.valueOf(paramString)), new Object[0]);
-    localf.cNL.put(paramString, localTypeface);
+    localf.eJg.put(paramString, localTypeface);
     AppMethodBeat.o(140042);
     return paramString;
   }
@@ -191,18 +191,18 @@ public final class i
   public final float measureText(String paramString)
   {
     AppMethodBeat.i(140047);
-    this.cNX.a(this.cOh);
-    float f2 = this.cNX.eE(paramString);
+    this.eJs.a(this.eJC);
+    float f2 = this.eJs.gb(paramString);
     float f1 = f2;
     if (f2 == -1.0F)
     {
-      c.c.i("MicroMsg.MBFontManagerImpl", "measure() load result is null. atlas may be full. first time, clear and retry; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.cOh });
+      c.c.i("MicroMsg.MBFontManagerImpl", "measure() load result is null. atlas may be full. first time, clear and retry; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.eJC });
       clear();
-      f1 = this.cNX.eE(paramString);
+      f1 = this.eJs.gb(paramString);
     }
     if (f1 == -1.0F)
     {
-      c.c.i("MicroMsg.MBFontManagerImpl", "measure() load result is null. atlas may be full. second time, just returned; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.cOh });
+      c.c.i("MicroMsg.MBFontManagerImpl", "measure() load result is null. atlas may be full. second time, just returned; text = [%s]; mCurrentState = [%s]", new Object[] { paramString, this.eJC });
       AppMethodBeat.o(140047);
       return 0.0F;
     }
@@ -214,57 +214,57 @@ public final class i
   {
     AppMethodBeat.i(140048);
     Object localObject;
-    if (this.cNY != null)
+    if (this.eJt != null)
     {
-      localObject = this.cNY;
-      if (((e)localObject).cNH != null) {
-        ((e)localObject).cNH.recycle();
+      localObject = this.eJt;
+      if (((e)localObject).eJc != null) {
+        ((e)localObject).eJc.recycle();
       }
-      this.cNY = null;
+      this.eJt = null;
     }
-    if (this.cOg != null)
+    if (this.eJB != null)
     {
-      localObject = this.cOg;
-      if (((f)localObject).cNL != null)
+      localObject = this.eJB;
+      if (((f)localObject).eJg != null)
       {
-        ((f)localObject).cNL.clear();
-        ((f)localObject).cNL = null;
+        ((f)localObject).eJg.clear();
+        ((f)localObject).eJg = null;
       }
-      this.cOg = null;
+      this.eJB = null;
     }
-    if (this.cNX != null)
+    if (this.eJs != null)
     {
-      localObject = this.cNX;
-      if (((g)localObject).cNP != null) {
-        ((g)localObject).cNP = null;
+      localObject = this.eJs;
+      if (((g)localObject).eJk != null) {
+        ((g)localObject).eJk = null;
       }
-      this.cNX = null;
+      this.eJs = null;
     }
     AppMethodBeat.o(140048);
   }
   
   public final void setStrokeWidth(float paramFloat)
   {
-    this.cOh.strokeWidth = paramFloat;
+    this.eJC.strokeWidth = paramFloat;
   }
   
   public final void useFont(String paramString1, String paramString2, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(203807);
-    j.a locala2 = j.a.m(paramBoolean1, paramBoolean2);
-    j localj = this.cOh;
-    Object localObject = this.cOg;
+    AppMethodBeat.i(228999);
+    j.a locala2 = j.a.o(paramBoolean1, paramBoolean2);
+    j localj = this.eJC;
+    Object localObject = this.eJB;
     if (locala2 == null) {}
-    for (j.a locala1 = j.a.cOn;; locala1 = locala2)
+    for (j.a locala1 = j.a.eJI;; locala1 = locala2)
     {
       int i;
       if ((com.tencent.magicbrush.utils.i.isNullOrNil(paramString2)) && (Build.VERSION.SDK_INT >= 28))
       {
-        paramString1 = Typeface.create(paramString1, locala1.cOr);
-        if ((!com.tencent.magicbrush.utils.i.isNullOrNil(paramString2)) && (((f)localObject).cNM.containsKey(paramString2)))
+        paramString1 = Typeface.create(paramString1, locala1.eJM);
+        if ((!com.tencent.magicbrush.utils.i.isNullOrNil(paramString2)) && (((f)localObject).eJh.containsKey(paramString2)))
         {
-          i = ((Integer)((f)localObject).cNM.get(paramString2)).intValue();
-          if (!locala1.Vm()) {
+          i = ((Integer)((f)localObject).eJh.get(paramString2)).intValue();
+          if (!locala1.avP()) {
             break label164;
           }
           paramBoolean1 = true;
@@ -274,11 +274,11 @@ public final class i
       }
       for (;;)
       {
-        localj.bGp = paramString1;
-        this.cOh.cOk = paramString2;
-        this.cOh.fontSize = paramFloat;
-        this.cOh.cOm = locala2;
-        AppMethodBeat.o(203807);
+        localj.bbO = paramString1;
+        this.eJC.eJF = paramString2;
+        this.eJC.fontSize = paramFloat;
+        this.eJC.eJH = locala2;
+        AppMethodBeat.o(228999);
         return;
         i = 400;
         break;
@@ -287,21 +287,21 @@ public final class i
         break label109;
         if ((paramString1 == null) || (paramString1.length() == 0))
         {
-          paramString1 = Typeface.create(null, locala1.cOr);
+          paramString1 = Typeface.create(null, locala1.eJM);
         }
         else
         {
-          localObject = (Typeface)((f)localObject).cNL.get(paramString1);
+          localObject = (Typeface)((f)localObject).eJg.get(paramString1);
           if (localObject != null)
           {
             paramString1 = (String)localObject;
-            if (((Typeface)localObject).getStyle() != locala1.cOr) {
-              paramString1 = Typeface.create((Typeface)localObject, locala1.cOr);
+            if (((Typeface)localObject).getStyle() != locala1.eJM) {
+              paramString1 = Typeface.create((Typeface)localObject, locala1.eJM);
             }
           }
           else
           {
-            paramString1 = Typeface.create(paramString1, locala1.cOr);
+            paramString1 = Typeface.create(paramString1, locala1.eJM);
           }
         }
       }

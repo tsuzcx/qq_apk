@@ -1,54 +1,49 @@
 package com.tencent.mm.plugin.finder.live.viewmodel.data.business;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aza;
-import java.util.ArrayList;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.live.model.context.a;
+import com.tencent.mm.protocal.protobuf.bgq;
+import com.tencent.mm.protocal.protobuf.biw;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveOnlineMemberSlice;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/IBusiness;", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "liveContext", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "offlineMemberCount", "", "getOfflineMemberCount", "()I", "setOfflineMemberCount", "(I)V", "offlineMemberList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "Lkotlin/collections/ArrayList;", "getOfflineMemberList", "()Ljava/util/ArrayList;", "setOfflineMemberList", "(Ljava/util/ArrayList;)V", "onlineMemberCount", "getOnlineMemberCount", "setOnlineMemberCount", "onlineMemberList", "getOnlineMemberList", "setOnlineMemberList", "onlineSelfContact", "getOnlineSelfContact", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "setOnlineSelfContact", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;)V", "init", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveOnlineMemberResp;", "onCleared", "updateOnlineMemberCommentState", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveLayerShowInfoSlice;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/IBusiness;", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "liveContext", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "abnormalClosedPageTitle", "", "getAbnormalClosedPageTitle", "()Ljava/lang/String;", "setAbnormalClosedPageTitle", "(Ljava/lang/String;)V", "abnormalClosedPageWording", "getAbnormalClosedPageWording", "setAbnormalClosedPageWording", "anchorVerificationShowInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLayerAnchorVerificationShowInfo;", "getAnchorVerificationShowInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLayerAnchorVerificationShowInfo;", "setAnchorVerificationShowInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLayerAnchorVerificationShowInfo;)V", "cacheErrCode", "", "getCacheErrCode", "()Ljava/lang/Integer;", "setCacheErrCode", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "cacheErrorPage", "Lcom/tencent/mm/protocal/protobuf/FinderLiveErrorPage;", "getCacheErrorPage", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveErrorPage;", "setCacheErrorPage", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveErrorPage;)V", "isLiveEndByForceQuit", "", "()Z", "setLiveEndByForceQuit", "(Z)V", "isVerifying", "setVerifying", "verifyMode", "getVerifyMode", "()I", "setVerifyMode", "(I)V", "onCleared", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends a<com.tencent.mm.plugin.finder.live.model.context.a>
+  extends c<a>
 {
-  public static final a ziE;
-  public aza ziA;
-  public ArrayList<aza> ziB;
-  public int ziC;
-  public int ziD;
-  public ArrayList<aza> ziz;
+  public biw Efj;
+  public int Efk;
+  public String Efl;
+  public String Efm;
+  public boolean Efn;
+  public bgq Efo;
+  public Integer Efp;
+  public boolean qag;
   
-  static
-  {
-    AppMethodBeat.i(258427);
-    ziE = new a((byte)0);
-    AppMethodBeat.o(258427);
-  }
-  
-  public i(com.tencent.mm.plugin.finder.live.model.context.a parama)
+  public i(a parama)
   {
     super(parama);
-    AppMethodBeat.i(258426);
-    this.ziz = new ArrayList();
-    this.ziB = new ArrayList();
-    AppMethodBeat.o(258426);
+    AppMethodBeat.i(356696);
+    AppMethodBeat.o(356696);
   }
   
   public final void onCleared()
   {
-    AppMethodBeat.i(258423);
-    this.ziz.clear();
-    this.ziA = null;
-    this.ziB.clear();
-    this.ziC = 0;
-    this.ziD = 0;
-    AppMethodBeat.o(258423);
+    AppMethodBeat.i(356702);
+    super.onCleared();
+    this.Efj = null;
+    this.qag = false;
+    this.Efk = 0;
+    this.Efl = null;
+    this.Efm = null;
+    this.Efn = false;
+    this.Efo = null;
+    this.Efp = null;
+    AppMethodBeat.o(356702);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveOnlineMemberSlice$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.data.business.i
  * JD-Core Version:    0.7.0.1
  */

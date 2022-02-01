@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
 
 final class a
-  extends r
+  extends s
 {
   private static final int CTRL_INDEX = 246;
   private static final String NAME = "onStartReportPageData";
-  private static final a phJ;
+  private static final a snc;
   
   static
   {
     AppMethodBeat.i(147208);
-    phJ = new a();
+    snc = new a();
     AppMethodBeat.o(147208);
   }
   
-  static void o(e parame)
+  static void q(f paramf)
   {
     try
     {
       AppMethodBeat.i(147207);
-      phJ.i(parame).bPO();
+      snc.h(paramf).cpV();
       AppMethodBeat.o(147207);
       return;
     }
     finally
     {
-      parame = finally;
-      throw parame;
+      paramf = finally;
+      throw paramf;
     }
   }
 }

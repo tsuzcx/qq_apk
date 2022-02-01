@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/g64" android:layout_width="@dimen/ac0" android:layout_height="wrap_content" android:layout_marginRight="10.0dip"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/e3i" android:clickable="false" android:layout_width="@dimen/ac0" android:layout_height="@dimen/ac0" android:src="@raw/mall_order_trade_empty_icon" />
-    <TextView android:textSize="@dimen/ka" android:textColor="@color/zj" android:ellipsize="end" android:gravity="center" android:id="@id/e3h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:maxLines="2" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="start" android:id="@id/ldh" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ldl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="12.0dip">
+        <LinearLayout android:gravity="start" android:layout_gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="30.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="start" android:layout_gravity="start" android:id="@id/ldj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="288.0dip" android:text="UserName" android:maxLines="2" />
+            <TextView android:textSize="30.0dip" android:textColor="#fffd8f44" android:ellipsize="start" android:gravity="start" android:layout_gravity="start" android:id="@id/ldk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="fafafafa" android:singleLine="true" android:layout_marginStart="10.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="start" android:layout_gravity="start" android:orientation="horizontal" android:id="@id/ld4" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="#80f7f7f7" android:layout_gravity="start" android:id="@id/ld3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kh8" />
+            <TextView android:textSize="14.0dip" android:textColor="#fff7f7f7" android:id="@id/ld5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

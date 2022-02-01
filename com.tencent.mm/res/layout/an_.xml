@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="@dimen/a3i" android:layout_height="@dimen/a3i">
-                <com.tencent.mm.plugin.gif.MMAnimateView android:id="@id/c07" android:layout_width="@dimen/a3i" android:layout_height="@dimen/a3i" android:layout_centerInParent="true" />
-                <ProgressBar android:gravity="center" android:id="@id/epo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-            </RelativeLayout>
-            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <Button android:id="@id/c1n" android:layout_width="wrap_content" android:layout_marginTop="15.0dip" android:minWidth="200.0dip" android:text="@string/g5j" android:maxLines="1" style="@style/qs" />
-                <Button android:id="@id/byv" android:layout_width="wrap_content" android:layout_marginTop="25.0dip" android:minWidth="200.0dip" android:text="@string/dn" android:maxLines="1" style="@style/qv" />
-            </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0dip" />
-    <RelativeLayout android:id="@id/aa7" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="20.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/fu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bsc" android:layout_centerVertical="true" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/c1q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:maxWidth="150.0dip" android:text="{emoji_from_title_tv}" android:lines="1" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/c1p" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="10.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/ham" android:background="@drawable/akp" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/hao" android:paddingTop="@dimen/a78" android:paddingBottom="@dimen/a78" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h6d" android:singleLine="true" android:includeFontPadding="false" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fu6" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_1" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toRightOf="@id/hao" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.talkroom.b;
 
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.m;
 
 public abstract class f
-  extends q
+  extends p
   implements m
 {
-  public abstract String giK();
+  public abstract String hCL();
   
-  public abstract int giL();
+  public abstract int hCM();
 }
 
 

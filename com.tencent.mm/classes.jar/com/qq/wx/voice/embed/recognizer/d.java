@@ -2,10 +2,10 @@ package com.qq.wx.voice.embed.recognizer;
 
 public final class d
 {
-  public String cip;
-  public String ciq;
-  public String cir;
-  public String cis;
+  public String dYO;
+  public String dYP;
+  public String dYQ;
+  public String dYR;
   public String nickName;
   public String userName;
   
@@ -13,12 +13,12 @@ public final class d
   {
     this.userName = paramString1;
     this.nickName = paramString2;
-    this.cip = paramString3;
+    this.dYO = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.d
  * JD-Core Version:    0.7.0.1
  */

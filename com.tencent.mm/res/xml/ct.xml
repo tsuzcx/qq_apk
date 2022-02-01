@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <IconPreference newtip:key="settings_dark" newtip:layout="@layout/b8j" newtip:title="@string/go9" />
-    <PreferenceSmallCategory newtip:key="small_divider" />
-    <CheckBoxPreference newtip:defaultValue="false" newtip:key="settings_landscape_mode" newtip:title="@string/gpj" />
-    <CheckBoxPreference newtip:defaultValue="false" newtip:key="settings_nfc_switch" newtip:title="@string/grx" />
-    <Preference newtip:key="settings_silence_update_mode" newtip:layout="@layout/b8j" newtip:title="@string/gu2" />
-    <Preference newtip:key="settings_language" newtip:layout="@layout/b8j" newtip:title="@string/gpk" />
-    <Preference newtip:key="settings_text_size" newtip:layout="@layout/b8j" newtip:title="@string/gva" />
-    <Preference newtip:key="settings_take_photo" newtip:layout="@layout/b8j" newtip:title="@string/gse" />
-    <Preference newtip:key="settings_manage_findmoreui" newtip:layout="@layout/b8j" newtip:title="@string/gq2" />
-    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_plugins" newtip:path="wechattools" newtip:title="@string/gsm" />
-    <Preference newtip:key="settings_traffic_statistic" newtip:layout="@layout/b8j" newtip:title="@string/gvg" />
-    <Preference newtip:key="settngs_clean" newtip:layout="@layout/b8j" newtip:title="@string/grq" />
-    <Preference newtip:key="settngs_matrix_trace" newtip:layout="@layout/b8j" newtip:title="@string/gq8" />
-    <PreferenceCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="shake_item_change_bgimg" android:layout="@layout/bdi" android:title="@string/b31" />
+    <CheckBoxPreference android:key="shake_item_sound" android:layout="@layout/bdi" android:persistent="false" android:title="@string/j4r" />
+    <PreferenceSmallCategory />
+    <Preference android:key="say_hi_list_shake_title" android:layout="@layout/bdi" android:title="@string/ib1" />
+    <Preference android:key="shake_item_histoty_list" android:layout="@layout/bdi" android:title="@string/j4i" />
+    <PreferenceSmallCategory />
+    <Preference android:key="shake_msg_list" android:layout="@layout/bdi" android:title="@string/j6b" />
 </PreferenceScreen>

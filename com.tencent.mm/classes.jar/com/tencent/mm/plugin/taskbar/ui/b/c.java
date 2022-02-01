@@ -10,34 +10,34 @@ public enum c
 {
   private Choreographer choreographer;
   private int interval;
-  public long jVO;
-  public int jVP;
-  double jVQ;
-  public boolean jVR;
   private final Object lock;
+  public long mvI;
+  public int mvJ;
+  double mvK;
+  public boolean mvL;
   
   static
   {
-    AppMethodBeat.i(214196);
-    MqD = new c("INSTANCE");
-    MqE = new c[] { MqD };
-    AppMethodBeat.o(214196);
+    AppMethodBeat.i(264213);
+    STP = new c("INSTANCE");
+    STQ = new c[] { STP };
+    AppMethodBeat.o(264213);
   }
   
   private c()
   {
-    AppMethodBeat.i(214184);
-    this.jVO = 0L;
-    this.jVP = 0;
-    this.jVQ = 0.0D;
+    AppMethodBeat.i(264201);
+    this.mvI = 0L;
+    this.mvJ = 0;
+    this.mvK = 0.0D;
     this.interval = 500;
-    this.jVR = false;
+    this.mvL = false;
     this.lock = new Object();
-    AppMethodBeat.o(214184);
+    AppMethodBeat.o(264201);
   }
   
   /* Error */
-  public final Choreographer aEX()
+  public final Choreographer aXZ()
   {
     // Byte code:
     //   0: ldc 94
@@ -123,31 +123,31 @@ public enum c
   
   public final void doFrame(long paramLong)
   {
-    AppMethodBeat.i(214191);
+    AppMethodBeat.i(264231);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.jVO > 0L)
+    if (this.mvI > 0L)
     {
-      long l = paramLong - this.jVO;
-      this.jVP += 1;
+      long l = paramLong - this.mvI;
+      this.mvJ += 1;
       if (l > this.interval)
       {
-        this.jVQ = (this.jVP * 1000 / l);
-        this.jVO = paramLong;
-        this.jVP = 0;
+        this.mvK = (this.mvJ * 1000 / l);
+        this.mvI = paramLong;
+        this.mvJ = 0;
       }
     }
     for (;;)
     {
-      aEX().postFrameCallback(this);
-      AppMethodBeat.o(214191);
+      aXZ().postFrameCallback(this);
+      AppMethodBeat.o(264231);
       return;
-      this.jVO = paramLong;
+      this.mvI = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

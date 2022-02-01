@@ -4,6 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.b.a.a;
+import com.tencent.mm.wallet_core.model.j;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -12,81 +13,67 @@ import org.json.JSONObject;
 
 public final class u
   extends a
+  implements j
 {
-  public String IlR;
-  public String IlS;
-  public String IlT;
-  public String IlU;
-  public String desc;
-  public long gbJ;
-  public String mKL;
-  public String mKM;
-  public int tVA;
-  public int tVx;
-  public String tVy;
-  public String tVz;
+  public String Ojh;
   
-  public u(String paramString)
+  public u(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67875);
+    AppMethodBeat.i(67873);
     HashMap localHashMap = new HashMap();
+    localHashMap.put("amount", String.valueOf(paramLong));
+    localHashMap.put("recv_username", paramString1);
+    localHashMap.put("recv_nickname", paramString2);
+    localHashMap.put("qrcodeid", paramString5);
     try
     {
-      if (!Util.isNullOrNil(paramString)) {
-        localHashMap.put("qrcode_url", URLEncoder.encode(paramString, "UTF-8"));
+      if (!Util.isNullOrNil(paramString3)) {
+        localHashMap.put("desc", URLEncoder.encode(paramString3, "UTF-8"));
       }
-      setRequestData(localHashMap);
-      Log.i("MicroMsg.NetSceneH5F2fTransferScanQrCode", "qrcode_url: %s", new Object[] { paramString });
-      AppMethodBeat.o(67875);
-      return;
+      if (!Util.isNullOrNil(paramString4)) {
+        localHashMap.put("message", URLEncoder.encode(paramString4, "UTF-8"));
+      }
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    catch (UnsupportedEncodingException paramString5)
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferScanQrCode", localUnsupportedEncodingException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferPay", paramString5, "", new Object[0]);
       }
     }
+    localHashMap.put("currency", String.valueOf(paramInt1));
+    localHashMap.put("set_amount", String.valueOf(paramInt2));
+    setRequestData(localHashMap);
+    Log.i("MicroMsg.NetSceneH5F2fTransferPay", "username: %s, nickname: %s, amount: %s, desc: %s, msg: %s, currency: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3, paramString4, Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(67873);
   }
   
-  public final String cOd()
+  public final String drI()
   {
-    return "/cgi-bin/mmpay-bin/h5f2ftransferscanqrcode";
+    return "/cgi-bin/mmpay-bin/h5f2ftransferpay";
   }
   
-  public final int cOe()
+  public final int drJ()
   {
-    return 1301;
+    return 1529;
   }
   
   public final int getType()
   {
-    return 1301;
+    return 1529;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(67876);
-    this.IlR = paramJSONObject.optString("recv_username", "");
-    this.tVz = paramJSONObject.optString("recv_realname", "");
-    this.IlS = paramJSONObject.optString("recv_nickname", "");
-    this.desc = paramJSONObject.optString("desc", "");
-    this.gbJ = paramJSONObject.optLong("amount", 0L);
-    this.tVA = paramJSONObject.optInt("set_amount", 0);
-    this.tVx = paramJSONObject.optInt("currency", 0);
-    this.tVy = paramJSONObject.optString("currencyunit", "");
-    this.IlT = paramJSONObject.optString("qrcodeid", "");
-    this.mKL = paramJSONObject.optString("notice", "");
-    this.mKM = paramJSONObject.optString("notice_url", "");
-    this.IlU = paramJSONObject.optString("recv_headimgurl", "");
-    Log.i("MicroMsg.NetSceneH5F2fTransferScanQrCode", "recv_username: %s, recv_nickname: %s, desc: %s, amount: %s, setAmount: %s, currencyunit: %s recv_headimgurl: %s", new Object[] { this.IlR, this.IlS, this.desc, Long.valueOf(this.gbJ), Integer.valueOf(this.tVA), this.tVy, this.IlU });
-    Log.d("MicroMsg.NetSceneH5F2fTransferScanQrCode", "recv_realname: %s", new Object[] { this.tVz });
-    AppMethodBeat.o(67876);
+    AppMethodBeat.i(67874);
+    this.Ojh = paramJSONObject.optString("payurl", "");
+    Log.i("MicroMsg.NetSceneH5F2fTransferPay", "payurl: %s", new Object[] { this.Ojh });
+    AppMethodBeat.o(67874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.u
  * JD-Core Version:    0.7.0.1
  */

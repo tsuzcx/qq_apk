@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bpv" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="186.0dip" android:minHeight="186.0dip">
-        <ImageView android:id="@id/dt5" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/bia" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/fm5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" />
+<LinearLayout android:gravity="center_vertical" android:id="@id/a7i" android:background="@drawable/abw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/a7e" android:background="@drawable/ay7" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/glk" android:layout_width="@dimen/m6" android:layout_height="@dimen/m6" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_avatar" android:contentDescription="@string/a0t" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center_vertical" android:id="@id/gll" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/m4" />
     </LinearLayout>
 </LinearLayout>

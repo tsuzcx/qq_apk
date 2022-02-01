@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.remittance.mobile.a;
 
-import com.tencent.mm.wallet_core.c.l.a;
+import com.tencent.mm.wallet_core.model.l.a;
 
 public abstract class a<InputType>
   implements l.a<InputType>
 {
-  public void fAe() {}
+  public void gLQ() {}
   
-  public final int fAf()
+  public final int gLR()
   {
     return 1149;
   }
   
-  public void fAg() {}
+  public void gLS() {}
   
-  public final void fAh() {}
+  public final void gLT() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.a.a
  * JD-Core Version:    0.7.0.1
  */

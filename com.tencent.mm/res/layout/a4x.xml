@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/t2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/t3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="50" android:maxLines="1" />
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/t4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="个" android:maxLines="1" android:layout_weight="1.0" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/t1" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_filled_album" />
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/t7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:maxWidth="@dimen/c6" android:text="Nike" android:maxLines="1" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/m8" android:textColor="@color/a78" android:id="@id/koa" android:paddingLeft="@dimen/dw" android:paddingTop="@dimen/iq" android:paddingRight="@dimen/dw" android:paddingBottom="@dimen/iq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:text="@string/cdi" />
 </LinearLayout>

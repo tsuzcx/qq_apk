@@ -19,23 +19,23 @@ import java.lang.reflect.Method;
 
 public final class o
 {
-  public static final Rect se;
-  private static Class<?> sf;
+  public static final Rect tc;
+  private static Class<?> td;
   
   static
   {
-    AppMethodBeat.i(241244);
-    se = new Rect();
+    AppMethodBeat.i(199978);
+    tc = new Rect();
     if (Build.VERSION.SDK_INT >= 18) {
       try
       {
-        sf = Class.forName("android.graphics.Insets");
-        AppMethodBeat.o(241244);
+        td = Class.forName("android.graphics.Insets");
+        AppMethodBeat.o(199978);
         return;
       }
       catch (ClassNotFoundException localClassNotFoundException) {}
     }
-    AppMethodBeat.o(241244);
+    AppMethodBeat.o(199978);
   }
   
   public static PorterDuff.Mode c(int paramInt, PorterDuff.Mode paramMode)
@@ -66,10 +66,10 @@ public final class o
     return PorterDuff.Mode.ADD;
   }
   
-  public static Rect g(Drawable paramDrawable)
+  public static Rect h(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241241);
-    if (sf != null) {}
+    AppMethodBeat.i(199935);
+    if (td != null) {}
     for (;;)
     {
       Rect localRect;
@@ -79,13 +79,13 @@ public final class o
       int i;
       try
       {
-        paramDrawable = a.q(paramDrawable);
+        paramDrawable = a.t(paramDrawable);
         paramDrawable = paramDrawable.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(paramDrawable, new Object[0]);
         if (paramDrawable == null) {
           break label207;
         }
         localRect = new Rect();
-        Field[] arrayOfField = sf.getFields();
+        Field[] arrayOfField = td.getFields();
         int k = arrayOfField.length;
         j = 0;
         if (j >= k) {
@@ -119,8 +119,8 @@ public final class o
             localRect.left = localField.getInt(paramDrawable);
             break label300;
             label207:
-            paramDrawable = se;
-            AppMethodBeat.o(241241);
+            paramDrawable = tc;
+            AppMethodBeat.o(199935);
             return paramDrawable;
             localRect.top = localField.getInt(paramDrawable);
             break label300;
@@ -129,7 +129,7 @@ public final class o
             localRect.bottom = localField.getInt(paramDrawable);
             break label300;
             label260:
-            AppMethodBeat.o(241241);
+            AppMethodBeat.o(199935);
             return localRect;
           }
         }
@@ -143,9 +143,9 @@ public final class o
     }
   }
   
-  static void h(Drawable paramDrawable)
+  static void i(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241242);
+    AppMethodBeat.i(199948);
     int[] arrayOfInt;
     if ((Build.VERSION.SDK_INT == 21) && ("android.graphics.drawable.VectorDrawable".equals(paramDrawable.getClass().getName())))
     {
@@ -153,36 +153,36 @@ public final class o
       if ((arrayOfInt != null) && (arrayOfInt.length != 0)) {
         break label62;
       }
-      paramDrawable.setState(y.wo);
+      paramDrawable.setState(y.xk);
     }
     for (;;)
     {
       paramDrawable.setState(arrayOfInt);
-      AppMethodBeat.o(241242);
+      AppMethodBeat.o(199948);
       return;
       label62:
-      paramDrawable.setState(y.ww);
+      paramDrawable.setState(y.xr);
     }
   }
   
-  public static boolean i(Drawable paramDrawable)
+  public static boolean j(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241243);
+    AppMethodBeat.i(199958);
     for (;;)
     {
       if ((Build.VERSION.SDK_INT < 15) && ((paramDrawable instanceof InsetDrawable)))
       {
-        AppMethodBeat.o(241243);
+        AppMethodBeat.o(199958);
         return false;
       }
       if ((Build.VERSION.SDK_INT < 15) && ((paramDrawable instanceof GradientDrawable)))
       {
-        AppMethodBeat.o(241243);
+        AppMethodBeat.o(199958);
         return false;
       }
       if ((Build.VERSION.SDK_INT < 17) && ((paramDrawable instanceof LayerDrawable)))
       {
-        AppMethodBeat.o(241243);
+        AppMethodBeat.o(199958);
         return false;
       }
       if ((paramDrawable instanceof DrawableContainer))
@@ -196,9 +196,9 @@ public final class o
         int i = 0;
         while (i < j)
         {
-          if (!i(paramDrawable[i]))
+          if (!j(paramDrawable[i]))
           {
-            AppMethodBeat.o(241243);
+            AppMethodBeat.o(199958);
             return false;
           }
           i += 1;
@@ -206,11 +206,11 @@ public final class o
       }
       if ((paramDrawable instanceof f))
       {
-        paramDrawable = ((f)paramDrawable).gD();
+        paramDrawable = ((f)paramDrawable).DN();
       }
       else if ((paramDrawable instanceof c))
       {
-        paramDrawable = ((c)paramDrawable).mDrawable;
+        paramDrawable = ((c)paramDrawable).kD;
       }
       else
       {
@@ -220,13 +220,13 @@ public final class o
         paramDrawable = ((ScaleDrawable)paramDrawable).getDrawable();
       }
     }
-    AppMethodBeat.o(241243);
+    AppMethodBeat.o(199958);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.o
  * JD-Core Version:    0.7.0.1
  */

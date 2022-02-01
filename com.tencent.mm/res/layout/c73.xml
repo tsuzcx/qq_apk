@@ -1,3 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/k60" android:background="@drawable/fe" android:layout_width="fill_parent" android:layout_height="520.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/k63" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/ahw" android:gravity="start|center" android:id="@id/k5n" android:layout_width="wrap_content" android:layout_height="@dimen/d_" android:minWidth="@dimen/d_" android:text="@string/we" android:layout_centerVertical="true" android:paddingStart="@dimen/i6" android:layout_alignParentStart="true" />
+            <TextView android:textSize="@dimen/l" android:textColor="@color/ahw" android:id="@id/k62" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:text="@string/jpw" android:layout_centerInParent="true" />
+            <Button android:textStyle="bold" android:textColor="@color/ae_" android:id="@id/k5s" android:background="@drawable/ff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:text="@string/z9" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_marginEnd="@dimen/i6" android:layout_alignParentEnd="true" style="@style/oi" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="horizontal" android:id="@id/k5r" android:background="@drawable/fi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:layout_marginStart="@dimen/i6" android:layout_marginEnd="@dimen/i6">
+            <ImageView android:id="@id/k5q" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_centerVertical="true" android:layout_marginStart="8.0dip" android:layout_alignParentStart="true" />
+            <ImageView android:id="@id/k5p" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/aqn" android:layout_centerVertical="true" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true" />
+            <EditText android:textSize="@dimen/l" android:textColor="@color/ahw" android:textColorHint="@color/af4" android:id="@id/k5o" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="8.0dip" android:hint="@string/jpu" android:singleLine="true" android:layout_centerVertical="true" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/avl" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/k5p" android:layout_toEndOf="@id/k5q" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/k61" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <RelativeLayout android:orientation="horizontal" android:id="@id/k5z" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/l" android:textColor="@color/al6" android:id="@id/k5w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="46.0dip" android:text="@string/jpv" android:layout_centerHorizontal="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/k5v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="46.0dip" android:layout_centerHorizontal="true">
+                <ProgressBar android:id="@id/k7x" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" android:layout_marginEnd="@dimen/ig" style="@style/a76" />
+                <TextView android:textSize="@dimen/l" android:textColor="@color/al6" android:id="@id/k5u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jpx" />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/k5y" android:paddingTop="@dimen/i6" android:paddingBottom="@dimen/i6" android:visibility="gone" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" android:layout_marginStart="@dimen/i6" android:layout_marginEnd="@dimen/i6" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/k5m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/k60" />
+</merge>

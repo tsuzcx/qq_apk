@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="?z"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageButton android:id="@id/db" android:background="@color/ac_" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/t" android:textColor="@color/bv" android:gravity="center" android:id="@id/d9" android:background="@drawable/b7" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/ko" android:background="@drawable/asg" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/ct">
-        <ImageView android:layout_gravity="center" android:layout_width="@dimen/ok" android:layout_height="@dimen/ok" android:src="@raw/actionbar_icon_light_search" />
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/axo"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/b1" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b0" android:background="@null" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/k4" />
     </LinearLayout>
-    <Button android:id="@id/d6" android:visibility="gone" android:layout_marginRight="@dimen/br" android:text="send" style="@style/ow" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d8" android:paddingRight="@dimen/cb" android:visibility="gone" android:layout_width="@dimen/cl" android:layout_height="fill_parent" app:iconColor="@color/FG_0" />
-        <ImageView android:id="@id/bt8" android:visibility="gone" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignTop="@id/d8" android:layout_alignRight="@id/d8" style="@style/zs" />
+    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <EditText android:textSize="@dimen/j7" android:textColor="@color/a7a" android:textColorHint="@color/xo" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/cd6" android:paddingRight="@dimen/j4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="1024.0dip" android:minHeight="@dimen/j4" android:hint="@string/a2o" android:singleLine="true" android:includeFontPadding="false" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a8b" />
+        <ImageButton android:id="@id/k1h" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aqn" android:layout_alignParentRight="true" />
     </RelativeLayout>
+    <Button android:layout_gravity="center_vertical" android:id="@id/anq" android:layout_marginLeft="@dimen/m2" android:layout_marginRight="@dimen/m2" android:text="@string/a2o" style="@style/oi" />
 </LinearLayout>

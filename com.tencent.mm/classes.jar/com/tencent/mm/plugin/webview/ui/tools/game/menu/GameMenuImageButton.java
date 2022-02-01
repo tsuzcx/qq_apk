@@ -19,14 +19,14 @@ import com.tencent.mm.plugin.webview.c.e;
 public class GameMenuImageButton
   extends LinearLayout
 {
-  public boolean Qpi;
-  private ImageView fDJ;
+  public boolean Xhw;
+  private ImageView hIz;
   
   public GameMenuImageButton(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(80958);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(80958);
   }
   
@@ -34,7 +34,7 @@ public class GameMenuImageButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(80959);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(80959);
   }
   
@@ -42,20 +42,20 @@ public class GameMenuImageButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(80960);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(80960);
   }
   
-  private void bv(Context paramContext)
+  private void ci(Context paramContext)
   {
     AppMethodBeat.i(80961);
-    this.fDJ = new ImageView(paramContext);
-    this.fDJ.setLayoutParams(new ViewGroup.LayoutParams(com.tencent.mm.ci.a.aZ(paramContext, c.d.game_menu_button_size), com.tencent.mm.ci.a.aZ(paramContext, c.d.game_menu_button_size)));
-    this.fDJ.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.fDJ.setImageResource(c.e.game_menu_btn_icon);
+    this.hIz = new ImageView(paramContext);
+    this.hIz.setLayoutParams(new ViewGroup.LayoutParams(com.tencent.mm.cd.a.bs(paramContext, c.d.game_menu_button_size), com.tencent.mm.cd.a.bs(paramContext, c.d.game_menu_button_size)));
+    this.hIz.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.hIz.setImageResource(c.e.game_menu_btn_icon);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, com.tencent.mm.ci.a.aZ(paramContext, c.d.game_menu_button_margin), com.tencent.mm.ci.a.aZ(paramContext, c.d.game_menu_button_margin), 0);
-    addView(this.fDJ, localLayoutParams);
+    localLayoutParams.setMargins(0, com.tencent.mm.cd.a.bs(paramContext, c.d.game_menu_button_margin), com.tencent.mm.cd.a.bs(paramContext, c.d.game_menu_button_margin), 0);
+    addView(this.hIz, localLayoutParams);
     AppMethodBeat.o(80961);
   }
   
@@ -68,30 +68,30 @@ public class GameMenuImageButton
       localLayoutParams.gravity = 53;
       paramFrameLayout.addView(this, localLayoutParams);
     }
-    if (this.fDJ != null) {
-      this.fDJ.setOnClickListener(new View.OnClickListener()
+    if (this.hIz != null) {
+      this.hIz.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(80957);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameMenuImageButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameMenuImageButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if (parama != null) {
-            parama.dLs();
+            parama.eEp();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/game/menu/GameMenuImageButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(80957);
         }
       });
     }
-    this.Qpi = true;
+    this.Xhw = true;
     AppMethodBeat.o(80962);
   }
   
   public static abstract interface a
   {
-    public abstract void dLs();
+    public abstract void eEp();
   }
 }
 

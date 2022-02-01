@@ -1,148 +1,102 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.Layout.Alignment;
+import android.text.SpannableString;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.v.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.af.q;
+import com.tencent.mm.plugin.appbrand.ba.e;
+import com.tencent.mm.ui.widget.a;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/WxaReferrerHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "()V", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/utils/StringSpanHelper;", "", "()V", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class an
-  implements com.tencent.mm.plugin.appbrand.jsapi.v.a
 {
-  private static final c rjx;
-  public static final an rjy;
+  public static final a urO;
   
   static
   {
-    AppMethodBeat.i(243454);
-    rjy = new an();
-    rjx = c.pmz;
-    AppMethodBeat.o(243454);
+    AppMethodBeat.i(317366);
+    urO = new a((byte)0);
+    AppMethodBeat.o(317366);
   }
   
-  public final c A(e parame)
+  public static final Pair<SpannableString, Integer> a(Context paramContext, int paramInt, ClickableSpan paramClickableSpan)
   {
-    AppMethodBeat.i(243449);
-    p.k(parame, "component");
-    parame = (com.tencent.mm.plugin.appbrand.s.a)parame.au(com.tencent.mm.plugin.appbrand.s.a.class);
-    if (parame == null)
-    {
-      Log.w("MicroMsg.AppBrand.WxaReferrerHelper", "parseReferrerPolicyFallback, networkConfig is null");
-      AppMethodBeat.o(243449);
-      return null;
-    }
-    parame = parame.qiw;
-    AppMethodBeat.o(243449);
-    return parame;
+    AppMethodBeat.i(317356);
+    paramContext = a.a(paramContext, paramInt, 4, 36, 20, paramClickableSpan);
+    AppMethodBeat.o(317356);
+    return paramContext;
   }
   
-  public final String B(e parame)
+  public static final List<Point> a(TextPaint paramTextPaint, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(243452);
-    p.k(parame, "component");
-    parame = (com.tencent.mm.plugin.appbrand.s.a)parame.au(com.tencent.mm.plugin.appbrand.s.a.class);
-    if (parame == null)
-    {
-      Log.w("MicroMsg.AppBrand.WxaReferrerHelper", "provideReferrer, networkConfig is null");
-      AppMethodBeat.o(243452);
-      return null;
-    }
-    parame = parame.referer;
-    p.j(parame, "referrer");
-    if (((CharSequence)parame).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      Log.w("MicroMsg.AppBrand.WxaReferrerHelper", "provideReferrer, referrer is empty");
-      AppMethodBeat.o(243452);
-      return null;
-    }
-    Log.i("MicroMsg.AppBrand.WxaReferrerHelper", "provide, referrer: ".concat(String.valueOf(parame)));
-    AppMethodBeat.o(243452);
-    return parame;
-  }
-  
-  public final c a(JSONObject paramJSONObject, e parame)
-  {
-    AppMethodBeat.i(243450);
-    p.k(paramJSONObject, "data");
-    p.k(parame, "component");
-    paramJSONObject = aj(paramJSONObject);
-    if (paramJSONObject == null)
-    {
-      Log.i("MicroMsg.AppBrand.WxaReferrerHelper", "parseReferrerPolicyOrFallback, referrerPolicyStr is null");
-      paramJSONObject = A(parame);
-      AppMethodBeat.o(243450);
-      return paramJSONObject;
-    }
-    c localc = aix(paramJSONObject);
-    paramJSONObject = localc;
-    if (localc == null) {
-      paramJSONObject = A(parame);
-    }
-    AppMethodBeat.o(243450);
-    return paramJSONObject;
-  }
-  
-  public final c aix(String paramString)
-  {
-    AppMethodBeat.i(243448);
-    p.k(paramString, "referrerPolicyStr");
-    switch (paramString.hashCode())
-    {
-    default: 
-      paramString = null;
-    }
+    AppMethodBeat.i(317352);
+    s.u(paramTextPaint, "tp");
+    s.u(paramCharSequence, "cs");
+    paramTextPaint = new StaticLayout(paramCharSequence, paramTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+    int j = paramTextPaint.getLineCount();
+    paramCharSequence = (List)new ArrayList();
+    paramInt = 0;
+    if (j > 0) {}
     for (;;)
     {
-      Log.i("MicroMsg.AppBrand.WxaReferrerHelper", "parseReferrerPolicy, referrerPolicy: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(243448);
-      return paramString;
-      if (!paramString.equals("origin")) {
-        break;
+      int i = paramInt + 1;
+      paramCharSequence.add(new Point(paramTextPaint.getLineStart(paramInt), paramTextPaint.getLineEnd(paramInt)));
+      if (i >= j)
+      {
+        AppMethodBeat.o(317352);
+        return paramCharSequence;
       }
-      paramString = c.pmy;
-      continue;
-      if (!paramString.equals("no-referrer")) {
-        break;
-      }
-      paramString = c.pmz;
+      paramInt = i;
     }
   }
   
-  public final String aj(JSONObject paramJSONObject)
+  public static final Pair<SpannableString, Integer> fp(Context paramContext)
   {
-    AppMethodBeat.i(243447);
-    p.k(paramJSONObject, "data");
-    if (!paramJSONObject.has("referrerPolicy"))
-    {
-      Log.i("MicroMsg.AppBrand.WxaReferrerHelper", "parseReferrerPolicyStr, referrerPolicy does not exist");
-      AppMethodBeat.o(243447);
-      return null;
-    }
-    paramJSONObject = paramJSONObject.optString("referrerPolicy");
-    p.j(paramJSONObject, "referrerPolicyStr");
-    if (((CharSequence)paramJSONObject).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      Log.w("MicroMsg.AppBrand.WxaReferrerHelper", "parseReferrerPolicyStr, referrerPolicyStr is empty");
-      AppMethodBeat.o(243447);
-      return null;
-    }
-    AppMethodBeat.o(243447);
-    return paramJSONObject;
+    AppMethodBeat.i(317362);
+    s.u(paramContext, "context");
+    paramContext = a.a(paramContext, ba.e.empty_drawable, 1, 0, 0, (ClickableSpan)new an.a.a());
+    AppMethodBeat.o(317362);
+    return paramContext;
   }
   
-  public final c bUd()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/utils/StringSpanHelper$Companion;", "", "()V", "emptySpanIcon", "Landroid/util/Pair;", "Landroid/text/SpannableString;", "", "context", "Landroid/content/Context;", "getLineStartAndEnd", "", "Landroid/graphics/Point;", "tp", "Landroid/text/TextPaint;", "cs", "", "lineWidth", "makeSpanIcon", "iconResId", "leftMarginDp", "widthDp", "heightDp", "clickableSpan", "Landroid/text/style/ClickableSpan;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    return rjx;
+    public static Pair<SpannableString, Integer> a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ClickableSpan paramClickableSpan)
+    {
+      AppMethodBeat.i(317467);
+      s.u(paramContext, "context");
+      paramContext = paramContext.getResources().getDrawable(paramInt1);
+      s.s(paramContext, "context.resources.getDrawable(iconResId)");
+      paramContext.setBounds(q.DD(paramInt2), 0, q.DD(paramInt3 + paramInt2), q.DD(paramInt4));
+      a locala = new a(paramContext, 1);
+      SpannableString localSpannableString = new SpannableString((CharSequence)"@");
+      localSpannableString.setSpan(locala, 0, 1, 33);
+      if (paramClickableSpan != null) {
+        localSpannableString.setSpan(paramClickableSpan, 0, 1, 33);
+      }
+      paramContext = new Pair(localSpannableString, Integer.valueOf(paramContext.getBounds().right));
+      AppMethodBeat.o(317467);
+      return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.an
  * JD-Core Version:    0.7.0.1
  */

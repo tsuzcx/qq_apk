@@ -22,24 +22,16 @@ public class l
   private static String a()
   {
     AppMethodBeat.i(53926);
-    try
-    {
-      int i = new Random().nextInt(2147483646);
-      String str = new UUID((i + Build.BOARD.length() % 10 + Build.BRAND.length() % 10 + Build.DEVICE.length() % 10 + Build.HARDWARE.length() % 10 + Build.ID.length() % 10 + Build.MODEL.length() % 10 + Build.PRODUCT.length() % 10 + Build.SERIAL.length() % 10).hashCode(), Build.SERIAL.hashCode()).toString();
-      AppMethodBeat.o(53926);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(53926);
-    }
-    return "";
+    int i = new Random().nextInt(2147483646);
+    String str = Build.FINGERPRINT + i;
+    AppMethodBeat.o(53926);
+    return str;
   }
   
   public static String a(Context paramContext)
   {
     AppMethodBeat.i(53920);
-    if (!b(paramContext))
+    if (!d(paramContext))
     {
       AppMethodBeat.o(53920);
       return "";
@@ -56,10 +48,10 @@ public class l
       }
     }
     localObject = new StringBuilder();
-    String str2 = c();
-    String str3 = b.j(paramContext);
-    String str4 = b();
-    String str5 = a().replace("-", "");
+    String str2 = a();
+    String str3 = b.k(paramContext);
+    String str4 = c(paramContext);
+    String str5 = b(paramContext).replace("-", "");
     if ((str2 != null) && (str2.length() > 0))
     {
       ((StringBuilder)localObject).append(str2);
@@ -103,7 +95,7 @@ public class l
   
   private static String a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(201168);
+    AppMethodBeat.i(219334);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -116,13 +108,13 @@ public class l
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString().toUpperCase(Locale.CHINA);
-    AppMethodBeat.o(201168);
+    AppMethodBeat.o(219334);
     return paramArrayOfByte;
   }
   
   private static void a(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(201164);
+    AppMethodBeat.i(219332);
     if (a == null) {
       a = paramContext.getApplicationContext().getSharedPreferences("tsui", 0);
     }
@@ -130,55 +122,73 @@ public class l
     b = paramContext;
     paramContext.putString(paramString1, paramString2);
     b.commit();
-    AppMethodBeat.o(201164);
+    AppMethodBeat.o(219332);
   }
   
   private static byte[] a(String paramString)
   {
-    AppMethodBeat.i(201169);
+    AppMethodBeat.i(219337);
     try
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
       localMessageDigest.reset();
       localMessageDigest.update(paramString.getBytes("UTF-8"));
       paramString = localMessageDigest.digest();
-      AppMethodBeat.o(201169);
+      AppMethodBeat.o(219337);
       return paramString;
     }
     catch (Exception paramString)
     {
       paramString = "".getBytes();
-      AppMethodBeat.o(201169);
+      AppMethodBeat.o(219337);
     }
     return paramString;
   }
   
-  private static String b()
+  private static String b(Context paramContext)
   {
-    AppMethodBeat.i(201173);
+    AppMethodBeat.i(219340);
     try
     {
-      String str = Build.SERIAL;
-      if ((TextUtils.isEmpty(str)) || (str.contains("unknown")))
-      {
-        str = c();
-        AppMethodBeat.o(201173);
-        return str;
-      }
-      AppMethodBeat.o(201173);
-      return str;
+      String str = r.d(paramContext);
+      int i = new Random().nextInt(2147483646);
+      paramContext = new UUID((i + Build.BOARD.length() % 10 + Build.BRAND.length() % 10 + Build.DEVICE.length() % 10 + Build.HARDWARE.length() % 10 + Build.ID.length() % 10 + str.length() % 10 + Build.PRODUCT.length() % 10 + c(paramContext).length() % 10).hashCode(), c(paramContext).hashCode()).toString();
+      AppMethodBeat.o(219340);
+      return paramContext;
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
-      AppMethodBeat.o(201173);
+      AppMethodBeat.o(219340);
+    }
+    return "";
+  }
+  
+  private static String c(Context paramContext)
+  {
+    AppMethodBeat.i(219345);
+    try
+    {
+      paramContext = paramContext.getSharedPreferences("uifa", 0).getString("serial", "");
+      if ((TextUtils.isEmpty(paramContext)) || (paramContext.contains("unknown")))
+      {
+        paramContext = a();
+        AppMethodBeat.o(219345);
+        return paramContext;
+      }
+      AppMethodBeat.o(219345);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(219345);
     }
     return "unknown";
   }
   
-  private static boolean b(Context paramContext)
+  private static boolean d(Context paramContext)
   {
     boolean bool1 = true;
-    AppMethodBeat.i(201177);
+    AppMethodBeat.i(53927);
     try
     {
       boolean bool2 = paramContext.getSharedPreferences("sai", 0).getBoolean("sui", true);
@@ -189,39 +199,30 @@ public class l
       {
         public final void a(String paramAnonymousString)
         {
-          AppMethodBeat.i(200032);
+          AppMethodBeat.i(219329);
           SharedPreferences.Editor localEditor = this.a.getSharedPreferences("sai", 0).edit();
           localEditor.putBoolean("sui", false);
           localEditor.commit();
           TbsLog.e("TBSEmergency", "Execute command [1002](" + paramAnonymousString + ")");
-          AppMethodBeat.o(200032);
+          AppMethodBeat.o(219329);
         }
       });
       bool1 = bool2;
     }
-    catch (Throwable paramContext)
+    finally
     {
       for (;;)
       {
         TbsLog.i("SDKUID", "stack is " + Log.getStackTraceString(paramContext));
       }
     }
-    AppMethodBeat.o(201177);
+    AppMethodBeat.o(53927);
     return bool1;
-  }
-  
-  private static String c()
-  {
-    AppMethodBeat.i(201175);
-    int i = new Random().nextInt(2147483646);
-    String str = Build.FINGERPRINT + i;
-    AppMethodBeat.o(201175);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.l
  * JD-Core Version:    0.7.0.1
  */

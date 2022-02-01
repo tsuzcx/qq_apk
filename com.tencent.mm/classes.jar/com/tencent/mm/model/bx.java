@@ -2,215 +2,272 @@ package com.tencent.mm.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.bb;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.MStorage;
-import com.tencent.mm.storage.az;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Util;
 import junit.framework.Assert;
+import org.json.JSONObject;
 
 public final class bx
-  extends MStorage
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS readerappnews1 ( tweetid text  PRIMARY KEY , time long  , type int  , name text  , title text  , url text  , shorturl text  , longurl text  , pubtime long  , sourcename text  , sourceicon text  , istop int  , cover text  , digest text  , reserved1 int  , reserved2 long  , reserved3 text  , reserved4 text  ) ", "CREATE TABLE IF NOT EXISTS readerappweibo ( tweetid text  PRIMARY KEY , time long  , type int  , name text  , title text  , url text  , shorturl text  , longurl text  , pubtime long  , sourcename text  , sourceicon text  , istop int  , cover text  , digest text  , reserved1 int  , reserved2 long  , reserved3 text  , reserved4 text  ) ", "CREATE INDEX IF NOT EXISTS  readerapptime ON readerappnews1 ( time )", "CREATE INDEX IF NOT EXISTS  readerappfunctionId ON readerappnews1 ( reserved3 )", "CREATE INDEX IF NOT EXISTS readerappweiboreaderapptime ON readerappweibo ( time )" };
-  public static boolean lvz = false;
-  public com.tencent.mm.storagebase.h lvy;
+  public int eQp;
+  private String groupId;
+  public String nUM;
+  public String nUO;
+  public String name;
+  public String omJ;
+  public String omK;
+  public String omL;
+  public long omM;
+  public int omN;
+  public int omO;
+  public long omP;
+  public String omQ;
+  public String omR;
+  private boolean omS;
+  private int omT;
+  private int omU;
+  public String sourceIcon;
+  public String sourceName;
+  private int subType;
+  public long time;
+  public String title;
+  public int type;
+  public String url;
   
-  public bx(com.tencent.mm.storagebase.h paramh)
+  public bx()
   {
-    this.lvy = paramh;
+    AppMethodBeat.i(91028);
+    this.omS = false;
+    this.omT = 0;
+    this.subType = 0;
+    this.omU = 0;
+    this.groupId = "";
+    this.eQp = -1;
+    this.omJ = "";
+    this.time = 0L;
+    this.type = 0;
+    this.name = "";
+    this.title = "";
+    this.url = "";
+    this.omK = "";
+    this.omL = "";
+    this.omM = 0L;
+    this.sourceName = "";
+    this.sourceIcon = "";
+    this.omN = 0;
+    this.nUM = "";
+    this.nUO = "";
+    this.omO = 0;
+    this.omP = 0L;
+    this.omQ = "";
+    this.omR = "";
+    AppMethodBeat.o(91028);
   }
   
-  public static String RW(String paramString)
+  private void bDc()
   {
-    AppMethodBeat.i(102634);
-    paramString = "select tweetid,time,type,name,title,url,shorturl,longurl,pubtime,sourcename,sourceicon,istop,cover,digest,reserved1,reserved2,reserved3,reserved4 from " + paramString + "  ";
-    AppMethodBeat.o(102634);
-    return paramString;
+    AppMethodBeat.i(91036);
+    if ((this.omS) || (Util.isNullOrNil(this.omR)))
+    {
+      AppMethodBeat.o(91036);
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(this.omR);
+        this.omT = localJSONObject.optInt("videoLength", 0);
+        int i = localJSONObject.optInt("subType", 0);
+        if (i != 1) {
+          continue;
+        }
+        this.subType = i;
+        this.groupId = localJSONObject.optString("groupId", "");
+        this.omU = localJSONObject.optInt("tweetType", 0);
+      }
+      catch (Exception localException)
+      {
+        continue;
+      }
+      this.omS = true;
+      AppMethodBeat.o(91036);
+      return;
+      this.subType = 0;
+    }
   }
   
-  public static String vb(int paramInt)
+  public static String vk(int paramInt)
   {
-    AppMethodBeat.i(102635);
+    AppMethodBeat.i(91030);
     if (paramInt == 20)
     {
-      AppMethodBeat.o(102635);
-      return "readerappnews1";
+      AppMethodBeat.o(91030);
+      return "newsapp";
     }
     if (paramInt == 11)
     {
-      AppMethodBeat.o(102635);
-      return "readerappweibo";
+      AppMethodBeat.o(91030);
+      return "blogapp";
     }
     Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
-    AppMethodBeat.o(102635);
+    AppMethodBeat.o(91030);
     return null;
   }
   
-  public final List<bw> Gl(long paramLong)
+  public final String aVp()
   {
-    AppMethodBeat.i(102638);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = RW(vb(20)) + " where reserved2 = " + paramLong;
-    Log.d("MicroMsg.ReaderAppInfoStorage", "getInfoListByMsgSvrID :".concat(String.valueOf(localObject)));
-    localObject = this.lvy.rawQuery((String)localObject, null, 2);
-    while (((Cursor)localObject).moveToNext())
-    {
-      bw localbw = new bw();
-      localbw.convertFrom((Cursor)localObject);
-      localArrayList.add(localbw);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(102638);
-    return localArrayList;
+    AppMethodBeat.i(91034);
+    bDc();
+    String str = this.groupId;
+    AppMethodBeat.o(91034);
+    return str;
   }
   
-  public final List<bw> RX(String paramString)
+  public final String bCT()
   {
-    AppMethodBeat.i(102640);
-    paramString = this.lvy.query(vb(20), new String[] { "*" }, "reserved3=?", new String[] { paramString }, null, null, null, 2);
-    if (paramString != null) {}
-    try
+    if (this.omJ == null) {
+      return "";
+    }
+    return this.omJ;
+  }
+  
+  public final String bCU()
+  {
+    if (this.omK == null) {
+      return "";
+    }
+    return this.omK;
+  }
+  
+  public final String bCV()
+  {
+    if (this.sourceName == null) {
+      return "";
+    }
+    return this.sourceName;
+  }
+  
+  public final String bCW()
+  {
+    if (this.sourceIcon == null) {
+      return "";
+    }
+    return this.sourceIcon;
+  }
+  
+  public final String bCX()
+  {
+    AppMethodBeat.i(91031);
+    if (this.nUM != null)
     {
-      if (paramString.moveToFirst())
+      Object localObject = this.nUM.split("\\|");
+      if ((localObject != null) && (localObject.length > 0))
       {
-        ArrayList localArrayList = new ArrayList();
-        boolean bool;
-        do
-        {
-          bw localbw = new bw();
-          localbw.convertFrom(paramString);
-          localArrayList.add(localbw);
-          bool = paramString.moveToNext();
-        } while (bool);
-        return localArrayList;
+        localObject = localObject[0];
+        AppMethodBeat.o(91031);
+        return localObject;
       }
-      if (paramString != null) {
-        paramString.close();
-      }
+      AppMethodBeat.o(91031);
+      return "";
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.ReaderAppInfoStorage", "getByFunctionMsgId, error: %s", new Object[] { localException.getMessage() });
-        if (paramString != null) {
-          paramString.close();
-        }
-      }
-    }
-    finally
-    {
-      if (paramString == null) {
-        break label174;
-      }
-      paramString.close();
-      AppMethodBeat.o(102640);
-    }
-    AppMethodBeat.o(102640);
-    return null;
+    AppMethodBeat.o(91031);
+    return "";
   }
   
-  public final List<bw> aD(String paramString, int paramInt)
+  public final String bCY()
   {
-    AppMethodBeat.i(102639);
-    ArrayList localArrayList = new ArrayList();
-    paramString = RW(vb(paramInt)) + "where reserved3 = " + com.tencent.mm.storagebase.h.Mi(paramString) + " order by istop desc , tweetid asc ";
-    Log.d("MicroMsg.ReaderAppInfoStorage", "getInfobyGroup :".concat(String.valueOf(paramString)));
-    paramString = this.lvy.rawQuery(paramString, null, 2);
-    while (paramString.moveToNext())
-    {
-      bw localbw = new bw();
-      localbw.convertFrom(paramString);
-      localArrayList.add(localbw);
+    if (this.omR == null) {
+      return "";
     }
-    paramString.close();
-    AppMethodBeat.o(102639);
-    return localArrayList;
+    return this.omR;
   }
   
-  public final Cursor vc(int paramInt)
+  public final int bCZ()
   {
-    AppMethodBeat.i(102636);
-    Object localObject = "SELECT reserved3 from (SELECT reserved3,time from " + vb(20) + " GROUP BY reserved3 ORDER BY time DESC  LIMIT " + paramInt + ") ORDER BY time ASC";
-    localObject = this.lvy.rawQuery((String)localObject, null);
-    AppMethodBeat.o(102636);
-    return localObject;
+    AppMethodBeat.i(91032);
+    bDc();
+    int i = this.subType;
+    AppMethodBeat.o(91032);
+    return i;
   }
   
-  public final int vd(int paramInt)
+  public final int bDa()
   {
-    int i = 0;
-    AppMethodBeat.i(102637);
-    Object localObject = "select count(*) from (SELECT count(*) FROM " + vb(paramInt) + " group by reserved3)";
-    localObject = this.lvy.rawQuery((String)localObject, null, 2);
-    paramInt = i;
-    if (((Cursor)localObject).moveToFirst()) {
-      paramInt = ((Cursor)localObject).getInt(0);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(102637);
-    return paramInt;
+    AppMethodBeat.i(91033);
+    bDc();
+    int i = this.omT;
+    AppMethodBeat.o(91033);
+    return i;
   }
   
-  public final void ve(int paramInt)
+  public final int bDb()
   {
-    AppMethodBeat.i(102641);
-    Object localObject = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().bwx(bw.va(paramInt));
-    if ((localObject == null) || (!((bb)localObject).field_username.equals(bw.va(paramInt))))
-    {
-      AppMethodBeat.o(102641);
-      return;
-    }
-    ((az)localObject).setUsername(bw.va(paramInt));
-    ((az)localObject).setContent("");
-    ((az)localObject).pJ(0);
-    ((az)localObject).pH(0);
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a((az)localObject, bw.va(paramInt));
-    localObject = "delete from " + vb(paramInt);
-    if (this.lvy.execSQL(vb(paramInt), (String)localObject)) {
-      doNotify();
-    }
-    AppMethodBeat.o(102641);
+    AppMethodBeat.i(91035);
+    bDc();
+    int i = this.omU;
+    AppMethodBeat.o(91035);
+    return i;
   }
   
-  public final void vf(int paramInt)
+  public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(102642);
-    Object localObject1 = RW(vb(paramInt)) + " where istop = 1  group by reserved3 ORDER BY time DESC  limit 2";
-    Log.i("MicroMsg.ReaderAppInfoStorage", "reset conversation, sql is %s", new Object[] { localObject1 });
-    Object localObject2 = this.lvy.rawQuery((String)localObject1, null, 2);
-    if (!((Cursor)localObject2).moveToFirst())
-    {
-      ((Cursor)localObject2).close();
-      localObject1 = new az();
-      ((az)localObject1).setUsername(bw.va(paramInt));
-      ((az)localObject1).setContent("");
-      ((az)localObject1).EB(0L);
-      ((az)localObject1).pJ(0);
-      ((az)localObject1).pH(0);
-      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a((az)localObject1, bw.va(paramInt));
-      AppMethodBeat.o(102642);
-      return;
+    AppMethodBeat.i(91029);
+    this.omJ = paramCursor.getString(0);
+    this.time = paramCursor.getLong(1);
+    this.type = paramCursor.getInt(2);
+    this.name = paramCursor.getString(3);
+    this.title = paramCursor.getString(4);
+    this.url = paramCursor.getString(5);
+    this.omK = paramCursor.getString(6);
+    this.omL = paramCursor.getString(7);
+    this.omM = paramCursor.getLong(8);
+    this.sourceName = paramCursor.getString(9);
+    this.sourceIcon = paramCursor.getString(10);
+    this.omN = paramCursor.getInt(11);
+    this.nUM = paramCursor.getString(12);
+    this.nUO = paramCursor.getString(13);
+    this.omO = paramCursor.getInt(14);
+    this.omP = paramCursor.getLong(15);
+    this.omQ = paramCursor.getString(16);
+    this.omR = paramCursor.getString(17);
+    AppMethodBeat.o(91029);
+  }
+  
+  public final String getDigest()
+  {
+    if (this.nUO == null) {
+      return "";
     }
-    localObject1 = new bw();
-    ((bw)localObject1).convertFrom((Cursor)localObject2);
-    ((Cursor)localObject2).close();
-    localObject2 = new az();
-    ((az)localObject2).setUsername(bw.va(paramInt));
-    ((az)localObject2).setContent(((bw)localObject1).getTitle());
-    ((az)localObject2).EB(((bw)localObject1).time);
-    ((az)localObject2).pJ(0);
-    ((az)localObject2).pH(0);
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a((az)localObject2, bw.va(paramInt));
-    AppMethodBeat.o(102642);
+    return this.nUO;
+  }
+  
+  public final String getName()
+  {
+    if (this.name == null) {
+      return "";
+    }
+    return this.name;
+  }
+  
+  public final String getTitle()
+  {
+    if (this.title == null) {
+      return "";
+    }
+    return this.title;
+  }
+  
+  public final String getUrl()
+  {
+    if (this.url == null) {
+      return "";
+    }
+    return this.url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.model.bx
  * JD-Core Version:    0.7.0.1
  */

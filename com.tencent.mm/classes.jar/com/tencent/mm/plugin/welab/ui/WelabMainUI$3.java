@@ -8,14 +8,14 @@ final class WelabMainUI$3
 {
   WelabMainUI$3()
   {
-    AppMethodBeat.i(248541);
+    AppMethodBeat.i(262785);
     put("wximeplugin", "inputmethod");
-    AppMethodBeat.o(248541);
+    AppMethodBeat.o(262785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.WelabMainUI.3
  * JD-Core Version:    0.7.0.1
  */

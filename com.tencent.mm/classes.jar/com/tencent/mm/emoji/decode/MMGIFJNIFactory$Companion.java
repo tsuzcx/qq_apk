@@ -2,31 +2,30 @@ package com.tencent.mm.emoji.decode;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.a;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.gif.MMGIFException;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.io.InputStream;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory$Companion;", "", "()V", "TAG", "", "decodeThumb", "Landroid/graphics/Bitmap;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "byteArray", "", "getDecoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "md5", "isValid", "", "decoder", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory$Companion;", "", "()V", "TAG", "", "decodeThumb", "Landroid/graphics/Bitmap;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "byteArray", "", "getDecoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "md5", "isValid", "", "decoder", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMGIFJNIFactory$Companion
 {
   public final Bitmap decodeThumb(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(177050);
-    p.k(paramEmojiInfo, "emojiInfo");
-    paramEmojiInfo = ((Companion)this).getDecoder(paramEmojiInfo);
-    if (((Companion)this).isValid(paramEmojiInfo))
+    s.u(paramEmojiInfo, "emojiInfo");
+    paramEmojiInfo = getDecoder(paramEmojiInfo);
+    if (isValid(paramEmojiInfo))
     {
-      paramEmojiInfo.aBh();
+      paramEmojiInfo.aUe();
       Bitmap localBitmap = paramEmojiInfo.getFrame();
       paramEmojiInfo.destroy();
       AppMethodBeat.o(177050);
@@ -38,44 +37,42 @@ public final class MMGIFJNIFactory$Companion
   
   public final Bitmap decodeThumb(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(225424);
-    paramArrayOfByte = ((Companion)this).getDecoder(paramArrayOfByte);
-    if (((Companion)this).isValid(paramArrayOfByte))
+    AppMethodBeat.i(242236);
+    paramArrayOfByte = getDecoder(paramArrayOfByte);
+    if (isValid(paramArrayOfByte))
     {
-      paramArrayOfByte.aBh();
+      paramArrayOfByte.aUe();
       Bitmap localBitmap = paramArrayOfByte.getFrame();
       paramArrayOfByte.destroy();
-      AppMethodBeat.o(225424);
+      AppMethodBeat.o(242236);
       return localBitmap;
     }
-    AppMethodBeat.o(225424);
+    AppMethodBeat.o(242236);
     return null;
   }
   
   public final d getDecoder(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105374);
-    p.k(paramEmojiInfo, "emojiInfo");
+    s.u(paramEmojiInfo, "emojiInfo");
     for (;;)
     {
       try
       {
-        if ((paramEmojiInfo.hBy() != EmojiGroupInfo.YCv) && (paramEmojiInfo.hBy() != EmojiInfo.YCC) && (paramEmojiInfo.hBy() != EmojiInfo.YCB)) {
+        if ((paramEmojiInfo.field_catalog != EmojiGroupInfo.aklE) && (paramEmojiInfo.field_catalog != EmojiInfo.aklL) && (paramEmojiInfo.field_catalog != EmojiInfo.aklK)) {
           continue;
         }
-        localObject = (d)new e(paramEmojiInfo.C(MMApplicationContext.getContext(), 300));
+        localObject = (d)new e(paramEmojiInfo.F(MMApplicationContext.getContext(), 300));
         paramEmojiInfo = (EmojiInfo)localObject;
       }
       catch (MMGIFException localMMGIFException)
       {
         Object localObject;
-        Log.w(MMGIFJNIFactory.access$getTAG$cp(), "decode error: " + localMMGIFException.getErrorCode());
+        Log.w(MMGIFJNIFactory.access$getTAG$cp(), s.X("decode error: ", Integer.valueOf(localMMGIFException.getErrorCode())));
         if (localMMGIFException.getErrorCode() != 103) {
           continue;
         }
-        a locala = h.ag(PluginEmoji.class);
-        p.j(locala, "MMKernel.plugin(PluginEmoji::class.java)");
-        paramEmojiInfo = ((PluginEmoji)locala).getProvider().a(paramEmojiInfo);
+        paramEmojiInfo = ((PluginEmoji)h.az(PluginEmoji.class)).getProvider().a(paramEmojiInfo);
         if (paramEmojiInfo == null) {
           continue;
         }
@@ -92,18 +89,16 @@ public final class MMGIFJNIFactory$Companion
       paramEmojiInfo = (d)new b();
       AppMethodBeat.o(105374);
       return paramEmojiInfo;
-      if (paramEmojiInfo.hBu())
+      if (paramEmojiInfo.kMe())
       {
-        localObject = EmojiInfo.cH(MMApplicationContext.getContext(), paramEmojiInfo.getName());
-        p.j(localObject, "EmojiInfo.getEmojiFile(M…ontext(), emojiInfo.name)");
+        localObject = EmojiInfo.cS(MMApplicationContext.getContext(), paramEmojiInfo.getName());
+        s.s(localObject, "getEmojiFile(MMApplicati…ontext(), emojiInfo.name)");
         localObject = (d)new f((InputStream)localObject);
         paramEmojiInfo = (EmojiInfo)localObject;
       }
       else
       {
-        localObject = h.ag(PluginEmoji.class);
-        p.j(localObject, "MMKernel.plugin(PluginEmoji::class.java)");
-        localObject = ((PluginEmoji)localObject).getProvider().a(paramEmojiInfo);
+        localObject = ((PluginEmoji)h.az(PluginEmoji.class)).getProvider().a(paramEmojiInfo);
         if (localObject == null) {
           continue;
         }
@@ -123,25 +118,23 @@ public final class MMGIFJNIFactory$Companion
   
   public final d getDecoder(String paramString)
   {
-    AppMethodBeat.i(225409);
-    p.k(paramString, "md5");
-    bj localbj = bj.hyV();
-    p.j(localbj, "EmojiStorageMgr.getInstance()");
-    paramString = localbj.ctY().bxK(paramString);
+    AppMethodBeat.i(242225);
+    s.u(paramString, "md5");
+    paramString = bl.jba().adju.bza(paramString);
     if (paramString == null)
     {
       paramString = (d)new b();
-      AppMethodBeat.o(225409);
+      AppMethodBeat.o(242225);
       return paramString;
     }
-    paramString = ((Companion)this).getDecoder(paramString);
-    AppMethodBeat.o(225409);
+    paramString = getDecoder(paramString);
+    AppMethodBeat.o(242225);
     return paramString;
   }
   
   public final d getDecoder(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(225420);
+    AppMethodBeat.i(242230);
     if (paramArrayOfByte != null) {}
     for (;;)
     {
@@ -162,13 +155,13 @@ public final class MMGIFJNIFactory$Companion
         }
         paramArrayOfByte = (d)new e(paramArrayOfByte);
         continue;
-        AppMethodBeat.o(225420);
+        AppMethodBeat.o(242230);
         return paramArrayOfByte;
       }
       if (paramArrayOfByte == null)
       {
         paramArrayOfByte = (d)new b();
-        AppMethodBeat.o(225420);
+        AppMethodBeat.o(242230);
         return paramArrayOfByte;
         if (ImgUtil.isGif(paramArrayOfByte))
         {
@@ -196,7 +189,7 @@ public final class MMGIFJNIFactory$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.MMGIFJNIFactory.Companion
  * JD-Core Version:    0.7.0.1
  */

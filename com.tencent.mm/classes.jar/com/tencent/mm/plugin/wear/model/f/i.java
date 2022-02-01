@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.fjt;
+import com.tencent.mm.protocal.protobuf.ggh;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,33 +12,38 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private boolean Jx;
-  private ArrayList<Integer> PsL;
+  private ArrayList<Integer> Wjy;
+  private boolean bpA;
   
   public i()
   {
-    this.Jx = true;
+    this.bpA = true;
   }
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.PsL = paramArrayList;
-    this.Jx = false;
+    this.Wjy = paramArrayList;
+    this.bpA = false;
   }
   
-  protected final void gOA()
+  public final String getName()
+  {
+    return "WearCancelNotificationTask";
+  }
+  
+  protected final void send()
   {
     AppMethodBeat.i(30129);
-    Log.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.PsL });
-    fjt localfjt = new fjt();
-    if (this.PsL != null) {
-      localfjt.UIO.addAll(this.PsL);
+    Log.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.Wjy });
+    ggh localggh = new ggh();
+    if (this.Wjy != null) {
+      localggh.accW.addAll(this.Wjy);
     }
-    localfjt.UIP = this.Jx;
+    localggh.accX = this.bpA;
     try
     {
-      a.gOx();
-      r.a(20004, localfjt.toByteArray(), false);
+      a.inM();
+      r.a(20004, localggh.toByteArray(), false);
       AppMethodBeat.o(30129);
       return;
     }
@@ -47,15 +52,10 @@ public final class i
       AppMethodBeat.o(30129);
     }
   }
-  
-  public final String getName()
-  {
-    return "WearCancelNotificationTask";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.i
  * JD-Core Version:    0.7.0.1
  */

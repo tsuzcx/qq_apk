@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/am" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="wrap_content" android:layout_height="@dimen/aco"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ek8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <ImageView android:id="@id/fn0" android:background="@drawable/a_3" android:layout_width="@dimen/adf" android:layout_height="@dimen/ade" />
+    <RelativeLayout android:id="@id/ayp" android:background="@drawable/a_6" android:layout_width="wrap_content" android:layout_height="@dimen/aco" android:layout_toRightOf="@id/fn0" />
+</merge>

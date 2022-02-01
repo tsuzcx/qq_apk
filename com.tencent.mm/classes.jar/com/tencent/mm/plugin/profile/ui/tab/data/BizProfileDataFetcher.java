@@ -1,186 +1,227 @@
 package com.tencent.mm.plugin.profile.ui.tab.data;
 
-import androidx.lifecycle.k;
-import androidx.lifecycle.r;
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.pc;
-import com.tencent.mm.protocal.protobuf.pd;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.z;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.ql;
+import com.tencent.mm.protocal.protobuf.qm;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vending.e.b;
 import java.io.IOException;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;", "Landroidx/lifecycle/LifecycleObserver;", "addContactScene", "", "bizUsername", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "(ILjava/lang/String;Lcom/tencent/mm/ui/MMActivity;)V", "bizProfileMsgResp", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "getBizProfileMsgResp", "()Landroidx/lifecycle/MutableLiveData;", "bizProfileVideoResp", "getBizProfileVideoResp", "isLoading", "", "isMsgLoading", "isVideoLoading", "profileInfo", "profileInitRespData", "getProfileInitRespData", "createFetchReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "dataType", "pageSize", "offset", "Lcom/tencent/mm/protobuf/ByteString;", "fetchBizInfo", "", "initFetch", "fetchInitPage", "fetchMessageList", "fetchVideoList", "loadCacheProfileInfo", "userName", "Companion", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/profile/ui/tab/data/BizProfileDataFetcher;", "Landroidx/lifecycle/LifecycleObserver;", "addContactScene", "", "bizUsername", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "searchClickId", "(ILjava/lang/String;Lcom/tencent/mm/ui/MMActivity;Ljava/lang/String;)V", "bizProfileMsgResp", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "getBizProfileMsgResp", "()Landroidx/lifecycle/MutableLiveData;", "bizProfileVideoResp", "getBizProfileVideoResp", "isLoading", "", "isMsgLoading", "isVideoLoading", "profileInfo", "profileInitRespData", "getProfileInitRespData", "createFetchReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "dataType", "pageSize", "offset", "Lcom/tencent/mm/protobuf/ByteString;", "fetchBizInfo", "", "initFetch", "fetchInitPage", "fetchMessageList", "fetchVideoList", "loadCacheProfileInfo", "userName", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class BizProfileDataFetcher
-  implements k
+  implements androidx.lifecycle.p
 {
-  public static final BizProfileDataFetcher.a HgY;
-  private pd Hdu;
-  public final r<pd> HgT;
-  public final r<pd> HgU;
-  public final r<pd> HgV;
-  public boolean HgW;
-  public boolean HgX;
-  private final String fOX;
-  public final MMActivity iXq;
+  public static final BizProfileDataFetcher.a Neh;
+  private qm NcO;
+  private final String Ndp;
+  public final x<qm> Nei;
+  public final x<qm> Nej;
+  public final x<qm> Nek;
+  private boolean Nel;
+  private boolean Nem;
+  private final String hUQ;
   private boolean isLoading;
-  private int mXL;
+  private final MMActivity lzt;
+  private int pUt;
   
   static
   {
-    AppMethodBeat.i(272431);
-    HgY = new BizProfileDataFetcher.a((byte)0);
-    AppMethodBeat.o(272431);
+    AppMethodBeat.i(306014);
+    Neh = new BizProfileDataFetcher.a((byte)0);
+    AppMethodBeat.o(306014);
   }
   
-  public BizProfileDataFetcher(int paramInt, String paramString, MMActivity paramMMActivity)
+  public BizProfileDataFetcher(int paramInt, String paramString1, MMActivity paramMMActivity, String paramString2)
   {
-    AppMethodBeat.i(272429);
-    this.mXL = paramInt;
-    this.fOX = paramString;
-    this.iXq = paramMMActivity;
-    this.HgT = new r();
-    this.Hdu = com.tencent.mm.plugin.profile.ui.newbizinfo.a.aUW(this.fOX);
-    this.HgU = new r();
-    this.HgV = new r();
-    AppMethodBeat.o(272429);
+    AppMethodBeat.i(305929);
+    this.pUt = paramInt;
+    this.hUQ = paramString1;
+    this.lzt = paramMMActivity;
+    this.Ndp = paramString2;
+    this.Nei = new x();
+    this.NcO = com.tencent.mm.plugin.profile.ui.newbizinfo.b.aSd(this.hUQ);
+    this.Nej = new x();
+    this.Nek = new x();
+    AppMethodBeat.o(305929);
   }
   
-  public final void frF()
+  private static final int a(BizProfileDataFetcher paramBizProfileDataFetcher, int paramInt1, int paramInt2, String paramString, c paramc, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(272427);
+    AppMethodBeat.i(305978);
+    s.u(paramBizProfileDataFetcher, "this$0");
+    paramp = (qm)c.c.b(paramc.otC);
+    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramp == null))
+    {
+      paramBizProfileDataFetcher.Nel = false;
+      AppMethodBeat.o(305978);
+      return 0;
+    }
+    paramString = paramBizProfileDataFetcher.Nej;
+    paramc = new qm();
+    paramc.parseFrom(paramp.toByteArray());
+    paramp = ah.aiuX;
+    paramString.setValue(paramc);
+    paramBizProfileDataFetcher.Nel = false;
+    AppMethodBeat.o(305978);
+    return 0;
+  }
+  
+  private static final int a(boolean paramBoolean, BizProfileDataFetcher paramBizProfileDataFetcher, int paramInt1, int paramInt2, String paramString, c paramc, com.tencent.mm.am.p paramp)
+  {
+    AppMethodBeat.i(306007);
+    s.u(paramBizProfileDataFetcher, "this$0");
+    Log.i("MicroMsg.BizProfileDataFetcher", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    paramString = (qm)c.c.b(paramc.otC);
+    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramString == null))
+    {
+      AppMethodBeat.o(306007);
+      return 0;
+    }
+    paramc = com.tencent.mm.plugin.profile.ui.newbizinfo.b.Ncd;
+    com.tencent.mm.plugin.profile.ui.newbizinfo.b.a(paramString.YVn);
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        com.tencent.mm.plugin.profile.ui.newbizinfo.b.a(paramString);
+        paramBizProfileDataFetcher.Nei.setValue(paramString);
+        paramBizProfileDataFetcher.isLoading = false;
+        AppMethodBeat.o(306007);
+        return 0;
+      }
+      catch (IOException paramString)
+      {
+        Log.printErrStackTrace("MicroMsg.BizProfileDataFetcher", (Throwable)paramString, "profileInfo.parseFrom", new Object[0]);
+        continue;
+      }
+      paramc = paramBizProfileDataFetcher.Nej;
+      paramp = new qm();
+      paramp.parseFrom(paramString.toByteArray());
+      paramString = ah.aiuX;
+      paramc.setValue(paramp);
+    }
+  }
+  
+  private final c a(int paramInt, com.tencent.mm.bx.b paramb)
+  {
+    AppMethodBeat.i(305949);
+    c.a locala = new c.a();
+    locala.funcId = 2656;
+    locala.uri = "/cgi-bin/mmbiz-bin/bizattr/bizprofilev2";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    ql localql = new ql();
+    localql.YRs = this.hUQ;
+    localql.YVh = paramInt;
+    localql.YVf = paramb;
+    localql.YVi = 20;
+    localql.IJG = this.pUt;
+    localql.YVj = ad.getSessionId();
+    localql.YVk = this.Ndp;
+    locala.otE = ((a)localql);
+    locala.otF = ((a)new qm());
+    paramb = locala.bEF();
+    s.s(paramb, "Builder().apply {\n      …        }.buildInstance()");
+    AppMethodBeat.o(305949);
+    return paramb;
+  }
+  
+  private static final int b(BizProfileDataFetcher paramBizProfileDataFetcher, int paramInt1, int paramInt2, String paramString, c paramc, com.tencent.mm.am.p paramp)
+  {
+    AppMethodBeat.i(305988);
+    s.u(paramBizProfileDataFetcher, "this$0");
+    paramp = (qm)c.c.b(paramc.otC);
+    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramp == null))
+    {
+      paramBizProfileDataFetcher.Nem = false;
+      AppMethodBeat.o(305988);
+      return 0;
+    }
+    paramString = paramBizProfileDataFetcher.Nek;
+    paramc = new qm();
+    paramc.parseFrom(paramp.toByteArray());
+    paramp = ah.aiuX;
+    paramString.setValue(paramc);
+    paramBizProfileDataFetcher.Nem = false;
+    AppMethodBeat.o(305988);
+    return 0;
+  }
+  
+  private void gCT()
+  {
+    AppMethodBeat.i(305962);
     if (this.isLoading)
     {
       Log.i("MicroMsg.BizProfileDataFetcher", "not obtailBizInfoFromCgi, use cache");
-      AppMethodBeat.o(272427);
+      AppMethodBeat.o(305962);
       return;
     }
     this.isLoading = true;
-    d.a locala = new d.a();
-    locala.vD(2656);
-    locala.TW("/cgi-bin/mmbiz-bin/bizattr/bizprofilev2");
-    locala.vF(0);
-    locala.vG(0);
-    pc localpc = new pc();
-    localpc.RTS = this.fOX;
-    localpc.RXp = 0;
-    localpc.RXq = 5;
-    localpc.CPw = this.mXL;
-    localpc.RXr = ab.getSessionId();
-    locala.c((com.tencent.mm.cd.a)localpc);
-    locala.d((com.tencent.mm.cd.a)new pd());
-    aa.a(locala.bgN(), (aa.a)new b(this, true), false, (b)this.iXq);
-    AppMethodBeat.o(272427);
+    c.a locala = new c.a();
+    locala.funcId = 2656;
+    locala.uri = "/cgi-bin/mmbiz-bin/bizattr/bizprofilev2";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    ql localql = new ql();
+    localql.YRs = this.hUQ;
+    localql.YVh = 0;
+    localql.YVi = 5;
+    localql.IJG = this.pUt;
+    localql.YVj = ad.getSessionId();
+    localql.YVk = this.Ndp;
+    locala.otE = ((a)localql);
+    locala.otF = ((a)new qm());
+    z.a(locala.bEF(), new BizProfileDataFetcher..ExternalSyntheticLambda2(true, this), false, (com.tencent.mm.vending.e.b)this.lzt);
+    AppMethodBeat.o(305962);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-  static final class b
-    implements aa.a
+  public final void gCS()
   {
-    b(BizProfileDataFetcher paramBizProfileDataFetcher, boolean paramBoolean) {}
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, q paramq)
-    {
-      AppMethodBeat.i(288008);
-      Log.i("MicroMsg.BizProfileDataFetcher", "callback, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      p.j(paramd, "rr");
-      paramString = (pd)paramd.bhY();
-      if ((paramInt1 != 0) || (paramInt2 != 0) || (paramString == null))
-      {
-        AppMethodBeat.o(288008);
-        return 0;
-      }
-      paramd = com.tencent.mm.plugin.profile.ui.newbizinfo.a.Hes;
-      com.tencent.mm.plugin.profile.ui.newbizinfo.a.a(paramString.RXu);
-      if (this.Hha) {}
-      for (;;)
-      {
-        try
-        {
-          com.tencent.mm.plugin.profile.ui.newbizinfo.a.b(paramString);
-          this.HgZ.HgT.setValue(paramString);
-          BizProfileDataFetcher.c(this.HgZ);
-          AppMethodBeat.o(288008);
-          return 0;
-        }
-        catch (IOException paramString)
-        {
-          Log.printErrStackTrace("MicroMsg.BizProfileDataFetcher", (Throwable)paramString, "profileInfo.parseFrom", new Object[0]);
-          continue;
-        }
-        paramd = this.HgZ.HgU;
-        paramq = new pd();
-        paramq.parseFrom(paramString.toByteArray());
-        paramd.setValue(paramq);
-      }
-    }
+    AppMethodBeat.i(306057);
+    gCT();
+    AppMethodBeat.o(306057);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-  public static final class c
-    implements aa.a
+  public final void h(com.tencent.mm.bx.b paramb)
   {
-    public c(BizProfileDataFetcher paramBizProfileDataFetcher) {}
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, q paramq)
+    AppMethodBeat.i(306072);
+    if (this.Nel)
     {
-      AppMethodBeat.i(279928);
-      p.j(paramd, "rr");
-      paramString = (pd)paramd.bhY();
-      if ((paramInt1 != 0) || (paramInt2 != 0) || (paramString == null))
-      {
-        BizProfileDataFetcher.b(this.HgZ);
-        AppMethodBeat.o(279928);
-        return 0;
-      }
-      paramd = this.HgZ.HgV;
-      paramq = new pd();
-      paramq.parseFrom(paramString.toByteArray());
-      paramd.setValue(paramq);
-      BizProfileDataFetcher.b(this.HgZ);
-      AppMethodBeat.o(279928);
-      return 0;
+      AppMethodBeat.o(306072);
+      return;
     }
+    this.Nel = true;
+    z.a(a(2, paramb), new BizProfileDataFetcher..ExternalSyntheticLambda1(this), false, (com.tencent.mm.vending.e.b)this.lzt);
+    AppMethodBeat.o(306072);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-  public static final class d
-    implements aa.a
+  public final void i(com.tencent.mm.bx.b paramb)
   {
-    public d(BizProfileDataFetcher paramBizProfileDataFetcher) {}
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, q paramq)
+    AppMethodBeat.i(306086);
+    if (this.Nem)
     {
-      AppMethodBeat.i(289466);
-      p.j(paramd, "rr");
-      paramString = (pd)paramd.bhY();
-      if ((paramInt1 != 0) || (paramInt2 != 0) || (paramString == null))
-      {
-        BizProfileDataFetcher.a(this.HgZ);
-        AppMethodBeat.o(289466);
-        return 0;
-      }
-      paramd = this.HgZ.HgU;
-      paramq = new pd();
-      paramq.parseFrom(paramString.toByteArray());
-      paramd.setValue(paramq);
-      BizProfileDataFetcher.a(this.HgZ);
-      AppMethodBeat.o(289466);
-      return 0;
+      AppMethodBeat.o(306086);
+      return;
     }
+    this.Nem = true;
+    z.a(a(1, paramb), new BizProfileDataFetcher..ExternalSyntheticLambda0(this), false, (com.tencent.mm.vending.e.b)this.lzt);
+    AppMethodBeat.o(306086);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.data.BizProfileDataFetcher
  * JD-Core Version:    0.7.0.1
  */

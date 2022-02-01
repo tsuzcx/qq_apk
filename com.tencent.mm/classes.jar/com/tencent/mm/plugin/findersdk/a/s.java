@@ -1,14 +1,9 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.kernel.c.a;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageMuteSetting;", "Lcom/tencent/mm/kernel/service/IService;", "modifyMessageMuteSetting", "", "ifOpen", "", "finder-sdk_release"})
-public abstract interface s
-  extends a
-{
-  public abstract void oi(boolean paramBoolean);
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/ICgiFinderAuthAppMsg;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderSendInviteMsgResponse;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface s {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

@@ -14,73 +14,68 @@ public final class a
   extends e
 {
   private String mFilePath = "";
-  private String qia = "";
-  private int tOb = 0;
+  private String tmM = "";
+  private int wRr = 0;
   
   public a(f paramf)
   {
     super(paramf);
   }
   
-  public final void M(String paramString1, String paramString2, int paramInt)
+  public final void T(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(123455);
     Log.i("MicroMsg.FilesFloatBall.ChooseMsgFilesPageFloatBallHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
     this.mFilePath = paramString1;
-    this.qia = paramString2;
-    this.tOb = paramInt;
-    super.I(4, b.aoC(paramString1));
-    cvL().kqZ = 4;
-    cvL().rYx = this.tOb;
-    cvG();
-    if (this.rYE.mab != null)
+    this.tmM = paramString2;
+    this.wRr = paramInt;
+    super.J(4, b.ahY(paramString1));
+    cYv().mUU = 4;
+    cYv().vjN = this.wRr;
+    cYr();
+    if (this.vjV.oSS != null)
     {
-      this.rYE.mab.putBoolean("ifAppAttachDownloadUI", false);
-      this.rYE.mab.putString("filePath", paramString1);
-      this.rYE.mab.putString("fileExt", paramString2);
-      this.rYE.mab.putInt("sence", paramInt);
-      cvG();
+      this.vjV.oSS.putBoolean("ifAppAttachDownloadUI", false);
+      this.vjV.oSS.putString("filePath", paramString1);
+      this.vjV.oSS.putString("fileExt", paramString2);
+      this.vjV.oSS.putInt("sence", paramInt);
+      cYr();
     }
     AppMethodBeat.o(123455);
   }
   
-  public final boolean aOg()
+  public final boolean bhU()
   {
     return true;
   }
   
-  public final boolean aOh()
-  {
-    return true;
-  }
-  
-  public final void aOi()
+  public final void bhV()
   {
     AppMethodBeat.i(123453);
     Log.i("MicroMsg.FilesFloatBall.ChooseMsgFilesPageFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.aOi();
-    if ((this.rZC != null) && (this.rZC.getActivity() != null)) {
-      this.rZC.getActivity().finish();
+    super.bhV();
+    if ((this.vkT != null) && (this.vkT.getActivity() != null)) {
+      this.vkT.getActivity().finish();
     }
     AppMethodBeat.o(123453);
   }
   
-  public final void bNW()
+  public final void coj()
   {
     AppMethodBeat.i(123454);
     Log.i("MicroMsg.FilesFloatBall.ChooseMsgFilesPageFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.bNW();
+    super.coj();
     AppMethodBeat.o(123454);
   }
   
-  public final boolean bOb()
+  public final boolean cop()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.a
  * JD-Core Version:    0.7.0.1
  */

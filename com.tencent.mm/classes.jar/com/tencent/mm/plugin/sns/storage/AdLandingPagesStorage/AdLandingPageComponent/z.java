@@ -7,25 +7,25 @@ import java.util.List;
 public final class z
   extends aa
 {
-  public aq KmA;
-  public List<aa> ayS;
+  public as QKF;
+  public List<aa> aAO;
   public int cornerRadius;
   
   public z()
   {
     AppMethodBeat.i(96321);
-    this.ayS = new ArrayList();
+    this.aAO = new ArrayList();
     AppMethodBeat.o(96321);
   }
   
-  public final List<aa> fKw()
+  public final List<aa> haE()
   {
-    return this.ayS;
+    return this.aAO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z
  * JD-Core Version:    0.7.0.1
  */

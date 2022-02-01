@@ -12,20 +12,20 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static final HashSet<String> Qim;
+  private static final HashSet<String> Xaq;
   
   static
   {
     AppMethodBeat.i(80438);
     HashSet localHashSet = new HashSet();
-    Qim = localHashSet;
+    Xaq = localHashSet;
     localHashSet.add("title");
-    Qim.add("webpageTitle");
-    Qim.add("srcUsername");
-    Qim.add("srcDisplayname");
-    Qim.add("mode");
-    Qim.add("KTemplateId");
-    Qim.add("KPublisherId");
+    Xaq.add("webpageTitle");
+    Xaq.add("srcUsername");
+    Xaq.add("srcDisplayname");
+    Xaq.add("mode");
+    Xaq.add("KTemplateId");
+    Xaq.add("KPublisherId");
     AppMethodBeat.o(80438);
   }
   
@@ -57,7 +57,7 @@ public final class c
     AppMethodBeat.o(80437);
   }
   
-  public static JSONObject bc(Bundle paramBundle)
+  public static JSONObject bH(Bundle paramBundle)
   {
     AppMethodBeat.i(80436);
     localJSONObject = new JSONObject();

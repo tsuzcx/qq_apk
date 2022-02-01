@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.facedetect.model;
 
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 
 public abstract interface a$a
 {
-  public static final String wwu = b.aSL() + "face_debug/";
-  public static final String wwv = b.aSL() + "facedir/";
-  public static final String www = b.aSL() + "face_debug_template/";
+  public static final String zSA = b.bmz() + "face_debug/";
+  public static final String zSB = b.bmz() + "facedir/";
+  public static final String zSC = b.bmz() + "face_debug_template/";
 }
 
 

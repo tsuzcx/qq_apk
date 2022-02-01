@@ -8,14 +8,11 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzr
 {
   private final ScheduledExecutorService zzbz;
-  @GuardedBy("this")
   private zzt zzca;
-  @GuardedBy("this")
   private int zzcb;
   private final Context zzk;
   
@@ -83,7 +80,7 @@ public final class zzr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.zzr
  * JD-Core Version:    0.7.0.1
  */

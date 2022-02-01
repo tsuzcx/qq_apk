@@ -9,13 +9,13 @@ import java.util.List;
 
 public final class b
 {
-  public final List<byte[]> aMS;
-  public final int aSh;
+  public final List<byte[]> cGP;
+  public final int cMd;
   
   private b(List<byte[]> paramList, int paramInt)
   {
-    this.aMS = paramList;
-    this.aSh = paramInt;
+    this.cGP = paramList;
+    this.cMd = paramInt;
   }
   
   public static b M(m paramm)
@@ -27,7 +27,7 @@ public final class b
       int i;
       try
       {
-        paramm.fu(21);
+        paramm.iH(21);
         int n = paramm.readUnsignedByte();
         int i1 = paramm.readUnsignedByte();
         int m = paramm.position;
@@ -35,7 +35,7 @@ public final class b
         i = 0;
         if (j < i1)
         {
-          paramm.fu(1);
+          paramm.iH(1);
           i2 = paramm.readUnsignedShort();
           k = 0;
           if (k >= i2) {
@@ -43,7 +43,7 @@ public final class b
           }
           i3 = paramm.readUnsignedShort();
           i += i3 + 4;
-          paramm.fu(i3);
+          paramm.iH(i3);
           k += 1;
           continue;
         }
@@ -54,18 +54,18 @@ public final class b
         if (j >= i1) {
           break label256;
         }
-        paramm.fu(1);
+        paramm.iH(1);
         int i2 = paramm.readUnsignedShort();
         int k = 0;
         if (k >= i2) {
           break label249;
         }
         int i3 = paramm.readUnsignedShort();
-        System.arraycopy(k.bqC, 0, arrayOfByte, m, k.bqC.length);
-        m += k.bqC.length;
+        System.arraycopy(k.dkg, 0, arrayOfByte, m, k.dkg.length);
+        m += k.dkg.length;
         System.arraycopy(paramm.data, paramm.position, arrayOfByte, m, i3);
         m += i3;
-        paramm.fu(i3);
+        paramm.iH(i3);
         k += 1;
         continue;
         paramm = new b(paramm, (n & 0x3) + 1);
@@ -96,7 +96,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.exoplayer2.video.b
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class GameGalleryFragment
   extends Fragment
 {
-  private int CDQ;
+  private int IxU;
   View mView;
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -24,7 +24,7 @@ public class GameGalleryFragment
       AppMethodBeat.o(40905);
       return paramLayoutInflater;
     }
-    paramLayoutInflater = paramLayoutInflater.inflate(this.CDQ, paramViewGroup);
+    paramLayoutInflater = paramLayoutInflater.inflate(this.IxU, paramViewGroup);
     AppMethodBeat.o(40905);
     return paramLayoutInflater;
   }
@@ -38,7 +38,7 @@ public class GameGalleryFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameGalleryFragment
  * JD-Core Version:    0.7.0.1
  */

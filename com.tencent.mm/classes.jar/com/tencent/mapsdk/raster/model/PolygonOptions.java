@@ -11,6 +11,7 @@ public final class PolygonOptions
   private int fillColor;
   private int iLevel;
   private boolean isVisible;
+  private List<Integer> pattern;
   private final List<LatLng> points;
   private int strokeColor;
   private float strokeWidth;
@@ -89,6 +90,11 @@ public final class PolygonOptions
     return this.iLevel;
   }
   
+  public final List<Integer> getPattern()
+  {
+    return this.pattern;
+  }
+  
   public final List<LatLng> getPoints()
   {
     return this.points;
@@ -123,6 +129,12 @@ public final class PolygonOptions
     return this;
   }
   
+  public final PolygonOptions pattern(List<Integer> paramList)
+  {
+    this.pattern = paramList;
+    return this;
+  }
+  
   public final PolygonOptions strokeColor(int paramInt)
   {
     this.strokeColor = paramInt;
@@ -153,7 +165,7 @@ public final class PolygonOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.PolygonOptions
  * JD-Core Version:    0.7.0.1
  */

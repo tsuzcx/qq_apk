@@ -2,22 +2,19 @@ package org.xwalk.core;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 import java.util.Map;
 
 public class XWalkWebResourceRequestHandler
   implements XWalkWebResourceRequest
 {
+  private static final String TAG = "XWalkWebResourceRequestHandler";
   private Object bridge;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod getMethodMethod;
   private ReflectMethod getRequestHeadersMethod;
   private ReflectMethod getUrlMethod;
   private ReflectMethod hasGestureMethod;
   private ReflectMethod isForMainFrameMethod;
-  private ReflectMethod postWrapperMethod;
   
   public XWalkWebResourceRequestHandler(Object paramObject)
   {
@@ -30,6 +27,24 @@ public class XWalkWebResourceRequestHandler
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(155163);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(155169);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(155169);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.getUrlMethod.init(this.bridge, null, "getUrlSuper", new Class[0]);
+    this.isForMainFrameMethod.init(this.bridge, null, "isForMainFrameSuper", new Class[0]);
+    this.hasGestureMethod.init(this.bridge, null, "hasGestureSuper", new Class[0]);
+    this.getMethodMethod.init(this.bridge, null, "getMethodSuper", new Class[0]);
+    this.getRequestHeadersMethod.init(this.bridge, null, "getRequestHeadersSuper", new Class[0]);
+    AppMethodBeat.o(155169);
   }
   
   protected Object getBridge()
@@ -156,29 +171,10 @@ public class XWalkWebResourceRequestHandler
     }
     return false;
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(155169);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(155169);
-      return;
-    }
-    this.getUrlMethod.init(this.bridge, null, "getUrlSuper", new Class[0]);
-    this.isForMainFrameMethod.init(this.bridge, null, "isForMainFrameSuper", new Class[0]);
-    this.hasGestureMethod.init(this.bridge, null, "hasGestureSuper", new Class[0]);
-    this.getMethodMethod.init(this.bridge, null, "getMethodSuper", new Class[0]);
-    this.getRequestHeadersMethod.init(this.bridge, null, "getRequestHeadersSuper", new Class[0]);
-    AppMethodBeat.o(155169);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkWebResourceRequestHandler
  * JD-Core Version:    0.7.0.1
  */

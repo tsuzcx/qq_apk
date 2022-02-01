@@ -1,54 +1,51 @@
 package com.tencent.mm.s;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.api.j;
+import com.tencent.mm.v.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/engine/FunctionMsgTask;", "", "op", "", "item", "Lcom/tencent/mm/api/FunctionMsgItem;", "executor", "Lcom/tencent/mm/executor/IOpExecutor;", "(ILcom/tencent/mm/api/FunctionMsgItem;Lcom/tencent/mm/executor/IOpExecutor;)V", "mExecutor", "getMExecutor", "()Lcom/tencent/mm/executor/IOpExecutor;", "mItem", "getMItem", "()Lcom/tencent/mm/api/FunctionMsgItem;", "mOpCode", "getMOpCode", "()I", "equals", "", "other", "toString", "", "plugin-functionmsg_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements b
 {
-  public static a jBw = null;
-  public c jBx = null;
+  final int hHT;
+  public final j mpT;
+  public final b mpU;
   
-  public static void a(a parama)
+  public d(int paramInt, j paramj, b paramb)
   {
-    AppMethodBeat.i(120679);
-    StringBuilder localStringBuilder = new StringBuilder("XWalkLib SetFileDownloaderProxy:");
-    if (parama == null) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(114122);
+    this.hHT = paramInt;
+    this.mpT = paramj;
+    this.mpU = paramb;
+    AppMethodBeat.o(114122);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(114121);
+    if ((paramObject instanceof d))
     {
-      Log.i("WXFileDownloaderBridge", bool);
-      jBw = parama;
-      AppMethodBeat.o(120679);
-      return;
+      boolean bool = s.p(((d)paramObject).mpT.field_functionmsgid, this.mpT.field_functionmsgid);
+      AppMethodBeat.o(114121);
+      return bool;
     }
+    AppMethodBeat.o(114121);
+    return false;
   }
   
-  public final void c(String paramString1, String paramString2, boolean paramBoolean)
+  public final String toString()
   {
-    AppMethodBeat.i(120680);
-    Log.i("WXFileDownloaderBridge", "onTaskFinished url=" + paramString1 + ", save_path=" + paramString2);
-    this.jBx.onTaskSucc(paramString1, paramString2, paramBoolean);
-    AppMethodBeat.o(120680);
-  }
-  
-  public final void h(String paramString, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(120681);
-    Log.i("WXFileDownloaderBridge", "onTaskFailed, url=" + paramString + ", errCode=" + paramInt);
-    this.jBx.onTaskFail(paramString, paramInt, paramBoolean);
-    AppMethodBeat.o(120681);
-  }
-  
-  public final void i(String paramString, long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(120682);
-    Log.i("WXFileDownloaderBridge", "onTaskProgressChanged, url=" + paramString + ", cur_size:" + paramLong1 + ", total_size:" + paramLong2);
-    AppMethodBeat.o(120682);
+    AppMethodBeat.i(114120);
+    String str = "FunctionMsgTask(mOpCode=" + this.hHT + ", mItem=" + this.mpT + ')';
+    AppMethodBeat.o(114120);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.s.d
  * JD-Core Version:    0.7.0.1
  */

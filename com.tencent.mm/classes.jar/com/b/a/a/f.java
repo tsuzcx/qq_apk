@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   implements c
 {
-  public final String aW(String paramString)
+  public final String cj(String paramString)
   {
     AppMethodBeat.i(183627);
     int i = paramString.lastIndexOf('.');
@@ -15,7 +15,7 @@ public final class f
     if ((i != -1) && (i > j) && (i + 2 + 4 > paramString.length())) {}
     for (String str = paramString.substring(i + 1, paramString.length());; str = "")
     {
-      paramString = o.aV(paramString);
+      paramString = o.ci(paramString);
       if (!TextUtils.isEmpty(str)) {
         break;
       }
@@ -29,7 +29,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.b.a.a.f
  * JD-Core Version:    0.7.0.1
  */

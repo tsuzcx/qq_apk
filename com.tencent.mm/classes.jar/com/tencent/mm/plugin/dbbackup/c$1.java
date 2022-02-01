@@ -4,44 +4,44 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.model.cj;
+import com.tencent.mm.model.ck;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 final class c$1
   implements b
 {
-  c$1(c paramc, cj paramcj, ProgressDialog paramProgressDialog, Context paramContext) {}
+  c$1(c paramc, ck paramck, ProgressDialog paramProgressDialog, Context paramContext) {}
   
   public final void onResult(final int paramInt)
   {
     AppMethodBeat.i(23037);
-    this.uca.bfw();
+    this.xie.bDo();
     MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23036);
-        if (c.1.this.ucb != null) {
-          c.1.this.ucb.dismiss();
+        if (c.1.this.xif != null) {
+          c.1.this.xif.dismiss();
         }
         int i;
         switch (paramInt)
         {
         case -1: 
         default: 
-          i = R.l.eQs;
+          i = R.l.gSX;
         }
         for (;;)
         {
-          h.p(c.1.this.val$context, i, R.l.app_tip);
+          k.s(c.1.this.val$context, i, R.l.app_tip);
           AppMethodBeat.o(23036);
           return;
-          i = R.l.eQw;
+          i = R.l.gTb;
           continue;
-          i = R.l.eQv;
+          i = R.l.gTa;
           continue;
-          i = R.l.eQu;
+          i = R.l.gSZ;
         }
       }
     });

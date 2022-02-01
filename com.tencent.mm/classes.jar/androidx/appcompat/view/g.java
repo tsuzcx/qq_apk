@@ -6,7 +6,6 @@ import android.content.ContextWrapper;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
-import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +16,7 @@ import androidx.appcompat.a.j;
 import androidx.appcompat.view.menu.j;
 import androidx.appcompat.view.menu.k;
 import androidx.appcompat.widget.o;
+import androidx.core.g.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -25,34 +25,34 @@ import org.xmlpull.v1.XmlPullParser;
 public final class g
   extends MenuInflater
 {
-  static final Class<?>[] jT;
-  static final Class<?>[] jU;
-  final Object[] jV;
-  final Object[] jW;
-  Object jX;
+  static final Class<?>[] kP;
+  static final Class<?>[] kQ;
+  final Object[] kR;
+  final Object[] kS;
+  Object kT;
   Context mContext;
   
   static
   {
     Class[] arrayOfClass = new Class[1];
     arrayOfClass[0] = Context.class;
-    jT = arrayOfClass;
-    jU = arrayOfClass;
+    kP = arrayOfClass;
+    kQ = arrayOfClass;
   }
   
   public g(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(238997);
+    AppMethodBeat.i(200641);
     this.mContext = paramContext;
-    this.jV = new Object[] { paramContext };
-    this.jW = this.jV;
-    AppMethodBeat.o(238997);
+    this.kR = new Object[] { paramContext };
+    this.kS = this.kR;
+    AppMethodBeat.o(200641);
   }
   
   private void a(XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Menu paramMenu)
   {
-    AppMethodBeat.i(239000);
+    AppMethodBeat.i(200651);
     b localb = new b(paramMenu);
     int i = paramXmlPullParser.getEventType();
     label54:
@@ -85,7 +85,7 @@ public final class g
         k = paramXmlPullParser.next();
         break label70;
         paramXmlPullParser = new RuntimeException("Expecting menu, got ".concat(String.valueOf(paramMenu)));
-        AppMethodBeat.o(239000);
+        AppMethodBeat.o(200651);
         throw paramXmlPullParser;
         j = paramXmlPullParser.next();
         i = j;
@@ -107,7 +107,7 @@ public final class g
           }
           else if (str.equals("menu"))
           {
-            a(paramXmlPullParser, paramAttributeSet, localb.bG());
+            a(paramXmlPullParser, paramAttributeSet, localb.cz());
           }
           else
           {
@@ -122,15 +122,15 @@ public final class g
             }
             else if (str.equals("group"))
             {
-              localb.bE();
+              localb.cx();
             }
             else if (str.equals("item"))
             {
-              if (!localb.kg) {
-                if ((localb.kz != null) && (localb.kz.hasSubMenu())) {
-                  localb.bG();
+              if (!localb.lc) {
+                if ((localb.lv != null) && (localb.lv.hasSubMenu())) {
+                  localb.cz();
                 } else {
-                  localb.bF();
+                  localb.cy();
                 }
               }
             }
@@ -143,20 +143,20 @@ public final class g
       }
     }
     paramXmlPullParser = new RuntimeException("Unexpected end of document");
-    AppMethodBeat.o(239000);
+    AppMethodBeat.o(200651);
     throw paramXmlPullParser;
     label383:
-    AppMethodBeat.o(239000);
+    AppMethodBeat.o(200651);
   }
   
-  static Object m(Object paramObject)
+  static Object p(Object paramObject)
   {
-    AppMethodBeat.i(239001);
+    AppMethodBeat.i(200660);
     for (;;)
     {
       if ((paramObject instanceof Activity))
       {
-        AppMethodBeat.o(239001);
+        AppMethodBeat.o(200660);
         return paramObject;
       }
       if (!(paramObject instanceof ContextWrapper)) {
@@ -164,7 +164,7 @@ public final class g
       }
       paramObject = ((ContextWrapper)paramObject).getBaseContext();
     }
-    AppMethodBeat.o(239001);
+    AppMethodBeat.o(200660);
     return paramObject;
   }
   
@@ -288,324 +288,220 @@ public final class g
   
   final class b
   {
-    private Menu jZ;
-    private CharSequence kA;
-    private CharSequence kB;
-    private ColorStateList kC;
-    private PorterDuff.Mode kD;
-    private int ka;
-    private int kb;
-    private int kc;
-    private int kd;
-    private boolean ke;
-    private boolean kf;
-    boolean kg;
-    private int kh;
-    private int ki;
-    private CharSequence kj;
-    private CharSequence kk;
-    private int kl;
-    private char km;
-    private int kn;
-    private char ko;
-    private int kp;
-    private int kq;
-    private boolean kr;
-    private boolean ks;
-    private boolean kt;
-    private int ku;
-    private int kv;
-    private String kw;
-    private String kx;
-    private String ky;
-    androidx.core.g.b kz;
+    private Menu kV;
+    private int kW;
+    private int kX;
+    private int kY;
+    private int kZ;
+    private boolean la;
+    private boolean lb;
+    boolean lc;
+    private int ld;
+    private int le;
+    private CharSequence lf;
+    private CharSequence lg;
+    private int lh;
+    private char li;
+    private int lj;
+    private char lk;
+    private int ll;
+    private int lm;
+    private boolean ln;
+    private boolean lo;
+    private boolean lp;
+    private int lq;
+    private int lr;
+    private String ls;
+    private String lt;
+    private String lu;
+    androidx.core.g.b lv;
+    private CharSequence lw;
+    private CharSequence lx;
+    private ColorStateList ly;
+    private PorterDuff.Mode lz;
     
     public b(Menu paramMenu)
     {
-      AppMethodBeat.i(238976);
-      this.kC = null;
-      this.kD = null;
-      this.jZ = paramMenu;
-      bE();
-      AppMethodBeat.o(238976);
+      AppMethodBeat.i(200738);
+      this.ly = null;
+      this.lz = null;
+      this.kV = paramMenu;
+      cx();
+      AppMethodBeat.o(200738);
     }
     
     private void a(MenuItem paramMenuItem)
     {
       int i = 1;
-      AppMethodBeat.i(238988);
-      Object localObject = paramMenuItem.setChecked(this.kr).setVisible(this.ks).setEnabled(this.kt);
-      if (this.kq > 0) {}
+      AppMethodBeat.i(200774);
+      Object localObject = paramMenuItem.setChecked(this.ln).setVisible(this.lo).setEnabled(this.lp);
+      if (this.lm > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ((MenuItem)localObject).setCheckable(bool).setTitleCondensed(this.kk).setIcon(this.kl);
-        if (this.ku >= 0) {
-          paramMenuItem.setShowAsAction(this.ku);
+        ((MenuItem)localObject).setCheckable(bool).setTitleCondensed(this.lg).setIcon(this.lh);
+        if (this.lq >= 0) {
+          paramMenuItem.setShowAsAction(this.lq);
         }
-        if (this.ky == null) {
-          break label185;
+        if (this.lu == null) {
+          break label182;
         }
         if (!g.this.mContext.isRestricted()) {
           break;
         }
         paramMenuItem = new IllegalStateException("The android:onClick attribute cannot be used within a restricted context");
-        AppMethodBeat.o(238988);
+        AppMethodBeat.o(200774);
         throw paramMenuItem;
       }
       localObject = g.this;
-      if (((g)localObject).jX == null) {
-        ((g)localObject).jX = g.m(((g)localObject).mContext);
+      if (((g)localObject).kT == null) {
+        ((g)localObject).kT = g.p(((g)localObject).mContext);
       }
-      paramMenuItem.setOnMenuItemClickListener(new g.a(((g)localObject).jX, this.ky));
-      label185:
-      if (this.kq >= 2)
+      paramMenuItem.setOnMenuItemClickListener(new g.a(((g)localObject).kT, this.lu));
+      label182:
+      if (this.lm >= 2)
       {
         if ((paramMenuItem instanceof j)) {
-          ((j)paramMenuItem).I(true);
+          ((j)paramMenuItem).M(true);
         }
       }
       else
       {
-        if (this.kw == null) {
-          break label682;
+        if (this.ls == null) {
+          break label438;
         }
-        paramMenuItem.setActionView((View)newInstance(this.kw, g.jT, g.this.jV));
+        paramMenuItem.setActionView((View)newInstance(this.ls, g.kP, g.this.kR));
       }
       for (;;)
       {
-        if ((this.kv > 0) && (i == 0)) {
-          paramMenuItem.setActionView(this.kv);
-        }
-        if (this.kz != null)
-        {
-          localObject = this.kz;
-          if ((paramMenuItem instanceof androidx.core.a.a.b)) {
-            ((androidx.core.a.a.b)paramMenuItem).a((androidx.core.g.b)localObject);
-          }
-        }
-        localObject = this.kA;
-        label322:
-        label347:
-        char c;
-        if ((paramMenuItem instanceof androidx.core.a.a.b))
-        {
-          ((androidx.core.a.a.b)paramMenuItem).b((CharSequence)localObject);
-          localObject = this.kB;
-          if (!(paramMenuItem instanceof androidx.core.a.a.b)) {
-            break label579;
-          }
-          ((androidx.core.a.a.b)paramMenuItem).c((CharSequence)localObject);
-          c = this.km;
-          i = this.kn;
-          if (!(paramMenuItem instanceof androidx.core.a.a.b)) {
-            break label599;
-          }
-          ((androidx.core.a.a.b)paramMenuItem).setAlphabeticShortcut(c, i);
-          label376:
-          c = this.ko;
-          i = this.kp;
-          if (!(paramMenuItem instanceof androidx.core.a.a.b)) {
-            break label619;
-          }
-          ((androidx.core.a.a.b)paramMenuItem).setNumericShortcut(c, i);
-          label405:
-          if (this.kD != null)
-          {
-            localObject = this.kD;
-            if (!(paramMenuItem instanceof androidx.core.a.a.b)) {
-              break label639;
-            }
-            ((androidx.core.a.a.b)paramMenuItem).setIconTintMode((PorterDuff.Mode)localObject);
-          }
-        }
-        label659:
         for (;;)
         {
-          for (;;)
+          if ((this.lr > 0) && (i == 0)) {
+            paramMenuItem.setActionView(this.lr);
+          }
+          if (this.lv != null) {
+            i.a(paramMenuItem, this.lv);
+          }
+          i.a(paramMenuItem, this.lw);
+          i.b(paramMenuItem, this.lx);
+          i.b(paramMenuItem, this.li, this.lj);
+          i.a(paramMenuItem, this.lk, this.ll);
+          if (this.lz != null) {
+            i.a(paramMenuItem, this.lz);
+          }
+          if (this.ly != null) {
+            i.a(paramMenuItem, this.ly);
+          }
+          AppMethodBeat.o(200774);
+          return;
+          if (!(paramMenuItem instanceof k)) {
+            break;
+          }
+          localObject = (k)paramMenuItem;
+          try
           {
-            if (this.kC == null) {
-              break label676;
+            if (((k)localObject).og == null) {
+              ((k)localObject).og = ((androidx.core.a.a.b)((k)localObject).mr).getClass().getDeclaredMethod("setExclusiveCheckable", new Class[] { Boolean.TYPE });
             }
-            localObject = this.kC;
-            if (!(paramMenuItem instanceof androidx.core.a.a.b)) {
-              break label659;
-            }
-            ((androidx.core.a.a.b)paramMenuItem).setIconTintList((ColorStateList)localObject);
-            AppMethodBeat.o(238988);
-            return;
-            if (!(paramMenuItem instanceof k)) {
-              break;
-            }
-            localObject = (k)paramMenuItem;
-            try
-            {
-              if (((k)localObject).nk == null) {
-                ((k)localObject).nk = ((androidx.core.a.a.b)((k)localObject).lv).getClass().getDeclaredMethod("setExclusiveCheckable", new Class[] { Boolean.TYPE });
-              }
-              ((k)localObject).nk.invoke(((k)localObject).lv, new Object[] { Boolean.TRUE });
-            }
-            catch (Exception localException) {}
+            ((k)localObject).og.invoke(((k)localObject).mr, new Object[] { Boolean.TRUE });
           }
-          break;
-          if (Build.VERSION.SDK_INT < 26) {
-            break label322;
-          }
-          paramMenuItem.setContentDescription(localException);
-          break label322;
-          label579:
-          if (Build.VERSION.SDK_INT < 26) {
-            break label347;
-          }
-          paramMenuItem.setTooltipText(localException);
-          break label347;
-          label599:
-          if (Build.VERSION.SDK_INT < 26) {
-            break label376;
-          }
-          paramMenuItem.setAlphabeticShortcut(c, i);
-          break label376;
-          label619:
-          if (Build.VERSION.SDK_INT < 26) {
-            break label405;
-          }
-          paramMenuItem.setNumericShortcut(c, i);
-          break label405;
-          label639:
-          if (Build.VERSION.SDK_INT >= 26)
-          {
-            paramMenuItem.setIconTintMode(localException);
-            continue;
-            if (Build.VERSION.SDK_INT >= 26) {
-              paramMenuItem.setIconTintList(localException);
-            }
-          }
+          catch (Exception localException) {}
         }
-        label676:
-        AppMethodBeat.o(238988);
-        return;
-        label682:
+        break;
+        label438:
         i = 0;
       }
     }
     
     private <T> T newInstance(String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
     {
-      AppMethodBeat.i(238992);
+      AppMethodBeat.i(200788);
       try
       {
         paramString = g.this.mContext.getClassLoader().loadClass(paramString).getConstructor(paramArrayOfClass);
         paramString.setAccessible(true);
         paramString = paramString.newInstance(paramArrayOfObject);
-        AppMethodBeat.o(238992);
+        AppMethodBeat.o(200788);
         return paramString;
       }
       catch (Exception paramString)
       {
-        AppMethodBeat.o(238992);
+        AppMethodBeat.o(200788);
       }
       return null;
     }
     
-    private static char q(String paramString)
+    private static char r(String paramString)
     {
-      AppMethodBeat.i(238984);
+      AppMethodBeat.i(200748);
       if (paramString == null)
       {
-        AppMethodBeat.o(238984);
+        AppMethodBeat.o(200748);
         return '\000';
       }
       char c = paramString.charAt(0);
-      AppMethodBeat.o(238984);
+      AppMethodBeat.o(200748);
       return c;
     }
     
     public final void b(AttributeSet paramAttributeSet)
     {
-      AppMethodBeat.i(238979);
+      AppMethodBeat.i(200814);
       paramAttributeSet = g.this.mContext.obtainStyledAttributes(paramAttributeSet, a.j.MenuGroup);
-      this.ka = paramAttributeSet.getResourceId(a.j.MenuGroup_android_id, 0);
-      this.kb = paramAttributeSet.getInt(a.j.MenuGroup_android_menuCategory, 0);
-      this.kc = paramAttributeSet.getInt(a.j.MenuGroup_android_orderInCategory, 0);
-      this.kd = paramAttributeSet.getInt(a.j.MenuGroup_android_checkableBehavior, 0);
-      this.ke = paramAttributeSet.getBoolean(a.j.MenuGroup_android_visible, true);
-      this.kf = paramAttributeSet.getBoolean(a.j.MenuGroup_android_enabled, true);
+      this.kW = paramAttributeSet.getResourceId(a.j.MenuGroup_android_id, 0);
+      this.kX = paramAttributeSet.getInt(a.j.MenuGroup_android_menuCategory, 0);
+      this.kY = paramAttributeSet.getInt(a.j.MenuGroup_android_orderInCategory, 0);
+      this.kZ = paramAttributeSet.getInt(a.j.MenuGroup_android_checkableBehavior, 0);
+      this.la = paramAttributeSet.getBoolean(a.j.MenuGroup_android_visible, true);
+      this.lb = paramAttributeSet.getBoolean(a.j.MenuGroup_android_enabled, true);
       paramAttributeSet.recycle();
-      AppMethodBeat.o(238979);
-    }
-    
-    public final void bE()
-    {
-      this.ka = 0;
-      this.kb = 0;
-      this.kc = 0;
-      this.kd = 0;
-      this.ke = true;
-      this.kf = true;
-    }
-    
-    public final void bF()
-    {
-      AppMethodBeat.i(238989);
-      this.kg = true;
-      a(this.jZ.add(this.ka, this.kh, this.ki, this.kj));
-      AppMethodBeat.o(238989);
-    }
-    
-    public final SubMenu bG()
-    {
-      AppMethodBeat.i(238990);
-      this.kg = true;
-      SubMenu localSubMenu = this.jZ.addSubMenu(this.ka, this.kh, this.ki, this.kj);
-      a(localSubMenu.getItem());
-      AppMethodBeat.o(238990);
-      return localSubMenu;
+      AppMethodBeat.o(200814);
     }
     
     public final void c(AttributeSet paramAttributeSet)
     {
       int j = 1;
-      AppMethodBeat.i(238982);
+      AppMethodBeat.i(200832);
       paramAttributeSet = g.this.mContext.obtainStyledAttributes(paramAttributeSet, a.j.MenuItem);
-      this.kh = paramAttributeSet.getResourceId(a.j.MenuItem_android_id, 0);
-      this.ki = (paramAttributeSet.getInt(a.j.MenuItem_android_menuCategory, this.kb) & 0xFFFF0000 | paramAttributeSet.getInt(a.j.MenuItem_android_orderInCategory, this.kc) & 0xFFFF);
-      this.kj = paramAttributeSet.getText(a.j.MenuItem_android_title);
-      this.kk = paramAttributeSet.getText(a.j.MenuItem_android_titleCondensed);
-      this.kl = paramAttributeSet.getResourceId(a.j.MenuItem_android_icon, 0);
-      this.km = q(paramAttributeSet.getString(a.j.MenuItem_android_alphabeticShortcut));
-      this.kn = paramAttributeSet.getInt(a.j.MenuItem_alphabeticModifiers, 4096);
-      this.ko = q(paramAttributeSet.getString(a.j.MenuItem_android_numericShortcut));
-      this.kp = paramAttributeSet.getInt(a.j.MenuItem_numericModifiers, 4096);
+      this.ld = paramAttributeSet.getResourceId(a.j.MenuItem_android_id, 0);
+      this.le = (paramAttributeSet.getInt(a.j.MenuItem_android_menuCategory, this.kX) & 0xFFFF0000 | paramAttributeSet.getInt(a.j.MenuItem_android_orderInCategory, this.kY) & 0xFFFF);
+      this.lf = paramAttributeSet.getText(a.j.MenuItem_android_title);
+      this.lg = paramAttributeSet.getText(a.j.MenuItem_android_titleCondensed);
+      this.lh = paramAttributeSet.getResourceId(a.j.MenuItem_android_icon, 0);
+      this.li = r(paramAttributeSet.getString(a.j.MenuItem_android_alphabeticShortcut));
+      this.lj = paramAttributeSet.getInt(a.j.MenuItem_alphabeticModifiers, 4096);
+      this.lk = r(paramAttributeSet.getString(a.j.MenuItem_android_numericShortcut));
+      this.ll = paramAttributeSet.getInt(a.j.MenuItem_numericModifiers, 4096);
       int i;
       if (paramAttributeSet.hasValue(a.j.MenuItem_android_checkable)) {
         if (paramAttributeSet.getBoolean(a.j.MenuItem_android_checkable, false))
         {
           i = 1;
-          this.kq = i;
+          this.lm = i;
           label188:
-          this.kr = paramAttributeSet.getBoolean(a.j.MenuItem_android_checked, false);
-          this.ks = paramAttributeSet.getBoolean(a.j.MenuItem_android_visible, this.ke);
-          this.kt = paramAttributeSet.getBoolean(a.j.MenuItem_android_enabled, this.kf);
-          this.ku = paramAttributeSet.getInt(a.j.MenuItem_showAsAction, -1);
-          this.ky = paramAttributeSet.getString(a.j.MenuItem_android_onClick);
-          this.kv = paramAttributeSet.getResourceId(a.j.MenuItem_actionLayout, 0);
-          this.kw = paramAttributeSet.getString(a.j.MenuItem_actionViewClass);
-          this.kx = paramAttributeSet.getString(a.j.MenuItem_actionProviderClass);
-          if (this.kx == null) {
+          this.ln = paramAttributeSet.getBoolean(a.j.MenuItem_android_checked, false);
+          this.lo = paramAttributeSet.getBoolean(a.j.MenuItem_android_visible, this.la);
+          this.lp = paramAttributeSet.getBoolean(a.j.MenuItem_android_enabled, this.lb);
+          this.lq = paramAttributeSet.getInt(a.j.MenuItem_showAsAction, -1);
+          this.lu = paramAttributeSet.getString(a.j.MenuItem_android_onClick);
+          this.lr = paramAttributeSet.getResourceId(a.j.MenuItem_actionLayout, 0);
+          this.ls = paramAttributeSet.getString(a.j.MenuItem_actionViewClass);
+          this.lt = paramAttributeSet.getString(a.j.MenuItem_actionProviderClass);
+          if (this.lt == null) {
             break label443;
           }
           i = j;
           label296:
-          if ((i == 0) || (this.kv != 0) || (this.kw != null)) {
+          if ((i == 0) || (this.lr != 0) || (this.ls != null)) {
             break label448;
           }
-          this.kz = ((androidx.core.g.b)newInstance(this.kx, g.jU, g.this.jW));
+          this.lv = ((androidx.core.g.b)newInstance(this.lt, g.kQ, g.this.kS));
           label339:
-          this.kA = paramAttributeSet.getText(a.j.MenuItem_contentDescription);
-          this.kB = paramAttributeSet.getText(a.j.MenuItem_tooltipText);
+          this.lw = paramAttributeSet.getText(a.j.MenuItem_contentDescription);
+          this.lx = paramAttributeSet.getText(a.j.MenuItem_tooltipText);
           if (!paramAttributeSet.hasValue(a.j.MenuItem_iconTintMode)) {
             break label456;
           }
-          this.kD = o.c(paramAttributeSet.getInt(a.j.MenuItem_iconTintMode, -1), this.kD);
+          this.lz = o.c(paramAttributeSet.getInt(a.j.MenuItem_iconTintMode, -1), this.lz);
           label390:
           if (!paramAttributeSet.hasValue(a.j.MenuItem_iconTint)) {
             break label464;
@@ -616,29 +512,57 @@ public final class g
       label448:
       label456:
       label464:
-      for (this.kC = paramAttributeSet.getColorStateList(a.j.MenuItem_iconTint);; this.kC = null)
+      for (this.ly = paramAttributeSet.getColorStateList(a.j.MenuItem_iconTint);; this.ly = null)
       {
         paramAttributeSet.recycle();
-        this.kg = false;
-        AppMethodBeat.o(238982);
+        this.lc = false;
+        AppMethodBeat.o(200832);
         return;
         i = 0;
         break;
-        this.kq = this.kd;
+        this.lm = this.kZ;
         break label188;
         i = 0;
         break label296;
-        this.kz = null;
+        this.lv = null;
         break label339;
-        this.kD = null;
+        this.lz = null;
         break label390;
       }
+    }
+    
+    public final void cx()
+    {
+      this.kW = 0;
+      this.kX = 0;
+      this.kY = 0;
+      this.kZ = 0;
+      this.la = true;
+      this.lb = true;
+    }
+    
+    public final void cy()
+    {
+      AppMethodBeat.i(200841);
+      this.lc = true;
+      a(this.kV.add(this.kW, this.ld, this.le, this.lf));
+      AppMethodBeat.o(200841);
+    }
+    
+    public final SubMenu cz()
+    {
+      AppMethodBeat.i(200850);
+      this.lc = true;
+      SubMenu localSubMenu = this.kV.addSubMenu(this.kW, this.ld, this.le, this.lf);
+      a(localSubMenu.getItem());
+      AppMethodBeat.o(200850);
+      return localSubMenu;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,65 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dsk
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String errmsg;
-  public int ret;
+  public String appid;
+  public String oOZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124543);
+    AppMethodBeat.i(259781);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.ret);
-      if (this.errmsg != null) {
-        paramVarArgs.f(2, this.errmsg);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.appid != null) {
+        paramVarArgs.g(1, this.appid);
       }
-      AppMethodBeat.o(124543);
+      if (this.oOZ != null) {
+        paramVarArgs.g(2, this.oOZ);
+      }
+      AppMethodBeat.o(259781);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.ret) + 0;
-      paramInt = i;
-      if (this.errmsg != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.errmsg);
+    if (paramInt == 1) {
+      if (this.appid == null) {
+        break label270;
       }
-      AppMethodBeat.o(124543);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.appid) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      int i = paramInt;
+      if (this.oOZ != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.oOZ);
       }
-      AppMethodBeat.o(124543);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      dsk localdsk = (dsk)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(259781);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(124543);
-        return -1;
-      case 1: 
-        localdsk.ret = locala.abFh.AK();
-        AppMethodBeat.o(124543);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(259781);
         return 0;
       }
-      localdsk.errmsg = locala.abFh.readString();
-      AppMethodBeat.o(124543);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        dsk localdsk = (dsk)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(259781);
+          return -1;
+        case 1: 
+          localdsk.appid = locala.ajGk.readString();
+          AppMethodBeat.o(259781);
+          return 0;
+        }
+        localdsk.oOZ = locala.ajGk.readString();
+        AppMethodBeat.o(259781);
+        return 0;
+      }
+      AppMethodBeat.o(259781);
+      return -1;
     }
-    AppMethodBeat.o(124543);
-    return -1;
   }
 }
 

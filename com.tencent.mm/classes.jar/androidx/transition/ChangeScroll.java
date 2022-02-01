@@ -12,7 +12,7 @@ import java.util.Map;
 public class ChangeScroll
   extends Transition
 {
-  private static final String[] apY = { "android:changeScroll:x", "android:changeScroll:y" };
+  private static final String[] ceH = { "android:changeScroll:x", "android:changeScroll:y" };
   
   public ChangeScroll() {}
   
@@ -23,18 +23,23 @@ public class ChangeScroll
   
   private static void a(w paramw)
   {
-    AppMethodBeat.i(191903);
+    AppMethodBeat.i(201233);
     paramw.values.put("android:changeScroll:x", Integer.valueOf(paramw.view.getScrollX()));
     paramw.values.put("android:changeScroll:y", Integer.valueOf(paramw.view.getScrollY()));
-    AppMethodBeat.o(191903);
+    AppMethodBeat.o(201233);
+  }
+  
+  public final String[] LI()
+  {
+    return ceH;
   }
   
   public final Animator a(ViewGroup paramViewGroup, w paramw1, w paramw2)
   {
-    AppMethodBeat.i(191913);
+    AppMethodBeat.i(201275);
     if ((paramw1 == null) || (paramw2 == null))
     {
-      AppMethodBeat.o(191913);
+      AppMethodBeat.o(201275);
       return null;
     }
     View localView = paramw2.view;
@@ -53,7 +58,7 @@ public class ChangeScroll
       for (paramw1 = ObjectAnimator.ofInt(localView, "scrollY", new int[] { k, m });; paramw1 = null)
       {
         paramViewGroup = v.a(paramViewGroup, paramw1);
-        AppMethodBeat.o(191913);
+        AppMethodBeat.o(201275);
         return paramViewGroup;
       }
     }
@@ -61,21 +66,16 @@ public class ChangeScroll
   
   public final void b(w paramw)
   {
-    AppMethodBeat.i(191896);
+    AppMethodBeat.i(201246);
     a(paramw);
-    AppMethodBeat.o(191896);
+    AppMethodBeat.o(201246);
   }
   
   public final void c(w paramw)
   {
-    AppMethodBeat.i(191898);
+    AppMethodBeat.i(201254);
     a(paramw);
-    AppMethodBeat.o(191898);
-  }
-  
-  public final String[] nf()
-  {
-    return apY;
+    AppMethodBeat.o(201254);
   }
 }
 

@@ -3,210 +3,530 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import com.tencent.luggage.l.a.g;
+import com.tencent.luggage.m.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.n;
-import com.tencent.mm.protocal.protobuf.aad;
-import com.tencent.mm.protocal.protobuf.eep;
-import com.tencent.mm.protocal.protobuf.ewr;
+import com.tencent.mm.plugin.appbrand.utils.q;
+import com.tencent.mm.protocal.protobuf.acd;
+import com.tencent.mm.protocal.protobuf.eyg;
+import com.tencent.mm.protocal.protobuf.fsk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.widget.a.e.a;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "onDone", "Lkotlin/Function0;", "", "(Landroid/content/Context;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "mPhoneNumberAddView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddView;", "getView", "Landroid/view/View;", "init", "sendSms", "mobile", "sendSmsInner", "showErrorTips", "errMsg", "uninit", "verifyCode", "isCheck", "", "code", "Companion", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "onDone", "Lkotlin/Function0;", "", "(Landroid/content/Context;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "mPhoneNumberAddView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddView;", "getView", "Landroid/view/View;", "init", "sendSms", "mobile", "sendSmsInner", "showErrorTips", "errMsg", "uninit", "verifyCode", "isCheck", "", "code", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
   implements l
 {
-  private static final String TAG = "PhoneNumberAddLogic";
-  public static final s.a qBQ;
+  private static final String TAG;
+  public static final s.a tGS;
   private final String mAppId;
   private final Context mContext;
-  private m qBO;
-  private final a<x> qBP;
+  private final a<ah> tGT;
+  private m tGU;
   
   static
   {
     AppMethodBeat.i(148104);
-    qBQ = new s.a((byte)0);
+    tGS = new s.a((byte)0);
     TAG = "PhoneNumberAddLogic";
     AppMethodBeat.o(148104);
   }
   
-  public s(Context paramContext, String paramString, a<x> parama)
+  public s(Context paramContext, String paramString, a<ah> parama)
   {
     AppMethodBeat.i(148103);
     this.mContext = paramContext;
     this.mAppId = paramString;
-    this.qBP = parama;
+    this.tGT = parama;
     AppMethodBeat.o(148103);
   }
   
-  private final void amo(String paramString)
+  private static final void a(s params, String paramString, DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(246775);
-    n.b(this.mContext, paramString, this.mContext.getString(a.g.app_brand_get_phone_number_ok), (DialogInterface.OnClickListener)s.e.qBX);
-    AppMethodBeat.o(246775);
+    AppMethodBeat.i(318895);
+    kotlin.g.b.s.u(params, "this$0");
+    kotlin.g.b.s.u(paramString, "$mobile");
+    Log.i(TAG, "sendSms appId:" + params.mAppId + ", mobile:" + paramString);
+    paramDialogInterface = params.tGU;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.cHv();
+    }
+    final com.tencent.mm.ui.widget.a.m localm = com.tencent.mm.ui.widget.a.m.b(params.mContext, (CharSequence)params.mContext.getString(a.g.appbrand_phone_number_verify_code_sending), true);
+    y localy = z.tIm.afD(params.mAppId);
+    if (localy != null)
+    {
+      paramDialogInterface = z.tIm.afD(params.mAppId);
+      if (paramDialogInterface != null) {
+        break label172;
+      }
+    }
+    label172:
+    for (paramDialogInterface = null;; paramDialogInterface = Long.valueOf(paramDialogInterface.tHX))
+    {
+      kotlin.g.b.s.checkNotNull(paramDialogInterface);
+      localy.tHX = (paramDialogInterface.longValue() + 1L);
+      new e(params.mAppId, paramString).Z((kotlin.g.a.b)new b(params, localm));
+      AppMethodBeat.o(318895);
+      return;
+    }
   }
   
-  public final void amm(final String paramString)
+  private final void afy(String paramString)
+  {
+    AppMethodBeat.i(318886);
+    q.b(this.mContext, paramString, this.mContext.getString(a.g.app_brand_get_phone_number_ok), s..ExternalSyntheticLambda1.INSTANCE);
+    AppMethodBeat.o(318886);
+  }
+  
+  private static final void f(DialogInterface paramDialogInterface, int paramInt) {}
+  
+  private static final void g(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(318915);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(318915);
+  }
+  
+  public final void afv(String paramString)
   {
     AppMethodBeat.i(148100);
-    p.k(paramString, "mobile");
+    kotlin.g.b.s.u(paramString, "mobile");
     if (!Util.isNullOrNil(paramString))
     {
-      n.a(this.mContext, this.mContext.getString(a.g.app_brand_get_phone_number_verify_sms_msg) + paramString, this.mContext.getString(a.g.app_brand_get_phone_number_verify_sms_confirm_phone), this.mContext.getString(a.g.appbrand_request_accept), this.mContext.getString(a.g.appbrand_request_reject), (DialogInterface.OnClickListener)new b(this, paramString), (DialogInterface.OnClickListener)s.c.qBT);
+      Context localContext = this.mContext;
+      String str1 = kotlin.g.b.s.X(this.mContext.getString(a.g.app_brand_get_phone_number_verify_sms_msg), paramString);
+      String str2 = this.mContext.getString(a.g.app_brand_get_phone_number_verify_sms_confirm_phone);
+      String str3 = this.mContext.getString(a.g.appbrand_request_accept);
+      String str4 = this.mContext.getString(a.g.appbrand_request_reject);
+      paramString = new s..ExternalSyntheticLambda0(this, paramString);
+      s..ExternalSyntheticLambda2 localExternalSyntheticLambda2 = s..ExternalSyntheticLambda2.INSTANCE;
+      new e.a(localContext).bDv(str2).bDw(str1).bDC(str3).c(paramString).bDD(str4).d(localExternalSyntheticLambda2).jHH().show();
       AppMethodBeat.o(148100);
       return;
     }
     paramString = this.mContext.getString(a.g.appbrand_phone_number_format_err_title);
-    p.j(paramString, "mContext.getString(R.str…_number_format_err_title)");
-    amo(paramString);
+    kotlin.g.b.s.s(paramString, "mContext.getString(R.str…_number_format_err_title)");
+    afy(paramString);
     AppMethodBeat.o(148100);
   }
   
-  public final void c(final boolean paramBoolean, final String paramString1, String paramString2)
+  public final void b(final boolean paramBoolean, final String paramString1, String paramString2)
   {
     y localy2 = null;
     y localy1 = null;
     AppMethodBeat.i(148101);
-    p.k(paramString1, "mobile");
-    p.k(paramString2, "code");
-    y localy3 = z.qDr.amr(this.mAppId);
-    Object localObject;
+    kotlin.g.b.s.u(paramString1, "mobile");
+    kotlin.g.b.s.u(paramString2, "code");
+    y localy3 = z.tIm.afD(this.mAppId);
     if (localy3 != null)
     {
-      localObject = z.qDr.amr(this.mAppId);
-      if (localObject != null)
+      localObject = z.tIm.afD(this.mAppId);
+      if (localObject == null)
       {
-        localObject = Long.valueOf(((y)localObject).qDd);
-        if (localObject == null) {
-          p.iCn();
-        }
-        localy3.qDd = (((Long)localObject).longValue() + 1L);
+        localObject = null;
+        kotlin.g.b.s.checkNotNull(localObject);
+        localy3.tIa = (((Long)localObject).longValue() + 1L);
       }
     }
     else
     {
       if (!paramBoolean) {
-        break label272;
+        break label270;
       }
-      localy2 = z.qDr.amr(this.mAppId);
+      localy2 = z.tIm.afD(this.mAppId);
       if (localy2 != null)
       {
-        localy3 = z.qDr.amr(this.mAppId);
+        localObject = z.tIm.afD(this.mAppId);
+        if (localObject != null) {
+          break label257;
+        }
         localObject = localy1;
-        if (localy3 != null) {
-          localObject = Long.valueOf(localy3.qDg);
-        }
-        if (localObject == null) {
-          p.iCn();
-        }
-        localy2.qDg = (((Long)localObject).longValue() + 1L);
+        label121:
+        kotlin.g.b.s.checkNotNull(localObject);
+        localy2.tId = (((Long)localObject).longValue() + 1L);
       }
     }
-    for (;;)
+    label257:
+    label270:
+    do
     {
       Log.i(TAG, "verifyCode mAppId:" + this.mAppId + ", mobile:" + paramString1 + " code:" + paramString2);
-      localObject = n.b(this.mContext, (CharSequence)this.mContext.getString(a.g.appbrand_phone_number_verify_code_verifying));
-      new b(this.mAppId, paramString1, paramString2).y((kotlin.g.a.b)new f(this, paramBoolean, paramString1, (ProgressDialog)localObject));
+      localObject = com.tencent.mm.ui.widget.a.m.b(this.mContext, (CharSequence)this.mContext.getString(a.g.appbrand_phone_number_verify_code_verifying), true);
+      new b(this.mAppId, paramString1, paramString2).Z((kotlin.g.a.b)new c(this, paramBoolean, paramString1, (ProgressDialog)localObject));
       AppMethodBeat.o(148101);
       return;
-      localObject = null;
+      localObject = Long.valueOf(((y)localObject).tIa);
       break;
-      label272:
-      localy1 = z.qDr.amr(this.mAppId);
-      if (localy1 != null)
-      {
-        localy3 = z.qDr.amr(this.mAppId);
-        localObject = localy2;
-        if (localy3 != null) {
-          localObject = Long.valueOf(localy3.qDh);
-        }
-        if (localObject == null) {
-          p.iCn();
-        }
-        localy1.qDh = (((Long)localObject).longValue() + 1L);
-      }
+      localObject = Long.valueOf(((y)localObject).tId);
+      break label121;
+      localy1 = z.tIm.afD(this.mAppId);
+    } while (localy1 == null);
+    Object localObject = z.tIm.afD(this.mAppId);
+    if (localObject == null) {}
+    for (localObject = localy2;; localObject = Long.valueOf(((y)localObject).tIe))
+    {
+      kotlin.g.b.s.checkNotNull(localObject);
+      localy1.tIe = (((Long)localObject).longValue() + 1L);
+      break;
     }
   }
   
   public final View getView()
   {
     AppMethodBeat.i(148099);
-    Object localObject = this.qBO;
-    if (localObject != null)
+    Object localObject = this.tGU;
+    if (localObject == null)
     {
-      localObject = ((m)localObject).getView();
       AppMethodBeat.o(148099);
-      return localObject;
+      return null;
     }
+    localObject = ((m)localObject).getView();
     AppMethodBeat.o(148099);
-    return null;
+    return localObject;
   }
   
   public final void init()
   {
     AppMethodBeat.i(148098);
-    this.qBO = ((m)new t(this.mContext, (l)this));
-    z.qDr.amq(this.mAppId);
+    this.tGU = ((m)new t(this.mContext, (l)this));
+    z.tIm.afC(this.mAppId);
     AppMethodBeat.o(148098);
   }
   
   public final void uninit()
   {
     AppMethodBeat.i(148102);
-    m localm = this.qBO;
+    m localm = this.tGU;
     if (localm != null) {
       localm.reset();
     }
-    z.qDr.amp(this.mAppId);
+    z.tIm.afB(this.mAppId);
     AppMethodBeat.o(148102);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/SendVerifyCodeResp;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements DialogInterface.OnClickListener
+    extends u
+    implements kotlin.g.a.b<eyg, ah>
   {
-    b(s params, String paramString) {}
+    b(s params, ProgressDialog paramProgressDialog)
+    {
+      super();
+    }
     
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+    private static final void a(eyg parameyg, s params)
     {
-      AppMethodBeat.i(148085);
-      s.a(this.qBR, paramString);
-      AppMethodBeat.o(148085);
+      Object localObject1 = null;
+      y localy1 = null;
+      y localy2 = null;
+      Object localObject2 = null;
+      AppMethodBeat.i(318983);
+      kotlin.g.b.s.u(params, "this$0");
+      int i = parameyg.status;
+      parameyg = h.tGf;
+      if (i == h.cHl())
+      {
+        localy1 = z.tIm.afD(s.a(params));
+        if (localy1 != null)
+        {
+          parameyg = z.tIm.afD(s.a(params));
+          if (parameyg == null) {}
+          for (parameyg = localObject2;; parameyg = Long.valueOf(parameyg.tHY))
+          {
+            kotlin.g.b.s.checkNotNull(parameyg);
+            localy1.tHY = (parameyg.longValue() + 1L);
+            AppMethodBeat.o(318983);
+            return;
+          }
+        }
+      }
+      else
+      {
+        parameyg = h.tGf;
+        if (i == h.cHm())
+        {
+          localy1 = z.tIm.afD(s.a(params));
+          if (localy1 != null)
+          {
+            parameyg = z.tIm.afD(s.a(params));
+            if (parameyg != null) {
+              break label188;
+            }
+          }
+          label188:
+          for (parameyg = localObject1;; parameyg = Long.valueOf(parameyg.tHZ))
+          {
+            kotlin.g.b.s.checkNotNull(parameyg);
+            localy1.tHZ = (parameyg.longValue() + 1L);
+            parameyg = s.b(params).getString(a.g.app_brand_get_phone_number_send_verify_code_fail);
+            kotlin.g.b.s.s(parameyg, "mContext.getString(R.str…er_send_verify_code_fail)");
+            s.a(params, parameyg);
+            AppMethodBeat.o(318983);
+            return;
+          }
+        }
+        parameyg = h.tGf;
+        if (i == h.cHn())
+        {
+          localy2 = z.tIm.afD(s.a(params));
+          if (localy2 != null)
+          {
+            parameyg = z.tIm.afD(s.a(params));
+            if (parameyg != null) {
+              break label287;
+            }
+          }
+          label287:
+          for (parameyg = localy1;; parameyg = Long.valueOf(parameyg.tHZ))
+          {
+            kotlin.g.b.s.checkNotNull(parameyg);
+            localy2.tHZ = (parameyg.longValue() + 1L);
+            parameyg = s.b(params).getString(a.g.app_brand_get_phone_number_send_verify_code_frequent);
+            kotlin.g.b.s.s(parameyg, "mContext.getString(R.str…end_verify_code_frequent)");
+            s.a(params, parameyg);
+            AppMethodBeat.o(318983);
+            return;
+          }
+        }
+        localy1 = z.tIm.afD(s.a(params));
+        if (localy1 != null)
+        {
+          parameyg = z.tIm.afD(s.a(params));
+          if (parameyg != null) {
+            break label373;
+          }
+        }
+      }
+      label373:
+      for (parameyg = localy2;; parameyg = Long.valueOf(parameyg.tHZ))
+      {
+        kotlin.g.b.s.checkNotNull(parameyg);
+        localy1.tHZ = (parameyg.longValue() + 1L);
+        parameyg = s.b(params).getString(a.g.app_brand_get_phone_number_send_verify_code_fail);
+        kotlin.g.b.s.s(parameyg, "mContext.getString(R.str…er_send_verify_code_fail)");
+        s.a(params, parameyg);
+        AppMethodBeat.o(318983);
+        return;
+      }
+    }
+    
+    private static final void c(ProgressDialog paramProgressDialog)
+    {
+      AppMethodBeat.i(318994);
+      paramProgressDialog.dismiss();
+      AppMethodBeat.o(318994);
+    }
+    
+    private static final void d(s params)
+    {
+      AppMethodBeat.i(318990);
+      kotlin.g.b.s.u(params, "this$0");
+      y localy = z.tIm.afD(s.a(params));
+      if (localy != null)
+      {
+        localObject = z.tIm.afD(s.a(params));
+        if (localObject != null) {
+          break label85;
+        }
+      }
+      label85:
+      for (Object localObject = null;; localObject = Long.valueOf(((y)localObject).tHZ))
+      {
+        kotlin.g.b.s.checkNotNull(localObject);
+        localy.tHZ = (((Long)localObject).longValue() + 1L);
+        localObject = s.b(params).getString(a.g.app_brand_get_phone_number_send_verify_code_fail);
+        kotlin.g.b.s.s(localObject, "mContext.getString(R.str…er_send_verify_code_fail)");
+        s.a(params, (String)localObject);
+        AppMethodBeat.o(318990);
+        return;
+      }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/SendVerifyCodeResp;", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.b<eep, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.b<acd, ah>
   {
-    d(s params, ProgressDialog paramProgressDialog)
+    c(s params, boolean paramBoolean, String paramString, ProgressDialog paramProgressDialog)
     {
       super();
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.b<aad, x>
-  {
-    f(s params, boolean paramBoolean, String paramString, ProgressDialog paramProgressDialog)
+    
+    private static final void a(final acd paramacd, final s params, boolean paramBoolean, String paramString)
     {
-      super();
+      final String str1 = null;
+      Object localObject1 = null;
+      Object localObject2 = null;
+      final String str2 = null;
+      AppMethodBeat.i(318987);
+      kotlin.g.b.s.u(params, "this$0");
+      kotlin.g.b.s.u(paramString, "$mobile");
+      int i = paramacd.status;
+      Object localObject3 = h.tGf;
+      if (i == h.cHo())
+      {
+        localObject2 = z.tIm.afD(s.a(params));
+        if (localObject2 != null)
+        {
+          localObject1 = z.tIm.afD(s.a(params));
+          if (localObject1 != null) {
+            break label204;
+          }
+        }
+        label204:
+        for (localObject1 = str2;; localObject1 = Long.valueOf(((y)localObject1).tIb))
+        {
+          kotlin.g.b.s.checkNotNull(localObject1);
+          ((y)localObject2).tIb = (((Long)localObject1).longValue() + 1L);
+          str1 = paramacd.tGK;
+          str2 = paramacd.dbg;
+          localObject3 = paramacd.ZkD;
+          localObject2 = paramacd.tGL;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = "";
+          }
+          localObject2 = paramacd.data;
+          paramacd = (acd)localObject2;
+          if (localObject2 == null) {
+            paramacd = "";
+          }
+          if (!paramBoolean) {
+            break;
+          }
+          new g(s.a(params), paramString, 0).Z((kotlin.g.a.b)new a(paramString, (String)localObject3, str1, str2, (String)localObject1, paramacd, params));
+          AppMethodBeat.o(318987);
+          return;
+        }
+        localObject2 = r.tGQ;
+        kotlin.g.b.s.s(localObject3, "showMobile");
+        kotlin.g.b.s.s(str1, "encryptedData");
+        kotlin.g.b.s.s(str2, "iv");
+        r.d(new PhoneItem(paramString, (String)localObject3, str1, str2, (String)localObject1, paramacd));
+        s.c(params).invoke();
+        AppMethodBeat.o(318987);
+        return;
+      }
+      paramacd = h.tGf;
+      if (i == h.cHp())
+      {
+        paramString = z.tIm.afD(s.a(params));
+        if (paramString != null)
+        {
+          paramacd = z.tIm.afD(s.a(params));
+          if (paramacd != null) {
+            break label366;
+          }
+        }
+        label366:
+        for (paramacd = str1;; paramacd = Long.valueOf(paramacd.tIc))
+        {
+          kotlin.g.b.s.checkNotNull(paramacd);
+          paramString.tIc = (paramacd.longValue() + 1L);
+          paramacd = s.b(params).getString(a.g.app_brand_get_phone_number_send_verify_code_frequent);
+          kotlin.g.b.s.s(paramacd, "mContext.getString(R.str…end_verify_code_frequent)");
+          s.a(params, paramacd);
+          AppMethodBeat.o(318987);
+          return;
+        }
+      }
+      paramacd = h.tGf;
+      if (i == h.cHq())
+      {
+        paramString = z.tIm.afD(s.a(params));
+        if (paramString != null)
+        {
+          paramacd = z.tIm.afD(s.a(params));
+          if (paramacd != null) {
+            break label464;
+          }
+        }
+        label464:
+        for (paramacd = (acd)localObject1;; paramacd = Long.valueOf(paramacd.tIc))
+        {
+          kotlin.g.b.s.checkNotNull(paramacd);
+          paramString.tIc = (paramacd.longValue() + 1L);
+          paramacd = s.b(params).getString(a.g.app_brand_get_phone_number_verify_code_error);
+          kotlin.g.b.s.s(paramacd, "mContext.getString(R.str…number_verify_code_error)");
+          s.a(params, paramacd);
+          AppMethodBeat.o(318987);
+          return;
+        }
+      }
+      paramString = z.tIm.afD(s.a(params));
+      if (paramString != null)
+      {
+        paramacd = z.tIm.afD(s.a(params));
+        if (paramacd != null) {
+          break label550;
+        }
+      }
+      label550:
+      for (paramacd = (acd)localObject2;; paramacd = Long.valueOf(paramacd.tIc))
+      {
+        kotlin.g.b.s.checkNotNull(paramacd);
+        paramString.tIc = (paramacd.longValue() + 1L);
+        paramacd = s.b(params).getString(a.g.app_brand_get_phone_number_verify_code_fail);
+        kotlin.g.b.s.s(paramacd, "mContext.getString(R.str…_number_verify_code_fail)");
+        s.a(params, paramacd);
+        AppMethodBeat.o(318987);
+        return;
+      }
+    }
+    
+    private static final void c(ProgressDialog paramProgressDialog)
+    {
+      AppMethodBeat.i(318995);
+      paramProgressDialog.dismiss();
+      AppMethodBeat.o(318995);
+    }
+    
+    private static final void d(s params)
+    {
+      AppMethodBeat.i(318992);
+      kotlin.g.b.s.u(params, "this$0");
+      y localy = z.tIm.afD(s.a(params));
+      if (localy != null)
+      {
+        localObject = z.tIm.afD(s.a(params));
+        if (localObject != null) {
+          break label85;
+        }
+      }
+      label85:
+      for (Object localObject = null;; localObject = Long.valueOf(((y)localObject).tIc))
+      {
+        kotlin.g.b.s.checkNotNull(localObject);
+        localy.tIc = (((Long)localObject).longValue() + 1L);
+        localObject = s.b(params).getString(a.g.app_brand_get_phone_number_verify_code_fail);
+        kotlin.g.b.s.s(localObject, "mContext.getString(R.str…_number_verify_code_fail)");
+        s.a(params, (String)localObject);
+        AppMethodBeat.o(318992);
+        return;
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "resp", "Lcom/tencent/mm/protocal/protobuf/UpdateUserPhoneResp;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements kotlin.g.a.b<fsk, ah>
+    {
+      a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, s params)
+      {
+        super();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.s
  * JD-Core Version:    0.7.0.1
  */

@@ -6,55 +6,53 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.a.d;
 import com.tencent.mm.plugin.websearch.a.e;
-import com.tencent.mm.plugin.websearch.api.ae;
+import com.tencent.mm.plugin.websearch.a.f;
 import com.tencent.mm.plugin.websearch.api.af;
+import com.tencent.mm.plugin.websearch.api.ag;
 import com.tencent.mm.plugin.websearch.api.d;
-import com.tencent.mm.plugin.websearch.api.f;
 import com.tencent.mm.plugin.websearch.api.n;
 import com.tencent.mm.plugin.websearch.widget.view.a.1;
 import com.tencent.mm.plugin.websearch.widget.view.a.2;
 import com.tencent.mm.plugin.websearch.widget.view.a.3;
 import com.tencent.mm.plugin.websearch.widget.view.a.4;
-import com.tencent.mm.ui.widget.a.e;
 import java.util.List;
 import java.util.Map;
 
 public final class b
-  implements f
+  implements com.tencent.mm.plugin.websearch.api.f
 {
-  public final int a(Activity paramActivity, String paramString1, String paramString2, List<af> paramList, ae paramae)
+  public final int a(Activity paramActivity, String paramString1, String paramString2, List<ag> paramList, af paramaf)
   {
     AppMethodBeat.i(116629);
-    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.gRO();
-    e locale = new e(paramActivity, 2, true);
-    int i = locale.hashCode();
-    locale.ODW = new a.1(locala, paramList);
-    locale.ODT = new a.2(locala, paramList, locale);
-    locale.ODU = new a.3(locala, paramae, i);
-    locale.XbB = new a.4(locala, paramae, i);
-    paramActivity = View.inflate(paramActivity, a.e.search_action_sheet_title, null);
+    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.irf();
+    com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f(paramActivity, 2, true);
+    int i = localf.hashCode();
+    localf.Vti = new a.1(locala, paramList);
+    localf.Vtg = new a.2(locala, paramList, localf);
+    localf.GAC = new a.3(locala, paramaf, i);
+    localf.aeLi = new a.4(locala, paramaf, i);
+    paramActivity = View.inflate(paramActivity, a.f.search_action_sheet_title, null);
     if (!TextUtils.isEmpty(paramString1))
     {
-      ((TextView)paramActivity.findViewById(a.d.title)).setText(paramString1);
+      ((TextView)paramActivity.findViewById(a.e.title)).setText(paramString1);
       if (TextUtils.isEmpty(paramString2)) {
         break label209;
       }
-      ((TextView)paramActivity.findViewById(a.d.sub_title)).setText(paramString2);
+      ((TextView)paramActivity.findViewById(a.e.sub_title)).setText(paramString2);
     }
     for (;;)
     {
-      locale.OEc = true;
-      locale.Z(paramActivity, false);
-      locale.eik();
-      locala.PCO.put(Integer.valueOf(i), locale);
+      localf.Vto = true;
+      localf.af(paramActivity, false);
+      localf.dDn();
+      locala.Wtt.put(Integer.valueOf(i), localf);
       AppMethodBeat.o(116629);
       return i;
-      paramActivity.findViewById(a.d.title).setVisibility(8);
+      paramActivity.findViewById(a.e.title).setVisibility(8);
       break;
       label209:
-      paramActivity.findViewById(a.d.sub_title).setVisibility(8);
+      paramActivity.findViewById(a.e.sub_title).setVisibility(8);
     }
   }
   

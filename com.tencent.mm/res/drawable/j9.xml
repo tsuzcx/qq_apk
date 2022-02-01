@@ -3,14 +3,20 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <corners android:radius="3.0dip" />
-            <stroke android:width="1.3999939dip" android:color="@color/am" />
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/hh" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="3.0dip" />
-            <stroke android:width="1.3999939dip" android:color="@color/BW_100_Alpha_0_3" />
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/Brand_90_CARE" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/Brand_100_CARE" />
         </shape>
     </item>
 </selector>

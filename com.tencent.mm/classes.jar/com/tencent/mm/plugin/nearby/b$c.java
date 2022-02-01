@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.nearby;
 
 public final class b$c
 {
-  public static final int close_btn = 2131298832;
-  public static final int contactitem_avatar_iv = 2131299230;
-  public static final int display_name = 2131299758;
-  public static final int empty_msg_tip_tv = 2131300202;
-  public static final int goto_sayhi_btn = 2131302450;
-  public static final int lbs_open_dialog_cb = 2131303450;
-  public static final int match_dlg_img = 2131304901;
-  public static final int nearby_bind_icon = 2131305608;
-  public static final int nearby_friend_ad_icon_1 = 2131305609;
-  public static final int nearby_friend_ad_icon_2 = 2131305610;
-  public static final int nearby_friend_ad_icon_3 = 2131305611;
-  public static final int nearby_friend_avatar_iv = 2131305612;
-  public static final int nearby_friend_distance = 2131305613;
-  public static final int nearby_friend_intro_start_btn = 2131305614;
-  public static final int nearby_friend_is_friend = 2131305615;
-  public static final int nearby_friend_locate_failed = 2131305616;
-  public static final int nearby_friend_lv = 2131305617;
-  public static final int nearby_friend_name = 2131305618;
-  public static final int nearby_friend_not_found = 2131305619;
-  public static final int nearby_friend_sex = 2131305620;
-  public static final int nearby_friend_sign = 2131305621;
-  public static final int nearby_friend_sns = 2131305622;
-  public static final int nearby_friend_vuserinfo = 2131305623;
-  public static final int nearby_group_member_count = 2131305624;
-  public static final int nearby_group_title = 2131305625;
-  public static final int nearby_header_text = 2131305626;
-  public static final int say_hi_count = 2131307767;
-  public static final int say_hi_lv = 2131307768;
-  public static final int sayhi_content = 2131307771;
-  public static final int slide_del_del_view = 2131308479;
-  public static final int slide_del_view_del_word = 2131308481;
+  public static final int EGf = 2131307219;
+  public static final int EGg = 2131307220;
+  public static final int EGh = 2131307221;
+  public static final int EGi = 2131307226;
+  public static final int EGj = 2131307232;
+  public static final int EGk = 2131307234;
+  public static final int EGl = 2131307235;
+  public static final int Mob = 2131307218;
+  public static final int Moc = 2131307224;
+  public static final int Mod = 2131307236;
+  public static final int close_btn = 2131299176;
+  public static final int contactitem_avatar_iv = 2131299631;
+  public static final int display_name = 2131300255;
+  public static final int empty_msg_tip_tv = 2131300717;
+  public static final int fMB = 2131304934;
+  public static final int fPf = 2131307223;
+  public static final int fPg = 2131307225;
+  public static final int fPh = 2131307227;
+  public static final int fPi = 2131307229;
+  public static final int fPj = 2131307230;
+  public static final int fPk = 2131307231;
+  public static final int fPl = 2131307233;
+  public static final int goto_sayhi_btn = 2131303732;
+  public static final int match_dlg_img = 2131306436;
+  public static final int nearby_friend_avatar_iv = 2131307222;
+  public static final int nearby_friend_name = 2131307228;
+  public static final int say_hi_count = 2131309594;
+  public static final int say_hi_lv = 2131309595;
+  public static final int sayhi_content = 2131309599;
+  public static final int slide_del_del_view = 2131310446;
+  public static final int slide_del_view_del_word = 2131310447;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.b.c
  * JD-Core Version:    0.7.0.1
  */

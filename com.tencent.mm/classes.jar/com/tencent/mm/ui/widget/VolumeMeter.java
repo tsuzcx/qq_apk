@@ -14,26 +14,26 @@ public class VolumeMeter
   extends ImageView
   implements Runnable
 {
-  private float EoA;
-  private float EoB;
-  private boolean Eok;
-  private View Eol;
-  private int Eom;
-  private int Eon;
-  private MMHandler Eoo;
-  private float Eop;
-  private float Eoq;
-  private float Eor;
-  private float Eos;
-  private int Eot;
-  private int Eou;
-  private float Eov;
-  private float Eow;
-  private int Eox;
-  private float Eoy;
-  private float Eoz;
-  private boolean lKg;
+  private boolean KgQ;
+  private View KgR;
+  private int KgS;
+  private int KgT;
+  private MMHandler KgU;
+  private float KgV;
+  private float KgW;
+  private float KgX;
+  private float KgY;
+  private int KgZ;
+  private int Kha;
+  private float Khb;
+  private float Khc;
+  private int Khd;
+  private float Khe;
+  private float Khf;
+  private float Khg;
+  private float Khh;
   private Context mContext;
+  private boolean oCI;
   private Paint paint;
   private float radius;
   
@@ -41,19 +41,19 @@ public class VolumeMeter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143500);
-    this.lKg = false;
-    this.Eok = false;
-    this.Eom = -1;
-    this.Eon = -1;
-    this.Eoo = null;
-    this.Eot = -6751336;
-    this.Eou = 70;
-    this.Eov = 0.5F;
-    this.Eow = 0.001F;
-    this.Eox = 20;
+    this.oCI = false;
+    this.KgQ = false;
+    this.KgS = -1;
+    this.KgT = -1;
+    this.KgU = null;
+    this.KgZ = -6751336;
+    this.Kha = 70;
+    this.Khb = 0.5F;
+    this.Khc = 0.001F;
+    this.Khd = 20;
     this.radius = 0.0F;
-    this.EoA = 40.0F;
-    this.EoB = 30.0F;
+    this.Khg = 40.0F;
+    this.Khh = 30.0F;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(143500);
@@ -63,19 +63,19 @@ public class VolumeMeter
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143499);
-    this.lKg = false;
-    this.Eok = false;
-    this.Eom = -1;
-    this.Eon = -1;
-    this.Eoo = null;
-    this.Eot = -6751336;
-    this.Eou = 70;
-    this.Eov = 0.5F;
-    this.Eow = 0.001F;
-    this.Eox = 20;
+    this.oCI = false;
+    this.KgQ = false;
+    this.KgS = -1;
+    this.KgT = -1;
+    this.KgU = null;
+    this.KgZ = -6751336;
+    this.Kha = 70;
+    this.Khb = 0.5F;
+    this.Khc = 0.001F;
+    this.Khd = 20;
     this.radius = 0.0F;
-    this.EoA = 40.0F;
-    this.EoB = 30.0F;
+    this.Khg = 40.0F;
+    this.Khh = 30.0F;
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(143499);
@@ -94,39 +94,39 @@ public class VolumeMeter
     super.onDraw(paramCanvas);
     getWidth();
     getHeight();
-    if ((this.Eol == null) || (this.Eol.getVisibility() == 4)) {}
-    while ((this.Eom < 0) || (this.Eon < 0))
+    if ((this.KgR == null) || (this.KgR.getVisibility() == 4)) {}
+    while ((this.KgS < 0) || (this.KgT < 0))
     {
       AppMethodBeat.o(143502);
       return;
       int[] arrayOfInt = new int[2];
-      this.Eol.getLocationInWindow(arrayOfInt);
+      this.KgR.getLocationInWindow(arrayOfInt);
       if ((arrayOfInt[0] != 0) && (arrayOfInt[1] != 0))
       {
-        int i = this.Eol.getWidth();
-        int j = this.Eol.getHeight();
+        int i = this.KgR.getWidth();
+        int j = this.KgR.getHeight();
         if ((i != 0) && (j != 0))
         {
           int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 50.0F);
-          this.Eom = (arrayOfInt[0] + i / 2);
-          this.Eon = (arrayOfInt[1] + j / 2 - k / 2);
-          this.Eoz = (i / 2);
-          this.Eoy = (i / 2 * 2.0F);
+          this.KgS = (arrayOfInt[0] + i / 2);
+          this.KgT = (arrayOfInt[1] + j / 2 - k / 2);
+          this.Khf = (i / 2);
+          this.Khe = (i / 2 * 2.0F);
         }
       }
     }
-    this.paint.setColor(this.Eot);
-    this.paint.setAlpha(this.Eou);
+    this.paint.setColor(this.KgZ);
+    this.paint.setAlpha(this.Kha);
     float f2 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, this.radius);
     float f1 = f2;
-    if (f2 > this.Eoy) {
-      f1 = this.Eoy;
+    if (f2 > this.Khe) {
+      f1 = this.Khe;
     }
     f2 = f1;
-    if (f1 < this.Eoz) {
-      f2 = this.Eoz;
+    if (f1 < this.Khf) {
+      f2 = this.Khf;
     }
-    paramCanvas.drawCircle(this.Eom, this.Eon, f2, this.paint);
+    paramCanvas.drawCircle(this.KgS, this.KgT, f2, this.paint);
     AppMethodBeat.o(143502);
   }
   
@@ -136,49 +136,49 @@ public class VolumeMeter
     float f2;
     float f3;
     float f1;
-    if (this.lKg)
+    if (this.oCI)
     {
-      f2 = this.Eor;
-      if (this.Eoq <= this.Eop) {
+      f2 = this.KgX;
+      if (this.KgW <= this.KgV) {
         break label147;
       }
-      f3 = (this.Eoq - this.Eop) / this.EoB;
-      if (f3 <= this.Eov) {
+      f3 = (this.KgW - this.KgV) / this.Khh;
+      if (f3 <= this.Khb) {
         break label128;
       }
-      f1 = this.Eov;
+      f1 = this.Khb;
       f1 += f2;
     }
     for (;;)
     {
-      this.Eor = f1;
-      this.Eos = this.Eor;
-      this.radius = ((float)(260.0D * Math.sqrt(this.Eor) - 130.0F * this.Eor) / 1.5F);
+      this.KgX = f1;
+      this.KgY = this.KgX;
+      this.radius = ((float)(260.0D * Math.sqrt(this.KgX) - 130.0F * this.KgX) / 1.5F);
       postInvalidate();
-      this.Eoo.postDelayed(this, this.Eox);
+      this.KgU.postDelayed(this, this.Khd);
       AppMethodBeat.o(143498);
       return;
       label128:
       f1 = f3;
-      if (f3 >= this.Eow) {
+      if (f3 >= this.Khc) {
         break;
       }
-      f1 = this.Eow;
+      f1 = this.Khc;
       break;
       label147:
-      if (this.Eoq <= this.Eop)
+      if (this.KgW <= this.KgV)
       {
-        f3 = (this.Eop - this.Eoq) / this.EoA;
-        if (f3 > this.Eov) {
-          f1 = this.Eov;
+        f3 = (this.KgV - this.KgW) / this.Khg;
+        if (f3 > this.Khb) {
+          f1 = this.Khb;
         }
         for (;;)
         {
           f1 = f2 - f1;
           break;
           f1 = f3;
-          if (f3 < this.Eow) {
-            f1 = this.Eow;
+          if (f3 < this.Khc) {
+            f1 = this.Khc;
           }
         }
       }
@@ -188,13 +188,13 @@ public class VolumeMeter
   
   public void setArchView(View paramView)
   {
-    this.Eol = paramView;
+    this.KgR = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
-    this.Eop = this.Eoq;
-    this.Eoq = paramFloat;
+    this.KgV = this.KgW;
+    this.KgW = paramFloat;
   }
 }
 

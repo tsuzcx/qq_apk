@@ -6,26 +6,26 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class e
 {
-  private static CopyOnWriteArrayList<a> ZHU;
+  private static CopyOnWriteArrayList<a> ahMX;
   
   static
   {
-    AppMethodBeat.i(222222);
-    ZHU = new CopyOnWriteArrayList();
-    AppMethodBeat.o(222222);
+    AppMethodBeat.i(227149);
+    ahMX = new CopyOnWriteArrayList();
+    AppMethodBeat.o(227149);
   }
   
   public static void a(a parama)
   {
     try
     {
-      AppMethodBeat.i(222217);
-      if ((ZHU != null) && (!ZHU.contains(parama)))
+      AppMethodBeat.i(227110);
+      if ((ahMX != null) && (!ahMX.contains(parama)))
       {
-        ZHU.add(parama);
-        g.i("TPGlobalEventNofication", "add onNetStatus change listener: " + parama + ", mListeners: " + ZHU.size());
+        ahMX.add(parama);
+        g.i("TPGlobalEventNofication", "add onNetStatus change listener: " + parama + ", mListeners: " + ahMX.size());
       }
-      AppMethodBeat.o(222217);
+      AppMethodBeat.o(227110);
       return;
     }
     finally {}
@@ -35,13 +35,13 @@ public final class e
   {
     try
     {
-      AppMethodBeat.i(222219);
-      if (ZHU != null)
+      AppMethodBeat.i(227127);
+      if (ahMX != null)
       {
-        ZHU.remove(parama);
-        g.i("TPGlobalEventNofication", "remove netStatusChangeListener, listener: " + parama + ", mListeners: " + ZHU.size());
+        ahMX.remove(parama);
+        g.i("TPGlobalEventNofication", "remove netStatusChangeListener, listener: " + parama + ", mListeners: " + ahMX.size());
       }
-      AppMethodBeat.o(222219);
+      AppMethodBeat.o(227127);
       return;
     }
     finally {}
@@ -51,12 +51,12 @@ public final class e
   {
     try
     {
-      AppMethodBeat.i(222220);
-      Iterator localIterator = ZHU.iterator();
+      AppMethodBeat.i(227139);
+      Iterator localIterator = ahMX.iterator();
       while (localIterator.hasNext()) {
         ((a)localIterator.next()).d(paramInt1, paramInt2, paramInt3, paramObject);
       }
-      AppMethodBeat.o(222220);
+      AppMethodBeat.o(227139);
     }
     finally {}
   }
@@ -68,7 +68,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.e
  * JD-Core Version:    0.7.0.1
  */

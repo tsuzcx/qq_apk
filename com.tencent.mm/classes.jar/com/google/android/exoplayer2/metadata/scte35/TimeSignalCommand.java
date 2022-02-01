@@ -10,27 +10,27 @@ public final class TimeSignalCommand
   extends SpliceCommand
 {
   public static final Parcelable.Creator<TimeSignalCommand> CREATOR;
-  public final long beA;
-  public final long beB;
+  public final long cYt;
+  public final long cYu;
   
   static
   {
     AppMethodBeat.i(92508);
-    CREATOR = new TimeSignalCommand.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(92508);
   }
   
   private TimeSignalCommand(long paramLong1, long paramLong2)
   {
-    this.beA = paramLong1;
-    this.beB = paramLong2;
+    this.cYt = paramLong1;
+    this.cYu = paramLong2;
   }
   
   static TimeSignalCommand b(m paramm, long paramLong, u paramu)
   {
     AppMethodBeat.i(92505);
     paramLong = c(paramm, paramLong);
-    paramm = new TimeSignalCommand(paramLong, paramu.as(paramLong));
+    paramm = new TimeSignalCommand(paramLong, paramu.cG(paramLong));
     AppMethodBeat.o(92505);
     return paramm;
   }
@@ -41,7 +41,7 @@ public final class TimeSignalCommand
     long l2 = paramm.readUnsignedByte();
     long l1 = -9223372036854775807L;
     if ((0x80 & l2) != 0L) {
-      l1 = ((1L & l2) << 32 | paramm.ii()) + paramLong & 0xFFFFFFFF;
+      l1 = ((1L & l2) << 32 | paramm.FT()) + paramLong & 0xFFFFFFFF;
     }
     AppMethodBeat.o(92506);
     return l1;
@@ -50,8 +50,8 @@ public final class TimeSignalCommand
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92507);
-    paramParcel.writeLong(this.beA);
-    paramParcel.writeLong(this.beB);
+    paramParcel.writeLong(this.cYt);
+    paramParcel.writeLong(this.cYu);
     AppMethodBeat.o(92507);
   }
 }

@@ -1,6 +1,5 @@
 package com.tencent.trtc;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
@@ -50,13 +49,13 @@ public abstract class TRTCCloud
   public static void setLogListener(TRTCCloudListener.TRTCLogListener paramTRTCLogListener)
   {
     if (mTXLogListener != null) {
-      mTXLogListener.ZQS = null;
+      mTXLogListener.ahVo = null;
     }
     if (paramTRTCLogListener != null)
     {
       a locala = new a();
       mTXLogListener = locala;
-      locala.ZQS = paramTRTCLogListener;
+      locala.ahVo = paramTRTCLogListener;
     }
     for (;;)
     {
@@ -244,7 +243,6 @@ public abstract class TRTCCloud
   public abstract void setGSensorMode(int paramInt);
   
   @Deprecated
-  @TargetApi(18)
   public abstract boolean setGreenScreenFile(String paramString);
   
   public abstract void setListener(TRTCCloudListener paramTRTCCloudListener);
@@ -426,22 +424,22 @@ public abstract class TRTCCloud
   static class a
     implements TXCLog.a
   {
-    TRTCCloudListener.TRTCLogListener ZQS = null;
+    TRTCCloudListener.TRTCLogListener ahVo = null;
     
     public void a(int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(216724);
-      TRTCCloudListener.TRTCLogListener localTRTCLogListener = this.ZQS;
+      AppMethodBeat.i(211266);
+      TRTCCloudListener.TRTCLogListener localTRTCLogListener = this.ahVo;
       if (localTRTCLogListener != null) {
         localTRTCLogListener.onLog(paramString2, paramInt, paramString1);
       }
-      AppMethodBeat.o(216724);
+      AppMethodBeat.o(211266);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloud
  * JD-Core Version:    0.7.0.1
  */

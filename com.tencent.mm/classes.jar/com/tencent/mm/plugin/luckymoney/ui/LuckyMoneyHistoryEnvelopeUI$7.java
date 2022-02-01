@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.ui.widget.a.i;
 
 final class LuckyMoneyHistoryEnvelopeUI$7
   implements View.OnClickListener
@@ -14,13 +14,13 @@ final class LuckyMoneyHistoryEnvelopeUI$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(268006);
+    AppMethodBeat.i(284500);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyHistoryEnvelopeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.qVA.dismiss();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyHistoryEnvelopeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.ubf.dismiss();
     a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyHistoryEnvelopeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(268006);
+    AppMethodBeat.o(284500);
   }
 }
 

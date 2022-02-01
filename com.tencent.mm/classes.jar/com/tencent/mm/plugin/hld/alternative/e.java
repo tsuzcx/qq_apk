@@ -6,84 +6,93 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.f;
+import com.tencent.mm.plugin.hld.view.f;
 import com.tencent.mm.plugin.hld.view.g;
-import com.tencent.mm.plugin.hld.view.h;
 import com.tencent.wxhld.info.Candidate;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Lcom/tencent/mm/plugin/hld/view/ImeOnClickListener;", "itemView", "Landroid/view/View;", "mListener", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;)V", "candidate", "Lcom/tencent/wxhld/info/Candidate;", "order", "", "symbolKeyBt", "Landroid/widget/TextView;", "fillContent", "", "fillFooter", "footView", "onClick", "v", "pressTime", "", "(Landroid/view/View;Ljava/lang/Long;)V", "IAlternativeWordViewListener", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "Lcom/tencent/mm/plugin/hld/view/ImeOnClickListener;", "itemView", "Landroid/view/View;", "mListener", "Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "(Landroid/view/View;Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;)V", "candidate", "Lcom/tencent/wxhld/info/Candidate;", "order", "", "symbolKeyBt", "Landroid/widget/TextView;", "fillContent", "", "fillFooter", "footView", "onClick", "v", "pressTime", "", "(Landroid/view/View;Ljava/lang/Long;)V", "IAlternativeWordViewListener", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends RecyclerView.v
-  implements h
+  implements g
 {
-  private final a DtR;
-  TextView Dub;
-  Candidate Duc;
+  Candidate JnA;
+  private final a Jnt;
+  TextView Jnz;
   int order;
   
   public e(View paramView, a parama)
   {
     super(paramView);
-    AppMethodBeat.i(211066);
-    this.DtR = parama;
+    AppMethodBeat.i(311671);
+    this.Jnt = parama;
     parama = paramView.findViewById(a.f.s5_grid_key_text);
-    p.j(parama, "itemView.findViewById(R.id.s5_grid_key_text)");
-    this.Dub = ((TextView)parama);
+    s.s(parama, "itemView.findViewById(R.id.s5_grid_key_text)");
+    this.Jnz = ((TextView)parama);
     this.order = -1;
-    parama = g.DIP;
-    g.a(paramView, (View.OnClickListener)this);
-    AppMethodBeat.o(211066);
+    f.JzR.a(paramView, (View.OnClickListener)this);
+    AppMethodBeat.o(311671);
   }
   
-  public final void j(Long paramLong)
+  public final void k(Long paramLong)
   {
-    AppMethodBeat.i(211064);
-    a locala = this.DtR;
+    AppMethodBeat.i(311683);
+    a locala = this.Jnt;
+    Object localObject1;
+    Object localObject2;
+    label45:
+    Object localObject3;
+    int i;
     if (locala != null)
     {
-      Object localObject1 = this.Duc;
-      if (localObject1 != null)
-      {
-        localObject2 = ((Candidate)localObject1).text;
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
+      localObject1 = this.JnA;
+      if (localObject1 != null) {
+        break label89;
       }
-      else
-      {
-        localObject1 = "";
+      localObject1 = "";
+      localObject2 = this.JnA;
+      if (localObject2 != null) {
+        break label112;
       }
-      Object localObject2 = this.Duc;
-      if (localObject2 != null)
-      {
-        byte[] arrayOfByte = ((Candidate)localObject2).id;
-        localObject2 = arrayOfByte;
-        if (arrayOfByte != null) {}
+      localObject2 = null;
+      localObject3 = localObject2;
+      if (localObject2 == null) {
+        localObject3 = new byte[0];
       }
-      else
-      {
-        localObject2 = new byte[0];
-      }
-      int i = this.order;
-      if (paramLong != null) {}
-      for (long l = paramLong.longValue();; l = 0L)
-      {
-        locala.a((String)localObject1, (byte[])localObject2, i, l);
-        AppMethodBeat.o(211064);
-        return;
+      i = this.order;
+      if (paramLong != null) {
+        break label122;
       }
     }
-    AppMethodBeat.o(211064);
+    label89:
+    label112:
+    label122:
+    for (long l = 0L;; l = paramLong.longValue())
+    {
+      locala.a((String)localObject1, (byte[])localObject3, i, l);
+      AppMethodBeat.o(311683);
+      return;
+      localObject2 = ((Candidate)localObject1).text;
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = "";
+      break;
+      localObject2 = ((Candidate)localObject2).id;
+      break label45;
+    }
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(211065);
-    j(Long.valueOf(0L));
-    AppMethodBeat.o(211065);
+    AppMethodBeat.i(311697);
+    k(Long.valueOf(0L));
+    AppMethodBeat.o(311697);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "", "onClick", "", "text", "", "id", "", "order", "", "pressTime", "", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/alternative/ImeAlternativeWordGridViewHolder$IAlternativeWordViewListener;", "", "onClick", "", "text", "", "id", "", "order", "", "pressTime", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
     public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt, long paramLong);

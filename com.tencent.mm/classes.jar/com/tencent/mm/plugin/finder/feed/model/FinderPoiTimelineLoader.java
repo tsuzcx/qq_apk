@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.ce;
+import com.tencent.mm.plugin.finder.cgi.df;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
+import com.tencent.mm.plugin.finder.feed.model.internal.c;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
-import com.tencent.mm.plugin.findersdk.a.y.a;
+import com.tencent.mm.plugin.finder.storage.logic.d;
+import com.tencent.mm.plugin.finder.storage.logic.d.a;
+import com.tencent.mm.plugin.findersdk.a.bi.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.eka;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.fei;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "fromScene", "", "getFromScene", "()Ljava/lang/Integer;", "setFromScene", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "fromType", "Lcom/tencent/mm/plugin/findersdk/api/IFinderPoiService$FinderPoiFromType;", "getFromType", "()Lcom/tencent/mm/plugin/findersdk/api/IFinderPoiService$FinderPoiFromType;", "setFromType", "(Lcom/tencent/mm/plugin/findersdk/api/IFinderPoiService$FinderPoiFromType;)V", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "loadMoreCallback", "getLoadMoreCallback", "setLoadMoreCallback", "location", "Lcom/tencent/mm/protocal/protobuf/SnsLocation;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/SnsLocation;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/SnsLocation;)V", "refreshCallback", "getRefreshCallback", "setRefreshCallback", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "onFetchDone", "response", "onFetchInitDone", "initResponse", "onFetchLoadMoreDone", "onFetchRefreshDone", "Companion", "FinderPoiTimelineResponse", "PoiTimelineFetcher", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "fromScene", "", "getFromScene", "()Ljava/lang/Integer;", "setFromScene", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "fromType", "Lcom/tencent/mm/plugin/findersdk/api/IFinderPoiService$FinderPoiFromType;", "getFromType", "()Lcom/tencent/mm/plugin/findersdk/api/IFinderPoiService$FinderPoiFromType;", "setFromType", "(Lcom/tencent/mm/plugin/findersdk/api/IFinderPoiService$FinderPoiFromType;)V", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "loadMoreCallback", "getLoadMoreCallback", "setLoadMoreCallback", "location", "Lcom/tencent/mm/protocal/protobuf/SnsLocation;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/SnsLocation;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/SnsLocation;)V", "refreshCallback", "getRefreshCallback", "setRefreshCallback", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "onFetchDone", "response", "onFetchInitDone", "initResponse", "onFetchLoadMoreDone", "onFetchRefreshDone", "Companion", "FinderPoiTimelineResponse", "PoiTimelineFetcher", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderPoiTimelineLoader
   extends BaseFinderFeedLoader
 {
-  public static final a xIB;
-  public kotlin.g.a.b<? super IResponse<bu>, x> fetchEndCallback;
+  public static final a BhW;
+  private kotlin.g.a.b<? super IResponse<cc>, ah> BfX;
+  private kotlin.g.a.b<? super IResponse<cc>, ah> BfY;
+  public fei BhH;
+  public bi.a BhJ;
+  public Integer BhK;
+  public kotlin.g.a.b<? super IResponse<cc>, ah> fetchEndCallback;
   public boolean hasMore;
-  private kotlin.g.a.b<? super IResponse<bu>, x> xGJ;
-  private kotlin.g.a.b<? super IResponse<bu>, x> xGK;
-  public eka xIr;
-  public y.a xIs;
-  public Integer xIt;
   
   static
   {
-    AppMethodBeat.i(285163);
-    xIB = new a((byte)0);
-    AppMethodBeat.o(285163);
+    AppMethodBeat.i(366357);
+    BhW = new a((byte)0);
+    AppMethodBeat.o(366357);
   }
   
   private FinderPoiTimelineLoader(byte paramByte)
@@ -48,96 +47,84 @@ public final class FinderPoiTimelineLoader
     this();
   }
   
-  public FinderPoiTimelineLoader(bid parambid)
+  public FinderPoiTimelineLoader(bui parambui)
   {
-    super(parambid);
+    super(parambui);
   }
   
-  public final i<bu> createDataFetch()
+  public final i<cc> createDataFetch()
   {
-    AppMethodBeat.i(285157);
+    AppMethodBeat.i(366364);
     i locali = (i)new c();
-    AppMethodBeat.o(285157);
+    AppMethodBeat.o(366364);
     return locali;
   }
   
-  public final void onFetchDone(IResponse<bu> paramIResponse)
+  public final void onFetchDone(IResponse<cc> paramIResponse)
   {
-    AppMethodBeat.i(285158);
-    p.k(paramIResponse, "response");
+    AppMethodBeat.i(366374);
+    kotlin.g.b.s.u(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
     if (isInitOperation(paramIResponse))
     {
-      AppMethodBeat.o(285158);
+      AppMethodBeat.o(366374);
       return;
     }
     if (!paramIResponse.getHasMore())
     {
       kotlin.g.a.b localb = this.fetchEndCallback;
-      if (localb != null)
-      {
+      if (localb != null) {
         localb.invoke(paramIResponse);
-        AppMethodBeat.o(285158);
-        return;
       }
     }
-    AppMethodBeat.o(285158);
+    AppMethodBeat.o(366374);
   }
   
-  public final void onFetchInitDone(IResponse<bu> paramIResponse)
+  public final void onFetchInitDone(IResponse<cc> paramIResponse)
   {
-    AppMethodBeat.i(285159);
-    p.k(paramIResponse, "initResponse");
+    AppMethodBeat.i(366380);
+    kotlin.g.b.s.u(paramIResponse, "initResponse");
     super.onFetchInitDone(paramIResponse);
     if (!paramIResponse.getHasMore())
     {
       kotlin.g.a.b localb = this.fetchEndCallback;
-      if (localb != null)
-      {
+      if (localb != null) {
         localb.invoke(paramIResponse);
-        AppMethodBeat.o(285159);
-        return;
       }
     }
-    AppMethodBeat.o(285159);
+    AppMethodBeat.o(366380);
   }
   
-  public final void onFetchLoadMoreDone(IResponse<bu> paramIResponse)
+  public final void onFetchLoadMoreDone(IResponse<cc> paramIResponse)
   {
-    AppMethodBeat.i(285161);
-    p.k(paramIResponse, "response");
+    AppMethodBeat.i(366390);
+    kotlin.g.b.s.u(paramIResponse, "response");
     super.onFetchLoadMoreDone(paramIResponse);
-    kotlin.g.a.b localb = this.xGK;
-    if (localb != null)
-    {
+    kotlin.g.a.b localb = this.BfY;
+    if (localb != null) {
       localb.invoke(paramIResponse);
-      AppMethodBeat.o(285161);
-      return;
     }
-    AppMethodBeat.o(285161);
+    AppMethodBeat.o(366390);
   }
   
-  public final void onFetchRefreshDone(IResponse<bu> paramIResponse)
+  public final void onFetchRefreshDone(IResponse<cc> paramIResponse)
   {
-    AppMethodBeat.i(285160);
-    p.k(paramIResponse, "response");
+    AppMethodBeat.i(366385);
+    kotlin.g.b.s.u(paramIResponse, "response");
     super.onFetchRefreshDone(paramIResponse);
-    kotlin.g.a.b localb = this.xGJ;
-    if (localb != null)
-    {
+    kotlin.g.a.b localb = this.BfX;
+    if (localb != null) {
       localb.invoke(paramIResponse);
-      AppMethodBeat.o(285160);
-      return;
     }
-    AppMethodBeat.o(285160);
+    AppMethodBeat.o(366385);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader$FinderPoiTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader$FinderPoiTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    extends IResponse<bu>
+    extends IResponse<cc>
   {
     public b(int paramInt1, int paramInt2, String paramString)
     {
@@ -145,122 +132,135 @@ public final class FinderPoiTimelineLoader
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader$PoiTimelineFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader$PoiTimelineFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderPoiTimelineLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class c
-    extends com.tencent.mm.plugin.finder.feed.model.internal.c
+    extends c
   {
-    public final IResponse<bu> callInit()
+    public c()
+    {
+      AppMethodBeat.i(366244);
+      AppMethodBeat.o(366244);
+    }
+    
+    public final IResponse<cc> callInit()
     {
       Object localObject2 = null;
-      AppMethodBeat.i(232647);
+      AppMethodBeat.i(366280);
       FinderPoiTimelineLoader.b localb = new FinderPoiTimelineLoader.b(0, 0, "");
-      Object localObject1 = this.xIC.getCache();
-      if (localObject1 != null) {}
-      for (localObject1 = ((q)localObject1).mXB;; localObject1 = null)
+      FinderPoiTimelineLoader localFinderPoiTimelineLoader = this.BhX;
+      Object localObject1 = localFinderPoiTimelineLoader.getCache();
+      if (localObject1 == null)
       {
+        localObject1 = null;
         localb.setIncrementList((List)localObject1);
-        q localq = this.xIC.getCache();
-        localObject1 = localObject2;
-        if (localq != null) {
-          localObject1 = localq.lastBuffer;
+        localObject1 = localFinderPoiTimelineLoader.getCache();
+        if (localObject1 != null) {
+          break label82;
         }
-        localb.setLastBuffer((com.tencent.mm.cd.b)localObject1);
+      }
+      label82:
+      for (localObject1 = localObject2;; localObject1 = ((s)localObject1).lastBuffer)
+      {
+        localb.setLastBuffer((com.tencent.mm.bx.b)localObject1);
         localObject1 = (IResponse)localb;
-        AppMethodBeat.o(232647);
+        AppMethodBeat.o(366280);
         return localObject1;
+        localObject1 = ((s)localObject1).pUj;
+        break;
       }
     }
     
-    public final IResponse<bu> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+    public final IResponse<cc> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
     {
-      AppMethodBeat.i(232645);
-      p.k(paramq, "scene");
-      if ((paramq instanceof ce))
+      AppMethodBeat.i(366273);
+      kotlin.g.b.s.u(paramp, "scene");
+      if ((paramp instanceof df))
       {
-        if ((paramInt1 == 0) && (paramInt2 == 0) && (((ce)paramq).doo() == 0)) {}
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (((df)paramp).dVZ() == 0)) {}
         FinderPoiTimelineLoader.b localb;
         for (boolean bool = false;; bool = true)
         {
           localb = new FinderPoiTimelineLoader.b(paramInt1, paramInt2, paramString);
-          localObject1 = (Iterable)((ce)paramq).dor();
-          paramString = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
+          localObject1 = (Iterable)((df)paramp).dWd();
+          paramString = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject1, 10));
           localObject1 = ((Iterable)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = (FinderObject)((Iterator)localObject1).next();
+            Object localObject2 = (FinderObject)((Iterator)localObject1).next();
             Object localObject3 = FinderItem.Companion;
-            localObject2 = FinderItem.a.b((FinderObject)localObject2, 33040);
-            localObject3 = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
-            paramString.add(c.a.a((FinderItem)localObject2));
+            localObject2 = FinderItem.a.e((FinderObject)localObject2, 33040);
+            localObject3 = d.FND;
+            paramString.add(d.a.a((FinderItem)localObject2));
           }
         }
         localb.setIncrementList((List)paramString);
-        paramString = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
-        c.a.a(((ce)paramq).dor(), 33040, this.xIC.getContextObj());
-        if (((ce)paramq).pullType != 2)
+        paramString = d.FND;
+        d.a.a(((df)paramp).dWd(), 33040, this.BhX.getContextObj());
+        if (((df)paramp).pullType != 2)
         {
-          paramString = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
+          paramString = d.FND;
           paramString = localb.getIncrementList();
           if (paramString == null)
           {
-            paramString = new t("null cannot be cast to non-null type kotlin.collections.List<com.tencent.mm.plugin.finder.model.BaseFinderFeed>");
-            AppMethodBeat.o(232645);
+            paramString = new NullPointerException("null cannot be cast to non-null type kotlin.collections.List<com.tencent.mm.plugin.finder.model.BaseFinderFeed>");
+            AppMethodBeat.o(366273);
             throw paramString;
           }
-          c.a.b(paramString, 33040, true);
+          d.a.c(paramString, 33040, true);
         }
         Object localObject1 = getTAG();
-        Object localObject2 = new StringBuilder("incrementList size: ");
         paramString = localb.getIncrementList();
-        if (paramString != null) {}
-        for (paramString = Integer.valueOf(paramString.size());; paramString = null)
+        if (paramString == null) {}
+        for (paramString = null;; paramString = Integer.valueOf(paramString.size()))
         {
-          Log.i((String)localObject1, paramString);
-          localb.setPullType(((ce)paramq).pullType);
-          localb.setLastBuffer(((ce)paramq).don());
+          Log.i((String)localObject1, kotlin.g.b.s.X("incrementList size: ", paramString));
+          localb.setPullType(((df)paramp).pullType);
+          localb.setLastBuffer(((df)paramp).dVY());
           localb.setHasMore(bool);
           paramString = (IResponse)localb;
-          AppMethodBeat.o(232645);
+          AppMethodBeat.o(366273);
           return paramString;
         }
       }
-      AppMethodBeat.o(232645);
+      AppMethodBeat.o(366273);
       return null;
     }
     
-    public final com.tencent.mm.an.q genLoadMoreNetScene()
+    public final com.tencent.mm.am.p genLoadMoreNetScene()
     {
-      AppMethodBeat.i(232641);
-      Object localObject = this.xIC.xIr;
-      y.a locala = this.xIC.xIs;
+      AppMethodBeat.i(366263);
+      Object localObject = this.BhX.BhH;
+      bi.a locala = this.BhX.BhJ;
+      FinderPoiTimelineLoader localFinderPoiTimelineLoader = this.BhX;
       if ((localObject != null) && (locala != null))
       {
-        localObject = new ce((eka)localObject, locala, this.xIC.getLastBuffer(), this.xIC.xIt, (byte)0);
-        ((ce)localObject).pullType = 2;
+        localObject = new df((fei)localObject, locala, localFinderPoiTimelineLoader.getLastBuffer(), localFinderPoiTimelineLoader.BhK, (byte)0);
+        ((df)localObject).pullType = 2;
       }
       for (;;)
       {
-        localObject = (com.tencent.mm.an.q)localObject;
-        AppMethodBeat.o(232641);
+        localObject = (com.tencent.mm.am.p)localObject;
+        AppMethodBeat.o(366263);
         return localObject;
         localObject = null;
       }
     }
     
-    public final com.tencent.mm.an.q genRefreshNetScene()
+    public final com.tencent.mm.am.p genRefreshNetScene()
     {
-      AppMethodBeat.i(232637);
-      Object localObject = this.xIC.xIr;
-      y.a locala = this.xIC.xIs;
+      AppMethodBeat.i(366256);
+      Object localObject = this.BhX.BhH;
+      bi.a locala = this.BhX.BhJ;
+      FinderPoiTimelineLoader localFinderPoiTimelineLoader = this.BhX;
       if ((localObject != null) && (locala != null))
       {
-        localObject = new ce((eka)localObject, locala, this.xIC.getLastBuffer(), this.xIC.xIt, (byte)0);
-        ((ce)localObject).pullType = 0;
+        localObject = new df((fei)localObject, locala, localFinderPoiTimelineLoader.getLastBuffer(), localFinderPoiTimelineLoader.BhK, (byte)0);
+        ((df)localObject).pullType = 0;
       }
       for (;;)
       {
-        localObject = (com.tencent.mm.an.q)localObject;
-        AppMethodBeat.o(232637);
+        localObject = (com.tencent.mm.am.p)localObject;
+        AppMethodBeat.o(366256);
         return localObject;
         localObject = null;
       }
@@ -268,9 +268,9 @@ public final class FinderPoiTimelineLoader
     
     public final List<Integer> getCmdIds()
     {
-      AppMethodBeat.i(232633);
-      List localList = j.listOf(Integer.valueOf(5225));
-      AppMethodBeat.o(232633);
+      AppMethodBeat.i(366248);
+      List localList = kotlin.a.p.listOf(Integer.valueOf(5225));
+      AppMethodBeat.o(366248);
       return localList;
     }
   }

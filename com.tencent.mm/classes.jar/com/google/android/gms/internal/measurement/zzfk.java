@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build.VERSION;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -72,7 +71,6 @@ public final class zzfk
     return arrayOfByte;
   }
   
-  @VisibleForTesting
   protected final HttpURLConnection zzb(URL paramURL)
   {
     AppMethodBeat.i(1430);
@@ -128,7 +126,7 @@ public final class zzfk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfk
  * JD-Core Version:    0.7.0.1
  */

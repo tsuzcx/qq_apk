@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.activity;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -8,61 +7,35 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import androidx.appcompat.app.ActionBar;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.activity.uic.c;
-import com.tencent.mm.plugin.finder.activity.uic.f;
 import com.tencent.mm.plugin.finder.activity.uic.g;
 import com.tencent.mm.plugin.finder.activity.uic.h;
-import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.activity.uic.i;
+import com.tencent.mm.plugin.finder.e.a;
+import com.tencent.mm.plugin.finder.e.b;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
 @com.tencent.mm.ui.base.a(3)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/activity/FinderActivityProfileUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setFullScreen", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/activity/FinderActivityProfileUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "setFullScreen", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderActivityProfileUI
   extends MMFinderUI
 {
-  public static final a wWL;
-  private HashMap _$_findViewCache;
+  public static final a Atz;
   
   static
   {
-    AppMethodBeat.i(267660);
-    wWL = new a((byte)0);
-    AppMethodBeat.o(267660);
+    AppMethodBeat.i(347972);
+    Atz = new a((byte)0);
+    AppMethodBeat.o(347972);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(267662);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(267662);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(267661);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(267661);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getCommentScene()
   {
@@ -71,31 +44,28 @@ public final class FinderActivityProfileUI
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(267658);
-    Set localSet = ak.setOf(new Class[] { c.class, g.class, h.class, com.tencent.mm.plugin.finder.activity.uic.a.class, f.class });
-    AppMethodBeat.o(267658);
+    AppMethodBeat.i(347985);
+    Set localSet = ar.setOf(new Class[] { c.class, h.class, i.class, com.tencent.mm.plugin.finder.activity.uic.a.class, g.class });
+    AppMethodBeat.o(347985);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(267657);
+    AppMethodBeat.i(347979);
+    overridePendingTransition(e.a.slide_right_in, e.a.slide_left_out);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(b.c.transparent));
-    paramBundle = getWindow();
-    p.j(paramBundle, "window");
-    paramBundle = paramBundle.getDecorView();
-    p.j(paramBundle, "window.decorView");
+    setActionbarColor(getResources().getColor(e.b.transparent));
+    paramBundle = getWindow().getDecorView();
+    s.s(paramBundle, "window.decorView");
     paramBundle.setSystemUiVisibility(1280);
     paramBundle = getSupportActionBar();
     if (paramBundle != null)
     {
       paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
       paramBundle.hide();
-      AppMethodBeat.o(267657);
-      return;
     }
-    AppMethodBeat.o(267657);
+    AppMethodBeat.o(347979);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -104,7 +74,7 @@ public final class FinderActivityProfileUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/activity/FinderActivityProfileUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/activity/FinderActivityProfileUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

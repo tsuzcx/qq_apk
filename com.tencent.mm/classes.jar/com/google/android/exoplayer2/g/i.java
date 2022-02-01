@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public final r boh;
-  public final g boi;
-  public final t[] boj;
+  public final r dia;
+  public final g dib;
+  public final t[] dic;
   public final Object info;
   
   public i(r paramr, g paramg, Object paramObject, t[] paramArrayOft)
   {
-    this.boh = paramr;
-    this.boi = paramg;
+    this.dia = paramr;
+    this.dib = paramg;
     this.info = paramObject;
-    this.boj = paramArrayOft;
+    this.dic = paramArrayOft;
   }
   
   public final boolean a(i parami)
@@ -29,7 +29,7 @@ public final class i
       return false;
     }
     int i = 0;
-    while (i < this.boi.length)
+    while (i < this.dib.length)
     {
       if (!a(parami, i))
       {
@@ -50,7 +50,7 @@ public final class i
       AppMethodBeat.o(92954);
       return false;
     }
-    if ((x.h(this.boi.bof[paramInt], parami.boi.bof[paramInt])) && (x.h(this.boj[paramInt], parami.boj[paramInt])))
+    if ((x.p(this.dib.dhY[paramInt], parami.dib.dhY[paramInt])) && (x.p(this.dic[paramInt], parami.dic[paramInt])))
     {
       AppMethodBeat.o(92954);
       return true;

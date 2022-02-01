@@ -1,38 +1,72 @@
 package com.tencent.mm.plugin.scanner.model;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.GoodsObject;
-import kotlin.l;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.plugin.scanner.util.q.a;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "", "()V", "catId", "", "getCatId", "()I", "setCatId", "(I)V", "centerX", "", "getCenterX", "()F", "setCenterX", "(F)V", "centerY", "getCenterY", "setCenterY", "imgUrl", "", "getImgUrl", "()Ljava/lang/String;", "setImgUrl", "(Ljava/lang/String;)V", "jumpKeyWord", "getJumpKeyWord", "setJumpKeyWord", "jumpType", "getJumpType", "setJumpType", "matchObj", "Lcom/tencent/mm/protocal/protobuf/GoodsObject;", "getMatchObj", "()Lcom/tencent/mm/protocal/protobuf/GoodsObject;", "setMatchObj", "(Lcom/tencent/mm/protocal/protobuf/GoodsObject;)V", "reqKey", "getReqKey", "setReqKey", "returnType", "getReturnType", "setReturnType", "scanId", "getScanId", "setScanId", "seqNum", "getSeqNum", "setSeqNum", "sessionId", "", "getSessionId", "()J", "setSessionId", "(J)V", "shouldShowResult", "", "getShouldShowResult", "()Z", "setShouldShowResult", "(Z)V", "source", "getSource", "setSource", "wxaAppid", "getWxaAppid", "setWxaAppid", "wxaPath", "getWxaPath", "setWxaPath", "convertFromResponse", "", "response", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageResponse;", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageSceneResponse;", "Companion", "plugin-scan_release"})
 public final class x
 {
-  public static final x.a ILC;
-  public int ILA;
-  private String ILB = "";
-  public boolean ILv;
-  String ILw;
-  String ILx;
-  GoodsObject ILy;
-  public int ILz;
-  public float aGt;
-  public float aGu;
-  public String fwv;
-  public int jumpType;
-  public long sessionId;
-  public int source;
-  String xei;
-  
-  static
+  public static String a(Context paramContext, q.a parama)
   {
-    AppMethodBeat.i(52214);
-    ILC = new x.a((byte)0);
-    AppMethodBeat.o(52214);
+    AppMethodBeat.i(51634);
+    k.b localb = new k.b();
+    localb.appId = ahM(parama.field_functionType);
+    localb.title = parama.field_title;
+    localb.description = parama.field_source;
+    localb.type = 10;
+    localb.url = parama.field_shareurl;
+    localb.action = "";
+    localb.appName = q.aR(paramContext, parama.field_type);
+    localb.thumburl = parama.field_thumburl;
+    localb.nRA = parama.field_type;
+    localb.nRB = q.c(parama);
+    paramContext = k.b.a(localb, null, null);
+    AppMethodBeat.o(51634);
+    return paramContext;
+  }
+  
+  public static String ahM(int paramInt)
+  {
+    if (paramInt == 4) {
+      return "wxfbc915ff7c30e335";
+    }
+    if (paramInt == 3) {
+      return "wx482a4001c37e2b74";
+    }
+    return "wxfbc915ff7c30e335";
+  }
+  
+  public static q.a gI(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(51635);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(51635);
+      return null;
+    }
+    int i = q.aVj(paramString);
+    if (i == 3)
+    {
+      paramString = q.gJ(paramString, paramInt);
+      AppMethodBeat.o(51635);
+      return paramString;
+    }
+    if (i == 4)
+    {
+      paramString = q.aVk(paramString);
+      AppMethodBeat.o(51635);
+      return paramString;
+    }
+    AppMethodBeat.o(51635);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.x
  * JD-Core Version:    0.7.0.1
  */

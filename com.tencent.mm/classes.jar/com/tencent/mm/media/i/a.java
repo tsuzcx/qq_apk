@@ -3,202 +3,468 @@ package com.tencent.mm.media.i;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.media.MediaFormat;
 import android.opengl.EGLContext;
 import android.opengl.EGLExt;
 import android.os.HandlerThread;
 import android.view.Surface;
-import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.media.k.c;
-import com.tencent.mm.media.k.c.a;
-import com.tencent.mm.media.k.c.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.media.util.c.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.c.d;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/remuxer/CodecInputSurface;", "", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "TAG", "", "blendBitmap", "Landroid/graphics/Bitmap;", "blendBitmapProvider", "Lkotlin/Function1;", "", "blurBgBitmapProvider", "blurBgdBitmap", "continueZeroPtsFrameCount", "", "currentRenderPtsNs", "drawCallback", "", "", "getDrawCallback", "()Lkotlin/jvm/functions/Function1;", "setDrawCallback", "(Lkotlin/jvm/functions/Function1;)V", "drawInOnFrameAvailable", "drawInOnFrameAvailableLock", "Ljava/lang/Object;", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "getEglEnvironment", "()Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "setEglEnvironment", "(Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;)V", "isFirstFrameAvailable", "isInitFinished", "isReleased", "lastFrameTimestamp", "lastPts", "onDrawFrameOnFrameAvailableFailed", "Lkotlin/Function0;", "ptsStepUs", "releaseLock", "remuxStartTime", "renderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "renderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "setUpEnvWithShareContext", "surface", "Landroid/view/Surface;", "getSurface", "()Landroid/view/Surface;", "setSurface", "(Landroid/view/Surface;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getCurrentRenderPtsNs", "getEGLEnvironment", "getOutputSurface", "initForRemuxer", "canUseDrawInFrameAvailable", "width", "height", "startTime", "callback", "Lkotlin/ParameterName;", "name", "success", "initSurfaceTexture", "initWithSize", "eglContext", "Landroid/opengl/EGLContext;", "initWithSurface", "waitNewFrame", "isDrawInOnFrameAvailable", "queue", "queueFirst", "release", "requestDraw", "data", "", "pts", "inputCallback", "textureId", "bitmap", "waitFistFrameAvailable", "blurBg", "requestDrawInGLThread", "runInGlesThread", "setDrawBlendBitmap", "setDrawBlendBitmapProvider", "setDrawBlurBgBitmapProvider", "setDrawInOnFrameAvailable", "draw", "setMirror", "mirror", "setOnDrawFrameOnFrameAvailableFailed", "setOnFrameAvailable", "setPresentationTime", "nsecs", "setRotate", "degree", "setVideoFps", "fps", "updateDrawSize", "updateTextureSize", "updateTextureSizeByMediaFormat", "mediaFormat", "Landroid/media/MediaFormat;", "Companion", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/remuxer/CodecInputSurface;", "", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "TAG", "", "blendBitmap", "Landroid/graphics/Bitmap;", "blendBitmapProvider", "Lkotlin/Function1;", "", "blurBgBitmapProvider", "blurBgdBitmap", "continueZeroPtsFrameCount", "", "currentRenderPtsNs", "drawCallback", "", "", "getDrawCallback", "()Lkotlin/jvm/functions/Function1;", "setDrawCallback", "(Lkotlin/jvm/functions/Function1;)V", "drawInOnFrameAvailable", "drawInOnFrameAvailableLock", "Ljava/lang/Object;", "eglEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "getEglEnvironment", "()Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "setEglEnvironment", "(Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;)V", "isFirstFrameAvailable", "isInitFinished", "isReleased", "lastFrameTimestamp", "lastPts", "onDrawFrameOnFrameAvailableFailed", "Lkotlin/Function0;", "ptsStepUs", "releaseLock", "remuxStartTime", "renderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "renderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "setUpEnvWithShareContext", "surface", "Landroid/view/Surface;", "getSurface", "()Landroid/view/Surface;", "setSurface", "(Landroid/view/Surface;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getCurrentRenderPtsNs", "getEGLEnvironment", "getOutputSurface", "initForRemuxer", "canUseDrawInFrameAvailable", "width", "height", "startTime", "callback", "Lkotlin/ParameterName;", "name", "success", "initSurfaceTexture", "initWithSize", "eglContext", "Landroid/opengl/EGLContext;", "initWithSurface", "waitNewFrame", "isDrawInOnFrameAvailable", "queue", "queueFirst", "release", "requestDraw", "data", "", "pts", "inputCallback", "textureId", "waitTextureFinished", "bitmap", "waitFistFrameAvailable", "blurBg", "requestDrawInGLThread", "runInGlesThread", "setDrawBlendBitmap", "setDrawBlendBitmapProvider", "setDrawBlurBgBitmapProvider", "setDrawInOnFrameAvailable", "draw", "setMirror", "mirror", "setOnDrawFrameOnFrameAvailableFailed", "setOnFrameAvailable", "setPresentationTime", "nsecs", "setRotate", "degree", "setVideoFps", "fps", "updateDrawSize", "updateTextureSize", "updateTextureSizeByMediaFormat", "mediaFormat", "Landroid/media/MediaFormat;", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a.a kWh;
-  public final String TAG;
+  public static final a.a nBi;
+  final String TAG;
+  private volatile boolean isInitFinished;
   private volatile boolean isReleased;
-  private long kSy;
-  private final HandlerThread kVN;
-  private MMHandler kVO;
-  public kotlin.g.a.b<? super Boolean, x> kVP;
-  private boolean kVQ;
-  private volatile boolean kVR;
-  private final Object kVS;
-  private kotlin.g.a.b<? super Long, Bitmap> kVT;
-  Bitmap kVU;
-  private kotlin.g.a.b<? super Long, Bitmap> kVV;
-  private Bitmap kVW;
-  private volatile boolean kVX;
-  private final Object kVY;
-  kotlin.g.a.a<x> kVZ;
-  int kWa;
-  private int kWb;
-  private long kWc;
-  volatile long kWd;
-  private volatile boolean kWe;
-  private long kWf;
-  public com.tencent.mm.media.j.a kWg;
-  c.b krl;
+  c.b mVi;
+  private long nBA;
+  public com.tencent.mm.media.j.a nBj;
+  private MMHandler nBk;
+  public kotlin.g.a.b<? super Boolean, ah> nBl;
+  private boolean nBm;
+  private volatile boolean nBn;
+  private final Object nBo;
+  private kotlin.g.a.b<? super Long, Bitmap> nBp;
+  Bitmap nBq;
+  private kotlin.g.a.b<? super Long, Bitmap> nBr;
+  private Bitmap nBs;
+  private volatile boolean nBt;
+  private final Object nBu;
+  kotlin.g.a.a<ah> nBv;
+  int nBw;
+  private int nBx;
+  private long nBy;
+  volatile long nBz;
+  private final HandlerThread nty;
+  private long nyj;
   Surface surface;
   private SurfaceTexture surfaceTexture;
   
   static
   {
     AppMethodBeat.i(93759);
-    kWh = new a.a((byte)0);
+    nBi = new a.a((byte)0);
     AppMethodBeat.o(93759);
   }
   
   public a(com.tencent.mm.media.j.a parama)
   {
     AppMethodBeat.i(93758);
-    this.kWg = parama;
+    this.nBj = parama;
     this.TAG = "MicroMsg.CodecInputSurface";
-    this.kVN = d.im("CodecInputSurface_renderThread", 5);
-    this.kVS = new Object();
-    this.kVY = new Object();
-    this.kWa = 33000000;
-    this.kVN.start();
-    parama = this.kVN;
-    p.j(parama, "renderThread");
-    this.kVO = new MMHandler(parama.getLooper());
+    this.nty = d.jy("CodecInputSurface_renderThread", 5);
+    this.nBo = new Object();
+    this.nBu = new Object();
+    this.nBw = 33000000;
+    this.nty.start();
+    this.nBk = new MMHandler(this.nty.getLooper());
     AppMethodBeat.o(93758);
   }
   
-  private final void aUV()
+  private void K(kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(93753);
+    synchronized (this.nBo)
+    {
+      if ((this.nty.isAlive()) && (!this.isReleased))
+      {
+        this.nBk.post(new a..ExternalSyntheticLambda2(parama));
+        AppMethodBeat.o(93753);
+        return;
+      }
+      Log.e(this.TAG, hashCode() + " queue already release");
+      parama = ah.aiuX;
+    }
+  }
+  
+  private static final void Y(kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(237821);
+    parama.invoke();
+    AppMethodBeat.o(237821);
+  }
+  
+  private static final void Z(kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(237824);
+    parama.invoke();
+    AppMethodBeat.o(237824);
+  }
+  
+  private static final void a(a parama, SurfaceTexture paramSurfaceTexture)
+  {
+    AppMethodBeat.i(237835);
+    s.u(parama, "this$0");
+    Object localObject1 = parama.TAG;
+    Object localObject2 = new StringBuilder("onFrameAvailable, thread:").append(Thread.currentThread()).append(", surface timestamp:");
+    paramSurfaceTexture = parama.surfaceTexture;
+    if (paramSurfaceTexture == null)
+    {
+      paramSurfaceTexture = null;
+      Log.i((String)localObject1, paramSurfaceTexture + ", drawInOnFrameAvailable:" + parama.nBt);
+      localObject1 = parama.surfaceTexture;
+      if (localObject1 == null) {
+        break label317;
+      }
+      if (((SurfaceTexture)localObject1).getTimestamp() > 0L) {
+        break label196;
+      }
+    }
+    label196:
+    for (parama.nBx += 1;; parama.nBx = 0)
+    {
+      if ((!parama.nBn) || (((SurfaceTexture)localObject1).getTimestamp() > 0L)) {
+        break label204;
+      }
+      Log.i(parama.TAG, "first frame available and new timestamp still zero!!");
+      if (parama.nBx < 3) {
+        break label213;
+      }
+      Log.i(parama.TAG, "continue 3 frames pts is zero!!!");
+      parama.nBt = false;
+      parama = parama.nBv;
+      if (parama != null) {
+        parama.invoke();
+      }
+      AppMethodBeat.o(237835);
+      return;
+      paramSurfaceTexture = Long.valueOf(paramSurfaceTexture.getTimestamp());
+      break;
+    }
+    label204:
+    parama.nyj = ((SurfaceTexture)localObject1).getTimestamp();
+    label213:
+    if (!parama.nBn) {
+      parama.nBn = true;
+    }
+    long l1;
+    if (parama.nBt)
+    {
+      if (parama.nBq == null) {
+        break label324;
+      }
+      l1 = parama.nyj;
+      localObject1 = parama.nBq;
+      paramSurfaceTexture = parama.nBs;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (parama.isInitFinished) {
+          break;
+        }
+        Log.e(parama.TAG, "requestDraw not init now");
+        AppMethodBeat.o(237835);
+        return;
+      }
+      catch (Exception paramSurfaceTexture)
+      {
+        Log.printErrStackTrace(parama.TAG, (Throwable)paramSurfaceTexture, "", new Object[0]);
+        parama = parama.nBl;
+        if (parama != null) {
+          parama.invoke(Boolean.FALSE);
+        }
+      }
+      label317:
+      AppMethodBeat.o(237835);
+      return;
+      label324:
+      l1 = parama.nyj;
+      paramSurfaceTexture = parama.nBp;
+      if (paramSurfaceTexture == null) {}
+      for (paramSurfaceTexture = null;; paramSurfaceTexture = (Bitmap)paramSurfaceTexture.invoke(Long.valueOf(((SurfaceTexture)localObject1).getTimestamp() / 1000L)))
+      {
+        localObject2 = parama.nBr;
+        if (localObject2 != null) {
+          break label388;
+        }
+        localObject2 = null;
+        localObject1 = paramSurfaceTexture;
+        paramSurfaceTexture = (SurfaceTexture)localObject2;
+        break;
+      }
+      label388:
+      localObject2 = (Bitmap)((kotlin.g.a.b)localObject2).invoke(Long.valueOf(((SurfaceTexture)localObject1).getTimestamp() / 1000L));
+      localObject1 = paramSurfaceTexture;
+      paramSurfaceTexture = (SurfaceTexture)localObject2;
+    }
+    Log.i(parama.TAG, s.X("render pts:", Long.valueOf(l1)));
+    long l2 = Util.currentTicks();
+    if ((parama.nBj instanceof com.tencent.mm.media.j.b)) {
+      ((com.tencent.mm.media.j.b)parama.nBj).b((Bitmap)localObject1, paramSurfaceTexture);
+    }
+    localObject1 = parama.TAG;
+    localObject2 = new StringBuilder("render cost ").append(Util.ticksToNow(l2)).append(", surface timestamp:");
+    paramSurfaceTexture = parama.surfaceTexture;
+    if (paramSurfaceTexture == null)
+    {
+      paramSurfaceTexture = null;
+      Log.d((String)localObject1, paramSurfaceTexture + ", lastFrameTimestamp:" + parama.nBA);
+      if ((parama.surfaceTexture == null) || (!parama.nBn)) {
+        break label641;
+      }
+      l2 = parama.nBA;
+      paramSurfaceTexture = parama.surfaceTexture;
+      if (paramSurfaceTexture != null) {
+        break label630;
+      }
+    }
+    label630:
+    for (paramSurfaceTexture = null;; paramSurfaceTexture = Long.valueOf(paramSurfaceTexture.getTimestamp()))
+    {
+      s.checkNotNull(paramSurfaceTexture);
+      if (l2 <= paramSurfaceTexture.longValue()) {
+        break label641;
+      }
+      Log.e(parama.TAG, "not stickily monotonic increase timestamp");
+      parama.nBt = false;
+      paramSurfaceTexture = parama.nBv;
+      if (paramSurfaceTexture != null) {
+        paramSurfaceTexture.invoke();
+      }
+      AppMethodBeat.o(237835);
+      return;
+      paramSurfaceTexture = Long.valueOf(paramSurfaceTexture.getTimestamp());
+      break;
+    }
+    label641:
+    paramSurfaceTexture = parama.surfaceTexture;
+    long l3;
+    if (paramSurfaceTexture == null)
+    {
+      l2 = 0L;
+      parama.nBz = l2;
+      l3 = Util.currentTicks();
+      if (parama.surfaceTexture == null) {
+        break label878;
+      }
+      paramSurfaceTexture = parama.surfaceTexture;
+      if (paramSurfaceTexture != null) {
+        break label867;
+      }
+      paramSurfaceTexture = null;
+      label682:
+      s.checkNotNull(paramSurfaceTexture);
+      l2 = paramSurfaceTexture.longValue();
+      long l4 = parama.nBA;
+      paramSurfaceTexture = parama.surfaceTexture;
+      if ((paramSurfaceTexture == null) || (l4 != paramSurfaceTexture.getTimestamp())) {
+        break label918;
+      }
+    }
+    label918:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        Log.i(parama.TAG, "same frame timestamp!!");
+        l2 = l1;
+      }
+      parama.nBA = l2;
+      if (parama.surface != null)
+      {
+        l1 = l2;
+        if (parama.nBy > 0L) {
+          l1 = l2 - parama.nBy * 1000000L;
+        }
+        parama.setPresentationTime(l1);
+      }
+      for (;;)
+      {
+        if (parama.surface != null)
+        {
+          paramSurfaceTexture = parama.mVi;
+          if (paramSurfaceTexture != null)
+          {
+            localObject1 = com.tencent.mm.media.util.c.nFs;
+            com.tencent.mm.media.util.c.a.a(paramSurfaceTexture.nFB, paramSurfaceTexture.eglSurface);
+          }
+        }
+        Log.d(parama.TAG, s.X("swap buffer cost ", Long.valueOf(Util.ticksToNow(l3))));
+        paramSurfaceTexture = parama.nBl;
+        if (paramSurfaceTexture != null) {
+          paramSurfaceTexture.invoke(Boolean.TRUE);
+        }
+        AppMethodBeat.o(237835);
+        return;
+        l2 = paramSurfaceTexture.getTimestamp();
+        break;
+        label867:
+        paramSurfaceTexture = Long.valueOf(paramSurfaceTexture.getTimestamp());
+        break label682;
+        label878:
+        if (parama.surface != null)
+        {
+          l2 = l1;
+          if (parama.nBy > 0L) {
+            l2 = l1 - parama.nBy * 1000000L;
+          }
+          parama.setPresentationTime(l2);
+        }
+      }
+    }
+  }
+  
+  private final void bpD()
   {
     AppMethodBeat.i(93754);
-    this.surfaceTexture = this.kWg.getTexture();
+    this.surfaceTexture = this.nBj.bpL();
     AppMethodBeat.o(93754);
   }
   
-  private final void fD(boolean paramBoolean)
+  private final void gn(boolean paramBoolean)
   {
     AppMethodBeat.i(93755);
-    synchronized (this.kVY)
+    synchronized (this.nBu)
     {
-      this.kVX = paramBoolean;
-      Log.i(this.TAG, "setDrawInOnFrameAvailable:".concat(String.valueOf(paramBoolean)));
-      x localx = x.aazN;
+      this.nBt = paramBoolean;
+      Log.i(this.TAG, s.X("setDrawInOnFrameAvailable:", Boolean.valueOf(paramBoolean)));
+      ah localah = ah.aiuX;
       AppMethodBeat.o(93755);
       return;
     }
   }
   
+  public final void C(kotlin.g.a.b<? super Long, Bitmap> paramb)
+  {
+    AppMethodBeat.i(93742);
+    String str = this.TAG;
+    if (paramb != null) {}
+    for (int i = paramb.hashCode();; i = 0)
+    {
+      Log.i(str, s.X("setDrawBlendBitmapProvider:", Integer.valueOf(i)));
+      this.nBp = paramb;
+      AppMethodBeat.o(93742);
+      return;
+    }
+  }
+  
+  public final void D(kotlin.g.a.b<? super Long, Bitmap> paramb)
+  {
+    AppMethodBeat.i(93743);
+    String str = this.TAG;
+    if (paramb != null) {}
+    for (int i = paramb.hashCode();; i = 0)
+    {
+      Log.i(str, s.X("setDrawBlurBgBitmapProvider:", Integer.valueOf(i)));
+      this.nBr = paramb;
+      AppMethodBeat.o(93743);
+      return;
+    }
+  }
+  
+  public final void X(kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(237962);
+    s.u(parama, "callback");
+    K((kotlin.g.a.a)new a.j(parama));
+    AppMethodBeat.o(237962);
+  }
+  
+  public final void a(final int paramInt, final long paramLong, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(237907);
+    K((kotlin.g.a.a)new h(this, paramInt, paramBoolean, paramLong));
+    AppMethodBeat.o(237907);
+  }
+  
   public final void a(final long paramLong, Bitmap paramBitmap1, final Bitmap paramBitmap2)
   {
     AppMethodBeat.i(93744);
-    j((kotlin.g.a.a)new f(this, true, paramLong, paramBitmap1, paramBitmap2));
+    K((kotlin.g.a.a)new f(this, true, paramLong, paramBitmap1, paramBitmap2));
     AppMethodBeat.o(93744);
   }
   
-  public final void a(final Surface paramSurface, final EGLContext paramEGLContext, final kotlin.g.a.b<? super Boolean, x> paramb)
+  public final void a(EGLContext paramEGLContext, final int paramInt1, final int paramInt2, final kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(258932);
-    p.k(paramSurface, "surface");
-    this.surface = paramSurface;
-    Log.i(this.TAG, hashCode() + " initWithSurface, eglContext:" + paramEGLContext + ", surface:" + paramSurface + ", waitNewFrame:false, callback:false");
-    j((kotlin.g.a.a)new d(this, paramEGLContext, paramSurface, paramb));
-    AppMethodBeat.o(258932);
+    AppMethodBeat.i(237886);
+    Log.i(this.TAG, hashCode() + " initWithSize, eglContext: " + paramEGLContext + ", callback: false, width:" + paramInt1 + ", height:" + paramInt2);
+    K((kotlin.g.a.a)new c(paramEGLContext, this, paramInt1, paramInt2, paramb));
+    AppMethodBeat.o(237886);
   }
   
-  public final void a(final Surface paramSurface, boolean paramBoolean, final int paramInt1, final int paramInt2, long paramLong, final kotlin.g.a.b<? super Boolean, x> paramb)
+  public final void a(final Surface paramSurface, EGLContext paramEGLContext, final kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(258933);
+    AppMethodBeat.i(237876);
+    s.u(paramSurface, "surface");
     this.surface = paramSurface;
-    Log.i(this.TAG, hashCode() + " initForRemuxer, surface:" + paramSurface + ", callback:false, drawInOnFrameAvailable:" + this.kVX);
+    Log.i(this.TAG, hashCode() + " initWithSurface, eglContext:" + paramEGLContext + ", surface:" + paramSurface + ", waitNewFrame:false, callback:false");
+    K((kotlin.g.a.a)new d(paramEGLContext, this, paramSurface, paramb));
+    AppMethodBeat.o(237876);
+  }
+  
+  public final void a(final Surface paramSurface, boolean paramBoolean, final int paramInt1, final int paramInt2, long paramLong, final kotlin.g.a.b<? super Boolean, ah> paramb)
+  {
+    AppMethodBeat.i(237882);
+    this.surface = paramSurface;
+    Log.i(this.TAG, hashCode() + " initForRemuxer, surface:" + paramSurface + ", callback:false, drawInOnFrameAvailable:" + this.nBt);
     if (!paramBoolean)
     {
       Log.i(this.TAG, "cannot use drawInFrameAvailable!");
-      fD(false);
+      gn(false);
     }
     for (;;)
     {
-      this.kWb = 0;
-      this.kWc = paramLong;
-      j((kotlin.g.a.a)new b(this, paramSurface, paramInt1, paramInt2, paramb));
-      AppMethodBeat.o(258933);
+      this.nBx = 0;
+      this.nBy = paramLong;
+      K((kotlin.g.a.a)new b(this, paramSurface, paramInt1, paramInt2, paramb));
+      AppMethodBeat.o(237882);
       return;
       Log.i(this.TAG, "default use drawInFrameAvailable");
-      fD(true);
+      gn(true);
     }
   }
   
-  public final void a(final byte[] paramArrayOfByte, final long paramLong, kotlin.g.a.b<? super byte[], x> paramb)
+  public final void a(final byte[] paramArrayOfByte, final long paramLong, kotlin.g.a.b<? super byte[], ah> paramb)
   {
     AppMethodBeat.i(93746);
-    p.k(paramArrayOfByte, "data");
-    p.k(paramb, "inputCallback");
-    Log.d(this.TAG, "ByteArray length : " + paramArrayOfByte.length);
-    j((kotlin.g.a.a)new g(this, paramArrayOfByte, paramLong, paramb));
+    s.u(paramArrayOfByte, "data");
+    s.u(paramb, "inputCallback");
+    Log.d(this.TAG, s.X("ByteArray length : ", Integer.valueOf(paramArrayOfByte.length)));
+    K((kotlin.g.a.a)new g(this, paramArrayOfByte, paramLong, paramb));
     AppMethodBeat.o(93746);
-  }
-  
-  public final Surface aUU()
-  {
-    AppMethodBeat.i(93748);
-    if (this.surfaceTexture == null) {
-      aUV();
-    }
-    Surface localSurface = new Surface(this.surfaceTexture);
-    AppMethodBeat.o(93748);
-    return localSurface;
-  }
-  
-  public final void dt(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(93749);
-    this.kWg.du(paramInt1, paramInt2);
-    AppMethodBeat.o(93749);
-  }
-  
-  public final void dv(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(93750);
-    this.kWg.dv(paramInt1, paramInt2);
-    AppMethodBeat.o(93750);
   }
   
   public final void e(MediaFormat paramMediaFormat)
   {
     int j = 0;
     AppMethodBeat.i(93751);
-    p.k(paramMediaFormat, "mediaFormat");
-    Object localObject1 = this.kWg;
-    p.k(paramMediaFormat, "format");
+    s.u(paramMediaFormat, "mediaFormat");
+    Object localObject1 = this.nBj;
+    s.u(paramMediaFormat, "format");
     Object localObject2;
     int m;
     int k;
-    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vGa, true))
+    if (((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yVF, true))
     {
       if ((paramMediaFormat.containsKey("width")) && (paramMediaFormat.containsKey("height")))
       {
-        ((com.tencent.mm.media.j.a)localObject1).krg = paramMediaFormat.getInteger("width");
-        ((com.tencent.mm.media.j.a)localObject1).krh = paramMediaFormat.getInteger("height");
-        localObject2 = ((com.tencent.mm.media.j.a)localObject1).kYb;
+        ((com.tencent.mm.media.j.a)localObject1).mVd = paramMediaFormat.getInteger("width");
+        ((com.tencent.mm.media.j.a)localObject1).mVe = paramMediaFormat.getInteger("height");
+        localObject2 = ((com.tencent.mm.media.j.a)localObject1).nDm;
         if (localObject2 != null) {
-          ((com.tencent.mm.media.j.b.a)localObject2).dv(((com.tencent.mm.media.j.a)localObject1).krg, ((com.tencent.mm.media.j.a)localObject1).krh);
+          ((com.tencent.mm.media.j.b.a)localObject2).el(((com.tencent.mm.media.j.a)localObject1).mVd, ((com.tencent.mm.media.j.a)localObject1).mVe);
         }
       }
-      m = ((com.tencent.mm.media.j.a)localObject1).krh;
-      k = ((com.tencent.mm.media.j.a)localObject1).krg;
+      m = ((com.tencent.mm.media.j.a)localObject1).mVe;
+      k = ((com.tencent.mm.media.j.a)localObject1).mVd;
       if (!paramMediaFormat.containsKey("crop-left")) {
-        break label375;
+        break label368;
       }
     }
-    label375:
+    label368:
     for (int i = paramMediaFormat.getInteger("crop-left");; i = 0)
     {
       if (paramMediaFormat.containsKey("crop-top")) {
@@ -210,70 +476,53 @@ public final class a
       if (paramMediaFormat.containsKey("crop-bottom")) {
         m = paramMediaFormat.getInteger("crop-bottom") + 1;
       }
-      Log.i("MicroMsg.Media.AbsSurfaceRenderer", "updateTextureSizeByMediaFormat:textureWidth->" + ((com.tencent.mm.media.j.a)localObject1).krg + " textureHeight->" + ((com.tencent.mm.media.j.a)localObject1).krh + " validLeft->" + i + " validTop->" + m + " validRight->" + k + "  validBottom -> " + j);
-      paramMediaFormat = ((com.tencent.mm.media.j.a)localObject1).kYb;
+      Log.i("MicroMsg.Media.AbsSurfaceRenderer", "updateTextureSizeByMediaFormat:textureWidth->" + ((com.tencent.mm.media.j.a)localObject1).mVd + " textureHeight->" + ((com.tencent.mm.media.j.a)localObject1).mVe + " validLeft->" + i + " validTop->" + m + " validRight->" + k + "  validBottom -> " + j);
+      paramMediaFormat = ((com.tencent.mm.media.j.a)localObject1).nDm;
       if (paramMediaFormat != null)
       {
         localObject1 = new Point(i, m + 1);
         localObject2 = new Point(k + 1, j);
-        p.k(localObject1, "leftTop");
-        p.k(localObject2, "rightBottom");
-        paramMediaFormat.kYN = ((Point)localObject1);
-        paramMediaFormat.kYO = ((Point)localObject2);
-        AppMethodBeat.o(93751);
-        return;
+        s.u(localObject1, "leftTop");
+        s.u(localObject2, "rightBottom");
+        paramMediaFormat.nDV = ((Point)localObject1);
+        paramMediaFormat.nDW = ((Point)localObject2);
       }
       AppMethodBeat.o(93751);
       return;
     }
   }
   
-  public final void i(kotlin.g.a.b<? super Long, Bitmap> paramb)
+  public final void ej(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(93742);
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("setDrawBlendBitmapProvider:");
-    if (paramb != null) {}
-    for (int i = paramb.hashCode();; i = 0)
-    {
-      Log.i(str, i);
-      this.kVT = paramb;
-      AppMethodBeat.o(93742);
-      return;
-    }
+    AppMethodBeat.i(93749);
+    this.nBj.ek(paramInt1, paramInt2);
+    AppMethodBeat.o(93749);
   }
   
-  public final void j(kotlin.g.a.a<x> parama)
+  public final void el(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(93753);
-    synchronized (this.kVS)
-    {
-      HandlerThread localHandlerThread = this.kVN;
-      p.j(localHandlerThread, "renderThread");
-      if ((localHandlerThread.isAlive()) && (!this.isReleased))
-      {
-        this.kVO.post((Runnable)new b(parama));
-        AppMethodBeat.o(93753);
-        return;
-      }
-      Log.e(this.TAG, hashCode() + " queue already release");
-      parama = x.aazN;
-    }
+    AppMethodBeat.i(93750);
+    this.nBj.el(paramInt1, paramInt2);
+    AppMethodBeat.o(93750);
   }
   
-  public final void j(kotlin.g.a.b<? super Long, Bitmap> paramb)
+  public final void g(final SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(93743);
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("setDrawBlurBgBitmapProvider:");
-    if (paramb != null) {}
-    for (int i = paramb.hashCode();; i = 0)
-    {
-      Log.i(str, i);
-      this.kVV = paramb;
-      AppMethodBeat.o(93743);
-      return;
+    AppMethodBeat.i(237909);
+    s.u(paramSurfaceTexture, "surfaceTexture");
+    K((kotlin.g.a.a)new i(this, paramSurfaceTexture));
+    AppMethodBeat.o(237909);
+  }
+  
+  public final Surface getOutputSurface()
+  {
+    AppMethodBeat.i(93748);
+    if (this.surfaceTexture == null) {
+      bpD();
     }
+    Surface localSurface = new Surface(this.surfaceTexture);
+    AppMethodBeat.o(93748);
+    return localSurface;
   }
   
   public final void release()
@@ -283,25 +532,23 @@ public final class a
     Object localObject2 = (kotlin.g.a.a)new e(this);
     for (;;)
     {
-      synchronized (this.kVS)
+      synchronized (this.nBo)
       {
-        HandlerThread localHandlerThread = this.kVN;
-        p.j(localHandlerThread, "renderThread");
-        if ((localHandlerThread.isAlive()) && (!this.isReleased))
+        if ((this.nty.isAlive()) && (!this.isReleased))
         {
-          this.kVO.removeCallbacksAndMessages(null);
-          this.kVO.post((Runnable)new b((kotlin.g.a.a)localObject2));
+          this.nBk.removeCallbacksAndMessages(null);
+          this.nBk.post(new a..ExternalSyntheticLambda1((kotlin.g.a.a)localObject2));
         }
       }
-      synchronized (this.kVS)
+      synchronized (this.nBo)
       {
         this.isReleased = true;
-        this.kWe = false;
-        localObject2 = x.aazN;
+        this.isInitFinished = false;
+        localObject2 = ah.aiuX;
         AppMethodBeat.o(93756);
         return;
         Log.e(this.TAG, hashCode() + " queueFirst already release");
-        localObject2 = x.aazN;
+        localObject2 = ah.aiuX;
         continue;
         localObject3 = finally;
         AppMethodBeat.o(93756);
@@ -313,67 +560,60 @@ public final class a
   protected final void setPresentationTime(long paramLong)
   {
     AppMethodBeat.i(93757);
-    Object localObject = this.krl;
+    Object localObject = this.mVi;
     if (localObject != null) {
-      EGLExt.eglPresentationTimeANDROID(((c.b)localObject).las, ((c.b)localObject).eglSurface, paramLong);
+      EGLExt.eglPresentationTimeANDROID(((c.b)localObject).nFB, ((c.b)localObject).eglSurface, paramLong);
     }
-    this.kWd = paramLong;
-    localObject = c.lar;
-    c.a.OB("eglPresentationTimeANDROID");
+    this.nBz = paramLong;
+    localObject = com.tencent.mm.media.util.c.nFs;
+    com.tencent.mm.media.util.c.a.GR("eglPresentationTimeANDROID");
     AppMethodBeat.o(93757);
   }
   
-  public final void tm(int paramInt)
+  public final void th(int paramInt)
   {
     AppMethodBeat.i(93752);
-    this.kWg.tm(paramInt);
+    this.nBj.th(paramInt);
     AppMethodBeat.o(93752);
   }
   
-  public final void x(final int paramInt, final long paramLong)
-  {
-    AppMethodBeat.i(93747);
-    j((kotlin.g.a.a)new h(this, paramInt, paramLong));
-    AppMethodBeat.o(93747);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    b(a parama, Surface paramSurface, int paramInt1, int paramInt2, kotlin.g.a.b paramb)
+    b(a parama, Surface paramSurface, int paramInt1, int paramInt2, kotlin.g.a.b<? super Boolean, ah> paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  public static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public c(a parama, EGLContext paramEGLContext, int paramInt1, int paramInt2, kotlin.g.a.b paramb)
+    c(EGLContext paramEGLContext, a parama, int paramInt1, int paramInt2, kotlin.g.a.b<? super Boolean, ah> paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    d(a parama, EGLContext paramEGLContext, Surface paramSurface, kotlin.g.a.b paramb)
+    d(EGLContext paramEGLContext, a parama, Surface paramSurface, kotlin.g.a.b<? super Boolean, ah> paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     e(a parama)
     {
@@ -381,10 +621,10 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     f(a parama, boolean paramBoolean, long paramLong, Bitmap paramBitmap1, Bitmap paramBitmap2)
     {
@@ -392,131 +632,36 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    g(a parama, byte[] paramArrayOfByte, long paramLong, kotlin.g.a.b paramb)
+    g(a parama, byte[] paramArrayOfByte, long paramLong, kotlin.g.a.b<? super byte[], ah> paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    h(a parama, int paramInt, long paramLong)
+    h(a parama, int paramInt, boolean paramBoolean, long paramLong)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  public static final class i
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public i(a parama, SurfaceTexture paramSurfaceTexture)
+    i(a parama, SurfaceTexture paramSurfaceTexture)
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/SurfaceTexture;", "kotlin.jvm.PlatformType", "onFrameAvailable"})
-  static final class k
-    implements SurfaceTexture.OnFrameAvailableListener
-  {
-    k(a parama) {}
-    
-    public final void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-    {
-      AppMethodBeat.i(93740);
-      Object localObject1 = a.d(this.kWi);
-      Object localObject2 = new StringBuilder("onFrameAvailable, thread:").append(Thread.currentThread()).append(", surface timestamp:");
-      paramSurfaceTexture = a.h(this.kWi);
-      if (paramSurfaceTexture != null)
-      {
-        paramSurfaceTexture = Long.valueOf(paramSurfaceTexture.getTimestamp());
-        Log.i((String)localObject1, paramSurfaceTexture + ", drawInOnFrameAvailable:" + a.i(this.kWi));
-        localObject1 = a.h(this.kWi);
-        if (localObject1 == null) {
-          break label428;
-        }
-        if (((SurfaceTexture)localObject1).getTimestamp() > 0L) {
-          break label216;
-        }
-        paramSurfaceTexture = this.kWi;
-        a.a(paramSurfaceTexture, a.k(paramSurfaceTexture) + 1);
-      }
-      for (;;)
-      {
-        if ((a.f(this.kWi)) && (((SurfaceTexture)localObject1).getTimestamp() <= 0L))
-        {
-          Log.i(a.d(this.kWi), "first frame available and new timestamp still zero!!");
-          if (a.k(this.kWi) < 3) {
-            break label245;
-          }
-          Log.i(a.d(this.kWi), "continue 3 frames pts is zero!!!");
-          a.j(this.kWi);
-          paramSurfaceTexture = a.l(this.kWi);
-          if (paramSurfaceTexture != null)
-          {
-            paramSurfaceTexture.invoke();
-            AppMethodBeat.o(93740);
-            return;
-            paramSurfaceTexture = null;
-            break;
-            label216:
-            a.a(this.kWi, 0);
-            continue;
-          }
-          AppMethodBeat.o(93740);
-          return;
-        }
-      }
-      a.a(this.kWi, ((SurfaceTexture)localObject1).getTimestamp());
-      label245:
-      if (!a.f(this.kWi)) {
-        a.g(this.kWi);
-      }
-      long l;
-      if (a.i(this.kWi))
-      {
-        if (a.n(this.kWi) == null) {
-          break label328;
-        }
-        localObject2 = this.kWi;
-        l = a.m(this.kWi);
-        paramSurfaceTexture = a.n(this.kWi);
-        localObject1 = a.o(this.kWi);
-      }
-      for (;;)
-      {
-        a.a((a)localObject2, l, paramSurfaceTexture, (Bitmap)localObject1);
-        AppMethodBeat.o(93740);
-        return;
-        label328:
-        localObject2 = this.kWi;
-        l = a.m(this.kWi);
-        paramSurfaceTexture = a.p(this.kWi);
-        if (paramSurfaceTexture != null) {}
-        for (paramSurfaceTexture = (Bitmap)paramSurfaceTexture.invoke(Long.valueOf(((SurfaceTexture)localObject1).getTimestamp() / 1000L));; paramSurfaceTexture = null)
-        {
-          kotlin.g.a.b localb = a.q(this.kWi);
-          if (localb == null) {
-            break label422;
-          }
-          localObject1 = (Bitmap)localb.invoke(Long.valueOf(((SurfaceTexture)localObject1).getTimestamp() / 1000L));
-          break;
-        }
-        label422:
-        localObject1 = null;
-      }
-      label428:
-      AppMethodBeat.o(93740);
     }
   }
 }

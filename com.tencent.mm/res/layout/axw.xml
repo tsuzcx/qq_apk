@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/b6j" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fr" android:gravity="center_horizontal" android:id="@id/ipq" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="标题" />
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bet" android:layout_width="272.0dip" android:layout_height="153.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bfe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="24.0dip" android:text="弹窗内容" />
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="27.0dip" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fr" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ea8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="取消" android:layout_weight="1.0" />
-        <View android:background="#ffe5e5e5" android:layout_width="1.0dip" android:layout_height="fill_parent" />
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fx" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/h6z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="确定" android:layout_weight="1.0" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/gt4" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/f8" android:background="@drawable/b9" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f7" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b5" android:contentDescription="@string/e4" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/fp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fo" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/cp" android:src="@raw/actionbar_icon_dark_more" android:contentDescription="@string/a0g" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/t" android:textColor="@color/c9" android:ellipsize="end" android:gravity="center" android:id="@id/ft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/f8" android:layout_centerInParent="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/fs" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <com.tencent.mm.plugin.game.ui.message.TabItemView android:id="@id/kdi" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="2.0dip" app:tab_name="@string/fae" />
+            <com.tencent.mm.plugin.game.ui.message.TabItemView android:id="@id/kdj" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" app:tab_name="@string/faf" />
+        </LinearLayout>
+        <View android:background="@color/BW_0_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.base.CustomViewPager android:id="@id/gt5" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/gt4" />
+</RelativeLayout>

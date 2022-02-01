@@ -27,20 +27,20 @@ public class TAVVideoCompositionLayerInstruction
   public TAVVideoCompositionLayerInstruction(int paramInt, TAVTransitionableVideo paramTAVTransitionableVideo)
   {
     this(paramInt, paramTAVTransitionableVideo.getVideoConfiguration(), paramTAVTransitionableVideo);
-    AppMethodBeat.i(212729);
+    AppMethodBeat.i(218974);
     setTimeRange(paramTAVTransitionableVideo.getTimeRange());
     setTransition(paramTAVTransitionableVideo.getVideoTransition());
-    AppMethodBeat.o(212729);
+    AppMethodBeat.o(218974);
   }
   
   public TAVVideoCompositionLayerInstruction(int paramInt, TAVVideoConfiguration paramTAVVideoConfiguration, TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(212727);
+    AppMethodBeat.i(218965);
     this.trackID = paramInt;
     this.videoConfiguration = paramTAVVideoConfiguration;
     this.imageSource = paramTAVVideoCompositionTrack;
     this.preferredTransform = new Matrix();
-    AppMethodBeat.o(212727);
+    AppMethodBeat.o(218965);
   }
   
   public Bitmap applySourceImage(Bitmap paramBitmap, CMTime paramCMTime, CGSize paramCGSize)
@@ -115,9 +115,9 @@ public class TAVVideoCompositionLayerInstruction
   
   public String toString()
   {
-    AppMethodBeat.i(212750);
+    AppMethodBeat.i(219053);
     String str = "TAVVideoCompositionLayerInstruction{trackID=" + this.trackID + ", timeRange=" + this.timeRange.toSimpleString() + ", preferredTransform=" + this.preferredTransform + ", imageSource=" + this.imageSource + ", transition=" + this.transition + ", videoConfiguration=" + this.videoConfiguration + '}';
-    AppMethodBeat.o(212750);
+    AppMethodBeat.o(219053);
     return str;
   }
 }

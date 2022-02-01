@@ -8,21 +8,19 @@ import android.view.KeyEvent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "Lcom/tencent/mm/ui/component/IUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "arguments", "Landroid/os/Bundle;", "context", "Landroid/app/Activity;", "getContext", "()Landroid/app/Activity;", "context$delegate", "Lkotlin/Lazy;", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getArguments", "getLayoutId", "", "isBelongFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinished", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onNewIntent", "intent", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStartActivityForResult", "options", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "onWindowFocusChanged", "hasFocus", "setArguments", "plugin-uic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "Lcom/tencent/mm/ui/component/IUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "()V", "arguments", "Landroid/os/Bundle;", "getArguments", "()Landroid/os/Bundle;", "setArguments", "(Landroid/os/Bundle;)V", "context", "Landroid/app/Activity;", "getContext", "()Landroid/app/Activity;", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isBelongFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onBeforeFinish", "resultIntent", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinished", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onNewIntent", "intent", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStartActivityForResult", "options", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "onViewCreated", "contentView", "onWindowFocusChanged", "hasFocus", "plugin-uic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class UIComponent
-  extends e
-  implements d
+  extends i
+  implements g
 {
-  private boolean XoB;
-  private Bundle XoC;
-  public View oFW;
-  private final f xwp = g.ar((a)new UIComponent.a(this));
+  private Bundle arguments;
+  private boolean isUserVisibleFocused;
+  public View rootView;
+  
+  public UIComponent() {}
   
   public UIComponent(AppCompatActivity paramAppCompatActivity)
   {
@@ -34,14 +32,14 @@ public abstract class UIComponent
     super(paramFragment);
   }
   
-  public Bundle getArguments()
+  public final Bundle getArguments()
   {
-    return this.XoC;
+    return this.arguments;
   }
   
   public final Activity getContext()
   {
-    return (Activity)this.xwp.getValue();
+    return (Activity)getActivity();
   }
   
   public int getLayoutId()
@@ -51,11 +49,12 @@ public abstract class UIComponent
   
   public final View getRootView()
   {
-    View localView = this.oFW;
-    if (localView == null) {
-      p.bGy("rootView");
+    View localView = this.rootView;
+    if (localView != null) {
+      return localView;
     }
-    return localView;
+    s.bIx("rootView");
+    return null;
   }
   
   public final boolean isBelongFragment()
@@ -65,7 +64,7 @@ public abstract class UIComponent
   
   public final boolean isUserVisibleFocused()
   {
-    return this.XoB;
+    return this.isUserVisibleFocused;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -79,7 +78,7 @@ public abstract class UIComponent
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    p.k(paramConfiguration, "newConfig");
+    s.u(paramConfiguration, "newConfig");
   }
   
   public void onCreate(Bundle paramBundle) {}
@@ -92,15 +91,21 @@ public abstract class UIComponent
   
   public void onFinished() {}
   
+  public boolean onInterceptFinish()
+  {
+    s.u(this, "this");
+    return false;
+  }
+  
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    p.k(paramKeyEvent, "event");
+    s.u(paramKeyEvent, "event");
     return false;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    p.k(paramKeyEvent, "event");
+    s.u(paramKeyEvent, "event");
     return false;
   }
   
@@ -108,10 +113,20 @@ public abstract class UIComponent
   
   public void onPause() {}
   
+  public void onPostDestroyed()
+  {
+    s.u(this, "this");
+  }
+  
+  public void onPreDestroyed()
+  {
+    s.u(this, "this");
+  }
+  
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
+    s.u(paramArrayOfString, "permissions");
+    s.u(paramArrayOfInt, "grantResults");
   }
   
   public void onRestoreInstanceState(Bundle paramBundle) {}
@@ -128,35 +143,40 @@ public abstract class UIComponent
   
   public void onUserVisibleFocused()
   {
-    this.XoB = true;
+    this.isUserVisibleFocused = true;
   }
   
   public void onUserVisibleUnFocused()
   {
-    this.XoB = false;
+    this.isUserVisibleFocused = false;
+  }
+  
+  public void onViewCreated(View paramView)
+  {
+    s.u(paramView, "contentView");
   }
   
   public void onWindowFocusChanged(boolean paramBoolean) {}
   
-  public void setArguments(Bundle paramBundle)
+  public final void setArguments(Bundle paramBundle)
   {
-    this.XoC = paramBundle;
+    this.arguments = paramBundle;
   }
   
   public final void setRootView(View paramView)
   {
-    p.k(paramView, "<set-?>");
-    this.oFW = paramView;
+    s.u(paramView, "<set-?>");
+    this.rootView = paramView;
   }
   
   public final void setUserVisibleFocused(boolean paramBoolean)
   {
-    this.XoB = paramBoolean;
+    this.isUserVisibleFocused = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.youtu.sdkkitframework.framework.YtFSMBaseState;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.ProcessHelper;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper.StateClassName;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtFrameworkFireEventType;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContext;
@@ -23,12 +24,14 @@ import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectGetBestIma
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
 import com.tencent.youtu.ytposedetect.data.YTActRefData;
+import com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface;
 import com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface.IYtLoggerListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ActionLivenessState
@@ -42,6 +45,7 @@ public class ActionLivenessState
   private String[] actionDataParsed;
   private YTPoseDetectInterface.PoseDetectOnFrame actionFrameHandler;
   private int actionLiveType;
+  private String anchorWidths;
   private ArrayList<BestFrame> bestFrames;
   private int codecSettingBitRate;
   private int codecSettingFrameRate;
@@ -68,14 +72,14 @@ public class ActionLivenessState
   
   static
   {
-    AppMethodBeat.i(247058);
+    AppMethodBeat.i(218400);
     TAG = ActionLivenessState.class.getSimpleName();
-    AppMethodBeat.o(247058);
+    AppMethodBeat.o(218400);
   }
   
   public ActionLivenessState()
   {
-    AppMethodBeat.i(247013);
+    AppMethodBeat.i(218189);
     this.legitimatePoseVersion = "3.5.4";
     this.continuousDetectCount = 0;
     this.poseState = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
@@ -96,12 +100,12 @@ public class ActionLivenessState
     this.controlConfig = "";
     this.actReflectUXMode = 0;
     this.needCheckMultiFaces = false;
-    AppMethodBeat.o(247013);
+    AppMethodBeat.o(218189);
   }
   
   private void AddOptPose(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(247035);
+    AppMethodBeat.i(218231);
     float f = YtSDKKitCommon.ProcessHelper.preCheckCloseEyeScore(paramArrayOfFloat);
     BestFrame localBestFrame = new BestFrame();
     localBestFrame.eyeScore = f;
@@ -114,21 +118,22 @@ public class ActionLivenessState
     if (this.bestFrames.size() > 20) {
       this.bestFrames.remove(0);
     }
-    AppMethodBeat.o(247035);
+    AppMethodBeat.o(218231);
   }
   
   private boolean changeToNextAction(String[] paramArrayOfString, int paramInt)
   {
-    AppMethodBeat.i(247031);
+    AppMethodBeat.i(218220);
+    YtLogger.d(TAG, "currentIndex: ".concat(String.valueOf(paramInt)));
     if (paramArrayOfString.length == 0)
     {
-      AppMethodBeat.o(247031);
+      AppMethodBeat.o(218220);
       return false;
     }
     this.actionCurrentIndex = paramInt;
     if (this.actionCurrentIndex >= paramArrayOfString.length)
     {
-      AppMethodBeat.o(247031);
+      AppMethodBeat.o(218220);
       return false;
     }
     paramInt = Integer.parseInt(paramArrayOfString[this.actionCurrentIndex]);
@@ -141,7 +146,7 @@ public class ActionLivenessState
       YtLogger.i(TAG, "action check rounds: " + this.actionCurrentIndex + "start check pose: " + this.actionLiveType);
       YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).handleStateAction("reset_timeout", null);
       this.poseReadyCount = 0;
-      AppMethodBeat.o(247031);
+      AppMethodBeat.o(218220);
       return true;
       this.actionLiveType = 1;
       continue;
@@ -157,7 +162,7 @@ public class ActionLivenessState
   
   private void clearData()
   {
-    AppMethodBeat.i(247020);
+    AppMethodBeat.i(218195);
     this.bestFrames = new ArrayList();
     this.actionContinuousFailedCount = 0;
     this.isActionFinished = false;
@@ -168,73 +173,107 @@ public class ActionLivenessState
     this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE;
     this.videoEncoder.abortEncoding();
     startPose();
-    AppMethodBeat.o(247020);
+    AppMethodBeat.o(218195);
   }
   
   private String getTipsByPoseType(int paramInt)
   {
-    AppMethodBeat.i(247028);
+    AppMethodBeat.i(218210);
     if (paramInt == 1)
     {
-      AppMethodBeat.o(247028);
+      AppMethodBeat.o(218210);
       return "fl_act_blink";
     }
     if (paramInt == 2)
     {
-      AppMethodBeat.o(247028);
+      AppMethodBeat.o(218210);
       return "fl_act_open_mouth";
     }
     if (paramInt == 4)
     {
-      AppMethodBeat.o(247028);
+      AppMethodBeat.o(218210);
       return "fl_act_shake_head";
     }
     if (paramInt == 3)
     {
-      AppMethodBeat.o(247028);
+      AppMethodBeat.o(218210);
       return "fl_act_nod_head";
     }
     if (paramInt == 5)
     {
-      AppMethodBeat.o(247028);
+      AppMethodBeat.o(218210);
       return "fl_act_silence";
     }
     String str = "fl_act_error".concat(String.valueOf(paramInt));
-    AppMethodBeat.o(247028);
+    AppMethodBeat.o(218210);
     return str;
+  }
+  
+  private String makeActionStr(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(218203);
+    Object localObject1 = "";
+    int i = 0;
+    if (i < paramArrayOfString.length)
+    {
+      switch (Integer.parseInt(paramArrayOfString[i]))
+      {
+      }
+      for (;;)
+      {
+        Object localObject2 = localObject1;
+        if (i != paramArrayOfString.length - 1) {
+          localObject2 = (String)localObject1 + ",";
+        }
+        i += 1;
+        localObject1 = localObject2;
+        break;
+        localObject1 = (String)localObject1 + "blink";
+        continue;
+        localObject1 = (String)localObject1 + "mouth";
+        continue;
+        localObject1 = (String)localObject1 + "node";
+        continue;
+        localObject1 = (String)localObject1 + "shake";
+        continue;
+        localObject1 = (String)localObject1 + "silence";
+      }
+    }
+    AppMethodBeat.o(218203);
+    return localObject1;
   }
   
   private void sendFSMEvent(HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(247033);
+    AppMethodBeat.i(218222);
     YtFSM.getInstance().sendFSMEvent(paramHashMap);
-    AppMethodBeat.o(247033);
+    AppMethodBeat.o(218222);
   }
   
   private void startPose()
   {
-    AppMethodBeat.i(247021);
+    AppMethodBeat.i(218198);
     this.actionFrameHandler = new YTPoseDetectInterface.PoseDetectOnFrame()
     {
       public void onCanReflect()
       {
-        AppMethodBeat.i(246975);
+        AppMethodBeat.i(218267);
         ActionLivenessState.access$902(ActionLivenessState.this, YTPoseDetectInterface.getActReflectData());
-        AppMethodBeat.o(246975);
+        AppMethodBeat.o(218267);
       }
       
       public void onFailed(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(246972);
+        AppMethodBeat.i(218263);
         YtSDKStats.getInstance().reportInfo("pose state ".concat(String.valueOf(paramAnonymousInt)));
         YtLogger.d(ActionLivenessState.TAG, "YTPoseDetectInterface.poseDetect.onFailed: " + paramAnonymousInt + " s: " + paramAnonymousString1);
         ActionLivenessState.access$808(ActionLivenessState.this);
-        AppMethodBeat.o(246972);
+        AppMethodBeat.o(218263);
       }
       
-      public void onRecordingDone(byte[][] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
+      public void onRecordingDone(final byte[][] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(246976);
+        AppMethodBeat.i(218280);
         YtLogger.d(ActionLivenessState.TAG, "收到视频上传通知，帧数：" + paramAnonymousArrayOfByte.length + " 每帧width：" + paramAnonymousInt1 + " 每帧height: " + paramAnonymousInt2);
         if (!ActionLivenessState.this.videoEncoder.isEncodingStarted())
         {
@@ -256,7 +295,7 @@ public class ActionLivenessState
         if (!ActionLivenessState.this.isActionFinished)
         {
           YTPoseDetectInterface.reset();
-          AppMethodBeat.o(246976);
+          AppMethodBeat.o(218280);
           return;
         }
         ActionLivenessState.this.videoEncoder.stopEncoding();
@@ -285,15 +324,21 @@ public class ActionLivenessState
               {
                 public void onGetBestImage(byte[] paramAnonymous2ArrayOfByte, int paramAnonymous2Int1, int paramAnonymous2Int2)
                 {
-                  AppMethodBeat.i(246963);
+                  AppMethodBeat.i(218249);
                   YtLogger.d(ActionLivenessState.TAG, "获取到最优图. width:" + paramAnonymous2Int1 + " height: " + paramAnonymous2Int2 + " bytes size: " + paramAnonymous2ArrayOfByte.length);
-                  paramAnonymous2ArrayOfByte = new YuvImage(paramAnonymous2ArrayOfByte, 17, paramAnonymous2Int1, paramAnonymous2Int2, null);
-                  ActionLivenessState.this.stateData.put("best_frame", paramAnonymous2ArrayOfByte);
-                  ActionLivenessState.access$1802(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE);
-                  AppMethodBeat.o(246963);
+                  new YuvImage(paramAnonymous2ArrayOfByte, 17, paramAnonymous2Int1, paramAnonymous2Int2, null);
+                  paramAnonymous2ArrayOfByte = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
+                  ActionLivenessState.this.stateData.put("best_frame", paramAnonymous2ArrayOfByte.getStateDataBy("best_image"));
+                  long l = new Date().getTime();
+                  paramAnonymous2ArrayOfByte = ActionLivenessState.access$1800(ActionLivenessState.this, ActionLivenessState.this.actionDataParsed);
+                  String[] arrayOfString = YtSDKKitFramework.getInstance().version().split("-");
+                  paramAnonymous2ArrayOfByte = YTPoseDetectJNIInterface.getConfigData(paramAnonymousArrayOfByte, paramAnonymous2ArrayOfByte, arrayOfString[0], Long.toString(l));
+                  ActionLivenessState.this.stateData.put("config", paramAnonymous2ArrayOfByte);
+                  ActionLivenessState.access$2002(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE);
+                  AppMethodBeat.o(218249);
                 }
               }, true);
-              AppMethodBeat.o(246976);
+              AppMethodBeat.o(218280);
               return;
             }
             catch (Exception localException2)
@@ -310,7 +355,7 @@ public class ActionLivenessState
               {
                 public void onGetBestImage(byte[] paramAnonymous2ArrayOfByte, int paramAnonymous2Int1, int paramAnonymous2Int2)
                 {
-                  AppMethodBeat.i(246967);
+                  AppMethodBeat.i(218242);
                   YtLogger.d(ActionLivenessState.TAG, "获取到最优图. width:" + paramAnonymous2Int1 + " height: " + paramAnonymous2Int2 + " bytes size: " + paramAnonymous2ArrayOfByte.length);
                   paramAnonymous2ArrayOfByte = new YuvImage(paramAnonymous2ArrayOfByte, 17, paramAnonymous2Int1, paramAnonymous2Int2, null);
                   ActionLivenessState.this.stateData.put("best_frame", paramAnonymous2ArrayOfByte);
@@ -325,15 +370,20 @@ public class ActionLivenessState
                   }
                   ActionLivenessState.this.stateData.put("frame_list", paramAnonymous2ArrayOfByte);
                   ActionLivenessState.this.stateData.put("act_reflect_data", ActionLivenessState.this.actReflectData);
-                  ActionLivenessState.access$1802(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE);
-                  AppMethodBeat.o(246967);
+                  long l = new Date().getTime();
+                  paramAnonymous2ArrayOfByte = ActionLivenessState.access$1800(ActionLivenessState.this, ActionLivenessState.this.actionDataParsed);
+                  String[] arrayOfString = YtSDKKitFramework.getInstance().version().split("-");
+                  paramAnonymous2ArrayOfByte = YTPoseDetectJNIInterface.getConfigData(paramAnonymousArrayOfByte, paramAnonymous2ArrayOfByte, arrayOfString[0], Long.toString(l));
+                  ActionLivenessState.this.stateData.put("config", paramAnonymous2ArrayOfByte);
+                  ActionLivenessState.access$2002(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE);
+                  AppMethodBeat.o(218242);
                 }
               }, true);
-              AppMethodBeat.o(246976);
+              AppMethodBeat.o(218280);
               return;
             }
             YtLogger.e(ActionLivenessState.TAG, "unimplemented work mode " + YtFSM.getInstance().getWorkMode());
-            AppMethodBeat.o(246976);
+            AppMethodBeat.o(218280);
             return;
           }
         }
@@ -341,7 +391,7 @@ public class ActionLivenessState
       
       public void onSuccess(int paramAnonymousInt)
       {
-        AppMethodBeat.i(246970);
+        AppMethodBeat.i(218260);
         ActionLivenessState.access$102(ActionLivenessState.this, "");
         if (paramAnonymousInt == 1)
         {
@@ -353,7 +403,7 @@ public class ActionLivenessState
         for (;;)
         {
           YtSDKStats.getInstance().reportInfo("pose state ".concat(String.valueOf(paramAnonymousInt)));
-          AppMethodBeat.o(246970);
+          AppMethodBeat.o(218260);
           return;
           YtLogger.i(ActionLivenessState.TAG, "action seq all done");
           ActionLivenessState.access$702(ActionLivenessState.this, true);
@@ -379,40 +429,41 @@ public class ActionLivenessState
     {
       public void onFailed(final int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(246985);
+        AppMethodBeat.i(218262);
         YtSDKStats.getInstance().reportError(paramAnonymousInt, "failed to init pose sdk");
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-        ActionLivenessState.access$1802(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.IDLE_STATE);
-        AppMethodBeat.o(246985);
+        ActionLivenessState.access$2002(ActionLivenessState.this, YtSDKKitCommon.StateNameHelper.StateClassName.IDLE_STATE);
+        AppMethodBeat.o(218262);
       }
       
       public void onSuccess()
       {
-        AppMethodBeat.i(246983);
+        AppMethodBeat.i(218259);
         YtLogger.d(ActionLivenessState.TAG, "start success");
-        AppMethodBeat.o(246983);
+        AppMethodBeat.o(218259);
       }
     });
-    AppMethodBeat.o(247021);
+    AppMethodBeat.o(218198);
   }
   
   public void enter()
   {
-    AppMethodBeat.i(247019);
+    AppMethodBeat.i(218422);
     super.enter();
     for (;;)
     {
       try
       {
-        Object localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
-        this.continuousDetectCount = ((Integer)((YtFSMBaseState)localObject).getStateDataBy("continuous_detect_count")).intValue();
-        this.faceStatus = ((YTFaceTrack.FaceStatus[])((YtFSMBaseState)localObject).getStateDataBy("face_status"));
-        this.poseState = ((SilentLivenessState.FacePreviewingAdvise)((YtFSMBaseState)localObject).getStateDataBy("pose_state"));
-        localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
+        YtFSMBaseState localYtFSMBaseState = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
+        this.continuousDetectCount = ((Integer)localYtFSMBaseState.getStateDataBy("continuous_detect_count")).intValue();
+        this.faceStatus = ((YTFaceTrack.FaceStatus[])localYtFSMBaseState.getStateDataBy("face_status"));
+        this.poseState = ((SilentLivenessState.FacePreviewingAdvise)localYtFSMBaseState.getStateDataBy("pose_state"));
+        localYtFSMBaseState = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
+        Object localObject;
         int i;
-        if ((localObject != null) && (!this.needLocalConfig))
+        if ((localYtFSMBaseState != null) && (!this.needLocalConfig))
         {
-          localObject = (String)((YtFSMBaseState)localObject).getStateDataBy("action_data");
+          localObject = (String)localYtFSMBaseState.getStateDataBy("action_data");
           YtLogger.d(TAG, "action data :".concat(String.valueOf(localObject)));
           this.actionDataParsed = ((String)localObject).split(",");
           if (this.actionDataParsed.length > this.actionCurrentIndex) {
@@ -429,7 +480,15 @@ public class ActionLivenessState
             this.actionDataParsed = new String[] { "5" };
           }
           this.stateData.put("action_seq", this.actionDataParsed);
-          AppMethodBeat.o(247019);
+          if (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE)
+          {
+            localObject = YtSDKKitFramework.getInstance().version().split("-");
+            String str = NetLivenessReqResultState.makeActionStr(this.actionDataParsed);
+            if (localYtFSMBaseState != null) {
+              YTPoseDetectJNIInterface.setColorData((String)localYtFSMBaseState.getStateDataBy("color_data"), localObject[0], str);
+            }
+          }
+          AppMethodBeat.o(218422);
           return;
         }
       }
@@ -437,7 +496,7 @@ public class ActionLivenessState
       {
         YtLogger.e(TAG, "action enter failed " + localException.getLocalizedMessage());
         CommonUtils.reportException("action enter failed ", localException);
-        AppMethodBeat.o(247019);
+        AppMethodBeat.o(218422);
         return;
       }
       this.actionLiveType = 1;
@@ -454,7 +513,7 @@ public class ActionLivenessState
   
   public void enterFirst()
   {
-    AppMethodBeat.i(247016);
+    AppMethodBeat.i(218420);
     YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).handleStateAction("reset_timeout", null);
     Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
     if (localObject1 != null) {}
@@ -489,7 +548,7 @@ public class ActionLivenessState
       YTFaceTrackParam localYTFaceTrackParam = this.mOriginParam;
       localYTFaceTrackParam.detect_interval = 30;
       YTFaceTrack.getInstance().SetFaceTrackParam(localYTFaceTrackParam);
-      AppMethodBeat.o(247016);
+      AppMethodBeat.o(218420);
     }
     if (!this.controlConfig.isEmpty())
     {
@@ -512,459 +571,470 @@ public class ActionLivenessState
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(247024);
+    AppMethodBeat.i(218427);
     super.handleEvent(paramYtFrameworkFireEventType, paramObject);
     if ((this.needManualTrigger) && (paramYtFrameworkFireEventType == YtSDKKitFramework.YtFrameworkFireEventType.YT_EVENT_TRIGGER_CANCEL_LIVENESS)) {
       clearData();
     }
-    AppMethodBeat.o(247024);
+    AppMethodBeat.o(218427);
   }
   
   /* Error */
   public void loadStateWith(final String paramString, org.json.JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: ldc_w 544
-    //   3: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 598
+    //   3: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: aload_1
     //   8: aload_2
-    //   9: invokespecial 546	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState:loadStateWith	(Ljava/lang/String;Lorg/json/JSONObject;)V
-    //   12: invokestatic 338	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
-    //   15: invokevirtual 406	com/tencent/youtu/sdkkitframework/framework/YtFSM:getContext	()Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext;
-    //   18: getfield 412	com/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext:currentAppContext	Landroid/content/Context;
-    //   21: invokevirtual 551	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   24: invokevirtual 554	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   9: invokespecial 600	com/tencent/youtu/sdkkitframework/framework/YtFSMBaseState:loadStateWith	(Ljava/lang/String;Lorg/json/JSONObject;)V
+    //   12: invokestatic 362	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
+    //   15: invokevirtual 434	com/tencent/youtu/sdkkitframework/framework/YtFSM:getContext	()Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext;
+    //   18: getfield 440	com/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext:currentAppContext	Landroid/content/Context;
+    //   21: invokevirtual 605	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   24: invokevirtual 608	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   27: pop
     //   28: aload_2
-    //   29: ldc_w 556
-    //   32: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   29: ldc_w 610
+    //   32: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   35: ifeq +14 -> 49
     //   38: aload_0
     //   39: aload_2
-    //   40: ldc_w 556
-    //   43: invokevirtual 565	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   46: putfield 122	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:isLoadResourceOnline	Z
+    //   40: ldc_w 610
+    //   43: invokevirtual 619	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   46: putfield 123	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:isLoadResourceOnline	Z
     //   49: aload_2
-    //   50: ldc_w 567
-    //   53: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   50: ldc_w 621
+    //   53: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   56: ifeq +14 -> 70
     //   59: aload_0
     //   60: aload_2
-    //   61: ldc_w 567
-    //   64: invokevirtual 570	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   67: putfield 147	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:innerMp4Path	Ljava/lang/String;
+    //   61: ldc_w 621
+    //   64: invokevirtual 624	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   67: putfield 148	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:innerMp4Path	Ljava/lang/String;
     //   70: aload_2
-    //   71: ldc_w 572
-    //   74: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   71: ldc_w 626
+    //   74: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   77: ifeq +14 -> 91
     //   80: aload_0
     //   81: aload_2
-    //   82: ldc_w 572
-    //   85: invokevirtual 565	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   88: putfield 151	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:needLocalConfig	Z
+    //   82: ldc_w 626
+    //   85: invokevirtual 619	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   88: putfield 152	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:needLocalConfig	Z
     //   91: aload_2
-    //   92: ldc_w 489
-    //   95: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   92: ldc_w 543
+    //   95: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   98: ifeq +14 -> 112
     //   101: aload_0
     //   102: aload_2
-    //   103: ldc_w 489
-    //   106: invokevirtual 575	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   109: putfield 154	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:codecSettingBitRate	I
+    //   103: ldc_w 543
+    //   106: invokevirtual 629	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   109: putfield 155	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:codecSettingBitRate	I
     //   112: aload_2
-    //   113: ldc_w 491
-    //   116: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   113: ldc_w 545
+    //   116: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   119: ifeq +14 -> 133
     //   122: aload_0
     //   123: aload_2
-    //   124: ldc_w 491
-    //   127: invokevirtual 575	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   130: putfield 156	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:codecSettingFrameRate	I
+    //   124: ldc_w 545
+    //   127: invokevirtual 629	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   130: putfield 157	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:codecSettingFrameRate	I
     //   133: aload_2
-    //   134: ldc_w 493
-    //   137: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   134: ldc_w 547
+    //   137: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   140: ifeq +14 -> 154
     //   143: aload_0
     //   144: aload_2
-    //   145: ldc_w 493
-    //   148: invokevirtual 575	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   151: putfield 158	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:codecSettingiFrameInterval	I
+    //   145: ldc_w 547
+    //   148: invokevirtual 629	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   151: putfield 159	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:codecSettingiFrameInterval	I
     //   154: aload_2
-    //   155: ldc_w 577
-    //   158: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   155: ldc_w 631
+    //   158: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   161: ifeq +14 -> 175
     //   164: aload_0
     //   165: aload_2
-    //   166: ldc_w 577
-    //   169: invokevirtual 565	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
-    //   172: putfield 164	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:needManualTrigger	Z
+    //   166: ldc_w 631
+    //   169: invokevirtual 619	org/json/JSONObject:getBoolean	(Ljava/lang/String;)Z
+    //   172: putfield 165	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:needManualTrigger	Z
     //   175: aload_2
-    //   176: ldc_w 579
-    //   179: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   176: ldc_w 633
+    //   179: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   182: ifeq +14 -> 196
     //   185: aload_0
     //   186: aload_2
-    //   187: ldc_w 579
-    //   190: invokevirtual 575	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   193: putfield 168	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:stableCountNum	I
+    //   187: ldc_w 633
+    //   190: invokevirtual 629	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   193: putfield 169	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:stableCountNum	I
     //   196: aload_2
-    //   197: ldc_w 495
-    //   200: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   197: ldc_w 549
+    //   200: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   203: ifeq +14 -> 217
     //   206: aload_0
     //   207: aload_2
-    //   208: ldc_w 495
-    //   211: invokevirtual 570	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   214: putfield 170	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:controlConfig	Ljava/lang/String;
+    //   208: ldc_w 549
+    //   211: invokevirtual 624	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   214: putfield 171	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:controlConfig	Ljava/lang/String;
     //   217: aload_0
     //   218: aload_2
-    //   219: ldc_w 581
+    //   219: ldc_w 635
     //   222: iconst_0
-    //   223: invokevirtual 585	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   226: putfield 174	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:needCheckMultiFaces	Z
+    //   223: invokevirtual 639	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   226: putfield 175	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:needCheckMultiFaces	Z
     //   229: aload_0
-    //   230: getfield 122	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:isLoadResourceOnline	Z
-    //   233: ifne +9 -> 242
-    //   236: ldc_w 587
-    //   239: invokestatic 592	com/tencent/youtu/sdkkitframework/common/FileUtils:loadLibrary	(Ljava/lang/String;)V
-    //   242: invokestatic 597	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:getVersion	()Ljava/lang/String;
-    //   245: astore_1
-    //   246: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   249: ldc_w 599
-    //   252: aload_1
-    //   253: invokestatic 458	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   256: invokevirtual 391	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   259: invokestatic 332	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   262: aload_1
-    //   263: ldc_w 601
-    //   266: invokevirtual 467	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   269: astore 4
-    //   271: aload_0
-    //   272: getfield 105	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:legitimatePoseVersion	Ljava/lang/String;
-    //   275: astore 5
-    //   277: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   280: ldc_w 603
-    //   283: aload 5
-    //   285: invokestatic 458	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   288: invokevirtual 391	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   291: invokestatic 332	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   294: aload 5
-    //   296: ldc_w 601
-    //   299: invokevirtual 467	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   302: astore 5
-    //   304: aload 4
-    //   306: iconst_0
-    //   307: aaload
-    //   308: invokestatic 305	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   311: aload 5
-    //   313: iconst_0
-    //   314: aaload
-    //   315: invokestatic 305	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   318: if_icmpeq +102 -> 420
-    //   321: aload_0
-    //   322: new 6	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$1
-    //   325: dup
-    //   326: aload_0
-    //   327: aload_1
-    //   328: invokespecial 606	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$1:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;Ljava/lang/String;)V
-    //   331: invokespecial 607	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:sendFSMEvent	(Ljava/util/HashMap;)V
-    //   334: invokestatic 610	com/tencent/youtu/ytposedetect/YTPoseDetectInterface:initModel	()I
-    //   337: istore_3
-    //   338: iload_3
-    //   339: ifeq +149 -> 488
-    //   342: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   345: ldc_w 612
-    //   348: iload_3
-    //   349: invokestatic 387	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   352: invokevirtual 391	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   355: invokestatic 479	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   358: invokestatic 617	com/tencent/youtu/sdkkitframework/common/YtSDKStats:getInstance	()Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
-    //   361: iload_3
-    //   362: ldc_w 619
-    //   365: invokevirtual 623	com/tencent/youtu/sdkkitframework/common/YtSDKStats:reportError	(ILjava/lang/String;)V
-    //   368: invokestatic 338	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
-    //   371: new 12	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$4
-    //   374: dup
-    //   375: aload_0
-    //   376: iload_3
-    //   377: invokespecial 626	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$4:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;I)V
-    //   380: invokevirtual 396	com/tencent/youtu/sdkkitframework/framework/YtFSM:sendFSMEvent	(Ljava/util/HashMap;)V
-    //   383: ldc_w 544
-    //   386: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   389: return
-    //   390: astore_1
-    //   391: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   394: new 124	java/lang/StringBuilder
-    //   397: dup
-    //   398: ldc_w 628
-    //   401: invokespecial 322	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   404: aload_1
-    //   405: invokevirtual 629	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
-    //   408: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   411: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   414: invokestatic 479	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   417: goto -188 -> 229
-    //   420: aload 4
-    //   422: iconst_1
-    //   423: aaload
-    //   424: invokestatic 305	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   427: aload 5
-    //   429: iconst_1
-    //   430: aaload
-    //   431: invokestatic 305	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   434: if_icmpeq +19 -> 453
-    //   437: aload_0
-    //   438: new 8	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$2
-    //   441: dup
-    //   442: aload_0
-    //   443: aload_1
-    //   444: invokespecial 630	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$2:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;Ljava/lang/String;)V
-    //   447: invokespecial 607	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:sendFSMEvent	(Ljava/util/HashMap;)V
-    //   450: goto -116 -> 334
-    //   453: aload 4
-    //   455: iconst_2
-    //   456: aaload
-    //   457: invokestatic 305	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   460: aload 5
-    //   462: iconst_2
-    //   463: aaload
-    //   464: invokestatic 305	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   467: if_icmpge -133 -> 334
-    //   470: invokestatic 338	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
-    //   473: new 10	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$3
-    //   476: dup
-    //   477: aload_0
-    //   478: aload_1
-    //   479: invokespecial 631	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$3:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;Ljava/lang/String;)V
-    //   482: invokevirtual 396	com/tencent/youtu/sdkkitframework/framework/YtFSM:sendFSMEvent	(Ljava/util/HashMap;)V
-    //   485: goto -151 -> 334
-    //   488: aload_0
-    //   489: iconst_0
-    //   490: putfield 107	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:continuousDetectCount	I
-    //   493: aload_0
-    //   494: getfield 252	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:stateData	Ljava/util/HashMap;
-    //   497: ldc_w 633
-    //   500: aload_0
-    //   501: getfield 116	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionLiveType	I
-    //   504: invokestatic 311	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   507: invokevirtual 317	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   510: pop
-    //   511: aload_2
-    //   512: ldc_w 635
-    //   515: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   518: ifeq +14 -> 532
-    //   521: aload_0
-    //   522: aload_2
-    //   523: ldc_w 635
-    //   526: invokevirtual 575	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   529: putfield 149	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:securityLevel	I
-    //   532: aload_2
-    //   533: ldc_w 637
-    //   536: invokevirtual 641	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   539: astore_1
-    //   540: aload_1
-    //   541: ifnonnull +22 -> 563
-    //   544: invokestatic 617	com/tencent/youtu/sdkkitframework/common/YtSDKStats:getInstance	()Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
-    //   547: ldc_w 642
-    //   550: ldc_w 644
-    //   553: invokevirtual 623	com/tencent/youtu/sdkkitframework/common/YtSDKStats:reportError	(ILjava/lang/String;)V
-    //   556: ldc_w 544
-    //   559: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   562: return
-    //   563: aload_0
-    //   564: aload_1
-    //   565: invokevirtual 649	org/json/JSONArray:length	()I
-    //   568: anewarray 385	java/lang/String
-    //   571: putfield 275	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
-    //   574: iconst_0
-    //   575: istore_3
-    //   576: iload_3
-    //   577: aload_1
-    //   578: invokevirtual 649	org/json/JSONArray:length	()I
-    //   581: if_icmpge +21 -> 602
-    //   584: aload_0
-    //   585: getfield 275	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
-    //   588: iload_3
-    //   589: aload_1
+    //   230: aload_2
+    //   231: ldc_w 641
+    //   234: ldc_w 643
+    //   237: invokevirtual 647	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   240: putfield 649	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:anchorWidths	Ljava/lang/String;
+    //   243: aload_0
+    //   244: getfield 123	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:isLoadResourceOnline	Z
+    //   247: ifne +9 -> 256
+    //   250: ldc_w 651
+    //   253: invokestatic 656	com/tencent/youtu/sdkkitframework/common/FileUtils:loadLibrary	(Ljava/lang/String;)V
+    //   256: invokestatic 659	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:getVersion	()Ljava/lang/String;
+    //   259: astore_1
+    //   260: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   263: ldc_w 661
+    //   266: aload_1
+    //   267: invokestatic 486	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   270: invokevirtual 320	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   273: invokestatic 356	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   276: aload_1
+    //   277: ldc_w 663
+    //   280: invokevirtual 490	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   283: astore 4
+    //   285: aload_0
+    //   286: getfield 106	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:legitimatePoseVersion	Ljava/lang/String;
+    //   289: astore 5
+    //   291: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   294: ldc_w 665
+    //   297: aload 5
+    //   299: invokestatic 486	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   302: invokevirtual 320	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   305: invokestatic 356	com/tencent/youtu/sdkkitframework/common/YtLogger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   308: aload 5
+    //   310: ldc_w 663
+    //   313: invokevirtual 490	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   316: astore 5
+    //   318: aload 4
+    //   320: iconst_0
+    //   321: aaload
+    //   322: invokestatic 332	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   325: aload 5
+    //   327: iconst_0
+    //   328: aaload
+    //   329: invokestatic 332	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   332: if_icmpeq +102 -> 434
+    //   335: aload_0
+    //   336: new 6	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$1
+    //   339: dup
+    //   340: aload_0
+    //   341: aload_1
+    //   342: invokespecial 668	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$1:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;Ljava/lang/String;)V
+    //   345: invokespecial 669	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:sendFSMEvent	(Ljava/util/HashMap;)V
+    //   348: invokestatic 672	com/tencent/youtu/ytposedetect/YTPoseDetectInterface:initModel	()I
+    //   351: istore_3
+    //   352: iload_3
+    //   353: ifeq +149 -> 502
+    //   356: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   359: ldc_w 674
+    //   362: iload_3
+    //   363: invokestatic 316	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   366: invokevirtual 320	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   369: invokestatic 533	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   372: invokestatic 679	com/tencent/youtu/sdkkitframework/common/YtSDKStats:getInstance	()Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
+    //   375: iload_3
+    //   376: ldc_w 681
+    //   379: invokevirtual 685	com/tencent/youtu/sdkkitframework/common/YtSDKStats:reportError	(ILjava/lang/String;)V
+    //   382: invokestatic 362	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
+    //   385: new 12	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$4
+    //   388: dup
+    //   389: aload_0
+    //   390: iload_3
+    //   391: invokespecial 688	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$4:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;I)V
+    //   394: invokevirtual 424	com/tencent/youtu/sdkkitframework/framework/YtFSM:sendFSMEvent	(Ljava/util/HashMap;)V
+    //   397: ldc_w 598
+    //   400: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   403: return
+    //   404: astore_1
+    //   405: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   408: new 125	java/lang/StringBuilder
+    //   411: dup
+    //   412: ldc_w 690
+    //   415: invokespecial 348	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   418: aload_1
+    //   419: invokevirtual 691	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
+    //   422: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   425: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   428: invokestatic 533	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   431: goto -188 -> 243
+    //   434: aload 4
+    //   436: iconst_1
+    //   437: aaload
+    //   438: invokestatic 332	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   441: aload 5
+    //   443: iconst_1
+    //   444: aaload
+    //   445: invokestatic 332	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   448: if_icmpeq +19 -> 467
+    //   451: aload_0
+    //   452: new 8	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$2
+    //   455: dup
+    //   456: aload_0
+    //   457: aload_1
+    //   458: invokespecial 692	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$2:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;Ljava/lang/String;)V
+    //   461: invokespecial 669	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:sendFSMEvent	(Ljava/util/HashMap;)V
+    //   464: goto -116 -> 348
+    //   467: aload 4
+    //   469: iconst_2
+    //   470: aaload
+    //   471: invokestatic 332	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   474: aload 5
+    //   476: iconst_2
+    //   477: aaload
+    //   478: invokestatic 332	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   481: if_icmpge -133 -> 348
+    //   484: invokestatic 362	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
+    //   487: new 10	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$3
+    //   490: dup
+    //   491: aload_0
+    //   492: aload_1
+    //   493: invokespecial 693	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$3:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;Ljava/lang/String;)V
+    //   496: invokevirtual 424	com/tencent/youtu/sdkkitframework/framework/YtFSM:sendFSMEvent	(Ljava/util/HashMap;)V
+    //   499: goto -151 -> 348
+    //   502: aload_0
+    //   503: iconst_0
+    //   504: putfield 108	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:continuousDetectCount	I
+    //   507: aload_0
+    //   508: getfield 253	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:stateData	Ljava/util/HashMap;
+    //   511: ldc_w 695
+    //   514: aload_0
+    //   515: getfield 117	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionLiveType	I
+    //   518: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   521: invokevirtual 343	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   524: pop
+    //   525: aload_2
+    //   526: ldc_w 697
+    //   529: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   532: ifeq +14 -> 546
+    //   535: aload_0
+    //   536: aload_2
+    //   537: ldc_w 697
+    //   540: invokevirtual 629	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   543: putfield 150	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:securityLevel	I
+    //   546: aload_2
+    //   547: ldc_w 699
+    //   550: invokevirtual 703	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   553: astore_1
+    //   554: aload_1
+    //   555: ifnonnull +22 -> 577
+    //   558: invokestatic 679	com/tencent/youtu/sdkkitframework/common/YtSDKStats:getInstance	()Lcom/tencent/youtu/sdkkitframework/common/YtSDKStats;
+    //   561: ldc_w 704
+    //   564: ldc_w 706
+    //   567: invokevirtual 685	com/tencent/youtu/sdkkitframework/common/YtSDKStats:reportError	(ILjava/lang/String;)V
+    //   570: ldc_w 598
+    //   573: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   576: return
+    //   577: aload_0
+    //   578: aload_1
+    //   579: invokevirtual 711	org/json/JSONArray:length	()I
+    //   582: anewarray 313	java/lang/String
+    //   585: putfield 285	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
+    //   588: iconst_0
+    //   589: istore_3
     //   590: iload_3
-    //   591: invokevirtual 651	org/json/JSONArray:getString	(I)Ljava/lang/String;
-    //   594: aastore
-    //   595: iload_3
-    //   596: iconst_1
-    //   597: iadd
-    //   598: istore_3
-    //   599: goto -23 -> 576
-    //   602: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   605: new 124	java/lang/StringBuilder
-    //   608: dup
-    //   609: ldc_w 653
-    //   612: invokespecial 322	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   615: aload_2
-    //   616: ldc_w 637
-    //   619: invokevirtual 570	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   622: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   625: ldc_w 655
-    //   628: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   631: aload_0
-    //   632: getfield 275	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
-    //   635: arraylength
-    //   636: invokevirtual 325	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   639: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   642: invokestatic 461	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   645: aload_2
-    //   646: ldc_w 657
-    //   649: invokevirtual 562	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   652: ifeq +78 -> 730
-    //   655: aload_2
-    //   656: ldc_w 657
-    //   659: invokevirtual 661	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   662: astore_1
-    //   663: aload_1
-    //   664: invokevirtual 665	org/json/JSONObject:keys	()Ljava/util/Iterator;
-    //   667: astore_2
-    //   668: aload_2
-    //   669: invokeinterface 670 1 0
-    //   674: ifeq +56 -> 730
-    //   677: aload_2
-    //   678: invokeinterface 674 1 0
-    //   683: checkcast 385	java/lang/String
-    //   686: astore 4
-    //   688: aload 4
-    //   690: aload_1
-    //   691: aload 4
-    //   693: invokevirtual 570	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   696: invokestatic 678	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:updateParam	(Ljava/lang/String;Ljava/lang/String;)I
-    //   699: pop
-    //   700: goto -32 -> 668
-    //   703: astore_1
-    //   704: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   707: new 124	java/lang/StringBuilder
-    //   710: dup
-    //   711: ldc_w 680
-    //   714: invokespecial 322	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   717: aload_1
-    //   718: invokevirtual 629	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
-    //   721: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   724: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   727: invokestatic 461	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   730: iconst_1
-    //   731: invokestatic 684	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:configNativeLog	(Z)V
-    //   734: ldc_w 686
-    //   737: ldc_w 688
-    //   740: invokestatic 678	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:updateParam	(Ljava/lang/String;Ljava/lang/String;)I
-    //   743: pop
-    //   744: new 14	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$5
-    //   747: dup
-    //   748: aload_0
-    //   749: invokespecial 689	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$5:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;)V
-    //   752: invokestatic 693	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:setLoggerListener	(Lcom/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface$IYtLoggerListener;)V
-    //   755: aload_0
-    //   756: invokestatic 338	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
-    //   759: invokevirtual 406	com/tencent/youtu/sdkkitframework/framework/YtFSM:getContext	()Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext;
-    //   762: getfield 695	com/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext:currentRotateState	I
-    //   765: putfield 696	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:currentRotateState	I
-    //   768: aload_0
-    //   769: getstatic 343	com/tencent/youtu/sdkkitframework/framework/YtSDKKitCommon$StateNameHelper$StateClassName:SILENT_STATE	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitCommon$StateNameHelper$StateClassName;
-    //   772: putfield 258	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:nextStateName	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitCommon$StateNameHelper$StateClassName;
-    //   775: aload_0
-    //   776: new 364	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder
-    //   779: dup
-    //   780: aconst_null
-    //   781: iconst_1
-    //   782: invokespecial 699	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:<init>	(Lcom/tencent/youtu/sdkkitframework/common/YtVideoEncoder$IYUVToVideoEncoderCallback;Z)V
-    //   785: putfield 239	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:videoEncoder	Lcom/tencent/youtu/sdkkitframework/common/YtVideoEncoder;
-    //   788: aload_0
-    //   789: invokestatic 522	com/tencent/youtu/ytfacetrack/YTFaceTrack:getInstance	()Lcom/tencent/youtu/ytfacetrack/YTFaceTrack;
-    //   792: invokevirtual 703	com/tencent/youtu/ytfacetrack/YTFaceTrack:GetFaceTrackParam	()Lcom/tencent/youtu/ytfacetrack/param/YTFaceTrackParam;
-    //   795: putfield 512	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:mOriginParam	Lcom/tencent/youtu/ytfacetrack/param/YTFaceTrackParam;
-    //   798: aload_0
-    //   799: getfield 149	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:securityLevel	I
-    //   802: invokestatic 706	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:setSafetyLevel	(I)V
-    //   805: aload_0
-    //   806: new 220	java/util/ArrayList
-    //   809: dup
-    //   810: invokespecial 362	java/util/ArrayList:<init>	()V
-    //   813: putfield 218	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:bestFrames	Ljava/util/ArrayList;
-    //   816: aload_0
-    //   817: invokevirtual 709	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:reset	()V
-    //   820: ldc_w 544
-    //   823: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   826: return
-    //   827: astore_1
-    //   828: getstatic 93	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
-    //   831: new 124	java/lang/StringBuilder
+    //   591: aload_1
+    //   592: invokevirtual 711	org/json/JSONArray:length	()I
+    //   595: if_icmpge +21 -> 616
+    //   598: aload_0
+    //   599: getfield 285	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
+    //   602: iload_3
+    //   603: aload_1
+    //   604: iload_3
+    //   605: invokevirtual 713	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   608: aastore
+    //   609: iload_3
+    //   610: iconst_1
+    //   611: iadd
+    //   612: istore_3
+    //   613: goto -23 -> 590
+    //   616: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   619: new 125	java/lang/StringBuilder
+    //   622: dup
+    //   623: ldc_w 715
+    //   626: invokespecial 348	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   629: aload_2
+    //   630: ldc_w 699
+    //   633: invokevirtual 624	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   636: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   639: ldc_w 717
+    //   642: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   645: aload_0
+    //   646: getfield 285	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
+    //   649: arraylength
+    //   650: invokevirtual 351	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   653: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   656: invokestatic 326	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   659: aload_2
+    //   660: ldc_w 719
+    //   663: invokevirtual 616	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   666: ifeq +78 -> 744
+    //   669: aload_2
+    //   670: ldc_w 719
+    //   673: invokevirtual 723	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   676: astore_1
+    //   677: aload_1
+    //   678: invokevirtual 727	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   681: astore_2
+    //   682: aload_2
+    //   683: invokeinterface 732 1 0
+    //   688: ifeq +56 -> 744
+    //   691: aload_2
+    //   692: invokeinterface 736 1 0
+    //   697: checkcast 313	java/lang/String
+    //   700: astore 4
+    //   702: aload 4
+    //   704: aload_1
+    //   705: aload 4
+    //   707: invokevirtual 624	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   710: invokestatic 740	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:updateParam	(Ljava/lang/String;Ljava/lang/String;)I
+    //   713: pop
+    //   714: goto -32 -> 682
+    //   717: astore_1
+    //   718: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   721: new 125	java/lang/StringBuilder
+    //   724: dup
+    //   725: ldc_w 742
+    //   728: invokespecial 348	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   731: aload_1
+    //   732: invokevirtual 691	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
+    //   735: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   738: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   741: invokestatic 326	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   744: iconst_1
+    //   745: invokestatic 746	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:configNativeLog	(Z)V
+    //   748: ldc_w 748
+    //   751: ldc_w 750
+    //   754: invokestatic 740	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:updateParam	(Ljava/lang/String;Ljava/lang/String;)I
+    //   757: pop
+    //   758: ldc_w 641
+    //   761: aload_0
+    //   762: getfield 649	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:anchorWidths	Ljava/lang/String;
+    //   765: invokestatic 740	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:updateParam	(Ljava/lang/String;Ljava/lang/String;)I
+    //   768: pop
+    //   769: new 14	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$5
+    //   772: dup
+    //   773: aload_0
+    //   774: invokespecial 751	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState$5:<init>	(Lcom/tencent/youtu/sdkkitframework/liveness/ActionLivenessState;)V
+    //   777: invokestatic 755	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:setLoggerListener	(Lcom/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface$IYtLoggerListener;)V
+    //   780: aload_0
+    //   781: invokestatic 362	com/tencent/youtu/sdkkitframework/framework/YtFSM:getInstance	()Lcom/tencent/youtu/sdkkitframework/framework/YtFSM;
+    //   784: invokevirtual 434	com/tencent/youtu/sdkkitframework/framework/YtFSM:getContext	()Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext;
+    //   787: getfield 757	com/tencent/youtu/sdkkitframework/framework/YtSDKKitFramework$YtSDKPlatformContext:currentRotateState	I
+    //   790: putfield 758	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:currentRotateState	I
+    //   793: aload_0
+    //   794: getstatic 367	com/tencent/youtu/sdkkitframework/framework/YtSDKKitCommon$StateNameHelper$StateClassName:SILENT_STATE	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitCommon$StateNameHelper$StateClassName;
+    //   797: putfield 268	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:nextStateName	Lcom/tencent/youtu/sdkkitframework/framework/YtSDKKitCommon$StateNameHelper$StateClassName;
+    //   800: aload_0
+    //   801: new 387	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder
+    //   804: dup
+    //   805: aconst_null
+    //   806: iconst_1
+    //   807: invokespecial 761	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:<init>	(Lcom/tencent/youtu/sdkkitframework/common/YtVideoEncoder$IYUVToVideoEncoderCallback;Z)V
+    //   810: putfield 240	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:videoEncoder	Lcom/tencent/youtu/sdkkitframework/common/YtVideoEncoder;
+    //   813: aload_0
+    //   814: invokestatic 576	com/tencent/youtu/ytfacetrack/YTFaceTrack:getInstance	()Lcom/tencent/youtu/ytfacetrack/YTFaceTrack;
+    //   817: invokevirtual 765	com/tencent/youtu/ytfacetrack/YTFaceTrack:GetFaceTrackParam	()Lcom/tencent/youtu/ytfacetrack/param/YTFaceTrackParam;
+    //   820: putfield 566	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:mOriginParam	Lcom/tencent/youtu/ytfacetrack/param/YTFaceTrackParam;
+    //   823: aload_0
+    //   824: getfield 150	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:securityLevel	I
+    //   827: invokestatic 768	com/tencent/youtu/ytposedetect/jni/YTPoseDetectJNIInterface:setSafetyLevel	(I)V
+    //   830: aload_0
+    //   831: new 221	java/util/ArrayList
     //   834: dup
-    //   835: ldc_w 711
-    //   838: invokespecial 322	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   841: aload_1
-    //   842: invokevirtual 629	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
-    //   845: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   848: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   851: invokestatic 479	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   854: aload_0
-    //   855: ldc_w 713
-    //   858: ldc_w 715
-    //   861: invokevirtual 467	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   864: putfield 275	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
-    //   867: goto -222 -> 645
+    //   835: invokespecial 385	java/util/ArrayList:<init>	()V
+    //   838: putfield 219	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:bestFrames	Ljava/util/ArrayList;
+    //   841: aload_0
+    //   842: invokevirtual 771	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:reset	()V
+    //   845: ldc_w 598
+    //   848: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   851: return
+    //   852: astore_1
+    //   853: getstatic 94	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:TAG	Ljava/lang/String;
+    //   856: new 125	java/lang/StringBuilder
+    //   859: dup
+    //   860: ldc_w 773
+    //   863: invokespecial 348	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   866: aload_1
+    //   867: invokevirtual 691	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
+    //   870: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   873: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   876: invokestatic 533	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   879: aload_0
+    //   880: ldc_w 775
+    //   883: ldc_w 777
+    //   886: invokevirtual 490	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   889: putfield 285	com/tencent/youtu/sdkkitframework/liveness/ActionLivenessState:actionDataParsed	[Ljava/lang/String;
+    //   892: goto -233 -> 659
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	870	0	this	ActionLivenessState
-    //   0	870	1	paramString	String
-    //   0	870	2	paramJSONObject	org.json.JSONObject
-    //   337	262	3	i	int
-    //   269	423	4	localObject1	Object
-    //   275	186	5	localObject2	Object
+    //   0	895	0	this	ActionLivenessState
+    //   0	895	1	paramString	String
+    //   0	895	2	paramJSONObject	org.json.JSONObject
+    //   351	262	3	i	int
+    //   283	423	4	localObject1	Object
+    //   289	186	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   28	49	390	org/json/JSONException
-    //   49	70	390	org/json/JSONException
-    //   70	91	390	org/json/JSONException
-    //   91	112	390	org/json/JSONException
-    //   112	133	390	org/json/JSONException
-    //   133	154	390	org/json/JSONException
-    //   154	175	390	org/json/JSONException
-    //   175	196	390	org/json/JSONException
-    //   196	217	390	org/json/JSONException
-    //   217	229	390	org/json/JSONException
-    //   645	668	703	org/json/JSONException
-    //   668	700	703	org/json/JSONException
-    //   511	532	827	org/json/JSONException
-    //   532	540	827	org/json/JSONException
-    //   544	556	827	org/json/JSONException
-    //   563	574	827	org/json/JSONException
-    //   576	595	827	org/json/JSONException
-    //   602	645	827	org/json/JSONException
+    //   28	49	404	org/json/JSONException
+    //   49	70	404	org/json/JSONException
+    //   70	91	404	org/json/JSONException
+    //   91	112	404	org/json/JSONException
+    //   112	133	404	org/json/JSONException
+    //   133	154	404	org/json/JSONException
+    //   154	175	404	org/json/JSONException
+    //   175	196	404	org/json/JSONException
+    //   196	217	404	org/json/JSONException
+    //   217	243	404	org/json/JSONException
+    //   659	682	717	org/json/JSONException
+    //   682	714	717	org/json/JSONException
+    //   525	546	852	org/json/JSONException
+    //   546	554	852	org/json/JSONException
+    //   558	570	852	org/json/JSONException
+    //   577	588	852	org/json/JSONException
+    //   590	609	852	org/json/JSONException
+    //   616	659	852	org/json/JSONException
   }
   
   public void moveToNextState()
   {
-    AppMethodBeat.i(247027);
+    AppMethodBeat.i(218430);
     super.moveToNextState();
     if (this.nextStateName == YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)
     {
       YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-      AppMethodBeat.o(247027);
+      AppMethodBeat.o(218430);
       return;
     }
     YTFaceTrack.getInstance().SetFaceTrackParam(this.mOriginParam);
     YTPoseDetectInterface.stop();
     YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-    AppMethodBeat.o(247027);
+    AppMethodBeat.o(218430);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(247022);
+    AppMethodBeat.i(218425);
     clearData();
     super.reset();
-    AppMethodBeat.o(247022);
+    AppMethodBeat.o(218425);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(247015);
+    AppMethodBeat.i(218416);
     super.unload();
     if (YTPoseDetectInterface.isDetecting()) {
       YTPoseDetectInterface.stop();
@@ -975,12 +1045,12 @@ public class ActionLivenessState
       this.videoEncoder.abortEncoding();
       this.videoEncoder = null;
     }
-    AppMethodBeat.o(247015);
+    AppMethodBeat.o(218416);
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(247026);
+    AppMethodBeat.i(218429);
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     if ((this.faceStatus != null) && (this.faceStatus.length > 0) && (this.continuousDetectCount > 0))
     {
@@ -992,7 +1062,7 @@ public class ActionLivenessState
       if (this.actionFrameHandler == null)
       {
         YtLogger.e(TAG, "FrameHandle is null, check init first");
-        AppMethodBeat.o(247026);
+        AppMethodBeat.o(218429);
         return;
       }
       if ((this.poseReadyCount > this.stableCountNum + 10) && (!this.isActionFinished)) {
@@ -1003,7 +1073,7 @@ public class ActionLivenessState
       AddOptPose(paramArrayOfByte, paramInt1, paramInt2, this.faceStatus[0].xys, this.faceStatus[0].pitch, this.faceStatus[0].yaw, this.faceStatus[0].roll);
     }
     moveToNextState();
-    AppMethodBeat.o(247026);
+    AppMethodBeat.o(218429);
   }
   
   public class BestFrame
@@ -1038,7 +1108,7 @@ public class ActionLivenessState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ActionLivenessState
  * JD-Core Version:    0.7.0.1
  */

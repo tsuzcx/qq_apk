@@ -1,15 +1,15 @@
 package com.tencent.mm.videocomposition.effect;
 
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.l;
 
-@l(iBK={1, 1, 15})
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 15})
 final class e
   implements Runnable
 {
   e(a parama)
   {
-    this.csv = parama;
+    this.aSH = parama;
   }
 }
 

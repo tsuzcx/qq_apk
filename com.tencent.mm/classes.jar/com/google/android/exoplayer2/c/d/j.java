@@ -4,15 +4,15 @@ import com.google.android.exoplayer2.Format;
 
 public final class j
 {
-  public final Format aNg;
-  public final long aNk;
-  public final int aSh;
-  public final long aXQ;
-  public final long aXR;
-  public final int aXS;
-  public final long[] aXT;
-  public final long[] aXU;
-  private final k[] aXV;
+  public final Format cHc;
+  public final long cHg;
+  public final int cMd;
+  public final long cRM;
+  public final long cRN;
+  public final int cRO;
+  public final long[] cRP;
+  public final long[] cRQ;
+  private final k[] cRR;
   public final int id;
   public final int type;
   
@@ -20,28 +20,28 @@ public final class j
   {
     this.id = paramInt1;
     this.type = paramInt2;
-    this.aXQ = paramLong1;
-    this.aXR = paramLong2;
-    this.aNk = paramLong3;
-    this.aNg = paramFormat;
-    this.aXS = paramInt3;
-    this.aXV = paramArrayOfk;
-    this.aSh = paramInt4;
-    this.aXT = paramArrayOfLong1;
-    this.aXU = paramArrayOfLong2;
+    this.cRM = paramLong1;
+    this.cRN = paramLong2;
+    this.cHg = paramLong3;
+    this.cHc = paramFormat;
+    this.cRO = paramInt3;
+    this.cRR = paramArrayOfk;
+    this.cMd = paramInt4;
+    this.cRP = paramArrayOfLong1;
+    this.cRQ = paramArrayOfLong2;
   }
   
-  public final k ew(int paramInt)
+  public final k hM(int paramInt)
   {
-    if (this.aXV == null) {
+    if (this.cRR == null) {
       return null;
     }
-    return this.aXV[paramInt];
+    return this.cRR[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.j
  * JD-Core Version:    0.7.0.1
  */

@@ -12,48 +12,48 @@ import com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo;
 public final class e
   implements ITPSurface
 {
-  TPNativePlayerSurface ZEc;
-  private ITPSurfaceListener ZEd;
-  private ITPNativePlayerSurfaceCallback ZEe;
+  TPNativePlayerSurface ahJf;
+  private ITPSurfaceListener ahJg;
+  private ITPNativePlayerSurfaceCallback ahJh;
   
   public e(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(221541);
-    this.ZEc = null;
-    this.ZEd = null;
-    this.ZEe = new ITPNativePlayerSurfaceCallback()
+    AppMethodBeat.i(227165);
+    this.ahJf = null;
+    this.ahJg = null;
+    this.ahJh = new ITPNativePlayerSurfaceCallback()
     {
       public final void onRenderInfo(TPNativePlayerSurfaceRenderInfo paramAnonymousTPNativePlayerSurfaceRenderInfo)
       {
-        AppMethodBeat.i(221536);
+        AppMethodBeat.i(227140);
         ITPSurfaceListener localITPSurfaceListener = e.a(e.this);
         if (localITPSurfaceListener != null) {
           localITPSurfaceListener.onRenderInfo(c.a(paramAnonymousTPNativePlayerSurfaceRenderInfo));
         }
-        AppMethodBeat.o(221536);
+        AppMethodBeat.o(227140);
       }
     };
-    this.ZEc = new TPNativePlayerSurface(paramSurfaceTexture);
-    this.ZEc.setTPSurfaceCallback(this.ZEe);
-    AppMethodBeat.o(221541);
+    this.ahJf = new TPNativePlayerSurface(paramSurfaceTexture);
+    this.ahJf.setTPSurfaceCallback(this.ahJh);
+    AppMethodBeat.o(227165);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(221542);
-    this.ZEc.release();
+    AppMethodBeat.i(227185);
+    this.ahJf.release();
     super.finalize();
-    AppMethodBeat.o(221542);
+    AppMethodBeat.o(227185);
   }
   
   public final void setSurfaceListener(ITPSurfaceListener paramITPSurfaceListener)
   {
-    this.ZEd = paramITPSurfaceListener;
+    this.ahJg = paramITPSurfaceListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.g.e
  * JD-Core Version:    0.7.0.1
  */

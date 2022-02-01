@@ -1,6 +1,5 @@
 package com.tencent.tmediacodec;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodec.Callback;
@@ -23,91 +22,91 @@ import java.util.Set;
 
 public final class b
 {
-  public boolean ZNU;
-  public boolean ZNV;
-  public c ZNW;
-  public com.tencent.tmediacodec.a.a ZNX;
-  private final com.tencent.tmediacodec.f.a ZNY;
-  public boolean ZNZ;
-  private boolean ZOa;
-  final String ZOb;
-  b.b ZOc;
+  public boolean ahSV;
+  public boolean ahSW;
+  public c ahSX;
+  public com.tencent.tmediacodec.a.a ahSY;
+  private final com.tencent.tmediacodec.f.a ahSZ;
+  public boolean ahTa;
+  private boolean ahTb;
+  final String ahTc;
+  b.b ahTd;
   
   private b(String paramString, b.b paramb)
   {
-    AppMethodBeat.i(224181);
-    this.ZNZ = true;
-    this.ZOb = paramString;
-    this.ZOc = paramb;
-    this.ZNY = new com.tencent.tmediacodec.f.a(d.bJ(this.ZOb));
-    AppMethodBeat.o(224181);
+    AppMethodBeat.i(210733);
+    this.ahTa = true;
+    this.ahTc = paramString;
+    this.ahTd = paramb;
+    this.ahSZ = new com.tencent.tmediacodec.f.a(d.isVideo(this.ahTc));
+    AppMethodBeat.o(210733);
   }
   
-  public static b bDL(String paramString)
+  public static b bGq(String paramString)
   {
-    AppMethodBeat.i(224178);
-    paramString = new b(paramString, b.b.ZOe);
-    AppMethodBeat.o(224178);
+    AppMethodBeat.i(210730);
+    paramString = new b(paramString, b.b.ahTf);
+    AppMethodBeat.o(210730);
     return paramString;
   }
   
-  private void isV()
+  private void kcp()
   {
-    AppMethodBeat.i(224190);
-    this.ZNY.itl();
-    this.ZNY.itm();
-    this.ZNY.IE(this.ZNU);
-    AppMethodBeat.o(224190);
+    AppMethodBeat.i(210741);
+    this.ahSZ.kcF();
+    this.ahSZ.kcG();
+    this.ahSZ.OG(this.ahSV);
+    AppMethodBeat.o(210741);
   }
   
-  private void isW()
+  private void kcq()
   {
-    AppMethodBeat.i(224192);
-    this.ZNY.IF(this.ZNV);
-    e.bi(new Runnable()
+    AppMethodBeat.i(210747);
+    this.ahSZ.OH(this.ahSW);
+    e.br(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(224123);
+        AppMethodBeat.i(210737);
         if (b.a(b.this) != null) {
           b.a(b.this).a(b.b(b.this));
         }
         if (b.b(b.this) != null) {
-          b.b(b.this).onCreate(Boolean.valueOf(b.this.ZNV));
+          b.b(b.this).onCreate(Boolean.valueOf(b.this.ahSW));
         }
-        AppMethodBeat.o(224123);
+        AppMethodBeat.o(210737);
       }
     });
-    AppMethodBeat.o(224192);
+    AppMethodBeat.o(210747);
   }
   
-  private void isX()
+  private void kcr()
   {
-    AppMethodBeat.i(224195);
-    this.ZNY.itn();
-    e.bi(new Runnable()
+    AppMethodBeat.i(210752);
+    this.ahSZ.kcH();
+    e.br(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(224139);
+        AppMethodBeat.i(210739);
         if (b.b(b.this) != null)
         {
           com.tencent.tmediacodec.a.a locala = b.b(b.this);
-          boolean bool = b.this.ZNV;
+          boolean bool = b.this.ahSW;
           com.tencent.tmediacodec.f.a locala1 = b.c(b.this);
-          if (TextUtils.isEmpty(locala1.ZPE))
+          if (TextUtils.isEmpty(locala1.ahUF))
           {
             StringBuilder localStringBuilder = new StringBuilder("{");
             localStringBuilder.append("\"isVideo\":");
-            localStringBuilder.append(locala1.ZPF + " ,");
-            if (locala1.ZPD)
+            localStringBuilder.append(locala1.ahUG + " ,");
+            if (locala1.ahUE)
             {
               localStringBuilder.append("\"isReuse\":");
-              localStringBuilder.append(locala1.ZPB + " ,");
+              localStringBuilder.append(locala1.ahUC + " ,");
             }
             localStringBuilder.append("\"reuseEnable\":");
-            localStringBuilder.append(locala1.ZPC + " ,");
-            Iterator localIterator = locala1.ZPz.entrySet().iterator();
+            localStringBuilder.append(locala1.ahUD + " ,");
+            Iterator localIterator = locala1.ahUA.entrySet().iterator();
             long l2;
             for (long l1 = 0L; localIterator.hasNext(); l1 = l2)
             {
@@ -122,68 +121,55 @@ public final class b
             localStringBuilder.append("\"totalCodec\":");
             localStringBuilder.append(l1);
             localStringBuilder.append("}");
-            locala1.ZPE = localStringBuilder.toString();
+            locala1.ahUF = localStringBuilder.toString();
           }
-          locala.onStarted(Boolean.valueOf(bool), locala1.ZPE);
+          locala.onStarted(Boolean.valueOf(bool), locala1.ahUF);
         }
-        AppMethodBeat.o(224139);
+        AppMethodBeat.o(210739);
       }
     });
-    AppMethodBeat.o(224195);
-  }
-  
-  public final int EX(long paramLong)
-  {
-    AppMethodBeat.i(224208);
-    if (this.ZNW != null)
-    {
-      int i = this.ZNW.EX(paramLong);
-      AppMethodBeat.o(224208);
-      return i;
-    }
-    AppMethodBeat.o(224208);
-    return -1000;
+    AppMethodBeat.o(210752);
   }
   
   public final void a(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
-    AppMethodBeat.i(224205);
-    if (this.ZNW != null) {
-      this.ZNW.a(paramInt1, paramInt2, paramLong, paramInt3);
+    AppMethodBeat.i(210818);
+    if (this.ahSX != null) {
+      this.ahSX.a(paramInt1, paramInt2, paramLong, paramInt3);
     }
-    AppMethodBeat.o(224205);
+    AppMethodBeat.o(210818);
   }
   
   public final void a(int paramInt1, MediaCodec.CryptoInfo paramCryptoInfo, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(224199);
-    if (this.ZNW != null)
+    AppMethodBeat.i(210813);
+    if (this.ahSX != null)
     {
-      MediaCodec localMediaCodec = this.ZNW.isY();
+      MediaCodec localMediaCodec = this.ahSX.kcs();
       if (localMediaCodec != null) {
         localMediaCodec.queueSecureInputBuffer(paramInt1, 0, paramCryptoInfo, paramLong, paramInt2);
       }
     }
-    AppMethodBeat.o(224199);
+    AppMethodBeat.o(210813);
   }
   
   public final void a(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto)
   {
-    AppMethodBeat.i(224183);
-    if (this.ZOa)
+    AppMethodBeat.i(210781);
+    if (this.ahTb)
     {
       new StringBuilder("configure ignored, mediaFormat:").append(paramMediaFormat).append(" surface:").append(paramSurface).append(" crypto:").append(paramMediaCrypto).append(" flags:0 stack:").append(Log.getStackTraceString(new Throwable()));
-      com.tencent.tmediacodec.g.b.bDR("TMediaCodec");
-      AppMethodBeat.o(224183);
+      com.tencent.tmediacodec.g.b.R("TMediaCodec");
+      AppMethodBeat.o(210781);
       return;
     }
-    this.ZOa = true;
-    isV();
+    this.ahTb = true;
+    kcp();
     try
     {
-      this.ZNW = a.isT().a(paramMediaFormat, paramSurface, paramMediaCrypto, this);
-      isW();
-      AppMethodBeat.o(224183);
+      this.ahSX = a.kcn().a(paramMediaFormat, paramSurface, paramMediaCrypto, this);
+      kcq();
+      AppMethodBeat.o(210781);
       return;
     }
     catch (IOException paramSurface)
@@ -191,34 +177,56 @@ public final class b
       for (;;)
       {
         "createCodec mediaFormat:".concat(String.valueOf(paramMediaFormat));
-        com.tencent.tmediacodec.g.b.bDU("TMediaCodec");
+        com.tencent.tmediacodec.g.b.U("TMediaCodec");
       }
     }
   }
   
+  public final int dequeueInputBuffer(long paramLong)
+  {
+    AppMethodBeat.i(210826);
+    if (this.ahSX != null)
+    {
+      int i = this.ahSX.dequeueInputBuffer(paramLong);
+      AppMethodBeat.o(210826);
+      return i;
+    }
+    AppMethodBeat.o(210826);
+    return -1000;
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(210792);
+    if (this.ahSX != null) {
+      this.ahSX.release();
+    }
+    AppMethodBeat.o(210792);
+  }
+  
   public final void releaseOutputBuffer(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(224210);
-    if (this.ZNW != null) {
-      this.ZNW.releaseOutputBuffer(paramInt, paramBoolean);
+    AppMethodBeat.i(210832);
+    if (this.ahSX != null) {
+      this.ahSX.releaseOutputBuffer(paramInt, paramBoolean);
     }
-    AppMethodBeat.o(224210);
+    AppMethodBeat.o(210832);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(224188);
+    AppMethodBeat.i(210785);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      new StringBuilder("start codecWrapper:").append(this.ZNW);
-      com.tencent.tmediacodec.g.b.bDP("TMediaCodec");
+      new StringBuilder("start codecWrapper:").append(this.ahSX);
+      com.tencent.tmediacodec.g.b.O("TMediaCodec");
     }
-    this.ZNY.ZPA = System.currentTimeMillis();
-    if (this.ZNW != null) {
-      this.ZNW.start();
+    this.ahSZ.ahUB = System.currentTimeMillis();
+    if (this.ahSX != null) {
+      this.ahSX.start();
     }
-    isX();
-    AppMethodBeat.o(224188);
+    kcr();
+    AppMethodBeat.o(210785);
   }
   
   public static abstract class a
@@ -232,53 +240,52 @@ public final class b
     public abstract void onOutputFormatChanged(b paramb, MediaFormat paramMediaFormat);
   }
   
-  @TargetApi(21)
   public static final class c
     extends MediaCodec.Callback
   {
-    private final b ZOh;
-    private final b.a ZOi;
+    private final b ahTi;
+    private final b.a ahTj;
     
     public c(b paramb, b.a parama)
     {
-      this.ZOh = paramb;
-      this.ZOi = parama;
+      this.ahTi = paramb;
+      this.ahTj = parama;
     }
     
     public final void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
     {
-      AppMethodBeat.i(224165);
-      if (this.ZOi != null) {
-        this.ZOi.onError(this.ZOh, paramCodecException);
+      AppMethodBeat.i(210854);
+      if (this.ahTj != null) {
+        this.ahTj.onError(this.ahTi, paramCodecException);
       }
-      AppMethodBeat.o(224165);
+      AppMethodBeat.o(210854);
     }
     
     public final void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
     {
-      AppMethodBeat.i(224158);
-      if (this.ZOi != null) {
-        this.ZOi.onInputBufferAvailable(this.ZOh, paramInt);
+      AppMethodBeat.i(210840);
+      if (this.ahTj != null) {
+        this.ahTj.onInputBufferAvailable(this.ahTi, paramInt);
       }
-      AppMethodBeat.o(224158);
+      AppMethodBeat.o(210840);
     }
     
     public final void onOutputBufferAvailable(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
     {
-      AppMethodBeat.i(224154);
-      if (this.ZOi != null) {
-        this.ZOi.onOutputBufferAvailable(this.ZOh, paramInt, paramBufferInfo);
+      AppMethodBeat.i(210834);
+      if (this.ahTj != null) {
+        this.ahTj.onOutputBufferAvailable(this.ahTi, paramInt, paramBufferInfo);
       }
-      AppMethodBeat.o(224154);
+      AppMethodBeat.o(210834);
     }
     
     public final void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
     {
-      AppMethodBeat.i(224161);
-      if (this.ZOi != null) {
-        this.ZOi.onOutputFormatChanged(this.ZOh, paramMediaFormat);
+      AppMethodBeat.i(210846);
+      if (this.ahTj != null) {
+        this.ahTj.onOutputFormatChanged(this.ahTi, paramMediaFormat);
       }
-      AppMethodBeat.o(224161);
+      AppMethodBeat.o(210846);
     }
   }
 }

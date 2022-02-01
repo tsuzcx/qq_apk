@@ -3,10 +3,10 @@ package rx;
 public abstract class i<T>
   implements e<T>, j
 {
-  public final rx.internal.util.i abNB;
-  private final i<?> abNC;
-  private f abND;
-  private long abNE = -9223372036854775808L;
+  public final rx.internal.util.i akau;
+  private final i<?> akav;
+  private f akaw;
+  private long akax = -9223372036854775808L;
   
   protected i()
   {
@@ -20,16 +20,16 @@ public abstract class i<T>
   
   private i(i<?> parami, boolean paramBoolean)
   {
-    this.abNC = parami;
+    this.akav = parami;
     if ((paramBoolean) && (parami != null)) {}
-    for (parami = parami.abNB;; parami = new rx.internal.util.i())
+    for (parami = parami.akau;; parami = new rx.internal.util.i())
     {
-      this.abNB = parami;
+      this.akau = parami;
       return;
     }
   }
   
-  protected final void XM(long paramLong)
+  protected final void Cp(long paramLong)
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("number requested cannot be negative: ".concat(String.valueOf(paramLong)));
@@ -38,24 +38,24 @@ public abstract class i<T>
     {
       try
       {
-        if (this.abND != null)
+        if (this.akaw != null)
         {
-          f localf = this.abND;
-          localf.XM(paramLong);
+          f localf = this.akaw;
+          localf.Cp(paramLong);
           return;
         }
-        if (this.abNE == -9223372036854775808L)
+        if (this.akax == -9223372036854775808L)
         {
-          this.abNE = paramLong;
+          this.akax = paramLong;
           return;
         }
       }
       finally {}
-      paramLong = this.abNE + paramLong;
+      paramLong = this.akax + paramLong;
       if (paramLong < 0L) {
-        this.abNE = 9223372036854775807L;
+        this.akax = 9223372036854775807L;
       } else {
-        this.abNE = paramLong;
+        this.akax = paramLong;
       }
     }
   }
@@ -66,10 +66,10 @@ public abstract class i<T>
     long l;
     try
     {
-      l = this.abNE;
-      this.abND = paramf;
+      l = this.akax;
+      this.akaw = paramf;
       int i = j;
-      if (this.abNC != null)
+      if (this.akav != null)
       {
         i = j;
         if (l == -9223372036854775808L) {
@@ -78,39 +78,39 @@ public abstract class i<T>
       }
       if (i != 0)
       {
-        this.abNC.a(this.abND);
+        this.akav.a(this.akaw);
         return;
       }
     }
     finally {}
     if (l == -9223372036854775808L)
     {
-      this.abND.XM(9223372036854775807L);
+      this.akaw.Cp(9223372036854775807L);
       return;
     }
-    this.abND.XM(l);
+    this.akaw.Cp(l);
   }
   
   public final void b(j paramj)
   {
-    this.abNB.b(paramj);
+    this.akau.b(paramj);
   }
   
-  public final void iVJ()
+  public final void kKh()
   {
-    this.abNB.iVJ();
+    this.akau.kKh();
   }
   
-  public final boolean iVK()
+  public final boolean kKi()
   {
-    return this.abNB.abQP;
+    return this.akau.akdH;
   }
   
   public void onStart() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.i
  * JD-Core Version:    0.7.0.1
  */

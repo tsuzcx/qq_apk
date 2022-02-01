@@ -1,135 +1,90 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.a.a;
-import com.tencent.mm.ui.contact.a.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.protocal.protobuf.fmd;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem;", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem;", "position", "", "(I)V", "header", "", "getHeader", "()Ljava/lang/String;", "setHeader", "(Ljava/lang/String;)V", "headerViewHodler", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem$HeaderViewHolder;", "headerViewItem", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem$HeaderViewItem;", "createViewHolder", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem$BaseContactViewHolder;", "fillingDataItem", "", "context", "Landroid/content/Context;", "baseViewHolder", "getViewItem", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem$BaseContactViewItem;", "HeaderViewHolder", "HeaderViewItem", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter$FansInfoViewHolder;", "()V", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/TaskProgressItem;", "getDataList", "()Ljava/util/LinkedList;", "setDataList", "(Ljava/util/LinkedList;)V", "itemClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "data", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function1;", "setItemClickListener", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateDataList", "Companion", "FansInfoViewHolder", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
-  extends a
+  extends RecyclerView.a<b>
 {
-  String header;
-  private final b yXO;
-  final a yXP;
+  public static final a DQA;
+  private kotlin.g.a.b<? super String, ah> nod;
+  public LinkedList<fmd> vEn;
   
-  public m(int paramInt)
+  static
   {
-    super(0, paramInt);
-    AppMethodBeat.i(278749);
-    this.yXO = new b();
-    this.yXP = new a();
-    AppMethodBeat.o(278749);
+    AppMethodBeat.i(358570);
+    DQA = new a((byte)0);
+    AppMethodBeat.o(358570);
   }
   
-  public final void a(Context paramContext, a.a parama) {}
-  
-  public final a.b bwF()
+  public m()
   {
-    return (a.b)this.yXO;
+    AppMethodBeat.i(358548);
+    this.vEn = new LinkedList();
+    AppMethodBeat.o(358548);
   }
   
-  public final a.a bwG()
+  private static final void a(m paramm, View paramView)
   {
-    return (a.a)this.yXP;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem$HeaderViewHolder;", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem$BaseContactViewHolder;", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem;)V", "headerRoot", "Landroid/view/View;", "getHeaderRoot", "()Landroid/view/View;", "setHeaderRoot", "(Landroid/view/View;)V", "headerTV", "Landroid/widget/TextView;", "getHeaderTV", "()Landroid/widget/TextView;", "setHeaderTV", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
-  public final class a
-    extends a.a
-  {
-    TextView tOY;
-    View yXQ;
-    
-    public a()
-    {
-      super();
+    AppMethodBeat.i(358559);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramm);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramm, "this$0");
+    paramm = paramm.nod;
+    if (paramm != null) {
+      paramm.invoke(null);
     }
+    a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358559);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem$HeaderViewItem;", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem$BaseContactViewItem;", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveHeaderDataItem;)V", "fillingViewItem", "", "context", "Landroid/content/Context;", "holder", "Lcom/tencent/mm/ui/contact/item/BaseContactDataItem$BaseContactViewHolder;", "data", "alwaysCheck", "", "isCheck", "inflateView", "Landroid/view/View;", "parent", "Landroid/view/ViewGroup;", "convertView", "onItemClick", "v", "plugin-finder_release"})
-  public final class b
-    extends a.b
+  public final int getItemCount()
   {
+    AppMethodBeat.i(358586);
+    int i = this.vEn.size();
+    AppMethodBeat.o(358586);
+    return i;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter$FansInfoViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveFansInfoAdapter;Landroid/view/View;)V", "taskDesc", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getTaskDesc", "()Landroid/widget/TextView;", "taskProgress", "getTaskProgress", "taskTitle", "getTaskTitle", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class b
+    extends RecyclerView.v
+  {
+    final TextView DQB;
+    final TextView DQC;
+    final TextView DQD;
+    
     public b()
     {
       super();
-    }
-    
-    public final View a(Context paramContext, ViewGroup paramViewGroup)
-    {
-      AppMethodBeat.i(287260);
-      p.k(paramContext, "context");
-      p.k(paramViewGroup, "parent");
-      paramViewGroup = LayoutInflater.from(paramContext).inflate(b.g.select_ui_listheaderitem, paramViewGroup, false);
-      paramContext = (a.a)this.yXR.yXP;
-      if (paramContext == null)
-      {
-        paramContext = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.live.view.adapter.FinderLiveHeaderDataItem.HeaderViewHolder");
-        AppMethodBeat.o(287260);
-        throw paramContext;
-      }
-      m.a locala = (m.a)paramContext;
-      if (paramViewGroup != null) {}
-      for (paramContext = (TextView)paramViewGroup.findViewById(b.f.header_tv); paramContext == null; paramContext = null)
-      {
-        paramContext = new t("null cannot be cast to non-null type android.widget.TextView");
-        AppMethodBeat.o(287260);
-        throw paramContext;
-      }
-      locala.tOY = paramContext;
-      if (paramViewGroup != null) {}
-      for (paramContext = paramViewGroup.findViewById(b.f.header_tv_root);; paramContext = null)
-      {
-        locala.yXQ = paramContext;
-        paramContext = locala.yXQ;
-        if (paramContext != null) {
-          paramContext.setVisibility(8);
-        }
-        if (paramViewGroup != null) {
-          paramViewGroup.setTag(locala);
-        }
-        AppMethodBeat.o(287260);
-        return paramViewGroup;
-      }
-    }
-    
-    public final void a(Context paramContext, a.a parama, a parama1, boolean paramBoolean1, boolean paramBoolean2)
-    {
-      AppMethodBeat.i(287261);
-      p.k(paramContext, "context");
-      p.k(parama, "holder");
-      p.k(parama1, "data");
-      paramContext = (m.a)parama;
-      n.a(((m)parama1).header, paramContext.tOY);
-      AppMethodBeat.o(287261);
-    }
-    
-    public final boolean a(Context paramContext, View paramView, a parama)
-    {
-      AppMethodBeat.i(287262);
-      p.k(paramContext, "context");
-      p.k(paramView, "v");
-      p.k(parama, "data");
-      AppMethodBeat.o(287262);
-      return false;
+      AppMethodBeat.i(359100);
+      this.DQB = ((TextView)localObject.findViewById(p.e.CbB));
+      this.DQC = ((TextView)localObject.findViewById(p.e.Cby));
+      this.DQD = ((TextView)localObject.findViewById(p.e.Cbz));
+      AppMethodBeat.o(359100);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.adapter.m
  * JD-Core Version:    0.7.0.1
  */

@@ -5,33 +5,33 @@ import android.graphics.drawable.Drawable;
 
 public abstract interface c
 {
-  public abstract void C(Canvas paramCanvas);
+  public abstract void LN(boolean paramBoolean);
   
-  public abstract void Gb(boolean paramBoolean);
+  public abstract void LO(boolean paramBoolean);
   
-  public abstract void Gc(boolean paramBoolean);
-  
-  public abstract void K(Drawable paramDrawable);
+  public abstract void U(Drawable paramDrawable);
   
   public abstract void a(b paramb);
   
-  public abstract void auV(int paramInt);
-  
-  public abstract void cM(float paramFloat);
+  public abstract void aBx(int paramInt);
   
   public abstract void destroy();
   
-  public abstract void hLt();
+  public abstract void ea(float paramFloat);
   
-  public abstract void hLu();
+  public abstract void jnV();
   
-  public abstract void hLv();
+  public abstract void jnW();
   
-  public abstract void hLw();
+  public abstract void jnX();
+  
+  public abstract void jnY();
+  
+  public abstract void x(Canvas paramCanvas);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.blur.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomContributePreference
   extends Preference
 {
-  private MaskLayout jit;
-  private ImageView jiu;
-  private String jiv;
+  private MaskLayout lKJ;
+  private ImageView lKK;
+  private String lKL;
   
   public RoomContributePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +28,7 @@ public class RoomContributePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(12728);
     setLayoutResource(a.f.mm_preference);
-    auN(a.f.jeg);
+    aBp(a.f.lGq);
     AppMethodBeat.o(12728);
   }
   
@@ -36,8 +36,8 @@ public class RoomContributePreference
   {
     AppMethodBeat.i(12730);
     super.onBindView(paramView);
-    if ((this.jiu != null) && (!Util.isNullOrNil(this.jiv))) {
-      a.b.c(this.jiu, this.jiv);
+    if ((this.lKK != null) && (!Util.isNullOrNil(this.lKL))) {
+      a.b.g(this.lKK, this.lKL);
     }
     AppMethodBeat.o(12730);
   }
@@ -46,8 +46,8 @@ public class RoomContributePreference
   {
     AppMethodBeat.i(12729);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    this.jit = ((MaskLayout)paramViewGroup.findViewById(a.e.image_mask));
-    this.jiu = ((ImageView)paramViewGroup.findViewById(a.e.image));
+    this.lKJ = ((MaskLayout)paramViewGroup.findViewById(a.e.image_mask));
+    this.lKK = ((ImageView)paramViewGroup.findViewById(a.e.image));
     AppMethodBeat.o(12729);
     return paramViewGroup;
   }

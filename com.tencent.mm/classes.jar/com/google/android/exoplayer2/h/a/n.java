@@ -10,16 +10,16 @@ import java.util.regex.Pattern;
 final class n
   extends g
 {
-  private static final Pattern bqv;
-  private static final Pattern bqw;
-  private static final Pattern bqx;
+  private static final Pattern djZ;
+  private static final Pattern dka;
+  private static final Pattern dkb;
   
   static
   {
     AppMethodBeat.i(93032);
-    bqv = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v1\\.exo$", 32);
-    bqw = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v2\\.exo$", 32);
-    bqx = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)\\.v3\\.exo$", 32);
+    djZ = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v1\\.exo$", 32);
+    dka = Pattern.compile("^(.+)\\.(\\d+)\\.(\\d+)\\.v2\\.exo$", 32);
+    dkb = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)\\.v3\\.exo$", 32);
     AppMethodBeat.o(93032);
   }
   
@@ -36,10 +36,10 @@ final class n
     if (!((String)localObject2).endsWith(".v3.exo"))
     {
       localObject1 = paramFile.getName();
-      localObject2 = bqw.matcher((CharSequence)localObject1);
+      localObject2 = dka.matcher((CharSequence)localObject1);
       if (((Matcher)localObject2).matches())
       {
-        localObject1 = x.bW(((Matcher)localObject2).group(1));
+        localObject1 = x.dw(((Matcher)localObject2).group(1));
         if (localObject1 == null) {
           localObject1 = null;
         }
@@ -50,7 +50,7 @@ final class n
         {
           AppMethodBeat.o(93031);
           return null;
-          localObject2 = bqv.matcher((CharSequence)localObject1);
+          localObject2 = djZ.matcher((CharSequence)localObject1);
           if (!((Matcher)localObject2).matches())
           {
             localObject1 = null;
@@ -58,7 +58,7 @@ final class n
           else
           {
             localObject1 = ((Matcher)localObject2).group(1);
-            localObject2 = a(paramFile.getParentFile(), paramj.bD((String)localObject1), Long.parseLong(((Matcher)localObject2).group(2)), Long.parseLong(((Matcher)localObject2).group(3)));
+            localObject2 = a(paramFile.getParentFile(), paramj.cV((String)localObject1), Long.parseLong(((Matcher)localObject2).group(2)), Long.parseLong(((Matcher)localObject2).group(3)));
             localObject1 = localObject2;
             if (!paramFile.renameTo((File)localObject2)) {
               localObject1 = null;
@@ -69,7 +69,7 @@ final class n
     }
     for (paramFile = ((File)localObject1).getName();; paramFile = (File)localObject2)
     {
-      paramFile = bqx.matcher(paramFile);
+      paramFile = dkb.matcher(paramFile);
       if (!paramFile.matches())
       {
         AppMethodBeat.o(93031);
@@ -77,7 +77,7 @@ final class n
       }
       long l = ((File)localObject1).length();
       int i = Integer.parseInt(paramFile.group(1));
-      paramj = (String)paramj.bqa.get(i);
+      paramj = (String)paramj.djE.get(i);
       if (paramj == null)
       {
         AppMethodBeat.o(93031);
@@ -125,7 +125,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.n
  * JD-Core Version:    0.7.0.1
  */

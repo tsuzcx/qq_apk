@@ -1,11 +1,11 @@
 package com.tencent.mm.game.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.game.report.c.f;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
@@ -13,38 +13,38 @@ import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d jTk;
+  private h callback;
+  private final c mtC;
   
   public e(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
     AppMethodBeat.i(175995);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new com.tencent.mm.game.report.c.e();
-    ((d.a)localObject).lBV = new f();
-    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/gamereport";
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.jTk = ((d.a)localObject).bgN();
-    localObject = (com.tencent.mm.game.report.c.e)d.b.b(this.jTk.lBR);
-    ((com.tencent.mm.game.report.c.e)localObject).jUi = paramString1;
-    ((com.tencent.mm.game.report.c.e)localObject).jUk = paramInt1;
-    ((com.tencent.mm.game.report.c.e)localObject).jUl = paramInt2;
-    ((com.tencent.mm.game.report.c.e)localObject).jUm = paramString2;
-    ((com.tencent.mm.game.report.c.e)localObject).jUn = paramString3;
-    ((com.tencent.mm.game.report.c.e)localObject).jUj = ((int)(System.currentTimeMillis() / 1000L));
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new com.tencent.mm.game.report.c.e();
+    ((c.a)localObject).otF = new f();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/gamereport";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (com.tencent.mm.game.report.c.e)c.b.b(this.mtC.otB);
+    ((com.tencent.mm.game.report.c.e)localObject).muA = paramString1;
+    ((com.tencent.mm.game.report.c.e)localObject).muC = paramInt1;
+    ((com.tencent.mm.game.report.c.e)localObject).muD = paramInt2;
+    ((com.tencent.mm.game.report.c.e)localObject).muE = paramString2;
+    ((com.tencent.mm.game.report.c.e)localObject).muF = paramString3;
+    ((com.tencent.mm.game.report.c.e)localObject).muB = ((int)(System.currentTimeMillis() / 1000L));
     AppMethodBeat.o(175995);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(175996);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(175996);
     return i;
   }

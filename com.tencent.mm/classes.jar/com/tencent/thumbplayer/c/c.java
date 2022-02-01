@@ -2,29 +2,29 @@ package com.tencent.thumbplayer.c;
 
 final class c
 {
-  private static int ZBA = 0;
-  private static int ZBB = 0;
-  private static int ZBC = 0;
-  public static String ZBz = "base_video";
+  public static String ahGC = "base_video";
+  private static int ahGD = 0;
+  private static int ahGE = 0;
+  private static int ahGF = 0;
   
-  static int aAZ(int paramInt)
+  static int aHM(int paramInt)
   {
     if (paramInt == 1)
     {
-      paramInt = ZBC;
-      ZBC = paramInt + 1;
+      paramInt = ahGF;
+      ahGF = paramInt + 1;
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramInt = ZBA;
-      ZBA = paramInt + 1;
+      paramInt = ahGD;
+      ahGD = paramInt + 1;
       return paramInt;
     }
     if (paramInt == 3)
     {
-      paramInt = ZBB;
-      ZBB = paramInt + 1;
+      paramInt = ahGE;
+      ahGE = paramInt + 1;
       return paramInt;
     }
     return -1;
@@ -32,7 +32,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.c.c
  * JD-Core Version:    0.7.0.1
  */

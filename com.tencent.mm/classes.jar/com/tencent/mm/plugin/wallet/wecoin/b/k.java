@@ -1,28 +1,26 @@
 package com.tencent.mm.plugin.wallet.wecoin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dnz;
-import com.tencent.mm.protocal.protobuf.doa;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.cwn;
+import com.tencent.mm.protocal.protobuf.cwo;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiPrepareIncomeEncashRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/PrepareIncomeEncashResponse;", "requestID", "", "sessionID", "amount", "", "(Ljava/lang/String;Ljava/lang/String;J)V", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetWecoinPriceListRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetWecoinPriceListResponse;", "businessID", "", "(I)V", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  extends m<doa>
+  extends n<cwo>
 {
-  public k(String paramString1, String paramString2, long paramLong)
+  public k(int paramInt)
   {
-    AppMethodBeat.i(267390);
-    dnz localdnz = new dnz();
-    localdnz.request_id = paramString1;
-    localdnz.gbJ = paramLong;
-    localdnz.SpX = paramString2;
-    paramString2 = new doa();
-    a((dyl)localdnz, (dyy)paramString2, 5838, "/cgi-bin/micromsg-bin/prepareincomeencash");
-    Log.i("MicroMsg.CommonWeCoinCgi", "CgiPrepareIncomeEncashRequest: requestID: " + paramString1 + ", amount: " + paramLong);
-    AppMethodBeat.o(267390);
+    AppMethodBeat.i(315698);
+    cwn localcwn = new cwn();
+    localcwn.aarV = paramInt;
+    cwo localcwo = new cwo();
+    a((erp)localcwn, (esc)localcwo, 6299, "/cgi-bin/micromsg-bin/getwecoinpricelist");
+    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetWecoinPriceListRequest: ");
+    AppMethodBeat.o(315698);
   }
 }
 

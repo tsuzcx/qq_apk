@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <Preference mm:layout="@layout/b_7" mm:title="@string/fb1" />
-    <com.tencent.mm.ui.base.preference.ChoicePreference mm:entries="@array/ag" mm:entryValues="@array/ah" mm:key="settings_sex" mm:layout="@layout/b_l" mm:title="@string/gts" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:key="settings_district" mm:layout="@layout/b8j" mm:title="@string/go_" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:key="settings_signature" mm:layout="@layout/b8j" mm:title="@string/gu0" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="setting_remark" android:layout="@layout/bdi" android:title="" />
+    <Preference android:key="setting_permission" android:layout="@layout/bdi" android:title="" />
+    <PreferenceSmallCategory />
+    <Preference android:key="setting_send_card" android:layout="@layout/bdi" android:title="" />
+    <Preference android:key="setting_shortcut" android:layout="@layout/bdi" android:title="@string/bjo" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="setting_star" android:layout="@layout/bdi" android:persistent="false" android:title="@string/bmc" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="setting_blacklist" android:layout="@layout/bdi" android:persistent="false" android:title="@string/boj" />
+    <Preference android:key="setting_report" android:layout="@layout/bdi" android:title="@string/anw" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ajr" android:key="setting_delete" android:layout="@layout/bo3" android:title_color="@color/Red" />
+    <PreferenceCategory />
 </PreferenceScreen>

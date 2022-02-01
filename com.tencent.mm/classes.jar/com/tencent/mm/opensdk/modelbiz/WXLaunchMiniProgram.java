@@ -23,11 +23,11 @@ public class WXLaunchMiniProgram
     
     public Req()
     {
-      AppMethodBeat.i(254790);
+      AppMethodBeat.i(243026);
       this.path = "";
       this.miniprogramType = 0;
       this.extData = "";
-      AppMethodBeat.o(254790);
+      AppMethodBeat.o(243026);
     }
     
     public final boolean checkArgs()

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.feed.RCLinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="148.0dip" android:layout_height="198.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="@dimen/df" android:layout_marginRight="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <FrameLayout android:background="@drawable/a2k" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icon_filled_live_top_arrow" app:iconColor="@color/BW_100_Alpha_0_5" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/dy9" />
+    </LinearLayout>
+</com.tencent.mm.plugin.finder.feed.RCLinearLayout>

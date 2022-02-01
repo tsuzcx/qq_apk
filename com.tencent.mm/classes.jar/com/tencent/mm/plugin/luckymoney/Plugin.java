@@ -20,7 +20,7 @@ public final class Plugin
   public final be createSubCore()
   {
     AppMethodBeat.i(64855);
-    com.tencent.mm.plugin.luckymoney.b.a locala = new com.tencent.mm.plugin.luckymoney.b.a();
+    com.tencent.mm.plugin.luckymoney.app.a locala = new com.tencent.mm.plugin.luckymoney.app.a();
     AppMethodBeat.o(64855);
     return locala;
   }
@@ -32,7 +32,7 @@ public final class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.Plugin
  * JD-Core Version:    0.7.0.1
  */

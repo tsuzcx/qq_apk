@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Button android:id="@id/ahc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="pause" android:layout_marginStart="59.0dip" app:layout_constraintBaseline_toBaselineOf="@id/ahg" app:layout_constraintStart_toStartOf="g8m" />
-    <Button android:id="@id/ahg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="43.0dip" android:text="quit" android:layout_marginStart="30.0dip" app:layout_constraintStart_toEndOf="@id/ahc" app:layout_constraintTop_toTopOf="g8m" />
-    <Button android:id="@id/agp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="41.0dip" android:text="back" android:layout_marginEnd="21.0dip" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/euo" android:background="@color/a76" android:layout_width="fill_parent" android:layout_height="@dimen/b9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kon" android:background="@drawable/b9" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <ImageView android:id="@id/kom" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/k4" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/l" android:textColor="@color/c9" android:ellipsize="end" android:gravity="center|left" android:id="@id/gui" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/gb6" android:singleLine="true" />
+    <View android:id="@id/cjd" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <ImageButton android:id="@id/kpn" android:background="@drawable/b9" android:focusable="true" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9" android:src="@raw/actionbar_icon_dark_search" />
+    <ImageButton android:id="@id/koo" android:background="@drawable/b9" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/kop" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:id="@id/eq" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/br" android:text="send" style="@style/oi" />
+    </LinearLayout>
+</LinearLayout>

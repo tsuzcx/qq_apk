@@ -1,60 +1,44 @@
 package com.tencent.mm.ui.base;
 
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.a.g;
-import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ui.widget.a.g;
 
-public final class l
-  extends g
+public abstract class l
 {
-  private Button jbJ;
-  private TextView nmi;
-  private TextView titleTv;
+  protected a adQX;
   
-  public l(Context paramContext)
+  public static int getViewTypeCount()
   {
-    super(paramContext);
-    AppMethodBeat.i(218529);
-    ayv(a.h.half_bottom_tips_dlg_layout);
-    this.titleTv = ((TextView)this.oFW.findViewById(a.g.tips_title));
-    this.nmi = ((TextView)this.oFW.findViewById(a.g.tips_hint));
-    this.jbJ = ((Button)this.oFW.findViewById(a.g.next_btn));
-    AppMethodBeat.o(218529);
+    return 1;
   }
   
-  public final l byC(String paramString)
+  public static boolean jmn()
   {
-    AppMethodBeat.i(218530);
-    this.titleTv.setText(paramString);
-    AppMethodBeat.o(218530);
-    return this;
+    return true;
   }
   
-  public final l byD(String paramString)
+  public static int jmo()
   {
-    AppMethodBeat.i(218532);
-    this.nmi.setText(paramString);
-    AppMethodBeat.o(218532);
-    return this;
+    return 0;
   }
   
-  public final l h(View.OnClickListener paramOnClickListener)
+  public abstract boolean fUP();
+  
+  public abstract View g(int paramInt, View paramView);
+  
+  public abstract int getCount();
+  
+  public abstract Object getItem(int paramInt);
+  
+  public abstract long getItemId(int paramInt);
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(218533);
-    this.jbJ.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(218533);
-    return this;
+    public abstract void dcZ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.l
  * JD-Core Version:    0.7.0.1
  */

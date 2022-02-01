@@ -29,6 +29,7 @@ public class ExportConfig
   private String outputFilePath;
   private int outputHeight;
   private int outputWidth;
+  private int suggestParallelCount = -1;
   private int videoBitRate = 8000000;
   private MediaFormat videoFormat;
   private int videoFrameRate = 30;
@@ -57,42 +58,42 @@ public class ExportConfig
   
   private int findFormatValue(String paramString, int paramInt, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(189218);
+    AppMethodBeat.i(215414);
     if ((paramMediaFormat != null) && (paramMediaFormat.containsKey(paramString)))
     {
       paramInt = paramMediaFormat.getInteger(paramString);
-      AppMethodBeat.o(189218);
+      AppMethodBeat.o(215414);
       return paramInt;
     }
-    AppMethodBeat.o(189218);
+    AppMethodBeat.o(215414);
     return paramInt;
   }
   
   private int findVideoFormatValue(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189216);
+    AppMethodBeat.i(215407);
     paramInt = findFormatValue(paramString, paramInt, this.videoFormat);
-    AppMethodBeat.o(189216);
+    AppMethodBeat.o(215407);
     return paramInt;
   }
   
   private void initAudioChannelCount()
   {
-    AppMethodBeat.i(189198);
+    AppMethodBeat.i(215285);
     setToAudioFormat("channel-count", this.audioChannelCount);
-    AppMethodBeat.o(189198);
+    AppMethodBeat.o(215285);
   }
   
   private void initAudioSampleRate()
   {
-    AppMethodBeat.i(189206);
+    AppMethodBeat.i(215322);
     setToAudioFormat("sample-rate", this.audioSampleRateHz);
-    AppMethodBeat.o(189206);
+    AppMethodBeat.o(215322);
   }
   
   private void initColorSpace()
   {
-    AppMethodBeat.i(189208);
+    AppMethodBeat.i(215336);
     if (Build.VERSION.SDK_INT >= 24)
     {
       if (this.colorRange != 0) {
@@ -108,134 +109,134 @@ public class ExportConfig
         setToVideoFormat("hdr-static-info", this.hdrStaticInfo);
       }
     }
-    AppMethodBeat.o(189208);
+    AppMethodBeat.o(215336);
   }
   
   private void initFrameRate()
   {
-    AppMethodBeat.i(189204);
+    AppMethodBeat.i(215311);
     setToVideoFormat("frame-rate", this.videoFrameRate);
-    AppMethodBeat.o(189204);
+    AppMethodBeat.o(215311);
   }
   
   private void initHdrInfo()
   {
-    AppMethodBeat.i(189209);
+    AppMethodBeat.i(215349);
     if ((Build.VERSION.SDK_INT >= 24) && (this.hdrStaticInfo != null)) {
       setToVideoFormat("hdr-static-info", this.hdrStaticInfo);
     }
-    AppMethodBeat.o(189209);
+    AppMethodBeat.o(215349);
   }
   
   private void initHighProfile()
   {
-    AppMethodBeat.i(189200);
+    AppMethodBeat.i(215293);
     if ((this.highProfile) && (this.videoMimeType.equalsIgnoreCase("video/avc"))) {
       CodecHelper.selectProfileAndLevel(this.videoFormat);
     }
-    AppMethodBeat.o(189200);
+    AppMethodBeat.o(215293);
   }
   
   private void initIFrameInterval()
   {
-    AppMethodBeat.i(189201);
+    AppMethodBeat.i(215301);
     setToVideoFormat("i-frame-interval", this.videoIFrameInterval);
-    AppMethodBeat.o(189201);
+    AppMethodBeat.o(215301);
   }
   
   private void initOutputSize()
   {
-    AppMethodBeat.i(189207);
+    AppMethodBeat.i(215329);
     Logger.i("ExportConfig", "initOutputSize, correctSizeByCodecCapabilities:" + this.correctSizeByCodecCapabilities);
     if (this.correctSizeByCodecCapabilities)
     {
       CGSize localCGSize = CodecHelper.correctSupportSize(getOutputSize(), "video/avc");
       setToVideoFormat("width", (int)localCGSize.width);
       setToVideoFormat("height", (int)localCGSize.height);
-      AppMethodBeat.o(189207);
+      AppMethodBeat.o(215329);
       return;
     }
     setToVideoFormat("width", (int)getOutputSize().width);
     setToVideoFormat("height", (int)getOutputSize().height);
-    AppMethodBeat.o(189207);
+    AppMethodBeat.o(215329);
   }
   
   private void initVideoBitrate()
   {
-    AppMethodBeat.i(189205);
+    AppMethodBeat.i(215316);
     setToVideoFormat("bitrate", this.videoBitRate);
-    AppMethodBeat.o(189205);
+    AppMethodBeat.o(215316);
   }
   
   private void setToAudioFormat(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189212);
+    AppMethodBeat.i(215378);
     if (this.audioFormat == null) {
       getAudioFormat();
     }
     setToFormat(paramString, paramInt, this.audioFormat);
-    AppMethodBeat.o(189212);
+    AppMethodBeat.o(215378);
   }
   
   private void setToFormat(String paramString, int paramInt, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(189213);
+    AppMethodBeat.i(215383);
     if (paramMediaFormat == null)
     {
-      AppMethodBeat.o(189213);
+      AppMethodBeat.o(215383);
       return;
     }
     paramMediaFormat.setInteger(paramString, paramInt);
-    AppMethodBeat.o(189213);
+    AppMethodBeat.o(215383);
   }
   
   private void setToFormat(String paramString, ByteBuffer paramByteBuffer, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(189215);
+    AppMethodBeat.i(215397);
     if (paramMediaFormat == null)
     {
-      AppMethodBeat.o(189215);
+      AppMethodBeat.o(215397);
       return;
     }
     paramMediaFormat.setByteBuffer(paramString, paramByteBuffer);
-    AppMethodBeat.o(189215);
+    AppMethodBeat.o(215397);
   }
   
   private void setToVideoFormat(String paramString, int paramInt)
   {
-    AppMethodBeat.i(189210);
+    AppMethodBeat.i(215356);
     if (this.videoFormat == null) {
       getVideoFormat();
     }
     setToFormat(paramString, paramInt, this.videoFormat);
-    AppMethodBeat.o(189210);
+    AppMethodBeat.o(215356);
   }
   
   private void setToVideoFormat(String paramString, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(189211);
+    AppMethodBeat.i(215366);
     if (this.videoFormat == null) {
       getVideoFormat();
     }
     setToFormat(paramString, paramByteBuffer, this.videoFormat);
-    AppMethodBeat.o(189211);
+    AppMethodBeat.o(215366);
   }
   
   public boolean available()
   {
-    AppMethodBeat.i(189180);
+    AppMethodBeat.i(215523);
     if ((getOutputWidth() > 0) && (getOutputHeight() > 0))
     {
-      AppMethodBeat.o(189180);
+      AppMethodBeat.o(215523);
       return true;
     }
-    AppMethodBeat.o(189180);
+    AppMethodBeat.o(215523);
     return false;
   }
   
   public ExportConfig clone()
   {
-    AppMethodBeat.i(189219);
+    AppMethodBeat.i(215605);
     ExportConfig localExportConfig = new ExportConfig(this.outputWidth, this.outputHeight);
     localExportConfig.videoBitRate = this.videoBitRate;
     localExportConfig.videoFrameRate = this.videoFrameRate;
@@ -254,21 +255,22 @@ public class ExportConfig
     localExportConfig.colorTransfer = this.colorTransfer;
     localExportConfig.hdrStaticInfo = this.hdrStaticInfo;
     localExportConfig.correctSizeByCodecCapabilities = this.correctSizeByCodecCapabilities;
-    AppMethodBeat.o(189219);
+    localExportConfig.suggestParallelCount = this.suggestParallelCount;
+    AppMethodBeat.o(215605);
     return localExportConfig;
   }
   
   public int getAudioChannelCount()
   {
-    AppMethodBeat.i(189190);
+    AppMethodBeat.i(215557);
     int i = findFormatValue("channel-count", this.audioChannelCount, this.audioFormat);
-    AppMethodBeat.o(189190);
+    AppMethodBeat.o(215557);
     return i;
   }
   
   public MediaFormat getAudioFormat()
   {
-    AppMethodBeat.i(189196);
+    AppMethodBeat.i(215583);
     if (this.audioFormat == null)
     {
       this.audioFormat = new MediaFormat();
@@ -280,15 +282,15 @@ public class ExportConfig
     }
     Logger.i("ExportConfig", "getAudioFormat:" + this.audioFormat);
     MediaFormat localMediaFormat = this.audioFormat;
-    AppMethodBeat.o(189196);
+    AppMethodBeat.o(215583);
     return localMediaFormat;
   }
   
   public int getAudioSampleRateHz()
   {
-    AppMethodBeat.i(189192);
+    AppMethodBeat.i(215566);
     int i = findFormatValue("sample-rate", this.audioSampleRateHz, this.audioFormat);
-    AppMethodBeat.o(189192);
+    AppMethodBeat.o(215566);
     return i;
   }
   
@@ -299,39 +301,44 @@ public class ExportConfig
   
   public int getOutputHeight()
   {
-    AppMethodBeat.i(189182);
+    AppMethodBeat.i(215529);
     int i = findVideoFormatValue("height", this.outputHeight);
-    AppMethodBeat.o(189182);
+    AppMethodBeat.o(215529);
     return i;
   }
   
   public CGSize getOutputSize()
   {
-    AppMethodBeat.i(189186);
+    AppMethodBeat.i(215535);
     CGSize localCGSize = new CGSize(getOutputWidth(), getOutputHeight());
-    AppMethodBeat.o(189186);
+    AppMethodBeat.o(215535);
     return localCGSize;
   }
   
   public int getOutputWidth()
   {
-    AppMethodBeat.i(189181);
+    AppMethodBeat.i(215526);
     int i = findVideoFormatValue("width", this.outputWidth);
-    AppMethodBeat.o(189181);
+    AppMethodBeat.o(215526);
     return i;
+  }
+  
+  public int getSuggestParallelCount()
+  {
+    return this.suggestParallelCount;
   }
   
   public int getVideoBitRate()
   {
-    AppMethodBeat.i(189188);
+    AppMethodBeat.i(215542);
     int i = findVideoFormatValue("bitrate", this.videoBitRate);
-    AppMethodBeat.o(189188);
+    AppMethodBeat.o(215542);
     return i;
   }
   
   public MediaFormat getVideoFormat()
   {
-    AppMethodBeat.i(189194);
+    AppMethodBeat.i(215574);
     if (this.videoFormat == null)
     {
       this.videoFormat = new MediaFormat();
@@ -346,15 +353,15 @@ public class ExportConfig
       initHdrInfo();
     }
     MediaFormat localMediaFormat = this.videoFormat;
-    AppMethodBeat.o(189194);
+    AppMethodBeat.o(215574);
     return localMediaFormat;
   }
   
   public int getVideoFrameRate()
   {
-    AppMethodBeat.i(189189);
+    AppMethodBeat.i(215547);
     int i = findVideoFormatValue("frame-rate", this.videoFrameRate);
-    AppMethodBeat.o(189189);
+    AppMethodBeat.o(215547);
     return i;
   }
   
@@ -370,36 +377,36 @@ public class ExportConfig
   
   public void setAudioChannelCount(int paramInt)
   {
-    AppMethodBeat.i(189173);
+    AppMethodBeat.i(215471);
     this.audioChannelCount = paramInt;
     initAudioChannelCount();
-    AppMethodBeat.o(189173);
+    AppMethodBeat.o(215471);
   }
   
   public void setAudioEncodeNeedCodecSpecificData(boolean paramBoolean)
   {
-    AppMethodBeat.i(189177);
+    AppMethodBeat.i(215488);
     Logger.i("ExportConfig", "setAudioEncodeNeedCodecSpecificData:".concat(String.valueOf(paramBoolean)));
     this.audioEncodeNeedCodecSpecificData = paramBoolean;
-    AppMethodBeat.o(189177);
+    AppMethodBeat.o(215488);
   }
   
   public void setAudioSampleRateHz(int paramInt)
   {
-    AppMethodBeat.i(189175);
+    AppMethodBeat.i(215479);
     this.audioSampleRateHz = paramInt;
     initAudioSampleRate();
-    AppMethodBeat.o(189175);
+    AppMethodBeat.o(215479);
   }
   
   public void setColorSpace(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(189169);
+    AppMethodBeat.i(215458);
     this.colorRange = paramInt1;
     this.colorStandard = paramInt2;
     this.colorTransfer = paramInt3;
     initColorSpace();
-    AppMethodBeat.o(189169);
+    AppMethodBeat.o(215458);
   }
   
   public void setEncodeHevc(boolean paramBoolean)
@@ -414,26 +421,26 @@ public class ExportConfig
   
   public void setHdrStaticInfo(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(189171);
+    AppMethodBeat.i(215464);
     this.hdrStaticInfo = paramByteBuffer;
     initHdrInfo();
-    AppMethodBeat.o(189171);
+    AppMethodBeat.o(215464);
   }
   
   public void setHighProfile(boolean paramBoolean)
   {
-    AppMethodBeat.i(189165);
+    AppMethodBeat.i(215448);
     this.highProfile = paramBoolean;
     initHighProfile();
-    AppMethodBeat.o(189165);
+    AppMethodBeat.o(215448);
   }
   
   public void setNeedCorrectSizeByCodecCapabilities(boolean paramBoolean)
   {
-    AppMethodBeat.i(189179);
+    AppMethodBeat.i(215496);
     Logger.i("ExportConfig", "setNeedCorrectSizeByCodecCapabilities:".concat(String.valueOf(paramBoolean)));
     this.correctSizeByCodecCapabilities = paramBoolean;
-    AppMethodBeat.o(189179);
+    AppMethodBeat.o(215496);
   }
   
   public void setOutputFilePath(String paramString)
@@ -443,40 +450,45 @@ public class ExportConfig
   
   public void setOutputSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189157);
+    AppMethodBeat.i(215428);
     this.outputWidth = paramInt1;
     this.outputHeight = paramInt2;
     initOutputSize();
-    AppMethodBeat.o(189157);
+    AppMethodBeat.o(215428);
+  }
+  
+  public void setSuggestParallelCount(int paramInt)
+  {
+    this.suggestParallelCount = paramInt;
   }
   
   public void setVideoBitRate(int paramInt)
   {
-    AppMethodBeat.i(189160);
+    AppMethodBeat.i(215434);
     this.videoBitRate = paramInt;
     initVideoBitrate();
-    AppMethodBeat.o(189160);
+    AppMethodBeat.o(215434);
   }
   
   public void setVideoFrameRate(int paramInt)
   {
-    AppMethodBeat.i(189161);
+    AppMethodBeat.i(215439);
     this.videoFrameRate = paramInt;
     initFrameRate();
-    AppMethodBeat.o(189161);
+    AppMethodBeat.o(215439);
   }
   
   public void setVideoIFrameInterval(int paramInt)
   {
-    AppMethodBeat.i(189163);
+    AppMethodBeat.i(215444);
     this.videoIFrameInterval = paramInt;
     initIFrameInterval();
-    AppMethodBeat.o(189163);
+    AppMethodBeat.o(215444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.ExportConfig
  * JD-Core Version:    0.7.0.1
  */

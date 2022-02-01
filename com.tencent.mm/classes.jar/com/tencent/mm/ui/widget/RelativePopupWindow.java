@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RelativePopupWindow
   extends PopupWindow
 {
-  private FrameLayout GKQ;
-  private boolean Ydq;
+  private FrameLayout MHK;
+  private boolean afVg;
   
   public RelativePopupWindow(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,32 +21,32 @@ public class RelativePopupWindow
   public RelativePopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(196578);
-    this.Ydq = false;
-    this.GKQ = new FrameLayout(paramContext);
-    super.setContentView(this.GKQ);
-    AppMethodBeat.o(196578);
+    AppMethodBeat.i(251723);
+    this.afVg = false;
+    this.MHK = new FrameLayout(paramContext);
+    super.setContentView(this.MHK);
+    AppMethodBeat.o(251723);
   }
   
   public View getContentView()
   {
-    AppMethodBeat.i(196581);
-    View localView = this.GKQ.getChildAt(0);
-    AppMethodBeat.o(196581);
+    AppMethodBeat.i(251727);
+    View localView = this.MHK.getChildAt(0);
+    AppMethodBeat.o(251727);
     return localView;
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(196580);
-    this.GKQ.removeAllViews();
-    this.GKQ.addView(paramView);
-    AppMethodBeat.o(196580);
+    AppMethodBeat.i(251725);
+    this.MHK.removeAllViews();
+    this.MHK.addView(paramView);
+    AppMethodBeat.o(251725);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.RelativePopupWindow
  * JD-Core Version:    0.7.0.1
  */

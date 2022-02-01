@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.subapp.ui.openapi.AppHeaderPreference android:key="app_profile_header" android:layout="@layout/gh" />
-    <PreferenceCategory />
-    <Preference android:key="app_profile_add" android:layout="@layout/aw2" android:title="@string/y3" />
-    <Preference android:key="app_profile_remove" android:layout="@layout/b2o" android:title="@string/y4" />
-    <PreferenceCategory android:key="app_profile_cat" />
-</PreferenceScreen>
+<automotiveApp>
+    <uses name="notification" />
+</automotiveApp>

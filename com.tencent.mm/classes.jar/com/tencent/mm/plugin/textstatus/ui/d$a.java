@@ -1,32 +1,12 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-final class d$a
-  implements View.OnClickListener
-{
-  d$a(d paramd) {}
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(233550);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/textstatus/ui/MMImmerseDialog$initUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.MJx.dismiss();
-    a.a(this, "com/tencent/mm/plugin/textstatus/ui/MMImmerseDialog$initUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(233550);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/MMTipsPopupWindow$Companion;", "", "()V", "POPUP_PADDING", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

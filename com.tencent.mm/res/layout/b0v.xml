@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/a5g" android:minHeight="@dimen/a5g"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:id="@id/gyj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:layout_marginBottom="@dimen/ct" android:text="@string/fxj" />
-    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="bottom|center" android:id="@id/h7v" android:background="@drawable/adx" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginBottom="@dimen/cb" />
-</FrameLayout>
+    <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/f3g" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.base.WxImageView android:layout_gravity="center" android:id="@id/luf" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.mm.plugin.thumbplayer.view.ThumbPlayerVideoView android:id="@id/l89" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/l6p" android:layout_width="@dimen/bx" android:layout_height="@dimen/bx" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" android:contentDescription="@string/f4v" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:id="@id/gqk" android:background="@drawable/azv" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

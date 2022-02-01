@@ -27,29 +27,6 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  public final void TQ(long paramLong)
-  {
-    AppMethodBeat.i(151652);
-    String str = " update appattach set status = 198 , lastModifyTime = " + Util.nowSecond() + " where rowid = " + paramLong;
-    this.db.execSQL("appattach", str);
-    doNotify();
-    AppMethodBeat.o(151652);
-  }
-  
-  public final c TR(long paramLong)
-  {
-    AppMethodBeat.i(151655);
-    c localc = new c();
-    localc.field_msgInfoId = paramLong;
-    if (get(localc, new String[] { "msgInfoId" }))
-    {
-      AppMethodBeat.o(151655);
-      return localc;
-    }
-    AppMethodBeat.o(151655);
-    return null;
-  }
-  
   public final boolean a(c paramc, String... paramVarArgs)
   {
     AppMethodBeat.i(151654);
@@ -59,7 +36,7 @@ public final class d
     return bool;
   }
   
-  public final c bpR(String paramString)
+  public final c bpI(String paramString)
   {
     AppMethodBeat.i(151653);
     c localc = new c();
@@ -75,6 +52,29 @@ public final class d
       return localc;
     }
     AppMethodBeat.o(151653);
+    return null;
+  }
+  
+  public final void yh(long paramLong)
+  {
+    AppMethodBeat.i(151652);
+    String str = " update appattach set status = 198 , lastModifyTime = " + Util.nowSecond() + " where rowid = " + paramLong;
+    this.db.execSQL("appattach", str);
+    doNotify();
+    AppMethodBeat.o(151652);
+  }
+  
+  public final c yi(long paramLong)
+  {
+    AppMethodBeat.i(151655);
+    c localc = new c();
+    localc.field_msgInfoId = paramLong;
+    if (get(localc, new String[] { "msgInfoId" }))
+    {
+      AppMethodBeat.o(151655);
+      return localc;
+    }
+    AppMethodBeat.o(151655);
     return null;
   }
 }

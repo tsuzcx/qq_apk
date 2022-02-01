@@ -16,610 +16,612 @@ import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.d;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.KeyboardView;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.KeyboardView.c;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.KeyboardView.d;
 import com.tencent.mm.plugin.hld.model.k;
 import com.tencent.mm.plugin.hld.view.ImeKeyRelativeLayout;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import java.lang.ref.WeakReference;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView;", "Lcom/tencent/mm/plugin/hld/floatview/IImeFloatView;", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView$OnTouchListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "mAnchorView", "Landroid/view/View;", "mButton", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "mClickStr", "", "mFloatCompositionWidow", "Landroid/widget/PopupWindow;", "mLastKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView$KeyOperation;", "mLastKeyOperationForXml", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "mMinSlideUpHeight", "", "mOnTouchListener", "Ljava/lang/ref/WeakReference;", "mOnTouchListenerForXml", "Landroid/view/View$OnTouchListener;", "mParentView", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "mParentViewForXml", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "mUpperSlideStr", "mUpperSlideTv", "Landroid/widget/TextView;", "onTouchListenerForXml", "com/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$onTouchListenerForXml$1", "Lcom/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$onTouchListenerForXml$1;", "onHide", "", "end", "", "delayMs", "", "onHideImp", "onShowView", "textList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "keyboard", "button", "lastKeyOperation", "parent", "anchorView", "onShowViewImp", "onShowViewImpForXml", "onTouch", "event", "Landroid/view/MotionEvent;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView;", "Lcom/tencent/mm/plugin/hld/floatview/IImeFloatView;", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView$OnTouchListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "mAnchorView", "Landroid/view/View;", "mButton", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "mClickStr", "", "mFloatCompositionWidow", "Landroid/widget/PopupWindow;", "mLastKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView$KeyOperation;", "mLastKeyOperationForXml", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "mMinSlideUpHeight", "", "mOnTouchListener", "Ljava/lang/ref/WeakReference;", "mOnTouchListenerForXml", "Landroid/view/View$OnTouchListener;", "mParentView", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "mParentViewForXml", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "mUpperSlideStr", "mUpperSlideTv", "Landroid/widget/TextView;", "onTouchListenerForXml", "com/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$onTouchListenerForXml$1", "Lcom/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$onTouchListenerForXml$1;", "onHide", "", "end", "", "delayMs", "", "onHideImp", "onShowView", "textList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "keyboard", "button", "lastKeyOperation", "parent", "anchorView", "onShowViewImp", "onShowViewImpForXml", "onTouch", "event", "Landroid/view/MotionEvent;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   implements a, KeyboardView.d
 {
-  public static final a DxC;
-  public PopupWindow DwN;
-  private int DxA;
-  public final b DxB;
-  public com.tencent.mm.plugin.hld.keyboard.selfdraw.b Dxh;
-  public WeakReference<KeyboardView.d> Dxj;
-  public WeakReference<View.OnTouchListener> Dxk;
-  public KeyboardView.c Dxl;
-  public com.tencent.mm.plugin.hld.keyboard.b Dxm;
-  public ImeKeyRelativeLayout Dxv;
-  public TextView Dxw;
-  public KeyboardView Dxx;
-  public String Dxy;
-  public String Dxz;
+  public static final f.a JqA;
+  public PopupWindow JpU;
+  public ImeKeyRelativeLayout JqB;
+  public TextView JqC;
+  public KeyboardView JqD;
+  public String JqE;
+  public String JqF;
+  private int JqG;
+  public final b JqH;
+  public com.tencent.mm.plugin.hld.keyboard.selfdraw.b Jqn;
+  public WeakReference<KeyboardView.d> Jqp;
+  public WeakReference<View.OnTouchListener> Jqq;
+  public KeyboardView.c Jqr;
+  public com.tencent.mm.plugin.hld.keyboard.b Jqs;
   public final Context context;
-  public View lJ;
+  public View mF;
   
   static
   {
-    AppMethodBeat.i(209452);
-    DxC = new a((byte)0);
-    AppMethodBeat.o(209452);
+    AppMethodBeat.i(312849);
+    JqA = new f.a((byte)0);
+    AppMethodBeat.o(312849);
   }
   
   public f(Context paramContext)
   {
-    AppMethodBeat.i(209451);
+    AppMethodBeat.i(312794);
     this.context = paramContext;
-    paramContext = ad.kS(this.context).inflate(a.h.ime_upper_slide_float_view, null, false);
+    paramContext = af.mU(this.context).inflate(a.h.ime_upper_slide_float_view, null, false);
     PopupWindow localPopupWindow = new PopupWindow(paramContext);
     localPopupWindow.setClippingEnabled(false);
     localPopupWindow.setInputMethodMode(2);
     localPopupWindow.setTouchable(false);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-      localPopupWindow.setWindowLayoutType(1003);
+      localObject = l.JyV;
+      localPopupWindow.setWindowLayoutType(l.fOG());
     }
-    this.DwN = localPopupWindow;
-    this.Dxw = ((TextView)paramContext.findViewById(a.f.upper_slide_tv));
-    this.DxA = com.tencent.mm.ci.a.aZ(this.context, a.d.ime_upper_slide_min_height);
-    this.DxB = new b(this);
-    AppMethodBeat.o(209451);
+    Object localObject = ah.aiuX;
+    this.JpU = localPopupWindow;
+    this.JqC = ((TextView)paramContext.findViewById(a.f.upper_slide_tv));
+    this.JqG = com.tencent.mm.cd.a.bs(this.context, a.d.ime_upper_slide_min_height);
+    this.JqH = new b(this);
+    AppMethodBeat.o(312794);
   }
   
-  private final void eDx()
+  private final void fLx()
   {
-    AppMethodBeat.i(209450);
-    PopupWindow localPopupWindow = this.DwN;
-    if (localPopupWindow != null)
-    {
+    AppMethodBeat.i(312798);
+    PopupWindow localPopupWindow = this.JpU;
+    if (localPopupWindow != null) {
       localPopupWindow.dismiss();
-      AppMethodBeat.o(209450);
-      return;
     }
-    AppMethodBeat.o(209450);
+    AppMethodBeat.o(312798);
   }
   
-  public final boolean X(MotionEvent paramMotionEvent)
+  public final boolean Z(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(209448);
-    p.k(paramMotionEvent, "event");
-    int i = (int)paramMotionEvent.getY();
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int i = 1;
+    AppMethodBeat.i(312880);
+    s.u(paramMotionEvent, "event");
+    int j = (int)paramMotionEvent.getY();
     switch (paramMotionEvent.getActionMasked())
     {
     default: 
     case 2: 
-      for (;;)
+      do
       {
-        AppMethodBeat.o(209448);
+        AppMethodBeat.o(312880);
         return false;
-        KeyboardView.c localc = this.Dxl;
-        if (localc != null)
-        {
-          Log.d("WxIme.ImeUpperSlideFloatView", "onTouch yOffset:" + (localc.y - i) + " minHeight:" + this.DxA);
-          if (localc.y - i > this.DxA)
-          {
-            paramMotionEvent = this.Dxh;
-            if (paramMotionEvent != null)
-            {
-              localObject = paramMotionEvent.floatText;
-              paramMotionEvent = (MotionEvent)localObject;
-              if (localObject != null) {}
-            }
-            else
-            {
-              paramMotionEvent = "";
-            }
-            localc.aLu(paramMotionEvent);
-            paramMotionEvent = this.DwN;
-            if ((paramMotionEvent == null) || (paramMotionEvent.isShowing() != true)) {
-              eDw();
-            }
-          }
-          else
-          {
-            paramMotionEvent = this.Dxh;
-            if (paramMotionEvent != null)
-            {
-              localObject = paramMotionEvent.floatText;
-              paramMotionEvent = (MotionEvent)localObject;
-              if (localObject != null) {}
-            }
-            else
-            {
-              paramMotionEvent = "";
-            }
-            localc.aLu(paramMotionEvent);
-            eDx();
-          }
-        }
-      }
-    }
-    paramMotionEvent = this.Dxl;
-    if (paramMotionEvent != null) {
-      paramMotionEvent.Dyh = true;
-    }
-    paramMotionEvent = this.DwN;
-    if ((paramMotionEvent == null) || (paramMotionEvent.isShowing() != true))
-    {
-      paramMotionEvent = this.Dxz;
-      if (paramMotionEvent != null)
+        localObject2 = this.Jqr;
+      } while (localObject2 == null);
+      Log.d("WxIme.ImeUpperSlideFloatView", "onTouch yOffset:" + (((KeyboardView.c)localObject2).y - j) + " minHeight:" + this.JqG);
+      if (((KeyboardView.c)localObject2).y - j > this.JqG)
       {
+        paramMotionEvent = this.Jqn;
         if (paramMotionEvent == null)
         {
-          paramMotionEvent = new t("null cannot be cast to non-null type kotlin.CharSequence");
-          AppMethodBeat.o(209448);
-          throw paramMotionEvent;
+          paramMotionEvent = "";
+          label140:
+          ((KeyboardView.c)localObject2).aIl(paramMotionEvent);
+          paramMotionEvent = this.JpU;
+          if ((paramMotionEvent == null) || (paramMotionEvent.isShowing() != true)) {
+            break label195;
+          }
         }
-        localObject = n.bb((CharSequence)paramMotionEvent).toString();
-        paramMotionEvent = (MotionEvent)localObject;
-        if (localObject != null) {}
+        while (i == 0)
+        {
+          fLw();
+          break;
+          localObject1 = paramMotionEvent.floatText;
+          paramMotionEvent = (MotionEvent)localObject1;
+          if (localObject1 != null) {
+            break label140;
+          }
+          paramMotionEvent = "";
+          break label140;
+          label195:
+          i = 0;
+        }
       }
-      else
-      {
+      paramMotionEvent = this.Jqn;
+      if (paramMotionEvent == null) {
         paramMotionEvent = "";
       }
-      localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-      if (com.tencent.mm.plugin.hld.model.g.eEk())
+      for (;;)
       {
-        if (paramMotionEvent == null)
-        {
-          paramMotionEvent = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(209448);
-          throw paramMotionEvent;
-        }
-        paramMotionEvent = paramMotionEvent.toUpperCase();
-        p.j(paramMotionEvent, "(this as java.lang.String).toUpperCase()");
-        label336:
-        localObject = this.Dxl;
-        if (localObject == null) {
-          break label466;
+        ((KeyboardView.c)localObject2).aIl(paramMotionEvent);
+        fLx();
+        break;
+        localObject1 = paramMotionEvent.floatText;
+        paramMotionEvent = (MotionEvent)localObject1;
+        if (localObject1 == null) {
+          paramMotionEvent = "";
         }
       }
-      label466:
-      for (paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent, ((KeyboardView.c)localObject).Dyi);; paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent))
+    }
+    paramMotionEvent = this.Jqr;
+    if (paramMotionEvent != null) {
+      paramMotionEvent.Jrl = true;
+    }
+    paramMotionEvent = this.JpU;
+    if ((paramMotionEvent != null) && (paramMotionEvent.isShowing() == true))
+    {
+      i = 1;
+      label280:
+      if (i != 0) {
+        break label494;
+      }
+      paramMotionEvent = this.JqF;
+      if (paramMotionEvent != null) {
+        break label433;
+      }
+      paramMotionEvent = "";
+      label297:
+      localObject1 = com.tencent.mm.plugin.hld.model.g.JuL;
+      if (!com.tencent.mm.plugin.hld.model.g.fMm()) {
+        break label460;
+      }
+      localObject1 = paramMotionEvent.toUpperCase();
+      s.s(localObject1, "(this as java.lang.String).toUpperCase()");
+      label322:
+      paramMotionEvent = this.Jqr;
+      if (paramMotionEvent != null) {
+        break label477;
+      }
+    }
+    label433:
+    label460:
+    label477:
+    for (paramMotionEvent = (MotionEvent)localObject2;; paramMotionEvent = new com.tencent.mm.plugin.hld.a.g((String)localObject1, paramMotionEvent.Jrm))
+    {
+      localObject2 = paramMotionEvent;
+      if (paramMotionEvent == null) {
+        localObject2 = new com.tencent.mm.plugin.hld.a.g((String)localObject1);
+      }
+      paramMotionEvent = (d)h.ax(d.class);
+      if (paramMotionEvent != null)
       {
-        localObject = (d)h.ae(d.class);
-        if (localObject != null)
-        {
-          localObject = ((d)localObject).eCD();
-          if (localObject != null)
-          {
-            localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).eCr();
-            if (localObject != null) {
-              ((c)localObject).b(paramMotionEvent);
-            }
-          }
-        }
-        paramMotionEvent = this.Dxh;
+        paramMotionEvent = paramMotionEvent.fKG();
         if (paramMotionEvent != null)
         {
-          localObject = k.DDb;
-          k.a(paramMotionEvent, 1);
-        }
-        a.a.a(this, false, 0L, 3);
-        break;
-        if (paramMotionEvent == null)
-        {
-          paramMotionEvent = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(209448);
-          throw paramMotionEvent;
-        }
-        paramMotionEvent = paramMotionEvent.toLowerCase();
-        p.j(paramMotionEvent, "(this as java.lang.String).toLowerCase()");
-        break label336;
-      }
-    }
-    paramMotionEvent = this.Dxy;
-    if (paramMotionEvent != null)
-    {
-      if (paramMotionEvent == null)
-      {
-        paramMotionEvent = new t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(209448);
-        throw paramMotionEvent;
-      }
-      localObject = n.bb((CharSequence)paramMotionEvent).toString();
-      paramMotionEvent = (MotionEvent)localObject;
-      if (localObject != null) {}
-    }
-    else
-    {
-      paramMotionEvent = "";
-    }
-    Object localObject = this.Dxl;
-    if (localObject != null) {}
-    for (paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent, ((KeyboardView.c)localObject).Dyi);; paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent))
-    {
-      localObject = (d)h.ae(d.class);
-      if (localObject != null)
-      {
-        localObject = ((d)localObject).eCD();
-        if (localObject != null)
-        {
-          localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).eCr();
-          if (localObject != null) {
-            ((c)localObject).b(paramMotionEvent);
+          paramMotionEvent = paramMotionEvent.fKC();
+          if (paramMotionEvent != null) {
+            paramMotionEvent.b((com.tencent.mm.plugin.hld.a.g)localObject2);
           }
         }
       }
-      paramMotionEvent = this.Dxh;
+      paramMotionEvent = this.Jqn;
+      if (paramMotionEvent != null)
+      {
+        localObject1 = k.JvH;
+        k.a(paramMotionEvent, 1);
+      }
+      a.a.a((a)this, false, 0L, 3);
+      break;
+      i = 0;
+      break label280;
+      localObject1 = n.bq((CharSequence)paramMotionEvent).toString();
+      paramMotionEvent = (MotionEvent)localObject1;
+      if (localObject1 != null) {
+        break label297;
+      }
+      paramMotionEvent = "";
+      break label297;
+      localObject1 = paramMotionEvent.toLowerCase();
+      s.s(localObject1, "(this as java.lang.String).toLowerCase()");
+      break label322;
+    }
+    label494:
+    paramMotionEvent = this.JqE;
+    if (paramMotionEvent == null)
+    {
+      paramMotionEvent = "";
+      label507:
+      localObject2 = this.Jqr;
+      if (localObject2 != null) {
+        break label630;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent);
+      }
+      paramMotionEvent = (d)h.ax(d.class);
+      if (paramMotionEvent != null)
+      {
+        paramMotionEvent = paramMotionEvent.fKG();
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent = paramMotionEvent.fKC();
+          if (paramMotionEvent != null) {
+            paramMotionEvent.b((com.tencent.mm.plugin.hld.a.g)localObject2);
+          }
+        }
+      }
+      paramMotionEvent = this.Jqn;
       if (paramMotionEvent == null) {
         break;
       }
-      localObject = k.DDb;
+      localObject1 = k.JvH;
       k.a(paramMotionEvent, 3);
       break;
+      localObject2 = n.bq((CharSequence)paramMotionEvent).toString();
+      paramMotionEvent = (MotionEvent)localObject2;
+      if (localObject2 != null) {
+        break label507;
+      }
+      paramMotionEvent = "";
+      break label507;
+      label630:
+      localObject1 = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent, ((KeyboardView.c)localObject2).Jrm);
     }
   }
   
-  public final void eDv()
+  public final void fLv()
   {
-    AppMethodBeat.i(209447);
+    AppMethodBeat.i(312866);
     Object localObject1 = new int[2];
-    Object localObject2 = this.lJ;
-    if (localObject2 == null) {
-      p.iCn();
-    }
+    Object localObject2 = this.mF;
+    s.checkNotNull(localObject2);
     ((View)localObject2).getLocationInWindow((int[])localObject1);
     int i = localObject1[0];
-    localObject2 = this.lJ;
-    if (localObject2 == null) {
-      p.iCn();
-    }
+    localObject2 = this.mF;
+    s.checkNotNull(localObject2);
     ((View)localObject2).getLocationOnScreen((int[])localObject1);
     int j = localObject1[1];
-    int k = com.tencent.mm.ci.a.aZ(this.context, a.d.ime_upper_slide_float_view_margin_top);
-    int m = com.tencent.mm.ci.a.aZ(this.context, a.d.ime_upper_slide_float_view_height);
-    localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-    int n = com.tencent.mm.plugin.hld.f.l.getStatusBarHeight(this.context);
-    localObject1 = this.DwN;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    int k = com.tencent.mm.cd.a.bs(this.context, a.d.ime_upper_slide_float_view_margin_top);
+    int m = com.tencent.mm.cd.a.bs(this.context, a.d.ime_upper_slide_float_view_height);
+    localObject1 = l.JyV;
+    int n = l.getStatusBarHeight(this.context);
+    localObject1 = this.JpU;
+    s.checkNotNull(localObject1);
     int i1 = ((PopupWindow)localObject1).getWidth();
-    localObject1 = this.lJ;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    localObject1 = this.mF;
+    s.checkNotNull(localObject1);
     i1 = (i1 - ((View)localObject1).getMeasuredWidth()) / 2;
-    localObject1 = com.tencent.mm.plugin.hld.d.a.DxH;
-    if (com.tencent.mm.plugin.hld.d.a.eDz() != null) {
-      localObject1 = com.tencent.mm.plugin.hld.d.a.DxH;
+    localObject1 = com.tencent.mm.plugin.hld.d.a.JqJ;
+    if (com.tencent.mm.plugin.hld.d.a.fLA() != null) {
+      localObject1 = com.tencent.mm.plugin.hld.d.a.JqJ;
     }
-    for (localObject1 = (View)com.tencent.mm.plugin.hld.d.a.eDz();; localObject1 = this.lJ) {
+    for (localObject1 = (View)com.tencent.mm.plugin.hld.d.a.fLA();; localObject1 = this.mF) {
       try
       {
-        localObject2 = this.DwN;
-        if (localObject2 == null) {
-          p.iCn();
-        }
+        localObject2 = this.JpU;
+        s.checkNotNull(localObject2);
         ((PopupWindow)localObject2).showAtLocation((View)localObject1, 8388659, i - i1, j + k - m - n);
-        AppMethodBeat.o(209447);
+        AppMethodBeat.o(312866);
         return;
       }
       catch (Exception localException)
       {
-        Log.e("WxIme.ImeUpperSlideFloatView", "onShowView " + localException.getMessage());
-        AppMethodBeat.o(209447);
+        Log.e("WxIme.ImeUpperSlideFloatView", s.X("onShowView ", localException.getMessage()));
+        AppMethodBeat.o(312866);
       }
     }
   }
   
-  public final void eDw()
+  public final void fLw()
   {
-    AppMethodBeat.i(209449);
+    AppMethodBeat.i(312888);
     Object localObject1 = new int[2];
-    Object localObject2 = this.Dxx;
-    if (localObject2 == null) {
-      p.iCn();
-    }
+    Object localObject2 = this.JqD;
+    s.checkNotNull(localObject2);
     ((KeyboardView)localObject2).getLocationInWindow((int[])localObject1);
     int i = localObject1[0];
-    localObject2 = this.Dxh;
-    if (localObject2 == null) {
-      p.iCn();
-    }
-    int j = ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject2).DzC.left;
-    localObject2 = this.Dxx;
-    if (localObject2 == null) {
-      p.iCn();
-    }
+    localObject2 = this.Jqn;
+    s.checkNotNull(localObject2);
+    int j = ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject2).JsF.left;
+    localObject2 = this.JqD;
+    s.checkNotNull(localObject2);
     ((KeyboardView)localObject2).getLocationOnScreen((int[])localObject1);
     int k = localObject1[1];
-    localObject1 = this.Dxh;
-    if (localObject1 == null) {
-      p.iCn();
-    }
-    int m = ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject1).DzC.top;
-    int n = com.tencent.mm.ci.a.aZ(this.context, a.d.ime_upper_slide_float_view_margin_top);
-    int i1 = com.tencent.mm.ci.a.aZ(this.context, a.d.ime_upper_slide_float_view_height);
-    localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-    int i2 = com.tencent.mm.plugin.hld.f.l.getStatusBarHeight(this.context);
-    localObject1 = this.DwN;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    localObject1 = this.Jqn;
+    s.checkNotNull(localObject1);
+    int m = ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject1).JsF.top;
+    int n = com.tencent.mm.cd.a.bs(this.context, a.d.ime_upper_slide_float_view_margin_top);
+    int i1 = com.tencent.mm.cd.a.bs(this.context, a.d.ime_upper_slide_float_view_height);
+    localObject1 = l.JyV;
+    int i2 = l.getStatusBarHeight(this.context);
+    localObject1 = this.JpU;
+    s.checkNotNull(localObject1);
     int i3 = ((PopupWindow)localObject1).getWidth();
-    localObject1 = this.Dxh;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    localObject1 = this.Jqn;
+    s.checkNotNull(localObject1);
     i3 = (i3 - ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject1).width) / 2;
-    localObject1 = com.tencent.mm.plugin.hld.d.a.DxH;
-    if (com.tencent.mm.plugin.hld.d.a.eDz() != null) {
-      localObject1 = com.tencent.mm.plugin.hld.d.a.DxH;
+    localObject1 = com.tencent.mm.plugin.hld.d.a.JqJ;
+    if (com.tencent.mm.plugin.hld.d.a.fLA() != null) {
+      localObject1 = com.tencent.mm.plugin.hld.d.a.JqJ;
     }
-    for (localObject1 = (View)com.tencent.mm.plugin.hld.d.a.eDz();; localObject1 = (View)this.Dxx) {
+    for (localObject1 = (View)com.tencent.mm.plugin.hld.d.a.fLA();; localObject1 = (View)this.JqD) {
       try
       {
-        localObject2 = this.DwN;
-        if (localObject2 == null) {
-          p.iCn();
-        }
+        localObject2 = this.JpU;
+        s.checkNotNull(localObject2);
         ((PopupWindow)localObject2).showAtLocation((View)localObject1, 8388659, i + j - i3, k + m + n - i1 - i2);
-        AppMethodBeat.o(209449);
+        AppMethodBeat.o(312888);
         return;
       }
       catch (Exception localException)
       {
-        Log.e("WxIme.ImeUpperSlideFloatView", "onShowView " + localException.getMessage());
-        AppMethodBeat.o(209449);
+        Log.e("WxIme.ImeUpperSlideFloatView", s.X("onShowView ", localException.getMessage()));
+        AppMethodBeat.o(312888);
       }
     }
   }
   
-  public final void i(boolean paramBoolean, long paramLong)
+  public final void l(boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(209446);
-    eDx();
-    Object localObject1 = this.Dxk;
+    AppMethodBeat.i(312860);
+    fLx();
+    Object localObject1 = this.Jqq;
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
     {
-      localObject2 = this.Dxv;
-      if (localObject2 == null) {
-        p.iCn();
-      }
+      localObject2 = this.JqB;
+      s.checkNotNull(localObject2);
       ((ImeKeyRelativeLayout)localObject2).setOnTouchListener((View.OnTouchListener)((WeakReference)localObject1).get());
     }
-    Object localObject2 = this.Dxx;
+    Object localObject2 = this.JqD;
     if (localObject2 != null)
     {
-      localObject1 = this.Dxj;
-      if (localObject1 == null) {
-        break label160;
+      localObject1 = this.Jqp;
+      if (localObject1 != null) {
+        break label150;
       }
     }
-    label160:
-    for (localObject1 = (KeyboardView.d)((WeakReference)localObject1).get();; localObject1 = null)
+    label150:
+    for (localObject1 = null;; localObject1 = (KeyboardView.d)((WeakReference)localObject1).get())
     {
       ((KeyboardView)localObject2).setTouchListener((KeyboardView.d)localObject1);
       if (paramBoolean)
       {
-        localObject1 = this.Dxh;
+        localObject1 = this.Jqn;
         if (localObject1 != null) {
-          ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject1).sP(false);
+          ((com.tencent.mm.plugin.hld.keyboard.selfdraw.b)localObject1).wV(false);
         }
-        localObject1 = this.lJ;
+        localObject1 = this.mF;
         if (localObject1 != null) {
           ((View)localObject1).setSelected(false);
         }
       }
-      this.lJ = null;
-      this.Dxh = null;
-      this.Dxx = null;
-      this.Dxj = null;
-      AppMethodBeat.o(209446);
+      this.mF = null;
+      this.Jqn = null;
+      this.JqD = null;
+      this.Jqp = null;
+      AppMethodBeat.o(312860);
       return;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$onTouchListenerForXml$1", "Landroid/view/View$OnTouchListener;", "onTouch", "", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-hld_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/floatview/ImeUpperSlideFloatView$onTouchListenerForXml$1", "Landroid/view/View$OnTouchListener;", "onTouch", "", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements View.OnTouchListener
   {
+    b(f paramf) {}
+    
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(217474);
-      int i;
-      if (paramMotionEvent != null)
+      Object localObject3 = null;
+      Object localObject2 = null;
+      int i = 1;
+      AppMethodBeat.i(312777);
+      int j;
+      if (paramMotionEvent == null)
       {
-        localObject = Float.valueOf(paramMotionEvent.getRawY());
-        i = (int)((Float)localObject).floatValue();
-        if (paramMotionEvent == null) {
-          break label64;
+        localObject1 = Double.valueOf(0.0D);
+        j = (int)((Float)localObject1).floatValue();
+        if (paramMotionEvent != null) {
+          break label67;
         }
-        paramMotionEvent = Integer.valueOf(paramMotionEvent.getActionMasked());
+        paramMotionEvent = null;
         label40:
         if (paramMotionEvent != null) {
-          break label69;
+          break label78;
         }
         label44:
         if (paramMotionEvent != null) {
-          break label254;
+          break label278;
         }
       }
-      label64:
-      label69:
-      label254:
-      while (paramMotionEvent.intValue() != 1) {
+      label67:
+      label78:
+      label229:
+      label232:
+      label234:
+      while (paramMotionEvent.intValue() != 1)
+      {
         for (;;)
         {
-          AppMethodBeat.o(217474);
+          AppMethodBeat.o(312777);
           return false;
-          localObject = Double.valueOf(0.0D);
+          localObject1 = Float.valueOf(paramMotionEvent.getRawY());
           break;
-          paramMotionEvent = null;
+          paramMotionEvent = Integer.valueOf(paramMotionEvent.getActionMasked());
           break label40;
           if (paramMotionEvent.intValue() != 2) {
             break label44;
           }
-          localObject = f.a(this.DxD);
-          if (localObject != null)
+          localObject2 = f.a(this.JqI);
+          if (localObject2 != null)
           {
-            Log.d("WxIme.ImeUpperSlideFloatView", "onTouch yOffset:" + (((com.tencent.mm.plugin.hld.keyboard.b)localObject).y - i) + " minHeight:" + f.b(this.DxD));
-            if (((com.tencent.mm.plugin.hld.keyboard.b)localObject).y - i > f.b(this.DxD))
+            localObject1 = this.JqI;
+            Log.d("WxIme.ImeUpperSlideFloatView", "onTouch yOffset:" + (((com.tencent.mm.plugin.hld.keyboard.b)localObject2).y - j) + " minHeight:" + f.f((f)localObject1));
+            if (((com.tencent.mm.plugin.hld.keyboard.b)localObject2).y - j <= f.f((f)localObject1)) {
+              break label234;
+            }
+            paramView = f.g((f)localObject1);
+            if (paramView == null)
             {
-              paramView = f.c(this.DxD);
-              if (paramView != null)
-              {
-                paramMotionEvent = paramView.getSecondText();
-                paramView = paramMotionEvent;
-                if (paramMotionEvent != null) {}
-              }
-              else
-              {
-                paramView = "";
-              }
-              ((com.tencent.mm.plugin.hld.keyboard.b)localObject).aLu(paramView);
-              paramView = f.d(this.DxD);
+              paramView = "";
+              ((com.tencent.mm.plugin.hld.keyboard.b)localObject2).aIl(paramView);
+              paramView = f.c((f)localObject1);
               if ((paramView == null) || (paramView.isShowing() != true)) {
-                f.e(this.DxD);
+                break label229;
               }
             }
-            else
+            for (;;)
             {
-              paramView = f.c(this.DxD);
-              if (paramView != null)
-              {
-                paramMotionEvent = paramView.getText();
-                paramView = paramMotionEvent;
-                if (paramMotionEvent != null) {}
+              if (i != 0) {
+                break label232;
               }
-              else
-              {
-                paramView = "";
+              f.h((f)localObject1);
+              break;
+              paramMotionEvent = paramView.getSecondText();
+              paramView = paramMotionEvent;
+              if (paramMotionEvent != null) {
+                break label176;
               }
-              ((com.tencent.mm.plugin.hld.keyboard.b)localObject).aLu(paramView);
-              f.f(this.DxD);
+              paramView = "";
+              break label176;
+              i = 0;
             }
           }
         }
+        paramView = f.g((f)localObject1);
+        if (paramView == null) {
+          paramView = "";
+        }
+        for (;;)
+        {
+          ((com.tencent.mm.plugin.hld.keyboard.b)localObject2).aIl(paramView);
+          f.i((f)localObject1);
+          break;
+          paramMotionEvent = paramView.getText();
+          paramView = paramMotionEvent;
+          if (paramMotionEvent == null) {
+            paramView = "";
+          }
+        }
       }
-      paramMotionEvent = f.a(this.DxD);
+      label176:
+      paramMotionEvent = f.a(this.JqI);
+      label278:
       if (paramMotionEvent != null) {
-        paramMotionEvent.Dyh = true;
+        paramMotionEvent.Jrl = true;
       }
-      paramMotionEvent = f.g(this.DxD);
+      paramMotionEvent = f.b(this.JqI);
       if (paramMotionEvent != null) {
         paramMotionEvent.setOnTouchListener(null);
       }
-      paramMotionEvent = f.d(this.DxD);
-      if ((paramMotionEvent == null) || (paramMotionEvent.isShowing() != true))
+      paramMotionEvent = f.c(this.JqI);
+      if ((paramMotionEvent != null) && (paramMotionEvent.isShowing() == true))
       {
-        paramMotionEvent = f.h(this.DxD);
+        i = 1;
+        label342:
+        if (i != 0) {
+          break label550;
+        }
+        paramMotionEvent = f.d(this.JqI);
+        if (paramMotionEvent != null) {
+          break label491;
+        }
+        paramMotionEvent = "";
+        label361:
+        localObject1 = com.tencent.mm.plugin.hld.model.g.JuL;
+        if (!com.tencent.mm.plugin.hld.model.g.fMm()) {
+          break label517;
+        }
+        localObject1 = paramMotionEvent.toUpperCase();
+        s.s(localObject1, "(this as java.lang.String).toUpperCase()");
+        label385:
+        paramMotionEvent = f.a(this.JqI);
+        if (paramMotionEvent != null) {
+          break label533;
+        }
+      }
+      label517:
+      label533:
+      for (paramMotionEvent = (MotionEvent)localObject2;; paramMotionEvent = new com.tencent.mm.plugin.hld.a.g((String)localObject1, paramMotionEvent.Jrm))
+      {
+        localObject2 = paramMotionEvent;
+        if (paramMotionEvent == null) {
+          localObject2 = new com.tencent.mm.plugin.hld.a.g((String)localObject1);
+        }
+        paramMotionEvent = (d)h.ax(d.class);
         if (paramMotionEvent != null)
         {
-          if (paramMotionEvent == null)
+          paramMotionEvent = paramMotionEvent.fKG();
+          if (paramMotionEvent != null)
           {
-            paramView = new t("null cannot be cast to non-null type kotlin.CharSequence");
-            AppMethodBeat.o(217474);
-            throw paramView;
-          }
-          localObject = n.bb((CharSequence)paramMotionEvent).toString();
-          paramMotionEvent = (MotionEvent)localObject;
-          if (localObject != null) {}
-        }
-        else
-        {
-          paramMotionEvent = "";
-        }
-        localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-        if (com.tencent.mm.plugin.hld.model.g.eEk())
-        {
-          if (paramMotionEvent == null)
-          {
-            paramView = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(217474);
-            throw paramView;
-          }
-          paramMotionEvent = paramMotionEvent.toUpperCase();
-          p.j(paramMotionEvent, "(this as java.lang.String).toUpperCase()");
-          label415:
-          localObject = f.a(this.DxD);
-          if (localObject == null) {
-            break label552;
-          }
-        }
-        label552:
-        for (paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent, ((com.tencent.mm.plugin.hld.keyboard.b)localObject).Dyi);; paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent))
-        {
-          localObject = (d)h.ae(d.class);
-          if (localObject != null)
-          {
-            localObject = ((d)localObject).eCD();
-            if (localObject != null)
-            {
-              localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).eCr();
-              if (localObject != null) {
-                ((c)localObject).b(paramMotionEvent);
-              }
+            paramMotionEvent = paramMotionEvent.fKC();
+            if (paramMotionEvent != null) {
+              paramMotionEvent.b((com.tencent.mm.plugin.hld.a.g)localObject2);
             }
           }
-          paramMotionEvent = k.DDb;
-          k.am(paramView, 1);
-          a.a.a(this.DxD, false, 0L, 3);
-          break;
-          if (paramMotionEvent == null)
-          {
-            paramView = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(217474);
-            throw paramView;
-          }
-          paramMotionEvent = paramMotionEvent.toLowerCase();
-          p.j(paramMotionEvent, "(this as java.lang.String).toLowerCase()");
-          break label415;
         }
-      }
-      paramMotionEvent = f.i(this.DxD);
-      if (paramMotionEvent != null)
-      {
-        if (paramMotionEvent == null)
-        {
-          paramView = new t("null cannot be cast to non-null type kotlin.CharSequence");
-          AppMethodBeat.o(217474);
-          throw paramView;
+        paramMotionEvent = k.JvH;
+        k.aB(paramView, 1);
+        a.a.a((a)this.JqI, false, 0L, 3);
+        break;
+        i = 0;
+        break label342;
+        label491:
+        localObject1 = n.bq((CharSequence)paramMotionEvent).toString();
+        paramMotionEvent = (MotionEvent)localObject1;
+        if (localObject1 != null) {
+          break label361;
         }
-        localObject = n.bb((CharSequence)paramMotionEvent).toString();
-        paramMotionEvent = (MotionEvent)localObject;
-        if (localObject != null) {}
+        paramMotionEvent = "";
+        break label361;
+        localObject1 = paramMotionEvent.toLowerCase();
+        s.s(localObject1, "(this as java.lang.String).toLowerCase()");
+        break label385;
       }
-      else
+      label550:
+      paramMotionEvent = f.e(this.JqI);
+      if (paramMotionEvent == null)
       {
         paramMotionEvent = "";
+        label565:
+        localObject1 = f.a(this.JqI);
+        if (localObject1 != null) {
+          break label683;
+        }
       }
-      Object localObject = f.a(this.DxD);
-      if (localObject != null) {}
-      for (paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent, ((com.tencent.mm.plugin.hld.keyboard.b)localObject).Dyi);; paramMotionEvent = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent))
+      label683:
+      for (Object localObject1 = localObject3;; localObject1 = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent, ((com.tencent.mm.plugin.hld.keyboard.b)localObject1).Jrm))
       {
-        localObject = (d)h.ae(d.class);
-        if (localObject != null)
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new com.tencent.mm.plugin.hld.a.g(paramMotionEvent);
+        }
+        paramMotionEvent = (d)h.ax(d.class);
+        if (paramMotionEvent != null)
         {
-          localObject = ((d)localObject).eCD();
-          if (localObject != null)
+          paramMotionEvent = paramMotionEvent.fKG();
+          if (paramMotionEvent != null)
           {
-            localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).eCr();
-            if (localObject != null) {
-              ((c)localObject).b(paramMotionEvent);
+            paramMotionEvent = paramMotionEvent.fKC();
+            if (paramMotionEvent != null) {
+              paramMotionEvent.b((com.tencent.mm.plugin.hld.a.g)localObject2);
             }
           }
         }
-        paramMotionEvent = k.DDb;
-        k.am(paramView, 3);
+        paramMotionEvent = k.JvH;
+        k.aB(paramView, 3);
         break;
+        localObject1 = n.bq((CharSequence)paramMotionEvent).toString();
+        paramMotionEvent = (MotionEvent)localObject1;
+        if (localObject1 != null) {
+          break label565;
+        }
+        paramMotionEvent = "";
+        break label565;
       }
     }
   }

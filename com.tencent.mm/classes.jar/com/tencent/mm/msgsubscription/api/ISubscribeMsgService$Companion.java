@@ -1,16 +1,16 @@
 package com.tencent.mm.msgsubscription.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$Companion;", "", "()V", "TAG", "", "SubscribeMsgListWrapper", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$Companion;", "", "()V", "TAG", "", "SubscribeMsgListWrapper", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ISubscribeMsgService$Companion
 {
   static
   {
-    AppMethodBeat.i(227828);
-    moA = new Companion();
-    AppMethodBeat.o(227828);
+    AppMethodBeat.i(236658);
+    pir = new Companion();
+    AppMethodBeat.o(236658);
   }
 }
 

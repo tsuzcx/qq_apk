@@ -45,15 +45,15 @@ public final class f
         }
         else
         {
-          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.d(parama.aGj().getString("__page_view_id", null), localArrayList);
-          parama1.bt(i(true, ""));
+          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.d(parama.aZk().getString("__page_view_id", null), localArrayList);
+          parama1.cN(h(true, ""));
           AppMethodBeat.o(121312);
           return;
         }
       }
       catch (JSONException parama)
       {
-        parama1.bt(i(false, "dataArray is null"));
+        parama1.cN(h(false, "dataArray is null"));
         AppMethodBeat.o(121312);
         return;
       }
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.f
  * JD-Core Version:    0.7.0.1
  */

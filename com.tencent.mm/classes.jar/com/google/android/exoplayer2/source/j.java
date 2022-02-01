@@ -5,25 +5,25 @@ import com.google.android.exoplayer2.g.f;
 public abstract interface j
   extends o
 {
-  public abstract void Y(long paramLong);
+  public abstract void SO();
   
-  public abstract long Z(long paramLong);
+  public abstract r SP();
+  
+  public abstract long SQ();
+  
+  public abstract long SR();
+  
+  public abstract long SS();
   
   public abstract long a(f[] paramArrayOff, boolean[] paramArrayOfBoolean1, n[] paramArrayOfn, boolean[] paramArrayOfBoolean2, long paramLong);
   
   public abstract void a(a parama, long paramLong);
   
-  public abstract boolean aa(long paramLong);
+  public abstract void cm(long paramLong);
   
-  public abstract void tl();
+  public abstract long cn(long paramLong);
   
-  public abstract r tm();
-  
-  public abstract long tn();
-  
-  public abstract long to();
-  
-  public abstract long tp();
+  public abstract boolean co(long paramLong);
   
   public static abstract interface a
     extends o.a<j>
@@ -33,7 +33,7 @@ public abstract interface j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.j
  * JD-Core Version:    0.7.0.1
  */

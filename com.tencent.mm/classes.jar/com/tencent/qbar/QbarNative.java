@@ -8,7 +8,11 @@ public class QbarNative
   static
   {
     AppMethodBeat.i(88406);
-    System.loadLibrary("wechatQrMod");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatQrMod");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/qbar/QbarNative", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/qbar/QbarNative", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(88406);
   }
   
@@ -34,9 +38,9 @@ public class QbarNative
   
   protected static native int nativeYuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  protected native int GetCodeDetectInfo(QBarCodeDetectInfo[] paramArrayOfQBarCodeDetectInfo, QbarNative.QBarPoint[] paramArrayOfQBarPoint, int paramInt);
+  protected native int GetCodeDetectInfo(QBarCodeDetectInfo[] paramArrayOfQBarCodeDetectInfo, QBarPoint[] paramArrayOfQBarPoint, int paramInt);
   
-  protected native int GetDetailResults(QBarResultJNI[] paramArrayOfQBarResultJNI, QbarNative.QBarPoint[] paramArrayOfQBarPoint, QbarNative.QBarReportMsg[] paramArrayOfQBarReportMsg, int paramInt);
+  protected native int GetDetailResults(QBarResultJNI[] paramArrayOfQBarResultJNI, QBarPoint[] paramArrayOfQBarPoint, QbarNative.QBarReportMsg[] paramArrayOfQBarReportMsg, int paramInt);
   
   protected native int GetOneResult(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int[] paramArrayOfInt, int paramInt);
   
@@ -44,7 +48,7 @@ public class QbarNative
   
   protected native int GetZoomInfo(QBarZoomInfo paramQBarZoomInfo, int paramInt);
   
-  protected native int Init(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarAiModelParam paramQbarAiModelParam);
+  protected native int Init(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, QbarAiModelParam paramQbarAiModelParam);
   
   protected native int Release(int paramInt);
   
@@ -56,6 +60,19 @@ public class QbarNative
   {
     public float prob;
     public int readerId;
+  }
+  
+  public static class QBarPoint
+  {
+    public int point_cnt;
+    public float x0;
+    public float x1;
+    public float x2;
+    public float x3;
+    public float y0;
+    public float y1;
+    public float y2;
+    public float y3;
   }
   
   public static class QBarResultJNI
@@ -83,7 +100,7 @@ public class QbarNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qbar.QbarNative
  * JD-Core Version:    0.7.0.1
  */

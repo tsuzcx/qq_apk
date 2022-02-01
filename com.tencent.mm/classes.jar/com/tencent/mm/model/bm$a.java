@@ -5,21 +5,21 @@ import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.cfk;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.cvj;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class bm$a
   extends l.d
   implements l.b
 {
-  public cfk ltV;
+  public cvj ols;
   
   public bm$a()
   {
-    AppMethodBeat.i(20365);
-    this.ltV = new cfk();
-    AppMethodBeat.o(20365);
+    AppMethodBeat.i(20361);
+    this.ols = new cvj();
+    AppMethodBeat.o(20361);
   }
   
   public final int getCmdId()
@@ -29,23 +29,23 @@ public final class bm$a
   
   public final int getFuncId()
   {
-    return 618;
+    return 616;
   }
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(20366);
-    setRsaInfo(ac.hph());
-    this.ltV.RQU = new eae().dc(Util.getUuidRandom());
-    this.ltV.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.ltV.toByteArray();
-    AppMethodBeat.o(20366);
+    AppMethodBeat.i(20362);
+    setRsaInfo(ac.iQc());
+    this.ols.YOj = new gol().df(Util.getUuidRandom());
+    this.ols.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.ols.toByteArray();
+    AppMethodBeat.o(20362);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bm.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.mv.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class b$a
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  public static final a GdL;
+  public static final a LZz;
   
   static
   {
-    AppMethodBeat.i(230354);
-    GdL = new a();
-    AppMethodBeat.o(230354);
+    AppMethodBeat.i(286209);
+    LZz = new a();
+    AppMethodBeat.o(286209);
   }
   
   b$a()

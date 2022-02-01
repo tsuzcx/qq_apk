@@ -11,7 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.multitask.animation.swipeahead.FloatMultiTaskIndicatorView;
 import com.tencent.mm.plugin.multitask.c.e;
 import com.tencent.mm.plugin.multitask.d.b;
@@ -20,55 +20,54 @@ import com.tencent.mm.plugin.multitask.g;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.multitask.ui.MultiTaskFloatBallView;
 import com.tencent.mm.plugin.secdata.ui.a.a;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.dak;
-import com.tencent.mm.protocal.protobuf.dal;
-import com.tencent.mm.protocal.protobuf.dam;
-import com.tencent.mm.protocal.protobuf.dap;
-import com.tencent.mm.protocal.protobuf.daq;
-import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.aet;
+import com.tencent.mm.protocal.protobuf.drs;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.dru;
+import com.tencent.mm.protocal.protobuf.dry;
+import com.tencent.mm.protocal.protobuf.drz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/AbsMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBViewListener;", "pageAdapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "(Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "baseMultiTaskSwipeBackAnimWrapper", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;", "getBaseMultiTaskSwipeBackAnimWrapper", "()Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;", "setBaseMultiTaskSwipeBackAnimWrapper", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;)V", "canSwipeBackToMultiTask", "", "getCanSwipeBackToMultiTask", "()Z", "setCanSwipeBackToMultiTask", "(Z)V", "enterTransformationListener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "getEnterTransformationListener", "()Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "setEnterTransformationListener", "(Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;)V", "floatBallTransformationListener", "getFloatBallTransformationListener", "setFloatBallTransformationListener", "floatIndicatorController", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController;", "getFloatIndicatorController", "()Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController;", "setFloatIndicatorController", "(Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController;)V", "homeSnapBlt", "Landroid/graphics/Bitmap;", "getHomeSnapBlt", "()Landroid/graphics/Bitmap;", "isFromMultiTaskItem", "<set-?>", "isFromTaskBar", "()Ljava/lang/Boolean;", "setFromTaskBar", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "isVisiableButtom", "setVisiableButtom", "isVisiableTop", "setVisiableTop", "mIsLandScape", "getMIsLandScape", "setMIsLandScape", "multiTaskItemPos", "", "getMultiTaskItemPos", "()I", "setMultiTaskItemPos", "(I)V", "multiTaskSnapBlt", "getMultiTaskSnapBlt", "multiTaskUIManager", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIManager;", "getMultiTaskUIManager", "()Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIManager;", "setMultiTaskUIManager", "(Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIManager;)V", "", "ori_position", "getOri_position", "()Ljava/lang/String;", "setOri_position", "(Ljava/lang/String;)V", "getPageAdapter", "()Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "setPageAdapter", "position", "getPosition", "setPosition", "readEnded", "swipeAheadMultiTaskListener", "Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "getSwipeAheadMultiTaskListener", "()Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "setSwipeAheadMultiTaskListener", "(Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;)V", "swipeBackTransformationListener", "getSwipeBackTransformationListener", "setSwipeBackTransformationListener", "swipeBlt", "getSwipeBlt", "setSwipeBlt", "(Landroid/graphics/Bitmap;)V", "transformListener", "getTransformListener", "setTransformListener", "addOrUpdateCurrentHistoryTaskInfo", "", "beforeOnMenuEnterOrSwipebackToMultiTask", "onMenuFloatBallSelectCallback", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "canSwipeToMultiTask", "checkBitmap", "bitmap", "isLandScape", "createEnterTransformationListener", "createFloatBallTransformationListener", "createMultiTaskEnterAndBackAnimation", "createMultiTaskUIManager", "createSwipeAheadToMultiTaskListener", "createSwipeBackTransformationListener", "finishPage", "getHistoryBitmapOnClose", "initData", "initReportData", "onClose", "way", "ended", "onCreate", "multiTaskType", "multiTaskId", "onDestroy", "onMenuMultiTaskSelected", "enterMultiTask", "generateType", "onMultiTaskAnimDone", "forceUpdate", "needUpdateInfo", "needShowTip", "onMultiTaskPanelClicked", "onMultiTaskPanelDelete", "onMultiTaskPanelHide", "onMultiTaskPanelShow", "anim", "onOrientationChange", "orientation", "onSwipePageAddToMultiTask", "restoreCurrentBallWhenNonPassiveClose", "setMultiTaskCommonInfo", "commonData", "Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;", "setSwipeToMultiTaskEnable", "enable", "setTransformationListener", "listener", "showHome", "Companion", "OnMenuMultiTaskSelectCallback", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/AbsMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBViewListener;", "pageAdapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "(Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "baseMultiTaskSwipeBackAnimWrapper", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;", "getBaseMultiTaskSwipeBackAnimWrapper", "()Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;", "setBaseMultiTaskSwipeBackAnimWrapper", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;)V", "canSwipeBackToMultiTask", "", "getCanSwipeBackToMultiTask", "()Z", "setCanSwipeBackToMultiTask", "(Z)V", "enterTransformationListener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "getEnterTransformationListener", "()Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "setEnterTransformationListener", "(Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;)V", "floatBallTransformationListener", "getFloatBallTransformationListener", "setFloatBallTransformationListener", "floatIndicatorController", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController;", "getFloatIndicatorController", "()Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController;", "setFloatIndicatorController", "(Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorController;)V", "homeSnapBlt", "Landroid/graphics/Bitmap;", "getHomeSnapBlt", "()Landroid/graphics/Bitmap;", "isFromMultiTaskItem", "<set-?>", "isFromTaskBar", "()Ljava/lang/Boolean;", "setFromTaskBar", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "isVisiableButtom", "setVisiableButtom", "isVisiableTop", "setVisiableTop", "mIsLandScape", "getMIsLandScape", "setMIsLandScape", "multiTaskItemPos", "", "getMultiTaskItemPos", "()I", "setMultiTaskItemPos", "(I)V", "multiTaskSnapBlt", "getMultiTaskSnapBlt", "multiTaskUIManager", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIManager;", "getMultiTaskUIManager", "()Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIManager;", "setMultiTaskUIManager", "(Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIManager;)V", "", "ori_position", "getOri_position", "()Ljava/lang/String;", "setOri_position", "(Ljava/lang/String;)V", "getPageAdapter", "()Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "setPageAdapter", "position", "getPosition", "setPosition", "readEnded", "swipeAheadMultiTaskListener", "Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "getSwipeAheadMultiTaskListener", "()Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "setSwipeAheadMultiTaskListener", "(Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;)V", "swipeBackTransformationListener", "getSwipeBackTransformationListener", "setSwipeBackTransformationListener", "swipeBlt", "getSwipeBlt", "setSwipeBlt", "(Landroid/graphics/Bitmap;)V", "transformListener", "getTransformListener", "setTransformListener", "addOrUpdateCurrentHistoryTaskInfo", "", "beforeOnMenuEnterOrSwipebackToMultiTask", "onMenuFloatBallSelectCallback", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "canSwipeToMultiTask", "checkBitmap", "bitmap", "isLandScape", "createEnterTransformationListener", "createFloatBallTransformationListener", "createMultiTaskEnterAndBackAnimation", "createMultiTaskUIManager", "createSwipeAheadToMultiTaskListener", "createSwipeBackTransformationListener", "finishPage", "getHistoryBitmapOnClose", "initData", "initReportData", "onClose", "way", "ended", "onCreate", "multiTaskType", "multiTaskId", "onDestroy", "onMenuMultiTaskSelected", "enterMultiTask", "generateType", "onMultiTaskAnimDone", "forceUpdate", "needUpdateInfo", "needShowTip", "onMultiTaskPanelClicked", "onMultiTaskPanelDelete", "onMultiTaskPanelHide", "onMultiTaskPanelShow", "anim", "onOrientationChange", "orientation", "onSwipePageAddToMultiTask", "restoreCurrentBallWhenNonPassiveClose", "setMultiTaskCommonInfo", "commonData", "Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;", "setSwipeToMultiTaskEnable", "enable", "setTransformationListener", "listener", "showHome", "Companion", "OnMenuMultiTaskSelectCallback", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class c
   extends a
   implements com.tencent.mm.plugin.multitask.c.d
 {
-  public static final c.a FHD;
-  public com.tencent.mm.plugin.multitask.a.a FGb;
-  com.tencent.mm.plugin.multitask.ui.d FHA;
-  boolean FHB;
-  private boolean FHC;
-  com.tencent.mm.plugin.multitask.c.c FHm;
-  private com.tencent.mm.plugin.multitask.c.c FHn;
-  private com.tencent.mm.plugin.multitask.c.c FHo;
-  private e FHp;
-  private com.tencent.mm.plugin.multitask.animation.swipeahead.b FHq;
-  private com.tencent.mm.plugin.multitask.animation.c.a.a FHr;
-  com.tencent.mm.plugin.multitask.c.c FHs;
-  private String FHt;
-  private Boolean FHu;
-  private Boolean FHv;
-  public Boolean FHw;
-  private int FHx;
-  Bitmap FHy;
-  boolean FHz;
-  private String nWv;
+  public static final c.a LCL;
+  public com.tencent.mm.plugin.multitask.a.a LBU;
+  com.tencent.mm.plugin.multitask.c.c LCM;
+  private com.tencent.mm.plugin.multitask.c.c LCN;
+  private com.tencent.mm.plugin.multitask.c.c LCO;
+  private e LCP;
+  private com.tencent.mm.plugin.multitask.animation.swipeahead.b LCQ;
+  private com.tencent.mm.plugin.multitask.animation.c.a.a LCR;
+  com.tencent.mm.plugin.multitask.c.c LCS;
+  private String LCT;
+  private Boolean LCU;
+  private Boolean LCV;
+  public Boolean LCW;
+  private int LCX;
+  Bitmap LCY;
+  boolean LCZ;
+  com.tencent.mm.plugin.multitask.ui.d LDa;
+  boolean LDb;
+  private boolean LDc;
+  private String qWi;
   
   static
   {
-    AppMethodBeat.i(248221);
-    FHD = new c.a((byte)0);
-    AppMethodBeat.o(248221);
+    AppMethodBeat.i(304005);
+    LCL = new c.a((byte)0);
+    AppMethodBeat.o(304005);
   }
   
   public c(byte paramByte)
@@ -78,17 +77,52 @@ public class c
   
   public c(com.tencent.mm.plugin.multitask.a.a parama)
   {
-    this.FGb = parama;
-    this.FHu = Boolean.FALSE;
-    this.FHv = Boolean.FALSE;
-    this.FHw = Boolean.FALSE;
-    this.FHx = -1;
+    this.LBU = parama;
+    this.LCU = Boolean.FALSE;
+    this.LCV = Boolean.FALSE;
+    this.LCW = Boolean.FALSE;
+    this.LCX = -1;
   }
   
-  private boolean bNO()
+  private static final void a(c paramc)
   {
-    AppMethodBeat.i(248195);
-    Object localObject = this.FGb;
+    Object localObject2 = null;
+    AppMethodBeat.i(303940);
+    s.u(paramc, "this$0");
+    Object localObject1;
+    if (paramc.LBU != null)
+    {
+      localObject1 = paramc.LBU;
+      if (localObject1 != null) {
+        break label64;
+      }
+      localObject1 = null;
+      if (localObject1 != null)
+      {
+        paramc = paramc.LBU;
+        if (paramc != null) {
+          break label74;
+        }
+      }
+    }
+    label64:
+    label74:
+    for (paramc = localObject2;; paramc = paramc.getContentView())
+    {
+      if (paramc != null) {
+        paramc.setVisibility(0);
+      }
+      AppMethodBeat.o(303940);
+      return;
+      localObject1 = ((com.tencent.mm.plugin.multitask.a.a)localObject1).getContentView();
+      break;
+    }
+  }
+  
+  private boolean cod()
+  {
+    AppMethodBeat.i(303893);
+    Object localObject = this.LBU;
     byte[] arrayOfByte;
     if (localObject != null)
     {
@@ -97,22 +131,22 @@ public class c
       {
         arrayOfByte = ((Intent)localObject).getByteArrayExtra("key_multi_task_common_info");
         if (arrayOfByte != null) {
-          localObject = new aco();
+          localObject = new aet();
         }
       }
     }
     try
     {
-      ((aco)localObject).parseFrom(arrayOfByte);
+      ((aet)localObject).parseFrom(arrayOfByte);
       label52:
-      b((aco)localObject);
-      localObject = ((aco)localObject).Soh;
-      if ((localObject != null) && (!Util.isNullOrNil(((dal)localObject).nWv)) && (!Util.isNullOrNil(((dal)localObject).THF)))
+      b((aet)localObject);
+      localObject = ((aet)localObject).ZmM;
+      if ((localObject != null) && (!Util.isNullOrNil(((drt)localObject).qWi)) && (!Util.isNullOrNil(((drt)localObject).aaXo)))
       {
-        AppMethodBeat.o(248195);
+        AppMethodBeat.o(303893);
         return true;
       }
-      AppMethodBeat.o(248195);
+      AppMethodBeat.o(303893);
       return false;
     }
     catch (Exception localException)
@@ -121,621 +155,639 @@ public class c
     }
   }
   
-  private final Bitmap e(Bitmap paramBitmap, boolean paramBoolean)
+  private final Bitmap f(Bitmap paramBitmap, boolean paramBoolean)
   {
-    AppMethodBeat.i(248213);
-    Object localObject;
-    if (!cbI())
+    MultiTaskInfo localMultiTaskInfo = null;
+    Object localObject = null;
+    AppMethodBeat.i(303915);
+    if (!cCb())
     {
-      localObject = this.FHd;
-      if (localObject != null)
+      localMultiTaskInfo = this.LCE;
+      if (localMultiTaskInfo == null) {}
+      for (;;)
       {
-        localObject = ((MultiTaskInfo)localObject).fbc();
         if (localObject != null) {
-          ((dar)localObject).BYk = 0;
+          ((drz)localObject).HKy = 0;
         }
+        AppMethodBeat.o(303915);
+        return paramBitmap;
+        localObject = localMultiTaskInfo.gkh();
       }
-      AppMethodBeat.o(248213);
-      return paramBitmap;
     }
     if (paramBitmap != null)
     {
       if (paramBoolean)
       {
-        localObject = this.FHd;
-        if (localObject != null)
+        localObject = this.LCE;
+        if (localObject == null) {}
+        for (localObject = null;; localObject = ((MultiTaskInfo)localObject).gkh())
         {
-          localObject = ((MultiTaskInfo)localObject).fbc();
           if (localObject != null) {
-            ((dar)localObject).BYk = 90;
+            ((drz)localObject).HKy = 90;
           }
+          localObject = this.LBU;
+          if (localObject != null) {
+            break;
+          }
+          AppMethodBeat.o(303915);
+          return null;
         }
-        localObject = this.FGb;
-        if (localObject != null)
-        {
-          paramBitmap = ((com.tencent.mm.plugin.multitask.a.a)localObject).ad(paramBitmap);
-          AppMethodBeat.o(248213);
-          return paramBitmap;
-        }
-        AppMethodBeat.o(248213);
-        return null;
+        paramBitmap = ((com.tencent.mm.plugin.multitask.a.a)localObject).ap(paramBitmap);
+        AppMethodBeat.o(303915);
+        return paramBitmap;
       }
-      localObject = this.FHd;
-      if (localObject != null)
-      {
-        localObject = ((MultiTaskInfo)localObject).fbc();
-        if (localObject != null) {
-          ((dar)localObject).BYk = 0;
-        }
+      localObject = this.LCE;
+      if (localObject != null) {
+        break label154;
       }
     }
-    AppMethodBeat.o(248213);
-    return paramBitmap;
+    label154:
+    for (localObject = localMultiTaskInfo;; localObject = ((MultiTaskInfo)localObject).gkh())
+    {
+      if (localObject != null) {
+        ((drz)localObject).HKy = 0;
+      }
+      AppMethodBeat.o(303915);
+      return paramBitmap;
+    }
   }
   
-  private final void evQ()
+  private final void fHD()
   {
-    AppMethodBeat.i(248216);
+    AppMethodBeat.i(303929);
     Log.i("MicroMsg.PageMultiTaskHelper", "finishPage");
-    Object localObject = this.FGb;
-    if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getActivity();; localObject = null)
+    Object localObject = this.LBU;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getActivity())
     {
       if ((localObject instanceof MMActivity)) {
-        MMHandlerThread.postToMainThreadDelayed((Runnable)new g(this), 200L);
+        MMHandlerThread.postToMainThreadDelayed(new c..ExternalSyntheticLambda0(this), 200L);
       }
-      localObject = this.FGb;
-      if (localObject == null) {
-        break;
+      localObject = this.LBU;
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.multitask.a.a)localObject).a(false, (b)this);
       }
-      ((com.tencent.mm.plugin.multitask.a.a)localObject).a(false, (b)this);
-      AppMethodBeat.o(248216);
+      AppMethodBeat.o(303929);
       return;
     }
-    AppMethodBeat.o(248216);
   }
   
-  private final Bitmap faY()
+  private final Bitmap gkd()
   {
-    AppMethodBeat.i(248198);
-    if (this.FHy != null)
+    AppMethodBeat.i(303899);
+    if (this.LCY != null)
     {
-      localObject = this.FHy;
-      AppMethodBeat.o(248198);
+      localObject = this.LCY;
+      AppMethodBeat.o(303899);
       return localObject;
     }
-    Object localObject = this.FGb;
-    if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap();; localObject = null)
+    Object localObject = this.LBU;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap())
     {
-      localObject = ae((Bitmap)localObject);
-      AppMethodBeat.o(248198);
+      localObject = aq((Bitmap)localObject);
+      AppMethodBeat.o(303899);
       return localObject;
     }
   }
   
-  private final void faZ()
+  private final void gke()
   {
     com.tencent.mm.plugin.multitask.animation.c.a.a locala = null;
-    AppMethodBeat.i(248211);
+    AppMethodBeat.i(303908);
     Object localObject;
-    if ((faT()) && (faQ()))
+    if ((gjZ()) && (gjV()))
     {
-      if ((cbG()) || (cbJ()))
+      if ((!cBZ()) && (!cCc())) {
+        break label300;
+      }
+      localObject = this.LBU;
+      if (localObject == null) {}
+      for (localObject = null; (localObject instanceof MMActivity); localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getActivity())
       {
-        localObject = this.FGb;
-        if (localObject != null) {}
-        for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getActivity(); (localObject instanceof MMActivity); localObject = null)
+        if (this.LCR == null)
         {
-          if (this.FHr == null)
+          this.LCR = ((com.tencent.mm.plugin.multitask.animation.c.a.a)new com.tencent.mm.plugin.multitask.animation.c.b.a());
+          localObject = this.LBU;
+          if (localObject != null)
           {
-            this.FHr = ((com.tencent.mm.plugin.multitask.animation.c.a.a)new com.tencent.mm.plugin.multitask.animation.c.b.a());
-            localObject = this.FGb;
-            if (localObject != null)
-            {
-              locala = this.FHr;
-              if (locala != null) {
-                locala.a((com.tencent.mm.plugin.multitask.a.a)localObject, (b)this, this.FHn);
-              }
+            locala = this.LCR;
+            if (locala != null) {
+              locala.a((com.tencent.mm.plugin.multitask.a.a)localObject, (b)this, this.LCN);
             }
           }
-          this.FHB = cbG();
-          AppMethodBeat.o(248211);
-          return;
         }
-        com.tencent.mm.plugin.multitask.a.a locala1 = this.FGb;
+        this.LDb = cBZ();
+        AppMethodBeat.o(303908);
+        return;
+      }
+      localObject = this.LBU;
+      if (localObject == null) {
         localObject = locala;
-        if (locala1 != null) {
-          localObject = locala1.getActivity();
-        }
-        if ((localObject instanceof MMFragmentActivity))
-        {
-          if (this.FHr == null)
-          {
-            this.FHr = ((com.tencent.mm.plugin.multitask.animation.c.a.a)new com.tencent.mm.plugin.multitask.animation.c.c.a());
-            localObject = this.FGb;
-            if (localObject != null)
-            {
-              locala = this.FHr;
-              if (locala != null) {
-                locala.a((com.tencent.mm.plugin.multitask.a.a)localObject, (b)this, this.FHn);
-              }
-            }
-          }
-          this.FHB = cbG();
-        }
-        AppMethodBeat.o(248211);
       }
     }
-    else if ((cbG()) && (this.FHq == null))
+    while ((localObject instanceof MMFragmentActivity))
     {
-      localObject = this.FGb;
-      if (localObject != null) {
-        this.FHq = new com.tencent.mm.plugin.multitask.animation.swipeahead.b((com.tencent.mm.plugin.multitask.a.a)localObject, this.FHp);
-      }
-      localObject = this.FHq;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.swipeahead.b)localObject).start();
-      }
-      localObject = this.FHq;
-      if (localObject != null)
+      if (this.LCR == null)
       {
-        localObject = ((com.tencent.mm.plugin.multitask.animation.swipeahead.b)localObject).FFZ;
+        this.LCR = ((com.tencent.mm.plugin.multitask.animation.c.a.a)new com.tencent.mm.plugin.multitask.animation.c.c.a());
+        localObject = this.LBU;
         if (localObject != null)
         {
-          ((FloatMultiTaskIndicatorView)localObject).faz();
-          AppMethodBeat.o(248211);
-          return;
+          locala = this.LCR;
+          if (locala != null) {
+            locala.a((com.tencent.mm.plugin.multitask.a.a)localObject, (b)this, this.LCN);
+          }
+        }
+      }
+      this.LDb = cBZ();
+      AppMethodBeat.o(303908);
+      return;
+      localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getActivity();
+      continue;
+      if ((cBZ()) && (this.LCQ == null))
+      {
+        localObject = this.LBU;
+        if (localObject != null) {
+          this.LCQ = new com.tencent.mm.plugin.multitask.animation.swipeahead.b((com.tencent.mm.plugin.multitask.a.a)localObject, this.LCP);
+        }
+        localObject = this.LCQ;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.multitask.animation.swipeahead.b)localObject).start();
+        }
+        localObject = this.LCQ;
+        if (localObject != null)
+        {
+          localObject = ((com.tencent.mm.plugin.multitask.animation.swipeahead.b)localObject).LBW;
+          if (localObject != null) {
+            ((FloatMultiTaskIndicatorView)localObject).gjE();
+          }
         }
       }
     }
-    AppMethodBeat.o(248211);
+    label300:
+    AppMethodBeat.o(303908);
   }
   
-  public void I(int paramInt, String paramString)
+  public void J(int paramInt, String paramString)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(248192);
-    super.I(paramInt, paramString);
-    this.FHm = ((com.tencent.mm.plugin.multitask.c.c)new d(this));
-    this.FHn = ((com.tencent.mm.plugin.multitask.c.c)new f(this));
-    this.FHo = ((com.tencent.mm.plugin.multitask.c.c)new c(this));
-    this.FHp = ((e)new e(this));
+    AppMethodBeat.i(304061);
+    super.J(paramInt, paramString);
+    this.LCM = ((com.tencent.mm.plugin.multitask.c.c)new d(this));
+    this.LCN = ((com.tencent.mm.plugin.multitask.c.c)new f(this));
+    this.LCO = ((com.tencent.mm.plugin.multitask.c.c)new c(this));
+    this.LCP = ((e)new e(this));
     paramString = new com.tencent.mm.plugin.multitask.ui.d();
-    paramString.FIq = this.FGb;
+    paramString.LDF = this.LBU;
     Object localObject1 = (com.tencent.mm.plugin.multitask.c.d)this;
     Object localObject3;
-    if (paramString.cwq())
+    if (paramString.cZa())
     {
-      localObject3 = paramString.FIp;
-      if ((localObject3 != null) && (((com.tencent.mm.plugin.multitask.ui.b)localObject3).FIb != null) && (localObject1 != null))
+      localObject3 = paramString.LDE;
+      if ((localObject3 != null) && (((com.tencent.mm.plugin.multitask.ui.b)localObject3).LDv != null) && (localObject1 != null))
       {
-        localObject3 = ((com.tencent.mm.plugin.multitask.ui.b)localObject3).FIb;
+        localObject3 = ((com.tencent.mm.plugin.multitask.ui.b)localObject3).LDv;
         if (localObject3 != null) {
           ((MultiTaskFloatBallView)localObject3).a((com.tencent.mm.plugin.multitask.c.d)localObject1);
         }
       }
     }
-    this.FHA = paramString;
-    bNO();
-    if ((dJN()) && (faT()))
+    localObject1 = ah.aiuX;
+    this.LDa = paramString;
+    cod();
+    if ((eCI()) && (gjZ()))
     {
-      paramString = this.FGb;
+      paramString = this.LBU;
       if (paramString != null) {
         paramString.a((b)this);
       }
     }
-    paramString = this.FGb;
+    paramString = this.LBU;
     if (paramString != null) {
-      paramString.XU(paramInt);
+      paramString.ach(paramInt);
     }
-    faZ();
-    paramString = this.FGb;
+    gke();
+    paramString = this.LBU;
     if (paramString != null)
     {
       paramString = paramString.getActivity();
       if (paramString != null)
       {
-        localObject1 = com.tencent.mm.plugin.secdata.ui.a.JbV;
-        paramString = a.a.hU((Context)paramString);
+        localObject1 = com.tencent.mm.plugin.secdata.ui.a.PlI;
+        paramString = a.a.jC((Context)paramString);
+        if (paramString != null) {
+          break label379;
+        }
+        paramString = null;
         if (paramString != null)
         {
-          paramString = (daq)paramString.c(5, daq.class);
-          if (paramString != null)
-          {
-            localObject3 = this.FHf;
-            if (localObject3 != null)
-            {
-              localObject1 = this.FHd;
-              if (localObject1 == null) {
-                break label407;
-              }
-            }
-          }
-        }
-        label407:
-        for (localObject1 = Integer.valueOf(((MultiTaskInfo)localObject1).field_type);; localObject1 = null)
-        {
-          ((daq)localObject3).fNO = ((Integer)localObject1).intValue();
-          localObject3 = this.FHf;
+          localObject3 = this.LCG;
           if (localObject3 != null)
           {
-            MultiTaskInfo localMultiTaskInfo = this.FHd;
-            localObject1 = localObject2;
-            if (localMultiTaskInfo != null) {
-              localObject1 = localMultiTaskInfo.field_id;
-            }
-            ((daq)localObject3).THW = ((String)localObject1);
-          }
-          localObject1 = this.FHf;
-          if (localObject1 != null) {
-            ((daq)localObject1).wmL = paramString.wmL;
-          }
-          localObject1 = this.FHf;
-          if (localObject1 != null)
-          {
-            localObject1 = ((daq)localObject1).THX;
+            localObject1 = this.LCE;
             if (localObject1 != null) {
-              ((dam)localObject1).THL = cm.bfE();
+              break label394;
             }
+            localObject1 = null;
+            label275:
+            ((dry)localObject3).itemType = ((Integer)localObject1).intValue();
           }
-          Log.i("MicroMsg.PageMultiTaskHelper", "secdata multitask scene enter contextId: %s", new Object[] { paramString.wmL });
-          AppMethodBeat.o(248192);
-          return;
-          paramString = null;
-          break;
-        }
-      }
-    }
-    AppMethodBeat.o(248192);
-  }
-  
-  public boolean Q(int paramInt, boolean paramBoolean)
-  {
-    com.tencent.mm.plugin.multitask.a.a locala2 = null;
-    com.tencent.mm.plugin.multitask.a.a locala1 = null;
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = null;
-    int k = 1;
-    int j = 0;
-    AppMethodBeat.i(248197);
-    Log.i("MicroMsg.PageMultiTaskHelper", "onClose, way:%d, ended", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    Object localObject4 = this.FHA;
-    if (localObject4 != null)
-    {
-      localObject4 = ((com.tencent.mm.plugin.multitask.ui.d)localObject4).FIp;
-      int i;
-      if (localObject4 != null)
-      {
-        localObject4 = ((com.tencent.mm.plugin.multitask.ui.b)localObject4).FIb;
-        if (localObject4 != null)
-        {
-          localObject4 = ((MultiTaskFloatBallView)localObject4).FIe;
-          if (localObject4 != null) {
-            if ((((com.tencent.mm.plugin.multitask.animation.b.b)localObject4).cuT()) || (((com.tencent.mm.plugin.multitask.animation.b.b)localObject4).cuU())) {
-              i = 1;
+          localObject3 = this.LCG;
+          if (localObject3 != null)
+          {
+            localObject1 = this.LCE;
+            if (localObject1 != null) {
+              break label405;
             }
+            localObject1 = null;
+            label306:
+            ((dry)localObject3).aaXF = ((String)localObject1);
+          }
+          localObject1 = this.LCG;
+          if (localObject1 != null) {
+            ((dry)localObject1).zIO = paramString.zIO;
+          }
+          localObject1 = this.LCG;
+          if (localObject1 != null) {
+            break label413;
           }
         }
       }
-      while (i != 0)
-      {
-        Log.i("MicroMsg.PageMultiTaskHelper", "onClose, is Animation!");
-        AppMethodBeat.o(248197);
-        return true;
-        i = 0;
-        continue;
-        i = 0;
-        continue;
-        i = 0;
-        continue;
-        i = 0;
-      }
     }
-    this.FHC = paramBoolean;
-    paramBoolean = faQ();
-    if ((faT()) && (paramBoolean))
+    label394:
+    label405:
+    label413:
+    for (localObject1 = localObject2;; localObject1 = ((dry)localObject1).aaXG)
     {
-      faZ();
-      Log.i("MicroMsg.PageMultiTaskHelper", "onClose, isSupportSwipeToMultiTask:" + cbG() + ", isSupportExitToMultiTask:" + cbJ());
-      if ((this.FHr != null) && ((cbG()) || (cbJ())))
-      {
-        localObject2 = this.FHr;
-        if (localObject2 != null) {
-          ((com.tencent.mm.plugin.multitask.animation.c.a.a)localObject2).XW(paramInt);
-        }
-        if (!cbK())
-        {
-          if (!paramBoolean) {
-            break label341;
-          }
-          locala1 = this.FGb;
-          if (locala1 != null) {
-            localObject1 = locala1.getBitmap();
-          }
-          localObject1 = ae((Bitmap)localObject1);
-        }
+      if (localObject1 != null) {
+        ((dru)localObject1).aaXu = cn.bDw();
       }
-      for (;;)
-      {
-        d((Bitmap)localObject1, this.FHC);
-        AppMethodBeat.o(248197);
-        return true;
-        localObject2 = this.FHn;
-        if (localObject2 == null) {
-          break;
-        }
-        ((com.tencent.mm.plugin.multitask.c.c)localObject2).Yb(0);
-        break;
-        label341:
-        paramInt = j;
-        if (!this.FHC)
-        {
-          paramInt = j;
-          if (faV()) {
-            paramInt = 1;
-          }
-        }
-        if (paramInt != 0)
-        {
-          locala2 = this.FGb;
-          localObject1 = locala1;
-          if (locala2 != null) {
-            localObject1 = locala2.getBitmap();
-          }
-          localObject1 = ae((Bitmap)localObject1);
-        }
-        else
-        {
-          localObject1 = locala2;
-        }
-      }
-    }
-    if (!cbK()) {
-      if (paramBoolean)
-      {
-        localObject1 = faY();
-        af((Bitmap)localObject1);
-        d((Bitmap)localObject1, this.FHC);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(248197);
-      return false;
-      if ((!this.FHC) && (faV())) {}
-      for (paramInt = k;; paramInt = 0)
-      {
-        localObject1 = localObject3;
-        if (paramInt != 0) {
-          localObject1 = faY();
-        }
-        d((Bitmap)localObject1, this.FHC);
-        break;
-      }
-      if (paramBoolean)
-      {
-        locala1 = this.FGb;
-        localObject1 = localObject2;
-        if (locala1 != null) {
-          localObject1 = locala1.getBitmap();
-        }
-        af(ae((Bitmap)localObject1));
-      }
+      Log.i("MicroMsg.PageMultiTaskHelper", "secdata multitask scene enter contextId: %s", new Object[] { paramString.zIO });
+      AppMethodBeat.o(304061);
+      return;
+      label379:
+      paramString = (dry)paramString.c(5, dry.class);
+      break;
+      localObject1 = Integer.valueOf(((MultiTaskInfo)localObject1).field_type);
+      break label275;
+      localObject1 = ((MultiTaskInfo)localObject1).field_id;
+      break label306;
     }
   }
   
   public void a(b paramb)
   {
-    AppMethodBeat.i(248204);
-    if (paramb != null)
-    {
+    AppMethodBeat.i(304132);
+    if (paramb != null) {
       paramb.proceed();
-      AppMethodBeat.o(248204);
-      return;
     }
-    AppMethodBeat.o(248204);
+    AppMethodBeat.o(304132);
   }
   
-  public final Bitmap ae(Bitmap paramBitmap)
+  public boolean af(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(248212);
-    paramBitmap = e(paramBitmap, faI());
-    AppMethodBeat.o(248212);
+    Object localObject2 = null;
+    com.tencent.mm.plugin.multitask.a.a locala = null;
+    Object localObject4 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    int k = 1;
+    int j = 0;
+    AppMethodBeat.i(304080);
+    Log.i("MicroMsg.PageMultiTaskHelper", "onClose, way:%d, ended", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    Object localObject5 = this.LDa;
+    if (localObject5 != null)
+    {
+      localObject5 = ((com.tencent.mm.plugin.multitask.ui.d)localObject5).LDE;
+      if (localObject5 != null)
+      {
+        localObject5 = ((com.tencent.mm.plugin.multitask.ui.b)localObject5).LDv;
+        if (localObject5 != null)
+        {
+          localObject5 = ((MultiTaskFloatBallView)localObject5).LDy;
+          if ((localObject5 == null) || ((!((com.tencent.mm.plugin.multitask.animation.b.b)localObject5).cXD()) && (!((com.tencent.mm.plugin.multitask.animation.b.b)localObject5).cXE()))) {}
+        }
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        Log.i("MicroMsg.PageMultiTaskHelper", "onClose, is Animation!");
+        AppMethodBeat.o(304080);
+        return true;
+      }
+    }
+    this.LDc = paramBoolean;
+    paramBoolean = gjV();
+    if ((gjZ()) && (paramBoolean))
+    {
+      gke();
+      Log.i("MicroMsg.PageMultiTaskHelper", "onClose, isSupportSwipeToMultiTask:" + cBZ() + ", isSupportExitToMultiTask:" + cCc());
+      if ((this.LCR != null) && ((cBZ()) || (cCc())))
+      {
+        localObject3 = this.LCR;
+        if (localObject3 != null) {
+          ((com.tencent.mm.plugin.multitask.animation.c.a.a)localObject3).acj(paramInt);
+        }
+        if (!cCd())
+        {
+          if (!paramBoolean) {
+            break label329;
+          }
+          locala = this.LBU;
+          if (locala != null) {
+            break label317;
+          }
+          label269:
+          localObject1 = aq((Bitmap)localObject1);
+        }
+      }
+      for (;;)
+      {
+        e((Bitmap)localObject1, this.LDc);
+        AppMethodBeat.o(304080);
+        return true;
+        localObject3 = this.LCN;
+        if (localObject3 == null) {
+          break;
+        }
+        ((com.tencent.mm.plugin.multitask.c.c)localObject3).aco(0);
+        break;
+        label317:
+        localObject1 = locala.getBitmap();
+        break label269;
+        label329:
+        paramInt = j;
+        if (!this.LDc)
+        {
+          paramInt = j;
+          if (evu()) {
+            paramInt = 1;
+          }
+        }
+        if (paramInt != 0)
+        {
+          localObject1 = this.LBU;
+          if (localObject1 == null) {}
+          for (localObject1 = locala;; localObject1 = ((com.tencent.mm.plugin.multitask.a.a)localObject1).getBitmap())
+          {
+            localObject1 = aq((Bitmap)localObject1);
+            break;
+          }
+        }
+        localObject1 = localObject2;
+      }
+    }
+    if (!cCd()) {
+      if (paramBoolean)
+      {
+        localObject1 = gkd();
+        ar((Bitmap)localObject1);
+        e((Bitmap)localObject1, this.LDc);
+      }
+    }
+    while (!paramBoolean)
+    {
+      AppMethodBeat.o(304080);
+      return false;
+      if ((!this.LDc) && (evu())) {}
+      for (paramInt = k;; paramInt = 0)
+      {
+        localObject1 = localObject4;
+        if (paramInt != 0) {
+          localObject1 = gkd();
+        }
+        e((Bitmap)localObject1, this.LDc);
+        break;
+      }
+    }
+    localObject1 = this.LBU;
+    if (localObject1 == null) {}
+    for (localObject1 = localObject3;; localObject1 = ((com.tencent.mm.plugin.multitask.a.a)localObject1).getBitmap())
+    {
+      ar(aq((Bitmap)localObject1));
+      break;
+    }
+  }
+  
+  public final Bitmap aq(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(304167);
+    paramBitmap = f(paramBitmap, gjN());
+    AppMethodBeat.o(304167);
     return paramBitmap;
   }
   
-  public final void b(aco paramaco)
+  public final void b(aet paramaet)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(248200);
-    label59:
-    label90:
-    label121:
+    AppMethodBeat.i(304105);
+    Object localObject1;
+    label29:
+    label42:
+    label55:
     int i;
-    label148:
-    boolean bool;
-    label162:
-    daq localdaq;
-    if (paramaco != null)
+    label67:
+    label81:
+    label358:
+    long l;
+    if (paramaet == null)
     {
-      localObject1 = paramaco.Soh;
-      if (localObject1 != null)
+      localObject1 = null;
+      this.qWi = ((String)localObject1);
+      if (paramaet != null) {
+        break label493;
+      }
+      localObject1 = null;
+      this.LCT = ((String)localObject1);
+      if (paramaet != null) {
+        break label520;
+      }
+      localObject1 = null;
+      this.LCU = ((Boolean)localObject1);
+      if (paramaet != null) {
+        break label550;
+      }
+      localObject1 = null;
+      this.LCV = ((Boolean)localObject1);
+      if (paramaet != null) {
+        break label580;
+      }
+      i = -1;
+      this.LCX = i;
+      if (paramaet != null) {
+        break label605;
+      }
+      localObject1 = Boolean.FALSE;
+      this.LCW = ((Boolean)localObject1);
+      a(paramaet);
+      Log.i("MicroMsg.PageMultiTaskHelper", "commoninfo position: " + this.qWi + ",ori_position: " + this.LCT + ", itemPos:" + this.LCX + ", fromTaskBar:" + this.LCW);
+      if (gjZ())
       {
-        localObject1 = ((dal)localObject1).nWv;
-        this.nWv = ((String)localObject1);
-        if (paramaco == null) {
-          break label579;
-        }
-        localObject1 = paramaco.Soh;
-        if (localObject1 == null) {
-          break label579;
-        }
-        localObject1 = ((dal)localObject1).FHt;
-        this.FHt = ((String)localObject1);
-        if (paramaco == null) {
-          break label585;
-        }
-        localObject1 = paramaco.Soh;
-        if (localObject1 == null) {
-          break label585;
-        }
-        localObject1 = Boolean.valueOf(((dal)localObject1).THI);
-        this.FHu = ((Boolean)localObject1);
-        if (paramaco == null) {
-          break label591;
-        }
-        localObject1 = paramaco.Soh;
-        if (localObject1 == null) {
-          break label591;
-        }
-        localObject1 = Boolean.valueOf(((dal)localObject1).THJ);
-        this.FHv = ((Boolean)localObject1);
-        if (paramaco == null) {
-          break label597;
-        }
-        localObject1 = paramaco.Soh;
-        if (localObject1 == null) {
-          break label597;
-        }
-        i = ((dal)localObject1).THK;
-        this.FHx = i;
-        if (paramaco == null) {
-          break label602;
-        }
-        bool = paramaco.Soi;
-        this.FHw = Boolean.valueOf(bool);
-        a(paramaco);
-        Log.i("MicroMsg.PageMultiTaskHelper", "commoninfo position: " + this.nWv + ",ori_position: " + this.FHt + ", itemPos:" + this.FHx + ", fromTaskBar:" + this.FHw);
-        if (faT())
+        com.tencent.mm.ae.d.a(gjT(), (kotlin.g.a.a)new c.i(this));
+        if (cCb())
         {
-          com.tencent.mm.ae.d.a(faO(), (kotlin.g.a.a)new j(this));
-          if (cbI())
+          localObject1 = this.LBU;
+          if (localObject1 != null)
           {
-            localObject1 = this.FGb;
-            if (localObject1 != null)
-            {
-              localObject1 = ((com.tencent.mm.plugin.multitask.a.a)localObject1).getActivity();
-              if (localObject1 != null) {
-                ((Activity)localObject1).setRequestedOrientation(1);
-              }
-            }
-          }
-        }
-        if (paramaco == null)
-        {
-          localObject1 = this.FHf;
-          if (localObject1 != null) {
-            ((daq)localObject1).wmL = "";
-          }
-        }
-        if (paramaco == null) {
-          break label620;
-        }
-        if (!Util.isNullOrNil(paramaco.wmL))
-        {
-          localObject1 = this.FHf;
-          if (localObject1 != null) {
-            ((daq)localObject1).wmL = paramaco.wmL;
-          }
-          localdaq = this.FHf;
-          if (localdaq != null)
-          {
-            localObject1 = this.FHd;
-            if (localObject1 == null) {
-              break label607;
+            localObject1 = ((com.tencent.mm.plugin.multitask.a.a)localObject1).getActivity();
+            if (localObject1 != null) {
+              ((Activity)localObject1).setRequestedOrientation(1);
             }
           }
         }
       }
-    }
-    label579:
-    label585:
-    label591:
-    label597:
-    label602:
-    label607:
-    for (Object localObject1 = Integer.valueOf(((MultiTaskInfo)localObject1).field_type);; localObject1 = null)
-    {
-      localdaq.fNO = ((Integer)localObject1).intValue();
-      localdaq = this.FHf;
-      if (localdaq != null)
+      if (paramaet == null)
       {
-        MultiTaskInfo localMultiTaskInfo = this.FHd;
-        localObject1 = localObject2;
-        if (localMultiTaskInfo != null) {
-          localObject1 = localMultiTaskInfo.field_id;
-        }
-        localdaq.THW = ((String)localObject1);
-      }
-      localObject1 = this.FHf;
-      if (localObject1 != null)
-      {
-        localObject1 = ((daq)localObject1).THX;
+        localObject1 = this.LCG;
         if (localObject1 != null) {
-          ((dam)localObject1).THL = cm.bfE();
+          ((dry)localObject1).zIO = "";
         }
       }
-      Log.i("MicroMsg.PageMultiTaskHelper", "secdata multitask scene enter contextId: %s", new Object[] { paramaco.wmL });
-      paramaco = paramaco.Soh;
-      if (paramaco == null) {
-        break label613;
-      }
-      long l = System.currentTimeMillis();
-      if ((l >= paramaco.Qoz) && (paramaco.Qoz != 0L))
+      if (paramaet != null)
       {
-        localObject1 = this.FHf;
+        if (!Util.isNullOrNil(paramaet.zIO))
+        {
+          localObject1 = this.LCG;
+          if (localObject1 != null) {
+            ((dry)localObject1).zIO = paramaet.zIO;
+          }
+          dry localdry = this.LCG;
+          if (localdry != null)
+          {
+            localObject1 = this.LCE;
+            if (localObject1 != null) {
+              break label617;
+            }
+            localObject1 = null;
+            label302:
+            localdry.itemType = ((Integer)localObject1).intValue();
+          }
+          localdry = this.LCG;
+          if (localdry != null)
+          {
+            localObject1 = this.LCE;
+            if (localObject1 != null) {
+              break label630;
+            }
+            localObject1 = null;
+            label337:
+            localdry.aaXF = ((String)localObject1);
+          }
+          localObject1 = this.LCG;
+          if (localObject1 != null) {
+            break label640;
+          }
+          localObject1 = null;
+          if (localObject1 != null) {
+            ((dru)localObject1).aaXu = cn.bDw();
+          }
+          Log.i("MicroMsg.PageMultiTaskHelper", "secdata multitask scene enter contextId: %s", new Object[] { paramaet.zIO });
+        }
+        localObject1 = paramaet.ZmM;
         if (localObject1 != null)
         {
-          localObject1 = ((daq)localObject1).TIa;
-          if (localObject1 != null) {
-            ((dap)localObject1).THU = (l - paramaco.Qoz);
+          l = System.currentTimeMillis();
+          if ((l >= ((drt)localObject1).XgN) && (((drt)localObject1).XgN != 0L))
+          {
+            paramaet = this.LCG;
+            if (paramaet != null) {
+              break label650;
+            }
           }
         }
-        paramaco.Qoz = 0L;
       }
-      AppMethodBeat.o(248200);
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-      break label59;
-      localObject1 = null;
-      break label90;
-      localObject1 = null;
-      break label121;
-      i = -1;
-      break label148;
-      bool = false;
-      break label162;
     }
-    label613:
-    AppMethodBeat.o(248200);
-    return;
-    label620:
-    AppMethodBeat.o(248200);
-  }
-  
-  public void dJO()
-  {
-    AppMethodBeat.i(248209);
-    Object localObject = this.FGb;
-    if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap();; localObject = null)
+    label520:
+    label650:
+    for (paramaet = localObject2;; paramaet = paramaet.aaXJ)
     {
-      ag(ae((Bitmap)localObject));
-      AppMethodBeat.o(248209);
+      if (paramaet != null) {
+        paramaet.aaXD = (l - ((drt)localObject1).XgN);
+      }
+      ((drt)localObject1).XgN = 0L;
+      AppMethodBeat.o(304105);
+      return;
+      localObject1 = paramaet.ZmM;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break;
+      }
+      localObject1 = ((drt)localObject1).qWi;
+      break;
+      label493:
+      localObject1 = paramaet.ZmM;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break label29;
+      }
+      localObject1 = ((drt)localObject1).LCT;
+      break label29;
+      localObject1 = paramaet.ZmM;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break label42;
+      }
+      localObject1 = Boolean.valueOf(((drt)localObject1).aaXr);
+      break label42;
+      label550:
+      localObject1 = paramaet.ZmM;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break label55;
+      }
+      localObject1 = Boolean.valueOf(((drt)localObject1).aaXs);
+      break label55;
+      label580:
+      localObject1 = paramaet.ZmM;
+      if (localObject1 == null)
+      {
+        i = -1;
+        break label67;
+      }
+      i = ((drt)localObject1).aaXt;
+      break label67;
+      label605:
+      localObject1 = Boolean.valueOf(paramaet.ZmN);
+      break label81;
+      label617:
+      localObject1 = Integer.valueOf(((MultiTaskInfo)localObject1).field_type);
+      break label302;
+      label630:
+      localObject1 = ((MultiTaskInfo)localObject1).field_id;
+      break label337;
+      localObject1 = ((dry)localObject1).aaXG;
+      break label358;
+    }
+  }
+  
+  public void eCK()
+  {
+    AppMethodBeat.i(304157);
+    Object localObject = this.LBU;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap())
+    {
+      as(aq((Bitmap)localObject));
+      AppMethodBeat.o(304157);
       return;
     }
   }
   
-  protected void dJP() {}
+  protected void eCL() {}
   
-  public final boolean faI()
+  public final String getPosition()
   {
-    AppMethodBeat.i(248215);
-    Object localObject = this.FGb;
+    return this.qWi;
+  }
+  
+  public final boolean gjN()
+  {
+    AppMethodBeat.i(304180);
+    Object localObject = this.LBU;
     if (localObject != null)
     {
       localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getActivity();
@@ -747,618 +799,576 @@ public class c
           localObject = ((Resources)localObject).getConfiguration();
           if ((localObject != null) && (((Configuration)localObject).orientation == 2))
           {
-            AppMethodBeat.o(248215);
+            AppMethodBeat.o(304180);
             return true;
           }
         }
       }
     }
-    AppMethodBeat.o(248215);
+    AppMethodBeat.o(304180);
     return false;
   }
   
-  public final String faK()
+  public final String gjP()
   {
-    return this.FHt;
+    return this.LCT;
   }
   
-  public final int faL()
+  public final int gjQ()
   {
-    return this.FHx;
+    return this.LCX;
   }
   
-  public final boolean faM()
+  public final boolean gjR()
   {
-    return this.FHB;
+    return this.LDb;
   }
   
-  public final void faN()
+  public final void gjS()
   {
-    AppMethodBeat.i(248201);
+    AppMethodBeat.i(304114);
     Log.i("MicroMsg.PageMultiTaskHelper", "showHome");
-    d.b.a((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class), 1);
-    com.tencent.mm.ae.d.a(50L, (kotlin.g.a.a)new k(this));
-    AppMethodBeat.o(248201);
+    com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.multitask.d.class);
+    s.s(locala, "plugin(IPluginMultiTask::class.java)");
+    d.b.a((com.tencent.mm.plugin.multitask.d)locala, 1);
+    com.tencent.mm.ae.d.a(50L, (kotlin.g.a.a)new j(this));
+    AppMethodBeat.o(304114);
   }
   
-  public final Bitmap faP()
+  public final Bitmap gjU()
   {
-    AppMethodBeat.i(248203);
-    Object localObject;
+    com.tencent.mm.plugin.multitask.f.a locala = null;
+    AppMethodBeat.i(304126);
+    Object localObject1;
     if (MMApplicationContext.isMainProcess())
     {
-      localObject = com.tencent.mm.plugin.multitask.h.FFb;
-      localObject = com.tencent.mm.plugin.multitask.h.faq();
-      com.tencent.mm.plugin.multitask.f.a locala = com.tencent.mm.plugin.multitask.f.a.FNz;
+      localObject1 = com.tencent.mm.plugin.multitask.h.LBd;
+      localObject1 = com.tencent.mm.plugin.multitask.h.gjv();
+      locala = com.tencent.mm.plugin.multitask.f.a.LIu;
     }
     for (;;)
     {
-      localObject = com.tencent.mm.plugin.multitask.f.a.aRg((String)localObject);
-      AppMethodBeat.o(248203);
-      return localObject;
-      localObject = com.tencent.mm.plugin.multitask.f.a.FNz;
-      localObject = faF();
-      if (localObject != null)
+      localObject1 = com.tencent.mm.plugin.multitask.f.a.aNY((String)localObject1);
+      AppMethodBeat.o(304126);
+      return localObject1;
+      localObject1 = com.tencent.mm.plugin.multitask.f.a.LIu;
+      Object localObject2 = gjK();
+      localObject1 = locala;
+      if (localObject2 != null)
       {
-        localObject = ((aco)localObject).Soh;
-        if (localObject != null)
-        {
-          localObject = ((dal)localObject).THH;
-          continue;
+        localObject2 = ((aet)localObject2).ZmM;
+        localObject1 = locala;
+        if (localObject2 != null) {
+          localObject1 = ((drt)localObject2).aaXq;
         }
       }
-      localObject = null;
     }
   }
   
-  public final boolean faT()
+  public final boolean gjZ()
   {
-    AppMethodBeat.i(248217);
-    if (Util.isNullOrNil(this.nWv))
+    String str = null;
+    AppMethodBeat.i(304206);
+    Object localObject;
+    if (Util.isNullOrNil(this.qWi))
     {
-      localObject = faF();
-      if (localObject == null) {
-        break label64;
-      }
-      localObject = ((aco)localObject).Soh;
-      if (localObject == null) {
-        break label64;
+      localObject = gjK();
+      if (localObject != null) {
+        break label52;
       }
     }
-    label64:
-    for (Object localObject = ((dal)localObject).THF; (!Util.isNullOrNil((String)localObject)) || (!Util.isNullOrNil(this.FHt)); localObject = null)
+    while ((!Util.isNullOrNil(str)) || (!Util.isNullOrNil(this.LCT)))
     {
-      AppMethodBeat.o(248217);
+      AppMethodBeat.o(304206);
       return true;
+      label52:
+      localObject = ((aet)localObject).ZmM;
+      if (localObject != null) {
+        str = ((drt)localObject).aaXo;
+      }
     }
-    AppMethodBeat.o(248217);
+    AppMethodBeat.o(304206);
     return false;
   }
   
-  protected final com.tencent.mm.plugin.multitask.animation.swipeahead.b faX()
+  protected final com.tencent.mm.plugin.multitask.animation.swipeahead.b gkc()
   {
-    return this.FHq;
+    return this.LCQ;
   }
   
-  public final String getPosition()
+  public void kd(boolean paramBoolean)
   {
-    return this.nWv;
-  }
-  
-  public void iV(boolean paramBoolean)
-  {
-    AppMethodBeat.i(248207);
-    Object localObject = this.FHf;
-    if (localObject != null)
+    Object localObject2 = null;
+    AppMethodBeat.i(304147);
+    Object localObject1 = this.LCG;
+    if (localObject1 == null)
     {
-      localObject = ((daq)localObject).THY;
-      if (localObject != null) {
-        ((dak)localObject).THD = 1L;
+      localObject1 = null;
+      if (localObject1 != null) {
+        ((drs)localObject1).aaXm = 1L;
+      }
+      if (!gjZ()) {
+        break label159;
+      }
+      if (!gjV()) {
+        break label112;
+      }
+      Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, has info, type: %d", new Object[] { Integer.valueOf(1) });
+      localObject1 = this.LCG;
+      if (localObject1 != null) {
+        break label104;
       }
     }
-    if (faT())
+    label104:
+    for (localObject1 = localObject2;; localObject1 = ((dry)localObject1).aaXH)
     {
-      if (faQ())
-      {
-        Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, has info, type: %d", new Object[] { Integer.valueOf(1) });
-        localObject = this.FHf;
-        if (localObject != null)
-        {
-          localObject = ((daq)localObject).THY;
-          if (localObject != null) {
-            ((dak)localObject).status = 1L;
-          }
-        }
-        Q(4, false);
-        AppMethodBeat.o(248207);
-        return;
+      if (localObject1 != null) {
+        ((drs)localObject1).status = 1L;
       }
-      if (paramBoolean)
-      {
-        localObject = this.FHm;
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.multitask.c.c)localObject).Yb(0);
-        }
-        Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, has not info, type: %d", new Object[] { Integer.valueOf(1) });
-      }
-      AppMethodBeat.o(248207);
+      af(4, false);
+      AppMethodBeat.o(304147);
       return;
+      localObject1 = ((dry)localObject1).aaXH;
+      break;
     }
+    label112:
     if (paramBoolean)
     {
-      Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, enter multiTask, type: %d", new Object[] { Integer.valueOf(1) });
-      a((b)new h(this));
-      AppMethodBeat.o(248207);
+      localObject1 = this.LCM;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.c.c)localObject1).aco(0);
+      }
+      Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, has not info, type: %d", new Object[] { Integer.valueOf(1) });
+      AppMethodBeat.o(304147);
       return;
+      if (paramBoolean)
+      {
+        Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, enter multiTask, type: %d", new Object[] { Integer.valueOf(1) });
+        a((b)new g(this));
+        AppMethodBeat.o(304147);
+        return;
+      }
+      Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, do nothing");
     }
-    Log.i("MicroMsg.PageMultiTaskHelper", "onMenuMultiTaskSelected, do nothing");
-    AppMethodBeat.o(248207);
+    label159:
+    AppMethodBeat.o(304147);
   }
   
   public final void onOrientationChange(int paramInt) {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "", "proceed", "", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "", "proceed", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void proceed();
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createEnterTransformationListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "onAnimationCancel", "", "way", "", "onAnimationEnd", "bitmap", "Landroid/graphics/Bitmap;", "onAnimationStart", "isSwipeBack", "", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createEnterTransformationListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "onAnimationCancel", "", "way", "", "onAnimationEnd", "bitmap", "Landroid/graphics/Bitmap;", "onAnimationStart", "isSwipeBack", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements com.tencent.mm.plugin.multitask.c.c
   {
-    public final void Yb(int paramInt)
-    {
-      AppMethodBeat.i(248252);
-      Log.i("MicroMsg.PageMultiTaskHelper", "enterTransformation animation cancel, way:".concat(String.valueOf(paramInt)));
-      this.FHE.FHB = true;
-      Object localObject = this.FHE.FGb;
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getContentView();
-        if (localObject != null)
-        {
-          ((View)localObject).setVisibility(0);
-          AppMethodBeat.o(248252);
-          return;
-        }
-      }
-      AppMethodBeat.o(248252);
-    }
+    c(c paramc) {}
     
     public final void a(Bitmap paramBitmap, boolean paramBoolean, int paramInt) {}
     
-    public final void h(Bitmap paramBitmap, int paramInt)
+    public final void aco(int paramInt)
     {
-      AppMethodBeat.i(248256);
-      Log.i("MicroMsg.PageMultiTaskHelper", "enterTransformation animation end, way:".concat(String.valueOf(paramInt)));
-      this.FHE.FHB = true;
-      paramBitmap = this.FHE.FGb;
-      if (paramBitmap != null)
+      AppMethodBeat.i(303871);
+      Log.i("MicroMsg.PageMultiTaskHelper", s.X("enterTransformation animation cancel, way:", Integer.valueOf(paramInt)));
+      this.LDd.LDb = true;
+      Object localObject = this.LDd.LBU;
+      if (localObject == null) {}
+      for (localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getContentView())
       {
-        paramBitmap = paramBitmap.getContentView();
-        if (paramBitmap != null)
-        {
-          paramBitmap.setVisibility(0);
-          AppMethodBeat.o(248256);
-          return;
+        if (localObject != null) {
+          ((View)localObject).setVisibility(0);
         }
+        AppMethodBeat.o(303871);
+        return;
       }
-      AppMethodBeat.o(248256);
+    }
+    
+    public final void g(Bitmap paramBitmap, int paramInt)
+    {
+      AppMethodBeat.i(303876);
+      Log.i("MicroMsg.PageMultiTaskHelper", s.X("enterTransformation animation end, way:", Integer.valueOf(paramInt)));
+      this.LDd.LDb = true;
+      paramBitmap = this.LDd.LBU;
+      if (paramBitmap == null) {}
+      for (paramBitmap = null;; paramBitmap = paramBitmap.getContentView())
+      {
+        if (paramBitmap != null) {
+          paramBitmap.setVisibility(0);
+        }
+        AppMethodBeat.o(303876);
+        return;
+      }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createFloatBallTransformationListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "onAnimationCancel", "", "way", "", "onAnimationEnd", "bitmap", "Landroid/graphics/Bitmap;", "onAnimationStart", "isSwipeBack", "", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createFloatBallTransformationListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "onAnimationCancel", "", "way", "", "onAnimationEnd", "bitmap", "Landroid/graphics/Bitmap;", "onAnimationStart", "isSwipeBack", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     implements com.tencent.mm.plugin.multitask.c.c
   {
-    public final void Yb(int paramInt)
+    d(c paramc) {}
+    
+    private static final void a(c paramc, final Bitmap paramBitmap)
     {
-      AppMethodBeat.i(247571);
-      Log.i("MicroMsg.PageMultiTaskHelper", "transform to float ball animation cancel, way:".concat(String.valueOf(paramInt)));
-      c localc1 = this.FHE;
-      c localc2 = this.FHE;
-      Object localObject = this.FHE.FGb;
-      if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap();; localObject = null)
+      AppMethodBeat.i(303855);
+      s.u(paramc, "this$0");
+      com.tencent.mm.plugin.multitask.ui.d locald = paramc.LDa;
+      if (locald != null) {
+        if ((!s.p(paramc.LCW, Boolean.FALSE)) && (paramc.LCW != null)) {
+          break label75;
+        }
+      }
+      label75:
+      for (boolean bool = true;; bool = false)
       {
-        c.b(localc1, c.a(localc2, (Bitmap)localObject, this.FHE.faI()), true);
-        localObject = this.FHE.FHA;
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.multitask.ui.d)localObject).e(false, false, null);
-        }
-        localObject = this.FHE.FGb;
-        if (localObject == null) {
-          break;
-        }
-        ((com.tencent.mm.plugin.multitask.a.a)localObject).a(true, (b)this.FHE);
-        AppMethodBeat.o(247571);
+        locald.e(bool, s.p(paramc.LCW, Boolean.TRUE), (AnimatorListenerAdapter)new a(paramc, paramBitmap));
+        AppMethodBeat.o(303855);
         return;
       }
-      AppMethodBeat.o(247571);
     }
     
     public final void a(Bitmap paramBitmap, boolean paramBoolean, int paramInt)
     {
-      AppMethodBeat.i(247568);
+      AppMethodBeat.i(303869);
       Log.i("MicroMsg.PageMultiTaskHelper", "transform to float ball animation start, isSwipeBack:" + paramBoolean + ", way:" + paramInt);
-      Object localObject = this.FHE.FHA;
+      Object localObject = this.LDd.LDa;
       if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.c.b)localObject).a(this.FHE.FHd, null);
+        ((com.tencent.mm.plugin.multitask.c.b)localObject).a(this.LDd.LCE, null);
       }
-      localObject = this.FHE.FHs;
+      localObject = this.LDd.LCS;
       if (localObject != null) {
         com.tencent.mm.plugin.multitask.c.c.a.a((com.tencent.mm.plugin.multitask.c.c)localObject, paramBitmap, paramBoolean, 4);
       }
-      this.FHE.FHz = this.FHE.faI();
-      AppMethodBeat.o(247568);
+      this.LDd.LCZ = this.LDd.gjN();
+      AppMethodBeat.o(303869);
     }
     
-    public final void h(final Bitmap paramBitmap, int paramInt)
+    public final void aco(int paramInt)
     {
-      AppMethodBeat.i(247569);
-      Log.i("MicroMsg.PageMultiTaskHelper", "transform to float ball animation end ,way:".concat(String.valueOf(paramInt)));
-      MMHandlerThread.postToMainThreadDelayed((Runnable)new a(this, paramBitmap), 150L);
-      AppMethodBeat.o(247569);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(c.d paramd, Bitmap paramBitmap) {}
-      
-      public final void run()
+      AppMethodBeat.i(303884);
+      Log.i("MicroMsg.PageMultiTaskHelper", s.X("transform to float ball animation cancel, way:", Integer.valueOf(paramInt)));
+      c localc1 = this.LDd;
+      c localc2 = this.LDd;
+      Object localObject = this.LDd.LBU;
+      if (localObject == null) {}
+      for (localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap())
       {
-        AppMethodBeat.i(248712);
-        com.tencent.mm.plugin.multitask.ui.d locald = this.FHF.FHE.FHA;
-        if (locald != null)
-        {
-          if ((p.h(this.FHF.FHE.FHw, Boolean.FALSE)) || (this.FHF.FHE.FHw == null)) {}
-          for (boolean bool = true;; bool = false)
-          {
-            locald.e(bool, p.h(this.FHF.FHE.FHw, Boolean.TRUE), (AnimatorListenerAdapter)new AnimatorListenerAdapter()
-            {
-              public final void onAnimationCancel(Animator paramAnonymousAnimator)
-              {
-                AppMethodBeat.i(247998);
-                c.a(this.FHG.FHF.FHE, c.a(this.FHG.FHF.FHE, this.FHG.cLr, this.FHG.FHF.FHE.FHz), true, true, true);
-                paramAnonymousAnimator = this.FHG.FHF.FHE.FHs;
-                if (paramAnonymousAnimator != null)
-                {
-                  paramAnonymousAnimator.Yb(0);
-                  AppMethodBeat.o(247998);
-                  return;
-                }
-                AppMethodBeat.o(247998);
-              }
-              
-              public final void onAnimationEnd(Animator paramAnonymousAnimator)
-              {
-                AppMethodBeat.i(247995);
-                p.k(paramAnonymousAnimator, "animation");
-                c.a(this.FHG.FHF.FHE, c.a(this.FHG.FHF.FHE, this.FHG.cLr, this.FHG.FHF.FHE.FHz), true, true, true);
-                paramAnonymousAnimator = this.FHG.FHF.FHE.FHs;
-                if (paramAnonymousAnimator != null)
-                {
-                  com.tencent.mm.plugin.multitask.c.c.a.a(paramAnonymousAnimator, this.FHG.cLr);
-                  AppMethodBeat.o(247995);
-                  return;
-                }
-                AppMethodBeat.o(247995);
-              }
-            });
-            AppMethodBeat.o(248712);
-            return;
-          }
+        c.a(localc1, c.b(localc2, (Bitmap)localObject, this.LDd.gjN()), true);
+        localObject = this.LDd.LDa;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.multitask.ui.d)localObject).e(false, false, null);
         }
-        AppMethodBeat.o(248712);
+        localObject = this.LDd.LBU;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.multitask.a.a)localObject).a(true, (b)this.LDd);
+        }
+        AppMethodBeat.o(303884);
+        return;
+      }
+    }
+    
+    public final void g(Bitmap paramBitmap, int paramInt)
+    {
+      AppMethodBeat.i(303874);
+      Log.i("MicroMsg.PageMultiTaskHelper", s.X("transform to float ball animation end ,way:", Integer.valueOf(paramInt)));
+      MMHandlerThread.postToMainThreadDelayed(new c.d..ExternalSyntheticLambda0(this.LDd, paramBitmap), 150L);
+      AppMethodBeat.o(303874);
+    }
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createFloatBallTransformationListener$1$onAnimationEnd$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      extends AnimatorListenerAdapter
+    {
+      a(c paramc, Bitmap paramBitmap) {}
+      
+      public final void onAnimationCancel(Animator paramAnimator)
+      {
+        AppMethodBeat.i(303843);
+        c.a(this.LDd, c.b(this.LDd, paramBitmap, this.LDd.LCZ), true, true, true);
+        paramAnimator = this.LDd.LCS;
+        if (paramAnimator != null) {
+          paramAnimator.aco(0);
+        }
+        AppMethodBeat.o(303843);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnimator)
+      {
+        AppMethodBeat.i(303840);
+        s.u(paramAnimator, "animation");
+        c.a(this.LDd, c.b(this.LDd, paramBitmap, this.LDd.LCZ), true, true, true);
+        paramAnimator = this.LDd.LCS;
+        if (paramAnimator != null) {
+          com.tencent.mm.plugin.multitask.c.c.a.a(paramAnimator, paramBitmap);
+        }
+        AppMethodBeat.o(303840);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createSwipeAheadToMultiTaskListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "setFloatBallAlpha", "", "alpha", "", "swipePageToMultiTask", "", "lastPosXWhenSwipeReleased", "tryCapture", "", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createSwipeAheadToMultiTaskListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "setFloatBallAlpha", "", "alpha", "", "swipePageToMultiTask", "", "lastPosXWhenSwipeReleased", "tryCapture", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class e
     implements e
   {
-    public final int bC(float paramFloat)
+    e(c paramc) {}
+    
+    public final int cG(float paramFloat)
     {
       long l = 2L;
-      AppMethodBeat.i(248802);
-      if ((!this.FHE.faT()) || (!this.FHE.faQ()))
+      com.tencent.mm.plugin.multitask.a.a locala = null;
+      AppMethodBeat.i(303856);
+      if ((!this.LDd.gjZ()) || (!this.LDd.gjV()))
       {
-        this.FHE.cbL();
-        this.FHE.dJP();
-        Object localObject1 = this.FHE.FHf;
-        if (localObject1 != null)
+        this.LDd.cCe();
+        this.LDd.eCL();
+        Object localObject = this.LDd.LCG;
+        if (localObject == null)
         {
-          localObject1 = ((daq)localObject1).THY;
-          if (localObject1 != null) {
-            ((dak)localObject1).THD = 2L;
+          localObject = null;
+          if (localObject != null) {
+            ((drs)localObject).aaXm = 2L;
+          }
+          localObject = this.LDd.LCG;
+          if (localObject != null) {
+            break label197;
           }
         }
-        localObject1 = this.FHE.FHf;
-        if (localObject1 != null)
+        label197:
+        for (localObject = locala;; localObject = ((dry)localObject).aaXH)
         {
-          localObject1 = ((daq)localObject1).THY;
-          if (localObject1 != null)
+          if (localObject != null)
           {
-            if (this.FHE.faQ()) {
+            if (this.LDd.gjV()) {
               l = 1L;
             }
-            ((dak)localObject1).status = l;
+            ((drs)localObject).status = l;
           }
-        }
-        localObject1 = ((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class)).getMultiTaskFloatBallPosition();
-        if (localObject1 != null)
-        {
-          com.tencent.mm.plugin.multitask.a.a locala = this.FHE.FGb;
-          if (locala != null)
+          localObject = ((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.multitask.d.class)).getMultiTaskFloatBallPosition();
+          if (localObject != null)
           {
-            Object localObject2 = com.tencent.mm.plugin.multitask.animation.b.a.FFL;
-            localObject2 = this.FHE.FHy;
-            com.tencent.mm.plugin.multitask.c.c localc = this.FHE.FHm;
-            p.k(locala, "pageAdapter");
-            com.tencent.mm.plugin.multitask.animation.b.a.a(locala, (Point)localObject1, (Bitmap)localObject2, false, paramFloat, localc);
+            locala = this.LDd.LBU;
+            if (locala != null)
+            {
+              c localc = this.LDd;
+              com.tencent.mm.plugin.multitask.animation.b.a locala1 = com.tencent.mm.plugin.multitask.animation.b.a.LBH;
+              com.tencent.mm.plugin.multitask.animation.b.a.a(locala, (Point)localObject, localc.LCY, paramFloat, localc.LCM);
+            }
           }
+          AppMethodBeat.o(303856);
+          return 3;
+          localObject = ((dry)localObject).aaXH;
+          break;
         }
-        AppMethodBeat.o(248802);
-        return 3;
       }
-      AppMethodBeat.o(248802);
+      AppMethodBeat.o(303856);
       return 1;
     }
     
-    public final boolean fba()
+    public final boolean gkf()
     {
-      AppMethodBeat.i(248803);
-      Object localObject = this.FHE.FGb;
+      AppMethodBeat.i(303863);
+      Object localObject = this.LDd.LBU;
       if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.a.a)localObject).cbG();
+        ((com.tencent.mm.plugin.multitask.a.a)localObject).cBZ();
       }
-      c localc = this.FHE;
-      localObject = this.FHE.FGb;
-      if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap();; localObject = null)
+      c localc = this.LDd;
+      localObject = localc.LBU;
+      if (localObject == null) {}
+      for (localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap())
       {
-        localc.FHy = ((Bitmap)localObject);
-        AppMethodBeat.o(248803);
+        localc.LCY = ((Bitmap)localObject);
+        AppMethodBeat.o(303863);
         return false;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createSwipeBackTransformationListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "onAnimationCancel", "", "way", "", "onAnimationEnd", "bitmap", "Landroid/graphics/Bitmap;", "onAnimationStart", "isSwipeBack", "", "plugin-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createSwipeBackTransformationListener$1", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "onAnimationCancel", "", "way", "", "onAnimationEnd", "bitmap", "Landroid/graphics/Bitmap;", "onAnimationStart", "isSwipeBack", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
     implements com.tencent.mm.plugin.multitask.c.c
   {
-    public final void Yb(int paramInt)
-    {
-      AppMethodBeat.i(247791);
-      Log.i("MicroMsg.PageMultiTaskHelper", "swipeBack animation cancel, way:".concat(String.valueOf(paramInt)));
-      d.b.a((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class), 2);
-      c localc = this.FHE;
-      Object localObject = this.FHE.FGb;
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap();
-        localObject = c.a(localc, (Bitmap)localObject, this.FHE.faI());
-        localc = this.FHE;
-        if (paramInt != 4) {
-          break label161;
-        }
-      }
-      label161:
-      for (boolean bool = true;; bool = false)
-      {
-        c.b(localc, (Bitmap)localObject, bool);
-        this.FHE.d((Bitmap)localObject, c.a(this.FHE));
-        localObject = this.FHE.FGb;
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.multitask.a.a)localObject).a(true, (b)this.FHE);
-        }
-        localObject = this.FHE.FGb;
-        if (localObject == null) {
-          break label166;
-        }
-        ((com.tencent.mm.plugin.multitask.a.a)localObject).vl(true);
-        AppMethodBeat.o(247791);
-        return;
-        localObject = null;
-        break;
-      }
-      label166:
-      AppMethodBeat.o(247791);
-    }
+    f(c paramc) {}
     
     public final void a(final Bitmap paramBitmap, final boolean paramBoolean, final int paramInt)
     {
-      AppMethodBeat.i(247794);
+      AppMethodBeat.i(303873);
       Log.i("MicroMsg.PageMultiTaskHelper", "swipeBack start, isSwipeBack:" + paramBoolean + " ,way:" + paramInt);
-      this.FHE.a((c.b)new a(this, paramBoolean, paramBitmap, paramInt));
-      AppMethodBeat.o(247794);
+      this.LDd.a((c.b)new a(this.LDd, paramBoolean, paramBitmap, paramInt));
+      AppMethodBeat.o(303873);
     }
     
-    public final void h(Bitmap paramBitmap, int paramInt)
+    public final void aco(int paramInt)
     {
-      AppMethodBeat.i(247792);
-      Log.i("MicroMsg.PageMultiTaskHelper", "swipeBack animation end, way:".concat(String.valueOf(paramInt)));
-      d.b.a((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class), 2);
-      paramBitmap = c.a(this.FHE, paramBitmap, this.FHE.FHz);
-      this.FHE.d(paramBitmap, c.a(this.FHE));
-      c localc = this.FHE;
+      AppMethodBeat.i(303860);
+      Log.i("MicroMsg.PageMultiTaskHelper", s.X("swipeBack animation cancel, way:", Integer.valueOf(paramInt)));
+      Object localObject = com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.multitask.d.class);
+      s.s(localObject, "plugin(IPluginMultiTask::class.java)");
+      d.b.a((com.tencent.mm.plugin.multitask.d)localObject, 2);
+      c localc = this.LDd;
+      localObject = this.LDd.LBU;
+      if (localObject == null)
+      {
+        localObject = null;
+        localObject = c.b(localc, (Bitmap)localObject, this.LDd.gjN());
+        localc = this.LDd;
+        if (paramInt != 4) {
+          break label169;
+        }
+      }
+      label169:
+      for (boolean bool = true;; bool = false)
+      {
+        c.a(localc, (Bitmap)localObject, bool);
+        this.LDd.e((Bitmap)localObject, c.b(this.LDd));
+        localObject = this.LDd.LBU;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.multitask.a.a)localObject).a(true, (b)this.LDd);
+        }
+        localObject = this.LDd.LBU;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.multitask.a.a)localObject).zD(true);
+        }
+        AppMethodBeat.o(303860);
+        return;
+        localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getBitmap();
+        break;
+      }
+    }
+    
+    public final void g(Bitmap paramBitmap, int paramInt)
+    {
+      AppMethodBeat.i(303867);
+      Log.i("MicroMsg.PageMultiTaskHelper", s.X("swipeBack animation end, way:", Integer.valueOf(paramInt)));
+      Object localObject = com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.multitask.d.class);
+      s.s(localObject, "plugin(IPluginMultiTask::class.java)");
+      d.b.a((com.tencent.mm.plugin.multitask.d)localObject, 2);
+      paramBitmap = c.b(this.LDd, paramBitmap, this.LDd.LCZ);
+      this.LDd.e(paramBitmap, c.b(this.LDd));
+      localObject = this.LDd;
       if (paramInt == 4) {}
       for (boolean bool = true;; bool = false)
       {
-        c.a(localc, paramBitmap, bool, false, false);
-        paramBitmap = this.FHE.FGb;
-        if (paramBitmap == null) {
-          break;
+        c.a((c)localObject, paramBitmap, bool, false, false);
+        paramBitmap = this.LDd.LBU;
+        if (paramBitmap != null) {
+          paramBitmap.zD(true);
         }
-        paramBitmap.vl(true);
-        AppMethodBeat.o(247792);
+        AppMethodBeat.o(303867);
         return;
       }
-      AppMethodBeat.o(247792);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createSwipeBackTransformationListener$1$onAnimationStart$1", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "proceed", "", "plugin-multitask_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$createSwipeBackTransformationListener$1$onAnimationStart$1", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "proceed", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements c.b
     {
-      a(boolean paramBoolean, Bitmap paramBitmap, int paramInt) {}
+      a(c paramc, boolean paramBoolean, Bitmap paramBitmap, int paramInt) {}
+      
+      private static final void b(c paramc, Bitmap paramBitmap)
+      {
+        AppMethodBeat.i(303837);
+        s.u(paramc, "this$0");
+        c.a(paramc, c.b(paramc, paramBitmap, paramc.gjN()), false);
+        AppMethodBeat.o(303837);
+      }
       
       public final void proceed()
       {
-        AppMethodBeat.i(248715);
-        this.FHH.FHE.cbL();
-        this.FHH.FHE.FHz = this.FHH.FHE.faI();
+        AppMethodBeat.i(303847);
+        this.LDd.cCe();
+        this.LDd.LCZ = this.LDd.gjN();
         if (paramBoolean)
         {
-          this.FHH.FHE.u((Runnable)new a(this));
-          localObject2 = new StringBuilder("auto hideUIC,id:");
-          localObject1 = this.FHH.FHE.FHd;
-          if (localObject1 != null) {}
-          for (localObject1 = ((MultiTaskInfo)localObject1).field_id;; localObject1 = null)
+          this.LDd.y(new c.f.a..ExternalSyntheticLambda0(this.LDd, paramBitmap));
+          localObject1 = this.LDd.LCE;
+          if (localObject1 == null) {}
+          for (localObject1 = null;; localObject1 = ((MultiTaskInfo)localObject1).field_id)
           {
-            Log.i("MicroMsg.PageMultiTaskHelper", (String)localObject1);
-            localObject1 = (com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class);
-            localObject2 = g.FEX;
-            ((com.tencent.mm.plugin.multitask.d)localObject1).sendMultiTaskEvent(0, g.fan(), 1048576);
-            localObject1 = this.FHH.FHE.FGb;
-            if (localObject1 == null) {
-              break;
+            Log.i("MicroMsg.PageMultiTaskHelper", s.X("auto hideUIC,id:", localObject1));
+            localObject1 = (com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.multitask.d.class);
+            localObject2 = g.LBa;
+            ((com.tencent.mm.plugin.multitask.d)localObject1).sendMultiTaskEvent(0, g.gjs(), 1048576);
+            localObject1 = this.LDd.LBU;
+            if (localObject1 != null) {
+              ((com.tencent.mm.plugin.multitask.a.a)localObject1).zD(false);
             }
-            ((com.tencent.mm.plugin.multitask.a.a)localObject1).vl(false);
-            AppMethodBeat.o(248715);
+            AppMethodBeat.o(303847);
             return;
           }
         }
-        Object localObject1 = this.FHH.FHE;
-        Object localObject2 = c.a(this.FHH.FHE, paramBitmap, this.FHH.FHE.faI());
+        Object localObject1 = this.LDd;
+        Object localObject2 = c.b(this.LDd, paramBitmap, this.LDd.gjN());
         if (paramInt == 4) {}
         for (boolean bool = true;; bool = false)
         {
-          c.b((c)localObject1, (Bitmap)localObject2, bool);
+          c.a((c)localObject1, (Bitmap)localObject2, bool);
           break;
-        }
-        AppMethodBeat.o(248715);
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-      static final class a
-        implements Runnable
-      {
-        a(c.f.a parama) {}
-        
-        public final void run()
-        {
-          AppMethodBeat.i(248268);
-          c.b(this.FHJ.FHH.FHE, c.a(this.FHJ.FHH.FHE, this.FHJ.cLr, this.FHJ.FHH.FHE.faI()), false);
-          AppMethodBeat.o(248268);
         }
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$onMenuMultiTaskSelected$1", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "proceed", "", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class g
+    implements c.b
   {
     g(c paramc) {}
     
-    public final void run()
-    {
-      AppMethodBeat.i(248793);
-      if (this.FHE.FGb != null)
-      {
-        Object localObject = this.FHE.FGb;
-        if (localObject != null) {}
-        for (localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getContentView(); localObject != null; localObject = null)
-        {
-          localObject = this.FHE.FGb;
-          if (localObject == null) {
-            break;
-          }
-          localObject = ((com.tencent.mm.plugin.multitask.a.a)localObject).getContentView();
-          if (localObject == null) {
-            break;
-          }
-          ((View)localObject).setVisibility(0);
-          AppMethodBeat.o(248793);
-          return;
-        }
-      }
-      AppMethodBeat.o(248793);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$onMenuMultiTaskSelected$1", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$OnMenuMultiTaskSelectCallback;", "proceed", "", "plugin-multitask_release"})
-  public static final class h
-    implements c.b
-  {
     public final void proceed()
     {
-      AppMethodBeat.i(248172);
-      if (!this.FHE.faH())
+      AppMethodBeat.i(303866);
+      if (!c.gjY())
       {
-        localObject1 = this.FHE.FHm;
-        if (localObject1 != null)
-        {
-          ((com.tencent.mm.plugin.multitask.c.c)localObject1).Yb(0);
-          AppMethodBeat.o(248172);
-          return;
-        }
-        AppMethodBeat.o(248172);
+        AppMethodBeat.o(303866);
         return;
       }
-      Object localObject1 = ((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class)).getMultiTaskFloatBallPosition();
-      if (localObject1 != null)
+      if (!this.LDd.gjM())
       {
-        com.tencent.mm.plugin.multitask.a.a locala = this.FHE.FGb;
+        localObject = this.LDd.LCM;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.multitask.c.c)localObject).aco(0);
+        }
+        AppMethodBeat.o(303866);
+        return;
+      }
+      Object localObject = ((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.multitask.d.class)).getMultiTaskFloatBallPosition();
+      if (localObject != null)
+      {
+        com.tencent.mm.plugin.multitask.a.a locala = this.LDd.LBU;
         if (locala != null)
         {
-          Object localObject2 = com.tencent.mm.plugin.multitask.animation.b.a.FFL;
-          localObject2 = this.FHE.FHm;
-          p.k(locala, "pageAdapter");
-          com.tencent.mm.plugin.multitask.animation.b.a.a(locala, (Point)localObject1, null, true, -1.0F, (com.tencent.mm.plugin.multitask.c.c)localObject2);
-          AppMethodBeat.o(248172);
-          return;
+          c localc = this.LDd;
+          com.tencent.mm.plugin.multitask.animation.b.a locala1 = com.tencent.mm.plugin.multitask.animation.b.a.LBH;
+          com.tencent.mm.plugin.multitask.animation.b.a.a(locala, (Point)localObject, localc.LCM);
         }
       }
-      AppMethodBeat.o(248172);
+      AppMethodBeat.o(303866);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$onMultiTaskAnimDone$1", "Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$MultiTaskTipCallback;", "onTipCancel", "", "onTipHide", "onTipShow", "plugin-multitask_release"})
-  public static final class i
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper$onMultiTaskAnimDone$1", "Lcom/tencent/mm/plugin/multitask/tips/MultiTaskTipsHelper$MultiTaskTipCallback;", "onTipCancel", "", "onTipHide", "onTipShow", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
     implements b.a
   {
-    public final void fbb()
+    h(c paramc) {}
+    
+    public final void gkg()
     {
-      AppMethodBeat.i(249052);
-      c.b(this.FHE);
-      AppMethodBeat.o(249052);
+      AppMethodBeat.i(303850);
+      c.c(this.LDd);
+      AppMethodBeat.o(303850);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class j
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     j(c paramc)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class k
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    k(c paramc)
     {
       super();
     }
@@ -1366,7 +1376,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,11 @@ import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.systemservicecache.NetworkCache;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.HashMap;
 
 public class BroadcastHelper
@@ -107,7 +111,7 @@ public class BroadcastHelper
     Object localObject;
     if (MMApplicationContext.isPushProcess())
     {
-      if (d.qV(24))
+      if (d.rb(24))
       {
         localObject = new MMReceivers.ConnectionReceiver();
         broadcastReceiverHashMap.put(MMReceivers.ConnectionReceiver.class.getSimpleName(), localObject);
@@ -115,7 +119,7 @@ public class BroadcastHelper
       }
       ConnectivityCompat.Companion.registerReceiver();
     }
-    if ((MMApplicationContext.isMMProcess()) && (d.qV(26)))
+    if ((MMApplicationContext.isMMProcess()) && (d.rb(26)))
     {
       localObject = new FileDownloadReceiver();
       broadcastReceiverHashMap.put(FileDownloadReceiver.class.getSimpleName(), localObject);
@@ -124,6 +128,21 @@ public class BroadcastHelper
       broadcastReceiverHashMap.put(MountReceiver.class.getSimpleName(), localObject);
       registerBroadcast((BroadcastReceiver)localObject, new String[] { "android.intent.action.MEDIA_MOUNTED", "android.intent.action.MEDIA_EJECT", "android.intent.action.MEDIA_UNMOUNTED", "android.intent.action.MEDIA_SHARED", "android.intent.action.MEDIA_SCANNER_STARTED", "android.intent.action.MEDIA_SCANNER_FINISHED", "android.intent.action.MEDIA_REMOVED", "android.intent.action.MEDIA_BAD_REMOVAL" });
     }
+    h.ahAA.bm(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(234037);
+        NetworkCache.INSTANCE.initCache(MMApplicationContext.getContext());
+        boolean bool1 = MultiProcessMMKV.getDefault().decodeBool("clicfg_network_cache_wifi", true);
+        boolean bool2 = MultiProcessMMKV.getDefault().decodeBool("clicfg_network_cache_wap", true);
+        boolean bool3 = MultiProcessMMKV.getDefault().decodeBool("clicfg_get_active_network_cache", true);
+        NetworkCache.INSTANCE.setWifiCacheExpt(bool1);
+        NetworkCache.INSTANCE.setWapCacheExpt(bool2);
+        NetworkCache.INSTANCE.setNetworkCacheExpt(bool3);
+        AppMethodBeat.o(234037);
+      }
+    });
     AppMethodBeat.o(20710);
   }
   
@@ -135,12 +154,12 @@ public class BroadcastHelper
     {
       if (MMApplicationContext.isPushProcess())
       {
-        if (d.qV(24)) {
+        if (d.rb(24)) {
           unRegisterBroadcast((MMReceivers.ConnectionReceiver)broadcastReceiverHashMap.get(MMReceivers.ConnectionReceiver.class.getSimpleName()));
         }
         ConnectivityCompat.Companion.unregisterReceiver();
       }
-      if ((MMApplicationContext.isMMProcess()) && (d.qV(26)))
+      if ((MMApplicationContext.isMMProcess()) && (d.rb(26)))
       {
         unRegisterBroadcast((FileDownloadReceiver)broadcastReceiverHashMap.get(FileDownloadReceiver.class.getSimpleName()));
         unRegisterBroadcast((InstallReceiver)broadcastReceiverHashMap.get(InstallReceiver.class.getSimpleName()));

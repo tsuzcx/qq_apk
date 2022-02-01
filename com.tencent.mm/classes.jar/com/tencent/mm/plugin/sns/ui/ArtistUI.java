@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -14,50 +13,52 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.r;
+import com.tencent.mm.am.s;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.model.g;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.gs;
+import com.tencent.mm.protocal.protobuf.hl;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 
 public class ArtistUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private String Ejr;
-  private f KBl;
-  private ArtistHeader KBm;
-  private q KBn;
-  g KBo;
-  com.tencent.mm.plugin.sns.model.c KBp;
-  private Runnable KBq;
-  private Runnable KBr;
-  MMHandler cyl;
-  private ListView niO;
+  private String Kca;
+  private f RaS;
+  private ArtistHeader RaT;
+  private p RaU;
+  g RaV;
+  com.tencent.mm.plugin.sns.model.c RaW;
+  private Runnable RaX;
+  private Runnable RaY;
+  MMHandler eqE;
+  private ListView qgc;
   private SharedPreferences sp;
-  private com.tencent.mm.ui.base.s tipDialog;
+  private w tipDialog;
   
   public ArtistUI()
   {
     AppMethodBeat.i(97746);
-    this.Ejr = "";
-    this.KBn = null;
+    this.Kca = "";
+    this.RaU = null;
     this.tipDialog = null;
-    this.cyl = aj.etE();
-    this.KBo = aj.fOF();
-    this.KBp = aj.fOD();
-    this.KBq = new Runnable()
+    this.eqE = al.fAG();
+    this.RaV = al.hgy();
+    this.RaW = al.hgw();
+    this.RaX = new Runnable()
     {
       public final void run()
       {
@@ -68,11 +69,11 @@ public class ArtistUI
           return;
         }
         Log.d("MicroMsg.ArtistUI", "will pause ImageLoader");
-        aj.fOF().pause();
+        al.hgy().pause();
         AppMethodBeat.o(97738);
       }
     };
-    this.KBr = new Runnable()
+    this.RaY = new Runnable()
     {
       public final void run()
       {
@@ -83,7 +84,7 @@ public class ArtistUI
           return;
         }
         Log.d("MicroMsg.ArtistUI", "will start ImageLoader");
-        aj.fOF().start();
+        al.hgy().start();
         ArtistUI.a(ArtistUI.this).notifyDataSetChanged();
         AppMethodBeat.o(97739);
       }
@@ -93,25 +94,25 @@ public class ArtistUI
   
   public int getLayoutId()
   {
-    return i.g.sns_artist_ui;
+    return b.g.sns_artist_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(97751);
-    setMMTitle(i.j.settings_sns_bg_title);
-    setActionbarColor(getResources().getColor(i.c.sns_artist_background));
-    setNavigationbarColor(getResources().getColor(i.c.sns_artist_background));
-    getString(i.j.app_tip);
-    this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(i.j.app_loading_data), true, new DialogInterface.OnCancelListener()
+    setMMTitle(b.j.settings_sns_bg_title);
+    setActionbarColor(getResources().getColor(b.c.sns_artist_background));
+    setNavigationbarColor(getResources().getColor(b.c.sns_artist_background));
+    getString(b.j.app_tip);
+    this.tipDialog = k.a(this, getString(b.j.app_loading_data), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    this.niO = ((ListView)findViewById(i.f.sns_artist_list));
-    com.tencent.mm.plugin.sns.c.a.mIH.jdMethod_do(false);
-    this.KBl = new f(this, this.Ejr, new f.b()new f.a
+    this.qgc = ((ListView)findViewById(b.f.sns_artist_list));
+    com.tencent.mm.plugin.sns.d.a.pFo.ea(false);
+    this.RaS = new f(this, this.Kca, new f.b()new f.a
     {
-      public final void agK(int paramAnonymousInt)
+      public final void alD(int paramAnonymousInt)
       {
         AppMethodBeat.i(97740);
         Object localObject = new Intent();
@@ -122,24 +123,24 @@ public class ArtistUI
         ((Intent)localObject).putExtra("key_from_scene", 6);
         ((Intent)localObject).setClass(ArtistUI.this, ArtistBrowseUI.class);
         ArtistUI localArtistUI = ArtistUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(localArtistUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localArtistUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(localArtistUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localArtistUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(localArtistUI, "com/tencent/mm/plugin/sns/ui/ArtistUI$4", "onPhotoClick", "(Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(97740);
       }
     }, new f.a()
     {
-      public final void a(gs paramAnonymousgs)
+      public final void a(hl paramAnonymoushl)
       {
         AppMethodBeat.i(97741);
         if (ArtistUI.c(ArtistUI.this) != null)
         {
           ArtistUI.c(ArtistUI.this).setVisibility(0);
-          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymousgs);
-          paramAnonymousgs = paramAnonymousgs.CMP;
-          if ((paramAnonymousgs != null) && (!paramAnonymousgs.equals(""))) {
-            ArtistUI.d(ArtistUI.this).edit().putString("artist_name", paramAnonymousgs).commit();
+          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymoushl);
+          paramAnonymoushl = paramAnonymoushl.IGU;
+          if ((paramAnonymoushl != null) && (!paramAnonymoushl.equals(""))) {
+            ArtistUI.d(ArtistUI.this).edit().putString("artist_name", paramAnonymoushl).commit();
           }
           if (ArtistUI.a(ArtistUI.this) != null) {
             ArtistUI.a(ArtistUI.this).notifyDataSetChanged();
@@ -149,29 +150,29 @@ public class ArtistUI
         AppMethodBeat.o(97741);
       }
       
-      public final void b(gs paramAnonymousgs)
+      public final void b(hl paramAnonymoushl)
       {
         AppMethodBeat.i(97742);
         if (ArtistUI.c(ArtistUI.this) != null)
         {
           ArtistUI.c(ArtistUI.this).setVisibility(0);
-          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymousgs);
+          ArtistUI.c(ArtistUI.this).setUserName(paramAnonymoushl);
         }
         AppMethodBeat.o(97742);
       }
       
-      public final void fTe()
+      public final void hlu()
       {
         AppMethodBeat.i(97743);
         if ((ArtistUI.f(ArtistUI.this) == null) && (ArtistUI.e(ArtistUI.this) != null))
         {
           Log.d("MicroMsg.ArtistUI", "onNothingBgGet");
-          com.tencent.mm.plugin.sns.c.a.mIH.jdMethod_do(true);
+          com.tencent.mm.plugin.sns.d.a.pFo.ea(true);
         }
         AppMethodBeat.o(97743);
       }
     });
-    this.niO.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.qgc.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -180,33 +181,33 @@ public class ArtistUI
         AppMethodBeat.i(97744);
         if (paramAnonymousInt == 2)
         {
-          if ((ArtistUI.this.KBo.JTH) || (ArtistUI.this.KBp.JTH))
+          if ((ArtistUI.this.RaV.QqK) || (ArtistUI.this.RaW.QqK))
           {
-            ArtistUI.this.cyl.removeCallbacks(ArtistUI.g(ArtistUI.this));
-            ArtistUI.this.cyl.removeCallbacks(ArtistUI.h(ArtistUI.this));
-            ArtistUI.this.cyl.postDelayed(ArtistUI.g(ArtistUI.this), 0L);
+            ArtistUI.this.eqE.removeCallbacks(ArtistUI.g(ArtistUI.this));
+            ArtistUI.this.eqE.removeCallbacks(ArtistUI.h(ArtistUI.this));
+            ArtistUI.this.eqE.postDelayed(ArtistUI.g(ArtistUI.this), 0L);
             AppMethodBeat.o(97744);
           }
         }
         else
         {
-          if ((ArtistUI.this.KBo.JTH) && (ArtistUI.this.KBp.JTH))
+          if ((ArtistUI.this.RaV.QqK) && (ArtistUI.this.RaW.QqK))
           {
             AppMethodBeat.o(97744);
             return;
           }
-          ArtistUI.this.cyl.removeCallbacks(ArtistUI.g(ArtistUI.this));
-          ArtistUI.this.cyl.removeCallbacks(ArtistUI.h(ArtistUI.this));
-          ArtistUI.this.cyl.postDelayed(ArtistUI.h(ArtistUI.this), 0L);
+          ArtistUI.this.eqE.removeCallbacks(ArtistUI.g(ArtistUI.this));
+          ArtistUI.this.eqE.removeCallbacks(ArtistUI.h(ArtistUI.this));
+          ArtistUI.this.eqE.postDelayed(ArtistUI.h(ArtistUI.this), 0L);
         }
         AppMethodBeat.o(97744);
       }
     });
-    this.KBm = new ArtistHeader(this);
-    this.niO.addHeaderView(this.KBm);
-    this.niO.setAdapter(this.KBl);
-    this.KBl.notifyDataSetChanged();
-    this.KBm.setVisibility(8);
+    this.RaT = new ArtistHeader(this);
+    this.qgc.addHeaderView(this.RaT);
+    this.qgc.setAdapter(this.RaS);
+    this.RaS.notifyDataSetChanged();
+    this.RaT.setVisibility(8);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -240,14 +241,14 @@ public class ArtistUI
     }
     for (;;)
     {
-      this.Ejr = paramBundle;
-      Log.d("MicroMsg.ArtistUI", "lan " + this.Ejr);
-      com.tencent.mm.kernel.h.aHH();
-      com.tencent.mm.kernel.h.aHF().kcd.a(159, this);
+      this.Kca = paramBundle;
+      Log.d("MicroMsg.ArtistUI", "lan " + this.Kca);
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(159, this);
       this.sp = getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0);
       initView();
-      paramBundle = this.KBm;
-      aj.fOD().a(paramBundle);
+      paramBundle = this.RaT;
+      al.hgw().a(paramBundle);
       AppMethodBeat.o(97747);
       return;
       label155:
@@ -266,14 +267,14 @@ public class ArtistUI
     if (this.tipDialog != null) {
       this.tipDialog = null;
     }
-    if (this.KBm != null)
+    if (this.RaT != null)
     {
-      ArtistHeader localArtistHeader = this.KBm;
-      aj.fOD().b(localArtistHeader);
+      ArtistHeader localArtistHeader = this.RaT;
+      al.hgw().b(localArtistHeader);
     }
-    aj.fOF().aO(this);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHF().kcd.b(159, this);
+    al.hgy().bq(this);
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(159, this);
     AppMethodBeat.o(97748);
   }
   
@@ -291,35 +292,35 @@ public class ArtistUI
     AppMethodBeat.o(97749);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(97752);
-    if ((!(paramq instanceof com.tencent.mm.an.s)) || (((com.tencent.mm.an.s)paramq).big() != 4))
+    if ((!(paramp instanceof r)) || (((r)paramp).bFO() != 4))
     {
       Log.d("MicroMsg.ArtistUI", "another scene");
       AppMethodBeat.o(97752);
       return;
     }
-    Log.i("MicroMsg.ArtistUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramq.getType() + " @" + hashCode());
+    Log.i("MicroMsg.ArtistUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramp.getType() + " @" + hashCode());
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      if ((paramq.getType() == 159) && (this.tipDialog != null)) {
+      if ((paramp.getType() == 159) && (this.tipDialog != null)) {
         this.tipDialog.dismiss();
       }
       AppMethodBeat.o(97752);
       return;
     }
-    switch (paramq.getType())
+    switch (paramp.getType())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(97752);
       return;
-      if (this.KBl != null) {
-        this.KBl.atr();
+      if (this.RaS != null) {
+        this.RaS.aNy();
       }
-      this.KBn = null;
+      this.RaU = null;
     }
   }
   
@@ -331,7 +332,7 @@ public class ArtistUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ArtistUI
  * JD-Core Version:    0.7.0.1
  */

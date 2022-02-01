@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/by" android:layout_centerInParent="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/cjz" android:layout_width="138.0dip" android:layout_height="10.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/g3m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ProgressBar android:id="@id/iuy" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" style="@style/a85" />
+        <TextView android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载..." android:layout_marginStart="16.0dip" android:layout_toEndOf="@id/iuy" />
+    </RelativeLayout>
+</RelativeLayout>

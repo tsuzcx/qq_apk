@@ -31,7 +31,7 @@ final class zzaas
     AppMethodBeat.i(40142);
     try
     {
-      zzaaq localzzaaq = (zzaaq)Class.forName("com.google.b.ce").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      zzaaq localzzaaq = (zzaaq)Class.forName("com.google.d.cn").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
       AppMethodBeat.o(40142);
       return localzzaaq;
     }
@@ -44,7 +44,7 @@ final class zzaas
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaas
  * JD-Core Version:    0.7.0.1
  */

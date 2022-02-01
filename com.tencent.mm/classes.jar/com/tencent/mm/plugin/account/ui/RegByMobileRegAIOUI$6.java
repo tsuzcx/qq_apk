@@ -1,61 +1,31 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.MMFormInputView;
+import com.tencent.mm.pluginsdk.l;
 
 final class RegByMobileRegAIOUI$6
-  implements MMHandlerThread.IWaitWorkThread
+  implements View.OnClickListener
 {
-  String nickname;
-  
   RegByMobileRegAIOUI$6(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final boolean doInBackground()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(169150);
-    AppMethodBeat.o(169150);
-    return true;
-  }
-  
-  public final boolean onPostExecute()
-  {
-    AppMethodBeat.i(169149);
-    if ((!Util.isNullOrNil(this.nickname)) && (Util.isNullOrNil(RegByMobileRegAIOUI.n(this.nic).getText().trim()))) {
-      RegByMobileRegAIOUI.n(this.nic).setText(this.nickname);
+    AppMethodBeat.i(128516);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (com.tencent.mm.pluginsdk.permission.b.a(this.qfw, "android.permission.WRITE_EXTERNAL_STORAGE", 34, "")) {
+      com.tencent.mm.plugin.account.sdk.a.pFo.t(this.qfw);
     }
-    if (!e.avA())
-    {
-      Log.e("MicroMsg.RegByMobileRegAIOUI", "SDcard is not available");
-      AppMethodBeat.o(169149);
-      return false;
-    }
-    if ((RegByMobileRegAIOUI.q(this.nic) != null) && (!RegByMobileRegAIOUI.q(this.nic).isRecycled()) && (!RegByMobileRegAIOUI.r(this.nic)))
-    {
-      RegByMobileRegAIOUI.s(this.nic).setImageBitmap(RegByMobileRegAIOUI.q(this.nic));
-      RegByMobileRegAIOUI.t(this.nic).setVisibility(8);
-      RegByMobileRegAIOUI.u(this.nic);
-    }
-    AppMethodBeat.o(169149);
-    return true;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(169151);
-    String str = super.toString() + "|initView2";
-    AppMethodBeat.o(169151);
-    return str;
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileRegAIOUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(128516);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileRegAIOUI.6
  * JD-Core Version:    0.7.0.1
  */

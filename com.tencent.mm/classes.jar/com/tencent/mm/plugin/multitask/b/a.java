@@ -1,561 +1,438 @@
 package com.tencent.mm.plugin.multitask.b;
 
 import android.graphics.Bitmap;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.multitask.d;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.taskbar.c;
-import com.tencent.mm.protocal.protobuf.aco;
-import com.tencent.mm.protocal.protobuf.dak;
-import com.tencent.mm.protocal.protobuf.dam;
-import com.tencent.mm.protocal.protobuf.dao;
-import com.tencent.mm.protocal.protobuf.dap;
-import com.tencent.mm.protocal.protobuf.daq;
-import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.aet;
+import com.tencent.mm.protocal.protobuf.drs;
+import com.tencent.mm.protocal.protobuf.dru;
+import com.tencent.mm.protocal.protobuf.drw;
+import com.tencent.mm.protocal.protobuf.drx;
+import com.tencent.mm.protocal.protobuf.dry;
+import com.tencent.mm.protocal.protobuf.drz;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/helper/AbsMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;", "()V", "THREAD_LOOP_TAG", "", "canScrollHorizontal", "", "getCanScrollHorizontal", "()Ljava/lang/Boolean;", "commonMultiTaskData", "Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;", "getCommonMultiTaskData", "()Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;", "setCommonMultiTaskData", "(Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;)V", "currentMultiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getCurrentMultiTaskInfo", "()Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "setCurrentMultiTaskInfo", "(Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;)V", "homeSnapBlt", "Landroid/graphics/Bitmap;", "getHomeSnapBlt", "()Landroid/graphics/Bitmap;", "isFromMultiTaskItem", "()Z", "isFromTaskBar", "isSupportAnimFromAddMultiTask", "isSupportExitToMultiTask", "isSupportLandScapeMode", "isSupportMultiTaskFBMenu", "isSupportSwipeToMultiTask", "isVisiableButtom", "isVisiableTop", "minusScreenType", "", "getMinusScreenType", "()I", "setMinusScreenType", "(I)V", "multiTaskItemPos", "getMultiTaskItemPos", "multiTaskReportInfo", "Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "getMultiTaskReportInfo", "()Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "setMultiTaskReportInfo", "(Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;)V", "multiTaskSnapBlt", "getMultiTaskSnapBlt", "ori_position", "getOri_position", "()Ljava/lang/String;", "position", "getPosition", "addCurrentMultiTaskInfoWithBlt", "", "bitmap", "forceUpdate", "addOrUpdateCurrentHistoryTaskInfo", "canAddCurrentMultiTask", "canSwipeToMultiTask", "checkBitmap", "fillMultiTaskInfo", "getCurrentMultiTaskInfoList", "onGetMultiTaskInfoListCallback", "Lcom/tencent/mm/plugin/multitask/listener/OnGetMultiTaskInfoListCallback;", "getHideUICDuration", "", "getHistoryMultiTaskInfo", "getMultiTaskItemPosition", "way", "handleCurrentHistoryTaskInfoOnClose", "ended", "hasCurrentMultiTaskInfo", "isDisableHistory", "isLandScape", "isSupportSwipeToHome", "onClose", "onCreate", "multiTaskType", "multiTaskId", "onDestroy", "onEnterPage", "onExitPage", "onMenuMultiTaskSelected", "enterMultiTask", "generateType", "playSound", "removeCurrentHistoryTaskInfo", "runTask", "runnable", "Ljava/lang/Runnable;", "setMultiTaskCommonInfo", "commonData", "setSwipeToMultiTaskEnable", "enable", "shouldCaptureOnClose", "showHome", "updateCurrentHistoryTaskInfo", "updateBitmapOnly", "updateCurrentMultiTaskInfoByTitle", "updateCurrentMultiTaskInfoWithBlt", "updateCurrentMultiTaskInfoWithoutBlt", "updateIcon", "icon", "updateNickname", "nickname", "updateTitle", "title", "Companion", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/helper/AbsMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;", "()V", "THREAD_LOOP_TAG", "", "canScrollHorizontal", "", "getCanScrollHorizontal", "()Ljava/lang/Boolean;", "commonMultiTaskData", "Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;", "getCommonMultiTaskData", "()Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;", "setCommonMultiTaskData", "(Lcom/tencent/mm/protocal/protobuf/CommonMultiTaskData;)V", "currentMultiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getCurrentMultiTaskInfo", "()Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "setCurrentMultiTaskInfo", "(Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;)V", "homeSnapBlt", "Landroid/graphics/Bitmap;", "getHomeSnapBlt", "()Landroid/graphics/Bitmap;", "isFromMultiTaskItem", "()Z", "isFromTaskBar", "isSupportAnimFromAddMultiTask", "isSupportExitToMultiTask", "isSupportLandScapeMode", "isSupportMultiTaskFBMenu", "isSupportSwipeToMultiTask", "isVisiableButtom", "isVisiableTop", "minusScreenType", "", "getMinusScreenType", "()I", "setMinusScreenType", "(I)V", "multiTaskItemPos", "getMultiTaskItemPos", "multiTaskReportInfo", "Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "getMultiTaskReportInfo", "()Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "setMultiTaskReportInfo", "(Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;)V", "multiTaskSnapBlt", "getMultiTaskSnapBlt", "ori_position", "getOri_position", "()Ljava/lang/String;", "position", "getPosition", "addCurrentMultiTaskInfoWithBlt", "", "bitmap", "forceUpdate", "addOrUpdateCurrentHistoryTaskInfo", "canAddCurrentMultiTask", "canSwipeToMultiTask", "checkBitmap", "fillMultiTaskInfo", "getCurrentMultiTaskInfoList", "onGetMultiTaskInfoListCallback", "Lcom/tencent/mm/plugin/multitask/listener/OnGetMultiTaskInfoListCallback;", "getHideUICDuration", "", "getHistoryMultiTaskInfo", "getMultiTaskItemPosition", "way", "handleCurrentHistoryTaskInfoOnClose", "ended", "hasCurrentMultiTaskInfo", "isDisableHistory", "isLandScape", "isSupportSwipeToHome", "onClose", "onCreate", "multiTaskType", "multiTaskId", "onDestroy", "onEnterPage", "onExitPage", "onMenuMultiTaskSelected", "enterMultiTask", "generateType", "playSound", "removeCurrentHistoryTaskInfo", "runTask", "runnable", "Ljava/lang/Runnable;", "setMultiTaskCommonInfo", "commonData", "setSwipeToMultiTaskEnable", "enable", "shouldCaptureOnClose", "showHome", "updateCurrentHistoryTaskInfo", "updateBitmapOnly", "updateCurrentMultiTaskInfoByTitle", "updateCurrentMultiTaskInfoWithBlt", "updateCurrentMultiTaskInfoWithoutBlt", "updateIcon", "icon", "updateNickname", "nickname", "updateTitle", "title", "Companion", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class a
   implements b
 {
-  public static final a.a FHi;
-  public MultiTaskInfo FHd;
-  private aco FHe;
-  daq FHf;
-  private final String FHg = "MultiTasklLoopTag";
-  private int FHh;
+  public static final a.a LCD;
+  public MultiTaskInfo LCE;
+  private aet LCF;
+  dry LCG;
+  private final String LCH = "MultiTasklLoopTag";
+  private int LCI;
   
   static
   {
-    AppMethodBeat.i(247634);
-    FHi = new a.a((byte)0);
-    AppMethodBeat.o(247634);
+    AppMethodBeat.i(303849);
+    LCD = new a.a((byte)0);
+    AppMethodBeat.o(303849);
+  }
+  
+  private static final void a(a parama)
+  {
+    AppMethodBeat.i(303844);
+    s.u(parama, "this$0");
+    ((d)com.tencent.mm.kernel.h.az(d.class)).reportMultiTaskInfo(2, parama.LCG);
+    AppMethodBeat.o(303844);
   }
   
   public static void a(com.tencent.mm.plugin.multitask.c.a parama)
   {
-    AppMethodBeat.i(247609);
-    ((d)com.tencent.mm.kernel.h.ag(d.class)).getMultiTaskInfoList(parama);
-    AppMethodBeat.o(247609);
+    AppMethodBeat.i(303830);
+    ((d)com.tencent.mm.kernel.h.az(d.class)).getMultiTaskInfoList(parama);
+    AppMethodBeat.o(303830);
   }
   
-  private void faS()
+  private void gjX()
   {
-    AppMethodBeat.i(247613);
-    if (faQ())
+    AppMethodBeat.i(303838);
+    if (gjV())
     {
-      MultiTaskInfo localMultiTaskInfo = this.FHd;
+      MultiTaskInfo localMultiTaskInfo = this.LCE;
       if (localMultiTaskInfo != null)
       {
-        d locald = (d)com.tencent.mm.kernel.h.ag(d.class);
+        d locald = (d)com.tencent.mm.kernel.h.az(d.class);
         String str = localMultiTaskInfo.field_id;
-        p.j(str, "it.field_id");
+        s.s(str, "it.field_id");
         int i = localMultiTaskInfo.field_type;
-        dar localdar = localMultiTaskInfo.fbc();
-        p.j(localdar, "it.showData");
-        locald.updateTaskInfoByTitle(str, i, localdar, localMultiTaskInfo.field_data);
-        AppMethodBeat.o(247613);
-        return;
+        drz localdrz = localMultiTaskInfo.gkh();
+        s.s(localdrz, "it.showData");
+        locald.updateTaskInfoByTitle(str, i, localdrz, localMultiTaskInfo.field_data);
       }
     }
-    AppMethodBeat.o(247613);
+    AppMethodBeat.o(303838);
   }
   
-  public void I(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(247604);
-    this.FHd = new MultiTaskInfo();
-    MultiTaskInfo localMultiTaskInfo = this.FHd;
-    if (localMultiTaskInfo != null) {
-      localMultiTaskInfo.field_updateTime = cm.bfE();
-    }
-    localMultiTaskInfo = this.FHd;
-    if (localMultiTaskInfo != null) {
-      localMultiTaskInfo.field_id = paramString;
-    }
-    paramString = this.FHd;
-    if (paramString != null) {
-      paramString.field_type = paramInt;
-    }
-    this.FHh = paramInt;
-    this.FHf = new daq();
-    paramString = this.FHf;
-    if (paramString != null) {
-      paramString.THY = new dak();
-    }
-    paramString = this.FHf;
-    if (paramString != null) {
-      paramString.THX = new dam();
-    }
-    paramString = this.FHf;
-    if (paramString != null) {
-      paramString.THZ = new dao();
-    }
-    paramString = this.FHf;
-    if (paramString != null) {
-      paramString.TIa = new dap();
-    }
-    paramString = this.FHf;
-    if (paramString != null)
-    {
-      paramString = paramString.TIa;
-      if (paramString != null)
-      {
-        paramString.THV = true;
-        AppMethodBeat.o(247604);
-        return;
-      }
-    }
-    AppMethodBeat.o(247604);
-  }
-  
-  public boolean Q(int paramInt, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public final String Ya(int paramInt)
-  {
-    AppMethodBeat.i(247627);
-    Object localObject2 = this.FHd;
-    if (localObject2 != null)
-    {
-      Object localObject1 = (d)com.tencent.mm.kernel.h.ag(d.class);
-      localObject2 = ((MultiTaskInfo)localObject2).field_id;
-      p.j(localObject2, "it.field_id");
-      localObject1 = ((d)localObject1).getMultiTaskItemPosition((String)localObject2, faL(), paramInt);
-      AppMethodBeat.o(247627);
-      return localObject1;
-    }
-    AppMethodBeat.o(247627);
-    return "";
-  }
-  
-  public final void a(aco paramaco)
-  {
-    this.FHe = paramaco;
-  }
-  
-  public final void aMT(String paramString)
-  {
-    AppMethodBeat.i(247601);
-    Object localObject = this.FHd;
-    if (localObject != null)
-    {
-      localObject = ((MultiTaskInfo)localObject).fbc();
-      if (localObject != null) {
-        ((dar)localObject).title = paramString;
-      }
-    }
-    faS();
-    AppMethodBeat.o(247601);
-  }
-  
-  public void aOj()
-  {
-    AppMethodBeat.i(247608);
-    Object localObject = this.FHd;
-    if (localObject != null) {}
-    for (localObject = ((MultiTaskInfo)localObject).field_id;; localObject = null)
-    {
-      Log.i("MicroMsg.AbsMultiTaskHelper", "onExitPage, type:", new Object[] { localObject });
-      localObject = this.FHf;
-      if (localObject != null)
-      {
-        localObject = ((daq)localObject).THX;
-        if ((localObject != null) && (cm.bfE() >= ((dam)localObject).THL)) {
-          ((dam)localObject).duration += cm.bfE() - ((dam)localObject).THL;
-        }
-      }
-      if ((faT()) && (faQ())) {
-        u((Runnable)new b(this));
-      }
-      AppMethodBeat.o(247608);
-      return;
-    }
-  }
-  
-  public final void aQZ(String paramString)
-  {
-    AppMethodBeat.i(247603);
-    Object localObject = this.FHd;
-    if (localObject != null)
-    {
-      localObject = ((MultiTaskInfo)localObject).fbc();
-      if (localObject != null) {
-        ((dar)localObject).nickname = paramString;
-      }
-    }
-    faS();
-    AppMethodBeat.o(247603);
-  }
-  
-  public Bitmap ae(Bitmap paramBitmap)
-  {
-    return null;
-  }
-  
-  public void af(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(247614);
-    MultiTaskInfo localMultiTaskInfo = this.FHd;
-    if (localMultiTaskInfo != null)
-    {
-      d locald = (d)com.tencent.mm.kernel.h.ag(d.class);
-      String str = localMultiTaskInfo.field_id;
-      p.j(str, "it.field_id");
-      int i = localMultiTaskInfo.field_type;
-      dar localdar = localMultiTaskInfo.fbc();
-      p.j(localdar, "it.showData");
-      locald.updateTaskInfoByBitmap(str, i, localdar, paramBitmap, localMultiTaskInfo.field_data);
-      AppMethodBeat.o(247614);
-      return;
-    }
-    AppMethodBeat.o(247614);
-  }
-  
-  public void ag(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(247625);
-    if (cbK())
-    {
-      AppMethodBeat.o(247625);
-      return;
-    }
-    Log.i("MicroMsg.AbsMultiTaskHelper", "add or update taskInfo");
-    MultiTaskInfo localMultiTaskInfo = faU();
-    if (localMultiTaskInfo != null)
-    {
-      ((c)com.tencent.mm.kernel.h.ag(c.class)).addOrUpdateTaskInfoByBitmap(localMultiTaskInfo.field_id, localMultiTaskInfo.field_type, localMultiTaskInfo.fbc(), paramBitmap, localMultiTaskInfo.field_data);
-      AppMethodBeat.o(247625);
-      return;
-    }
-    AppMethodBeat.o(247625);
-  }
-  
-  public final void aox(String paramString)
-  {
-    AppMethodBeat.i(247602);
-    Object localObject = this.FHd;
-    if (localObject != null)
-    {
-      localObject = ((MultiTaskInfo)localObject).fbc();
-      if (localObject != null) {
-        ((dar)localObject).TIg = paramString;
-      }
-    }
-    faS();
-    AppMethodBeat.o(247602);
-  }
-  
-  public final void b(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    AppMethodBeat.i(247611);
-    Log.i("MicroMsg.AbsMultiTaskHelper", "addCurrentMultiTaskInfoWithBlt, forceUpdate:".concat(String.valueOf(paramBoolean)));
-    d locald;
-    String str;
-    int i;
-    dar localdar;
-    if (!faQ())
-    {
-      localObject = this.FHf;
-      if (localObject != null)
-      {
-        localObject = ((daq)localObject).THY;
-        if (localObject != null) {
-          ((dak)localObject).status = 2L;
-        }
-      }
-      localObject = this.FHd;
-      if (localObject != null)
-      {
-        locald = (d)com.tencent.mm.kernel.h.ag(d.class);
-        str = ((MultiTaskInfo)localObject).field_id;
-        p.j(str, "it.field_id");
-        i = ((MultiTaskInfo)localObject).field_type;
-        localdar = ((MultiTaskInfo)localObject).fbc();
-        p.j(localdar, "it.showData");
-        localObject = this.FHd;
-        if (localObject != null) {}
-        for (localObject = ((MultiTaskInfo)localObject).field_data;; localObject = null)
-        {
-          locald.addTaskInfoByBitmap(str, i, localdar, paramBitmap, (byte[])localObject, this.FHf);
-          AppMethodBeat.o(247611);
-          return;
-        }
-      }
-      AppMethodBeat.o(247611);
-      return;
-    }
-    if (!paramBoolean)
-    {
-      localObject = this.FHf;
-      if (localObject != null)
-      {
-        localObject = ((daq)localObject).THY;
-        if (localObject != null) {
-          ((dak)localObject).status = 1L;
-        }
-      }
-      af(paramBitmap);
-      AppMethodBeat.o(247611);
-      return;
-    }
-    Object localObject = this.FHf;
-    if (localObject != null)
-    {
-      localObject = ((daq)localObject).THY;
-      if (localObject != null) {
-        ((dak)localObject).status = 1L;
-      }
-    }
-    localObject = this.FHd;
-    if (localObject != null)
-    {
-      locald = (d)com.tencent.mm.kernel.h.ag(d.class);
-      str = ((MultiTaskInfo)localObject).field_id;
-      p.j(str, "it.field_id");
-      i = ((MultiTaskInfo)localObject).field_type;
-      localdar = ((MultiTaskInfo)localObject).fbc();
-      p.j(localdar, "it.showData");
-      locald.addTaskInfoByBitmap(str, i, localdar, paramBitmap, ((MultiTaskInfo)localObject).field_data, this.FHf);
-      AppMethodBeat.o(247611);
-      return;
-    }
-    AppMethodBeat.o(247611);
-  }
-  
-  public void b(aco paramaco) {}
-  
-  public void bNV()
-  {
-    AppMethodBeat.i(247607);
-    Object localObject = this.FHd;
-    if (localObject != null) {}
-    for (localObject = ((MultiTaskInfo)localObject).field_id;; localObject = null)
-    {
-      Log.i("MicroMsg.AbsMultiTaskHelper", "onEnterPage, type:", new Object[] { localObject });
-      localObject = this.FHf;
-      if (localObject == null) {
-        break;
-      }
-      localObject = ((daq)localObject).THX;
-      if (localObject == null) {
-        break;
-      }
-      ((dam)localObject).THL = cm.bfE();
-      AppMethodBeat.o(247607);
-      return;
-    }
-    AppMethodBeat.o(247607);
-  }
-  
-  public final void c(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    AppMethodBeat.i(247628);
-    if (cbK())
-    {
-      AppMethodBeat.o(247628);
-      return;
-    }
-    Log.i("MicroMsg.AbsMultiTaskHelper", "updateCurrentHistoryTaskInfo");
-    MultiTaskInfo localMultiTaskInfo = faU();
-    if (localMultiTaskInfo != null)
-    {
-      ((c)com.tencent.mm.kernel.h.ag(c.class)).updateTaskInfoByBitmap(localMultiTaskInfo.field_id, localMultiTaskInfo.field_type, localMultiTaskInfo.fbc(), paramBitmap, localMultiTaskInfo.field_data, paramBoolean);
-      AppMethodBeat.o(247628);
-      return;
-    }
-    AppMethodBeat.o(247628);
-  }
-  
-  public boolean cbG()
-  {
-    return false;
-  }
-  
-  public boolean cbH()
-  {
-    return false;
-  }
-  
-  public boolean cbI()
+  public static boolean gjY()
   {
     return true;
   }
   
-  public boolean cbJ()
+  public void J(int paramInt, String paramString)
   {
-    return false;
-  }
-  
-  public boolean cbK()
-  {
-    return false;
-  }
-  
-  public void cbL() {}
-  
-  public void d(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    AppMethodBeat.i(247630);
-    if (cbK())
+    AppMethodBeat.i(303896);
+    this.LCE = new MultiTaskInfo();
+    MultiTaskInfo localMultiTaskInfo = this.LCE;
+    if (localMultiTaskInfo != null) {
+      localMultiTaskInfo.field_updateTime = cn.bDw();
+    }
+    localMultiTaskInfo = this.LCE;
+    if (localMultiTaskInfo != null) {
+      localMultiTaskInfo.field_id = paramString;
+    }
+    paramString = this.LCE;
+    if (paramString != null) {
+      paramString.field_type = paramInt;
+    }
+    this.LCI = paramInt;
+    this.LCG = new dry();
+    paramString = this.LCG;
+    if (paramString != null) {
+      paramString.aaXH = new drs();
+    }
+    paramString = this.LCG;
+    if (paramString != null) {
+      paramString.aaXG = new dru();
+    }
+    paramString = this.LCG;
+    if (paramString != null) {
+      paramString.aaXI = new drw();
+    }
+    paramString = this.LCG;
+    if (paramString != null) {
+      paramString.aaXJ = new drx();
+    }
+    paramString = this.LCG;
+    if (paramString == null) {}
+    for (paramString = null;; paramString = paramString.aaXJ)
     {
-      AppMethodBeat.o(247630);
+      if (paramString != null) {
+        paramString.aaXE = true;
+      }
+      AppMethodBeat.o(303896);
+      return;
+    }
+  }
+  
+  public final void a(aet paramaet)
+  {
+    this.LCF = paramaet;
+  }
+  
+  public final void aNR(String paramString)
+  {
+    AppMethodBeat.i(303891);
+    Object localObject = this.LCE;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((MultiTaskInfo)localObject).gkh())
+    {
+      if (localObject != null) {
+        ((drz)localObject).nickname = paramString;
+      }
+      gjX();
+      AppMethodBeat.o(303891);
+      return;
+    }
+  }
+  
+  public final String acn(int paramInt)
+  {
+    AppMethodBeat.i(304078);
+    Object localObject2 = this.LCE;
+    if (localObject2 != null)
+    {
+      Object localObject1 = (d)com.tencent.mm.kernel.h.az(d.class);
+      localObject2 = ((MultiTaskInfo)localObject2).field_id;
+      s.s(localObject2, "it.field_id");
+      localObject1 = ((d)localObject1).getMultiTaskItemPosition((String)localObject2, gjQ(), paramInt);
+      AppMethodBeat.o(304078);
+      return localObject1;
+    }
+    AppMethodBeat.o(304078);
+    return "";
+  }
+  
+  public boolean af(int paramInt, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public final void ahT(String paramString)
+  {
+    AppMethodBeat.i(303888);
+    Object localObject = this.LCE;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((MultiTaskInfo)localObject).gkh())
+    {
+      if (localObject != null) {
+        ((drz)localObject).aaXP = paramString;
+      }
+      gjX();
+      AppMethodBeat.o(303888);
+      return;
+    }
+  }
+  
+  public Bitmap aq(Bitmap paramBitmap)
+  {
+    return null;
+  }
+  
+  public void ar(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(304022);
+    MultiTaskInfo localMultiTaskInfo = this.LCE;
+    if (localMultiTaskInfo != null)
+    {
+      d locald = (d)com.tencent.mm.kernel.h.az(d.class);
+      String str = localMultiTaskInfo.field_id;
+      s.s(str, "it.field_id");
+      int i = localMultiTaskInfo.field_type;
+      drz localdrz = localMultiTaskInfo.gkh();
+      s.s(localdrz, "it.showData");
+      locald.updateTaskInfoByBitmap(str, i, localdrz, paramBitmap, localMultiTaskInfo.field_data);
+    }
+    AppMethodBeat.o(304022);
+  }
+  
+  public void as(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(304074);
+    if (cCd())
+    {
+      AppMethodBeat.o(304074);
+      return;
+    }
+    Log.i("MicroMsg.AbsMultiTaskHelper", "add or update taskInfo");
+    MultiTaskInfo localMultiTaskInfo = gka();
+    if (localMultiTaskInfo != null) {
+      ((c)com.tencent.mm.kernel.h.az(c.class)).addOrUpdateTaskInfoByBitmap(localMultiTaskInfo.field_id, localMultiTaskInfo.field_type, localMultiTaskInfo.gkh(), paramBitmap, localMultiTaskInfo.field_data);
+    }
+    AppMethodBeat.o(304074);
+  }
+  
+  public void b(aet paramaet) {}
+  
+  public void bhW()
+  {
+    AppMethodBeat.i(303977);
+    Object localObject = this.LCE;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((MultiTaskInfo)localObject).field_id)
+    {
+      Log.i("MicroMsg.AbsMultiTaskHelper", "onExitPage, type:", new Object[] { localObject });
+      localObject = this.LCG;
+      if (localObject != null)
+      {
+        localObject = ((dry)localObject).aaXG;
+        if ((localObject != null) && (cn.bDw() >= ((dru)localObject).aaXu)) {
+          ((dru)localObject).duration += cn.bDw() - ((dru)localObject).aaXu;
+        }
+      }
+      if ((gjZ()) && (gjV())) {
+        y(new a..ExternalSyntheticLambda0(this));
+      }
+      AppMethodBeat.o(303977);
+      return;
+    }
+  }
+  
+  public final void c(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(304010);
+    Log.i("MicroMsg.AbsMultiTaskHelper", s.X("addCurrentMultiTaskInfoWithBlt, forceUpdate:", Boolean.valueOf(paramBoolean)));
+    Object localObject4;
+    int i;
+    if (!gjV())
+    {
+      localObject1 = this.LCG;
+      drz localdrz;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        if (localObject1 != null) {
+          ((drs)localObject1).status = 2L;
+        }
+        localObject1 = this.LCE;
+        if (localObject1 == null) {
+          break label332;
+        }
+        localObject3 = (d)com.tencent.mm.kernel.h.az(d.class);
+        localObject4 = ((MultiTaskInfo)localObject1).field_id;
+        s.s(localObject4, "it.field_id");
+        i = ((MultiTaskInfo)localObject1).field_type;
+        localdrz = ((MultiTaskInfo)localObject1).gkh();
+        s.s(localdrz, "it.showData");
+        localObject1 = this.LCE;
+        if (localObject1 != null) {
+          break label171;
+        }
+      }
+      label171:
+      for (localObject1 = localObject2;; localObject1 = ((MultiTaskInfo)localObject1).field_data)
+      {
+        ((d)localObject3).addTaskInfoByBitmap((String)localObject4, i, localdrz, paramBitmap, (byte[])localObject1, this.LCG);
+        AppMethodBeat.o(304010);
+        return;
+        localObject1 = ((dry)localObject1).aaXH;
+        break;
+      }
+    }
+    else
+    {
+      if (!paramBoolean)
+      {
+        localObject2 = this.LCG;
+        if (localObject2 == null) {}
+        for (;;)
+        {
+          if (localObject1 != null) {
+            ((drs)localObject1).status = 1L;
+          }
+          ar(paramBitmap);
+          AppMethodBeat.o(304010);
+          return;
+          localObject1 = ((dry)localObject2).aaXH;
+        }
+      }
+      localObject1 = this.LCG;
+      if (localObject1 != null) {
+        break label339;
+      }
+    }
+    label332:
+    label339:
+    for (localObject1 = localObject3;; localObject1 = ((dry)localObject1).aaXH)
+    {
+      if (localObject1 != null) {
+        ((drs)localObject1).status = 1L;
+      }
+      localObject1 = this.LCE;
+      if (localObject1 != null)
+      {
+        localObject2 = (d)com.tencent.mm.kernel.h.az(d.class);
+        localObject3 = ((MultiTaskInfo)localObject1).field_id;
+        s.s(localObject3, "it.field_id");
+        i = ((MultiTaskInfo)localObject1).field_type;
+        localObject4 = ((MultiTaskInfo)localObject1).gkh();
+        s.s(localObject4, "it.showData");
+        ((d)localObject2).addTaskInfoByBitmap((String)localObject3, i, (drz)localObject4, paramBitmap, ((MultiTaskInfo)localObject1).field_data, this.LCG);
+      }
+      AppMethodBeat.o(304010);
+      return;
+    }
+  }
+  
+  public boolean cBZ()
+  {
+    return false;
+  }
+  
+  public boolean cCa()
+  {
+    return false;
+  }
+  
+  public boolean cCb()
+  {
+    return true;
+  }
+  
+  public boolean cCc()
+  {
+    return false;
+  }
+  
+  public boolean cCd()
+  {
+    return false;
+  }
+  
+  public void cCe() {}
+  
+  public void coi()
+  {
+    AppMethodBeat.i(303967);
+    Object localObject = this.LCE;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((MultiTaskInfo)localObject).field_id)
+    {
+      Log.i("MicroMsg.AbsMultiTaskHelper", "onEnterPage, type:", new Object[] { localObject });
+      localObject = this.LCG;
+      if (localObject != null)
+      {
+        localObject = ((dry)localObject).aaXG;
+        if (localObject != null) {
+          ((dru)localObject).aaXu = cn.bDw();
+        }
+      }
+      AppMethodBeat.o(303967);
+      return;
+    }
+  }
+  
+  public final void d(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    AppMethodBeat.i(304084);
+    if (cCd())
+    {
+      AppMethodBeat.o(304084);
+      return;
+    }
+    Log.i("MicroMsg.AbsMultiTaskHelper", "updateCurrentHistoryTaskInfo");
+    MultiTaskInfo localMultiTaskInfo = gka();
+    if (localMultiTaskInfo != null) {
+      ((c)com.tencent.mm.kernel.h.az(c.class)).updateTaskInfoByBitmap(localMultiTaskInfo.field_id, localMultiTaskInfo.field_type, localMultiTaskInfo.gkh(), paramBitmap, localMultiTaskInfo.field_data, paramBoolean);
+    }
+    AppMethodBeat.o(304084);
+  }
+  
+  public void e(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    AppMethodBeat.i(304098);
+    if (cCd())
+    {
+      AppMethodBeat.o(304098);
       return;
     }
     if (paramBoolean)
     {
       Log.i("MicroMsg.AbsMultiTaskHelper", "ended, remove historyTaskInfo");
-      faW();
-      AppMethodBeat.o(247630);
+      gkb();
+      AppMethodBeat.o(304098);
       return;
     }
     Log.i("MicroMsg.AbsMultiTaskHelper", "not ended update historyTaskInfo");
-    c(paramBitmap, false);
-    AppMethodBeat.o(247630);
+    d(paramBitmap, false);
+    AppMethodBeat.o(304098);
   }
   
-  public boolean dJN()
+  public boolean eCI()
   {
     return false;
   }
   
-  public void dJO()
+  public void eCK()
   {
-    AppMethodBeat.i(247623);
-    ag(null);
-    AppMethodBeat.o(247623);
+    AppMethodBeat.i(304065);
+    as(null);
+    AppMethodBeat.o(304065);
   }
   
-  public final MultiTaskInfo faE()
-  {
-    return this.FHd;
-  }
-  
-  public final aco faF()
-  {
-    return this.FHe;
-  }
-  
-  public final daq faG()
-  {
-    return this.FHf;
-  }
-  
-  public boolean faH()
+  public boolean evu()
   {
     return true;
-  }
-  
-  public boolean faI()
-  {
-    return false;
-  }
-  
-  public Boolean faJ()
-  {
-    return Boolean.FALSE;
-  }
-  
-  public String faK()
-  {
-    return null;
-  }
-  
-  public int faL()
-  {
-    return -1;
-  }
-  
-  public boolean faM()
-  {
-    return false;
-  }
-  
-  public void faN() {}
-  
-  public long faO()
-  {
-    return 500L;
-  }
-  
-  public Bitmap faP()
-  {
-    return null;
-  }
-  
-  public final boolean faQ()
-  {
-    AppMethodBeat.i(247610);
-    MultiTaskInfo localMultiTaskInfo = this.FHd;
-    if (localMultiTaskInfo != null)
-    {
-      boolean bool = ((d)com.tencent.mm.kernel.h.ag(d.class)).hasTaskInfo(localMultiTaskInfo);
-      AppMethodBeat.o(247610);
-      return bool;
-    }
-    AppMethodBeat.o(247610);
-    return false;
-  }
-  
-  public void faR()
-  {
-    AppMethodBeat.i(247612);
-    if (faQ())
-    {
-      MultiTaskInfo localMultiTaskInfo = this.FHd;
-      if (localMultiTaskInfo != null)
-      {
-        d locald = (d)com.tencent.mm.kernel.h.ag(d.class);
-        String str = localMultiTaskInfo.field_id;
-        p.j(str, "it.field_id");
-        int i = localMultiTaskInfo.field_type;
-        dar localdar = localMultiTaskInfo.fbc();
-        p.j(localdar, "it.showData");
-        locald.updateTaskInfoByBitmap(str, i, localdar, null, localMultiTaskInfo.field_data);
-        AppMethodBeat.o(247612);
-        return;
-      }
-    }
-    AppMethodBeat.o(247612);
-  }
-  
-  public boolean faT()
-  {
-    return false;
-  }
-  
-  public MultiTaskInfo faU()
-  {
-    return this.FHd;
-  }
-  
-  public boolean faV()
-  {
-    return true;
-  }
-  
-  public final void faW()
-  {
-    AppMethodBeat.i(247629);
-    if (cbK())
-    {
-      AppMethodBeat.o(247629);
-      return;
-    }
-    MultiTaskInfo localMultiTaskInfo = faU();
-    if (localMultiTaskInfo != null)
-    {
-      ((c)com.tencent.mm.kernel.h.ag(c.class)).removeTaskInfo(localMultiTaskInfo.field_id, true, 2);
-      AppMethodBeat.o(247629);
-      return;
-    }
-    AppMethodBeat.o(247629);
   }
   
   public String getPosition()
@@ -563,40 +440,158 @@ public class a
     return null;
   }
   
-  public void iV(boolean paramBoolean) {}
-  
-  public void iW(boolean paramBoolean)
+  public final MultiTaskInfo gjJ()
   {
-    AppMethodBeat.i(247615);
-    iV(paramBoolean);
-    AppMethodBeat.o(247615);
+    return this.LCE;
   }
   
-  public final void u(Runnable paramRunnable)
+  public final aet gjK()
   {
-    AppMethodBeat.i(247631);
-    p.k(paramRunnable, "runnable");
-    com.tencent.e.h.ZvG.g(paramRunnable, this.FHg);
-    AppMethodBeat.o(247631);
+    return this.LCF;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public final dry gjL()
   {
-    b(a parama) {}
-    
-    public final void run()
+    return this.LCG;
+  }
+  
+  public boolean gjM()
+  {
+    return true;
+  }
+  
+  public boolean gjN()
+  {
+    return false;
+  }
+  
+  public Boolean gjO()
+  {
+    return Boolean.FALSE;
+  }
+  
+  public String gjP()
+  {
+    return null;
+  }
+  
+  public int gjQ()
+  {
+    return -1;
+  }
+  
+  public boolean gjR()
+  {
+    return false;
+  }
+  
+  public void gjS() {}
+  
+  public long gjT()
+  {
+    return 500L;
+  }
+  
+  public Bitmap gjU()
+  {
+    return null;
+  }
+  
+  public final boolean gjV()
+  {
+    AppMethodBeat.i(303999);
+    MultiTaskInfo localMultiTaskInfo = this.LCE;
+    if (localMultiTaskInfo != null)
     {
-      AppMethodBeat.i(247596);
-      ((d)com.tencent.mm.kernel.h.ag(d.class)).reportMultiTaskInfo(2, this.FHj.FHf);
-      AppMethodBeat.o(247596);
+      boolean bool = ((d)com.tencent.mm.kernel.h.az(d.class)).hasTaskInfo(localMultiTaskInfo);
+      AppMethodBeat.o(303999);
+      return bool;
     }
+    AppMethodBeat.o(303999);
+    return false;
+  }
+  
+  public void gjW()
+  {
+    AppMethodBeat.i(304018);
+    if (gjV())
+    {
+      MultiTaskInfo localMultiTaskInfo = this.LCE;
+      if (localMultiTaskInfo != null)
+      {
+        d locald = (d)com.tencent.mm.kernel.h.az(d.class);
+        String str = localMultiTaskInfo.field_id;
+        s.s(str, "it.field_id");
+        int i = localMultiTaskInfo.field_type;
+        drz localdrz = localMultiTaskInfo.gkh();
+        s.s(localdrz, "it.showData");
+        locald.updateTaskInfoByBitmap(str, i, localdrz, null, localMultiTaskInfo.field_data);
+      }
+    }
+    AppMethodBeat.o(304018);
+  }
+  
+  public boolean gjZ()
+  {
+    return false;
+  }
+  
+  public MultiTaskInfo gka()
+  {
+    return this.LCE;
+  }
+  
+  public final void gkb()
+  {
+    AppMethodBeat.i(304091);
+    if (cCd())
+    {
+      AppMethodBeat.o(304091);
+      return;
+    }
+    MultiTaskInfo localMultiTaskInfo = gka();
+    if (localMultiTaskInfo != null) {
+      ((c)com.tencent.mm.kernel.h.az(c.class)).removeTaskInfo(localMultiTaskInfo.field_id, true, 2);
+    }
+    AppMethodBeat.o(304091);
+  }
+  
+  public void kd(boolean paramBoolean) {}
+  
+  public void ke(boolean paramBoolean)
+  {
+    AppMethodBeat.i(304028);
+    kd(paramBoolean);
+    AppMethodBeat.o(304028);
+  }
+  
+  public final void updateTitle(String paramString)
+  {
+    AppMethodBeat.i(303883);
+    Object localObject = this.LCE;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((MultiTaskInfo)localObject).gkh())
+    {
+      if (localObject != null) {
+        ((drz)localObject).title = paramString;
+      }
+      gjX();
+      AppMethodBeat.o(303883);
+      return;
+    }
+  }
+  
+  public final void y(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(304108);
+    s.u(paramRunnable, "runnable");
+    com.tencent.threadpool.h.ahAA.j(paramRunnable, this.LCH);
+    AppMethodBeat.o(304108);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.b.a
  * JD-Core Version:    0.7.0.1
  */

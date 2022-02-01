@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/dc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/go" android:layout_gravity="left" android:id="@id/d4s" android:background="@drawable/az3" android:padding="16.0dip" android:text="@string/he" style="@style/os" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/go" android:id="@id/d4t" android:background="@drawable/az3" android:padding="16.0dip" android:text="@string/ifl" android:layout_alignParentRight="true" style="@style/os" />
-    <View android:id="@id/ivg" android:background="@color/ac_" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/d4r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/r" android:src="@drawable/c9j" android:layout_above="@id/ivg" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/d4w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/k" android:text="@string/if8" android:layout_below="@id/ivg" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/ka" android:textColor="@color/x3" android:id="@id/g9i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/ifl" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/dc">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:layout_gravity="center" android:id="@id/lq1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cv" android:text="@string/e_3" />
+    </LinearLayout>
+</FrameLayout>

@@ -14,20 +14,20 @@ final class AppForegroundDelegate$2
   public final void run()
   {
     AppMethodBeat.i(131736);
-    c.aHV().j(true, this.fbK);
-    synchronized (AppForegroundDelegate.b(this.fbL))
+    c.baR().i(true, this.fcG);
+    synchronized (AppForegroundDelegate.b(this.hfn))
     {
-      LinkedList localLinkedList = new LinkedList(AppForegroundDelegate.b(this.fbL));
+      LinkedList localLinkedList = new LinkedList(AppForegroundDelegate.b(this.hfn));
       ??? = localLinkedList.iterator();
       if (((Iterator)???).hasNext()) {
-        ((o)((Iterator)???).next()).onAppForeground(this.fbK);
+        ((q)((Iterator)???).next()).onAppForeground(this.fcG);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.AppForegroundDelegate.2
  * JD-Core Version:    0.7.0.1
  */

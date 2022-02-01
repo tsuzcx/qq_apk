@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/gey" android:background="@color/ud" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/ue" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gex" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{Content}" android:drawableLeft="@raw/seller_warning" android:drawablePadding="10.0dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/b5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <TextView android:textColor="@color/a92" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@null" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="agree" />
-    </LinearLayout>
-</RelativeLayout>
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Button android:layout_gravity="center_horizontal" android:id="@id/baa" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="查看当前日志文件" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/bdn" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="清空当前Xlog" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/h0l" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="从Cache里转移Xlog" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/jbu" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="发送MM进程日志" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/jby" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="发送Push进程日志" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/jc7" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="发送Tool进程日志" style="@style/og" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/jc8" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cp" android:text="发送ToolMp进程日志" style="@style/og" />
+            <TextView android:id="@id/hq9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

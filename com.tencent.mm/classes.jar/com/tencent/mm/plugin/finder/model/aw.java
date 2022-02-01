@@ -1,64 +1,52 @@
 package com.tencent.mm.plugin.finder.model;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.cw.f;
-import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.bex;
-import com.tencent.mm.protocal.protobuf.cyn;
-import com.tencent.mm.ui.MMActivity;
-import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.protocal.protobuf.bjb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderMentionUtil;", "", "()V", "TAG", "", "doMention", "", "context", "Landroid/content/Context;", "feedId", "", "opType", "", "callback", "Lkotlin/Function1;", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderLotteryWinnerData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "winnerInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryContact;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryContact;)V", "getWinnerInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryContact;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aw
+  implements cc
 {
-  public static final aw zBj;
+  public final bjb EDj;
   
-  static
+  public aw(bjb parambjb)
   {
-    AppMethodBeat.i(275244);
-    zBj = new aw();
-    AppMethodBeat.o(275244);
+    AppMethodBeat.i(331878);
+    this.EDj = parambjb;
+    AppMethodBeat.o(331878);
   }
   
-  public static void a(Context paramContext, long paramLong, int paramInt, kotlin.g.a.b<? super Boolean, kotlin.x> paramb)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(275243);
-    p.k(paramContext, "context");
-    p.k(paramb, "callback");
-    Object localObject = new LinkedList();
-    cyn localcyn = new cyn();
-    localcyn.opType = paramInt;
-    localcyn.xbk = paramLong;
-    ((LinkedList)localObject).add(localcyn);
-    localObject = new com.tencent.mm.plugin.finder.cgi.x(0, 0L, z.bdh(), (LinkedList)localObject, null, 16).e(paramContext, "", 100L).bhW();
-    if (!(paramContext instanceof MMActivity)) {
-      paramContext = null;
-    }
-    for (;;)
+    AppMethodBeat.i(331896);
+    s.u(paramk, "obj");
+    if ((paramk instanceof bjb)) {}
+    for (paramk = (bjb)paramk; (paramk != null) && (s.p(paramk.username, this.EDj.username)) && (s.p(paramk.nickname, this.EDj.nickname)); paramk = null)
     {
-      paramContext = ((f)localObject).a((com.tencent.mm.vending.e.b)paramContext);
-      p.j(paramContext, "CgiFinderModMentioned(Cg…e(context as? MMActivity)");
-      d.b((com.tencent.mm.vending.g.c)paramContext, (kotlin.g.a.b)new a(paramb));
-      AppMethodBeat.o(275243);
-      return;
+      AppMethodBeat.o(331896);
+      return 0;
     }
+    AppMethodBeat.o(331896);
+    return -1;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderModMentionedResponse;", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<c.a<bex>, kotlin.x>
+  public final long bZA()
   {
-    a(kotlin.g.a.b paramb)
-    {
-      super();
-    }
+    AppMethodBeat.i(331882);
+    long l = hashCode();
+    AppMethodBeat.o(331882);
+    return l;
+  }
+  
+  public final int bZB()
+  {
+    AppMethodBeat.i(331888);
+    int i = aw.class.hashCode();
+    AppMethodBeat.o(331888);
+    return i;
   }
 }
 

@@ -1,6 +1,5 @@
 package com.google.android.gms.stats;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.PowerManager;
@@ -28,11 +27,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.ThreadSafe;
 
-@ThreadSafe
 public class WakeLock
 {
   private static ScheduledExecutorService zzaeg;
@@ -58,18 +53,16 @@ public class WakeLock
     AppMethodBeat.o(73473);
   }
   
-  public WakeLock(Context paramContext, int paramInt, @Nonnull String paramString) {}
+  public WakeLock(Context paramContext, int paramInt, String paramString) {}
   
-  public WakeLock(Context paramContext, int paramInt, @Nonnull String paramString1, @Nullable String paramString2) {}
+  public WakeLock(Context paramContext, int paramInt, String paramString1, String paramString2) {}
   
-  @SuppressLint({"UnwrappedWakeLock"})
-  public WakeLock(Context paramContext, int paramInt, @Nonnull String paramString1, @Nullable String paramString2, @Nonnull String paramString3)
+  public WakeLock(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
   {
     this(paramContext, paramInt, paramString1, paramString2, paramString3, null);
   }
   
-  @SuppressLint({"UnwrappedWakeLock"})
-  public WakeLock(Context paramContext, int paramInt, @Nonnull String paramString1, @Nullable String paramString2, @Nonnull String paramString3, @Nullable String paramString4)
+  public WakeLock(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(73449);
     this.zzaec = true;
@@ -147,7 +140,6 @@ public class WakeLock
     }
   }
   
-  @SuppressLint({"WakelockTimeout"})
   private final void zza(String paramString, long paramLong)
   {
     AppMethodBeat.i(73455);
@@ -317,8 +309,8 @@ public class WakeLock
         {
           localWakeLock = this.zzadv;
           com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-          com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, locala.aFh(), "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "(I)V");
-          localWakeLock.release(((Integer)locala.sf(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, locala.aYi(), "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "(I)V");
+          localWakeLock.release(((Integer)locala.sb(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/google/android/gms/stats/WakeLock", "zzn", "(I)V", "android/os/PowerManager$WakeLock_EXEC_", "release", "(I)V");
           AppMethodBeat.o(73463);
           return;
@@ -593,7 +585,7 @@ public class WakeLock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.stats.WakeLock
  * JD-Core Version:    0.7.0.1
  */

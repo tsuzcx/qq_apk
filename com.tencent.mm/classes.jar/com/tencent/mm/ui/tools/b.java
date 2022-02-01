@@ -17,13 +17,14 @@ import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.k;
 import com.tencent.mm.b.g;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -33,11 +34,11 @@ public final class b
   public static void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt)
   {
     AppMethodBeat.i(143034);
-    b(paramActivity, paramIntent1, paramIntent2, paramString, paramInt, null);
+    a(paramActivity, paramIntent1, paramIntent2, paramString, paramInt, null);
     AppMethodBeat.o(143034);
   }
   
-  public static void b(final Activity paramActivity, Intent paramIntent1, final Intent paramIntent2, final String paramString, final int paramInt, final a parama)
+  public static void a(final Activity paramActivity, Intent paramIntent1, final Intent paramIntent2, final String paramString, final int paramInt, final a parama)
   {
     AppMethodBeat.i(143035);
     if ((paramIntent1 == null) || (paramIntent1.getData() == null))
@@ -52,27 +53,27 @@ public final class b
     }
     if (!paramIntent1.getData().toString().startsWith("content://com.google.android.gallery3d"))
     {
-      paramIntent1 = h(paramActivity, paramIntent1, paramString);
+      paramIntent1 = i(paramActivity, paramIntent1, paramString);
       Log.i("MicroMsg.AsyncObtainImage", "resolvePhotoFromIntent, filePath:%s", new Object[] { paramIntent1 });
       if (!Util.isNullOrNil(paramIntent1))
       {
         if (parama != null) {
-          paramIntent2.putExtra("CropImage_OutputPath", parama.bbX(paramIntent1));
+          paramIntent2.putExtra("CropImage_OutputPath", parama.baz(paramIntent1));
         }
         paramIntent2.putExtra("CropImage_ImgPath", paramIntent1);
-        paramActivity.startActivityForResult(paramIntent2, paramInt);
+        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).cG(paramIntent2).aYi(), "com/tencent/mm/ui/tools/AsyncObtainImage", "asyncResolvePhoto", "(Landroid/app/Activity;Landroid/content/Intent;Landroid/content/Intent;Ljava/lang/String;ILcom/tencent/mm/ui/tools/AsyncObtainImage$IOnGenOutputPath;)V", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
       }
       AppMethodBeat.o(143035);
       return;
     }
     new AsyncTask()
     {
-      private ProgressDialog XNt;
-      private boolean XNu;
+      private ProgressDialog afDH;
+      private boolean afDI;
       private String filePath;
       private Uri uri;
       
-      private Integer hYk()
+      private Integer jCU()
       {
         AppMethodBeat.i(143031);
         try
@@ -102,11 +103,11 @@ public final class b
         AppMethodBeat.i(143030);
         try
         {
-          this.uri = this.val$data.getData();
-          this.XNu = false;
+          this.uri = b.this.getData();
+          this.afDI = false;
           Activity localActivity = paramActivity;
           paramActivity.getString(a.k.app_tip);
-          this.XNt = h.a(localActivity, paramActivity.getString(a.k.app_getting_img), true, new DialogInterface.OnCancelListener()
+          this.afDH = k.a(localActivity, paramActivity.getString(a.k.app_getting_img), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
@@ -128,7 +129,7 @@ public final class b
     AppMethodBeat.o(143035);
   }
   
-  public static String h(Context paramContext, Intent paramIntent, String paramString)
+  public static String i(Context paramContext, Intent paramIntent, String paramString)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -146,8 +147,8 @@ public final class b
       Log.i("MicroMsg.AsyncObtainImage", "resolve photo from cursor");
       paramContext = localObject2;
     }
-    label393:
-    label396:
+    label395:
+    label398:
     for (;;)
     {
       try
@@ -184,17 +185,17 @@ public final class b
         if (!Util.isNullOrNil(paramString))
         {
           paramContext = paramString;
-          if (!new q(paramString).ifE()) {
+          if (!new u(paramString).jKS()) {
             paramContext = null;
           }
         }
         Log.i("MicroMsg.AsyncObtainImage", "photo file from data, path:".concat(String.valueOf(paramContext)));
         if (!Util.isNullOrNil(paramContext)) {
-          break label396;
+          break label398;
         }
         paramContext = paramIntent.getData().getHost();
-        if ((Util.isNullOrNil(paramContext)) || (new q(paramContext).ifE())) {
-          break label393;
+        if ((Util.isNullOrNil(paramContext)) || (new u(paramContext).jKS())) {
+          break label395;
         }
         paramContext = localObject1;
       }
@@ -225,11 +226,11 @@ public final class b
     {
       Object localObject = g.getMessageDigest(DateFormat.format("yyyy-MM-dd-HH-mm-ss", System.currentTimeMillis()).toString().getBytes()) + ".jpg";
       paramString = paramString + (String)localObject;
-      localObject = new q(paramString);
-      if (!((q)localObject).ifE()) {
-        ((q)localObject).ifM();
+      localObject = new u(paramString);
+      if (!((u)localObject).jKS()) {
+        ((u)localObject).jKZ();
       }
-      localObject = new BufferedOutputStream(u.an((q)localObject));
+      localObject = new BufferedOutputStream(y.ap((u)localObject));
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
       ((BufferedOutputStream)localObject).close();
       Log.i("MicroMsg.AsyncObtainImage", "photo image from data, path:".concat(String.valueOf(paramString)));
@@ -246,12 +247,12 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract String bbX(String paramString);
+    public abstract String baz(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.b
  * JD-Core Version:    0.7.0.1
  */

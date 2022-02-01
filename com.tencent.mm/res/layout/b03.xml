@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/eeo" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="12.0dip" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/fo" android:id="@id/eep" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@id/eeo" />
-        <ImageView android:layout_gravity="end|center" android:id="@id/een" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-    <RelativeLayout android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginStart="68.0dip" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eyy" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.wallet_core.ui.WcPayBannerView android:id="@id/ll5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="16.0dip" />
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/ezd" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/eyq" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="30.0dip" android:src="@drawable/b__" android:importantForAccessibility="no" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/FG_0" android:id="@id/eze" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" />
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="40.0dip" android:textColor="@color/FG_0" android:id="@id/ez6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="" app:walletTypeFace="k0_" />
+        <TextView android:textSize="15.0dip" android:textColor="#fff76260" android:id="@id/ezc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:text="" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/FG_1" android:id="@id/ezb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" />
+    </LinearLayout>
+    <TextView android:textSize="13.0dip" android:textColor="@color/FG_1" android:id="@id/ez0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
+    <LinearLayout android:orientation="vertical" android:id="@id/eyt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+        <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/eyv" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a7b" android:id="@id/eyw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a78" android:gravity="right" android:id="@id/eyx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ez8" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a7b" android:id="@id/ez9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a78" android:gravity="right" android:id="@id/ez_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/eza" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="20.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0dip" android:textColor="@color/a7b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="对方使用时通知我" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/ez1" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" />
+        </LinearLayout>
+        <View android:background="@color/abn" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ez2" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:id="@id/ez4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fkp" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/FG_1" android:gravity="center|right" android:id="@id/ez5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:src="@raw/icons_outlined_arrow" android:importantForAccessibility="no" app:iconColor="@color/FG_1" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/xd" android:id="@id/ez3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="{无法使用另一张亲属卡作为优先扣款方式，已自动为你选择其他扣款方式}" />
+    </LinearLayout>
+    <View android:id="@id/eys" android:background="@color/b" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="10.0dip" />
 </LinearLayout>

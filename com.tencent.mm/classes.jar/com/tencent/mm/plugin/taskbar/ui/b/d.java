@@ -11,63 +11,63 @@ import java.util.TimerTask;
 
 public enum d
 {
-  public com.tencent.e.i.d<?> FpU;
-  public boolean isRunning;
-  private WeakReference<Context> jVV;
-  public HashMap<Integer, b> jVW;
-  public final Object jVY;
+  public com.tencent.threadpool.i.d<?> Lox;
+  public boolean Uz;
+  private WeakReference<Context> mvP;
+  public HashMap<Integer, b> mvQ;
+  public final Object mvS;
   
   static
   {
-    AppMethodBeat.i(215736);
-    MqG = new d("INSTANCE");
-    MqH = new d[] { MqG };
-    AppMethodBeat.o(215736);
+    AppMethodBeat.i(264218);
+    STS = new d("INSTANCE");
+    STT = new d[] { STS };
+    AppMethodBeat.o(264218);
   }
   
   private d()
   {
-    AppMethodBeat.i(215733);
-    this.jVV = null;
-    this.jVW = new HashMap();
-    this.isRunning = false;
-    this.FpU = null;
-    this.jVY = new Object();
-    AppMethodBeat.o(215733);
+    AppMethodBeat.i(264198);
+    this.mvP = null;
+    this.mvQ = new HashMap();
+    this.Uz = false;
+    this.Lox = null;
+    this.mvS = new Object();
+    AppMethodBeat.o(264198);
   }
   
-  public final void aEZ()
+  public final void aYb()
   {
-    AppMethodBeat.i(215734);
-    synchronized (this.jVY)
+    AppMethodBeat.i(264226);
+    synchronized (this.mvS)
     {
-      if (!this.isRunning)
+      if (!this.Uz)
       {
-        AppMethodBeat.o(215734);
+        AppMethodBeat.o(264226);
         return;
       }
-      if (this.FpU != null) {
-        this.FpU.cancel(false);
+      if (this.Lox != null) {
+        this.Lox.cancel(false);
       }
-      this.isRunning = false;
-      AppMethodBeat.o(215734);
+      this.Uz = false;
+      AppMethodBeat.o(264226);
       return;
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(215735);
+    AppMethodBeat.i(264232);
     Log.i("MicroMsg.PerformanceMonitor", "alvinluo PerformanceMonitor release");
-    if (this.jVW != null) {
-      this.jVW.clear();
+    if (this.mvQ != null) {
+      this.mvQ.clear();
     }
-    AppMethodBeat.o(215735);
+    AppMethodBeat.o(264232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,100 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class etu
-  extends dyy
+  extends erp
 {
-  public String UvF;
+  public String abwY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32472);
+    AppMethodBeat.i(149143);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abwY == null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: QrCode");
+        AppMethodBeat.o(149143);
+        throw paramVarArgs;
       }
-      if (this.UvF != null) {
-        paramVarArgs.f(2, this.UvF);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(32472);
+      if (this.abwY != null) {
+        paramVarArgs.g(2, this.abwY);
+      }
+      AppMethodBeat.o(149143);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label356;
+      if (this.BaseRequest == null) {
+        break label392;
       }
     }
-    label356:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label392:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.UvF != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.UvF);
+      if (this.abwY != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.abwY);
       }
-      AppMethodBeat.o(32472);
+      AppMethodBeat.o(149143);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(32472);
+        if (this.abwY == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: QrCode");
+          AppMethodBeat.o(149143);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(149143);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         etu localetu = (etu)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32472);
+          AppMethodBeat.o(149143);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localetu.BaseResponse = localjh;
+            localetu.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(32472);
+          AppMethodBeat.o(149143);
           return 0;
         }
-        localetu.UvF = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(32472);
+        localetu.abwY = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(149143);
         return 0;
       }
-      AppMethodBeat.o(32472);
+      AppMethodBeat.o(149143);
       return -1;
     }
   }

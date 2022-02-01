@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,8 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -19,797 +16,999 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.f.b.a.dx;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.cj;
+import com.tencent.mm.hellhoundlib.b.c;
+import com.tencent.mm.plugin.finder.cgi.dk;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.gallery.b.a;
 import com.tencent.mm.plugin.finder.gallery.b.b;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.report.o;
-import com.tencent.mm.plugin.finder.search.k.b;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.report.aa;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.finder.search.l;
+import com.tencent.mm.plugin.finder.search.l.b;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
+import com.tencent.mm.plugin.finder.storage.logic.d.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bio;
-import com.tencent.mm.protocal.protobuf.bir;
+import com.tencent.mm.protocal.protobuf.bux;
+import com.tencent.mm.protocal.protobuf.bva;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.ui.search.FTSEditTextView;
-import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.FTSEditTextView.c;
-import com.tencent.mm.ui.search.a.b;
-import com.tencent.mm.ui.search.a.c;
+import com.tencent.mm.ui.search.FTSEditTextView.d;
+import com.tencent.mm.ui.search.FTSSearchView;
+import com.tencent.mm.ui.search.FTSSearchView.b;
+import com.tencent.mm.ui.search.FTSSearchView.c;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.mm.view.RefreshLoadMoreLayout.b;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
 import com.tencent.mm.view.TouchableLayout;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.h.c;
+import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.i.c;
 import com.tencent.mm.view.recyclerview.m;
+import com.tencent.mm.view.recyclerview.o;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "continueFlag", "", "feedList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "galleryConfig", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "getGalleryConfig", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "setGalleryConfig", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;)V", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "isOtherEnableFullScreenEnjoy", "", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "loadingView", "Landroid/view/View;", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "noResultView", "Landroid/widget/TextView;", "offset", "query", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "requestId", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "searchSuggestionManager", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager;", "searchType", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "tabType", "getTabType", "()I", "addClickItem", "", "id", "position", "addExposeItem", "addFinderObject", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getLayoutId", "goBack", "initContentView", "initData", "initSearchView", "initSuggestion", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onClickBackBtn", "view", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSearchKeyDown", "onSwipeBack", "onTagClick", "index", "tag", "showLoadMoreFooter", "showNoMoreFooter", "startSearch", "hotSessionBuffer", "startSearchNextPage", "isPreload", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "continueFlag", "", "feedList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "galleryConfig", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "getGalleryConfig", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "setGalleryConfig", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;)V", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "isOtherEnableFullScreenEnjoy", "", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "loadingView", "Landroid/view/View;", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "noResultView", "Landroid/widget/TextView;", "offset", "query", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "requestId", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "searchSuggestionManager", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager;", "searchType", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "tabType", "getTabType", "()I", "addClickItem", "", "id", "position", "addExposeItem", "addFinderObject", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getLayoutId", "goBack", "initContentView", "initData", "initSearchView", "initSuggestion", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onClickBackBtn", "view", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSearchKeyDown", "onSwipeBack", "onTagClick", "index", "tag", "showLoadMoreFooter", "showNoMoreFooter", "startSearch", "hotSessionBuffer", "startSearchNextPage", "isPreload", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderGallerySearchUI
   extends MMFinderUI
-  implements com.tencent.mm.an.i, FTSEditTextView.b, a.b
+  implements com.tencent.mm.am.h, FTSEditTextView.c, FTSSearchView.b
 {
+  private RefreshLoadMoreLayout ATx;
+  private com.tencent.mm.bx.b BgS;
+  private TextView BnA;
+  private com.tencent.mm.plugin.finder.search.j BnB;
+  private l BnC;
+  private dk BnD;
+  public com.tencent.mm.plugin.finder.gallery.b Bnx;
+  private FTSSearchView Bny;
+  private boolean Bnz;
   private final String TAG;
-  private HashMap _$_findViewCache;
   private int continueFlag;
-  final int fEH;
-  String fIY;
-  private ArrayList<bu> feedList;
-  private RecyclerView jLl;
-  private View kGT;
+  private ArrayList<cc> feedList;
+  final int hJx;
+  String hOG;
+  private RecyclerView mkw;
+  private View njN;
   private int offset;
   String query;
-  int uMD;
-  private boolean xAM;
-  private com.tencent.mm.cd.b xHE;
-  public com.tencent.mm.plugin.finder.gallery.b xNB;
-  private com.tencent.mm.ui.search.a xNC;
-  private TextView xND;
-  private com.tencent.mm.plugin.finder.search.i xNE;
-  private com.tencent.mm.plugin.finder.search.k xNF;
-  private cj xNG;
-  private RefreshLoadMoreLayout xvJ;
+  int xVf;
   
   public FinderGallerySearchUI()
   {
-    AppMethodBeat.i(224713);
+    AppMethodBeat.i(365361);
     this.TAG = "Finder.FinderGallerySearchUI";
     this.query = "";
     this.feedList = new ArrayList();
-    this.fIY = "";
-    this.uMD = 1;
-    this.fEH = 10000;
-    AppMethodBeat.o(224713);
+    this.hOG = "";
+    this.xVf = 1;
+    this.hJx = 10000;
+    AppMethodBeat.o(365361);
   }
   
-  private final void aBK(String paramString)
+  private static final void a(FinderGallerySearchUI paramFinderGallerySearchUI, View paramView)
   {
-    AppMethodBeat.i(224681);
-    Log.i(this.TAG, "startSearch query:".concat(String.valueOf(paramString)));
-    this.query = paramString;
-    this.offset = 0;
-    this.continueFlag = 0;
-    this.xHE = null;
-    this.feedList.clear();
-    Object localObject = UUID.randomUUID().toString();
-    p.j(localObject, "UUID.randomUUID().toString()");
-    this.fIY = ((String)localObject);
-    if (this.xNG != null) {
-      h.aGY().a((com.tencent.mm.an.q)this.xNG);
-    }
-    localObject = this.xNB;
-    if (localObject == null) {
-      p.bGy("galleryConfig");
-    }
-    int i;
-    switch (((com.tencent.mm.plugin.finder.gallery.b)localObject).xTx.kqZ)
+    AppMethodBeat.i(365401);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderGallerySearchUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramFinderGallerySearchUI, "this$0");
+    paramFinderGallerySearchUI.onClickBackBtn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(365401);
+  }
+  
+  private static final void a(ah.d paramd1, FinderGallerySearchUI paramFinderGallerySearchUI, ah.d paramd2, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(365417);
+    kotlin.g.b.s.u(paramd1, "$originSize");
+    kotlin.g.b.s.u(paramFinderGallerySearchUI, "this$0");
+    kotlin.g.b.s.u(paramd2, "$currentSize");
+    Object localObject;
+    boolean bool1;
+    if (paramd1.aixb != 0)
     {
-    default: 
-      i = 0;
+      localObject = RefreshLoadMoreLayout.d.agJr;
+      localObject = new RefreshLoadMoreLayout.d(RefreshLoadMoreLayout.d.jMH());
+      if (paramFinderGallerySearchUI.continueFlag != 0)
+      {
+        bool1 = true;
+        ((RefreshLoadMoreLayout.d)localObject).agJu = bool1;
+        if (paramd2.aixb - paramd1.aixb > 0) {
+          break label241;
+        }
+        bool1 = bool2;
+        label86:
+        ((RefreshLoadMoreLayout.d)localObject).pzq = bool1;
+        ((RefreshLoadMoreLayout.d)localObject).agJv = (paramd2.aixb - paramd1.aixb);
+        paramd2 = paramFinderGallerySearchUI.ATx;
+        paramd1 = paramd2;
+        if (paramd2 == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          paramd1 = null;
+        }
+        paramd1.onPreFinishLoadMoreSmooth((RefreshLoadMoreLayout.d)localObject);
+      }
     }
     for (;;)
     {
-      int j = this.offset;
-      localObject = this.fIY;
-      com.tencent.mm.cd.b localb = this.xHE;
-      g localg = g.Xox;
-      this.xNG = new cj(paramString, j, (String)localObject, localb, i, ((aj)g.b((AppCompatActivity)this).i(aj.class)).ekY(), null, null, 384);
-      paramString = this.xNG;
-      if (paramString != null) {
-        paramString.uMD = this.uMD;
+      if (!paramBoolean)
+      {
+        paramFinderGallerySearchUI = paramFinderGallerySearchUI.mkw;
+        paramd1 = paramFinderGallerySearchUI;
+        if (paramFinderGallerySearchUI == null)
+        {
+          kotlin.g.b.s.bIx("recyclerView");
+          paramd1 = null;
+        }
+        paramFinderGallerySearchUI = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+        com.tencent.mm.hellhoundlib.a.a.b(paramd1, paramFinderGallerySearchUI.aYi(), "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI", "onSceneEnd$lambda-6", "(Lkotlin/jvm/internal/Ref$IntRef;Lcom/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI;Lkotlin/jvm/internal/Ref$IntRef;Z)V", "Undefined", "scrollToPosition", "(I)V");
+        paramd1.scrollToPosition(((Integer)paramFinderGallerySearchUI.sb(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(paramd1, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI", "onSceneEnd$lambda-6", "(Lkotlin/jvm/internal/Ref$IntRef;Lcom/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI;Lkotlin/jvm/internal/Ref$IntRef;Z)V", "Undefined", "scrollToPosition", "(I)V");
       }
-      paramString = this.xNG;
-      if (paramString != null) {
-        paramString.xdX = false;
-      }
-      h.aGY().b((com.tencent.mm.an.q)this.xNG);
-      h.aGY().a(3820, (com.tencent.mm.an.i)this);
-      paramString = this.kGT;
-      if (paramString == null) {
-        p.bGy("loadingView");
-      }
-      paramString.setVisibility(0);
-      paramString = this.xND;
-      if (paramString == null) {
-        p.bGy("noResultView");
-      }
-      paramString.setVisibility(8);
-      paramString = this.xvJ;
-      if (paramString == null) {
-        p.bGy("rlLayout");
-      }
-      paramString.setVisibility(8);
-      paramString = this.jLl;
-      if (paramString == null) {
-        p.bGy("recyclerView");
-      }
-      localObject = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.b(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI", "startSearch", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "Undefined", "scrollToPosition", "(I)V");
-      paramString.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI", "startSearch", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "Undefined", "scrollToPosition", "(I)V");
-      AppMethodBeat.o(224681);
+      AppMethodBeat.o(365417);
       return;
-      i = 15;
-      continue;
-      i = 16;
-    }
-  }
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(224736);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(224736);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(224735);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(224735);
-    return localView1;
-  }
-  
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.c paramc)
-  {
-    AppMethodBeat.i(224666);
-    if (paramString1 != null)
-    {
-      if (paramString1 == null)
+      bool1 = false;
+      break;
+      label241:
+      bool1 = false;
+      break label86;
+      localObject = paramFinderGallerySearchUI.ATx;
+      paramd1 = (ah.d)localObject;
+      if (localObject == null)
       {
-        paramString1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(224666);
-        throw paramString1;
+        kotlin.g.b.s.bIx("rlLayout");
+        paramd1 = null;
       }
-      paramString2 = kotlin.n.n.bb((CharSequence)paramString1).toString();
-      paramString1 = paramString2;
-      if (paramString2 != null) {}
+      paramd1.aFW(paramd2.aixb);
     }
-    else
-    {
-      paramString1 = "";
-    }
-    if (Util.isNullOrNil(paramString1))
-    {
-      paramString2 = this.kGT;
-      if (paramString2 == null) {
-        p.bGy("loadingView");
-      }
-      paramString2.setVisibility(8);
-      paramString2 = this.xND;
-      if (paramString2 == null) {
-        p.bGy("noResultView");
-      }
-      paramString2.setVisibility(8);
-      paramString2 = this.xvJ;
-      if (paramString2 == null) {
-        p.bGy("rlLayout");
-      }
-      paramString2.setVisibility(8);
-    }
-    paramString2 = this.xNE;
-    if (paramString2 == null) {
-      p.bGy("historyLogic");
-    }
-    paramString2.aEm(paramString1);
-    AppMethodBeat.o(224666);
   }
   
-  public final boolean aDV()
+  private static final boolean a(FinderGallerySearchUI paramFinderGallerySearchUI, View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(224671);
-    hideVKB();
-    Object localObject1 = this.xNC;
-    if (localObject1 == null) {
-      p.bGy("searchView");
-    }
-    localObject1 = ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText();
-    p.j(localObject1, "searchView.ftsEditText");
-    localObject1 = ((FTSEditTextView)localObject1).getTotalQuery();
-    if (localObject1 != null)
+    AppMethodBeat.i(365408);
+    kotlin.g.b.s.u(paramFinderGallerySearchUI, "this$0");
+    paramMotionEvent = paramFinderGallerySearchUI.Bny;
+    paramView = paramMotionEvent;
+    if (paramMotionEvent == null)
     {
-      if (localObject1 == null)
-      {
-        localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(224671);
-        throw ((Throwable)localObject1);
-      }
-      localObject2 = kotlin.n.n.bb((CharSequence)localObject1).toString();
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
+      kotlin.g.b.s.bIx("searchView");
+      paramView = null;
     }
-    else
-    {
-      localObject1 = "";
-    }
-    if (Util.isNullOrNil((String)localObject1))
-    {
-      AppMethodBeat.o(224671);
-      return true;
-    }
-    this.uMD = 1;
-    aBK((String)localObject1);
-    Object localObject2 = this.xNE;
-    if (localObject2 == null) {
-      p.bGy("historyLogic");
-    }
-    ((com.tencent.mm.plugin.finder.search.i)localObject2).aEn((String)localObject1);
-    localObject1 = this.xNF;
-    if (localObject1 == null) {
-      p.bGy("searchSuggestionManager");
-    }
-    ((com.tencent.mm.plugin.finder.search.k)localObject1).dRj();
-    com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1265L, 6L, 1L, false);
-    AppMethodBeat.o(224671);
+    paramView.getFtsEditText().dzv.clearFocus();
+    paramFinderGallerySearchUI.hideVKB();
+    AppMethodBeat.o(365408);
     return false;
   }
   
-  public final void dvg() {}
-  
-  public final void eF(boolean paramBoolean)
+  private final void awb(String paramString)
   {
-    AppMethodBeat.i(224668);
+    Object localObject1 = null;
+    AppMethodBeat.i(365376);
+    Log.i(this.TAG, kotlin.g.b.s.X("startSearch query:", paramString));
+    this.query = paramString;
+    this.offset = 0;
+    this.continueFlag = 0;
+    this.BgS = null;
+    this.feedList.clear();
+    Object localObject2 = UUID.randomUUID().toString();
+    kotlin.g.b.s.s(localObject2, "randomUUID().toString()");
+    this.hOG = ((String)localObject2);
+    if (this.BnD != null) {
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)this.BnD);
+    }
+    int i;
+    switch (eeT().But.mUU)
+    {
+    default: 
+      i = 0;
+      int j = this.offset;
+      localObject2 = this.hOG;
+      com.tencent.mm.bx.b localb = this.BgS;
+      com.tencent.mm.ui.component.k localk = com.tencent.mm.ui.component.k.aeZF;
+      this.BnD = new dk(paramString, j, (String)localObject2, localb, i, ((as)com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(as.class)).fou(), null, null, 384);
+      paramString = this.BnD;
+      if (paramString != null) {
+        paramString.xVf = this.xVf;
+      }
+      paramString = this.BnD;
+      if (paramString != null) {
+        paramString.ADh = false;
+      }
+      com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)this.BnD, 0);
+      com.tencent.mm.kernel.h.aZW().a(3820, (com.tencent.mm.am.h)this);
+      localObject2 = this.njN;
+      paramString = (String)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("loadingView");
+        paramString = null;
+      }
+      paramString.setVisibility(0);
+      localObject2 = this.BnA;
+      paramString = (String)localObject2;
+      if (localObject2 == null)
+      {
+        kotlin.g.b.s.bIx("noResultView");
+        paramString = null;
+      }
+      paramString.setVisibility(8);
+      paramString = this.ATx;
+      if (paramString == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramString = localObject1;
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramString.setVisibility(8);
+      AppMethodBeat.o(365376);
+      return;
+      i = 15;
+      break;
+      i = 16;
+      break;
+    }
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final boolean aWU()
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(365585);
+    hideVKB();
+    Object localObject2 = this.Bny;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      localObject1 = null;
+    }
+    localObject1 = ((FTSSearchView)localObject1).getFtsEditText().getTotalQuery();
+    if (localObject1 == null) {
+      localObject1 = "";
+    }
+    while (Util.isNullOrNil((String)localObject1))
+    {
+      AppMethodBeat.o(365585);
+      return true;
+      localObject2 = kotlin.n.n.bq((CharSequence)localObject1).toString();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+    }
+    this.xVf = 1;
+    awb((String)localObject1);
+    com.tencent.mm.plugin.finder.search.j localj = this.BnB;
+    localObject2 = localj;
+    if (localj == null)
+    {
+      kotlin.g.b.s.bIx("historyLogic");
+      localObject2 = null;
+    }
+    ((com.tencent.mm.plugin.finder.search.j)localObject2).azd((String)localObject1);
+    localObject1 = this.BnC;
+    if (localObject1 == null)
+    {
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      ((l)localObject1).ePg();
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1265L, 6L, 1L, false);
+      AppMethodBeat.o(365585);
+      return false;
+    }
+  }
+  
+  public final com.tencent.mm.plugin.finder.gallery.b eeT()
+  {
+    AppMethodBeat.i(365514);
+    com.tencent.mm.plugin.finder.gallery.b localb = this.Bnx;
+    if (localb != null)
+    {
+      AppMethodBeat.o(365514);
+      return localb;
+    }
+    kotlin.g.b.s.bIx("galleryConfig");
+    AppMethodBeat.o(365514);
+    return null;
+  }
+  
+  public final void eeU() {}
+  
+  public final void fq(boolean paramBoolean)
+  {
+    AppMethodBeat.i(365570);
     if (paramBoolean)
     {
-      o localo = o.zWG;
-      o.dPE();
+      aa localaa = aa.Fsi;
+      aa.eMZ();
     }
-    AppMethodBeat.o(224668);
+    AppMethodBeat.o(365570);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_gallery_feed_search_ui;
+    return e.f.finder_gallery_feed_search_ui;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(224659);
+    AppMethodBeat.i(365541);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.plugin.finder.gallery.b localb = this.xNB;
-    if (localb == null) {
-      p.bGy("galleryConfig");
-    }
-    localb.a((MMActivity)this, paramInt1, paramInt2, paramIntent, b.b.xTA);
-    AppMethodBeat.o(224659);
+    eeT().a((MMActivity)this, paramInt1, paramInt2, paramIntent, b.b.Buv);
+    AppMethodBeat.o(365541);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(224705);
+    AppMethodBeat.i(365623);
     finish();
-    AppMethodBeat.o(224705);
+    AppMethodBeat.o(365623);
   }
   
   public final void onClickBackBtn(View paramView)
   {
-    AppMethodBeat.i(224660);
+    AppMethodBeat.i(365553);
     hideVKB();
     finish();
-    AppMethodBeat.o(224660);
+    AppMethodBeat.o(365553);
   }
   
   public final void onClickCancelBtn(View paramView)
   {
-    AppMethodBeat.i(224662);
+    AppMethodBeat.i(365557);
     hideVKB();
     finish();
-    AppMethodBeat.o(224662);
+    AppMethodBeat.o(365557);
   }
   
   public final void onClickClearTextBtn(View paramView)
   {
-    AppMethodBeat.i(224669);
-    paramView = this.xNC;
-    if (paramView == null) {
-      p.bGy("searchView");
+    AppMethodBeat.i(365579);
+    FTSSearchView localFTSSearchView = this.Bny;
+    paramView = localFTSSearchView;
+    if (localFTSSearchView == null)
+    {
+      kotlin.g.b.s.bIx("searchView");
+      paramView = null;
     }
-    paramView.getFtsEditText().aDU();
+    paramView.getFtsEditText().aWT();
     showVKB();
-    AppMethodBeat.o(224669);
+    AppMethodBeat.o(365579);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(224657);
+    AppMethodBeat.i(365533);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.plugin.finder.gallery.b.xTy;
+    paramBundle = com.tencent.mm.plugin.finder.gallery.b.Bus;
     paramBundle = getIntent();
-    p.j(paramBundle, "intent");
-    this.xNB = b.a.aj(paramBundle);
-    paramBundle = this.xNB;
-    if (paramBundle == null) {
-      p.bGy("galleryConfig");
-    }
-    this.xAM = paramBundle.dwb();
-    this.xNC = new com.tencent.mm.ui.search.a((Context)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.setSearchViewListener((a.b)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setHint(getString(b.j.app_search));
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.b)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setCanDeleteTag(false);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().hXB();
-    if (this.xAM)
+    kotlin.g.b.s.s(paramBundle, "intent");
+    paramBundle = b.a.au(paramBundle);
+    kotlin.g.b.s.u(paramBundle, "<set-?>");
+    this.Bnx = paramBundle;
+    this.Bnz = eeT().egw();
+    this.Bny = new FTSSearchView((Context)this);
+    paramBundle = this.Bny;
+    Object localObject1;
+    Object localObject2;
+    if (paramBundle == null)
     {
-      paramBundle = this.xNC;
-      if (paramBundle == null) {
-        p.bGy("searchView");
+      kotlin.g.b.s.bIx("searchView");
+      paramBundle = null;
+      paramBundle.setSearchViewListener((FTSSearchView.b)this);
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      paramBundle = paramBundle.findViewById(b.f.cancel_btn);
-      p.j(paramBundle, "searchView.findViewById<View>(R.id.cancel_btn)");
-      paramBundle.setVisibility(8);
-      paramBundle = this.xNC;
-      if (paramBundle == null) {
-        p.bGy("searchView");
+      paramBundle.getFtsEditText().setHint(getString(e.h.app_search));
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      paramBundle = paramBundle.getSearchContainer();
-      p.j(paramBundle, "searchView.searchContainer");
-      paramBundle.setBackground(null);
-      int i = getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_64);
-      paramBundle = this.xNC;
-      if (paramBundle == null) {
-        p.bGy("searchView");
+      paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.c)this);
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      paramBundle = paramBundle.getFtsEditText();
-      p.j(paramBundle, "searchView.ftsEditText");
-      paramBundle.getEditText().setTextColor(i);
-      paramBundle = this.xNC;
-      if (paramBundle == null) {
-        p.bGy("searchView");
+      paramBundle.getFtsEditText().setCanDeleteTag(false);
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      paramBundle.getSearchIcon().setIconColor(i);
-      paramBundle = this.xNC;
-      if (paramBundle == null) {
-        p.bGy("searchView");
+      paramBundle.getFtsEditText().jBL();
+      if (this.Bnz)
+      {
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.findViewById(e.e.cancel_btn).setVisibility(8);
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.getSearchContainer().setBackground(null);
+        int i = getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_64);
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.getFtsEditText().getEditText().setTextColor(i);
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.getSearchIcon().setIconColor(i);
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.getFtsEditText().getClearBtn().getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.setBackgroundColor(getResources().getColor(e.b.full_black));
+        setActionbarColor(getResources().getColor(e.b.full_black));
       }
-      paramBundle = paramBundle.getFtsEditText();
-      p.j(paramBundle, "searchView.ftsEditText");
-      paramBundle = paramBundle.getClearBtn();
-      p.j(paramBundle, "searchView.ftsEditText.clearBtn");
-      paramBundle.getDrawable().setColorFilter(i, PorterDuff.Mode.SRC_ATOP);
-      paramBundle = this.xNC;
-      if (paramBundle == null) {
-        p.bGy("searchView");
+      localObject2 = getSupportActionBar();
+      if (localObject2 != null)
+      {
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        ((ActionBar)localObject2).setCustomView((View)paramBundle);
       }
-      paramBundle.setBackgroundColor(getResources().getColor(b.c.full_black));
-      setActionbarColor(getResources().getColor(b.c.full_black));
-    }
-    paramBundle = getSupportActionBar();
-    if (paramBundle != null)
-    {
-      localObject = this.xNC;
-      if (localObject == null) {
-        p.bGy("searchView");
+      ((FrameLayout)findViewById(e.e.full_actionbar)).setVisibility(8);
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      paramBundle.setCustomView((View)localObject);
-    }
-    paramBundle = (FrameLayout)_$_findCachedViewById(b.f.full_actionbar);
-    p.j(paramBundle, "full_actionbar");
-    paramBundle.setVisibility(8);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle = (WeImageView)paramBundle.findViewById(b.f.back_btn);
-    if (paramBundle != null)
-    {
-      paramBundle.setVisibility(0);
-      if (this.xAM) {
-        paramBundle.setIconColor(getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_64));
-      }
-      paramBundle.setOnClickListener((View.OnClickListener)new f(this));
-    }
-    paramBundle = com.tencent.mm.plugin.finder.search.j.Acs;
-    com.tencent.mm.plugin.finder.search.j.dRi().clear();
-    paramBundle = UUID.randomUUID().toString();
-    p.j(paramBundle, "UUID.randomUUID().toString()");
-    this.fIY = paramBundle;
-    this.query = "";
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().aDU();
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().aDT();
-    this.xNE = new com.tencent.mm.plugin.finder.search.i((MMActivity)this, this.xAM, (kotlin.g.a.b)new e(this));
-    paramBundle = (MMActivity)this;
-    Object localObject = this.xNC;
-    if (localObject == null) {
-      p.bGy("searchView");
-    }
-    localObject = ((com.tencent.mm.ui.search.a)localObject).getFtsEditText();
-    p.j(localObject, "searchView.ftsEditText");
-    this.xNF = new com.tencent.mm.plugin.finder.search.k(paramBundle, (FTSEditTextView)localObject, 0, 3, this.xAM, false, (kotlin.g.a.b)new g(this));
-    paramBundle = this.xNF;
-    if (paramBundle == null) {
-      p.bGy("searchSuggestionManager");
-    }
-    paramBundle.a((k.b)new h(this));
-    paramBundle = getContext().findViewById(b.f.rl_layout);
-    p.j(paramBundle, "context.findViewById(R.id.rl_layout)");
-    this.xvJ = ((RefreshLoadMoreLayout)paramBundle);
-    paramBundle = this.xvJ;
-    if (paramBundle == null) {
-      p.bGy("rlLayout");
-    }
-    this.jLl = paramBundle.getRecyclerView();
-    paramBundle = getContext().findViewById(b.f.no_result_tv);
-    p.j(paramBundle, "context.findViewById(R.id.no_result_tv)");
-    this.xND = ((TextView)paramBundle);
-    paramBundle = getContext().findViewById(b.f.loading_layout);
-    p.j(paramBundle, "context.findViewById(R.id.loading_layout)");
-    this.kGT = paramBundle;
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    localObject = this.xNB;
-    if (localObject == null) {
-      p.bGy("galleryConfig");
-    }
-    paramBundle.setLayoutManager(((com.tencent.mm.plugin.finder.gallery.b)localObject).ft((Context)this));
-    paramBundle = this.jLl;
-    if (paramBundle == null) {
-      p.bGy("recyclerView");
-    }
-    localObject = this.xNB;
-    if (localObject == null) {
-      p.bGy("galleryConfig");
-    }
-    paramBundle.b(((com.tencent.mm.plugin.finder.gallery.b)localObject).dwc());
-    paramBundle = this.xNB;
-    if (paramBundle == null) {
-      p.bGy("galleryConfig");
-    }
-    paramBundle = new WxRecyclerAdapter(paramBundle.dwa(), this.feedList, true);
-    paramBundle.YSn = ((h.c)new a(this));
-    paramBundle.YTa = ((m)new b(this));
-    localObject = this.jLl;
-    if (localObject == null) {
-      p.bGy("recyclerView");
-    }
-    ((RecyclerView)localObject).setAdapter((RecyclerView.a)paramBundle);
-    paramBundle = ad.kS((Context)getContext()).inflate(b.g.load_more_footer, null);
-    localObject = this.xvJ;
-    if (localObject == null) {
-      p.bGy("rlLayout");
-    }
-    p.j(paramBundle, "loadmoreFooter");
-    ((RefreshLoadMoreLayout)localObject).setLoadMoreFooter(paramBundle);
-    if (!this.xAM)
-    {
-      paramBundle = this.xND;
-      if (paramBundle == null) {
-        p.bGy("noResultView");
-      }
-      paramBundle.setTextColor(getResources().getColor(b.c.hint_text_color));
-    }
-    for (;;)
-    {
-      paramBundle = this.jLl;
-      if (paramBundle == null) {
-        p.bGy("recyclerView");
-      }
-      paramBundle.setOnTouchListener((View.OnTouchListener)new c(this));
-      paramBundle = this.xvJ;
-      if (paramBundle == null) {
-        p.bGy("rlLayout");
-      }
-      paramBundle.setEnablePullDownHeader(false);
-      paramBundle = this.xvJ;
-      if (paramBundle == null) {
-        p.bGy("rlLayout");
-      }
-      paramBundle.setActionCallback((RefreshLoadMoreLayout.a)new d(this));
-      paramBundle = this.query;
+      paramBundle = (WeImageView)paramBundle.findViewById(e.e.back_btn);
       if (paramBundle != null)
       {
-        localObject = this.xNF;
-        if (localObject == null) {
-          p.bGy("searchSuggestionManager");
+        paramBundle.setVisibility(0);
+        if (this.Bnz) {
+          paramBundle.setIconColor(getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_64));
         }
-        ((com.tencent.mm.plugin.finder.search.k)localObject).aEq(paramBundle);
-        localObject = this.xNC;
-        if (localObject == null) {
-          p.bGy("searchView");
-        }
-        ((com.tencent.mm.ui.search.a)localObject).getFtsEditText().O(paramBundle, null);
+        paramBundle.setOnClickListener(new FinderGallerySearchUI..ExternalSyntheticLambda0(this));
       }
-      paramBundle = com.tencent.mm.plugin.finder.gallery.f.xUa;
-      paramBundle = new dx();
-      paramBundle.qZ(com.tencent.mm.plugin.finder.gallery.f.sessionId);
-      paramBundle.kd(com.tencent.mm.plugin.finder.gallery.f.xTY);
-      paramBundle.ke(1L);
-      paramBundle.ra(com.tencent.mm.plugin.finder.gallery.f.MS(10000));
-      paramBundle.kf(com.tencent.mm.plugin.finder.gallery.f.MR(10000));
-      paramBundle.rb("");
-      paramBundle.rc(String.valueOf(cm.bfE()));
-      paramBundle.bpa();
-      com.tencent.mm.plugin.finder.gallery.f.a((com.tencent.mm.plugin.report.a)paramBundle);
-      AppMethodBeat.o(224657);
-      return;
-      localObject = this.xND;
-      if (localObject == null) {
-        p.bGy("noResultView");
+      paramBundle = com.tencent.mm.plugin.finder.search.k.FxZ;
+      com.tencent.mm.plugin.finder.search.k.ePf().clear();
+      paramBundle = UUID.randomUUID().toString();
+      kotlin.g.b.s.s(paramBundle, "randomUUID().toString()");
+      this.hOG = paramBundle;
+      this.query = "";
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
       }
-      ((TextView)localObject).setTextColor(getResources().getColor(b.c.hot_tab_BW93));
-      ((TouchableLayout)_$_findCachedViewById(b.f.uiContainer)).setBackgroundColor(getResources().getColor(b.c.full_black));
-      paramBundle = (TextView)paramBundle.findViewById(b.f.load_more_footer_tip_tv);
+      paramBundle.getFtsEditText().aWT();
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().aWS();
+      this.BnB = new com.tencent.mm.plugin.finder.search.j((MMActivity)this, this.Bnz, (kotlin.g.a.b)new d(this));
+      localObject2 = (MMActivity)this;
+      localObject1 = this.Bny;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle = paramBundle.getFtsEditText();
+      kotlin.g.b.s.s(paramBundle, "searchView.ftsEditText");
+      this.BnC = new l((MMActivity)localObject2, paramBundle, 0, 3, this.Bnz, false, (kotlin.g.a.b)new e(this));
+      paramBundle = this.BnC;
       if (paramBundle != null) {
-        paramBundle.setTextColor(getResources().getColor(b.c.BW_100_Alpha_0_3));
+        break label1276;
       }
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      paramBundle = null;
+      label756:
+      paramBundle.a((l.b)new f(this));
+      paramBundle = getContext().findViewById(e.e.rl_layout);
+      kotlin.g.b.s.s(paramBundle, "context.findViewById(R.id.rl_layout)");
+      this.ATx = ((RefreshLoadMoreLayout)paramBundle);
+      localObject1 = this.ATx;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramBundle = null;
+      }
+      this.mkw = paramBundle.getRecyclerView();
+      paramBundle = getContext().findViewById(e.e.no_result_tv);
+      kotlin.g.b.s.s(paramBundle, "context.findViewById(R.id.no_result_tv)");
+      this.BnA = ((TextView)paramBundle);
+      paramBundle = getContext().findViewById(e.e.loading_layout);
+      kotlin.g.b.s.s(paramBundle, "context.findViewById(R.id.loading_layout)");
+      this.njN = paramBundle;
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label1279;
+      }
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      label890:
+      paramBundle.setLayoutManager(eeT().aq((Context)this, this.hJx));
+      localObject1 = this.mkw;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
+      }
+      paramBundle.a(eeT().Ot(this.hJx));
+      localObject1 = new WxRecyclerAdapter(eeT().Os(this.hJx), this.feedList, true);
+      ((i)localObject1).agOe = ((i.c)new a(this));
+      ((WxRecyclerAdapter)localObject1).agOS = ((o)new b(this));
+      paramBundle = this.mkw;
+      if (paramBundle != null) {
+        break label1282;
+      }
+      kotlin.g.b.s.bIx("recyclerView");
+      paramBundle = null;
+      label1014:
+      paramBundle.setAdapter((RecyclerView.a)localObject1);
+      localObject2 = af.mU((Context)getContext()).inflate(e.f.load_more_footer, null);
+      localObject1 = this.ATx;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramBundle = null;
+      }
+      kotlin.g.b.s.s(localObject2, "loadmoreFooter");
+      paramBundle.setLoadMoreFooter((View)localObject2);
+      if (this.Bnz) {
+        break label1285;
+      }
+      localObject1 = this.BnA;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("noResultView");
+        paramBundle = null;
+      }
+      paramBundle.setTextColor(getResources().getColor(e.b.hint_text_color));
+      label1114:
+      localObject1 = this.mkw;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramBundle = null;
+      }
+      paramBundle.setOnTouchListener(new FinderGallerySearchUI..ExternalSyntheticLambda1(this));
+      localObject1 = this.ATx;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramBundle = null;
+      }
+      paramBundle.setEnablePullDownHeader(false);
+      paramBundle = this.ATx;
+      if (paramBundle != null) {
+        break label1374;
+      }
+      kotlin.g.b.s.bIx("rlLayout");
+      paramBundle = null;
+    }
+    label1282:
+    label1285:
+    label1374:
+    for (;;)
+    {
+      paramBundle.setActionCallback((RefreshLoadMoreLayout.b)new c(this));
+      localObject2 = this.query;
+      if (localObject2 != null)
+      {
+        localObject1 = this.BnC;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchSuggestionManager");
+          paramBundle = null;
+        }
+        paramBundle.aAj((String)localObject2);
+        localObject1 = this.Bny;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("searchView");
+          paramBundle = null;
+        }
+        paramBundle.getFtsEditText().V((String)localObject2, null);
+      }
+      AppMethodBeat.o(365533);
+      return;
+      break;
+      label1276:
+      break label756;
+      label1279:
+      break label890;
+      break label1014;
+      localObject1 = this.BnA;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("noResultView");
+        paramBundle = null;
+      }
+      paramBundle.setTextColor(getResources().getColor(e.b.hot_tab_BW93));
+      ((TouchableLayout)findViewById(e.e.uiContainer)).setBackgroundColor(getResources().getColor(e.b.full_black));
+      paramBundle = (TextView)((View)localObject2).findViewById(e.e.load_more_footer_tip_tv);
+      if (paramBundle == null) {
+        break label1114;
+      }
+      paramBundle.setTextColor(getResources().getColor(e.b.BW_100_Alpha_0_3));
+      break label1114;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(224675);
-    Object localObject = com.tencent.mm.plugin.finder.search.j.Acs;
-    com.tencent.mm.plugin.finder.search.j.dRi().clear();
-    localObject = this.xNE;
-    if (localObject == null) {
-      p.bGy("historyLogic");
+    AppMethodBeat.i(365598);
+    Object localObject = com.tencent.mm.plugin.finder.search.k.FxZ;
+    com.tencent.mm.plugin.finder.search.k.ePf().clear();
+    com.tencent.mm.plugin.finder.search.j localj = this.BnB;
+    localObject = localj;
+    if (localj == null)
+    {
+      kotlin.g.b.s.bIx("historyLogic");
+      localObject = null;
     }
-    ((com.tencent.mm.plugin.finder.search.i)localObject).onDestroy();
-    com.tencent.mm.plugin.finder.storage.data.f.Anc.clearCache();
-    h.aGY().b(3820, (com.tencent.mm.an.i)this);
+    ((com.tencent.mm.plugin.finder.search.j)localObject).onDestroy();
+    com.tencent.mm.plugin.finder.storage.data.f.FMT.clearCache();
+    com.tencent.mm.kernel.h.aZW().b(3820, (com.tencent.mm.am.h)this);
     hideVKB();
-    localObject = com.tencent.mm.plugin.finder.gallery.f.xUa;
-    localObject = new dx();
-    ((dx)localObject).qZ(com.tencent.mm.plugin.finder.gallery.f.sessionId);
-    ((dx)localObject).kd(com.tencent.mm.plugin.finder.gallery.f.xTY);
-    ((dx)localObject).ke(3L);
-    ((dx)localObject).ra(com.tencent.mm.plugin.finder.gallery.f.MS(10000));
-    ((dx)localObject).kf(com.tencent.mm.plugin.finder.gallery.f.MR(10000));
-    ((dx)localObject).rb("");
-    ((dx)localObject).rc(String.valueOf(cm.bfE()));
-    ((dx)localObject).bpa();
-    com.tencent.mm.plugin.finder.gallery.f.a((com.tencent.mm.plugin.report.a)localObject);
     super.onDestroy();
-    AppMethodBeat.o(224675);
+    AppMethodBeat.o(365598);
+  }
+  
+  public final void onEditTextChange(String paramString1, String paramString2, List<FTSSearchView.c> paramList, FTSEditTextView.d paramd)
+  {
+    paramList = null;
+    AppMethodBeat.i(365567);
+    if (paramString1 == null)
+    {
+      paramString1 = "";
+      if (Util.isNullOrNil(paramString1))
+      {
+        paramd = this.njN;
+        paramString2 = paramd;
+        if (paramd == null)
+        {
+          kotlin.g.b.s.bIx("loadingView");
+          paramString2 = null;
+        }
+        paramString2.setVisibility(8);
+        paramd = this.BnA;
+        paramString2 = paramd;
+        if (paramd == null)
+        {
+          kotlin.g.b.s.bIx("noResultView");
+          paramString2 = null;
+        }
+        paramString2.setVisibility(8);
+        paramd = this.ATx;
+        paramString2 = paramd;
+        if (paramd == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          paramString2 = null;
+        }
+        paramString2.setVisibility(8);
+      }
+      paramString2 = this.BnB;
+      if (paramString2 != null) {
+        break label158;
+      }
+      kotlin.g.b.s.bIx("historyLogic");
+      paramString2 = paramList;
+    }
+    label158:
+    for (;;)
+    {
+      paramString2.aAg(paramString1);
+      AppMethodBeat.o(365567);
+      return;
+      paramString2 = kotlin.n.n.bq((CharSequence)paramString1).toString();
+      paramString1 = paramString2;
+      if (paramString2 != null) {
+        break;
+      }
+      paramString1 = "";
+      break;
+    }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(224710);
+    AppMethodBeat.i(365641);
     super.onPause();
-    com.tencent.mm.plugin.finder.search.k localk = this.xNF;
-    if (localk == null) {
-      p.bGy("searchSuggestionManager");
+    l locall2 = this.BnC;
+    l locall1 = locall2;
+    if (locall2 == null)
+    {
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      locall1 = null;
     }
-    localk.onActivityPause();
-    AppMethodBeat.o(224710);
+    locall1.onActivityPause();
+    AppMethodBeat.o(365641);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(224708);
+    AppMethodBeat.i(365633);
     super.onResume();
-    com.tencent.mm.plugin.finder.search.k localk = this.xNF;
-    if (localk == null) {
-      p.bGy("searchSuggestionManager");
+    l locall2 = this.BnC;
+    l locall1 = locall2;
+    if (locall2 == null)
+    {
+      kotlin.g.b.s.bIx("searchSuggestionManager");
+      locall1 = null;
     }
-    localk.onActivityResume();
-    AppMethodBeat.o(224708);
+    locall1.onActivityResume();
+    AppMethodBeat.o(365633);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(224703);
-    h.aGY().b(3820, (com.tencent.mm.an.i)this);
-    paramq = new aa.d();
-    paramq.aaBA = this.feedList.size();
-    final aa.d locald = new aa.d();
-    locald.aaBA = this.feedList.size();
-    if ((paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(365614);
+    com.tencent.mm.kernel.h.aZW().b(3820, (com.tencent.mm.am.h)this);
+    ah.d locald1 = new ah.d();
+    locald1.aixb = this.feedList.size();
+    ah.d locald2 = new ah.d();
+    locald2.aixb = this.feedList.size();
+    boolean bool;
+    if (this.continueFlag != 0)
     {
-      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1265L, 7L, 1L, false);
-      paramString = this.xNG;
-      if (paramString != null) {}
-      for (paramString = paramString.xea; paramString == null; paramString = null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchResponse");
-        AppMethodBeat.o(224703);
-        throw paramString;
+      bool = true;
+      if ((paramInt1 != 0) || (paramInt2 != 0)) {
+        break label622;
       }
-      Object localObject1 = paramString.wHI;
-      p.j(localObject1, "response.objectList");
-      Object localObject2 = (Iterable)localObject1;
-      localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject3 = (FinderObject)((Iterator)localObject2).next();
-        p.j(localObject3, "it");
-        Object localObject4 = FinderItem.Companion;
-        localObject3 = FinderItem.a.b((FinderObject)localObject3, 16);
-        localObject4 = com.tencent.mm.plugin.finder.search.j.Acs;
-        ((Map)com.tencent.mm.plugin.finder.search.j.dRi()).put(Long.valueOf(((FinderItem)localObject3).getId()), localObject3);
-        localObject4 = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
-        localObject3 = c.a.a((FinderItem)localObject3);
-        this.feedList.add(localObject3);
-        ((Collection)localObject1).add(x.aazN);
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1265L, 7L, 1L, false);
+      paramString = this.BnD;
+      if (paramString != null) {
+        break label133;
       }
-      this.offset = paramString.offset;
-      this.continueFlag = paramString.continueFlag;
-      this.xHE = paramString.xHE;
-      locald.aaBA = this.feedList.size();
-      localObject1 = this.TAG;
-      localObject2 = new StringBuilder("onSceneEnd ").append(paramString.offset).append(' ').append(paramString.continueFlag).append(' ').append(this.feedList.size()).append(' ');
-      paramString = this.xNG;
-      if (paramString != null)
+    }
+    label133:
+    for (paramString = null;; paramString = paramString.ADk)
+    {
+      if (paramString != null) {
+        break label141;
+      }
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchResponse");
+      AppMethodBeat.o(365614);
+      throw paramString;
+      bool = false;
+      break;
+    }
+    label141:
+    paramp = paramString.AdW;
+    kotlin.g.b.s.s(paramp, "response.objectList");
+    Object localObject1 = (Iterable)paramp;
+    paramp = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject1, 10));
+    localObject1 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (FinderObject)((Iterator)localObject1).next();
+      kotlin.g.b.s.s(localObject2, "it");
+      Object localObject3 = FinderItem.Companion;
+      localObject2 = FinderItem.a.e((FinderObject)localObject2, 16);
+      localObject3 = com.tencent.mm.plugin.finder.search.k.FxZ;
+      ((Map)com.tencent.mm.plugin.finder.search.k.ePf()).put(Long.valueOf(((FinderItem)localObject2).getId()), localObject2);
+      localObject3 = com.tencent.mm.plugin.finder.storage.logic.d.FND;
+      localObject2 = d.a.a((FinderItem)localObject2);
+      this.feedList.add(localObject2);
+      paramp.add(ah.aiuX);
+    }
+    this.offset = paramString.offset;
+    this.continueFlag = paramString.continueFlag;
+    this.BgS = paramString.BgS;
+    locald2.aixb = this.feedList.size();
+    paramp = this.TAG;
+    localObject1 = new StringBuilder("onSceneEnd ").append(paramString.offset).append(' ').append(paramString.continueFlag).append(' ').append(this.feedList.size()).append(' ');
+    paramString = this.BnD;
+    if (paramString == null)
+    {
+      paramString = null;
+      Log.i(paramp, paramString);
+      label415:
+      if (locald2.aixb != 0) {
+        break label639;
+      }
+      paramp = this.njN;
+      paramString = paramp;
+      if (paramp == null)
       {
-        paramString = paramString.xdZ;
-        if (paramString != null)
-        {
-          paramString = paramString.SSO;
-          Log.i((String)localObject1, paramString);
-          label411:
-          if (locald.aaBA != 0) {
-            break label581;
-          }
-          paramString = this.kGT;
-          if (paramString == null) {
-            p.bGy("loadingView");
-          }
-          paramString.setVisibility(8);
-          paramString = this.xND;
-          if (paramString == null) {
-            p.bGy("noResultView");
-          }
-          paramString.setVisibility(0);
-          paramString = this.xvJ;
-          if (paramString == null) {
-            p.bGy("rlLayout");
-          }
-          paramString.setVisibility(8);
-          label481:
-          if (paramq.aaBA != 0) {
-            break label646;
-          }
-          paramString = this.jLl;
-          if (paramString == null) {
-            p.bGy("recyclerView");
-          }
-          paramString = paramString.getAdapter();
-          if (paramString != null) {
-            paramString.notifyDataSetChanged();
-          }
-        }
+        kotlin.g.b.s.bIx("loadingView");
+        paramString = null;
+      }
+      paramString.setVisibility(8);
+      paramp = this.BnA;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("noResultView");
+        paramString = null;
+      }
+      paramString.setVisibility(0);
+      paramp = this.ATx;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramString = null;
+      }
+      paramString.setVisibility(8);
+      label506:
+      if (locald1.aixb != 0) {
+        break label725;
+      }
+      paramp = this.mkw;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("recyclerView");
+        paramString = null;
+      }
+      paramString = paramString.getAdapter();
+      if (paramString != null) {
+        paramString.bZE.notifyChanged();
       }
     }
     for (;;)
     {
-      paramString = this.xvJ;
-      if (paramString == null) {
-        p.bGy("rlLayout");
+      paramp = this.ATx;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramString = null;
       }
-      paramString.post((Runnable)new i(this, paramq, locald));
-      AppMethodBeat.o(224703);
+      paramString.post(new FinderGallerySearchUI..ExternalSyntheticLambda2(locald1, this, locald2, bool));
+      AppMethodBeat.o(365614);
       return;
-      paramString = null;
+      paramString = paramString.ADj;
+      if (paramString == null)
+      {
+        paramString = null;
+        break;
+      }
+      paramString = paramString.aacq;
       break;
-      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1265L, 8L, 1L, false);
-      break label411;
-      label581:
-      paramString = this.kGT;
-      if (paramString == null) {
-        p.bGy("loadingView");
+      label622:
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1265L, 8L, 1L, false);
+      break label415;
+      label639:
+      paramp = this.njN;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("loadingView");
+        paramString = null;
       }
       paramString.setVisibility(8);
-      paramString = this.xND;
-      if (paramString == null) {
-        p.bGy("noResultView");
+      paramp = this.BnA;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("noResultView");
+        paramString = null;
       }
       paramString.setVisibility(8);
-      paramString = this.xvJ;
-      if (paramString == null) {
-        p.bGy("rlLayout");
+      paramp = this.ATx;
+      paramString = paramp;
+      if (paramp == null)
+      {
+        kotlin.g.b.s.bIx("rlLayout");
+        paramString = null;
       }
       paramString.setVisibility(0);
-      break label481;
-      label646:
-      if (paramq.aaBA < locald.aaBA)
+      break label506;
+      label725:
+      if (locald1.aixb < locald2.aixb)
       {
-        paramString = this.jLl;
-        if (paramString == null) {
-          p.bGy("recyclerView");
-        }
-        if (paramString != null)
+        paramp = this.mkw;
+        paramString = paramp;
+        if (paramp == null)
         {
-          paramString = paramString.getAdapter();
-          if (paramString != null) {
-            paramString.aG(paramq.aaBA, locald.aaBA - paramq.aaBA);
-          }
+          kotlin.g.b.s.bIx("recyclerView");
+          paramString = null;
+        }
+        paramString = paramString.getAdapter();
+        if (paramString != null) {
+          paramString.bA(locald1.aixb, locald2.aixb - locald1.aixb);
         }
       }
     }
@@ -817,10 +1016,10 @@ public final class FinderGallerySearchUI
   
   public final void onSwipeBack()
   {
-    AppMethodBeat.i(224672);
+    AppMethodBeat.i(365590);
     super.onSwipeBack();
     hideVKB();
-    AppMethodBeat.o(224672);
+    AppMethodBeat.o(365590);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -829,153 +1028,139 @@ public final class FinderGallerySearchUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements h.c<com.tencent.mm.view.recyclerview.i>
-  {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$2", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "onScrollStatsChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "wxRVData", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "plugin-finder_release"})
-  public static final class b
-    implements m
+    implements i.c<com.tencent.mm.view.recyclerview.j>
   {
-    public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.k paramk)
+    a(FinderGallerySearchUI paramFinderGallerySearchUI) {}
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$2", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "onScrollStatsChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "wxRVData", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements o
+  {
+    b(FinderGallerySearchUI paramFinderGallerySearchUI) {}
+    
+    public final void a(RecyclerView paramRecyclerView, m paramm)
     {
-      AppMethodBeat.i(288996);
-      p.k(paramRecyclerView, "recyclerView");
-      p.k(paramk, "wxRVData");
-      if ((paramk.state == 0) || (paramk.state == 8))
+      AppMethodBeat.i(365526);
+      kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+      kotlin.g.b.s.u(paramm, "wxRVData");
+      if ((paramm.state == 0) || (paramm.state == 8))
       {
-        paramk = ((Iterable)paramk.YSK).iterator();
-        while (paramk.hasNext())
+        paramRecyclerView = (Iterable)paramm.agOB;
+        paramm = this.BnE;
+        Iterator localIterator = paramRecyclerView.iterator();
+        while (localIterator.hasNext())
         {
-          Object localObject2 = (com.tencent.mm.view.recyclerview.l)paramk.next();
-          Object localObject1 = ((com.tencent.mm.view.recyclerview.l)localObject2).YSP;
-          if ((localObject1 instanceof BaseFinderFeed))
+          paramRecyclerView = (com.tencent.mm.view.recyclerview.n)localIterator.next();
+          com.tencent.mm.view.recyclerview.a locala = paramRecyclerView.agOG;
+          if ((locala instanceof BaseFinderFeed))
           {
-            paramRecyclerView = this.xNH;
-            localObject1 = d.Fw(((com.tencent.mm.view.recyclerview.a)localObject1).mf());
-            int i = ((com.tencent.mm.view.recyclerview.l)localObject2).xre;
-            p.k(localObject1, "id");
-            localObject2 = com.tencent.mm.plugin.finder.report.n.zWF;
-            localObject2 = paramRecyclerView.fIY;
-            String str = paramRecyclerView.query;
-            Object localObject3 = com.tencent.mm.plugin.finder.report.n.zWF;
-            localObject3 = com.tencent.mm.plugin.finder.report.n.dPC();
-            int j = paramRecyclerView.uMD;
-            aj.a locala = aj.Bnu;
-            paramRecyclerView = aj.a.fZ((Context)paramRecyclerView);
-            if (paramRecyclerView != null) {}
-            for (paramRecyclerView = paramRecyclerView.ekY();; paramRecyclerView = null)
+            String str1 = com.tencent.mm.ae.d.hF(locala.bZA());
+            int i = paramRecyclerView.AOn;
+            kotlin.g.b.s.u(str1, "id");
+            paramRecyclerView = z.FrZ;
+            String str2 = paramm.hOG;
+            String str3 = paramm.query;
+            paramRecyclerView = z.FrZ;
+            String str4 = z.eMW();
+            int j = paramm.xVf;
+            paramRecyclerView = as.GSQ;
+            paramRecyclerView = as.a.hu((Context)paramm);
+            if (paramRecyclerView == null) {}
+            for (paramRecyclerView = null;; paramRecyclerView = paramRecyclerView.fou())
             {
-              com.tencent.mm.plugin.finder.report.n.a((String)localObject2, str, 2, 2, (String)localObject1, i, 3, (String)localObject3, 1, j, paramRecyclerView);
+              z.a(str2, str3, 2, 2, str1, i, 3, str4, 1, j, paramRecyclerView);
+              paramRecyclerView = com.tencent.mm.plugin.finder.gallery.f.BuT;
+              com.tencent.mm.plugin.finder.gallery.f.R(locala.bZA(), paramm.hJx);
               break;
             }
           }
         }
       }
-      AppMethodBeat.o(288996);
+      AppMethodBeat.o(365526);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class c
-    implements View.OnTouchListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback2;", "firstChange", "", "getFirstChange", "()Z", "setFirstChange", "(Z)V", "onItemChange", "", "changeItemCount", "", "onLoadMoreBegin", "loadMoreType", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends RefreshLoadMoreLayout.b
   {
+    private boolean ATC = true;
+    
     c(FinderGallerySearchUI paramFinderGallerySearchUI) {}
     
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    public final void ND(int paramInt)
     {
-      AppMethodBeat.i(281036);
-      FinderGallerySearchUI.b(this.xNH).getFtsEditText().hUu();
-      this.xNH.hideVKB();
-      AppMethodBeat.o(281036);
-      return false;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "firstChange", "", "getFirstChange", "()Z", "setFirstChange", "(Z)V", "onItemChange", "", "changeItemCount", "", "onLoadMoreBegin", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-finder_release"})
-  public static final class d
-    extends RefreshLoadMoreLayout.a
-  {
-    private boolean xvR = true;
-    
-    public final void Ie(int paramInt)
-    {
-      AppMethodBeat.i(282337);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aFi());
-      super.Ie(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(282337);
-    }
-    
-    public final void Mw(int paramInt)
-    {
-      AppMethodBeat.i(282335);
-      if ((this.xvR) && (paramInt > 0))
+      AppMethodBeat.i(365558);
+      if ((this.ATC) && (paramInt > 0))
       {
-        Object localObject = g.Xox;
-        localObject = aj.d((aj)g.b((AppCompatActivity)this.xNH).i(aj.class));
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.finder.event.base.f)localObject).dqn().onScrollStateChanged(FinderGallerySearchUI.l(this.xNH), 5);
+        Object localObject1 = com.tencent.mm.ui.component.k.aeZF;
+        localObject1 = com.tencent.mm.ui.component.k.d((AppCompatActivity)this.BnE).q(as.class);
+        kotlin.g.b.s.s(localObject1, "UICProvider.of(this@Find…rReporterUIC::class.java)");
+        Object localObject2 = as.b((as)localObject1);
+        if (localObject2 != null)
+        {
+          localObject1 = this.BnE;
+          RecyclerView.l locall = ((com.tencent.mm.plugin.finder.event.base.f)localObject2).dYJ();
+          localObject2 = FinderGallerySearchUI.m((FinderGallerySearchUI)localObject1);
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("recyclerView");
+            localObject1 = null;
+          }
+          locall.onScrollStateChanged((RecyclerView)localObject1, 5);
         }
-        this.xvR = false;
+        this.ATC = false;
       }
-      AppMethodBeat.o(282335);
+      AppMethodBeat.o(365558);
     }
     
-    public final void a(RefreshLoadMoreLayout.c<Object> paramc)
+    public final void a(RefreshLoadMoreLayout.d<Object> paramd)
     {
-      AppMethodBeat.i(282332);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      p.k(paramc, "reason");
-      Log.i(FinderGallerySearchUI.c(this.xNH), "onLoadMoreEnd");
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(282332);
+      AppMethodBeat.i(365551);
+      kotlin.g.b.s.u(paramd, "reason");
+      Log.i(FinderGallerySearchUI.c(this.BnE), "onLoadMoreEnd");
+      AppMethodBeat.o(365551);
     }
     
-    public final void cKQ()
+    public final void qI(int paramInt)
     {
-      AppMethodBeat.i(282330);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      Log.i(FinderGallerySearchUI.c(this.xNH), "onLoadMoreBegin");
-      String str = FinderGallerySearchUI.i(this.xNH);
+      AppMethodBeat.i(365545);
+      Log.i(FinderGallerySearchUI.c(this.BnE), "onLoadMoreBegin");
+      String str = FinderGallerySearchUI.i(this.BnE);
       if (str != null)
       {
-        if (FinderGallerySearchUI.j(this.xNH) != 1) {
-          break label78;
+        FinderGallerySearchUI localFinderGallerySearchUI = this.BnE;
+        if (FinderGallerySearchUI.k(localFinderGallerySearchUI) == 1)
+        {
+          FinderGallerySearchUI.b(localFinderGallerySearchUI, str);
+          AppMethodBeat.o(365545);
+          return;
         }
-        FinderGallerySearchUI.b(this.xNH, str);
+        FinderGallerySearchUI.l(localFinderGallerySearchUI);
       }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-        AppMethodBeat.o(282330);
-        return;
-        label78:
-        FinderGallerySearchUI.k(this.xNH);
-      }
-    }
-    
-    public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
-    {
-      AppMethodBeat.i(282339);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      super.onRefreshEnd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initContentView$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(282339);
+      AppMethodBeat.o(365545);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.b<String, ah>
+  {
+    d(FinderGallerySearchUI paramFinderGallerySearchUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "suggestion", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<String, x>
+    extends u
+    implements kotlin.g.a.b<String, ah>
   {
     e(FinderGallerySearchUI paramFinderGallerySearchUI)
     {
@@ -983,97 +1168,71 @@ public final class FinderGallerySearchUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initSearchView$1$1"})
-  static final class f
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initSuggestion$2", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager$IVisibleChangeListener;", "onVisibleChange", "", "visibility", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements l.b
   {
     f(FinderGallerySearchUI paramFinderGallerySearchUI) {}
     
-    public final void onClick(View paramView)
+    public final void Oh(int paramInt)
     {
-      AppMethodBeat.i(289746);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initSearchView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.xNH.onClickBackBtn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initSearchView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(289746);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "suggestion", "", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<String, x>
-  {
-    g(FinderGallerySearchUI paramFinderGallerySearchUI)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderGallerySearchUI$initSuggestion$2", "Lcom/tencent/mm/plugin/finder/search/FinderSearchSuggestionManager$IVisibleChangeListener;", "onVisibleChange", "", "visibility", "", "plugin-finder_release"})
-  public static final class h
-    implements k.b
-  {
-    public final void MJ(int paramInt)
-    {
-      AppMethodBeat.i(290430);
+      Object localObject2 = null;
+      FTSSearchView localFTSSearchView = null;
+      AppMethodBeat.i(365516);
       if (paramInt == 0)
       {
-        FinderGallerySearchUI.e(this.xNH).setVisibility(8);
-        FinderGallerySearchUI.f(this.xNH).setVisibility(8);
-        FinderGallerySearchUI.g(this.xNH).setVisibility(8);
-        AppMethodBeat.o(290430);
+        localObject2 = FinderGallerySearchUI.e(this.BnE);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          kotlin.g.b.s.bIx("loadingView");
+          localObject1 = null;
+        }
+        ((View)localObject1).setVisibility(8);
+        localObject2 = FinderGallerySearchUI.f(this.BnE);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          kotlin.g.b.s.bIx("noResultView");
+          localObject1 = null;
+        }
+        ((TextView)localObject1).setVisibility(8);
+        localObject1 = FinderGallerySearchUI.g(this.BnE);
+        if (localObject1 == null)
+        {
+          kotlin.g.b.s.bIx("rlLayout");
+          localObject1 = localFTSSearchView;
+        }
+        for (;;)
+        {
+          ((RefreshLoadMoreLayout)localObject1).setVisibility(8);
+          AppMethodBeat.o(365516);
+          return;
+        }
+      }
+      localFTSSearchView = FinderGallerySearchUI.b(this.BnE);
+      Object localObject1 = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        kotlin.g.b.s.bIx("searchView");
+        localObject1 = null;
+      }
+      if (!Util.isNullOrNil(((FTSSearchView)localObject1).getFtsEditText().getEditText().getText().toString()))
+      {
+        localObject1 = FinderGallerySearchUI.g(this.BnE);
+        if (localObject1 != null) {
+          break label179;
+        }
+        kotlin.g.b.s.bIx("rlLayout");
+        localObject1 = localObject2;
+      }
+      label179:
+      for (;;)
+      {
+        ((RefreshLoadMoreLayout)localObject1).setVisibility(0);
+        AppMethodBeat.o(365516);
         return;
       }
-      Object localObject = FinderGallerySearchUI.b(this.xNH).getFtsEditText();
-      p.j(localObject, "searchView.ftsEditText");
-      localObject = ((FTSEditTextView)localObject).getEditText();
-      p.j(localObject, "searchView.ftsEditText.editText");
-      if (!Util.isNullOrNil(((EditText)localObject).getText().toString())) {
-        FinderGallerySearchUI.g(this.xNH).setVisibility(0);
-      }
-      AppMethodBeat.o(290430);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class i
-    implements Runnable
-  {
-    i(FinderGallerySearchUI paramFinderGallerySearchUI, aa.d paramd1, aa.d paramd2) {}
-    
-    public final void run()
-    {
-      boolean bool2 = true;
-      AppMethodBeat.i(272583);
-      if (paramq.aaBA != 0)
-      {
-        Object localObject = RefreshLoadMoreLayout.c.YNO;
-        localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.iht());
-        if (FinderGallerySearchUI.j(this.xNH) != 0)
-        {
-          bool1 = true;
-          ((RefreshLoadMoreLayout.c)localObject).YNF = bool1;
-          if (locald.aaBA - paramq.aaBA > 0) {
-            break label115;
-          }
-        }
-        label115:
-        for (boolean bool1 = bool2;; bool1 = false)
-        {
-          ((RefreshLoadMoreLayout.c)localObject).mCI = bool1;
-          ((RefreshLoadMoreLayout.c)localObject).YNG = (locald.aaBA - paramq.aaBA);
-          FinderGallerySearchUI.g(this.xNH).onPreFinishLoadMoreSmooth((RefreshLoadMoreLayout.c)localObject);
-          AppMethodBeat.o(272583);
-          return;
-          bool1 = false;
-          break;
-        }
-      }
-      FinderGallerySearchUI.g(this.xNH).azs(locald.aaBA);
-      AppMethodBeat.o(272583);
     }
   }
 }

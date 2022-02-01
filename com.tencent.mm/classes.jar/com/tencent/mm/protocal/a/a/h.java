@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class h
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RCK;
-  public int RCr;
-  public int RCs;
-  public o RCt;
-  public o RCu;
-  public int RCv;
-  public int RCw;
+  public int YyT;
+  public int YyU;
+  public o YyV;
+  public o YyW;
+  public int YyX;
+  public int YyY;
+  public int Yzm;
   public int ret;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -20,50 +20,50 @@ public class h
     AppMethodBeat.i(143949);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.ret);
-      paramVarArgs.aY(2, this.RCr);
-      paramVarArgs.aY(3, this.RCs);
-      if (this.RCt != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ret);
+      paramVarArgs.bS(2, this.YyT);
+      paramVarArgs.bS(3, this.YyU);
+      if (this.YyV != null)
       {
-        paramVarArgs.oE(4, this.RCt.computeSize());
-        this.RCt.writeFields(paramVarArgs);
+        paramVarArgs.qD(4, this.YyV.computeSize());
+        this.YyV.writeFields(paramVarArgs);
       }
-      if (this.RCu != null)
+      if (this.YyW != null)
       {
-        paramVarArgs.oE(5, this.RCu.computeSize());
-        this.RCu.writeFields(paramVarArgs);
+        paramVarArgs.qD(5, this.YyW.computeSize());
+        this.YyW.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(6, this.RCv);
-      paramVarArgs.aY(7, this.RCK);
-      paramVarArgs.aY(8, this.RCw);
+      paramVarArgs.bS(6, this.YyX);
+      paramVarArgs.bS(7, this.Yzm);
+      paramVarArgs.bS(8, this.YyY);
       AppMethodBeat.o(143949);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.ret) + 0 + g.a.a.b.b.a.bM(2, this.RCr) + g.a.a.b.b.a.bM(3, this.RCs);
+      i = i.a.a.b.b.a.cJ(1, this.ret) + 0 + i.a.a.b.b.a.cJ(2, this.YyT) + i.a.a.b.b.a.cJ(3, this.YyU);
       paramInt = i;
-      if (this.RCt != null) {
-        paramInt = i + g.a.a.a.oD(4, this.RCt.computeSize());
+      if (this.YyV != null) {
+        paramInt = i + i.a.a.a.qC(4, this.YyV.computeSize());
       }
       i = paramInt;
-      if (this.RCu != null) {
-        i = paramInt + g.a.a.a.oD(5, this.RCu.computeSize());
+      if (this.YyW != null) {
+        i = paramInt + i.a.a.a.qC(5, this.YyW.computeSize());
       }
-      paramInt = g.a.a.b.b.a.bM(6, this.RCv);
-      int j = g.a.a.b.b.a.bM(7, this.RCK);
-      int k = g.a.a.b.b.a.bM(8, this.RCw);
+      paramInt = i.a.a.b.b.a.cJ(6, this.YyX);
+      int j = i.a.a.b.b.a.cJ(7, this.Yzm);
+      int k = i.a.a.b.b.a.cJ(8, this.YyY);
       AppMethodBeat.o(143949);
       return i + paramInt + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(143949);
@@ -71,7 +71,7 @@ public class h
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       h localh = (h)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       o localo;
@@ -81,19 +81,19 @@ public class h
         AppMethodBeat.o(143949);
         return -1;
       case 1: 
-        localh.ret = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.ret = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143949);
         return 0;
       case 2: 
-        localh.RCr = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.YyT = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143949);
         return 0;
       case 3: 
-        localh.RCs = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.YyU = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143949);
         return 0;
       case 4: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -103,13 +103,13 @@ public class h
           if ((localObject != null) && (localObject.length > 0)) {
             localo.parseFrom((byte[])localObject);
           }
-          localh.RCt = localo;
+          localh.YyV = localo;
           paramInt += 1;
         }
         AppMethodBeat.o(143949);
         return 0;
       case 5: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -119,21 +119,21 @@ public class h
           if ((localObject != null) && (localObject.length > 0)) {
             localo.parseFrom((byte[])localObject);
           }
-          localh.RCu = localo;
+          localh.YyW = localo;
           paramInt += 1;
         }
         AppMethodBeat.o(143949);
         return 0;
       case 6: 
-        localh.RCv = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.YyX = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143949);
         return 0;
       case 7: 
-        localh.RCK = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.Yzm = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143949);
         return 0;
       }
-      localh.RCw = ((g.a.a.a.a)localObject).abFh.AK();
+      localh.YyY = ((i.a.a.a.a)localObject).ajGk.aar();
       AppMethodBeat.o(143949);
       return 0;
     }
@@ -143,7 +143,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.h
  * JD-Core Version:    0.7.0.1
  */

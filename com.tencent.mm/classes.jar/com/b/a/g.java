@@ -7,26 +7,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 final class g
 {
-  private final c aFo;
-  final AtomicInteger aFs;
-  volatile e aFt;
-  private final b aFu;
+  private final c cBa;
+  final AtomicInteger cBe;
+  volatile e cBf;
+  private final b cBg;
   private final List<b> listeners;
   private final String url;
   
   public g(String paramString, c paramc)
   {
     AppMethodBeat.i(183580);
-    this.aFs = new AtomicInteger(0);
+    this.cBe = new AtomicInteger(0);
     this.listeners = new CopyOnWriteArrayList();
     this.url = ((String)l.checkNotNull(paramString));
-    this.aFo = ((c)l.checkNotNull(paramc));
-    this.aFu = new g.a(paramString, this.listeners);
+    this.cBa = ((c)l.checkNotNull(paramc));
+    this.cBg = new g.a(paramString, this.listeners);
     AppMethodBeat.o(183580);
   }
   
   /* Error */
-  final void pj()
+  final void OQ()
   {
     // Byte code:
     //   0: aload_0
@@ -34,28 +34,28 @@ final class g
     //   2: ldc 67
     //   4: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 69	com/b/a/g:aFt	Lcom/b/a/e;
+    //   8: getfield 69	com/b/a/g:cBf	Lcom/b/a/e;
     //   11: ifnonnull +106 -> 117
     //   14: new 71	com/b/a/h
     //   17: dup
     //   18: aload_0
     //   19: getfield 52	com/b/a/g:url	Ljava/lang/String;
     //   22: aload_0
-    //   23: getfield 56	com/b/a/g:aFo	Lcom/b/a/c;
-    //   26: getfield 75	com/b/a/c:aFb	Lcom/b/a/c/b;
+    //   23: getfield 56	com/b/a/g:cBa	Lcom/b/a/c;
+    //   26: getfield 75	com/b/a/c:cAN	Lcom/b/a/c/b;
     //   29: aload_0
-    //   30: getfield 56	com/b/a/g:aFo	Lcom/b/a/c;
-    //   33: getfield 79	com/b/a/c:aFc	Lcom/b/a/b/b;
+    //   30: getfield 56	com/b/a/g:cBa	Lcom/b/a/c;
+    //   33: getfield 79	com/b/a/c:cAO	Lcom/b/a/b/b;
     //   36: invokespecial 82	com/b/a/h:<init>	(Ljava/lang/String;Lcom/b/a/c/b;Lcom/b/a/b/b;)V
     //   39: astore_1
     //   40: aload_0
-    //   41: getfield 56	com/b/a/g:aFo	Lcom/b/a/c;
+    //   41: getfield 56	com/b/a/g:cBa	Lcom/b/a/c;
     //   44: astore_2
     //   45: aload_0
     //   46: getfield 52	com/b/a/g:url	Ljava/lang/String;
     //   49: astore_3
     //   50: aload_2
-    //   51: getfield 86	com/b/a/c:aEZ	Lcom/b/a/a/c;
+    //   51: getfield 86	com/b/a/c:cAL	Lcom/b/a/a/c;
     //   54: aload_3
     //   55: invokeinterface 92 2 0
     //   60: astore_3
@@ -67,29 +67,29 @@ final class g
     //   70: new 98	java/io/File
     //   73: dup
     //   74: aload_2
-    //   75: getfield 102	com/b/a/c:aEY	Ljava/io/File;
+    //   75: getfield 102	com/b/a/c:cAK	Ljava/io/File;
     //   78: aload_3
     //   79: invokespecial 105	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   82: aload_0
-    //   83: getfield 56	com/b/a/g:aFo	Lcom/b/a/c;
-    //   86: getfield 109	com/b/a/c:aFa	Lcom/b/a/a/a;
+    //   83: getfield 56	com/b/a/g:cBa	Lcom/b/a/c;
+    //   86: getfield 109	com/b/a/c:cAM	Lcom/b/a/a/a;
     //   89: invokespecial 112	com/b/a/a/b:<init>	(Ljava/io/File;Lcom/b/a/a/a;)V
     //   92: invokespecial 115	com/b/a/e:<init>	(Lcom/b/a/h;Lcom/b/a/a/b;)V
     //   95: astore_1
     //   96: aload_1
     //   97: aload_0
-    //   98: getfield 61	com/b/a/g:aFu	Lcom/b/a/b;
-    //   101: putfield 118	com/b/a/e:aFi	Lcom/b/a/b;
+    //   98: getfield 61	com/b/a/g:cBg	Lcom/b/a/b;
+    //   101: putfield 118	com/b/a/e:cAU	Lcom/b/a/b;
     //   104: aload_0
     //   105: aload_1
-    //   106: putfield 69	com/b/a/g:aFt	Lcom/b/a/e;
+    //   106: putfield 69	com/b/a/g:cBf	Lcom/b/a/e;
     //   109: ldc 67
     //   111: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   114: aload_0
     //   115: monitorexit
     //   116: return
     //   117: aload_0
-    //   118: getfield 69	com/b/a/g:aFt	Lcom/b/a/e;
+    //   118: getfield 69	com/b/a/g:cBf	Lcom/b/a/e;
     //   121: astore_1
     //   122: goto -18 -> 104
     //   125: astore_1
@@ -112,7 +112,7 @@ final class g
   }
   
   /* Error */
-  final void pk()
+  final void OR()
   {
     // Byte code:
     //   0: aload_0
@@ -120,14 +120,14 @@ final class g
     //   2: ldc 122
     //   4: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 37	com/b/a/g:aFs	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   8: getfield 37	com/b/a/g:cBe	Ljava/util/concurrent/atomic/AtomicInteger;
     //   11: invokevirtual 126	java/util/concurrent/atomic/AtomicInteger:decrementAndGet	()I
     //   14: ifgt +70 -> 84
     //   17: aload_0
-    //   18: getfield 69	com/b/a/g:aFt	Lcom/b/a/e;
+    //   18: getfield 69	com/b/a/g:cBf	Lcom/b/a/e;
     //   21: astore_2
     //   22: aload_2
-    //   23: getfield 132	com/b/a/m:aFF	Ljava/lang/Object;
+    //   23: getfield 132	com/b/a/m:cBq	Ljava/lang/Object;
     //   26: astore_1
     //   27: aload_1
     //   28: monitorenter
@@ -136,27 +136,27 @@ final class g
     //   33: ldc 136
     //   35: invokespecial 139	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   38: aload_2
-    //   39: getfield 143	com/b/a/m:aFC	Lcom/b/a/p;
+    //   39: getfield 143	com/b/a/m:cBn	Lcom/b/a/p;
     //   42: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   45: pop
-    //   46: invokestatic 152	com/b/a/k:pn	()V
+    //   46: invokestatic 152	com/b/a/k:OU	()V
     //   49: aload_2
     //   50: iconst_1
-    //   51: putfield 156	com/b/a/m:aFI	Z
+    //   51: putfield 156	com/b/a/m:cBt	Z
     //   54: aload_2
-    //   55: getfield 160	com/b/a/m:aFH	Ljava/lang/Thread;
+    //   55: getfield 160	com/b/a/m:cBs	Ljava/lang/Thread;
     //   58: ifnull +10 -> 68
     //   61: aload_2
-    //   62: getfield 160	com/b/a/m:aFH	Ljava/lang/Thread;
+    //   62: getfield 160	com/b/a/m:cBs	Ljava/lang/Thread;
     //   65: invokevirtual 165	java/lang/Thread:interrupt	()V
     //   68: aload_2
-    //   69: getfield 169	com/b/a/m:aFD	Lcom/b/a/a;
+    //   69: getfield 169	com/b/a/m:cBo	Lcom/b/a/a;
     //   72: invokeinterface 174 1 0
     //   77: aload_1
     //   78: monitorexit
     //   79: aload_0
     //   80: aconst_null
-    //   81: putfield 69	com/b/a/g:aFt	Lcom/b/a/e;
+    //   81: putfield 69	com/b/a/g:cBf	Lcom/b/a/e;
     //   84: ldc 122
     //   86: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_0
@@ -164,7 +164,7 @@ final class g
     //   91: return
     //   92: astore_2
     //   93: aload_2
-    //   94: invokestatic 178	com/b/a/m:c	(Ljava/lang/Throwable;)V
+    //   94: invokestatic 178	com/b/a/m:l	(Ljava/lang/Throwable;)V
     //   97: goto -20 -> 77
     //   100: astore_2
     //   101: aload_1
@@ -202,7 +202,7 @@ final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.b.a.g
  * JD-Core Version:    0.7.0.1
  */

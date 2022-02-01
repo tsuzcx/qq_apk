@@ -6,24 +6,25 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
-  public static String EsU;
-  public static int EsV;
-  public static int EsW;
-  public static String jLI;
-  public static String lEm;
+  public static String KlA;
+  public static int KlB;
+  public static int KlC;
+  public static int KlD;
+  public static String mkQ;
   public static String openId;
+  public static String ovT;
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
     openId = paramString1;
-    jLI = paramString3;
-    EsU = paramString4;
-    EsV = paramInt1;
-    EsW = paramInt2;
-    lEm = paramString2;
+    mkQ = paramString3;
+    KlA = paramString4;
+    KlB = paramInt1;
+    KlC = paramInt2;
+    ovT = paramString2;
   }
   
-  public static void bz(int paramInt, String paramString)
+  public static void cg(int paramInt, String paramString)
   {
     AppMethodBeat.i(168790);
     if (Util.isNullOrNil(openId))
@@ -31,13 +32,13 @@ public final class c
       AppMethodBeat.o(168790);
       return;
     }
-    h.IzE.a(16598, new Object[] { Integer.valueOf(paramInt), lEm, paramString, jLI, EsU, Integer.valueOf(0), openId, Integer.valueOf(EsV), Integer.valueOf(EsW) });
+    h.OAn.b(16598, new Object[] { Integer.valueOf(paramInt), ovT, paramString, mkQ, KlA, Integer.valueOf(0), openId, Integer.valueOf(KlB), Integer.valueOf(KlC), Integer.valueOf(KlD) });
     AppMethodBeat.o(168790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.c
  * JD-Core Version:    0.7.0.1
  */

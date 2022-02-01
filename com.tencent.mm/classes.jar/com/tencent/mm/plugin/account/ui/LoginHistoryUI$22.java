@@ -14,7 +14,7 @@ final class LoginHistoryUI$22
   {
     AppMethodBeat.i(128104);
     Log.i("MicroMsg.LoginHistoryUI", "db dangerous and auto logout");
-    LoginHistoryUI.a(this.nek);
+    LoginHistoryUI.a(this.qbb);
     AppMethodBeat.o(128104);
   }
 }

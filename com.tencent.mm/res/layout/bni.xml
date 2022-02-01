@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout style="@style/lz">
-            <TextView android:text="@string/fa_" style="@style/no" />
-            <com.tencent.mm.ui.widget.MMEditText android:id="@id/h_j" android:maxLength="10" android:imeOptions="actionSend" style="@style/nn" />
-        </LinearLayout>
-    </ScrollView>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j95" android:paddingLeft="@dimen/cp" android:paddingRight="@dimen/cp" android:layout_width="fill_parent" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+        <TextView android:textSize="12.0dip" android:textColor="@color/az" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hja" />
+        <FrameLayout android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <SeekBar android:layout_gravity="center_vertical" android:id="@id/d33" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:max="100" android:progress="80" android:progressDrawable="@drawable/am7" android:minHeight="2.0dip" android:thumb="@drawable/am8" />
+        </FrameLayout>
+        <TextView android:textSize="12.0dip" android:textColor="@color/az" android:id="@id/d34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="80%" />
+    </LinearLayout>
+    <HorizontalScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <LinearLayout android:orientation="horizontal" android:id="@id/hw5" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </HorizontalScrollView>
 </LinearLayout>

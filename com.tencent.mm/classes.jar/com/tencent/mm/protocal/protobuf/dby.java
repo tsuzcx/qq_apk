@@ -3,60 +3,65 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dby
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String lpy;
+  public String aaHk;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206351);
+    AppMethodBeat.i(259358);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.lpy != null) {
-        paramVarArgs.f(1, this.lpy);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.type);
+      if (this.aaHk != null) {
+        paramVarArgs.g(2, this.aaHk);
       }
-      AppMethodBeat.o(206351);
+      AppMethodBeat.o(259358);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.lpy == null) {
-        break label213;
-      }
-    }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.lpy) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(206351);
+      int i = i.a.a.b.b.a.cJ(1, this.type) + 0;
+      paramInt = i;
+      if (this.aaHk != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.aaHk);
+      }
+      AppMethodBeat.o(259358);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(206351);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        dby localdby = (dby)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(206351);
-          return -1;
-        }
-        localdby.lpy = locala.abFh.readString();
-        AppMethodBeat.o(206351);
-        return 0;
-      }
-      AppMethodBeat.o(206351);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(259358);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      dby localdby = (dby)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(259358);
+        return -1;
+      case 1: 
+        localdby.type = locala.ajGk.aar();
+        AppMethodBeat.o(259358);
+        return 0;
+      }
+      localdby.aaHk = locala.ajGk.readString();
+      AppMethodBeat.o(259358);
+      return 0;
+    }
+    AppMethodBeat.o(259358);
+    return -1;
   }
 }
 

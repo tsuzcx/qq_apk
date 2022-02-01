@@ -7,19 +7,19 @@ public class MigrateResultCallbackAdapter
 {
   protected void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException) {}
   
-  protected void arU(int paramInt) {}
+  protected void axZ(int paramInt) {}
   
-  protected void arV(int paramInt) {}
+  protected void aya(int paramInt) {}
   
-  protected void hsG() {}
+  protected void iSL() {}
   
-  protected void hsH() {}
+  protected void iSM() {}
   
-  protected void ma(int paramInt1, int paramInt2) {}
+  protected void nP(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.MigrateResultCallbackAdapter
  * JD-Core Version:    0.7.0.1
  */

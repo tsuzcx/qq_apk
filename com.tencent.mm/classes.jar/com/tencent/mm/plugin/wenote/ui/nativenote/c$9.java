@@ -13,8 +13,9 @@ import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 final class c$9
   implements View.OnClickListener
@@ -25,15 +26,21 @@ final class c$9
   {
     AppMethodBeat.i(30820);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.hdz().af(-1, false);
-    if (com.tencent.mm.az.b.WF((String)h.aHG().aHp().b(274436, null)))
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (!WeChatBrands.Business.Entries.SessionLocation.checkAvailable(paramView.getContext()))
     {
-      if (!com.tencent.mm.pluginsdk.permission.b.o((Activity)this.val$context, "android.permission.ACCESS_FINE_LOCATION"))
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(30820);
+      return;
+    }
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.iEg().aw(-1, false);
+    if (com.tencent.mm.au.b.OE((String)h.baE().ban().d(274436, null)))
+    {
+      if (!com.tencent.mm.pluginsdk.permission.b.s((Activity)this.val$context, "android.permission.ACCESS_FINE_LOCATION"))
       {
-        if (!((Boolean)h.aHG().aHp().get(ar.a.VvE, Boolean.FALSE)).booleanValue()) {
-          com.tencent.mm.plugin.account.sdk.b.a.b((Activity)this.val$context, this.val$context.getResources().getString(R.l.location_use_scene_gdpr_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 30764, true);
+        if (!((Boolean)h.baE().ban().get(at.a.acXn, Boolean.FALSE)).booleanValue()) {
+          com.tencent.mm.plugin.account.sdk.c.a.b((Activity)this.val$context, this.val$context.getResources().getString(R.l.location_use_scene_gdpr_url, new Object[] { LocaleUtil.getApplicationLanguage() }), 30764, true);
         }
         for (;;)
         {
@@ -46,7 +53,7 @@ final class c$9
     }
     else
     {
-      boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)this.val$context, "android.permission.ACCESS_FINE_LOCATION", 64, null, null);
+      boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)this.val$context, "android.permission.ACCESS_FINE_LOCATION", 64, null);
       Log.i("MicroMsg.WNNoteFootPannel", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
       if (!bool)
       {
@@ -59,7 +66,7 @@ final class c$9
     paramView.putExtra("MMActivity.OverrideExitAnimation", R.a.push_down_out);
     paramView.putExtra("MMActivity.OverrideEnterAnimation", R.a.fast_faded_in);
     paramView.putExtra("map_view_type", 3);
-    com.tencent.mm.by.c.b(this.val$context, "location", ".ui.RedirectUI", paramView, 4098);
+    com.tencent.mm.br.c.b(this.val$context, "location", ".ui.RedirectUI", paramView, 4098);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteFootPanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(30820);
   }

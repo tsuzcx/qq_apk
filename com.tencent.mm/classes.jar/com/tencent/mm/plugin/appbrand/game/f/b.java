@@ -2,68 +2,65 @@ package com.tencent.mm.plugin.appbrand.game.f;
 
 import android.util.Base64;
 import com.tencent.luggage.game.page.d;
+import com.tencent.magicbrush.e;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.game.e.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
 import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.plugin.appbrand.page.u;
 import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.protocal.protobuf.foo;
+import com.tencent.mm.protocal.protobuf.glo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.ref.WeakReference;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class b
 {
-  WeakReference<AppBrandRuntime> csN;
-  public foo onW;
-  public MMHandler onX;
-  public PublicKey onY;
+  WeakReference<AppBrandRuntime> ekH;
+  public glo rrF;
+  public MMHandler rrG;
+  public PublicKey rrH;
   
-  b(foo paramfoo, AppBrandRuntime paramAppBrandRuntime)
+  b(glo paramglo, AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(45170);
-    this.onW = paramfoo;
-    this.csN = new WeakReference(paramAppBrandRuntime);
-    this.onX = new MMHandler("canvas_security_guard");
-    if ((this.onW != null) && (this.onW.UMK != null) && (this.onW.UMK.UH != null))
+    this.rrF = paramglo;
+    this.ekH = new WeakReference(paramAppBrandRuntime);
+    this.rrG = new MMHandler("canvas_security_guard");
+    if ((this.rrF != null) && (this.rrF.achf != null) && (this.rrF.achf.Op != null))
     {
-      paramfoo = Base64.decode(new String(this.onW.UMK.UH).replace("\n", "").replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", ""), 0);
+      paramglo = Base64.decode(new String(this.rrF.achf.Op).replace("\n", "").replace("-----BEGIN PUBLIC KEY-----", "").replace("-----END PUBLIC KEY-----", ""), 0);
       try
       {
-        paramfoo = new X509EncodedKeySpec(paramfoo);
-        this.onY = KeyFactory.getInstance("RSA").generatePublic(paramfoo);
-        Log.d("MicroMsg.WAGameCanvasSecurityGuard", "hy: sample config: %s", new Object[] { this.onW.UMJ });
+        paramglo = new X509EncodedKeySpec(paramglo);
+        this.rrH = KeyFactory.getInstance("RSA").generatePublic(paramglo);
+        Log.d("MicroMsg.WAGameCanvasSecurityGuard", "hy: sample config: %s", new Object[] { this.rrF.ache });
         AppMethodBeat.o(45170);
         return;
       }
-      catch (Throwable paramfoo)
+      finally
       {
         for (;;)
         {
-          Log.printErrStackTrace("MicroMsg.WAGameCanvasSecurityGuard", paramfoo, "hy: can not retrieve rsa key!", new Object[0]);
-          this.onY = null;
+          Log.printErrStackTrace("MicroMsg.WAGameCanvasSecurityGuard", paramglo, "hy: can not retrieve rsa key!", new Object[0]);
+          this.rrH = null;
         }
       }
     }
     Log.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: no pubkey retrieved");
-    this.onY = null;
+    this.rrH = null;
     AppMethodBeat.o(45170);
   }
   
-  final ah bDv()
+  final ah ccK()
   {
     AppMethodBeat.i(180199);
-    if ((this.csN.get() != null) && (((AppBrandRuntime)this.csN.get()).bBX() != null) && (((AppBrandRuntime)this.csN.get()).bBX().getCurrentPage() != null) && ((((AppBrandRuntime)this.csN.get()).bBX().getCurrentPage().getCurrentPageView() instanceof ah)))
+    if ((this.ekH.get() != null) && (((AppBrandRuntime)this.ekH.get()).getPageContainer() != null) && (((AppBrandRuntime)this.ekH.get()).getPageContainer().getCurrentPage() != null) && ((((AppBrandRuntime)this.ekH.get()).getPageContainer().getCurrentPage().getCurrentPageView() instanceof ah)))
     {
-      ah localah = (ah)((AppBrandRuntime)this.csN.get()).bBX().getCurrentPage().getCurrentPageView();
+      ah localah = (ah)((AppBrandRuntime)this.ekH.get()).getPageContainer().getCurrentPage().getCurrentPageView();
       AppMethodBeat.o(180199);
       return localah;
     }
@@ -72,17 +69,17 @@ public final class b
     return null;
   }
   
-  public final boolean bOH()
+  public final boolean coV()
   {
-    return (this.onW != null) && (this.onW.UMB);
+    return (this.rrF != null) && (this.rrF.acgV);
   }
   
-  public final d bOI()
+  public final d coW()
   {
     AppMethodBeat.i(45171);
-    if (bDv() != null)
+    if (ccK() != null)
     {
-      d locald = (d)bDv().R(d.class);
+      d locald = (d)ccK().aa(d.class);
       AppMethodBeat.o(45171);
       return locald;
     }
@@ -91,10 +88,10 @@ public final class b
     return null;
   }
   
-  public final boolean bOJ()
+  public final boolean coX()
   {
     AppMethodBeat.i(45172);
-    if ((bOI() != null) && (bOI().PI() != null) && (!bOI().PI().getMagicBrush().isDestroyed()))
+    if ((coW() != null) && (coW().apS() != null) && (!coW().apS().getMagicBrush().isDestroyed()))
     {
       AppMethodBeat.o(45172);
       return true;
@@ -105,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.b
  * JD-Core Version:    0.7.0.1
  */

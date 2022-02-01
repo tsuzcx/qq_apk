@@ -11,7 +11,7 @@ import com.tencent.wework.api.util.OpenDataUtils;
 public class WWMediaFile
   extends WWMediaMessage.WWMediaObject
 {
-  private int contentLengthLimit = 104857600;
+  public int contentLengthLimit = 104857600;
   public byte[] fileData;
   public String fileId;
   public String fileName;
@@ -46,18 +46,13 @@ public class WWMediaFile
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233377);
+    AppMethodBeat.i(210635);
     this.fileData = paramBundle.getByteArray("_wwfileobject_fileData");
     this.filePath = paramBundle.getString("_wwfileobject_filePath");
     this.fileName = paramBundle.getString("_wwfileobject_fileName");
     this.fileId = paramBundle.getString("_wwfileobject_fileId");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(233377);
-  }
-  
-  public final void setContentLengthLimit(int paramInt)
-  {
-    this.contentLengthLimit = paramInt;
+    AppMethodBeat.o(210635);
   }
   
   public final void toBundle(Bundle paramBundle)
@@ -67,7 +62,7 @@ public class WWMediaFile
     paramBundle.putString("_wwfileobject_filePath", this.filePath);
     paramBundle.putString("_wwfileobject_fileName", this.fileName);
     if ((this.filePath != null) && (this.filePath.startsWith("content"))) {}
-    for (this.fileId = null;; this.fileId = OpenDataUtils.ai(this.mContext, this.ZYs, this.filePath))
+    for (this.fileId = null;; this.fileId = OpenDataUtils.an(this.mContext, this.aicT, this.filePath))
     {
       paramBundle.putString("_wwfileobject_fileId", this.fileId);
       super.toBundle(paramBundle);
@@ -76,9 +71,9 @@ public class WWMediaFile
     }
   }
   
-  public final void u(Intent paramIntent, String paramString)
+  public final void w(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(233382);
+    AppMethodBeat.i(210647);
     if ((this.filePath != null) && (this.filePath.startsWith("content")))
     {
       if (paramIntent.getClipData() != null) {
@@ -91,7 +86,7 @@ public class WWMediaFile
     {
       paramIntent.addFlags(1);
       this.fileId = null;
-      AppMethodBeat.o(233382);
+      AppMethodBeat.o(210647);
       return;
       label86:
       paramIntent.getClipData().addItem(new ClipData.Item(Uri.parse(this.filePath)));

@@ -4,32 +4,32 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.product.b.n.a;
+import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.product.model.m.a;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class m
-  implements u.a
+  implements r.a
 {
-  public n.a GVK;
-  public ImageView jmf;
+  public m.a MTm;
+  public ImageView lPb;
   public TextView titleTv;
   
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(67045);
-    if ((this.GVK == null) || (Util.isNullOrNil(this.GVK.iconUrl)))
+    if ((this.MTm == null) || (Util.isNullOrNil(this.MTm.iconUrl)))
     {
       AppMethodBeat.o(67045);
       return;
     }
-    if (paramString.equals(this.GVK.iconUrl)) {
-      this.jmf.post(new Runnable()
+    if (paramString.equals(this.MTm.iconUrl)) {
+      this.lPb.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(67044);
-          m.this.jmf.setImageBitmap(paramBitmap);
+          m.this.lPb.setImageBitmap(paramBitmap);
           AppMethodBeat.o(67044);
         }
       });
@@ -39,7 +39,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.m
  * JD-Core Version:    0.7.0.1
  */

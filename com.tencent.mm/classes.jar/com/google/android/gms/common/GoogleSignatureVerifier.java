@@ -9,7 +9,6 @@ import android.content.pm.Signature;
 import android.os.RemoteException;
 import com.google.android.gms.common.internal.ICertData;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.google.android.gms.dynamic.ObjectWrapper;
@@ -17,9 +16,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import javax.annotation.CheckReturnValue;
 
-@CheckReturnValue
 public class GoogleSignatureVerifier
 {
   private static GoogleSignatureVerifier zzbv;
@@ -53,7 +50,6 @@ public class GoogleSignatureVerifier
     }
   }
   
-  @VisibleForTesting
   public static void resetForTests()
   {
     try
@@ -350,7 +346,7 @@ public class GoogleSignatureVerifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GoogleSignatureVerifier
  * JD-Core Version:    0.7.0.1
  */

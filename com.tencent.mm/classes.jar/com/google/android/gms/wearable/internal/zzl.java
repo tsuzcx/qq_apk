@@ -4,48 +4,23 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
 
-@SafeParcelable.Class(creator="AncsNotificationParcelableCreator")
-@SafeParcelable.Reserved({1})
-@Immutable
 public final class zzl
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzl> CREATOR;
-  @SafeParcelable.Field(getter="getId", id=2)
   private int id;
-  @Nullable
-  @SafeParcelable.Field(getter="getPackageName", id=13)
   private final String packageName;
-  @SafeParcelable.Field(getter="getAppId", id=3)
   private final String zzbf;
-  @Nullable
-  @SafeParcelable.Field(getter="getDateTime", id=4)
   private final String zzbg;
-  @SafeParcelable.Field(getter="getNotificationText", id=5)
   private final String zzbh;
-  @SafeParcelable.Field(getter="getTitle", id=6)
   private final String zzbi;
-  @SafeParcelable.Field(getter="getSubtitle", id=7)
   private final String zzbj;
-  @Nullable
-  @SafeParcelable.Field(getter="getDisplayName", id=8)
   private final String zzbk;
-  @SafeParcelable.Field(getter="getEventId", id=9)
   private final byte zzbl;
-  @SafeParcelable.Field(getter="getEventFlags", id=10)
   private final byte zzbm;
-  @SafeParcelable.Field(getter="getCategoryId", id=11)
   private final byte zzbn;
-  @SafeParcelable.Field(getter="getCategoryCount", id=12)
   private final byte zzbo;
   
   static
@@ -55,8 +30,7 @@ public final class zzl
     AppMethodBeat.o(101436);
   }
   
-  @SafeParcelable.Constructor
-  public zzl(@SafeParcelable.Param(id=2) int paramInt, @SafeParcelable.Param(id=3) String paramString1, @SafeParcelable.Param(id=4) @Nullable String paramString2, @SafeParcelable.Param(id=5) String paramString3, @SafeParcelable.Param(id=6) String paramString4, @SafeParcelable.Param(id=7) String paramString5, @SafeParcelable.Param(id=8) @Nullable String paramString6, @SafeParcelable.Param(id=9) byte paramByte1, @SafeParcelable.Param(id=10) byte paramByte2, @SafeParcelable.Param(id=11) byte paramByte3, @SafeParcelable.Param(id=12) byte paramByte4, @SafeParcelable.Param(id=13) @Nullable String paramString7)
+  public zzl(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, String paramString7)
   {
     this.id = paramInt;
     this.zzbf = paramString1;
@@ -252,7 +226,7 @@ public final class zzl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzl
  * JD-Core Version:    0.7.0.1
  */

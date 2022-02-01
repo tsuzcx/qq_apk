@@ -20,9 +20,9 @@ public class TextureImageViewLikeImpl
   extends ConstraintLayout
   implements h
 {
-  private final FrameLayout cJp;
-  private final TextureView cJq;
-  private final ImageView cJr;
+  private final FrameLayout eCZ;
+  private final TextureView eDa;
+  private final ImageView ewg;
   
   public TextureImageViewLikeImpl(Context paramContext)
   {
@@ -37,99 +37,99 @@ public class TextureImageViewLikeImpl
   public TextureImageViewLikeImpl(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(222514);
+    AppMethodBeat.i(220872);
     setId(a.b.app_brand_pip_video_image_container);
     setBackgroundColor(-16777216);
-    this.cJp = new FrameLayout(paramContext);
-    addView(this.cJp, -1, -1);
-    this.cJp.setId(a.b.app_brand_pip_video_image_area);
-    this.cJq = new TextureView(paramContext);
-    this.cJp.addView(this.cJq, -1, -1);
-    this.cJr = new ImageView(paramContext);
-    this.cJp.addView(this.cJr, -1, -1);
-    this.cJr.setVisibility(4);
+    this.eCZ = new FrameLayout(paramContext);
+    addView(this.eCZ, -1, -1);
+    this.eCZ.setId(a.b.app_brand_pip_video_image_area);
+    this.eDa = new TextureView(paramContext);
+    this.eCZ.addView(this.eDa, -1, -1);
+    this.ewg = new ImageView(paramContext);
+    this.eCZ.addView(this.ewg, -1, -1);
+    this.ewg.setVisibility(4);
     paramContext = new a();
     paramContext.b(this);
-    paramContext.d(a.b.app_brand_pip_video_image_area, 3, a.b.app_brand_pip_video_image_container, 3);
-    paramContext.d(a.b.app_brand_pip_video_image_area, 4, a.b.app_brand_pip_video_image_container, 4);
-    paramContext.d(a.b.app_brand_pip_video_image_area, 1, a.b.app_brand_pip_video_image_container, 1);
-    paramContext.d(a.b.app_brand_pip_video_image_area, 2, a.b.app_brand_pip_video_image_container, 2);
+    paramContext.e(a.b.app_brand_pip_video_image_area, 3, a.b.app_brand_pip_video_image_container, 3, 0);
+    paramContext.e(a.b.app_brand_pip_video_image_area, 4, a.b.app_brand_pip_video_image_container, 4, 0);
+    paramContext.e(a.b.app_brand_pip_video_image_area, 1, a.b.app_brand_pip_video_image_container, 1, 0);
+    paramContext.e(a.b.app_brand_pip_video_image_area, 2, a.b.app_brand_pip_video_image_container, 2, 0);
     paramContext.c(this);
-    AppMethodBeat.o(222514);
+    AppMethodBeat.o(220872);
   }
   
   public Bitmap getBitmap()
   {
-    AppMethodBeat.i(222530);
-    Bitmap localBitmap = this.cJq.getBitmap();
-    AppMethodBeat.o(222530);
+    AppMethodBeat.i(220922);
+    Bitmap localBitmap = this.eDa.getBitmap();
+    AppMethodBeat.o(220922);
     return localBitmap;
   }
   
   public SurfaceTexture getSurfaceTexture()
   {
-    AppMethodBeat.i(222533);
-    SurfaceTexture localSurfaceTexture = this.cJq.getSurfaceTexture();
-    AppMethodBeat.o(222533);
+    AppMethodBeat.i(220930);
+    SurfaceTexture localSurfaceTexture = this.eDa.getSurfaceTexture();
+    AppMethodBeat.o(220930);
     return localSurfaceTexture;
   }
   
   public TextureView.SurfaceTextureListener getSurfaceTextureListener()
   {
-    AppMethodBeat.i(222529);
-    TextureView.SurfaceTextureListener localSurfaceTextureListener = this.cJq.getSurfaceTextureListener();
-    AppMethodBeat.o(222529);
+    AppMethodBeat.i(220911);
+    TextureView.SurfaceTextureListener localSurfaceTextureListener = this.eDa.getSurfaceTextureListener();
+    AppMethodBeat.o(220911);
     return localSurfaceTextureListener;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(222535);
+    AppMethodBeat.i(220934);
     if (paramBitmap != null)
     {
-      this.cJr.setImageBitmap(paramBitmap);
-      this.cJr.setVisibility(0);
-      AppMethodBeat.o(222535);
+      this.ewg.setImageBitmap(paramBitmap);
+      this.ewg.setVisibility(0);
+      AppMethodBeat.o(220934);
       return;
     }
-    this.cJr.setVisibility(4);
-    AppMethodBeat.o(222535);
+    this.ewg.setVisibility(4);
+    AppMethodBeat.o(220934);
   }
   
   public void setSurfaceTextureListener(TextureView.SurfaceTextureListener paramSurfaceTextureListener)
   {
-    AppMethodBeat.i(222526);
-    this.cJq.setSurfaceTextureListener(paramSurfaceTextureListener);
-    AppMethodBeat.o(222526);
+    AppMethodBeat.i(220900);
+    this.eDa.setSurfaceTextureListener(paramSurfaceTextureListener);
+    AppMethodBeat.o(220900);
   }
   
   public void setTextureViewHeightWeight(float paramFloat)
   {
-    AppMethodBeat.i(222524);
+    AppMethodBeat.i(220892);
     Log.i("MicroMsg.AppBrand.TextureImageViewLikeImpl", "setTextureViewHeightWeight, heightWeight: ".concat(String.valueOf(paramFloat)));
-    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.cJp.getLayoutParams();
+    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.eCZ.getLayoutParams();
     localLayoutParams.height = 0;
-    localLayoutParams.FL = paramFloat;
+    localLayoutParams.blQ = paramFloat;
     localLayoutParams.width = -1;
-    this.cJp.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(222524);
+    this.eCZ.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(220892);
   }
   
   public void setTextureViewWidthWeight(float paramFloat)
   {
-    AppMethodBeat.i(222519);
+    AppMethodBeat.i(220882);
     Log.i("MicroMsg.AppBrand.TextureImageViewLikeImpl", "setTextureViewWidthWeight, widthWeight: ".concat(String.valueOf(paramFloat)));
-    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.cJp.getLayoutParams();
+    ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.eCZ.getLayoutParams();
     localLayoutParams.width = 0;
-    localLayoutParams.FK = paramFloat;
+    localLayoutParams.blP = paramFloat;
     localLayoutParams.height = -1;
-    this.cJp.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(222519);
+    this.eCZ.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(220882);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.TextureImageViewLikeImpl
  * JD-Core Version:    0.7.0.1
  */

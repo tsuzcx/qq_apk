@@ -3,101 +3,76 @@ package com.tencent.mm.plugin.game.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eg
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CMD;
-  public String CNA;
-  public String CNj;
-  public String fwr;
+  public String IHI;
+  public int IHK;
+  public int ILU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41839);
+    AppMethodBeat.i(276892);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CNj != null) {
-        paramVarArgs.f(1, this.CNj);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ILU);
+      paramVarArgs.bS(2, this.IHK);
+      if (this.IHI != null) {
+        paramVarArgs.g(3, this.IHI);
       }
-      if (this.fwr != null) {
-        paramVarArgs.f(2, this.fwr);
-      }
-      if (this.CMD != null) {
-        paramVarArgs.f(3, this.CMD);
-      }
-      if (this.CNA != null) {
-        paramVarArgs.f(4, this.CNA);
-      }
-      AppMethodBeat.o(41839);
+      AppMethodBeat.o(276892);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.CNj == null) {
-        break label394;
-      }
-    }
-    label394:
-    for (int i = g.a.a.b.b.a.g(1, this.CNj) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = i.a.a.b.b.a.cJ(1, this.ILU) + 0 + i.a.a.b.b.a.cJ(2, this.IHK);
       paramInt = i;
-      if (this.fwr != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.fwr);
+      if (this.IHI != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.IHI);
       }
-      i = paramInt;
-      if (this.CMD != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CMD);
-      }
-      paramInt = i;
-      if (this.CNA != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.CNA);
-      }
-      AppMethodBeat.o(41839);
+      AppMethodBeat.o(276892);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(41839);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        eg localeg = (eg)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(41839);
-          return -1;
-        case 1: 
-          localeg.CNj = locala.abFh.readString();
-          AppMethodBeat.o(41839);
-          return 0;
-        case 2: 
-          localeg.fwr = locala.abFh.readString();
-          AppMethodBeat.o(41839);
-          return 0;
-        case 3: 
-          localeg.CMD = locala.abFh.readString();
-          AppMethodBeat.o(41839);
-          return 0;
-        }
-        localeg.CNA = locala.abFh.readString();
-        AppMethodBeat.o(41839);
-        return 0;
-      }
-      AppMethodBeat.o(41839);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(276892);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      eg localeg = (eg)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(276892);
+        return -1;
+      case 1: 
+        localeg.ILU = locala.ajGk.aar();
+        AppMethodBeat.o(276892);
+        return 0;
+      case 2: 
+        localeg.IHK = locala.ajGk.aar();
+        AppMethodBeat.o(276892);
+        return 0;
+      }
+      localeg.IHI = locala.ajGk.readString();
+      AppMethodBeat.o(276892);
+      return 0;
+    }
+    AppMethodBeat.o(276892);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.eg
  * JD-Core Version:    0.7.0.1
  */

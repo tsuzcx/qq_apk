@@ -2,21 +2,23 @@ package com.tencent.xweb.xwalk.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.util.h;
+import com.tencent.xweb.util.l;
+import com.tencent.xweb.xwalk.updater.d;
 import java.io.File;
 import org.xwalk.core.Log;
 
 public final class c
   extends g
 {
-  public final int a(com.tencent.xweb.xwalk.b.d paramd)
+  public final int a(d paramd)
   {
-    AppMethodBeat.i(195806);
+    AppMethodBeat.i(213101);
     Log.i("FullScreenVideo", "performInstall version " + paramd.version);
-    if (com.tencent.xweb.util.d.pe(paramd.path, paramd.aakv))
+    if (h.rb(paramd.path, paramd.aiiJ))
     {
-      aCY(paramd.version);
-      Log.i("FullScreenVideo", "performInstall " + this.aajM + " success");
-      AppMethodBeat.o(195806);
+      aJM(paramd.version);
+      Log.i("FullScreenVideo", "performInstall " + this.aipK + " success");
+      AppMethodBeat.o(213101);
       return 0;
     }
     Log.e("FullScreenVideo", "performInstall failed, md5 not match");
@@ -24,15 +26,15 @@ public final class c
     if (paramd.exists()) {
       paramd.delete();
     }
-    h.dY("FullScreenVideo", false);
-    AppMethodBeat.o(195806);
+    l.eN("FullScreenVideo", false);
+    AppMethodBeat.o(213101);
     return -1;
   }
   
-  public final String cm(int paramInt, boolean paramBoolean)
+  public final String dg(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(157176);
-    String str = aCZ(paramInt);
+    String str = getVersionDir(paramInt);
     if ((str == null) || (str.isEmpty()))
     {
       AppMethodBeat.o(157176);
@@ -49,26 +51,31 @@ public final class c
     return str;
   }
   
-  public final String getPluginName()
+  public final String kjs()
   {
     return "FullScreenVideo";
   }
   
-  public final boolean izb()
+  public final boolean kjt()
   {
     return true;
   }
   
-  public final void izc()
+  public final boolean kjw()
+  {
+    return true;
+  }
+  
+  public final void kjx()
   {
     AppMethodBeat.i(157178);
-    Log.i("FullScreenVideo", "checkVersionFiles, skip");
+    Log.i("FullScreenVideo", "checkFiles, skip");
     AppMethodBeat.o(157178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
@@ -13,7 +12,7 @@ import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 class RecentsRecyclerView
   extends LoadMoreRecyclerView
 {
-  View rga;
+  View uob;
   
   public RecentsRecyclerView(Context paramContext)
   {
@@ -39,7 +38,7 @@ class RecentsRecyclerView
     AppMethodBeat.o(49274);
   }
   
-  final void dd(View paramView)
+  final void dM(View paramView)
   {
     AppMethodBeat.i(49280);
     if (paramView.getParent() != this)
@@ -53,8 +52,8 @@ class RecentsRecyclerView
       AppMethodBeat.o(49280);
       return;
     }
-    if (this.rga == paramView) {
-      this.rga = null;
+    if (this.uob == paramView) {
+      this.uob = null;
     }
     AppMethodBeat.o(49280);
   }
@@ -75,13 +74,13 @@ class RecentsRecyclerView
   public int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49275);
-    if (this.rga == null)
+    if (this.uob == null)
     {
       paramInt1 = super.getChildDrawingOrder(paramInt1, paramInt2);
       AppMethodBeat.o(49275);
       return paramInt1;
     }
-    int i = indexOfChild(this.rga);
+    int i = indexOfChild(this.uob);
     if (i < 0)
     {
       paramInt1 = super.getChildDrawingOrder(paramInt1, paramInt2);
@@ -116,7 +115,6 @@ class RecentsRecyclerView
     return bool;
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(49278);
@@ -144,7 +142,7 @@ class RecentsRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.RecentsRecyclerView
  * JD-Core Version:    0.7.0.1
  */

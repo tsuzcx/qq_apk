@@ -1,134 +1,157 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aq.e;
+import com.tencent.mm.modelcdntran.j;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.plugin.sight.base.ABAPrams;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/AdaptiveAdjustBitrateHelper;", "", "()V", "TAG", "", "getABAResult", "Lcom/tencent/mm/plugin/vlog/model/ABAResult;", "videoList", "", "Lcom/tencent/mm/plugin/vlog/model/ABAVideoInfo;", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "targetWidth", "", "targetHeight", "addStickers", "", "scene", "sortVideoBitrate", "", "abaParamList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/AdaptiveAdjustBitrateHelper;", "", "()V", "TAG", "", "getABAResult", "Lcom/tencent/mm/plugin/vlog/model/ABAResult;", "videoList", "", "Lcom/tencent/mm/plugin/vlog/model/ABAVideoInfo;", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "targetWidth", "", "targetHeight", "addStickers", "", "scene", "sortVideoBitrate", "", "abaParamList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final c NkB;
-  private static final String TAG = "MicroMsg.AdaptiveAdjustBitrateHelper";
+  private static final String TAG;
+  public static final c TXW;
   
   static
   {
-    AppMethodBeat.i(227360);
-    NkB = new c();
+    AppMethodBeat.i(283513);
+    TXW = new c();
     TAG = "MicroMsg.AdaptiveAdjustBitrateHelper";
-    AppMethodBeat.o(227360);
+    AppMethodBeat.o(283513);
+  }
+  
+  private static final int a(a parama1, a parama2)
+  {
+    AppMethodBeat.i(283506);
+    if (parama1 == null)
+    {
+      parama1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.ABAResult");
+      AppMethodBeat.o(283506);
+      throw parama1;
+    }
+    if (parama2 == null)
+    {
+      parama1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.ABAResult");
+      AppMethodBeat.o(283506);
+      throw parama1;
+    }
+    int i = parama1.bitrate;
+    int j = parama2.bitrate;
+    if (j < i)
+    {
+      AppMethodBeat.o(283506);
+      return -1;
+    }
+    if (i < j)
+    {
+      AppMethodBeat.o(283506);
+      return 1;
+    }
+    AppMethodBeat.o(283506);
+    return 0;
   }
   
   public static a a(List<b> paramList, VideoTransPara paramVideoTransPara, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
   {
-    AppMethodBeat.i(227355);
-    p.k(paramList, "videoList");
-    p.k(paramVideoTransPara, "videoParams");
+    AppMethodBeat.i(283483);
+    s.u(paramList, "videoList");
+    s.u(paramVideoTransPara, "videoParams");
     ArrayList localArrayList = new ArrayList();
-    int i;
-    Object localObject;
     int k;
     int m;
     for (;;)
     {
+      float f;
       try
       {
-        if (((Collection)paramList).isEmpty()) {
-          break label297;
+        if (!((Collection)paramList).isEmpty())
+        {
+          i = 1;
+          if ((i == 0) || (paramVideoTransPara.oCb != 1)) {
+            break;
+          }
+          paramList = ((Iterable)paramList).iterator();
+          if (!paramList.hasNext()) {
+            break;
+          }
+          Object localObject = (b)paramList.next();
+          f = 1.0F;
+          if (paramVideoTransPara.oCh != 1) {
+            break label342;
+          }
+          f = paramVideoTransPara.oCd;
+          localObject = AdaptiveAdjustBitrate.a(((b)localObject).path, paramInt2, paramInt1, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, (float)(((b)localObject).TXV - ((b)localObject).TXU) / 1000.0F, (float)((b)localObject).TXU / 1000.0F, paramInt3, f, paramVideoTransPara.oCf, paramVideoTransPara.oCg, paramVideoTransPara.oCh, paramVideoTransPara.oCi, paramVideoTransPara.oCj, paramBoolean);
+          int j = paramVideoTransPara.videoBitrate;
+          i = -1;
+          if (localObject != null)
+          {
+            j = ((ABAPrams)localObject).outputKbps * 1000;
+            i = 0;
+          }
+          if ((localObject == null) || (((ABAPrams)localObject).resolutionAdjust <= 0)) {
+            break label442;
+          }
+          k = ((ABAPrams)localObject).outputWidth;
+          m = ((ABAPrams)localObject).outputHeight;
+          i = 0;
+          Log.i(TAG, "ABA:  finder video bitrate:" + j + " width: " + k + " height:" + m);
+          if (v.bOi() != null) {
+            j.a((ABAPrams)localObject);
+          }
+          if (i == -1) {
+            continue;
+          }
+          localArrayList.add(new a(i, k, m, j, (ABAPrams)localObject));
+          continue;
         }
-        i = 1;
-        if ((i == 0) || (paramVideoTransPara.lJz != 1)) {
-          break;
-        }
-        paramList = ((Iterable)paramList).iterator();
-        if (!paramList.hasNext()) {
-          break;
-        }
-        localObject = (b)paramList.next();
-        localObject = AdaptiveAdjustBitrate.a(((b)localObject).path, paramInt2, paramInt1, paramVideoTransPara.fps, paramVideoTransPara.videoBitrate, (float)(((b)localObject).NkA - ((b)localObject).Nkz) / 1000.0F, (float)((b)localObject).Nkz / 1000.0F, paramInt3, paramVideoTransPara.lJB, paramVideoTransPara.lJC, paramVideoTransPara.lJD, paramVideoTransPara.lJE, paramVideoTransPara.lJF, paramVideoTransPara.lJG, paramVideoTransPara.lJH, paramBoolean);
-        j = paramVideoTransPara.videoBitrate;
-        i = -1;
-        if (localObject == null) {
-          break label401;
-        }
-        j = localObject[0] * 1000;
-        i = 0;
+        int i = 0;
       }
-      catch (Throwable paramList)
+      finally
       {
-        int j;
         paramList = new a(-1, 0, 0, 0, null);
-        AppMethodBeat.o(227355);
+        AppMethodBeat.o(283483);
         return paramList;
       }
-      Log.i(TAG, "ABA:  finder video bitrate:" + j + " width: " + k + " height:" + m);
-      if (s.bqC() != null) {
-        e.s((int[])localObject);
-      }
-      if (i != -1)
-      {
-        localArrayList.add(new a(i, k, m, j, (int[])localObject));
-        continue;
-        label297:
-        i = 0;
+      continue;
+      label342:
+      if (paramVideoTransPara.oCh == 2) {
+        f = paramVideoTransPara.oCe;
       }
     }
     if (!((Collection)localArrayList).isEmpty()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
-      if ((paramInt1 != 0) && (paramVideoTransPara.lJz == 1))
+      if ((paramInt1 != 0) && (paramVideoTransPara.oCb == 1))
       {
-        j.a((List)localArrayList, (Comparator)a.NkC);
+        p.a((List)localArrayList, c..ExternalSyntheticLambda0.INSTANCE);
         paramList = localArrayList.get(0);
-        p.j(paramList, "abaParamList[0]");
+        s.s(paramList, "abaParamList[0]");
         paramList = (a)paramList;
-        AppMethodBeat.o(227355);
+        AppMethodBeat.o(283483);
         return paramList;
       }
-      paramList = new a(-1, 0, 0, 0, new int[34]);
-      AppMethodBeat.o(227355);
+      paramList = new a(-1, 0, 0, 0, null);
+      AppMethodBeat.o(283483);
       return paramList;
-      label401:
-      do
-      {
-        m = paramInt2;
-        k = paramInt1;
-        break;
-      } while ((localObject == null) || (localObject[5] <= 0));
-      k = localObject[1];
-      m = localObject[2];
-      i = 0;
+      label442:
+      m = paramInt2;
+      k = paramInt1;
       break;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "o1", "Lcom/tencent/mm/plugin/vlog/model/ABAResult;", "kotlin.jvm.PlatformType", "o2", "compare"})
-  static final class a<T>
-    implements Comparator<a>
-  {
-    public static final a NkC;
-    
-    static
-    {
-      AppMethodBeat.i(232090);
-      NkC = new a();
-      AppMethodBeat.o(232090);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.c
  * JD-Core Version:    0.7.0.1
  */

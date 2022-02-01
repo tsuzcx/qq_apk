@@ -3,21 +3,21 @@ package com.tencent.tinker.a.a;
 public final class s$a
   implements Comparable<a>
 {
-  public final short ZJL;
-  public boolean ZJM;
-  public int byteCount = 0;
+  public final short ahOM;
+  public boolean ahON;
+  public int ahOO = 0;
   public int off = -1;
   public int size = 0;
   
   public s$a(int paramInt, boolean paramBoolean)
   {
-    this.ZJL = ((short)paramInt);
-    this.ZJM = paramBoolean;
+    this.ahOM = ((short)paramInt);
+    this.ahON = paramBoolean;
     if (paramInt == 0)
     {
       this.off = 0;
       this.size = 1;
-      this.byteCount = 112;
+      this.ahOO = 112;
     }
     while (paramInt != 4096) {
       return;
@@ -25,7 +25,7 @@ public final class s$a
     this.size = 1;
   }
   
-  private static int aBy(int paramInt)
+  private static int aIk(int paramInt)
   {
     switch (paramInt)
     {
@@ -69,19 +69,40 @@ public final class s$a
     return 17;
   }
   
-  public final boolean ifE()
+  public final boolean jKS()
   {
     return this.size > 0;
   }
   
   public final String toString()
   {
-    return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.ZJL), Integer.valueOf(this.off), Integer.valueOf(this.size) });
+    return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.ahOM), Integer.valueOf(this.off), Integer.valueOf(this.size) });
+  }
+  
+  public static abstract class a<T>
+    implements Comparable<T>
+  {
+    public int off;
+    
+    public a(int paramInt)
+    {
+      this.off = paramInt;
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      return compareTo(paramObject) == 0;
+    }
+    
+    public int hashCode()
+    {
+      return super.hashCode();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tinker.a.a.s.a
  * JD-Core Version:    0.7.0.1
  */

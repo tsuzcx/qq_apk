@@ -31,153 +31,145 @@ import java.util.Map;
 public final class WWAPIImplLocal
   implements IWWAPI
 {
-  private static final ArrayList<String> ZYg;
-  private static final ArrayList<String> ZYh;
-  private static final ArrayList<String> ZYm;
-  private String ZYf;
-  private BroadcastReceiver ZYi;
-  private Map<String, Object> callbacks;
-  private Context context;
+  private static final ArrayList<String> aicF;
+  private static final ArrayList<String> aicG;
+  private static final ArrayList<String> aicN;
+  private Map<String, Object> Lfc;
+  private String aicE;
+  private BroadcastReceiver aicI;
+  private final Context context;
   private SharedPreferences mPreferences;
   
   static
   {
-    AppMethodBeat.i(233327);
-    ZYg = new ArrayList() {};
-    ZYh = new ArrayList() {};
-    ZYm = new ArrayList() {};
-    AppMethodBeat.o(233327);
+    AppMethodBeat.i(210618);
+    aicF = new ArrayList() {};
+    aicG = new ArrayList() {};
+    aicN = new ArrayList() {};
+    AppMethodBeat.o(210618);
   }
   
   WWAPIImplLocal(Context paramContext)
   {
-    AppMethodBeat.i(233300);
-    this.callbacks = new HashMap();
-    this.ZYi = new BroadcastReceiver()
+    AppMethodBeat.i(210558);
+    this.Lfc = new HashMap();
+    this.aicI = new BroadcastReceiver()
     {
       public void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(233299);
+        AppMethodBeat.i(210570);
         try
         {
           boolean bool = WWAPIImplLocal.a(WWAPIImplLocal.this).equals(paramAnonymousIntent.getScheme());
-          if (!bool)
-          {
-            AppMethodBeat.o(233299);
+          if (!bool) {
             return;
           }
-          paramAnonymousContext = BaseMessage.t(paramAnonymousIntent.getData());
-          paramAnonymousContext.bEy(WWAPIImplLocal.b(WWAPIImplLocal.this).getString("sk", ""));
+          paramAnonymousContext = BaseMessage.w(paramAnonymousIntent.getData());
+          paramAnonymousContext.bGX(WWAPIImplLocal.b(WWAPIImplLocal.this).getString("sk", ""));
           paramAnonymousContext.fromBundle(paramAnonymousIntent.getExtras());
           if ((paramAnonymousContext instanceof WWBaseRespMessage)) {
             new Handler(Looper.getMainLooper()).post(new Runnable()
             {
               public void run()
               {
-                AppMethodBeat.i(233297);
+                AppMethodBeat.i(210557);
                 try
                 {
                   WWAPIImplLocal.c(WWAPIImplLocal.this).get(((WWBaseRespMessage)paramAnonymousContext).transaction);
                   WWAPIImplLocal.c(WWAPIImplLocal.this).remove(((WWBaseRespMessage)paramAnonymousContext).transaction);
-                  AppMethodBeat.o(233297);
                   return;
                 }
-                catch (Throwable localThrowable)
+                finally
                 {
-                  AppMethodBeat.o(233297);
+                  AppMethodBeat.o(210557);
                 }
               }
             });
           }
-          AppMethodBeat.o(233299);
           return;
         }
-        catch (Throwable paramAnonymousContext)
+        finally
         {
-          AppMethodBeat.o(233299);
+          AppMethodBeat.o(210570);
         }
       }
     };
     this.mPreferences = null;
     this.context = paramContext;
     this.mPreferences = paramContext.getSharedPreferences("wxwork_wwapi_store", 0);
-    AppMethodBeat.o(233300);
+    AppMethodBeat.o(210558);
   }
   
-  private int bEv(String paramString)
+  private int bGU(String paramString)
   {
-    AppMethodBeat.i(233308);
+    AppMethodBeat.i(210581);
     try
     {
       paramString = this.context.getPackageManager().getPackageInfo(paramString, 128);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(233308);
+      if (paramString == null) {
         return 0;
       }
       int i = paramString.versionCode;
-      AppMethodBeat.o(233308);
       return i;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(233308);
+      AppMethodBeat.o(210581);
     }
     return 0;
   }
   
-  private String bEw(String paramString)
+  private String bGV(String paramString)
   {
-    AppMethodBeat.i(233316);
+    AppMethodBeat.i(210588);
     try
     {
-      paramString = dA(this.context.getPackageManager().getPackageInfo(paramString, 64).signatures[0].toByteArray());
-      AppMethodBeat.o(233316);
+      paramString = dC(this.context.getPackageManager().getPackageInfo(paramString, 64).signatures[0].toByteArray());
       return paramString;
     }
-    catch (Throwable paramString)
+    finally
     {
-      AppMethodBeat.o(233316);
+      AppMethodBeat.o(210588);
     }
     return "";
   }
   
-  private boolean bEx(String paramString)
+  private boolean bGW(String paramString)
   {
-    AppMethodBeat.i(233321);
-    paramString = bEw(paramString);
-    boolean bool = ZYm.contains(paramString);
-    AppMethodBeat.o(233321);
+    AppMethodBeat.i(210601);
+    paramString = bGV(paramString);
+    boolean bool = aicN.contains(paramString);
+    AppMethodBeat.o(210601);
     return bool;
   }
   
-  private boolean bP(Intent paramIntent)
+  private boolean cu(Intent paramIntent)
   {
-    AppMethodBeat.i(233304);
+    AppMethodBeat.i(210565);
     if (this.context.getPackageManager().queryIntentActivities(paramIntent, 65536).size() > 0)
     {
-      AppMethodBeat.o(233304);
+      AppMethodBeat.o(210565);
       return true;
     }
-    AppMethodBeat.o(233304);
+    AppMethodBeat.o(210565);
     return false;
   }
   
-  private String bQ(Intent paramIntent)
+  private String cv(Intent paramIntent)
   {
-    AppMethodBeat.i(233305);
+    AppMethodBeat.i(210573);
     List localList = this.context.getPackageManager().queryIntentActivities(paramIntent, 65536);
     paramIntent = "";
     if (localList.size() > 0) {
       paramIntent = ((ResolveInfo)localList.get(0)).activityInfo.applicationInfo.packageName;
     }
-    AppMethodBeat.o(233305);
+    AppMethodBeat.o(210573);
     return paramIntent;
   }
   
-  private static String dA(byte[] paramArrayOfByte)
+  private static String dC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(233319);
+    AppMethodBeat.i(210594);
     try
     {
       Object localObject = MessageDigest.getInstance("MD5");
@@ -195,215 +187,214 @@ public final class WWAPIImplLocal
         i += 1;
       }
       paramArrayOfByte = ((StringBuilder)localObject).toString().toUpperCase();
-      AppMethodBeat.o(233319);
+      AppMethodBeat.o(210594);
       return paramArrayOfByte;
     }
     catch (NoSuchAlgorithmException paramArrayOfByte)
     {
-      AppMethodBeat.o(233319);
+      AppMethodBeat.o(210594);
     }
     return "";
   }
   
   public final boolean a(IWWAPI.WWAppType paramWWAppType)
   {
-    AppMethodBeat.i(233302);
-    if (paramWWAppType == IWWAPI.WWAppType.ZYb)
+    AppMethodBeat.i(210624);
+    if (paramWWAppType == IWWAPI.WWAppType.aicA)
     {
-      boolean bool = bEx("com.tencent.wework");
-      AppMethodBeat.o(233302);
+      boolean bool = bGW("com.tencent.wework");
+      AppMethodBeat.o(210624);
       return bool;
     }
-    Intent localIntent;
-    if (paramWWAppType == IWWAPI.WWAppType.ZYc)
+    if (paramWWAppType == IWWAPI.WWAppType.aicB)
     {
-      paramWWAppType = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkentuniform://jump"));
-      localIntent = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkentcustomized://jump"));
-      if ((bEx("com.tencent.wework")) || (bEx("com.tencent.wwgovernment")) || (bP(paramWWAppType)) || (bP(localIntent)))
+      paramWWAppType = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxwork://jump"));
+      if ((bGW("com.tencent.wework")) || (bGW("com.tencent.wwgovernment")) || (cu(paramWWAppType)))
       {
-        AppMethodBeat.o(233302);
+        AppMethodBeat.o(210624);
         return true;
       }
-      AppMethodBeat.o(233302);
+      AppMethodBeat.o(210624);
       return false;
     }
-    if (paramWWAppType == IWWAPI.WWAppType.ZYd)
+    if (paramWWAppType == IWWAPI.WWAppType.aicC)
     {
       paramWWAppType = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkgovuniform://jump"));
-      localIntent = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkgovcustomized://jump"));
-      if ((bEx("com.tencent.wwgovernment")) || (bP(paramWWAppType)) || (bP(localIntent)))
+      if ((bGW("com.tencent.wwgovernment")) || (cu(paramWWAppType)))
       {
-        AppMethodBeat.o(233302);
+        AppMethodBeat.o(210624);
         return true;
       }
-      AppMethodBeat.o(233302);
+      AppMethodBeat.o(210624);
       return false;
     }
-    AppMethodBeat.o(233302);
+    AppMethodBeat.o(210624);
     return false;
   }
   
   public final boolean a(BaseMessage paramBaseMessage, IWWAPI.WWAppType paramWWAppType)
   {
-    AppMethodBeat.i(233315);
+    AppMethodBeat.i(210641);
     Object localObject1 = new ArrayList();
-    if (paramWWAppType == IWWAPI.WWAppType.ZYb)
+    Iterator localIterator;
+    if (paramWWAppType == IWWAPI.WWAppType.aicA)
     {
       ((List)localObject1).add("com.tencent.wework");
-      localObject1 = ((List)localObject1).iterator();
+      localIterator = ((List)localObject1).iterator();
     }
+    label907:
+    label915:
+    label920:
     for (;;)
     {
-      Object localObject2;
-      Object localObject3;
+      Object localObject4;
       long l;
       for (;;)
       {
-        if (!((Iterator)localObject1).hasNext()) {
-          break label904;
+        if (!localIterator.hasNext()) {
+          break label907;
         }
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (((((String)localObject2).equals("com.tencent.wework")) || (((String)localObject2).equals("com.tencent.wwgovernment"))) && (bEx((String)localObject2)))
+        localObject1 = (String)localIterator.next();
+        if (((((String)localObject1).equals("com.tencent.wework")) || (((String)localObject1).equals("com.tencent.wwgovernment"))) && (bGW((String)localObject1)))
         {
-          paramWWAppType = new Intent("com.tencent.wework.apihost");
-          paramWWAppType.setClassName((String)localObject2, "com.tencent.wework.apihost.WWAPIActivity");
-          paramWWAppType.addFlags(411041792);
+          localObject3 = new Intent("com.tencent.wework.apihost");
+          ((Intent)localObject3).setClassName((String)localObject1, "com.tencent.wework.apihost.WWAPIActivity");
+          ((Intent)localObject3).addFlags(411041792);
           try
           {
-            paramBaseMessage.bEz((String)localObject2);
+            paramBaseMessage.bGY((String)localObject1);
             paramBaseMessage.setContext(this.context);
-            localObject3 = BaseMessage.a(paramBaseMessage);
-            l = OpenDataUtils.c(this.context, this.context.getPackageName(), (String)localObject2, (Bundle)localObject3);
+            localObject4 = BaseMessage.a(paramBaseMessage);
+            l = OpenDataUtils.c(this.context, this.context.getPackageName(), (String)localObject1, (Bundle)localObject4);
             if (l > 0L)
             {
-              paramWWAppType.putExtra("data_id", l);
-              paramWWAppType.putExtra("data_pkg", this.context.getPackageName());
+              ((Intent)localObject3).putExtra("data_id", l);
+              ((Intent)localObject3).putExtra("data_pkg", this.context.getPackageName());
             }
             for (;;)
             {
-              paramWWAppType.putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.ZYi.getClass()), 134217728));
-              paramBaseMessage.u(paramWWAppType, (String)localObject2);
-              localObject2 = this.context;
-              paramWWAppType = new com.tencent.mm.hellhoundlib.b.a().bm(paramWWAppType);
-              com.tencent.mm.hellhoundlib.a.a.b(localObject2, paramWWAppType.aFh(), "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((Context)localObject2).startActivity((Intent)paramWWAppType.sf(0));
-              com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              AppMethodBeat.o(233315);
+              ((Intent)localObject3).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.aicI.getClass()), 134217728));
+              paramBaseMessage.w((Intent)localObject3, (String)localObject1);
+              localObject1 = this.context;
+              localObject3 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject3);
+              com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aYi(), "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              AppMethodBeat.o(210641);
               return true;
-              if (paramWWAppType == IWWAPI.WWAppType.ZYc)
+              if (paramWWAppType == IWWAPI.WWAppType.aicB)
               {
                 ((List)localObject1).add("com.tencent.wework");
                 ((List)localObject1).add("com.tencent.weworkenterprise");
                 break;
               }
-              if (paramWWAppType != IWWAPI.WWAppType.ZYd) {
+              if (paramWWAppType != IWWAPI.WWAppType.aicC) {
                 break;
               }
               ((List)localObject1).add("com.tencent.wwgovernment");
               ((List)localObject1).add("com.tencent.weworklocal");
               break;
-              paramWWAppType.putExtras((Bundle)localObject3);
+              ((Intent)localObject3).putExtras((Bundle)localObject4);
             }
           }
-          catch (Throwable paramWWAppType) {}
+          finally {}
         }
       }
-      if (((String)localObject2).equals("com.tencent.weworkenterprise"))
+      String str;
+      if (localObject2.equals("com.tencent.weworkenterprise"))
       {
-        paramWWAppType = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkentuniform://jump"));
-        localObject3 = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkentcustomized://jump"));
-        if (bP(paramWWAppType)) {
-          if (bEx(bQ(paramWWAppType)))
-          {
-            paramWWAppType = "wxworkentuniform";
-            label467:
-            localObject3 = new Intent("com.tencent.wework.api.sharemsg", Uri.parse(paramWWAppType + "://jump"));
-            ((Intent)localObject3).addFlags(411041792);
-          }
-        }
-      }
-      try
-      {
-        paramBaseMessage.bEz((String)localObject2);
-        paramBaseMessage.setContext(this.context);
-        Object localObject4 = BaseMessage.a(paramBaseMessage);
-        l = OpenDataUtils.c(this.context, this.context.getPackageName(), (String)localObject2, (Bundle)localObject4);
-        if (l > 0L)
+        localObject3 = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxwork://jump"));
+        if (cu((Intent)localObject3))
         {
-          ((Intent)localObject3).putExtra("data_id", l);
-          ((Intent)localObject3).putExtra("data_pkg", this.context.getPackageName());
+          str = cv((Intent)localObject3);
+          if (!bGW(str)) {}
         }
+      }
+      for (Object localObject3 = "wxwork";; localObject3 = "")
+      {
         for (;;)
         {
-          ((Intent)localObject3).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.ZYi.getClass()), 134217728));
-          paramBaseMessage.u((Intent)localObject3, (String)localObject2);
-          localObject4 = this.context;
-          localObject3 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject3);
-          com.tencent.mm.hellhoundlib.a.a.b(localObject4, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aFh(), "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject4).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).sf(0));
-          com.tencent.mm.hellhoundlib.a.a.c(localObject4, "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          new StringBuilder("sendMessage, start WWAPIActivity, pkg: ").append((String)localObject2).append(",scheme:").append(paramWWAppType);
-          AppMethodBeat.o(233315);
-          return true;
-          AppMethodBeat.o(233315);
-          return false;
-          if (bEx(bQ((Intent)localObject3)))
-          {
-            paramWWAppType = "wxworkentcustomized";
-            break label467;
+          label470:
+          if (TextUtils.isEmpty((CharSequence)localObject3)) {
+            break label920;
           }
-          AppMethodBeat.o(233315);
-          return false;
-          if (!((String)localObject2).equals("com.tencent.weworklocal")) {
+          localObject4 = new Intent("com.tencent.wework.api.sharemsg", Uri.parse((String)localObject3 + "://jump"));
+          ((Intent)localObject4).addFlags(411041792);
+          try
+          {
+            paramBaseMessage.bGY(str);
+            paramBaseMessage.setContext(this.context);
+            Object localObject6 = BaseMessage.a(paramBaseMessage);
+            l = OpenDataUtils.c(this.context, this.context.getPackageName(), str, (Bundle)localObject6);
+            if (l > 0L)
+            {
+              ((Intent)localObject4).putExtra("data_id", l);
+              ((Intent)localObject4).putExtra("data_pkg", this.context.getPackageName());
+            }
+            for (;;)
+            {
+              ((Intent)localObject4).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.aicI.getClass()), 134217728));
+              paramBaseMessage.w((Intent)localObject4, str);
+              localObject6 = this.context;
+              localObject4 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject4);
+              com.tencent.mm.hellhoundlib.a.a.b(localObject6, ((com.tencent.mm.hellhoundlib.b.a)localObject4).aYi(), "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Context)localObject6).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject4).sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(localObject6, "com/tencent/wework/api/WWAPIImplLocal", "sendMessage", "(Lcom/tencent/wework/api/model/BaseMessage;Lcom/tencent/wework/api/IWWAPI$WWAppType;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              new StringBuilder("sendMessage, start WWAPIActivity, pkg: ").append(str).append(",scheme:").append((String)localObject3).append(", appType:").append(paramWWAppType);
+              AppMethodBeat.o(210641);
+              return true;
+              AppMethodBeat.o(210641);
+              return false;
+              localObject3 = "";
+              break label470;
+              if (!str.equals("com.tencent.weworklocal")) {
+                break;
+              }
+              localObject3 = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkgovuniform://jump"));
+              if (!cu((Intent)localObject3)) {
+                break label915;
+              }
+              str = cv((Intent)localObject3);
+              if (bGW(str))
+              {
+                localObject3 = "wxworkgovuniform";
+                break label470;
+              }
+              AppMethodBeat.o(210641);
+              return false;
+              ((Intent)localObject4).putExtras((Bundle)localObject6);
+            }
             break;
           }
-          paramWWAppType = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkgovuniform://jump"));
-          localObject3 = new Intent("com.tencent.wework.api.sharemsg", Uri.parse("wxworkgovcustomized://jump"));
-          if (bP(paramWWAppType))
+          finally
           {
-            if (bEx(bQ(paramWWAppType)))
-            {
-              paramWWAppType = "wxworkgovuniform";
-              break label467;
-            }
-            AppMethodBeat.o(233315);
-            return false;
+            new StringBuilder("sendMessage failed, pkg: ").append(str).append(",scheme:").append((String)localObject3).append(", appType:").append(paramWWAppType);
           }
-          if (bEx(bQ((Intent)localObject3)))
-          {
-            paramWWAppType = "wxworkgovcustomized";
-            break label467;
-          }
-          AppMethodBeat.o(233315);
-          return false;
-          ((Intent)localObject3).putExtras((Bundle)localObject4);
         }
+        AppMethodBeat.o(210641);
+        return false;
       }
-      catch (Throwable paramWWAppType) {}
     }
-    label904:
-    AppMethodBeat.o(233315);
-    return false;
   }
   
   public final String b(IWWAPI.WWAppType paramWWAppType)
   {
-    if (paramWWAppType == IWWAPI.WWAppType.ZYd) {
+    if (paramWWAppType == IWWAPI.WWAppType.aicC) {
       return "政务微信";
     }
     return "企业微信";
   }
   
-  public final boolean ivm()
+  public final boolean keI()
   {
-    AppMethodBeat.i(233306);
-    ArrayList localArrayList = ZYg;
+    AppMethodBeat.i(210628);
+    ArrayList localArrayList = aicF;
     Object localObject = localArrayList;
     if (this.context != null)
     {
       localObject = localArrayList;
       if (!TextUtils.equals(this.context.getPackageName(), "com.tencent.mm")) {
-        localObject = ZYh;
+        localObject = aicG;
       }
     }
     localObject = ((List)localObject).iterator();
@@ -413,15 +404,15 @@ public final class WWAPIImplLocal
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
-      i = bEv((String)((Iterator)localObject).next());
+      i = bGU((String)((Iterator)localObject).next());
     } while (i == 0);
     while (i >= 100)
     {
-      AppMethodBeat.o(233306);
+      AppMethodBeat.o(210628);
       return true;
       i = 0;
     }
-    AppMethodBeat.o(233306);
+    AppMethodBeat.o(210628);
     return false;
   }
 }

@@ -7,28 +7,28 @@ import org.tensorflow.lite.b;
 public class NnApiDelegate
   implements AutoCloseable, b
 {
-  public long abMR;
+  public long ajZK;
   
   public NnApiDelegate()
   {
     this(new a());
-    AppMethodBeat.i(240091);
-    AppMethodBeat.o(240091);
+    AppMethodBeat.i(187252);
+    AppMethodBeat.o(187252);
   }
   
   private NnApiDelegate(a parama)
   {
-    AppMethodBeat.i(240088);
+    AppMethodBeat.i(187245);
     TensorFlowLite.init();
-    int j = parama.abMT;
-    String str1 = parama.abMU;
+    int j = parama.ajZM;
+    String str1 = parama.ajZN;
     String str2 = parama.cacheDir;
-    String str3 = parama.abMV;
+    String str3 = parama.ajZO;
     int i;
-    if (parama.abMW != null)
+    if (parama.ajZP != null)
     {
-      i = parama.abMW.intValue();
-      if (parama.abMX == null) {
+      i = parama.ajZP.intValue();
+      if (parama.ajZQ == null) {
         break label142;
       }
     }
@@ -36,18 +36,18 @@ public class NnApiDelegate
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2 = bool4;
-      if (parama.abMX != null)
+      if (parama.ajZQ != null)
       {
         bool2 = bool4;
-        if (parama.abMX.booleanValue()) {
+        if (parama.ajZQ.booleanValue()) {
           bool2 = false;
         }
       }
-      if (parama.abMY != null) {
-        bool3 = parama.abMY.booleanValue();
+      if (parama.ajZR != null) {
+        bool3 = parama.ajZR.booleanValue();
       }
-      this.abMR = createDelegate(j, str1, str2, str3, i, bool1, bool2, bool3);
-      AppMethodBeat.o(240088);
+      this.ajZK = createDelegate(j, str1, str2, str3, i, bool1, bool2, bool3);
+      AppMethodBeat.o(187245);
       return;
       i = -1;
       break;
@@ -62,34 +62,34 @@ public class NnApiDelegate
   
   public void close()
   {
-    AppMethodBeat.i(240093);
-    if (this.abMR != 0L)
+    AppMethodBeat.i(187286);
+    if (this.ajZK != 0L)
     {
-      deleteDelegate(this.abMR);
-      this.abMR = 0L;
+      deleteDelegate(this.ajZK);
+      this.ajZK = 0L;
     }
-    AppMethodBeat.o(240093);
+    AppMethodBeat.o(187286);
   }
   
   public final long getNativeHandle()
   {
-    return this.abMR;
+    return this.ajZK;
   }
   
   public static final class a
   {
-    int abMT = -1;
-    String abMU = null;
-    String abMV = null;
-    Integer abMW = null;
-    Boolean abMX = null;
-    Boolean abMY = null;
+    int ajZM = -1;
+    String ajZN = null;
+    String ajZO = null;
+    Integer ajZP = null;
+    Boolean ajZQ = null;
+    Boolean ajZR = null;
     String cacheDir = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.tensorflow.lite.nnapi.NnApiDelegate
  * JD-Core Version:    0.7.0.1
  */

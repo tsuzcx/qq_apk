@@ -2,104 +2,33 @@ package com.tencent.mm.plugin.finder.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.f.b.a.dx;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.autogen.mmdata.rpt.fh;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.report.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryReportLogic;", "", "()V", "pickScene", "", "getPickScene", "()J", "setPickScene", "(J)V", "query", "", "getQuery", "()Ljava/lang/String;", "setQuery", "(Ljava/lang/String;)V", "sessionId", "getSessionId", "setSessionId", "tabType", "getTabType", "setTabType", "getTabReportEventCode", "tab", "", "getTabReportType", "report22878ClickFeed", "", "feedId", "isPicFeed", "", "report22878ClickPrevDone", "report22878ClickSearch", "report22878ClickTab", "report22878Enter", "bizScene", "defaultTab", "report22878Exit", "report22878PrevRet", "report22878SearchClickFeed", "keyword", "report22878SearchEnter", "report22878SearchExit", "report22878SearchPrevDone", "report22878SearchPrevRet", "resetSessionId", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryReportLogic;", "", "()V", "TAG", "", "pickScene", "", "getPickScene", "()J", "setPickScene", "(J)V", "query", "getQuery", "()Ljava/lang/String;", "setQuery", "(Ljava/lang/String;)V", "sessionId", "getSessionId", "setSessionId", "tabType", "getTabType", "setTabType", "getTabReportEventCode", "tab", "", "getTabReportType", "report22878ClickFeed", "", "feedId", "isPicFeed", "", "report22878ClickPrevDone", "report22878ClickSearch", "report22878ClickTab", "report22878Enter", "bizScene", "defaultTab", "report22878Exit", "report22878FeedExposure", "report22878PrevRet", "report22878SearchClickFeed", "keyword", "report22878SearchEnter", "report22878SearchExit", "report22878SearchPrevDone", "report22878SearchPrevRet", "resetSessionId", "structLog", "struct", "Lcom/tencent/mm/plugin/report/AbsReportStruct;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
+  public static final f BuT;
+  public static long BuU;
+  public static long BuV;
   public static String query;
   public static String sessionId;
-  public static long xTY;
-  static long xTZ;
-  public static final f xUa;
   
   static
   {
-    AppMethodBeat.i(267194);
-    xUa = new f();
+    AppMethodBeat.i(334423);
+    BuT = new f();
     sessionId = "";
     query = "";
-    AppMethodBeat.o(267194);
+    AppMethodBeat.o(334423);
   }
   
-  public static void Lb(long paramLong)
-  {
-    AppMethodBeat.i(267188);
-    xTY = paramLong;
-    sessionId = String.valueOf(cm.bfE());
-    AppMethodBeat.o(267188);
-  }
-  
-  public static void Lc(long paramLong)
-  {
-    AppMethodBeat.i(267189);
-    dx localdx = new dx();
-    localdx.qZ(sessionId);
-    localdx.kd(xTY);
-    localdx.ke(2L);
-    localdx.ra("prev_done");
-    localdx.kf(xTZ);
-    localdx.rb("{\"feedid\":\"" + d.Fw(paramLong) + "\"}");
-    localdx.rc(String.valueOf(cm.bfE()));
-    localdx.bpa();
-    a((a)localdx);
-    AppMethodBeat.o(267189);
-  }
-  
-  public static void Ld(long paramLong)
-  {
-    AppMethodBeat.i(267190);
-    dx localdx = new dx();
-    localdx.qZ(sessionId);
-    localdx.kd(xTY);
-    localdx.ke(2L);
-    localdx.ra("prev_return");
-    localdx.kf(xTZ);
-    localdx.rb("{\"feedid\":\"" + d.Fw(paramLong) + "\"}");
-    localdx.rc(String.valueOf(cm.bfE()));
-    localdx.bpa();
-    a((a)localdx);
-    AppMethodBeat.o(267190);
-  }
-  
-  public static void Le(long paramLong)
-  {
-    AppMethodBeat.i(267192);
-    dx localdx = new dx();
-    localdx.qZ(sessionId);
-    localdx.kd(xTY);
-    localdx.ke(2L);
-    localdx.ra("prev_done");
-    localdx.kf(6L);
-    localdx.rb("{\"feedid\":\"" + d.Fw(paramLong) + "\";\"keyword\":\"" + query + "\"}");
-    localdx.rc(String.valueOf(cm.bfE()));
-    localdx.bpa();
-    a((a)localdx);
-    AppMethodBeat.o(267192);
-  }
-  
-  public static void Lf(long paramLong)
-  {
-    AppMethodBeat.i(267193);
-    dx localdx = new dx();
-    localdx.qZ(sessionId);
-    localdx.kd(xTY);
-    localdx.ke(2L);
-    localdx.ra("prev_return");
-    localdx.kf(6L);
-    localdx.rb("{\"feedid\":\"" + d.Fw(paramLong) + "\";\"keyword\":\"" + query + "\"}");
-    localdx.rc(String.valueOf(cm.bfE()));
-    localdx.bpa();
-    a((a)localdx);
-    AppMethodBeat.o(267193);
-  }
-  
-  public static long MR(int paramInt)
+  public static long Ou(int paramInt)
   {
     switch (paramInt)
     {
@@ -119,7 +48,7 @@ public final class f
     return 6L;
   }
   
-  public static String MS(int paramInt)
+  public static String Ov(int paramInt)
   {
     switch (paramInt)
     {
@@ -139,22 +68,108 @@ public final class f
     return "search_icon";
   }
   
+  public static void R(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(334417);
+    fh localfh = new fh();
+    localfh.pO(sessionId);
+    localfh.iGT = BuU;
+    localfh.iFe = 4L;
+    localfh.pP("feed_exposure");
+    localfh.iGV = Ou(paramInt);
+    localfh.pQ("{\"feedid\":\"" + d.hF(paramLong) + "\"}");
+    localfh.pR(String.valueOf(cn.bDw()));
+    localfh.bMH();
+    a((a)localfh);
+    AppMethodBeat.o(334417);
+  }
+  
   public static void a(a parama)
   {
-    AppMethodBeat.i(267191);
-    p.k(parama, "struct");
-    Object localObject = com.tencent.mm.plugin.finder.report.n.zWF;
-    localObject = com.tencent.mm.plugin.finder.report.n.getTAG();
+    AppMethodBeat.i(334389);
+    s.u(parama, "struct");
     StringBuilder localStringBuilder = new StringBuilder("report").append(parama.getId()).append(' ');
-    parama = parama.agI();
-    p.j(parama, "struct.toShowString()");
-    Log.i((String)localObject, kotlin.n.n.l(parama, "\r\n", " ", false));
-    AppMethodBeat.o(267191);
+    parama = parama.aIF();
+    s.s(parama, "struct.toShowString()");
+    Log.i("FinderGalleryReportLogic", n.bV(parama, "\r\n", " "));
+    AppMethodBeat.o(334389);
   }
   
   public static String getSessionId()
   {
     return sessionId;
+  }
+  
+  public static void nO(long paramLong)
+  {
+    AppMethodBeat.i(334322);
+    BuU = paramLong;
+    sessionId = String.valueOf(cn.bDw());
+    AppMethodBeat.o(334322);
+  }
+  
+  public static void nP(long paramLong)
+  {
+    AppMethodBeat.i(334331);
+    fh localfh = new fh();
+    localfh.pO(sessionId);
+    localfh.iGT = BuU;
+    localfh.iFe = 2L;
+    localfh.pP("prev_done");
+    localfh.iGV = BuV;
+    localfh.pQ("{\"feedid\":\"" + d.hF(paramLong) + "\"}");
+    localfh.pR(String.valueOf(cn.bDw()));
+    localfh.bMH();
+    a((a)localfh);
+    AppMethodBeat.o(334331);
+  }
+  
+  public static void nQ(long paramLong)
+  {
+    AppMethodBeat.i(334369);
+    fh localfh = new fh();
+    localfh.pO(sessionId);
+    localfh.iGT = BuU;
+    localfh.iFe = 2L;
+    localfh.pP("prev_return");
+    localfh.iGV = BuV;
+    localfh.pQ("{\"feedid\":\"" + d.hF(paramLong) + "\"}");
+    localfh.pR(String.valueOf(cn.bDw()));
+    localfh.bMH();
+    a((a)localfh);
+    AppMethodBeat.o(334369);
+  }
+  
+  public static void nR(long paramLong)
+  {
+    AppMethodBeat.i(334399);
+    fh localfh = new fh();
+    localfh.pO(sessionId);
+    localfh.iGT = BuU;
+    localfh.iFe = 2L;
+    localfh.pP("prev_done");
+    localfh.iGV = 6L;
+    localfh.pQ("{\"feedid\":\"" + d.hF(paramLong) + "\";\"keyword\":\"" + query + "\"}");
+    localfh.pR(String.valueOf(cn.bDw()));
+    localfh.bMH();
+    a((a)localfh);
+    AppMethodBeat.o(334399);
+  }
+  
+  public static void nS(long paramLong)
+  {
+    AppMethodBeat.i(334408);
+    fh localfh = new fh();
+    localfh.pO(sessionId);
+    localfh.iGT = BuU;
+    localfh.iFe = 2L;
+    localfh.pP("prev_return");
+    localfh.iGV = 6L;
+    localfh.pQ("{\"feedid\":\"" + d.hF(paramLong) + "\";\"keyword\":\"" + query + "\"}");
+    localfh.pR(String.valueOf(cn.bDw()));
+    localfh.bMH();
+    a((a)localfh);
+    AppMethodBeat.o(334408);
   }
 }
 

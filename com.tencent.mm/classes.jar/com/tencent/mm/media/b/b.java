@@ -1,34 +1,34 @@
 package com.tencent.mm.media.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/config/CodecConfigFlag;", "", "()V", "useSupportedEncoder", "", "getUseSupportedEncoder", "()Z", "setUseSupportedEncoder", "(Z)V", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/config/CodecConfigFlag;", "", "()V", "useSupportedEncoder", "", "getUseSupportedEncoder", "()Z", "setUseSupportedEncoder", "(Z)V", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static boolean kSe;
-  public static final b kSf;
+  public static final b nxK;
+  private static boolean nxL;
   
   static
   {
     AppMethodBeat.i(93517);
-    kSf = new b();
+    nxK = new b();
     AppMethodBeat.o(93517);
   }
   
-  public static boolean aTW()
+  public static boolean boA()
   {
-    return kSe;
+    return nxL;
   }
   
-  public static void fA(boolean paramBoolean)
+  public static void gk(boolean paramBoolean)
   {
-    kSe = paramBoolean;
+    nxL = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.b.b
  * JD-Core Version:    0.7.0.1
  */

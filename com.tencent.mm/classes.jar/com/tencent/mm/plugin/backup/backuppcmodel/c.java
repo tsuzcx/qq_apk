@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.backup.backuppcmodel;
 
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.g.b.c;
@@ -12,111 +11,110 @@ import com.tencent.mm.plugin.backup.g.b.d;
 import com.tencent.mm.plugin.backup.g.h.a;
 import com.tencent.mm.plugin.backup.g.j.a;
 import com.tencent.mm.plugin.backup.i.w;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.afx;
+import com.tencent.mm.protocal.protobuf.chs;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.Arrays;
 import java.util.LinkedList;
 
 public final class c
 {
-  private static int kQn = 2;
-  private static boolean rNH = false;
-  private MTimerHandler rNG;
-  final i rNK;
-  private final i rNL;
-  b.c rNP;
-  private final j.a rNQ;
-  public int rQh;
-  public String rQi;
-  String rQj;
-  int rQk;
-  boolean rQl;
-  private com.tencent.mm.cd.b rQm;
-  public int rQn;
-  public boolean rQo;
-  private final b.d rQp;
-  public final h.a rQq;
+  private static int nrQ = 2;
+  private static boolean uYV = false;
+  private MTimerHandler uYU;
+  final com.tencent.mm.am.h uYY;
+  private final com.tencent.mm.am.h uYZ;
+  b.c uZd;
+  private final j.a uZe;
+  boolean vbA;
+  private com.tencent.mm.bx.b vbB;
+  public int vbC;
+  public boolean vbD;
+  private final b.d vbE;
+  public final h.a vbF;
+  public int vbw;
+  public String vbx;
+  String vby;
+  int vbz;
   
   public c()
   {
     AppMethodBeat.i(21569);
-    this.rQh = 0;
-    this.rQo = true;
-    this.rNK = new i()
+    this.vbw = 0;
+    this.vbD = true;
+    this.uYY = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
         AppMethodBeat.i(21558);
-        bh.aGY().b(595, c.a(c.this));
+        bh.aZW().b(595, c.a(c.this));
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
           Log.i("MicroMsg.BackupPcProcessMgr", "onGetConnectInfoEnd Error: other error[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-          h.IzE.idkeyStat(400L, 111L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 111L, 1L, false);
           if ((paramAnonymousInt1 == 4) && (paramAnonymousInt2 == -2011)) {
             Log.e("MicroMsg.BackupPcProcessMgr", "onGetConnectInfoEnd Error: INVALID URL");
           }
-          b.ctm().crZ().rKS = -5;
-          b.ctm().cto().Bg(-5);
+          b.cVW().cUJ().uWg = -5;
+          b.cVW().cVY().Bt(-5);
           AppMethodBeat.o(21558);
           return;
         }
-        paramAnonymousString = ((com.tencent.mm.plugin.backup.g.e)paramAnonymousq).ctU();
-        bh.beI();
-        if (!Util.nullAsNil((String)com.tencent.mm.model.c.aHp().b(2, null)).equals(paramAnonymousString.RNz))
+        paramAnonymousString = ((com.tencent.mm.plugin.backup.g.e)paramAnonymousp).cWE();
+        bh.bCz();
+        if (!Util.nullAsNil((String)com.tencent.mm.model.c.ban().d(2, null)).equals(paramAnonymousString.YKN))
         {
           Log.e("MicroMsg.BackupPcProcessMgr", "onGetConnectInfoEnd Error: not the same account");
-          b.ctm().crZ().rKS = -5;
-          b.ctm().cto().Bg(-5);
-          h.IzE.idkeyStat(400L, 112L, 1L, false);
+          b.cVW().cUJ().uWg = -5;
+          b.cVW().cVY().Bt(-5);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 112L, 1L, false);
           AppMethodBeat.o(21558);
           return;
         }
-        if ((paramAnonymousString.RNx == null) || (paramAnonymousString.RNx.size() <= 0) || (paramAnonymousString.RNx.getFirst() == null))
+        if ((paramAnonymousString.YKL == null) || (paramAnonymousString.YKL.size() <= 0) || (paramAnonymousString.YKL.getFirst() == null))
         {
-          paramAnonymousInt1 = paramAnonymousString.RNw;
-          if (paramAnonymousString.RNx == null) {}
-          for (paramAnonymousString = "null";; paramAnonymousString = paramAnonymousString.RNx.size())
+          paramAnonymousInt1 = paramAnonymousString.YKK;
+          if (paramAnonymousString.YKL == null) {}
+          for (paramAnonymousString = "null";; paramAnonymousString = paramAnonymousString.YKL.size())
           {
             Log.e("MicroMsg.BackupPcProcessMgr", "onGetConnectInfoEnd AddrList is empty! AddrCount[%d], AddrList size[%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousString });
-            b.ctm().crZ().rKS = -5;
-            b.ctm().cto().Bg(-5);
-            h.IzE.idkeyStat(400L, 113L, 1L, false);
+            b.cVW().cUJ().uWg = -5;
+            b.cVW().cVY().Bt(-5);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 113L, 1L, false);
             AppMethodBeat.o(21558);
             return;
           }
         }
-        Object localObject = (adp)paramAnonymousString.RNx.getFirst();
-        paramAnonymousq = ((adp)localObject).Slg;
-        paramAnonymousInt1 = ((Integer)((adp)localObject).SpS.getFirst()).intValue();
+        Object localObject = (afx)paramAnonymousString.YKL.getFirst();
+        paramAnonymousp = ((afx)localObject).Zjq;
+        paramAnonymousInt1 = ((Integer)((afx)localObject).ZoN.getFirst()).intValue();
         localObject = c.this;
-        ((c)localObject).rQi = paramAnonymousString.RNA;
-        ((c)localObject).rQj = paramAnonymousq;
-        ((c)localObject).rQk = paramAnonymousInt1;
-        Log.i("MicroMsg.BackupPcProcessMgr", "onGetConnectInfoEnd type:%d, scene:%d, wifiName:%s, ip:%s, port:%d", new Object[] { Integer.valueOf(paramAnonymousString.rWu), Integer.valueOf(paramAnonymousString.CPw), paramAnonymousString.RNA, paramAnonymousq, Integer.valueOf(paramAnonymousInt1) });
-        b.ctm().rKK = paramAnonymousString.ID;
-        b.ctm().rKL = paramAnonymousString.RNF;
-        b.ctm().rKM = paramAnonymousString.RNG;
-        b.ctm().rKQ = paramAnonymousString.RMR.Tkb.UH;
+        ((c)localObject).vbx = paramAnonymousString.YKO;
+        ((c)localObject).vby = paramAnonymousp;
+        ((c)localObject).vbz = paramAnonymousInt1;
+        Log.i("MicroMsg.BackupPcProcessMgr", "onGetConnectInfoEnd type:%d, scene:%d, wifiName:%s, ip:%s, port:%d", new Object[] { Integer.valueOf(paramAnonymousString.vhJ), Integer.valueOf(paramAnonymousString.IJG), paramAnonymousString.YKO, paramAnonymousp, Integer.valueOf(paramAnonymousInt1) });
+        b.cVW().uVY = paramAnonymousString.vgy;
+        b.cVW().uVZ = paramAnonymousString.YKT;
+        b.cVW().uWa = paramAnonymousString.YKU;
+        b.cVW().uWe = paramAnonymousString.YKf.aaxD.Op;
         c.b(c.this);
         AppMethodBeat.o(21558);
       }
     };
-    this.rNL = new i()
+    this.uYZ = new com.tencent.mm.am.h()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
       {
         AppMethodBeat.i(21560);
-        c.cjY();
-        h.IzE.a(13736, new Object[] { Integer.valueOf(0), c.e(c.this), g.eH(MMApplicationContext.getContext()), Integer.valueOf(0), Integer.valueOf(b.ctm().ctn().rQn) });
+        c.cth();
+        com.tencent.mm.plugin.report.service.h.OAn.b(13736, new Object[] { Integer.valueOf(0), c.e(c.this), g.fC(MMApplicationContext.getContext()), Integer.valueOf(0), Integer.valueOf(b.cVW().cVX().vbC) });
         com.tencent.mm.plugin.backup.g.b.b(1, c.f(c.this));
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
         {
@@ -125,33 +123,33 @@ public final class c
           {
           case -2: 
           default: 
-            h.IzE.idkeyStat(400L, 116L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 116L, 1L, false);
           }
           for (;;)
           {
-            h.IzE.a(13737, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(c.g(c.this)) });
-            b.ctm().crZ().rKS = -5;
-            b.ctm().cto().Bg(-5);
+            com.tencent.mm.plugin.report.service.h.OAn.b(13737, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(c.g(c.this)) });
+            b.cVW().cUJ().uWg = -5;
+            b.cVW().cVY().Bt(-5);
             AppMethodBeat.o(21560);
             return;
-            h.IzE.idkeyStat(400L, 114L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 114L, 1L, false);
             continue;
-            h.IzE.idkeyStat(400L, 115L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 115L, 1L, false);
           }
         }
-        paramAnonymousString = (com.tencent.mm.plugin.backup.g.a)paramAnonymousq;
+        paramAnonymousString = (com.tencent.mm.plugin.backup.g.a)paramAnonymousp;
         boolean bool1;
         boolean bool2;
         label319:
         boolean bool3;
-        if ((paramAnonymousString.rRf.rWv & com.tencent.mm.plugin.backup.b.c.rKH) == 0)
+        if ((paramAnonymousString.vcu.vhK & com.tencent.mm.plugin.backup.b.c.uVV) == 0)
         {
           bool1 = false;
-          if ((paramAnonymousString.rRf.rWv & com.tencent.mm.plugin.backup.b.c.rKI) != 0) {
+          if ((paramAnonymousString.vcu.vhK & com.tencent.mm.plugin.backup.b.c.uVW) != 0) {
             break label436;
           }
           bool2 = false;
-          if ((paramAnonymousString.rRf.rWv & com.tencent.mm.plugin.backup.b.c.rKJ) != 0) {
+          if ((paramAnonymousString.vcu.vhK & com.tencent.mm.plugin.backup.b.c.uVX) != 0) {
             break label442;
           }
           bool3 = false;
@@ -160,7 +158,7 @@ public final class c
           if (!bool3) {
             break label466;
           }
-          if (paramAnonymousString.rRf.rWx != null) {
+          if (paramAnonymousString.vcu.vhM != null) {
             break label448;
           }
           paramAnonymousString = null;
@@ -172,8 +170,8 @@ public final class c
         }
         for (;;)
         {
-          b.ctm().cto().rQC = bool1;
-          b.ctm().cto().rQD = bool2;
+          b.cVW().cVY().vbR = bool1;
+          b.cVW().cVY().vbS = bool2;
           AppMethodBeat.o(21560);
           return;
           bool1 = true;
@@ -185,7 +183,7 @@ public final class c
           bool3 = true;
           break label336;
           label448:
-          paramAnonymousString = paramAnonymousString.rRf.rWx;
+          paramAnonymousString = paramAnonymousString.vcu.vhM;
           break label388;
           label459:
           Log.e("MicroMsg.BackupPcProcessMgr", "onBackupAuthEnd pcSupportReconnect but token is null!");
@@ -194,7 +192,7 @@ public final class c
         }
       }
     };
-    this.rQp = new b.d()
+    this.vbE = new b.d()
     {
       public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, byte[] paramAnonymousArrayOfByte, int paramAnonymousInt2)
       {
@@ -209,7 +207,7 @@ public final class c
           }
           if (10011 == paramAnonymousInt1)
           {
-            paramAnonymousInt1 = b.ctm().crZ().rKS;
+            paramAnonymousInt1 = b.cVW().cUJ().uWg;
             Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify local disconnect, backupPcState[%d]", new Object[] { Integer.valueOf(paramAnonymousInt1) });
             switch (paramAnonymousInt1)
             {
@@ -222,7 +220,7 @@ public final class c
           return;
           i = paramAnonymousArrayOfByte.length;
           break;
-          if (!c.rNH)
+          if (!c.ayB())
           {
             if (c.c(c.this) != null)
             {
@@ -233,12 +231,12 @@ public final class c
             AppMethodBeat.o(21561);
             return;
           }
-          b.ctm().csJ().stop();
-          b.ctm().crZ().rKS = -4;
-          b.ctm().cto().Bg(-4);
+          b.cVW().cVt().stop();
+          b.cVW().cUJ().uWg = -4;
+          b.cVW().cVY().Bt(-4);
           AppMethodBeat.o(21561);
           return;
-          b.ctm().csJ().stop();
+          b.cVW().cVt().stop();
         }
         label251:
         com.tencent.mm.plugin.backup.i.b localb;
@@ -250,8 +248,8 @@ public final class c
           try
           {
             localb.parseFrom(paramAnonymousArrayOfByte);
-            Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify receive commandReq, command[%d]", new Object[] { Integer.valueOf(localb.rVj) });
-            i = localb.rVj;
+            Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify receive commandReq, command[%d]", new Object[] { Integer.valueOf(localb.vgz) });
+            i = localb.vgz;
             switch (i)
             {
             }
@@ -260,15 +258,15 @@ public final class c
           {
             Log.printErrStackTrace("MicroMsg.BackupPcProcessMgr", paramAnonymousArrayOfByte, "onBackupPcProcessMgrNotify buf to BackupCommandRequest error.", new Object[0]);
             continue;
-            bh.beI();
-            if (((Boolean)com.tencent.mm.model.c.aHp().get(ar.a.VnC, Boolean.FALSE)).booleanValue()) {
+            bh.bCz();
+            if (((Boolean)com.tencent.mm.model.c.ban().get(at.a.acOX, Boolean.FALSE)).booleanValue()) {
               continue;
             }
             Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify not backuping, start new backup.");
             c.a(c.this, 5, paramAnonymousInt2);
             continue;
-            b.ctm();
-            paramAnonymousArrayOfByte = b.cse().getString("BACKUP_PC_CHOOSE_SESSION", null);
+            b.cVW();
+            paramAnonymousArrayOfByte = b.cUO().getString("BACKUP_PC_CHOOSE_SESSION", null);
             if (paramAnonymousArrayOfByte != null) {
               continue;
             }
@@ -276,41 +274,41 @@ public final class c
             c.a(c.this, 5, paramAnonymousInt2);
             continue;
             Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify start continue Backup.");
-            h.IzE.idkeyStat(400L, 29L, 1L, false);
-            c.this.rQh = 3;
-            paramAnonymousArrayOfByte = new LinkedList(Arrays.asList(g.fe(paramAnonymousArrayOfByte, ",")));
-            b.ctm().cto().init();
-            b.ctm().cto().H(paramAnonymousArrayOfByte);
-            c.fr(5, paramAnonymousInt2);
-            b.ctm().cto().crX();
-            c.this.EK(6);
-            paramAnonymousArrayOfByte = b.ctm().cto();
-            com.tencent.mm.plugin.backup.h.d.cua().cud();
-            paramAnonymousArrayOfByte.HI(paramAnonymousArrayOfByte.rNX.size());
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 29L, 1L, false);
+            c.this.vbw = 3;
+            paramAnonymousArrayOfByte = new LinkedList(Arrays.asList(g.fv(paramAnonymousArrayOfByte, ",")));
+            b.cVW().cVY().init();
+            b.cVW().cVY().K(paramAnonymousArrayOfByte);
+            c.gk(5, paramAnonymousInt2);
+            b.cVW().cVY().cUH();
+            c.this.Fl(6);
+            paramAnonymousArrayOfByte = b.cVW().cVY();
+            com.tencent.mm.plugin.backup.h.d.cWK().cWN();
+            paramAnonymousArrayOfByte.jZ(paramAnonymousArrayOfByte.uZl.size());
             continue;
             c.b(c.this, 3, paramAnonymousInt2);
             continue;
-            bh.beI();
-            if (((Boolean)com.tencent.mm.model.c.aHp().get(ar.a.VnD, Boolean.FALSE)).booleanValue()) {
+            bh.bCz();
+            if (((Boolean)com.tencent.mm.model.c.ban().get(at.a.acOY, Boolean.FALSE)).booleanValue()) {
               continue;
             }
             Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify not recovering, start new recover.");
             c.b(c.this, 7, paramAnonymousInt2);
             continue;
-            b.ctm().ctp();
-            if (d.csN()) {
+            b.cVW().cVZ();
+            if (d.cVx()) {
               continue;
             }
             Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify MsgDataIdList not exist, start new recover.");
             c.b(c.this, 7, paramAnonymousInt2);
             continue;
             Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify continue Recover.");
-            h.IzE.idkeyStat(400L, 30L, 1L, false);
-            c.this.rQh = 4;
-            b.ctm().ctp().init();
-            c.fr(7, paramAnonymousInt2);
-            b.ctm().cto().crX();
-            c.this.EK(8);
+            com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 30L, 1L, false);
+            c.this.vbw = 4;
+            b.cVW().cVZ().init();
+            c.gk(7, paramAnonymousInt2);
+            b.cVW().cVY().cUH();
+            c.this.Fl(8);
             continue;
             AppMethodBeat.o(21561);
           }
@@ -318,37 +316,37 @@ public final class c
             continue;
           }
           Log.i("MicroMsg.BackupPcProcessMgr", "onBackupPcProcessMgrNotify receive cancelReq");
-          h.IzE.a(13737, new Object[] { Integer.valueOf(5), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(b.ctm().ctn().rQn) });
-          b.ctm().crZ().rKS = -100;
-          b.ctm().cto().Bg(-100);
+          com.tencent.mm.plugin.report.service.h.OAn.b(13737, new Object[] { Integer.valueOf(5), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(b.cVW().cVX().vbC) });
+          b.cVW().cUJ().uWg = -100;
+          b.cVW().cVY().Bt(-100);
           AppMethodBeat.o(21561);
           return;
           c.a(c.this, 1, paramAnonymousInt2);
         }
       }
     };
-    this.rNQ = new j.a()
+    this.uZe = new j.a()
     {
-      public final void EG(int paramAnonymousInt)
+      public final void Fh(int paramAnonymousInt)
       {
-        AppMethodBeat.i(288270);
-        int i = b.ctm().crZ().rKS;
+        AppMethodBeat.i(300741);
+        int i = b.cVW().cUJ().uWg;
         if (paramAnonymousInt == 1)
         {
           if (((1 == c.h(c.this)) || (3 == c.h(c.this))) && (i == 14))
           {
             Log.i("MicroMsg.BackupPcProcessMgr", "speedCallback is weak connect now.");
-            b.ctm().crZ().rKS = 4;
-            b.ctm().cto().Bg(4);
-            AppMethodBeat.o(288270);
+            b.cVW().cUJ().uWg = 4;
+            b.cVW().cVY().Bt(4);
+            AppMethodBeat.o(300741);
             return;
           }
           if (((2 == c.h(c.this)) || (4 == c.h(c.this))) && (i == 23))
           {
             Log.i("MicroMsg.BackupPcProcessMgr", "speedCallback is weak connect now.");
-            b.ctm().crZ().rKS = 4;
-            b.ctm().ctp().EB(4);
-            AppMethodBeat.o(288270);
+            b.cVW().cUJ().uWg = 4;
+            b.cVW().cVZ().Fc(4);
+            AppMethodBeat.o(300741);
           }
         }
         else if ((paramAnonymousInt == 0) && (i == 4))
@@ -356,144 +354,144 @@ public final class c
           Log.i("MicroMsg.BackupPcProcessMgr", "speedCallback is normal speed now.");
           if ((1 == c.h(c.this)) || (3 == c.h(c.this)))
           {
-            b.ctm().crZ().rKS = 14;
-            b.ctm().cto().Bg(14);
-            AppMethodBeat.o(288270);
+            b.cVW().cUJ().uWg = 14;
+            b.cVW().cVY().Bt(14);
+            AppMethodBeat.o(300741);
             return;
           }
           if ((2 == c.h(c.this)) || (4 == c.h(c.this)))
           {
-            b.ctm().crZ().rKS = 23;
-            b.ctm().ctp().EB(23);
+            b.cVW().cUJ().uWg = 23;
+            b.cVW().cVZ().Fc(23);
           }
         }
-        AppMethodBeat.o(288270);
+        AppMethodBeat.o(300741);
       }
       
-      public final void csW()
+      public final void cVG()
       {
-        AppMethodBeat.i(288269);
-        int i = b.ctm().ctn().rQh;
+        AppMethodBeat.i(300739);
+        int i = b.cVW().cVX().vbw;
         if ((1 == i) || (3 == i))
         {
-          b.ctm().cto().Bg(b.ctm().crZ().rKS);
-          AppMethodBeat.o(288269);
+          b.cVW().cVY().Bt(b.cVW().cUJ().uWg);
+          AppMethodBeat.o(300739);
           return;
         }
         if ((2 == i) || (4 == i)) {
-          b.ctm().ctp().EB(b.ctm().crZ().rKS);
+          b.cVW().cVZ().Fc(b.cVW().cUJ().uWg);
         }
-        AppMethodBeat.o(288269);
+        AppMethodBeat.o(300739);
       }
       
-      public final void csX()
+      public final void cVH()
       {
-        AppMethodBeat.i(288271);
-        int i = b.ctm().crZ().rKS;
+        AppMethodBeat.i(300742);
+        int i = b.cVW().cUJ().uWg;
         Log.e("MicroMsg.BackupPcProcessMgr", "speedOverTime callback, backupState[%d]", new Object[] { Integer.valueOf(i) });
-        int j = b.ctm().ctn().rQh;
+        int j = b.cVW().cVX().vbw;
         if (((1 == j) || (3 == j)) && ((i == 14) || (i == 4)))
         {
-          b.ctm().csJ().stop();
-          b.ctm().cto().cancel(true);
-          h.IzE.idkeyStat(400L, 9L, 1L, false);
-          b.ctm().cto().EL(18);
-          b.ctm().crZ().rKS = -4;
-          b.ctm().cto().Bg(-4);
-          AppMethodBeat.o(288271);
+          b.cVW().cVt().stop();
+          b.cVW().cVY().cancel(true);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 9L, 1L, false);
+          b.cVW().cVY().Fm(18);
+          b.cVW().cUJ().uWg = -4;
+          b.cVW().cVY().Bt(-4);
+          AppMethodBeat.o(300742);
           return;
         }
         if (((2 == j) || (4 == j)) && ((i == 23) || (i == 4)))
         {
-          b.ctm().csJ().stop();
-          b.ctm().ctp().a(true, false, -4);
-          h.IzE.idkeyStat(400L, 17L, 1L, false);
-          b.ctm().ctp().EL(18);
+          b.cVW().cVt().stop();
+          b.cVW().cVZ().a(true, false, -4);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 17L, 1L, false);
+          b.cVW().cVZ().Fm(18);
         }
-        AppMethodBeat.o(288271);
+        AppMethodBeat.o(300742);
       }
     };
-    this.rQq = new h.a()
+    this.vbF = new h.a()
     {
-      public final void ctt()
+      public final void cWd()
       {
-        AppMethodBeat.i(284589);
+        AppMethodBeat.i(300737);
         Log.i("MicroMsg.BackupPcProcessMgr", "reconnectCallback callback to reconnect");
         int i;
-        if (b.ctm().crZ().rKS != 5)
+        if (b.cVW().cUJ().uWg != 5)
         {
-          b.ctm().crZ().rKS = 5;
-          i = b.ctm().ctn().rQh;
+          b.cVW().cUJ().uWg = 5;
+          i = b.cVW().cVX().vbw;
           if ((1 != i) && (3 != i)) {
             break label80;
           }
-          b.ctm().cto().Bg(5);
+          b.cVW().cVY().Bt(5);
         }
         for (;;)
         {
-          c.this.EK(9);
-          AppMethodBeat.o(284589);
+          c.this.Fl(9);
+          AppMethodBeat.o(300737);
           return;
           label80:
           if ((2 == i) || (4 == i)) {
-            b.ctm().ctp().EB(5);
+            b.cVW().cVZ().Fc(5);
           }
         }
       }
       
-      public final void ctu()
+      public final void cWe()
       {
-        AppMethodBeat.i(284590);
-        int i = c.this.rQh;
+        AppMethodBeat.i(300740);
+        int i = c.this.vbw;
         Log.i("MicroMsg.BackupPcProcessMgr", "reconnectCallback reconnectFail, commandMode[%d]", new Object[] { Integer.valueOf(i) });
         if ((1 == i) || (3 == i))
         {
-          b.ctm().cto();
-          e.ctx();
-          b.ctm().cto().cancel(true);
-          b.ctm().csJ().stop();
-          b.ctm().crZ().rKS = -4;
-          b.ctm().cto().Bg(-4);
-          h.IzE.idkeyStat(400L, 9L, 1L, false);
-          b.ctm().cto().EL(3);
-          AppMethodBeat.o(284590);
+          b.cVW().cVY();
+          e.cWh();
+          b.cVW().cVY().cancel(true);
+          b.cVW().cVt().stop();
+          b.cVW().cUJ().uWg = -4;
+          b.cVW().cVY().Bt(-4);
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 9L, 1L, false);
+          b.cVW().cVY().Fm(3);
+          AppMethodBeat.o(300740);
           return;
         }
         if ((2 == i) || (4 == i))
         {
-          b.ctm().ctp();
-          d.ctv();
-          b.ctm().ctp().a(true, false, -4);
-          b.ctm().csJ().stop();
-          h.IzE.idkeyStat(400L, 17L, 1L, false);
-          b.ctm().ctp().EL(3);
+          b.cVW().cVZ();
+          d.cWf();
+          b.cVW().cVZ().a(true, false, -4);
+          b.cVW().cVt().stop();
+          com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(400L, 17L, 1L, false);
+          b.cVW().cVZ().Fm(3);
         }
-        AppMethodBeat.o(284590);
+        AppMethodBeat.o(300740);
       }
     };
-    this.rNP = new b.c()
+    this.uZd = new b.c()
     {
-      public final void csV()
+      public final void cVF()
       {
-        AppMethodBeat.i(279935);
+        AppMethodBeat.i(300738);
         Log.i("MicroMsg.BackupPcProcessMgr", "engineStopCallback ");
-        com.tencent.mm.plugin.backup.g.b.ctF();
-        b.ctm().csb();
-        AppMethodBeat.o(279935);
+        com.tencent.mm.plugin.backup.g.b.cWp();
+        b.cVW().cUL();
+        AppMethodBeat.o(300738);
       }
     };
     AppMethodBeat.o(21569);
   }
   
-  public static void csS()
+  public static void cVC()
   {
     AppMethodBeat.i(21574);
     Log.i("MicroMsg.BackupPcProcessMgr", "backupSendCancelRequest.");
     com.tencent.mm.plugin.backup.i.a locala = new com.tencent.mm.plugin.backup.i.a();
-    locala.ID = b.ctm().rKK;
+    locala.vgy = b.cVW().uVY;
     try
     {
-      com.tencent.mm.plugin.backup.g.b.O(locala.toByteArray(), 5);
+      com.tencent.mm.plugin.backup.g.b.N(locala.toByteArray(), 5);
       AppMethodBeat.o(21574);
       return;
     }
@@ -504,24 +502,24 @@ public final class c
     }
   }
   
-  private void ctr()
+  private void cWb()
   {
     AppMethodBeat.i(21570);
-    b.ctm().csJ().cQ(this.rQj, this.rQk);
+    b.cVW().cVt().ds(this.vby, this.vbz);
     com.tencent.mm.plugin.backup.g.b.clear();
-    com.tencent.mm.plugin.backup.g.b.a(1, this.rNL);
-    com.tencent.mm.plugin.backup.g.a locala = new com.tencent.mm.plugin.backup.g.a(b.ctm().rKL, b.ctm().rKM, com.tencent.mm.plugin.backup.b.d.csd(), b.ctm().rKK, 0, 1, false);
-    locala.E(true, true);
-    locala.rRe.rWw = 1;
-    locala.ctM();
+    com.tencent.mm.plugin.backup.g.b.a(1, this.uYZ);
+    com.tencent.mm.plugin.backup.g.a locala = new com.tencent.mm.plugin.backup.g.a(b.cVW().uVZ, b.cVW().uWa, com.tencent.mm.plugin.backup.b.d.cUN(), b.cVW().uVY, 0, 1, false);
+    locala.K(true, true);
+    locala.vct.vhL = 1;
+    locala.cWw();
     Log.i("MicroMsg.BackupPcProcessMgr", "tryConnect start backupConnectTimerHandler.");
-    if (this.rNG == null) {
-      this.rNG = new MTimerHandler(new MTimerHandler.CallBack()
+    if (this.uYU == null) {
+      this.uYU = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(21559);
-          if (!c.rNH)
+          if (!c.ayB())
           {
             Log.e("MicroMsg.BackupPcProcessMgr", "tryConnect overtime failed.");
             if (c.c(c.this) != null) {
@@ -534,27 +532,27 @@ public final class c
         }
       }, false);
     }
-    this.rNG.startTimer(3000L);
+    this.uYU.startTimer(3000L);
     AppMethodBeat.o(21570);
   }
   
-  public static String cts()
+  public static String cWc()
   {
     AppMethodBeat.i(21571);
-    String str = com.tencent.mm.plugin.backup.g.b.ctI();
+    String str = com.tencent.mm.plugin.backup.g.b.cWs();
     AppMethodBeat.o(21571);
     return str;
   }
   
-  public static void fr(int paramInt1, int paramInt2)
+  public static void gk(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(21573);
     Log.i("MicroMsg.BackupPcProcessMgr", "backupSendCommandResponse cmd:%d", new Object[] { Integer.valueOf(paramInt1) });
     com.tencent.mm.plugin.backup.i.c localc = new com.tencent.mm.plugin.backup.i.c();
-    localc.rVj = paramInt1;
+    localc.vgz = paramInt1;
     try
     {
-      com.tencent.mm.plugin.backup.g.b.F(localc.toByteArray(), 18, paramInt2);
+      com.tencent.mm.plugin.backup.g.b.D(localc.toByteArray(), 18, paramInt2);
       AppMethodBeat.o(21573);
       return;
     }
@@ -565,18 +563,18 @@ public final class c
     }
   }
   
-  public final void EK(int paramInt)
+  public final void Fl(int paramInt)
   {
     AppMethodBeat.i(21572);
     Log.i("MicroMsg.BackupPcProcessMgr", "backupSendCommandRequest cmd:%d", new Object[] { Integer.valueOf(paramInt) });
     com.tencent.mm.plugin.backup.i.b localb = new com.tencent.mm.plugin.backup.i.b();
-    localb.rVj = paramInt;
+    localb.vgz = paramInt;
     if (paramInt == 9) {
-      localb.rVk = this.rQm;
+      localb.vgA = this.vbB;
     }
     try
     {
-      com.tencent.mm.plugin.backup.g.b.O(localb.toByteArray(), 17);
+      com.tencent.mm.plugin.backup.g.b.N(localb.toByteArray(), 17);
       AppMethodBeat.o(21572);
       return;
     }
@@ -587,15 +585,15 @@ public final class c
     }
   }
   
-  public final void a(boolean paramBoolean, com.tencent.mm.cd.b paramb)
+  public final void a(boolean paramBoolean, com.tencent.mm.bx.b paramb)
   {
-    this.rQl = paramBoolean;
-    this.rQm = paramb;
+    this.vbA = paramBoolean;
+    this.vbB = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.c
  * JD-Core Version:    0.7.0.1
  */

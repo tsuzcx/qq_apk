@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public abstract interface o
 {
-  public abstract void F(boolean paramBoolean);
+  public abstract void J(boolean paramBoolean);
   
   public abstract void a(Context paramContext, h paramh);
   
@@ -15,9 +15,9 @@ public abstract interface o
   
   public abstract void b(a parama);
   
-  public abstract boolean bS();
-  
   public abstract boolean c(j paramj);
+  
+  public abstract boolean cL();
   
   public abstract boolean d(j paramj);
   
@@ -36,7 +36,7 @@ public abstract interface o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.o
  * JD-Core Version:    0.7.0.1
  */

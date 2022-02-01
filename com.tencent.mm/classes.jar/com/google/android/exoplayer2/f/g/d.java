@@ -7,19 +7,19 @@ import java.util.List;
 
 final class d
 {
-  String ayt;
   int backgroundColor;
-  int bmA;
-  int bmB;
-  int bmC;
-  int bmD;
-  Layout.Alignment bmF;
-  int bmx;
-  boolean bmy;
-  boolean bmz;
-  String bnb;
-  List<String> bnc;
-  String bnd;
+  String cui;
+  Layout.Alignment dgA;
+  String dgW;
+  List<String> dgX;
+  String dgY;
+  int dgs;
+  boolean dgt;
+  boolean dgu;
+  int dgv;
+  int dgw;
+  int dgx;
+  int dgy;
   String fontFamily;
   float fontSize;
   int italic;
@@ -27,19 +27,19 @@ final class d
   public d()
   {
     AppMethodBeat.i(92891);
-    this.ayt = "";
-    this.bnb = "";
-    this.bnc = Collections.emptyList();
-    this.bnd = "";
+    this.cui = "";
+    this.dgW = "";
+    this.dgX = Collections.emptyList();
+    this.dgY = "";
     this.fontFamily = null;
-    this.bmy = false;
-    this.bmz = false;
-    this.bmA = -1;
-    this.bmB = -1;
-    this.bmC = -1;
+    this.dgt = false;
+    this.dgu = false;
+    this.dgv = -1;
+    this.dgw = -1;
+    this.dgx = -1;
     this.italic = -1;
-    this.bmD = -1;
-    this.bmF = null;
+    this.dgy = -1;
+    this.dgA = null;
     AppMethodBeat.o(92891);
   }
   
@@ -60,13 +60,13 @@ final class d
     return -1;
   }
   
-  public final int uv()
+  public final int TY()
   {
     int j = 0;
-    if ((this.bmC == -1) && (this.italic == -1)) {
+    if ((this.dgx == -1) && (this.italic == -1)) {
       return -1;
     }
-    if (this.bmC == 1) {}
+    if (this.dgx == 1) {}
     for (int i = 1;; i = 0)
     {
       if (this.italic == 1) {

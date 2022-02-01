@@ -9,9 +9,9 @@ public enum c
   static
   {
     AppMethodBeat.i(131528);
-    rAa = new c("NORMAL", 0, 0);
-    rAb = new c("BOLD", 1, 1);
-    rAc = new c[] { rAa, rAb };
+    uLr = new c("NORMAL", 0, 0);
+    uLs = new c("BOLD", 1, 1);
+    uLt = new c[] { uLr, uLs };
     AppMethodBeat.o(131528);
   }
   
@@ -20,25 +20,23 @@ public enum c
     this.style = paramInt;
   }
   
-  public static c anE(String paramString)
+  public static c ahc(String paramString)
   {
     AppMethodBeat.i(131527);
-    paramString = d.h(paramString, c.class);
-    c localc = rAa;
-    if (paramString == null) {
-      paramString = localc;
+    c localc1 = (c)d.l(paramString, c.class);
+    c localc2 = uLr;
+    paramString = localc1;
+    if (localc1 == null) {
+      paramString = localc2;
     }
-    for (;;)
-    {
-      paramString = (c)paramString;
-      AppMethodBeat.o(131527);
-      return paramString;
-    }
+    paramString = (c)paramString;
+    AppMethodBeat.o(131527);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e.c
  * JD-Core Version:    0.7.0.1
  */

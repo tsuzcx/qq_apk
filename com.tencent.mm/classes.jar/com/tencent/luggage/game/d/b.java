@@ -1,10 +1,10 @@
 package com.tencent.luggage.game.d;
 
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 
 public class b
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "logInJava";

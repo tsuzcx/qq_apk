@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public final class c
 {
-  public static boolean fnc = false;
+  public static boolean hrn = false;
   
   public static void a(int paramInt, byte[] paramArrayOfByte, byte[][] paramArrayOfByte1)
   {
@@ -76,7 +76,7 @@ public final class c
         paramInt1 = 0;
         while (paramInt1 < j)
         {
-          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), fnc);
+          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), hrn);
           arrayOfByte1[(paramInt1 * 2)] = arrayOfByte2[0];
           arrayOfByte1[(paramInt1 * 2 + 1)] = arrayOfByte2[1];
           paramInt1 += 1;
@@ -94,7 +94,7 @@ public final class c
     paramInt1 = i;
     while (paramInt1 < paramInt2)
     {
-      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], fnc) / 256));
+      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], hrn) / 256));
       paramInt1 += 1;
     }
     AppMethodBeat.o(136757);
@@ -144,16 +144,16 @@ public final class c
     }
   }
   
-  public static void adw()
+  public static void aFv()
   {
     AppMethodBeat.i(136756);
     if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
     {
-      fnc = true;
+      hrn = true;
       AppMethodBeat.o(136756);
       return;
     }
-    fnc = false;
+    hrn = false;
     AppMethodBeat.o(136756);
   }
   
@@ -250,7 +250,7 @@ public final class c
         b2 = paramArrayOfByte[(paramInt1 * 2 + 1)];
         byte b3 = paramArrayOfByte[(paramInt1 * 2 + 2)];
         byte b4 = paramArrayOfByte[(paramInt1 * 2 + 3)];
-        boolean bool = fnc;
+        boolean bool = hrn;
         paramInt3 = a.a(b1, b2, bool);
         i = a.a(b3, b4, bool);
         byte[] arrayOfByte2 = a.getBytes((short)(paramInt3 / 2 + i / 2), bool);

@@ -14,10 +14,10 @@ final class VideoTextureView$2
     AppMethodBeat.i(134065);
     try
     {
-      if ((this.pDF != null) && (this.pDF.isValid()))
+      if ((this.sIR != null) && (this.sIR.isValid()))
       {
-        Log.i("MicroMsg.VideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.Ryh.hashCode()), Integer.valueOf(this.pDF.hashCode()) });
-        this.pDF.release();
+        Log.i("MicroMsg.VideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.YuD.hashCode()), Integer.valueOf(this.sIR.hashCode()) });
+        this.sIR.release();
       }
       AppMethodBeat.o(134065);
       return;
@@ -31,7 +31,7 @@ final class VideoTextureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoTextureView.2
  * JD-Core Version:    0.7.0.1
  */

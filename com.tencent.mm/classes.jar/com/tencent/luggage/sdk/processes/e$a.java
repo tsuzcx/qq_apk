@@ -1,12 +1,12 @@
 package com.tencent.luggage.sdk.processes;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/processes/LuggageMiniProgramRecord$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/processes/LuggageMiniProgramRecord$Companion;", "", "()V", "TAG", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class e$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.luggage.sdk.processes.e.a
  * JD-Core Version:    0.7.0.1
  */

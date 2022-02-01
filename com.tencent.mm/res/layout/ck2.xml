@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/lq7"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/klq" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:text="@string/diq" android:includeFontPadding="false" />
-</FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/fk2" android:background="@drawable/b54" android:layout_width="fill_parent" android:layout_height="@dimen/ayk" android:layout_alignParentTop="true" android:contentDescription="@null" android:paddingStart="@dimen/ayl" android:paddingEnd="@dimen/ayl">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f3h" android:focusable="true" android:clickable="true" android:layout_width="@dimen/ayg" android:layout_height="@dimen/ayg" android:src="@drawable/b84" android:scaleType="fitCenter" android:contentDescription="@string/lps" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fk3" android:background="@drawable/b4u" android:layout_width="fill_parent" android:layout_height="@dimen/ayb" android:layout_alignParentBottom="true" android:contentDescription="@null" android:paddingStart="@dimen/ayc" android:paddingEnd="@dimen/ayc">
+        <ImageView android:gravity="center_vertical" android:id="@id/f3l" android:focusable="true" android:clickable="true" android:layout_width="@dimen/ayg" android:layout_height="@dimen/ayg" android:src="@drawable/b87" android:scaleType="fitCenter" android:contentDescription="@string/lpy" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fjt" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/aya">
+            <TextView android:textSize="@dimen/ayf" android:textStyle="bold" android:textColor="@color/alf" android:id="@id/kwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="monospace" />
+            <FrameLayout android:gravity="center_vertical" android:id="@id/hxw" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/hxr" android:background="#33ffffff" style="@style/a65" />
+                <ImageView android:id="@id/hxt" android:background="#80ffffff" style="@style/a65" />
+                <ImageView android:id="@id/hxs" android:background="@color/alf" style="@style/a65" />
+                <ImageView android:id="@id/hxv" android:paddingLeft="@dimen/ay6" android:paddingTop="@dimen/ay6" android:paddingRight="@dimen/ay6" android:paddingBottom="@dimen/ay6" android:focusable="true" android:clickable="true" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/b88" android:contentDescription="@string/lpz" android:layout_marginStart="8.0dip" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/ayf" android:textStyle="bold" android:textColor="@color/alf" android:id="@id/kz2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="monospace" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f3k" android:focusable="true" android:clickable="true" android:layout_width="@dimen/ayg" android:layout_height="@dimen/ayg" android:src="@drawable/b4y" android:scaleType="fitCenter" android:contentDescription="@string/lpw" android:layout_marginStart="@dimen/aya" />
+        <TextView android:textSize="@dimen/ay7" android:textColor="@color/alj" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ki3" android:background="@drawable/b51" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitCenter" android:minWidth="@dimen/ayh" android:minHeight="@dimen/ayg" android:text="@string/lq0" android:contentDescription="@string/lq0" android:paddingStart="@dimen/ay8" android:paddingEnd="@dimen/ay8" android:layout_marginStart="@dimen/aya" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f3j" android:focusable="true" android:clickable="true" android:layout_width="@dimen/ayg" android:layout_height="@dimen/ayg" android:src="@drawable/b85" android:scaleType="fitCenter" android:contentDescription="@string/lpu" android:layout_marginStart="@dimen/aya" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/fjn" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/fk3" android:layout_below="@id/fk2" android:contentDescription="@string/lpt">
+        <com.tencent.xweb.extension.video.ClickableFrameLayout android:id="@id/fjm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.xweb.extension.video.VideoStatusLayout android:layout_gravity="center" android:id="@id/fk1" android:layout_width="200.0dip" android:layout_height="200.0dip" />
+        </com.tencent.xweb.extension.video.ClickableFrameLayout>
+        <ProgressBar android:layout_gravity="center" android:id="@id/i7s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a66" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/fju" android:background="@drawable/b52" android:paddingTop="@dimen/ayk" android:paddingBottom="@dimen/ayb" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true">
+        <include android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="fill_parent" layout="@layout/ck4" />
+    </FrameLayout>
+</RelativeLayout>

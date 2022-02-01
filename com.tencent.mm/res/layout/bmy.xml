@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kyu" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cb" android:src="@raw/icons_outlined_close" android:layout_alignParentLeft="true" android:layout_centerVertical="true" app:iconColor="@color/FG_0" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:layout_gravity="center" android:id="@id/dmw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:text="" android:singleLine="false" android:layout_centerInParent="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/az8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/c74" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_gravity="center_horizontal" layout="@layout/bmw" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/guo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/j7" android:textColor="@color/aks" android:id="@id/gup" android:background="@drawable/c2" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/j1" android:text="@string/we" android:layout_weight="1.0" />
+                <ImageView android:id="@id/guk" android:background="@color/a4c" android:layout_width="@dimen/bo" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/j7" android:textColor="@color/aks" android:id="@id/gv3" android:background="@drawable/c2" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/j1" android:text="@string/l5u" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+</LinearLayout>

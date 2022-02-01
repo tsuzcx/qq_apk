@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/gs"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/qp" />
-    <LinearLayout android:orientation="vertical" android:id="@id/awi" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gt">
-        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
-        <TextView android:id="@id/auk" android:background="@drawable/mv" android:paddingLeft="20.0dip" android:paddingRight="15.0dip" android:minHeight="@dimen/ad" style="@style/h4" />
-        <TextView android:layout_gravity="right" android:id="@id/axx" android:layout_marginRight="10.0dip" android:text="@string/alo" style="@style/gj" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/xo" android:id="@id/b83" android:paddingLeft="7.0dip" android:paddingRight="7.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:layout_marginBottom="@dimen/bv" android:text="@string/ba6" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/l0t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a85" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/b8o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+        <View android:layout_gravity="center_vertical" android:background="@color/xo" android:layout_width="@dimen/d0" android:layout_height="1.0dip" />
+        <TextView android:id="@id/b8n" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" style="@style/hb" />
+        <View android:layout_gravity="center_vertical" android:background="@color/xo" android:layout_width="@dimen/d0" android:layout_height="1.0dip" />
+    </LinearLayout>
+    <TextView android:id="@id/b8z" android:layout_marginBottom="@dimen/j6" style="@style/h_" />
+    <LinearLayout android:gravity="center" style="@style/h1">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:gravity="center" android:id="@id/b4b" android:background="@drawable/lq" android:paddingLeft="@dimen/ig" android:paddingRight="@dimen/ig" android:clickable="true" android:layout_marginLeft="@dimen/i9" android:layout_marginRight="@dimen/i9" style="@style/hb" />
     </LinearLayout>
 </LinearLayout>

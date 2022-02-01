@@ -7,8 +7,7 @@ import android.os.SystemClock;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
@@ -17,49 +16,49 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class k
   implements c
 {
-  long EXA;
-  boolean EXB;
-  public l EXC;
-  boolean EXD;
-  a EXE;
-  int EXF;
-  private MMHandler.Callback EXG;
-  private MMHandler.Callback EXH;
-  private MMHandler.Callback EXI;
-  public h EXa;
-  MMHandler EXb;
-  MMHandler EXx;
-  MMHandler EXy;
-  MMHandler EXz;
-  long aNh;
+  public h KSM;
+  MMHandler KSN;
+  MMHandler KTi;
+  MMHandler KTj;
+  MMHandler KTk;
+  long KTl;
+  boolean KTm;
+  public l KTn;
+  boolean KTp;
+  a KTq;
+  int KTr;
+  private MMHandler.Callback KTs;
+  private MMHandler.Callback KTt;
+  private MMHandler.Callback KTu;
+  long cHd;
   public long durationMs;
-  boolean iYs;
+  boolean lAj;
   public int state;
   
-  public k(MMHandler paramMMHandler, com.tencent.e.j.a parama, Looper paramLooper1, Looper paramLooper2, boolean paramBoolean, int paramInt)
+  public k(MMHandler paramMMHandler, com.tencent.threadpool.j.a parama, Looper paramLooper1, Looper paramLooper2, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(205108);
-    this.EXB = false;
-    this.EXD = false;
-    this.EXF = -1;
-    this.EXG = new MMHandler.Callback()
+    AppMethodBeat.i(260370);
+    this.KTm = false;
+    this.KTp = false;
+    this.KTr = -1;
+    this.KTs = new MMHandler.Callback()
     {
-      private int EXJ = -1;
-      private int EXK = -1;
-      private long EXL = -1L;
-      private int xqS = -1;
+      private int AOc = -1;
+      private int KTv = -1;
+      private int KTw = -1;
+      private long KTx = -1L;
       
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(133932);
         int i = paramAnonymousMessage.what;
-        if ((this.EXL <= 0L) || (Util.ticksToNow(this.EXL) > 500L) || (this.EXJ != i) || (this.xqS != k.this.state) || (this.EXK != k.this.EXC.state))
+        if ((this.KTx <= 0L) || (Util.ticksToNow(this.KTx) > 500L) || (this.KTv != i) || (this.AOc != k.this.state) || (this.KTw != k.this.KTn.state))
         {
-          Log.i("MicroMsg.VideoPlayerImpl", "%s inner callback %d %d [%d]", new Object[] { k.this.info(), Integer.valueOf(i), Integer.valueOf(k.this.state), Integer.valueOf(k.this.EXC.state) });
-          this.EXL = Util.currentTicks();
-          this.EXJ = i;
-          this.xqS = k.this.state;
-          this.EXK = k.this.EXC.state;
+          Log.i("MicroMsg.VideoPlayerImpl", "%s inner callback %d %d [%d]", new Object[] { k.this.info(), Integer.valueOf(i), Integer.valueOf(k.this.state), Integer.valueOf(k.this.KTn.state) });
+          this.KTx = Util.currentTicks();
+          this.KTv = i;
+          this.AOc = k.this.state;
+          this.KTw = k.this.KTn.state;
         }
         switch (i)
         {
@@ -74,49 +73,49 @@ public final class k
             AppMethodBeat.o(133932);
             return false;
           }
-          boolean bool2 = e.WG(k.this.EXC.state);
+          boolean bool2 = e.aaI(k.this.KTn.state);
           boolean bool1 = bool2;
-          if (k.this.EXE != null) {
-            bool1 = bool2 & e.WG(k.this.EXE.state);
+          if (k.this.KTq != null) {
+            bool1 = bool2 & e.aaI(k.this.KTq.state);
           }
           if (bool1)
           {
             k.this.setState(2);
-            k.this.EXb.obtainMessage(1).sendToTarget();
+            k.this.KSN.obtainMessage(1).sendToTarget();
             continue;
             k.a(k.this);
             continue;
-            if (e.WK(k.this.state))
+            if (e.aaM(k.this.state))
             {
               AppMethodBeat.o(133932);
               return false;
             }
-            if ((e.WM(k.this.state)) || (e.WJ(k.this.state)))
+            if ((e.aaO(k.this.state)) || (e.aaL(k.this.state)))
             {
               k.this.setState(9);
-              k.this.EXb.obtainMessage(2).sendToTarget();
+              k.this.KSN.obtainMessage(2).sendToTarget();
               AppMethodBeat.o(133932);
               return false;
             }
-            bool2 = e.WK(k.this.EXC.state);
+            bool2 = e.aaM(k.this.KTn.state);
             bool1 = bool2;
-            if (k.this.EXE != null) {
-              bool1 = bool2 & e.WK(k.this.EXE.state);
+            if (k.this.KTq != null) {
+              bool1 = bool2 & e.aaM(k.this.KTq.state);
             }
             if (bool1)
             {
               k.this.setState(9);
-              k.this.EXb.obtainMessage(2).sendToTarget();
+              k.this.KSN.obtainMessage(2).sendToTarget();
               continue;
-              if ((k.this.EXB) && ((k.this.iYs) || (k.this.EXD))) {
-                k.this.EXb.obtainMessage(6).sendToTarget();
+              if ((k.this.KTm) && ((k.this.lAj) || (k.this.KTp))) {
+                k.this.KSN.obtainMessage(6).sendToTarget();
               }
             }
           }
         }
       }
     };
-    this.EXH = new MMHandler.Callback()
+    this.KTt = new MMHandler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -128,38 +127,38 @@ public final class k
         {
           AppMethodBeat.o(133933);
           return false;
-          if (k.this.EXC.prepare())
+          if (k.this.KTn.prepare())
           {
-            k.this.durationMs = k.this.EXC.durationMs;
-            k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+            k.this.durationMs = k.this.KTn.durationMs;
+            k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
           }
           else
           {
-            k.this.EXb.obtainMessage(5, -1, -1).sendToTarget();
+            k.this.KSN.obtainMessage(5, -1, -1).sendToTarget();
             AppMethodBeat.o(133933);
             return false;
-            paramAnonymousMessage = k.this.EXa;
-            long l = Util.ticksToNow(paramAnonymousMessage.EWT);
-            if ((paramAnonymousMessage.EWT > 0L) && (l >= 30L))
+            paramAnonymousMessage = k.this.KSM;
+            long l = Util.ticksToNow(paramAnonymousMessage.KSF);
+            if ((paramAnonymousMessage.KSF > 0L) && (l >= 30L))
             {
-              Log.w("MicroMsg.PlayTimeLine", "%s do some work delay 30ms!!![%d, %d]", new Object[] { paramAnonymousMessage.info(), Long.valueOf(paramAnonymousMessage.EWT), Long.valueOf(l) });
-              paramAnonymousMessage.EWU = 0L;
+              Log.w("MicroMsg.PlayTimeLine", "%s do some work delay 30ms!!![%d, %d]", new Object[] { paramAnonymousMessage.info(), Long.valueOf(paramAnonymousMessage.KSF), Long.valueOf(l) });
+              paramAnonymousMessage.KSG = 0L;
             }
-            if (e.WK(k.this.EXC.state))
+            if (e.aaM(k.this.KTn.state))
             {
-              k.this.EXz.obtainMessage(9).sendToTarget();
-              k.this.EXx.removeMessages(2);
+              k.this.KTk.obtainMessage(9).sendToTarget();
+              k.this.KTi.removeMessages(2);
             }
-            else if (e.WL(k.this.EXC.state))
+            else if (e.aaN(k.this.KTn.state))
             {
-              k.this.EXb.obtainMessage(-1, -1, -1).sendToTarget();
-              k.this.EXx.removeMessages(2);
+              k.this.KSN.obtainMessage(-1, -1, -1).sendToTarget();
+              k.this.KTi.removeMessages(2);
             }
             else
             {
-              int j = k.this.EXC.ah(k.this.aNh, k.this.EXA);
-              if (e.WG(j)) {
-                k.this.EXz.obtainMessage(2).sendToTarget();
+              int j = k.this.KTn.aQ(k.this.cHd, k.this.KTl);
+              if (e.aaI(j)) {
+                k.this.KTk.obtainMessage(2).sendToTarget();
               }
               if (j == 7) {}
               for (int i = 1;; i = 0)
@@ -167,50 +166,50 @@ public final class k
                 if (i == 0) {
                   break label396;
                 }
-                k.this.EXz.obtainMessage(7).sendToTarget();
-                k.this.EXx.removeMessages(2);
+                k.this.KTk.obtainMessage(7).sendToTarget();
+                k.this.KTi.removeMessages(2);
                 break;
               }
               label396:
-              if (e.WN(j))
+              if (e.aaP(j))
               {
-                k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
-                k.this.EXa.EWT = Util.currentTicks();
+                k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
+                k.this.KSM.KSF = Util.currentTicks();
               }
               else
               {
                 if (k.this.state == 3) {
-                  k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), k.this.EXa.EWU);
+                  k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), k.this.KSM.KSG);
                 }
                 for (;;)
                 {
-                  k.this.EXa.EWT = Util.currentTicks();
+                  k.this.KSM.KSF = Util.currentTicks();
                   break;
                   if (k.this.state == 5) {
-                    k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
                   } else if (k.this.state == 1) {
-                    k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
                   } else if (k.this.state == 0) {
-                    k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
                   } else if (k.this.state == 6) {
-                    k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+                    k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
                   } else {
-                    k.this.EXx.removeMessages(2);
+                    k.this.KTi.removeMessages(2);
                   }
                 }
-                k.this.WR(3);
-                k.this.EXC.start();
-                k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+                k.this.aaT(3);
+                k.this.KTn.start();
+                k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
                 continue;
-                k.this.WR(4);
-                k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
-                k.this.EXC.pause();
+                k.this.aaT(4);
+                k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
+                k.this.KTn.pause();
                 continue;
-                k.this.EXC.release();
-                k.this.EXB = true;
-                k.this.EXz.obtainMessage(0).sendToTarget();
+                k.this.KTn.release();
+                k.this.KTm = true;
+                k.this.KTk.obtainMessage(0).sendToTarget();
                 continue;
-                k.this.EXC.eSP();
+                k.this.KTn.gbI();
                 continue;
                 if ((paramAnonymousMessage.obj instanceof int[]))
                 {
@@ -218,35 +217,35 @@ public final class k
                   if (paramAnonymousMessage.length == 2)
                   {
                     j = paramAnonymousMessage[0];
-                    label799:
+                    label796:
                     boolean bool;
                     if (paramAnonymousMessage[1] == 1)
                     {
                       i = 1;
-                      l = k.this.EXC.WP(j);
+                      l = k.this.KTn.aaR(j);
                       if ((i == 0) || (l < 0L) || (l >= j)) {
-                        break label951;
+                        break label948;
                       }
                       bool = true;
-                      label834:
+                      label831:
                       Log.i("MicroMsg.VideoPlayerImpl", "%s can seek precision[%b] after seek [%d, %d]", new Object[] { k.this.info(), Boolean.valueOf(bool), Long.valueOf(l), Integer.valueOf(j) });
-                      k.this.EXC.setState(6);
+                      k.this.KTn.setState(6);
                       k.this.setState(6);
                       if (!bool) {
-                        break label957;
+                        break label954;
                       }
                     }
-                    label951:
-                    label957:
-                    for (k.this.EXa.EWQ = j;; k.this.EXa.EWQ = l)
+                    label948:
+                    label954:
+                    for (k.this.KSM.KSC = j;; k.this.KSM.KSC = l)
                     {
-                      k.this.WR(6);
-                      k.a(k.this, k.this.EXx, SystemClock.elapsedRealtime(), 0L);
+                      k.this.aaT(6);
+                      k.a(k.this, k.this.KTi, SystemClock.elapsedRealtime(), 0L);
                       break;
                       i = 0;
-                      break label799;
+                      break label796;
                       bool = false;
-                      break label834;
+                      break label831;
                     }
                   }
                   Log.e("MicroMsg.VideoPlayerImpl", "seek data length error");
@@ -261,12 +260,12 @@ public final class k
         }
       }
     };
-    this.EXI = new MMHandler.Callback()
+    this.KTu = new MMHandler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(133934);
-        if (k.this.EXE == null)
+        if (k.this.KTq == null)
         {
           AppMethodBeat.o(133934);
           return false;
@@ -278,84 +277,84 @@ public final class k
         {
           AppMethodBeat.o(133934);
           return false;
-          if (!k.this.EXE.prepare())
+          if (!k.this.KTq.prepare())
           {
             Log.i("MicroMsg.VideoPlayerImpl", "%s audio track prepare error, release now.", new Object[] { k.this.info() });
-            k.this.EXE.release();
-            k.this.EXD = true;
-            k.this.EXE = null;
+            k.this.KTq.release();
+            k.this.KTp = true;
+            k.this.KTq = null;
           }
-          k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), 0L);
+          k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), 0L);
           continue;
-          if (e.WK(k.this.EXE.state))
+          if (e.aaM(k.this.KTq.state))
           {
-            k.this.EXz.obtainMessage(9).sendToTarget();
-            k.this.EXy.removeMessages(2);
+            k.this.KTk.obtainMessage(9).sendToTarget();
+            k.this.KTj.removeMessages(2);
           }
-          else if (e.WL(k.this.EXE.state))
+          else if (e.aaN(k.this.KTq.state))
           {
-            k.this.EXb.obtainMessage(-1, -1, -1).sendToTarget();
-            k.this.EXx.removeMessages(2);
+            k.this.KSN.obtainMessage(-1, -1, -1).sendToTarget();
+            k.this.KTi.removeMessages(2);
           }
           else
           {
-            if (e.WG(k.this.EXE.ah(k.this.aNh, k.this.EXA))) {
-              k.this.EXz.sendMessageDelayed(k.this.EXz.obtainMessage(2), 10L);
+            if (e.aaI(k.this.KTq.aQ(k.this.cHd, k.this.KTl))) {
+              k.this.KTk.sendMessageDelayed(k.this.KTk.obtainMessage(2), 10L);
             }
             if (k.this.state == 3)
             {
-              k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), k.this.EXa.EWU);
+              k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), k.this.KSM.KSG);
             }
             else if (k.this.state == 5)
             {
-              k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), 0L);
+              k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), 0L);
             }
             else if (k.this.state == 1)
             {
-              k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), 0L);
+              k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), 0L);
             }
             else if (k.this.state == 0)
             {
-              k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), 0L);
+              k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), 0L);
             }
             else
             {
-              k.this.EXy.removeMessages(2);
+              k.this.KTj.removeMessages(2);
               continue;
-              k.this.EXE.start();
-              k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), 0L);
+              k.this.KTq.start();
+              k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), 0L);
               continue;
-              k.a(k.this, k.this.EXy, SystemClock.elapsedRealtime(), 0L);
-              k.this.EXE.pause();
+              k.a(k.this, k.this.KTj, SystemClock.elapsedRealtime(), 0L);
+              k.this.KTq.pause();
               continue;
-              k.this.EXE.release();
-              k.this.EXD = true;
-              k.this.EXz.obtainMessage(0).sendToTarget();
+              k.this.KTq.release();
+              k.this.KTp = true;
+              k.this.KTk.obtainMessage(0).sendToTarget();
             }
           }
         }
       }
     };
-    this.EXb = paramMMHandler;
-    this.iYs = false;
-    this.EXa = new h(this.iYs, paramInt);
-    this.EXz = new MMHandler(parama, this.EXG);
-    this.EXz.setLogging(false);
-    this.EXC = new l(this.EXa, this.EXb);
-    this.EXx = new MMHandler(paramLooper1, this.EXH);
+    this.KSN = paramMMHandler;
+    this.lAj = false;
+    this.KSM = new h(this.lAj, paramInt);
+    this.KTk = new MMHandler(parama, this.KTs);
+    this.KTk.setLogging(false);
+    this.KTn = new l(this.KSM, this.KSN);
+    this.KTi = new MMHandler(paramLooper1, this.KTt);
     if (paramLooper2 != null)
     {
-      this.EXE = new a(this.EXa, this.EXb);
-      this.EXy = new MMHandler(paramLooper2, this.EXI);
-      this.EXy.setLogging(false);
+      this.KTq = new a(this.KSM, this.KSN);
+      this.KTj = new MMHandler(paramLooper2, this.KTu);
+      this.KTj.setLogging(false);
     }
-    AppMethodBeat.o(205108);
+    AppMethodBeat.o(260370);
   }
   
   private void a(MMHandler paramMMHandler, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(133951);
-    if (e.WK(this.state))
+    if (e.aaM(this.state))
     {
       Log.w("MicroMsg.VideoPlayerImpl", "isEnd state=%s", new Object[] { Integer.valueOf(this.state) });
       AppMethodBeat.o(133951);
@@ -379,26 +378,26 @@ public final class k
     AppMethodBeat.o(133951);
   }
   
-  private void eSV()
+  private void gbO()
   {
     AppMethodBeat.i(133945);
     Log.i("MicroMsg.VideoPlayerImpl", "%s seek done", new Object[] { info() });
-    this.EXC.setState(5);
-    if (this.EXE != null)
+    this.KTn.setState(5);
+    if (this.KTq != null)
     {
-      this.EXE.eSP();
-      this.EXa.EWS = this.EXE.WP((int)this.EXa.EWQ);
-      this.EXE.setState(5);
+      this.KTq.gbI();
+      this.KSM.KSE = this.KTq.aaR((int)this.KSM.KSC);
+      this.KTq.setState(5);
     }
-    WR(7);
+    aaT(7);
     setState(4);
-    this.EXb.obtainMessage(3, 0, 0).sendToTarget();
-    this.EXa.EWR = (this.EXa.EWQ * 1000L);
-    this.EXa.EWQ = -1L;
+    this.KSN.obtainMessage(3, 0, 0).sendToTarget();
+    this.KSM.KSD = (this.KSM.KSC * 1000L);
+    this.KSM.KSC = -1L;
     AppMethodBeat.o(133945);
   }
   
-  public final void WQ(int paramInt)
+  public final void aaS(int paramInt)
   {
     AppMethodBeat.i(133944);
     Log.i("MicroMsg.VideoPlayerImpl", "%s seek to [%d] is precision[%b]", new Object[] { info(), Integer.valueOf(paramInt), Boolean.TRUE });
@@ -409,101 +408,101 @@ public final class k
       AppMethodBeat.o(133944);
       return;
     }
-    this.EXC.pause();
-    this.EXx.removeMessages(4);
-    if (this.EXE != null)
+    this.KTn.pause();
+    this.KTi.removeMessages(4);
+    if (this.KTq != null)
     {
-      this.EXE.pause();
-      this.EXy.removeMessages(4);
+      this.KTq.pause();
+      this.KTj.removeMessages(4);
     }
     if (paramInt >= this.durationMs)
     {
       Log.i("MicroMsg.VideoPlayerImpl", "seekTo %d, duration %d ", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.durationMs) });
       setState(6);
-      this.EXz.obtainMessage(9).sendToTarget();
+      this.KTk.obtainMessage(9).sendToTarget();
       AppMethodBeat.o(133944);
       return;
     }
-    this.EXx.obtainMessage(8).sendToTarget();
-    this.EXx.obtainMessage(5, new int[] { paramInt, 1 }).sendToTarget();
+    this.KTi.obtainMessage(8).sendToTarget();
+    this.KTi.obtainMessage(5, new int[] { paramInt, 1 }).sendToTarget();
     AppMethodBeat.o(133944);
   }
   
-  final void WR(int paramInt)
+  final void aaT(int paramInt)
   {
     AppMethodBeat.i(133949);
-    Log.i("MicroMsg.VideoPlayerImpl", "%s update positions state %d timeline[%d %d %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.EXa.gcH), Long.valueOf(this.EXa.EWP), Long.valueOf(this.EXa.aNh) });
+    Log.i("MicroMsg.VideoPlayerImpl", "%s update positions state %d timeline[%d %d %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.KSM.startMs), Long.valueOf(this.KSM.KSB), Long.valueOf(this.KSM.cHd) });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.EXA = this.EXa.gcH;
-      this.aNh = this.EXa.aNh;
-      Log.i("MicroMsg.VideoPlayerImpl", "%s update positions end state[%d] ms[%d, %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.EXA), Long.valueOf(this.aNh) });
+      this.KTl = this.KSM.startMs;
+      this.cHd = this.KSM.cHd;
+      Log.i("MicroMsg.VideoPlayerImpl", "%s update positions end state[%d] ms[%d, %d]", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(this.KTl), Long.valueOf(this.cHd) });
       AppMethodBeat.o(133949);
       return;
       h localh;
-      if (this.EXa.EWP > 0L)
+      if (this.KSM.KSB > 0L)
       {
-        localh = this.EXa;
-        localh.aNh += this.EXa.EWP - this.EXa.gcH;
-        this.EXa.EWP = 0L;
+        localh = this.KSM;
+        localh.cHd += this.KSM.KSB - this.KSM.startMs;
+        this.KSM.KSB = 0L;
       }
-      this.EXa.gcH = SystemClock.elapsedRealtime();
+      this.KSM.startMs = SystemClock.elapsedRealtime();
       continue;
-      if (this.EXa.gcH <= 0L)
+      if (this.KSM.startMs <= 0L)
       {
-        this.EXa.EWP = 0L;
+        this.KSM.KSB = 0L;
       }
       else
       {
-        this.EXa.EWP = SystemClock.elapsedRealtime();
+        this.KSM.KSB = SystemClock.elapsedRealtime();
         continue;
-        this.EXa.aNh = this.EXa.EWQ;
-        this.EXa.gcH = SystemClock.elapsedRealtime();
-        this.EXa.EWP = 0L;
-        localh = this.EXa;
-        this.EXa.EWS = 0L;
-        localh.EWR = 0L;
+        this.KSM.cHd = this.KSM.KSC;
+        this.KSM.startMs = SystemClock.elapsedRealtime();
+        this.KSM.KSB = 0L;
+        localh = this.KSM;
+        this.KSM.KSE = 0L;
+        localh.KSD = 0L;
         continue;
-        this.EXa.aNh = this.EXa.EWQ;
-        localh = this.EXa;
-        this.EXa.EWP = 0L;
-        localh.gcH = 0L;
-        localh = this.EXa;
-        this.EXa.EWS = 0L;
-        localh.EWR = 0L;
+        this.KSM.cHd = this.KSM.KSC;
+        localh = this.KSM;
+        this.KSM.KSB = 0L;
+        localh.startMs = 0L;
+        localh = this.KSM;
+        this.KSM.KSE = 0L;
+        localh.KSD = 0L;
         continue;
-        this.EXa.aNh = this.EXa.EWQ;
-        localh = this.EXa;
-        this.EXa.EWP = 0L;
-        localh.gcH = 0L;
+        this.KSM.cHd = this.KSM.KSC;
+        localh = this.KSM;
+        this.KSM.KSB = 0L;
+        localh.startMs = 0L;
       }
     }
   }
   
-  public final void bXe()
+  public final void cxp()
   {
     AppMethodBeat.i(133940);
-    if (this.EXC != null)
+    if (this.KTn != null)
     {
       Log.i("MicroMsg.VideoPlayerImpl", "%s player flush surface", new Object[] { info() });
-      this.EXC.setState(10);
-      a(this.EXx, SystemClock.elapsedRealtime(), 0L);
+      this.KTn.setState(10);
+      a(this.KTi, SystemClock.elapsedRealtime(), 0L);
     }
     AppMethodBeat.o(133940);
   }
   
-  public final void eSU()
+  public final void gbN()
   {
     AppMethodBeat.i(133937);
-    Log.i("MicroMsg.VideoPlayerImpl", "%s reset extractor time[%d]", new Object[] { info(), Long.valueOf(this.EXa.EWR) });
-    if (this.EXC != null)
+    Log.i("MicroMsg.VideoPlayerImpl", "%s reset extractor time[%d]", new Object[] { info(), Long.valueOf(this.KSM.KSD) });
+    if (this.KTn != null)
     {
-      this.EXC.ai(this.EXa.EWR, -1L);
-      this.EXC.eSP();
-      this.EXC.EXf = 0L;
+      this.KTn.aR(this.KSM.KSD, -1L);
+      this.KTn.gbI();
+      this.KTn.KSR = 0L;
     }
     AppMethodBeat.o(133937);
   }
@@ -516,7 +515,7 @@ public final class k
   public final String info()
   {
     AppMethodBeat.i(133950);
-    String str = this.EXa.info() + "_" + Process.myTid();
+    String str = this.KSM.info() + "_" + Process.myTid();
     AppMethodBeat.o(133950);
     return str;
   }
@@ -525,12 +524,12 @@ public final class k
   {
     AppMethodBeat.i(133942);
     setState(4);
-    this.EXx.removeMessages(4);
-    this.EXx.obtainMessage(4).sendToTarget();
-    if (this.EXE != null)
+    this.KTi.removeMessages(4);
+    this.KTi.obtainMessage(4).sendToTarget();
+    if (this.KTq != null)
     {
-      this.EXy.removeMessages(4);
-      this.EXy.obtainMessage(4).sendToTarget();
+      this.KTj.removeMessages(4);
+      this.KTj.obtainMessage(4).sendToTarget();
     }
     AppMethodBeat.o(133942);
   }
@@ -539,58 +538,66 @@ public final class k
   {
     AppMethodBeat.i(133939);
     Log.i("MicroMsg.VideoPlayerImpl", "%s player start to prepare ", new Object[] { info() });
-    this.EXx.obtainMessage(1).sendToTarget();
-    if (this.EXE != null) {
-      this.EXy.obtainMessage(1).sendToTarget();
+    this.KTi.obtainMessage(1).sendToTarget();
+    if (this.KTq != null) {
+      this.KTj.obtainMessage(1).sendToTarget();
     }
     AppMethodBeat.o(133939);
     return true;
+  }
+  
+  public final void r(Surface paramSurface)
+  {
+    AppMethodBeat.i(260389);
+    Log.i("MicroMsg.VideoPlayerImpl", "%s change surface[%d] ", new Object[] { info(), Integer.valueOf(paramSurface.hashCode()) });
+    this.KTn.r(paramSurface);
+    AppMethodBeat.o(260389);
   }
   
   public final void release()
   {
     AppMethodBeat.i(133947);
     setState(9);
-    this.EXz.removeMessages(2);
-    this.EXz.removeMessages(9);
-    this.EXx.removeMessages(1);
-    this.EXx.removeMessages(2);
-    this.EXx.removeMessages(3);
-    this.EXx.removeMessages(4);
-    this.EXx.removeMessages(6);
-    this.EXx.removeCallbacksAndMessages(null);
-    if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.wbl, 0) == 1) {
+    this.KTk.removeMessages(2);
+    this.KTk.removeMessages(9);
+    this.KTi.removeMessages(1);
+    this.KTi.removeMessages(2);
+    this.KTi.removeMessages(3);
+    this.KTi.removeMessages(4);
+    this.KTi.removeMessages(6);
+    this.KTi.removeCallbacksAndMessages(null);
+    if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zuG, 0) == 1) {
       Log.i("MicroMsg.VideoPlayerImpl", "%s release directly release videoTrack decoder", new Object[] { info() });
     }
     for (;;)
     {
       try
       {
-        this.EXC.setState(9);
-        Object localObject = this.EXC;
-        Log.i("MicroMsg.VideoTrackDataSource", "%s isConfigureSurface [%b]", new Object[] { ((l)localObject).info(), Boolean.valueOf(((l)localObject).EXN) });
-        if ((((l)localObject).EXN) && (d.qX(19))) {
-          this.EXC.releaseDecoder();
+        this.KTn.setState(9);
+        Object localObject = this.KTn;
+        Log.i("MicroMsg.VideoTrackDataSource", "%s isConfigureSurface [%b]", new Object[] { ((l)localObject).info(), Boolean.valueOf(((l)localObject).KTz) });
+        if ((((l)localObject).KTz) && (d.rd(19))) {
+          this.KTn.releaseDecoder();
         }
-        this.EXx.removeMessages(7);
-        this.EXx.obtainMessage(7).sendToTarget();
-        if (this.EXy != null)
+        this.KTi.removeMessages(7);
+        this.KTi.obtainMessage(7).sendToTarget();
+        if (this.KTj != null)
         {
-          this.EXy.removeMessages(1);
-          this.EXy.removeMessages(2);
-          this.EXy.removeMessages(3);
-          this.EXy.removeMessages(4);
-          this.EXy.removeMessages(6);
-          this.EXy.removeMessages(7);
-          this.EXy.obtainMessage(7).sendToTarget();
+          this.KTj.removeMessages(1);
+          this.KTj.removeMessages(2);
+          this.KTj.removeMessages(3);
+          this.KTj.removeMessages(4);
+          this.KTj.removeMessages(6);
+          this.KTj.removeMessages(7);
+          this.KTj.obtainMessage(7).sendToTarget();
         }
-        localObject = this.EXa;
-        ((h)localObject).gcH = 0L;
-        ((h)localObject).EWP = 0L;
-        ((h)localObject).EWQ = -1L;
-        ((h)localObject).aNh = 0L;
-        ((h)localObject).EWR = 0L;
-        ((h)localObject).EWS = 0L;
+        localObject = this.KSM;
+        ((h)localObject).startMs = 0L;
+        ((h)localObject).KSB = 0L;
+        ((h)localObject).KSC = -1L;
+        ((h)localObject).cHd = 0L;
+        ((h)localObject).KSD = 0L;
+        ((h)localObject).KSE = 0L;
         AppMethodBeat.o(133947);
         return;
       }
@@ -600,7 +607,7 @@ public final class k
         continue;
       }
       Log.i("MicroMsg.VideoPlayerImpl", "%s release post to handler thread release videoTrack decoder", new Object[] { info() });
-      this.EXC.setState(9);
+      this.KTn.setState(9);
     }
   }
   
@@ -615,32 +622,64 @@ public final class k
       AppMethodBeat.o(133943);
       return;
     }
-    this.EXC.pause();
-    if (this.EXE != null) {
-      this.EXE.pause();
+    this.KTn.pause();
+    if (this.KTq != null) {
+      this.KTq.pause();
     }
     setState(5);
     if (paramInt >= this.durationMs)
     {
-      this.EXz.obtainMessage(9).sendToTarget();
+      this.KTk.obtainMessage(9).sendToTarget();
       AppMethodBeat.o(133943);
       return;
     }
-    this.EXC.eSP();
-    this.EXa.EWQ = this.EXC.WP(paramInt);
-    this.EXC.setState(5);
-    WR(5);
-    eSV();
+    this.KTn.gbI();
+    this.KSM.KSC = this.KTn.aaR(paramInt);
+    this.KTn.setState(5);
+    aaT(5);
+    gbO();
     AppMethodBeat.o(133943);
+  }
+  
+  public final void setIsOnlineVideoType(boolean paramBoolean)
+  {
+    AppMethodBeat.i(260386);
+    if (this.KSM != null)
+    {
+      Log.i("MicroMsg.VideoPlayerImpl", "%s set is online video type [%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
+      this.KSM.ykm = paramBoolean;
+    }
+    AppMethodBeat.o(260386);
+  }
+  
+  public final void setMute(boolean paramBoolean)
+  {
+    AppMethodBeat.i(260401);
+    if (this.KTq != null)
+    {
+      Log.i("MicroMsg.VideoPlayerImpl", "%s play set mute[%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
+      this.KTq.setMute(paramBoolean);
+    }
+    AppMethodBeat.o(260401);
+  }
+  
+  public final void setNeedResetExtractor(boolean paramBoolean)
+  {
+    AppMethodBeat.i(260384);
+    Log.i("MicroMsg.VideoPlayerImpl", "%s setNeedResetExtractor [%b]", new Object[] { info(), Boolean.valueOf(paramBoolean) });
+    if (this.KSM != null) {
+      this.KSM.ykl = paramBoolean;
+    }
+    AppMethodBeat.o(260384);
   }
   
   public final void setPath(String paramString)
   {
     AppMethodBeat.i(133936);
     Log.i("MicroMsg.VideoPlayerImpl", "%s set path %s", new Object[] { info(), paramString });
-    this.EXC.setPath(paramString);
-    if (this.EXE != null) {
-      this.EXE.setPath(paramString);
+    this.KTn.setPath(paramString);
+    if (this.KTq != null) {
+      this.KTq.setPath(paramString);
     }
     AppMethodBeat.o(133936);
   }
@@ -650,7 +689,7 @@ public final class k
     AppMethodBeat.i(133948);
     Log.i("MicroMsg.VideoPlayerImpl", "%s set state old %d new %d", new Object[] { info(), Integer.valueOf(this.state), Integer.valueOf(paramInt) });
     this.state = paramInt;
-    this.EXa.EWT = 0L;
+    this.KSM.KSF = 0L;
     AppMethodBeat.o(133948);
   }
   
@@ -658,7 +697,7 @@ public final class k
   {
     AppMethodBeat.i(133938);
     Log.i("MicroMsg.VideoPlayerImpl", "%s set surface[%d] ", new Object[] { info(), Integer.valueOf(paramSurface.hashCode()) });
-    this.EXC.surface = paramSurface;
+    this.KTn.surface = paramSurface;
     AppMethodBeat.o(133938);
   }
   
@@ -666,12 +705,12 @@ public final class k
   {
     AppMethodBeat.i(133941);
     setState(3);
-    this.EXx.removeMessages(3);
-    this.EXx.obtainMessage(3).sendToTarget();
-    if (this.EXE != null)
+    this.KTi.removeMessages(3);
+    this.KTi.obtainMessage(3).sendToTarget();
+    if (this.KTq != null)
     {
-      this.EXy.removeMessages(3);
-      this.EXy.obtainMessage(3).sendToTarget();
+      this.KTj.removeMessages(3);
+      this.KTj.obtainMessage(3).sendToTarget();
     }
     AppMethodBeat.o(133941);
   }
@@ -682,10 +721,15 @@ public final class k
     setState(8);
     AppMethodBeat.o(133946);
   }
+  
+  public final void yr(boolean paramBoolean)
+  {
+    this.KTn.KTB = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.u.k
  * JD-Core Version:    0.7.0.1
  */

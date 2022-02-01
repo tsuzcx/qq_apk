@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
-  public static String box(String paramString)
+  public static String bol(String paramString)
   {
     AppMethodBeat.i(110675);
     if (Util.isNullOrNil(paramString))
@@ -14,17 +14,17 @@ public final class e
       AppMethodBeat.o(110675);
       return "";
     }
-    paramString = heI() + paramString + "/";
+    paramString = iFq() + paramString + "/";
     AppMethodBeat.o(110675);
     return paramString;
   }
   
-  public static String boy(String paramString)
+  public static String bom(String paramString)
   {
-    AppMethodBeat.i(195540);
+    AppMethodBeat.i(278679);
     if (paramString == null)
     {
-      AppMethodBeat.o(195540);
+      AppMethodBeat.o(278679);
       return "";
     }
     try
@@ -32,36 +32,36 @@ public final class e
       paramString = paramString.split("/wepkg/");
       if (paramString.length <= 1)
       {
-        AppMethodBeat.o(195540);
+        AppMethodBeat.o(278679);
         return "";
       }
       paramString = paramString[1];
       if (paramString == null)
       {
-        AppMethodBeat.o(195540);
+        AppMethodBeat.o(278679);
         return "";
       }
       paramString = paramString.split("/");
       if (paramString.length > 0)
       {
         paramString = paramString[0];
-        AppMethodBeat.o(195540);
+        AppMethodBeat.o(278679);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(195540);
+      AppMethodBeat.o(278679);
     }
     return "";
   }
   
-  public static String boz(String paramString)
+  public static String bon(String paramString)
   {
-    AppMethodBeat.i(195543);
+    AppMethodBeat.i(278682);
     if (paramString == null)
     {
-      AppMethodBeat.o(195543);
+      AppMethodBeat.o(278682);
       return "";
     }
     try
@@ -69,39 +69,39 @@ public final class e
       paramString = paramString.split("/wepkg/");
       if (paramString.length <= 1)
       {
-        AppMethodBeat.o(195543);
+        AppMethodBeat.o(278682);
         return "";
       }
       paramString = paramString[1];
       if (paramString == null)
       {
-        AppMethodBeat.o(195543);
+        AppMethodBeat.o(278682);
         return "";
       }
       paramString = paramString.split("/");
       if (paramString.length > 1)
       {
         paramString = paramString[1];
-        AppMethodBeat.o(195543);
+        AppMethodBeat.o(278682);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(195543);
+      AppMethodBeat.o(278682);
     }
     return "";
   }
   
-  public static String heI()
+  public static String iFq()
   {
-    AppMethodBeat.i(195537);
-    String str = c.ewp() + "wepkg/";
-    AppMethodBeat.o(195537);
+    AppMethodBeat.i(278677);
+    String str = c.fEg() + "wepkg/";
+    AppMethodBeat.o(278677);
     return str;
   }
   
-  public static String mU(String paramString1, String paramString2)
+  public static String oK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110676);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -109,7 +109,7 @@ public final class e
       AppMethodBeat.o(110676);
       return "";
     }
-    paramString1 = box(paramString1) + paramString2;
+    paramString1 = bol(paramString1) + paramString2;
     AppMethodBeat.o(110676);
     return paramString1;
   }

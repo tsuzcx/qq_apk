@@ -30,14 +30,14 @@ public final class PeriodRecorder
   
   public PeriodRecorder(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(263243);
+    AppMethodBeat.i(243868);
     this.mPeriod = 0L;
     this.mPreloadLock = new byte[0];
     this.mIsPreloaded = false;
     if (paramString == null)
     {
       paramString = new IllegalArgumentException("scene is null.");
-      AppMethodBeat.o(263243);
+      AppMethodBeat.o(243868);
       throw paramString;
     }
     this.mScene = paramString;
@@ -50,7 +50,7 @@ public final class PeriodRecorder
       this.mLastTimeCache = new ConcurrentHashMap(20);
       this.mPeriod = paramLong;
       this.mTriggerOnNewlyInit = paramBoolean2;
-      AppMethodBeat.o(263243);
+      AppMethodBeat.o(243868);
       return;
     }
   }
@@ -61,12 +61,12 @@ public final class PeriodRecorder
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 95
+    //   2: ldc 93
     //   4: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 97	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
+    //   8: getfield 95	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
     //   11: ifnull +11 -> 22
-    //   14: ldc 95
+    //   14: ldc 93
     //   16: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: aload_0
     //   20: monitorexit
@@ -74,9 +74,9 @@ public final class PeriodRecorder
     //   22: aload_0
     //   23: aload_0
     //   24: getfield 81	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorageName	Ljava/lang/String;
-    //   27: invokestatic 103	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getMMKVWithTransportByName	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
-    //   30: putfield 97	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
-    //   33: ldc 95
+    //   27: invokestatic 101	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getMMKVWithTransportByName	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+    //   30: putfield 95	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
+    //   33: ldc 93
     //   35: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: goto -19 -> 19
     //   41: astore_1
@@ -87,31 +87,31 @@ public final class PeriodRecorder
     //   46: astore_1
     //   47: ldc 8
     //   49: aload_1
-    //   50: ldc 105
+    //   50: ldc 103
     //   52: iconst_0
     //   53: anewarray 4	java/lang/Object
-    //   56: invokestatic 111	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   56: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   59: aload_0
-    //   60: invokestatic 117	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   60: invokestatic 115	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   63: aload_0
     //   64: getfield 81	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorageName	Ljava/lang/String;
     //   67: iconst_4
-    //   68: invokevirtual 123	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   71: putfield 97	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
-    //   74: ldc 95
+    //   68: invokevirtual 121	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   71: putfield 95	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
+    //   74: ldc 93
     //   76: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   79: goto -60 -> 19
     //   82: astore_1
     //   83: ldc 8
     //   85: aload_1
-    //   86: ldc 125
+    //   86: ldc 123
     //   88: iconst_0
     //   89: anewarray 4	java/lang/Object
-    //   92: invokestatic 111	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   92: invokestatic 109	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   95: aload_0
     //   96: aconst_null
-    //   97: putfield 97	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
-    //   100: ldc 95
+    //   97: putfield 95	com/tencent/mm/sdk/platformtools/PeriodRecorder:mStorage	Landroid/content/SharedPreferences;
+    //   100: ldc 93
     //   102: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   105: goto -86 -> 19
     // Local variable table:
@@ -123,41 +123,39 @@ public final class PeriodRecorder
     // Exception table:
     //   from	to	target	type
     //   2	19	41	finally
-    //   22	33	41	finally
     //   33	38	41	finally
     //   47	59	41	finally
-    //   59	74	41	finally
     //   74	79	41	finally
     //   83	105	41	finally
-    //   22	33	46	java/lang/Throwable
-    //   59	74	82	java/lang/Throwable
+    //   22	33	46	finally
+    //   59	74	82	finally
   }
   
   private long getNowTime()
   {
-    AppMethodBeat.i(263248);
+    AppMethodBeat.i(243876);
     if (this.mUseCalenderTime)
     {
       l = System.currentTimeMillis();
-      AppMethodBeat.o(263248);
+      AppMethodBeat.o(243876);
       return l;
     }
     long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(263248);
+    AppMethodBeat.o(243876);
     return l;
   }
   
   private void preloadOnDemand()
   {
     int i = 0;
-    AppMethodBeat.i(263251);
+    AppMethodBeat.i(243886);
     for (;;)
     {
       synchronized (this.mPreloadLock)
       {
         if ((this.mIsPreloaded) || (this.mStorage == null))
         {
-          AppMethodBeat.o(263251);
+          AppMethodBeat.o(243886);
           return;
         }
         if ((this.mStorage instanceof MultiProcessMMKV))
@@ -165,32 +163,33 @@ public final class PeriodRecorder
           String[] arrayOfString = ((MultiProcessMMKV)this.mStorage).allKeys();
           if (arrayOfString == null)
           {
-            AppMethodBeat.o(263251);
+            AppMethodBeat.o(243886);
             return;
           }
           int j = arrayOfString.length;
           if (i >= j) {
-            break label265;
+            break label268;
           }
           String str = arrayOfString[i];
           try
           {
             long l = this.mStorage.getLong(str, 0L);
             if (l == 0L) {
-              break label279;
+              break label282;
             }
             this.mLastTimeCache.put(str, Long.valueOf(l));
           }
-          catch (Throwable localThrowable)
+          finally
           {
             Log.printErrStackTrace("MicroMsg.PeriodRecorder", localThrowable, "exception occurred.", new Object[0]);
+            break label282;
           }
         }
       }
       Object localObject2 = this.mStorage.getAll();
       if (localObject2 == null)
       {
-        AppMethodBeat.o(263251);
+        AppMethodBeat.o(243886);
         return;
       }
       localObject2 = ((Map)localObject2).entrySet().iterator();
@@ -199,14 +198,14 @@ public final class PeriodRecorder
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
         Object localObject3 = localEntry.getValue();
         if ((localObject3 instanceof Long)) {
-          this.mLastTimeCache.put(localEntry.getKey(), (Long)localObject3);
+          this.mLastTimeCache.put((String)localEntry.getKey(), (Long)localObject3);
         }
       }
-      label265:
+      label268:
       this.mIsPreloaded = true;
-      AppMethodBeat.o(263251);
+      AppMethodBeat.o(243886);
       return;
-      label279:
+      label282:
       i += 1;
     }
   }

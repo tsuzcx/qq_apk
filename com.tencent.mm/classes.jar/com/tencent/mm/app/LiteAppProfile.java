@@ -4,9 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.booter.s;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.booter.q;
+import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
 import com.tencent.mm.sdk.CommLibFileName;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
@@ -15,10 +17,9 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler;
 import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler.IOnUncaughtExceptionListener;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/app/LiteAppProfile;", "Lcom/tencent/mm/compatible/loader/Profile;", "()V", "PROCESS_NAME", "", "getPROCESS_NAME", "()Ljava/lang/String;", "TAG", "getTAG", "onConfigurationChanged", "", "config", "Landroid/content/res/Configuration;", "onCreate", "onTrimMemory", "level", "", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/app/LiteAppProfile;", "Lcom/tencent/mm/compatible/loader/Profile;", "()V", "PROCESS_NAME", "", "getPROCESS_NAME", "()Ljava/lang/String;", "TAG", "getTAG", "onConfigurationChanged", "", "config", "Landroid/content/res/Configuration;", "onCreate", "onTrimMemory", "level", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LiteAppProfile
   extends com.tencent.mm.compatible.loader.c
 {
@@ -27,93 +28,89 @@ public final class LiteAppProfile
   
   public LiteAppProfile()
   {
-    AppMethodBeat.i(278803);
+    AppMethodBeat.i(239257);
     this.TAG = "MicroMsg.LiteAppProfile";
-    this.PROCESS_NAME = (MMApplicationContext.getProcessName() + ":lite");
-    AppMethodBeat.o(278803);
+    this.PROCESS_NAME = kotlin.g.b.s.X(MMApplicationContext.getProcessName(), ":lite");
+    AppMethodBeat.o(239257);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(278801);
-    p.k(paramConfiguration, "config");
+    AppMethodBeat.i(239261);
+    kotlin.g.b.s.u(paramConfiguration, "config");
     Log.i(this.TAG, "onConfigurationChanged");
-    AppMethodBeat.o(278801);
+    AppMethodBeat.o(239261);
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(278800);
+    AppMethodBeat.i(239260);
     Log.i(this.TAG, "LiteAppProfile onCreate.");
     long l = System.currentTimeMillis();
-    Object localObject1 = this.app;
-    p.j(localObject1, "app");
-    localObject1 = com.tencent.mm.booter.d.cc(((Application)localObject1).getBaseContext());
-    p.j(localObject1, "debugger");
-    localObject1 = new s((com.tencent.mm.booter.d)localObject1);
-    ((s)localObject1).JC("LITE");
-    com.tencent.mm.platformtools.ac.mEX = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.display_errcode"), false);
-    com.tencent.mm.platformtools.ac.mEY = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.display_msgstate"), false);
-    com.tencent.mm.platformtools.ac.mEZ = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.network.simulate_fault"), false);
-    com.tencent.mm.platformtools.ac.mFa = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.network.force_touch"), false);
-    com.tencent.mm.platformtools.ac.mFb = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
-    com.tencent.mm.platformtools.ac.mFc = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.crashIsExit"), false);
-    com.tencent.mm.platformtools.ac.mFh = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.album_show_info"), false);
-    com.tencent.mm.platformtools.ac.mFi = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.location_help"), false);
-    com.tencent.mm.platformtools.ac.mFl = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.force_soso"), false);
-    com.tencent.mm.platformtools.ac.mFm = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.simulatePostServerError"), false);
-    com.tencent.mm.platformtools.ac.mFn = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
-    com.tencent.mm.platformtools.ac.mFo = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
-    com.tencent.mm.platformtools.ac.mFr = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.filterfpnp"), false);
-    com.tencent.mm.platformtools.ac.mFs = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.testForPull"), false);
-    int i = Util.nullAs(((s)localObject1).JD(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
-    com.tencent.mm.platformtools.ac.mFp = i;
-    if ((i != 4) && (com.tencent.mm.platformtools.ac.mFp > 0))
+    Object localObject1 = com.tencent.mm.booter.d.cO(this.app.getBaseContext());
+    kotlin.g.b.s.s(localObject1, "debugger");
+    localObject1 = new com.tencent.mm.booter.s((com.tencent.mm.booter.d)localObject1);
+    ((com.tencent.mm.booter.s)localObject1).Ci("LITE");
+    z.pBz = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.display_errcode"), false);
+    z.pBA = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.display_msgstate"), false);
+    z.pBB = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.network.simulate_fault"), false);
+    z.pBC = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.network.force_touch"), false);
+    z.pBD = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
+    z.pBE = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.crashIsExit"), false);
+    z.pBI = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.album_show_info"), false);
+    z.pBJ = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.location_help"), false);
+    z.pBM = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.force_soso"), false);
+    z.pBN = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.simulatePostServerError"), false);
+    z.pBO = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
+    z.pBP = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
+    z.pBS = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.filterfpnp"), false);
+    z.pBT = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.testForPull"), false);
+    int i = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Cj(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
+    z.pBQ = i;
+    if ((i != 4) && (z.pBQ > 0))
     {
-      com.tencent.mm.storage.aq.VfZ = com.tencent.mm.platformtools.ac.mFp;
-      Log.e(((s)localObject1).TAG, "cdn thread num " + com.tencent.mm.platformtools.ac.mFp);
+      com.tencent.mm.storage.as.acHo = z.pBQ;
+      Log.e(((com.tencent.mm.booter.s)localObject1).TAG, kotlin.g.b.s.X("cdn thread num ", Integer.valueOf(z.pBQ)));
     }
-    com.tencent.mm.platformtools.ac.mFq = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
+    z.pBR = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
     try
     {
-      localObject2 = Integer.decode(((s)localObject1).getString(".com.tencent.mm.debug.log.setversion"));
-      p.j(localObject2, "Integer.decode(getString…m.debug.log.setversion\"))");
-      i = ((Integer)localObject2).intValue();
-      com.tencent.mm.protocal.d.arg(i);
-      new StringBuilder("set up test protocal version = ").append(Integer.toHexString(i));
+      localObject2 = Integer.decode(((com.tencent.mm.booter.s)localObject1).getString(".com.tencent.mm.debug.log.setversion"));
+      kotlin.g.b.s.s(localObject2, "malformVersion");
+      com.tencent.mm.protocal.d.axo(((Integer)localObject2).intValue());
+      kotlin.g.b.s.X("set up test protocal version = ", Integer.toHexString(((Integer)localObject2).intValue()));
     }
     catch (Exception localException4)
     {
       try
       {
-        localObject2 = ((s)localObject1).getString(".com.tencent.mm.debug.log.setapilevel");
+        localObject2 = ((com.tencent.mm.booter.s)localObject1).getString(".com.tencent.mm.debug.log.setapilevel");
         if (!Util.isNullOrNil((String)localObject2))
         {
-          com.tencent.mm.protocal.d.kQZ = "android-".concat(String.valueOf(localObject2));
-          com.tencent.mm.protocal.d.RAy = "android-".concat(String.valueOf(localObject2));
-          com.tencent.mm.protocal.d.RAA = String.valueOf(localObject2);
+          com.tencent.mm.protocal.d.nsC = kotlin.g.b.s.X("android-", localObject2);
+          com.tencent.mm.protocal.d.Yxc = kotlin.g.b.s.X("android-", localObject2);
+          com.tencent.mm.protocal.d.Yxe = kotlin.g.b.s.X("", localObject2);
           CrashReportFactory.setDebugerApiLevel((String)localObject2);
-          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.kQZ).append(" ").append(CrashReportFactory.getDebugerApiLevel());
+          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.nsC).append(' ').append(CrashReportFactory.getDebugerApiLevel());
         }
       }
       catch (Exception localException4)
       {
         try
         {
-          localObject2 = Integer.decode(((s)localObject1).getString(".com.tencent.mm.debug.log.setuin"));
-          p.j(localObject2, "Integer.decode(getString…nt.mm.debug.log.setuin\"))");
-          i = ((Integer)localObject2).intValue();
-          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.RAC).append(" new: ").append(i);
-          com.tencent.mm.protocal.d.RAC = i;
+          localObject2 = Integer.decode(((com.tencent.mm.booter.s)localObject1).getString(".com.tencent.mm.debug.log.setuin"));
+          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.Yxg).append(" new: ").append(localObject2);
+          com.tencent.mm.protocal.d.Yxg = ((Integer)localObject2).intValue();
         }
         catch (Exception localException4)
         {
           try
           {
-            Object localObject2 = Integer.decode(((s)localObject1).getString(".com.tencent.mm.debug.log.setchannel"));
-            p.j(localObject2, "Integer.decode(getString…m.debug.log.setchannel\"))");
-            i = ((Integer)localObject2).intValue();
-            ((s)localObject1).aqT().iPy = i;
+            Object localObject2 = Integer.decode(((com.tencent.mm.booter.s)localObject1).getString(".com.tencent.mm.debug.log.setchannel"));
+            com.tencent.mm.booter.d locald = ((q)localObject1).lsS;
+            kotlin.g.b.s.s(localObject2, "setchannel");
+            locald.lrt = ((Integer)localObject2).intValue();
+            kotlin.g.b.s.X("set up test channel = ", localObject2);
           }
           catch (Exception localException4)
           {
@@ -121,54 +118,54 @@ public final class LiteAppProfile
             {
               for (;;)
               {
-                boolean bool1 = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.report.debugmodel"), false);
-                boolean bool2 = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.report.kvstat"), false);
-                boolean bool3 = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.report.clientpref"), false);
-                boolean bool4 = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.report.useraction"), false);
-                com.tencent.mm.plugin.report.a.c.d(bool1, bool2, bool3, bool4);
+                boolean bool1 = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.report.debugmodel"), false);
+                boolean bool2 = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.report.kvstat"), false);
+                boolean bool3 = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.report.clientpref"), false);
+                boolean bool4 = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.report.useraction"), false);
+                com.tencent.mm.plugin.report.a.c.e(bool1, bool2, bool3, bool4);
                 new StringBuilder("try control report : debugModel[").append(bool1).append("],kv[").append(bool2).append("], clientPref[").append(bool3).append("], useraction[").append(bool4).append(']');
-                com.tencent.mm.platformtools.ac.mFH = Util.nullAs(((s)localObject1).getString(".com.tencent.mm.debug.jsapi.permission"), "");
-                Log.d(((s)localObject1).TAG, "Test.jsapiPermission = " + com.tencent.mm.platformtools.ac.mFH);
-                com.tencent.mm.platformtools.ac.mFI = Util.nullAs(((s)localObject1).getString(".com.tencent.mm.debug.generalcontrol.permission"), "");
-                Log.d(((s)localObject1).TAG, "Test.generalCtrl = " + com.tencent.mm.platformtools.ac.mFI);
-                com.tencent.mm.platformtools.ac.mFJ = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.skiploadurlcheck"), false);
-                Log.d(((s)localObject1).TAG, "Test.skipLoadUrlCheck = " + com.tencent.mm.platformtools.ac.mFJ);
-                com.tencent.mm.platformtools.ac.mFK = Util.nullAs(((s)localObject1).JE(".com.tencent.mm.debug.forcex5webview"), false);
-                Log.d(((s)localObject1).TAG, "Test.forceX5WebView = " + com.tencent.mm.platformtools.ac.mFK);
-                f.bE((Context)((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIC());
-                t.addOnUncaughtExceptionListener((MMUncaughtExceptionHandler.IOnUncaughtExceptionListener)new a());
-                t.f(false, this.PROCESS_NAME);
-                ac.abg();
-                a.aak();
+                z.pCh = Util.nullAs(((com.tencent.mm.booter.s)localObject1).getString(".com.tencent.mm.debug.jsapi.permission"), "");
+                Log.d(((com.tencent.mm.booter.s)localObject1).TAG, kotlin.g.b.s.X("Test.jsapiPermission = ", z.pCh));
+                z.pCi = Util.nullAs(((com.tencent.mm.booter.s)localObject1).getString(".com.tencent.mm.debug.generalcontrol.permission"), "");
+                Log.d(((com.tencent.mm.booter.s)localObject1).TAG, kotlin.g.b.s.X("Test.generalCtrl = ", z.pCi));
+                z.pCj = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.skiploadurlcheck"), false);
+                Log.d(((com.tencent.mm.booter.s)localObject1).TAG, kotlin.g.b.s.X("Test.skipLoadUrlCheck = ", Boolean.valueOf(z.pCj)));
+                z.pCk = Util.nullAs(((com.tencent.mm.booter.s)localObject1).Ck(".com.tencent.mm.debug.forcex5webview"), false);
+                Log.d(((com.tencent.mm.booter.s)localObject1).TAG, kotlin.g.b.s.X("Test.forceX5WebView = ", Boolean.valueOf(z.pCk)));
+                h.cr((Context)((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).bGP);
+                w.addOnUncaughtExceptionListener((MMUncaughtExceptionHandler.IOnUncaughtExceptionListener)new a());
+                w.f(false, this.PROCESS_NAME);
+                af.aCS();
+                a.aBO();
                 LiteAppProfile.class.getClassLoader();
-                j.load("wechatxlog");
-                j.KW("wechatcommon");
-                j.KW("wechatbase");
-                j.KW("wechatmm");
-                j.KW(CommLibFileName.quic);
-                j.load("wechatlv");
-                j.load("liteapphelper");
+                k.load("wechatxlog");
+                k.DA("wechatcommon");
+                k.DA("wechatbase");
+                k.DA("wechatmm");
+                k.DA(CommLibFileName.quic);
+                k.load("wechatlv");
+                k.load("liteapphelper");
                 Log.i(this.TAG, "LiteAppProfile onCreate finish in %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-                AppMethodBeat.o(278800);
+                AppMethodBeat.o(239260);
                 return;
                 localException1 = localException1;
-                Log.i(((s)localObject1).TAG, "no debugger was got");
+                Log.i(((com.tencent.mm.booter.s)localObject1).TAG, "no debugger was got");
                 continue;
                 localException2 = localException2;
-                Log.i(((s)localObject1).TAG, "no debugger was got");
+                Log.i(((com.tencent.mm.booter.s)localObject1).TAG, "no debugger was got");
                 continue;
                 localException3 = localException3;
-                Log.i(((s)localObject1).TAG, "no debugger was got");
+                Log.i(((com.tencent.mm.booter.s)localObject1).TAG, "no debugger was got");
                 continue;
                 localException4 = localException4;
-                Log.i(((s)localObject1).TAG, "no debugger was got");
+                Log.i(((com.tencent.mm.booter.s)localObject1).TAG, "no debugger was got");
               }
             }
             catch (Exception localException5)
             {
               for (;;)
               {
-                Log.i(((s)localObject1).TAG, "no debugger was got");
+                Log.i(((com.tencent.mm.booter.s)localObject1).TAG, "no debugger was got");
               }
             }
           }
@@ -179,32 +176,32 @@ public final class LiteAppProfile
   
   public final void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(278802);
+    AppMethodBeat.i(239264);
     super.onTrimMemory(paramInt);
     Log.v(this.TAG, "onTerminate(l : %d)", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(278802);
+    AppMethodBeat.o(239264);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/app/LiteAppProfile$onCreate$1", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler$IOnUncaughtExceptionListener;", "uncaughtException", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "msg", "", "ex", "", "app_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/app/LiteAppProfile$onCreate$1", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler$IOnUncaughtExceptionListener;", "uncaughtException", "", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "msg", "", "ex", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements MMUncaughtExceptionHandler.IOnUncaughtExceptionListener
   {
     public final void uncaughtException(MMUncaughtExceptionHandler paramMMUncaughtExceptionHandler, String paramString, Throwable paramThrowable)
     {
-      AppMethodBeat.i(289814);
-      p.k(paramMMUncaughtExceptionHandler, "ueh");
-      p.k(paramString, "msg");
-      p.k(paramThrowable, "ex");
-      com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 3L, 1L);
-      com.tencent.mm.plugin.report.service.h.IzE.kvStat(23380, "1");
-      KVCommCrossProcessReceiver.fBy();
-      AppMethodBeat.o(289814);
+      AppMethodBeat.i(239098);
+      kotlin.g.b.s.u(paramMMUncaughtExceptionHandler, "ueh");
+      kotlin.g.b.s.u(paramString, "msg");
+      kotlin.g.b.s.u(paramThrowable, "ex");
+      com.tencent.mm.plugin.report.service.h.OAn.p(1293L, 3L, 1L);
+      com.tencent.mm.plugin.report.service.h.OAn.kvStat(23380, "1");
+      KVCommCrossProcessReceiver.gNR();
+      AppMethodBeat.o(239098);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.LiteAppProfile
  * JD-Core Version:    0.7.0.1
  */

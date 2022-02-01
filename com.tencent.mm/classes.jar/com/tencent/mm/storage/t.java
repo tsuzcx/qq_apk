@@ -2,15 +2,15 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.a.a;
-import com.tencent.mm.ao.a.b;
-import com.tencent.mm.ao.a.j;
-import com.tencent.mm.ao.a.k;
-import com.tencent.mm.ao.a.l;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ao.g;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.bq.b;
+import com.tencent.mm.an.a.a;
+import com.tencent.mm.an.a.b;
+import com.tencent.mm.an.a.j;
+import com.tencent.mm.an.a.k;
+import com.tencent.mm.an.a.l;
+import com.tencent.mm.an.af;
+import com.tencent.mm.an.g;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.model.br.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
@@ -32,14 +32,14 @@ public final class t
     super(parami);
     AppMethodBeat.i(124576);
     e(getDB(), "bizchatmessage");
-    a(new i.b(16, "bizchatmessage", i.b.b(2500001L, 3000000L, 99000001L, 102000000L)));
+    a(new i.b(16, "bizchatmessage", i.b.d(2500001L, 3000000L, 99000001L, 102000000L)));
     AppMethodBeat.o(124576);
   }
   
-  private static String bvg(String paramString)
+  private static String bvo(String paramString)
   {
     AppMethodBeat.i(176158);
-    long l = ((n)com.tencent.mm.kernel.h.ae(n.class)).bco().aOu(paramString);
+    long l = ((n)com.tencent.mm.kernel.h.ax(n.class)).bAd().aLt(paramString);
     if (l > 0L)
     {
       paramString = " createTime > " + l + " AND ";
@@ -50,7 +50,7 @@ public final class t
     return "";
   }
   
-  private static String cd(String paramString, long paramLong)
+  private static String cp(String paramString, long paramLong)
   {
     AppMethodBeat.i(124578);
     paramString = " bizChatId= " + paramLong + " AND talker= '" + paramString + "'";
@@ -58,19 +58,19 @@ public final class t
     return paramString;
   }
   
-  public final int L(String paramString, long paramLong1, long paramLong2)
+  public final int R(String paramString, long paramLong1, long paramLong2)
   {
     int i = 0;
     AppMethodBeat.i(124593);
-    ca localca = this.Vcu.Oq(paramLong2);
-    if (localca.field_msgId == 0L)
+    cc localcc = this.acDE.sl(paramLong2);
+    if ((localcc == null) || (localcc.field_msgId == 0L))
     {
       Log.e("MicroMsg.BizChatMessageStorage", "getCountEarlyThan fail, msg does not exist");
       AppMethodBeat.o(124593);
       return 0;
     }
-    String str = aOY(paramString);
-    paramString = "SELECT COUNT(*) FROM " + str + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  WHERE " + bvg(paramString) + cd(paramString, paramLong1) + "AND " + this.Vcu.eSt() + " AND createTime < " + localca.field_createTime;
+    String str = aLY(paramString);
+    paramString = "SELECT COUNT(*) FROM " + str + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  WHERE " + bvo(paramString) + cp(paramString, paramLong1) + "AND " + this.acDE.gbo() + " AND createTime < " + localcc.getCreateTime();
     paramString = getDB().rawQuery(paramString, null);
     if (paramString.moveToLast()) {
       i = paramString.getInt(0);
@@ -80,68 +80,68 @@ public final class t
     return i;
   }
   
-  protected final boolean a(ca paramca, bq.b paramb)
+  protected final boolean a(cc paramcc, br.b paramb)
   {
     AppMethodBeat.i(124581);
-    if (paramca == null)
+    if (paramcc == null)
     {
       Log.w("MicroMsg.BizChatMessageStorage", "dealMsgSourceValue:message == null");
       AppMethodBeat.o(124581);
       return false;
     }
-    paramca.EH(-1L);
+    paramcc.gY(-1L);
     if (paramb != null)
     {
-      if (!g.KI(paramca.field_talker)) {
+      if (!g.Dn(paramcc.field_talker)) {
         break label406;
       }
-      if (Util.isNullOrNil(paramb.luB))
+      if (Util.isNullOrNil(paramb.olZ))
       {
-        Log.w("MicroMsg.BizChatMessageStorage", "EnterpriseChat msgSourceValue error: %s", new Object[] { paramca.hxy });
+        Log.w("MicroMsg.BizChatMessageStorage", "EnterpriseChat msgSourceValue error: %s", new Object[] { paramcc.jUr });
         AppMethodBeat.o(124581);
         return false;
       }
-      localObject = new com.tencent.mm.ao.a.c();
-      ((com.tencent.mm.ao.a.c)localObject).field_bizChatServId = paramb.luB;
-      ((com.tencent.mm.ao.a.c)localObject).field_brandUserName = paramca.field_talker;
-      if (!Util.isNullOrNil(paramb.luC)) {
-        ((com.tencent.mm.ao.a.c)localObject).field_chatVersion = Util.getInt(paramb.luC, -1);
+      localObject = new com.tencent.mm.an.a.c();
+      ((com.tencent.mm.an.a.c)localObject).field_bizChatServId = paramb.olZ;
+      ((com.tencent.mm.an.a.c)localObject).field_brandUserName = paramcc.field_talker;
+      if (!Util.isNullOrNil(paramb.oma)) {
+        ((com.tencent.mm.an.a.c)localObject).field_chatVersion = Util.getInt(paramb.oma, -1);
       }
-      if (Util.isNullOrNil(paramb.luA)) {
+      if (Util.isNullOrNil(paramb.olY)) {
         break label360;
       }
-      i = Util.getInt(paramb.luz, j.lGC.lGG);
-      ((com.tencent.mm.ao.a.c)localObject).field_chatType = Util.getInt(paramb.luA, i);
-      Log.d("MicroMsg.BizChatMessageStorage", "bizchatId:%s,userId:%s", new Object[] { paramb.luB, paramb.userId });
-      localObject = com.tencent.mm.ao.a.e.e((com.tencent.mm.ao.a.c)localObject);
+      i = Util.getInt(paramb.olX, j.oyj.oyn);
+      ((com.tencent.mm.an.a.c)localObject).field_chatType = Util.getInt(paramb.olY, i);
+      Log.d("MicroMsg.BizChatMessageStorage", "bizchatId:%s,userId:%s", new Object[] { paramb.olZ, paramb.userId });
+      localObject = com.tencent.mm.an.a.e.e((com.tencent.mm.an.a.c)localObject);
       if (localObject == null) {
         break label391;
       }
-      paramca.EH(((com.tencent.mm.ao.a.c)localObject).field_bizChatLocalId);
-      paramca.field_bizChatUserId = Util.nullAsNil(paramb.userId);
-      paramca.ila = true;
-      if (paramb.luE.equals("1")) {
-        paramca.pJ(1);
+      paramcc.gY(((com.tencent.mm.an.a.c)localObject).field_bizChatLocalId);
+      paramcc.field_bizChatUserId = Util.nullAsNil(paramb.userId);
+      paramcc.kKZ = true;
+      if (paramb.omc.equals("1")) {
+        paramcc.pI(1);
       }
-      paramca.Jq(paramb.lus);
-      if ((paramca.field_isSend != 1) && (paramb.userId != null))
+      paramcc.BW(paramb.olR);
+      if ((paramcc.field_isSend != 1) && (paramb.userId != null))
       {
-        localObject = af.bjz().gn(paramca.field_talker);
+        localObject = af.bHj().hN(paramcc.field_talker);
         if (paramb.userId.equals(localObject)) {
-          paramca.pJ(1);
+          paramcc.pI(1);
         }
       }
       if (!Util.isNullOrNil(paramb.userId))
       {
         localObject = new k();
         ((k)localObject).field_userId = paramb.userId;
-        ((k)localObject).field_userName = paramb.luD;
-        ((k)localObject).field_brandUserName = paramca.field_talker;
-        af.bjz().c((k)localObject);
+        ((k)localObject).field_userName = paramb.omb;
+        ((k)localObject).field_brandUserName = paramcc.field_talker;
+        af.bHj().c((k)localObject);
       }
     }
     label360:
-    while (Util.isNullOrNil(paramb.luB))
+    while (Util.isNullOrNil(paramb.olZ))
     {
       for (;;)
       {
@@ -149,8 +149,8 @@ public final class t
         int i;
         AppMethodBeat.o(124581);
         return true;
-        if (!Util.isNullOrNil(paramb.luz)) {
-          ((com.tencent.mm.ao.a.c)localObject).field_chatType = Util.getInt(paramb.luz, j.lGC.lGG);
+        if (!Util.isNullOrNil(paramb.olX)) {
+          ((com.tencent.mm.an.a.c)localObject).field_chatType = Util.getInt(paramb.olX, j.oyj.oyn);
         }
       }
       Log.w("MicroMsg.BizChatMessageStorage", "dealMsgSourceValue:bizChatInfo == null!");
@@ -164,14 +164,14 @@ public final class t
     return false;
   }
   
-  public final String aEK(String paramString)
+  public final String aAD(String paramString)
   {
     AppMethodBeat.i(124577);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!g.KI(paramString)) {
+      if (!g.Dn(paramString)) {
         break;
       }
       AppMethodBeat.o(124577);
@@ -181,41 +181,25 @@ public final class t
     return null;
   }
   
-  public final int aOO(String paramString)
+  public final int aLO(String paramString)
   {
     AppMethodBeat.i(124587);
     Log.w("MicroMsg.BizChatMessageStorage", "not attention  deleteEnterpriseMsgByTalker :%s  stack:%s", new Object[] { paramString, MMStack.getStack(true) });
     String str = "talker= '" + paramString + "'";
-    nF(aOY(paramString), str);
-    int i = getDB().delete(aOY(paramString), str, null);
+    pD(aLY(paramString), str);
+    int i = getDB().delete(aLY(paramString), str, null);
     if (i != 0)
     {
-      this.Vcu.doNotify("delete_talker ".concat(String.valueOf(paramString)));
+      this.acDE.doNotify("delete_talker ".concat(String.valueOf(paramString)));
       paramString = new i.c(paramString, "delete", null, i, (byte)0);
-      paramString.EVP = -1L;
+      paramString.KRp = -1L;
       a(paramString);
     }
     AppMethodBeat.o(124587);
     return i;
   }
   
-  public final Cursor b(String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(124584);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      Log.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, argument is invalid");
-      AppMethodBeat.o(124584);
-      return null;
-    }
-    String str = aOY(paramString);
-    paramString = "select * from ( select * from " + str + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + bvg(paramString) + cd(paramString, paramLong) + "AND " + this.Vcu.eSt() + " order by createTime DESC limit " + paramInt2 + " OFFSET " + paramInt1 + ") order by createTime ASC ";
-    paramString = getDB().rawQuery(paramString, null);
-    AppMethodBeat.o(124584);
-    return paramString;
-  }
-  
-  public final List<ca> c(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+  public final List<cc> b(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
   {
     AppMethodBeat.i(124582);
     long l = System.currentTimeMillis();
@@ -225,7 +209,7 @@ public final class t
       AppMethodBeat.o(124582);
       return null;
     }
-    paramLong2 = this.Vcu.aT(paramString, paramLong2);
+    paramLong2 = this.acDE.bc(paramString, paramLong2);
     if (paramLong2 == 0L)
     {
       Log.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, msg is null");
@@ -235,7 +219,7 @@ public final class t
     ArrayList localArrayList = new ArrayList();
     if (paramBoolean)
     {
-      paramString = "select * from " + aOY(paramString) + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cd(paramString, paramLong1) + "AND " + this.Vcu.eSt() + " AND createTime > " + paramLong2 + "  order by createTime ASC limit 10";
+      paramString = "select * from " + aLY(paramString) + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cp(paramString, paramLong1) + "AND " + this.acDE.gbo() + " AND createTime > " + paramLong2 + "  order by createTime ASC limit 10";
       paramString = getDB().rawQuery(paramString, null);
       if (!paramString.moveToFirst()) {}
     }
@@ -246,17 +230,17 @@ public final class t
         if (paramString.isAfterLast()) {
           break label312;
         }
-        ca localca = new ca();
-        localca.convertFrom(paramString);
+        cc localcc = new cc();
+        localcc.convertFrom(paramString);
         paramString.moveToNext();
         if (paramBoolean)
         {
-          localArrayList.add(localca);
+          localArrayList.add(localcc);
           continue;
-          paramString = "select * from " + aOY(paramString) + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cd(paramString, paramLong1) + "AND " + this.Vcu.eSt() + " AND createTime < " + paramLong2 + "  order by createTime DESC limit 10";
+          paramString = "select * from " + aLY(paramString) + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cp(paramString, paramLong1) + "AND " + this.acDE.gbo() + " AND createTime < " + paramLong2 + "  order by createTime DESC limit 10";
           break;
         }
-        localArrayList.add(0, localca);
+        localArrayList.add(0, localcc);
       }
     }
     label312:
@@ -266,7 +250,23 @@ public final class t
     return localArrayList;
   }
   
-  public final ca ce(String paramString, long paramLong)
+  public final Cursor c(String paramString, long paramLong, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(124584);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      Log.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, argument is invalid");
+      AppMethodBeat.o(124584);
+      return null;
+    }
+    String str = aLY(paramString);
+    paramString = "select * from ( select * from " + str + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + bvo(paramString) + cp(paramString, paramLong) + "AND " + this.acDE.gbo() + " order by createTime DESC limit " + paramInt2 + " OFFSET " + paramInt1 + ") order by createTime ASC ";
+    paramString = getDB().rawQuery(paramString, null);
+    AppMethodBeat.o(124584);
+    return paramString;
+  }
+  
+  public final cc cq(String paramString, long paramLong)
   {
     AppMethodBeat.i(124579);
     if (Util.isNullOrNil(paramString))
@@ -274,20 +274,20 @@ public final class t
       AppMethodBeat.o(124579);
       return null;
     }
-    ca localca = new ca();
-    paramString = "select * from " + aOY(paramString) + " where" + cd(paramString, paramLong) + "order by createTime DESC limit 1";
+    cc localcc = new cc();
+    paramString = "select * from " + aLY(paramString) + " where" + cp(paramString, paramLong) + "order by createTime DESC limit 1";
     paramString = getDB().rawQuery(paramString, null);
     if (paramString.getCount() != 0)
     {
       paramString.moveToFirst();
-      localca.convertFrom(paramString);
+      localcc.convertFrom(paramString);
     }
     paramString.close();
     AppMethodBeat.o(124579);
-    return localca;
+    return localcc;
   }
   
-  public final Cursor cf(String paramString, long paramLong)
+  public final Cursor cr(String paramString, long paramLong)
   {
     AppMethodBeat.i(124583);
     long l = System.currentTimeMillis();
@@ -297,40 +297,40 @@ public final class t
       AppMethodBeat.o(124583);
       return null;
     }
-    Object localObject = aOY(paramString);
-    paramString = "select * from " + (String)localObject + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cd(paramString, paramLong) + "AND " + this.Vcu.eSu() + "  order by createTime";
+    Object localObject = aLY(paramString);
+    paramString = "select * from " + (String)localObject + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cp(paramString, paramLong) + "AND " + this.acDE.gbp() + "  order by createTime";
     localObject = getDB().rawQuery(paramString, null);
     Log.d("MicroMsg.BizChatMessageStorage", "all time: %d, sql: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString });
     AppMethodBeat.o(124583);
     return localObject;
   }
   
-  public final int cg(String paramString, long paramLong)
+  public final int cs(String paramString, long paramLong)
   {
     AppMethodBeat.i(124586);
     Log.w("MicroMsg.BizChatMessageStorage", "deleteByTalker :%s  stack:%s", new Object[] { paramString, MMStack.getStack(true) });
-    nF(aOY(paramString), cd(paramString, paramLong));
-    int i = getDB().delete(aOY(paramString), cd(paramString, paramLong), null);
+    pD(aLY(paramString), cp(paramString, paramLong));
+    int i = getDB().delete(aLY(paramString), cp(paramString, paramLong), null);
     if (i != 0)
     {
-      this.Vcu.doNotify("delete_talker ".concat(String.valueOf(paramString)));
+      this.acDE.doNotify("delete_talker ".concat(String.valueOf(paramString)));
       paramString = new i.c(paramString, "delete", null, i, (byte)0);
-      paramString.EVP = -1L;
+      paramString.KRp = -1L;
       a(paramString);
     }
     AppMethodBeat.o(124586);
     return i;
   }
   
-  public final Cursor ch(String paramString, long paramLong)
+  public final Cursor ct(String paramString, long paramLong)
   {
     AppMethodBeat.i(124588);
-    paramString = getDB().query(aOY(paramString), null, cd(paramString, paramLong), null, null, null, "createTime ASC ");
+    paramString = getDB().query(aLY(paramString), null, cp(paramString, paramLong), null, null, null, "createTime ASC ");
     AppMethodBeat.o(124588);
     return paramString;
   }
   
-  public final int ci(String paramString, long paramLong)
+  public final int cu(String paramString, long paramLong)
   {
     AppMethodBeat.i(124590);
     if (paramString == null)
@@ -339,24 +339,24 @@ public final class t
       AppMethodBeat.o(124590);
       return -1;
     }
-    a locala = af.bjy().Gt(paramLong);
-    if (locala.field_msgCount != 0)
+    a locala = af.bHi().iD(paramLong);
+    if ((locala != null) && (locala.field_msgCount != 0))
     {
       i = locala.field_msgCount;
       AppMethodBeat.o(124590);
       return i;
     }
     Log.i("MicroMsg.BizChatMessageStorage", "geBiztMsgCount contactMsgCount is 0 ,go normal %s", new Object[] { paramString });
-    int i = cj(paramString, paramLong);
+    int i = cv(paramString, paramLong);
     AppMethodBeat.o(124590);
     return i;
   }
   
-  public final int cj(String paramString, long paramLong)
+  public final int cv(String paramString, long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(124591);
-    paramString = "SELECT COUNT(*) FROM " + aOY(paramString) + " WHERE " + cd(paramString, paramLong);
+    paramString = "SELECT COUNT(*) FROM " + aLY(paramString) + " WHERE " + cp(paramString, paramLong);
     Log.v("MicroMsg.BizChatMessageStorage", "getBizMsgCountFromMsgTable sql:[%s]", new Object[] { paramString });
     paramString = getDB().rawQuery(paramString, null);
     if (paramString.moveToLast()) {
@@ -367,11 +367,11 @@ public final class t
     return i;
   }
   
-  public final int ck(String paramString, long paramLong)
+  public final int cw(String paramString, long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(124592);
-    paramString = "SELECT COUNT(*) FROM " + this.Vcu.aOY(paramString) + " WHERE " + bvg(paramString) + cd(paramString, paramLong) + "AND " + this.Vcu.eSt();
+    paramString = "SELECT COUNT(*) FROM " + this.acDE.aLY(paramString) + " WHERE " + bvo(paramString) + cp(paramString, paramLong) + "AND " + this.acDE.gbo();
     paramString = getDB().rawQuery(paramString, null);
     if (paramString.moveToLast()) {
       i = paramString.getInt(0);
@@ -381,7 +381,7 @@ public final class t
     return i;
   }
   
-  public final Cursor d(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public final Cursor e(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(124585);
     if ((paramString == null) || (paramString.length() == 0))
@@ -390,27 +390,27 @@ public final class t
       AppMethodBeat.o(124585);
       return null;
     }
-    String str = aOY(paramString);
-    paramString = "select * from " + str + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cd(paramString, paramLong1) + "AND " + this.Vcu.eSt() + " AND createTime >= " + paramLong2 + " AND createTime< " + paramLong3 + " order by createTime ASC";
+    String str = aLY(paramString);
+    paramString = "select * from " + str + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + cp(paramString, paramLong1) + "AND " + this.acDE.gbo() + " AND createTime >= " + paramLong2 + " AND createTime< " + paramLong3 + " order by createTime ASC";
     paramString = getDB().rawQuery(paramString, null);
     AppMethodBeat.o(124585);
     return paramString;
   }
   
-  public final List<ca> t(String paramString, long paramLong, int paramInt)
+  public final List<cc> y(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(124580);
     ArrayList localArrayList = new ArrayList();
-    paramString = "SELECT * FROM " + aOY(paramString) + " WHERE" + cd(paramString, paramLong) + "AND isSend = 0 ORDER BY createTime DESC LIMIT " + paramInt;
+    paramString = "SELECT * FROM " + aLY(paramString) + " WHERE" + cp(paramString, paramLong) + "AND isSend = 0 ORDER BY createTime DESC LIMIT " + paramInt;
     paramString = getDB().rawQuery(paramString, null);
     if (paramString.moveToFirst()) {
       while (!paramString.isAfterLast())
       {
-        ca localca = new ca();
-        localca.convertFrom(paramString);
+        cc localcc = new cc();
+        localcc.convertFrom(paramString);
         paramString.moveToNext();
-        if (localca.hwH()) {
-          localArrayList.add(localca);
+        if (localcc.iYl()) {
+          localArrayList.add(localcc);
         }
       }
     }
@@ -419,10 +419,10 @@ public final class t
     return localArrayList;
   }
   
-  public final Cursor u(String paramString, long paramLong, int paramInt)
+  public final Cursor z(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(124589);
-    String str = "SELECT * FROM " + aOY(paramString) + " WHERE " + cd(paramString, paramLong) + " ORDER BY createTime DESC LIMIT " + paramInt;
+    String str = "SELECT * FROM " + aLY(paramString) + " WHERE " + cp(paramString, paramLong) + " ORDER BY createTime DESC LIMIT " + paramInt;
     Log.i("MicroMsg.BizChatMessageStorage", "getBizInitCursor talker:%s, bizChatId:%s, limitCount:%s, sql:[%s]", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt), str });
     paramString = getDB().rawQuery(str, null);
     AppMethodBeat.o(124589);

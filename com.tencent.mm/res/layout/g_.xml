@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@null" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="@dimen/i6"
+<RelativeLayout android:id="@id/br8" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/rw" android:layout_width="@dimen/i" android:layout_height="@dimen/i" android:src="@drawable/icon" />
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/s_" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/mp" />
-        <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/rn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/mo" />
-    </LinearLayout>
-    <LinearLayout android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:id="@id/sj" android:visibility="gone" android:text="@string/tm" style="@style/p5" />
-        <RadioButton android:layout_gravity="center_vertical" android:id="@id/sf" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:button="@drawable/arh" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/i28" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_close" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+    <ImageView android:id="@id/i2h" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:src="@raw/app_brand_video_share" android:layout_alignParentTop="true" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true" />
+</RelativeLayout>

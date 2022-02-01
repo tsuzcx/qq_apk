@@ -1,21 +1,16 @@
 package com.tencent.mm.plugin.textstatus.a;
 
-import android.widget.FrameLayout;
-import com.tencent.mm.plugin.textstatus.proto.TextStatusJumpInfo;
-import com.tencent.mm.plugin.textstatus.proto.d;
-import com.tencent.mm.ui.widget.b;
-
 public abstract interface m
 {
-  public abstract b a(String paramString, FrameLayout paramFrameLayout, TextStatusJumpInfo paramTextStatusJumpInfo, d paramd);
+  public abstract void hFv();
   
-  public abstract i dDF();
+  public abstract void hFw();
   
-  public abstract void release();
+  public abstract void hFx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.a.m
  * JD-Core Version:    0.7.0.1
  */

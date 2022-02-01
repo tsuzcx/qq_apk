@@ -1,138 +1,284 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
+import TT;;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.PaintDrawable;
+import android.media.AudioManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.StateSet;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.r;
 import androidx.lifecycle.x;
-import androidx.lifecycle.y.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.c.k;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelpackage.e;
+import com.tencent.mm.modelvideo.v;
+import com.tencent.mm.plugin.appbrand.api.g;
 import com.tencent.mm.plugin.eggspring.PluginEggSpring;
-import com.tencent.mm.plugin.eggspring.d.b;
-import com.tencent.mm.plugin.eggspring.d.d;
-import com.tencent.mm.plugin.eggspring.d.e;
-import com.tencent.mm.plugin.eggspring.d.f;
-import com.tencent.mm.plugin.eggspring.d.g;
-import com.tencent.mm.plugin.emoji.e.h;
+import com.tencent.mm.plugin.eggspring.e.a;
+import com.tencent.mm.plugin.eggspring.e.b;
+import com.tencent.mm.plugin.eggspring.e.c;
+import com.tencent.mm.plugin.eggspring.e.d;
+import com.tencent.mm.plugin.eggspring.e.e;
+import com.tencent.mm.plugin.eggspring.e.f;
+import com.tencent.mm.plugin.eggspring.e.g;
+import com.tencent.mm.plugin.eggspring.e.h;
+import com.tencent.mm.plugin.eggspring.f;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.vfs.u;
-import kotlin.f;
-import kotlin.g.a.m;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.al;
+import java.util.LinkedList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.k;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ar;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "isChatRoom", "", "()Z", "isChatRoom$delegate", "Lkotlin/Lazy;", "scope", "Lkotlinx/coroutines/CoroutineScope;", "startTime", "", "videoController", "Lcom/tencent/mm/plugin/eggspring/ui/VideoController;", "viewBinding", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewBinding;", "viewModel", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;", "viewModel$annotations", "getViewModel", "()Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;", "viewModel$delegate", "animateCardToShow", "", "bindViewModel", "createShapeDrawable", "Landroid/graphics/drawable/Drawable;", "color", "", "getLayoutId", "getSavePath", "", "url", "makeButtonBackground", "normalColor", "makeStatefulBottomTextColor", "Landroid/content/res/ColorStateList;", "alpha", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "redirect", "target", "", "safeColor", "fallback", "setCoverImage", "vertical", "setupBars", "setupViews", "setupWindow", "observe", "T", "Landroidx/lifecycle/LiveData;", "owner", "Landroidx/lifecycle/LifecycleOwner;", "observer", "Lkotlin/Function1;", "Companion", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "appId$delegate", "Lkotlin/Lazy;", "isChatRoom", "", "()Z", "isChatRoom$delegate", "scope", "Lkotlinx/coroutines/CoroutineScope;", "startTime", "", "videoController", "Lcom/tencent/mm/plugin/eggspring/ui/VideoController;", "viewBinding", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewBinding;", "viewModel", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;", "getViewModel$annotations", "getViewModel", "()Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;", "viewModel$delegate", "animateCardToShow", "", "bindViewModel", "createShapeDrawable", "Landroid/graphics/drawable/Drawable;", "color", "", "getLayoutId", "getSavePath", "url", "makeBottomDividerColor", "alpha", "", "makeButtonBackground", "normalColor", "makeStatefulBottomTextColor", "Landroid/content/res/ColorStateList;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "redirect", "target", "", "safeColor", "fallback", "setCoverImage", "vertical", "setupBars", "setupViews", "setupWindow", "observe", "T", "Landroidx/lifecycle/LiveData;", "owner", "Landroidx/lifecycle/LifecycleOwner;", "observer", "Lkotlin/Function1;", "Companion", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SpringLuckyEggActivity
   extends MMActivity
 {
-  public static final SpringLuckyEggActivity.a uyi;
-  private final ak rcY;
+  public static final SpringLuckyEggActivity.a xEN;
+  private final aq scope;
   private long startTime;
-  private final f uye;
-  private c uyf;
-  private e uyg;
-  private final f uyh;
+  private final kotlin.j ujH;
+  private final kotlin.j vTI;
+  private b xEO;
+  private d xEP;
+  private final kotlin.j xEQ;
   
   static
   {
-    AppMethodBeat.i(249490);
-    uyi = new SpringLuckyEggActivity.a((byte)0);
-    AppMethodBeat.o(249490);
+    AppMethodBeat.i(266778);
+    xEN = new SpringLuckyEggActivity.a((byte)0);
+    AppMethodBeat.o(266778);
   }
   
   public SpringLuckyEggActivity()
   {
-    AppMethodBeat.i(249489);
-    this.rcY = al.iRe();
-    this.uye = kotlin.g.ar((kotlin.g.a.a)new o(this));
-    this.uyh = kotlin.g.ar((kotlin.g.a.a)new i(this));
-    AppMethodBeat.o(249489);
+    AppMethodBeat.i(266632);
+    this.scope = ar.kBZ();
+    this.ujH = k.cm((kotlin.g.a.a)new SpringLuckyEggActivity.n(this));
+    this.xEQ = k.cm((kotlin.g.a.a)new SpringLuckyEggActivity.l(this));
+    this.vTI = k.cm((kotlin.g.a.a)new SpringLuckyEggActivity.d(this));
+    AppMethodBeat.o(266632);
   }
   
-  private final Drawable Jm(int paramInt)
+  private final Drawable JS(int paramInt)
   {
-    AppMethodBeat.i(249484);
+    AppMethodBeat.i(266658);
     Object localObject = new PaintDrawable(paramInt);
-    ((PaintDrawable)localObject).setCornerRadius(com.tencent.mm.ci.a.fromDPToPix((Context)this, 4.0F));
+    ((PaintDrawable)localObject).setCornerRadius(com.tencent.mm.cd.a.fromDPToPix((Context)this, 4.0F));
     localObject = (Drawable)localObject;
-    AppMethodBeat.o(249484);
+    AppMethodBeat.o(266658);
     return localObject;
   }
   
-  public static final Intent a(Context paramContext, com.tencent.mm.be.e parame, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public static final Intent a(Context paramContext, e parame, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    AppMethodBeat.i(249501);
-    p.k(paramContext, "context");
-    p.k(parame, "egg");
-    p.k(paramString1, "keyword");
+    AppMethodBeat.i(266689);
+    s.u(paramContext, "context");
+    s.u(parame, "egg");
+    s.u(paramString1, "keyword");
     paramContext = new Intent(paramContext, SpringLuckyEggActivity.class);
     Bundle localBundle = new Bundle();
     localBundle.putString("keyword", paramString1);
     localBundle.putString("trace_id", paramString3);
     localBundle.putString("app_id", paramString2);
     localBundle.putString("egg_name", parame.name);
-    localBundle.putString("background", parame.jIS.lXE);
+    localBundle.putString("background", parame.mij.oQI);
     localBundle.putBoolean("is_chat_room", paramBoolean);
+    parame = ah.aiuX;
     paramContext.putExtras(localBundle);
-    AppMethodBeat.o(249501);
+    AppMethodBeat.o(266689);
     return paramContext;
   }
   
-  private final d cTo()
+  private static final void a(SpringLuckyEggActivity paramSpringLuckyEggActivity, View paramView)
   {
-    AppMethodBeat.i(249481);
-    d locald = (d)this.uye.getValue();
-    AppMethodBeat.o(249481);
-    return locald;
+    AppMethodBeat.i(266663);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramSpringLuckyEggActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramSpringLuckyEggActivity, "this$0");
+    paramView = f.xEl;
+    paramView = (com.tencent.mm.r.a.n)paramSpringLuckyEggActivity.dxI().xFu.getValue();
+    if (paramView == null) {}
+    for (long l = 0L;; l = paramView.mea)
+    {
+      f.V(22, l);
+      paramSpringLuckyEggActivity.eY(paramSpringLuckyEggActivity.dxI().xFt.getValue());
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(266663);
+      return;
+    }
   }
   
-  private final boolean cTp()
+  private static final void a(SpringLuckyEggActivity paramSpringLuckyEggActivity, String paramString, View paramView, Bitmap paramBitmap, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(249482);
-    boolean bool = ((Boolean)this.uyh.getValue()).booleanValue();
-    AppMethodBeat.o(249482);
-    return bool;
+    AppMethodBeat.i(266680);
+    s.u(paramSpringLuckyEggActivity, "this$0");
+    if (paramBitmap == null)
+    {
+      paramString = (com.tencent.mm.modelpackage.m)paramSpringLuckyEggActivity.dxI().xFv.getValue();
+      if (paramString != null)
+      {
+        paramView = (CharSequence)paramString.oQR;
+        if ((paramView != null) && (paramView.length() != 0)) {
+          break label142;
+        }
+      }
+    }
+    label142:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        paramView = s.X(com.tencent.mm.plugin.emoji.mgr.h.getDataEmojiPath(), "/egg/");
+        paramView = paramView + '/' + paramString.oQR;
+        if (com.tencent.mm.vfs.y.ZC(paramView))
+        {
+          paramString = paramSpringLuckyEggActivity.xEO;
+          paramSpringLuckyEggActivity = paramString;
+          if (paramString == null)
+          {
+            s.bIx("viewBinding");
+            paramSpringLuckyEggActivity = null;
+          }
+          paramSpringLuckyEggActivity.xFh.setImageFilePath(paramView);
+        }
+      }
+      AppMethodBeat.o(266680);
+      return;
+    }
   }
   
-  private final int du(String paramString, @androidx.annotation.a int paramInt)
+  private static final void a(SpringLuckyEggActivity arg0, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(249488);
+    AppMethodBeat.i(266668);
+    s.u(???, "this$0");
+    long l;
+    if (paramBoolean)
+    {
+      paramString = f.xEl;
+      paramString = (com.tencent.mm.r.a.n)???.dxI().xFu.getValue();
+      if (paramString != null) {
+        break label114;
+      }
+      l = 0L;
+    }
+    for (;;)
+    {
+      f.V(23, l);
+      aa.db((Context)???, ???.getString(e.h.xEd));
+      ???.finish();
+      paramString = com.tencent.mm.plugin.eggspring.e.a.xFF;
+      paramString = (String)???.vTI.getValue();
+      if (paramString != null) {}
+      synchronized (com.tencent.mm.plugin.eggspring.e.a.lPT)
+      {
+        ???.add(paramString);
+        paramString = ah.aiuX;
+        com.tencent.mm.plugin.eggspring.e.a.dxK();
+        AppMethodBeat.o(266668);
+        return;
+        label114:
+        l = paramString.mea;
+      }
+    }
+  }
+  
+  private static final boolean a(SpringLuckyEggActivity paramSpringLuckyEggActivity, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(266661);
+    s.u(paramSpringLuckyEggActivity, "this$0");
+    paramSpringLuckyEggActivity.finish();
+    AppMethodBeat.o(266661);
+    return true;
+  }
+  
+  private static final void b(SpringLuckyEggActivity paramSpringLuckyEggActivity, View paramView)
+  {
+    AppMethodBeat.i(266665);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramSpringLuckyEggActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramSpringLuckyEggActivity, "this$0");
+    Log.i("MicroMsg.SpringLuckyEggActivity", "clicked bottom title");
+    if (paramSpringLuckyEggActivity.dxI().xFs.getValue() == null)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(266665);
+      return;
+    }
+    paramView = f.xEl;
+    paramView = (com.tencent.mm.r.a.n)paramSpringLuckyEggActivity.dxI().xFu.getValue();
+    if (paramView == null) {}
+    for (long l = 0L;; l = paramView.mea)
+    {
+      f.V(10, l);
+      paramSpringLuckyEggActivity.eY(paramSpringLuckyEggActivity.dxI().xFs.getValue());
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(266665);
+      return;
+    }
+  }
+  
+  private static final void c(SpringLuckyEggActivity paramSpringLuckyEggActivity, View paramView)
+  {
+    AppMethodBeat.i(266671);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramSpringLuckyEggActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramSpringLuckyEggActivity, "this$0");
+    Log.i("MicroMsg.SpringLuckyEggActivity", "setupViews: click close");
+    paramView = new g.a((Context)paramSpringLuckyEggActivity);
+    paramView.bf((CharSequence)paramSpringLuckyEggActivity.getString(e.h.xEf)).bDE(paramSpringLuckyEggActivity.getString(e.h.xEe)).bDI(paramSpringLuckyEggActivity.getString(e.h.xEc));
+    paramView.c(new SpringLuckyEggActivity..ExternalSyntheticLambda5(paramSpringLuckyEggActivity)).show();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(266671);
+  }
+  
+  private final int dV(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(266660);
     if (paramString == null)
     {
       paramInt = androidx.core.content.a.w((Context)this, paramInt);
-      AppMethodBeat.o(249488);
+      AppMethodBeat.o(266660);
       return paramInt;
     }
     try
@@ -144,248 +290,378 @@ public final class SpringLuckyEggActivity
     {
       for (;;)
       {
-        Log.w("MicroMsg.SpringLuckyEggActivity", "Illegal color value: ".concat(String.valueOf(paramString)));
+        Log.w("MicroMsg.SpringLuckyEggActivity", s.X("Illegal color value: ", paramString));
         paramInt = androidx.core.content.a.w((Context)this, paramInt);
       }
     }
-    AppMethodBeat.o(249488);
+    AppMethodBeat.o(266660);
     return paramInt;
+  }
+  
+  private final c dxI()
+  {
+    AppMethodBeat.i(266636);
+    c localc = (c)this.ujH.getValue();
+    AppMethodBeat.o(266636);
+    return localc;
+  }
+  
+  private final boolean dxJ()
+  {
+    AppMethodBeat.i(266640);
+    boolean bool = ((Boolean)this.xEQ.getValue()).booleanValue();
+    AppMethodBeat.o(266640);
+    return bool;
+  }
+  
+  private final void eY(Object paramObject)
+  {
+    AppMethodBeat.i(266656);
+    Log.i("MicroMsg.SpringLuckyEggActivity", s.X("redirect: target=", paramObject));
+    Object localObject1;
+    Object localObject2;
+    if ((paramObject instanceof com.tencent.mm.r.a.a))
+    {
+      localObject1 = new Intent();
+      localObject2 = ((com.tencent.mm.r.a.a)paramObject).mdB;
+      s.s(localObject2, "target.ad_xml");
+      if (kotlin.n.n.a((CharSequence)localObject2, "<adxml", 0, false, 6) >= 0) {}
+      for (paramObject = ((com.tencent.mm.r.a.a)paramObject).mdB;; paramObject = "<adxml>" + ((com.tencent.mm.r.a.a)paramObject).mdB + "</adxml>")
+      {
+        ((Intent)localObject1).putExtra("sns_landing_pages_xml", paramObject);
+        ((Intent)localObject1).putExtra("sns_landig_pages_from_source", 14);
+        ((Intent)localObject1).putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
+        com.tencent.mm.br.c.b((Context)getContext(), "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", (Intent)localObject1);
+        AppMethodBeat.o(266656);
+        return;
+      }
+    }
+    if ((paramObject instanceof com.tencent.mm.r.a.t))
+    {
+      localObject2 = new g();
+      localObject1 = ((com.tencent.mm.r.a.t)paramObject).met;
+      s.s(localObject1, "target.app_user_name");
+      if (kotlin.n.n.rs((String)localObject1, "@app")) {}
+      for (localObject1 = ((com.tencent.mm.r.a.t)paramObject).met;; localObject1 = s.X(((com.tencent.mm.r.a.t)paramObject).met, "@app"))
+      {
+        ((g)localObject2).username = ((String)localObject1);
+        ((g)localObject2).qAF = ((com.tencent.mm.r.a.t)paramObject).meu;
+        ((g)localObject2).scene = 1189;
+        ((g)localObject2).euz = 0;
+        ((com.tencent.mm.plugin.appbrand.service.t)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.appbrand.service.t.class)).a(MMApplicationContext.getContext(), (g)localObject2);
+        AppMethodBeat.o(266656);
+        return;
+      }
+    }
+    if ((paramObject instanceof com.tencent.mm.r.a.m))
+    {
+      paramObject = ((com.tencent.mm.r.a.m)paramObject).url;
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("rawUrl", paramObject);
+      ((Intent)localObject1).putExtra("from_shortcut", true);
+      ((Intent)localObject1).putExtra("disable_minimize", true);
+      ((Intent)localObject1).putExtra("MMActivity.OverrideEnterAnimation", e.a.anim_not_change);
+      ((Intent)localObject1).putExtra("MMActivity.OverrideExitAnimation", e.a.push_down_out);
+      com.tencent.mm.br.c.b((Context)this, "webview", ".ui.tools.WebViewUI", (Intent)localObject1, 3001);
+      overridePendingTransition(e.a.push_up_in, e.a.anim_not_change);
+      AppMethodBeat.o(266656);
+      return;
+    }
+    if ((paramObject instanceof com.tencent.mm.r.a.d))
+    {
+      localObject2 = dxI();
+      localObject1 = ((com.tencent.mm.r.a.d)paramObject).appid;
+      if (localObject1 == null)
+      {
+        localObject1 = "";
+        paramObject = ((com.tencent.mm.r.a.d)paramObject).mdE;
+        if (paramObject != null) {
+          break label522;
+        }
+        paramObject = "";
+      }
+      label522:
+      for (;;)
+      {
+        s.u(localObject1, "appId");
+        s.u(paramObject, "stockId");
+        Log.i("MicroMsg.SpringLuckyEggViewModel", "accept coupon: appId=" + (String)localObject1 + ", stockId=" + paramObject + ", traceId=" + ((c)localObject2).qTb);
+        kotlinx.coroutines.j.a(((c)localObject2).scope, null, null, (kotlin.g.a.m)new c.b((String)localObject1, paramObject, (c)localObject2, null), 3);
+        AppMethodBeat.o(266656);
+        return;
+        break;
+      }
+    }
+    if ((paramObject instanceof com.tencent.mm.r.a.c))
+    {
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("finder_username", ((com.tencent.mm.r.a.c)paramObject).username);
+      paramObject = f.xEl;
+      ((Intent)localObject1).putExtra("key_session_id", String.valueOf(f.dxH()));
+      ((Intent)localObject1).putExtra("key_comment_scene", 32);
+      if (dxJ()) {
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).fillContextIdToIntent(3, 12, 32, (Intent)localObject1);
+      }
+      for (;;)
+      {
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).enterFinderProfileUI((Context)this, (Intent)localObject1);
+        AppMethodBeat.o(266656);
+        return;
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).fillContextIdToIntent(2, 12, 32, (Intent)localObject1);
+      }
+    }
+    if ((paramObject instanceof com.tencent.mm.r.a.b))
+    {
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("from_user", z.bAM());
+      ((Intent)localObject1).putExtra("feed_encrypted_object_id", ((com.tencent.mm.r.a.b)paramObject).mdC);
+      ((Intent)localObject1).putExtra("feed_object_nonceId", ((com.tencent.mm.r.a.b)paramObject).mdD);
+      paramObject = f.xEl;
+      ((Intent)localObject1).putExtra("key_session_id", String.valueOf(f.dxH()));
+      ((Intent)localObject1).putExtra("key_comment_scene", 25);
+      if (dxJ()) {
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).fillContextIdToIntent(3, 12, 25, (Intent)localObject1);
+      }
+      for (;;)
+      {
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).enterFinderShareFeedUI((Context)this, (Intent)localObject1);
+        AppMethodBeat.o(266656);
+        return;
+        ((cn)com.tencent.mm.kernel.h.az(cn.class)).fillContextIdToIntent(2, 12, 25, (Intent)localObject1);
+      }
+    }
+    finish();
+    AppMethodBeat.o(266656);
   }
   
   public final int getLayoutId()
   {
-    return d.f.uxv;
+    return e.f.xEb;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(249483);
+    AppMethodBeat.i(266815);
     super.onCreate(paramBundle);
     this.startTime = Util.nowMilliSecond();
-    paramBundle = com.tencent.mm.plugin.eggspring.e.uxF;
-    com.tencent.mm.plugin.eggspring.e.setAppId(getIntent().getStringExtra("app_id"));
+    paramBundle = f.xEl;
+    f.setAppId(getIntent().getStringExtra("app_id"));
     setMMTitle("");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new k(this), d.g.icons_outlined_close);
+    setBackBtn(new SpringLuckyEggActivity..ExternalSyntheticLambda0(this), e.g.icons_outlined_close);
     hideActionbarLine();
     getWindow().addFlags(128);
     getWindow().clearFlags(67108864);
-    paramBundle = getWindow();
-    p.j(paramBundle, "window");
-    paramBundle = paramBundle.getDecorView();
-    p.j(paramBundle, "window.decorView");
-    paramBundle.setSystemUiVisibility(1792);
+    getWindow().getDecorView().setSystemUiVisibility(1792);
     getWindow().addFlags(-2147483648);
     setActionbarColor(0);
-    paramBundle = getWindow();
-    p.j(paramBundle, "window");
-    paramBundle.setStatusBarColor(0);
-    paramBundle = getWindow();
-    p.j(paramBundle, "window");
-    paramBundle.setNavigationBarColor(0);
+    getWindow().setStatusBarColor(0);
+    getWindow().setNavigationBarColor(0);
     getWindow().setFormat(-3);
-    paramBundle = findViewById(d.e.root);
-    p.j(paramBundle, "findViewById(R.id.root)");
-    paramBundle = (ViewGroup)paramBundle;
-    Object localObject1 = findViewById(d.e.uxp);
-    p.j(localObject1, "findViewById(R.id.loading_animator)");
-    localObject1 = (MMAnimateView)localObject1;
-    Object localObject2 = findViewById(d.e.uxd);
-    p.j(localObject2, "findViewById(R.id.bottom…itle_clickable_indicator)");
-    localObject2 = (WeImageView)localObject2;
-    Object localObject3 = findViewById(d.e.uxc);
-    p.j(localObject3, "findViewById(R.id.bottom_brand_title)");
-    localObject3 = (TextView)localObject3;
-    Object localObject4 = findViewById(d.e.uxb);
-    p.j(localObject4, "findViewById(R.id.bottom_brand_subtitle)");
-    localObject4 = (TextView)localObject4;
-    Object localObject5 = findViewById(d.e.uxa);
-    p.j(localObject5, "findViewById(R.id.bottom_background_image)");
-    localObject5 = (ImageView)localObject5;
-    Object localObject6 = findViewById(d.e.uxo);
-    p.j(localObject6, "findViewById(R.id.card_root)");
-    localObject6 = (ViewGroup)localObject6;
-    Object localObject7 = findViewById(d.e.uxg);
-    p.j(localObject7, "findViewById(R.id.card_bag_container)");
-    localObject7 = (ViewGroup)localObject7;
-    Object localObject8 = findViewById(d.e.uxn);
-    p.j(localObject8, "findViewById(R.id.card_brand_logo)");
-    localObject8 = (MMAnimateView)localObject8;
-    Object localObject9 = findViewById(d.e.duY);
-    p.j(localObject9, "findViewById(R.id.card_brand_name)");
-    localObject9 = (TextView)localObject9;
-    Object localObject10 = findViewById(d.e.uxk);
-    p.j(localObject10, "findViewById(R.id.card_bag_title)");
-    localObject10 = (TextView)localObject10;
-    Object localObject11 = findViewById(d.e.uxj);
-    p.j(localObject11, "findViewById(R.id.card_bag_subtitle)");
-    localObject11 = (TextView)localObject11;
-    Object localObject12 = findViewById(d.e.uxf);
-    p.j(localObject12, "findViewById(R.id.card_bag_accept_btn)");
-    localObject12 = (Button)localObject12;
-    Object localObject13 = findViewById(d.e.uxh);
-    p.j(localObject13, "findViewById(R.id.card_bag_cover)");
-    localObject13 = (MMAnimateView)localObject13;
-    Object localObject14 = findViewById(d.e.uxi);
-    p.j(localObject14, "findViewById(R.id.card_bag_media_container)");
-    localObject14 = (ViewGroup)localObject14;
-    Object localObject15 = findViewById(d.e.dCU);
-    p.j(localObject15, "findViewById(R.id.cover_container)");
-    localObject15 = (ViewGroup)localObject15;
-    Object localObject16 = findViewById(d.e.uxt);
-    p.j(localObject16, "findViewById(R.id.money_value)");
-    localObject16 = (TextView)localObject16;
-    Object localObject17 = findViewById(d.e.uxs);
-    p.j(localObject17, "findViewById(R.id.money_container)");
-    localObject17 = (ViewGroup)localObject17;
-    Object localObject18 = findViewById(d.e.uxl);
-    p.j(localObject18, "findViewById(R.id.card_bag_video)");
-    localObject18 = (SpringEggVideoView)localObject18;
-    View localView = findViewById(d.e.uxm);
-    p.j(localView, "findViewById(R.id.card_bag_volume_switch)");
-    this.uyf = new c(paramBundle, (MMAnimateView)localObject1, (WeImageView)localObject2, (TextView)localObject3, (TextView)localObject4, (ImageView)localObject5, (TextView)localObject9, (MMAnimateView)localObject8, (ViewGroup)localObject6, (ViewGroup)localObject7, (TextView)localObject10, (TextView)localObject11, (Button)localObject12, (ViewGroup)localObject14, (MMAnimateView)localObject13, (ViewGroup)localObject15, (TextView)localObject16, (ViewGroup)localObject17, (SpringEggVideoView)localObject18, (WeImageView)localView);
-    paramBundle = this.uyf;
-    if (paramBundle == null) {
-      p.bGy("viewBinding");
-    }
-    paramBundle.kiF.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new l(this));
-    if (u.agG(PluginEggSpring.uwM))
+    paramBundle = (ViewGroup)findViewById(e.e.root);
+    Object localObject = (MMAnimateView)findViewById(e.e.xDV);
+    WeImageView localWeImageView1 = (WeImageView)findViewById(e.e.xDI);
+    TextView localTextView1 = (TextView)findViewById(e.e.xDH);
+    TextView localTextView2 = (TextView)findViewById(e.e.xDG);
+    View localView = findViewById(e.e.xDK);
+    TextView localTextView3 = (TextView)findViewById(e.e.xDF);
+    ImageView localImageView = (ImageView)findViewById(e.e.xDE);
+    ViewGroup localViewGroup1 = (ViewGroup)findViewById(e.e.xDU);
+    ViewGroup localViewGroup2 = (ViewGroup)findViewById(e.e.xDM);
+    MMAnimateView localMMAnimateView1 = (MMAnimateView)findViewById(e.e.xDT);
+    TextView localTextView4 = (TextView)findViewById(e.e.fvq);
+    TextView localTextView5 = (TextView)findViewById(e.e.xDQ);
+    TextView localTextView6 = (TextView)findViewById(e.e.xDP);
+    Button localButton = (Button)findViewById(e.e.xDL);
+    MMAnimateView localMMAnimateView2 = (MMAnimateView)findViewById(e.e.xDN);
+    ViewGroup localViewGroup3 = (ViewGroup)findViewById(e.e.xDO);
+    ViewGroup localViewGroup4 = (ViewGroup)findViewById(e.e.fDM);
+    TextView localTextView7 = (TextView)findViewById(e.e.xDZ);
+    ViewGroup localViewGroup5 = (ViewGroup)findViewById(e.e.xDY);
+    SpringEggVideoView localSpringEggVideoView = (SpringEggVideoView)findViewById(e.e.xDR);
+    WeImageView localWeImageView2 = (WeImageView)findViewById(e.e.xDS);
+    s.s(paramBundle, "findViewById(R.id.root)");
+    s.s(localObject, "findViewById(R.id.loading_animator)");
+    s.s(localWeImageView1, "findViewById(R.id.bottom…itle_clickable_indicator)");
+    s.s(localTextView1, "findViewById(R.id.bottom_brand_title)");
+    s.s(localTextView2, "findViewById(R.id.bottom_brand_subtitle)");
+    s.s(localView, "findViewById(R.id.bottom_subtitle_divider)");
+    s.s(localTextView3, "findViewById(R.id.bottom_brand_close)");
+    s.s(localImageView, "findViewById(R.id.bottom_background_image)");
+    s.s(localTextView4, "findViewById(R.id.card_brand_name)");
+    s.s(localMMAnimateView1, "findViewById(R.id.card_brand_logo)");
+    s.s(localViewGroup1, "findViewById(R.id.card_root)");
+    s.s(localViewGroup2, "findViewById(R.id.card_bag_container)");
+    s.s(localTextView5, "findViewById(R.id.card_bag_title)");
+    s.s(localTextView6, "findViewById(R.id.card_bag_subtitle)");
+    s.s(localButton, "findViewById(R.id.card_bag_accept_btn)");
+    s.s(localViewGroup3, "findViewById(R.id.card_bag_media_container)");
+    s.s(localMMAnimateView2, "findViewById(R.id.card_bag_cover)");
+    s.s(localViewGroup4, "findViewById(R.id.cover_container)");
+    s.s(localTextView7, "findViewById(R.id.money_value)");
+    s.s(localViewGroup5, "findViewById(R.id.money_container)");
+    s.s(localSpringEggVideoView, "findViewById(R.id.card_bag_video)");
+    s.s(localWeImageView2, "findViewById(R.id.card_bag_volume_switch)");
+    this.xEO = new b(paramBundle, (MMAnimateView)localObject, localWeImageView1, localTextView1, localTextView2, localView, localTextView3, localImageView, localTextView4, localMMAnimateView1, localViewGroup1, localViewGroup2, localTextView5, localTextView6, localButton, localViewGroup3, localMMAnimateView2, localViewGroup4, localTextView7, localViewGroup5, localSpringEggVideoView, localWeImageView2);
+    localObject = this.xEO;
+    paramBundle = (Bundle)localObject;
+    if (localObject == null)
     {
-      paramBundle = this.uyf;
-      if (paramBundle == null) {
-        p.bGy("viewBinding");
+      s.bIx("viewBinding");
+      paramBundle = null;
+    }
+    paramBundle.mJe.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new m(this));
+    if (com.tencent.mm.vfs.y.ZC(PluginEggSpring.xDn))
+    {
+      localObject = this.xEO;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("viewBinding");
+        paramBundle = null;
       }
-      paramBundle.uyq.setImageFilePath(PluginEggSpring.uwM);
+      paramBundle.xEU.setImageFilePath(PluginEggSpring.xDn);
     }
     for (;;)
     {
-      paramBundle = this.uyf;
-      if (paramBundle == null) {
-        p.bGy("viewBinding");
+      localObject = this.xEO;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("viewBinding");
+        paramBundle = null;
       }
-      paramBundle.uyz.setOnClickListener((View.OnClickListener)new SpringLuckyEggActivity.m(this));
-      findViewById(d.e.uxe).setOnClickListener((View.OnClickListener)new SpringLuckyEggActivity.n(this));
-      ((LiveData)cTo().uyJ).a((androidx.lifecycle.l)this, (androidx.lifecycle.s)new c(this));
-      ((LiveData)cTo().uyH).a((androidx.lifecycle.l)this, (androidx.lifecycle.s)new d(this));
-      ((LiveData)cTo().uyM).a((androidx.lifecycle.l)this, (androidx.lifecycle.s)new SpringLuckyEggActivity.e(this));
-      ((LiveData)cTo().uyN).a((androidx.lifecycle.l)this, (androidx.lifecycle.s)new f(this));
-      ((LiveData)cTo().uyI).a((androidx.lifecycle.l)this, (androidx.lifecycle.s)new SpringLuckyEggActivity.g(this));
-      ((LiveData)cTo().uyO).a((androidx.lifecycle.l)this, (androidx.lifecycle.s)new SpringLuckyEggActivity.h(this));
-      AppMethodBeat.o(249483);
+      paramBundle.xFf.setOnClickListener(new SpringLuckyEggActivity..ExternalSyntheticLambda2(this));
+      findViewById(e.e.xDJ).setOnClickListener(new SpringLuckyEggActivity..ExternalSyntheticLambda1(this));
+      localObject = this.xEO;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("viewBinding");
+        paramBundle = null;
+      }
+      paramBundle.xEZ.setOnClickListener(new SpringLuckyEggActivity..ExternalSyntheticLambda3(this));
+      ((LiveData)dxI().xFr).a((androidx.lifecycle.q)this, (androidx.lifecycle.y)new e(this));
+      ((LiveData)dxI().xFp).a((androidx.lifecycle.q)this, (androidx.lifecycle.y)new f(this));
+      ((LiveData)dxI().xFu).a((androidx.lifecycle.q)this, (androidx.lifecycle.y)new g(this));
+      ((LiveData)dxI().xFv).a((androidx.lifecycle.q)this, (androidx.lifecycle.y)new h(this));
+      ((LiveData)dxI().xFq).a((androidx.lifecycle.q)this, (androidx.lifecycle.y)new i(this));
+      ((LiveData)dxI().xFw).a((androidx.lifecycle.q)this, (androidx.lifecycle.y)new j(this));
+      AppMethodBeat.o(266815);
       return;
-      paramBundle = this.uyf;
-      if (paramBundle == null) {
-        p.bGy("viewBinding");
+      localObject = this.xEO;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("viewBinding");
+        paramBundle = null;
       }
-      paramBundle.uyq.setImageResource(d.d.uwY);
+      paramBundle.xEU.setImageResource(e.d.xDC);
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(249487);
+    AppMethodBeat.i(266828);
     super.onDestroy();
-    Object localObject = (com.tencent.mm.t.a.n)cTo().uyM.getValue();
+    Object localObject1 = (com.tencent.mm.r.a.n)dxI().xFu.getValue();
     long l2;
     long l3;
-    label60:
+    label52:
     int i;
-    label77:
+    label65:
     long l1;
-    if (localObject != null)
+    if (localObject1 == null)
     {
-      l2 = ((com.tencent.mm.t.a.n)localObject).jEe;
-      localObject = com.tencent.mm.plugin.eggspring.e.uxF;
-      localObject = this.uyg;
-      if (localObject == null) {
-        break label224;
+      l2 = 0L;
+      localObject1 = f.xEl;
+      localObject1 = this.xEP;
+      if (localObject1 != null) {
+        break label200;
       }
-      l3 = ((e)localObject).sTg;
-      localObject = this.uyg;
-      if (localObject == null) {
-        break label230;
+      l3 = 0L;
+      localObject1 = this.xEP;
+      if (localObject1 != null) {
+        break label210;
       }
-      i = ((e)localObject).count;
-      localObject = this.uyg;
-      if (localObject == null) {
-        break label244;
+      i = 0;
+      localObject1 = this.xEP;
+      if (localObject1 != null) {
+        break label219;
       }
-      if (((e)localObject).uyZ <= 0L) {
-        break label235;
-      }
-      l1 = ((e)localObject).playDuration + Util.milliSecondsToNow(((e)localObject).uyZ);
+      l1 = 0L;
     }
     for (;;)
     {
-      com.tencent.mm.plugin.eggspring.e.a(l3, i, l1, l2);
-      localObject = this.uyg;
-      if (localObject != null)
+      f.a(l3, i, l1, l2);
+      localObject1 = this.xEP;
+      if (localObject1 != null)
       {
         Log.i("MicroMsg.VideoController", "release");
-        String str = ((e)localObject).uyY;
-        if (str != null) {
-          com.tencent.mm.modelvideo.s.bqC().l(str, null);
+        localObject2 = ((d)localObject1).xFD;
+        if (localObject2 != null) {
+          v.bOi().l((String)localObject2, null);
         }
-        ((e)localObject).uyF.onUIDestroy();
-        ((e)localObject).uyZ = 0L;
+        ((d)localObject1).xFl.onUIDestroy();
+        ((d)localObject1).xFE = 0L;
       }
-      localObject = this.uyf;
-      if (localObject == null) {
-        p.bGy("viewBinding");
+      Object localObject2 = this.xEO;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("viewBinding");
+        localObject1 = null;
       }
-      ((c)localObject).uyq.stop();
-      al.a(this.rcY, null);
-      AppMethodBeat.o(249487);
+      ((b)localObject1).xEU.stop();
+      ar.a(this.scope, null);
+      AppMethodBeat.o(266828);
       return;
-      l2 = 0L;
+      l2 = ((com.tencent.mm.r.a.n)localObject1).mea;
       break;
-      label224:
-      l3 = 0L;
-      break label60;
-      label230:
-      i = 0;
-      break label77;
-      label235:
-      l1 = ((e)localObject).playDuration;
-      continue;
-      label244:
-      l1 = 0L;
+      label200:
+      l3 = ((d)localObject1).vYw;
+      break label52;
+      label210:
+      i = ((d)localObject1).count;
+      break label65;
+      label219:
+      if (((d)localObject1).xFE > 0L) {
+        l1 = ((d)localObject1).playDuration + Util.milliSecondsToNow(((d)localObject1).xFE);
+      } else {
+        l1 = ((d)localObject1).playDuration;
+      }
     }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(249485);
+    AppMethodBeat.i(266820);
     super.onPause();
     Log.i("MicroMsg.SpringLuckyEggActivity", "onPause");
-    e locale = this.uyg;
-    if (locale != null)
+    d locald = this.xEP;
+    if (locald != null)
     {
       Log.i("MicroMsg.VideoController", "pause");
-      locale.uyF.onUIPause();
-      locale.playDuration += Util.milliSecondsToNow(locale.uyZ);
-      locale.uyZ = 0L;
-      AppMethodBeat.o(249485);
-      return;
+      locald.xFl.onUIPause();
+      locald.playDuration += Util.milliSecondsToNow(locald.xFE);
+      locald.xFE = 0L;
     }
-    AppMethodBeat.o(249485);
+    AppMethodBeat.o(266820);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(249486);
+    AppMethodBeat.i(266824);
     super.onResume();
     Log.i("MicroMsg.SpringLuckyEggActivity", "onResume");
-    e locale = this.uyg;
-    if (locale != null)
+    d locald = this.xEP;
+    if (locald != null)
     {
       Log.i("MicroMsg.VideoController", "resume");
-      locale.count -= 1;
-      locale.uyF.onUIResume();
-      locale.uyZ = Util.nowMilliSecond();
-      AppMethodBeat.o(249486);
-      return;
+      locald.count -= 1;
+      locald.xFl.onUIResume();
+      locald.xFE = Util.nowMilliSecond();
     }
-    AppMethodBeat.o(249486);
+    AppMethodBeat.o(266824);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -394,313 +670,806 @@ public final class SpringLuckyEggActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$animateCardToShow$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-eggspring_release"})
-  public static final class b
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$animateCardToShow$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
     implements Animator.AnimatorListener
   {
-    b(long paramLong) {}
+    c(SpringLuckyEggActivity paramSpringLuckyEggActivity, long paramLong) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(249460);
+      Object localObject = null;
+      AppMethodBeat.i(266602);
       Log.d("MicroMsg.SpringLuckyEggActivity", "onAnimationCancel");
-      SpringLuckyEggActivity.a(this.uyj).uyq.setVisibility(8);
-      SpringLuckyEggActivity.a(this.uyj).uyq.stop();
-      SpringLuckyEggActivity.a(this.uyj).uyq.setVisibility(8);
-      AppMethodBeat.o(249460);
+      b localb = SpringLuckyEggActivity.a(this.xER);
+      paramAnimator = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = null;
+      }
+      paramAnimator.xEU.setVisibility(8);
+      localb = SpringLuckyEggActivity.a(this.xER);
+      paramAnimator = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = null;
+      }
+      paramAnimator.xEU.stop();
+      paramAnimator = SpringLuckyEggActivity.a(this.xER);
+      if (paramAnimator == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = localObject;
+      }
+      for (;;)
+      {
+        paramAnimator.xEU.setVisibility(8);
+        AppMethodBeat.o(266602);
+        return;
+      }
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(249458);
+      Object localObject2 = null;
+      Object localObject1 = null;
+      AppMethodBeat.i(266594);
       Log.d("MicroMsg.SpringLuckyEggActivity", "onAnimationEnd");
-      SpringLuckyEggActivity.a(this.uyj).uyq.setVisibility(8);
-      SpringLuckyEggActivity.a(this.uyj).uyq.stop();
-      SpringLuckyEggActivity.a(this.uyj).uyq.setVisibility(8);
-      paramAnimator = (com.tencent.mm.t.a.n)SpringLuckyEggActivity.b(this.uyj).uyM.getValue();
+      b localb = SpringLuckyEggActivity.a(this.xER);
+      paramAnimator = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = null;
+      }
+      paramAnimator.xEU.setVisibility(8);
+      localb = SpringLuckyEggActivity.a(this.xER);
+      paramAnimator = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = null;
+      }
+      paramAnimator.xEU.stop();
+      localb = SpringLuckyEggActivity.a(this.xER);
+      paramAnimator = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = null;
+      }
+      paramAnimator.xEU.setVisibility(8);
+      paramAnimator = (com.tencent.mm.r.a.n)SpringLuckyEggActivity.b(this.xER).xFu.getValue();
+      int i;
       if (paramAnimator != null)
       {
-        paramAnimator = paramAnimator.jDY;
-        if (paramAnimator != null) {
-          if (((CharSequence)paramAnimator).length() <= 0) {
-            break label156;
+        String str = paramAnimator.mdU;
+        if (str != null)
+        {
+          paramAnimator = this.xER;
+          if (((CharSequence)str).length() <= 0) {
+            break label252;
+          }
+          i = 1;
+          if (i != 0)
+          {
+            localb = SpringLuckyEggActivity.a(paramAnimator);
+            paramAnimator = localb;
+            if (localb == null)
+            {
+              s.bIx("viewBinding");
+              paramAnimator = null;
+            }
+            paramAnimator.xEW.setText((CharSequence)str);
           }
         }
       }
-      label156:
-      for (int i = 1;; i = 0)
+      if (SpringLuckyEggActivity.b(this.xER).xFs.getValue() != null)
       {
-        if (i != 0) {
-          SpringLuckyEggActivity.a(this.uyj).uys.setText((CharSequence)paramAnimator);
+        paramAnimator = SpringLuckyEggActivity.a(this.xER);
+        if (paramAnimator == null)
+        {
+          s.bIx("viewBinding");
+          paramAnimator = localObject1;
         }
-        if (SpringLuckyEggActivity.b(this.uyj).uyK.getValue() == null) {
+        for (;;)
+        {
+          paramAnimator.xEV.setVisibility(0);
+          AppMethodBeat.o(266594);
+          return;
+          label252:
+          i = 0;
           break;
         }
-        SpringLuckyEggActivity.a(this.uyj).uyr.setVisibility(0);
-        AppMethodBeat.o(249458);
+      }
+      paramAnimator = SpringLuckyEggActivity.a(this.xER);
+      if (paramAnimator == null)
+      {
+        s.bIx("viewBinding");
+        paramAnimator = localObject2;
+      }
+      for (;;)
+      {
+        paramAnimator.xEV.setVisibility(4);
+        AppMethodBeat.o(266594);
         return;
       }
-      SpringLuckyEggActivity.a(this.uyj).uyr.setVisibility(4);
-      AppMethodBeat.o(249458);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(249461);
+      AppMethodBeat.i(266609);
       Log.d("MicroMsg.SpringLuckyEggActivity", "onAnimationStart");
-      SpringLuckyEggActivity.a(this.uyj).uyx.setVisibility(0);
-      paramAnimator = (com.tencent.mm.t.a.n)SpringLuckyEggActivity.b(this.uyj).uyM.getValue();
-      if (paramAnimator != null) {}
-      for (long l = paramAnimator.jEe;; l = 0L)
+      b localb = SpringLuckyEggActivity.a(this.xER);
+      paramAnimator = localb;
+      if (localb == null)
       {
-        paramAnimator = com.tencent.mm.plugin.eggspring.e.uxF;
-        com.tencent.mm.plugin.eggspring.e.Q(Util.milliSecondsToNow(this.uyk), l);
-        AppMethodBeat.o(249461);
+        s.bIx("viewBinding");
+        paramAnimator = null;
+      }
+      paramAnimator.xFd.setVisibility(0);
+      paramAnimator = (com.tencent.mm.r.a.n)SpringLuckyEggActivity.b(this.xER).xFu.getValue();
+      if (paramAnimator == null) {}
+      for (long l = 0L;; l = paramAnimator.mea)
+      {
+        paramAnimator = f.xEl;
+        f.an(Util.milliSecondsToNow(this.Uj), l);
+        AppMethodBeat.o(266609);
         return;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Object;)V", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"})
-  public static final class c<T>
-    implements androidx.lifecycle.s<T>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class e<T>
+    implements androidx.lifecycle.y
   {
-    public c(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
+    public e(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
     
     public final void onChanged(T paramT)
     {
-      AppMethodBeat.i(249292);
+      AppMethodBeat.i(266597);
       paramT = (String)paramT;
-      int i = SpringLuckyEggActivity.a(this.uyj, paramT, d.b.uwQ);
-      SpringLuckyEggActivity.a(this.uyj).kiF.setBackgroundColor(i);
-      this.uyj.setActionbarColor(i);
-      paramT = this.uyj.getWindow();
-      p.j(paramT, "window");
-      paramT.setStatusBarColor(0);
-      paramT = this.uyj.getWindow();
-      p.j(paramT, "window");
-      paramT.setNavigationBarColor(0);
-      AppMethodBeat.o(249292);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Object;)V", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"})
-  public static final class d<T>
-    implements androidx.lifecycle.s<T>
-  {
-    public d(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
-    
-    public final void onChanged(T paramT)
-    {
-      AppMethodBeat.i(249531);
-      if (p.h((Boolean)paramT, Boolean.TRUE))
+      int i = SpringLuckyEggActivity.a(this.xER, paramT, e.b.xDu);
+      b localb = SpringLuckyEggActivity.a(this.xER);
+      paramT = localb;
+      if (localb == null)
       {
-        SpringLuckyEggActivity.a(this.uyj).uyx.setVisibility(4);
-        SpringLuckyEggActivity.a(this.uyj).uyq.start();
-        SpringLuckyEggActivity.a(this.uyj).uyq.setVisibility(0);
-        AppMethodBeat.o(249531);
-        return;
+        s.bIx("viewBinding");
+        paramT = null;
       }
-      SpringLuckyEggActivity.a(this.uyj, SpringLuckyEggActivity.c(this.uyj));
-      AppMethodBeat.o(249531);
+      paramT.mJe.setBackgroundColor(i);
+      this.xER.setActionbarColor(i);
+      this.xER.getWindow().setStatusBarColor(0);
+      this.xER.getWindow().setNavigationBarColor(0);
+      AppMethodBeat.o(266597);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Object;)V", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"}, k=3, mv={1, 5, 1}, xi=48)
   public static final class f<T>
-    implements androidx.lifecycle.s<T>
+    implements androidx.lifecycle.y
   {
     public f(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
     
     public final void onChanged(T paramT)
     {
-      AppMethodBeat.i(249672);
-      paramT = (com.tencent.mm.be.l)paramT;
-      if (paramT == null)
+      Object localObject = null;
+      AppMethodBeat.i(266591);
+      if (s.p((Boolean)paramT, Boolean.TRUE))
       {
-        AppMethodBeat.o(249672);
-        return;
+        b localb = SpringLuckyEggActivity.a(this.xER);
+        paramT = localb;
+        if (localb == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xFd.setVisibility(4);
+        localb = SpringLuckyEggActivity.a(this.xER);
+        paramT = localb;
+        if (localb == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEU.start();
+        paramT = SpringLuckyEggActivity.a(this.xER);
+        if (paramT == null)
+        {
+          s.bIx("viewBinding");
+          paramT = localObject;
+        }
+        for (;;)
+        {
+          paramT.xEU.setVisibility(0);
+          AppMethodBeat.o(266591);
+          return;
+        }
       }
-      Object localObject1 = new aa.f();
-      ((aa.f)localObject1).aaBC = (h.getDataEmojiPath() + "/egg/");
-      int i;
-      Object localObject2;
-      int j;
-      if (paramT.lXP == 0)
+      SpringLuckyEggActivity.a(this.xER, SpringLuckyEggActivity.c(this.xER));
+      AppMethodBeat.o(266591);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class g<T>
+    implements androidx.lifecycle.y
+  {
+    public g(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
+    
+    public final void onChanged(T paramT)
+    {
+      Object localObject3 = null;
+      Object localObject2 = null;
+      AppMethodBeat.i(266612);
+      com.tencent.mm.r.a.n localn = (com.tencent.mm.r.a.n)paramT;
+      Object localObject1;
+      boolean bool;
+      if (localn != null)
       {
-        i = 1;
-        localObject2 = this.uyj.getWindow();
-        p.j(localObject2, "window");
-        localObject2 = ((Window)localObject2).getDecorView();
-        p.j(localObject2, "window.decorView");
-        if ((i == 0) || (Build.VERSION.SDK_INT < 23)) {
-          break label564;
+        paramT = f.xEl;
+        f.V(1, localn.mea);
+        localObject1 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
         }
-        j = 9984;
-        label110:
-        ((View)localObject2).setSystemUiVisibility(j);
-        localObject2 = this.uyj;
-        if (i == 0) {
-          break label571;
+        paramT.xFe.setText((CharSequence)localn.title);
+        localObject1 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
         }
-        i = -16777216;
-        label129:
-        ((SpringLuckyEggActivity)localObject2).setBackBtnColorFilter(i);
-        SpringLuckyEggActivity.a(this.uyj).tuh.setText((CharSequence)paramT.fzM);
-        SpringLuckyEggActivity.a(this.uyj).uyv.setImageFilePath((String)((aa.f)localObject1).aaBC + '/' + paramT.lXD);
-        SpringLuckyEggActivity.a(this.uyj).uys.setText((CharSequence)paramT.lXz);
-        SpringLuckyEggActivity.a(this.uyj).uyt.setText((CharSequence)paramT.lXB);
-        i = SpringLuckyEggActivity.a(this.uyj, paramT.lXA, d.b.uwR);
-        j = SpringLuckyEggActivity.a(this.uyj, paramT.lXC, d.b.uwP);
-        SpringLuckyEggActivity.a(this.uyj).uys.setTextColor(SpringLuckyEggActivity.p(i, 0.6F));
-        SpringLuckyEggActivity.a(this.uyj).uyr.C(i, 0.6F);
-        SpringLuckyEggActivity.a(this.uyj).uyt.setTextColor(SpringLuckyEggActivity.a(this.uyj, paramT.lXC, d.b.uwP));
-        SpringLuckyEggActivity.a(this.uyj).uyt.setTextColor(SpringLuckyEggActivity.p(j, 0.3F));
-        if (paramT.lXF != null) {
-          break label576;
+        paramT.wyG.setText((CharSequence)localn.desc);
+        if ((!s.p(SpringLuckyEggActivity.b(this.xER).xFw.getValue(), Boolean.TRUE)) || (!a.a(localn)))
+        {
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xFf.setText((CharSequence)localn.mdR);
         }
-        SpringLuckyEggActivity.a(this.uyj).uyu.setImageBitmap(null);
-        label373:
-        localObject1 = (String)((aa.f)localObject1).aaBC + '/' + paramT.lXK;
-        if (!u.agG((String)localObject1)) {
-          break label607;
+        Object localObject4 = localn.meb.mel;
+        if (localObject4 != null)
+        {
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xFj.setText((CharSequence)((com.tencent.mm.r.a.q)localObject4).mes);
         }
-        SpringLuckyEggActivity.a(this.uyj).uyq.setImageFilePath((String)localObject1);
+        paramT = (CharSequence)localn.mdY;
+        int i;
+        if ((paramT == null) || (paramT.length() == 0)) {
+          i = 1;
+        }
+        while (i == 0)
+        {
+          if (localn.mdX != 2) {
+            break label788;
+          }
+          localObject4 = this.xER;
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          SpringEggVideoView localSpringEggVideoView = paramT.xFl;
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          localObject1 = localn.mdY;
+          s.s(localObject1, "material.creative_url");
+          SpringLuckyEggActivity.a((SpringLuckyEggActivity)localObject4, new d(localSpringEggVideoView, paramT, (String)localObject1));
+          paramT = SpringLuckyEggActivity.d(this.xER);
+          if (paramT != null)
+          {
+            Log.i("MicroMsg.VideoController", "start");
+            paramT.xFl.start();
+            localObject1 = paramT.xFl.getContext().getSystemService("audio");
+            if (localObject1 == null)
+            {
+              paramT = new NullPointerException("null cannot be cast to non-null type android.media.AudioManager");
+              AppMethodBeat.o(266612);
+              throw paramT;
+              i = 0;
+              continue;
+            }
+            localObject1 = (AudioManager)localObject1;
+            Log.i("MicroMsg.VideoController", s.X("init: rangerMode=", Integer.valueOf(((AudioManager)localObject1).getRingerMode())));
+            if (((AudioManager)localObject1).getRingerMode() == 2) {
+              break label545;
+            }
+          }
+          label545:
+          for (bool = true;; bool = false)
+          {
+            paramT.setMute(bool);
+            paramT.xEO.xFm.setVisibility(0);
+            paramT.xFl.setVisibility(0);
+            localObject1 = SpringLuckyEggActivity.a(this.xER);
+            paramT = (TT)localObject1;
+            if (localObject1 == null)
+            {
+              s.bIx("viewBinding");
+              paramT = null;
+            }
+            paramT = paramT.xFg.getLayoutParams();
+            if (paramT != null) {
+              break;
+            }
+            paramT = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+            AppMethodBeat.o(266612);
+            throw paramT;
+          }
+          paramT = (FrameLayout.LayoutParams)paramT;
+          paramT.width = -1;
+          paramT.height = this.xER.getResources().getDimensionPixelSize(e.c.xDw);
+          paramT.topMargin = 0;
+          paramT.gravity = 17;
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xFg.requestLayout();
+          localObject1 = this.xER;
+          paramT = localn.mdZ;
+          s.s(paramT, "material.thumb_url");
+        }
       }
+      label647:
+      label788:
+      label971:
       for (;;)
       {
-        localObject1 = SpringLuckyEggActivity.a(this.uyj).uyz;
+        bool = false;
+        SpringLuckyEggActivity.a((SpringLuckyEggActivity)localObject1, paramT, bool);
+        if (a.b(localn))
+        {
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xFf.setVisibility(8);
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xFk.setVisibility(0);
+          localObject1 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject1;
+          if (localObject1 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xFi.setVisibility(8);
+          paramT = SpringLuckyEggActivity.a(this.xER);
+          if (paramT == null)
+          {
+            s.bIx("viewBinding");
+            paramT = localObject2;
+          }
+          for (;;)
+          {
+            paramT.xFf.setVisibility(8);
+            AppMethodBeat.o(266612);
+            return;
+            if (localn.mdX != 1) {
+              break label647;
+            }
+            localObject1 = this.xER;
+            paramT = localn.mdY;
+            s.s(paramT, "material.creative_url");
+            if ((localn == null) || (localn.mdP != 4)) {
+              break label971;
+            }
+            bool = true;
+            break;
+          }
+        }
+        localObject1 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xFf.setVisibility(0);
+        localObject1 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xFk.setVisibility(8);
+        localObject1 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xFi.setVisibility(0);
+        paramT = SpringLuckyEggActivity.a(this.xER);
+        if (paramT == null)
+        {
+          s.bIx("viewBinding");
+          paramT = localObject3;
+        }
+        for (;;)
+        {
+          paramT.xFf.setVisibility(0);
+          AppMethodBeat.o(266612);
+          return;
+        }
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class h<T>
+    implements androidx.lifecycle.y
+  {
+    public h(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
+    
+    public final void onChanged(T paramT)
+    {
+      Object localObject1 = null;
+      AppMethodBeat.i(266611);
+      com.tencent.mm.modelpackage.m localm = (com.tencent.mm.modelpackage.m)paramT;
+      Object localObject3;
+      int i;
+      int j;
+      label66:
+      label84:
+      Object localObject2;
+      if (localm != null)
+      {
+        localObject3 = s.X(com.tencent.mm.plugin.emoji.mgr.h.getDataEmojiPath(), "/egg/");
+        if (localm.oQT != 0) {
+          break label753;
+        }
+        i = 1;
+        paramT = this.xER.getWindow().getDecorView();
+        if ((i == 0) || (Build.VERSION.SDK_INT < 23)) {
+          break label758;
+        }
+        j = 9984;
+        paramT.setSystemUiVisibility(j);
+        paramT = this.xER;
+        if (i == 0) {
+          break label765;
+        }
+        i = e.b.BW_0;
+        paramT.setBackBtnColorFilter(i);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.wyE.setText((CharSequence)localm.hEy);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xFb.setImageFilePath((String)localObject3 + '/' + localm.oQH);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEW.setText((CharSequence)localm.oQD);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEX.setText((CharSequence)localm.oQF);
+        i = SpringLuckyEggActivity.a(this.xER, localm.oQE, e.b.xDv);
+        j = SpringLuckyEggActivity.a(this.xER, localm.oQG, e.b.xDt);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEW.setTextColor(SpringLuckyEggActivity.s(i, 0.6F));
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEV.F(i, 0.6F);
+        ColorStateList localColorStateList = SpringLuckyEggActivity.s(j, 0.3F);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEX.setTextColor(localColorStateList);
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEY.setBackgroundColor(SpringLuckyEggActivity.JT(j));
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEZ.setTextColor(localColorStateList);
+        if (localm.oQJ != null) {
+          break label772;
+        }
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xFa.setImageBitmap(null);
+        label517:
+        localObject3 = (String)localObject3 + '/' + localm.oQO;
+        if (!com.tencent.mm.vfs.y.ZC((String)localObject3)) {
+          break label808;
+        }
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEU.setImageFilePath((String)localObject3);
+        label588:
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT = paramT.xFf;
+        localObject3 = new int[] { -16842910 };
         localObject2 = StateSet.WILD_CARD;
-        ((Button)localObject1).setTextColor(new ColorStateList((int[][])new int[][] { { -16842910 }, localObject2 }, new int[] { androidx.core.content.a.w((Context)this.uyj, d.b.UN_BW_0_Alpha_0_3), SpringLuckyEggActivity.a(this.uyj, paramT.lXM, d.b.White) }));
-        SpringLuckyEggActivity.a(this.uyj).uyz.setBackground(SpringLuckyEggActivity.a(this.uyj, SpringLuckyEggActivity.a(this.uyj, paramT.lXL, d.b.Red_90)));
-        AppMethodBeat.o(249672);
+        i = androidx.core.content.a.w((Context)this.xER, e.b.UN_BW_0_Alpha_0_3);
+        j = SpringLuckyEggActivity.a(this.xER, localm.oQQ, e.b.White);
+        paramT.setTextColor(new ColorStateList(new int[][] { localObject3, localObject2 }, new int[] { i, j }));
+        paramT = SpringLuckyEggActivity.a(this.xER);
+        if (paramT != null) {
+          break label891;
+        }
+        s.bIx("viewBinding");
+        paramT = localObject1;
+      }
+      label753:
+      label758:
+      label891:
+      for (;;)
+      {
+        paramT.xFf.setBackground(SpringLuckyEggActivity.a(this.xER, SpringLuckyEggActivity.a(this.xER, localm.oQP, e.b.Red_90)));
+        AppMethodBeat.o(266611);
         return;
         i = 0;
         break;
-        label564:
         j = 1792;
-        break label110;
-        label571:
-        i = -1;
-        break label129;
-        label576:
-        kotlinx.coroutines.g.b(SpringLuckyEggActivity.e(this.uyj), null, (m)new SpringLuckyEggActivity.f.a((aa.f)localObject1, paramT, null, this), 3);
-        break label373;
-        label607:
-        if (u.agG(PluginEggSpring.uwM)) {
-          SpringLuckyEggActivity.a(this.uyj).uyq.setImageFilePath(PluginEggSpring.uwM);
-        } else {
-          SpringLuckyEggActivity.a(this.uyj).uyq.setImageResource(d.d.uwY);
+        break label66;
+        label765:
+        i = e.b.White;
+        break label84;
+        kotlinx.coroutines.j.a(SpringLuckyEggActivity.e(this.xER), null, null, (kotlin.g.a.m)new SpringLuckyEggActivity.k(this.xER, (String)localObject3, localm, null), 3);
+        break label517;
+        if (com.tencent.mm.vfs.y.ZC(PluginEggSpring.xDn))
+        {
+          localObject2 = SpringLuckyEggActivity.a(this.xER);
+          paramT = (TT)localObject2;
+          if (localObject2 == null)
+          {
+            s.bIx("viewBinding");
+            paramT = null;
+          }
+          paramT.xEU.setImageFilePath(PluginEggSpring.xDn);
+          break label588;
         }
+        localObject2 = SpringLuckyEggActivity.a(this.xER);
+        paramT = (TT)localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("viewBinding");
+          paramT = null;
+        }
+        paramT.xEU.setImageResource(e.d.xDC);
+        break label588;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class i
-    extends q
-    implements kotlin.g.a.a<Boolean>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class i<T>
+    implements androidx.lifecycle.y
   {
-    i(SpringLuckyEggActivity paramSpringLuckyEggActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "bitmap", "Landroid/graphics/Bitmap;", "<anonymous parameter 3>", "", "", "onImageLoadComplete", "(Ljava/lang/String;Landroid/view/View;Landroid/graphics/Bitmap;[Ljava/lang/Object;)V"})
-  static final class j
-    implements k
-  {
-    j(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
+    public i(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
     
-    public final void a(String paramString, View paramView, Bitmap paramBitmap, Object[] paramArrayOfObject)
+    public final void onChanged(T paramT)
     {
-      AppMethodBeat.i(249678);
-      if (paramBitmap == null)
-      {
-        paramString = (com.tencent.mm.be.l)SpringLuckyEggActivity.b(this.uyj).uyN.getValue();
-        if (paramString != null)
+      AppMethodBeat.i(266600);
+      paramT = (com.tencent.mm.plugin.eggspring.c.a)paramT;
+      if (paramT != null) {
+        switch (SpringLuckyEggActivity.b.$EnumSwitchMapping$0[paramT.ordinal()])
         {
-          paramView = (CharSequence)paramString.lXN;
-          if ((paramView != null) && (paramView.length() != 0)) {
-            break label135;
-          }
         }
       }
-      label135:
-      for (int i = 1;; i = 0)
+      for (;;)
       {
-        if (i == 0)
+        SpringLuckyEggActivity.b(this.xER).xFq.setValue(null);
+        AppMethodBeat.o(266600);
+        return;
+        aa.db((Context)this.xER.getContext(), this.xER.getContext().getResources().getString(e.h.xEj));
+        continue;
+        aa.dc((Context)this.xER.getContext(), this.xER.getContext().getResources().getString(e.h.xEi));
+        continue;
+        aa.dc((Context)this.xER.getContext(), this.xER.getContext().getResources().getString(e.h.xEh));
+        continue;
+        aa.dc((Context)this.xER.getContext(), this.xER.getContext().getResources().getString(e.h.xEi));
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "kotlin.jvm.PlatformType", "com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$observe$1"}, k=3, mv={1, 5, 1}, xi=48)
+  public static final class j<T>
+    implements androidx.lifecycle.y
+  {
+    public j(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
+    
+    public final void onChanged(T paramT)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(266596);
+      paramT = (Boolean)paramT;
+      if ((paramT != null) && (!s.p(paramT, Boolean.FALSE)) && (a.a((com.tencent.mm.r.a.n)SpringLuckyEggActivity.b(this.xER).xFu.getValue())))
+      {
+        b localb = SpringLuckyEggActivity.a(this.xER);
+        paramT = localb;
+        if (localb == null)
         {
-          paramView = h.getDataEmojiPath() + "/egg/";
-          paramString = paramView + '/' + paramString.lXN;
-          if (u.agG(paramString)) {
-            SpringLuckyEggActivity.a(this.uyj).uyB.setImageFilePath(paramString);
-          }
+          s.bIx("viewBinding");
+          paramT = null;
         }
-        AppMethodBeat.o(249678);
+        paramT.xFf.setText((CharSequence)this.xER.getString(e.h.xEk));
+        paramT = SpringLuckyEggActivity.a(this.xER);
+        if (paramT != null) {
+          break label122;
+        }
+        s.bIx("viewBinding");
+        paramT = localObject;
+      }
+      label122:
+      for (;;)
+      {
+        paramT.xFf.setEnabled(false);
+        AppMethodBeat.o(266596);
         return;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class k
-    implements MenuItem.OnMenuItemClickListener
-  {
-    k(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(249318);
-      this.uyj.finish();
-      AppMethodBeat.o(249318);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$setupViews$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-eggspring_release"})
-  public static final class l
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/eggspring/ui/SpringLuckyEggActivity$setupViews$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class m
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
+    m(SpringLuckyEggActivity paramSpringLuckyEggActivity) {}
+    
     public final void onGlobalLayout()
     {
-      AppMethodBeat.i(249637);
-      SpringLuckyEggActivity.a(this.uyj).kiF.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-      int i = com.tencent.mm.compatible.util.n.getStatusBarHeight((Context)this.uyj.getContext());
-      int j = com.tencent.mm.ci.a.H((Context)this.uyj.getContext(), SpringLuckyEggActivity.a(this.uyj).kiF.getMeasuredHeight() + i);
+      Object localObject2 = null;
+      AppMethodBeat.i(266603);
+      b localb = SpringLuckyEggActivity.a(this.xER);
+      Object localObject1 = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        localObject1 = null;
+      }
+      ((b)localObject1).mJe.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      int i = com.tencent.mm.compatible.util.o.I((Context)this.xER.getContext(), 0);
+      Context localContext = (Context)this.xER.getContext();
+      localb = SpringLuckyEggActivity.a(this.xER);
+      localObject1 = localb;
+      if (localb == null)
+      {
+        s.bIx("viewBinding");
+        localObject1 = null;
+      }
+      int j = com.tencent.mm.cd.a.K(localContext, ((b)localObject1).mJe.getMeasuredHeight() + i);
       if (j > 812)
       {
-        Object localObject = SpringLuckyEggActivity.a(this.uyj).uyw.getLayoutParams();
-        if (localObject == null)
+        localb = SpringLuckyEggActivity.a(this.xER);
+        localObject1 = localb;
+        if (localb == null)
         {
-          localObject = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-          AppMethodBeat.o(249637);
-          throw ((Throwable)localObject);
+          s.bIx("viewBinding");
+          localObject1 = null;
         }
-        ((ViewGroup.MarginLayoutParams)localObject).topMargin = (com.tencent.mm.ci.a.fromDPToPix((Context)this.uyj.getContext(), (j - 812) / 2 + 128) - i);
-        SpringLuckyEggActivity.a(this.uyj).uyw.requestLayout();
+        localObject1 = ((b)localObject1).xFc.getLayoutParams();
+        if (localObject1 == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+          AppMethodBeat.o(266603);
+          throw ((Throwable)localObject1);
+        }
+        ((ViewGroup.MarginLayoutParams)localObject1).topMargin = (com.tencent.mm.cd.a.fromDPToPix((Context)this.xER.getContext(), (j - 812) / 2 + 128) - i);
+        localObject1 = SpringLuckyEggActivity.a(this.xER);
+        if (localObject1 != null) {
+          break label238;
+        }
+        s.bIx("viewBinding");
+        localObject1 = localObject2;
       }
-      AppMethodBeat.o(249637);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;", "invoke"})
-  static final class o
-    extends q
-    implements kotlin.g.a.a<d>
-  {
-    o(SpringLuckyEggActivity paramSpringLuckyEggActivity)
-    {
-      super();
+      label238:
+      for (;;)
+      {
+        ((b)localObject1).xFc.requestLayout();
+        AppMethodBeat.o(266603);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.SpringLuckyEggActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,10 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import android.os.Looper;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.chatroom.d.aa;
+import com.tencent.mm.autogen.a.qb;
 import com.tencent.mm.chatroom.plugin.PluginChatroomUI;
-import com.tencent.mm.f.a.or;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -17,6 +13,8 @@ import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.au;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +40,7 @@ public class f
     this.db = paramISQLiteDatabase;
   }
   
-  public final e Kv(String paramString)
+  public final e Db(String paramString)
   {
     AppMethodBeat.i(182160);
     if (Util.isNullOrNil(paramString))
@@ -110,15 +108,15 @@ public class f
     boolean bool = super.updateNotify(parame, true, paramVarArgs);
     if (bool)
     {
-      paramVarArgs = new or();
-      paramVarArgs.fNx.fHp = parame.field_chatroomname;
-      EventCenter.instance.asyncPublish(paramVarArgs, Looper.getMainLooper());
+      paramVarArgs = new qb();
+      paramVarArgs.hTk.hMM = parame.field_chatroomname;
+      paramVarArgs.asyncPublish(Looper.getMainLooper());
     }
     AppMethodBeat.o(182162);
     return bool;
   }
   
-  public final List<e> asq()
+  public final List<e> aMk()
   {
     AppMethodBeat.i(185974);
     Cursor localCursor = this.db.query("GroupTools", e.info.columns, null, null, null, null, null);
@@ -156,31 +154,26 @@ public class f
   public void onNotifyChange(int paramInt, final MStorageEx paramMStorageEx, Object paramObject)
   {
     AppMethodBeat.i(185975);
-    if (!aa.asf())
-    {
-      AppMethodBeat.o(185975);
-      return;
-    }
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
       AppMethodBeat.o(185975);
       return;
     }
-    if ((paramInt == 2) && (paramMStorageEx == ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL()))
+    if ((paramInt == 2) && (paramMStorageEx == ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA()))
     {
       paramMStorageEx = (String)paramObject;
-      if (ab.PP(paramMStorageEx)) {
-        com.tencent.e.h.ZvG.be(new Runnable()
+      if (au.bwG(paramMStorageEx)) {
+        com.tencent.threadpool.h.ahAA.bm(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(188285);
+            AppMethodBeat.i(241401);
             e locale = new e();
             locale.field_chatroomname = paramMStorageEx;
             locale.field_queryState = 1;
-            boolean bool = ((PluginChatroomUI)com.tencent.mm.kernel.h.ag(PluginChatroomUI.class)).getGroupToolsStorage().a(locale);
+            boolean bool = ((PluginChatroomUI)com.tencent.mm.kernel.h.az(PluginChatroomUI.class)).getGroupToolsStorage().a(locale);
             Log.i("MicroMsg.roomtools.GroupToolsStorage", "onNotifyChange username:%s result:%s", new Object[] { paramMStorageEx, Boolean.valueOf(bool) });
-            AppMethodBeat.o(188285);
+            AppMethodBeat.o(241401);
           }
         });
       }

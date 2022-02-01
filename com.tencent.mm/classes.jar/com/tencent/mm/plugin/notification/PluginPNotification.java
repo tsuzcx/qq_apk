@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.notification;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.af;
 
 public class PluginPNotification
   extends f
@@ -11,23 +11,23 @@ public class PluginPNotification
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(279496);
-    ab.aE("FailMsgFileCache", "FailMsgFileCache", 5);
-    AppMethodBeat.o(279496);
+    AppMethodBeat.i(271919);
+    af.aR("FailMsgFileCache", "FailMsgFileCache", 5);
+    AppMethodBeat.o(271919);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(279498);
-    if (paramg.aIE()) {
-      pin(com.tencent.mm.plugin.notification.d.a.fky());
+    AppMethodBeat.i(271920);
+    if (paramg.bbA()) {
+      pin(com.tencent.mm.plugin.notification.model.a.guP());
     }
-    AppMethodBeat.o(279498);
+    AppMethodBeat.o(271920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.PluginPNotification
  * JD-Core Version:    0.7.0.1
  */

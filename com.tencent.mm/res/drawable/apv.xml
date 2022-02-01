@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<ripple android:color="#80000000"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="true" android:drawable="@drawable/cl3" />
-    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/cl2" />
-    <item android:state_checked="true" android:drawable="@drawable/cl1" />
-    <item android:drawable="@drawable/cl2" />
-</selector>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#ff07c160" />
+        </shape>
+    </item>
+</ripple>

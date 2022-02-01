@@ -1,101 +1,359 @@
 package com.tencent.mm.plugin.finder.live.viewmodel.data.business;
 
+import com.tencent.d.a.a.a.d.a.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.d;
-import com.tencent.mm.plugin.finder.live.model.ao;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.bbd;
+import com.tencent.mm.ae.f;
+import com.tencent.mm.plugin.finder.live.model.context.a;
+import com.tencent.mm.plugin.finder.utils.aw;
+import com.tencent.mm.protocal.protobuf.bfl;
+import com.tencent.mm.protocal.protobuf.bgw;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveMsgSlice;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/IBusiness;", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "liveContext", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "bulletCommetList", "", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "kotlin.jvm.PlatformType", "", "getBulletCommetList", "()Ljava/util/List;", "setBulletCommetList", "(Ljava/util/List;)V", "commentReachLastOnViewDettach", "", "getCommentReachLastOnViewDettach", "()Z", "setCommentReachLastOnViewDettach", "(Z)V", "commentReadCount", "", "getCommentReadCount", "()J", "setCommentReadCount", "(J)V", "curVisiableFirstPosition", "", "getCurVisiableFirstPosition", "()I", "setCurVisiableFirstPosition", "(I)V", "curVisiableLastPosition", "getCurVisiableLastPosition", "setCurVisiableLastPosition", "highLightCheerList", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "getHighLightCheerList", "setHighLightCheerList", "msgList", "Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveMsg;", "getMsgList", "setMsgList", "topMsgList", "getTopMsgList", "setTopMsgList", "addLiveRoomCommentMsg", "", "liveRoomComment", "addLiveRoomLikeMsg", "liveRoomLike", "onCleared", "updateLiveMsgCommentState", "Ljava/util/LinkedList;", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveFansClubSlice;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/IBusiness;", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "liveBuContext", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "value", "Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubInfo;", "fansClubInfo", "getFansClubInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubInfo;", "setFansClubInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubInfo;)V", "", "haveShowTag", "getHaveShowTag", "()Z", "setHaveShowTag", "(Z)V", "isFansClubMember", "setFansClubMember", "Lcom/tencent/plugin/finder/live/api/storage/model/FinderLiveGiftInfo;", "joinGift", "getJoinGift", "()Lcom/tencent/plugin/finder/live/api/storage/model/FinderLiveGiftInfo;", "setJoinGift", "(Lcom/tencent/plugin/finder/live/api/storage/model/FinderLiveGiftInfo;)V", "visitorFansClubLevel", "", "getVisitorFansClubLevel", "()I", "setVisitorFansClubLevel", "(I)V", "isOpenFunClub", "onCleared", "", "printNewFansClubInfo", "oriInfo", "newInfo", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends a<com.tencent.mm.plugin.finder.live.model.context.a>
+  extends c<a>
 {
-  public static final a ziy;
-  public List<ao> ziq;
-  public List<bbd> zir;
-  public List<bbd> zis;
-  public List<axe> zit;
-  public int ziu;
-  public int ziv;
-  public boolean ziw;
-  public long zix;
+  public static final a Efe;
+  public boolean Eff;
+  public bgw Efg;
+  public d Efh;
+  public boolean Efi;
   
   static
   {
-    AppMethodBeat.i(261138);
-    ziy = new a((byte)0);
-    AppMethodBeat.o(261138);
+    AppMethodBeat.i(356720);
+    Efe = new a((byte)0);
+    AppMethodBeat.o(356720);
   }
   
-  public h(com.tencent.mm.plugin.finder.live.model.context.a parama)
+  public h(a parama)
   {
     super(parama);
-    AppMethodBeat.i(261136);
-    this.ziq = Collections.synchronizedList((List)new ArrayList());
-    this.zir = Collections.synchronizedList((List)new ArrayList());
-    this.zis = Collections.synchronizedList((List)new ArrayList());
-    this.zit = Collections.synchronizedList((List)new ArrayList());
-    this.ziu = -1;
-    this.ziv = -1;
-    this.ziw = true;
-    AppMethodBeat.o(261136);
+    AppMethodBeat.i(356704);
+    AppMethodBeat.o(356704);
   }
   
-  public final void aH(LinkedList<bbd> paramLinkedList)
+  private static void a(bgw parambgw1, bgw parambgw2)
   {
-    AppMethodBeat.i(261132);
-    p.k(paramLinkedList, "msgList");
-    paramLinkedList = ((Iterable)paramLinkedList).iterator();
-    int i = 0;
-    if (paramLinkedList.hasNext())
+    Object localObject3 = null;
+    AppMethodBeat.i(356715);
+    Object localObject1;
+    Object localObject2;
+    if (parambgw2 == null)
     {
-      bbd localbbd = (bbd)paramLinkedList.next();
-      switch (localbbd.type)
+      localObject1 = null;
+      if (parambgw1 != null) {
+        break label106;
+      }
+      localObject2 = null;
+      label20:
+      if (s.p(localObject1, localObject2))
       {
+        if (parambgw2 != null) {
+          break label114;
+        }
+        localObject1 = null;
+        label34:
+        if (parambgw1 != null) {
+          break label125;
+        }
+        localObject2 = null;
+        label40:
+        if (s.p(localObject1, localObject2))
+        {
+          if (parambgw2 != null) {
+            break label136;
+          }
+          localObject1 = null;
+          label54:
+          if (parambgw1 != null) {
+            break label147;
+          }
+        }
+      }
+    }
+    label136:
+    label147:
+    for (parambgw1 = localObject3;; parambgw1 = Boolean.valueOf(parambgw1.ZQo))
+    {
+      if (!s.p(localObject1, parambgw1))
+      {
+        parambgw1 = parambgw2;
+        if (parambgw2 == null) {
+          parambgw1 = "";
+        }
+        Log.i("LiveFansClubSlice", s.X("printNewFansClubInfo ", f.dg(parambgw1)));
+      }
+      AppMethodBeat.o(356715);
+      return;
+      localObject1 = parambgw2.ZQn;
+      break;
+      label106:
+      localObject2 = parambgw1.ZQn;
+      break label20;
+      label114:
+      localObject1 = Integer.valueOf(parambgw2.YFb);
+      break label34;
+      label125:
+      localObject2 = Integer.valueOf(parambgw1.YFb);
+      break label40;
+      localObject1 = Boolean.valueOf(parambgw2.ZQo);
+      break label54;
+    }
+  }
+  
+  public final void a(bgw parambgw)
+  {
+    AppMethodBeat.i(356745);
+    a(this.Efg, parambgw);
+    this.Efg = parambgw;
+    AppMethodBeat.o(356745);
+  }
+  
+  public final void b(d paramd)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(356755);
+    Object localObject2;
+    label137:
+    if (paramd == null)
+    {
+      localObject1 = null;
+      localObject2 = this.Efh;
+      if (localObject2 != null) {
+        break label221;
+      }
+      localObject2 = null;
+      label25:
+      if (!s.p(localObject1, localObject2))
+      {
+        localObject2 = new StringBuilder("joinGift:");
+        localObject1 = this.Efh;
+        if (localObject1 != null) {
+          break label229;
+        }
+        localObject1 = null;
+        label54:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(',');
+        localObject1 = this.Efh;
+        if (localObject1 != null) {
+          break label237;
+        }
+        localObject1 = null;
+        label76:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(',');
+        localObject1 = this.Efh;
+        if (localObject1 != null) {
+          break label248;
+        }
+        localObject1 = null;
+        label98:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(',');
+        localObject1 = this.Efh;
+        if (localObject1 != null) {
+          break label259;
+        }
+        localObject1 = null;
+        label120:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(",new:");
+        if (paramd != null) {
+          break label270;
+        }
+        localObject1 = null;
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(',');
+        if (paramd != null) {
+          break label278;
+        }
+        localObject1 = null;
+        label154:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(',');
+        if (paramd != null) {
+          break label289;
+        }
+        localObject1 = null;
+        label171:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(',');
+        if (paramd != null) {
+          break label300;
+        }
+      }
+    }
+    label259:
+    label270:
+    label278:
+    label289:
+    label300:
+    for (Object localObject1 = localObject3;; localObject1 = Float.valueOf(paramd.field_price))
+    {
+      Log.i("LiveFansClubSlice", localObject1);
+      this.Efh = paramd;
+      AppMethodBeat.o(356755);
+      return;
+      localObject1 = paramd.field_rewardProductId;
+      break;
+      label221:
+      localObject2 = ((d)localObject2).field_rewardProductId;
+      break label25;
+      label229:
+      localObject1 = ((d)localObject1).field_rewardProductId;
+      break label54;
+      label237:
+      localObject1 = Integer.valueOf(((d)localObject1).field_flag);
+      break label76;
+      label248:
+      localObject1 = Integer.valueOf(((d)localObject1).field_unlockIntimacyLevel);
+      break label98;
+      localObject1 = Float.valueOf(((d)localObject1).field_price);
+      break label120;
+      localObject1 = paramd.field_rewardProductId;
+      break label137;
+      localObject1 = Integer.valueOf(paramd.field_flag);
+      break label154;
+      localObject1 = Integer.valueOf(paramd.field_unlockIntimacyLevel);
+      break label171;
+    }
+  }
+  
+  public final int eyQ()
+  {
+    AppMethodBeat.i(356737);
+    Object localObject = ((e)business(e.class)).Ecm;
+    int i;
+    if (localObject == null) {
+      i = 0;
+    }
+    for (;;)
+    {
+      Log.i("LiveFansClubSlice", s.X("visitorFansClubLevel:", Integer.valueOf(i)));
+      AppMethodBeat.o(356737);
+      return i;
+      Iterator localIterator = ((Iterable)localObject).iterator();
+      label55:
+      if (localIterator.hasNext())
+      {
+        localObject = localIterator.next();
+        if (((bfl)localObject).ZPp == 4)
+        {
+          i = 1;
+          label84:
+          if (i == 0) {
+            break label105;
+          }
+        }
       }
       for (;;)
       {
+        localObject = (bfl)localObject;
+        if (localObject != null) {
+          break label112;
+        }
+        i = 0;
         break;
-        i = localbbd.type;
-        ((b)business(b.class)).zfc = true;
-        break;
-        i = localbbd.type;
-        ((b)business(b.class)).zfc = false;
+        i = 0;
+        break label84;
+        label105:
+        break label55;
+        localObject = null;
+      }
+      label112:
+      i = ((bfl)localObject).ZPr;
+    }
+  }
+  
+  public final boolean eyR()
+  {
+    AppMethodBeat.i(356775);
+    if (this.Efg != null)
+    {
+      bgw localbgw = this.Efg;
+      localObject = localbgw;
+      if (localbgw == null) {
+        localObject = "";
+      }
+      Log.i("LiveFansClubSlice", s.X("isShowFunClub ", f.dg(localObject)));
+    }
+    Object localObject = this.Efg;
+    if ((localObject != null) && (((bgw)localObject).ZQq == true))
+    {
+      i = 1;
+      if (i == 0) {
+        break label103;
+      }
+      localObject = this.Efg;
+      if ((localObject == null) || (((bgw)localObject).ZQo != true)) {
+        break label98;
       }
     }
-    if (i == 10007) {
-      ((d)com.tencent.mm.kernel.h.ae(d.class)).bvU();
+    label98:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label103;
+      }
+      AppMethodBeat.o(356775);
+      return true;
+      i = 0;
+      break;
     }
-    Log.i("MMFinder.LiveMsgSlice", "updateLiveMsg commentType:".concat(String.valueOf(i)));
-    AppMethodBeat.o(261132);
+    label103:
+    AppMethodBeat.o(356775);
+    return false;
   }
   
   public final void onCleared()
   {
-    AppMethodBeat.i(261133);
-    this.ziq.clear();
-    this.zir.clear();
-    this.zis.clear();
-    this.zit.clear();
-    this.ziw = true;
-    this.zix = 0L;
-    AppMethodBeat.o(261133);
+    AppMethodBeat.i(356766);
+    sn(false);
+    a(null);
+    b(null);
+    so(false);
+    AppMethodBeat.o(356766);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveMsgSlice$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"})
+  public final void sn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(356730);
+    aw localaw = aw.Gjk;
+    if (aw.bgV()) {
+      Log.i("LiveFansClubSlice", "isFansClubMember:" + this.Eff + ",new:" + paramBoolean);
+    }
+    if (paramBoolean != this.Eff)
+    {
+      localaw = aw.Gjk;
+      if (!aw.bgV()) {
+        break label116;
+      }
+      Log.printInfoStack("LiveFansClubSlice", "isFansClubMember:" + this.Eff + ",new:" + paramBoolean, new Object[0]);
+    }
+    for (;;)
+    {
+      this.Eff = paramBoolean;
+      AppMethodBeat.o(356730);
+      return;
+      label116:
+      Log.i("LiveFansClubSlice", "isFansClubMember:" + this.Eff + ",new:" + paramBoolean);
+    }
+  }
+  
+  public final void so(boolean paramBoolean)
+  {
+    AppMethodBeat.i(356761);
+    if (paramBoolean != this.Efi) {
+      Log.i("LiveFansClubSlice", "haveShowTag:" + this.Efi + ",new:" + paramBoolean);
+    }
+    this.Efi = paramBoolean;
+    AppMethodBeat.o(356761);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/business/LiveFansClubSlice$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.data.business.h
  * JD-Core Version:    0.7.0.1
  */

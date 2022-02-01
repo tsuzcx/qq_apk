@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundCornerRelativeLayout android:id="@id/ix3" android:layout_width="fill_parent" android:layout_height="@dimen/bx"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/aft" android:background="@color/a9w" android:layout_width="fill_parent" android:layout_height="@dimen/bx" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h61" android:background="@drawable/au4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/b7t" android:layout_width="@dimen/bx" android:layout_height="@dimen/bx" android:src="@raw/icons_filled_music" android:scaleType="centerCrop" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/cd">
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/b7y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="我要飞的更高" android:singleLine="true" />
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/m4" android:ellipsize="end" android:id="@id/b7x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="BTS防弹少年团" android:singleLine="true" />
+            <View android:id="@id/hqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/y" android:textColor="@color/xo" android:ellipsize="middle" android:id="@id/b7v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="生活大爆炸生活大爆炸生活大爆炸生活大爆炸的音乐视频" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mm.ui.widget.RoundCornerRelativeLayout>

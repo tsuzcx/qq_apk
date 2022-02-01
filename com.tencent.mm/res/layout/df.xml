@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/pf" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/c" android:textColor="@color/a2x" android:gravity="center" android:id="@id/pe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" app:layout_constraintEnd_toEndOf="@id/b33" app:layout_constraintStart_toStartOf="@id/b33" app:layout_constraintTop_toBottomOf="@id/b33" />
-    <com.tencent.mm.plugin.appbrand.ui.AppBrandCircleProgressView android:id="@id/b33" android:layout_width="64.0dip" android:layout_height="64.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_bias="0.3333333" />
-    <ImageView android:id="@id/p_" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/b33" app:layout_constraintEnd_toEndOf="@id/b33" app:layout_constraintStart_toStartOf="@id/b33" app:layout_constraintTop_toBottomOf="@id/b33" />
-    <ViewStub android:id="@id/e7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/pe" />
-    <ViewStub android:id="@id/te" android:layout="@layout/h2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
-    <ViewStub android:id="@id/aam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="48.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:padding="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/bk" android:textColor="@color/mz" android:id="@id/a1h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a4s" />
+    <TextView android:textColorHighlight="@color/al2" android:textColorLink="@color/Link" android:id="@id/a1f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip">
+        <Button android:id="@id/a1g" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/a4r" style="@style/op" />
+        <Button android:id="@id/a1e" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/a4q" android:layout_marginStart="16.0dip" style="@style/oh" />
+    </LinearLayout>
+</LinearLayout>

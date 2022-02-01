@@ -8,38 +8,39 @@ import com.tencent.qbar.QbarNative.QBarPoint;
 import com.tencent.qbar.QbarNative.QBarZoomInfo;
 import com.tencent.qbar.a.a;
 import com.tencent.qbar.d;
+import com.tencent.scanlib.b;
 import com.tencent.stubs.logger.Log;
 import java.util.List;
 
 public class a
 {
-  protected Object Brg;
+  protected Object GXz;
   protected String TAG;
-  protected com.tencent.qbar.a Zrj;
-  protected boolean jvb;
+  protected com.tencent.qbar.a ahvY;
+  protected boolean lYs;
   
   public a(String paramString)
   {
     AppMethodBeat.i(3546);
     this.TAG = "BaseQBarAIDecoder";
-    this.Brg = new Object();
-    this.Zrj = new com.tencent.qbar.a();
+    this.GXz = new Object();
+    this.ahvY = new com.tencent.qbar.a();
     this.TAG = (this.TAG + "_" + paramString);
     AppMethodBeat.o(3546);
   }
   
-  private List<a.a> V(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private List<a.a> S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3549);
     long l = System.currentTimeMillis();
-    paramInt1 = this.Zrj.U(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.ahvY.R(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt1 < 0)
     {
       Log.e(this.TAG, "scanImage result ".concat(String.valueOf(paramInt1)));
       AppMethodBeat.o(3549);
       return null;
     }
-    paramArrayOfByte = this.Zrj.iny();
+    paramArrayOfByte = this.ahvY.jWG();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0)) {
       Log.e(this.TAG, String.format("get no results ,cost %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
     }
@@ -48,15 +49,18 @@ public class a
     return paramArrayOfByte;
   }
   
-  public final void N(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public final List<a.a> T(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(3550);
-    this.Zrj.L(paramList, paramList1);
-    Log.i(this.TAG, String.format("get detect code result %d", new Object[] { Integer.valueOf(paramList.size()) }));
-    AppMethodBeat.o(3550);
+    AppMethodBeat.i(3553);
+    synchronized (this.GXz)
+    {
+      paramArrayOfByte = S(paramArrayOfByte, paramInt1, paramInt2);
+      AppMethodBeat.o(3553);
+      return paramArrayOfByte;
+    }
   }
   
-  public final int S(int[] paramArrayOfInt)
+  public final int U(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(3554);
     if (paramArrayOfInt != null)
@@ -81,20 +85,9 @@ public class a
     arrayOfInt1[1] = 1;
     arrayOfInt1[2] = 4;
     arrayOfInt1[3] = 5;
-    int i = this.Zrj.l(arrayOfInt1, arrayOfInt1.length);
+    int i = this.ahvY.y(arrayOfInt1, arrayOfInt1.length);
     AppMethodBeat.o(3554);
     return i;
-  }
-  
-  public final List<a.a> W(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(3553);
-    synchronized (this.Brg)
-    {
-      paramArrayOfByte = V(paramArrayOfByte, paramInt1, paramInt2);
-      AppMethodBeat.o(3553);
-      return paramArrayOfByte;
-    }
   }
   
   public final List<a.a> a(int[] paramArrayOfInt, Point paramPoint)
@@ -115,86 +108,139 @@ public class a
       AppMethodBeat.o(3548);
       return null;
     }
-    paramArrayOfInt = V(arrayOfByte, paramPoint.x, paramPoint.y);
+    paramArrayOfInt = S(arrayOfByte, paramPoint.x, paramPoint.y);
     AppMethodBeat.o(3548);
     return paramArrayOfInt;
   }
   
   /* Error */
-  public final void a(int paramInt, com.tencent.qbar.QbarNative.QbarAiModelParam paramQbarAiModelParam)
+  public final void a(android.content.Context paramContext, int paramInt, com.tencent.qbar.QbarNative.QbarAiModelParam paramQbarAiModelParam)
   {
     // Byte code:
-    //   0: sipush 3547
-    //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: getfield 163	com/tencent/scanlib/b/a:jvb	Z
-    //   10: ifeq +10 -> 20
-    //   13: sipush 3547
-    //   16: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: return
-    //   20: aload_0
-    //   21: getfield 29	com/tencent/scanlib/b/a:Brg	Ljava/lang/Object;
-    //   24: astore_3
-    //   25: aload_3
-    //   26: monitorenter
-    //   27: aload_0
-    //   28: getfield 34	com/tencent/scanlib/b/a:Zrj	Lcom/tencent/qbar/a;
-    //   31: iload_1
-    //   32: ldc 165
-    //   34: ldc 167
-    //   36: aload_2
-    //   37: invokevirtual 170	com/tencent/qbar/a:a	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/qbar/QbarNative$QbarAiModelParam;)I
-    //   40: istore_1
-    //   41: iload_1
-    //   42: ifeq +28 -> 70
-    //   45: aload_0
-    //   46: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
-    //   49: ldc 172
-    //   51: iload_1
-    //   52: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   55: invokevirtual 75	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   58: invokestatic 111	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   61: aload_3
-    //   62: monitorexit
-    //   63: sipush 3547
-    //   66: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   69: return
-    //   70: aload_0
-    //   71: iconst_1
-    //   72: putfield 163	com/tencent/scanlib/b/a:jvb	Z
-    //   75: aload_0
-    //   76: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
-    //   79: ldc 174
-    //   81: invokestatic 111	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: aload_3
-    //   85: monitorexit
-    //   86: sipush 3547
-    //   89: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   92: return
-    //   93: astore_2
-    //   94: sipush 3547
-    //   97: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   100: return
-    //   101: astore_2
-    //   102: aload_3
-    //   103: monitorexit
-    //   104: sipush 3547
-    //   107: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: aload_2
-    //   111: athrow
+    //   0: ldc 152
+    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 154	com/tencent/scanlib/b/a:lYs	Z
+    //   9: ifeq +9 -> 18
+    //   12: ldc 152
+    //   14: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: return
+    //   18: getstatic 159	com/tencent/scanlib/b:ahvB	Ljava/lang/Object;
+    //   21: astore 6
+    //   23: aload 6
+    //   25: monitorenter
+    //   26: aload_0
+    //   27: getfield 29	com/tencent/scanlib/b/a:GXz	Ljava/lang/Object;
+    //   30: astore 7
+    //   32: aload 7
+    //   34: monitorenter
+    //   35: aload_0
+    //   36: invokevirtual 162	java/lang/Object:hashCode	()I
+    //   39: istore 4
+    //   41: aload_0
+    //   42: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
+    //   45: ldc 164
+    //   47: iload 4
+    //   49: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   52: invokevirtual 75	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 111	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: aload_1
+    //   59: invokestatic 168	com/tencent/scanlib/b:of	(Landroid/content/Context;)I
+    //   62: istore 5
+    //   64: aload_0
+    //   65: getfield 34	com/tencent/scanlib/b/a:ahvY	Lcom/tencent/qbar/a;
+    //   68: iload 5
+    //   70: iload_2
+    //   71: ldc 170
+    //   73: ldc 172
+    //   75: aload_3
+    //   76: invokevirtual 175	com/tencent/qbar/a:a	(IILjava/lang/String;Ljava/lang/String;Lcom/tencent/qbar/QbarNative$QbarAiModelParam;)I
+    //   79: istore_2
+    //   80: iload_2
+    //   81: ifeq +48 -> 129
+    //   84: aload_0
+    //   85: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
+    //   88: new 36	java/lang/StringBuilder
+    //   91: dup
+    //   92: ldc 177
+    //   94: invokespecial 179	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   97: iload_2
+    //   98: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   101: ldc 184
+    //   103: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: iload 4
+    //   108: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   111: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   114: invokestatic 81	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   117: aload 7
+    //   119: monitorexit
+    //   120: aload 6
+    //   122: monitorexit
+    //   123: ldc 152
+    //   125: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: return
+    //   129: aload_0
+    //   130: iconst_1
+    //   131: putfield 154	com/tencent/scanlib/b/a:lYs	Z
+    //   134: aload_0
+    //   135: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
+    //   138: new 36	java/lang/StringBuilder
+    //   141: dup
+    //   142: ldc 186
+    //   144: invokespecial 179	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   147: iload 5
+    //   149: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   152: ldc 184
+    //   154: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: iload 4
+    //   159: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   162: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   165: invokestatic 111	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   168: aload 7
+    //   170: monitorexit
+    //   171: aload 6
+    //   173: monitorexit
+    //   174: ldc 152
+    //   176: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: return
+    //   180: astore_1
+    //   181: ldc 152
+    //   183: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   186: return
+    //   187: astore_1
+    //   188: aload 7
+    //   190: monitorexit
+    //   191: ldc 152
+    //   193: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   196: aload_1
+    //   197: athrow
+    //   198: astore_1
+    //   199: aload 6
+    //   201: monitorexit
+    //   202: ldc 152
+    //   204: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   207: aload_1
+    //   208: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	112	0	this	a
-    //   0	112	1	paramInt	int
-    //   0	112	2	paramQbarAiModelParam	com.tencent.qbar.QbarNative.QbarAiModelParam
+    //   0	209	0	this	a
+    //   0	209	1	paramContext	android.content.Context
+    //   0	209	2	paramInt	int
+    //   0	209	3	paramQbarAiModelParam	com.tencent.qbar.QbarNative.QbarAiModelParam
+    //   39	119	4	i	int
+    //   62	86	5	j	int
     // Exception table:
     //   from	to	target	type
-    //   20	27	93	java/lang/Exception
-    //   86	92	93	java/lang/Exception
-    //   102	112	93	java/lang/Exception
-    //   27	41	101	finally
-    //   45	63	101	finally
-    //   70	86	101	finally
+    //   18	26	180	java/lang/Exception
+    //   174	179	180	java/lang/Exception
+    //   199	209	180	java/lang/Exception
+    //   35	80	187	finally
+    //   84	120	187	finally
+    //   129	171	187	finally
+    //   26	35	198	finally
+    //   120	123	198	finally
+    //   171	174	198	finally
+    //   188	198	198	finally
   }
   
   public final byte[] a(byte[] paramArrayOfByte, Point paramPoint, int paramInt, Rect arg4, int[] paramArrayOfInt)
@@ -233,7 +279,7 @@ public class a
         m = ???.top;
         arrayOfByte = new byte[i * j * 3 / 2];
       }
-      synchronized (this.Brg)
+      synchronized (this.GXz)
       {
         paramInt = d.a(arrayOfByte, paramArrayOfInt, paramArrayOfByte, paramPoint.x, paramPoint.y, k, m, i, j, paramInt);
         if (paramInt != 0)
@@ -258,15 +304,23 @@ public class a
     }
   }
   
-  public final boolean hasInited()
+  public final void aa(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
-    return this.jvb;
+    AppMethodBeat.i(3550);
+    this.ahvY.Y(paramList, paramList1);
+    Log.i(this.TAG, String.format("get detect code result %d", new Object[] { Integer.valueOf(paramList.size()) }));
+    AppMethodBeat.o(3550);
   }
   
-  public final QbarNative.QBarZoomInfo ioA()
+  public final boolean hasInited()
+  {
+    return this.lYs;
+  }
+  
+  public final QbarNative.QBarZoomInfo jXN()
   {
     AppMethodBeat.i(3551);
-    QbarNative.QBarZoomInfo localQBarZoomInfo = this.Zrj.inz();
+    QbarNative.QBarZoomInfo localQBarZoomInfo = this.ahvY.jWH();
     AppMethodBeat.o(3551);
     return localQBarZoomInfo;
   }
@@ -274,20 +328,24 @@ public class a
   public final void release()
   {
     AppMethodBeat.i(3555);
-    synchronized (this.Brg)
+    synchronized (b.ahvB)
     {
-      this.jvb = false;
-      if (this.Zrj != null) {
-        this.Zrj.release();
+      synchronized (this.GXz)
+      {
+        this.lYs = false;
+        Log.i(this.TAG, "qbar release , hashCode:" + hashCode());
+        if (this.ahvY != null) {
+          this.ahvY.release();
+        }
+        AppMethodBeat.o(3555);
+        return;
       }
-      AppMethodBeat.o(3555);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.scanlib.b.a
  * JD-Core Version:    0.7.0.1
  */

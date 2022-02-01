@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "toast", "", "", "plugin-brandservice_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  public static final MultiProcessMMKV cqu()
+  public static final MultiProcessMMKV cTb()
   {
     AppMethodBeat.i(6634);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("_webview_tmpl_command");
-    p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…MKV_WEBVIEW_TMPL_COMMAND)");
+    s.s(localMultiProcessMMKV, "getMMKV(ConstantsPreload…MKV_WEBVIEW_TMPL_COMMAND)");
     AppMethodBeat.o(6634);
     return localMultiProcessMMKV;
   }

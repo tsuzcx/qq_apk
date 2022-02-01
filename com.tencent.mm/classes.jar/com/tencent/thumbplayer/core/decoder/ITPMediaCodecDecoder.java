@@ -12,7 +12,9 @@ public abstract interface ITPMediaCodecDecoder
   public static final int BYTES_SET_CSD0_DATA = 200;
   public static final int BYTES_SET_CSD1_DATA = 201;
   public static final int BYTES_SET_CSD2_DATA = 202;
+  public static final int INT_ENABLE_RENDERER_SHARPEN = 100;
   public static final int OBJECT_SET_MEDIA_CRYPTO = 300;
+  public static final int STRING_SHARPEN_SHADER_PATH = 101;
   public static final int TP_CODEC_RETURN_CODE_EOS = 2;
   public static final int TP_CODEC_RETURN_CODE_ERROR = 3;
   public static final int TP_CODEC_RETURN_CODE_INTERNAL_RESET = 4;
@@ -55,6 +57,8 @@ public abstract interface ITPMediaCodecDecoder
   public abstract boolean setParamObject(int paramInt, Object paramObject);
   
   public abstract boolean setParamString(int paramInt, String paramString);
+  
+  public abstract int setSharpenSwitch();
   
   public abstract int signalEndOfStream();
   

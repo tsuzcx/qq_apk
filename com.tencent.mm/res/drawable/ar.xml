@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/mj" android:insetRight="@dimen/mj" android:insetTop="@dimen/mj" android:insetBottom="@dimen/mj"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <selector>
-        <item android:state_checked="false" android:state_pressed="false">
-            <layer-list>
-                <item android:drawable="@drawable/b8c" />
-                <item android:drawable="@drawable/b83" />
-            </layer-list>
-        </item>
-        <item>
-            <layer-list>
-                <item android:drawable="@drawable/b8b" />
-                <item android:drawable="@drawable/b83" />
-            </layer-list>
-        </item>
-    </selector>
-</inset>
+    <item android:state_checked="true" android:drawable="@drawable/b5i" />
+    <item android:drawable="@drawable/b5h" />
+</selector>

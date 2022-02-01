@@ -17,23 +17,29 @@ public final class b
     localIntent.putExtra("orientation", -1);
     paramMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
     {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void mmOnActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(78487);
         if (paramAnonymousInt1 == 3456)
         {
-          if ((paramAnonymousIntent == null) || (this.PRJ == null))
+          if ((paramAnonymousIntent == null) || (b.this == null))
           {
             AppMethodBeat.o(78487);
             return;
           }
-          paramAnonymousIntent = paramAnonymousIntent.getBundleExtra("input_data");
-          this.PRJ.C(paramAnonymousIntent);
+          Bundle localBundle = paramAnonymousIntent.getBundleExtra("input_data");
+          if (paramAnonymousIntent.getBooleanExtra("event_type", false))
+          {
+            b.this.bn(localBundle);
+            AppMethodBeat.o(78487);
+            return;
+          }
+          b.this.J(localBundle);
         }
         AppMethodBeat.o(78487);
       }
     });
-    com.tencent.mm.by.c.b(paramMMActivity, "webview", ".luggage.ipc.IpcProxyUI", localIntent, 3456);
+    com.tencent.mm.br.c.b(paramMMActivity, "webview", ".luggage.ipc.IpcProxyUI", localIntent, 3456);
     AppMethodBeat.o(78488);
   }
 }

@@ -2,101 +2,102 @@ package com.tencent.mm.plugin.appbrand.debugger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.bj.c;
-import com.tencent.mm.plugin.appbrand.appusage.an;
-import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.plugin.appbrand.appusage.am;
+import com.tencent.mm.plugin.appbrand.config.ad;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
   implements bj.c
 {
-  private final String nHz = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
+  private final String qHm = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
   
   public final void k(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(267562);
+    AppMethodBeat.i(319693);
     if (paramMap == null)
     {
-      AppMethodBeat.o(267562);
+      AppMethodBeat.o(319693);
       return;
     }
-    int k = Util.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
+    int k = Util.getInt((String)paramMap.get(s.X(".sysmsg.AppBrandTestUpdateWxaUsageListNotify", ".DeleteCount")), 0);
     if (k <= 0)
     {
-      AppMethodBeat.o(267562);
+      AppMethodBeat.o(319693);
       return;
     }
-    if (k >= 0)
+    int i;
+    if (k >= 0) {
+      i = 0;
+    }
+    for (;;)
     {
-      int i = 0;
-      for (;;)
+      Object localObject1 = new StringBuilder().append(".sysmsg.AppBrandTestUpdateWxaUsageListNotify").append(".DeleteList.DeleteAppInfo");
+      int m;
+      if (i == 0)
       {
-        Object localObject1 = new StringBuilder().append(".sysmsg.AppBrandTestUpdateWxaUsageListNotify").append(".DeleteList.DeleteAppInfo");
-        int m;
-        if (i == 0)
+        paramString = "";
+        Object localObject2 = paramString;
+        paramString = (String)paramMap.get(s.X((String)localObject2, ".UserName"));
+        localObject1 = (String)paramMap.get(s.X((String)localObject2, ".AppID"));
+        m = Util.getInt((String)paramMap.get(s.X((String)localObject2, ".AppType")), 0);
+        localObject2 = (CharSequence)paramString;
+        if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+          break label273;
+        }
+        j = 1;
+        label173:
+        if (j != 0)
         {
-          paramString = "";
-          Object localObject2 = paramString;
-          paramString = (String)paramMap.get((String)localObject2 + ".UserName");
-          localObject1 = (String)paramMap.get((String)localObject2 + ".AppID");
-          m = Util.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
-          localObject2 = (CharSequence)paramString;
+          localObject2 = (CharSequence)localObject1;
           if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-            break label325;
+            break label279;
           }
           j = 1;
-          label225:
-          if (j != 0)
-          {
-            localObject2 = (CharSequence)localObject1;
-            if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-              break label331;
-            }
-            j = 1;
-            label255:
-            if (j != 0) {
-              break label351;
-            }
-          }
-          localObject2 = (CharSequence)paramString;
-          if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-            break label337;
-          }
-        }
-        label325:
-        label331:
-        label337:
-        for (int j = 1;; j = 0)
-        {
+          label203:
           if (j != 0) {
-            paramString = y.afk((String)localObject1);
+            break label299;
           }
-          if (localObject1 != null) {
-            break label343;
-          }
-          paramString = new t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(267562);
-          throw paramString;
-          paramString = Integer.valueOf(i);
-          break;
-          j = 0;
-          break label225;
-          j = 0;
-          break label255;
         }
-        label343:
-        an.x(paramString, (String)localObject1, m);
-        label351:
-        if (i == k) {
-          break;
+        localObject2 = (CharSequence)paramString;
+        if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+          break label285;
         }
-        i += 1;
       }
+      label273:
+      label279:
+      label285:
+      for (int j = 1;; j = 0)
+      {
+        if (j != 0) {
+          paramString = ad.XL((String)localObject1);
+        }
+        if (localObject1 != null) {
+          break label291;
+        }
+        paramString = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(319693);
+        throw paramString;
+        paramString = Integer.valueOf(i);
+        break;
+        j = 0;
+        break label173;
+        j = 0;
+        break label203;
+      }
+      label291:
+      am.D(paramString, (String)localObject1, m);
+      label299:
+      if (i == k)
+      {
+        AppMethodBeat.o(319693);
+        return;
+      }
+      i += 1;
     }
-    AppMethodBeat.o(267562);
   }
 }
 

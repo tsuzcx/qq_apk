@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
@@ -11,16 +10,15 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class d
 {
-  private static boolean bTE()
+  private static boolean ctJ()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
-  @TargetApi(21)
-  public static boolean bTF()
+  public static boolean ctK()
   {
     AppMethodBeat.i(136185);
-    if (bTE())
+    if (ctJ())
     {
       boolean bool = MMApplicationContext.getContext().getPackageManager().hasSystemFeature("android.hardware.nfc.hce");
       AppMethodBeat.o(136185);
@@ -30,7 +28,7 @@ public final class d
     return false;
   }
   
-  public static boolean bTG()
+  public static boolean ctL()
   {
     AppMethodBeat.i(136186);
     Context localContext = MMApplicationContext.getContext();
@@ -48,7 +46,7 @@ public final class d
     return true;
   }
   
-  public static boolean bTH()
+  public static boolean ctM()
   {
     AppMethodBeat.i(136187);
     NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(MMApplicationContext.getContext());

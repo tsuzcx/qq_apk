@@ -1,141 +1,155 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.d.e;
-import com.tencent.mm.plugin.brandservice.d.f;
+import com.tencent.mm.api.o;
+import com.tencent.mm.br.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.brandservice.d.h;
+import com.tencent.mm.plugin.brandservice.d.i;
+import com.tencent.mm.plugin.messenger.a.d;
+import com.tencent.mm.plugin.messenger.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.sortview.a.a;
-import com.tencent.mm.ui.base.sortview.a.b;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
 
 public final class f
-  extends com.tencent.mm.ui.base.sortview.a
 {
-  private static a.b swV;
-  long swZ;
-  String sxa;
-  String syO;
-  int zP;
+  final Activity hHU;
+  String vDy;
+  com.tencent.mm.ui.tools.m vEh;
   
-  public f(long paramLong, int paramInt, String paramString)
+  public f(Activity paramActivity, String paramString)
   {
-    super(2, null);
-    this.swZ = paramLong;
-    this.sxa = paramString;
-    this.zP = paramInt;
+    this.hHU = paramActivity;
+    this.vDy = paramString;
   }
   
-  public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
+  public final MenuItem.OnMenuItemClickListener dcy()
   {
-    this.syO = "";
-  }
-  
-  public final a.b czw()
-  {
-    AppMethodBeat.i(5757);
-    if (swV == null) {
-      swV = new a.b()
+    AppMethodBeat.i(301720);
+    MenuItem.OnMenuItemClickListener local1 = new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        public final void a(Context paramAnonymousContext, a.a paramAnonymousa, com.tencent.mm.ui.base.sortview.a paramAnonymousVarArgs)
+        AppMethodBeat.i(301610);
+        if (f.this.vEh != null)
         {
-          AppMethodBeat.i(5755);
-          if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null))
-          {
-            Log.e("MicroMsg.ReadMoreBtnDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
-            AppMethodBeat.o(5755);
-            return;
-          }
-          if (!(paramAnonymousa instanceof f.a))
-          {
-            Log.e("MicroMsg.ReadMoreBtnDataItem", "The ViewHolder is not a instance of MoreBtnViewHolder.");
-            AppMethodBeat.o(5755);
-            return;
-          }
-          if (!(paramAnonymousVarArgs instanceof f))
-          {
-            Log.e("MicroMsg.ReadMoreBtnDataItem", "The DataItem is not a instance of MoreBtnDataItem.");
-            AppMethodBeat.o(5755);
-            return;
-          }
-          paramAnonymousContext = (f.a)paramAnonymousa;
-          paramAnonymousa = (f)paramAnonymousVarArgs;
-          paramAnonymousContext.qpt.setText(paramAnonymousa.syO);
-          AppMethodBeat.o(5755);
+          f.this.vEh.dismiss();
+          f.this.vEh = null;
         }
-        
-        public final void a(View paramAnonymousView, a.a paramAnonymousa)
+        f.this.vEh = new com.tencent.mm.ui.tools.m(f.this.hHU);
+        f.this.vEh.Vtg = new u.g()
         {
-          AppMethodBeat.i(5756);
-          if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof f.a))) {
-            ((f.a)paramAnonymousa).qpt = ((TextView)paramAnonymousView.findViewById(d.e.dXu));
-          }
-          AppMethodBeat.o(5756);
-        }
-        
-        public final boolean a(Context paramAnonymousContext, com.tencent.mm.ui.base.sortview.a paramAnonymousa, Object... paramAnonymousVarArgs)
-        {
-          AppMethodBeat.i(5753);
-          if ((paramAnonymousContext != null) && (paramAnonymousa != null)) {
-            if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length < 2) || (!(paramAnonymousVarArgs[1] instanceof Integer))) {
-              break label178;
+          public final void onCreateMMMenu(s paramAnonymous2s)
+          {
+            AppMethodBeat.i(301558);
+            ((o)h.ax(o.class)).hT(f.this.vDy);
+            String str;
+            if (!((o)h.ax(o.class)).hQ(f.this.vDy))
+            {
+              str = ((o)h.ax(o.class)).hR(f.this.vDy);
+              if (!Util.isNullOrNil(str)) {
+                break label127;
+              }
+              paramAnonymous2s.bx(2, d.i.bizchat_invite_chat, d.h.ofm_add_icon);
+            }
+            for (;;)
+            {
+              paramAnonymous2s.bx(3, d.i.enterprise_disable, d.h.actionbar_goto_disabled_biz_icon);
+              paramAnonymous2s.bx(4, d.i.actionbar_title_setting, d.h.actionbar_setting_white_icon);
+              AppMethodBeat.o(301558);
+              return;
+              label127:
+              paramAnonymous2s.a(2, str, d.h.ofm_add_icon);
             }
           }
-          label178:
-          for (int i = ((Integer)paramAnonymousVarArgs[1]).intValue();; i = 0)
-          {
-            paramAnonymousa = (f)paramAnonymousa;
-            paramAnonymousVarArgs = new Intent(paramAnonymousContext, BizSearchDetailPageUI.class);
-            paramAnonymousVarArgs.putExtra("keyword", paramAnonymousa.sxa);
-            paramAnonymousVarArgs.putExtra("businessType", paramAnonymousa.swZ);
-            paramAnonymousVarArgs.putExtra("offset", paramAnonymousa.zP);
-            paramAnonymousVarArgs.putExtra("showEditText", true);
-            paramAnonymousVarArgs.putExtra("fromScene", i);
-            paramAnonymousa = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousVarArgs);
-            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousContext, paramAnonymousa.aFh(), "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousContext.startActivity((Intent)paramAnonymousa.sf(0));
-            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousContext, "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            AppMethodBeat.o(5753);
-            return true;
-          }
-        }
-        
-        public final View c(Context paramAnonymousContext, View paramAnonymousView)
+        };
+        f.this.vEh.GAC = new u.i()
         {
-          AppMethodBeat.i(5754);
-          View localView = paramAnonymousView;
-          if (paramAnonymousView == null) {
-            localView = View.inflate(paramAnonymousContext, d.f.suy, null);
+          public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(301561);
+            switch (paramAnonymous2MenuItem.getItemId())
+            {
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(301561);
+              return;
+              paramAnonymous2MenuItem = ((o)h.ax(o.class)).hS(f.this.vDy);
+              if (!Util.isNullOrNil(paramAnonymous2MenuItem)) {}
+              for (paramAnonymous2Int = 1; paramAnonymous2Int != 0; paramAnonymous2Int = 0)
+              {
+                localObject = new Intent();
+                ((Intent)localObject).putExtra("rawUrl", paramAnonymous2MenuItem);
+                Log.i("EnterpriseBizEntranceListHelper", "KRawUrl :%s", new Object[] { paramAnonymous2MenuItem });
+                ((Intent)localObject).putExtra("useJs", true);
+                ((Intent)localObject).addFlags(67108864);
+                c.b(f.this.hHU, "webview", ".ui.tools.WebViewUI", (Intent)localObject, 0);
+                AppMethodBeat.o(301561);
+                return;
+              }
+              ((o)h.ax(o.class)).hT(f.this.vDy);
+              ((o)h.ax(o.class)).b(f.this.hHU, f.this.vDy);
+              AppMethodBeat.o(301561);
+              return;
+              Object localObject = new Intent(f.this.hHU, EnterpriseBizContactPlainListUI.class);
+              ((Intent)localObject).putExtra("enterprise_biz_name", f.this.vDy);
+              ((Intent)localObject).putExtra("enterprise_scene", 2);
+              paramAnonymous2MenuItem = f.this.hHU;
+              localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2MenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListHelper$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymous2MenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymous2MenuItem, "com/tencent/mm/plugin/brandservice/ui/EnterpriseBizEntranceListHelper$1$2", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              AppMethodBeat.o(301561);
+              return;
+              paramAnonymous2MenuItem = new Intent();
+              paramAnonymous2MenuItem.putExtra("Contact_User", f.this.vDy);
+              com.tencent.mm.plugin.brandservice.b.pFn.c(paramAnonymous2MenuItem, f.this.hHU);
+            }
           }
-          AppMethodBeat.o(5754);
-          return localView;
-        }
-      };
+        };
+        f.this.vEh.du();
+        AppMethodBeat.o(301610);
+        return false;
+      }
+    };
+    AppMethodBeat.o(301720);
+    return local1;
+  }
+  
+  public final boolean h(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(301722);
+    switch (paramInt1)
+    {
+    default: 
+      AppMethodBeat.o(301722);
+      return false;
     }
-    a.b localb = swV;
-    AppMethodBeat.o(5757);
-    return localb;
-  }
-  
-  public final a.a czx()
-  {
-    AppMethodBeat.i(5758);
-    a locala = new a();
-    AppMethodBeat.o(5758);
-    return locala;
-  }
-  
-  public static final class a
-    implements a.a
-  {
-    public TextView qpt;
+    if ((paramInt2 == -1) && (paramIntent != null))
+    {
+      String str1 = paramIntent.getStringExtra("be_send_card_name");
+      String str2 = paramIntent.getStringExtra("received_card_name");
+      boolean bool = paramIntent.getBooleanExtra("Is_Chatroom", false);
+      paramIntent = paramIntent.getStringExtra("custom_send_text");
+      g.gaI().B(str1, str2, bool);
+      g.gaI().ke(paramIntent, str2);
+      com.tencent.mm.ui.widget.snackbar.b.u(this.hHU, this.hHU.getString(d.i.has_send));
+    }
+    AppMethodBeat.o(301722);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.f
  * JD-Core Version:    0.7.0.1
  */

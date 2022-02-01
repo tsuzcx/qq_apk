@@ -9,9 +9,9 @@ public class MMBackgroundRunningOperationParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<MMBackgroundRunningOperationParcel> CREATOR;
-  public int aOm;
   public String appId;
-  public int fvK;
+  public int cIi;
+  public int hAf;
   
   static
   {
@@ -26,8 +26,8 @@ public class MMBackgroundRunningOperationParcel
   {
     AppMethodBeat.i(153215);
     this.appId = paramParcel.readString();
-    this.aOm = paramParcel.readInt();
-    this.fvK = paramParcel.readInt();
+    this.cIi = paramParcel.readInt();
+    this.hAf = paramParcel.readInt();
     AppMethodBeat.o(153215);
   }
   
@@ -39,7 +39,7 @@ public class MMBackgroundRunningOperationParcel
   public String toString()
   {
     AppMethodBeat.i(153216);
-    String str = "operation{appId='" + this.appId + '\'' + ", usage=" + this.aOm + ", operation=" + this.fvK + '}';
+    String str = "operation{appId='" + this.appId + '\'' + ", usage=" + this.cIi + ", operation=" + this.hAf + '}';
     AppMethodBeat.o(153216);
     return str;
   }
@@ -48,14 +48,14 @@ public class MMBackgroundRunningOperationParcel
   {
     AppMethodBeat.i(153217);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.aOm);
-    paramParcel.writeInt(this.fvK);
+    paramParcel.writeInt(this.cIi);
+    paramParcel.writeInt(this.hAf);
     AppMethodBeat.o(153217);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.MMBackgroundRunningOperationParcel
  * JD-Core Version:    0.7.0.1
  */

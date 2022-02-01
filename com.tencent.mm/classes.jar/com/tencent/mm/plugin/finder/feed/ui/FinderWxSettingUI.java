@@ -1,152 +1,105 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
 import com.tencent.mm.plugin.finder.storage.data.d.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderWxSettingUI
   extends MMFinderUI
 {
-  private HashMap _$_findViewCache;
-  
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderWxSettingUI paramFinderWxSettingUI, View paramView)
   {
-    AppMethodBeat.i(282273);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(282273);
+    AppMethodBeat.i(365019);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderWxSettingUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderWxSettingUI, "this$0");
+    paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+    com.tencent.mm.plugin.finder.utils.a.ha((Context)paramFinderWxSettingUI);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(365019);
   }
   
-  public final View _$_findCachedViewById(int paramInt)
+  private static final boolean a(FinderWxSettingUI paramFinderWxSettingUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(282271);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(282271);
-    return localView1;
+    AppMethodBeat.i(365013);
+    s.u(paramFinderWxSettingUI, "this$0");
+    paramFinderWxSettingUI.finish();
+    AppMethodBeat.o(365013);
+    return true;
   }
+  
+  private static final void b(FinderWxSettingUI paramFinderWxSettingUI, View paramView)
+  {
+    AppMethodBeat.i(365027);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderWxSettingUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderWxSettingUI, "this$0");
+    paramView = com.tencent.mm.plugin.finder.utils.a.GfO;
+    com.tencent.mm.plugin.finder.utils.a.hd((Context)paramFinderWxSettingUI);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(365027);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_wx_setting_ui_layout;
+    return e.f.finder_wx_setting_ui_layout;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(282269);
+    AppMethodBeat.i(365058);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.AmR;
-    d.a.dZo().onAlive();
-    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.AmR;
-    d.a.dZo();
-    com.tencent.mm.plugin.finder.storage.data.d.dZm();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
+    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.FML;
+    d.a.eZX().onAlive();
+    paramBundle = com.tencent.mm.plugin.finder.storage.data.d.FML;
+    d.a.eZX();
+    com.tencent.mm.plugin.finder.storage.data.d.eZV();
+    setBackBtn(new FinderWxSettingUI..ExternalSyntheticLambda0(this));
     setMMTitle("");
-    findViewById(b.f.jump_finder_wxmsg).setOnClickListener((View.OnClickListener)new b(this));
-    paramBundle = findViewById(b.f.jump_black_list);
-    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dTE().aSr()).intValue() == 1)
+    findViewById(e.e.jump_finder_wxmsg).setOnClickListener(new FinderWxSettingUI..ExternalSyntheticLambda2(this));
+    paramBundle = findViewById(e.e.jump_black_list);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    if (((Number)com.tencent.mm.plugin.finder.storage.d.eRV().bmg()).intValue() == 1)
     {
-      p.j(paramBundle, "blackList");
       paramBundle.setVisibility(0);
-      paramBundle.setOnClickListener((View.OnClickListener)new c(this));
-      AppMethodBeat.o(282269);
+      paramBundle.setOnClickListener(new FinderWxSettingUI..ExternalSyntheticLambda1(this));
+      AppMethodBeat.o(365058);
       return;
     }
-    p.j(paramBundle, "blackList");
     paramBundle.setVisibility(8);
-    AppMethodBeat.o(282269);
+    AppMethodBeat.o(365058);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(282270);
+    AppMethodBeat.i(365066);
     super.onDestroy();
-    d.a locala = com.tencent.mm.plugin.finder.storage.data.d.AmR;
-    d.a.dZo().onAlive();
-    AppMethodBeat.o(282270);
+    d.a locala = com.tencent.mm.plugin.finder.storage.data.d.FML;
+    d.a.eZX().onAlive();
+    AppMethodBeat.o(365066);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
-  {
-    a(FinderWxSettingUI paramFinderWxSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(268797);
-      this.xTo.finish();
-      AppMethodBeat.o(268797);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderWxSettingUI paramFinderWxSettingUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(220801);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-      com.tencent.mm.plugin.finder.utils.a.fG((Context)this.xTo);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(220801);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FinderWxSettingUI paramFinderWxSettingUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(269019);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = com.tencent.mm.plugin.finder.utils.a.ACH;
-      com.tencent.mm.plugin.finder.utils.a.fJ((Context)this.xTo);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderWxSettingUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(269019);
-    }
   }
 }
 

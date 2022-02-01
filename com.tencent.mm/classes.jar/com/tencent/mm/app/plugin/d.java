@@ -1,22 +1,22 @@
 package com.tencent.mm.app.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
+import com.tencent.mm.br.c;
+import com.tencent.mm.k.f;
+import com.tencent.mm.k.i;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
 {
-  public static boolean abP()
+  public static boolean aDO()
   {
     AppMethodBeat.i(19663);
-    if (!c.blP("translate"))
+    if (!c.blq("translate"))
     {
       AppMethodBeat.o(19663);
       return false;
     }
-    String str = h.axc().getValue("TranslateMsgOff");
+    String str = i.aRC().getValue("TranslateMsgOff");
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(19663);
@@ -33,7 +33,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.app.plugin.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eqv;
-import com.tencent.mm.protocal.protobuf.eqw;
-import com.tencent.mm.protocal.protobuf.eqx;
+import com.tencent.mm.protocal.protobuf.flz;
+import com.tencent.mm.protocal.protobuf.fma;
+import com.tencent.mm.protocal.protobuf.fmb;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class g
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private h callback;
+  private final c rr;
   
-  public g(LinkedList<eqv> paramLinkedList, int paramInt)
+  public g(LinkedList<flz> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(29567);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new eqw();
-    ((d.a)localObject).lBV = new eqx();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/talkstatreport";
-    ((d.a)localObject).funcId = 373;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (eqw)d.b.b(this.rr.lBR);
-    ((eqw)localObject).Utj = paramLinkedList.size();
-    ((eqw)localObject).Utk = paramLinkedList;
-    ((eqw)localObject).CPw = paramInt;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fma();
+    ((c.a)localObject).otF = new fmb();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/talkstatreport";
+    ((c.a)localObject).funcId = 373;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fma)c.b.b(this.rr.otB);
+    ((fma)localObject).abMq = paramLinkedList.size();
+    ((fma)localObject).abMr = paramLinkedList;
+    ((fma)localObject).IJG = paramInt;
     AppMethodBeat.o(29567);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(29568);
     Log.d("MicroMsg.NetSceneTalkStatReport", "doScene");
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29568);
     return i;

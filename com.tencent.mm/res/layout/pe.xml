@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ija" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tenpay.android.wechat.MyKeyboardWindow android:id="@id/ijb" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <RelativeLayout android:id="@id/ijc" android:background="@drawable/az2" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_above="@id/ijb">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_down" android:layout_centerInParent="true" android:contentDescription="@string/fqw" app:iconColor="@color/en" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/ax" android:gravity="center_vertical" android:id="@id/feh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" />
+    <ImageView android:id="@id/fef" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="3.0dip" android:scaleType="fitXY" />
+</LinearLayout>

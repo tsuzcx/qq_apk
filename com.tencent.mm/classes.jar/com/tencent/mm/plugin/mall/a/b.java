@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.protocal.protobuf.cac;
-import com.tencent.mm.protocal.protobuf.cad;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.cpl;
+import com.tencent.mm.protocal.protobuf.cpm;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class b
-  extends c<cad>
+  extends z<cpm>
 {
   public b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(264572);
-    cac localcac = new cac();
-    localcac.RPp = paramInt1;
-    localcac.RPq = 0;
-    localcac.TiH = 1;
-    localcac.TiI = paramInt2;
-    d.a locala = new d.a();
-    locala.lBU = localcac;
-    locala.lBV = new cad();
+    AppMethodBeat.i(262384);
+    cpl localcpl = new cpl();
+    localcpl.YMC = paramInt1;
+    localcpl.YMD = 0;
+    localcpl.aawf = 1;
+    localcpl.aawg = paramInt2;
+    c.a locala = new c.a();
+    locala.otE = localcpl;
+    locala.otF = new cpm();
     locala.funcId = 2680;
     locala.uri = "/cgi-bin/micromsg-bin/getpayfunctionswitchlist";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    c(locala.bgN());
+    c(locala.bEF());
     Log.i("MicroMsg.CgiGetPayFunctionSwitchList", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt1) });
-    AppMethodBeat.o(264572);
+    AppMethodBeat.o(262384);
   }
 }
 

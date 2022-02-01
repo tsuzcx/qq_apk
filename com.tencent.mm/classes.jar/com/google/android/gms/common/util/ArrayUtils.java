@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
-@VisibleForTesting
 public final class ArrayUtils
 {
   public static int[] appendToArray(int[] paramArrayOfInt, int paramInt)
@@ -995,7 +994,7 @@ public final class ArrayUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.ArrayUtils
  * JD-Core Version:    0.7.0.1
  */

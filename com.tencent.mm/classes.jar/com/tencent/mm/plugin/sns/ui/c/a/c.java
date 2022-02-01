@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,41 +16,47 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sight.decode.a.b.e;
-import com.tencent.mm.plugin.sight.decode.a.b.f;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.d;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.e;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
+import com.tencent.mm.plugin.sns.ad.d.n;
 import com.tencent.mm.plugin.sns.ad.timeline.a.a.c.b;
+import com.tencent.mm.plugin.sns.ad.timeline.helper.g;
 import com.tencent.mm.plugin.sns.ad.widget.countdown.PromotionBarLayout;
 import com.tencent.mm.plugin.sns.ad.widget.living.FinderLivingAnimWrapper;
 import com.tencent.mm.plugin.sns.ad.widget.living.LivingDescBarLayout;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.d;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.i;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.plugin.sns.storage.ADInfo.b;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.ADXml.c;
 import com.tencent.mm.plugin.sns.storage.ADXml.l;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.k;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.plugin.sns.storage.y;
+import com.tencent.mm.plugin.sns.storage.ai;
 import com.tencent.mm.plugin.sns.ui.MaskImageView;
-import com.tencent.mm.plugin.sns.ui.av;
-import com.tencent.mm.plugin.sns.ui.ax;
-import com.tencent.mm.plugin.sns.ui.az;
+import com.tencent.mm.plugin.sns.ui.ay;
+import com.tencent.mm.plugin.sns.ui.ba;
 import com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView;
 import com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView.b;
 import com.tencent.mm.plugin.sns.ui.widget.SnsCardAdTagListView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.agh;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.smiley.u;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 import com.tencent.mm.ui.widget.QImageView.a;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
@@ -58,67 +65,69 @@ import java.util.List;
 public final class c
   extends b
 {
-  private c.b JHi;
-  private ViewGroup JKI;
-  private ViewStub JKJ;
-  FinderLivingAnimWrapper JKK;
-  public ViewGroup JKL;
-  private Handler JMp;
-  com.tencent.mm.plugin.sns.ad.f.l KPn;
-  public TextView LiY;
-  public TextView LiZ;
-  public View Lja;
-  public Button Ljb;
-  public Button Ljc;
-  public View Ljd;
-  public ImageView Lje;
-  public MaskImageView Ljf;
-  public SnsCardAdTagListView Ljg;
-  public View Ljh;
-  public View Lji;
-  public View Ljj;
-  public View Ljk;
-  private PromotionBarLayout Ljl;
-  private int Ljm;
-  private ax Ljn;
-  private az Ljo;
-  private LivingDescBarLayout Ljp;
-  private com.tencent.mm.plugin.sns.ad.widget.living.c Ljq;
-  public SnsTimelineVideoView Ljr;
-  public boolean Ljs;
-  boolean Ljt;
+  private Handler PRJ;
+  private c.b PYj;
+  public boolean QbW;
+  private ViewGroup Qcn;
+  private ViewStub Qco;
+  FinderLivingAnimWrapper Qcp;
+  public ViewGroup Qcq;
+  public TextView RJa;
+  public TextView RJb;
+  public View RJc;
+  public Button RJd;
+  public Button RJe;
+  public View RJf;
+  public ImageView RJg;
+  public MaskImageView RJh;
+  public SnsCardAdTagListView RJi;
+  public View RJj;
+  public View RJk;
+  public View RJl;
+  public View RJm;
+  private PromotionBarLayout RJn;
+  private int RJo;
+  private ay RJp;
+  private ba RJq;
+  private LivingDescBarLayout RJr;
+  private com.tencent.mm.plugin.sns.ad.widget.living.c RJs;
+  public LivingDescBarLayout RJt;
+  private g RJu;
+  public SnsTimelineVideoView RJv;
+  boolean RJw;
+  com.tencent.mm.plugin.sns.ad.g.l RoZ;
   Context context;
-  public String fAg;
-  private com.tencent.mm.ui.widget.b.a szq;
+  public String hES;
+  private com.tencent.mm.ui.widget.b.a vEV;
   
-  public c(TimeLineObject paramTimeLineObject, SnsInfo paramSnsInfo, com.tencent.mm.plugin.sns.ui.d.c paramc, com.tencent.mm.plugin.sns.ad.f.l paraml)
+  public c(TimeLineObject paramTimeLineObject, SnsInfo paramSnsInfo, com.tencent.mm.plugin.sns.ui.listener.c paramc, com.tencent.mm.plugin.sns.ad.g.l paraml)
   {
-    AppMethodBeat.i(269101);
-    this.JMp = new Handler(Looper.getMainLooper());
-    this.JHi = new c.b()
+    AppMethodBeat.i(308845);
+    this.PRJ = new Handler(Looper.getMainLooper());
+    this.PYj = new c.b()
     {
-      public final void fLc()
+      public final void hbt()
       {
-        AppMethodBeat.i(233285);
-        c.this.JIp.a(c.this, null);
-        AppMethodBeat.o(233285);
+        AppMethodBeat.i(308836);
+        c.this.PZr.a(c.this);
+        AppMethodBeat.o(308836);
       }
       
-      public final ViewGroup fLd()
+      public final ViewGroup hbu()
       {
         return null;
       }
     };
-    this.Ljt = false;
+    this.RJw = false;
     this.timeLineObject = paramTimeLineObject;
-    this.Jzk = paramSnsInfo;
-    this.JIp = paramc;
-    this.KPn = paraml;
-    this.fAg = paramSnsInfo.getLocalid();
-    AppMethodBeat.o(269101);
+    this.PNI = paramSnsInfo;
+    this.PZr = paramc;
+    this.RoZ = paraml;
+    this.hES = paramSnsInfo.getLocalid();
+    AppMethodBeat.o(308845);
   }
   
-  private void ab(SnsInfo paramSnsInfo)
+  private void ad(SnsInfo paramSnsInfo)
   {
     int j = 0;
     AppMethodBeat.i(100011);
@@ -127,27 +136,27 @@ public final class c
       AppMethodBeat.o(100011);
       return;
     }
-    int k = this.context.getResources().getColor(i.c.blue_text_color);
-    int m = this.context.getResources().getColor(i.c.BW_0_Alpha_0_2);
-    if ((this.Ljb == null) || (this.Ljc == null))
+    int k = this.context.getResources().getColor(b.c.blue_text_color);
+    int m = this.context.getResources().getColor(b.c.BW_0_Alpha_0_2);
+    if ((this.RJd == null) || (this.RJe == null))
     {
       AppMethodBeat.o(100011);
       return;
     }
-    this.Ljb.setOnClickListener(this.JIp.Lpz);
-    this.Ljc.setOnClickListener(this.JIp.LpA);
+    this.RJd.setOnClickListener(this.PZr.RQE);
+    this.RJe.setOnClickListener(this.PZr.RQF);
     int n;
     int i;
     if (paramSnsInfo.getAdXml().hasVoteInfo())
     {
-      n = y.lj(paramSnsInfo.getAdXml().adVoteInfo.Kkg, paramSnsInfo.getUxinfo());
+      n = ai.mS(paramSnsInfo.getAdXml().adVoteInfo.QIe, paramSnsInfo.getUxinfo());
       if ((n > 0) && (n <= 2)) {
         if (n == 1)
         {
-          this.Ljc.setTextColor(m);
-          this.Ljc.setText(paramSnsInfo.getAdXml().adVoteInfo.agj(1));
-          this.Ljb.setTextColor(k);
-          this.Ljb.setText(paramSnsInfo.getAdXml().adVoteInfo.agi(0));
+          this.RJe.setTextColor(m);
+          this.RJe.setText(paramSnsInfo.getAdXml().adVoteInfo.alb(1));
+          this.RJd.setTextColor(k);
+          this.RJd.setText(paramSnsInfo.getAdXml().adVoteInfo.ala(0));
           i = j;
         }
       }
@@ -156,20 +165,20 @@ public final class c
     {
       if (i != 0)
       {
-        this.Ljb.setTextColor(k);
-        this.Ljc.setTextColor(k);
-        this.Ljb.setText(paramSnsInfo.getAdXml().getCardSelectLeftTitle());
-        this.Ljc.setText(paramSnsInfo.getAdXml().getCardSelectRightTitle());
+        this.RJd.setTextColor(k);
+        this.RJe.setTextColor(k);
+        this.RJd.setText(paramSnsInfo.getAdXml().getCardSelectLeftTitle());
+        this.RJe.setText(paramSnsInfo.getAdXml().getCardSelectRightTitle());
       }
       AppMethodBeat.o(100011);
       return;
       i = j;
       if (n == 2)
       {
-        this.Ljb.setTextColor(m);
-        this.Ljb.setText(paramSnsInfo.getAdXml().adVoteInfo.agj(0));
-        this.Ljc.setTextColor(k);
-        this.Ljc.setText(paramSnsInfo.getAdXml().adVoteInfo.agi(1));
+        this.RJd.setTextColor(m);
+        this.RJd.setText(paramSnsInfo.getAdXml().adVoteInfo.alb(0));
+        this.RJe.setTextColor(k);
+        this.RJe.setText(paramSnsInfo.getAdXml().adVoteInfo.ala(1));
         i = j;
         continue;
         i = 1;
@@ -177,284 +186,42 @@ public final class c
     }
   }
   
-  public final boolean fYu()
+  public final boolean hqS()
   {
-    return (this.timeLineObject.ContentObj.Sqq == 5) || (this.timeLineObject.ContentObj.Sqq == 15);
-  }
-  
-  public final void n(View paramView1, View paramView2)
-  {
-    AppMethodBeat.i(100009);
-    this.contentView = paramView1;
-    this.context = paramView1.getContext();
-    this.KON = paramView2;
-    this.Lji = this.contentView.findViewById(i.f.media_container);
-    if ((this.Lji instanceof RoundedCornerFrameLayout)) {
-      ((RoundedCornerFrameLayout)this.Lji).setRadius(com.tencent.mm.ci.a.fromDPToPix(this.context, 4));
-    }
-    this.Ljj = this.contentView.findViewById(i.f.other_container);
-    this.Lja = this.contentView.findViewById(i.f.card_btn_container);
-    this.Lja.setVisibility(8);
-    this.Ljd = this.contentView.findViewById(i.f.card_weapp_tag);
-    this.Lje = ((ImageView)this.contentView.findViewById(i.f.weapp_auth_icon_iv));
-    this.Ljd.setVisibility(8);
-    this.Ljf = ((MaskImageView)this.contentView.findViewById(i.f.sns_card_ad_image));
-    this.Ljb = ((Button)this.contentView.findViewById(i.f.card_btn_left));
-    this.Ljc = ((Button)this.contentView.findViewById(i.f.card_btn_right));
-    this.Ljk = this.contentView.findViewById(i.f.action_btn_container);
-    this.JKL = ((ViewGroup)this.contentView.findViewById(i.f.sns_card_ad_online_video_container));
-    this.Lje.setTag("");
-    if (this.Lje.getVisibility() == 0) {
-      this.Lje.setVisibility(4);
-    }
-    paramView2 = (TextView)this.contentView.findViewById(i.f.weapp_tag_name);
-    Object localObject = this.Jzk.getAdInfo();
-    if ((localObject != null) && (((ADInfo)localObject).isWeapp()) && (!this.Jzk.isTurnCardAd()))
-    {
-      this.Ljd.setVisibility(0);
-      paramView2.setText(i.j.sns_ad_card_weapp_tag);
-      com.tencent.mm.plugin.sns.ad.d.g.f(((ADInfo)localObject).actionExtWeApp.appUserName, this.Lje);
-      if (this.Ljd.getVisibility() == 0)
-      {
-        paramView2 = (ImageView)this.contentView.findViewById(i.f.weapp_icon_iv);
-        if (!ar.isDarkMode()) {
-          break label1612;
-        }
-        if (!com.tencent.mm.plugin.sns.ad.d.l.a(this.Jzk.getAdXml(), this.Jzk.getAdInfo())) {
-          break label1592;
-        }
-        paramView2.setImageResource(i.i.album_ad_finder_link_dark_icon);
-      }
-      label382:
-      this.LiZ = ((TextView)this.contentView.findViewById(i.f.desc_collapse_pic_style_tv));
-      this.LiZ.setClickable(false);
-      this.LiZ.setLongClickable(false);
-      this.Ljs = com.tencent.mm.plugin.sns.ad.timeline.b.b.b(this.timeLineObject, this.Jzk.getAdXml());
-      localObject = new StringBuilder("card ad detail useOnlineVideo=").append(this.Ljs).append(", snsId=");
-      if (this.timeLineObject != null) {
-        break label1662;
-      }
-      paramView2 = "";
-      label468:
-      Log.i("MicroMsg.CardAdDetailItemView", paramView2);
-      paramView2 = (WindowManager)this.context.getSystemService("window");
-      this.Ljm = (Math.min(paramView2.getDefaultDisplay().getWidth(), paramView2.getDefaultDisplay().getHeight()) - com.tencent.mm.ci.a.aY(this.context, i.d.sns_avatar_size) - com.tencent.mm.ci.a.aY(this.context, i.d.Edge_0_5_A) - this.context.getResources().getDimensionPixelSize(i.d.NormalPadding) - this.context.getResources().getDimensionPixelSize(i.d.NormalPadding));
-      paramView2 = (ViewGroup.MarginLayoutParams)this.contentView.getLayoutParams();
-      paramView2.topMargin = this.context.getResources().getDimensionPixelOffset(i.d.MiddlePadding);
-      paramView2.bottomMargin = 0;
-      paramView2.width = this.Ljm;
-      paramView2.height = -2;
-      this.contentView.setLayoutParams(paramView2);
-      this.contentView.setBackground(this.context.getResources().getDrawable(i.e.sns_ad_pic_style_bg));
-      this.LiY = ((TextView)this.contentView.findViewById(i.f.desc_collapse_pic_style_title_tv));
-      this.LiY.setClickable(false);
-      this.LiY.setLongClickable(false);
-      if (Util.isNullOrNil(this.Jzk.getAdXml().adCardTitle)) {
-        break label1673;
-      }
-      paramView2 = com.tencent.mm.cl.h.htZ().a(this.LiY.getContext(), this.Jzk.getAdXml().adCardTitle, this.LiY.getTextSize());
-      this.LiY.setText(paramView2);
-      this.LiY.setVisibility(0);
-      label742:
-      if (!Util.isNullOrNil(this.Jzk.getAdXml().adCardDesc)) {
-        break label1685;
-      }
-      paramView2 = this.timeLineObject.ContentDesc;
-      label766:
-      if (Util.isNullOrNil(paramView2)) {
-        break label1699;
-      }
-      paramView2 = com.tencent.mm.cl.h.htZ().a(this.LiZ.getContext(), paramView2, this.LiZ.getTextSize());
-      this.LiZ.setText(paramView2);
-      this.LiZ.setVisibility(0);
-      label811:
-      this.szq = new com.tencent.mm.ui.widget.b.a(this.context);
-      this.szq.c(this.contentView, this.JIp.Lph, this.JIp.LoP);
-      if ((!this.Jzk.getAdXml().hasSelectInfo()) && (!this.Jzk.getAdXml().hasVoteInfo())) {
-        break label1744;
-      }
-      if (!this.Jzk.getAdXml().isNewStyleVote()) {
-        break label1711;
-      }
-      if (this.Ljo == null)
-      {
-        paramView2 = (ViewStub)this.contentView.findViewById(i.f.sns_ad_card_vote_layout_stub);
-        if ((paramView2 != null) && (com.tencent.mm.plugin.sns.ad.i.l.c(paramView2) != null)) {
-          this.Ljo = new az(this.context, this.contentView, this.JIp);
-        }
-      }
-      if (this.Ljo != null)
-      {
-        this.Ljo.a(this.Jzk, this);
-        this.Ljo.fUW();
-      }
-      this.Lja.setVisibility(8);
-      if (this.LiY != null) {
-        this.LiY.setVisibility(8);
-      }
-      if (this.LiZ != null) {
-        this.LiZ.setVisibility(8);
-      }
-      label1012:
-      this.JKG = new av();
-      this.JKG.KKm = this.contentView.findViewById(i.f.sns_card_ad_sight);
-      this.JKG.KKj = this.JKG.KKm;
-      this.JKG.KKm.setOnClickListener(this.JIp.Lpo);
-      this.JKG.KKk = ((VideoSightView)this.JKG.KKm.findViewById(i.f.image));
-      this.JKG.KKk.setMute(true);
-      this.JKG.JAL = ((ImageView)this.JKG.KKm.findViewById(i.f.status_btn));
-      this.JKG.KKn = ((MMPinProgressBtn)this.JKG.KKm.findViewById(i.f.progress));
-      this.JKG.KKo = ((TextView)this.JKG.KKm.findViewById(i.f.endtv));
-      this.JKG.Ktc = ((TextView)this.JKG.KKm.findViewById(i.f.errorTv));
-      this.Ljh = this.contentView.findViewById(i.f.sns_ad_card_header_container);
-      this.Ljg = ((SnsCardAdTagListView)this.contentView.findViewById(i.f.card_ad_tag_list));
-      this.Ljg.setActivityContext((Activity)this.context);
-    }
-    for (;;)
-    {
-      try
-      {
-        paramView2 = this.Jzk.getSnsId();
-        if (com.tencent.mm.plugin.sns.ui.widget.b.lo(this.Ljg.getOriginSnsId(), paramView2)) {
-          continue;
-        }
-        this.Ljg.removeAllViews();
-        if (this.Jzk.getAdXml().adCardTagInfo.Kjx.size() > 0)
-        {
-          this.Ljg.setVisibility(0);
-          this.Ljg.setTagSpace(com.tencent.mm.ci.a.fromDPToPix(this.context, 8));
-          this.Ljg.hX(this.Jzk.getAdXml().adCardTagInfo.Kjx);
-        }
-        this.Ljg.setOriginSnsId(paramView2);
-      }
-      catch (Exception paramView2)
-      {
-        label1592:
-        label1612:
-        label1662:
-        Log.e("MicroMsg.CardAdDetailItemView", paramView2.toString());
-        label1673:
-        label1685:
-        label1699:
-        label1711:
-        label1744:
-        continue;
-      }
-      if (!Util.isNullOrNil(this.Jzk.getAdXml().adCard3dHeadTitle))
-      {
-        this.Ljh.setVisibility(0);
-        this.Ljh.findViewById(i.f.sns_ad_card_header_title).setVisibility(0);
-        ((TextView)this.Ljh.findViewById(i.f.sns_ad_card_header_title)).setText(this.Jzk.getAdXml().adCard3dHeadTitle);
-      }
-      if (!Util.isNullOrNil(this.Jzk.getAdXml().adCard3dHeadUrl)) {
-        com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(this.Jzk.getAdXml().adCard3dHeadUrl, false, new f.a()
-        {
-          public final void aYs(String paramAnonymousString)
-          {
-            AppMethodBeat.i(270735);
-            if (!Util.isNullOrNil(paramAnonymousString))
-            {
-              paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
-              if (paramAnonymousString != null)
-              {
-                c.this.Ljh.setVisibility(0);
-                ImageView localImageView = (ImageView)c.this.Ljh.findViewById(i.f.sns_ad_card_header_avatar);
-                localImageView.setImageBitmap(paramAnonymousString);
-                localImageView.setVisibility(0);
-              }
-            }
-            AppMethodBeat.o(270735);
-          }
-          
-          public final void fJU() {}
-          
-          public final void fJV() {}
-        });
-      }
-      this.szq.c(this.contentView, this.JIp.Lph, this.JIp.LoP);
-      this.Ljf.setVisibility(8);
-      this.Ljf.setScaleType(QImageView.a.Ydm);
-      this.JKG.KKj.setVisibility(8);
-      this.JKG.KKk.Jte = true;
-      this.JKG.KKk.setScaleType(QImageView.a.Ydm);
-      this.contentView.setOnClickListener(this.JIp.LpB);
-      this.JKJ = ((ViewStub)paramView1.findViewById(i.f.ad_live_anim_layout_stub));
-      AppMethodBeat.o(100009);
-      return;
-      if (!com.tencent.mm.plugin.sns.ad.d.l.a(this.Jzk.getAdXml(), (ADInfo)localObject)) {
-        break;
-      }
-      this.Ljd.setVisibility(0);
-      paramView2.setText(i.j.finder_app_name);
-      break;
-      paramView2.setImageResource(i.i.album_ad_link_tag_weapp_dark);
-      this.Lje.setImageResource(i.e.ad_weapp_auth_dark_icon);
-      break label382;
-      if (com.tencent.mm.plugin.sns.ad.d.l.a(this.Jzk.getAdXml(), this.Jzk.getAdInfo()))
-      {
-        paramView2.setImageResource(i.i.album_ad_finder_link_icon);
-        break label382;
-      }
-      paramView2.setImageResource(i.i.album_ad_link_tag_weapp);
-      this.Lje.setImageResource(i.e.ad_weapp_auth_icon);
-      break label382;
-      paramView2 = this.timeLineObject.Id;
-      break label468;
-      this.LiY.setVisibility(8);
-      break label742;
-      paramView2 = this.Jzk.getAdXml().adCardDesc;
-      break label766;
-      this.LiZ.setVisibility(8);
-      break label811;
-      this.Lja.setVisibility(0);
-      if (this.Ljo != null) {
-        this.Ljo.fUX();
-      }
-      ab(this.Jzk);
-      break label1012;
-      this.Lja.setVisibility(8);
-      if (this.Ljo == null) {
-        break label1012;
-      }
-      this.Ljo.fUX();
-      break label1012;
-      if (this.Jzk.getAdXml().adCardTagInfo.Kjx.size() > 0) {
-        this.Ljg.setVisibility(0);
-      }
-    }
+    return (this.timeLineObject.ContentObj.Zpq == 5) || (this.timeLineObject.ContentObj.Zpq == 15);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(269102);
+    AppMethodBeat.i(308934);
     try
     {
-      Log.i("MicroMsg.CardAdDetailItemView", "onPause, hasPlayedVideo=" + this.Ljt + ", useOnlineVideo=" + this.Ljs);
-      if ((this.Ljt) && (this.JKG != null) && (this.JKG.KKk != null))
+      Log.i("MicroMsg.CardAdDetailItemView", "onPause, hasPlayedVideo=" + this.RJw + ", useOnlineVideo=" + this.QbW);
+      if ((this.RJw) && (this.Qcj != null) && (this.Qcj.RjM != null))
       {
-        if (!this.Ljs) {
-          break label125;
+        if (!this.QbW) {
+          break label121;
         }
-        if (this.Ljr != null) {
-          this.Ljr.dmi();
+        if (this.RJv != null) {
+          this.RJv.bck();
         }
       }
       for (;;)
       {
-        if ((this.KPn != null) && (this.Jzk != null)) {
-          this.KPn.Qn(this.Jzk.field_snsId);
+        if ((this.RoZ != null) && (this.PNI != null)) {
+          this.RoZ.uu(this.PNI.field_snsId);
         }
-        AppMethodBeat.o(269102);
+        AppMethodBeat.o(308934);
         return;
-        label125:
-        this.JKG.KKk.pause();
+        label121:
+        this.Qcj.RjM.pause();
       }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      Log.e("MicroMsg.CardAdDetailItemView", "onPause, exp=" + localThrowable.toString());
-      AppMethodBeat.o(269102);
+      Log.e("MicroMsg.CardAdDetailItemView", "onPause, exp=" + localObject.toString());
+      AppMethodBeat.o(308934);
     }
   }
   
@@ -462,1229 +229,1637 @@ public final class c
   public final void refreshView()
   {
     // Byte code:
-    //   0: ldc_w 838
-    //   3: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 313
+    //   3: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: aload_0
-    //   8: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   11: invokevirtual 697	com/tencent/mm/plugin/sns/storage/SnsInfo:getSnsId	()Ljava/lang/String;
-    //   14: invokestatic 844	com/tencent/mm/plugin/sns/storage/f:bbk	(Ljava/lang/String;)Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   17: putfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   20: ldc_w 439
-    //   23: ldc_w 845
-    //   26: invokestatic 447	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: aload_0
-    //   30: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   33: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   36: invokevirtual 591	com/tencent/mm/plugin/sns/storage/ADXml:hasSelectInfo	()Z
-    //   39: ifne +16 -> 55
-    //   42: aload_0
-    //   43: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   46: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   49: invokevirtual 188	com/tencent/mm/plugin/sns/storage/ADXml:hasVoteInfo	()Z
-    //   52: ifeq +35 -> 87
-    //   55: aload_0
-    //   56: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   59: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   62: invokevirtual 594	com/tencent/mm/plugin/sns/storage/ADXml:isNewStyleVote	()Z
-    //   65: ifeq +727 -> 792
-    //   68: aload_0
-    //   69: getfield 596	com/tencent/mm/plugin/sns/ui/c/a/c:Ljo	Lcom/tencent/mm/plugin/sns/ui/az;
-    //   72: ifnull +15 -> 87
-    //   75: aload_0
-    //   76: getfield 596	com/tencent/mm/plugin/sns/ui/c/a/c:Ljo	Lcom/tencent/mm/plugin/sns/ui/az;
-    //   79: aload_0
-    //   80: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   83: aload_0
-    //   84: invokevirtual 614	com/tencent/mm/plugin/sns/ui/az:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Ljava/lang/Object;)V
+    //   8: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   11: invokevirtual 316	com/tencent/mm/plugin/sns/storage/SnsInfo:getSnsId	()Ljava/lang/String;
+    //   14: invokestatic 322	com/tencent/mm/plugin/sns/storage/l:aZK	(Ljava/lang/String;)Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   17: putfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   20: ldc 245
+    //   22: ldc_w 323
+    //   25: invokestatic 271	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_0
+    //   29: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   32: getstatic 331	com/tencent/mm/plugin/sns/b$f:ad_card_container	I
+    //   35: invokevirtual 337	android/view/View:findViewById	(I)Landroid/view/View;
+    //   38: astore 6
+    //   40: aload 6
+    //   42: instanceof 339
+    //   45: ifeq +16 -> 61
+    //   48: aload 6
+    //   50: checkcast 339	com/tencent/mm/plugin/sns/ui/widget/ad/AdRoundedCornerFrameLayout
+    //   53: aload_0
+    //   54: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   57: iconst_2
+    //   58: invokevirtual 343	com/tencent/mm/plugin/sns/ui/widget/ad/AdRoundedCornerFrameLayout:l	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;I)V
+    //   61: aload_0
+    //   62: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   65: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   68: invokevirtual 346	com/tencent/mm/plugin/sns/storage/ADXml:hasSelectInfo	()Z
+    //   71: ifne +16 -> 87
+    //   74: aload_0
+    //   75: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   78: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   81: invokevirtual 191	com/tencent/mm/plugin/sns/storage/ADXml:hasVoteInfo	()Z
+    //   84: ifeq +35 -> 119
     //   87: aload_0
-    //   88: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   91: getfield 676	com/tencent/mm/plugin/sns/ui/av:Ktc	Landroid/widget/TextView;
-    //   94: bipush 8
-    //   96: invokevirtual 563	android/widget/TextView:setVisibility	(I)V
-    //   99: aload_0
-    //   100: iconst_0
-    //   101: putfield 105	com/tencent/mm/plugin/sns/ui/c/a/c:Ljt	Z
-    //   104: invokestatic 851	com/tencent/mm/plugin/sns/model/aj:fOF	()Lcom/tencent/mm/plugin/sns/model/g;
-    //   107: astore 7
-    //   109: aload_0
-    //   110: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   113: getfield 233	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/adw;
-    //   116: ifnull +687 -> 803
+    //   88: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   91: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   94: invokevirtual 349	com/tencent/mm/plugin/sns/storage/ADXml:isNewStyleVote	()Z
+    //   97: ifeq +846 -> 943
+    //   100: aload_0
+    //   101: getfield 351	com/tencent/mm/plugin/sns/ui/c/a/c:RJq	Lcom/tencent/mm/plugin/sns/ui/ba;
+    //   104: ifnull +15 -> 119
+    //   107: aload_0
+    //   108: getfield 351	com/tencent/mm/plugin/sns/ui/c/a/c:RJq	Lcom/tencent/mm/plugin/sns/ui/ba;
+    //   111: aload_0
+    //   112: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   115: aload_0
+    //   116: invokevirtual 357	com/tencent/mm/plugin/sns/ui/ba:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Ljava/lang/Object;)V
     //   119: aload_0
-    //   120: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   123: getfield 233	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/adw;
-    //   126: getfield 855	com/tencent/mm/protocal/protobuf/adw:Sqr	Ljava/util/LinkedList;
-    //   129: invokevirtual 858	java/util/LinkedList:size	()I
-    //   132: ifle +671 -> 803
-    //   135: aload_0
-    //   136: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   139: getfield 233	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/adw;
-    //   142: getfield 855	com/tencent/mm/protocal/protobuf/adw:Sqr	Ljava/util/LinkedList;
-    //   145: iconst_0
-    //   146: invokevirtual 862	java/util/LinkedList:get	(I)Ljava/lang/Object;
-    //   149: checkcast 864	com/tencent/mm/protocal/protobuf/cvt
-    //   152: astore 6
+    //   120: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   123: getfield 360	com/tencent/mm/plugin/sns/ui/aw:QRC	Landroid/widget/TextView;
+    //   126: bipush 8
+    //   128: invokevirtual 365	android/widget/TextView:setVisibility	(I)V
+    //   131: aload_0
+    //   132: iconst_0
+    //   133: putfield 108	com/tencent/mm/plugin/sns/ui/c/a/c:RJw	Z
+    //   136: invokestatic 371	com/tencent/mm/plugin/sns/model/al:hgy	()Lcom/tencent/mm/plugin/sns/model/g;
+    //   139: astore 8
+    //   141: aconst_null
+    //   142: astore 6
+    //   144: aload_0
+    //   145: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   148: getfield 236	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   151: ifnull +803 -> 954
     //   154: aload_0
-    //   155: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   158: ldc_w 449
-    //   161: invokevirtual 453	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   164: checkcast 455	android/view/WindowManager
-    //   167: invokeinterface 459 1 0
-    //   172: invokevirtual 464	android/view/Display:getWidth	()I
-    //   175: pop
-    //   176: aload 6
-    //   178: ifnull +2531 -> 2709
-    //   181: aload_0
-    //   182: getfield 492	com/tencent/mm/plugin/sns/ui/c/a/c:Ljm	I
-    //   185: aload_0
-    //   186: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   189: invokevirtual 146	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   192: getstatic 867	com/tencent/mm/plugin/sns/i$d:SmallPadding	I
-    //   195: invokevirtual 490	android/content/res/Resources:getDimensionPixelSize	(I)I
-    //   198: isub
-    //   199: aload_0
-    //   200: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   203: invokevirtual 146	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   206: getstatic 867	com/tencent/mm/plugin/sns/i$d:SmallPadding	I
-    //   209: invokevirtual 490	android/content/res/Resources:getDimensionPixelSize	(I)I
-    //   212: isub
-    //   213: istore_1
-    //   214: iload_1
-    //   215: i2f
-    //   216: aload 6
-    //   218: getfield 871	com/tencent/mm/protocal/protobuf/cvt:TDH	Lcom/tencent/mm/protocal/protobuf/cvv;
-    //   221: getfield 877	com/tencent/mm/protocal/protobuf/cvv:TEv	F
-    //   224: fmul
-    //   225: aload 6
-    //   227: getfield 871	com/tencent/mm/protocal/protobuf/cvt:TDH	Lcom/tencent/mm/protocal/protobuf/cvv;
-    //   230: getfield 880	com/tencent/mm/protocal/protobuf/cvv:TEu	F
-    //   233: fdiv
-    //   234: f2i
-    //   235: istore_2
-    //   236: aload_0
-    //   237: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   240: getfield 233	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/adw;
-    //   243: getfield 238	com/tencent/mm/protocal/protobuf/adw:Sqq	I
-    //   246: iconst_1
-    //   247: if_icmpne +562 -> 809
-    //   250: aload_0
-    //   251: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   254: invokevirtual 881	com/tencent/mm/plugin/sns/ui/MaskImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   257: astore 7
-    //   259: aload 7
-    //   261: iload_1
-    //   262: putfield 884	android/view/ViewGroup$LayoutParams:width	I
-    //   265: aload 7
-    //   267: iload_2
-    //   268: putfield 885	android/view/ViewGroup$LayoutParams:height	I
-    //   271: aload_0
-    //   272: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   275: aload 7
-    //   277: invokevirtual 886	com/tencent/mm/plugin/sns/ui/MaskImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   280: invokestatic 851	com/tencent/mm/plugin/sns/model/aj:fOF	()Lcom/tencent/mm/plugin/sns/model/g;
-    //   283: aload 6
-    //   285: aload_0
-    //   286: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   289: iconst_m1
-    //   290: aload_0
-    //   291: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   294: invokevirtual 891	java/lang/Object:hashCode	()I
-    //   297: getstatic 897	com/tencent/mm/storage/bp:VGo	Lcom/tencent/mm/storage/bp;
-    //   300: invokevirtual 902	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/protocal/protobuf/cvt;Landroid/view/View;IILcom/tencent/mm/storage/bp;)Z
-    //   303: pop
-    //   304: aload_0
-    //   305: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   308: iconst_0
-    //   309: invokevirtual 751	com/tencent/mm/plugin/sns/ui/MaskImageView:setVisibility	(I)V
-    //   312: aload_0
-    //   313: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   316: aload_0
-    //   317: invokevirtual 903	com/tencent/mm/plugin/sns/ui/MaskImageView:setTag	(Ljava/lang/Object;)V
-    //   320: aload_0
-    //   321: getfield 246	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   155: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   158: getfield 236	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   161: getfield 375	com/tencent/mm/protocal/protobuf/agh:Zpr	Ljava/util/LinkedList;
+    //   164: invokevirtual 381	java/util/LinkedList:size	()I
+    //   167: ifle +787 -> 954
+    //   170: aload_0
+    //   171: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   174: getfield 236	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   177: getfield 375	com/tencent/mm/protocal/protobuf/agh:Zpr	Ljava/util/LinkedList;
+    //   180: iconst_0
+    //   181: invokevirtual 385	java/util/LinkedList:get	(I)Ljava/lang/Object;
+    //   184: checkcast 387	com/tencent/mm/protocal/protobuf/dmz
+    //   187: astore 7
+    //   189: aload 7
+    //   191: astore 6
+    //   193: aload_0
+    //   194: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   197: ldc_w 389
+    //   200: invokevirtual 393	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   203: checkcast 395	android/view/WindowManager
+    //   206: invokeinterface 399 1 0
+    //   211: invokevirtual 404	android/view/Display:getWidth	()I
+    //   214: pop
+    //   215: aload 6
+    //   217: ifnull +2782 -> 2999
+    //   220: aload_0
+    //   221: getfield 406	com/tencent/mm/plugin/sns/ui/c/a/c:RJo	I
+    //   224: aload_0
+    //   225: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   228: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   231: getstatic 411	com/tencent/mm/plugin/sns/b$d:SmallPadding	I
+    //   234: invokevirtual 414	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   237: isub
+    //   238: aload_0
+    //   239: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   242: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   245: getstatic 411	com/tencent/mm/plugin/sns/b$d:SmallPadding	I
+    //   248: invokevirtual 414	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   251: isub
+    //   252: istore_1
+    //   253: iload_1
+    //   254: i2f
+    //   255: aload 6
+    //   257: getfield 418	com/tencent/mm/protocal/protobuf/dmz:aaTn	Lcom/tencent/mm/protocal/protobuf/dnb;
+    //   260: getfield 424	com/tencent/mm/protocal/protobuf/dnb:aaUc	F
+    //   263: fmul
+    //   264: aload 6
+    //   266: getfield 418	com/tencent/mm/protocal/protobuf/dmz:aaTn	Lcom/tencent/mm/protocal/protobuf/dnb;
+    //   269: getfield 427	com/tencent/mm/protocal/protobuf/dnb:aaUb	F
+    //   272: fdiv
+    //   273: f2i
+    //   274: istore_2
+    //   275: aload_0
+    //   276: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   279: getfield 236	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   282: getfield 241	com/tencent/mm/protocal/protobuf/agh:Zpq	I
+    //   285: iconst_1
+    //   286: if_icmpne +696 -> 982
+    //   289: aload_0
+    //   290: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   293: invokevirtual 435	com/tencent/mm/plugin/sns/ui/MaskImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   296: astore 7
+    //   298: aload 7
+    //   300: iload_1
+    //   301: putfield 440	android/view/ViewGroup$LayoutParams:width	I
+    //   304: aload 7
+    //   306: iload_2
+    //   307: putfield 443	android/view/ViewGroup$LayoutParams:height	I
+    //   310: aload_0
+    //   311: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   314: aload 7
+    //   316: invokevirtual 447	com/tencent/mm/plugin/sns/ui/MaskImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   319: invokestatic 371	com/tencent/mm/plugin/sns/model/al:hgy	()Lcom/tencent/mm/plugin/sns/model/g;
+    //   322: aload 6
     //   324: aload_0
-    //   325: invokevirtual 904	android/view/View:setTag	(Ljava/lang/Object;)V
-    //   328: aload_0
-    //   329: getfield 162	com/tencent/mm/plugin/sns/ui/c/a/c:Ljb	Landroid/widget/Button;
-    //   332: aload_0
-    //   333: invokevirtual 905	android/widget/Button:setTag	(Ljava/lang/Object;)V
-    //   336: aload_0
-    //   337: getfield 164	com/tencent/mm/plugin/sns/ui/c/a/c:Ljc	Landroid/widget/Button;
-    //   340: aload_0
-    //   341: invokevirtual 905	android/widget/Button:setTag	(Ljava/lang/Object;)V
-    //   344: aload_0
-    //   345: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   348: aload_0
-    //   349: getfield 117	com/tencent/mm/plugin/sns/ui/c/a/c:JIp	Lcom/tencent/mm/plugin/sns/ui/d/c;
-    //   352: getfield 908	com/tencent/mm/plugin/sns/ui/d/c:KEA	Landroid/view/View$OnClickListener;
-    //   355: invokevirtual 909	com/tencent/mm/plugin/sns/ui/MaskImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
-    //   358: aload_0
-    //   359: getfield 576	com/tencent/mm/plugin/sns/ui/c/a/c:szq	Lcom/tencent/mm/ui/widget/b/a;
-    //   362: aload_0
-    //   363: getfield 310	com/tencent/mm/plugin/sns/ui/c/a/c:Ljf	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
-    //   366: aload_0
-    //   367: getfield 117	com/tencent/mm/plugin/sns/ui/c/a/c:JIp	Lcom/tencent/mm/plugin/sns/ui/d/c;
-    //   370: getfield 580	com/tencent/mm/plugin/sns/ui/d/c:Lph	Lcom/tencent/mm/plugin/sns/ui/d/d;
-    //   373: aload_0
-    //   374: getfield 117	com/tencent/mm/plugin/sns/ui/c/a/c:JIp	Lcom/tencent/mm/plugin/sns/ui/d/c;
-    //   377: getfield 584	com/tencent/mm/plugin/sns/ui/d/c:LoP	Lcom/tencent/mm/plugin/sns/ui/d/b;
-    //   380: invokevirtual 588	com/tencent/mm/ui/widget/b/a:c	(Landroid/view/View;Landroid/view/View$OnCreateContextMenuListener;Lcom/tencent/mm/ui/base/q$g;)V
+    //   325: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   328: iconst_m1
+    //   329: aload_0
+    //   330: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   333: invokevirtual 452	java/lang/Object:hashCode	()I
+    //   336: getstatic 458	com/tencent/mm/storage/br:adkc	Lcom/tencent/mm/storage/br;
+    //   339: invokevirtual 464	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/protocal/protobuf/dmz;Landroid/view/View;IILcom/tencent/mm/storage/br;)Z
+    //   342: pop
+    //   343: aload_0
+    //   344: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   347: iconst_0
+    //   348: invokevirtual 465	com/tencent/mm/plugin/sns/ui/MaskImageView:setVisibility	(I)V
+    //   351: aload_0
+    //   352: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   355: aload_0
+    //   356: invokevirtual 469	com/tencent/mm/plugin/sns/ui/MaskImageView:setTag	(Ljava/lang/Object;)V
+    //   359: aload_0
+    //   360: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   363: aload_0
+    //   364: invokevirtual 470	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   367: aload_0
+    //   368: getfield 165	com/tencent/mm/plugin/sns/ui/c/a/c:RJd	Landroid/widget/Button;
+    //   371: aload_0
+    //   372: invokevirtual 471	android/widget/Button:setTag	(Ljava/lang/Object;)V
+    //   375: aload_0
+    //   376: getfield 167	com/tencent/mm/plugin/sns/ui/c/a/c:RJe	Landroid/widget/Button;
+    //   379: aload_0
+    //   380: invokevirtual 471	android/widget/Button:setTag	(Ljava/lang/Object;)V
     //   383: aload_0
-    //   384: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   387: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   390: invokevirtual 912	com/tencent/mm/plugin/sns/storage/ADXml:hasActionBtn	()Z
-    //   393: ifeq +1955 -> 2348
-    //   396: aload_0
-    //   397: getfield 538	com/tencent/mm/plugin/sns/ui/c/a/c:LiY	Landroid/widget/TextView;
-    //   400: ifnull +12 -> 412
-    //   403: aload_0
-    //   404: getfield 538	com/tencent/mm/plugin/sns/ui/c/a/c:LiY	Landroid/widget/TextView;
-    //   407: bipush 8
-    //   409: invokevirtual 563	android/widget/TextView:setVisibility	(I)V
+    //   384: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   387: aload_0
+    //   388: getfield 120	com/tencent/mm/plugin/sns/ui/c/a/c:PZr	Lcom/tencent/mm/plugin/sns/ui/listener/c;
+    //   391: getfield 474	com/tencent/mm/plugin/sns/ui/listener/c:Rea	Landroid/view/View$OnClickListener;
+    //   394: invokevirtual 475	com/tencent/mm/plugin/sns/ui/MaskImageView:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   397: aload_0
+    //   398: getfield 477	com/tencent/mm/plugin/sns/ui/c/a/c:vEV	Lcom/tencent/mm/ui/widget/b/a;
+    //   401: aload_0
+    //   402: getfield 429	com/tencent/mm/plugin/sns/ui/c/a/c:RJh	Lcom/tencent/mm/plugin/sns/ui/MaskImageView;
+    //   405: aload_0
+    //   406: getfield 120	com/tencent/mm/plugin/sns/ui/c/a/c:PZr	Lcom/tencent/mm/plugin/sns/ui/listener/c;
+    //   409: getfield 481	com/tencent/mm/plugin/sns/ui/listener/c:RQm	Lcom/tencent/mm/plugin/sns/ui/listener/d;
     //   412: aload_0
-    //   413: getfield 406	com/tencent/mm/plugin/sns/ui/c/a/c:LiZ	Landroid/widget/TextView;
-    //   416: ifnull +12 -> 428
-    //   419: aload_0
-    //   420: getfield 406	com/tencent/mm/plugin/sns/ui/c/a/c:LiZ	Landroid/widget/TextView;
-    //   423: bipush 8
-    //   425: invokevirtual 563	android/widget/TextView:setVisibility	(I)V
-    //   428: aload_0
-    //   429: getfield 321	com/tencent/mm/plugin/sns/ui/c/a/c:Ljk	Landroid/view/View;
-    //   432: iconst_0
-    //   433: invokevirtual 291	android/view/View:setVisibility	(I)V
-    //   436: aload_0
-    //   437: getfield 914	com/tencent/mm/plugin/sns/ui/c/a/c:Ljn	Lcom/tencent/mm/plugin/sns/ui/ax;
-    //   440: ifnonnull +31 -> 471
-    //   443: aload_0
-    //   444: new 916	com/tencent/mm/plugin/sns/ui/ax
-    //   447: dup
-    //   448: aload_0
-    //   449: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   452: aload_0
-    //   453: getfield 246	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
-    //   456: iconst_1
-    //   457: aload_0
-    //   458: getfield 119	com/tencent/mm/plugin/sns/ui/c/a/c:KPn	Lcom/tencent/mm/plugin/sns/ad/f/l;
-    //   461: aload_0
-    //   462: getfield 103	com/tencent/mm/plugin/sns/ui/c/a/c:JHi	Lcom/tencent/mm/plugin/sns/ad/timeline/a/a/c$b;
-    //   465: invokespecial 919	com/tencent/mm/plugin/sns/ui/ax:<init>	(Landroid/content/Context;Landroid/view/View;ILcom/tencent/mm/plugin/sns/ad/f/l;Lcom/tencent/mm/plugin/sns/ad/timeline/a/a/c$b;)V
-    //   468: putfield 914	com/tencent/mm/plugin/sns/ui/c/a/c:Ljn	Lcom/tencent/mm/plugin/sns/ui/ax;
-    //   471: aload_0
-    //   472: getfield 914	com/tencent/mm/plugin/sns/ui/c/a/c:Ljn	Lcom/tencent/mm/plugin/sns/ui/ax;
+    //   413: getfield 120	com/tencent/mm/plugin/sns/ui/c/a/c:PZr	Lcom/tencent/mm/plugin/sns/ui/listener/c;
+    //   416: getfield 485	com/tencent/mm/plugin/sns/ui/listener/c:RPU	Lcom/tencent/mm/plugin/sns/ui/listener/b;
+    //   419: invokevirtual 491	com/tencent/mm/ui/widget/b/a:c	(Landroid/view/View;Landroid/view/View$OnCreateContextMenuListener;Lcom/tencent/mm/ui/base/u$i;)V
+    //   422: aload_0
+    //   423: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   426: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   429: invokevirtual 494	com/tencent/mm/plugin/sns/storage/ADXml:hasActionBtn	()Z
+    //   432: ifeq +2084 -> 2516
+    //   435: aload_0
+    //   436: getfield 496	com/tencent/mm/plugin/sns/ui/c/a/c:RJa	Landroid/widget/TextView;
+    //   439: ifnull +12 -> 451
+    //   442: aload_0
+    //   443: getfield 496	com/tencent/mm/plugin/sns/ui/c/a/c:RJa	Landroid/widget/TextView;
+    //   446: bipush 8
+    //   448: invokevirtual 365	android/widget/TextView:setVisibility	(I)V
+    //   451: aload_0
+    //   452: getfield 498	com/tencent/mm/plugin/sns/ui/c/a/c:RJb	Landroid/widget/TextView;
+    //   455: ifnull +12 -> 467
+    //   458: aload_0
+    //   459: getfield 498	com/tencent/mm/plugin/sns/ui/c/a/c:RJb	Landroid/widget/TextView;
+    //   462: bipush 8
+    //   464: invokevirtual 365	android/widget/TextView:setVisibility	(I)V
+    //   467: aload_0
+    //   468: getfield 500	com/tencent/mm/plugin/sns/ui/c/a/c:RJm	Landroid/view/View;
+    //   471: iconst_0
+    //   472: invokevirtual 501	android/view/View:setVisibility	(I)V
     //   475: aload_0
-    //   476: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   479: invokevirtual 922	com/tencent/mm/plugin/sns/ui/ax:W	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V
+    //   476: getfield 503	com/tencent/mm/plugin/sns/ui/c/a/c:RJp	Lcom/tencent/mm/plugin/sns/ui/ay;
+    //   479: ifnonnull +31 -> 510
     //   482: aload_0
-    //   483: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   486: astore 6
-    //   488: aload 6
-    //   490: ifnull +2226 -> 2716
-    //   493: aload 6
-    //   495: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   498: ifnull +2218 -> 2716
-    //   501: aload 6
-    //   503: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   506: getfield 926	com/tencent/mm/plugin/sns/storage/ADXml:adLiveInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/g;
-    //   509: ifnonnull +1851 -> 2360
-    //   512: goto +2204 -> 2716
-    //   515: iload_1
-    //   516: ifeq +2081 -> 2597
-    //   519: aload 6
-    //   521: invokevirtual 930	com/tencent/mm/plugin/sns/storage/SnsInfo:getTimeLine	()Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   524: astore 7
-    //   526: aload_0
-    //   527: getfield 932	com/tencent/mm/plugin/sns/ui/c/a/c:JKI	Landroid/view/ViewGroup;
-    //   530: ifnonnull +35 -> 565
-    //   533: aload_0
-    //   534: getfield 246	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
-    //   537: getstatic 935	com/tencent/mm/plugin/sns/i$f:ad_live_status_layout_stub	I
-    //   540: invokevirtual 264	android/view/View:findViewById	(I)Landroid/view/View;
-    //   543: checkcast 601	android/view/ViewStub
-    //   546: astore 8
-    //   548: aload 8
-    //   550: ifnull +15 -> 565
-    //   553: aload_0
-    //   554: aload 8
-    //   556: invokestatic 606	com/tencent/mm/plugin/sns/ad/i/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
-    //   559: checkcast 326	android/view/ViewGroup
-    //   562: putfield 932	com/tencent/mm/plugin/sns/ui/c/a/c:JKI	Landroid/view/ViewGroup;
+    //   483: new 505	com/tencent/mm/plugin/sns/ui/ay
+    //   486: dup
+    //   487: aload_0
+    //   488: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   491: aload_0
+    //   492: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   495: iconst_1
+    //   496: aload_0
+    //   497: getfield 122	com/tencent/mm/plugin/sns/ui/c/a/c:RoZ	Lcom/tencent/mm/plugin/sns/ad/g/l;
+    //   500: aload_0
+    //   501: getfield 106	com/tencent/mm/plugin/sns/ui/c/a/c:PYj	Lcom/tencent/mm/plugin/sns/ad/timeline/a/a/c$b;
+    //   504: invokespecial 508	com/tencent/mm/plugin/sns/ui/ay:<init>	(Landroid/content/Context;Landroid/view/View;ILcom/tencent/mm/plugin/sns/ad/g/l;Lcom/tencent/mm/plugin/sns/ad/timeline/a/a/c$b;)V
+    //   507: putfield 503	com/tencent/mm/plugin/sns/ui/c/a/c:RJp	Lcom/tencent/mm/plugin/sns/ui/ay;
+    //   510: aload_0
+    //   511: getfield 503	com/tencent/mm/plugin/sns/ui/c/a/c:RJp	Lcom/tencent/mm/plugin/sns/ui/ay;
+    //   514: aload_0
+    //   515: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   518: invokevirtual 511	com/tencent/mm/plugin/sns/ui/ay:Y	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V
+    //   521: aload_0
+    //   522: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   525: astore 6
+    //   527: aload 6
+    //   529: ifnull +2500 -> 3029
+    //   532: aload 6
+    //   534: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   537: ifnull +2492 -> 3029
+    //   540: aload 6
+    //   542: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   545: getfield 515	com/tencent/mm/plugin/sns/storage/ADXml:adLiveInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/i;
+    //   548: ifnonnull +1980 -> 2528
+    //   551: goto +2478 -> 3029
+    //   554: iload_1
+    //   555: ifeq +2228 -> 2783
+    //   558: aload 6
+    //   560: invokevirtual 519	com/tencent/mm/plugin/sns/storage/SnsInfo:getTimeLine	()Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   563: astore 7
     //   565: aload_0
-    //   566: getfield 937	com/tencent/mm/plugin/sns/ui/c/a/c:Ljp	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   566: getfield 521	com/tencent/mm/plugin/sns/ui/c/a/c:Qcn	Landroid/view/ViewGroup;
     //   569: ifnonnull +35 -> 604
     //   572: aload_0
-    //   573: getfield 246	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
-    //   576: getstatic 940	com/tencent/mm/plugin/sns/i$f:ad_live_desc_layout_stub	I
-    //   579: invokevirtual 264	android/view/View:findViewById	(I)Landroid/view/View;
-    //   582: checkcast 601	android/view/ViewStub
+    //   573: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   576: getstatic 524	com/tencent/mm/plugin/sns/b$f:ad_live_status_layout_stub	I
+    //   579: invokevirtual 337	android/view/View:findViewById	(I)Landroid/view/View;
+    //   582: checkcast 526	android/view/ViewStub
     //   585: astore 8
     //   587: aload 8
     //   589: ifnull +15 -> 604
     //   592: aload_0
     //   593: aload 8
-    //   595: invokestatic 606	com/tencent/mm/plugin/sns/ad/i/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
-    //   598: checkcast 942	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout
-    //   601: putfield 937	com/tencent/mm/plugin/sns/ui/c/a/c:Ljp	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   595: invokestatic 531	com/tencent/mm/plugin/sns/ad/j/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
+    //   598: checkcast 533	android/view/ViewGroup
+    //   601: putfield 521	com/tencent/mm/plugin/sns/ui/c/a/c:Qcn	Landroid/view/ViewGroup;
     //   604: aload_0
-    //   605: getfield 932	com/tencent/mm/plugin/sns/ui/c/a/c:JKI	Landroid/view/ViewGroup;
-    //   608: ifnull +10 -> 618
+    //   605: getfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   608: ifnonnull +35 -> 643
     //   611: aload_0
-    //   612: getfield 937	com/tencent/mm/plugin/sns/ui/c/a/c:Ljp	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
-    //   615: ifnonnull +1750 -> 2365
-    //   618: ldc_w 439
-    //   621: ldc_w 944
-    //   624: invokestatic 805	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   627: aload_0
-    //   628: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   631: astore 6
-    //   633: aload 6
-    //   635: ifnull +2086 -> 2721
-    //   638: aload 6
-    //   640: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   643: ifnonnull +2005 -> 2648
-    //   646: goto +2075 -> 2721
-    //   649: iload_1
-    //   650: ifeq +2034 -> 2684
-    //   653: aload 6
-    //   655: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   658: getfield 948	com/tencent/mm/plugin/sns/storage/ADXml:adPromotionInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/h;
-    //   661: astore 6
-    //   663: aload_0
-    //   664: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   667: ifnonnull +35 -> 702
-    //   670: aload_0
-    //   671: getfield 246	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
-    //   674: getstatic 953	com/tencent/mm/plugin/sns/i$f:ad_promotion_bar_stub	I
-    //   677: invokevirtual 264	android/view/View:findViewById	(I)Landroid/view/View;
-    //   680: checkcast 601	android/view/ViewStub
-    //   683: astore 7
-    //   685: aload 7
-    //   687: ifnull +15 -> 702
-    //   690: aload_0
-    //   691: aload 7
-    //   693: invokestatic 606	com/tencent/mm/plugin/sns/ad/i/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
-    //   696: checkcast 955	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout
-    //   699: putfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   702: aload_0
-    //   703: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   706: ifnull +79 -> 785
-    //   709: aload_0
-    //   710: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   713: iconst_0
-    //   714: invokevirtual 956	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setVisibility	(I)V
-    //   717: aload_0
-    //   718: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   721: aload 6
-    //   723: getfield 961	com/tencent/mm/plugin/sns/ad/adxml/h:JyA	Ljava/lang/String;
-    //   726: invokevirtual 964	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setPromotionalPrice	(Ljava/lang/String;)V
-    //   729: aload_0
-    //   730: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   733: aload 6
-    //   735: getfield 967	com/tencent/mm/plugin/sns/ad/adxml/h:JyB	Ljava/lang/String;
-    //   738: invokevirtual 970	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setRightTitle	(Ljava/lang/String;)V
-    //   741: aload_0
-    //   742: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   745: aload 6
-    //   747: getfield 973	com/tencent/mm/plugin/sns/ad/adxml/h:Jyy	Ljava/lang/String;
-    //   750: aload 6
-    //   752: getfield 976	com/tencent/mm/plugin/sns/ad/adxml/h:nWx	Ljava/lang/String;
-    //   755: invokestatic 982	com/tencent/mm/plugin/sns/ad/i/e:kp	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   758: invokestatic 985	com/tencent/mm/plugin/sns/ad/i/l:i	(Landroid/view/View;Ljava/lang/String;)V
-    //   761: aload_0
-    //   762: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   765: new 987	com/tencent/mm/plugin/sns/ad/widget/countdown/b
-    //   768: dup
-    //   769: aload 6
-    //   771: getfield 990	com/tencent/mm/plugin/sns/ad/adxml/h:startTime	J
-    //   774: aload 6
-    //   776: getfield 993	com/tencent/mm/plugin/sns/ad/adxml/h:endTime	J
-    //   779: invokespecial 996	com/tencent/mm/plugin/sns/ad/widget/countdown/b:<init>	(JJ)V
-    //   782: invokevirtual 999	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:b	(Lcom/tencent/mm/plugin/sns/ad/widget/countdown/d;)V
-    //   785: ldc_w 838
-    //   788: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   791: return
-    //   792: aload_0
-    //   793: aload_0
-    //   794: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   797: invokespecial 801	com/tencent/mm/plugin/sns/ui/c/a/c:ab	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V
-    //   800: goto -713 -> 87
-    //   803: aconst_null
-    //   804: astore 6
-    //   806: goto -652 -> 154
-    //   809: aload_0
-    //   810: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   813: getfield 233	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/adw;
-    //   816: getfield 238	com/tencent/mm/protocal/protobuf/adw:Sqq	I
-    //   819: iconst_5
-    //   820: if_icmpeq +18 -> 838
+    //   612: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   615: getstatic 538	com/tencent/mm/plugin/sns/b$f:ad_live_desc_layout_stub	I
+    //   618: invokevirtual 337	android/view/View:findViewById	(I)Landroid/view/View;
+    //   621: checkcast 526	android/view/ViewStub
+    //   624: astore 8
+    //   626: aload 8
+    //   628: ifnull +15 -> 643
+    //   631: aload_0
+    //   632: aload 8
+    //   634: invokestatic 531	com/tencent/mm/plugin/sns/ad/j/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
+    //   637: checkcast 540	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout
+    //   640: putfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   643: aload_0
+    //   644: getfield 521	com/tencent/mm/plugin/sns/ui/c/a/c:Qcn	Landroid/view/ViewGroup;
+    //   647: ifnull +10 -> 657
+    //   650: aload_0
+    //   651: getfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   654: ifnonnull +1879 -> 2533
+    //   657: ldc 245
+    //   659: ldc_w 542
+    //   662: invokestatic 311	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   665: aload_0
+    //   666: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   669: astore 6
+    //   671: aload 6
+    //   673: ifnull +2361 -> 3034
+    //   676: aload 6
+    //   678: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   681: ifnonnull +2153 -> 2834
+    //   684: goto +2350 -> 3034
+    //   687: iload_1
+    //   688: ifeq +2192 -> 2880
+    //   691: aload 6
+    //   693: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   696: getfield 546	com/tencent/mm/plugin/sns/storage/ADXml:adPromotionInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/j;
+    //   699: astore 6
+    //   701: aload_0
+    //   702: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   705: ifnonnull +35 -> 740
+    //   708: aload_0
+    //   709: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   712: getstatic 551	com/tencent/mm/plugin/sns/b$f:ad_promotion_bar_stub	I
+    //   715: invokevirtual 337	android/view/View:findViewById	(I)Landroid/view/View;
+    //   718: checkcast 526	android/view/ViewStub
+    //   721: astore 7
+    //   723: aload 7
+    //   725: ifnull +15 -> 740
+    //   728: aload_0
+    //   729: aload 7
+    //   731: invokestatic 531	com/tencent/mm/plugin/sns/ad/j/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
+    //   734: checkcast 553	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout
+    //   737: putfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   740: aload_0
+    //   741: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   744: ifnull +79 -> 823
+    //   747: aload_0
+    //   748: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   751: iconst_0
+    //   752: invokevirtual 554	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setVisibility	(I)V
+    //   755: aload_0
+    //   756: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   759: aload 6
+    //   761: getfield 559	com/tencent/mm/plugin/sns/ad/adxml/j:PMU	Ljava/lang/String;
+    //   764: invokevirtual 562	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setPromotionalPrice	(Ljava/lang/String;)V
+    //   767: aload_0
+    //   768: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   771: aload 6
+    //   773: getfield 565	com/tencent/mm/plugin/sns/ad/adxml/j:PMV	Ljava/lang/String;
+    //   776: invokevirtual 568	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setRightTitle	(Ljava/lang/String;)V
+    //   779: aload_0
+    //   780: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   783: aload 6
+    //   785: getfield 571	com/tencent/mm/plugin/sns/ad/adxml/j:PMS	Ljava/lang/String;
+    //   788: aload 6
+    //   790: getfield 574	com/tencent/mm/plugin/sns/ad/adxml/j:qWk	Ljava/lang/String;
+    //   793: invokestatic 580	com/tencent/mm/plugin/sns/ad/j/e:lP	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   796: invokestatic 583	com/tencent/mm/plugin/sns/ad/j/l:i	(Landroid/view/View;Ljava/lang/String;)V
+    //   799: aload_0
+    //   800: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   803: new 585	com/tencent/mm/plugin/sns/ad/widget/countdown/b
+    //   806: dup
+    //   807: aload 6
+    //   809: getfield 588	com/tencent/mm/plugin/sns/ad/adxml/j:startTime	J
+    //   812: aload 6
+    //   814: getfield 591	com/tencent/mm/plugin/sns/ad/adxml/j:endTime	J
+    //   817: invokespecial 594	com/tencent/mm/plugin/sns/ad/widget/countdown/b:<init>	(JJ)V
+    //   820: invokevirtual 597	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:b	(Lcom/tencent/mm/plugin/sns/ad/widget/countdown/d;)V
     //   823: aload_0
-    //   824: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   827: getfield 233	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/adw;
-    //   830: getfield 238	com/tencent/mm/protocal/protobuf/adw:Sqq	I
-    //   833: bipush 15
-    //   835: if_icmpne +1444 -> 2279
-    //   838: aload_0
-    //   839: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   842: getfield 633	com/tencent/mm/plugin/sns/ui/av:KKj	Landroid/view/View;
-    //   845: iconst_0
-    //   846: invokevirtual 291	android/view/View:setVisibility	(I)V
-    //   849: aload_0
-    //   850: getfield 576	com/tencent/mm/plugin/sns/ui/c/a/c:szq	Lcom/tencent/mm/ui/widget/b/a;
-    //   853: aload_0
-    //   854: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   857: getfield 630	com/tencent/mm/plugin/sns/ui/av:KKm	Landroid/view/View;
-    //   860: aload_0
-    //   861: getfield 117	com/tencent/mm/plugin/sns/ui/c/a/c:JIp	Lcom/tencent/mm/plugin/sns/ui/d/c;
-    //   864: getfield 580	com/tencent/mm/plugin/sns/ui/d/c:Lph	Lcom/tencent/mm/plugin/sns/ui/d/d;
-    //   867: aload_0
-    //   868: getfield 117	com/tencent/mm/plugin/sns/ui/c/a/c:JIp	Lcom/tencent/mm/plugin/sns/ui/d/c;
-    //   871: getfield 584	com/tencent/mm/plugin/sns/ui/d/c:LoP	Lcom/tencent/mm/plugin/sns/ui/d/b;
-    //   874: invokevirtual 588	com/tencent/mm/ui/widget/b/a:c	(Landroid/view/View;Landroid/view/View$OnCreateContextMenuListener;Lcom/tencent/mm/ui/base/q$g;)V
-    //   877: aload_0
-    //   878: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   881: getfield 633	com/tencent/mm/plugin/sns/ui/av:KKj	Landroid/view/View;
-    //   884: invokevirtual 496	android/view/View:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   887: astore 8
-    //   889: aload 8
-    //   891: iload_1
-    //   892: putfield 884	android/view/ViewGroup$LayoutParams:width	I
-    //   895: aload 8
-    //   897: iload_2
-    //   898: putfield 885	android/view/ViewGroup$LayoutParams:height	I
-    //   901: aload_0
-    //   902: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   905: getfield 633	com/tencent/mm/plugin/sns/ui/av:KKj	Landroid/view/View;
-    //   908: aload 8
-    //   910: invokevirtual 520	android/view/View:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   913: aload_0
-    //   914: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   917: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   920: iload_1
-    //   921: iload_2
-    //   922: invokevirtual 1003	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:ju	(II)V
-    //   925: aload_0
-    //   926: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   929: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   932: new 6	com/tencent/mm/plugin/sns/ui/c/a/c$1
-    //   935: dup
-    //   936: aload_0
-    //   937: invokespecial 1004	com/tencent/mm/plugin/sns/ui/c/a/c$1:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
-    //   940: invokevirtual 1008	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnCompletionListener	(Lcom/tencent/mm/plugin/sight/decode/a/b$e;)V
+    //   824: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   827: astore 6
+    //   829: aload 6
+    //   831: ifnull +2073 -> 2904
+    //   834: aload 6
+    //   836: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   839: ifnull +2065 -> 2904
+    //   842: aload 6
+    //   844: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   847: getfield 601	com/tencent/mm/plugin/sns/storage/ADXml:adRollInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/k;
+    //   850: ifnull +2054 -> 2904
+    //   853: iconst_1
+    //   854: istore_1
+    //   855: iload_1
+    //   856: ifeq +2150 -> 3006
+    //   859: aload 6
+    //   861: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   864: getfield 601	com/tencent/mm/plugin/sns/storage/ADXml:adRollInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/k;
+    //   867: astore 6
+    //   869: aload_0
+    //   870: getfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   873: ifnonnull +43 -> 916
+    //   876: aload_0
+    //   877: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   880: getstatic 606	com/tencent/mm/plugin/sns/b$f:ad_roll_layout_stub	I
+    //   883: invokevirtual 337	android/view/View:findViewById	(I)Landroid/view/View;
+    //   886: checkcast 526	android/view/ViewStub
+    //   889: astore 7
+    //   891: aload 7
+    //   893: ifnull +23 -> 916
+    //   896: aload_0
+    //   897: aload 7
+    //   899: invokestatic 531	com/tencent/mm/plugin/sns/ad/j/l:c	(Landroid/view/ViewStub;)Landroid/view/View;
+    //   902: checkcast 540	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout
+    //   905: putfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   908: ldc 245
+    //   910: ldc_w 608
+    //   913: invokestatic 271	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   916: aload_0
+    //   917: getfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   920: ifnull +8 -> 928
+    //   923: aload 6
+    //   925: ifnonnull +1984 -> 2909
+    //   928: ldc 245
+    //   930: ldc_w 610
+    //   933: invokestatic 311	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   936: ldc_w 313
+    //   939: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   942: return
     //   943: aload_0
-    //   944: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   947: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   950: new 8	com/tencent/mm/plugin/sns/ui/c/a/c$2
-    //   953: dup
-    //   954: aload_0
-    //   955: invokespecial 1009	com/tencent/mm/plugin/sns/ui/c/a/c$2:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
-    //   958: invokevirtual 1013	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnDecodeDurationListener	(Lcom/tencent/mm/plugin/sight/decode/a/b$f;)V
-    //   961: aload_0
-    //   962: getfield 421	com/tencent/mm/plugin/sns/ui/c/a/c:Ljs	Z
-    //   965: ifeq +649 -> 1614
-    //   968: aload_0
-    //   969: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   972: aload 6
-    //   974: invokestatic 1018	com/tencent/mm/plugin/sns/ad/d/d:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/cvt;)V
-    //   977: invokestatic 1024	java/lang/System:nanoTime	()J
-    //   980: lstore_3
-    //   981: aload 6
-    //   983: invokestatic 1028	com/tencent/mm/plugin/sns/model/g:u	(Lcom/tencent/mm/protocal/protobuf/cvt;)Z
-    //   986: istore 5
-    //   988: ldc_w 439
-    //   991: ldc_w 1030
-    //   994: iconst_2
-    //   995: anewarray 888	java/lang/Object
-    //   998: dup
-    //   999: iconst_0
-    //   1000: iload 5
-    //   1002: invokestatic 1036	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   1005: aastore
-    //   1006: dup
-    //   1007: iconst_1
-    //   1008: invokestatic 1024	java/lang/System:nanoTime	()J
-    //   1011: lload_3
-    //   1012: lsub
-    //   1013: invokestatic 1041	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1016: aastore
-    //   1017: invokestatic 1044	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1020: aload_0
-    //   1021: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   1024: astore 8
+    //   944: aload_0
+    //   945: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   948: invokespecial 612	com/tencent/mm/plugin/sns/ui/c/a/c:ad	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;)V
+    //   951: goto -832 -> 119
+    //   954: aconst_null
+    //   955: astore 6
+    //   957: goto -764 -> 193
+    //   960: astore 7
+    //   962: ldc 245
+    //   964: ldc_w 614
+    //   967: iconst_1
+    //   968: anewarray 449	java/lang/Object
+    //   971: dup
+    //   972: iconst_0
+    //   973: aload 7
+    //   975: aastore
+    //   976: invokestatic 617	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   979: goto -786 -> 193
+    //   982: aload_0
+    //   983: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   986: getfield 236	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   989: getfield 241	com/tencent/mm/protocal/protobuf/agh:Zpq	I
+    //   992: iconst_5
+    //   993: if_icmpeq +18 -> 1011
+    //   996: aload_0
+    //   997: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   1000: getfield 236	com/tencent/mm/protocal/protobuf/TimeLineObject:ContentObj	Lcom/tencent/mm/protocal/protobuf/agh;
+    //   1003: getfield 241	com/tencent/mm/protocal/protobuf/agh:Zpq	I
+    //   1006: bipush 15
+    //   1008: if_icmpne +1439 -> 2447
+    //   1011: aload_0
+    //   1012: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1015: getfield 620	com/tencent/mm/plugin/sns/ui/aw:RjL	Landroid/view/View;
+    //   1018: iconst_0
+    //   1019: invokevirtual 501	android/view/View:setVisibility	(I)V
+    //   1022: aload_0
+    //   1023: getfield 477	com/tencent/mm/plugin/sns/ui/c/a/c:vEV	Lcom/tencent/mm/ui/widget/b/a;
     //   1026: aload_0
-    //   1027: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   1030: aload_0
-    //   1031: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1034: invokevirtual 125	com/tencent/mm/plugin/sns/storage/SnsInfo:getLocalid	()Ljava/lang/String;
-    //   1037: putfield 1045	com/tencent/mm/plugin/sns/ui/av:fAg	Ljava/lang/String;
-    //   1040: iload 5
-    //   1042: ifne +766 -> 1808
-    //   1045: aload 7
-    //   1047: aload 6
-    //   1049: invokevirtual 1048	com/tencent/mm/plugin/sns/model/g:x	(Lcom/tencent/mm/protocal/protobuf/cvt;)Z
-    //   1052: ifeq +571 -> 1623
-    //   1055: aload 8
-    //   1057: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1060: bipush 8
-    //   1062: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   1065: aload 8
-    //   1067: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1070: iconst_0
-    //   1071: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   1074: aload 8
-    //   1076: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1079: invokevirtual 1052	com/tencent/mm/ui/widget/MMPinProgressBtn:hZF	()V
-    //   1082: aload_0
-    //   1083: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   1086: getfield 633	com/tencent/mm/plugin/sns/ui/av:KKj	Landroid/view/View;
-    //   1089: iconst_0
-    //   1090: invokevirtual 291	android/view/View:setVisibility	(I)V
-    //   1093: aload 8
-    //   1095: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   1098: aload 8
-    //   1100: invokevirtual 1055	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setTagObject	(Ljava/lang/Object;)V
-    //   1103: aload 8
-    //   1105: getfield 630	com/tencent/mm/plugin/sns/ui/av:KKm	Landroid/view/View;
-    //   1108: aload_0
-    //   1109: invokevirtual 904	android/view/View:setTag	(Ljava/lang/Object;)V
-    //   1112: aload_0
-    //   1113: getfield 246	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   1027: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1030: getfield 623	com/tencent/mm/plugin/sns/ui/aw:RjO	Landroid/view/View;
+    //   1033: aload_0
+    //   1034: getfield 120	com/tencent/mm/plugin/sns/ui/c/a/c:PZr	Lcom/tencent/mm/plugin/sns/ui/listener/c;
+    //   1037: getfield 481	com/tencent/mm/plugin/sns/ui/listener/c:RQm	Lcom/tencent/mm/plugin/sns/ui/listener/d;
+    //   1040: aload_0
+    //   1041: getfield 120	com/tencent/mm/plugin/sns/ui/c/a/c:PZr	Lcom/tencent/mm/plugin/sns/ui/listener/c;
+    //   1044: getfield 485	com/tencent/mm/plugin/sns/ui/listener/c:RPU	Lcom/tencent/mm/plugin/sns/ui/listener/b;
+    //   1047: invokevirtual 491	com/tencent/mm/ui/widget/b/a:c	(Landroid/view/View;Landroid/view/View$OnCreateContextMenuListener;Lcom/tencent/mm/ui/base/u$i;)V
+    //   1050: aload_0
+    //   1051: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1054: getfield 620	com/tencent/mm/plugin/sns/ui/aw:RjL	Landroid/view/View;
+    //   1057: invokevirtual 624	android/view/View:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   1060: astore 7
+    //   1062: aload 7
+    //   1064: iload_1
+    //   1065: putfield 440	android/view/ViewGroup$LayoutParams:width	I
+    //   1068: aload 7
+    //   1070: iload_2
+    //   1071: putfield 443	android/view/ViewGroup$LayoutParams:height	I
+    //   1074: aload_0
+    //   1075: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1078: getfield 620	com/tencent/mm/plugin/sns/ui/aw:RjL	Landroid/view/View;
+    //   1081: aload 7
+    //   1083: invokevirtual 625	android/view/View:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   1086: aload_0
+    //   1087: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1090: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   1093: iload_1
+    //   1094: iload_2
+    //   1095: invokevirtual 629	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:ld	(II)V
+    //   1098: aload_0
+    //   1099: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1102: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   1105: new 6	com/tencent/mm/plugin/sns/ui/c/a/c$1
+    //   1108: dup
+    //   1109: aload_0
+    //   1110: invokespecial 630	com/tencent/mm/plugin/sns/ui/c/a/c$1:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
+    //   1113: invokevirtual 634	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnCompletionListener	(Lcom/tencent/mm/plugin/sight/decode/model/SightPlayController$d;)V
     //   1116: aload_0
-    //   1117: invokevirtual 904	android/view/View:setTag	(Ljava/lang/Object;)V
-    //   1120: aload_0
-    //   1121: getfield 162	com/tencent/mm/plugin/sns/ui/c/a/c:Ljb	Landroid/widget/Button;
-    //   1124: aload_0
-    //   1125: invokevirtual 905	android/widget/Button:setTag	(Ljava/lang/Object;)V
-    //   1128: aload_0
-    //   1129: getfield 164	com/tencent/mm/plugin/sns/ui/c/a/c:Ljc	Landroid/widget/Button;
-    //   1132: aload_0
-    //   1133: invokevirtual 905	android/widget/Button:setTag	(Ljava/lang/Object;)V
-    //   1136: aload_0
-    //   1137: getfield 421	com/tencent/mm/plugin/sns/ui/c/a/c:Ljs	Z
-    //   1140: ifeq +1011 -> 2151
-    //   1143: aload 7
-    //   1145: aload_0
-    //   1146: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1149: aload 6
-    //   1151: aload 8
-    //   1153: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   1156: iconst_m1
-    //   1157: aload_0
-    //   1158: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1161: invokevirtual 891	java/lang/Object:hashCode	()I
-    //   1164: iconst_0
-    //   1165: getstatic 897	com/tencent/mm/storage/bp:VGo	Lcom/tencent/mm/storage/bp;
-    //   1168: iconst_1
-    //   1169: iconst_1
-    //   1170: iconst_0
-    //   1171: invokevirtual 1058	com/tencent/mm/plugin/sns/model/g:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/cvt;Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;IIILcom/tencent/mm/storage/bp;ZZZ)Z
-    //   1174: pop
-    //   1175: aload_0
-    //   1176: getfield 119	com/tencent/mm/plugin/sns/ui/c/a/c:KPn	Lcom/tencent/mm/plugin/sns/ad/f/l;
-    //   1179: ifnull +157 -> 1336
-    //   1182: invokestatic 1061	com/tencent/mm/plugin/sns/model/aj:getAccSnsPath	()Ljava/lang/String;
-    //   1185: aload 6
-    //   1187: getfield 1062	com/tencent/mm/protocal/protobuf/cvt:Id	Ljava/lang/String;
-    //   1190: invokestatic 1067	com/tencent/mm/plugin/sns/model/aq:kD	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1193: astore 7
-    //   1195: aload 6
-    //   1197: invokestatic 1072	com/tencent/mm/plugin/sns/data/t:i	(Lcom/tencent/mm/protocal/protobuf/cvt;)Ljava/lang/String;
-    //   1200: astore 9
-    //   1202: new 423	java/lang/StringBuilder
-    //   1205: dup
-    //   1206: invokespecial 1073	java/lang/StringBuilder:<init>	()V
-    //   1209: aload 7
-    //   1211: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1214: aload 9
-    //   1216: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1219: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1222: astore 7
-    //   1224: aload 7
-    //   1226: invokestatic 1078	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
-    //   1229: ifeq +955 -> 2184
-    //   1232: aload_0
-    //   1233: getfield 119	com/tencent/mm/plugin/sns/ui/c/a/c:KPn	Lcom/tencent/mm/plugin/sns/ad/f/l;
-    //   1236: aload_0
-    //   1237: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1240: getfield 824	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
-    //   1243: aload 6
-    //   1245: getfield 1081	com/tencent/mm/protocal/protobuf/cvt:TDZ	F
-    //   1248: f2i
-    //   1249: iconst_1
-    //   1250: invokevirtual 1084	com/tencent/mm/plugin/sns/ad/f/l:f	(JIZ)V
-    //   1253: invokestatic 1087	com/tencent/mm/plugin/sns/ad/d/d:No	()Z
-    //   1256: ifeq +45 -> 1301
-    //   1259: aload 7
-    //   1261: invokestatic 1092	com/tencent/mm/modelvideo/v:isH265Video	(Ljava/lang/String;)Z
-    //   1264: istore 5
-    //   1266: ldc_w 439
-    //   1269: new 423	java/lang/StringBuilder
-    //   1272: dup
-    //   1273: ldc_w 1094
-    //   1276: invokespecial 428	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1279: iload 5
-    //   1281: invokevirtual 432	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1284: ldc_w 1096
-    //   1287: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1290: aload 7
-    //   1292: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1295: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1298: invokestatic 447	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1301: invokestatic 851	com/tencent/mm/plugin/sns/model/aj:fOF	()Lcom/tencent/mm/plugin/sns/model/g;
+    //   1117: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1120: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   1123: new 8	com/tencent/mm/plugin/sns/ui/c/a/c$2
+    //   1126: dup
+    //   1127: aload_0
+    //   1128: invokespecial 635	com/tencent/mm/plugin/sns/ui/c/a/c$2:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
+    //   1131: invokevirtual 639	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnDecodeDurationListener	(Lcom/tencent/mm/plugin/sight/decode/model/SightPlayController$e;)V
+    //   1134: aload_0
+    //   1135: getfield 263	com/tencent/mm/plugin/sns/ui/c/a/c:QbW	Z
+    //   1138: ifeq +646 -> 1784
+    //   1141: aload_0
+    //   1142: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1145: aload 6
+    //   1147: invokestatic 644	com/tencent/mm/plugin/sns/ad/d/e:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/dmz;)V
+    //   1150: invokestatic 650	java/lang/System:nanoTime	()J
+    //   1153: lstore_3
+    //   1154: aload 6
+    //   1156: invokestatic 654	com/tencent/mm/plugin/sns/model/g:u	(Lcom/tencent/mm/protocal/protobuf/dmz;)Z
+    //   1159: istore 5
+    //   1161: ldc 245
+    //   1163: ldc_w 656
+    //   1166: iconst_2
+    //   1167: anewarray 449	java/lang/Object
+    //   1170: dup
+    //   1171: iconst_0
+    //   1172: iload 5
+    //   1174: invokestatic 662	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1177: aastore
+    //   1178: dup
+    //   1179: iconst_1
+    //   1180: invokestatic 650	java/lang/System:nanoTime	()J
+    //   1183: lload_3
+    //   1184: lsub
+    //   1185: invokestatic 667	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1188: aastore
+    //   1189: invokestatic 669	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1192: aload_0
+    //   1193: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1196: astore 7
+    //   1198: aload_0
+    //   1199: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1202: aload_0
+    //   1203: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1206: invokevirtual 128	com/tencent/mm/plugin/sns/storage/SnsInfo:getLocalid	()Ljava/lang/String;
+    //   1209: putfield 670	com/tencent/mm/plugin/sns/ui/aw:hES	Ljava/lang/String;
+    //   1212: iload 5
+    //   1214: ifne +764 -> 1978
+    //   1217: aload 8
+    //   1219: aload 6
+    //   1221: invokevirtual 673	com/tencent/mm/plugin/sns/model/g:x	(Lcom/tencent/mm/protocal/protobuf/dmz;)Z
+    //   1224: ifeq +569 -> 1793
+    //   1227: aload 7
+    //   1229: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1232: bipush 8
+    //   1234: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   1237: aload 7
+    //   1239: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1242: iconst_0
+    //   1243: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   1246: aload 7
+    //   1248: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1251: invokevirtual 689	com/tencent/mm/ui/widget/MMPinProgressBtn:jEN	()V
+    //   1254: aload_0
+    //   1255: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1258: getfield 620	com/tencent/mm/plugin/sns/ui/aw:RjL	Landroid/view/View;
+    //   1261: iconst_0
+    //   1262: invokevirtual 501	android/view/View:setVisibility	(I)V
+    //   1265: aload 7
+    //   1267: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   1270: aload 7
+    //   1272: invokevirtual 692	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setTagObject	(Ljava/lang/Object;)V
+    //   1275: aload 7
+    //   1277: getfield 623	com/tencent/mm/plugin/sns/ui/aw:RjO	Landroid/view/View;
+    //   1280: aload_0
+    //   1281: invokevirtual 470	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   1284: aload_0
+    //   1285: getfield 326	com/tencent/mm/plugin/sns/ui/c/a/c:contentView	Landroid/view/View;
+    //   1288: aload_0
+    //   1289: invokevirtual 470	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   1292: aload_0
+    //   1293: getfield 165	com/tencent/mm/plugin/sns/ui/c/a/c:RJd	Landroid/widget/Button;
+    //   1296: aload_0
+    //   1297: invokevirtual 471	android/widget/Button:setTag	(Ljava/lang/Object;)V
+    //   1300: aload_0
+    //   1301: getfield 167	com/tencent/mm/plugin/sns/ui/c/a/c:RJe	Landroid/widget/Button;
     //   1304: aload_0
-    //   1305: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1308: aconst_null
-    //   1309: invokevirtual 1099	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
-    //   1312: iconst_5
-    //   1313: if_icmpne +895 -> 2208
-    //   1316: iconst_1
-    //   1317: istore 5
-    //   1319: aload_0
-    //   1320: getfield 119	com/tencent/mm/plugin/sns/ui/c/a/c:KPn	Lcom/tencent/mm/plugin/sns/ad/f/l;
-    //   1323: aload_0
-    //   1324: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1327: getfield 824	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
-    //   1330: iload 5
-    //   1332: iconst_0
-    //   1333: invokevirtual 1103	com/tencent/mm/plugin/sns/ad/f/l:d	(JZZ)V
-    //   1336: aload_0
-    //   1337: getfield 421	com/tencent/mm/plugin/sns/ui/c/a/c:Ljs	Z
-    //   1340: ifeq +922 -> 2262
-    //   1343: aload_0
-    //   1344: getfield 328	com/tencent/mm/plugin/sns/ui/c/a/c:JKL	Landroid/view/ViewGroup;
-    //   1347: iload_1
-    //   1348: iload_2
-    //   1349: invokestatic 1107	com/tencent/mm/plugin/sns/ad/i/l:v	(Landroid/view/View;II)V
-    //   1352: aload_0
-    //   1353: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1356: ifnonnull +858 -> 2214
-    //   1359: aload_0
-    //   1360: getfield 328	com/tencent/mm/plugin/sns/ui/c/a/c:JKL	Landroid/view/ViewGroup;
-    //   1363: invokestatic 1111	com/tencent/mm/plugin/sns/ad/i/l:M	(Landroid/view/ViewGroup;)V
-    //   1366: aload_0
-    //   1367: new 817	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView
-    //   1370: dup
-    //   1371: aload_0
-    //   1372: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1375: iconst_0
-    //   1376: invokespecial 1114	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:<init>	(Landroid/content/Context;B)V
-    //   1379: putfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1382: aload_0
-    //   1383: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1386: invokevirtual 1117	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:fUe	()V
-    //   1389: aload_0
-    //   1390: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1393: getstatic 1123	com/tencent/mm/pluginsdk/ui/i$e:RcH	Lcom/tencent/mm/pluginsdk/ui/i$e;
-    //   1396: invokevirtual 1127	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setVideoScaleType	(Lcom/tencent/mm/pluginsdk/ui/i$e;)V
-    //   1399: aload_0
-    //   1400: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1403: getstatic 1133	android/widget/ImageView$ScaleType:CENTER_CROP	Landroid/widget/ImageView$ScaleType;
-    //   1406: invokevirtual 1137	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setThumbViewScaleType	(Landroid/widget/ImageView$ScaleType;)V
-    //   1409: aload_0
-    //   1410: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1413: iconst_m1
-    //   1414: iconst_m1
-    //   1415: invokestatic 1107	com/tencent/mm/plugin/sns/ad/i/l:v	(Landroid/view/View;II)V
-    //   1418: aload_0
-    //   1419: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1422: iconst_1
-    //   1423: invokestatic 1141	com/tencent/mm/plugin/sns/ad/i/l:w	(Landroid/view/View;Z)V
-    //   1426: aload_0
-    //   1427: getfield 328	com/tencent/mm/plugin/sns/ui/c/a/c:JKL	Landroid/view/ViewGroup;
-    //   1430: aload_0
-    //   1431: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1434: iconst_0
-    //   1435: invokestatic 1144	com/tencent/mm/plugin/sns/ad/i/l:b	(Landroid/view/ViewGroup;Landroid/view/View;I)Z
-    //   1438: pop
-    //   1439: aload_0
-    //   1440: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1443: new 10	com/tencent/mm/plugin/sns/ui/c/a/c$3
-    //   1446: dup
-    //   1447: aload_0
-    //   1448: invokespecial 1145	com/tencent/mm/plugin/sns/ui/c/a/c$3:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
-    //   1451: invokevirtual 1149	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setUICallback	(Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView$b;)V
-    //   1454: aload_0
-    //   1455: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1458: new 1151	com/tencent/mm/plugin/sns/ad/timeline/video/online/a
-    //   1461: dup
-    //   1462: aload_0
-    //   1463: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1466: aload_0
-    //   1467: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1470: aload_0
-    //   1471: getfield 119	com/tencent/mm/plugin/sns/ui/c/a/c:KPn	Lcom/tencent/mm/plugin/sns/ad/f/l;
-    //   1474: iconst_3
-    //   1475: invokespecial 1154	com/tencent/mm/plugin/sns/ad/timeline/video/online/a:<init>	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/plugin/sns/ui/OnlineVideoView;Lcom/tencent/mm/plugin/sns/ad/f/l;I)V
-    //   1478: invokevirtual 1158	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setVideoCallback	(Lcom/tencent/mm/plugin/sns/ui/OnlineVideoView$b;)V
-    //   1481: ldc_w 439
-    //   1484: new 423	java/lang/StringBuilder
-    //   1487: dup
-    //   1488: ldc_w 1160
-    //   1491: invokespecial 428	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1305: invokevirtual 471	android/widget/Button:setTag	(Ljava/lang/Object;)V
+    //   1308: aload_0
+    //   1309: getfield 263	com/tencent/mm/plugin/sns/ui/c/a/c:QbW	Z
+    //   1312: ifeq +1008 -> 2320
+    //   1315: aload 8
+    //   1317: aload_0
+    //   1318: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1321: aload 6
+    //   1323: aload 7
+    //   1325: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   1328: iconst_m1
+    //   1329: aload_0
+    //   1330: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   1333: invokevirtual 452	java/lang/Object:hashCode	()I
+    //   1336: iconst_0
+    //   1337: getstatic 458	com/tencent/mm/storage/br:adkc	Lcom/tencent/mm/storage/br;
+    //   1340: iconst_1
+    //   1341: iconst_1
+    //   1342: iconst_0
+    //   1343: invokevirtual 695	com/tencent/mm/plugin/sns/model/g:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/dmz;Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;IIILcom/tencent/mm/storage/br;ZZZ)Z
+    //   1346: pop
+    //   1347: aload_0
+    //   1348: getfield 122	com/tencent/mm/plugin/sns/ui/c/a/c:RoZ	Lcom/tencent/mm/plugin/sns/ad/g/l;
+    //   1351: ifnull +156 -> 1507
+    //   1354: invokestatic 698	com/tencent/mm/plugin/sns/model/al:getAccSnsPath	()Ljava/lang/String;
+    //   1357: aload 6
+    //   1359: getfield 701	com/tencent/mm/protocal/protobuf/dmz:Id	Ljava/lang/String;
+    //   1362: invokestatic 706	com/tencent/mm/plugin/sns/model/as:mg	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1365: astore 8
+    //   1367: aload 6
+    //   1369: invokestatic 711	com/tencent/mm/plugin/sns/data/t:i	(Lcom/tencent/mm/protocal/protobuf/dmz;)Ljava/lang/String;
+    //   1372: astore 9
+    //   1374: new 247	java/lang/StringBuilder
+    //   1377: dup
+    //   1378: invokespecial 712	java/lang/StringBuilder:<init>	()V
+    //   1381: aload 8
+    //   1383: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1386: aload 9
+    //   1388: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1391: invokevirtual 266	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1394: astore 8
+    //   1396: aload 8
+    //   1398: invokestatic 718	com/tencent/mm/vfs/y:ZC	(Ljava/lang/String;)Z
+    //   1401: ifeq +952 -> 2353
+    //   1404: aload_0
+    //   1405: getfield 122	com/tencent/mm/plugin/sns/ui/c/a/c:RoZ	Lcom/tencent/mm/plugin/sns/ad/g/l;
+    //   1408: aload_0
+    //   1409: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1412: getfield 292	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
+    //   1415: aload 6
+    //   1417: getfield 721	com/tencent/mm/protocal/protobuf/dmz:aaTF	F
+    //   1420: f2i
+    //   1421: iconst_1
+    //   1422: invokevirtual 725	com/tencent/mm/plugin/sns/ad/g/l:g	(JIZ)V
+    //   1425: invokestatic 728	com/tencent/mm/plugin/sns/ad/d/e:anH	()Z
+    //   1428: ifeq +44 -> 1472
+    //   1431: aload 8
+    //   1433: invokestatic 733	com/tencent/mm/modelvideo/y:isH265Video	(Ljava/lang/String;)Z
+    //   1436: istore 5
+    //   1438: ldc 245
+    //   1440: new 247	java/lang/StringBuilder
+    //   1443: dup
+    //   1444: ldc_w 735
+    //   1447: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1450: iload 5
+    //   1452: invokevirtual 256	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1455: ldc_w 737
+    //   1458: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1461: aload 8
+    //   1463: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1466: invokevirtual 266	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1469: invokestatic 271	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1472: invokestatic 371	com/tencent/mm/plugin/sns/model/al:hgy	()Lcom/tencent/mm/plugin/sns/model/g;
+    //   1475: aload_0
+    //   1476: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1479: aconst_null
+    //   1480: invokevirtual 740	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
+    //   1483: iconst_5
+    //   1484: if_icmpne +893 -> 2377
+    //   1487: iconst_1
+    //   1488: istore 5
+    //   1490: aload_0
+    //   1491: getfield 122	com/tencent/mm/plugin/sns/ui/c/a/c:RoZ	Lcom/tencent/mm/plugin/sns/ad/g/l;
     //   1494: aload_0
-    //   1495: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1498: invokevirtual 891	java/lang/Object:hashCode	()I
-    //   1501: invokevirtual 1163	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1504: ldc_w 1165
-    //   1507: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1510: aload_0
-    //   1511: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1514: invokevirtual 1169	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:getInnerVideoView	()Landroid/view/View;
-    //   1517: invokevirtual 1172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1520: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1523: invokestatic 447	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1526: aload_0
-    //   1527: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1530: iconst_1
-    //   1531: invokevirtual 1173	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setMute	(Z)V
-    //   1534: aload_0
-    //   1535: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1538: aload 6
-    //   1540: aload_0
-    //   1541: getfield 127	com/tencent/mm/plugin/sns/ui/c/a/c:fAg	Ljava/lang/String;
-    //   1544: aload_0
-    //   1545: getfield 109	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
-    //   1548: getfield 1176	com/tencent/mm/protocal/protobuf/TimeLineObject:CreateTime	I
-    //   1551: invokevirtual 1179	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:a	(Lcom/tencent/mm/protocal/protobuf/cvt;Ljava/lang/String;I)V
-    //   1554: aload_0
-    //   1555: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1558: invokevirtual 1182	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:abandonAudioFocus	()V
-    //   1561: aload_0
-    //   1562: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   1565: invokevirtual 1185	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:fhw	()V
-    //   1568: aload_0
-    //   1569: getfield 98	com/tencent/mm/plugin/sns/ui/c/a/c:JMp	Landroid/os/Handler;
-    //   1572: aconst_null
-    //   1573: invokevirtual 1188	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   1576: aload_0
-    //   1577: getfield 98	com/tencent/mm/plugin/sns/ui/c/a/c:JMp	Landroid/os/Handler;
-    //   1580: new 12	com/tencent/mm/plugin/sns/ui/c/a/c$4
-    //   1583: dup
-    //   1584: aload_0
-    //   1585: invokespecial 1189	com/tencent/mm/plugin/sns/ui/c/a/c$4:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
-    //   1588: ldc2_w 1190
-    //   1591: invokevirtual 1195	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   1594: pop
-    //   1595: aload_0
-    //   1596: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   1599: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1602: iconst_0
-    //   1603: invokestatic 1141	com/tencent/mm/plugin/sns/ad/i/l:w	(Landroid/view/View;Z)V
-    //   1606: aload_0
-    //   1607: iconst_1
-    //   1608: putfield 105	com/tencent/mm/plugin/sns/ui/c/a/c:Ljt	Z
-    //   1611: goto -1228 -> 383
-    //   1614: aload 6
-    //   1616: iconst_0
-    //   1617: invokestatic 1198	com/tencent/mm/plugin/sns/ad/d/d:a	(Lcom/tencent/mm/protocal/protobuf/cvt;Z)V
-    //   1620: goto -643 -> 977
-    //   1623: aload 7
+    //   1495: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1498: getfield 292	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
+    //   1501: iload 5
+    //   1503: iconst_0
+    //   1504: invokevirtual 743	com/tencent/mm/plugin/sns/ad/g/l:e	(JZZ)V
+    //   1507: aload_0
+    //   1508: getfield 263	com/tencent/mm/plugin/sns/ui/c/a/c:QbW	Z
+    //   1511: ifeq +919 -> 2430
+    //   1514: aload_0
+    //   1515: getfield 745	com/tencent/mm/plugin/sns/ui/c/a/c:Qcq	Landroid/view/ViewGroup;
+    //   1518: iload_1
+    //   1519: iload_2
+    //   1520: invokestatic 749	com/tencent/mm/plugin/sns/ad/j/l:z	(Landroid/view/View;II)V
+    //   1523: aload_0
+    //   1524: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1527: ifnonnull +856 -> 2383
+    //   1530: aload_0
+    //   1531: getfield 745	com/tencent/mm/plugin/sns/ui/c/a/c:Qcq	Landroid/view/ViewGroup;
+    //   1534: invokestatic 753	com/tencent/mm/plugin/sns/ad/j/l:W	(Landroid/view/ViewGroup;)V
+    //   1537: aload_0
+    //   1538: new 285	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView
+    //   1541: dup
+    //   1542: aload_0
+    //   1543: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   1546: iconst_0
+    //   1547: invokespecial 756	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:<init>	(Landroid/content/Context;B)V
+    //   1550: putfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1553: aload_0
+    //   1554: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1557: invokevirtual 759	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:hmy	()V
+    //   1560: aload_0
+    //   1561: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1564: getstatic 765	com/tencent/mm/pluginsdk/ui/i$e:XYN	Lcom/tencent/mm/pluginsdk/ui/i$e;
+    //   1567: invokevirtual 769	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setVideoScaleType	(Lcom/tencent/mm/pluginsdk/ui/i$e;)V
+    //   1570: aload_0
+    //   1571: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1574: getstatic 775	android/widget/ImageView$ScaleType:CENTER_CROP	Landroid/widget/ImageView$ScaleType;
+    //   1577: invokevirtual 779	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setThumbViewScaleType	(Landroid/widget/ImageView$ScaleType;)V
+    //   1580: aload_0
+    //   1581: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1584: iconst_m1
+    //   1585: iconst_m1
+    //   1586: invokestatic 749	com/tencent/mm/plugin/sns/ad/j/l:z	(Landroid/view/View;II)V
+    //   1589: aload_0
+    //   1590: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1593: iconst_1
+    //   1594: invokestatic 783	com/tencent/mm/plugin/sns/ad/j/l:C	(Landroid/view/View;Z)V
+    //   1597: aload_0
+    //   1598: getfield 745	com/tencent/mm/plugin/sns/ui/c/a/c:Qcq	Landroid/view/ViewGroup;
+    //   1601: aload_0
+    //   1602: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1605: iconst_0
+    //   1606: invokestatic 786	com/tencent/mm/plugin/sns/ad/j/l:b	(Landroid/view/ViewGroup;Landroid/view/View;I)Z
+    //   1609: pop
+    //   1610: aload_0
+    //   1611: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1614: new 10	com/tencent/mm/plugin/sns/ui/c/a/c$3
+    //   1617: dup
+    //   1618: aload_0
+    //   1619: invokespecial 787	com/tencent/mm/plugin/sns/ui/c/a/c$3:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
+    //   1622: invokevirtual 791	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setUICallback	(Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView$b;)V
     //   1625: aload_0
-    //   1626: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1629: aconst_null
-    //   1630: invokevirtual 1099	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
-    //   1633: iconst_5
-    //   1634: if_icmpne +40 -> 1674
-    //   1637: aload 7
-    //   1639: aload 6
-    //   1641: invokevirtual 1202	com/tencent/mm/plugin/sns/model/g:B	(Lcom/tencent/mm/protocal/protobuf/cvt;)V
-    //   1644: aload 8
-    //   1646: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1649: bipush 8
-    //   1651: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   1654: aload 8
-    //   1656: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1659: iconst_0
-    //   1660: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   1663: aload 8
-    //   1665: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1668: invokevirtual 1052	com/tencent/mm/ui/widget/MMPinProgressBtn:hZF	()V
-    //   1671: goto -589 -> 1082
-    //   1674: aload 7
-    //   1676: aload 6
-    //   1678: invokevirtual 1205	com/tencent/mm/plugin/sns/model/g:y	(Lcom/tencent/mm/protocal/protobuf/cvt;)Z
-    //   1681: ifeq +36 -> 1717
-    //   1684: aload 8
-    //   1686: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1689: bipush 8
-    //   1691: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   1694: aload 8
-    //   1696: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1699: getstatic 1208	com/tencent/mm/plugin/sns/i$i:shortvideo_play_icon_err	I
-    //   1702: invokevirtual 401	android/widget/ImageView:setImageResource	(I)V
-    //   1705: aload 8
-    //   1707: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1710: iconst_0
-    //   1711: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   1714: goto -632 -> 1082
-    //   1717: aload 7
-    //   1719: aload 6
-    //   1721: invokevirtual 1211	com/tencent/mm/plugin/sns/model/g:z	(Lcom/tencent/mm/protocal/protobuf/cvt;)V
-    //   1724: aload 8
-    //   1726: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1729: iconst_0
-    //   1730: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   1733: aload 8
-    //   1735: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1738: bipush 8
-    //   1740: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   1743: aload 8
-    //   1745: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1748: aload_0
-    //   1749: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1752: getstatic 1214	com/tencent/mm/plugin/sns/i$i:shortvideo_play_btn	I
-    //   1755: invokestatic 1218	com/tencent/mm/ci/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
-    //   1758: invokevirtual 1221	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   1761: aload 8
-    //   1763: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1766: aload_0
-    //   1767: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1770: invokevirtual 146	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   1773: getstatic 1224	com/tencent/mm/plugin/sns/i$j:play_sight_desc	I
-    //   1776: invokevirtual 1227	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1779: invokevirtual 1230	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
-    //   1782: aload 7
-    //   1784: aload_0
-    //   1785: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   1788: aconst_null
-    //   1789: invokevirtual 1099	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
-    //   1792: iconst_4
-    //   1793: if_icmpne -711 -> 1082
-    //   1796: aload 8
-    //   1798: getfield 676	com/tencent/mm/plugin/sns/ui/av:Ktc	Landroid/widget/TextView;
-    //   1801: iconst_0
-    //   1802: invokevirtual 563	android/widget/TextView:setVisibility	(I)V
-    //   1805: goto -723 -> 1082
-    //   1808: aload 7
-    //   1810: aload 6
-    //   1812: invokevirtual 1232	com/tencent/mm/plugin/sns/model/g:v	(Lcom/tencent/mm/protocal/protobuf/cvt;)Z
-    //   1815: ifeq +198 -> 2013
-    //   1818: aload 8
-    //   1820: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1823: iconst_0
-    //   1824: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   1827: aload 8
-    //   1829: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1832: bipush 8
-    //   1834: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   1837: aload 8
-    //   1839: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1842: aload_0
-    //   1843: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1846: getstatic 1214	com/tencent/mm/plugin/sns/i$i:shortvideo_play_btn	I
-    //   1849: invokestatic 1218	com/tencent/mm/ci/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
-    //   1852: invokevirtual 1221	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   1855: aload 8
-    //   1857: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1860: aload_0
-    //   1861: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1864: invokevirtual 146	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   1867: getstatic 1224	com/tencent/mm/plugin/sns/i$j:play_sight_desc	I
-    //   1870: invokevirtual 1227	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   1873: invokevirtual 1230	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
-    //   1876: aload 8
-    //   1878: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   1881: getfield 1236	com/tencent/mm/plugin/sight/decode/ui/SightPlayImageView:JsW	Lcom/tencent/mm/plugin/sight/decode/a/b;
-    //   1884: invokevirtual 1241	com/tencent/mm/plugin/sight/decode/a/b:fIC	()Z
-    //   1887: ifeq -805 -> 1082
-    //   1890: ldc_w 439
-    //   1893: new 423	java/lang/StringBuilder
-    //   1896: dup
-    //   1897: ldc_w 1243
-    //   1900: invokespecial 428	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1903: aload 6
-    //   1905: getfield 1062	com/tencent/mm/protocal/protobuf/cvt:Id	Ljava/lang/String;
-    //   1908: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1911: ldc_w 1245
-    //   1914: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1917: aload 6
-    //   1919: getfield 1248	com/tencent/mm/protocal/protobuf/cvt:Url	Ljava/lang/String;
-    //   1922: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1925: ldc_w 1245
-    //   1928: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1931: aload 6
-    //   1933: getfield 1251	com/tencent/mm/protocal/protobuf/cvt:TDF	Ljava/lang/String;
-    //   1936: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1939: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1942: invokestatic 1253	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1945: aload 7
-    //   1947: aload 6
-    //   1949: invokevirtual 1211	com/tencent/mm/plugin/sns/model/g:z	(Lcom/tencent/mm/protocal/protobuf/cvt;)V
+    //   1626: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1629: new 793	com/tencent/mm/plugin/sns/ad/timeline/video/online/a
+    //   1632: dup
+    //   1633: aload_0
+    //   1634: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1637: aload_0
+    //   1638: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1641: aload_0
+    //   1642: getfield 122	com/tencent/mm/plugin/sns/ui/c/a/c:RoZ	Lcom/tencent/mm/plugin/sns/ad/g/l;
+    //   1645: iconst_3
+    //   1646: invokespecial 796	com/tencent/mm/plugin/sns/ad/timeline/video/online/a:<init>	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/plugin/sns/ui/OnlineVideoView;Lcom/tencent/mm/plugin/sns/ad/g/l;I)V
+    //   1649: invokevirtual 800	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setVideoCallback	(Lcom/tencent/mm/plugin/sns/ui/OnlineVideoView$b;)V
+    //   1652: ldc 245
+    //   1654: new 247	java/lang/StringBuilder
+    //   1657: dup
+    //   1658: ldc_w 802
+    //   1661: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1664: aload_0
+    //   1665: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1668: invokevirtual 452	java/lang/Object:hashCode	()I
+    //   1671: invokevirtual 805	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1674: ldc_w 807
+    //   1677: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1680: aload_0
+    //   1681: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1684: invokevirtual 811	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:getInnerVideoView	()Landroid/view/View;
+    //   1687: invokevirtual 814	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1690: invokevirtual 266	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1693: invokestatic 271	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1696: aload_0
+    //   1697: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1700: iconst_1
+    //   1701: invokevirtual 818	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:setMute	(Z)V
+    //   1704: aload_0
+    //   1705: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1708: aload 6
+    //   1710: aload_0
+    //   1711: getfield 130	com/tencent/mm/plugin/sns/ui/c/a/c:hES	Ljava/lang/String;
+    //   1714: aload_0
+    //   1715: getfield 112	com/tencent/mm/plugin/sns/ui/c/a/c:timeLineObject	Lcom/tencent/mm/protocal/protobuf/TimeLineObject;
+    //   1718: getfield 821	com/tencent/mm/protocal/protobuf/TimeLineObject:CreateTime	I
+    //   1721: invokevirtual 824	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:a	(Lcom/tencent/mm/protocal/protobuf/dmz;Ljava/lang/String;I)V
+    //   1724: aload_0
+    //   1725: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1728: invokevirtual 827	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:abandonAudioFocus	()V
+    //   1731: aload_0
+    //   1732: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   1735: invokevirtual 830	com/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView:grj	()V
+    //   1738: aload_0
+    //   1739: getfield 101	com/tencent/mm/plugin/sns/ui/c/a/c:PRJ	Landroid/os/Handler;
+    //   1742: aconst_null
+    //   1743: invokevirtual 833	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   1746: aload_0
+    //   1747: getfield 101	com/tencent/mm/plugin/sns/ui/c/a/c:PRJ	Landroid/os/Handler;
+    //   1750: new 12	com/tencent/mm/plugin/sns/ui/c/a/c$4
+    //   1753: dup
+    //   1754: aload_0
+    //   1755: invokespecial 834	com/tencent/mm/plugin/sns/ui/c/a/c$4:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;)V
+    //   1758: ldc2_w 835
+    //   1761: invokevirtual 840	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   1764: pop
+    //   1765: aload_0
+    //   1766: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   1769: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1772: iconst_0
+    //   1773: invokestatic 783	com/tencent/mm/plugin/sns/ad/j/l:C	(Landroid/view/View;Z)V
+    //   1776: aload_0
+    //   1777: iconst_1
+    //   1778: putfield 108	com/tencent/mm/plugin/sns/ui/c/a/c:RJw	Z
+    //   1781: goto -1359 -> 422
+    //   1784: aload 6
+    //   1786: iconst_0
+    //   1787: invokestatic 843	com/tencent/mm/plugin/sns/ad/d/e:a	(Lcom/tencent/mm/protocal/protobuf/dmz;Z)V
+    //   1790: goto -640 -> 1150
+    //   1793: aload 8
+    //   1795: aload_0
+    //   1796: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1799: aconst_null
+    //   1800: invokevirtual 740	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
+    //   1803: iconst_5
+    //   1804: if_icmpne +40 -> 1844
+    //   1807: aload 8
+    //   1809: aload 6
+    //   1811: invokevirtual 847	com/tencent/mm/plugin/sns/model/g:B	(Lcom/tencent/mm/protocal/protobuf/dmz;)V
+    //   1814: aload 7
+    //   1816: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1819: bipush 8
+    //   1821: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   1824: aload 7
+    //   1826: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1829: iconst_0
+    //   1830: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   1833: aload 7
+    //   1835: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1838: invokevirtual 689	com/tencent/mm/ui/widget/MMPinProgressBtn:jEN	()V
+    //   1841: goto -587 -> 1254
+    //   1844: aload 8
+    //   1846: aload 6
+    //   1848: invokevirtual 850	com/tencent/mm/plugin/sns/model/g:y	(Lcom/tencent/mm/protocal/protobuf/dmz;)Z
+    //   1851: ifeq +36 -> 1887
+    //   1854: aload 7
+    //   1856: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1859: bipush 8
+    //   1861: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   1864: aload 7
+    //   1866: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1869: getstatic 855	com/tencent/mm/plugin/sns/b$i:shortvideo_play_icon_err	I
+    //   1872: invokevirtual 858	android/widget/ImageView:setImageResource	(I)V
+    //   1875: aload 7
+    //   1877: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1880: iconst_0
+    //   1881: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   1884: goto -630 -> 1254
+    //   1887: aload 8
+    //   1889: aload 6
+    //   1891: invokevirtual 860	com/tencent/mm/plugin/sns/model/g:z	(Lcom/tencent/mm/protocal/protobuf/dmz;)V
+    //   1894: aload 7
+    //   1896: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1899: iconst_0
+    //   1900: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   1903: aload 7
+    //   1905: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   1908: bipush 8
+    //   1910: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   1913: aload 7
+    //   1915: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1918: aload_0
+    //   1919: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   1922: getstatic 863	com/tencent/mm/plugin/sns/b$i:shortvideo_play_btn	I
+    //   1925: invokestatic 869	com/tencent/mm/cd/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    //   1928: invokevirtual 873	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   1931: aload 7
+    //   1933: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1936: aload_0
+    //   1937: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   1940: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   1943: getstatic 878	com/tencent/mm/plugin/sns/b$j:play_sight_desc	I
+    //   1946: invokevirtual 881	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   1949: invokevirtual 884	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
     //   1952: aload 8
-    //   1954: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1957: iconst_0
-    //   1958: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   1961: aload 8
-    //   1963: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   1966: bipush 8
-    //   1968: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   1971: aload 8
-    //   1973: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1976: aload_0
-    //   1977: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1980: getstatic 1214	com/tencent/mm/plugin/sns/i$i:shortvideo_play_btn	I
-    //   1983: invokestatic 1218	com/tencent/mm/ci/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
-    //   1986: invokevirtual 1221	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   1989: aload 8
-    //   1991: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   1994: aload_0
-    //   1995: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   1998: invokevirtual 146	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   2001: getstatic 1224	com/tencent/mm/plugin/sns/i$j:play_sight_desc	I
-    //   2004: invokevirtual 1227	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   2007: invokevirtual 1230	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
-    //   2010: goto -928 -> 1082
-    //   2013: aload 7
-    //   2015: aload 6
-    //   2017: invokevirtual 1255	com/tencent/mm/plugin/sns/model/g:w	(Lcom/tencent/mm/protocal/protobuf/cvt;)Z
-    //   2020: ifeq +26 -> 2046
-    //   2023: aload 8
-    //   2025: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   2028: bipush 8
-    //   2030: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   2033: aload 8
-    //   2035: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   2038: bipush 8
-    //   2040: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   2043: goto -167 -> 1876
+    //   1954: aload_0
+    //   1955: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   1958: aconst_null
+    //   1959: invokevirtual 740	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
+    //   1962: iconst_4
+    //   1963: if_icmpne -709 -> 1254
+    //   1966: aload 7
+    //   1968: getfield 360	com/tencent/mm/plugin/sns/ui/aw:QRC	Landroid/widget/TextView;
+    //   1971: iconst_0
+    //   1972: invokevirtual 365	android/widget/TextView:setVisibility	(I)V
+    //   1975: goto -721 -> 1254
+    //   1978: aload 8
+    //   1980: aload 6
+    //   1982: invokevirtual 887	com/tencent/mm/plugin/sns/model/g:v	(Lcom/tencent/mm/protocal/protobuf/dmz;)Z
+    //   1985: ifeq +197 -> 2182
+    //   1988: aload 7
+    //   1990: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   1993: iconst_0
+    //   1994: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   1997: aload 7
+    //   1999: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   2002: bipush 8
+    //   2004: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   2007: aload 7
+    //   2009: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2012: aload_0
+    //   2013: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2016: getstatic 863	com/tencent/mm/plugin/sns/b$i:shortvideo_play_btn	I
+    //   2019: invokestatic 869	com/tencent/mm/cd/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    //   2022: invokevirtual 873	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   2025: aload 7
+    //   2027: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2030: aload_0
+    //   2031: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2034: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   2037: getstatic 878	com/tencent/mm/plugin/sns/b$j:play_sight_desc	I
+    //   2040: invokevirtual 881	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   2043: invokevirtual 884	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
     //   2046: aload 7
-    //   2048: aload_0
-    //   2049: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   2052: aconst_null
-    //   2053: invokevirtual 1099	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
-    //   2056: iconst_5
-    //   2057: if_icmpgt +26 -> 2083
-    //   2060: aload 8
-    //   2062: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   2065: bipush 8
-    //   2067: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   2070: aload 8
-    //   2072: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   2075: bipush 8
-    //   2077: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   2080: goto -204 -> 1876
-    //   2083: aload 7
-    //   2085: aload 6
-    //   2087: invokevirtual 1211	com/tencent/mm/plugin/sns/model/g:z	(Lcom/tencent/mm/protocal/protobuf/cvt;)V
-    //   2090: aload 8
-    //   2092: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   2095: iconst_0
-    //   2096: invokevirtual 339	android/widget/ImageView:setVisibility	(I)V
-    //   2099: aload 8
-    //   2101: getfield 664	com/tencent/mm/plugin/sns/ui/av:KKn	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
-    //   2104: bipush 8
-    //   2106: invokevirtual 1049	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
-    //   2109: aload 8
-    //   2111: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   2114: aload_0
-    //   2115: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   2118: getstatic 1214	com/tencent/mm/plugin/sns/i$i:shortvideo_play_btn	I
-    //   2121: invokestatic 1218	com/tencent/mm/ci/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
-    //   2124: invokevirtual 1221	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   2127: aload 8
-    //   2129: getfield 655	com/tencent/mm/plugin/sns/ui/av:JAL	Landroid/widget/ImageView;
-    //   2132: aload_0
-    //   2133: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   2136: invokevirtual 146	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   2139: getstatic 1224	com/tencent/mm/plugin/sns/i$j:play_sight_desc	I
-    //   2142: invokevirtual 1227	android/content/res/Resources:getString	(I)Ljava/lang/String;
-    //   2145: invokevirtual 1230	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
-    //   2148: goto -272 -> 1876
-    //   2151: aload 7
-    //   2153: aload_0
-    //   2154: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   2157: aload 6
-    //   2159: aload 8
-    //   2161: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   2164: aload_0
-    //   2165: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   2168: invokevirtual 891	java/lang/Object:hashCode	()I
-    //   2171: iconst_0
-    //   2172: getstatic 897	com/tencent/mm/storage/bp:VGo	Lcom/tencent/mm/storage/bp;
-    //   2175: iconst_1
-    //   2176: iconst_1
-    //   2177: invokevirtual 1258	com/tencent/mm/plugin/sns/model/g:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/cvt;Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;IILcom/tencent/mm/storage/bp;ZZ)Z
-    //   2180: pop
-    //   2181: goto -1006 -> 1175
-    //   2184: aload_0
-    //   2185: getfield 119	com/tencent/mm/plugin/sns/ui/c/a/c:KPn	Lcom/tencent/mm/plugin/sns/ad/f/l;
-    //   2188: aload_0
-    //   2189: getfield 113	com/tencent/mm/plugin/sns/ui/c/a/c:Jzk	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
-    //   2192: getfield 824	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
-    //   2195: aload 6
-    //   2197: getfield 1081	com/tencent/mm/protocal/protobuf/cvt:TDZ	F
-    //   2200: f2i
-    //   2201: iconst_0
-    //   2202: invokevirtual 1084	com/tencent/mm/plugin/sns/ad/f/l:f	(JIZ)V
-    //   2205: goto -904 -> 1301
-    //   2208: iconst_0
-    //   2209: istore 5
-    //   2211: goto -892 -> 1319
-    //   2214: ldc_w 439
-    //   2217: new 423	java/lang/StringBuilder
-    //   2220: dup
-    //   2221: ldc_w 1260
-    //   2224: invokespecial 428	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2227: aload_0
-    //   2228: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   2231: invokevirtual 891	java/lang/Object:hashCode	()I
-    //   2234: invokevirtual 1163	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2237: ldc_w 1262
-    //   2240: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2243: aload_0
-    //   2244: getfield 815	com/tencent/mm/plugin/sns/ui/c/a/c:Ljr	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
-    //   2247: getfield 1267	com/tencent/mm/plugin/sns/ui/OnlineVideoView:wTx	Z
-    //   2250: invokevirtual 432	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   2253: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2256: invokestatic 447	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2259: goto -733 -> 1526
-    //   2262: aload 8
-    //   2264: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   2267: invokevirtual 1270	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:start	()Z
-    //   2270: pop
-    //   2271: aload_0
-    //   2272: iconst_1
-    //   2273: putfield 105	com/tencent/mm/plugin/sns/ui/c/a/c:Ljt	Z
-    //   2276: goto -1893 -> 383
-    //   2279: aload 7
-    //   2281: aload_0
-    //   2282: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   2285: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   2288: aload_0
-    //   2289: getfield 140	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
-    //   2292: invokevirtual 891	java/lang/Object:hashCode	()I
-    //   2295: iconst_0
-    //   2296: invokevirtual 1273	com/tencent/mm/plugin/sns/model/g:a	(Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;II)Z
-    //   2299: pop
-    //   2300: aload_0
-    //   2301: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   2304: getfield 670	com/tencent/mm/plugin/sns/ui/av:KKo	Landroid/widget/TextView;
-    //   2307: bipush 8
-    //   2309: invokevirtual 563	android/widget/TextView:setVisibility	(I)V
-    //   2312: aload_0
-    //   2313: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   2316: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   2319: aconst_null
-    //   2320: invokevirtual 1277	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnSightCompletionAction	(Lcom/tencent/mm/plugin/sight/decode/a/b$g;)V
-    //   2323: aload_0
-    //   2324: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   2327: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   2330: aconst_null
-    //   2331: invokevirtual 1008	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnCompletionListener	(Lcom/tencent/mm/plugin/sight/decode/a/b$e;)V
-    //   2334: aload_0
-    //   2335: getfield 624	com/tencent/mm/plugin/sns/ui/c/a/c:JKG	Lcom/tencent/mm/plugin/sns/ui/av;
-    //   2338: getfield 646	com/tencent/mm/plugin/sns/ui/av:KKk	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
-    //   2341: aconst_null
-    //   2342: invokevirtual 1013	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnDecodeDurationListener	(Lcom/tencent/mm/plugin/sight/decode/a/b$f;)V
-    //   2345: goto -1962 -> 383
-    //   2348: aload_0
-    //   2349: getfield 321	com/tencent/mm/plugin/sns/ui/c/a/c:Ljk	Landroid/view/View;
-    //   2352: bipush 8
-    //   2354: invokevirtual 291	android/view/View:setVisibility	(I)V
-    //   2357: goto -1875 -> 482
-    //   2360: iconst_1
-    //   2361: istore_1
-    //   2362: goto -1847 -> 515
-    //   2365: aload_0
-    //   2366: getfield 1279	com/tencent/mm/plugin/sns/ui/c/a/c:Ljq	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
-    //   2369: ifnonnull +26 -> 2395
-    //   2372: aload_0
-    //   2373: new 1281	com/tencent/mm/plugin/sns/ad/widget/living/c
-    //   2376: dup
-    //   2377: aload_0
-    //   2378: getfield 932	com/tencent/mm/plugin/sns/ui/c/a/c:JKI	Landroid/view/ViewGroup;
-    //   2381: aload_0
-    //   2382: getfield 937	com/tencent/mm/plugin/sns/ui/c/a/c:Ljp	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
-    //   2385: aload_0
-    //   2386: getfield 914	com/tencent/mm/plugin/sns/ui/c/a/c:Ljn	Lcom/tencent/mm/plugin/sns/ui/ax;
-    //   2389: invokespecial 1284	com/tencent/mm/plugin/sns/ad/widget/living/c:<init>	(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;Lcom/tencent/mm/plugin/sns/ui/ax;)V
-    //   2392: putfield 1279	com/tencent/mm/plugin/sns/ui/c/a/c:Ljq	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
-    //   2395: aload 7
-    //   2397: ifnull -1770 -> 627
-    //   2400: aload_0
-    //   2401: getfield 1279	com/tencent/mm/plugin/sns/ui/c/a/c:Ljq	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
-    //   2404: ifnull -1777 -> 627
-    //   2407: aload 6
-    //   2409: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   2412: getfield 926	com/tencent/mm/plugin/sns/storage/ADXml:adLiveInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/g;
-    //   2415: astore 8
-    //   2417: aload 7
-    //   2419: getfield 796	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
-    //   2422: aload 8
-    //   2424: getfield 1289	com/tencent/mm/plugin/sns/ad/adxml/g:liveType	I
-    //   2427: invokestatic 1295	com/tencent/mm/plugin/sns/ad/widget/living/b:fX	(Ljava/lang/String;I)I
-    //   2430: istore_1
-    //   2431: aload_0
-    //   2432: getfield 1279	com/tencent/mm/plugin/sns/ui/c/a/c:Ljq	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
-    //   2435: aload 7
-    //   2437: getfield 796	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
-    //   2440: aload 8
-    //   2442: invokevirtual 1298	com/tencent/mm/plugin/sns/ad/widget/living/c:a	(Ljava/lang/String;Lcom/tencent/mm/plugin/sns/ad/adxml/g;)V
-    //   2445: aload_0
-    //   2446: getfield 1279	com/tencent/mm/plugin/sns/ui/c/a/c:Ljq	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
-    //   2449: iload_1
-    //   2450: invokevirtual 1301	com/tencent/mm/plugin/sns/ad/widget/living/c:setLiveStatus	(I)V
-    //   2453: aload 7
-    //   2455: getfield 796	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
-    //   2458: aload_0
-    //   2459: getfield 1279	com/tencent/mm/plugin/sns/ui/c/a/c:Ljq	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
-    //   2462: invokestatic 1304	com/tencent/mm/plugin/sns/ad/widget/living/b:a	(Ljava/lang/String;Lcom/tencent/mm/plugin/sns/ad/widget/living/b$a;)V
-    //   2465: invokestatic 1310	com/tencent/mm/plugin/sns/ad/timeline/dynamic/a:fLk	()Lcom/tencent/mm/plugin/sns/ad/timeline/dynamic/a;
-    //   2468: iconst_1
-    //   2469: aload 6
-    //   2471: invokevirtual 1313	com/tencent/mm/plugin/sns/ad/timeline/dynamic/a:b	(ILcom/tencent/mm/plugin/sns/storage/SnsInfo;)V
-    //   2474: iload_1
-    //   2475: invokestatic 1317	com/tencent/mm/plugin/sns/ad/widget/living/c:afn	(I)Z
-    //   2478: istore 5
-    //   2480: aload 7
-    //   2482: getfield 796	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
-    //   2485: astore 6
-    //   2487: aload 8
-    //   2489: iload 5
-    //   2491: invokestatic 1322	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper:a	(Lcom/tencent/mm/plugin/sns/ad/adxml/g;Z)Z
-    //   2494: ifeq +84 -> 2578
-    //   2497: aload_0
-    //   2498: getfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2501: ifnonnull +17 -> 2518
-    //   2504: aload_0
-    //   2505: aload_0
-    //   2506: getfield 775	com/tencent/mm/plugin/sns/ui/c/a/c:JKJ	Landroid/view/ViewStub;
-    //   2509: invokevirtual 1327	android/view/ViewStub:inflate	()Landroid/view/View;
-    //   2512: checkcast 1319	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper
-    //   2515: putfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2518: aload_0
-    //   2519: getfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2522: ifnull -1895 -> 627
-    //   2525: new 18	com/tencent/mm/plugin/sns/ui/c/a/c$7
-    //   2528: dup
-    //   2529: aload_0
-    //   2530: aload 8
-    //   2532: aload 6
-    //   2534: invokespecial 1330	com/tencent/mm/plugin/sns/ui/c/a/c$7:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;Lcom/tencent/mm/plugin/sns/ad/adxml/g;Ljava/lang/String;)V
-    //   2537: ldc2_w 1331
-    //   2540: invokestatic 1338	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThreadDelayed	(Ljava/lang/Runnable;J)V
-    //   2543: goto -1916 -> 627
-    //   2546: astore 6
-    //   2548: ldc_w 439
-    //   2551: new 423	java/lang/StringBuilder
-    //   2554: dup
-    //   2555: ldc_w 1340
-    //   2558: invokespecial 428	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   2561: aload 6
-    //   2563: invokestatic 1346	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   2566: invokevirtual 437	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2569: invokevirtual 442	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2572: invokestatic 805	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2575: goto -1948 -> 627
-    //   2578: aload_0
-    //   2579: getfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2582: ifnull -1955 -> 627
-    //   2585: aload_0
-    //   2586: getfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2589: bipush 8
-    //   2591: invokevirtual 1347	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper:setVisibility	(I)V
-    //   2594: goto -1967 -> 627
-    //   2597: aload_0
-    //   2598: getfield 932	com/tencent/mm/plugin/sns/ui/c/a/c:JKI	Landroid/view/ViewGroup;
-    //   2601: ifnull +12 -> 2613
-    //   2604: aload_0
-    //   2605: getfield 932	com/tencent/mm/plugin/sns/ui/c/a/c:JKI	Landroid/view/ViewGroup;
-    //   2608: bipush 8
-    //   2610: invokevirtual 1348	android/view/ViewGroup:setVisibility	(I)V
+    //   2048: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2051: getfield 893	com/tencent/mm/plugin/sight/decode/ui/SightPlayImageView:PGy	Lcom/tencent/mm/plugin/sight/decode/model/SightPlayController;
+    //   2054: invokevirtual 898	com/tencent/mm/plugin/sight/decode/model/SightPlayController:gYv	()Z
+    //   2057: ifeq -803 -> 1254
+    //   2060: ldc 245
+    //   2062: new 247	java/lang/StringBuilder
+    //   2065: dup
+    //   2066: ldc_w 900
+    //   2069: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2072: aload 6
+    //   2074: getfield 701	com/tencent/mm/protocal/protobuf/dmz:Id	Ljava/lang/String;
+    //   2077: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2080: ldc_w 902
+    //   2083: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2086: aload 6
+    //   2088: getfield 905	com/tencent/mm/protocal/protobuf/dmz:Url	Ljava/lang/String;
+    //   2091: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2094: ldc_w 902
+    //   2097: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2100: aload 6
+    //   2102: getfield 908	com/tencent/mm/protocal/protobuf/dmz:aaTl	Ljava/lang/String;
+    //   2105: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2108: invokevirtual 266	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2111: invokestatic 911	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2114: aload 8
+    //   2116: aload 6
+    //   2118: invokevirtual 860	com/tencent/mm/plugin/sns/model/g:z	(Lcom/tencent/mm/protocal/protobuf/dmz;)V
+    //   2121: aload 7
+    //   2123: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2126: iconst_0
+    //   2127: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   2130: aload 7
+    //   2132: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   2135: bipush 8
+    //   2137: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   2140: aload 7
+    //   2142: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2145: aload_0
+    //   2146: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2149: getstatic 863	com/tencent/mm/plugin/sns/b$i:shortvideo_play_btn	I
+    //   2152: invokestatic 869	com/tencent/mm/cd/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    //   2155: invokevirtual 873	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   2158: aload 7
+    //   2160: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2163: aload_0
+    //   2164: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2167: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   2170: getstatic 878	com/tencent/mm/plugin/sns/b$j:play_sight_desc	I
+    //   2173: invokevirtual 881	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   2176: invokevirtual 884	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   2179: goto -925 -> 1254
+    //   2182: aload 8
+    //   2184: aload 6
+    //   2186: invokevirtual 914	com/tencent/mm/plugin/sns/model/g:w	(Lcom/tencent/mm/protocal/protobuf/dmz;)Z
+    //   2189: ifeq +26 -> 2215
+    //   2192: aload 7
+    //   2194: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2197: bipush 8
+    //   2199: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   2202: aload 7
+    //   2204: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   2207: bipush 8
+    //   2209: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   2212: goto -166 -> 2046
+    //   2215: aload 8
+    //   2217: aload_0
+    //   2218: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   2221: aconst_null
+    //   2222: invokevirtual 740	com/tencent/mm/plugin/sns/model/g:b	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;[I)I
+    //   2225: iconst_5
+    //   2226: if_icmpgt +26 -> 2252
+    //   2229: aload 7
+    //   2231: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2234: bipush 8
+    //   2236: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   2239: aload 7
+    //   2241: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   2244: bipush 8
+    //   2246: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   2249: goto -203 -> 2046
+    //   2252: aload 8
+    //   2254: aload 6
+    //   2256: invokevirtual 860	com/tencent/mm/plugin/sns/model/g:z	(Lcom/tencent/mm/protocal/protobuf/dmz;)V
+    //   2259: aload 7
+    //   2261: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2264: iconst_0
+    //   2265: invokevirtual 679	android/widget/ImageView:setVisibility	(I)V
+    //   2268: aload 7
+    //   2270: getfield 683	com/tencent/mm/plugin/sns/ui/aw:RjP	Lcom/tencent/mm/ui/widget/MMPinProgressBtn;
+    //   2273: bipush 8
+    //   2275: invokevirtual 686	com/tencent/mm/ui/widget/MMPinProgressBtn:setVisibility	(I)V
+    //   2278: aload 7
+    //   2280: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2283: aload_0
+    //   2284: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2287: getstatic 863	com/tencent/mm/plugin/sns/b$i:shortvideo_play_btn	I
+    //   2290: invokestatic 869	com/tencent/mm/cd/a:m	(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    //   2293: invokevirtual 873	android/widget/ImageView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   2296: aload 7
+    //   2298: getfield 676	com/tencent/mm/plugin/sns/ui/aw:PQu	Landroid/widget/ImageView;
+    //   2301: aload_0
+    //   2302: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2305: invokevirtual 149	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   2308: getstatic 878	com/tencent/mm/plugin/sns/b$j:play_sight_desc	I
+    //   2311: invokevirtual 881	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   2314: invokevirtual 884	android/widget/ImageView:setContentDescription	(Ljava/lang/CharSequence;)V
+    //   2317: goto -271 -> 2046
+    //   2320: aload 8
+    //   2322: aload_0
+    //   2323: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   2326: aload 6
+    //   2328: aload 7
+    //   2330: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2333: aload_0
+    //   2334: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2337: invokevirtual 452	java/lang/Object:hashCode	()I
+    //   2340: iconst_0
+    //   2341: getstatic 458	com/tencent/mm/storage/br:adkc	Lcom/tencent/mm/storage/br;
+    //   2344: iconst_1
+    //   2345: iconst_1
+    //   2346: invokevirtual 917	com/tencent/mm/plugin/sns/model/g:a	(Lcom/tencent/mm/plugin/sns/storage/SnsInfo;Lcom/tencent/mm/protocal/protobuf/dmz;Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;IILcom/tencent/mm/storage/br;ZZ)Z
+    //   2349: pop
+    //   2350: goto -1003 -> 1347
+    //   2353: aload_0
+    //   2354: getfield 122	com/tencent/mm/plugin/sns/ui/c/a/c:RoZ	Lcom/tencent/mm/plugin/sns/ad/g/l;
+    //   2357: aload_0
+    //   2358: getfield 116	com/tencent/mm/plugin/sns/ui/c/a/c:PNI	Lcom/tencent/mm/plugin/sns/storage/SnsInfo;
+    //   2361: getfield 292	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
+    //   2364: aload 6
+    //   2366: getfield 721	com/tencent/mm/protocal/protobuf/dmz:aaTF	F
+    //   2369: f2i
+    //   2370: iconst_0
+    //   2371: invokevirtual 725	com/tencent/mm/plugin/sns/ad/g/l:g	(JIZ)V
+    //   2374: goto -902 -> 1472
+    //   2377: iconst_0
+    //   2378: istore 5
+    //   2380: goto -890 -> 1490
+    //   2383: ldc 245
+    //   2385: new 247	java/lang/StringBuilder
+    //   2388: dup
+    //   2389: ldc_w 919
+    //   2392: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2395: aload_0
+    //   2396: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   2399: invokevirtual 452	java/lang/Object:hashCode	()I
+    //   2402: invokevirtual 805	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2405: ldc_w 921
+    //   2408: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2411: aload_0
+    //   2412: getfield 283	com/tencent/mm/plugin/sns/ui/c/a/c:RJv	Lcom/tencent/mm/plugin/sns/ui/video/SnsTimelineVideoView;
+    //   2415: getfield 926	com/tencent/mm/plugin/sns/ui/OnlineVideoView:Aqa	Z
+    //   2418: invokevirtual 256	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   2421: invokevirtual 266	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2424: invokestatic 271	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2427: goto -731 -> 1696
+    //   2430: aload 7
+    //   2432: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2435: invokevirtual 929	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:start	()Z
+    //   2438: pop
+    //   2439: aload_0
+    //   2440: iconst_1
+    //   2441: putfield 108	com/tencent/mm/plugin/sns/ui/c/a/c:RJw	Z
+    //   2444: goto -2022 -> 422
+    //   2447: aload 8
+    //   2449: aload_0
+    //   2450: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   2453: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2456: aload_0
+    //   2457: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2460: invokevirtual 452	java/lang/Object:hashCode	()I
+    //   2463: iconst_0
+    //   2464: invokevirtual 932	com/tencent/mm/plugin/sns/model/g:a	(Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;II)Z
+    //   2467: pop
+    //   2468: aload_0
+    //   2469: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   2472: getfield 935	com/tencent/mm/plugin/sns/ui/aw:RjQ	Landroid/widget/TextView;
+    //   2475: bipush 8
+    //   2477: invokevirtual 365	android/widget/TextView:setVisibility	(I)V
+    //   2480: aload_0
+    //   2481: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   2484: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2487: aconst_null
+    //   2488: invokevirtual 939	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnSightCompletionAction	(Lcom/tencent/mm/plugin/sight/decode/model/SightPlayController$f;)V
+    //   2491: aload_0
+    //   2492: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   2495: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2498: aconst_null
+    //   2499: invokevirtual 634	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnCompletionListener	(Lcom/tencent/mm/plugin/sight/decode/model/SightPlayController$d;)V
+    //   2502: aload_0
+    //   2503: getfield 275	com/tencent/mm/plugin/sns/ui/c/a/c:Qcj	Lcom/tencent/mm/plugin/sns/ui/aw;
+    //   2506: getfield 281	com/tencent/mm/plugin/sns/ui/aw:RjM	Lcom/tencent/mm/pluginsdk/ui/tools/VideoSightView;
+    //   2509: aconst_null
+    //   2510: invokevirtual 639	com/tencent/mm/pluginsdk/ui/tools/VideoSightView:setOnDecodeDurationListener	(Lcom/tencent/mm/plugin/sight/decode/model/SightPlayController$e;)V
+    //   2513: goto -2091 -> 422
+    //   2516: aload_0
+    //   2517: getfield 500	com/tencent/mm/plugin/sns/ui/c/a/c:RJm	Landroid/view/View;
+    //   2520: bipush 8
+    //   2522: invokevirtual 501	android/view/View:setVisibility	(I)V
+    //   2525: goto -2004 -> 521
+    //   2528: iconst_1
+    //   2529: istore_1
+    //   2530: goto -1976 -> 554
+    //   2533: aload_0
+    //   2534: getfield 941	com/tencent/mm/plugin/sns/ui/c/a/c:RJs	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
+    //   2537: ifnonnull +26 -> 2563
+    //   2540: aload_0
+    //   2541: new 943	com/tencent/mm/plugin/sns/ad/widget/living/c
+    //   2544: dup
+    //   2545: aload_0
+    //   2546: getfield 521	com/tencent/mm/plugin/sns/ui/c/a/c:Qcn	Landroid/view/ViewGroup;
+    //   2549: aload_0
+    //   2550: getfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   2553: aload_0
+    //   2554: getfield 503	com/tencent/mm/plugin/sns/ui/c/a/c:RJp	Lcom/tencent/mm/plugin/sns/ui/ay;
+    //   2557: invokespecial 946	com/tencent/mm/plugin/sns/ad/widget/living/c:<init>	(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;Lcom/tencent/mm/plugin/sns/ui/ay;)V
+    //   2560: putfield 941	com/tencent/mm/plugin/sns/ui/c/a/c:RJs	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
+    //   2563: aload 7
+    //   2565: ifnull +146 -> 2711
+    //   2568: aload_0
+    //   2569: getfield 941	com/tencent/mm/plugin/sns/ui/c/a/c:RJs	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
+    //   2572: ifnull +139 -> 2711
+    //   2575: aload 6
+    //   2577: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   2580: getfield 515	com/tencent/mm/plugin/sns/storage/ADXml:adLiveInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/i;
+    //   2583: astore 8
+    //   2585: aload 7
+    //   2587: getfield 947	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
+    //   2590: aload 8
+    //   2592: getfield 952	com/tencent/mm/plugin/sns/ad/adxml/i:liveType	I
+    //   2595: invokestatic 958	com/tencent/mm/plugin/sns/ad/widget/living/b:gQ	(Ljava/lang/String;I)I
+    //   2598: istore_1
+    //   2599: aload_0
+    //   2600: getfield 941	com/tencent/mm/plugin/sns/ui/c/a/c:RJs	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
+    //   2603: aload 7
+    //   2605: getfield 947	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
+    //   2608: aload 8
+    //   2610: invokevirtual 961	com/tencent/mm/plugin/sns/ad/widget/living/c:a	(Ljava/lang/String;Lcom/tencent/mm/plugin/sns/ad/adxml/i;)V
     //   2613: aload_0
-    //   2614: getfield 937	com/tencent/mm/plugin/sns/ui/c/a/c:Ljp	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
-    //   2617: ifnull +12 -> 2629
-    //   2620: aload_0
-    //   2621: getfield 937	com/tencent/mm/plugin/sns/ui/c/a/c:Ljp	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
-    //   2624: bipush 8
-    //   2626: invokevirtual 1349	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout:setVisibility	(I)V
-    //   2629: aload_0
-    //   2630: getfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2633: ifnull -2006 -> 627
-    //   2636: aload_0
-    //   2637: getfield 1324	com/tencent/mm/plugin/sns/ui/c/a/c:JKK	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
-    //   2640: bipush 8
-    //   2642: invokevirtual 1347	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper:setVisibility	(I)V
-    //   2645: goto -2018 -> 627
-    //   2648: aload 6
-    //   2650: invokevirtual 183	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
-    //   2653: getfield 948	com/tencent/mm/plugin/sns/storage/ADXml:adPromotionInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/h;
-    //   2656: astore 7
-    //   2658: aload 7
-    //   2660: ifnull +66 -> 2726
-    //   2663: aload 7
-    //   2665: getfield 990	com/tencent/mm/plugin/sns/ad/adxml/h:startTime	J
-    //   2668: aload 7
-    //   2670: getfield 993	com/tencent/mm/plugin/sns/ad/adxml/h:endTime	J
-    //   2673: invokestatic 1355	com/tencent/mm/plugin/sns/ad/i/f:aA	(JJ)Z
-    //   2676: ifeq +50 -> 2726
-    //   2679: iconst_1
-    //   2680: istore_1
-    //   2681: goto -2032 -> 649
-    //   2684: aload_0
-    //   2685: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   2688: ifnull +12 -> 2700
-    //   2691: aload_0
-    //   2692: getfield 950	com/tencent/mm/plugin/sns/ui/c/a/c:Ljl	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
-    //   2695: bipush 8
-    //   2697: invokevirtual 956	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setVisibility	(I)V
-    //   2700: ldc_w 838
-    //   2703: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2706: return
-    //   2707: astore 6
-    //   2709: ldc_w 838
-    //   2712: invokestatic 130	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2715: return
-    //   2716: iconst_0
-    //   2717: istore_1
-    //   2718: goto -2203 -> 515
-    //   2721: iconst_0
-    //   2722: istore_1
-    //   2723: goto -2074 -> 649
-    //   2726: iconst_0
-    //   2727: istore_1
-    //   2728: goto -2079 -> 649
+    //   2614: getfield 941	com/tencent/mm/plugin/sns/ui/c/a/c:RJs	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
+    //   2617: iload_1
+    //   2618: invokevirtual 964	com/tencent/mm/plugin/sns/ad/widget/living/c:setLiveStatus	(I)V
+    //   2621: aload 7
+    //   2623: getfield 947	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
+    //   2626: aload_0
+    //   2627: getfield 941	com/tencent/mm/plugin/sns/ui/c/a/c:RJs	Lcom/tencent/mm/plugin/sns/ad/widget/living/c;
+    //   2630: invokestatic 967	com/tencent/mm/plugin/sns/ad/widget/living/b:a	(Ljava/lang/String;Lcom/tencent/mm/plugin/sns/ad/widget/living/b$a;)V
+    //   2633: invokestatic 973	com/tencent/mm/plugin/sns/ad/timeline/dynamic/a:hbB	()Lcom/tencent/mm/plugin/sns/ad/timeline/dynamic/a;
+    //   2636: iconst_1
+    //   2637: aload 6
+    //   2639: invokevirtual 976	com/tencent/mm/plugin/sns/ad/timeline/dynamic/a:d	(ILcom/tencent/mm/plugin/sns/storage/SnsInfo;)V
+    //   2642: iload_1
+    //   2643: invokestatic 980	com/tencent/mm/plugin/sns/ad/widget/living/c:ajZ	(I)Z
+    //   2646: istore 5
+    //   2648: aload 7
+    //   2650: getfield 947	com/tencent/mm/protocal/protobuf/TimeLineObject:Id	Ljava/lang/String;
+    //   2653: astore 6
+    //   2655: aload 8
+    //   2657: iload 5
+    //   2659: invokestatic 985	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper:a	(Lcom/tencent/mm/plugin/sns/ad/adxml/i;Z)Z
+    //   2662: ifeq +102 -> 2764
+    //   2665: aload_0
+    //   2666: getfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2669: ifnonnull +17 -> 2686
+    //   2672: aload_0
+    //   2673: aload_0
+    //   2674: getfield 989	com/tencent/mm/plugin/sns/ui/c/a/c:Qco	Landroid/view/ViewStub;
+    //   2677: invokevirtual 992	android/view/ViewStub:inflate	()Landroid/view/View;
+    //   2680: checkcast 982	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper
+    //   2683: putfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2686: aload_0
+    //   2687: getfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2690: ifnull +21 -> 2711
+    //   2693: new 18	com/tencent/mm/plugin/sns/ui/c/a/c$7
+    //   2696: dup
+    //   2697: aload_0
+    //   2698: aload 8
+    //   2700: aload 6
+    //   2702: invokespecial 995	com/tencent/mm/plugin/sns/ui/c/a/c$7:<init>	(Lcom/tencent/mm/plugin/sns/ui/c/a/c;Lcom/tencent/mm/plugin/sns/ad/adxml/i;Ljava/lang/String;)V
+    //   2705: ldc2_w 996
+    //   2708: invokestatic 1003	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThreadDelayed	(Ljava/lang/Runnable;J)V
+    //   2711: aload_0
+    //   2712: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2715: invokestatic 1009	com/tencent/mm/plugin/sns/data/m:jP	(Landroid/content/Context;)Z
+    //   2718: ifeq -2053 -> 665
+    //   2721: aload_0
+    //   2722: getfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   2725: bipush 8
+    //   2727: invokevirtual 1010	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout:setVisibility	(I)V
+    //   2730: goto -2065 -> 665
+    //   2733: astore 6
+    //   2735: ldc 245
+    //   2737: new 247	java/lang/StringBuilder
+    //   2740: dup
+    //   2741: ldc_w 1012
+    //   2744: invokespecial 252	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   2747: aload 6
+    //   2749: invokestatic 1018	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   2752: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2755: invokevirtual 266	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2758: invokestatic 311	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2761: goto -2096 -> 665
+    //   2764: aload_0
+    //   2765: getfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2768: ifnull -57 -> 2711
+    //   2771: aload_0
+    //   2772: getfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2775: bipush 8
+    //   2777: invokevirtual 1019	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper:setVisibility	(I)V
+    //   2780: goto -69 -> 2711
+    //   2783: aload_0
+    //   2784: getfield 521	com/tencent/mm/plugin/sns/ui/c/a/c:Qcn	Landroid/view/ViewGroup;
+    //   2787: ifnull +12 -> 2799
+    //   2790: aload_0
+    //   2791: getfield 521	com/tencent/mm/plugin/sns/ui/c/a/c:Qcn	Landroid/view/ViewGroup;
+    //   2794: bipush 8
+    //   2796: invokevirtual 1020	android/view/ViewGroup:setVisibility	(I)V
+    //   2799: aload_0
+    //   2800: getfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   2803: ifnull +12 -> 2815
+    //   2806: aload_0
+    //   2807: getfield 535	com/tencent/mm/plugin/sns/ui/c/a/c:RJr	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   2810: bipush 8
+    //   2812: invokevirtual 1010	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout:setVisibility	(I)V
+    //   2815: aload_0
+    //   2816: getfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2819: ifnull -2154 -> 665
+    //   2822: aload_0
+    //   2823: getfield 987	com/tencent/mm/plugin/sns/ui/c/a/c:Qcp	Lcom/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper;
+    //   2826: bipush 8
+    //   2828: invokevirtual 1019	com/tencent/mm/plugin/sns/ad/widget/living/FinderLivingAnimWrapper:setVisibility	(I)V
+    //   2831: goto -2166 -> 665
+    //   2834: aload 6
+    //   2836: invokevirtual 186	com/tencent/mm/plugin/sns/storage/SnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   2839: getfield 546	com/tencent/mm/plugin/sns/storage/ADXml:adPromotionInfo	Lcom/tencent/mm/plugin/sns/ad/adxml/j;
+    //   2842: astore 7
+    //   2844: aload 7
+    //   2846: ifnull +193 -> 3039
+    //   2849: aload 7
+    //   2851: getfield 588	com/tencent/mm/plugin/sns/ad/adxml/j:startTime	J
+    //   2854: aload 7
+    //   2856: getfield 591	com/tencent/mm/plugin/sns/ad/adxml/j:endTime	J
+    //   2859: invokestatic 1026	com/tencent/mm/plugin/sns/ad/j/f:bk	(JJ)Z
+    //   2862: ifeq +177 -> 3039
+    //   2865: aload_0
+    //   2866: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2869: invokestatic 1009	com/tencent/mm/plugin/sns/data/m:jP	(Landroid/content/Context;)Z
+    //   2872: ifne +167 -> 3039
+    //   2875: iconst_1
+    //   2876: istore_1
+    //   2877: goto -2190 -> 687
+    //   2880: aload_0
+    //   2881: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   2884: ifnull -2061 -> 823
+    //   2887: aload_0
+    //   2888: getfield 548	com/tencent/mm/plugin/sns/ui/c/a/c:RJn	Lcom/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout;
+    //   2891: bipush 8
+    //   2893: invokevirtual 554	com/tencent/mm/plugin/sns/ad/widget/countdown/PromotionBarLayout:setVisibility	(I)V
+    //   2896: goto -2073 -> 823
+    //   2899: astore 6
+    //   2901: goto -2078 -> 823
+    //   2904: iconst_0
+    //   2905: istore_1
+    //   2906: goto -2051 -> 855
+    //   2909: aload_0
+    //   2910: getfield 1028	com/tencent/mm/plugin/sns/ui/c/a/c:RJu	Lcom/tencent/mm/plugin/sns/ad/timeline/helper/g;
+    //   2913: ifnonnull +18 -> 2931
+    //   2916: aload_0
+    //   2917: new 1030	com/tencent/mm/plugin/sns/ad/timeline/helper/g
+    //   2920: dup
+    //   2921: aload_0
+    //   2922: getfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   2925: invokespecial 1033	com/tencent/mm/plugin/sns/ad/timeline/helper/g:<init>	(Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;)V
+    //   2928: putfield 1028	com/tencent/mm/plugin/sns/ui/c/a/c:RJu	Lcom/tencent/mm/plugin/sns/ad/timeline/helper/g;
+    //   2931: aload_0
+    //   2932: getfield 1028	com/tencent/mm/plugin/sns/ui/c/a/c:RJu	Lcom/tencent/mm/plugin/sns/ad/timeline/helper/g;
+    //   2935: aload 6
+    //   2937: putfield 1036	com/tencent/mm/plugin/sns/ad/timeline/helper/g:Qaw	Lcom/tencent/mm/plugin/sns/ad/adxml/k;
+    //   2940: aload_0
+    //   2941: getfield 1028	com/tencent/mm/plugin/sns/ui/c/a/c:RJu	Lcom/tencent/mm/plugin/sns/ad/timeline/helper/g;
+    //   2944: invokevirtual 1039	com/tencent/mm/plugin/sns/ad/timeline/helper/g:hbU	()V
+    //   2947: aload_0
+    //   2948: getfield 1028	com/tencent/mm/plugin/sns/ui/c/a/c:RJu	Lcom/tencent/mm/plugin/sns/ad/timeline/helper/g;
+    //   2951: invokevirtual 1042	com/tencent/mm/plugin/sns/ad/timeline/helper/g:hbR	()V
+    //   2954: aload_0
+    //   2955: getfield 1028	com/tencent/mm/plugin/sns/ui/c/a/c:RJu	Lcom/tencent/mm/plugin/sns/ad/timeline/helper/g;
+    //   2958: invokevirtual 1045	com/tencent/mm/plugin/sns/ad/timeline/helper/g:hbS	()V
+    //   2961: aload_0
+    //   2962: getfield 143	com/tencent/mm/plugin/sns/ui/c/a/c:context	Landroid/content/Context;
+    //   2965: invokestatic 1009	com/tencent/mm/plugin/sns/data/m:jP	(Landroid/content/Context;)Z
+    //   2968: ifeq +12 -> 2980
+    //   2971: aload_0
+    //   2972: getfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   2975: bipush 8
+    //   2977: invokevirtual 1010	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout:setVisibility	(I)V
+    //   2980: ldc_w 313
+    //   2983: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2986: return
+    //   2987: astore 6
+    //   2989: ldc 245
+    //   2991: aload 6
+    //   2993: invokevirtual 308	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   2996: invokestatic 311	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2999: ldc_w 313
+    //   3002: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   3005: return
+    //   3006: aload_0
+    //   3007: getfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   3010: ifnull +12 -> 3022
+    //   3013: aload_0
+    //   3014: getfield 603	com/tencent/mm/plugin/sns/ui/c/a/c:RJt	Lcom/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout;
+    //   3017: bipush 8
+    //   3019: invokevirtual 1010	com/tencent/mm/plugin/sns/ad/widget/living/LivingDescBarLayout:setVisibility	(I)V
+    //   3022: ldc_w 313
+    //   3025: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   3028: return
+    //   3029: iconst_0
+    //   3030: istore_1
+    //   3031: goto -2477 -> 554
+    //   3034: iconst_0
+    //   3035: istore_1
+    //   3036: goto -2349 -> 687
+    //   3039: iconst_0
+    //   3040: istore_1
+    //   3041: goto -2354 -> 687
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2731	0	this	c
-    //   213	2515	1	i	int
-    //   235	1114	2	j	int
-    //   980	32	3	l	long
-    //   986	1504	5	bool	boolean
-    //   152	2381	6	localObject1	Object
-    //   2546	103	6	localThrowable1	Throwable
-    //   2707	1	6	localThrowable2	Throwable
-    //   107	2562	7	localObject2	Object
-    //   546	1985	8	localObject3	Object
-    //   1200	15	9	str	String
+    //   0	3044	0	this	c
+    //   252	2789	1	i	int
+    //   274	1246	2	j	int
+    //   1153	31	3	l	long
+    //   1159	1499	5	bool	boolean
+    //   38	2663	6	localObject1	Object
+    //   2733	102	6	localThrowable	Throwable
+    //   2899	37	6	localObject2	Object
+    //   2987	5	6	localObject3	Object
+    //   187	711	7	localObject4	Object
+    //   960	14	7	localObject5	Object
+    //   1060	1795	7	localObject6	Object
+    //   139	2560	8	localObject7	Object
+    //   1372	15	9	str	String
     // Exception table:
     //   from	to	target	type
-    //   493	512	2546	java/lang/Throwable
-    //   519	548	2546	java/lang/Throwable
-    //   553	565	2546	java/lang/Throwable
-    //   565	587	2546	java/lang/Throwable
-    //   592	604	2546	java/lang/Throwable
-    //   604	618	2546	java/lang/Throwable
-    //   618	627	2546	java/lang/Throwable
-    //   2365	2395	2546	java/lang/Throwable
-    //   2400	2518	2546	java/lang/Throwable
-    //   2518	2543	2546	java/lang/Throwable
-    //   2578	2594	2546	java/lang/Throwable
-    //   2597	2613	2546	java/lang/Throwable
-    //   2613	2629	2546	java/lang/Throwable
-    //   2629	2645	2546	java/lang/Throwable
-    //   638	646	2707	java/lang/Throwable
-    //   653	685	2707	java/lang/Throwable
-    //   690	702	2707	java/lang/Throwable
-    //   702	785	2707	java/lang/Throwable
-    //   785	791	2707	java/lang/Throwable
-    //   2648	2658	2707	java/lang/Throwable
-    //   2663	2679	2707	java/lang/Throwable
-    //   2684	2700	2707	java/lang/Throwable
+    //   144	189	960	finally
+    //   532	551	2733	finally
+    //   558	587	2733	finally
+    //   592	604	2733	finally
+    //   604	626	2733	finally
+    //   631	643	2733	finally
+    //   643	657	2733	finally
+    //   657	665	2733	finally
+    //   2533	2563	2733	finally
+    //   2568	2686	2733	finally
+    //   2686	2711	2733	finally
+    //   2711	2730	2733	finally
+    //   2764	2780	2733	finally
+    //   2783	2799	2733	finally
+    //   2799	2815	2733	finally
+    //   2815	2831	2733	finally
+    //   676	684	2899	finally
+    //   691	723	2899	finally
+    //   728	740	2899	finally
+    //   740	823	2899	finally
+    //   2834	2844	2899	finally
+    //   2849	2875	2899	finally
+    //   2880	2896	2899	finally
+    //   834	853	2987	finally
+    //   859	891	2987	finally
+    //   896	916	2987	finally
+    //   916	923	2987	finally
+    //   928	936	2987	finally
+    //   2909	2931	2987	finally
+    //   2931	2980	2987	finally
+    //   2980	2986	2987	finally
+    //   3006	3022	2987	finally
+  }
+  
+  public final void t(View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(100009);
+    this.contentView = paramView1;
+    this.context = paramView1.getContext();
+    this.RoA = paramView2;
+    this.RJk = this.contentView.findViewById(b.f.media_container);
+    if ((this.RJk instanceof RoundedCornerFrameLayout)) {
+      ((RoundedCornerFrameLayout)this.RJk).setRadius(com.tencent.mm.cd.a.fromDPToPix(this.context, 4));
+    }
+    this.RJl = this.contentView.findViewById(b.f.other_container);
+    this.RJc = this.contentView.findViewById(b.f.card_btn_container);
+    this.RJc.setVisibility(8);
+    this.RJf = this.contentView.findViewById(b.f.card_weapp_tag);
+    this.RJg = ((ImageView)this.contentView.findViewById(b.f.weapp_auth_icon_iv));
+    this.RJf.setVisibility(8);
+    this.RJh = ((MaskImageView)this.contentView.findViewById(b.f.sns_card_ad_image));
+    this.RJd = ((Button)this.contentView.findViewById(b.f.card_btn_left));
+    this.RJe = ((Button)this.contentView.findViewById(b.f.card_btn_right));
+    this.RJm = this.contentView.findViewById(b.f.action_btn_container);
+    this.Qcq = ((ViewGroup)this.contentView.findViewById(b.f.sns_card_ad_online_video_container));
+    this.RJg.setTag("");
+    if (this.RJg.getVisibility() == 0) {
+      this.RJg.setVisibility(4);
+    }
+    paramView2 = (TextView)this.contentView.findViewById(b.f.weapp_tag_name);
+    Object localObject = this.PNI.getAdInfo();
+    if ((localObject != null) && (((ADInfo)localObject).isWeapp()) && (!this.PNI.isTurnCardAd()))
+    {
+      this.RJf.setVisibility(0);
+      paramView2.setText(b.j.sns_ad_card_weapp_tag);
+      com.tencent.mm.plugin.sns.ad.d.i.a(((ADInfo)localObject).actionExtWeApp.appUserName, this.RJg, (ADInfo)localObject);
+      if (this.RJf.getVisibility() == 0)
+      {
+        paramView2 = (ImageView)this.contentView.findViewById(b.f.weapp_icon_iv);
+        if (!com.tencent.mm.ui.aw.isDarkMode()) {
+          break label1683;
+        }
+        if (!n.a(this.PNI.getAdXml(), this.PNI.getAdInfo())) {
+          break label1673;
+        }
+        paramView2.setImageResource(b.i.album_ad_finder_link_dark_icon);
+      }
+      label389:
+      this.RJb = ((TextView)this.contentView.findViewById(b.f.desc_collapse_pic_style_tv));
+      this.RJb.setClickable(false);
+      this.RJb.setLongClickable(false);
+      this.QbW = com.tencent.mm.plugin.sns.ad.timeline.helper.b.b(this.timeLineObject, this.PNI.getAdXml());
+      localObject = new StringBuilder("card ad detail useOnlineVideo=").append(this.QbW).append(", snsId=");
+      if (this.timeLineObject != null) {
+        break label1723;
+      }
+      paramView2 = "";
+      label476:
+      Log.i("MicroMsg.CardAdDetailItemView", paramView2);
+      paramView2 = (WindowManager)this.context.getSystemService("window");
+      this.RJo = (Math.min(paramView2.getDefaultDisplay().getWidth(), paramView2.getDefaultDisplay().getHeight()) - this.context.getResources().getDimensionPixelSize(b.d.sns_avatar_size) - this.context.getResources().getDimensionPixelSize(b.d.Edge_0_5_A) - this.context.getResources().getDimensionPixelSize(b.d.NormalPadding) - this.context.getResources().getDimensionPixelSize(b.d.NormalPadding));
+      if (com.tencent.mm.ui.aw.jkS()) {
+        this.RJo = bd.bs(MMApplicationContext.getContext(), b.d.sns_timeline_item_large_screen_width);
+      }
+      paramView2 = (ViewGroup.MarginLayoutParams)this.contentView.getLayoutParams();
+      paramView2.topMargin = this.context.getResources().getDimensionPixelOffset(b.d.MiddlePadding);
+      paramView2.bottomMargin = 0;
+      paramView2.width = this.RJo;
+      paramView2.height = -2;
+      this.contentView.setLayoutParams(paramView2);
+      this.contentView.setBackground(this.context.getResources().getDrawable(b.e.sns_ad_pic_style_bg));
+      this.RJa = ((TextView)this.contentView.findViewById(b.f.desc_collapse_pic_style_title_tv));
+      this.RJa.setClickable(false);
+      this.RJa.setLongClickable(false);
+      if (Util.isNullOrNil(this.PNI.getAdXml().adCardTitle)) {
+        break label1734;
+      }
+      paramView2 = u.iVt().a(this.RJa.getContext(), this.PNI.getAdXml().adCardTitle, this.RJa.getTextSize());
+      this.RJa.setText(paramView2);
+      this.RJa.setVisibility(0);
+      label775:
+      if (!Util.isNullOrNil(this.PNI.getAdXml().adCardDesc)) {
+        break label1746;
+      }
+      paramView2 = this.timeLineObject.ContentDesc;
+      label799:
+      if (Util.isNullOrNil(paramView2)) {
+        break label1760;
+      }
+      paramView2 = u.iVt().a(this.RJb.getContext(), paramView2, this.RJb.getTextSize());
+      this.RJb.setText(paramView2);
+      this.RJb.setVisibility(0);
+      label844:
+      this.vEV = new com.tencent.mm.ui.widget.b.a(this.context);
+      this.vEV.c(this.contentView, this.PZr.RQm, this.PZr.RPU);
+      if ((!this.PNI.getAdXml().hasSelectInfo()) && (!this.PNI.getAdXml().hasVoteInfo())) {
+        break label1805;
+      }
+      if (!this.PNI.getAdXml().isNewStyleVote()) {
+        break label1772;
+      }
+      if (this.RJq == null)
+      {
+        paramView2 = (ViewStub)this.contentView.findViewById(b.f.sns_ad_card_vote_layout_stub);
+        if ((paramView2 != null) && (com.tencent.mm.plugin.sns.ad.j.l.c(paramView2) != null)) {
+          this.RJq = new ba(this.context, this.contentView, this.PZr);
+        }
+      }
+      if (this.RJq != null)
+      {
+        this.RJq.a(this.PNI, this);
+        this.RJq.hnn();
+      }
+      this.RJc.setVisibility(8);
+      if (this.RJa != null) {
+        this.RJa.setVisibility(8);
+      }
+      if (this.RJb != null) {
+        this.RJb.setVisibility(8);
+      }
+      label1045:
+      this.Qcj = new com.tencent.mm.plugin.sns.ui.aw();
+      this.Qcj.RjO = this.contentView.findViewById(b.f.sns_card_ad_sight);
+      this.Qcj.RjL = this.Qcj.RjO;
+      this.Qcj.RjO.setOnClickListener(this.PZr.RQt);
+      this.Qcj.RjM = ((VideoSightView)this.Qcj.RjO.findViewById(b.f.image));
+      this.Qcj.RjM.setMute(true);
+      this.Qcj.PQu = ((ImageView)this.Qcj.RjO.findViewById(b.f.status_btn));
+      this.Qcj.RjP = ((MMPinProgressBtn)this.Qcj.RjO.findViewById(b.f.progress));
+      this.Qcj.RjQ = ((TextView)this.Qcj.RjO.findViewById(b.f.endtv));
+      this.Qcj.QRC = ((TextView)this.Qcj.RjO.findViewById(b.f.errorTv));
+      this.RJj = this.contentView.findViewById(b.f.sns_ad_card_header_container);
+      this.RJi = ((SnsCardAdTagListView)this.contentView.findViewById(b.f.card_ad_tag_list));
+      this.RJi.setActivityContext((Activity)this.context);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramView2 = this.PNI.getSnsId();
+        localObject = this.RJi.getOriginSnsId();
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramView2))) {
+          continue;
+        }
+        Log.d("SnsCardAdTagUtils", "should refresh adTag");
+        i = 0;
+        if (i != 0) {
+          continue;
+        }
+        this.RJi.removeAllViews();
+        if (this.PNI.getAdXml().adCardTagInfo.QHu.size() > 0)
+        {
+          this.RJi.setVisibility(0);
+          this.RJi.setTagSpace(com.tencent.mm.cd.a.fromDPToPix(this.context, 8));
+          this.RJi.lc(this.PNI.getAdXml().adCardTagInfo.QHu);
+        }
+        this.RJi.setOriginSnsId(paramView2);
+      }
+      catch (Exception paramView2)
+      {
+        int i;
+        label1673:
+        label1683:
+        label1723:
+        label1734:
+        label1746:
+        label1760:
+        label1772:
+        Log.e("MicroMsg.CardAdDetailItemView", paramView2.toString());
+        label1805:
+        continue;
+      }
+      if (m.jP(this.context)) {
+        this.RJi.setVisibility(8);
+      }
+      if (!Util.isNullOrNil(this.PNI.getAdXml().adCard3dHeadTitle))
+      {
+        this.RJj.setVisibility(0);
+        this.RJj.findViewById(b.f.sns_ad_card_header_title).setVisibility(0);
+        ((TextView)this.RJj.findViewById(b.f.sns_ad_card_header_title)).setText(this.PNI.getAdXml().adCard3dHeadTitle);
+      }
+      if (!Util.isNullOrNil(this.PNI.getAdXml().adCard3dHeadUrl)) {
+        k.a(this.PNI.getAdXml().adCard3dHeadUrl, false, new g.a()
+        {
+          public final void aWn(String paramAnonymousString)
+          {
+            AppMethodBeat.i(308849);
+            if (!Util.isNullOrNil(paramAnonymousString))
+            {
+              paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
+              if (paramAnonymousString != null)
+              {
+                c.this.RJj.setVisibility(0);
+                ImageView localImageView = (ImageView)c.this.RJj.findViewById(b.f.sns_ad_card_header_avatar);
+                localImageView.setImageBitmap(paramAnonymousString);
+                localImageView.setVisibility(0);
+              }
+            }
+            AppMethodBeat.o(308849);
+          }
+          
+          public final void gZM() {}
+          
+          public final void gZN() {}
+        });
+      }
+      this.vEV.c(this.contentView, this.PZr.RQm, this.PZr.RPU);
+      this.RJh.setVisibility(8);
+      this.RJh.setScaleType(QImageView.a.afVc);
+      this.Qcj.RjL.setVisibility(8);
+      this.Qcj.RjM.PGE = true;
+      this.Qcj.RjM.setScaleType(QImageView.a.afVc);
+      this.contentView.setOnClickListener(this.PZr.RQG);
+      this.Qco = ((ViewStub)paramView1.findViewById(b.f.ad_live_anim_layout_stub));
+      AppMethodBeat.o(100009);
+      return;
+      if (!n.a(this.PNI.getAdXml(), (ADInfo)localObject)) {
+        break;
+      }
+      this.RJf.setVisibility(0);
+      paramView2.setText(b.j.finder_app_name);
+      break;
+      paramView2.setImageResource(b.i.album_ad_link_tag_weapp_dark);
+      break label389;
+      if (n.a(this.PNI.getAdXml(), this.PNI.getAdInfo()))
+      {
+        paramView2.setImageResource(b.i.album_ad_finder_link_icon);
+        break label389;
+      }
+      paramView2.setImageResource(b.i.album_ad_link_tag_weapp);
+      break label389;
+      paramView2 = this.timeLineObject.Id;
+      break label476;
+      this.RJa.setVisibility(8);
+      break label775;
+      paramView2 = this.PNI.getAdXml().adCardDesc;
+      break label799;
+      this.RJb.setVisibility(8);
+      break label844;
+      this.RJc.setVisibility(0);
+      if (this.RJq != null) {
+        this.RJq.hno();
+      }
+      ad(this.PNI);
+      break label1045;
+      this.RJc.setVisibility(8);
+      if (this.RJq == null) {
+        break label1045;
+      }
+      this.RJq.hno();
+      break label1045;
+      Log.d("SnsCardAdTagUtils", "should not refresh adTag, show origin adTag");
+      i = 1;
+      continue;
+      if (this.PNI.getAdXml().adCardTagInfo.QHu.size() > 0) {
+        this.RJi.setVisibility(0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.c.a.c
  * JD-Core Version:    0.7.0.1
  */

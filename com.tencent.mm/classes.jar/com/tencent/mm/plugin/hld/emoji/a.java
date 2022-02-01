@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.hld.emoji;
 
-import com.tencent.mm.protocal.protobuf.fmu;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.gjm;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;", "", "onEmojiClick", "", "emojiData", "Lcom/tencent/mm/protocal/protobuf/WxImeEmojiData;", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/emoji/IEmojiContentViewListener;", "", "onEmojiClick", "", "emojiData", "Lcom/tencent/mm/protocal/protobuf/WxImeEmojiData;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  public abstract void a(fmu paramfmu);
+  public abstract void a(gjm paramgjm);
 }
 
 

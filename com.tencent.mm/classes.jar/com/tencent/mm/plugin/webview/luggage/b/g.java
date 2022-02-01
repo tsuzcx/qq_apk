@@ -7,7 +7,7 @@ import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.plugin.webview.c.i;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.s;
 
 public final class g
   extends a
@@ -20,18 +20,18 @@ public final class g
   public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78695);
-    if ((!paramg.gUw()) && (!paramg.crm.Oo().Oe())) {
+    if ((!paramg.iue()) && (!paramg.eje.aow().aom())) {
       ((Activity)paramg.mContext).finish();
     }
-    com.tencent.mm.plugin.report.service.h.IzE.el(982, 11);
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(982, 11);
     AppMethodBeat.o(78695);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, o paramo)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, s params)
   {
     AppMethodBeat.i(78694);
-    if (paramg.QT()) {
-      paramo.b(27, paramContext.getString(c.i.readerapp_finish_webview), c.h.bottomsheet_icon_exit);
+    if (paramg.isFullScreen()) {
+      params.a(27, paramContext.getString(c.i.readerapp_finish_webview), c.h.bottomsheet_icon_exit);
     }
     AppMethodBeat.o(78694);
   }

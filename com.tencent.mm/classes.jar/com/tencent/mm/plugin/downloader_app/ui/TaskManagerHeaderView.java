@@ -18,31 +18,31 @@ import com.tencent.mm.plugin.downloader_app.e.f;
 public class TaskManagerHeaderView
   extends LinearLayout
 {
-  private TextView unQ;
+  private TextView xum;
   
   public TaskManagerHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9085);
     setOrientation(1);
-    this.unQ = ((TextView)LayoutInflater.from(getContext()).inflate(e.f.ukD, this, true).findViewById(e.e.dSW));
-    this.unQ.setOnClickListener(new View.OnClickListener()
+    this.xum = ((TextView)LayoutInflater.from(getContext()).inflate(e.f.xqP, this, true).findViewById(e.e.right_title));
+    this.xum.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(9084);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/downloader_app/ui/TaskManagerHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/downloader_app/ui/TaskManagerHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if ((TaskManagerHeaderView.this.getContext() instanceof DownloadMainUI)) {
-          ((DownloadMainUI)TaskManagerHeaderView.this.getContext()).uns.cQW();
+          ((DownloadMainUI)TaskManagerHeaderView.this.getContext()).xtO.dvp();
         }
         a.a(this, "com/tencent/mm/plugin/downloader_app/ui/TaskManagerHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(9084);
       }
     });
     paramContext = new View(getContext());
-    paramContext.setBackgroundColor(getResources().getColor(e.b.ujD));
+    paramContext.setBackgroundColor(getResources().getColor(e.b.xpG));
     addView(paramContext, -1, 1);
     AppMethodBeat.o(9085);
   }

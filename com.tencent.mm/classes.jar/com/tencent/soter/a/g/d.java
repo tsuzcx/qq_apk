@@ -6,8 +6,8 @@ import com.tencent.soter.a.b.e;
 
 public abstract class d
 {
-  public b ZtA;
-  boolean Ztk = false;
+  boolean ahxY = false;
+  public b ahyt;
   
   abstract void b(e parame);
   
@@ -18,7 +18,7 @@ public abstract class d
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 16	com/tencent/soter/a/g/d:Ztk	Z
+    //   3: getfield 16	com/tencent/soter/a/g/d:ahxY	Z
     //   6: ifeq +17 -> 23
     //   9: ldc 22
     //   11: ldc 24
@@ -31,7 +31,7 @@ public abstract class d
     //   23: aload_0
     //   24: aload_1
     //   25: invokevirtual 32	com/tencent/soter/a/g/d:b	(Lcom/tencent/soter/a/b/e;)V
-    //   28: invokestatic 38	com/tencent/soter/a/g/f:ipn	()Lcom/tencent/soter/a/g/f;
+    //   28: invokestatic 38	com/tencent/soter/a/g/f:jYD	()Lcom/tencent/soter/a/g/f;
     //   31: astore_2
     //   32: ldc 40
     //   34: ldc 42
@@ -45,11 +45,11 @@ public abstract class d
     //   49: aastore
     //   50: invokestatic 55	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   53: aload_2
-    //   54: getfield 59	com/tencent/soter/a/g/f:ZtM	Ljava/lang/Object;
+    //   54: getfield 59	com/tencent/soter/a/g/f:ahyF	Ljava/lang/Object;
     //   57: astore_2
     //   58: aload_2
     //   59: monitorenter
-    //   60: getstatic 63	com/tencent/soter/a/g/f:ZtL	Landroid/util/SparseArray;
+    //   60: getstatic 63	com/tencent/soter/a/g/f:ahyE	Landroid/util/SparseArray;
     //   63: aload_0
     //   64: invokevirtual 46	java/lang/Object:hashCode	()I
     //   67: invokevirtual 69	android/util/SparseArray:get	(I)Ljava/lang/Object;
@@ -67,7 +67,7 @@ public abstract class d
     //   91: invokestatic 55	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_2
     //   95: monitorexit
-    //   96: invokestatic 77	com/tencent/soter/a/g/g:ipq	()Lcom/tencent/soter/a/g/g;
+    //   96: invokestatic 77	com/tencent/soter/a/g/g:jYG	()Lcom/tencent/soter/a/g/g;
     //   99: new 6	com/tencent/soter/a/g/d$1
     //   102: dup
     //   103: aload_0
@@ -80,7 +80,7 @@ public abstract class d
     //   116: monitorexit
     //   117: aload_1
     //   118: athrow
-    //   119: getstatic 63	com/tencent/soter/a/g/f:ZtL	Landroid/util/SparseArray;
+    //   119: getstatic 63	com/tencent/soter/a/g/f:ahyE	Landroid/util/SparseArray;
     //   122: aload_0
     //   123: invokevirtual 46	java/lang/Object:hashCode	()I
     //   126: invokevirtual 88	android/util/SparseArray:remove	(I)V
@@ -107,13 +107,15 @@ public abstract class d
   
   abstract void execute();
   
-  abstract boolean ipl();
+  abstract boolean jYA();
   
-  abstract void ipm();
+  abstract boolean jYB();
+  
+  abstract void jYC();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.a.g.d
  * JD-Core Version:    0.7.0.1
  */

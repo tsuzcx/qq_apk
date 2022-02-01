@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.j.e;
 import com.tencent.mm.plugin.exdevice.j.f;
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.plugin.exdevice.model.af;
-import com.tencent.mm.plugin.exdevice.model.c;
+import com.tencent.mm.plugin.exdevice.model.ai;
+import com.tencent.mm.plugin.exdevice.model.d;
 import com.tencent.mm.plugin.exdevice.service.i.a;
 import com.tencent.mm.plugin.exdevice.service.u;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,19 +13,19 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   extends i.a
 {
-  private static a vcZ = null;
+  private static a yoN = null;
   
-  public static a cYO()
+  public static a dFf()
   {
     AppMethodBeat.i(23145);
-    if (vcZ == null)
+    if (yoN == null)
     {
       locala = new a();
-      vcZ = locala;
+      yoN = locala;
       AppMethodBeat.o(23145);
       return locala;
     }
-    a locala = vcZ;
+    a locala = yoN;
     AppMethodBeat.o(23145);
     return locala;
   }
@@ -45,7 +45,7 @@ public final class a
     label110:
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.exdevice.h.a.s(paramLong, i);
+      com.tencent.mm.plugin.exdevice.h.a.B(paramLong, i);
       str = b.bK(paramArrayOfByte);
       if (str != null) {
         break label116;
@@ -58,32 +58,32 @@ public final class a
     }
     label116:
     Log.d("MicroMsg.exdevice.DeviceRequestManager", "data dump = %s", new Object[] { str });
-    new a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).cYP();
+    new a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).dFg();
     AppMethodBeat.o(23146);
   }
   
   static final class a
     implements Runnable
   {
+    private int crl = -1;
     private int mCmdId = -1;
-    private long smk = -1L;
-    private int vda = -1;
-    private int vdb;
-    private byte[] vdc = null;
+    private long vyj = -1L;
+    private int yoO;
+    private byte[] yoP = null;
     
     public a(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
     {
-      this.smk = paramLong;
-      this.vda = paramInt2;
+      this.vyj = paramLong;
+      this.crl = paramInt2;
       this.mCmdId = paramInt3;
-      this.vdc = paramArrayOfByte;
-      this.vdb = paramInt1;
+      this.yoP = paramArrayOfByte;
+      this.yoO = paramInt1;
     }
     
-    public final void cYP()
+    public final void dFg()
     {
       AppMethodBeat.i(23143);
-      if ((this.smk == -1L) || (this.vda == -1) || (this.mCmdId == -1))
+      if ((this.vyj == -1L) || (this.crl == -1) || (this.mCmdId == -1))
       {
         Log.e("MicroMsg.RequestProcessThread", "invalid arguments, do nothing");
         AppMethodBeat.o(23143);
@@ -96,31 +96,31 @@ public final class a
         AppMethodBeat.o(23143);
         return;
       case 10001: 
-        localObject = new e(this.vdb, this.smk, this.vda, this.mCmdId, this.vdc);
-        u.dal().a((af)localObject);
+        localObject = new e(this.yoO, this.vyj, this.crl, this.mCmdId, this.yoP);
+        u.dGE().a((ai)localObject);
         AppMethodBeat.o(23143);
         return;
       case 10002: 
-        k.cYV().b(this.vdb, this.smk, this.vda, this.mCmdId, this.vdc);
+        k.dFm().b(this.yoO, this.vyj, this.crl, this.mCmdId, this.yoP);
         AppMethodBeat.o(23143);
         return;
       }
-      Object localObject = new f(this.vdb, this.smk, this.vda, this.mCmdId, this.vdc);
-      u.dal().a((af)localObject);
+      Object localObject = new f(this.yoO, this.vyj, this.crl, this.mCmdId, this.yoP);
+      u.dGE().a((ai)localObject);
       AppMethodBeat.o(23143);
     }
     
     public final void run()
     {
       AppMethodBeat.i(23144);
-      cYP();
+      dFg();
       AppMethodBeat.o(23144);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.a
  * JD-Core Version:    0.7.0.1
  */

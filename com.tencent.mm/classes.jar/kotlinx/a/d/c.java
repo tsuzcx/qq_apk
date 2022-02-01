@@ -1,27 +1,23 @@
 package kotlinx.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlinx.a.f;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"SerializersModule", "Lkotlinx/serialization/modules/SerialModule;", "buildAction", "Lkotlin/Function1;", "Lkotlinx/serialization/modules/SerializersModuleBuilder;", "", "Lkotlin/ExtensionFunctionType;", "serializersModule", "T", "", "serializer", "Lkotlinx/serialization/KSerializer;", "serializersModuleOf", "map", "", "Lkotlin/reflect/KClass;", "kClass", "contextual", "kotlinx-serialization-runtime"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"throwSubtypeNotRegistered", "", "subClassName", "", "baseClass", "Lkotlin/reflect/KClass;", "subClass", "kotlinx-serialization-runtime"}, k=2, mv={1, 4, 0})
 public final class c
 {
-  public static final b ao(kotlin.g.a.b<? super h, x> paramb)
+  static final Void a(String paramString, kotlin.l.c<?> paramc)
   {
-    AppMethodBeat.i(257266);
-    p.k(paramb, "buildAction");
-    h localh = new h();
-    paramb.invoke(localh);
-    paramb = localh.iUo();
-    AppMethodBeat.o(257266);
-    return paramb;
+    AppMethodBeat.i(188688);
+    paramString = (Throwable)new f(paramString + " is not registered for polymorphic serialization in the scope of " + paramc);
+    AppMethodBeat.o(188688);
+    throw paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.a.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,27 +14,39 @@ import com.tencent.mm.sdk.platformtools.BuildInfo;
 public final class f
   implements b
 {
-  private RenderScript WvO;
-  private final ScriptIntrinsicBlur WvP;
-  private Allocation WvQ;
-  private int WvR;
-  private int WvS;
+  private RenderScript aedf;
+  private final ScriptIntrinsicBlur aedg;
+  private Allocation aedh;
+  private int aedi;
+  private int aedj;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(142746);
-    this.WvR = -1;
-    this.WvS = -1;
+    this.aedi = -1;
+    this.aedj = -1;
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.SupportRenderScriptBlur", "rs create: %s", new Object[] { this });
     if (BuildInfo.DEBUG) {
       com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.SupportRenderScriptBlur", "rs create: %s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
     }
-    this.WvO = RenderScript.create(paramContext);
-    this.WvP = ScriptIntrinsicBlur.create(this.WvO, Element.U8_4(this.WvO));
+    this.aedf = RenderScript.create(paramContext);
+    this.aedg = ScriptIntrinsicBlur.create(this.aedf, Element.U8_4(this.aedf));
     AppMethodBeat.o(142746);
   }
   
-  public final Bitmap b(Bitmap paramBitmap, float paramFloat)
+  private boolean be(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(249422);
+    if ((paramBitmap.getHeight() == this.aedj) && (paramBitmap.getWidth() == this.aedi))
+    {
+      AppMethodBeat.o(249422);
+      return true;
+    }
+    AppMethodBeat.o(249422);
+    return false;
+  }
+  
+  public final Bitmap c(Bitmap paramBitmap, float paramFloat)
   {
     AppMethodBeat.i(142747);
     float f;
@@ -43,7 +55,7 @@ public final class f
       com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.SupportRenderScriptBlur", "Radius(%s) out of range (0 < r <= 25), realRadius:%s", new Object[] { Float.valueOf(paramFloat), Float.valueOf(1.0F) });
       f = 1.0F;
     }
-    while (this.WvO == null)
+    while (this.aedf == null)
     {
       paramBitmap = new NullPointerException("RenderScript has been destroyed!!! " + toString());
       AppMethodBeat.o(142747);
@@ -55,43 +67,39 @@ public final class f
         f = 25.0F;
       }
     }
-    Allocation localAllocation = Allocation.createFromBitmap(this.WvO, paramBitmap);
-    if ((paramBitmap.getHeight() == this.WvS) && (paramBitmap.getWidth() == this.WvR)) {}
-    for (int i = 1;; i = 0)
+    Allocation localAllocation = Allocation.createFromBitmap(this.aedf, paramBitmap);
+    if (!be(paramBitmap))
     {
-      if (i == 0)
-      {
-        if (this.WvQ != null) {
-          this.WvQ.destroy();
-        }
-        this.WvQ = Allocation.createTyped(this.WvO, localAllocation.getType());
-        this.WvR = paramBitmap.getWidth();
-        this.WvS = paramBitmap.getHeight();
+      if (this.aedh != null) {
+        this.aedh.destroy();
       }
-      this.WvP.setRadius(f);
-      this.WvP.setInput(localAllocation);
-      this.WvP.forEach(this.WvQ);
-      this.WvQ.copyTo(paramBitmap);
-      localAllocation.destroy();
-      AppMethodBeat.o(142747);
-      return paramBitmap;
+      this.aedh = Allocation.createTyped(this.aedf, localAllocation.getType());
+      this.aedi = paramBitmap.getWidth();
+      this.aedj = paramBitmap.getHeight();
     }
+    this.aedg.setRadius(f);
+    this.aedg.setInput(localAllocation);
+    this.aedg.forEach(this.aedh);
+    this.aedh.copyTo(paramBitmap);
+    localAllocation.destroy();
+    AppMethodBeat.o(142747);
+    return paramBitmap;
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(142748);
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.SupportRenderScriptBlur", "destroy %s", new Object[] { this });
-    this.WvP.destroy();
-    if (this.WvO != null)
+    this.aedg.destroy();
+    if (this.aedf != null)
     {
-      this.WvO.destroy();
-      this.WvO = null;
+      this.aedf.destroy();
+      this.aedf = null;
     }
     for (;;)
     {
-      if (this.WvQ != null) {
-        this.WvQ.destroy();
+      if (this.aedh != null) {
+        this.aedh.destroy();
       }
       AppMethodBeat.o(142748);
       return;
@@ -101,23 +109,23 @@ public final class f
   
   protected final void finalize()
   {
-    AppMethodBeat.i(196317);
+    AppMethodBeat.i(249427);
     com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.SupportRenderScriptBlur", "finalize");
     super.finalize();
-    if (this.WvO != null)
+    if (this.aedf != null)
     {
       com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.SupportRenderScriptBlur", "RS leak warning: maybe you forget to call destroy!!! %s", new Object[] { this });
       if (Build.VERSION.SDK_INT < 23)
       {
         com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.SupportRenderScriptBlur", "help destroy RenderScript");
-        this.WvO.destroy();
-        this.WvO = null;
+        this.aedf.destroy();
+        this.aedf = null;
       }
     }
-    AppMethodBeat.o(196317);
+    AppMethodBeat.o(249427);
   }
   
-  public final Bitmap.Config hLx()
+  public final Bitmap.Config jnZ()
   {
     return Bitmap.Config.ARGB_8888;
   }

@@ -1,317 +1,277 @@
 package com.tencent.mm.ui.chatting;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.ad;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.pluginsdk.ui.chat.j;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.br.c;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.model.app.u;
+import com.tencent.mm.pluginsdk.ui.tools.p;
+import com.tencent.mm.pluginsdk.ui.tools.p.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.d.b.u;
-import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.vfs.y;
 
 public final class w
-  implements j
 {
-  private String WAm;
-  private boolean WCJ;
-  private boolean WCK;
-  private int WCL;
-  private a WbU;
-  private as contact;
+  public int IWA;
+  public String Npt;
+  String Npu;
+  String Npv;
+  public ChatFooterCustom aeiT;
+  public FrameLayout aeiU;
+  public FrameLayout aeiV;
+  public TextView aeiW;
+  public ImageView aeiX;
+  a aeiY;
+  public boolean aeiZ;
+  String aeja;
+  public String aejb;
+  public View.OnClickListener aejc;
+  public View.OnClickListener aejd;
+  private p.a aeje;
+  Context mContext;
+  private SharedPreferences sp;
+  public LinearLayout xYI;
+  long yuP;
   
-  public w(a parama, as paramas, String paramString)
+  public w(ChatFooterCustom paramChatFooterCustom)
   {
-    AppMethodBeat.i(34684);
-    this.WCJ = true;
-    this.WCK = true;
-    this.WbU = parama;
-    this.contact = paramas;
-    this.WAm = paramString;
-    if (as.PY(this.WAm)) {
-      this.WCK = false;
+    AppMethodBeat.i(34622);
+    this.xYI = null;
+    this.aeiY = a.aeji;
+    this.IWA = -1;
+    this.aeja = null;
+    this.yuP = -1L;
+    this.aejc = new w.1(this);
+    this.aejd = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(34610);
+        Object localObject = new b();
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/ChattingQQMailFooterHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        switch (w.8.aejh[w.this.aeiY.ordinal()])
+        {
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingQQMailFooterHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(34610);
+          return;
+          h.OAn.b(11288, new Object[] { Integer.valueOf(6) });
+          paramAnonymousView = w.this;
+          if (!NetStatusUtil.isConnected(paramAnonymousView.mContext))
+          {
+            k.a(paramAnonymousView.mContext, com.tencent.mm.cd.a.bt(paramAnonymousView.mContext, R.l.gwH), "", com.tencent.mm.cd.a.bt(paramAnonymousView.mContext, R.l.gwC), null);
+          }
+          else if (!NetStatusUtil.isWifi(paramAnonymousView.mContext))
+          {
+            k.a(paramAnonymousView.mContext, R.l.gwE, 0, R.l.gwA, R.l.gwz, new w.3(paramAnonymousView), null);
+          }
+          else
+          {
+            k.a(paramAnonymousView.mContext, R.l.gwF, 0, R.l.gwA, R.l.gwz, new w.4(paramAnonymousView), null);
+            continue;
+            paramAnonymousView = w.this;
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[cancelDownload]");
+            f.duv().kR(paramAnonymousView.yuP);
+            paramAnonymousView.jpE();
+            continue;
+            h.OAn.b(11288, new Object[] { Integer.valueOf(7) });
+            paramAnonymousView = w.this;
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[installQQMail]");
+            com.tencent.mm.pluginsdk.platformtools.g.bn(paramAnonymousView.mContext, paramAnonymousView.aeja);
+            continue;
+            h.OAn.b(11288, new Object[] { Integer.valueOf(5) });
+            w localw = w.this;
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[openQQMail]");
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "mQQMailScheme = %s", new Object[] { localw.aejb });
+            if (Util.isNullOrNil(localw.aejb)) {
+              paramAnonymousView = localw.mContext.getPackageManager().getLaunchIntentForPackage("com.tencent.androidqqmail");
+            }
+            for (;;)
+            {
+              Log.i("MicroMsg.ChattingQQMailFooterHandler", "intent = %s", new Object[] { paramAnonymousView });
+              com.tencent.mm.ci.a.post(new w.5(localw, paramAnonymousView));
+              break;
+              localObject = new Intent();
+              ((Intent)localObject).setData(Uri.parse(localw.aejb));
+              ((Intent)localObject).addFlags(268435456);
+              if (Build.VERSION.SDK_INT >= 11) {
+                ((Intent)localObject).addFlags(32768);
+              }
+              paramAnonymousView = (View)localObject;
+              if (!Util.isIntentAvailable(localw.mContext, (Intent)localObject)) {
+                paramAnonymousView = localw.mContext.getPackageManager().getLaunchIntentForPackage("com.tencent.androidqqmail");
+              }
+            }
+            if (w.this.aeiZ) {
+              w.a(w.this);
+            }
+          }
+        }
+      }
+    };
+    this.aeje = new p.a()
+    {
+      public final void gEh()
+      {
+        AppMethodBeat.i(34617);
+        w.this.aeiW.setText(R.l.chatfooter_mail_without_unread_count);
+        AppMethodBeat.o(34617);
+      }
+      
+      public final void onSuccess(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(34616);
+        w.this.IWA = paramAnonymousInt;
+        w.this.jpF();
+        AppMethodBeat.o(34616);
+      }
+    };
+    this.mContext = paramChatFooterCustom.getContext();
+    this.aeiT = paramChatFooterCustom;
+    AppMethodBeat.o(34622);
+  }
+  
+  public final void jpD()
+  {
+    AppMethodBeat.i(34623);
+    if (this.aeiY == a.aejm)
+    {
+      this.aeiX.setImageResource(R.k.promo_icon_qqmail);
+      AppMethodBeat.o(34623);
+      return;
     }
-    if (as.bvJ(this.WAm)) {
-      this.WCJ = false;
-    }
-    if (as.bvH(this.WAm)) {
-      this.WCJ = false;
-    }
-    if ((this.contact != null) && (as.PY(this.contact.field_username))) {
-      parama = this.WAm;
+    this.aeiX.setImageResource(R.k.promo_icon_qqmail_uninstall);
+    AppMethodBeat.o(34623);
+  }
+  
+  public final void jpE()
+  {
+    AppMethodBeat.i(34624);
+    Object localObject;
+    if (u.y(this.mContext, "com.tencent.androidqqmail")) {
+      localObject = a.aejm;
     }
     for (;;)
     {
-      if (ab.Qa(parama)) {
-        this.WCK = false;
+      this.aeiY = ((a)localObject);
+      jpD();
+      Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[initRightBtnTv: status:%s]", new Object[] { this.aeiY.toString() });
+      switch (8.aejh[this.aeiY.ordinal()])
+      {
+      default: 
+        p.a(this.aeje);
+        AppMethodBeat.o(34624);
+        return;
+        this.sp = this.mContext.getSharedPreferences("QQMAIL", com.tencent.mm.compatible.util.g.aQe());
+        this.yuP = this.sp.getLong("qqmail_downloadid", -1L);
+        if (this.yuP < 0L)
+        {
+          if (Util.isNullOrNil(this.Npt)) {
+            localObject = a.aejn;
+          } else {
+            localObject = a.aejj;
+          }
+        }
+        else
+        {
+          localObject = f.duv().kS(this.yuP);
+          int i = ((FileDownloadTaskInfo)localObject).status;
+          this.aeja = ((FileDownloadTaskInfo)localObject).path;
+          switch (i)
+          {
+          case 2: 
+          default: 
+            if (Util.isNullOrNil(this.Npt)) {
+              localObject = a.aejn;
+            }
+            break;
+          case 3: 
+            if (y.ZC(this.aeja)) {
+              localObject = a.aejl;
+            } else if (Util.isNullOrNil(this.Npt)) {
+              localObject = a.aejn;
+            } else {
+              localObject = a.aejj;
+            }
+            break;
+          case 1: 
+            localObject = a.aejk;
+            continue;
+            localObject = a.aejj;
+          }
+        }
+        break;
       }
-      AppMethodBeat.o(34684);
-      return;
-      if (this.contact == null) {
-        parama = null;
-      } else {
-        parama = this.contact.field_username;
-      }
     }
+    this.aeiW.setText(R.l.gwD);
+    AppMethodBeat.o(34624);
+    return;
+    this.aeiW.setText(R.l.gwB);
+    AppMethodBeat.o(34624);
+    return;
+    p.a(this.aeje);
+    AppMethodBeat.o(34624);
   }
   
-  public final void A(boolean paramBoolean, int paramInt)
+  public final void jpF()
   {
-    AppMethodBeat.i(224619);
-    ChatFooter localChatFooter = ((u)this.WbU.bC(u.class)).hPj();
-    if (paramBoolean)
+    AppMethodBeat.i(34625);
+    if (this.IWA == 0)
     {
-      this.WCL = localChatFooter.getCurrentScrollHeight();
-      localChatFooter.aqC(ad.bC(this.WbU.WQv.getContext()) + paramInt);
-      localChatFooter.RjS = false;
-      localChatFooter.setIgnoreScroll(Boolean.TRUE);
-      AppMethodBeat.o(224619);
+      this.aeiW.setText(R.l.chatfooter_mail_without_unread_count);
+      AppMethodBeat.o(34625);
       return;
     }
-    if (this.WCL > 0) {
-      localChatFooter.aqC(this.WCL);
-    }
-    for (;;)
+    if (this.IWA > 99)
     {
-      localChatFooter.RjS = true;
-      localChatFooter.setIgnoreScroll(Boolean.FALSE);
-      AppMethodBeat.o(224619);
+      this.aeiW.setText(R.l.gwJ);
+      AppMethodBeat.o(34625);
       return;
-      localChatFooter.aqC(ad.bC(this.WbU.WQv.getContext()) + paramInt);
     }
+    this.aeiW.setText(String.format(com.tencent.mm.cd.a.bt(this.mContext, R.l.gwI), new Object[] { Integer.valueOf(this.IWA) }));
+    AppMethodBeat.o(34625);
   }
   
-  /* Error */
-  public final void O(EmojiInfo paramEmojiInfo)
+  static enum a
   {
-    // Byte code:
-    //   0: ldc 127
-    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 133	com/tencent/mm/model/bh:beI	()Lcom/tencent/mm/model/c;
-    //   8: pop
-    //   9: invokestatic 139	com/tencent/mm/model/c:isSDCardAvailable	()Z
-    //   12: ifne +32 -> 44
-    //   15: aload_0
-    //   16: getfield 35	com/tencent/mm/ui/chatting/w:WbU	Lcom/tencent/mm/ui/chatting/e/a;
-    //   19: getfield 92	com/tencent/mm/ui/chatting/e/a:WQv	Lcom/tencent/mm/ui/chatting/BaseChattingUIFragment;
-    //   22: invokevirtual 98	com/tencent/mm/ui/chatting/BaseChattingUIFragment:getContext	()Landroid/app/Activity;
-    //   25: aload_0
-    //   26: getfield 35	com/tencent/mm/ui/chatting/w:WbU	Lcom/tencent/mm/ui/chatting/e/a;
-    //   29: getfield 92	com/tencent/mm/ui/chatting/e/a:WQv	Lcom/tencent/mm/ui/chatting/BaseChattingUIFragment;
-    //   32: invokevirtual 145	com/tencent/mm/ui/MMFragment:getContentView	()Landroid/view/View;
-    //   35: invokestatic 151	com/tencent/mm/ui/base/w:g	(Landroid/content/Context;Landroid/view/View;)V
-    //   38: ldc 127
-    //   40: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: return
-    //   44: aload_1
-    //   45: ifnonnull +9 -> 54
-    //   48: ldc 127
-    //   50: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: return
-    //   54: new 153	com/tencent/mm/opensdk/modelmsg/WXMediaMessage
-    //   57: dup
-    //   58: invokespecial 154	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:<init>	()V
-    //   61: astore 6
-    //   63: new 156	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   70: astore_3
-    //   71: invokestatic 133	com/tencent/mm/model/bh:beI	()Lcom/tencent/mm/model/c;
-    //   74: pop
-    //   75: aload_3
-    //   76: invokestatic 161	com/tencent/mm/model/c:bcb	()Ljava/lang/String;
-    //   79: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: aload_1
-    //   83: invokevirtual 170	com/tencent/mm/storage/emotion/EmojiInfo:getMd5	()Ljava/lang/String;
-    //   86: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: astore 7
-    //   94: new 156	java/lang/StringBuilder
-    //   97: dup
-    //   98: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   101: aload 7
-    //   103: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc 175
-    //   108: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: invokestatic 180	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
-    //   117: ifeq +98 -> 215
-    //   120: new 156	java/lang/StringBuilder
-    //   123: dup
-    //   124: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   127: aload 7
-    //   129: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: ldc 175
-    //   134: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokestatic 184	com/tencent/mm/vfs/u:bBQ	(Ljava/lang/String;)J
-    //   143: l2i
-    //   144: istore_2
-    //   145: aload 6
-    //   147: new 156	java/lang/StringBuilder
-    //   150: dup
-    //   151: invokespecial 157	java/lang/StringBuilder:<init>	()V
-    //   154: aload 7
-    //   156: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc 175
-    //   161: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: iconst_0
-    //   168: iload_2
-    //   169: invokestatic 188	com/tencent/mm/vfs/u:aY	(Ljava/lang/String;II)[B
-    //   172: putfield 192	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:thumbData	[B
-    //   175: aload 6
-    //   177: new 194	com/tencent/mm/opensdk/modelmsg/WXEmojiObject
-    //   180: dup
-    //   181: aload 7
-    //   183: invokespecial 197	com/tencent/mm/opensdk/modelmsg/WXEmojiObject:<init>	(Ljava/lang/String;)V
-    //   186: putfield 201	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:mediaObject	Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage$IMediaObject;
-    //   189: aload 6
-    //   191: aload_1
-    //   192: getfield 204	com/tencent/mm/storage/emotion/EmojiInfo:field_app_id	Ljava/lang/String;
-    //   195: aconst_null
-    //   196: aload_0
-    //   197: getfield 39	com/tencent/mm/ui/chatting/w:WAm	Ljava/lang/String;
-    //   200: iconst_1
-    //   201: aload_1
-    //   202: invokevirtual 170	com/tencent/mm/storage/emotion/EmojiInfo:getMd5	()Ljava/lang/String;
-    //   205: invokestatic 210	com/tencent/mm/pluginsdk/model/app/m:a	(Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)I
-    //   208: pop
-    //   209: ldc 127
-    //   211: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   214: return
-    //   215: aload 7
-    //   217: invokestatic 214	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   220: astore 4
-    //   222: aload 4
-    //   224: astore_3
-    //   225: aload 6
-    //   227: aload 4
-    //   229: fconst_1
-    //   230: invokestatic 220	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$BitmapFactory:decodeStream	(Ljava/io/InputStream;F)Landroid/graphics/Bitmap;
-    //   233: invokevirtual 224	com/tencent/mm/opensdk/modelmsg/WXMediaMessage:setThumbImage	(Landroid/graphics/Bitmap;)V
-    //   236: aload 4
-    //   238: invokestatic 230	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   241: goto -66 -> 175
-    //   244: astore 5
-    //   246: aconst_null
-    //   247: astore 4
-    //   249: aload 4
-    //   251: astore_3
-    //   252: ldc 232
-    //   254: aload 5
-    //   256: ldc 234
-    //   258: iconst_0
-    //   259: anewarray 4	java/lang/Object
-    //   262: invokestatic 240	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   265: aload 4
-    //   267: astore_3
-    //   268: ldc 232
-    //   270: ldc 242
-    //   272: invokestatic 246	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   275: aload 4
-    //   277: invokestatic 230	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   280: goto -105 -> 175
-    //   283: astore_1
-    //   284: aconst_null
-    //   285: astore_3
-    //   286: aload_3
-    //   287: invokestatic 230	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   290: ldc 127
-    //   292: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   295: aload_1
-    //   296: athrow
-    //   297: astore_1
-    //   298: goto -12 -> 286
-    //   301: astore 5
-    //   303: goto -54 -> 249
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	306	0	this	w
-    //   0	306	1	paramEmojiInfo	EmojiInfo
-    //   144	25	2	i	int
-    //   70	217	3	localObject	Object
-    //   220	56	4	localInputStream	java.io.InputStream
-    //   244	11	5	localException1	java.lang.Exception
-    //   301	1	5	localException2	java.lang.Exception
-    //   61	165	6	localWXMediaMessage	com.tencent.mm.opensdk.modelmsg.WXMediaMessage
-    //   92	124	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   215	222	244	java/lang/Exception
-    //   215	222	283	finally
-    //   225	236	297	finally
-    //   252	265	297	finally
-    //   268	275	297	finally
-    //   225	236	301	java/lang/Exception
-  }
-  
-  public final void cpE() {}
-  
-  public final void cpF()
-  {
-    AppMethodBeat.i(224621);
-    ((u)this.WbU.bC(u.class)).hPj().hlg();
-    AppMethodBeat.o(224621);
-  }
-  
-  public final void o(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(34685);
-    bh.beI();
-    if (!c.isSDCardAvailable())
+    static
     {
-      com.tencent.mm.ui.base.w.g(this.WbU.WQv.getContext(), this.WbU.WQv.getContentView());
-      AppMethodBeat.o(34685);
-      return;
+      AppMethodBeat.i(34621);
+      aeji = new a("DEFAULT", 0);
+      aejj = new a("NEED_DOWNLOAD", 1);
+      aejk = new a("DOWNLOADING", 2);
+      aejl = new a("NEED_INSTALL", 3);
+      aejm = new a("INSTALLED", 4);
+      aejn = new a("NO_URL", 5);
+      aejo = new a[] { aeji, aejj, aejk, aejl, aejm, aejn };
+      AppMethodBeat.o(34621);
     }
-    if (paramEmojiInfo == null)
-    {
-      AppMethodBeat.o(34685);
-      return;
-    }
-    if ((this.contact.field_username.equals("medianote")) && ((z.bdd() & 0x4000) == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      paramEmojiInfo.field_start = 0;
-      paramEmojiInfo.field_state = EmojiInfo.ZuF;
-      ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(paramEmojiInfo);
-      localObject = new ca();
-      ((ca)localObject).setType(47);
-      ((ca)localObject).Jm("medianote");
-      ((ca)localObject).pJ(1);
-      if (paramEmojiInfo.Qv()) {
-        ((ca)localObject).setContent(be.a(z.bcZ(), 0L, false, paramEmojiInfo.getMd5(), false, ""));
-      }
-      ((ca)localObject).Jn(paramEmojiInfo.getMd5());
-      ((ca)localObject).setCreateTime(bq.RP(((et)localObject).field_talker));
-      ((ca)localObject).setStatus(2);
-      bh.beI();
-      c.bbO().aM((ca)localObject);
-      AppMethodBeat.o(34685);
-      return;
-    }
-    com.tencent.mm.pluginsdk.b.d locald = ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
-    if (Util.isNullOrNil(this.WAm)) {}
-    for (Object localObject = this.contact.field_username;; localObject = this.WAm)
-    {
-      locald.a((String)localObject, paramEmojiInfo, null);
-      this.WbU.Gi(true);
-      AppMethodBeat.o(34685);
-      return;
-    }
+    
+    private a() {}
   }
 }
 

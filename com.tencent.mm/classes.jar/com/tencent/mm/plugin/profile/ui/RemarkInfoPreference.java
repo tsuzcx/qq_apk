@@ -16,10 +16,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RemarkInfoPreference
   extends Preference
 {
-  private TextView GZI;
-  private boolean HbY;
-  private MMActivity iXq;
-  private ImageView jmf;
+  private TextView MXN;
+  private boolean Nag;
+  private ImageView lPb;
+  private MMActivity lzt;
   private String summary;
   private String title;
   private TextView titleTv;
@@ -28,8 +28,8 @@ public class RemarkInfoPreference
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27387);
-    this.HbY = false;
-    this.iXq = ((MMActivity)paramContext);
+    this.Nag = false;
+    this.lzt = ((MMActivity)paramContext);
     AppMethodBeat.o(27387);
   }
   
@@ -37,9 +37,9 @@ public class RemarkInfoPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27388);
-    this.HbY = false;
+    this.Nag = false;
     setLayoutResource(R.i.mm_preference);
-    auN(R.i.mm_preference_submenu);
+    aBp(R.i.mm_preference_submenu);
     AppMethodBeat.o(27388);
   }
   
@@ -47,23 +47,23 @@ public class RemarkInfoPreference
   {
     AppMethodBeat.i(27390);
     this.titleTv = ((TextView)paramView.findViewById(R.h.title));
-    this.GZI = ((TextView)paramView.findViewById(R.h.summary));
-    this.jmf = ((ImageView)paramView.findViewById(R.h.image_iv));
-    if (!this.HbY) {
-      this.jmf.setVisibility(8);
+    this.MXN = ((TextView)paramView.findViewById(R.h.summary));
+    this.lPb = ((ImageView)paramView.findViewById(R.h.image_iv));
+    if (!this.Nag) {
+      this.lPb.setVisibility(8);
     }
     for (;;)
     {
       if (this.titleTv != null) {
         this.titleTv.setText(this.title);
       }
-      if (this.GZI != null) {
-        this.GZI.setText(this.summary);
+      if (this.MXN != null) {
+        this.MXN.setText(this.summary);
       }
       super.onBindView(paramView);
       AppMethodBeat.o(27390);
       return;
-      this.jmf.setVisibility(0);
+      this.lPb.setVisibility(0);
     }
   }
   
@@ -74,14 +74,14 @@ public class RemarkInfoPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eiY, localViewGroup);
+    localLayoutInflater.inflate(R.i.glY, localViewGroup);
     AppMethodBeat.o(27389);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.RemarkInfoPreference
  * JD-Core Version:    0.7.0.1
  */

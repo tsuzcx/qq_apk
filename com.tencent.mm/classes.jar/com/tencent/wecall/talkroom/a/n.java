@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.an;
 import com.tencent.pb.common.b.a.a.a.n;
@@ -11,27 +11,27 @@ import com.tencent.wecall.talkroom.model.c;
 public final class n
   extends d
 {
-  public String CSB;
-  public int DVO;
-  public long NXM;
+  public String IMR;
+  public int JMX;
+  public long UGt;
   
   public n(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62547);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "hello", paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong) });
     a.n localn = new a.n();
-    localn.Zfn = paramInt3;
-    localn.NOc = paramInt1;
-    this.DVO = paramInt1;
-    localn.NOd = paramLong;
-    this.NXM = paramLong;
+    localn.ahdQ = paramInt3;
+    localn.UAZ = paramInt1;
+    this.JMX = paramInt1;
+    localn.UBa = paramLong;
+    this.UGt = paramLong;
     localn.groupId = paramString;
-    this.CSB = paramString;
-    localn.tQm = paramInt2;
-    aAc(3);
+    this.IMR = paramString;
+    localn.wTC = paramInt2;
+    aGP(3);
     try
     {
-      aAd(c.iuI().bEi(paramString));
+      aGQ(c.ked().bGH(paramString));
       c(147, localn);
       AppMethodBeat.o(62547);
       return;
@@ -45,7 +45,7 @@ public final class n
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62548);
     if (paramArrayOfByte != null) {}
@@ -72,14 +72,14 @@ public final class n
     return 205;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSVoiceRoomHelloReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.n
  * JD-Core Version:    0.7.0.1
  */

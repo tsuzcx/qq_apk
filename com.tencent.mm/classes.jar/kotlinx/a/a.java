@@ -1,48 +1,17 @@
 package kotlinx.a;
 
-import kotlin.l;
-import kotlinx.a.d.b;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/CompositeDecoder;", "", "context", "Lkotlinx/serialization/modules/SerialModule;", "getContext", "()Lkotlinx/serialization/modules/SerialModule;", "updateMode", "Lkotlinx/serialization/UpdateMode;", "getUpdateMode", "()Lkotlinx/serialization/UpdateMode;", "decodeBooleanElement", "", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "index", "", "decodeByteElement", "", "decodeCharElement", "", "decodeCollectionSize", "decodeDoubleElement", "", "decodeElementIndex", "decodeFloatElement", "", "decodeIntElement", "decodeLongElement", "", "decodeNullableSerializableElement", "T", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "decodeSequentially", "decodeSerializableElement", "decodeShortElement", "", "decodeStringElement", "", "decodeUnitElement", "", "endStructure", "updateNullableSerializableElement", "old", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;", "updateSerializableElement", "Companion", "kotlinx-serialization-runtime"})
-public abstract interface a
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/DeserializationStrategy;", "T", "", "descriptor", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/descriptors/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/encoding/Decoder;", "(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;", "patch", "old", "(Lkotlinx/serialization/encoding/Decoder;Ljava/lang/Object;)Ljava/lang/Object;", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+public abstract interface a<T>
 {
-  public static final a.a abAB = a.a.abAC;
+  public abstract T a(kotlinx.a.c.e parame);
   
-  public abstract <T> T a(n paramn, int paramInt, f<T> paramf);
-  
-  public abstract <T> T a(n paramn, int paramInt, f<T> paramf, T paramT);
-  
-  public abstract <T> T a(n paramn, f<T> paramf);
-  
-  public abstract <T> T a(n paramn, f<T> paramf, T paramT);
-  
-  public abstract void a(n paramn);
-  
-  public abstract boolean a(n paramn, int paramInt);
-  
-  public abstract byte b(n paramn, int paramInt);
-  
-  public abstract int b(n paramn);
-  
-  public abstract char c(n paramn, int paramInt);
-  
-  public abstract short d(n paramn, int paramInt);
-  
-  public abstract int e(n paramn, int paramInt);
-  
-  public abstract long f(n paramn, int paramInt);
-  
-  public abstract float g(n paramn, int paramInt);
-  
-  public abstract double h(n paramn, int paramInt);
-  
-  public abstract String i(n paramn, int paramInt);
-  
-  public abstract b iTq();
+  public abstract kotlinx.a.b.e iou();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.widget.cedit.api;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -16,6 +17,7 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewParent;
 import android.view.inputmethod.InputConnection;
+import com.tencent.mm.ui.anim.content.b;
 import com.tencent.mm.ui.widget.MMEditText.a;
 import com.tencent.mm.ui.widget.MMEditText.d;
 import com.tencent.mm.ui.widget.edittext.a.e;
@@ -23,7 +25,7 @@ import java.util.List;
 
 public abstract interface c
 {
-  public abstract void Hm(boolean paramBoolean);
+  public abstract void Ni(boolean paramBoolean);
   
   public abstract void a(c.a parama);
   
@@ -35,7 +37,9 @@ public abstract interface c
   
   public abstract void append(CharSequence paramCharSequence);
   
-  public abstract void bBa(String paramString);
+  public abstract void bDt(String paramString);
+  
+  public abstract void cRR();
   
   public abstract void clearComposingText();
   
@@ -57,6 +61,10 @@ public abstract interface c
   
   public abstract int getLineCount();
   
+  public abstract int getMeasuredHeight();
+  
+  public abstract int getMinimumHeight();
+  
   public abstract TextPaint getPaint();
   
   public abstract CharSequence getPasterContent();
@@ -67,27 +75,33 @@ public abstract interface c
   
   public abstract boolean getSimilarPasteChange();
   
+  public abstract String getSimilarPasteSeqStr();
+  
+  public abstract b getSizeAnimController();
+  
+  public abstract Object getTag(int paramInt);
+  
   public abstract Editable getText();
   
   public abstract float getTextSize();
   
   public abstract int getVisibility();
   
-  public abstract void hZA();
+  public abstract void jEF();
   
-  public abstract boolean hZB();
+  public abstract View jEG();
   
-  public abstract Context hZC();
+  public abstract boolean jEH();
   
-  public abstract int hZD();
+  public abstract ViewParent jEI();
   
-  public abstract void hZw();
+  public abstract boolean jEJ();
   
-  public abstract View hZx();
+  public abstract Context jEK();
   
-  public abstract boolean hZy();
+  public abstract int jEL();
   
-  public abstract ViewParent hZz();
+  public abstract void jFl();
   
   public abstract int length();
   
@@ -137,9 +151,13 @@ public abstract interface c
   
   public abstract void setSelection(int paramInt);
   
+  public abstract void setTag(int paramInt, Object paramObject);
+  
   public abstract void setText(CharSequence paramCharSequence);
   
   public abstract void setTextColor(int paramInt);
+  
+  public abstract void setTextCursorDrawable(Drawable paramDrawable);
   
   public abstract void setTextSize(int paramInt, float paramFloat);
   
@@ -147,7 +165,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.api.c
  * JD-Core Version:    0.7.0.1
  */

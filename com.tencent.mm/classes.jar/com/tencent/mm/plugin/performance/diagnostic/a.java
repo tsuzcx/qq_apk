@@ -8,8 +8,9 @@ import com.tencent.matrix.backtrace.g.d;
 import com.tencent.matrix.hook.pthread.PthreadHook;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.cq;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.model.cr;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,35 +26,132 @@ import java.util.Set;
 public final class a
   implements c.b
 {
-  public static final a GLt;
-  private static volatile boolean[] GLu;
-  private static boolean GLv;
+  public static final a MIo;
+  private static volatile boolean[] MIp;
+  private static boolean MIq;
   
   static
   {
-    AppMethodBeat.i(201684);
-    GLt = new a();
-    GLu = new boolean[] { false };
-    GLv = true;
-    AppMethodBeat.o(201684);
+    AppMethodBeat.i(300899);
+    MIo = new a();
+    MIp = new boolean[] { false };
+    MIq = true;
+    AppMethodBeat.o(300899);
+  }
+  
+  public static boolean Ao(boolean paramBoolean)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(300882);
+    Log.i("MicroMsg.BacktraceLogic", "setup WeChatBacktrace");
+    if (MIp[0] != 0)
+    {
+      AppMethodBeat.o(300882);
+      return true;
+    }
+    for (;;)
+    {
+      g.a locala;
+      synchronized (MIp)
+      {
+        if (MIp[0] != 0)
+        {
+          AppMethodBeat.o(300882);
+          return true;
+        }
+        boolean[] arrayOfBoolean2 = MIp;
+        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED)) {
+          break label333;
+        }
+        if (WeChatEnvironment.hasDebugger())
+        {
+          break label333;
+          if ((paramBoolean) || (i != 0)) {
+            break label338;
+          }
+          if (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zqI, false))
+          {
+            break label338;
+            if (j != 0) {
+              continue;
+            }
+            Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace not enabled");
+            paramBoolean = false;
+            arrayOfBoolean2[0] = paramBoolean;
+            paramBoolean = MIp[0];
+            AppMethodBeat.o(300882);
+            return paramBoolean;
+          }
+        }
+        else
+        {
+          i = 0;
+          continue;
+        }
+        j = 0;
+        continue;
+        if (i != 0) {
+          break label343;
+        }
+        if (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zqJ, false))
+        {
+          break label343;
+          MIq = paramBoolean;
+          Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace enabled, pthread quicken %s.", new Object[] { Boolean.valueOf(MIq) });
+          locala = com.tencent.matrix.backtrace.g.awo().bQ(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).bGP);
+          if (!BuildInfo.IS_ARM64) {
+            break label316;
+          }
+          locala.b(g.d.eNI);
+          if (MIq)
+          {
+            d(locala);
+            if (!locala.bBe) {
+              locala.eNz = true;
+            }
+          }
+          paramBoolean = bool;
+          if (locala.bBe) {
+            continue;
+          }
+          locala.bBe = true;
+          com.tencent.matrix.backtrace.g.a(locala.eNH, locala);
+          paramBoolean = bool;
+        }
+      }
+      paramBoolean = false;
+      continue;
+      label316:
+      d(locala);
+      locala.b(g.d.eNJ);
+      continue;
+      label333:
+      int i = 1;
+      continue;
+      label338:
+      int j = 1;
+      continue;
+      label343:
+      paramBoolean = true;
+    }
   }
   
   private static void d(g.a parama)
   {
-    AppMethodBeat.i(201678);
+    AppMethodBeat.i(300893);
     com.tencent.matrix.backtrace.g.a(new b());
     b.setup();
-    parama.VG();
-    Object localObject2 = com.tencent.mm.kernel.h.aHD().aHf();
-    if (((com.tencent.mm.kernel.b.g)localObject2).aIE()) {
-      if (cq.bfI().equalsIgnoreCase(String.format("%x", new Object[] { Integer.valueOf(d.RAD) }))) {}
+    parama.awq();
+    Object localObject2 = com.tencent.mm.kernel.h.baB().bad();
+    if (((com.tencent.mm.kernel.b.g)localObject2).bbA()) {
+      if (cr.bDz().equalsIgnoreCase(String.format("%x", new Object[] { Integer.valueOf(d.Yxh) }))) {}
     }
     File localFile;
     Object localObject1;
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace setup client version updated %s", new Object[] { Boolean.valueOf(bool) });
-      localFile = g((com.tencent.mm.kernel.b.g)localObject2);
+      localFile = h((com.tencent.mm.kernel.b.g)localObject2);
       localObject1 = null;
       if (localFile != null) {
         localObject1 = localFile.getAbsolutePath() + "/lib";
@@ -75,194 +173,97 @@ public final class a
         i += 1;
       }
     }
-    ((Set)localObject3).add(com.tencent.matrix.backtrace.g.bf(((com.tencent.mm.kernel.b.g)localObject2).Zw));
+    ((Set)localObject3).add(com.tencent.matrix.backtrace.g.bP(((com.tencent.mm.kernel.b.g)localObject2).bGP));
     label251:
     Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace setup odex path %s", new Object[] { localObject3 });
-    localObject2 = ((com.tencent.mm.kernel.b.g)localObject2).Zw.getApplicationInfo().nativeLibraryDir;
+    localObject2 = ((com.tencent.mm.kernel.b.g)localObject2).bGP.getApplicationInfo().nativeLibraryDir;
     Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace setup native library path %s", new Object[] { localObject2 });
     if (localObject1 != null) {
       Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace setup tinker native library path %s", new Object[] { localObject1 });
     }
     Object localObject3 = ((Set)localObject3).iterator();
     while (((Iterator)localObject3).hasNext()) {
-      parama.eK((String)((Iterator)localObject3).next());
+      parama.gj((String)((Iterator)localObject3).next());
     }
     if (localFile != null) {}
     for (;;)
     {
-      parama.eK((String)localObject1).eK(com.tencent.matrix.backtrace.g.VD()).eL((String)localObject1 + "/libwechatxlog.so").VI().VH().cP(bool);
-      AppMethodBeat.o(201678);
+      parama.gj((String)localObject1).gj(com.tencent.matrix.backtrace.g.awn()).gk((String)localObject1 + "/libwechatxlog.so").aws().awr().dw(bool);
+      AppMethodBeat.o(300893);
       return;
       localObject1 = localObject2;
     }
   }
   
-  private static File g(com.tencent.mm.kernel.b.g paramg)
+  private static File h(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(201653);
-    if (!paramg.aIE())
+    AppMethodBeat.i(300872);
+    if (!paramg.bbA())
     {
-      AppMethodBeat.o(201653);
+      AppMethodBeat.o(300872);
       return null;
     }
-    Object localObject = ((com.tencent.mm.kernel.b.h)paramg).kfv.getTinkerResultIntent();
+    Object localObject = ((com.tencent.mm.kernel.b.h)paramg).mFT.getTinkerResultIntent();
     if (localObject == null)
     {
-      AppMethodBeat.o(201653);
+      AppMethodBeat.o(300872);
       return null;
     }
     if (ShareIntentUtil.getIntentReturnCode((Intent)localObject) != 0)
     {
-      AppMethodBeat.o(201653);
+      AppMethodBeat.o(300872);
       return null;
     }
     localObject = ShareIntentUtil.getStringExtra((Intent)localObject, "intent_patch_new_version");
     if (localObject == null)
     {
-      AppMethodBeat.o(201653);
+      AppMethodBeat.o(300872);
       return null;
     }
-    paramg = SharePatchFileUtil.getPatchDirectory(paramg.Zw);
+    paramg = SharePatchFileUtil.getPatchDirectory(paramg.bGP);
     if (paramg == null)
     {
-      AppMethodBeat.o(201653);
+      AppMethodBeat.o(300872);
       return null;
     }
     paramg = new File(paramg.getAbsolutePath(), SharePatchFileUtil.getPatchVersionDirectory((String)localObject));
-    AppMethodBeat.o(201653);
+    AppMethodBeat.o(300872);
     return paramg;
   }
   
-  public static boolean vS(boolean paramBoolean)
+  public final void gyb()
   {
-    boolean bool = true;
-    AppMethodBeat.i(201666);
-    Log.i("MicroMsg.BacktraceLogic", "setup WeChatBacktrace");
-    if (GLu[0] != 0)
-    {
-      AppMethodBeat.o(201666);
-      return true;
-    }
-    for (;;)
-    {
-      g.a locala;
-      synchronized (GLu)
-      {
-        if (GLu[0] != 0)
-        {
-          AppMethodBeat.o(201666);
-          return true;
-        }
-        boolean[] arrayOfBoolean2 = GLu;
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED)) {
-          break label343;
-        }
-        if (WeChatEnvironment.hasDebugger())
-        {
-          break label343;
-          if ((paramBoolean) || (i != 0)) {
-            break label348;
-          }
-          if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXT, false))
-          {
-            break label348;
-            if (j != 0) {
-              continue;
-            }
-            Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace not enabled");
-            paramBoolean = false;
-            arrayOfBoolean2[0] = paramBoolean;
-            paramBoolean = GLu[0];
-            AppMethodBeat.o(201666);
-            return paramBoolean;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        j = 0;
-        continue;
-        if (i != 0) {
-          break label353;
-        }
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXU, false))
-        {
-          break label353;
-          GLv = paramBoolean;
-          Log.i("MicroMsg.BacktraceLogic", "WeChat backtrace enabled, pthread quicken %s.", new Object[] { Boolean.valueOf(GLv) });
-          locala = com.tencent.matrix.backtrace.g.VE().bg(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).Zw);
-          if (!BuildInfo.IS_ARM64) {
-            break label326;
-          }
-          locala.b(g.d.cSs);
-          if (GLv)
-          {
-            d(locala);
-            if (!locala.UY) {
-              locala.cSi = true;
-            }
-          }
-          paramBoolean = bool;
-          if (locala.UY) {
-            continue;
-          }
-          locala.UY = true;
-          com.tencent.matrix.backtrace.g.a(locala.cSr, locala);
-          paramBoolean = bool;
-        }
-      }
-      paramBoolean = false;
-      continue;
-      label326:
-      d(locala);
-      locala.b(g.d.cSt);
-      continue;
-      label343:
-      int i = 1;
-      continue;
-      label348:
-      int j = 1;
-      continue;
-      label353:
-      paramBoolean = true;
-    }
-  }
-  
-  public final void fno()
-  {
-    AppMethodBeat.i(201680);
+    AppMethodBeat.i(300902);
     try
     {
-      vS(true);
-      AppMethodBeat.o(201680);
+      Ao(true);
+      AppMethodBeat.o(300902);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.BacktraceLogic", localThrowable, "", new Object[0]);
-      AppMethodBeat.o(201680);
+      AppMethodBeat.o(300902);
     }
   }
   
-  public final void fnp()
+  public final void gyc()
   {
-    AppMethodBeat.i(201682);
-    if (GLv)
+    AppMethodBeat.i(300909);
+    if (MIq)
     {
-      PthreadHook localPthreadHook = PthreadHook.cYv;
-      localPthreadHook.cYx = true;
+      PthreadHook localPthreadHook = PthreadHook.eVl;
+      localPthreadHook.eVn = true;
       if (localPthreadHook.mConfigured) {
-        localPthreadHook.enableQuickenNative(localPthreadHook.cYx);
+        localPthreadHook.enableQuickenNative(localPthreadHook.eVn);
       }
     }
-    AppMethodBeat.o(201682);
+    AppMethodBeat.o(300909);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.a
  * JD-Core Version:    0.7.0.1
  */

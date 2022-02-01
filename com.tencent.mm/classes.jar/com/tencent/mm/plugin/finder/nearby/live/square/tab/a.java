@@ -3,224 +3,222 @@ package com.tencent.mm.plugin.finder.nearby.live.square.tab;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.findersdk.b.g;
-import com.tencent.mm.protocal.protobuf.avf;
-import com.tencent.mm.protocal.protobuf.bcz;
-import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.utils.v;
+import com.tencent.mm.plugin.findersdk.b.i;
+import com.tencent.mm.protocal.protobuf.bad;
+import com.tencent.mm.protocal.protobuf.bnn;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
-import kotlin.g.a.b;
-import kotlin.g.a.s;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NearbyLiveSquareTabFetcher;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "scene", "", "byPass", "", "encrypted_object_id", "object_nonce_id", "title", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getByPass", "()Ljava/lang/String;", "callback", "Lkotlin/Function5;", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "", "", "getContext", "()Landroid/content/Context;", "getEncrypted_object_id", "isRequestingLbs", "netSceneFetchSquareTabs", "Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NetSceneFetchSquareTabs;", "getObject_nonce_id", "getScene", "()I", "getTitle", "detach", "fetch", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "forcePermission", "isUseCache", "fetchLiveSquareTabs", "invokeSource", "fetchLiveSquareTabsForPermission", "fetchTabsInternal", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NearbyLiveSquareTabFetcher;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/content/Context;", "scene", "", "byPass", "", "encrypted_object_id", "object_nonce_id", "title", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getByPass", "()Ljava/lang/String;", "callback", "Lkotlin/Function5;", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "", "", "getContext", "()Landroid/content/Context;", "getEncrypted_object_id", "isRequestingLbs", "netSceneFetchSquareTabs", "Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NetSceneFetchSquareTabs;", "getObject_nonce_id", "getScene", "()I", "getTitle", "detach", "fetch", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "forcePermission", "isUseCache", "fetchLiveSquareTabs", "invokeSource", "fetchLiveSquareTabsForPermission", "fetchTabsInternal", "onSceneEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final a zGL;
+  public static final a EMc;
+  private kotlin.g.a.s<? super String, ? super String, ? super String, ? super LinkedList<bnn>, ? super Boolean, ah> Azf;
+  private final String ELy;
+  private final String EMd;
+  private c EMe;
   private final Context context;
   private boolean isRequestingLbs;
   private final String object_nonce_id;
   private final int scene;
   private final String title;
-  private s<? super String, ? super String, ? super String, ? super LinkedList<bcz>, ? super Boolean, x> xaT;
-  private e zGI;
-  private final String zGJ;
-  private final String zGK;
   
   static
   {
-    AppMethodBeat.i(201744);
-    zGL = new a((byte)0);
-    AppMethodBeat.o(201744);
+    AppMethodBeat.i(341364);
+    EMc = new a((byte)0);
+    AppMethodBeat.o(341364);
   }
   
   public a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(201741);
+    AppMethodBeat.i(341297);
     this.context = paramContext;
     this.scene = paramInt;
-    this.zGJ = paramString1;
-    this.zGK = paramString2;
+    this.ELy = paramString1;
+    this.EMd = paramString2;
     this.object_nonce_id = paramString3;
     this.title = paramString4;
-    AppMethodBeat.o(201741);
+    AppMethodBeat.o(341297);
   }
   
-  private final void a(final bid parambid, int paramInt)
+  private final void a(final bui parambui, int paramInt)
   {
-    AppMethodBeat.i(201731);
-    Log.i("NearbyLiveSquareTabFetcher", "fetchLiveSquareTabsForPermission, contextObj:" + parambid + " invokeSource:" + paramInt);
-    com.tencent.mm.plugin.finder.utils.q localq = com.tencent.mm.plugin.finder.utils.q.ADH;
-    com.tencent.mm.plugin.finder.utils.q.a((kotlin.g.a.a)c.zGP, (kotlin.g.a.a)new d(this, parambid), (kotlin.g.a.a)new e(this, parambid));
-    AppMethodBeat.o(201731);
+    AppMethodBeat.i(341322);
+    Log.i("NearbyLiveSquareTabFetcher", "fetchLiveSquareTabsForPermission, contextObj:" + parambui + " invokeSource:" + paramInt);
+    v localv = v.GgU;
+    v.a((kotlin.g.a.a)d.EMh, (kotlin.g.a.a)new e(this, parambui), (kotlin.g.a.a)new f(this, parambui));
+    AppMethodBeat.o(341322);
   }
   
-  private final void a(bid parambid, boolean paramBoolean, int paramInt)
+  private final void a(bui parambui, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(201728);
-    Log.i("NearbyLiveSquareTabFetcher", "fetchLiveSquareTabs, contextObj:" + parambid + " forcePermission:" + paramBoolean + " invokeSource:" + paramInt);
+    AppMethodBeat.i(341317);
+    Log.i("NearbyLiveSquareTabFetcher", "fetchLiveSquareTabs, contextObj:" + parambui + " forcePermission:" + paramBoolean + " invokeSource:" + paramInt);
     if (paramBoolean)
     {
-      a(parambid, paramInt);
-      AppMethodBeat.o(201728);
+      a(parambui, paramInt);
+      AppMethodBeat.o(341317);
       return;
     }
-    c(parambid);
-    AppMethodBeat.o(201728);
+    c(parambui);
+    AppMethodBeat.o(341317);
   }
   
-  private final void c(bid parambid)
+  private final void c(bui parambui)
   {
-    AppMethodBeat.i(201734);
-    this.zGI = new e(parambid, this.scene, this.zGJ, this.title, this.zGK, this.object_nonce_id);
-    parambid = this.zGI;
-    if (parambid != null) {
-      g.a(parambid, this.context, this.context.getResources().getString(b.j.finder_waiting));
+    AppMethodBeat.i(341328);
+    this.EMe = new c(parambui, this.scene, this.ELy, this.title, this.EMd, this.object_nonce_id);
+    parambui = this.EMe;
+    if (parambui != null) {
+      com.tencent.mm.plugin.findersdk.b.h.a((com.tencent.mm.plugin.findersdk.b.h)parambui, this.context, this.context.getResources().getString(e.h.finder_waiting));
     }
-    com.tencent.mm.kernel.h.aGY().a(4210, (i)this);
-    com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)this.zGI);
-    AppMethodBeat.o(201734);
+    com.tencent.mm.kernel.h.aZW().a(4210, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().a((p)this.EMe, 0);
+    AppMethodBeat.o(341328);
   }
   
-  public final void a(final bid parambid, final boolean paramBoolean1, boolean paramBoolean2, s<? super String, ? super String, ? super String, ? super LinkedList<bcz>, ? super Boolean, x> params)
+  public final void a(final bui parambui, final boolean paramBoolean1, boolean paramBoolean2, kotlin.g.a.s<? super String, ? super String, ? super String, ? super LinkedList<bnn>, ? super Boolean, ah> params)
   {
-    AppMethodBeat.i(201723);
-    p.k(parambid, "contextObj");
-    p.k(params, "callback");
-    Object localObject = com.tencent.mm.plugin.finder.nearby.trace.c.zJD;
-    com.tencent.mm.plugin.finder.nearby.trace.c.dMD().aGV("startFetchTabs");
+    AppMethodBeat.i(341379);
+    kotlin.g.b.s.u(parambui, "contextObj");
+    kotlin.g.b.s.u(params, "callback");
+    Object localObject = com.tencent.mm.plugin.finder.nearby.trace.c.ERD;
+    com.tencent.mm.plugin.finder.nearby.trace.c.eGR().aDn("startFetchTabs");
     Log.i("NearbyLiveSquareTabFetcher", "fetch forcePermission:" + paramBoolean1 + " isUseCache:" + paramBoolean2);
-    this.xaT = params;
+    this.Azf = params;
     if (paramBoolean2)
     {
-      params = com.tencent.mm.plugin.finder.nearby.preload.a.zIv;
-      params = com.tencent.mm.plugin.finder.nearby.preload.a.dMo();
+      params = com.tencent.mm.plugin.finder.nearby.preload.a.EPD;
+      params = com.tencent.mm.plugin.finder.nearby.preload.a.eGt();
       if (params != null)
       {
-        localObject = params.zIC;
+        localObject = com.tencent.mm.plugin.finder.nearby.report.b.EQs;
+        if (params.EPU != com.tencent.mm.plugin.finder.nearby.preload.firstpage.a.a.EQa) {
+          break label166;
+        }
+        paramBoolean2 = true;
+        com.tencent.mm.plugin.finder.nearby.report.b.sT(paramBoolean2);
+        localObject = params.EPU;
         switch (b.$EnumSwitchMapping$0[localObject.ordinal()])
         {
         }
       }
     }
+    label166:
     do
     {
-      a(parambid, paramBoolean1, 2);
-      AppMethodBeat.o(201723);
+      a(parambui, paramBoolean1, 2);
+      AppMethodBeat.o(341379);
       return;
-      params.N((b)new b(this, parambid, paramBoolean1));
-      AppMethodBeat.o(201723);
+      paramBoolean2 = false;
+      break;
+      params.at((kotlin.g.a.b)new c(this, parambui, paramBoolean1));
+      AppMethodBeat.o(341379);
       return;
-      params = params.dMt();
+      params = params.eGz();
     } while (params == null);
-    onSceneEnd(params.errCode, params.errType, params.errMsg, (com.tencent.mm.an.q)params.BvG);
-    AppMethodBeat.o(201723);
+    onSceneEnd(params.errCode, params.errType, params.errMsg, (p)params.hKP);
+    AppMethodBeat.o(341379);
   }
   
   public final void detach()
   {
-    AppMethodBeat.i(201717);
-    com.tencent.mm.kernel.h.aGY().b(4210, (i)this);
-    AppMethodBeat.o(201717);
+    AppMethodBeat.i(341370);
+    com.tencent.mm.kernel.h.aZW().b(4210, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(341370);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(201738);
-    p.k(paramq, "scene");
+    AppMethodBeat.i(341388);
+    kotlin.g.b.s.u(paramp, "scene");
     Log.i("NearbyLiveSquareTabFetcher", "onSceneEnd handle NetSceneNearbyLiveSquareTabs, errType:" + paramInt1 + " errCode:" + paramInt2);
-    com.tencent.mm.kernel.h.aGY().b(4210, (i)this);
+    com.tencent.mm.kernel.h.aZW().b(4210, (com.tencent.mm.am.h)this);
     if (((paramInt1 == 0) && (paramInt2 == 0)) || (paramInt2 == -200008))
     {
-      paramString = ((e)paramq).rr;
-      if (paramString == null) {
-        p.iCn();
-      }
-      paramString = paramString.bhY();
-      if (paramString == null)
-      {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetLiveTabsResponse");
-        AppMethodBeat.o(201738);
-        throw paramString;
-      }
-      paramString = (avf)paramString;
-      paramq = com.tencent.mm.plugin.finder.nearby.trace.c.zJD;
-      com.tencent.mm.plugin.finder.nearby.trace.c.dMD().aGV("fetchTabsDone");
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new f(this, paramString));
-      AppMethodBeat.o(201738);
+      paramString = ((c)paramp).eFE();
+      paramp = com.tencent.mm.plugin.finder.nearby.trace.c.ERD;
+      com.tencent.mm.plugin.finder.nearby.trace.c.eGR().aDn("fetchTabsDone");
+      d.uiThread((kotlin.g.a.a)new g(paramString, this));
+      AppMethodBeat.o(341388);
       return;
     }
     Log.e("NearbyLiveSquareTabFetcher", "onSceneEnd handle NetSceneNearbyLiveSquareTabs error");
-    AppMethodBeat.o(201738);
+    AppMethodBeat.o(341388);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NearbyLiveSquareTabFetcher$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/tab/NearbyLiveSquareTabFetcher$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "invoke", "com/tencent/mm/plugin/finder/nearby/live/square/tab/NearbyLiveSquareTabFetcher$fetch$1$1"})
-  static final class b
-    extends kotlin.g.b.q
-    implements b<com.tencent.mm.plugin.findersdk.b.h<com.tencent.mm.an.q>, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "Lcom/tencent/mm/modelbase/NetSceneBase;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.b<i<p>, ah>
   {
-    b(a parama, bid parambid, boolean paramBoolean)
+    c(a parama, bui parambui, boolean paramBoolean)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public static final c zGP;
+    public static final d EMh;
     
     static
     {
-      AppMethodBeat.i(199611);
-      zGP = new c();
-      AppMethodBeat.o(199611);
+      AppMethodBeat.i(341228);
+      EMh = new d();
+      AppMethodBeat.o(341228);
     }
     
-    c()
+    d()
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    d(a parama, bid parambid)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    e(a parama, bid parambid)
+    e(a parama, bui parambui)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    f(a parama, avf paramavf)
+    f(a parama, bui parambui)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    g(bad parambad, a parama)
     {
       super();
     }
@@ -228,7 +226,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.nearby.live.square.tab.a
  * JD-Core Version:    0.7.0.1
  */

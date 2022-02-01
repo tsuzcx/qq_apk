@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/f9m" style="@style/re" />
-    <com.tencent.mm.plugin.product.ui.MaxGridView android:gravity="center" android:id="@id/f9k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:horizontalSpacing="12.0dip" android:verticalSpacing="12.0dip" android:numColumns="auto_fit" />
-</LinearLayout>
+    <com.tencent.mm.plugin.music.ui.MusicViewPager android:id="@id/l8u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h7f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginBottom="32.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/h6w" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="14.0dip" android:src="@raw/music_logo_default" android:scaleType="fitCenter" />
+        <TextView android:textSize="16.0dip" android:ellipsize="end" android:id="@id/eem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="40.0dip" android:maxLines="1" />
+        <ImageView android:id="@id/eel" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/bop" android:scaleType="center" />
+    </LinearLayout>
+    <CheckBox android:gravity="center" android:id="@id/h7_" android:background="@drawable/ak7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="45.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar android:id="@id/h7b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/h7_" />
+    <ImageButton android:id="@id/a32" android:background="@raw/actionbar_icon_light_back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:onClick="onClickBack" />
+    <ImageButton android:id="@id/jbj" android:background="@raw/actionbar_icon_light_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:layout_alignParentRight="true" android:onClick="onClickSend" />
+</RelativeLayout>

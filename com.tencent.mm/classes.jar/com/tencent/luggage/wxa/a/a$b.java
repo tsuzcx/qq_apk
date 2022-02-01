@@ -2,13 +2,14 @@ package com.tencent.luggage.wxa.a;
 
 public final class a$b
 {
-  public static final int app_brand_actionbar_capsule_view_right_margin_default = 2131165820;
-  public static final int app_brand_game_capsule_extra_margin_right = 2131165396;
-  public static final int app_brand_game_capsule_extra_margin_top = 2131165397;
+  public static final int BW_100_Alpha_0_8 = 2131099699;
+  public static final int BW_97 = 2131099716;
+  public static final int Dark_3 = 2131099786;
+  public static final int FG_0 = 2131099791;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.wxa.a.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="1.0px" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="1.0px" style="@style/tv"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/a61" android:layout_width="fill_parent" android:layout_height="1.0px" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/h5t" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="17.0dip" android:textColor="@color/az" android:gravity="left" android:id="@id/h5u" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gye" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h5s" android:paddingLeft="8.0dip" android:paddingRight="16.0dip" android:layout_width="@dimen/d_" android:layout_height="@dimen/cv" android:src="@raw/icons_filled_back2" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/BW_70" />
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/a61" android:id="@id/gud" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gsm" android:layout_toLeftOf="@id/h5s" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/am1">
+        <com.tencent.mm.plugin.multitask.ui.panel.MultiTaskCoordinatorLayout android:orientation="vertical" android:id="@id/h5q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.multitask.ui.panel.OverScrollMultiTaskRecyclerView android:id="@id/h5p" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.plugin.multitask.ui.panel.MultiTaskCoordinatorLayout>
+        <View android:id="@id/h3j" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
 </LinearLayout>

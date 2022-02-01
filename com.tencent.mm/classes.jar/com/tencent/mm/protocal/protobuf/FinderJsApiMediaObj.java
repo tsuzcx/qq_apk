@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class FinderJsApiMediaObj
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public String mediaPath;
   public int mediaType;
@@ -15,14 +15,14 @@ public class FinderJsApiMediaObj
     AppMethodBeat.i(169000);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.mediaPath != null) {
-        paramVarArgs.f(1, this.mediaPath);
+        paramVarArgs.g(1, this.mediaPath);
       }
-      paramVarArgs.aY(2, this.mediaType);
+      paramVarArgs.bS(2, this.mediaType);
       if (this.thumbInfo != null)
       {
-        paramVarArgs.oE(3, this.thumbInfo.computeSize());
+        paramVarArgs.qD(3, this.thumbInfo.computeSize());
         this.thumbInfo.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(169000);
@@ -30,25 +30,25 @@ public class FinderJsApiMediaObj
     }
     if (paramInt == 1) {
       if (this.mediaPath == null) {
-        break label392;
+        break label388;
       }
     }
-    label392:
-    for (paramInt = g.a.a.b.b.a.g(1, this.mediaPath) + 0;; paramInt = 0)
+    label388:
+    for (paramInt = i.a.a.b.b.a.h(1, this.mediaPath) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.mediaType);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.mediaType);
       paramInt = i;
       if (this.thumbInfo != null) {
-        paramInt = i + g.a.a.a.oD(3, this.thumbInfo.computeSize());
+        paramInt = i + i.a.a.a.qC(3, this.thumbInfo.computeSize());
       }
       AppMethodBeat.o(169000);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(169000);
@@ -56,7 +56,7 @@ public class FinderJsApiMediaObj
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         FinderJsApiMediaObj localFinderJsApiMediaObj = (FinderJsApiMediaObj)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -65,15 +65,15 @@ public class FinderJsApiMediaObj
           AppMethodBeat.o(169000);
           return -1;
         case 1: 
-          localFinderJsApiMediaObj.mediaPath = ((g.a.a.a.a)localObject).abFh.readString();
+          localFinderJsApiMediaObj.mediaPath = ((i.a.a.a.a)localObject).ajGk.readString();
           AppMethodBeat.o(169000);
           return 0;
         case 2: 
-          localFinderJsApiMediaObj.mediaType = ((g.a.a.a.a)localObject).abFh.AK();
+          localFinderJsApiMediaObj.mediaType = ((i.a.a.a.a)localObject).ajGk.aar();
           AppMethodBeat.o(169000);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)

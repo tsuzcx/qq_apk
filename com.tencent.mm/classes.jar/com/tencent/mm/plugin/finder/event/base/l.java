@@ -1,43 +1,23 @@
 package com.tencent.mm.plugin.finder.event.base;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
+import com.tencent.mm.plugin.finder.storage.FeedData;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "type", "", "(I)V", "acrossFeedList", "", "Lcom/tencent/mm/plugin/finder/event/base/FlowScrollEventFeedData;", "getAcrossFeedList", "()Ljava/util/List;", "setAcrossFeedList", "(Ljava/util/List;)V", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getType", "visibleFeedList", "getVisibleFeedList", "setVisibleFeedList", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/event/base/TabChangeEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "focusTabType", "", "(I)V", "centerFeed", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "getCenterFeed", "()Lcom/tencent/mm/plugin/finder/storage/FeedData;", "setCenterFeed", "(Lcom/tencent/mm/plugin/finder/storage/FeedData;)V", "getFocusTabType", "()I", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
   extends b
 {
-  public static final a xru;
-  public int sCr;
-  public int sCs;
-  private final int type;
-  public int xrh;
-  public int xrj;
-  public List<g> xrq;
-  public List<g> xrr;
-  
-  static
-  {
-    AppMethodBeat.i(259763);
-    xru = new a((byte)0);
-    AppMethodBeat.o(259763);
-  }
+  private final int AOD;
+  public FeedData AOy;
   
   public l(int paramInt)
   {
-    this.type = paramInt;
-    this.sCr = -1;
-    this.sCs = -1;
-    this.xrh = -1;
-    this.xrj = -1;
+    this.AOD = paramInt;
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent$Companion;", "", "()V", "SCROLL_DRAGGING", "", "SCROLL_STATE_ATTACHED", "SCROLL_STATE_DRAGGING", "SCROLL_STATE_FIRST_TERM_CHANGE", "SCROLL_STATE_IDLE", "SCROLL_STATE_SETTLING", "plugin-finder-base_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.event.base.l
  * JD-Core Version:    0.7.0.1
  */

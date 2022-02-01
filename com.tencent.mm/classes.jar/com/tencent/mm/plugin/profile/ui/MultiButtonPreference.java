@@ -14,18 +14,18 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MultiButtonPreference
   extends Preference
 {
-  private String GRG;
-  public String GZW;
-  private String GZX;
-  private View.OnClickListener GZY;
-  public View.OnClickListener GZZ;
-  private View.OnClickListener Haa;
+  private String MPk;
+  public String MYb;
+  private String MYc;
+  private View.OnClickListener MYd;
+  public View.OnClickListener MYe;
+  private View.OnClickListener MYf;
   
   public MultiButtonPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27263);
-    setLayoutResource(R.i.eke);
+    setLayoutResource(R.i.gnh);
     AppMethodBeat.o(27263);
   }
   
@@ -33,57 +33,57 @@ public class MultiButtonPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27262);
-    setLayoutResource(R.i.eke);
+    setLayoutResource(R.i.gnh);
     AppMethodBeat.o(27262);
   }
   
-  public final void a(String paramString, View.OnClickListener paramOnClickListener)
+  public final void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.GRG = paramString;
-    this.GZY = paramOnClickListener;
+    this.MPk = paramString;
+    this.MYd = paramOnClickListener;
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27264);
     super.onBindView(paramView);
-    Button localButton1 = (Button)paramView.findViewById(R.h.duK);
-    View localView1 = paramView.findViewById(R.h.duL);
-    Button localButton2 = (Button)paramView.findViewById(R.h.duM);
-    View localView2 = paramView.findViewById(R.h.duN);
-    Button localButton3 = (Button)paramView.findViewById(R.h.duO);
+    Button localButton1 = (Button)paramView.findViewById(R.h.fvc);
+    View localView1 = paramView.findViewById(R.h.fvd);
+    Button localButton2 = (Button)paramView.findViewById(R.h.fve);
+    View localView2 = paramView.findViewById(R.h.fvf);
+    Button localButton3 = (Button)paramView.findViewById(R.h.fvg);
     paramView.setBackgroundColor(0);
-    if (!Util.isNullOrNil(this.GRG))
+    if (!Util.isNullOrNil(this.MPk))
     {
       localButton1.setVisibility(0);
-      localButton1.setText(this.GRG);
-      if (Util.isNullOrNil(this.GZW)) {
+      localButton1.setText(this.MPk);
+      if (Util.isNullOrNil(this.MYb)) {
         break label224;
       }
-      if (!Util.isNullOrNil(this.GRG)) {
+      if (!Util.isNullOrNil(this.MPk)) {
         break label216;
       }
       localView1.setVisibility(8);
       label117:
       localButton2.setVisibility(0);
-      localButton2.setText(this.GZW);
+      localButton2.setText(this.MYb);
       label132:
-      if (Util.isNullOrNil(this.GZX)) {
+      if (Util.isNullOrNil(this.MYc)) {
         break label249;
       }
-      if (!Util.isNullOrNil(this.GZW)) {
+      if (!Util.isNullOrNil(this.MYb)) {
         break label240;
       }
       localView2.setVisibility(8);
       label159:
       localButton3.setVisibility(0);
-      localButton3.setText(this.GZX);
+      localButton3.setText(this.MYc);
     }
     for (;;)
     {
-      localButton1.setOnClickListener(this.GZY);
-      localButton2.setOnClickListener(this.GZZ);
-      localButton3.setOnClickListener(this.Haa);
+      localButton1.setOnClickListener(this.MYd);
+      localButton2.setOnClickListener(this.MYe);
+      localButton3.setOnClickListener(this.MYf);
       AppMethodBeat.o(27264);
       return;
       localButton1.setVisibility(8);
@@ -106,7 +106,7 @@ public class MultiButtonPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.MultiButtonPreference
  * JD-Core Version:    0.7.0.1
  */

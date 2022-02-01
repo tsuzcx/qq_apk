@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.a;
 
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-final class a$a
-  implements View.OnClickListener
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/model/BizTLRecFeedUtil$BizTimelineClickScene;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "CLICK_SUBSCRIBE", "CLICK_REC", "CLICK_REC_FEED", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum a$a
 {
-  a$a(kotlin.g.a.b paramb) {}
+  private final int value;
   
-  public final void onClick(View paramView)
+  static
   {
-    AppMethodBeat.i(259328);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/brandservice/ui/timeline/model/BizTLRecFeedUtil$initJumpLink$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.sGp.invoke(Integer.valueOf(24));
-    a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/model/BizTLRecFeedUtil$initJumpLink$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(259328);
+    AppMethodBeat.i(302208);
+    vNS = new a("CLICK_SUBSCRIBE", 0, 0);
+    vNT = new a("CLICK_REC", 1, 1);
+    vNU = new a("CLICK_REC_FEED", 2, 2);
+    vNV = new a[] { vNS, vNT, vNU };
+    AppMethodBeat.o(302208);
+  }
+  
+  private a$a(int paramInt)
+  {
+    this.value = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.a.a
  * JD-Core Version:    0.7.0.1
  */

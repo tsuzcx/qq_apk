@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/be_" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center" android:id="@id/aqa" android:visibility="visible" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@drawable/b1o" />
-    </FrameLayout>
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/jwo" android:padding="@dimen/cd" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:scaleType="fitCenter" android:contentDescription="@string/jhs" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/jwq" android:padding="@dimen/cd" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:scaleType="fitCenter" android:contentDescription="@string/jht" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/jwn" android:padding="@dimen/cd" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:scaleType="fitCenter" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/jwp" android:padding="@dimen/cd" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:scaleType="fitCenter" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,21 +1,15 @@
 package kotlin.l.b.a.b.k.a.b;
 
-import kotlin.l.b.a.b.e.b.c;
-import kotlin.l.b.a.b.e.b.h;
-import kotlin.l.b.a.b.h.r;
+import kotlin.l.b.a.b.b.av;
 
 public abstract interface g
-  extends a
+  extends av
 {
-  public abstract r iPA();
-  
-  public abstract c iPB();
-  
-  public abstract h iPC();
+  public abstract String ksM();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.g
  * JD-Core Version:    0.7.0.1
  */

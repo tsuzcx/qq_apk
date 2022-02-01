@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/bqz" android:background="@drawable/a3r" android:layout_width="132.0dip" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" app:cornerRadius="4.0dip">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/m_" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/kpx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iq" android:layout_marginTop="8.699982dip" android:layout_marginRight="@dimen/iq" android:maxLines="1" />
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/m_" android:textColor="@color/a7b" android:ellipsize="end" android:id="@id/c2g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/iq" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/iq" android:maxLines="1" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/ef0" android:layout_width="112.0dip" android:layout_height="90.0dip" android:layout_marginLeft="@dimen/iq" android:layout_marginTop="5.0dip" android:layout_marginRight="@dimen/iq">
+            <ImageView android:id="@id/bv7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/iq" android:layout_width="fill_parent" android:layout_height="20.0dip"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+            <com.tencent.mm.ui.widget.MMTextView android:textSize="10.0dip" android:id="@id/jir" android:paddingRight="@dimen/iq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:text="@string/e8j" style="@style/gt" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

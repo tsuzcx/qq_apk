@@ -12,12 +12,12 @@ import android.os.Message;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.f.a.a.f.6;
-import com.tencent.mm.plugin.f.a.a.f.7;
-import com.tencent.mm.plugin.f.a.a.h;
-import com.tencent.mm.plugin.f.a.b.e.4;
-import com.tencent.mm.plugin.f.a.b.e.5;
-import com.tencent.mm.plugin.f.a.b.e.a;
+import com.tencent.mm.plugin.g.a.a.f.6;
+import com.tencent.mm.plugin.g.a.a.f.7;
+import com.tencent.mm.plugin.g.a.a.h;
+import com.tencent.mm.plugin.g.a.b.e.4;
+import com.tencent.mm.plugin.g.a.b.e.5;
+import com.tencent.mm.plugin.g.a.b.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -28,50 +28,50 @@ import junit.framework.Assert;
 
 public final class y
   extends h.a
-  implements g, com.tencent.mm.plugin.f.a.a.b, com.tencent.mm.plugin.f.a.d.a.a
+  implements g, com.tencent.mm.plugin.g.a.a.b, com.tencent.mm.plugin.g.a.d.a.a
 {
   private final MMHandler mHandler;
-  private a vjI;
-  private RemoteCallbackList<k> vjJ;
-  private RemoteCallbackList<p> vjK;
-  private RemoteCallbackList<j> vjL;
-  private RemoteCallbackList<i> vjM;
-  private RemoteCallbackList<q> vjN;
-  private RemoteCallbackList<n> vjO;
-  private final l vjP;
-  private int vjQ;
-  private final com.tencent.mm.plugin.f.a.a.f vjR;
-  private final com.tencent.mm.plugin.f.a.d.a vjS;
-  private RemoteCallbackList<j> vjT;
-  private RemoteCallbackList<k> vjU;
-  private RemoteCallbackList<s> vjV;
-  private RemoteCallbackList<t> vjW;
-  com.tencent.mm.plugin.f.a.b.e vjX;
-  private e.a vjY;
+  private a yvG;
+  private RemoteCallbackList<k> yvH;
+  private RemoteCallbackList<p> yvI;
+  private RemoteCallbackList<j> yvJ;
+  private RemoteCallbackList<i> yvK;
+  private RemoteCallbackList<q> yvL;
+  private RemoteCallbackList<n> yvM;
+  private final l yvN;
+  private int yvO;
+  private final com.tencent.mm.plugin.g.a.a.f yvP;
+  private final com.tencent.mm.plugin.g.a.d.a yvQ;
+  private RemoteCallbackList<j> yvR;
+  private RemoteCallbackList<k> yvS;
+  private RemoteCallbackList<s> yvT;
+  private RemoteCallbackList<t> yvU;
+  com.tencent.mm.plugin.g.a.b.e yvV;
+  private e.a yvW;
   
   public y()
   {
     AppMethodBeat.i(23726);
-    this.vjI = null;
-    this.vjJ = new RemoteCallbackList();
-    this.vjK = new RemoteCallbackList();
-    this.vjL = new RemoteCallbackList();
-    this.vjM = new RemoteCallbackList();
-    this.vjN = new RemoteCallbackList();
-    this.vjO = new RemoteCallbackList();
-    this.vjP = new l((byte)0);
-    this.vjQ = 0;
-    this.vjT = new RemoteCallbackList();
-    this.vjU = new RemoteCallbackList();
-    this.vjV = new RemoteCallbackList();
-    this.vjW = new RemoteCallbackList();
-    this.vjI = new a(this);
-    this.mHandler = new a(v.dam().mat.getSerialTag());
+    this.yvG = null;
+    this.yvH = new RemoteCallbackList();
+    this.yvI = new RemoteCallbackList();
+    this.yvJ = new RemoteCallbackList();
+    this.yvK = new RemoteCallbackList();
+    this.yvL = new RemoteCallbackList();
+    this.yvM = new RemoteCallbackList();
+    this.yvN = new l((byte)0);
+    this.yvO = 0;
+    this.yvR = new RemoteCallbackList();
+    this.yvS = new RemoteCallbackList();
+    this.yvT = new RemoteCallbackList();
+    this.yvU = new RemoteCallbackList();
+    this.yvG = new a(this);
+    this.mHandler = new a(v.dGF().oTi.getSerialTag());
     if (Build.VERSION.SDK_INT >= 18) {}
-    for (this.vjR = new com.tencent.mm.plugin.f.a.a.f(this);; this.vjR = null)
+    for (this.yvP = new com.tencent.mm.plugin.g.a.a.f(this);; this.yvP = null)
     {
-      this.vjS = new com.tencent.mm.plugin.f.a.d.a(this);
-      this.vjY = new e.a()
+      this.yvQ = new com.tencent.mm.plugin.g.a.d.a(this);
+      this.yvW = new e.a()
       {
         public final void a(long paramAnonymousLong1, boolean paramAnonymousBoolean, long paramAnonymousLong2)
         {
@@ -82,7 +82,7 @@ public final class y
             localObject = "true";
             Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onConnected. seesionId=%d, connected=%s, profileType=%d", new Object[] { Long.valueOf(paramAnonymousLong1), localObject, Long.valueOf(paramAnonymousLong2) });
             localObject = new y.c((byte)0);
-            ((y.c)localObject).smk = paramAnonymousLong1;
+            ((y.c)localObject).vyj = paramAnonymousLong1;
             if (!paramAnonymousBoolean) {
               break label154;
             }
@@ -90,10 +90,10 @@ public final class y
           label154:
           for (int i = 2;; i = 4)
           {
-            ((y.c)localObject).viP = i;
-            ((y.c)localObject).viO = 1;
-            ((y.c)localObject).vdb = 0;
-            ((y.c)localObject).sjI = paramAnonymousLong2;
+            ((y.c)localObject).yuO = i;
+            ((y.c)localObject).yuN = 1;
+            ((y.c)localObject).yoO = 0;
+            ((y.c)localObject).vvH = paramAnonymousLong2;
             if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(9, localObject))) {
               Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(9) });
             }
@@ -109,22 +109,22 @@ public final class y
           AppMethodBeat.i(23720);
           Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscover. deviceMac=%s, deviceName=%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
           y.g localg = new y.g((byte)0);
-          localg.vkd = false;
-          localg.smo = paramAnonymousString1;
+          localg.ywb = false;
+          localg.vyn = paramAnonymousString1;
           localg.mDeviceName = paramAnonymousString2;
-          localg.oLi = paramAnonymousInt;
-          localg.vke = paramAnonymousArrayOfByte;
+          localg.rPb = paramAnonymousInt;
+          localg.ywc = paramAnonymousArrayOfByte;
           if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(13, localg))) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
           }
           AppMethodBeat.o(23720);
         }
         
-        public final void b(long paramAnonymousLong, byte[] paramAnonymousArrayOfByte)
+        public final void c(long paramAnonymousLong, byte[] paramAnonymousArrayOfByte)
         {
           AppMethodBeat.i(23718);
           y.f localf = new y.f((byte)0);
-          localf.vga = paramAnonymousLong;
+          localf.yrY = paramAnonymousLong;
           localf.mData = paramAnonymousArrayOfByte;
           if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(12, localf))) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(12) });
@@ -132,23 +132,23 @@ public final class y
           AppMethodBeat.o(23718);
         }
         
-        public final void cxZ()
+        public final void daR()
         {
           AppMethodBeat.i(23721);
           Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDiscoverFinished");
           y.g localg = new y.g((byte)0);
-          localg.vkd = true;
-          localg.smo = null;
+          localg.ywb = true;
+          localg.vyn = null;
           localg.mDeviceName = null;
-          localg.oLi = 0;
-          localg.vke = null;
+          localg.rPb = 0;
+          localg.ywc = null;
           if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(13, localg))) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(13) });
           }
           AppMethodBeat.o(23721);
         }
         
-        public final void m(long paramAnonymousLong, boolean paramAnonymousBoolean)
+        public final void s(long paramAnonymousLong, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(23719);
           Object localObject;
@@ -157,15 +157,15 @@ public final class y
             localObject = "true";
             Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onSend. sessionId=%d, success=%s", new Object[] { Long.valueOf(paramAnonymousLong), localObject });
             localObject = new y.h((byte)0);
-            ((y.h)localObject).vga = paramAnonymousLong;
+            ((y.h)localObject).yrY = paramAnonymousLong;
             if (!paramAnonymousBoolean) {
               break label136;
             }
-            ((y.h)localObject).vdn = 0;
+            ((y.h)localObject).ypa = 0;
           }
-          for (((y.h)localObject).vdb = 0;; ((y.h)localObject).vdb = -1)
+          for (((y.h)localObject).yoO = 0;; ((y.h)localObject).yoO = -1)
           {
-            ((y.h)localObject).ovI = "";
+            ((y.h)localObject).rzc = "";
             if (!y.a(y.this).sendMessage(y.a(y.this).obtainMessage(11, localObject))) {
               Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(11) });
             }
@@ -174,7 +174,7 @@ public final class y
             localObject = "false";
             break;
             label136:
-            ((y.h)localObject).vdn = -1;
+            ((y.h)localObject).ypa = -1;
           }
         }
       };
@@ -183,7 +183,7 @@ public final class y
         public final void run()
         {
           AppMethodBeat.i(23722);
-          y.a(y.this, new com.tencent.mm.plugin.f.a.b.e(y.b(y.this)));
+          y.a(y.this, new com.tencent.mm.plugin.g.a.b.e(y.b(y.this)));
           AppMethodBeat.o(23722);
         }
       });
@@ -320,7 +320,7 @@ public final class y
       AppMethodBeat.o(23738);
       return false;
     }
-    a locala = this.vjI;
+    a locala = this.yvG;
     Log.i("MicroMsg.exdevice.BTDeviceManager", "startTask, taskId = %d", new Object[] { Long.valueOf(paramLong) });
     Assert.assertNotNull(paramp);
     a.g localg = new a.g(paramLong, paramp);
@@ -332,7 +332,7 @@ public final class y
       AppMethodBeat.o(23738);
       return false;
     }
-    if (!a(this.vjK, paramLong, paramp))
+    if (!a(this.yvI, paramLong, paramp))
     {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registerRemoteCB Fail!!!");
       d(paramLong, -1, -1, "registerRemoteCB Fail!!!");
@@ -347,7 +347,7 @@ public final class y
   {
     AppMethodBeat.i(23728);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistOnscanCallback");
-    boolean bool = this.vjL.unregister(paramj);
+    boolean bool = this.yvJ.unregister(paramj);
     if (!bool) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnScanCallback.unregister Failed!!!");
     }
@@ -355,7 +355,7 @@ public final class y
     {
       AppMethodBeat.o(23728);
       return bool;
-      this.vjQ -= 1;
+      this.yvO -= 1;
     }
   }
   
@@ -363,22 +363,22 @@ public final class y
   {
     AppMethodBeat.i(23744);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onTaskEndImp taskId = %d, errType = %d, errCode =%d, errMsg = %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    int i = this.vjK.beginBroadcast();
-    p localp = (p)a(paramLong, this.vjK, i);
+    int i = this.yvI.beginBroadcast();
+    p localp = (p)a(paramLong, this.yvI, i);
     if (localp == null)
     {
       Log.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By taskId = ".concat(String.valueOf(paramLong)));
-      this.vjK.finishBroadcast();
+      this.yvI.finishBroadcast();
       AppMethodBeat.o(23744);
       return;
     }
     try
     {
-      localp.dae().a(paramLong, paramInt1, paramInt2, paramString, localp);
-      if (!a(this.vjK, paramLong, localp, i)) {
+      localp.dGx().a(paramLong, paramInt1, paramInt2, paramString, localp);
+      if (!a(this.yvI, paramLong, localp, i)) {
         Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegisterRemoteCB failed!!!");
       }
-      this.vjK.finishBroadcast();
+      this.yvI.finishBroadcast();
       AppMethodBeat.o(23744);
       return;
     }
@@ -403,7 +403,7 @@ public final class y
       throw paramj;
     }
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registOnscanCallback");
-    boolean bool = this.vjL.register(paramj);
+    boolean bool = this.yvJ.register(paramj);
     if (!bool) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnScanCallback.register Failed!!!");
     }
@@ -415,7 +415,7 @@ public final class y
           paramj.a(0, -1, "scanImp: registScanCallback failed!!!", "", "", 0, null);
           AppMethodBeat.o(23730);
           return false;
-          this.vjQ += 1;
+          this.yvO += 1;
         }
         catch (RemoteException paramj)
         {
@@ -427,7 +427,7 @@ public final class y
         }
       }
     }
-    a locala = this.vjI;
+    a locala = this.yvG;
     Log.i("MicroMsg.exdevice.BTDeviceManager", "------scan------ bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
     if (!b.a(paramInt, locala, new int[0]))
     {
@@ -469,7 +469,7 @@ public final class y
       AppMethodBeat.o(23732);
       return false;
     }
-    boolean bool = a.Kh(paramInt);
+    boolean bool = a.Lg(paramInt);
     if (!bool) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
     }
@@ -492,11 +492,11 @@ public final class y
     }
   }
   
-  public final void Gr(int paramInt)
+  public final void GQ(int paramInt)
   {
     AppMethodBeat.i(23751);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "OnBluetoothStateChange, state = %d", new Object[] { Integer.valueOf(paramInt) });
-    int i = this.vjO.beginBroadcast() - 1;
+    int i = this.yvM.beginBroadcast() - 1;
     for (;;)
     {
       if (i >= 0)
@@ -505,7 +505,7 @@ public final class y
         localBundle.putInt("key_state", paramInt);
         try
         {
-          ((n)this.vjO.getBroadcastItem(i)).p(0, localBundle);
+          ((n)this.yvM.getBroadcastItem(i)).r(0, localBundle);
           i -= 1;
         }
         catch (RemoteException localRemoteException)
@@ -518,72 +518,8 @@ public final class y
         }
       }
     }
-    this.vjO.finishBroadcast();
+    this.yvM.finishBroadcast();
     AppMethodBeat.o(23751);
-  }
-  
-  public final boolean Js(long paramLong)
-  {
-    AppMethodBeat.i(23737);
-    Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopChannel deviceId = %d", new Object[] { Long.valueOf(paramLong) });
-    if (paramLong < 0L)
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(23737);
-      return false;
-    }
-    if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(4, Long.valueOf(paramLong))))
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! message what = %d", new Object[] { Integer.valueOf(4) });
-      AppMethodBeat.o(23737);
-      return false;
-    }
-    AppMethodBeat.o(23737);
-    return true;
-  }
-  
-  public final boolean Jt(long paramLong)
-  {
-    return false;
-  }
-  
-  public final boolean Ju(long paramLong)
-  {
-    AppMethodBeat.i(23740);
-    Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopTask, task Id = %d", new Object[] { Long.valueOf(paramLong) });
-    if (paramLong < 0L)
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "taskId < 0");
-      AppMethodBeat.o(23740);
-      return false;
-    }
-    if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(1, Long.valueOf(paramLong))))
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage, message what = %d", new Object[] { Integer.valueOf(1) });
-      AppMethodBeat.o(23740);
-      return false;
-    }
-    AppMethodBeat.o(23740);
-    return true;
-  }
-  
-  public final boolean Jv(long paramLong)
-  {
-    AppMethodBeat.i(23756);
-    if (paramLong < 0L)
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(23756);
-      return false;
-    }
-    if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(8, Long.valueOf(paramLong))))
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(8) });
-      AppMethodBeat.o(23756);
-      return false;
-    }
-    AppMethodBeat.o(23756);
-    return true;
   }
   
   public final long a(p paramp)
@@ -596,14 +532,14 @@ public final class y
       AppMethodBeat.o(23739);
       return -1L;
     }
-    l locall = this.vjP;
-    if (9223372036854775807L == locall.viQ)
+    l locall = this.yvN;
+    if (9223372036854775807L == locall.yuP)
     {
       Log.w("MicroMsg.TaskId", "TaskId Data-overrun!!!");
-      locall.viQ = 0L;
+      locall.yuP = 0L;
     }
-    long l = locall.viQ;
-    locall.viQ = (1L + l);
+    long l = locall.yuP;
+    locall.yuP = (1L + l);
     paramp = new k(l, paramp);
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(0, paramp)))
     {
@@ -615,7 +551,7 @@ public final class y
     return l;
   }
   
-  public final void a(double paramDouble, com.tencent.mm.plugin.f.a.a.c paramc)
+  public final void a(double paramDouble, com.tencent.mm.plugin.g.a.a.c paramc)
   {
     AppMethodBeat.i(23750);
     if (paramc == null)
@@ -624,18 +560,18 @@ public final class y
       AppMethodBeat.o(23750);
       return;
     }
-    h localh = paramc.shU.shZ;
-    Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onRangingCallback, distance = %f, uuid = %s, major = %d, minor = %d ,minor&0xFFFF = %d", new Object[] { Double.valueOf(paramDouble), com.tencent.mm.plugin.exdevice.k.b.bK(localh.siC), Short.valueOf(localh.siD), Short.valueOf(localh.siE), Integer.valueOf(localh.siE & 0xFFFF) });
+    h localh = paramc.vtV.vua;
+    Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onRangingCallback, distance = %f, uuid = %s, major = %d, minor = %d ,minor&0xFFFF = %d", new Object[] { Double.valueOf(paramDouble), com.tencent.mm.plugin.exdevice.k.b.bK(localh.vuB), Short.valueOf(localh.vuC), Short.valueOf(localh.vuD), Integer.valueOf(localh.vuD & 0xFFFF) });
     try
     {
-      int j = this.vjN.beginBroadcast();
+      int j = this.yvL.beginBroadcast();
       int i = 0;
       for (;;)
       {
         if (i < j) {
           try
           {
-            ((q)this.vjN.getBroadcastItem(i)).a(paramDouble, localh.siD, localh.siE, localh.siC, paramc.shV, paramc.shU.shZ.siF, paramc.shW);
+            ((q)this.yvL.getBroadcastItem(i)).a(paramDouble, localh.vuC, localh.vuD, localh.vuB, paramc.vtW, paramc.vtV.vua.vuE, paramc.vtX);
             i += 1;
           }
           catch (RemoteException localRemoteException)
@@ -658,7 +594,7 @@ public final class y
     }
     finally
     {
-      this.vjN.finishBroadcast();
+      this.yvL.finishBroadcast();
       AppMethodBeat.o(23750);
     }
   }
@@ -666,17 +602,17 @@ public final class y
   public final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23743);
-    int j = this.vjL.beginBroadcast();
+    int j = this.yvJ.beginBroadcast();
     int i = 0;
     for (;;)
     {
       if (i >= j) {
-        break label129;
+        break label132;
       }
       try
       {
-        ((j)this.vjL.getBroadcastItem(i)).a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramArrayOfByte);
-        if ((2 == paramInt1) && (!this.vjL.unregister(this.vjL.getBroadcastItem(i)))) {
+        ((j)this.yvJ.getBroadcastItem(i)).a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramArrayOfByte);
+        if ((2 == paramInt1) && (!this.yvJ.unregister((j)this.yvJ.getBroadcastItem(i)))) {
           Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onScanCallback: mCBListOnScanCallback.unregister failed!!!");
         }
       }
@@ -690,8 +626,8 @@ public final class y
       }
       i += 1;
     }
-    label129:
-    this.vjL.finishBroadcast();
+    label132:
+    this.yvJ.finishBroadcast();
     AppMethodBeat.o(23743);
   }
   
@@ -703,10 +639,10 @@ public final class y
     {
       Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onDeviceRequest errorCode = %d, deviceId = %d, seq = %d, cmdId = %d, data length = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Short.valueOf(paramShort1), Short.valueOf(paramShort2), Integer.valueOf(i) });
       b localb = new b((byte)0);
-      localb.viN = paramShort2;
-      localb.vdc = paramArrayOfByte;
-      localb.smk = paramLong;
-      localb.vdi = paramShort1;
+      localb.yuM = paramShort2;
+      localb.yoP = paramArrayOfByte;
+      localb.vyj = paramLong;
+      localb.yoV = paramShort1;
       localb.mErrorCode = paramInt;
       if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(6, localb))) {
         Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(6) });
@@ -721,10 +657,10 @@ public final class y
     AppMethodBeat.i(23747);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onStateChange deviceId = " + paramLong + " oldState" + paramInt1 + " newState = " + paramInt2 + " errCode = " + paramInt3);
     c localc = new c((byte)0);
-    localc.smk = paramLong;
-    localc.viO = paramInt1;
-    localc.viP = paramInt2;
-    localc.vdb = paramInt3;
+    localc.vyj = paramLong;
+    localc.yuN = paramInt1;
+    localc.yuO = paramInt2;
+    localc.yoO = paramInt3;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(5, localc))) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, messagewhat = %d", new Object[] { Integer.valueOf(5) });
     }
@@ -735,7 +671,7 @@ public final class y
   {
     AppMethodBeat.i(23752);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registExDeviceInvokerHandler");
-    if (!this.vjO.register(paramn)) {
+    if (!this.yvM.register(paramn)) {
       Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIExDeviceInvoker.register failed!!!");
     }
     AppMethodBeat.o(23752);
@@ -778,7 +714,7 @@ public final class y
   {
     AppMethodBeat.i(23741);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "registOnDeviceRequest");
-    boolean bool = this.vjM.register(parami);
+    boolean bool = this.yvK.register(parami);
     if (!bool) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnDeviceReq.register Failed!!!");
     }
@@ -795,7 +731,7 @@ public final class y
       AppMethodBeat.o(23757);
       return false;
     }
-    boolean bool = this.vjV.register(params);
+    boolean bool = this.yvT.register(params);
     if (!bool) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBluetoothRegistOnRecv error");
     }
@@ -806,7 +742,7 @@ public final class y
   public final boolean a(String paramString, boolean paramBoolean, q paramq)
   {
     AppMethodBeat.i(23749);
-    if ((Build.VERSION.SDK_INT < 18) || (this.vjR == null))
+    if ((Build.VERSION.SDK_INT < 18) || (this.yvP == null))
     {
       AppMethodBeat.o(23749);
       return false;
@@ -819,7 +755,7 @@ public final class y
       return false;
     }
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
-    if (!this.vjN.register(paramq))
+    if (!this.yvL.register(paramq))
     {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.register failed!!!");
       AppMethodBeat.o(23749);
@@ -827,12 +763,12 @@ public final class y
     }
     for (;;)
     {
-      com.tencent.mm.plugin.f.a.a.f localf;
+      com.tencent.mm.plugin.g.a.a.f localf;
       try
       {
         localObject = UUID.fromString(paramString);
-        localf = this.vjR;
-        com.tencent.mm.plugin.f.a.a.f.sie = MMApplicationContext.getContext().getSharedPreferences("com.tencent.mm_exdevice_ibeacon_isNewScanning", 4).getBoolean("isNewScanning", false);
+        localf = this.yvP;
+        com.tencent.mm.plugin.g.a.a.f.vuf = MMApplicationContext.getContext().getSharedPreferences("com.tencent.mm_exdevice_ibeacon_isNewScanning", 4).getBoolean("isNewScanning", false);
         if (localObject == null)
         {
           paramString = "";
@@ -865,7 +801,7 @@ public final class y
       }
     }
     Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mIBeaconServer.ranging failed!!!");
-    if (!this.vjN.unregister(paramq)) {
+    if (!this.yvL.unregister(paramq)) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListIBeaconCallback.unregister failed!!!");
     }
     AppMethodBeat.o(23749);
@@ -904,12 +840,12 @@ public final class y
   {
     AppMethodBeat.i(23761);
     Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSateChangeImpl. mac=%d, oldstate = %d, newsate=%d, errcode=%d", new Object[] { Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    int i = this.vjU.beginBroadcast();
-    k localk = (k)a(paramLong1, this.vjU, i);
+    int i = this.yvS.beginBroadcast();
+    k localk = (k)a(paramLong1, this.yvS, i);
     if (localk == null)
     {
       Log.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong1)));
-      this.vjU.finishBroadcast();
+      this.yvS.finishBroadcast();
       AppMethodBeat.o(23761);
       return false;
     }
@@ -926,7 +862,7 @@ public final class y
     }
     finally
     {
-      this.vjU.finishBroadcast();
+      this.yvS.finishBroadcast();
       AppMethodBeat.o(23761);
     }
   }
@@ -953,9 +889,9 @@ public final class y
       return false;
     }
     e locale = new e((byte)0);
-    locale.vga = paramLong;
-    locale.vkb = paramInt;
-    locale.vkc = paramk;
+    locale.yrY = paramLong;
+    locale.yvZ = paramInt;
+    locale.ywa = paramk;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(7, locale)))
     {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(7) });
@@ -988,9 +924,9 @@ public final class y
       return false;
     }
     i locali = new i((byte)0);
-    locali.vga = paramLong;
+    locali.yrY = paramLong;
     locali.mData = paramArrayOfByte;
-    locali.vkf = paramt;
+    locali.ywd = paramt;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(10, locali)))
     {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(10) });
@@ -1005,7 +941,7 @@ public final class y
   {
     AppMethodBeat.i(23742);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "unRegistOnDeviceRequest");
-    boolean bool = this.vjM.unregister(parami);
+    boolean bool = this.yvK.unregister(parami);
     if (!bool) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mCBListOnDeviceReq.unregister Failed!!!");
     }
@@ -1018,10 +954,10 @@ public final class y
     AppMethodBeat.i(23745);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "onTaskEnd taskId = %d, errTpye = %d, errCode = %d, errMsg = %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     d locald = new d();
-    locald.viQ = paramLong;
-    locald.vdn = paramInt1;
-    locald.vdb = paramInt2;
-    locald.ovI = paramString;
+    locald.yuP = paramLong;
+    locald.ypa = paramInt1;
+    locald.yoO = paramInt2;
+    locald.rzc = paramString;
     if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(2, locald))) {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, MessageWhat = %d", new Object[] { Integer.valueOf(2) });
     }
@@ -1060,7 +996,7 @@ public final class y
   {
     AppMethodBeat.i(23759);
     Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTConnectImpl. mac=%d, bTVersion=%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    if (!a(this.vjU, paramLong, paramk))
+    if (!a(this.yvS, paramLong, paramk))
     {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "register connect callback error");
       try
@@ -1080,11 +1016,11 @@ public final class y
     try
     {
       paramk.a(paramLong, -1, 1, -1, 0L);
-      if (this.vjX != null)
+      if (this.yvV != null)
       {
-        com.tencent.mm.plugin.f.a.b.e locale = this.vjX;
+        com.tencent.mm.plugin.g.a.b.e locale = this.yvV;
         Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "connect. mac = %d", new Object[] { Long.valueOf(paramLong) });
-        if (!locale.cxY())
+        if (!locale.daQ())
         {
           Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
           bool = false;
@@ -1108,19 +1044,19 @@ public final class y
           localRemoteException = localRemoteException;
           Log.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", localRemoteException, "", new Object[0]);
           continue;
-          com.tencent.mm.plugin.f.a.b.f localf = (com.tencent.mm.plugin.f.a.b.f)localRemoteException.siN.get(Long.valueOf(paramLong));
+          com.tencent.mm.plugin.g.a.b.f localf = (com.tencent.mm.plugin.g.a.b.f)localRemoteException.vuM.get(Long.valueOf(paramLong));
           if (localf != null)
           {
             Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "session(mac=%s) has been in map");
-            bool = localf.cyb();
+            bool = localf.cmB();
           }
           else
           {
-            localf = new com.tencent.mm.plugin.f.a.b.f(paramLong, localRemoteException.mAppContext, localRemoteException.sjx);
-            if (!localf.cyb()) {
+            localf = new com.tencent.mm.plugin.g.a.b.f(paramLong, localRemoteException.mAppContext, localRemoteException.vvw);
+            if (!localf.cmB()) {
               break;
             }
-            localRemoteException.al(new e.4(localRemoteException, paramLong, localf));
+            localRemoteException.at(new e.4(localRemoteException, paramLong, localf));
             bool = true;
           }
         }
@@ -1144,12 +1080,12 @@ public final class y
   {
     AppMethodBeat.i(23760);
     Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTSendDataImpl. mac=%d, data=%s", new Object[] { Long.valueOf(paramLong), com.tencent.mm.plugin.exdevice.k.b.bK(paramArrayOfByte) });
-    if (this.vjX != null)
+    if (this.yvV != null)
     {
-      Object localObject = this.vjX;
+      Object localObject = this.yvV;
       Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "writeData. mac = %d", new Object[] { Long.valueOf(paramLong) });
       boolean bool;
-      if (!((com.tencent.mm.plugin.f.a.b.e)localObject).cxY())
+      if (!((com.tencent.mm.plugin.g.a.b.e)localObject).daQ())
       {
         Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
         bool = false;
@@ -1165,7 +1101,7 @@ public final class y
             paramt.b(paramLong, -1, -1, "start write data error");
             AppMethodBeat.o(23760);
             return false;
-            localObject = (com.tencent.mm.plugin.f.a.b.f)((com.tencent.mm.plugin.f.a.b.e)localObject).siN.get(Long.valueOf(paramLong));
+            localObject = (com.tencent.mm.plugin.g.a.b.f)((com.tencent.mm.plugin.g.a.b.e)localObject).vuM.get(Long.valueOf(paramLong));
             if (localObject == null)
             {
               Log.w("MicroMsg.exdevice.BluetoothLESimpleManager", "session is null, may be this session is closed");
@@ -1173,8 +1109,8 @@ public final class y
             }
             else
             {
-              Log.i("MicroMsg.exdevice.BluetoothLESimpleSession", "------writeData------parserobj, length = %d, mac=%s, name=%s", new Object[] { Integer.valueOf(paramArrayOfByte.length), com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.f.a.b.f)localObject).mSessionId), ((com.tencent.mm.plugin.f.a.b.f)localObject).oLg.getName() });
-              bool = ((com.tencent.mm.plugin.f.a.b.f)localObject).mHandler.sendMessage(((com.tencent.mm.plugin.f.a.b.f)localObject).mHandler.obtainMessage(3, paramArrayOfByte));
+              Log.i("MicroMsg.exdevice.BluetoothLESimpleSession", "------writeData------parserobj, length = %d, mac=%s, name=%s", new Object[] { Integer.valueOf(paramArrayOfByte.length), com.tencent.mm.plugin.exdevice.k.b.lO(((com.tencent.mm.plugin.g.a.b.f)localObject).mSessionId), ((com.tencent.mm.plugin.g.a.b.f)localObject).rOZ.getName() });
+              bool = ((com.tencent.mm.plugin.g.a.b.f)localObject).mHandler.sendMessage(((com.tencent.mm.plugin.g.a.b.f)localObject).mHandler.obtainMessage(3, paramArrayOfByte));
             }
           }
           catch (RemoteException paramArrayOfByte)
@@ -1187,7 +1123,7 @@ public final class y
         }
       }
     }
-    if (!a(this.vjW, paramLong, paramt))
+    if (!a(this.yvU, paramLong, paramt))
     {
       Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "register on send end callback error");
       AppMethodBeat.o(23760);
@@ -1195,14 +1131,6 @@ public final class y
     }
     AppMethodBeat.o(23760);
     return true;
-  }
-  
-  public final long[] cZN()
-  {
-    AppMethodBeat.i(23733);
-    long[] arrayOfLong = a.cZN();
-    AppMethodBeat.o(23733);
-    return arrayOfLong;
   }
   
   public final boolean d(int paramInt, j paramj)
@@ -1221,23 +1149,23 @@ public final class y
       AppMethodBeat.o(23753);
       return false;
     }
-    boolean bool3 = this.vjT.register(paramj);
+    boolean bool3 = this.yvR.register(paramj);
     if (bool3) {
       Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "regist simple ble scan callback ok");
     }
     for (;;)
     {
-      if (this.vjX != null)
+      if (this.yvV != null)
       {
-        com.tencent.mm.plugin.f.a.b.e locale = this.vjX;
+        com.tencent.mm.plugin.g.a.b.e locale = this.yvV;
         Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble scan");
         boolean bool1;
-        if (locale.siP != null)
+        if (locale.vuO != null)
         {
           bool1 = true;
           label120:
           Assert.assertTrue(bool1);
-          if (locale.cxY()) {
+          if (locale.daQ()) {
             break label212;
           }
           Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
@@ -1252,7 +1180,7 @@ public final class y
         {
           paramj.a(0, -1, "simpleBLE.scan failed!!!", "", "", 0, null);
           if (bool3) {
-            this.vjT.unregister(paramj);
+            this.yvR.unregister(paramj);
           }
           AppMethodBeat.o(23753);
           return false;
@@ -1261,12 +1189,12 @@ public final class y
           bool1 = false;
           break label120;
           label212:
-          boolean bool2 = locale.siP.a(true, locale.siS);
+          boolean bool2 = locale.vuO.a(true, locale.vuR);
           bool1 = bool2;
           if (!bool2) {
             break label143;
           }
-          locale.sjv.clear();
+          locale.vvu.clear();
           bool1 = bool2;
         }
         catch (RemoteException localRemoteException)
@@ -1284,8 +1212,101 @@ public final class y
     return true;
   }
   
+  public final long[] dGg()
+  {
+    AppMethodBeat.i(23733);
+    long[] arrayOfLong = a.dGg();
+    AppMethodBeat.o(23733);
+    return arrayOfLong;
+  }
+  
+  public final boolean e(int paramInt, j paramj)
+  {
+    AppMethodBeat.i(23754);
+    Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBlutoothStopScan. bluetoothVersion=%d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramj == null)
+    {
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan callback is null. just return");
+      AppMethodBeat.o(23754);
+      return false;
+    }
+    if (this.yvV == null)
+    {
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan mBLESimpleMgr is null. just return");
+      AppMethodBeat.o(23754);
+      return false;
+    }
+    com.tencent.mm.plugin.g.a.b.e locale = this.yvV;
+    Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble stop scan");
+    boolean bool;
+    if (locale.vuO != null) {
+      bool = true;
+    }
+    for (;;)
+    {
+      Assert.assertTrue(bool);
+      if (!locale.daQ())
+      {
+        Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
+        bool = false;
+        if (!bool) {
+          Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
+        }
+      }
+      try
+      {
+        paramj.a(0, -1, "simpleBLE.stopScan failed!!!", "", "", 0, null);
+        AppMethodBeat.o(23754);
+        return bool;
+        bool = false;
+        continue;
+        locale.mHandler.removeCallbacks(locale.mRunnable);
+        bool = locale.vuO.a(false, locale.vuR);
+      }
+      catch (RemoteException paramj)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBLE.onScanCallback failed!!!, %s", new Object[] { paramj.getMessage() });
+          Log.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramj, "", new Object[0]);
+        }
+      }
+    }
+  }
+  
+  public final boolean e(long paramLong, int paramInt1, int paramInt2, String paramString)
+  {
+    AppMethodBeat.i(23762);
+    Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl. mac=%d, errType = %d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    int i = this.yvU.beginBroadcast();
+    t localt = (t)a(paramLong, this.yvU, i);
+    if (localt == null)
+    {
+      Log.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong)));
+      this.yvU.finishBroadcast();
+      AppMethodBeat.o(23762);
+      return false;
+    }
+    try
+    {
+      localt.b(paramLong, paramInt1, paramInt2, paramString);
+      return true;
+    }
+    catch (RemoteException paramString)
+    {
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onSendEnd Failed!!!");
+      Log.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramString, "", new Object[0]);
+      return false;
+    }
+    finally
+    {
+      this.yvU.finishBroadcast();
+      AppMethodBeat.o(23762);
+    }
+  }
+  
   /* Error */
-  public final boolean d(long paramLong, byte[] paramArrayOfByte)
+  public final boolean e(long paramLong, byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: iconst_0
@@ -1294,10 +1315,10 @@ public final class y
     //   6: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_3
     //   10: ifnonnull +105 -> 115
-    //   13: ldc_w 1047
+    //   13: ldc_w 1061
     //   16: astore 6
     //   18: ldc 192
-    //   20: ldc_w 1049
+    //   20: ldc_w 1063
     //   23: iconst_2
     //   24: anewarray 196	java/lang/Object
     //   27: dup
@@ -1311,11 +1332,11 @@ public final class y
     //   38: aastore
     //   39: invokestatic 341	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: aload_0
-    //   43: getfield 128	com/tencent/mm/plugin/exdevice/service/y:vjV	Landroid/os/RemoteCallbackList;
+    //   43: getfield 128	com/tencent/mm/plugin/exdevice/service/y:yvT	Landroid/os/RemoteCallbackList;
     //   46: invokevirtual 251	android/os/RemoteCallbackList:beginBroadcast	()I
     //   49: istore 5
     //   51: ldc 192
-    //   53: ldc_w 1051
+    //   53: ldc_w 1065
     //   56: iconst_1
     //   57: anewarray 196	java/lang/Object
     //   60: dup
@@ -1328,33 +1349,33 @@ public final class y
     //   73: iload 5
     //   75: if_icmpge +97 -> 172
     //   78: aload_0
-    //   79: getfield 128	com/tencent/mm/plugin/exdevice/service/y:vjV	Landroid/os/RemoteCallbackList;
+    //   79: getfield 128	com/tencent/mm/plugin/exdevice/service/y:yvT	Landroid/os/RemoteCallbackList;
     //   82: iload 4
     //   84: invokevirtual 255	android/os/RemoteCallbackList:getBroadcastItem	(I)Landroid/os/IInterface;
-    //   87: checkcast 1053	com/tencent/mm/plugin/exdevice/service/s
+    //   87: checkcast 1067	com/tencent/mm/plugin/exdevice/service/s
     //   90: astore 6
     //   92: aload 6
     //   94: ifnull +30 -> 124
     //   97: aload 6
     //   99: lload_1
     //   100: aload_3
-    //   101: invokeinterface 1056 4 0
+    //   101: invokeinterface 1070 4 0
     //   106: iload 4
     //   108: iconst_1
     //   109: iadd
     //   110: istore 4
     //   112: goto -41 -> 71
     //   115: aload_3
-    //   116: invokestatic 675	com/tencent/mm/plugin/exdevice/k/b:bK	([B)Ljava/lang/String;
+    //   116: invokestatic 658	com/tencent/mm/plugin/exdevice/k/b:bK	([B)Ljava/lang/String;
     //   119: astore 6
     //   121: goto -103 -> 18
     //   124: ldc 192
-    //   126: ldc_w 1058
+    //   126: ldc_w 1072
     //   129: invokestatic 233	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   132: goto -26 -> 106
     //   135: astore_3
     //   136: ldc 192
-    //   138: ldc_w 1060
+    //   138: ldc_w 1074
     //   141: invokestatic 233	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: ldc 192
     //   146: aload_3
@@ -1363,19 +1384,19 @@ public final class y
     //   151: anewarray 196	java/lang/Object
     //   154: invokestatic 281	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   157: aload_0
-    //   158: getfield 128	com/tencent/mm/plugin/exdevice/service/y:vjV	Landroid/os/RemoteCallbackList;
+    //   158: getfield 128	com/tencent/mm/plugin/exdevice/service/y:yvT	Landroid/os/RemoteCallbackList;
     //   161: invokevirtual 284	android/os/RemoteCallbackList:finishBroadcast	()V
     //   164: sipush 23763
     //   167: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: iconst_1
     //   171: ireturn
     //   172: aload_0
-    //   173: getfield 128	com/tencent/mm/plugin/exdevice/service/y:vjV	Landroid/os/RemoteCallbackList;
+    //   173: getfield 128	com/tencent/mm/plugin/exdevice/service/y:yvT	Landroid/os/RemoteCallbackList;
     //   176: invokevirtual 284	android/os/RemoteCallbackList:finishBroadcast	()V
     //   179: goto -15 -> 164
     //   182: astore_3
     //   183: aload_0
-    //   184: getfield 128	com/tencent/mm/plugin/exdevice/service/y:vjV	Landroid/os/RemoteCallbackList;
+    //   184: getfield 128	com/tencent/mm/plugin/exdevice/service/y:yvT	Landroid/os/RemoteCallbackList;
     //   187: invokevirtual 284	android/os/RemoteCallbackList:finishBroadcast	()V
     //   190: sipush 23763
     //   193: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1400,96 +1421,75 @@ public final class y
     //   136	157	182	finally
   }
   
-  public final boolean e(int paramInt, j paramj)
+  public final boolean lI(long paramLong)
   {
-    AppMethodBeat.i(23754);
-    Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBlutoothStopScan. bluetoothVersion=%d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramj == null)
+    AppMethodBeat.i(23737);
+    Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopChannel deviceId = %d", new Object[] { Long.valueOf(paramLong) });
+    if (paramLong < 0L)
     {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan callback is null. just return");
-      AppMethodBeat.o(23754);
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(23737);
       return false;
     }
-    if (this.vjX == null)
+    if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(4, Long.valueOf(paramLong))))
     {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stop scan mBLESimpleMgr is null. just return");
-      AppMethodBeat.o(23754);
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!! message what = %d", new Object[] { Integer.valueOf(4) });
+      AppMethodBeat.o(23737);
       return false;
     }
-    com.tencent.mm.plugin.f.a.b.e locale = this.vjX;
-    Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "simple ble stop scan");
-    boolean bool;
-    if (locale.siP != null) {
-      bool = true;
-    }
-    for (;;)
-    {
-      Assert.assertTrue(bool);
-      if (!locale.cxY())
-      {
-        Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
-        bool = false;
-        if (!bool) {
-          Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mBTDeviceMrg.stopScan Failed!!!");
-        }
-      }
-      try
-      {
-        paramj.a(0, -1, "simpleBLE.stopScan failed!!!", "", "", 0, null);
-        AppMethodBeat.o(23754);
-        return bool;
-        bool = false;
-        continue;
-        locale.mHandler.removeCallbacks(locale.mRunnable);
-        bool = locale.siP.a(false, locale.siS);
-      }
-      catch (RemoteException paramj)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBLE.onScanCallback failed!!!, %s", new Object[] { paramj.getMessage() });
-          Log.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramj, "", new Object[0]);
-        }
-      }
-    }
+    AppMethodBeat.o(23737);
+    return true;
   }
   
-  public final boolean e(long paramLong, int paramInt1, int paramInt2, String paramString)
+  public final boolean lJ(long paramLong)
   {
-    AppMethodBeat.i(23762);
-    Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl. mac=%d, errType = %d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    int i = this.vjW.beginBroadcast();
-    t localt = (t)a(paramLong, this.vjW, i);
-    if (localt == null)
+    return false;
+  }
+  
+  public final boolean lK(long paramLong)
+  {
+    AppMethodBeat.i(23740);
+    Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "stopTask, task Id = %d", new Object[] { Long.valueOf(paramLong) });
+    if (paramLong < 0L)
     {
-      Log.w("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Cannot find Callback By deviceId = ".concat(String.valueOf(paramLong)));
-      this.vjW.finishBroadcast();
-      AppMethodBeat.o(23762);
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "taskId < 0");
+      AppMethodBeat.o(23740);
       return false;
     }
-    try
+    if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(1, Long.valueOf(paramLong))))
     {
-      localt.b(paramLong, paramInt1, paramInt2, paramString);
-      return true;
-    }
-    catch (RemoteException paramString)
-    {
-      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "callback.onSendEnd Failed!!!");
-      Log.printErrStackTrace("MicroMsg.exdevice.RemoteBTDeviceAdapter", paramString, "", new Object[0]);
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage, message what = %d", new Object[] { Integer.valueOf(1) });
+      AppMethodBeat.o(23740);
       return false;
     }
-    finally
+    AppMethodBeat.o(23740);
+    return true;
+  }
+  
+  public final boolean lL(long paramLong)
+  {
+    AppMethodBeat.i(23756);
+    if (paramLong < 0L)
     {
-      this.vjW.finishBroadcast();
-      AppMethodBeat.o(23762);
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "Invalid device id = %d", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(23756);
+      return false;
     }
+    if (!this.mHandler.sendMessage(this.mHandler.obtainMessage(8, Long.valueOf(paramLong))))
+    {
+      Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "mHandler.sendMessage failed!!!, message what = %d", new Object[] { Integer.valueOf(8) });
+      AppMethodBeat.o(23756);
+      return false;
+    }
+    AppMethodBeat.o(23756);
+    return true;
   }
   
   public final void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23748);
     Log.i("MicroMsg.exdevice.RemoteBTDeviceAdapter", "---setChannelSessionKey--- deviceId = %d", new Object[] { Long.valueOf(paramLong) });
-    a locala = this.vjI;
+    a locala = this.yvG;
     Log.i("MicroMsg.exdevice.BTDeviceManager", "------setChannelSessionKey------ deviceId = %d", new Object[] { Long.valueOf(paramLong) });
     paramArrayOfByte = new a.f(paramLong, paramArrayOfByte);
     if (!locala.mHandler.sendMessage(locala.mHandler.obtainMessage(10, paramArrayOfByte))) {
@@ -1517,11 +1517,11 @@ public final class y
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.d)paramMessage.obj;
-        y.a(y.this, paramMessage.viQ, paramMessage.vdn, paramMessage.vdb, paramMessage.ovI);
+        y.a(y.this, paramMessage.yuP, paramMessage.ypa, paramMessage.yoO, paramMessage.rzc);
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.k)paramMessage.obj;
-        if (!y.a(y.this, paramMessage.viQ, paramMessage.vkh)) {
+        if (!y.a(y.this, paramMessage.yuP, paramMessage.ywf)) {
           Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startTaskImp failed!!!");
         }
         AppMethodBeat.o(23725);
@@ -1533,11 +1533,11 @@ public final class y
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.c)paramMessage.obj;
-        y.a(y.this, paramMessage.smk, paramMessage.viO, paramMessage.viP, paramMessage.vdb);
+        y.a(y.this, paramMessage.vyj, paramMessage.yuN, paramMessage.yuO, paramMessage.yoO);
         AppMethodBeat.o(23725);
         return;
         paramMessage = (y.j)paramMessage.obj;
-        if (!y.a(y.this, paramMessage.smk, paramMessage.vkg, paramMessage.vkc)) {
+        if (!y.a(y.this, paramMessage.vyj, paramMessage.ywe, paramMessage.ywa)) {
           Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "startChannelImp failed!!!");
         }
         AppMethodBeat.o(23725);
@@ -1548,11 +1548,11 @@ public final class y
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.b)paramMessage.obj;
-          y.a(y.this, paramMessage.mErrorCode, paramMessage.smk, paramMessage.vdi, paramMessage.viN, paramMessage.vdc);
+          y.a(y.this, paramMessage.mErrorCode, paramMessage.vyj, paramMessage.yoV, paramMessage.yuM, paramMessage.yoP);
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.e)paramMessage.obj;
-          if (!y.this.c(paramMessage.vga, paramMessage.vkb, paramMessage.vkc)) {
+          if (!y.this.c(paramMessage.yrY, paramMessage.yvZ, paramMessage.ywa)) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTConnectImpl error");
           }
           AppMethodBeat.o(23725);
@@ -1560,40 +1560,42 @@ public final class y
           l = ((Long)paramMessage.obj).longValue();
           paramMessage = y.this;
           Log.d("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTDisonnectImpl. mac=%d", new Object[] { Long.valueOf(l) });
-          if (paramMessage.vjX != null)
+          if (paramMessage.yvV != null)
           {
-            paramMessage = paramMessage.vjX;
+            paramMessage = paramMessage.yvV;
             Log.d("MicroMsg.exdevice.BluetoothLESimpleManager", "disconnect. mac = %d", new Object[] { Long.valueOf(l) });
-            if (!paramMessage.cxY())
+            if (!paramMessage.daQ())
             {
               Log.e("MicroMsg.exdevice.BluetoothLESimpleManager", "BLE Unsupport");
               AppMethodBeat.o(23725);
               return;
             }
-            paramMessage.al(new e.5(paramMessage, l));
+            paramMessage.at(new e.5(paramMessage, l));
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.c)paramMessage.obj;
-          if (!y.this.b(paramMessage.smk, paramMessage.viO, paramMessage.viP, paramMessage.vdb, paramMessage.sjI)) {
+          if (!y.this.b(paramMessage.vyj, paramMessage.yuN, paramMessage.yuO, paramMessage.yoO, paramMessage.vvH)) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSateChangeImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.i)paramMessage.obj;
-          if (!y.this.c(paramMessage.vga, paramMessage.mData, paramMessage.vkf)) {
+          if (!y.this.c(paramMessage.yrY, paramMessage.mData, paramMessage.ywd)) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTSendDataImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.h)paramMessage.obj;
-          if (!y.this.e(paramMessage.vga, paramMessage.vdn, paramMessage.vdb, paramMessage.ovI)) {
+          if (!y.this.e(paramMessage.yrY, paramMessage.ypa, paramMessage.yoO, paramMessage.rzc)) {
             Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnSendEndImpl error");
           }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.f)paramMessage.obj;
-          y.this.d(paramMessage.vga, paramMessage.mData);
+          if (!y.this.e(paramMessage.yrY, paramMessage.mData)) {
+            Log.e("MicroMsg.exdevice.RemoteBTDeviceAdapter", "simpleBTOnRecvImpl error");
+          }
           AppMethodBeat.o(23725);
           return;
           paramMessage = (y.g)paramMessage.obj;
@@ -1606,100 +1608,100 @@ public final class y
   static final class b
   {
     int mErrorCode = 0;
-    long smk = 0L;
-    byte[] vdc = null;
-    short vdi = 0;
-    short viN = 0;
+    long vyj = 0L;
+    byte[] yoP = null;
+    short yoV = 0;
+    short yuM = 0;
   }
   
   static final class c
   {
-    long sjI = 0L;
-    long smk = 0L;
-    int vdb = 0;
-    int viO = 0;
-    int viP = 0;
+    long vvH = 0L;
+    long vyj = 0L;
+    int yoO = 0;
+    int yuN = 0;
+    int yuO = 0;
   }
   
   static final class d
   {
-    String ovI = null;
-    int vdb = 0;
-    int vdn = 0;
-    long viQ = 0L;
+    String rzc = null;
+    int yoO = 0;
+    int ypa = 0;
+    long yuP = 0L;
   }
   
   static final class e
   {
-    public long vga;
-    public int vkb;
-    public k vkc;
+    public long yrY;
+    public int yvZ;
+    public k ywa;
   }
   
   static final class f
   {
     public byte[] mData;
-    public long vga;
+    public long yrY;
   }
   
   static final class g
   {
     String mDeviceName;
-    int oLi;
-    String smo;
-    boolean vkd;
-    byte[] vke;
+    int rPb;
+    String vyn;
+    boolean ywb;
+    byte[] ywc;
   }
   
   static final class h
   {
-    public String ovI;
-    public int vdb;
-    public int vdn;
-    public long vga;
+    public String rzc;
+    public int yoO;
+    public int ypa;
+    public long yrY;
   }
   
   static final class i
   {
     public byte[] mData;
-    public long vga;
-    public t vkf;
+    public long yrY;
+    public t ywd;
   }
   
   static final class j
   {
-    long smk;
-    k vkc;
-    int vkg;
+    long vyj;
+    k ywa;
+    int ywe;
     
     public j(long paramLong, int paramInt, k paramk)
     {
-      this.smk = paramLong;
-      this.vkg = paramInt;
-      this.vkc = paramk;
+      this.vyj = paramLong;
+      this.ywe = paramInt;
+      this.ywa = paramk;
     }
   }
   
   static final class k
   {
-    long viQ;
-    p vkh;
+    long yuP;
+    p ywf;
     
     public k(long paramLong, p paramp)
     {
-      this.viQ = paramLong;
-      this.vkh = paramp;
+      this.yuP = paramLong;
+      this.ywf = paramp;
     }
   }
   
   static final class l
   {
-    long viQ = 0L;
+    long yuP = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.y
  * JD-Core Version:    0.7.0.1
  */

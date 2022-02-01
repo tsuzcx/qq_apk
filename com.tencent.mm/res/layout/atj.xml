@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/dkq" android:background="@drawable/bms" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/faz" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/default_avatar" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/ag2" android:layout_gravity="center_vertical" android:id="@id/h_k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/gaz" android:singleLine="true" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hh0" android:background="@color/lz" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/j77" android:background="@color/lz" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/na" />
+</FrameLayout>

@@ -1,449 +1,329 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.jc;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.model.c;
-import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.api.g;
+import com.tencent.mm.plugin.finder.cgi.ax;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.protocal.protobuf.cig;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.component.i;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.e;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.Result.Companion;
+import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.ah.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Cache;", "currentTabType", "getCurrentTabType", "()I", "setCurrentTabType", "(I)V", "isEnableStoreLastTabType", "", "isNeedCheckShowCollapsibleTip", "isNeedShowDoubleClickTip", "lastPreloadTimeStampCaches", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$LastPreloadTimeStampCache;", "lastTabType", "getLastTabType", "setLastTabType", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "getRedDotManager", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "redDotManager$delegate", "Lkotlin/Lazy;", "refreshExpired", "getRefreshExpired", "setRefreshExpired", "squareTabsPreloadResponseCaches", "", "Lcom/tencent/mm/plugin/findersdk/cgi/PreloadResponse;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "clearTipCache", "", "get", "tabType", "getBusinessInfoKey", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "getPreloadSquareTabsCache", "memoryCacheFlag", "getPreloadTimeStampCache", "liveTabId", "getTargetEnterTabType", "incrementCollapsibleTipCount", "count", "incrementDoubleClickTipCount", "isAutoRefresh", "isShowCollapsibleTip", "isShowDoubleClickTip", "markFocusTabType", "markUnFocusTabType", "onCleared", "resetCache", "store", "lastRootScrollPy", "lastExitPosition", "lastExitFromTopPx", "lastDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "lastSectionDataList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "fromPreload", "storeLastTabType", "source", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$LastTabTypeSource;", "storePreloadSquareTabsCache", "response", "storePreloadTimeStampCache", "lastFindPrefetchTimeStampMs", "", "lastRedDotPrefetchTimeStampMs", "lastTabPagesPrefetchTimeStampMs", "Cache", "Companion", "LastPreloadTimeStampCache", "LastTabTypeSource", "RefreshState", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Lcom/tencent/mm/plugin/finder/api/IFinderGlobalLocationVM;", "()V", "lastAddress", "Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "getLastAddress", "()Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "setLastAddress", "(Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;)V", "locationListener", "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1;", "checkLocationPermissionWithRequest", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "checkLocationPermissionWithoutRequest", "lastLocation", "Lkotlin/Pair;", "", "lastLocationTime", "", "requestLocation", "isIgnoreConfig", "requestLocationPermissionWithAlert", "", "storeLocation", "longitude", "latitude", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends i<PluginFinder>
+  extends com.tencent.mm.ui.component.n<PluginFinder>
+  implements g
 {
-  public static final b Bgv;
-  private final ConcurrentHashMap<Integer, a> Bgm;
-  private final ConcurrentHashMap<Integer, c> Bgn;
-  public ConcurrentHashMap<String, com.tencent.mm.plugin.findersdk.b.h<com.tencent.mm.an.q>> Bgo;
-  public int Bgp;
-  public int Bgq;
-  private int Bgr;
-  private boolean Bgs;
-  private boolean Bgt;
-  private boolean Bgu;
-  private final kotlin.f zLw;
+  public static final a GJY;
+  public cig GJZ;
+  private final b GKa;
   
   static
   {
-    AppMethodBeat.i(283322);
-    Bgv = new b((byte)0);
-    AppMethodBeat.o(283322);
+    AppMethodBeat.i(337233);
+    GJY = new a((byte)0);
+    AppMethodBeat.o(337233);
   }
   
   public b()
   {
-    AppMethodBeat.i(283321);
-    this.Bgm = new ConcurrentHashMap();
-    this.Bgn = new ConcurrentHashMap();
-    this.Bgo = new ConcurrentHashMap();
-    d locald = d.AjH;
-    this.Bgr = ((Number)d.dTo().aSr()).intValue();
-    this.zLw = g.ar((a)f.BgS);
-    this.Bgt = true;
-    this.Bgu = true;
-    AppMethodBeat.o(283321);
+    AppMethodBeat.i(337186);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    Log.i("Finder.GlobalLocationVM", s.X("isGetGps=", Boolean.valueOf(com.tencent.mm.plugin.finder.storage.d.eRr())));
+    this.GKa = new b(this);
+    AppMethodBeat.o(337186);
   }
   
-  public static ar.a RL(int paramInt)
+  private static final void a(MMActivity paramMMActivity, DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    AppMethodBeat.i(337196);
+    s.u(paramMMActivity, "$activity");
+    paramDialogInterface = z.FrZ;
+    z.av((Context)paramMMActivity, 4);
+    com.tencent.mm.pluginsdk.permission.b.lx((Context)paramMMActivity);
+    AppMethodBeat.o(337196);
+  }
+  
+  private static final void b(MMActivity paramMMActivity, DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(337202);
+    s.u(paramMMActivity, "$activity");
+    paramDialogInterface = z.FrZ;
+    z.av((Context)paramMMActivity, 3);
+    AppMethodBeat.o(337202);
+  }
+  
+  public final r<Float, Float> dUh()
+  {
+    float f2 = 0.0F;
+    AppMethodBeat.i(337278);
+    Object localObject = h.baE().ban().get(at.a.addQ, ";");
+    if (localObject == null)
     {
-    default: 
-      return ar.a.Vzi;
-    case 3: 
-      return ar.a.Vzj;
-    case 1: 
-      return ar.a.Vzi;
-    case 4: 
-      return ar.a.Vzl;
+      localObject = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(337278);
+      throw ((Throwable)localObject);
     }
-    return ar.a.Vzk;
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, ArrayList<bu> paramArrayList, ArrayList<c> paramArrayList1, com.tencent.mm.cd.b paramb, boolean paramBoolean)
-  {
-    AppMethodBeat.i(283307);
-    p.k(paramArrayList, "lastDataList");
-    p.k(paramArrayList1, "lastSectionDataList");
-    Object localObject1 = d.AjH;
-    this.Bgr = ((Number)d.dTo().aSr()).intValue();
-    localObject1 = d.AjH;
-    this.Bgs = d.dTy();
-    this.Bgp = 0;
-    localObject1 = ((Iterable)paramArrayList).iterator();
-    while (((Iterator)localObject1).hasNext())
+    localObject = kotlin.n.n.a((CharSequence)localObject, new char[] { ';' }, 0, 6);
+    Float localFloat = kotlin.n.n.bJE((String)((List)localObject).get(0));
+    float f1;
+    if (localFloat == null)
     {
-      localObject2 = (bu)((Iterator)localObject1).next();
-      if ((localObject2 instanceof BaseFinderFeed)) {
-        ((BaseFinderFeed)localObject2).dKr();
+      f1 = 0.0F;
+      localObject = kotlin.n.n.bJE((String)((List)localObject).get(1));
+      if (localObject != null) {
+        break label137;
       }
     }
-    localObject1 = RI(paramInt1);
-    ((a)localObject1).Bgy = paramInt2;
-    ((a)localObject1).Bgz = paramInt3;
-    ((a)localObject1).fa((List)paramArrayList);
-    Object localObject2 = (List)paramArrayList1;
-    p.k(localObject2, "<set-?>");
-    ((a)localObject1).Bgx = ((List)localObject2);
-    if ((paramArrayList.isEmpty()) && (paramArrayList1.isEmpty())) {}
-    for (paramArrayList = e.BgO;; paramArrayList = e.BgN)
+    for (;;)
     {
-      ((a)localObject1).a(paramArrayList);
-      ((a)localObject1).lastBuffer = paramb;
-      ((a)localObject1).BgC = paramBoolean;
-      Log.i("Finder.TlTabStateVM", "[store] tabType=" + paramInt1 + " lastExitPosition=" + paramInt2 + " lastExitFromTopPx=" + paramInt3 + " refreshState=" + ((a)localObject1).BgB + ' ' + "current=" + com.tencent.mm.pluginsdk.j.f.formatTime("yyyy-MM-dd HH:mm:ss", ((a)localObject1).BgA / 1000L));
-      AppMethodBeat.o(283307);
+      localObject = new r(Float.valueOf(f1), Float.valueOf(f2));
+      AppMethodBeat.o(337278);
+      return localObject;
+      f1 = localFloat.floatValue();
+      break;
+      label137:
+      f2 = ((Float)localObject).floatValue();
+    }
+  }
+  
+  public final boolean dUi()
+  {
+    AppMethodBeat.i(337262);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.k(MMApplicationContext.getContext(), "android.permission.ACCESS_FINE_LOCATION", false);
+    AppMethodBeat.o(337262);
+    return bool;
+  }
+  
+  public final long dUj()
+  {
+    AppMethodBeat.i(337283);
+    long l = h.baE().ban().a(at.a.addR, 0L);
+    Log.i("Finder.GlobalLocationVM", s.X("[lastLocationTime] time=", Long.valueOf(l)));
+    AppMethodBeat.o(337283);
+    return l;
+  }
+  
+  public final void h(MMActivity paramMMActivity)
+  {
+    AppMethodBeat.i(337294);
+    s.u(paramMMActivity, "activity");
+    if ((Build.VERSION.SDK_INT > 23) && (!paramMMActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION")))
+    {
+      com.tencent.mm.ui.base.k.a((Context)paramMMActivity, paramMMActivity.getString(e.h.permission_location_request_again_msg), paramMMActivity.getString(e.h.permission_tips_title), paramMMActivity.getString(e.h.jump_to_settings), paramMMActivity.getString(e.h.app_cancel), false, new b..ExternalSyntheticLambda1(paramMMActivity), new b..ExternalSyntheticLambda0(paramMMActivity));
+      AppMethodBeat.o(337294);
       return;
     }
+    s.u(paramMMActivity, "activity");
+    com.tencent.mm.pluginsdk.permission.b.a((Activity)paramMMActivity, "android.permission.ACCESS_FINE_LOCATION", 79, null);
+    AppMethodBeat.o(337294);
   }
   
-  public static void ekc()
+  public final boolean pH(boolean paramBoolean)
   {
-    AppMethodBeat.i(283318);
-    com.tencent.mm.kernel.f localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    int i = localf.aHp().getInt(ar.a.Vzm, 0);
-    localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    localf.aHp().set(ar.a.Vzm, Integer.valueOf(i + 1));
-    AppMethodBeat.o(283318);
-  }
-  
-  private final com.tencent.mm.plugin.finder.extension.reddot.f getRedDotManager()
-  {
-    AppMethodBeat.i(283306);
-    com.tencent.mm.plugin.finder.extension.reddot.f localf = (com.tencent.mm.plugin.finder.extension.reddot.f)this.zLw.getValue();
-    AppMethodBeat.o(283306);
-    return localf;
-  }
-  
-  public static void hk(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(283319);
-    com.tencent.mm.kernel.f localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    int i = localf.aHp().getInt(RL(paramInt1), 0);
-    localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    localf.aHp().set(RL(paramInt1), Integer.valueOf(i + paramInt2));
-    AppMethodBeat.o(283319);
-  }
-  
-  public final c OB(int paramInt)
-  {
-    AppMethodBeat.i(283314);
-    if (this.Bgn.get(Integer.valueOf(paramInt)) == null) {
-      ((Map)this.Bgn).put(Integer.valueOf(paramInt), new c(paramInt));
-    }
-    Object localObject = this.Bgn.get(Integer.valueOf(paramInt));
-    if (localObject == null) {
-      p.iCn();
-    }
-    localObject = (c)localObject;
-    AppMethodBeat.o(283314);
-    return localObject;
-  }
-  
-  public final boolean OO(int paramInt)
-  {
-    AppMethodBeat.i(283310);
-    a locala = RI(paramInt);
-    e locale = locala.BgB;
-    if (locale == e.BgO)
+    AppMethodBeat.i(337268);
+    if (!paramBoolean)
     {
-      AppMethodBeat.o(283310);
-      return true;
-    }
-    if ((locale == e.BgN) || (locale == e.BgQ))
-    {
-      if (System.currentTimeMillis() - locala.BgA > this.Bgr)
+      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (!com.tencent.mm.plugin.finder.storage.d.eRr())
       {
-        locala.a(e.BgP);
-        AppMethodBeat.o(283310);
-        return true;
+        Log.w("Finder.GlobalLocationVM", "[requestLocation] is not enabel");
+        AppMethodBeat.o(337268);
+        return false;
       }
     }
-    else if (locale == e.BgP)
+    if (!dUi())
     {
-      AppMethodBeat.o(283310);
-      return true;
-    }
-    locala.a(e.BgQ);
-    AppMethodBeat.o(283310);
-    return false;
-  }
-  
-  public final void RH(int paramInt)
-  {
-    AppMethodBeat.i(283311);
-    a locala = RI(paramInt);
-    locala.a(e.BgN);
-    locala.BgA = System.currentTimeMillis();
-    Log.i("Finder.TlTabStateVM", "[markUnFocusTabType] tabType=".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(283311);
-  }
-  
-  public final a RI(int paramInt)
-  {
-    AppMethodBeat.i(283313);
-    if (this.Bgm.get(Integer.valueOf(paramInt)) == null) {
-      ((Map)this.Bgm).put(Integer.valueOf(paramInt), new a(paramInt));
-    }
-    Object localObject = this.Bgm.get(Integer.valueOf(paramInt));
-    if (localObject == null) {
-      p.iCn();
-    }
-    localObject = (a)localObject;
-    AppMethodBeat.o(283313);
-    return localObject;
-  }
-  
-  public final boolean RJ(int paramInt)
-  {
-    AppMethodBeat.i(283317);
-    if (!this.Bgt)
-    {
-      AppMethodBeat.o(283317);
+      Log.w("Finder.GlobalLocationVM", "[requestLocation] without perssion.");
+      AppMethodBeat.o(337268);
       return false;
     }
-    com.tencent.mm.kernel.f localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    if (localf.aHp().getInt(RL(paramInt), 0) < 3)
-    {
-      AppMethodBeat.o(283317);
-      return true;
-    }
-    this.Bgt = false;
-    AppMethodBeat.o(283317);
-    return false;
+    Log.i("Finder.GlobalLocationVM", s.X("[requestLocation]... ", Util.getStack()));
+    com.tencent.mm.ae.d.e("Finder.GlobalLocationVM#RequestLocation", (kotlin.g.a.a)new c(this));
+    AppMethodBeat.o(337268);
+    return true;
   }
   
-  public final void a(int paramInt, b.d paramd)
-  {
-    AppMethodBeat.i(283309);
-    p.k(paramd, "source");
-    Log.i("Finder.TlTabStateVM", "[storeLastTabType] tabType=" + paramInt + " source=" + paramd + " isEnableStoreLastTabType=" + this.Bgs);
-    if (paramd == b.d.BgH)
-    {
-      paramd = com.tencent.mm.kernel.h.aHG();
-      p.j(paramd, "MMKernel.storage()");
-      paramd.aHp().set(ar.a.Vze, Integer.valueOf(paramInt));
-      paramd = com.tencent.mm.kernel.h.aHG();
-      p.j(paramd, "MMKernel.storage()");
-      paramd.aHp().set(ar.a.Vzh, Integer.valueOf(-1));
-    }
-    AppMethodBeat.o(283309);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$Companion;", "", "()V", "REQUST_PERMISSION_CODE", "", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
   
-  public final int ekb()
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "onGetLocation", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements com.tencent.mm.modelgeo.b.a
   {
-    int i = 4;
-    AppMethodBeat.i(283312);
-    com.tencent.mm.kernel.f localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    int k = localf.aHp().getInt(ar.a.Vze, 4);
-    if (this.Bgs) {
-      i = k;
-    }
-    if (getRedDotManager().aBf("FinderEntrance") != null) {}
-    for (boolean bool = true; (OO(k)) || (bool); bool = false)
-    {
-      int m = getRedDotManager().dqG();
-      int j = m;
-      if (m == -1) {
-        j = i;
-      }
-      Log.i("Finder.TlTabStateVM", "[getTargetEnterTabType] autoRefresh... ret=" + j + " hasEntranceCtrlInfo=" + bool + " lastExitTabType=" + k + " defaultServerTabType=" + i);
-      AppMethodBeat.o(283312);
-      return j;
-    }
-    Log.i("Finder.TlTabStateVM", "[getTargetEnterTabType] no autoRefresh... hasEntranceCtrlInfo=false lastExitTabType=" + k + " defaultServerTabType=" + i);
-    AppMethodBeat.o(283312);
-    return k;
-  }
-  
-  public final void onCleared()
-  {
-    AppMethodBeat.i(283315);
-    super.onCleared();
-    AppMethodBeat.o(283315);
-  }
-  
-  public final void resetCache()
-  {
-    AppMethodBeat.i(283316);
-    a(4, b.d.BgJ);
-    this.Bgm.clear();
-    this.Bgn.clear();
-    this.Bgo.clear();
-    AppMethodBeat.o(283316);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Cache;", "", "tabType", "", "(I)V", "fromPreload", "", "getFromPreload", "()Z", "setFromPreload", "(Z)V", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "lastDataList", "", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "getLastDataList", "()Ljava/util/List;", "setLastDataList", "(Ljava/util/List;)V", "lastExitFromTopPx", "getLastExitFromTopPx", "()I", "setLastExitFromTopPx", "lastExitPosition", "getLastExitPosition", "setLastExitPosition", "lastExitTime", "", "getLastExitTime", "()J", "setLastExitTime", "(J)V", "lastRootScrollPy", "getLastRootScrollPy", "setLastRootScrollPy", "lastSectionDataList", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "getLastSectionDataList", "setLastSectionDataList", "refreshState", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "getRefreshState", "()Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "setRefreshState", "(Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;)V", "getTabType", "component1", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
-  public static final class a
-  {
-    public long BgA;
-    b.e BgB;
-    public boolean BgC;
-    public List<? extends bu> Bgw;
-    public List<c> Bgx;
-    public int Bgy;
-    public int Bgz;
-    private final int fEH;
-    public com.tencent.mm.cd.b lastBuffer;
+    b(b paramb) {}
     
-    public a(int paramInt)
+    public final boolean onGetLocation(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
     {
-      AppMethodBeat.i(282724);
-      this.fEH = paramInt;
-      this.Bgw = ((List)new LinkedList());
-      this.Bgx = ((List)new LinkedList());
-      this.BgB = b.e.BgN;
-      AppMethodBeat.o(282724);
-    }
-    
-    public final void a(b.e parame)
-    {
-      AppMethodBeat.i(282723);
-      p.k(parame, "<set-?>");
-      this.BgB = parame;
-      AppMethodBeat.o(282723);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
+      AppMethodBeat.i(337255);
+      com.tencent.mm.modelgeo.d.bJl().a((com.tencent.mm.modelgeo.b.a)this);
+      final ah.b localb1 = new ah.b();
+      localb1.aiwZ = paramFloat1;
+      final ah.b localb2 = new ah.b();
+      localb2.aiwZ = paramFloat2;
+      Object localObject;
+      if (paramBoolean)
       {
-        if ((paramObject instanceof a))
+        b.aD(paramFloat1, paramFloat2);
+        Log.i("Finder.GlobalLocationVM", "[onGetLocation] longitude=" + localb1.aiwZ + " latitude=" + localb2.aiwZ);
+        localObject = new jc();
+        ((jc)localObject).hKK.lng = paramFloat1;
+        ((jc)localObject).hKK.lat = paramFloat2;
+        ((jc)localObject).publish();
+      }
+      for (;;)
+      {
+        e.launch$default((e)this.GKb, null, null, (m)new a(this.GKb, localb2, localb1, null), 3, null);
+        AppMethodBeat.o(337255);
+        return true;
+        localObject = this.GKb.dUh();
+        localb1.aiwZ = ((Number)((r)localObject).bsC).floatValue();
+        localb2.aiwZ = ((Number)((r)localObject).bsD).floatValue();
+        Log.i("Finder.GlobalLocationVM", "[onGetLocation] from cache. longitude=" + localb1.aiwZ + " latitude=" + localb2.aiwZ);
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends kotlin.d.b.a.k
+      implements m<kotlinx.coroutines.aq, kotlin.d.d<? super ah>, Object>
+    {
+      Object Uf;
+      int label;
+      
+      a(b paramb, ah.b paramb1, ah.b paramb2, kotlin.d.d<? super a> paramd)
+      {
+        super(paramd);
+      }
+      
+      public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
+      {
+        AppMethodBeat.i(337133);
+        paramd = new a(this.GKb, localb2, localb1, paramd);
+        paramd.L$0 = paramObject;
+        paramObject = (kotlin.d.d)paramd;
+        AppMethodBeat.o(337133);
+        return paramObject;
+      }
+      
+      public final Object invokeSuspend(Object paramObject)
+      {
+        AppMethodBeat.i(337120);
+        localObject2 = kotlin.d.a.a.aiwj;
+        switch (this.label)
         {
-          paramObject = (a)paramObject;
-          if (this.fEH != paramObject.fEH) {}
+        default: 
+          paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+          AppMethodBeat.o(337120);
+          throw paramObject;
+        case 0: 
+          ResultKt.throwOnFailure(paramObject);
+          paramObject = this.GKb;
+          localObject1 = localb2;
+          localObject3 = localb1;
+        }
+        try
+        {
+          Result.Companion localCompanion = Result.Companion;
+          localObject1 = (com.tencent.mm.am.b)new ax(((ah.b)localObject1).aiwZ, ((ah.b)localObject3).aiwZ);
+          this.L$0 = paramObject;
+          this.Uf = paramObject;
+          this.label = 1;
+          localObject1 = com.tencent.mm.af.b.a((com.tencent.mm.am.b)localObject1, this);
+          if (localObject1 != localObject2) {
+            break label360;
+          }
+          AppMethodBeat.o(337120);
+          return localObject2;
+        }
+        finally
+        {
+          for (;;)
+          {
+            localObject1 = Result.Companion;
+            paramObject = Result.constructor-impl(ResultKt.createFailure(paramObject));
+            continue;
+            localObject2 = paramObject;
+          }
+        }
+        localObject2 = (b)this.Uf;
+        Object localObject3 = (b)this.L$0;
+        ResultKt.throwOnFailure(paramObject);
+        localObject1 = paramObject;
+        paramObject = localObject3;
+        ((b)localObject2).GJZ = ((cig)localObject1);
+        localObject2 = paramObject.GJZ;
+        if (localObject2 == null)
+        {
+          paramObject = null;
+          if (paramObject == null) {
+            Log.i("Finder.GlobalLocationVM", "Get Location Fail");
+          }
+          paramObject = Result.constructor-impl(ah.aiuX);
+          paramObject = Result.exceptionOrNull-impl(paramObject);
+          if (paramObject != null) {
+            Log.printErrStackTrace("Finder.GlobalLocationVM", paramObject, "", new Object[0]);
+          }
+          paramObject = ah.aiuX;
+          AppMethodBeat.o(337120);
+          return paramObject;
+        }
+        if (Util.isNullOrNil(((cig)localObject2).pSo))
+        {
+          paramObject.GJZ = null;
+          Log.i("Finder.GlobalLocationVM", "Get Location Fail");
+        }
+        for (;;)
+        {
+          paramObject = ah.aiuX;
+          break;
+          localObject1 = ((cig)localObject2).pSg;
+          paramObject = localObject1;
+          if (localObject1 == null) {
+            paramObject = "";
+          }
+          ((cig)localObject2).pSg = paramObject;
+          localObject1 = ((cig)localObject2).pSh;
+          paramObject = localObject1;
+          if (localObject1 == null) {
+            paramObject = "";
+          }
+          ((cig)localObject2).pSh = paramObject;
+          Log.i("Finder.GlobalLocationVM", "Get Location " + ((cig)localObject2).pSo + ' ' + ((cig)localObject2).pSg + ' ' + ((cig)localObject2).pSh);
         }
       }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final void fa(List<? extends bu> paramList)
-    {
-      AppMethodBeat.i(282722);
-      p.k(paramList, "<set-?>");
-      this.Bgw = paramList;
-      AppMethodBeat.o(282722);
-    }
-    
-    public final int hashCode()
-    {
-      return this.fEH;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(282725);
-      String str = "Cache(tabType=" + this.fEH + ")";
-      AppMethodBeat.o(282725);
-      return str;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class b {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$LastPreloadTimeStampCache;", "", "liveTabId", "", "(I)V", "lastFindPrefetchTimeStampMs", "", "getLastFindPrefetchTimeStampMs", "()J", "setLastFindPrefetchTimeStampMs", "(J)V", "lastRedDotPrefetchTimeStampMs", "getLastRedDotPrefetchTimeStampMs", "setLastRedDotPrefetchTimeStampMs", "lastTabPagesPrefetchTimeStampMs", "getLastTabPagesPrefetchTimeStampMs", "setLastTabPagesPrefetchTimeStampMs", "getLiveTabId", "()I", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public long BgD;
-    public long BgE;
-    public long BgF;
-    private final int BgG;
-    
-    public c(int paramInt)
-    {
-      this.BgG = paramInt;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof c))
-        {
-          paramObject = (c)paramObject;
-          if (this.BgG != paramObject.BgG) {}
-        }
-      }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return this.BgG;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(291647);
-      String str = "LastPreloadTimeStampCache(liveTabId=" + this.BgG + ")";
-      AppMethodBeat.o(291647);
-      return str;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderHomeTabStateVM$RefreshState;", "", "(Ljava/lang/String;I)V", "Default", "HardRefresh", "Timeout", "InCacheTime", "plugin-finder_release"})
-  public static enum e
-  {
-    static
-    {
-      AppMethodBeat.i(291164);
-      e locale1 = new e("Default", 0);
-      BgN = locale1;
-      e locale2 = new e("HardRefresh", 1);
-      BgO = locale2;
-      e locale3 = new e("Timeout", 2);
-      BgP = locale3;
-      e locale4 = new e("InCacheTime", 3);
-      BgQ = locale4;
-      BgR = new e[] { locale1, locale2, locale3, locale4 };
-      AppMethodBeat.o(291164);
-    }
-    
-    private e() {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements a<com.tencent.mm.plugin.finder.extension.reddot.f>
-  {
-    public static final f BgS;
-    
-    static
-    {
-      AppMethodBeat.i(284339);
-      BgS = new f();
-      AppMethodBeat.o(284339);
-    }
-    
-    f()
+    c(b paramb)
     {
       super();
     }

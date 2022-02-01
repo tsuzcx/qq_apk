@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/ahg" android:background="@drawable/azr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/fp2" android:background="@drawable/akc" android:layout_width="fill_parent" android:layout_height="@dimen/c2" />
-    <FrameLayout android:layout_gravity="center|top" android:id="@id/hcc" android:background="@drawable/a8l" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="22.0dip" />
-    <FrameLayout android:layout_gravity="bottom|center" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/hch" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_marginBottom="18.0dip" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ahl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/db" />
+    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ahc" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/aly" android:paddingLeft="@dimen/cv" android:paddingTop="@dimen/d4" android:paddingRight="@dimen/cv" android:paddingBottom="@dimen/db" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/alo" android:layout_width="wrap_content" android:layout_height="@dimen/d4" android:minWidth="@dimen/cj" style="@style/oh" />
+            <Button android:id="@id/alk" android:layout_width="wrap_content" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/cv" android:minWidth="@dimen/cj" style="@style/op" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/alx" android:paddingTop="@dimen/d4" android:paddingBottom="@dimen/db" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/alm" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" style="@style/or" />
+            <Button android:id="@id/aln" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:layout_marginLeft="@dimen/cp" style="@style/oi" />
+            <Button android:id="@id/amg" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" style="@style/oh" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ahd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ahf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ch" />
     </FrameLayout>
-</FrameLayout>
+</LinearLayout>

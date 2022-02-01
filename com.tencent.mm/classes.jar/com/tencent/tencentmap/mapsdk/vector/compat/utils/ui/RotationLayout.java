@@ -28,11 +28,11 @@ public class RotationLayout
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(246920);
+    AppMethodBeat.i(217704);
     if (this.a == 0)
     {
       super.dispatchDraw(paramCanvas);
-      AppMethodBeat.o(246920);
+      AppMethodBeat.o(217704);
       return;
     }
     if (this.a == 1)
@@ -44,7 +44,7 @@ public class RotationLayout
     for (;;)
     {
       super.dispatchDraw(paramCanvas);
-      AppMethodBeat.o(246920);
+      AppMethodBeat.o(217704);
       return;
       if (this.a == 2)
       {
@@ -61,16 +61,16 @@ public class RotationLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(246917);
+    AppMethodBeat.i(217693);
     if ((this.a == 1) || (this.a == 3))
     {
       super.onMeasure(paramInt1, paramInt2);
       setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());
-      AppMethodBeat.o(246917);
+      AppMethodBeat.o(217693);
       return;
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(246917);
+    AppMethodBeat.o(217693);
   }
   
   public void setViewRotation(int paramInt)

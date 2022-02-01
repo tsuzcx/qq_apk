@@ -12,27 +12,27 @@ import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactRemarkAndLabelPreference
   extends Preference
 {
-  private TextView GYD;
-  private TextView GYE;
-  private boolean GYF;
-  private String GYG;
-  private String GYH;
+  private TextView MWG;
+  private TextView MWH;
+  private boolean MWI;
+  private String MWJ;
+  private String MWK;
   private Context mContext;
-  private TextView pPT;
-  private String wAb;
+  private TextView sUt;
+  private String zWm;
   
   public ContactRemarkAndLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.GYF = false;
+    this.MWI = false;
     this.mContext = paramContext;
   }
   
@@ -40,7 +40,7 @@ public class ContactRemarkAndLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27044);
-    this.GYF = false;
+    this.MWI = false;
     this.mContext = paramContext;
     setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(27044);
@@ -49,57 +49,57 @@ public class ContactRemarkAndLabelPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27046);
-    this.pPT = ((TextView)paramView.findViewById(R.h.title));
-    this.GYD = ((TextView)paramView.findViewById(R.h.dSF));
-    this.GYE = ((TextView)paramView.findViewById(R.h.label));
+    this.sUt = ((TextView)paramView.findViewById(R.h.title));
+    this.MWG = ((TextView)paramView.findViewById(R.h.fUI));
+    this.MWH = ((TextView)paramView.findViewById(R.h.label));
     RelativeLayout.LayoutParams localLayoutParams;
-    if ((this.pPT != null) && (!Util.isNullOrNil(this.wAb)))
+    if ((this.sUt != null) && (!Util.isNullOrNil(this.zWm)))
     {
-      this.pPT.setVisibility(0);
-      this.pPT.setText(this.wAb);
-      localLayoutParams = (RelativeLayout.LayoutParams)this.pPT.getLayoutParams();
-      localLayoutParams.width = a.aY(this.mContext, R.f.FixedTitleWidth);
-      this.pPT.setLayoutParams(localLayoutParams);
+      this.sUt.setVisibility(0);
+      this.sUt.setText(this.zWm);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.sUt.getLayoutParams();
+      localLayoutParams.width = a.br(this.mContext, R.f.FixedTitleWidth);
+      this.sUt.setLayoutParams(localLayoutParams);
     }
-    if (this.GYD != null) {
-      if (!this.GYF)
+    if (this.MWG != null) {
+      if (!this.MWI)
       {
-        this.GYD.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        this.MWG.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
         i = 0;
-        if (!Util.isNullOrNil(this.GYG))
+        if (!Util.isNullOrNil(this.MWJ))
         {
-          this.GYD.setVisibility(0);
-          this.GYD.setText(l.b(this.mContext, Util.nullAsNil(this.GYG), this.GYD.getTextSize()));
+          this.MWG.setVisibility(0);
+          this.MWG.setText(p.b(this.mContext, Util.nullAsNil(this.MWJ), this.MWG.getTextSize()));
         }
       }
     }
     for (int i = 1;; i = 0)
     {
       int j = i;
-      if (this.GYE != null)
+      if (this.MWH != null)
       {
         j = i;
-        if (!Util.isNullOrNil(this.GYH))
+        if (!Util.isNullOrNil(this.MWK))
         {
           j = i | 0x2;
-          this.GYE.setVisibility(0);
-          this.GYE.setText(this.GYH);
+          this.MWH.setVisibility(0);
+          this.MWH.setText(this.MWK);
         }
       }
       if (j == 1) {
-        ((RelativeLayout.LayoutParams)this.GYD.getLayoutParams()).addRule(15);
+        ((RelativeLayout.LayoutParams)this.MWG.getLayoutParams()).addRule(15);
       }
       if (j == 2)
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.GYE.getLayoutParams();
+        localLayoutParams = (RelativeLayout.LayoutParams)this.MWH.getLayoutParams();
         localLayoutParams.addRule(3, 0);
         localLayoutParams.addRule(15);
       }
       super.onBindView(paramView);
       AppMethodBeat.o(27046);
       return;
-      this.GYD.setVisibility(0);
-      this.GYD.setCompoundDrawablesWithIntrinsicBounds(R.k.card_photoicon, 0, 0, 0);
+      this.MWG.setVisibility(0);
+      this.MWG.setCompoundDrawablesWithIntrinsicBounds(R.k.card_photoicon, 0, 0, 0);
       i = 1;
       break;
     }
@@ -112,7 +112,7 @@ public class ContactRemarkAndLabelPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eiX, localViewGroup);
+    localLayoutInflater.inflate(R.i.glX, localViewGroup);
     AppMethodBeat.o(27045);
     return paramViewGroup;
   }

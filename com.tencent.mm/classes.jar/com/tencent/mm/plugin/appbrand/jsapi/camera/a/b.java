@@ -12,13 +12,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class b
 {
-  AtomicBoolean oMN = new AtomicBoolean(false);
-  a oMO;
-  MMHandler oMP = new MMHandler("MicroMsg.appbrand.ScanDecoder");
+  AtomicBoolean rQK = new AtomicBoolean(false);
+  a rQL;
+  MMHandler rQM = new MMHandler("MicroMsg.appbrand.ScanDecoder");
   
   public b(a parama)
   {
-    this.oMO = parama;
+    this.rQL = parama;
   }
   
   protected final void a(final String paramString, final int paramInt1, final int paramInt2, final byte[] paramArrayOfByte, final QbarNative.QBarPoint paramQBarPoint)
@@ -29,8 +29,8 @@ public abstract class b
       public final void run()
       {
         AppMethodBeat.i(46235);
-        if (b.this.oMO != null) {
-          b.this.oMO.a(paramInt1, paramString, paramInt2, paramArrayOfByte, paramQBarPoint);
+        if (b.this.rQL != null) {
+          b.this.rQL.a(paramInt1, paramString, paramInt2, paramArrayOfByte, paramQBarPoint);
         }
         AppMethodBeat.o(46235);
       }
@@ -50,7 +50,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.a.b
  * JD-Core Version:    0.7.0.1
  */

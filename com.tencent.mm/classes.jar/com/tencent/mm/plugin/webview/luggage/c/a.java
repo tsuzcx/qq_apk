@@ -3,39 +3,36 @@ package com.tencent.mm.plugin.webview.luggage.c;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.teenmode.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.teenmode.a.d;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/util/GameTeenModeUtils;", "", "()V", "isTeenModeForbidGameDownload", "", "showTeenModeToast", "", "context", "Landroid/content/Context;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/luggage/util/GameTeenModeUtils;", "", "()V", "isTeenModeForbidGameDownload", "", "showTeenModeToast", "", "context", "Landroid/content/Context;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a PTs;
+  public static final a WKe;
   
   static
   {
-    AppMethodBeat.i(216412);
-    PTs = new a();
-    AppMethodBeat.o(216412);
+    AppMethodBeat.i(295969);
+    WKe = new a();
+    AppMethodBeat.o(295969);
   }
   
-  public static final boolean gVm()
+  public static final boolean iuX()
   {
-    AppMethodBeat.i(216409);
-    com.tencent.mm.kernel.c.a locala = h.ae(b.class);
-    p.j(locala, "MMKernel.service(ITeenModeService::class.java)");
-    boolean bool = ((b)locala).ZM();
-    AppMethodBeat.o(216409);
+    AppMethodBeat.i(295966);
+    boolean bool = ((d)h.ax(d.class)).aBu();
+    AppMethodBeat.o(295966);
     return bool;
   }
   
-  public static final void ja(Context paramContext)
+  public static final void kQ(Context paramContext)
   {
-    AppMethodBeat.i(216410);
+    AppMethodBeat.i(295967);
     if (paramContext != null) {
-      ((b)h.ae(b.class)).ir(paramContext);
+      ((d)h.ax(d.class)).kg(paramContext);
     }
-    AppMethodBeat.o(216410);
+    AppMethodBeat.o(295967);
   }
 }
 

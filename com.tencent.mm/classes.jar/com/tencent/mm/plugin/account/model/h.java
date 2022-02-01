@@ -1,42 +1,41 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eec;
-import com.tencent.mm.protocal.protobuf.eed;
+import com.tencent.mm.protocal.protobuf.ext;
+import com.tencent.mm.protocal.protobuf.exu;
 
 public final class h
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d rr;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
   
-  public h(eec parameec)
+  public h(ext paramext)
   {
     AppMethodBeat.i(127835);
     this.callback = null;
-    d.a locala = new d.a();
-    locala.lBU = parameec;
-    locala.lBV = new eed();
+    c.a locala = new c.a();
+    locala.otE = paramext;
+    locala.otF = new exu();
     locala.uri = "/cgi-bin/micromsg-bin/sendphoto2fbwall";
     locala.funcId = 433;
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
+    this.rr = locala.bEF();
     AppMethodBeat.o(127835);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(127836);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(127836);
     return i;

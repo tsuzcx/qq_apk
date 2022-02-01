@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ge2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:background="@drawable/aqu" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/ge1" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </com.tencent.mm.view.RefreshLoadMoreLayout>
-    <FrameLayout android:id="@id/c3e" android:background="@drawable/aqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c4" android:indeterminateDrawable="@drawable/apb" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/h5w" android:paddingTop="@dimen/c4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cmj" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="center" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jss" />
+    <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/g4q" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g4p" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g4d" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_location" app:iconColor="@color/BW_100_Alpha_0_8" />
+                <TextView android:textSize="@dimen/bd" android:id="@id/g4s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/e22" android:includeFontPadding="false" style="@style/a19" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="2.0dip" android:src="@drawable/pp" app:iconColor="@color/az" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/g4m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/g54" android:background="@drawable/ad7" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" />
+            <TextView android:gravity="center_vertical" android:id="@id/g55" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bv" android:text="@string/gb4" style="@style/a19" />
+        </LinearLayout>
     </FrameLayout>
-    <FrameLayout android:id="@id/ip9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <include layout="@layout/a8m" />
-    </FrameLayout>
-</FrameLayout>
+</LinearLayout>

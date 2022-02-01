@@ -9,7 +9,7 @@ public class b
   extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  public h lvy;
+  public h omV;
   
   static
   {
@@ -21,7 +21,7 @@ public class b
   public b(h paramh)
   {
     super(paramh, a.info, "OpenIMAccTypeInfo", null);
-    this.lvy = paramh;
+    this.omV = paramh;
   }
   
   public final boolean a(a parama)
@@ -35,7 +35,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.openim.e.b
  * JD-Core Version:    0.7.0.1
  */

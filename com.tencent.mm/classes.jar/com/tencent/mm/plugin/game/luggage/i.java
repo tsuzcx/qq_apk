@@ -9,7 +9,7 @@ import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.q;
 import com.tencent.luggage.webview.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.g.h;
+import com.tencent.mm.plugin.game.luggage.page.h;
 import com.tencent.mm.plugin.webview.luggage.LuggageMMLocalResourceProvider;
 import com.tencent.mm.plugin.webview.luggage.e;
 import com.tencent.xweb.WebView;
@@ -21,39 +21,44 @@ public class i
   public i(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(232078);
-    if (this.CCu != null) {
-      this.CCu.QLj = true;
+    AppMethodBeat.i(276942);
+    if (this.Iwv != null) {
+      this.Iwv.XEI = true;
     }
-    AppMethodBeat.o(232078);
+    AppMethodBeat.o(276942);
   }
   
-  public final void Ou()
+  public final void aoC()
   {
     AppMethodBeat.i(83028);
-    getWebCore().crO = new q()
+    getWebCore().ejI = new q()
     {
-      public final String Oz()
-      {
-        AppMethodBeat.i(83025);
-        String str = com.tencent.mm.plugin.appbrand.ac.d.anc("preload_game_adapter.js");
-        AppMethodBeat.o(83025);
-        return str;
-      }
-      
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
         return null;
       }
       
-      public final void dv(String paramAnonymousString) {}
+      public final String aoH()
+      {
+        AppMethodBeat.i(83025);
+        String str = com.tencent.mm.plugin.appbrand.af.d.ags("preload_game_adapter.js");
+        AppMethodBeat.o(83025);
+        return str;
+      }
       
-      public final void dw(String paramAnonymousString) {}
+      public final WebResourceResponse aoI()
+      {
+        return null;
+      }
+      
+      public final void eG(String paramAnonymousString) {}
+      
+      public final void eH(String paramAnonymousString) {}
     };
-    if (getWebCore().crR != null)
+    if (getWebCore().ejL != null)
     {
-      getWebCore().crR.a(new LuggageMMLocalResourceProvider());
-      getWebCore().crR.a(new e(com.tencent.mm.plugin.appbrand.ac.d.anc("preload_game_adapter.js")));
+      getWebCore().ejL.a(new LuggageMMLocalResourceProvider());
+      getWebCore().ejL.a(new e(com.tencent.mm.plugin.appbrand.af.d.ags("preload_game_adapter.js")));
     }
     AppMethodBeat.o(83028);
   }
@@ -74,10 +79,10 @@ public class i
   
   public void loadUrl(String paramString)
   {
-    AppMethodBeat.i(232080);
+    AppMethodBeat.i(276952);
     super.loadUrl(paramString);
     g.b(getWebCore(), paramString);
-    AppMethodBeat.o(232080);
+    AppMethodBeat.o(276952);
   }
   
   public void onAttachedToWindow()
@@ -86,7 +91,7 @@ public class i
     super.onAttachedToWindow();
     getWebCore().a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject NU()
+      public final JSONObject aoe()
       {
         return null;
       }

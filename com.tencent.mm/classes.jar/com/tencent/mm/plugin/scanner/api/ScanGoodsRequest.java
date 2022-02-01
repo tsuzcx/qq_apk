@@ -4,68 +4,68 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public class ScanGoodsRequest
   extends BaseScanRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanGoodsRequest> CREATOR;
-  public int IGr;
-  public String IGs;
-  public String IGt;
-  public String IGu;
-  public String IGv;
-  public boolean IGw;
-  public boolean IGx;
+  public String OMA;
+  public String OMB;
+  public String OMC;
+  public String OMD;
+  public boolean OME;
+  public boolean OMF;
+  public int OMz;
   public String extInfo;
-  public int mTz;
   public int mode;
+  public int pQg;
   public int requestType;
   
   static
   {
-    AppMethodBeat.i(210463);
+    AppMethodBeat.i(313451);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(210463);
+    AppMethodBeat.o(313451);
   }
   
   public ScanGoodsRequest()
   {
-    this.mTz = 0;
-    this.IGw = true;
-    this.IGx = false;
-    this.IGk = true;
-    this.IGl = true;
-    this.IGm = true;
-    this.IGn = true;
-    this.IGo = true;
-    this.IGw = true;
-    this.IGx = false;
-    this.IGr = 0;
+    this.pQg = 0;
+    this.OME = true;
+    this.OMF = false;
+    this.OMs = true;
+    this.OMt = true;
+    this.OMu = true;
+    this.OMv = true;
+    this.OMw = true;
+    this.OME = true;
+    this.OMF = false;
+    this.OMz = 0;
   }
   
   public ScanGoodsRequest(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(210458);
-    this.mTz = 0;
-    this.IGw = true;
-    this.IGx = false;
+    AppMethodBeat.i(313443);
+    this.pQg = 0;
+    this.OME = true;
+    this.OMF = false;
     this.mode = paramParcel.readInt();
     this.requestType = paramParcel.readInt();
-    this.IGr = paramParcel.readInt();
-    this.IGs = paramParcel.readString();
-    this.IGt = paramParcel.readString();
-    this.IGu = paramParcel.readString();
-    this.IGv = paramParcel.readString();
-    this.mTz = paramParcel.readInt();
+    this.OMz = paramParcel.readInt();
+    this.OMA = paramParcel.readString();
+    this.OMB = paramParcel.readString();
+    this.OMC = paramParcel.readString();
+    this.OMD = paramParcel.readString();
+    this.pQg = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.IGw = bool1;
+      this.OME = bool1;
       if (paramParcel.readByte() == 0) {
         break label138;
       }
@@ -73,30 +73,30 @@ public class ScanGoodsRequest
     label138:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.IGx = bool1;
+      this.OMF = bool1;
       this.extInfo = paramParcel.readString();
-      AppMethodBeat.o(210458);
+      AppMethodBeat.o(313443);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public static ScanGoodsRequest fBW()
+  public static ScanGoodsRequest gPC()
   {
-    AppMethodBeat.i(210461);
+    AppMethodBeat.i(313447);
     ScanGoodsRequest localScanGoodsRequest = new ScanGoodsRequest();
     localScanGoodsRequest.mode = 5;
     localScanGoodsRequest.requestType = 1;
-    localScanGoodsRequest.IGk = true;
-    localScanGoodsRequest.IGl = true;
-    localScanGoodsRequest.IGm = true;
-    localScanGoodsRequest.IGn = true;
-    localScanGoodsRequest.IGo = true;
-    localScanGoodsRequest.IGw = false;
-    localScanGoodsRequest.IGx = true;
-    localScanGoodsRequest.mTz = a.fromDPToPix(MMApplicationContext.getContext(), 514);
-    AppMethodBeat.o(210461);
+    localScanGoodsRequest.OMs = true;
+    localScanGoodsRequest.OMt = true;
+    localScanGoodsRequest.OMu = true;
+    localScanGoodsRequest.OMv = true;
+    localScanGoodsRequest.OMw = true;
+    localScanGoodsRequest.OME = false;
+    localScanGoodsRequest.OMF = true;
+    localScanGoodsRequest.pQg = a.fromDPToPix(MMApplicationContext.getContext(), 514);
+    AppMethodBeat.o(313447);
     return localScanGoodsRequest;
   }
   
@@ -107,34 +107,34 @@ public class ScanGoodsRequest
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(210459);
-    if ((u.agG(this.IGs)) && (u.agG(this.IGt)) && (u.agG(this.IGu)))
+    AppMethodBeat.i(313454);
+    if ((y.ZC(this.OMA)) && (y.ZC(this.OMB)) && (y.ZC(this.OMC)))
     {
-      AppMethodBeat.o(210459);
+      AppMethodBeat.o(313454);
       return true;
     }
-    AppMethodBeat.o(210459);
+    AppMethodBeat.o(313454);
     return false;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
-    AppMethodBeat.i(210460);
+    AppMethodBeat.i(313456);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.mode);
     paramParcel.writeInt(this.requestType);
-    paramParcel.writeInt(this.IGr);
-    paramParcel.writeString(this.IGs);
-    paramParcel.writeString(this.IGt);
-    paramParcel.writeString(this.IGu);
-    paramParcel.writeString(this.IGv);
-    paramParcel.writeInt(this.mTz);
-    if (this.IGw)
+    paramParcel.writeInt(this.OMz);
+    paramParcel.writeString(this.OMA);
+    paramParcel.writeString(this.OMB);
+    paramParcel.writeString(this.OMC);
+    paramParcel.writeString(this.OMD);
+    paramParcel.writeInt(this.pQg);
+    if (this.OME)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.IGx) {
+      if (!this.OMF) {
         break label126;
       }
     }
@@ -143,7 +143,7 @@ public class ScanGoodsRequest
     {
       paramParcel.writeByte(b1);
       paramParcel.writeString(this.extInfo);
-      AppMethodBeat.o(210460);
+      AppMethodBeat.o(313456);
       return;
       b1 = 0;
       break;
@@ -152,7 +152,7 @@ public class ScanGoodsRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.ScanGoodsRequest
  * JD-Core Version:    0.7.0.1
  */

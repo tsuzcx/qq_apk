@@ -7,17 +7,11 @@ import com.google.android.gms.common.internal.Objects.ToStringHelper;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.server.converter.ConverterWrapper;
 import com.google.android.gms.common.util.Base64Utils;
 import com.google.android.gms.common.util.IOUtils;
 import com.google.android.gms.common.util.JsonUtils;
 import com.google.android.gms.common.util.MapUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -872,31 +866,20 @@ public abstract class FastJsonResponse
     }
   }
   
-  @SafeParcelable.Class(creator="FieldCreator")
-  @VisibleForTesting
   public static class Field<I, O>
     extends AbstractSafeParcelable
   {
     public static final FieldCreator CREATOR;
     protected final Class<? extends FastJsonResponse> mConcreteType;
-    @SafeParcelable.Field(getter="getConcreteTypeName", id=8)
     protected final String mConcreteTypeName;
-    @SafeParcelable.Field(getter="getOutputFieldName", id=6)
     protected final String mOutputFieldName;
-    @SafeParcelable.Field(getter="getSafeParcelableFieldId", id=7)
     protected final int mSafeParcelableFieldId;
-    @SafeParcelable.Field(getter="getTypeIn", id=2)
     protected final int mTypeIn;
-    @SafeParcelable.Field(getter="isTypeInArray", id=3)
     protected final boolean mTypeInArray;
-    @SafeParcelable.Field(getter="getTypeOut", id=4)
     protected final int mTypeOut;
-    @SafeParcelable.Field(getter="isTypeOutArray", id=5)
     protected final boolean mTypeOutArray;
-    @SafeParcelable.VersionField(getter="getVersionCode", id=1)
     private final int zzal;
     private FieldMappingDictionary zzwn;
-    @SafeParcelable.Field(getter="getWrappedConverter", id=9, type="com.google.android.gms.common.server.converter.ConverterWrapper")
     private FastJsonResponse.FieldConverter<I, O> zzwo;
     
     static
@@ -906,8 +889,7 @@ public abstract class FastJsonResponse
       AppMethodBeat.o(12013);
     }
     
-    @SafeParcelable.Constructor
-    Field(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) boolean paramBoolean1, @SafeParcelable.Param(id=4) int paramInt3, @SafeParcelable.Param(id=5) boolean paramBoolean2, @SafeParcelable.Param(id=6) String paramString1, @SafeParcelable.Param(id=7) int paramInt4, @SafeParcelable.Param(id=8) String paramString2, @SafeParcelable.Param(id=9) ConverterWrapper paramConverterWrapper)
+    Field(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, String paramString1, int paramInt4, String paramString2, ConverterWrapper paramConverterWrapper)
     {
       AppMethodBeat.i(11957);
       this.zzal = paramInt1;
@@ -959,7 +941,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<byte[], byte[]> forBase64(String paramString, int paramInt)
     {
       AppMethodBeat.i(11981);
@@ -968,7 +949,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<byte[], byte[]> forBase64UrlSafe(String paramString)
     {
       AppMethodBeat.i(12006);
@@ -977,7 +957,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<byte[], byte[]> forBase64UrlSafe(String paramString, int paramInt)
     {
       AppMethodBeat.i(11982);
@@ -994,7 +973,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<BigDecimal, BigDecimal> forBigDecimal(String paramString, int paramInt)
     {
       AppMethodBeat.i(11975);
@@ -1187,7 +1165,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<Integer, Integer> forInteger(String paramString, int paramInt)
     {
       AppMethodBeat.i(11965);
@@ -1204,7 +1181,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<ArrayList<Integer>, ArrayList<Integer>> forIntegers(String paramString, int paramInt)
     {
       AppMethodBeat.i(11966);
@@ -1213,7 +1189,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<Long, Long> forLong(String paramString)
     {
       AppMethodBeat.i(11993);
@@ -1230,7 +1205,6 @@ public abstract class FastJsonResponse
       return paramString;
     }
     
-    @VisibleForTesting
     public static Field<ArrayList<Long>, ArrayList<Long>> forLongs(String paramString)
     {
       AppMethodBeat.i(11994);
@@ -1514,7 +1488,7 @@ public abstract class FastJsonResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FastJsonResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.h;
+import com.tencent.mm.plugin.appbrand.af.j;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import java.util.Collection;
 import java.util.Iterator;
 
 public final class e
 {
-  private static final h<ad, ae> rud;
+  private static final j<ad, ae<?>> uFi;
   
   static
   {
     AppMethodBeat.i(136329);
-    rud = new h();
+    uFi = new j();
     AppMethodBeat.o(136329);
   }
   
-  public static void B(ad paramad)
+  public static void C(ad paramad)
   {
     AppMethodBeat.i(136327);
-    rud.cO(paramad);
+    uFi.ek(paramad);
     AppMethodBeat.o(136327);
   }
   
-  public static ae a(ad paramad, a parama)
+  public static ae<?> a(ad paramad, a parama)
   {
     AppMethodBeat.i(136328);
     if (paramad == null)
@@ -32,7 +32,7 @@ public final class e
       AppMethodBeat.o(136328);
       return null;
     }
-    paramad = rud.cN(paramad);
+    paramad = uFi.ej(paramad);
     if (paramad != null)
     {
       paramad = paramad.iterator();
@@ -50,21 +50,21 @@ public final class e
     return null;
   }
   
-  public static void a(ad paramad, ae paramae)
+  public static void a(ad paramad, ae<?> paramae)
   {
     AppMethodBeat.i(136326);
-    rud.k(paramad, paramae);
+    uFi.v(paramad, paramae);
     AppMethodBeat.o(136326);
   }
   
   public static abstract interface a
   {
-    public abstract boolean a(ae paramae);
+    public abstract boolean a(ae<?> paramae);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e
  * JD-Core Version:    0.7.0.1
  */

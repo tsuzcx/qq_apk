@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.plugin.appbrand.appcache.WABSPatch;
 import com.tencent.mm.plugin.appbrand.service.IBSPatchJNIService;
 
@@ -12,7 +12,7 @@ public class BSPatchJNIWrapper
   {
     AppMethodBeat.i(44127);
     BSPatchJNIWrapper.class.getClassLoader();
-    j.KW("appbrandcommon");
+    k.DA("appbrandcommon");
     AppMethodBeat.o(44127);
   }
   
@@ -26,7 +26,7 @@ public class BSPatchJNIWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.BSPatchJNIWrapper
  * JD-Core Version:    0.7.0.1
  */

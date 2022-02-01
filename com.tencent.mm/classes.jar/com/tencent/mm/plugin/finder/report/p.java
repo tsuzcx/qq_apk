@@ -1,72 +1,143 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.i;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.d;
-import com.tencent.mm.plugin.finder.event.base.h;
-import com.tencent.mm.protocal.protobuf.bid;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.model.cn;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderShareIconExposeReporter;", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "lastFeedId", "", "observerForExposeReport", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "getObserverForExposeReport", "()Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FinderHotspotChangeReporter;", "", "()V", "TAG", "", "isChangeTab", "", "reportedData", "", "Lcom/tencent/mm/plugin/finder/report/FinderHotspotChangeReporter$RecordData;", "kotlin.jvm.PlatformType", "", "videoDataMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "getData", "feedId", "getStatsReportFluencyInfo", "", "Lcom/tencent/mm/protocal/protobuf/FinderFluencyInfo;", "notifyChangeTab", "", "notifyDecodeStart", "(Ljava/lang/Long;)V", "notifyFirstVideoFrameRendered", "notifyVideoDownload", "notifyVideoFirstFrame", "notifyVideoPause", "notifyVideoPlay", "RecordData", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
 {
-  public final d xxI;
-  long xym;
+  public static final p FpQ;
+  public static final ConcurrentHashMap<Long, p.a> FpR;
+  public static final Set<p.a> FpS;
+  private static boolean FpT;
   
-  public p(final bid parambid)
+  static
   {
-    AppMethodBeat.i(284288);
-    this.xxI = ((d)new a(this, parambid));
-    AppMethodBeat.o(284288);
+    AppMethodBeat.i(331506);
+    FpQ = new p();
+    FpR = new ConcurrentHashMap();
+    FpS = Collections.synchronizedSet((Set)new HashSet());
+    AppMethodBeat.o(331506);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/report/FinderShareIconExposeReporter$observerForExposeReport$1", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "isAsync", "", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "", "ev", "plugin-finder_release"})
-  public static final class a
-    extends d
+  public static void eMB()
   {
-    a(bid parambid) {}
-    
-    public final void a(b paramb)
+    FpT = true;
+  }
+  
+  public static void h(Long paramLong)
+  {
+    AppMethodBeat.i(331489);
+    if (paramLong == null)
     {
-      AppMethodBeat.i(269978);
-      kotlin.g.b.p.k(paramb, "ev");
-      if (((paramb instanceof h)) && (this.zWH.xym != ((h)paramb).xrl))
-      {
-        am localam = am.zZN;
-        am.a(parambid, "forward", false, (JSONObject)new i());
-        localam = am.zZN;
-        am.a(parambid, "tridot", false, (JSONObject)new i());
-        this.zWH.xym = ((h)paramb).xrl;
+      AppMethodBeat.o(331489);
+      return;
+    }
+    paramLong.longValue();
+    p.a locala = pB(paramLong.longValue());
+    int i;
+    if (locala.FpW == 0L)
+    {
+      i = 1;
+      label39:
+      if (i == 0) {
+        break label69;
       }
-      AppMethodBeat.o(269978);
-    }
-    
-    public final boolean a(c paramc, b paramb)
-    {
-      AppMethodBeat.i(269979);
-      kotlin.g.b.p.k(paramc, "dispatcher");
-      kotlin.g.b.p.k(paramb, "event");
-      if (((paramb instanceof h)) && ((((h)paramb).type == 0) || (((h)paramb).type == 5) || (((h)paramb).type == 4)))
-      {
-        AppMethodBeat.o(269979);
-        return true;
+      label43:
+      if (locala != null) {
+        break label74;
       }
-      AppMethodBeat.o(269979);
-      return false;
+      locala = null;
     }
-    
-    public final boolean dpw()
+    for (;;)
     {
-      return false;
+      if (locala != null) {
+        break label84;
+      }
+      FpR.remove(paramLong);
+      break;
+      i = 0;
+      break label39;
+      label69:
+      locala = null;
+      break label43;
+      label74:
+      locala.FpW = cn.bDw();
     }
+    label84:
+    AppMethodBeat.o(331489);
+  }
+  
+  public static void i(Long paramLong)
+  {
+    AppMethodBeat.i(331496);
+    if (paramLong == null)
+    {
+      AppMethodBeat.o(331496);
+      return;
+    }
+    paramLong.longValue();
+    p.a locala = pB(paramLong.longValue());
+    if (locala.FpU == 0L)
+    {
+      i = 1;
+      label39:
+      if (i == 0) {
+        break label69;
+      }
+    }
+    for (;;)
+    {
+      if (locala != null) {
+        break label74;
+      }
+      locala = null;
+      if (locala != null) {
+        break label106;
+      }
+      FpR.remove(paramLong);
+      break;
+      i = 0;
+      break label39;
+      label69:
+      locala = null;
+    }
+    label74:
+    locala.FpU = cn.bDw();
+    if (FpT) {}
+    for (int i = 1;; i = 2)
+    {
+      locala.Fqa = i;
+      FpT = false;
+      break;
+    }
+    label106:
+    AppMethodBeat.o(331496);
+  }
+  
+  public static p.a pB(long paramLong)
+  {
+    AppMethodBeat.i(331500);
+    p.a locala2 = (p.a)FpR.get(Long.valueOf(paramLong));
+    p.a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = new p.a();
+      ((Map)FpR).put(Long.valueOf(paramLong), locala1);
+    }
+    AppMethodBeat.o(331500);
+    return locala1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.p
  * JD-Core Version:    0.7.0.1
  */

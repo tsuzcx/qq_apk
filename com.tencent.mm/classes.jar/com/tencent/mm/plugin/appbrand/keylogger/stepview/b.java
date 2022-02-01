@@ -15,74 +15,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends LinearLayout
 {
-  private ViewGroup kfX;
+  private LinearLayout mContainer;
   private Context mContext;
-  private TextView mMA;
-  private ImageView oFa;
-  private LinearLayout pQA;
-  private ViewGroup pQB;
+  private ViewGroup mGv;
+  private TextView pJi;
+  private ImageView rIe;
+  private ViewGroup sVa;
   
   public b(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(208996);
+    AppMethodBeat.i(319463);
     LayoutInflater.from(paramContext).inflate(a.f.view_step_group, this);
     this.mContext = paramContext;
-    this.pQA = ((LinearLayout)findViewById(a.e.container));
-    paramContext = this.pQA;
+    this.mContainer = ((LinearLayout)findViewById(a.e.container));
+    paramContext = this.mContainer;
     if (paramBoolean) {}
     for (int i = 0;; i = 1)
     {
       paramContext.setOrientation(i);
-      this.mMA = ((TextView)findViewById(a.e.desc));
-      this.oFa = ((ImageView)findViewById(a.e.icon));
-      this.kfX = ((ViewGroup)findViewById(a.e.root));
-      this.pQB = ((ViewGroup)findViewById(a.e.group_desc));
-      AppMethodBeat.o(208996);
+      this.pJi = ((TextView)findViewById(a.e.desc));
+      this.rIe = ((ImageView)findViewById(a.e.icon));
+      this.mGv = ((ViewGroup)findViewById(a.e.root));
+      this.sVa = ((ViewGroup)findViewById(a.e.group_desc));
+      AppMethodBeat.o(319463);
       return;
     }
   }
   
   public final void addView(View paramView)
   {
-    AppMethodBeat.i(208997);
-    this.pQA.addView(paramView);
-    AppMethodBeat.o(208997);
+    AppMethodBeat.i(319472);
+    this.mContainer.addView(paramView);
+    AppMethodBeat.o(319472);
   }
   
   public final void setHasBorder(boolean paramBoolean)
   {
-    AppMethodBeat.i(208998);
+    AppMethodBeat.i(319479);
     if (paramBoolean)
     {
-      this.kfX.setBackground(this.mContext.getDrawable(a.d.step_diagram_border));
-      AppMethodBeat.o(208998);
+      this.mGv.setBackground(this.mContext.getDrawable(a.d.step_diagram_border));
+      AppMethodBeat.o(319479);
       return;
     }
-    this.kfX.setBackground(null);
-    AppMethodBeat.o(208998);
+    this.mGv.setBackground(null);
+    AppMethodBeat.o(319479);
   }
   
   public final void setStep(c paramc)
   {
-    AppMethodBeat.i(209000);
+    AppMethodBeat.i(319487);
     if (paramc == null)
     {
-      this.mMA.setText(null);
-      this.oFa.setImageDrawable(null);
-      this.pQB.setVisibility(8);
-      AppMethodBeat.o(209000);
+      this.pJi.setText(null);
+      this.rIe.setImageDrawable(null);
+      this.sVa.setVisibility(8);
+      AppMethodBeat.o(319487);
       return;
     }
-    this.mMA.setText(paramc.pQC);
-    this.oFa.setImageResource(a.BE(paramc.mState));
-    this.pQB.setVisibility(0);
-    AppMethodBeat.o(209000);
+    this.pJi.setText(paramc.sVb);
+    this.rIe.setImageResource(a.BS(paramc.mState));
+    this.sVa.setVisibility(0);
+    AppMethodBeat.o(319487);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,48 +10,48 @@ import java.lang.ref.WeakReference;
 public final class ah
   extends Resources
 {
-  private static boolean xP = false;
+  private static boolean yK = false;
   private final WeakReference<Context> mContextRef;
   
   public ah(Context paramContext, Resources paramResources)
   {
     super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
-    AppMethodBeat.i(242485);
+    AppMethodBeat.i(199486);
     this.mContextRef = new WeakReference(paramContext);
-    AppMethodBeat.o(242485);
+    AppMethodBeat.o(199486);
   }
   
-  public static boolean eH()
+  public static boolean fE()
   {
-    return (xP) && (Build.VERSION.SDK_INT <= 20);
+    return (yK) && (Build.VERSION.SDK_INT <= 20);
   }
   
-  final Drawable aF(int paramInt)
+  final Drawable aC(int paramInt)
   {
-    AppMethodBeat.i(242490);
+    AppMethodBeat.i(199518);
     Drawable localDrawable = super.getDrawable(paramInt);
-    AppMethodBeat.o(242490);
+    AppMethodBeat.o(199518);
     return localDrawable;
   }
   
   public final Drawable getDrawable(int paramInt)
   {
-    AppMethodBeat.i(242488);
+    AppMethodBeat.i(199506);
     Object localObject = (Context)this.mContextRef.get();
     if (localObject != null)
     {
-      localObject = f.dq().a((Context)localObject, this, paramInt);
-      AppMethodBeat.o(242488);
+      localObject = f.ep().a((Context)localObject, this, paramInt);
+      AppMethodBeat.o(199506);
       return localObject;
     }
     localObject = super.getDrawable(paramInt);
-    AppMethodBeat.o(242488);
+    AppMethodBeat.o(199506);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.appcompat.widget.ah
  * JD-Core Version:    0.7.0.1
  */

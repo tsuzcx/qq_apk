@@ -16,11 +16,11 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class FaceDetectDecorView
   extends View
 {
-  public boolean wBI;
-  public boolean wBJ;
-  public boolean wBK;
-  public RectF wBL;
-  private Paint wBM;
+  public boolean zXT;
+  public boolean zXU;
+  public boolean zXV;
+  public RectF zXW;
+  private Paint zXX;
   
   public FaceDetectDecorView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,14 +31,14 @@ public class FaceDetectDecorView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104134);
-    this.wBI = false;
-    this.wBJ = false;
-    this.wBK = false;
-    this.wBL = null;
-    this.wBM = null;
-    this.wBM = new Paint();
-    this.wBM.setColor(getResources().getColor(a.b.black));
-    this.wBM.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.zXT = false;
+    this.zXU = false;
+    this.zXV = false;
+    this.zXW = null;
+    this.zXX = null;
+    this.zXX = new Paint();
+    this.zXX.setColor(getResources().getColor(a.b.black));
+    this.zXX.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     setLayerType(1, null);
     AppMethodBeat.o(104134);
   }
@@ -47,18 +47,18 @@ public class FaceDetectDecorView
   {
     AppMethodBeat.i(104135);
     super.onDraw(paramCanvas);
-    Log.i("MicroMsg.FaceDetectDecorView", "mTargetCoverMode: %b, mIsInCoverMode: %b, %s", new Object[] { Boolean.valueOf(this.wBJ), Boolean.valueOf(this.wBI), this.wBL });
-    if ((this.wBJ != this.wBI) || (this.wBK))
+    Log.i("MicroMsg.FaceDetectDecorView", "mTargetCoverMode: %b, mIsInCoverMode: %b, %s", new Object[] { Boolean.valueOf(this.zXU), Boolean.valueOf(this.zXT), this.zXW });
+    if ((this.zXU != this.zXT) || (this.zXV))
     {
-      if (!this.wBJ) {
+      if (!this.zXU) {
         break label113;
       }
       paramCanvas.drawColor(getResources().getColor(a.b.face_cover));
-      paramCanvas.drawRect(this.wBL, this.wBM);
+      paramCanvas.drawRect(this.zXW, this.zXX);
     }
     for (;;)
     {
-      this.wBI = this.wBJ;
+      this.zXT = this.zXU;
       AppMethodBeat.o(104135);
       return;
       label113:
@@ -68,7 +68,7 @@ public class FaceDetectDecorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectDecorView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.subapp.ui.openapi;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,12 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
 import com.tencent.mm.R.o;
-import com.tencent.mm.bd.i;
-import com.tencent.mm.bd.i.a;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.ay.i;
+import com.tencent.mm.ay.i.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.model.app.ao;
+import com.tencent.mm.pluginsdk.model.app.as;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -36,8 +35,8 @@ public class AppProfileUI
   extends MMPreference
   implements MStorage.IOnStorageChange
 {
-  private g CSR;
-  private AppHeaderPreference.a MgA;
+  private g INh;
+  private AppHeaderPreference.a SHX;
   private MMHandler handler = null;
   private f screen;
   
@@ -50,27 +49,27 @@ public class AppProfileUI
     for (paramg = "1";; paramg = "2")
     {
       localLinkedList.add(new i.a(10165, paramg));
-      bh.beI();
-      c.bbK().d(new i(localLinkedList));
+      bh.bCz();
+      c.bzz().d(new i(localLinkedList));
       AppMethodBeat.o(29156);
       return;
     }
   }
   
-  private void bfU()
+  private void bDL()
   {
     boolean bool = true;
     AppMethodBeat.i(29152);
     this.screen.removeAll();
-    this.screen.auC(getResourceId());
+    this.screen.aBe(getResourceId());
     AppHeaderPreference localAppHeaderPreference;
     AppHeaderPreference.a locala;
-    if (this.CSR.field_status == 1)
+    if (this.INh.field_status == 1)
     {
-      this.screen.byI("app_profile_add");
-      localAppHeaderPreference = (AppHeaderPreference)this.screen.byG("app_profile_header");
-      locala = this.MgA;
-      if (this.CSR.field_status != 1) {
+      this.screen.bAk("app_profile_add");
+      localAppHeaderPreference = (AppHeaderPreference)this.screen.bAi("app_profile_header");
+      locala = this.SHX;
+      if (this.INh.field_status != 1) {
         break label112;
       }
     }
@@ -79,14 +78,14 @@ public class AppProfileUI
       localAppHeaderPreference.a(locala, bool);
       AppMethodBeat.o(29152);
       return;
-      this.screen.byI("app_profile_remove");
+      this.screen.bAk("app_profile_remove");
       break;
       label112:
       bool = false;
     }
   }
   
-  private void ghS()
+  private void hBt()
   {
     AppMethodBeat.i(29153);
     this.handler = new MMHandler()
@@ -104,15 +103,35 @@ public class AppProfileUI
   
   public int getResourceId()
   {
-    return R.o.eXe;
+    return R.o.haH;
   }
   
   public void initView()
   {
     boolean bool = true;
     AppMethodBeat.i(29151);
-    this.MgA = new AppHeaderPreference.a()
+    this.SHX = new AppHeaderPreference.a()
     {
+      public final String Fc(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(29144);
+        if (paramAnonymousBoolean) {}
+        for (int i = R.l.settings_plugins_installed;; i = R.l.settings_plugins_uninstalled)
+        {
+          String str = AppProfileUI.this.getContext().getString(i);
+          AppMethodBeat.o(29144);
+          return str;
+        }
+      }
+      
+      public final Bitmap fwJ()
+      {
+        AppMethodBeat.i(29143);
+        Bitmap localBitmap = h.c(AppProfileUI.a(AppProfileUI.this).field_appId, 1, a.getDensity(AppProfileUI.this));
+        AppMethodBeat.o(29143);
+        return localBitmap;
+      }
+      
       public final String getHint()
       {
         AppMethodBeat.i(29145);
@@ -123,7 +142,7 @@ public class AppProfileUI
           AppMethodBeat.o(29145);
           return null;
         }
-        localObject2 = h.jw((Context)localObject2);
+        localObject2 = h.lt((Context)localObject2);
         if (((String)localObject2).equalsIgnoreCase("zh_CN"))
         {
           localObject1 = ((g)localObject1).field_appDiscription;
@@ -165,40 +184,20 @@ public class AppProfileUI
         return localObject1;
       }
       
-      public final String ghQ()
+      public final String hBs()
       {
         AppMethodBeat.i(29142);
         String str = h.a(AppProfileUI.this.getContext(), AppProfileUI.a(AppProfileUI.this), null);
         AppMethodBeat.o(29142);
         return str;
       }
-      
-      public final Bitmap ghR()
-      {
-        AppMethodBeat.i(29143);
-        Bitmap localBitmap = h.c(AppProfileUI.a(AppProfileUI.this).field_appId, 1, a.getDensity(AppProfileUI.this));
-        AppMethodBeat.o(29143);
-        return localBitmap;
-      }
-      
-      public final String zL(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(29144);
-        if (paramAnonymousBoolean) {}
-        for (int i = R.l.settings_plugins_installed;; i = R.l.settings_plugins_uninstalled)
-        {
-          String str = AppProfileUI.this.getContext().getString(i);
-          AppMethodBeat.o(29144);
-          return str;
-        }
-      }
     };
-    this.CSR = h.o(getIntent().getStringExtra("AppProfileUI_AppId"), true, false);
-    if (this.CSR != null) {}
+    this.INh = h.s(getIntent().getStringExtra("AppProfileUI_AppId"), true, false);
+    if (this.INh != null) {}
     for (;;)
     {
       Assert.assertTrue("initView : appInfo does not exist", bool);
-      setMMTitle(R.l.eoQ);
+      setMMTitle(R.l.grR);
       this.screen = getPreferenceScreen();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
@@ -210,7 +209,7 @@ public class AppProfileUI
           return true;
         }
       });
-      bfU();
+      bDL();
       AppMethodBeat.o(29151);
       return;
       bool = false;
@@ -228,7 +227,7 @@ public class AppProfileUI
   public void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(29155);
-    if (paramString.equals(this.CSR.field_appId)) {
+    if (paramString.equals(this.INh.field_appId)) {
       initView();
     }
     AppMethodBeat.o(29155);
@@ -237,7 +236,7 @@ public class AppProfileUI
   public void onPause()
   {
     AppMethodBeat.i(29150);
-    ao.fmz().remove(this);
+    as.gxn().remove(this);
     super.onPause();
     AppMethodBeat.o(29150);
   }
@@ -249,23 +248,23 @@ public class AppProfileUI
     Log.i("MicroMsg.AppProfileUI", paramf + " item has been clicked!");
     if (paramf.equals("app_profile_add"))
     {
-      this.CSR.field_status = 1;
-      this.CSR.field_modifyTime = System.currentTimeMillis();
-      ao.fmz().a(this.CSR, new String[0]);
-      bfU();
-      a(this.CSR, true);
-      ghS();
+      this.INh.field_status = 1;
+      this.INh.field_modifyTime = System.currentTimeMillis();
+      as.gxn().a(this.INh, new String[0]);
+      bDL();
+      a(this.INh, true);
+      hBt();
       AppMethodBeat.o(29154);
       return true;
     }
     if (paramf.equals("app_profile_remove"))
     {
-      this.CSR.field_status = 0;
-      this.CSR.field_modifyTime = System.currentTimeMillis();
-      ao.fmz().a(this.CSR, new String[0]);
-      bfU();
-      a(this.CSR, false);
-      ghS();
+      this.INh.field_status = 0;
+      this.INh.field_modifyTime = System.currentTimeMillis();
+      as.gxn().a(this.INh, new String[0]);
+      bDL();
+      a(this.INh, false);
+      hBt();
       AppMethodBeat.o(29154);
       return true;
     }
@@ -277,7 +276,7 @@ public class AppProfileUI
   {
     AppMethodBeat.i(29149);
     super.onResume();
-    ao.fmz().add(this);
+    as.gxn().add(this);
     AppMethodBeat.o(29149);
   }
   

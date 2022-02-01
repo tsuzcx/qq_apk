@@ -3,66 +3,60 @@ package com.tencent.mm.plugin.finder.feed.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ad.i;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/AdMutualCache;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache;", "id", "", "data", "Lcom/tencent/mm/json/JSONObject;", "(JLcom/tencent/mm/json/JSONObject;)V", "adH", "", "getAdH", "()I", "setAdH", "(I)V", "adW", "getAdW", "setAdW", "aid", "", "getAid", "()Ljava/lang/String;", "setAid", "(Ljava/lang/String;)V", "caption", "getCaption", "setCaption", "getData", "()Lcom/tencent/mm/json/JSONObject;", "description", "getDescription", "setDescription", "exposeIntervalTime", "getExposeIntervalTime", "()J", "setExposeIntervalTime", "(J)V", "exposedTime", "getExposedTime", "setExposedTime", "iconUrl", "getIconUrl", "setIconUrl", "getId", "isExposed", "", "()Z", "setExposed", "(Z)V", "isVisibleExposed", "setVisibleExposed", "posId", "getPosId", "setPosId", "url", "getUrl", "setUrl", "uxinfo", "getUxinfo", "setUxinfo", "endExpose", "", "report", "startExpose", "toString", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/AdMutualInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache;", "id", "", "data", "Lcom/tencent/mm/json/JSONObject;", "(JLcom/tencent/mm/json/JSONObject;)V", "adH", "", "getAdH", "()I", "setAdH", "(I)V", "adW", "getAdW", "setAdW", "aid", "getAid", "()J", "setAid", "(J)V", "caption", "", "getCaption", "()Ljava/lang/String;", "setCaption", "(Ljava/lang/String;)V", "getData", "()Lcom/tencent/mm/json/JSONObject;", "description", "getDescription", "setDescription", "exposeIntervalTime", "getExposeIntervalTime", "setExposeIntervalTime", "exposedTime", "getExposedTime", "setExposedTime", "iconUrl", "getIconUrl", "setIconUrl", "getId", "isExposed", "", "()Z", "setExposed", "(Z)V", "isVisibleExposed", "setVisibleExposed", "posId", "getPosId", "setPosId", "url", "getUrl", "setUrl", "uxinfo", "getUxinfo", "setUxinfo", "endExpose", "", "report", "startExpose", "toString", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends com.tencent.mm.plugin.finder.feed.model.internal.a
 {
-  public static final a xFB;
-  private String aid;
-  public String caption;
-  public String description;
-  public String iconUrl;
+  public static final a Ber;
+  private boolean AMQ;
+  private final i Bed;
+  private long Bee;
+  private String Bef;
+  private long Bes;
+  private String Bet;
+  private String description;
+  private String iconUrl;
   private final long id;
-  public String jDL;
-  public String url;
-  public final i xFA;
-  public boolean xFv;
-  private long xFw;
-  public String xFx;
-  public int xFy;
-  public int xFz;
-  public boolean xpx;
+  private String mdG;
+  private String url;
   
   static
   {
-    AppMethodBeat.i(285322);
-    xFB = new a((byte)0);
-    AppMethodBeat.o(285322);
+    AppMethodBeat.i(366052);
+    Ber = new a((byte)0);
+    AppMethodBeat.o(366052);
   }
   
   public a(long paramLong, i parami)
   {
     super(paramLong);
-    AppMethodBeat.i(285321);
+    AppMethodBeat.i(366047);
     this.id = paramLong;
-    this.xFA = parami;
+    this.Bed = parami;
     this.iconUrl = "";
     this.description = "";
-    this.caption = "";
-    this.jDL = "";
-    this.aid = "";
-    this.xFx = "";
-    this.url = this.xFA.optString("url");
-    parami = this.xFA.optString("uxinfo");
-    p.j(parami, "data.optString(Constants…r.AdInfoKeys.KEY_UX_INFO)");
-    this.jDL = parami;
-    parami = this.xFA.optString("aid");
-    p.j(parami, "data.optString(ConstantsFinder.AdInfoKeys.KEY_AID)");
-    this.aid = parami;
-    parami = this.xFA.optString("ad_posid");
-    p.j(parami, "data.optString(Constants…er.AdInfoKeys.KEY_POS_ID)");
-    this.xFx = parami;
-    Log.i("Finder.AdMutualCache", "id :" + this.id);
+    this.Bet = "";
+    this.mdG = "";
+    this.Bef = "";
+    this.url = this.Bed.optString("url");
+    parami = this.Bed.optString("uxinfo");
+    s.s(parami, "data.optString(Constants…r.AdInfoKeys.KEY_UX_INFO)");
+    this.mdG = parami;
+    this.Bee = this.Bed.optLong("aid");
+    parami = this.Bed.optString("ad_posid");
+    s.s(parami, "data.optString(Constants…er.AdInfoKeys.KEY_POS_ID)");
+    this.Bef = parami;
+    Log.i("Finder.AdMutualCache", "id :" + this.id + " aid:" + this.Bee);
     try
     {
-      parami = new JSONArray(this.xFA.optString("crt_info"));
+      parami = new JSONArray(this.Bed.optString("crt_info"));
       if (parami.length() > 0)
       {
         parami = parami.getJSONObject(0);
@@ -71,43 +65,43 @@ public final class a
         if (parami != null)
         {
           String str = parami.optString("description");
-          p.j(str, "optString(KEY_DESCRIPTION)");
+          s.s(str, "optString(KEY_DESCRIPTION)");
+          s.u(str, "<set-?>");
           this.description = str;
           parami = parami.optString("caption");
-          p.j(parami, "optString(KEY_CAPTION)");
-          this.caption = parami;
-          AppMethodBeat.o(285321);
+          s.s(parami, "optString(KEY_CAPTION)");
+          s.u(parami, "<set-?>");
+          this.Bet = parami;
+          AppMethodBeat.o(366047);
           return;
         }
-        AppMethodBeat.o(285321);
-        return;
       }
     }
     catch (Exception parami)
     {
-      AppMethodBeat.o(285321);
+      AppMethodBeat.o(366047);
     }
   }
   
-  public final void duf()
+  public final void edE()
   {
-    AppMethodBeat.i(285319);
+    AppMethodBeat.i(366058);
     Log.i("Finder.AdMutualCache", "startExpose");
-    if (!this.xpx) {
-      this.xFw = cm.bfD();
+    if (!this.AMQ) {
+      this.Bes = cn.bDv();
     }
-    AppMethodBeat.o(285319);
+    AppMethodBeat.o(366058);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(285320);
-    String str = "id:" + d.Fw(this.id) + " url:" + this.url + " description:" + this.description + " caption:" + this.caption + " isExposed:" + this.xpx;
-    AppMethodBeat.o(285320);
+    AppMethodBeat.i(366065);
+    String str = "id:" + d.hF(this.id) + " url:" + this.url + " description:" + this.description + " caption:" + this.Bet + " isExposed:" + this.AMQ;
+    AppMethodBeat.o(366065);
     return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/AdMutualCache$Companion;", "", "()V", "EXPOSE_LIMIT", "", "TAG", "", "THREAD_TAG", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/AdMutualInfo$Companion;", "", "()V", "EXPOSE_LIMIT", "", "TAG", "", "THREAD_TAG", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

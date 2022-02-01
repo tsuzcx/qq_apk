@@ -2,13 +2,13 @@ package com.tencent.mm.sandbox.updater;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.d.i;
-import com.tencent.mm.d.i.a;
-import com.tencent.mm.protocal.protobuf.dag;
-import com.tencent.mm.protocal.protobuf.dhi;
-import com.tencent.mm.protocal.protobuf.dhj;
-import com.tencent.mm.protocal.protobuf.dhk;
-import com.tencent.mm.protocal.protobuf.dyu;
+import com.tencent.mm.d.h;
+import com.tencent.mm.d.h.a;
+import com.tencent.mm.protocal.protobuf.dro;
+import com.tencent.mm.protocal.protobuf.dzr;
+import com.tencent.mm.protocal.protobuf.dzs;
+import com.tencent.mm.protocal.protobuf.dzt;
+import com.tencent.mm.protocal.protobuf.ery;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -17,111 +17,111 @@ import java.util.LinkedList;
 
 public final class f
 {
-  public String DNA;
-  public String DNB;
-  public HashMap<Integer, LinkedList<dag>> DNw;
-  public String DNx;
-  public String DNy;
-  public String DNz;
+  public HashMap<Integer, LinkedList<dro>> JEK;
+  public String JEL;
+  public String JEM;
+  public String JEN;
+  public String JEO;
+  public String JEP;
   public String clientVersion;
-  public final String coY;
+  public final String egJ;
   public final int fileSize;
-  public final Integer smQ;
-  public final Integer smR;
-  public final Integer smS;
-  public final String smT;
-  public final String smU;
+  public final String mOI;
   public int versionCode;
+  public final Integer vyP;
+  public final Integer vyQ;
+  public final Integer vyR;
+  public final String vyS;
   
-  public f(dhk paramdhk)
+  public f(dzt paramdzt)
   {
     AppMethodBeat.i(32708);
-    this.DNw = new HashMap();
-    if (paramdhk == null)
+    this.JEK = new HashMap();
+    if (paramdzt == null)
     {
-      this.smQ = Integer.valueOf(1);
-      this.smT = "";
-      this.smU = "";
-      this.smR = Integer.valueOf(-1);
-      this.smS = Integer.valueOf(-1);
-      this.coY = "";
+      this.vyP = Integer.valueOf(1);
+      this.mOI = "";
+      this.vyS = "";
+      this.vyQ = Integer.valueOf(-1);
+      this.vyR = Integer.valueOf(-1);
+      this.egJ = "";
       this.fileSize = 0;
-      this.DNx = "";
-      this.DNy = "";
+      this.JEL = "";
+      this.JEM = "";
       this.versionCode = 0;
       this.clientVersion = "";
-      this.DNz = "";
-      this.DNA = "";
-      this.DNB = "";
+      this.JEN = "";
+      this.JEO = "";
+      this.JEP = "";
       AppMethodBeat.o(32708);
       return;
     }
-    if (paramdhk.TOz != null)
+    if (paramdzt.abeV != null)
     {
-      this.smU = paramdhk.TOz.MD5;
-      this.smT = paramdhk.TOz.Url;
+      this.vyS = paramdzt.abeV.MD5;
+      this.mOI = paramdzt.abeV.Url;
     }
     Object localObject;
-    for (this.fileSize = paramdhk.TOz.HlG;; this.fileSize = 0)
+    for (this.fileSize = paramdzt.abeV.Nju;; this.fileSize = 0)
     {
-      this.smQ = Integer.valueOf(paramdhk.state);
-      this.smS = Integer.valueOf(paramdhk.TOy);
-      if ((paramdhk.TOw == null) || (paramdhk.TOw.isEmpty())) {
+      this.vyP = Integer.valueOf(paramdzt.state);
+      this.vyR = Integer.valueOf(paramdzt.abeU);
+      if ((paramdzt.abeS == null) || (paramdzt.abeS.isEmpty())) {
         break;
       }
-      int j = paramdhk.TOw.size();
+      int j = paramdzt.abeS.size();
       int i = 0;
       while (i < j)
       {
-        localObject = (dhj)paramdhk.TOw.get(i);
-        if ((((dhj)localObject).TOv != null) && (!((dhj)localObject).TOv.isEmpty())) {
-          this.DNw.put(Integer.valueOf(((dhj)localObject).type), ((dhj)localObject).TOv);
+        localObject = (dzs)paramdzt.abeS.get(i);
+        if ((((dzs)localObject).abeR != null) && (!((dzs)localObject).abeR.isEmpty())) {
+          this.JEK.put(Integer.valueOf(((dzs)localObject).type), ((dzs)localObject).abeR);
         }
         i += 1;
       }
-      this.smU = "";
-      this.smT = "";
+      this.vyS = "";
+      this.mOI = "";
     }
-    this.smR = Integer.valueOf(paramdhk.TOx);
-    this.coY = paramdhk.GIL;
-    if ((paramdhk.TOB != null) && (!paramdhk.TOB.isEmpty()))
+    this.vyQ = Integer.valueOf(paramdzt.abeT);
+    this.egJ = paramdzt.ycW;
+    if ((paramdzt.abeX != null) && (!paramdzt.abeX.isEmpty()))
     {
-      paramdhk = paramdhk.TOB.iterator();
-      while (paramdhk.hasNext())
+      paramdzt = paramdzt.abeX.iterator();
+      while (paramdzt.hasNext())
       {
-        localObject = (dhi)paramdhk.next();
-        if ((localObject != null) && (!Util.isNullOrNil(((dhi)localObject).key))) {
-          if (((dhi)localObject).key.equalsIgnoreCase("newApkMd5")) {
-            this.DNx = ((dhi)localObject).value;
-          } else if (((dhi)localObject).key.equalsIgnoreCase("oldApkMd5")) {
-            this.DNy = ((dhi)localObject).value;
-          } else if (((dhi)localObject).key.equalsIgnoreCase("versionCode")) {
-            this.versionCode = Util.safeParseInt(((dhi)localObject).value);
-          } else if (((dhi)localObject).key.equalsIgnoreCase("clientVersion")) {
-            this.clientVersion = ((dhi)localObject).value;
-          } else if (((dhi)localObject).key.equalsIgnoreCase("alphaTitle")) {
-            this.DNz = aLS(((dhi)localObject).value);
-          } else if (((dhi)localObject).key.equalsIgnoreCase("alphaContent")) {
-            this.DNA = aLS(((dhi)localObject).value);
-          } else if (((dhi)localObject).key.equalsIgnoreCase("alphaUrl")) {
-            this.DNB = ((dhi)localObject).value;
+        localObject = (dzr)paramdzt.next();
+        if ((localObject != null) && (!Util.isNullOrNil(((dzr)localObject).key))) {
+          if (((dzr)localObject).key.equalsIgnoreCase("newApkMd5")) {
+            this.JEL = ((dzr)localObject).value;
+          } else if (((dzr)localObject).key.equalsIgnoreCase("oldApkMd5")) {
+            this.JEM = ((dzr)localObject).value;
+          } else if (((dzr)localObject).key.equalsIgnoreCase("versionCode")) {
+            this.versionCode = Util.safeParseInt(((dzr)localObject).value);
+          } else if (((dzr)localObject).key.equalsIgnoreCase("clientVersion")) {
+            this.clientVersion = ((dzr)localObject).value;
+          } else if (((dzr)localObject).key.equalsIgnoreCase("alphaTitle")) {
+            this.JEN = aIM(((dzr)localObject).value);
+          } else if (((dzr)localObject).key.equalsIgnoreCase("alphaContent")) {
+            this.JEO = aIM(((dzr)localObject).value);
+          } else if (((dzr)localObject).key.equalsIgnoreCase("alphaUrl")) {
+            this.JEP = ((dzr)localObject).value;
           }
         }
       }
       AppMethodBeat.o(32708);
       return;
     }
-    this.DNx = "";
-    this.DNy = "";
+    this.JEL = "";
+    this.JEM = "";
     this.versionCode = 0;
     this.clientVersion = "";
-    this.DNz = "";
-    this.DNA = "";
-    this.DNB = "";
+    this.JEN = "";
+    this.JEO = "";
+    this.JEP = "";
     AppMethodBeat.o(32708);
   }
   
-  public static boolean aLR(String paramString)
+  public static boolean aIL(String paramString)
   {
     AppMethodBeat.i(32711);
     if ((!Util.isNullOrNil(paramString)) && (paramString.length() == 10)) {
@@ -145,7 +145,7 @@ public final class f
     return false;
   }
   
-  private static String aLS(String paramString)
+  private static String aIM(String paramString)
   {
     AppMethodBeat.i(32712);
     if (!Util.isNullOrNil(paramString))
@@ -158,14 +158,14 @@ public final class f
     return "";
   }
   
-  public final String hsi()
+  public final String iSn()
   {
     AppMethodBeat.i(32709);
-    Object localObject = this.smT.substring(0, this.smT.lastIndexOf('/') + 1);
-    String str = this.smT.substring(this.smT.lastIndexOf('/') + 1);
-    localObject = new i((String)localObject, this.versionCode);
-    ((i)localObject).a(new i.a(this.DNy, this.DNx, this.smU, str, this.fileSize));
-    str = ((i)localObject).aaj();
+    Object localObject = this.mOI.substring(0, this.mOI.lastIndexOf('/') + 1);
+    String str = this.mOI.substring(this.mOI.lastIndexOf('/') + 1);
+    localObject = new h((String)localObject, this.versionCode);
+    ((h)localObject).a(new h.a(this.JEM, this.JEL, this.vyS, str, this.fileSize));
+    str = ((h)localObject).aBN();
     AppMethodBeat.o(32709);
     return str;
   }
@@ -173,7 +173,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(32710);
-    String str = "responseState:" + this.smQ + "\ncdnUrl:" + this.smT + "\nfileMd5:" + this.smU + "\npackageType:" + this.smR + "\nnetworkType:" + this.smS + "\npatchId:" + this.coY;
+    String str = "responseState:" + this.vyP + "\ncdnUrl:" + this.mOI + "\nfileMd5:" + this.vyS + "\npackageType:" + this.vyQ + "\nnetworkType:" + this.vyR + "\npatchId:" + this.egJ;
     AppMethodBeat.o(32710);
     return str;
   }

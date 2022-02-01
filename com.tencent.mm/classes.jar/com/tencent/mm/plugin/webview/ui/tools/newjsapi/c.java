@@ -1,94 +1,120 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.e;
 import com.tencent.mm.plugin.messenger.foundation.a.e.b;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.j;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiAppJoinGroup;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiAppJoinGroup;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends a
 {
-  public static final c QuN;
+  public static final c XmK;
   
   static
   {
-    AppMethodBeat.i(261705);
-    QuN = new c();
-    AppMethodBeat.o(261705);
+    AppMethodBeat.i(297860);
+    XmK = new c();
+    AppMethodBeat.o(297860);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(com.tencent.mm.plugin.webview.jsapi.h paramh, p paramp)
   {
-    AppMethodBeat.i(261702);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Object localObject2 = paramn.params.get("url");
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
-    }
-    localObject1 = (String)localObject1;
-    localObject2 = (CharSequence)localObject1;
-    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(297868);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Object localObject1 = paramp.params.get("url");
+    if ((localObject1 instanceof String))
     {
+      localObject1 = (String)localObject1;
+      localObject2 = (CharSequence)localObject1;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label114;
+      }
+    }
+    label114:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label119;
+      }
       Log.i("MicroMsg.JsApiAppJoinGroup.", "url is null");
-      paramf.PNo.h(paramn.POu, "joinGroup:fail", null);
-      AppMethodBeat.o(261702);
+      paramh.WDy.doCallback(paramp.WEH, s.X("joinGroup", ":fail"), null);
+      AppMethodBeat.o(297868);
       return true;
+      localObject1 = null;
+      break;
     }
-    String str1 = paramf.PNo.bjW((String)localObject1);
-    localObject1 = (CharSequence)str1;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
-    for (i = 1; i != 0; i = 0)
+    label119:
+    if ((paramh.WDy instanceof j))
     {
+      localObject1 = ((j)paramh.WDy).bjJ((String)localObject1);
+      localObject2 = (CharSequence)localObject1;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label212;
+      }
+    }
+    label212:
+    for (i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label217;
+      }
       Log.i("MicroMsg.JsApiAppJoinGroup.", "appId is null");
-      paramf.PNo.h(paramn.POu, "joinGroup:fail", null);
-      AppMethodBeat.o(261702);
+      paramh.WDy.doCallback(paramp.WEH, s.X("joinGroup", ":fail"), null);
+      AppMethodBeat.o(297868);
       return true;
-    }
-    localObject2 = paramn.params.get("signature");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
       localObject1 = null;
+      break;
     }
-    String str2 = (String)localObject1;
-    localObject2 = paramn.params.get("groupId");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
+    label217:
+    Object localObject2 = paramp.params.get("signature");
+    Object localObject3;
+    if ((localObject2 instanceof String))
+    {
+      localObject2 = (String)localObject2;
+      localObject3 = paramp.params.get("groupId");
+      if (!(localObject3 instanceof String)) {
+        break label391;
+      }
+      localObject3 = (String)localObject3;
+      label273:
+      localObject4 = paramp.params.get("nonceStr");
+      if (!(localObject4 instanceof String)) {
+        break label397;
+      }
     }
-    String str3 = (String)localObject1;
-    localObject2 = paramn.params.get("nonceStr");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
+    label391:
+    label397:
+    for (Object localObject4 = (String)localObject4;; localObject4 = null)
+    {
+      e.b localb = new e.b();
+      localb.appId = ((String)localObject1);
+      localb.signature = ((String)localObject2);
+      localb.KQX = ((String)localObject3);
+      localb.KQY = ((String)localObject4);
+      ((com.tencent.mm.plugin.messenger.foundation.a.e)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.e.class)).a(paramh.context, localb);
+      paramh.WDy.doCallback(paramp.WEH, s.X("joinGroup", ":success"), null);
+      AppMethodBeat.o(297868);
+      return true;
+      localObject2 = null;
+      break;
+      localObject3 = null;
+      break label273;
     }
-    localObject1 = (String)localObject1;
-    localObject2 = new e.b();
-    ((e.b)localObject2).appId = str1;
-    ((e.b)localObject2).signature = str2;
-    ((e.b)localObject2).EVw = str3;
-    ((e.b)localObject2).EVx = ((String)localObject1);
-    ((e)com.tencent.mm.kernel.h.ae(e.class)).a(paramf.context, (e.b)localObject2);
-    paramf.PNo.h(paramn.POu, "joinGroup:success", null);
-    AppMethodBeat.o(261702);
-    return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
     return "joinGroup";
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
     return 377;
   }

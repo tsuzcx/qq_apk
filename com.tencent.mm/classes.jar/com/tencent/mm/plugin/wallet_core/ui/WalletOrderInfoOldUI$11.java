@@ -1,44 +1,19 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.Toast;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.ClipboardHelper;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.autogen.a.bi;
+import com.tencent.mm.sdk.event.IListener;
 
-final class WalletOrderInfoOldUI$11
-  implements View.OnLongClickListener
+class WalletOrderInfoOldUI$11
+  extends IListener<bi>
 {
-  WalletOrderInfoOldUI$11(WalletOrderInfoOldUI paramWalletOrderInfoOldUI) {}
-  
-  public final boolean onLongClick(View paramView)
+  WalletOrderInfoOldUI$11(WalletOrderInfoOldUI paramWalletOrderInfoOldUI, q paramq)
   {
-    AppMethodBeat.i(71053);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-    if ((paramView.getId() == a.f.wallet_order_info_desc) || (paramView.getId() == a.f.wallet_order_info_trans_id)) {}
-    try
-    {
-      paramView = (String)paramView.getTag();
-      Toast.makeText(this.PaI, a.i.wallet_order_info_copy_success, 0).show();
-      ClipboardHelper.setText(this.PaI.getContext(), paramView, paramView);
-      a.a(true, this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoOldUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(71053);
-      return true;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
-      }
-    }
+    super(paramq);
+    AppMethodBeat.i(301296);
+    this.__eventId = bi.class.getName().hashCode();
+    AppMethodBeat.o(301296);
   }
 }
 

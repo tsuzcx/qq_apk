@@ -4,127 +4,108 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ain
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String appid;
-  public String key;
-  public String query;
-  public int scene;
-  public String url;
+  public etl ZqL;
+  public LinkedList<Integer> ZqR;
+  public int vgN;
+  
+  public ain()
+  {
+    AppMethodBeat.i(43092);
+    this.ZqR = new LinkedList();
+    AppMethodBeat.o(43092);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123568);
+    AppMethodBeat.i(43093);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZqL == null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new i.a.a.b("Not all required fields were included: UserName");
+        AppMethodBeat.o(43093);
+        throw paramVarArgs;
       }
-      if (this.key != null) {
-        paramVarArgs.f(2, this.key);
+      if (this.ZqL != null)
+      {
+        paramVarArgs.qD(1, this.ZqL.computeSize());
+        this.ZqL.writeFields(paramVarArgs);
       }
-      if (this.appid != null) {
-        paramVarArgs.f(3, this.appid);
-      }
-      if (this.query != null) {
-        paramVarArgs.f(4, this.query);
-      }
-      paramVarArgs.aY(5, this.scene);
-      if (this.url != null) {
-        paramVarArgs.f(6, this.url);
-      }
-      AppMethodBeat.o(123568);
+      paramVarArgs.bS(2, this.vgN);
+      paramVarArgs.f(3, 2, this.ZqR);
+      AppMethodBeat.o(43093);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label576;
+      if (this.ZqL == null) {
+        break label455;
       }
     }
-    label576:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label455:
+    for (paramInt = i.a.a.a.qC(1, this.ZqL.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.key != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.key);
-      }
-      i = paramInt;
-      if (this.appid != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.appid);
-      }
-      paramInt = i;
-      if (this.query != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.query);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(5, this.scene);
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.url);
-      }
-      AppMethodBeat.o(123568);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.vgN);
+      int j = i.a.a.a.d(3, 2, this.ZqR);
+      AppMethodBeat.o(43093);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.ZqR.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(123568);
+        if (this.ZqL == null)
+        {
+          paramVarArgs = new i.a.a.b("Not all required fields were included: UserName");
+          AppMethodBeat.o(43093);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(43093);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ain localain = (ain)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123568);
+          AppMethodBeat.o(43093);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            etl localetl = new etl();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localetl.dh((byte[])localObject);
             }
-            localain.BaseRequest = localjg;
+            localain.ZqL = localetl;
             paramInt += 1;
           }
-          AppMethodBeat.o(123568);
+          AppMethodBeat.o(43093);
           return 0;
         case 2: 
-          localain.key = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(123568);
-          return 0;
-        case 3: 
-          localain.appid = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(123568);
-          return 0;
-        case 4: 
-          localain.query = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(123568);
-          return 0;
-        case 5: 
-          localain.scene = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(123568);
+          localain.vgN = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(43093);
           return 0;
         }
-        localain.url = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(123568);
+        localain.ZqR = new i.a.a.a.a(((i.a.a.a.a)localObject).ajGk.kFX().Op, unknownTagHandler).ajGk.kFV();
+        AppMethodBeat.o(43093);
         return 0;
       }
-      AppMethodBeat.o(123568);
+      AppMethodBeat.o(43093);
       return -1;
     }
   }

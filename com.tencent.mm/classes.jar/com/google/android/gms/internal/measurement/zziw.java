@@ -10,10 +10,8 @@ import com.google.android.gms.common.internal.BaseGmsClient.BaseConnectionCallba
 import com.google.android.gms.common.internal.BaseGmsClient.BaseOnConnectionFailedListener;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.stats.ConnectionTracker;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@VisibleForTesting
 public final class zziw
   implements ServiceConnection, BaseGmsClient.BaseConnectionCallbacks, BaseGmsClient.BaseOnConnectionFailedListener
 {
@@ -27,46 +25,46 @@ public final class zziw
   {
     // Byte code:
     //   0: sipush 1862
-    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 43
-    //   8: invokestatic 49	com/google/android/gms/common/internal/Preconditions:checkMainThread	(Ljava/lang/String;)V
+    //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 42
+    //   8: invokestatic 48	com/google/android/gms/common/internal/Preconditions:checkMainThread	(Ljava/lang/String;)V
     //   11: aload_0
     //   12: monitorenter
     //   13: aload_0
-    //   14: getfield 51	com/google/android/gms/internal/measurement/zziw:zzapl	Lcom/google/android/gms/internal/measurement/zzff;
-    //   17: invokevirtual 57	com/google/android/gms/internal/measurement/zzff:getService	()Landroid/os/IInterface;
-    //   20: checkcast 59	com/google/android/gms/internal/measurement/zzey
+    //   14: getfield 50	com/google/android/gms/internal/measurement/zziw:zzapl	Lcom/google/android/gms/internal/measurement/zzff;
+    //   17: invokevirtual 56	com/google/android/gms/internal/measurement/zzff:getService	()Landroid/os/IInterface;
+    //   20: checkcast 58	com/google/android/gms/internal/measurement/zzey
     //   23: astore_1
     //   24: aload_0
     //   25: aconst_null
-    //   26: putfield 51	com/google/android/gms/internal/measurement/zziw:zzapl	Lcom/google/android/gms/internal/measurement/zzff;
+    //   26: putfield 50	com/google/android/gms/internal/measurement/zziw:zzapl	Lcom/google/android/gms/internal/measurement/zzff;
     //   29: aload_0
-    //   30: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   33: invokevirtual 65	com/google/android/gms/internal/measurement/zzhg:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
-    //   36: new 67	com/google/android/gms/internal/measurement/zziz
+    //   30: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   33: invokevirtual 64	com/google/android/gms/internal/measurement/zzhg:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
+    //   36: new 66	com/google/android/gms/internal/measurement/zziz
     //   39: dup
     //   40: aload_0
     //   41: aload_1
-    //   42: invokespecial 70	com/google/android/gms/internal/measurement/zziz:<init>	(Lcom/google/android/gms/internal/measurement/zziw;Lcom/google/android/gms/internal/measurement/zzey;)V
-    //   45: invokevirtual 76	com/google/android/gms/internal/measurement/zzgg:zzc	(Ljava/lang/Runnable;)V
+    //   42: invokespecial 69	com/google/android/gms/internal/measurement/zziz:<init>	(Lcom/google/android/gms/internal/measurement/zziw;Lcom/google/android/gms/internal/measurement/zzey;)V
+    //   45: invokevirtual 75	com/google/android/gms/internal/measurement/zzgg:zzc	(Ljava/lang/Runnable;)V
     //   48: aload_0
     //   49: monitorexit
     //   50: sipush 1862
-    //   53: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: return
     //   57: astore_1
     //   58: aload_0
     //   59: aconst_null
-    //   60: putfield 51	com/google/android/gms/internal/measurement/zziw:zzapl	Lcom/google/android/gms/internal/measurement/zzff;
+    //   60: putfield 50	com/google/android/gms/internal/measurement/zziw:zzapl	Lcom/google/android/gms/internal/measurement/zzff;
     //   63: aload_0
     //   64: iconst_0
-    //   65: putfield 29	com/google/android/gms/internal/measurement/zziw:zzapk	Z
+    //   65: putfield 28	com/google/android/gms/internal/measurement/zziw:zzapk	Z
     //   68: goto -20 -> 48
     //   71: astore_1
     //   72: aload_0
     //   73: monitorexit
     //   74: sipush 1862
-    //   77: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   77: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: aload_1
     //   81: athrow
     //   82: astore_1
@@ -120,33 +118,33 @@ public final class zziw
   {
     // Byte code:
     //   0: sipush 1859
-    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 139
-    //   8: invokestatic 49	com/google/android/gms/common/internal/Preconditions:checkMainThread	(Ljava/lang/String;)V
+    //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 138
+    //   8: invokestatic 48	com/google/android/gms/common/internal/Preconditions:checkMainThread	(Ljava/lang/String;)V
     //   11: aload_0
     //   12: monitorenter
     //   13: aload_2
     //   14: ifnonnull +32 -> 46
     //   17: aload_0
     //   18: iconst_0
-    //   19: putfield 29	com/google/android/gms/internal/measurement/zziw:zzapk	Z
+    //   19: putfield 28	com/google/android/gms/internal/measurement/zziw:zzapk	Z
     //   22: aload_0
-    //   23: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   26: invokevirtual 120	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
-    //   29: invokevirtual 142	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   32: ldc 144
-    //   34: invokevirtual 128	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
+    //   23: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   26: invokevirtual 119	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   29: invokevirtual 141	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
+    //   32: ldc 143
+    //   34: invokevirtual 127	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
     //   37: aload_0
     //   38: monitorexit
     //   39: sipush 1859
-    //   42: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: return
     //   46: aload_2
-    //   47: invokeinterface 150 1 0
+    //   47: invokeinterface 149 1 0
     //   52: astore_1
-    //   53: ldc 152
+    //   53: ldc 151
     //   55: aload_1
-    //   56: invokevirtual 158	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   56: invokevirtual 157	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   59: istore_3
     //   60: iload_3
     //   61: ifeq +130 -> 191
@@ -155,82 +153,82 @@ public final class zziw
     //   68: aconst_null
     //   69: astore_1
     //   70: aload_0
-    //   71: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   74: invokevirtual 120	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
-    //   77: invokevirtual 161	com/google/android/gms/internal/measurement/zzfg:zzit	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   80: ldc 163
-    //   82: invokevirtual 128	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
+    //   71: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   74: invokevirtual 119	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   77: invokevirtual 160	com/google/android/gms/internal/measurement/zzfg:zzit	()Lcom/google/android/gms/internal/measurement/zzfi;
+    //   80: ldc 162
+    //   82: invokevirtual 127	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
     //   85: aload_1
     //   86: ifnonnull +126 -> 212
     //   89: aload_0
     //   90: iconst_0
-    //   91: putfield 29	com/google/android/gms/internal/measurement/zziw:zzapk	Z
-    //   94: invokestatic 169	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
+    //   91: putfield 28	com/google/android/gms/internal/measurement/zziw:zzapk	Z
+    //   94: invokestatic 168	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
     //   97: aload_0
-    //   98: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   101: invokevirtual 173	com/google/android/gms/internal/measurement/zzhg:getContext	()Landroid/content/Context;
+    //   98: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   101: invokevirtual 172	com/google/android/gms/internal/measurement/zzhg:getContext	()Landroid/content/Context;
     //   104: aload_0
-    //   105: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   108: invokestatic 176	com/google/android/gms/internal/measurement/zzii:zza	(Lcom/google/android/gms/internal/measurement/zzii;)Lcom/google/android/gms/internal/measurement/zziw;
-    //   111: invokevirtual 180	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
+    //   105: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   108: invokestatic 175	com/google/android/gms/internal/measurement/zzii:zza	(Lcom/google/android/gms/internal/measurement/zzii;)Lcom/google/android/gms/internal/measurement/zziw;
+    //   111: invokevirtual 179	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
     //   114: aload_0
     //   115: monitorexit
     //   116: sipush 1859
-    //   119: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   119: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: return
     //   123: aload_2
-    //   124: ldc 152
-    //   126: invokeinterface 184 2 0
+    //   124: ldc 151
+    //   126: invokeinterface 183 2 0
     //   131: astore_1
     //   132: aload_1
-    //   133: instanceof 59
+    //   133: instanceof 58
     //   136: ifeq +11 -> 147
     //   139: aload_1
-    //   140: checkcast 59	com/google/android/gms/internal/measurement/zzey
+    //   140: checkcast 58	com/google/android/gms/internal/measurement/zzey
     //   143: astore_1
     //   144: goto -74 -> 70
-    //   147: new 186	com/google/android/gms/internal/measurement/zzfa
+    //   147: new 185	com/google/android/gms/internal/measurement/zzfa
     //   150: dup
     //   151: aload_2
-    //   152: invokespecial 189	com/google/android/gms/internal/measurement/zzfa:<init>	(Landroid/os/IBinder;)V
+    //   152: invokespecial 188	com/google/android/gms/internal/measurement/zzfa:<init>	(Landroid/os/IBinder;)V
     //   155: astore_1
     //   156: goto -86 -> 70
     //   159: astore_1
     //   160: aconst_null
     //   161: astore_1
     //   162: aload_0
-    //   163: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   166: invokevirtual 120	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
-    //   169: invokevirtual 142	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   172: ldc 191
-    //   174: invokevirtual 128	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
+    //   163: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   166: invokevirtual 119	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   169: invokevirtual 141	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
+    //   172: ldc 190
+    //   174: invokevirtual 127	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
     //   177: goto -92 -> 85
     //   180: astore_1
     //   181: aload_0
     //   182: monitorexit
     //   183: sipush 1859
-    //   186: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   186: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aload_1
     //   190: athrow
     //   191: aload_0
-    //   192: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   195: invokevirtual 120	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
-    //   198: invokevirtual 142	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   201: ldc 193
+    //   192: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   195: invokevirtual 119	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   198: invokevirtual 141	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
+    //   201: ldc 192
     //   203: aload_1
-    //   204: invokevirtual 109	com/google/android/gms/internal/measurement/zzfi:zzg	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   204: invokevirtual 108	com/google/android/gms/internal/measurement/zzfi:zzg	(Ljava/lang/String;Ljava/lang/Object;)V
     //   207: aconst_null
     //   208: astore_1
     //   209: goto -124 -> 85
     //   212: aload_0
-    //   213: getfield 21	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
-    //   216: invokevirtual 65	com/google/android/gms/internal/measurement/zzhg:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
-    //   219: new 195	com/google/android/gms/internal/measurement/zzix
+    //   213: getfield 20	com/google/android/gms/internal/measurement/zziw:zzape	Lcom/google/android/gms/internal/measurement/zzii;
+    //   216: invokevirtual 64	com/google/android/gms/internal/measurement/zzhg:zzgd	()Lcom/google/android/gms/internal/measurement/zzgg;
+    //   219: new 194	com/google/android/gms/internal/measurement/zzix
     //   222: dup
     //   223: aload_0
     //   224: aload_1
-    //   225: invokespecial 196	com/google/android/gms/internal/measurement/zzix:<init>	(Lcom/google/android/gms/internal/measurement/zziw;Lcom/google/android/gms/internal/measurement/zzey;)V
-    //   228: invokevirtual 76	com/google/android/gms/internal/measurement/zzgg:zzc	(Ljava/lang/Runnable;)V
+    //   225: invokespecial 195	com/google/android/gms/internal/measurement/zzix:<init>	(Lcom/google/android/gms/internal/measurement/zziw;Lcom/google/android/gms/internal/measurement/zzey;)V
+    //   228: invokevirtual 75	com/google/android/gms/internal/measurement/zzgg:zzc	(Ljava/lang/Runnable;)V
     //   231: goto -117 -> 114
     //   234: astore_1
     //   235: goto -121 -> 114
@@ -327,7 +325,7 @@ public final class zziw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zziw
  * JD-Core Version:    0.7.0.1
  */

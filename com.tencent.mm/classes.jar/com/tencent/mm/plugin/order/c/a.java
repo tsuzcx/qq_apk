@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.wxpay.a.c;
 public final class a
   extends ClickableSpan
 {
-  public a GKe;
+  public a MGT;
   private int mBgColor;
   private int mColor;
   private Context mContext;
@@ -20,7 +20,7 @@ public final class a
   {
     AppMethodBeat.i(66834);
     this.mContext = null;
-    this.GKe = null;
+    this.MGT = null;
     this.mColor = -1;
     this.mBgColor = -1;
     this.mContext = paramContext;
@@ -32,8 +32,8 @@ public final class a
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(66835);
-    if (this.GKe != null) {
-      this.GKe.onClick(paramView);
+    if (this.MGT != null) {
+      this.MGT.onClick(paramView);
     }
     AppMethodBeat.o(66835);
   }
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,13 @@
 package com.google.android.gms.common.api.internal;
 
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
 public class TaskUtil
 {
-  @KeepForSdk
   public static void setResultOrApiException(Status paramStatus, TaskCompletionSource<Void> paramTaskCompletionSource)
   {
     AppMethodBeat.i(11156);
@@ -18,7 +15,6 @@ public class TaskUtil
     AppMethodBeat.o(11156);
   }
   
-  @KeepForSdk
   public static <TResult> void setResultOrApiException(Status paramStatus, TResult paramTResult, TaskCompletionSource<TResult> paramTaskCompletionSource)
   {
     AppMethodBeat.i(11157);
@@ -33,7 +29,6 @@ public class TaskUtil
   }
   
   @Deprecated
-  @KeepForSdk
   public static Task<Void> toVoidTaskThatFailsOnFalse(Task<Boolean> paramTask)
   {
     AppMethodBeat.i(11158);
@@ -44,7 +39,7 @@ public class TaskUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.TaskUtil
  * JD-Core Version:    0.7.0.1
  */

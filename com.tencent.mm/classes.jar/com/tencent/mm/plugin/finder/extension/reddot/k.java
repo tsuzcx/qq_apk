@@ -1,194 +1,116 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
+import androidx.lifecycle.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.dw;
-import com.tencent.mm.f.a.rf;
-import com.tencent.mm.f.b.a.ep;
+import com.tencent.mm.app.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.api.g;
-import com.tencent.mm.protocal.protobuf.abd;
-import com.tencent.mm.protocal.protobuf.bkn;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.finder.nearby.abtest.a;
+import com.tencent.mm.plugin.finder.report.w;
+import com.tencent.mm.plugin.findersdk.a.bl;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.protocal.protobuf.bxq;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab;", "", "()V", "actionCallBack", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$FinderRedDotActionCallBack;", "getActionCallBack", "()Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$FinderRedDotActionCallBack;", "setActionCallBack", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$FinderRedDotActionCallBack;)V", "mBusinessType", "", "mCurrentPosition", "getMCurrentPosition", "()I", "setMCurrentPosition", "(I)V", "mLastResult", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "mOnShowResult", "mainUiIndexChangeListener", "com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$mainUiIndexChangeListener$1", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$mainUiIndexChangeListener$1;", "resultObserver", "Landroidx/lifecycle/Observer;", "disposeDiscovery", "", "isFriendTab", "", "result", "isDisableRedDotForFinder", "isRedDotNotifyEnable", "ctrInfo", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "onChanged", "onPause", "onResume", "registerDiscoveryObserver", "activity", "Lcom/tencent/mm/ui/MMFragmentActivity;", "reportByTabClick", "reportDiscoveryTabRedDot", "action", "showInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "Companion", "FinderRedDotActionCallBack", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private IListener<rf> npg;
-  private IListener<dw> npn;
-  private ep xuI;
+  public static final k.a ARs;
+  public l.a ARt;
+  private l.a ARu;
+  private int ARv;
+  public b ARw;
+  public final y<l.a> ARx;
+  public final FinderRedDotManagerOnTab.mainUiIndexChangeListener.1 DWR;
+  public int bXr;
   
-  protected k()
+  static
   {
-    AppMethodBeat.i(282811);
-    this.xuI = new ep();
-    this.npn = new IListener()
-    {
-      private boolean a(dw paramAnonymousdw)
-      {
-        AppMethodBeat.i(237640);
-        long l = Util.currentTicks();
-        if ((paramAnonymousdw == null) || (paramAnonymousdw.fzq == null))
-        {
-          AppMethodBeat.o(237640);
-          return false;
-        }
-        try
-        {
-          k.aBx("FinderEntrance");
-          k.aBx("NearbyEntrance");
-          k.aBx("FinderLiveEntrance");
-          boolean bool1 = k.this.aBw("FinderEntrance");
-          boolean bool2 = k.this.aBw("NearbyEntrance");
-          bool1 = k.this.aBw("FinderLiveEntrance") | bool1 | false | bool2;
-          if (bool1) {
-            ((PluginFinder)h.ag(PluginFinder.class)).getFinderSyncExtension().gu(113149, 10);
-          }
-          Log.i("MicroMsg.FinderRedDotTrigger", "Finder Reddot Trigger handle enter event cost[%d] needSync[%b]", new Object[] { Long.valueOf(Util.ticksToNow(l)), Boolean.valueOf(bool1) });
-        }
-        catch (Exception paramAnonymousdw)
-        {
-          for (;;)
-          {
-            Log.printErrStackTrace("MicroMsg.FinderRedDotTrigger", paramAnonymousdw, "", new Object[0]);
-          }
-        }
-        AppMethodBeat.o(237640);
-        return false;
-      }
-    };
-    this.npg = new IListener()
-    {
-      private boolean a(rf paramAnonymousrf)
-      {
-        AppMethodBeat.i(223306);
-        long l = Util.currentTicks();
-        if ((paramAnonymousrf == null) || (paramAnonymousrf.fQj == null))
-        {
-          AppMethodBeat.o(223306);
-          return false;
-        }
-        try
-        {
-          k.a(k.this, paramAnonymousrf, "FinderEntrance", 143);
-          k.a(k.this, paramAnonymousrf, "NearbyEntrance", 150);
-          k.a(k.this, paramAnonymousrf, "FinderLiveEntrance", 152);
-          Log.i("MicroMsg.FinderRedDotTrigger", "Finder Reddot Trigger handle quit event cost[%d]", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-          AppMethodBeat.o(223306);
-          return false;
-        }
-        catch (Exception paramAnonymousrf)
-        {
-          for (;;)
-          {
-            Log.printErrStackTrace("MicroMsg.FinderRedDotTrigger", paramAnonymousrf, "", new Object[0]);
-          }
-        }
-      }
-    };
-    AppMethodBeat.o(282811);
+    AppMethodBeat.i(366811);
+    ARs = new k.a((byte)0);
+    AppMethodBeat.o(366811);
   }
   
-  private static int a(bkn parambkn)
+  public k()
   {
-    AppMethodBeat.i(282816);
-    if ((parambkn == null) || (parambkn.SVw == null))
-    {
-      AppMethodBeat.o(282816);
-      return 0;
-    }
-    if ((parambkn.SVz <= 0) || (parambkn.SVA <= 0))
-    {
-      AppMethodBeat.o(282816);
-      return 0;
-    }
-    try
-    {
-      Log.d("MicroMsg.FinderRedDotTrigger", "checkFinderTipsShowInfo path=%s [%d %d] strategy=%d", new Object[] { parambkn.path, Integer.valueOf(parambkn.SVw.Snr), Integer.valueOf(parambkn.SVz), Integer.valueOf(parambkn.SVA) });
-      int i = parambkn.SVw.Snr;
-      int j = parambkn.SVz;
-      if (i < j)
-      {
-        AppMethodBeat.o(282816);
-        return 0;
-      }
-      if (parambkn.SVw.Snr >= parambkn.SVz)
-      {
-        i = parambkn.SVA;
-        AppMethodBeat.o(282816);
-        return i;
-      }
-    }
-    catch (Exception parambkn)
-    {
-      AppMethodBeat.o(282816);
-    }
-    return 0;
+    AppMethodBeat.i(366759);
+    this.ARv = -1;
+    this.bXr = -1;
+    this.DWR = new FinderRedDotManagerOnTab.mainUiIndexChangeListener.1(f.hfK);
+    this.ARx = ((y)new c(this));
+    AppMethodBeat.o(366759);
   }
   
-  private void a(int paramInt, bkn parambkn)
+  public final void a(int paramInt, p paramp, bxq parambxq)
   {
-    AppMethodBeat.i(282818);
-    if ((parambkn == null) || (parambkn.SVw == null))
+    AppMethodBeat.i(366829);
+    w localw = w.FrV;
+    w.a(paramInt, this.ARv, paramp, parambxq);
+    AppMethodBeat.o(366829);
+  }
+  
+  public final boolean f(p paramp)
+  {
+    AppMethodBeat.i(366821);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramp != null)
     {
-      AppMethodBeat.o(282818);
-      return;
-    }
-    try
-    {
-      l locall = ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager().aBf(parambkn.path);
-      ep localep = this.xuI;
-      localep.geN = paramInt;
-      localep = localep.sO(parambkn.path);
-      localep.gyh = parambkn.SVz;
-      localep.gyi = parambkn.SVA;
-      localep.gyj = parambkn.SVw.Snr;
-      if (locall != null) {}
-      for (parambkn = locall.field_tipsId;; parambkn = "")
-      {
-        localep.sN(parambkn).bpa();
-        AppMethodBeat.o(282818);
-        return;
+      if (!paramp.avJ("FinderEntrance")) {
+        break label65;
       }
-      return;
+      bool1 = ((cn)h.az(cn.class)).getRedDotManager().dZs();
+      this.ARv = 1;
+      Log.i("FinderRedDotManagerOnTab", "[FinderDiscoveryTab] FINDER_ENTRANCE");
     }
-    catch (Exception parambkn)
+    for (;;)
     {
-      AppMethodBeat.o(282818);
+      AppMethodBeat.o(366821);
+      return bool1;
+      label65:
+      if (paramp.avJ("FinderLiveEntrance"))
+      {
+        paramp = a.EHr;
+        if (a.eEl()) {}
+        for (int i = 5;; i = 2)
+        {
+          this.ARv = i;
+          bool1 = ((cn)h.az(cn.class)).getRedDotManager().dZv();
+          Log.i("FinderRedDotManagerOnTab", "[FinderDiscoveryTab] FINDER_LIVE_ENTRANCE");
+          break;
+        }
+      }
+      bool1 = bool2;
+      if (paramp.avJ("NearbyEntrance"))
+      {
+        this.ARv = 3;
+        bool1 = ((cn)h.az(cn.class)).getRedDotManager().dZt();
+        Log.i("FinderRedDotManagerOnTab", "[FinderDiscoveryTab] NEARBY_ENTRANCE");
+      }
     }
   }
   
-  private static void aBd(String paramString)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$FinderRedDotActionCallBack;", "", "isCanShowFriendPoint", "", "isCanShowFriendTextPoint", "setFinderRedDotGone", "", "setFinderRedDotShow", "setFinderTextRedDotShow", "text", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface b
   {
-    AppMethodBeat.i(282813);
-    ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager().aBd(paramString);
-    AppMethodBeat.o(282813);
+    public abstract void avo(String paramString);
+    
+    public abstract boolean dZA();
+    
+    public abstract void dZy();
+    
+    public abstract void dZz();
+    
+    public abstract boolean eFN();
   }
   
-  final boolean aBw(String paramString)
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManagerOnTab$resultObserver$1", "Landroidx/lifecycle/Observer;", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "isFinderRedDotExpose", "", "onChanged", "", "result", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements y<l.a>
   {
-    AppMethodBeat.i(282814);
-    bkn localbkn = ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager().aBe(paramString);
-    int i = a(localbkn);
-    if (i == 1) {
-      a(1, localbkn);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      Log.d("MicroMsg.FinderRedDotTrigger", "checkRedDotExposeLimitWhenEnter path[%s] = strategy[%d] needSync[%b]", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(bool) });
-      AppMethodBeat.o(282814);
-      return bool;
-    }
-  }
-  
-  protected final void init()
-  {
-    AppMethodBeat.i(282812);
-    EventCenter.instance.add(this.npn);
-    EventCenter.instance.add(this.npg);
-    AppMethodBeat.o(282812);
+    private boolean ARy;
+    
+    c(k paramk) {}
   }
 }
 

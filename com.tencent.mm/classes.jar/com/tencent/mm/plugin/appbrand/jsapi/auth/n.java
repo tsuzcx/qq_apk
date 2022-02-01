@@ -1,204 +1,375 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.jsapi.dh;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.widget.dialog.c.a;
-import com.tencent.mm.protocal.protobuf.cnk;
-import com.tencent.mm.protocal.protobuf.cnl;
-import com.tencent.mm.protocal.protobuf.cnm;
-import com.tencent.mm.protocal.protobuf.cnn;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.plugin.appbrand.widget.dialog.r;
+import com.tencent.mm.protocal.protobuf.ddh;
+import com.tencent.mm.protocal.protobuf.dec;
+import com.tencent.mm.protocal.protobuf.ded;
+import com.tencent.mm.protocal.protobuf.dee;
+import com.tencent.mm.protocal.protobuf.def;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.protocal.protobuf.glg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vending.g.b;
 import com.tencent.mm.vending.g.d;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.g.d.b;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.v;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.u;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/JsApiLoginLU;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "()V", "AuthInvoke", "", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "listener", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;", "invoke", "component", "cgiUrlStripForApiCallback", "", "Companion", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/JsApiLoginLU;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/BaseAuthJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "()V", "AuthInvoke", "", "invokeContext", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsInvokeContext;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "listener", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;", "invoke", "cgiUrlStripForApiCallback", "", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
-  extends i
+  extends j
   implements f
 {
-  public static final int CTRL_INDEX = 52;
-  public static final String NAME = "login";
   @Deprecated
-  public static final n.e oCs;
+  public static final int CTRL_INDEX = 52;
+  @Deprecated
+  public static final String NAME = "login";
+  private static final n.b rFO;
   
   static
   {
     AppMethodBeat.i(169600);
-    oCs = new n.e((byte)0);
+    rFO = new n.b((byte)0);
     AppMethodBeat.o(169600);
   }
   
-  public static foh b(foh paramfoh, com.tencent.mm.plugin.appbrand.jsapi.j paramj)
+  private static final ah a(com.tencent.mm.plugin.appbrand.g paramg, int paramInt, n paramn, u paramu)
   {
-    AppMethodBeat.i(169602);
-    p.k(paramfoh, "$this$fill");
-    p.k(paramj, "service");
-    paramfoh = f.c.a(paramfoh, paramj);
-    AppMethodBeat.o(169602);
-    return paramfoh;
-  }
-  
-  public static <R extends dyy> com.tencent.mm.vending.g.c<R> b(com.tencent.mm.plugin.appbrand.jsapi.j paramj, String paramString, com.tencent.mm.cd.a parama, Class<R> paramClass)
-  {
-    AppMethodBeat.i(169601);
-    p.k(paramj, "$this$runCgi");
-    p.k(paramString, "url");
-    p.k(parama, "request");
-    p.k(paramClass, "clazz");
-    paramj = f.c.a(paramj, paramString, parama, paramClass);
-    AppMethodBeat.o(169601);
-    return paramj;
-  }
-  
-  public final void a(g paramg, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(237949);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(326903);
+    s.u(paramg, "$service");
+    s.u(paramn, "this$0");
+    ddh localddh = (ddh)paramu.bsC;
+    Object localObject = (String)paramu.bsD;
+    String str = (String)paramu.aiuN;
+    if (localddh == null)
     {
-      AppMethodBeat.o(237949);
+      paramu = null;
+      if (paramu != null) {
+        break label116;
+      }
+      label55:
+      if (paramu != null) {
+        break label163;
+      }
+      paramg.callback(paramInt, paramn.ZP("fail invalid " + aaa(str) + " response"));
+    }
+    for (;;)
+    {
+      paramg = ah.aiuX;
+      AppMethodBeat.o(326903);
+      return paramg;
+      paramu = Integer.valueOf(localddh.hGE);
+      break;
+      label116:
+      if (paramu.intValue() != 0) {
+        break label55;
+      }
+      paramu = new HashMap();
+      paramu.put("code", localObject);
+      localObject = ah.aiuX;
+      paramg.callback(paramInt, paramn.m("ok", (Map)paramu));
+      continue;
+      label163:
+      paramg.callback(paramInt, paramn.ZP("fail " + aaa(str) + " response errcode=" + paramu + " errmsg=" + localddh.errmsg));
+    }
+  }
+  
+  private static final u a(com.tencent.mm.plugin.appbrand.g paramg, int paramInt, n paramn, def paramdef)
+  {
+    AppMethodBeat.i(326896);
+    s.u(paramg, "$service");
+    s.u(paramn, "this$0");
+    Object localObject;
+    if (paramdef == null)
+    {
+      localObject = null;
+      if (localObject != null) {
+        break label90;
+      }
+      label29:
+      if (paramdef != null) {
+        break label187;
+      }
+      paramg = null;
+      label35:
+      if (paramdef != null) {
+        break label195;
+      }
+    }
+    label162:
+    label187:
+    label195:
+    for (paramn = null;; paramn = paramdef.aaJI)
+    {
+      paramg = new u(paramg, paramn, "/cgi-bin/mmbiz-bin/js-login");
+      AppMethodBeat.o(326896);
+      return paramg;
+      localObject = paramdef.aaJx;
+      if (localObject == null)
+      {
+        localObject = null;
+        break;
+      }
+      localObject = Integer.valueOf(((ddh)localObject).hGE);
+      break;
+      label90:
+      if (((Integer)localObject).intValue() != -12000) {
+        break label29;
+      }
+      localObject = com.tencent.mm.vending.g.g.jJV();
+      Collection localCollection = (Collection)paramdef.aans;
+      int i;
+      if ((localCollection == null) || (localCollection.isEmpty()))
+      {
+        i = 1;
+        if (i == 0) {
+          break label162;
+        }
+        paramg.callback(paramInt, paramn.ZP("fail:internal error scope empty"));
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(326896);
+        return null;
+        i = 0;
+        break;
+        h.ahAA.bk(new n..ExternalSyntheticLambda4(paramg, (b)localObject, paramn, paramdef, paramInt));
+      }
+      paramg = paramdef.aaJx;
+      break label35;
+    }
+  }
+  
+  private static final void a(final com.tencent.mm.plugin.appbrand.g paramg, final b paramb, final n paramn, def paramdef, int paramInt)
+  {
+    AppMethodBeat.i(326892);
+    s.u(paramg, "$service");
+    s.u(paramn, "this$0");
+    if (!paramg.isRunning())
+    {
+      paramb.gM(f.b.rEP);
+      AppMethodBeat.o(326892);
       return;
     }
+    paramb = new a(paramInt, paramn, paramb, paramg);
+    r localr = paramg.getDialogContainer();
+    s.checkNotNull(localr);
+    localr.b((com.tencent.mm.plugin.appbrand.widget.dialog.n)new com.tencent.mm.plugin.appbrand.widget.dialog.c(f.c.a(paramn, (k)paramg), (List)j.C(paramdef.aans), paramdef.IKJ, paramdef.YDL, (c.a)paramb));
+    AppMethodBeat.o(326892);
+  }
+  
+  private static final void a(e parame, com.tencent.mm.plugin.appbrand.g paramg, int paramInt, n paramn, Object paramObject)
+  {
+    AppMethodBeat.i(326917);
+    s.u(paramg, "$service");
+    s.u(paramn, "this$0");
+    if (parame != null) {
+      parame.onAuthResult();
+    }
+    StringBuilder localStringBuilder = new StringBuilder("onInterrupt, appId[").append(paramg.getAppId()).append("], callbackId[").append(paramInt).append("], e[");
+    if (paramObject == null) {}
+    for (parame = null;; parame = paramObject.toString())
+    {
+      Log.i("Luggage.WXA.JsApiLoginLU", parame + ']');
+      if (!(paramObject instanceof f.b)) {
+        break;
+      }
+      AppMethodBeat.o(326917);
+      return;
+    }
+    if ((paramObject instanceof f.a))
+    {
+      paramg.callback(paramInt, paramn.ZP(s.X("fail ", ((f.a)paramObject).getMessage())));
+      AppMethodBeat.o(326917);
+      return;
+    }
+    if ((paramObject instanceof Throwable))
+    {
+      paramg.callback(paramInt, paramn.ZP(s.X("fail ", ((Throwable)paramObject).getMessage())));
+      AppMethodBeat.o(326917);
+      return;
+    }
+    if (paramObject == null)
+    {
+      paramg.callback(paramInt, paramn.ZP("fail:internal error"));
+      AppMethodBeat.o(326917);
+      return;
+    }
+    paramg.callback(paramInt, paramn.ZP(s.X("fail ", paramObject)));
+    AppMethodBeat.o(326917);
+  }
+  
+  private static final void a(e parame, Object paramObject)
+  {
+    AppMethodBeat.i(326909);
+    if (parame != null) {
+      parame.onAuthResult();
+    }
+    AppMethodBeat.o(326909);
+  }
+  
+  private static String aaa(String paramString)
+  {
+    AppMethodBeat.i(326888);
+    if (s.p(paramString, "/cgi-bin/mmbiz-bin/js-login"))
+    {
+      AppMethodBeat.o(326888);
+      return "js-login";
+    }
+    if (s.p(paramString, "/cgi-bin/mmbiz-bin/js-login-confirm"))
+    {
+      AppMethodBeat.o(326888);
+      return "js-login-confirm";
+    }
+    AppMethodBeat.o(326888);
+    return paramString;
+  }
+  
+  public final <R extends esc> com.tencent.mm.vending.g.c<R> a(k paramk, String paramString, a parama, Class<R> paramClass)
+  {
+    AppMethodBeat.i(169601);
+    paramk = f.c.a(this, paramk, paramString, parama, paramClass);
+    AppMethodBeat.o(169601);
+    return paramk;
+  }
+  
+  public final void a(dh<com.tencent.mm.plugin.appbrand.g> paramdh)
+  {
+    AppMethodBeat.i(326950);
+    s.u(paramdh, "invokeContext");
+    JSONObject localJSONObject = paramdh.rmi;
     try
     {
-      if (!paramJSONObject.has("requestInQueue")) {
-        paramJSONObject.put("requestInQueue", false);
+      if (!localJSONObject.has("requestInQueue")) {
+        localJSONObject.put("requestInQueue", false);
       }
-      super.a(paramg, paramJSONObject, paramInt);
-      AppMethodBeat.o(237949);
+      super.a(paramdh);
+      AppMethodBeat.o(326950);
       return;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        Log.e("Luggage.WXA.JsApiLoginLU", "invoke put KEY_IN_QUEUE e=" + localJSONException.getMessage());
+        Log.e("Luggage.WXA.JsApiLoginLU", s.X("invoke put KEY_IN_QUEUE e=", localJSONException.getMessage()));
       }
     }
   }
   
-  protected final void a(final g paramg, JSONObject paramJSONObject, final int paramInt, final e parame)
+  protected final void a(dh<com.tencent.mm.plugin.appbrand.g> paramdh, e parame)
   {
-    AppMethodBeat.i(237950);
-    if (paramg == null)
-    {
-      AppMethodBeat.o(237950);
-      return;
-    }
-    if (paramJSONObject == null)
-    {
-      AppMethodBeat.o(237950);
-      return;
-    }
-    paramJSONObject = (com.tencent.mm.plugin.appbrand.jsapi.j)paramg;
-    cnm localcnm = new cnm();
-    localcnm.lVG = paramg.getAppId();
-    AppBrandRuntime localAppBrandRuntime = paramg.getRuntime();
-    p.j(localAppBrandRuntime, "service.runtime");
-    localcnm.TuP = localAppBrandRuntime.bBV();
-    localcnm.TuQ = b(new foh(), (com.tencent.mm.plugin.appbrand.jsapi.j)paramg);
-    b(paramJSONObject, "/cgi-bin/mmbiz-bin/js-login", (com.tencent.mm.cd.a)localcnm, cnn.class).d((com.tencent.mm.vending.c.a)new a(this, paramg, paramInt)).f((com.tencent.mm.vending.c.a)new b(this, paramg, paramInt)).a((d.b)new c(parame)).a((d.a)new d(this, parame, paramg, paramInt));
-    AppMethodBeat.o(237950);
+    AppMethodBeat.i(326957);
+    s.u(paramdh, "invokeContext");
+    com.tencent.mm.plugin.appbrand.g localg = (com.tencent.mm.plugin.appbrand.g)paramdh.rBv;
+    int i = paramdh.ror;
+    paramdh = (k)localg;
+    dee localdee = new dee();
+    localdee.oOI = localg.getAppId();
+    localdee.aaJu = localg.getRuntime().qsh.eul;
+    localdee.aaJv = f.c.a(this, new glg(), (k)localg);
+    ah localah = ah.aiuX;
+    a(paramdh, "/cgi-bin/mmbiz-bin/js-login", (a)localdee, def.class).d(new n..ExternalSyntheticLambda0(localg, i, this)).f(new n..ExternalSyntheticLambda1(localg, i, this)).a(new n..ExternalSyntheticLambda3(parame)).a(new n..ExternalSyntheticLambda2(parame, localg, i, this));
+    AppMethodBeat.o(326957);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lkotlin/Triple;", "Lcom/tencent/mm/protocal/protobuf/JSAPIBaseResponse;", "", "response", "Lcom/tencent/mm/protocal/protobuf/JSLoginResponse;", "call"})
-  static final class a<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/auth/JsApiLoginLU$AuthInvoke$2$1$promptListener$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandAuthorizeDialog$Listener;", "onRecvMsg", "", "resultCode", "", "resultData", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements c.a
   {
-    a(n paramn, g paramg, int paramInt) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<name for destructuring parameter 0>", "Lkotlin/Triple;", "Lcom/tencent/mm/protocal/protobuf/JSAPIBaseResponse;", "", "kotlin.jvm.PlatformType", "call"})
-  static final class b<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    b(n paramn, g paramg, int paramInt) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onTerminate"})
-  static final class c<T>
-    implements d.b<Object>
-  {
-    c(e parame) {}
+    a(int paramInt, n paramn, b paramb, com.tencent.mm.plugin.appbrand.g paramg) {}
     
-    public final void bz(Object paramObject)
+    private static final dec a(com.tencent.mm.plugin.appbrand.g paramg, ArrayList<String> paramArrayList, int paramInt, n paramn)
     {
-      AppMethodBeat.i(169595);
-      paramObject = this.oCh;
-      if (paramObject != null)
-      {
-        paramObject.bQe();
-        AppMethodBeat.o(169595);
-        return;
+      AppMethodBeat.i(326863);
+      dec localdec = new dec();
+      localdec.oOI = paramg.getAppId();
+      LinkedList localLinkedList = localdec.aaJs;
+      paramArrayList = (List)paramArrayList;
+      if (paramArrayList == null) {
+        paramArrayList = (List)ab.aivy;
       }
-      AppMethodBeat.o(169595);
+      for (;;)
+      {
+        localLinkedList.addAll((Collection)paramArrayList);
+        localdec.aaJt = paramInt;
+        localdec.aaJu = paramg.getRuntime().qsh.eul;
+        localdec.aaJv = f.c.a(paramn, new glg(), (k)paramg);
+        AppMethodBeat.o(326863);
+        return localdec;
+      }
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "e", "", "kotlin.jvm.PlatformType", "onInterrupt"})
-  static final class d<T>
-    implements d.a<Object>
-  {
-    d(n paramn, e parame, g paramg, int paramInt) {}
     
-    public final void cm(Object paramObject)
+    private static final u a(ded paramded)
     {
-      AppMethodBeat.i(169596);
-      Object localObject = parame;
-      if (localObject != null) {
-        ((e)localObject).bQe();
-      }
-      n.bQn();
-      StringBuilder localStringBuilder = new StringBuilder("onInterrupt, appId[").append(paramg.getAppId()).append("], callbackId[").append(paramInt).append("], e[");
-      if (paramObject != null) {}
-      for (localObject = paramObject.toString();; localObject = null)
+      Object localObject2 = null;
+      AppMethodBeat.i(326867);
+      Object localObject1;
+      if (paramded == null)
       {
-        Log.i("Luggage.WXA.JsApiLoginLU", (String)localObject + ']');
-        if (!(paramObject instanceof f.b)) {
-          break;
+        localObject1 = null;
+        if (paramded != null) {
+          break label46;
         }
-        AppMethodBeat.o(169596);
-        return;
       }
-      if ((paramObject instanceof f.a))
+      label46:
+      for (paramded = localObject2;; paramded = paramded.aaJI)
       {
-        paramg.j(paramInt, this.oCt.agS("fail " + ((f.a)paramObject).getMessage()));
-        AppMethodBeat.o(169596);
-        return;
+        paramded = new u(localObject1, paramded, "/cgi-bin/mmbiz-bin/js-login-confirm");
+        AppMethodBeat.o(326867);
+        return paramded;
+        localObject1 = paramded.aaJx;
+        break;
       }
-      if ((paramObject instanceof Throwable))
+    }
+    
+    public final void a(int paramInt, ArrayList<String> paramArrayList)
+    {
+      AppMethodBeat.i(169591);
+      Log.i("Luggage.WXA.JsApiLoginLU", "dialog onRecvMsg, resultCode[" + paramInt + "], callbackId[" + this.rxe + ']');
+      switch (paramInt)
       {
-        paramg.j(paramInt, this.oCt.agS("fail " + ((Throwable)paramObject).getMessage()));
-        AppMethodBeat.o(169596);
+      default: 
+        paramb.gM(new f.a("fail:auth canceled"));
+        AppMethodBeat.o(169591);
+        return;
+      case 1: 
+        n localn = paramn;
+        b localb = paramb;
+        s.s(localb, "m");
+        paramArrayList = paramn.a((k)paramg, "/cgi-bin/mmbiz-bin/js-login-confirm", (a)a(paramg, paramArrayList, paramInt, paramn), ded.class).d(n.a..ExternalSyntheticLambda0.INSTANCE);
+        s.s(paramArrayList, "service.runCgi(CONFIRM_U…                        }");
+        f.c.a(localn, localb, paramArrayList);
+        AppMethodBeat.o(169591);
         return;
       }
-      if (paramObject == null)
-      {
-        paramg.j(paramInt, this.oCt.agS("fail:internal error"));
-        AppMethodBeat.o(169596);
-        return;
-      }
-      paramg.j(paramInt, this.oCt.agS("fail ".concat(String.valueOf(paramObject))));
-      AppMethodBeat.o(169596);
+      paramb.gM(new f.a("fail:auth denied"));
+      paramn.a((k)paramg, "/cgi-bin/mmbiz-bin/js-login-confirm", (a)a(paramg, paramArrayList, paramInt, paramn), ded.class);
+      AppMethodBeat.o(169591);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.n
  * JD-Core Version:    0.7.0.1
  */

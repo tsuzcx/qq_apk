@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/h8v" android:background="@color/w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/m15" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/c2t" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/glc" android:background="@drawable/ady" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/c6" />
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ip9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h5u" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/c5" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/BW_0_Alpha_0_3" />
-            <include layout="@layout/cfq" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e_u" android:paddingTop="@dimen/c7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_outlined_location" app:iconColor="@color/BW_70_Night_Mode" />
-        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_70_Night_Mode" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/jw2" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct">
-            <TextView android:textSize="@dimen/bd" android:textColor="@color/Link_Night_Mode" android:id="@id/e_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jw3" />
-        </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+    <com.tencent.mm.plugin.finder.live.olympic.certificate.widget.CertificateStateBackgroundView android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/m13" android:layout_width="295.0dip" android:layout_height="463.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" layout="@layout/clm" />
+</RelativeLayout>

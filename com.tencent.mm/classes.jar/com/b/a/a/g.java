@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends e
 {
-  private final long aFQ;
+  private final long cBA;
   
   public g(long paramLong)
   {
@@ -16,18 +16,18 @@ public final class g
       AppMethodBeat.o(183628);
       throw localIllegalArgumentException;
     }
-    this.aFQ = paramLong;
+    this.cBA = paramLong;
     AppMethodBeat.o(183628);
   }
   
-  protected final boolean t(long paramLong)
+  protected final boolean bG(long paramLong)
   {
-    return paramLong <= this.aFQ;
+    return paramLong <= this.cBA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.b.a.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -8,14 +7,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 
 public class ClassifyHeader
   extends LinearLayout
 {
-  private ImageView EPO;
-  private TextView kEs;
+  private ImageView KKl;
+  private TextView descTv;
   private Context mContext;
   
   public ClassifyHeader(Context paramContext, AttributeSet paramAttributeSet)
@@ -26,7 +25,6 @@ public class ClassifyHeader
     AppMethodBeat.o(97830);
   }
   
-  @TargetApi(11)
   public ClassifyHeader(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -39,16 +37,16 @@ public class ClassifyHeader
   {
     AppMethodBeat.i(97831);
     this.mContext = paramContext;
-    paramContext = View.inflate(this.mContext, i.g.classify_header, this);
-    this.EPO = ((ImageView)paramContext.findViewById(i.f.left_iv));
-    this.kEs = ((TextView)paramContext.findViewById(i.f.header_desc));
+    paramContext = View.inflate(this.mContext, b.g.classify_header, this);
+    this.KKl = ((ImageView)paramContext.findViewById(b.f.left_iv));
+    this.descTv = ((TextView)paramContext.findViewById(b.f.header_desc));
     AppMethodBeat.o(97831);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(97832);
-    this.kEs.setText(String.valueOf(paramString));
+    this.descTv.setText(String.valueOf(paramString));
     AppMethodBeat.o(97832);
   }
 }

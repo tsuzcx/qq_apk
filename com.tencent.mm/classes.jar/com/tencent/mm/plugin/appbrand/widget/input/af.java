@@ -9,13 +9,11 @@ import com.tencent.mm.plugin.appbrand.widget.input.autofill.b;
 
 public abstract interface af
 {
-  public abstract int DU(int paramInt);
-  
-  public abstract void G(ad paramad);
+  public abstract int Eu(int paramInt);
   
   public abstract void H(ad paramad);
   
-  public abstract void S(float paramFloat1, float paramFloat2);
+  public abstract void I(ad paramad);
   
   public abstract void a(View.OnFocusChangeListener paramOnFocusChangeListener);
   
@@ -25,19 +23,21 @@ public abstract interface af
   
   public abstract void addTextChangedListener(TextWatcher paramTextWatcher);
   
+  public abstract void ay(float paramFloat1, float paramFloat2);
+  
   public abstract void b(View.OnFocusChangeListener paramOnFocusChangeListener);
   
-  public abstract boolean coH();
+  public abstract void cRE();
   
-  public abstract boolean coI();
+  public abstract void cRF();
   
-  public abstract boolean coL();
+  public abstract void cRG();
   
-  public abstract void cpb();
+  public abstract boolean cRj();
   
-  public abstract void cpc();
+  public abstract boolean cRk();
   
-  public abstract void cpd();
+  public abstract boolean cRn();
   
   public abstract void destroy();
   
@@ -63,22 +63,22 @@ public abstract interface af
   
   public static abstract interface a
   {
-    public abstract void cN();
+    public abstract void dG();
   }
   
   public static abstract interface b
   {
-    public abstract boolean DK(int paramInt);
+    public abstract boolean Ek(int paramInt);
   }
   
   public static abstract interface c
   {
-    public abstract void coK();
+    public abstract void cRm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.af
  * JD-Core Version:    0.7.0.1
  */

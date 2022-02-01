@@ -2,7 +2,7 @@ package androidx.core.widget;
 
 public abstract interface NestedScrollView$b
 {
-  public abstract void a(NestedScrollView paramNestedScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void onScrollChange(NestedScrollView paramNestedScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

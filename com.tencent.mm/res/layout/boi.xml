@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/hby" android:background="@drawable/as2" android:layout_width="@dimen/cr" android:layout_height="@dimen/ci" android:layout_marginBottom="@dimen/c5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="15.0dip" android:textColor="@color/am" android:id="@id/hbx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/hbv" android:layout_width="168.0dip" android:layout_height="fill_parent" android:layout_alignParentEnd="true">
-        <RelativeLayout android:id="@id/hc0" android:background="@drawable/as3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci">
-            <TextView android:textColor="@color/am" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ger" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <androidx.viewpager.widget.ViewPager android:id="@id/hr1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="215.0dip" />
+    <com.tencent.mm.ui.base.MMPageControlView android:gravity="center" android:id="@id/f6s" android:paddingBottom="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

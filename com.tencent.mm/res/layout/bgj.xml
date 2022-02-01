@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ajv" android:minHeight="@dimen/ajv">
+        <ImageView android:layout_gravity="center" android:id="@id/hq5" android:background="@drawable/ahi" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:src="@drawable/ahj" />
+        <View android:layout_gravity="center" android:id="@id/f7h" android:background="@drawable/ahh" android:layout_width="@dimen/db" android:layout_height="@dimen/db" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/i7t" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" style="@style/a6v" />
+        <com.tencent.mm.plugin.mmsight.ui.MMSightCircularProgressBar android:layout_gravity="center" android:id="@id/bd6" android:visibility="gone" android:layout_width="@dimen/ajv" android:layout_height="@dimen/ajv" />
+    </FrameLayout>
+    <View android:layout_gravity="bottom|center" android:layout_width="113.0dip" android:layout_height="113.0dip" />
+</FrameLayout>

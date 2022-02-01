@@ -36,14 +36,14 @@ public class KindaPasswordManagerImpl
     localBundle.putBoolean("isFromKinda", true);
     localBundle.putBoolean("isDomesticUser", paramBoolean);
     com.tencent.mm.wallet_core.a.a((Activity)localObject, com.tencent.mm.plugin.wallet.pwd.a.class, localBundle, null);
-    localObject = com.tencent.mm.wallet_core.a.bF((Activity)localObject);
+    localObject = com.tencent.mm.wallet_core.a.cm((Activity)localObject);
     if (!(localObject instanceof com.tencent.mm.plugin.wallet.pwd.a))
     {
       Log.e("KindaPasswordManagerImpl", "Fail to get correct wallet process in ResetPasswordImpl, expect ForgotPwdProcess got %s", new Object[] { localObject.getClass().getName() });
       AppMethodBeat.o(18459);
       return;
     }
-    ((com.tencent.mm.plugin.wallet.pwd.a)localObject).OzI = new a.a()
+    ((com.tencent.mm.plugin.wallet.pwd.a)localObject).VoT = new a.a()
     {
       public void run(int paramAnonymousInt)
       {
@@ -64,7 +64,7 @@ public class KindaPasswordManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaPasswordManagerImpl
  * JD-Core Version:    0.7.0.1
  */

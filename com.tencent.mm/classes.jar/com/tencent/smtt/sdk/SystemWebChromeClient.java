@@ -1,6 +1,5 @@
 package com.tencent.smtt.sdk;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,7 +25,6 @@ class SystemWebChromeClient
     this.b = paramWebChromeClient;
   }
   
-  @TargetApi(7)
   public Bitmap getDefaultVideoPoster()
   {
     AppMethodBeat.i(54842);
@@ -47,7 +45,6 @@ class SystemWebChromeClient
     return localBitmap1;
   }
   
-  @TargetApi(7)
   public View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(54843);
@@ -120,7 +117,6 @@ class SystemWebChromeClient
   }
   
   @Deprecated
-  @TargetApi(5)
   public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, android.webkit.WebStorage.QuotaUpdater paramQuotaUpdater)
   {
     AppMethodBeat.i(54849);
@@ -128,7 +124,6 @@ class SystemWebChromeClient
     AppMethodBeat.o(54849);
   }
   
-  @TargetApi(5)
   public void onGeolocationPermissionsHidePrompt()
   {
     AppMethodBeat.i(54850);
@@ -136,7 +131,6 @@ class SystemWebChromeClient
     AppMethodBeat.o(54850);
   }
   
-  @TargetApi(5)
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
   {
     AppMethodBeat.i(54851);
@@ -144,7 +138,6 @@ class SystemWebChromeClient
     AppMethodBeat.o(54851);
   }
   
-  @TargetApi(7)
   public void onHideCustomView()
   {
     AppMethodBeat.i(54852);
@@ -188,7 +181,6 @@ class SystemWebChromeClient
     return bool;
   }
   
-  @TargetApi(7)
   public boolean onJsTimeout()
   {
     AppMethodBeat.i(54857);
@@ -206,7 +198,6 @@ class SystemWebChromeClient
   }
   
   @Deprecated
-  @TargetApi(7)
   public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, android.webkit.WebStorage.QuotaUpdater paramQuotaUpdater)
   {
     AppMethodBeat.i(54859);
@@ -230,7 +221,6 @@ class SystemWebChromeClient
     AppMethodBeat.o(54861);
   }
   
-  @TargetApi(7)
   public void onReceivedTouchIconUrl(android.webkit.WebView paramWebView, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(54862);
@@ -248,7 +238,6 @@ class SystemWebChromeClient
   }
   
   @Deprecated
-  @TargetApi(14)
   public void onShowCustomView(View paramView, int paramInt, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
     AppMethodBeat.i(54865);
@@ -256,7 +245,6 @@ class SystemWebChromeClient
     AppMethodBeat.o(54865);
   }
   
-  @TargetApi(7)
   public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
     AppMethodBeat.i(54864);
@@ -523,7 +511,7 @@ class SystemWebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient
  * JD-Core Version:    0.7.0.1
  */

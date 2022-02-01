@@ -1,61 +1,22 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import android.app.Activity;
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mm.vending.e.a;
-import com.tencent.mm.vending.e.b;
-import org.json.JSONObject;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IFinderFeedDetailService;", "Lcom/tencent/mm/kernel/service/IService;", "createFinderPreloadVideoService", "Lcom/tencent/mm/plugin/findersdk/api/IFinderPreloadVideoService;", "getObjectByEncryptedId", "", "commentScene", "", "encryptedObjectId", "", "isUseCache", "", "call", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "feed", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface ag
+  extends a
 {
-  public abstract void F(Context paramContext, String paramString1, String paramString2);
+  public abstract bk ePv();
   
-  public abstract Object a(String paramString1, String paramString2, b<a> paramb, ag.a<Object> parama, ag.a<Integer> parama1);
-  
-  public abstract void a(long paramLong, ag.a<Boolean> parama);
-  
-  public abstract void a(Context paramContext, JSONObject paramJSONObject, ag.a<Object> parama, ag.a<Integer> parama1);
-  
-  public abstract void a(String paramString1, long paramLong, String paramString2, String paramString3, ag.a<Void> parama, ag.a<Integer> parama1);
-  
-  public abstract void a(String paramString1, String paramString2, ag.a<Boolean> parama, ag.a<Integer> parama1);
-  
-  public abstract void aFX(String paramString);
-  
-  public abstract void aM(Context paramContext, String paramString);
-  
-  public abstract ac au(Activity paramActivity);
-  
-  public abstract void b(String paramString1, String paramString2, ag.a<Void> parama, ag.a<Integer> parama1);
-  
-  public abstract void c(Context paramContext, String paramString1, String paramString2, int paramInt);
-  
-  public abstract void d(Context paramContext, String paramString1, String paramString2, int paramInt);
-  
-  public abstract int eeE();
-  
-  public abstract float eeF();
-  
-  public abstract float eeG();
-  
-  public abstract boolean eeH();
-  
-  public abstract boolean eeI();
-  
-  public abstract boolean eeJ();
-  
-  public abstract boolean eeK();
-  
-  public abstract void f(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  public abstract void f(ImageView paramImageView, String paramString);
-  
-  public abstract q fV(Context paramContext);
+  public abstract void f(String paramString, m<? super String, ? super FinderObject, ah> paramm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.findersdk.a.ag
  * JD-Core Version:    0.7.0.1
  */

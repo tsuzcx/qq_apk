@@ -30,7 +30,7 @@ import androidx.appcompat.widget.ListPopupWindow;
 import androidx.appcompat.widget.p;
 import androidx.appcompat.widget.s;
 import androidx.appcompat.widget.t;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,154 +40,154 @@ final class e
   extends m
   implements View.OnKeyListener, PopupWindow.OnDismissListener
 {
-  private static final int lw = a.g.abc_cascading_menu_item_layout;
-  private boolean eX;
-  private final boolean lA;
-  final Handler lB;
-  private final List<h> lC;
-  final List<a> lD;
-  final ViewTreeObserver.OnGlobalLayoutListener lE;
-  private final View.OnAttachStateChangeListener lF;
-  private final s lG;
-  private int lH;
-  private int lI;
-  private View lJ;
-  View lK;
-  private int lL;
-  private boolean lM;
-  private boolean lN;
-  private int lO;
-  private int lP;
-  private boolean lQ;
-  private o.a lR;
-  ViewTreeObserver lS;
-  private PopupWindow.OnDismissListener lT;
-  boolean lU;
-  private final int lx;
-  private final int ly;
-  private final int lz;
+  private static final int ms = a.g.abc_cascading_menu_item_layout;
+  private boolean fZ;
+  final ViewTreeObserver.OnGlobalLayoutListener mA;
+  private final View.OnAttachStateChangeListener mB;
+  private final s mC;
   private final Context mContext;
+  private int mD;
+  private int mE;
+  private View mF;
+  View mG;
+  private int mI;
+  private boolean mJ;
+  private boolean mK;
+  private int mL;
+  private int mM;
+  private boolean mN;
+  private o.a mO;
+  ViewTreeObserver mP;
+  private PopupWindow.OnDismissListener mQ;
+  boolean mR;
+  private final int mt;
+  private final int mu;
+  private final int mv;
+  private final boolean mw;
+  final Handler mx;
+  private final List<h> my;
+  final List<a> mz;
   
   public e(Context paramContext, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(239184);
-    this.lC = new ArrayList();
-    this.lD = new ArrayList();
-    this.lE = new ViewTreeObserver.OnGlobalLayoutListener()
+    AppMethodBeat.i(200959);
+    this.my = new ArrayList();
+    this.mz = new ArrayList();
+    this.mA = new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
-        AppMethodBeat.i(239151);
-        if ((e.this.isShowing()) && (e.this.lD.size() > 0) && (!((e.a)e.this.lD.get(0)).ma.tx))
+        AppMethodBeat.i(200998);
+        if ((e.this.isShowing()) && (e.this.mz.size() > 0) && (!((e.a)e.this.mz.get(0)).mZ.uw))
         {
-          Object localObject = e.this.lK;
+          Object localObject = e.this.mG;
           if ((localObject == null) || (!((View)localObject).isShown()))
           {
             e.this.dismiss();
-            AppMethodBeat.o(239151);
+            AppMethodBeat.o(200998);
             return;
           }
-          localObject = e.this.lD.iterator();
+          localObject = e.this.mz.iterator();
           while (((Iterator)localObject).hasNext()) {
-            ((e.a)((Iterator)localObject).next()).ma.show();
+            ((e.a)((Iterator)localObject).next()).mZ.show();
           }
         }
-        AppMethodBeat.o(239151);
+        AppMethodBeat.o(200998);
       }
     };
-    this.lF = new View.OnAttachStateChangeListener()
+    this.mB = new View.OnAttachStateChangeListener()
     {
       public final void onViewAttachedToWindow(View paramAnonymousView) {}
       
       public final void onViewDetachedFromWindow(View paramAnonymousView)
       {
-        AppMethodBeat.i(239155);
-        if (e.this.lS != null)
+        AppMethodBeat.i(200923);
+        if (e.this.mP != null)
         {
-          if (!e.this.lS.isAlive()) {
-            e.this.lS = paramAnonymousView.getViewTreeObserver();
+          if (!e.this.mP.isAlive()) {
+            e.this.mP = paramAnonymousView.getViewTreeObserver();
           }
-          e.this.lS.removeGlobalOnLayoutListener(e.this.lE);
+          e.this.mP.removeGlobalOnLayoutListener(e.this.mA);
         }
         paramAnonymousView.removeOnAttachStateChangeListener(this);
-        AppMethodBeat.o(239155);
+        AppMethodBeat.o(200923);
       }
     };
-    this.lG = new s()
+    this.mC = new s()
     {
       public final void b(h paramAnonymoush, MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(239166);
-        e.this.lB.removeCallbacksAndMessages(paramAnonymoush);
-        AppMethodBeat.o(239166);
+        AppMethodBeat.i(200926);
+        e.this.mx.removeCallbacksAndMessages(paramAnonymoush);
+        AppMethodBeat.o(200926);
       }
       
       public final void c(final h paramAnonymoush, final MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(239170);
-        e.this.lB.removeCallbacksAndMessages(null);
+        AppMethodBeat.i(200938);
+        e.this.mx.removeCallbacksAndMessages(null);
         int i = 0;
-        int j = e.this.lD.size();
+        int j = e.this.mz.size();
         if (i < j) {
-          if (paramAnonymoush != ((e.a)e.this.lD.get(i)).gU) {}
+          if (paramAnonymoush != ((e.a)e.this.mz.get(i)).hP) {}
         }
         for (;;)
         {
           if (i == -1)
           {
-            AppMethodBeat.o(239170);
+            AppMethodBeat.o(200938);
             return;
             i += 1;
             break;
           }
           i += 1;
-          if (i < e.this.lD.size()) {}
-          for (final e.a locala = (e.a)e.this.lD.get(i);; locala = null)
+          if (i < e.this.mz.size()) {}
+          for (final e.a locala = (e.a)e.this.mz.get(i);; locala = null)
           {
             paramAnonymousMenuItem = new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(239156);
+                AppMethodBeat.i(200873);
                 if (locala != null)
                 {
-                  e.this.lU = true;
-                  locala.gU.G(false);
-                  e.this.lU = false;
+                  e.this.mR = true;
+                  locala.hP.K(false);
+                  e.this.mR = false;
                 }
                 if ((paramAnonymousMenuItem.isEnabled()) && (paramAnonymousMenuItem.hasSubMenu())) {
                   paramAnonymoush.a(paramAnonymousMenuItem, null, 4);
                 }
-                AppMethodBeat.o(239156);
+                AppMethodBeat.o(200873);
               }
             };
             long l = SystemClock.uptimeMillis();
-            e.this.lB.postAtTime(paramAnonymousMenuItem, paramAnonymoush, l + 200L);
-            AppMethodBeat.o(239170);
+            e.this.mx.postAtTime(paramAnonymousMenuItem, paramAnonymoush, l + 200L);
+            AppMethodBeat.o(200938);
             return;
           }
           i = -1;
         }
       }
     };
-    this.lH = 0;
-    this.lI = 0;
+    this.mD = 0;
+    this.mE = 0;
     this.mContext = paramContext;
-    this.lJ = paramView;
-    this.ly = paramInt1;
-    this.lz = paramInt2;
-    this.lA = paramBoolean;
-    this.lQ = false;
-    this.lL = bV();
+    this.mF = paramView;
+    this.mu = paramInt1;
+    this.mv = paramInt2;
+    this.mw = paramBoolean;
+    this.mN = false;
+    this.mI = cO();
     paramContext = paramContext.getResources();
-    this.lx = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(a.d.abc_config_prefDialogWidth));
-    this.lB = new Handler();
-    AppMethodBeat.o(239184);
+    this.mt = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(a.d.abc_config_prefDialogWidth));
+    this.mx = new Handler();
+    AppMethodBeat.o(200959);
   }
   
   private static MenuItem a(h paramh1, h paramh2)
   {
-    AppMethodBeat.i(239206);
+    AppMethodBeat.i(201064);
     int j = paramh1.size();
     int i = 0;
     while (i < j)
@@ -195,26 +195,26 @@ final class e
       MenuItem localMenuItem = paramh1.getItem(i);
       if ((localMenuItem.hasSubMenu()) && (paramh2 == localMenuItem.getSubMenu()))
       {
-        AppMethodBeat.o(239206);
+        AppMethodBeat.o(201064);
         return localMenuItem;
       }
       i += 1;
     }
-    AppMethodBeat.o(239206);
+    AppMethodBeat.o(201064);
     return null;
   }
   
   private static View a(a parama, h paramh)
   {
     int i = 0;
-    AppMethodBeat.i(239208);
-    paramh = a(parama.gU, paramh);
+    AppMethodBeat.i(201074);
+    paramh = a(parama.hP, paramh);
     if (paramh == null)
     {
-      AppMethodBeat.o(239208);
+      AppMethodBeat.o(201074);
       return null;
     }
-    p localp = parama.ma.sY;
+    p localp = parama.mZ.tX;
     parama = localp.getAdapter();
     int j;
     if ((parama instanceof HeaderViewListAdapter))
@@ -227,7 +227,7 @@ final class e
       if (i >= k) {
         break label161;
       }
-      if (paramh != parama.ai(i)) {
+      if (paramh != parama.ag(i)) {
         break label110;
       }
     }
@@ -235,7 +235,7 @@ final class e
     {
       if (i == -1)
       {
-        AppMethodBeat.o(239208);
+        AppMethodBeat.o(201074);
         return null;
         parama = (g)parama;
         j = 0;
@@ -247,77 +247,77 @@ final class e
       i = i + j - localp.getFirstVisiblePosition();
       if ((i < 0) || (i >= localp.getChildCount()))
       {
-        AppMethodBeat.o(239208);
+        AppMethodBeat.o(201074);
         return null;
       }
       parama = localp.getChildAt(i);
-      AppMethodBeat.o(239208);
+      AppMethodBeat.o(201074);
       return parama;
       label161:
       i = -1;
     }
   }
   
-  private int ad(int paramInt)
+  private int ab(int paramInt)
   {
-    AppMethodBeat.i(239199);
-    p localp = ((a)this.lD.get(this.lD.size() - 1)).ma.sY;
+    AppMethodBeat.i(201024);
+    p localp = ((a)this.mz.get(this.mz.size() - 1)).mZ.tX;
     int[] arrayOfInt = new int[2];
     localp.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
-    this.lK.getWindowVisibleDisplayFrame(localRect);
-    if (this.lL == 1)
+    this.mG.getWindowVisibleDisplayFrame(localRect);
+    if (this.mI == 1)
     {
       int i = arrayOfInt[0];
       if (localp.getWidth() + i + paramInt > localRect.right)
       {
-        AppMethodBeat.o(239199);
+        AppMethodBeat.o(201024);
         return 0;
       }
-      AppMethodBeat.o(239199);
+      AppMethodBeat.o(201024);
       return 1;
     }
     if (arrayOfInt[0] - paramInt < 0)
     {
-      AppMethodBeat.o(239199);
+      AppMethodBeat.o(201024);
       return 1;
     }
-    AppMethodBeat.o(239199);
+    AppMethodBeat.o(201024);
     return 0;
   }
   
-  private t bU()
+  private t cN()
   {
-    AppMethodBeat.i(239187);
-    t localt = new t(this.mContext, this.ly, this.lz);
-    localt.tB = this.lG;
-    localt.tp = this;
+    AppMethodBeat.i(200978);
+    t localt = new t(this.mContext, this.mu, this.mv);
+    localt.uA = this.mC;
+    localt.un = this;
     localt.setOnDismissListener(this);
-    localt.tl = this.lJ;
-    localt.lI = this.lI;
-    localt.P(true);
-    localt.dN();
-    AppMethodBeat.o(239187);
+    localt.ul = this.mF;
+    localt.mE = this.mE;
+    localt.eK();
+    localt.eN();
+    AppMethodBeat.o(200978);
     return localt;
   }
   
-  private int bV()
+  private int cO()
   {
-    AppMethodBeat.i(239197);
-    if (w.I(this.lJ) == 1)
+    AppMethodBeat.i(200991);
+    if (z.U(this.mF) == 1)
     {
-      AppMethodBeat.o(239197);
+      AppMethodBeat.o(200991);
       return 0;
     }
-    AppMethodBeat.o(239197);
+    AppMethodBeat.o(200991);
     return 1;
   }
   
   private void f(h paramh)
   {
-    AppMethodBeat.i(239205);
+    AppMethodBeat.i(201049);
     Object localObject3 = LayoutInflater.from(this.mContext);
-    Object localObject1 = new g(paramh, (LayoutInflater)localObject3, this.lA, lw);
+    Object localObject1 = new g(paramh, (LayoutInflater)localObject3, this.mw, ms);
     int m;
     t localt;
     Object localObject2;
@@ -326,38 +326,38 @@ final class e
     int i;
     label173:
     int k;
-    if ((!isShowing()) && (this.lQ))
+    if ((!isShowing()) && (this.mN))
     {
-      ((g)localObject1).lQ = true;
-      m = a((ListAdapter)localObject1, null, this.mContext, this.lx);
-      localt = bU();
+      ((g)localObject1).mN = true;
+      m = a((ListAdapter)localObject1, null, this.mContext, this.mt);
+      localt = cN();
       localt.setAdapter((ListAdapter)localObject1);
       localt.setContentWidth(m);
-      localt.lI = this.lI;
-      if (this.lD.size() <= 0) {
+      localt.mE = this.mE;
+      if (this.mz.size() <= 0) {
         break label384;
       }
-      localObject1 = (a)this.lD.get(this.lD.size() - 1);
+      localObject1 = (a)this.mz.get(this.mz.size() - 1);
       localObject2 = a((a)localObject1, paramh);
       if (localObject2 == null) {
         break label526;
       }
-      localt.dS();
-      localt.dR();
-      j = ad(m);
+      localt.eS();
+      localt.eR();
+      j = ab(m);
       if (j != 1) {
         break label393;
       }
       i = 1;
-      this.lL = j;
+      this.mI = j;
       if (Build.VERSION.SDK_INT < 26) {
         break label398;
       }
-      localt.tl = ((View)localObject2);
+      localt.ul = ((View)localObject2);
       j = 0;
       k = 0;
       label198:
-      if ((this.lI & 0x5) != 5) {
+      if ((this.mE & 0x5) != 5) {
         break label501;
       }
       if (i == 0) {
@@ -365,32 +365,32 @@ final class e
       }
       i = k + m;
       label218:
-      localt.ta = i;
-      localt.dQ();
-      localt.ah(j);
+      localt.tZ = i;
+      localt.eQ();
+      localt.ad(j);
     }
     for (;;)
     {
-      localObject2 = new a(localt, paramh, this.lL);
-      this.lD.add(localObject2);
+      localObject2 = new a(localt, paramh, this.mI);
+      this.mz.add(localObject2);
       localt.show();
-      localObject2 = localt.sY;
+      localObject2 = localt.tX;
       ((ListView)localObject2).setOnKeyListener(this);
-      if ((localObject1 == null) && (this.eX) && (paramh.mJ != null))
+      if ((localObject1 == null) && (this.fZ) && (paramh.nH != null))
       {
         localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(a.g.abc_popup_menu_header_item_layout, (ViewGroup)localObject2, false);
         localObject3 = (TextView)((FrameLayout)localObject1).findViewById(16908310);
         ((FrameLayout)localObject1).setEnabled(false);
-        ((TextView)localObject3).setText(paramh.mJ);
+        ((TextView)localObject3).setText(paramh.nH);
         ((ListView)localObject2).addHeaderView((View)localObject1, null, false);
         localt.show();
       }
-      AppMethodBeat.o(239205);
+      AppMethodBeat.o(201049);
       return;
       if (!isShowing()) {
         break;
       }
-      ((g)localObject1).lQ = m.h(paramh);
+      ((g)localObject1).mN = m.h(paramh);
       break;
       label384:
       localObject2 = null;
@@ -401,12 +401,12 @@ final class e
       break label173;
       label398:
       int[] arrayOfInt1 = new int[2];
-      this.lJ.getLocationOnScreen(arrayOfInt1);
+      this.mF.getLocationOnScreen(arrayOfInt1);
       int[] arrayOfInt2 = new int[2];
       ((View)localObject2).getLocationOnScreen(arrayOfInt2);
-      if ((this.lI & 0x7) == 5)
+      if ((this.mE & 0x7) == 5)
       {
-        arrayOfInt1[0] += this.lJ.getWidth();
+        arrayOfInt1[0] += this.mF.getWidth();
         arrayOfInt2[0] += ((View)localObject2).getWidth();
       }
       k = arrayOfInt2[0] - arrayOfInt1[0];
@@ -424,40 +424,40 @@ final class e
       i = k - m;
       break label218;
       label526:
-      if (this.lM) {
-        localt.ta = this.lO;
+      if (this.mJ) {
+        localt.tZ = this.mL;
       }
-      if (this.lN) {
-        localt.ah(this.lP);
+      if (this.mK) {
+        localt.ad(this.mM);
       }
-      localt.nq = this.nq;
+      localt.om = this.om;
     }
   }
   
-  public final void F(boolean paramBoolean)
+  public final void J(boolean paramBoolean)
   {
-    AppMethodBeat.i(239212);
-    Iterator localIterator = this.lD.iterator();
+    AppMethodBeat.i(201176);
+    Iterator localIterator = this.mz.iterator();
     while (localIterator.hasNext()) {
-      a(((a)localIterator.next()).ma.sY.getAdapter()).notifyDataSetChanged();
+      a(((a)localIterator.next()).mZ.tX.getAdapter()).notifyDataSetChanged();
     }
-    AppMethodBeat.o(239212);
+    AppMethodBeat.o(201176);
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(239216);
-    int j = this.lD.size();
+    AppMethodBeat.i(201223);
+    int j = this.mz.size();
     int i = 0;
     if (i < j) {
-      if (paramh != ((a)this.lD.get(i)).gU) {}
+      if (paramh != ((a)this.mz.get(i)).hP) {}
     }
     for (;;)
     {
       if (i >= 0) {
         break label68;
       }
-      AppMethodBeat.o(239216);
+      AppMethodBeat.o(201223);
       return;
       i += 1;
       break;
@@ -465,176 +465,176 @@ final class e
     }
     label68:
     j = i + 1;
-    if (j < this.lD.size()) {
-      ((a)this.lD.get(j)).gU.G(false);
+    if (j < this.mz.size()) {
+      ((a)this.mz.get(j)).hP.K(false);
     }
-    a locala = (a)this.lD.remove(i);
-    locala.gU.b(this);
-    if (this.lU)
+    a locala = (a)this.mz.remove(i);
+    locala.hP.b(this);
+    if (this.mR)
     {
-      t localt = locala.ma;
+      t localt = locala.mZ;
       if (Build.VERSION.SDK_INT >= 23) {
-        localt.ty.setExitTransition(null);
+        localt.ux.setExitTransition(null);
       }
-      locala.ma.ax(0);
+      locala.mZ.ux.setAnimationStyle(0);
     }
-    locala.ma.dismiss();
-    i = this.lD.size();
+    locala.mZ.dismiss();
+    i = this.mz.size();
     if (i > 0) {}
-    for (this.lL = ((a)this.lD.get(i - 1)).position; i == 0; this.lL = bV())
+    for (this.mI = ((a)this.mz.get(i - 1)).position; i == 0; this.mI = cO())
     {
       dismiss();
-      if (this.lR != null) {
-        this.lR.a(paramh, true);
+      if (this.mO != null) {
+        this.mO.a(paramh, true);
       }
-      if (this.lS != null)
+      if (this.mP != null)
       {
-        if (this.lS.isAlive()) {
-          this.lS.removeGlobalOnLayoutListener(this.lE);
+        if (this.mP.isAlive()) {
+          this.mP.removeGlobalOnLayoutListener(this.mA);
         }
-        this.lS = null;
+        this.mP = null;
       }
-      this.lK.removeOnAttachStateChangeListener(this.lF);
-      this.lT.onDismiss();
-      AppMethodBeat.o(239216);
+      this.mG.removeOnAttachStateChangeListener(this.mB);
+      this.mQ.onDismiss();
+      AppMethodBeat.o(201223);
       return;
     }
     if (paramBoolean) {
-      ((a)this.lD.get(0)).gU.G(false);
+      ((a)this.mz.get(0)).hP.K(false);
     }
-    AppMethodBeat.o(239216);
+    AppMethodBeat.o(201223);
   }
   
   public final boolean a(u paramu)
   {
-    AppMethodBeat.i(239214);
-    Iterator localIterator = this.lD.iterator();
+    AppMethodBeat.i(201204);
+    Iterator localIterator = this.mz.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (paramu == locala.gU)
+      if (paramu == locala.hP)
       {
-        locala.ma.sY.requestFocus();
-        AppMethodBeat.o(239214);
+        locala.mZ.tX.requestFocus();
+        AppMethodBeat.o(201204);
         return true;
       }
     }
     if (paramu.hasVisibleItems())
     {
       e(paramu);
-      if (this.lR != null) {
-        this.lR.c(paramu);
+      if (this.mO != null) {
+        this.mO.c(paramu);
       }
-      AppMethodBeat.o(239214);
+      AppMethodBeat.o(201204);
       return true;
     }
-    AppMethodBeat.o(239214);
+    AppMethodBeat.o(201204);
     return false;
   }
   
-  public final void ag(int paramInt)
+  public final void ac(int paramInt)
   {
-    this.lM = true;
-    this.lO = paramInt;
+    this.mJ = true;
+    this.mL = paramInt;
   }
   
-  public final void ah(int paramInt)
+  public final void ad(int paramInt)
   {
-    this.lN = true;
-    this.lP = paramInt;
+    this.mK = true;
+    this.mM = paramInt;
   }
   
   public final void b(o.a parama)
   {
-    this.lR = parama;
+    this.mO = parama;
   }
   
-  public final boolean bS()
+  public final boolean cL()
   {
     return false;
   }
   
-  protected final boolean bW()
+  protected final boolean cP()
   {
     return false;
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(239192);
-    int i = this.lD.size();
+    AppMethodBeat.i(201112);
+    int i = this.mz.size();
     if (i > 0)
     {
-      a[] arrayOfa = (a[])this.lD.toArray(new a[i]);
+      a[] arrayOfa = (a[])this.mz.toArray(new a[i]);
       i -= 1;
       while (i >= 0)
       {
         a locala = arrayOfa[i];
-        if (locala.ma.ty.isShowing()) {
-          locala.ma.dismiss();
+        if (locala.mZ.ux.isShowing()) {
+          locala.mZ.dismiss();
         }
         i -= 1;
       }
     }
-    AppMethodBeat.o(239192);
+    AppMethodBeat.o(201112);
   }
   
   public final void e(h paramh)
   {
-    AppMethodBeat.i(239200);
+    AppMethodBeat.i(201139);
     paramh.a(this, this.mContext);
     if (isShowing())
     {
       f(paramh);
-      AppMethodBeat.o(239200);
+      AppMethodBeat.o(201139);
       return;
     }
-    this.lC.add(paramh);
-    AppMethodBeat.o(239200);
+    this.my.add(paramh);
+    AppMethodBeat.o(201139);
   }
   
   public final ListView getListView()
   {
-    AppMethodBeat.i(239222);
-    if (this.lD.isEmpty())
+    AppMethodBeat.i(201315);
+    if (this.mz.isEmpty())
     {
-      AppMethodBeat.o(239222);
+      AppMethodBeat.o(201315);
       return null;
     }
-    p localp = ((a)this.lD.get(this.lD.size() - 1)).ma.sY;
-    AppMethodBeat.o(239222);
+    p localp = ((a)this.mz.get(this.mz.size() - 1)).mZ.tX;
+    AppMethodBeat.o(201315);
     return localp;
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(239209);
-    if ((this.lD.size() > 0) && (((a)this.lD.get(0)).ma.ty.isShowing()))
+    AppMethodBeat.i(201150);
+    if ((this.mz.size() > 0) && (((a)this.mz.get(0)).mZ.ux.isShowing()))
     {
-      AppMethodBeat.o(239209);
+      AppMethodBeat.o(201150);
       return true;
     }
-    AppMethodBeat.o(239209);
+    AppMethodBeat.o(201150);
     return false;
   }
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(239210);
-    int j = this.lD.size();
+    AppMethodBeat.i(201165);
+    int j = this.mz.size();
     int i = 0;
     a locala;
     if (i < j)
     {
-      locala = (a)this.lD.get(i);
-      if (locala.ma.ty.isShowing()) {}
+      locala = (a)this.mz.get(i);
+      if (locala.mZ.ux.isShowing()) {}
     }
     for (;;)
     {
       if (locala != null) {
-        locala.gU.G(false);
+        locala.hP.K(false);
       }
-      AppMethodBeat.o(239210);
+      AppMethodBeat.o(201165);
       return;
       i += 1;
       break;
@@ -644,14 +644,14 @@ final class e
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(239195);
+    AppMethodBeat.i(201125);
     if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
     {
       dismiss();
-      AppMethodBeat.o(239195);
+      AppMethodBeat.o(201125);
       return true;
     }
-    AppMethodBeat.o(239195);
+    AppMethodBeat.o(201125);
     return false;
   }
   
@@ -664,90 +664,90 @@ final class e
   
   public final void setAnchorView(View paramView)
   {
-    AppMethodBeat.i(239219);
-    if (this.lJ != paramView)
+    AppMethodBeat.i(201291);
+    if (this.mF != paramView)
     {
-      this.lJ = paramView;
-      this.lI = androidx.core.g.e.D(this.lH, w.I(this.lJ));
+      this.mF = paramView;
+      this.mE = androidx.core.g.e.ay(this.mD, z.U(this.mF));
     }
-    AppMethodBeat.o(239219);
+    AppMethodBeat.o(201291);
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    this.lQ = paramBoolean;
+    this.mN = paramBoolean;
   }
   
   public final void setGravity(int paramInt)
   {
-    AppMethodBeat.i(239218);
-    if (this.lH != paramInt)
+    AppMethodBeat.i(201274);
+    if (this.mD != paramInt)
     {
-      this.lH = paramInt;
-      this.lI = androidx.core.g.e.D(paramInt, w.I(this.lJ));
+      this.mD = paramInt;
+      this.mE = androidx.core.g.e.ay(paramInt, z.U(this.mF));
     }
-    AppMethodBeat.o(239218);
+    AppMethodBeat.o(201274);
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.lT = paramOnDismissListener;
+    this.mQ = paramOnDismissListener;
   }
   
   public final void setShowTitle(boolean paramBoolean)
   {
-    this.eX = paramBoolean;
+    this.fZ = paramBoolean;
   }
   
   public final void show()
   {
-    AppMethodBeat.i(239189);
+    AppMethodBeat.i(201099);
     if (isShowing())
     {
-      AppMethodBeat.o(239189);
+      AppMethodBeat.o(201099);
       return;
     }
-    Iterator localIterator = this.lC.iterator();
+    Iterator localIterator = this.my.iterator();
     while (localIterator.hasNext()) {
       f((h)localIterator.next());
     }
-    this.lC.clear();
-    this.lK = this.lJ;
-    if (this.lK != null) {
-      if (this.lS != null) {
+    this.my.clear();
+    this.mG = this.mF;
+    if (this.mG != null) {
+      if (this.mP != null) {
         break label132;
       }
     }
     label132:
     for (int i = 1;; i = 0)
     {
-      this.lS = this.lK.getViewTreeObserver();
+      this.mP = this.mG.getViewTreeObserver();
       if (i != 0) {
-        this.lS.addOnGlobalLayoutListener(this.lE);
+        this.mP.addOnGlobalLayoutListener(this.mA);
       }
-      this.lK.addOnAttachStateChangeListener(this.lF);
-      AppMethodBeat.o(239189);
+      this.mG.addOnAttachStateChangeListener(this.mB);
+      AppMethodBeat.o(201099);
       return;
     }
   }
   
   static final class a
   {
-    public final h gU;
-    public final t ma;
+    public final h hP;
+    public final t mZ;
     public final int position;
     
     public a(t paramt, h paramh, int paramInt)
     {
-      this.ma = paramt;
-      this.gU = paramh;
+      this.mZ = paramt;
+      this.hP = paramh;
       this.position = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.e
  * JD-Core Version:    0.7.0.1
  */

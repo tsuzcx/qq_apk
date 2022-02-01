@@ -1,28 +1,15 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.content.Context;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-
 public final class e
 {
-  public static b RnO;
-  public static a RnP;
-  
-  public static b hmu()
-  {
-    return RnO;
-  }
+  public static e.b Ykf;
+  public static a Ykg;
   
   public static abstract interface a {}
-  
-  public static abstract interface b
-  {
-    public abstract ChatFooterPanel fd(Context paramContext);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.e
  * JD-Core Version:    0.7.0.1
  */

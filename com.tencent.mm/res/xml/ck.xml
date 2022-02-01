@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="settings_bind_qq" android:layout="@layout/b8j" android:title="@string/gvu" />
-    <Preference android:key="settings_email_addr" android:layout="@layout/b8j" android:title="@string/gob" />
-    <Preference android:key="settings_about_domainmail" android:layout="@layout/b8j" android:title="@string/gmx" />
-    <Preference android:key="settings_facebook" android:layout="@layout/b8j" android:title="@string/dxo" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
     <PreferenceSmallCategory />
-    <Preference android:key="settings_dump_personal_data" android:layout="@layout/b8j" android:title="@string/goa" />
-    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_phone_security" android:layout="@layout/b8j" android:title="@string/flt" />
-    <Preference android:key="settings_delete_account" android:layout="@layout/b8j" android:title="@string/glh" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_sound" android:persistent="false" android:title="@string/izi" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_shake" android:layout="@layout/bfo" android:persistent="false" android:title="@string/iyo" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

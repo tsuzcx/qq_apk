@@ -15,16 +15,16 @@ final class SayHiWithSnsPermissionUI$1
   {
     AppMethodBeat.i(27392);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.HcH.hideVKB();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.NaS.hideVKB();
     a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(27392);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI.1
  * JD-Core Version:    0.7.0.1
  */

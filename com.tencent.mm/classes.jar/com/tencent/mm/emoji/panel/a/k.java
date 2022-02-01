@@ -2,54 +2,62 @@ package com.tencent.mm.emoji.panel.a;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.m.a.e;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.emoji.c.b.ae;
+import com.tencent.mm.emoji.c.b.m;
+import com.tencent.mm.plugin.m.a.d;
+import com.tencent.mm.plugin.m.a.g;
+import com.tencent.mm.plugin.m.a.i;
+import com.tencent.mm.plugin.m.a.j;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/adapter/EntrancePanelViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EntranceItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "Landroid/widget/ImageView;", "getIcon", "()Landroid/widget/ImageView;", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  extends q
+  extends q<m>
 {
-  private final float jMc;
-  private final float jMd;
-  private final float jMe;
-  private final float jMf;
+  private final ImageView dpM;
   
-  public k()
+  public k(View paramView, n paramn)
   {
-    AppMethodBeat.i(224483);
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    this.jMc = ((Resources)localObject).getDimension(a.e.emoji_panel_item_emoji_content_width);
-    this.jMd = ((Resources)localObject).getDimension(a.e.Edge_2A);
-    this.jMe = (((Resources)localObject).getDimension(a.e.Edge_1_5_A) - 1.0F);
-    this.jMf = ((Resources)localObject).getDimension(a.e.Edge_0_5_A);
-    this.spanCount = 5;
-    updateSize();
-    AppMethodBeat.o(224483);
+    super(paramView, paramn);
+    AppMethodBeat.i(105672);
+    paramView = paramView.findViewById(a.g.art_emoji_icon_iv);
+    s.s(paramView, "itemView.findViewById(R.id.art_emoji_icon_iv)");
+    this.dpM = ((ImageView)paramView);
+    AppMethodBeat.o(105672);
   }
   
-  public final float aCP()
+  public final void a(ae paramae)
   {
-    return this.jMc;
-  }
-  
-  public final float aCQ()
-  {
-    return this.jMd;
-  }
-  
-  public final float aCR()
-  {
-    return this.jMe;
+    AppMethodBeat.i(105671);
+    s.u(paramae, "item");
+    super.a(paramae);
+    paramae = (m)aVT();
+    if (paramae != null)
+    {
+      if (paramae.miZ == 0)
+      {
+        this.dpM.setImageDrawable(bb.m(this.dpM.getContext(), a.i.emoji_add_custom, this.dpM.getContext().getResources().getColor(a.d.icon_color)));
+        this.dpM.setContentDescription((CharSequence)this.dpM.getContext().getString(a.j.settings_single_emoji_manager));
+        AppMethodBeat.o(105671);
+        return;
+      }
+      if (paramae.miZ == 1)
+      {
+        this.dpM.setImageDrawable(bb.m(this.dpM.getContext(), a.i.emoji_add_capture, this.dpM.getContext().getResources().getColor(a.d.icon_color)));
+        this.dpM.setContentDescription((CharSequence)this.dpM.getContext().getString(a.j.capture_emoji_entrance_desc));
+      }
+    }
+    AppMethodBeat.o(105671);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.k
  * JD-Core Version:    0.7.0.1
  */

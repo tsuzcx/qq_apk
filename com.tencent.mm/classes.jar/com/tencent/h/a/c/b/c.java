@@ -9,48 +9,48 @@ import java.util.ArrayList;
 public final class c
   extends JceStruct
 {
-  static ArrayList<g> ZTJ;
-  static int ZTK;
-  static int ZTL;
-  public ArrayList<g> ZTI = null;
-  public int ZpO = 0;
-  public int ZpP = 0;
-  public long Zqh = 0L;
+  static ArrayList<g> ahYj;
+  static int ahYk;
+  static int ahYl;
+  public ArrayList<g> ahYi = null;
+  public long ahuO = 0L;
+  public int ahuw = 0;
+  public int ahux = 0;
   
   static
   {
-    AppMethodBeat.i(207478);
-    ZTJ = new ArrayList();
+    AppMethodBeat.i(212186);
+    ahYj = new ArrayList();
     g localg = new g();
-    ZTJ.add(localg);
-    ZTK = 0;
-    ZTL = 0;
-    AppMethodBeat.o(207478);
+    ahYj.add(localg);
+    ahYk = 0;
+    ahYl = 0;
+    AppMethodBeat.o(212186);
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(207477);
-    this.Zqh = paramJceInputStream.read(this.Zqh, 0, true);
-    this.ZTI = ((ArrayList)paramJceInputStream.read(ZTJ, 1, true));
-    this.ZpO = paramJceInputStream.read(this.ZpO, 2, false);
-    this.ZpP = paramJceInputStream.read(this.ZpP, 3, false);
-    AppMethodBeat.o(207477);
+    AppMethodBeat.i(212201);
+    this.ahuO = paramJceInputStream.read(this.ahuO, 0, true);
+    this.ahYi = ((ArrayList)paramJceInputStream.read(ahYj, 1, true));
+    this.ahuw = paramJceInputStream.read(this.ahuw, 2, false);
+    this.ahux = paramJceInputStream.read(this.ahux, 3, false);
+    AppMethodBeat.o(212201);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(207475);
-    paramJceOutputStream.write(this.Zqh, 0);
-    paramJceOutputStream.write(this.ZTI, 1);
-    paramJceOutputStream.write(this.ZpO, 2);
-    paramJceOutputStream.write(this.ZpP, 3);
-    AppMethodBeat.o(207475);
+    AppMethodBeat.i(212193);
+    paramJceOutputStream.write(this.ahuO, 0);
+    paramJceOutputStream.write(this.ahYi, 1);
+    paramJceOutputStream.write(this.ahuw, 2);
+    paramJceOutputStream.write(this.ahux, 3);
+    AppMethodBeat.o(212193);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.b.c
  * JD-Core Version:    0.7.0.1
  */

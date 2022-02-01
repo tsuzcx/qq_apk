@@ -22,34 +22,34 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.t;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.v;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.mm.ui.widget.a.f.b;
 
 @com.tencent.mm.ui.base.a(7)
 public class FloatBallProxyUI
   extends MMActivity
 {
-  private d qWk;
-  private BallInfo rYE = null;
-  private e rZT;
-  private int rZU = 0;
-  private boolean rZV = false;
-  private boolean rZW = false;
-  private boolean rZX = false;
+  private e ubT;
+  private BallInfo vjV = null;
+  private f vlk;
+  private int vll = 0;
+  private boolean vlm = false;
+  private boolean vln = false;
+  private boolean vlo = false;
   
-  private void Fk(int paramInt)
+  private void FL(int paramInt)
   {
-    AppMethodBeat.i(187478);
+    AppMethodBeat.i(288299);
     String str1 = getResources().getString(paramInt);
     String str2 = getResources().getString(a.h.float_ball_dialog_ok);
-    this.rZW = false;
-    this.qWk = h.a(this, str1, "", str2, new DialogInterface.OnClickListener()
+    this.vln = false;
+    this.ubT = k.a(this, str1, "", str2, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -61,7 +61,7 @@ public class FloatBallProxyUI
         AppMethodBeat.o(106286);
       }
     });
-    this.qWk.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.ubT.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -72,19 +72,19 @@ public class FloatBallProxyUI
         AppMethodBeat.o(106287);
       }
     });
-    AppMethodBeat.o(187478);
+    AppMethodBeat.o(288299);
   }
   
   public static void a(int paramInt, a parama)
   {
-    AppMethodBeat.i(187473);
+    AppMethodBeat.i(288291);
     a(null, paramInt, null, false, parama);
-    AppMethodBeat.o(187473);
+    AppMethodBeat.o(288291);
   }
   
   public static void a(Context paramContext, final int paramInt, BallInfo paramBallInfo, boolean paramBoolean, final a parama)
   {
-    AppMethodBeat.i(187474);
+    AppMethodBeat.i(288295);
     if (paramContext == null) {
       paramContext = MMApplicationContext.getContext();
     }
@@ -98,11 +98,11 @@ public class FloatBallProxyUI
       localIntent.putExtra("key_proxy_mode", paramInt);
       localIntent.putExtra("key_result_callback", new ResultReceiver(MMHandler.createFreeHandler(Looper.getMainLooper()))
       {
-        protected final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
+        protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(106282);
           if (parama != null) {
-            parama.ft(paramInt, paramAnonymousInt);
+            parama.onCallback(paramInt, paramAnonymousInt);
           }
           AppMethodBeat.o(106282);
         }
@@ -110,11 +110,11 @@ public class FloatBallProxyUI
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      paramBallInfo = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramBallInfo.aFh(), "com/tencent/mm/plugin/ball/ui/FloatBallProxyUI", "showFloatBallProxyUI", "(Landroid/content/Context;ILcom/tencent/mm/plugin/ball/model/BallInfo;ZLcom/tencent/mm/plugin/ball/ui/FloatBallProxyUI$OnFloatBallProxyUIResultCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramBallInfo.sf(0));
+      paramBallInfo = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramBallInfo.aYi(), "com/tencent/mm/plugin/ball/ui/FloatBallProxyUI", "showFloatBallProxyUI", "(Landroid/content/Context;ILcom/tencent/mm/plugin/ball/model/BallInfo;ZLcom/tencent/mm/plugin/ball/ui/FloatBallProxyUI$OnFloatBallProxyUIResultCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramBallInfo.sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/ball/ui/FloatBallProxyUI", "showFloatBallProxyUI", "(Landroid/content/Context;ILcom/tencent/mm/plugin/ball/model/BallInfo;ZLcom/tencent/mm/plugin/ball/ui/FloatBallProxyUI$OnFloatBallProxyUIResultCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(187474);
+      AppMethodBeat.o(288295);
       return;
     }
   }
@@ -137,39 +137,39 @@ public class FloatBallProxyUI
     AppMethodBeat.i(106290);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    t.e(getWindow());
-    t.d(getWindow(), false);
+    v.g(getWindow());
+    v.c(getWindow(), false);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     if (getIntent() == null) {
       finish();
     }
-    this.rZU = getIntent().getIntExtra("key_proxy_mode", 1);
-    switch (this.rZU)
+    this.vll = getIntent().getIntExtra("key_proxy_mode", 1);
+    switch (this.vll)
     {
     }
     for (;;)
     {
-      this.rYE = ((BallInfo)getIntent().getParcelableExtra("key_ball_info"));
-      this.rZX = getIntent().getBooleanExtra("key_can_message_ball", false);
+      this.vjV = ((BallInfo)getIntent().getParcelableExtra("key_ball_info"));
+      this.vlo = getIntent().getBooleanExtra("key_can_message_ball", false);
       AppMethodBeat.o(106290);
       return;
-      Fk(a.h.float_ball_clean_to_add);
+      FL(a.h.float_ball_clean_to_add);
       continue;
-      this.rZT = new e(this, 1, true);
+      this.vlk = new f(this, 1, true);
       paramBundle = getString(a.h.float_ball_remove_all_balls_dialog_title);
-      this.rZT.j(paramBundle, 17, 0);
-      this.rZT.ODT = new q.f()
+      this.vlk.h(paramBundle, 17, 0);
+      this.vlk.Vtg = new u.g()
       {
-        public final void onCreateMMMenu(o paramAnonymouso)
+        public final void onCreateMMMenu(s paramAnonymouss)
         {
           AppMethodBeat.i(106283);
-          paramAnonymouso.clear();
-          paramAnonymouso.a(0, -65536, FloatBallProxyUI.this.getString(a.h.float_ball_menu_item_remove_all_balls));
-          paramAnonymouso.a(1, -16777216, FloatBallProxyUI.this.getString(a.h.float_ball_menu_item_cancel_remove_all_balls));
+          paramAnonymouss.clear();
+          paramAnonymouss.a(0, -65536, FloatBallProxyUI.this.getString(a.h.float_ball_menu_item_remove_all_balls));
+          paramAnonymouss.a(1, -16777216, FloatBallProxyUI.this.getString(a.h.float_ball_menu_item_cancel_remove_all_balls));
           AppMethodBeat.o(106283);
         }
       };
-      this.rZT.ODU = new q.g()
+      this.vlk.GAC = new u.i()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -188,7 +188,7 @@ public class FloatBallProxyUI
           AppMethodBeat.o(106284);
         }
       };
-      this.rZT.XbB = new e.b()
+      this.vlk.aeLi = new f.b()
       {
         public final void onDismiss()
         {
@@ -199,9 +199,9 @@ public class FloatBallProxyUI
           AppMethodBeat.o(106285);
         }
       };
-      this.rZT.eik();
+      this.vlk.dDn();
       continue;
-      Fk(a.h.float_ball_sync_with_handoff_fail);
+      FL(a.h.float_ball_sync_with_handoff_fail);
     }
   }
   
@@ -217,28 +217,28 @@ public class FloatBallProxyUI
   {
     AppMethodBeat.i(106292);
     super.onDestroy();
-    if ((this.qWk != null) && (this.qWk.isShowing()))
+    if ((this.ubT != null) && (this.ubT.isShowing()))
     {
-      this.qWk.dismiss();
-      this.qWk = null;
+      this.ubT.dismiss();
+      this.ubT = null;
     }
-    if ((this.rZT != null) && (this.rZT.isShowing()))
+    if ((this.vlk != null) && (this.vlk.isShowing()))
     {
-      this.rZT.bYF();
-      this.rZT = null;
+      this.vlk.cyW();
+      this.vlk = null;
     }
     AppMethodBeat.o(106292);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(187477);
+    AppMethodBeat.i(288329);
     super.onPause();
-    Log.i("MicroMsg.FloatBallProxyUI", "alvinluo onPause proxyType: %d, hasConfirmed: %b, canAddMessageBall: %b, ballInfo: %s", new Object[] { Integer.valueOf(this.rZU), Boolean.valueOf(this.rZW), Boolean.valueOf(this.rZX), this.rYE });
-    if ((this.rZU == 1) && (!this.rZW) && (this.rZX) && (this.rYE != null)) {
-      c.cvT().t(this.rYE);
+    Log.i("MicroMsg.FloatBallProxyUI", "alvinluo onPause proxyType: %d, hasConfirmed: %b, canAddMessageBall: %b, ballInfo: %s", new Object[] { Integer.valueOf(this.vll), Boolean.valueOf(this.vln), Boolean.valueOf(this.vlo), this.vjV });
+    if ((this.vll == 1) && (!this.vln) && (this.vlo) && (this.vjV != null)) {
+      c.cYC().t(this.vjV);
     }
-    AppMethodBeat.o(187477);
+    AppMethodBeat.o(288329);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -249,12 +249,12 @@ public class FloatBallProxyUI
   
   public static abstract interface a
   {
-    public abstract void ft(int paramInt1, int paramInt2);
+    public abstract void onCallback(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.ui.FloatBallProxyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/dlg" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b08" android:layout_width="fill_parent" android:layout_height="400.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/BW_97" android:paddingLeft="@dimen/a1f" android:paddingRight="@dimen/a1f" android:layout_width="fill_parent" android:layout_height="48.0dip">
-        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/dle" android:background="@null" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/sz" android:layout_centerInParent="true" />
-            <TextView android:id="@id/dlf" android:background="@color/afp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/dli" android:background="@null" android:padding="@dimen/k5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/st" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/dlh" android:background="@null" android:padding="@dimen/k5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/sn" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/dlj" android:background="@null" android:padding="@dimen/k5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:src="@drawable/t5" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </LinearLayout>
-    <include layout="@layout/a1a" />
-</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cbz" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+</androidx.constraintlayout.widget.ConstraintLayout>

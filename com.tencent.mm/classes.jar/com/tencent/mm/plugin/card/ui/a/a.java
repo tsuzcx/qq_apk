@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.protocal.protobuf.ahk;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.ui.e.b;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.akb;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
@@ -18,29 +18,29 @@ import java.util.LinkedList;
 public class a
   implements g
 {
-  private boolean tAA = false;
-  private boolean tAB = false;
-  private boolean tAC = false;
-  private boolean tAD = false;
-  private boolean tAE = false;
-  private boolean tAF = false;
-  private boolean tAG = false;
-  private boolean tAH = false;
-  private boolean tAI = false;
-  private boolean tAJ = false;
-  protected b tmU;
-  protected MMActivity tmY;
-  protected e.a tvQ;
+  protected e.b wAo;
+  private boolean wEY = false;
+  private boolean wEZ = false;
+  private boolean wFa = false;
+  private boolean wFb = false;
+  private boolean wFc = false;
+  private boolean wFd = false;
+  private boolean wFe = false;
+  private boolean wFf = false;
+  private boolean wFg = false;
+  private boolean wFh = false;
+  protected b wru;
+  protected MMActivity wry;
   
   public a(MMActivity paramMMActivity)
   {
-    this.tmY = paramMMActivity;
+    this.wry = paramMMActivity;
   }
   
-  private boolean cJU()
+  private boolean dnk()
   {
     AppMethodBeat.i(113625);
-    if (!TextUtils.isEmpty(this.tmU.cGt().code))
+    if (!TextUtils.isEmpty(this.wru.djL().code))
     {
       AppMethodBeat.o(113625);
       return true;
@@ -52,299 +52,29 @@ public class a
   private String getString(int paramInt)
   {
     AppMethodBeat.i(113622);
-    String str = this.tmY.getString(paramInt);
+    String str = this.wry.getString(paramInt);
     AppMethodBeat.o(113622);
     return str;
   }
   
-  public final void a(b paramb, e.a parama)
+  public final void a(b paramb, e.b paramb1)
   {
     AppMethodBeat.i(113620);
-    this.tmU = paramb;
-    this.tvQ = parama;
-    cJX();
+    this.wru = paramb;
+    this.wAo = paramb1;
+    dnn();
     AppMethodBeat.o(113620);
   }
   
-  public final String cJR()
+  public final boolean dmH()
   {
-    AppMethodBeat.i(113621);
-    String str = "";
-    if (!TextUtils.isEmpty(this.tmU.cGs().Sgm)) {
-      str = this.tmU.cGs().Sgm;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(113621);
-      return str;
-      if (this.tmU.cGt().SdG == 0L) {
-        str = getString(a.g.tlh);
-      } else if (this.tmU.cGt().SdH == 0) {
-        if (!TextUtils.isEmpty(this.tmU.cGs().oDU)) {
-          str = this.tmU.cGs().oDU;
-        } else {
-          str = getString(a.g.tjA);
-        }
-      }
-    }
+    return this.wEY;
   }
   
-  public final boolean cJS()
-  {
-    AppMethodBeat.i(113623);
-    if ((this.tmU.cGt().status == 0) || (this.tmU.cGt().status == 1) || (this.tmU.cGt().status == 2))
-    {
-      AppMethodBeat.o(113623);
-      return true;
-    }
-    AppMethodBeat.o(113623);
-    return false;
-  }
-  
-  public final boolean cJT()
-  {
-    AppMethodBeat.i(113624);
-    if ((this.tvQ.jaR == 3) || ((this.tvQ.jaR == 6) && (this.tmU.cGt().SdD == 0)) || (this.tvQ.jaR == 4) || (this.tvQ.jaR == 5) || (this.tvQ.jaR == 15))
-    {
-      AppMethodBeat.o(113624);
-      return true;
-    }
-    AppMethodBeat.o(113624);
-    return false;
-  }
-  
-  protected final boolean cJV()
-  {
-    AppMethodBeat.i(113626);
-    if ((!this.tmU.cGo()) && ((l.Ii(this.tvQ.jaR)) || (l.Ij(this.tvQ.jaR)) || (this.tvQ.jaR == 23)))
-    {
-      AppMethodBeat.o(113626);
-      return true;
-    }
-    AppMethodBeat.o(113626);
-    return false;
-  }
-  
-  protected final boolean cJW()
-  {
-    AppMethodBeat.i(113627);
-    if ((!this.tmU.cGp()) && (this.tvQ.jaR == 6))
-    {
-      AppMethodBeat.o(113627);
-      return true;
-    }
-    AppMethodBeat.o(113627);
-    return false;
-  }
-  
-  protected void cJX()
-  {
-    AppMethodBeat.i(113628);
-    Log.i("MicroMsg.CardBaseShowLogic", "updateAcceptState()");
-    if ((l.Ii(this.tvQ.jaR)) || (l.Ij(this.tvQ.jaR))) {
-      if (this.tmU.cGo())
-      {
-        this.tAB = true;
-        this.tAC = true;
-        this.tAH = true;
-        this.tAF = true;
-        this.tAG = true;
-        if (!this.tmU.cGm()) {
-          break label567;
-        }
-        this.tAB = false;
-        this.tAC = false;
-        Log.i("MicroMsg.CardBaseShowLogic", "need direct jump!");
-        label104:
-        if (!this.tAA) {
-          break label577;
-        }
-        this.tAB = false;
-        this.tAC = false;
-        Log.i("MicroMsg.CardBaseShowLogic", "updateAcceptView to gone!");
-      }
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.CardBaseShowLogic", "mIsAcceptedCard:" + this.tAA);
-      AppMethodBeat.o(113628);
-      return;
-      if (!this.tmU.cGo())
-      {
-        this.tAB = true;
-        this.tAC = false;
-        if (this.tmU.cGm())
-        {
-          this.tAI = true;
-          this.tAF = true;
-          this.tAE = true;
-        }
-        for (;;)
-        {
-          this.tAG = true;
-          break;
-          this.tAF = false;
-        }
-      }
-      this.tAB = false;
-      this.tAC = false;
-      this.tAF = false;
-      break;
-      if (this.tvQ.jaR == 6)
-      {
-        if (this.tmU.cGp())
-        {
-          this.tAB = true;
-          this.tAC = true;
-          this.tAF = false;
-          break;
-        }
-        if (this.tmU.cGn())
-        {
-          this.tAI = true;
-          this.tAF = true;
-          this.tAD = true;
-          this.tAE = true;
-          break;
-        }
-        this.tAB = false;
-        this.tAC = false;
-        this.tAF = false;
-        this.tAD = true;
-        break;
-      }
-      if (l.Ik(this.tvQ.jaR))
-      {
-        this.tAB = false;
-        this.tAC = false;
-        this.tAD = true;
-        if (this.tmU.cGn())
-        {
-          this.tAI = true;
-          this.tAF = true;
-          this.tAE = true;
-          break;
-        }
-        this.tAJ = true;
-        break;
-      }
-      if (this.tvQ.jaR != 23) {
-        break;
-      }
-      if (this.tmU.cGo())
-      {
-        this.tAB = true;
-        this.tAC = true;
-        this.tAF = false;
-      }
-      for (this.tAG = true;; this.tAG = true)
-      {
-        if ((TextUtils.isEmpty(this.tvQ.tuY)) || (this.tvQ.tuY.equals(z.bcZ())) || (this.tmU.cGr())) {
-          break label565;
-        }
-        Log.i("MicroMsg.CardBaseShowLogic", " detail page");
-        this.tAB = false;
-        this.tAC = false;
-        this.tAD = true;
-        if (!this.tmU.cGn()) {
-          break;
-        }
-        this.tAI = true;
-        this.tAF = true;
-        this.tAE = true;
-        break;
-        this.tAB = true;
-        this.tAC = false;
-        this.tAF = false;
-      }
-      label565:
-      break;
-      label567:
-      Log.i("MicroMsg.CardBaseShowLogic", "not need direct jump!");
-      break label104;
-      label577:
-      if (!this.tAB)
-      {
-        this.tAA = true;
-        Log.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is true");
-      }
-      else
-      {
-        this.tAA = false;
-        Log.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is false!");
-      }
-    }
-  }
-  
-  public boolean cJY()
-  {
-    return this.tAB;
-  }
-  
-  public final boolean cJZ()
-  {
-    return this.tAC;
-  }
-  
-  public final boolean cJq()
-  {
-    return this.tAA;
-  }
-  
-  public final boolean cKa()
-  {
-    return this.tAD;
-  }
-  
-  public final boolean cKb()
-  {
-    return this.tAE;
-  }
-  
-  public final boolean cKc()
-  {
-    return this.tAF;
-  }
-  
-  public final boolean cKd()
-  {
-    return this.tAG;
-  }
-  
-  public final boolean cKe()
-  {
-    return this.tAH;
-  }
-  
-  public final boolean cKf()
-  {
-    return this.tAI;
-  }
-  
-  public final boolean cKg()
-  {
-    return this.tAJ;
-  }
-  
-  public boolean cKh()
-  {
-    return true;
-  }
-  
-  public boolean cKi()
-  {
-    return false;
-  }
-  
-  public boolean cKj()
-  {
-    return false;
-  }
-  
-  public boolean cKk()
+  public boolean dnA()
   {
     AppMethodBeat.i(113629);
-    if (((this.tvQ.jaR == 6) && ((!this.tmU.cGn()) || (this.tmU.cGp()))) || (this.tvQ.jaR == 5) || ((this.tvQ.jaR == 23) && (this.tmU.cGr())))
+    if (((this.wAo.lCR == 6) && ((!this.wru.djF()) || (this.wru.djH()))) || (this.wAo.lCR == 5) || ((this.wAo.lCR == 23) && (this.wru.djJ())))
     {
       AppMethodBeat.o(113629);
       return true;
@@ -353,20 +83,20 @@ public class a
     return false;
   }
   
-  public boolean cKl()
+  public boolean dnB()
   {
     return false;
   }
   
-  public boolean cKm()
+  public boolean dnC()
   {
     return true;
   }
   
-  public boolean cKn()
+  public boolean dnD()
   {
     AppMethodBeat.i(113630);
-    if (((cJU()) && (cJS()) && (cJT())) || (this.tAA))
+    if (((dnk()) && (dni()) && (dnj())) || (this.wEY))
     {
       AppMethodBeat.o(113630);
       return true;
@@ -375,15 +105,15 @@ public class a
     return false;
   }
   
-  public boolean cKo()
+  public boolean dnE()
   {
     return false;
   }
   
-  public boolean cKp()
+  public boolean dnF()
   {
     AppMethodBeat.i(113631);
-    if (!this.tmU.cGn())
+    if (!this.wru.djF())
     {
       AppMethodBeat.o(113631);
       return true;
@@ -392,10 +122,10 @@ public class a
     return false;
   }
   
-  public boolean cKq()
+  public boolean dnG()
   {
     AppMethodBeat.i(113632);
-    if ((this.tmU.cGs().Sgg != null) && (this.tmU.cGs().Sgg.SrZ != null) && (this.tmU.cGs().Sgg.SrZ.size() > 0) && (!TextUtils.isEmpty((CharSequence)this.tmU.cGs().Sgg.SrZ.get(0))))
+    if ((this.wru.djK().Zeb != null) && (this.wru.djK().Zeb.Zrh != null) && (this.wru.djK().Zeb.Zrh.size() > 0) && (!TextUtils.isEmpty((CharSequence)this.wru.djK().Zeb.Zrh.get(0))))
     {
       AppMethodBeat.o(113632);
       return true;
@@ -404,10 +134,10 @@ public class a
     return false;
   }
   
-  public boolean cKr()
+  public boolean dnH()
   {
     AppMethodBeat.i(113633);
-    if ((this.tmU.cGt().SdF != null) && (this.tmU.cGt().SdF.size() > 0) && (((cJS()) && (cJT())) || (this.tAA)))
+    if ((this.wru.djL().Zbz != null) && (this.wru.djL().Zbz.size() > 0) && (((dni()) && (dnj())) || (this.wEY)))
     {
       AppMethodBeat.o(113633);
       return true;
@@ -416,15 +146,15 @@ public class a
     return false;
   }
   
-  public boolean cKs()
+  public boolean dnI()
   {
     return false;
   }
   
-  public final boolean cKt()
+  public final boolean dnJ()
   {
     AppMethodBeat.i(113634);
-    if ((this.tmU.cGt().SdJ != null) && (!TextUtils.isEmpty(this.tmU.cGt().SdJ.title)))
+    if ((this.wru.djL().ZbD != null) && (!TextUtils.isEmpty(this.wru.djL().ZbD.title)))
     {
       AppMethodBeat.o(113634);
       return true;
@@ -433,10 +163,10 @@ public class a
     return false;
   }
   
-  public boolean cKu()
+  public boolean dnK()
   {
     AppMethodBeat.i(113635);
-    if ((this.tmU.cGt().SdM != null) && (!TextUtils.isEmpty(this.tmU.cGt().SdM.title)))
+    if ((this.wru.djL().ZbG != null) && (!TextUtils.isEmpty(this.wru.djL().ZbG.title)))
     {
       AppMethodBeat.o(113635);
       return true;
@@ -445,10 +175,10 @@ public class a
     return false;
   }
   
-  public boolean cKv()
+  public boolean dnL()
   {
     AppMethodBeat.i(113636);
-    if (this.tmU.cGs().Sgc != null)
+    if (this.wru.djK().ZdX != null)
     {
       AppMethodBeat.o(113636);
       return true;
@@ -457,10 +187,10 @@ public class a
     return false;
   }
   
-  public boolean cKw()
+  public boolean dnM()
   {
     AppMethodBeat.i(113637);
-    if (!TextUtils.isEmpty(this.tmU.cGs().SfZ))
+    if (!TextUtils.isEmpty(this.wru.djK().ZdU))
     {
       AppMethodBeat.o(113637);
       return true;
@@ -469,82 +199,82 @@ public class a
     return false;
   }
   
-  public boolean cKx()
+  public boolean dnN()
   {
     return false;
   }
   
-  public boolean cKy()
+  public boolean dnO()
   {
     return false;
   }
   
-  public final void cKz()
+  public final void dnP()
   {
     int i6 = 1;
     AppMethodBeat.i(113638);
     int i;
     String str;
     int j;
-    label33:
+    label32:
     int k;
-    label42:
+    label41:
     int m;
-    label52:
+    label51:
     int n;
-    label62:
+    label61:
     int i1;
-    label72:
+    label71:
     int i2;
-    label82:
+    label81:
     int i3;
-    label92:
+    label91:
     int i4;
-    label102:
+    label101:
     int i5;
-    if (cJU())
+    if (dnk())
     {
       i = 1;
-      str = cJR();
-      if (!this.tAA) {
-        break label240;
+      str = dnh();
+      if (!this.wEY) {
+        break label237;
       }
       j = 1;
-      if (!cJY()) {
-        break label245;
+      if (!dno()) {
+        break label242;
       }
       k = 1;
-      if (!this.tAC) {
-        break label250;
+      if (!this.wFa) {
+        break label247;
       }
       m = 1;
-      if (!this.tAD) {
-        break label256;
+      if (!this.wFb) {
+        break label253;
       }
       n = 1;
-      if (!this.tAE) {
-        break label262;
+      if (!this.wFc) {
+        break label259;
       }
       i1 = 1;
-      if (!this.tAF) {
-        break label268;
+      if (!this.wFd) {
+        break label265;
       }
       i2 = 1;
-      if (!this.tAG) {
-        break label274;
+      if (!this.wFe) {
+        break label271;
       }
       i3 = 1;
-      if (!this.tAH) {
-        break label280;
+      if (!this.wFf) {
+        break label277;
       }
       i4 = 1;
-      if (!this.tAI) {
-        break label286;
+      if (!this.wFg) {
+        break label283;
       }
       i5 = 1;
-      label112:
-      if (!this.tAJ) {
-        break label292;
+      label111:
+      if (!this.wFh) {
+        break label289;
       }
     }
     for (;;)
@@ -554,48 +284,325 @@ public class a
       return;
       i = 0;
       break;
-      label240:
+      label237:
       j = 0;
-      break label33;
-      label245:
+      break label32;
+      label242:
       k = 0;
-      break label42;
-      label250:
+      break label41;
+      label247:
       m = 0;
-      break label52;
-      label256:
+      break label51;
+      label253:
       n = 0;
-      break label62;
-      label262:
+      break label61;
+      label259:
       i1 = 0;
-      break label72;
-      label268:
+      break label71;
+      label265:
       i2 = 0;
-      break label82;
-      label274:
+      break label81;
+      label271:
       i3 = 0;
-      break label92;
-      label280:
+      break label91;
+      label277:
       i4 = 0;
-      break label102;
-      label286:
+      break label101;
+      label283:
       i5 = 0;
-      break label112;
-      label292:
+      break label111;
+      label289:
       i6 = 0;
     }
   }
   
+  public final String dnh()
+  {
+    AppMethodBeat.i(113621);
+    String str = "";
+    if (!TextUtils.isEmpty(this.wru.djK().Zeh)) {
+      str = this.wru.djK().Zeh;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(113621);
+      return str;
+      if (this.wru.djL().ZbA == 0L) {
+        str = getString(a.g.wpG);
+      } else if (this.wru.djL().ZbB == 0) {
+        if (!TextUtils.isEmpty(this.wru.djK().rHe)) {
+          str = this.wru.djK().rHe;
+        } else {
+          str = getString(a.g.wnX);
+        }
+      }
+    }
+  }
+  
+  public final boolean dni()
+  {
+    AppMethodBeat.i(113623);
+    if ((this.wru.djL().status == 0) || (this.wru.djL().status == 1) || (this.wru.djL().status == 2))
+    {
+      AppMethodBeat.o(113623);
+      return true;
+    }
+    AppMethodBeat.o(113623);
+    return false;
+  }
+  
+  public final boolean dnj()
+  {
+    AppMethodBeat.i(113624);
+    if ((this.wAo.lCR == 3) || ((this.wAo.lCR == 6) && (this.wru.djL().Zbx == 0)) || (this.wAo.lCR == 4) || (this.wAo.lCR == 5) || (this.wAo.lCR == 15))
+    {
+      AppMethodBeat.o(113624);
+      return true;
+    }
+    AppMethodBeat.o(113624);
+    return false;
+  }
+  
+  protected final boolean dnl()
+  {
+    AppMethodBeat.i(113626);
+    if ((!this.wru.djG()) && ((l.IL(this.wAo.lCR)) || (l.IM(this.wAo.lCR)) || (this.wAo.lCR == 23)))
+    {
+      AppMethodBeat.o(113626);
+      return true;
+    }
+    AppMethodBeat.o(113626);
+    return false;
+  }
+  
+  protected final boolean dnm()
+  {
+    AppMethodBeat.i(113627);
+    if ((!this.wru.djH()) && (this.wAo.lCR == 6))
+    {
+      AppMethodBeat.o(113627);
+      return true;
+    }
+    AppMethodBeat.o(113627);
+    return false;
+  }
+  
+  protected void dnn()
+  {
+    AppMethodBeat.i(113628);
+    Log.i("MicroMsg.CardBaseShowLogic", "updateAcceptState()");
+    if ((l.IL(this.wAo.lCR)) || (l.IM(this.wAo.lCR))) {
+      if (this.wru.djG())
+      {
+        this.wEZ = true;
+        this.wFa = true;
+        this.wFf = true;
+        this.wFd = true;
+        this.wFe = true;
+        if (!this.wru.djE()) {
+          break label574;
+        }
+        this.wEZ = false;
+        this.wFa = false;
+        Log.i("MicroMsg.CardBaseShowLogic", "need direct jump!");
+        label107:
+        if (!this.wEY) {
+          break label585;
+        }
+        this.wEZ = false;
+        this.wFa = false;
+        Log.i("MicroMsg.CardBaseShowLogic", "updateAcceptView to gone!");
+      }
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.CardBaseShowLogic", "mIsAcceptedCard:" + this.wEY);
+      AppMethodBeat.o(113628);
+      return;
+      if (!this.wru.djG())
+      {
+        this.wEZ = true;
+        this.wFa = false;
+        if (this.wru.djE())
+        {
+          this.wFg = true;
+          this.wFd = true;
+          this.wFc = true;
+        }
+        for (;;)
+        {
+          this.wFe = true;
+          break;
+          this.wFd = false;
+        }
+      }
+      this.wEZ = false;
+      this.wFa = false;
+      this.wFd = false;
+      break;
+      if (this.wAo.lCR == 6)
+      {
+        if (this.wru.djH())
+        {
+          this.wEZ = true;
+          this.wFa = true;
+          this.wFd = false;
+          break;
+        }
+        if (this.wru.djF())
+        {
+          this.wFg = true;
+          this.wFd = true;
+          this.wFb = true;
+          this.wFc = true;
+          break;
+        }
+        this.wEZ = false;
+        this.wFa = false;
+        this.wFd = false;
+        this.wFb = true;
+        break;
+      }
+      if (l.IN(this.wAo.lCR))
+      {
+        this.wEZ = false;
+        this.wFa = false;
+        this.wFb = true;
+        if (this.wru.djF())
+        {
+          this.wFg = true;
+          this.wFd = true;
+          this.wFc = true;
+          break;
+        }
+        this.wFh = true;
+        break;
+      }
+      if (this.wAo.lCR != 23) {
+        break;
+      }
+      if (this.wru.djG())
+      {
+        this.wEZ = true;
+        this.wFa = true;
+        this.wFd = false;
+      }
+      for (this.wFe = true;; this.wFe = true)
+      {
+        if ((TextUtils.isEmpty(this.wAo.wzv)) || (this.wAo.wzv.equals(z.bAM())) || (this.wru.djJ())) {
+          break label572;
+        }
+        Log.i("MicroMsg.CardBaseShowLogic", " detail page");
+        this.wEZ = false;
+        this.wFa = false;
+        this.wFb = true;
+        if (!this.wru.djF()) {
+          break;
+        }
+        this.wFg = true;
+        this.wFd = true;
+        this.wFc = true;
+        break;
+        this.wEZ = true;
+        this.wFa = false;
+        this.wFd = false;
+      }
+      label572:
+      break;
+      label574:
+      Log.i("MicroMsg.CardBaseShowLogic", "not need direct jump!");
+      break label107;
+      label585:
+      if (!this.wEZ)
+      {
+        this.wEY = true;
+        Log.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is true");
+      }
+      else
+      {
+        this.wEY = false;
+        Log.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is false!");
+      }
+    }
+  }
+  
+  public boolean dno()
+  {
+    return this.wEZ;
+  }
+  
+  public final boolean dnp()
+  {
+    return this.wFa;
+  }
+  
+  public final boolean dnq()
+  {
+    return this.wFb;
+  }
+  
+  public final boolean dnr()
+  {
+    return this.wFc;
+  }
+  
+  public final boolean dns()
+  {
+    return this.wFd;
+  }
+  
+  public final boolean dnt()
+  {
+    return this.wFe;
+  }
+  
+  public final boolean dnu()
+  {
+    return this.wFf;
+  }
+  
+  public final boolean dnv()
+  {
+    return this.wFg;
+  }
+  
+  public final boolean dnw()
+  {
+    return this.wFh;
+  }
+  
+  public boolean dnx()
+  {
+    AppMethodBeat.i(293812);
+    if (this.wru.djr())
+    {
+      AppMethodBeat.o(293812);
+      return false;
+    }
+    AppMethodBeat.o(293812);
+    return true;
+  }
+  
+  public boolean dny()
+  {
+    return false;
+  }
+  
+  public boolean dnz()
+  {
+    return false;
+  }
+  
   public final void release()
   {
-    this.tmU = null;
-    this.tvQ = null;
-    this.tmY = null;
+    this.wru = null;
+    this.wAo = null;
+    this.wry = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

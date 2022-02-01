@@ -1,84 +1,130 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.m;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI;
+import com.tencent.mm.plugin.appbrand.report.s;
+import com.tencent.mm.sdk.statemachine.StateMachine;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public final class p
-  implements m
+public abstract class p<Task>
+  extends StateMachine
 {
-  public final void a(Context paramContext, int paramInt, String paramString)
+  private final Queue<Task> eMA = new LinkedList();
+  private final p<Task>.b uqL = new b((byte)0);
+  private final p<Task>.a uqM = new a((byte)0);
+  private final String uqN;
+  
+  protected p(String paramString, Looper paramLooper)
   {
-    int j = 14;
-    AppMethodBeat.i(49314);
-    int i;
-    Intent localIntent;
-    if (1 == paramInt)
-    {
-      i = 15;
-      localIntent = new Intent(paramContext, AppBrandLauncherFolderUI.class);
-      localIntent.putExtra("extra_use_system_default_enter_exit_anim", true);
-      localIntent.putExtra("extra_enter_scene", i);
-      localIntent.putExtra("extra_enter_scene_note", paramString);
-      localIntent.putExtra("KEY_MODE", 1);
-      if (!(paramContext instanceof Activity)) {
-        break label189;
-      }
-    }
-    label189:
-    for (paramInt = 0;; paramInt = 268435456)
-    {
-      localIntent.addFlags(paramInt);
-      localIntent.addFlags(536870912);
-      localIntent.addFlags(134217728);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaDesktop", "(Landroid/content/Context;ILjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.sf(0));
-      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaDesktop", "(Landroid/content/Context;ILjava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(49314);
+    super(paramString, paramLooper);
+    this.uqN = paramString;
+    addState(this.uqL);
+    addState(this.uqM);
+    setInitialState(this.uqL);
+    start();
+  }
+  
+  protected final int cNA()
+  {
+    return this.eMA.size();
+  }
+  
+  protected abstract boolean cqn();
+  
+  protected abstract void dY(Task paramTask);
+  
+  public final void en(Task paramTask)
+  {
+    if (cqn()) {
       return;
-      i = j;
-      if (2 == paramInt) {
-        break;
-      }
-      i = j;
-      if (paramInt == 0) {
-        break;
-      }
-      i = -1;
-      break;
+    }
+    synchronized (this.eMA)
+    {
+      this.eMA.offer(paramTask);
+      sendMessage(1);
+      return;
     }
   }
   
-  public final void ae(Context paramContext, String paramString)
+  public void onQuitting()
   {
-    AppMethodBeat.i(49315);
-    Intent localIntent = new Intent(paramContext, AppBrandLauncherFolderUI.class);
-    localIntent.putExtra("extra_use_system_default_enter_exit_anim", true);
-    localIntent.putExtra("extra_enter_scene", 4);
-    localIntent.putExtra("extra_enter_scene_note", paramString);
-    localIntent.putExtra("KEY_MODE", 2);
-    if ((paramContext instanceof Activity)) {}
-    for (int i = 0;; i = 268435456)
+    super.onQuitting();
+    synchronized (this.eMA)
     {
-      localIntent.addFlags(i);
-      localIntent.addFlags(536870912);
-      localIntent.addFlags(134217728);
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaMyFavorite", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString.sf(0));
-      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/appbrand/utils/ExtOpenWxaDesktopFavoriteHelperImpl", "openWxaMyFavorite", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(49315);
+      this.eMA.clear();
       return;
+    }
+  }
+  
+  final class a
+    extends s
+  {
+    private a() {}
+    
+    public final String getName()
+    {
+      AppMethodBeat.i(107819);
+      String str = p.b(p.this) + "|StateExecuting";
+      AppMethodBeat.o(107819);
+      return str;
+    }
+    
+    public final boolean processMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(107818);
+      if (2 == paramMessage.what)
+      {
+        p.a(p.this, p.a(p.this));
+        AppMethodBeat.o(107818);
+        return true;
+      }
+      boolean bool = super.processMessage(paramMessage);
+      AppMethodBeat.o(107818);
+      return bool;
+    }
+  }
+  
+  final class b
+    extends s
+  {
+    private b() {}
+    
+    public final void enter()
+    {
+      AppMethodBeat.i(107820);
+      super.enter();
+      p.c(p.this);
+      AppMethodBeat.o(107820);
+    }
+    
+    public final String getName()
+    {
+      AppMethodBeat.i(107822);
+      String str = p.b(p.this) + "|StateIdle";
+      AppMethodBeat.o(107822);
+      return str;
+    }
+    
+    public final boolean processMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(107821);
+      if ((1 == paramMessage.what) || (2 == paramMessage.what))
+      {
+        p.c(p.this);
+        AppMethodBeat.o(107821);
+        return true;
+      }
+      boolean bool = super.processMessage(paramMessage);
+      AppMethodBeat.o(107821);
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.p
  * JD-Core Version:    0.7.0.1
  */

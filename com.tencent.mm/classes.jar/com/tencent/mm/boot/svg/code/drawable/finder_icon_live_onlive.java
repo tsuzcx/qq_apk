@@ -129,7 +129,7 @@ public class finder_icon_live_onlive
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.finder_icon_live_onlive
  * JD-Core Version:    0.7.0.1
  */

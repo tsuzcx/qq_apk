@@ -25,7 +25,7 @@ public final class o
     return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | (paramArrayOfByte[7] & 0xFF) << 0;
   }
   
-  public static byte[] bA(long paramLong)
+  public static byte[] dV(long paramLong)
   {
     byte[] arrayOfByte = new byte[8];
     int i = 0;
@@ -37,7 +37,7 @@ public final class o
     return X(arrayOfByte);
   }
   
-  public static byte[] jO(int paramInt)
+  public static byte[] nE(int paramInt)
   {
     byte[] arrayOfByte = new byte[4];
     int i = 0;
@@ -49,7 +49,7 @@ public final class o
     return X(arrayOfByte);
   }
   
-  public static int v(byte[] paramArrayOfByte, int paramInt)
+  public static int t(byte[] paramArrayOfByte, int paramInt)
   {
     return (paramArrayOfByte[paramInt] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0;
   }

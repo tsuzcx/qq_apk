@@ -1,117 +1,112 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.splash.b;
-import com.tencent.mm.splash.c;
-import com.tencent.mm.splash.f;
-import com.tencent.mm.splash.i;
-import com.tencent.mm.splash.n;
-import com.tencent.mm.splash.o;
-import com.tencent.mm.xlog.app.XLogSetup;
 import com.tencent.tinker.entry.ApplicationLike;
-import java.util.ArrayList;
+import com.tencent.tinker.lib.e.b;
+import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
+import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
+import org.xmlpull.v1.XmlPullParserException;
 
 public final class al
 {
-  public static h ffb;
-  
-  public static void a(h paramh, String paramString)
+  public static boolean c(StackTraceElement[] paramArrayOfStackTraceElement)
   {
-    AppMethodBeat.i(160061);
-    ffb = paramh;
-    abw();
-    if (paramString == null)
+    AppMethodBeat.i(125026);
+    int j = paramArrayOfStackTraceElement.length;
+    int i = 0;
+    while (i < j)
     {
-      com.tencent.mm.sdk.platformtools.Log.i("WxSplash.WeChatSplash", "splash callback class is null, return.");
-      AppMethodBeat.o(160061);
-      return;
+      String str = paramArrayOfStackTraceElement[i].getClassName();
+      if ((str != null) && ((str.contains("de.robv.android.xposed.XposedBridge")) || (str.contains("com.zte.heartyservice.SCC.FrameworkBridge"))))
+      {
+        AppMethodBeat.o(125026);
+        return true;
+      }
+      i += 1;
     }
-    com.tencent.mm.blink.a.u(paramh.kfv.getApplicationStartMillisTime(), paramh.kfv.getApplicationStartElapsedTime());
-    i.buC(MMApplicationContext.getLaunchName());
-    i.bw(WeChatSplashActivity.class);
-    i.bx(WeChatSplashFallbackActivity.class);
-    if (!com.tencent.mm.plugin.fcm.a.fo(paramh.Zw)) {
-      i.buB("com.google.firebase.provider.FirebaseInitProvider");
-    }
-    n.a(paramh.Zw, paramh.mProcessName, paramString);
-    AppMethodBeat.o(160061);
+    AppMethodBeat.o(125026);
+    return false;
   }
   
-  private static void abw()
+  public static void o(Throwable paramThrowable)
   {
-    AppMethodBeat.i(160060);
-    i.a(new c()
+    AppMethodBeat.i(125027);
+    ApplicationLike localApplicationLike = e.hfI;
+    if ((localApplicationLike == null) || (localApplicationLike.getApplication() == null))
     {
-      public final void a(Throwable paramAnonymousThrowable, String paramAnonymousString)
-      {
-        AppMethodBeat.i(160029);
-        com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("WxSplash.WeChatSplash", paramAnonymousThrowable, paramAnonymousString, new Object[0]);
-        String str = paramAnonymousString;
-        if (paramAnonymousString == null) {
-          str = "";
+      ShareTinkerLog.v("TinkerCrashProtect", "applicationlike is null", new Object[0]);
+      AppMethodBeat.o(125027);
+      return;
+    }
+    if (!b.c(localApplicationLike))
+    {
+      ShareTinkerLog.v("TinkerCrashProtect", "tinker is not loaded", new Object[0]);
+      AppMethodBeat.o(125027);
+      return;
+    }
+    int i;
+    boolean bool;
+    if ((Build.MODEL.contains("ZUK")) || (Build.MODEL.contains("zuk")))
+    {
+      i = 1;
+      bool = false;
+      label91:
+      if (paramThrowable == null) {
+        break label276;
+      }
+      if (bool) {
+        break label287;
+      }
+      bool = c(paramThrowable.getStackTrace());
+    }
+    label276:
+    label282:
+    label287:
+    for (;;)
+    {
+      if (bool) {
+        if ((!(paramThrowable instanceof IllegalAccessError)) || (!paramThrowable.getMessage().contains("Class ref in pre-verified class resolved to unexpected implementation"))) {
+          break label282;
         }
-        paramAnonymousThrowable = str + "  " + android.util.Log.getStackTraceString(paramAnonymousThrowable);
-        i.huq().Vam.add(paramAnonymousThrowable);
-        AppMethodBeat.o(160029);
       }
-      
-      public final void g(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      for (int j = 1;; j = 0)
       {
-        AppMethodBeat.i(160030);
-        com.tencent.mm.sdk.platformtools.Log.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(160030);
-      }
-      
-      public final void q(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(160028);
-        if ((al.ffb != null) && (al.ffb.aIE()))
+        if (j != 0)
         {
-          paramAnonymousActivity = paramAnonymousActivity.getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.avK());
-          if (paramAnonymousActivity.getBoolean("first_launch_weixin", true))
+          ShareTinkerLog.v("TinkerCrashProtect", "have xposed: just clean tinker", new Object[0]);
+          ShareTinkerInternals.killAllOtherProcess(localApplicationLike.getApplication());
+          b.e(localApplicationLike);
+          ShareTinkerInternals.setTinkerDisableWithSharedPreferences(localApplicationLike.getApplication());
+          AppMethodBeat.o(125027);
+          return;
+          i = 0;
+          break;
+        }
+        if (i != 0)
+        {
+          ShareTinkerLog.v("TinkerCrashProtect", "it is zuk model here, crash:" + paramThrowable.getMessage(), new Object[0]);
+          if (((paramThrowable instanceof XmlPullParserException)) && (paramThrowable.getMessage().contains("tag requires a 'drawable' attribute or child tag defining a drawable")))
           {
-            paramAnonymousActivity.edit().putBoolean("first_launch_weixin", false).commit();
-            XLogSetup.realSetupXlog();
+            ShareTinkerLog.v("TinkerCrashProtect", "have zuk parse error: just clean tinker", new Object[0]);
+            ShareTinkerInternals.killAllOtherProcess(localApplicationLike.getApplication());
+            b.e(localApplicationLike);
+            ShareTinkerInternals.setTinkerDisableWithSharedPreferences(localApplicationLike.getApplication());
+            AppMethodBeat.o(125027);
+            return;
           }
         }
-        AppMethodBeat.o(160028);
+        paramThrowable = paramThrowable.getCause();
+        break label91;
+        AppMethodBeat.o(125027);
+        return;
       }
-    });
-    i.a(new b() {});
-    i.a(new f()
-    {
-      public final void abx()
-      {
-        AppMethodBeat.i(160085);
-        com.tencent.mm.blink.a.abx();
-        AppMethodBeat.o(160085);
-      }
-      
-      public final void aby()
-      {
-        AppMethodBeat.i(160087);
-        com.tencent.mm.blink.a.qd(1);
-        AppMethodBeat.o(160087);
-      }
-      
-      public final void gX(String paramAnonymousString)
-      {
-        AppMethodBeat.i(160086);
-        com.tencent.mm.blink.a.gX(paramAnonymousString);
-        AppMethodBeat.o(160086);
-      }
-    });
-    AppMethodBeat.o(160060);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.al
  * JD-Core Version:    0.7.0.1
  */

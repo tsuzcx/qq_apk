@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.ipcall.model.b.b;
 import com.tencent.mm.plugin.ipcall.model.b.c;
@@ -11,10 +11,10 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class i
   extends b
 {
-  private o DSD = null;
-  private int DSE = 0;
+  private o JJN = null;
+  private int JJO = 0;
   
-  public final void Pu() {}
+  public final void apC() {}
   
   public final void b(c paramc)
   {
@@ -24,11 +24,11 @@ public final class i
     for (;;)
     {
       Log.d("MicroMsg.IPCallSyncService", "serviceImpl, info==null: %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.DOY != null)
+      if (this.JGn != null)
       {
-        this.DSE = this.DOY.DPS;
-        this.DSD = new o(this.DOY.roomId, this.DOY.DPJ, this.DOY.eJG(), this.DOY.DPK, false);
-        bh.aGY().a(this.DSD, 0);
+        this.JJO = this.JGn.JHd;
+        this.JJN = new o(this.JGn.roomId, this.JGn.Hnt, this.JGn.fRH(), this.JGn.JGV, false);
+        bh.aZW().a(this.JJN, 0);
       }
       AppMethodBeat.o(25527);
       return;
@@ -36,19 +36,24 @@ public final class i
     }
   }
   
-  public final int[] eJD()
+  public final int[] fRD()
   {
     return new int[] { 819 };
   }
   
-  public final void eJE()
+  public final boolean fRE()
+  {
+    return false;
+  }
+  
+  public final void fRF()
   {
     AppMethodBeat.i(25528);
     Log.d("MicroMsg.IPCallSyncService", "onLoopSuccess");
     AppMethodBeat.o(25528);
   }
   
-  public final void eJF()
+  public final void fRG()
   {
     AppMethodBeat.i(25529);
     Log.d("MicroMsg.IPCallSyncService", "onLoopFailed");
@@ -62,7 +67,7 @@ public final class i
   
   public final int getTimerInterval()
   {
-    return this.DSE;
+    return this.JJO;
   }
   
   public final void onDestroy() {}
@@ -70,15 +75,15 @@ public final class i
   public final void onStop()
   {
     AppMethodBeat.i(25526);
-    if (this.DSD != null) {
-      bh.aGY().a(this.DSD);
+    if (this.JJN != null) {
+      bh.aZW().a(this.JJN);
     }
     AppMethodBeat.o(25526);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.i
  * JD-Core Version:    0.7.0.1
  */

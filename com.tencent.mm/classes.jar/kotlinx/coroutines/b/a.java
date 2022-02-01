@@ -1,123 +1,142 @@
 package kotlinx.coroutines.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import kotlin.d.d;
-import kotlin.d.f;
-import kotlin.l;
-import kotlinx.coroutines.a.r;
-import kotlinx.coroutines.a.t;
-import kotlinx.coroutines.ak;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/flow/ChannelAsFlow;", "T", "Lkotlinx/coroutines/channels/ReceiveChannel;", "channel", "", "consume", "Lkotlin/coroutines/CoroutineContext;", "context", "", "capacity", "<init>", "(Lkotlinx/coroutines/channels/ReceiveChannel;ZLkotlin/coroutines/CoroutineContext;I)V", "", "additionalToStringProps", "()Ljava/lang/String;", "Lkotlinx/coroutines/CoroutineScope;", "scope", "Lkotlinx/coroutines/CoroutineStart;", "start", "Lkotlinx/coroutines/channels/BroadcastChannel;", "broadcastImpl", "(Lkotlinx/coroutines/CoroutineScope;Lkotlinx/coroutines/CoroutineStart;)Lkotlinx/coroutines/channels/BroadcastChannel;", "Lkotlinx/coroutines/flow/FlowCollector;", "collector", "", "collect", "(Lkotlinx/coroutines/flow/FlowCollector;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "Lkotlinx/coroutines/channels/ProducerScope;", "collectTo", "(Lkotlinx/coroutines/channels/ProducerScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "Lkotlinx/coroutines/flow/internal/ChannelFlow;", "create", "(Lkotlin/coroutines/CoroutineContext;I)Lkotlinx/coroutines/flow/internal/ChannelFlow;", "markConsumed", "()V", "produceImpl", "(Lkotlinx/coroutines/CoroutineScope;)Lkotlinx/coroutines/channels/ReceiveChannel;", "Lkotlinx/coroutines/channels/ReceiveChannel;", "Z", "kotlinx-coroutines-core"})
-public final class a<T>
-  extends kotlinx.coroutines.b.a.a<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/flow/AbstractFlow;", "T", "Lkotlinx/coroutines/flow/Flow;", "Lkotlinx/coroutines/flow/CancellableFlow;", "()V", "collect", "", "collector", "Lkotlinx/coroutines/flow/FlowCollector;", "(Lkotlinx/coroutines/flow/FlowCollector;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "collectSafely", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class a<T>
+  implements c<T>
 {
-  private static final AtomicIntegerFieldUpdater abyG;
-  private final t<T> abyH;
-  private final boolean abyI;
-  private volatile int consumed;
-  
-  static
+  /* Error */
+  public final Object a(h<? super T> paramh, kotlin.d.d<? super ah> paramd)
   {
-    AppMethodBeat.i(204280);
-    abyG = AtomicIntegerFieldUpdater.newUpdater(a.class, "consumed");
-    AppMethodBeat.o(204280);
+    // Byte code:
+    //   0: aload_2
+    //   1: instanceof 9
+    //   4: ifeq +78 -> 82
+    //   7: aload_2
+    //   8: checkcast 9	kotlinx/coroutines/b/a$a
+    //   11: astore_3
+    //   12: aload_3
+    //   13: getfield 41	kotlinx/coroutines/b/a$a:label	I
+    //   16: ldc 42
+    //   18: iand
+    //   19: ifeq +63 -> 82
+    //   22: aload_3
+    //   23: aload_3
+    //   24: getfield 41	kotlinx/coroutines/b/a$a:label	I
+    //   27: ldc 42
+    //   29: iadd
+    //   30: putfield 41	kotlinx/coroutines/b/a$a:label	I
+    //   33: aload_3
+    //   34: astore_2
+    //   35: aload_2
+    //   36: getfield 46	kotlinx/coroutines/b/a$a:result	Ljava/lang/Object;
+    //   39: astore 4
+    //   41: getstatic 52	kotlin/d/a/a:aiwj	Lkotlin/d/a/a;
+    //   44: astore_3
+    //   45: aload_2
+    //   46: getfield 41	kotlinx/coroutines/b/a$a:label	I
+    //   49: tableswitch	default:+23 -> 72, 0:+46->95, 1:+97->146
+    //   73: nop
+    //   74: istore 89
+    //   76: ldc 56
+    //   78: invokespecial 59	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   81: athrow
+    //   82: new 9	kotlinx/coroutines/b/a$a
+    //   85: dup
+    //   86: aload_0
+    //   87: aload_2
+    //   88: invokespecial 62	kotlinx/coroutines/b/a$a:<init>	(Lkotlinx/coroutines/b/a;Lkotlin/d/d;)V
+    //   91: astore_2
+    //   92: goto -57 -> 35
+    //   95: aload 4
+    //   97: invokestatic 68	kotlin/ResultKt:throwOnFailure	(Ljava/lang/Object;)V
+    //   100: new 70	kotlinx/coroutines/b/a/v
+    //   103: dup
+    //   104: aload_1
+    //   105: aload_2
+    //   106: invokeinterface 76 1 0
+    //   111: invokespecial 79	kotlinx/coroutines/b/a/v:<init>	(Lkotlinx/coroutines/b/h;Lkotlin/d/f;)V
+    //   114: astore_1
+    //   115: aload_1
+    //   116: checkcast 81	kotlinx/coroutines/b/h
+    //   119: astore 4
+    //   121: aload_2
+    //   122: aload_1
+    //   123: putfield 84	kotlinx/coroutines/b/a$a:L$0	Ljava/lang/Object;
+    //   126: aload_2
+    //   127: iconst_1
+    //   128: putfield 41	kotlinx/coroutines/b/a$a:label	I
+    //   131: aload_0
+    //   132: aload 4
+    //   134: aload_2
+    //   135: invokevirtual 87	kotlinx/coroutines/b/a:b	(Lkotlinx/coroutines/b/h;Lkotlin/d/d;)Ljava/lang/Object;
+    //   138: astore_2
+    //   139: aload_2
+    //   140: aload_3
+    //   141: if_acmpne +18 -> 159
+    //   144: aload_3
+    //   145: areturn
+    //   146: aload_2
+    //   147: getfield 84	kotlinx/coroutines/b/a$a:L$0	Ljava/lang/Object;
+    //   150: checkcast 70	kotlinx/coroutines/b/a/v
+    //   153: astore_1
+    //   154: aload 4
+    //   156: invokestatic 68	kotlin/ResultKt:throwOnFailure	(Ljava/lang/Object;)V
+    //   159: aload_1
+    //   160: invokevirtual 90	kotlinx/coroutines/b/a/v:releaseIntercepted	()V
+    //   163: getstatic 96	kotlin/ah:aiuX	Lkotlin/ah;
+    //   166: areturn
+    //   167: astore_2
+    //   168: aload_1
+    //   169: invokevirtual 90	kotlinx/coroutines/b/a/v:releaseIntercepted	()V
+    //   172: aload_2
+    //   173: athrow
+    //   174: astore_2
+    //   175: goto -7 -> 168
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	178	0	this	a
+    //   0	178	1	paramh	h<? super T>
+    //   0	178	2	paramd	kotlin.d.d<? super ah>
+    //   11	134	3	localObject1	Object
+    //   39	116	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   115	139	167	finally
+    //   154	159	174	finally
   }
   
-  private a(t<? extends T> paramt, f paramf)
-  {
-    super(paramf, -3);
-    this.abyH = paramt;
-    this.abyI = false;
-    this.consumed = 0;
-  }
+  public abstract Object b(h<? super T> paramh, kotlin.d.d<? super ah> paramd);
   
-  private final void iSB()
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends kotlin.d.b.a.d
   {
-    int i = 1;
-    AppMethodBeat.i(204274);
-    if (this.abyI)
+    Object L$0;
+    int label;
+    
+    a(a<T> parama, kotlin.d.d<? super a> paramd)
     {
-      if (abyG.getAndSet(this, 1) == 0) {}
-      while (i == 0)
-      {
-        Throwable localThrowable = (Throwable)new IllegalStateException("ReceiveChannel.consumeAsFlow can be collected just once".toString());
-        AppMethodBeat.o(204274);
-        throw localThrowable;
-        i = 0;
-      }
+      super();
     }
-    AppMethodBeat.o(204274);
-  }
-  
-  public final Object a(r<? super T> paramr, d<? super kotlin.x> paramd)
-  {
-    AppMethodBeat.i(204275);
-    paramr = e.a((c)new kotlinx.coroutines.b.a.c((kotlinx.coroutines.a.x)paramr), this.abyH, this.abyI, paramd);
-    if (paramr == kotlin.d.a.a.aaAA)
+    
+    public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.o(204275);
-      return paramr;
+      AppMethodBeat.i(189010);
+      this.result = paramObject;
+      this.label |= 0x80000000;
+      paramObject = this.ajxQ.a(null, (kotlin.d.d)this);
+      AppMethodBeat.o(189010);
+      return paramObject;
     }
-    paramr = kotlin.x.aazN;
-    AppMethodBeat.o(204275);
-    return paramr;
-  }
-  
-  public final Object a(c<? super T> paramc, d<? super kotlin.x> paramd)
-  {
-    AppMethodBeat.i(204277);
-    if (this.bgc == -3)
-    {
-      iSB();
-      paramc = e.a(paramc, this.abyH, this.abyI, paramd);
-      if (paramc == kotlin.d.a.a.aaAA)
-      {
-        AppMethodBeat.o(204277);
-        return paramc;
-      }
-    }
-    else
-    {
-      paramc = super.a(paramc, paramd);
-      if (paramc == kotlin.d.a.a.aaAA)
-      {
-        AppMethodBeat.o(204277);
-        return paramc;
-      }
-    }
-    paramc = kotlin.x.aazN;
-    AppMethodBeat.o(204277);
-    return paramc;
-  }
-  
-  public final t<T> b(ak paramak)
-  {
-    AppMethodBeat.i(204276);
-    iSB();
-    if (this.bgc == -3)
-    {
-      paramak = this.abyH;
-      AppMethodBeat.o(204276);
-      return paramak;
-    }
-    paramak = super.b(paramak);
-    AppMethodBeat.o(204276);
-    return paramak;
-  }
-  
-  public final String iSC()
-  {
-    AppMethodBeat.i(204278);
-    String str = "channel=" + this.abyH + ", ";
-    AppMethodBeat.o(204278);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.b.a
  * JD-Core Version:    0.7.0.1
  */

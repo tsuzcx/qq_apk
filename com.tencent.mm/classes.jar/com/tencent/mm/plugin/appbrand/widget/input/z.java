@@ -4,197 +4,193 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewParent;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import androidx.core.g.w;
 import com.tencent.luggage.wxa.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.n.a;
+import com.tencent.mm.plugin.appbrand.o.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/appbrand/widget/input/IBaseInputPanel;", "context", "Landroid/content/Context;", "enableKeyboardAccessory", "", "keyboardAccessoryContainer", "Lcom/tencent/mm/plugin/appbrand/keyboardCoverView/AppBrandKeyBoardComponentView;", "(Landroid/content/Context;ZLcom/tencent/mm/plugin/appbrand/keyboardCoverView/AppBrandKeyBoardComponentView;)V", "hashCode", "", "inputWidget", "Landroid/widget/EditText;", "keyboardView", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboard;", "myKeyboardAccessoryContainer", "Landroid/view/View;", "myTag", "", "onDoneListener", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$OnDoneListener;", "performingOnDone", "forceLightMode", "", "getAttachedInputWidget", "hide", "isRealHeightSettled", "onDetachedFromWindow", "performOnDone", "resetFocusStatus", "setId", "id", "setInputWidget", "setOnDoneListener", "setVisibility", "visibility", "show", "toString", "updateKeyboardAccessory", "Companion", "OnDoneListener", "luggage-wxa-app-input-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/appbrand/widget/input/IBaseInputPanel;", "context", "Landroid/content/Context;", "enableKeyboardAccessory", "", "keyboardAccessoryContainer", "Lcom/tencent/mm/plugin/appbrand/keyboardCoverView/AppBrandKeyBoardComponentView;", "(Landroid/content/Context;ZLcom/tencent/mm/plugin/appbrand/keyboardCoverView/AppBrandKeyBoardComponentView;)V", "hashCode", "", "inputWidget", "Landroid/widget/EditText;", "keyboardView", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboard;", "myKeyboardAccessoryContainer", "Landroid/view/View;", "myTag", "", "onDoneListener", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$OnDoneListener;", "performingOnDone", "forceLightMode", "", "getAttachedInputWidget", "hide", "isRealHeightSettled", "onDetachedFromWindow", "performOnDone", "resetFocusStatus", "setId", "id", "setInputWidget", "setOnDoneListener", "setVisibility", "visibility", "show", "toString", "updateKeyboardAccessory", "Companion", "OnDoneListener", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class z
   extends LinearLayout
   implements ag
 {
-  private static final int cpM;
-  public static final a rwB;
-  private final int aNf;
-  final String bqj;
-  private boolean rwA;
-  private View rww;
-  final AppBrandSecureKeyboard rwx;
-  EditText rwy;
-  private b rwz;
+  private static final int ehD;
+  public static final a uHA;
+  private final int cHb;
+  final String djQ;
+  private View uHB;
+  final AppBrandSecureKeyboard uHC;
+  EditText uHD;
+  private b uHE;
+  private boolean uHF;
   
   static
   {
-    AppMethodBeat.i(214263);
-    rwB = new a((byte)0);
-    cpM = a.e.app_brand_keyboard_security;
-    AppMethodBeat.o(214263);
+    AppMethodBeat.i(324509);
+    uHA = new a((byte)0);
+    ehD = a.e.app_brand_keyboard_security;
+    AppMethodBeat.o(324509);
   }
   
   public z(Context paramContext, boolean paramBoolean, a parama)
   {
     super(paramContext);
-    AppMethodBeat.i(214261);
-    this.aNf = hashCode();
-    this.bqj = ("MicroMsg.AppBrand.AppBrandSecureKeyboardPanel#" + this.aNf);
-    this.rwx = new AppBrandSecureKeyboard(paramContext);
-    Log.d(this.bqj, "init");
-    super.setId(cpM);
+    AppMethodBeat.i(324506);
+    this.cHb = hashCode();
+    this.djQ = s.X("MicroMsg.AppBrand.AppBrandSecureKeyboardPanel#", Integer.valueOf(this.cHb));
+    this.uHC = new AppBrandSecureKeyboard(paramContext);
+    Log.d(this.djQ, "init");
+    super.setId(ehD);
     setOrientation(1);
     setBackgroundColor(-1);
     if ((paramBoolean) && (parama != null))
     {
-      ViewParent localViewParent = parama.getParent();
-      paramContext = localViewParent;
-      if (!(localViewParent instanceof ViewGroup)) {
-        paramContext = null;
+      paramContext = parama.getParent();
+      if (!(paramContext instanceof ViewGroup)) {
+        break label161;
       }
-      paramContext = (ViewGroup)paramContext;
+    }
+    label161:
+    for (paramContext = (ViewGroup)paramContext;; paramContext = null)
+    {
       if (paramContext != null) {
         paramContext.removeView((View)parama);
       }
       addView((View)parama);
-      this.rww = ((View)parama);
+      this.uHB = ((View)parama);
+      addView((View)this.uHC, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
+      AppMethodBeat.o(324506);
+      return;
     }
-    addView((View)this.rwx, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-    AppMethodBeat.o(214261);
   }
   
-  public final boolean coN()
+  public final boolean cRp()
   {
-    AppMethodBeat.i(214259);
-    boolean bool = w.ah((View)this);
-    Log.d(this.bqj, "isRealHeightSettled, settled: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(214259);
+    AppMethodBeat.i(324525);
+    boolean bool = androidx.core.g.z.au((View)this);
+    Log.d(this.djQ, s.X("isRealHeightSettled, settled: ", Boolean.valueOf(bool)));
+    AppMethodBeat.o(324525);
     return bool;
   }
   
-  final void coO()
+  final void cRq()
   {
-    AppMethodBeat.i(214255);
-    Log.d(this.bqj, "resetFocusStatus");
-    EditText localEditText = this.rwy;
+    AppMethodBeat.i(324517);
+    Log.d(this.djQ, "resetFocusStatus");
+    EditText localEditText = this.uHD;
     if (localEditText != null)
     {
       localEditText.clearFocus();
-      this.rwy = null;
-      this.rwz = null;
-      this.rwA = false;
-      AppMethodBeat.o(214255);
-      return;
+      this.uHD = null;
+      this.uHE = null;
+      this.uHF = false;
     }
-    AppMethodBeat.o(214255);
+    AppMethodBeat.o(324517);
   }
   
   public final EditText getAttachedInputWidget()
   {
-    AppMethodBeat.i(214253);
-    Log.d(this.bqj, "getAttachedInputWidget, inputWidget: " + this.rwy);
-    EditText localEditText = this.rwy;
-    AppMethodBeat.o(214253);
+    AppMethodBeat.i(324511);
+    Log.d(this.djQ, s.X("getAttachedInputWidget, inputWidget: ", this.uHD));
+    EditText localEditText = this.uHD;
+    AppMethodBeat.o(324511);
     return localEditText;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(214260);
-    Log.d(this.bqj, "onDetachedFromWindow");
+    AppMethodBeat.i(324531);
+    Log.d(this.djQ, "onDetachedFromWindow");
     super.onDetachedFromWindow();
     removeAllViews();
-    AppMethodBeat.o(214260);
+    AppMethodBeat.o(324531);
   }
   
   public final void setId(int paramInt) {}
   
   public final void setInputWidget(EditText paramEditText)
   {
-    AppMethodBeat.i(214251);
-    Log.d(this.bqj, "setInputWidget, inputWidget: ".concat(String.valueOf(paramEditText)));
-    this.rwy = paramEditText;
-    this.rwx.setInputEditText(paramEditText);
+    AppMethodBeat.i(324510);
+    Log.d(this.djQ, s.X("setInputWidget, inputWidget: ", paramEditText));
+    this.uHD = paramEditText;
+    this.uHC.setInputEditText(paramEditText);
     an.a.setNoSystemInputOnEditText(paramEditText);
     an.a.c(paramEditText);
-    if (paramEditText != null)
-    {
+    if (paramEditText != null) {
       paramEditText.requestFocus();
-      AppMethodBeat.o(214251);
-      return;
     }
-    AppMethodBeat.o(214251);
+    AppMethodBeat.o(324510);
   }
   
   public final void setOnDoneListener(b paramb)
   {
-    AppMethodBeat.i(214256);
-    Log.d(this.bqj, "setOnDoneListener, onDoneListener: ".concat(String.valueOf(paramb)));
-    this.rwz = paramb;
-    AppMethodBeat.o(214256);
+    AppMethodBeat.i(324519);
+    Log.d(this.djQ, s.X("setOnDoneListener, onDoneListener: ", paramb));
+    this.uHE = paramb;
+    AppMethodBeat.o(324519);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(214257);
+    AppMethodBeat.i(324522);
     int i = getVisibility();
-    Log.d(this.bqj, "setVisibility, visibility: " + paramInt + ", curVisibility: " + i);
+    Log.d(this.djQ, "setVisibility, visibility: " + paramInt + ", curVisibility: " + i);
     if ((paramInt == i) && ((i == 0) || (8 == i)))
     {
-      Log.i(this.bqj, "setVisibility, same visibility");
-      AppMethodBeat.o(214257);
+      Log.i(this.djQ, "setVisibility, same visibility");
+      AppMethodBeat.o(324522);
       return;
     }
     if (paramInt != 0)
     {
       super.setVisibility(8);
-      Log.d(this.bqj, "performOnDone");
-      if (this.rwA)
+      Log.d(this.djQ, "performOnDone");
+      if (this.uHF)
       {
-        Log.i(this.bqj, "performOnDone, performingOnDone");
-        AppMethodBeat.o(214257);
+        Log.i(this.djQ, "performOnDone, performingOnDone");
+        AppMethodBeat.o(324522);
         return;
       }
-      this.rwA = true;
-      b localb = this.rwz;
+      this.uHF = true;
+      b localb = this.uHE;
       if (localb != null) {
         localb.onDone();
       }
-      this.rwA = false;
-      AppMethodBeat.o(214257);
+      this.uHF = false;
+      AppMethodBeat.o(324522);
       return;
     }
     super.setVisibility(paramInt);
-    AppMethodBeat.o(214257);
+    AppMethodBeat.o(324522);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(214254);
-    String str = "AppBrandSecureKeyboardPanel#" + this.aNf;
-    AppMethodBeat.o(214254);
+    AppMethodBeat.i(324515);
+    String str = s.X("AppBrandSecureKeyboardPanel#", Integer.valueOf(this.cHb));
+    AppMethodBeat.o(324515);
     return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$Companion;", "", "()V", "TAG", "", "VIEW_ID", "", "findKeyboardPanel", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "view", "Landroid/view/View;", "settleKeyboardPanel", "enableKeyboardAccessory", "", "keyboardAccessoryContainer", "Lcom/tencent/mm/plugin/appbrand/keyboardCoverView/AppBrandKeyBoardComponentView;", "luggage-wxa-app-input-ext_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$Companion;", "", "()V", "TAG", "", "VIEW_ID", "", "findKeyboardPanel", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "view", "Landroid/view/View;", "settleKeyboardPanel", "enableKeyboardAccessory", "", "keyboardAccessoryContainer", "Lcom/tencent/mm/plugin/appbrand/keyboardCoverView/AppBrandKeyBoardComponentView;", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static z dv(View paramView)
+    public static z ej(View paramView)
     {
-      AppMethodBeat.i(214689);
-      p.k(paramView, "view");
-      paramView = (z)paramView.getRootView().findViewById(z.coT());
-      AppMethodBeat.o(214689);
+      AppMethodBeat.i(324419);
+      s.u(paramView, "view");
+      paramView = (z)paramView.getRootView().findViewById(z.cRv());
+      AppMethodBeat.o(324419);
       return paramView;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$OnDoneListener;", "", "onDone", "", "luggage-wxa-app-input-ext_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$OnDoneListener;", "", "onDone", "", "luggage-wxa-app-input-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void onDone();
@@ -202,7 +198,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.z
  * JD-Core Version:    0.7.0.1
  */

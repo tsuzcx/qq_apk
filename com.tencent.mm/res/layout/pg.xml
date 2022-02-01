@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/bdr" android:paddingLeft="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/nq" />
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bdv" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/az">
-            <com.tencent.mm.ui.base.MaskLayout android:id="@id/bdo" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax">
-                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            </com.tencent.mm.ui.base.MaskLayout>
-            <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/bdw" android:background="?sg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cb" android:text="{nick}" android:singleLine="true" android:layout_weight="1.0" style="@style/mp" />
+<androidx.core.widget.NestedScrollView android:orientation="vertical" android:background="@color/c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/br4" android:background="@color/c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/goc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/cv" android:layout_marginRight="@dimen/d0" android:text="@string/b4v" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/go8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/d0" android:layout_marginBottom="@dimen/df" android:text="@string/b4w" android:includeFontPadding="false" android:lineSpacingMultiplier="1.4" />
+        <LinearLayout android:orientation="vertical" android:id="@id/goa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginRight="@dimen/d0" android:text="@string/b4y" android:lineSpacingMultiplier="1.4" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/gob" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:overScrollMode="never" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/go9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+            <TextView android:textSize="@dimen/hn" android:textColor="@color/m4" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginRight="@dimen/d0" android:text="@string/b4x" android:lineSpacingMultiplier="1.4" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/go_" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:overScrollMode="never" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

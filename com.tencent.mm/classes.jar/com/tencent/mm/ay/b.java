@@ -1,246 +1,180 @@
 package com.tencent.mm.ay;
 
-import android.net.TrafficStats;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.aa;
-import com.tencent.mm.f.a.aa.a;
-import com.tencent.mm.f.a.aaq;
-import com.tencent.mm.f.a.aaq.b;
-import com.tencent.mm.f.a.qe;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.modelcontrol.d;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.q.a;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.n;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.adx;
+import com.tencent.mm.protocal.protobuf.dzd;
+import com.tencent.mm.protocal.protobuf.dze;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class b
-  implements e.a
+public class b
+  extends p
+  implements m
 {
-  int acx;
-  boolean cvA;
-  private a lNc;
-  Stack<Long> lNd;
-  long lNe;
-  public int lNf;
-  long lNg;
-  int lNh;
-  boolean lNi;
-  long lNj;
-  long lNk;
-  int lNl;
-  MTimerHandler lNm;
-  IListener lNn;
-  IListener lNo;
+  private h callback;
+  public a oPG;
+  public final List<k.b> oPH;
   
-  public b(Looper paramLooper)
+  public b(List<k.b> paramList)
   {
-    AppMethodBeat.i(150518);
-    this.lNe = 0L;
-    this.lNf = 0;
-    this.cvA = false;
-    this.lNg = 0L;
-    this.lNh = 0;
-    this.lNi = false;
-    this.lNj = 0L;
-    this.lNk = 0L;
-    this.lNm = new MTimerHandler(new MTimerHandler.CallBack()
+    AppMethodBeat.i(43049);
+    this.oPH = new ArrayList();
+    this.oPH.addAll(paramList);
+    this.oPG = new a();
+    ((b)this.oPG.getReqObj()).oPK.abat = cc(paramList);
+    AppMethodBeat.o(43049);
+  }
+  
+  private static adx cc(List<k.b> paramList)
+  {
+    AppMethodBeat.i(43050);
+    adx localadx = new adx();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(150512);
-        long l1 = TrafficStats.getUidRxBytes(b.this.acx);
-        long l2 = TrafficStats.getUidTxBytes(b.this.acx);
-        long l3 = l1 - b.this.lNj + (l2 - b.this.lNk);
-        Log.d("MicroMsg.AutoGetBigImgLogic", "delta of data: " + l3 / 1024L);
-        if (l3 <= 20480L)
-        {
-          b.this.lNi = false;
-          b.this.start();
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(150512);
-          return true;
-          b.this.lNj = l1;
-          b.this.lNk = l2;
-          b.this.lNm.startTimer(1000L);
-        }
-      }
-    }, false);
-    this.lNn = new IListener() {};
-    this.lNo = new IListener()
-    {
-      private boolean a(aa arg1)
-      {
-        AppMethodBeat.i(150514);
-        b.this.lNl = ???.fvD.mode;
-        Log.d("MicroMsg.AutoGetBigImgLogic", "mode = " + b.this.lNl);
-        d.bkm();
-        if (!d.bkn()) {}
-        synchronized (b.this.lNd)
-        {
-          b.this.lNd.clear();
-          AppMethodBeat.o(150514);
-          return false;
-        }
-      }
-    };
-    this.lNc = new a(this, paramLooper);
-    this.lNd = new Stack();
-    this.acx = Process.myUid();
-    paramLooper = (Integer)h.aHG().aHp().b(327681, null);
-    if ((paramLooper == null) || (3 == paramLooper.intValue())) {}
-    for (int i = 1;; i = paramLooper.intValue())
-    {
-      this.lNl = i;
-      EventCenter.instance.addListener(this.lNn);
-      EventCenter.instance.addListener(this.lNo);
-      AppMethodBeat.o(150518);
-      return;
+      k.b localb = (k.b)localIterator.next();
+      byte[] arrayOfByte = localb.getBuffer();
+      adw localadw = new adw();
+      localadw.Zmc = localb.getCmdId();
+      localadw.Zmd = new gol().df(arrayOfByte);
+      localadx.vgO.add(localadw);
     }
+    localadx.vgN = paramList.size();
+    Log.d("MicroMsg.NetSceneOplog", "summeroplog oplogs size=" + paramList.size());
+    AppMethodBeat.o(43050);
+    return localadx;
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
+  public int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(150522);
-    Log.i("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + " has been canceled");
-    ((com.tencent.mm.plugin.comm.a.b)h.ae(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, false, true);
-    AppMethodBeat.o(150522);
+    AppMethodBeat.i(43051);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oPG, this);
+    AppMethodBeat.o(43051);
+    return i;
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, com.tencent.mm.an.q paramq) {}
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object arg7, int paramInt3, int paramInt4, String paramString, com.tencent.mm.an.q paramq)
+  public int getType()
   {
-    AppMethodBeat.i(150521);
-    if ((paramInt3 != 0) || (paramInt4 != 0))
-    {
-      Log.e("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + "msgLocalId " + paramLong2 + " download failed");
-      ((com.tencent.mm.plugin.comm.a.b)h.ae(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, false, false);
-    }
-    for (;;)
-    {
-      this.lNe = 0L;
-      d.bkm();
-      if (!d.bkn()) {
-        Log.i("MicroMsg.AutoGetBigImgLogic", "don't allow auto download, clear task list");
-      }
-      synchronized (this.lNd)
-      {
-        this.lNd.clear();
-        AppMethodBeat.o(150521);
-        return;
-        if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
-        {
-          Log.v("MicroMsg.AutoGetBigImgLogic", "is wifi pass count");
-          ((com.tencent.mm.plugin.comm.a.b)h.ae(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, true, false);
-        }
-        else
-        {
-          long l1 = Util.nullAs((Long)h.aHG().aHp().get(ar.a.VhI, null), 0L);
-          long l2 = Util.safeParseLong((String)DateFormat.format("M", System.currentTimeMillis()));
-          Log.d("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + " msgLocalId: " + paramLong2 + " has been downloaded current %d month %d", new Object[] { Long.valueOf(1L + l1), Long.valueOf(l2) });
-          h.aHG().aHp().set(ar.a.VhI, Long.valueOf(l1 + 1L));
-          h.aHG().aHp().set(ar.a.VhJ, Long.valueOf(l2));
-        }
-      }
-    }
-    this.lNm.startTimer(1000L);
-    AppMethodBeat.o(150521);
+    return 681;
   }
   
-  public final void setForeground(boolean paramBoolean)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(150520);
-    Log.d("MicroMsg.AutoGetBigImgLogic", "is foreground: ".concat(String.valueOf(paramBoolean)));
-    this.cvA = paramBoolean;
-    this.lNg = System.currentTimeMillis();
-    AppMethodBeat.o(150520);
+    AppMethodBeat.i(43052);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(43052);
   }
   
-  public final void start()
+  public int securityLimitCount()
   {
-    AppMethodBeat.i(150519);
-    this.lNc.sendEmptyMessage(1);
-    AppMethodBeat.o(150519);
+    return 5;
   }
   
-  static final class a
-    extends MMHandler
+  public p.b securityVerificationChecked(s params)
   {
-    private WeakReference<b> lNq;
+    return p.b.ouh;
+  }
+  
+  public static final class a
+    extends n
+  {
+    private final b.b oPI;
+    private final b.c oPJ;
     
-    public a(b paramb, Looper paramLooper)
+    public a()
     {
-      super();
-      AppMethodBeat.i(150516);
-      this.lNq = new WeakReference(paramb);
-      AppMethodBeat.o(150516);
+      AppMethodBeat.i(43044);
+      this.oPI = new b.b();
+      this.oPJ = new b.c();
+      AppMethodBeat.o(43044);
     }
     
-    public final void handleMessage(Message arg1)
+    public final l.d getReqObjImp()
     {
-      AppMethodBeat.i(150517);
-      b localb = (b)this.lNq.get();
-      if ((localb != null) && (1 == ???.what))
-      {
-        boolean bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vDy, false);
-        ??? = new aaq();
-        ???.fZM.fDn = 2;
-        EventCenter.instance.publish(???);
-        if (((!???.fZN.calling) && (!a.aAj())) || (!bool))
-        {
-          if ((!localb.cvA) && (System.currentTimeMillis() - localb.lNg > 1200000L))
-          {
-            Log.i("MicroMsg.AutoGetBigImgLogic", "running to long in blackground");
-            AppMethodBeat.o(150517);
-            return;
-          }
-          if ((localb.lNe != 0L) || (localb.lNd.size() <= 0) || (localb.lNh != 0) || (localb.lNi))
-          {
-            Log.i("MicroMsg.AutoGetBigImgLogic", "curMsgId: " + localb.lNe + " size: " + localb.lNd.size() + " cnt: " + localb.lNh + " pauseOnMonitor: " + localb.lNi);
-            AppMethodBeat.o(150517);
-            return;
-          }
-          g localg;
-          synchronized (localb.lNd)
-          {
-            localb.lNe = ((Long)localb.lNd.pop()).longValue();
-            ??? = ((n)h.ae(n.class)).eSe().Oq(localb.lNe);
-            localg = q.bmh().C(???.field_talker, ???.field_msgSvrId);
-            if (localg.ilm == 1)
-            {
-              Log.i("MicroMsg.AutoGetBigImgLogic", localb.lNe + " already has hd thumb");
-              localb.lNe = 0L;
-              localb.start();
-              AppMethodBeat.o(150517);
-              return;
-            }
-          }
-          Log.i("MicroMsg.AutoGetBigImgLogic", "start download cdnautostart " + locala.lNe + "  image_" + ???.field_msgId);
-          com.tencent.mm.aq.f.bkg().lHW.add("image_" + ???.field_msgId);
-          q.bmi().a(localg.localId, ???.field_msgId, 0, Long.valueOf(locala.lNe), locala.lNf, locala);
-        }
-      }
-      AppMethodBeat.o(150517);
+      return this.oPI;
+    }
+    
+    public final l.e getRespObj()
+    {
+      return this.oPJ;
+    }
+    
+    public final int getType()
+    {
+      return 681;
+    }
+    
+    public final String getUri()
+    {
+      return "/cgi-bin/micromsg-bin/oplog";
+    }
+  }
+  
+  static final class b
+    extends l.d
+    implements l.b
+  {
+    public dzd oPK;
+    
+    b()
+    {
+      AppMethodBeat.i(43045);
+      this.oPK = new dzd();
+      AppMethodBeat.o(43045);
+    }
+    
+    public final int getFuncId()
+    {
+      return 681;
+    }
+    
+    public final byte[] toProtoBuf()
+    {
+      AppMethodBeat.i(43046);
+      byte[] arrayOfByte = this.oPK.toByteArray();
+      AppMethodBeat.o(43046);
+      return arrayOfByte;
+    }
+  }
+  
+  public static final class c
+    extends l.e
+    implements l.c
+  {
+    public dze oPL;
+    
+    public c()
+    {
+      AppMethodBeat.i(43047);
+      this.oPL = new dze();
+      AppMethodBeat.o(43047);
+    }
+    
+    public final int fromProtoBuf(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(43048);
+      this.oPL = ((dze)new dze().parseFrom(paramArrayOfByte));
+      int i = this.oPL.Idd;
+      AppMethodBeat.o(43048);
+      return i;
     }
   }
 }

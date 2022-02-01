@@ -16,25 +16,25 @@ final class HomeUI$22
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(279534);
+    AppMethodBeat.i(249430);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/HomeUI$29", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (SystemClock.elapsedRealtime() - HomeUI.C(this.VWJ) < 300L)
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/HomeUI$31", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (SystemClock.elapsedRealtime() - HomeUI.C(this.adBf) < 300L)
     {
-      paramView = HomeUI.D(this.VWJ).iterator();
+      paramView = HomeUI.D(this.adBf).iterator();
       while (paramView.hasNext()) {
         ((Runnable)paramView.next()).run();
       }
     }
-    HomeUI.b(this.VWJ, SystemClock.elapsedRealtime());
-    a.a(this, "com/tencent/mm/ui/HomeUI$29", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(279534);
+    HomeUI.b(this.adBf, SystemClock.elapsedRealtime());
+    a.a(this, "com/tencent/mm/ui/HomeUI$31", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(249430);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.22
  * JD-Core Version:    0.7.0.1
  */

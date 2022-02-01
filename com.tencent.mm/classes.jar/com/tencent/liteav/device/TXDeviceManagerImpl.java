@@ -30,26 +30,26 @@ public class TXDeviceManagerImpl
   
   protected void apiLog(String paramString)
   {
-    AppMethodBeat.i(245708);
+    AppMethodBeat.i(230381);
     TXCLog.i("TXDeviceManagerImpl", "trtc_api TXDeviceManager:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(245708);
+    AppMethodBeat.o(230381);
   }
   
   protected void apiOnlineLog(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(245709);
+    AppMethodBeat.i(230385);
     Monitor.a(1, String.format(paramString, paramVarArgs), "", 0, "trtc_api TXDeviceManager:");
-    AppMethodBeat.o(245709);
+    AppMethodBeat.o(230385);
   }
   
   public int enableCameraAutoFocus(final boolean paramBoolean)
   {
-    AppMethodBeat.i(245713);
+    AppMethodBeat.i(230412);
     runOnSDKThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(245510);
+        AppMethodBeat.i(230344);
         TXDeviceManagerImpl.this.apiLog("enableCameraAutoFocus " + paramBoolean);
         g localg = TXDeviceManagerImpl.this.mCaptureAndEnc.c();
         if (!paramBoolean) {}
@@ -60,41 +60,41 @@ public class TXDeviceManagerImpl
           if (TXDeviceManagerImpl.this.mDeviceManagerListener != null) {
             TXDeviceManagerImpl.this.mDeviceManagerListener.onSwitchAutoFocus(paramBoolean);
           }
-          AppMethodBeat.o(245510);
+          AppMethodBeat.o(230344);
           return;
         }
       }
     });
-    AppMethodBeat.o(245713);
+    AppMethodBeat.o(230412);
     return 0;
   }
   
   public boolean enableCameraTorch(boolean paramBoolean)
   {
-    AppMethodBeat.i(245715);
+    AppMethodBeat.i(230424);
     apiLog("enableCameraTorch ".concat(String.valueOf(paramBoolean)));
     paramBoolean = this.mCaptureAndEnc.f(paramBoolean);
-    AppMethodBeat.o(245715);
+    AppMethodBeat.o(230424);
     return paramBoolean;
   }
   
   public float getCameraZoomMaxRatio()
   {
-    AppMethodBeat.i(245711);
+    AppMethodBeat.i(230402);
     float f = this.mCaptureAndEnc.r();
-    AppMethodBeat.o(245711);
+    AppMethodBeat.o(230402);
     return f;
   }
   
   public boolean isAutoFocusEnabled()
   {
-    AppMethodBeat.i(245714);
+    AppMethodBeat.i(230419);
     if (!this.mCaptureAndEnc.c().L)
     {
-      AppMethodBeat.o(245714);
+      AppMethodBeat.o(230419);
       return true;
     }
-    AppMethodBeat.o(245714);
+    AppMethodBeat.o(230419);
     return false;
   }
   
@@ -105,28 +105,28 @@ public class TXDeviceManagerImpl
   
   protected void runOnSDKThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(245707);
+    AppMethodBeat.i(230367);
     if (this.mSDKHandler != null)
     {
       if (Looper.myLooper() != this.mSDKHandler.getLooper())
       {
         this.mSDKHandler.post(paramRunnable);
-        AppMethodBeat.o(245707);
+        AppMethodBeat.o(230367);
         return;
       }
       paramRunnable.run();
     }
-    AppMethodBeat.o(245707);
+    AppMethodBeat.o(230367);
   }
   
   public int setAudioRoute(final TXDeviceManager.TXAudioRoute paramTXAudioRoute)
   {
-    AppMethodBeat.i(245718);
+    AppMethodBeat.i(230433);
     runOnSDKThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(245631);
+        AppMethodBeat.i(230337);
         TXDeviceManagerImpl localTXDeviceManagerImpl = TXDeviceManagerImpl.this;
         StringBuilder localStringBuilder = new StringBuilder("setAudioRoute route:");
         String str;
@@ -140,52 +140,52 @@ public class TXDeviceManagerImpl
         }
         for (;;)
         {
-          AppMethodBeat.o(245631);
+          AppMethodBeat.o(230337);
           return;
           str = "speakerphone";
           break;
           TXCAudioEngine.setAudioRoute(0);
-          AppMethodBeat.o(245631);
+          AppMethodBeat.o(230337);
           return;
           TXCAudioEngine.setAudioRoute(1);
         }
       }
     });
-    AppMethodBeat.o(245718);
+    AppMethodBeat.o(230433);
     return 0;
   }
   
   public int setCameraFocusPosition(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(245717);
+    AppMethodBeat.i(230428);
     runOnSDKThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(245600);
+        AppMethodBeat.i(230336);
         TXDeviceManagerImpl.this.apiLog("setCameraFocusPosition x:" + paramInt1 + "y:" + paramInt2);
         TXDeviceManagerImpl.this.mCaptureAndEnc.b(paramInt1, paramInt2);
-        AppMethodBeat.o(245600);
+        AppMethodBeat.o(230336);
       }
     });
-    AppMethodBeat.o(245717);
+    AppMethodBeat.o(230428);
     return 0;
   }
   
   public int setCameraZoomRatio(final float paramFloat)
   {
-    AppMethodBeat.i(245712);
+    AppMethodBeat.i(230406);
     runOnSDKThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(245476);
+        AppMethodBeat.i(230347);
         TXDeviceManagerImpl.this.apiLog("setCameraZoomRatio " + paramFloat);
         TXDeviceManagerImpl.this.mCaptureAndEnc.i((int)paramFloat);
-        AppMethodBeat.o(245476);
+        AppMethodBeat.o(230347);
       }
     });
-    AppMethodBeat.o(245712);
+    AppMethodBeat.o(230406);
     return 0;
   }
   
@@ -206,12 +206,12 @@ public class TXDeviceManagerImpl
   
   public int setSystemVolumeType(final TXDeviceManager.TXSystemVolumeType paramTXSystemVolumeType)
   {
-    AppMethodBeat.i(245719);
+    AppMethodBeat.i(230439);
     runOnSDKThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(245651);
+        AppMethodBeat.i(230339);
         TXDeviceManagerImpl.this.apiOnlineLog("setSystemVolumeType type:%s,  auto(0),media(1),VOIP(2)", new Object[] { paramTXSystemVolumeType.name() });
         switch (TXDeviceManagerImpl.7.$SwitchMap$com$tencent$liteav$device$TXDeviceManager$TXSystemVolumeType[paramTXSystemVolumeType.ordinal()])
         {
@@ -221,7 +221,7 @@ public class TXDeviceManagerImpl
           if (TXDeviceManagerImpl.this.mDeviceManagerListener != null) {
             TXDeviceManagerImpl.this.mDeviceManagerListener.onSwitchSystemVolumeType(paramTXSystemVolumeType);
           }
-          AppMethodBeat.o(245651);
+          AppMethodBeat.o(230339);
           return;
           TXCAudioEngine.setSystemVolumeType(0);
           continue;
@@ -231,20 +231,20 @@ public class TXDeviceManagerImpl
         }
       }
     });
-    AppMethodBeat.o(245719);
+    AppMethodBeat.o(230439);
     return 0;
   }
   
   public int switchCamera(final boolean paramBoolean)
   {
-    AppMethodBeat.i(245710);
+    AppMethodBeat.i(230398);
     final boolean bool = this.mIsFrontCamera;
     this.mIsFrontCamera = paramBoolean;
     runOnSDKThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(245576);
+        AppMethodBeat.i(230359);
         if (bool != paramBoolean)
         {
           TXDeviceManagerImpl.this.mCaptureAndEnc.l();
@@ -252,10 +252,10 @@ public class TXDeviceManagerImpl
             TXDeviceManagerImpl.this.mDeviceManagerListener.onSwitchCamera(paramBoolean);
           }
         }
-        AppMethodBeat.o(245576);
+        AppMethodBeat.o(230359);
       }
     });
-    AppMethodBeat.o(245710);
+    AppMethodBeat.o(230398);
     return 0;
   }
   
@@ -270,7 +270,7 @@ public class TXDeviceManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.device.TXDeviceManagerImpl
  * JD-Core Version:    0.7.0.1
  */

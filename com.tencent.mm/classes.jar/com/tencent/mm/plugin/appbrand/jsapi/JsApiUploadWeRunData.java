@@ -3,15 +3,13 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.protobuf.eya;
-import com.tencent.mm.protocal.protobuf.eyb;
+import com.tencent.mm.protocal.protobuf.ftt;
+import com.tencent.mm.protocal.protobuf.ftu;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -20,34 +18,34 @@ public class JsApiUploadWeRunData
 {
   public static final int CTRL_INDEX = 323;
   public static final String NAME = "uploadWeRunData";
-  private UploadMiniAppStepTask oxP;
+  private UploadMiniAppStepTask rBo;
   
-  public void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(45717);
     Log.d("MicroMsg.JsApiUploadWeRunData", "JsApiUploadWeRunData!");
     if (paramJSONObject == null)
     {
-      parame.j(paramInt, h("fail:data is null", null));
+      paramf.callback(paramInt, ZP("fail:data is null"));
       Log.e("MicroMsg.JsApiUploadWeRunData", "data is null");
       AppMethodBeat.o(45717);
       return;
     }
-    a(this, parame, paramInt, paramJSONObject.optInt("step"), false);
+    a(this, paramf, paramInt, paramJSONObject.optInt("step"), false);
     AppMethodBeat.o(45717);
   }
   
-  public final void a(o paramo, e parame, int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void a(p paramp, f paramf, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(45718);
     if (paramInt2 <= 0)
     {
-      parame.j(paramInt1, paramo.h("fail:step invalid", null));
+      paramf.callback(paramInt1, paramp.ZP("fail:step invalid"));
       AppMethodBeat.o(45718);
       return;
     }
-    this.oxP = new UploadMiniAppStepTask(paramo, parame, paramInt1, paramInt2, paramBoolean);
-    this.oxP.bsM();
+    this.rBo = new UploadMiniAppStepTask(paramp, paramf, paramInt1, paramInt2, paramBoolean);
+    this.rBo.bQt();
     AppMethodBeat.o(45718);
   }
   
@@ -56,12 +54,12 @@ public class JsApiUploadWeRunData
   {
     public static final Parcelable.Creator<UploadMiniAppStepTask> CREATOR;
     private String appId;
-    private boolean fzO;
-    private int okO;
-    private o ovN;
-    private e ovO;
-    private int oxQ;
-    private boolean oxR;
+    private boolean hEn;
+    private int rBp;
+    private boolean rBq;
+    private int ror;
+    private p rzh;
+    private f rzi;
     
     static
     {
@@ -73,50 +71,50 @@ public class JsApiUploadWeRunData
     public UploadMiniAppStepTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45710);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(45710);
     }
     
-    public UploadMiniAppStepTask(o paramo, e parame, int paramInt1, int paramInt2, boolean paramBoolean)
+    public UploadMiniAppStepTask(p paramp, f paramf, int paramInt1, int paramInt2, boolean paramBoolean)
     {
       AppMethodBeat.i(45709);
       Log.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask");
-      this.ovN = paramo;
-      this.ovO = parame;
-      this.okO = paramInt1;
-      this.oxQ = paramInt2;
-      this.oxR = paramBoolean;
-      this.appId = parame.getAppId();
+      this.rzh = paramp;
+      this.rzi = paramf;
+      this.ror = paramInt1;
+      this.rBp = paramInt2;
+      this.rBq = paramBoolean;
+      this.appId = paramf.getAppId();
       AppMethodBeat.o(45709);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45711);
-      long l2 = cm.bfC();
+      long l2 = cn.bDu();
       Log.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask currentTime %d", new Object[] { Long.valueOf(l2 / 1000L) });
       long l1 = l2;
       if (l2 == 0L) {
         l1 = System.currentTimeMillis();
       }
-      d.a locala = new d.a();
-      eya localeya = new eya();
-      locala.lBU = localeya;
-      locala.lBV = new eyb();
+      c.a locala = new c.a();
+      ftt localftt = new ftt();
+      locala.otE = localftt;
+      locala.otF = new ftu();
       locala.uri = "/cgi-bin/mmoc-bin/hardware/uploadminiappstep";
       locala.funcId = 1949;
-      locala.lBW = 0;
+      locala.otG = 0;
       locala.respCmdId = 0;
-      localeya.lVG = this.appId;
-      localeya.rWs = this.oxQ;
-      localeya.Uyl = this.oxR;
-      localeya.jUj = ((int)(l1 / 1000L));
-      aa.a(locala.bgN(), new aa.a()
+      localftt.oOI = this.appId;
+      localftt.vhI = this.rBp;
+      localftt.abRS = this.rBq;
+      localftt.muB = ((int)(l1 / 1000L));
+      z.a(locala.bEF(), new z.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, q paramAnonymousq)
+        public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, com.tencent.mm.am.p paramAnonymousp)
         {
           AppMethodBeat.i(45707);
-          if (paramAnonymousq.getType() != 1949)
+          if (paramAnonymousp.getType() != 1949)
           {
             AppMethodBeat.o(45707);
             return 0;
@@ -139,30 +137,30 @@ public class JsApiUploadWeRunData
       AppMethodBeat.o(45711);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45712);
-      if (this.fzO) {
-        this.ovO.j(this.okO, this.ovN.h("ok", null));
+      if (this.hEn) {
+        this.rzi.callback(this.ror, this.rzh.ZP("ok"));
       }
       for (;;)
       {
-        bPk();
+        cpx();
         AppMethodBeat.o(45712);
         return;
-        this.ovO.j(this.okO, this.ovN.h("fail", null));
+        this.rzi.callback(this.ror, this.rzh.ZP("fail"));
       }
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       boolean bool2 = true;
       AppMethodBeat.i(45713);
-      this.oxQ = paramParcel.readInt();
+      this.rBp = paramParcel.readInt();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.oxR = bool1;
+        this.rBq = bool1;
         if (paramParcel.readByte() == 0) {
           break label62;
         }
@@ -170,7 +168,7 @@ public class JsApiUploadWeRunData
       label62:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.fzO = bool1;
+        this.hEn = bool1;
         this.appId = paramParcel.readString();
         AppMethodBeat.o(45713);
         return;
@@ -183,12 +181,12 @@ public class JsApiUploadWeRunData
     {
       byte b2 = 1;
       AppMethodBeat.i(45714);
-      paramParcel.writeInt(this.oxQ);
-      if (this.oxR)
+      paramParcel.writeInt(this.rBp);
+      if (this.rBq)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.fzO) {
+        if (!this.hEn) {
           break label64;
         }
       }
@@ -207,7 +205,7 @@ public class JsApiUploadWeRunData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiUploadWeRunData
  * JD-Core Version:    0.7.0.1
  */

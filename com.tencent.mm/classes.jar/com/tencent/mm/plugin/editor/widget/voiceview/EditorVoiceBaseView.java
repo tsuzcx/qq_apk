@@ -16,29 +16,29 @@ import com.tencent.mm.plugin.editor.d.g;
 import com.tencent.mm.plugin.editor.model.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.aa;
 
 public class EditorVoiceBaseView
   extends TextView
   implements a.a
 {
+  private boolean Uz;
   private Context context;
   private int duration;
-  private int fEi;
-  private boolean isRunning;
+  private int hIY;
   private String path;
-  private AlphaAnimation uwn;
-  private AnimationDrawable uwo;
+  private AlphaAnimation xCM;
+  private AnimationDrawable xCN;
   
   public EditorVoiceBaseView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(181995);
-    this.isRunning = false;
+    this.Uz = false;
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    buR();
+    bTa();
     AppMethodBeat.o(181995);
   }
   
@@ -46,63 +46,63 @@ public class EditorVoiceBaseView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(181996);
-    this.isRunning = false;
+    this.Uz = false;
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    buR();
+    bTa();
     AppMethodBeat.o(181996);
   }
   
-  private void buR()
+  private void bTa()
   {
     AppMethodBeat.i(181997);
-    this.uwn = new AlphaAnimation(0.1F, 1.0F);
-    this.uwn.setDuration(1000L);
-    this.uwn.setRepeatCount(-1);
-    this.uwn.setRepeatMode(2);
-    this.uwo = new com.tencent.mm.ui.g.a();
+    this.xCM = new AlphaAnimation(0.1F, 1.0F);
+    this.xCM.setDuration(1000L);
+    this.xCM.setRepeatCount(-1);
+    this.xCM.setRepeatMode(2);
+    this.xCN = new com.tencent.mm.ui.g.a();
     Drawable localDrawable = getResources().getDrawable(d.g.chatfrom_voice_playing_new_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
+    this.xCN.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(d.g.chatfrom_voice_playing_new_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
+    this.xCN.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(d.g.chatfrom_voice_playing_new_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
-    this.uwo.setOneShot(false);
-    this.uwo.setVisible(true, true);
+    this.xCN.addFrame(localDrawable, 300);
+    this.xCN.setOneShot(false);
+    this.xCN.setVisible(true, true);
     AppMethodBeat.o(181997);
   }
   
-  public final void atP(String paramString)
+  public final void anE(String paramString)
   {
     AppMethodBeat.i(182000);
     Log.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
     if (!Util.nullAs(paramString, "").equals(this.path)) {
-      cTg();
+      dxz();
     }
     AppMethodBeat.o(182000);
   }
   
-  public final void cTg()
-  {
-    AppMethodBeat.i(181998);
-    if ((this.uwn != null) && (this.uwn.isInitialized())) {
-      setAnimation(null);
-    }
-    this.isRunning = false;
-    setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(d.g.chatfrom_voice_playing_new), null, null, null);
-    this.uwo.stop();
-    AppMethodBeat.o(181998);
-  }
-  
-  public final void cTh()
+  public final void dxA()
   {
     AppMethodBeat.i(182001);
-    cTg();
+    dxz();
     AppMethodBeat.o(182001);
+  }
+  
+  public final void dxz()
+  {
+    AppMethodBeat.i(181998);
+    if ((this.xCM != null) && (this.xCM.isInitialized())) {
+      setAnimation(null);
+    }
+    this.Uz = false;
+    setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(d.g.chatfrom_voice_playing_new), null, null, null);
+    this.xCN.stop();
+    AppMethodBeat.o(181998);
   }
   
   protected void onFinishInflate()
@@ -115,39 +115,39 @@ public class EditorVoiceBaseView
       {
         AppMethodBeat.i(181994);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         String str = EditorVoiceBaseView.a(EditorVoiceBaseView.this);
-        if (a.cTi().cTl()) {}
+        if (a.dxB().dxE()) {}
         for (localObject = "true";; localObject = "false")
         {
-          Log.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, a.cTi().path });
-          if ((!com.tencent.mm.q.a.cy(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.q.a.cw(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.q.a.cB(EditorVoiceBaseView.b(EditorVoiceBaseView.this)))) {
+          Log.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, a.dxB().path });
+          if ((!com.tencent.mm.n.a.dm(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.n.a.dl(EditorVoiceBaseView.b(EditorVoiceBaseView.this))) && (!com.tencent.mm.n.a.dp(EditorVoiceBaseView.b(EditorVoiceBaseView.this)))) {
             break;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(181994);
           return;
         }
-        if ((!e.avA()) && (!Util.isNullOrNil(EditorVoiceBaseView.a(EditorVoiceBaseView.this))))
+        if ((!e.aPU()) && (!Util.isNullOrNil(EditorVoiceBaseView.a(EditorVoiceBaseView.this))))
         {
-          w.g(paramAnonymousView.getContext(), null);
+          aa.j(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(181994);
           return;
         }
-        if (c.cRE().urq)
+        if (c.dvX().xxL)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/EditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(181994);
           return;
         }
-        if ((Util.nullAs(EditorVoiceBaseView.a(EditorVoiceBaseView.this), "").equals(a.cTi().path)) && (a.cTi().cTl()))
+        if ((Util.nullAs(EditorVoiceBaseView.a(EditorVoiceBaseView.this), "").equals(a.dxB().path)) && (a.dxB().dxE()))
         {
           paramAnonymousView = EditorVoiceBaseView.this;
           Log.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
-          paramAnonymousView.cTg();
-          a.cTi().stopPlay();
+          paramAnonymousView.dxz();
+          a.dxB().stopPlay();
         }
         for (;;)
         {
@@ -163,7 +163,7 @@ public class EditorVoiceBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.widget.voiceview.EditorVoiceBaseView
  * JD-Core Version:    0.7.0.1
  */

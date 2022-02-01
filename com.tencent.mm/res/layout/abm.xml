@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/y3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/hxb" android:paddingBottom="@dimen/d_" android:layout_width="fill_parent" android:layout_height="@dimen/a8s">
+        <TextView android:textSize="@dimen/t" android:textColor="@android:color/white" android:gravity="center" android:id="@id/jzf" android:layout_width="@dimen/bx" android:layout_height="@dimen/a8u" android:text="@string/grc" />
+        <TextView android:textSize="@dimen/t" android:textColor="@android:color/white" android:gravity="center" android:id="@id/jzg" android:layout_width="@dimen/bx" android:layout_height="@dimen/a8u" android:text="@string/grd" />
+        <TextView android:textSize="@dimen/t" android:textColor="@android:color/white" android:gravity="center" android:id="@id/jzh" android:layout_width="@dimen/bx" android:layout_height="@dimen/a8u" android:text="@string/gre" />
+        <TextView android:textSize="@dimen/t" android:textColor="@android:color/white" android:gravity="center" android:id="@id/jzi" android:layout_width="@dimen/bx" android:layout_height="@dimen/a8u" android:text="@string/grf" />
+    </LinearLayout>
+</FrameLayout>

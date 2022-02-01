@@ -24,7 +24,7 @@ public final class zzb
       }
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       this.zzs = null;
       AppMethodBeat.o(53030);
@@ -37,16 +37,13 @@ public final class zzb
     try
     {
       SharedPreferences localSharedPreferences = this.zzs;
-      if (localSharedPreferences == null)
-      {
-        AppMethodBeat.o(53031);
+      if (localSharedPreferences == null) {
         return false;
       }
       paramBoolean = this.zzs.getBoolean(paramString, false);
-      AppMethodBeat.o(53031);
       return paramBoolean;
     }
-    catch (Throwable paramString)
+    finally
     {
       AppMethodBeat.o(53031);
     }
@@ -59,16 +56,13 @@ public final class zzb
     try
     {
       SharedPreferences localSharedPreferences = this.zzs;
-      if (localSharedPreferences == null)
-      {
-        AppMethodBeat.o(53032);
+      if (localSharedPreferences == null) {
         return 0.0F;
       }
       paramFloat = this.zzs.getFloat(paramString, 0.0F);
-      AppMethodBeat.o(53032);
       return paramFloat;
     }
-    catch (Throwable paramString)
+    finally
     {
       AppMethodBeat.o(53032);
     }
@@ -81,16 +75,13 @@ public final class zzb
     try
     {
       SharedPreferences localSharedPreferences = this.zzs;
-      if (localSharedPreferences == null)
-      {
-        AppMethodBeat.o(53033);
+      if (localSharedPreferences == null) {
         return paramString2;
       }
       paramString1 = this.zzs.getString(paramString1, paramString2);
-      AppMethodBeat.o(53033);
       return paramString1;
     }
-    catch (Throwable paramString1)
+    finally
     {
       AppMethodBeat.o(53033);
     }
@@ -99,7 +90,7 @@ public final class zzb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.ads.identifier.zzb
  * JD-Core Version:    0.7.0.1
  */

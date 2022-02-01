@@ -15,7 +15,7 @@ public class AddShortcutTask
 {
   public static final Parcelable.Creator<AddShortcutTask> CREATOR;
   public String appId;
-  public Runnable otv;
+  public Runnable rxj;
   public boolean success;
   public String username;
   
@@ -31,11 +31,11 @@ public class AddShortcutTask
   private AddShortcutTask(Parcel paramParcel)
   {
     AppMethodBeat.i(83037);
-    f(paramParcel);
+    h(paramParcel);
     AppMethodBeat.o(83037);
   }
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(83033);
     if ((Util.isNullOrNil(this.appId)) || (Util.isNullOrNil(this.username)))
@@ -47,7 +47,7 @@ public class AddShortcutTask
     }
     e.a(MMApplicationContext.getContext(), this.username, this.appId, new e.a()
     {
-      public final void sf(boolean paramAnonymousBoolean)
+      public final void wk(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(83031);
         AddShortcutTask.this.success = paramAnonymousBoolean;
@@ -58,11 +58,11 @@ public class AddShortcutTask
     AppMethodBeat.o(83033);
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(83034);
-    if (this.otv != null) {
-      this.otv.run();
+    if (this.rxj != null) {
+      this.rxj.run();
     }
     AppMethodBeat.o(83034);
   }
@@ -72,7 +72,7 @@ public class AddShortcutTask
     return 0;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     boolean bool = true;
     AppMethodBeat.i(83035);

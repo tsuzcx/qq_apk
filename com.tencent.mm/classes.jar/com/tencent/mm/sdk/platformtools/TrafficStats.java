@@ -1,6 +1,5 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.annotation.TargetApi;
 import android.app.usage.NetworkStats;
 import android.app.usage.NetworkStats.Bucket;
 import android.app.usage.NetworkStatsManager;
@@ -8,17 +7,17 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 
 public final class TrafficStats
 {
   private static long CURRENT_TIMESTAMP = 0L;
   public static final String DEV_FILE = "/proc/self/net/dev";
   public static final String GPRSLINE = "rmnet0";
-  private static q NET_DEV_FILE;
+  private static u NET_DEV_FILE;
   private static final String TAG = "MicroMsg.SDK.TrafficStats";
   public static final String WIFILINE = "tiwlan0";
-  private static q XT_STATS_FILE;
+  private static u XT_STATS_FILE;
   private static long lastMobileRx;
   private static long lastMobileTx;
   private static long lastWifiRx;
@@ -43,14 +42,14 @@ public final class TrafficStats
     {
       try
       {
-        localq = new q("/proc/" + Process.myPid() + "/net/dev");
-        if (localq.ifH()) {
-          NET_DEV_FILE = localq;
+        localu = new u("/proc/" + Process.myPid() + "/net/dev");
+        if (localu.jKV()) {
+          NET_DEV_FILE = localu;
         }
       }
       catch (Exception localException1)
       {
-        q localq;
+        u localu;
         Log.printErrStackTrace("MicroMsg.SDK.TrafficStats", localException1, "Failed init NET_DEV_FILE.", new Object[0]);
         continue;
         Object localObject = null;
@@ -58,11 +57,11 @@ public final class TrafficStats
       }
       try
       {
-        localq = new q("/proc/net/xt_qtaguid/stats");
-        if (!localq.ifH()) {
+        localu = new u("/proc/net/xt_qtaguid/stats");
+        if (!localu.jKV()) {
           continue;
         }
-        XT_STATS_FILE = localq;
+        XT_STATS_FILE = localu;
       }
       catch (Exception localException2)
       {
@@ -72,7 +71,7 @@ public final class TrafficStats
       CURRENT_TIMESTAMP = System.currentTimeMillis();
       AppMethodBeat.o(157851);
       return;
-      localq = null;
+      localu = null;
     }
   }
   
@@ -178,7 +177,7 @@ public final class TrafficStats
   
   public static void reset(Context paramContext)
   {
-    AppMethodBeat.i(186473);
+    AppMethodBeat.i(243811);
     lastMobileTx = -1L;
     lastMobileRx = -1L;
     lastWifiTx = -1L;
@@ -190,11 +189,11 @@ public final class TrafficStats
     if (Build.VERSION.SDK_INT >= 28)
     {
       updateNsm(paramContext);
-      AppMethodBeat.o(186473);
+      AppMethodBeat.o(243811);
       return;
     }
     updateFile();
-    AppMethodBeat.o(186473);
+    AppMethodBeat.o(243811);
   }
   
   public static void update()
@@ -206,15 +205,15 @@ public final class TrafficStats
   
   public static void update(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(186485);
+    AppMethodBeat.i(243856);
     if (Build.VERSION.SDK_INT >= 28)
     {
       updateNsm(paramContext);
-      AppMethodBeat.o(186485);
+      AppMethodBeat.o(243856);
       return;
     }
     updateFile();
-    AppMethodBeat.o(186485);
+    AppMethodBeat.o(243856);
   }
   
   /* Error */
@@ -243,16 +242,16 @@ public final class TrafficStats
     //   35: lstore 11
     //   37: aconst_null
     //   38: astore 16
-    //   40: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/q;
+    //   40: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/u;
     //   43: astore 17
     //   45: aload 17
     //   47: ifnull +471 -> 518
     //   50: new 192	java/io/BufferedReader
     //   53: dup
-    //   54: new 194	com/tencent/mm/vfs/x
+    //   54: new 194	com/tencent/mm/vfs/ab
     //   57: dup
-    //   58: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/q;
-    //   61: invokespecial 197	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
+    //   58: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/u;
+    //   61: invokespecial 197	com/tencent/mm/vfs/ab:<init>	(Lcom/tencent/mm/vfs/u;)V
     //   64: invokespecial 200	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   67: astore 17
     //   69: aload 17
@@ -493,7 +492,7 @@ public final class TrafficStats
     //   515: invokestatic 258	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   518: aconst_null
     //   519: astore 18
-    //   521: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/q;
+    //   521: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/u;
     //   524: astore 16
     //   526: aload 16
     //   528: ifnull +204 -> 732
@@ -501,10 +500,10 @@ public final class TrafficStats
     //   534: istore_0
     //   535: new 192	java/io/BufferedReader
     //   538: dup
-    //   539: new 194	com/tencent/mm/vfs/x
+    //   539: new 194	com/tencent/mm/vfs/ab
     //   542: dup
-    //   543: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/q;
-    //   546: invokespecial 197	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
+    //   543: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/u;
+    //   546: invokespecial 197	com/tencent/mm/vfs/ab:<init>	(Lcom/tencent/mm/vfs/u;)V
     //   549: invokespecial 200	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   552: astore 17
     //   554: aload 17
@@ -825,30 +824,29 @@ public final class TrafficStats
   
   public static long updateMobileRx(long paramLong)
   {
-    AppMethodBeat.i(186471);
+    AppMethodBeat.i(243807);
     update();
     paramLong = getMobileRx(paramLong);
-    AppMethodBeat.o(186471);
+    AppMethodBeat.o(243807);
     return paramLong;
   }
   
   public static long updateMobileTx(long paramLong)
   {
-    AppMethodBeat.i(186470);
+    AppMethodBeat.i(243800);
     update();
     paramLong = getMobileTx(paramLong);
-    AppMethodBeat.o(186470);
+    AppMethodBeat.o(243800);
     return paramLong;
   }
   
-  @TargetApi(23)
   public static void updateNsm(Context paramContext)
   {
-    AppMethodBeat.i(186481);
+    AppMethodBeat.i(243849);
     if (checkIfFrequently())
     {
       Log.i("MicroMsg.SDK.TrafficStats", "updateNsm frequently just return");
-      AppMethodBeat.o(186481);
+      AppMethodBeat.o(243849);
       return;
     }
     long l5 = 0L;
@@ -856,7 +854,7 @@ public final class TrafficStats
     Object localObject = (NetworkStatsManager)paramContext.getSystemService("netstats");
     if (localObject == null)
     {
-      AppMethodBeat.o(186481);
+      AppMethodBeat.o(243849);
       return;
     }
     paramContext = new NetworkStats.Bucket();
@@ -1092,7 +1090,7 @@ public final class TrafficStats
           lastWxWifiTx = l2;
           lastWxWifiRx = l1;
           Log.i("MicroMsg.SDK.TrafficStats", "updateNSm current system traffic: wifi rx/tx=%d/%d, mobile rx/tx=%d/%d, wxWifi rx/tx=%d/%d wxMobile rx/tx=%d/%d", new Object[] { Long.valueOf(wifiRx), Long.valueOf(wifiTx), Long.valueOf(mobileRx), Long.valueOf(mobileTx), Long.valueOf(wxWifiRx), Long.valueOf(wxWifiTx), Long.valueOf(wxMobileRx), Long.valueOf(wxMobileTx) });
-          AppMethodBeat.o(186481);
+          AppMethodBeat.o(243849);
           return;
         }
         catch (Exception paramContext)
@@ -1153,25 +1151,25 @@ public final class TrafficStats
   
   public static long updateWifiRx(long paramLong)
   {
-    AppMethodBeat.i(186465);
+    AppMethodBeat.i(243795);
     update();
     paramLong = getWifiRx(paramLong);
-    AppMethodBeat.o(186465);
+    AppMethodBeat.o(243795);
     return paramLong;
   }
   
   public static long updateWifiTx(long paramLong)
   {
-    AppMethodBeat.i(186464);
+    AppMethodBeat.i(243788);
     update();
     paramLong = getWifiTx(paramLong);
-    AppMethodBeat.o(186464);
+    AppMethodBeat.o(243788);
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.TrafficStats
  * JD-Core Version:    0.7.0.1
  */

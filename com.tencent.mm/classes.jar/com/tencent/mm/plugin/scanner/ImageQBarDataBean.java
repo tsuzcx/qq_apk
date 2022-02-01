@@ -9,40 +9,40 @@ public class ImageQBarDataBean
   implements Parcelable
 {
   public static final Parcelable.Creator<ImageQBarDataBean> CREATOR;
-  public String IAH;
-  public float IAI;
-  public float IAJ;
-  public int fRr;
-  public int fRs;
+  public String OGQ;
+  public float OGR;
+  public float OGS;
   public String filePath;
-  public int fys;
-  public int fyt;
+  public int hDb;
+  public int hDc;
+  public int hXo;
+  public int hXp;
   public int priorityLevel;
   public String typeName;
   
   static
   {
-    AppMethodBeat.i(202583);
+    AppMethodBeat.i(313405);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(202583);
+    AppMethodBeat.o(313405);
   }
   
   public ImageQBarDataBean() {}
   
   public ImageQBarDataBean(Parcel paramParcel)
   {
-    AppMethodBeat.i(202576);
-    this.IAH = paramParcel.readString();
-    this.fys = paramParcel.readInt();
-    this.fyt = paramParcel.readInt();
+    AppMethodBeat.i(313402);
+    this.OGQ = paramParcel.readString();
+    this.hDb = paramParcel.readInt();
+    this.hDc = paramParcel.readInt();
     this.typeName = paramParcel.readString();
-    this.IAI = paramParcel.readFloat();
-    this.IAJ = paramParcel.readFloat();
-    this.fRr = paramParcel.readInt();
-    this.fRs = paramParcel.readInt();
+    this.OGR = paramParcel.readFloat();
+    this.OGS = paramParcel.readFloat();
+    this.hXo = paramParcel.readInt();
+    this.hXp = paramParcel.readInt();
     this.filePath = paramParcel.readString();
     this.priorityLevel = paramParcel.readInt();
-    AppMethodBeat.o(202576);
+    AppMethodBeat.o(313402);
   }
   
   public int describeContents()
@@ -52,18 +52,18 @@ public class ImageQBarDataBean
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(202582);
-    paramParcel.writeString(this.IAH);
-    paramParcel.writeInt(this.fys);
-    paramParcel.writeInt(this.fyt);
+    AppMethodBeat.i(313410);
+    paramParcel.writeString(this.OGQ);
+    paramParcel.writeInt(this.hDb);
+    paramParcel.writeInt(this.hDc);
     paramParcel.writeString(this.typeName);
-    paramParcel.writeFloat(this.IAI);
-    paramParcel.writeFloat(this.IAJ);
-    paramParcel.writeInt(this.fRr);
-    paramParcel.writeInt(this.fRs);
+    paramParcel.writeFloat(this.OGR);
+    paramParcel.writeFloat(this.OGS);
+    paramParcel.writeInt(this.hXo);
+    paramParcel.writeInt(this.hXp);
     paramParcel.writeString(this.filePath);
     paramParcel.writeInt(this.priorityLevel);
-    AppMethodBeat.o(202582);
+    AppMethodBeat.o(313410);
   }
 }
 

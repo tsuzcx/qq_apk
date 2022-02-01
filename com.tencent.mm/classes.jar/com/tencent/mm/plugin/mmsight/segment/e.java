@@ -4,15 +4,15 @@ import android.graphics.Point;
 
 public abstract interface e
 {
-  public abstract void J(Runnable paramRunnable);
+  public abstract void O(Runnable paramRunnable);
   
   public abstract void a(a parama);
   
-  public abstract Point brg();
+  public abstract Point bOM();
   
-  public abstract int brh();
+  public abstract int bON();
   
-  public abstract int m(String paramString, long paramLong1, long paramLong2);
+  public abstract int o(String paramString, long paramLong1, long paramLong2);
   
   public abstract void stop();
   
@@ -20,7 +20,7 @@ public abstract interface e
   
   public static abstract interface a
   {
-    public abstract void bZ(byte[] paramArrayOfByte);
+    public abstract void cb(byte[] paramArrayOfByte);
   }
 }
 

@@ -25,31 +25,31 @@ import androidx.appcompat.a.g;
 import androidx.appcompat.a.h;
 import androidx.appcompat.a.j;
 import androidx.appcompat.widget.ac;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ListMenuItemView
   extends LinearLayout
   implements AbsListView.SelectionBoundsAdjuster, p.a
 {
-  private ImageView eL;
-  private TextView eM;
-  private boolean lQ;
-  private j ld;
+  private ImageView fN;
+  private TextView fO;
+  private j lZ;
   private LayoutInflater mInflater;
-  private RadioButton md;
-  private CheckBox me;
-  private TextView mf;
-  private ImageView mg;
-  private ImageView mh;
-  private LinearLayout mi;
-  private Drawable mj;
-  private int mk;
-  private Context ml;
-  private boolean mm;
-  private Drawable mn;
-  private boolean mo;
-  private int mp;
+  private boolean mN;
+  private RadioButton nc;
+  private CheckBox nd;
+  private TextView ne;
+  private ImageView nf;
+  private ImageView ng;
+  private LinearLayout nh;
+  private Drawable ni;
+  private int nj;
+  private Context nk;
+  private boolean nl;
+  private Drawable nm;
+  private boolean nn;
+  private int no;
   
   public ListMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -59,69 +59,69 @@ public class ListMenuItemView
   public ListMenuItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(239245);
+    AppMethodBeat.i(200852);
     paramAttributeSet = ac.a(getContext(), paramAttributeSet, a.j.MenuView, paramInt, 0);
-    this.mj = paramAttributeSet.getDrawable(a.j.MenuView_android_itemBackground);
-    this.mk = paramAttributeSet.r(a.j.MenuView_android_itemTextAppearance, -1);
-    this.mm = paramAttributeSet.c(a.j.MenuView_preserveIconSpacing, false);
-    this.ml = paramContext;
-    this.mn = paramAttributeSet.getDrawable(a.j.MenuView_subMenuArrow);
+    this.ni = paramAttributeSet.getDrawable(a.j.MenuView_android_itemBackground);
+    this.nj = paramAttributeSet.w(a.j.MenuView_android_itemTextAppearance, -1);
+    this.nl = paramAttributeSet.m(a.j.MenuView_preserveIconSpacing, false);
+    this.nk = paramContext;
+    this.nm = paramAttributeSet.getDrawable(a.j.MenuView_subMenuArrow);
     paramContext = paramContext.getTheme();
     paramInt = a.a.dropDownListViewStyle;
     paramContext = paramContext.obtainStyledAttributes(null, new int[] { 16843049 }, paramInt, 0);
-    this.mo = paramContext.hasValue(0);
-    paramAttributeSet.wA.recycle();
+    this.nn = paramContext.hasValue(0);
+    paramAttributeSet.xv.recycle();
     paramContext.recycle();
-    AppMethodBeat.o(239245);
+    AppMethodBeat.o(200852);
   }
   
-  private void bX()
+  private void cQ()
   {
-    AppMethodBeat.i(239260);
-    this.md = ((RadioButton)getInflater().inflate(a.g.abc_list_menu_item_radio, this, false));
-    f(this.md, -1);
-    AppMethodBeat.o(239260);
+    AppMethodBeat.i(200881);
+    this.nc = ((RadioButton)getInflater().inflate(a.g.abc_list_menu_item_radio, this, false));
+    f(this.nc, -1);
+    AppMethodBeat.o(200881);
   }
   
-  private void bY()
+  private void cR()
   {
-    AppMethodBeat.i(239262);
-    this.me = ((CheckBox)getInflater().inflate(a.g.abc_list_menu_item_checkbox, this, false));
-    f(this.me, -1);
-    AppMethodBeat.o(239262);
+    AppMethodBeat.i(200887);
+    this.nd = ((CheckBox)getInflater().inflate(a.g.abc_list_menu_item_checkbox, this, false));
+    f(this.nd, -1);
+    AppMethodBeat.o(200887);
   }
   
   private void f(View paramView, int paramInt)
   {
-    AppMethodBeat.i(239249);
-    if (this.mi != null)
+    AppMethodBeat.i(200861);
+    if (this.nh != null)
     {
-      this.mi.addView(paramView, paramInt);
-      AppMethodBeat.o(239249);
+      this.nh.addView(paramView, paramInt);
+      AppMethodBeat.o(200861);
       return;
     }
     addView(paramView, paramInt);
-    AppMethodBeat.o(239249);
+    AppMethodBeat.o(200861);
   }
   
   private LayoutInflater getInflater()
   {
-    AppMethodBeat.i(239264);
+    AppMethodBeat.i(200898);
     if (this.mInflater == null) {
       this.mInflater = LayoutInflater.from(getContext());
     }
     LayoutInflater localLayoutInflater = this.mInflater;
-    AppMethodBeat.o(239264);
+    AppMethodBeat.o(200898);
     return localLayoutInflater;
   }
   
   private void setSubMenuArrowVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(239256);
+    AppMethodBeat.i(200870);
     ImageView localImageView;
-    if (this.mg != null)
+    if (this.nf != null)
     {
-      localImageView = this.mg;
+      localImageView = this.nf;
       if (!paramBoolean) {
         break label34;
       }
@@ -130,7 +130,7 @@ public class ListMenuItemView
     for (int i = 0;; i = 8)
     {
       localImageView.setVisibility(i);
-      AppMethodBeat.o(239256);
+      AppMethodBeat.o(200870);
       return;
     }
   }
@@ -138,18 +138,18 @@ public class ListMenuItemView
   public final void a(j paramj)
   {
     int j = 0;
-    AppMethodBeat.i(239248);
-    this.ld = paramj;
-    this.mp = 0;
+    AppMethodBeat.i(200951);
+    this.lZ = paramj;
+    this.no = 0;
     if (paramj.isVisible())
     {
       i = 0;
       setVisibility(i);
       setTitle(paramj.a(this));
       setCheckable(paramj.isCheckable());
-      boolean bool = paramj.co();
-      paramj.cn();
-      if ((!bool) || (!this.ld.co())) {
+      boolean bool = paramj.dh();
+      paramj.dg();
+      if ((!bool) || (!this.lZ.dh())) {
         break label178;
       }
     }
@@ -160,36 +160,36 @@ public class ListMenuItemView
     {
       if (i == 0)
       {
-        TextView localTextView = this.mf;
-        localObject = this.ld;
-        c = ((j)localObject).cn();
+        TextView localTextView = this.ne;
+        localObject = this.lZ;
+        c = ((j)localObject).dg();
         if (c != 0) {
           break label184;
         }
         localObject = "";
         localTextView.setText((CharSequence)localObject);
       }
-      if (this.mf.getVisibility() != i) {
-        this.mf.setVisibility(i);
+      if (this.ne.getVisibility() != i) {
+        this.ne.setVisibility(i);
       }
       setIcon(paramj.getIcon());
       setEnabled(paramj.isEnabled());
       setSubMenuArrowVisible(paramj.hasSubMenu());
       setContentDescription(paramj.getContentDescription());
-      AppMethodBeat.o(239248);
+      AppMethodBeat.o(200951);
       return;
       i = 8;
       break;
     }
     label184:
-    Resources localResources = ((j)localObject).is.mContext.getResources();
+    Resources localResources = ((j)localObject).jo.mContext.getResources();
     StringBuilder localStringBuilder = new StringBuilder();
-    if (ViewConfiguration.get(((j)localObject).is.mContext).hasPermanentMenuKey()) {
+    if (ViewConfiguration.get(((j)localObject).jo.mContext).hasPermanentMenuKey()) {
       localStringBuilder.append(localResources.getString(a.h.abc_prepend_shortcut_label));
     }
-    if (((j)localObject).is.cc())
+    if (((j)localObject).jo.cV())
     {
-      j = ((j)localObject).kT;
+      j = ((j)localObject).lP;
       label255:
       j.a(localStringBuilder, j, 65536, localResources.getString(a.h.abc_menu_meta_shortcut_label));
       j.a(localStringBuilder, j, 4096, localResources.getString(a.h.abc_menu_ctrl_shortcut_label));
@@ -207,7 +207,7 @@ public class ListMenuItemView
     {
       localObject = localStringBuilder.toString();
       break;
-      j = ((j)localObject).kR;
+      j = ((j)localObject).lN;
       break label255;
       localStringBuilder.append(localResources.getString(a.h.abc_menu_enter_shortcut_label));
       continue;
@@ -219,81 +219,81 @@ public class ListMenuItemView
   
   public void adjustListItemSelectionBounds(Rect paramRect)
   {
-    AppMethodBeat.i(239267);
-    if ((this.mh != null) && (this.mh.getVisibility() == 0))
+    AppMethodBeat.i(201054);
+    if ((this.ng != null) && (this.ng.getVisibility() == 0))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mh.getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.ng.getLayoutParams();
       int i = paramRect.top;
-      int j = this.mh.getHeight();
+      int j = this.ng.getHeight();
       int k = localLayoutParams.topMargin;
       paramRect.top = (localLayoutParams.bottomMargin + (j + k) + i);
     }
-    AppMethodBeat.o(239267);
+    AppMethodBeat.o(201054);
   }
   
-  public final boolean bL()
+  public final boolean cE()
   {
     return false;
   }
   
   public j getItemData()
   {
-    return this.ld;
+    return this.lZ;
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(239246);
+    AppMethodBeat.i(200906);
     super.onFinishInflate();
-    w.a(this, this.mj);
-    this.eM = ((TextView)findViewById(a.f.title));
-    if (this.mk != -1) {
-      this.eM.setTextAppearance(this.ml, this.mk);
+    z.a(this, this.ni);
+    this.fO = ((TextView)findViewById(a.f.title));
+    if (this.nj != -1) {
+      this.fO.setTextAppearance(this.nk, this.nj);
     }
-    this.mf = ((TextView)findViewById(a.f.shortcut));
-    this.mg = ((ImageView)findViewById(a.f.submenuarrow));
-    if (this.mg != null) {
-      this.mg.setImageDrawable(this.mn);
+    this.ne = ((TextView)findViewById(a.f.shortcut));
+    this.nf = ((ImageView)findViewById(a.f.submenuarrow));
+    if (this.nf != null) {
+      this.nf.setImageDrawable(this.nm);
     }
-    this.mh = ((ImageView)findViewById(a.f.group_divider));
-    this.mi = ((LinearLayout)findViewById(a.f.content));
-    AppMethodBeat.o(239246);
+    this.ng = ((ImageView)findViewById(a.f.group_divider));
+    this.nh = ((LinearLayout)findViewById(a.f.content));
+    AppMethodBeat.o(200906);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(239259);
-    if ((this.eL != null) && (this.mm))
+    AppMethodBeat.i(201033);
+    if ((this.fN != null) && (this.nl))
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)this.eL.getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams1 = (LinearLayout.LayoutParams)this.fN.getLayoutParams();
       if ((localLayoutParams.height > 0) && (localLayoutParams1.width <= 0)) {
         localLayoutParams1.width = localLayoutParams.height;
       }
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(239259);
+    AppMethodBeat.o(201033);
   }
   
   public void setCheckable(boolean paramBoolean)
   {
-    AppMethodBeat.i(239253);
-    if ((!paramBoolean) && (this.md == null) && (this.me == null))
+    AppMethodBeat.i(200996);
+    if ((!paramBoolean) && (this.nc == null) && (this.nd == null))
     {
-      AppMethodBeat.o(239253);
+      AppMethodBeat.o(200996);
       return;
     }
     Object localObject2;
-    if (this.ld.cp())
+    if (this.lZ.di())
     {
-      if (this.md == null) {
-        bX();
+      if (this.nc == null) {
+        cQ();
       }
-      localObject2 = this.md;
+      localObject2 = this.nc;
     }
-    for (Object localObject1 = this.me; paramBoolean; localObject1 = this.md)
+    for (Object localObject1 = this.nd; paramBoolean; localObject1 = this.nc)
     {
-      ((CompoundButton)localObject2).setChecked(this.ld.isChecked());
+      ((CompoundButton)localObject2).setChecked(this.lZ.isChecked());
       if (((CompoundButton)localObject2).getVisibility() != 0) {
         ((CompoundButton)localObject2).setVisibility(0);
       }
@@ -301,56 +301,56 @@ public class ListMenuItemView
         break label171;
       }
       ((CompoundButton)localObject1).setVisibility(8);
-      AppMethodBeat.o(239253);
+      AppMethodBeat.o(200996);
       return;
-      if (this.me == null) {
-        bY();
+      if (this.nd == null) {
+        cR();
       }
-      localObject2 = this.me;
+      localObject2 = this.nd;
     }
-    if (this.me != null) {
-      this.me.setVisibility(8);
+    if (this.nd != null) {
+      this.nd.setVisibility(8);
     }
-    if (this.md != null) {
-      this.md.setVisibility(8);
+    if (this.nc != null) {
+      this.nc.setVisibility(8);
     }
     label171:
-    AppMethodBeat.o(239253);
+    AppMethodBeat.o(200996);
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    AppMethodBeat.i(239255);
-    if (this.ld.cp()) {
-      if (this.md == null) {
-        bX();
+    AppMethodBeat.i(201007);
+    if (this.lZ.di()) {
+      if (this.nc == null) {
+        cQ();
       }
     }
-    for (Object localObject = this.md;; localObject = this.me)
+    for (Object localObject = this.nc;; localObject = this.nd)
     {
       ((CompoundButton)localObject).setChecked(paramBoolean);
-      AppMethodBeat.o(239255);
+      AppMethodBeat.o(201007);
       return;
-      if (this.me == null) {
-        bY();
+      if (this.nd == null) {
+        cR();
       }
     }
   }
   
   public void setForceShowIcon(boolean paramBoolean)
   {
-    this.lQ = paramBoolean;
-    this.mm = paramBoolean;
+    this.mN = paramBoolean;
+    this.nl = paramBoolean;
   }
   
   public void setGroupDividerEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(239265);
+    AppMethodBeat.i(201045);
     ImageView localImageView;
-    if (this.mh != null)
+    if (this.ng != null)
     {
-      localImageView = this.mh;
-      if ((this.mo) || (!paramBoolean)) {
+      localImageView = this.ng;
+      if ((this.nn) || (!paramBoolean)) {
         break label43;
       }
     }
@@ -358,72 +358,72 @@ public class ListMenuItemView
     for (int i = 0;; i = 8)
     {
       localImageView.setVisibility(i);
-      AppMethodBeat.o(239265);
+      AppMethodBeat.o(201045);
       return;
     }
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(239258);
-    if ((this.ld.is.mP) || (this.lQ)) {}
-    for (int i = 1; (i == 0) && (!this.mm); i = 0)
+    AppMethodBeat.i(201027);
+    if ((this.lZ.jo.nN) || (this.mN)) {}
+    for (int i = 1; (i == 0) && (!this.nl); i = 0)
     {
-      AppMethodBeat.o(239258);
+      AppMethodBeat.o(201027);
       return;
     }
-    if ((this.eL == null) && (paramDrawable == null) && (!this.mm))
+    if ((this.fN == null) && (paramDrawable == null) && (!this.nl))
     {
-      AppMethodBeat.o(239258);
+      AppMethodBeat.o(201027);
       return;
     }
-    if (this.eL == null)
+    if (this.fN == null)
     {
-      this.eL = ((ImageView)getInflater().inflate(a.g.abc_list_menu_item_icon, this, false));
-      f(this.eL, 0);
+      this.fN = ((ImageView)getInflater().inflate(a.g.abc_list_menu_item_icon, this, false));
+      f(this.fN, 0);
     }
-    if ((paramDrawable != null) || (this.mm))
+    if ((paramDrawable != null) || (this.nl))
     {
-      ImageView localImageView = this.eL;
+      ImageView localImageView = this.fN;
       if (i != 0) {}
       for (;;)
       {
         localImageView.setImageDrawable(paramDrawable);
-        if (this.eL.getVisibility() == 0) {
+        if (this.fN.getVisibility() == 0) {
           break;
         }
-        this.eL.setVisibility(0);
-        AppMethodBeat.o(239258);
+        this.fN.setVisibility(0);
+        AppMethodBeat.o(201027);
         return;
         paramDrawable = null;
       }
     }
-    this.eL.setVisibility(8);
-    AppMethodBeat.o(239258);
+    this.fN.setVisibility(8);
+    AppMethodBeat.o(201027);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(239250);
+    AppMethodBeat.i(200971);
     if (paramCharSequence != null)
     {
-      this.eM.setText(paramCharSequence);
-      if (this.eM.getVisibility() != 0)
+      this.fO.setText(paramCharSequence);
+      if (this.fO.getVisibility() != 0)
       {
-        this.eM.setVisibility(0);
-        AppMethodBeat.o(239250);
+        this.fO.setVisibility(0);
+        AppMethodBeat.o(200971);
       }
     }
-    else if (this.eM.getVisibility() != 8)
+    else if (this.fO.getVisibility() != 8)
     {
-      this.eM.setVisibility(8);
+      this.fO.setVisibility(8);
     }
-    AppMethodBeat.o(239250);
+    AppMethodBeat.o(200971);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.ListMenuItemView
  * JD-Core Version:    0.7.0.1
  */

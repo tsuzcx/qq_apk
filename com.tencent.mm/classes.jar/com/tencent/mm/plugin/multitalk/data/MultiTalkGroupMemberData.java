@@ -11,7 +11,7 @@ public class MultiTalkGroupMemberData
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTalkGroupMemberData> CREATOR;
-  MultiTalkGroupMember Fmr;
+  MultiTalkGroupMember Liv;
   
   static
   {
@@ -22,7 +22,7 @@ public class MultiTalkGroupMemberData
   
   public MultiTalkGroupMemberData(MultiTalkGroupMember paramMultiTalkGroupMember)
   {
-    this.Fmr = paramMultiTalkGroupMember;
+    this.Liv = paramMultiTalkGroupMember;
   }
   
   public int describeContents()
@@ -33,17 +33,17 @@ public class MultiTalkGroupMemberData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(114412);
-    paramParcel.writeString(Util.nullAs(this.Fmr.ZiH, ""));
-    paramParcel.writeString(Util.nullAs(this.Fmr.ZiI, ""));
-    paramParcel.writeInt(this.Fmr.status);
-    paramParcel.writeInt(this.Fmr.bnA);
-    paramParcel.writeInt(this.Fmr.ZhL);
+    paramParcel.writeString(Util.nullAs(this.Liv.ahhi, ""));
+    paramParcel.writeString(Util.nullAs(this.Liv.ahhj, ""));
+    paramParcel.writeInt(this.Liv.status);
+    paramParcel.writeInt(this.Liv.reason);
+    paramParcel.writeInt(this.Liv.ahgm);
     AppMethodBeat.o(114412);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.data.MultiTalkGroupMemberData
  * JD-Core Version:    0.7.0.1
  */

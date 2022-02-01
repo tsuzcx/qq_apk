@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.ui.tab;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,13 +10,13 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.plugin.game.g.a;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.mm.plugin.game.h.a;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.h.i;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.ui.GameCenterActivity;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -28,12 +27,12 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class GameTabBridgeUI
   extends GameCenterActivity
 {
-  private BroadcastReceiver Dbh;
+  private BroadcastReceiver IVv;
   
   public GameTabBridgeUI()
   {
     AppMethodBeat.i(42439);
-    this.Dbh = new BroadcastReceiver()
+    this.IVv = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -49,7 +48,7 @@ public class GameTabBridgeUI
     AppMethodBeat.o(42439);
   }
   
-  private void ezS()
+  private void fHT()
   {
     AppMethodBeat.i(42446);
     if (Util.nullAsNil(getIntent().getStringExtra("jump_find_more_friends")).equals("jump_find_more_friends"))
@@ -57,9 +56,9 @@ public class GameTabBridgeUI
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
       localIntent.putExtra("preferred_tab", 2);
-      c.f(this, ".ui.LauncherUI", localIntent);
+      c.g(this, ".ui.LauncherUI", localIntent);
       finish();
-      overridePendingTransition(g.a.slide_left_in, g.a.slide_right_out);
+      overridePendingTransition(h.a.slide_left_in, h.a.slide_right_out);
       Log.i("MicroMsg.GameTabBridgeUI", "back to FindMoreFriendsUI");
     }
     AppMethodBeat.o(42446);
@@ -69,29 +68,39 @@ public class GameTabBridgeUI
   {
     AppMethodBeat.i(42445);
     Log.i("MicroMsg.GameTabBridgeUI", "GameTabHomeUI goBack!");
-    ezS();
-    sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), com.tencent.mm.plugin.game.a.CfL);
+    fHT();
+    sendBroadcast(new Intent("com.tencent.mm.game.ACTION_EXIT"), com.tencent.mm.plugin.game.a.HRS);
     AppMethodBeat.o(42445);
   }
   
-  public final boolean ezp()
+  public final boolean fHl()
   {
     return false;
   }
   
-  public final int ezq()
+  public final int fHm()
   {
     return 0;
   }
   
-  public final int ezr()
+  public final int fHn()
   {
     return 0;
+  }
+  
+  public final String fHo()
+  {
+    return null;
+  }
+  
+  public final String fHp()
+  {
+    return null;
   }
   
   public int getLayoutId()
   {
-    return g.f.Cmq;
+    return h.f.HYy;
   }
   
   public final int getScene()
@@ -112,7 +121,7 @@ public class GameTabBridgeUI
         return true;
       }
     });
-    setMMTitle(g.i.Cqg);
+    setMMTitle(h.i.Icp);
     AppMethodBeat.o(42441);
   }
   
@@ -121,15 +130,15 @@ public class GameTabBridgeUI
     AppMethodBeat.i(42440);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.GameTabBridgeUI", "%s create", new Object[] { getClass().getSimpleName() });
-    GameTabWidget.oJw = hashCode();
+    GameTabWidget.rNk = hashCode();
     initView();
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mm.game.ACTION_EXIT");
-    registerReceiver(this.Dbh, paramBundle, com.tencent.mm.plugin.game.a.CfL, null);
+    registerReceiver(this.IVv, paramBundle, com.tencent.mm.plugin.game.a.HRS, null);
     paramBundle = getIntent();
     GameTabData localGameTabData = (GameTabData)paramBundle.getParcelableExtra("tab_data");
     String str = paramBundle.getStringExtra("tab_key");
-    GameTabWidget localGameTabWidget = (GameTabWidget)findViewById(g.e.ClO);
+    GameTabWidget localGameTabWidget = (GameTabWidget)findViewById(h.e.HXW);
     a locala = new a(this);
     localGameTabWidget.setAdapter(locala);
     locala.a(localGameTabData, str);
@@ -142,7 +151,7 @@ public class GameTabBridgeUI
   {
     AppMethodBeat.i(42443);
     super.onDestroy();
-    unregisterReceiver(this.Dbh);
+    unregisterReceiver(this.IVv);
     AppMethodBeat.o(42443);
   }
   

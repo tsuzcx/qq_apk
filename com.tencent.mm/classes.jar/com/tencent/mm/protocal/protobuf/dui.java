@@ -1,121 +1,109 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dui
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public aji UaH;
-  public String UaI;
-  public String UaJ;
-  public int emoji_from;
-  public int type;
+  public int aaLf;
+  public int aban;
+  public int abao;
+  public int abap;
+  public int abaq;
+  public int abar;
+  public int abas;
+  public int vhJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104830);
+    AppMethodBeat.i(143985);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UaH != null)
-      {
-        paramVarArgs.oE(1, this.UaH.computeSize());
-        this.UaH.writeFields(paramVarArgs);
-      }
-      if (this.UaI != null) {
-        paramVarArgs.f(2, this.UaI);
-      }
-      paramVarArgs.aY(3, this.type);
-      if (this.UaJ != null) {
-        paramVarArgs.f(4, this.UaJ);
-      }
-      paramVarArgs.aY(5, this.emoji_from);
-      AppMethodBeat.o(104830);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.aaLf);
+      paramVarArgs.bS(2, this.aban);
+      paramVarArgs.bS(3, this.abao);
+      paramVarArgs.bS(4, this.abap);
+      paramVarArgs.bS(5, this.abaq);
+      paramVarArgs.bS(6, this.abar);
+      paramVarArgs.bS(7, this.abas);
+      paramVarArgs.bS(8, this.vhJ);
+      AppMethodBeat.o(143985);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.UaH == null) {
-        break label496;
-      }
-    }
-    label496:
-    for (paramInt = g.a.a.a.oD(1, this.UaH.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.UaI != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.UaI);
-      }
-      i += g.a.a.b.b.a.bM(3, this.type);
-      paramInt = i;
-      if (this.UaJ != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.UaJ);
-      }
-      i = g.a.a.b.b.a.bM(5, this.emoji_from);
-      AppMethodBeat.o(104830);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(104830);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        dui localdui = (dui)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(104830);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            aji localaji = new aji();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localaji.parseFrom((byte[])localObject);
-            }
-            localdui.UaH = localaji;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(104830);
-          return 0;
-        case 2: 
-          localdui.UaI = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(104830);
-          return 0;
-        case 3: 
-          localdui.type = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(104830);
-          return 0;
-        case 4: 
-          localdui.UaJ = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(104830);
-          return 0;
-        }
-        localdui.emoji_from = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(104830);
-        return 0;
-      }
-      AppMethodBeat.o(104830);
-      return -1;
+      paramInt = i.a.a.b.b.a.cJ(1, this.aaLf);
+      int i = i.a.a.b.b.a.cJ(2, this.aban);
+      int j = i.a.a.b.b.a.cJ(3, this.abao);
+      int k = i.a.a.b.b.a.cJ(4, this.abap);
+      int m = i.a.a.b.b.a.cJ(5, this.abaq);
+      int n = i.a.a.b.b.a.cJ(6, this.abar);
+      int i1 = i.a.a.b.b.a.cJ(7, this.abas);
+      int i2 = i.a.a.b.b.a.cJ(8, this.vhJ);
+      AppMethodBeat.o(143985);
+      return paramInt + 0 + i + j + k + m + n + i1 + i2;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(143985);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      dui localdui = (dui)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(143985);
+        return -1;
+      case 1: 
+        localdui.aaLf = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      case 2: 
+        localdui.aban = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      case 3: 
+        localdui.abao = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      case 4: 
+        localdui.abap = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      case 5: 
+        localdui.abaq = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      case 6: 
+        localdui.abar = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      case 7: 
+        localdui.abas = locala.ajGk.aar();
+        AppMethodBeat.o(143985);
+        return 0;
+      }
+      localdui.vhJ = locala.ajGk.aar();
+      AppMethodBeat.o(143985);
+      return 0;
+    }
+    AppMethodBeat.o(143985);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dui
  * JD-Core Version:    0.7.0.1
  */

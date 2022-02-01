@@ -1,50 +1,49 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.protocal.protobuf.dpv;
-import com.tencent.mm.protocal.protobuf.dpw;
-import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.protocal.protobuf.egg;
+import com.tencent.mm.protocal.protobuf.egh;
+import com.tencent.mm.protocal.protobuf.jl;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class m
-  extends c<dpw>
-  implements j
+  extends z<egh>
 {
-  public m(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5)
+  public m(int paramInt1, jl paramjl, int paramInt2, int paramInt3, String paramString)
   {
-    AppMethodBeat.i(204246);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dpv();
-    ((d.a)localObject).lBV = new dpw();
-    ((d.a)localObject).funcId = 1276;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/purchasefund";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).bgN();
-    dpv localdpv = (dpv)d.b.b(((d)localObject).lBR);
-    localdpv.Tyg = paramString1;
-    localdpv.TWH = paramInt1;
-    localdpv.DgI = paramInt2;
-    localdpv.Tyf = paramString2;
-    localdpv.TUW = paramString3;
-    localdpv.Oms = paramInt3;
-    localdpv.fvP = paramString4;
-    localdpv.OOx = paramString5;
-    localdpv.TWI = 1;
-    localdpv.TWJ = 1;
-    localdpv.OmF = ah.gFF();
-    localdpv.TWJ = 1;
-    localdpv.TWI = 1;
-    c((d)localObject);
-    AppMethodBeat.o(204246);
+    AppMethodBeat.i(68448);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new egg();
+    ((c.a)localObject).otF = new egh();
+    ((c.a)localObject).funcId = 1324;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/preredeemfund";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    egg localegg = (egg)c.b.b(((c)localObject).otB);
+    localegg.ablD = paramInt1;
+    if (paramjl != null) {
+      localegg.ablE = 1;
+    }
+    for (localegg.ablF = paramjl;; localegg.ablF = null)
+    {
+      localegg.JaC = paramInt2;
+      localegg.ablG = paramInt3;
+      localegg.ablH = paramString;
+      localegg.Vbl = ai.ieD();
+      c((c)localObject);
+      AppMethodBeat.o(68448);
+      return;
+      localegg.ablE = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.m
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,33 @@ import java.io.InputStream;
 public final class i
   extends InputStream
 {
-  private final g aRo;
-  private final j bgL;
-  private final byte[] bop;
-  long boq;
+  private final g cLk;
   private boolean closed;
+  private final j daF;
   private boolean opened;
+  private final byte[] singleByteArray;
+  long totalBytesRead;
   
   public i(g paramg, j paramj)
   {
     AppMethodBeat.i(93037);
     this.opened = false;
     this.closed = false;
-    this.aRo = paramg;
-    this.bgL = paramj;
-    this.bop = new byte[1];
+    this.cLk = paramg;
+    this.daF = paramj;
+    this.singleByteArray = new byte[1];
     AppMethodBeat.o(93037);
+  }
+  
+  final void checkOpened()
+  {
+    AppMethodBeat.i(93042);
+    if (!this.opened)
+    {
+      this.cLk.a(this.daF);
+      this.opened = true;
+    }
+    AppMethodBeat.o(93042);
   }
   
   public final void close()
@@ -30,7 +41,7 @@ public final class i
     AppMethodBeat.i(93041);
     if (!this.closed)
     {
-      this.aRo.close();
+      this.cLk.close();
       this.closed = true;
     }
     AppMethodBeat.o(93041);
@@ -39,12 +50,12 @@ public final class i
   public final int read()
   {
     AppMethodBeat.i(93038);
-    if (read(this.bop) == -1)
+    if (read(this.singleByteArray) == -1)
     {
       AppMethodBeat.o(93038);
       return -1;
     }
-    int i = this.bop[0];
+    int i = this.singleByteArray[0];
     AppMethodBeat.o(93038);
     return i & 0xFF;
   }
@@ -64,28 +75,17 @@ public final class i
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      uI();
-      paramInt1 = this.aRo.read(paramArrayOfByte, paramInt1, paramInt2);
+      checkOpened();
+      paramInt1 = this.cLk.read(paramArrayOfByte, paramInt1, paramInt2);
       if (paramInt1 != -1) {
         break;
       }
       AppMethodBeat.o(93040);
       return -1;
     }
-    this.boq += paramInt1;
+    this.totalBytesRead += paramInt1;
     AppMethodBeat.o(93040);
     return paramInt1;
-  }
-  
-  final void uI()
-  {
-    AppMethodBeat.i(93042);
-    if (!this.opened)
-    {
-      this.aRo.a(this.bgL);
-      this.opened = true;
-    }
-    AppMethodBeat.o(93042);
   }
 }
 

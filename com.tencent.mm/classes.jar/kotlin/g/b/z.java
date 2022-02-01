@@ -1,49 +1,44 @@
 package kotlin.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.d;
+import kotlin.l.b;
+import kotlin.l.k;
+import kotlin.l.k.a;
 import kotlin.l.r.a;
 
-public final class z
-  extends y
+public abstract class z
+  extends w
+  implements k
 {
-  private final d aaBw;
-  private final String name;
-  private final String signature;
+  public z() {}
   
-  public z(d paramd, String paramString1, String paramString2)
+  public z(Object paramObject, Class paramClass, String paramString1, String paramString2, int paramInt)
   {
-    this.aaBw = paramd;
-    this.name = paramString1;
-    this.signature = paramString2;
+    super(paramObject, paramClass, paramString1, paramString2, paramInt);
   }
   
-  public final d Vc()
+  public Object invoke(Object paramObject)
   {
-    return this.aaBw;
+    return get(paramObject);
   }
   
-  public final Object get(Object paramObject)
+  public final r.a klC()
   {
-    AppMethodBeat.i(128971);
-    paramObject = iCp().ak(new Object[] { paramObject });
-    AppMethodBeat.o(128971);
-    return paramObject;
+    return ((k)klE()).klC();
   }
   
-  public final String getName()
+  public final k.a klD()
   {
-    return this.name;
+    return ((k)klE()).klD();
   }
   
-  public final String getSignature()
+  protected final b klm()
   {
-    return this.signature;
+    return ai.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fq" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jmm" />
-    <TextView android:textColor="@color/fp" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/jml" android:layout_centerHorizontal="true" />
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="left" android:id="@id/be4" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="@dimen/d0" android:layout_marginBottom="@dimen/cr" android:src="@raw/icons_outlined_close" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/gg" android:gravity="left" android:layout_gravity="left" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" />
+    <TextView android:textSize="@dimen/hq" android:gravity="left" android:layout_gravity="left" android:id="@id/c21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:singleLine="false" />
 </LinearLayout>

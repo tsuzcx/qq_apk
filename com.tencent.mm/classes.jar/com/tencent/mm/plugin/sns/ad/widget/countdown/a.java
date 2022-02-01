@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  c JLU;
+  c Qfv;
   
   a(c paramc)
   {
-    this.JLU = paramc;
+    this.Qfv = paramc;
   }
   
   static void a(d paramd)
   {
-    AppMethodBeat.i(234829);
+    AppMethodBeat.i(310433);
     if (paramd != null)
     {
-      paramd.dFU();
+      paramd.exf();
       paramd.a(null);
     }
-    AppMethodBeat.o(234829);
+    AppMethodBeat.o(310433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.countdown.a
  * JD-Core Version:    0.7.0.1
  */

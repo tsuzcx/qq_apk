@@ -63,7 +63,7 @@ public final class g
           break;
         }
       }
-      com.tencent.mm.plugin.secinforeport.a.d.Jcm.jr(0, 127);
+      com.tencent.mm.plugin.secinforeport.a.d.Pmb.kZ(0, 1008);
       Toast.makeText(paramContext, "info is reported.", 0).show();
       for (;;)
       {
@@ -73,7 +73,7 @@ public final class g
         Toast.makeText(paramContext, paramArrayOfString, 0).show();
         AppMethodBeat.o(20179);
         return true;
-        paramString = com.tencent.mm.plugin.normsg.a.d.GxJ.auQ();
+        paramString = com.tencent.mm.plugin.normsg.a.d.MtP.aPk();
         Toast.makeText(paramContext, "oaid: ".concat(String.valueOf(paramString)), 1).show();
         Log.i("MicroMsg.NorMsgTest", "[+] oaid: %s", new Object[] { paramString });
       }

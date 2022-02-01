@@ -8,38 +8,38 @@ import java.util.Map;
 public final class a
   extends com.tencent.mm.plugin.backup.b.a
 {
-  private static String rPM = "icon_";
-  private static String rPN = "img";
-  private static String rPO = "iphone";
-  private static String rPP = "android";
-  private static String rPQ = "s60v3";
-  private static String rPR = "s60v5";
-  private static a rTb;
-  private Map<String, a> rPT;
+  private static String vbb = "icon_";
+  private static String vbc = "img";
+  private static String vbd = "iphone";
+  private static String vbe = "android";
+  private static String vbf = "s60v3";
+  private static String vbg = "s60v5";
+  private static a veq;
+  private Map<String, a> vbi;
   
   public a()
   {
     AppMethodBeat.i(21822);
-    this.rPT = null;
-    ctk();
+    this.vbi = null;
+    cVU();
     AppMethodBeat.o(21822);
   }
   
-  public static a aor(String paramString)
+  public static a ahO(String paramString)
   {
     AppMethodBeat.i(21820);
-    if (rTb == null) {
-      rTb = new a();
+    if (veq == null) {
+      veq = new a();
     }
-    Object localObject = rTb;
-    if (((a)localObject).rPT == null) {
-      ((a)localObject).ctk();
+    Object localObject = veq;
+    if (((a)localObject).vbi == null) {
+      ((a)localObject).cVU();
     }
-    localObject = ((a)localObject).rPT.values().iterator();
+    localObject = ((a)localObject).vbi.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
-      if ((locala.rPV != null) && (locala.rPV.equals(paramString)))
+      if ((locala.vbk != null) && (locala.vbk.equals(paramString)))
       {
         AppMethodBeat.o(21820);
         return locala;
@@ -49,26 +49,26 @@ public final class a
     return null;
   }
   
-  public static a aos(String paramString)
+  public static a ahP(String paramString)
   {
     AppMethodBeat.i(21821);
-    if (rTb == null)
+    if (veq == null)
     {
       locala = new a();
-      rTb = locala;
+      veq = locala;
       a(locala);
     }
-    a locala = rTb;
-    if (locala.rPT == null) {
-      locala.ctk();
+    a locala = veq;
+    if (locala.vbi == null) {
+      locala.cVU();
     }
-    paramString = (a)locala.rPT.get(paramString);
+    paramString = (a)locala.vbi.get(paramString);
     AppMethodBeat.o(21821);
     return paramString;
   }
   
   /* Error */
-  private void ctk()
+  private void cVU()
   {
     // Byte code:
     //   0: iconst_0
@@ -81,7 +81,7 @@ public final class a
     //   11: new 113	java/util/HashMap
     //   14: dup
     //   15: invokespecial 114	java/util/HashMap:<init>	()V
-    //   18: putfield 57	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPT	Ljava/util/Map;
+    //   18: putfield 57	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbi	Ljava/util/Map;
     //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   24: invokevirtual 126	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   27: astore_3
@@ -112,7 +112,7 @@ public final class a
     //   77: aload_3
     //   78: astore 6
     //   80: aload 7
-    //   82: getstatic 25	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPM	Ljava/lang/String;
+    //   82: getstatic 25	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbb	Ljava/lang/String;
     //   85: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   88: ifeq -34 -> 54
     //   91: aload 4
@@ -137,7 +137,7 @@ public final class a
     //   130: aload_3
     //   131: astore 6
     //   133: aload 8
-    //   135: getstatic 29	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPN	Ljava/lang/String;
+    //   135: getstatic 29	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbc	Ljava/lang/String;
     //   138: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   141: ifne +314 -> 455
     //   144: aload 4
@@ -173,7 +173,7 @@ public final class a
     //   198: aload_3
     //   199: astore 6
     //   201: aload 8
-    //   203: getstatic 33	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPO	Ljava/lang/String;
+    //   203: getstatic 33	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbd	Ljava/lang/String;
     //   206: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   209: ifeq +109 -> 318
     //   212: aload 4
@@ -182,15 +182,15 @@ public final class a
     //   217: astore 6
     //   219: aload 7
     //   221: aload 9
-    //   223: putfield 93	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:rPV	Ljava/lang/String;
+    //   223: putfield 93	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:vbk	Ljava/lang/String;
     //   226: aload 4
     //   228: astore 5
     //   230: aload_3
     //   231: astore 6
     //   233: aload_0
-    //   234: getfield 57	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPT	Ljava/util/Map;
+    //   234: getfield 57	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbi	Ljava/util/Map;
     //   237: aload 7
-    //   239: getfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:rPU	Ljava/lang/String;
+    //   239: getfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:vbj	Ljava/lang/String;
     //   242: aload 7
     //   244: invokeinterface 180 3 0
     //   249: pop
@@ -232,7 +232,7 @@ public final class a
     //   322: aload_3
     //   323: astore 6
     //   325: aload 8
-    //   327: getstatic 37	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPP	Ljava/lang/String;
+    //   327: getstatic 37	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbe	Ljava/lang/String;
     //   330: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   333: ifeq +52 -> 385
     //   336: aload 4
@@ -241,7 +241,7 @@ public final class a
     //   341: astore 6
     //   343: aload 7
     //   345: aload 9
-    //   347: putfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:rPU	Ljava/lang/String;
+    //   347: putfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:vbj	Ljava/lang/String;
     //   350: goto -124 -> 226
     //   353: astore 4
     //   355: aload 6
@@ -263,7 +263,7 @@ public final class a
     //   389: aload_3
     //   390: astore 6
     //   392: aload 8
-    //   394: getstatic 41	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPQ	Ljava/lang/String;
+    //   394: getstatic 41	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbf	Ljava/lang/String;
     //   397: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   400: ifeq +20 -> 420
     //   403: aload 4
@@ -272,14 +272,14 @@ public final class a
     //   408: astore 6
     //   410: aload 7
     //   412: aload 9
-    //   414: putfield 214	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:rPW	Ljava/lang/String;
+    //   414: putfield 214	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:vbl	Ljava/lang/String;
     //   417: goto -191 -> 226
     //   420: aload 4
     //   422: astore 5
     //   424: aload_3
     //   425: astore 6
     //   427: aload 8
-    //   429: getstatic 45	com/tencent/mm/plugin/backup/bakoldlogic/b/a:rPR	Ljava/lang/String;
+    //   429: getstatic 45	com/tencent/mm/plugin/backup/bakoldlogic/b/a:vbg	Ljava/lang/String;
     //   432: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   435: ifeq -209 -> 226
     //   438: aload 4
@@ -288,7 +288,7 @@ public final class a
     //   443: astore 6
     //   445: aload 7
     //   447: aload 9
-    //   449: putfield 217	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:rPX	Ljava/lang/String;
+    //   449: putfield 217	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:vbm	Ljava/lang/String;
     //   452: goto -226 -> 226
     //   455: aload 4
     //   457: astore 5
@@ -429,32 +429,32 @@ public final class a
     //   35	54	554	java/io/IOException
   }
   
-  public final void crU()
+  public final void cUE()
   {
-    rTb = null;
+    veq = null;
   }
   
   public static final class a
   {
-    public String rPU = "";
-    public String rPV = "";
-    public String rPW = "";
-    public String rPX = "";
+    public String vbj = "";
+    public String vbk = "";
+    public String vbl = "";
+    public String vbm = "";
     
     public a() {}
     
     public a(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      this.rPU = paramString1;
-      this.rPV = paramString2;
-      this.rPW = paramString3;
-      this.rPX = paramString4;
+      this.vbj = paramString1;
+      this.vbk = paramString2;
+      this.vbl = paramString3;
+      this.vbm = paramString4;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(21819);
-      String str = this.rPU + " " + this.rPV + " " + this.rPW + " " + this.rPX;
+      String str = this.vbj + " " + this.vbk + " " + this.vbl + " " + this.vbm;
       AppMethodBeat.o(21819);
       return str;
     }
@@ -462,7 +462,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.a
  * JD-Core Version:    0.7.0.1
  */

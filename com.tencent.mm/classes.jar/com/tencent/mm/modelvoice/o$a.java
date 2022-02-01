@@ -36,7 +36,7 @@ final class o$a
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.audio.b.i.ftw = bool;
+      com.tencent.mm.audio.b.i.hxL = bool;
       Log.i("MicroMsg.SubCoreVoice", "summervoicetrymore enable[%d]", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(148437);
       return true;

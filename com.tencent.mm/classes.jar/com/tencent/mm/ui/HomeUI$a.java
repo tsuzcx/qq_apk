@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(33218);
-    VWQ = new a("ACTIVITY_CREATE", 0);
-    VWR = new a("ACTIVITY_RESUME", 1);
-    VWS = new a("ACTIVITY_PAUSE", 2);
-    VWT = new a[] { VWQ, VWR, VWS };
+    adBl = new a("ACTIVITY_CREATE", 0);
+    adBm = new a("ACTIVITY_RESUME", 1);
+    adBn = new a("ACTIVITY_PAUSE", 2);
+    adBo = new a[] { adBl, adBm, adBn };
     AppMethodBeat.o(33218);
   }
   
@@ -18,7 +18,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.a
  * JD-Core Version:    0.7.0.1
  */

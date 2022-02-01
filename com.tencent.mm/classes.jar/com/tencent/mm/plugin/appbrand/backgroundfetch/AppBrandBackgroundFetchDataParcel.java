@@ -9,10 +9,10 @@ public class AppBrandBackgroundFetchDataParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandBackgroundFetchDataParcel> CREATOR;
-  public long coZ;
   public String data;
-  public int nSb;
+  public long egK;
   public String path;
+  public int qRL;
   public String query;
   public int scene;
   public String username;
@@ -30,12 +30,12 @@ public class AppBrandBackgroundFetchDataParcel
   {
     AppMethodBeat.i(44702);
     this.username = paramParcel.readString();
-    this.nSb = paramParcel.readInt();
+    this.qRL = paramParcel.readInt();
     this.path = paramParcel.readString();
     this.query = paramParcel.readString();
     this.data = paramParcel.readString();
     this.scene = paramParcel.readInt();
-    this.coZ = paramParcel.readLong();
+    this.egK = paramParcel.readLong();
     AppMethodBeat.o(44702);
   }
   
@@ -48,12 +48,12 @@ public class AppBrandBackgroundFetchDataParcel
   {
     AppMethodBeat.i(44701);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.nSb);
+    paramParcel.writeInt(this.qRL);
     paramParcel.writeString(this.path);
     paramParcel.writeString(this.query);
     paramParcel.writeString(this.data);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeLong(this.coZ);
+    paramParcel.writeLong(this.egK);
     AppMethodBeat.o(44701);
   }
 }

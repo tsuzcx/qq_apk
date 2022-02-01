@@ -7,9 +7,9 @@ public enum d$b
   static
   {
     AppMethodBeat.i(28745);
-    Jvx = new b("search", 0);
-    Jvy = new b("normal", 1);
-    Jvz = new b[] { Jvx, Jvy };
+    PIV = new b("search", 0);
+    PIW = new b("normal", 1);
+    PIX = new b[] { PIV, PIW };
     AppMethodBeat.o(28745);
   }
   

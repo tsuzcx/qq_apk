@@ -1,12 +1,12 @@
 package kotlin.m;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/DropTakeSequence;", "T", "Lkotlin/sequences/Sequence;", "drop", "n", "", "take", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/sequences/DropTakeSequence;", "T", "Lkotlin/sequences/Sequence;", "drop", "n", "", "take", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract interface c<T>
   extends h<T>
 {
-  public abstract h<T> iQu();
+  public abstract h<T> kBi();
 }
 
 

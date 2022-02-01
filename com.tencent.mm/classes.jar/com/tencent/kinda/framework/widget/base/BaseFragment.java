@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,10 +22,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.ActionBarContainer;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
+import androidx.fragment.app.FragmentManager;
 import com.facebook.yoga.android.YogaLayout;
 import com.tencent.kinda.framework.R.color;
-import com.tencent.kinda.framework.R.drawable;
 import com.tencent.kinda.framework.R.id;
 import com.tencent.kinda.framework.R.layout;
 import com.tencent.kinda.framework.R.raw;
@@ -36,20 +32,25 @@ import com.tencent.kinda.framework.animate.KindaAnimatorWatch;
 import com.tencent.kinda.framework.app.UIPagePlatformFuncDelegateImpl;
 import com.tencent.kinda.framework.widget.PlatformWrapLayout;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
+import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.LeftBarButtonType;
 import com.tencent.kinda.gen.NavigationBarConfig;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.d;
 import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.plugin.wxpayreport.j;
+import com.tencent.mm.plugin.wxpayreport.j.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.b.b;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 import com.tencent.mm.ui.y;
+import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -68,7 +69,8 @@ public abstract class BaseFragment
   private FrLifeController.IFrLife life;
   private ActionBarContainer mActionBarContainer = null;
   private BaseFragment mCoveredFragment;
-  public y mCustomActioinBarController = null;
+  public aa mCustomActioinBarController = null;
+  private j mReportUIC;
   protected UIPagePlatformDelegateImpl pagePlatformDelegate;
   protected UIPagePlatformFuncDelegateImpl pagePlatformFuncDelegate;
   private long statusBarColor = -1L;
@@ -91,17 +93,27 @@ public abstract class BaseFragment
     for (;;)
     {
       this.statusBarSpaceView.setBackgroundColor(paramInt);
-      boolean bool = au.auk(paramInt);
+      boolean bool = bb.aAF(paramInt);
       getController().updataStatusBarIcon(bool);
-      getController().q(getActivity(), 0);
+      getController().s(getActivity(), 0);
       getController().setNavigationbarColor(getResources().getColor(a.d.BG_0));
       return;
       if (Build.VERSION.SDK_INT >= 21) {
-        paramInt = au.A(getResources().getColor(R.color.statusbar_fg_drak_color), paramInt);
+        paramInt = bb.av(getResources().getColor(R.color.statusbar_fg_drak_color), paramInt);
       } else {
         paramInt = 0;
       }
     }
+  }
+  
+  public void addCustomReportEvent(String paramString, com.tencent.mm.plugin.wxpayreport.a.b paramb)
+  {
+    this.mReportUIC.addCustomReportEvent(paramString, paramb);
+  }
+  
+  public void addLifecycleReportEvent(j.b paramb, com.tencent.mm.plugin.wxpayreport.a.b paramb1)
+  {
+    this.mReportUIC.addLifecycleReportEvent(paramb, paramb1);
   }
   
   public ITransmitKvData covertPlatformData(Bundle paramBundle)
@@ -153,9 +165,9 @@ public abstract class BaseFragment
       if (this.mActionBarContainer == null) {
         this.mActionBarContainer = ((ActionBarContainer)((ViewStub)paramView.findViewById(R.id.kinda_custom_action_bar)).inflate());
       }
-      y localy = this.mCustomActioinBarController;
+      aa localaa = this.mCustomActioinBarController;
       paramView = (ViewGroup)paramView;
-      localy.WaO.Rx = paramView;
+      localaa.adFj.bxO = paramView;
     }
   }
   
@@ -174,8 +186,6 @@ public abstract class BaseFragment
   {
     return this.mCoveredFragment;
   }
-  
-  public abstract int getIUIHashCode();
   
   public boolean getIsEnterBackground()
   {
@@ -207,11 +217,28 @@ public abstract class BaseFragment
     return localObject1;
   }
   
+  public abstract String getReportUrl();
+  
   public abstract String getTagName();
   
   public boolean getWillBeRemoved()
   {
     return this.willBeRemoved;
+  }
+  
+  protected void hideKeyboard()
+  {
+    getController().hideVKB();
+    Object localObject = findViewById(R.id.tenpay_keyboard_layout);
+    if ((localObject != null) && ((getActivity() instanceof BaseFrActivity)))
+    {
+      WeakReference localWeakReference = new WeakReference(this);
+      ((BaseFrActivity)getActivity()).hideTenpayKB((View)localObject, localWeakReference);
+    }
+    localObject = (WcPayKeyboard)findViewById(R.id.wc_pay_keyboard);
+    if (localObject != null) {
+      ((WcPayKeyboard)localObject).hideWcKb();
+    }
   }
   
   protected abstract void initOnCreate();
@@ -234,77 +261,99 @@ public abstract class BaseFragment
   
   public void initWithNavigationBarConfig(NavigationBarConfig paramNavigationBarConfig)
   {
+    int i = 1;
     Log.i("MicroMsg.BaseFragment", "NavigationBarConfig: %s", new Object[] { paramNavigationBarConfig });
+    Object localObject;
     if ((paramNavigationBarConfig != null) && (getController().mActionBar != null))
     {
       if (paramNavigationBarConfig.mBackgroundColor != null)
       {
-        getController().mActionBar.setBackgroundDrawable(new ColorDrawable((int)ColorUtil.getColorByMode(paramNavigationBarConfig.mBackgroundColor)));
-        calculateStatusBarColor((int)ColorUtil.getColorByMode(paramNavigationBarConfig.mBackgroundColor));
+        j = (int)ColorUtil.getColorByMode(paramNavigationBarConfig.mBackgroundColor);
+        getController().mActionBar.setBackgroundDrawable(new ColorDrawable(j));
+        calculateStatusBarColor(j);
+        getController().setNavigationbarColor(j);
       }
       if (paramNavigationBarConfig.mBarTitle != null) {
         setMMTitle(paramNavigationBarConfig.mBarTitle);
       }
-      if (Util.isNullOrNil(paramNavigationBarConfig.mLeftButtonColor)) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = getResources().getDrawable(R.drawable.actionbar_back_icon).mutate();
-        if (!(localObject instanceof StateListDrawable)) {
-          continue;
-        }
-        localObject = getResources().getDrawable(R.raw.back_icon_normal);
-        ((Drawable)localObject).setColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor), PorterDuff.Mode.SRC_ATOP);
-        getController().updateBackBtn((Drawable)localObject);
-        getController().setBackBtnColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor));
+      if ((paramNavigationBarConfig.mTitleColor != null) && (paramNavigationBarConfig.mTitleColor.mNormalColor != 0L)) {
+        getController().setMMTitleColor((int)paramNavigationBarConfig.mTitleColor.mNormalColor);
       }
-      catch (Exception localException)
+      if (Util.isNullOrNil(paramNavigationBarConfig.mLeftButtonColor)) {
+        break label352;
+      }
+      if (Color.parseColor(paramNavigationBarConfig.mLeftButtonColor) != -1) {
+        break label274;
+      }
+      localObject = getController();
+      if (((y)localObject).adEb != null) {
+        ((y)localObject).adEb.clearColorFilter();
+      }
+      localObject = getController();
+      j = i;
+      if (((y)localObject).adEb != null) {
+        ((y)localObject).adEb.setEnableColorFilter(false);
+      }
+    }
+    label274:
+    label352:
+    for (int j = i;; j = 0)
+    {
+      localObject = getController().mActionBar;
+      if (localObject != null) {
+        ((ActionBar)localObject).g(0.0F);
+      }
+      if (paramNavigationBarConfig.mLeftBarButtonType == LeftBarButtonType.BACK)
       {
-        Object localObject;
-        continue;
-        if (paramNavigationBarConfig.mLeftBarButtonType != LeftBarButtonType.CANCEL) {
-          continue;
-        }
-        setBackBtn(new MenuItem.OnMenuItemClickListener()
+        localObject = new MenuItem.OnMenuItemClickListener()
         {
           public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
-            AppMethodBeat.i(265144);
+            AppMethodBeat.i(18763);
             BaseFragment.this.popFragment();
-            AppMethodBeat.o(265144);
+            AppMethodBeat.o(18763);
             return true;
           }
-        }, R.raw.actionbar_icon_dark_close);
-        continue;
-        if (paramNavigationBarConfig.mLeftBarButtonType != LeftBarButtonType.NONE) {
-          continue;
-        }
-        getController().setBackBtnVisible(false);
-        continue;
-      }
-      localObject = getController().mActionBar;
-      if (localObject != null) {
-        ((ActionBar)localObject).e(0.0F);
-      }
-      if (paramNavigationBarConfig.mLeftBarButtonType != LeftBarButtonType.BACK) {
-        continue;
-      }
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        };
+        if (j != 0)
         {
-          AppMethodBeat.i(18763);
-          BaseFragment.this.popFragment();
-          AppMethodBeat.o(18763);
-          return true;
+          i = R.raw.actionbar_icon_light_back;
+          label246:
+          setBackBtn((MenuItem.OnMenuItemClickListener)localObject, i);
         }
-      });
-      setTopRightBtnImage(paramNavigationBarConfig.mRightButtonImage);
-      setTopRightBtnTitle(paramNavigationBarConfig.mRightButtonTitle, paramNavigationBarConfig.mRightButtonColor);
-      return;
-      ((Drawable)localObject).setColorFilter(Color.parseColor(paramNavigationBarConfig.mLeftButtonColor), PorterDuff.Mode.SRC_ATOP);
+      }
+      for (;;)
+      {
+        setTopRightBtnImage(paramNavigationBarConfig.mRightButtonImage);
+        setTopRightBtnTitle(paramNavigationBarConfig.mRightButtonTitle, paramNavigationBarConfig.mRightButtonColor);
+        return;
+        i = 0;
+        break;
+        i = R.raw.actionbar_icon_dark_back;
+        break label246;
+        if (paramNavigationBarConfig.mLeftBarButtonType == LeftBarButtonType.CANCEL)
+        {
+          localObject = new MenuItem.OnMenuItemClickListener()
+          {
+            public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+            {
+              AppMethodBeat.i(226625);
+              BaseFragment.this.popFragment();
+              AppMethodBeat.o(226625);
+              return true;
+            }
+          };
+          if (j != 0) {}
+          for (i = R.raw.actionbar_icon_light_close;; i = R.raw.actionbar_icon_dark_close)
+          {
+            setBackBtn((MenuItem.OnMenuItemClickListener)localObject, i);
+            break;
+          }
+        }
+        if (paramNavigationBarConfig.mLeftBarButtonType == LeftBarButtonType.NONE) {
+          getController().setBackBtnVisible(false);
+        }
+      }
     }
   }
   
@@ -357,12 +406,13 @@ public abstract class BaseFragment
     super.onAttach(paramContext);
     if (isSupportCustomActionBar())
     {
-      this.mCustomActioinBarController = new y();
+      this.mCustomActioinBarController = new aa();
       paramContext = this.mCustomActioinBarController;
-      paramContext.WaN = this;
-      paramContext.WaO = new b(thisActivity(), paramContext);
+      paramContext.adFi = this;
+      paramContext.adFj = new com.tencent.mm.ui.b.b(thisActivity(), paramContext);
       setActivityController(this.mCustomActioinBarController);
     }
+    this.mReportUIC = new j(this);
   }
   
   public abstract boolean onBackPressed();
@@ -401,6 +451,8 @@ public abstract class BaseFragment
     this.fragEvent = null;
   }
   
+  protected void onFirstLayoutFinished() {}
+  
   protected void onFirstRenderFinish() {}
   
   public void onFragmentOnDestroy()
@@ -408,6 +460,7 @@ public abstract class BaseFragment
     super.onFragmentOnDestroy();
     this.pagePlatformFuncDelegate = null;
     this.mCustomActioinBarController = null;
+    this.mReportUIC.onDestroy();
   }
   
   public void onFragmentOnPause()
@@ -416,6 +469,7 @@ public abstract class BaseFragment
     if (isContainSecureView()) {
       getActivity().getWindow().clearFlags(8192);
     }
+    this.mReportUIC.onPause();
     Log.d("MicroMsg.BaseFragment", "lifecycle: onFragmentOnPause, class: %s", new Object[] { toString() });
   }
   
@@ -425,6 +479,7 @@ public abstract class BaseFragment
     if (isContainSecureView()) {
       getActivity().getWindow().addFlags(8192);
     }
+    this.mReportUIC.onResume();
     Log.d("MicroMsg.BaseFragment", "lifecycle: onFragmentOnResume, class: %s", new Object[] { toString() });
   }
   
@@ -481,7 +536,7 @@ public abstract class BaseFragment
   {
     super.onViewCreated(paramView, paramBundle);
     this.statusBarSpaceView = ((FrameLayout)paramView.findViewById(R.id.kinda_status_bar_placeholder_view));
-    int i = ar.getStatusBarHeight(getContext());
+    int i = aw.getStatusBarHeight(getContext());
     ViewGroup.LayoutParams localLayoutParams = this.statusBarSpaceView.getLayoutParams();
     if (localLayoutParams != null)
     {
@@ -498,21 +553,25 @@ public abstract class BaseFragment
     initOnCreate();
     KindaAnimatorWatch.didViewCreated(hashCode());
     paramView.setOnTouchListener(this);
+    paramView.setClickable(true);
+    paramView.setImportantForAccessibility(2);
     paramView.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(264063);
+        AppMethodBeat.i(226624);
         BaseFragment.this.onFirstRenderFinish();
+        BaseFragment.this.onFirstLayoutFinished();
         if (BaseFragment.this.usePanelModalMode()) {
           paramView.setVisibility(0);
         }
-        AppMethodBeat.o(264063);
+        AppMethodBeat.o(226624);
       }
     });
     if (this.life != null) {
       this.life.onViewCreate(paramBundle);
     }
+    this.mReportUIC.onCreate(null);
   }
   
   public void popFragment()
@@ -557,6 +616,11 @@ public abstract class BaseFragment
     return false;
   }
   
+  public void triggerReport(j.b paramb, String paramString)
+  {
+    this.mReportUIC.triggerReport(paramb, paramString);
+  }
+  
   public boolean useKeyboardCoverMode()
   {
     return false;
@@ -586,7 +650,7 @@ public abstract class BaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseFragment
  * JD-Core Version:    0.7.0.1
  */

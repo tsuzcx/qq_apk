@@ -1,18 +1,43 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.f.c.w;
+import java.io.InputStream;
+import java.util.List;
 
-public abstract interface s<R extends w>
+public abstract interface s
 {
-  public abstract R a(String paramString, int paramInt1, int paramInt2, String... paramVarArgs);
+  public abstract WxaPkg Vc(String paramString);
   
-  public abstract R a(String paramString1, int paramInt, String paramString2, String... paramVarArgs);
+  public abstract InputStream Vd(String paramString);
   
-  public abstract R a(String paramString, int paramInt, String... paramVarArgs);
+  public abstract a Ve(String paramString);
+  
+  public abstract boolean Vf(String paramString);
+  
+  public abstract boolean an(String paramString, boolean paramBoolean);
+  
+  public abstract void cge();
+  
+  public abstract List<ModulePkgInfo> cgf();
+  
+  public abstract List<String> cgg();
+  
+  public abstract void close();
+  
+  public static class a
+  {
+    public int appVersion;
+    public String fileName;
+    public String qEr;
+    public String qEs;
+    public WxaPkg qEt;
+    public String qEu;
+    public int qEv;
+    public int qEw;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.s
  * JD-Core Version:    0.7.0.1
  */

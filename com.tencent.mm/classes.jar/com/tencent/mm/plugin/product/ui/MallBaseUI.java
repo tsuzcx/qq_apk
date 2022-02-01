@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.product.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -14,17 +13,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.ui.l;
 
 public abstract class MallBaseUI
   extends MMActivity
 {
-  protected String ovI;
+  protected String rzc;
   
-  protected final void aUG(String paramString)
+  protected final void aRO(String paramString)
   {
-    this.ovI = paramString;
+    this.rzc = paramString;
     showDialog(-10001);
   }
   
@@ -50,10 +49,10 @@ public abstract class MallBaseUI
     default: 
       return super.onCreateDialog(paramInt);
     case -10001: 
-      if (Util.isNullOrNil(this.ovI)) {
-        this.ovI = getString(a.i.mall_product_data_err);
+      if (Util.isNullOrNil(this.rzc)) {
+        this.rzc = getString(a.i.mall_product_data_err);
       }
-      h.a(this, this.ovI, null, false, new DialogInterface.OnClickListener()
+      k.a(this, this.rzc, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -63,7 +62,7 @@ public abstract class MallBaseUI
         }
       });
     }
-    i.a(getContext(), false, new DialogInterface.OnCancelListener()
+    l.a(getContext(), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
@@ -96,7 +95,7 @@ public abstract class MallBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallBaseUI
  * JD-Core Version:    0.7.0.1
  */

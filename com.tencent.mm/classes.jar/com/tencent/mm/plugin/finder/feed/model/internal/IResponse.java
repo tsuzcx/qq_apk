@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.cd.b;
-import com.tencent.mm.protocal.protobuf.bkq;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.bxt;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "bgmInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;", "getBgmInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;", "setBgmInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "getErrType", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "incrementList", "", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "isNeedClear", "setNeedClear", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "pullType", "getPullType", "setPullType", "(I)V", "request", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "bgmInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;", "getBgmInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;", "setBgmInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "getErrType", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "incrementList", "", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "isNeedClear", "setNeedClear", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "pullType", "getPullType", "setPullType", "(I)V", "refreshInterval", "getRefreshInterval", "setRefreshInterval", "request", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class IResponse<T extends k>
 {
-  private bkq bgmInfo;
+  private bxt bgmInfo;
   private final int errCode;
   private final String errMsg;
   private final int errType;
   private boolean hasMore;
-  private List<? extends T> incrementList;
+  public List<? extends T> incrementList;
   private boolean isNeedClear;
   private b lastBuffer;
   private int pullType;
+  private int refreshInterval;
   private Object request;
   
   public IResponse()
@@ -32,9 +33,10 @@ public class IResponse<T extends k>
     this.pullType = -1;
     this.hasMore = true;
     this.isNeedClear = true;
+    this.refreshInterval = -1;
   }
   
-  public final bkq getBgmInfo()
+  public final bxt getBgmInfo()
   {
     return this.bgmInfo;
   }
@@ -74,6 +76,11 @@ public class IResponse<T extends k>
     return this.pullType;
   }
   
+  public final int getRefreshInterval()
+  {
+    return this.refreshInterval;
+  }
+  
   public final Object getRequest()
   {
     return this.request;
@@ -84,9 +91,9 @@ public class IResponse<T extends k>
     return this.isNeedClear;
   }
   
-  public final void setBgmInfo(bkq parambkq)
+  public final void setBgmInfo(bxt parambxt)
   {
-    this.bgmInfo = parambkq;
+    this.bgmInfo = parambxt;
   }
   
   public final void setHasMore(boolean paramBoolean)
@@ -112,6 +119,11 @@ public class IResponse<T extends k>
   public final void setPullType(int paramInt)
   {
     this.pullType = paramInt;
+  }
+  
+  public final void setRefreshInterval(int paramInt)
+  {
+    this.refreshInterval = paramInt;
   }
   
   public final void setRequest(Object paramObject)

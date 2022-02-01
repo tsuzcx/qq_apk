@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ka" android:textColor="@color/a2t" android:id="@id/ipp" android:paddingLeft="@dimen/d_" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/d_" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:text="@string/bzx" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/j7h" android:background="@color/al2" android:padding="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:progressDrawable="@drawable/anj" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:id="@id/kn9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cfk" />
+    </LinearLayout>
 </LinearLayout>

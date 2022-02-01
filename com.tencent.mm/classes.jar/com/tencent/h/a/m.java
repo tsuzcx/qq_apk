@@ -4,43 +4,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
 {
-  private a ZSl;
+  private a ahWI;
   
   private m(a parama)
   {
-    this.ZSl = parama;
+    this.ahWI = parama;
   }
   
-  public final j itF()
+  public final j kda()
   {
-    if (this.ZSl != null) {
-      return this.ZSl.ZSm;
+    if (this.ahWI != null) {
+      return this.ahWI.ahWJ;
     }
     return null;
   }
   
   public static final class a
   {
-    public j ZSm;
+    public j ahWJ;
     
-    public final m itG()
+    public final m kdb()
     {
-      AppMethodBeat.i(207652);
-      if (this.ZSm == null)
+      AppMethodBeat.i(212067);
+      if (this.ahWJ == null)
       {
         localObject = new IllegalArgumentException("You're trying to build a TuringSMIJob with no TuringShieldConfigs, this is not allowed.");
-        AppMethodBeat.o(207652);
+        AppMethodBeat.o(212067);
         throw ((Throwable)localObject);
       }
       Object localObject = new m(this, (byte)0);
-      AppMethodBeat.o(207652);
+      AppMethodBeat.o(212067);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.m
  * JD-Core Version:    0.7.0.1
  */

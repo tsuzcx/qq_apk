@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.k;
 import com.tencent.mm.plugin.appbrand.k.d;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.plugin.ball.f.c.a;
 import com.tencent.mm.plugin.ball.f.d;
 import com.tencent.mm.plugin.ball.model.BallInfo;
@@ -25,299 +25,294 @@ import java.util.Objects;
 public final class a
   extends e
 {
-  final String cED;
-  final t nuJ;
-  private final com.tencent.mm.plugin.appbrand.backgroundrunning.f okY;
-  volatile boolean okZ;
-  private f.b ola;
+  final String exO;
+  final w qts;
+  private final com.tencent.mm.plugin.appbrand.backgroundrunning.f roC;
+  volatile boolean roD;
+  private f.b roE;
   
-  public a(com.tencent.mm.plugin.ball.a.f paramf, t paramt)
+  public a(com.tencent.mm.plugin.ball.a.f paramf, w paramw)
   {
     super(paramf);
-    AppMethodBeat.i(270222);
-    this.cED = ("MicroMsg.AppBrand.AppBrandAudioOfVideoBackgroundPlayFloatBallHelper#" + hashCode());
-    this.okZ = false;
-    this.ola = new f.b()
+    AppMethodBeat.i(318229);
+    this.exO = ("MicroMsg.AppBrand.AppBrandAudioOfVideoBackgroundPlayFloatBallHelper#" + hashCode());
+    this.roD = false;
+    this.roE = new f.b()
     {
       public final void b(AppBrandBackgroundRunningOperationParcel paramAnonymousAppBrandBackgroundRunningOperationParcel)
       {
-        AppMethodBeat.i(278723);
+        AppMethodBeat.i(318270);
         if (paramAnonymousAppBrandBackgroundRunningOperationParcel == null)
         {
-          AppMethodBeat.o(278723);
+          AppMethodBeat.o(318270);
           return;
         }
-        if ((!a.this.nuJ.mAppId.equals(paramAnonymousAppBrandBackgroundRunningOperationParcel.appId)) || (a.this.nuJ.ntz.cBI != paramAnonymousAppBrandBackgroundRunningOperationParcel.cBU))
+        if ((!a.this.qts.mAppId.equals(paramAnonymousAppBrandBackgroundRunningOperationParcel.appId)) || (a.this.qts.qsh.eul != paramAnonymousAppBrandBackgroundRunningOperationParcel.euz))
         {
-          AppMethodBeat.o(278723);
+          AppMethodBeat.o(318270);
           return;
         }
-        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.aOm != 8)
+        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.cIi != 8)
         {
-          AppMethodBeat.o(278723);
+          AppMethodBeat.o(318270);
           return;
         }
-        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.fvK == 1)
+        if (paramAnonymousAppBrandBackgroundRunningOperationParcel.hAf == 1)
         {
           paramAnonymousAppBrandBackgroundRunningOperationParcel = a.this;
-          if (!paramAnonymousAppBrandBackgroundRunningOperationParcel.cvD())
+          if (!paramAnonymousAppBrandBackgroundRunningOperationParcel.cYo())
           {
-            Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cED, "onSendBackgroundRunningOperation, add passive audio of video background play float ball");
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.aoy(paramAnonymousAppBrandBackgroundRunningOperationParcel.bNY());
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.le(true);
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.lf(false);
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.Fi(d.fu(paramAnonymousAppBrandBackgroundRunningOperationParcel.rYE.state, 128));
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.cvL().kqZ = 13;
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.cvG();
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.cvF();
-            paramAnonymousAppBrandBackgroundRunningOperationParcel.okZ = true;
-            AppMethodBeat.o(278723);
+            Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.exO, "onSendBackgroundRunningOperation, add passive audio of video background play float ball");
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.ahU(paramAnonymousAppBrandBackgroundRunningOperationParcel.col());
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.mr(true);
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.ms(false);
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.FJ(d.gm(paramAnonymousAppBrandBackgroundRunningOperationParcel.vjV.state, 128));
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.cYv().mUU = 13;
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.cYr();
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.cYq();
+            paramAnonymousAppBrandBackgroundRunningOperationParcel.roD = true;
+            AppMethodBeat.o(318270);
             return;
           }
-          Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cED, "onSendBackgroundRunningOperation, add audio of video background play state to float ball");
-          paramAnonymousAppBrandBackgroundRunningOperationParcel.Fi(d.fu(paramAnonymousAppBrandBackgroundRunningOperationParcel.rYE.state, 128));
-          paramAnonymousAppBrandBackgroundRunningOperationParcel.le(true);
-          AppMethodBeat.o(278723);
+          Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.exO, "onSendBackgroundRunningOperation, add audio of video background play state to float ball");
+          paramAnonymousAppBrandBackgroundRunningOperationParcel.FJ(d.gm(paramAnonymousAppBrandBackgroundRunningOperationParcel.vjV.state, 128));
+          paramAnonymousAppBrandBackgroundRunningOperationParcel.mr(true);
+          AppMethodBeat.o(318270);
           return;
         }
-        if ((paramAnonymousAppBrandBackgroundRunningOperationParcel.fvK == 2) || (paramAnonymousAppBrandBackgroundRunningOperationParcel.fvK == 3))
+        if ((paramAnonymousAppBrandBackgroundRunningOperationParcel.hAf == 2) || (paramAnonymousAppBrandBackgroundRunningOperationParcel.hAf == 3))
         {
           paramAnonymousAppBrandBackgroundRunningOperationParcel = a.this;
-          BallInfo localBallInfo = paramAnonymousAppBrandBackgroundRunningOperationParcel.cvx();
+          BallInfo localBallInfo = paramAnonymousAppBrandBackgroundRunningOperationParcel.cYi();
           if (localBallInfo != null)
           {
-            if (localBallInfo.rYr)
+            if (localBallInfo.vjH)
             {
-              Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cED, "removeBackgroundPlayAudioBall, remove passive float ball");
-              paramAnonymousAppBrandBackgroundRunningOperationParcel.cvE();
-              paramAnonymousAppBrandBackgroundRunningOperationParcel.okZ = false;
-              AppMethodBeat.o(278723);
+              Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.exO, "removeBackgroundPlayAudioBall, remove passive float ball");
+              paramAnonymousAppBrandBackgroundRunningOperationParcel.cYp();
+              paramAnonymousAppBrandBackgroundRunningOperationParcel.roD = false;
+              AppMethodBeat.o(318270);
               return;
             }
-            Log.w(paramAnonymousAppBrandBackgroundRunningOperationParcel.cED, "removeBackgroundPlayAudioBall, passive is false");
-            AppMethodBeat.o(278723);
+            Log.w(paramAnonymousAppBrandBackgroundRunningOperationParcel.exO, "removeBackgroundPlayAudioBall, passive is false");
+            AppMethodBeat.o(318270);
             return;
           }
-          Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.cED, "removeBackgroundPlayAudioBall, no this float ball");
-          paramAnonymousAppBrandBackgroundRunningOperationParcel.Fi(d.fv(paramAnonymousAppBrandBackgroundRunningOperationParcel.rYE.state, 128));
+          Log.i(paramAnonymousAppBrandBackgroundRunningOperationParcel.exO, "removeBackgroundPlayAudioBall, no this float ball");
+          paramAnonymousAppBrandBackgroundRunningOperationParcel.FJ(d.gn(paramAnonymousAppBrandBackgroundRunningOperationParcel.vjV.state, 128));
         }
-        AppMethodBeat.o(278723);
+        AppMethodBeat.o(318270);
       }
     };
-    this.nuJ = paramt;
-    Log.i(this.cED, "create, runtime:%s", new Object[] { Integer.valueOf(paramt.hashCode()) });
-    this.okY = ((com.tencent.mm.plugin.appbrand.backgroundrunning.f)h.ae(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class));
-    AppMethodBeat.o(270222);
+    this.qts = paramw;
+    Log.i(this.exO, "create, runtime:%s", new Object[] { Integer.valueOf(paramw.hashCode()) });
+    this.roC = ((com.tencent.mm.plugin.appbrand.backgroundrunning.f)h.ax(com.tencent.mm.plugin.appbrand.backgroundrunning.f.class));
+    AppMethodBeat.o(318229);
   }
   
-  private void zI(int paramInt)
+  private void zY(int paramInt)
   {
-    AppMethodBeat.i(270233);
-    cvL().opType = Fj(paramInt);
-    cvG();
-    Point localPoint = this.rYG.getBallPosition();
-    c.a(this.rZC, localPoint, new com.tencent.mm.plugin.ball.d.a()
+    AppMethodBeat.i(318234);
+    cYv().opType = FK(paramInt);
+    cYr();
+    Point localPoint = this.vjX.getBallPosition();
+    c.a(this.vkT, localPoint, new com.tencent.mm.plugin.ball.d.a()
     {
-      public final void aEa()
+      public final void aXe()
       {
-        AppMethodBeat.i(267377);
-        Log.i(a.this.cED, "onCloseWithAnimation, transform to float ball animation cancel");
-        a.this.rZC.hS(true);
-        AppMethodBeat.o(267377);
+        AppMethodBeat.i(318250);
+        Log.i(a.this.exO, "onCloseWithAnimation, transform to float ball animation cancel");
+        a.this.vkT.iR(true);
+        AppMethodBeat.o(318250);
       }
       
       public final void onAnimationEnd()
       {
-        AppMethodBeat.i(267376);
-        Log.i(a.this.cED, "onCloseWithAnimation, transform to float ball animation end");
-        a.this.rZC.hS(false);
-        AppMethodBeat.o(267376);
+        AppMethodBeat.i(318242);
+        Log.i(a.this.exO, "onCloseWithAnimation, transform to float ball animation end");
+        a.this.vkT.iR(false);
+        AppMethodBeat.o(318242);
       }
     });
-    AppMethodBeat.o(270233);
+    AppMethodBeat.o(318234);
   }
   
-  public final void I(int paramInt, String paramString)
+  public final void J(int paramInt, String paramString)
   {
-    AppMethodBeat.i(270225);
-    Log.i(this.cED, "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    super.I(paramInt, paramString);
-    if (this.okY != null) {
-      this.okY.a(this.ola);
+    AppMethodBeat.i(318269);
+    Log.i(this.exO, "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.J(paramInt, paramString);
+    if (this.roC != null) {
+      this.roC.a(this.roE);
     }
-    AppMethodBeat.o(270225);
+    AppMethodBeat.o(318269);
   }
   
-  public final boolean aOg()
+  public final void as(int paramInt, String paramString)
   {
-    return false;
-  }
-  
-  public final boolean aOh()
-  {
-    return false;
-  }
-  
-  public final void aOi()
-  {
-    AppMethodBeat.i(270230);
-    Log.i(this.cED, "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.nuJ.hashCode()) });
-    this.rZC.hS(true);
-    AppMethodBeat.o(270230);
-  }
-  
-  public final void aOj()
-  {
-    AppMethodBeat.i(270229);
-    Log.i(this.cED, "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.nuJ.hashCode()) });
-    if (cvA() != null) {
-      A(true);
+    AppMethodBeat.i(318325);
+    Log.i(this.exO, "onReceivedBallInfoAddedEvent, runtime:%s, type: %d, key: %s", new Object[] { Integer.valueOf(this.qts.hashCode()), Integer.valueOf(paramInt), paramString });
+    super.as(paramInt, paramString);
+    if (this.vjV != null) {
+      Log.i(this.exO, "onReceivedBallInfoAddedEvent, myType: %d, myKey: %s", new Object[] { Integer.valueOf(this.vjV.type), this.vjV.key });
     }
-    AppMethodBeat.o(270229);
-  }
-  
-  public final void ai(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(270232);
-    Log.i(this.cED, "onReceivedBallInfoAddedEvent, runtime:%s, type: %d, key: %s", new Object[] { Integer.valueOf(this.nuJ.hashCode()), Integer.valueOf(paramInt), paramString });
-    super.ai(paramInt, paramString);
-    if (this.rYE != null) {
-      Log.i(this.cED, "onReceivedBallInfoAddedEvent, myType: %d, myKey: %s", new Object[] { Integer.valueOf(this.rYE.type), this.rYE.key });
-    }
-    if ((this.rYE != null) && (paramInt == this.rYE.type) && (Objects.equals(paramString, this.rYE.key)))
+    if ((this.vjV != null) && (paramInt == this.vjV.type) && (Objects.equals(paramString, this.vjV.key)))
     {
-      Log.i(this.cED, "onReceivedBallInfoAddedEvent, myself");
-      AppMethodBeat.o(270232);
+      Log.i(this.exO, "onReceivedBallInfoAddedEvent, myself");
+      AppMethodBeat.o(318325);
       return;
     }
     if ((6 == paramInt) || (18 == paramInt) || (9 == paramInt) || (17 == paramInt))
     {
-      cvE();
-      this.okZ = false;
+      cYp();
+      this.roD = false;
     }
-    AppMethodBeat.o(270232);
+    AppMethodBeat.o(318325);
   }
   
-  public final void bNV()
+  public final boolean bhU()
   {
-    AppMethodBeat.i(270228);
-    Log.i(this.cED, "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.nuJ.hashCode()) });
-    if (cvA() != null) {
-      A(false);
+    return false;
+  }
+  
+  public final void bhV()
+  {
+    AppMethodBeat.i(318313);
+    Log.i(this.exO, "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.qts.hashCode()) });
+    this.vkT.iR(true);
+    AppMethodBeat.o(318313);
+  }
+  
+  public final void bhW()
+  {
+    AppMethodBeat.i(318309);
+    Log.i(this.exO, "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.qts.hashCode()) });
+    if (cYl() != null) {
+      E(true);
     }
-    AppMethodBeat.o(270228);
+    AppMethodBeat.o(318309);
   }
   
-  public final void bNW()
+  public final void coi()
   {
-    AppMethodBeat.i(270231);
-    Log.i(this.cED, "onReceivedBallInfoRemovedEvent, runtime:%s", new Object[] { Integer.valueOf(this.nuJ.hashCode()) });
-    super.bNW();
-    this.okZ = false;
-    bNX();
-    AppMethodBeat.o(270231);
+    AppMethodBeat.i(318302);
+    Log.i(this.exO, "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.qts.hashCode()) });
+    if (cYl() != null) {
+      E(false);
+    }
+    AppMethodBeat.o(318302);
   }
   
-  final void bNX()
+  public final void coj()
   {
-    AppMethodBeat.i(270234);
-    if (this.okY == null)
+    AppMethodBeat.i(318317);
+    Log.i(this.exO, "onReceivedBallInfoRemovedEvent, runtime:%s", new Object[] { Integer.valueOf(this.qts.hashCode()) });
+    super.coj();
+    this.roD = false;
+    cok();
+    AppMethodBeat.o(318317);
+  }
+  
+  final void cok()
+  {
+    AppMethodBeat.i(318331);
+    if (this.roC == null)
     {
-      AppMethodBeat.o(270234);
+      AppMethodBeat.o(318331);
       return;
     }
     MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
-    localMMBackgroundRunningOperationParcel.appId = this.nuJ.mAppId;
-    localMMBackgroundRunningOperationParcel.aOm = 8;
-    localMMBackgroundRunningOperationParcel.fvK = 2;
-    Log.i(this.cED, "maybeStopBackgroundPlayAudio, appId:%s", new Object[] { this.nuJ.mAppId });
-    this.okY.a(localMMBackgroundRunningOperationParcel);
-    AppMethodBeat.o(270234);
+    localMMBackgroundRunningOperationParcel.appId = this.qts.mAppId;
+    localMMBackgroundRunningOperationParcel.cIi = 8;
+    localMMBackgroundRunningOperationParcel.hAf = 2;
+    Log.i(this.exO, "maybeStopBackgroundPlayAudio, appId:%s", new Object[] { this.qts.mAppId });
+    this.roC.a(localMMBackgroundRunningOperationParcel);
+    AppMethodBeat.o(318331);
   }
   
-  final String bNY()
+  final String col()
   {
-    AppMethodBeat.i(270235);
-    Object localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.ai.a)this.nuJ.av(com.tencent.mm.plugin.appbrand.jsapi.ai.a.class);
+    AppMethodBeat.i(318337);
+    Object localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.al.a)this.qts.aO(com.tencent.mm.plugin.appbrand.jsapi.al.a.class);
     if (localObject1 != null) {}
-    for (localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.ai.a)localObject1).bYh();; localObject1 = null)
+    for (localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.al.a)localObject1).cyx();; localObject1 = null)
     {
       Object localObject2 = localObject1;
       if (Util.isNullOrNil((String)localObject1)) {
-        localObject2 = this.nuJ.bDy().fzM;
+        localObject2 = this.qts.getInitConfig().hEy;
       }
-      AppMethodBeat.o(270235);
+      AppMethodBeat.o(318337);
       return localObject2;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(270227);
-    Log.i(this.cED, "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.nuJ.hashCode()) });
+    AppMethodBeat.i(318293);
+    Log.i(this.exO, "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.qts.hashCode()) });
     super.onDestroy();
-    if (this.okY != null) {
-      this.okY.b(this.ola);
+    if (this.roC != null) {
+      this.roC.b(this.roE);
     }
-    AppMethodBeat.o(270227);
+    AppMethodBeat.o(318293);
   }
   
-  public final boolean zH(final int paramInt)
+  public final boolean zX(final int paramInt)
   {
-    AppMethodBeat.i(270226);
-    Log.i(this.cED, "onClose, runtime:%s", new Object[] { Integer.valueOf(this.nuJ.hashCode()) });
-    k.d locald = k.abM(this.nuJ.mAppId);
-    Log.i(this.cED, "onRuntimeBackground, type: ".concat(String.valueOf(locald)));
-    com.tencent.mm.plugin.appbrand.jsapi.ai.a locala = (com.tencent.mm.plugin.appbrand.jsapi.ai.a)this.nuJ.av(com.tencent.mm.plugin.appbrand.jsapi.ai.a.class);
+    AppMethodBeat.i(318283);
+    Log.i(this.exO, "onClose, runtime:%s", new Object[] { Integer.valueOf(this.qts.hashCode()) });
+    k.d locald = k.Uo(this.qts.mAppId);
+    Log.i(this.exO, "onRuntimeBackground, type: ".concat(String.valueOf(locald)));
+    com.tencent.mm.plugin.appbrand.jsapi.al.a locala = (com.tencent.mm.plugin.appbrand.jsapi.al.a)this.qts.aO(com.tencent.mm.plugin.appbrand.jsapi.al.a.class);
     if (locala == null)
     {
-      Log.w(this.cED, "onRuntimeBackground, audioOfVideoBackgroundPlayManager is null");
-      if ((!cvD()) && (!this.okZ)) {
+      Log.w(this.exO, "onRuntimeBackground, audioOfVideoBackgroundPlayManager is null");
+      if ((!cYo()) && (!this.roD)) {
         break label164;
       }
-      if (com.tencent.mm.compatible.e.b.ct(this.rZC.getActivity())) {
+      if (com.tencent.mm.compatible.e.b.dh(this.vkT.getActivity())) {
         break label156;
       }
-      AppBrandFloatBallPermissionHelper.a(this.rZC.getActivity(), 18, new c.a()
+      AppBrandFloatBallPermissionHelper.a(this.vkT.getActivity(), 18, new c.a()
       {
-        public final void hR(boolean paramAnonymousBoolean)
+        public final void onCheckResult(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(266769);
-          Log.i(a.this.cED, "onClose, checkFloatBallPermission isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          AppMethodBeat.i(318255);
+          Log.i(a.this.exO, "onClose, checkFloatBallPermission isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (paramAnonymousBoolean)
           {
             a.a(a.this, paramInt);
             a.a(a.this, true);
-            AppMethodBeat.o(266769);
+            AppMethodBeat.o(318255);
             return;
           }
-          Log.w(a.this.cED, "onClose, refuse permission, remove ball and stop background play");
-          a.this.cvE();
-          a.this.okZ = false;
-          a.this.bNX();
+          Log.w(a.this.exO, "onClose, refuse permission, remove ball and stop background play");
+          a.this.cYp();
+          a.this.roD = false;
+          a.this.cok();
           a.a(a.this, false);
-          a.this.rZC.hS(true);
-          AppMethodBeat.o(266769);
+          a.this.vkT.iR(true);
+          AppMethodBeat.o(318255);
         }
       });
     }
     for (;;)
     {
-      AppMethodBeat.o(270226);
+      AppMethodBeat.o(318283);
       return true;
       locala.c(locald);
       break;
       label156:
-      zI(paramInt);
+      zY(paramInt);
     }
     label164:
-    AppMethodBeat.o(270226);
+    AppMethodBeat.o(318283);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.a
  * JD-Core Version:    0.7.0.1
  */

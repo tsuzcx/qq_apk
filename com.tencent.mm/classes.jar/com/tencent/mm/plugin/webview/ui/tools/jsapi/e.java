@@ -6,70 +6,78 @@ import com.tencent.kinda.framework.jsapi.IPCInvoke_KindaJSInvoke;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiH5ReuqestQueryCashier;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiH5ReuqestQueryCashier;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends a
 {
-  private static final int IIl = 374;
-  public static final e Qqa;
-  private static final String TAG = "MicroMsg.JsApiH5ReuqestQueryCashier";
-  private static final String fXz = "requestQueryCashier";
+  private static final int OOk;
+  private static final String TAG;
+  public static final e Xio;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(214626);
-    Qqa = new e();
+    AppMethodBeat.i(297392);
+    Xio = new e();
     TAG = "MicroMsg.JsApiH5ReuqestQueryCashier";
-    IIl = 374;
-    fXz = "requestQueryCashier";
-    AppMethodBeat.o(214626);
+    OOk = 374;
+    idA = "requestQueryCashier";
+    AppMethodBeat.o(297392);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, final n paramn)
+  private static final void a(h paramh, p paramp, Bundle paramBundle)
   {
-    AppMethodBeat.i(214624);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
+    AppMethodBeat.i(297381);
+    s.u(paramh, "$env");
+    s.u(paramp, "$msg");
+    String str = paramBundle.getString("ret", "fail");
+    paramh.WDy.doCallback(paramp.WEH, paramp.function + ':' + str, null);
+    if ((paramBundle.getInt("closeWindow", 0) == 1) && ((paramh.context instanceof WebViewUI))) {
+      ((WebViewUI)paramh.context).finish();
+    }
+    AppMethodBeat.o(297381);
+  }
+  
+  public final boolean a(h paramh, p paramp)
+  {
+    AppMethodBeat.i(297430);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
     Log.i(TAG, "get data");
-    Log.i(TAG, "data: %s", new Object[] { paramn.params.toString() });
+    Log.i(TAG, "data: %s", new Object[] { paramp.params.toString() });
     Bundle localBundle = new Bundle();
-    localBundle.putString("appId", (String)paramn.params.get("appId"));
-    localBundle.putString("nonceStr", (String)paramn.params.get("nonceStr"));
-    localBundle.putString("timeStamp", (String)paramn.params.get("timeStamp"));
-    localBundle.putString("package", (String)paramn.params.get("package"));
-    localBundle.putString("paySign", (String)paramn.params.get("paySign"));
-    localBundle.putString("signType", (String)paramn.params.get("signType"));
+    localBundle.putString("appId", (String)paramp.params.get("appId"));
+    localBundle.putString("nonceStr", (String)paramp.params.get("nonceStr"));
+    localBundle.putString("timeStamp", (String)paramp.params.get("timeStamp"));
+    localBundle.putString("package", (String)paramp.params.get("package"));
+    localBundle.putString("paySign", (String)paramp.params.get("paySign"));
+    localBundle.putString("signType", (String)paramp.params.get("signType"));
     localBundle.putString("jsapiName", "requestQueryCashier");
     localBundle.putString("notifyType", "requestQueryCashier");
     localBundle.putInt("jsapi_type", 0);
-    paramf = (com.tencent.mm.ipcinvoker.f)new a(paramf, paramn);
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localBundle, IPCInvoke_KindaJSInvoke.class, paramf);
-    AppMethodBeat.o(214624);
+    paramh = new e..ExternalSyntheticLambda0(paramh, paramp);
+    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localBundle, IPCInvoke_KindaJSInvoke.class, paramh);
+    AppMethodBeat.o(297430);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class a<T>
-    implements com.tencent.mm.ipcinvoker.f<Bundle>
-  {
-    a(com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
+    return OOk;
   }
 }
 

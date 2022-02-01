@@ -4,71 +4,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dcw
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
+  public LinkedList<dxf> YFR;
+  public String pss;
+  
+  public dcw()
+  {
+    AppMethodBeat.i(152613);
+    this.YFR = new LinkedList();
+    AppMethodBeat.o(152613);
+  }
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(213519);
+    AppMethodBeat.i(152614);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.pss != null) {
+        paramVarArgs.g(1, this.pss);
       }
-      AppMethodBeat.o(213519);
+      paramVarArgs.e(2, 8, this.YFR);
+      AppMethodBeat.o(152614);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label288;
+      if (this.pss == null) {
+        break label332;
       }
     }
-    label288:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = i.a.a.b.b.a.h(1, this.pss) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(213519);
-      return paramInt;
+      int i = i.a.a.a.c(2, 8, this.YFR);
+      AppMethodBeat.o(152614);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.YFR.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(213519);
+        AppMethodBeat.o(152614);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         dcw localdcw = (dcw)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(213519);
+          AppMethodBeat.o(152614);
           return -1;
+        case 1: 
+          localdcw.pss = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(152614);
+          return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject = (byte[])paramVarArgs.get(paramInt);
-          jh localjh = new jh();
+          dxf localdxf = new dxf();
           if ((localObject != null) && (localObject.length > 0)) {
-            localjh.parseFrom((byte[])localObject);
+            localdxf.parseFrom((byte[])localObject);
           }
-          localdcw.BaseResponse = localjh;
+          localdcw.YFR.add(localdxf);
           paramInt += 1;
         }
-        AppMethodBeat.o(213519);
+        AppMethodBeat.o(152614);
         return 0;
       }
-      AppMethodBeat.o(213519);
+      AppMethodBeat.o(152614);
       return -1;
     }
   }

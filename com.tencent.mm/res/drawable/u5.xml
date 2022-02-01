@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="@color/fm" android:endColor="@color/ac_" android:angle="-90.0" />
-</shape>
+    <item android:duration="90" android:drawable="@drawable/bvm" />
+    <item android:duration="90" android:drawable="@drawable/bvn" />
+    <item android:duration="90" android:drawable="@drawable/bvo" />
+    <item android:duration="90" android:drawable="@drawable/bvp" />
+    <item android:duration="90" android:drawable="@drawable/bvq" />
+    <item android:duration="90" android:drawable="@drawable/bvr" />
+</animation-list>

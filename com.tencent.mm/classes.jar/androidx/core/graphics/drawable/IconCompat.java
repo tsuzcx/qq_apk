@@ -22,14 +22,15 @@ import java.lang.reflect.Method;
 public class IconCompat
   extends CustomVersionedParcelable
 {
-  public static final PorterDuff.Mode KQ = PorterDuff.Mode.SRC_IN;
-  public Object KM;
-  public Parcelable KN = null;
-  public int KO = 0;
-  public int KP = 0;
-  public String KR = null;
-  public ColorStateList jE = null;
-  public PorterDuff.Mode jF = KQ;
+  public static final PorterDuff.Mode bqY = PorterDuff.Mode.SRC_IN;
+  public Object bqU;
+  public Parcelable bqV = null;
+  public int bqW = 0;
+  public int bqX = 0;
+  public String bqZ = null;
+  public String bra;
+  public PorterDuff.Mode kA = bqY;
+  public ColorStateList kz = null;
   public byte[] mData = null;
   public int mType = -1;
   
@@ -42,108 +43,157 @@ public class IconCompat
   
   public static int a(Icon paramIcon)
   {
-    AppMethodBeat.i(250842);
+    AppMethodBeat.i(196213);
     int i;
     if (Build.VERSION.SDK_INT >= 28)
     {
       i = paramIcon.getType();
-      AppMethodBeat.o(250842);
+      AppMethodBeat.o(196213);
       return i;
     }
     try
     {
       i = ((Integer)paramIcon.getClass().getMethod("getType", new Class[0]).invoke(paramIcon, new Object[0])).intValue();
-      AppMethodBeat.o(250842);
+      AppMethodBeat.o(196213);
       return i;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       new StringBuilder("Unable to get icon type ").append(paramIcon);
-      AppMethodBeat.o(250842);
+      AppMethodBeat.o(196213);
       return -1;
     }
     catch (InvocationTargetException localInvocationTargetException)
     {
       new StringBuilder("Unable to get icon type ").append(paramIcon);
-      AppMethodBeat.o(250842);
+      AppMethodBeat.o(196213);
       return -1;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       new StringBuilder("Unable to get icon type ").append(paramIcon);
-      AppMethodBeat.o(250842);
+      AppMethodBeat.o(196213);
     }
     return -1;
   }
   
-  private static String b(Icon paramIcon)
+  public static String b(Icon paramIcon)
   {
-    AppMethodBeat.i(250844);
+    AppMethodBeat.i(196230);
     if (Build.VERSION.SDK_INT >= 28)
     {
       paramIcon = paramIcon.getResPackage();
-      AppMethodBeat.o(250844);
+      AppMethodBeat.o(196230);
       return paramIcon;
     }
     try
     {
       paramIcon = (String)paramIcon.getClass().getMethod("getResPackage", new Class[0]).invoke(paramIcon, new Object[0]);
-      AppMethodBeat.o(250844);
+      AppMethodBeat.o(196230);
       return paramIcon;
     }
     catch (IllegalAccessException paramIcon)
     {
-      AppMethodBeat.o(250844);
+      AppMethodBeat.o(196230);
       return null;
     }
     catch (InvocationTargetException paramIcon)
     {
-      AppMethodBeat.o(250844);
+      AppMethodBeat.o(196230);
       return null;
     }
     catch (NoSuchMethodException paramIcon)
     {
-      AppMethodBeat.o(250844);
+      AppMethodBeat.o(196230);
     }
     return null;
   }
   
   private static int c(Icon paramIcon)
   {
-    AppMethodBeat.i(250845);
+    AppMethodBeat.i(196241);
     int i;
     if (Build.VERSION.SDK_INT >= 28)
     {
       i = paramIcon.getResId();
-      AppMethodBeat.o(250845);
+      AppMethodBeat.o(196241);
       return i;
     }
     try
     {
       i = ((Integer)paramIcon.getClass().getMethod("getResId", new Class[0]).invoke(paramIcon, new Object[0])).intValue();
-      AppMethodBeat.o(250845);
+      AppMethodBeat.o(196241);
       return i;
     }
     catch (IllegalAccessException paramIcon)
     {
-      AppMethodBeat.o(250845);
+      AppMethodBeat.o(196241);
       return 0;
     }
     catch (InvocationTargetException paramIcon)
     {
-      AppMethodBeat.o(250845);
+      AppMethodBeat.o(196241);
       return 0;
     }
     catch (NoSuchMethodException paramIcon)
     {
-      AppMethodBeat.o(250845);
+      AppMethodBeat.o(196241);
     }
     return 0;
   }
   
-  public static Bitmap d(Bitmap paramBitmap)
+  private static Uri d(Icon paramIcon)
   {
-    AppMethodBeat.i(250849);
+    AppMethodBeat.i(196259);
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      paramIcon = paramIcon.getUri();
+      AppMethodBeat.o(196259);
+      return paramIcon;
+    }
+    try
+    {
+      paramIcon = (Uri)paramIcon.getClass().getMethod("getUri", new Class[0]).invoke(paramIcon, new Object[0]);
+      AppMethodBeat.o(196259);
+      return paramIcon;
+    }
+    catch (IllegalAccessException paramIcon)
+    {
+      AppMethodBeat.o(196259);
+      return null;
+    }
+    catch (InvocationTargetException paramIcon)
+    {
+      AppMethodBeat.o(196259);
+      return null;
+    }
+    catch (NoSuchMethodException paramIcon)
+    {
+      AppMethodBeat.o(196259);
+    }
+    return null;
+  }
+  
+  public static IconCompat j(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(196165);
+    if (paramInt == 0)
+    {
+      paramString = new IllegalArgumentException("Drawable resource ID must not be 0");
+      AppMethodBeat.o(196165);
+      throw paramString;
+    }
+    IconCompat localIconCompat = new IconCompat((byte)0);
+    localIconCompat.bqW = paramInt;
+    localIconCompat.bqU = paramString;
+    localIconCompat.bra = paramString;
+    AppMethodBeat.o(196165);
+    return localIconCompat;
+  }
+  
+  public static Bitmap k(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(196273);
     int i = (int)(0.6666667F * Math.min(paramBitmap.getWidth(), paramBitmap.getHeight()));
     Bitmap localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
@@ -158,106 +208,58 @@ public class IconCompat
     localPaint.setShader((Shader)localObject);
     localCanvas.drawCircle(f, f, 0.9166667F * f, localPaint);
     localCanvas.setBitmap(null);
-    AppMethodBeat.o(250849);
+    AppMethodBeat.o(196273);
     return localBitmap;
-  }
-  
-  public static Uri d(Icon paramIcon)
-  {
-    AppMethodBeat.i(250847);
-    if (Build.VERSION.SDK_INT >= 28)
-    {
-      paramIcon = paramIcon.getUri();
-      AppMethodBeat.o(250847);
-      return paramIcon;
-    }
-    try
-    {
-      paramIcon = (Uri)paramIcon.getClass().getMethod("getUri", new Class[0]).invoke(paramIcon, new Object[0]);
-      AppMethodBeat.o(250847);
-      return paramIcon;
-    }
-    catch (IllegalAccessException paramIcon)
-    {
-      AppMethodBeat.o(250847);
-      return null;
-    }
-    catch (InvocationTargetException paramIcon)
-    {
-      AppMethodBeat.o(250847);
-      return null;
-    }
-    catch (NoSuchMethodException paramIcon)
-    {
-      AppMethodBeat.o(250847);
-    }
-    return null;
-  }
-  
-  public static IconCompat h(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(250832);
-    if (paramInt == 0)
-    {
-      paramString = new IllegalArgumentException("Drawable resource ID must not be 0");
-      AppMethodBeat.o(250832);
-      throw paramString;
-    }
-    IconCompat localIconCompat = new IconCompat((byte)0);
-    localIconCompat.KO = paramInt;
-    localIconCompat.KM = paramString;
-    AppMethodBeat.o(250832);
-    return localIconCompat;
   }
   
   public final int getResId()
   {
-    AppMethodBeat.i(250840);
+    AppMethodBeat.i(196294);
     if ((this.mType == -1) && (Build.VERSION.SDK_INT >= 23))
     {
-      i = c((Icon)this.KM);
-      AppMethodBeat.o(250840);
+      i = c((Icon)this.bqU);
+      AppMethodBeat.o(196294);
       return i;
     }
     if (this.mType != 2)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("called getResId() on ".concat(String.valueOf(this)));
-      AppMethodBeat.o(250840);
+      AppMethodBeat.o(196294);
       throw localIllegalStateException;
     }
-    int i = this.KO;
-    AppMethodBeat.o(250840);
+    int i = this.bqW;
+    AppMethodBeat.o(196294);
     return i;
   }
   
-  public final String gz()
+  public final Uri getUri()
   {
-    AppMethodBeat.i(250838);
+    AppMethodBeat.i(196306);
     if ((this.mType == -1) && (Build.VERSION.SDK_INT >= 23))
     {
-      localObject = b((Icon)this.KM);
-      AppMethodBeat.o(250838);
+      localObject = d((Icon)this.bqU);
+      AppMethodBeat.o(196306);
       return localObject;
     }
-    if (this.mType != 2)
+    if ((this.mType != 4) && (this.mType != 6))
     {
-      localObject = new IllegalStateException("called getResPackage() on ".concat(String.valueOf(this)));
-      AppMethodBeat.o(250838);
+      localObject = new IllegalStateException("called getUri() on ".concat(String.valueOf(this)));
+      AppMethodBeat.o(196306);
       throw ((Throwable)localObject);
     }
-    Object localObject = ((String)this.KM).split(":", -1)[0];
-    AppMethodBeat.o(250838);
+    Object localObject = Uri.parse((String)this.bqU);
+    AppMethodBeat.o(196306);
     return localObject;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(250841);
+    AppMethodBeat.i(196334);
     Object localObject;
     if (this.mType == -1)
     {
-      localObject = String.valueOf(this.KM);
-      AppMethodBeat.o(250841);
+      localObject = String.valueOf(this.bqU);
+      AppMethodBeat.o(196334);
       return localObject;
     }
     StringBuilder localStringBuilder = new StringBuilder("Icon(typ=");
@@ -273,17 +275,17 @@ public class IconCompat
     }
     for (;;)
     {
-      if (this.jE != null)
+      if (this.kz != null)
       {
         ((StringBuilder)localObject).append(" tint=");
-        ((StringBuilder)localObject).append(this.jE);
+        ((StringBuilder)localObject).append(this.kz);
       }
-      if (this.jF != KQ) {
-        ((StringBuilder)localObject).append(" mode=").append(this.jF);
+      if (this.kA != bqY) {
+        ((StringBuilder)localObject).append(" mode=").append(this.kA);
       }
       ((StringBuilder)localObject).append(")");
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(250841);
+      AppMethodBeat.o(196334);
       return localObject;
       localObject = "BITMAP";
       break;
@@ -297,23 +299,23 @@ public class IconCompat
       break;
       localObject = "URI_MASKABLE";
       break;
-      ((StringBuilder)localObject).append(" size=").append(((Bitmap)this.KM).getWidth()).append("x").append(((Bitmap)this.KM).getHeight());
+      ((StringBuilder)localObject).append(" size=").append(((Bitmap)this.bqU).getWidth()).append("x").append(((Bitmap)this.bqU).getHeight());
       continue;
-      ((StringBuilder)localObject).append(" pkg=").append(gz()).append(" id=").append(String.format("0x%08x", new Object[] { Integer.valueOf(getResId()) }));
+      ((StringBuilder)localObject).append(" pkg=").append(this.bra).append(" id=").append(String.format("0x%08x", new Object[] { Integer.valueOf(getResId()) }));
       continue;
-      ((StringBuilder)localObject).append(" len=").append(this.KO);
-      if (this.KP != 0)
+      ((StringBuilder)localObject).append(" len=").append(this.bqW);
+      if (this.bqX != 0)
       {
-        ((StringBuilder)localObject).append(" off=").append(this.KP);
+        ((StringBuilder)localObject).append(" off=").append(this.bqX);
         continue;
-        ((StringBuilder)localObject).append(" uri=").append(this.KM);
+        ((StringBuilder)localObject).append(" uri=").append(this.bqU);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.graphics.drawable.IconCompat
  * JD-Core Version:    0.7.0.1
  */

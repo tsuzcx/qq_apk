@@ -1,111 +1,136 @@
 package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.cua;
-import com.tencent.mm.protocal.protobuf.dyf;
-import com.tencent.mm.protocal.protobuf.dyg;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.dlc;
+import com.tencent.mm.protocal.protobuf.erj;
+import com.tencent.mm.protocal.protobuf.erk;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/op_report/OpReportUtil;", "", "()V", "getReportIdOrThrows", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "matchNetScene", "", "requestAppID", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/op_report/OpReportUtil;", "", "()V", "getReportIdOrThrows", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "matchNetScene", "", "requestAppID", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final c phL;
+  public static final c sne;
   
   static
   {
     AppMethodBeat.i(50632);
-    phL = new c();
+    sne = new c();
     AppMethodBeat.o(50632);
   }
   
-  public static final boolean b(q paramq, String paramString)
+  public static final boolean b(p paramp, String paramString)
   {
-    Object localObject2 = null;
+    Object localObject = null;
     AppMethodBeat.i(50630);
-    p.k(paramString, "requestAppID");
-    Object localObject1;
-    if (paramq != null)
+    s.u(paramString, "requestAppID");
+    if (paramp == null)
     {
-      paramq = paramq.getReqResp();
-      localObject1 = paramq;
-      if (!(paramq instanceof d)) {
-        localObject1 = null;
+      paramp = null;
+      if (!(paramp instanceof com.tencent.mm.am.c)) {
+        break label76;
       }
-      paramq = (d)localObject1;
-      if (paramq == null) {
-        break label106;
+      paramp = (com.tencent.mm.am.c)paramp;
+      label31:
+      if (paramp != null) {
+        break label81;
       }
+      paramp = null;
+      label37:
+      if (!(paramp instanceof erj)) {
+        break label92;
+      }
+      paramp = (erj)paramp;
+      label49:
+      if (paramp != null) {
+        break label97;
+      }
+      paramp = localObject;
     }
-    label106:
-    for (paramq = paramq.bhX();; paramq = null)
+    for (;;)
     {
-      localObject1 = paramq;
-      if (!(paramq instanceof dyf)) {
-        localObject1 = null;
-      }
-      localObject1 = (dyf)localObject1;
-      paramq = localObject2;
-      if (localObject1 != null)
-      {
-        localObject1 = ((dyf)localObject1).UdU;
-        paramq = localObject2;
-        if (localObject1 != null) {
-          paramq = ((cua)localObject1).appid;
-        }
-      }
-      boolean bool = p.h(paramq, paramString);
+      boolean bool = s.p(paramp, paramString);
       AppMethodBeat.o(50630);
       return bool;
-      paramq = null;
+      paramp = paramp.getReqResp();
       break;
+      label76:
+      paramp = null;
+      break label31;
+      label81:
+      paramp = c.b.b(paramp.otB);
+      break label37;
+      label92:
+      paramp = null;
+      break label49;
+      label97:
+      dlc localdlc = paramp.abvi;
+      paramp = localObject;
+      if (localdlc != null) {
+        paramp = localdlc.appid;
+      }
     }
   }
   
-  public static final int e(q paramq)
+  public static final int e(p paramp)
   {
+    Object localObject = null;
     AppMethodBeat.i(50631);
-    q localq;
-    if (paramq != null)
+    if (paramp == null)
     {
-      paramq = paramq.getReqResp();
-      localq = paramq;
-      if (!(paramq instanceof d)) {
-        localq = null;
-      }
-      paramq = (d)localq;
-      if (paramq == null) {
+      paramp = null;
+      if (!(paramp instanceof com.tencent.mm.am.c)) {
         break label76;
+      }
+      paramp = (com.tencent.mm.am.c)paramp;
+      label25:
+      if (paramp != null) {
+        break label81;
+      }
+      paramp = null;
+      label31:
+      if (!(paramp instanceof erk)) {
+        break label92;
+      }
+      paramp = (erk)paramp;
+      label43:
+      if (paramp != null) {
+        break label97;
       }
     }
     label76:
-    for (paramq = paramq.bhY();; paramq = null)
-    {
-      localq = paramq;
-      if (!(paramq instanceof dyg)) {
-        localq = null;
-      }
-      paramq = (dyg)localq;
-      if (paramq == null) {
-        break label81;
-      }
-      int i = paramq.UdV;
-      AppMethodBeat.o(50631);
-      return i;
-      paramq = null;
-      break;
-    }
     label81:
-    paramq = (Throwable)new IllegalArgumentException();
+    label92:
+    label97:
+    for (paramp = localObject;; paramp = Integer.valueOf(paramp.abvj))
+    {
+      if (paramp != null) {
+        break label108;
+      }
+      paramp = new IllegalArgumentException();
+      AppMethodBeat.o(50631);
+      throw paramp;
+      paramp = paramp.getReqResp();
+      break;
+      paramp = null;
+      break label25;
+      paramp = c.c.b(paramp.otC);
+      break label31;
+      paramp = null;
+      break label43;
+    }
+    label108:
+    int i = paramp.intValue();
     AppMethodBeat.o(50631);
-    throw paramq;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.op_report.c
  * JD-Core Version:    0.7.0.1
  */

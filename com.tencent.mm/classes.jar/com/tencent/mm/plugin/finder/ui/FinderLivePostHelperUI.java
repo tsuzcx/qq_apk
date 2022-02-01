@@ -1,266 +1,280 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ad.i;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.kernel.f;
+import com.tencent.mm.autogen.a.adl;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.widget.ai;
-import com.tencent.mm.plugin.finder.live.widget.ai.c;
-import com.tencent.mm.plugin.finder.live.widget.o;
-import com.tencent.mm.protocal.protobuf.elx;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.widget.ax;
+import com.tencent.mm.plugin.finder.live.widget.ax.b;
+import com.tencent.mm.plugin.finder.live.widget.w;
+import com.tencent.mm.protocal.protobuf.fgq;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.HashMap;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.b;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderLivePostHelperUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "exception", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveExceptionWidget;", "faceVerifyUrl", "", "precheck", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLivePrecheckWidget;", "precheckTypeCache", "", "progressBar", "Landroid/widget/ProgressBar;", "finishWithoutTransition", "", "getLayoutId", "gotoFaceVerify", "verifyUrl", "gotoFaceVerifyImpl", "requestCode", "initIntent", "onActivityResult", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onResume", "Companion", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderLivePostHelperUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "exception", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveExceptionWidget;", "faceVerifyUrl", "", "precheck", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLivePrecheckWidget;", "precheckTypeCache", "", "progressBar", "Landroid/widget/ProgressBar;", "realnameNotifyListener", "Lcom/tencent/mm/sdk/event/IListener;", "afterVerify", "", "resultCode", "finishWithoutTransition", "getLayoutId", "goToPayRealNameVerify", "gotoFaceVerify", "verifyUrl", "gotoFaceVerifyImpl", "requestCode", "initIntent", "onActivityResult", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onResume", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLivePostHelperUI
   extends MMFinderUI
 {
-  public static final a ArH;
-  private ai ArE;
-  private String ArF = "";
-  private int ArG;
-  private HashMap _$_findViewCache;
+  public static final FinderLivePostHelperUI.a FRe;
+  private final IListener<?> CUH;
+  private w CzQ;
+  private ax FRf;
+  private String FRg;
+  private int FRh;
   private ProgressBar progressBar;
-  private o ybs;
   
   static
   {
-    AppMethodBeat.i(233392);
-    ArH = new a((byte)0);
-    AppMethodBeat.o(233392);
+    AppMethodBeat.i(347304);
+    FRe = new FinderLivePostHelperUI.a((byte)0);
+    AppMethodBeat.o(347304);
   }
   
-  private final void eav()
+  public FinderLivePostHelperUI()
   {
-    AppMethodBeat.i(233391);
+    AppMethodBeat.i(347250);
+    this.FRg = "";
+    this.CUH = ((IListener)new IListener(com.tencent.mm.app.f.hfK) {});
+    AppMethodBeat.o(347250);
+  }
+  
+  private final void fbl()
+  {
+    AppMethodBeat.i(347257);
     finish();
     overridePendingTransition(0, 0);
-    AppMethodBeat.o(233391);
+    AppMethodBeat.o(347257);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(233400);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233400);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233399);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233399);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_post_helper;
+    return p.f.Cfh;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Intent localIntent = null;
     Object localObject = null;
-    AppMethodBeat.i(233389);
-    Log.i("Finder.FinderLivePostHelperUI", "onActivityResult requestCode:10000, resultCode:".concat(String.valueOf(paramInt2)));
+    Intent localIntent = null;
+    String str1 = null;
+    String str2 = null;
+    AppMethodBeat.i(347350);
+    Log.i("Finder.FinderLivePostHelperUI", s.X("onActivityResult requestCode:10000, resultCode:", Integer.valueOf(paramInt2)));
     switch (paramInt1)
     {
     default: 
-      paramIntent = this.ArE;
-      if (paramIntent == null) {
-        p.bGy("precheck");
-      }
-      switch (paramInt1)
+      paramIntent = this.FRf;
+      if (paramIntent == null)
       {
+        s.bIx("precheck");
+        paramIntent = str2;
       }
       break;
     }
-    for (;;)
+    while ((paramInt1 == 10123) && (paramInt2 == -1))
     {
-      AppMethodBeat.o(233389);
-      return;
-      localIntent = new Intent();
-      if (paramIntent != null) {
-        localObject = paramIntent.getBundleExtra("result_data");
-      }
-      if ((paramInt2 == -1) && (localObject != null))
+      h.baE().ban().set(at.a.adaU, Boolean.TRUE);
+      paramIntent.Eth = true;
+      if ((!paramIntent.Eti) && (!paramIntent.Etj) && (!paramIntent.Etk))
       {
-        paramIntent = ((Bundle)localObject).getString("go_next", "");
-        localObject = ((Bundle)localObject).getString("result_json");
-        if (!Util.isNullOrNil((String)localObject))
+        paramIntent = paramIntent.EsY;
+        if (paramIntent != null)
         {
-          paramInt1 = new i((String)localObject).getInt("code");
-          Log.i("Finder.FinderLivePostHelperUI", "onActivityResult nextStep:" + paramIntent + ", code:" + paramInt1);
-          if ((p.h(paramIntent, "roomlive_verify")) && (paramInt1 == 0))
-          {
-            paramIntent = h.aHG();
-            p.j(paramIntent, "MMKernel.storage()");
-            paramIntent.aHp().set(ar.a.VyG, Boolean.TRUE);
-            localIntent.putExtra("FACE_VERIFY_RESULT", 1);
-          }
-        }
-      }
-      setResult(-1, localIntent);
-      eav();
-      AppMethodBeat.o(233389);
-      return;
-      localObject = localIntent;
-      if (paramIntent != null) {
-        localObject = paramIntent.getBundleExtra("result_data");
-      }
-      if ((paramInt2 == -1) && (localObject != null))
-      {
-        paramIntent = ((Bundle)localObject).getString("go_next", "");
-        localObject = ((Bundle)localObject).getString("result_json");
-        if (!Util.isNullOrNil((String)localObject))
-        {
-          paramInt1 = new i((String)localObject).getInt("code");
-          Log.i("Finder.FinderLivePostHelperUI", "onActivityResult precheckTypeCache:" + this.ArG + " nextStep:" + paramIntent + ", code:" + paramInt1);
-          if ((p.h(paramIntent, "roomlive_verify")) && (paramInt1 == 0))
-          {
-            paramIntent = this.ArE;
-            if (paramIntent == null) {
-              p.bGy("precheck");
-            }
-            paramIntent.Q(true, this.ArG);
-            this.ArG = 0;
-            AppMethodBeat.o(233389);
-            return;
-          }
-        }
-      }
-      paramIntent = this.ArE;
-      if (paramIntent == null) {
-        p.bGy("precheck");
-      }
-      paramIntent.Q(false, this.ArG);
-      this.ArG = 0;
-      AppMethodBeat.o(233389);
-      return;
-      if (paramInt2 == -1)
-      {
-        localObject = h.aHG();
-        p.j(localObject, "MMKernel.storage()");
-        ((f)localObject).aHp().set(ar.a.VyY, Boolean.TRUE);
-        paramIntent.zqF = true;
-        if ((!paramIntent.zqG) && (!paramIntent.zqH) && (!paramIntent.zqI))
-        {
-          paramIntent = paramIntent.zqw;
-          if (paramIntent != null)
-          {
-            paramIntent.invoke(Boolean.TRUE);
-            AppMethodBeat.o(233389);
-            return;
-          }
-          AppMethodBeat.o(233389);
+          paramIntent.invoke(Boolean.TRUE);
+          AppMethodBeat.o(347350);
           return;
+          localIntent = new Intent();
+          if (paramIntent == null) {}
+          for (paramIntent = localObject;; paramIntent = paramIntent.getBundleExtra("result_data"))
+          {
+            if ((paramInt2 == -1) && (paramIntent != null))
+            {
+              str1 = paramIntent.getString("go_next", "");
+              paramIntent = paramIntent.getString("result_json");
+              if (!Util.isNullOrNil(paramIntent))
+              {
+                paramInt1 = new i(paramIntent).getInt("code");
+                Log.i("Finder.FinderLivePostHelperUI", "onActivityResult nextStep:" + str1 + ", code:" + paramInt1);
+                if ((s.p(str1, "roomlive_verify")) && (paramInt1 == 0))
+                {
+                  h.baE().ban().set(at.a.adaC, Boolean.TRUE);
+                  localIntent.putExtra("FACE_VERIFY_RESULT", 1);
+                }
+              }
+            }
+            setResult(-1, localIntent);
+            fbl();
+            AppMethodBeat.o(347350);
+            return;
+          }
+          if (paramIntent == null)
+          {
+            paramIntent = null;
+            if ((paramInt2 != -1) || (paramIntent == null)) {
+              break label486;
+            }
+            str2 = paramIntent.getString("go_next", "");
+            paramIntent = paramIntent.getString("result_json");
+            if (Util.isNullOrNil(paramIntent)) {
+              break label486;
+            }
+            paramInt1 = new i(paramIntent).getInt("code");
+            Log.i("Finder.FinderLivePostHelperUI", "onActivityResult precheckTypeCache:" + this.FRh + " nextStep:" + str2 + ", code:" + paramInt1);
+            if ((!s.p(str2, "roomlive_verify")) || (paramInt1 != 0)) {
+              break label486;
+            }
+            paramIntent = this.FRf;
+            if (paramIntent != null) {
+              break label483;
+            }
+            s.bIx("precheck");
+            paramIntent = localIntent;
+          }
+          label483:
+          for (;;)
+          {
+            paramIntent.Q(true, this.FRh);
+            this.FRh = 0;
+            AppMethodBeat.o(347350);
+            return;
+            paramIntent = paramIntent.getBundleExtra("result_data");
+            break;
+          }
+          label486:
+          paramIntent = this.FRf;
+          if (paramIntent == null)
+          {
+            s.bIx("precheck");
+            paramIntent = str1;
+          }
+          for (;;)
+          {
+            paramIntent.Q(false, this.FRh);
+            this.FRh = 0;
+            AppMethodBeat.o(347350);
+            return;
+          }
         }
-        paramIntent.dID();
+      }
+      else
+      {
+        paramIntent.eBr();
       }
     }
+    AppMethodBeat.o(347350);
   }
   
-  public final void onCreate(final Bundle paramBundle)
+  public final void onCreate(Bundle paramBundle)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(233378);
+    AppMethodBeat.i(347321);
     super.onCreate(paramBundle);
     hideTitleView();
-    paramBundle = findViewById(b.f.finder_live_post_forbidden);
-    p.j(paramBundle, "findViewById(R.id.finder_live_post_forbidden)");
-    this.ybs = new o(paramBundle);
-    paramBundle = findViewById(b.f.finder_live_post_precheck);
-    p.j(paramBundle, "findViewById(R.id.finder_live_post_precheck)");
-    this.ArE = new ai((ViewGroup)paramBundle);
-    paramBundle = this.ArE;
-    if (paramBundle == null) {
-      p.bGy("precheck");
-    }
-    paramBundle.zqv = ((m)new d(this));
-    paramBundle.zqw = ((b)new e(this));
-    paramBundle = findViewById(b.f.finder_live_helper_loading_progress_bar);
-    p.j(paramBundle, "findViewById(R.id.finder…per_loading_progress_bar)");
-    this.progressBar = ((ProgressBar)paramBundle);
-    int i = getIntent().getIntExtra("LIVE_HELP_TYPE", 0);
-    Log.i("Finder.FinderLivePostHelperUI", "type:".concat(String.valueOf(i)));
-    switch (i)
+    paramBundle = findViewById(p.e.BQF);
+    s.s(paramBundle, "findViewById(R.id.finder_live_post_forbidden)");
+    this.CzQ = new w(paramBundle);
+    paramBundle = findViewById(p.e.BQS);
+    s.s(paramBundle, "findViewById(R.id.finder_live_post_precheck)");
+    this.FRf = new ax((ViewGroup)paramBundle);
+    paramBundle = this.FRf;
+    int i;
+    if (paramBundle == null)
     {
+      s.bIx("precheck");
+      paramBundle = null;
+      paramBundle.EsX = ((m)new d(this));
+      paramBundle.EsY = ((b)new e(this));
+      paramBundle = findViewById(p.e.BMh);
+      s.s(paramBundle, "findViewById(R.id.finder…per_loading_progress_bar)");
+      this.progressBar = ((ProgressBar)paramBundle);
+      i = getIntent().getIntExtra("LIVE_HELP_TYPE", 0);
+      Log.i("Finder.FinderLivePostHelperUI", s.X("type:", Integer.valueOf(i)));
+      switch (i)
+      {
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(233378);
+      AppMethodBeat.o(347321);
       return;
+      break;
       paramBundle = getIntent().getStringExtra("FACE_VERIFY_URL");
-      p.j(paramBundle, "intent.getStringExtra(Co…HelperUI.FACE_VERIFY_URL)");
-      this.ArF = paramBundle;
-      paramBundle = this.ArF;
-      localObject1 = this.ybs;
-      if (localObject1 == null) {
-        p.bGy("exception");
-      }
-      Object localObject2 = o.znK;
-      o.a((o)localObject1, o.dIe(), null, (b)new b(this, paramBundle), 6);
-      AppMethodBeat.o(233378);
-      return;
-      paramBundle = this.ybs;
-      if (paramBundle == null) {
-        p.bGy("exception");
-      }
-      localObject1 = o.znK;
-      o.a(paramBundle, o.dId(), null, (b)new c(this), 6);
-      AppMethodBeat.o(233378);
-      return;
-      localObject2 = getIntent().getByteArrayExtra("PRECHECK_SPAMRISK");
-      paramBundle = (Bundle)localObject1;
-      if (localObject2 != null)
+      s.checkNotNull(paramBundle);
+      s.s(paramBundle, "intent.getStringExtra(Co…lperUI.FACE_VERIFY_URL)!!");
+      this.FRg = paramBundle;
+      localObject1 = this.FRg;
+      paramBundle = this.CzQ;
+      if (paramBundle == null)
       {
-        paramBundle = new elx();
-        paramBundle.parseFrom((byte[])localObject2);
+        s.bIx("exception");
+        paramBundle = null;
       }
-      if (paramBundle != null)
+      for (;;)
       {
-        localObject1 = this.ArE;
-        if (localObject1 == null) {
-          p.bGy("precheck");
-        }
-        i = getIntent().getIntExtra("PRECHECK_USERFLAG", 0);
-        p.k(paramBundle, "spamRisk");
-        d.uiThread((a)new ai.c((ai)localObject1, i, paramBundle));
-        AppMethodBeat.o(233378);
+        localObject2 = w.EoA;
+        w.a(paramBundle, w.eAB(), null, (b)new b(this, (String)localObject1), 6);
+        AppMethodBeat.o(347321);
         return;
       }
+      paramBundle = this.CzQ;
+      if (paramBundle == null)
+      {
+        s.bIx("exception");
+        paramBundle = null;
+      }
+      for (;;)
+      {
+        localObject1 = w.EoA;
+        w.a(paramBundle, w.eAA(), null, (b)new c(this), 6);
+        AppMethodBeat.o(347321);
+        return;
+      }
+      Object localObject2 = getIntent().getByteArrayExtra("PRECHECK_SPAMRISK");
+      if (localObject2 == null)
+      {
+        paramBundle = null;
+        if (paramBundle == null) {
+          break label465;
+        }
+        localObject2 = this.FRf;
+        if (localObject2 != null) {
+          break label459;
+        }
+        s.bIx("precheck");
+      }
+      for (;;)
+      {
+        i = getIntent().getIntExtra("PRECHECK_USERFLAG", 0);
+        s.u(paramBundle, "spamRisk");
+        d.uiThread((a)new ax.b((ax)localObject1, i, paramBundle));
+        AppMethodBeat.o(347321);
+        return;
+        paramBundle = new fgq();
+        paramBundle.parseFrom((byte[])localObject2);
+        break;
+        label459:
+        localObject1 = localObject2;
+      }
+      label465:
       Log.e("Finder.FinderLivePostHelperUI", "LIVE_PRECHECK error, spamRisk is empty!");
       finish();
     }
@@ -268,26 +282,32 @@ public final class FinderLivePostHelperUI
   
   public final void onPause()
   {
-    AppMethodBeat.i(233385);
+    AppMethodBeat.i(347334);
     super.onPause();
-    ProgressBar localProgressBar = this.progressBar;
-    if (localProgressBar == null) {
-      p.bGy("progressBar");
+    ProgressBar localProgressBar2 = this.progressBar;
+    ProgressBar localProgressBar1 = localProgressBar2;
+    if (localProgressBar2 == null)
+    {
+      s.bIx("progressBar");
+      localProgressBar1 = null;
     }
-    localProgressBar.setVisibility(8);
-    AppMethodBeat.o(233385);
+    localProgressBar1.setVisibility(8);
+    AppMethodBeat.o(347334);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(233383);
+    AppMethodBeat.i(347328);
     super.onResume();
-    ProgressBar localProgressBar = this.progressBar;
-    if (localProgressBar == null) {
-      p.bGy("progressBar");
+    ProgressBar localProgressBar2 = this.progressBar;
+    ProgressBar localProgressBar1 = localProgressBar2;
+    if (localProgressBar2 == null)
+    {
+      s.bIx("progressBar");
+      localProgressBar1 = null;
     }
-    localProgressBar.setVisibility(8);
-    AppMethodBeat.o(233383);
+    localProgressBar1.setVisibility(8);
+    AppMethodBeat.o(347328);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -296,13 +316,10 @@ public final class FinderLivePostHelperUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderLivePostHelperUI$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "verify", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "verify", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements b<Boolean, x>
+    extends u
+    implements b<Boolean, ah>
   {
     b(FinderLivePostHelperUI paramFinderLivePostHelperUI, String paramString)
     {
@@ -310,10 +327,10 @@ public final class FinderLivePostHelperUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "ok", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "ok", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements b<Boolean, x>
+    extends u
+    implements b<Boolean, ah>
   {
     c(FinderLivePostHelperUI paramFinderLivePostHelperUI)
     {
@@ -321,10 +338,10 @@ public final class FinderLivePostHelperUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "verifyUrl", "", "precheckType", "", "invoke", "com/tencent/mm/plugin/finder/ui/FinderLivePostHelperUI$onCreate$1$1"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "verifyUrl", "", "precheckType", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements m<String, Integer, x>
+    extends u
+    implements m<String, Integer, ah>
   {
     d(FinderLivePostHelperUI paramFinderLivePostHelperUI)
     {
@@ -332,10 +349,10 @@ public final class FinderLivePostHelperUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "ok", "", "invoke", "com/tencent/mm/plugin/finder/ui/FinderLivePostHelperUI$onCreate$1$2"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "ok", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements b<Boolean, x>
+    extends u
+    implements b<Boolean, ah>
   {
     e(FinderLivePostHelperUI paramFinderLivePostHelperUI)
     {
@@ -345,7 +362,7 @@ public final class FinderLivePostHelperUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderLivePostHelperUI
  * JD-Core Version:    0.7.0.1
  */

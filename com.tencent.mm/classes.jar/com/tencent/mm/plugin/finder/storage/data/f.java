@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.plugin.finder.storage.am;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.finder.storage.au;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -10,37 +11,37 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cacheBulletSubtitleComments", "", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$CacheKey;", "", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "cacheCommentExtras", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "cacheComments", "addBulletSubtitleComments", "", "feedId", "", "refCommentId", "comments", "addCommentsCache", "addExtraCache", "pos", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "", "downContinue", "hasExpand", "clearBulletSubtitleCache", "clearCache", "getBulletSubtitleComments", "getComments", "getExtra", "getStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage;", "markUnsentCommentsCanRemove", "CacheKey", "Extra", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cacheBulletSubtitleComments", "", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$CacheKey;", "", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "cacheCommentExtras", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "cacheComments", "addBulletSubtitleComments", "", "feedId", "", "refCommentId", "comments", "addCommentsCache", "addExtraCache", "pos", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "", "downContinue", "hasExpand", "clearBulletSubtitleCache", "clearCache", "getBulletSubtitleComments", "getComments", "getExtra", "getStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage;", "markUnsentCommentsCanRemove", "CacheKey", "Extra", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
 {
-  private static final Map<a, List<am>> AmZ;
-  private static final Map<a, b> Ana;
-  public static final Map<a, List<am>> Anb;
-  public static final f Anc;
-  private static final String TAG = "Finder.FinderCommentCache";
+  public static final f FMT;
+  private static final Map<a, List<au>> FMU;
+  private static final Map<a, b> FMV;
+  public static final Map<a, List<au>> FMW;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(167059);
-    Anc = new f();
+    FMT = new f();
     TAG = "Finder.FinderCommentCache";
-    AmZ = (Map)new LinkedHashMap();
-    Ana = (Map)new LinkedHashMap();
-    Anb = (Map)new LinkedHashMap();
+    FMU = (Map)new LinkedHashMap();
+    FMV = (Map)new LinkedHashMap();
+    FMW = (Map)new LinkedHashMap();
     AppMethodBeat.o(167059);
   }
   
-  private void X(long paramLong1, long paramLong2)
+  private void av(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(167054);
     try
     {
-      AmZ.remove(new a(paramLong1, paramLong2));
-      Ana.remove(new a(paramLong1, paramLong2));
+      FMU.remove(new a(paramLong1, paramLong2));
+      FMV.remove(new a(paramLong1, paramLong2));
       return;
     }
     finally
@@ -49,7 +50,83 @@ public final class f
     }
   }
   
-  public final void Ls(long paramLong)
+  public final void a(long paramLong1, long paramLong2, int paramInt, b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(178422);
+    try
+    {
+      FMV.put(new a(paramLong1, paramLong2), new b(paramInt, paramb, paramBoolean1, paramBoolean2, paramBoolean3));
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(178422);
+    }
+  }
+  
+  public final void a(long paramLong1, long paramLong2, List<au> paramList)
+  {
+    AppMethodBeat.i(167052);
+    s.u(paramList, "comments");
+    try
+    {
+      FMT.av(paramLong1, paramLong2);
+      FMU.put(new a(paramLong1, paramLong2), paramList);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(167052);
+    }
+  }
+  
+  public final List<au> aw(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(167057);
+    try
+    {
+      List localList = (List)FMU.get(new a(paramLong1, paramLong2));
+      return localList;
+    }
+    finally
+    {
+      AppMethodBeat.o(167057);
+    }
+  }
+  
+  public final b ax(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(167058);
+    try
+    {
+      b localb = (b)FMV.get(new a(paramLong1, paramLong2));
+      return localb;
+    }
+    finally
+    {
+      AppMethodBeat.o(167058);
+    }
+  }
+  
+  public final void clearCache()
+  {
+    AppMethodBeat.i(167056);
+    Log.i(TAG, "clearCache all");
+    try
+    {
+      FMU.clear();
+      FMV.clear();
+      FMW.clear();
+      ah localah = ah.aiuX;
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(167056);
+    }
+  }
+  
+  public final void oz(long paramLong)
   {
     AppMethodBeat.i(167055);
     Map.Entry localEntry;
@@ -58,7 +135,7 @@ public final class f
     {
       try
       {
-        localObject2 = AmZ;
+        localObject2 = FMU;
         Map localMap1 = (Map)new LinkedHashMap();
         localObject2 = ((Map)localObject2).entrySet().iterator();
         if (!((Iterator)localObject2).hasNext()) {
@@ -82,9 +159,9 @@ public final class f
         AppMethodBeat.o(167055);
       }
     }
-    AmZ.clear();
-    AmZ.putAll(localMap2);
-    Object localObject2 = Ana;
+    FMU.clear();
+    FMU.putAll(localMap2);
+    Object localObject2 = FMV;
     Object localObject1 = (Map)new LinkedHashMap();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     label277:
@@ -105,186 +182,135 @@ public final class f
         }
         ((Map)localObject1).put(localEntry.getKey(), localEntry.getValue());
         break;
-        Ana.clear();
-        Ana.putAll((Map)localObject1);
-        localObject1 = x.aazN;
+        FMV.clear();
+        FMV.putAll((Map)localObject1);
+        localObject1 = ah.aiuX;
         AppMethodBeat.o(167055);
         return;
       }
     }
   }
   
-  public final List<am> MO(long paramLong)
+  public final List<au> qj(long paramLong)
   {
-    AppMethodBeat.i(285327);
+    AppMethodBeat.i(339387);
     try
     {
-      List localList = (List)Anb.get(new a(paramLong, 0L));
+      List localList = (List)FMW.get(new a(paramLong, 0L));
       return localList;
     }
     finally
     {
-      AppMethodBeat.o(285327);
+      AppMethodBeat.o(339387);
     }
   }
   
-  public final List<am> Y(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(167057);
-    try
-    {
-      List localList = (List)AmZ.get(new a(paramLong1, paramLong2));
-      return localList;
-    }
-    finally
-    {
-      AppMethodBeat.o(167057);
-    }
-  }
-  
-  public final b Z(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(167058);
-    try
-    {
-      b localb = (b)Ana.get(new a(paramLong1, paramLong2));
-      return localb;
-    }
-    finally
-    {
-      AppMethodBeat.o(167058);
-    }
-  }
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt, b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(178422);
-    try
-    {
-      Ana.put(new a(paramLong1, paramLong2), new b(paramInt, paramb, paramBoolean1, paramBoolean2, paramBoolean3));
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(178422);
-    }
-  }
-  
-  public final void a(long paramLong1, long paramLong2, List<am> paramList)
-  {
-    AppMethodBeat.i(167052);
-    p.k(paramList, "comments");
-    try
-    {
-      Anc.X(paramLong1, paramLong2);
-      AmZ.put(new a(paramLong1, paramLong2), paramList);
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(167052);
-    }
-  }
-  
-  public final void clearCache()
-  {
-    AppMethodBeat.i(167056);
-    Log.i(TAG, "clearCache all");
-    try
-    {
-      AmZ.clear();
-      Ana.clear();
-      Anb.clear();
-      x localx = x.aazN;
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(167056);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$CacheKey;", "", "feedId", "", "refCommentId", "(JJ)V", "getFeedId", "()J", "getRefCommentId", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$CacheKey;", "", "feedId", "", "refCommentId", "(JJ)V", "getFeedId", "()J", "getRefCommentId", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
+    private final long AAW;
     final long feedId;
-    private final long xbT;
     
     public a(long paramLong1, long paramLong2)
     {
       this.feedId = paramLong1;
-      this.xbT = paramLong2;
+      this.AAW = paramLong2;
     }
     
     public final boolean equals(Object paramObject)
     {
-      if (this != paramObject)
+      if (this == paramObject) {}
+      do
       {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.feedId != paramObject.feedId) || (this.xbT != paramObject.xbT)) {}
-        }
-      }
-      else {
         return true;
-      }
+        if (!(paramObject instanceof a)) {
+          return false;
+        }
+        paramObject = (a)paramObject;
+        if (this.feedId != paramObject.feedId) {
+          return false;
+        }
+      } while (this.AAW == paramObject.AAW);
       return false;
     }
     
     public final int hashCode()
     {
-      long l = this.feedId;
-      int i = (int)(l ^ l >>> 32);
-      l = this.xbT;
-      return i * 31 + (int)(l ^ l >>> 32);
+      AppMethodBeat.i(339277);
+      int i = q.a..ExternalSyntheticBackport0.m(this.feedId);
+      int j = q.a..ExternalSyntheticBackport0.m(this.AAW);
+      AppMethodBeat.o(339277);
+      return i * 31 + j;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(167048);
-      String str = "CacheKey(feedId=" + this.feedId + ", refCommentId=" + this.xbT + ")";
+      String str = "CacheKey(feedId=" + this.feedId + ", refCommentId=" + this.AAW + ')';
       AppMethodBeat.o(167048);
       return str;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "", "pos", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "", "downContinue", "hasExpand", "(ILcom/tencent/mm/protobuf/ByteString;ZZZ)V", "getDownContinue", "()Z", "getHasExpand", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getPos", "()I", "getUpContinue", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "", "pos", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "", "downContinue", "hasExpand", "(ILcom/tencent/mm/protobuf/ByteString;ZZZ)V", "getDownContinue", "()Z", "getHasExpand", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getPos", "()I", "getUpContinue", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
   {
-    public final boolean Ane;
+    public final boolean AUo;
+    public final boolean AUp;
+    public final boolean FMX;
     public final b lastBuffer;
     public final int pos;
-    public final boolean xwK;
-    public final boolean xwL;
     
     public b(int paramInt, b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
     {
       this.pos = paramInt;
       this.lastBuffer = paramb;
-      this.xwK = paramBoolean1;
-      this.xwL = paramBoolean2;
-      this.Ane = paramBoolean3;
+      this.AUo = paramBoolean1;
+      this.AUp = paramBoolean2;
+      this.FMX = paramBoolean3;
     }
     
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(167051);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((this.pos != paramObject.pos) || (!p.h(this.lastBuffer, paramObject.lastBuffer)) || (this.xwK != paramObject.xwK) || (this.xwL != paramObject.xwL) || (this.Ane != paramObject.Ane)) {}
-        }
-      }
-      else
+      if (this == paramObject)
       {
         AppMethodBeat.o(167051);
         return true;
       }
+      if (!(paramObject instanceof b))
+      {
+        AppMethodBeat.o(167051);
+        return false;
+      }
+      paramObject = (b)paramObject;
+      if (this.pos != paramObject.pos)
+      {
+        AppMethodBeat.o(167051);
+        return false;
+      }
+      if (!s.p(this.lastBuffer, paramObject.lastBuffer))
+      {
+        AppMethodBeat.o(167051);
+        return false;
+      }
+      if (this.AUo != paramObject.AUo)
+      {
+        AppMethodBeat.o(167051);
+        return false;
+      }
+      if (this.AUp != paramObject.AUp)
+      {
+        AppMethodBeat.o(167051);
+        return false;
+      }
+      if (this.FMX != paramObject.FMX)
+      {
+        AppMethodBeat.o(167051);
+        return false;
+      }
       AppMethodBeat.o(167051);
-      return false;
+      return true;
     }
     
     public final int hashCode()
@@ -295,7 +321,7 @@ public final class f
     public final String toString()
     {
       AppMethodBeat.i(167049);
-      String str = "Extra(pos=" + this.pos + ", lastBuffer=" + this.lastBuffer + ", upContinue=" + this.xwK + ", downContinue=" + this.xwL + ", hasExpand=" + this.Ane + ")";
+      String str = "Extra(pos=" + this.pos + ", lastBuffer=" + this.lastBuffer + ", upContinue=" + this.AUo + ", downContinue=" + this.AUp + ", hasExpand=" + this.FMX + ')';
       AppMethodBeat.o(167049);
       return str;
     }
@@ -303,7 +329,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.f
  * JD-Core Version:    0.7.0.1
  */

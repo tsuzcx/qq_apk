@@ -2,42 +2,43 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
+import com.tencent.mm.aw.f;
 import com.tencent.mm.plugin.music.cache.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 
 public final class b
 {
-  public static String S(f paramf)
+  public static String Y(f paramf)
   {
     AppMethodBeat.i(137444);
-    if (paramf.lVr == 6)
+    if (paramf.oOt == 6)
     {
-      paramf = "6_" + T(paramf);
+      paramf = "6_" + Z(paramf);
       AppMethodBeat.o(137444);
       return paramf;
     }
-    paramf = "0_" + T(paramf);
+    paramf = "0_" + Z(paramf);
     AppMethodBeat.o(137444);
     return paramf;
   }
   
-  private static String T(f paramf)
+  private static String Z(f paramf)
   {
     AppMethodBeat.i(137445);
-    if (TextUtils.isEmpty(paramf.lVt))
+    if (TextUtils.isEmpty(paramf.oOv))
     {
       AppMethodBeat.o(137445);
       return "";
     }
-    paramf = MD5Util.getMD5String(paramf.lVt);
+    paramf = MD5Util.getMD5String(paramf.oOv);
     AppMethodBeat.o(137445);
     return paramf;
   }
   
-  public static String aSt(String paramString)
+  public static String aPn(String paramString)
   {
     AppMethodBeat.i(137442);
     paramString = "piece" + MD5Util.getMD5String(new StringBuilder().append(paramString.hashCode()).toString());
@@ -45,45 +46,53 @@ public final class b
     return paramString;
   }
   
-  public static String aSu(String paramString)
+  public static String aPo(String paramString)
   {
     AppMethodBeat.i(137443);
-    q localq = new q(g.getAccPath(), "music");
-    if (!localq.ifE()) {
-      localq.ifL();
+    u localu = new u(g.getAccPath(), "music");
+    if (!localu.jKS()) {
+      localu.jKY();
     }
-    paramString = aSt(paramString);
-    localq = new q(localq, paramString);
-    Log.d("MicroMsg.Music.MusicFileUtil", "getMusicPieceFilePath music name %s path %s", new Object[] { paramString, localq.ifG() });
-    paramString = localq.bOF();
+    paramString = aPn(paramString);
+    localu = new u(localu, paramString);
+    Log.d("MicroMsg.Music.MusicFileUtil", "getMusicPieceFilePath music name %s path %s", new Object[] { paramString, localu.jKU() });
+    paramString = ah.v(localu.jKT());
     AppMethodBeat.o(137443);
     return paramString;
   }
   
-  public static String aSv(String paramString)
+  public static String aPp(String paramString)
   {
-    AppMethodBeat.i(257242);
-    paramString = cc(paramString.hashCode(), false);
-    AppMethodBeat.o(257242);
+    AppMethodBeat.i(270846);
+    paramString = cy(paramString.hashCode(), false);
+    AppMethodBeat.o(270846);
     return paramString;
   }
   
-  public static String cc(String paramString, boolean paramBoolean)
+  public static String cA(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(137448);
+    paramString = cy(paramString, false) + "-thumb-" + paramBoolean;
+    AppMethodBeat.o(137448);
+    return paramString;
+  }
+  
+  public static String cy(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(137446);
-    q localq = new q(g.getAccPath(), "music");
-    if (!localq.ifE()) {
-      Log.i("MicroMsg.Music.MusicFileUtil", "create file folder:%b for path:%s", new Object[] { Boolean.valueOf(localq.ifL()), localq.bOF() });
+    u localu = new u(g.getAccPath(), "music");
+    if (!localu.jKS()) {
+      Log.i("MicroMsg.Music.MusicFileUtil", "create file folder:%b for path:%s", new Object[] { Boolean.valueOf(localu.jKY()), ah.v(localu.jKT()) });
     }
-    paramString = cd(paramString, paramBoolean);
-    localq = new q(localq, paramString);
-    Log.d("MicroMsg.Music.MusicFileUtil", "music name %s path %s", new Object[] { paramString, localq.ifG() });
-    paramString = localq.bOF();
+    paramString = cz(paramString, paramBoolean);
+    localu = new u(localu, paramString);
+    Log.d("MicroMsg.Music.MusicFileUtil", "music name %s path %s", new Object[] { paramString, localu.jKU() });
+    paramString = ah.v(localu.jKT());
     AppMethodBeat.o(137446);
     return paramString;
   }
   
-  private static String cd(String paramString, boolean paramBoolean)
+  private static String cz(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(137447);
     if (paramBoolean)
@@ -94,14 +103,6 @@ public final class b
     }
     paramString = MD5Util.getMD5String(paramString + "temp");
     AppMethodBeat.o(137447);
-    return paramString;
-  }
-  
-  public static String ce(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(137448);
-    paramString = cc(paramString, false) + "-thumb-" + paramBoolean;
-    AppMethodBeat.o(137448);
     return paramString;
   }
 }

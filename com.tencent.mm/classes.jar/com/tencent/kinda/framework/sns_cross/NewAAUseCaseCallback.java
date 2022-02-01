@@ -30,7 +30,7 @@ public class NewAAUseCaseCallback
       paramITransmitKvData = (PaylistAAUI)localObject;
       localObject = new Intent();
       ((Intent)localObject).putExtra("key_trans_id", str);
-      paramITransmitKvData.b(i, (Intent)localObject);
+      paramITransmitKvData.c(i, (Intent)localObject);
       AppMethodBeat.o(18713);
       return;
     }
@@ -39,7 +39,7 @@ public class NewAAUseCaseCallback
       paramITransmitKvData = (AARemittanceUI)localObject;
       localObject = new Intent();
       ((Intent)localObject).putExtra("key_trans_id", str);
-      paramITransmitKvData.b(i, (Intent)localObject);
+      paramITransmitKvData.c(i, (Intent)localObject);
     }
     AppMethodBeat.o(18713);
   }
@@ -53,7 +53,7 @@ public class NewAAUseCaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.NewAAUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

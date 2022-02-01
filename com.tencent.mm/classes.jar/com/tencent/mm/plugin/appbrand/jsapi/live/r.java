@@ -8,10 +8,10 @@ import com.tencent.rtmp.TXLivePusher.ITXAudioVolumeEvaluationListener;
 import com.tencent.rtmp.TXLivePusher.ITXSnapshotListener;
 import com.tencent.rtmp.TXLivePusher.OnBGMNotify;
 import com.tencent.rtmp.ui.TXCloudVideoView;
-import kotlin.l;
+import kotlin.Metadata;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/live/TXLivePusherJSAdapter;", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/ITXLivePusherJSAdapter;", "context", "Landroid/content/Context;", "realJsAdapter", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsapi/live/ITXLivePusherJSAdapter;)V", "enterBackground", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/TXJSAdapterError;", "forceStop", "", "enterForeground", "initLivePusher", "videoView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "params", "Landroid/os/Bundle;", "notifyOrientationChanged", "", "angle", "", "operateLivePusher", "operateName", "", "Lorg/json/JSONObject;", "setAudioVolumeListener", "listener", "Lcom/tencent/rtmp/TXLivePusher$ITXAudioVolumeEvaluationListener;", "setBGMNotifyListener", "Lcom/tencent/rtmp/TXLivePusher$OnBGMNotify;", "setPushListener", "Lcom/tencent/rtmp/ITXLivePushListener;", "setSnapshotListener", "Lcom/tencent/rtmp/TXLivePusher$ITXSnapshotListener;", "unInitLivePusher", "updateLivePusher", "luggage-qcloud-live-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/live/TXLivePusherJSAdapter;", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/ITXLivePusherJSAdapter;", "context", "Landroid/content/Context;", "realJsAdapter", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/jsapi/live/ITXLivePusherJSAdapter;)V", "enterBackground", "Lcom/tencent/mm/plugin/appbrand/jsapi/live/TXJSAdapterError;", "forceStop", "", "enterForeground", "initLivePusher", "videoView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "params", "Landroid/os/Bundle;", "notifyOrientationChanged", "", "angle", "", "operateLivePusher", "operateName", "", "Lorg/json/JSONObject;", "setAudioVolumeListener", "listener", "Lcom/tencent/rtmp/TXLivePusher$ITXAudioVolumeEvaluationListener;", "setBGMNotifyListener", "Lcom/tencent/rtmp/TXLivePusher$OnBGMNotify;", "setPushListener", "Lcom/tencent/rtmp/ITXLivePushListener;", "setSnapshotListener", "Lcom/tencent/rtmp/TXLivePusher$ITXSnapshotListener;", "unInitLivePusher", "updateLivePusher", "luggage-qcloud-live-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
   implements b
 {
@@ -22,39 +22,39 @@ public final class r
   
   private r(b paramb)
   {
-    AppMethodBeat.i(212671);
-    this.oVU = paramb;
-    AppMethodBeat.o(212671);
+    AppMethodBeat.i(326138);
+    this.sbs = paramb;
+    AppMethodBeat.o(326138);
   }
   
-  public final k TK()
+  public final k aud()
   {
-    AppMethodBeat.i(212698);
-    k localk = this.oVU.TK();
-    AppMethodBeat.o(212698);
+    AppMethodBeat.i(145926);
+    k localk = this.sbs.aud();
+    AppMethodBeat.o(145926);
     return localk;
   }
   
-  public final k Ty()
+  public final k aup()
   {
-    AppMethodBeat.i(145926);
-    k localk = this.oVU.Ty();
-    AppMethodBeat.o(145926);
+    AppMethodBeat.i(326185);
+    k localk = this.sbs.aup();
+    AppMethodBeat.o(326185);
     return localk;
   }
   
   public final k b(TXCloudVideoView paramTXCloudVideoView, Bundle paramBundle)
   {
-    AppMethodBeat.i(212684);
-    paramTXCloudVideoView = this.oVU.b(paramTXCloudVideoView, paramBundle);
-    AppMethodBeat.o(212684);
+    AppMethodBeat.i(326157);
+    paramTXCloudVideoView = this.sbs.b(paramTXCloudVideoView, paramBundle);
+    AppMethodBeat.o(326157);
     return paramTXCloudVideoView;
   }
   
-  public final k cn(boolean paramBoolean)
+  public final k cT(boolean paramBoolean)
   {
     AppMethodBeat.i(145925);
-    k localk = this.oVU.cn(paramBoolean);
+    k localk = this.sbs.cT(paramBoolean);
     AppMethodBeat.o(145925);
     return localk;
   }
@@ -62,7 +62,7 @@ public final class r
   public final k e(String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145921);
-    paramString = this.oVU.e(paramString, paramJSONObject);
+    paramString = this.sbs.e(paramString, paramJSONObject);
     AppMethodBeat.o(145921);
     return paramString;
   }
@@ -70,49 +70,49 @@ public final class r
   public final void notifyOrientationChanged(int paramInt)
   {
     AppMethodBeat.i(145919);
-    this.oVU.notifyOrientationChanged(paramInt);
+    this.sbs.notifyOrientationChanged(paramInt);
     AppMethodBeat.o(145919);
   }
   
   public final void setAudioVolumeListener(TXLivePusher.ITXAudioVolumeEvaluationListener paramITXAudioVolumeEvaluationListener)
   {
-    AppMethodBeat.i(212690);
-    this.oVU.setAudioVolumeListener(paramITXAudioVolumeEvaluationListener);
-    AppMethodBeat.o(212690);
+    AppMethodBeat.i(326172);
+    this.sbs.setAudioVolumeListener(paramITXAudioVolumeEvaluationListener);
+    AppMethodBeat.o(326172);
   }
   
   public final void setBGMNotifyListener(TXLivePusher.OnBGMNotify paramOnBGMNotify)
   {
-    AppMethodBeat.i(212692);
-    this.oVU.setBGMNotifyListener(paramOnBGMNotify);
-    AppMethodBeat.o(212692);
+    AppMethodBeat.i(326177);
+    this.sbs.setBGMNotifyListener(paramOnBGMNotify);
+    AppMethodBeat.o(326177);
   }
   
   public final void setPushListener(ITXLivePushListener paramITXLivePushListener)
   {
-    AppMethodBeat.i(212694);
-    this.oVU.setPushListener(paramITXLivePushListener);
-    AppMethodBeat.o(212694);
+    AppMethodBeat.i(326180);
+    this.sbs.setPushListener(paramITXLivePushListener);
+    AppMethodBeat.o(326180);
   }
   
   public final void setSnapshotListener(TXLivePusher.ITXSnapshotListener paramITXSnapshotListener)
   {
-    AppMethodBeat.i(212696);
-    this.oVU.setSnapshotListener(paramITXSnapshotListener);
-    AppMethodBeat.o(212696);
+    AppMethodBeat.i(326182);
+    this.sbs.setSnapshotListener(paramITXSnapshotListener);
+    AppMethodBeat.o(326182);
   }
   
-  public final k u(Bundle paramBundle)
+  public final k z(Bundle paramBundle)
   {
-    AppMethodBeat.i(212700);
-    paramBundle = this.oVU.u(paramBundle);
-    AppMethodBeat.o(212700);
+    AppMethodBeat.i(326188);
+    paramBundle = this.sbs.z(paramBundle);
+    AppMethodBeat.o(326188);
     return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.r
  * JD-Core Version:    0.7.0.1
  */

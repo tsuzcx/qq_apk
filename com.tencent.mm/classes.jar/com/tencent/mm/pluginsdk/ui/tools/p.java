@@ -1,405 +1,144 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.rz;
-import com.tencent.mm.f.a.rz.a;
-import com.tencent.mm.plugin.scanner.ImageQBarDataBean;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.qqmail.e.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import kotlin.a.j;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.t;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/QBarOfImageFileResultEventDataParser;", "", "()V", "TAG", "", "getAllEventCodePointCenterX", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "event", "Lcom/tencent/mm/autogen/events/RecogQBarOfImageFileResultEvent;", "getAllEventCodePointCenterY", "getAllEventCodeType", "", "getAllEventCodeVersion", "getAllEventResult", "getAllQBarDataOfImage", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "getEventCodeName", "getEventCodePointCenterX", "getEventCodePointCenterY", "getEventCodeType", "getEventCodeVersion", "getEventResult", "getValueFloat", "list", "index", "getValueInt", "getValueString", "temporary_release"})
 public final class p
 {
-  public static final p RxG;
+  private static final String YtX;
   
   static
   {
-    AppMethodBeat.i(188608);
-    RxG = new p();
-    AppMethodBeat.o(188608);
+    AppMethodBeat.i(245508);
+    YtX = "https://" + WeChatHosts.domainString(e.i.host_qqmail_weixin_qq_com) + "/cgi-bin/getunreadmailcount?f=xml&appname=qqmail_weixin&charset=utf-8&clientip=0";
+    AppMethodBeat.o(245508);
   }
   
-  public static ArrayList<ImageQBarDataBean> b(rz paramrz)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(188587);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject3 = c(paramrz);
-    Object localObject1;
-    int i;
-    int j;
-    label62:
-    label97:
-    int k;
-    label115:
-    ImageQBarDataBean localImageQBarDataBean;
-    if (paramrz != null)
+    AppMethodBeat.i(123216);
+    ThreadPool.post(new Runnable()
     {
-      localObject1 = paramrz.fRl;
-      if (localObject1 != null)
+      public final void run()
       {
-        i = ((rz.a)localObject1).fRr;
-        if (paramrz == null) {
-          break label407;
-        }
-        localObject1 = paramrz.fRl;
-        if (localObject1 == null) {
-          break label407;
-        }
-        j = ((rz.a)localObject1).fRs;
-        if (paramrz != null)
+        AppMethodBeat.i(123211);
+        try
         {
-          localObject1 = paramrz.fRl;
-          if (localObject1 != null)
-          {
-            localObject2 = ((rz.a)localObject1).filePath;
-            localObject1 = localObject2;
-            if (localObject2 != null) {
-              break label97;
-            }
-          }
+          p.b(p.this);
+          AppMethodBeat.o(123211);
+          return;
         }
-        localObject1 = "";
-        localObject2 = (Iterable)localObject3;
-        k = 0;
-        localObject3 = ((Iterable)localObject2).iterator();
-        if (!((Iterator)localObject3).hasNext()) {
-          break label448;
-        }
-        localObject2 = ((Iterator)localObject3).next();
-        if (k < 0) {
-          j.iBO();
-        }
-        localObject2 = (String)localObject2;
-        localImageQBarDataBean = new ImageQBarDataBean();
-        localImageQBarDataBean.IAH = ((String)localObject2);
-        if (paramrz == null) {
-          break label412;
-        }
-        localObject2 = paramrz.fRl;
-        if (localObject2 == null) {
-          break label412;
-        }
-        localObject2 = ((rz.a)localObject2).fRo;
-        label186:
-        localImageQBarDataBean.typeName = f((ArrayList)localObject2, k);
-        if (paramrz == null) {
-          break label418;
-        }
-        localObject2 = paramrz.fRl;
-        if (localObject2 == null) {
-          break label418;
-        }
-        localObject2 = ((rz.a)localObject2).fRn;
-        label219:
-        localImageQBarDataBean.fys = g((ArrayList)localObject2, k);
-        if (paramrz == null) {
-          break label424;
-        }
-        localObject2 = paramrz.fRl;
-        if (localObject2 == null) {
-          break label424;
-        }
-        localObject2 = ((rz.a)localObject2).fRp;
-        label252:
-        localImageQBarDataBean.fyt = g((ArrayList)localObject2, k);
-        if (paramrz == null) {
-          break label430;
-        }
-        localObject2 = paramrz.fRl;
-        if (localObject2 == null) {
-          break label430;
-        }
-        localObject2 = ((rz.a)localObject2).fRq;
-        label285:
-        localImageQBarDataBean.priorityLevel = g((ArrayList)localObject2, k);
-        if (paramrz == null) {
-          break label436;
-        }
-        localObject2 = paramrz.fRl;
-        if (localObject2 == null) {
-          break label436;
-        }
-        localObject2 = ((rz.a)localObject2).fRt;
-        label318:
-        localImageQBarDataBean.IAI = (h((ArrayList)localObject2, k) / i);
-        if (paramrz == null) {
-          break label442;
-        }
-        localObject2 = paramrz.fRl;
-        if (localObject2 == null) {
-          break label442;
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.QQMailUnreadHelper", localException, "", new Object[0]);
+          Log.e("MicroMsg.QQMailUnreadHelper", "getUnreadCountAsync exception");
+          AppMethodBeat.o(123211);
         }
       }
-    }
-    label407:
-    label412:
-    label418:
-    label424:
-    label430:
-    label436:
-    label442:
-    for (Object localObject2 = ((rz.a)localObject2).fRu;; localObject2 = null)
-    {
-      localImageQBarDataBean.IAJ = (h((ArrayList)localObject2, k) / j);
-      localImageQBarDataBean.fRr = i;
-      localImageQBarDataBean.fRs = j;
-      localImageQBarDataBean.filePath = ((String)localObject1);
-      localArrayList.add(localImageQBarDataBean);
-      k += 1;
-      break label115;
-      i = 1;
-      break;
-      j = 1;
-      break label62;
-      localObject2 = null;
-      break label186;
-      localObject2 = null;
-      break label219;
-      localObject2 = null;
-      break label252;
-      localObject2 = null;
-      break label285;
-      localObject2 = null;
-      break label318;
-    }
-    label448:
-    AppMethodBeat.o(188587);
-    return localArrayList;
+    }, "QQMailUnreadHelper");
+    AppMethodBeat.o(123216);
   }
   
-  private static ArrayList<String> c(rz paramrz)
+  public static void b(a parama)
   {
-    AppMethodBeat.i(188589);
-    ArrayList localArrayList = new ArrayList();
-    if (paramrz != null)
+    AppMethodBeat.i(123217);
+    Log.i("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount]");
+    String str = (String)h.baE().ban().d(-1535680990, "");
+    long l = new com.tencent.mm.b.p(Util.nullAsNil((Integer)h.baE().ban().d(9, null))).longValue();
+    if ((Util.isNullOrNil(str)) || (l == 0L))
     {
-      paramrz = paramrz.fRl;
-      if (paramrz != null)
+      h.baE().ban().set(at.a.acJa, Integer.valueOf(-1));
+      Log.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadEmailCountAndSet: authkey or uin is null]");
+      MMHandlerThread.postToMainThread(new Runnable()
       {
-        paramrz = paramrz.fRm;
-        if (paramrz != null)
+        public final void run()
         {
-          paramrz = ((Iterable)paramrz).iterator();
-          label96:
-          while (paramrz.hasNext())
-          {
-            Object localObject = paramrz.next();
-            if ((localObject instanceof String))
-            {
-              if (n.ba((CharSequence)localObject)) {}
-              for (int i = 1;; i = 0)
-              {
-                if (i != 0) {
-                  break label96;
-                }
-                localArrayList.add(localObject);
-                break;
-              }
-            }
-          }
+          AppMethodBeat.i(123212);
+          p.this.gEh();
+          AppMethodBeat.o(123212);
         }
-      }
+      });
+      AppMethodBeat.o(123217);
+      return;
     }
-    AppMethodBeat.o(188589);
-    return localArrayList;
-  }
-  
-  public static String d(rz paramrz)
-  {
-    AppMethodBeat.i(188591);
-    if (paramrz != null)
-    {
-      paramrz = paramrz.fRl;
-      if (paramrz == null) {}
-    }
-    for (paramrz = paramrz.fRm;; paramrz = null)
-    {
-      paramrz = f(paramrz, 0);
-      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getEventResult ".concat(String.valueOf(paramrz)));
-      AppMethodBeat.o(188591);
-      return paramrz;
-    }
-  }
-  
-  public static int e(rz paramrz)
-  {
-    AppMethodBeat.i(188593);
-    if (paramrz != null)
-    {
-      paramrz = paramrz.fRl;
-      if (paramrz == null) {}
-    }
-    for (paramrz = paramrz.fRn;; paramrz = null)
-    {
-      int i = g(paramrz, 0);
-      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getEventCodeType ".concat(String.valueOf(i)));
-      AppMethodBeat.o(188593);
-      return i;
-    }
-  }
-  
-  public static int f(rz paramrz)
-  {
-    AppMethodBeat.i(188595);
-    if (paramrz != null)
-    {
-      paramrz = paramrz.fRl;
-      if (paramrz == null) {}
-    }
-    for (paramrz = paramrz.fRp;; paramrz = null)
-    {
-      int i = g(paramrz, 0);
-      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getEventCodeVersion ".concat(String.valueOf(i)));
-      AppMethodBeat.o(188595);
-      return i;
-    }
-  }
-  
-  private static String f(ArrayList<Object> paramArrayList, int paramInt)
-  {
-    AppMethodBeat.i(188600);
-    Collection localCollection = (Collection)paramArrayList;
-    int i;
-    if ((localCollection == null) || (localCollection.isEmpty()))
-    {
-      i = 1;
-      if ((i != 0) || (paramInt < 0) || (paramInt >= paramArrayList.size())) {
-        break label145;
-      }
+    Object localObject = (HttpURLConnection)new URL(YtX).openConnection();
+    ((HttpURLConnection)localObject).setConnectTimeout(15000);
+    ((HttpURLConnection)localObject).setReadTimeout(20000);
+    ((HttpURLConnection)localObject).setRequestProperty("Cookie", String.format("skey=%s;uin=o%d;", new Object[] { str, Long.valueOf(l) }));
+    if (((HttpURLConnection)localObject).getResponseCode() >= 300) {
       try
       {
-        paramArrayList = paramArrayList.get(paramInt);
-        kotlin.g.b.p.j(paramArrayList, "list[index]");
-        if (paramArrayList == null)
+        ((HttpURLConnection)localObject).getInputStream().close();
+        ((HttpURLConnection)localObject).disconnect();
+        Log.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount http 300]");
+        MMHandlerThread.postToMainThread(new Runnable()
         {
-          paramArrayList = new t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(188600);
-          throw paramArrayList;
+          public final void run()
+          {
+            AppMethodBeat.i(123213);
+            p.this.gEh();
+            AppMethodBeat.o(123213);
+          }
+        });
+        AppMethodBeat.o(123217);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.QQMailUnreadHelper", localException.getMessage());
         }
       }
-      catch (Exception paramArrayList)
-      {
-        Log.printErrStackTrace("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", (Throwable)paramArrayList, "", new Object[0]);
-        paramArrayList = "";
-      }
     }
-    for (;;)
+    localObject = XmlParser.parseXml(Util.convertStreamToString(((HttpURLConnection)localObject).getInputStream()), "Response", null);
+    if ((localObject != null) && (Util.getInt((String)((Map)localObject).get(".Response.error.code"), -1) == 0)) {}
+    for (final int i = Util.getInt((String)((Map)localObject).get(".Response.result.UnreadCount"), -1); i < 0; i = -1)
     {
-      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getValueString:" + paramArrayList + "   index:" + paramInt);
-      AppMethodBeat.o(188600);
-      return paramArrayList;
-      i = 0;
-      break;
-      paramArrayList = (String)paramArrayList;
-      continue;
-      label145:
-      paramArrayList = "";
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(123214);
+          p.this.gEh();
+          AppMethodBeat.o(123214);
+        }
+      });
+      AppMethodBeat.o(123217);
+      return;
     }
+    h.baE().ban().set(at.a.acJa, Integer.valueOf(i));
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(123215);
+        p.this.onSuccess(i);
+        AppMethodBeat.o(123215);
+      }
+    });
+    AppMethodBeat.o(123217);
   }
   
-  private static int g(ArrayList<Object> paramArrayList, int paramInt)
+  public static abstract interface a
   {
-    int k = 0;
-    AppMethodBeat.i(188602);
-    Collection localCollection = (Collection)paramArrayList;
-    int i;
-    int j;
-    if ((localCollection == null) || (localCollection.isEmpty()))
-    {
-      i = 1;
-      j = k;
-      if (i == 0)
-      {
-        j = k;
-        if (paramInt >= 0)
-        {
-          j = k;
-          if (paramInt < paramArrayList.size()) {
-            try
-            {
-              paramArrayList = paramArrayList.get(paramInt);
-              kotlin.g.b.p.j(paramArrayList, "list[index]");
-              if (paramArrayList == null)
-              {
-                paramArrayList = new t("null cannot be cast to non-null type kotlin.Int");
-                AppMethodBeat.o(188602);
-                throw paramArrayList;
-              }
-            }
-            catch (Exception paramArrayList)
-            {
-              Log.printErrStackTrace("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", (Throwable)paramArrayList, "", new Object[0]);
-              i = 0;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      j = i;
-      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getValueInt:" + j + "   index:" + paramInt);
-      AppMethodBeat.o(188602);
-      return j;
-      i = 0;
-      break;
-      i = ((Integer)paramArrayList).intValue();
-    }
-  }
-  
-  private static float h(ArrayList<Object> paramArrayList, int paramInt)
-  {
-    float f2 = 0.0F;
-    AppMethodBeat.i(188606);
-    Collection localCollection = (Collection)paramArrayList;
-    int i;
-    float f1;
-    if ((localCollection == null) || (localCollection.isEmpty()))
-    {
-      i = 1;
-      f1 = f2;
-      if (i == 0)
-      {
-        f1 = f2;
-        if (paramInt >= 0)
-        {
-          f1 = f2;
-          if (paramInt < paramArrayList.size()) {
-            try
-            {
-              paramArrayList = paramArrayList.get(paramInt);
-              kotlin.g.b.p.j(paramArrayList, "list[index]");
-              if (paramArrayList == null)
-              {
-                paramArrayList = new t("null cannot be cast to non-null type kotlin.Float");
-                AppMethodBeat.o(188606);
-                throw paramArrayList;
-              }
-            }
-            catch (Exception paramArrayList)
-            {
-              Log.printErrStackTrace("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", (Throwable)paramArrayList, "", new Object[0]);
-              f1 = 0.0F;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.scanner.QBarOfImageFileResultEventDataParser", "getValueFloat:" + f1 + "   index:" + paramInt);
-      AppMethodBeat.o(188606);
-      return f1;
-      i = 0;
-      break;
-      f1 = ((Float)paramArrayList).floatValue();
-    }
+    public abstract void gEh();
+    
+    public abstract void onSuccess(int paramInt);
   }
 }
 

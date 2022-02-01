@@ -8,27 +8,29 @@ import android.graphics.Region.Op;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.c;
-import kotlin.l;
+import com.tencent.mm.ck.a.c;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bgColor", "getBgColor", "()I", "setBgColor", "(I)V", "value", "Landroid/graphics/Rect;", "highLightRect", "getHighLightRect", "()Landroid/graphics/Rect;", "setHighLightRect", "(Landroid/graphics/Rect;)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveShadeView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bgColor", "getBgColor", "()I", "setBgColor", "(I)V", "value", "Landroid/graphics/Rect;", "highLightRect", "getHighLightRect", "()Landroid/graphics/Rect;", "setHighLightRect", "(Landroid/graphics/Rect;)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveShadeView
   extends View
 {
+  private Rect DPq;
   private int bgColor;
-  private Rect yVD;
   
   public FinderLiveShadeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, (byte)0);
+    AppMethodBeat.i(358305);
+    AppMethodBeat.o(358305);
   }
   
   public FinderLiveShadeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(288042);
+    AppMethodBeat.i(358291);
     this.bgColor = paramContext.getResources().getColor(a.c.BW_0_Alpha_0_8);
-    AppMethodBeat.o(288042);
+    AppMethodBeat.o(358291);
   }
   
   public final int getBgColor()
@@ -38,29 +40,24 @@ public final class FinderLiveShadeView
   
   public final Rect getHighLightRect()
   {
-    return this.yVD;
+    return this.DPq;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(288041);
+    AppMethodBeat.i(358330);
     super.onDraw(paramCanvas);
-    Rect localRect = this.yVD;
+    Rect localRect = this.DPq;
     if (localRect != null)
     {
       if (paramCanvas != null) {
         paramCanvas.clipRect(localRect, Region.Op.DIFFERENCE);
       }
-      if (paramCanvas != null)
-      {
-        paramCanvas.drawColor(this.bgColor);
-        AppMethodBeat.o(288041);
-        return;
+      if (paramCanvas != null) {
+        paramCanvas.drawColor(getBgColor());
       }
-      AppMethodBeat.o(288041);
-      return;
     }
-    AppMethodBeat.o(288041);
+    AppMethodBeat.o(358330);
   }
   
   public final void setBgColor(int paramInt)
@@ -70,10 +67,10 @@ public final class FinderLiveShadeView
   
   public final void setHighLightRect(Rect paramRect)
   {
-    AppMethodBeat.i(288040);
-    this.yVD = paramRect;
+    AppMethodBeat.i(358315);
+    this.DPq = paramRect;
     invalidate();
-    AppMethodBeat.o(288040);
+    AppMethodBeat.o(358315);
   }
 }
 

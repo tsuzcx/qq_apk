@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/m5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="174.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/jnu" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw">
-        <ImageView android:id="@id/s4" android:layout_width="93.29999dip" android:layout_height="54.599976dip" android:layout_marginTop="20.0dip" android:src="@drawable/cmt" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/c" android:textColor="#ffa7271f" android:ellipsize="end" android:gravity="center" android:id="@id/s_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="30.0dip" android:layout_marginRight="@dimen/hs" android:singleLine="true" android:layout_alignParentTop="true" />
+    <ListView android:id="@id/aw5" android:background="@color/aav" android:focusable="true" android:visibility="visible" android:layout_height="wrap_content" android:transcriptMode="disabled" style="@style/g8" />
+    <RelativeLayout android:id="@id/bs8" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/j8" android:id="@id/hgh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b03" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g9o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ih" android:ellipsize="end" android:gravity="left" android:id="@id/g9q" android:layout_width="70.0dip" android:layout_height="wrap_content" android:maxWidth="70.0dip" android:singleLine="true" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ig" android:ellipsize="end" android:gravity="left" android:id="@id/g9p" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:singleLine="true" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a3k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ih" android:ellipsize="end" android:gravity="left" android:id="@id/a3m" android:layout_width="70.0dip" android:layout_height="wrap_content" android:maxWidth="70.0dip" android:singleLine="true" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ig" android:ellipsize="end" android:gravity="left" android:id="@id/a3l" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:singleLine="true" android:layout_weight="1.0" />
-    </LinearLayout>
-    <View android:id="@id/akq" android:background="@drawable/rc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/i1" android:layerType="software" />
-    <ViewStub android:id="@id/aow" android:layout="@layout/oj" android:inflatedId="@id/aow" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <View android:id="@id/akr" android:background="@drawable/rc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layerType="software" />
-    <include android:id="@id/apu" android:background="@drawable/c1t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="78.599976dip" layout="@layout/pa" />
 </LinearLayout>

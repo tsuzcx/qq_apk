@@ -19,7 +19,7 @@ public class a
     super(paramString, paramInt);
   }
   
-  private static void e(Map paramMap)
+  private static void k(Map paramMap)
   {
     AppMethodBeat.i(144802);
     Iterator localIterator = paramMap.entrySet().iterator();
@@ -30,7 +30,7 @@ public class a
       localObject2 = ((Map.Entry)localObject2).getValue();
       if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
       {
-        e((Map)localObject2);
+        k((Map)localObject2);
         paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
     }
@@ -68,7 +68,7 @@ public class a
         paramString.put(localObject2, paramBundle.get((String)localObject2));
       }
     }
-    e(paramString);
+    k(paramString);
     paramString = new JSONObject(paramString);
     AppMethodBeat.o(144801);
     return paramString;
@@ -94,18 +94,18 @@ public class a
       if (paramMap != null) {
         paramString.putAll(paramMap);
       }
-      e(paramString);
+      k(paramString);
       paramString = new JSONObject(paramString);
       AppMethodBeat.o(144800);
       return paramString;
     }
   }
   
-  public final JSONObject i(boolean paramBoolean, String paramString)
+  public final JSONObject h(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(242939);
+    AppMethodBeat.i(240870);
     paramString = a(paramBoolean, paramString, null);
-    AppMethodBeat.o(242939);
+    AppMethodBeat.o(240870);
     return paramString;
   }
 }

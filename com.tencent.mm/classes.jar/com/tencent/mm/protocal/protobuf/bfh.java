@@ -1,112 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bfh
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public bfg SPW;
-  public String SPX;
-  public String SPY;
-  public String SPZ;
+  public String YPy;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(199612);
+    AppMethodBeat.i(258459);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SPW != null)
-      {
-        paramVarArgs.oE(1, this.SPW.computeSize());
-        this.SPW.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YPy != null) {
+        paramVarArgs.g(1, this.YPy);
       }
-      if (this.SPX != null) {
-        paramVarArgs.f(2, this.SPX);
+      if (this.title != null) {
+        paramVarArgs.g(2, this.title);
       }
-      if (this.SPY != null) {
-        paramVarArgs.f(3, this.SPY);
-      }
-      if (this.SPZ != null) {
-        paramVarArgs.f(4, this.SPZ);
-      }
-      AppMethodBeat.o(199612);
+      AppMethodBeat.o(258459);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SPW == null) {
-        break label468;
+      if (this.YPy == null) {
+        break label270;
       }
     }
-    label468:
-    for (int i = g.a.a.a.oD(1, this.SPW.computeSize()) + 0;; i = 0)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YPy) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.SPX != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.SPX);
+      int i = paramInt;
+      if (this.title != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.title);
       }
-      i = paramInt;
-      if (this.SPY != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.SPY);
-      }
-      paramInt = i;
-      if (this.SPZ != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.SPZ);
-      }
-      AppMethodBeat.o(199612);
-      return paramInt;
+      AppMethodBeat.o(258459);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(199612);
+        AppMethodBeat.o(258459);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bfh localbfh = (bfh)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(199612);
+          AppMethodBeat.o(258459);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            bfg localbfg = new bfg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localbfg.parseFrom((byte[])localObject);
-            }
-            localbfh.SPW = localbfg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(199612);
-          return 0;
-        case 2: 
-          localbfh.SPX = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(199612);
-          return 0;
-        case 3: 
-          localbfh.SPY = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(199612);
+          localbfh.YPy = locala.ajGk.readString();
+          AppMethodBeat.o(258459);
           return 0;
         }
-        localbfh.SPZ = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(199612);
+        localbfh.title = locala.ajGk.readString();
+        AppMethodBeat.o(258459);
         return 0;
       }
-      AppMethodBeat.o(199612);
+      AppMethodBeat.o(258459);
       return -1;
     }
   }

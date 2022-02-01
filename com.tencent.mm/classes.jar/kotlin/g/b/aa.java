@@ -1,69 +1,38 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
+import kotlin.l.e;
+import kotlin.l.k.a;
+import kotlin.l.r.a;
 
 public final class aa
+  extends z
 {
-  public static final class a
-    implements Serializable
+  public aa(Class paramClass, String paramString1, String paramString2, int paramInt)
   {
-    public boolean aaBx;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128956);
-      boolean bool = this.aaBx;
-      AppMethodBeat.o(128956);
-      return String.valueOf(bool);
-    }
+    super(aiwK, paramClass, paramString1, paramString2, paramInt);
   }
   
-  public static final class d
-    implements Serializable
+  public aa(e parame, String paramString1, String paramString2) {}
+  
+  public final Object get(Object paramObject)
   {
-    public int aaBA;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128942);
-      int i = this.aaBA;
-      AppMethodBeat.o(128942);
-      return String.valueOf(i);
-    }
+    AppMethodBeat.i(128952);
+    paramObject = klC().ap(new Object[] { paramObject });
+    AppMethodBeat.o(128952);
+    return paramObject;
   }
   
-  public static final class e
-    implements Serializable
+  public final void set(Object paramObject1, Object paramObject2)
   {
-    public long aaBB;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128957);
-      long l = this.aaBB;
-      AppMethodBeat.o(128957);
-      return String.valueOf(l);
-    }
-  }
-  
-  public static final class f<T>
-    implements Serializable
-  {
-    public T aaBC;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128972);
-      String str = String.valueOf(this.aaBC);
-      AppMethodBeat.o(128972);
-      return str;
-    }
+    AppMethodBeat.i(128953);
+    klD().ap(new Object[] { paramObject1, paramObject2 });
+    AppMethodBeat.o(128953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.aa
  * JD-Core Version:    0.7.0.1
  */

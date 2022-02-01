@@ -9,12 +9,11 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.plugin.downloader_app.api.a.c;
 
 public final class JsApiJumpDownloaderWidgetForNative
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<v>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<y>
 {
   public static final int CTRL_INDEX = 671;
   public static final String NAME = "jumpDownloaderWidgetForNative";
@@ -37,18 +36,8 @@ public final class JsApiJumpDownloaderWidgetForNative
     JumpDownloadWidgetRequest(Parcel paramParcel)
     {
       AppMethodBeat.i(45828);
-      k(paramParcel);
+      readParcel(paramParcel);
       AppMethodBeat.o(45828);
-    }
-    
-    public final Class<? extends AppBrandProxyUIProcessTask> bOe()
-    {
-      return JsApiJumpDownloaderWidgetForNative.a.class;
-    }
-    
-    public final boolean bPn()
-    {
-      return true;
     }
     
     public int describeContents()
@@ -56,7 +45,17 @@ public final class JsApiJumpDownloaderWidgetForNative
       return 0;
     }
     
-    public final void k(Parcel paramParcel)
+    public Class<? extends AppBrandProxyUIProcessTask> getTaskClass()
+    {
+      return JsApiJumpDownloaderWidgetForNative.a.class;
+    }
+    
+    public boolean oneShotForeground()
+    {
+      return true;
+    }
+    
+    public void readParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(45826);
       this.appId = paramParcel.readString();
@@ -74,7 +73,7 @@ public final class JsApiJumpDownloaderWidgetForNative
   static class a
     extends AppBrandProxyUIProcessTask
   {
-    public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+    public void handleRequest(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
     {
       AppMethodBeat.i(45831);
       if (paramProcessRequest != null) {}
@@ -83,9 +82,9 @@ public final class JsApiJumpDownloaderWidgetForNative
         Intent localIntent = new Intent();
         localIntent.putExtra("appId", paramProcessRequest);
         localIntent.putExtra("view_task", true);
-        ((com.tencent.mm.plugin.downloader_app.api.c)h.ae(com.tencent.mm.plugin.downloader_app.api.c.class)).a(bPf(), localIntent, new a.c()
+        ((com.tencent.mm.plugin.downloader_app.api.c)h.ax(com.tencent.mm.plugin.downloader_app.api.c.class)).a(getActivityContext(), localIntent, new a.c()
         {
-          public final void bPX()
+          public final void cqd()
           {
             AppMethodBeat.i(45830);
             JsApiJumpDownloaderWidgetForNative.a.a(JsApiJumpDownloaderWidgetForNative.a.this);

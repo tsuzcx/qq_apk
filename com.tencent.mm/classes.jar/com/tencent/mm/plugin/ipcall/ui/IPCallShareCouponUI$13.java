@@ -10,8 +10,8 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.ipcall.model.f.i;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 final class IPCallShareCouponUI$13
   implements View.OnClickListener
@@ -22,25 +22,25 @@ final class IPCallShareCouponUI$13
   {
     AppMethodBeat.i(25950);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-    bh.beI();
-    if (((Boolean)c.aHp().get(ar.a.Vjw, Boolean.FALSE)).booleanValue())
+    ((b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    bh.bCz();
+    if (((Boolean)c.ban().get(at.a.acKQ, Boolean.FALSE)).booleanValue())
     {
-      bh.beI();
-      i.ar(4, -1, ((Integer)c.aHp().get(ar.a.Vjx, Integer.valueOf(-1))).intValue());
+      bh.bCz();
+      i.aO(4, -1, ((Integer)c.ban().get(at.a.acKR, Integer.valueOf(-1))).intValue());
     }
-    bh.beI();
-    c.aHp().set(ar.a.Vjx, Integer.valueOf(-1));
-    bh.beI();
-    c.aHp().set(ar.a.Vjw, Boolean.FALSE);
-    IPCallShareCouponUI.g(this.DYL).setVisibility(8);
+    bh.bCz();
+    c.ban().set(at.a.acKR, Integer.valueOf(-1));
+    bh.bCz();
+    c.ban().set(at.a.acKQ, Boolean.FALSE);
+    IPCallShareCouponUI.g(this.JPU).setVisibility(8);
     localObject = new Intent();
-    ((Intent)localObject).setClass(this.DYL.getContext(), IPCallMsgUI.class);
-    paramView = this.DYL.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    ((Intent)localObject).setClass(this.JPU.getContext(), IPCallMsgUI.class);
+    paramView = this.JPU.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallShareCouponUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25950);

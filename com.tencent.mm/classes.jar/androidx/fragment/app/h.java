@@ -1,196 +1,175 @@
 package androidx.fragment.app;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater.Factory2;
 import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 import android.view.ViewGroup;
-import androidx.viewpager.widget.a;
-import java.util.ArrayList;
-import java.util.Iterator;
+import androidx.fragment.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class h
-  extends a
+class h
+  implements LayoutInflater.Factory2
 {
-  private static final boolean DEBUG = false;
-  private static final String TAG = "FragmentStatePagerAdapt";
-  private i mCurTransaction = null;
-  private Fragment mCurrentPrimaryItem = null;
-  private final e mFragmentManager;
-  private ArrayList<Fragment> mFragments = new ArrayList();
-  private ArrayList<Fragment.SavedState> mSavedState = new ArrayList();
+  final FragmentManager mFragmentManager;
   
-  public h(e parame)
+  h(FragmentManager paramFragmentManager)
   {
-    this.mFragmentManager = parame;
+    this.mFragmentManager = paramFragmentManager;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public View onCreateView(View paramView, String paramString, Context paramContext, final AttributeSet paramAttributeSet)
   {
-    paramObject = (Fragment)paramObject;
-    if (this.mCurTransaction == null) {
-      this.mCurTransaction = this.mFragmentManager.beginTransaction();
-    }
-    while (this.mSavedState.size() <= paramInt) {
-      this.mSavedState.add(null);
-    }
-    ArrayList localArrayList = this.mSavedState;
-    if (paramObject.isAdded()) {}
-    for (paramViewGroup = this.mFragmentManager.saveFragmentInstanceState(paramObject);; paramViewGroup = null)
+    Object localObject = null;
+    AppMethodBeat.i(193809);
+    if (FragmentContainerView.class.getName().equals(paramString))
     {
-      localArrayList.set(paramInt, paramViewGroup);
-      this.mFragments.set(paramInt, null);
-      this.mCurTransaction.a(paramObject);
-      return;
+      paramView = new FragmentContainerView(paramContext, paramAttributeSet, this.mFragmentManager);
+      AppMethodBeat.o(193809);
+      return paramView;
     }
-  }
-  
-  public void finishUpdate(ViewGroup paramViewGroup)
-  {
-    if (this.mCurTransaction != null)
+    if (!"fragment".equals(paramString))
     {
-      this.mCurTransaction.ir();
-      this.mCurTransaction = null;
+      AppMethodBeat.o(193809);
+      return null;
     }
-  }
-  
-  public abstract Fragment getItem(int paramInt);
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.mFragments.size() > paramInt)
+    paramString = paramAttributeSet.getAttributeValue(null, "class");
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.c.Fragment);
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = localTypedArray.getString(a.c.Fragment_android_name);
+    }
+    int k = localTypedArray.getResourceId(a.c.Fragment_android_id, -1);
+    String str2 = localTypedArray.getString(a.c.Fragment_android_tag);
+    localTypedArray.recycle();
+    if ((str1 == null) || (!f.b(paramContext.getClassLoader(), str1)))
     {
-      localFragment = (Fragment)this.mFragments.get(paramInt);
-      if (localFragment != null) {
-        return localFragment;
+      AppMethodBeat.o(193809);
+      return null;
+    }
+    if (paramView != null) {}
+    for (int i = paramView.getId(); (i == -1) && (k == -1) && (str2 == null); i = 0)
+    {
+      paramView = new IllegalArgumentException(paramAttributeSet.getPositionDescription() + ": Must specify unique android:id, android:tag, or have a parent with an id for " + str1);
+      AppMethodBeat.o(193809);
+      throw paramView;
+    }
+    paramString = (String)localObject;
+    if (k != -1) {
+      paramString = this.mFragmentManager.findFragmentById(k);
+    }
+    localObject = paramString;
+    if (paramString == null)
+    {
+      localObject = paramString;
+      if (str2 != null) {
+        localObject = this.mFragmentManager.findFragmentByTag(str2);
       }
     }
-    if (this.mCurTransaction == null) {
-      this.mCurTransaction = this.mFragmentManager.beginTransaction();
-    }
-    Fragment localFragment = getItem(paramInt);
-    if (this.mSavedState.size() > paramInt)
+    paramString = (String)localObject;
+    if (localObject == null)
     {
-      Fragment.SavedState localSavedState = (Fragment.SavedState)this.mSavedState.get(paramInt);
-      if (localSavedState != null) {
-        localFragment.setInitialSavedState(localSavedState);
+      paramString = (String)localObject;
+      if (i != -1) {
+        paramString = this.mFragmentManager.findFragmentById(i);
       }
     }
-    while (this.mFragments.size() <= paramInt) {
-      this.mFragments.add(null);
-    }
-    localFragment.setMenuVisibility(false);
-    localFragment.setUserVisibleHint(false);
-    this.mFragments.set(paramInt, localFragment);
-    this.mCurTransaction.a(paramViewGroup.getId(), localFragment);
-    return localFragment;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((Fragment)paramObject).getView() == paramView;
-  }
-  
-  public void restoreState(Parcelable paramParcelable, ClassLoader paramClassLoader)
-  {
-    if (paramParcelable != null)
+    int j;
+    if (paramString == null)
     {
-      paramParcelable = (Bundle)paramParcelable;
-      paramParcelable.setClassLoader(paramClassLoader);
-      paramClassLoader = paramParcelable.getParcelableArray("states");
-      this.mSavedState.clear();
-      this.mFragments.clear();
-      int i;
-      if (paramClassLoader != null)
+      paramString = this.mFragmentManager.getFragmentFactory().d(paramContext.getClassLoader(), str1);
+      paramString.mFromLayout = true;
+      if (k != 0)
       {
-        i = 0;
-        while (i < paramClassLoader.length)
-        {
-          this.mSavedState.add((Fragment.SavedState)paramClassLoader[i]);
-          i += 1;
+        j = k;
+        paramString.mFragmentId = j;
+        paramString.mContainerId = i;
+        paramString.mTag = str2;
+        paramString.mInLayout = true;
+        paramString.mFragmentManager = this.mFragmentManager;
+        paramString.mHost = this.mFragmentManager.getHost();
+        paramString.onInflate(this.mFragmentManager.getHost().mContext, paramAttributeSet, paramString.mSavedFragmentState);
+        paramAttributeSet = this.mFragmentManager.addFragment(paramString);
+        if (!FragmentManager.isLoggingEnabled(2)) {
+          break label762;
         }
+        new StringBuilder("Fragment ").append(paramString).append(" has been inflated via the <fragment> tag: id=0x").append(Integer.toHexString(k));
+        paramContext = paramString;
       }
-      paramClassLoader = paramParcelable.keySet().iterator();
-      while (paramClassLoader.hasNext())
+    }
+    for (;;)
+    {
+      paramContext.mContainer = ((ViewGroup)paramView);
+      paramAttributeSet.Gq();
+      paramAttributeSet.Gr();
+      if (paramContext.mView == null)
       {
-        Object localObject = (String)paramClassLoader.next();
-        if (((String)localObject).startsWith("f"))
+        paramView = new IllegalStateException("Fragment " + str1 + " did not create a view.");
+        AppMethodBeat.o(193809);
+        throw paramView;
+        j = i;
+        break;
+        if (paramString.mInLayout)
         {
-          i = Integer.parseInt(((String)localObject).substring(1));
-          localObject = this.mFragmentManager.getFragment(paramParcelable, (String)localObject);
-          if (localObject != null)
-          {
-            while (this.mFragments.size() <= i) {
-              this.mFragments.add(null);
-            }
-            ((Fragment)localObject).setMenuVisibility(false);
-            this.mFragments.set(i, localObject);
-          }
+          paramView = new IllegalArgumentException(paramAttributeSet.getPositionDescription() + ": Duplicate id 0x" + Integer.toHexString(k) + ", tag " + str2 + ", or parent id 0x" + Integer.toHexString(i) + " with another fragment for " + str1);
+          AppMethodBeat.o(193809);
+          throw paramView;
         }
+        paramString.mInLayout = true;
+        paramString.mFragmentManager = this.mFragmentManager;
+        paramString.mHost = this.mFragmentManager.getHost();
+        paramString.onInflate(this.mFragmentManager.getHost().mContext, paramAttributeSet, paramString.mSavedFragmentState);
+        localObject = this.mFragmentManager.createOrGetFragmentStateManager(paramString);
+        paramContext = paramString;
+        paramAttributeSet = (AttributeSet)localObject;
+        if (!FragmentManager.isLoggingEnabled(2)) {
+          continue;
+        }
+        new StringBuilder("Retained Fragment ").append(paramString).append(" has been re-attached via the <fragment> tag: id=0x").append(Integer.toHexString(k));
+        paramContext = paramString;
+        paramAttributeSet = (AttributeSet)localObject;
+        continue;
       }
-    }
-  }
-  
-  public Parcelable saveState()
-  {
-    Object localObject1 = null;
-    Object localObject2;
-    if (this.mSavedState.size() > 0)
-    {
-      localObject1 = new Bundle();
-      localObject2 = new Fragment.SavedState[this.mSavedState.size()];
-      this.mSavedState.toArray((Object[])localObject2);
-      ((Bundle)localObject1).putParcelableArray("states", (Parcelable[])localObject2);
-    }
-    int i = 0;
-    while (i < this.mFragments.size())
-    {
-      Fragment localFragment = (Fragment)this.mFragments.get(i);
-      localObject2 = localObject1;
-      if (localFragment != null)
+      if (k != 0) {
+        paramContext.mView.setId(k);
+      }
+      if (paramContext.mView.getTag() == null) {
+        paramContext.mView.setTag(str2);
+      }
+      paramContext.mView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
       {
-        localObject2 = localObject1;
-        if (localFragment.isAdded())
+        public final void onViewAttachedToWindow(View paramAnonymousView)
         {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new Bundle();
-          }
-          localObject1 = "f".concat(String.valueOf(i));
-          this.mFragmentManager.putFragment((Bundle)localObject2, (String)localObject1, localFragment);
+          AppMethodBeat.i(193911);
+          paramAnonymousView = paramAttributeSet.bDv;
+          paramAttributeSet.Gq();
+          x.a((ViewGroup)paramAnonymousView.mView.getParent(), h.this.mFragmentManager).GI();
+          AppMethodBeat.o(193911);
         }
-      }
-      i += 1;
-      localObject1 = localObject2;
-    }
-    return localObject1;
-  }
-  
-  public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup = (Fragment)paramObject;
-    if (paramViewGroup != this.mCurrentPrimaryItem)
-    {
-      if (this.mCurrentPrimaryItem != null)
-      {
-        this.mCurrentPrimaryItem.setMenuVisibility(false);
-        this.mCurrentPrimaryItem.setUserVisibleHint(false);
-      }
-      paramViewGroup.setMenuVisibility(true);
-      paramViewGroup.setUserVisibleHint(true);
-      this.mCurrentPrimaryItem = paramViewGroup;
+        
+        public final void onViewDetachedFromWindow(View paramAnonymousView) {}
+      });
+      paramView = paramContext.mView;
+      AppMethodBeat.o(193809);
+      return paramView;
+      label762:
+      paramContext = paramString;
     }
   }
   
-  public void startUpdate(ViewGroup paramViewGroup)
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
-    }
+    AppMethodBeat.i(193776);
+    paramString = onCreateView(null, paramString, paramContext, paramAttributeSet);
+    AppMethodBeat.o(193776);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.h
  * JD-Core Version:    0.7.0.1
  */

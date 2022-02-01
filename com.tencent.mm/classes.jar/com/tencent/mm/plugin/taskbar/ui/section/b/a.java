@@ -6,12 +6,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.loader.x;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.plugin.findersdk.a.ag;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.finder.loader.p.a;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.findersdk.a.ca;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.taskbar.d.c;
 import com.tencent.mm.plugin.taskbar.d.g;
@@ -21,191 +19,191 @@ import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.bbf;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bkg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/section/live/TaskBarSectionOtherViewLiveHelper;", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;", "(Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;)V", "getDefaultImageRes", "", "data", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getSubtitle", "", "onBindViewHolder", "", "pos", "viewHolder", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherView$BaseViewHolder;", "viewModel", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "plugin-taskbar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/ui/section/live/TaskBarSectionOtherViewLiveHelper;", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;", "(Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getDefaultImageRes", "", "data", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getSubtitle", "onBindViewHolder", "", "pos", "viewHolder", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherView$BaseViewHolder;", "viewModel", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends com.tencent.mm.plugin.taskbar.ui.section.other.b
 {
+  private final String TAG;
+  
   public a(b.a parama)
   {
     super(parama);
-    AppMethodBeat.i(215655);
-    AppMethodBeat.o(215655);
+    AppMethodBeat.i(264214);
+    this.TAG = "TaskBarSectionOtherViewLiveHelper";
+    AppMethodBeat.o(264214);
   }
   
   public final void a(int paramInt, a.b paramb, com.tencent.mm.plugin.taskbar.ui.section.d paramd)
   {
-    AppMethodBeat.i(215651);
-    p.k(paramb, "viewHolder");
-    p.k(paramd, "viewModel");
+    AppMethodBeat.i(264239);
+    kotlin.g.b.s.u(paramb, "viewHolder");
+    kotlin.g.b.s.u(paramd, "viewModel");
     super.a(paramInt, paramb, paramd);
-    Object localObject2 = new bbf();
+    Object localObject2 = new bkg();
+    Object localObject1;
     FinderObject localFinderObject;
     try
     {
-      ((bbf)localObject2).parseFrom(((MultiTaskInfo)paramd.MqV.get(paramInt)).field_data);
-      if (((bbf)localObject2).xcx == null)
+      ((bkg)localObject2).parseFrom(((MultiTaskInfo)paramd.SUd.get(paramInt)).field_data);
+      if (((bkg)localObject2).ABJ == null)
       {
-        AppMethodBeat.o(215651);
+        AppMethodBeat.o(264239);
         return;
       }
     }
-    catch (Throwable paramd)
+    finally
     {
       for (;;)
       {
-        Log.e("MicroMsg.TaskBarSectionLiveView", "FinderLiveMultiTaskData parse fail", new Object[] { paramd });
+        Log.e(this.TAG, "FinderLiveMultiTaskData parse fail", new Object[] { paramd });
       }
-      paramd = paramb.amk;
-      p.j(paramd, "viewHolder.itemView");
-      localObject1 = paramd.getContext();
-      localFinderObject = ((bbf)localObject2).xcx;
-      if (localFinderObject == null) {
-        p.iCn();
-      }
+      localObject1 = paramb.caK.getContext();
+      localFinderObject = ((bkg)localObject2).ABJ;
+      kotlin.g.b.s.checkNotNull(localFinderObject);
+      kotlin.g.b.s.s(localFinderObject, "data.finderObject!!");
       paramd = localFinderObject.contact;
-      if (paramd == null) {
-        break label509;
+      if (paramd != null) {
+        break label433;
       }
     }
-    paramd = paramd.nickname;
-    if (paramd != null)
+    paramd = null;
+    if (paramd == null)
     {
-      paramd = (CharSequence)paramd;
+      paramd = (CharSequence)"";
+      label140:
       if (paramd.length() <= 0) {
-        break label518;
+        break label449;
       }
       paramInt = 1;
-      label155:
+      label151:
       if (paramInt == 0) {
-        break label621;
+        break label587;
       }
-      paramd = com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)(paramd + com.tencent.mm.ci.a.ba((Context)localObject1, d.g.MmV)));
-      p.j(paramd, "MMSpanManager.spanForSmi…_subtitle_live_suffix)}\")");
+      paramd = com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject1, (CharSequence)(paramd + com.tencent.mm.cd.a.bt((Context)localObject1, d.g.SQo)));
+      kotlin.g.b.s.s(paramd, "spanForSmiley(context,\n …_subtitle_live_suffix)}\")");
     }
-    label294:
-    label306:
-    label621:
-    for (Object localObject1 = (CharSequence)paramd;; localObject1 = paramd)
+    label266:
+    label433:
+    label449:
+    label587:
+    for (localObject2 = (CharSequence)paramd;; localObject2 = paramd)
     {
-      paramd = paramb.jMg;
-      p.j(paramd, "viewHolder.title");
-      paramd.setText((CharSequence)localObject1);
+      paramb.mll.setText((CharSequence)localObject2);
       paramd = localFinderObject.objectDesc;
-      label253:
+      label223:
+      label231:
       Object localObject3;
-      if (paramd != null)
+      if (paramd == null)
       {
-        paramd = paramd.media;
-        if (paramd != null)
-        {
-          localObject2 = (FinderMedia)j.lp((List)paramd);
-          if (localObject2 != null)
-          {
-            localObject3 = ((FinderMedia)localObject2).coverUrl;
-            paramd = (com.tencent.mm.plugin.taskbar.ui.section.d)localObject3;
-            if (localObject3 != null) {}
-          }
-          else
-          {
-            paramd = "";
-          }
-          p.j(paramd, "firstMedia?.coverUrl ?: \"\"");
-          if (localObject2 == null) {
-            break label529;
-          }
-          localObject3 = ((FinderMedia)localObject2).thumbUrl;
-          if (localObject2 == null) {
-            break label535;
-          }
-          localObject2 = ((FinderMedia)localObject2).thumb_url_token;
-          localObject2 = p.I((String)localObject3, Util.nullAsNil((String)localObject2));
-          if (!Util.isNullOrNil(paramd)) {
-            localObject2 = paramd;
-          }
-          paramb.image.setImageBitmap(null);
-          paramd = t.ztT;
-          paramd = t.dJe().bQ(new x((String)localObject2, u.Aly)).a((com.tencent.mm.loader.f.d)new com.tencent.mm.loader.e.d(null, null, 3));
-          localObject3 = t.ztT;
-          paramd = paramd.a(t.a(t.a.ztU));
-          localObject3 = paramb.image;
-          p.j(localObject3, "viewHolder.image");
-          paramd.c((ImageView)localObject3);
-          paramd = localFinderObject.liveInfo;
-          if (paramd == null) {
-            break label541;
-          }
+        localObject1 = null;
+        if (localObject1 != null) {
+          break label484;
         }
-      }
-      for (paramInt = paramd.liveStatus;; paramInt = 2)
-      {
-        Log.i("MicroMsg.TaskBarSectionOtherViewBaseHelper", "onBind live " + paramInt + ' ' + (CharSequence)localObject1);
-        if (paramInt != 1) {
-          break label546;
+        paramd = "";
+        if (localObject1 != null) {
+          break label505;
         }
-        paramd = paramb.Mrm;
-        p.j(paramd, "viewHolder.liveWidget");
-        paramd.setVisibility(0);
-        paramb = paramb.Mrn;
-        p.j(paramb, "viewHolder.liveEndWidget");
-        paramb.setVisibility(8);
-        AppMethodBeat.o(215651);
-        return;
-        label509:
-        paramd = (CharSequence)"";
-        break;
-        paramInt = 0;
-        break label155;
-        localObject2 = null;
-        break label253;
         localObject3 = null;
-        break label294;
-        localObject2 = null;
-        break label306;
+        label239:
+        if (localObject1 != null) {
+          break label515;
+        }
+        localObject1 = null;
+        label247:
+        localObject1 = kotlin.g.b.s.X((String)localObject3, Util.nullAsNil((String)localObject1));
+        if (Util.isNullOrNil(paramd)) {
+          break label525;
+        }
+        paramb.Fjt.setImageBitmap(null);
+        localObject1 = com.tencent.mm.plugin.finder.loader.p.ExI;
+        localObject1 = com.tencent.mm.plugin.finder.loader.p.eCl().dk(new com.tencent.mm.plugin.finder.loader.s(paramd, v.FKY)).a((com.tencent.mm.loader.e.d)new com.tencent.mm.loader.d.d(null, null, 3));
+        localObject3 = com.tencent.mm.plugin.finder.loader.p.ExI;
+        localObject1 = ((com.tencent.mm.loader.b)localObject1).a(com.tencent.mm.plugin.finder.loader.p.a(p.a.ExJ));
+        localObject3 = paramb.Fjt;
+        kotlin.g.b.s.s(localObject3, "viewHolder.image");
+        ((com.tencent.mm.loader.b)localObject1).d((ImageView)localObject3);
+        localObject1 = localFinderObject.liveInfo;
+        if (localObject1 != null) {
+          break label531;
+        }
       }
-      paramd = paramb.Mrm;
-      p.j(paramd, "viewHolder.liveWidget");
-      paramd.setVisibility(8);
-      paramd = paramb.Mrn;
-      p.j(paramd, "viewHolder.liveEndWidget");
-      paramd.setVisibility(0);
-      paramd = h.ag(ak.class);
-      p.j(paramd, "MMKernel.plugin(IPluginFinder::class.java)");
-      ((ak)paramd).getFinderUtilApi().f(paramb.image, (String)localObject2);
-      AppMethodBeat.o(215651);
+      for (paramInt = 2;; paramInt = ((bip)localObject1).liveStatus)
+      {
+        Log.i(this.TAG, "onBind live " + paramInt + ' ' + localObject2);
+        if (paramInt != 1) {
+          break label540;
+        }
+        paramb.SUo.setVisibility(0);
+        paramb.SUp.setVisibility(8);
+        AppMethodBeat.o(264239);
+        return;
+        paramd = paramd.nickname;
+        break;
+        paramd = (CharSequence)paramd;
+        break label140;
+        paramInt = 0;
+        break label151;
+        paramd = paramd.media;
+        if (paramd == null)
+        {
+          localObject1 = null;
+          break label223;
+        }
+        localObject1 = (FinderMedia)kotlin.a.p.oL((List)paramd);
+        break label223;
+        label484:
+        localObject3 = ((FinderMedia)localObject1).coverUrl;
+        paramd = (com.tencent.mm.plugin.taskbar.ui.section.d)localObject3;
+        if (localObject3 != null) {
+          break label231;
+        }
+        paramd = "";
+        break label231;
+        label505:
+        localObject3 = ((FinderMedia)localObject1).thumbUrl;
+        break label239;
+        localObject1 = ((FinderMedia)localObject1).thumb_url_token;
+        break label247;
+        paramd = (com.tencent.mm.plugin.taskbar.ui.section.d)localObject1;
+        break label266;
+      }
+      paramb.SUo.setVisibility(8);
+      paramb.SUp.setVisibility(0);
+      ((cn)h.az(cn.class)).getFinderUtilApi().a(paramb.Fjt, paramd);
+      AppMethodBeat.o(264239);
       return;
     }
   }
   
   public final String p(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(215652);
-    paramMultiTaskInfo = com.tencent.mm.ci.a.ba(MMApplicationContext.getContext(), d.g.MmU);
-    p.j(paramMultiTaskInfo, "ResourceHelper.getString…ar_section_subtitle_live)");
-    AppMethodBeat.o(215652);
+    AppMethodBeat.i(264248);
+    paramMultiTaskInfo = com.tencent.mm.cd.a.bt(MMApplicationContext.getContext(), d.g.SQn);
+    kotlin.g.b.s.s(paramMultiTaskInfo, "getString(MMApplicationC…ar_section_subtitle_live)");
+    AppMethodBeat.o(264248);
     return paramMultiTaskInfo;
   }
   
   public final int q(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(215654);
-    p.k(paramMultiTaskInfo, "data");
-    int i = d.c.Mmk;
-    AppMethodBeat.o(215654);
+    AppMethodBeat.i(264256);
+    kotlin.g.b.s.u(paramMultiTaskInfo, "data");
+    int i = d.c.SPA;
+    AppMethodBeat.o(264256);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.section.b.a
  * JD-Core Version:    0.7.0.1
  */

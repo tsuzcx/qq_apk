@@ -1,16 +1,41 @@
 package com.tencent.mm.emoji.panel.a;
 
-import android.content.Context;
-import android.view.View;
-import com.tencent.mm.emoji.b.b.ae;
-import kotlin.l;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager.b;
+import androidx.recyclerview.widget.RecyclerView.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "", "onClick", "", "view", "Landroid/view/View;", "context", "Landroid/content/Context;", "position", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "onLongClick", "plugin-emojisdk_release"})
-public abstract interface p
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/panel/adapter/PanelSpanSizeLookup;", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "layoutManager", "Landroidx/recyclerview/widget/GridLayoutManager;", "(Landroidx/recyclerview/widget/RecyclerView$Adapter;Landroidx/recyclerview/widget/GridLayoutManager;)V", "getSpanSize", "", "position", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class p
+  extends GridLayoutManager.b
 {
-  public abstract void a(View paramView, Context paramContext, int paramInt);
+  private final GridLayoutManager mkZ;
+  private final RecyclerView.a<?> mlt;
   
-  public abstract void a(View paramView, Context paramContext, int paramInt, ae paramae);
+  public p(RecyclerView.a<?> parama, GridLayoutManager paramGridLayoutManager)
+  {
+    AppMethodBeat.i(242374);
+    this.mlt = parama;
+    this.mkZ = paramGridLayoutManager;
+    AppMethodBeat.o(242374);
+  }
+  
+  public final int fJ(int paramInt)
+  {
+    AppMethodBeat.i(105675);
+    switch (this.mlt.getItemViewType(paramInt))
+    {
+    case 3: 
+    case 6: 
+    default: 
+      AppMethodBeat.o(105675);
+      return 1;
+    }
+    paramInt = this.mkZ.bWl;
+    AppMethodBeat.o(105675);
+    return paramInt;
+  }
 }
 
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/UN_BW_93" />
-    <size android:height="@dimen/ct" android:width="@dimen/ct" />
-    <corners android:radius="@dimen/bt" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@drawable/c3w" />
+    <item android:drawable="@drawable/c3v" />
+</selector>

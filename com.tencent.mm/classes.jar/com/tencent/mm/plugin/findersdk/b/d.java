@@ -1,78 +1,61 @@
 package com.tencent.mm.plugin.findersdk.b;
 
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.c.a;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.s;
-import java.lang.ref.WeakReference;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.cp.f;
+import com.tencent.mm.protocal.protobuf.bgo;
+import com.tencent.mm.protocal.protobuf.bgp;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/cgi/LoadingDialog;", "Lcom/tencent/mm/plugin/findersdk/cgi/LoadingWidget;", "()V", "loadingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getLoadingDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setLoadingDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "onCancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "getOnCancelListener", "()Landroid/content/DialogInterface$OnCancelListener;", "setOnCancelListener", "(Landroid/content/DialogInterface$OnCancelListener;)V", "wording", "", "getWording", "()Ljava/lang/String;", "setWording", "(Ljava/lang/String;)V", "dismiss", "", "show", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/cgi/FinderLiveEntranceVerify;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveEntranceVerifyResponse;", "dynamicStatus", "", "callback", "Lkotlin/Function1;", "", "", "(ILkotlin/jvm/functions/Function1;)V", "getCallback", "()Lkotlin/jvm/functions/Function1;", "getDynamicStatus", "()I", "onCgiEnd", "errType", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Companion", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends f
+  extends c<bgp>
 {
-  private s loadingDialog;
-  public DialogInterface.OnCancelListener nbU;
-  private String wording;
+  public static final a HcL;
+  private final int HcM;
+  private final b<Boolean, ah> callback;
   
-  public d()
+  static
   {
-    AppMethodBeat.i(209690);
-    String str = MMApplicationContext.getContext().getString(c.a.app_waiting);
-    p.j(str, "MMApplicationContext.get…ing(R.string.app_waiting)");
-    this.wording = str;
-    AppMethodBeat.o(209690);
+    AppMethodBeat.i(273895);
+    HcL = new a((byte)0);
+    AppMethodBeat.o(273895);
   }
   
-  public final void aDu(String paramString)
+  public d(int paramInt, b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(209685);
-    p.k(paramString, "<set-?>");
-    this.wording = paramString;
-    AppMethodBeat.o(209685);
+    super(null);
+    AppMethodBeat.i(273889);
+    this.HcM = paramInt;
+    this.callback = paramb;
+    paramb = new c.a();
+    paramb.uri = "/cgi-bin/micromsg-bin/finderliveentranceverify";
+    paramb.funcId = 6826;
+    bgo localbgo = new bgo();
+    localbgo.ZQd = this.HcM;
+    paramb.otE = ((a)localbgo);
+    paramb.otF = ((a)new bgp());
+    c(paramb.bEF());
+    AppMethodBeat.o(273889);
   }
   
-  public final void dismiss()
+  public final f<b.a<bgp>> bFJ()
   {
-    AppMethodBeat.i(209689);
-    s locals = this.loadingDialog;
-    if (locals != null)
-    {
-      locals.dismiss();
-      AppMethodBeat.o(209689);
-      return;
-    }
-    AppMethodBeat.o(209689);
+    AppMethodBeat.i(273904);
+    Log.i("FinderLiveEntranceVerif", s.X("FinderLiveEntranceVerify run dynamicStatus: ", Integer.valueOf(this.HcM)));
+    f localf = super.bFJ();
+    AppMethodBeat.o(273904);
+    return localf;
   }
   
-  public final void show()
-  {
-    AppMethodBeat.i(209687);
-    Object localObject = this.context;
-    if (localObject != null)
-    {
-      localObject = (Context)((WeakReference)localObject).get();
-      if (localObject != null) {}
-    }
-    else
-    {
-      localObject = MMApplicationContext.getContext();
-    }
-    for (;;)
-    {
-      CharSequence localCharSequence = (CharSequence)this.wording;
-      if (this.nbU != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.loadingDialog = s.a((Context)localObject, localCharSequence, bool, 0, this.nbU);
-        AppMethodBeat.o(209687);
-        return;
-      }
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/cgi/FinderLiveEntranceVerify$Companion;", "", "()V", "TAG", "", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

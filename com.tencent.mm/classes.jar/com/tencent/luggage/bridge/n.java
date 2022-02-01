@@ -7,18 +7,18 @@ import org.json.JSONObject;
 
 final class n
 {
-  private o cqI;
-  private MMHandler cqJ;
+  private o eiB;
+  private MMHandler eiC;
   
   n(o paramo)
   {
     AppMethodBeat.i(140332);
-    this.cqI = paramo;
-    this.cqJ = new MMHandler("Js2JavaAsyncHandler_" + this.cqI.hashCode());
+    this.eiB = paramo;
+    this.eiC = new MMHandler("Js2JavaAsyncHandler_" + this.eiB.hashCode());
     AppMethodBeat.o(140332);
   }
   
-  private static m dg(String paramString)
+  private static m ex(String paramString)
   {
     AppMethodBeat.i(140335);
     try
@@ -44,7 +44,7 @@ final class n
       AppMethodBeat.o(140333);
       return paramString;
     }
-    this.cqJ.post(new Runnable()
+    this.eiC.post(new Runnable()
     {
       public final void run()
       {
@@ -60,22 +60,22 @@ final class n
   final String k(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(140334);
-    Object localObject = dg(paramString);
+    Object localObject = ex(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(140334);
       return "";
     }
-    Log.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).NM().name() });
+    Log.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).anY().name() });
     paramString = null;
-    switch (2.cqL[localObject.NM().ordinal()])
+    switch (2.eiE[localObject.anY().ordinal()])
     {
     default: 
       if (paramString != null) {
         break;
       }
     }
-    for (localObject = "null";; localObject = paramString.NM().name())
+    for (localObject = "null";; localObject = paramString.anY().name())
     {
       Log.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
       if (paramString != null) {
@@ -83,13 +83,13 @@ final class n
       }
       AppMethodBeat.o(140334);
       return "";
-      this.cqI.cqO.NO();
+      this.eiB.eiH.ready();
       break;
-      paramString = this.cqI.a((m)localObject, paramBoolean);
+      paramString = this.eiB.a((m)localObject, paramBoolean);
       break;
-      this.cqI.a((m)localObject);
+      this.eiB.a((m)localObject);
       break;
-      this.cqI.b((m)localObject);
+      this.eiB.b((m)localObject);
       break;
     }
     label181:

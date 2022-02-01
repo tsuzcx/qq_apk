@@ -16,19 +16,19 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class ProfileNormalItemView
   extends ProfileItemView
 {
-  TextView GUs;
-  CharSequence HbS;
-  View.OnClickListener HbT;
-  private View HbU;
+  TextView MRV;
+  CharSequence Naa;
+  View.OnClickListener Nab;
+  private View Nac;
   String mTitle;
-  private TextView pPT;
+  private TextView sUt;
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27381);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.eWW);
-    this.mTitle = paramContext.getString(R.n.eWX);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.haz);
+    this.mTitle = paramContext.getString(R.n.haA);
     paramContext.recycle();
     AppMethodBeat.o(27381);
   }
@@ -38,7 +38,7 @@ public class ProfileNormalItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final ProfileNormalItemView abu(int paramInt)
+  public final ProfileNormalItemView afO(int paramInt)
   {
     AppMethodBeat.i(27383);
     this.mTitle = getContext().getString(paramInt);
@@ -46,64 +46,64 @@ public class ProfileNormalItemView
     return this;
   }
   
-  public final ProfileNormalItemView abv(int paramInt)
+  public final ProfileNormalItemView afP(int paramInt)
   {
     AppMethodBeat.i(27384);
-    this.HbS = getContext().getString(paramInt);
+    this.Naa = getContext().getString(paramInt);
     AppMethodBeat.o(27384);
     return this;
   }
   
-  public final ProfileNormalItemView abw(int paramInt)
+  public final ProfileNormalItemView afQ(int paramInt)
   {
     AppMethodBeat.i(27385);
-    this.GUs.setTextColor(paramInt);
+    this.MRV.setTextColor(paramInt);
     AppMethodBeat.o(27385);
     return this;
   }
   
-  public final ProfileNormalItemView fqJ()
+  public final ProfileNormalItemView gCd()
   {
-    AppMethodBeat.i(265882);
-    this.HbU.setVisibility(0);
-    AppMethodBeat.o(265882);
+    AppMethodBeat.i(305459);
+    this.Nac.setVisibility(0);
+    AppMethodBeat.o(305459);
     return this;
   }
   
-  public final boolean fqK()
+  public final boolean gCe()
   {
     AppMethodBeat.i(27386);
-    this.pPT.setText(this.mTitle);
-    if (Util.isNullOrNil(this.HbS))
+    this.sUt.setText(this.mTitle);
+    if (Util.isNullOrNil(this.Naa))
     {
       setVisibility(8);
       AppMethodBeat.o(27386);
       return false;
     }
     setVisibility(0);
-    this.GUs.setText(this.HbS);
-    setOnClickListener(this.HbT);
+    this.MRV.setText(this.Naa);
+    setOnClickListener(this.Nab);
     AppMethodBeat.o(27386);
     return true;
   }
   
   public int getLayout()
   {
-    return R.i.ekf;
+    return R.i.gni;
   }
   
   public final void init()
   {
     AppMethodBeat.i(27382);
-    this.pPT = ((TextView)findViewById(R.h.dBP));
-    this.GUs = ((TextView)findViewById(R.h.dBO));
-    this.HbU = findViewById(R.h.right_arrow);
+    this.sUt = ((TextView)findViewById(R.h.fDe));
+    this.MRV = ((TextView)findViewById(R.h.fDd));
+    this.Nac = findViewById(R.h.right_arrow);
     AppMethodBeat.o(27382);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ProfileNormalItemView
  * JD-Core Version:    0.7.0.1
  */

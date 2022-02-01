@@ -1,182 +1,255 @@
 package com.tencent.mm.plugin.comm;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.blur.f;
 import java.util.Arrays;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/comm/MusicMvUIUtil;", "", "()V", "TAG", "", "addGradientDrawableToBitmap", "Landroid/graphics/Bitmap;", "isDarkMode", "", "bm", "calcAndUpdateBlurBm", "", "context", "Landroid/content/Context;", "container", "Landroid/view/View;", "bitmap", "md5Key", "targetWidth", "", "targetHeight", "updateBlurBmBackground", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/comm/MusicMvUIUtil;", "", "()V", "TAG", "", "addGradientDrawableToBitmap", "Landroid/graphics/Bitmap;", "isDarkMode", "", "bm", "calcAndUpdateBlurBm", "", "context", "Landroid/content/Context;", "container", "Landroid/view/View;", "bitmap", "md5Key", "targetWidth", "", "targetHeight", "updateBlurBmBackground", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b ubp;
+  public static final b xeH;
   
   static
   {
-    AppMethodBeat.i(204042);
-    ubp = new b();
-    AppMethodBeat.o(204042);
+    AppMethodBeat.i(260524);
+    xeH = new b();
+    AppMethodBeat.o(260524);
   }
   
-  @SuppressLint({"WrongConstant"})
   public static Bitmap a(boolean paramBoolean, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(204034);
-    p.k(paramBitmap, "bm");
+    AppMethodBeat.i(260506);
+    s.u(paramBitmap, "bm");
     Log.e("MicroMsg.Mv.MusicMvUIUtil", "addGradientDrawableToBitmap, start ");
     long l = System.currentTimeMillis();
     Object localObject = new int[2];
-    Object tmp29_27 = localObject;
-    tmp29_27[0] = -1711802377;
-    Object tmp34_29 = tmp29_27;
-    tmp34_29[1] = -134744073;
-    tmp34_29;
+    localObject[0] = -1711802377;
+    localObject[1] = -134744073;
     if (paramBoolean)
     {
       localObject = new int[2];
-      Object tmp51_49 = localObject;
-      tmp51_49[0] = -1289542877;
-      Object tmp56_51 = tmp51_49;
-      tmp56_51[1] = -232578269;
-      tmp56_51;
+      localObject[0] = -1289542877;
+      localObject[1] = -232578269;
     }
-    tmp51_49 = new GradientDrawable(GradientDrawable.Orientation.BL_TR, (int[])tmp51_49);
-    ((GradientDrawable)tmp51_49).setGradientType(0);
-    ((GradientDrawable)tmp51_49).setBounds(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((GradientDrawable)tmp51_49).draw(new Canvas(paramBitmap));
-    tmp51_49 = af.aaBG;
-    tmp51_49 = String.format(" addGradientDrawableToBitmap end, cost:%d", Arrays.copyOf(new Object[] { Long.valueOf(System.currentTimeMillis() - l) }, 1));
-    p.j(tmp51_49, "java.lang.String.format(format, *args)");
-    Log.e("MicroMsg.Mv.MusicMvUIUtil", (String)tmp51_49);
-    AppMethodBeat.o(204034);
+    localObject = new GradientDrawable(GradientDrawable.Orientation.BL_TR, (int[])localObject);
+    ((GradientDrawable)localObject).setGradientType(0);
+    ((GradientDrawable)localObject).setBounds(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    ((GradientDrawable)localObject).draw(new Canvas(paramBitmap));
+    localObject = am.aixg;
+    localObject = String.format(" addGradientDrawableToBitmap end, cost:%d", Arrays.copyOf(new Object[] { Long.valueOf(System.currentTimeMillis() - l) }, 1));
+    s.s(localObject, "java.lang.String.format(format, *args)");
+    Log.e("MicroMsg.Mv.MusicMvUIUtil", (String)localObject);
+    AppMethodBeat.o(260506);
     return paramBitmap;
   }
   
-  public static void a(final Context paramContext, final View paramView, final Bitmap paramBitmap, final String paramString)
+  public static void a(Context paramContext, View paramView, Bitmap paramBitmap, String paramString)
   {
-    AppMethodBeat.i(204040);
-    p.k(paramContext, "context");
-    p.k(paramView, "container");
-    p.k(paramBitmap, "bitmap");
-    p.k(paramString, "md5Key");
-    final Bitmap localBitmap = com.tencent.mm.ay.q.bml().Wo(paramString);
+    AppMethodBeat.i(260516);
+    s.u(paramContext, "context");
+    s.u(paramView, "container");
+    s.u(paramBitmap, "bitmap");
+    s.u(paramString, "md5Key");
+    Bitmap localBitmap = r.bKe().Oo(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      d.uiThread((kotlin.g.a.a)new a(paramContext, localBitmap, paramView));
-      AppMethodBeat.o(204040);
+      d.uiThread((kotlin.g.a.a)new b.a(paramContext, localBitmap, paramView));
+      AppMethodBeat.o(260516);
       return;
     }
     if ((paramView.getWidth() > 0) && (paramView.getHeight() > 0))
     {
       a(paramContext, paramView, paramBitmap, paramString, paramView.getWidth(), paramView.getHeight());
-      AppMethodBeat.o(204040);
+      AppMethodBeat.o(260516);
       return;
     }
-    paramView.post((Runnable)new b(paramView, paramContext, paramBitmap, paramString));
-    AppMethodBeat.o(204040);
+    paramView.post(new b..ExternalSyntheticLambda0(paramView, paramContext, paramBitmap, paramString));
+    AppMethodBeat.o(260516);
   }
   
+  /* Error */
   private static void a(Context paramContext, View paramView, Bitmap paramBitmap, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204038);
-    try
-    {
-      long l = Util.currentTicks();
-      if (paramBitmap == null) {}
-      try
-      {
-        p.iCn();
-        int j = paramBitmap.getHeight();
-        int i = paramBitmap.getWidth();
-        paramInt1 = (int)(j * 1.0F * (paramInt2 * 1.0F / paramInt1));
-        Object localObject = new Matrix();
-        float f = paramInt2 * 1.0F / paramInt1 * 0.25F * 0.25F;
-        ((Matrix)localObject).postScale(f, f);
-        localObject = Bitmap.createBitmap(paramBitmap, 0, (paramBitmap.getHeight() - paramInt1) / 2, i, paramInt1, (Matrix)localObject, false);
-        localObject = new f(MMApplicationContext.getContext()).b((Bitmap)localObject, 30.0F);
-        paramBitmap = (Bitmap)localObject;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.Mv.MusicMvUIUtil", "setBlurBitmap error:" + localThrowable.getMessage());
-          paramBitmap = BitmapUtil.fastblur(paramBitmap, 30);
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(204038);
-      }
-      if (paramBitmap != null)
-      {
-        com.tencent.mm.ay.q.bml().h(paramString, paramBitmap);
-        paramView.setBackground((Drawable)new BitmapDrawable(paramContext.getResources(), paramBitmap));
-      }
-      Log.i("MicroMsg.Mv.MusicMvUIUtil", "updateBlurBmBackground, after blur, cost:" + Util.ticksToNow(l));
-      AppMethodBeat.o(204038);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      Log.e("MicroMsg.Mv.MusicMvUIUtil", "updateBlurBmBackground, fail, reason:" + paramContext.getMessage());
-      AppMethodBeat.o(204038);
-    }
+    // Byte code:
+    //   0: ldc 208
+    //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 213	com/tencent/mm/sdk/platformtools/Util:currentTicks	()J
+    //   8: lstore 9
+    //   10: aload_2
+    //   11: invokestatic 217	kotlin/g/b/s:checkNotNull	(Ljava/lang/Object;)V
+    //   14: aload_2
+    //   15: invokevirtual 111	android/graphics/Bitmap:getHeight	()I
+    //   18: istore 8
+    //   20: aload_2
+    //   21: invokevirtual 108	android/graphics/Bitmap:getWidth	()I
+    //   24: istore 7
+    //   26: iload 8
+    //   28: i2f
+    //   29: fconst_1
+    //   30: fmul
+    //   31: iload 5
+    //   33: i2f
+    //   34: fconst_1
+    //   35: fmul
+    //   36: iload 4
+    //   38: i2f
+    //   39: fdiv
+    //   40: fmul
+    //   41: f2i
+    //   42: istore 4
+    //   44: new 219	android/graphics/Matrix
+    //   47: dup
+    //   48: invokespecial 220	android/graphics/Matrix:<init>	()V
+    //   51: astore 11
+    //   53: iload 5
+    //   55: i2f
+    //   56: fconst_1
+    //   57: fmul
+    //   58: iload 4
+    //   60: i2f
+    //   61: fdiv
+    //   62: ldc 221
+    //   64: fmul
+    //   65: ldc 221
+    //   67: fmul
+    //   68: fstore 6
+    //   70: aload 11
+    //   72: fload 6
+    //   74: fload 6
+    //   76: invokevirtual 225	android/graphics/Matrix:postScale	(FF)Z
+    //   79: pop
+    //   80: aload_2
+    //   81: iconst_0
+    //   82: aload_2
+    //   83: invokevirtual 111	android/graphics/Bitmap:getHeight	()I
+    //   86: iload 4
+    //   88: isub
+    //   89: iconst_2
+    //   90: idiv
+    //   91: iload 7
+    //   93: iload 4
+    //   95: aload 11
+    //   97: iconst_0
+    //   98: invokestatic 229	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   101: astore 11
+    //   103: new 231	com/tencent/mm/ui/blur/f
+    //   106: dup
+    //   107: invokestatic 237	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   110: invokespecial 240	com/tencent/mm/ui/blur/f:<init>	(Landroid/content/Context;)V
+    //   113: aload 11
+    //   115: ldc 241
+    //   117: invokevirtual 245	com/tencent/mm/ui/blur/f:c	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   120: astore 11
+    //   122: aload 11
+    //   124: astore_2
+    //   125: aload_2
+    //   126: ifnull +30 -> 156
+    //   129: invokestatic 167	com/tencent/mm/modelimage/r:bKe	()Lcom/tencent/mm/modelimage/loader/a;
+    //   132: aload_3
+    //   133: aload_2
+    //   134: invokevirtual 249	com/tencent/mm/modelimage/loader/a:h	(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    //   137: aload_1
+    //   138: new 251	android/graphics/drawable/BitmapDrawable
+    //   141: dup
+    //   142: aload_0
+    //   143: invokevirtual 257	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   146: aload_2
+    //   147: invokespecial 260	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   150: checkcast 262	android/graphics/drawable/Drawable
+    //   153: invokevirtual 266	android/view/View:setBackground	(Landroid/graphics/drawable/Drawable;)V
+    //   156: ldc 70
+    //   158: ldc_w 268
+    //   161: lload 9
+    //   163: invokestatic 272	com/tencent/mm/sdk/platformtools/Util:ticksToNow	(J)J
+    //   166: invokestatic 138	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   169: invokestatic 276	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   172: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   175: ldc 208
+    //   177: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   180: return
+    //   181: astore 11
+    //   183: ldc 70
+    //   185: ldc_w 280
+    //   188: aload 11
+    //   190: invokevirtual 286	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   193: invokestatic 276	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   196: invokestatic 78	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   199: aload_2
+    //   200: bipush 30
+    //   202: invokestatic 292	com/tencent/mm/sdk/platformtools/BitmapUtil:fastblur	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   205: astore_2
+    //   206: goto -81 -> 125
+    //   209: astore_0
+    //   210: ldc 208
+    //   212: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   215: aload_0
+    //   216: athrow
+    //   217: astore_0
+    //   218: ldc 70
+    //   220: ldc_w 294
+    //   223: aload_0
+    //   224: invokevirtual 295	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   227: invokestatic 276	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   230: invokestatic 78	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   233: ldc 208
+    //   235: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   238: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	239	0	paramContext	Context
+    //   0	239	1	paramView	View
+    //   0	239	2	paramBitmap	Bitmap
+    //   0	239	3	paramString	String
+    //   0	239	4	paramInt1	int
+    //   0	239	5	paramInt2	int
+    //   68	7	6	f	float
+    //   24	68	7	i	int
+    //   18	9	8	j	int
+    //   8	154	9	l	long
+    //   51	72	11	localObject1	Object
+    //   181	8	11	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	122	181	finally
+    //   183	206	209	finally
+    //   5	10	217	java/lang/Exception
+    //   129	156	217	java/lang/Exception
+    //   156	175	217	java/lang/Exception
+    //   210	217	217	java/lang/Exception
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+  private static final void a(View paramView, Context paramContext, Bitmap paramBitmap, String paramString)
   {
-    a(Context paramContext, Bitmap paramBitmap, View paramView)
+    AppMethodBeat.i(260520);
+    s.u(paramView, "$container");
+    s.u(paramContext, "$context");
+    s.u(paramBitmap, "$bitmap");
+    s.u(paramString, "$md5Key");
+    int i = paramView.getWidth();
+    int j = paramView.getHeight();
+    if ((paramView.getWidth() == 0) || (paramView.getHeight() == 0))
     {
-      super();
+      i = com.tencent.mm.cd.a.fromDPToPix(paramContext, 268);
+      j = com.tencent.mm.cd.a.fromDPToPix(paramContext, 80);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(View paramView, Context paramContext, Bitmap paramBitmap, String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(199318);
-      int i = this.ubr.getWidth();
-      int j = this.ubr.getHeight();
-      if ((this.ubr.getWidth() == 0) || (this.ubr.getHeight() == 0))
-      {
-        i = com.tencent.mm.ci.a.fromDPToPix(paramContext, 268);
-        j = com.tencent.mm.ci.a.fromDPToPix(paramContext, 80);
-      }
-      b localb = b.ubp;
-      b.b(paramContext, this.ubr, paramBitmap, paramString, i, j);
-      AppMethodBeat.o(199318);
-    }
+    a(paramContext, paramView, paramBitmap, paramString, i, j);
+    AppMethodBeat.o(260520);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.comm.b
  * JD-Core Version:    0.7.0.1
  */

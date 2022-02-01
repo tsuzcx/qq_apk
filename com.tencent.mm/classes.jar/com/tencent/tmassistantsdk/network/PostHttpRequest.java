@@ -1,10 +1,10 @@
 package com.tencent.tmassistantsdk.network;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.mm.plugin.ar.a.a;
+import com.tencent.mm.plugin.as.a.a;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 import org.apache.http.client.methods.HttpPost;
 
 public abstract class PostHttpRequest
@@ -98,7 +98,7 @@ public abstract class PostHttpRequest
         if (this.mHttpPost != null) {
           continue;
         }
-        h.ZvG.bh(new Runnable()
+        h.ahAA.bp(new Runnable()
         {
           /* Error */
           public void run()
@@ -545,7 +545,7 @@ public abstract class PostHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.PostHttpRequest
  * JD-Core Version:    0.7.0.1
  */

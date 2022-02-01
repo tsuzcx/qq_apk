@@ -7,12 +7,12 @@ import com.tencent.mm.plugin.webview.c.f;
 
 final class WebViewSmileyGrid$b
 {
-  ImageView qps;
+  ImageView ttT;
   
   public WebViewSmileyGrid$b(View paramView)
   {
     AppMethodBeat.i(82341);
-    this.qps = ((ImageView)paramView.findViewById(c.f.art_emoji_icon_iv));
+    this.ttT = ((ImageView)paramView.findViewById(c.f.art_emoji_icon_iv));
     AppMethodBeat.o(82341);
   }
 }

@@ -1,87 +1,74 @@
 package com.tencent.mm.plugin.messenger.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.bs;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.duo;
+import com.tencent.mm.protocal.protobuf.dup;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import java.util.HashMap;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/messenger/sec/SecurityMsgNewXmlReceived;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlReceived;", "()V", "TAG", "", "onNewXmlReceived", "", "subType", "values", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-messenger_release"})
 public final class a
-  implements t
+  extends p
+  implements m
 {
-  public static final a EVW;
+  public dup KRv;
+  public int action;
+  private h callback;
+  private final c rr;
   
-  static
+  public a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(213422);
-    EVW = new a();
-    AppMethodBeat.o(213422);
+    AppMethodBeat.i(288518);
+    Log.i("MicroMsg.openim.NetSceneOpenImNotAutoSucceed", "NetSceneNotAutoSucceed action:%s originTpusername:%s op:%s heirTpusername%s", new Object[] { Integer.valueOf(paramInt), Util.nullAs(paramString1, ""), Util.nullAs(paramString1, ""), Util.secPrint(paramString3) });
+    Object localObject = new c.a();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/notautosucceed";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otE = new duo();
+    ((c.a)localObject).otF = new dup();
+    this.rr = ((c.a)localObject).bEF();
+    this.action = paramInt;
+    localObject = (duo)c.b.b(this.rr.otB);
+    ((duo)localObject).abaA = Util.nullAs(paramString1, "");
+    ((duo)localObject).abaB = Util.nullAs(paramString2, "");
+    ((duo)localObject).abaC = Util.nullAs(paramString3, "");
+    ((duo)localObject).action = paramInt;
+    AppMethodBeat.o(288518);
   }
   
-  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, h.a parama)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(213421);
-    if ((p.h("secmsg", paramString)) && (paramMap != null))
-    {
-      parama = Util.nullAsNil((String)paramMap.get(".sysmsg.secmsg.session"));
-      paramString = Util.nullAsNil((String)paramMap.get(".sysmsg.secmsg.newmsgid"));
-      int i = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.sfn"));
-      Object localObject = Util.nullAsNil((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.show-h5"));
-      int j = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.clip-len"));
-      String str = Util.nullAsNil((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.share-tip-url"));
-      int k = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.fold-reduce"));
-      int m = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.media-to-emoji"));
-      int n = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.block-range"));
-      int i1 = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.bubble-type"));
-      int i2 = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.preview-type"));
-      int i3 = Util.safeParseInt((String)paramMap.get(".sysmsg.secmsg.sec_msg_node.url-click-type"));
-      Log.i("MicroMsg.SecurityMsgNewXmlReceived", "msgId:" + Util.safeParseLong(paramString) + " [" + i + "],[" + (String)localObject + "],[" + j + "],[" + str + "],[" + k + "],[" + n + "],[" + m + ']');
-      paramMap = (Map)new HashMap();
-      paramMap.put(".msgsource.sec_msg_node.sfn", String.valueOf(i));
-      p.j(localObject, "showH5");
-      paramMap.put(".msgsource.sec_msg_node.show-h5", localObject);
-      paramMap.put(".msgsource.sec_msg_node.clip-len", String.valueOf(j));
-      p.j(str, "shareTipUrl");
-      paramMap.put(".msgsource.sec_msg_node.share-tip-url", str);
-      paramMap.put(".msgsource.sec_msg_node.fold-reduce", String.valueOf(k));
-      paramMap.put(".msgsource.sec_msg_node.media-to-emoji", String.valueOf(m));
-      paramMap.put(".msgsource.sec_msg_node.block-range", String.valueOf(n));
-      paramMap.put(".msgsource.sec_msg_node.bubble-type", String.valueOf(i1));
-      paramMap.put(".msgsource.sec_msg_node.preview-type", String.valueOf(i2));
-      paramMap.put(".msgsource.sec_msg_node.url-click-type", String.valueOf(i3));
-      if (!Util.isNullOrNil(new String[] { parama, paramString }))
-      {
-        localObject = h.ae(n.class);
-        p.j(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-        parama = ((n)localObject).eSe().aL(parama, Util.safeParseLong(paramString));
-        if ((!Util.isNullOrNil(parama.apJ())) && (parama.apH() > 0L))
-        {
-          bs.a(parama, bs.t(paramMap));
-          AppMethodBeat.o(213421);
-          return;
-        }
-        Log.i("MicroMsg.SecurityMsgNewXmlReceived", "msg " + paramString + " not found!");
-        bs.e(Util.safeParseLong(paramString), bs.t(paramMap));
-      }
-      AppMethodBeat.o(213421);
-      return;
-    }
-    AppMethodBeat.o(213421);
+    AppMethodBeat.i(288525);
+    this.callback = paramh;
+    this.KRv = ((dup)c.c.b(this.rr.otC));
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(288525);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 3713;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(288528);
+    Log.i("MicroMsg.openim.NetSceneOpenImNotAutoSucceed", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(288528);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.c.a
  * JD-Core Version:    0.7.0.1
  */

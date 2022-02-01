@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/fb" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ae5" android:paddingTop="15.0dip" android:paddingBottom="19.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ae3" android:background="@color/ac_" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/bca" android:scaleType="centerCrop" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
-            <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/ae6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/a2t" android:id="@id/ae4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
+    <ScrollView android:scrollbars="none" style="@style/o8">
+        <LinearLayout android:gravity="center_horizontal" style="@style/lj">
+            <ImageView android:id="@id/jdh" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bau" />
+            <TextView android:gravity="center" android:id="@id/jdi" android:background="@drawable/c3t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" style="@style/lk" />
+            <Button android:textSize="20.0dip" android:id="@id/jdg" android:visibility="gone" android:text="@string/ajg" style="@style/og" />
+            <Button android:id="@id/jdz" android:visibility="gone" android:text="@string/k6_" style="@style/on" />
         </LinearLayout>
-    </LinearLayout>
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/ae5" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    </ScrollView>
+</LinearLayout>

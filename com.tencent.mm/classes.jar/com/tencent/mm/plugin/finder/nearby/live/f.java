@@ -4,733 +4,1172 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.text.TextUtils;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.f;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ad;
-import com.tencent.mm.plugin.finder.convert.ah;
-import com.tencent.mm.plugin.finder.convert.ai;
-import com.tencent.mm.plugin.finder.convert.by;
-import com.tencent.mm.plugin.finder.convert.n;
-import com.tencent.mm.plugin.finder.live.report.h.a;
-import com.tencent.mm.plugin.finder.live.report.h.b;
-import com.tencent.mm.plugin.finder.live.report.s.t;
+import com.tencent.mm.autogen.mmdata.rpt.cq;
+import com.tencent.mm.autogen.mmdata.rpt.cr;
+import com.tencent.mm.autogen.mmdata.rpt.cs;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.feed.au;
+import com.tencent.mm.plugin.finder.live.report.q.w;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.au;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.model.w;
+import com.tencent.mm.plugin.finder.model.ay;
+import com.tencent.mm.plugin.finder.model.bn;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.model.x;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
+import com.tencent.mm.plugin.finder.nearby.live.localcity.NearbyLiveLocalCityFragment;
+import com.tencent.mm.plugin.finder.nearby.live.square.page.NearbyLiveSquareTabFragment;
+import com.tencent.mm.plugin.finder.nearby.report.e;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.view.FinderRefreshLayout;
+import com.tencent.mm.plugin.finder.view.FinderRefreshLayout.b;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.cve;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.protocal.protobuf.bnn;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.dmk;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.c;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h.c;
-import com.tencent.mm.view.recyclerview.h.d;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.i.c;
+import com.tencent.mm.view.recyclerview.i.d;
+import com.tencent.mm.view.refreshLayout.WxRefreshLayout;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Set<Lcom.tencent.mm.view.recyclerview.b<Lcom.tencent.mm.view.recyclerview.a;>;>;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback;", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "baseContext", "Lcom/tencent/mm/ui/MMActivity;", "fragment", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "presenter", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$Presenter;", "parent", "Landroid/view/View;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isForceNightMode", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$Presenter;Landroid/view/View;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Z)V", "audience21053Report", "Lcom/tencent/mm/plugin/finder/live/report/Audience21053Report;", "clLayout", "kotlin.jvm.PlatformType", "getClLayout", "()Landroid/view/View;", "clLayout$delegate", "Lkotlin/Lazy;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "rlLayout$delegate", "rootScroll", "getRootScroll", "rootScroll$delegate", "adapteViewBackGroundColor", "", "getActivity", "getChnlExtra", "", "getPresenter", "getRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRefreshLoadMoreLayout", "getRootScrollParent", "gotoMoreLivePage", "initRecyclerView", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "initRefreshLayout", "initView", "isLocalCityPage", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "Companion", "NearbyLiveItemConvertFactory", "NearbyLiveItemDecoration", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback;", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "baseContext", "Lcom/tencent/mm/ui/MMActivity;", "fragment", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "presenter", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$Presenter;", "parent", "Landroid/view/View;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "isForceNightMode", "", "tabInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$Presenter;Landroid/view/View;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;ZLcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "audience21053Report", "Lcom/tencent/mm/plugin/finder/live/report/Audience21053Report;", "clLayout", "kotlin.jvm.PlatformType", "getClLayout", "()Landroid/view/View;", "clLayout$delegate", "Lkotlin/Lazy;", "nearbyLiveViewItemClick", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewItemClick;", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "recyclerView$delegate", "rlLayout", "Lcom/tencent/mm/plugin/finder/view/FinderRefreshLayout;", "getRlLayout", "()Lcom/tencent/mm/plugin/finder/view/FinderRefreshLayout;", "rlLayout$delegate", "rootScroll", "getRootScroll", "rootScroll$delegate", "scrollGuideIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getScrollGuideIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "scrollGuideIv$delegate", "scrollGuideTv", "Landroid/widget/TextView;", "getScrollGuideTv", "()Landroid/widget/TextView;", "scrollGuideTv$delegate", "subTabLayout", "Landroidx/recyclerview/widget/RecyclerView;", "getSubTabLayout", "()Landroidx/recyclerview/widget/RecyclerView;", "subTabLayout$delegate", "viewCallback", "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$viewCallback$1", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$viewCallback$1;", "adapteViewBackGroundColor", "", "getActivity", "getPresenter", "getRefreshLoadMoreLayout", "Lcom/tencent/mm/view/refreshLayout/WxRefreshLayout;", "getRootScrollParent", "getSourceList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getSubTabContainer", "getViewCallBack", "Lcom/tencent/mm/view/IViewActionCallback;", "gotoMoreLivePage", "initRecyclerView", "data", "initRefreshLayout", "initSubTabPosition", "index", "", "initSubTabView", "initView", "isLocalCityPage", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "refreshSubTabByCache", "cacheData", "", "Companion", "NearbyLiveItemDecoration", "SubTabAdapter", "SubTabViewHolder", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class f
-  implements b.b<bu>
+  implements b.b<cc>
 {
-  public static final a zEK;
-  private final View kJC;
-  final MMActivity xCd;
-  private final kotlin.f xDO;
-  private final bid xbu;
-  private final boolean xnL;
-  private final kotlin.f zEF;
-  private final kotlin.f zEG;
-  private com.tencent.mm.plugin.finder.live.report.a zEH;
-  private final AbsNearByFragment zEI;
-  private final b.a<bu> zEJ;
+  public static final a EJk;
+  private WxRecyclerAdapter<cc> ALE;
+  private final boolean ALp;
+  private final MMActivity AZo;
+  private final bui Auc;
+  private final kotlin.j BaO;
+  private final kotlin.j CNQ;
+  private final b.a<cc> EIR;
+  private final bnn EIq;
+  private final AbsNearByFragment EJl;
+  private final kotlin.j EJm;
+  private final kotlin.j EJn;
+  private final kotlin.j EJo;
+  private final kotlin.j EJp;
+  private final kotlin.j EJq;
+  private com.tencent.mm.plugin.finder.live.report.a EJr;
+  private final g EJs;
+  private final r EJt;
+  private final View nma;
   
   static
   {
-    AppMethodBeat.i(200080);
-    zEK = new a((byte)0);
-    AppMethodBeat.o(200080);
+    AppMethodBeat.i(340748);
+    EJk = new a((byte)0);
+    AppMethodBeat.o(340748);
   }
   
-  public f(MMActivity paramMMActivity, AbsNearByFragment paramAbsNearByFragment, b.a<bu> parama, View paramView, bid parambid, boolean paramBoolean)
+  public f(MMActivity paramMMActivity, AbsNearByFragment paramAbsNearByFragment, b.a<cc> parama, View paramView, bui parambui, boolean paramBoolean, bnn parambnn)
   {
-    AppMethodBeat.i(200079);
-    this.xCd = paramMMActivity;
-    this.zEI = paramAbsNearByFragment;
-    this.zEJ = parama;
-    this.kJC = paramView;
-    this.xbu = parambid;
-    this.xnL = paramBoolean;
-    this.xDO = g.ar((kotlin.g.a.a)new k(this));
-    this.zEF = g.ar((kotlin.g.a.a)new d(this));
-    this.zEG = g.ar((kotlin.g.a.a)new l(this));
-    this.zEH = new com.tencent.mm.plugin.finder.live.report.a();
-    AppMethodBeat.o(200079);
+    AppMethodBeat.i(340674);
+    this.AZo = paramMMActivity;
+    this.EJl = paramAbsNearByFragment;
+    this.EIR = parama;
+    this.nma = paramView;
+    this.Auc = parambui;
+    this.ALp = paramBoolean;
+    this.EIq = parambnn;
+    Log.i("NearbyLiveViewCallback", "#init");
+    this.BaO = kotlin.k.cm((kotlin.g.a.a)new m(this));
+    this.CNQ = kotlin.k.cm((kotlin.g.a.a)new l(this));
+    this.EJm = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.EJn = kotlin.k.cm((kotlin.g.a.a)new n(this));
+    this.EJo = kotlin.k.cm((kotlin.g.a.a)new o(this));
+    this.EJp = kotlin.k.cm((kotlin.g.a.a)new p(this));
+    this.EJq = kotlin.k.cm((kotlin.g.a.a)new q(this));
+    this.EJr = new com.tencent.mm.plugin.finder.live.report.a();
+    this.EJs = new g(this.Auc, this.AZo, this.EJl, this.EIR.getCommentScene(), this.EIR);
+    this.EJt = new r(this, getRlLayout());
+    AppMethodBeat.o(340674);
   }
   
-  private final View dLF()
+  private final View eEJ()
   {
-    AppMethodBeat.i(200076);
-    View localView = (View)this.zEF.getValue();
-    AppMethodBeat.o(200076);
+    AppMethodBeat.i(340686);
+    View localView = (View)this.EJm.getValue();
+    AppMethodBeat.o(340686);
     return localView;
   }
   
-  private final boolean dLG()
+  private final WeImageView eEK()
   {
-    return this.xbu.xkX == 112;
+    AppMethodBeat.i(340692);
+    WeImageView localWeImageView = (WeImageView)this.EJo.getValue();
+    AppMethodBeat.o(340692);
+    return localWeImageView;
   }
   
-  private final RefreshLoadMoreLayout getRlLayout()
+  private final TextView eEL()
   {
-    AppMethodBeat.i(200074);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = (RefreshLoadMoreLayout)this.xDO.getValue();
-    AppMethodBeat.o(200074);
-    return localRefreshLoadMoreLayout;
+    AppMethodBeat.i(340697);
+    TextView localTextView = (TextView)this.EJp.getValue();
+    AppMethodBeat.o(340697);
+    return localTextView;
   }
   
-  public final void ab(final ArrayList<bu> paramArrayList)
+  private final RecyclerView eEM()
   {
-    AppMethodBeat.i(200071);
-    p.k(paramArrayList, "data");
-    if (this.xnL)
+    AppMethodBeat.i(340704);
+    RecyclerView localRecyclerView = (RecyclerView)this.EJq.getValue();
+    AppMethodBeat.o(340704);
+    return localRecyclerView;
+  }
+  
+  private final boolean eEN()
+  {
+    return this.Auc.AJo == 112;
+  }
+  
+  private final FinderRefreshLayout getRlLayout()
+  {
+    AppMethodBeat.i(340682);
+    FinderRefreshLayout localFinderRefreshLayout = (FinderRefreshLayout)this.BaO.getValue();
+    AppMethodBeat.o(340682);
+    return localFinderRefreshLayout;
+  }
+  
+  public final void QB(int paramInt)
+  {
+    AppMethodBeat.i(340800);
+    Object localObject = eEM().getAdapter();
+    if ((localObject instanceof c)) {}
+    for (localObject = (c)localObject;; localObject = null)
     {
-      getRlLayout().setBackgroundColor(this.kJC.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.Dark_0));
-      dLF().setBackgroundColor(this.kJC.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.Dark_0));
-      getRlLayout().getRecyclerView().setBackgroundDrawable(this.kJC.getResources().getDrawable(com.tencent.mm.plugin.finder.nearby.f.c.finder_live_square_rv_corner_bg));
+      if (localObject != null) {
+        ((c)localObject).EJv = paramInt;
+      }
+      localObject = eEM().getAdapter();
+      if (localObject != null) {
+        ((RecyclerView.a)localObject).bZE.notifyChanged();
+      }
+      AppMethodBeat.o(340800);
+      return;
     }
-    Object localObject1;
-    for (;;)
+  }
+  
+  public final void ae(ArrayList<cc> paramArrayList)
+  {
+    RecyclerView localRecyclerView = null;
+    AppMethodBeat.i(340770);
+    s.u(paramArrayList, "data");
+    Object localObject1 = this.EJs;
+    s.u(paramArrayList, "list");
+    ((g)localObject1).EJA = paramArrayList;
+    if (this.ALp)
     {
-      localObject1 = (View)this.zEG.getValue();
-      p.j(localObject1, "rootScroll");
-      localObject1 = ((View)localObject1).getContext();
-      p.j(localObject1, "rootScroll.context");
-      localObject1 = ((Context)localObject1).getResources();
-      getRlLayout().setLimitTopRequest((int)((Resources)localObject1).getDimension(com.tencent.mm.plugin.finder.nearby.f.b.finder_timeline_refresh_height) - (int)((Resources)localObject1).getDimension(com.tencent.mm.plugin.finder.nearby.f.b.Edge_12A));
-      getRlLayout().setRefreshTargetY((int)((Resources)localObject1).getDimension(com.tencent.mm.plugin.finder.nearby.f.b.Edge_6A) - (int)((Resources)localObject1).getDimension(com.tencent.mm.plugin.finder.nearby.f.b.finder_timeline_refresh_height));
-      getRlLayout().setDamping(1.85F);
-      getRlLayout().setSuperNestedScroll(false);
+      getRlLayout().setBackgroundColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.Dark_0));
+      eEJ().setBackgroundColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.Dark_0));
+      getRecyclerView().setBackgroundDrawable(this.nma.getResources().getDrawable(com.tencent.mm.plugin.finder.nearby.f.c.finder_live_square_rv_corner_bg));
+      eEL().setTextColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_0_Alpha_0_5_Night_Mode));
+      eEK().setIconColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_0_Alpha_0_5_Night_Mode));
       localObject1 = getRlLayout().getLoadMoreFooter();
       if (localObject1 != null)
       {
-        localObject1 = ((View)localObject1).findViewById(com.tencent.mm.plugin.finder.nearby.f.d.goto_more_live_tv);
-        if (localObject1 != null) {
-          ((View)localObject1).setOnClickListener((View.OnClickListener)new i(this));
+        localObject1 = ((com.tencent.mm.view.refreshLayout.b.b)localObject1).getView();
+        if (localObject1 != null)
+        {
+          localObject1 = (TextView)((View)localObject1).findViewById(com.tencent.mm.plugin.finder.nearby.f.d.load_more_footer_tip_tv);
+          if (localObject1 != null) {
+            ((TextView)localObject1).setTextColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_100_Alpha_0_3));
+          }
         }
       }
-      getRlLayout().setActionCallback((RefreshLoadMoreLayout.a)new j(this));
-      localObject1 = getRlLayout().getRecyclerView();
+    }
+    Object localObject2;
+    for (;;)
+    {
+      getRlLayout().setOnSimpleAction((com.tencent.mm.view.refreshLayout.d.b)new k(this));
+      localObject1 = getRecyclerView();
       localObject2 = new NearbyLiveViewCallback.initRecyclerView.1();
       ((NearbyLiveViewCallback.initRecyclerView.1)localObject2).setItemPrefetchEnabled(true);
-      ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)localObject2);
-      ((RecyclerView)localObject1).b((RecyclerView.h)new c(this.xbu.xkX));
-      localObject2 = ((RecyclerView)localObject1).getItemAnimator();
-      if (localObject2 != null) {
-        ((RecyclerView.f)localObject2).n(0L);
-      }
-      localObject2 = new h(this, paramArrayList, (com.tencent.mm.view.recyclerview.f)new b(this.xCd, this.zEJ, this.xnL, dLG(), this.xbu.xkX), paramArrayList);
-      ((com.tencent.mm.view.recyclerview.h)localObject2).YSn = ((h.c)new e(this, paramArrayList));
-      ((com.tencent.mm.view.recyclerview.h)localObject2).YSm = ((h.d)new f(this, paramArrayList));
-      ((RecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-      ((RecyclerView)localObject1).setHasFixedSize(true);
-      ((RecyclerView)localObject1).setItemViewCacheSize(8);
+      ah localah = ah.aiuX;
+      ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)localObject2);
+      getRecyclerView().a((RecyclerView.h)new b(this.Auc.AJo));
+      localObject1 = getRecyclerView().getItemAnimator();
       if (localObject1 != null) {
+        ((RecyclerView.f)localObject1).bZL = 0L;
+      }
+      this.ALE = ((WxRecyclerAdapter)new f(paramArrayList, new d(this.AZo, this.EIR, this.ALp, eEN(), this.Auc.AJo)));
+      localObject1 = this.ALE;
+      if (localObject1 != null) {
+        ((com.tencent.mm.view.recyclerview.i)localObject1).agOe = ((i.c)new g(paramArrayList, this));
+      }
+      localObject1 = this.ALE;
+      if (localObject1 != null) {
+        ((com.tencent.mm.view.recyclerview.i)localObject1).agOd = ((i.d)new h(paramArrayList, this));
+      }
+      getRecyclerView().setAdapter((RecyclerView.a)this.ALE);
+      getRecyclerView().setHasFixedSize(true);
+      getRecyclerView().setItemViewCacheSize(8);
+      paramArrayList = getRecyclerView();
+      if (paramArrayList != null) {
         break;
       }
-      paramArrayList = new t("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.WxRecyclerView");
-      AppMethodBeat.o(200071);
+      paramArrayList = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.WxRecyclerView");
+      AppMethodBeat.o(340770);
       throw paramArrayList;
-      if (dLG())
+      if (eEN())
       {
-        getRlLayout().setBackgroundColor(this.kJC.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_93));
-        dLF().setBackgroundColor(this.kJC.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_93));
+        getRlLayout().setBackgroundColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_93));
+        eEJ().setBackgroundColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_93));
       }
       else
       {
-        getRlLayout().setBackgroundColor(this.kJC.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_100));
-        dLF().setBackgroundColor(this.kJC.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_100));
+        getRlLayout().setBackgroundColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_100));
+        eEJ().setBackgroundColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_100));
+        eEL().setTextColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_0_Alpha_0_5));
+        eEK().setIconColor(this.nma.getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.BW_0_Alpha_0_5));
       }
     }
-    paramArrayList = (WxRecyclerView)localObject1;
-    Object localObject2 = com.tencent.mm.plugin.finder.storage.d.AjH;
-    paramArrayList.setFlingSpeedFactor(((Number)com.tencent.mm.plugin.finder.storage.d.dUr().aSr()).intValue());
-    c.a((RecyclerView)localObject1, (com.tencent.mm.view.recyclerview.d)new g(this));
-    AppMethodBeat.o(200071);
+    localObject1 = com.tencent.mm.plugin.finder.storage.d.FAy;
+    paramArrayList.setFlingSpeedFactor(((Number)com.tencent.mm.plugin.finder.storage.d.eSQ().bmg()).intValue());
+    paramArrayList = getRecyclerView();
+    s.s(paramArrayList, "recyclerView");
+    com.tencent.mm.view.recyclerview.c.a((RecyclerView)paramArrayList, (com.tencent.mm.view.recyclerview.d)new i(this), (kotlin.g.a.b)j.akht);
+    localObject1 = new StringBuilder("initSubTabView tab:");
+    paramArrayList = this.EIq;
+    if (paramArrayList == null)
+    {
+      paramArrayList = null;
+      localObject1 = ((StringBuilder)localObject1).append(paramArrayList).append(" subTabCount:");
+      paramArrayList = this.EIq;
+      if (paramArrayList != null) {
+        break label828;
+      }
+      paramArrayList = localRecyclerView;
+    }
+    for (;;)
+    {
+      Log.i("NearbyLiveViewCallback", paramArrayList);
+      paramArrayList = this.EIq;
+      if (paramArrayList == null) {
+        break label862;
+      }
+      localRecyclerView = eEM();
+      eEM().getContext();
+      localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(0, false));
+      eEM().setAdapter((RecyclerView.a)new c(paramArrayList));
+      if (this.ALp) {
+        eEM().setBackgroundColor(eEM().getContext().getResources().getColor(com.tencent.mm.plugin.finder.nearby.f.a.Dark_0));
+      }
+      if (paramArrayList.ZWf.isEmpty()) {
+        break label853;
+      }
+      paramArrayList = com.tencent.d.a.a.a.a.a.ahiX;
+      if (((Number)com.tencent.d.a.a.a.a.a.jUc().bmg()).intValue() != 1) {
+        break label853;
+      }
+      eEM().setVisibility(0);
+      AppMethodBeat.o(340770);
+      return;
+      paramArrayList = paramArrayList.ZWa;
+      break;
+      label828:
+      localObject2 = paramArrayList.ZWf;
+      paramArrayList = localRecyclerView;
+      if (localObject2 != null) {
+        paramArrayList = Integer.valueOf(((LinkedList)localObject2).size());
+      }
+    }
+    label853:
+    eEM().setVisibility(8);
+    label862:
+    AppMethodBeat.o(340770);
   }
   
-  public final RefreshLoadMoreLayout dtq()
+  public final RecyclerView eEA()
   {
-    AppMethodBeat.i(200073);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = getRlLayout();
-    p.j(localRefreshLoadMoreLayout, "rlLayout");
-    AppMethodBeat.o(200073);
-    return localRefreshLoadMoreLayout;
+    AppMethodBeat.i(340792);
+    RecyclerView localRecyclerView = eEM();
+    AppMethodBeat.o(340792);
+    return localRecyclerView;
+  }
+  
+  public final WxRefreshLayout eEy()
+  {
+    AppMethodBeat.i(340780);
+    Object localObject = getRlLayout();
+    s.s(localObject, "rlLayout");
+    localObject = (WxRefreshLayout)localObject;
+    AppMethodBeat.o(340780);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.view.k eEz()
+  {
+    return (com.tencent.mm.view.k)this.EJt;
   }
   
   public final RecyclerView getRecyclerView()
   {
-    AppMethodBeat.i(200072);
-    Object localObject = getRlLayout();
-    if (localObject != null)
-    {
-      localObject = ((RefreshLoadMoreLayout)localObject).getRecyclerView();
-      AppMethodBeat.o(200072);
-      return localObject;
-    }
-    AppMethodBeat.o(200072);
-    return null;
+    AppMethodBeat.i(340774);
+    RecyclerView localRecyclerView = (RecyclerView)getRecyclerView();
+    AppMethodBeat.o(340774);
+    return localRecyclerView;
+  }
+  
+  public final WxRecyclerView getRecyclerView()
+  {
+    AppMethodBeat.i(340804);
+    WxRecyclerView localWxRecyclerView = (WxRecyclerView)this.CNQ.getValue();
+    AppMethodBeat.o(340804);
+    return localWxRecyclerView;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(200077);
-    p.k(paramConfiguration, "newConfig");
-    getRlLayout().onChanged();
-    AppMethodBeat.o(200077);
+    AppMethodBeat.i(340808);
+    s.u(paramConfiguration, "newConfig");
+    this.EJt.onChanged();
+    AppMethodBeat.o(340808);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"})
+  public final void pq(List<? extends cc> paramList)
+  {
+    AppMethodBeat.i(370447);
+    s.u(paramList, "cacheData");
+    Object localObject = this.ALE;
+    if (localObject != null)
+    {
+      localObject = (List)((WxRecyclerAdapter)localObject).data;
+      if (localObject != null)
+      {
+        ((List)localObject).clear();
+        ((List)localObject).addAll((Collection)paramList);
+      }
+    }
+    paramList = this.ALE;
+    if (paramList != null) {
+      paramList.bZE.notifyChanged();
+    }
+    AppMethodBeat.o(370447);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$NearbyLiveItemConvertFactory;", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "baseContext", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$Presenter;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isForceNightMode", "", "isLocalCityPage", "commentScene", "", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveContract$Presenter;ZZI)V", "bindLive", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "jumpProfile", "context", "Landroid/content/Context;", "feedId", "", "username", "", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$NearbyLiveItemDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "commentScene", "", "(I)V", "getCommentScene", "()I", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements com.tencent.mm.view.recyclerview.f
-  {
-    final MMActivity xCd;
-    final int xkX;
-    private final boolean xnL;
-    final b.a<bu> zEJ;
-    private final boolean zEL;
-    
-    public b(MMActivity paramMMActivity, b.a<bu> parama, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-    {
-      AppMethodBeat.i(201788);
-      this.xCd = paramMMActivity;
-      this.zEJ = parama;
-      this.xnL = paramBoolean1;
-      this.zEL = paramBoolean2;
-      this.xkX = paramInt;
-      AppMethodBeat.o(201788);
-    }
-    
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(201785);
-      switch (paramInt)
-      {
-      default: 
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
-        {
-          localObject = (Throwable)new RuntimeException("type invalid");
-          AppMethodBeat.o(201785);
-          throw ((Throwable)localObject);
-        }
-        break;
-      case 9: 
-        localObject = com.tencent.mm.plugin.finder.nearby.live.base.a.zEO;
-        localObject = (e)new a(this, com.tencent.mm.plugin.finder.nearby.live.base.a.dLH(), this.xnL, this.zEL, (kotlin.g.a.m)new b(this));
-        AppMethodBeat.o(201785);
-        return localObject;
-      case -10: 
-        localObject = (e)new ah((kotlin.g.a.b)new c(this));
-        AppMethodBeat.o(201785);
-        return localObject;
-      case -3: 
-        localObject = (e)new ai();
-        AppMethodBeat.o(201785);
-        return localObject;
-      case -5: 
-        localObject = (e)new ad();
-        AppMethodBeat.o(201785);
-        return localObject;
-      case 6: 
-        localObject = (e)new by(this.xnL);
-        AppMethodBeat.o(201785);
-        return localObject;
-      case -1: 
-        localObject = (e)new n((kotlin.g.a.a)new d(this), (kotlin.g.a.a)new e(this), this.xnL);
-        AppMethodBeat.o(201785);
-        return localObject;
-      }
-      Log.printInfoStack("RecyclerViewAdapterEx", "type invalid", new Object[0]);
-      Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-      AppMethodBeat.o(201785);
-      return localObject;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$NearbyLiveItemConvertFactory$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/nearby/live/convert/NearbyLiveFeedsConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"})
-    public static final class a
-      extends com.tencent.mm.plugin.finder.nearby.live.convert.a
-    {
-      a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, kotlin.g.a.m paramm)
-      {
-        super(paramBoolean2, paramm, localm);
-      }
-      
-      public final void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(200422);
-        p.k(parami, "holder");
-        p.k(paramBaseFinderFeed, "item");
-        super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-        View localView = parami.RD(com.tencent.mm.plugin.finder.nearby.f.d.finder_live_online_layout);
-        TextView localTextView2 = (TextView)parami.RD(com.tencent.mm.plugin.finder.nearby.f.d.rec_reason_tv);
-        TextView localTextView1 = (TextView)parami.RD(com.tencent.mm.plugin.finder.nearby.f.d.watch_count_history_tv);
-        paramList = paramBaseFinderFeed.feedObject.getLiveInfo();
-        if ((paramList != null) && (paramList.liveStatus == 1))
-        {
-          p.j(localView, "liveOnLineLayout");
-          localView.setVisibility(0);
-          String str = paramBaseFinderFeed.feedObject.getFeedObject().recommendReason;
-          paramList = str;
-          if (str == null) {
-            paramList = "";
-          }
-          p.j(paramList, "item.feedObject.feedObject.recommendReason ?: \"\"");
-          if (!TextUtils.isEmpty((CharSequence)paramList)) {
-            break label227;
-          }
-          localView.setVisibility(8);
-          paramBaseFinderFeed = paramBaseFinderFeed.feedObject.getLiveInfo();
-          if (paramBaseFinderFeed == null) {
-            break label253;
-          }
-          paramInt1 = paramBaseFinderFeed.SFG;
-          label166:
-          if (paramInt1 <= 0) {
-            break label258;
-          }
-          p.j(localTextView1, "watchCountHistoryTv");
-          localTextView1.setText((CharSequence)String.valueOf(com.tencent.mm.plugin.finder.utils.m.QI(paramInt1)));
-          localTextView1.setVisibility(0);
-        }
-        for (;;)
-        {
-          parami = (TextView)parami.RD(com.tencent.mm.plugin.finder.nearby.f.d.finder_desc);
-          p.j(parami, "descTv");
-          parami.setVisibility(8);
-          AppMethodBeat.o(200422);
-          return;
-          label227:
-          p.j(localTextView2, "recReasonTv");
-          localTextView2.setText((CharSequence)paramList);
-          localView.setVisibility(0);
-          break;
-          label253:
-          paramInt1 = 0;
-          break label166;
-          label258:
-          p.j(localTextView1, "watchCountHistoryTv");
-          localTextView1.setVisibility(8);
-        }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "feedId", "", "username", "", "invoke"})
-    static final class b
-      extends q
-      implements kotlin.g.a.m<Long, String, x>
-    {
-      b(f.b paramb)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
-    static final class c
-      extends q
-      implements kotlin.g.a.b<View, x>
-    {
-      c(f.b paramb)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class d
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      d(f.b paramb)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class e
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      e(f.b paramb)
-      {
-        super();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$NearbyLiveItemDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "commentScene", "", "(I)V", "getCommentScene", "()I", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder-nearby_release"})
-  public static final class c
     extends RecyclerView.h
   {
-    private final int xkX;
+    private final int AJo;
     
-    public c(int paramInt)
+    public b(int paramInt)
     {
-      this.xkX = paramInt;
+      this.AJo = paramInt;
     }
     
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(202819);
-      p.k(paramRect, "outRect");
-      p.k(paramView, "view");
-      p.k(paramRecyclerView, "parent");
-      p.k(params, "state");
-      paramRecyclerView = com.tencent.mm.plugin.finder.nearby.live.base.a.zEO;
-      int i = com.tencent.mm.plugin.finder.nearby.live.base.a.dLH();
-      paramRecyclerView = com.tencent.mm.plugin.finder.nearby.live.base.a.zEO;
-      int j = com.tencent.mm.plugin.finder.nearby.live.base.a.dLH() / 2;
-      paramRecyclerView = paramView.getLayoutParams();
-      if (paramRecyclerView == null)
+      AppMethodBeat.i(340848);
+      s.u(paramRect, "outRect");
+      s.u(paramView, "view");
+      s.u(paramRecyclerView, "parent");
+      s.u(params, "state");
+      params = com.tencent.mm.plugin.finder.nearby.live.base.a.EJF;
+      int j = (int)com.tencent.mm.plugin.finder.nearby.live.base.a.eEP();
+      params = com.tencent.mm.plugin.finder.nearby.live.base.a.EJF;
+      int k = (int)com.tencent.mm.plugin.finder.nearby.live.base.a.eEP() / 2;
+      params = paramView.getLayoutParams();
+      if (params == null)
       {
-        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(202819);
+        paramRect = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(340848);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mF())
+      if (((StaggeredGridLayoutManager.LayoutParams)params).cbB)
       {
-        paramRect.left = 0;
-        paramRect.right = 0;
-        paramRect.bottom = 0;
-        paramRect.top = 0;
-        AppMethodBeat.o(202819);
+        paramView = paramRecyclerView.bj(paramView);
+        int i;
+        if ((paramView instanceof com.tencent.mm.view.recyclerview.j))
+        {
+          paramView = (com.tencent.mm.view.recyclerview.j)paramView;
+          if (paramView != null) {
+            break label289;
+          }
+          i = -1;
+          label118:
+          if (paramView != null) {
+            break label298;
+          }
+          paramView = null;
+          label124:
+          if (!(paramView instanceof com.tencent.mm.view.recyclerview.a)) {
+            break label309;
+          }
+        }
+        int m;
+        for (;;)
+        {
+          m = MMApplicationContext.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.nearby.f.b.finder_1_25_A);
+          if (!(paramView instanceof bn)) {
+            break label366;
+          }
+          paramView = ((bn)paramView).AWZ;
+          Log.i("NearbyLiveViewCallback", "getItemOffsets divider:" + paramView.aadB + '-' + paramView.ECY + '-' + paramView.wording);
+          if (paramView.aadB != 6) {
+            break label502;
+          }
+          if (i != 0) {
+            break label314;
+          }
+          paramRect.left = (MMApplicationContext.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.nearby.f.b.Edge_2A) + 1);
+          paramRect.right = MMApplicationContext.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.nearby.f.b.Edge_2A);
+          paramRect.bottom = k;
+          paramRect.top = MMApplicationContext.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.nearby.f.b.Edge_0_5_A);
+          AppMethodBeat.o(340848);
+          return;
+          paramView = null;
+          break;
+          label289:
+          i = paramView.KJ();
+          break label118;
+          label298:
+          paramView = (com.tencent.mm.view.recyclerview.a)paramView.CSA;
+          break label124;
+          label309:
+          paramView = null;
+        }
+        label314:
+        paramRect.left = (MMApplicationContext.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.nearby.f.b.Edge_2A) + 1);
+        paramRect.right = MMApplicationContext.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.finder.nearby.f.b.Edge_2A);
+        paramRect.bottom = k;
+        paramRect.top = m;
+        AppMethodBeat.o(340848);
         return;
+        label366:
+        if (((paramView instanceof au)) || ((paramView instanceof com.tencent.mm.plugin.finder.nearby.newlivesquare.adapter.main.convertdata.c)))
+        {
+          paramRect.left = j;
+          paramRect.right = j;
+          paramRect.bottom = k;
+          paramRect.top = k;
+          AppMethodBeat.o(340848);
+        }
       }
-      paramView = paramView.getLayoutParams();
-      if (paramView == null)
+      else
       {
-        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(202819);
-        throw paramRect;
-      }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramView).kv() % 2 == 0)
-      {
-        paramRect.left = i;
+        paramView = paramView.getLayoutParams();
+        if (paramView == null)
+        {
+          paramRect = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+          AppMethodBeat.o(340848);
+          throw paramRect;
+        }
+        if (((StaggeredGridLayoutManager.LayoutParams)paramView).Lh() % 2 == 0)
+        {
+          paramRect.left = j;
+          paramRect.right = k;
+          paramRect.bottom = k;
+          paramRect.top = k;
+          AppMethodBeat.o(340848);
+          return;
+        }
+        paramRect.left = k;
         paramRect.right = j;
-        paramRect.bottom = j;
-        paramRect.top = j;
-        AppMethodBeat.o(202819);
-        return;
+        paramRect.bottom = k;
+        paramRect.top = k;
       }
-      paramRect.left = j;
-      paramRect.right = i;
-      paramRect.bottom = j;
-      paramRect.top = j;
-      AppMethodBeat.o(202819);
+      label502:
+      AppMethodBeat.o(340848);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$SubTabAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$SubTabViewHolder;", "parentTab", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "(Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback;Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;)V", "curSelectedSubTabPos", "", "getCurSelectedSubTabPos", "()I", "setCurSelectedSubTabPos", "(I)V", "dataList", "Ljava/util/LinkedList;", "getParentTab", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTabInfo;", "getItemCount", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  final class c
+    extends RecyclerView.a<f.d>
+  {
+    private final bnn EJu;
+    int EJv;
+    private final LinkedList<bnn> vEn;
+    
+    public c()
+    {
+      AppMethodBeat.i(340838);
+      this.EJu = ((bnn)localObject1);
+      this.vEn = new LinkedList();
+      if (!this.EJu.ZWf.isEmpty())
+      {
+        this.vEn.add(0, this.EJu);
+        this$1 = this.vEn;
+        localObject1 = this.EJu.ZWf;
+        s.s(localObject1, "parentTab.sub_tab_list");
+        Object localObject2 = (Iterable)localObject1;
+        localObject1 = (Collection)new ArrayList();
+        localObject2 = ((Iterable)localObject2).iterator();
+        label161:
+        label188:
+        label191:
+        while (((Iterator)localObject2).hasNext())
+        {
+          Object localObject3 = ((Iterator)localObject2).next();
+          CharSequence localCharSequence = (CharSequence)((bnn)localObject3).ZWa;
+          if ((localCharSequence == null) || (localCharSequence.length() == 0))
+          {
+            i = 1;
+            if (i != 0) {
+              break label188;
+            }
+          }
+          for (int i = 1;; i = 0)
+          {
+            if (i == 0) {
+              break label191;
+            }
+            ((Collection)localObject1).add(localObject3);
+            break;
+            i = 0;
+            break label161;
+          }
+        }
+        f.this.addAll((Collection)localObject1);
+      }
+      AppMethodBeat.o(340838);
+    }
+    
+    private static final void a(c paramc, int paramInt, f paramf, bnn parambnn, View paramView)
+    {
+      AppMethodBeat.i(340846);
+      Object localObject1 = new Object();
+      Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramc);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).sc(paramInt);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramf);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(parambnn);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$SubTabAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+      s.u(paramc, "this$0");
+      s.u(paramf, "this$1");
+      s.u(parambnn, "$data");
+      int i = paramc.EJv;
+      paramc.EJv = paramInt;
+      paramc.fV(i);
+      paramc.fV(paramc.EJv);
+      paramc = com.tencent.mm.ui.component.k.aeZF;
+      localObject1 = (com.tencent.mm.plugin.finder.nearby.report.f)com.tencent.mm.ui.component.k.d((AppCompatActivity)f.h(paramf)).q(com.tencent.mm.plugin.finder.nearby.report.f.class);
+      Object localObject3;
+      if (localObject1 != null)
+      {
+        localObject3 = f.f(paramf);
+        if (((com.tencent.mm.plugin.finder.nearby.report.f)localObject1).ELx) {
+          Log.w("SimpleUIComponent", "liveTabPageOut return for isNeverPageIn");
+        }
+      }
+      else
+      {
+        f.a(paramf).a(parambnn);
+        paramc = com.tencent.mm.ui.component.k.aeZF;
+        paramView = (com.tencent.mm.plugin.finder.nearby.report.f)com.tencent.mm.ui.component.k.d((AppCompatActivity)f.h(paramf)).q(com.tencent.mm.plugin.finder.nearby.report.f.class);
+        if (paramView != null)
+        {
+          localObject1 = f.f(paramf);
+          if ((localObject1 != null) && (((localObject1 instanceof NearbyLiveSquareTabFragment)) || ((localObject1 instanceof NearbyLiveLocalCityFragment))))
+          {
+            parambnn = ((AbsNearByFragment)localObject1).eEt();
+            localObject2 = ((AbsNearByFragment)localObject1).eEu();
+            if (!(localObject1 instanceof NearbyLiveSquareTabFragment)) {
+              break label1046;
+            }
+            paramc = (NearbyLiveSquareTabFragment)localObject1;
+            label258:
+            if (paramc != null) {
+              break label1051;
+            }
+            paramc = "";
+            label265:
+            localObject3 = "page_tab_" + parambnn + '_' + (String)localObject2 + '_' + paramc;
+            paramc = com.tencent.mm.ui.component.k.aeZF;
+            paramc = ((as)com.tencent.mm.ui.component.k.y((Fragment)localObject1).q(as.class)).zIB;
+            if (paramc != null) {
+              break label1089;
+            }
+            paramc = "";
+          }
+        }
+      }
+      label910:
+      label951:
+      label1089:
+      for (;;)
+      {
+        Object localObject4 = ((AbsNearByFragment)localObject1).eEv();
+        Object localObject5 = new cr();
+        ((cr)localObject5).ixo = cn.bDw();
+        ((cr)localObject5).mu((String)localObject3);
+        ((cr)localObject5).mv(parambnn);
+        ((cr)localObject5).mw((String)localObject2);
+        parambnn = ((com.tencent.mm.plugin.expt.b.d)h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHN();
+        paramf = parambnn;
+        if (parambnn == null) {
+          paramf = "";
+        }
+        ((cr)localObject5).mx(paramf);
+        paramf = com.tencent.mm.ui.component.k.aeZF;
+        parambnn = ((as)com.tencent.mm.ui.component.k.y((Fragment)localObject1).q(as.class)).zIO;
+        paramf = parambnn;
+        if (parambnn == null) {
+          paramf = "";
+        }
+        ((cr)localObject5).my(paramf);
+        ((cr)localObject5).mz(paramc);
+        ((cr)localObject5).mA((String)localObject4);
+        ((cr)localObject5).mB("");
+        ((cr)localObject5).mC(paramView.ELv);
+        ((cr)localObject5).mD(paramView.Dol);
+        ((cr)localObject5).mB(com.tencent.mm.plugin.finder.nearby.report.f.eFz());
+        ((cr)localObject5).bMH();
+        paramView.ELv = ((String)localObject3);
+        paramView.ELw = cn.bDw();
+        paramView.ELx = false;
+        Log.i("SimpleUIComponent", s.X("reportSubTabPageIn ", ((cr)localObject5).aIF()));
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$SubTabAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(340846);
+        return;
+        if ((!(localObject3 instanceof NearbyLiveSquareTabFragment)) && (!(localObject3 instanceof NearbyLiveLocalCityFragment))) {
+          break;
+        }
+        String str1 = ((AbsNearByFragment)localObject3).eEt();
+        String str2 = ((AbsNearByFragment)localObject3).eEu();
+        if ((localObject3 instanceof NearbyLiveSquareTabFragment))
+        {
+          paramc = (NearbyLiveSquareTabFragment)localObject3;
+          label618:
+          if (paramc != null) {
+            break label910;
+          }
+          paramc = "";
+          label625:
+          localObject2 = ((com.tencent.mm.plugin.finder.nearby.report.f)localObject1).Dol;
+          paramc = "page_tab_" + str1 + '_' + str2 + '_' + paramc;
+          localObject5 = ((AbsNearByFragment)localObject3).eEv();
+          localObject4 = new cs();
+          ((cs)localObject4).ixo = cn.bDw();
+          ((cs)localObject4).mE(paramc);
+          ((cs)localObject4).mF(str1);
+          ((cs)localObject4).mG(str2);
+          paramView = ((com.tencent.mm.plugin.expt.b.d)h.ax(com.tencent.mm.plugin.expt.b.d.class)).dHN();
+          paramc = paramView;
+          if (paramView == null) {
+            paramc = "";
+          }
+          ((cs)localObject4).mH(paramc);
+          paramc = com.tencent.mm.ui.component.k.aeZF;
+          paramView = ((as)com.tencent.mm.ui.component.k.y((Fragment)localObject3).q(as.class)).zIO;
+          paramc = paramView;
+          if (paramView == null) {
+            paramc = "";
+          }
+          ((cs)localObject4).mI(paramc);
+          paramc = com.tencent.mm.ui.component.k.aeZF;
+          paramView = ((as)com.tencent.mm.ui.component.k.y((Fragment)localObject3).q(as.class)).zIB;
+          paramc = paramView;
+          if (paramView == null) {
+            paramc = "";
+          }
+          ((cs)localObject4).mJ(paramc);
+          ((cs)localObject4).mK((String)localObject5);
+          if (((com.tencent.mm.plugin.finder.nearby.report.f)localObject1).ELw > 0L) {
+            break label951;
+          }
+          paramc = "";
+        }
+        for (;;)
+        {
+          ((cs)localObject4).mL(paramc);
+          ((cs)localObject4).mM((String)localObject2);
+          ((cs)localObject4).bMH();
+          ((com.tencent.mm.plugin.finder.nearby.report.f)localObject1).ELw = 0L;
+          Log.i("SimpleUIComponent", s.X("reportSubTabPageOut ", ((cs)localObject4).aIF()));
+          break;
+          paramc = null;
+          break label618;
+          paramc = paramc.ELV;
+          if (paramc == null)
+          {
+            paramc = "";
+            break label625;
+          }
+          paramView = Integer.valueOf(paramc.ZVZ).toString();
+          paramc = paramView;
+          if (paramView != null) {
+            break label625;
+          }
+          paramc = "";
+          break label625;
+          long l1 = cn.bDw();
+          long l2 = ((com.tencent.mm.plugin.finder.nearby.report.f)localObject1).ELw;
+          paramc = new com.tencent.mm.ad.i();
+          paramc.t("staytime", l1 - l2);
+          paramc.n("is_new_square", Integer.valueOf(1));
+          paramc.n("enter_type", Integer.valueOf(3));
+          paramc = paramc.toString();
+          s.s(paramc, "pgUdfKv.toString()");
+          paramView = n.bV(paramc, ",", ";");
+          paramc = paramView;
+          if (paramView == null) {
+            paramc = "";
+          }
+        }
+        paramc = null;
+        break label258;
+        paramc = paramc.ELV;
+        if (paramc == null)
+        {
+          paramc = "";
+          break label265;
+        }
+        paramf = Integer.valueOf(paramc.ZVZ).toString();
+        paramc = paramf;
+        if (paramf != null) {
+          break label265;
+        }
+        paramc = "";
+        break label265;
+      }
+    }
+    
+    public final int getItemCount()
+    {
+      AppMethodBeat.i(340860);
+      int i = this.vEn.size();
+      AppMethodBeat.o(340860);
+      return i;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$SubTabViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "bg", "kotlin.jvm.PlatformType", "getBg", "()Landroid/view/View;", "title", "Landroid/widget/TextView;", "getTitle", "()Landroid/widget/TextView;", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends RecyclerView.v
+  {
+    final View EJx;
+    final TextView mll;
+    
+    public d(View paramView)
+    {
+      super();
+      AppMethodBeat.i(340815);
+      this.mll = ((TextView)paramView.findViewById(com.tencent.mm.plugin.finder.nearby.f.d.EGB));
+      this.EJx = paramView.findViewById(com.tencent.mm.plugin.finder.nearby.f.d.EGA);
+      AppMethodBeat.o(340815);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
     implements kotlin.g.a.a<View>
   {
-    d(f paramf)
+    e(f paramf)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder-nearby_release"})
-  public static final class e
-    implements h.c<i>
-  {
-    e(ArrayList paramArrayList) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$4", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemLongClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemLongClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$3", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onViewAttachedToWindow", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
-    implements h.d<i>
+    extends WxRecyclerAdapter<cc>
   {
-    f(ArrayList paramArrayList) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$5", "Lcom/tencent/mm/view/recyclerview/ExposeTimeRecordListener;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "onExposeTimeRecorded", "", "recordsSet", "", "Lcom/tencent/mm/view/recyclerview/ExposeTimeRecord;", "onItemExposeStart", "item", "plugin-finder-nearby_release"})
-  public static final class g
-    extends com.tencent.mm.view.recyclerview.d<com.tencent.mm.view.recyclerview.a>
-  {
-    public final void a(com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a> paramb)
+    f(ArrayList<cc> paramArrayList, d paramd)
     {
-      AppMethodBeat.i(199525);
-      p.k(paramb, "item");
-      if ((paramb.YRY instanceof w))
-      {
-        cve localcve = new cve();
-        Object localObject = paramb.YRY;
-        if (localObject == null)
-        {
-          paramb = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.FinderFeedLive");
-          AppMethodBeat.o(199525);
-          throw paramb;
-        }
-        localObject = (w)localObject;
-        localcve.xbk = ((w)localObject).mf();
-        localcve.TCN = ((int)paramb.startTime);
-        paramb = au.zBf;
-        au.a(localcve, f.b(this.zEN).getCommentScene());
-        paramb = com.tencent.mm.plugin.finder.nearby.report.d.zJm;
-        com.tencent.mm.plugin.finder.nearby.report.d.a(f.b(this.zEN).getCommentScene(), localcve);
-        Log.d("NearbyLiveViewCallback", "onItemExposeStart id:" + localcve.xbk + " nick:" + ((BaseFinderFeed)localObject).feedObject.getFeedObject().nickname);
-      }
-      AppMethodBeat.o(199525);
+      super(paramArrayList);
+      AppMethodBeat.i(370438);
+      AppMethodBeat.o(370438);
     }
     
-    public final void l(Set<com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a>> paramSet)
+    public final void v(com.tencent.mm.view.recyclerview.j paramj)
     {
-      AppMethodBeat.i(199521);
-      p.k(paramSet, "recordsSet");
-      Log.i("NearbyLiveViewCallback", "onExposeTimeRecorded: size = " + paramSet.size());
-      LinkedList localLinkedList = new LinkedList();
-      Iterator localIterator = ((Iterable)paramSet).iterator();
-      while (localIterator.hasNext())
-      {
-        com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)localIterator.next();
-        if ((localb.YRY instanceof w))
-        {
-          paramSet = new cve();
-          Object localObject1 = localb.YRY;
-          if (localObject1 == null)
-          {
-            paramSet = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.FinderFeedLive");
-            AppMethodBeat.o(199521);
-            throw paramSet;
-          }
-          w localw = (w)localObject1;
-          paramSet.xbk = localw.mf();
-          localObject1 = au.zBf;
-          au.a(paramSet, f.b(this.zEN).getCommentScene());
-          paramSet.TCN = ((int)localb.BHT);
-          paramSet.TCO = localb.XDo;
-          paramSet.sessionBuffer = localw.getSessionBuffer();
-          localLinkedList.add(paramSet);
-          com.tencent.mm.plugin.finder.live.report.a locala = f.f(this.zEN);
-          bu localbu = (bu)localw;
-          int i = localb.XDo;
-          s.t localt = s.t.yGN;
-          String str1 = String.valueOf(f.b(this.zEN).getCommentScene());
-          paramSet = f.d(this.zEN);
-          if (paramSet != null)
-          {
-            localObject1 = paramSet.aiS();
-            paramSet = (Set<com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a>>)localObject1;
-            if (localObject1 != null) {}
-          }
-          else
-          {
-            paramSet = "";
-          }
-          String str2 = f.e(this.zEN);
-          p.k(localbu, "feed");
-          p.k(localt, "actionType");
-          p.k(str1, "commentscene");
-          p.k(paramSet, "clickSubTabContextId");
-          p.k(str2, "chnlExtra");
-          long l1 = localbu.mf();
-          String str3 = com.tencent.mm.plugin.expt.hellhound.core.b.Fw(l1);
-          p.j(str3, "HellhoundUtil.long2UnsignedString(feedIdL)");
-          localObject1 = com.tencent.mm.plugin.finder.live.report.h.yAW;
-          Object localObject2 = h.a.a(localbu);
-          if ((localbu instanceof BaseFinderFeed)) {}
-          for (localObject1 = ((BaseFinderFeed)localbu).feedObject.getUserName();; localObject1 = "")
-          {
-            Object localObject3 = ((com.tencent.mm.vending.j.d)localObject2).ieT();
-            p.j(localObject3, "tuple3.`$1`()");
-            long l2 = ((Number)localObject3).longValue();
-            localObject3 = ((com.tencent.mm.vending.j.d)localObject2).ieU();
-            p.j(localObject3, "tuple3.`$2`()");
-            int j = ((Number)localObject3).intValue();
-            localObject3 = com.tencent.mm.plugin.finder.live.report.h.yAW;
-            localObject3 = h.a.b(localbu);
-            h.b localb1 = h.b.yAX;
-            localObject2 = ((com.tencent.mm.vending.j.d)localObject2).ieV();
-            p.j(localObject2, "tuple3.`$3`()");
-            locala.a(new com.tencent.mm.plugin.finder.live.report.h(localbu, (String)localObject1, i, str3, l1, l2, localt, str1, j, (String)localObject3, localb1, true, ((Boolean)localObject2).booleanValue(), 0, null, paramSet, str2, 24576));
-            Log.d("NearbyLiveViewCallback", "onExposeTimeRecorded pos:" + localb.XDo + " exposeTime:" + localb.BHT + " nick:" + localw.feedObject.getFeedObject().nickname);
-            break;
-          }
-        }
-        Log.d("NearbyLiveViewCallback", "onExposeTimeRecorded pos:" + localb.XDo + " exposeTime:" + localb.BHT);
-      }
-      paramSet = com.tencent.mm.plugin.finder.nearby.report.d.zJm;
-      com.tencent.mm.plugin.finder.nearby.report.d.k(f.b(this.zEN).getCommentScene(), (List)localLinkedList);
-      paramSet = au.zBf;
-      au.aI(localLinkedList);
-      AppMethodBeat.o(199521);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$adapter$1", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "onViewAttachedToWindow", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "plugin-finder-nearby_release"})
-  public static final class h
-    extends WxRecyclerAdapter<bu>
-  {
-    h(ArrayList paramArrayList1, com.tencent.mm.view.recyclerview.f paramf, ArrayList paramArrayList2)
-    {
-      super(localArrayList);
-    }
-    
-    public final void p(i parami)
-    {
-      AppMethodBeat.i(203432);
-      p.k(parami, "holder");
-      super.p(parami);
-      Object localObject = parami.amk;
-      p.j(localObject, "holder.itemView");
-      localObject = ((View)localObject).getLayoutParams();
+      AppMethodBeat.i(370439);
+      s.u(paramj, "holder");
+      super.v(paramj);
+      Object localObject = paramj.caK.getLayoutParams();
       if ((localObject != null) && ((localObject instanceof StaggeredGridLayoutManager.LayoutParams)))
       {
         localObject = (StaggeredGridLayoutManager.LayoutParams)localObject;
-        if ((parami.mg() != -1) && (parami.mg() != -9) && (parami.mg() != -10) && (parami.mg() != 6)) {
-          break label96;
+        if ((paramj.caO != -1) && (paramj.caO != -9) && (paramj.caO != -10) && (paramj.caO != 6) && (paramj.caO != 4) && (paramj.caO != 2022)) {
+          break label106;
         }
       }
-      label96:
+      label106:
       for (boolean bool = true;; bool = false)
       {
-        ((StaggeredGridLayoutManager.LayoutParams)localObject).aA(bool);
-        AppMethodBeat.o(203432);
+        ((StaggeredGridLayoutManager.LayoutParams)localObject).cbB = bool;
+        AppMethodBeat.o(370439);
         return;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$4", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class g
+    implements i.c<com.tencent.mm.view.recyclerview.j>
+  {
+    g(ArrayList<cc> paramArrayList, f paramf) {}
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$5", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemLongClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemLongClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
+    implements i.d<com.tencent.mm.view.recyclerview.j>
+  {
+    h(ArrayList<cc> paramArrayList, f paramf) {}
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$6", "Lcom/tencent/mm/view/recyclerview/ExposeTimeRecordListener;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "onExposeTimeRecorded", "", "recordsSet", "", "Lcom/tencent/mm/view/recyclerview/ExposeTimeRecord;", "onItemExposeStart", "item", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class i
+    extends com.tencent.mm.view.recyclerview.d<com.tencent.mm.view.recyclerview.a>
   {
     i(f paramf) {}
     
-    public final void onClick(View paramView)
+    public final void a(com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a> paramb)
     {
-      AppMethodBeat.i(199696);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      f.a(this.zEN);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(199696);
+      AppMethodBeat.i(370444);
+      s.u(paramb, "item");
+      if ((paramb.agNK instanceof x))
+      {
+        dmk localdmk = new dmk();
+        x localx = (x)paramb.agNK;
+        localdmk.hKN = localx.bZA();
+        localdmk.aaSu = ((int)paramb.startTime);
+        Object localObject = paramb.view;
+        if (localObject != null) {
+          ((View)localObject).setTag(com.tencent.mm.plugin.finder.nearby.f.d.nearby_live_card_is_mute_tag, Boolean.FALSE);
+        }
+        localObject = paramb.view;
+        if (localObject != null) {
+          ((View)localObject).setTag(com.tencent.mm.plugin.finder.nearby.f.d.nearby_live_card_auto_play_time_tag, Long.valueOf(0L));
+        }
+        localObject = ay.EDk;
+        ay.a(localdmk, f.a(this.EJw).getCommentScene());
+        localObject = e.EQU;
+        e.a(f.a(this.EJw).getCommentScene(), localdmk);
+        Log.d("NearbyLiveViewCallback", "onItemExposeStart pos:" + paramb.afqR + " id:" + localdmk.hKN + " nick:" + localx.feedObject.getFeedObject().nickname);
+      }
+      AppMethodBeat.o(370444);
+    }
+    
+    public final void s(Set<com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a>> paramSet)
+    {
+      AppMethodBeat.i(370441);
+      s.u(paramSet, "recordsSet");
+      Log.i("NearbyLiveViewCallback", s.X("onExposeTimeRecorded: size = ", Integer.valueOf(paramSet.size())));
+      LinkedList localLinkedList = new LinkedList();
+      paramSet = (Iterable)paramSet;
+      f localf = this.EJw;
+      Iterator localIterator = paramSet.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (com.tencent.mm.view.recyclerview.b)localIterator.next();
+        Object localObject3;
+        label182:
+        label197:
+        label215:
+        Object localObject1;
+        if ((((com.tencent.mm.view.recyclerview.b)localObject2).agNK instanceof x))
+        {
+          localObject3 = new dmk();
+          x localx = (x)((com.tencent.mm.view.recyclerview.b)localObject2).agNK;
+          ((dmk)localObject3).hKN = localx.bZA();
+          paramSet = ay.EDk;
+          ay.a((dmk)localObject3, f.a(localf).getCommentScene());
+          ((dmk)localObject3).aaSu = ((int)((com.tencent.mm.view.recyclerview.b)localObject2).HsA);
+          ((dmk)localObject3).aaSv = ((com.tencent.mm.view.recyclerview.b)localObject2).afqR;
+          ((dmk)localObject3).sessionBuffer = localx.getSessionBuffer();
+          paramSet = ((com.tencent.mm.view.recyclerview.b)localObject2).view;
+          int i;
+          com.tencent.mm.plugin.finder.live.report.a locala;
+          cc localcc;
+          q.w localw;
+          int j;
+          if (paramSet == null)
+          {
+            paramSet = null;
+            if (paramSet != null) {
+              break label488;
+            }
+            i = ((Number)Integer.valueOf(0)).intValue();
+            ((dmk)localObject3).aaSw = i;
+            paramSet = ((com.tencent.mm.view.recyclerview.b)localObject2).view;
+            if (paramSet != null) {
+              break label496;
+            }
+            paramSet = null;
+            localObject1 = paramSet;
+            if (paramSet == null) {
+              localObject1 = Boolean.FALSE;
+            }
+            ((dmk)localObject3).aaSx = ((Boolean)localObject1).booleanValue();
+            localLinkedList.add(localObject3);
+            locala = f.e(localf);
+            localcc = (cc)localx;
+            i = ((com.tencent.mm.view.recyclerview.b)localObject2).afqR;
+            localw = q.w.DwP;
+            j = f.a(localf).getCommentScene();
+            paramSet = f.f(localf);
+            if (paramSet != null) {
+              break label527;
+            }
+            paramSet = "";
+          }
+          for (;;)
+          {
+            locala.a(localcc, i, localw, String.valueOf(j), paramSet, f.c(localf).a(((com.tencent.mm.view.recyclerview.b)localObject2).afqR, ((com.tencent.mm.view.recyclerview.b)localObject2).view, "onExpose"));
+            Log.i("NearbyLiveViewCallback", "onExposeTimeRecorded pos:" + ((com.tencent.mm.view.recyclerview.b)localObject2).afqR + " auto_play_time_ms:" + ((dmk)localObject3).aaSw + " auto_play_with_sound:" + ((dmk)localObject3).aaSx + " exposeTime:" + ((com.tencent.mm.view.recyclerview.b)localObject2).HsA + " nick:" + localx.feedObject.getFeedObject().nickname);
+            break;
+            paramSet = paramSet.getTag(com.tencent.mm.plugin.finder.nearby.f.d.nearby_live_card_auto_play_time_tag);
+            if (paramSet == null)
+            {
+              paramSet = null;
+              break label182;
+            }
+            long l;
+            if ((paramSet instanceof Long))
+            {
+              l = ((Long)paramSet).longValue();
+              label454:
+              if (l == 0L) {
+                break label483;
+              }
+            }
+            label483:
+            for (i = (int)(SystemClock.elapsedRealtime() - l);; i = 0)
+            {
+              paramSet = Integer.valueOf(i);
+              break;
+              l = 0L;
+              break label454;
+            }
+            label488:
+            i = paramSet.intValue();
+            break label197;
+            label496:
+            paramSet = paramSet.getTag(com.tencent.mm.plugin.finder.nearby.f.d.nearby_live_card_is_mute_tag);
+            if (paramSet == null)
+            {
+              paramSet = null;
+              break label215;
+            }
+            paramSet = Boolean.valueOf(((Boolean)paramSet).booleanValue());
+            break label215;
+            label527:
+            localObject1 = paramSet.eEv();
+            paramSet = (Set<com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a>>)localObject1;
+            if (localObject1 == null) {
+              paramSet = "";
+            }
+          }
+        }
+        if ((((com.tencent.mm.view.recyclerview.b)localObject2).agNK instanceof au))
+        {
+          localObject1 = f.b(localf).zIB;
+          paramSet = (Set<com.tencent.mm.view.recyclerview.b<com.tencent.mm.view.recyclerview.a>>)localObject1;
+          if (localObject1 == null) {
+            paramSet = "";
+          }
+          localObject3 = new cq();
+          ((cq)localObject3).ixo = Util.nowMilliSecond();
+          ((cq)localObject3).mh("");
+          ((cq)localObject3).mi(f.c(localf).a(((com.tencent.mm.view.recyclerview.b)localObject2).afqR, ((com.tencent.mm.view.recyclerview.b)localObject2).view, "onExpose"));
+          ((cq)localObject3).mj("");
+          ((cq)localObject3).mk("");
+          localObject2 = com.tencent.mm.plugin.expt.hellhound.ext.session.a.c.dLD().dHN();
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = "";
+          }
+          ((cq)localObject3).ml((String)localObject1);
+          ((cq)localObject3).mm(f.b(localf).zIO);
+          ((cq)localObject3).mn(String.valueOf(f.b(localf).AJo));
+          ((cq)localObject3).mo(paramSet);
+          ((cq)localObject3).mp("");
+          ((cq)localObject3).mq("");
+          ((cq)localObject3).mr("");
+          ((cq)localObject3).ms("all_my_follow");
+          ((cq)localObject3).mt("");
+          ((cq)localObject3).bMH();
+        }
+        else
+        {
+          Log.d("NearbyLiveViewCallback", "onExposeTimeRecorded pos:" + ((com.tencent.mm.view.recyclerview.b)localObject2).afqR + " exposeTime:" + ((com.tencent.mm.view.recyclerview.b)localObject2).HsA);
+        }
+      }
+      paramSet = e.EQU;
+      e.F(f.a(this.EJw).getCommentScene(), (List)localLinkedList);
+      paramSet = a.EIi;
+      if (!a.kLo())
+      {
+        paramSet = ay.EDk;
+        ay.aN(localLinkedList);
+      }
+      AppMethodBeat.o(370441);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshBegin", "refreshType", "", "onRefreshEnd", "plugin-finder-nearby_release"})
-  public static final class j
-    extends RefreshLoadMoreLayout.a
+  @Metadata(d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
+    implements kotlin.g.a.b<View, Boolean>
   {
-    public final void Ie(int paramInt)
+    public static final j akht;
+    
+    static
     {
-      AppMethodBeat.i(199387);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.aFi());
-      Log.i("NearbyLiveViewCallback", "onRefreshBegin");
-      super.Ie(paramInt);
-      f.b(this.zEN).onRefresh();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(199387);
+      AppMethodBeat.i(370433);
+      akht = new j();
+      AppMethodBeat.o(370433);
     }
     
-    public final void a(RefreshLoadMoreLayout.c<Object> paramc)
-    {
-      AppMethodBeat.i(199398);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      p.k(paramc, "reason");
-      Log.i("NearbyLiveViewCallback", "onLoadMoreEnd");
-      super.a(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(199398);
-    }
-    
-    public final void cKQ()
-    {
-      AppMethodBeat.i(199395);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      Log.i("NearbyLiveViewCallback", "onLoadMoreBegin");
-      super.cKQ();
-      f.b(this.zEN).onLoadMore();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-      AppMethodBeat.o(199395);
-    }
-    
-    public final void onRefreshEnd(RefreshLoadMoreLayout.c<Object> paramc)
-    {
-      AppMethodBeat.i(199392);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramc);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.aFi());
-      p.k(paramc, "reason");
-      Log.i("NearbyLiveViewCallback", "onRefreshEnd");
-      super.onRefreshEnd(paramc);
-      f.b(this.zEN).onRefreshEnd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(199392);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class k
-    extends q
-    implements kotlin.g.a.a<RefreshLoadMoreLayout>
-  {
-    k(f paramf)
+    j()
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRefreshLayout$1", "Lcom/tencent/mm/view/refreshLayout/listener/OnRefreshAction;", "onLoadMore", "", "onRefresh", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class k
+    implements com.tencent.mm.view.refreshLayout.d.b
+  {
+    k(f paramf) {}
+    
+    public final void onLoadMore()
+    {
+      AppMethodBeat.i(340885);
+      f.a(this.EJw).onLoadMore();
+      AppMethodBeat.o(340885);
+    }
+    
+    public final void onRefresh()
+    {
+      AppMethodBeat.i(340874);
+      f.a(this.EJw).onRefresh();
+      AppMethodBeat.o(340874);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class l
-    extends q
-    implements kotlin.g.a.a<View>
+    extends u
+    implements kotlin.g.a.a<WxRecyclerView>
   {
     l(f paramf)
     {
       super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/view/FinderRefreshLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class m
+    extends u
+    implements kotlin.g.a.a<FinderRefreshLayout>
+  {
+    m(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class n
+    extends u
+    implements kotlin.g.a.a<View>
+  {
+    n(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class o
+    extends u
+    implements kotlin.g.a.a<WeImageView>
+  {
+    o(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class p
+    extends u
+    implements kotlin.g.a.a<TextView>
+  {
+    p(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class q
+    extends u
+    implements kotlin.g.a.a<RecyclerView>
+  {
+    q(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$viewCallback$1", "Lcom/tencent/mm/plugin/finder/view/FinderRefreshLayout$BaseViewActionCallback;", "onPreFinishRefresh", "", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class r
+    extends FinderRefreshLayout.b
+  {
+    r(f paramf, FinderRefreshLayout paramFinderRefreshLayout)
+    {
+      super();
+      AppMethodBeat.i(340835);
+      AppMethodBeat.o(340835);
+    }
+    
+    public final void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramd)
+    {
+      AppMethodBeat.i(340840);
+      s.u(paramd, "reason");
+      super.onPreFinishRefresh(paramd);
+      f.a(this.EJw).onRefreshEnd(paramd);
+      AppMethodBeat.o(340840);
     }
   }
 }

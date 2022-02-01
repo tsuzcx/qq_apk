@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -15,84 +14,81 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.iz;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.jy;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.c;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y.b;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class SnsNotInterestUI
   extends MMPreference
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private static final String[] KUJ = { "sns_expose_reason_not_fav", "sns_expose_reason_too_freq", "sns_expose_reason_too_many_same_content", "sns_expose_reason_marketing", "sns_expose_reason_content_sexy", "sns_expose_reason_rumour", "sns_expose_reason_other" };
-  private static final int[] KUK = { 1, 2, 4, 8, 16, 32, 64 };
-  private static final int[] KUO = { i.j.sns_expose_reason_not_fav, i.j.sns_expose_reason_too_freq_him, i.j.sns_expose_reason_too_many_same_content, i.j.sns_expose_reason_marketing, i.j.sns_expose_reason_content_sexy, i.j.sns_expose_reason_rumour, i.j.sns_expose_reason_other };
-  private String HkM;
-  private HashMap<String, Boolean> KUL;
-  private HashMap<Integer, Boolean> KUM;
-  private HashMap<String, Integer> KUN;
-  private TextView KUP;
-  private EditText KUQ;
-  private ListView KUR;
-  private LinearLayout KUS;
-  private int KUT;
-  private int KUU;
-  private long KUV;
-  private boolean KUW;
-  private boolean KUX;
-  com.tencent.mm.plugin.sns.model.s KUY;
-  private com.tencent.mm.ui.base.s jhZ;
-  private f mrf;
+  private static final String[] RuH = { "sns_expose_reason_not_fav", "sns_expose_reason_too_freq", "sns_expose_reason_too_many_same_content", "sns_expose_reason_marketing", "sns_expose_reason_content_sexy", "sns_expose_reason_rumour", "sns_expose_reason_other" };
+  private static final int[] RuI = { 1, 2, 4, 8, 16, 32, 64 };
+  private static final int[] RuM = { b.j.sns_expose_reason_not_fav, b.j.sns_expose_reason_too_freq_him, b.j.sns_expose_reason_too_many_same_content, b.j.sns_expose_reason_marketing, b.j.sns_expose_reason_content_sexy, b.j.sns_expose_reason_rumour, b.j.sns_expose_reason_other };
+  private String Niz;
+  private HashMap<String, Boolean> RuJ;
+  private HashMap<Integer, Boolean> RuK;
+  private HashMap<String, Integer> RuL;
+  private TextView RuN;
+  private EditText RuO;
+  private ListView RuP;
+  private LinearLayout RuQ;
+  private int RuR;
+  private int RuS;
+  private long RuT;
+  private boolean RuU;
+  private boolean RuV;
+  com.tencent.mm.plugin.sns.model.s RuW;
+  private com.tencent.mm.ui.base.w lKp;
+  private f pkD;
   
   public SnsNotInterestUI()
   {
     AppMethodBeat.i(98923);
-    this.KUL = new HashMap(KUJ.length);
-    this.KUM = new HashMap(KUK.length);
-    this.KUN = new HashMap(KUK.length);
-    this.HkM = null;
-    this.KUW = false;
-    this.KUX = false;
-    this.jhZ = null;
-    this.KUY = null;
+    this.RuJ = new HashMap(RuH.length);
+    this.RuK = new HashMap(RuI.length);
+    this.RuL = new HashMap(RuI.length);
+    this.Niz = null;
+    this.RuU = false;
+    this.RuV = false;
+    this.lKp = null;
+    this.RuW = null;
     AppMethodBeat.o(98923);
   }
   
-  private void fWL()
+  private void hpc()
   {
     int k = 0;
     AppMethodBeat.i(98925);
-    Object localObject1 = KUJ;
+    Object localObject1 = RuH;
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      this.KUL.put(localObject2, Boolean.FALSE);
+      this.RuJ.put(localObject2, Boolean.FALSE);
       i += 1;
     }
-    localObject1 = KUK;
+    localObject1 = RuI;
     int m = localObject1.length;
     i = 0;
     for (;;)
@@ -102,12 +98,12 @@ public class SnsNotInterestUI
         break;
       }
       j = localObject1[i];
-      this.KUM.put(Integer.valueOf(j), Boolean.FALSE);
+      this.RuK.put(Integer.valueOf(j), Boolean.FALSE);
       i += 1;
     }
-    while (j < KUK.length)
+    while (j < RuI.length)
     {
-      this.KUN.put(KUJ[j], Integer.valueOf(KUK[j]));
+      this.RuL.put(RuH[j], Integer.valueOf(RuI[j]));
       j += 1;
     }
     AppMethodBeat.o(98925);
@@ -115,7 +111,7 @@ public class SnsNotInterestUI
   
   public int getLayoutId()
   {
-    return i.g.sns_expose_ui;
+    return b.g.sns_expose_ui;
   }
   
   public int getResourceId()
@@ -127,7 +123,7 @@ public class SnsNotInterestUI
   {
     AppMethodBeat.i(98927);
     super.initView();
-    setMMTitle(i.j.sns_expose_title);
+    setMMTitle(b.j.sns_expose_title);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -138,33 +134,33 @@ public class SnsNotInterestUI
         return true;
       }
     });
-    this.KUP = ((TextView)findViewById(i.f.sns_expose_input_hint));
-    this.KUQ = ((EditText)findViewById(i.f.sns_expose_other_input));
-    this.KUR = ((ListView)findViewById(16908298));
-    this.KUS = ((LinearLayout)findViewById(i.f.expose_layout));
-    this.KUS.setOnClickListener(new View.OnClickListener()
+    this.RuN = ((TextView)findViewById(b.f.sns_expose_input_hint));
+    this.RuO = ((EditText)findViewById(b.f.sns_expose_other_input));
+    this.RuP = ((ListView)findViewById(16908298));
+    this.RuQ = ((LinearLayout)findViewById(b.f.expose_layout));
+    this.RuQ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98920);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/SnsNotInterestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/SnsNotInterestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         SnsNotInterestUI.a(SnsNotInterestUI.this).requestFocus();
         SnsNotInterestUI.this.hideVKB();
         a.a(this, "com/tencent/mm/plugin/sns/ui/SnsNotInterestUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(98920);
       }
     });
-    this.KUQ.setVisibility(8);
-    this.KUP.setVisibility(8);
-    this.mrf = getPreferenceScreen();
-    if (this.mrf == null) {
+    this.RuO.setVisibility(8);
+    this.RuN.setVisibility(8);
+    this.pkD = getPreferenceScreen();
+    if (this.pkD == null) {
       Log.e("MicroMsg.SnsNotInterestUI", "initPref error, PreferenceScreen is null!");
     }
     for (;;)
     {
-      addTextOptionMenu(0, getString(i.j.biz_report_send), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(0, getString(b.j.biz_report_send), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
@@ -173,31 +169,31 @@ public class SnsNotInterestUI
           AppMethodBeat.o(98921);
           return true;
         }
-      }, null, w.b.Wao);
+      }, null, y.b.adEJ);
       enableOptionMenu(0, false);
       AppMethodBeat.o(98927);
       return;
       Object localObject;
-      if (this.mrf.byG("sns_expose_desc") == null)
+      if (this.pkD.bAi("sns_expose_desc") == null)
       {
         localObject = new PreferenceTitleCategory(this);
-        ((Preference)localObject).setTitle(i.j.sns_expose_desc);
+        ((Preference)localObject).setTitle(b.j.sns_expose_desc);
         ((Preference)localObject).setKey("sns_expose_desc");
-        this.mrf.b((Preference)localObject);
+        this.pkD.c((Preference)localObject);
       }
       int i = 0;
-      while (i < KUJ.length)
+      while (i < RuH.length)
       {
-        localObject = KUJ[i];
-        int j = KUO[i];
-        if (this.mrf.byG((String)localObject) == null)
+        localObject = RuH[i];
+        int j = RuM[i];
+        if (this.pkD.bAi((String)localObject) == null)
         {
           Preference localPreference = new Preference(this);
           localPreference.setTitle(j);
           localPreference.setKey((String)localObject);
-          localPreference.setLayoutResource(i.g.mm_preference);
-          localPreference.auN(i.g.mm_preference_checkbox_unchecked);
-          this.mrf.b(localPreference);
+          localPreference.setLayoutResource(b.g.mm_preference);
+          localPreference.aBp(b.g.mm_preference_checkbox_unchecked);
+          this.pkD.c(localPreference);
         }
         i += 1;
       }
@@ -208,32 +204,32 @@ public class SnsNotInterestUI
   {
     AppMethodBeat.i(98924);
     super.onCreate(paramBundle);
-    this.KUT = getIntent().getIntExtra("sns_info_not_interest_scene", 0);
-    this.KUV = getIntent().getLongExtra("sns_info_svr_id", 0L);
-    if (this.KUV != 0L)
+    this.RuR = getIntent().getIntExtra("sns_info_not_interest_scene", 0);
+    this.RuT = getIntent().getLongExtra("sns_info_svr_id", 0L);
+    if (this.RuT != 0L)
     {
-      paramBundle = aj.fOI().Rd(this.KUV).getUserName();
+      paramBundle = al.hgB().vj(this.RuT).getUserName();
       if (paramBundle != null)
       {
-        h.aHH();
-        paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().bwh(paramBundle);
+        com.tencent.mm.kernel.h.baF();
+        paramBundle = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxv(paramBundle);
         if (paramBundle.sex != 2) {
           break label141;
         }
-        KUO[1] = i.j.sns_expose_reason_too_freq_her;
+        RuM[1] = b.j.sns_expose_reason_too_freq_her;
       }
     }
     for (;;)
     {
-      h.aHH();
-      h.aHF().kcd.a(218, this);
-      fWL();
+      com.tencent.mm.kernel.h.baF();
+      com.tencent.mm.kernel.h.baD().mCm.a(218, this);
+      hpc();
       initView();
       AppMethodBeat.o(98924);
       return;
       label141:
       if (paramBundle.sex == 1) {
-        KUO[1] = i.j.sns_expose_reason_too_freq_him;
+        RuM[1] = b.j.sns_expose_reason_too_freq_him;
       }
     }
   }
@@ -242,13 +238,13 @@ public class SnsNotInterestUI
   {
     AppMethodBeat.i(98926);
     super.onDestroy();
-    fWL();
-    h.aHH();
-    h.aHF().kcd.b(218, this);
-    iz localiz = new iz();
-    localiz.fGi.fGj = this.KUW;
-    localiz.fGi.fGk = this.KUV;
-    EventCenter.instance.publish(localiz);
+    hpc();
+    com.tencent.mm.kernel.h.baF();
+    com.tencent.mm.kernel.h.baD().mCm.b(218, this);
+    jy localjy = new jy();
+    localjy.hLz.hLA = this.RuU;
+    localjy.hLz.hLB = this.RuT;
+    localjy.publish();
     AppMethodBeat.o(98926);
   }
   
@@ -261,24 +257,24 @@ public class SnsNotInterestUI
       return false;
     }
     String str = paramPreference.mKey;
-    if (this.KUL.containsKey(str))
+    if (this.RuJ.containsKey(str))
     {
-      boolean bool = ((Boolean)this.KUL.get(str)).booleanValue();
+      boolean bool = ((Boolean)this.RuJ.get(str)).booleanValue();
       label79:
       int i;
       if (bool)
       {
-        paramPreference.auN(i.g.mm_preference_checkbox_unchecked);
+        paramPreference.aBp(b.g.mm_preference_checkbox_unchecked);
         paramf.notifyDataSetChanged();
         if (bool) {
           break label274;
         }
         bool = true;
-        this.KUL.put(str, Boolean.valueOf(bool));
-        i = ((Integer)this.KUN.get(str)).intValue();
-        this.KUM.put(Integer.valueOf(i), Boolean.valueOf(bool));
+        this.RuJ.put(str, Boolean.valueOf(bool));
+        i = ((Integer)this.RuL.get(str)).intValue();
+        this.RuK.put(Integer.valueOf(i), Boolean.valueOf(bool));
         Log.d("MicroMsg.SnsNotInterestUI", "click: %s, notInterestType: %d, isCheck: %b", new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool) });
-        paramf = this.KUL.values().iterator();
+        paramf = this.RuJ.values().iterator();
         while (paramf.hasNext()) {
           if (((Boolean)paramf.next()).booleanValue())
           {
@@ -292,10 +288,10 @@ public class SnsNotInterestUI
             if ((!bool) || (!str.equals("sns_expose_reason_other"))) {
               break label294;
             }
-            this.KUQ.setVisibility(0);
-            this.KUP.setVisibility(0);
-            this.KUQ.requestFocus();
-            this.KUX = true;
+            this.RuO.setVisibility(0);
+            this.RuN.setVisibility(0);
+            this.RuO.requestFocus();
+            this.RuV = true;
             showVKB();
           }
         }
@@ -304,7 +300,7 @@ public class SnsNotInterestUI
       {
         AppMethodBeat.o(98928);
         return true;
-        paramPreference.auN(i.g.mm_preference_checkbox_checked);
+        paramPreference.aBp(b.g.mm_preference_checkbox_checked);
         break;
         label274:
         bool = false;
@@ -315,17 +311,17 @@ public class SnsNotInterestUI
         enableOptionMenu(0, false);
         break label208;
         label294:
-        if (!((Boolean)this.KUL.get("sns_expose_reason_other")).booleanValue())
+        if (!((Boolean)this.RuJ.get("sns_expose_reason_other")).booleanValue())
         {
-          this.KUQ.setVisibility(8);
-          this.KUP.setVisibility(8);
-          this.KUR.requestFocus();
-          this.KUX = false;
+          this.RuO.setVisibility(8);
+          this.RuN.setVisibility(8);
+          this.RuP.requestFocus();
+          this.RuV = false;
           hideVKB();
         }
         else
         {
-          this.KUR.requestFocus();
+          this.RuP.requestFocus();
           hideVKB();
         }
       }
@@ -334,26 +330,26 @@ public class SnsNotInterestUI
     return false;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(98929);
     Log.d("MicroMsg.SnsNotInterestUI", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramq.getType() == 218)
+    if (paramp.getType() == 218)
     {
-      this.jhZ.dismiss();
-      this.jhZ = null;
-      if (((com.tencent.mm.plugin.sns.model.s)paramq).type == 9)
+      this.lKp.dismiss();
+      this.lKp = null;
+      if (((com.tencent.mm.plugin.sns.model.s)paramp).type == 9)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          this.KUW = true;
-          Toast.makeText(this, i.j.sns_expose_success, 1).show();
+          this.RuU = true;
+          Toast.makeText(this, b.j.sns_expose_success, 1).show();
           finish();
           AppMethodBeat.o(98929);
           return;
         }
-        this.KUW = false;
-        Toast.makeText(this, i.j.sns_expose_failed, 1).show();
+        this.RuU = false;
+        Toast.makeText(this, b.j.sns_expose_failed, 1).show();
       }
     }
     AppMethodBeat.o(98929);

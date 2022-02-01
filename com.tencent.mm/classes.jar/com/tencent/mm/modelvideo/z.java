@@ -1,569 +1,471 @@
 package com.tencent.mm.modelvideo;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.f.b.a.ae;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.i.g;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.dmb;
+import com.tencent.mm.protocal.protobuf.fjp;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.sdk.storage.MStorageEvent;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.q;
-import java.io.ByteArrayOutputStream;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Map;
 
 public final class z
-  implements com.tencent.mm.an.h
 {
-  public static int a(int paramInt1, com.tencent.mm.i.d paramd, long paramLong1, w paramw, String paramString1, String paramString2, int paramInt2, String paramString3, long paramLong2)
+  public String clientId;
+  public long createTime;
+  public int eQp;
+  public String fileName;
+  public int hQV;
+  public long hTh;
+  public String hVQ;
+  public String iah;
+  public String ibd;
+  public int lxk;
+  public long oYW;
+  public String oYj;
+  public String oYk;
+  public int oZm;
+  public int omT;
+  public int osy;
+  public String paV;
+  public int paX;
+  public int paY;
+  public int paZ;
+  public long pba;
+  public long pbb;
+  public int pbc;
+  public int pbd;
+  public int pbe;
+  public int pbf;
+  public int pbg;
+  public String pbh;
+  public int pbi;
+  public String pbj;
+  public fjp pbk;
+  public dmb pbl;
+  int pbm;
+  String pbn;
+  public String pbo;
+  private int pbp;
+  private boolean pbq;
+  private boolean pbr;
+  private boolean pbs;
+  private boolean pbt;
+  private boolean pbu;
+  public int status;
+  public int videoFormat;
+  
+  public z()
   {
-    AppMethodBeat.i(127032);
-    if (paramInt1 != 0)
-    {
-      Log.e("MicroMsg.VideoMsgExtension", "getThumbByCdn failed. startRet:%d msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), paramw.bqM(), paramString2, paramString1 });
-      new ae(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(2), Long.valueOf(paramLong2), Long.valueOf(Util.nowMilliSecond()), Integer.valueOf(com.tencent.mm.aq.c.cV(MMApplicationContext.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_THUMBIMAGE), Integer.valueOf(paramInt2), "" })).bpa();
-      AppMethodBeat.o(127032);
-      return paramInt1;
-    }
-    if (paramd == null)
-    {
-      AppMethodBeat.o(127032);
-      return 0;
-    }
-    label215:
-    int i;
-    int j;
-    if (paramd.field_retCode != 0)
-    {
-      Log.e("MicroMsg.VideoMsgExtension", "getThumbByCdn failed. sceneResult.field_retCode:%d msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Integer.valueOf(paramd.field_retCode), Long.valueOf(paramLong1), paramw.bqM(), paramString2, paramString1 });
-      if (paramd != null) {
-        break label853;
-      }
-      paramInt1 = -1;
-      paramLong1 = Util.nowMilliSecond();
-      i = com.tencent.mm.aq.c.cV(MMApplicationContext.getContext());
-      j = com.tencent.mm.i.a.MediaType_THUMBIMAGE;
-      if (paramd != null) {
-        break label861;
-      }
-      paramString1 = "";
-      label240:
-      if (paramd != null) {
-        break label870;
-      }
-      paramString2 = "";
-      label248:
-      new ae(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(2), Long.valueOf(paramLong2), Long.valueOf(paramLong1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), paramString1, "", "", "", "", "", "", "", paramString2 })).bpa();
-      if ((paramd != null) && (paramd.field_retCode != 0))
-      {
-        if (paramd != null) {
-          break label879;
-        }
-        paramInt1 = -1;
-        label392:
-        paramLong1 = Util.nowMilliSecond();
-        i = com.tencent.mm.aq.c.cV(MMApplicationContext.getContext());
-        j = com.tencent.mm.i.a.MediaType_THUMBIMAGE;
-        if (paramd != null) {
-          break label887;
-        }
-        paramString1 = "";
-        label417:
-        if (paramd != null) {
-          break label896;
-        }
-      }
-    }
-    label896:
-    for (paramd = "";; paramd = paramd.iUs)
-    {
-      new com.tencent.mm.f.b.a.ac(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(2), Long.valueOf(paramLong2), Long.valueOf(paramLong1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), paramString1, "", "", "", "", "", "", "", paramd })).bpa();
-      paramd = s.bqB();
-      paramString1 = paramw.getFileName();
-      paramw = x.a.c.mir;
-      if (!Util.isNullOrNil(paramString1))
-      {
-        paramString1 = paramd.XN(paramString1);
-        if (paramString1 != null)
-        {
-          paramw = new x.a.a(paramString1.getFileName(), x.a.b.mip, paramw, paramString1.mhX, paramString1.mga);
-          paramd.lAD.event(paramw);
-          paramd.lAD.doNotify();
-        }
-      }
-      AppMethodBeat.o(127032);
-      return 0;
-      q localq = new q(paramString1);
-      new q(paramString3).aj(localq);
-      Log.i("MicroMsg.VideoMsgExtension", "getThumbByCdn succ. msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Long.valueOf(paramLong1), paramw.bqM(), paramString2, paramString1 });
-      if (paramw.mhX == 3)
-      {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(198L, 6L, paramInt2, false);
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(198L, 7L, 1L, false);
-        paramString1 = com.tencent.mm.plugin.report.service.h.IzE;
-        if (ab.Lj(paramw.bqM())) {}
-        for (paramLong1 = 9L;; paramLong1 = 8L)
-        {
-          paramString1.idkeyStat(198L, paramLong1, 1L, false);
-          break;
-        }
-      }
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(198L, 11L, paramInt2, false);
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(198L, 12L, 1L, false);
-      paramString1 = com.tencent.mm.plugin.report.service.h.IzE;
-      if (ab.Lj(paramw.bqM())) {}
-      for (paramLong1 = 14L;; paramLong1 = 13L)
-      {
-        paramString1.idkeyStat(198L, paramLong1, 1L, false);
-        break;
-      }
-      label853:
-      paramInt1 = paramd.field_retCode;
-      break label215;
-      label861:
-      paramString1 = paramd.field_transInfo;
-      break label240;
-      label870:
-      paramString2 = paramd.iUs;
-      break label248;
-      label879:
-      paramInt1 = paramd.field_retCode;
-      break label392;
-      label887:
-      paramString1 = paramd.field_transInfo;
-      break label417;
-    }
+    AppMethodBeat.i(126948);
+    this.eQp = -1;
+    this.fileName = "";
+    this.clientId = "";
+    this.hTh = 0L;
+    this.oZm = 0;
+    this.paX = 0;
+    this.osy = 0;
+    this.paY = 0;
+    this.paZ = 0;
+    this.status = 0;
+    this.createTime = 0L;
+    this.pba = 0L;
+    this.pbb = 0L;
+    this.omT = 0;
+    this.pbc = 0;
+    this.pbd = 0;
+    this.pbe = 0;
+    this.hVQ = "";
+    this.paV = "";
+    this.pbf = 0;
+    this.pbg = 0;
+    this.oYj = "";
+    this.pbh = "";
+    this.pbi = 0;
+    this.oYW = 0L;
+    this.pbj = "";
+    this.ibd = "";
+    this.pbk = new fjp();
+    this.iah = "";
+    this.lxk = 0;
+    this.pbl = new dmb();
+    this.hQV = 0;
+    this.videoFormat = 0;
+    AppMethodBeat.o(126948);
   }
   
-  public final h.b b(h.a arg1)
+  public static String PM(String paramString)
   {
-    AppMethodBeat.i(127030);
-    Object localObject5 = ???.jQG;
-    if (localObject5 == null)
+    AppMethodBeat.i(126949);
+    try
     {
-      Log.e("MicroMsg.VideoMsgExtension", "onPreAddMessage cmdAM is null , give up.");
-      AppMethodBeat.o(127030);
-      return null;
-    }
-    final String str1 = (String)com.tencent.mm.kernel.h.aHG().aHp().b(2, "");
-    Object localObject1 = com.tencent.mm.platformtools.z.a(((db)localObject5).RIE);
-    Object localObject3 = com.tencent.mm.platformtools.z.a(((db)localObject5).RID);
-    boolean bool1;
-    if ((((n)com.tencent.mm.kernel.h.ae(n.class)).bbU().has((String)localObject3)) || (str1.equals(localObject3)))
-    {
-      bool1 = true;
-      Log.d("MicroMsg.VideoMsgExtension", "video msg fromuser %s, toUser %s, userName %s, isSender %b", new Object[] { localObject3, localObject1, str1, Boolean.valueOf(bool1) });
-      localObject6 = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe();
-      if (!str1.equals(localObject3)) {
-        break label374;
-      }
-    }
-    label374:
-    for (Object localObject4 = localObject1;; localObject4 = localObject3)
-    {
-      localObject4 = ((i)localObject6).aL((String)localObject4, ((db)localObject5).HlH);
-      Log.i("MicroMsg.VideoMsgExtension", "dkmsgid prepareMsgInfo svrid:%d localid:%d, flag:%d, msgseq:%d, addMsgInfo[%s]", new Object[] { Long.valueOf(((db)localObject5).HlH), Long.valueOf(((et)localObject4).field_msgId), Integer.valueOf(((et)localObject4).field_flag), Long.valueOf(((et)localObject4).field_msgSeq), ??? });
-      if ((((et)localObject4).field_msgId != 0L) && (((et)localObject4).field_createTime + 604800000L < bq.z((String)localObject3, ((db)localObject5).CreateTime)))
+      paramString = XmlParser.parseXml(paramString, "msg", null);
+      if (paramString != null)
       {
-        Log.w("MicroMsg.VideoMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(((db)localObject5).HlH), Long.valueOf(((et)localObject4).field_msgId) });
-        bq.Gk(((et)localObject4).field_msgId);
-        ((ca)localObject4).setMsgId(0L);
-      }
-      if (((et)localObject4).field_msgId == 0L) {
-        break label381;
-      }
-      Log.d("MicroMsg.VideoMsgExtension", "Msgid:%d duplicate give up ", new Object[] { Long.valueOf(((db)localObject5).HlH) });
-      AppMethodBeat.o(127030);
-      return null;
-      bool1 = false;
-      break;
-    }
-    label381:
-    Object localObject6 = com.tencent.mm.platformtools.z.a(((db)localObject5).RIF);
-    localObject4 = new w();
-    if (bool1) {
-      localObject3 = localObject1;
-    }
-    ((w)localObject4).fPV = ((String)localObject3);
-    ((w)localObject4).createTime = ((db)localObject5).CreateTime;
-    ((w)localObject4).fNu = ((db)localObject5).HlH;
-    ((w)localObject4).mhW = ((db)localObject5).RIF.Ufy;
-    Log.i("MicroMsg.VideoMsgExtension", "parseVideoMsgXml [%s] msg Source[%s]", new Object[] { localObject6, ((db)localObject5).RII });
-    Object localObject8 = XmlParser.parseXml((String)localObject6, "msg", null);
-    if (localObject8 == null)
-    {
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(111L, 216L, 1L, false);
-      AppMethodBeat.o(127030);
-      return null;
-    }
-    localObject3 = new ca();
-    ((ca)localObject3).Ip(((db)localObject5).RII);
-    Object localObject7 = bq.RR(((db)localObject5).RII);
-    if (localObject7 != null)
-    {
-      ((ca)localObject3).Jv(((bq.b)localObject7).lut);
-      ((ca)localObject3).qb(((bq.b)localObject7).luu);
-    }
-    final int j;
-    String str4;
-    String str2;
-    String str3;
-    final int k;
-    int i;
-    for (;;)
-    {
-      try
-      {
-        ((w)localObject4).lAW = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$length"), 0);
-        ((w)localObject4).lvw = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$playlength"), 0);
-        Log.i("MicroMsg.VideoMsgExtension", "video msg total len %d, video len %d", new Object[] { Integer.valueOf(((w)localObject4).lAW), Integer.valueOf(((w)localObject4).lvw) });
-        ((w)localObject4).mhK = ((String)((Map)localObject8).get(".msg.videomsg.$fromusername"));
-        if (str1.equals(((w)localObject4).bqK())) {
-          ((w)localObject4).mhK = ((String)localObject1);
-        }
-        ((w)localObject4).fUk = ((String)((Map)localObject8).get(".msg.statextstr"));
-        localObject1 = (String)((Map)localObject8).get(".msg.videomsg.$cdnthumbaeskey");
-        str1 = (String)((Map)localObject8).get(".msg.videomsg.$cdnthumburl");
-        j = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$cdnthumblength"), 0);
-        str4 = (String)((Map)localObject8).get(".msg.videomsg.$tpvideourl");
-        localObject7 = (String)((Map)localObject8).get(".msg.videomsg.$tpthumburl");
-        str2 = (String)((Map)localObject8).get(".msg.videomsg.$tpauthkey");
-        str3 = (String)((Map)localObject8).get(".msg.videomsg.$tpthumbaeskey");
-        k = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$tpthumblength"), 0);
-        int m = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$type"), 0);
-        Log.d("MicroMsg.VideoMsgExtension", "video msg exportType :".concat(String.valueOf(m)));
-        if (m == 44)
-        {
-          i = 1;
-          ((w)localObject4).mhU = i;
-          if (62 == ((db)localObject5).COi)
-          {
-            ((w)localObject4).mhX = 3;
-            ((w)localObject4).a(Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideourl"), ""), Util.getInt((String)((Map)localObject8).get(".msg.streamvideo.streamvideototaltime"), 0), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideotitle"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideowording"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideoweburl"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideoaduxinfo"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideopublishid"), ""));
-            boolean bool2 = ((w)localObject4).bqK().equals((String)com.tencent.mm.kernel.h.aHG().aHp().b(2, ""));
-            if (!bool2) {
-              break;
-            }
-            AppMethodBeat.o(127030);
-            return null;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        if (m > 0) {
-          ((w)localObject4).mhX = 2;
-        } else {
-          ((w)localObject4).mhX = 1;
-        }
-      }
-      catch (Exception ???)
-      {
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(111L, 216L, 1L, false);
-        Log.e("MicroMsg.VideoMsgExtension", "parsing voice msg xml failed");
-        Log.e("MicroMsg.VideoMsgExtension", "exception:%s", new Object[] { Util.stackTraceToString(???) });
-        AppMethodBeat.o(127030);
-        return null;
+        paramString = (String)paramString.get(".msg.videomsg.$cdnvideourl");
+        AppMethodBeat.o(126949);
+        return paramString;
       }
     }
-    localObject8 = (String)((Map)localObject8).get(".msg.commenturl");
-    Object localObject9 = XmlParser.parseXml((String)localObject6, "msgoperation", null);
-    if (localObject9 != null)
+    catch (Exception paramString)
     {
-      ((ca)localObject3).Jw((String)((Map)localObject9).get(".msgoperation.expinfo.expidstr"));
-      ((ca)localObject3).qa(Util.getInt((String)((Map)localObject9).get(".msgoperation.sightmsg.downloadcontroltype"), 0));
-      Log.i("MicroMsg.VideoMsgExtension", "[chatting_exp] expidstr:%s, downloadcontroltype:%d", new Object[] { ((et)localObject3).ilq, Integer.valueOf(((et)localObject3).ilr) });
+      AppMethodBeat.o(126949);
     }
-    localObject9 = x.XS(((w)localObject4).bqK());
-    ((w)localObject4).fileName = ((String)localObject9);
-    ((ca)localObject3).EG(((w)localObject4).fNu);
-    ((ca)localObject3).Jn(((w)localObject4).getFileName());
-    ((ca)localObject3).setCreateTime(bq.z(((w)localObject4).bqM(), ((w)localObject4).createTime));
-    ((ca)localObject3).Jm(((w)localObject4).bqM());
-    ((ca)localObject3).setStatus(((db)localObject5).rVU);
-    if (bool1)
-    {
-      i = 1;
-      ((ca)localObject3).pJ(i);
-      if (((db)localObject5).COi != 62) {
-        break label1460;
-      }
-      ((ca)localObject3).setType(62);
-    }
-    final long l1;
-    for (;;)
-    {
-      ((ca)localObject3).setContent(u.a(((w)localObject4).bqK(), 0L, false));
-      ((ca)localObject3).Jo((String)localObject6);
-      ((ca)localObject3).Ju((String)localObject8);
-      ((ca)localObject3).Ip(((db)localObject5).RII);
-      bq.a((ca)localObject3, ???);
-      l1 = bq.z((ca)localObject3);
-      if (l1 > 0L) {
-        break label1470;
-      }
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(111L, 215L, 1L, false);
-      Log.e("MicroMsg.VideoMsgExtension", "onPreAddMessage insert msg failed local:%d svrid:%d", new Object[] { Long.valueOf(l1), Long.valueOf(((w)localObject4).fNu) });
-      AppMethodBeat.o(127030);
-      return null;
-      i = 0;
-      break;
-      label1460:
-      ((ca)localObject3).setType(43);
-    }
-    label1470:
-    ((w)localObject4).mhR = ((int)l1);
-    ((w)localObject4).mhP = Util.nowSecond();
-    ((w)localObject4).mhS = 0;
-    ((w)localObject4).status = 111;
-    Log.d("MicroMsg.VideoMsgExtension", "Insert fileName[" + ((w)localObject4).getFileName() + "] size:" + ((w)localObject4).lAW + " svrid:" + ((w)localObject4).fNu + " timelen:" + ((w)localObject4).lvw + " user:" + ((w)localObject4).bqM() + " human:" + ((w)localObject4).bqK());
-    if (!s.bqB().b((w)localObject4))
-    {
-      Log.d("MicroMsg.VideoMsgExtension", "Insert Error fileName:" + ((w)localObject4).getFileName());
-      AppMethodBeat.o(127030);
-      return null;
-    }
-    s.bqB();
-    localObject6 = x.XU((String)localObject9);
-    ??? = com.tencent.mm.platformtools.z.a(((db)localObject5).RIH);
-    Log.i("MicroMsg.VideoMsgExtension", "imgBuf  :%d", new Object[] { Integer.valueOf(Util.getLength(???)) });
-    if (com.tencent.mm.platformtools.ac.mFS)
-    {
-      Log.w("MicroMsg.VideoMsgExtension", "Test.useCdnDownThumb  set img buf null !!!!!!!");
-      ??? = null;
-    }
-    if (!Util.isNullOrNil(???)) {
-      x.a((String)localObject6, 0, ???);
-    }
-    for (;;)
-    {
-      if (((ca)localObject3).dlT())
-      {
-        com.tencent.mm.modelcontrol.d.bkm();
-        if (((et)localObject3).ilr != 1) {
-          break label2363;
-        }
-        i = 1;
-        label1735:
-        if (i != 0)
-        {
-          y.Yf(((et)localObject3).field_imgPath);
-          com.tencent.mm.aq.f.bkg().lHW.add("video_" + ((et)localObject3).field_msgId);
-        }
-      }
-      j = 1;
-      if (ab.Lj(((w)localObject4).bqM()))
-      {
-        i = v.Pu(((w)localObject4).bqM());
-        if ((ab.Rc(((w)localObject4).bqM())) || (!ab.Rb(((w)localObject4).bqM())))
-        {
-          j = 2;
-          com.tencent.mm.plugin.report.service.h.IzE.a(14388, new Object[] { Long.valueOf(((et)localObject3).field_msgSvrId), Integer.valueOf(j), "", Integer.valueOf(i) });
-          localObject1 = s.bqD();
-        }
-      }
-      synchronized (((m)localObject1).mgD)
-      {
-        ((m)localObject1).mgD.offerFirst(localObject3);
-        ((m)localObject1).startDownload();
-        ??? = new h.b((ca)localObject3, true);
-        AppMethodBeat.o(127030);
-        return ???;
-        if (!Util.isNullOrNil(str4))
-        {
-          l1 = ((w)localObject4).fNu;
-          Log.i("MicroMsg.VideoMsgExtension", "getThumbByCdn msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Long.valueOf(l1), ((w)localObject4).bqM(), localObject7, localObject6 });
-          l2 = Util.nowMilliSecond();
-          ??? = (String)localObject6 + ".tmp";
-          localObject1 = new g();
-          ((g)localObject1).taskName = "task_VideoMsgExtension_1";
-          ((g)localObject1).field_mediaId = com.tencent.mm.aq.c.a("downvideothumb", ((w)localObject4).createTime, ((w)localObject4).bqM(), String.valueOf(l1));
-          ((g)localObject1).field_fullpath = ???;
-          ((g)localObject1).field_fileType = 19;
-          ((g)localObject1).field_aesKey = str3;
-          ((g)localObject1).field_authKey = str2;
-          ((g)localObject1).iUJ = ((String)localObject7);
-          ((g)localObject1).iUG = new g.a()
-          {
-            public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
-            {
-              AppMethodBeat.i(127028);
-              paramAnonymousInt = z.a(paramAnonymousInt, paramAnonymousd, l1, this.miw, this.lOQ, k, parama, l2, this.val$startTime);
-              AppMethodBeat.o(127028);
-              return paramAnonymousInt;
-            }
-            
-            public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
-            
-            public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
-            {
-              return new byte[0];
-            }
-          };
-          com.tencent.mm.aq.f.bkg().b((g)localObject1, -1);
-          continue;
-        }
-        l1 = ((w)localObject4).fNu;
-        Log.i("MicroMsg.VideoMsgExtension", "getThumbByCdn msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Long.valueOf(l1), ((w)localObject4).bqM(), str1, localObject6 });
-        final long l2 = Util.nowMilliSecond();
-        ??? = (String)localObject6 + ".tmp";
-        localObject5 = new g();
-        ((g)localObject5).taskName = "task_VideoMsgExtension_2";
-        ((g)localObject5).field_mediaId = com.tencent.mm.aq.c.a("downvideothumb", ((w)localObject4).createTime, ((w)localObject4).bqM(), String.valueOf(l1));
-        ((g)localObject5).field_fullpath = ???;
-        ((g)localObject5).field_fileType = com.tencent.mm.i.a.MediaType_THUMBIMAGE;
-        ((g)localObject5).field_totalLen = j;
-        ((g)localObject5).field_aesKey = ((String)localObject1);
-        ((g)localObject5).field_fileId = str1;
-        ((g)localObject5).field_priority = com.tencent.mm.i.a.iTV;
-        if (ab.Lj(((w)localObject4).bqM())) {}
-        for (i = 1;; i = 0)
-        {
-          ((g)localObject5).field_chattype = i;
-          Log.d("MicroMsg.VideoMsgExtension", "get thumb by cdn [video] chatType[%d] user[%s] ", new Object[] { Integer.valueOf(((g)localObject5).field_chattype), ((w)localObject4).bqM() });
-          ((g)localObject5).iUG = new g.a()
-          {
-            public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
-            {
-              AppMethodBeat.i(127029);
-              paramAnonymousInt = z.a(paramAnonymousInt, paramAnonymousd, l1, this.miw, str1, j, parama, l2, this.val$startTime);
-              AppMethodBeat.o(127029);
-              return paramAnonymousInt;
-            }
-            
-            public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
-            
-            public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
-            {
-              return null;
-            }
-          };
-          com.tencent.mm.aq.f.bkg().b((g)localObject5, -1);
-          break;
-        }
-        label2363:
-        if (((et)localObject3).ilr == 2)
-        {
-          i = 0;
-          break label1735;
-        }
-        if (!com.tencent.mm.modelcontrol.d.Z((ca)localObject3))
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "this message need control, do not auto download C2C short video.");
-          i = 0;
-          break label1735;
-        }
-        ??? = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("C2CSightNotAutoDownloadTimeRange");
-        Log.i("MicroMsg.BusyTimeControlLogic", "C2CSightNotAutoDownloadTimeRange value: ".concat(String.valueOf(???)));
-        if (com.tencent.mm.modelcontrol.b.VC(???))
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "it is busy time now , do not auto download C2C short video.");
-          i = 0;
-          break label1735;
-        }
-        ??? = ((et)localObject3).field_talker;
-        Log.d("MicroMsg.SubCoreAutoDownload", "isC2CSightAutoDownload msg talker: ".concat(String.valueOf(???)));
-        i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("SIGHTSessionAutoLoadNetwork"), 1);
-        if (i == 3)
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "setting is not download sight automate, %d, %d", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId) });
-          i = 0;
-          break label1735;
-        }
-        if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "match wifi, do auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId), ((et)localObject3).field_imgPath });
-          localObject1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(???);
-          if ((localObject1 != null) && ((int)((com.tencent.mm.contact.d)localObject1).jxt > 0) && (((ab.Lj(???)) && (((ax)localObject1).hDj == 0)) || (((as)localObject1).aeg()))) {
-            break label3038;
-          }
-          i = 1;
-          break label1735;
-        }
-        if (NetStatusUtil.is2G(MMApplicationContext.getContext()))
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "match edge, do not auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId), ((et)localObject3).field_imgPath });
-          i = 0;
-          break label1735;
-        }
-        ??? = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(((et)localObject3).field_talker);
-        if (ab.Lj(((et)localObject3).field_talker))
-        {
-          if (???.hDj == 0)
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "match muted chatroom and not wifi, do not auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId), ((et)localObject3).field_imgPath });
-            i = 0;
-            break label1735;
-          }
-          if (((NetStatusUtil.is3G(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext()))) && (i == 1))
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "match 3G/4G and unmuted chatroom, do auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId), ((et)localObject3).field_imgPath });
-            i = 1;
-            break label1735;
-          }
-          Log.i("MicroMsg.SubCoreAutoDownload", "unknown auto download short video step A");
-          i = 0;
-          break label1735;
-        }
-        if (???.aeg())
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "match muted and not wifi, do not auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId), ((et)localObject3).field_imgPath });
-          i = 0;
-          break label1735;
-        }
-        if (((NetStatusUtil.is3G(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext()))) && (i == 1))
-        {
-          Log.i("MicroMsg.SubCoreAutoDownload", "match 3G/4G and unmuted, do auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((et)localObject3).field_msgId), Long.valueOf(((et)localObject3).field_msgSvrId), ((et)localObject3).field_imgPath });
-          i = 1;
-          break label1735;
-        }
-        Log.i("MicroMsg.SubCoreAutoDownload", "unknown auto download short video step B");
-        i = 0;
-        break label1735;
-        label3038:
-        Log.i("MicroMsg.SubCoreAutoDownload", "default can not auto download C2C short video.");
-        i = 0;
-        break label1735;
-        j = 3;
-      }
-    }
+    return "";
   }
   
-  public final void b(h.c paramc)
+  private void aD(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(127031);
-    paramc = paramc.fNz;
-    if (paramc == null)
+    AppMethodBeat.i(126953);
+    this.pbk = new fjp();
+    try
     {
-      AppMethodBeat.o(127031);
+      this.pbk.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(126953);
       return;
     }
-    y.Yj(paramc.field_imgPath);
-    AppMethodBeat.o(127031);
+    catch (Exception paramArrayOfByte)
+    {
+      Log.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(126953);
+    }
+  }
+  
+  private void aE(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(126955);
+    this.pbl = new dmb();
+    try
+    {
+      this.pbl.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(126955);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      AppMethodBeat.o(126955);
+    }
+  }
+  
+  private byte[] bOr()
+  {
+    AppMethodBeat.i(126952);
+    Object localObject = new byte[0];
+    try
+    {
+      byte[] arrayOfByte = this.pbk.toByteArray();
+      localObject = arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(126952);
+    return localObject;
+  }
+  
+  private byte[] bOy()
+  {
+    AppMethodBeat.i(126956);
+    Object localObject = new byte[0];
+    try
+    {
+      byte[] arrayOfByte = this.pbl.toByteArray();
+      localObject = arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      label19:
+      break label19;
+    }
+    AppMethodBeat.o(126956);
+    return localObject;
+  }
+  
+  public final void PN(String paramString)
+  {
+    this.pbn = paramString;
+    this.pbr = true;
+  }
+  
+  public final void PO(String paramString)
+  {
+    this.pbo = paramString;
+    this.pbs = true;
+  }
+  
+  public final void PP(String paramString)
+  {
+    this.oYk = paramString;
+    this.pbt = true;
+  }
+  
+  public final void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    AppMethodBeat.i(126954);
+    if (this.pbk == null) {
+      this.pbk = new fjp();
+    }
+    this.pbk.nTw = paramString2;
+    this.pbk.ZBc = paramInt;
+    this.pbk.nTu = paramString1;
+    this.pbk.nTx = paramString3;
+    this.pbk.nTy = paramString4;
+    this.pbk.nTA = paramString5;
+    this.pbk.nTB = paramString6;
+    AppMethodBeat.o(126954);
+  }
+  
+  public final void bOA()
+  {
+    this.pbp = 1;
+    this.pbu = true;
+  }
+  
+  public final String bOq()
+  {
+    if (this.paV == null) {
+      return "";
+    }
+    return this.paV;
+  }
+  
+  public final String bOs()
+  {
+    if (this.hVQ == null) {
+      return "";
+    }
+    return this.hVQ;
+  }
+  
+  public final String bOt()
+  {
+    if (this.oYj == null) {
+      return "";
+    }
+    return this.oYj;
+  }
+  
+  public final String bOu()
+  {
+    if (this.pbh == null) {
+      return "";
+    }
+    return this.pbh;
+  }
+  
+  public final boolean bOv()
+  {
+    return (this.status == 140) || (this.status == 141) || (this.status == 142);
+  }
+  
+  public final boolean bOw()
+  {
+    return (this.status == 121) || (this.status == 122) || (this.status == 120) || (this.status == 123);
+  }
+  
+  public final boolean bOx()
+  {
+    return (this.status == 199) || (this.status == 199);
+  }
+  
+  public final boolean bOz()
+  {
+    return this.pbp == 1;
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(126950);
+    this.fileName = paramCursor.getString(0);
+    this.clientId = paramCursor.getString(1);
+    this.hTh = paramCursor.getLong(2);
+    this.oZm = paramCursor.getInt(3);
+    this.paX = paramCursor.getInt(4);
+    this.osy = paramCursor.getInt(5);
+    this.paY = paramCursor.getInt(6);
+    this.paZ = paramCursor.getInt(7);
+    this.status = paramCursor.getInt(8);
+    this.createTime = paramCursor.getLong(9);
+    this.pba = paramCursor.getLong(10);
+    this.pbb = paramCursor.getLong(11);
+    this.omT = paramCursor.getInt(12);
+    this.pbc = paramCursor.getInt(13);
+    this.pbd = paramCursor.getInt(14);
+    this.pbe = paramCursor.getInt(15);
+    this.hVQ = paramCursor.getString(16);
+    this.paV = paramCursor.getString(17);
+    this.pbf = paramCursor.getInt(18);
+    this.pbg = paramCursor.getInt(19);
+    this.oYj = paramCursor.getString(20);
+    this.pbh = paramCursor.getString(21);
+    this.pbi = paramCursor.getInt(22);
+    this.oYW = paramCursor.getLong(23);
+    this.pbj = paramCursor.getString(24);
+    this.ibd = paramCursor.getString(25);
+    aD(paramCursor.getBlob(26));
+    this.iah = paramCursor.getString(27);
+    this.lxk = paramCursor.getInt(28);
+    aE(paramCursor.getBlob(29));
+    this.hQV = paramCursor.getInt(30);
+    this.videoFormat = paramCursor.getInt(31);
+    this.pbm = paramCursor.getInt(32);
+    this.pbn = paramCursor.getString(33);
+    this.pbo = paramCursor.getString(34);
+    this.oYk = paramCursor.getString(35);
+    this.pbp = paramCursor.getInt(36);
+    AppMethodBeat.o(126950);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(126951);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.eQp & 0x1) != 0) {
+      localContentValues.put("filename", getFileName());
+    }
+    if ((this.eQp & 0x2) != 0) {
+      if (this.clientId != null) {
+        break label878;
+      }
+    }
+    label878:
+    for (String str = "";; str = this.clientId)
+    {
+      localContentValues.put("clientid", str);
+      if ((this.eQp & 0x4) != 0) {
+        localContentValues.put("msgsvrid", Long.valueOf(this.hTh));
+      }
+      if ((this.eQp & 0x8) != 0) {
+        localContentValues.put("netoffset", Integer.valueOf(this.oZm));
+      }
+      if ((this.eQp & 0x10) != 0) {
+        localContentValues.put("filenowsize", Integer.valueOf(this.paX));
+      }
+      if ((this.eQp & 0x20) != 0) {
+        localContentValues.put("totallen", Integer.valueOf(this.osy));
+      }
+      if ((this.eQp & 0x40) != 0) {
+        localContentValues.put("thumbnetoffset", Integer.valueOf(this.paY));
+      }
+      if ((this.eQp & 0x80) != 0) {
+        localContentValues.put("thumblen", Integer.valueOf(this.paZ));
+      }
+      if ((this.eQp & 0x100) != 0) {
+        localContentValues.put("status", Integer.valueOf(this.status));
+      }
+      if ((this.eQp & 0x200) != 0) {
+        localContentValues.put("createtime", Long.valueOf(this.createTime));
+      }
+      if ((this.eQp & 0x400) != 0) {
+        localContentValues.put("lastmodifytime", Long.valueOf(this.pba));
+      }
+      if ((this.eQp & 0x800) != 0) {
+        localContentValues.put("downloadtime", Long.valueOf(this.pbb));
+      }
+      if ((this.eQp & 0x1000) != 0) {
+        localContentValues.put("videolength", Integer.valueOf(this.omT));
+      }
+      if ((this.eQp & 0x2000) != 0) {
+        localContentValues.put("msglocalid", Integer.valueOf(this.pbc));
+      }
+      if ((this.eQp & 0x4000) != 0) {
+        localContentValues.put("nettimes", Integer.valueOf(this.pbd));
+      }
+      if ((this.eQp & 0x8000) != 0) {
+        localContentValues.put("cameratype", Integer.valueOf(this.pbe));
+      }
+      if ((this.eQp & 0x10000) != 0) {
+        localContentValues.put("user", bOs());
+      }
+      if ((this.eQp & 0x20000) != 0) {
+        localContentValues.put("human", bOq());
+      }
+      if ((this.eQp & 0x40000) != 0) {
+        localContentValues.put("reserved1", Integer.valueOf(this.pbf));
+      }
+      if ((this.eQp & 0x80000) != 0) {
+        localContentValues.put("reserved2", Integer.valueOf(this.pbg));
+      }
+      if ((this.eQp & 0x100000) != 0) {
+        localContentValues.put("reserved3", bOt());
+      }
+      if ((this.eQp & 0x200000) != 0) {
+        localContentValues.put("reserved4", bOu());
+      }
+      if ((this.eQp & 0x400000) != 0) {
+        localContentValues.put("videofuncflag", Integer.valueOf(this.pbi));
+      }
+      if ((this.eQp & 0x800000) != 0) {
+        localContentValues.put("masssendid", Long.valueOf(this.oYW));
+      }
+      if ((this.eQp & 0x1000000) != 0) {
+        localContentValues.put("masssendlist", this.pbj);
+      }
+      if ((this.eQp & 0x2000000) != 0) {
+        localContentValues.put("videomd5", this.ibd);
+      }
+      if ((this.eQp & 0x4000000) != 0) {
+        localContentValues.put("streamvideo", bOr());
+      }
+      if ((this.eQp & 0x8000000) != 0) {
+        localContentValues.put("statextstr", this.iah);
+      }
+      if ((this.eQp & 0x10000000) != 0) {
+        localContentValues.put("downloadscene", Integer.valueOf(this.lxk));
+      }
+      if ((this.eQp & 0x20000000) != 0) {
+        localContentValues.put("mmsightextinfo", bOy());
+      }
+      if ((this.eQp & 0x1) != 0) {
+        localContentValues.put("preloadsize", Integer.valueOf(this.hQV));
+      }
+      if ((this.eQp & 0x2) != 0) {
+        localContentValues.put("videoformat", Integer.valueOf(this.videoFormat));
+      }
+      if (this.pbq) {
+        localContentValues.put("forward_msg_local_id", Integer.valueOf(this.pbm));
+      }
+      if (this.pbr) {
+        localContentValues.put("msg_uuid", this.pbn);
+      }
+      if (this.pbs) {
+        localContentValues.put("share_app_info", this.pbo);
+      }
+      if (this.pbt) {
+        localContentValues.put("origin_file_name", this.oYk);
+      }
+      if (this.pbu) {
+        localContentValues.put("had_clicked_video", Boolean.valueOf(bOz()));
+      }
+      AppMethodBeat.o(126951);
+      return localContentValues;
+    }
+  }
+  
+  public final String getFileName()
+  {
+    if (this.fileName == null) {
+      return "";
+    }
+    return this.fileName;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(126947);
+    String str = "VideoInfo{fileName='" + this.fileName + '\'' + ", clientId='" + this.clientId + '\'' + ", msgSvrId=" + this.hTh + ", netOffset=" + this.oZm + ", fileNowSize=" + this.paX + ", totalLen=" + this.osy + ", thumbNetOffset=" + this.paY + ", thumbLen=" + this.paZ + ", status=" + this.status + ", createTime=" + this.createTime + ", lastModifyTime=" + this.pba + ", priorityTime=" + this.pbb + ", videoLength=" + this.omT + ", msgLocalId=" + this.pbc + ", netTimes=" + this.pbd + ", cameraType=" + this.pbe + ", user='" + this.hVQ + '\'' + ", human='" + this.paV + '\'' + ", isExport=" + this.pbf + ", isUseCdn=" + this.pbg + ", importPath='" + this.oYj + '\'' + ", recvXml='" + this.pbh + '\'' + ", videoFuncFlag=" + this.pbi + ", massSendId=" + this.oYW + ", massSendList='" + this.pbj + '\'' + ", videoMD5='" + this.ibd + '\'' + ", streamVideoProto=" + this.pbk + ", statextstr='" + this.iah + '\'' + ", downloadScene=" + this.lxk + ", mmSightExtInfo=" + this.pbl + ", preloadSize=" + this.hQV + ", videoFormat=" + this.videoFormat + ", flag=" + this.eQp + '}';
+    AppMethodBeat.o(126947);
+    return str;
+  }
+  
+  public final void xd(int paramInt)
+  {
+    this.pbm = paramInt;
+    this.pbq = true;
   }
 }
 

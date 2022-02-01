@@ -15,24 +15,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RemoteViews;
 import android.widget.TextView;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.i;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.a.np;
+import com.tencent.mm.autogen.a.ox;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.music.a.c;
 import com.tencent.mm.plugin.music.a.d;
 import com.tencent.mm.plugin.music.a.e;
 import com.tencent.mm.plugin.music.a.g;
 import com.tencent.mm.plugin.music.a.h;
-import com.tencent.mm.plugin.music.e.k;
 import com.tencent.mm.plugin.music.model.d.c;
-import com.tencent.mm.plugin.sns.b.h;
-import com.tencent.mm.plugin.sns.b.p;
-import com.tencent.mm.protocal.protobuf.cvt;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.sns.c.i;
+import com.tencent.mm.plugin.sns.c.q;
+import com.tencent.mm.protocal.protobuf.dmz;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -43,45 +39,60 @@ import java.util.List;
 
 public final class a
 {
-  Bundle FSf;
-  MMMusicPlayerService FSg;
-  NotificationManager FSh;
-  d.c FSi;
-  Runnable FSj;
-  BroadcastReceiver FSk;
+  Bundle LNc;
+  MMMusicPlayerService LNd;
+  d.c LNe;
+  Runnable LNf;
+  BroadcastReceiver LNg;
+  NotificationManager Lfw;
   boolean isInit;
   
   public a()
   {
     AppMethodBeat.i(63105);
     this.isInit = false;
-    this.FSf = null;
-    this.FSj = new Runnable()
+    this.LNc = null;
+    this.LNf = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(63102);
         Log.i("MicroMsg.Music.MMMusicNotification", "close");
-        MMHandlerThread.removeRunnable(a.this.FSj);
-        a.this.FSg.stopForeground(true);
-        a.this.FSf = null;
+        MMHandlerThread.removeRunnable(a.this.LNf);
+        a.this.LNd.stopForeground(true);
+        a.this.LNc = null;
         AppMethodBeat.o(63102);
       }
     };
     AppMethodBeat.o(63105);
   }
   
-  private static String H(Context paramContext, boolean paramBoolean)
+  private static int B(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(259922);
+    if (paramBoolean1)
+    {
+      if (paramBoolean2) {
+        return a.d.remote_notification_pause_dark;
+      }
+      return a.d.remote_notification_pause_light;
+    }
+    if (paramBoolean2) {
+      return a.d.remote_notification_play_dark;
+    }
+    return a.d.remote_notification_play_light;
+  }
+  
+  private static String O(Context paramContext, boolean paramBoolean)
+  {
+    AppMethodBeat.i(271270);
     if (paramBoolean)
     {
       paramContext = paramContext.getString(a.h.music_talk_back_notification_button_pause);
-      AppMethodBeat.o(259922);
+      AppMethodBeat.o(271270);
       return paramContext;
     }
     paramContext = paramContext.getString(a.h.music_talk_back_notification_button_play);
-    AppMethodBeat.o(259922);
+    AppMethodBeat.o(271270);
     return paramContext;
   }
   
@@ -110,13 +121,13 @@ public final class a
   {
     AppMethodBeat.i(63106);
     Log.i("MicroMsg.Music.MMMusicNotification", "sendMusicPlayerEvent action:%d", new Object[] { Integer.valueOf(paramInt) });
-    np localnp = new np();
-    localnp.fMc.action = paramInt;
-    localnp.fMc.state = "";
-    localnp.fMc.fLV = parama.ffh();
-    localnp.fMc.appId = "not from app brand appid";
-    localnp.fMc.fMe = paramBoolean;
-    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    ox localox = new ox();
+    localox.hRN.action = paramInt;
+    localox.hRN.state = "";
+    localox.hRN.hRG = parama.goq();
+    localox.hRN.appId = "not from app brand appid";
+    localox.hRN.hRO = paramBoolean;
+    localox.asyncPublish(Looper.getMainLooper());
     AppMethodBeat.o(63106);
   }
   
@@ -129,7 +140,7 @@ public final class a
     if (!Util.isNullOrNil(parama.field_songAlbum)) {
       localObject1 = (String)localObject2 + parama.field_songAlbum;
     }
-    localObject2 = f(parama);
+    localObject2 = g(parama);
     parama = new RemoteViews(paramContext.getPackageName(), a.g.remote_music_notification);
     label116:
     boolean bool;
@@ -147,11 +158,11 @@ public final class a
       parama.setViewVisibility(a.e.music_notification_desc, 0);
       parama.setTextViewText(a.e.music_notification_desc, (CharSequence)localObject1);
       label141:
-      bool = zn(dG(this.FSg));
+      bool = zA(ey(this.LNd));
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("mm_music_notification_action_key", "mm_music_notification_action_pre");
       localObject1 = PendingIntent.getBroadcast(paramContext, 0, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(a.e.music_notification_pre, hA(bool));
+      parama.setImageViewResource(a.e.music_notification_pre, iq(bool));
       parama.setOnClickPendingIntent(a.e.music_notification_pre, (PendingIntent)localObject1);
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       if (!paramBoolean) {
@@ -162,18 +173,18 @@ public final class a
     for (;;)
     {
       localObject1 = PendingIntent.getBroadcast(paramContext, 1, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(a.e.music_notification_pause, w(paramBoolean, bool));
-      parama.setContentDescription(a.e.music_notification_pause, H(paramContext, paramBoolean));
+      parama.setImageViewResource(a.e.music_notification_pause, B(paramBoolean, bool));
+      parama.setContentDescription(a.e.music_notification_pause, O(paramContext, paramBoolean));
       parama.setOnClickPendingIntent(a.e.music_notification_pause, (PendingIntent)localObject1);
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("mm_music_notification_action_key", "mm_music_notification_action_next");
       localObject1 = PendingIntent.getBroadcast(paramContext, 2, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(a.e.music_notification_next, hC(bool));
+      parama.setImageViewResource(a.e.music_notification_next, is(bool));
       parama.setOnClickPendingIntent(a.e.music_notification_next, (PendingIntent)localObject1);
       localObject1 = new Intent("com.tencent.mm.Intent.ACTION_MMMUSIC_NOTIFICATION_CLICK");
       ((Intent)localObject1).putExtra("mm_music_notification_action_key", "mm_music_notification_action_close");
       paramContext = PendingIntent.getBroadcast(paramContext, 3, (Intent)localObject1, 134217728);
-      parama.setImageViewResource(a.e.music_notification_close, hD(bool));
+      parama.setImageViewResource(a.e.music_notification_close, it(bool));
       parama.setOnClickPendingIntent(a.e.music_notification_close, paramContext);
       AppMethodBeat.o(63111);
       return parama;
@@ -190,10 +201,10 @@ public final class a
     }
   }
   
-  private static int dG(Context paramContext)
+  private static int ey(Context paramContext)
   {
     AppMethodBeat.i(63113);
-    Object localObject = com.tencent.mm.bx.a.cp(paramContext, "reminder_channel_id").gr().contentView;
+    Object localObject = com.tencent.mm.bq.a.cA(paramContext, "reminder_channel_id").DA().contentView;
     if (localObject == null)
     {
       AppMethodBeat.o(63113);
@@ -208,12 +219,12 @@ public final class a
       AppMethodBeat.o(63113);
       return i;
     }
-    i = i(paramContext);
+    i = l(paramContext);
     AppMethodBeat.o(63113);
     return i;
   }
   
-  private Bitmap f(final com.tencent.mm.plugin.music.model.e.a parama)
+  private Bitmap g(final com.tencent.mm.plugin.music.model.e.a parama)
   {
     final String str = null;
     AppMethodBeat.i(63112);
@@ -242,21 +253,21 @@ public final class a
         Log.printErrStackTrace("MicroMsg.Music.MMMusicNotification", localException, "get bitmap", new Object[0]);
         Object localObject2 = str;
         continue;
-        localObject2 = q.bml().Wo(parama.field_songAlbumUrl);
+        localObject2 = r.bKe().Oo(parama.field_songAlbumUrl);
         if (localObject2 != null) {
           continue;
         }
-        str = com.tencent.mm.plugin.music.h.b.ce(parama.field_musicId, false);
+        str = com.tencent.mm.plugin.music.h.b.cA(parama.field_musicId, false);
         Object localObject3 = new c.a();
-        ((c.a)localObject3).fullPath = com.tencent.mm.plugin.music.h.b.ce(parama.field_musicId, false);
-        ((c.a)localObject3).lRD = true;
-        ((c.a)localObject3).dO(com.tencent.mm.ci.a.aY(this.FSg, a.c.notification_large_icon_width), com.tencent.mm.ci.a.aY(this.FSg, a.c.notification_large_icon_height));
-        ((c.a)localObject3).lRB = true;
-        q.bml().a(parama.field_songAlbumUrl, ((c.a)localObject3).bmL(), new com.tencent.mm.ay.a.c.d()
+        ((c.a)localObject3).fullPath = com.tencent.mm.plugin.music.h.b.cA(parama.field_musicId, false);
+        ((c.a)localObject3).oKp = true;
+        ((c.a)localObject3).eG(com.tencent.mm.cd.a.br(this.LNd, a.c.notification_large_icon_width), com.tencent.mm.cd.a.br(this.LNd, a.c.notification_large_icon_height));
+        ((c.a)localObject3).oKn = true;
+        r.bKe().a(parama.field_songAlbumUrl, ((c.a)localObject3).bKx(), new com.tencent.mm.modelimage.loader.b.d()
         {
-          public final void a(boolean paramAnonymousBoolean, Object... paramAnonymousVarArgs)
+          public final void onImageDownload(boolean paramAnonymousBoolean, Object... paramAnonymousVarArgs)
           {
-            AppMethodBeat.i(259650);
+            AppMethodBeat.i(271256);
             Log.i("MicroMsg.Music.MMMusicNotification", "music.field_songAlbumUrl:%s, success:%b", new Object[] { parama.field_songAlbumUrl, Boolean.valueOf(paramAnonymousBoolean) });
             if (paramAnonymousBoolean)
             {
@@ -264,13 +275,13 @@ public final class a
               if (paramAnonymousVarArgs == null)
               {
                 Log.e("MicroMsg.Music.MMMusicNotification", "bitmap is null, return");
-                AppMethodBeat.o(259650);
+                AppMethodBeat.o(271256);
                 return;
               }
-              q.bml().h(parama.field_songAlbumUrl, paramAnonymousVarArgs);
-              a.this.FSg.bfU();
+              r.bKe().h(parama.field_songAlbumUrl, paramAnonymousVarArgs);
+              a.this.LNd.bDL();
             }
-            AppMethodBeat.o(259650);
+            AppMethodBeat.o(271256);
           }
         });
         parama = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject2, false, 12.0F, false);
@@ -282,24 +293,24 @@ public final class a
       parama = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, 12.0F, false);
       AppMethodBeat.o(63112);
       return parama;
-      localObject1 = q.bmh().b(parama.field_songAlbumLocalPath, com.tencent.mm.ci.a.getDensity(this.FSg), true);
+      localObject1 = r.bKa().b(parama.field_songAlbumLocalPath, com.tencent.mm.cd.a.getDensity(this.LNd), true);
       continue;
-      localObject1 = q.bmh().a(parama.field_songAlbumLocalPath, com.tencent.mm.ci.a.getDensity(this.FSg), true);
+      localObject1 = r.bKa().a(parama.field_songAlbumLocalPath, com.tencent.mm.cd.a.getDensity(this.LNd), true);
       continue;
-      localObject3 = new cvt();
-      ((cvt)localObject3).Id = parama.field_songMediaId;
-      ((cvt)localObject3).TDF = parama.field_songAlbumUrl;
-      ((cvt)localObject3).TDG = parama.field_songAlbumType;
-      ((cvt)localObject3).Url = ((cvt)localObject3).TDF;
+      localObject3 = new dmz();
+      ((dmz)localObject3).Id = parama.field_songMediaId;
+      ((dmz)localObject3).aaTl = parama.field_songAlbumUrl;
+      ((dmz)localObject3).aaTm = parama.field_songAlbumType;
+      ((dmz)localObject3).Url = ((dmz)localObject3).aaTl;
       localObject1 = str;
-      if (p.JPc != null) {
-        localObject1 = p.JPc.a((cvt)localObject3);
+      if (q.Qkh != null) {
+        localObject1 = q.Qkh.a((dmz)localObject3);
       }
     }
     return parama;
   }
   
-  private static int hA(boolean paramBoolean)
+  private static int iq(boolean paramBoolean)
   {
     if (paramBoolean) {
       return a.d.remote_notification_pre_dark;
@@ -307,7 +318,7 @@ public final class a
     return a.d.remote_notification_pre_light;
   }
   
-  private static int hC(boolean paramBoolean)
+  private static int is(boolean paramBoolean)
   {
     if (paramBoolean) {
       return a.d.remote_notification_next_dark;
@@ -315,7 +326,7 @@ public final class a
     return a.d.remote_notification_next_light;
   }
   
-  private static int hD(boolean paramBoolean)
+  private static int it(boolean paramBoolean)
   {
     if (paramBoolean) {
       return a.d.remote_notification_close_dark;
@@ -323,7 +334,7 @@ public final class a
     return a.d.remote_notification_close_light;
   }
   
-  private static int i(ViewGroup paramViewGroup)
+  private static int l(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(63114);
     Object localObject = new ArrayList();
@@ -353,22 +364,7 @@ public final class a
     }
   }
   
-  private static int w(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (paramBoolean2) {
-        return a.d.remote_notification_pause_dark;
-      }
-      return a.d.remote_notification_pause_light;
-    }
-    if (paramBoolean2) {
-      return a.d.remote_notification_play_dark;
-    }
-    return a.d.remote_notification_play_light;
-  }
-  
-  private static boolean zn(int paramInt)
+  private static boolean zA(int paramInt)
   {
     AppMethodBeat.i(63116);
     int j = paramInt | 0xFF000000;
@@ -387,21 +383,21 @@ public final class a
   final Notification a(Context paramContext, com.tencent.mm.plugin.music.model.e.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(63110);
-    Object localObject = com.tencent.mm.plugin.music.model.d.feM().feL();
-    this.FSf = ((Intent)localObject).getExtras();
-    if (parama.lVX) {
+    Object localObject = com.tencent.mm.plugin.music.model.d.gnU().gnT();
+    this.LNc = ((Intent)localObject).getExtras();
+    if (parama.oPa) {
       ((Intent)localObject).setClassName(paramContext, "com.tencent.mm.plugin.mv.ui.MusicMvMainUI");
     }
     for (;;)
     {
       ((Intent)localObject).putExtra("key_scene", 5);
       localObject = PendingIntent.getActivity(paramContext, 0, (Intent)localObject, 134217728);
-      e.d locald = com.tencent.mm.bx.a.cp(paramContext, "reminder_channel_id");
-      locald.Ip = ((PendingIntent)localObject);
-      paramContext = locald.bn(com.tencent.mm.bx.a.fkG()).a(b(paramContext, parama, paramBoolean)).gr();
+      f.d locald = com.tencent.mm.bq.a.cA(paramContext, "reminder_channel_id");
+      locald.bor = ((PendingIntent)localObject);
+      paramContext = locald.eb(com.tencent.mm.bq.a.guX()).a(b(paramContext, parama, paramBoolean)).DA();
       AppMethodBeat.o(63110);
       return paramContext;
-      ((Intent)localObject).setClassName(paramContext, "com.tencent.mm.plugin.music.ui.MusicMainUI");
+      ((Intent)localObject).setClassName(paramContext, "com.tencent.mm.plugin.mv.ui.shake.MusicMainUINew");
     }
   }
   
@@ -414,19 +410,19 @@ public final class a
       AppMethodBeat.o(63109);
       return;
     }
-    if (this.FSg == null)
+    if (this.LNd == null)
     {
       Log.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
       AppMethodBeat.o(63109);
       return;
     }
     Log.i("MicroMsg.Music.MMMusicNotification", "close");
-    MMHandlerThread.removeRunnable(this.FSj);
-    MMHandlerThread.postToMainThreadDelayed(this.FSj, 1000L);
+    MMHandlerThread.removeRunnable(this.LNf);
+    MMHandlerThread.postToMainThreadDelayed(this.LNf, 1000L);
     AppMethodBeat.o(63109);
   }
   
-  public final void d(com.tencent.mm.plugin.music.model.e.a parama)
+  public final void e(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63107);
     if (!this.isInit)
@@ -435,17 +431,17 @@ public final class a
       AppMethodBeat.o(63107);
       return;
     }
-    if (this.FSg == null)
+    if (this.LNd == null)
     {
       Log.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
       AppMethodBeat.o(63107);
       return;
     }
     Log.i("MicroMsg.Music.MMMusicNotification", "play");
-    MMHandlerThread.removeRunnable(this.FSj);
+    MMHandlerThread.removeRunnable(this.LNf);
     try
     {
-      this.FSg.startForeground(291, a(this.FSg, parama, true));
+      this.LNd.startForeground(291, a(this.LNd, parama, true));
       AppMethodBeat.o(63107);
       return;
     }
@@ -456,7 +452,7 @@ public final class a
     }
   }
   
-  public final void e(com.tencent.mm.plugin.music.model.e.a parama)
+  public final void f(com.tencent.mm.plugin.music.model.e.a parama)
   {
     AppMethodBeat.i(63108);
     if (!this.isInit)
@@ -465,21 +461,21 @@ public final class a
       AppMethodBeat.o(63108);
       return;
     }
-    if (this.FSg == null)
+    if (this.LNd == null)
     {
       Log.e("MicroMsg.Music.MMMusicNotification", "mmMusicPlayerService is null, return");
       AppMethodBeat.o(63108);
       return;
     }
     Log.i("MicroMsg.Music.MMMusicNotification", "pause");
-    MMHandlerThread.removeRunnable(this.FSj);
-    this.FSh.notify(291, a(this.FSg, parama, false));
+    MMHandlerThread.removeRunnable(this.LNf);
+    this.Lfw.notify(291, a(this.LNd, parama, false));
     AppMethodBeat.o(63108);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.notification.a
  * JD-Core Version:    0.7.0.1
  */

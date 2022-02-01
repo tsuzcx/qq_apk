@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.viewpager.widget.ViewPager android:id="@id/f70" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_centerVertical="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/ais" android:layout_width="fill_parent" android:layout_height="480.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/cp" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/h5r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:text="@string/gyd" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/h5m" android:layout_width="270.0dip" android:layout_height="183.0dip" android:layout_marginTop="35.0dip" android:src="@drawable/ca0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/h5r" />
+    <TextView android:textSize="@dimen/cp" android:textColor="#ff07c160" android:gravity="center" android:id="@id/h5n" android:background="@drawable/air" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/d_" android:text="@string/gyc" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/h5m" />
+</androidx.constraintlayout.widget.ConstraintLayout>

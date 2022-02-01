@@ -1,6 +1,5 @@
 package com.tencent.midas.jsbridge;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +31,7 @@ public class APX5WebView
   
   public APX5WebView(Activity paramActivity, WebView paramWebView, IAPX5WebViewCallback paramIAPX5WebViewCallback)
   {
-    AppMethodBeat.i(253120);
+    AppMethodBeat.i(217009);
     this.mWebview = null;
     this.mContext = null;
     this.callback = null;
@@ -40,7 +39,7 @@ public class APX5WebView
     {
       public boolean onJsAlert(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
-        AppMethodBeat.i(253139);
+        AppMethodBeat.i(217075);
         APLog.e("inner onJsAlert message", paramAnonymousString2);
         APLog.e("APX5WebView", " url = ".concat(String.valueOf(paramAnonymousString1)));
         APLog.e("APX5WebView", " message = ".concat(String.valueOf(paramAnonymousString2)));
@@ -48,7 +47,7 @@ public class APX5WebView
         {
           APLog.d("APX5WebView", "onJsAlert is pure h5 update! Cancel alert!");
           paramAnonymousJsResult.cancel();
-          AppMethodBeat.o(253139);
+          AppMethodBeat.o(217075);
           return true;
         }
         APLog.d("APX5WebView", "onJsAlert not pure h5 update!");
@@ -56,26 +55,26 @@ public class APX5WebView
         {
           APLog.d("APX5WebView", "hookH5Method is processed");
           paramAnonymousJsResult.cancel();
-          AppMethodBeat.o(253139);
+          AppMethodBeat.o(217075);
           return true;
         }
         if (APMidasPayAPI.h5PayHookX5(APX5WebView.this.mContext, APX5WebView.this.mWebview, paramAnonymousString1, paramAnonymousString2, paramAnonymousJsResult) == 0)
         {
           APX5WebView.this.callback.WebChromeClientJsAlert(paramAnonymousWebView, paramAnonymousString1, paramAnonymousString2, paramAnonymousJsResult);
           paramAnonymousJsResult.cancel();
-          AppMethodBeat.o(253139);
+          AppMethodBeat.o(217075);
           return true;
         }
         boolean bool = super.onJsAlert(paramAnonymousWebView, paramAnonymousString1, paramAnonymousString2, paramAnonymousJsResult);
-        AppMethodBeat.o(253139);
+        AppMethodBeat.o(217075);
         return bool;
       }
       
       public boolean onJsPrompt(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, JsPromptResult paramAnonymousJsPromptResult)
       {
-        AppMethodBeat.i(253141);
+        AppMethodBeat.i(217083);
         boolean bool = APX5WebView.this.callback.WebChromeClientJsPrompt(paramAnonymousWebView, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousJsPromptResult);
-        AppMethodBeat.o(253141);
+        AppMethodBeat.o(217083);
         return bool;
       }
     };
@@ -85,37 +84,37 @@ public class APX5WebView
       
       public void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
-        AppMethodBeat.i(253056);
+        AppMethodBeat.i(217076);
         super.onPageFinished(paramAnonymousWebView, paramAnonymousString);
         APLog.d("APX5WebView", "onPageFinished!");
         APLog.i("APWebView url == ", paramAnonymousString);
         APX5WebView.this.mWebview.setVisibility(0);
         APMidasPayAPI.InnerH5PayInitX5(APX5WebView.this.mContext, APX5WebView.this.mWebview);
         APX5WebView.this.callback.WebViewClientPageFinished(paramAnonymousWebView, paramAnonymousString);
-        AppMethodBeat.o(253056);
+        AppMethodBeat.o(217076);
       }
       
       public void onPageStarted(WebView paramAnonymousWebView, String paramAnonymousString, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(253057);
+        AppMethodBeat.i(217088);
         super.onPageStarted(paramAnonymousWebView, paramAnonymousString, paramAnonymousBitmap);
         APLog.d("APX5WebView", "onPageStarted!");
         APX5WebView.this.callback.WebViewClientPageStarted(paramAnonymousWebView, paramAnonymousString, paramAnonymousBitmap);
-        AppMethodBeat.o(253057);
+        AppMethodBeat.o(217088);
       }
       
       public void onReceivedError(WebView paramAnonymousWebView, int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(253058);
+        AppMethodBeat.i(217100);
         super.onReceivedError(paramAnonymousWebView, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
         APLog.d("APX5WebView", "onReceivedError!");
         APX5WebView.this.callback.WebViewClientReceivedError(paramAnonymousWebView, paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(253058);
+        AppMethodBeat.o(217100);
       }
       
       public boolean shouldOverrideUrlLoading(WebView paramAnonymousWebView, String paramAnonymousString)
       {
-        AppMethodBeat.i(253053);
+        AppMethodBeat.i(217062);
         APLog.d("APX5WebView", "shouldOverrideUrlLoading url = ".concat(String.valueOf(paramAnonymousString)));
         if ((!paramAnonymousString.startsWith("http://unipay.sdk.android/?")) && (!paramAnonymousString.startsWith("wsj://")) && (!paramAnonymousString.startsWith("mqqapi://")) && (!paramAnonymousString.startsWith("weixin://")) && (!paramAnonymousString.startsWith("sms://")))
         {
@@ -128,19 +127,19 @@ public class APX5WebView
           if (paramAnonymousString.resolveActivity(APX5WebView.this.mContext.getPackageManager()) != null)
           {
             paramAnonymousWebView = paramAnonymousWebView.getContext();
-            paramAnonymousString = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousString);
-            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousWebView, paramAnonymousString.aFh(), "com/tencent/midas/jsbridge/APX5WebView$2", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/sdk/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousWebView.startActivity((Intent)paramAnonymousString.sf(0));
+            paramAnonymousString = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousString);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousWebView, paramAnonymousString.aYi(), "com/tencent/midas/jsbridge/APX5WebView$2", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/sdk/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousWebView.startActivity((Intent)paramAnonymousString.sb(0));
             com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousWebView, "com/tencent/midas/jsbridge/APX5WebView$2", "shouldOverrideUrlLoading", "(Lcom/tencent/smtt/sdk/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            AppMethodBeat.o(253053);
+            AppMethodBeat.o(217062);
             return true;
           }
           Toast.makeText(APX5WebView.this.mContext, "抱歉，你未安装相应客户端", 1).show();
           APLog.w("APX5WebView", "shouldOverrideUrlLoading() intent.resolveActivity == Null ");
-          AppMethodBeat.o(253053);
-          return false;
+          AppMethodBeat.o(217062);
+          return true;
         }
-        AppMethodBeat.o(253053);
+        AppMethodBeat.o(217062);
         return true;
       }
     };
@@ -148,13 +147,12 @@ public class APX5WebView
     this.mWebview = paramWebView;
     this.callback = paramIAPX5WebViewCallback;
     InitWebView();
-    AppMethodBeat.o(253120);
+    AppMethodBeat.o(217009);
   }
   
-  @SuppressLint({"NewApi"})
   private void InitWebView()
   {
-    AppMethodBeat.i(253122);
+    AppMethodBeat.i(217015);
     WebSettings localWebSettings = this.mWebview.getSettings();
     localWebSettings.setJavaScriptEnabled(true);
     if (Build.VERSION.SDK_INT >= 19) {
@@ -169,12 +167,12 @@ public class APX5WebView
     this.mWebview.setWebChromeClient(this.mChromeClient);
     this.mWebview.setWebViewClient(this.mWebViewClient);
     removeInterface();
-    AppMethodBeat.o(253122);
+    AppMethodBeat.o(217015);
   }
   
   private void removeInterface()
   {
-    AppMethodBeat.i(253124);
+    AppMethodBeat.i(217021);
     try
     {
       Method localMethod = this.mWebview.getClass().getMethod("removeJavascriptInterface", new Class[] { String.class });
@@ -184,13 +182,13 @@ public class APX5WebView
         localMethod.invoke(this.mWebview, new Object[] { "accessibility" });
         localMethod.invoke(this.mWebview, new Object[] { "accessibilityTraversal" });
       }
-      AppMethodBeat.o(253124);
+      AppMethodBeat.o(217021);
       return;
     }
     catch (Exception localException)
     {
       APLog.i("removeJavascriptInterface", localException.toString());
-      AppMethodBeat.o(253124);
+      AppMethodBeat.o(217021);
     }
   }
   
@@ -201,14 +199,14 @@ public class APX5WebView
   
   public void loadUrl(String paramString)
   {
-    AppMethodBeat.i(253126);
+    AppMethodBeat.i(217057);
     this.mWebview.loadUrl(paramString);
-    AppMethodBeat.o(253126);
+    AppMethodBeat.o(217057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APX5WebView
  * JD-Core Version:    0.7.0.1
  */

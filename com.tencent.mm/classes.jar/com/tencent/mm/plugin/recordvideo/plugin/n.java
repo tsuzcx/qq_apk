@@ -1,155 +1,144 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.recordvideo.b.b;
-import com.tencent.mm.plugin.recordvideo.b.e;
 import com.tencent.mm.plugin.recordvideo.b.g;
-import com.tencent.mm.plugin.recordvideo.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.doodle.PhotoDoodlePlugin;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.ui.au;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.recordvideo.b.h;
+import com.tencent.mm.plugin.recordvideo.f.c;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "viewGroup", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "editPhotoDoodlePlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;", "isSelected", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "view", "Landroid/widget/ImageView;", "getViewGroup", "()Landroid/view/ViewGroup;", "setViewGroup", "(Landroid/view/ViewGroup;)V", "checkDoodleStatus", "", "hideDooldeLayout", "hideMosaic", "hide", "onBackPress", "onClick", "v", "Landroid/view/View;", "reset", "setVisibility", "visibility", "", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoCropPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "onClick", "", "v", "Landroid/view/View;", "setVisibility", "visibility", "", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
-  implements View.OnClickListener, u
+  implements View.OnClickListener, v
 {
-  private d APl;
-  private ViewGroup Fwk;
-  public final PhotoDoodlePlugin HNB;
-  private boolean isSelected;
-  private final ImageView wRg;
+  private com.tencent.mm.plugin.recordvideo.plugin.parent.a GrC;
+  private ImageView cqj;
   
-  public n(ViewGroup paramViewGroup, d paramd)
+  public n(ImageView paramImageView, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    AppMethodBeat.i(75562);
-    this.Fwk = paramViewGroup;
-    this.APl = paramd;
-    paramViewGroup = this.Fwk.findViewById(b.e.doddle_layout);
-    p.j(paramViewGroup, "viewGroup.findViewById(R.id.doddle_layout)");
-    this.HNB = ((PhotoDoodlePlugin)paramViewGroup);
-    this.HNB.setStatus(this.APl);
-    paramViewGroup = this.Fwk.findViewById(b.e.editor_add_pencil);
-    p.j(paramViewGroup, "viewGroup.findViewById(R.id.editor_add_pencil)");
-    this.wRg = ((ImageView)paramViewGroup);
-    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, -1));
-    this.wRg.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(75562);
+    AppMethodBeat.i(75558);
+    this.cqj = paramImageView;
+    this.GrC = parama;
+    this.cqj.setVisibility(0);
+    this.cqj.setImageDrawable(bb.m(this.cqj.getContext(), b.g.icons_filled_clip, -1));
+    this.cqj.setOnClickListener((View.OnClickListener)this);
+    AppMethodBeat.o(75558);
   }
   
-  public final void bbp() {}
-  
-  public final void eYp()
+  public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(75561);
-    if (this.isSelected)
-    {
-      this.HNB.setVisibility(0);
-      AppMethodBeat.o(75561);
-      return;
-    }
-    this.HNB.setVisibility(4);
-    AppMethodBeat.o(75561);
+    AppMethodBeat.i(280603);
+    v.a.a(this, paramRecordConfigProvider);
+    AppMethodBeat.o(280603);
+  }
+  
+  public final void bwk()
+  {
+    AppMethodBeat.i(280620);
+    s.u(this, "this");
+    AppMethodBeat.o(280620);
   }
   
   public final String name()
   {
-    AppMethodBeat.i(218389);
-    String str = getClass().getName();
-    AppMethodBeat.o(218389);
+    AppMethodBeat.i(280610);
+    String str = v.a.b(this);
+    AppMethodBeat.o(280610);
     return str;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(280616);
+    s.u(this, "this");
+    AppMethodBeat.o(280616);
+  }
   
   public final boolean onBackPress()
   {
+    AppMethodBeat.i(280628);
+    s.u(this, "this");
+    AppMethodBeat.o(280628);
     return false;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(75559);
+    AppMethodBeat.i(75556);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    boolean bool;
-    if (!this.isSelected)
-    {
-      bool = true;
-      this.isSelected = bool;
-      if (!this.isSelected) {
-        break label143;
-      }
-      paramView = c.HUw;
-      c.aVY("KEY_CLICK_DOODLE_COUNT_INT");
-      paramView = c.HUw;
-      c.acq(7);
-      this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, this.wRg.getResources().getColor(b.b.wechat_green)));
-      d.b.a(this.APl, d.c.HSs);
-    }
-    for (;;)
-    {
-      eYp();
-      a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditPhotoPencilPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(75559);
-      return;
-      bool = false;
-      break;
-      label143:
-      d.b.a(this.APl, d.c.HSw);
-      this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, -1));
-    }
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recordvideo/plugin/EditPhotoCropPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    a.b.a(this.GrC, a.c.NOV);
+    paramView = c.NRf;
+    c.agG(10);
+    paramView = c.NRf;
+    c.aTg("KEY_CLICK_CROP_COUNT_INT");
+    this.cqj.announceForAccessibility((CharSequence)com.tencent.mm.cd.a.bt(this.cqj.getContext(), b.h.aging_crop_photo));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditPhotoCropPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(75556);
   }
   
-  public final void onDetach() {}
+  public final void onDetach()
+  {
+    AppMethodBeat.i(280636);
+    s.u(this, "this");
+    AppMethodBeat.o(280636);
+  }
   
-  public final void onPause() {}
+  public final void onPause()
+  {
+    AppMethodBeat.i(280645);
+    s.u(this, "this");
+    AppMethodBeat.o(280645);
+  }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(218390);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    u.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(218390);
+    AppMethodBeat.i(280651);
+    v.a.a(this, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(280651);
   }
   
-  public final void onResume() {}
+  public final void onResume()
+  {
+    AppMethodBeat.i(280661);
+    s.u(this, "this");
+    AppMethodBeat.o(280661);
+  }
   
-  public final void release() {}
+  public final void release()
+  {
+    AppMethodBeat.i(280667);
+    s.u(this, "this");
+    AppMethodBeat.o(280667);
+  }
   
   public final void reset()
   {
-    AppMethodBeat.i(75560);
-    this.isSelected = false;
-    eYp();
-    d.b.a(this.APl, d.c.HSw);
-    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_duddle, -1));
-    AppMethodBeat.o(75560);
+    AppMethodBeat.i(280677);
+    s.u(this, "this");
+    AppMethodBeat.o(280677);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(218385);
-    this.wRg.setVisibility(paramInt);
-    AppMethodBeat.o(218385);
+    AppMethodBeat.i(75557);
+    this.cqj.setVisibility(paramInt);
+    AppMethodBeat.o(75557);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.n
  * JD-Core Version:    0.7.0.1
  */

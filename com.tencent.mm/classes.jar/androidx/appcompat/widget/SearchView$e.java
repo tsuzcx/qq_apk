@@ -10,40 +10,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class SearchView$e
   extends TouchDelegate
 {
-  private final View vi;
-  private final Rect vj;
-  private final Rect vk;
-  private final Rect vl;
-  private final int vm;
-  private boolean vn;
+  private boolean mDelegateTargeted;
+  private final View we;
+  private final Rect wf;
+  private final Rect wg;
+  private final Rect wh;
+  private final int wi;
   
   public SearchView$e(Rect paramRect1, Rect paramRect2, View paramView)
   {
     super(paramRect1, paramView);
-    AppMethodBeat.i(241774);
-    this.vm = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-    this.vj = new Rect();
-    this.vl = new Rect();
-    this.vk = new Rect();
-    a(paramRect1, paramRect2);
-    this.vi = paramView;
-    AppMethodBeat.o(241774);
+    AppMethodBeat.i(199608);
+    this.wi = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
+    this.wf = new Rect();
+    this.wh = new Rect();
+    this.wg = new Rect();
+    e(paramRect1, paramRect2);
+    this.we = paramView;
+    AppMethodBeat.o(199608);
   }
   
-  public final void a(Rect paramRect1, Rect paramRect2)
+  public final void e(Rect paramRect1, Rect paramRect2)
   {
-    AppMethodBeat.i(241775);
-    this.vj.set(paramRect1);
-    this.vl.set(paramRect1);
-    this.vl.inset(-this.vm, -this.vm);
-    this.vk.set(paramRect2);
-    AppMethodBeat.o(241775);
+    AppMethodBeat.i(199621);
+    this.wf.set(paramRect1);
+    this.wh.set(paramRect1);
+    this.wh.inset(-this.wi, -this.wi);
+    this.wg.set(paramRect2);
+    AppMethodBeat.o(199621);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool3 = false;
-    AppMethodBeat.i(241777);
+    AppMethodBeat.i(199635);
     int j = (int)paramMotionEvent.getX();
     int k = (int)paramMotionEvent.getY();
     int i;
@@ -58,43 +58,43 @@ final class SearchView$e
       bool2 = bool3;
       if (bool1)
       {
-        if ((i == 0) || (this.vk.contains(j, k))) {
+        if ((i == 0) || (this.wg.contains(j, k))) {
           break label212;
         }
-        paramMotionEvent.setLocation(this.vi.getWidth() / 2, this.vi.getHeight() / 2);
+        paramMotionEvent.setLocation(this.we.getWidth() / 2, this.we.getHeight() / 2);
       }
       break;
     }
     for (;;)
     {
-      bool2 = this.vi.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(241777);
+      bool2 = this.we.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(199635);
       return bool2;
-      if (!this.vj.contains(j, k)) {
+      if (!this.wf.contains(j, k)) {
         break;
       }
-      this.vn = true;
+      this.mDelegateTargeted = true;
       i = 1;
       bool1 = true;
       break label61;
-      bool2 = this.vn;
+      bool2 = this.mDelegateTargeted;
       bool1 = bool2;
       if (bool2)
       {
         bool1 = bool2;
-        if (!this.vl.contains(j, k))
+        if (!this.wh.contains(j, k))
         {
           i = 0;
           bool1 = bool2;
           break label61;
-          bool1 = this.vn;
-          this.vn = false;
+          bool1 = this.mDelegateTargeted;
+          this.mDelegateTargeted = false;
         }
       }
       i = 1;
       break label61;
       label212:
-      paramMotionEvent.setLocation(j - this.vk.left, k - this.vk.top);
+      paramMotionEvent.setLocation(j - this.wg.left, k - this.wg.top);
     }
   }
 }

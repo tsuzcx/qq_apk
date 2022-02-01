@@ -8,125 +8,146 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class af
   implements az.b
 {
-  private az.b lsV;
+  public az.b okv;
   
   public af(az.b paramb)
   {
-    this.lsV = paramb;
+    this.okv = paramb;
   }
   
-  public final void Rr(String paramString)
+  public final void Jq(String paramString)
   {
-    AppMethodBeat.i(244003);
-    Iterator localIterator = af.a.bek().iterator();
+    AppMethodBeat.i(242053);
+    Iterator localIterator = a.bCd().iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.aB(paramString, 0))
+      if (localb.aN(paramString, 0))
       {
-        localb.bel().Rr(paramString);
+        localb.bCe().Jq(paramString);
         Log.i("MicroMsg.GetContactServiceProxy", "[removeCallBack] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(244003);
+        AppMethodBeat.o(242053);
         return;
       }
     }
-    this.lsV.Rr(paramString);
-    AppMethodBeat.o(244003);
+    this.okv.Jq(paramString);
+    AppMethodBeat.o(242053);
   }
   
-  public final void Rs(String paramString)
+  public final void Jr(String paramString)
   {
-    AppMethodBeat.i(244004);
-    Iterator localIterator = af.a.bek().iterator();
+    AppMethodBeat.i(242055);
+    Iterator localIterator = a.bCd().iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.aB(paramString, 0))
+      if (localb.aN(paramString, 0))
       {
-        localb.bel().Rs(paramString);
+        localb.bCe().Jr(paramString);
         Log.i("MicroMsg.GetContactServiceProxy", "[clearMapRecentDown] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(244004);
+        AppMethodBeat.o(242055);
         return;
       }
     }
-    this.lsV.Rs(paramString);
-    AppMethodBeat.o(244004);
+    this.okv.Jr(paramString);
+    AppMethodBeat.o(242055);
   }
   
   public final void a(String paramString1, String paramString2, az.b.a parama)
   {
-    AppMethodBeat.i(244002);
-    Iterator localIterator = af.a.bek().iterator();
+    AppMethodBeat.i(242051);
+    Iterator localIterator = a.bCd().iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.aB(paramString1, 0))
+      if (localb.aN(paramString1, 0))
       {
-        localb.bel().a(paramString1, paramString2, parama);
+        localb.bCe().a(paramString1, paramString2, parama);
         Log.i("MicroMsg.GetContactServiceProxy", "[getNow] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(244002);
+        AppMethodBeat.o(242051);
         return;
       }
     }
-    this.lsV.a(paramString1, paramString2, parama);
-    AppMethodBeat.o(244002);
+    this.okv.a(paramString1, paramString2, parama);
+    AppMethodBeat.o(242051);
   }
   
-  public final void aP(String paramString1, String paramString2)
+  public final void aZ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(244000);
-    Iterator localIterator = af.a.bek().iterator();
+    AppMethodBeat.i(242048);
+    Iterator localIterator = a.bCd().iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.aB(paramString1, 0))
+      if (localb.aN(paramString1, 0))
       {
-        localb.bel().aP(paramString1, paramString2);
+        localb.bCe().aZ(paramString1, paramString2);
         Log.i("MicroMsg.GetContactServiceProxy", "[addContact] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(244000);
+        AppMethodBeat.o(242048);
         return;
       }
     }
-    this.lsV.aP(paramString1, paramString2);
-    AppMethodBeat.o(244000);
+    this.okv.aZ(paramString1, paramString2);
+    AppMethodBeat.o(242048);
   }
   
-  public final az.b bei()
+  public final void bCc()
   {
-    return this.lsV;
+    AppMethodBeat.i(242061);
+    this.okv.bCc();
+    AppMethodBeat.o(242061);
   }
   
-  public final void bej()
+  public final void j(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(244005);
-    this.lsV.bej();
-    AppMethodBeat.o(244005);
-  }
-  
-  public final void h(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(244001);
-    Iterator localIterator = af.a.bek().iterator();
+    AppMethodBeat.i(242050);
+    Iterator localIterator = a.bCd().iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.aB(paramString1, paramInt))
+      if (localb.aN(paramString1, paramInt))
       {
-        localb.bel().h(paramString1, paramInt, paramString2);
+        localb.bCe().j(paramString1, paramInt, paramString2);
         Log.i("MicroMsg.GetContactServiceProxy", "[addContactExtra] has consume. interceptor=%s", new Object[] { localb });
-        AppMethodBeat.o(244001);
+        AppMethodBeat.o(242050);
         return;
       }
     }
-    this.lsV.h(paramString1, paramInt, paramString2);
-    AppMethodBeat.o(244001);
+    this.okv.j(paramString1, paramInt, paramString2);
+    AppMethodBeat.o(242050);
+  }
+  
+  public static final class a
+  {
+    private static ConcurrentLinkedQueue<af.b> okw;
+    
+    static
+    {
+      AppMethodBeat.i(241861);
+      okw = new ConcurrentLinkedQueue();
+      AppMethodBeat.o(241861);
+    }
+    
+    public static void a(af.b paramb)
+    {
+      AppMethodBeat.i(241857);
+      okw.add(paramb);
+      AppMethodBeat.o(241857);
+    }
+    
+    public static void b(af.b paramb)
+    {
+      AppMethodBeat.i(241858);
+      okw.remove(paramb);
+      AppMethodBeat.o(241858);
+    }
   }
   
   public static abstract interface b
   {
-    public abstract boolean aB(String paramString, int paramInt);
+    public abstract boolean aN(String paramString, int paramInt);
     
-    public abstract az.b bel();
+    public abstract az.b bCe();
   }
 }
 

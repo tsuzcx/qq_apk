@@ -1,74 +1,78 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dzr;
-import com.tencent.mm.protocal.protobuf.dzs;
-import com.tencent.mm.protocal.protobuf.dzx;
+import com.tencent.mm.protocal.protobuf.cxs;
+import com.tencent.mm.protocal.protobuf.cxt;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
 
 public final class r
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private String errMsg;
-  private dzs iWC;
-  private final d rr;
+  private com.tencent.mm.am.h callback;
+  private final c rr;
   
-  public r(String paramString, int paramInt, dzx paramdzx)
+  public r(String paramString)
   {
-    AppMethodBeat.i(182085);
-    Log.i("MicroMsg.roomTodo.NetSceneRoomToolsAlterTodo", "NetSceneRoomToolsAlterTodo chatRoomName:%s op:%s roomToolsTodo%s", new Object[] { Util.nullAs(paramString, ""), Integer.valueOf(paramInt), y.a(paramdzx) });
-    Object localObject = new d.a();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/roomtoolsaltertodo";
-    ((d.a)localObject).funcId = 3618;
-    ((d.a)localObject).lBU = new dzr();
-    ((d.a)localObject).lBV = new dzs();
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (dzr)d.b.b(this.rr.lBR);
-    ((dzr)localObject).RIi = Util.nullAs(paramString, "");
-    ((dzr)localObject).Ufd = paramInt;
-    ((dzr)localObject).Ufe = paramdzx;
-    AppMethodBeat.o(182085);
+    AppMethodBeat.i(12482);
+    this.callback = null;
+    c.a locala = new c.a();
+    locala.otE = new cxs();
+    locala.otF = new cxt();
+    locala.uri = "/cgi-bin/micromsg-bin/grantbigchatroom";
+    locala.funcId = 339;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    ((cxs)c.b.b(this.rr.otB)).IMg = paramString;
+    Log.d("MicroMsg.NetSceneGrantBigChatRoom", "grant to userName :".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(12482);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(182086);
-    this.callback = parami;
+    AppMethodBeat.i(12483);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(182086);
+    AppMethodBeat.o(12483);
     return i;
   }
   
   public final int getType()
   {
-    return 3618;
+    return 339;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(182087);
-    Log.d("MicroMsg.roomTodo.NetSceneRoomToolsAlterTodo", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.iWC = ((dzs)d.c.b(((d)params).lBS));
+    AppMethodBeat.i(12484);
+    Log.d("MicroMsg.NetSceneGrantBigChatRoom", "onGYNetEnd " + paramInt2 + " " + paramInt3 + "  " + paramString);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(12484);
+      return;
+    }
+    paramInt1 = ((Integer)com.tencent.mm.kernel.h.baE().ban().d(135176, Integer.valueOf(0))).intValue();
+    if (paramInt1 - 1 >= 0) {
+      com.tencent.mm.kernel.h.baE().ban().B(135176, Integer.valueOf(paramInt1 - 1));
+    }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.errMsg = paramString;
-    AppMethodBeat.o(182087);
+    AppMethodBeat.o(12484);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.r
  * JD-Core Version:    0.7.0.1
  */

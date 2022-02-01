@@ -1,74 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class fqe
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int TNG;
-  public String UNV;
-  public boolean UOa;
+  public gol abPT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50127);
+    AppMethodBeat.i(257406);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UNV != null) {
-        paramVarArgs.f(1, this.UNV);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abPT == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: RandomEncryptKey");
+        AppMethodBeat.o(257406);
+        throw paramVarArgs;
       }
-      paramVarArgs.co(2, this.UOa);
-      paramVarArgs.aY(3, this.TNG);
-      AppMethodBeat.o(50127);
+      if (this.abPT != null)
+      {
+        paramVarArgs.qD(1, this.abPT.computeSize());
+        this.abPT.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(257406);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.UNV == null) {
-        break label302;
+      if (this.abPT == null) {
+        break label332;
       }
     }
-    label302:
-    for (paramInt = g.a.a.b.b.a.g(1, this.UNV) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = i.a.a.a.qC(1, this.abPT.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.gL(2);
-      int j = g.a.a.b.b.a.bM(3, this.TNG);
-      AppMethodBeat.o(50127);
-      return paramInt + (i + 1) + j;
+      AppMethodBeat.o(257406);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(50127);
+        if (this.abPT == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: RandomEncryptKey");
+          AppMethodBeat.o(257406);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(257406);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         fqe localfqe = (fqe)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(50127);
+          AppMethodBeat.o(257406);
           return -1;
-        case 1: 
-          localfqe.UNV = locala.abFh.readString();
-          AppMethodBeat.o(50127);
-          return 0;
-        case 2: 
-          localfqe.UOa = locala.abFh.AB();
-          AppMethodBeat.o(50127);
-          return 0;
         }
-        localfqe.TNG = locala.abFh.AK();
-        AppMethodBeat.o(50127);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          gol localgol = new gol();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localgol.dg((byte[])localObject);
+          }
+          localfqe.abPT = localgol;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(257406);
         return 0;
       }
-      AppMethodBeat.o(50127);
+      AppMethodBeat.o(257406);
       return -1;
     }
   }

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.music.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -21,411 +22,356 @@ import com.tencent.mm.plugin.music.a.c;
 import com.tencent.mm.plugin.music.a.d;
 import com.tencent.mm.plugin.music.a.e;
 import com.tencent.mm.plugin.music.a.g;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.plugin.music.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeButton", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "closeClickListener", "Landroid/view/View$OnClickListener;", "floatBallViewListener", "com/tencent/mm/plugin/music/ui/FloatBallMusicView$floatBallViewListener$1", "Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$floatBallViewListener$1;", "iconClickListener", "mCoverPath", "", "marginSize", "musicCover", "Landroid/widget/ImageView;", "musicIcon", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "musicIconLayout", "init", "", "loadMusicCover", "coverPath", "onLoadCoverFailed", "refreshLayoutWhenPositionChanged", "isDockerLeft", "", "release", "setCoverPath", "setOnCloseListener", "closeListener", "setOnMusicIconClickListener", "clickListener", "Companion", "RoundCornerBitmapTransformation", "plugin-music_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeButton", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "closeClickListener", "Landroid/view/View$OnClickListener;", "floatBallViewListener", "com/tencent/mm/plugin/music/ui/FloatBallMusicView$floatBallViewListener$1", "Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$floatBallViewListener$1;", "iconClickListener", "mCoverPath", "", "marginSize", "musicCover", "Landroid/widget/ImageView;", "musicIcon", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "musicIconLayout", "init", "", "loadMusicCover", "coverPath", "onLoadCoverFailed", "refreshLayoutWhenPositionChanged", "isDockerLeft", "", "release", "setCoverPath", "setOnCloseListener", "closeListener", "setOnMusicIconClickListener", "clickListener", "Companion", "RoundCornerBitmapTransformation", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FloatBallMusicView
   extends RelativeLayout
 {
-  public static final a FTP;
-  private String FRj;
-  private MMAnimateView FTH;
-  private ImageView FTI;
-  private RelativeLayout FTJ;
-  private WeImageView FTK;
-  private int FTL;
-  public final c FTM;
-  private View.OnClickListener FTN;
-  private View.OnClickListener FTO;
+  public static final FloatBallMusicView.a LOH;
+  private String LMf;
+  private MMAnimateView LOI;
+  private ImageView LOJ;
+  private RelativeLayout LOK;
+  private int LOL;
+  public final c LOM;
+  private View.OnClickListener LON;
+  private View.OnClickListener LOO;
+  private WeImageView puG;
   
   static
   {
-    AppMethodBeat.i(260097);
-    FTP = new a((byte)0);
-    AppMethodBeat.o(260097);
+    AppMethodBeat.i(270926);
+    LOH = new FloatBallMusicView.a((byte)0);
+    AppMethodBeat.o(270926);
   }
   
   public FloatBallMusicView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(260090);
-    AppMethodBeat.o(260090);
+    AppMethodBeat.i(270904);
+    AppMethodBeat.o(270904);
   }
   
   public FloatBallMusicView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(260092);
-    AppMethodBeat.o(260092);
+    AppMethodBeat.i(270905);
+    AppMethodBeat.o(270905);
   }
   
   public FloatBallMusicView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(260095);
-    this.FRj = "";
-    this.FTM = new c(this);
+    AppMethodBeat.i(270910);
+    this.LMf = "";
+    this.LOM = new c(this);
     paramAttributeSet = LayoutInflater.from(paramContext).inflate(a.g.layout_float_ball_music_view, (ViewGroup)this, true);
-    this.FTL = aw.aZ(paramContext, a.c.Edge_A);
-    this.FTH = ((MMAnimateView)paramAttributeSet.findViewById(a.e.music_icon));
-    this.FTI = ((ImageView)paramAttributeSet.findViewById(a.e.music_cover));
-    this.FTJ = ((RelativeLayout)paramAttributeSet.findViewById(a.e.music_icon_layout));
-    this.FTK = ((WeImageView)paramAttributeSet.findViewById(a.e.music_close_button));
-    paramContext = this.FTH;
+    this.LOL = bd.bs(paramContext, a.c.Edge_A);
+    this.LOI = ((MMAnimateView)paramAttributeSet.findViewById(a.e.music_icon));
+    this.LOJ = ((ImageView)paramAttributeSet.findViewById(a.e.music_cover));
+    this.LOK = ((RelativeLayout)paramAttributeSet.findViewById(a.e.music_icon_layout));
+    this.puG = ((WeImageView)paramAttributeSet.findViewById(a.e.music_close_button));
+    paramContext = this.LOI;
     if (paramContext != null) {
       paramContext.setImageResource(a.d.float_ball_music_view_icon);
     }
-    paramContext = this.FTI;
+    paramContext = this.LOJ;
     if (paramContext != null) {
       paramContext.setVisibility(8);
     }
-    paramContext = this.FTJ;
+    paramContext = this.LOK;
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new d(this));
+      paramContext.setOnClickListener(new FloatBallMusicView..ExternalSyntheticLambda1(this));
     }
-    paramContext = this.FTK;
+    paramContext = this.puG;
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new e(this));
+      paramContext.setOnClickListener(new FloatBallMusicView..ExternalSyntheticLambda0(this));
     }
-    paramContext = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.ball.c.b.class);
-    p.j(paramContext, "MMKernel.service(IFloatBallService::class.java)");
-    vv(((com.tencent.mm.plugin.ball.c.b)paramContext).cvf());
-    ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.ball.c.b.class)).a((g)this.FTM);
-    AppMethodBeat.o(260095);
+    zN(((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.ball.c.b.class)).cXP());
+    ((com.tencent.mm.plugin.ball.c.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.ball.c.b.class)).a((g)this.LOM);
+    paramContext = this.puG;
+    if (paramContext != null) {
+      paramContext.setContentDescription((CharSequence)getResources().getString(a.h.talkback_music_video_close_btn));
+    }
+    paramContext = this.LOK;
+    if (paramContext != null) {
+      paramContext.setImportantForAccessibility(4);
+    }
+    AppMethodBeat.o(270910);
   }
   
-  private final void ffx()
+  private static final void a(FloatBallMusicView paramFloatBallMusicView, View paramView)
   {
-    AppMethodBeat.i(260088);
+    AppMethodBeat.i(270913);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFloatBallMusicView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/music/ui/FloatBallMusicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFloatBallMusicView, "this$0");
+    paramFloatBallMusicView = paramFloatBallMusicView.LOO;
+    if (paramFloatBallMusicView != null) {
+      paramFloatBallMusicView.onClick(paramView);
+    }
+    a.a(new Object(), "com/tencent/mm/plugin/music/ui/FloatBallMusicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(270913);
+  }
+  
+  private static final void b(FloatBallMusicView paramFloatBallMusicView, View paramView)
+  {
+    AppMethodBeat.i(270915);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFloatBallMusicView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/music/ui/FloatBallMusicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFloatBallMusicView, "this$0");
+    paramFloatBallMusicView = paramFloatBallMusicView.LON;
+    if (paramFloatBallMusicView != null) {
+      paramFloatBallMusicView.onClick(paramView);
+    }
+    a.a(new Object(), "com/tencent/mm/plugin/music/ui/FloatBallMusicView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(270915);
+  }
+  
+  private final void goL()
+  {
+    AppMethodBeat.i(270912);
     Log.e("MicroMsg.FloatBallMusicView", "alvinluo loadMusicCover failed");
-    Object localObject = this.FTJ;
+    Object localObject = this.LOK;
     if (localObject != null) {
       ((RelativeLayout)localObject).setBackgroundResource(a.d.float_ball_music_view_grey_bg);
     }
-    localObject = this.FTI;
-    if (localObject != null)
-    {
+    localObject = this.LOJ;
+    if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
-      AppMethodBeat.o(260088);
-      return;
     }
-    AppMethodBeat.o(260088);
+    AppMethodBeat.o(270912);
   }
   
   public final void setCoverPath(String paramString)
   {
-    AppMethodBeat.i(260086);
-    if ((p.h(this.FRj, paramString) ^ true)) {
-      if (paramString != null) {
-        break label249;
-      }
-    }
-    label249:
-    for (Object localObject = "";; localObject = paramString)
+    AppMethodBeat.i(270949);
+    Object localObject;
+    if (!s.p(this.LMf, paramString))
     {
-      this.FRj = ((String)localObject);
-      localObject = (CharSequence)paramString;
-      if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-      for (int i = 1; i != 0; i = 0)
+      if (paramString == null)
       {
-        ffx();
-        AppMethodBeat.o(260086);
-        return;
-      }
-      localObject = new aa.f();
-      ((aa.f)localObject).aaBC = "";
-      if ((!n.M(paramString, "http", false)) && (!n.M(paramString, "https", false)))
-      {
-        paramString = u.n(paramString, false);
-        if (!u.agG(paramString))
-        {
-          Log.e("MicroMsg.FloatBallMusicView", "alvinluo setCoverPath file not exist %s", new Object[] { paramString });
-          ffx();
-          AppMethodBeat.o(260086);
-          return;
+        localObject = "";
+        this.LMf = ((String)localObject);
+        localObject = (CharSequence)paramString;
+        if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+          break label69;
         }
       }
-      for (((aa.f)localObject).aaBC = "file://".concat(String.valueOf(paramString));; ((aa.f)localObject).aaBC = paramString)
+      label69:
+      for (int i = 1;; i = 0)
       {
-        Log.v("MicroMsg.FloatBallMusicView", "alvinluo loadMusicCover url: " + (String)((aa.f)localObject).aaBC);
-        paramString = com.tencent.mm.modelappbrand.a.b.bhh();
-        b.k localk = (b.k)new f(this, (aa.f)localObject);
-        localObject = (String)((aa.f)localObject).aaBC;
-        FloatBallMusicView.b.a locala = b.FTR;
-        paramString.a(localk, (String)localObject, (b.h)b.ffy());
-        AppMethodBeat.o(260086);
+        if (i == 0) {
+          break label74;
+        }
+        goL();
+        AppMethodBeat.o(270949);
+        return;
+        localObject = paramString;
+        break;
+      }
+      label74:
+      localObject = new ah.f();
+      ((ah.f)localObject).aqH = "";
+      if ((n.U(paramString, "http", false)) || (n.U(paramString, "https", false))) {
+        break label230;
+      }
+      paramString = y.n(paramString, false);
+      if (!y.ZC(paramString))
+      {
+        Log.e("MicroMsg.FloatBallMusicView", "alvinluo setCoverPath file not exist %s", new Object[] { paramString });
+        goL();
+        AppMethodBeat.o(270949);
         return;
       }
+    }
+    label230:
+    for (((ah.f)localObject).aqH = s.X("file://", paramString);; ((ah.f)localObject).aqH = paramString)
+    {
+      Log.v("MicroMsg.FloatBallMusicView", s.X("alvinluo loadMusicCover url: ", ((ah.f)localObject).aqH));
+      paramString = com.tencent.mm.modelappbrand.a.b.bEY();
+      b.k localk = (b.k)new d(this, (ah.f)localObject);
+      localObject = (String)((ah.f)localObject).aqH;
+      FloatBallMusicView.b.a locala = FloatBallMusicView.b.LOP;
+      paramString.a(localk, (String)localObject, (b.h)FloatBallMusicView.b.goM());
+      AppMethodBeat.o(270949);
+      return;
     }
   }
   
   public final void setOnCloseListener(View.OnClickListener paramOnClickListener)
   {
-    this.FTN = paramOnClickListener;
+    this.LON = paramOnClickListener;
   }
   
   public final void setOnMusicIconClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.FTO = paramOnClickListener;
+    this.LOO = paramOnClickListener;
   }
   
-  public final void vv(boolean paramBoolean)
+  public final void zN(boolean paramBoolean)
   {
-    AppMethodBeat.i(260079);
-    Object localObject2 = this.FTJ;
-    Object localObject1;
+    ah localah1 = null;
+    AppMethodBeat.i(270940);
+    Object localObject2 = this.LOK;
     if (localObject2 != null)
     {
-      localObject1 = this.FTJ;
-      if (localObject1 == null) {
-        break label194;
-      }
-      localObject1 = ((RelativeLayout)localObject1).getLayoutParams();
-      if (localObject1 == null) {
-        break label194;
-      }
-      if ((localObject1 instanceof RelativeLayout.LayoutParams))
+      localObject1 = this.LOK;
+      if (localObject1 == null)
       {
-        if (paramBoolean)
-        {
-          ((RelativeLayout.LayoutParams)localObject1).removeRule(20);
-          ((RelativeLayout.LayoutParams)localObject1).addRule(21);
-          ((RelativeLayout.LayoutParams)localObject1).setMarginStart(0);
-          ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(this.FTL);
-        }
-      }
-      else {
+        localObject1 = null;
         ((RelativeLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
     }
     else
     {
-      localObject2 = this.FTK;
-      if (localObject2 == null) {
-        break label225;
+      localObject2 = this.puG;
+      if (localObject2 != null)
+      {
+        localObject1 = this.puG;
+        if (localObject1 != null) {
+          break label181;
+        }
       }
-      localObject1 = this.FTK;
-      if (localObject1 == null) {
-        break label220;
-      }
-      localObject1 = ((WeImageView)localObject1).getLayoutParams();
-      if (localObject1 == null) {
-        break label220;
+    }
+    for (Object localObject1 = localah1;; localObject1 = localah1)
+    {
+      ((WeImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      AppMethodBeat.o(270940);
+      return;
+      localObject1 = ((RelativeLayout)localObject1).getLayoutParams();
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break;
       }
       if ((localObject1 instanceof RelativeLayout.LayoutParams))
       {
         if (!paramBoolean) {
-          break label199;
+          break label141;
         }
+        ((RelativeLayout.LayoutParams)localObject1).removeRule(20);
+        ((RelativeLayout.LayoutParams)localObject1).addRule(21);
+        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(0);
+        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(this.LOL);
+      }
+      for (;;)
+      {
+        ah localah2 = ah.aiuX;
+        break;
+        label141:
         ((RelativeLayout.LayoutParams)localObject1).removeRule(21);
         ((RelativeLayout.LayoutParams)localObject1).addRule(20);
+        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(this.LOL);
+        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
       }
+      label181:
+      localObject1 = ((WeImageView)localObject1).getLayoutParams();
+      if (localObject1 != null) {
+        break label195;
+      }
+    }
+    label195:
+    if ((localObject1 instanceof RelativeLayout.LayoutParams))
+    {
+      if (!paramBoolean) {
+        break label231;
+      }
+      ((RelativeLayout.LayoutParams)localObject1).removeRule(21);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(20);
     }
     for (;;)
     {
-      ((WeImageView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      AppMethodBeat.o(260079);
-      return;
-      ((RelativeLayout.LayoutParams)localObject1).removeRule(21);
-      ((RelativeLayout.LayoutParams)localObject1).addRule(20);
-      ((RelativeLayout.LayoutParams)localObject1).setMarginStart(this.FTL);
-      ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
+      localah1 = ah.aiuX;
       break;
-      label194:
-      localObject1 = null;
-      break;
-      label199:
+      label231:
       ((RelativeLayout.LayoutParams)localObject1).removeRule(20);
       ((RelativeLayout.LayoutParams)localObject1).addRule(21);
-      continue;
-      label220:
-      localObject1 = null;
     }
-    label225:
-    AppMethodBeat.o(260079);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$Companion;", "", "()V", "TAG", "", "plugin-music_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$RoundCornerBitmapTransformation;", "Lcom/tencent/mm/modelappbrand/image/AppBrandSimpleImageLoader$IBitmapTransformation;", "roundRate", "", "(F)V", "getRoundRate", "()F", "key", "", "transform", "Landroid/graphics/Bitmap;", "bitmap", "Companion", "plugin-music_release"})
-  public static final class b
-    implements b.h
-  {
-    private static final b FTQ;
-    public static final a FTR;
-    private final float kPA = 0.16F;
-    
-    static
-    {
-      AppMethodBeat.i(259401);
-      FTR = new a((byte)0);
-      FTQ = new b();
-      AppMethodBeat.o(259401);
-    }
-    
-    public final Bitmap H(Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(259399);
-      p.k(paramBitmap, "bitmap");
-      if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
-      {
-        AppMethodBeat.o(259399);
-        return paramBitmap;
-      }
-      try
-      {
-        Object localObject;
-        if (paramBitmap.getWidth() == paramBitmap.getHeight()) {
-          localObject = BitmapUtil.getRoundedCornerBitmap(paramBitmap, false, paramBitmap.getWidth() * this.kPA);
-        }
-        while (localObject != null)
-        {
-          AppMethodBeat.o(259399);
-          return localObject;
-          int j = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight());
-          int i = j;
-          if (j <= 0) {
-            i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
-          }
-          Bitmap localBitmap = BitmapUtil.getCenterCropBitmap(paramBitmap, i, i, true);
-          localObject = localBitmap;
-          if (localBitmap != null) {
-            localObject = BitmapUtil.getRoundedCornerBitmap(localBitmap, false, localBitmap.getWidth() * this.kPA);
-          }
-        }
-        return paramBitmap;
-      }
-      catch (Exception localException)
-      {
-        Log.printErrStackTrace("MicroMsg.FloatBallMusicView", (Throwable)localException, "getRoundBitmap exception", new Object[0]);
-        AppMethodBeat.o(259399);
-      }
-    }
-    
-    public final String key()
-    {
-      return "FloatBallMusicCover";
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$RoundCornerBitmapTransformation$Companion;", "", "()V", "INSTANCE", "Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$RoundCornerBitmapTransformation;", "getINSTANCE", "()Lcom/tencent/mm/plugin/music/ui/FloatBallMusicView$RoundCornerBitmapTransformation;", "plugin-music_release"})
-    public static final class a {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/music/ui/FloatBallMusicView$floatBallViewListener$1", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallViewListenerAdapter;", "onBallPositionChanged", "", "x", "", "y", "height", "isSettled", "", "isDockLeft", "plugin-music_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/music/ui/FloatBallMusicView$floatBallViewListener$1", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallViewListenerAdapter;", "onBallPositionChanged", "", "x", "", "y", "height", "isSettled", "", "isDockLeft", "collapseState", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     extends com.tencent.mm.plugin.ball.c.h
   {
-    public final void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
-    {
-      AppMethodBeat.i(260360);
-      super.a(paramInt1, paramInt2, paramInt3, paramBoolean1, paramBoolean2);
-      this.FTS.vv(paramBoolean2);
-      AppMethodBeat.o(260360);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(FloatBallMusicView paramFloatBallMusicView) {}
+    c(FloatBallMusicView paramFloatBallMusicView) {}
     
-    public final void onClick(View paramView)
+    public final void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, int paramInt4)
     {
-      AppMethodBeat.i(259680);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/music/ui/FloatBallMusicView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      localObject = FloatBallMusicView.a(this.FTS);
-      if (localObject != null) {
-        ((View.OnClickListener)localObject).onClick(paramView);
-      }
-      a.a(this, "com/tencent/mm/plugin/music/ui/FloatBallMusicView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(259680);
+      AppMethodBeat.i(270919);
+      super.a(paramInt1, paramInt2, paramInt3, paramBoolean1, paramBoolean2, paramInt4);
+      this.LOR.zN(paramBoolean2);
+      AppMethodBeat.o(270919);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(FloatBallMusicView paramFloatBallMusicView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(259473);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      a.c("com/tencent/mm/plugin/music/ui/FloatBallMusicView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      localObject = FloatBallMusicView.b(this.FTS);
-      if (localObject != null) {
-        ((View.OnClickListener)localObject).onClick(paramView);
-      }
-      a.a(this, "com/tencent/mm/plugin/music/ui/FloatBallMusicView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(259473);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/music/ui/FloatBallMusicView$loadMusicCover$1", "Lcom/tencent/mm/modelappbrand/image/AppBrandSimpleImageLoader$ILoadTarget;", "beforeLoadBitmap", "", "key", "", "onBitmapLoaded", "bitmap", "Landroid/graphics/Bitmap;", "onLoadFailed", "plugin-music_release"})
-  public static final class f
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/music/ui/FloatBallMusicView$loadMusicCover$1", "Lcom/tencent/mm/modelappbrand/image/AppBrandSimpleImageLoader$ILoadTarget;", "beforeLoadBitmap", "", "key", "", "onBitmapLoaded", "bitmap", "Landroid/graphics/Bitmap;", "onLoadFailed", "plugin-music_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
     implements b.k
   {
-    f(aa.f paramf) {}
+    d(FloatBallMusicView paramFloatBallMusicView, ah.f<String> paramf) {}
     
-    public final void G(Bitmap paramBitmap)
+    public final void bFg() {}
+    
+    public final void bFh()
     {
-      AppMethodBeat.i(259641);
-      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-      {
-        Object localObject = FloatBallMusicView.c(this.FTS);
-        if (localObject != null) {
-          ((RelativeLayout)localObject).setBackgroundResource(a.d.transparent_background);
-        }
-        localObject = FloatBallMusicView.d(this.FTS);
-        if (localObject != null) {
-          ((ImageView)localObject).setVisibility(0);
-        }
-        localObject = FloatBallMusicView.d(this.FTS);
-        if (localObject != null)
-        {
-          ((ImageView)localObject).setImageBitmap(paramBitmap);
-          AppMethodBeat.o(259641);
-          return;
-        }
-        AppMethodBeat.o(259641);
-        return;
-      }
-      FloatBallMusicView.e(this.FTS);
-      AppMethodBeat.o(259641);
-    }
-    
-    public final void bhq() {}
-    
-    public final void bhr()
-    {
-      AppMethodBeat.i(292975);
-      FloatBallMusicView.e(this.FTS);
-      AppMethodBeat.o(292975);
+      AppMethodBeat.i(369745);
+      FloatBallMusicView.c(this.LOR);
+      AppMethodBeat.o(369745);
     }
     
     public final String key()
     {
-      return (String)this.FTT.aaBC;
+      return (String)this.LOS.aqH;
+    }
+    
+    public final void onBitmapLoaded(Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(270921);
+      if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+      {
+        Object localObject = FloatBallMusicView.a(this.LOR);
+        if (localObject != null) {
+          ((RelativeLayout)localObject).setBackgroundResource(a.d.transparent_background);
+        }
+        localObject = FloatBallMusicView.b(this.LOR);
+        if (localObject != null) {
+          ((ImageView)localObject).setVisibility(0);
+        }
+        localObject = FloatBallMusicView.b(this.LOR);
+        if (localObject != null)
+        {
+          ((ImageView)localObject).setImageBitmap(paramBitmap);
+          AppMethodBeat.o(270921);
+        }
+      }
+      else
+      {
+        FloatBallMusicView.c(this.LOR);
+      }
+      AppMethodBeat.o(270921);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.FloatBallMusicView
  * JD-Core Version:    0.7.0.1
  */

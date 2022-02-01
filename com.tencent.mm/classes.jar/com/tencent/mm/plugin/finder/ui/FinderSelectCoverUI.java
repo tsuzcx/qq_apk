@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,98 +15,510 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.k;
-import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.finder.publish.l.c;
+import com.tencent.mm.plugin.finder.publish.l.e;
+import com.tencent.mm.plugin.finder.publish.l.f;
+import com.tencent.mm.plugin.finder.publish.l.j;
+import com.tencent.mm.plugin.finder.storage.d;
 import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.finder.utils.bm;
+import com.tencent.mm.plugin.finder.video.LocalVideoCropInfoParcelable;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
-import com.tencent.mm.protocal.protobuf.acu;
-import com.tencent.mm.protocal.protobuf.acv;
-import com.tencent.mm.protocal.protobuf.awc;
-import com.tencent.mm.protocal.protobuf.blk;
-import com.tencent.mm.protocal.protobuf.csf;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.protocal.protobuf.css;
-import com.tencent.mm.protocal.protobuf.dhd;
-import com.tencent.mm.protocal.protobuf.duz;
-import com.tencent.mm.protocal.protobuf.fbq;
+import com.tencent.mm.plugin.sight.base.f;
+import com.tencent.mm.plugin.thumbplayer.view.MMTPEffectVideoLayout;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.afc;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.byz;
+import com.tencent.mm.protocal.protobuf.djh;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.dju;
+import com.tencent.mm.protocal.protobuf.dzm;
+import com.tencent.mm.protocal.protobuf.enx;
+import com.tencent.mm.protocal.protobuf.fyb;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
 import com.tencent.mm.ui.widget.cropview.CropLayout.e;
+import com.tencent.mm.vfs.y;
 import com.tencent.mm.videocomposition.c;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.ab;
-import kotlin.a.j;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.m;
-import kotlin.g.b.aa.e;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.ah.e;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectCoverUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "SEEKBAR_THUMB_HEIGHT", "", "getSEEKBAR_THUMB_HEIGHT", "()F", "SEEKBAR_THUMB_HEIGHT$delegate", "Lkotlin/Lazy;", "SEEKBAR_THUMB_WIDTH", "getSEEKBAR_THUMB_WIDTH", "SEEKBAR_THUMB_WIDTH$delegate", "TAG", "", "conentLayout", "Landroid/view/View;", "coverMarginTop", "cropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "cropWindowView", "firstInitSeekBarProgress", "", "getFirstInitSeekBarProgress", "()Z", "setFirstInitSeekBarProgress", "(Z)V", "firstInitSeekBarThumb", "getFirstInitSeekBarThumb", "setFirstInitSeekBarThumb", "isLongVideo", "longVideoCoverLayout", "mediaList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaList", "()Ljava/util/LinkedList;", "screenPoint", "Landroid/graphics/Point;", "kotlin.jvm.PlatformType", "getScreenPoint", "()Landroid/graphics/Point;", "screenPoint$delegate", "seekBar", "Landroid/widget/SeekBar;", "seeker", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "selectBtn", "thumbBitmap", "Landroid/graphics/Bitmap;", "getThumbBitmap", "()Landroid/graphics/Bitmap;", "setThumbBitmap", "(Landroid/graphics/Bitmap;)V", "thumbCanvas", "Landroid/graphics/Canvas;", "getThumbCanvas", "()Landroid/graphics/Canvas;", "setThumbCanvas", "(Landroid/graphics/Canvas;)V", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbPaint", "Landroid/graphics/Paint;", "getThumbPaint", "()Landroid/graphics/Paint;", "setThumbPaint", "(Landroid/graphics/Paint;)V", "adjustProgressBitmap", "", "media", "canvas", "originBitmap", "i", "", "itemWidth", "itemHeight", "centerCropRect", "Landroid/graphics/Rect;", "left", "top", "right", "bottom", "newWidth", "newHeight", "getLayoutId", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "packageLongVideoCropInfoToIntent", "intent", "Landroid/content/Intent;", "refreshThumb", "bitmap", "resizeFrameView", "ratio", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectCoverUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "SEEKBAR_THUMB_HEIGHT", "", "getSEEKBAR_THUMB_HEIGHT", "()F", "SEEKBAR_THUMB_HEIGHT$delegate", "Lkotlin/Lazy;", "SEEKBAR_THUMB_WIDTH", "getSEEKBAR_THUMB_WIDTH", "SEEKBAR_THUMB_WIDTH$delegate", "TAG", "", "conentLayout", "Landroid/view/View;", "coverMarginTop", "cropLayout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "cropWindowView", "firstInitSeekBarProgress", "", "getFirstInitSeekBarProgress", "()Z", "setFirstInitSeekBarProgress", "(Z)V", "firstInitSeekBarThumb", "getFirstInitSeekBarThumb", "setFirstInitSeekBarThumb", "isLongVideo", "longVideoCoverLayout", "mediaList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaList", "()Ljava/util/LinkedList;", "screenPoint", "Landroid/graphics/Point;", "kotlin.jvm.PlatformType", "getScreenPoint", "()Landroid/graphics/Point;", "screenPoint$delegate", "seekBar", "Landroid/widget/SeekBar;", "seeker", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoCoverPreview;", "selectBtn", "thumbBitmap", "Landroid/graphics/Bitmap;", "getThumbBitmap", "()Landroid/graphics/Bitmap;", "setThumbBitmap", "(Landroid/graphics/Bitmap;)V", "thumbCanvas", "Landroid/graphics/Canvas;", "getThumbCanvas", "()Landroid/graphics/Canvas;", "setThumbCanvas", "(Landroid/graphics/Canvas;)V", "thumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "thumbPaint", "Landroid/graphics/Paint;", "getThumbPaint", "()Landroid/graphics/Paint;", "setThumbPaint", "(Landroid/graphics/Paint;)V", "adjustProgressBitmap", "", "media", "canvas", "originBitmap", "i", "", "itemWidth", "itemHeight", "centerCropRect", "Landroid/graphics/Rect;", "left", "top", "right", "bottom", "newWidth", "newHeight", "getLayoutId", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "packageLongVideoCropInfoToIntent", "intent", "Landroid/content/Intent;", "refreshThumb", "bitmap", "resizeFrameView", "ratio", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderSelectCoverUI
   extends MMFinderUI
 {
-  private com.tencent.mm.plugin.finder.video.q AtY;
-  private CropLayout AtZ;
-  private View Aua;
-  private c Aub;
-  private Canvas Auc;
-  public Bitmap Aud;
-  public Paint Aue;
-  private final kotlin.f Auf;
-  private final kotlin.f Aug;
-  private View Auh;
-  private View Aui;
-  private View Auj;
-  private float Auk;
-  boolean Aul;
-  boolean Aum;
+  private final j AMa;
+  private com.tencent.mm.plugin.finder.video.r FTk;
+  private CropLayout FTl;
+  private View FTm;
+  private c FTn;
+  private Canvas FTo;
+  public Bitmap FTp;
+  public Paint FTq;
+  private final j FTr;
+  private final j FTs;
+  private View FTt;
+  private View FTu;
+  private View FTv;
+  private float FTw;
+  private boolean FTx;
+  boolean FTy;
   private final String TAG;
-  private HashMap _$_findViewCache;
   private boolean isLongVideo;
-  private final LinkedList<csg> mediaList;
-  private SeekBar rBx;
-  private final kotlin.f xos;
+  private final LinkedList<dji> mediaList;
+  private SeekBar uMM;
   
   public FinderSelectCoverUI()
   {
-    AppMethodBeat.i(283612);
+    AppMethodBeat.i(346679);
     this.TAG = "Finder.FinderSelectCoverUI";
     this.mediaList = new LinkedList();
-    this.Auf = g.ar((kotlin.g.a.a)new b(this));
-    this.Aug = g.ar((kotlin.g.a.a)new a(this));
-    this.xos = g.ar((kotlin.g.a.a)m.AuB);
-    this.Aul = true;
-    this.Aum = true;
-    AppMethodBeat.o(283612);
+    this.FTr = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.FTs = kotlin.k.cm((kotlin.g.a.a)new a(this));
+    this.AMa = kotlin.k.cm((kotlin.g.a.a)FinderSelectCoverUI.i.FTJ);
+    this.FTx = true;
+    this.FTy = true;
+    AppMethodBeat.o(346679);
+  }
+  
+  private static final void a(FinderSelectCoverUI paramFinderSelectCoverUI)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(346763);
+    s.u(paramFinderSelectCoverUI, "this$0");
+    if (paramFinderSelectCoverUI.FTx)
+    {
+      localObject1 = paramFinderSelectCoverUI.uMM;
+      if (localObject1 == null)
+      {
+        s.bIx("seekBar");
+        localObject1 = null;
+        ((SeekBar)localObject1).setThumb((Drawable)new BitmapDrawable(paramFinderSelectCoverUI.getResources(), paramFinderSelectCoverUI.fbH()));
+        localObject1 = paramFinderSelectCoverUI.uMM;
+        if (localObject1 != null) {
+          break label95;
+        }
+        s.bIx("seekBar");
+        localObject1 = localObject2;
+      }
+      label95:
+      for (;;)
+      {
+        ((SeekBar)localObject1).setThumbOffset(0);
+        paramFinderSelectCoverUI.FTx = false;
+        AppMethodBeat.o(346763);
+        return;
+        break;
+      }
+    }
+    paramFinderSelectCoverUI = paramFinderSelectCoverUI.uMM;
+    if (paramFinderSelectCoverUI == null)
+    {
+      s.bIx("seekBar");
+      paramFinderSelectCoverUI = (FinderSelectCoverUI)localObject1;
+    }
+    for (;;)
+    {
+      paramFinderSelectCoverUI = paramFinderSelectCoverUI.getThumb();
+      if (paramFinderSelectCoverUI != null) {
+        paramFinderSelectCoverUI.invalidateSelf();
+      }
+      AppMethodBeat.o(346763);
+      return;
+    }
+  }
+  
+  private static final void a(FinderSelectCoverUI paramFinderSelectCoverUI, View paramView)
+  {
+    AppMethodBeat.i(346725);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderSelectCoverUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderSelectCoverUI, "this$0");
+    paramFinderSelectCoverUI.finish();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(346725);
+  }
+  
+  private static final void a(final FinderSelectCoverUI paramFinderSelectCoverUI, final dji paramdji, int paramInt1, int paramInt2, LinkedList paramLinkedList, final Canvas paramCanvas, final Bitmap paramBitmap)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(346734);
+    s.u(paramFinderSelectCoverUI, "this$0");
+    s.u(paramLinkedList, "$times");
+    s.u(paramCanvas, "$canvas");
+    Object localObject1 = com.tencent.mm.plugin.finder.video.p.Grl;
+    s.s(paramdji, "media");
+    Object localObject3 = paramFinderSelectCoverUI.FTk;
+    localObject1 = localObject3;
+    if (localObject3 == null)
+    {
+      s.bIx("seeker");
+      localObject1 = null;
+    }
+    if ((localObject1 instanceof com.tencent.mm.plugin.finder.video.i))
+    {
+      localObject1 = (com.tencent.mm.plugin.finder.video.i)localObject1;
+      if (localObject1 != null) {
+        break label177;
+      }
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      paramFinderSelectCoverUI.FTn = com.tencent.mm.plugin.finder.video.p.a(paramdji, paramInt1, paramInt2, localObject1);
+      localObject1 = paramFinderSelectCoverUI.FTn;
+      if (localObject1 != null) {
+        ((c)localObject1).setSize(paramInt1, paramInt2);
+      }
+      localObject1 = paramFinderSelectCoverUI.FTn;
+      if (localObject1 != null) {
+        ((c)localObject1).b((List)paramLinkedList, (m)new e(paramLinkedList, paramFinderSelectCoverUI, paramdji, paramCanvas, paramBitmap));
+      }
+      AppMethodBeat.o(346734);
+      return;
+      localObject1 = null;
+      break;
+      label177:
+      localObject3 = ((com.tencent.mm.plugin.finder.video.i)localObject1).Goz.getPlayer();
+      localObject1 = localObject2;
+      if (localObject3 != null) {
+        localObject1 = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject3).TFd;
+      }
+    }
+  }
+  
+  private static final void a(FinderSelectCoverUI paramFinderSelectCoverUI, dji paramdji, View paramView)
+  {
+    AppMethodBeat.i(346757);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramFinderSelectCoverUI);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramdji);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramFinderSelectCoverUI, "this$0");
+    localObject1 = paramFinderSelectCoverUI.FTm;
+    paramView = (View)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("selectBtn");
+      paramView = null;
+    }
+    int j;
+    int i;
+    Object localObject3;
+    dju localdju;
+    if (paramView.isEnabled())
+    {
+      paramView = d.FAy;
+      j = d.ePV().oCa;
+      if (paramdji.aaPf) {}
+      for (i = (int)(j / paramdji.width * paramdji.height);; i = (int)(f1 / paramView.getWidth() * j))
+      {
+        Log.i(paramFinderSelectCoverUI.TAG, "save cover, size: " + j + ", " + i);
+        localObject2 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
+        localObject3 = new Canvas((Bitmap)localObject2);
+        localObject1 = paramFinderSelectCoverUI.FTk;
+        paramView = (View)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("seeker");
+          paramView = null;
+        }
+        localObject1 = paramView.getBitmap();
+        if (localObject1 != null) {
+          break;
+        }
+        paramFinderSelectCoverUI.finish();
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(346757);
+        return;
+        localObject1 = paramFinderSelectCoverUI.FTl;
+        paramView = (View)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("cropLayout");
+          paramView = null;
+        }
+        f1 = paramView.getHeight();
+        localObject1 = paramFinderSelectCoverUI.FTl;
+        paramView = (View)localObject1;
+        if (localObject1 == null)
+        {
+          s.bIx("cropLayout");
+          paramView = null;
+        }
+      }
+      if (!paramdji.aaPf) {
+        break label1250;
+      }
+      localdju = paramdji.EDC;
+      paramView = paramFinderSelectCoverUI.FTl;
+      paramdji = paramView;
+      if (paramView == null)
+      {
+        s.bIx("cropLayout");
+        paramdji = null;
+      }
+      f1 = paramdji.getContentViewScale()[0];
+      paramView = paramFinderSelectCoverUI.FTl;
+      paramdji = paramView;
+      if (paramView == null)
+      {
+        s.bIx("cropLayout");
+        paramdji = null;
+      }
+      f2 = -(paramdji.getContentViewTrans()[1] - paramFinderSelectCoverUI.FTw);
+      String str = paramFinderSelectCoverUI.TAG;
+      paramView = paramFinderSelectCoverUI.FTl;
+      paramdji = paramView;
+      if (paramView == null)
+      {
+        s.bIx("cropLayout");
+        paramdji = null;
+      }
+      Log.i(str, s.X("getContentViewTrans y:", Float.valueOf(paramdji.getContentViewTrans()[1])));
+      paramView = new fyb();
+      if (localdju != null) {
+        break label1218;
+      }
+      paramdji = null;
+      if (paramdji == null) {
+        break label1227;
+      }
+      paramView.left = paramdji.left;
+      paramView.right = paramdji.right;
+      paramView.top = ((int)(paramdji.top - paramdji.bottom + f2 / f1));
+    }
+    int k;
+    for (paramView.bottom = ((int)(f2 / f1));; paramView.bottom = 0)
+    {
+      ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, new Rect(paramView.left, paramView.bottom, paramView.right, paramView.top), new Rect(0, 0, j, i), null);
+      paramdji = new StringBuilder();
+      paramView = bm.GlZ;
+      paramdji = bm.fiu() + "cover_full" + System.currentTimeMillis();
+      paramView = d.FAy;
+      boolean bool1 = BitmapUtil.saveBitmapToImage((Bitmap)localObject1, d.eQz(), Bitmap.CompressFormat.JPEG, paramdji, false);
+      paramView = new StringBuilder();
+      localObject1 = bm.GlZ;
+      paramView = bm.fiu() + "cover_" + System.currentTimeMillis();
+      localObject1 = d.FAy;
+      boolean bool2 = BitmapUtil.saveBitmapToImage((Bitmap)localObject2, d.eQz(), Bitmap.CompressFormat.JPEG, paramView, false);
+      localObject1 = d.FAy;
+      if (!d.eTA()) {
+        break label1688;
+      }
+      localObject1 = d.FAy;
+      k = d.ePY();
+      localObject1 = d.FAy;
+      i = AdaptiveAdjustBitrate.getVideoImageQuality(k, 0, j, i, d.eQz() / 100.0F);
+      label709:
+      localObject1 = new Intent();
+      if (bool1)
+      {
+        localObject2 = com.tencent.mm.plugin.finder.widget.post.g.HaE;
+        ((Intent)localObject1).putExtra(com.tencent.mm.plugin.finder.widget.post.g.fqR(), paramdji);
+      }
+      if (bool2)
+      {
+        paramdji = com.tencent.mm.plugin.finder.widget.post.g.HaE;
+        ((Intent)localObject1).putExtra(com.tencent.mm.plugin.finder.widget.post.g.fqS(), paramView);
+        paramdji = com.tencent.mm.plugin.finder.widget.post.g.HaE;
+        ((Intent)localObject1).putExtra(com.tencent.mm.plugin.finder.widget.post.g.fqT(), i);
+        if (paramFinderSelectCoverUI.isLongVideo)
+        {
+          localObject3 = (dji)paramFinderSelectCoverUI.mediaList.getFirst();
+          localObject2 = new dju();
+          localdju = ((dji)localObject3).EDC;
+          if (localdju != null)
+          {
+            paramView = paramFinderSelectCoverUI.FTl;
+            paramdji = paramView;
+            if (paramView == null)
+            {
+              s.bIx("cropLayout");
+              paramdji = null;
+            }
+            f1 = paramdji.getContentViewScale()[0];
+            paramView = paramFinderSelectCoverUI.FTl;
+            paramdji = paramView;
+            if (paramView == null)
+            {
+              s.bIx("cropLayout");
+              paramdji = null;
+            }
+            f2 = -(paramdji.getContentViewTrans()[1] - paramFinderSelectCoverUI.FTw);
+            paramdji = new fyb();
+            paramView = localdju.aaPL;
+            s.checkNotNull(paramView);
+            paramdji.left = paramView.left;
+            paramView = localdju.aaPL;
+            s.checkNotNull(paramView);
+            paramdji.right = paramView.right;
+            paramView = localdju.aaPL;
+            s.checkNotNull(paramView);
+            i = paramView.top;
+            paramView = localdju.aaPL;
+            s.checkNotNull(paramView);
+            paramdji.top = ((int)(i - paramView.bottom + f2 / f1));
+            paramdji.bottom = ((int)(f2 / f1));
+            ((dju)localObject2).aaPL = paramdji;
+            paramdji = ((dji)localObject3).EDC;
+            s.checkNotNull(paramdji);
+            paramView = paramdji.aaPJ;
+            paramdji = new fyb();
+            s.checkNotNull(paramView);
+            paramdji.left = paramView.left;
+            paramdji.bottom = ((int)f2);
+            paramdji.top = (paramdji.bottom + Math.abs(paramView.bottom - paramView.top));
+            paramdji.right = paramView.right;
+            paramView = kotlin.ah.aiuX;
+            ((dju)localObject2).aaPJ = paramdji;
+            paramView = paramFinderSelectCoverUI.FTl;
+            paramdji = paramView;
+            if (paramView == null)
+            {
+              s.bIx("cropLayout");
+              paramdji = null;
+            }
+            paramView = new Matrix(paramdji.getMainMatrix());
+            paramView.postTranslate(0.0F, -paramFinderSelectCoverUI.FTw);
+            paramdji = new float[9];
+            paramView.getValues(paramdji);
+            paramView = new byz();
+            paramView.aaib.addAll((Collection)kotlin.a.k.D(paramdji));
+            paramdji = kotlin.ah.aiuX;
+            ((dju)localObject2).aaPK = paramView;
+            paramdji = com.tencent.mm.plugin.finder.widget.post.g.HaE;
+            paramdji = com.tencent.mm.plugin.finder.widget.post.g.fqU();
+            paramView = new LocalVideoCropInfoParcelable();
+            paramView.EDC = ((dju)localObject2);
+            localObject2 = kotlin.ah.aiuX;
+            ((Intent)localObject1).putExtra(paramdji, (Parcelable)paramView);
+          }
+        }
+      }
+      paramFinderSelectCoverUI.setResult(0, (Intent)localObject1);
+      paramFinderSelectCoverUI.finish();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(346757);
+      return;
+      label1218:
+      paramdji = localdju.aaPL;
+      break;
+      label1227:
+      paramView.left = 0;
+      paramView.right = 0;
+      paramView.top = 0;
+    }
+    label1250:
+    paramView = paramFinderSelectCoverUI.FTl;
+    paramdji = paramView;
+    if (paramView == null)
+    {
+      s.bIx("cropLayout");
+      paramdji = null;
+    }
+    float f2 = paramdji.getContentViewScale()[0];
+    paramView = paramFinderSelectCoverUI.FTl;
+    paramdji = paramView;
+    if (paramView == null)
+    {
+      s.bIx("cropLayout");
+      paramdji = null;
+    }
+    float f5 = paramdji.getContentViewScale()[1];
+    paramView = paramFinderSelectCoverUI.FTl;
+    paramdji = paramView;
+    if (paramView == null)
+    {
+      s.bIx("cropLayout");
+      paramdji = null;
+    }
+    float f3 = paramdji.getWidth() / f2;
+    paramView = paramFinderSelectCoverUI.FTl;
+    paramdji = paramView;
+    if (paramView == null)
+    {
+      s.bIx("cropLayout");
+      paramdji = null;
+    }
+    float f4 = paramdji.getHeight() / f5;
+    paramView = paramFinderSelectCoverUI.FTl;
+    paramdji = paramView;
+    if (paramView == null)
+    {
+      s.bIx("cropLayout");
+      paramdji = null;
+    }
+    float f1 = -paramdji.getContentViewTrans()[0] / f2;
+    paramView = paramFinderSelectCoverUI.FTl;
+    paramdji = paramView;
+    if (paramView == null)
+    {
+      s.bIx("cropLayout");
+      paramdji = null;
+    }
+    f5 = -paramdji.getContentViewTrans()[1] / f5;
+    if (f1 < 0.5D) {
+      f1 = 0.5F;
+    }
+    for (;;)
+    {
+      k = ((Bitmap)localObject1).getWidth();
+      int m = ((Bitmap)localObject1).getHeight();
+      paramdji = new RectF((k - f3) / 2.0F, (m - f4) / 2.0F, (k + f3) / 2.0F, (f4 + m) / 2.0F);
+      f4 = f1 - paramdji.left;
+      f5 -= paramdji.top;
+      paramdji = new Rect((int)(paramdji.left + f4), (int)(paramdji.top + f5), (int)(paramdji.right + f4), (int)(f5 + paramdji.bottom));
+      Log.i(paramFinderSelectCoverUI.TAG, "scaleX:" + f2 + "  translateX:" + f1 + " mappedWidth:" + f3 + " originWidth:" + k + " deltaX:" + f4 + " textureLeft:" + paramdji.left + " textureRight:" + paramdji.right);
+      ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, new Rect(paramdji.left, paramdji.top, paramdji.right, paramdji.bottom), new Rect(0, 0, j, i), null);
+      break;
+      label1688:
+      i = 0;
+      break label709;
+    }
+  }
+  
+  private static final boolean a(FinderSelectCoverUI paramFinderSelectCoverUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(346718);
+    s.u(paramFinderSelectCoverUI, "this$0");
+    paramFinderSelectCoverUI.finish();
+    AppMethodBeat.o(346718);
+    return true;
   }
   
   private static Rect c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     int i = 0;
-    AppMethodBeat.i(283610);
+    AppMethodBeat.i(346713);
     int j = Math.abs(paramInt3 - paramInt1);
     int k = Math.abs(paramInt4 - paramInt2);
     float f1;
@@ -133,7 +544,7 @@ public final class FinderSelectCoverUI
     for (;;)
     {
       Rect localRect = new Rect(paramInt1 + paramInt5, paramInt2 + paramInt6, paramInt3 - paramInt5, paramInt4 - paramInt6);
-      AppMethodBeat.o(283610);
+      AppMethodBeat.o(346713);
       return localRect;
       f1 = paramInt5 / j;
       f2 = (k * f1 - paramInt6) * 0.5F;
@@ -142,292 +553,351 @@ public final class FinderSelectCoverUI
     }
   }
   
-  private final Point dpI()
+  private final Point dXX()
   {
-    AppMethodBeat.i(283607);
-    Point localPoint = (Point)this.xos.getValue();
-    AppMethodBeat.o(283607);
+    AppMethodBeat.i(346705);
+    Point localPoint = (Point)this.AMa.getValue();
+    AppMethodBeat.o(346705);
     return localPoint;
   }
   
-  private final float eaO()
+  private Bitmap fbH()
   {
-    AppMethodBeat.i(283605);
-    float f = ((Number)this.Auf.getValue()).floatValue();
-    AppMethodBeat.o(283605);
-    return f;
-  }
-  
-  private final float eaP()
-  {
-    AppMethodBeat.i(283606);
-    float f = ((Number)this.Aug.getValue()).floatValue();
-    AppMethodBeat.o(283606);
-    return f;
-  }
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(283628);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(283628);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(283626);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(346683);
+    Bitmap localBitmap = this.FTp;
+    if (localBitmap != null)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      AppMethodBeat.o(346683);
+      return localBitmap;
     }
-    AppMethodBeat.o(283626);
-    return localView1;
+    s.bIx("thumbBitmap");
+    AppMethodBeat.o(346683);
+    return null;
   }
+  
+  private Paint fbI()
+  {
+    AppMethodBeat.i(346689);
+    Paint localPaint = this.FTq;
+    if (localPaint != null)
+    {
+      AppMethodBeat.o(346689);
+      return localPaint;
+    }
+    s.bIx("thumbPaint");
+    AppMethodBeat.o(346689);
+    return null;
+  }
+  
+  private final float fbJ()
+  {
+    AppMethodBeat.i(346696);
+    float f = ((Number)this.FTr.getValue()).floatValue();
+    AppMethodBeat.o(346696);
+    return f;
+  }
+  
+  private final float fbK()
+  {
+    AppMethodBeat.i(346699);
+    float f = ((Number)this.FTs.getValue()).floatValue();
+    AppMethodBeat.o(346699);
+    return f;
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_select_cover_ui;
+    return l.f.finder_select_cover_ui;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(283609);
+    AppMethodBeat.i(346903);
     super.initView();
     this.isLongVideo = getIntent().getBooleanExtra("isLongVideoPost", false);
-    findViewById(b.f.select_cover_cancel).setOnClickListener((View.OnClickListener)new c(this));
-    Object localObject1 = findViewById(b.f.select_cover_seekbar);
-    kotlin.g.b.p.j(localObject1, "findViewById(R.id.select_cover_seekbar)");
-    this.rBx = ((SeekBar)localObject1);
-    localObject1 = findViewById(b.f.finder_crop_layout);
-    kotlin.g.b.p.j(localObject1, "findViewById(R.id.finder_crop_layout)");
-    this.AtZ = ((CropLayout)localObject1);
-    localObject1 = findViewById(b.f.select_cover_ok);
-    kotlin.g.b.p.j(localObject1, "findViewById(R.id.select_cover_ok)");
-    this.Aua = ((View)localObject1);
-    localObject1 = findViewById(b.f.long_video_cover_layout);
-    kotlin.g.b.p.j(localObject1, "findViewById<View>(R.id.long_video_cover_layout)");
-    this.Auh = ((View)localObject1);
-    localObject1 = findViewById(b.f.crop_window_view);
-    kotlin.g.b.p.j(localObject1, "findViewById<View>(R.id.crop_window_view)");
-    this.Aui = ((View)localObject1);
-    localObject1 = findViewById(b.f.content_layout);
-    kotlin.g.b.p.j(localObject1, "findViewById<View>(R.id.content_layout)");
-    this.Auj = ((View)localObject1);
-    localObject1 = (com.tencent.mm.cd.a)new csf();
+    findViewById(l.e.select_cover_cancel).setOnClickListener(new FinderSelectCoverUI..ExternalSyntheticLambda1(this));
+    Object localObject1 = findViewById(l.e.select_cover_seekbar);
+    s.s(localObject1, "findViewById(R.id.select_cover_seekbar)");
+    this.uMM = ((SeekBar)localObject1);
+    localObject1 = findViewById(l.e.finder_crop_layout);
+    s.s(localObject1, "findViewById(R.id.finder_crop_layout)");
+    this.FTl = ((CropLayout)localObject1);
+    localObject1 = findViewById(l.e.select_cover_ok);
+    s.s(localObject1, "findViewById(R.id.select_cover_ok)");
+    this.FTm = ((View)localObject1);
+    localObject1 = findViewById(l.e.long_video_cover_layout);
+    s.s(localObject1, "findViewById<View>(R.id.long_video_cover_layout)");
+    this.FTt = ((View)localObject1);
+    localObject1 = findViewById(l.e.crop_window_view);
+    s.s(localObject1, "findViewById<View>(R.id.crop_window_view)");
+    this.FTu = ((View)localObject1);
+    localObject1 = findViewById(l.e.content_layout);
+    s.s(localObject1, "findViewById<View>(R.id.content_layout)");
+    this.FTv = ((View)localObject1);
+    localObject1 = (com.tencent.mm.bx.a)new djh();
     Object localObject3 = getIntent().getByteArrayExtra("media_list_");
+    final dji localdji;
+    final ah.e locale;
     try
     {
-      ((com.tencent.mm.cd.a)localObject1).parseFrom((byte[])localObject3);
-      localObject3 = (csf)localObject1;
+      ((com.tencent.mm.bx.a)localObject1).parseFrom((byte[])localObject3);
+      localObject3 = (djh)localObject1;
       localObject1 = localObject3;
       if (localObject3 == null) {
-        localObject1 = new csf();
+        localObject1 = new djh();
       }
-      this.mediaList.addAll((Collection)((csf)localObject1).mediaList);
-      localObject3 = (csg)this.mediaList.getFirst();
-      locale = new aa.e();
-      locale.aaBB = (((csg)localObject3).videoDuration * 1000L);
-      localObject1 = aj.AGc;
-      if (aj.g((csg)localObject3))
-      {
-        localObject1 = (Context)this;
-        kotlin.g.b.p.j(localObject3, "media");
-        this.AtY = ((com.tencent.mm.plugin.finder.video.q)new com.tencent.mm.plugin.finder.video.f((Context)localObject1, (csg)localObject3));
-        localObject1 = com.tencent.mm.plugin.sight.base.f.aYg(((csg)localObject3).url);
-        if (localObject1 != null)
+      this.mediaList.addAll((Collection)((djh)localObject1).mediaList);
+      localdji = (dji)this.mediaList.getFirst();
+      i = 0;
+      j = 0;
+      locale = new ah.e();
+      locale.aixc = (localdji.videoDuration * 1000L);
+      localObject1 = av.GiL;
+      if (av.i(localdji)) {
+        if (y.ZC(localdji.url))
         {
-          locale.aaBB = ((com.tencent.mm.plugin.sight.base.b)localObject1).videoDuration;
-          localObject1 = com.tencent.mm.plugin.gallery.a.d.CeY;
-          localObject1 = com.tencent.mm.plugin.gallery.a.d.aFG(((csg)localObject3).url);
-          j = ((com.tencent.mm.plugin.sight.base.b)localObject1).width;
-          i = ((com.tencent.mm.plugin.sight.base.b)localObject1).height;
-          m = (int)eaO();
-          k = (int)eaP();
-          localObject1 = this.rBx;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("seekBar");
-          }
-          ((SeekBar)localObject1).setMax(Util.videoMsToSec(locale.aaBB) * 10);
-          localObject1 = com.tencent.mm.plugin.finder.video.p.AOS;
-          this.Aub = com.tencent.mm.plugin.finder.video.p.j((csg)localObject3);
-          localObject1 = this.Aub;
+          localObject1 = (Context)this;
+          s.s(localdji, "media");
+          this.FTk = ((com.tencent.mm.plugin.finder.video.r)new com.tencent.mm.plugin.finder.video.g((Context)localObject1, localdji));
+          localObject1 = f.aVX(localdji.url);
           if (localObject1 != null)
           {
-            ((c)localObject1).setSize(m, k);
-            localObject1 = x.aazN;
-          }
-          f1 = 1.0F * ((csg)localObject3).height / ((csg)localObject3).width;
-          localObject1 = this.AtZ;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("cropLayout");
-          }
-          ((CropLayout)localObject1).setEnableScale(false);
-          localObject1 = this.AtZ;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("cropLayout");
-          }
-          ((CropLayout)localObject1).reset();
-          if (!this.isLongVideo) {
-            break label1991;
-          }
-          localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-          localObject4 = this.Auj;
-          if (localObject4 == null) {
-            kotlin.g.b.p.bGy("conentLayout");
-          }
-          ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          localObject1 = this.Auh;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("longVideoCoverLayout");
-          }
-          ((View)localObject1).setVisibility(0);
-          localObject1 = this.AtZ;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("cropLayout");
-          }
-          ((CropLayout)localObject1).setEnableTouch(true);
-          localObject1 = this.AtZ;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("cropLayout");
-          }
-          ((CropLayout)localObject1).setEnableFling(true);
-          localObject1 = this.AtZ;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("cropLayout");
-          }
-          ((CropLayout)localObject1).setEnableOverScroll(false);
-          localObject1 = ((csg)localObject3).zBo;
-          if (localObject1 != null)
-          {
-            localObject1 = ((css)localObject1).TAv;
+            locale.aixc = ((com.tencent.mm.plugin.sight.base.b)localObject1).videoDuration;
+            localObject1 = com.tencent.mm.plugin.gallery.b.g.HRf;
+            localObject1 = com.tencent.mm.plugin.gallery.b.g.aBH(localdji.url);
+            i = ((com.tencent.mm.plugin.sight.base.b)localObject1).width;
+            j = ((com.tencent.mm.plugin.sight.base.b)localObject1).height;
+            k = (int)fbJ();
+            int i1 = (int)fbK();
+            m = j;
+            n = i;
+            j = i1;
+            i = k;
+            k = n;
+            localObject3 = this.uMM;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("seekBar");
+              localObject1 = null;
+            }
+            ((SeekBar)localObject1).setMax(Util.videoMsToSec(locale.aixc) * 10);
+            f1 = 1.0F * localdji.height / localdji.width;
+            localObject3 = this.FTl;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("cropLayout");
+              localObject1 = null;
+            }
+            ((CropLayout)localObject1).reset();
+            if (!this.isLongVideo) {
+              break label2125;
+            }
+            localObject4 = new RelativeLayout.LayoutParams(-1, -1);
+            localObject3 = this.FTv;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("conentLayout");
+              localObject1 = null;
+            }
+            ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+            localObject3 = this.FTt;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("longVideoCoverLayout");
+              localObject1 = null;
+            }
+            ((View)localObject1).setVisibility(0);
+            localObject3 = this.FTl;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("cropLayout");
+              localObject1 = null;
+            }
+            ((CropLayout)localObject1).setEnableTouch(true);
+            localObject3 = this.FTl;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("cropLayout");
+              localObject1 = null;
+            }
+            ((CropLayout)localObject1).setEnableFling(true);
+            localObject3 = this.FTl;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("cropLayout");
+              localObject1 = null;
+            }
+            ((CropLayout)localObject1).setEnableOverScroll(false);
+            localObject3 = this.FTl;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("cropLayout");
+              localObject1 = null;
+            }
+            ((CropLayout)localObject1).setEnableScale(false);
+            localObject1 = localdji.EDC;
+            Object localObject5;
             if (localObject1 != null)
             {
-              if (((fbq)localObject1).left > 0)
+              localObject4 = ((dju)localObject1).aaPJ;
+              if (localObject4 != null)
               {
-                localObject4 = this.AtZ;
-                if (localObject4 == null) {
-                  kotlin.g.b.p.bGy("cropLayout");
+                if (((fyb)localObject4).left > 0)
+                {
+                  localObject3 = this.FTl;
+                  localObject1 = localObject3;
+                  if (localObject3 == null)
+                  {
+                    s.bIx("cropLayout");
+                    localObject1 = null;
+                  }
+                  ((CropLayout)localObject1).setEnableTouch(false);
+                  localObject3 = this.FTl;
+                  localObject1 = localObject3;
+                  if (localObject3 == null)
+                  {
+                    s.bIx("cropLayout");
+                    localObject1 = null;
+                  }
+                  ((CropLayout)localObject1).setEnableFling(false);
                 }
-                ((CropLayout)localObject4).setEnableTouch(false);
-                localObject4 = this.AtZ;
-                if (localObject4 == null) {
-                  kotlin.g.b.p.bGy("cropLayout");
+                n = Math.abs(((fyb)localObject4).bottom - ((fyb)localObject4).top);
+                this.FTw = ((dXX().y - getResources().getDimensionPixelOffset(l.c.finder_long_video_cover_margin_top_offset) - n) / 2.0F);
+                localObject1 = findViewById(l.e.crop_window_top_shadow);
+                localObject3 = ((View)localObject1).getLayoutParams();
+                ((ViewGroup.LayoutParams)localObject3).height = ((int)this.FTw);
+                ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+                localObject3 = this.FTu;
+                localObject1 = localObject3;
+                if (localObject3 == null)
+                {
+                  s.bIx("cropWindowView");
+                  localObject1 = null;
                 }
-                ((CropLayout)localObject4).setEnableFling(false);
+                localObject5 = ((View)localObject1).getLayoutParams();
+                ((ViewGroup.LayoutParams)localObject5).height = n;
+                localObject3 = this.FTu;
+                localObject1 = localObject3;
+                if (localObject3 == null)
+                {
+                  s.bIx("cropWindowView");
+                  localObject1 = null;
+                }
+                ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject5);
+                localObject3 = this.FTl;
+                localObject1 = localObject3;
+                if (localObject3 == null)
+                {
+                  s.bIx("cropLayout");
+                  localObject1 = null;
+                }
+                localObject1 = ((CropLayout)localObject1).getVisibilityRect();
+                f1 = ((fyb)localObject4).left;
+                float f2 = this.FTw;
+                float f3 = ((fyb)localObject4).right;
+                float f4 = this.FTw;
+                ((RectF)localObject1).set(new RectF(f1, f2, f3, n + f4));
+                localObject1 = kotlin.ah.aiuX;
               }
-              k = Math.abs(((fbq)localObject1).bottom - ((fbq)localObject1).top);
-              this.Auk = ((dpI().y - getResources().getDimensionPixelOffset(b.d.finder_long_video_cover_margin_top_offset) - k) / 2.0F);
-              localObject4 = findViewById(b.f.crop_window_top_shadow);
-              kotlin.g.b.p.j(localObject4, "shadowView");
-              localObject5 = ((View)localObject4).getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject5).height = ((int)this.Auk);
-              ((View)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-              localObject4 = this.Aui;
-              if (localObject4 == null) {
-                kotlin.g.b.p.bGy("cropWindowView");
+            }
+            localObject1 = localdji.EDC;
+            if (localObject1 != null) {
+              break label2310;
+            }
+            localObject1 = null;
+            if (localObject1 == null) {
+              break label2330;
+            }
+            localObject1 = localdji.EDC;
+            if (localObject1 != null) {
+              break label2320;
+            }
+            localObject1 = null;
+            if ((localObject1 != null) && (((byz)localObject1).aaib.size() == 9))
+            {
+              localObject3 = new Matrix();
+              localObject1 = ((byz)localObject1).aaib;
+              s.s(localObject1, "it.value");
+              ((Matrix)localObject3).setValues(kotlin.a.p.H((Collection)localObject1));
+              localObject5 = new Matrix((Matrix)localObject3);
+              if (this.isLongVideo) {
+                ((Matrix)localObject5).postTranslate(0.0F, this.FTw);
               }
-              localObject4 = ((View)localObject4).getLayoutParams();
-              ((ViewGroup.LayoutParams)localObject4).height = k;
-              localObject5 = this.Aui;
-              if (localObject5 == null) {
-                kotlin.g.b.p.bGy("cropWindowView");
+              localObject3 = this.FTl;
+              localObject1 = localObject3;
+              if (localObject3 == null)
+              {
+                s.bIx("cropLayout");
+                localObject1 = null;
               }
-              ((View)localObject5).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-              localObject4 = this.AtZ;
-              if (localObject4 == null) {
-                kotlin.g.b.p.bGy("cropLayout");
+              localObject4 = this.FTk;
+              localObject3 = localObject4;
+              if (localObject4 == null)
+              {
+                s.bIx("seeker");
+                localObject3 = null;
               }
-              localObject4 = ((CropLayout)localObject4).getVisibilityRect();
-              f1 = ((fbq)localObject1).left;
-              float f2 = this.Auk;
-              float f3 = ((fbq)localObject1).right;
-              float f4 = this.Auk;
-              ((RectF)localObject4).set(new RectF(f1, f2, f3, k + f4));
-              localObject1 = x.aazN;
+              ((CropLayout)localObject1).a(((com.tencent.mm.plugin.finder.video.r)localObject3).getView(), k, m, new Matrix(), CropLayout.e.agdt, (kotlin.g.a.b)new FinderSelectCoverUI.c((Matrix)localObject5));
             }
-          }
-          localObject1 = ((csg)localObject3).zBo;
-          if (localObject1 == null) {
-            break label2132;
-          }
-          localObject1 = ((css)localObject1).TAw;
-          if (localObject1 == null) {
-            break label2144;
-          }
-          localObject1 = ((csg)localObject3).zBo;
-          if (localObject1 == null) {
-            break label2138;
-          }
-          localObject1 = ((css)localObject1).TAw;
-          if ((localObject1 != null) && (((blk)localObject1).SWx.size() == 9))
-          {
-            localObject4 = new Matrix();
-            localObject1 = ((blk)localObject1).SWx;
-            kotlin.g.b.p.j(localObject1, "it.value");
-            ((Matrix)localObject4).setValues(j.r((Collection)localObject1));
-            localObject1 = new Matrix((Matrix)localObject4);
-            if (this.isLongVideo) {
-              ((Matrix)localObject1).postTranslate(0.0F, this.Auk);
+            localObject3 = this.uMM;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("seekBar");
+              localObject1 = null;
             }
-            localObject4 = this.AtZ;
-            if (localObject4 == null) {
-              kotlin.g.b.p.bGy("cropLayout");
+            ((SeekBar)localObject1).setVisibility(4);
+            localObject3 = this.uMM;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("seekBar");
+              localObject1 = null;
             }
-            localObject5 = this.AtY;
-            if (localObject5 == null) {
-              kotlin.g.b.p.bGy("seeker");
+            ((SeekBar)localObject1).setEnabled(false);
+            localObject3 = this.FTm;
+            localObject1 = localObject3;
+            if (localObject3 == null)
+            {
+              s.bIx("selectBtn");
+              localObject1 = null;
             }
-            ((CropLayout)localObject4).a(((com.tencent.mm.plugin.finder.video.q)localObject5).getView(), j, i, new Matrix(), CropLayout.e.Ylv, (kotlin.g.a.b)new e((Matrix)localObject1));
-          }
-          localObject1 = this.rBx;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("seekBar");
-          }
-          ((SeekBar)localObject1).setVisibility(4);
-          localObject1 = this.rBx;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("seekBar");
-          }
-          ((SeekBar)localObject1).setEnabled(false);
-          localObject1 = this.Aua;
-          if (localObject1 == null) {
-            kotlin.g.b.p.bGy("selectBtn");
-          }
-          ((View)localObject1).setEnabled(false);
-          i = dpI().x;
-          localObject1 = getContext();
-          kotlin.g.b.p.j(localObject1, "context");
-          k = i - (int)((AppCompatActivity)localObject1).getResources().getDimension(b.d.Edge_4A);
-          j = (int)Math.ceil(k / eaO());
-          i = j;
-          if (j < 2) {
-            i = 2;
-          }
-          long l = locale.aaBB / (i - 1);
-          localObject4 = (Iterable)kotlin.k.i.ou(0, i);
-          localObject1 = (Collection)new LinkedList();
-          localObject4 = ((Iterable)localObject4).iterator();
-          while (((Iterator)localObject4).hasNext()) {
-            ((Collection)localObject1).add(Long.valueOf(((ab)localObject4).zD() * l));
+            ((View)localObject1).setEnabled(false);
+            n = dXX().x - (int)getContext().getResources().getDimension(l.c.Edge_4A);
+            m = (int)Math.ceil(n / fbJ());
+            k = m;
+            if (m < 2) {
+              k = 2;
+            }
+            long l = locale.aixc / (k - 1);
+            localObject3 = (Iterable)kotlin.k.k.qt(0, k);
+            localObject1 = (Collection)new LinkedList();
+            localObject3 = ((Iterable)localObject3).iterator();
+            while (((Iterator)localObject3).hasNext()) {
+              ((Collection)localObject1).add(Long.valueOf(((kotlin.a.ah)localObject3).Zo() * l));
+            }
           }
         }
       }
     }
     catch (Exception localException)
     {
-      final aa.e locale;
-      int k;
+      int i;
+      int j;
+      int n;
       for (;;)
       {
-        int i;
+        int k;
         int m;
         float f1;
         Log.printDebugStack("safeParser", "", new Object[] { localException });
@@ -435,177 +905,203 @@ public final class FinderSelectCoverUI
         continue;
         Log.w(this.TAG, "initView: mediaInfo null");
         continue;
-        localObject2 = ((csg)localObject3).TpG;
-        if (localObject2 != null) {
-          if (((acu)localObject2).NkX.SoK == null)
-          {
-            localObject4 = ((acu)localObject2).NkX.SoD;
-            localObject5 = ((csg)localObject3).TAa;
-            if (localObject5 != null)
-            {
-              ((duz)localObject4).TDA.set(0, Integer.valueOf((int)((awc)localObject5).left));
-              ((duz)localObject4).TDA.set(1, Integer.valueOf((int)((awc)localObject5).top));
-              ((duz)localObject4).TDA.set(2, Integer.valueOf((int)((awc)localObject5).right));
-              ((duz)localObject4).TDA.set(3, Integer.valueOf((int)((awc)localObject5).bottom));
-            }
-            localObject5 = ((duz)localObject4).TDA.get(0);
-            kotlin.g.b.p.j(localObject5, "originRect.values[0]");
-            i = ((Number)localObject5).intValue();
-            localObject5 = ((duz)localObject4).TDA.get(1);
-            kotlin.g.b.p.j(localObject5, "originRect.values[1]");
-            j = ((Number)localObject5).intValue();
-            localObject5 = ((duz)localObject4).TDA.get(2);
-            kotlin.g.b.p.j(localObject5, "originRect.values[2]");
-            k = ((Number)localObject5).intValue();
-            localObject4 = ((duz)localObject4).TDA.get(3);
-            kotlin.g.b.p.j(localObject4, "originRect.values[3]");
-            localObject4 = new Rect(i, j, k, ((Number)localObject4).intValue());
-            locale.aaBB = (((acu)localObject2).Sow - ((acu)localObject2).Sov);
-            localObject2 = ((acu)localObject2).NkX;
-            if (localObject2 != null)
-            {
-              i = ((acv)localObject2).targetWidth;
-              label1710:
-              j = ((Rect)localObject4).height() * i / ((Rect)localObject4).width();
-              ((csg)localObject3).height = (((csg)localObject3).width * ((Rect)localObject4).height() / ((Rect)localObject4).width());
-              localObject2 = x.aazN;
-              k = i;
-              i = j;
-            }
-          }
-        }
-        for (int j = k;; j = 0)
+        localObject2 = (Context)this;
+        s.s(localdji, "media");
+        this.FTk = ((com.tencent.mm.plugin.finder.video.r)new com.tencent.mm.plugin.finder.video.i((Context)localObject2, localdji));
+        i = (int)localdji.width;
+        j = (int)localdji.height;
+        continue;
+        localObject2 = localdji.aaDI;
+        if (localObject2 != null)
         {
+          if (((afb)localObject2).TYB.Znw != null) {
+            break label1993;
+          }
+          localObject3 = ((afb)localObject2).TYB.Znp;
+          localObject4 = localdji.aaPl;
+          if (localObject4 != null)
+          {
+            ((enx)localObject3).aaTg.set(0, Integer.valueOf((int)((bbn)localObject4).left));
+            ((enx)localObject3).aaTg.set(1, Integer.valueOf((int)((bbn)localObject4).top));
+            ((enx)localObject3).aaTg.set(2, Integer.valueOf((int)((bbn)localObject4).right));
+            ((enx)localObject3).aaTg.set(3, Integer.valueOf((int)((bbn)localObject4).bottom));
+          }
+          localObject4 = ((enx)localObject3).aaTg.get(0);
+          s.s(localObject4, "originRect.values[0]");
+          i = ((Number)localObject4).intValue();
+          localObject4 = ((enx)localObject3).aaTg.get(1);
+          s.s(localObject4, "originRect.values[1]");
+          j = ((Number)localObject4).intValue();
+          localObject4 = ((enx)localObject3).aaTg.get(2);
+          s.s(localObject4, "originRect.values[2]");
+          k = ((Number)localObject4).intValue();
+          localObject3 = ((enx)localObject3).aaTg.get(3);
+          s.s(localObject3, "originRect.values[3]");
+          localObject3 = new Rect(i, j, k, ((Number)localObject3).intValue());
+          locale.aixc = (((afb)localObject2).Zni - ((afb)localObject2).Znh);
+          localObject2 = ((afb)localObject2).TYB;
+          if (localObject2 != null) {
+            break label1983;
+          }
+        }
+        label1983:
+        for (i = 0;; i = ((afc)localObject2).nxO)
+        {
+          j = ((Rect)localObject3).height() * i / ((Rect)localObject3).width();
+          localdji.height = (localdji.width * ((Rect)localObject3).height() / ((Rect)localObject3).width());
+          localObject2 = kotlin.ah.aiuX;
+          localObject2 = kotlin.ah.aiuX;
+          k = i;
           localObject2 = (Context)this;
-          kotlin.g.b.p.j(localObject3, "media");
-          this.AtY = ((com.tencent.mm.plugin.finder.video.q)new com.tencent.mm.plugin.finder.video.b((Context)localObject2, (csg)localObject3));
-          f1 = Math.max(eaO() / j, eaP() / i);
-          m = (int)(j * f1);
-          k = (int)(f1 * i);
+          s.s(localdji, "media");
+          this.FTk = ((com.tencent.mm.plugin.finder.video.r)new com.tencent.mm.plugin.finder.video.b((Context)localObject2, localdji));
+          f1 = Math.max(fbJ() / k, fbK() / j);
+          i = (int)(k * f1);
+          n = (int)(f1 * j);
+          m = j;
+          j = n;
           break;
-          i = 0;
-          break label1710;
-          localObject4 = new Rect();
-          localObject5 = ((acu)localObject2).NkX.SoK.Sro;
-          kotlin.g.b.p.j(localObject5, "compositionInfo.outputConfig.cropConfig.cropRect");
-          com.tencent.mm.plugin.vlog.model.i.a((duz)localObject5, (Rect)localObject4);
-          localObject5 = x.aazN;
-          locale.aaBB = (((acu)localObject2).Sow - ((acu)localObject2).Sov);
-          localObject2 = ((acu)localObject2).NkX;
-          if (localObject2 != null)
-          {
-            localObject2 = ((acv)localObject2).SoK;
-            if (localObject2 == null) {}
-          }
-          for (i = ((dhd)localObject2).targetWidth;; i = 0)
-          {
-            j = ((Rect)localObject4).height() * i / ((Rect)localObject4).width();
-            ((csg)localObject3).height = (((csg)localObject3).width * ((Rect)localObject4).height() / ((Rect)localObject4).width());
-            break;
-          }
+        }
+        label1993:
+        localObject3 = new Rect();
+        com.tencent.mm.plugin.vlog.model.h.a(((afb)localObject2).TYB.Znw.Zqq, (Rect)localObject3);
+        localObject4 = kotlin.ah.aiuX;
+        locale.aixc = (((afb)localObject2).Zni - ((afb)localObject2).Znh);
+        localObject2 = ((afb)localObject2).TYB;
+        if (localObject2 == null) {
           i = 0;
         }
-        label1991:
-        localObject2 = this.AtZ;
-        if (localObject2 == null) {
-          kotlin.g.b.p.bGy("cropLayout");
+        for (;;)
+        {
+          j = ((Rect)localObject3).height() * i / ((Rect)localObject3).width();
+          localdji.height = (localdji.width * ((Rect)localObject3).height() / ((Rect)localObject3).width());
+          break;
+          localObject2 = ((afc)localObject2).Znw;
+          if (localObject2 == null) {
+            i = 0;
+          } else {
+            i = ((dzm)localObject2).nxO;
+          }
         }
-        localObject2 = ((CropLayout)localObject2).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject2).width = dpI().x;
-        ((ViewGroup.LayoutParams)localObject2).height = ((int)(f1 * ((ViewGroup.LayoutParams)localObject2).width));
-        localObject4 = this.AtZ;
-        if (localObject4 == null) {
-          kotlin.g.b.p.bGy("cropLayout");
+        label2125:
+        localObject3 = this.FTl;
+        localObject2 = localObject3;
+        if (localObject3 == null)
+        {
+          s.bIx("cropLayout");
+          localObject2 = null;
         }
-        ((CropLayout)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        localObject2 = this.AtZ;
-        if (localObject2 == null) {
-          kotlin.g.b.p.bGy("cropLayout");
+        localObject4 = ((CropLayout)localObject2).getLayoutParams();
+        localObject2 = av.GiL;
+        localObject2 = av.is(dXX().x, (int)(f1 * dXX().x));
+        ((ViewGroup.LayoutParams)localObject4).width = ((Number)((kotlin.r)localObject2).bsC).intValue();
+        ((ViewGroup.LayoutParams)localObject4).height = ((Number)((kotlin.r)localObject2).bsD).intValue();
+        localObject3 = this.FTl;
+        localObject2 = localObject3;
+        if (localObject3 == null)
+        {
+          s.bIx("cropLayout");
+          localObject2 = null;
         }
-        ((CropLayout)localObject2).setEnableTouch(false);
-        localObject2 = this.AtZ;
-        if (localObject2 == null) {
-          kotlin.g.b.p.bGy("cropLayout");
+        ((CropLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject4);
+        localObject3 = this.FTl;
+        localObject2 = localObject3;
+        if (localObject3 == null)
+        {
+          s.bIx("cropLayout");
+          localObject2 = null;
         }
-        ((CropLayout)localObject2).setEnableFling(false);
-        localObject2 = this.AtZ;
-        if (localObject2 == null) {
-          kotlin.g.b.p.bGy("cropLayout");
+        ((CropLayout)localObject2).setEnableTouch(true);
+        localObject3 = this.FTl;
+        localObject2 = localObject3;
+        if (localObject3 == null)
+        {
+          s.bIx("cropLayout");
+          localObject2 = null;
         }
         ((CropLayout)localObject2).setEnableOverScroll(false);
         continue;
-        label2132:
-        localObject2 = null;
+        label2310:
+        localObject2 = ((dju)localObject2).aaPK;
         continue;
-        label2138:
-        localObject2 = null;
+        label2320:
+        localObject2 = ((dju)localObject2).aaPK;
         continue;
-        label2144:
-        localObject2 = this.AtZ;
-        if (localObject2 == null) {
-          kotlin.g.b.p.bGy("cropLayout");
+        label2330:
+        localObject3 = this.FTl;
+        localObject2 = localObject3;
+        if (localObject3 == null)
+        {
+          s.bIx("cropLayout");
+          localObject2 = null;
         }
-        localObject4 = this.AtY;
-        if (localObject4 == null) {
-          kotlin.g.b.p.bGy("seeker");
+        localObject4 = this.FTk;
+        localObject3 = localObject4;
+        if (localObject4 == null)
+        {
+          s.bIx("seeker");
+          localObject3 = null;
         }
-        ((CropLayout)localObject2).a(((com.tencent.mm.plugin.finder.video.q)localObject4).getView(), j, i, new Matrix(), CropLayout.e.Ylv, (kotlin.g.a.b)f.Auq);
+        ((CropLayout)localObject2).a(((com.tencent.mm.plugin.finder.video.r)localObject3).getView(), k, m, new Matrix(), CropLayout.e.agdt, (kotlin.g.a.b)FinderSelectCoverUI.d.FTB);
       }
-      Object localObject2 = (LinkedList)localObject2;
-      Object localObject4 = Bitmap.createBitmap(k, (int)eaP(), Bitmap.Config.ARGB_8888);
-      Object localObject5 = new Canvas((Bitmap)localObject4);
-      c localc = this.Aub;
-      if (localc != null)
+      localObject2 = (LinkedList)localObject2;
+      localObject3 = Bitmap.createBitmap(n, (int)fbK(), Bitmap.Config.ARGB_8888);
+      Object localObject4 = new Canvas((Bitmap)localObject3);
+      com.tencent.threadpool.h.ahAA.bn(new FinderSelectCoverUI..ExternalSyntheticLambda4(this, localdji, i, j, (LinkedList)localObject2, (Canvas)localObject4, (Bitmap)localObject3));
+      localObject2 = this.FTk;
+      if (localObject2 != null) {
+        break label2587;
+      }
+    }
+    s.bIx("seeker");
+    Object localObject2 = null;
+    label2587:
+    for (;;)
+    {
+      ((com.tencent.mm.plugin.finder.video.r)localObject2).a((kotlin.g.a.a)new f(this, localdji, locale), (kotlin.g.a.a)new g(this), (kotlin.g.a.b)new h(localdji, this));
+      localObject3 = this.FTm;
+      localObject2 = localObject3;
+      if (localObject3 == null)
       {
-        localc.b((List)localObject2, (m)new g(this, (LinkedList)localObject2, (csg)localObject3, (Canvas)localObject5, (Bitmap)localObject4));
-        localObject2 = x.aazN;
+        s.bIx("selectBtn");
+        localObject2 = null;
       }
-      localObject2 = this.AtY;
-      if (localObject2 == null) {
-        kotlin.g.b.p.bGy("seeker");
-      }
-      ((com.tencent.mm.plugin.finder.video.q)localObject2).a((kotlin.g.a.a)new h(this, locale, (csg)localObject3), (kotlin.g.a.a)new i(this), (kotlin.g.a.b)new j(this, (csg)localObject3));
-      localObject2 = this.Aua;
-      if (localObject2 == null) {
-        kotlin.g.b.p.bGy("selectBtn");
-      }
-      ((View)localObject2).setOnClickListener((View.OnClickListener)new d(this, (csg)localObject3));
-      AppMethodBeat.o(283609);
+      ((View)localObject2).setOnClickListener(new FinderSelectCoverUI..ExternalSyntheticLambda2(this, localdji));
+      AppMethodBeat.o(346903);
+      return;
     }
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(283608);
-    setTheme(b.k.MMTheme_NoTitleTranslucent);
+    AppMethodBeat.i(346863);
+    setTheme(l.j.MMTheme_NoTitleTranslucent);
     requestWindowFeature(1);
     super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    kotlin.g.b.p.j(paramBundle, "window");
-    paramBundle.setStatusBarColor(-16777216);
+    getWindow().setStatusBarColor(-16777216);
     updataStatusBarIcon(true);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new k(this));
+    setBackBtn(new FinderSelectCoverUI..ExternalSyntheticLambda0(this));
     initView();
-    AppMethodBeat.o(283608);
+    AppMethodBeat.o(346863);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(283611);
+    AppMethodBeat.i(346911);
     super.onDestroy();
-    Object localObject = this.AtY;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("seeker");
-    }
-    ((com.tencent.mm.plugin.finder.video.q)localObject).destroy();
-    localObject = this.Aub;
-    if (localObject != null)
+    com.tencent.mm.plugin.finder.video.r localr = this.FTk;
+    Object localObject = localr;
+    if (localr == null)
     {
-      ((c)localObject).destroy();
-      AppMethodBeat.o(283611);
-      return;
+      s.bIx("seeker");
+      localObject = null;
     }
-    AppMethodBeat.o(283611);
+    ((com.tencent.mm.plugin.finder.video.r)localObject).destroy();
+    localObject = this.FTn;
+    if (localObject != null) {
+      ((c)localObject).destroy();
+    }
+    AppMethodBeat.o(346911);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -614,9 +1110,9 @@ public final class FinderSelectCoverUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.g.b.q
+    extends u
     implements kotlin.g.a.a<Float>
   {
     a(FinderSelectCoverUI paramFinderSelectCoverUI)
@@ -625,9 +1121,9 @@ public final class FinderSelectCoverUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
+    extends u
     implements kotlin.g.a.a<Float>
   {
     b(FinderSelectCoverUI paramFinderSelectCoverUI)
@@ -636,272 +1132,120 @@ public final class FinderSelectCoverUI
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"<anonymous>", "", "time", "", "bitmap", "Landroid/graphics/Bitmap;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements m<Long, Bitmap, kotlin.ah>
   {
-    c(FinderSelectCoverUI paramFinderSelectCoverUI) {}
-    
-    public final void onClick(View paramView)
+    e(LinkedList<Long> paramLinkedList, FinderSelectCoverUI paramFinderSelectCoverUI, dji paramdji, Canvas paramCanvas, Bitmap paramBitmap)
     {
-      AppMethodBeat.i(274856);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.Aun.finish();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(274856);
+      super();
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(FinderSelectCoverUI paramFinderSelectCoverUI, csg paramcsg) {}
     
-    public final void onClick(View paramView)
+    private static final void a(FinderSelectCoverUI paramFinderSelectCoverUI, Bitmap paramBitmap)
     {
-      AppMethodBeat.i(276984);
-      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI$initView$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-      int j;
-      Object localObject2;
-      Bitmap localBitmap;
-      fbq localfbq;
-      label310:
-      label358:
-      boolean bool;
-      int k;
-      if (FinderSelectCoverUI.d(this.Aun).isEnabled())
+      Object localObject3 = null;
+      Object localObject2 = null;
+      AppMethodBeat.i(347166);
+      s.u(paramFinderSelectCoverUI, "this$0");
+      SeekBar localSeekBar = FinderSelectCoverUI.b(paramFinderSelectCoverUI);
+      Object localObject1 = localSeekBar;
+      if (localSeekBar == null)
       {
-        paramView = com.tencent.mm.plugin.finder.storage.d.AjH;
-        i = com.tencent.mm.plugin.finder.storage.d.dRJ().lJy;
-        j = (int)(i / this.Auo.width * this.Auo.height);
-        Log.i(FinderSelectCoverUI.g(this.Aun), "save cover, size: " + i + ", " + j);
-        localObject1 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        localObject2 = new Canvas((Bitmap)localObject1);
-        localBitmap = FinderSelectCoverUI.e(this.Aun).getBitmap();
-        if (localBitmap == null)
+        s.bIx("seekBar");
+        localObject1 = null;
+      }
+      ((SeekBar)localObject1).setVisibility(0);
+      if (paramFinderSelectCoverUI.FTy)
+      {
+        localObject1 = FinderSelectCoverUI.b(paramFinderSelectCoverUI);
+        if (localObject1 == null)
         {
-          this.Aun.finish();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI$initView$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(276984);
+          s.bIx("seekBar");
+          localObject1 = localObject2;
+        }
+        for (;;)
+        {
+          ((SeekBar)localObject1).setProgressDrawable((Drawable)new BitmapDrawable(paramFinderSelectCoverUI.getResources(), paramBitmap));
+          paramFinderSelectCoverUI.FTy = false;
+          AppMethodBeat.o(347166);
           return;
         }
-        if (!this.Auo.TzU) {
-          break label579;
-        }
-        paramView = this.Auo.zBo;
-        float f1 = FinderSelectCoverUI.h(this.Aun).getContentViewScale()[0];
-        float f2 = -(FinderSelectCoverUI.h(this.Aun).getContentViewTrans()[1] - FinderSelectCoverUI.i(this.Aun));
-        localfbq = new fbq();
-        if (paramView == null) {
-          break label547;
-        }
-        paramView = paramView.TAx;
-        if (paramView == null) {
-          break label552;
-        }
-        localfbq.left = paramView.left;
-        localfbq.right = paramView.right;
-        localfbq.top = ((int)(paramView.top - paramView.bottom + f2 / f1));
-        localfbq.bottom = ((int)(f2 / f1));
-        ((Canvas)localObject2).drawBitmap(localBitmap, new Rect(localfbq.left, localfbq.bottom, localfbq.right, localfbq.top), new Rect(0, 0, i, j), null);
-        paramView = new StringBuilder();
-        localObject2 = av.AJz;
-        paramView = av.egu() + "cover_" + System.currentTimeMillis();
-        localObject2 = com.tencent.mm.plugin.finder.storage.d.AjH;
-        bool = BitmapUtil.saveBitmapToImage((Bitmap)localObject1, com.tencent.mm.plugin.finder.storage.d.dSm(), Bitmap.CompressFormat.JPEG, paramView, false);
-        localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-        if (!com.tencent.mm.plugin.finder.storage.d.dVd()) {
-          break label622;
-        }
-        localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-        k = com.tencent.mm.plugin.finder.storage.d.dRM();
-        localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
       }
-      label547:
-      label552:
-      label579:
-      label622:
-      for (int i = AdaptiveAdjustBitrate.getVideoImageQuality(k, 0, i, j, com.tencent.mm.plugin.finder.storage.d.dSm() / 100.0F);; i = 0)
+      paramFinderSelectCoverUI = FinderSelectCoverUI.b(paramFinderSelectCoverUI);
+      if (paramFinderSelectCoverUI == null)
       {
-        localObject1 = new Intent();
-        if (bool)
-        {
-          localObject2 = com.tencent.mm.plugin.finder.widget.post.f.Bub;
-          ((Intent)localObject1).putExtra(com.tencent.mm.plugin.finder.widget.post.f.emJ(), paramView);
-          paramView = com.tencent.mm.plugin.finder.widget.post.f.Bub;
-          ((Intent)localObject1).putExtra(com.tencent.mm.plugin.finder.widget.post.f.emK(), i);
-          FinderSelectCoverUI.a(this.Aun, (Intent)localObject1);
+        s.bIx("seekBar");
+        paramFinderSelectCoverUI = localObject3;
+      }
+      for (;;)
+      {
+        paramFinderSelectCoverUI = paramFinderSelectCoverUI.getProgressDrawable();
+        if (paramFinderSelectCoverUI != null) {
+          paramFinderSelectCoverUI.invalidateSelf();
         }
-        this.Aun.setResult(0, (Intent)localObject1);
-        this.Aun.finish();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSelectCoverUI$initView$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(276984);
+        AppMethodBeat.o(347166);
         return;
-        paramView = null;
-        break;
-        localfbq.left = 0;
-        localfbq.right = 0;
-        localfbq.top = 0;
-        localfbq.bottom = 0;
-        break label310;
-        ((Canvas)localObject2).drawBitmap(localBitmap, new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight()), new Rect(0, 0, i, j), null);
-        break label358;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
-  static final class e
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Matrix, Boolean>
-  {
-    e(Matrix paramMatrix)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Matrix, Boolean>
+    extends u
+    implements kotlin.g.a.a<kotlin.ah>
   {
-    public static final f Auq;
-    
-    static
-    {
-      AppMethodBeat.i(271059);
-      Auq = new f();
-      AppMethodBeat.o(271059);
-    }
-    
-    f()
+    f(FinderSelectCoverUI paramFinderSelectCoverUI, dji paramdji, ah.e parame)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "time", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends kotlin.g.b.q
-    implements m<Long, Bitmap, x>
+    extends u
+    implements kotlin.g.a.a<kotlin.ah>
   {
-    g(FinderSelectCoverUI paramFinderSelectCoverUI, LinkedList paramLinkedList, csg paramcsg, Canvas paramCanvas, Bitmap paramBitmap)
+    g(FinderSelectCoverUI paramFinderSelectCoverUI)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.b<Long, kotlin.ah>
   {
-    h(FinderSelectCoverUI paramFinderSelectCoverUI, aa.e parame, csg paramcsg)
+    h(dji paramdji, FinderSelectCoverUI paramFinderSelectCoverUI)
     {
       super();
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class i
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    i(FinderSelectCoverUI paramFinderSelectCoverUI)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
-  static final class j
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Long, x>
-  {
-    j(FinderSelectCoverUI paramFinderSelectCoverUI, csg paramcsg)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class k
-    implements MenuItem.OnMenuItemClickListener
-  {
-    k(FinderSelectCoverUI paramFinderSelectCoverUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    private static final void a(FinderSelectCoverUI paramFinderSelectCoverUI, dji paramdji)
     {
-      AppMethodBeat.i(276580);
-      this.Aun.finish();
-      AppMethodBeat.o(276580);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class l
-    implements Runnable
-  {
-    l(FinderSelectCoverUI paramFinderSelectCoverUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(289255);
-      if (this.Aun.Aul)
+      AppMethodBeat.i(347170);
+      s.u(paramFinderSelectCoverUI, "this$0");
+      com.tencent.mm.plugin.finder.video.r localr = FinderSelectCoverUI.d(paramFinderSelectCoverUI);
+      Object localObject = localr;
+      if (localr == null)
       {
-        localObject = FinderSelectCoverUI.c(this.Aun);
-        Resources localResources = this.Aun.getResources();
-        Bitmap localBitmap = this.Aun.Aud;
-        if (localBitmap == null) {
-          kotlin.g.b.p.bGy("thumbBitmap");
-        }
-        ((SeekBar)localObject).setThumb((Drawable)new BitmapDrawable(localResources, localBitmap));
-        FinderSelectCoverUI.c(this.Aun).setThumbOffset(0);
-        this.Aun.Aul = false;
-        AppMethodBeat.o(289255);
-        return;
+        s.bIx("seeker");
+        localObject = null;
       }
-      Object localObject = FinderSelectCoverUI.c(this.Aun).getThumb();
+      localObject = ((com.tencent.mm.plugin.finder.video.r)localObject).getBitmap();
       if (localObject != null)
       {
-        ((Drawable)localObject).invalidateSelf();
-        AppMethodBeat.o(289255);
-        return;
+        s.s(paramdji, "media");
+        FinderSelectCoverUI.a(paramFinderSelectCoverUI, paramdji, (Bitmap)localObject);
       }
-      AppMethodBeat.o(289255);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/graphics/Point;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class m
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<Point>
-  {
-    public static final m AuB;
-    
-    static
-    {
-      AppMethodBeat.i(283438);
-      AuB = new m();
-      AppMethodBeat.o(283438);
-    }
-    
-    m()
-    {
-      super();
+      AppMethodBeat.o(347170);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSelectCoverUI
  * JD-Core Version:    0.7.0.1
  */

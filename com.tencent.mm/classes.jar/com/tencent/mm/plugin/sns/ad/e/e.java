@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.report.service.h;
 public final class e
   implements a
 {
-  public final void a(int paramInt, Object... paramVarArgs)
+  public final void b(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(94973);
     switch (paramInt)
     {
     default: 
-      h.IzE.a(13235, paramVarArgs);
+      h.OAn.b(13235, paramVarArgs);
       AppMethodBeat.o(94973);
       return;
     }
@@ -24,10 +24,10 @@ public final class e
     return 13235;
   }
   
-  public final void v(Object... paramVarArgs)
+  public final void x(Object... paramVarArgs)
   {
     AppMethodBeat.i(94972);
-    a(0, paramVarArgs);
+    b(0, paramVarArgs);
     AppMethodBeat.o(94972);
   }
 }

@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.zero;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.k.d;
+import com.tencent.mm.k.f;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.n.d;
-import com.tencent.mm.n.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 
 public final class a
   implements c, com.tencent.mm.plugin.zero.b.a
 {
-  private f QQM;
-  private d QQN;
+  private f XMs;
+  private d XMt;
   
   public a()
   {
     AppMethodBeat.i(132988);
-    this.QQM = new f();
-    this.QQN = new d();
+    this.XMs = new f();
+    this.XMt = new d();
     AppMethodBeat.o(132988);
   }
   
-  public final f axc()
+  public final f aRC()
   {
     AppMethodBeat.i(132989);
-    h.aHH();
-    h.aHE().aGH();
-    f localf = this.QQM;
+    h.baF();
+    h.baC().aZJ();
+    f localf = this.XMs;
     AppMethodBeat.o(132989);
     return localf;
   }
   
-  public final d axd()
+  public final d aRD()
   {
     AppMethodBeat.i(132990);
-    h.aHH();
-    h.aHE().aGH();
-    d locald = this.QQN;
+    h.baF();
+    h.baC().aZJ();
+    d locald = this.XMt;
     AppMethodBeat.o(132990);
     return locald;
   }
@@ -46,22 +46,22 @@ public final class a
   public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(132991);
-    if (paramc.kcX)
+    if (paramc.mDg)
     {
-      paramc = this.QQN;
-      q localq1 = new q(com.tencent.mm.loader.j.b.aSL() + "configlist/");
-      if (localq1.ifE())
+      paramc = this.XMt;
+      u localu1 = new u(com.tencent.mm.loader.i.b.bmz() + "configlist/");
+      if (localu1.jKS())
       {
-        q localq2 = new q(d.jwu);
-        if (!localq2.ifE())
+        u localu2 = new u(d.lZM);
+        if (!localu2.jKS())
         {
           Log.d("MicroMsg.ConfigListDecoder", "bugfix");
-          paramc.a(localq1, localq2);
+          paramc.a(localu1, localu2);
         }
       }
     }
-    this.QQM.tA();
-    this.QQN.init();
+    this.XMs.Td();
+    this.XMt.init();
     AppMethodBeat.o(132991);
   }
   

@@ -1,22 +1,34 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import com.tencent.mm.plugin.findersdk.d.a.b.b.a;
-import kotlin.l;
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderConfig$FINDER_SHARE_CHATTING_STYLE$1", "Lcom/tencent/mm/plugin/findersdk/storage/config/item/integer/FinderIntConfig;", "cache", "", "value", "()Ljava/lang/Integer;", "plugin-finder-base_release"})
-public final class d$ab
-  extends a
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/app/Activity;"}, k=3, mv={1, 5, 1}, xi=48)
+final class d$ab
+  extends u
+  implements b<Activity, ah>
 {
-  private int Akh = -1;
+  public static final ab FJi;
   
-  d$ab(String paramString)
+  static
   {
-    super(0, paramString);
+    AppMethodBeat.i(339063);
+    FJi = new ab();
+    AppMethodBeat.o(339063);
+  }
+  
+  d$ab()
+  {
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.d.ab
  * JD-Core Version:    0.7.0.1
  */

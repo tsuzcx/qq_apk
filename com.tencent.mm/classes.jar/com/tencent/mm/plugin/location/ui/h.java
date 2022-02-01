@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.plugin.location.model.n;
-import com.tencent.mm.plugin.location.model.r;
+import com.tencent.mm.plugin.location.model.SubCoreLocation;
+import com.tencent.mm.plugin.location.model.p;
 import com.tencent.mm.plugin.map.a.e;
 import com.tencent.mm.plugin.map.a.g;
 import com.tencent.mm.plugin.map.a.i;
@@ -22,54 +22,54 @@ import java.util.List;
 
 public final class h
 {
-  boolean EmS;
-  private ViewGroup EmV;
-  private final int EmW;
-  private final int EmX;
-  private final int EmY;
-  private final int EmZ;
-  private final int Ena;
-  private final int Enb;
-  private final int Enc;
-  private final int End;
-  private final int Ene;
-  private final int Enf;
-  private final int Eng;
-  boolean Enh;
-  private int Eni;
-  int Enj;
-  int Enk;
-  int Enl;
-  boolean Enm;
-  String Enn;
+  boolean KfA;
+  private ViewGroup KfD;
+  private final int KfE;
+  private final int KfF;
+  private final int KfG;
+  private final int KfH;
+  private final int KfI;
+  private final int KfJ;
+  private final int KfK;
+  private final int KfL;
+  private final int KfM;
+  private final int KfN;
+  private final int KfO;
+  boolean KfP;
+  private int KfQ;
+  int KfR;
+  int KfS;
+  int KfT;
+  boolean KfU;
+  String KfV;
   Context context;
-  TextView eM;
-  private String jjq;
-  ArrayList<String> kLY;
+  TextView fO;
+  private String lLV;
   MMHandler mHandler;
+  ArrayList<String> nnU;
   
   public h(Context paramContext, ViewGroup paramViewGroup, String paramString)
   {
     AppMethodBeat.i(55923);
-    this.EmW = 100;
-    this.EmX = 1;
-    this.EmY = 2;
-    this.EmZ = 3;
-    this.Ena = 4;
-    this.Enb = 5;
-    this.Enc = 6;
-    this.End = 7;
-    this.Ene = 8;
-    this.Enf = 9;
-    this.Eng = 10;
-    this.Enh = true;
-    this.Eni = Color.parseColor("#44FEBB");
-    this.Enj = Color.parseColor("#FFFFFF");
-    this.Enk = Color.parseColor("#E54646");
-    this.Enl = Color.parseColor("#FFC90C");
-    this.EmS = false;
-    this.Enm = false;
-    this.Enn = "";
+    this.KfE = 100;
+    this.KfF = 1;
+    this.KfG = 2;
+    this.KfH = 3;
+    this.KfI = 4;
+    this.KfJ = 5;
+    this.KfK = 6;
+    this.KfL = 7;
+    this.KfM = 8;
+    this.KfN = 9;
+    this.KfO = 10;
+    this.KfP = true;
+    this.KfQ = Color.parseColor("#44FEBB");
+    this.KfR = Color.parseColor("#FFFFFF");
+    this.KfS = Color.parseColor("#E54646");
+    this.KfT = Color.parseColor("#FFC90C");
+    this.KfA = false;
+    this.KfU = false;
+    this.KfV = "";
     this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -83,26 +83,26 @@ public final class h
         {
           AppMethodBeat.o(55922);
           return;
-          h.this.eM.setText(h.this.Enn);
+          h.this.fO.setText(h.this.KfV);
           AppMethodBeat.o(55922);
           return;
-          Log.d("MicroMsg.ShareHeaderMsgMgr", "update member num, isMyselfTalking=%b, isOtherTalking=%b", new Object[] { Boolean.valueOf(h.this.EmS), Boolean.valueOf(h.this.Enm) });
-          if ((!h.this.EmS) && (!h.this.Enm))
+          Log.d("MicroMsg.ShareHeaderMsgMgr", "update member num, isMyselfTalking=%b, isOtherTalking=%b", new Object[] { Boolean.valueOf(h.this.KfA), Boolean.valueOf(h.this.KfU) });
+          if ((!h.this.KfA) && (!h.this.KfU))
           {
             Object localObject = h.this;
-            ((h)localObject).eM.setTextColor(((h)localObject).Enj);
-            ((h)localObject).eM.invalidate();
+            ((h)localObject).fO.setTextColor(((h)localObject).KfR);
+            ((h)localObject).fO.invalidate();
             int i = ((Integer)paramAnonymousMessage.obj).intValue();
             if (i == 0)
             {
-              h.this.eM.setText(h.this.context.getString(a.i.track_none_contact_num));
+              h.this.fO.setText(h.this.context.getString(a.i.track_none_contact_num));
               AppMethodBeat.o(55922);
               return;
             }
-            h.this.eM.setText(h.this.context.getResources().getQuantityString(a.g.track_contact_num, i, new Object[] { Integer.valueOf(i) }));
+            h.this.fO.setText(h.this.context.getResources().getQuantityString(a.g.track_contact_num, i, new Object[] { Integer.valueOf(i) }));
             AppMethodBeat.o(55922);
             return;
-            if ((h.this.Enm) || (h.this.EmS))
+            if ((h.this.KfU) || (h.this.KfA))
             {
               removeMessages(3);
               localObject = Message.obtain();
@@ -112,16 +112,16 @@ public final class h
               AppMethodBeat.o(55922);
               return;
             }
-            h.this.Enn = h.this.eM.getText().toString();
+            h.this.KfV = h.this.fO.getText().toString();
             h.a(h.this);
-            paramAnonymousMessage = aa.PJ((String)paramAnonymousMessage.obj);
-            h.this.eM.setText(h.this.context.getString(a.i.track_somebody_enter, new Object[] { paramAnonymousMessage }));
-            if ((h.this.EmS) || (h.this.Enm))
+            paramAnonymousMessage = aa.getDisplayName((String)paramAnonymousMessage.obj);
+            h.this.fO.setText(h.this.context.getString(a.i.track_somebody_enter, new Object[] { paramAnonymousMessage }));
+            if ((h.this.KfA) || (h.this.KfU))
             {
               h.b(h.this);
               AppMethodBeat.o(55922);
               return;
-              if ((h.this.Enm) || (h.this.EmS))
+              if ((h.this.KfU) || (h.this.KfA))
               {
                 removeMessages(4);
                 localObject = Message.obtain();
@@ -131,51 +131,51 @@ public final class h
                 AppMethodBeat.o(55922);
                 return;
               }
-              h.this.Enn = h.this.eM.getText().toString();
+              h.this.KfV = h.this.fO.getText().toString();
               h.a(h.this);
-              paramAnonymousMessage = aa.PJ((String)paramAnonymousMessage.obj);
-              h.this.eM.setText(h.this.context.getString(a.i.track_somebody_exit, new Object[] { paramAnonymousMessage }));
-              if ((h.this.EmS) || (h.this.Enm))
+              paramAnonymousMessage = aa.getDisplayName((String)paramAnonymousMessage.obj);
+              h.this.fO.setText(h.this.context.getString(a.i.track_somebody_exit, new Object[] { paramAnonymousMessage }));
+              if ((h.this.KfA) || (h.this.KfU))
               {
                 h.b(h.this);
                 AppMethodBeat.o(55922);
                 return;
-                h.this.Enm = true;
-                h.this.EmS = false;
+                h.this.KfU = true;
+                h.this.KfA = false;
                 h.a(h.this);
-                paramAnonymousMessage = aa.PJ((String)paramAnonymousMessage.obj);
-                h.this.eM.setText(h.this.context.getString(a.i.track_somebody_saying, new Object[] { paramAnonymousMessage }));
+                paramAnonymousMessage = aa.getDisplayName((String)paramAnonymousMessage.obj);
+                h.this.fO.setText(h.this.context.getString(a.i.track_somebody_saying, new Object[] { paramAnonymousMessage }));
                 AppMethodBeat.o(55922);
                 return;
-                h.this.EmS = true;
-                h.this.Enm = false;
+                h.this.KfA = true;
+                h.this.KfU = false;
                 h.a(h.this);
-                h.this.eM.setText(h.this.context.getString(a.i.track_self_saying));
+                h.this.fO.setText(h.this.context.getString(a.i.track_self_saying));
                 AppMethodBeat.o(55922);
                 return;
-                h.this.EmS = false;
-                if (!h.this.Enm)
+                h.this.KfA = false;
+                if (!h.this.KfU)
                 {
-                  h.this.tJ(true);
+                  h.this.xV(true);
                   AppMethodBeat.o(55922);
                   return;
-                  h.this.Enm = true;
+                  h.this.KfU = true;
                   paramAnonymousMessage = h.this;
-                  paramAnonymousMessage.eM.setTextColor(paramAnonymousMessage.Enk);
-                  paramAnonymousMessage.eM.invalidate();
-                  h.this.eM.setText(h.this.context.getString(a.i.track_talk_conflict));
-                  h.this.Enn = h.this.eM.getText().toString();
+                  paramAnonymousMessage.fO.setTextColor(paramAnonymousMessage.KfS);
+                  paramAnonymousMessage.fO.invalidate();
+                  h.this.fO.setText(h.this.context.getString(a.i.track_talk_conflict));
+                  h.this.KfV = h.this.fO.getText().toString();
                   h.b(h.this);
                   AppMethodBeat.o(55922);
                   return;
                   paramAnonymousMessage = h.this;
-                  paramAnonymousMessage.eM.setTextColor(paramAnonymousMessage.Enl);
-                  paramAnonymousMessage.eM.invalidate();
-                  h.this.eM.setText(h.this.context.getString(a.i.track_talk_preparing));
+                  paramAnonymousMessage.fO.setTextColor(paramAnonymousMessage.KfT);
+                  paramAnonymousMessage.fO.invalidate();
+                  h.this.fO.setText(h.this.context.getString(a.i.track_talk_preparing));
                   AppMethodBeat.o(55922);
                   return;
-                  h.this.Enm = false;
-                  h.this.tJ(false);
+                  h.this.KfU = false;
+                  h.this.xV(false);
                 }
               }
             }
@@ -184,9 +184,9 @@ public final class h
       }
     };
     this.context = paramContext;
-    this.EmV = paramViewGroup;
-    this.eM = ((TextView)this.EmV.findViewById(a.e.title));
-    this.jjq = paramString;
+    this.KfD = paramViewGroup;
+    this.fO = ((TextView)this.KfD.findViewById(a.e.title));
+    this.lLV = paramString;
     init();
     AppMethodBeat.o(55923);
   }
@@ -195,26 +195,26 @@ public final class h
   {
     AppMethodBeat.i(55924);
     Log.d("MicroMsg.ShareHeaderMsgMgr", "init");
-    this.eM.invalidate();
-    this.kLY = new ArrayList();
-    Iterator localIterator = n.eMk().Xv(this.jjq).iterator();
+    this.fO.invalidate();
+    this.nnU = new ArrayList();
+    Iterator localIterator = SubCoreLocation.fUC().Px(this.lLV).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.kLY.add(str);
+      this.nnU.add(str);
     }
-    tJ(false);
+    xV(false);
     AppMethodBeat.o(55924);
   }
   
-  final void tJ(boolean paramBoolean)
+  final void xV(boolean paramBoolean)
   {
     AppMethodBeat.i(55925);
     this.mHandler.removeMessages(2);
     Message localMessage = Message.obtain();
     localMessage.what = 2;
-    localMessage.obj = Integer.valueOf(this.kLY.size());
-    Log.d("MicroMsg.ShareHeaderMsgMgr", "updateMemberCount, size=%d, isDelay=%b", new Object[] { Integer.valueOf(this.kLY.size()), Boolean.valueOf(paramBoolean) });
+    localMessage.obj = Integer.valueOf(this.nnU.size());
+    Log.d("MicroMsg.ShareHeaderMsgMgr", "updateMemberCount, size=%d, isDelay=%b", new Object[] { Integer.valueOf(this.nnU.size()), Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       this.mHandler.sendMessageDelayed(localMessage, 100L);
@@ -227,7 +227,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.h
  * JD-Core Version:    0.7.0.1
  */

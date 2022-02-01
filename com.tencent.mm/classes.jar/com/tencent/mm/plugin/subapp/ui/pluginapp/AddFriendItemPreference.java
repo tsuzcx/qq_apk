@@ -11,15 +11,15 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AddFriendItemPreference
   extends Preference
 {
-  private String GRG;
-  private int GRH;
-  int GRI;
+  private String MPk;
+  private int MPl;
+  int MPm;
   private Context context;
   private Drawable drawable;
   private int height;
@@ -38,9 +38,9 @@ public class AddFriendItemPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(29182);
-    this.GRG = "";
-    this.GRH = -1;
-    this.GRI = 8;
+    this.MPk = "";
+    this.MPl = -1;
+    this.MPm = 8;
     this.height = -1;
     this.context = paramContext;
     setLayoutResource(R.i.mm_preference);
@@ -70,10 +70,10 @@ public class AddFriendItemPreference
       paramView = (TextView)paramView.findViewById(R.h.text_tv_one);
       if (paramView != null)
       {
-        paramView.setVisibility(this.GRI);
-        paramView.setText(this.GRG);
-        if (this.GRH != -1) {
-          paramView.setBackgroundDrawable(a.m(this.context, this.GRH));
+        paramView.setVisibility(this.MPm);
+        paramView.setText(this.MPk);
+        if (this.MPl != -1) {
+          paramView.setBackgroundDrawable(a.m(this.context, this.MPl));
         }
       }
       AppMethodBeat.o(29184);
@@ -84,9 +84,9 @@ public class AddFriendItemPreference
         ((ImageView)localObject).setImageDrawable(getIcon());
         ((ImageView)localObject).setVisibility(0);
       }
-      else if (cMV() != 0)
+      else if (dqA() != 0)
       {
-        ((ImageView)localObject).setImageResource(cMV());
+        ((ImageView)localObject).setImageResource(dqA());
         ((ImageView)localObject).setVisibility(0);
       }
     }
@@ -98,7 +98,7 @@ public class AddFriendItemPreference
     paramViewGroup = super.onCreateView(paramViewGroup);
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, R.i.eiM, localViewGroup);
+    View.inflate(this.mContext, R.i.glL, localViewGroup);
     localViewGroup.setPadding(0, localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), localViewGroup.getPaddingBottom());
     AppMethodBeat.o(29183);
     return paramViewGroup;
@@ -106,7 +106,7 @@ public class AddFriendItemPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddFriendItemPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -3,98 +3,141 @@ package com.tencent.mm.plugin.mv.ui.adapter;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.r;
 import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import kotlin.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.mv.b.e;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "alphaStartOffset", "onLayoutCompleted", "", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollVerticallyBy", "dy", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "smoothScrollToPosition", "recyclerView", "position", "updateChild", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "alphaStartOffset", "onLayoutCompleted", "", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollVerticallyBy", "dy", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "smoothScrollToPosition", "recyclerView", "position", "updateChild", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicLyricLayoutManager
   extends LinearLayoutManager
 {
-  private final int Gfo;
+  private final int MaH;
   
   private MusicLyricLayoutManager(Context paramContext)
   {
     super(1, false);
-    AppMethodBeat.i(231364);
-    this.Gfo = a.fromDPToPix(paramContext, 0);
-    AppMethodBeat.o(231364);
+    AppMethodBeat.i(287284);
+    this.MaH = a.fromDPToPix(paramContext, 0);
+    AppMethodBeat.o(287284);
   }
   
-  private final void cWY()
+  private final void dDo()
   {
-    AppMethodBeat.i(231362);
-    int i = 0;
-    int j = getChildCount();
-    if (i < j)
+    AppMethodBeat.i(287294);
+    int n = getChildCount();
+    int i;
+    int k;
+    View localView;
+    int j;
+    int i1;
+    int m;
+    Object localObject;
+    if (n > 0)
     {
-      View localView = getChildAt(i);
-      if (localView == null) {}
-      for (;;)
+      i = 0;
+      k = i + 1;
+      localView = getChildAt(i);
+      if (localView != null)
       {
-        i += 1;
-        break;
-        kotlin.g.b.p.j(localView, "getChildAt(i) ?: continue");
-        int k = (localView.getTop() + localView.getBottom()) / 2;
-        int m = getHeight() / 2;
-        int n = localView.getMeasuredHeight();
-        if (n - Math.abs(k - m) > this.Gfo) {
-          localView.setAlpha(Math.min(1.0F - Math.abs(k - m) / (n - this.Gfo), 1.0F));
-        } else {
-          localView.setAlpha(0.0F);
+        j = (localView.getTop() + localView.getBottom()) / 2;
+        i1 = getHeight() / 2;
+        m = localView.getMeasuredHeight();
+        localObject = localView.findViewById(b.e.LSW);
+        if (!(localObject instanceof TextView)) {
+          break label170;
         }
+        localObject = (TextView)localObject;
+        if (localObject != null) {
+          break label176;
+        }
+        i = 0;
+        label95:
+        if (i <= 1) {
+          break label199;
+        }
+        i = m / 2;
+        j = (localView.getBottom() + j) / 2;
       }
     }
-    AppMethodBeat.o(231362);
+    for (;;)
+    {
+      if (i - Math.abs(j - i1) > this.MaH) {
+        localView.setAlpha(Math.min(1.0F - Math.abs(j - i1) / (i - this.MaH), 1.0F));
+      }
+      for (;;)
+      {
+        if (k < n) {
+          break label194;
+        }
+        AppMethodBeat.o(287294);
+        return;
+        label170:
+        localObject = null;
+        break;
+        label176:
+        i = ((TextView)localObject).getLineCount();
+        break label95;
+        localView.setAlpha(0.0F);
+      }
+      label194:
+      i = k;
+      break;
+      label199:
+      i = m;
+    }
   }
   
   public final void onLayoutCompleted(RecyclerView.s params)
   {
-    AppMethodBeat.i(231357);
+    AppMethodBeat.i(287299);
     super.onLayoutCompleted(params);
-    cWY();
-    AppMethodBeat.o(231357);
+    dDo();
+    AppMethodBeat.o(287299);
   }
   
   public final int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(231358);
+    AppMethodBeat.i(287302);
     paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
-    cWY();
-    AppMethodBeat.o(231358);
+    dDo();
+    AppMethodBeat.o(287302);
     return paramInt;
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(231360);
-    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
-    paramRecyclerView = new a(paramRecyclerView, paramRecyclerView.getContext());
-    paramRecyclerView.cV(paramInt);
+    AppMethodBeat.i(287308);
+    s.u(paramRecyclerView, "recyclerView");
+    paramRecyclerView = new a(paramRecyclerView.getContext());
+    paramRecyclerView.cag = paramInt;
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(231360);
+    AppMethodBeat.o(287308);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    extends androidx.recyclerview.widget.p
+    extends o
   {
-    a(RecyclerView paramRecyclerView, Context paramContext)
+    a(Context paramContext)
     {
       super();
     }
     
-    public final float a(DisplayMetrics paramDisplayMetrics)
+    public final float c(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(228593);
-      kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
+      AppMethodBeat.i(287265);
+      s.u(paramDisplayMetrics, "displayMetrics");
       float f = 600.0F / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(228593);
+      AppMethodBeat.o(287265);
       return f;
     }
   }

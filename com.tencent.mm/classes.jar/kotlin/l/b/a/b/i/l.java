@@ -1,24 +1,24 @@
 package kotlin.l.b.a.b.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
-public final class l
+public enum l
 {
-  public static final Set<String> abjA;
-  
   static
   {
-    AppMethodBeat.i(59857);
-    abjA = new HashSet(Arrays.asList(new String[] { "package", "as", "typealias", "class", "this", "super", "val", "var", "fun", "for", "null", "true", "false", "is", "in", "throw", "return", "break", "continue", "object", "if", "try", "else", "while", "do", "when", "interface", "typeof" }));
-    AppMethodBeat.o(59857);
+    AppMethodBeat.i(59864);
+    ajix = new l("PRETTY", 0);
+    ajiy = new l("DEBUG", 1);
+    ajiz = new l("NONE", 2);
+    ajiA = new l[] { ajix, ajiy, ajiz };
+    AppMethodBeat.o(59864);
   }
+  
+  private l() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.i.l
  * JD-Core Version:    0.7.0.1
  */

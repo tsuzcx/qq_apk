@@ -7,201 +7,201 @@ import java.util.List;
 
 public final class h
 {
-  public boolean DK;
-  public List<f> DO;
-  int DP;
-  int DQ;
-  public final int[] DR;
-  List<f> DS;
-  List<f> DT;
-  HashSet<f> DU;
-  HashSet<f> DV;
-  List<f> DW;
-  List<f> DX;
+  public boolean bjS;
+  public List<f> bjW;
+  int bjX;
+  int bjY;
+  public final int[] bjZ;
+  List<f> bka;
+  List<f> bkb;
+  HashSet<f> bkc;
+  HashSet<f> bkd;
+  List<f> bke;
+  List<f> bkf;
   
   h(List<f> paramList)
   {
-    AppMethodBeat.i(229507);
-    this.DP = -1;
-    this.DQ = -1;
-    this.DK = false;
-    this.DR = new int[] { this.DP, this.DQ };
-    this.DS = new ArrayList();
-    this.DT = new ArrayList();
-    this.DU = new HashSet();
-    this.DV = new HashSet();
-    this.DW = new ArrayList();
-    this.DX = new ArrayList();
-    this.DO = paramList;
-    AppMethodBeat.o(229507);
+    AppMethodBeat.i(193995);
+    this.bjX = -1;
+    this.bjY = -1;
+    this.bjS = false;
+    this.bjZ = new int[] { this.bjX, this.bjY };
+    this.bka = new ArrayList();
+    this.bkb = new ArrayList();
+    this.bkc = new HashSet();
+    this.bkd = new HashSet();
+    this.bke = new ArrayList();
+    this.bkf = new ArrayList();
+    this.bjW = paramList;
+    AppMethodBeat.o(193995);
   }
   
   h(List<f> paramList, byte paramByte)
   {
-    AppMethodBeat.i(229509);
-    this.DP = -1;
-    this.DQ = -1;
-    this.DK = false;
-    this.DR = new int[] { this.DP, this.DQ };
-    this.DS = new ArrayList();
-    this.DT = new ArrayList();
-    this.DU = new HashSet();
-    this.DV = new HashSet();
-    this.DW = new ArrayList();
-    this.DX = new ArrayList();
-    this.DO = paramList;
-    this.DK = true;
-    AppMethodBeat.o(229509);
+    AppMethodBeat.i(194012);
+    this.bjX = -1;
+    this.bjY = -1;
+    this.bjS = false;
+    this.bjZ = new int[] { this.bjX, this.bjY };
+    this.bka = new ArrayList();
+    this.bkb = new ArrayList();
+    this.bkc = new HashSet();
+    this.bkd = new HashSet();
+    this.bke = new ArrayList();
+    this.bkf = new ArrayList();
+    this.bjW = paramList;
+    this.bjS = true;
+    AppMethodBeat.o(194012);
   }
   
   final void a(ArrayList<f> paramArrayList, f paramf)
   {
-    AppMethodBeat.i(229513);
-    if (paramf.Dd)
+    AppMethodBeat.i(194038);
+    if (paramf.bjl)
     {
-      AppMethodBeat.o(229513);
+      AppMethodBeat.o(194038);
       return;
     }
     paramArrayList.add(paramf);
-    paramf.Dd = true;
-    if (paramf.fz())
+    paramf.bjl = true;
+    if (paramf.CI())
     {
-      AppMethodBeat.o(229513);
+      AppMethodBeat.o(194038);
       return;
     }
     Object localObject;
     if ((paramf instanceof j))
     {
       localObject = (j)paramf;
-      j = ((j)localObject).Bl;
+      j = ((j)localObject).bht;
       i = 0;
       while (i < j)
       {
-        a(paramArrayList, localObject.Eg[i]);
+        a(paramArrayList, localObject.bko[i]);
         i += 1;
       }
     }
-    int j = paramf.Cx.length;
+    int j = paramf.biF.length;
     int i = 0;
     while (i < j)
     {
-      localObject = paramf.Cx[i].Bv;
+      localObject = paramf.biF[i].bhD;
       if (localObject != null)
       {
-        f localf = ((e)localObject).Bt;
-        if ((localObject != null) && (localf != paramf.CA)) {
+        f localf = ((e)localObject).bhB;
+        if ((localObject != null) && (localf != paramf.biI)) {
           a(paramArrayList, localf);
         }
       }
       i += 1;
     }
-    AppMethodBeat.o(229513);
+    AppMethodBeat.o(194038);
   }
   
   final void c(f paramf, int paramInt)
   {
-    AppMethodBeat.i(229511);
+    AppMethodBeat.i(194023);
     if (paramInt == 0)
     {
-      this.DU.add(paramf);
-      AppMethodBeat.o(229511);
+      this.bkc.add(paramf);
+      AppMethodBeat.o(194023);
       return;
     }
     if (paramInt == 1) {
-      this.DV.add(paramf);
+      this.bkd.add(paramf);
     }
-    AppMethodBeat.o(229511);
+    AppMethodBeat.o(194023);
   }
   
   void d(f paramf)
   {
-    AppMethodBeat.i(229519);
+    AppMethodBeat.i(194062);
     int j;
     e locale;
     label50:
     int i;
-    if (paramf.Db)
+    if (paramf.bjj)
     {
-      if (paramf.fz())
+      if (paramf.CI())
       {
-        AppMethodBeat.o(229519);
+        AppMethodBeat.o(194062);
         return;
       }
-      if (paramf.Cr.Bv != null)
+      if (paramf.biy.bhD != null)
       {
         j = 1;
         if (j == 0) {
           break label222;
         }
-        locale = paramf.Cr.Bv;
+        locale = paramf.biy.bhD;
         if (locale == null) {
           break label456;
         }
-        if (!locale.Bt.Dc) {
-          d(locale.Bt);
+        if (!locale.bhB.bjk) {
+          d(locale.bhB);
         }
-        if (locale.Bu != e.c.BO) {
+        if (locale.bhC != e.c.bhV) {
           break label234;
         }
-        i = locale.Bt.CD;
-        i = locale.Bt.getWidth() + i;
+        i = locale.bhB.biL;
+        i = locale.bhB.getWidth() + i;
       }
     }
     for (;;)
     {
       label106:
       if (j != 0) {
-        i -= paramf.Cr.fv();
+        i -= paramf.biy.CE();
       }
       for (;;)
       {
-        paramf.w(i - paramf.getWidth(), i);
-        if (paramf.Ct.Bv == null) {
+        paramf.aq(i - paramf.getWidth(), i);
+        if (paramf.biB.bhD == null) {
           break label275;
         }
-        locale = paramf.Ct.Bv;
-        if (!locale.Bt.Dc) {
-          d(locale.Bt);
+        locale = paramf.biB.bhD;
+        if (!locale.bhB.bjk) {
+          d(locale.bhB);
         }
-        i = locale.Bt.CE;
-        i = locale.Bt.CN + i - paramf.CN;
-        paramf.x(i, paramf.mHeight + i);
-        paramf.Dc = true;
-        AppMethodBeat.o(229519);
+        i = locale.bhB.biM;
+        i = locale.bhB.biV + i - paramf.biV;
+        paramf.ar(i, paramf.mHeight + i);
+        paramf.bjk = true;
+        AppMethodBeat.o(194062);
         return;
         j = 0;
         break;
         label222:
-        locale = paramf.Cp.Bv;
+        locale = paramf.biw.bhD;
         break label50;
         label234:
-        if (locale.Bu != e.c.BM) {
+        if (locale.bhC != e.c.bhT) {
           break label456;
         }
-        i = locale.Bt.CD;
+        i = locale.bhB.biL;
         break label106;
-        i += paramf.Cp.fv() + paramf.getWidth();
+        i += paramf.biw.CE() + paramf.getWidth();
       }
       label275:
       int k;
-      if (paramf.Cs.Bv != null)
+      if (paramf.biA.bhD != null)
       {
         k = 1;
         if (k == 0) {
           break label401;
         }
-        locale = paramf.Cs.Bv;
+        locale = paramf.biA.bhD;
         label302:
         j = i;
         if (locale != null)
         {
-          if (!locale.Bt.Dc) {
-            d(locale.Bt);
+          if (!locale.bhB.bjk) {
+            d(locale.bhB);
           }
-          if (locale.Bu != e.c.BP) {
+          if (locale.bhC != e.c.bhW) {
             break label413;
           }
-          j = locale.Bt.CE + locale.Bt.getHeight();
+          j = locale.bhB.biM + locale.bhB.getHeight();
         }
         label358:
         if (k == 0) {
@@ -211,21 +211,21 @@ public final class h
       label401:
       label413:
       label438:
-      for (i = j - paramf.Cs.fv();; i = j + (paramf.Cq.fv() + paramf.getHeight()))
+      for (i = j - paramf.biA.CE();; i = j + (paramf.bix.CE() + paramf.getHeight()))
       {
-        paramf.x(i - paramf.getHeight(), i);
-        paramf.Dc = true;
-        AppMethodBeat.o(229519);
+        paramf.ar(i - paramf.getHeight(), i);
+        paramf.bjk = true;
+        AppMethodBeat.o(194062);
         return;
         k = 0;
         break;
-        locale = paramf.Cq.Bv;
+        locale = paramf.bix.bhD;
         break label302;
         j = i;
-        if (locale.Bu != e.c.BN) {
+        if (locale.bhC != e.c.bhU) {
           break label358;
         }
-        j = locale.Bt.CE;
+        j = locale.bhB.biM;
         break label358;
       }
       label456:
@@ -235,7 +235,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.h
  * JD-Core Version:    0.7.0.1
  */

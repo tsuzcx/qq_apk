@@ -1,49 +1,47 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelvideo/ParallelParam;", "", "enableParallel", "", "maxParallelSize", "", "(ZI)V", "getEnableParallel", "()Z", "setEnableParallel", "(Z)V", "getMaxParallelSize", "()I", "setMaxParallelSize", "(I)V", "component1", "component2", "copy", "equals", "other", "hashCode", "toString", "", "plugin-videologic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
 {
-  public static final String XE(String paramString)
+  public boolean oZL = false;
+  public int oZM = 2;
+  
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(126890);
-    if (Util.isNullOrNil(paramString))
+    if (this == paramObject) {}
+    do
     {
-      AppMethodBeat.o(126890);
-      return null;
-    }
-    paramString = bqu() + paramString;
-    AppMethodBeat.o(126890);
-    return paramString;
+      return true;
+      if (!(paramObject instanceof o)) {
+        return false;
+      }
+      paramObject = (o)paramObject;
+      if (this.oZL != paramObject.oZL) {
+        return false;
+      }
+    } while (this.oZM == paramObject.oZM);
+    return false;
   }
   
-  public static final String XF(String paramString)
+  public final int hashCode()
   {
-    AppMethodBeat.i(126891);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(126891);
-      return null;
-    }
-    paramString = bqu() + paramString + ".thumb";
-    AppMethodBeat.o(126891);
-    return paramString;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static final String bqu()
+  public final String toString()
   {
-    AppMethodBeat.i(126889);
-    String str = h.aHG().kcB + "draft/";
-    AppMethodBeat.o(126889);
+    AppMethodBeat.i(241261);
+    String str = "ParallelParam(enableParallel=" + this.oZL + ", maxParallelSize=" + this.oZM + ')';
+    AppMethodBeat.o(241261);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelvideo.o
  * JD-Core Version:    0.7.0.1
  */

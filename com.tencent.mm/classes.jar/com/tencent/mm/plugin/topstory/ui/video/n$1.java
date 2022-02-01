@@ -1,47 +1,49 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.plugin.topstory.a.c.e;
-import com.tencent.mm.protocal.protobuf.adv;
-import com.tencent.mm.protocal.protobuf.duo;
-import com.tencent.mm.protocal.protobuf.esy;
-import com.tencent.mm.protocal.protobuf.eta;
-import com.tencent.mm.protocal.protobuf.eyr;
-import com.tencent.mm.protocal.protobuf.faz;
-import com.tencent.mm.protocal.protobuf.fbk;
-import com.tencent.mm.protocal.protobuf.fbl;
-import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.plugin.topstory.a.g;
+import com.tencent.mm.protocal.protobuf.agg;
+import com.tencent.mm.protocal.protobuf.enm;
+import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.protocal.protobuf.foj;
+import com.tencent.mm.protocal.protobuf.fuk;
+import com.tencent.mm.protocal.protobuf.fxg;
+import com.tencent.mm.protocal.protobuf.fxv;
+import com.tencent.mm.protocal.protobuf.fxw;
+import com.tencent.mm.protocal.protobuf.xa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 final class n$1
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
   n$1(n paramn, e parame) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(126121);
-    if (((paramq instanceof e)) && (paramq.equals(this.Naw)))
+    if (((paramp instanceof e)) && (paramp.equals(this.TNf)))
     {
-      com.tencent.mm.kernel.h.aGY().b(this.Naw.getType(), this);
+      com.tencent.mm.kernel.h.aZW().b(this.TNf.getType(), this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch videourl failed!, errType %s, errCode %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
         AppMethodBeat.o(126121);
         return;
       }
-      paramString = (duo)d.c.b(((e)paramq).rr.lBS);
-      com.tencent.e.h.ZvG.be(new com.tencent.e.i.h()
+      paramString = (enm)c.c.b(((e)paramp).rr.otC);
+      com.tencent.threadpool.h.ahAA.bm(new com.tencent.threadpool.i.h()
       {
         public final String getKey()
         {
@@ -52,38 +54,38 @@ final class n$1
         {
           AppMethodBeat.i(126120);
           ArrayList localArrayList = new ArrayList();
-          ??? = paramString.UaR.RLp.iterator();
+          ??? = paramString.abrY.YIB.iterator();
           Object localObject4;
           Object localObject3;
           Object localObject5;
           Object localObject6;
           while (((Iterator)???).hasNext())
           {
-            localObject4 = (fbl)((Iterator)???).next();
-            localObject3 = new esy();
-            if (!Util.isNullOrNil(((fbl)localObject4).UBo.sSY))
+            localObject4 = (fxw)((Iterator)???).next();
+            localObject3 = new foh();
+            if (!Util.isNullOrNil(((fxw)localObject4).abVx.vYo))
             {
-              ((esy)localObject3).Crh = ((fbl)localObject4).UBo.sSY;
-              if ((((fbl)localObject4).UBq != null) && (((fbl)localObject4).UBq.UAQ == 1)) {
-                if ((((fbl)localObject4).UBq.UAS != null) && (!Util.isNullOrNil(((fbl)localObject4).UBq.UAS.SgM)))
+              ((foh)localObject3).Ido = ((fxw)localObject4).abVx.vYo;
+              if ((((fxw)localObject4).abVz != null) && (((fxw)localObject4).abVz.abUT == 1)) {
+                if ((((fxw)localObject4).abVz.abUV != null) && (!Util.isNullOrNil(((fxw)localObject4).abVz.abUV.ZeN)))
                 {
-                  ((esy)localObject3).Uvc.clear();
-                  ((esy)localObject3).Uvh = ((fbl)localObject4).UBq.UAT;
-                  localObject4 = ((fbl)localObject4).UBq.UAS.SgM.iterator();
+                  ((foh)localObject3).abOD.clear();
+                  ((foh)localObject3).abOI = ((fxw)localObject4).abVz.abUW;
+                  localObject4 = ((fxw)localObject4).abVz.abUV.ZeN.iterator();
                   while (((Iterator)localObject4).hasNext())
                   {
-                    localObject5 = (eyr)((Iterator)localObject4).next();
-                    localObject6 = new eta();
-                    ((eta)localObject6).url = ((eyr)localObject5).UyT.Ap();
-                    ((eta)localObject6).Uvk = 0;
-                    ((esy)localObject3).Uvc.add(localObject6);
-                    ((esy)localObject3).Uvb = ((eyr)localObject5).UyV;
+                    localObject5 = (fuk)((Iterator)localObject4).next();
+                    localObject6 = new foj();
+                    ((foj)localObject6).url = ((fuk)localObject5).abSD.ZV();
+                    ((foj)localObject6).abOL = 0;
+                    ((foh)localObject3).abOD.add(localObject6);
+                    ((foh)localObject3).abOC = ((fuk)localObject5).abSF;
                   }
-                  localObject4 = com.tencent.mm.plugin.topstory.a.h.iy(((esy)localObject3).Uvc);
+                  localObject4 = g.lD(((foh)localObject3).abOD);
                   if (localObject4 != null)
                   {
-                    ((esy)localObject3).videoUrl = ((eta)localObject4).url;
-                    ((esy)localObject3).Uvk = ((eta)localObject4).Uvk;
+                    ((foh)localObject3).videoUrl = ((foj)localObject4).url;
+                    ((foh)localObject3).abOL = ((foj)localObject4).abOL;
                   }
                 }
               }
@@ -91,41 +93,41 @@ final class n$1
               {
                 localArrayList.add(localObject3);
                 break;
-                if ((((fbl)localObject4).UBq != null) && (((fbl)localObject4).UBq.UAQ == 2))
+                if ((((fxw)localObject4).abVz != null) && (((fxw)localObject4).abVz.abUT == 2))
                 {
-                  if ((((fbl)localObject4).UBq.UAR != null) && (!Util.isNullOrNil(((fbl)localObject4).UBq.UAR.SgM)))
+                  if ((((fxw)localObject4).abVz.abUU != null) && (!Util.isNullOrNil(((fxw)localObject4).abVz.abUU.ZeN)))
                   {
-                    ((esy)localObject3).Uvc.clear();
-                    ((esy)localObject3).Uvh = ((fbl)localObject4).UBq.UAT;
-                    localObject4 = ((fbl)localObject4).UBq.UAR.SgM.iterator();
+                    ((foh)localObject3).abOD.clear();
+                    ((foh)localObject3).abOI = ((fxw)localObject4).abVz.abUW;
+                    localObject4 = ((fxw)localObject4).abVz.abUU.ZeN.iterator();
                     while (((Iterator)localObject4).hasNext())
                     {
-                      localObject5 = (eyr)((Iterator)localObject4).next();
-                      localObject6 = new eta();
-                      ((eta)localObject6).url = ((eyr)localObject5).UyT.Ap();
-                      ((eta)localObject6).Uvk = 0;
-                      ((esy)localObject3).Uvc.add(localObject6);
-                      ((esy)localObject3).Uvb = ((eyr)localObject5).UyV;
+                      localObject5 = (fuk)((Iterator)localObject4).next();
+                      localObject6 = new foj();
+                      ((foj)localObject6).url = ((fuk)localObject5).abSD.ZV();
+                      ((foj)localObject6).abOL = 0;
+                      ((foh)localObject3).abOD.add(localObject6);
+                      ((foh)localObject3).abOC = ((fuk)localObject5).abSF;
                     }
-                    localObject4 = com.tencent.mm.plugin.topstory.a.h.iy(((esy)localObject3).Uvc);
+                    localObject4 = g.lD(((foh)localObject3).abOD);
                     if (localObject4 != null)
                     {
-                      ((esy)localObject3).videoUrl = ((eta)localObject4).url;
-                      ((esy)localObject3).Uvk = ((eta)localObject4).Uvk;
+                      ((foh)localObject3).videoUrl = ((foj)localObject4).url;
+                      ((foh)localObject3).abOL = ((foj)localObject4).abOL;
                     }
                   }
                 }
-                else if (!Util.isNullOrNil(((fbl)localObject4).UBr))
+                else if (!Util.isNullOrNil(((fxw)localObject4).abVA))
                 {
-                  ((esy)localObject3).Uvc.clear();
-                  n.b((esy)localObject3, ((fbl)localObject4).UBr, "");
-                  localObject5 = com.tencent.mm.plugin.topstory.a.h.iy(((esy)localObject3).Uvc);
+                  ((foh)localObject3).abOD.clear();
+                  n.b((foh)localObject3, ((fxw)localObject4).abVA, "");
+                  localObject5 = g.lD(((foh)localObject3).abOD);
                   if (localObject5 != null)
                   {
-                    ((esy)localObject3).videoUrl = ((eta)localObject5).url;
-                    ((esy)localObject3).Uvk = ((eta)localObject5).Uvk;
-                    if (((fbl)localObject4).UBq != null) {
-                      ((esy)localObject3).Uvh = ((fbl)localObject4).UBq.UAT;
+                    ((foh)localObject3).videoUrl = ((foj)localObject5).url;
+                    ((foh)localObject3).abOL = ((foj)localObject5).abOL;
+                    if (((fxw)localObject4).abVz != null) {
+                      ((foh)localObject3).abOI = ((fxw)localObject4).abVz.abUW;
                     }
                   }
                 }
@@ -135,9 +137,9 @@ final class n$1
           for (;;)
           {
             int i;
-            synchronized (n.1.this.Nax)
+            synchronized (n.1.this.TNg)
             {
-              localObject3 = n.1.this.Nax.eiH();
+              localObject3 = n.1.this.TNg.aiJ();
               if (Util.isNullOrNil((List)localObject3))
               {
                 AppMethodBeat.o(126120);
@@ -147,19 +149,19 @@ final class n$1
               if (i >= ((List)localObject3).size()) {
                 break;
               }
-              localObject4 = (esy)((List)localObject3).get(i);
+              localObject4 = (foh)((List)localObject3).get(i);
               localObject5 = localArrayList.iterator();
               if (((Iterator)localObject5).hasNext())
               {
-                localObject6 = (esy)((Iterator)localObject5).next();
-                if (!((esy)localObject4).Crh.equals(((esy)localObject6).Crh)) {
+                localObject6 = (foh)((Iterator)localObject5).next();
+                if (!((foh)localObject4).Ido.equals(((foh)localObject6).Ido)) {
                   continue;
                 }
-                ((esy)localObject4).Uvc = ((esy)localObject6).Uvc;
-                ((esy)localObject4).Uvb = ((esy)localObject6).Uvb;
-                ((esy)localObject4).videoUrl = ((esy)localObject6).videoUrl;
-                ((esy)localObject4).Uvh = ((esy)localObject6).Uvh;
-                Log.d("MicroMsg.TopStory.TopStoryVideoDataMgr", "item title:%s, after url:%s", new Object[] { ((esy)localObject4).title, ((esy)localObject4).videoUrl });
+                ((foh)localObject4).abOD = ((foh)localObject6).abOD;
+                ((foh)localObject4).abOC = ((foh)localObject6).abOC;
+                ((foh)localObject4).videoUrl = ((foh)localObject6).videoUrl;
+                ((foh)localObject4).abOI = ((foh)localObject6).abOI;
+                Log.d("MicroMsg.TopStory.TopStoryVideoDataMgr", "item title:%s, after url:%s", new Object[] { ((foh)localObject4).title, ((foh)localObject4).videoUrl });
               }
             }
             i += 1;

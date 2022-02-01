@@ -2,9 +2,11 @@ package com.tencent.mars.cdn;
 
 public class CronetLogic$CronetRequestParams$CronetTaskType
 {
+  public static final int CUSTOM_FILE_DOWNLOAD = 9;
   public static final int DEFAULT_HTTP_REQUEST = 8;
   public static final int HTTP2_DOWNLOAD = 4;
   public static final int HTTP2_REQUEST = 3;
+  public static final int HTTP_CHUNK_REQUEST = 10;
   public static final int HTTP_DOWNLOAD = 2;
   public static final int HTTP_REQUEST = 1;
   public static final int HTTP_UPLOAD = 7;

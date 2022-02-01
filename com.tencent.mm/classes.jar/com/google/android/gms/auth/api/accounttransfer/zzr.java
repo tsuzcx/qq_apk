@@ -4,11 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import androidx.b.a;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.server.response.FastJsonResponse.Field;
 import com.google.android.gms.internal.auth.zzbs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -16,23 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@SafeParcelable.Class(creator="AccountTransferProgressCreator")
 public class zzr
   extends zzbs
 {
   public static final Parcelable.Creator<zzr> CREATOR;
   private static final a<String, FastJsonResponse.Field<?, ?>> zzbp;
-  @SafeParcelable.Field(getter="getRegisteredAccountTypes", id=2)
   private List<String> zzbq;
-  @SafeParcelable.Field(getter="getInProgressAccountTypes", id=3)
   private List<String> zzbr;
-  @SafeParcelable.Field(getter="getSuccessAccountTypes", id=4)
   private List<String> zzbs;
-  @SafeParcelable.Field(getter="getFailedAccountTypes", id=5)
   private List<String> zzbt;
-  @SafeParcelable.Field(getter="getEscrowedAccountTypes", id=6)
   private List<String> zzbu;
-  @SafeParcelable.VersionField(id=1)
   private final int zzy;
   
   static
@@ -54,8 +42,7 @@ public class zzr
     this.zzy = 1;
   }
   
-  @SafeParcelable.Constructor
-  zzr(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) List<String> paramList1, @SafeParcelable.Param(id=3) List<String> paramList2, @SafeParcelable.Param(id=4) List<String> paramList3, @SafeParcelable.Param(id=5) List<String> paramList4, @SafeParcelable.Param(id=6) List<String> paramList5)
+  zzr(int paramInt, List<String> paramList1, List<String> paramList2, List<String> paramList3, List<String> paramList4, List<String> paramList5)
   {
     this.zzy = paramInt;
     this.zzbq = paramList1;
@@ -159,7 +146,7 @@ public class zzr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.zzr
  * JD-Core Version:    0.7.0.1
  */

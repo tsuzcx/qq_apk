@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import org.json.JSONObject;
 
 public class PathMoveToActionArg
@@ -55,10 +55,10 @@ public class PathMoveToActionArg
     return false;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145302);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     AppMethodBeat.o(145302);
@@ -69,8 +69,8 @@ public class PathMoveToActionArg
     AppMethodBeat.i(145300);
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.x = g.f(paramJSONObject, 0);
-    this.y = g.f(paramJSONObject, 1);
+    this.x = i.f(paramJSONObject, 0);
+    this.y = i.f(paramJSONObject, 1);
     AppMethodBeat.o(145300);
   }
   
@@ -85,7 +85,7 @@ public class PathMoveToActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathMoveToActionArg
  * JD-Core Version:    0.7.0.1
  */

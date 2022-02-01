@@ -1,153 +1,98 @@
 package com.tencent.mm.plugin.wallet_core.utils;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cmb;
-import com.tencent.mm.protocal.protobuf.coi;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.accessibility.type.ViewType;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet_core/utils/RealNameProcessAccessibilityConfig;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
+  extends MMBaseAccessibilityConfig
 {
-  public boolean Phv = false;
-  MMActivity activity;
-  
-  public g(MMActivity paramMMActivity)
+  public g(AppCompatActivity paramAppCompatActivity)
   {
-    this.activity = paramMMActivity;
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(301416);
+    AppMethodBeat.o(301416);
   }
   
-  private void a(final cmb paramcmb, final a parama)
+  public final void initConfig()
   {
-    AppMethodBeat.i(209299);
-    if (paramcmb.Phf == 1)
-    {
-      h.a(this.activity, paramcmb.wording, "", paramcmb.Phd.wording, false, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(214698);
-          parama.a(paramcmb.Phd);
-          g.a(g.this, paramcmb.Phd);
-          AppMethodBeat.o(214698);
-        }
-      });
-      AppMethodBeat.o(209299);
-      return;
-    }
-    if (paramcmb.Phf == 2) {
-      h.a(this.activity, paramcmb.wording, "", paramcmb.Phe.wording, paramcmb.Phd.wording, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(203104);
-          parama.a(paramcmb.Phd);
-          g.a(g.this, paramcmb.Phe);
-          AppMethodBeat.o(203104);
-        }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(272283);
-          parama.a(paramcmb.Phd);
-          g.a(g.this, paramcmb.Phd);
-          AppMethodBeat.o(272283);
-        }
-      });
-    }
-    AppMethodBeat.o(209299);
-  }
-  
-  public static boolean a(b paramb)
-  {
-    if (paramb == null) {}
-    while (paramb.Phf == 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(cmb paramcmb)
-  {
-    if (paramcmb == null) {}
-    while (paramcmb.Phf == 0) {
-      return false;
-    }
-    return true;
-  }
-  
-  public final void a(final b paramb, final a parama)
-  {
-    AppMethodBeat.i(209297);
-    if (paramb.Phf == 1)
-    {
-      h.a(this.activity, paramb.wording, "", paramb.Phd.wording, false, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(199355);
-          parama.a(paramb.Phd);
-          g.a(g.this, paramb.Phd);
-          AppMethodBeat.o(199355);
-        }
-      });
-      AppMethodBeat.o(209297);
-      return;
-    }
-    if (paramb.Phf == 2) {
-      h.a(this.activity, paramb.wording, "", paramb.Phe.wording, paramb.Phd.wording, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(271914);
-          parama.a(paramb.Phe);
-          g.a(g.this, paramb.Phe);
-          AppMethodBeat.o(271914);
-        }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(272561);
-          parama.a(paramb.Phd);
-          g.a(g.this, paramb.Phd);
-          AppMethodBeat.o(272561);
-        }
-      });
-    }
-    AppMethodBeat.o(209297);
-  }
-  
-  public final void b(b paramb)
-  {
-    AppMethodBeat.i(209296);
-    a(paramb, new a()
-    {
-      public final void a(coi paramAnonymouscoi) {}
-    });
-    AppMethodBeat.o(209296);
-  }
-  
-  public final void b(cmb paramcmb)
-  {
-    AppMethodBeat.i(209298);
-    a(paramcmb, new a()
-    {
-      public final void a(coi paramAnonymouscoi) {}
-    });
-    AppMethodBeat.o(209298);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(coi paramcoi);
+    AppMethodBeat.i(301432);
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(a.g.wc_pay_realname_verify_main_ui);
+    localConfigHelper.disable(a.f.wprv_security_tv);
+    localConfigHelper.view(a.f.wprv_security_layout).type(ViewType.Button).descFormat(a.i.wallet_text_accessibility).valueByView(a.f.wprv_security_tv);
+    localConfigHelper.focusFirst(a.f.wprv_title_tv);
+    localConfigHelper = root(a.g.wc_pay_realname_verify_id_input_ui);
+    localConfigHelper.disable(a.f.wc_pay_realname_verify_id_root_view);
+    localConfigHelper.disable(a.f.wc_pay_realname_verify_id_input_container);
+    localConfigHelper.disable(a.f.wc_pay_realname_verify_id_input_top_ll);
+    localConfigHelper.disable(a.f.wpri_name_et);
+    localConfigHelper.disable(a.f.wpri_crenum_et);
+    localConfigHelper.disable(a.f.wpri_mobile_et);
+    localConfigHelper = root(a.f.wpri_sex_et);
+    localConfigHelper.view(a.f.wpri_sex_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_nationality_et);
+    localConfigHelper.view(a.f.wpri_nationality_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_cretype_et);
+    localConfigHelper.view(a.f.wpri_cretype_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_cre_valid_date_et);
+    localConfigHelper.view(a.f.wpri_cre_valid_date_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_cre_invalid_date_et);
+    localConfigHelper.view(a.f.wpri_cre_invalid_date_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_cre_change_times_et);
+    localConfigHelper.view(a.f.wpri_cre_change_times_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_birthday_et);
+    localConfigHelper.view(a.f.wpri_birthday_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_profession_et);
+    localConfigHelper.view(a.f.wpri_profession_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.f.wpri_address_et);
+    localConfigHelper.view(a.f.wpri_address_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.g.wc_pay_realname_input_address_ui);
+    localConfigHelper.focusFirst(a.f.wpra_title_tv);
+    localConfigHelper.disable(a.f.wpra_root_content_layout);
+    localConfigHelper.disable(a.f.wpra_address_et);
+    localConfigHelper = root(a.f.wpra_zone_et);
+    localConfigHelper.view(a.f.wpra_zone_et).type(ViewType.Button).descFormat(a.i.wallet_double_text_accessibility).valueByView(a.f.wallet_title).valueByView(a.f.wallet_content);
+    localConfigHelper.disable(a.f.wallet_title);
+    localConfigHelper.disable(a.f.wallet_content);
+    localConfigHelper = root(a.g.wc_pay_realname_verify_code_ui);
+    localConfigHelper.focusFirst(a.f.wc_pay_realname_verify_title);
+    localConfigHelper.disable(a.f.wc_pay_realname_verify_container);
+    localConfigHelper.disable(a.f.wc_pay_realname_verify_top_ll);
+    localConfigHelper.disable(a.f.wprc_verify_code_et);
+    root(a.f.wprc_phone_et).disable(a.f.wallet_title);
+    root(a.g.wallet_set_pwd).focusFirst(a.f.wallet_pwd_title);
+    AppMethodBeat.o(301432);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.g
  * JD-Core Version:    0.7.0.1
  */

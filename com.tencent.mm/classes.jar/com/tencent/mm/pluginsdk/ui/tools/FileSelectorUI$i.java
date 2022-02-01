@@ -1,38 +1,51 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFavFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "cdnDataUrl", "", "getCdnDataUrl", "()Ljava/lang/String;", "setCdnDataUrl", "(Ljava/lang/String;)V", "dataId", "getDataId", "setDataId", "desc", "getDesc", "setDesc", "favTitle", "getFavTitle", "setFavTitle", "localId", "", "getLocalId", "()J", "setLocalId", "(J)V", "clone", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFavFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI$ListFileItem;", "Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;", "(Lcom/tencent/mm/pluginsdk/ui/tools/FileSelectorUI;)V", "cdnDataUrl", "", "getCdnDataUrl", "()Ljava/lang/String;", "setCdnDataUrl", "(Ljava/lang/String;)V", "dataId", "getDataId", "setDataId", "desc", "getDesc", "setDesc", "favTitle", "getFavTitle", "setFavTitle", "localId", "", "getLocalId", "()J", "setLocalId", "(J)V", "clone", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FileSelectorUI$i
   extends FileSelectorUI.j
 {
-  String Rwa;
-  String Rwb;
+  String Ysv;
+  String Ysw;
   String desc;
-  public String fEa;
+  public String hIQ;
   long localId;
   
   public FileSelectorUI$i()
   {
-    super(localFileSelectorUI);
+    super(localObject);
+    AppMethodBeat.i(245716);
+    AppMethodBeat.o(245716);
   }
   
-  public final String hns()
+  public final void brO(String paramString)
   {
-    AppMethodBeat.i(282508);
-    String str = this.fEa;
-    if (str == null) {
-      p.bGy("dataId");
+    AppMethodBeat.i(245731);
+    s.u(paramString, "<set-?>");
+    this.hIQ = paramString;
+    AppMethodBeat.o(245731);
+  }
+  
+  public final String iOk()
+  {
+    AppMethodBeat.i(245723);
+    String str = this.hIQ;
+    if (str != null)
+    {
+      AppMethodBeat.o(245723);
+      return str;
     }
-    AppMethodBeat.o(282508);
-    return str;
+    s.bIx("dataId");
+    AppMethodBeat.o(245723);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.i
  * JD-Core Version:    0.7.0.1
  */

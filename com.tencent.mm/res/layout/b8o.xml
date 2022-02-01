@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textColor="@color/a2x" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="@dimen/hw" android:contentDescription="分隔栏"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/g4q" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/g4d" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_location" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+            <TextView android:gravity="center_vertical" android:id="@id/g4s" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:layout_weight="1.0" app:layout_constraintLeft_toRightOf="@id/g4d" app:layout_constraintTop_toTopOf="hr_" style="@style/z8" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/g4t" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d4" android:layout_marginTop="@dimen/bv" android:text="@string/gbc" android:maxLines="1" app:layout_constraintHorizontal_weight="1.0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/g4s" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/g4m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/g54" android:background="@drawable/ad7" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/FG_2" android:gravity="center_vertical" android:id="@id/g55" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="@string/gb4" />
+        </LinearLayout>
+    </FrameLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
+</LinearLayout>

@@ -7,87 +7,87 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
 import androidx.appcompat.a.j;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import androidx.core.graphics.drawable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j
   extends i
 {
-  final SeekBar qZ;
-  Drawable ra;
-  private ColorStateList rb = null;
-  private PorterDuff.Mode rc = null;
-  private boolean rd = false;
-  private boolean re = false;
+  final SeekBar rW;
+  Drawable rX;
+  private ColorStateList rY = null;
+  private PorterDuff.Mode rZ = null;
+  private boolean sa = false;
+  private boolean sc = false;
   
   j(SeekBar paramSeekBar)
   {
     super(paramSeekBar);
-    this.qZ = paramSeekBar;
+    this.rW = paramSeekBar;
   }
   
-  private void ds()
+  private void er()
   {
-    AppMethodBeat.i(240956);
-    if ((this.ra != null) && ((this.rd) || (this.re)))
+    AppMethodBeat.i(199917);
+    if ((this.rX != null) && ((this.sa) || (this.sc)))
     {
-      this.ra = a.p(this.ra.mutate());
-      if (this.rd) {
-        a.a(this.ra, this.rb);
+      this.rX = a.s(this.rX.mutate());
+      if (this.sa) {
+        a.a(this.rX, this.rY);
       }
-      if (this.re) {
-        a.a(this.ra, this.rc);
+      if (this.sc) {
+        a.a(this.rX, this.rZ);
       }
-      if (this.ra.isStateful()) {
-        this.ra.setState(this.qZ.getDrawableState());
+      if (this.rX.isStateful()) {
+        this.rX.setState(this.rW.getDrawableState());
       }
     }
-    AppMethodBeat.o(240956);
+    AppMethodBeat.o(199917);
   }
   
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(240955);
+    AppMethodBeat.i(199927);
     super.a(paramAttributeSet, paramInt);
-    paramAttributeSet = ac.a(this.qZ.getContext(), paramAttributeSet, a.j.AppCompatSeekBar, paramInt, 0);
-    Drawable localDrawable = paramAttributeSet.aA(a.j.AppCompatSeekBar_android_thumb);
+    paramAttributeSet = ac.a(this.rW.getContext(), paramAttributeSet, a.j.AppCompatSeekBar, paramInt, 0);
+    Drawable localDrawable = paramAttributeSet.ax(a.j.AppCompatSeekBar_android_thumb);
     if (localDrawable != null) {
-      this.qZ.setThumb(localDrawable);
+      this.rW.setThumb(localDrawable);
     }
     localDrawable = paramAttributeSet.getDrawable(a.j.AppCompatSeekBar_tickMark);
-    if (this.ra != null) {
-      this.ra.setCallback(null);
+    if (this.rX != null) {
+      this.rX.setCallback(null);
     }
-    this.ra = localDrawable;
+    this.rX = localDrawable;
     if (localDrawable != null)
     {
-      localDrawable.setCallback(this.qZ);
-      a.b(localDrawable, w.I(this.qZ));
+      localDrawable.setCallback(this.rW);
+      a.b(localDrawable, z.U(this.rW));
       if (localDrawable.isStateful()) {
-        localDrawable.setState(this.qZ.getDrawableState());
+        localDrawable.setState(this.rW.getDrawableState());
       }
-      ds();
+      er();
     }
-    this.qZ.invalidate();
-    if (paramAttributeSet.aC(a.j.AppCompatSeekBar_tickMarkTintMode))
+    this.rW.invalidate();
+    if (paramAttributeSet.az(a.j.AppCompatSeekBar_tickMarkTintMode))
     {
-      this.rc = o.c(paramAttributeSet.getInt(a.j.AppCompatSeekBar_tickMarkTintMode, -1), this.rc);
-      this.re = true;
+      this.rZ = o.c(paramAttributeSet.getInt(a.j.AppCompatSeekBar_tickMarkTintMode, -1), this.rZ);
+      this.sc = true;
     }
-    if (paramAttributeSet.aC(a.j.AppCompatSeekBar_tickMarkTint))
+    if (paramAttributeSet.az(a.j.AppCompatSeekBar_tickMarkTint))
     {
-      this.rb = paramAttributeSet.getColorStateList(a.j.AppCompatSeekBar_tickMarkTint);
-      this.rd = true;
+      this.rY = paramAttributeSet.getColorStateList(a.j.AppCompatSeekBar_tickMarkTint);
+      this.sa = true;
     }
-    paramAttributeSet.wA.recycle();
-    ds();
-    AppMethodBeat.o(240955);
+    paramAttributeSet.xv.recycle();
+    er();
+    AppMethodBeat.o(199927);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.j
  * JD-Core Version:    0.7.0.1
  */

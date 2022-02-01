@@ -10,62 +10,62 @@ import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.ui.af;
 
 public class SnsFinderGuideView
   extends RelativeLayout
 {
-  private a KRk;
-  private Button kEt;
+  private a Rrd;
+  private Button nhC;
   
   public SnsFinderGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(246161);
-    this.kEt = null;
-    this.KRk = null;
+    AppMethodBeat.i(307705);
+    this.nhC = null;
+    this.Rrd = null;
     init();
-    AppMethodBeat.o(246161);
+    AppMethodBeat.o(307705);
   }
   
   public SnsFinderGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(246164);
-    this.kEt = null;
-    this.KRk = null;
+    AppMethodBeat.i(307709);
+    this.nhC = null;
+    this.Rrd = null;
     init();
-    AppMethodBeat.o(246164);
+    AppMethodBeat.o(307709);
   }
   
   private void init()
   {
-    AppMethodBeat.i(246166);
-    ad.kS(getContext()).inflate(i.g.sns_finder_guide_view, this);
-    this.kEt = ((Button)findViewById(i.f.sns_finder_guide_ok_btn));
-    this.kEt.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(307711);
+    af.mU(getContext()).inflate(b.g.sns_finder_guide_view, this);
+    this.nhC = ((Button)findViewById(b.f.sns_finder_guide_ok_btn));
+    this.nhC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(216970);
+        AppMethodBeat.i(308467);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/SnsFinderGuideView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/SnsFinderGuideView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (SnsFinderGuideView.a(SnsFinderGuideView.this) != null) {
           SnsFinderGuideView.a(SnsFinderGuideView.this);
         }
         a.a(this, "com/tencent/mm/plugin/sns/ui/SnsFinderGuideView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(216970);
+        AppMethodBeat.o(308467);
       }
     });
-    AppMethodBeat.o(246166);
+    AppMethodBeat.o(307711);
   }
   
   public void setOnFinishDialogViewCallback(a parama)
   {
-    this.KRk = parama;
+    this.Rrd = parama;
   }
   
   static abstract interface a {}

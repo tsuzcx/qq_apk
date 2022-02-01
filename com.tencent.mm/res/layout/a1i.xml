@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="@dimen/a1y" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bzd" android:background="@drawable/emoji_capture_sticker_item_more_bg" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/bt" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/bze" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:layout_marginTop="22.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/k6" android:textColor="?a28" android:gravity="center_horizontal" android:id="@id/bzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/brq" android:maxLines="2" android:layout_below="@id/bzd" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/fa8" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/f3g" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_margin="8.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <CheckBox android:id="@id/bal" android:background="@drawable/agt" android:focusable="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:scaleType="fitCenter" app:layout_constraintStart_toStartOf="@id/f3g" app:layout_constraintTop_toTopOf="@id/f3g" />
+</androidx.constraintlayout.widget.ConstraintLayout>

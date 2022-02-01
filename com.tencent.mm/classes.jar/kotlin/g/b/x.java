@@ -1,30 +1,36 @@
 package kotlin.g.b;
 
-import kotlin.l.a;
-import kotlin.l.p;
+import kotlin.l.b;
+import kotlin.l.i;
+import kotlin.l.q.a;
 
 public abstract class x
   extends w
-  implements p
+  implements i
 {
-  public x(Object paramObject)
+  public x(Object paramObject, Class paramClass, String paramString1, String paramString2)
   {
-    super(paramObject);
-  }
-  
-  protected final a iBX()
-  {
-    return ab.a(this);
+    super(paramObject, paramClass, paramString1, paramString2, 0);
   }
   
   public Object invoke()
   {
     return get();
   }
+  
+  public final q.a klB()
+  {
+    return ((i)klE()).klB();
+  }
+  
+  protected final b klm()
+  {
+    return ai.a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.g.b.x
  * JD-Core Version:    0.7.0.1
  */

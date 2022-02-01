@@ -1,11 +1,11 @@
 package com.tencent.mm.loader.g.a;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "libimageloader_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/loader/model/data/ILoaderData;", "", "isLegal", "", "uniqueValue", "", "libimageloader_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface c
 {
-  public abstract boolean a(com.tencent.mm.loader.g.c paramc);
+  public abstract String aUt();
 }
 
 

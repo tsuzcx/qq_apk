@@ -1,109 +1,82 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.kernel.c.c;
+import com.tencent.mm.kernel.c.d;
+import com.tencent.mm.kernel.c.d.a;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic;", "Lcom/tencent/mm/plugin/appbrand/IRuntimeAutoReLaunchLogicInterceptor;", "initialConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "appId", "", "kotlin.jvm.PlatformType", "getAppId", "()Ljava/lang/String;", "mCurrentConfig", "mLastAcceptableEnterScene", "", "scene", "getScene", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "onConfigUpdated", "", "newConfig", "shouldReLaunchOnConfigWillUpdate", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
 public final class ah
-  implements aj
+  extends d
 {
-  @Deprecated
-  public static final ah.a nyp;
-  private AppBrandInitConfigWC nyn;
-  private int nyo;
+  private final Set<Class<? extends a>> qxx;
+  private volatile d.a qxy;
   
-  static
+  public ah()
   {
-    AppMethodBeat.i(175104);
-    nyp = new ah.a((byte)0);
-    AppMethodBeat.o(175104);
-  }
-  
-  public ah(AppBrandInitConfigWC paramAppBrandInitConfigWC)
-  {
-    AppMethodBeat.i(175103);
-    this.nyn = paramAppBrandInitConfigWC;
-    this.nyo = paramAppBrandInitConfigWC.Qu().scene;
-    AppMethodBeat.o(175103);
-  }
-  
-  public final Boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC)
-  {
-    AppMethodBeat.i(175101);
-    p.k(paramAppBrandInitConfigWC, "newConfig");
-    if (!this.nyn.nYb)
+    AppMethodBeat.i(134622);
+    this.qxx = Collections.newSetFromMap(new ConcurrentHashMap());
+    super.a(new d.a()
     {
-      AppMethodBeat.o(175101);
-      return null;
-    }
-    label318:
-    for (;;)
-    {
-      try
+      public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
       {
-        if (1038 == paramAppBrandInitConfigWC.Qu().scene)
-        {
-          Log.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return false. appId[" + this.nyn.appId + "], reason=1038 back from other MiniProgram");
-          localObject1 = Boolean.FALSE;
-          return localObject1;
+        AppMethodBeat.i(134621);
+        d.a locala = ah.b(ah.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousa);
         }
-        Object localObject1 = (CharSequence)paramAppBrandInitConfigWC.nBq;
-        if (localObject1 != null)
-        {
-          if (((CharSequence)localObject1).length() == 0)
-          {
-            break label318;
-            if (i == 0)
-            {
-              Log.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return true appId[" + this.nyn.appId + "] enterPath[" + paramAppBrandInitConfigWC.nBq + ']');
-              localObject1 = Boolean.TRUE;
-              return localObject1;
-            }
-          }
-          else
-          {
-            i = 0;
-            continue;
-          }
-          if (this.nyo != paramAppBrandInitConfigWC.Qu().scene)
-          {
-            bool = true;
-            localObject1 = Boolean.valueOf(bool);
-            bool = ((Boolean)localObject1).booleanValue();
-            Log.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return " + bool + " appId[" + this.nyn.appId + "] mLastAcceptableScene[" + this.nyo + "] newScene[" + paramAppBrandInitConfigWC.Qu().scene + ']');
-            return localObject1;
-          }
-          boolean bool = false;
-          continue;
-        }
-        int i = 1;
+        AppMethodBeat.o(134621);
       }
-      finally
+      
+      public final void a(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
       {
-        c(paramAppBrandInitConfigWC);
-        AppMethodBeat.o(175101);
+        AppMethodBeat.i(134619);
+        ah.a(ah.this).add(paramAnonymousClass);
+        d.a locala = ah.b(ah.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134619);
       }
-    }
+      
+      public final void b(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134620);
+        d.a locala = ah.b(ah.this);
+        if (locala != null) {
+          locala.b(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134620);
+      }
+    });
+    AppMethodBeat.o(134622);
   }
   
-  public final void c(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public final void a(d.a parama)
   {
-    AppMethodBeat.i(175102);
-    p.k(paramAppBrandInitConfigWC, "newConfig");
-    this.nyn = paramAppBrandInitConfigWC;
-    if (1038 != paramAppBrandInitConfigWC.Qu().scene) {
-      this.nyo = paramAppBrandInitConfigWC.Qu().scene;
+    this.qxy = parama;
+  }
+  
+  public final void unregisterAll()
+  {
+    AppMethodBeat.i(134623);
+    Object localObject = new HashSet(this.qxx);
+    this.qxx.clear();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      super.ay((Class)((Iterator)localObject).next());
     }
-    AppMethodBeat.o(175102);
+    AppMethodBeat.o(134623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ah
  * JD-Core Version:    0.7.0.1
  */

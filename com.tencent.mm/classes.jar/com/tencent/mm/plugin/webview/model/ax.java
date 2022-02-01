@@ -7,37 +7,37 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ax
 {
-  public static ax PVR;
-  public f POP = null;
+  public static ax WMy;
+  public f WFb = null;
   public boolean hasInit;
   
   static
   {
     AppMethodBeat.i(79045);
-    PVR = new ax();
+    WMy = new ax();
     AppMethodBeat.o(79045);
   }
   
-  public static ax gVR()
+  public static ax ivy()
   {
-    return PVR;
+    return WMy;
   }
   
   public final void setNetWorkState(int paramInt)
   {
     AppMethodBeat.i(79044);
-    if (this.POP == null) {}
+    if (this.WFb == null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.WebViewVideoProxy", "set networkd state = %d, callbacker == null ? %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      if (this.POP == null) {
+      if (this.WFb == null) {
         break label105;
       }
       Bundle localBundle = new Bundle();
       localBundle.putInt("webview_video_proxy_net_state", paramInt);
       try
       {
-        this.POP.l(5005, localBundle);
+        this.WFb.m(5005, localBundle);
         AppMethodBeat.o(79044);
         return;
       }

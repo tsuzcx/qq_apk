@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.handoff.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.d;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff;", "Lcom/tencent/mm/kernel/plugin/IPlugin;", "Companion", "api-handoff_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff;", "Lcom/tencent/mm/kernel/plugin/IPlugin;", "Companion", "api-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
   extends d
 {
-  public static final a DrH = a.DrI;
+  public static final a Jlo = a.Jlp;
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff$Companion;", "", "()V", "CLASS", "", "api-handoff_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/handoff/api/IPluginHandOff$Companion;", "", "()V", "CLASS", "", "api-handoff_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
     static
     {
       AppMethodBeat.i(121691);
-      DrI = new a();
+      Jlp = new a();
       AppMethodBeat.o(121691);
     }
   }

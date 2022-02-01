@@ -4,8 +4,8 @@ public final class l
 {
   public static final class j
   {
-    public static final int BoxDialog = 2131820794;
-    public static final int BoxDialogNoAnimation = 2131820795;
+    public static final int BoxDialog = 2131820797;
+    public static final int BoxDialogNoAnimation = 2131820798;
   }
 }
 

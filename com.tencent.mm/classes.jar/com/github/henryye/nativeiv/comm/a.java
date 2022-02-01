@@ -13,13 +13,13 @@ import java.util.LinkedList;
 public class a
   implements b<NativeBitmapStruct>
 {
-  HashMap<Integer, NativeImage> aKN;
+  HashMap<Integer, NativeImage> cEJ;
   private NativeImageJni jni;
   
   public a()
   {
     AppMethodBeat.i(127373);
-    this.aKN = new HashMap();
+    this.cEJ = new HashMap();
     this.jni = new NativeImageJni();
     Object localObject = this.jni;
     if (((NativeImageJni)localObject).mNativeInst != 0L)
@@ -32,9 +32,17 @@ public class a
     AppMethodBeat.o(127373);
   }
   
+  public final IBitmap<NativeBitmapStruct> Qg()
+  {
+    AppMethodBeat.i(127374);
+    NativeImage localNativeImage = new NativeImage(this.jni, this);
+    AppMethodBeat.o(127374);
+    return localNativeImage;
+  }
+  
   public final boolean a(c paramc)
   {
-    return (paramc == c.aKF) || (paramc == c.aKE);
+    return (paramc == c.cEB) || (paramc == c.cEA);
   }
   
   public final void destroy()
@@ -47,11 +55,11 @@ public class a
     localObject1 = new LinkedList();
     try
     {
-      localIterator = this.aKN.values().iterator();
+      localIterator = this.cEJ.values().iterator();
       while (localIterator.hasNext()) {
         ((LinkedList)localObject1).push((NativeImage)localIterator.next());
       }
-      this.aKN.clear();
+      this.cEJ.clear();
     }
     finally
     {
@@ -64,18 +72,10 @@ public class a
     localObject2.clear();
     AppMethodBeat.o(127375);
   }
-  
-  public final IBitmap<NativeBitmapStruct> qD()
-  {
-    AppMethodBeat.i(127374);
-    NativeImage localNativeImage = new NativeImage(this.jni, this);
-    AppMethodBeat.o(127374);
-    return localNativeImage;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.a
  * JD-Core Version:    0.7.0.1
  */

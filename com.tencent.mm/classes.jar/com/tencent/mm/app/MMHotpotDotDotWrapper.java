@@ -6,11 +6,11 @@ import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.aa;
 import com.tencent.mm.booter.d;
-import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.compatible.util.k;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.sdk.platformtools.AndroidOSafety;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.af;
 import com.tencent.mm.xlog.app.a;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
@@ -18,94 +18,93 @@ import com.tencent.tinker.entry.ApplicationLike;
 public class MMHotpotDotDotWrapper
   implements ApplicationLifeCycle
 {
-  private static final String TAG = "MicroMsg.MMHotpotDotDotWrapper";
-  private final Application mApp;
+  private final long hhg;
+  private final Application hhh;
+  private final String hhi;
   private final ApplicationLike mAppLike;
-  private final String mCurrentProcessName;
-  private final long mProcessInitTimestamp;
   private h profile;
   
   public MMHotpotDotDotWrapper(ApplicationLike paramApplicationLike, String paramString)
   {
-    AppMethodBeat.i(186136);
-    this.mProcessInitTimestamp = System.currentTimeMillis();
+    AppMethodBeat.i(239099);
+    this.hhg = System.currentTimeMillis();
     this.profile = null;
-    this.mApp = paramApplicationLike.getApplication();
+    this.hhh = paramApplicationLike.getApplication();
     this.mAppLike = paramApplicationLike;
-    this.mCurrentProcessName = paramString;
-    AppMethodBeat.o(186136);
+    this.hhi = paramString;
+    AppMethodBeat.o(239099);
   }
   
   public void onBaseContextAttached(Context paramContext)
   {
-    AppMethodBeat.i(186138);
+    AppMethodBeat.i(239105);
     AndroidOSafety.replaceTargetVersion(paramContext.getApplicationInfo());
-    this.profile = new h(this.mCurrentProcessName, this.mApp, this.mAppLike);
-    this.profile.kfk.kfm = this.mProcessInitTimestamp;
-    ab.h(this.profile);
+    this.profile = new h(this.hhi, this.hhh, this.mAppLike);
+    this.profile.mFH.mFJ = this.hhg;
+    af.i(this.profile);
     paramContext.getClassLoader();
-    j.KW("stlport_shared");
+    k.DA("stlport_shared");
     paramContext.getClassLoader();
-    j.KW("c++_shared");
-    String str = a.ZaI;
+    k.DA("c++_shared");
+    String str = a.agYU;
     paramContext.getClassLoader();
-    j.KW(str);
-    this.profile.iQW = d.cc(this.profile.Zw);
-    this.profile.iQW.JC("HOTPOT..");
+    k.DA(str);
+    this.profile.lsS = d.cO(this.profile.bGP);
+    this.profile.lsS.Ci("HOTPOT..");
     Log.i("MicroMsg.MMHotpotDotDotWrapper", "Process %s startup", new Object[] { this.profile.mProcessName });
-    com.tencent.e.g.a(this.profile.Zw, new aa());
-    t.f(true, this.profile.mProcessName);
-    AppMethodBeat.o(186138);
+    com.tencent.threadpool.g.a(this.profile.bGP, new aa());
+    w.f(true, this.profile.mProcessName);
+    AppMethodBeat.o(239105);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(186159);
+    AppMethodBeat.i(239116);
     if (this.profile != null) {
       this.profile.onConfigurationChanged(paramConfiguration);
     }
-    AppMethodBeat.o(186159);
+    AppMethodBeat.o(239116);
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(186140);
+    AppMethodBeat.i(239109);
     if (this.profile != null) {
       this.profile.onCreate();
     }
-    AppMethodBeat.o(186140);
+    AppMethodBeat.o(239109);
   }
   
   public void onLowMemory()
   {
-    AppMethodBeat.i(186161);
+    AppMethodBeat.i(239119);
     if (this.profile != null) {
       this.profile.onLowMemory();
     }
-    AppMethodBeat.o(186161);
+    AppMethodBeat.o(239119);
   }
   
   public void onTerminate()
   {
-    AppMethodBeat.i(186165);
+    AppMethodBeat.i(239128);
     if (this.profile != null) {
       this.profile.onTerminate();
     }
-    AppMethodBeat.o(186165);
+    AppMethodBeat.o(239128);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(186163);
+    AppMethodBeat.i(239124);
     if (this.profile != null) {
       this.profile.onTrimMemory(paramInt);
     }
-    AppMethodBeat.o(186163);
+    AppMethodBeat.o(239124);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.app.MMHotpotDotDotWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -6,26 +6,26 @@ import java.util.Map;
 
 public class l
 {
-  private static volatile l jYS;
-  Map<String, BaseIPCService> jYT;
+  private static volatile l myP;
+  Map<String, BaseIPCService> myQ;
   
   private l()
   {
     AppMethodBeat.i(158752);
-    this.jYT = new HashMap();
+    this.myQ = new HashMap();
     AppMethodBeat.o(158752);
   }
   
-  public static l aFs()
+  public static l aYt()
   {
     AppMethodBeat.i(158753);
-    if (jYS == null) {}
+    if (myP == null) {}
     try
     {
-      if (jYS == null) {
-        jYS = new l();
+      if (myP == null) {
+        myP = new l();
       }
-      l locall = jYS;
+      l locall = myP;
       AppMethodBeat.o(158753);
       return locall;
     }
@@ -35,10 +35,10 @@ public class l
     }
   }
   
-  public final BaseIPCService Ms(String paramString)
+  public final BaseIPCService Fa(String paramString)
   {
     AppMethodBeat.i(158754);
-    paramString = (BaseIPCService)this.jYT.get(paramString);
+    paramString = (BaseIPCService)this.myQ.get(paramString);
     AppMethodBeat.o(158754);
     return paramString;
   }

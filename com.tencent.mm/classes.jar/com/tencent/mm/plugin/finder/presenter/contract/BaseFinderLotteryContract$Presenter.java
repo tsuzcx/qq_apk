@@ -6,232 +6,169 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.plugin.finder.b.f;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.j;
+import com.tencent.mm.view.RefreshLoadMoreLayout.b;
+import com.tencent.mm.view.RefreshLoadMoreLayout.d;
+import com.tencent.mm.view.k;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "getLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "proxyRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getProxyRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setProxyRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;)V", "generateAdapter", "getData", "Ljava/util/ArrayList;", "loadMore", "", "onAttach", "callback", "onDetach", "refresh", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "getLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "proxyRLayout", "Lcom/tencent/mm/view/IViewActionCallback;", "getProxyRLayout", "()Lcom/tencent/mm/view/IViewActionCallback;", "setProxyRLayout", "(Lcom/tencent/mm/view/IViewActionCallback;)V", "viewCallback", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;)V", "generateAdapter", "getData", "Ljava/util/ArrayList;", "loadMore", "", "onAttach", "callback", "onDetach", "refresh", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class BaseFinderLotteryContract$Presenter
   implements com.tencent.mm.plugin.finder.presenter.base.a<BaseFinderLotteryContract.ViewCallback>
 {
-  public static final Companion zMx = new Companion((byte)0);
-  public WxRecyclerAdapter<bu> xnR;
-  private j xvV;
-  BaseFinderLotteryContract.ViewCallback zMv;
-  public final BaseFeedLoader<bu> zMw;
+  public static final Companion EXp = new Companion((byte)0);
+  public WxRecyclerAdapter<cc> ALE;
+  private k ATF;
+  public final BaseFeedLoader<cc> CNJ;
+  BaseFinderLotteryContract.ViewCallback EXq;
   
-  public BaseFinderLotteryContract$Presenter(BaseFeedLoader<bu> paramBaseFeedLoader)
+  public BaseFinderLotteryContract$Presenter(BaseFeedLoader<cc> paramBaseFeedLoader)
   {
-    this.zMw = paramBaseFeedLoader;
-    this.xvV = ((j)new j()
+    this.CNJ = paramBaseFeedLoader;
+    this.ATF = ((k)new k()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(268409);
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onChanged();
-            AppMethodBeat.o(268409);
-            return;
-          }
+        AppMethodBeat.i(343728);
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onChanged();
         }
-        AppMethodBeat.o(268409);
+        AppMethodBeat.o(343728);
       }
       
       public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(268410);
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onItemRangeChanged(this.zMy.getAdapter().YSk.size() + paramAnonymousInt1, paramAnonymousInt2);
-            AppMethodBeat.o(268410);
-            return;
-          }
+        AppMethodBeat.i(343744);
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onItemRangeChanged(this.EXr.getAdapter().agOb.size() + paramAnonymousInt1, paramAnonymousInt2);
         }
-        AppMethodBeat.o(268410);
+        AppMethodBeat.o(343744);
       }
       
       public final void onItemRangeChanged(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(268411);
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onItemRangeChanged(this.zMy.getAdapter().YSk.size() + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
-            AppMethodBeat.o(268411);
-            return;
-          }
+        AppMethodBeat.i(343754);
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onItemRangeChanged(this.EXr.getAdapter().agOb.size() + paramAnonymousInt1, paramAnonymousInt2, paramAnonymousObject);
         }
-        AppMethodBeat.o(268411);
+        AppMethodBeat.o(343754);
       }
       
       public final void onItemRangeInserted(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(268412);
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onItemRangeInserted(this.zMy.getAdapter().YSk.size() + paramAnonymousInt1, paramAnonymousInt2);
-            AppMethodBeat.o(268412);
-            return;
-          }
+        AppMethodBeat.i(343763);
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onItemRangeInserted(this.EXr.getAdapter().agOb.size() + paramAnonymousInt1, paramAnonymousInt2);
         }
-        AppMethodBeat.o(268412);
+        AppMethodBeat.o(343763);
       }
       
       public final void onItemRangeRemoved(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(268413);
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onItemRangeRemoved(this.zMy.getAdapter().YSk.size() + paramAnonymousInt1, paramAnonymousInt2);
-            AppMethodBeat.o(268413);
-            return;
-          }
+        AppMethodBeat.i(343771);
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onItemRangeRemoved(this.EXr.getAdapter().agOb.size() + paramAnonymousInt1, paramAnonymousInt2);
         }
-        AppMethodBeat.o(268413);
+        AppMethodBeat.o(343771);
       }
       
-      public final void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(268407);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onPreFinishLoadMore(paramAnonymousc);
-            AppMethodBeat.o(268407);
-            return;
-          }
+        AppMethodBeat.i(343710);
+        s.u(paramAnonymousd, "reason");
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onPreFinishLoadMore(paramAnonymousd);
         }
-        AppMethodBeat.o(268407);
+        AppMethodBeat.o(343710);
       }
       
-      public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(268408);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onPreFinishLoadMoreSmooth(paramAnonymousc);
-            AppMethodBeat.o(268408);
-            return;
-          }
+        AppMethodBeat.i(343718);
+        s.u(paramAnonymousd, "reason");
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onPreFinishLoadMoreSmooth(paramAnonymousd);
         }
-        AppMethodBeat.o(268408);
+        AppMethodBeat.o(343718);
       }
       
-      public final void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramAnonymousc)
+      public final void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramAnonymousd)
       {
-        AppMethodBeat.i(268406);
-        p.k(paramAnonymousc, "reason");
-        Object localObject = this.zMy.zMv;
-        if (localObject != null)
-        {
-          localObject = ((BaseFinderLotteryContract.ViewCallback)localObject).dtq();
-          if (localObject != null)
-          {
-            ((RefreshLoadMoreLayout)localObject).onPreFinishRefresh(paramAnonymousc);
-            AppMethodBeat.o(268406);
-            return;
-          }
+        AppMethodBeat.i(343702);
+        s.u(paramAnonymousd, "reason");
+        BaseFinderLotteryContract.ViewCallback localViewCallback = this.EXr.EXq;
+        if (localViewCallback != null) {
+          localViewCallback.getRlLayout().onPreFinishRefresh(paramAnonymousd);
         }
-        AppMethodBeat.o(268406);
+        AppMethodBeat.o(343702);
       }
     });
   }
   
   public void a(BaseFinderLotteryContract.ViewCallback paramViewCallback)
   {
-    p.k(paramViewCallback, "callback");
-    this.xnR = dMR();
-    this.zMv = paramViewCallback;
-    paramViewCallback = this.zMv;
+    s.u(paramViewCallback, "callback");
+    Object localObject = eHW();
+    s.u(localObject, "<set-?>");
+    this.ALE = ((WxRecyclerAdapter)localObject);
+    this.EXq = paramViewCallback;
+    paramViewCallback = this.EXq;
     if (paramViewCallback != null)
     {
-      Object localObject = paramViewCallback.activity.findViewById(b.f.rl_layout);
-      p.j(localObject, "activity.findViewById(R.id.rl_layout)");
-      paramViewCallback.xvJ = ((RefreshLoadMoreLayout)localObject);
-      localObject = paramViewCallback.xvJ;
-      if (localObject == null) {
-        p.bGy("rlLayout");
-      }
-      ((RefreshLoadMoreLayout)localObject).setEnableRefresh(false);
-      localObject = paramViewCallback.xvJ;
-      if (localObject == null) {
-        p.bGy("rlLayout");
-      }
-      localObject = ((RefreshLoadMoreLayout)localObject).getRecyclerView();
+      localObject = paramViewCallback.activity.findViewById(p.e.rl_layout);
+      s.s(localObject, "activity.findViewById(R.id.rl_layout)");
+      localObject = (RefreshLoadMoreLayout)localObject;
+      s.u(localObject, "<set-?>");
+      paramViewCallback.ATx = ((RefreshLoadMoreLayout)localObject);
+      paramViewCallback.getRlLayout().setEnableRefresh(false);
+      localObject = paramViewCallback.getRlLayout().getRecyclerView();
       ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
-      ((RecyclerView)localObject).setAdapter((RecyclerView.a)paramViewCallback.zMz.getAdapter());
-      RefreshLoadMoreLayout localRefreshLoadMoreLayout = paramViewCallback.xvJ;
-      if (localRefreshLoadMoreLayout == null) {
-        p.bGy("rlLayout");
-      }
-      localRefreshLoadMoreLayout.setActionCallback((RefreshLoadMoreLayout.a)new BaseFinderLotteryContract.ViewCallback.initView.1(paramViewCallback, (RecyclerView)localObject));
-      paramViewCallback.pW(true);
+      ((RecyclerView)localObject).setAdapter((RecyclerView.a)paramViewCallback.EXs.getAdapter());
+      paramViewCallback.getRlLayout().setActionCallback((RefreshLoadMoreLayout.b)new BaseFinderLotteryContract.ViewCallback.initView.1(paramViewCallback, (RecyclerView)localObject));
+      paramViewCallback.pZ(true);
       d.a(300L, (kotlin.g.a.a)new BaseFinderLotteryContract.ViewCallback.initView.2(paramViewCallback));
     }
-    this.zMw.register(this.xvV);
+    this.CNJ.register(this.ATF);
   }
   
-  public final ArrayList<bu> cRP()
+  public final ArrayList<cc> dwi()
   {
-    return (ArrayList)this.zMw.getDataListJustForAdapter();
+    return (ArrayList)this.CNJ.getDataListJustForAdapter();
   }
   
-  public abstract WxRecyclerAdapter<bu> dMR();
+  public abstract WxRecyclerAdapter<cc> eHW();
   
-  public final WxRecyclerAdapter<bu> getAdapter()
+  public final WxRecyclerAdapter<cc> getAdapter()
   {
-    WxRecyclerAdapter localWxRecyclerAdapter = this.xnR;
-    if (localWxRecyclerAdapter == null) {
-      p.bGy("adapter");
+    WxRecyclerAdapter localWxRecyclerAdapter = this.ALE;
+    if (localWxRecyclerAdapter != null) {
+      return localWxRecyclerAdapter;
     }
-    return localWxRecyclerAdapter;
+    s.bIx("adapter");
+    return null;
   }
   
   public void onDetach()
   {
-    this.zMw.unregister(this.xvV);
+    this.CNJ.unregister(this.ATF);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter$Companion;", "", "()V", "TAG", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class Companion {}
 }
 

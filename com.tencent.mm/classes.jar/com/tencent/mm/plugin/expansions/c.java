@@ -1,74 +1,59 @@
 package com.tencent.mm.plugin.expansions;
 
-import android.util.Pair;
-import com.tencent.mars.smc.IDKey;
+import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.api.g;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
 
-final class c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "", "()V", "assetsCallback", "Lkotlin/Function1;", "Landroid/content/res/AssetManager;", "", "getAssetsCallback", "()Lkotlin/jvm/functions/Function1;", "setAssetsCallback", "(Lkotlin/jvm/functions/Function1;)V", "callbackFail", "Lkotlin/Function0;", "getCallbackFail", "()Lkotlin/jvm/functions/Function0;", "setCallbackFail", "(Lkotlin/jvm/functions/Function0;)V", "installSuccess", "getInstallSuccess", "setInstallSuccess", "invoke", "onFail", "block", "onGetAssets", "onInstalled", "expansions-visitor_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class c
 {
-  static final ArrayList<IDKey> vto;
-  static final List<Pair<String, Object>> vtp;
+  public a<ah> yFv;
+  a<ah> yFw;
+  public b<? super AssetManager, ah> yFx;
   
-  static
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/expansions/ExpansionsKtWrapper$invoke$1", "Lcom/tencent/mm/plugin/expansions/JExpansions$AssetsCallback;", "onFail", "", "onSuccess", "assetManager", "Landroid/content/res/AssetManager;", "expansions-visitor_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements e.a
   {
-    AppMethodBeat.i(152978);
-    vto = new ArrayList();
-    vtp = new ArrayList();
-    AppMethodBeat.o(152978);
-  }
-  
-  public static void dbj()
-  {
-    AppMethodBeat.i(152974);
-    h.aHH().a(new g()
+    a(c paramc) {}
+    
+    public final void a(AssetManager paramAssetManager)
     {
-      public final void abB()
-      {
-        AppMethodBeat.i(152973);
-        h.aHH().b(this);
-        c.access$000();
-        AppMethodBeat.o(152973);
+      AppMethodBeat.i(152981);
+      s.u(paramAssetManager, "assetManager");
+      b localb = this.yFy.yFx;
+      if (localb != null) {
+        localb.invoke(paramAssetManager);
       }
-      
-      public final void dn(boolean paramAnonymousBoolean) {}
-    });
-    AppMethodBeat.o(152974);
-  }
-  
-  public static void dbk()
-  {
-    AppMethodBeat.i(152976);
-    Iterator localIterator = vtp.iterator();
-    while (localIterator.hasNext())
-    {
-      Pair localPair = (Pair)localIterator.next();
-      if ((localPair.second instanceof String)) {
-        Log.i((String)localPair.first, "pending log: " + localPair.second);
-      }
-      if ((localPair.second instanceof Throwable)) {
-        Log.printErrStackTrace((String)localPair.first, (Throwable)localPair.second, "pending exception", new Object[0]);
-      }
+      AppMethodBeat.o(152981);
     }
-    vtp.clear();
-    AppMethodBeat.o(152976);
   }
   
-  public static void gx(String paramString1, String paramString2)
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/expansions/ExpansionsKtWrapper$invoke$2", "Lcom/tencent/mm/plugin/expansions/JExpansions$Callback;", "onFail", "", "onSuccess", "behavior", "Lcom/tencent/mm/toolkit/frontia/ext/ShareLibrary$SoLibBehavior;", "expansions-visitor_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements e.b
   {
-    AppMethodBeat.i(152975);
-    vtp.add(new Pair(paramString1, paramString2));
-    AppMethodBeat.o(152975);
+    b(c paramc) {}
+    
+    public final void a(com.tencent.mm.toolkit.frontia.a.c.a parama)
+    {
+      AppMethodBeat.i(152982);
+      s.u(parama, "behavior");
+      parama = this.yFy.yFw;
+      if (parama != null) {
+        parama.invoke();
+      }
+      AppMethodBeat.o(152982);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.c
  * JD-Core Version:    0.7.0.1
  */

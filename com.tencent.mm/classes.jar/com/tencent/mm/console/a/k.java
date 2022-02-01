@@ -69,11 +69,11 @@ public final class k
       }
       i = 3;
       break;
-      com.tencent.mm.platformtools.ac.mGG = true;
-      com.tencent.mm.platformtools.ac.mGF = true;
+      com.tencent.mm.platformtools.z.pDg = true;
+      com.tencent.mm.platformtools.z.pDf = true;
       continue;
-      com.tencent.mm.platformtools.ac.mGG = false;
-      com.tencent.mm.platformtools.ac.mGF = false;
+      com.tencent.mm.platformtools.z.pDg = false;
+      com.tencent.mm.platformtools.z.pDf = false;
       continue;
       i = 8888;
       if (paramArrayOfString.length >= 3) {

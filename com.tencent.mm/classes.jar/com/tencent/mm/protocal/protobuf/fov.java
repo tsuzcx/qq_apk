@@ -3,83 +3,90 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fov
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int ChC;
-  public String EtG;
-  public boolean UMS;
-  public String nickname;
+  public String AesKey;
+  public long IcI;
+  public String YKw;
+  public int abPb;
+  public int abPc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153328);
+    AppMethodBeat.i(127506);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.ChC);
-      if (this.EtG != null) {
-        paramVarArgs.f(2, this.EtG);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.abPb);
+      if (this.YKw != null) {
+        paramVarArgs.g(2, this.YKw);
       }
-      if (this.nickname != null) {
-        paramVarArgs.f(3, this.nickname);
+      if (this.AesKey != null) {
+        paramVarArgs.g(3, this.AesKey);
       }
-      paramVarArgs.co(4, this.UMS);
-      AppMethodBeat.o(153328);
+      paramVarArgs.bS(4, this.abPc);
+      paramVarArgs.bv(5, this.IcI);
+      AppMethodBeat.o(127506);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.ChC) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.abPb) + 0;
       paramInt = i;
-      if (this.EtG != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.EtG);
+      if (this.YKw != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.YKw);
       }
       i = paramInt;
-      if (this.nickname != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.nickname);
+      if (this.AesKey != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.AesKey);
       }
-      paramInt = g.a.a.b.b.a.gL(4);
-      AppMethodBeat.o(153328);
-      return i + (paramInt + 1);
+      paramInt = i.a.a.b.b.a.cJ(4, this.abPc);
+      int j = i.a.a.b.b.a.q(5, this.IcI);
+      AppMethodBeat.o(127506);
+      return i + paramInt + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(153328);
+      AppMethodBeat.o(127506);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       fov localfov = (fov)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(153328);
+        AppMethodBeat.o(127506);
         return -1;
       case 1: 
-        localfov.ChC = locala.abFh.AK();
-        AppMethodBeat.o(153328);
+        localfov.abPb = locala.ajGk.aar();
+        AppMethodBeat.o(127506);
         return 0;
       case 2: 
-        localfov.EtG = locala.abFh.readString();
-        AppMethodBeat.o(153328);
+        localfov.YKw = locala.ajGk.readString();
+        AppMethodBeat.o(127506);
         return 0;
       case 3: 
-        localfov.nickname = locala.abFh.readString();
-        AppMethodBeat.o(153328);
+        localfov.AesKey = locala.ajGk.readString();
+        AppMethodBeat.o(127506);
+        return 0;
+      case 4: 
+        localfov.abPc = locala.ajGk.aar();
+        AppMethodBeat.o(127506);
         return 0;
       }
-      localfov.UMS = locala.abFh.AB();
-      AppMethodBeat.o(153328);
+      localfov.IcI = locala.ajGk.aaw();
+      AppMethodBeat.o(127506);
       return 0;
     }
-    AppMethodBeat.o(153328);
+    AppMethodBeat.o(127506);
     return -1;
   }
 }

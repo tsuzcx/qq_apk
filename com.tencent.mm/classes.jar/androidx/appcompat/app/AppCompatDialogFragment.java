@@ -11,15 +11,15 @@ public class AppCompatDialogFragment
 {
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    AppMethodBeat.i(238363);
+    AppMethodBeat.i(200371);
     paramBundle = new e(getContext(), getTheme());
-    AppMethodBeat.o(238363);
+    AppMethodBeat.o(200371);
     return paramBundle;
   }
   
   public void setupDialog(Dialog paramDialog, int paramInt)
   {
-    AppMethodBeat.i(238364);
+    AppMethodBeat.i(200380);
     if ((paramDialog instanceof e))
     {
       e locale = (e)paramDialog;
@@ -28,19 +28,19 @@ public class AppCompatDialogFragment
       }
       for (;;)
       {
-        AppMethodBeat.o(238364);
+        AppMethodBeat.o(200380);
         return;
         paramDialog.getWindow().addFlags(24);
-        locale.bb();
+        locale.bU();
       }
     }
     super.setupDialog(paramDialog, paramInt);
-    AppMethodBeat.o(238364);
+    AppMethodBeat.o(200380);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     androidx.appcompat.app.AppCompatDialogFragment
  * JD-Core Version:    0.7.0.1
  */

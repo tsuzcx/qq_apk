@@ -1,53 +1,54 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bcp;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.bmr;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/modelsns/SnsFinderShareLive;", "Lcom/tencent/mm/modelsns/SnsTimeLineObjectPiece;", "()V", "shareLive", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getShareLive", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "setShareLive", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;)V", "makeContent", "", "parseContent", "", "tagPrefix", "values", "", "plugin-sns_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelsns/SnsFinderShareLive;", "Lcom/tencent/mm/modelsns/SnsTimeLineObjectPiece;", "()V", "shareLive", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getShareLive", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "setShareLive", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;)V", "makeContent", "", "parseContent", "", "tagPrefix", "values", "", "plugin-sns_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements k
 {
-  public bcp mbh;
+  public bmr oUb;
   
   public d()
   {
-    AppMethodBeat.i(269480);
-    this.mbh = new bcp();
-    AppMethodBeat.o(269480);
+    AppMethodBeat.i(233230);
+    this.oUb = new bmr();
+    AppMethodBeat.o(233230);
   }
   
-  public final void a(bcp parambcp)
+  public final void a(bmr parambmr)
   {
-    AppMethodBeat.i(269474);
-    p.k(parambcp, "<set-?>");
-    this.mbh = parambcp;
-    AppMethodBeat.o(269474);
+    AppMethodBeat.i(233234);
+    s.u(parambmr, "<set-?>");
+    this.oUb = parambmr;
+    AppMethodBeat.o(233234);
   }
   
-  public final String boV()
+  public final String bMC()
   {
-    AppMethodBeat.i(269476);
-    String str = com.tencent.mm.plugin.findersdk.a.k.c(this.mbh);
-    p.j(str, "FinderShareParser.makeContent(shareLive)");
-    AppMethodBeat.o(269476);
+    AppMethodBeat.i(233237);
+    String str = q.c(this.oUb);
+    s.s(str, "makeContent(shareLive)");
+    AppMethodBeat.o(233237);
     return str;
   }
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(269478);
-    paramString = com.tencent.mm.plugin.findersdk.a.k.u(paramString, paramMap);
-    p.j(paramString, "FinderShareParser.parseF…erLive(tagPrefix, values)");
-    this.mbh = paramString;
-    AppMethodBeat.o(269478);
+    AppMethodBeat.i(233244);
+    paramString = q.z(paramString, paramMap);
+    s.s(paramString, "parseFinderLive(tagPrefix, values)");
+    this.oUb = paramString;
+    AppMethodBeat.o(233244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelsns.d
  * JD-Core Version:    0.7.0.1
  */

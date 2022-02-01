@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -51,20 +50,20 @@ public class c
   
   public c()
   {
-    AppMethodBeat.i(235554);
+    AppMethodBeat.i(229996);
     this.d = "";
     this.e = 0L;
     this.h = false;
     this.i = false;
     this.j = new a(null);
     this.k = new b();
-    AppMethodBeat.o(235554);
+    AppMethodBeat.o(229996);
   }
   
   private long a(String paramString1, String paramString2, String paramString3)
   {
     long l2 = -1L;
-    AppMethodBeat.i(235594);
+    AppMethodBeat.i(230009);
     long l1 = l2;
     if (!TextUtils.isEmpty(paramString1))
     {
@@ -83,13 +82,13 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(235594);
+    AppMethodBeat.o(230009);
     return l1;
   }
   
   public static c a()
   {
-    AppMethodBeat.i(235559);
+    AppMethodBeat.i(230001);
     if (f == null) {}
     try
     {
@@ -97,18 +96,18 @@ public class c
         f = new c();
       }
       c localc = f;
-      AppMethodBeat.o(235559);
+      AppMethodBeat.o(230001);
       return localc;
     }
     finally
     {
-      AppMethodBeat.o(235559);
+      AppMethodBeat.o(230001);
     }
   }
   
   private static String a(File paramFile)
   {
-    AppMethodBeat.i(235625);
+    AppMethodBeat.i(230083);
     ByteArrayOutputStream localByteArrayOutputStream;
     try
     {
@@ -136,14 +135,14 @@ public class c
     }
     finally
     {
-      AppMethodBeat.o(235625);
+      AppMethodBeat.o(230083);
     }
     paramFile.close();
     paramFile = localByteArrayOutputStream.toString();
-    AppMethodBeat.o(235625);
+    AppMethodBeat.o(230083);
     return paramFile;
     paramFile.close();
-    AppMethodBeat.o(235625);
+    AppMethodBeat.o(230083);
     return "";
   }
   
@@ -151,14 +150,14 @@ public class c
   {
     try
     {
-      AppMethodBeat.i(235621);
+      AppMethodBeat.i(230069);
       int m = paramInt;
       if (paramInt <= 0) {
         m = 1;
       }
       this.e = (System.currentTimeMillis() + m * 24 * 60 * 60 * 1000);
       TXCLog.i("CloudConfig", "setExpiredtime: days=" + m + " expiredTime=" + this.e);
-      AppMethodBeat.o(235621);
+      AppMethodBeat.o(230069);
       return;
     }
     finally {}
@@ -166,7 +165,7 @@ public class c
   
   private void a(a parama, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(235615);
+    AppMethodBeat.i(230051);
     Object localObject1;
     if ((this.c == null) && (g != null))
     {
@@ -220,7 +219,7 @@ public class c
     for (;;)
     {
       this.c.commit();
-      AppMethodBeat.o(235615);
+      AppMethodBeat.o(230051);
       return;
       label504:
       this.c.putString("compatible_config", paramJSONObject.toString());
@@ -229,7 +228,7 @@ public class c
   
   private void a(String paramString, a parama)
   {
-    AppMethodBeat.i(235635);
+    AppMethodBeat.i(230127);
     try
     {
       paramString = new JSONObject(paramString);
@@ -240,29 +239,29 @@ public class c
         while (m < paramString.length())
         {
           JSONObject localJSONObject = paramString.getJSONObject(m);
-          if ((localJSONObject != null) && (localJSONObject.getString("MachineType").equals(Build.MODEL)))
+          if ((localJSONObject != null) && (localJSONObject.getString("MachineType").equals(TXCBuild.Model())))
           {
             a.b(parama, localJSONObject.getString("ConfigValue"));
-            AppMethodBeat.o(235635);
+            AppMethodBeat.o(230127);
             return;
           }
           m += 1;
         }
       }
-      AppMethodBeat.o(235635);
+      AppMethodBeat.o(230127);
       return;
     }
     catch (JSONException paramString)
     {
       TXCLog.w("CloudConfig", "parseTraeLocalConfig catch ecxeption".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(235635);
+      AppMethodBeat.o(230127);
     }
   }
   
   private void a(JSONObject paramJSONObject, a parama)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(235627);
+    AppMethodBeat.i(230098);
     a.a(parama, 0);
     a.b(parama, 0);
     a.a(parama, null);
@@ -291,7 +290,7 @@ public class c
           if (localJSONObject2 != null)
           {
             localObject2 = paramJSONObject;
-            if (localJSONObject2.getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER))
+            if (localJSONObject2.getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer()))
             {
               localObject1 = localJSONObject2.optJSONArray("WhiteList");
               if (localObject1 == null) {
@@ -306,7 +305,7 @@ public class c
                 break label652;
               }
               localObject2 = ((JSONObject)localObject2).optString("Model");
-              if ((localObject2 == null) || (!Build.MODEL.equals(localObject2))) {
+              if ((localObject2 == null) || (!TXCBuild.Model().equals(localObject2))) {
                 break label652;
               }
               n = 1;
@@ -328,7 +327,7 @@ public class c
         if (localObject2 != null)
         {
           localObject2 = ((JSONObject)localObject2).optString("Model");
-          if ((localObject2 == null) || (!Build.MODEL.equals(localObject2))) {}
+          if ((localObject2 == null) || (!TXCBuild.Model().equals(localObject2))) {}
         }
       }
       else
@@ -389,8 +388,8 @@ public class c
             localJSONObject1 = paramJSONObject;
           }
           localJSONObject1 = paramJSONObject;
-          TXCLog.i("CloudConfig", "system aec config1:" + a.m(parama) + "," + a.n(parama) + "," + localJSONObject1 + "," + a.q(parama) + "," + a.l(parama) + ", model = " + Build.MODEL + ", manufacturer = " + Build.MANUFACTURER + "， board = " + Build.BOARD);
-          AppMethodBeat.o(235627);
+          TXCLog.i("CloudConfig", "system aec config1:" + a.m(parama) + "," + a.n(parama) + "," + localJSONObject1 + "," + a.q(parama) + "," + a.l(parama) + ", model = " + TXCBuild.Model() + ", manufacturer = " + TXCBuild.Manufacturer() + "， board = " + TXCBuild.Board());
+          AppMethodBeat.o(230098);
           return;
         }
         label646:
@@ -420,25 +419,25 @@ public class c
   
   private boolean a(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(235601);
+    AppMethodBeat.i(230027);
     if (paramJSONObject.has("HEVCConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("HEVCConfig");
       if ((paramJSONObject == null) || (!paramJSONObject.has("Decoder")))
       {
-        AppMethodBeat.o(235601);
+        AppMethodBeat.o(230027);
         return true;
       }
       paramJSONObject = paramJSONObject.optJSONObject("Decoder");
       if ((paramJSONObject == null) || (!paramJSONObject.has("BlackConfig")))
       {
-        AppMethodBeat.o(235601);
+        AppMethodBeat.o(230027);
         return true;
       }
       paramJSONObject = paramJSONObject.getJSONObject("BlackConfig");
       if ((paramJSONObject == null) || (!paramJSONObject.has("InfoList")))
       {
-        AppMethodBeat.o(235601);
+        AppMethodBeat.o(230027);
         return true;
       }
       paramJSONObject = paramJSONObject.getJSONArray("InfoList");
@@ -446,30 +445,30 @@ public class c
       while (m < paramJSONObject.length())
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-        if ((localJSONObject.has("Manufacture")) && (localJSONObject.has("Model")) && (localJSONObject.getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER)) && (localJSONObject.getString("Model").equalsIgnoreCase(Build.MODEL)))
+        if ((localJSONObject.has("Manufacture")) && (localJSONObject.has("Model")) && (localJSONObject.getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer())) && (localJSONObject.getString("Model").equalsIgnoreCase(TXCBuild.Model())))
         {
           if (localJSONObject.has("HWMiniSupportAPI"))
           {
             m = localJSONObject.getInt("HWMiniSupportAPI");
-            if (Build.VERSION.SDK_INT >= m) {
+            if (TXCBuild.VersionInt() >= m) {
               break;
             }
-            AppMethodBeat.o(235601);
+            AppMethodBeat.o(230027);
             return false;
           }
-          AppMethodBeat.o(235601);
+          AppMethodBeat.o(230027);
           return false;
         }
         m += 1;
       }
     }
-    AppMethodBeat.o(235601);
+    AppMethodBeat.o(230027);
     return true;
   }
   
   private void b(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235628);
+    AppMethodBeat.i(230104);
     if (paramJSONObject.has("TraeConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("TraeConfig");
@@ -480,18 +479,18 @@ public class c
         while (m < paramJSONObject.length())
         {
           JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-          if ((localJSONObject != null) && (localJSONObject.getString("MachineType").equals(Build.MODEL)))
+          if ((localJSONObject != null) && (localJSONObject.getString("MachineType").equals(TXCBuild.Model())))
           {
             a.b(parama, localJSONObject.getString("ConfigValue"));
             TXCLog.d("CloudConfig", "parseTRAEConfig get TRAE config: " + a.a(parama));
-            AppMethodBeat.o(235628);
+            AppMethodBeat.o(230104);
             return;
           }
           m += 1;
         }
       }
     }
-    AppMethodBeat.o(235628);
+    AppMethodBeat.o(230104);
   }
   
   private void b(boolean paramBoolean)
@@ -511,7 +510,7 @@ public class c
   private boolean b(String paramString)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(235597);
+    AppMethodBeat.i(230014);
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(paramString))
     {
@@ -526,7 +525,7 @@ public class c
     try
     {
       bool1 = b(paramString);
-      AppMethodBeat.o(235597);
+      AppMethodBeat.o(230014);
       return bool1;
     }
     catch (JSONException paramString)
@@ -541,25 +540,25 @@ public class c
   
   private boolean b(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(235603);
+    AppMethodBeat.i(230033);
     if (paramJSONObject.has("HEVCConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("HEVCConfig");
       if ((paramJSONObject == null) || (!paramJSONObject.has("Encoder")))
       {
-        AppMethodBeat.o(235603);
+        AppMethodBeat.o(230033);
         return true;
       }
       paramJSONObject = paramJSONObject.optJSONObject("Encoder");
       if ((paramJSONObject == null) || (!paramJSONObject.has("BlackConfig")))
       {
-        AppMethodBeat.o(235603);
+        AppMethodBeat.o(230033);
         return true;
       }
       paramJSONObject = paramJSONObject.getJSONObject("BlackConfig");
       if ((paramJSONObject == null) || (!paramJSONObject.has("InfoList")))
       {
-        AppMethodBeat.o(235603);
+        AppMethodBeat.o(230033);
         return true;
       }
       paramJSONObject = paramJSONObject.getJSONArray("InfoList");
@@ -569,36 +568,36 @@ public class c
         JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
         if ((!localJSONObject.has("Manufacture")) || (!localJSONObject.has("Model")))
         {
-          AppMethodBeat.o(235603);
+          AppMethodBeat.o(230033);
           return true;
         }
-        if ((localJSONObject.getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER)) && (localJSONObject.getString("Model").equalsIgnoreCase(Build.MODEL)))
+        if ((localJSONObject.getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer())) && (localJSONObject.getString("Model").equalsIgnoreCase(TXCBuild.Model())))
         {
           if (localJSONObject.has("HWMiniSupportAPI"))
           {
             m = localJSONObject.getInt("HWMiniSupportAPI");
-            if (Build.VERSION.SDK_INT >= m) {
+            if (TXCBuild.VersionInt() >= m) {
               break;
             }
-            AppMethodBeat.o(235603);
+            AppMethodBeat.o(230033);
             return false;
           }
-          AppMethodBeat.o(235603);
+          AppMethodBeat.o(230033);
           return false;
         }
         m += 1;
       }
     }
-    AppMethodBeat.o(235603);
+    AppMethodBeat.o(230033);
     return true;
   }
   
   private a c(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(235666);
+    AppMethodBeat.i(230198);
     if (paramJSONObject == null)
     {
-      AppMethodBeat.o(235666);
+      AppMethodBeat.o(230198);
       return null;
     }
     a locala = new a(null);
@@ -625,13 +624,13 @@ public class c
         paramJSONObject = null;
       }
     }
-    AppMethodBeat.o(235666);
+    AppMethodBeat.o(230198);
     return paramJSONObject;
   }
   
   private void c(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235630);
+    AppMethodBeat.i(230107);
     if (paramJSONObject.has("WeiXinConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("WeiXinConfig");
@@ -646,11 +645,11 @@ public class c
           {
             String str1 = localJSONObject.getString("Manufacture");
             String str2 = localJSONObject.getString("Model");
-            if ((str1.equals(Build.MANUFACTURER)) && (str2.equals(Build.MODEL)))
+            if ((str1.equals(TXCBuild.Manufacturer())) && (str2.equals(TXCBuild.Model())))
             {
               a.d(parama, Integer.parseInt(localJSONObject.getString("SampleRate")));
               TXCLog.d("CloudConfig", "parseWeiXinConfig get WeiXin config: record sample rate = " + a.p(parama));
-              AppMethodBeat.o(235630);
+              AppMethodBeat.o(230107);
               return;
             }
           }
@@ -658,13 +657,13 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(235630);
+    AppMethodBeat.o(230107);
   }
   
   private boolean c(String paramString)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(235599);
+    AppMethodBeat.i(230020);
     boolean bool1 = bool2;
     if (!TextUtils.isEmpty(paramString))
     {
@@ -679,7 +678,7 @@ public class c
     try
     {
       bool1 = a(paramString);
-      AppMethodBeat.o(235599);
+      AppMethodBeat.o(230020);
       return bool1;
     }
     catch (JSONException paramString)
@@ -694,7 +693,7 @@ public class c
   
   private void d(String paramString)
   {
-    AppMethodBeat.i(235626);
+    AppMethodBeat.i(230088);
     a(false);
     try
     {
@@ -710,19 +709,19 @@ public class c
         this.j = paramString;
         a(paramString, this.k.a());
       }
-      AppMethodBeat.o(235626);
+      AppMethodBeat.o(230088);
       return;
     }
     catch (JSONException paramString)
     {
       TXCLog.w("CloudConfig", "parseRespon catch ecxeption".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(235626);
+      AppMethodBeat.o(230088);
     }
   }
   
   private void d(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235631);
+    AppMethodBeat.i(230111);
     a.e(parama, 60);
     a.f(parama, 70);
     a.g(parama, 80);
@@ -761,12 +760,12 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(235631);
+    AppMethodBeat.o(230111);
   }
   
   private void e(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235632);
+    AppMethodBeat.i(230117);
     int m;
     if (paramJSONObject.has("ExposureWhiteConfig"))
     {
@@ -778,7 +777,7 @@ public class c
       if (m < paramJSONObject.length())
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-        if ((localJSONObject.getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER)) && (localJSONObject.getString("Model").equalsIgnoreCase(Build.MODEL)))
+        if ((localJSONObject.getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer())) && (localJSONObject.getString("Model").equalsIgnoreCase(TXCBuild.Model())))
         {
           a.j(parama, localJSONObject.getInt("ExposureCompensation"));
           TXCLog.d("CloudConfig", "parseExposureConfig get exposure config: " + a.c(parama));
@@ -791,7 +790,7 @@ public class c
           paramJSONObject = new Intent("com.tencent.liteav.basic.serverconfig.get");
           g.sendBroadcast(paramJSONObject);
         }
-        AppMethodBeat.o(235632);
+        AppMethodBeat.o(230117);
         return;
       }
       m += 1;
@@ -800,7 +799,7 @@ public class c
   
   private void f(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235633);
+    AppMethodBeat.i(230121);
     if (paramJSONObject.has("HWBlackConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("HWBlackConfig");
@@ -808,10 +807,10 @@ public class c
       if (paramJSONObject.has("HWMiniSupportAPI")) {
         m = paramJSONObject.getInt("HWMiniSupportAPI");
       }
-      if (Build.VERSION.SDK_INT < m)
+      if (TXCBuild.VersionInt() < m)
       {
         a.k(parama, 0);
-        AppMethodBeat.o(235633);
+        AppMethodBeat.o(230121);
         return;
       }
       paramJSONObject = paramJSONObject.getJSONArray("InfoList");
@@ -819,50 +818,50 @@ public class c
       while (m < paramJSONObject.length())
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-        if ((localJSONObject.getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER)) && (localJSONObject.getString("Model").equalsIgnoreCase(Build.MODEL)))
+        if ((localJSONObject.getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer())) && (localJSONObject.getString("Model").equalsIgnoreCase(TXCBuild.Model())))
         {
           if (localJSONObject.has("Profile"))
           {
             a.k(parama, 1);
             TXCLog.d("CloudConfig", "parseHWBlackConfig get HWBlack config: " + a.b(parama));
-            AppMethodBeat.o(235633);
+            AppMethodBeat.o(230121);
             return;
           }
           a.k(parama, 0);
           TXCLog.d("CloudConfig", "parseHWBlackConfig get HWBlack config: " + a.b(parama));
-          AppMethodBeat.o(235633);
+          AppMethodBeat.o(230121);
           return;
         }
         m += 1;
       }
     }
-    AppMethodBeat.o(235633);
+    AppMethodBeat.o(230121);
   }
   
   private void g(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235637);
+    AppMethodBeat.i(230131);
     if (paramJSONObject.has("UGCSWMuxerConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("UGCSWMuxerConfig").getJSONArray("InfoList");
       int m = 0;
       while (m < paramJSONObject.length())
       {
-        if (paramJSONObject.getJSONObject(m).getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER))
+        if (paramJSONObject.getJSONObject(m).getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer()))
         {
           a.l(parama, 1);
-          AppMethodBeat.o(235637);
+          AppMethodBeat.o(230131);
           return;
         }
         m += 1;
       }
     }
-    AppMethodBeat.o(235637);
+    AppMethodBeat.o(230131);
   }
   
   private void h(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235640);
+    AppMethodBeat.i(230137);
     if (paramJSONObject.has("UGCConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("UGCConfig");
@@ -871,7 +870,7 @@ public class c
         if ((paramJSONObject.has("PreGenerateALLSW")) && (paramJSONObject.getInt("PreGenerateALLSW") == 1))
         {
           a.m(parama, 1);
-          AppMethodBeat.o(235640);
+          AppMethodBeat.o(230137);
           return;
         }
         if (paramJSONObject.has("PreGenerateSW"))
@@ -884,10 +883,10 @@ public class c
             while (m < paramJSONObject.length())
             {
               JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
-              if ((localJSONObject.has("Manufacture")) && (localJSONObject.has("Model")) && (localJSONObject.getString("Manufacture").equalsIgnoreCase(Build.MANUFACTURER)) && (localJSONObject.getString("Model").equalsIgnoreCase(Build.MODEL)))
+              if ((localJSONObject.has("Manufacture")) && (localJSONObject.has("Model")) && (localJSONObject.getString("Manufacture").equalsIgnoreCase(TXCBuild.Manufacturer())) && (localJSONObject.getString("Model").equalsIgnoreCase(TXCBuild.Model())))
               {
                 a.m(parama, 1);
-                AppMethodBeat.o(235640);
+                AppMethodBeat.o(230137);
                 return;
               }
               m += 1;
@@ -896,12 +895,12 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(235640);
+    AppMethodBeat.o(230137);
   }
   
   private void i(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235645);
+    AppMethodBeat.i(230142);
     if (paramJSONObject.has("VideoEncoderConfig"))
     {
       paramJSONObject = paramJSONObject.getJSONObject("VideoEncoderConfig");
@@ -911,12 +910,12 @@ public class c
         TXCLog.i("CloudConfig", "[Encoder] enable high profile:" + a.f(parama));
       }
     }
-    AppMethodBeat.o(235645);
+    AppMethodBeat.o(230142);
   }
   
   private void j(JSONObject paramJSONObject, a parama)
   {
-    AppMethodBeat.i(235646);
+    AppMethodBeat.i(230148);
     if (paramJSONObject.has("AppIDConfig"))
     {
       paramJSONObject = paramJSONObject.optJSONObject("AppIDConfig");
@@ -926,31 +925,31 @@ public class c
         TXCLog.w("CloudConfig", "parse global config : " + a.r(parama));
       }
     }
-    AppMethodBeat.o(235646);
+    AppMethodBeat.o(230148);
   }
   
   private void n()
   {
-    AppMethodBeat.i(235611);
+    AppMethodBeat.i(230037);
     o();
     m();
-    AppMethodBeat.o(235611);
+    AppMethodBeat.o(230037);
   }
   
   private void o()
   {
     try
     {
-      AppMethodBeat.i(235613);
+      AppMethodBeat.i(230044);
       if (q())
       {
         b(true);
         if (!s()) {
           t();
         }
-        TXCLog.i("CloudConfig", "load config(system aec):" + a.m(this.j) + "," + a.n(this.j) + "," + a.q(this.j) + "," + a.l(this.j) + ", model = " + Build.MODEL + ", manufacturer = " + Build.MANUFACTURER + "， board = " + Build.BOARD);
+        TXCLog.i("CloudConfig", "load config(system aec):" + a.m(this.j) + "," + a.n(this.j) + "," + a.q(this.j) + "," + a.l(this.j) + ", model = " + TXCBuild.Model() + ", manufacturer = " + TXCBuild.Manufacturer() + "， board = " + TXCBuild.Board());
       }
-      AppMethodBeat.o(235613);
+      AppMethodBeat.o(230044);
       return;
     }
     finally {}
@@ -962,7 +961,7 @@ public class c
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 655
+    //   2: ldc_w 651
     //   5: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 53	com/tencent/liteav/basic/d/c:h	Z
@@ -974,7 +973,7 @@ public class c
     //   23: ifle +15 -> 38
     //   26: iconst_0
     //   27: istore_1
-    //   28: ldc_w 655
+    //   28: ldc_w 651
     //   31: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
     //   35: monitorexit
@@ -982,7 +981,7 @@ public class c
     //   37: ireturn
     //   38: iconst_1
     //   39: istore_1
-    //   40: ldc_w 655
+    //   40: ldc_w 651
     //   43: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -12 -> 34
     //   49: astore_2
@@ -1039,7 +1038,7 @@ public class c
   
   private void r()
   {
-    AppMethodBeat.i(235623);
+    AppMethodBeat.i(230078);
     int m;
     Object localObject5;
     try
@@ -1078,7 +1077,7 @@ public class c
     {
       TXCLog.e("CloudConfig", "fetch config catch exception ".concat(String.valueOf(localException)));
       a(false);
-      AppMethodBeat.o(235623);
+      AppMethodBeat.o(230078);
       return;
     }
     Object localObject4 = a.a(localException.toByteArray(), (PrivateKey)localObject4);
@@ -1093,12 +1092,12 @@ public class c
         ((FileOutputStream)localObject5).close();
       }
       d(a(localFile));
-      AppMethodBeat.o(235623);
+      AppMethodBeat.o(230078);
       return;
     }
     finally
     {
-      AppMethodBeat.o(235623);
+      AppMethodBeat.o(230078);
     }
     label290:
     if (m == 304)
@@ -1123,17 +1122,17 @@ public class c
     for (Object localObject3 = "";; localObject3 = this.d)
     {
       TXCLog.d("CloudConfig", (String)localObject3);
-      AppMethodBeat.o(235623);
+      AppMethodBeat.o(230078);
       return;
     }
   }
   
   private boolean s()
   {
-    AppMethodBeat.i(235649);
+    AppMethodBeat.i(230160);
     if (g == null)
     {
-      AppMethodBeat.o(235649);
+      AppMethodBeat.o(230160);
       return false;
     }
     this.b = g.getSharedPreferences("cloud_config", 0);
@@ -1185,7 +1184,7 @@ public class c
           }
         }
         this.k.a(this.b.getString("compatible_config", null));
-        AppMethodBeat.o(235649);
+        AppMethodBeat.o(230160);
         return true;
       }
       catch (Exception localException)
@@ -1193,17 +1192,17 @@ public class c
         this.c.clear();
         this.c.commit();
         TXCLog.d("CloudConfig", "loadLocalFileConfig catch exception ".concat(String.valueOf(localException)));
-        AppMethodBeat.o(235649);
+        AppMethodBeat.o(230160);
         return false;
       }
     }
-    AppMethodBeat.o(235649);
+    AppMethodBeat.o(230160);
     return false;
   }
   
   private void t()
   {
-    AppMethodBeat.i(235663);
+    AppMethodBeat.i(230190);
     try
     {
       TXCLog.w("CloudConfig", "loadDefaultConfig ");
@@ -1211,33 +1210,33 @@ public class c
       if (locala != null) {
         this.j = locala;
       }
-      AppMethodBeat.o(235663);
+      AppMethodBeat.o(230190);
       return;
     }
     catch (JSONException localJSONException)
     {
       TXCLog.w("CloudConfig", "loadDefaultConfig catch exception ".concat(String.valueOf(localJSONException)));
       this.j = new a(null);
-      AppMethodBeat.o(235663);
+      AppMethodBeat.o(230190);
     }
   }
   
   public long a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(235592);
+    AppMethodBeat.i(230320);
     n();
     long l2 = a(TXCCommonUtil.getAppID(), paramString1, paramString2);
     long l1 = l2;
     if (l2 == -1L) {
       l1 = a("Global", paramString1, paramString2);
     }
-    AppMethodBeat.o(235592);
+    AppMethodBeat.o(230320);
     return l1;
   }
   
   public void a(Context paramContext)
   {
-    AppMethodBeat.i(235564);
+    AppMethodBeat.i(230224);
     if (g == null)
     {
       paramContext = paramContext.getApplicationContext();
@@ -1248,24 +1247,24 @@ public class c
       }
       g.a().a(g);
     }
-    AppMethodBeat.o(235564);
+    AppMethodBeat.o(230224);
   }
   
   public boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(235588);
+    AppMethodBeat.i(230299);
     n();
     if ((paramFloat2 >= a.h(this.j)) || (paramFloat3 <= a.i(this.j)) || ((paramFloat1 >= a.j(this.j)) && (paramFloat3 <= a.k(this.j)))) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(235588);
+      AppMethodBeat.o(230299);
       return bool;
     }
   }
   
   public boolean a(String paramString)
   {
-    AppMethodBeat.i(235607);
+    AppMethodBeat.i(230338);
     n();
     if (a.r(this.j) != null)
     {
@@ -1285,7 +1284,7 @@ public class c
                 boolean bool = paramString.contains(((JSONArray)localObject).getString(m));
                 if (bool)
                 {
-                  AppMethodBeat.o(235607);
+                  AppMethodBeat.o(230338);
                   return true;
                 }
               }
@@ -1299,78 +1298,78 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(235607);
+    AppMethodBeat.o(230338);
     return false;
   }
   
   public b b()
   {
-    AppMethodBeat.i(235561);
+    AppMethodBeat.i(230217);
     b localb = a().k;
-    AppMethodBeat.o(235561);
+    AppMethodBeat.o(230217);
     return localb;
   }
   
   public String c()
   {
-    AppMethodBeat.i(235577);
+    AppMethodBeat.i(230252);
     n();
     if (a.a(this.j).isEmpty()) {
       a("{\n        \"InfoList\": [\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 17\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\nforcevoip y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 90,\n            \"MachineType\": \"MI 4W\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 94,\n            \"MachineType\": \"MI 5\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndsp {\\r\\npost {\\r\\npostAGCmoddB -6.0\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 96,\n            \"MachineType\": \"PLK-AL10\"\n          },\n          {\n            \"Factory\": \"samsung\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 2\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 17\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 97,\n            \"MachineType\": \"SM-G9350\"\n          },\n          {\n            \"Factory\": \"Meizu\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\nforcevoip y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 98,\n            \"MachineType\": \"MX4 Pro\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nagc {\\r\\nswitch y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 99,\n            \"MachineType\": \"A31\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\nforcevoip y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 118,\n            \"MachineType\": \"MI 4LTE\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 132,\n            \"MachineType\": \"OPPO R9tm\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 156,\n            \"MachineType\": \"Mi-4c\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\nagc {\\r\\nswitch y\\r\\n}\\r\\n}\\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 12.0\\r\\npreAGCvvolmax 20.0\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 166,\n            \"MachineType\": \"OPPO A33\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 174,\n            \"MachineType\": \"OPPO A33m\"\n          },\n          {\n            \"Factory\": \"Meizu\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 191,\n            \"MachineType\": \"m1\"\n          },\n          {\n            \"Factory\": \"vivo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 213,\n            \"MachineType\": \"vivo X6Plus D\"\n          },\n          {\n            \"Factory\": \"vivo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 226,\n            \"MachineType\": \"vivo X5Pro V\"\n          },\n          {\n            \"Factory\": \"vivo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 251,\n            \"MachineType\": \"vivo X5pro L\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 256,\n            \"MachineType\": \"EVA-DL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 257,\n            \"MachineType\": \"EVA-TL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 260,\n            \"MachineType\": \"EVA-CL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 270,\n            \"MachineType\": \"EVA-AL10\"\n          },\n          {\n            \"Factory\": \"samsung\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 12.0\\r\\npreAGCvvolmax 20.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 307,\n            \"MachineType\": \"SM-N9108V\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\nforcevoip y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 500,\n            \"MachineType\": \"MI 5s Plus\"\n          },\n          {\n            \"Factory\": \"Meizu\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncloseOpensl y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1078,\n            \"MachineType\": \"PRO 7-H\"\n          },\n          {\n            \"Factory\": \"alps\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 15.0\\r\\npreAGCvvolmax 23.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 989,\n            \"MachineType\": \"M10\"\n          },\n          {\n            \"Factory\": \"GiONEE\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 388,\n            \"MachineType\": \"F103\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 394,\n            \"MachineType\": \"OPPO A33t\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndsp {\\r\\npost {\\r\\npostAGCmoddB -6.0\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 400,\n            \"MachineType\": \"OPPO R7\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\ntrae {\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 401,\n            \"MachineType\": \"OPPO R9m\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 21\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 406,\n            \"MachineType\": \"HUAWEI MT7-CL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 21\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 407,\n            \"MachineType\": \"HUAWEI MT7-TL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 21\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 421,\n            \"MachineType\": \"HUAWEI NXT-AL10\"\n          },\n          {\n            \"Factory\": \"samsung\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 21\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 2\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nprep {\\r\\ndrop_mic_ms 300\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 473,\n            \"MachineType\": \"SM-N9200\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 481,\n            \"MachineType\": \"MI 4C\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\naec {\\r\\nUseHQAEC n\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 485,\n            \"MachineType\": \"Redmi Note 3\"\n          },\n          {\n            \"Factory\": \"DOOV\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 518,\n            \"MachineType\": \"DOOV L5M\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\nprep {\\r\\ndrop_mic_ms 300\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 530,\n            \"MachineType\": \"MI 3\"\n          },\n          {\n            \"Factory\": \"Meizu\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 554,\n            \"MachineType\": \"MX6\"\n          },\n          {\n            \"Factory\": \"LENOVO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nforcevoip y\\r\\n}\\r\\n}\\r\\ntrae {\\r\\naec {\\r\\nUseHQAEC n\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1041,\n            \"MachineType\": \"Lenovo K900\"\n          },\n          {\n            \"Factory\": \"M5\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 12.0\\r\\npreAGCvvolmax 20.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 985,\n            \"MachineType\": \"X5 R1\"\n          },\n          {\n            \"Factory\": \"ZTE\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 15.0\\r\\npreAGCvvolmax 23.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 983,\n            \"MachineType\": \"ZTE N928Dt\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 2\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nplayRec {\\r\\ndelay 426\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 778,\n            \"MachineType\": \"OPPO R9s\"\n          },\n          {\n            \"Factory\": \"JTY\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 12.0\\r\\npreAGCvvolmax 20.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 986,\n            \"MachineType\": \"KT096H\"\n          },\n          {\n            \"Factory\": \"TCL\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 15.0\\r\\npreAGCvvolmax 23.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 984,\n            \"MachineType\": \"TCL P501M\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch n\\r\\n}\\r\\n}\\r\\ntrae {\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1050,\n            \"MachineType\": \"STF-AL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 857,\n            \"MachineType\": \"EVA-AL00\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\ntrae {\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.2\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 798,\n            \"MachineType\": \"OPPO R9km\"\n          },\n          {\n            \"Factory\": \"Haier\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 15.0\\r\\npreAGCvvolmax 23.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 990,\n            \"MachineType\": \"HT-L700T\"\n          },\n          {\n            \"Factory\": \"Lenovo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 15.0\\r\\npreAGCvvolmax 23.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 988,\n            \"MachineType\": \"Lenovo A916\"\n          },\n          {\n            \"Factory\": \"alps\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nplay {\\r\\nhw_sr 44100\\r\\nhw_ch 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 998,\n            \"MachineType\": \"em_ts809_p3mme\"\n          },\n          {\n            \"Factory\": \"vivo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nforcevoip y\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\ntrae {\\r\\nplayRec {\\r\\ndelay 372\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 999,\n            \"MachineType\": \"vivo X5Pro D\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 858,\n            \"MachineType\": \"OPPO A59s\"\n          },\n          {\n            \"Factory\": \"LGE\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\nagc {\\r\\nswitch y\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 884,\n            \"MachineType\": \"Nexus 5\"\n          },\n          {\n            \"Factory\": \"LGE\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncap {\\r\\nhw_ch_191 2\\r\\nStereoCapLorR 1\\r\\n}\\r\\ncomponent 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 971,\n            \"MachineType\": \"Nexus 5X\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\nhwcodec_new {\\r\\navc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\navc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.1\\r\\n}\\r\\n}\\r\\n}\\r\\nhwcodec_new {\\r\\nhevc_decoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.6\\r\\n}\\r\\n}\\r\\nhevc_encoder {\\r\\nwhite_list {\\r\\nmin_sdk 19\\r\\nmin_version 1.8.6\\r\\n}\\r\\n}\\r\\n}\\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 975,\n            \"MachineType\": \"MI 6\"\n          },\n          {\n            \"Factory\": \"koobee\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 20.0\\r\\npreAGCvvolmax 30.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 991,\n            \"MachineType\": \"koobee M9 Plus\"\n          },\n          {\n            \"Factory\": \"\\u8054\\u60f3\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\npreAGC {\\r\\npreAGCSwitch y\\r\\npreAGCdy 0\\r\\npreVADkind 1\\r\\npreAGCvvolmin 0.0\\r\\npreAGCvvolfst 15.0\\r\\npreAGCvvolmax 23.0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 992,\n            \"MachineType\": \"S6000\"\n          },\n          {\n            \"Factory\": \"DOOV\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1045,\n            \"MachineType\": \"DOOV L5\"\n          },\n          {\n            \"Factory\": \"Meizu\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\ncloseOpensl y\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1079,\n            \"MachineType\": \"PRO 7 Plus\"\n          },\n          {\n            \"Factory\": \"vivo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndsp {\\r\\npost {\\r\\npostAGCmoddB -12.0\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1075,\n            \"MachineType\": \"vivo Xplay6\"\n          },\n          {\n            \"Factory\": \"HTC\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nmode 0\\r\\ncap {\\r\\nsource 0\\r\\n}\\r\\nplay {\\r\\nstreamtype 3\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1047,\n            \"MachineType\": \"HTC S720e\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\nfiAcc {\\r\\nring_buf_mp3 50\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1049,\n            \"MachineType\": \"A33w\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\naec {\\r\\nMkechoRatio 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1051,\n            \"MachineType\": \"STF-AL10\"\n          },\n          {\n            \"Factory\": \"unknown\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nmode 0\\r\\ncap {\\r\\nsource 0\\r\\n}\\r\\nplay {\\r\\nstreamtype 3\\r\\n}\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1073,\n            \"MachineType\": \"msm8909\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1074,\n            \"MachineType\": \"OPPO A57\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1075,\n            \"MachineType\": \"OPPO R11s\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1076,\n            \"MachineType\": \"OPPO R11\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1077,\n            \"MachineType\": \"OPPO A83\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1078,\n            \"MachineType\": \"OPPO A73\"\n          },\n          {\n            \"Factory\": \"samsung\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1079,\n            \"MachineType\": \"SM-G9006V\"\n          },\n          {\n            \"Factory\": \"vivo\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1081,\n            \"MachineType\": \"vivo Y83A\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1083,\n            \"MachineType\": \"OPPO R17\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1084,\n            \"MachineType\": \"OPPO R15\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1085,\n            \"MachineType\": \"OPPO A37M\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1086,\n            \"MachineType\": \"OPPO A7X\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1087,\n            \"MachineType\": \"OPPO A3\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1088,\n            \"MachineType\": \"OPPO A5\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1089,\n            \"MachineType\": \"OPPO A83T\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1090,\n            \"MachineType\": \"OPPO R11T\"\n          },\n          {\n            \"Factory\": \"OPPO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1091,\n            \"MachineType\": \"OPPO R9S PLUS\"\n          },\n          {\n            \"Factory\": \"VIVO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1092,\n            \"MachineType\": \"vivo Y51A\"\n          },\n          {\n            \"Factory\": \"VIVO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1093,\n            \"MachineType\": \"vivo V1813A\"\n          },\n          {\n            \"Factory\": \"VIVO\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1095,\n            \"MachineType\": \"vivo Y67\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1097,\n            \"MachineType\": \"MHA-AL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1098,\n            \"MachineType\": \"ALP-AL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1099,\n            \"MachineType\": \"VTR-AL00\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1100,\n            \"MachineType\": \"BND-AL10\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1101,\n            \"MachineType\": \"COL-AL10\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 1\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1102,\n            \"MachineType\": \"BKL-AL20\"\n          },\n          {\n            \"Factory\": \"HUAWEI\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1103,\n            \"MachineType\": \"PRA-AL00X\"\n          },\n          {\n            \"Factory\": \"Xiaomi\",\n            \"ConfigValue\": \"sharp{\\r\\nos android \\r\\ntrae {\\r\\ndev {\\r\\nlow_latency 0\\r\\n}\\r\\n}\\r\\n}\",\n            \"id\": 1104,\n            \"MachineType\": \"MI 6X\"\n          }\n        ]    }", this.j);
     }
     String str = a.a(this.j);
-    AppMethodBeat.o(235577);
+    AppMethodBeat.o(230252);
     return str;
   }
   
   public int d()
   {
-    AppMethodBeat.i(235580);
+    AppMethodBeat.i(230261);
     n();
     int m = a.b(this.j);
-    AppMethodBeat.o(235580);
+    AppMethodBeat.o(230261);
     return m;
   }
   
   public int e()
   {
-    AppMethodBeat.i(235582);
+    AppMethodBeat.i(230271);
     n();
     int m = a.c(this.j);
-    AppMethodBeat.o(235582);
+    AppMethodBeat.o(230271);
     return m;
   }
   
   public int f()
   {
-    AppMethodBeat.i(235583);
+    AppMethodBeat.i(230277);
     n();
     int m = a.d(this.j);
-    AppMethodBeat.o(235583);
+    AppMethodBeat.o(230277);
     return m;
   }
   
   public boolean g()
   {
-    AppMethodBeat.i(235584);
+    AppMethodBeat.i(230283);
     n();
     boolean bool = a.f(this.j);
-    AppMethodBeat.o(235584);
+    AppMethodBeat.o(230283);
     return bool;
   }
   
   public int h()
   {
-    AppMethodBeat.i(235586);
+    AppMethodBeat.i(230292);
     n();
     int m = a.g(this.j);
-    AppMethodBeat.o(235586);
+    AppMethodBeat.o(230292);
     return m;
   }
   
   public boolean i()
   {
-    AppMethodBeat.i(235589);
+    AppMethodBeat.i(230305);
     long l2 = a("Audio", "UseLowLatencySampleRate");
     TXCLog.i("CloudConfig", "defaultValueOfUseLowLatencySampleRate: %d", new Object[] { Long.valueOf(l2) });
     long l1 = l2;
@@ -1379,57 +1378,57 @@ public class c
     }
     if (1L == b().a(".audio.use_low_latency_samplerate", l1))
     {
-      AppMethodBeat.o(235589);
+      AppMethodBeat.o(230305);
       return true;
     }
-    AppMethodBeat.o(235589);
+    AppMethodBeat.o(230305);
     return false;
   }
   
   public long j()
   {
-    AppMethodBeat.i(235591);
+    AppMethodBeat.i(230311);
     long l = a("Audio", "LowLatencySampleRateBlockTime");
     if (l == -1L)
     {
       l = TimeUnit.DAYS.toMillis(7L);
-      AppMethodBeat.o(235591);
+      AppMethodBeat.o(230311);
       return l;
     }
     l = TimeUnit.SECONDS.toMillis(l);
-    AppMethodBeat.o(235591);
+    AppMethodBeat.o(230311);
     return l;
   }
   
   public boolean k()
   {
-    AppMethodBeat.i(235595);
+    AppMethodBeat.i(230325);
     n();
     boolean bool2 = b(TXCCommonUtil.getAppID());
     boolean bool1 = bool2;
     if (bool2) {
       bool1 = b("Global");
     }
-    AppMethodBeat.o(235595);
+    AppMethodBeat.o(230325);
     return bool1;
   }
   
   public boolean l()
   {
-    AppMethodBeat.i(235598);
+    AppMethodBeat.i(230332);
     n();
     boolean bool2 = c(TXCCommonUtil.getAppID());
     boolean bool1 = bool2;
     if (bool2) {
       bool1 = c("Global");
     }
-    AppMethodBeat.o(235598);
+    AppMethodBeat.o(230332);
     return bool1;
   }
   
   public void m()
   {
-    AppMethodBeat.i(235616);
+    AppMethodBeat.i(230346);
     if (p())
     {
       a(true);
@@ -1437,13 +1436,13 @@ public class c
       {
         public void run()
         {
-          AppMethodBeat.i(235696);
+          AppMethodBeat.i(229962);
           c.a(c.this);
-          AppMethodBeat.o(235696);
+          AppMethodBeat.o(229962);
         }
       }.start();
     }
-    AppMethodBeat.o(235616);
+    AppMethodBeat.o(230346);
   }
   
   static class a
@@ -1469,7 +1468,7 @@ public class c
     
     private a()
     {
-      AppMethodBeat.i(235238);
+      AppMethodBeat.i(229948);
       this.a = 2;
       this.b = "";
       this.c = 0;
@@ -1488,13 +1487,13 @@ public class c
       this.p = new JSONObject();
       this.q = -1;
       this.r = 0;
-      AppMethodBeat.o(235238);
+      AppMethodBeat.o(229948);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.d.c
  * JD-Core Version:    0.7.0.1
  */

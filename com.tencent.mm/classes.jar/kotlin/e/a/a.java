@@ -1,18 +1,18 @@
 package kotlin.e.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/internal/jdk7/JDK7PlatformImplementations;", "Lkotlin/internal/PlatformImplementations;", "()V", "addSuppressed", "", "cause", "", "exception", "kotlin-stdlib-jdk7"})
+@Metadata(d1={""}, d2={"Lkotlin/internal/jdk7/JDK7PlatformImplementations;", "Lkotlin/internal/PlatformImplementations;", "()V", "addSuppressed", "", "cause", "", "exception", "getSuppressed", "", "kotlin-stdlib-jdk7"}, k=1, mv={1, 5, 1})
 public class a
   extends kotlin.e.a
 {
   public final void a(Throwable paramThrowable1, Throwable paramThrowable2)
   {
     AppMethodBeat.i(108133);
-    p.k(paramThrowable1, "cause");
-    p.k(paramThrowable2, "exception");
+    s.u(paramThrowable1, "cause");
+    s.u(paramThrowable2, "exception");
     paramThrowable1.addSuppressed(paramThrowable2);
     AppMethodBeat.o(108133);
   }

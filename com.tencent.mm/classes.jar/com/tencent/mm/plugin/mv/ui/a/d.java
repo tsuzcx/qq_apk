@@ -1,141 +1,72 @@
 package com.tencent.mm.plugin.mv.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.a.am;
-import com.tencent.mm.plugin.mv.model.f;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.FinderMedia;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.plugin.findersdk.a.cq;
+import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.protocal.protobuf.bop;
+import com.tencent.mm.protocal.protobuf.dtj;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"buildBusinessBuffer", "", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "musicMv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "escape", "", "toMusicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "albumUrl", "toXml", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"buildBusinessBuffer", "", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "musicMv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "musicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "escape", "", "toMusicShareObject", "albumUrl", "toXml", "plugin-mv_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final String a(bds parambds, f paramf)
+  public static final String a(boo paramboo, dtj paramdtj)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(235889);
-    p.k(parambds, "songInfo");
-    Object localObject1 = new StringBuilder("\n<MusicVideoStatusOpenParams>\n");
-    p.k(parambds, "$this$toXml");
-    StringBuilder localStringBuilder = ((StringBuilder)localObject1).append(n.bHx("<FinderMVSongInfo>\n    <songName>" + dJ(parambds.HLH) + "</songName>\n    <singer>" + dJ(parambds.ozs) + "</singer>\n    <musicDataUrl>" + dJ(parambds.musicDataUrl) + "</musicDataUrl>\n    <musicAppId>" + dJ(parambds.SOJ) + "</musicAppId>\n    <musicWebUrl>" + dJ(parambds.SOK) + "</musicWebUrl>\n    <songId>" + dJ(parambds.kkU) + "</songId>\n    <lyric>" + dJ(parambds.SOL) + "</lyric>\n    <albumName>" + dJ(parambds.albumName) + "</albumName>\n    <albumUrl>" + dJ(parambds.SOM) + "</albumUrl>\n    <genre>" + dJ(parambds.SMY) + "</genre>\n    <publicTime>" + dJ(parambds.SON) + "</publicTime>\n    <publicTimeS>" + dJ(Long.valueOf(parambds.SOO)) + "</publicTimeS>\n    <extraInfo>" + dJ(parambds.extraInfo) + "</extraInfo>\n    <identification>" + dJ(parambds.identification) + "</identification>\n    <duration>" + parambds.duration + "</duration>\n</FinderMVSongInfo>\n")).append('\n');
-    localObject1 = paramf;
-    if (paramf == null) {
-      localObject1 = new f();
-    }
-    paramf = parambds.SOM;
-    p.k(localObject1, "$this$toXml");
-    p.k(localObject1, "$this$toMusicShareObject");
-    if (((f)localObject1).Gbu == 1)
+    AppMethodBeat.i(288182);
+    s.u(paramboo, "songInfo");
+    paramboo = new StringBuilder("\n<MusicVideoStatusOpenParams>\n").append(c(paramboo)).append('\n');
+    s.u(paramdtj, "<this>");
+    paramdtj = cq.a(paramdtj);
+    s.s(paramdtj, "makeContent(this)");
+    paramboo = n.bJB(paramdtj + "\n</MusicVideoStatusOpenParams>");
+    AppMethodBeat.o(288182);
+    return paramboo;
+  }
+  
+  public static final String c(boo paramboo)
+  {
+    AppMethodBeat.i(288174);
+    s.u(paramboo, "<this>");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("<FinderMVSongInfo>\n    <songName>").append(ga(paramboo.songName)).append("</songName>\n    <singer>").append(ga(paramboo.rDl)).append("</singer>\n    <musicDataUrl>").append(ga(paramboo.musicDataUrl)).append("</musicDataUrl>\n    <musicAppId>").append(ga(paramboo.ZWQ)).append("</musicAppId>\n    <musicWebUrl>").append(ga(paramboo.ZWR)).append("</musicWebUrl>\n    <songId>").append(ga(paramboo.mLQ)).append("</songId>\n    <lyric>").append(ga(paramboo.Mcq)).append("</lyric>\n    <albumName>").append(ga(paramboo.albumName)).append("</albumName>\n    <albumUrl>").append(ga(paramboo.ZWS)).append("</albumUrl>\n    <genre>").append(ga(paramboo.ZTA)).append("</genre>\n    <publicTime>").append(ga(paramboo.ZWT)).append("</publicTime>\n    <publicTimeS>");
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(ga(Long.valueOf(paramboo.ZWU))).append("</publicTimeS>\n    <extraInfo>").append(ga(paramboo.extraInfo)).append("</extraInfo>\n    <identification>").append(ga(paramboo.identification)).append("</identification>\n    <duration>").append(paramboo.duration).append("</duration>\n    <musicOperationUrl>");
+    Object localObject = paramboo.ZWW;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((bop)localObject).ZWX)
     {
-      localObject2 = ((f)localObject1).Gbl;
-      parambds = ((f)localObject1).Gbm;
-      if ((localObject2 == null) || (parambds == null)) {
-        break label632;
-      }
-      long l = ((Number)localObject2).longValue();
-      if (l == 0L) {
-        break label637;
-      }
-      localObject2 = new dbr();
-      ((dbr)localObject2).Ruu = com.tencent.mm.ae.d.Fw(l);
-      ((dbr)localObject2).Ruv = parambds;
-      String str = ((f)localObject1).coverUrl;
-      parambds = str;
-      if (str == null) {
-        parambds = paramf;
-      }
-      ((dbr)localObject2).Ruw = parambds;
-      ((dbr)localObject2).Rux = ((f)localObject1).Gbn;
-      parambds = (bds)localObject2;
-    }
-    for (;;)
-    {
-      paramf = parambds;
-      if (parambds == null) {
-        paramf = new dbr();
-      }
-      parambds = am.a(paramf);
-      p.j(parambds, "MusicMvShareParser.makeC…sicShareObject(albumUrl))");
-      parambds = n.bHx(parambds + "\n</MusicVideoStatusOpenParams>");
-      AppMethodBeat.o(235889);
-      return parambds;
-      if (((f)localObject1).Gbu == 4)
-      {
-        localObject1 = ((f)localObject1).Gbx;
-        if (localObject1 != null)
-        {
-          paramf = new dbr();
-          paramf.Ruu = com.tencent.mm.ae.d.Fw(((FinderObject)localObject1).id);
-          paramf.Ruv = ((FinderObject)localObject1).objectNonceId;
-          parambds = ((FinderObject)localObject1).objectDesc;
-          if (parambds != null)
-          {
-            parambds = parambds.media;
-            if (parambds != null)
-            {
-              parambds = (FinderMedia)j.lp((List)parambds);
-              if (parambds == null) {}
-            }
-          }
-          for (parambds = parambds.thumbUrl + parambds.thumb_url_token;; parambds = (bds)localObject2)
-          {
-            paramf.Ruw = parambds;
-            parambds = ((FinderObject)localObject1).contact;
-            if (parambds != null)
-            {
-              localObject1 = parambds.nickname;
-              parambds = (bds)localObject1;
-              if (localObject1 != null) {}
-            }
-            else
-            {
-              parambds = "";
-            }
-            paramf.Rux = parambds;
-            parambds = paramf;
-            break;
-          }
-        }
-      }
-      label632:
-      parambds = null;
-      continue;
-      label637:
-      parambds = null;
+      localStringBuilder2.append(ga(localObject)).append("</musicOperationUrl>\n    <mid>").append(ga(paramboo.oOZ)).append("</mid>\n</FinderMVSongInfo>\n");
+      paramboo = n.bJB(localStringBuilder1.toString());
+      AppMethodBeat.o(288174);
+      return paramboo;
     }
   }
   
-  private static String dJ(Object paramObject)
+  private static String ga(Object paramObject)
   {
-    AppMethodBeat.i(235885);
-    if (paramObject != null)
-    {
-      String str = paramObject.toString();
-      paramObject = str;
-      if (str != null) {}
-    }
-    else
-    {
+    AppMethodBeat.i(288164);
+    if (paramObject == null) {
       paramObject = "";
     }
-    paramObject = Util.escapeStringForXml(paramObject);
-    p.j(paramObject, "Util.escapeStringForXml(this?.toString() ?: \"\")");
-    AppMethodBeat.o(235885);
-    return paramObject;
+    for (;;)
+    {
+      paramObject = Util.escapeStringForXml(paramObject);
+      s.s(paramObject, "escapeStringForXml(this?.toString() ?: \"\")");
+      AppMethodBeat.o(288164);
+      return paramObject;
+      String str = paramObject.toString();
+      paramObject = str;
+      if (str == null) {
+        paramObject = "";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

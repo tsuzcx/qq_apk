@@ -1,88 +1,89 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlinx.coroutines.av;
-import kotlinx.coroutines.be;
-import kotlinx.coroutines.ci;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "cause", "", "errorHint", "", "(Ljava/lang/Throwable;Ljava/lang/String;)V", "immediate", "getImmediate", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "isDispatchNeeded", "", "missing", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-core"})
-final class q
-  extends ci
-  implements av
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "", "E", "", "singleConsumer", "<init>", "(Z)V", "element", "addLast", "(Ljava/lang/Object;)Z", "", "close", "()V", "isClosed", "()Z", "R", "Lkotlin/Function1;", "transform", "", "map", "(Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "removeFirstOrNull", "()Ljava/lang/Object;", "isEmpty", "", "getSize", "()I", "size", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public class q<E>
 {
-  private final String abzu;
-  private final Throwable cause;
-  
-  public q(Throwable paramThrowable, String paramString)
+  static
   {
-    this.cause = paramThrowable;
-    this.abzu = paramString;
+    AppMethodBeat.i(118130);
+    ajAB = AtomicReferenceFieldUpdater.newUpdater(q.class, Object.class, "_cur");
+    AppMethodBeat.o(118130);
   }
   
-  private final Void iSW()
+  public q()
   {
-    AppMethodBeat.i(204975);
-    if (this.cause == null)
+    AppMethodBeat.i(118129);
+    this._cur = new r(8, false);
+    AppMethodBeat.o(118129);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(118126);
+    for (;;)
     {
-      p.iSV();
-      AppMethodBeat.o(204975);
-      throw null;
+      r localr = (r)this._cur;
+      if (localr.close())
+      {
+        AppMethodBeat.o(118126);
+        return;
+      }
+      ajAB.compareAndSet(this, localr, localr.kEh());
     }
-    StringBuilder localStringBuilder = new StringBuilder("Module with the Main dispatcher had failed to initialize");
-    Object localObject = this.abzu;
-    if (localObject != null)
+  }
+  
+  public final int getSize()
+  {
+    long l = ((r)this._cur)._state;
+    int i = (int)((0x3FFFFFFF & l) >> 0);
+    return (int)((l & 0xC0000000) >> 30) - i & 0x3FFFFFFF;
+  }
+  
+  public final boolean jl(E paramE)
+  {
+    AppMethodBeat.i(118127);
+    for (;;)
     {
-      String str = ". ".concat(String.valueOf(localObject));
-      localObject = str;
-      if (str != null) {}
+      r localr = (r)this._cur;
+      switch (localr.jm(paramE))
+      {
+      default: 
+        break;
+      case 0: 
+        AppMethodBeat.o(118127);
+        return true;
+      case 2: 
+        AppMethodBeat.o(118127);
+        return false;
+      case 1: 
+        ajAB.compareAndSet(this, localr, localr.kEh());
+      }
     }
-    else
+  }
+  
+  public final E kkV()
+  {
+    AppMethodBeat.i(118128);
+    for (;;)
     {
-      localObject = "";
-    }
-    localObject = (Throwable)new IllegalStateException(localObject, this.cause);
-    AppMethodBeat.o(204975);
-    throw ((Throwable)localObject);
-  }
-  
-  public final be d(long paramLong, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(204972);
-    iSW();
-    AppMethodBeat.o(204972);
-    throw null;
-  }
-  
-  public final ci iRV()
-  {
-    return (ci)this;
-  }
-  
-  public final boolean iRd()
-  {
-    AppMethodBeat.i(204970);
-    iSW();
-    AppMethodBeat.o(204970);
-    throw null;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(204976);
-    StringBuilder localStringBuilder = new StringBuilder("Main[missing");
-    if (this.cause != null) {}
-    for (String str = ", cause=" + this.cause;; str = "")
-    {
-      str = str + ']';
-      AppMethodBeat.o(204976);
-      return str;
+      r localr = (r)this._cur;
+      Object localObject = localr.kkV();
+      if (localObject != r.ajAG)
+      {
+        AppMethodBeat.o(118128);
+        return localObject;
+      }
+      ajAB.compareAndSet(this, localr, localr.kEh());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.internal.q
  * JD-Core Version:    0.7.0.1
  */

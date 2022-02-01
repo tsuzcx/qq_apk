@@ -15,25 +15,25 @@ final class MobileRemitHistoryRecodUI$4
   
   public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(273842);
-    MobileRemitHistoryRecodUI.d(this.Ijx)[0] = ((int)paramMotionEvent.getRawX());
-    MobileRemitHistoryRecodUI.d(this.Ijx)[1] = ((int)paramMotionEvent.getRawY());
-    Log.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onTouchEvent() (%s, %s)", new Object[] { Integer.valueOf(MobileRemitHistoryRecodUI.d(this.Ijx)[0]), Integer.valueOf(MobileRemitHistoryRecodUI.d(this.Ijx)[1]) });
-    AppMethodBeat.o(273842);
+    AppMethodBeat.i(288904);
+    MobileRemitHistoryRecodUI.d(this.Ogj)[0] = ((int)paramMotionEvent.getRawX());
+    MobileRemitHistoryRecodUI.d(this.Ogj)[1] = ((int)paramMotionEvent.getRawY());
+    Log.d("MicroMsg.mobileRemit.MobileRemitHistoryRecodUI", "onTouchEvent() (%s, %s)", new Object[] { Integer.valueOf(MobileRemitHistoryRecodUI.d(this.Ogj)[0]), Integer.valueOf(MobileRemitHistoryRecodUI.d(this.Ogj)[1]) });
+    AppMethodBeat.o(288904);
     return false;
   }
   
-  public final void ao(boolean paramBoolean) {}
+  public final void aX(boolean paramBoolean) {}
   
   public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(273843);
+    AppMethodBeat.i(288905);
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.bn(paramMotionEvent);
-    a.c("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$4", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.cH(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$4", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aYj());
     a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitHistoryRecodUI$4", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(273843);
+    AppMethodBeat.o(288905);
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.game.autogen.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.kc;
 import java.util.LinkedList;
 
 public final class j
-  extends dyl
+  extends erp
 {
-  public int Cqs;
-  public LinkedList<i> Crs;
-  public String Crt;
-  public String Cru;
+  public int IcB;
+  public String IdA;
+  public LinkedList<i> Idy;
+  public String Idz;
   
   public j()
   {
     AppMethodBeat.i(40876);
-    this.Crs = new LinkedList();
+    this.Idy = new LinkedList();
     AppMethodBeat.o(40876);
   }
   
@@ -25,50 +25,50 @@ public final class j
     AppMethodBeat.i(40877);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.Cqs);
-      paramVarArgs.e(3, 8, this.Crs);
-      if (this.Crt != null) {
-        paramVarArgs.f(4, this.Crt);
+      paramVarArgs.bS(2, this.IcB);
+      paramVarArgs.e(3, 8, this.Idy);
+      if (this.Idz != null) {
+        paramVarArgs.g(4, this.Idz);
       }
-      if (this.Cru != null) {
-        paramVarArgs.f(5, this.Cru);
+      if (this.IdA != null) {
+        paramVarArgs.g(5, this.IdA);
       }
       AppMethodBeat.o(40877);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label570;
+        break label566;
       }
     }
-    label570:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label566:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.Cqs) + g.a.a.a.c(3, 8, this.Crs);
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.IcB) + i.a.a.a.c(3, 8, this.Idy);
       paramInt = i;
-      if (this.Crt != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.Crt);
+      if (this.Idz != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Idz);
       }
       i = paramInt;
-      if (this.Cru != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.Cru);
+      if (this.IdA != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.IdA);
       }
       AppMethodBeat.o(40877);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.Crs.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        this.Idy.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(40877);
@@ -76,7 +76,7 @@ public final class j
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         j localj = (j)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
@@ -86,27 +86,27 @@ public final class j
           AppMethodBeat.o(40877);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
+            localObject2 = new kc();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+              ((kc)localObject2).parseFrom((byte[])localObject1);
             }
-            localj.BaseRequest = ((jg)localObject2);
+            localj.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(40877);
           return 0;
         case 2: 
-          localj.Cqs = ((g.a.a.a.a)localObject1).abFh.AK();
+          localj.IcB = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(40877);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -116,17 +116,17 @@ public final class j
             if ((localObject1 != null) && (localObject1.length > 0)) {
               ((i)localObject2).parseFrom((byte[])localObject1);
             }
-            localj.Crs.add(localObject2);
+            localj.Idy.add(localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(40877);
           return 0;
         case 4: 
-          localj.Crt = ((g.a.a.a.a)localObject1).abFh.readString();
+          localj.Idz = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(40877);
           return 0;
         }
-        localj.Cru = ((g.a.a.a.a)localObject1).abFh.readString();
+        localj.IdA = ((i.a.a.a.a)localObject1).ajGk.readString();
         AppMethodBeat.o(40877);
         return 0;
       }
@@ -137,7 +137,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.autogen.b.j
  * JD-Core Version:    0.7.0.1
  */

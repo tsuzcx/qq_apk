@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.emojicapture;
 
 public final class a$a
 {
-  public static final int uRa = 2130771983;
-  public static final int uRb = 2130771984;
+  public static final int ydO = 2130771985;
+  public static final int ydP = 2130771986;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,39 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-public abstract interface m
-  extends a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/ConstantsFinderLiveNoticeQRCodeUIC;", "", "()V", "ACTIVITY_RESULT_REMOVE_CODE", "", "ACTIVITY_RESULT_REMOVE_NOTICE_KEY", "", "FINDER_LIVE_QR_CODE_NOTICE_CANCEL", "getFINDER_LIVE_QR_CODE_NOTICE_CANCEL", "()I", "KEY_FINDER_LIVE_NOTICE_QR_CONTACT_USERNAME", "getKEY_FINDER_LIVE_NOTICE_QR_CONTACT_USERNAME", "()Ljava/lang/String;", "KEY_FINDER_LIVE_NOTICE_QR_INFO", "getKEY_FINDER_LIVE_NOTICE_QR_INFO", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class m
 {
-  public abstract int a(String paramString, c paramc);
+  private static final String CAM;
+  private static final String CAN;
+  public static final m Hce;
+  private static final int Hcf;
   
-  public abstract void a(ai paramai);
-  
-  public abstract void a(String paramString, a parama);
-  
-  public abstract void a(String paramString, Boolean paramBoolean);
-  
-  public abstract void a(String paramString, Long paramLong);
-  
-  public abstract void a(String paramString, Long paramLong1, Long paramLong2, a parama);
-  
-  public abstract void a(String paramString1, String paramString2, a parama);
-  
-  public abstract ai aEs(String paramString);
-  
-  public abstract ai aEt(String paramString);
-  
-  public abstract ai aEu(String paramString);
-  
-  public abstract ai aEv(String paramString);
-  
-  public abstract boolean aEw(String paramString);
-  
-  public abstract void b(String paramString, a parama);
-  
-  public abstract void b(String paramString1, String paramString2, a parama);
-  
-  public abstract void dRq();
-  
-  public abstract void l(MStorage.IOnStorageChange paramIOnStorageChange);
-  
-  public abstract void m(MStorage.IOnStorageChange paramIOnStorageChange);
-  
-  public static abstract interface a
+  static
   {
-    public abstract void d(ai paramai);
+    AppMethodBeat.i(273991);
+    Hce = new m();
+    CAM = "KEY_FINDER_LIVE_NOTICE_QR_CONTACT";
+    CAN = "KEY_FINDER_LIVE_NOTICE_QR_INFO";
+    Hcf = 1;
+    AppMethodBeat.o(273991);
   }
   
-  public static abstract interface b
+  public static String frA()
   {
-    public abstract void eK(List<ai> paramList);
+    return CAN;
   }
   
-  public static abstract interface c
+  public static int frB()
   {
-    public abstract void Ql(int paramInt);
+    return Hcf;
+  }
+  
+  public static String frz()
+  {
+    return CAM;
   }
 }
 

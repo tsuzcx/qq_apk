@@ -1,17 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Context;
-import com.tencent.luggage.a.b;
-import com.tencent.mm.protocal.protobuf.eiq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.n.o;
 
-public abstract interface ag
-  extends b
+final class ag
 {
-  public abstract void a(Context paramContext, String paramString, eiq parameiq);
+  static final f.a rwS;
+  
+  static
+  {
+    AppMethodBeat.i(325541);
+    rwS = new f.a()
+    {
+      public final boolean a(String paramAnonymousString, o paramAnonymouso)
+      {
+        return false;
+      }
+    };
+    AppMethodBeat.o(325541);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ag
  * JD-Core Version:    0.7.0.1
  */

@@ -13,39 +13,39 @@ import java.util.ArrayList;
 public final class z
   extends ContextWrapper
 {
-  private static final Object wy;
-  private static ArrayList<WeakReference<z>> wz;
+  private static final Object xt;
+  private static ArrayList<WeakReference<z>> xu;
   private final Resources mResources;
   private final Resources.Theme mTheme;
   
   static
   {
-    AppMethodBeat.i(242031);
-    wy = new Object();
-    AppMethodBeat.o(242031);
+    AppMethodBeat.i(199870);
+    xt = new Object();
+    AppMethodBeat.o(199870);
   }
   
   private z(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(242027);
-    if (ah.eH())
+    AppMethodBeat.i(199859);
+    if (ah.fE())
     {
       this.mResources = new ah(this, paramContext.getResources());
       this.mTheme = this.mResources.newTheme();
       this.mTheme.setTo(paramContext.getTheme());
-      AppMethodBeat.o(242027);
+      AppMethodBeat.o(199859);
       return;
     }
     this.mResources = new ab(this, paramContext.getResources());
     this.mTheme = null;
-    AppMethodBeat.o(242027);
+    AppMethodBeat.o(199859);
   }
   
   public static Context L(Context paramContext)
   {
     int j = 0;
-    AppMethodBeat.i(242024);
+    AppMethodBeat.i(199849);
     int i = j;
     if (!(paramContext instanceof z))
     {
@@ -61,47 +61,47 @@ public final class z
     if (i != 0) {}
     for (;;)
     {
-      synchronized (wy)
+      synchronized (xt)
       {
-        if (wz == null)
+        if (xu == null)
         {
-          wz = new ArrayList();
+          xu = new ArrayList();
           paramContext = new z(paramContext);
-          wz.add(new WeakReference(paramContext));
-          AppMethodBeat.o(242024);
+          xu.add(new WeakReference(paramContext));
+          AppMethodBeat.o(199849);
           return paramContext;
           label102:
           if (Build.VERSION.SDK_INT >= 21)
           {
             i = j;
-            if (!ah.eH()) {
+            if (!ah.fE()) {
               break;
             }
           }
           i = 1;
           break;
         }
-        i = wz.size() - 1;
+        i = xu.size() - 1;
         if (i >= 0)
         {
-          localObject1 = (WeakReference)wz.get(i);
+          localObject1 = (WeakReference)xu.get(i);
           if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
             break label257;
           }
-          wz.remove(i);
+          xu.remove(i);
           break label257;
         }
-        i = wz.size() - 1;
+        i = xu.size() - 1;
         if (i < 0) {
           continue;
         }
-        Object localObject1 = (WeakReference)wz.get(i);
+        Object localObject1 = (WeakReference)xu.get(i);
         if (localObject1 != null)
         {
           localObject1 = (z)((WeakReference)localObject1).get();
           if ((localObject1 != null) && (((z)localObject1).getBaseContext() == paramContext))
           {
-            AppMethodBeat.o(242024);
+            AppMethodBeat.o(199849);
             return localObject1;
           }
         }
@@ -112,7 +112,7 @@ public final class z
         }
         i -= 1;
       }
-      AppMethodBeat.o(242024);
+      AppMethodBeat.o(199849);
       return paramContext;
       label257:
       i -= 1;
@@ -121,9 +121,9 @@ public final class z
   
   public final AssetManager getAssets()
   {
-    AppMethodBeat.i(242030);
+    AppMethodBeat.i(199910);
     AssetManager localAssetManager = this.mResources.getAssets();
-    AppMethodBeat.o(242030);
+    AppMethodBeat.o(199910);
     return localAssetManager;
   }
   
@@ -134,34 +134,34 @@ public final class z
   
   public final Resources.Theme getTheme()
   {
-    AppMethodBeat.i(242028);
+    AppMethodBeat.i(199880);
     if (this.mTheme == null)
     {
       localTheme = super.getTheme();
-      AppMethodBeat.o(242028);
+      AppMethodBeat.o(199880);
       return localTheme;
     }
     Resources.Theme localTheme = this.mTheme;
-    AppMethodBeat.o(242028);
+    AppMethodBeat.o(199880);
     return localTheme;
   }
   
   public final void setTheme(int paramInt)
   {
-    AppMethodBeat.i(242029);
+    AppMethodBeat.i(199887);
     if (this.mTheme == null)
     {
       super.setTheme(paramInt);
-      AppMethodBeat.o(242029);
+      AppMethodBeat.o(199887);
       return;
     }
     this.mTheme.applyStyle(paramInt, true);
-    AppMethodBeat.o(242029);
+    AppMethodBeat.o(199887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.appcompat.widget.z
  * JD-Core Version:    0.7.0.1
  */

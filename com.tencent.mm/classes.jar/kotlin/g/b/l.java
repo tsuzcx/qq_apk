@@ -1,42 +1,18 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/FloatCompanionObject;", "", "()V", "MAX_VALUE", "", "getMAX_VALUE", "()F", "MIN_VALUE", "getMIN_VALUE", "NEGATIVE_INFINITY", "getNEGATIVE_INFINITY", "NaN", "getNaN", "POSITIVE_INFINITY", "getPOSITIVE_INFINITY", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/jvm/internal/DoubleCompanionObject;", "", "()V", "MAX_VALUE", "", "getMAX_VALUE$annotations", "MIN_VALUE", "getMIN_VALUE$annotations", "NEGATIVE_INFINITY", "getNEGATIVE_INFINITY$annotations", "NaN", "getNaN$annotations", "POSITIVE_INFINITY", "getPOSITIVE_INFINITY$annotations", "SIZE_BITS", "", "getSIZE_BITS$annotations", "SIZE_BYTES", "getSIZE_BYTES$annotations", "getMAX_VALUE", "getMIN_VALUE", "getNEGATIVE_INFINITY", "getNaN", "getPOSITIVE_INFINITY", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class l
 {
-  private static final float aaBo = 1.4E-45F;
-  private static final float aaBp = 3.4028235E+38F;
-  private static final float aaBq = (1.0F / 1.0F);
-  private static final float aaBr = (1.0F / -1.0F);
-  private static final float aaBs = (0.0F / 0.0F);
-  public static final l aaBt;
+  public static final l aiwU;
   
   static
   {
-    AppMethodBeat.i(217035);
-    aaBt = new l();
-    aaBo = 1.4E-45F;
-    aaBp = 3.4028235E+38F;
-    aaBq = (1.0F / 1.0F);
-    aaBr = (1.0F / -1.0F);
-    aaBs = (0.0F / 0.0F);
-    AppMethodBeat.o(217035);
-  }
-  
-  public static float iCk()
-  {
-    return aaBp;
-  }
-  
-  public static float iCl()
-  {
-    return aaBq;
-  }
-  
-  public static float iCm()
-  {
-    return aaBr;
+    AppMethodBeat.i(129343);
+    aiwU = new l();
+    AppMethodBeat.o(129343);
   }
 }
 

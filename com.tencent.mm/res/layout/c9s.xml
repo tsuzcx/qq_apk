@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fjf" android:paddingLeft="0.0dip" wallet:contentHint="test" wallet:layoutRes="@layout/c_v" wallet:titleText="¥" style="@style/a0x"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />
+<com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiGridScrollView android:id="@id/iwz" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:fadeScrollbars="false" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/iwl" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" android:paddingStart="@dimen/df" android:paddingEnd="@dimen/df" />
+        <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:id="@id/cfh" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.799988dip" android:layout_alignParentBottom="true">
+                <TextView android:textSize="13.309998dip" android:textColor="#ffd0d0d0" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ci4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/jzw" android:layout_weight="3.0" android:layout_marginStart="15.0dip" android:layout_marginEnd="15.0dip" />
+                <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiGridScrollView>

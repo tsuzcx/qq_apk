@@ -6,6 +6,7 @@ import java.util.concurrent.RejectedExecutionException;
 
 public class ReflectField
 {
+  public static final String TAG = "ReflectField";
   private Class<?> mClass;
   private Field mField;
   private Object mInstance;
@@ -118,6 +119,7 @@ public class ReflectField
         }
         catch (NoSuchFieldException paramClass)
         {
+          Log.e("ReflectField", "init error:".concat(String.valueOf(paramClass)));
           paramObject = paramObject.getSuperclass();
         }
       }
@@ -154,7 +156,7 @@ public class ReflectField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.ReflectField
  * JD-Core Version:    0.7.0.1
  */

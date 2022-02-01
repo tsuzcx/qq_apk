@@ -2,246 +2,266 @@ package com.tencent.mm.plugin.mv.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ii;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.mmdata.rpt.kp;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.secdata.ui.a.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bdp;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dbo;
-import com.tencent.mm.protocal.protobuf.dbs;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.protocal.protobuf.dtf;
+import com.tencent.mm.protocal.protobuf.dtk;
 import com.tencent.mm.util.c;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/MvCreateReportHelper;", "", "()V", "baseStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/MvCreateActionStruct;", "finderPostFinishListener", "com/tencent/mm/plugin/mv/model/MvCreateReportHelper$finderPostFinishListener$1", "Lcom/tencent/mm/plugin/mv/model/MvCreateReportHelper$finderPostFinishListener$1;", "fromScene", "", "isFlexMode", "", "materialFrom", "", "materialPosition", "postCache", "", "cacheMaterialFrom", "", "cacheMaterialPosition", "cacheMode", "enterCreateMv", "context", "Landroid/content/Context;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "mvData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "getModeVal", "initReporter", "onCancelMaterial", "position", "data", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "isScrollEdit", "onChangeTransition", "transitionType", "onChangedMode", "onConfirmMaterial", "onCreateMvFinish", "imgCnt", "videoCnt", "onDestroy", "onDragDropTrack", "onMaterialDelete", "onMaterialExposure", "onPostActionInvoke", "onPreparePostSuccess", "localId", "onPreviewMvFinish", "onReplayTransition", "onSaveDraft", "isSave", "isFinderNew", "partList", "", "onScaleTimeTrack", "onSearch", "keyWord", "expId", "onSelect", "onStartPost", "reporter", "updateRequestId", "requestId", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/MvCreateReportHelper;", "", "()V", "baseStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/MvCreateActionStruct;", "finderPostFinishListener", "com/tencent/mm/plugin/mv/model/MvCreateReportHelper$finderPostFinishListener$1", "Lcom/tencent/mm/plugin/mv/model/MvCreateReportHelper$finderPostFinishListener$1;", "fromScene", "", "isFlexMode", "", "materialFrom", "", "materialPosition", "postCache", "", "cacheMaterialFrom", "", "cacheMaterialPosition", "cacheMode", "enterCreateMv", "context", "Landroid/content/Context;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "mvData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "getModeVal", "initReporter", "onCancelMaterial", "position", "data", "Lcom/tencent/mm/plugin/mv/model/MusicMVVideoConvertData;", "isScrollEdit", "onChangeTransition", "transitionType", "onChangedMode", "onConfirmMaterial", "onCreateMvFinish", "imgCnt", "videoCnt", "onDestroy", "onDragDropTrack", "onMaterialDelete", "onMaterialExposure", "onPostActionInvoke", "onPreparePostSuccess", "localId", "onPreviewMvFinish", "onReplayTransition", "onSaveDraft", "isSave", "isFinderNew", "partList", "", "onScaleTimeTrack", "onSearch", "keyWord", "expId", "onSelect", "onStartPost", "reporter", "updateRequestId", "requestId", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
 {
-  public static final m GcA;
-  private static ii Gct;
-  public static int Gcu;
-  public static int Gcv;
-  private static long Gcw;
-  private static boolean Gcx;
-  public static final Map<Long, ii> Gcy;
-  private static final m.a Gcz;
+  public static final m LYc;
+  private static kp LYd;
+  public static int LYe;
+  public static int LYf;
+  private static long LYg;
+  private static boolean LYh;
+  public static final Map<Long, kp> LYi;
+  private static final MvCreateReportHelper.finderPostFinishListener.1 LYj;
   
   static
   {
-    AppMethodBeat.i(227171);
-    GcA = new m();
-    Gct = new ii();
-    Gcw = 3L;
-    Gcx = true;
-    Gcy = (Map)new LinkedHashMap();
-    Gcz = new m.a();
-    EventCenter.instance.addListener((IListener)Gcz);
-    AppMethodBeat.o(227171);
-  }
-  
-  public static void ZE(int paramInt)
-  {
-    Gcv = paramInt;
-  }
-  
-  public static void ZF(int paramInt)
-  {
-    Gcu = paramInt;
+    AppMethodBeat.i(286216);
+    LYc = new m();
+    LYd = new kp();
+    LYg = 3L;
+    LYh = true;
+    LYi = (Map)new LinkedHashMap();
+    MvCreateReportHelper.finderPostFinishListener.1 local1 = new MvCreateReportHelper.finderPostFinishListener.1(f.hfK);
+    LYj = local1;
+    local1.alive();
+    AppMethodBeat.o(286216);
   }
   
   public static void a(int paramInt, e parame)
   {
-    AppMethodBeat.i(227145);
-    p.k(parame, "data");
-    ii localii = fgi();
-    localii.ys(parame.ahZ());
-    localii.yt(parame.ffT());
-    if ((Gcu != 1) && (Gcu != 2)) {
-      localii.sS(Gcv);
+    AppMethodBeat.i(286166);
+    s.u(parame, "data");
+    kp localkp = gpJ();
+    localkp.tk(parame.gpw());
+    localkp.tl(parame.gpx());
+    if ((LYe != 1) && (LYe != 2)) {
+      localkp.iMe = LYf;
     }
-    localii.sU(paramInt);
-    localii.sV(Gcu);
-    localii.sX(parame.ffU());
-    localii.sP(2L);
-    localii.alS();
-    localii.bpa();
-    parame = c.Yyz;
-    c.a((com.tencent.mm.plugin.report.a)localii);
-    AppMethodBeat.o(227145);
+    localkp.iXp = paramInt;
+    localkp.iXq = LYe;
+    localkp.iXs = parame.gpy();
+    localkp.ioV = 2L;
+    localkp.iPH = 1;
+    localkp.bMH();
+    parame = c.agsX;
+    c.a((com.tencent.mm.plugin.report.a)localkp);
+    AppMethodBeat.o(286166);
   }
   
-  public static void a(Context paramContext, bds parambds, dbo paramdbo, int paramInt, boolean paramBoolean)
+  public static void a(Context paramContext, boo paramboo, dtf paramdtf, int paramInt, boolean paramBoolean)
   {
-    ii localii = null;
-    AppMethodBeat.i(227139);
-    p.k(paramContext, "context");
-    p.k(parambds, "songInfo");
-    Object localObject = com.tencent.mm.plugin.secdata.ui.a.JbV;
-    paramContext = (dbs)a.a.a(paramContext, 7, dbs.class);
-    Gct = new ii();
+    kp localkp = null;
+    AppMethodBeat.i(286152);
+    s.u(paramContext, "context");
+    s.u(paramboo, "songInfo");
+    Object localObject = com.tencent.mm.plugin.secdata.ui.a.PlI;
+    paramContext = (dtk)a.a.a(paramContext, 7, dtk.class);
+    LYd = new kp();
     if (paramContext != null)
     {
-      Gct.yh(paramContext.wmL);
-      Gct.sY(paramContext.scene);
-      Gct.yq(paramContext.AtM);
+      LYd.sZ(paramContext.zIO);
+      LYd.iqr = paramContext.scene;
+      LYd.ti(paramContext.FST);
     }
-    paramContext = Gct;
-    localObject = com.tencent.mm.plugin.comm.a.ubo;
-    paramContext.yi(com.tencent.mm.plugin.comm.a.cPn());
-    localObject = Gct;
-    paramContext = parambds.HLH;
-    if (paramContext != null)
+    paramContext = LYd;
+    localObject = com.tencent.mm.plugin.comm.a.xeG;
+    paramContext.ta(com.tencent.mm.plugin.comm.a.dsT());
+    localObject = LYd;
+    paramContext = paramboo.songName;
+    label174:
+    long l;
+    if (paramContext == null)
     {
-      paramContext = n.l(paramContext, ",", " ", false);
-      ((ii)localObject).yj(paramContext);
-      Gct.yk(parambds.kkU);
-      Gct.yl(parambds.SOK);
-      Gct.ym(parambds.musicDataUrl);
-      localObject = Gct;
-      parambds = parambds.ozs;
-      paramContext = localii;
-      if (parambds != null) {
-        paramContext = n.l(parambds, ",", " ", false);
+      paramContext = null;
+      ((kp)localObject).tb(paramContext);
+      LYd.tc(paramboo.mLQ);
+      LYd.td(paramboo.ZWR);
+      LYd.te(paramboo.musicDataUrl);
+      localObject = LYd;
+      paramContext = paramboo.rDl;
+      if (paramContext != null) {
+        break label283;
       }
-      ((ii)localObject).yn(paramContext);
-      localii = Gct;
-      parambds = z.bdh();
-      paramContext = parambds;
-      if (parambds == null) {
+      paramContext = localkp;
+      ((kp)localObject).tf(paramContext);
+      localkp = LYd;
+      paramboo = z.bAW();
+      paramContext = paramboo;
+      if (paramboo == null) {
         paramContext = "";
       }
-      localii.yo(paramContext);
-      paramContext = Gct;
-      if (paramdbo == null) {
-        break label339;
+      localkp.tg(paramContext);
+      paramContext = LYd;
+      if (paramdtf != null) {
+        break label298;
       }
-      parambds = paramdbo.TIV;
-      if (parambds == null) {
-        break label339;
-      }
-      parambds = parambds.objectDesc;
-      if (parambds == null) {
-        break label339;
-      }
-      parambds = parambds.mvInfo;
-      if (parambds == null) {
-        break label339;
-      }
-      parambds = parambds.SOB;
-      if (parambds == null) {
-        break label339;
-      }
+      l = 0L;
     }
-    label339:
-    for (long l = parambds.size();; l = 0L)
+    for (;;)
     {
-      paramContext.sT(l);
-      Gct.sY(paramInt);
-      vx(paramBoolean);
-      paramContext = fgi();
-      paramContext.sP(1L);
-      paramContext.bpa();
-      parambds = c.Yyz;
+      paramContext.iXo = l;
+      LYd.iqr = paramInt;
+      zR(paramBoolean);
+      paramContext = gpJ();
+      paramContext.ioV = 1L;
+      paramContext.bMH();
+      paramboo = c.agsX;
       c.a((com.tencent.mm.plugin.report.a)paramContext);
-      AppMethodBeat.o(227139);
+      AppMethodBeat.o(286152);
       return;
-      paramContext = null;
+      paramContext = n.m(paramContext, ",", " ", false);
       break;
+      label283:
+      paramContext = n.m(paramContext, ",", " ", false);
+      break label174;
+      label298:
+      paramboo = paramdtf.aaYK;
+      if (paramboo == null)
+      {
+        l = 0L;
+      }
+      else
+      {
+        paramboo = paramboo.objectDesc;
+        if (paramboo == null)
+        {
+          l = 0L;
+        }
+        else
+        {
+          paramboo = paramboo.mvInfo;
+          if (paramboo == null)
+          {
+            l = 0L;
+          }
+          else
+          {
+            paramboo = paramboo.ZWI;
+            if (paramboo == null) {
+              l = 0L;
+            } else {
+              l = paramboo.size();
+            }
+          }
+        }
+      }
     }
   }
   
-  public static void aSF(String paramString)
+  public static void aPz(String paramString)
   {
-    AppMethodBeat.i(227122);
-    Gct.yw(paramString);
-    AppMethodBeat.o(227122);
+    AppMethodBeat.i(286142);
+    LYd.to(paramString);
+    AppMethodBeat.o(286142);
   }
   
-  public static ii fgi()
+  public static void adR(int paramInt)
   {
-    AppMethodBeat.i(227118);
-    ii localii = new ii(Gct.agH());
-    AppMethodBeat.o(227118);
-    return localii;
+    LYf = paramInt;
   }
   
-  public static void fgj()
+  public static void adS(int paramInt)
   {
-    AppMethodBeat.i(227156);
-    ii localii = fgi();
-    localii.sP(7L);
-    localii.alR();
-    localii.bpa();
-    c localc = c.Yyz;
-    c.a((com.tencent.mm.plugin.report.a)localii);
-    AppMethodBeat.o(227156);
+    LYe = paramInt;
   }
   
-  private static long fgk()
+  public static kp gpJ()
   {
-    if (Gcx) {
+    AppMethodBeat.i(286134);
+    kp localkp = new kp(LYd.aIE());
+    AppMethodBeat.o(286134);
+    return localkp;
+  }
+  
+  public static void gpK()
+  {
+    AppMethodBeat.i(286184);
+    kp localkp = gpJ();
+    localkp.ioV = 7L;
+    localkp.iXw = 0;
+    localkp.bMH();
+    c localc = c.agsX;
+    c.a((com.tencent.mm.plugin.report.a)localkp);
+    AppMethodBeat.o(286184);
+  }
+  
+  private static long gpL()
+  {
+    if (LYh) {
       return 1L;
     }
     return 2L;
   }
   
-  public static void iB(int paramInt1, int paramInt2)
+  public static void kB(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(227154);
-    ii localii = fgi();
-    localii.sP(6L);
-    localii.yx(paramInt1 + '#' + paramInt2);
-    localii.bpa();
-    c localc = c.Yyz;
-    c.a((com.tencent.mm.plugin.report.a)localii);
-    AppMethodBeat.o(227154);
+    AppMethodBeat.i(286171);
+    s.u(paramString1, "keyWord");
+    s.u(paramString2, "expId");
+    kp localkp = gpJ();
+    localkp.tm(paramString1);
+    localkp.tn(paramString2);
+    localkp.ioV = 3L;
+    localkp.bMH();
+    paramString1 = c.agsX;
+    c.a((com.tencent.mm.plugin.report.a)localkp);
+    AppMethodBeat.o(286171);
   }
   
-  public static void jm(String paramString1, String paramString2)
+  public static void kf(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(227151);
-    p.k(paramString1, "keyWord");
-    p.k(paramString2, "expId");
-    ii localii = fgi();
-    localii.yu(paramString1);
-    localii.yv(paramString2);
-    localii.sP(3L);
-    localii.bpa();
-    paramString1 = c.Yyz;
-    c.a((com.tencent.mm.plugin.report.a)localii);
-    AppMethodBeat.o(227151);
+    AppMethodBeat.i(286177);
+    kp localkp = gpJ();
+    localkp.ioV = 6L;
+    localkp.tp(paramInt1 + '#' + paramInt2);
+    localkp.bMH();
+    c localc = c.agsX;
+    c.a((com.tencent.mm.plugin.report.a)localkp);
+    AppMethodBeat.o(286177);
   }
   
-  private static void vx(boolean paramBoolean)
+  private static void zR(boolean paramBoolean)
   {
-    AppMethodBeat.i(227160);
-    Gcx = paramBoolean;
-    Gct.sZ(fgk());
-    AppMethodBeat.o(227160);
+    AppMethodBeat.i(286190);
+    LYh = paramBoolean;
+    LYd.iXt = gpL();
+    AppMethodBeat.o(286190);
   }
   
-  public static void vy(boolean paramBoolean)
+  public static void zS(boolean paramBoolean)
   {
-    AppMethodBeat.i(227162);
-    vx(paramBoolean);
-    ii localii = fgi();
-    localii.sP(12L);
-    localii.bpa();
-    c localc = c.Yyz;
-    c.a((com.tencent.mm.plugin.report.a)localii);
-    AppMethodBeat.o(227162);
+    AppMethodBeat.i(286195);
+    zR(paramBoolean);
+    kp localkp = gpJ();
+    localkp.ioV = 12L;
+    localkp.bMH();
+    c localc = c.agsX;
+    c.a((com.tencent.mm.plugin.report.a)localkp);
+    AppMethodBeat.o(286195);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.model.m
  * JD-Core Version:    0.7.0.1
  */

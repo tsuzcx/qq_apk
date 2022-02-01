@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeProcessInputType;", "", "value", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getValue", "()Ljava/lang/String;", "Down", "Up", "Cancel", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeProcessInputType;", "", "value", "", "(Ljava/lang/String;ILjava/lang/String;)V", "getValue", "()Ljava/lang/String;", "Down", "Up", "Cancel", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum h
 {
   public final String value;
   
   static
   {
-    AppMethodBeat.i(210100);
-    h localh1 = new h("Down", 0, "d");
-    DCP = localh1;
-    h localh2 = new h("Up", 1, "u");
-    DCQ = localh2;
-    h localh3 = new h("Cancel", 2, "c");
-    DCR = localh3;
-    DCS = new h[] { localh1, localh2, localh3 };
-    AppMethodBeat.o(210100);
+    AppMethodBeat.i(311899);
+    Jvy = new h("Down", 0, "d");
+    Jvz = new h("Up", 1, "u");
+    JvA = new h("Cancel", 2, "c");
+    JvB = new h[] { Jvy, Jvz, JvA };
+    AppMethodBeat.o(311899);
   }
   
   private h(String paramString)

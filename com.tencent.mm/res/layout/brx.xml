@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.shake.ui.ShakeEggAnimFrame android:id="@id/arw" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mm.plugin.shake.ui.ShakeEggAnimFrame>
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/j7" android:textColor="@color/ib" android:id="@id/apy" android:background="@drawable/c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/av" android:minHeight="48.0dip" android:text="@string/atw" android:layout_alignParentLeft="true" />
+        <Button android:textSize="@dimen/j7" android:textColor="@color/wv" android:id="@id/hls" android:background="@drawable/c1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="92.0dip" android:minHeight="48.0dip" android:text="@string/hzi" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.picker.OptionPicker android:id="@id/hnj" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="20.0dip" />
+        <com.tencent.mm.ui.widget.picker.OptionPicker android:id="@id/hnn" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+    </LinearLayout>
+</LinearLayout>

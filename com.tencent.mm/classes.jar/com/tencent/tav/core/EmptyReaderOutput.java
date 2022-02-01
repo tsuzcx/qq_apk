@@ -11,19 +11,17 @@ public class EmptyReaderOutput
 {
   public void markConfigurationAsFinal() {}
   
-  public CMSampleBuffer nextSampleBuffer()
+  public CMSampleBuffer nextSampleBuffer(boolean paramBoolean)
   {
-    AppMethodBeat.i(189149);
+    AppMethodBeat.i(215221);
     CMSampleBuffer localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-1L));
-    AppMethodBeat.o(189149);
+    AppMethodBeat.o(215221);
     return localCMSampleBuffer;
   }
   
   void release() {}
   
   public void resetForReadingTimeRanges(List<CMTimeRange> paramList) {}
-  
-  void start(IContextCreate paramIContextCreate, AssetReader paramAssetReader) {}
 }
 
 

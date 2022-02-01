@@ -1,155 +1,157 @@
 package com.tencent.mm.plugin.mv.model.b;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.mv.b.f;
-import com.tencent.mm.plugin.thumbplayer.view.MMThumbPlayerTextureView;
 import com.tencent.mm.plugin.thumbplayer.view.recycler.MMRecyclerVideoLayout;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.dog;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.protocal.protobuf.egx;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewFinderVideoItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "videoLayoutRecycler", "Lcom/tencent/mm/plugin/thumbplayer/view/recycler/MMVideoLayoutRecycler;", "(Lcom/tencent/mm/plugin/thumbplayer/view/recycler/MMVideoLayoutRecycler;)V", "getVideoLayoutRecycler", "()Lcom/tencent/mm/plugin/thumbplayer/view/recycler/MMVideoLayoutRecycler;", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewFinderVideoItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "videoLayoutRecycler", "Lcom/tencent/mm/plugin/thumbplayer/view/recycler/MMVideoLayoutRecycler;", "(Lcom/tencent/mm/plugin/thumbplayer/view/recycler/MMVideoLayoutRecycler;)V", "getVideoLayoutRecycler", "()Lcom/tencent/mm/plugin/thumbplayer/view/recycler/MMVideoLayoutRecycler;", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends com.tencent.mm.view.recyclerview.e<e>
+  extends f<e>
 {
-  final com.tencent.mm.plugin.thumbplayer.view.recycler.a GdK;
+  private final com.tencent.mm.plugin.thumbplayer.view.recycler.a LZy;
   
   public d(com.tencent.mm.plugin.thumbplayer.view.recycler.a parama)
   {
-    AppMethodBeat.i(226374);
-    this.GdK = parama;
-    AppMethodBeat.o(226374);
+    AppMethodBeat.i(286182);
+    this.LZy = parama;
+    AppMethodBeat.o(286182);
   }
   
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  private static final void a(d paramd, FrameLayout paramFrameLayout, e parame, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(226372);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(226372);
+    AppMethodBeat.i(286200);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramd);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramFrameLayout);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(parame);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView1);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/model/preview/MvPreviewFinderVideoItemConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramd, "this$0");
+    s.u(parame, "$item");
+    paramView2 = paramd.LZy.hLR();
+    paramFrameLayout.removeAllViews();
+    paramd = new FrameLayout.LayoutParams(-1, -1);
+    paramd.gravity = 17;
+    paramFrameLayout.addView((View)paramView2, (ViewGroup.LayoutParams)paramd);
+    parame = parame.LZG.EDa;
+    long l;
+    if (parame != null)
+    {
+      localObject1 = s.X("video_", Long.valueOf(parame.id));
+      paramd = com.tencent.mm.plugin.mv.ui.a.Maz;
+      String str = com.tencent.mm.plugin.mv.ui.a.aPC((String)localObject1);
+      paramd = parame.objectDesc;
+      if (paramd != null)
+      {
+        paramd = paramd.media;
+        if (paramd != null)
+        {
+          localObject2 = (FinderMedia)p.oL((List)paramd);
+          if (localObject2 != null)
+          {
+            paramFrameLayout = ((FinderMedia)localObject2).url;
+            paramd = paramFrameLayout;
+            if (paramFrameLayout == null) {
+              paramd = "";
+            }
+            localObject1 = new com.tencent.mm.plugin.thumbplayer.a.b((String)localObject1, str, paramd, kotlin.h.a.eH(((FinderMedia)localObject2).width), kotlin.h.a.eH(((FinderMedia)localObject2).height));
+            ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).TBJ = 2;
+            ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).hVy = "xV2";
+            paramFrameLayout = ((FinderMedia)localObject2).url_token;
+            paramd = paramFrameLayout;
+            if (paramFrameLayout == null) {
+              paramd = "";
+            }
+            ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).msf = paramd;
+            ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).decodeKey = ((FinderMedia)localObject2).decodeKey;
+            paramFrameLayout = ((FinderMedia)localObject2).thumbUrl;
+            paramd = paramFrameLayout;
+            if (paramFrameLayout == null) {
+              paramd = "";
+            }
+            ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).thumbUrl = paramd;
+            paramFrameLayout = ((FinderMedia)localObject2).thumb_url_token;
+            paramd = paramFrameLayout;
+            if (paramFrameLayout == null) {
+              paramd = "";
+            }
+            ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).msh = paramd;
+            paramd = parame.objectDesc;
+            if (paramd != null) {
+              break label434;
+            }
+            l = 0L;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).vYw = (l * 1000L);
+      ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).nDl = 2;
+      ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).hJv = false;
+      ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).TBP = parame;
+      paramView2.eDO();
+      paramView2.setMediaInfo((com.tencent.mm.plugin.thumbplayer.a.b)localObject1);
+      paramView2.hLO();
+      paramView2.start();
+      paramView2.setLoop(true);
+      paramView2.setMute(true);
+      paramView1.setVisibility(8);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/model/preview/MvPreviewFinderVideoItemConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(286200);
+      return;
+      label434:
+      paramd = paramd.media;
+      if (paramd == null)
+      {
+        l = 0L;
+      }
+      else
+      {
+        paramd = (FinderMedia)p.oK((List)paramd);
+        if (paramd == null) {
+          l = 0L;
+        } else {
+          l = paramd.videoDuration;
+        }
+      }
+    }
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+  {
+    AppMethodBeat.i(286222);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    AppMethodBeat.o(286222);
   }
   
   public final int getLayoutId()
   {
-    return b.f.FZo;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(d paramd, FrameLayout paramFrameLayout, e parame, View paramView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(236667);
-      Object localObject1 = new b();
-      ((b)localObject1).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/model/preview/MvPreviewFinderVideoItemConvert$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
-      MMRecyclerVideoLayout localMMRecyclerVideoLayout = this.GdW.GdK.gpf();
-      this.GdN.removeAllViews();
-      paramView = new FrameLayout.LayoutParams(-1, -1);
-      paramView.gravity = 17;
-      this.GdN.addView((View)localMMRecyclerVideoLayout, (ViewGroup.LayoutParams)paramView);
-      FinderObject localFinderObject = this.GdO.Gea.Gbc;
-      Object localObject2;
-      if (localFinderObject != null)
-      {
-        localObject2 = "video_" + localFinderObject.id;
-        paramView = com.tencent.mm.plugin.mv.ui.a.Gfi;
-        String str = com.tencent.mm.plugin.mv.ui.a.aSI((String)localObject2);
-        paramView = localFinderObject.objectDesc;
-        if (paramView != null)
-        {
-          paramView = paramView.media;
-          if (paramView != null)
-          {
-            FinderMedia localFinderMedia = (FinderMedia)j.lp((List)paramView);
-            if (localFinderMedia != null)
-            {
-              localObject1 = localFinderMedia.url;
-              paramView = (View)localObject1;
-              if (localObject1 == null) {
-                paramView = "";
-              }
-              localObject2 = new com.tencent.mm.plugin.thumbplayer.e.d((String)localObject2, str, paramView, kotlin.h.a.dm(localFinderMedia.width), kotlin.h.a.dm(localFinderMedia.height));
-              ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).MSA = Integer.valueOf(2);
-              ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).fPD = "xV2";
-              localObject1 = localFinderMedia.url_token;
-              paramView = (View)localObject1;
-              if (localObject1 == null) {
-                paramView = "";
-              }
-              ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).beR(paramView);
-              ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).decodeKey = localFinderMedia.decodeKey;
-              localObject1 = localFinderMedia.thumbUrl;
-              paramView = (View)localObject1;
-              if (localObject1 == null) {
-                paramView = "";
-              }
-              ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).Oc(paramView);
-              localObject1 = localFinderMedia.thumb_url_token;
-              paramView = (View)localObject1;
-              if (localObject1 == null) {
-                paramView = "";
-              }
-              ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).beS(paramView);
-              paramView = localFinderObject.objectDesc;
-              if (paramView == null) {
-                break label465;
-              }
-              paramView = paramView.media;
-              if (paramView == null) {
-                break label465;
-              }
-              paramView = (FinderMedia)j.lo((List)paramView);
-              if (paramView == null) {
-                break label465;
-              }
-            }
-          }
-        }
-      }
-      label465:
-      for (long l = paramView.videoDuration;; l = 0L)
-      {
-        ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).sTg = (l * 1000L);
-        paramView = MMThumbPlayerTextureView.MUw;
-        ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).kYn = MMThumbPlayerTextureView.gpa();
-        ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).fEF = false;
-        ((com.tencent.mm.plugin.thumbplayer.e.d)localObject2).MSH = localFinderObject;
-        localMMRecyclerVideoLayout.dLb();
-        localMMRecyclerVideoLayout.setMediaInfo((com.tencent.mm.plugin.thumbplayer.e.d)localObject2);
-        localMMRecyclerVideoLayout.goW();
-        localMMRecyclerVideoLayout.start();
-        localMMRecyclerVideoLayout.setLoop(true);
-        localMMRecyclerVideoLayout.setMute(true);
-        paramView = this.GdP;
-        p.j(paramView, "playBtn");
-        paramView.setVisibility(8);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/model/preview/MvPreviewFinderVideoItemConvert$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(236667);
-        return;
-      }
-    }
+    return b.f.LVl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.model.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,76 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.m;
 import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bn
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78636);
-    Log.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = paramb.crh.cqn.optJSONArray("menuList");
-    if (localJSONArray == null)
+    int j = 1;
+    AppMethodBeat.i(78628);
+    Log.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
+    Object localObject = paramb.eiZ.eif.optString("orientation");
+    if (Util.isNullOrNil((String)localObject))
     {
-      Log.i("MicroMsg.JsApiShowMenuItems", "data is null");
+      Log.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
       paramb.a("invalid_data", null);
-      AppMethodBeat.o(78636);
+      AppMethodBeat.o(78628);
       return;
     }
-    m localm = ((g)paramb.crg).gUx();
-    if (localm != null) {
-      localm.W(localJSONArray);
+    int i;
+    if (((String)localObject).equals("horizontal")) {
+      i = 0;
     }
-    paramb.a("", null);
-    AppMethodBeat.o(78636);
+    for (;;)
+    {
+      localObject = (g)paramb.eiY;
+      ((s)localObject).ejT.putInt("screen_orientation", i);
+      ((g)localObject).iub();
+      paramb.a("", null);
+      AppMethodBeat.o(78628);
+      return;
+      i = j;
+      if (!((String)localObject).equals("vertical")) {
+        if (((String)localObject).equals("sensor"))
+        {
+          i = 4;
+        }
+        else if (((String)localObject).equals("horizontal_unforced"))
+        {
+          i = 0;
+        }
+        else
+        {
+          i = j;
+          if (!((String)localObject).equals("vertical_unforced")) {
+            i = -1;
+          }
+        }
+      }
+    }
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "showMenuItems";
+    return "setScreenOrientation";
   }
 }
 

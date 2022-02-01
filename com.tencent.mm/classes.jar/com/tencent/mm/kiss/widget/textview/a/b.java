@@ -5,56 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public a kgG;
+  public a mGZ;
   
-  public static b aIT()
+  public static b bbQ()
   {
     AppMethodBeat.i(141136);
     b localb = new b();
-    localb.kgG = new a();
+    localb.mGZ = new a();
     AppMethodBeat.o(141136);
     return localb;
   }
   
-  public final b aIU()
-  {
-    this.kgG.maxLines = 6;
-    return this;
-  }
-  
-  public final b aIV()
-  {
-    this.kgG.kgy = 1;
-    return this;
-  }
-  
-  public final b as(float paramFloat)
-  {
-    this.kgG.textSize = paramFloat;
-    return this;
-  }
-  
   public final b b(TextUtils.TruncateAt paramTruncateAt)
   {
-    this.kgG.kgs = paramTruncateAt;
+    this.mGZ.bbe = paramTruncateAt;
     return this;
   }
   
-  public final b sK(int paramInt)
+  public final b bbR()
   {
-    this.kgG.ek = paramInt;
+    this.mGZ.maxLines = 6;
     return this;
   }
   
-  public final b sL(int paramInt)
+  public final b bbS()
   {
-    this.kgG.textColor = paramInt;
+    this.mGZ.bbl = 1;
+    return this;
+  }
+  
+  public final b bn(float paramFloat)
+  {
+    this.mGZ.textSize = paramFloat;
+    return this;
+  }
+  
+  public final b sH(int paramInt)
+  {
+    this.mGZ.fl = paramInt;
+    return this;
+  }
+  
+  public final b sI(int paramInt)
+  {
+    this.mGZ.textColor = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.a.b
  * JD-Core Version:    0.7.0.1
  */

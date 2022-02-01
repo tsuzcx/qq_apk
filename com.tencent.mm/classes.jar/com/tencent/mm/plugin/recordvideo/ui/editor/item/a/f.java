@@ -6,169 +6,165 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ctg;
+import com.tencent.mm.protocal.protobuf.dki;
 import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/FinderLyricsEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorItem;", "lyricsBitmaps", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorInfo;", "matrix", "Landroid/graphics/Matrix;", "musicDuration", "", "(Ljava/util/List;Landroid/graphics/Matrix;J)V", "currentTime", "lastLrcTime", "getLastLrcTime", "()J", "draw", "", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "drawWave", "fillAlpha", "fillWaveAlpha", "appearTime", "nextIndex", "seekTo", "timeMs", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/FinderLyricsEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorItem;", "lyricsBitmaps", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/LyricsEditorInfo;", "matrix", "Landroid/graphics/Matrix;", "musicDuration", "", "(Ljava/util/List;Landroid/graphics/Matrix;J)V", "currentTime", "lastLrcTime", "getLastLrcTime", "()J", "draw", "", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "drawWave", "fillAlpha", "fillWaveAlpha", "appearTime", "nextIndex", "seekTo", "timeMs", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends h
 {
-  private final long Icy;
-  private long lwE;
+  private final long NYV;
+  private long ood;
   
   public f(List<g> paramList, Matrix paramMatrix, long paramLong)
   {
     super(paramList, paramMatrix);
-    AppMethodBeat.i(220095);
-    this.Icy = paramLong;
-    AppMethodBeat.o(220095);
+    AppMethodBeat.i(280406);
+    this.NYV = paramLong;
+    AppMethodBeat.o(280406);
   }
   
   private final long getLastLrcTime()
   {
-    AppMethodBeat.i(220051);
-    if (this.Icy > 0L)
+    AppMethodBeat.i(280414);
+    if (this.NYV > 0L)
     {
-      l1 = this.Icy;
-      AppMethodBeat.o(220051);
+      l1 = this.NYV;
+      AppMethodBeat.o(280414);
       return l1;
     }
-    long l1 = ((g)j.lq(fzg())).Idi.startTime;
+    long l1 = ((g)p.oM(gKJ())).NZE.startTime;
     long l2 = getLAST_INTERVAL();
-    AppMethodBeat.o(220051);
+    AppMethodBeat.o(280414);
     return l1 + l2;
-  }
-  
-  protected final void PC(long paramLong)
-  {
-    AppMethodBeat.i(220068);
-    long l1;
-    long l2;
-    if (getWaveAlpha() < 255)
-    {
-      l1 = getTRANS_TIME();
-      l2 = fyT() - paramLong;
-      if (0L <= l2) {
-        break label62;
-      }
-    }
-    label62:
-    while (l1 < l2)
-    {
-      if (this.lwE - paramLong > getTRANS_TIME()) {
-        setWaveAlpha(255);
-      }
-      AppMethodBeat.o(220068);
-      return;
-    }
-    setWaveAlpha((int)(255.0F * (float)(this.lwE - paramLong) / (float)getTRANS_TIME()));
-    AppMethodBeat.o(220068);
   }
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(220092);
-    p.k(paramCanvas, "canvas");
-    p.k(paramPaint, "paint");
+    AppMethodBeat.i(280442);
+    s.u(paramCanvas, "canvas");
+    s.u(paramPaint, "paint");
     paramCanvas.save();
-    Object localObject = (g)j.M(fzg(), getCurIndex());
-    if (localObject != null) {}
-    for (localObject = ((g)localObject).bitmap;; localObject = null)
+    Object localObject = (g)p.ae(gKJ(), getCurIndex());
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((g)localObject).bitmap)
     {
       if (localObject != null)
       {
-        fyM();
-        fyL();
+        gKy();
+        gKx();
         paramPaint.setAlpha(getAlpha());
-        paramCanvas.concat(fyW());
-        x(paramCanvas);
+        paramCanvas.concat(getMatrix());
+        s(paramCanvas);
         paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, getLYRICS_VERTICAL_OFFSET(), paramPaint);
         paramPaint.setAlpha(255);
       }
       paramCanvas.restore();
-      AppMethodBeat.o(220092);
+      AppMethodBeat.o(280442);
       return;
     }
   }
   
-  protected final void fyL()
+  protected final void gKx()
   {
-    AppMethodBeat.i(220062);
-    if (getCurIndex() < fzg().size())
+    int j = 1;
+    AppMethodBeat.i(280426);
+    if (getCurIndex() < gKJ().size())
     {
-      long l2 = ((g)fzg().get(getCurIndex())).Idi.startTime;
-      Object localObject = (g)j.M(fzg(), getCurIndex() + 1);
+      long l2 = ((g)gKJ().get(getCurIndex())).NZE.startTime;
+      Object localObject = (g)p.ae(gKJ(), getCurIndex() + 1);
       long l1;
-      long l3;
-      long l4;
-      if (localObject != null)
+      label106:
+      int i;
+      if (localObject == null)
       {
-        localObject = ((g)localObject).Idi;
-        if (localObject != null)
-        {
-          l1 = ((ctg)localObject).startTime;
-          l3 = getTRANS_TIME();
-          l4 = this.lwE - l2;
-          if (0L <= l4) {
-            break label199;
-          }
-          label106:
-          l3 = getTRANS_TIME();
-          l4 = l1 - this.lwE;
-          if (0L <= l4) {
-            break label234;
-          }
+        localObject = null;
+        if (localObject != null) {
+          break label201;
         }
+        l1 = ((g)gKJ().get(getCurIndex())).NZE.startTime + getLAST_INTERVAL();
+        l3 = getTRANS_TIME();
+        l4 = this.ood - l2;
+        if (0L > l4) {
+          break label215;
+        }
+        if (l4 > l3) {
+          break label210;
+        }
+        i = 1;
       }
       for (;;)
       {
-        if ((this.lwE - l2 > getTRANS_TIME()) && (l1 - this.lwE > getTRANS_TIME()))
-        {
-          setAlpha(255);
-          AppMethodBeat.o(220062);
-          return;
-          l1 = ((g)fzg().get(getCurIndex())).Idi.startTime + getLAST_INTERVAL();
-          break;
-          label199:
-          if (l3 < l4) {
-            break label106;
-          }
-          setAlpha((int)((float)(this.lwE - l2) * 255.0F / (float)getTRANS_TIME()));
-          AppMethodBeat.o(220062);
-          return;
-          label234:
-          if (l3 >= l4)
-          {
-            setAlpha((int)((float)(l1 - this.lwE) / (float)getTRANS_TIME() * 255.0F));
-            AppMethodBeat.o(220062);
-            return;
-          }
+        if (i == 0) {
+          break label220;
         }
+        setAlpha((int)((float)(this.ood - l2) * 255.0F / (float)getTRANS_TIME()));
+        AppMethodBeat.o(280426);
+        return;
+        localObject = ((g)localObject).NZE;
+        if (localObject == null)
+        {
+          localObject = null;
+          break;
+        }
+        localObject = Long.valueOf(((dki)localObject).startTime);
+        break;
+        label201:
+        l1 = ((Long)localObject).longValue();
+        break label106;
+        label210:
+        i = 0;
+        continue;
+        label215:
+        i = 0;
+      }
+      label220:
+      long l3 = getTRANS_TIME();
+      long l4 = l1 - this.ood;
+      if (0L <= l4) {
+        if (l4 <= l3) {
+          i = j;
+        }
+      }
+      while (i != 0)
+      {
+        setAlpha((int)((float)(l1 - this.ood) / (float)getTRANS_TIME() * 255.0F));
+        AppMethodBeat.o(280426);
+        return;
+        i = 0;
+        continue;
+        i = 0;
+      }
+      if ((this.ood - l2 > getTRANS_TIME()) && (l1 - this.ood > getTRANS_TIME()))
+      {
+        setAlpha(255);
+        AppMethodBeat.o(280426);
+        return;
       }
       setAlpha(0);
     }
-    AppMethodBeat.o(220062);
+    AppMethodBeat.o(280426);
   }
   
-  protected final void fyM()
+  protected final void gKy()
   {
-    AppMethodBeat.i(220076);
-    if (fzg().isEmpty())
+    AppMethodBeat.i(280434);
+    if (gKJ().isEmpty())
     {
-      AppMethodBeat.o(220076);
+      AppMethodBeat.o(280434);
       return;
     }
-    Object localObject = fzg();
+    Object localObject = gKJ();
     localObject = ((List)localObject).listIterator(((List)localObject).size());
     if (((ListIterator)localObject).hasPrevious())
     {
       g localg = (g)((ListIterator)localObject).previous();
-      if (this.lwE >= localg.Idi.startTime)
+      if (this.ood >= localg.NZE.startTime)
       {
         i = 1;
         label77:
@@ -180,7 +176,7 @@ public final class f
     for (int i = ((ListIterator)localObject).nextIndex();; i = -1)
     {
       setCurIndex(Math.max(0, i));
-      AppMethodBeat.o(220076);
+      AppMethodBeat.o(280434);
       return;
       i = 0;
       break label77;
@@ -189,32 +185,24 @@ public final class f
     }
   }
   
-  public final void seekTo(long paramLong)
+  protected final void s(Canvas paramCanvas)
   {
-    AppMethodBeat.i(220054);
-    for (this.lwE = paramLong; this.lwE > getLastLrcTime(); this.lwE -= getLastLrcTime()) {}
-    super.seekTo(paramLong);
-    AppMethodBeat.o(220054);
-  }
-  
-  protected final void x(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(220085);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(280439);
+    s.u(paramCanvas, "canvas");
     float f1;
     label87:
     RectF localRectF;
-    if (!((Collection)fzg()).isEmpty())
+    if (!((Collection)gKJ()).isEmpty())
     {
       i = 1;
       if (i == 0) {
         break label376;
       }
-      if ((getWaveTime() != 0L) && (this.lwE - getWaveTime() <= fyX())) {
+      if ((getWaveTime() != 0L) && (this.ood - getWaveTime() <= gKK())) {
         break label299;
       }
-      setWaveTime(this.lwE);
-      arrayOfRectF = fze();
+      setWaveTime(this.ood);
+      arrayOfRectF = gKR();
       i = 0;
       int k = arrayOfRectF.length;
       j = 0;
@@ -224,24 +212,24 @@ public final class f
       }
       localRectF = arrayOfRectF[j];
       f2 = localRectF.height();
-      if (f2 > fza()) {
+      if (f2 > gKN()) {
         break label253;
       }
-      fzf()[i] = ((float)(fyZ() * Math.random()));
+      gKS()[i] = ((float)(gKM() * Math.random()));
       label134:
-      if (f2 > fzf()[i]) {
+      if (f2 > gKS()[i]) {
         break label280;
       }
     }
     label280:
-    for (float f2 = Math.min(f2 + fzc(), fyZ());; f2 = Math.max(f2 - fzd(), fza()))
+    for (float f2 = Math.min(f2 + gKP(), gKM());; f2 = Math.max(f2 - gKQ(), gKN()))
     {
-      float f3 = fzb();
-      float f4 = fyZ() / 2.0F;
+      float f3 = gKO();
+      float f4 = gKM() / 2.0F;
       float f5 = f2 / 2.0F;
-      float f6 = fzb();
-      float f7 = fyY();
-      float f8 = fyZ() / 2.0F;
+      float f6 = gKO();
+      float f7 = gKL();
+      float f8 = gKM() / 2.0F;
       localRectF.set(f3 + f1, f4 - f5, f1 + f6 + f7, f2 / 2.0F + f8);
       f1 = localRectF.right;
       j += 1;
@@ -250,16 +238,16 @@ public final class f
       i = 0;
       break;
       label253:
-      if (f2 < fzf()[i]) {
+      if (f2 < gKS()[i]) {
         break label134;
       }
-      fzf()[i] = fza();
+      gKS()[i] = gKN();
       break label134;
     }
     label299:
-    PC(((g)fzg().get(0)).Idi.startTime);
+    tC(((g)gKJ().get(0)).NZE.startTime);
     getWavePaint().setAlpha(getWaveAlpha());
-    RectF[] arrayOfRectF = fze();
+    RectF[] arrayOfRectF = gKR();
     int j = arrayOfRectF.length;
     int i = 0;
     while (i < j)
@@ -268,12 +256,49 @@ public final class f
       i += 1;
     }
     label376:
-    AppMethodBeat.o(220085);
+    AppMethodBeat.o(280439);
+  }
+  
+  public final void seekTo(long paramLong)
+  {
+    AppMethodBeat.i(280419);
+    for (this.ood = paramLong; this.ood > getLastLrcTime(); this.ood -= getLastLrcTime()) {}
+    super.seekTo(paramLong);
+    AppMethodBeat.o(280419);
+  }
+  
+  protected final void tC(long paramLong)
+  {
+    int j = 0;
+    AppMethodBeat.i(280430);
+    if (getWaveAlpha() < 255)
+    {
+      long l1 = getTRANS_TIME();
+      long l2 = gKG() - paramLong;
+      int i = j;
+      if (0L <= l2)
+      {
+        i = j;
+        if (l2 <= l1) {
+          i = 1;
+        }
+      }
+      if (i != 0)
+      {
+        setWaveAlpha((int)(255.0F * (float)(this.ood - paramLong) / (float)getTRANS_TIME()));
+        AppMethodBeat.o(280430);
+        return;
+      }
+      if (this.ood - paramLong > getTRANS_TIME()) {
+        setWaveAlpha(255);
+      }
+    }
+    AppMethodBeat.o(280430);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.f
  * JD-Core Version:    0.7.0.1
  */

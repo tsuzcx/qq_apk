@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ck;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.storagebase.h.b;
@@ -16,12 +16,12 @@ public class PluginSelectRecord
   implements com.tencent.mm.kernel.api.bucket.a, c, a
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.plugin.selectrecord.c.a Jcr;
-  private com.tencent.mm.plugin.selectrecord.d.b Jcs;
+  private com.tencent.mm.plugin.selectrecord.c.a Pmg;
+  private com.tencent.mm.plugin.selectrecord.d.b Pmh;
   
   static
   {
-    AppMethodBeat.i(255185);
+    AppMethodBeat.i(266672);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("SELECTRECORD_TABLE".hashCode()), new h.b()
@@ -31,15 +31,15 @@ public class PluginSelectRecord
         return com.tencent.mm.plugin.selectrecord.d.b.SQL_CREATE;
       }
     });
-    AppMethodBeat.o(255185);
+    AppMethodBeat.o(266672);
   }
   
   public PluginSelectRecord()
   {
-    AppMethodBeat.i(255177);
-    this.Jcr = new com.tencent.mm.plugin.selectrecord.c.a();
-    this.Jcs = null;
-    AppMethodBeat.o(255177);
+    AppMethodBeat.i(266669);
+    this.Pmg = new com.tencent.mm.plugin.selectrecord.c.a();
+    this.Pmh = null;
+    AppMethodBeat.o(266669);
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
@@ -49,44 +49,44 @@ public class PluginSelectRecord
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(255181);
-    if (paramg.aIE()) {
+    AppMethodBeat.i(266688);
+    if (paramg.bbA()) {
       h.b(y.class, new com.tencent.mm.plugin.selectrecord.a.a());
     }
-    AppMethodBeat.o(255181);
+    AppMethodBeat.o(266688);
   }
   
   public com.tencent.mm.plugin.selectrecord.d.b getSelectRecordStorage()
   {
-    AppMethodBeat.i(255183);
-    h.aHE().aGH();
-    if (this.Jcs == null)
+    AppMethodBeat.i(266702);
+    h.baC().aZJ();
+    if (this.Pmh == null)
     {
-      h.aHH();
-      this.Jcs = new com.tencent.mm.plugin.selectrecord.d.b(h.aHG().kcF);
+      h.baF();
+      this.Pmh = new com.tencent.mm.plugin.selectrecord.d.b(h.baE().mCN);
     }
-    com.tencent.mm.plugin.selectrecord.d.b localb = this.Jcs;
-    AppMethodBeat.o(255183);
+    com.tencent.mm.plugin.selectrecord.d.b localb = this.Pmh;
+    AppMethodBeat.o(266702);
     return localb;
   }
   
   public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(255179);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("revokehistoryinjoinroommsg", this.Jcr);
-    AppMethodBeat.o(255179);
+    AppMethodBeat.i(266678);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().a("revokehistoryinjoinroommsg", this.Pmg);
+    AppMethodBeat.o(266678);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(255180);
-    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("revokehistoryinjoinroommsg", this.Jcr);
-    AppMethodBeat.o(255180);
+    AppMethodBeat.i(266683);
+    ((v)h.az(v.class)).getSysCmdMsgExtension().b("revokehistoryinjoinroommsg", this.Pmg);
+    AppMethodBeat.o(266683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.selectrecord.PluginSelectRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.permission.c;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.service.c;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOpenAddressWithLightMode;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOpenAddress;", "()V", "onSetupIntent", "", "intent", "Landroid/content/Intent;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "data", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiMarkScene;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bt
-  extends bs
+  extends ab<c>
 {
-  public static final int CTRL_INDEX = 905;
-  public static final String NAME = "openAddressWithLightMode";
-  public static final a owl;
+  public static final int CTRL_INDEX = 651;
+  public static final String NAME = "markScene";
+  public static final bt.a rzl;
   
   static
   {
-    AppMethodBeat.i(281792);
-    owl = new a((byte)0);
-    AppMethodBeat.o(281792);
+    AppMethodBeat.i(50405);
+    rzl = new bt.a((byte)0);
+    AppMethodBeat.o(50405);
   }
-  
-  public bt()
-  {
-    AppMethodBeat.i(281791);
-    c.amg("openAddressWithLightMode");
-    AppMethodBeat.o(281791);
-  }
-  
-  protected final void a(Intent paramIntent, j paramj, JSONObject paramJSONObject)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(281790);
-    p.k(paramIntent, "intent");
-    super.a(paramIntent, paramj, paramJSONObject);
-    if (paramJSONObject != null) {
-      bool = paramJSONObject.optBoolean("forceLightMode", false);
-    }
-    paramIntent.putExtra("force_light_mode", bool);
-    AppMethodBeat.o(281790);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiOpenAddressWithLightMode$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bt
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ final class FMessageConversationUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(232016);
+    AppMethodBeat.i(292034);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(232016);
+      AppMethodBeat.o(292034);
       return false;
-      FMessageConversationUI.a(this.MeO, (int)paramMotionEvent.getRawX());
-      FMessageConversationUI.b(this.MeO, (int)paramMotionEvent.getRawY());
+      FMessageConversationUI.a(this.SGh, (int)paramMotionEvent.getRawX());
+      FMessageConversationUI.b(this.SGh, (int)paramMotionEvent.getRawY());
     }
   }
 }

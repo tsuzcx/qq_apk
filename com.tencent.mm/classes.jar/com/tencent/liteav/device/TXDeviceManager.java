@@ -28,11 +28,11 @@ public abstract interface TXDeviceManager
   {
     static
     {
-      AppMethodBeat.i(245730);
+      AppMethodBeat.i(230366);
       TXAudioRouteSpeakerphone = new TXAudioRoute("TXAudioRouteSpeakerphone", 0);
       TXAudioRouteEarpiece = new TXAudioRoute("TXAudioRouteEarpiece", 1);
       $VALUES = new TXAudioRoute[] { TXAudioRouteSpeakerphone, TXAudioRouteEarpiece };
-      AppMethodBeat.o(245730);
+      AppMethodBeat.o(230366);
     }
     
     private TXAudioRoute() {}
@@ -42,12 +42,12 @@ public abstract interface TXDeviceManager
   {
     static
     {
-      AppMethodBeat.i(245587);
+      AppMethodBeat.i(230382);
       TXSystemVolumeTypeAuto = new TXSystemVolumeType("TXSystemVolumeTypeAuto", 0);
       TXSystemVolumeTypeMedia = new TXSystemVolumeType("TXSystemVolumeTypeMedia", 1);
       TXSystemVolumeTypeVOIP = new TXSystemVolumeType("TXSystemVolumeTypeVOIP", 2);
       $VALUES = new TXSystemVolumeType[] { TXSystemVolumeTypeAuto, TXSystemVolumeTypeMedia, TXSystemVolumeTypeVOIP };
-      AppMethodBeat.o(245587);
+      AppMethodBeat.o(230382);
     }
     
     private TXSystemVolumeType() {}
@@ -55,7 +55,7 @@ public abstract interface TXDeviceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.device.TXDeviceManager
  * JD-Core Version:    0.7.0.1
  */

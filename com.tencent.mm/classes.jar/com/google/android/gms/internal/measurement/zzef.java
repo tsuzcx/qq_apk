@@ -6,7 +6,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -92,7 +91,6 @@ public final class zzef
     return i;
   }
   
-  @VisibleForTesting
   final Boolean zzas(String paramString)
   {
     AppMethodBeat.i(1125);
@@ -290,51 +288,51 @@ public final class zzef
     //   0: sipush 1120
     //   3: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 274	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
+    //   7: getfield 272	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
     //   10: ifnonnull +84 -> 94
     //   13: aload_0
     //   14: monitorenter
     //   15: aload_0
-    //   16: getfield 274	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
+    //   16: getfield 272	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
     //   19: ifnonnull +73 -> 92
     //   22: aload_0
     //   23: invokevirtual 66	com/google/android/gms/internal/measurement/zzhg:getContext	()Landroid/content/Context;
-    //   26: invokevirtual 277	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   26: invokevirtual 275	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
     //   29: astore_3
-    //   30: invokestatic 282	com/google/android/gms/common/util/ProcessUtils:getMyProcessName	()Ljava/lang/String;
+    //   30: invokestatic 280	com/google/android/gms/common/util/ProcessUtils:getMyProcessName	()Ljava/lang/String;
     //   33: astore_2
     //   34: aload_3
     //   35: ifnull +30 -> 65
     //   38: aload_3
-    //   39: getfield 286	android/content/pm/ApplicationInfo:processName	Ljava/lang/String;
+    //   39: getfield 284	android/content/pm/ApplicationInfo:processName	Ljava/lang/String;
     //   42: astore_3
     //   43: aload_3
     //   44: ifnull +66 -> 110
     //   47: aload_3
     //   48: aload_2
-    //   49: invokevirtual 203	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   49: invokevirtual 201	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   52: ifeq +58 -> 110
     //   55: iconst_1
     //   56: istore_1
     //   57: aload_0
     //   58: iload_1
-    //   59: invokestatic 185	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   62: putfield 274	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
+    //   59: invokestatic 184	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   62: putfield 272	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
     //   65: aload_0
-    //   66: getfield 274	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
+    //   66: getfield 272	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
     //   69: ifnonnull +23 -> 92
     //   72: aload_0
-    //   73: getstatic 289	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   76: putfield 274	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
+    //   73: getstatic 287	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   76: putfield 272	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
     //   79: aload_0
-    //   80: invokevirtual 134	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
-    //   83: invokevirtual 140	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
-    //   86: ldc_w 291
-    //   89: invokevirtual 148	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
+    //   80: invokevirtual 133	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   83: invokevirtual 139	com/google/android/gms/internal/measurement/zzfg:zzim	()Lcom/google/android/gms/internal/measurement/zzfi;
+    //   86: ldc_w 289
+    //   89: invokevirtual 147	com/google/android/gms/internal/measurement/zzfi:log	(Ljava/lang/String;)V
     //   92: aload_0
     //   93: monitorexit
     //   94: aload_0
-    //   95: getfield 274	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
+    //   95: getfield 272	com/google/android/gms/internal/measurement/zzef:zzxz	Ljava/lang/Boolean;
     //   98: invokevirtual 62	java/lang/Boolean:booleanValue	()Z
     //   101: istore_1
     //   102: sipush 1120
@@ -445,7 +443,7 @@ public final class zzef
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzef
  * JD-Core Version:    0.7.0.1
  */

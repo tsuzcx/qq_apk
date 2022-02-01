@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/afz" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n8" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/login_auth_state_default_select" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/dh" android:id="@id/n7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" android:layout_centerVertical="true" />
-</LinearLayout>
+<ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

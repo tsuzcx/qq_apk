@@ -1,31 +1,41 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
+import android.view.View;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.pluginsdk.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.aq;
 
 final class HomeUI$33
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   HomeUI$33(HomeUI paramHomeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(282835);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = HomeUI.c(this.VWJ);
-    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/HomeUI$39", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-    com.tencent.mm.hellhoundlib.a.a.c(paramDialogInterface, "com/tencent/mm/ui/HomeUI$39", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(282835);
+    AppMethodBeat.i(33209);
+    HomeUI.b(this.adBf);
+    bh.bCz();
+    c.ban().setInt(327947, HomeUI.h(this.adBf).getHeight());
+    Log.i("MicroMsg.LauncherUI.HomeUI", "contentView.post then setFullScreenAfterSetContentView, padding: %s", new Object[] { Integer.valueOf(HomeUI.i(this.adBf).getPaddingTop()) });
+    h.a(HomeUI.c(this.adBf), HomeUI.i(this.adBf));
+    AppMethodBeat.o(33209);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(33210);
+    String str = super.toString() + "|updateTitle";
+    AppMethodBeat.o(33210);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.33
  * JD-Core Version:    0.7.0.1
  */

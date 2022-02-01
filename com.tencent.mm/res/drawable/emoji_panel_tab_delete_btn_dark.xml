@@ -11,7 +11,7 @@
             <item android:gravity="right" android:top="12.0dip" android:bottom="12.0dip">
                 <shape android:shape="rectangle">
                     <size android:width="0.5dip" />
-                    <solid android:color="@color/x5" />
+                    <solid android:color="@color/a1e" />
                 </shape>
             </item>
         </layer-list>
@@ -26,7 +26,7 @@
             <item android:gravity="right" android:top="12.0dip" android:bottom="12.0dip">
                 <shape android:shape="rectangle">
                     <size android:width="0.5dip" />
-                    <solid android:color="@color/x5" />
+                    <solid android:color="@color/a1e" />
                 </shape>
             </item>
         </layer-list>

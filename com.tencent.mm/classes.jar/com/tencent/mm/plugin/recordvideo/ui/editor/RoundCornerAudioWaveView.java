@@ -8,108 +8,102 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aw;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.bd;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/RoundCornerAudioWaveView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DP_1", "TAG", "", "WAVE_DECREMENT", "WAVE_INCREMENT", "", "WAVE_RECT_HEIGHT", "WAVE_RECT_MIN_HEIGHT", "WAVE_RECT_OFFSET", "WAVE_RECT_WIDTH", "isRunningShow", "", "mWaveCount", "mWavePaint", "Landroid/graphics/Paint;", "waveRects", "", "Landroid/graphics/RectF;", "[Landroid/graphics/RectF;", "waveTargetHeight", "", "initView", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onSizeChanged", "w", "h", "oldw", "oldh", "setColor", "color", "setShow", "isShow", "setWaveCount", "count", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/RoundCornerAudioWaveView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DP_1", "TAG", "", "WAVE_DECREMENT", "WAVE_INCREMENT", "", "WAVE_RECT_HEIGHT", "WAVE_RECT_MIN_HEIGHT", "WAVE_RECT_OFFSET", "WAVE_RECT_WIDTH", "isRunningShow", "", "mWaveCount", "mWavePaint", "Landroid/graphics/Paint;", "waveRects", "", "Landroid/graphics/RectF;", "[Landroid/graphics/RectF;", "waveTargetHeight", "", "initView", "", "isShow", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onSizeChanged", "w", "h", "oldw", "oldh", "setColor", "color", "setShow", "setWaveCount", "count", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RoundCornerAudioWaveView
   extends View
 {
-  private Paint HWV;
-  private boolean HWZ;
-  private final int IaA;
-  private final float IaB;
-  private float IaC;
-  private int IaD;
-  private RectF[] IaE;
-  private float[] IaF;
-  private final float Iax;
-  private final int Iay;
-  private final float Iaz;
+  private Paint NTF;
+  private boolean NTJ;
+  private final float NWY;
+  private final int NWZ;
+  private final float NXa;
+  private final int NXb;
+  private final float NXc;
+  private float NXd;
+  private int NXe;
+  private RectF[] NXf;
+  private float[] NXg;
   private final String TAG;
-  private final int tBj;
+  private final int wFI;
   
   public RoundCornerAudioWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(218477);
+    AppMethodBeat.i(279901);
     this.TAG = "MicroMsg.RoundCornerAudioWaveView";
-    this.tBj = aw.fromDPToPix(getContext(), 1);
-    this.Iax = (this.tBj * 1.5F);
-    this.Iay = this.tBj;
-    this.Iaz = (this.tBj * 2.0F);
-    this.IaA = this.tBj;
-    this.IaB = (this.tBj * 1.5F);
-    this.IaC = (this.tBj * 9.0F);
-    int j = this.IaD;
-    paramContext = new RectF[j];
+    this.wFI = bd.fromDPToPix(getContext(), 1);
+    this.NWY = (this.wFI * 1.5F);
+    this.NWZ = this.wFI;
+    this.NXa = (this.wFI * 2.0F);
+    this.NXb = this.wFI;
+    this.NXc = (this.wFI * 1.5F);
+    this.NXd = (this.wFI * 9.0F);
     int i = 0;
+    int j = this.NXe;
+    paramContext = new RectF[j];
     while (i < j)
     {
       paramContext[i] = new RectF();
       i += 1;
     }
-    this.IaE = paramContext;
-    this.IaF = new float[this.IaD];
+    this.NXf = paramContext;
+    this.NXg = new float[this.NXe];
     initView();
-    AppMethodBeat.o(218477);
+    AppMethodBeat.o(279901);
   }
   
   public RoundCornerAudioWaveView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(218478);
+    AppMethodBeat.i(279907);
     this.TAG = "MicroMsg.RoundCornerAudioWaveView";
-    this.tBj = aw.fromDPToPix(getContext(), 1);
-    this.Iax = (this.tBj * 1.5F);
-    this.Iay = this.tBj;
-    this.Iaz = (this.tBj * 2.0F);
-    this.IaA = this.tBj;
-    this.IaB = (this.tBj * 1.5F);
-    this.IaC = (this.tBj * 9.0F);
-    int i = this.IaD;
-    paramContext = new RectF[i];
+    this.wFI = bd.fromDPToPix(getContext(), 1);
+    this.NWY = (this.wFI * 1.5F);
+    this.NWZ = this.wFI;
+    this.NXa = (this.wFI * 2.0F);
+    this.NXb = this.wFI;
+    this.NXc = (this.wFI * 1.5F);
+    this.NXd = (this.wFI * 9.0F);
     paramInt = 0;
+    int i = this.NXe;
+    paramContext = new RectF[i];
     while (paramInt < i)
     {
       paramContext[paramInt] = new RectF();
       paramInt += 1;
     }
-    this.IaE = paramContext;
-    this.IaF = new float[this.IaD];
+    this.NXf = paramContext;
+    this.NXg = new float[this.NXe];
     initView();
-    AppMethodBeat.o(218478);
+    AppMethodBeat.o(279907);
   }
   
   private final void initView()
   {
-    AppMethodBeat.i(218470);
+    AppMethodBeat.i(279913);
     setWaveCount(20);
-    this.HWV = new Paint();
-    Paint localPaint = this.HWV;
-    if (localPaint == null) {
-      p.iCn();
-    }
+    this.NTF = new Paint();
+    Paint localPaint = this.NTF;
+    s.checkNotNull(localPaint);
     localPaint.setStyle(Paint.Style.FILL);
-    localPaint = this.HWV;
-    if (localPaint == null) {
-      p.iCn();
-    }
+    localPaint = this.NTF;
+    s.checkNotNull(localPaint);
     localPaint.setColor(-3355444);
-    localPaint = this.HWV;
-    if (localPaint == null) {
-      p.iCn();
-    }
+    localPaint = this.NTF;
+    s.checkNotNull(localPaint);
     localPaint.setAntiAlias(true);
-    AppMethodBeat.o(218470);
+    AppMethodBeat.o(279913);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(218476);
-    p.k(paramCanvas, "canvas");
-    RectF[] arrayOfRectF = this.IaE;
+    AppMethodBeat.i(279939);
+    s.u(paramCanvas, "canvas");
+    RectF[] arrayOfRectF = this.NXf;
     int i = 0;
     int k = arrayOfRectF.length;
     int j = 0;
@@ -118,87 +112,83 @@ public final class RoundCornerAudioWaveView
     {
       RectF localRectF = arrayOfRectF[j];
       float f2 = localRectF.height();
-      if (f2 <= this.Iay)
+      if (f2 <= this.NWZ)
       {
-        this.IaF[i] = ((float)(this.IaC * Math.random()));
+        this.NXg[i] = ((float)(this.NXd * Math.random()));
         label77:
-        if (f2 > this.IaF[i]) {
-          break label257;
+        if (f2 > this.NXg[i]) {
+          break label254;
         }
       }
-      label257:
-      for (f2 = Math.min(f2 + this.Iaz, this.IaC);; f2 = Math.max(f2 - this.IaA, this.Iay))
+      label254:
+      for (f2 = Math.min(f2 + this.NXa, this.NXd);; f2 = Math.max(f2 - this.NXb, this.NWZ))
       {
-        float f3 = this.IaB;
-        float f4 = this.IaC / 2.0F;
+        float f3 = this.NXc;
+        float f4 = this.NXd / 2.0F;
         float f5 = f2 / 2.0F;
-        float f6 = this.IaB;
-        float f7 = this.Iax;
-        float f8 = this.IaC / 2.0F;
+        float f6 = this.NXc;
+        float f7 = this.NWY;
+        float f8 = this.NXd / 2.0F;
         localRectF.set(f3 + f1, f4 - f5, f1 + f6 + f7, f2 / 2.0F + f8);
         f1 = localRectF.right;
-        f2 = this.Iax / 2.0F;
-        f3 = this.Iax / 2.0F;
-        Paint localPaint = this.HWV;
-        if (localPaint == null) {
-          p.iCn();
-        }
+        f2 = this.NWY / 2.0F;
+        f3 = this.NWY / 2.0F;
+        Paint localPaint = this.NTF;
+        s.checkNotNull(localPaint);
         paramCanvas.drawRoundRect(localRectF, f2, f3, localPaint);
         j += 1;
         i += 1;
         break;
-        if (f2 < this.IaF[i]) {
+        if (f2 < this.NXg[i]) {
           break label77;
         }
-        this.IaF[i] = this.Iay;
+        this.NXg[i] = this.NWZ;
         break label77;
       }
     }
-    if (this.HWZ) {
+    if (this.NTJ) {
       postInvalidateDelayed(33L);
     }
-    AppMethodBeat.o(218476);
+    AppMethodBeat.o(279939);
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(218475);
+    AppMethodBeat.i(279932);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.IaC = paramInt2;
-    AppMethodBeat.o(218475);
+    this.NXd = paramInt2;
+    AppMethodBeat.o(279932);
   }
   
   public final void setColor(int paramInt)
   {
-    AppMethodBeat.i(218472);
-    Paint localPaint = this.HWV;
-    if (localPaint == null) {
-      p.iCn();
-    }
+    AppMethodBeat.i(279917);
+    Paint localPaint = this.NTF;
+    s.checkNotNull(localPaint);
     localPaint.setColor(paramInt);
-    AppMethodBeat.o(218472);
+    AppMethodBeat.o(279917);
   }
   
   public final void setShow(boolean paramBoolean)
   {
-    this.HWZ = paramBoolean;
+    this.NTJ = paramBoolean;
   }
   
   public final void setWaveCount(int paramInt)
   {
-    AppMethodBeat.i(218473);
-    this.IaD = paramInt;
-    int i = this.IaD;
-    RectF[] arrayOfRectF = new RectF[i];
+    AppMethodBeat.i(279926);
+    this.NXe = paramInt;
     paramInt = 0;
+    int i = this.NXe;
+    RectF[] arrayOfRectF = new RectF[i];
     while (paramInt < i)
     {
       arrayOfRectF[paramInt] = new RectF();
       paramInt += 1;
     }
-    this.IaE = arrayOfRectF;
-    this.IaF = new float[this.IaD];
-    AppMethodBeat.o(218473);
+    this.NXf = arrayOfRectF;
+    this.NXg = new float[this.NXe];
+    AppMethodBeat.o(279926);
   }
 }
 

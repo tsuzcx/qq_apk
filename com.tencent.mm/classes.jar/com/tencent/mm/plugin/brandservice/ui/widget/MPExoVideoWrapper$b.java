@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class MPExoVideoWrapper$b
-  extends q
+  extends u
   implements a<Boolean>
 {
-  public static final b sUA;
+  public static final b vZN;
   
   static
   {
-    AppMethodBeat.i(262510);
-    sUA = new b();
-    AppMethodBeat.o(262510);
+    AppMethodBeat.i(301690);
+    vZN = new b();
+    AppMethodBeat.o(301690);
   }
   
   MPExoVideoWrapper$b()

@@ -32,705 +32,638 @@ import com.tencent.mm.plugin.recordvideo.b.f;
 import com.tencent.mm.plugin.recordvideo.b.h;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer.b;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.d;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.h;
-import com.tencent.mm.plugin.recordvideo.ui.editor.view.c.a;
-import com.tencent.mm.protocal.protobuf.ta;
+import com.tencent.mm.plugin.recordvideo.ui.editor.view.d.a;
+import com.tencent.mm.protocal.protobuf.uq;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.cropview.TouchEventLayout;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Iterator;
-import kotlin.f;
-import kotlin.g;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/IEditView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "alignDiff", "", "captionContentLayout", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "getCaptionContentLayout", "()Landroid/widget/LinearLayout;", "captionContentLayout$delegate", "Lkotlin/Lazy;", "captionFloatCommentHint", "Landroid/view/View;", "captionItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "captionLayout", "Landroid/widget/RelativeLayout;", "getCaptionLayout", "()Landroid/widget/RelativeLayout;", "captionLayout$delegate", "captionLoadingLayout", "getCaptionLoadingLayout", "captionLoadingLayout$delegate", "captionView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "getCaptionView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "captionView$delegate", "clearCaptionListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "", "getClearCaptionListener", "()Lkotlin/jvm/functions/Function1;", "setClearCaptionListener", "(Lkotlin/jvm/functions/Function1;)V", "clickListener", "Landroid/view/View$OnClickListener;", "commentHintHeight", "currentTimeMs", "", "displayRect", "Landroid/graphics/Rect;", "drawMatrix", "Landroid/graphics/Matrix;", "drawRect", "Landroid/graphics/RectF;", "enableEdit", "", "getEnableEdit", "()Z", "setEnableEdit", "(Z)V", "minLength", "originPivot", "", "selectChecker", "Ljava/lang/Runnable;", "stateResolve", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "touchAligned", "touchDownX", "", "touchDownY", "touchMoved", "touchSlop", "getTouchSlop", "()I", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "getTouchTracker", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "touched", "validRect", "viewRect", "applyMatrix", "checkMatrix", "contentValid", "currentMs", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "dispatchDraw", "canvas", "Landroid/graphics/Canvas;", "editMode", "getContentBoundary", "getCurrentCaption", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "getDrawRect", "getEditorData", "getSafeArea", "getScale", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "isCaptionType", "type", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScroll", "e1", "Landroid/view/MotionEvent;", "e2", "distanceX", "distanceY", "onTouch", "v", "event", "setCaptionItem", "setDefaultLocation", "heightPercent", "setOnClickListener", "l", "setSafeArea", "safeRect", "damp", "setStateResolve", "setValidArea", "showAtTime", "updateCaptionItem", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "Lcom/tencent/mm/ui/widget/cropview/TouchEventLayout;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/IEditView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "alignDiff", "", "captionContentLayout", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "getCaptionContentLayout", "()Landroid/widget/LinearLayout;", "captionContentLayout$delegate", "Lkotlin/Lazy;", "captionFloatCommentHint", "Landroid/view/View;", "captionItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "captionLayout", "Landroid/widget/RelativeLayout;", "getCaptionLayout", "()Landroid/widget/RelativeLayout;", "captionLayout$delegate", "captionLoadingLayout", "getCaptionLoadingLayout", "captionLoadingLayout$delegate", "captionView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "getCaptionView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "captionView$delegate", "clearCaptionListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "", "getClearCaptionListener", "()Lkotlin/jvm/functions/Function1;", "setClearCaptionListener", "(Lkotlin/jvm/functions/Function1;)V", "clickListener", "Landroid/view/View$OnClickListener;", "commentHintHeight", "currentTimeMs", "", "displayRect", "Landroid/graphics/Rect;", "drawMatrix", "Landroid/graphics/Matrix;", "drawRect", "Landroid/graphics/RectF;", "enableEdit", "", "getEnableEdit", "()Z", "setEnableEdit", "(Z)V", "minLength", "originPivot", "", "selectChecker", "Ljava/lang/Runnable;", "stateResolve", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "touchAligned", "touchDownX", "", "touchDownY", "touchMoved", "touchSlop", "getTouchSlop", "()I", "touchTracker", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "getTouchTracker", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker;", "touched", "validRect", "viewRect", "applyMatrix", "checkMatrix", "contentValid", "currentMs", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "dispatchDraw", "canvas", "Landroid/graphics/Canvas;", "editMode", "getContentBoundary", "getCurrentCaption", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "getDrawRect", "getEditorData", "getSafeArea", "getScale", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "isCaptionType", "type", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScroll", "e1", "Landroid/view/MotionEvent;", "e2", "distanceX", "distanceY", "onTouch", "v", "event", "setCaptionItem", "setDefaultLocation", "heightPercent", "setOnClickListener", "l", "setSafeArea", "safeRect", "damp", "setStateResolve", "setValidArea", "showAtTime", "updateCaptionItem", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends TouchEventLayout
-  implements h, com.tencent.mm.plugin.recordvideo.ui.editor.view.c
+  implements h, com.tencent.mm.plugin.recordvideo.ui.editor.view.d
 {
-  public static final a HXu;
-  public com.tencent.mm.plugin.recordvideo.ui.editor.item.c HXc;
-  private final Rect HXd;
-  private final Rect HXe;
-  private EditorItemContainer.b HXf;
-  private final RectF HXg;
-  private final RectF HXh;
-  private final Matrix HXi;
-  private final int HXj;
-  private final f HXk;
-  private final f HXl;
-  private final f HXm;
-  private final f HXn;
-  private final View HXo;
-  private final int HXp;
-  private long HXq;
-  private kotlin.g.a.b<? super View, x> HXr;
-  private boolean HXs;
-  private final Runnable HXt;
-  private final int bvH;
-  private View.OnClickListener dig;
-  private boolean jKU;
-  private boolean jKV;
-  private float jKY;
-  private float jKZ;
+  public static final a.a NTM;
+  public com.tencent.mm.plugin.recordvideo.ui.editor.item.c NTN;
+  private final Rect NTO;
+  private final Rect NTP;
+  private EditorItemContainer.b NTQ;
+  private final RectF NTR;
+  private final RectF NTS;
+  private final Matrix NTT;
+  private final int NTU;
+  private final j NTV;
+  private final j NTW;
+  private final j NTX;
+  private final j NTY;
+  private final View NTZ;
+  private final int NUa;
+  private long NUb;
+  private kotlin.g.a.b<? super View, ah> NUc;
+  private boolean NUd;
+  private final Runnable NUe;
+  private final int doK;
+  private View.OnClickListener fhU;
   private final int minLength;
-  private final float[] uWJ;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.c.c uWz;
+  private boolean mkg;
+  private boolean mkh;
+  private float mkk;
+  private float mkl;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.c.c yiZ;
+  private final float[] yji;
   
   static
   {
-    AppMethodBeat.i(226267);
-    HXu = new a((byte)0);
-    AppMethodBeat.o(226267);
+    AppMethodBeat.i(279937);
+    NTM = new a.a((byte)0);
+    AppMethodBeat.o(279937);
   }
   
   public a(final Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(226266);
-    this.uWz = new com.tencent.mm.plugin.recordvideo.ui.editor.c.c();
-    this.HXd = new Rect(0, 0, ax.au(MMApplicationContext.getContext()).x, ax.au(MMApplicationContext.getContext()).y);
-    this.HXe = new Rect(0, 0, ax.au(MMApplicationContext.getContext()).x, ax.au(MMApplicationContext.getContext()).y);
-    this.HXg = new RectF();
-    this.HXh = new RectF();
-    this.HXi = new Matrix();
-    this.HXj = com.tencent.mm.ci.a.fromDPToPix(paramContext, 4);
-    Object localObject = ViewConfiguration.get(paramContext);
-    p.j(localObject, "ViewConfiguration.get(context)");
-    this.bvH = ((ViewConfiguration)localObject).getScaledTouchSlop();
-    this.HXk = g.ar((kotlin.g.a.a)new e(this));
-    this.HXl = g.ar((kotlin.g.a.a)new c(this));
-    this.HXm = g.ar((kotlin.g.a.a)new b(this));
-    this.HXn = g.ar((kotlin.g.a.a)new d(this, paramContext));
-    this.HXp = com.tencent.mm.ci.a.fromDPToPix(getContext(), 32);
-    this.minLength = (com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.aY(paramContext, b.c.Edge_16A));
-    this.uWJ = new float[2];
-    this.HXt = ((Runnable)new g(this));
+    AppMethodBeat.i(279896);
+    this.yiZ = new com.tencent.mm.plugin.recordvideo.ui.editor.c.c();
+    this.NTO = new Rect(0, 0, bf.bf(MMApplicationContext.getContext()).x, bf.bf(MMApplicationContext.getContext()).y);
+    this.NTP = new Rect(0, 0, bf.bf(MMApplicationContext.getContext()).x, bf.bf(MMApplicationContext.getContext()).y);
+    this.NTR = new RectF();
+    this.NTS = new RectF();
+    this.NTT = new Matrix();
+    this.NTU = com.tencent.mm.cd.a.fromDPToPix(paramContext, 4);
+    this.doK = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.NTV = k.cm((kotlin.g.a.a)new e(this));
+    this.NTW = k.cm((kotlin.g.a.a)new c(this));
+    this.NTX = k.cm((kotlin.g.a.a)new b(this));
+    this.NTY = k.cm((kotlin.g.a.a)new d(this, paramContext));
+    this.NUa = com.tencent.mm.cd.a.fromDPToPix(getContext(), 32);
+    this.minLength = (com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.br(paramContext, b.c.Edge_16A));
+    this.yji = new float[2];
+    this.NUe = new a..ExternalSyntheticLambda0(this);
     setEnableFling(false);
-    if (p.h(Looper.myLooper(), Looper.getMainLooper())) {
+    if (s.p(Looper.myLooper(), Looper.getMainLooper())) {
       getTouchDetector().setIsLongpressEnabled(false);
     }
     LayoutInflater.from(paramContext).inflate(b.f.video_editor_caption_view, (ViewGroup)this, true);
     LayoutInflater.from(paramContext).inflate(b.f.video_editor_caption_comment_hint, (ViewGroup)this, true);
-    localObject = findViewById(b.e.caption_float_comment);
-    p.j(localObject, "findViewById(R.id.caption_float_comment)");
-    this.HXo = ((View)localObject);
-    getCaptionView().setText((CharSequence)com.tencent.mm.ci.a.ba(paramContext, b.h.video_caption_hint));
+    View localView = findViewById(b.e.caption_float_comment);
+    s.s(localView, "findViewById(R.id.caption_float_comment)");
+    this.NTZ = localView;
+    getCaptionView().setText((CharSequence)com.tencent.mm.cd.a.bt(paramContext, b.h.video_caption_hint));
     setOnTouchListener((View.OnTouchListener)this);
-    AppMethodBeat.o(226266);
+    AppMethodBeat.o(279896);
   }
   
-  private static float e(Matrix paramMatrix)
+  private static final void a(a parama)
   {
-    AppMethodBeat.i(226234);
-    p.k(paramMatrix, "matrix");
+    AppMethodBeat.i(279925);
+    s.u(parama, "this$0");
+    parama.getCaptionView().setBackgroundDrawable(null);
+    AppMethodBeat.o(279925);
+  }
+  
+  private static float g(Matrix paramMatrix)
+  {
+    AppMethodBeat.i(279916);
+    s.u(paramMatrix, "matrix");
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     double d1 = arrayOfFloat[0];
     double d2 = arrayOfFloat[3];
     float f = (float)Math.sqrt(d2 * d2 + d1 * d1);
-    AppMethodBeat.o(226234);
+    AppMethodBeat.o(279916);
     return f;
   }
   
-  private void fyd()
+  private void gJQ()
   {
-    AppMethodBeat.i(226255);
+    AppMethodBeat.i(279920);
     float[] arrayOfFloat = new float[2];
-    arrayOfFloat[0] = this.HXg.right;
-    LinearLayout localLinearLayout = getCaptionContentLayout();
-    p.j(localLinearLayout, "captionContentLayout");
-    arrayOfFloat[1] = localLinearLayout.getBottom();
-    this.HXi.mapPoints(arrayOfFloat);
-    float f = this.HXd.bottom - this.HXp - arrayOfFloat[1];
+    arrayOfFloat[0] = this.NTR.right;
+    arrayOfFloat[1] = getCaptionContentLayout().getBottom();
+    this.NTT.mapPoints(arrayOfFloat);
+    float f = this.NTO.bottom - this.NUa - arrayOfFloat[1];
     if (f < 0.0F)
     {
-      this.HXi.postTranslate(0.0F, f);
-      this.HXo.setVisibility(0);
+      this.NTT.postTranslate(0.0F, f);
+      this.NTZ.setVisibility(0);
     }
-    AppMethodBeat.o(226255);
+    AppMethodBeat.o(279920);
   }
   
   private final LinearLayout getCaptionContentLayout()
   {
-    AppMethodBeat.i(226172);
-    LinearLayout localLinearLayout = (LinearLayout)this.HXm.getValue();
-    AppMethodBeat.o(226172);
+    AppMethodBeat.i(279905);
+    LinearLayout localLinearLayout = (LinearLayout)this.NTX.getValue();
+    AppMethodBeat.o(279905);
     return localLinearLayout;
   }
   
   private final RelativeLayout getCaptionLayout()
   {
-    AppMethodBeat.i(226171);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.HXl.getValue();
-    AppMethodBeat.o(226171);
+    AppMethodBeat.i(279900);
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.NTW.getValue();
+    AppMethodBeat.o(279900);
     return localRelativeLayout;
   }
   
   private final LinearLayout getCaptionLoadingLayout()
   {
-    AppMethodBeat.i(226174);
-    LinearLayout localLinearLayout = (LinearLayout)this.HXn.getValue();
-    AppMethodBeat.o(226174);
+    AppMethodBeat.i(279908);
+    LinearLayout localLinearLayout = (LinearLayout)this.NTY.getValue();
+    AppMethodBeat.o(279908);
     return localLinearLayout;
   }
   
   private final PhotoTextView getCaptionView()
   {
-    AppMethodBeat.i(226169);
-    PhotoTextView localPhotoTextView = (PhotoTextView)this.HXk.getValue();
-    AppMethodBeat.o(226169);
+    AppMethodBeat.i(279898);
+    PhotoTextView localPhotoTextView = (PhotoTextView)this.NTV.getValue();
+    AppMethodBeat.o(279898);
     return localPhotoTextView;
-  }
-  
-  public final boolean PA(long paramLong)
-  {
-    AppMethodBeat.i(226194);
-    this.HXq = paramLong;
-    Object localObject1 = this.HXc;
-    Object localObject2;
-    label57:
-    boolean bool;
-    if (localObject1 != null)
-    {
-      localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).PB(paramLong);
-      if (localObject1 == null) {
-        break label278;
-      }
-      localObject2 = ((ta)localObject1).Sce;
-      if (localObject2 == null) {
-        break label278;
-      }
-      localObject2 = ((com.tencent.mm.cd.b)localObject2).toString("UTF-8");
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label341;
-      }
-      setVisibility(0);
-      getCaptionView().setAutoSizeTextTypeWithDefaults(0);
-      PhotoTextView localPhotoTextView = getCaptionView();
-      p.j(localPhotoTextView, "captionView");
-      localPhotoTextView.setText((CharSequence)"");
-      getCaptionView().setTextSize(0, com.tencent.mm.ci.a.aY(getContext(), b.c.HugeTextSize));
-      getCaptionView().setAutoSizeTextTypeWithDefaults(1);
-      localPhotoTextView = getCaptionView();
-      p.j(localPhotoTextView, "captionView");
-      localPhotoTextView.setVisibility(0);
-      localPhotoTextView = getCaptionView();
-      p.j(localPhotoTextView, "captionView");
-      localPhotoTextView.setText((CharSequence)localObject2);
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      if (((ta)localObject1).Sch) {
-        break label284;
-      }
-      bool = true;
-      label195:
-      this.HXs = bool;
-      if (this.HXs) {
-        break label289;
-      }
-      getCaptionView().setBackgroundDrawable(null);
-      com.tencent.mm.audio.mix.h.b.d("MicroMsg.CaptionItemView", "text it not empty, not enableEdit, set INVISIBLE");
-      localObject1 = getCaptionContentLayout();
-      p.j(localObject1, "captionContentLayout");
-      ((LinearLayout)localObject1).setVisibility(4);
-      localObject1 = getCaptionLoadingLayout();
-      p.j(localObject1, "captionLoadingLayout");
-      ((LinearLayout)localObject1).setVisibility(0);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(226194);
-      return true;
-      localObject1 = null;
-      break;
-      label278:
-      localObject2 = null;
-      break label57;
-      label284:
-      bool = false;
-      break label195;
-      label289:
-      com.tencent.mm.audio.mix.h.b.d("MicroMsg.CaptionItemView", "text it not empty, not enableEdit, set VISIBLE");
-      localObject1 = getCaptionContentLayout();
-      p.j(localObject1, "captionContentLayout");
-      ((LinearLayout)localObject1).setVisibility(0);
-      localObject1 = getCaptionLoadingLayout();
-      p.j(localObject1, "captionLoadingLayout");
-      ((LinearLayout)localObject1).setVisibility(4);
-    }
-    label341:
-    com.tencent.mm.audio.mix.h.b.d("MicroMsg.CaptionItemView", "text it empty, set INVISIBLE");
-    setVisibility(4);
-    AppMethodBeat.o(226194);
-    return false;
   }
   
   public final void a(Rect paramRect, float paramFloat)
   {
-    AppMethodBeat.i(226227);
-    p.k(paramRect, "displayRect");
-    this.HXe.set(paramRect);
-    this.uWz.width = paramRect.width();
-    this.HXg.right = paramRect.width();
+    AppMethodBeat.i(280036);
+    s.u(paramRect, "displayRect");
+    this.NTP.set(paramRect);
+    this.yiZ.width = paramRect.width();
+    this.NTR.right = paramRect.width();
     measure(0, 0);
-    Object localObject = getCaptionLayout();
-    p.j(localObject, "captionLayout");
-    int i = ((RelativeLayout)localObject).getMeasuredHeight();
-    localObject = getCaptionContentLayout();
-    p.j(localObject, "captionContentLayout");
-    paramFloat = (i + ((LinearLayout)localObject).getMeasuredHeight()) / 2.0F;
-    localObject = e.HGz;
-    paramFloat = e.getVisibleRect().bottom - paramFloat - this.HXp;
-    this.uWz.p(new float[] { 0.0F, 0.0F, this.uWz.width, 0.0F, 0.0F, this.uWz.height, this.uWz.width, this.uWz.height });
-    this.HXi.postTranslate(0.0F, paramFloat);
-    fye();
+    paramFloat = (getCaptionLayout().getMeasuredHeight() + getCaptionContentLayout().getMeasuredHeight()) / 2.0F;
+    e locale = e.NDU;
+    paramFloat = e.getVisibleRect().bottom - paramFloat - this.NUa;
+    this.yiZ.x(new float[] { 0.0F, 0.0F, this.yiZ.width, 0.0F, 0.0F, this.yiZ.height, this.yiZ.width, this.yiZ.height });
+    this.NTT.postTranslate(0.0F, paramFloat);
+    gJR();
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.CaptionItemView", "topMargin:" + paramFloat + " width:" + paramRect.width());
-    AppMethodBeat.o(226227);
+    AppMethodBeat.o(280036);
   }
   
   public final void a(com.tencent.mm.plugin.recordvideo.ui.editor.item.c paramc)
   {
-    AppMethodBeat.i(226185);
-    p.k(paramc, "captionItem");
-    this.HXc = paramc;
+    AppMethodBeat.i(279986);
+    s.u(paramc, "captionItem");
+    this.NTN = paramc;
     if (paramc.textColor != 0) {
       getCaptionView().setTextColor(paramc.textColor);
     }
     getCaptionView().setTextBackground(paramc.bgColor);
-    PhotoTextView localPhotoTextView1;
-    if (!TextUtils.isEmpty((CharSequence)paramc.IbE)) {
-      if (u.agG(paramc.IbE))
-      {
-        localPhotoTextView1 = getCaptionView();
-        p.j(localPhotoTextView1, "captionView");
-        localPhotoTextView1.setTypeface(Typeface.createFromFile(paramc.IbE));
+    if (!TextUtils.isEmpty((CharSequence)paramc.mAD)) {
+      if (y.ZC(paramc.mAD)) {
+        getCaptionView().setTypeface(Typeface.createFromFile(paramc.mAD));
       }
     }
     for (;;)
     {
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.CaptionItemView", "updateCaptionItem caption:".concat(String.valueOf(paramc)));
-      AppMethodBeat.o(226185);
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.CaptionItemView", s.X("updateCaptionItem caption:", paramc));
+      AppMethodBeat.o(279986);
       return;
-      localPhotoTextView1 = getCaptionView();
-      p.j(localPhotoTextView1, "captionView");
-      localPhotoTextView1.setTypeface(Typeface.DEFAULT);
+      getCaptionView().setTypeface(Typeface.DEFAULT);
       continue;
-      localPhotoTextView1 = getCaptionView();
-      PhotoTextView localPhotoTextView2 = getCaptionView();
-      p.j(localPhotoTextView2, "captionView");
-      localPhotoTextView1.setTypeface(localPhotoTextView2.getTypeface(), 1);
+      getCaptionView().setTypeface(getCaptionView().getTypeface(), 1);
     }
   }
   
-  public final boolean a(d paramd)
+  public final boolean a(com.tencent.mm.plugin.recordvideo.ui.editor.item.d paramd)
   {
-    AppMethodBeat.i(226177);
-    p.k(paramd, "type");
-    Object localObject = this.HXc;
-    if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject).Ibt; localObject == paramd; localObject = null)
+    AppMethodBeat.i(279972);
+    s.u(paramd, "type");
+    Object localObject = this.NTN;
+    if (localObject == null) {}
+    for (localObject = null; localObject == paramd; localObject = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject).NXP)
     {
-      AppMethodBeat.o(226177);
+      AppMethodBeat.o(279972);
       return true;
     }
-    AppMethodBeat.o(226177);
+    AppMethodBeat.o(279972);
     return false;
   }
   
-  public final boolean aWf(String paramString)
+  public final boolean aTn(String paramString)
   {
-    AppMethodBeat.i(226268);
-    p.k(paramString, "objID");
-    boolean bool = c.a.a(this, paramString);
-    AppMethodBeat.o(226268);
+    AppMethodBeat.i(280108);
+    boolean bool = d.a.a(this, paramString);
+    AppMethodBeat.o(280108);
     return bool;
   }
   
   public final void b(Rect paramRect, int paramInt)
   {
-    AppMethodBeat.i(226201);
-    p.k(paramRect, "safeRect");
-    this.uWz.HGw = paramRect;
-    this.uWz.IdR = com.tencent.mm.ci.a.fromDPToPix(getContext(), paramInt);
-    AppMethodBeat.o(226201);
+    AppMethodBeat.i(280027);
+    s.u(paramRect, "safeRect");
+    this.yiZ.NDV = paramRect;
+    this.yiZ.Oah = com.tencent.mm.cd.a.fromDPToPix(getContext(), paramInt);
+    AppMethodBeat.o(280027);
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a c(Matrix paramMatrix)
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a dEP()
   {
-    return null;
-  }
-  
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a cYy()
-  {
-    AppMethodBeat.i(226200);
-    Object localObject1 = this.HXc;
+    AppMethodBeat.i(280024);
+    Object localObject1 = this.NTN;
     if (localObject1 != null)
     {
       Object localObject2 = new Matrix();
-      Object localObject3 = getCaptionLayout();
-      p.j(localObject3, "captionLayout");
-      float f = ((RelativeLayout)localObject3).getScaleX();
-      localObject3 = getCaptionLayout();
-      p.j(localObject3, "captionLayout");
-      ((Matrix)localObject2).postScale(f, ((RelativeLayout)localObject3).getScaleY());
-      localObject3 = new int[2];
-      getCaptionLayout().getLocationOnScreen((int[])localObject3);
-      ((Matrix)localObject2).postTranslate(0.0F, localObject3[1]);
-      localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.item.c(((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).Ibt, ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).IbD, (Matrix)localObject2);
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject2).IbE = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).IbE;
+      ((Matrix)localObject2).postScale(getCaptionLayout().getScaleX(), getCaptionLayout().getScaleY());
+      int[] arrayOfInt = new int[2];
+      getCaptionLayout().getLocationOnScreen(arrayOfInt);
+      ((Matrix)localObject2).postTranslate(0.0F, arrayOfInt[1]);
+      localObject2 = new com.tencent.mm.plugin.recordvideo.ui.editor.item.c(((com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject1).NXP, ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).NYc, (Matrix)localObject2);
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject2).mAD = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).mAD;
       ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject2).textColor = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).textColor;
       ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject2).bgColor = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).bgColor;
       localObject1 = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localObject2;
-      AppMethodBeat.o(226200);
+      AppMethodBeat.o(280024);
       return localObject1;
     }
-    AppMethodBeat.o(226200);
+    AppMethodBeat.o(280024);
     return null;
   }
   
   protected final void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(226197);
-    p.k(paramCanvas, "canvas");
+    AppMethodBeat.i(280011);
+    s.u(paramCanvas, "canvas");
     paramCanvas.save();
-    paramCanvas.clipRect(this.HXd);
+    paramCanvas.clipRect(this.NTO);
     super.dispatchDraw(paramCanvas);
     paramCanvas.restore();
-    AppMethodBeat.o(226197);
+    AppMethodBeat.o(280011);
   }
   
-  public final void fye()
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a e(Matrix paramMatrix)
   {
-    AppMethodBeat.i(226259);
-    this.HXi.mapRect(this.HXh, this.HXg);
+    return null;
+  }
+  
+  public final void gJR()
+  {
+    AppMethodBeat.i(280084);
+    this.NTT.mapRect(this.NTS, this.NTR);
     float[] arrayOfFloat = new float[9];
-    this.HXi.getValues(arrayOfFloat);
-    float f = e(this.HXi);
-    RelativeLayout localRelativeLayout = getCaptionLayout();
-    p.j(localRelativeLayout, "captionLayout");
-    localRelativeLayout.setPivotX(0.0F);
-    localRelativeLayout = getCaptionLayout();
-    p.j(localRelativeLayout, "captionLayout");
-    localRelativeLayout.setPivotY(0.0F);
-    localRelativeLayout = getCaptionLayout();
-    p.j(localRelativeLayout, "captionLayout");
-    localRelativeLayout.setScaleX(f);
-    localRelativeLayout = getCaptionLayout();
-    p.j(localRelativeLayout, "captionLayout");
-    localRelativeLayout.setScaleY(f);
-    localRelativeLayout = getCaptionLayout();
-    p.j(localRelativeLayout, "captionLayout");
-    localRelativeLayout.setTranslationX(arrayOfFloat[2]);
-    localRelativeLayout = getCaptionLayout();
-    p.j(localRelativeLayout, "captionLayout");
-    localRelativeLayout.setTranslationY(arrayOfFloat[5]);
-    AppMethodBeat.o(226259);
+    this.NTT.getValues(arrayOfFloat);
+    float f = g(this.NTT);
+    getCaptionLayout().setPivotX(0.0F);
+    getCaptionLayout().setPivotY(0.0F);
+    getCaptionLayout().setScaleX(f);
+    getCaptionLayout().setScaleY(f);
+    getCaptionLayout().setTranslationX(arrayOfFloat[2]);
+    getCaptionLayout().setTranslationY(arrayOfFloat[5]);
+    AppMethodBeat.o(280084);
   }
   
-  public final boolean fyf()
+  public final boolean gJS()
   {
+    AppMethodBeat.i(280102);
+    s.u(this, "this");
+    AppMethodBeat.o(280102);
     return true;
   }
   
-  public final kotlin.g.a.b<View, x> getClearCaptionListener()
+  public final kotlin.g.a.b<View, ah> getClearCaptionListener()
   {
-    return this.HXr;
+    return this.NUc;
   }
   
   public final float[] getContentBoundary()
   {
-    AppMethodBeat.i(226230);
-    float[] arrayOfFloat = (float[])this.uWz.IdW.clone();
-    AppMethodBeat.o(226230);
+    AppMethodBeat.i(280044);
+    float[] arrayOfFloat = (float[])this.yiZ.Oam.clone();
+    AppMethodBeat.o(280044);
     return arrayOfFloat;
   }
   
-  public final ta getCurrentCaption()
+  public final uq getCurrentCaption()
   {
-    AppMethodBeat.i(226196);
-    Object localObject = this.HXc;
+    AppMethodBeat.i(280005);
+    Object localObject = this.NTN;
     if (localObject != null)
     {
-      long l = this.HXq;
-      localObject = ((Iterable)((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject).IbD).iterator();
+      long l = this.NUb;
+      localObject = ((Iterable)((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject).NYc).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ta localta = (ta)((Iterator)localObject).next();
-        if ((localta.Scf <= l) && (localta.Scg >= l))
+        uq localuq = (uq)((Iterator)localObject).next();
+        if ((localuq.YZX <= l) && (localuq.YZY >= l))
         {
-          AppMethodBeat.o(226196);
-          return localta;
+          AppMethodBeat.o(280005);
+          return localuq;
         }
       }
-      AppMethodBeat.o(226196);
-      return null;
     }
-    AppMethodBeat.o(226196);
+    AppMethodBeat.o(280005);
     return null;
   }
   
   public final RectF getDrawRect()
   {
-    return this.HXh;
+    return this.NTS;
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a getEditorData()
   {
-    return (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)this.HXc;
+    return (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)this.NTN;
   }
   
   public final boolean getEnableEdit()
   {
-    return this.HXs;
+    return this.NUd;
   }
   
   public final Rect getSafeArea()
   {
-    AppMethodBeat.i(226203);
-    Rect localRect = this.uWz.HGw;
-    Object localObject = localRect;
+    AppMethodBeat.i(280030);
+    Rect localRect = this.yiZ.NDV;
     if (localRect == null)
     {
-      localObject = getResources();
-      p.j(localObject, "resources");
-      int i = ((Resources)localObject).getDisplayMetrics().widthPixels;
-      localObject = getResources();
-      p.j(localObject, "resources");
-      localObject = new Rect(0, 0, i, ((Resources)localObject).getDisplayMetrics().heightPixels);
+      localRect = new Rect(0, 0, getResources().getDisplayMetrics().widthPixels, getResources().getDisplayMetrics().heightPixels);
+      AppMethodBeat.o(280030);
+      return localRect;
     }
-    AppMethodBeat.o(226203);
-    return localObject;
+    AppMethodBeat.o(280030);
+    return localRect;
   }
   
   public final int getTouchSlop()
   {
-    return this.bvH;
+    return this.doK;
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.c.c getTouchTracker()
   {
-    return this.uWz;
+    return this.yiZ;
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.view.b getType()
   {
-    AppMethodBeat.i(226232);
-    if (a(d.IbM))
+    AppMethodBeat.i(280047);
+    if (a(com.tencent.mm.plugin.recordvideo.ui.editor.item.d.NYj))
     {
-      localb = com.tencent.mm.plugin.recordvideo.ui.editor.view.b.Ieu;
-      AppMethodBeat.o(226232);
+      localb = com.tencent.mm.plugin.recordvideo.ui.editor.view.b.OaK;
+      AppMethodBeat.o(280047);
       return localb;
     }
-    com.tencent.mm.plugin.recordvideo.ui.editor.view.b localb = com.tencent.mm.plugin.recordvideo.ui.editor.view.b.Iet;
-    AppMethodBeat.o(226232);
+    com.tencent.mm.plugin.recordvideo.ui.editor.view.b localb = com.tencent.mm.plugin.recordvideo.ui.editor.view.b.OaJ;
+    AppMethodBeat.o(280047);
     return localb;
   }
   
   public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    AppMethodBeat.i(226250);
-    p.k(paramScaleGestureDetector, "detector");
+    AppMethodBeat.i(280066);
+    s.u(paramScaleGestureDetector, "detector");
     float f1 = paramScaleGestureDetector.getFocusY();
     float f2 = 1.0F - paramScaleGestureDetector.getScaleFactor();
-    this.HXi.postScale(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getScaleFactor());
-    this.HXi.postTranslate(this.HXg.centerX() * f2, f1 * f2);
-    fyd();
-    fye();
-    AppMethodBeat.o(226250);
+    this.NTT.postScale(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getScaleFactor());
+    this.NTT.postTranslate(this.NTR.centerX() * f2, f1 * f2);
+    gJQ();
+    gJR();
+    AppMethodBeat.o(280066);
     return true;
   }
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(226252);
-    p.k(paramMotionEvent1, "e1");
-    p.k(paramMotionEvent2, "e2");
-    this.HXi.postTranslate(0.0F, -paramFloat2);
-    fyd();
-    fye();
-    AppMethodBeat.o(226252);
+    AppMethodBeat.i(280075);
+    s.u(paramMotionEvent1, "e1");
+    s.u(paramMotionEvent2, "e2");
+    this.NTT.postTranslate(0.0F, -paramFloat2);
+    gJQ();
+    gJR();
+    AppMethodBeat.o(280075);
     return true;
   }
   
   public final boolean onTouch(View paramView, final MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(226248);
-    p.k(paramView, "v");
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(280061);
+    s.u(paramView, "v");
+    s.u(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
-    while (this.jKU)
+    while (this.mkg)
     {
       Object localObject1;
       if ((paramMotionEvent.getAction() != 3) || (paramMotionEvent.getAction() != 1))
       {
         bringToFront();
-        if (this.HXs) {
-          getCaptionView().setBackgroundDrawable(com.tencent.mm.ci.a.m(getContext(), b.d.bg_edit_white_line));
+        if (this.NUd) {
+          getCaptionView().setBackgroundDrawable(com.tencent.mm.cd.a.m(getContext(), b.d.bg_edit_white_line));
         }
-        localObject1 = this.HXf;
+        localObject1 = this.NTQ;
         if (localObject1 != null) {
-          ((EditorItemContainer.b)localObject1).e((View)this, paramMotionEvent);
+          ((EditorItemContainer.b)localObject1).l((View)this, paramMotionEvent);
         }
-        MMHandlerThread.removeRunnable(this.HXt);
-        MMHandlerThread.postToMainThreadDelayed(this.HXt, 1500L);
+        MMHandlerThread.removeRunnable(this.NUe);
+        MMHandlerThread.postToMainThreadDelayed(this.NUe, 1500L);
       }
       boolean bool = super.onTouch(paramView, paramMotionEvent);
-      AppMethodBeat.o(226248);
+      AppMethodBeat.o(280061);
       return bool;
-      this.jKY = paramMotionEvent.getX();
-      this.jKZ = paramMotionEvent.getY();
-      if (this.HXh.contains(this.jKY, this.jKZ)) {
-        this.jKU = true;
+      this.mkk = paramMotionEvent.getX();
+      this.mkl = paramMotionEvent.getY();
+      if (this.NTS.contains(this.mkk, this.mkl)) {
+        this.mkg = true;
       }
-      this.jKV = false;
-      this.uWJ[0] = (this.HXg.width() / 2.0F);
-      this.uWJ[1] = (this.HXg.height() / 2.0F);
-      this.HXi.mapPoints(this.uWJ);
+      this.mkh = false;
+      this.yji[0] = (this.NTR.width() / 2.0F);
+      this.yji[1] = (this.NTR.height() / 2.0F);
+      this.NTT.mapPoints(this.yji);
       continue;
-      float f = Math.max(Math.abs(paramMotionEvent.getX() - this.jKY), Math.abs(paramMotionEvent.getY() - this.jKZ));
-      if (!this.jKV)
+      float f = Math.max(Math.abs(paramMotionEvent.getX() - this.mkk), Math.abs(paramMotionEvent.getY() - this.mkl));
+      if (!this.mkh)
       {
-        if (f > this.bvH) {}
+        if (f > this.doK) {}
         for (bool = true;; bool = false)
         {
-          this.jKV = bool;
+          this.mkh = bool;
           break;
         }
-        this.jKU = false;
-        this.HXo.setVisibility(4);
+        this.mkg = false;
+        this.NTZ.setVisibility(4);
         localObject1 = new com.tencent.mm.plugin.recordvideo.ui.editor.c.a();
-        Object localObject2 = this.HXd;
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).aGO = 0.5F;
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).aGN = 3.0F;
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).o(new float[] { this.HXg.width() / 2.0F, this.HXg.height() / 2.0F });
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).f(new RectF(((Rect)localObject2).left, ((Rect)localObject2).top, ((Rect)localObject2).right, ((Rect)localObject2).bottom));
+        Object localObject2 = this.NTO;
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).minScale = 0.5F;
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).maxScale = 3.0F;
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).w(new float[] { this.NTR.width() / 2.0F, this.NTR.height() / 2.0F });
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).g(new RectF(((Rect)localObject2).left, ((Rect)localObject2).top, ((Rect)localObject2).right, ((Rect)localObject2).bottom));
         localObject2 = new float[2];
-        localObject2[0] = (this.HXg.width() / 2.0F);
-        localObject2[1] = (this.HXg.height() / 2.0F);
-        this.HXi.mapPoints((float[])localObject2);
-        if (!((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).IdC.contains(localObject2[0], localObject2[1])) {
-          ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).f(new RectF(this.uWJ[0], this.uWJ[1], this.uWJ[0], this.uWJ[1]));
+        localObject2[0] = (this.NTR.width() / 2.0F);
+        localObject2[1] = (this.NTR.height() / 2.0F);
+        this.NTT.mapPoints((float[])localObject2);
+        if (!((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).NZY.contains(localObject2[0], localObject2[1])) {
+          ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).g(new RectF(this.yji[0], this.yji[1], this.yji[0], this.yji[1]));
         }
-        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).a(this.HXi, (m)new f(this, paramMotionEvent));
+        ((com.tencent.mm.plugin.recordvideo.ui.editor.c.a)localObject1).a(this.NTT, (m)new f(this, paramMotionEvent));
       }
     }
-    AppMethodBeat.o(226248);
+    AppMethodBeat.o(280061);
     return false;
   }
   
   public final void setCaptionItem(com.tencent.mm.plugin.recordvideo.ui.editor.item.c paramc)
   {
-    AppMethodBeat.i(226182);
-    p.k(paramc, "captionItem");
-    this.HXc = paramc;
+    AppMethodBeat.i(279980);
+    s.u(paramc, "captionItem");
+    this.NTN = paramc;
     getCaptionLayout().measure(0, 0);
-    Object localObject1 = this.uWz;
-    Object localObject2 = getCaptionLayout();
-    p.j(localObject2, "captionLayout");
-    ((com.tencent.mm.plugin.recordvideo.ui.editor.c.c)localObject1).height = ((RelativeLayout)localObject2).getMeasuredHeight();
-    localObject1 = this.HXg;
-    localObject2 = getCaptionLayout();
-    p.j(localObject2, "captionLayout");
-    ((RectF)localObject1).bottom = ((RelativeLayout)localObject2).getMeasuredHeight();
-    fye();
+    this.yiZ.height = getCaptionLayout().getMeasuredHeight();
+    this.NTR.bottom = getCaptionLayout().getMeasuredHeight();
+    gJR();
     if (paramc.textColor != 0) {
       getCaptionView().setTextColor(paramc.textColor);
     }
     getCaptionView().setTextBackground(paramc.bgColor);
-    if (!TextUtils.isEmpty((CharSequence)paramc.IbE)) {
-      if (u.agG(paramc.IbE))
-      {
-        localObject1 = getCaptionView();
-        p.j(localObject1, "captionView");
-        ((PhotoTextView)localObject1).setTypeface(Typeface.createFromFile(paramc.IbE));
+    if (!TextUtils.isEmpty((CharSequence)paramc.mAD)) {
+      if (y.ZC(paramc.mAD)) {
+        getCaptionView().setTypeface(Typeface.createFromFile(paramc.mAD));
       }
     }
     for (;;)
     {
-      localObject1 = new StringBuilder("height:");
-      localObject2 = getCaptionView();
-      p.j(localObject2, "captionView");
-      com.tencent.mm.audio.mix.h.b.i("MicroMsg.CaptionItemView", ((PhotoTextView)localObject2).getMeasuredHeight() + " caption:" + paramc);
-      AppMethodBeat.o(226182);
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.CaptionItemView", "height:" + getCaptionView().getMeasuredHeight() + " caption:" + paramc);
+      AppMethodBeat.o(279980);
       return;
-      localObject1 = getCaptionView();
-      p.j(localObject1, "captionView");
-      ((PhotoTextView)localObject1).setTypeface(Typeface.DEFAULT);
+      getCaptionView().setTypeface(Typeface.DEFAULT);
       continue;
-      localObject1 = getCaptionView();
-      localObject2 = getCaptionView();
-      p.j(localObject2, "captionView");
-      ((PhotoTextView)localObject1).setTypeface(((PhotoTextView)localObject2).getTypeface(), 1);
+      getCaptionView().setTypeface(getCaptionView().getTypeface(), 1);
     }
   }
   
-  public final void setClearCaptionListener(kotlin.g.a.b<? super View, x> paramb)
+  public final void setClearCaptionListener(kotlin.g.a.b<? super View, ah> paramb)
   {
-    this.HXr = paramb;
+    this.NUc = paramb;
   }
   
   public final void setEnableEdit(boolean paramBoolean)
   {
-    this.HXs = paramBoolean;
+    this.NUd = paramBoolean;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(226229);
+    AppMethodBeat.i(280041);
     super.setOnClickListener(paramOnClickListener);
-    this.dig = paramOnClickListener;
-    AppMethodBeat.o(226229);
+    this.fhU = paramOnClickListener;
+    AppMethodBeat.o(280041);
   }
   
   public final void setStateResolve(EditorItemContainer.b paramb)
   {
-    AppMethodBeat.i(226187);
-    p.k(paramb, "stateResolve");
-    this.HXf = paramb;
-    AppMethodBeat.o(226187);
+    AppMethodBeat.i(279994);
+    s.u(paramb, "stateResolve");
+    this.NTQ = paramb;
+    AppMethodBeat.o(279994);
   }
   
   public final void setValidArea(Rect paramRect)
   {
-    AppMethodBeat.i(226211);
-    p.k(paramRect, "validRect");
-    this.HXd.set(paramRect);
-    fyd();
-    fye();
-    Object localObject = this.HXo.getLayoutParams();
+    AppMethodBeat.i(280033);
+    s.u(paramRect, "validRect");
+    this.NTO.set(paramRect);
+    gJQ();
+    gJR();
+    Object localObject = this.NTZ.getLayoutParams();
     if (localObject == null)
     {
-      paramRect = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(226211);
+      paramRect = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(280033);
       throw paramRect;
     }
     localObject = (ViewGroup.MarginLayoutParams)localObject;
-    if (((ViewGroup.MarginLayoutParams)localObject).topMargin != paramRect.bottom - this.HXp)
+    if (((ViewGroup.MarginLayoutParams)localObject).topMargin != paramRect.bottom - this.NUa)
     {
-      ((ViewGroup.MarginLayoutParams)localObject).topMargin = (paramRect.bottom - this.HXp);
-      this.HXo.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      ((ViewGroup.MarginLayoutParams)localObject).topMargin = (paramRect.bottom - this.NUa);
+      this.NTZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    AppMethodBeat.o(226211);
+    AppMethodBeat.o(280033);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
+  public final boolean tA(long paramLong)
+  {
+    AppMethodBeat.i(280001);
+    this.NUb = paramLong;
+    Object localObject1 = this.NTN;
+    Object localObject2;
+    label33:
+    boolean bool;
+    if (localObject1 == null)
+    {
+      localObject2 = null;
+      if (localObject2 != null) {
+        break label196;
+      }
+      localObject1 = null;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label260;
+      }
+      setVisibility(0);
+      getCaptionView().setAutoSizeTextTypeWithDefaults(0);
+      getCaptionView().setText((CharSequence)"");
+      getCaptionView().setTextSize(0, com.tencent.mm.cd.a.br(getContext(), b.c.HugeTextSize));
+      getCaptionView().setAutoSizeTextTypeWithDefaults(1);
+      getCaptionView().setVisibility(0);
+      getCaptionView().setText((CharSequence)localObject1);
+      s.checkNotNull(localObject2);
+      if (((uq)localObject2).YZZ) {
+        break label227;
+      }
+      bool = true;
+      label132:
+      this.NUd = bool;
+      if (this.NUd) {
+        break label232;
+      }
+      getCaptionView().setBackgroundDrawable(null);
+      com.tencent.mm.audio.mix.h.b.d("MicroMsg.CaptionItemView", "text it not empty, not enableEdit, set INVISIBLE");
+      getCaptionContentLayout().setVisibility(4);
+      getCaptionLoadingLayout().setVisibility(0);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(280001);
+      return true;
+      localObject2 = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject1).tB(paramLong);
+      break;
+      label196:
+      localObject1 = ((uq)localObject2).YZW;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break label33;
+      }
+      localObject1 = ((com.tencent.mm.bx.b)localObject1).toString("UTF-8");
+      break label33;
+      label227:
+      bool = false;
+      break label132;
+      label232:
+      com.tencent.mm.audio.mix.h.b.d("MicroMsg.CaptionItemView", "text it not empty, not enableEdit, set VISIBLE");
+      getCaptionContentLayout().setVisibility(0);
+      getCaptionLoadingLayout().setVisibility(4);
+    }
+    label260:
+    com.tencent.mm.audio.mix.h.b.d("MicroMsg.CaptionItemView", "text it empty, set INVISIBLE");
+    setVisibility(4);
+    AppMethodBeat.o(280001);
+    return false;
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<LinearLayout>
   {
     b(a parama)
@@ -739,9 +672,9 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     c(a parama)
@@ -750,9 +683,9 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<LinearLayout>
   {
     d(a parama, Context paramContext)
@@ -760,39 +693,35 @@ public final class a
       super();
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView$captionLoadingLayout$2$1$1"})
-    static final class a
-      implements View.OnClickListener
+    private static final void a(a parama, View paramView)
     {
-      a(a.d paramd) {}
-      
-      public final void onClick(View paramView)
+      AppMethodBeat.i(280183);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(parama);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView$captionLoadingLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(parama, "this$0");
+      paramView = parama.getParent();
+      if (paramView == null)
       {
-        AppMethodBeat.i(219205);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView$captionLoadingLayout$2$$special$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramView = this.HXw.HXv.getParent();
-        if (paramView == null)
-        {
-          paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(219205);
-          throw paramView;
-        }
-        ((ViewGroup)paramView).removeView((View)this.HXw.HXv);
-        paramView = this.HXw.HXv.getClearCaptionListener();
-        if (paramView != null) {
-          paramView.invoke(this.HXw.HXv);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView$captionLoadingLayout$2$$special$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(219205);
+        parama = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(280183);
+        throw parama;
       }
+      ((ViewGroup)paramView).removeView((View)parama);
+      paramView = parama.getClearCaptionListener();
+      if (paramView != null) {
+        paramView.invoke(parama);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView$captionLoadingLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(280183);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoTextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
+    extends u
     implements kotlin.g.a.a<PhotoTextView>
   {
     e(a parama)
@@ -801,34 +730,20 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "animateFinish", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "m", "Landroid/graphics/Matrix;", "animateFinish", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements m<Matrix, Boolean, x>
+    extends u
+    implements m<Matrix, Boolean, ah>
   {
     f(a parama, MotionEvent paramMotionEvent)
     {
       super();
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(223575);
-      a.c(this.HXv).setBackgroundDrawable(null);
-      AppMethodBeat.o(223575);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,6 @@ import java.util.Map;
 public abstract interface a
   extends IInterface
 {
-  public abstract int cQ(String paramString);
-  
   public abstract String checkIssueConditions(Map paramMap);
   
   public abstract String checkServiceStatus(Map paramMap);
@@ -19,6 +17,8 @@ public abstract interface a
   public abstract String deleteCard(Map paramMap);
   
   public abstract String doAction(String paramString, Map paramMap);
+  
+  public abstract int ek(String paramString);
   
   public abstract String issueCard(Map paramMap);
   
@@ -36,12 +36,12 @@ public abstract interface a
     extends Binder
     implements a
   {
-    public static a Kg()
+    public static a akh()
     {
-      return a.chR;
+      return a.dXZ;
     }
     
-    public static a j(IBinder paramIBinder)
+    public static a k(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -64,7 +64,7 @@ public abstract interface a
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.huawei.nfc.sdk.service.IHwTransitOpenService");
-        paramInt1 = cQ(paramParcel1.readString());
+        paramInt1 = ek(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -133,7 +133,7 @@ public abstract interface a
     static final class a
       implements a
     {
-      public static a chR;
+      public static a dXZ;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -146,18 +146,123 @@ public abstract interface a
         return this.mRemote;
       }
       
-      public final int cQ(String paramString)
+      public final String checkIssueConditions(Map paramMap)
       {
-        AppMethodBeat.i(271404);
+        AppMethodBeat.i(208323);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
+          localParcel1.writeMap(paramMap);
+          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
+          {
+            paramMap = a.a.akh().checkIssueConditions(paramMap);
+            return paramMap;
+          }
+          localParcel2.readException();
+          paramMap = localParcel2.readString();
+          return paramMap;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(208323);
+        }
+      }
+      
+      public final String checkServiceStatus(Map paramMap)
+      {
+        AppMethodBeat.i(208314);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
+          localParcel1.writeMap(paramMap);
+          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
+          {
+            paramMap = a.a.akh().checkServiceStatus(paramMap);
+            return paramMap;
+          }
+          localParcel2.readException();
+          paramMap = localParcel2.readString();
+          return paramMap;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(208314);
+        }
+      }
+      
+      public final String deleteCard(Map paramMap)
+      {
+        AppMethodBeat.i(208311);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
+          localParcel1.writeMap(paramMap);
+          if ((!this.mRemote.transact(7, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
+          {
+            paramMap = a.a.akh().deleteCard(paramMap);
+            return paramMap;
+          }
+          localParcel2.readException();
+          paramMap = localParcel2.readString();
+          return paramMap;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(208311);
+        }
+      }
+      
+      public final String doAction(String paramString, Map paramMap)
+      {
+        AppMethodBeat.i(208326);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
           localParcel1.writeString(paramString);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          localParcel1.writeMap(paramMap);
+          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            i = a.a.Kg().cQ(paramString);
+            paramString = a.a.akh().doAction(paramString, paramMap);
+            return paramString;
+          }
+          localParcel2.readException();
+          paramString = localParcel2.readString();
+          return paramString;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(208326);
+        }
+      }
+      
+      public final int ek(String paramString)
+      {
+        AppMethodBeat.i(208264);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
+          localParcel1.writeString(paramString);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
+          {
+            i = a.a.akh().ek(paramString);
             return i;
           }
           localParcel2.readException();
@@ -168,127 +273,22 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271404);
-        }
-      }
-      
-      public final String checkIssueConditions(Map paramMap)
-      {
-        AppMethodBeat.i(271418);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
-          localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
-          {
-            paramMap = a.a.Kg().checkIssueConditions(paramMap);
-            return paramMap;
-          }
-          localParcel2.readException();
-          paramMap = localParcel2.readString();
-          return paramMap;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(271418);
-        }
-      }
-      
-      public final String checkServiceStatus(Map paramMap)
-      {
-        AppMethodBeat.i(271414);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
-          localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
-          {
-            paramMap = a.a.Kg().checkServiceStatus(paramMap);
-            return paramMap;
-          }
-          localParcel2.readException();
-          paramMap = localParcel2.readString();
-          return paramMap;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(271414);
-        }
-      }
-      
-      public final String deleteCard(Map paramMap)
-      {
-        AppMethodBeat.i(271413);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
-          localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(7, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
-          {
-            paramMap = a.a.Kg().deleteCard(paramMap);
-            return paramMap;
-          }
-          localParcel2.readException();
-          paramMap = localParcel2.readString();
-          return paramMap;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(271413);
-        }
-      }
-      
-      public final String doAction(String paramString, Map paramMap)
-      {
-        AppMethodBeat.i(271419);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
-          localParcel1.writeString(paramString);
-          localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
-          {
-            paramString = a.a.Kg().doAction(paramString, paramMap);
-            return paramString;
-          }
-          localParcel2.readException();
-          paramString = localParcel2.readString();
-          return paramString;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(271419);
+          AppMethodBeat.o(208264);
         }
       }
       
       public final String issueCard(Map paramMap)
       {
-        AppMethodBeat.i(271407);
+        AppMethodBeat.i(208290);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
           localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            paramMap = a.a.Kg().issueCard(paramMap);
+            paramMap = a.a.akh().issueCard(paramMap);
             return paramMap;
           }
           localParcel2.readException();
@@ -299,22 +299,22 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271407);
+          AppMethodBeat.o(208290);
         }
       }
       
       public final String preIssueCard(Map paramMap)
       {
-        AppMethodBeat.i(271406);
+        AppMethodBeat.i(208279);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
           localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            paramMap = a.a.Kg().preIssueCard(paramMap);
+            paramMap = a.a.akh().preIssueCard(paramMap);
             return paramMap;
           }
           localParcel2.readException();
@@ -325,21 +325,21 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271406);
+          AppMethodBeat.o(208279);
         }
       }
       
       public final String queryCplc()
       {
-        AppMethodBeat.i(271405);
+        AppMethodBeat.i(208271);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            str = a.a.Kg().queryCplc();
+            str = a.a.akh().queryCplc();
             return str;
           }
           localParcel2.readException();
@@ -350,13 +350,13 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271405);
+          AppMethodBeat.o(208271);
         }
       }
       
       public final String queryTrafficCardInfo(String paramString, int paramInt)
       {
-        AppMethodBeat.i(271410);
+        AppMethodBeat.i(208304);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -364,9 +364,9 @@ public abstract interface a
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
           localParcel1.writeString(paramString);
           localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            paramString = a.a.Kg().queryTrafficCardInfo(paramString, paramInt);
+            paramString = a.a.akh().queryTrafficCardInfo(paramString, paramInt);
             return paramString;
           }
           localParcel2.readException();
@@ -377,22 +377,22 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271410);
+          AppMethodBeat.o(208304);
         }
       }
       
       public final String recharge(Map paramMap)
       {
-        AppMethodBeat.i(271409);
+        AppMethodBeat.i(208298);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
           localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            paramMap = a.a.Kg().recharge(paramMap);
+            paramMap = a.a.akh().recharge(paramMap);
             return paramMap;
           }
           localParcel2.readException();
@@ -403,22 +403,22 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271409);
+          AppMethodBeat.o(208298);
         }
       }
       
       public final String startSetDefault(Map paramMap)
       {
-        AppMethodBeat.i(271416);
+        AppMethodBeat.i(208320);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.huawei.nfc.sdk.service.IHwTransitOpenService");
           localParcel1.writeMap(paramMap);
-          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (a.a.Kg() != null))
+          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (a.a.akh() != null))
           {
-            paramMap = a.a.Kg().startSetDefault(paramMap);
+            paramMap = a.a.akh().startSetDefault(paramMap);
             return paramMap;
           }
           localParcel2.readException();
@@ -429,7 +429,7 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(271416);
+          AppMethodBeat.o(208320);
         }
       }
     }
@@ -437,7 +437,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.huawei.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

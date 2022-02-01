@@ -12,7 +12,9 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.a.e;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.a.g;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.l;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.m;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -34,87 +36,57 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class h
 {
-  private static final AtomicInteger Nu;
   public static final int SDK_INT;
-  private static String pys;
-  public static HashMap<String, String> pyt;
-  private static HashMap<String, Boolean> pyu;
+  private static final AtomicInteger bty;
+  private static String sDx;
+  public static HashMap<String, String> sDy;
+  private static HashMap<String, Boolean> sDz;
   
   static
   {
-    AppMethodBeat.i(230009);
+    AppMethodBeat.i(328612);
     SDK_INT = Build.VERSION.SDK_INT;
-    pys = "<html";
-    pyt = new HashMap();
-    Nu = new AtomicInteger(1);
-    pyu = new HashMap();
-    AppMethodBeat.o(230009);
+    sDx = "<html";
+    sDy = new HashMap();
+    bty = new AtomicInteger(1);
+    sDz = new HashMap();
+    AppMethodBeat.o(328612);
   }
   
-  public static long H(long paramLong1, long paramLong2)
+  public static long U(Map<String, List<String>> paramMap)
   {
-    AppMethodBeat.i(229957);
-    int i = -2;
-    String[] arrayOfString = bVP();
-    if (arrayOfString != null)
-    {
-      i = -3;
-      a(4, "PlayerUtils", "proxy setting " + a(Arrays.asList(arrayOfString).iterator(), "|"), null);
-    }
-    long l = i * 100000000;
-    AppMethodBeat.o(229957);
-    return l + 100000L * paramLong1 + paramLong2;
-  }
-  
-  public static long I(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(229959);
-    int i = -2;
-    String[] arrayOfString = bVP();
-    if (arrayOfString != null)
-    {
-      i = -3;
-      a(4, "PlayerUtils", "proxy setting " + a(Arrays.asList(arrayOfString).iterator(), "|"), null);
-    }
-    paramLong1 = (paramLong1 - paramLong2 - i * 100000000) / 100000L;
-    AppMethodBeat.o(229959);
-    return paramLong1;
-  }
-  
-  public static long N(Map<String, List<String>> paramMap)
-  {
-    AppMethodBeat.i(229955);
+    AppMethodBeat.i(328457);
     if (paramMap != null)
     {
-      long l = bH((List)paramMap.get("x-server-error"));
+      long l = ds((List)paramMap.get("x-server-error"));
       if ((l != -1L) && (l != 0L))
       {
-        AppMethodBeat.o(229955);
+        AppMethodBeat.o(328457);
         return l;
       }
-      l = bH((List)paramMap.get("x-proxy-error"));
+      l = ds((List)paramMap.get("x-proxy-error"));
       if (l != -1L)
       {
-        AppMethodBeat.o(229955);
+        AppMethodBeat.o(328457);
         return l - 20000L;
       }
-      l = bH((List)paramMap.get("error"));
+      l = ds((List)paramMap.get("error"));
       if (l != -1L)
       {
-        AppMethodBeat.o(229955);
+        AppMethodBeat.o(328457);
         return l;
       }
     }
-    AppMethodBeat.o(229955);
+    AppMethodBeat.o(328457);
     return -99999L;
   }
   
   private static String a(Throwable paramThrowable, boolean paramBoolean)
   {
-    AppMethodBeat.i(230003);
+    AppMethodBeat.i(328590);
     if (paramThrowable == null)
     {
-      AppMethodBeat.o(230003);
+      AppMethodBeat.o(328590);
       return "";
     }
     Object localObject1 = Thread.currentThread();
@@ -148,14 +120,14 @@ public final class h
         localStringBuilder.append(a(paramThrowable, true));
       }
       paramThrowable = localStringBuilder.toString();
-      AppMethodBeat.o(230003);
+      AppMethodBeat.o(328590);
       return paramThrowable;
     }
   }
   
   private static String a(Iterator<String> paramIterator, String paramString)
   {
-    AppMethodBeat.i(229962);
+    AppMethodBeat.i(328493);
     Object localObject1 = "";
     Object localObject2 = localObject1;
     if (paramIterator != null) {
@@ -172,162 +144,41 @@ public final class h
         }
       }
     }
-    AppMethodBeat.o(229962);
+    AppMethodBeat.o(328493);
     return localObject2;
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    AppMethodBeat.i(230008);
-    String str = paramString2;
-    if (paramThrowable != null) {
-      str = paramString2 + ":" + i(paramThrowable);
-    }
-    if (str.length() > 1000)
-    {
-      a(paramInt, paramString1, aje(str));
-      AppMethodBeat.o(230008);
-      return;
-    }
-    paramString2 = a.bVt().pvI;
-    if (paramString2 == null)
-    {
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(230008);
-        return;
-      case 2: 
-        AppMethodBeat.o(230008);
-        return;
-      case 3: 
-        AppMethodBeat.o(230008);
-        return;
-      case 6: 
-        AppMethodBeat.o(230008);
-        return;
-      case 4: 
-        AppMethodBeat.o(230008);
-        return;
-      }
-      AppMethodBeat.o(230008);
-      return;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(230008);
-      return;
-      paramString2.v(paramString1, str);
-      AppMethodBeat.o(230008);
-      return;
-      paramString2.d(paramString1, str);
-      AppMethodBeat.o(230008);
-      return;
-      paramString2.e(paramString1, str);
-      AppMethodBeat.o(230008);
-      return;
-      paramString2.i(paramString1, str);
-      AppMethodBeat.o(230008);
-      return;
-      paramString2.w(paramString1, str);
-    }
   }
   
   private static void a(int paramInt, String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(230005);
+    AppMethodBeat.i(328597);
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      a(paramInt, paramString, (String)paramList.next(), null);
+      b(paramInt, paramString, (String)paramList.next(), null);
     }
-    AppMethodBeat.o(230005);
-  }
-  
-  public static void a(HttpURLConnection paramHttpURLConnection, long paramLong)
-  {
-    AppMethodBeat.i(229931);
-    if ((SDK_INT != 19) && (SDK_INT != 20))
-    {
-      AppMethodBeat.o(229931);
-      return;
-    }
-    try
-    {
-      paramHttpURLConnection = paramHttpURLConnection.getInputStream();
-      if (paramLong == -1L)
-      {
-        int i = paramHttpURLConnection.read();
-        if (i == -1) {
-          AppMethodBeat.o(229931);
-        }
-      }
-      else if (paramLong <= 2048L)
-      {
-        AppMethodBeat.o(229931);
-        return;
-      }
-      Object localObject = paramHttpURLConnection.getClass().getName();
-      if ((((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream")) || (((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream")))
-      {
-        localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
-        ((Method)localObject).setAccessible(true);
-        ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
-      }
-      AppMethodBeat.o(229931);
-      return;
-    }
-    catch (IOException paramHttpURLConnection)
-    {
-      AppMethodBeat.o(229931);
-      return;
-    }
-    catch (Exception paramHttpURLConnection)
-    {
-      AppMethodBeat.o(229931);
-    }
+    AppMethodBeat.o(328597);
   }
   
   public static boolean aZ(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(229970);
+    AppMethodBeat.i(328502);
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 100))
     {
       byte[] arrayOfByte = new byte[100];
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 100);
-      boolean bool = new String(arrayOfByte).toLowerCase().replaceAll("\\s", "").contains(pys);
-      AppMethodBeat.o(229970);
+      boolean bool = new String(arrayOfByte).toLowerCase().replaceAll("\\s", "").contains(sDx);
+      AppMethodBeat.o(328502);
       return bool;
     }
-    AppMethodBeat.o(229970);
+    AppMethodBeat.o(328502);
     return false;
   }
   
-  public static boolean aiP(String paramString)
+  public static long acb(String paramString)
   {
-    AppMethodBeat.i(229980);
-    if (pyu.containsKey(paramString))
-    {
-      bool = ((Boolean)pyu.get(paramString)).booleanValue();
-      AppMethodBeat.o(229980);
-      return bool;
-    }
-    if ((paramString.contains("m3u8")) || (paramString.contains("m3u"))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      pyu.put(paramString, Boolean.valueOf(bool));
-      break;
-    }
-  }
-  
-  public static long ajc(String paramString)
-  {
-    AppMethodBeat.i(229933);
+    AppMethodBeat.i(328397);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(229933);
+      AppMethodBeat.o(328397);
       return -1L;
     }
     try
@@ -336,33 +187,33 @@ public final class h
       long l1 = paramString.getBlockSize();
       int i = paramString.getAvailableBlocks();
       long l2 = i;
-      AppMethodBeat.o(229933);
+      AppMethodBeat.o(328397);
       return l2 * l1;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(229933);
+      AppMethodBeat.o(328397);
     }
     return -1L;
   }
   
-  public static long ajd(String paramString)
+  public static long acc(String paramString)
   {
     long l1 = 0L;
-    AppMethodBeat.i(229936);
+    AppMethodBeat.i(328407);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(229936);
+      AppMethodBeat.o(328407);
       return 0L;
     }
-    paramString = new q(paramString);
-    if (paramString.ifH())
+    paramString = new u(paramString);
+    if (paramString.jKV())
     {
       l1 = paramString.length();
-      AppMethodBeat.o(229936);
+      AppMethodBeat.o(328407);
       return l1;
     }
-    paramString = paramString.ifJ();
+    paramString = paramString.jKX();
     long l2 = l1;
     if (paramString != null)
     {
@@ -377,19 +228,19 @@ public final class h
         Object localObject = paramString[i];
         l2 = l1;
         if (localObject != null) {
-          l2 = l1 + ajd(localObject.bOF());
+          l2 = l1 + acc(ah.v(localObject.jKT()));
         }
         i += 1;
         l1 = l2;
       }
     }
-    AppMethodBeat.o(229936);
+    AppMethodBeat.o(328407);
     return l2;
   }
   
-  private static List<String> aje(String paramString)
+  private static List<String> acd(String paramString)
   {
-    AppMethodBeat.i(229939);
+    AppMethodBeat.i(328417);
     ArrayList localArrayList = new ArrayList((paramString.length() + 1000 - 1) / 1000);
     int i = 0;
     while (i < paramString.length())
@@ -397,83 +248,100 @@ public final class h
       localArrayList.add(paramString.substring(i, Math.min(paramString.length(), i + 1000)));
       i += 1000;
     }
-    AppMethodBeat.o(229939);
+    AppMethodBeat.o(328417);
     return localArrayList;
   }
   
-  public static String ajf(String paramString)
+  public static String ace(String paramString)
   {
-    AppMethodBeat.i(229943);
+    AppMethodBeat.i(328425);
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = (String)pyt.get(paramString);
+      localObject = (String)sDy.get(paramString);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        AppMethodBeat.o(229943);
+        AppMethodBeat.o(328425);
         return localObject;
       }
     }
-    e locale = a.bVt().pvK;
+    e locale = a.cvH().sAQ;
     Object localObject = locale;
     if (locale == null) {
       localObject = new g();
     }
-    localObject = ((e)localObject).aW(paramString);
-    pyt.put(paramString, localObject);
-    AppMethodBeat.o(229943);
+    localObject = ((e)localObject).cj(paramString);
+    sDy.put(paramString, localObject);
+    AppMethodBeat.o(328425);
     return localObject;
   }
   
-  public static String ajg(String paramString)
+  public static String acf(String paramString)
   {
     int j = 1;
-    AppMethodBeat.i(229960);
+    AppMethodBeat.i(328485);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(229960);
+      AppMethodBeat.o(328485);
       return null;
     }
     if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("/")) || (paramString.startsWith("file:")))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(229960);
+      AppMethodBeat.o(328485);
       return "local";
     }
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.startsWith(l.bVD().pwZ.bVE()))) {}
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.startsWith(l.cvQ().sCf.cvR()))) {}
     for (i = j; i != 0; i = 0)
     {
-      AppMethodBeat.o(229960);
+      AppMethodBeat.o(328485);
       return "noproxy";
     }
-    Map localMap = f.aiZ(paramString);
+    Map localMap = f.abY(paramString);
     if ((localMap == null) || (localMap.isEmpty()))
     {
-      a(6, "PlayerUtils", "getVideoUuidFromVideoUrl fail ".concat(String.valueOf(paramString)), null);
-      AppMethodBeat.o(229960);
+      b(6, "PlayerUtils", "getVideoUuidFromVideoUrl fail ".concat(String.valueOf(paramString)), null);
+      AppMethodBeat.o(328485);
       return null;
     }
     paramString = (String)localMap.get("id");
-    AppMethodBeat.o(229960);
+    AppMethodBeat.o(328485);
     return paramString;
   }
   
-  public static String ajh(String paramString)
+  public static boolean acg(String paramString)
   {
-    AppMethodBeat.i(229987);
+    AppMethodBeat.i(328525);
+    if (sDz.containsKey(paramString))
+    {
+      bool = ((Boolean)sDz.get(paramString)).booleanValue();
+      AppMethodBeat.o(328525);
+      return bool;
+    }
+    if ((paramString.contains("m3u8")) || (paramString.contains("m3u"))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      sDz.put(paramString, Boolean.valueOf(bool));
+      break;
+    }
+  }
+  
+  public static String ach(String paramString)
+  {
+    AppMethodBeat.i(328545);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(229987);
+      AppMethodBeat.o(328545);
       return "";
     }
     if (!paramString.startsWith("#"))
     {
-      AppMethodBeat.o(229987);
+      AppMethodBeat.o(328545);
       return "";
     }
     int i = paramString.indexOf(":");
     if (i == -1)
     {
-      AppMethodBeat.o(229987);
+      AppMethodBeat.o(328545);
       return "";
     }
     String str2 = paramString.substring(i + 1);
@@ -481,17 +349,17 @@ public final class h
     if (paramString.lastIndexOf(",") != -1) {
       str1 = str2.substring(0, str2.length() - 1);
     }
-    AppMethodBeat.o(229987);
+    AppMethodBeat.o(328545);
     return str1;
   }
   
-  public static int aji(String paramString)
+  public static int aci(String paramString)
   {
-    AppMethodBeat.i(229990);
-    paramString = ajh(paramString);
+    AppMethodBeat.i(328551);
+    paramString = ach(paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(229990);
+      AppMethodBeat.o(328551);
       return -1;
     }
     try
@@ -508,83 +376,173 @@ public final class h
       {
         for (;;)
         {
-          a(6, "PlayerUtils", "parseM3u8Number error ".concat(String.valueOf(paramString)), null);
+          b(6, "PlayerUtils", "parseM3u8Number error ".concat(String.valueOf(paramString)), null);
           j = i;
         }
       }
-      AppMethodBeat.o(229990);
+      AppMethodBeat.o(328551);
       return j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        a(6, "PlayerUtils", "parseM3u8Number error ".concat(String.valueOf(localException)), null);
+        b(6, "PlayerUtils", "parseM3u8Number error ".concat(String.valueOf(localException)), null);
         i = -1;
       }
     }
   }
   
-  public static String ajj(String paramString)
+  public static String acj(String paramString)
   {
-    AppMethodBeat.i(229992);
+    AppMethodBeat.i(328557);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("/")))
     {
       paramString = "file://".concat(String.valueOf(paramString));
-      AppMethodBeat.o(229992);
+      AppMethodBeat.o(328557);
       return paramString;
     }
-    AppMethodBeat.o(229992);
+    AppMethodBeat.o(328557);
     return paramString;
   }
   
-  public static boolean ajk(String paramString)
+  public static boolean ack(String paramString)
   {
-    AppMethodBeat.i(229996);
+    AppMethodBeat.i(328564);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("file:///android_asset")))
     {
-      AppMethodBeat.o(229996);
+      AppMethodBeat.o(328564);
       return true;
     }
-    AppMethodBeat.o(229996);
+    AppMethodBeat.o(328564);
     return false;
   }
   
-  public static boolean ajl(String paramString)
+  public static boolean acl(String paramString)
   {
-    AppMethodBeat.i(229999);
+    AppMethodBeat.i(328571);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("android.resource://")))
     {
-      AppMethodBeat.o(229999);
+      AppMethodBeat.o(328571);
       return true;
     }
-    AppMethodBeat.o(229999);
+    AppMethodBeat.o(328571);
     return false;
   }
   
-  public static String ajm(String paramString)
+  public static String acm(String paramString)
   {
-    AppMethodBeat.i(230000);
+    AppMethodBeat.i(328576);
     if (paramString != null)
     {
       paramString = paramString.replaceAll("\\r\\n", "|").replaceAll("\\r|\\n", "|");
-      AppMethodBeat.o(230000);
+      AppMethodBeat.o(328576);
       return paramString;
     }
-    AppMethodBeat.o(230000);
+    AppMethodBeat.o(328576);
     return paramString;
+  }
+  
+  public static long ae(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(328469);
+    int i = -2;
+    String[] arrayOfString = cwc();
+    if (arrayOfString != null)
+    {
+      i = -3;
+      b(4, "PlayerUtils", "proxy setting " + a(Arrays.asList(arrayOfString).iterator(), "|"), null);
+    }
+    long l = i * 100000000;
+    AppMethodBeat.o(328469);
+    return l + 100000L * paramLong1 + paramLong2;
+  }
+  
+  public static long af(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(328476);
+    int i = -2;
+    String[] arrayOfString = cwc();
+    if (arrayOfString != null)
+    {
+      i = -3;
+      b(4, "PlayerUtils", "proxy setting " + a(Arrays.asList(arrayOfString).iterator(), "|"), null);
+    }
+    paramLong1 = (paramLong1 - paramLong2 - i * 100000000) / 100000L;
+    AppMethodBeat.o(328476);
+    return paramLong1;
+  }
+  
+  public static void b(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(328609);
+    String str = paramString2;
+    if (paramThrowable != null) {
+      str = paramString2 + ":" + s(paramThrowable);
+    }
+    if (str.length() > 1000)
+    {
+      a(paramInt, paramString1, acd(str));
+      AppMethodBeat.o(328609);
+      return;
+    }
+    paramString2 = a.cvH().sAO;
+    if (paramString2 == null)
+    {
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(328609);
+        return;
+      case 2: 
+        AppMethodBeat.o(328609);
+        return;
+      case 3: 
+        AppMethodBeat.o(328609);
+        return;
+      case 6: 
+        AppMethodBeat.o(328609);
+        return;
+      case 4: 
+        AppMethodBeat.o(328609);
+        return;
+      }
+      AppMethodBeat.o(328609);
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(328609);
+      return;
+      paramString2.v(paramString1, str);
+      AppMethodBeat.o(328609);
+      return;
+      paramString2.d(paramString1, str);
+      AppMethodBeat.o(328609);
+      return;
+      paramString2.e(paramString1, str);
+      AppMethodBeat.o(328609);
+      return;
+      paramString2.i(paramString1, str);
+      AppMethodBeat.o(328609);
+      return;
+      paramString2.w(paramString1, str);
+    }
   }
   
   public static boolean b(URL paramURL)
   {
     Object localObject = null;
-    AppMethodBeat.i(229974);
+    AppMethodBeat.i(328510);
     try
     {
       paramURL = paramURL.getHost();
       if (paramURL == null)
       {
-        AppMethodBeat.o(229974);
+        AppMethodBeat.o(328510);
         return false;
       }
     }
@@ -600,27 +558,27 @@ public final class h
       paramURL = InetAddress.getByName(paramURL);
       if (paramURL == null)
       {
-        AppMethodBeat.o(229974);
+        AppMethodBeat.o(328510);
         return false;
       }
       if ((paramURL.isAnyLocalAddress()) || (paramURL.isLoopbackAddress()))
       {
-        AppMethodBeat.o(229974);
+        AppMethodBeat.o(328510);
         return true;
       }
       try
       {
         if (NetworkInterface.getByInetAddress(paramURL) != null)
         {
-          AppMethodBeat.o(229974);
+          AppMethodBeat.o(328510);
           return true;
         }
-        AppMethodBeat.o(229974);
+        AppMethodBeat.o(328510);
         return false;
       }
       catch (SocketException paramURL)
       {
-        AppMethodBeat.o(229974);
+        AppMethodBeat.o(328510);
         return false;
       }
     }
@@ -633,44 +591,13 @@ public final class h
     }
   }
   
-  private static long bH(List<String> paramList)
+  public static int cwa()
   {
-    AppMethodBeat.i(229953);
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (String)paramList.get(0);
-      if (!TextUtils.isEmpty(paramList)) {
-        try
-        {
-          long l = Long.parseLong(paramList);
-          AppMethodBeat.o(229953);
-          return l;
-        }
-        catch (NumberFormatException paramList)
-        {
-          a(6, "PlayerUtils", "getSubErrorCode: long string is ill-format", null);
-        }
-      }
-    }
-    AppMethodBeat.o(229953);
-    return -1L;
-  }
-  
-  public static String bI(List<String> paramList)
-  {
-    AppMethodBeat.i(229967);
-    paramList = a(paramList.iterator(), "|");
-    AppMethodBeat.o(229967);
-    return paramList;
-  }
-  
-  public static int bVN()
-  {
-    AppMethodBeat.i(229948);
+    AppMethodBeat.i(328434);
     try
     {
-      i = bVO();
-      AppMethodBeat.o(229948);
+      i = cwb();
+      AppMethodBeat.o(328434);
       return i;
     }
     catch (IllegalStateException localIllegalStateException1)
@@ -679,44 +606,44 @@ public final class h
       while (i < 5) {
         try
         {
-          int j = bVO();
-          AppMethodBeat.o(229948);
+          int j = cwb();
+          AppMethodBeat.o(328434);
           return j;
         }
         catch (IllegalStateException localIllegalStateException2)
         {
-          a(5, "PlayerUtils", "retry findFreePort i=".concat(String.valueOf(i)), null);
+          b(5, "PlayerUtils", "retry findFreePort i=".concat(String.valueOf(i)), null);
           i += 1;
         }
       }
       IllegalStateException localIllegalStateException3 = new IllegalStateException("Could not find a free TCP/IP port to start video proxy, maxRetry=5");
-      AppMethodBeat.o(229948);
+      AppMethodBeat.o(328434);
       throw localIllegalStateException3;
     }
   }
   
   /* Error */
-  private static int bVO()
+  private static int cwb()
   {
     // Byte code:
-    //   0: ldc_w 566
+    //   0: ldc_w 507
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 568	java/net/ServerSocket
+    //   6: new 509	java/net/ServerSocket
     //   9: dup
     //   10: iconst_0
-    //   11: invokespecial 569	java/net/ServerSocket:<init>	(I)V
+    //   11: invokespecial 510	java/net/ServerSocket:<init>	(I)V
     //   14: astore_1
     //   15: aload_1
     //   16: iconst_1
-    //   17: invokevirtual 572	java/net/ServerSocket:setReuseAddress	(Z)V
+    //   17: invokevirtual 514	java/net/ServerSocket:setReuseAddress	(Z)V
     //   20: aload_1
-    //   21: invokevirtual 575	java/net/ServerSocket:getLocalPort	()I
+    //   21: invokevirtual 517	java/net/ServerSocket:getLocalPort	()I
     //   24: istore_0
     //   25: aload_1
-    //   26: invokevirtual 578	java/net/ServerSocket:close	()V
+    //   26: invokevirtual 520	java/net/ServerSocket:close	()V
     //   29: aload_1
-    //   30: invokevirtual 578	java/net/ServerSocket:close	()V
-    //   33: ldc_w 566
+    //   30: invokevirtual 520	java/net/ServerSocket:close	()V
+    //   33: ldc_w 507
     //   36: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: iload_0
     //   40: ireturn
@@ -726,13 +653,13 @@ public final class h
     //   44: aload_1
     //   45: ifnull +7 -> 52
     //   48: aload_1
-    //   49: invokevirtual 578	java/net/ServerSocket:close	()V
-    //   52: new 554	java/lang/IllegalStateException
+    //   49: invokevirtual 520	java/net/ServerSocket:close	()V
+    //   52: new 493	java/lang/IllegalStateException
     //   55: dup
-    //   56: ldc_w 580
-    //   59: invokespecial 565	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   56: ldc_w 522
+    //   59: invokespecial 504	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   62: astore_1
-    //   63: ldc_w 566
+    //   63: ldc_w 507
     //   66: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: aload_1
     //   70: athrow
@@ -742,8 +669,8 @@ public final class h
     //   74: aload_2
     //   75: ifnull +7 -> 82
     //   78: aload_2
-    //   79: invokevirtual 578	java/net/ServerSocket:close	()V
-    //   82: ldc_w 566
+    //   79: invokevirtual 520	java/net/ServerSocket:close	()V
+    //   82: ldc_w 507
     //   85: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aload_1
     //   89: athrow
@@ -796,141 +723,173 @@ public final class h
   }
   
   /* Error */
-  private static String[] bVP()
+  private static String[] cwc()
   {
     // Byte code:
-    //   0: ldc_w 583
+    //   0: ldc_w 525
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc_w 585
-    //   9: ldc_w 587
+    //   6: ldc_w 527
+    //   9: ldc_w 529
     //   12: iconst_0
-    //   13: anewarray 258	java/lang/Class
-    //   16: invokevirtual 590	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   13: anewarray 531	java/lang/Class
+    //   16: invokevirtual 535	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   19: astore_0
-    //   20: aload_0
-    //   21: invokestatic 210	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:bVt	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
-    //   24: getfield 594	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:appContext	Landroid/content/Context;
-    //   27: ldc_w 596
-    //   30: invokevirtual 602	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   33: checkcast 585	android/net/ConnectivityManager
-    //   36: iconst_0
-    //   37: anewarray 4	java/lang/Object
-    //   40: invokevirtual 286	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   43: astore_0
-    //   44: aload_0
-    //   45: ifnonnull +29 -> 74
-    //   48: ldc_w 583
-    //   51: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   54: aconst_null
-    //   55: areturn
-    //   56: astore_0
-    //   57: ldc_w 583
-    //   60: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: aconst_null
-    //   64: areturn
-    //   65: astore_0
-    //   66: ldc_w 583
-    //   69: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   72: aconst_null
-    //   73: areturn
-    //   74: iconst_3
-    //   75: anewarray 186	java/lang/String
-    //   78: astore_1
-    //   79: ldc_w 604
-    //   82: invokestatic 608	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   85: astore_2
-    //   86: aload_1
-    //   87: iconst_0
-    //   88: aload_2
-    //   89: ldc_w 609
-    //   92: iconst_0
-    //   93: anewarray 258	java/lang/Class
-    //   96: invokevirtual 590	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   99: aload_0
-    //   100: iconst_0
-    //   101: anewarray 4	java/lang/Object
-    //   104: invokevirtual 286	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   107: checkcast 186	java/lang/String
-    //   110: aastore
-    //   111: aload_1
-    //   112: iconst_1
-    //   113: aload_2
-    //   114: ldc_w 611
-    //   117: iconst_0
-    //   118: anewarray 258	java/lang/Class
-    //   121: invokevirtual 590	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   124: aload_0
-    //   125: iconst_0
-    //   126: anewarray 4	java/lang/Object
-    //   129: invokevirtual 286	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   132: checkcast 473	java/lang/Integer
-    //   135: invokestatic 446	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   138: aastore
-    //   139: aload_1
-    //   140: iconst_2
-    //   141: aload_2
-    //   142: ldc_w 613
-    //   145: iconst_0
-    //   146: anewarray 258	java/lang/Class
-    //   149: invokevirtual 590	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   152: aload_0
-    //   153: iconst_0
-    //   154: anewarray 4	java/lang/Object
-    //   157: invokevirtual 286	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   160: checkcast 186	java/lang/String
-    //   163: aastore
-    //   164: aload_1
-    //   165: iconst_0
-    //   166: aaload
-    //   167: ifnull +11 -> 178
-    //   170: ldc_w 583
-    //   173: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   176: aload_1
-    //   177: areturn
-    //   178: ldc_w 583
-    //   181: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: aconst_null
-    //   185: areturn
-    //   186: astore_0
-    //   187: ldc_w 583
-    //   190: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   193: aconst_null
-    //   194: areturn
+    //   20: invokestatic 271	com/tencent/mm/plugin/appbrand/jsapi/video/b/a:cvH	()Lcom/tencent/mm/plugin/appbrand/jsapi/video/b/a;
+    //   23: pop
+    //   24: aload_0
+    //   25: invokestatic 541	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   28: ldc_w 543
+    //   31: invokevirtual 549	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   34: checkcast 527	android/net/ConnectivityManager
+    //   37: iconst_0
+    //   38: anewarray 4	java/lang/Object
+    //   41: invokevirtual 555	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: astore_0
+    //   45: aload_0
+    //   46: ifnonnull +29 -> 75
+    //   49: ldc_w 525
+    //   52: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: aconst_null
+    //   56: areturn
+    //   57: astore_0
+    //   58: ldc_w 525
+    //   61: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aconst_null
+    //   65: areturn
+    //   66: astore_0
+    //   67: ldc_w 525
+    //   70: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: aconst_null
+    //   74: areturn
+    //   75: iconst_3
+    //   76: anewarray 151	java/lang/String
+    //   79: astore_1
+    //   80: ldc_w 557
+    //   83: invokestatic 561	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   86: astore_2
+    //   87: aload_1
+    //   88: iconst_0
+    //   89: aload_2
+    //   90: ldc_w 562
+    //   93: iconst_0
+    //   94: anewarray 531	java/lang/Class
+    //   97: invokevirtual 535	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   100: aload_0
+    //   101: iconst_0
+    //   102: anewarray 4	java/lang/Object
+    //   105: invokevirtual 555	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   108: checkcast 151	java/lang/String
+    //   111: aastore
+    //   112: aload_1
+    //   113: iconst_1
+    //   114: aload_2
+    //   115: ldc_w 564
+    //   118: iconst_0
+    //   119: anewarray 531	java/lang/Class
+    //   122: invokevirtual 535	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   125: aload_0
+    //   126: iconst_0
+    //   127: anewarray 4	java/lang/Object
+    //   130: invokevirtual 555	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   133: checkcast 378	java/lang/Integer
+    //   136: invokestatic 332	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   139: aastore
+    //   140: aload_1
+    //   141: iconst_2
+    //   142: aload_2
+    //   143: ldc_w 566
+    //   146: iconst_0
+    //   147: anewarray 531	java/lang/Class
+    //   150: invokevirtual 535	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   153: aload_0
+    //   154: iconst_0
+    //   155: anewarray 4	java/lang/Object
+    //   158: invokevirtual 555	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   161: checkcast 151	java/lang/String
+    //   164: aastore
+    //   165: aload_1
+    //   166: iconst_0
+    //   167: aaload
+    //   168: ifnull +11 -> 179
+    //   171: ldc_w 525
+    //   174: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: aload_1
+    //   178: areturn
+    //   179: ldc_w 525
+    //   182: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: aconst_null
+    //   186: areturn
+    //   187: astore_0
+    //   188: ldc_w 525
+    //   191: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: aconst_null
+    //   195: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   19	26	0	localObject	Object
-    //   56	1	0	localNoSuchMethodException	java.lang.NoSuchMethodException
-    //   65	88	0	localException1	Exception
-    //   186	1	0	localException2	Exception
-    //   78	99	1	arrayOfString	String[]
-    //   85	57	2	localClass	Class
+    //   19	27	0	localObject	Object
+    //   57	1	0	localNoSuchMethodException	java.lang.NoSuchMethodException
+    //   66	88	0	localException1	Exception
+    //   187	1	0	localException2	Exception
+    //   79	99	1	arrayOfString	String[]
+    //   86	57	2	localClass	Class
     // Exception table:
     //   from	to	target	type
-    //   6	20	56	java/lang/NoSuchMethodException
-    //   6	20	65	java/lang/Exception
-    //   20	44	186	java/lang/Exception
-    //   74	164	186	java/lang/Exception
-    //   170	176	186	java/lang/Exception
+    //   6	20	57	java/lang/NoSuchMethodException
+    //   6	20	66	java/lang/Exception
+    //   20	45	187	java/lang/Exception
+    //   75	165	187	java/lang/Exception
+    //   171	177	187	java/lang/Exception
   }
   
-  public static String ec(String paramString1, String paramString2)
+  private static long ds(List<String> paramList)
   {
-    AppMethodBeat.i(229983);
+    AppMethodBeat.i(328450);
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = (String)paramList.get(0);
+      if (!TextUtils.isEmpty(paramList)) {
+        try
+        {
+          long l = Long.parseLong(paramList);
+          AppMethodBeat.o(328450);
+          return l;
+        }
+        catch (NumberFormatException paramList)
+        {
+          b(6, "PlayerUtils", "getSubErrorCode: long string is ill-format", null);
+        }
+      }
+    }
+    AppMethodBeat.o(328450);
+    return -1L;
+  }
+  
+  public static String dt(List<String> paramList)
+  {
+    AppMethodBeat.i(328498);
+    paramList = a(paramList.iterator(), "|");
+    AppMethodBeat.o(328498);
+    return paramList;
+  }
+  
+  public static String ev(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(328536);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(229983);
+      AppMethodBeat.o(328536);
       return paramString1;
     }
     if (paramString2.startsWith("http"))
     {
-      AppMethodBeat.o(229983);
+      AppMethodBeat.o(328536);
       return paramString2;
     }
     try
     {
       URL localURL = new URL(new URL(paramString1), paramString2);
       paramString1 = localURL.toString();
-      AppMethodBeat.o(229983);
+      AppMethodBeat.o(328536);
       return paramString1;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -945,49 +904,93 @@ public final class h
         paramString1 = str.substring(0, i);
       }
       paramString1 = paramString1 + paramString2;
-      AppMethodBeat.o(229983);
+      AppMethodBeat.o(328536);
     }
     return paramString1;
   }
   
-  public static String i(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(230002);
-    paramThrowable = a(paramThrowable, false);
-    AppMethodBeat.o(230002);
-    return paramThrowable;
-  }
-  
   public static boolean isNetworkAvailable()
   {
-    AppMethodBeat.i(229926);
-    Object localObject = (ConnectivityManager)a.bVt().appContext.getSystemService("connectivity");
+    AppMethodBeat.i(328375);
+    Object localObject = (ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity");
     if (localObject != null)
     {
       localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
       if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
       {
-        AppMethodBeat.o(229926);
+        AppMethodBeat.o(328375);
         return true;
       }
-      AppMethodBeat.o(229926);
+      AppMethodBeat.o(328375);
       return false;
     }
-    a(5, "PlayerUtils", "isNetworkAvailable cant access ConnectivityManager missing permission?", null);
-    AppMethodBeat.o(229926);
+    b(5, "PlayerUtils", "isNetworkAvailable cant access ConnectivityManager missing permission?", null);
+    AppMethodBeat.o(328375);
     return false;
   }
   
   public static void log(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(292964);
-    a(paramInt, paramString1, paramString2, null);
-    AppMethodBeat.o(292964);
+    AppMethodBeat.i(370030);
+    b(paramInt, paramString1, paramString2, null);
+    AppMethodBeat.o(370030);
+  }
+  
+  public static void maybeTerminateInputStream(HttpURLConnection paramHttpURLConnection, long paramLong)
+  {
+    AppMethodBeat.i(328388);
+    if ((SDK_INT != 19) && (SDK_INT != 20))
+    {
+      AppMethodBeat.o(328388);
+      return;
+    }
+    try
+    {
+      paramHttpURLConnection = paramHttpURLConnection.getInputStream();
+      if (paramLong == -1L)
+      {
+        int i = paramHttpURLConnection.read();
+        if (i == -1) {
+          AppMethodBeat.o(328388);
+        }
+      }
+      else if (paramLong <= 2048L)
+      {
+        AppMethodBeat.o(328388);
+        return;
+      }
+      Object localObject = paramHttpURLConnection.getClass().getName();
+      if ((((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream")) || (((String)localObject).equals("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream")))
+      {
+        localObject = paramHttpURLConnection.getClass().getSuperclass().getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
+        ((Method)localObject).setAccessible(true);
+        ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
+      }
+      AppMethodBeat.o(328388);
+      return;
+    }
+    catch (IOException paramHttpURLConnection)
+    {
+      AppMethodBeat.o(328388);
+      return;
+    }
+    catch (Exception paramHttpURLConnection)
+    {
+      AppMethodBeat.o(328388);
+    }
+  }
+  
+  public static String s(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(328580);
+    paramThrowable = a(paramThrowable, false);
+    AppMethodBeat.o(328580);
+    return paramThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.storagebase;
 public class IMEISave
 {
   /* Error */
-  public static java.util.Collection<java.lang.String> hBQ()
+  public static java.util.Collection<java.lang.String> jdW()
   {
     // Byte code:
     //   0: ldc 14
@@ -16,12 +16,12 @@ public class IMEISave
     //   16: astore_3
     //   17: aload_3
     //   18: iconst_1
-    //   19: invokestatic 35	com/tencent/mm/compatible/deviceinfo/q:dR	(Z)Ljava/lang/String;
+    //   19: invokestatic 35	com/tencent/mm/compatible/deviceinfo/q:eD	(Z)Ljava/lang/String;
     //   22: invokevirtual 39	java/util/LinkedHashSet:add	(Ljava/lang/Object;)Z
     //   25: pop
     //   26: aload_3
     //   27: iconst_0
-    //   28: invokestatic 35	com/tencent/mm/compatible/deviceinfo/q:dR	(Z)Ljava/lang/String;
+    //   28: invokestatic 35	com/tencent/mm/compatible/deviceinfo/q:eD	(Z)Ljava/lang/String;
     //   31: invokevirtual 39	java/util/LinkedHashSet:add	(Ljava/lang/Object;)Z
     //   34: pop
     //   35: aconst_null
@@ -135,7 +135,7 @@ public class IMEISave
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.storagebase.IMEISave
  * JD-Core Version:    0.7.0.1
  */

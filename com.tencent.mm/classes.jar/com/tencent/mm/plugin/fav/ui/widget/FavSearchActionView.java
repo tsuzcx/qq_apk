@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.fav.ui.s.b;
-import com.tencent.mm.plugin.fav.ui.s.e;
-import com.tencent.mm.plugin.fav.ui.s.i;
+import com.tencent.mm.plugin.fav.ui.q.b;
+import com.tencent.mm.plugin.fav.ui.q.e;
+import com.tencent.mm.plugin.fav.ui.q.i;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,24 +22,76 @@ import java.util.List;
 public class FavSearchActionView
   extends LinearLayout
 {
-  private ImageButton jQo;
-  public FavTagPanel wMh;
-  public List<Integer> wND;
-  public List<String> wTg;
-  public List<String> wTh;
-  public a wTi;
+  public FavTagPanel AiE;
+  public List<Integer> Akg;
+  public List<String> ApJ;
+  public List<String> ApK;
+  public a ApL;
+  private ImageButton mpf;
   
   public FavSearchActionView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107534);
-    this.wND = new LinkedList();
-    this.wTg = new LinkedList();
-    this.wTh = new LinkedList();
+    this.Akg = new LinkedList();
+    this.ApJ = new LinkedList();
+    this.ApK = new LinkedList();
     AppMethodBeat.o(107534);
   }
   
-  public static String ad(Context paramContext, int paramInt)
+  public static Integer aA(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(107541);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(-1);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_imageandvideo).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(21);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_url).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(5);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_file).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(8);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_music).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(7);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_record).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(17);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_voice).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(3);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_note).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(18);
+    }
+    if (paramContext.getString(q.i.favorite_sub_title_location).equals(paramString))
+    {
+      AppMethodBeat.o(107541);
+      return Integer.valueOf(6);
+    }
+    AppMethodBeat.o(107541);
+    return Integer.valueOf(-1);
+  }
+  
+  public static String al(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(107540);
     if (paramContext == null)
@@ -64,108 +116,85 @@ public class FavSearchActionView
       AppMethodBeat.o(107540);
       return "";
     case 21: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_imageandvideo);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_imageandvideo);
       AppMethodBeat.o(107540);
       return paramContext;
     case 5: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_url);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_url);
       AppMethodBeat.o(107540);
       return paramContext;
     case 8: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_file);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_file);
       AppMethodBeat.o(107540);
       return paramContext;
     case 7: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_music);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_music);
       AppMethodBeat.o(107540);
       return paramContext;
     case 17: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_record);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_record);
       AppMethodBeat.o(107540);
       return paramContext;
     case 3: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_voice);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_voice);
       AppMethodBeat.o(107540);
       return paramContext;
     case 18: 
-      paramContext = paramContext.getString(s.i.favorite_sub_title_note);
+      paramContext = paramContext.getString(q.i.favorite_sub_title_note);
+      AppMethodBeat.o(107540);
+      return paramContext;
+    case 6: 
+      paramContext = paramContext.getString(q.i.favorite_sub_title_location);
       AppMethodBeat.o(107540);
       return paramContext;
     }
-    paramContext = paramContext.getString(s.i.favorite_sub_title_location);
+    paramContext = paramContext.getString(q.i.favorite_sub_title_recently_used);
     AppMethodBeat.o(107540);
     return paramContext;
   }
   
-  public static Integer az(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(107541);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(-1);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_imageandvideo).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(21);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_url).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(5);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_file).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(8);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_music).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(7);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_record).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(17);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_voice).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(3);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_note).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(18);
-    }
-    if (paramContext.getString(s.i.favorite_sub_title_location).equals(paramString))
-    {
-      AppMethodBeat.o(107541);
-      return Integer.valueOf(6);
-    }
-    AppMethodBeat.o(107541);
-    return Integer.valueOf(-1);
-  }
-  
-  private void dma()
+  private void dSQ()
   {
     AppMethodBeat.i(107538);
-    if ((this.wND.isEmpty()) && (this.wTg.isEmpty()))
+    if ((this.Akg.isEmpty()) && (this.ApJ.isEmpty()))
     {
-      this.wMh.setEditHint(getResources().getString(s.i.app_search));
+      this.AiE.setEditHint(getResources().getString(q.i.app_search));
       AppMethodBeat.o(107538);
       return;
     }
-    this.wMh.setEditHint("");
+    this.AiE.setEditHint("");
     AppMethodBeat.o(107538);
   }
   
-  public final void aAz(String paramString)
+  public final void aA(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(107539);
+    this.Akg.clear();
+    this.Akg.add(Integer.valueOf(paramInt));
+    if (this.AiE == null)
+    {
+      AppMethodBeat.o(107539);
+      return;
+    }
+    dSQ();
+    this.AiE.setType(al(getContext(), paramInt));
+    if (this.ApL == null)
+    {
+      AppMethodBeat.o(107539);
+      return;
+    }
+    auH(this.AiE.getEditText());
+    if (paramBoolean) {
+      this.ApL.a(this.Akg, this.ApK, this.ApJ, false);
+    }
+    h.OAn.b(11126, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.o(107539);
+  }
+  
+  public final void auH(String paramString)
   {
     AppMethodBeat.i(107536);
-    this.wTh.clear();
+    this.ApK.clear();
     paramString = Util.nullAs(paramString, "").split(" ");
     int j = paramString.length;
     int i = 0;
@@ -173,103 +202,64 @@ public class FavSearchActionView
     {
       String str = paramString[i];
       if (!Util.isNullOrNil(str)) {
-        this.wTh.add(str);
+        this.ApK.add(str);
       }
       i += 1;
     }
     AppMethodBeat.o(107536);
   }
   
-  public final void aj(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(107539);
-    this.wND.clear();
-    this.wND.add(Integer.valueOf(paramInt));
-    if (this.wMh == null)
-    {
-      AppMethodBeat.o(107539);
-      return;
-    }
-    dma();
-    this.wMh.setType(ad(getContext(), paramInt));
-    if (this.wTi == null)
-    {
-      AppMethodBeat.o(107539);
-      return;
-    }
-    aAz(this.wMh.getEditText());
-    if (paramBoolean) {
-      this.wTi.a(this.wND, this.wTh, this.wTg, false);
-    }
-    h.IzE.a(11126, new Object[] { Integer.valueOf(1) });
-    AppMethodBeat.o(107539);
-  }
-  
   public List<String> getSearchKeys()
   {
     AppMethodBeat.i(107537);
-    if (this.wMh != null) {
-      aAz(this.wMh.getEditText());
+    if (this.AiE != null) {
+      auH(this.AiE.getEditText());
     }
-    List localList = this.wTh;
+    List localList = this.ApK;
     AppMethodBeat.o(107537);
     return localList;
   }
   
   public List<String> getSearchTags()
   {
-    return this.wTg;
+    return this.ApJ;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(107535);
     super.onFinishInflate();
-    this.jQo = ((ImageButton)findViewById(s.e.search_clear_button));
-    this.wMh = ((FavTagPanel)findViewById(s.e.fav_tag_input_panel));
-    if (this.wMh != null)
+    this.mpf = ((ImageButton)findViewById(q.e.search_clear_button));
+    this.AiE = ((FavTagPanel)findViewById(q.e.fav_tag_input_panel));
+    if (this.AiE != null)
     {
-      this.wMh.setEditTextColor(getResources().getColor(s.b.black_text_color));
-      this.wMh.setTagTipsDrawable(0);
-      this.wMh.setTagHighlineBG(0);
-      this.wMh.setTagSelectedBG(0);
-      this.wMh.setTagSelectedTextColorRes(s.b.wechat_green);
-      this.wMh.setTagNormalBG(0);
-      this.wMh.setTagNormalTextColorRes(s.b.white);
-      this.wMh.setEditHint(getResources().getString(s.i.app_search));
-      this.wMh.FR(true);
-      this.wMh.Wms = false;
-      this.wMh.Wmt = true;
-      this.wMh.setCallBack(new FavTagPanel.a()
+      this.AiE.setEditTextColor(getResources().getColor(q.b.black_text_color));
+      this.AiE.setTagTipsDrawable(0);
+      this.AiE.setTagHighlineBG(0);
+      this.AiE.setTagSelectedBG(0);
+      this.AiE.setTagSelectedTextColorRes(q.b.wechat_green);
+      this.AiE.setTagNormalBG(0);
+      this.AiE.setTagNormalTextColorRes(q.b.white);
+      this.AiE.setEditHint(getResources().getString(q.i.app_search));
+      this.AiE.LD(true);
+      this.AiE.adTF = false;
+      this.AiE.adTG = true;
+      this.AiE.setCallBack(new FavTagPanel.a()
       {
-        public final void I(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
+        public final void G(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
         
-        public final void aAA(String paramAnonymousString)
-        {
-          AppMethodBeat.i(107532);
-          Log.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramAnonymousString });
-          FavSearchActionView.a(FavSearchActionView.this);
-          FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
-          FavSearchActionView.e(FavSearchActionView.this).remove(FavSearchActionView.az(FavSearchActionView.this.getContext(), paramAnonymousString));
-          FavSearchActionView.c(FavSearchActionView.this);
-          if (FavSearchActionView.d(FavSearchActionView.this) != null) {
-            FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
-          }
-          AppMethodBeat.o(107532);
-        }
-        
-        public final void auV(String paramAnonymousString)
+        public final void aoT(String paramAnonymousString)
         {
           AppMethodBeat.i(107527);
           Log.d("MicroMsg.FavSearchActionView", "unselected tag %s", new Object[] { paramAnonymousString });
-          FavSearchActionView.a(FavSearchActionView.this).removeTag(paramAnonymousString);
-          auX(paramAnonymousString);
+          FavSearchActionView.a(FavSearchActionView.this).aue(paramAnonymousString);
+          aoV(paramAnonymousString);
           AppMethodBeat.o(107527);
         }
         
-        public final void auW(String paramAnonymousString) {}
+        public final void aoU(String paramAnonymousString) {}
         
-        public final void auX(String paramAnonymousString)
+        public final void aoV(String paramAnonymousString)
         {
           AppMethodBeat.i(107528);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
@@ -284,7 +274,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107528);
         }
         
-        public final void auY(String paramAnonymousString)
+        public final void aoW(String paramAnonymousString)
         {
           AppMethodBeat.i(107529);
           FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
@@ -298,7 +288,7 @@ public class FavSearchActionView
           AppMethodBeat.o(107529);
         }
         
-        public final void auZ(String paramAnonymousString)
+        public final void aoX(String paramAnonymousString)
         {
           AppMethodBeat.i(107530);
           FavSearchActionView.a(FavSearchActionView.this, paramAnonymousString);
@@ -306,7 +296,21 @@ public class FavSearchActionView
           AppMethodBeat.o(107530);
         }
         
-        public final void cWR()
+        public final void auI(String paramAnonymousString)
+        {
+          AppMethodBeat.i(107532);
+          Log.d("MicroMsg.FavSearchActionView", "unselected type %s", new Object[] { paramAnonymousString });
+          FavSearchActionView.a(FavSearchActionView.this);
+          FavSearchActionView.a(FavSearchActionView.this, FavSearchActionView.a(FavSearchActionView.this).getEditText());
+          FavSearchActionView.e(FavSearchActionView.this).remove(FavSearchActionView.aA(FavSearchActionView.this.getContext(), paramAnonymousString));
+          FavSearchActionView.c(FavSearchActionView.this);
+          if (FavSearchActionView.d(FavSearchActionView.this) != null) {
+            FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
+          }
+          AppMethodBeat.o(107532);
+        }
+        
+        public final void dCx()
         {
           AppMethodBeat.i(107531);
           if (FavSearchActionView.d(FavSearchActionView.this) == null)
@@ -314,28 +318,28 @@ public class FavSearchActionView
             AppMethodBeat.o(107531);
             return;
           }
-          FavSearchActionView.d(FavSearchActionView.this).bxI();
+          FavSearchActionView.d(FavSearchActionView.this).bWx();
           AppMethodBeat.o(107531);
         }
       });
     }
-    if (this.jQo != null) {
-      this.jQo.setOnClickListener(new View.OnClickListener()
+    if (this.mpf != null) {
+      this.mpf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(107533);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if (FavSearchActionView.d(FavSearchActionView.this) == null)
           {
             a.a(this, "com/tencent/mm/plugin/fav/ui/widget/FavSearchActionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(107533);
             return;
           }
-          FavSearchActionView.a(FavSearchActionView.this).hKf();
-          FavSearchActionView.a(FavSearchActionView.this).hKa();
+          FavSearchActionView.a(FavSearchActionView.this).jmL();
+          FavSearchActionView.a(FavSearchActionView.this).jmG();
           FavSearchActionView.f(FavSearchActionView.this).clear();
           FavSearchActionView.b(FavSearchActionView.this).clear();
           FavSearchActionView.d(FavSearchActionView.this).a(FavSearchActionView.e(FavSearchActionView.this), FavSearchActionView.f(FavSearchActionView.this), FavSearchActionView.b(FavSearchActionView.this), true);
@@ -350,7 +354,7 @@ public class FavSearchActionView
   
   public void setOnSearchChangedListener(a parama)
   {
-    this.wTi = parama;
+    this.ApL = parama;
   }
   
   public static abstract interface a
@@ -359,12 +363,12 @@ public class FavSearchActionView
     
     public abstract void a(List<Integer> paramList, List<String> paramList1, List<String> paramList2, boolean paramBoolean);
     
-    public abstract void bxI();
+    public abstract void bWx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView
  * JD-Core Version:    0.7.0.1
  */

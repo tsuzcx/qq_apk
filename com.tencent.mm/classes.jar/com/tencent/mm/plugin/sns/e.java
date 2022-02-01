@@ -1,22 +1,35 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ku;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.sns.c.r;
 
-public final class e
-  extends IListener<ku>
+public class e
+  implements r
 {
-  public e()
+  private static volatile e PKc = null;
+  
+  public static e gZq()
   {
-    AppMethodBeat.i(160633);
-    this.__eventId = ku.class.getName().hashCode();
-    AppMethodBeat.o(160633);
+    AppMethodBeat.i(94916);
+    if (PKc == null) {}
+    try
+    {
+      if (PKc == null) {
+        PKc = new e();
+      }
+      e locale = PKc;
+      AppMethodBeat.o(94916);
+      return locale;
+    }
+    finally
+    {
+      AppMethodBeat.o(94916);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.e
  * JD-Core Version:    0.7.0.1
  */

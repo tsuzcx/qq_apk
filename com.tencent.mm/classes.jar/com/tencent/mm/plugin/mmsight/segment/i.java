@@ -18,16 +18,16 @@ import java.nio.ByteBuffer;
 public class i
   implements e
 {
-  protected e.a Fdr;
+  protected e.a KZa;
   protected MediaCodec.BufferInfo bufferInfo;
   protected long endTimeMs;
   private int frameCount;
-  protected aa kSN;
-  protected int kTg;
-  protected String mfv;
-  protected c miS;
-  protected MediaFormat miU;
-  private byte[] miV;
+  protected int nyO;
+  protected aa nyz;
+  protected String oYr;
+  protected c pcp;
+  protected MediaFormat pcr;
+  private byte[] pcs;
   protected int sampleSize;
   protected long startTimeMs;
   protected int videoTrackIndex;
@@ -35,12 +35,12 @@ public class i
   public i(c paramc, MediaFormat paramMediaFormat, int paramInt)
   {
     AppMethodBeat.i(107665);
-    this.mfv = null;
+    this.oYr = null;
     this.bufferInfo = new MediaCodec.BufferInfo();
     this.frameCount = 0;
     Log.i("MicroMsg.MediaCodecTranscodeDecoder", "create MediaCodecTranscodeDecoder: %s, %s, %s", new Object[] { paramc, paramMediaFormat, Integer.valueOf(paramInt) });
-    this.miS = paramc;
-    this.miU = paramMediaFormat;
+    this.pcp = paramc;
+    this.pcr = paramMediaFormat;
     this.videoTrackIndex = paramInt;
     AppMethodBeat.o(107665);
   }
@@ -48,13 +48,13 @@ public class i
   private boolean a(c paramc)
   {
     AppMethodBeat.i(107669);
-    if (this.kSN == null)
+    if (this.nyz == null)
     {
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "input decoder is null");
       AppMethodBeat.o(107669);
       return true;
     }
-    Object localObject = this.kSN.avj();
+    Object localObject = this.nyz.aPD();
     if (localObject == null)
     {
       AppMethodBeat.o(107669);
@@ -66,12 +66,12 @@ public class i
     long l;
     for (;;)
     {
-      j = this.kSN.EX(60000L);
+      j = this.nyz.dequeueInputBuffer(60000L);
       if ((j >= 0) || (i >= 15)) {
         break;
       }
       l = Util.currentTicks();
-      bool1 = aUv();
+      bool1 = boW();
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "drain cost1 %d", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
       if (bool1)
       {
@@ -86,7 +86,7 @@ public class i
       ((ByteBuffer)localObject).clear();
       this.sampleSize = paramc.readSampleData((ByteBuffer)localObject, 0);
       ((ByteBuffer)localObject).position(0);
-      l = paramc.jvU.getSampleTime();
+      l = paramc.lZm.getSampleTime();
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "sampleTime: %s", new Object[] { Long.valueOf(l) });
       if ((this.sampleSize >= 0) && (l < this.endTimeMs * 1000L)) {
         break label346;
@@ -97,7 +97,7 @@ public class i
     for (boolean bool1 = true;; bool1 = false)
     {
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "sawInputEOS: %s", new Object[] { Boolean.valueOf(bool1) });
-      paramc = this.kSN;
+      paramc = this.nyz;
       int k = this.sampleSize;
       if (bool1)
       {
@@ -107,7 +107,7 @@ public class i
       for (;;)
       {
         l = Util.currentTicks();
-        boolean bool2 = aUv();
+        boolean bool2 = boW();
         Log.i("MicroMsg.MediaCodecTranscodeDecoder", "drain cost2 %d", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
         if (!bool2) {
           break label338;
@@ -152,25 +152,25 @@ public class i
     return null;
   }
   
-  public final void J(Runnable paramRunnable)
+  public final void O(Runnable paramRunnable)
   {
     AppMethodBeat.i(107671);
     this.frameCount = 0;
-    while (!a(this.miS))
+    while (!a(this.pcp))
     {
-      this.miS.jvU.advance();
-      if (this.miS.jvU.getSampleTrackIndex() != this.videoTrackIndex) {
+      this.pcp.lZm.advance();
+      if (this.pcp.lZm.getSampleTrackIndex() != this.videoTrackIndex) {
         Log.i("MicroMsg.MediaCodecTranscodeDecoder", "track index not match, break");
       }
     }
-    c localc = this.miS;
+    c localc = this.pcp;
     Log.i("MicroMsg.MediaCodecTranscodeDecoder", "sendDecoderEOS");
-    Object localObject = this.kSN.avj();
-    int i = this.kSN.EX(60000L);
+    Object localObject = this.nyz.aPD();
+    int i = this.nyz.dequeueInputBuffer(60000L);
     if (i < 0)
     {
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "check decoder input buffer index = %d count = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(0) });
-      if (aUv()) {}
+      if (boW()) {}
     }
     else if (i >= 0)
     {
@@ -178,29 +178,29 @@ public class i
       ((ByteBuffer)localObject).clear();
       this.sampleSize = localc.readSampleData((ByteBuffer)localObject, 0);
       ((ByteBuffer)localObject).position(0);
-      long l = localc.jvU.getSampleTime();
+      long l = localc.lZm.getSampleTime();
       if (i < 0) {
         break label237;
       }
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "send EOS, decoderInputBufferIndex: %s", new Object[] { Integer.valueOf(i) });
-      this.kSN.a(i, 0, l * 1000L, 4);
+      this.nyz.a(i, 0, l * 1000L, 4);
     }
     for (;;)
     {
-      aUv();
+      boW();
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(107664);
-          if (i.this.kSN != null)
+          if (i.this.nyz != null)
           {
             Log.i("MicroMsg.MediaCodecTranscodeDecoder", "delay to stop decoder");
             try
             {
-              i.this.kSN.stop();
-              i.this.kSN.release();
-              i.this.kSN = null;
+              i.this.nyz.stop();
+              i.this.nyz.release();
+              i.this.nyz = null;
               AppMethodBeat.o(107664);
               return;
             }
@@ -222,46 +222,72 @@ public class i
   
   public final void a(e.a parama)
   {
-    this.Fdr = parama;
+    this.KZa = parama;
   }
   
-  protected boolean aUv()
+  public final Point bOM()
+  {
+    AppMethodBeat.i(107673);
+    Point localPoint = new Point(this.pcr.getInteger("width"), this.pcr.getInteger("height"));
+    AppMethodBeat.o(107673);
+    return localPoint;
+  }
+  
+  public int bON()
+  {
+    AppMethodBeat.i(107672);
+    int i = this.pcr.getInteger("color-format");
+    Log.i("MicroMsg.MediaCodecTranscodeDecoder", "src color format: %s", new Object[] { Integer.valueOf(i) });
+    switch (i)
+    {
+    default: 
+      AppMethodBeat.o(107672);
+      return 1;
+    case 19: 
+      AppMethodBeat.o(107672);
+      return 2;
+    }
+    AppMethodBeat.o(107672);
+    return 1;
+  }
+  
+  protected boolean boW()
   {
     AppMethodBeat.i(107670);
-    if (this.kSN == null)
+    if (this.nyz == null)
     {
       Log.e("MicroMsg.MediaCodecTranscodeDecoder", "drainDecoder, decoder is null");
       AppMethodBeat.o(107670);
       return true;
     }
-    Object localObject1 = this.kSN.avk();
+    Object localObject1 = this.nyz.aPE();
     Log.i("MicroMsg.MediaCodecTranscodeDecoder", "decoderOutputByteBuffers length: %s", new Object[] { Integer.valueOf(localObject1.length) });
-    int i = this.kSN.a(this.bufferInfo, 60000L);
+    int i = this.nyz.dequeueOutputBuffer(this.bufferInfo, 60000L);
     Log.i("MicroMsg.MediaCodecTranscodeDecoder", "outputBufferIndex-->".concat(String.valueOf(i)));
     if (i == -1)
     {
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "no output from decoder available, break");
-      label97:
+      label102:
       AppMethodBeat.o(107670);
       return false;
     }
     if (i == -3)
     {
-      localObject1 = this.kSN.avk();
+      localObject1 = this.nyz.aPE();
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder output buffers changed");
     }
     for (;;)
     {
-      int j = this.kSN.a(this.bufferInfo, 60000L);
+      int j = this.nyz.dequeueOutputBuffer(this.bufferInfo, 60000L);
       i = j;
       if (j >= 0) {
         break;
       }
-      break label97;
+      break label102;
       if (i == -2)
       {
-        this.miU = this.kSN.avi();
-        Log.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder output format changed: " + this.miU);
+        this.pcr = this.nyz.getOutputFormat();
+        Log.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder output format changed: " + this.pcr);
       }
       else if (i < 0)
       {
@@ -272,12 +298,12 @@ public class i
         Log.v("MicroMsg.MediaCodecTranscodeDecoder", "perform decoding");
         Object localObject2 = localObject1[i];
         if (localObject2 == null) {
-          break label97;
+          break label102;
         }
         long l1 = this.bufferInfo.presentationTimeUs;
         if ((l1 < this.startTimeMs * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
         {
-          this.kSN.releaseOutputBuffer(i, false);
+          this.nyz.releaseOutputBuffer(i, false);
           Log.i("MicroMsg.MediaCodecTranscodeDecoder", "decoder pts: %s, not reach start: %s", new Object[] { Long.valueOf(l1), Long.valueOf(this.startTimeMs * 1000L) });
           AppMethodBeat.o(107670);
           return false;
@@ -294,27 +320,27 @@ public class i
           for (;;)
           {
             Log.v("MicroMsg.MediaCodecTranscodeDecoder", "processDecodeOutputBuffer %s", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
-            this.kSN.releaseOutputBuffer(i, false);
+            this.nyz.releaseOutputBuffer(i, false);
             if ((this.endTimeMs != 1L) && (l1 >= this.endTimeMs * 1000L))
             {
               Log.e("MicroMsg.MediaCodecTranscodeDecoder", "exceed endTimeMs");
               AppMethodBeat.o(107670);
               return true;
               this.frameCount += 1;
-              if ((this.kTg > 1) && (this.frameCount % this.kTg == 0)) {
+              if ((this.nyO > 1) && (this.frameCount % this.nyO == 0)) {
                 continue;
               }
-              if (this.miV == null) {
-                this.miV = new byte[localObject2.remaining()];
+              if (this.pcs == null) {
+                this.pcs = new byte[localObject2.remaining()];
               }
               long l3 = Util.currentTicks();
               try
               {
-                this.miU = this.kSN.avi();
-                localObject2.get(this.miV, 0, localObject2.remaining());
+                this.pcr = this.nyz.getOutputFormat();
+                localObject2.get(this.pcs, 0, localObject2.remaining());
                 Log.i("MicroMsg.MediaCodecTranscodeDecoder", "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d cost %d", new Object[] { localObject2, localObject1, Integer.valueOf(((MediaCodec.BufferInfo)localObject1).size), Long.valueOf(Util.ticksToNow(l3)) });
-                if (this.Fdr != null) {
-                  this.Fdr.bZ(this.miV);
+                if (this.KZa != null) {
+                  this.KZa.cb(this.pcs);
                 }
               }
               catch (Exception localException2)
@@ -331,9 +357,9 @@ public class i
             Log.i("MicroMsg.MediaCodecTranscodeDecoder", "receive end of stream");
             try
             {
-              this.kSN.stop();
-              this.kSN.release();
-              this.kSN = null;
+              this.nyz.stop();
+              this.nyz.release();
+              this.nyz = null;
               AppMethodBeat.o(107670);
               return true;
             }
@@ -348,35 +374,9 @@ public class i
           AppMethodBeat.o(107670);
           return false;
         }
-        this.kSN.releaseOutputBuffer(i, false);
+        this.nyz.releaseOutputBuffer(i, false);
       }
     }
-  }
-  
-  public final Point brg()
-  {
-    AppMethodBeat.i(107673);
-    Point localPoint = new Point(this.miU.getInteger("width"), this.miU.getInteger("height"));
-    AppMethodBeat.o(107673);
-    return localPoint;
-  }
-  
-  public int brh()
-  {
-    AppMethodBeat.i(107672);
-    int i = this.miU.getInteger("color-format");
-    Log.i("MicroMsg.MediaCodecTranscodeDecoder", "src color format: %s", new Object[] { Integer.valueOf(i) });
-    switch (i)
-    {
-    default: 
-      AppMethodBeat.o(107672);
-      return 1;
-    case 19: 
-      AppMethodBeat.o(107672);
-      return 2;
-    }
-    AppMethodBeat.o(107672);
-    return 1;
   }
   
   protected boolean isRecognizedFormat(int paramInt)
@@ -390,17 +390,17 @@ public class i
     return true;
   }
   
-  public final int m(String paramString, long paramLong1, long paramLong2)
+  public final int o(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(107666);
-    this.mfv = paramString;
+    this.oYr = paramString;
     this.startTimeMs = paramLong1;
     this.endTimeMs = paramLong2;
-    Log.i("MicroMsg.MediaCodecTranscodeDecoder", "initDecoder() called with: format = [" + this.miU + "]");
+    Log.i("MicroMsg.MediaCodecTranscodeDecoder", "initDecoder() called with: format = [" + this.pcr + "]");
     try
     {
-      paramString = this.miU.getString("mime");
-      this.kSN = aa.KR(paramString);
+      paramString = this.pcr.getString("mime");
+      this.nyz = aa.Dw(paramString);
       MediaCodecInfo localMediaCodecInfo = selectCodec(paramString);
       Log.i("MicroMsg.MediaCodecTranscodeDecoder", "found codec: %s", new Object[] { localMediaCodecInfo });
       if (localMediaCodecInfo != null)
@@ -408,10 +408,10 @@ public class i
         Log.i("MicroMsg.MediaCodecTranscodeDecoder", "codec name: %s", new Object[] { localMediaCodecInfo.getName() });
         int i = selectColorFormat(localMediaCodecInfo, paramString);
         Log.i("MicroMsg.MediaCodecTranscodeDecoder", "found colorFormat: %s", new Object[] { Integer.valueOf(i) });
-        this.miU.setInteger("color-format", i);
+        this.pcr.setInteger("color-format", i);
       }
-      this.kSN.a(this.miU, null, 0);
-      this.kSN.start();
+      this.nyz.a(this.pcr, null, 0);
+      this.nyz.start();
       AppMethodBeat.o(107666);
       return 0;
     }
@@ -459,13 +459,13 @@ public class i
   public final void stop()
   {
     AppMethodBeat.i(107674);
-    if (this.kSN != null) {
+    if (this.nyz != null) {
       try
       {
         Log.i("MicroMsg.MediaCodecTranscodeDecoder", "stop decoder");
-        this.kSN.stop();
-        this.kSN.release();
-        this.kSN = null;
+        this.nyz.stop();
+        this.nyz.release();
+        this.nyz = null;
         AppMethodBeat.o(107674);
         return;
       }
@@ -481,7 +481,7 @@ public class i
   {
     AppMethodBeat.i(107675);
     Log.i("MicroMsg.MediaCodecTranscodeDecoder", "setFrameDropInterval: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.kTg = paramInt;
+    this.nyO = paramInt;
     AppMethodBeat.o(107675);
   }
 }

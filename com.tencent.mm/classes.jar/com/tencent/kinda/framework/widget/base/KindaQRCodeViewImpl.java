@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.kinda.gen.KQRCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cf.a.a;
+import com.tencent.mm.bz.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaQRCodeViewImpl
@@ -27,7 +27,7 @@ public class KindaQRCodeViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaQRCodeViewImpl
  * JD-Core Version:    0.7.0.1
  */

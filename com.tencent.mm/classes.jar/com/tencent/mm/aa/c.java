@@ -12,42 +12,42 @@ import java.util.HashMap;
 public final class c
   implements be
 {
-  private static c jXR;
-  private a jXS;
+  private static c mxL;
+  private a mxM;
   
   private c()
   {
     AppMethodBeat.i(150086);
-    if (a.jXy == null) {
-      a.jXy = new a();
+    if (a.mxs == null) {
+      a.mxs = new a();
     }
-    this.jXS = a.jXy;
+    this.mxM = a.mxs;
     AppMethodBeat.o(150086);
   }
   
-  private static c aFm()
+  private static c aYn()
   {
     try
     {
       AppMethodBeat.i(150087);
-      if (jXR == null)
+      if (mxL == null)
       {
         localc = new c();
-        jXR = localc;
-        localc.jXS.init();
+        mxL = localc;
+        localc.mxM.init();
       }
-      c localc = jXR;
+      c localc = mxL;
       AppMethodBeat.o(150087);
       return localc;
     }
     finally {}
   }
   
-  public static a aFn()
+  public static a aYo()
   {
     AppMethodBeat.i(150090);
-    h.aHE().aGH();
-    a locala = aFm().jXS;
+    h.baC().aZJ();
+    a locala = aYn().mxM;
     AppMethodBeat.o(150090);
     return locala;
   }
@@ -62,21 +62,21 @@ public final class c
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(150089);
-    this.jXS.init();
+    this.mxM.init();
     AppMethodBeat.o(150089);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(150088);
-    a locala = this.jXS;
+    a locala = this.mxM;
     locala.listeners.clear();
-    b localb = locala.jXz;
+    b localb = locala.mxt;
     Log.d("MicroMsg.NewBadgeDecoder", "[carl] decoder.clear()");
-    localb.jXH.clear();
-    localb.jXJ.clear();
-    localb.jXI.clear();
-    localb.jXK.clear();
+    localb.mxB.clear();
+    localb.mxD.clear();
+    localb.mxC.clear();
+    localb.mxE.clear();
     locala.initialized = false;
     AppMethodBeat.o(150088);
   }
@@ -85,7 +85,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.aa.c
  * JD-Core Version:    0.7.0.1
  */

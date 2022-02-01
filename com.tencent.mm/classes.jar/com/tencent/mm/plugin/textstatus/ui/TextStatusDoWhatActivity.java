@@ -1,145 +1,380 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.os.ResultReceiver;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Display;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout.LayoutParams;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.q;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.GridLayoutManager.b;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ye;
-import com.tencent.mm.f.a.ye.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.textstatus.a.q.a;
-import com.tencent.mm.plugin.textstatus.b.a;
-import com.tencent.mm.plugin.textstatus.b.b;
-import com.tencent.mm.plugin.textstatus.b.c;
-import com.tencent.mm.plugin.textstatus.b.e;
-import com.tencent.mm.plugin.textstatus.b.f;
+import com.tencent.mm.autogen.a.zx;
+import com.tencent.mm.autogen.a.zx.a;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
+import com.tencent.mm.plugin.textstatus.a.a;
+import com.tencent.mm.plugin.textstatus.a.b;
+import com.tencent.mm.plugin.textstatus.a.c;
+import com.tencent.mm.plugin.textstatus.a.e;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.a.g;
+import com.tencent.mm.plugin.textstatus.a.h;
+import com.tencent.mm.plugin.textstatus.a.ac;
+import com.tencent.mm.plugin.textstatus.a.w;
+import com.tencent.mm.plugin.textstatus.a.w.a;
 import com.tencent.mm.plugin.textstatus.b.c.b;
-import com.tencent.mm.plugin.textstatus.k.m;
 import com.tencent.mm.plugin.textstatus.proto.TextStatusExtInfo;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.ax;
-import com.tencent.mm.ui.report.MMSecDataActivity;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.statusbar.d;
+import com.tencent.mm.ui.tools.g.a;
 import com.tencent.mm.ui.widget.c.a;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.Collection;
-import kotlin.g;
-import kotlin.g.b.aa.c;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.c;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.n.n;
 
 @com.tencent.mm.ui.base.a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity;", "Lcom/tencent/mm/ui/report/MMSecDataActivity;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "()V", "CUSTOM_TEXT_STATUS_LENGTH_LIMIT", "", "getCUSTOM_TEXT_STATUS_LENGTH_LIMIT", "()I", "btnBack", "Landroid/view/View;", "getBtnBack", "()Landroid/view/View;", "btnBack$delegate", "Lkotlin/Lazy;", "configUpdateListener", "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$configUpdateListener$1", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$configUpdateListener$1;", "customDialog", "customET", "Landroid/widget/EditText;", "customETWatcher", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$PatTextWatcher;", "isCancel", "", "isEnter", "()Z", "setEnter", "(Z)V", "layoutContent", "getLayoutContent", "setLayoutContent", "(Landroid/view/View;)V", "mDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lkotlin/collections/ArrayList;", "getMDataList", "()Ljava/util/ArrayList;", "onItemClickListener", "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onItemClickListener$1", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onItemClickListener$1;", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "setStatusParam", "Lcom/tencent/mm/plugin/textstatus/api/SetStatusParam;", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "doClickIcon", "", "item", "Lcom/tencent/mm/plugin/textstatus/model/square/DoWhatItem;", "finish", "getCustomBounceId", "getForceOrientation", "getLayoutId", "hideCustomDialog", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onInputPanelChange", "isKeyboardShow", "keyboardHeight", "showCustomDialog", "showEducationLayout", "Companion", "PatTextWatcher", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity;", "Lcom/tencent/mm/plugin/secdata/ui/MMSecDataActivity;", "Lcom/tencent/mm/ui/widget/InputPanelHelper$OnInputPanelChange;", "()V", "CUSTOM_TEXT_STATUS_LENGTH_LIMIT", "", "getCUSTOM_TEXT_STATUS_LENGTH_LIMIT", "()I", "btnBack", "Landroid/view/View;", "getBtnBack", "()Landroid/view/View;", "btnBack$delegate", "Lkotlin/Lazy;", "callback", "Landroid/os/ResultReceiver;", "getCallback", "()Landroid/os/ResultReceiver;", "callback$delegate", "configUpdateListener", "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$configUpdateListener$1", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$configUpdateListener$1;", "customDialog", "customET", "Landroid/widget/EditText;", "customETWatcher", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$PatTextWatcher;", "customTitle", "", "getCustomTitle", "()Ljava/lang/String;", "setCustomTitle", "(Ljava/lang/String;)V", "isCancel", "", "isEnter", "()Z", "setEnter", "(Z)V", "layoutContent", "getLayoutContent", "setLayoutContent", "(Landroid/view/View;)V", "mDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lkotlin/collections/ArrayList;", "getMDataList", "()Ljava/util/ArrayList;", "onItemClickListener", "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onItemClickListener$1", "Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onItemClickListener$1;", "profileController", "Lcom/tencent/mm/ui/vas/IContactProfileController;", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "setStatusParam", "Lcom/tencent/mm/plugin/textstatus/api/SetStatusParam;", "testToggle", "getTestToggle", "setTestToggle", "vCustomDialogMask", "buildItemConverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "checkConfirmEnable", "", "doClickIcon", "item", "Lcom/tencent/mm/plugin/textstatus/model/square/DoWhatItem;", "finish", "getCustomBounceId", "getForceOrientation", "getLayoutId", "hideCustomDialog", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onInputPanelChange", "isKeyboardShow", "keyboardHeight", "onPause", "showCustomDialog", "showEducationLayout", "Companion", "PatTextWatcher", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusDoWhatActivity
   extends MMSecDataActivity
   implements c.a
 {
-  public static final a MKZ;
-  private View MKQ;
-  private com.tencent.mm.plugin.textstatus.a.q MKR;
-  private final kotlin.f MKS;
-  private final e MKT;
-  private final j MKU;
-  final int MKV;
-  private View MKW;
-  private EditText MKX;
-  private TextStatusDoWhatActivity.b MKY;
-  private boolean fxj;
-  private boolean kUn;
+  public static final TextStatusDoWhatActivity.a Txk;
+  private View Txl;
+  private String Txm;
+  private w Txn;
+  private final j Txo;
+  private final configUpdateListener.1 Txp;
+  private final h Txq;
+  final int Txr;
+  private View Txs;
+  private EditText Txt;
+  private b Txu;
+  private View Txv;
+  private final j cEV;
+  private boolean hBO;
   final ArrayList<com.tencent.mm.view.recyclerview.a> mDataList;
-  WxRecyclerView vnF;
+  private boolean nzW;
+  WxRecyclerView yAg;
   
   static
   {
-    AppMethodBeat.i(235092);
-    MKZ = new a((byte)0);
-    AppMethodBeat.o(235092);
+    AppMethodBeat.i(291791);
+    Txk = new TextStatusDoWhatActivity.a((byte)0);
+    AppMethodBeat.o(291791);
   }
   
   public TextStatusDoWhatActivity()
   {
-    AppMethodBeat.i(235089);
-    this.kUn = true;
-    this.MKS = g.ar((kotlin.g.a.a)new c(this));
-    this.MKT = new e(this);
+    AppMethodBeat.i(291677);
+    this.Txm = "";
+    this.nzW = true;
+    this.Txo = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.cEV = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.Txp = new IListener(com.tencent.mm.app.f.hfK)
+    {
+      private static final void a(zx paramAnonymouszx, TextStatusDoWhatActivity paramAnonymousTextStatusDoWhatActivity)
+      {
+        AppMethodBeat.i(291252);
+        s.u(paramAnonymouszx, "$it");
+        s.u(paramAnonymousTextStatusDoWhatActivity, "this$0");
+        Log.i("MicroMsg.TextStatus.TextStatusDoWhatActivity", "config update old" + paramAnonymouszx.idv.idw + " new:" + paramAnonymouszx.idv.idy);
+        paramAnonymousTextStatusDoWhatActivity.mDataList.clear();
+        paramAnonymousTextStatusDoWhatActivity.mDataList.addAll((Collection)com.tencent.mm.plugin.textstatus.util.b.hKh().getDataList());
+        paramAnonymouszx = paramAnonymousTextStatusDoWhatActivity.yAg;
+        if (paramAnonymouszx != null)
+        {
+          paramAnonymouszx = paramAnonymouszx.getAdapter();
+          if (paramAnonymouszx != null) {
+            paramAnonymouszx.bZE.notifyChanged();
+          }
+        }
+        AppMethodBeat.o(291252);
+      }
+    };
     this.mDataList = new ArrayList();
-    this.MKU = new j(this);
-    this.MKV = 8;
-    this.MKY = new TextStatusDoWhatActivity.b(this);
-    AppMethodBeat.o(235089);
+    this.Txq = new h(this);
+    this.Txr = 8;
+    this.Txu = new b();
+    AppMethodBeat.o(291677);
   }
   
-  private final View gmD()
+  private final void a(com.tencent.mm.plugin.textstatus.h.e.c paramc)
   {
-    AppMethodBeat.i(235071);
-    View localView = (View)this.MKS.getValue();
-    AppMethodBeat.o(235071);
+    AppMethodBeat.i(291697);
+    if (this.hBO)
+    {
+      localObject1 = this.Txn;
+      if (localObject1 != null) {
+        ((w)localObject1).Tog.topicInfo.iconId = paramc.iconId;
+      }
+      for (;;)
+      {
+        if (s.p(paramc.iconId, "userdefine")) {
+          ((w)localObject1).Tog.topicInfo.title = this.Txm;
+        }
+        paramc = (ResultReceiver)getIntent().getParcelableExtra("CALLBACK");
+        Object localObject2 = TextStatusEditActivity.Txz;
+        localObject2 = (Context)this;
+        s.s(localObject1, "param");
+        TextStatusEditActivity.a.a((Context)localObject2, (w)localObject1, true, paramc);
+        com.tencent.threadpool.h.ahAA.o(new TextStatusDoWhatActivity..ExternalSyntheticLambda5(this), 50L);
+        AppMethodBeat.o(291697);
+        return;
+        localObject1 = new w.a().bdr(paramc.iconId);
+        ((w.a)localObject1).ThS.enterTime = 0L;
+        localObject1 = ((w.a)localObject1).ThS;
+        ((w)localObject1).sessionId = "";
+        ((w)localObject1).Toi = 0L;
+        ((w)localObject1).Toj = 0;
+        ((w)localObject1).Tok = 0;
+      }
+    }
+    Object localObject1 = new Intent();
+    ((Intent)localObject1).putExtra("STATUS_TYPE_CUSTOM_TITLE", this.Txm);
+    ((Intent)localObject1).putExtra("STATUS_TYPE_IMG", paramc.iconId);
+    paramc = this.Txn;
+    if (paramc == null)
+    {
+      i = 0;
+      ((Intent)localObject1).putExtra("ClkCustomIconCount", i);
+      paramc = this.Txn;
+      if (paramc != null) {
+        break label292;
+      }
+    }
+    label292:
+    for (int i = 0;; i = paramc.Tom)
+    {
+      ((Intent)localObject1).putExtra("CustomTitleTooLongCount", i);
+      setResult(-1, (Intent)localObject1);
+      this.nzW = false;
+      finish();
+      getContext().overridePendingTransition(0, a.a.push_down_out);
+      AppMethodBeat.o(291697);
+      return;
+      i = paramc.Tol;
+      break;
+    }
+  }
+  
+  private static final void a(TextStatusDoWhatActivity paramTextStatusDoWhatActivity)
+  {
+    AppMethodBeat.i(291720);
+    s.u(paramTextStatusDoWhatActivity, "this$0");
+    paramTextStatusDoWhatActivity.nzW = false;
+    paramTextStatusDoWhatActivity.finish();
+    AppMethodBeat.o(291720);
+  }
+  
+  private static final void a(TextStatusDoWhatActivity paramTextStatusDoWhatActivity, View paramView)
+  {
+    AppMethodBeat.i(291713);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramTextStatusDoWhatActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramTextStatusDoWhatActivity, "this$0");
+    paramTextStatusDoWhatActivity.onBackPressed();
+    paramTextStatusDoWhatActivity.getContext().overridePendingTransition(a.a.anim_not_change, a.a.push_down_out);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(291713);
+  }
+  
+  private static final void a(TextStatusDoWhatActivity paramTextStatusDoWhatActivity, com.tencent.mm.plugin.textstatus.h.e.c paramc, View paramView)
+  {
+    AppMethodBeat.i(291734);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramTextStatusDoWhatActivity);
+    localb.cH(paramc);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramTextStatusDoWhatActivity, "this$0");
+    s.u(paramc, "$item");
+    paramView = paramTextStatusDoWhatActivity.Txt;
+    if (paramView == null) {}
+    for (paramView = null;; paramView = paramView.getText())
+    {
+      paramView = String.valueOf(paramView);
+      if (paramView != null) {
+        break;
+      }
+      paramTextStatusDoWhatActivity = new NullPointerException("null cannot be cast to non-null type kotlin.CharSequence");
+      AppMethodBeat.o(291734);
+      throw paramTextStatusDoWhatActivity;
+    }
+    paramView = n.bq((CharSequence)paramView).toString();
+    s.u(paramView, "<set-?>");
+    paramTextStatusDoWhatActivity.Txm = paramView;
+    paramTextStatusDoWhatActivity.a(paramc);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(291734);
+  }
+  
+  private static final void b(TextStatusDoWhatActivity paramTextStatusDoWhatActivity, View paramView)
+  {
+    AppMethodBeat.i(291725);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramTextStatusDoWhatActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramTextStatusDoWhatActivity, "this$0");
+    paramTextStatusDoWhatActivity.hIK();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(291725);
+  }
+  
+  private static final void c(TextStatusDoWhatActivity paramTextStatusDoWhatActivity, View paramView)
+  {
+    AppMethodBeat.i(291728);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramTextStatusDoWhatActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramTextStatusDoWhatActivity, "this$0");
+    paramTextStatusDoWhatActivity.hIK();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(291728);
+  }
+  
+  private static final void d(TextStatusDoWhatActivity paramTextStatusDoWhatActivity, View paramView)
+  {
+    AppMethodBeat.i(291739);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramTextStatusDoWhatActivity);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramTextStatusDoWhatActivity, "this$0");
+    paramTextStatusDoWhatActivity.findViewById(a.e.Tcj).setVisibility(8);
+    paramView = paramTextStatusDoWhatActivity.yAg;
+    if (paramView != null) {
+      paramView.setVisibility(0);
+    }
+    paramTextStatusDoWhatActivity.hII().setVisibility(0);
+    paramTextStatusDoWhatActivity = paramTextStatusDoWhatActivity.Txn;
+    if (paramTextStatusDoWhatActivity != null) {
+      paramTextStatusDoWhatActivity.Tok = 1;
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(291739);
+  }
+  
+  private final View hII()
+  {
+    AppMethodBeat.i(291686);
+    View localView = (View)this.Txo.getValue();
+    AppMethodBeat.o(291686);
     return localView;
   }
   
-  private final void gmE()
+  private final void hIK()
   {
-    AppMethodBeat.i(235082);
-    Object localObject = this.vnF;
-    if (localObject != null) {
-      ((WxRecyclerView)localObject).setVisibility(0);
-    }
-    gmD().setVisibility(0);
-    localObject = this.MKW;
+    AppMethodBeat.i(291704);
+    Object localObject = this.Txs;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.MKX;
+    localObject = this.Txv;
+    if (localObject != null) {
+      ((View)localObject).setVisibility(8);
+    }
+    localObject = this.Txt;
     if (localObject != null) {
       ((EditText)localObject).setText((CharSequence)"");
     }
     hideVKB();
-    AppMethodBeat.o(235082);
+    AppMethodBeat.o(291704);
   }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final void finish()
   {
-    AppMethodBeat.i(235079);
-    if (this.kUn)
+    AppMethodBeat.i(291881);
+    Object localObject;
+    w localw;
+    if (this.nzW)
     {
-      com.tencent.mm.plugin.textstatus.h.a locala = com.tencent.mm.plugin.textstatus.h.a.MGJ;
-      com.tencent.mm.plugin.textstatus.h.a.d(this.MKR);
+      if (this.hBO)
+      {
+        localObject = com.tencent.mm.plugin.textstatus.i.b.Trt;
+        com.tencent.mm.plugin.textstatus.i.b.e(this.Txn);
+        localObject = (ResultReceiver)this.cEV.getValue();
+        if (localObject != null) {
+          ((ResultReceiver)localObject).send(0, null);
+        }
+      }
+      localObject = new Intent();
+      localw = this.Txn;
+      if (localw != null) {
+        break label119;
+      }
+      i = 0;
+      ((Intent)localObject).putExtra("ClkCustomIconCount", i);
+      localw = this.Txn;
+      if (localw != null) {
+        break label127;
+      }
     }
-    super.finish();
-    AppMethodBeat.o(235079);
+    label119:
+    label127:
+    for (int i = 0;; i = localw.Tom)
+    {
+      ((Intent)localObject).putExtra("CustomTitleTooLongCount", i);
+      setResult(0, (Intent)localObject);
+      super.finish();
+      AppMethodBeat.o(291881);
+      return;
+      i = localw.Tol;
+      break;
+    }
   }
   
   public final int getCustomBounceId()
   {
-    return b.e.MwA;
+    return a.e.TdR;
   }
   
   public final int getForceOrientation()
@@ -149,87 +384,88 @@ public final class TextStatusDoWhatActivity
   
   public final int getLayoutId()
   {
-    return b.f.MxH;
+    return a.f.Tfl;
   }
   
-  public final void h(boolean paramBoolean, int paramInt)
+  public final void hIJ()
   {
-    AppMethodBeat.i(235085);
+    AppMethodBeat.i(291887);
+    Object localObject1 = this.Txs;
     Object localObject2;
-    if (paramBoolean)
+    int i;
+    if (localObject1 == null)
     {
-      localObject1 = this.MKW;
-      if (localObject1 != null) {}
-      for (localObject1 = ((View)localObject1).getLayoutParams();; localObject1 = null)
+      localObject1 = null;
+      if (localObject1 != null)
       {
-        localObject2 = localObject1;
-        if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
-          localObject2 = null;
+        localObject2 = this.Txt;
+        if (localObject2 != null) {
+          break label66;
         }
-        localObject1 = (ViewGroup.MarginLayoutParams)localObject2;
-        if (localObject1 == null) {
-          break;
+        i = 0;
+        label34:
+        if (i <= 0) {
+          break label114;
         }
-        ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix((Context)this, 56) + paramInt);
-        AppMethodBeat.o(235085);
-        return;
       }
-      AppMethodBeat.o(235085);
-      return;
     }
-    Object localObject1 = this.MKW;
-    if (localObject1 != null) {}
-    for (localObject1 = ((View)localObject1).getLayoutParams();; localObject1 = null)
+    label66:
+    label114:
+    for (boolean bool = true;; bool = false)
     {
-      localObject2 = localObject1;
-      if (!(localObject1 instanceof ViewGroup.MarginLayoutParams)) {
-        localObject2 = null;
-      }
-      localObject1 = (ViewGroup.MarginLayoutParams)localObject2;
-      if (localObject1 == null) {
-        break;
-      }
-      ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = com.tencent.mm.ci.a.fromDPToPix((Context)this, 160);
-      AppMethodBeat.o(235085);
+      ((Button)localObject1).setEnabled(bool);
+      AppMethodBeat.o(291887);
       return;
+      localObject1 = (Button)((View)localObject1).findViewById(a.e.btn_ok);
+      break;
+      localObject2 = ((EditText)localObject2).getText();
+      if (localObject2 == null)
+      {
+        i = 0;
+        break label34;
+      }
+      localObject2 = n.bq((CharSequence)localObject2);
+      if (localObject2 == null)
+      {
+        i = 0;
+        break label34;
+      }
+      i = ((CharSequence)localObject2).length();
+      break label34;
     }
-    AppMethodBeat.o(235085);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(235077);
+    AppMethodBeat.i(291871);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(235077);
+    AppMethodBeat.o(291871);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(235084);
-    View localView = this.MKW;
-    if ((localView != null) && (localView.getVisibility() == 0))
+    AppMethodBeat.i(291892);
+    View localView = this.Txs;
+    if ((localView != null) && (localView.getVisibility() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      gmE();
-      AppMethodBeat.o(235084);
+      hIK();
+      AppMethodBeat.o(291892);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(235084);
+    AppMethodBeat.o(291892);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(235074);
-    com.tencent.mm.pluginsdk.h.r((MMActivity)this);
+    AppMethodBeat.i(291854);
+    com.tencent.mm.pluginsdk.h.w((MMActivity)this);
     super.onCreate(paramBundle);
     setActionbarColor(0);
-    paramBundle = getWindow();
-    p.j(paramBundle, "window");
-    paramBundle = paramBundle.getDecorView();
-    p.j(paramBundle, "window.decorView");
-    paramBundle.setSystemUiVisibility(1792);
-    d.e(getWindow());
-    setNavigationbarColor(getResources().getColor(b.b.transparent));
+    getWindow().getDecorView().setSystemUiVisibility(1792);
+    d.g(getWindow());
+    setNavigationbarColor(getResources().getColor(a.b.transparent));
     setMMTitle("");
     hideActionbarLine();
     hideActionBarOperationArea();
@@ -237,135 +473,180 @@ public final class TextStatusDoWhatActivity
     if (paramBundle != null) {
       paramBundle.hide();
     }
-    this.vnF = ((WxRecyclerView)findViewById(b.e.MwA));
-    this.MKQ = findViewById(b.e.layout_content);
-    paramBundle = getIntent().getByteArrayExtra("SET_TEXT_PARAMS");
-    if (paramBundle != null)
+    this.yAg = ((WxRecyclerView)findViewById(a.e.TdR));
+    this.Txl = findViewById(a.e.layout_content);
+    Object localObject1 = getIntent().getByteArrayExtra("SET_TEXT_PARAMS");
+    if (localObject1 != null)
     {
-      localObject1 = new q.a().gkO();
-      ((com.tencent.mm.plugin.textstatus.a.q)localObject1).parseFrom(paramBundle);
-      this.MKR = ((com.tencent.mm.plugin.textstatus.a.q)localObject1);
+      paramBundle = new w.a().ThS;
+      paramBundle.parseFrom((byte[])localObject1);
+      localObject1 = ah.aiuX;
+      this.Txn = paramBundle;
     }
-    if (this.MKR == null) {
-      this.MKR = new q.a().gkO();
+    if (this.Txn == null) {
+      this.Txn = new w.a().ThS;
     }
-    paramBundle = this.MKR;
-    if (paramBundle == null)
+    Object localObject2 = this.Txn;
+    if (localObject2 == null)
     {
       finish();
-      AppMethodBeat.o(235074);
+      AppMethodBeat.o(291854);
       return;
     }
-    paramBundle.enterTime = cm.bfE();
-    Object localObject1 = paramBundle.MEA;
-    Object localObject2 = m.MOX;
-    localObject2 = getIntent();
-    m localm = m.MOX;
-    ((TextStatusExtInfo)localObject1).backgroundId = m.ajo(((Intent)localObject2).getIntExtra("KEY_DEFAULT_BACKGROUND_ID", m.gnN()));
-    this.fxj = getIntent().getBooleanExtra("KEY_IS_ENTER", false);
-    localObject1 = m.MOX;
-    paramBundle = BitmapUtil.getBitmapNative(m.beP(paramBundle.MEA.backgroundId));
-    localObject1 = this.MKQ;
+    localObject1 = getIntent().getStringExtra("KEY_CUSTOM_TITLE");
+    paramBundle = (Bundle)localObject1;
+    if (localObject1 == null) {
+      paramBundle = "";
+    }
+    this.Txm = paramBundle;
+    ((w)localObject2).enterTime = cn.bDw();
+    paramBundle = ((w)localObject2).Tog;
+    localObject1 = com.tencent.mm.plugin.textstatus.util.k.TBx;
+    localObject1 = getIntent();
+    com.tencent.mm.plugin.textstatus.util.k localk = com.tencent.mm.plugin.textstatus.util.k.TBx;
+    paramBundle.backgroundId = com.tencent.mm.plugin.textstatus.util.k.aoC(((Intent)localObject1).getIntExtra("KEY_DEFAULT_BACKGROUND_ID", com.tencent.mm.plugin.textstatus.util.k.hKA()));
+    this.hBO = getIntent().getBooleanExtra("KEY_IS_ENTER", false);
+    paramBundle = com.tencent.mm.plugin.textstatus.util.k.TBx;
+    paramBundle = BitmapUtil.getBitmapNative(com.tencent.mm.plugin.textstatus.util.k.bep(((w)localObject2).Tog.backgroundId));
+    localObject1 = this.Txl;
     if (localObject1 != null) {
       ((View)localObject1).setBackground((Drawable)new BitmapDrawable(getResources(), paramBundle));
     }
-    this.mDataList.addAll((Collection)com.tencent.mm.plugin.textstatus.k.c.gnz().getDataList());
-    paramBundle = this.vnF;
+    this.mDataList.addAll((Collection)com.tencent.mm.plugin.textstatus.util.b.hKh().getDataList());
+    paramBundle = this.yAg;
     if (paramBundle != null) {
-      paramBundle.setAdapter((RecyclerView.a)new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.f)new TextStatusDoWhatActivity.d(this), this.mDataList));
+      paramBundle.setAdapter((RecyclerView.a)new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.g)new d(this), this.mDataList));
     }
-    paramBundle = getContext();
-    p.j(paramBundle, "context");
-    paramBundle = paramBundle.getResources();
-    p.j(paramBundle, "context.resources");
-    int i = paramBundle.getDisplayMetrics().widthPixels;
-    paramBundle = getContext();
-    p.j(paramBundle, "context");
-    paramBundle = paramBundle.getResources();
-    p.j(paramBundle, "context.resources");
-    int k = Math.min(i, paramBundle.getDisplayMetrics().heightPixels);
-    paramBundle = this.vnF;
-    if (paramBundle != null)
+    int k = Math.min(getWindowManager().getDefaultDisplay().getWidth(), getWindowManager().getDefaultDisplay().getHeight());
+    paramBundle = this.yAg;
+    if (paramBundle == null)
     {
-      i = paramBundle.getPaddingLeft();
-      paramBundle = this.vnF;
-      if (paramBundle == null) {
-        break label666;
-      }
-    }
-    label666:
-    for (int j = paramBundle.getPaddingRight();; j = 0)
-    {
-      float f = getResources().getDimension(b.c.Muw);
-      paramBundle = new aa.c();
-      paramBundle.aaBz = getResources().getDimension(b.c.Muv);
-      f = (k - i - j + paramBundle.aaBz) / (f + paramBundle.aaBz);
-      localObject1 = new aa.f();
-      ((aa.f)localObject1).aaBC = new GridLayoutManager((int)f);
-      ((GridLayoutManager)((aa.f)localObject1).aaBC).a((GridLayoutManager.b)new TextStatusDoWhatActivity.g(this, (aa.f)localObject1));
-      localObject2 = this.vnF;
-      if (localObject2 != null) {
-        ((WxRecyclerView)localObject2).setLayoutManager((RecyclerView.LayoutManager)((aa.f)localObject1).aaBC);
-      }
-      localObject1 = this.vnF;
-      if (localObject1 != null) {
-        ((WxRecyclerView)localObject1).b((RecyclerView.h)new TextStatusDoWhatActivity.h(paramBundle));
-      }
-      paramBundle = gmD().getLayoutParams();
-      if (paramBundle != null) {
-        break label672;
-      }
-      paramBundle = new kotlin.t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-      AppMethodBeat.o(235074);
-      throw paramBundle;
       i = 0;
+      paramBundle = this.yAg;
+      if (paramBundle != null) {
+        break label636;
+      }
+    }
+    label636:
+    for (int j = 0;; j = paramBundle.getPaddingRight())
+    {
+      float f = getResources().getDimension(a.c.TbF);
+      paramBundle = new ah.c();
+      paramBundle.aixa = getResources().getDimension(a.c.TbE);
+      f = (k - i - j + paramBundle.aixa) / (f + paramBundle.aixa);
+      localObject1 = new ah.f();
+      ((ah.f)localObject1).aqH = new GridLayoutManager((int)f);
+      ((GridLayoutManager)((ah.f)localObject1).aqH).bWq = ((GridLayoutManager.b)new TextStatusDoWhatActivity.f(this, (ah.f)localObject1));
+      localObject2 = this.yAg;
+      if (localObject2 != null) {
+        ((WxRecyclerView)localObject2).setLayoutManager((RecyclerView.LayoutManager)((ah.f)localObject1).aqH);
+      }
+      localObject1 = this.yAg;
+      if (localObject1 != null) {
+        ((RecyclerView)localObject1).a((RecyclerView.h)new TextStatusDoWhatActivity.g(paramBundle));
+      }
+      paramBundle = hII().getLayoutParams();
+      if (paramBundle != null) {
+        break label645;
+      }
+      paramBundle = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(291854);
+      throw paramBundle;
+      i = paramBundle.getPaddingLeft();
       break;
     }
-    label672:
+    label645:
     paramBundle = (RelativeLayout.LayoutParams)paramBundle;
-    i = ax.getStatusBarHeight((Context)getContext());
-    paramBundle.topMargin = (aw.fromDPToPix((Context)getContext(), 6) + i);
-    gmD().setOnClickListener((View.OnClickListener)new i(this));
-    paramBundle = com.tencent.mm.kernel.h.aHG();
-    p.j(paramBundle, "MMKernel.storage()");
-    if (paramBundle.aHp().getInt(ar.a.VDN, 1) == 1) {}
+    int i = bf.getStatusBarHeight((Context)getContext());
+    paramBundle.topMargin = (bd.fromDPToPix((Context)getContext(), 6) + i);
+    hII().setOnClickListener(new TextStatusDoWhatActivity..ExternalSyntheticLambda1(this));
+    if (com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adgO, 1) == 1) {}
     for (i = 1;; i = 0)
     {
-      paramBundle = com.tencent.mm.kernel.h.aHG();
-      p.j(paramBundle, "MMKernel.storage()");
-      boolean bool = paramBundle.aHp().getBoolean(ar.a.VDW, false);
+      boolean bool = com.tencent.mm.kernel.h.baE().ban().getBoolean(at.a.adgX, false);
       if ((i != 0) && (!bool))
       {
-        paramBundle = this.MKR;
+        paramBundle = this.Txn;
         if (paramBundle != null) {
-          paramBundle.MED = 1;
+          paramBundle.Toj = 1;
         }
-        paramBundle = findViewById(b.e.MuX);
-        p.j(paramBundle, "findViewById<View>(R.id.education_layout)");
-        paramBundle.setVisibility(0);
-        paramBundle = this.vnF;
+        findViewById(a.e.Tcj).setVisibility(0);
+        paramBundle = this.yAg;
         if (paramBundle != null) {
           paramBundle.setVisibility(8);
         }
-        gmD().setVisibility(8);
-        com.tencent.mm.plugin.textstatus.a.t.gld();
-        paramBundle = com.tencent.mm.kernel.h.aHG();
-        p.j(paramBundle, "MMKernel.storage()");
-        paramBundle.aHp().set(ar.a.VDN, Integer.valueOf(0));
-        findViewById(b.e.MuW).setOnClickListener((View.OnClickListener)new m(this));
+        hII().setVisibility(8);
+        ac.hFX();
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adgO, Integer.valueOf(0));
+        findViewById(a.e.Tci).setOnClickListener(new TextStatusDoWhatActivity..ExternalSyntheticLambda0(this));
       }
-      this.MKT.alive();
-      AppMethodBeat.o(235074);
+      this.Txp.alive();
+      AppMethodBeat.o(291854);
       return;
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(235075);
+    AppMethodBeat.i(291859);
     super.onDestroy();
-    this.MKT.dead();
-    AppMethodBeat.o(235075);
+    this.Txp.dead();
+    AppMethodBeat.o(291859);
+  }
+  
+  public final void onInputPanelChange(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(291896);
+    if (paramBoolean)
+    {
+      localObject = this.Txs;
+      if (localObject == null)
+      {
+        localObject = null;
+        if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
+          break label57;
+        }
+      }
+      label57:
+      for (localObject = (ViewGroup.MarginLayoutParams)localObject;; localObject = null)
+      {
+        if (localObject == null) {
+          break label94;
+        }
+        ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = paramInt;
+        AppMethodBeat.o(291896);
+        return;
+        localObject = ((View)localObject).getLayoutParams();
+        break;
+      }
+    }
+    Object localObject = this.Txs;
+    if (localObject == null)
+    {
+      localObject = null;
+      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
+        break label109;
+      }
+    }
+    label94:
+    label109:
+    for (localObject = (ViewGroup.MarginLayoutParams)localObject;; localObject = null)
+    {
+      if (localObject != null) {
+        ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = 0;
+      }
+      AppMethodBeat.o(291896);
+      return;
+      localObject = ((View)localObject).getLayoutParams();
+      break;
+    }
+  }
+  
+  public final void onPause()
+  {
+    AppMethodBeat.i(291864);
+    super.onPause();
+    AppMethodBeat.o(291864);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -376,54 +657,84 @@ public final class TextStatusDoWhatActivity
   
   public final void setLayoutContent(View paramView)
   {
-    this.MKQ = paramView;
+    this.Txl = paramView;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$Companion;", "", "()V", "KEY_DEFAULT_BACKGROUND_ID", "", "KEY_IS_ENTER", "TAG", "start", "", "context", "Landroid/content/Context;", "params", "Landroid/os/Bundle;", "requestCode", "", "(Landroid/content/Context;Landroid/os/Bundle;Ljava/lang/Integer;)V", "startForResultInEdit", "Landroid/app/Activity;", "defaultBackgroundId", "plugin-textstatus_release"})
-  public static final class a
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$PatTextWatcher;", "Landroid/text/TextWatcher;", "(Lcom/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity;)V", "afterTextChanged", "", "editable", "Landroid/text/Editable;", "beforeTextChanged", "s", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class b
+    implements TextWatcher
   {
-    public static void a(Context paramContext, Bundle paramBundle, Integer paramInteger)
+    public b()
     {
-      AppMethodBeat.i(233199);
-      p.k(paramContext, "context");
-      Intent localIntent = new Intent(paramContext, TextStatusDoWhatActivity.class);
-      paramBundle.putBoolean("KEY_IS_ENTER", true);
-      localIntent.putExtras(paramBundle);
-      if ((paramInteger != null) && ((paramContext instanceof Activity)))
-      {
-        ((Activity)paramContext).startActivityForResult(localIntent, paramInteger.intValue());
-        if ((paramContext instanceof Activity)) {
-          break label175;
-        }
-        paramContext = null;
+      AppMethodBeat.i(291199);
+      AppMethodBeat.o(291199);
+    }
+    
+    public final void afterTextChanged(Editable paramEditable)
+    {
+      AppMethodBeat.i(291213);
+      Object localObject = TextStatusDoWhatActivity.c(this.Txw);
+      if (localObject != null) {
+        ((EditText)localObject).removeTextChangedListener((TextWatcher)TextStatusDoWhatActivity.d(this.Txw));
       }
-      label175:
-      for (;;)
+      int i = com.tencent.mm.ui.tools.g.a(String.valueOf(paramEditable), g.a.afII);
+      this.Txw.hIJ();
+      Log.i("MicroMsg.TextStatus.TextStatusDoWhatActivity", s.X("afterTextChanged inputCount:", Integer.valueOf(i)));
+      localObject = String.valueOf(paramEditable);
+      if (i > this.Txw.Txr)
       {
-        paramContext = (Activity)paramContext;
-        if (paramContext != null)
-        {
-          paramContext.overridePendingTransition(b.a.push_up_in, b.a.anim_not_change);
-          AppMethodBeat.o(233199);
-          return;
-          if (!(paramContext instanceof Activity)) {
-            localIntent.addFlags(268435456);
-          }
-          paramBundle = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-          com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramBundle.aFh(), "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$Companion", "start", "(Landroid/content/Context;Landroid/os/Bundle;Ljava/lang/Integer;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramBundle.sf(0));
-          com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$Companion", "start", "(Landroid/content/Context;Landroid/os/Bundle;Ljava/lang/Integer;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          break;
+        String str = com.tencent.mm.ui.tools.g.jd((String)localObject, this.Txw.Txr);
+        if (paramEditable != null) {
+          paramEditable.replace(str.length(), ((String)localObject).length(), (CharSequence)"");
         }
-        AppMethodBeat.o(233199);
+        aa.y((Context)this.Txw, this.Txw.getString(a.h.settings_modify_custom_text_status_invalid_more), a.g.icons_outlined_info);
+        localObject = TextStatusDoWhatActivity.e(this.Txw);
+        if (localObject != null) {
+          ((w)localObject).Tom += 1;
+        }
+      }
+      localObject = TextStatusDoWhatActivity.c(this.Txw);
+      if (localObject != null) {
+        ((EditText)localObject).addTextChangedListener((TextWatcher)TextStatusDoWhatActivity.d(this.Txw));
+      }
+      localObject = TextStatusDoWhatActivity.f(this.Txw);
+      if (localObject == null)
+      {
+        localObject = null;
+        if (localObject != null)
+        {
+          if ((paramEditable == null) || (paramEditable.length() != 0)) {
+            break label272;
+          }
+          i = 1;
+          label238:
+          if (i != 0) {
+            break label277;
+          }
+        }
+      }
+      label272:
+      label277:
+      for (boolean bool = true;; bool = false)
+      {
+        ((Button)localObject).setEnabled(bool);
+        AppMethodBeat.o(291213);
         return;
+        localObject = (Button)((View)localObject).findViewById(a.e.confirm_btn);
+        break;
+        i = 0;
+        break label238;
       }
     }
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
+    extends u
     implements kotlin.g.a.a<View>
   {
     c(TextStatusDoWhatActivity paramTextStatusDoWhatActivity)
@@ -432,154 +743,73 @@ public final class TextStatusDoWhatActivity
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$configUpdateListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/StatusIconConfigUpdateEvent;", "callback", "", "event", "plugin-textstatus_release"})
-  public static final class e
-    extends IListener<ye>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$buildItemConverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements com.tencent.mm.view.recyclerview.g
   {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$configUpdateListener$1$callback$1$1"})
-    static final class a
-      implements Runnable
+    d(TextStatusDoWhatActivity paramTextStatusDoWhatActivity) {}
+    
+    public final com.tencent.mm.view.recyclerview.f<?> yF(int paramInt)
     {
-      a(ye paramye, TextStatusDoWhatActivity.e parame) {}
-      
-      public final void run()
+      AppMethodBeat.i(291121);
+      switch (paramInt)
       {
-        AppMethodBeat.i(232908);
-        Log.i("MicroMsg.TextStatus.TextStatusDoWhatActivity", "config update old" + this.MLb.fXv.fXw + " new:" + this.MLb.fXv.fXx);
-        this.MLc.MLa.mDataList.clear();
-        this.MLc.MLa.mDataList.addAll((Collection)com.tencent.mm.plugin.textstatus.k.c.gnz().getDataList());
-        Object localObject = this.MLc.MLa.vnF;
-        if (localObject != null)
-        {
-          localObject = ((WxRecyclerView)localObject).getAdapter();
-          if (localObject != null)
-          {
-            ((RecyclerView.a)localObject).notifyDataSetChanged();
-            AppMethodBeat.o(232908);
-            return;
-          }
-        }
-        AppMethodBeat.o(232908);
+      case 0: 
+      default: 
+        localf = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.textstatus.b.c((c.b)TextStatusDoWhatActivity.b(this.Txw));
+        AppMethodBeat.o(291121);
+        return localf;
+      case -1: 
+        localf = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.textstatus.b.b();
+        AppMethodBeat.o(291121);
+        return localf;
       }
+      com.tencent.mm.view.recyclerview.f localf = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.textstatus.b.a();
+      AppMethodBeat.o(291121);
+      return localf;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/os/ResultReceiver;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ResultReceiver>
   {
-    f(TextStatusDoWhatActivity paramTextStatusDoWhatActivity) {}
-    
-    public final void run()
+    e(TextStatusDoWhatActivity paramTextStatusDoWhatActivity)
     {
-      AppMethodBeat.i(234364);
-      TextStatusDoWhatActivity.e(this.MLa);
-      this.MLa.finish();
-      AppMethodBeat.o(234364);
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
-  {
-    i(TextStatusDoWhatActivity paramTextStatusDoWhatActivity) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(236953);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.MLa.onBackPressed();
-      this.MLa.getContext().overridePendingTransition(b.a.anim_not_change, b.a.push_down_out);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(236953);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onItemClickListener$1", "Lcom/tencent/mm/plugin/textstatus/convert/DoWhatItemConvert$OnItemClickListener;", "onItemClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/textstatus/model/square/DoWhatItem;", "plugin-textstatus_release"})
-  public static final class j
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onItemClickListener$1", "Lcom/tencent/mm/plugin/textstatus/convert/DoWhatItemConvert$OnItemClickListener;", "onItemClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/textstatus/model/square/DoWhatItem;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
     implements c.b
   {
-    public final void a(View paramView, com.tencent.mm.plugin.textstatus.g.d.c paramc)
+    h(TextStatusDoWhatActivity paramTextStatusDoWhatActivity) {}
+    
+    public final void a(View paramView, com.tencent.mm.plugin.textstatus.h.e.c paramc)
     {
-      AppMethodBeat.i(232938);
-      p.k(paramView, "v");
-      p.k(paramc, "item");
-      if (p.h(paramc.iconId, "custom"))
+      AppMethodBeat.i(291162);
+      s.u(paramView, "v");
+      s.u(paramc, "item");
+      if (s.p(paramc.iconId, "userdefine"))
       {
-        TextStatusDoWhatActivity.b(this.MLa, paramc);
-        AppMethodBeat.o(232938);
+        paramView = TextStatusDoWhatActivity.e(this.Txw);
+        if (paramView != null) {
+          paramView.Tol += 1;
+        }
+        TextStatusDoWhatActivity.a(this.Txw, paramc);
+        AppMethodBeat.o(291162);
         return;
       }
-      TextStatusDoWhatActivity.a(this.MLa, paramc);
-      AppMethodBeat.o(232938);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class l
-    implements View.OnClickListener
-  {
-    l(TextStatusDoWhatActivity paramTextStatusDoWhatActivity, com.tencent.mm.plugin.textstatus.g.d.c paramc) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(233095);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$showCustomDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      com.tencent.mm.plugin.textstatus.k.c.gnz();
-      paramView = TextStatusDoWhatActivity.a(this.MLa);
-      if (paramView != null) {}
-      for (paramView = paramView.getText();; paramView = null)
-      {
-        paramView = String.valueOf(paramView);
-        p.k(paramView, "name");
-        localObject = com.tencent.mm.kernel.h.aHG();
-        p.j(localObject, "MMKernel.storage()");
-        ((com.tencent.mm.kernel.f)localObject).aHp().set(ar.a.VDM, paramView);
-        TextStatusDoWhatActivity.a(this.MLa, this.MAd);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$showCustomDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(233095);
-        return;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class m
-    implements View.OnClickListener
-  {
-    m(TextStatusDoWhatActivity paramTextStatusDoWhatActivity) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(234697);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$showEducationLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.MLa.findViewById(b.e.MuX);
-      p.j(paramView, "findViewById<View>(R.id.education_layout)");
-      paramView.setVisibility(8);
-      paramView = this.MLa.vnF;
-      if (paramView != null) {
-        paramView.setVisibility(0);
-      }
-      TextStatusDoWhatActivity.g(this.MLa).setVisibility(0);
-      paramView = TextStatusDoWhatActivity.h(this.MLa);
-      if (paramView != null) {
-        paramView.MEE = 1;
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$showEducationLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(234697);
+      TextStatusDoWhatActivity.b(this.Txw, paramc);
+      AppMethodBeat.o(291162);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusDoWhatActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
 package com.tencent.mm.wallet_core.tenpay.model;
 
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.wallet.c;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.erc;
-import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.protocal.protobuf.fmj;
+import com.tencent.mm.protocal.protobuf.fmk;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.ad;
-import com.tencent.mm.wallet_core.c.ae;
-import com.tencent.mm.wallet_core.c.s;
-import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.wallet_core.model.ae;
+import com.tencent.mm.wallet_core.model.af;
+import com.tencent.mm.wallet_core.model.s;
+import com.tencent.mm.wallet_core.model.x;
 import com.tenpay.android.wechat.TenpayUtil;
 import java.util.Vector;
 import org.json.JSONObject;
@@ -34,9 +30,9 @@ public abstract class m
   static
   {
     int i = 0;
-    while (i < c.Rzr.length)
+    while (i < com.tencent.mm.pluginsdk.wallet.c.YvP.length)
     {
-      cgiFunNameVector.add(c.Rzr[i]);
+      cgiFunNameVector.add(com.tencent.mm.pluginsdk.wallet.c.YvP[i]);
       i += 1;
     }
   }
@@ -54,45 +50,45 @@ public abstract class m
       Log.d("MicroMsg.NetSenceTenPayBase", "black cgi bye bye %s", new Object[] { str1 });
       return;
     }
-    com.tencent.mm.wallet_core.c.b.iiL();
-    Log.i("MicroMsg.NetSenceTenPayBase", "cert try get errormsg %s", new Object[] { Integer.valueOf(com.tencent.mm.wallet_core.c.b.getLastError()) });
+    com.tencent.mm.wallet_core.model.b.jOG();
+    Log.i("MicroMsg.NetSenceTenPayBase", "cert try get errormsg %s", new Object[] { Integer.valueOf(com.tencent.mm.wallet_core.model.b.getLastError()) });
     long l = System.currentTimeMillis();
-    com.tencent.mm.wallet_core.c.b.iiL().init(MMApplicationContext.getContext());
-    erc localerc = (erc)d.b.b(this.rr.lBR);
+    com.tencent.mm.wallet_core.model.b.jOG().init(MMApplicationContext.getContext());
+    fmj localfmj = (fmj)c.b.b(this.rr.otB);
     str1 = "";
     String str2 = "";
-    if (localerc.TrF != null) {
-      str1 = new String(localerc.TrF.Tkb.UH);
+    if (localfmj.aaFR != null) {
+      str1 = new String(localfmj.aaFR.aaxD.Op);
     }
-    if (localerc.TRP != null) {
-      str2 = new String(localerc.TRP.Tkb.UH);
+    if (localfmj.abio != null) {
+      str2 = new String(localfmj.abio.aaxD.Op);
     }
     str1 = new String((str1 + "&&" + str2).getBytes());
-    ad.iiX();
-    str2 = ad.getCrtNo();
-    com.tencent.mm.wallet_core.c.b.iiL();
-    if (com.tencent.mm.wallet_core.c.b.isCertExist(str2))
+    ae.jOT();
+    str2 = ae.getCrtNo();
+    com.tencent.mm.wallet_core.model.b.jOG();
+    if (com.tencent.mm.wallet_core.model.b.isCertExist(str2))
     {
-      h.IzE.idkeyStat(414L, 20L, 1L, true);
-      com.tencent.mm.wallet_core.c.b.iiL();
-      String str3 = com.tencent.mm.wallet_core.c.b.genUserSig(str2, str1);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(414L, 20L, 1L, true);
+      com.tencent.mm.wallet_core.model.b.jOG();
+      String str3 = com.tencent.mm.wallet_core.model.b.genUserSig(str2, str1);
       if (Util.isNullOrNil(str3))
       {
-        h localh = h.IzE;
-        com.tencent.mm.wallet_core.c.b.iiL();
-        localh.a(20743, new Object[] { "user_identification", "pay_cert_sign", "", "", "", "", Integer.valueOf(com.tencent.mm.wallet_core.c.b.getLastError()) });
+        com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.OAn;
+        com.tencent.mm.wallet_core.model.b.jOG();
+        localh.b(20743, new Object[] { "user_identification", "pay_cert_sign", "", "", "", "", Integer.valueOf(com.tencent.mm.wallet_core.model.b.getLastError()) });
       }
-      h.IzE.idkeyStat(414L, 21L, System.currentTimeMillis() - l, true);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(414L, 21L, System.currentTimeMillis() - l, true);
       Log.v("MicroMsg.NetSenceTenPayBase", "sign ret src:%s sign:%s", new Object[] { str1, str3 });
-      localerc.sign = str3;
-      localerc.Uto = str2;
+      localfmj.sign = str3;
+      localfmj.abMG = str2;
     }
     for (;;)
     {
       Log.i("MicroMsg.NetSenceTenPayBase", "sign cost time %s cn %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), str2 });
       return;
-      com.tencent.mm.wallet_core.c.b.iiL();
-      Log.i("MicroMsg.NetSenceTenPayBase", "cert not exist cn %s %s", new Object[] { str2, Integer.valueOf(com.tencent.mm.wallet_core.c.b.getLastError()) });
+      com.tencent.mm.wallet_core.model.b.jOG();
+      Log.i("MicroMsg.NetSenceTenPayBase", "cert not exist cn %s %s", new Object[] { str2, Integer.valueOf(com.tencent.mm.wallet_core.model.b.getLastError()) });
     }
   }
   
@@ -103,98 +99,108 @@ public abstract class m
     boolean bool;
     if (localObject1 == null)
     {
-      localObject1 = new d.a();
-      ((d.a)localObject1).lBU = new erc();
-      ((d.a)localObject1).lBV = new erd();
+      localObject1 = new c.a();
+      ((c.a)localObject1).otE = new fmj();
+      ((c.a)localObject1).otF = new fmk();
       localObject2 = getUri();
       int i = getFuncId();
-      ((d.a)localObject1).uri = ((String)localObject2);
-      ((d.a)localObject1).funcId = i;
-      ((d.a)localObject1).lBW = 185;
-      ((d.a)localObject1).respCmdId = 1000000185;
-      localObject1 = ((d.a)localObject1).bgN();
+      ((c.a)localObject1).uri = ((String)localObject2);
+      ((c.a)localObject1).funcId = i;
+      ((c.a)localObject1).otG = 185;
+      ((c.a)localObject1).respCmdId = 1000000185;
+      localObject1 = ((c.a)localObject1).bEF();
       if (!canRetry())
       {
         bool = true;
-        ((d)localObject1).setIsUserCmd(bool);
+        ((com.tencent.mm.am.c)localObject1).setIsUserCmd(bool);
       }
     }
     for (;;)
     {
-      localObject2 = (erc)d.b.b(((d)localObject1).lBR);
+      localObject2 = (fmj)c.b.b(((com.tencent.mm.am.c)localObject1).otB);
       if (paramBoolean1) {
-        ((erc)localObject2).TrD = getTenpayCgicmd();
+        ((fmj)localObject2).aaFP = getTenpayCgicmd();
       }
       if (paramBoolean2) {
-        ((erc)localObject2).TrE = 1;
+        ((fmj)localObject2).aaFQ = 1;
       }
-      setCommReqResp((d)localObject1);
+      setCommReqResp((com.tencent.mm.am.c)localObject1);
       return;
       bool = false;
       break;
     }
   }
   
-  public int doScene(g paramg, i parami)
+  public int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    this.callback = parami;
+    this.callback = paramh;
     certSignConfig();
     if (this.isFake)
     {
-      int i = doSceneSimulately(this.rr, paramg, parami);
+      int i = doSceneSimulately(this.rr, paramg, paramh);
       if (i != -1) {
         return i;
       }
     }
-    if (z.bdq())
+    if (z.bBi())
     {
       Log.e("MicroMsg.NetSenceTenPayBase", "hy: serious error: is payupay");
-      parami.onSceneEnd(1000, -100868, "Pay Method Err", this);
+      paramh.onSceneEnd(1000, -100868, "Pay Method Err", this);
       return 1;
     }
     return dispatch(paramg, this.rr, this);
   }
   
-  public int doSceneSimulately(d paramd, g paramg, i parami)
+  public int doSceneSimulately(com.tencent.mm.am.c paramc, g paramg, com.tencent.mm.am.h paramh)
   {
-    paramg = (erc)d.b.b(paramd.lBR);
-    if (paramg.TrF != null) {
-      new String(paramg.TrF.Tkb.UH);
+    paramg = (fmj)c.b.b(paramc.otB);
+    if (paramg.aaFR != null) {
+      new String(paramg.aaFR.aaxD.Op);
     }
-    if (paramg.TRP != null) {
-      new String(paramg.TRP.Tkb.UH);
+    if (paramg.abio != null) {
+      new String(paramg.abio.aaxD.Op);
     }
     MMApplicationContext.getContext();
     getPayCgicmd();
-    ae.iiZ();
-    if (this.isFake)
+    String str = af.jOV();
+    if ((str != null) || (this.isFake))
     {
-      parami = (erd)d.c.b(paramd.lBS);
-      paramg = parami;
-      if (parami == null) {
-        paramg = new erd();
+      paramg = (fmk)c.c.b(paramc.otC);
+      if (paramg != null) {
+        break label221;
       }
-      parami = "".getBytes();
-      paramg.TrG = new eae().dc(parami);
-      paramg.TrJ = getPayCgicmd();
-      paramg.TrH = 0;
-      try
-      {
-        parami = new JSONObject(null);
-        paramg.TRQ = parami.optInt("TenpayErrType");
-        paramg.TRR = parami.optString("TenpayErrMsg");
-        onGYNetEnd(1, 0, 0, "", paramd, null);
-        return 1;
+      paramg = new fmk();
+    }
+    label221:
+    for (;;)
+    {
+      if (str == null) {
+        paramh = "".getBytes();
       }
-      catch (Exception paramg)
+      for (;;)
       {
-        for (;;)
+        paramg.aaFS = new gol().df(paramh);
+        paramg.aaFV = getPayCgicmd();
+        paramg.aaFT = 0;
+        try
         {
-          Log.printErrStackTrace("MicroMsg.NetSenceTenPayBase", paramg, "", new Object[0]);
+          paramh = new JSONObject(str);
+          paramg.abip = paramh.optInt("TenpayErrType");
+          paramg.abiq = paramh.optString("TenpayErrMsg");
+          onGYNetEnd(1, 0, 0, "", paramc, null);
+          return 1;
+          paramh = str.getBytes();
+        }
+        catch (Exception paramg)
+        {
+          for (;;)
+          {
+            Log.printErrStackTrace("MicroMsg.NetSenceTenPayBase", paramg, "", new Object[0]);
+          }
         }
       }
+      return -1;
     }
-    return -1;
   }
   
   public String getEncryptUrl(String paramString)
@@ -212,16 +218,16 @@ public abstract class m
     return getTenpayCgicmd();
   }
   
-  public x getRetModel(d paramd)
+  public x getRetModel(com.tencent.mm.am.c paramc)
   {
-    paramd = (erd)d.c.b(paramd.lBS);
+    paramc = (fmk)c.c.b(paramc.otC);
     x localx = new x();
-    localx.TrJ = paramd.TrJ;
-    localx.TrI = paramd.TrI;
-    localx.TrH = paramd.TrH;
-    localx.TrG = paramd.TrG;
-    localx.vhu = paramd.TRR;
-    localx.YVB = paramd.TRQ;
+    localx.aaFV = paramc.aaFV;
+    localx.aaFU = paramc.aaFU;
+    localx.aaFT = paramc.aaFT;
+    localx.aaFS = paramc.aaFS;
+    localx.ytw = paramc.abiq;
+    localx.agTv = paramc.abip;
     return localx;
   }
   
@@ -237,14 +243,14 @@ public abstract class m
     return "/cgi-bin/micromsg-bin/tenpay";
   }
   
-  public void putToReqText(d paramd, eae parameae)
+  public void putToReqText(com.tencent.mm.am.c paramc, gol paramgol)
   {
-    ((erc)d.b.b(paramd.lBR)).TrF = parameae;
+    ((fmj)c.b.b(paramc.otB)).aaFR = paramgol;
   }
   
-  public void putToWXReqText(d paramd, eae parameae)
+  public void putToWXReqText(com.tencent.mm.am.c paramc, gol paramgol)
   {
-    ((erc)d.b.b(paramd.lBR)).TRP = parameae;
+    ((fmj)c.b.b(paramc.otB)).abio = paramgol;
   }
   
   public void setFake()
@@ -254,7 +260,7 @@ public abstract class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.m
  * JD-Core Version:    0.7.0.1
  */

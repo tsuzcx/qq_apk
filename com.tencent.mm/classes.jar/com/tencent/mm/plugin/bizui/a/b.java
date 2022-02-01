@@ -12,22 +12,22 @@ import com.tencent.mm.plugin.bizui.a.c;
 import com.tencent.mm.plugin.bizui.a.d;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.w;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.y;
 
 public final class b
 {
-  public static d a(w paramw, String paramString1, String paramString2, String paramString3, final y.a parama1, final y.a parama2)
+  public static e a(y paramy, String paramString1, String paramString2, String paramString3, final y.a parama1, final y.a parama2)
   {
     AppMethodBeat.i(123722);
-    Object localObject = new d.a(paramw.VZx);
-    ((d.a)localObject).b(a.decodeResource(paramw.VZx.getResources(), a.c.dialog_successful_icon), false, 3);
-    ((d.a)localObject).HG(false);
-    ((d.a)localObject).HH(false);
-    ((d.a)localObject).bBg(paramString1).ayi(17);
-    localObject = ((d.a)localObject).icu();
-    AppCompatActivity localAppCompatActivity = paramw.VZx;
+    Object localObject = new e.a(paramy.getContext());
+    ((e.a)localObject).b(a.decodeResource(paramy.getContext().getResources(), a.c.dialog_successful_icon), false, 3);
+    ((e.a)localObject).NC(false);
+    ((e.a)localObject).ND(false);
+    ((e.a)localObject).bDz(paramString1).aEQ(17);
+    localObject = ((e.a)localObject).jHH();
+    AppCompatActivity localAppCompatActivity = paramy.getContext();
     if (!Util.isNullOrNil(paramString3))
     {
       paramString1 = paramString3;
@@ -46,32 +46,32 @@ public final class b
     {
       paramString3 = localAppCompatActivity.getResources().getString(a.d.app_cancel);
     }
-    ((d)localObject).a(paramString1, true, new DialogInterface.OnClickListener()
+    ((e)localObject).a(paramString1, true, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(123720);
-        this.shK.dismiss();
+        b.this.dismiss();
         if (parama2 != null) {
-          parama2.a(true, this.shK.icq(), this.shK.icr());
+          parama2.onDialogClick(true, b.this.jHE(), b.this.jHF());
         }
         AppMethodBeat.o(123720);
       }
     });
-    ((d)localObject).b(paramString3, true, new DialogInterface.OnClickListener()
+    ((e)localObject).b(paramString3, true, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(123721);
-        this.shK.dismiss();
+        b.this.dismiss();
         if (parama1 != null) {
-          parama1.a(false, null, 0);
+          parama1.onDialogClick(false, null, 0);
         }
         AppMethodBeat.o(123721);
       }
     });
-    ((d)localObject).ase(paramw.VZx.getResources().getColor(a.a.brand_text_color));
-    ((d)localObject).show();
+    ((e)localObject).ayj(paramy.getContext().getResources().getColor(a.a.brand_text_color));
+    ((e)localObject).show();
     AppMethodBeat.o(123722);
     return localObject;
   }

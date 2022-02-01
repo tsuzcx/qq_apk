@@ -1,47 +1,46 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
-import com.tencent.mm.plugin.appbrand.z;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.autogen.b.gk;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-final class as
+public final class as
+  extends gk
 {
-  final String appId;
+  static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  static final String[] qDJ;
   
-  as(String paramString)
+  static
   {
-    this.appId = paramString;
+    int i = 0;
+    AppMethodBeat.i(320717);
+    qDJ = new String[] { "appId", "versionDesc" };
+    DB_INFO = gk.aJm();
+    String str = " PRIMARY KEY (";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
+    }
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = DB_INFO;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(320717);
   }
   
-  final boolean cac()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(47307);
-    if (h.axc().getInt("WeAppForbiddenSwitch", 0) == 1)
-    {
-      Log.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
-      Intent localIntent = new Intent().putExtra("rawUrl", z.abY(this.appId)).putExtra("forceHideShare", true);
-      Context localContext = MMApplicationContext.getContext();
-      if (!(localContext instanceof Activity)) {
-        localIntent.addFlags(268435456);
-      }
-      c.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
-      AppMethodBeat.o(47307);
-      return true;
-    }
-    AppMethodBeat.o(47307);
-    return false;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.as
  * JD-Core Version:    0.7.0.1
  */

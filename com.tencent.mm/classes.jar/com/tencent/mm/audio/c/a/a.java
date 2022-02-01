@@ -3,28 +3,28 @@ package com.tencent.mm.audio.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil;", "", "()V", "mIsReportStart", "", "mRMSInOnePlayerProcess", "", "", "[Ljava/lang/Integer;", "mSystemVolumProcess", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkSystemVolume", "type", "volume", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "doAudioVolumeRecordKVReport", "streamType", "doPCMPlayerChecker", "doPCMPlayerPercentReport", "index", "result", "", "doPCMPlayerResultReport", "doPcmPlayerReport", "doSystemVolumePercentReport", "doSystemVolumePlayerChecker", "doSystemVolumeResultReport", "getRMSInOnePlayerProcessReportSum", "getSystemVolumePercentReportSum", "Companion", "plugin-audiosdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/audio/utils/player/AudioPlayerReportUtil;", "", "()V", "mIsReportStart", "", "mRMSInOnePlayerProcess", "", "", "[Ljava/lang/Integer;", "mSystemVolumProcess", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkSystemVolume", "type", "volume", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "doAudioVolumeRecordKVReport", "streamType", "doPCMPlayerChecker", "doPCMPlayerPercentReport", "index", "result", "", "doPCMPlayerResultReport", "doPcmPlayerReport", "doSystemVolumePercentReport", "doSystemVolumePlayerChecker", "doSystemVolumeResultReport", "getRMSInOnePlayerProcessReportSum", "getSystemVolumePercentReportSum", "Companion", "plugin-audiosdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a.a ftL;
-  private boolean ftI;
-  private Integer[] ftJ;
-  private Integer[] ftK;
+  public static final a.a hxX;
+  private boolean hxY;
+  private Integer[] hxZ;
+  private Integer[] hya;
   
   static
   {
     AppMethodBeat.i(130117);
-    ftL = new a.a((byte)0);
+    hxX = new a.a((byte)0);
     AppMethodBeat.o(130117);
   }
   
   public a()
   {
     AppMethodBeat.i(130116);
-    this.ftI = true;
+    this.hxY = true;
     Integer[] arrayOfInteger = new Integer[4];
     int i = 0;
     while (i < 4)
@@ -32,7 +32,7 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    this.ftJ = arrayOfInteger;
+    this.hxZ = arrayOfInteger;
     arrayOfInteger = new Integer[4];
     i = 0;
     while (i < 4)
@@ -40,14 +40,14 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    this.ftK = arrayOfInteger;
+    this.hya = arrayOfInteger;
     AppMethodBeat.o(130116);
   }
   
-  private final int afm()
+  private final int aHj()
   {
     AppMethodBeat.i(130113);
-    Integer[] arrayOfInteger = this.ftJ;
+    Integer[] arrayOfInteger = this.hxZ;
     int k = arrayOfInteger.length;
     int i = 0;
     int j = 0;
@@ -63,20 +63,23 @@ public final class a
   public final void b(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(130109);
-    p.k(paramString, "featureKey");
-    int i3 = afm();
+    s.u(paramString, "featureKey");
+    int i3 = aHj();
     if (i3 != 0)
     {
-      int i = this.ftJ[0].intValue() * 100 / i3;
-      int j = this.ftJ[1].intValue() * 100 / i3;
-      int k = this.ftJ[2].intValue() * 100 / i3;
-      int m = this.ftJ[3].intValue() * 100 / i3;
-      int n = this.ftK[0].intValue() * 100 / i3;
-      int i1 = this.ftK[1].intValue() * 100 / i3;
-      int i2 = this.ftK[2].intValue() * 100 / i3;
-      i3 = this.ftK[3].intValue() * 100 / i3;
-      Log.i("MicroMsg.AudioPlayerReportUtil", "audioType = 1 ,scenes = " + paramInt1 + ",featureKey=" + paramString + ",pcmSilent=" + i + ", pcmLow=" + j + ",pcmMiddle=" + k + ",pcmHigh=" + m + ",systemSilent=" + n + ",systemLow=" + i1 + ",systemMiddle=" + i2 + ",systemHigh=" + i3 + ",streamType=" + paramInt2 + '}');
-      h.IzE.a(18554, true, true, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt2) });
+      int i = this.hxZ[0].intValue() * 100 / i3;
+      int j = this.hxZ[1].intValue() * 100 / i3;
+      int k = this.hxZ[2].intValue() * 100 / i3;
+      int m = this.hxZ[3].intValue() * 100 / i3;
+      int n = this.hya[0].intValue() * 100 / i3;
+      int i1 = this.hya[1].intValue() * 100 / i3;
+      int i2 = this.hya[2].intValue() * 100 / i3;
+      i3 = this.hya[3].intValue() * 100 / i3;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("audioType = 1 ,scenes = ").append(paramInt1).append(",featureKey=").append(paramString).append(",pcmSilent=").append(i).append(", pcmLow=").append(j).append(",pcmMiddle=").append(k).append(",pcmHigh=").append(m).append(",systemSilent=").append(n).append(",systemLow=").append(i1).append(",systemMiddle=").append(i2).append(",systemHigh=").append(i3).append(",streamType=");
+      localStringBuilder.append(paramInt2).append('}');
+      Log.i("MicroMsg.AudioPlayerReportUtil", localStringBuilder.toString());
+      h.OAn.a(18554, true, true, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(paramInt2) });
     }
     AppMethodBeat.o(130109);
   }
@@ -84,64 +87,73 @@ public final class a
   public final void e(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130115);
-    p.k(paramArrayOfByte, "data");
-    if (!this.ftI)
+    s.u(paramArrayOfByte, "data");
+    if (!this.hxY)
     {
       AppMethodBeat.o(130115);
       return;
     }
+    short[] arrayOfShort;
+    int i;
+    int k;
     if (paramInt != 0)
     {
-      short[] arrayOfShort = new short[paramInt / 2];
-      int j = arrayOfShort.length;
-      int i = 0;
-      while (i < j)
-      {
-        arrayOfShort[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | (paramArrayOfByte[(i * 2 + 1)] & 0xFF) << 8));
-        i += 1;
-      }
-      i = paramInt / 2;
-      double d = 0.0D;
-      j = arrayOfShort.length;
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        int k = arrayOfShort[paramInt];
-        d += k * k;
-        paramInt += 1;
-      }
-      d = Math.sqrt(d / i);
-      if (d < 50.0D)
-      {
-        paramArrayOfByte = this.ftJ;
-        paramArrayOfByte[0] = Integer.valueOf(paramArrayOfByte[0].intValue() + 1);
-        AppMethodBeat.o(130115);
-        return;
-      }
-      if (d < 300.0D)
-      {
-        paramArrayOfByte = this.ftJ;
-        paramArrayOfByte[1] = Integer.valueOf(paramArrayOfByte[1].intValue() + 1);
-        AppMethodBeat.o(130115);
-        return;
-      }
-      if (d < 2000.0D)
-      {
-        paramArrayOfByte = this.ftJ;
-        paramArrayOfByte[2] = Integer.valueOf(paramArrayOfByte[2].intValue() + 1);
-        AppMethodBeat.o(130115);
-        return;
-      }
-      paramArrayOfByte = this.ftJ;
-      paramArrayOfByte[3] = Integer.valueOf(paramArrayOfByte[3].intValue() + 1);
+      arrayOfShort = new short[paramInt / 2];
+      i = 0;
+      k = arrayOfShort.length - 1;
+      if (k < 0) {}
     }
-    AppMethodBeat.o(130115);
+    for (;;)
+    {
+      int j = i + 1;
+      arrayOfShort[i] = ((short)(paramArrayOfByte[(i * 2)] & 0xFF | (paramArrayOfByte[(i * 2 + 1)] & 0xFF) << 8));
+      if (j > k)
+      {
+        i = paramInt / 2;
+        double d = 0.0D;
+        paramInt = 0;
+        j = arrayOfShort.length;
+        while (paramInt < j)
+        {
+          k = arrayOfShort[paramInt];
+          paramInt += 1;
+          d += k * k;
+        }
+        d = Math.sqrt(d / i);
+        if (d < 50.0D)
+        {
+          paramArrayOfByte = this.hxZ;
+          paramArrayOfByte[0] = Integer.valueOf(paramArrayOfByte[0].intValue() + 1);
+          AppMethodBeat.o(130115);
+          return;
+        }
+        if (d < 300.0D)
+        {
+          paramArrayOfByte = this.hxZ;
+          paramArrayOfByte[1] = Integer.valueOf(paramArrayOfByte[1].intValue() + 1);
+          AppMethodBeat.o(130115);
+          return;
+        }
+        if (d < 2000.0D)
+        {
+          paramArrayOfByte = this.hxZ;
+          paramArrayOfByte[2] = Integer.valueOf(paramArrayOfByte[2].intValue() + 1);
+          AppMethodBeat.o(130115);
+          return;
+        }
+        paramArrayOfByte = this.hxZ;
+        paramArrayOfByte[3] = Integer.valueOf(paramArrayOfByte[3].intValue() + 1);
+        AppMethodBeat.o(130115);
+        return;
+      }
+      i = j;
+    }
   }
   
-  public final void kG(int paramInt)
+  public final void on(int paramInt)
   {
     AppMethodBeat.i(130110);
-    this.ftI = false;
+    this.hxY = false;
     switch (paramInt)
     {
     }
@@ -149,25 +161,25 @@ public final class a
     {
       AppMethodBeat.o(130110);
       return;
-      c.afn();
+      c.aHk();
       AppMethodBeat.o(130110);
       return;
-      b.afn();
+      b.aHk();
     }
   }
   
-  public final void kH(int paramInt)
+  public final void oo(int paramInt)
   {
     AppMethodBeat.i(130111);
-    if (!this.ftI)
+    if (!this.hxY)
     {
       AppMethodBeat.o(130111);
       return;
     }
-    int k = afm();
+    int k = aHj();
     if (k != 0)
     {
-      Integer[] arrayOfInteger = this.ftJ;
+      Integer[] arrayOfInteger = this.hxZ;
       int i = 0;
       int m = arrayOfInteger.length;
       int j = 0;
@@ -175,12 +187,12 @@ public final class a
       {
         int n = ((Number)arrayOfInteger[j]).intValue();
         long l = n * 100 / k;
-        if (this.ftI) {}
+        if (this.hxY) {}
         switch (paramInt)
         {
         default: 
           n = n * 100 / k;
-          if (this.ftI) {
+          if (this.hxY) {
             switch (paramInt)
             {
             }
@@ -197,32 +209,32 @@ public final class a
           default: 
             break;
           case 0: 
-            c.bK(l);
+            c.ec(l);
             break;
           case 1: 
-            c.bL(l);
+            c.ed(l);
             break;
           case 2: 
-            c.bM(l);
+            c.ee(l);
             break;
           case 3: 
-            c.bN(l);
+            c.ef(l);
             break;
             switch (i)
             {
             default: 
               break;
             case 0: 
-              b.bK(l);
+              b.ec(l);
               break;
             case 1: 
-              b.bL(l);
+              b.ed(l);
               break;
             case 2: 
-              b.bM(l);
+              b.ee(l);
               break;
             case 3: 
-              b.bN(l);
+              b.ef(l);
               break;
               switch (i)
               {
@@ -230,73 +242,73 @@ public final class a
                 break;
               case 0: 
                 if (n == 0) {
-                  c.afo();
+                  c.aHl();
                 } else if (n <= 20) {
-                  c.afp();
+                  c.aHm();
                 } else if (n <= 40) {
-                  c.afq();
+                  c.aHn();
                 } else if (n <= 60) {
-                  c.afr();
+                  c.aHo();
                 } else if (n <= 80) {
-                  c.afs();
+                  c.aHp();
                 } else if (n == 100) {
-                  c.aft();
+                  c.aHq();
                 }
                 break;
               case 1: 
                 if (n == 0) {
-                  c.afu();
+                  c.aHr();
                 } else if (n <= 20) {
-                  c.afv();
+                  c.aHs();
                 } else if (n <= 40) {
-                  c.afw();
+                  c.aHt();
                 } else if (n <= 60) {
-                  c.afx();
+                  c.aHu();
                 } else if (n <= 80) {
-                  c.afy();
+                  c.aHv();
                 } else if (n == 100) {
-                  c.afz();
+                  c.aHw();
                 }
                 break;
               case 2: 
                 if (n == 0) {
-                  c.afA();
+                  c.aHx();
                 } else if (n <= 20) {
-                  c.afB();
+                  c.aHy();
                 } else if (n <= 40) {
-                  c.afC();
+                  c.aHz();
                 } else if (n <= 60) {
-                  c.afD();
+                  c.aHA();
                 } else if (n <= 80) {
-                  c.afE();
+                  c.aHB();
                 } else if (n == 100) {
-                  c.afF();
+                  c.aHC();
                 }
                 break;
               case 3: 
                 if (n == 0)
                 {
-                  c.afG();
+                  c.aHD();
                 }
                 else if (n <= 20)
                 {
-                  c.afH();
+                  c.aHE();
                 }
                 else if (n <= 40)
                 {
-                  c.afI();
+                  c.aHF();
                 }
                 else if (n <= 60)
                 {
-                  c.afJ();
+                  c.aHG();
                 }
                 else if (n <= 80)
                 {
-                  c.afK();
+                  c.aHH();
                 }
                 else if (n == 100)
                 {
-                  c.afL();
+                  c.aHI();
                   continue;
                   switch (i)
                   {
@@ -304,62 +316,62 @@ public final class a
                     break;
                   case 0: 
                     if (n == 0) {
-                      b.afo();
+                      b.aHl();
                     } else if (n <= 20) {
-                      b.afp();
+                      b.aHm();
                     } else if (n <= 40) {
-                      b.afq();
+                      b.aHn();
                     } else if (n <= 60) {
-                      b.afr();
+                      b.aHo();
                     } else if (n <= 80) {
-                      b.afs();
+                      b.aHp();
                     } else if (n <= 100) {
-                      b.aft();
+                      b.aHq();
                     }
                     break;
                   case 1: 
                     if (n == 0) {
-                      b.afu();
+                      b.aHr();
                     } else if (n <= 20) {
-                      b.afv();
+                      b.aHs();
                     } else if (n <= 40) {
-                      b.afw();
+                      b.aHt();
                     } else if (n <= 60) {
-                      b.afx();
+                      b.aHu();
                     } else if (n <= 80) {
-                      b.afy();
+                      b.aHv();
                     } else if (n <= 100) {
-                      b.afz();
+                      b.aHw();
                     }
                     break;
                   case 2: 
                     if (n == 0) {
-                      b.afA();
+                      b.aHx();
                     } else if (n <= 20) {
-                      b.afB();
+                      b.aHy();
                     } else if (n <= 40) {
-                      b.afC();
+                      b.aHz();
                     } else if (n <= 60) {
-                      b.afD();
+                      b.aHA();
                     } else if (n <= 80) {
-                      b.afE();
+                      b.aHB();
                     } else if (n <= 100) {
-                      b.afF();
+                      b.aHC();
                     }
                     break;
                   case 3: 
                     if (n == 0) {
-                      b.afG();
+                      b.aHD();
                     } else if (n <= 20) {
-                      b.afH();
+                      b.aHE();
                     } else if (n <= 40) {
-                      b.afI();
+                      b.aHF();
                     } else if (n <= 60) {
-                      b.afJ();
+                      b.aHG();
                     } else if (n <= 80) {
-                      b.afK();
+                      b.aHH();
                     } else if (n <= 100) {
-                      b.afL();
+                      b.aHI();
                     }
                     break;
                   }
@@ -372,27 +384,27 @@ public final class a
           }
         }
       }
-      arrayOfInteger = new Integer[4];
       paramInt = 0;
+      arrayOfInteger = new Integer[4];
       while (paramInt < 4)
       {
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      this.ftJ = arrayOfInteger;
+      this.hxZ = arrayOfInteger;
     }
     AppMethodBeat.o(130111);
   }
   
-  public final void kI(int paramInt)
+  public final void op(int paramInt)
   {
     AppMethodBeat.i(130112);
-    if (!this.ftI)
+    if (!this.hxY)
     {
       AppMethodBeat.o(130112);
       return;
     }
-    Integer[] arrayOfInteger = this.ftK;
+    Integer[] arrayOfInteger = this.hya;
     int k = arrayOfInteger.length;
     int j = 0;
     int i = 0;
@@ -405,7 +417,7 @@ public final class a
     }
     if (i != 0)
     {
-      arrayOfInteger = this.ftK;
+      arrayOfInteger = this.hya;
       j = 0;
       m = arrayOfInteger.length;
       k = 0;
@@ -413,12 +425,12 @@ public final class a
       {
         int n = ((Number)arrayOfInteger[k]).intValue();
         long l = n * 100 / i;
-        if (this.ftI) {}
+        if (this.hxY) {}
         switch (paramInt)
         {
         default: 
           n = n * 100 / i;
-          if (this.ftI) {
+          if (this.hxY) {
             switch (paramInt)
             {
             }
@@ -435,32 +447,32 @@ public final class a
           default: 
             break;
           case 0: 
-            c.bO(l);
+            c.eg(l);
             break;
           case 1: 
-            c.bP(l);
+            c.eh(l);
             break;
           case 2: 
-            c.bQ(l);
+            c.ei(l);
             break;
           case 3: 
-            c.bR(l);
+            c.ej(l);
             break;
             switch (j)
             {
             default: 
               break;
             case 0: 
-              b.bO(l);
+              b.eg(l);
               break;
             case 1: 
-              b.bP(l);
+              b.eh(l);
               break;
             case 2: 
-              b.bQ(l);
+              b.ei(l);
               break;
             case 3: 
-              b.bR(l);
+              b.ej(l);
               break;
               switch (j)
               {
@@ -468,73 +480,73 @@ public final class a
                 break;
               case 0: 
                 if (n == 0) {
-                  c.afM();
+                  c.aHJ();
                 } else if (n <= 20) {
-                  c.afN();
+                  c.aHK();
                 } else if (n <= 40) {
-                  c.afO();
+                  c.aHL();
                 } else if (n <= 60) {
-                  c.afP();
+                  c.aHM();
                 } else if (n <= 80) {
-                  c.afQ();
+                  c.aHN();
                 } else if (n == 100) {
-                  c.afR();
+                  c.aHO();
                 }
                 break;
               case 1: 
                 if (n == 0) {
-                  c.afS();
+                  c.aHP();
                 } else if (n <= 20) {
-                  c.afT();
+                  c.aHQ();
                 } else if (n <= 40) {
-                  c.afU();
+                  c.aHR();
                 } else if (n <= 60) {
-                  c.afV();
+                  c.aHS();
                 } else if (n <= 80) {
-                  c.afW();
+                  c.aHT();
                 } else if (n == 100) {
-                  c.afX();
+                  c.aHU();
                 }
                 break;
               case 2: 
                 if (n == 0) {
-                  c.afY();
+                  c.aHV();
                 } else if (n <= 20) {
-                  c.afZ();
+                  c.aHW();
                 } else if (n <= 40) {
-                  c.aga();
+                  c.aHX();
                 } else if (n <= 60) {
-                  c.agb();
+                  c.aHY();
                 } else if (n <= 80) {
-                  c.agc();
+                  c.aHZ();
                 } else if (n == 100) {
-                  c.agd();
+                  c.aIa();
                 }
                 break;
               case 3: 
                 if (n == 0)
                 {
-                  c.age();
+                  c.aIb();
                 }
                 else if (n <= 20)
                 {
-                  c.agf();
+                  c.aIc();
                 }
                 else if (n <= 40)
                 {
-                  c.agg();
+                  c.aId();
                 }
                 else if (n <= 60)
                 {
-                  c.agh();
+                  c.aIe();
                 }
                 else if (n <= 80)
                 {
-                  c.agi();
+                  c.aIf();
                 }
                 else if (n == 100)
                 {
-                  c.agj();
+                  c.aIg();
                   continue;
                   switch (j)
                   {
@@ -542,62 +554,62 @@ public final class a
                     break;
                   case 0: 
                     if (n == 0) {
-                      b.afM();
+                      b.aHJ();
                     } else if (n <= 20) {
-                      b.afN();
+                      b.aHK();
                     } else if (n <= 40) {
-                      b.afO();
+                      b.aHL();
                     } else if (n <= 60) {
-                      b.afP();
+                      b.aHM();
                     } else if (n <= 80) {
-                      b.afQ();
+                      b.aHN();
                     } else if (n <= 100) {
-                      b.afR();
+                      b.aHO();
                     }
                     break;
                   case 1: 
                     if (n == 0) {
-                      b.afS();
+                      b.aHP();
                     } else if (n <= 20) {
-                      b.afT();
+                      b.aHQ();
                     } else if (n <= 40) {
-                      b.afU();
+                      b.aHR();
                     } else if (n <= 60) {
-                      b.afV();
+                      b.aHS();
                     } else if (n <= 80) {
-                      b.afW();
+                      b.aHT();
                     } else if (n <= 100) {
-                      b.afX();
+                      b.aHU();
                     }
                     break;
                   case 2: 
                     if (n == 0) {
-                      b.afY();
+                      b.aHV();
                     } else if (n <= 20) {
-                      b.afZ();
+                      b.aHW();
                     } else if (n <= 40) {
-                      b.aga();
+                      b.aHX();
                     } else if (n <= 60) {
-                      b.agb();
+                      b.aHY();
                     } else if (n <= 80) {
-                      b.agc();
+                      b.aHZ();
                     } else if (n <= 100) {
-                      b.agd();
+                      b.aIa();
                     }
                     break;
                   case 3: 
                     if (n == 0) {
-                      b.age();
+                      b.aIb();
                     } else if (n <= 20) {
-                      b.agf();
+                      b.aIc();
                     } else if (n <= 40) {
-                      b.agg();
+                      b.aId();
                     } else if (n <= 60) {
-                      b.agh();
+                      b.aIe();
                     } else if (n <= 80) {
-                      b.agi();
+                      b.aIf();
                     } else if (n <= 100) {
-                      b.agj();
+                      b.aIg();
                     }
                     break;
                   }
@@ -610,21 +622,21 @@ public final class a
           }
         }
       }
-      arrayOfInteger = new Integer[4];
       paramInt = 0;
+      arrayOfInteger = new Integer[4];
       while (paramInt < 4)
       {
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      this.ftK = arrayOfInteger;
+      this.hya = arrayOfInteger;
     }
     AppMethodBeat.o(130112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.audio.c.a.a
  * JD-Core Version:    0.7.0.1
  */

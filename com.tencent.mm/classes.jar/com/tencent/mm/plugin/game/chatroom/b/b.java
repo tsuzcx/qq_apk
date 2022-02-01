@@ -15,7 +15,7 @@ public abstract interface b
   
   public abstract void a(List<String> paramList, a parama);
   
-  public abstract c aIN(String paramString);
+  public abstract c aFo(String paramString);
   
   public abstract void l(MStorage.IOnStorageChange paramIOnStorageChange);
   
@@ -23,12 +23,12 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void ac(Map<String, c> paramMap);
+    public abstract void onDone(Map<String, c> paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.b.b
  * JD-Core Version:    0.7.0.1
  */

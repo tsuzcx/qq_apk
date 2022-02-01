@@ -1,20 +1,9 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFloatBallDetailContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
-public final class q
-{
-  public static final q xyE;
-  
-  static
-  {
-    AppMethodBeat.i(279708);
-    xyE = new q();
-    AppMethodBeat.o(279708);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class q {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import android.content.Intent;
-import com.tencent.luggage.k.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.l;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
-final class i$b
-  implements f.b
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$verifyPhoneNumber$1", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberVerifyCodeDialog$OnVerifyCallback;", "onVerifyCallback", "", "isSuccess", "", "result", "", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class i$b
+  implements aa.b
 {
-  i$b(m paramm) {}
+  i$b(m<? super Boolean, ? super Map<String, String>, ah> paramm) {}
   
-  public final void a(int paramInt, Intent paramIntent)
+  public final void a(boolean paramBoolean, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(148043);
-    this.qBo.invoke(Integer.valueOf(paramInt), paramIntent);
-    AppMethodBeat.o(148043);
+    AppMethodBeat.i(319039);
+    s.u(paramMap, "result");
+    this.tGw.invoke(Boolean.valueOf(paramBoolean), paramMap);
+    AppMethodBeat.o(319039);
   }
 }
 

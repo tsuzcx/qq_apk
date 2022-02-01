@@ -45,32 +45,32 @@ public class IPxxLogic
     callBack.setNewDnsDebugHostInfo(paramString, paramInt);
   }
   
-  public static native void uploadFile(String paramString1, int paramInt, long paramLong, String paramString2);
+  public static native int uploadFile(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, String paramString3);
   
-  public static native void uploadLog(int paramInt, int[] paramArrayOfInt, boolean paramBoolean, long paramLong, String paramString);
+  public static native int uploadLog(int paramInt, int[] paramArrayOfInt, boolean paramBoolean, long paramLong, String paramString);
   
-  public static void uploadLogFail()
+  public static void uploadLogFail(int paramInt)
   {
     if (callBack == null) {
       return;
     }
-    callBack.uploadLogFail();
+    callBack.uploadLogFail(paramInt);
   }
   
-  public static void uploadLogResponse(long paramLong1, long paramLong2)
+  public static void uploadLogResponse(int paramInt, long paramLong1, long paramLong2)
   {
     if (callBack == null) {
       return;
     }
-    callBack.uploadLogResponse(paramLong1, paramLong2);
+    callBack.uploadLogResponse(paramInt, paramLong1, paramLong2);
   }
   
-  public static void uploadLogSuccess()
+  public static void uploadLogSuccess(int paramInt)
   {
     if (callBack == null) {
       return;
     }
-    callBack.uploadLogSuccess();
+    callBack.uploadLogSuccess(paramInt);
   }
   
   public static abstract interface ICallBack
@@ -83,16 +83,16 @@ public class IPxxLogic
     
     public abstract void setNewDnsDebugHostInfo(String paramString, int paramInt);
     
-    public abstract void uploadLogFail();
+    public abstract void uploadLogFail(int paramInt);
     
-    public abstract void uploadLogResponse(long paramLong1, long paramLong2);
+    public abstract void uploadLogResponse(int paramInt, long paramLong1, long paramLong2);
     
-    public abstract void uploadLogSuccess();
+    public abstract void uploadLogSuccess(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.magicbox.IPxxLogic
  * JD-Core Version:    0.7.0.1
  */

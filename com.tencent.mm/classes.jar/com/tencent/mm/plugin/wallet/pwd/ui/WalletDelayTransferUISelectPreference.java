@@ -15,7 +15,7 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class WalletDelayTransferUISelectPreference
   extends Preference
 {
-  private WeImageView Buo;
+  private WeImageView HaZ;
   private boolean enable;
   boolean isSelected;
   private View mView;
@@ -29,17 +29,17 @@ public class WalletDelayTransferUISelectPreference
   public WalletDelayTransferUISelectPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(275444);
+    AppMethodBeat.i(315680);
     this.enable = true;
     setLayoutResource(a.g.mm_preference);
-    AppMethodBeat.o(275444);
+    AppMethodBeat.o(315680);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(275450);
+    AppMethodBeat.i(315685);
     super.onBindView(paramView);
-    auO(8);
+    aBq(8);
     Object localObject = (TextView)paramView.findViewById(16908310);
     if (localObject != null) {}
     for (localObject = ((TextView)localObject).getText();; localObject = "")
@@ -47,8 +47,8 @@ public class WalletDelayTransferUISelectPreference
       if (this.isSelected)
       {
         paramView.setContentDescription(localObject + " " + paramView.getContext().getText(a.i.wallet_delay_transfer_setting_accessibility_selected));
-        this.Buo = ((WeImageView)paramView.findViewById(a.f.state_icon));
-        paramView = this.Buo;
+        this.HaZ = ((WeImageView)paramView.findViewById(a.f.state_icon));
+        paramView = this.HaZ;
         if (!this.isSelected) {
           break label156;
         }
@@ -57,7 +57,7 @@ public class WalletDelayTransferUISelectPreference
       for (int i = 0;; i = 8)
       {
         paramView.setVisibility(i);
-        AppMethodBeat.o(275450);
+        AppMethodBeat.o(315685);
         return;
         paramView.setContentDescription(localObject + " " + paramView.getContext().getText(a.i.wallet_delay_transfer_setting_accessibility_unselected));
         break;
@@ -67,7 +67,7 @@ public class WalletDelayTransferUISelectPreference
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(275448);
+    AppMethodBeat.i(315681);
     paramViewGroup = super.onCreateView(paramViewGroup);
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
     localViewGroup.removeAllViews();
@@ -76,7 +76,7 @@ public class WalletDelayTransferUISelectPreference
     View.inflate(this.mContext, a.g.mm_preference_select, localViewGroup);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
-    AppMethodBeat.o(275448);
+    AppMethodBeat.o(315681);
     return paramViewGroup;
   }
 }

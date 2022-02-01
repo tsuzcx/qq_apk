@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.i;
+import com.tencent.mm.plugin.finder.api.m;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -14,126 +14,132 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher;", "Lcom/tencent/mm/plugin/finder/report/IReportWatcher;", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "()V", "isWatch", "", "objAllocateMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$ReportRecord;", "watchedLogId", "calc", "", "getObjHashCode", "", "obj", "", "getRecord", "logId", "isBlock", "onAllocate", "record", "onRelease", "printBriefLog", "feed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "prefixLog", "startWatch", "stopWatch", "vertify", "Companion", "ReportRecord", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher;", "Lcom/tencent/mm/plugin/finder/report/IReportWatcher;", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedRecord;", "()V", "isWatch", "", "objAllocateMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "", "Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$ReportRecord;", "watchedLogId", "calc", "", "getObjHashCode", "", "obj", "", "getRecord", "logId", "isBlock", "onAllocate", "record", "onRelease", "printBriefLog", "feed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "prefixLog", "startWatch", "stopWatch", "vertify", "Companion", "ReportRecord", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements ae<t>
+  implements as<af>
 {
-  public static final a zTP;
-  private boolean zTM;
-  private int zTN;
-  private final ConcurrentHashMap<Integer, List<b>> zTO;
+  public static final a Fnu;
+  private boolean Fnv;
+  private int Fnw;
+  private final ConcurrentHashMap<Integer, List<b>> Fnx;
   
   static
   {
-    AppMethodBeat.i(274200);
-    zTP = new a((byte)0);
-    AppMethodBeat.o(274200);
+    AppMethodBeat.i(331429);
+    Fnu = new a((byte)0);
+    AppMethodBeat.o(331429);
   }
   
   public b()
   {
-    AppMethodBeat.i(274198);
-    this.zTO = new ConcurrentHashMap();
-    AppMethodBeat.o(274198);
+    AppMethodBeat.i(331380);
+    this.Fnx = new ConcurrentHashMap();
+    AppMethodBeat.o(331380);
   }
   
-  private final boolean Pc(int paramInt)
+  private final boolean Sd(int paramInt)
   {
-    return (!this.zTM) && ((this.zTN == 0) || (this.zTN != paramInt));
+    return (!this.Fnv) && ((this.Fnw == 0) || (this.Fnw != paramInt));
   }
   
-  private final List<b> dPb()
+  private final List<b> eMh()
   {
-    AppMethodBeat.i(274195);
-    List localList2 = (List)this.zTO.get(Integer.valueOf(18054));
+    AppMethodBeat.i(331393);
+    List localList2 = (List)this.Fnx.get(Integer.valueOf(18054));
     List localList1 = localList2;
     if (localList2 == null)
     {
       localList1 = (List)new ArrayList();
-      ((Map)this.zTO).put(Integer.valueOf(18054), localList1);
+      ((Map)this.Fnx).put(Integer.valueOf(18054), localList1);
     }
-    AppMethodBeat.o(274195);
+    AppMethodBeat.o(331393);
     return localList1;
   }
   
-  static String dq(Object paramObject)
+  static String fA(Object paramObject)
   {
-    AppMethodBeat.i(274196);
-    n localn = n.zWF;
-    paramObject = n.Mp(paramObject.hashCode());
-    AppMethodBeat.o(274196);
+    AppMethodBeat.i(331402);
+    z localz = z.FrZ;
+    paramObject = z.pL(paramObject.hashCode());
+    AppMethodBeat.o(331402);
     return paramObject;
   }
   
-  public final void a(bu parambu, String paramString, t paramt)
+  public final void a(cc paramcc, String paramString, af paramaf)
   {
-    AppMethodBeat.i(274192);
-    p.k(paramString, "prefixLog");
-    p.k(paramt, "record");
-    if (Pc(0))
+    AppMethodBeat.i(331461);
+    s.u(paramString, "prefixLog");
+    s.u(paramaf, "record");
+    if (Sd(0))
     {
-      AppMethodBeat.o(274192);
+      AppMethodBeat.o(331461);
       return;
     }
-    if ((parambu instanceof BaseFinderFeed))
+    Object localObject;
+    String str;
+    if ((paramcc instanceof BaseFinderFeed))
     {
-      parambu = (BaseFinderFeed)parambu;
-      Object localObject = n.zWF;
-      String str = n.Mp(parambu.mf());
-      parambu = parambu.contact;
-      if (parambu != null)
-      {
-        localObject = parambu.field_nickname;
-        parambu = (bu)localObject;
-        if (localObject != null) {}
+      paramcc = (BaseFinderFeed)paramcc;
+      localObject = z.FrZ;
+      str = z.pL(paramcc.bZA());
+      paramcc = paramcc.contact;
+      if (paramcc != null) {
+        break label125;
       }
-      else
-      {
-        parambu = "";
-      }
-      Log.i("FeedReportWatcher", paramString + " --- nickName:" + parambu + " feedId:" + str + "        record obj:" + dq(paramt));
+      paramcc = "";
     }
-    AppMethodBeat.o(274192);
+    for (;;)
+    {
+      Log.i("FeedReportWatcher", paramString + " --- nickName:" + paramcc + " feedId:" + str + "        record obj:" + fA(paramaf));
+      AppMethodBeat.o(331461);
+      return;
+      label125:
+      localObject = paramcc.field_nickname;
+      paramcc = (cc)localObject;
+      if (localObject == null) {
+        paramcc = "";
+      }
+    }
   }
   
-  public final void a(t paramt)
+  public final void a(af paramaf)
   {
-    AppMethodBeat.i(274193);
-    if (Pc(18054))
+    AppMethodBeat.i(331470);
+    if (Sd(18054))
     {
-      AppMethodBeat.o(274193);
+      AppMethodBeat.o(331470);
       return;
     }
     Object localObject = new StringBuilder("feedId:");
-    n localn = n.zWF;
-    localObject = n.Mp(paramt.feedId) + "  obj:" + dq(paramt);
-    paramt = new b(paramt.hashCode(), (String)localObject);
-    dPb().add(paramt);
-    AppMethodBeat.o(274193);
+    z localz = z.FrZ;
+    localObject = z.pL(paramaf.feedId) + "  obj:" + fA(paramaf);
+    paramaf = new b(paramaf.hashCode(), (String)localObject);
+    eMh().add(paramaf);
+    AppMethodBeat.o(331470);
   }
   
-  public final void b(t paramt)
+  public final void b(af paramaf)
   {
-    AppMethodBeat.i(274194);
-    if (Pc(18054))
+    AppMethodBeat.i(331483);
+    if (Sd(18054))
     {
-      AppMethodBeat.o(274194);
+      AppMethodBeat.o(331483);
       return;
     }
-    if (paramt != null)
+    int i;
+    if (paramaf != null)
     {
-      Object localObject1 = (Iterable)dPb();
+      Object localObject1 = (Iterable)eMh();
       Collection localCollection = (Collection)new ArrayList();
       localObject1 = ((Iterable)localObject1).iterator();
-      int i;
       label109:
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((Iterator)localObject1).next();
-        if (((b)localObject2).zTQ == paramt.hashCode()) {}
+        if (((b)localObject2).Fny == paramaf.hashCode()) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
@@ -143,58 +149,54 @@ public final class b
           break;
         }
       }
-      paramt = (List)localCollection;
-      if (!((Collection)paramt).isEmpty())
-      {
-        i = 1;
-        if (i == 0) {
-          break label169;
-        }
-        label134:
-        if (paramt == null) {
-          break label174;
-        }
+      paramaf = (List)localCollection;
+      if (((Collection)paramaf).isEmpty()) {
+        break label155;
       }
-      label169:
-      label174:
-      for (paramt = (b)paramt.get(0);; paramt = null)
-      {
-        if (paramt == null) {
-          break label179;
-        }
-        paramt.isReleased = true;
-        AppMethodBeat.o(274194);
-        return;
-        i = 0;
-        break;
-        paramt = null;
-        break label134;
+      i = 1;
+      if (i == 0) {
+        break label160;
       }
-      label179:
-      AppMethodBeat.o(274194);
-      return;
+      label134:
+      if (paramaf != null) {
+        break label165;
+      }
     }
-    AppMethodBeat.o(274194);
+    label155:
+    label160:
+    label165:
+    for (paramaf = null;; paramaf = (b)paramaf.get(0))
+    {
+      if (paramaf != null) {
+        paramaf.isReleased = true;
+      }
+      AppMethodBeat.o(331483);
+      return;
+      i = 0;
+      break;
+      paramaf = null;
+      break label134;
+    }
   }
   
-  public final void dOZ()
+  public final void eMf()
   {
     if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.zTM = bool;
-      this.zTN = 0;
+      this.Fnv = bool;
+      this.Fnw = 0;
       return;
     }
   }
   
-  public final void dPa()
+  public final void eMg()
   {
-    AppMethodBeat.i(274191);
-    if (!Pc(0))
+    AppMethodBeat.i(331446);
+    if (!Sd(0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = ((Map)this.zTO).entrySet().iterator();
+      Iterator localIterator = ((Map)this.Fnx).entrySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (Map.Entry)localIterator.next();
@@ -238,43 +240,43 @@ public final class b
           while (((Iterator)localObject2).hasNext())
           {
             localObject3 = (b)((Iterator)localObject2).next();
-            Log.w("FeedReportWatcher", "not released logId:" + j + " -- " + ((b)localObject3).zTR);
+            Log.w("FeedReportWatcher", "not released logId:" + j + " -- " + ((b)localObject3).Fnz);
           }
         }
-        localStringBuilder.append((String)localObject1 + "\n");
+        localStringBuilder.append(s.X((String)localObject1, "\n"));
       }
-      Log.i("FeedReportWatcher", dq(this) + " calc result:\n" + localStringBuilder);
-      this.zTO.clear();
-      this.zTM = false;
+      Log.i("FeedReportWatcher", fA(this) + " calc result:\n" + localStringBuilder);
+      this.Fnx.clear();
+      this.Fnv = false;
     }
-    AppMethodBeat.o(274191);
+    AppMethodBeat.o(331446);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$ReportRecord;", "", "objHashCode", "", "isReleased", "", "simpleDesc", "", "complexDesc", "(IZLjava/lang/String;Ljava/lang/String;)V", "getComplexDesc", "()Ljava/lang/String;", "setComplexDesc", "(Ljava/lang/String;)V", "()Z", "setReleased", "(Z)V", "getObjHashCode", "()I", "setObjHashCode", "(I)V", "getSimpleDesc", "setSimpleDesc", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FeedReportWatcher$ReportRecord;", "", "objHashCode", "", "isReleased", "", "simpleDesc", "", "complexDesc", "(IZLjava/lang/String;Ljava/lang/String;)V", "getComplexDesc", "()Ljava/lang/String;", "setComplexDesc", "(Ljava/lang/String;)V", "()Z", "setReleased", "(Z)V", "getObjHashCode", "()I", "setObjHashCode", "(I)V", "getSimpleDesc", "setSimpleDesc", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
   {
+    private String FnA;
+    int Fny;
+    String Fnz;
     boolean isReleased;
-    int zTQ;
-    String zTR;
-    private String zTS;
     
     private b(int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(285546);
-      this.zTQ = paramInt;
+      AppMethodBeat.i(331036);
+      this.Fny = paramInt;
       this.isReleased = false;
-      this.zTR = paramString1;
-      this.zTS = paramString2;
-      AppMethodBeat.o(285546);
+      this.Fnz = paramString1;
+      this.FnA = paramString2;
+      AppMethodBeat.o(331036);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.b
  * JD-Core Version:    0.7.0.1
  */

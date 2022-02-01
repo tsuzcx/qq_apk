@@ -1,162 +1,134 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class edd
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public int RYM;
-  public String Sba;
-  public String SnD;
-  public String UhF;
-  public String appid;
-  public int scene;
-  public int source;
-  public String url;
+  public String ZZR;
+  public String abit;
+  public String abiu;
+  public boolean abiv;
+  public String abiw;
+  public String hAk;
+  public String word_color;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91683);
+    AppMethodBeat.i(72547);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZZR != null) {
+        paramVarArgs.g(1, this.ZZR);
       }
-      if (this.SnD != null) {
-        paramVarArgs.f(2, this.SnD);
+      if (this.word_color != null) {
+        paramVarArgs.g(2, this.word_color);
       }
-      if (this.appid != null) {
-        paramVarArgs.f(3, this.appid);
+      if (this.hAk != null) {
+        paramVarArgs.g(3, this.hAk);
       }
-      if (this.url != null) {
-        paramVarArgs.f(4, this.url);
+      if (this.abit != null) {
+        paramVarArgs.g(4, this.abit);
       }
-      if (this.UhF != null) {
-        paramVarArgs.f(5, this.UhF);
+      if (this.abiu != null) {
+        paramVarArgs.g(5, this.abiu);
       }
-      paramVarArgs.aY(6, this.scene);
-      paramVarArgs.aY(7, this.source);
-      if (this.Sba != null) {
-        paramVarArgs.f(8, this.Sba);
+      paramVarArgs.di(6, this.abiv);
+      if (this.abiw != null) {
+        paramVarArgs.g(7, this.abiw);
       }
-      paramVarArgs.aY(9, this.RYM);
-      AppMethodBeat.o(91683);
+      AppMethodBeat.o(72547);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label728;
+      if (this.ZZR == null) {
+        break label558;
       }
     }
-    label728:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label558:
+    for (int i = i.a.a.b.b.a.h(1, this.ZZR) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.SnD != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.SnD);
+      if (this.word_color != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.word_color);
       }
       i = paramInt;
-      if (this.appid != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.appid);
+      if (this.hAk != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.hAk);
       }
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.url);
+      if (this.abit != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.abit);
       }
       i = paramInt;
-      if (this.UhF != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.UhF);
+      if (this.abiu != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.abiu);
       }
-      i = i + g.a.a.b.b.a.bM(6, this.scene) + g.a.a.b.b.a.bM(7, this.source);
+      i += i.a.a.b.b.a.ko(6) + 1;
       paramInt = i;
-      if (this.Sba != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.Sba);
+      if (this.abiw != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.abiw);
       }
-      i = g.a.a.b.b.a.bM(9, this.RYM);
-      AppMethodBeat.o(91683);
-      return paramInt + i;
+      AppMethodBeat.o(72547);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(91683);
+        AppMethodBeat.o(72547);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         edd localedd = (edd)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91683);
+          AppMethodBeat.o(72547);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localedd.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91683);
+          localedd.ZZR = locala.ajGk.readString();
+          AppMethodBeat.o(72547);
           return 0;
         case 2: 
-          localedd.SnD = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(91683);
+          localedd.word_color = locala.ajGk.readString();
+          AppMethodBeat.o(72547);
           return 0;
         case 3: 
-          localedd.appid = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(91683);
+          localedd.hAk = locala.ajGk.readString();
+          AppMethodBeat.o(72547);
           return 0;
         case 4: 
-          localedd.url = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(91683);
+          localedd.abit = locala.ajGk.readString();
+          AppMethodBeat.o(72547);
           return 0;
         case 5: 
-          localedd.UhF = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(91683);
+          localedd.abiu = locala.ajGk.readString();
+          AppMethodBeat.o(72547);
           return 0;
         case 6: 
-          localedd.scene = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(91683);
-          return 0;
-        case 7: 
-          localedd.source = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(91683);
-          return 0;
-        case 8: 
-          localedd.Sba = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(91683);
+          localedd.abiv = locala.ajGk.aai();
+          AppMethodBeat.o(72547);
           return 0;
         }
-        localedd.RYM = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(91683);
+        localedd.abiw = locala.ajGk.readString();
+        AppMethodBeat.o(72547);
         return 0;
       }
-      AppMethodBeat.o(91683);
+      AppMethodBeat.o(72547);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.edd
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment;
 
 public final class l$b
 {
-  public static final int app_waiting = 2131756093;
+  public static final int app_waiting = 2131756164;
 }
 
 

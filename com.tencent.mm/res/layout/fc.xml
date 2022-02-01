@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/qs" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.CommonVideoView android:id="@id/qq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:id="@id/u4" android:paddingTop="@dimen/tc" android:paddingBottom="@dimen/td" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/td" android:paddingEnd="@dimen/td"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/u7" android:layout_width="20.0dip" android:layout_height="20.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/u5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/u7" app:layout_constraintStart_toEndOf="@id/u7" app:layout_constraintTop_toTopOf="@id/u7" />
+    <ImageView android:id="@id/u6" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="1.0dip" android:src="@raw/arrow_right" android:scaleType="center" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toEndOf="@id/u5" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

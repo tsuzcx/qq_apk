@@ -15,21 +15,21 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.e;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public abstract class a
-  extends d
+  extends e
 {
   public int a(MMActivity paramMMActivity, int paramInt)
   {
     return a.i.wallet_input_card_finish_confirm;
   }
   
-  public d a(Activity paramActivity, Bundle paramBundle)
+  public e a(Activity paramActivity, Bundle paramBundle)
   {
-    L(new Object[] { "start", paramActivity, paramBundle });
+    P(new Object[] { "start", paramActivity, paramBundle });
     if (paramBundle != null) {
       paramBundle.putBoolean("key_is_bind_reg_process", true);
     }
@@ -39,7 +39,7 @@ public abstract class a
   
   public void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    L(new Object[] { "forward", paramActivity, Integer.valueOf(paramInt), paramBundle });
+    P(new Object[] { "forward", paramActivity, Integer.valueOf(paramInt), paramBundle });
     if (((paramActivity instanceof WalletBankcardIdUI)) || ((paramActivity instanceof WalletConfirmCardIDUI))) {
       b(paramActivity, WalletCardElementUI.class, paramBundle);
     }
@@ -68,7 +68,7 @@ public abstract class a
       return false;
     }
     Log.i("MicroMsg.ProcessManager", "404 bind error, cancel bind!");
-    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(a.i.wallet_cancel_bind), false, new DialogInterface.OnClickListener()
+    k.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(a.i.wallet_cancel_bind), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -89,20 +89,20 @@ public abstract class a
     return paramActivity instanceof WalletOrderInfoUI;
   }
   
-  public void h(Activity paramActivity, int paramInt)
+  public void i(Activity paramActivity, int paramInt)
   {
-    L(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
+    P(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
     if ((paramActivity instanceof WalletPwdConfirmUI))
     {
       a(paramActivity, WalletSetPasswordUI.class, paramInt);
       return;
     }
-    Q(paramActivity);
+    Z(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.b.a
  * JD-Core Version:    0.7.0.1
  */

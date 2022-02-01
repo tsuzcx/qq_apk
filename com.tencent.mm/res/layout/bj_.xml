@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/f9n" android:background="@null" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitXY" />
-    <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:gravity="center" android:id="@id/f9o" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/kkg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/l5a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/hx5" android:visibility="gone" android:layout_width="@dimen/bx" android:layout_height="@dimen/bx" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

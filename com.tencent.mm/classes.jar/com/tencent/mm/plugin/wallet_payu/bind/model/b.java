@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.bind.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.e.a.a;
+import com.tencent.mm.wallet_core.d.a.a;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -9,14 +9,14 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String Plr;
-  public String fLj;
+  public String WcD;
+  public String hQR;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(71977);
-    this.Plr = paramString1;
-    this.fLj = paramString2;
+    this.WcD = paramString1;
+    this.hQR = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bind_serial", paramString1);
     localHashMap.put("payu_reference", String.valueOf(paramString2));
@@ -24,7 +24,7 @@ public final class b
     AppMethodBeat.o(71977);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 6;
   }

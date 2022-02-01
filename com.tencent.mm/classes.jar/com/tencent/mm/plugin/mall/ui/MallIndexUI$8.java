@@ -1,37 +1,27 @@
 package com.tencent.mm.plugin.mall.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.aci;
-import com.tencent.mm.f.a.aci.a;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.mall.a.d;
+import com.tencent.mm.wallet_core.ui.i;
 
 final class MallIndexUI$8
-  extends IListener<aci>
+  implements View.OnClickListener
 {
-  MallIndexUI$8(MallIndexUI paramMallIndexUI)
-  {
-    AppMethodBeat.i(160813);
-    this.__eventId = aci.class.getName().hashCode();
-    AppMethodBeat.o(160813);
-  }
+  MallIndexUI$8(MallIndexUI paramMallIndexUI, d paramd) {}
   
-  private static boolean a(aci paramaci)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(66105);
-    paramaci = paramaci.gcD.fGw;
-    Log.i("MicorMsg.MallIndexUI", "get result %s", new Object[] { paramaci });
-    if ("agree_privacy".equals(paramaci))
-    {
-      h.aHH();
-      h.aHG().aHp().set(ar.a.Vvq, Boolean.TRUE);
-    }
-    AppMethodBeat.o(66105);
-    return false;
+    AppMethodBeat.i(66103);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/mall/ui/MallIndexUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    i.bC(this.KMe.getContext(), this.KMf.KJa);
+    a.a(this, "com/tencent/mm/plugin/mall/ui/MallIndexUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(66103);
   }
 }
 

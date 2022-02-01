@@ -7,10 +7,10 @@ public enum SightCameraView$b
   static
   {
     AppMethodBeat.i(28789);
-    Jwe = new b("CREATE", 0);
-    Jwf = new b("CHANGED", 1);
-    Jwg = new b("DESTORY", 2);
-    Jwh = new b[] { Jwe, Jwf, Jwg };
+    PJC = new b("CREATE", 0);
+    PJD = new b("CHANGED", 1);
+    PJE = new b("DESTORY", 2);
+    PJF = new b[] { PJC, PJD, PJE };
     AppMethodBeat.o(28789);
   }
   
@@ -18,7 +18,7 @@ public enum SightCameraView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.SightCameraView.b
  * JD-Core Version:    0.7.0.1
  */

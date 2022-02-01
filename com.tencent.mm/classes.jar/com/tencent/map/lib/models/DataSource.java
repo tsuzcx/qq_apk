@@ -1,9 +1,7 @@
 package com.tencent.map.lib.models;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Keep
 public enum DataSource
 {
   private final int mValue;

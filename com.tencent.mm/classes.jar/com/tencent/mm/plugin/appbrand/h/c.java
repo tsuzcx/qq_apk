@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.appbrand.h;
 
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.n.i;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public abstract class c
   extends com.tencent.mm.plugin.appbrand.jsapi.c
 {
-  public int K(JSONObject paramJSONObject)
+  public int V(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       return -1;
@@ -19,69 +18,70 @@ public abstract class c
     return paramJSONObject.optInt("viewId", -1);
   }
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    if (parame == null) {
+    Object localObject2 = null;
+    if (paramf == null) {
       Log.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "component is null");
     }
     for (;;)
     {
       return;
-      int i = K(paramJSONObject);
+      int i = V(paramJSONObject);
       if (i == -1)
       {
         Log.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "no viewId in data");
-        parame.j(paramInt, h("fail:no viewId in data", null));
+        paramf.callback(paramInt, ZP("fail:no viewId in data"));
         return;
       }
-      Object localObject;
-      if ((parame instanceof ad)) {
-        localObject = parame.getJsRuntime();
+      Object localObject1;
+      if ((paramf instanceof ad)) {
+        localObject1 = paramf.getJsRuntime();
       }
-      while (!b(parame, paramJSONObject, paramInt))
+      while (!b(paramf, paramJSONObject, paramInt))
       {
-        if (localObject == null) {}
-        for (localObject = null;; localObject = (com.tencent.luggage.xweb_ext.extendplugin.b)((i)localObject).Q(com.tencent.luggage.xweb_ext.extendplugin.b.class))
+        if (localObject1 == null) {}
+        for (localObject1 = localObject2;; localObject1 = (com.tencent.luggage.xweb_ext.extendplugin.b)((i)localObject1).Z(com.tencent.luggage.xweb_ext.extendplugin.b.class))
         {
-          if (localObject != null) {
-            break label155;
+          if (localObject1 != null) {
+            break label157;
           }
           Log.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "invalid js runtime");
-          parame.j(paramInt, h("fail:invalid runtime", null));
+          paramf.callback(paramInt, ZP("fail:invalid runtime"));
           return;
-          if (!(parame instanceof v)) {
-            break label219;
+          if (!(paramf instanceof y)) {
+            break label220;
           }
-          localObject = ((v)parame).getCurrentPageView();
-          if (localObject == null) {
-            break label219;
+          localObject1 = ((y)paramf).getCurrentPageView();
+          if (localObject1 == null) {
+            break label220;
           }
-          localObject = ((ad)localObject).getJsRuntime();
+          localObject1 = ((ad)localObject1).getJsRuntime();
           break;
         }
-        label155:
-        localObject = ((com.tencent.luggage.xweb_ext.extendplugin.b)localObject).getWebViewPluginClientProxy();
-        if (localObject == null)
+        label157:
+        localObject1 = ((com.tencent.luggage.xweb_ext.extendplugin.b)localObject1).getWebViewPluginClientProxy();
+        if (localObject1 == null)
         {
           Log.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "webview has no plugin client");
-          parame.j(paramInt, h("fail:webview has no plugin client", null));
+          paramf.callback(paramInt, ZP("fail:webview has no plugin client"));
           return;
         }
-        parame = new b(paramInt, paramJSONObject, parame, this);
-        ((com.tencent.luggage.xweb_ext.extendplugin.b.c)localObject).a(bNT(), i, parame);
+        paramf = new b(paramInt, paramJSONObject, paramf, this);
+        ((com.tencent.luggage.xweb_ext.extendplugin.b.c)localObject1).a(cog(), i, paramf);
         return;
-        label219:
-        localObject = null;
+        label220:
+        localObject1 = null;
       }
     }
   }
   
-  protected boolean b(e parame, JSONObject paramJSONObject, int paramInt)
+  protected boolean b(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     return false;
   }
   
-  public abstract String bNT();
+  public abstract String cog();
 }
 
 

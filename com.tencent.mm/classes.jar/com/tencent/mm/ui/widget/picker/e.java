@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aq;
 import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.bc;
 
 public final class e
 {
@@ -18,7 +18,7 @@ public final class e
     if (paramNumberPicker != null) {}
     try
     {
-      new aq(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
+      new av(paramNumberPicker, "mSelectionDivider").set(paramDrawable);
       AppMethodBeat.o(159575);
       return;
     }
@@ -38,13 +38,13 @@ public final class e
     }
     try
     {
-      paramNumberPicker = (EditText)new aq(paramNumberPicker, "mInputText").get();
+      paramNumberPicker = (EditText)new av(paramNumberPicker, "mInputText").get();
       AppMethodBeat.o(159576);
       return paramNumberPicker;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText IllegalAccessException", new Object[0]);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159576);
       return null;
     }
@@ -52,7 +52,7 @@ public final class e
     {
       for (;;)
       {
-        av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText NoSuchFieldException", new Object[0]);
+        bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getInputText NoSuchFieldException", new Object[0]);
       }
     }
   }
@@ -89,13 +89,13 @@ public final class e
     }
     try
     {
-      paramNumberPicker = (Paint)new aq(paramNumberPicker, "mSelectorWheelPaint").get();
+      paramNumberPicker = (Paint)new av(paramNumberPicker, "mSelectorWheelPaint").get();
       AppMethodBeat.o(159577);
       return paramNumberPicker;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint IllegalAccessException", new Object[0]);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159577);
       return null;
     }
@@ -103,7 +103,7 @@ public final class e
     {
       for (;;)
       {
-        av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint NoSuchFieldException", new Object[0]);
+        bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "getSelectorWheelPaint NoSuchFieldException", new Object[0]);
       }
     }
   }
@@ -130,7 +130,7 @@ public final class e
     }
     try
     {
-      paramNumberPicker = (EditText)new aq(paramNumberPicker, "mInputText").get();
+      paramNumberPicker = (EditText)new av(paramNumberPicker, "mInputText").get();
       if (paramNumberPicker != null) {
         paramNumberPicker.setFilters(new InputFilter[0]);
       }
@@ -139,13 +139,13 @@ public final class e
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying IllegalAccessException", new Object[0]);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159579);
       return;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
-      av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying NoSuchFieldException", new Object[0]);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "fixDefaultValueDisplaying NoSuchFieldException", new Object[0]);
       AppMethodBeat.o(159579);
     }
   }
@@ -160,7 +160,7 @@ public final class e
     }
     try
     {
-      Runnable localRunnable = (Runnable)new aq(paramNumberPicker, "mSetSelectionCommand").get();
+      Runnable localRunnable = (Runnable)new av(paramNumberPicker, "mSetSelectionCommand").get();
       if (localRunnable != null) {
         paramNumberPicker.removeCallbacks(localRunnable);
       }
@@ -169,20 +169,20 @@ public final class e
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand IllegalAccessException", new Object[0]);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand IllegalAccessException", new Object[0]);
       AppMethodBeat.o(159580);
       return;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
-      av.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand NoSuchFieldException", new Object[0]);
+      bc.printErrStackTrace("NumberPickerUtil", paramNumberPicker, "removePendingSetSelectionCommand NoSuchFieldException", new Object[0]);
       AppMethodBeat.o(159580);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

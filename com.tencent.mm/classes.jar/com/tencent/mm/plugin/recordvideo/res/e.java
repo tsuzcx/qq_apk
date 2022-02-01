@@ -1,43 +1,44 @@
 package com.tencent.mm.plugin.recordvideo.res;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import kotlin.l;
+import com.tencent.mm.loader.i.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/VideoEditFontResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_PATH", "", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResType", "", "getTag", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/res/VideoEditFontResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_PATH", "", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getResParentPath", "getResType", "", "getTag", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends a
 {
-  private static final h HUY;
-  public static final e HVb;
+  private static final h NRP;
+  public static final e NRR;
   
   static
   {
-    AppMethodBeat.i(222684);
-    HVb = new e();
-    HUY = new h(0);
-    AppMethodBeat.o(222684);
+    AppMethodBeat.i(279645);
+    NRR = new e();
+    NRP = new h(0);
+    AppMethodBeat.o(279645);
   }
   
-  public final int fxB()
+  public final int gJq()
   {
     return 75;
   }
   
-  public final String[] fxC()
+  public final String[] gJr()
   {
     return new String[] { "path" };
   }
   
-  public final String fxD()
+  public final String gJs()
   {
-    AppMethodBeat.i(222683);
-    String str = b.aSE() + "fonts/";
-    AppMethodBeat.o(222683);
+    AppMethodBeat.i(279648);
+    String str = s.X(b.bms(), "fonts/");
+    AppMethodBeat.o(279648);
     return str;
   }
   
-  public final String fxE()
+  public final String gJt()
   {
     return "WeChatFontResource/";
   }
@@ -49,7 +50,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.e
  * JD-Core Version:    0.7.0.1
  */

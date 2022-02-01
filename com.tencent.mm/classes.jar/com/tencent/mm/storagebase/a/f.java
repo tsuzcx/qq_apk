@@ -22,13 +22,13 @@ public final class f
   implements d
 {
   public static final SQLiteDatabase.CursorFactory FACTORY;
-  private final h VJV;
-  private final Throwable VJW;
-  public a VJX;
-  private boolean VJY;
-  private b<a> VJZ;
-  c VKa;
-  private boolean VKb;
+  private final h adnZ;
+  private final Throwable adoa;
+  public a adob;
+  private boolean adoc;
+  private b<a> adod;
+  c adoe;
+  private boolean adof;
   private Map<String, Integer> mColumnNameMap;
   private final String[] mColumns;
   private int mCount;
@@ -71,31 +71,31 @@ public final class f
       AppMethodBeat.o(133479);
       throw paramSQLiteCursorDriver;
     }
-    this.VJW = null;
+    this.adoa = null;
     this.mDriver = paramSQLiteCursorDriver;
     this.mEditTable = paramString;
     this.mColumnNameMap = null;
-    this.VJV = paramh;
+    this.adnZ = paramh;
     this.mColumns = paramh.getColumnNames();
     this.mRowIdColumnIndex = DatabaseUtils.findRowIdColumnIndex(this.mColumns);
     AppMethodBeat.o(133479);
   }
   
-  private int asZ(int paramInt)
+  private int azp(int paramInt)
   {
     AppMethodBeat.i(133484);
-    if (this.VJY)
+    if (this.adoc)
     {
-      if (this.VJZ == null) {
-        this.VJZ = new b()
+      if (this.adod == null) {
+        this.adod = new b()
         {
-          public final ArrayList<a> bD(ArrayList<Object> paramAnonymousArrayList)
+          public final ArrayList<a> ce(ArrayList<Object> paramAnonymousArrayList)
           {
             AppMethodBeat.i(133476);
             f localf = f.this;
-            if (localf.VJX != null)
+            if (localf.adob != null)
             {
-              paramAnonymousArrayList = localf.VJX.bD(paramAnonymousArrayList);
+              paramAnonymousArrayList = localf.adob.ce(paramAnonymousArrayList);
               AppMethodBeat.o(133476);
               return paramAnonymousArrayList;
             }
@@ -103,13 +103,13 @@ public final class f
             return null;
           }
           
-          public final a hCa()
+          public final a jeg()
           {
             AppMethodBeat.i(133475);
             Object localObject = f.this;
-            if (((f)localObject).VJX != null)
+            if (((f)localObject).adob != null)
             {
-              localObject = ((f)localObject).VJX.hCa();
+              localObject = ((f)localObject).adob.jeg();
               AppMethodBeat.o(133475);
               return localObject;
             }
@@ -118,47 +118,47 @@ public final class f
           }
         };
       }
-      this.VJZ.mStartPos = paramInt;
-      paramInt = this.VJV.a(this.VJZ, paramInt, this.pageSize);
+      this.adod.mStartPos = paramInt;
+      paramInt = this.adnZ.a(this.adod, paramInt, this.pageSize);
       AppMethodBeat.o(133484);
       return paramInt;
     }
-    hCb();
-    paramInt = this.VJV.a(this.VKa, paramInt, this.pageSize);
+    jeh();
+    paramInt = this.adnZ.a(this.adoe, paramInt, this.pageSize);
     AppMethodBeat.o(133484);
     return paramInt;
   }
   
-  private void hCb()
+  private void jeh()
   {
     AppMethodBeat.i(133481);
-    if (this.VKa == null) {
-      this.VKa = new c(this.mColumns, (byte)0);
+    if (this.adoe == null) {
+      this.adoe = new c(this.mColumns, (byte)0);
     }
     AppMethodBeat.o(133481);
   }
   
-  public final void EV(boolean paramBoolean)
+  public final void KF(boolean paramBoolean)
   {
-    this.VJY = paramBoolean;
+    this.adoc = paramBoolean;
   }
   
   public final void a(a parama)
   {
-    this.VJX = parama;
+    this.adob = parama;
   }
   
   public final boolean a(Object paramObject, a parama)
   {
     AppMethodBeat.i(133499);
-    if ((this.VJY) && (this.VJZ != null))
+    if ((this.adoc) && (this.adod != null))
     {
-      if ((!this.VKb) && ((paramObject instanceof Object[])) && (this.VJZ.eh(paramObject)))
+      if ((!this.adof) && ((paramObject instanceof Object[])) && (this.adod.gF(paramObject)))
       {
         this.mCount -= ((Object[])paramObject).length;
         this.pageSize -= ((Object[])paramObject).length;
       }
-      b localb = this.VJZ;
+      b localb = this.adod;
       if (parama != null)
       {
         com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.CursorDataWindow", "newcursor cursor update Memory key : " + paramObject + "values : " + parama);
@@ -176,72 +176,72 @@ public final class f
           while (i < j)
           {
             parama = paramObject[i];
-            localb.VJK.remove(parama);
+            localb.adnO.remove(parama);
             i += 1;
           }
-          localb.E(paramObject);
+          localb.I(paramObject);
         }
         else
         {
-          if (localb.VJL == null) {
-            localb.VJL = new ArrayList();
+          if (localb.adnP == null) {
+            localb.adnP = new ArrayList();
           }
-          if (!localb.VJL.contains(paramObject))
+          if (!localb.adnP.contains(paramObject))
           {
-            localb.VJL.add(paramObject);
+            localb.adnP.add(paramObject);
             com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.CursorDataWindow", "newcursor cursor clearData : ".concat(String.valueOf(paramObject)));
           }
-          localb.VJK.remove(paramObject);
+          localb.adnO.remove(paramObject);
         }
       }
     }
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      paramObject = this.VKa;
+      paramObject = this.adoe;
       paramObject.mPos = 0;
-      paramObject.VJN.clear();
+      paramObject.adnR.clear();
     }
     AppMethodBeat.o(133499);
     return false;
   }
   
-  public final boolean asV(int paramInt)
+  public final boolean azm(int paramInt)
   {
-    if (!this.VJY) {}
+    if (!this.adoc) {}
     b localb;
     do
     {
       do
       {
         return false;
-        localb = this.VJZ;
+        localb = this.adod;
       } while (paramInt > 50);
-      if (localb.VJJ < 10) {
+      if (localb.adnN < 10) {
         return true;
       }
-    } while (paramInt / localb.VJJ >= 0.1D);
+    } while (paramInt / localb.adnN >= 0.1D);
     return true;
   }
   
-  public final a asW(int paramInt)
+  public final a azn(int paramInt)
   {
     Object localObject1 = null;
     int i = 0;
     AppMethodBeat.i(133498);
-    if (this.VJZ != null)
+    if (this.adod != null)
     {
-      b localb = this.VJZ;
-      if (localb.asY(paramInt))
+      b localb = this.adod;
+      if (localb.azo(paramInt))
       {
-        Object localObject2 = localb.VJI.get(paramInt);
-        a locala = (a)localb.VJK.get(localObject2);
+        Object localObject2 = localb.adnM.get(paramInt);
+        a locala = (a)localb.adnO.get(localObject2);
         localObject1 = locala;
         if (locala == null)
         {
           com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.CursorDataWindow", "get data null %s", new Object[] { localObject2 });
-          if (localb.VJL.size() != 0)
+          if (localb.adnP.size() != 0)
           {
-            localObject1 = localb.bD(localb.VJL);
+            localObject1 = localb.ce(localb.adnP);
             if (localObject1 != null) {
               if (i < ((ArrayList)localObject1).size())
               {
@@ -257,9 +257,9 @@ public final class f
                 }
               }
             }
-            localb.VJL.clear();
+            localb.adnP.clear();
           }
-          locala = (a)localb.VJK.get(localObject2);
+          locala = (a)localb.adnO.get(localObject2);
           localObject1 = locala;
           if (locala == null)
           {
@@ -272,18 +272,11 @@ public final class f
       {
         AppMethodBeat.o(133498);
         return localObject1;
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.CursorDataWindow", "newcursor cursor getItem error: pos " + paramInt + " loaded num :" + localb.VJI.size());
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.CursorDataWindow", "newcursor cursor getItem error: pos " + paramInt + " loaded num :" + localb.adnM.size());
       }
     }
     AppMethodBeat.o(133498);
     return null;
-  }
-  
-  public final void asX(int paramInt)
-  {
-    if ((paramInt <= 15000) && (paramInt >= 2000)) {
-      this.pageSize = paramInt;
-    }
   }
   
   public final void checkPosition()
@@ -299,7 +292,7 @@ public final class f
     super.close();
     try
     {
-      this.VJV.close();
+      this.adnZ.close();
       this.mDriver.cursorClosed();
       return;
     }
@@ -319,48 +312,11 @@ public final class f
     AppMethodBeat.o(133486);
   }
   
-  public final boolean eh(Object paramObject)
+  public final void fi(int paramInt)
   {
-    AppMethodBeat.i(133500);
-    if (!this.VJY)
-    {
-      AppMethodBeat.o(133500);
-      return false;
+    if ((paramInt <= 15000) && (paramInt >= 2000)) {
+      this.pageSize = paramInt;
     }
-    if (this.VJZ == null)
-    {
-      AppMethodBeat.o(133500);
-      return false;
-    }
-    boolean bool = this.VJZ.eh(paramObject);
-    AppMethodBeat.o(133500);
-    return bool;
-  }
-  
-  public final a ei(Object paramObject)
-  {
-    AppMethodBeat.i(133501);
-    if (!this.VJY)
-    {
-      com.tencent.wcdb.support.Log.e("WCDB.SQLiteNewCursor", "newcursor getItemByKey error ".concat(String.valueOf(paramObject)));
-      AppMethodBeat.o(133501);
-      return null;
-    }
-    if (this.VJZ == null)
-    {
-      com.tencent.wcdb.support.Log.e("WCDB.SQLiteNewCursor", "newcursor error getItemByKey window is null");
-      AppMethodBeat.o(133501);
-      return null;
-    }
-    b localb = this.VJZ;
-    if (localb.VJK == null)
-    {
-      AppMethodBeat.o(133501);
-      return null;
-    }
-    paramObject = (a)localb.VJK.get(paramObject);
-    AppMethodBeat.o(133501);
-    return paramObject;
   }
   
   public final void finalize()
@@ -368,7 +324,7 @@ public final class f
     AppMethodBeat.i(133489);
     try
     {
-      if (this.VJZ != null) {
+      if (this.adod != null) {
         close();
       }
       return;
@@ -380,12 +336,56 @@ public final class f
     }
   }
   
+  public final boolean gF(Object paramObject)
+  {
+    AppMethodBeat.i(133500);
+    if (!this.adoc)
+    {
+      AppMethodBeat.o(133500);
+      return false;
+    }
+    if (this.adod == null)
+    {
+      AppMethodBeat.o(133500);
+      return false;
+    }
+    boolean bool = this.adod.gF(paramObject);
+    AppMethodBeat.o(133500);
+    return bool;
+  }
+  
+  public final a gG(Object paramObject)
+  {
+    AppMethodBeat.i(133501);
+    if (!this.adoc)
+    {
+      com.tencent.wcdb.support.Log.e("WCDB.SQLiteNewCursor", "newcursor getItemByKey error ".concat(String.valueOf(paramObject)));
+      AppMethodBeat.o(133501);
+      return null;
+    }
+    if (this.adod == null)
+    {
+      com.tencent.wcdb.support.Log.e("WCDB.SQLiteNewCursor", "newcursor error getItemByKey window is null");
+      AppMethodBeat.o(133501);
+      return null;
+    }
+    b localb = this.adod;
+    if (localb.adnO == null)
+    {
+      AppMethodBeat.o(133501);
+      return null;
+    }
+    paramObject = (a)localb.adnO.get(paramObject);
+    AppMethodBeat.o(133501);
+    return paramObject;
+  }
+  
   public final byte[] getBlob(int paramInt)
   {
     AppMethodBeat.i(133497);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      byte[] arrayOfByte = this.VKa.getBlob(paramInt);
+      byte[] arrayOfByte = this.adoe.getBlob(paramInt);
       AppMethodBeat.o(133497);
       return arrayOfByte;
     }
@@ -438,9 +438,9 @@ public final class f
     AppMethodBeat.i(133482);
     if (this.mCount == -1)
     {
-      this.mCount = asZ(0);
-      if (this.VJZ != null) {
-        if ((this.mCount == -1) || (this.mCount != this.VJZ.VJI.size())) {
+      this.mCount = azp(0);
+      if (this.adod != null) {
+        if ((this.mCount == -1) || (this.mCount != this.adod.adnM.size())) {
           break label91;
         }
       }
@@ -448,17 +448,17 @@ public final class f
     label91:
     for (boolean bool = true;; bool = false)
     {
-      this.VKb = bool;
-      if ((!this.VJY) || (!this.VKb)) {
+      this.adof = bool;
+      if ((!this.adoc) || (!this.adof)) {
         break label115;
       }
-      if (this.VJZ != null) {
+      if (this.adod != null) {
         break;
       }
       AppMethodBeat.o(133482);
       return 0;
     }
-    int i = this.VJZ.VJI.size();
+    int i = this.adod.adnM.size();
     AppMethodBeat.o(133482);
     return i;
     label115:
@@ -470,9 +470,9 @@ public final class f
   public final double getDouble(int paramInt)
   {
     AppMethodBeat.i(133495);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      double d = this.VKa.getDouble(paramInt);
+      double d = this.adoe.getDouble(paramInt);
       AppMethodBeat.o(133495);
       return d;
     }
@@ -483,9 +483,9 @@ public final class f
   public final float getFloat(int paramInt)
   {
     AppMethodBeat.i(133494);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      float f = this.VKa.getFloat(paramInt);
+      float f = this.adoe.getFloat(paramInt);
       AppMethodBeat.o(133494);
       return f;
     }
@@ -496,9 +496,9 @@ public final class f
   public final int getInt(int paramInt)
   {
     AppMethodBeat.i(133492);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      paramInt = this.VKa.getInt(paramInt);
+      paramInt = this.adoe.getInt(paramInt);
       AppMethodBeat.o(133492);
       return paramInt;
     }
@@ -509,9 +509,9 @@ public final class f
   public final long getLong(int paramInt)
   {
     AppMethodBeat.i(133493);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      long l = this.VKa.getLong(paramInt);
+      long l = this.adoe.getLong(paramInt);
       AppMethodBeat.o(133493);
       return l;
     }
@@ -522,9 +522,9 @@ public final class f
   public final short getShort(int paramInt)
   {
     AppMethodBeat.i(133491);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      short s = this.VKa.getShort(paramInt);
+      short s = this.adoe.getShort(paramInt);
       AppMethodBeat.o(133491);
       return s;
     }
@@ -535,9 +535,9 @@ public final class f
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(133490);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      String str = this.VKa.getString(paramInt);
+      String str = this.adoe.getString(paramInt);
       AppMethodBeat.o(133490);
       return str;
     }
@@ -545,30 +545,12 @@ public final class f
     return null;
   }
   
-  public final SparseArray<Object>[] hBN()
-  {
-    if (!this.VJY) {
-      return null;
-    }
-    return new SparseArray[] { this.VJZ.VJI };
-  }
-  
-  public final HashMap hBO()
-  {
-    return this.VJZ.VJK;
-  }
-  
-  public final boolean hBP()
-  {
-    return this.VKb;
-  }
-  
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(133496);
-    if (!this.VJY)
+    if (!this.adoc)
     {
-      boolean bool = this.VKa.isNull(paramInt);
+      boolean bool = this.adoe.isNull(paramInt);
       AppMethodBeat.o(133496);
       return bool;
     }
@@ -576,34 +558,52 @@ public final class f
     return false;
   }
   
+  public final SparseArray<Object>[] jdT()
+  {
+    if (!this.adoc) {
+      return null;
+    }
+    return new SparseArray[] { this.adod.adnM };
+  }
+  
+  public final HashMap jdU()
+  {
+    return this.adod.adnO;
+  }
+  
+  public final boolean jdV()
+  {
+    return this.adof;
+  }
+  
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133480);
-    if (this.VJY)
+    if (this.adoc)
     {
-      if ((this.VJZ == null) || (!this.VJZ.asY(paramInt2))) {
-        asZ(paramInt2 / this.pageSize * this.pageSize);
+      if ((this.adod == null) || (!this.adod.azo(paramInt2))) {
+        azp(paramInt2 / this.pageSize * this.pageSize);
       }
       AppMethodBeat.o(133480);
       return true;
     }
-    if (this.VKa == null) {
-      hCb();
+    if (this.adoe == null) {
+      jeh();
     }
-    c localc = this.VKa;
-    paramInt1 = paramInt2 / localc.VJO;
-    if (localc.VJN.indexOfKey(paramInt1) >= 0)
+    c localc = this.adoe;
+    paramInt1 = paramInt2 / localc.adnS;
+    if (localc.adnR.indexOfKey(paramInt1) >= 0)
     {
-      int i = localc.VJO;
+      int i = localc.adnS;
       int j = localc.columnCount;
-      if (((Object[])localc.VJN.get(paramInt1))[(paramInt2 % i * j)] == null) {}
+      if (((Object[])localc.adnR.get(paramInt1))[(paramInt2 % i * j)] == null) {}
     }
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       if (paramInt1 == 0) {
-        asZ(paramInt2 / this.pageSize * this.pageSize);
+        azp(paramInt2 / this.pageSize * this.pageSize);
       }
-      this.VKa.moveToPosition(paramInt2);
+      this.adoe.moveToPosition(paramInt2);
       break;
     }
   }
@@ -616,78 +616,78 @@ public final class f
   public final boolean requery()
   {
     // Byte code:
-    //   0: ldc_w 441
+    //   0: ldc_w 440
     //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 444	com/tencent/mm/storagebase/a/f:isClosed	()Z
+    //   7: invokevirtual 443	com/tencent/mm/storagebase/a/f:isClosed	()Z
     //   10: ifeq +11 -> 21
-    //   13: ldc_w 441
+    //   13: ldc_w 440
     //   16: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: iconst_0
     //   20: ireturn
     //   21: aload_0
     //   22: monitorenter
     //   23: aload_0
-    //   24: getfield 83	com/tencent/mm/storagebase/a/f:VJV	Lcom/tencent/mm/storagebase/a/h;
-    //   27: invokevirtual 448	com/tencent/mm/storagebase/a/h:getDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   30: invokevirtual 453	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
+    //   24: getfield 83	com/tencent/mm/storagebase/a/f:adnZ	Lcom/tencent/mm/storagebase/a/h;
+    //   27: invokevirtual 447	com/tencent/mm/storagebase/a/h:getDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   30: invokevirtual 452	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
     //   33: ifne +13 -> 46
     //   36: aload_0
     //   37: monitorexit
-    //   38: ldc_w 441
+    //   38: ldc_w 440
     //   41: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: iconst_0
     //   45: ireturn
     //   46: aload_0
-    //   47: getfield 107	com/tencent/mm/storagebase/a/f:VJZ	Lcom/tencent/mm/storagebase/a/b;
+    //   47: getfield 107	com/tencent/mm/storagebase/a/f:adod	Lcom/tencent/mm/storagebase/a/b;
     //   50: ifnull +10 -> 60
     //   53: aload_0
-    //   54: getfield 107	com/tencent/mm/storagebase/a/f:VJZ	Lcom/tencent/mm/storagebase/a/b;
-    //   57: invokevirtual 456	com/tencent/mm/storagebase/a/b:clearData	()V
+    //   54: getfield 107	com/tencent/mm/storagebase/a/f:adod	Lcom/tencent/mm/storagebase/a/b;
+    //   57: invokevirtual 455	com/tencent/mm/storagebase/a/b:clearData	()V
     //   60: aload_0
     //   61: iconst_m1
-    //   62: putfield 457	com/tencent/mm/storagebase/a/f:mPos	I
+    //   62: putfield 456	com/tencent/mm/storagebase/a/f:mPos	I
     //   65: aload_0
     //   66: iconst_m1
     //   67: putfield 64	com/tencent/mm/storagebase/a/f:mCount	I
     //   70: aload_0
     //   71: getfield 77	com/tencent/mm/storagebase/a/f:mDriver	Lcom/tencent/wcdb/database/SQLiteCursorDriver;
     //   74: aload_0
-    //   75: invokeinterface 461 2 0
+    //   75: invokeinterface 460 2 0
     //   80: aload_0
     //   81: monitorexit
     //   82: aload_0
-    //   83: invokespecial 463	com/tencent/wcdb/AbstractCursor:requery	()Z
+    //   83: invokespecial 462	com/tencent/wcdb/AbstractCursor:requery	()Z
     //   86: istore_1
-    //   87: ldc_w 441
+    //   87: ldc_w 440
     //   90: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: iload_1
     //   94: ireturn
     //   95: astore_2
     //   96: aload_0
     //   97: monitorexit
-    //   98: ldc_w 441
+    //   98: ldc_w 440
     //   101: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: aload_2
     //   105: athrow
     //   106: astore_2
-    //   107: ldc_w 322
+    //   107: ldc_w 326
     //   110: new 151	java/lang/StringBuilder
     //   113: dup
-    //   114: ldc_w 465
+    //   114: ldc_w 464
     //   117: invokespecial 154	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   120: aload_2
-    //   121: invokevirtual 468	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   121: invokevirtual 467	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
     //   124: invokevirtual 163	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: invokevirtual 167	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   130: iconst_1
-    //   131: anewarray 258	java/lang/Object
+    //   131: anewarray 257	java/lang/Object
     //   134: dup
     //   135: iconst_0
     //   136: aload_2
     //   137: aastore
-    //   138: invokestatic 471	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   141: ldc_w 441
+    //   138: invokestatic 470	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   141: ldc_w 440
     //   144: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: iconst_0
     //   148: ireturn
@@ -711,14 +711,14 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract ArrayList<a> bD(ArrayList<Object> paramArrayList);
+    public abstract ArrayList<a> ce(ArrayList<Object> paramArrayList);
     
-    public abstract a hCa();
+    public abstract a jeg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.f
  * JD-Core Version:    0.7.0.1
  */

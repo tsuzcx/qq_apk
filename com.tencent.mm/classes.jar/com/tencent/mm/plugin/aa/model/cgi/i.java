@@ -1,45 +1,46 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.p;
+import com.tencent.mm.protocal.protobuf.q;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class i
-  extends com.tencent.mm.an.q
-  implements m
+  extends w
 {
-  private com.tencent.mm.an.i callback;
-  private d kwO;
-  private p mKy;
-  public com.tencent.mm.protocal.protobuf.q mKz;
+  private h callback;
+  private c nao;
+  private p pHg;
+  public q pHh;
   
   public i()
   {
     AppMethodBeat.i(63385);
-    d.a locala = new d.a();
-    locala.lBU = new p();
-    locala.lBV = new com.tencent.mm.protocal.protobuf.q();
+    c.a locala = new c.a();
+    locala.otE = new p();
+    locala.otF = new q();
     locala.funcId = 1698;
     locala.uri = "/cgi-bin/mmpay-bin/newaaoperation";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.kwO = locala.bgN();
-    this.mKy = ((p)d.b.b(this.kwO.lBR));
+    this.nao = locala.bEF();
+    this.pHg = ((p)c.b.b(this.nao.otB));
     AppMethodBeat.o(63385);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(63386);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
     AppMethodBeat.o(63386);
     return i;
   }
@@ -49,23 +50,23 @@ public final class i
     return 1698;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(63387);
+    AppMethodBeat.i(268411);
     Log.i("MicroMsg.NetSceneAAOperation", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.mKz = ((com.tencent.mm.protocal.protobuf.q)d.c.b(((d)params).lBS));
+    this.pHh = ((q)c.c.b(((c)params).otC));
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      Log.i("MicroMsg.NetSceneAAOperation", "retCode: %s, retMsg: %s, max_payer_num: %s, max_receiver_num: %s, max_total_num: %s, max_total_amount: %s, max_per_amount: %s, notice: %s, notice_url: %s", new Object[] { Integer.valueOf(this.mKz.fwx), this.mKz.tVo, Integer.valueOf(this.mKz.mKG), Integer.valueOf(this.mKz.mKH), Integer.valueOf(this.mKz.mKI), Long.valueOf(this.mKz.mKJ), Long.valueOf(this.mKz.mKK), this.mKz.mKL, this.mKz.mKM });
+      Log.i("MicroMsg.NetSceneAAOperation", "retCode: %s, retMsg: %s, max_payer_num: %s, max_receiver_num: %s, max_total_num: %s, max_total_amount: %s, max_per_amount: %s, notice: %s, notice_url: %s", new Object[] { Integer.valueOf(this.pHh.hAV), this.pHh.wYI, Integer.valueOf(this.pHh.pHo), Integer.valueOf(this.pHh.pHp), Integer.valueOf(this.pHh.pHq), Long.valueOf(this.pHh.pHr), Long.valueOf(this.pHh.pHs), this.pHh.pHt, this.pHh.pHu });
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(63387);
+    AppMethodBeat.o(268411);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.i
  * JD-Core Version:    0.7.0.1
  */

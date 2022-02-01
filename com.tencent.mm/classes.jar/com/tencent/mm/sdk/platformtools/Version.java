@@ -9,7 +9,7 @@ public class Version
   
   public Version(String paramString)
   {
-    AppMethodBeat.i(249079);
+    AppMethodBeat.i(243847);
     this.version = null;
     if (paramString != null) {
       this.version = paramString.split("\\.");
@@ -17,19 +17,19 @@ public class Version
     if ((this.version == null) || (this.version.length == 0)) {
       this.version = new String[] { paramString };
     }
-    AppMethodBeat.o(249079);
+    AppMethodBeat.o(243847);
   }
   
   public int compareTo(Version paramVersion)
   {
-    AppMethodBeat.i(249081);
+    AppMethodBeat.i(243852);
     int i = 0;
     while ((i < paramVersion.version.length) && (i < this.version.length))
     {
       int j = this.version[i].compareTo(paramVersion.version[i]);
       if (j != 0)
       {
-        AppMethodBeat.o(249081);
+        AppMethodBeat.o(243852);
         return j;
       }
       i += 1;
@@ -37,11 +37,11 @@ public class Version
     if (this.version.length > paramVersion.version.length)
     {
       i = this.version[(this.version.length - 1)].compareTo("0");
-      AppMethodBeat.o(249081);
+      AppMethodBeat.o(243852);
       return i;
     }
     i = "0".compareTo(paramVersion.version[(paramVersion.version.length - 1)]);
-    AppMethodBeat.o(249081);
+    AppMethodBeat.o(243852);
     return i;
   }
 }

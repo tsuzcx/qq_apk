@@ -3,11 +3,13 @@ package com.tenpay.ndk;
 import android.content.Context;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.security.MessageDigest;
 
@@ -55,17 +57,17 @@ public class CertUtil
   private void checkDir(String paramString)
   {
     AppMethodBeat.i(73293);
-    paramString = new q(paramString);
-    if (!paramString.ifE())
+    paramString = new u(paramString);
+    if (!paramString.jKS())
     {
-      paramString.ifL();
+      paramString.jKY();
       AppMethodBeat.o(73293);
       return;
     }
     if (!paramString.isDirectory())
     {
-      paramString.cFq();
-      paramString.ifL();
+      paramString.diJ();
+      paramString.jKY();
     }
     AppMethodBeat.o(73293);
   }
@@ -77,11 +79,11 @@ public class CertUtil
     {
       try
       {
-        paramString = new q(paramString);
-        if (paramString.ifE()) {
+        paramString = new u(paramString);
+        if (paramString.jKS()) {
           continue;
         }
-        boolean bool2 = paramString.ifL();
+        boolean bool2 = paramString.jKY();
         bool1 = bool2;
         if (bool2) {}
       }
@@ -96,42 +98,44 @@ public class CertUtil
     }
   }
   
+  private native byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
   private boolean del_all_files(String paramString)
   {
     AppMethodBeat.i(73295);
-    q localq = new q(paramString);
-    if (!localq.ifE())
+    u localu = new u(paramString);
+    if (!localu.jKS())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    if (!localq.isDirectory())
+    if (!localu.isDirectory())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    String[] arrayOfString = localq.ifI();
+    String[] arrayOfString = localu.jKW();
     int i = 0;
     boolean bool = false;
     if (i < arrayOfString.length) {
       if (paramString.endsWith("/"))
       {
-        localq = new q(paramString + arrayOfString[i]);
+        localu = new u(paramString + arrayOfString[i]);
         label102:
-        if (!localq.ifH()) {
+        if (!localu.jKV()) {
           break label161;
         }
-        localq.cFq();
+        localu.diJ();
       }
     }
     for (;;)
     {
       i += 1;
       break;
-      localq = new q(paramString + "/" + arrayOfString[i]);
+      localu = new u(paramString + "/" + arrayOfString[i]);
       break label102;
       label161:
-      if (localq.isDirectory())
+      if (localu.isDirectory())
       {
         del_all_files(paramString + "/" + arrayOfString[i]);
         del_dir(paramString + "/" + arrayOfString[i], true);
@@ -150,7 +154,7 @@ public class CertUtil
     {
       del_all_files(paramString);
       if (paramBoolean) {
-        new q(paramString.toString()).cFq();
+        new u(paramString.toString()).diJ();
       }
       AppMethodBeat.o(73296);
       return;
@@ -162,6 +166,8 @@ public class CertUtil
   }
   
   private native boolean encrypt();
+  
+  private native long expireTime();
   
   private native boolean genCertApplyCsr();
   
@@ -284,8 +290,8 @@ public class CertUtil
   {
     AppMethodBeat.i(73297);
     boolean bool = true;
-    paramString = new q(paramString);
-    if ((!paramString.ifE()) || (!paramString.isDirectory()) || (paramString.ifJ() == null)) {
+    paramString = new u(paramString);
+    if ((!paramString.jKS()) || (!paramString.isDirectory()) || (paramString.jKX() == null)) {
       bool = false;
     }
     AppMethodBeat.o(73297);
@@ -308,8 +314,8 @@ public class CertUtil
   {
     AppMethodBeat.i(73298);
     boolean bool = true;
-    paramString = new q(paramString);
-    if ((!paramString.ifE()) || (!paramString.isDirectory())) {
+    paramString = new u(paramString);
+    if ((!paramString.jKS()) || (!paramString.isDirectory())) {
       bool = false;
     }
     AppMethodBeat.o(73298);
@@ -392,26 +398,26 @@ public class CertUtil
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 303
+    //   2: ldc_w 307
     //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokespecial 305	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
+    //   10: invokespecial 309	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
     //   13: ifeq +12 -> 25
-    //   16: ldc_w 303
+    //   16: ldc_w 307
     //   19: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: aload_0
     //   23: monitorexit
     //   24: return
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 307	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
+    //   27: invokespecial 311	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
     //   30: aload_0
     //   31: aload_0
-    //   32: getfield 290	com/tenpay/ndk/CertUtil:token_dir	Ljava/lang/String;
+    //   32: getfield 294	com/tenpay/ndk/CertUtil:token_dir	Ljava/lang/String;
     //   35: iconst_1
-    //   36: invokespecial 174	com/tenpay/ndk/CertUtil:del_dir	(Ljava/lang/String;Z)V
-    //   39: ldc_w 303
+    //   36: invokespecial 176	com/tenpay/ndk/CertUtil:del_dir	(Ljava/lang/String;Z)V
+    //   39: ldc_w 307
     //   42: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   45: goto -23 -> 22
     //   48: astore_1
@@ -427,6 +433,56 @@ public class CertUtil
     //   from	to	target	type
     //   2	22	48	finally
     //   25	45	48	finally
+  }
+  
+  public String decrypt(String paramString1, String paramString2)
+  {
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(208626);
+        if ((isNullOrEmpty(paramString1)) || (isNullOrEmpty(paramString2)))
+        {
+          AppMethodBeat.o(208626);
+          paramString1 = localObject;
+          return paramString1;
+        }
+        setAndCheckDir(paramString1);
+        if ((!isNotEmptyDir(this.cert_dir)) || (!isNotEmptyDir(this.publ_dir)) || (!isNotEmptyDir(this.priv_dir)))
+        {
+          AppMethodBeat.o(208626);
+          paramString1 = localObject;
+          continue;
+        }
+        arrayOfByte = Base64.decode(paramString2.getBytes(), 0);
+      }
+      finally {}
+      byte[] arrayOfByte;
+      if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+      {
+        Log.e(TAG, "base64 decode data fail, %s", new Object[] { paramString2 });
+        AppMethodBeat.o(208626);
+        paramString1 = localObject;
+      }
+      else
+      {
+        this.cert_id = paramString1;
+        this.cipher_buf = null;
+        paramString1 = decrypt(paramString1.getBytes(), arrayOfByte);
+        if (paramString1 == null)
+        {
+          AppMethodBeat.o(208626);
+          paramString1 = localObject;
+        }
+        else
+        {
+          paramString1 = Base64.encodeToString(paramString1, 0);
+          AppMethodBeat.o(208626);
+        }
+      }
+    }
   }
   
   public String encrypt(String paramString1, String paramString2)
@@ -475,6 +531,8 @@ public class CertUtil
       }
     }
   }
+  
+  public native byte[] encryptWithPubkey(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, boolean paramBoolean);
   
   public byte[] genQrcode(String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
@@ -750,15 +808,15 @@ public class CertUtil
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 346
+    //   2: ldc_w 373
     //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokespecial 305	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
+    //   10: invokespecial 309	com/tenpay/ndk/CertUtil:isNullOrEmpty	(Ljava/lang/String;)Z
     //   13: ifeq +15 -> 28
     //   16: iconst_0
     //   17: istore_2
-    //   18: ldc_w 346
+    //   18: ldc_w 373
     //   21: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aload_0
     //   25: monitorexit
@@ -766,14 +824,14 @@ public class CertUtil
     //   27: ireturn
     //   28: aload_0
     //   29: aload_1
-    //   30: invokespecial 307	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
+    //   30: invokespecial 311	com/tenpay/ndk/CertUtil:setDir	(Ljava/lang/String;)V
     //   33: aload_0
     //   34: aload_1
     //   35: putfield 79	com/tenpay/ndk/CertUtil:cert_id	Ljava/lang/String;
     //   38: aload_0
-    //   39: invokespecial 348	com/tenpay/ndk/CertUtil:getTokenCount	()I
+    //   39: invokespecial 375	com/tenpay/ndk/CertUtil:getTokenCount	()I
     //   42: istore_2
-    //   43: ldc_w 346
+    //   43: ldc_w 373
     //   46: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -25 -> 24
     //   52: astore_1
@@ -799,52 +857,52 @@ public class CertUtil
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 350
+    //   2: ldc_w 377
     //   5: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
-    //   9: invokevirtual 262	java/lang/String:length	()I
+    //   9: invokevirtual 266	java/lang/String:length	()I
     //   12: ifgt +15 -> 27
     //   15: iconst_0
     //   16: istore_3
-    //   17: ldc_w 350
+    //   17: ldc_w 377
     //   20: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: iload_3
     //   26: ireturn
     //   27: aload_0
-    //   28: new 152	java/lang/String
+    //   28: new 154	java/lang/String
     //   31: dup
     //   32: aload_2
-    //   33: invokevirtual 239	java/lang/String:getBytes	()[B
-    //   36: ldc_w 336
-    //   39: invokespecial 320	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   33: invokevirtual 243	java/lang/String:getBytes	()[B
+    //   36: ldc_w 363
+    //   39: invokespecial 345	java/lang/String:<init>	([BLjava/lang/String;)V
     //   42: putfield 77	com/tenpay/ndk/CertUtil:svr_cert	Ljava/lang/String;
     //   45: aload_0
     //   46: aload_1
-    //   47: invokevirtual 352	com/tenpay/ndk/CertUtil:clearCert	(Ljava/lang/String;)V
+    //   47: invokevirtual 379	com/tenpay/ndk/CertUtil:clearCert	(Ljava/lang/String;)V
     //   50: aload_0
     //   51: aload_1
-    //   52: invokespecial 311	com/tenpay/ndk/CertUtil:setAndCheckDir	(Ljava/lang/String;)V
+    //   52: invokespecial 315	com/tenpay/ndk/CertUtil:setAndCheckDir	(Ljava/lang/String;)V
     //   55: aload_0
     //   56: aload_0
-    //   57: getfield 278	com/tenpay/ndk/CertUtil:cert_dir	Ljava/lang/String;
-    //   60: invokespecial 354	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
+    //   57: getfield 282	com/tenpay/ndk/CertUtil:cert_dir	Ljava/lang/String;
+    //   60: invokespecial 381	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
     //   63: pop
     //   64: aload_0
     //   65: aload_0
-    //   66: getfield 282	com/tenpay/ndk/CertUtil:priv_dir	Ljava/lang/String;
-    //   69: invokespecial 354	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
+    //   66: getfield 286	com/tenpay/ndk/CertUtil:priv_dir	Ljava/lang/String;
+    //   69: invokespecial 381	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
     //   72: pop
     //   73: aload_0
     //   74: aload_0
-    //   75: getfield 286	com/tenpay/ndk/CertUtil:publ_dir	Ljava/lang/String;
-    //   78: invokespecial 354	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
+    //   75: getfield 290	com/tenpay/ndk/CertUtil:publ_dir	Ljava/lang/String;
+    //   78: invokespecial 381	com/tenpay/ndk/CertUtil:create_dir	(Ljava/lang/String;)Z
     //   81: pop
     //   82: aload_0
-    //   83: invokespecial 356	com/tenpay/ndk/CertUtil:importCert	()Z
+    //   83: invokespecial 383	com/tenpay/ndk/CertUtil:importCert	()Z
     //   86: istore_3
-    //   87: ldc_w 350
+    //   87: ldc_w 377
     //   90: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: goto -70 -> 23
     //   96: astore_1
@@ -879,13 +937,13 @@ public class CertUtil
     try
     {
       Log.d(TAG, "READ_PHONE_STATE.getSubscriberId, %s", new Object[] { Util.getStack() });
-      this.imsi = localTelephonyManager.getSubscriberId();
+      this.imsi = ((String)a.a(localTelephonyManager, "com/tenpay/ndk/CertUtil", "init", "(Landroid/content/Context;Lcom/tenpay/ndk/CertUtil$EventListener;)V", "android/telephony/TelephonyManager", "getSubscriberId", "()Ljava/lang/String;"));
       Log.d(TAG, "READ_PHONE_STATE.getSimSerialNumber", new Object[] { Util.getStack() });
       this.iccid = localTelephonyManager.getSimSerialNumber();
       Log.d(TAG, "READ_PHONE_STATE.getDeviceId, %s", new Object[] { Util.getStack() });
-      this.imei = localTelephonyManager.getDeviceId();
+      this.imei = ((String)a.a(localTelephonyManager, "com/tenpay/ndk/CertUtil", "init", "(Landroid/content/Context;Lcom/tenpay/ndk/CertUtil$EventListener;)V", "android/telephony/TelephonyManager", "getDeviceId", "()Ljava/lang/String;"));
       this.softid = Settings.System.getString(paramContext.getContentResolver(), "android_id");
-      label131:
+      label173:
       this.deskey = paramEventListener.getUniqueID();
       Log.d(TAG, "init deskey %s imei: %s", new Object[] { this.deskey, this.imei });
       for (;;)
@@ -898,7 +956,7 @@ public class CertUtil
     }
     catch (Exception paramContext)
     {
-      break label131;
+      break label173;
     }
   }
   

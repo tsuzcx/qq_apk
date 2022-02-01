@@ -1,61 +1,57 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.plugin.finder.utils.p;
+import com.tencent.mm.plugin.finder.cgi.bi;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.azz;
-import com.tencent.mm.protocal.protobuf.baa;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.bhq;
+import com.tencent.mm.protocal.protobuf.bhr;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetUserGameConfig;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetUserGameConfigResponse;", "appid", "", "scene", "", "(Ljava/lang/String;I)V", "TAG", "getAppid", "()Ljava/lang/String;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetUserGameConfigRequest;", "getScene", "()I", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveFanClubMember;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetFanClubMembersResponse;", "cookies", "Lcom/tencent/mm/protobuf/ByteString;", "liveId", "", "objectId", "lastBuff", "scene", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protobuf/ByteString;JJLcom/tencent/mm/protobuf/ByteString;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetFanClubMembersRequest;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveGetFanClubMembersRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends c<baa>
+  extends c<bhr>
 {
+  private final bhq Cvr;
   private final String TAG;
-  private final String appid;
-  private final int scene;
-  private azz xYc;
   
-  public j(String paramString, int paramInt)
+  public j(b paramb1, long paramLong1, long paramLong2, b paramb2, int paramInt)
   {
     super(null);
-    AppMethodBeat.i(287157);
-    this.appid = paramString;
-    this.scene = paramInt;
-    this.TAG = "Finder.CgiFinderLiveGetUserGameConfig";
-    this.xYc = new azz();
-    paramString = this.xYc;
-    Object localObject = ao.xcj;
-    paramString.RLM = ao.dnO();
-    this.xYc.RLN = z.bdh();
-    this.xYc.app_id = this.appid;
-    this.xYc.scene = this.scene;
-    paramString = this.xYc;
-    localObject = p.ADF;
-    paramString.SLA = p.ecZ();
-    paramString = new d.a();
-    paramString.c((a)this.xYc);
-    localObject = new baa();
-    ((baa)localObject).setBaseResponse(new jh());
-    ((baa)localObject).getBaseResponse().Tef = new eaf();
-    paramString.d((a)localObject);
-    paramString.TW("/cgi-bin/micromsg-bin/finderlivegetusergameconfig");
-    paramString.vD(5274);
-    c(paramString.bgN());
-    Log.i(this.TAG, "init " + this.appid + ", " + this.scene);
-    AppMethodBeat.o(287157);
+    AppMethodBeat.i(351175);
+    this.TAG = "CgiFinderLiveFanClubMember";
+    this.Cvr = new bhq();
+    bhq localbhq = this.Cvr;
+    bi localbi = bi.ABn;
+    localbhq.YIY = bi.dVu();
+    this.Cvr.YIZ = z.bAW();
+    this.Cvr.YJa = paramb1;
+    this.Cvr.mMJ = paramLong1;
+    this.Cvr.object_id = paramLong2;
+    this.Cvr.ZEQ = paramb2;
+    this.Cvr.scene = paramInt;
+    paramb1 = new c.a();
+    paramb1.otE = ((a)this.Cvr);
+    paramb2 = new bhr();
+    paramb2.setBaseResponse(new kd());
+    paramb2.getBaseResponse().akjO = new etl();
+    paramb1.otF = ((a)paramb2);
+    paramb1.uri = "/cgi-bin/micromsg-bin/finderlivegetfanclubmembers";
+    paramb1.funcId = 6282;
+    c(paramb1.bEF());
+    Log.i(this.TAG, "init " + this.Cvr.YIZ + ',' + this.Cvr.YJa + ',' + this.Cvr.mMJ + ',' + this.Cvr.object_id + ',' + this.Cvr.ZEQ + ',' + this.Cvr.scene);
+    AppMethodBeat.o(351175);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.j
  * JD-Core Version:    0.7.0.1
  */

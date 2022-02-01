@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_2" android:id="@id/jzp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/jd6" />
-</FrameLayout>
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/g_o" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/d6" />
+    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/g_p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/g_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+</LinearLayout>

@@ -11,7 +11,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.i.c;
+import com.tencent.mm.plugin.emoji.h.c;
 import com.tencent.mm.pluginsdk.ui.emoji.PopEmojiView;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
@@ -21,24 +21,24 @@ public class PreViewListGridView
   private MMHandler mHandler;
   private int mOrientation;
   private WindowManager mWindowManager;
-  private int uQA;
-  private boolean uQB;
-  private volatile int uQC;
-  private String uQD;
-  private PopEmojiView uQE;
-  private a uQF;
-  private boolean uQr;
-  private WindowManager.LayoutParams uQx;
-  private int uQy;
-  private int uQz;
+  private boolean xZc;
+  private WindowManager.LayoutParams xZi;
+  private int xZj;
+  private int xZk;
+  private int xZl;
+  private boolean xZm;
+  private volatile int xZn;
+  private String xZo;
+  private PopEmojiView xZp;
+  private a xZq;
   
   public PreViewListGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109421);
-    this.uQr = true;
+    this.xZc = true;
     this.mHandler = new MMHandler();
-    this.uQC = -1;
+    this.xZn = -1;
     init(paramContext);
     AppMethodBeat.o(109421);
   }
@@ -47,9 +47,9 @@ public class PreViewListGridView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109422);
-    this.uQr = true;
+    this.xZc = true;
     this.mHandler = new MMHandler();
-    this.uQC = -1;
+    this.xZn = -1;
     init(paramContext);
     AppMethodBeat.o(109422);
   }
@@ -57,35 +57,35 @@ public class PreViewListGridView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(109423);
-    this.uQE = new PopEmojiView(getContext());
-    this.uQy = paramContext.getResources().getDimensionPixelSize(i.c.emoji_preview_image_size);
+    this.xZp = new PopEmojiView(getContext());
+    this.xZj = paramContext.getResources().getDimensionPixelSize(h.c.emoji_preview_image_size);
     this.mWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.uQx = new WindowManager.LayoutParams(-1, -1, 2, 8, 1);
-    this.uQx.width = this.uQy;
-    this.uQx.height = this.uQy;
-    this.uQx.gravity = 17;
+    this.xZi = new WindowManager.LayoutParams(-1, -1, 2, 8, 1);
+    this.xZi.width = this.xZj;
+    this.xZi.height = this.xZj;
+    this.xZi.gravity = 17;
     this.mOrientation = getResources().getConfiguration().orientation;
     if (this.mOrientation == 2)
     {
-      this.uQz = this.mWindowManager.getDefaultDisplay().getHeight();
-      this.uQA = this.mWindowManager.getDefaultDisplay().getWidth();
+      this.xZk = this.mWindowManager.getDefaultDisplay().getHeight();
+      this.xZl = this.mWindowManager.getDefaultDisplay().getWidth();
       AppMethodBeat.o(109423);
       return;
     }
-    this.uQz = this.mWindowManager.getDefaultDisplay().getWidth();
-    this.uQA = this.mWindowManager.getDefaultDisplay().getHeight();
+    this.xZk = this.mWindowManager.getDefaultDisplay().getWidth();
+    this.xZl = this.mWindowManager.getDefaultDisplay().getHeight();
     AppMethodBeat.o(109423);
   }
   
-  public final void cWX()
+  public final void dCD()
   {
     AppMethodBeat.i(109426);
-    if (this.uQB)
+    if (this.xZm)
     {
-      this.mWindowManager.removeView(this.uQE);
-      this.uQB = false;
+      this.mWindowManager.removeView(this.xZp);
+      this.xZm = false;
     }
-    this.uQD = "";
+    this.xZo = "";
     AppMethodBeat.o(109426);
   }
   
@@ -100,8 +100,8 @@ public class PreViewListGridView
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(109425);
       return bool;
-    } while (!this.uQB);
-    cWX();
+    } while (!this.xZm);
+    dCD();
     AppMethodBeat.o(109425);
     return true;
   }
@@ -110,13 +110,13 @@ public class PreViewListGridView
   {
     AppMethodBeat.i(109424);
     super.setAdapter(paramListAdapter);
-    this.uQF = ((a)paramListAdapter);
+    this.xZq = ((a)paramListAdapter);
     AppMethodBeat.o(109424);
   }
   
   public void setEnablePreView(boolean paramBoolean)
   {
-    this.uQr = paramBoolean;
+    this.xZc = paramBoolean;
   }
 }
 

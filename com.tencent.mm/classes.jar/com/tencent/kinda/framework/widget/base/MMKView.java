@@ -1,6 +1,5 @@
 package com.tencent.kinda.framework.widget.base;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,6 +12,7 @@ import android.view.Window;
 import com.facebook.yoga.YogaNode;
 import com.facebook.yoga.android.YogaLayout;
 import com.tencent.kinda.framework.R.color;
+import com.tencent.kinda.framework.R.id;
 import com.tencent.kinda.framework.animate.KindaGlobalAnimator;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.framework.widget.tools.FlexBoxAttr;
@@ -30,18 +30,19 @@ import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
 import com.tencent.kinda.gen.TouchAction;
 import com.tencent.kinda.gen.TouchEvent;
+import com.tencent.kinda.gen.TraitsType;
 import com.tencent.kinda.gen.Visible;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.kinda.gen.VoidKRectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.accessibility.type.ViewType;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.a.a.a;
+import com.tencent.mm.ui.aw;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -70,23 +71,26 @@ public class MMKView<T extends View>
   protected DynamicColor shadowColor;
   protected float shadowOffset;
   protected float shadowRadius;
+  protected boolean supportDynamicSize;
   private DynamicColor tmpSaveBgColor;
   private float topLeftBorderRadius;
   private float topRightBorderRadius;
   private WeakReference<UIPagePlatformDelegateImpl> uiPageDelegate;
   protected T view;
+  private WeakReference<MMKView> wClickAsView;
   
   public MMKView()
   {
     AppMethodBeat.i(19126);
     this.borderColor = new DynamicColor(0L, 0L);
     this.borderPressedColor = new DynamicColor(0L, 0L);
-    this.backgroundColor = new DynamicColor(0L, 0L);
+    this.backgroundColor = null;
     this.topLeftBorderRadius = 0.0F;
     this.topRightBorderRadius = 0.0F;
     this.bottomLeftBorderRadius = 0.0F;
     this.bottomRightBorderRadius = 0.0F;
     this.shadowColor = new DynamicColor(0L, 0L);
+    this.supportDynamicSize = true;
     this.mAnimatorProxy = new KViewAnimatorProxy(this);
     AppMethodBeat.o(19126);
   }
@@ -148,6 +152,34 @@ public class MMKView<T extends View>
     AppMethodBeat.o(19225);
   }
   
+  public void accessibilityClickFrom(KView paramKView)
+  {
+    AppMethodBeat.i(226714);
+    if ((paramKView instanceof MMKView))
+    {
+      if (!a.a.jlv().jls())
+      {
+        AppMethodBeat.o(226714);
+        return;
+      }
+      MMKView localMMKView = (MMKView)paramKView;
+      ((MMKView)paramKView).getView().post(new MMKView.2(this, this, localMMKView));
+    }
+    AppMethodBeat.o(226714);
+  }
+  
+  public void accessibilityTraitsType(TraitsType paramTraitsType)
+  {
+    AppMethodBeat.i(226715);
+    if (paramTraitsType == TraitsType.BUTTON)
+    {
+      paramTraitsType = new com.tencent.mm.wallet_core.c();
+      paramTraitsType.setViewType(ViewType.Button);
+      getView().setAccessibilityDelegate(paramTraitsType);
+    }
+    AppMethodBeat.o(226715);
+  }
+  
   public void addBlurEffect(int paramInt) {}
   
   public KPoint convertPointToScreen(KPoint paramKPoint)
@@ -172,7 +204,7 @@ public class MMKView<T extends View>
     int[] arrayOfInt2 = new int[2];
     getView().getLocationOnScreen(arrayOfInt1);
     if (paramKView == null) {
-      arrayOfInt2[1] = ar.getStatusBarHeight(getView().getContext());
+      arrayOfInt2[1] = aw.getStatusBarHeight(getView().getContext());
     }
     for (;;)
     {
@@ -191,6 +223,13 @@ public class MMKView<T extends View>
     return paramContext;
   }
   
+  public void expandHitSize(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(226716);
+    MMKViewUtil.setExpandSize(this.view, paramFloat1, paramFloat2);
+    AppMethodBeat.o(226716);
+  }
+  
   public String getAccessibilityString()
   {
     AppMethodBeat.i(19242);
@@ -206,7 +245,10 @@ public class MMKView<T extends View>
   
   public boolean getAccessible()
   {
-    return false;
+    AppMethodBeat.i(226692);
+    boolean bool = getView().isImportantForAccessibility();
+    AppMethodBeat.o(226692);
+    return bool;
   }
   
   public Align getAlignSelf()
@@ -235,7 +277,16 @@ public class MMKView<T extends View>
   
   public DynamicColor getBackgroundColor()
   {
-    return this.backgroundColor;
+    AppMethodBeat.i(226687);
+    if (this.backgroundColor == null)
+    {
+      localDynamicColor = new DynamicColor(0L, 0L);
+      AppMethodBeat.o(226687);
+      return localDynamicColor;
+    }
+    DynamicColor localDynamicColor = this.backgroundColor;
+    AppMethodBeat.o(226687);
+    return localDynamicColor;
   }
   
   public DynamicColor getBorderColor()
@@ -326,31 +377,31 @@ public class MMKView<T extends View>
   
   public float getFrameOriginX()
   {
-    AppMethodBeat.i(264159);
+    AppMethodBeat.i(226717);
     if ((getView() == null) || (getView().getContext() == null))
     {
       Log.e("base_MMKView", "%s call convertPointToView params illegal!, getView(): %s.", new Object[] { this, getView() });
-      AppMethodBeat.o(264159);
+      AppMethodBeat.o(226717);
       return 0.0F;
     }
     Log.i("base_MMKView", " get getFrameOriginX getView().getLeft(): %s.", new Object[] { Integer.valueOf(getView().getLeft()) });
-    float f = a.H(getView().getContext(), getView().getLeft());
-    AppMethodBeat.o(264159);
+    float f = com.tencent.mm.cd.a.K(getView().getContext(), getView().getLeft());
+    AppMethodBeat.o(226717);
     return f;
   }
   
   public float getFrameOriginY()
   {
-    AppMethodBeat.i(264160);
+    AppMethodBeat.i(226718);
     if ((getView() == null) || (getView().getContext() == null))
     {
       Log.e("base_MMKView", "%s call convertPointToView params illegal!, getView(): %s.", new Object[] { this, getView() });
-      AppMethodBeat.o(264160);
+      AppMethodBeat.o(226718);
       return 0.0F;
     }
     Log.i("base_MMKView", " get getFrameOriginY getView().getTop(): %s.", new Object[] { Integer.valueOf(getView().getTop()) });
-    float f = a.H(getView().getContext(), getView().getTop());
-    AppMethodBeat.o(264160);
+    float f = com.tencent.mm.cd.a.K(getView().getContext(), getView().getTop());
+    AppMethodBeat.o(226718);
     return f;
   }
   
@@ -570,6 +621,14 @@ public class MMKView<T extends View>
     return localPositionType;
   }
   
+  public String getReportId()
+  {
+    AppMethodBeat.i(226725);
+    String str = (String)this.view.getTag(R.id.wcpay_report_view_id);
+    AppMethodBeat.o(226725);
+    return str;
+  }
+  
   public float getRight()
   {
     AppMethodBeat.i(19147);
@@ -634,6 +693,11 @@ public class MMKView<T extends View>
   public float getShadowRadius()
   {
     return 0.0F;
+  }
+  
+  public boolean getSupportDynamicSize()
+  {
+    return this.supportDynamicSize;
   }
   
   public float getTop()
@@ -777,12 +841,12 @@ public class MMKView<T extends View>
   
   public void requestFrameImpl(final VoidKRectCallback paramVoidKRectCallback)
   {
-    AppMethodBeat.i(264163);
+    AppMethodBeat.i(226723);
     this.view.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(263971);
+        AppMethodBeat.i(226642);
         KRect localKRect = new KRect();
         localKRect.mOrigin = new KPoint();
         localKRect.mSize = new KSize();
@@ -791,10 +855,10 @@ public class MMKView<T extends View>
         localKRect.mSize.mWidth = MMKView.this.view.getWidth();
         localKRect.mSize.mHeight = MMKView.this.view.getHeight();
         paramVoidKRectCallback.call(localKRect);
-        AppMethodBeat.o(263971);
+        AppMethodBeat.o(226642);
       }
     });
-    AppMethodBeat.o(264163);
+    AppMethodBeat.o(226723);
   }
   
   public void requestLayout() {}
@@ -806,7 +870,18 @@ public class MMKView<T extends View>
     AppMethodBeat.o(19241);
   }
   
-  public void setAccessible(boolean paramBoolean) {}
+  public void setAccessible(boolean paramBoolean)
+  {
+    AppMethodBeat.i(226689);
+    if (paramBoolean)
+    {
+      getView().setImportantForAccessibility(1);
+      AppMethodBeat.o(226689);
+      return;
+    }
+    getView().setImportantForAccessibility(2);
+    AppMethodBeat.o(226689);
+  }
   
   public void setAlignSelf(Align paramAlign)
   {
@@ -885,7 +960,7 @@ public class MMKView<T extends View>
     this.borderWidth = paramFloat;
     if (this.borderWidth > 0.0F)
     {
-      paramFloat = a.fromDPToPix(MMApplicationContext.getContext(), (int)paramFloat);
+      paramFloat = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)paramFloat);
       checkIfNeedCreateBorderDrawable().setBorderWidth(paramFloat);
       setViewBackground(this.backgroundDrawable);
     }
@@ -910,7 +985,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19233);
     this.bottomLeftBorderRadius = paramFloat;
     if (this.bottomLeftBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setBottomLeftBorderRadius(a.fromDPToPix(MMApplicationContext.getContext(), (int)this.bottomLeftBorderRadius));
+      checkIfNeedCreateBorderDrawable().setBottomLeftBorderRadius(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)this.bottomLeftBorderRadius));
     }
     AppMethodBeat.o(19233);
   }
@@ -927,7 +1002,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19234);
     this.bottomRightBorderRadius = paramFloat;
     if (this.bottomRightBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setBottomRightBorderRadius(a.fromDPToPix(MMApplicationContext.getContext(), (int)this.bottomRightBorderRadius));
+      checkIfNeedCreateBorderDrawable().setBottomRightBorderRadius(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)this.bottomRightBorderRadius));
     }
     AppMethodBeat.o(19234);
   }
@@ -945,13 +1020,12 @@ public class MMKView<T extends View>
     this.borderRadius = paramFloat;
     if (this.borderRadius >= 0.0F)
     {
-      checkIfNeedCreateBorderDrawable().setBorderRadius(a.fromDPToPix(MMApplicationContext.getContext(), (int)this.borderRadius));
+      checkIfNeedCreateBorderDrawable().setBorderRadius(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)this.borderRadius));
       setViewBackground(this.backgroundDrawable);
     }
     AppMethodBeat.o(19230);
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
   public void setEnableHighLight(boolean paramBoolean)
   {
     AppMethodBeat.i(19164);
@@ -964,18 +1038,25 @@ public class MMKView<T extends View>
           AppMethodBeat.i(19121);
           if (MMKView.this.isHighlight)
           {
-            if ((paramAnonymousMotionEvent.getAction() == 0) || (paramAnonymousMotionEvent.getAction() == 2))
+            if ((paramAnonymousMotionEvent.getAction() != 0) && (paramAnonymousMotionEvent.getAction() != 2)) {
+              break label241;
+            }
+            if (MMKView.this.backgroundColor == null)
             {
-              MMKView.access$102(MMKView.this, MMKView.this.backgroundColor);
+              MMKView.access$102(MMKView.this, new DynamicColor(0L, 0L));
               MMKView.access$200(MMKView.this).setBackgroundColor(MMKView.this.mContext.getResources().getColor(R.color.list_devider_color));
               MMKView.this.setViewBackground(MMKView.this.backgroundDrawable);
             }
           }
-          else if (MMKView.this.onTouchCallback != null)
+          else
           {
-            paramAnonymousView = TouchAction.DOWN;
-            switch (paramAnonymousMotionEvent.getAction())
+            label98:
+            if (MMKView.this.onTouchCallback != null)
             {
+              paramAnonymousView = TouchAction.DOWN;
+              switch (paramAnonymousMotionEvent.getAction())
+              {
+              }
             }
           }
           for (;;)
@@ -984,12 +1065,17 @@ public class MMKView<T extends View>
             MMKView.this.onTouchCallback.onTouch(paramAnonymousView);
             AppMethodBeat.o(19121);
             return false;
+            MMKView.access$102(MMKView.this, MMKView.this.backgroundColor);
+            long l = ColorUtil.MergeColors(ColorUtil.getColorByModeNoCompat(MMKView.this.backgroundColor), MMKView.this.mContext.getResources().getColor(R.color.FG_3));
+            MMKView.access$200(MMKView.this).setBackgroundColor((int)l);
+            break;
+            label241:
             if ((paramAnonymousMotionEvent.getAction() != 1) && (paramAnonymousMotionEvent.getAction() != 3)) {
-              break;
+              break label98;
             }
             MMKView.access$200(MMKView.this).setBackgroundColor((int)ColorUtil.getColorByMode(MMKView.this.tmpSaveBgColor));
             MMKView.this.setViewBackground(MMKView.this.backgroundDrawable);
-            break;
+            break label98;
             paramAnonymousView = TouchAction.DOWN;
             continue;
             paramAnonymousView = TouchAction.MOVE;
@@ -1025,7 +1111,7 @@ public class MMKView<T extends View>
   
   public void setFrameImpl(KRect paramKRect, final VoidCallback paramVoidCallback)
   {
-    AppMethodBeat.i(264162);
+    AppMethodBeat.i(226722);
     setTranslateX(paramKRect.mOrigin.mX);
     setTranslateY(paramKRect.mOrigin.mY);
     setWidth(paramKRect.mSize.mWidth);
@@ -1034,12 +1120,12 @@ public class MMKView<T extends View>
     {
       public void run()
       {
-        AppMethodBeat.i(263957);
+        AppMethodBeat.i(226635);
         paramVoidCallback.call();
-        AppMethodBeat.o(263957);
+        AppMethodBeat.o(226635);
       }
     });
-    AppMethodBeat.o(264162);
+    AppMethodBeat.o(226722);
   }
   
   public void setHeight(float paramFloat)
@@ -1208,7 +1294,7 @@ public class MMKView<T extends View>
   {
     AppMethodBeat.i(19235);
     this.onClickCallback = paramKViewOnClickCallback;
-    getView().setOnClickListener(new MMKView.2(this));
+    getView().setOnClickListener(new MMKView.3(this));
     AppMethodBeat.o(19235);
   }
   
@@ -1216,7 +1302,7 @@ public class MMKView<T extends View>
   {
     AppMethodBeat.i(19236);
     this.onLongClickCallback = paramKViewOnLongClickCallback;
-    getView().setOnLongClickListener(new MMKView.3(this));
+    getView().setOnLongClickListener(new MMKView.4(this));
     AppMethodBeat.o(19236);
   }
   
@@ -1229,7 +1315,7 @@ public class MMKView<T extends View>
       {
         public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(19124);
+          AppMethodBeat.i(226634);
           if (MMKView.this.onTouchCallback != null)
           {
             paramAnonymousView = TouchAction.DOWN;
@@ -1241,7 +1327,7 @@ public class MMKView<T extends View>
           {
             paramAnonymousView = new TouchEvent(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY(), paramAnonymousView);
             MMKView.this.onTouchCallback.onTouch(paramAnonymousView);
-            AppMethodBeat.o(19124);
+            AppMethodBeat.o(226634);
             return false;
             paramAnonymousView = TouchAction.DOWN;
             continue;
@@ -1318,6 +1404,15 @@ public class MMKView<T extends View>
     AppMethodBeat.o(19140);
   }
   
+  public void setReportId(String paramString)
+  {
+    AppMethodBeat.i(226724);
+    if (!Util.isNullOrNil(paramString)) {
+      this.view.setTag(R.id.wcpay_report_view_id, paramString);
+    }
+    AppMethodBeat.o(226724);
+  }
+  
   public void setRight(float paramFloat)
   {
     AppMethodBeat.i(19146);
@@ -1379,12 +1474,12 @@ public class MMKView<T extends View>
   
   public void setSecure(boolean paramBoolean)
   {
-    AppMethodBeat.i(264154);
-    int i = ((b)h.ae(b.class)).a(b.a.vLh, 1);
+    AppMethodBeat.i(226696);
+    int i = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zbH, 1);
     Log.i("base_MMKView", "setSecure %s, enableValue: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
     if (i != 1)
     {
-      AppMethodBeat.o(264154);
+      AppMethodBeat.o(226696);
       return;
     }
     this.isSecure = paramBoolean;
@@ -1397,14 +1492,14 @@ public class MMKView<T extends View>
         Activity localActivity = (Activity)localContext;
         if ((localActivity.isFinishing()) || (localActivity.isDestroyed()))
         {
-          AppMethodBeat.o(264154);
+          AppMethodBeat.o(226696);
           return;
         }
         if (this.isSecure)
         {
           localUIPagePlatformDelegateImpl.addSecureView(hashCode());
           ((Activity)localContext).getWindow().addFlags(8192);
-          AppMethodBeat.o(264154);
+          AppMethodBeat.o(226696);
           return;
         }
         localUIPagePlatformDelegateImpl.removeSecureView(Integer.valueOf(hashCode()));
@@ -1413,7 +1508,7 @@ public class MMKView<T extends View>
         }
       }
     }
-    AppMethodBeat.o(264154);
+    AppMethodBeat.o(226696);
   }
   
   public void setShadowColor(DynamicColor paramDynamicColor)
@@ -1424,6 +1519,11 @@ public class MMKView<T extends View>
   public void setShadowOffset(float paramFloat) {}
   
   public void setShadowRadius(float paramFloat) {}
+  
+  public void setSupportDynamicSize(boolean paramBoolean)
+  {
+    this.supportDynamicSize = paramBoolean;
+  }
   
   public void setTop(float paramFloat)
   {
@@ -1443,7 +1543,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19231);
     this.topLeftBorderRadius = paramFloat;
     if (this.topLeftBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setTopLeftBorderRadius(a.fromDPToPix(MMApplicationContext.getContext(), (int)this.topLeftBorderRadius));
+      checkIfNeedCreateBorderDrawable().setTopLeftBorderRadius(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)this.topLeftBorderRadius));
     }
     AppMethodBeat.o(19231);
   }
@@ -1460,7 +1560,7 @@ public class MMKView<T extends View>
     AppMethodBeat.i(19232);
     this.topRightBorderRadius = paramFloat;
     if (this.topRightBorderRadius >= 0.0F) {
-      checkIfNeedCreateBorderDrawable().setTopRightBorderRadius(a.fromDPToPix(MMApplicationContext.getContext(), (int)this.topRightBorderRadius));
+      checkIfNeedCreateBorderDrawable().setTopRightBorderRadius(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), (int)this.topRightBorderRadius));
     }
     AppMethodBeat.o(19232);
   }
@@ -1532,7 +1632,7 @@ public class MMKView<T extends View>
   public void setVisible(Visible paramVisible)
   {
     AppMethodBeat.i(19223);
-    switch (7.$SwitchMap$com$tencent$kinda$gen$Visible[paramVisible.ordinal()])
+    switch (8.$SwitchMap$com$tencent$kinda$gen$Visible[paramVisible.ordinal()])
     {
     }
     for (;;)
@@ -1575,7 +1675,7 @@ public class MMKView<T extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKView
  * JD-Core Version:    0.7.0.1
  */

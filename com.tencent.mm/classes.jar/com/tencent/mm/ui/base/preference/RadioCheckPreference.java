@@ -16,13 +16,13 @@ import com.tencent.mm.ah.a.h;
 public class RadioCheckPreference
   extends Preference
 {
-  private int OAB;
-  private String OAC;
-  private int OAD;
-  private TextView OEk;
-  private CheckBox WqD;
-  private int WqE;
-  private boolean bBh;
+  private int VpO;
+  private String VpP;
+  private int VpQ;
+  private TextView Vtv;
+  private CheckBox adXS;
+  private int adXT;
+  private boolean duj;
   
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,21 +33,21 @@ public class RadioCheckPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142666);
-    this.bBh = false;
-    this.OAB = -1;
-    this.OAC = "";
-    this.OAD = 8;
-    this.WqE = -1;
+    this.duj = false;
+    this.VpO = -1;
+    this.VpP = "";
+    this.VpQ = 8;
+    this.adXT = -1;
     setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(142666);
   }
   
-  public final void BT(boolean paramBoolean)
+  public final void Hy(boolean paramBoolean)
   {
     AppMethodBeat.i(142669);
-    this.bBh = paramBoolean;
-    if (this.WqD != null) {
-      this.WqD.setChecked(paramBoolean);
+    this.duj = paramBoolean;
+    if (this.adXS != null) {
+      this.adXS.setChecked(paramBoolean);
     }
     AppMethodBeat.o(142669);
   }
@@ -56,30 +56,30 @@ public class RadioCheckPreference
   {
     AppMethodBeat.i(142668);
     super.onBindView(paramView);
-    auO(8);
-    this.WqD = ((CheckBox)paramView.findViewById(a.g.radiocheck));
-    this.WqD.setChecked(this.bBh);
-    this.OEk = ((TextView)paramView.findViewById(a.g.tipicon));
-    paramView = this.OAC;
-    int i = this.OAB;
-    this.OAB = i;
-    this.OAC = paramView;
-    if (this.OEk != null)
+    aBq(8);
+    this.adXS = ((CheckBox)paramView.findViewById(a.g.radiocheck));
+    this.adXS.setChecked(this.duj);
+    this.Vtv = ((TextView)paramView.findViewById(a.g.tipicon));
+    paramView = this.VpP;
+    int i = this.VpO;
+    this.VpO = i;
+    this.VpP = paramView;
+    if (this.Vtv != null)
     {
       if (i > 0) {
-        this.OEk.setBackgroundResource(this.OAB);
+        this.Vtv.setBackgroundResource(this.VpO);
       }
-      if (!TextUtils.isEmpty(this.OAC)) {
-        this.OEk.setText(this.OAC);
+      if (!TextUtils.isEmpty(this.VpP)) {
+        this.Vtv.setText(this.VpP);
       }
     }
-    this.OAD = this.OAD;
-    if (this.OEk != null) {
-      this.OEk.setVisibility(this.OAD);
+    this.VpQ = this.VpQ;
+    if (this.Vtv != null) {
+      this.Vtv.setVisibility(this.VpQ);
     }
-    paramView = (LinearLayout.LayoutParams)this.WqD.getLayoutParams();
-    if (-1 != this.WqE) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.WqE, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.adXS.getLayoutParams();
+    if (-1 != this.adXT) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.adXT, paramView.bottomMargin);
     }
     AppMethodBeat.o(142668);
   }

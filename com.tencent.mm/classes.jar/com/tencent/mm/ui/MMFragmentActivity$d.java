@@ -1,25 +1,11 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vending.e.a;
+import android.content.Intent;
 
-abstract class MMFragmentActivity$d
-  implements SharedPreferences.OnSharedPreferenceChangeListener, a
+public abstract interface MMFragmentActivity$d
 {
-  public MMFragmentActivity$d()
-  {
-    MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).registerOnSharedPreferenceChangeListener(this);
-  }
-  
-  public void dead()
-  {
-    Log.i("MicroMsg.MMFragmentActivity", "OnSharedPreferenceChangeListenerLifeCycleAware dead");
-    MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).unregisterOnSharedPreferenceChangeListener(this);
-  }
+  public abstract boolean e(Context paramContext, String paramString, Intent paramIntent);
 }
 
 

@@ -5,8 +5,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.RejectedExecutionException;
 
-class ReflectConstructor
+public class ReflectConstructor
 {
+  public static final String TAG = "ReflectConstructor";
   private Class<?> mClass;
   private Constructor<?> mConstructor;
   private Class<?>[] mParameterTypes;
@@ -49,7 +50,10 @@ class ReflectConstructor
           this.mConstructor = this.mClass.getDeclaredConstructor(this.mParameterTypes);
           this.mConstructor.setAccessible(true);
         }
-        catch (NoSuchMethodException paramClass) {}
+        catch (NoSuchMethodException paramClass)
+        {
+          Log.e("ReflectConstructor", "init error:" + paramClass.getLocalizedMessage());
+        }
       }
       AppMethodBeat.o(154603);
     }
@@ -120,7 +124,7 @@ class ReflectConstructor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.ReflectConstructor
  * JD-Core Version:    0.7.0.1
  */

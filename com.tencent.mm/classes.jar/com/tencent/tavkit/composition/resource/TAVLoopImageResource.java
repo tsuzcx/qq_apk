@@ -7,10 +7,10 @@ import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tavkit.ciimage.CIImage;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/tavkit/composition/resource/TAVLoopImageResource;", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "images", "", "Lcom/tencent/tavkit/ciimage/CIImage;", "interval", "Lcom/tencent/tav/coremedia/CMTime;", "duration", "(Ljava/util/List;Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V", "ciImageHashMap", "Ljava/lang/ThreadLocal;", "Landroid/util/SparseArray;", "clone", "imageAtTime", "time", "renderSize", "Lcom/tencent/tav/coremedia/CGSize;", "tavkit_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tavkit/composition/resource/TAVLoopImageResource;", "Lcom/tencent/tavkit/composition/resource/TAVResource;", "images", "", "Lcom/tencent/tavkit/ciimage/CIImage;", "interval", "Lcom/tencent/tav/coremedia/CMTime;", "duration", "(Ljava/util/List;Lcom/tencent/tav/coremedia/CMTime;Lcom/tencent/tav/coremedia/CMTime;)V", "ciImageHashMap", "Ljava/lang/ThreadLocal;", "Landroid/util/SparseArray;", "clone", "imageAtTime", "time", "renderSize", "Lcom/tencent/tav/coremedia/CGSize;", "tavkit_release"}, k=1, mv={1, 1, 15})
 public final class TAVLoopImageResource
   extends TAVResource
 {
@@ -20,40 +20,40 @@ public final class TAVLoopImageResource
   
   public TAVLoopImageResource(List<? extends CIImage> paramList, CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    AppMethodBeat.i(213274);
+    AppMethodBeat.i(218856);
     this.images = paramList;
     this.interval = paramCMTime1;
     this.ciImageHashMap = new ThreadLocal();
     setDuration(paramCMTime2);
     setSourceTimeRange(new CMTimeRange(CMTime.CMTimeZero, paramCMTime2));
-    AppMethodBeat.o(213274);
+    AppMethodBeat.o(218856);
   }
   
   public final TAVResource clone()
   {
-    AppMethodBeat.i(213261);
+    AppMethodBeat.i(218875);
     Object localObject = this.images;
     CMTime localCMTime1 = this.interval;
     CMTime localCMTime2 = this.duration;
-    p.j(localCMTime2, "duration");
+    s.r(localCMTime2, "duration");
     localObject = (TAVResource)new TAVLoopImageResource((List)localObject, localCMTime1, localCMTime2);
-    AppMethodBeat.o(213261);
+    AppMethodBeat.o(218875);
     return localObject;
   }
   
   public final CIImage imageAtTime(CMTime paramCMTime, CGSize paramCGSize)
   {
-    AppMethodBeat.i(213270);
-    p.k(paramCMTime, "time");
-    p.k(paramCGSize, "renderSize");
+    AppMethodBeat.i(218895);
+    s.t(paramCMTime, "time");
+    s.t(paramCGSize, "renderSize");
     if (!this.sourceTimeRange.containsTime(paramCMTime))
     {
-      AppMethodBeat.o(213270);
+      AppMethodBeat.o(218895);
       return null;
     }
     if (this.images.isEmpty())
     {
-      AppMethodBeat.o(213270);
+      AppMethodBeat.o(218895);
       return null;
     }
     ThreadLocal localThreadLocal = this.ciImageHashMap;
@@ -70,12 +70,12 @@ public final class TAVLoopImageResource
     if (paramCMTime != null)
     {
       paramCMTime.reset();
-      AppMethodBeat.o(213270);
+      AppMethodBeat.o(218895);
       return paramCMTime;
     }
     paramCGSize.put(i, ((CIImage)this.images.get(i)).clone());
     paramCMTime = (CIImage)paramCGSize.get(i);
-    AppMethodBeat.o(213270);
+    AppMethodBeat.o(218895);
     return paramCMTime;
   }
 }

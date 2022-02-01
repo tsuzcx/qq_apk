@@ -1,168 +1,127 @@
 package com.tencent.mm.plugin.mv.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.mv.model.k;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.daz;
-import com.tencent.mm.protocal.protobuf.dba;
-import com.tencent.mm.protocal.protobuf.dbs;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.ays;
+import com.tencent.mm.protocal.protobuf.ayt;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import org.json.JSONObject;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvGetMVRecommendList;", "Lcom/tencent/mm/plugin/mv/model/netscene/BaseMvNetScene;", "currentPageData", "Lcom/tencent/mm/protocal/protobuf/MvReportData;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "songInfoBase64", "", "pageHashCode", "", "(Lcom/tencent/mm/protocal/protobuf/MvReportData;Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;Ljava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListReq;", "response", "Lcom/tencent/mm/protocal/protobuf/MusicLiveGetRelatedListResp;", "getSongInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "getSongInfoBase64", "()Ljava/lang/String;", "create", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "reportData", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvGetFinderFavFeed;", "Lcom/tencent/mm/plugin/mv/model/netscene/BaseMvNetScene;", "finderUserName", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetFavListRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/FinderGetFavListResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getContinueFlag", "()Ljava/lang/Integer;", "getMegaVideoCount", "getResponse", "getTotalCount", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
   extends a
 {
-  public static final a Gdx;
-  private final bds GaB;
-  public dba GbX;
-  private final String GbY;
-  private daz Gdn;
-  private com.tencent.mm.an.i callback;
-  private final d lKU;
+  public static final a LZb;
+  private ays LZc;
+  public ayt LZd;
+  private h callback;
+  private final c oDw;
   
   static
   {
-    AppMethodBeat.i(226674);
-    Gdx = new a((byte)0);
-    AppMethodBeat.o(226674);
+    AppMethodBeat.i(286326);
+    LZb = new a((byte)0);
+    AppMethodBeat.o(286326);
   }
   
-  public j(dbs paramdbs, bds parambds, String paramString, int paramInt)
+  public j(String paramString, b paramb)
   {
-    super(paramInt);
-    AppMethodBeat.i(226672);
-    this.GaB = parambds;
-    this.GbY = paramString;
-    parambds = new d.a();
-    parambds.vD(6860);
-    parambds.TW("/cgi-bin/micromsg-bin/musiclivegetrelatedlist");
-    parambds.c((com.tencent.mm.cd.a)new daz());
-    parambds.d((com.tencent.mm.cd.a)new dba());
-    parambds = parambds.bgN();
-    p.j(parambds, "commReqRespBuilder.buildInstance()");
-    this.lKU = parambds;
-    parambds = this.lKU.bhX();
-    if (parambds == null)
+    AppMethodBeat.i(286319);
+    Object localObject = new c.a();
+    ((c.a)localObject).funcId = 3966;
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/findergetfavlist";
+    ((c.a)localObject).otE = ((com.tencent.mm.bx.a)new ays());
+    ((c.a)localObject).otF = ((com.tencent.mm.bx.a)new ayt());
+    localObject = ((c.a)localObject).bEF();
+    kotlin.g.b.s.s(localObject, "commReqRespBuilder.buildInstance()");
+    this.oDw = ((c)localObject);
+    localObject = c.b.b(this.oDw.otB);
+    if (localObject == null)
     {
-      paramdbs = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MusicLiveGetRelatedListReq");
-      AppMethodBeat.o(226672);
-      throw paramdbs;
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListRequest");
+      AppMethodBeat.o(286319);
+      throw paramString;
     }
-    this.Gdn = ((daz)parambds);
-    parambds = this.Gdn;
-    if (parambds != null) {
-      parambds.scene = 102;
+    this.LZc = ((ays)localObject);
+    localObject = this.LZc;
+    if (localObject != null) {
+      ((ays)localObject).finderUsername = paramString;
     }
-    parambds = this.Gdn;
-    if (parambds != null)
+    paramString = this.LZc;
+    if (paramString != null) {
+      paramString.lastBuffer = paramb;
+    }
+    paramString = this.LZc;
+    if (paramString != null) {
+      paramString.hJx = 0;
+    }
+    paramString = this.LZc;
+    if (paramString != null)
     {
-      paramString = new aqe();
-      if (paramdbs != null) {
-        paramString.scene = paramdbs.TIZ;
-      }
-      paramString.yjR = cm.bfD();
-      parambds.RLM = paramString;
+      paramb = new atz();
+      paramb.scene = 93;
+      localObject = ah.aiuX;
+      paramString.ZEc = paramb;
     }
-    paramdbs = new JSONObject();
-    paramdbs.put("type", 2);
-    parambds = new JSONObject();
-    parambds.put("songid", this.GaB.kkU);
-    paramdbs.put("mvquery", parambds);
-    paramdbs.put("songinfobufferbase64", this.GbY);
-    parambds = this.Gdn;
-    if (parambds != null)
-    {
-      parambds.source = paramdbs.toString();
-      AppMethodBeat.o(226672);
-      return;
-    }
-    AppMethodBeat.o(226672);
+    AppMethodBeat.o(286319);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(226661);
-    p.k(paramg, "dispatcher");
-    p.k(parami, "callback");
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.lKU, (m)this);
-    AppMethodBeat.o(226661);
+    AppMethodBeat.i(286332);
+    kotlin.g.b.s.u(paramg, "dispatcher");
+    kotlin.g.b.s.u(paramh, "callback");
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.oDw, (m)this);
+    AppMethodBeat.o(286332);
     return i;
   }
   
   public final int getType()
   {
-    return 6860;
+    return 3966;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(226665);
+    AppMethodBeat.i(286343);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
-    Log.i("MicroMsg.Mv.NetSceneMusicMvGetMVRecommendList", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.Mv.NetSceneMusicMvGetFinderFavFeed", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       params = this.callback;
-      if (params != null)
-      {
-        params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-        AppMethodBeat.o(226665);
-        return;
+      if (params != null) {
+        params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
       }
-      AppMethodBeat.o(226665);
+      AppMethodBeat.o(286343);
       return;
     }
-    params = this.lKU.bhY();
+    params = c.c.b(this.oDw.otC);
     if (params == null)
     {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MusicLiveGetRelatedListResp");
-      AppMethodBeat.o(226665);
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(286343);
       throw paramString;
     }
-    this.GbX = ((dba)params);
-    paramArrayOfByte = new dba();
-    params = this.GbX;
-    if (params != null) {}
-    for (params = params.toByteArray();; params = null)
-    {
-      paramArrayOfByte.parseFrom(params);
-      params = com.tencent.mm.plugin.mv.model.i.GbW;
-      String str = this.GbY;
-      p.k(str, "songInfoBase64");
-      p.k(paramArrayOfByte, "response");
-      if (com.tencent.mm.plugin.mv.model.i.pvA)
-      {
-        long l = Util.currentTicks();
-        Log.i("MicroMsg.Mv.MusicMvCgiRetCache", "putMvRecommendList, songInfoBase64:" + str.hashCode() + ", response:" + paramArrayOfByte.hashCode() + ", timestamp:" + l);
-        com.tencent.mm.plugin.mv.model.i.GbU.put(new k(str), new com.tencent.mm.plugin.mv.model.j(paramArrayOfByte, l));
-        params.OI(l);
-      }
-      params = this.callback;
-      if (params == null) {
-        break;
-      }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(226665);
-      return;
+    this.LZd = ((ayt)params);
+    params = this.callback;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
     }
-    AppMethodBeat.o(226665);
+    AppMethodBeat.o(286343);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvGetMVRecommendList$Companion;", "", "()V", "TAG", "", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvGetFinderFavFeed$Companion;", "", "()V", "TAG", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

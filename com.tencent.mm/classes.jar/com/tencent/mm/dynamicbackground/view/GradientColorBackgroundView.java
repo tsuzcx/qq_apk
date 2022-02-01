@@ -15,43 +15,43 @@ import com.tencent.mm.dynamicbackground.a.a;
 import com.tencent.mm.dynamicbackground.a.a.b;
 import com.tencent.mm.dynamicbackground.a.a.c;
 import com.tencent.mm.dynamicbackground.a.c;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/view/GradientColorBackgroundView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backGradient", "Landroid/graphics/LinearGradient;", "beginColor", "endColor", "mColorHelper", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "mConfigChanged", "", "mLastUpdateColorTime", "", "needUpdateColor", "paint", "Landroid/graphics/Paint;", "updateMode", "buildGradient", "", "needInvalidate", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setColor", "colorStart", "colorEnd", "setUpdateMode", "Companion", "dynamicbg_release"})
+@Metadata(bv={1, 0, 2}, d1={""}, d2={"Lcom/tencent/mm/dynamicbackground/view/GradientColorBackgroundView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backGradient", "Landroid/graphics/LinearGradient;", "beginColor", "endColor", "mColorHelper", "Lcom/tencent/mm/dynamicbackground/util/DynamicBackgroundColorHelper;", "mConfigChanged", "", "mLastUpdateColorTime", "", "needUpdateColor", "paint", "Landroid/graphics/Paint;", "updateMode", "buildGradient", "", "needInvalidate", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setColor", "colorStart", "colorEnd", "setUpdateMode", "Companion", "dynamicbg_release"}, k=1, mv={1, 1, 11})
 public final class GradientColorBackgroundView
   extends View
 {
-  public static final GradientColorBackgroundView.a jDB;
+  public static final GradientColorBackgroundView.a mdq;
   private int beginColor;
   private int endColor;
-  private boolean jDA;
-  private LinearGradient jDw;
-  private boolean jDx;
-  private a jDy;
-  private long jDz;
+  private LinearGradient mdl;
+  private boolean mdm;
+  private a mdn;
+  private long mdo;
+  private boolean mdp;
   private Paint paint;
   private int updateMode;
   
   static
   {
     AppMethodBeat.i(103125);
-    jDB = new GradientColorBackgroundView.a((byte)0);
+    mdq = new GradientColorBackgroundView.a((byte)0);
     AppMethodBeat.o(103125);
   }
   
   public GradientColorBackgroundView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(214081);
+    AppMethodBeat.i(233184);
     this.paint = new Paint();
     this.beginColor = -5778734;
     this.endColor = -14072734;
-    this.jDy = new a();
-    this.jDz = -1L;
-    this.jDA = true;
+    this.mdn = new a();
+    this.mdo = -1L;
+    this.mdp = true;
     init();
-    AppMethodBeat.o(214081);
+    AppMethodBeat.o(233184);
   }
   
   public GradientColorBackgroundView(Context paramContext, AttributeSet paramAttributeSet)
@@ -61,9 +61,9 @@ public final class GradientColorBackgroundView
     this.paint = new Paint();
     this.beginColor = -5778734;
     this.endColor = -14072734;
-    this.jDy = new a();
-    this.jDz = -1L;
-    this.jDA = true;
+    this.mdn = new a();
+    this.mdo = -1L;
+    this.mdp = true;
     init();
     AppMethodBeat.o(103123);
   }
@@ -75,44 +75,44 @@ public final class GradientColorBackgroundView
     this.paint = new Paint();
     this.beginColor = -5778734;
     this.endColor = -14072734;
-    this.jDy = new a();
-    this.jDz = -1L;
-    this.jDA = true;
+    this.mdn = new a();
+    this.mdo = -1L;
+    this.mdp = true;
     init();
     AppMethodBeat.o(103124);
   }
   
-  private final void ek(boolean paramBoolean)
+  private final void eX(boolean paramBoolean)
   {
-    AppMethodBeat.i(214080);
-    this.jDw = new LinearGradient(0.0F, 0.0F, getWidth(), getHeight(), this.beginColor, this.endColor, Shader.TileMode.CLAMP);
-    this.paint.setShader((Shader)this.jDw);
+    AppMethodBeat.i(233180);
+    this.mdl = new LinearGradient(0.0F, 0.0F, getWidth(), getHeight(), this.beginColor, this.endColor, Shader.TileMode.CLAMP);
+    this.paint.setShader((Shader)this.mdl);
     if (paramBoolean) {
       invalidate();
     }
-    this.jDA = false;
-    AppMethodBeat.o(214080);
+    this.mdp = false;
+    AppMethodBeat.o(233180);
   }
   
   private final void init()
   {
     AppMethodBeat.i(103119);
     this.updateMode = 1;
-    if (this.jDx)
+    if (this.mdm)
     {
-      this.jDy.aAG();
-      localObject = a.jBI;
-      this.beginColor = a.c.j(this.jDy.jBG.jBN);
-      localObject = a.jBI;
-      this.endColor = a.c.j(this.jDy.jBG.jBO);
+      this.mdn.aTB();
+      localObject = a.mbv;
+      this.beginColor = a.c.s(this.mdn.mbt.mbA);
+      localObject = a.mbv;
+      this.endColor = a.c.s(this.mdn.mbt.mbB);
       AppMethodBeat.o(103119);
       return;
     }
     Object localObject = getContext();
-    p.j(localObject, "context");
+    s.r(localObject, "context");
     this.beginColor = ((Context)localObject).getResources().getColor(a.a.dynamic_bg_start_color);
     localObject = getContext();
-    p.j(localObject, "context");
+    s.r(localObject, "context");
     this.endColor = ((Context)localObject).getResources().getColor(a.a.dynamic_bg_end_color);
     AppMethodBeat.o(103119);
   }
@@ -122,15 +122,15 @@ public final class GradientColorBackgroundView
     AppMethodBeat.i(103121);
     super.onDraw(paramCanvas);
     if (this.updateMode == 1) {
-      if ((this.jDx) && ((this.jDz == -1L) || (System.currentTimeMillis() - this.jDz >= 60000L)))
+      if ((this.mdm) && ((this.mdo == -1L) || (System.currentTimeMillis() - this.mdo >= 60000L)))
       {
-        this.jDz = System.currentTimeMillis();
-        this.jDy.aAG();
-        a.c localc = a.jBI;
-        this.beginColor = a.c.j(this.jDy.jBG.jBN);
-        localc = a.jBI;
-        this.endColor = a.c.j(this.jDy.jBG.jBO);
-        ek(false);
+        this.mdo = System.currentTimeMillis();
+        this.mdn.aTB();
+        a.c localc = a.mbv;
+        this.beginColor = a.c.s(this.mdn.mbt.mbA);
+        localc = a.mbv;
+        this.endColor = a.c.s(this.mdn.mbt.mbB);
+        eX(false);
       }
     }
     while (paramCanvas != null)
@@ -138,12 +138,12 @@ public final class GradientColorBackgroundView
       paramCanvas.drawRect(0.0F, 0.0F, getWidth(), getHeight(), this.paint);
       AppMethodBeat.o(103121);
       return;
-      if ((!this.jDx) && (this.jDA))
+      if ((!this.mdm) && (this.mdp))
       {
-        ek(true);
+        eX(true);
         continue;
-        if (this.jDA) {
-          ek(true);
+        if (this.mdp) {
+          eX(true);
         }
       }
     }
@@ -152,9 +152,9 @@ public final class GradientColorBackgroundView
   
   public final void setColor(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(214074);
+    AppMethodBeat.i(233205);
     post((Runnable)new b(this, paramInt1, paramInt2));
-    AppMethodBeat.o(214074);
+    AppMethodBeat.o(233205);
   }
   
   public final void setUpdateMode(int paramInt)
@@ -164,19 +164,19 @@ public final class GradientColorBackgroundView
     if (this.updateMode != paramInt)
     {
       this.updateMode = paramInt;
-      this.jDz = -1L;
-      if (this.jDx)
+      this.mdo = -1L;
+      if (this.mdm)
       {
-        this.jDw = null;
+        this.mdl = null;
         AppMethodBeat.o(103120);
         return;
       }
-      ek(true);
+      eX(true);
     }
     AppMethodBeat.o(103120);
   }
   
-  @l(iBK={1, 1, 11}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(bv={1, 0, 2}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 11})
   static final class b
     implements Runnable
   {
@@ -184,11 +184,11 @@ public final class GradientColorBackgroundView
     
     public final void run()
     {
-      AppMethodBeat.i(214071);
-      GradientColorBackgroundView.a(this.jDC, paramInt1);
-      GradientColorBackgroundView.b(this.jDC, paramInt2);
-      GradientColorBackgroundView.a(this.jDC);
-      AppMethodBeat.o(214071);
+      AppMethodBeat.i(233152);
+      GradientColorBackgroundView.a(this.mdr, paramInt1);
+      GradientColorBackgroundView.b(this.mdr, paramInt2);
+      GradientColorBackgroundView.a(this.mdr);
+      AppMethodBeat.o(233152);
     }
   }
 }

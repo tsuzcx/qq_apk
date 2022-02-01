@@ -12,19 +12,19 @@ import com.tencent.mm.plugin.backup.b.b.b;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.g.b.c;
 import com.tencent.mm.plugin.backup.g.j.a;
-import com.tencent.mm.plugin.backup.i.i;
 import com.tencent.mm.plugin.backup.i.j;
 import com.tencent.mm.plugin.backup.i.m;
 import com.tencent.mm.plugin.backup.i.n;
 import com.tencent.mm.plugin.backup.i.o;
 import com.tencent.mm.plugin.backup.i.v;
 import com.tencent.mm.plugin.backup.i.w;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
@@ -34,38 +34,38 @@ import java.util.Set;
 
 public final class d
 {
-  private static boolean rMB = false;
-  private static boolean rOe = false;
+  private static boolean uXO = false;
+  private static boolean uZs = false;
   public byte[] bitmapData;
-  public b.b rLE;
-  private Set<com.tencent.mm.plugin.backup.b.b.d> rNI;
-  public b.c rNP;
-  public final j.a rNQ;
-  private LinkedList<String> rNX;
-  private com.tencent.mm.plugin.backup.c.b rNY;
-  public com.tencent.mm.plugin.backup.c.c rNZ;
-  public boolean rNw;
-  private long rOa;
-  private long rOb;
-  public boolean rOc;
-  public int rOd;
-  private int rOf;
-  private int rOg;
-  private int rOh;
-  public final com.tencent.mm.plugin.backup.g.b.d rOi;
-  public e rOj;
+  public b.b uWR;
+  public boolean uYK;
+  private Set<com.tencent.mm.plugin.backup.b.b.d> uYW;
+  public b.c uZd;
+  public final j.a uZe;
+  private LinkedList<String> uZl;
+  private com.tencent.mm.plugin.backup.c.b uZm;
+  public com.tencent.mm.plugin.backup.c.c uZn;
+  private long uZo;
+  private long uZp;
+  public boolean uZq;
+  public int uZr;
+  private int uZt;
+  private int uZu;
+  private int uZv;
+  public final com.tencent.mm.plugin.backup.g.b.d uZw;
+  public e uZx;
   
   public d()
   {
     AppMethodBeat.i(21349);
-    this.rOa = 0L;
-    this.rOb = 0L;
-    this.rOc = false;
-    this.rOd = 0;
-    this.rNw = false;
-    this.rOh = 0;
-    this.rNI = new HashSet();
-    this.rOi = new com.tencent.mm.plugin.backup.g.b.d()
+    this.uZo = 0L;
+    this.uZp = 0L;
+    this.uZq = false;
+    this.uZr = 0;
+    this.uYK = false;
+    this.uZv = 0;
+    this.uYW = new HashSet();
+    this.uZw = new com.tencent.mm.plugin.backup.g.b.d()
     {
       public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, byte[] paramAnonymousArrayOfByte, int paramAnonymousInt2)
       {
@@ -77,7 +77,7 @@ public final class d
           Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify isLocal:%b type:%d seq:%d buf:%d", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(i) });
           if ((paramAnonymousBoolean) && (paramAnonymousArrayOfByte != null) && (10011 == paramAnonymousInt1))
           {
-            i = b.csI().crZ().rKS;
+            i = b.cVs().cUJ().uWg;
             Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify local disconnect, backupMoveState:%d", new Object[] { Integer.valueOf(i) });
             switch (i)
             {
@@ -89,127 +89,127 @@ public final class d
         {
           if (paramAnonymousInt1 == 1)
           {
-            d.this.rOj.stop();
+            d.this.uZx.stop();
             localObject = (v)g.a(new v(), paramAnonymousArrayOfByte);
             if (localObject == null)
             {
               Log.e("MicroMsg.BackupMoveServer", "authReq parseBuf failed:%d", new Object[] { Integer.valueOf(Util.getLength(paramAnonymousArrayOfByte)) });
-              b.csI().crZ().rKS = -5;
-              d.this.Bg(-5);
+              b.cVs().cUJ().uWg = -5;
+              d.this.Bt(-5);
               AppMethodBeat.o(21339);
               return;
               i = paramAnonymousArrayOfByte.length;
               break;
-              b.csI().csJ().stop();
-              b.csI().crZ().rKS = -100;
-              d.this.Bg(-100);
+              b.cVs().cVt().stop();
+              b.cVs().cUJ().uWg = -100;
+              d.this.Bt(-100);
               continue;
-              b.csI().csJ().stop();
+              b.cVs().cVt().stop();
               continue;
               d.this.cancel(true);
-              b.csI().csJ().stop();
-              b.csI().crZ().rKS = -4;
-              d.this.Bg(-4);
-              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(485L, 24L, 1L, false);
-              if ((d.a(d.this) == null) || (d.a(d.this).rLH == 0L)) {
+              b.cVs().cVt().stop();
+              b.cVs().cUJ().uWg = -4;
+              d.this.Bt(-4);
+              h.OAn.idkeyStat(485L, 24L, 1L, false);
+              if ((d.a(d.this) == null) || (d.a(d.this).uWU == 0L)) {
                 continue;
               }
-              long l = Util.milliSecondsToNow(d.a(d.this).rLH);
-              Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify backup transfer disconnect, backupDataSize:%d kb, backupCostTime:%d s", new Object[] { Long.valueOf(d.a(d.this).csr()), Long.valueOf(l / 1000L) });
+              long l = Util.milliSecondsToNow(d.a(d.this).uWU);
+              Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify backup transfer disconnect, backupDataSize:%d kb, backupCostTime:%d s", new Object[] { Long.valueOf(d.a(d.this).cVb()), Long.valueOf(l / 1000L) });
               continue;
               d.this.cancel(true);
               continue;
             }
-            if (Util.isNullOrNil(b.csI().rKK)) {
-              b.csI().rKK = ((v)localObject).ID;
+            if (Util.isNullOrNil(b.cVs().uVY)) {
+              b.cVs().uVY = ((v)localObject).vgy;
             }
-            if (!((v)localObject).ID.equals(b.csI().rKK))
+            if (!((v)localObject).vgy.equals(b.cVs().uVY))
             {
-              Log.e("MicroMsg.BackupMoveServer", "id not equel:self:%s, authReq.id:%s", new Object[] { b.csI().rKK, ((v)localObject).ID });
+              Log.e("MicroMsg.BackupMoveServer", "id not equel:self:%s, authReq.id:%s", new Object[] { b.cVs().uVY, ((v)localObject).vgy });
               d.this.cancel(false);
-              b.csI().crZ().rKS = -5;
-              d.this.Bg(-5);
+              b.cVs().cUJ().uWg = -5;
+              d.this.Bt(-5);
               AppMethodBeat.o(21339);
               return;
             }
-            Log.i("MicroMsg.BackupMoveServer", "authReq info, id:%s, step:%d", new Object[] { ((v)localObject).ID, Integer.valueOf(((v)localObject).rWs) });
-            if (((v)localObject).rWs == 0)
+            Log.i("MicroMsg.BackupMoveServer", "authReq info, id:%s, step:%d", new Object[] { ((v)localObject).vgy, Integer.valueOf(((v)localObject).vhI) });
+            if (((v)localObject).vhI == 0)
             {
-              paramAnonymousArrayOfByte = ((v)localObject).rVk.UH;
-              if (!b.csI().rKL.equals(new String(l.d(paramAnonymousArrayOfByte, com.tencent.mm.plugin.backup.b.d.csd()))))
+              paramAnonymousArrayOfByte = ((v)localObject).vgA.Op;
+              if (!b.cVs().uVZ.equals(new String(l.d(paramAnonymousArrayOfByte, com.tencent.mm.plugin.backup.b.d.cUN()))))
               {
-                d.EH(paramAnonymousInt2);
-                b.csI().crZ().rKS = -5;
-                d.this.Bg(-5);
+                d.Fi(paramAnonymousInt2);
+                b.cVs().cUJ().uWg = -5;
+                d.this.Bt(-5);
               }
-              if (((v)localObject).rWt < com.tencent.mm.plugin.backup.b.c.rKC)
+              if (((v)localObject).crz < com.tencent.mm.plugin.backup.b.c.uVQ)
               {
-                Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify old move, version:%d", new Object[] { Integer.valueOf(((v)localObject).rWt) });
-                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(485L, 103L, 1L, false);
-                b.csI().crZ().rKS = -12;
-                d.this.Bg(-12);
+                Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify old move, version:%d", new Object[] { Integer.valueOf(((v)localObject).crz) });
+                h.OAn.idkeyStat(485L, 103L, 1L, false);
+                b.cVs().cUJ().uWg = -12;
+                d.this.Bt(-12);
                 AppMethodBeat.o(21339);
                 return;
               }
               Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify start move");
               d.a(d.this, paramAnonymousInt2);
-              if (((v)localObject).rWu == com.tencent.mm.plugin.backup.b.c.rKE)
+              if (((v)localObject).vhJ == com.tencent.mm.plugin.backup.b.c.uVS)
               {
-                paramAnonymousBoolean = d.csY();
+                paramAnonymousBoolean = d.cVI();
                 Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify client resume move! isResumeDataExist:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
                 if (paramAnonymousBoolean)
                 {
-                  b.csI().csK().rOd = com.tencent.mm.plugin.backup.b.c.rKE;
-                  d.this.H(null);
-                  d.this.kM(false);
+                  b.cVs().cVu().uZr = com.tencent.mm.plugin.backup.b.c.uVS;
+                  d.this.K(null);
+                  d.this.lZ(false);
                   AppMethodBeat.o(21339);
                   return;
                 }
               }
-              b.csI().csK().rOd = com.tencent.mm.plugin.backup.b.c.rKD;
-              if ((d.bSX()) || (d.rMB))
+              b.cVs().cVu().uZr = com.tencent.mm.plugin.backup.b.c.uVR;
+              if ((d.XU()) || (d.uXO))
               {
-                if ((d.bSX()) && (d.rMB) && ((((v)localObject).rWv & com.tencent.mm.plugin.backup.b.c.rKH) == 0) && ((((v)localObject).rWv & com.tencent.mm.plugin.backup.b.c.rKI) == 0))
+                if ((d.XU()) && (d.uXO) && ((((v)localObject).vhK & com.tencent.mm.plugin.backup.b.c.uVV) == 0) && ((((v)localObject).vhK & com.tencent.mm.plugin.backup.b.c.uVW) == 0))
                 {
-                  b.csI().crZ().rKS = -31;
-                  d.this.Bg(-31);
+                  b.cVs().cUJ().uWg = -31;
+                  d.this.Bt(-31);
                   d.b(d.this, 1);
                   AppMethodBeat.o(21339);
                   return;
                 }
-                if ((d.bSX()) && ((((v)localObject).rWv & com.tencent.mm.plugin.backup.b.c.rKH) == 0))
+                if ((d.XU()) && ((((v)localObject).vhK & com.tencent.mm.plugin.backup.b.c.uVV) == 0))
                 {
-                  b.csI().crZ().rKS = -32;
-                  d.this.Bg(-32);
+                  b.cVs().cUJ().uWg = -32;
+                  d.this.Bt(-32);
                   d.b(d.this, 2);
                   AppMethodBeat.o(21339);
                   return;
                 }
-                if ((d.rMB) && ((((v)localObject).rWv & com.tencent.mm.plugin.backup.b.c.rKI) == 0))
+                if ((d.uXO) && ((((v)localObject).vhK & com.tencent.mm.plugin.backup.b.c.uVW) == 0))
                 {
-                  b.csI().crZ().rKS = -33;
-                  d.this.Bg(-33);
+                  b.cVs().cUJ().uWg = -33;
+                  d.this.Bt(-33);
                   d.b(d.this, 3);
                   AppMethodBeat.o(21339);
                   return;
                 }
               }
-              d.this.kM(false);
+              d.this.lZ(false);
               AppMethodBeat.o(21339);
               return;
             }
-            if (((v)localObject).rWs == 1)
+            if (((v)localObject).vhI == 1)
             {
-              paramAnonymousArrayOfByte = ((v)localObject).rVk.UH;
-              if (!b.csI().rKM.equals(new String(l.d(paramAnonymousArrayOfByte, com.tencent.mm.plugin.backup.b.d.csd()))))
+              paramAnonymousArrayOfByte = ((v)localObject).vgA.Op;
+              if (!b.cVs().uWa.equals(new String(l.d(paramAnonymousArrayOfByte, com.tencent.mm.plugin.backup.b.d.cUN()))))
               {
                 Log.e("MicroMsg.BackupMoveServer", "get authReq step 1 and validate ok failed");
-                b.csI().crZ().rKS = -5;
-                d.this.Bg(-5);
+                b.cVs().cUJ().uWg = -5;
+                d.this.Bt(-5);
               }
               Log.i("MicroMsg.BackupMoveServer", "get authReq step 1 and validate ok success");
-              b.csI().crZ().rKS = 2;
-              d.this.Bg(2);
+              b.cVs().cUJ().uWg = 2;
+              d.this.Bt(2);
             }
             AppMethodBeat.o(21339);
             return;
@@ -224,15 +224,15 @@ public final class d
           for (;;)
           {
             d.c(d.this, paramAnonymousInt2);
-            if (!b.csI().csM().rMZ) {
+            if (!b.cVs().cVw().uYn) {
               break;
             }
-            d.this.csZ();
+            d.this.cVJ();
             AppMethodBeat.o(21339);
             return;
-            if (((n)localObject).rVP != null)
+            if (((n)localObject).vhf != null)
             {
-              localObject = ((n)localObject).rVP.rVG;
+              localObject = ((n)localObject).vhf.vgW;
               paramAnonymousArrayOfByte = (byte[])localObject;
               if (localObject == null) {
                 paramAnonymousArrayOfByte = "";
@@ -253,13 +253,13 @@ public final class d
             AppMethodBeat.o(21339);
             return;
           }
-          Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify receive heartbeatReq,req:%s ack:%d", new Object[] { localObject, Long.valueOf(((com.tencent.mm.plugin.backup.i.e)localObject).rRK) });
+          Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify receive heartbeatReq,req:%s ack:%d", new Object[] { localObject, Long.valueOf(((com.tencent.mm.plugin.backup.i.e)localObject).vda) });
           paramAnonymousArrayOfByte = (com.tencent.mm.plugin.backup.i.f)g.a(new com.tencent.mm.plugin.backup.i.f(), paramAnonymousArrayOfByte);
-          paramAnonymousArrayOfByte.rRK = ((com.tencent.mm.plugin.backup.i.e)localObject).rRK;
+          paramAnonymousArrayOfByte.vda = ((com.tencent.mm.plugin.backup.i.e)localObject).vda;
           try
           {
             Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify send heartbeatResp");
-            com.tencent.mm.plugin.backup.g.b.F(paramAnonymousArrayOfByte.toByteArray(), 10, paramAnonymousInt2);
+            com.tencent.mm.plugin.backup.g.b.D(paramAnonymousArrayOfByte.toByteArray(), 10, paramAnonymousInt2);
             AppMethodBeat.o(21339);
             return;
           }
@@ -290,8 +290,8 @@ public final class d
         {
           Log.i("MicroMsg.BackupMoveServer", "onBackupMoveServerNotify receive command cancel");
           d.this.cancel(true);
-          b.csI().crZ().rKS = -100;
-          d.this.Bg(-100);
+          b.cVs().cUJ().uWg = -100;
+          d.this.Bt(-100);
           AppMethodBeat.o(21339);
           return;
         }
@@ -301,12 +301,12 @@ public final class d
           if (localObject == null)
           {
             Log.e("MicroMsg.BackupMoveServer", "requestSessionResp parseBuf failed:%d", new Object[] { Integer.valueOf(Util.getLength(paramAnonymousArrayOfByte)) });
-            b.csI().crZ().rKS = -5;
-            d.this.Bg(-5);
+            b.cVs().cUJ().uWg = -5;
+            d.this.Bt(-5);
             AppMethodBeat.o(21339);
             return;
           }
-          paramAnonymousArrayOfByte = g.b(((j)localObject).rVz, ((j)localObject).rVA);
+          paramAnonymousArrayOfByte = g.b(((j)localObject).vgP, ((j)localObject).vgQ);
           if (paramAnonymousArrayOfByte == null) {}
           for (paramAnonymousInt1 = -1;; paramAnonymousInt1 = paramAnonymousArrayOfByte.size())
           {
@@ -315,25 +315,25 @@ public final class d
               break;
             }
             Log.e("MicroMsg.BackupMoveServer", "requestSessionResp sessionName or timeInterval null or requestSessionResp number error.");
-            d.csS();
-            b.csI().crZ().rKS = -21;
-            d.this.Bg(-21);
+            d.cVC();
+            b.cVs().cUJ().uWg = -21;
+            d.this.Bt(-21);
             AppMethodBeat.o(21339);
             return;
           }
-          com.tencent.mm.plugin.backup.g.b.ctE();
-          if ((d.a(d.this) == null) || (d.a(d.this).rLD)) {
-            d.a(d.this, new com.tencent.mm.plugin.backup.c.c(b.csI(), 2, d.c(d.this)));
+          com.tencent.mm.plugin.backup.g.b.cWo();
+          if ((d.a(d.this) == null) || (d.a(d.this).uWQ)) {
+            d.a(d.this, new com.tencent.mm.plugin.backup.c.c(b.cVs(), 2, d.c(d.this)));
           }
-          d.a(d.this).kJ(false);
-          d.a(d.this).a(paramAnonymousArrayOfByte, b.csI().crZ().rLa, d.rMB);
+          d.a(d.this).lW(false);
+          d.a(d.this).a(paramAnonymousArrayOfByte, b.cVs().cUJ().uWo, d.uXO);
         }
         AppMethodBeat.o(21339);
       }
     };
-    this.rLE = new b.b()
+    this.uWR = new b.b()
     {
-      public final void EB(final int paramAnonymousInt)
+      public final void Fc(final int paramAnonymousInt)
       {
         AppMethodBeat.i(21341);
         MMHandlerThread.postToMainThread(new Runnable()
@@ -341,9 +341,9 @@ public final class d
           public final void run()
           {
             AppMethodBeat.i(21340);
-            Iterator localIterator = this.rNT.iterator();
+            Iterator localIterator = this.uZh.iterator();
             while (localIterator.hasNext()) {
-              ((com.tencent.mm.plugin.backup.b.b.d)localIterator.next()).EB(paramAnonymousInt);
+              ((com.tencent.mm.plugin.backup.b.b.d)localIterator.next()).Fc(paramAnonymousInt);
             }
             AppMethodBeat.o(21340);
           }
@@ -351,81 +351,81 @@ public final class d
         AppMethodBeat.o(21341);
       }
       
-      public final void crV()
+      public final void cUF()
       {
         AppMethodBeat.i(21342);
-        b.csI();
-        b.cse().edit().putStringSet("BACKUP_SELECT_SESSION_LIST", null);
-        com.tencent.mm.plugin.backup.g.b.EO(21);
+        b.cVs();
+        b.cUO().edit().putStringSet("BACKUP_SELECT_SESSION_LIST", null);
+        com.tencent.mm.plugin.backup.g.b.Fp(21);
         AppMethodBeat.o(21342);
       }
       
-      public final void crW()
+      public final void cUG()
       {
         AppMethodBeat.i(21343);
         d.this.cancel(false);
         AppMethodBeat.o(21343);
       }
     };
-    this.rNP = new b.c()
+    this.uZd = new b.c()
     {
-      public final void csV()
+      public final void cVF()
       {
         AppMethodBeat.i(21344);
         Log.i("MicroMsg.BackupMoveServer", "stopCallback ");
-        com.tencent.mm.plugin.backup.g.b.ctF();
-        b.csI().csb();
+        com.tencent.mm.plugin.backup.g.b.cWp();
+        b.cVs().cUL();
         AppMethodBeat.o(21344);
       }
     };
-    this.rNQ = new j.a()
+    this.uZe = new j.a()
     {
-      public final void EG(int paramAnonymousInt)
+      public final void Fh(int paramAnonymousInt)
       {
         AppMethodBeat.i(21346);
-        int i = b.csI().crZ().rKS;
+        int i = b.cVs().cUJ().uWg;
         if (paramAnonymousInt == 1)
         {
           if (i == 14)
           {
             Log.i("MicroMsg.BackupMoveServer", "speedCallback is weak connect now.");
-            b.csI().crZ().rKS = 4;
-            d.this.Bg(4);
+            b.cVs().cUJ().uWg = 4;
+            d.this.Bt(4);
             AppMethodBeat.o(21346);
           }
         }
         else if ((paramAnonymousInt == 0) && (i == 4))
         {
           Log.i("MicroMsg.BackupMoveServer", "speedCallback is normal speed now.");
-          b.csI().crZ().rKS = 14;
-          d.this.Bg(14);
+          b.cVs().cUJ().uWg = 14;
+          d.this.Bt(14);
         }
         AppMethodBeat.o(21346);
       }
       
-      public final void csW()
+      public final void cVG()
       {
         AppMethodBeat.i(21345);
-        d.this.Bg(b.csI().crZ().rKS);
+        d.this.Bt(b.cVs().cUJ().uWg);
         AppMethodBeat.o(21345);
       }
       
-      public final void csX()
+      public final void cVH()
       {
         AppMethodBeat.i(21347);
-        int i = b.csI().crZ().rKS;
+        int i = b.cVs().cUJ().uWg;
         Log.e("MicroMsg.BackupMoveServer", "speedOverTime callback, backupState[%d]", new Object[] { Integer.valueOf(i) });
         if ((i == 14) || (i == 4))
         {
           d.this.cancel(true);
-          b.csI().csJ().stop();
-          b.csI().crZ().rKS = -4;
-          d.this.Bg(-4);
+          b.cVs().cVt().stop();
+          b.cVs().cUJ().uWg = -4;
+          d.this.Bt(-4);
         }
         AppMethodBeat.o(21347);
       }
     };
-    this.rOj = new e(new e.a()
+    this.uZx = new e(new e.a()
     {
       public final void o(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
       {
@@ -433,31 +433,31 @@ public final class d
         if (paramAnonymousArrayOfByte != null) {
           d.this.bitmapData = paramAnonymousArrayOfByte;
         }
-        d.this.Bg(paramAnonymousInt);
+        d.this.Bt(paramAnonymousInt);
         AppMethodBeat.o(21348);
       }
-    }, b.csI().crZ());
+    }, b.cVs().cUJ());
     AppMethodBeat.o(21349);
   }
   
-  private void K(long paramLong1, long paramLong2)
+  private void ai(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(21356);
-    Log.i("MicroMsg.BackupMoveServer", "backupSendRequestSession sessionName[%d], startTime[%d], endTime[%d]", new Object[] { Integer.valueOf(this.rNX.size()), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    i locali = new i();
-    locali.rVz = this.rNX;
-    locali.rVA = new LinkedList();
-    Iterator localIterator = this.rNX.iterator();
+    Log.i("MicroMsg.BackupMoveServer", "backupSendRequestSession sessionName[%d], startTime[%d], endTime[%d]", new Object[] { Integer.valueOf(this.uZl.size()), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    com.tencent.mm.plugin.backup.i.i locali = new com.tencent.mm.plugin.backup.i.i();
+    locali.vgP = this.uZl;
+    locali.vgQ = new LinkedList();
+    Iterator localIterator = this.uZl.iterator();
     while (localIterator.hasNext())
     {
       localIterator.next();
-      locali.rVA.add(Long.valueOf(paramLong1));
-      locali.rVA.add(Long.valueOf(paramLong2));
+      locali.vgQ.add(Long.valueOf(paramLong1));
+      locali.vgQ.add(Long.valueOf(paramLong2));
     }
     try
     {
-      Log.i("MicroMsg.BackupMoveServer", "backupSendRequestSession, chooseConvNames size:%d", new Object[] { Integer.valueOf(this.rNX.size()) });
-      com.tencent.mm.plugin.backup.g.b.O(locali.toByteArray(), 11);
+      Log.i("MicroMsg.BackupMoveServer", "backupSendRequestSession, chooseConvNames size:%d", new Object[] { Integer.valueOf(this.uZl.size()) });
+      com.tencent.mm.plugin.backup.g.b.N(locali.toByteArray(), 11);
       AppMethodBeat.o(21356);
       return;
     }
@@ -468,15 +468,15 @@ public final class d
     }
   }
   
-  public static void csS()
+  public static void cVC()
   {
     AppMethodBeat.i(21357);
     com.tencent.mm.plugin.backup.i.a locala = new com.tencent.mm.plugin.backup.i.a();
-    locala.ID = b.csI().rKK;
+    locala.vgy = b.cVs().uVY;
     try
     {
       Log.i("MicroMsg.BackupMoveServer", "backupSendCancelRequest.");
-      com.tencent.mm.plugin.backup.g.b.O(locala.toByteArray(), 5);
+      com.tencent.mm.plugin.backup.g.b.N(locala.toByteArray(), 5);
       AppMethodBeat.o(21357);
       return;
     }
@@ -487,24 +487,24 @@ public final class d
     }
   }
   
-  public static boolean csY()
+  public static boolean cVI()
   {
-    AppMethodBeat.i(248529);
-    b.csI();
-    Set localSet = b.cse().getStringSet("BACKUP_SELECT_SESSION_LIST", null);
+    AppMethodBeat.i(300751);
+    b.cVs();
+    Set localSet = b.cUO().getStringSet("BACKUP_SELECT_SESSION_LIST", null);
     if ((localSet == null) || (localSet.size() <= 0))
     {
-      AppMethodBeat.o(248529);
+      AppMethodBeat.o(300751);
       return false;
     }
-    AppMethodBeat.o(248529);
+    AppMethodBeat.o(300751);
     return true;
   }
   
-  public static String cta()
+  public static String cVK()
   {
     AppMethodBeat.i(21358);
-    String str = com.tencent.mm.plugin.backup.g.b.ctI();
+    String str = com.tencent.mm.plugin.backup.g.b.cWs();
     AppMethodBeat.o(21358);
     return str;
   }
@@ -518,8 +518,8 @@ public final class d
       paramLong2 = 0L;
       paramLong1 = 0L;
     }
-    b.csI();
-    SharedPreferences.Editor localEditor = b.cse().edit();
+    b.cVs();
+    SharedPreferences.Editor localEditor = b.cUO().edit();
     localEditor.putInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", paramInt1);
     localEditor.putLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", paramLong1);
     localEditor.putLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", paramLong2);
@@ -528,38 +528,38 @@ public final class d
     AppMethodBeat.o(21352);
   }
   
-  public final void Bg(int paramInt)
+  public final void Bt(int paramInt)
   {
     AppMethodBeat.i(21353);
-    this.rLE.EB(paramInt);
+    this.uWR.Fc(paramInt);
     AppMethodBeat.o(21353);
   }
   
-  public final void H(LinkedList<String> paramLinkedList)
+  public final void K(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(248532);
-    this.rNX = new LinkedList();
+    AppMethodBeat.i(300778);
+    this.uZl = new LinkedList();
     Object localObject;
     if (Util.isNullOrNil(paramLinkedList))
     {
-      b.csI();
-      localObject = b.cse().getStringSet("BACKUP_SELECT_SESSION_LIST", new HashSet());
-      this.rNX.addAll((Collection)localObject);
-      b.csI();
-      if (b.cse().getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0) != 1) {
+      b.cVs();
+      localObject = b.cUO().getStringSet("BACKUP_SELECT_SESSION_LIST", new HashSet());
+      this.uZl.addAll((Collection)localObject);
+      b.cVs();
+      if (b.cUO().getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0) != 1) {
         break label284;
       }
-      rOe = true;
+      uZs = true;
       label80:
-      b.csI();
-      this.rOa = b.cse().getLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", 0L);
-      b.csI();
-      this.rOb = b.cse().getLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", 0L);
-      b.csI();
-      if (b.cse().getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0) != 1) {
+      b.cVs();
+      this.uZo = b.cUO().getLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", 0L);
+      b.cVs();
+      this.uZp = b.cUO().getLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", 0L);
+      b.cVs();
+      if (b.cUO().getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0) != 1) {
         break label291;
       }
-      rMB = true;
+      uXO = true;
       label144:
       if (paramLinkedList != null) {
         break label298;
@@ -570,110 +570,88 @@ public final class d
     label298:
     for (int i = -1;; i = paramLinkedList.size())
     {
-      Log.i("MicroMsg.BackupMoveServer", "setBakupChooseData users size[%d], selectStartTime[%d], selectEndTime[%d], isQuickBackup[%b]", new Object[] { Integer.valueOf(i), Long.valueOf(this.rOa), Long.valueOf(this.rOb), Boolean.valueOf(rMB) });
-      bh.beI();
-      com.tencent.mm.model.c.aHp().set(ar.a.VnF, Boolean.TRUE);
-      AppMethodBeat.o(248532);
+      Log.i("MicroMsg.BackupMoveServer", "setBakupChooseData users size[%d], selectStartTime[%d], selectEndTime[%d], isQuickBackup[%b]", new Object[] { Integer.valueOf(i), Long.valueOf(this.uZo), Long.valueOf(this.uZp), Boolean.valueOf(uXO) });
+      bh.bCz();
+      com.tencent.mm.model.c.ban().set(at.a.acPa, Boolean.TRUE);
+      AppMethodBeat.o(300778);
       return;
-      b.csI();
-      localObject = b.cse().edit();
+      b.cVs();
+      localObject = b.cUO().edit();
       HashSet localHashSet = new HashSet();
       localHashSet.addAll(paramLinkedList);
       ((SharedPreferences.Editor)localObject).putStringSet("BACKUP_SELECT_SESSION_LIST", localHashSet);
       ((SharedPreferences.Editor)localObject).commit();
-      this.rNX.addAll(localHashSet);
+      this.uZl.addAll(localHashSet);
       break;
-      rOe = false;
+      uZs = false;
       break label80;
-      rMB = false;
+      uXO = false;
       break label144;
     }
   }
   
   public final void a(com.tencent.mm.plugin.backup.b.b.d paramd)
   {
-    AppMethodBeat.i(248526);
-    synchronized (this.rNI)
+    AppMethodBeat.i(300772);
+    synchronized (this.uYW)
     {
-      this.rNI.add(paramd);
-      AppMethodBeat.o(248526);
+      this.uYW.add(paramd);
+      AppMethodBeat.o(300772);
       return;
     }
   }
   
   public final void b(com.tencent.mm.plugin.backup.b.b.d paramd)
   {
-    AppMethodBeat.i(248527);
-    synchronized (this.rNI)
+    AppMethodBeat.i(300773);
+    synchronized (this.uYW)
     {
-      this.rNI.remove(paramd);
-      AppMethodBeat.o(248527);
+      this.uYW.remove(paramd);
+      AppMethodBeat.o(300773);
       return;
     }
   }
   
-  public final void cancel(boolean paramBoolean)
-  {
-    AppMethodBeat.i(21351);
-    Log.e("MicroMsg.BackupMoveServer", "cancel BackupMoveServer CANCEL, Caller:%s", new Object[] { MMStack.getCaller() });
-    if (!paramBoolean) {
-      csS();
-    }
-    if (this.rNZ != null) {
-      this.rNZ.cancel();
-    }
-    if (this.rNY != null)
-    {
-      this.rNY.cancel();
-      this.rNY = null;
-    }
-    Log.i("MicroMsg.BackupMoveServer", "cancel , notifyall.");
-    com.tencent.mm.plugin.backup.g.b.ctF();
-    com.tencent.mm.plugin.backup.g.b.ctH();
-    b.csI().csb();
-    AppMethodBeat.o(21351);
-  }
-  
-  public final void csZ()
+  public final void cVJ()
   {
     AppMethodBeat.i(21355);
     Log.i("MicroMsg.BackupMoveServer", "startRequestNotify receive start request.");
-    this.rOc = false;
-    b.csI().crZ().rKS = 12;
-    Bg(12);
-    com.tencent.mm.plugin.backup.h.d.cua().cud();
-    if (this.rNX == null)
+    this.uZq = false;
+    b.cVs().cUJ().uWg = 12;
+    Bt(12);
+    com.tencent.mm.plugin.backup.h.d.cWK().cWN();
+    if (this.uZl == null)
     {
       AppMethodBeat.o(21355);
       return;
     }
-    Log.i("MicroMsg.BackupMoveServer", "transfer conversation size:%d", new Object[] { Integer.valueOf(this.rNX.size()) });
+    Log.i("MicroMsg.BackupMoveServer", "transfer conversation size:%d", new Object[] { Integer.valueOf(this.uZl.size()) });
     o localo = new o();
-    localo.ID = b.csI().rKK;
-    localo.rVS = this.rNX.size();
-    localo.rVT = b.csI().csM().csH();
-    localo.rVU = 0;
-    if (this.rNw) {}
-    for (int i = com.tencent.mm.plugin.backup.b.c.rKB;; i = com.tencent.mm.plugin.backup.b.c.rKA)
+    localo.vgy = b.cVs().uVY;
+    localo.vhi = this.uZl.size();
+    localo.vhj = b.cVs().cVw().cVr();
+    localo.vhk = 0;
+    if (this.uYK) {}
+    for (int i = com.tencent.mm.plugin.backup.b.c.uVP;; i = com.tencent.mm.plugin.backup.b.c.uVO)
     {
-      localo.rVV = i;
-      if (rMB) {
-        localo.rVR = 3;
+      localo.vhl = i;
+      if (uXO) {
+        localo.vhh = 3;
       }
       m localm = new m();
-      localm.rVF = q.auM();
-      localm.rVG = Build.MANUFACTURER;
-      localm.rVH = Build.MODEL;
-      localm.rVI = "Android";
-      localm.rVJ = Build.VERSION.RELEASE;
-      localm.rVK = com.tencent.mm.protocal.d.RAD;
-      localm.rVL = 0L;
-      Log.i("MicroMsg.BackupMoveServer", "startRequestNotify generalinfo wechatversion:%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.RAD) });
-      localo.rVP = localm;
+      localm.vgV = q.aPg();
+      localm.vgW = Build.MANUFACTURER;
+      localm.vgX = q.aPo();
+      localm.vgY = "Android";
+      localm.vgZ = Build.VERSION.RELEASE;
+      localm.vha = com.tencent.mm.protocal.d.Yxh;
+      localm.vhb = 0L;
+      Log.i("MicroMsg.BackupMoveServer", "startRequestNotify generalinfo wechatversion:%s", new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Yxh) });
+      localo.vhf = localm;
       try
       {
-        com.tencent.mm.plugin.backup.g.b.F(localo.toByteArray(), 4, this.rOf);
-        K(this.rOa, this.rOb);
+        com.tencent.mm.plugin.backup.g.b.D(localo.toByteArray(), 4, this.uZt);
+        ai(this.uZo, this.uZp);
         AppMethodBeat.o(21355);
         return;
       }
@@ -686,33 +664,55 @@ public final class d
     }
   }
   
-  public final void kM(boolean paramBoolean)
+  public final void cancel(boolean paramBoolean)
+  {
+    AppMethodBeat.i(21351);
+    Log.e("MicroMsg.BackupMoveServer", "cancel BackupMoveServer CANCEL, Caller:%s", new Object[] { MMStack.getCaller() });
+    if (!paramBoolean) {
+      cVC();
+    }
+    if (this.uZn != null) {
+      this.uZn.cancel();
+    }
+    if (this.uZm != null)
+    {
+      this.uZm.cancel();
+      this.uZm = null;
+    }
+    Log.i("MicroMsg.BackupMoveServer", "cancel , notifyall.");
+    com.tencent.mm.plugin.backup.g.b.cWp();
+    com.tencent.mm.plugin.backup.g.b.cWr();
+    b.cVs().cUL();
+    AppMethodBeat.o(21351);
+  }
+  
+  public final void lZ(boolean paramBoolean)
   {
     AppMethodBeat.i(21354);
     if (paramBoolean) {
-      switch (this.rOh)
+      switch (this.uZv)
       {
       }
     }
     for (;;)
     {
-      b.csI().csa();
+      b.cVs().cUK();
       w localw = new w();
-      localw.rWs = 0;
-      localw.ID = b.csI().rKK;
-      localw.rWt = com.tencent.mm.plugin.backup.b.c.rKC;
-      localw.rVU = 0;
-      localw.rWu = this.rOd;
-      localw.rVk = new com.tencent.mm.cd.b(l.e(b.csI().rKM.getBytes(), com.tencent.mm.plugin.backup.b.d.csd()));
-      if (Util.getInt(com.tencent.mm.n.h.axc().getValue("ChattingRecordsKvstatDisable"), 0) == 0) {
-        localw.rWv |= com.tencent.mm.plugin.backup.b.c.rKG;
+      localw.vhI = 0;
+      localw.vgy = b.cVs().uVY;
+      localw.crz = com.tencent.mm.plugin.backup.b.c.uVQ;
+      localw.vhk = 0;
+      localw.vhJ = this.uZr;
+      localw.vgA = new com.tencent.mm.bx.b(l.e(b.cVs().uWa.getBytes(), com.tencent.mm.plugin.backup.b.d.cUN()));
+      if (Util.getInt(com.tencent.mm.k.i.aRC().getValue("ChattingRecordsKvstatDisable"), 0) == 0) {
+        localw.vhK |= com.tencent.mm.plugin.backup.b.c.uVU;
       }
-      localw.rWv |= com.tencent.mm.plugin.backup.b.c.rKH;
-      localw.rWv |= com.tencent.mm.plugin.backup.b.c.rKI;
+      localw.vhK |= com.tencent.mm.plugin.backup.b.c.uVV;
+      localw.vhK |= com.tencent.mm.plugin.backup.b.c.uVW;
       try
       {
         Log.i("MicroMsg.BackupMoveServer", "continueAuth send authSuccessResp.");
-        com.tencent.mm.plugin.backup.g.b.F(localw.toByteArray(), 2, this.rOg);
+        com.tencent.mm.plugin.backup.g.b.D(localw.toByteArray(), 2, this.uZu);
         AppMethodBeat.o(21354);
         return;
       }
@@ -721,22 +721,22 @@ public final class d
         Log.printErrStackTrace("MicroMsg.BackupMoveServer", localException, "continueAuth buf to PACKET_TYPE_AUTHENTICATE_RESPONSE err.", new Object[0]);
         AppMethodBeat.o(21354);
       }
-      rOe = false;
-      rMB = false;
-      this.rOa = 0L;
-      this.rOb = 0L;
+      uZs = false;
+      uXO = false;
+      this.uZo = 0L;
+      this.uZp = 0L;
       continue;
-      rOe = false;
-      this.rOa = 0L;
-      this.rOb = 0L;
+      uZs = false;
+      this.uZo = 0L;
+      this.uZp = 0L;
       continue;
-      rMB = false;
+      uXO = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.d.d
  * JD-Core Version:    0.7.0.1
  */

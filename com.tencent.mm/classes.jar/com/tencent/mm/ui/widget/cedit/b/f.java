@@ -16,7 +16,7 @@ public final class f
   public static void a(CustomTextView paramCustomTextView, Layout paramLayout, int paramInt1, int paramInt2)
   {
     int i = 0;
-    AppMethodBeat.i(214767);
+    AppMethodBeat.i(252097);
     int j = paramCustomTextView.getTotalPaddingLeft();
     int k = paramCustomTextView.getTotalPaddingRight();
     int n = paramCustomTextView.getWidth() - (j + k);
@@ -60,7 +60,7 @@ public final class f
     for (;;)
     {
       paramCustomTextView.scrollTo(paramInt1, paramInt2);
-      AppMethodBeat.o(214767);
+      AppMethodBeat.o(252097);
       return;
       j = n;
       break;
@@ -81,7 +81,7 @@ public final class f
   
   public static boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(214770);
+    AppMethodBeat.i(252114);
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -91,7 +91,7 @@ public final class f
     {
       do
       {
-        AppMethodBeat.o(214770);
+        AppMethodBeat.o(252114);
         return false;
         arrayOfa = (a[])paramSpannable.getSpans(0, paramSpannable.length(), a.class);
         i = 0;
@@ -101,7 +101,7 @@ public final class f
           i += 1;
         }
         paramSpannable.setSpan(new a(paramMotionEvent.getX(), paramMotionEvent.getY(), paramCustomTextView.getScrollX(), paramCustomTextView.getScrollY()), 0, 0, 17);
-        AppMethodBeat.o(214770);
+        AppMethodBeat.o(252114);
         return true;
         paramCustomTextView = (a[])paramSpannable.getSpans(0, paramSpannable.length(), a.class);
         i = 0;
@@ -110,24 +110,24 @@ public final class f
           paramSpannable.removeSpan(paramCustomTextView[i]);
           i += 1;
         }
-        if ((paramCustomTextView.length > 0) && (paramCustomTextView[0].rxU))
+        if ((paramCustomTextView.length > 0) && (paramCustomTextView[0].uIY))
         {
-          AppMethodBeat.o(214770);
+          AppMethodBeat.o(252114);
           return true;
         }
-        AppMethodBeat.o(214770);
+        AppMethodBeat.o(252114);
         return false;
         arrayOfa = (a[])paramSpannable.getSpans(0, paramSpannable.length(), a.class);
       } while (arrayOfa.length <= 0);
-      if (!arrayOfa[0].rxT)
+      if (!arrayOfa[0].uIX)
       {
         i = ViewConfiguration.get(paramCustomTextView.getContext()).getScaledTouchSlop();
         if ((Math.abs(paramMotionEvent.getX() - arrayOfa[0].mX) >= i) || (Math.abs(paramMotionEvent.getY() - arrayOfa[0].mY) >= i)) {
-          arrayOfa[0].rxT = true;
+          arrayOfa[0].uIX = true;
         }
       }
-    } while (!arrayOfa[0].rxT);
-    arrayOfa[0].rxU = true;
+    } while (!arrayOfa[0].uIX);
+    arrayOfa[0].uIY = true;
     float f2;
     if (((paramMotionEvent.getMetaState() & 0x1) != 0) || (MetaKeyKeyListener.getMetaState(paramSpannable, 1) == 1) || (MetaKeyKeyListener.getMetaState(paramSpannable, 2048) != 0))
     {
@@ -155,7 +155,7 @@ public final class f
       if ((m != paramCustomTextView.getScrollX()) || (n != paramCustomTextView.getScrollY())) {
         paramCustomTextView.cancelLongPress();
       }
-      AppMethodBeat.o(214770);
+      AppMethodBeat.o(252114);
       return true;
       i = 0;
       break;
@@ -169,23 +169,23 @@ public final class f
   {
     public float mX;
     public float mY;
-    public int rxR;
-    public int rxS;
-    public boolean rxT;
-    public boolean rxU;
+    public int uIV;
+    public int uIW;
+    public boolean uIX;
+    public boolean uIY;
     
     public a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
     {
       this.mX = paramFloat1;
       this.mY = paramFloat2;
-      this.rxR = paramInt1;
-      this.rxS = paramInt2;
+      this.uIV = paramInt1;
+      this.uIW = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.b.f
  * JD-Core Version:    0.7.0.1
  */

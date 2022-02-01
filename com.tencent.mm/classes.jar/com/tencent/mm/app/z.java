@@ -1,288 +1,128 @@
 package com.tencent.mm.app;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
+import android.os.Looper;
+import android.os.Message;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c.a;
+import com.tencent.mm.model.c.a.1;
+import com.tencent.mm.model.c.b.1;
+import com.tencent.mm.model.c.c;
+import com.tencent.mm.model.c.c.1;
+import com.tencent.mm.model.c.c.a;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.plugin.sns.c.q;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.ui.HomeUI;
+import com.tencent.mm.ui.LauncherUI;
+import com.tencent.mm.ui.MainTabUI;
+import com.tencent.mm.ui.conversation.MainUI;
+import com.tencent.mm.ui.p;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class z
-  implements Application.ActivityLifecycleCallbacks
 {
-  static volatile z fdP;
-  public List<b> cSF;
-  boolean cvA;
-  int fdQ;
-  boolean fdR;
-  public a fdS;
+  public static z hhq;
+  public boolean hhr;
+  public MMHandler hhs;
   
-  private z(Context paramContext)
+  public z()
   {
-    AppMethodBeat.i(194681);
-    this.fdQ = 0;
-    this.fdR = false;
-    this.cvA = false;
-    this.cSF = new LinkedList();
-    int i = bM(paramContext);
-    if (i != -1)
+    AppMethodBeat.i(19458);
+    this.hhs = new MMHandler(Looper.getMainLooper())
     {
-      if (i <= 100) {
-        bool = true;
-      }
-      this.cvA = bool;
-    }
-    this.fdS = new a()
-    {
-      public final List<Class<? extends View>> abe()
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(193869);
-        List localList = Collections.emptyList();
-        AppMethodBeat.o(193869);
-        return localList;
-      }
-      
-      public final boolean abf()
-      {
-        return false;
+        AppMethodBeat.i(19457);
+        super.handleMessage(paramAnonymousMessage);
+        Object localObject;
+        if (paramAnonymousMessage.what == -1999)
+        {
+          if (!z.this.hhr)
+          {
+            paramAnonymousMessage = LauncherUI.getInstance();
+            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.adBI))
+            {
+              paramAnonymousMessage.adBG.getMainTabUI().bzP("tab_main");
+              localObject = paramAnonymousMessage.getHomeUI();
+              if (((HomeUI)localObject).adAk) {
+                ((HomeUI)localObject).adAm = true;
+              }
+              localObject = q.Qkh;
+              if (localObject != null) {
+                ((com.tencent.mm.plugin.sns.c.i)localObject).heg();
+              }
+              paramAnonymousMessage = paramAnonymousMessage.adBG.getMainTabUI().adHf.values().iterator();
+              while (paramAnonymousMessage.hasNext())
+              {
+                localObject = (Fragment)paramAnonymousMessage.next();
+                if (!(localObject instanceof MainUI)) {
+                  ((p)localObject).jhw();
+                }
+              }
+            }
+            System.gc();
+            AppMethodBeat.o(19457);
+          }
+        }
+        else if (paramAnonymousMessage.what == -2999)
+        {
+          if (z.this.hhr)
+          {
+            AppMethodBeat.o(19457);
+            return;
+          }
+          paramAnonymousMessage = LauncherUI.getInstance();
+          if (paramAnonymousMessage != null)
+          {
+            paramAnonymousMessage = paramAnonymousMessage.adBG.getMainTabUI();
+            if (paramAnonymousMessage.adHf.containsKey(Integer.valueOf(0))) {
+              ((p)paramAnonymousMessage.adHf.get(Integer.valueOf(0))).jhw();
+            }
+          }
+          if (com.tencent.mm.kernel.h.baC().aZN())
+          {
+            bh.bCt();
+            paramAnonymousMessage = ci.Ka("plugin.emoji");
+            if (paramAnonymousMessage != null) {
+              paramAnonymousMessage.clearPluginData(0);
+            }
+            paramAnonymousMessage = com.tencent.mm.model.c.b.bEz();
+            localObject = a.bEw();
+            c localc = c.bEC();
+            bh.baH().postToWorker(new b.1(paramAnonymousMessage));
+            com.tencent.threadpool.h.ahAA.bm(new a.1((a)localObject));
+            localc.a(paramAnonymousMessage);
+            localc.a((c.a)localObject);
+            bh.baH().postToWorker(new c.1(localc));
+          }
+          System.gc();
+        }
+        AppMethodBeat.o(19457);
       }
     };
-    AppMethodBeat.o(194681);
+    AppMethodBeat.o(19458);
   }
   
-  @SuppressLint({"ObsoleteSdkInt"})
-  private static boolean K(List<? extends Class<? extends View>> paramList)
+  public static z aCK()
   {
-    AppMethodBeat.i(194685);
-    if (paramList.isEmpty())
-    {
-      AppMethodBeat.o(194685);
-      return false;
+    AppMethodBeat.i(19459);
+    if (hhq == null) {
+      hhq = new z();
     }
-    Iterator localIterator = abd().iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (!paramList.contains(((View)localIterator.next()).getClass()));
-    for (boolean bool = true;; bool = false)
-    {
-      AppMethodBeat.o(194685);
-      return bool;
-    }
-  }
-  
-  public static z abb()
-  {
-    AppMethodBeat.i(194676);
-    if (fdP == null) {
-      try
-      {
-        if (fdP == null)
-        {
-          IllegalStateException localIllegalStateException = new IllegalStateException("Call #init() first!");
-          AppMethodBeat.o(194676);
-          throw localIllegalStateException;
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(194676);
-      }
-    }
-    z localz = fdP;
-    AppMethodBeat.o(194676);
+    z localz = hhq;
+    AppMethodBeat.o(19459);
     return localz;
-  }
-  
-  private static List<View> abd()
-  {
-    AppMethodBeat.i(194689);
-    try
-    {
-      Class localClass = Class.forName("android.view.WindowManagerGlobal");
-      Object localObject1 = localClass.getMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
-      String[] arrayOfString = (String[])localClass.getDeclaredMethod("getViewRootNames", new Class[0]).invoke(localObject1, new Object[0]);
-      if (arrayOfString != null)
-      {
-        ArrayList localArrayList = new ArrayList();
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject2 = arrayOfString[i];
-          localObject2 = localClass.getDeclaredMethod("getRootView", new Class[] { String.class }).invoke(localObject1, new Object[] { localObject2 });
-          if ((localObject2 instanceof View)) {
-            localArrayList.add((View)localObject2);
-          }
-          i += 1;
-        }
-        AppMethodBeat.o(194689);
-        return localArrayList;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.printErrStackTrace("MicroMsg.ProcForegroundDelegate", localThrowable, "getBallInfoListSync fail!", new Object[0]);
-      List localList = Collections.emptyList();
-      AppMethodBeat.o(194689);
-      return localList;
-    }
-  }
-  
-  private static int bM(Context paramContext)
-  {
-    AppMethodBeat.i(194705);
-    Object localObject = (ActivityManager)paramContext.getSystemService("activity");
-    if (localObject == null)
-    {
-      AppMethodBeat.o(194705);
-      return -1;
-    }
-    localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(194705);
-      return -1;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if ((!TextUtils.isEmpty(localRunningAppProcessInfo.processName)) && (localRunningAppProcessInfo.processName.startsWith(paramContext.getPackageName())))
-      {
-        int i = localRunningAppProcessInfo.importance;
-        AppMethodBeat.o(194705);
-        return i;
-      }
-    }
-    AppMethodBeat.o(194705);
-    return -1;
-  }
-  
-  public static void c(Application paramApplication)
-  {
-    AppMethodBeat.i(194674);
-    if (fdP == null) {
-      try
-      {
-        if (fdP == null)
-        {
-          fdP = new z(paramApplication);
-          paramApplication.registerActivityLifecycleCallbacks(fdP);
-        }
-        return;
-      }
-      finally
-      {
-        AppMethodBeat.o(194674);
-      }
-    }
-    AppMethodBeat.o(194674);
-  }
-  
-  public final boolean abc()
-  {
-    AppMethodBeat.i(194682);
-    if (MMApplicationContext.isMainProcess())
-    {
-      bool = this.fdS.abf();
-      AppMethodBeat.o(194682);
-      return bool;
-    }
-    boolean bool = K(this.fdS.abe());
-    AppMethodBeat.o(194682);
-    return bool;
-  }
-  
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityDestroyed(Activity paramActivity) {}
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity)
-  {
-    AppMethodBeat.i(194694);
-    paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
-    Log.i("MicroMsg.ProcForegroundDelegate", "#onStarted: " + paramActivity + ", refs = " + this.fdQ);
-    int i = this.fdQ + 1;
-    this.fdQ = i;
-    if ((i == 1) && (!this.fdR))
-    {
-      this.cvA = true;
-      Log.i("MicroMsg.ProcForegroundDelegate", "onProcessForeground");
-      Iterator localIterator = this.cSF.iterator();
-      while (localIterator.hasNext())
-      {
-        b localb = (b)localIterator.next();
-        if (localb != null) {
-          localb.fm(paramActivity);
-        }
-      }
-    }
-    AppMethodBeat.o(194694);
-  }
-  
-  public final void onActivityStopped(Activity paramActivity)
-  {
-    AppMethodBeat.i(194699);
-    String str = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
-    Log.i("MicroMsg.ProcForegroundDelegate", "#onStopped: " + str + ", refs = " + this.fdQ);
-    this.fdR = paramActivity.isChangingConfigurations();
-    int i = this.fdQ - 1;
-    this.fdQ = i;
-    if ((i == 0) && (!this.fdR))
-    {
-      this.cvA = false;
-      Log.i("MicroMsg.ProcForegroundDelegate", "onProcessBackground");
-      paramActivity = this.cSF.iterator();
-      while (paramActivity.hasNext())
-      {
-        b localb = (b)paramActivity.next();
-        if (localb != null) {
-          localb.fn(str);
-        }
-      }
-    }
-    AppMethodBeat.o(194699);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract List<? extends Class<? extends View>> abe();
-    
-    public abstract boolean abf();
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void fm(String paramString);
-    
-    public abstract void fn(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.z
  * JD-Core Version:    0.7.0.1
  */

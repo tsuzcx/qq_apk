@@ -11,13 +11,13 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.d.e;
-import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.h.e;
 import com.tencent.mm.plugin.game.model.d;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.model.x;
-import com.tencent.mm.plugin.game.protobuf.ai;
-import com.tencent.mm.plugin.game.protobuf.ap;
-import com.tencent.mm.plugin.game.protobuf.bf;
+import com.tencent.mm.plugin.game.protobuf.aj;
+import com.tencent.mm.plugin.game.protobuf.aq;
+import com.tencent.mm.plugin.game.protobuf.bg;
 import com.tencent.mm.plugin.game.widget.AutoResizeTextView;
 import com.tencent.mm.plugin.game.widget.GameTagListView;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,15 +27,15 @@ public class GameBestSellingItemView
   extends LinearLayout
   implements View.OnClickListener
 {
-  AutoResizeTextView CST;
-  ImageView CSU;
-  TextView CSV;
-  GameTagListView CSW;
-  GameDownloadView CSX;
-  View CSY;
-  private int CSZ;
-  private ai CTa;
-  private d CTb;
+  AutoResizeTextView INj;
+  ImageView INk;
+  TextView INl;
+  GameTagListView INm;
+  GameDownloadView INn;
+  View INo;
+  private int INp;
+  private aj INq;
+  private d INr;
   
   public GameBestSellingItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,16 +46,16 @@ public class GameBestSellingItemView
   {
     AppMethodBeat.i(41892);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameBestSellingItemView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if ((this.CTa == null) || (Util.isNullOrNil(this.CTa.CME.CMG)))
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameBestSellingItemView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if ((this.INq == null) || (Util.isNullOrNil(this.INq.IGJ.IGL)))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBestSellingItemView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(41892);
       return;
     }
-    int i = com.tencent.mm.plugin.game.d.c.aY(getContext(), this.CTa.CME.CMG);
-    com.tencent.mm.game.report.g.a(getContext(), 10, 1022, this.CTb.CIs + 1, i, this.CTa.CME.jUi, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.Md(this.CTb.CIr.CNA));
+    int i = com.tencent.mm.plugin.game.d.c.ba(getContext(), this.INq.IGJ.IGL);
+    com.tencent.mm.game.report.g.a(getContext(), 10, 1022, this.INr.ICC + 1, i, this.INq.IGJ.muA, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.EM(this.INr.ICB.IHI));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameBestSellingItemView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(41892);
   }
@@ -64,13 +64,13 @@ public class GameBestSellingItemView
   {
     AppMethodBeat.i(41890);
     super.onFinishInflate();
-    this.CST = ((AutoResizeTextView)findViewById(g.e.Ckg));
-    this.CSU = ((ImageView)findViewById(g.e.Cjt));
-    this.CSV = ((TextView)findViewById(g.e.Cke));
-    this.CSW = ((GameTagListView)findViewById(g.e.ClP));
-    this.CSX = ((GameDownloadView)findViewById(g.e.ChU));
-    this.CSY = findViewById(g.e.ClH);
-    this.CSZ = (com.tencent.mm.plugin.game.d.c.getScreenWidth(getContext()) - com.tencent.mm.ci.a.fromDPToPix(getContext(), 190));
+    this.INj = ((AutoResizeTextView)findViewById(h.e.HWo));
+    this.INk = ((ImageView)findViewById(h.e.HVB));
+    this.INl = ((TextView)findViewById(h.e.HWm));
+    this.INm = ((GameTagListView)findViewById(h.e.HXX));
+    this.INn = ((GameDownloadView)findViewById(h.e.HUc));
+    this.INo = findViewById(h.e.HXP);
+    this.INp = (com.tencent.mm.plugin.game.d.c.getScreenWidth(getContext()) - com.tencent.mm.cd.a.fromDPToPix(getContext(), 190));
     setOnClickListener(this);
     AppMethodBeat.o(41890);
   }
@@ -78,67 +78,67 @@ public class GameBestSellingItemView
   public void setData(d paramd)
   {
     AppMethodBeat.i(41891);
-    if ((paramd == null) || (paramd.CIr == null) || (paramd.CIr.COC == null) || (Util.isNullOrNil(paramd.CIr.COC.CNz)))
+    if ((paramd == null) || (paramd.ICB == null) || (paramd.ICB.IIM == null) || (Util.isNullOrNil(paramd.ICB.IIM.IHH)))
     {
       setVisibility(8);
       AppMethodBeat.o(41891);
       return;
     }
-    this.CTb = paramd;
-    ai localai = (ai)paramd.CIr.COC.CNz.get(paramd.CIs);
-    int i = paramd.CIs + 1;
-    if ((localai == null) || (localai.CME == null)) {
+    this.INr = paramd;
+    aj localaj = (aj)paramd.ICB.IIM.IHH.get(paramd.ICC);
+    int i = paramd.ICC + 1;
+    if ((localaj == null) || (localaj.IGJ == null)) {
       setVisibility(8);
     }
     for (;;)
     {
-      if (!paramd.CIt)
+      if (!paramd.ICD)
       {
-        com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1022, paramd.CIs + 1, localai.CME.jUi, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.Md(paramd.CIr.CNA));
-        paramd.CIt = true;
+        com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1022, paramd.ICC + 1, localaj.IGJ.muA, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.EM(paramd.ICB.IHI));
+        paramd.ICD = true;
       }
       AppMethodBeat.o(41891);
       return;
-      this.CTa = localai;
-      com.tencent.mm.plugin.game.model.c localc = x.a(this.CTa.CME);
+      this.INq = localaj;
+      com.tencent.mm.plugin.game.model.c localc = x.a(this.INq.IGJ);
       localc.scene = 10;
-      localc.fSl = 1022;
-      localc.position = (this.CTb.CIs + 1);
-      this.CSX.setDownloadInfo(new l(localc));
+      localc.hYi = 1022;
+      localc.position = (this.INr.ICC + 1);
+      this.INn.setDownloadInfo(new l(localc));
       setVisibility(0);
-      this.CST.setText(String.valueOf(i));
+      this.INj.setText(String.valueOf(i));
       if (i == 1) {
-        this.CST.setTextColor(com.tencent.mm.plugin.game.d.c.aIQ("#EED157"));
+        this.INj.setTextColor(com.tencent.mm.plugin.game.d.c.aHm("#EED157"));
       }
       for (;;)
       {
-        e.eAa().c(this.CSU, localai.CME.jUi, com.tencent.mm.ci.a.getDensity(getContext()));
-        this.CSV.setText(localai.CME.CMP);
-        this.CSW.i(localai.CME.CNd, this.CSZ);
-        if ((Util.isNullOrNil(localai.COl)) && (localai.COm == null) && (localai.CMB == null)) {
+        e.fIb().c(this.INk, localaj.IGJ.muA, com.tencent.mm.cd.a.getDensity(getContext()));
+        this.INl.setText(localaj.IGJ.IGU);
+        this.INm.k(localaj.IGJ.IHi, this.INp);
+        if ((Util.isNullOrNil(localaj.IIv)) && (localaj.IIw == null) && (localaj.IGG == null)) {
           break label438;
         }
-        if ((this.CSY instanceof ViewStub)) {
-          this.CSY = ((ViewStub)this.CSY).inflate();
+        if ((this.INo instanceof ViewStub)) {
+          this.INo = ((ViewStub)this.INo).inflate();
         }
-        ((GameFeedSocialInfoView)this.CSY.findViewById(g.e.Ckr)).setData(localai);
+        ((GameFeedSocialInfoView)this.INo.findViewById(h.e.HWz)).setData(localaj);
         break;
         if (i == 2) {
-          this.CST.setTextColor(com.tencent.mm.plugin.game.d.c.aIQ("#BDC5CB"));
+          this.INj.setTextColor(com.tencent.mm.plugin.game.d.c.aHm("#BDC5CB"));
         } else if (i == 3) {
-          this.CST.setTextColor(com.tencent.mm.plugin.game.d.c.aIQ("#D4B897"));
+          this.INj.setTextColor(com.tencent.mm.plugin.game.d.c.aHm("#D4B897"));
         } else {
-          this.CST.setTextColor(com.tencent.mm.plugin.game.d.c.aIQ("#B2B2B2"));
+          this.INj.setTextColor(com.tencent.mm.plugin.game.d.c.aHm("#B2B2B2"));
         }
       }
       label438:
-      this.CSY.setVisibility(8);
+      this.INo.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBestSellingItemView
  * JD-Core Version:    0.7.0.1
  */

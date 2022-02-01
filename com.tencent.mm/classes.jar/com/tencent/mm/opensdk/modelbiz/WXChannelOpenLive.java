@@ -19,42 +19,42 @@ public class WXChannelOpenLive
     
     public boolean checkArgs()
     {
-      AppMethodBeat.i(254033);
+      AppMethodBeat.i(243068);
       if (b.b(this.feedID))
       {
         Log.e("MicroMsg.SDK.WXChannelOpenLive.Req", "feedID is null");
-        AppMethodBeat.o(254033);
+        AppMethodBeat.o(243068);
         return false;
       }
       if (b.b(this.nonceID))
       {
         Log.e("MicroMsg.SDK.WXChannelOpenLive.Req", "nonceID is null");
-        AppMethodBeat.o(254033);
+        AppMethodBeat.o(243068);
         return false;
       }
       if (this.feedID.length() > 1024)
       {
         Log.e("MicroMsg.SDK.WXChannelOpenLive.Req", "feedID.length too long!");
-        AppMethodBeat.o(254033);
+        AppMethodBeat.o(243068);
         return false;
       }
       if (this.nonceID.length() > 1024)
       {
         Log.e("MicroMsg.SDK.WXChannelOpenLive.Req", "nonceID.length too long!");
-        AppMethodBeat.o(254033);
+        AppMethodBeat.o(243068);
         return false;
       }
-      AppMethodBeat.o(254033);
+      AppMethodBeat.o(243068);
       return true;
     }
     
     public void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(254035);
+      AppMethodBeat.i(243073);
       super.fromBundle(paramBundle);
       this.feedID = paramBundle.getString("_wxapi_finder_feedID");
       this.nonceID = paramBundle.getString("_wxapi_finder_nonceID");
-      AppMethodBeat.o(254035);
+      AppMethodBeat.o(243073);
     }
     
     public int getType()
@@ -64,11 +64,11 @@ public class WXChannelOpenLive
     
     public void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(254038);
+      AppMethodBeat.i(243075);
       super.toBundle(paramBundle);
       paramBundle.putString("_wxapi_finder_feedID", this.feedID);
       paramBundle.putString("_wxapi_finder_nonceID", this.nonceID);
-      AppMethodBeat.o(254038);
+      AppMethodBeat.o(243075);
     }
   }
   
@@ -81,9 +81,9 @@ public class WXChannelOpenLive
     
     public Resp(Bundle paramBundle)
     {
-      AppMethodBeat.i(254933);
+      AppMethodBeat.i(243046);
       fromBundle(paramBundle);
-      AppMethodBeat.o(254933);
+      AppMethodBeat.o(243046);
     }
     
     public boolean checkArgs()
@@ -93,10 +93,10 @@ public class WXChannelOpenLive
     
     public void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(254934);
+      AppMethodBeat.i(243050);
       super.fromBundle(paramBundle);
       this.extMsg = paramBundle.getString("_wxapi_finder_extMsg");
-      AppMethodBeat.o(254934);
+      AppMethodBeat.o(243050);
     }
     
     public int getType()
@@ -106,10 +106,10 @@ public class WXChannelOpenLive
     
     public void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(254936);
+      AppMethodBeat.i(243051);
       super.toBundle(paramBundle);
       paramBundle.putString("_wxapi_finder_extMsg", this.extMsg);
-      AppMethodBeat.o(254936);
+      AppMethodBeat.o(243051);
     }
   }
 }

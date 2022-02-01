@@ -1,57 +1,74 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.e.b.g;
-import com.tencent.mm.loader.f;
-import com.tencent.mm.loader.h.b.a;
-import com.tencent.mm.plugin.finder.utils.aj;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.finder.utils.bm;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "Companion", "plugin-finder_release"})
-public class i
-  extends com.tencent.mm.loader.e.a.c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "(Ljava/lang/String;)V", "uniqueValue", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class i
+  implements r
 {
-  public static final a zts;
+  public final String Exa;
+  private final String url;
   
-  static
+  public i(String paramString)
   {
-    AppMethodBeat.i(166301);
-    zts = new a((byte)0);
-    AppMethodBeat.o(166301);
+    AppMethodBeat.i(166310);
+    this.url = paramString;
+    this.Exa = s.X("finder_cover_", MD5Util.getMD5String(this.url));
+    AppMethodBeat.o(166310);
   }
   
-  public com.tencent.mm.loader.h.e<Bitmap> a(g<?> paramg, f<?, Bitmap> paramf, a parama)
+  public final String aUt()
   {
-    AppMethodBeat.i(166300);
-    p.k(paramg, "targetView");
-    p.k(paramf, "reaper");
-    p.k(parama, "input");
-    paramg = null;
-    com.tencent.mm.ae.c localc = new com.tencent.mm.ae.c("FinderBitmapProducer");
-    parama = parama.aSw();
-    if (parama != null)
-    {
-      int i = paramf.kMB.kOf;
-      int j = paramf.kMB.kOg;
-      paramg = aj.AGc;
-      paramg = aj.c(parama, i, j);
-      paramf = x.aazN;
-    }
-    localc.aIZ();
-    paramg = new com.tencent.mm.loader.h.e(paramg);
-    AppMethodBeat.o(166300);
-    return paramg;
+    return this.Exa;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderBitmapProducer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
+  public final v eCd()
+  {
+    return v.FKY;
+  }
+  
+  public final String eCe()
+  {
+    return "";
+  }
+  
+  public final String eCf()
+  {
+    return "";
+  }
+  
+  public final String eCg()
+  {
+    return "";
+  }
+  
+  public final String eCi()
+  {
+    return this.url;
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(166309);
+    Object localObject = bm.GlZ;
+    localObject = bm.a(this);
+    AppMethodBeat.o(166309);
+    return localObject;
+  }
+  
+  public final String getUrl()
+  {
+    return this.url;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.i
  * JD-Core Version:    0.7.0.1
  */

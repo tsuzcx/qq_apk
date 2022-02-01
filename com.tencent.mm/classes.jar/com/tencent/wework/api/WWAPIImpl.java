@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
@@ -21,70 +22,83 @@ import java.util.Map;
 public final class WWAPIImpl
   implements IWWAPI
 {
-  private static final ArrayList<String> ZYg;
-  private static final ArrayList<String> ZYh;
-  private static boolean xFl;
-  private String ZYf;
-  private BroadcastReceiver ZYi;
-  private Map<String, Object> callbacks;
+  private static boolean Bcz;
+  private static final ArrayList<String> aicF;
+  private static final ArrayList<String> aicG;
+  private Map<String, Object> Lfc;
+  private String aicE;
+  private Callbacks.SessionKeyUpdateCallback aicH;
+  private BroadcastReceiver aicI;
   private Context context;
-  private SharedPreferences mPreferences;
+  SharedPreferences mPreferences;
   
   static
   {
     AppMethodBeat.i(106537);
-    ZYg = new ArrayList() {};
-    ZYh = new ArrayList() {};
-    xFl = false;
+    aicF = new ArrayList() {};
+    aicG = new ArrayList() {};
+    Bcz = false;
     AppMethodBeat.o(106537);
   }
   
   WWAPIImpl(Context paramContext)
   {
     AppMethodBeat.i(106530);
-    this.callbacks = new HashMap();
-    this.ZYi = new BroadcastReceiver()
+    this.Lfc = new HashMap();
+    this.aicH = null;
+    this.aicI = new BroadcastReceiver()
     {
-      public void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
+      public void onReceive(final Context paramAnonymousContext, final Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(233284);
+        AppMethodBeat.i(210544);
         try
         {
           boolean bool = WWAPIImpl.a(WWAPIImpl.this).equals(paramAnonymousIntent.getScheme());
-          if (!bool)
-          {
-            AppMethodBeat.o(233284);
+          if (!bool) {
             return;
           }
-          paramAnonymousContext = BaseMessage.t(paramAnonymousIntent.getData());
-          paramAnonymousContext.bEy(WWAPIImpl.b(WWAPIImpl.this).getString("sk", ""));
+          paramAnonymousContext = BaseMessage.w(paramAnonymousIntent.getData());
+          paramAnonymousContext.bGX(WWAPIImpl.b(WWAPIImpl.this).getString("sk", ""));
           paramAnonymousContext.fromBundle(paramAnonymousIntent.getExtras());
+          paramAnonymousIntent = ((WWBaseRespMessage)paramAnonymousContext).aicV;
+          if (!TextUtils.isEmpty(paramAnonymousIntent)) {
+            WWAPIImpl.this.mPreferences.edit().putString("sk", paramAnonymousIntent).commit();
+          }
           if ((paramAnonymousContext instanceof WWBaseRespMessage)) {
             new Handler(Looper.getMainLooper()).post(new Runnable()
             {
               public void run()
               {
-                AppMethodBeat.i(233279);
+                AppMethodBeat.i(210546);
                 try
                 {
                   WWAPIImpl.c(WWAPIImpl.this).get(((WWBaseRespMessage)paramAnonymousContext).transaction);
+                  label31:
                   WWAPIImpl.c(WWAPIImpl.this).remove(((WWBaseRespMessage)paramAnonymousContext).transaction);
-                  AppMethodBeat.o(233279);
-                  return;
+                  try
+                  {
+                    if (!TextUtils.isEmpty(paramAnonymousIntent)) {
+                      WWAPIImpl.d(WWAPIImpl.this);
+                    }
+                  }
+                  finally
+                  {
+                    AppMethodBeat.o(210546);
+                    return;
+                  }
                 }
-                catch (Throwable localThrowable)
+                finally
                 {
-                  AppMethodBeat.o(233279);
+                  break label31;
                 }
               }
             });
           }
-          AppMethodBeat.o(233284);
           return;
         }
-        catch (Throwable paramAnonymousContext)
+        finally
         {
-          AppMethodBeat.o(233284);
+          AppMethodBeat.o(210544);
         }
       }
     };
@@ -94,22 +108,19 @@ public final class WWAPIImpl
     AppMethodBeat.o(106530);
   }
   
-  private int bEv(String paramString)
+  private int bGU(String paramString)
   {
     AppMethodBeat.i(106533);
     try
     {
       paramString = this.context.getPackageManager().getPackageInfo(paramString, 128);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(106533);
+      if (paramString == null) {
         return 0;
       }
       int i = paramString.versionCode;
-      AppMethodBeat.o(106533);
       return i;
     }
-    catch (Throwable paramString)
+    finally
     {
       AppMethodBeat.o(106533);
     }
@@ -131,16 +142,16 @@ public final class WWAPIImpl
     return null;
   }
   
-  public final boolean ivm()
+  public final boolean keI()
   {
     AppMethodBeat.i(106531);
-    ArrayList localArrayList = ZYg;
+    ArrayList localArrayList = aicF;
     Object localObject = localArrayList;
     if (this.context != null)
     {
       localObject = localArrayList;
       if (!TextUtils.equals(this.context.getPackageName(), "com.tencent.mm")) {
-        localObject = ZYh;
+        localObject = aicG;
       }
     }
     localObject = ((List)localObject).iterator();
@@ -150,7 +161,7 @@ public final class WWAPIImpl
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
-      i = bEv((String)((Iterator)localObject).next());
+      i = bGU((String)((Iterator)localObject).next());
     } while (i == 0);
     while (i >= 100)
     {

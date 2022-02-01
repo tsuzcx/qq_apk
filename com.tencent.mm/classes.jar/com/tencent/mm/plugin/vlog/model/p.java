@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum p
 {
   static
   {
     AppMethodBeat.i(110923);
-    p localp1 = new p("NO_ANIM", 0);
-    NlO = localp1;
-    p localp2 = new p("SLOW_SCALE", 1);
-    NlP = localp2;
-    NlQ = new p[] { localp1, localp2 };
+    TZu = new p("NO_ANIM", 0);
+    TZv = new p("SLOW_SCALE", 1);
+    TZw = new p[] { TZu, TZv };
     AppMethodBeat.o(110923);
   }
   

@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.groupsolitaire.c.a;
 
 public abstract interface c
 {
-  public abstract void aLf(String paramString);
+  public abstract void aHW(String paramString);
   
   public abstract void c(a parama, String paramString);
   
@@ -12,7 +12,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.ui.c
  * JD-Core Version:    0.7.0.1
  */

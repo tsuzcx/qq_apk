@@ -1,6 +1,5 @@
 package com.google.android.material.internal;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -15,12 +14,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ForegroundLinearLayout
   extends LinearLayoutCompat
 {
-  private Drawable bCo;
-  private final Rect bCp;
-  private final Rect bCq;
-  private int bCr;
-  protected boolean bCs;
-  boolean bCt;
+  private Drawable dvp;
+  private final Rect dvq;
+  private final Rect dvr;
+  private int dvs;
+  protected boolean dvt;
+  boolean dvu;
   
   public ForegroundLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,43 +29,43 @@ public class ForegroundLinearLayout
   public ForegroundLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(237706);
-    this.bCp = new Rect();
-    this.bCq = new Rect();
-    this.bCr = 119;
-    this.bCs = true;
-    this.bCt = false;
+    AppMethodBeat.i(209272);
+    this.dvq = new Rect();
+    this.dvr = new Rect();
+    this.dvs = 119;
+    this.dvt = true;
+    this.dvu = false;
     paramContext = k.a(paramContext, paramAttributeSet, a.k.ForegroundLinearLayout, paramInt, 0, new int[0]);
-    this.bCr = paramContext.getInt(a.k.ForegroundLinearLayout_android_foregroundGravity, this.bCr);
+    this.dvs = paramContext.getInt(a.k.ForegroundLinearLayout_android_foregroundGravity, this.dvs);
     paramAttributeSet = paramContext.getDrawable(a.k.ForegroundLinearLayout_android_foreground);
     if (paramAttributeSet != null) {
       setForeground(paramAttributeSet);
     }
-    this.bCs = paramContext.getBoolean(a.k.ForegroundLinearLayout_foregroundInsidePadding, true);
+    this.dvt = paramContext.getBoolean(a.k.ForegroundLinearLayout_foregroundInsidePadding, true);
     paramContext.recycle();
-    AppMethodBeat.o(237706);
+    AppMethodBeat.o(209272);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(237730);
+    AppMethodBeat.i(209378);
     super.draw(paramCanvas);
     Drawable localDrawable;
     Rect localRect1;
     Rect localRect2;
     int i;
     int j;
-    if (this.bCo != null)
+    if (this.dvp != null)
     {
-      localDrawable = this.bCo;
-      if (this.bCt)
+      localDrawable = this.dvp;
+      if (this.dvu)
       {
-        this.bCt = false;
-        localRect1 = this.bCp;
-        localRect2 = this.bCq;
+        this.dvu = false;
+        localRect1 = this.dvq;
+        localRect2 = this.dvr;
         i = getRight() - getLeft();
         j = getBottom() - getTop();
-        if (!this.bCs) {
+        if (!this.dvt) {
           break label123;
         }
         localRect1.set(0, 0, i, j);
@@ -74,84 +73,83 @@ public class ForegroundLinearLayout
     }
     for (;;)
     {
-      Gravity.apply(this.bCr, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight(), localRect1, localRect2);
+      Gravity.apply(this.dvs, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight(), localRect1, localRect2);
       localDrawable.setBounds(localRect2);
       localDrawable.draw(paramCanvas);
-      AppMethodBeat.o(237730);
+      AppMethodBeat.o(209378);
       return;
       label123:
       localRect1.set(getPaddingLeft(), getPaddingTop(), i - getPaddingRight(), j - getPaddingBottom());
     }
   }
   
-  @TargetApi(21)
   public void drawableHotspotChanged(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(237733);
+    AppMethodBeat.i(209387);
     super.drawableHotspotChanged(paramFloat1, paramFloat2);
-    if (this.bCo != null) {
-      this.bCo.setHotspot(paramFloat1, paramFloat2);
+    if (this.dvp != null) {
+      this.dvp.setHotspot(paramFloat1, paramFloat2);
     }
-    AppMethodBeat.o(237733);
+    AppMethodBeat.o(209387);
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(237717);
+    AppMethodBeat.i(209321);
     super.drawableStateChanged();
-    if ((this.bCo != null) && (this.bCo.isStateful())) {
-      this.bCo.setState(getDrawableState());
+    if ((this.dvp != null) && (this.dvp.isStateful())) {
+      this.dvp.setState(getDrawableState());
     }
-    AppMethodBeat.o(237717);
+    AppMethodBeat.o(209321);
   }
   
   public Drawable getForeground()
   {
-    return this.bCo;
+    return this.dvp;
   }
   
   public int getForegroundGravity()
   {
-    return this.bCr;
+    return this.dvs;
   }
   
   public void jumpDrawablesToCurrentState()
   {
-    AppMethodBeat.i(237715);
+    AppMethodBeat.i(209314);
     super.jumpDrawablesToCurrentState();
-    if (this.bCo != null) {
-      this.bCo.jumpToCurrentState();
+    if (this.dvp != null) {
+      this.dvp.jumpToCurrentState();
     }
-    AppMethodBeat.o(237715);
+    AppMethodBeat.o(209314);
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(237726);
+    AppMethodBeat.i(209356);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.bCt |= paramBoolean;
-    AppMethodBeat.o(237726);
+    this.dvu |= paramBoolean;
+    AppMethodBeat.o(209356);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(237728);
+    AppMethodBeat.i(209367);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.bCt = true;
-    AppMethodBeat.o(237728);
+    this.dvu = true;
+    AppMethodBeat.o(209367);
   }
   
   public void setForeground(Drawable paramDrawable)
   {
-    AppMethodBeat.i(237720);
-    if (this.bCo != paramDrawable)
+    AppMethodBeat.i(209331);
+    if (this.dvp != paramDrawable)
     {
-      if (this.bCo != null)
+      if (this.dvp != null)
       {
-        this.bCo.setCallback(null);
-        unscheduleDrawable(this.bCo);
+        this.dvp.setCallback(null);
+        unscheduleDrawable(this.dvp);
       }
-      this.bCo = paramDrawable;
+      this.dvp = paramDrawable;
       if (paramDrawable == null) {
         break label106;
       }
@@ -160,7 +158,7 @@ public class ForegroundLinearLayout
       if (paramDrawable.isStateful()) {
         paramDrawable.setState(getDrawableState());
       }
-      if (this.bCr == 119) {
+      if (this.dvs == 119) {
         paramDrawable.getPadding(new Rect());
       }
     }
@@ -168,7 +166,7 @@ public class ForegroundLinearLayout
     {
       requestLayout();
       invalidate();
-      AppMethodBeat.o(237720);
+      AppMethodBeat.o(209331);
       return;
       label106:
       setWillNotDraw(true);
@@ -177,8 +175,8 @@ public class ForegroundLinearLayout
   
   public void setForegroundGravity(int paramInt)
   {
-    AppMethodBeat.i(237709);
-    if (this.bCr != paramInt)
+    AppMethodBeat.i(209294);
+    if (this.dvs != paramInt)
     {
       if ((0x800007 & paramInt) != 0) {
         break label87;
@@ -192,33 +190,33 @@ public class ForegroundLinearLayout
       if ((paramInt & 0x70) == 0) {
         i = paramInt | 0x30;
       }
-      this.bCr = i;
-      if ((this.bCr == 119) && (this.bCo != null))
+      this.dvs = i;
+      if ((this.dvs == 119) && (this.dvp != null))
       {
         Rect localRect = new Rect();
-        this.bCo.getPadding(localRect);
+        this.dvp.getPadding(localRect);
       }
       requestLayout();
-      AppMethodBeat.o(237709);
+      AppMethodBeat.o(209294);
       return;
     }
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(237712);
-    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.bCo))
+    AppMethodBeat.i(209302);
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.dvp))
     {
-      AppMethodBeat.o(237712);
+      AppMethodBeat.o(209302);
       return true;
     }
-    AppMethodBeat.o(237712);
+    AppMethodBeat.o(209302);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.ForegroundLinearLayout
  * JD-Core Version:    0.7.0.1
  */

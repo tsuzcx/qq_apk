@@ -3,932 +3,1326 @@ package kotlin.l.b.a.b.m.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g.a;
-import kotlin.l.b.a.b.b.ar;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.b.x;
-import kotlin.l.b.a.b.m.aa;
+import kotlin.g.b.ai;
+import kotlin.l.b.a.b.a.h;
+import kotlin.l.b.a.b.a.k.a;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.b.l;
 import kotlin.l.b.a.b.m.ad;
-import kotlin.l.b.a.b.m.aj;
-import kotlin.l.b.a.b.m.aq;
-import kotlin.l.b.a.b.m.at;
-import kotlin.l.b.a.b.m.av;
-import kotlin.l.b.a.b.m.bb;
-import kotlin.l.b.a.b.m.bb.a;
-import kotlin.l.b.a.b.m.bc;
+import kotlin.l.b.a.b.m.ae;
+import kotlin.l.b.a.b.m.af;
+import kotlin.l.b.a.b.m.al;
+import kotlin.l.b.a.b.m.an;
+import kotlin.l.b.a.b.m.ao;
+import kotlin.l.b.a.b.m.as;
+import kotlin.l.b.a.b.m.ax;
+import kotlin.l.b.a.b.m.bf;
+import kotlin.l.b.a.b.m.bf.a;
 import kotlin.l.b.a.b.m.bg;
-import kotlin.l.b.a.b.m.c.j;
+import kotlin.l.b.a.b.m.bk;
+import kotlin.l.b.a.b.m.c.b;
 import kotlin.l.b.a.b.m.c.o;
-import kotlin.l.b.a.b.m.c.r.a;
-import kotlin.l.b.a.b.m.v;
+import kotlin.l.b.a.b.m.c.p;
+import kotlin.l.b.a.b.m.c.t;
+import kotlin.l.b.a.b.m.c.t.a;
+import kotlin.l.b.a.b.m.c.v;
+import kotlin.l.b.a.b.m.c.w;
+import kotlin.l.b.a.b.m.x;
 
 public abstract interface c
-  extends bb, kotlin.l.b.a.b.m.c.r
+  extends bf, t
 {
-  public abstract kotlin.l.b.a.b.m.c.n i(j paramj);
+  public abstract kotlin.l.b.a.b.m.c.i a(kotlin.l.b.a.b.m.c.k paramk1, kotlin.l.b.a.b.m.c.k paramk2);
   
-  public abstract j o(kotlin.l.b.a.b.m.c.h paramh);
+  public abstract kotlin.l.b.a.b.m.c.k a(kotlin.l.b.a.b.m.c.k paramk, boolean paramBoolean);
+  
+  public abstract kotlin.l.b.a.b.m.c.d b(kotlin.l.b.a.b.m.c.k paramk);
+  
+  public abstract kotlin.l.b.a.b.m.c.k b(kotlin.l.b.a.b.m.c.g paramg);
+  
+  public abstract kotlin.l.b.a.b.m.c.k c(kotlin.l.b.a.b.m.c.g paramg);
+  
+  public abstract kotlin.l.b.a.b.m.c.k c(kotlin.l.b.a.b.m.c.i parami);
+  
+  public abstract boolean h(kotlin.l.b.a.b.m.c.k paramk);
+  
+  public abstract o l(kotlin.l.b.a.b.m.c.k paramk);
   
   public static final class a
   {
-    public static kotlin.l.b.a.b.a.h A(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61032);
-      p.k(paramn, "$this$getPrimitiveType");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61032);
-        throw paramn;
-      }
-      paramn = ((at)paramn).iEf();
-      if (paramn == null)
-      {
-        paramn = new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
-        AppMethodBeat.o(61032);
-        throw paramn;
-      }
-      paramn = kotlin.l.b.a.b.a.g.e((kotlin.l.b.a.b.b.l)paramn);
-      AppMethodBeat.o(61032);
-      return paramn;
-    }
-    
-    public static kotlin.l.b.a.b.a.h B(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61033);
-      p.k(paramn, "$this$getPrimitiveArrayType");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61033);
-        throw paramn;
-      }
-      paramn = ((at)paramn).iEf();
-      if (paramn == null)
-      {
-        paramn = new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
-        AppMethodBeat.o(61033);
-        throw paramn;
-      }
-      paramn = kotlin.l.b.a.b.a.g.f((kotlin.l.b.a.b.b.l)paramn);
-      AppMethodBeat.o(61033);
-      return paramn;
-    }
-    
-    public static boolean C(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61034);
-      p.k(paramn, "$this$isUnderKotlinPackage");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61034);
-        throw paramn;
-      }
-      paramn = ((at)paramn).iEf();
-      if ((paramn != null) && (kotlin.l.b.a.b.a.g.d((kotlin.l.b.a.b.b.l)paramn) == true))
-      {
-        AppMethodBeat.o(61034);
-        return true;
-      }
-      AppMethodBeat.o(61034);
-      return false;
-    }
-    
-    public static kotlin.l.b.a.b.f.c D(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61035);
-      p.k(paramn, "$this$getClassFqNameUnsafe");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61035);
-        throw paramn;
-      }
-      paramn = ((at)paramn).iEf();
-      if (paramn == null)
-      {
-        paramn = new kotlin.t("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
-        AppMethodBeat.o(61035);
-        throw paramn;
-      }
-      paramn = kotlin.l.b.a.b.j.d.a.q((kotlin.l.b.a.b.b.l)paramn);
-      AppMethodBeat.o(61035);
-      return paramn;
-    }
-    
-    public static int a(c paramc, kotlin.l.b.a.b.m.c.l paraml)
+    public static int a(c paramc, kotlin.l.b.a.b.m.c.m paramm)
     {
       AppMethodBeat.i(61040);
-      p.k(paraml, "$this$size");
-      int i = r.a.a((kotlin.l.b.a.b.m.c.r)paramc, paraml);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramm, "receiver");
+      int i = t.a.a((t)paramc, paramm);
       AppMethodBeat.o(61040);
       return i;
     }
     
-    public static Collection<kotlin.l.b.a.b.m.c.h> a(c paramc, j paramj)
+    public static Collection<kotlin.l.b.a.b.m.c.i> a(c paramc, kotlin.l.b.a.b.m.c.k paramk)
     {
       AppMethodBeat.i(60990);
-      p.k(paramj, "$this$possibleIntegerTypes");
-      paramc = paramc.i(paramj);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      paramc = paramc.l(paramk);
       if (!(paramc instanceof kotlin.l.b.a.b.j.b.n))
       {
-        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
         AppMethodBeat.o(60990);
         throw paramc;
       }
-      paramc = (Collection)((kotlin.l.b.a.b.j.b.n)paramc).able;
+      paramc = (Collection)((kotlin.l.b.a.b.j.b.n)paramc).ajjL;
       AppMethodBeat.o(60990);
       return paramc;
     }
     
-    public static kotlin.l.b.a.b.m.c.m a(c paramc, kotlin.l.b.a.b.m.c.l paraml, int paramInt)
+    public static List<kotlin.l.b.a.b.m.c.k> a(c paramc, kotlin.l.b.a.b.m.c.k paramk, o paramo)
+    {
+      AppMethodBeat.i(191859);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      kotlin.g.b.s.u(paramo, "constructor");
+      paramc = t.a.a((t)paramc, paramk, paramo);
+      AppMethodBeat.o(191859);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.f a(c paramc, kotlin.l.b.a.b.m.c.g paramg)
+    {
+      AppMethodBeat.i(191724);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramg, "receiver");
+      if (!(paramg instanceof x))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramg + ", " + ai.cz(paramg.getClass())).toString());
+        AppMethodBeat.o(191724);
+        throw paramc;
+      }
+      if ((paramg instanceof kotlin.l.b.a.b.m.s)) {}
+      for (paramc = (kotlin.l.b.a.b.m.s)paramg;; paramc = null)
+      {
+        paramc = (kotlin.l.b.a.b.m.c.f)paramc;
+        AppMethodBeat.o(191724);
+        return paramc;
+      }
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i a(c paramc, List<? extends kotlin.l.b.a.b.m.c.i> paramList)
+    {
+      AppMethodBeat.i(191788);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramList, "types");
+      paramc = (kotlin.l.b.a.b.m.c.i)d.pf(paramList);
+      AppMethodBeat.o(191788);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i a(c paramc, kotlin.l.b.a.b.m.c.d paramd)
+    {
+      AppMethodBeat.i(191711);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramd, "receiver");
+      if (!(paramd instanceof i))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramd + ", " + ai.cz(paramd.getClass())).toString());
+        AppMethodBeat.o(191711);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.i)((i)paramd).ajre;
+      AppMethodBeat.o(191711);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k a(c paramc, kotlin.l.b.a.b.m.c.e parame)
+    {
+      AppMethodBeat.i(191829);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parame, "receiver");
+      if (!(parame instanceof kotlin.l.b.a.b.m.m))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parame + ", " + ai.cz(parame.getClass())).toString());
+        AppMethodBeat.o(191829);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.k)((kotlin.l.b.a.b.m.m)parame).ajpp;
+      AppMethodBeat.o(191829);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k a(c paramc, kotlin.l.b.a.b.m.c.k paramk, b paramb)
+    {
+      AppMethodBeat.i(191764);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "type");
+      kotlin.g.b.s.u(paramb, "status");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191764);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.k)k.a((al)paramk, paramb);
+      AppMethodBeat.o(191764);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k a(c paramc, kotlin.l.b.a.b.m.c.k paramk, boolean paramBoolean)
+    {
+      AppMethodBeat.i(191687);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191687);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.k)((al)paramk).Pq(paramBoolean);
+      AppMethodBeat.o(191687);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.n a(c paramc, kotlin.l.b.a.b.m.c.c paramc1)
+    {
+      AppMethodBeat.i(191740);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramc1, "receiver");
+      if (!(paramc1 instanceof j))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramc1 + ", " + ai.cz(paramc1.getClass())).toString());
+        AppMethodBeat.o(191740);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.n)((j)paramc1).ajjx;
+      AppMethodBeat.o(191740);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.n a(c paramc, kotlin.l.b.a.b.m.c.i parami, int paramInt)
+    {
+      AppMethodBeat.i(191742);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191742);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.n)((ad)parami).klR().get(paramInt);
+      AppMethodBeat.o(191742);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.n a(c paramc, kotlin.l.b.a.b.m.c.k paramk, int paramInt)
+    {
+      AppMethodBeat.i(191860);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      paramc = t.a.a((t)paramc, paramk, paramInt);
+      AppMethodBeat.o(191860);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.n a(c paramc, kotlin.l.b.a.b.m.c.m paramm, int paramInt)
     {
       AppMethodBeat.i(61038);
-      p.k(paraml, "$this$get");
-      paramc = r.a.a((kotlin.l.b.a.b.m.c.r)paramc, paraml, paramInt);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramm, "receiver");
+      paramc = t.a.a((t)paramc, paramm, paramInt);
       AppMethodBeat.o(61038);
       return paramc;
     }
     
-    public static boolean a(c paramc, kotlin.l.b.a.b.m.c.h paramh)
+    public static p a(c paramc, o paramo, int paramInt)
     {
-      AppMethodBeat.i(61036);
-      p.k(paramh, "$this$isMarkedNullable");
-      boolean bool = bb.a.b((bb)paramc, paramh);
-      AppMethodBeat.o(61036);
-      return bool;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.h b(kotlin.l.b.a.b.m.c.d paramd)
-    {
-      AppMethodBeat.i(60994);
-      p.k(paramd, "$this$lowerType");
-      if (!(paramd instanceof k))
+      AppMethodBeat.i(191748);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramd = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramd + ", " + kotlin.g.b.ab.bO(paramd.getClass())).toString());
-        AppMethodBeat.o(60994);
-        throw paramd;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191748);
+        throw paramc;
       }
-      paramd = (kotlin.l.b.a.b.m.c.h)((k)paramd).abrI;
-      AppMethodBeat.o(60994);
-      return paramd;
-    }
-    
-    public static j b(j paramj, kotlin.l.b.a.b.m.c.b paramb)
-    {
-      AppMethodBeat.i(61019);
-      p.k(paramj, "type");
-      p.k(paramb, "status");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61019);
-        throw paramj;
-      }
-      paramj = (j)m.a((aj)paramj, paramb);
-      AppMethodBeat.o(61019);
-      return paramj;
-    }
-    
-    public static j b(j paramj, boolean paramBoolean)
-    {
-      AppMethodBeat.i(60991);
-      p.k(paramj, "$this$withNullability");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(60991);
-        throw paramj;
-      }
-      paramj = (j)((aj)paramj).Jn(paramBoolean);
-      AppMethodBeat.o(60991);
-      return paramj;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.m b(kotlin.l.b.a.b.m.c.h paramh, int paramInt)
-    {
-      AppMethodBeat.i(61007);
-      p.k(paramh, "$this$getArgument");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
-      {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(61007);
-        throw paramh;
-      }
-      paramh = (kotlin.l.b.a.b.m.c.m)((kotlin.l.b.a.b.m.ab)paramh).iOR().get(paramInt);
-      AppMethodBeat.o(61007);
-      return paramh;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.n b(c paramc, kotlin.l.b.a.b.m.c.h paramh)
-    {
-      AppMethodBeat.i(61037);
-      p.k(paramh, "$this$typeConstructor");
-      paramc = r.a.a((kotlin.l.b.a.b.m.c.r)paramc, paramh);
-      AppMethodBeat.o(61037);
+      paramc = ((ax)paramo).klq().get(paramInt);
+      kotlin.g.b.s.s(paramc, "this.parameters[index]");
+      paramc = (p)paramc;
+      AppMethodBeat.o(191748);
       return paramc;
     }
     
-    public static o b(kotlin.l.b.a.b.m.c.n paramn, int paramInt)
+    public static p a(c paramc, v paramv)
     {
-      AppMethodBeat.i(61012);
-      p.k(paramn, "$this$getParameter");
-      if (!(paramn instanceof at))
+      AppMethodBeat.i(191677);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramv, "receiver");
+      if (!(paramv instanceof n))
       {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61012);
-        throw paramn;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramv + ", " + ai.cz(paramv.getClass())).toString());
+        AppMethodBeat.o(191677);
+        throw paramc;
       }
-      paramn = ((at)paramn).iCb().get(paramInt);
-      p.j(paramn, "this.parameters[index]");
-      paramn = (o)paramn;
-      AppMethodBeat.o(61012);
-      return paramn;
+      paramc = (p)((n)paramv).kAW();
+      AppMethodBeat.o(191677);
+      return paramc;
     }
     
-    public static boolean b(kotlin.l.b.a.b.m.c.h paramh, kotlin.l.b.a.b.f.b paramb)
+    public static w a(c paramc, p paramp)
     {
-      AppMethodBeat.i(61027);
-      p.k(paramh, "$this$hasAnnotation");
-      p.k(paramb, "fqName");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
+      AppMethodBeat.i(191753);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramp, "receiver");
+      if (!(paramp instanceof ba))
       {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(61027);
-        throw paramh;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramp + ", " + ai.cz(paramp.getClass())).toString());
+        AppMethodBeat.o(191753);
+        throw paramc;
       }
-      boolean bool = ((kotlin.l.b.a.b.m.ab)paramh).iDY().h(paramb);
-      AppMethodBeat.o(61027);
+      paramc = ((ba)paramp).kom();
+      kotlin.g.b.s.s(paramc, "this.variance");
+      paramc = kotlin.l.b.a.b.m.c.s.a(paramc);
+      AppMethodBeat.o(191753);
+      return paramc;
+    }
+    
+    public static boolean a(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191697);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191697);
+        throw paramc;
+      }
+      boolean bool = af.ai((ad)parami);
+      AppMethodBeat.o(191697);
       return bool;
     }
     
-    public static boolean b(j paramj1, j paramj2)
+    public static boolean a(c paramc, kotlin.l.b.a.b.m.c.i parami, kotlin.l.b.a.b.f.c paramc1)
     {
-      AppMethodBeat.i(60996);
-      p.k(paramj1, "a");
-      p.k(paramj2, "b");
-      if (!(paramj1 instanceof aj))
+      AppMethodBeat.i(191837);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      kotlin.g.b.s.u(paramc1, "fqName");
+      if (!(parami instanceof ad))
       {
-        paramj1 = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj1 + ", " + kotlin.g.b.ab.bO(paramj1.getClass())).toString());
-        AppMethodBeat.o(60996);
-        throw paramj1;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191837);
+        throw paramc;
       }
-      if (!(paramj2 instanceof aj))
+      boolean bool = ((ad)parami).knl().i(paramc1);
+      AppMethodBeat.o(191837);
+      return bool;
+    }
+    
+    public static boolean a(c paramc, kotlin.l.b.a.b.m.c.k paramk1, kotlin.l.b.a.b.m.c.k paramk2)
+    {
+      AppMethodBeat.i(191719);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk1, "a");
+      kotlin.g.b.s.u(paramk2, "b");
+      if (!(paramk1 instanceof al))
       {
-        paramj1 = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj2 + ", " + kotlin.g.b.ab.bO(paramj2.getClass())).toString());
-        AppMethodBeat.o(60996);
-        throw paramj1;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk1 + ", " + ai.cz(paramk1.getClass())).toString());
+        AppMethodBeat.o(191719);
+        throw paramc;
       }
-      if (((aj)paramj1).iOR() == ((aj)paramj2).iOR())
+      if (!(paramk2 instanceof al))
       {
-        AppMethodBeat.o(60996);
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk2 + ", " + ai.cz(paramk2.getClass())).toString());
+        AppMethodBeat.o(191719);
+        throw paramc;
+      }
+      if (((al)paramk1).klR() == ((al)paramk2).klR())
+      {
+        AppMethodBeat.o(191719);
         return true;
       }
-      AppMethodBeat.o(60996);
+      AppMethodBeat.o(191719);
       return false;
     }
     
-    public static j c(c paramc, kotlin.l.b.a.b.m.c.h paramh)
+    public static boolean a(c paramc, kotlin.l.b.a.b.m.c.n paramn)
     {
-      AppMethodBeat.i(61039);
-      p.k(paramh, "$this$lowerBoundIfFlexible");
-      paramc = r.a.b((kotlin.l.b.a.b.m.c.r)paramc, paramh);
-      AppMethodBeat.o(61039);
-      return paramc;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.t c(o paramo)
-    {
-      AppMethodBeat.i(61014);
-      p.k(paramo, "$this$getVariance");
-      if (!(paramo instanceof as))
+      AppMethodBeat.i(191743);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramn, "receiver");
+      if (!(paramn instanceof kotlin.l.b.a.b.m.az))
       {
-        paramo = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + kotlin.g.b.ab.bO(paramo.getClass())).toString());
-        AppMethodBeat.o(61014);
-        throw paramo;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + ai.cz(paramn.getClass())).toString());
+        AppMethodBeat.o(191743);
+        throw paramc;
       }
-      paramo = ((as)paramo).iEW();
-      p.j(paramo, "this.variance");
-      paramo = d.a(paramo);
-      AppMethodBeat.o(61014);
-      return paramo;
-    }
-    
-    public static boolean c(kotlin.l.b.a.b.m.c.n paramn1, kotlin.l.b.a.b.m.c.n paramn2)
-    {
-      AppMethodBeat.i(61015);
-      p.k(paramn1, "c1");
-      p.k(paramn2, "c2");
-      if (!(paramn1 instanceof at))
-      {
-        paramn1 = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn1 + ", " + kotlin.g.b.ab.bO(paramn1.getClass())).toString());
-        AppMethodBeat.o(61015);
-        throw paramn1;
-      }
-      if (!(paramn2 instanceof at))
-      {
-        paramn1 = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn2 + ", " + kotlin.g.b.ab.bO(paramn2.getClass())).toString());
-        AppMethodBeat.o(61015);
-        throw paramn1;
-      }
-      boolean bool = p.h(paramn1, paramn2);
-      AppMethodBeat.o(61015);
+      boolean bool = ((kotlin.l.b.a.b.m.az)paramn).kAM();
+      AppMethodBeat.o(191743);
       return bool;
     }
     
-    public static kotlin.l.b.a.b.m.c.f d(kotlin.l.b.a.b.m.c.g paramg)
+    public static boolean a(c paramc, o paramo)
     {
-      AppMethodBeat.i(60999);
-      p.k(paramg, "$this$asDynamicType");
-      if (!(paramg instanceof v))
+      AppMethodBeat.i(191672);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramg = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramg + ", " + kotlin.g.b.ab.bO(paramg.getClass())).toString());
-        AppMethodBeat.o(60999);
-        throw paramg;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191672);
+        throw paramc;
       }
-      if (!(paramg instanceof kotlin.l.b.a.b.m.r)) {
-        paramg = null;
-      }
-      for (;;)
-      {
-        paramg = (kotlin.l.b.a.b.m.c.f)paramg;
-        AppMethodBeat.o(60999);
-        return paramg;
-      }
-    }
-    
-    public static kotlin.l.b.a.b.m.c.h d(o paramo)
-    {
-      AppMethodBeat.i(61030);
-      p.k(paramo, "$this$getRepresentativeUpperBound");
-      if (!(paramo instanceof as))
-      {
-        paramo = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + kotlin.g.b.ab.bO(paramo.getClass())).toString());
-        AppMethodBeat.o(61030);
-        throw paramo;
-      }
-      paramo = (kotlin.l.b.a.b.m.c.h)kotlin.l.b.a.b.m.d.a.e((as)paramo);
-      AppMethodBeat.o(61030);
-      return paramo;
-    }
-    
-    public static j d(c paramc, kotlin.l.b.a.b.m.c.h paramh)
-    {
-      AppMethodBeat.i(61041);
-      p.k(paramh, "$this$upperBoundIfFlexible");
-      paramc = r.a.c((kotlin.l.b.a.b.m.c.r)paramc, paramh);
-      AppMethodBeat.o(61041);
-      return paramc;
-    }
-    
-    public static boolean d(kotlin.l.b.a.b.m.c.m paramm)
-    {
-      AppMethodBeat.i(61008);
-      p.k(paramm, "$this$isStarProjection");
-      if (!(paramm instanceof av))
-      {
-        paramm = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramm + ", " + kotlin.g.b.ab.bO(paramm.getClass())).toString());
-        AppMethodBeat.o(61008);
-        throw paramm;
-      }
-      boolean bool = ((av)paramm).iPZ();
-      AppMethodBeat.o(61008);
+      boolean bool = ((ax)paramo).knx();
+      AppMethodBeat.o(191672);
       return bool;
     }
     
-    public static kotlin.l.b.a.b.m.c.h e(c paramc, kotlin.l.b.a.b.m.c.h paramh)
+    public static boolean a(c paramc, o paramo1, o paramo2)
+    {
+      AppMethodBeat.i(191757);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo1, "c1");
+      kotlin.g.b.s.u(paramo2, "c2");
+      if (!(paramo1 instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo1 + ", " + ai.cz(paramo1.getClass())).toString());
+        AppMethodBeat.o(191757);
+        throw paramc;
+      }
+      if (!(paramo2 instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo2 + ", " + ai.cz(paramo2.getClass())).toString());
+        AppMethodBeat.o(191757);
+        throw paramc;
+      }
+      boolean bool = kotlin.g.b.s.p(paramo1, paramo2);
+      AppMethodBeat.o(191757);
+      return bool;
+    }
+    
+    public static boolean a(c paramc, p paramp, o paramo)
+    {
+      AppMethodBeat.i(191755);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramp, "receiver");
+      if (!(paramp instanceof ba))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramp + ", " + ai.cz(paramp.getClass())).toString());
+        AppMethodBeat.o(191755);
+        throw paramc;
+      }
+      if (paramo == null) {}
+      for (boolean bool = true; !bool; bool = paramo instanceof ax)
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramp + ", " + ai.cz(paramp.getClass())).toString());
+        AppMethodBeat.o(191755);
+        throw paramc;
+      }
+      bool = kotlin.l.b.a.b.m.d.a.a((ba)paramp, (ax)paramo, 4);
+      AppMethodBeat.o(191755);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.c b(c paramc, kotlin.l.b.a.b.m.c.d paramd)
+    {
+      AppMethodBeat.i(191738);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramd, "receiver");
+      if (!(paramd instanceof i))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramd + ", " + ai.cz(paramd.getClass())).toString());
+        AppMethodBeat.o(191738);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.c)((i)paramd).ajrd;
+      AppMethodBeat.o(191738);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i b(c paramc, kotlin.l.b.a.b.m.c.k paramk1, kotlin.l.b.a.b.m.c.k paramk2)
+    {
+      AppMethodBeat.i(191792);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk1, "lowerBound");
+      kotlin.g.b.s.u(paramk2, "upperBound");
+      if (!(paramk1 instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramc + ", " + ai.cz(paramc.getClass())).toString());
+        AppMethodBeat.o(191792);
+        throw paramc;
+      }
+      if (!(paramk2 instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramc + ", " + ai.cz(paramc.getClass())).toString());
+        AppMethodBeat.o(191792);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.i)ae.a((al)paramk1, (al)paramk2);
+      AppMethodBeat.o(191792);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i b(c paramc, p paramp)
+    {
+      AppMethodBeat.i(191842);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramp, "receiver");
+      if (!(paramp instanceof ba))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramp + ", " + ai.cz(paramp.getClass())).toString());
+        AppMethodBeat.o(191842);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.i)kotlin.l.b.a.b.m.d.a.d((ba)paramp);
+      AppMethodBeat.o(191842);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k b(c paramc, kotlin.l.b.a.b.m.c.g paramg)
+    {
+      AppMethodBeat.i(191726);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramg, "receiver");
+      if (!(paramg instanceof x))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramg + ", " + ai.cz(paramg.getClass())).toString());
+        AppMethodBeat.o(191726);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.k)((x)paramg).ajpF;
+      AppMethodBeat.o(191726);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k b(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191721);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191721);
+        throw paramc;
+      }
+      paramc = ((ad)parami).kAK();
+      if ((paramc instanceof al)) {}
+      for (paramc = (al)paramc;; paramc = null)
+      {
+        paramc = (kotlin.l.b.a.b.m.c.k)paramc;
+        AppMethodBeat.o(191721);
+        return paramc;
+      }
+    }
+    
+    public static w b(c paramc, kotlin.l.b.a.b.m.c.n paramn)
+    {
+      AppMethodBeat.i(191745);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramn, "receiver");
+      if (!(paramn instanceof kotlin.l.b.a.b.m.az))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + ai.cz(paramn.getClass())).toString());
+        AppMethodBeat.o(191745);
+        throw paramc;
+      }
+      paramc = ((kotlin.l.b.a.b.m.az)paramn).kAN();
+      kotlin.g.b.s.s(paramc, "this.projectionKind");
+      paramc = kotlin.l.b.a.b.m.c.s.a(paramc);
+      AppMethodBeat.o(191745);
+      return paramc;
+    }
+    
+    public static boolean b(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191703);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191703);
+        throw paramc;
+      }
+      if (!(paramk instanceof kotlin.l.b.a.b.m.e)) {
+        if ((!(paramk instanceof kotlin.l.b.a.b.m.m)) || (!(((kotlin.l.b.a.b.m.m)paramk).ajpp instanceof kotlin.l.b.a.b.m.e))) {
+          break label119;
+        }
+      }
+      label119:
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(191703);
+        return true;
+      }
+      AppMethodBeat.o(191703);
+      return false;
+    }
+    
+    public static boolean b(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191674);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191674);
+        throw paramc;
+      }
+      boolean bool = paramo instanceof kotlin.l.b.a.b.j.b.n;
+      AppMethodBeat.o(191674);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.g c(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191722);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191722);
+        throw paramc;
+      }
+      paramc = ((ad)parami).kAK();
+      if ((paramc instanceof x)) {}
+      for (paramc = (x)paramc;; paramc = null)
+      {
+        paramc = (kotlin.l.b.a.b.m.c.g)paramc;
+        AppMethodBeat.o(191722);
+        return paramc;
+      }
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i c(c paramc, kotlin.l.b.a.b.m.c.n paramn)
+    {
+      AppMethodBeat.i(191746);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramn, "receiver");
+      if (!(paramn instanceof kotlin.l.b.a.b.m.az))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + ai.cz(paramn.getClass())).toString());
+        AppMethodBeat.o(191746);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.i)((kotlin.l.b.a.b.m.az)paramn).koG().kAK();
+      AppMethodBeat.o(191746);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k c(c paramc, kotlin.l.b.a.b.m.c.g paramg)
+    {
+      AppMethodBeat.i(191730);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramg, "receiver");
+      if (!(paramg instanceof x))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramg + ", " + ai.cz(paramg.getClass())).toString());
+        AppMethodBeat.o(191730);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.k)((x)paramg).ajpE;
+      AppMethodBeat.o(191730);
+      return paramc;
+    }
+    
+    public static boolean c(c paramc, kotlin.l.b.a.b.m.c.d paramd)
+    {
+      AppMethodBeat.i(191807);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramd, "receiver");
+      if (!(paramd instanceof i))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramd + ", " + ai.cz(paramd.getClass())).toString());
+        AppMethodBeat.o(191807);
+        throw paramc;
+      }
+      boolean bool = ((i)paramd).ajrf;
+      AppMethodBeat.o(191807);
+      return bool;
+    }
+    
+    public static boolean c(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191709);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191709);
+        throw paramc;
+      }
+      if (!(paramk instanceof as)) {
+        if ((!(paramk instanceof kotlin.l.b.a.b.m.m)) || (!(((kotlin.l.b.a.b.m.m)paramk).ajpp instanceof as))) {
+          break label119;
+        }
+      }
+      label119:
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(191709);
+        return true;
+      }
+      AppMethodBeat.o(191709);
+      return false;
+    }
+    
+    public static boolean c(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191715);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191715);
+        throw paramc;
+      }
+      boolean bool = paramo instanceof kotlin.l.b.a.b.m.ac;
+      AppMethodBeat.o(191715);
+      return bool;
+    }
+    
+    public static int d(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191741);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191741);
+        throw paramc;
+      }
+      int i = ((ad)parami).klR().size();
+      AppMethodBeat.o(191741);
+      return i;
+    }
+    
+    public static int d(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191747);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191747);
+        throw paramc;
+      }
+      int i = ((ax)paramo).klq().size();
+      AppMethodBeat.o(191747);
+      return i;
+    }
+    
+    public static b d(c paramc, kotlin.l.b.a.b.m.c.d paramd)
+    {
+      AppMethodBeat.i(191811);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramd, "receiver");
+      if (!(paramd instanceof i))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramd + ", " + ai.cz(paramd.getClass())).toString());
+        AppMethodBeat.o(191811);
+        throw paramc;
+      }
+      paramc = ((i)paramd).ajrc;
+      AppMethodBeat.o(191811);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.d d(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191732);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191732);
+        throw paramc;
+      }
+      if ((paramk instanceof an))
+      {
+        paramc = paramc.b((kotlin.l.b.a.b.m.c.k)((an)paramk).aiUV);
+        AppMethodBeat.o(191732);
+        return paramc;
+      }
+      if ((paramk instanceof i)) {}
+      for (paramc = (i)paramk;; paramc = null)
+      {
+        paramc = (kotlin.l.b.a.b.m.c.d)paramc;
+        AppMethodBeat.o(191732);
+        return paramc;
+      }
+    }
+    
+    public static Collection<kotlin.l.b.a.b.m.c.i> e(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191750);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191750);
+        throw paramc;
+      }
+      paramc = ((ax)paramo).kpG();
+      kotlin.g.b.s.s(paramc, "this.supertypes");
+      AppMethodBeat.o(191750);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.e e(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191734);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191734);
+        throw paramc;
+      }
+      if ((paramk instanceof kotlin.l.b.a.b.m.m)) {}
+      for (paramc = (kotlin.l.b.a.b.m.m)paramk;; paramc = null)
+      {
+        paramc = (kotlin.l.b.a.b.m.c.e)paramc;
+        AppMethodBeat.o(191734);
+        return paramc;
+      }
+    }
+    
+    public static kotlin.l.b.a.b.m.c.n e(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191775);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191775);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.n)kotlin.l.b.a.b.m.d.a.aF((ad)parami);
+      AppMethodBeat.o(191775);
+      return paramc;
+    }
+    
+    public static boolean e(c paramc, kotlin.l.b.a.b.m.c.d paramd)
+    {
+      AppMethodBeat.i(191818);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramd, "receiver");
+      boolean bool = paramd instanceof kotlin.l.b.a.b.j.a.a.a;
+      AppMethodBeat.o(191818);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i f(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191799);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if ((parami instanceof kotlin.l.b.a.b.m.c.k))
+      {
+        paramc = (kotlin.l.b.a.b.m.c.i)paramc.a((kotlin.l.b.a.b.m.c.k)parami, true);
+        AppMethodBeat.o(191799);
+        return paramc;
+      }
+      if ((parami instanceof kotlin.l.b.a.b.m.c.g))
+      {
+        paramc = paramc.a(paramc.a(paramc.b((kotlin.l.b.a.b.m.c.g)parami), true), paramc.a(paramc.c((kotlin.l.b.a.b.m.c.g)parami), true));
+        AppMethodBeat.o(191799);
+        return paramc;
+      }
+      paramc = (Throwable)new IllegalStateException("sealed".toString());
+      AppMethodBeat.o(191799);
+      throw paramc;
+    }
+    
+    public static boolean f(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191735);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191735);
+        throw paramc;
+      }
+      boolean bool = ((al)paramk).ksB();
+      AppMethodBeat.o(191735);
+      return bool;
+    }
+    
+    public static boolean f(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191758);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191758);
+        throw paramc;
+      }
+      boolean bool = ((ax)paramo).knA() instanceof kotlin.l.b.a.b.b.e;
+      AppMethodBeat.o(191758);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i g(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191803);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof bk))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191803);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.i)ao.b((bk)parami);
+      AppMethodBeat.o(191803);
+      return paramc;
+    }
+    
+    public static o g(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191737);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191737);
+        throw paramc;
+      }
+      paramc = (o)((al)paramk).kzm();
+      AppMethodBeat.o(191737);
+      return paramc;
+    }
+    
+    public static boolean g(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191760);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191760);
+        throw paramc;
+      }
+      paramc = ((ax)paramo).knA();
+      if ((paramc instanceof kotlin.l.b.a.b.b.e)) {}
+      for (paramc = (kotlin.l.b.a.b.b.e)paramc; paramc == null; paramc = null)
+      {
+        AppMethodBeat.o(191760);
+        return false;
+      }
+      if ((kotlin.l.b.a.b.b.ac.o(paramc)) && (paramc.kna() != kotlin.l.b.a.b.b.f.aiGw) && (paramc.kna() != kotlin.l.b.a.b.b.f.aiGx))
+      {
+        AppMethodBeat.o(191760);
+        return true;
+      }
+      AppMethodBeat.o(191760);
+      return false;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.m h(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191762);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191762);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.m)paramk;
+      AppMethodBeat.o(191762);
+      return paramc;
+    }
+    
+    public static boolean h(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191823);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191823);
+        throw paramc;
+      }
+      boolean bool = bg.aw((ad)parami);
+      AppMethodBeat.o(191823);
+      return bool;
+    }
+    
+    public static boolean h(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191766);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191766);
+        throw paramc;
+      }
+      boolean bool = h.a((ax)paramo, k.a.aiCy);
+      AppMethodBeat.o(191766);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i i(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191843);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      if (!(parami instanceof ad))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + parami + ", " + ai.cz(parami.getClass())).toString());
+        AppMethodBeat.o(191843);
+        throw paramc;
+      }
+      paramc = (kotlin.l.b.a.b.m.c.i)kotlin.l.b.a.b.j.f.S((ad)parami);
+      AppMethodBeat.o(191843);
+      return paramc;
+    }
+    
+    public static boolean i(c paramc, kotlin.l.b.a.b.m.c.k paramk)
+    {
+      AppMethodBeat.i(191778);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof al))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191778);
+        throw paramc;
+      }
+      if ((!af.ai((ad)paramk)) && (!(((al)paramk).kzm().knA() instanceof kotlin.l.b.a.b.b.az)) && ((((al)paramk).kzm().knA() != null) || ((paramk instanceof kotlin.l.b.a.b.j.a.a.a)) || ((paramk instanceof i)) || ((paramk instanceof kotlin.l.b.a.b.m.m)) || ((((al)paramk).kzm() instanceof kotlin.l.b.a.b.j.b.n)) || (j(paramc, paramk))))
+      {
+        AppMethodBeat.o(191778);
+        return true;
+      }
+      AppMethodBeat.o(191778);
+      return false;
+    }
+    
+    public static boolean i(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191769);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191769);
+        throw paramc;
+      }
+      boolean bool = h.a((ax)paramo, k.a.aiCz);
+      AppMethodBeat.o(191769);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.i j(c paramc, kotlin.l.b.a.b.m.c.i parami)
     {
       AppMethodBeat.i(61042);
-      p.k(paramh, "$this$makeNullable");
-      paramc = bb.a.c((bb)paramc, paramh);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      paramc = bf.a.b((bf)paramc, parami);
       AppMethodBeat.o(61042);
       return paramc;
     }
     
-    public static j e(kotlin.l.b.a.b.m.c.g paramg)
+    public static p j(c paramc, o paramo)
     {
-      AppMethodBeat.i(61000);
-      p.k(paramg, "$this$upperBound");
-      if (!(paramg instanceof v))
+      AppMethodBeat.i(191840);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramg = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramg + ", " + kotlin.g.b.ab.bO(paramg.getClass())).toString());
-        AppMethodBeat.o(61000);
-        throw paramg;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191840);
+        throw paramc;
       }
-      paramg = (j)((v)paramg).abqw;
-      AppMethodBeat.o(61000);
-      return paramg;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.t e(kotlin.l.b.a.b.m.c.m paramm)
-    {
-      AppMethodBeat.i(61009);
-      p.k(paramm, "$this$getVariance");
-      if (!(paramm instanceof av))
+      paramc = ((ax)paramo).knA();
+      if ((paramc instanceof ba)) {}
+      for (paramc = (ba)paramc;; paramc = null)
       {
-        paramm = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramm + ", " + kotlin.g.b.ab.bO(paramm.getClass())).toString());
-        AppMethodBeat.o(61009);
-        throw paramm;
-      }
-      paramm = ((av)paramm).iQa();
-      p.j(paramm, "this.projectionKind");
-      paramm = d.a(paramm);
-      AppMethodBeat.o(61009);
-      return paramm;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.h f(kotlin.l.b.a.b.m.c.m paramm)
-    {
-      AppMethodBeat.i(61010);
-      p.k(paramm, "$this$getType");
-      if (!(paramm instanceof av))
-      {
-        paramm = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramm + ", " + kotlin.g.b.ab.bO(paramm.getClass())).toString());
-        AppMethodBeat.o(61010);
-        throw paramm;
-      }
-      paramm = (kotlin.l.b.a.b.m.c.h)((av)paramm).iFN().iPX();
-      AppMethodBeat.o(61010);
-      return paramm;
-    }
-    
-    public static j f(kotlin.l.b.a.b.m.c.g paramg)
-    {
-      AppMethodBeat.i(61001);
-      p.k(paramg, "$this$lowerBound");
-      if (!(paramg instanceof v))
-      {
-        paramg = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramg + ", " + kotlin.g.b.ab.bO(paramg.getClass())).toString());
-        AppMethodBeat.o(61001);
-        throw paramg;
-      }
-      paramg = (j)((v)paramg).abqv;
-      AppMethodBeat.o(61001);
-      return paramg;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.h lH(List<? extends kotlin.l.b.a.b.m.c.h> paramList)
-    {
-      AppMethodBeat.i(61024);
-      p.k(paramList, "types");
-      paramList = (kotlin.l.b.a.b.m.c.h)f.lI(paramList);
-      AppMethodBeat.o(61024);
-      return paramList;
-    }
-    
-    public static boolean m(j paramj)
-    {
-      AppMethodBeat.i(60993);
-      p.k(paramj, "$this$isStubType");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(60993);
-        throw paramj;
-      }
-      boolean bool = paramj instanceof aq;
-      AppMethodBeat.o(60993);
-      return bool;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.d n(j paramj)
-    {
-      AppMethodBeat.i(61002);
-      p.k(paramj, "$this$asCapturedType");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61002);
-        throw paramj;
-      }
-      if (!(paramj instanceof k)) {
-        paramj = null;
-      }
-      for (;;)
-      {
-        paramj = (kotlin.l.b.a.b.m.c.d)paramj;
-        AppMethodBeat.o(61002);
-        return paramj;
+        paramc = (p)paramc;
+        AppMethodBeat.o(191840);
+        return paramc;
       }
     }
     
-    public static kotlin.l.b.a.b.m.c.e o(j paramj)
+    private static boolean j(c paramc, kotlin.l.b.a.b.m.c.k paramk)
     {
-      AppMethodBeat.i(61003);
-      p.k(paramj, "$this$asDefinitelyNotNullType");
-      if (!(paramj instanceof aj))
+      AppMethodBeat.i(191783);
+      if (((paramk instanceof an)) && (paramc.h((kotlin.l.b.a.b.m.c.k)((an)paramk).aiUV)))
       {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61003);
-        throw paramj;
-      }
-      if (!(paramj instanceof kotlin.l.b.a.b.m.l)) {
-        paramj = null;
-      }
-      for (;;)
-      {
-        paramj = (kotlin.l.b.a.b.m.c.e)paramj;
-        AppMethodBeat.o(61003);
-        return paramj;
-      }
-    }
-    
-    public static boolean p(j paramj)
-    {
-      AppMethodBeat.i(61004);
-      p.k(paramj, "$this$isMarkedNullable");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61004);
-        throw paramj;
-      }
-      boolean bool = ((aj)paramj).iIu();
-      AppMethodBeat.o(61004);
-      return bool;
-    }
-    
-    public static boolean p(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(60988);
-      p.k(paramn, "$this$isDenotable");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(60988);
-        throw paramn;
-      }
-      boolean bool = ((at)paramn).iEh();
-      AppMethodBeat.o(60988);
-      return bool;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.n q(j paramj)
-    {
-      AppMethodBeat.i(61005);
-      p.k(paramj, "$this$typeConstructor");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61005);
-        throw paramj;
-      }
-      paramj = (kotlin.l.b.a.b.m.c.n)((aj)paramj).iOU();
-      AppMethodBeat.o(61005);
-      return paramj;
-    }
-    
-    public static boolean q(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(60989);
-      p.k(paramn, "$this$isIntegerLiteralTypeConstructor");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(60989);
-        throw paramn;
-      }
-      boolean bool = paramn instanceof kotlin.l.b.a.b.j.b.n;
-      AppMethodBeat.o(60989);
-      return bool;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.l r(j paramj)
-    {
-      AppMethodBeat.i(61018);
-      p.k(paramj, "$this$asArgumentList");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61018);
-        throw paramj;
-      }
-      paramj = (kotlin.l.b.a.b.m.c.l)paramj;
-      AppMethodBeat.o(61018);
-      return paramj;
-    }
-    
-    public static boolean r(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(60995);
-      p.k(paramn, "$this$isIntersection");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(60995);
-        throw paramn;
-      }
-      boolean bool = paramn instanceof aa;
-      AppMethodBeat.o(60995);
-      return bool;
-    }
-    
-    public static int s(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61011);
-      p.k(paramn, "$this$parametersCount");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61011);
-        throw paramn;
-      }
-      int i = ((at)paramn).iCb().size();
-      AppMethodBeat.o(61011);
-      return i;
-    }
-    
-    public static boolean s(j paramj)
-    {
-      AppMethodBeat.i(61023);
-      p.k(paramj, "$this$isSingleClassifierType");
-      if (!(paramj instanceof aj))
-      {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61023);
-        throw paramj;
-      }
-      if ((!ad.ap((kotlin.l.b.a.b.m.ab)paramj)) && (!(((aj)paramj).iOU().iEf() instanceof ar)) && ((((aj)paramj).iOU().iEf() != null) || ((paramj instanceof kotlin.l.b.a.b.j.a.a.a)) || ((paramj instanceof k)) || ((paramj instanceof kotlin.l.b.a.b.m.l)) || ((((aj)paramj).iOU() instanceof kotlin.l.b.a.b.j.b.n))))
-      {
-        AppMethodBeat.o(61023);
+        AppMethodBeat.o(191783);
         return true;
       }
-      AppMethodBeat.o(61023);
+      AppMethodBeat.o(191783);
       return false;
     }
     
-    public static Collection<kotlin.l.b.a.b.m.c.h> t(kotlin.l.b.a.b.m.c.n paramn)
+    public static boolean k(c paramc, kotlin.l.b.a.b.m.c.i parami)
     {
-      AppMethodBeat.i(61013);
-      p.k(paramn, "$this$supertypes");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61013);
-        throw paramn;
-      }
-      paramn = ((at)paramn).iGk();
-      p.j(paramn, "this.supertypes");
-      AppMethodBeat.o(61013);
-      return paramn;
-    }
-    
-    public static boolean t(kotlin.l.b.a.b.m.c.h paramh)
-    {
-      AppMethodBeat.i(60992);
-      p.k(paramh, "$this$isError");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
-      {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(60992);
-        throw paramh;
-      }
-      boolean bool = ad.ap((kotlin.l.b.a.b.m.ab)paramh);
-      AppMethodBeat.o(60992);
+      AppMethodBeat.i(191849);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      boolean bool = t.a.a((t)paramc, parami);
+      AppMethodBeat.o(191849);
       return bool;
     }
     
-    public static boolean t(j paramj)
+    public static boolean k(c paramc, kotlin.l.b.a.b.m.c.k paramk)
     {
-      AppMethodBeat.i(61026);
-      p.k(paramj, "$this$isPrimitiveType");
-      if (!(paramj instanceof kotlin.l.b.a.b.m.ab))
+      AppMethodBeat.i(191834);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      if (!(paramk instanceof ad))
       {
-        paramj = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramj + ", " + kotlin.g.b.ab.bO(paramj.getClass())).toString());
-        AppMethodBeat.o(61026);
-        throw paramj;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramk + ", " + ai.cz(paramk.getClass())).toString());
+        AppMethodBeat.o(191834);
+        throw paramc;
       }
-      boolean bool = kotlin.l.b.a.b.a.g.o((kotlin.l.b.a.b.m.ab)paramj);
-      AppMethodBeat.o(61026);
+      boolean bool = h.p((ad)paramk);
+      AppMethodBeat.o(191834);
       return bool;
     }
     
-    public static j u(kotlin.l.b.a.b.m.c.h paramh)
+    public static boolean k(c paramc, o paramo)
     {
-      AppMethodBeat.i(60997);
-      p.k(paramh, "$this$asSimpleType");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
+      AppMethodBeat.i(191841);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(60997);
-        throw paramh;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191841);
+        throw paramc;
       }
-      bg localbg = ((kotlin.l.b.a.b.m.ab)paramh).iPX();
-      paramh = localbg;
-      if (!(localbg instanceof aj)) {
-        paramh = null;
-      }
-      paramh = (j)paramh;
-      AppMethodBeat.o(60997);
-      return paramh;
-    }
-    
-    public static boolean u(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61016);
-      p.k(paramn, "$this$isClassTypeConstructor");
-      if (!(paramn instanceof at))
+      paramc = ((ax)paramo).knA();
+      if ((paramc instanceof kotlin.l.b.a.b.b.e)) {}
+      for (paramc = (kotlin.l.b.a.b.b.e)paramc; (paramc != null) && (kotlin.l.b.a.b.j.f.D((l)paramc) == true); paramc = null)
       {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61016);
-        throw paramn;
-      }
-      boolean bool = ((at)paramn).iEf() instanceof kotlin.l.b.a.b.b.e;
-      AppMethodBeat.o(61016);
-      return bool;
-    }
-    
-    public static kotlin.l.b.a.b.m.c.g v(kotlin.l.b.a.b.m.c.h paramh)
-    {
-      AppMethodBeat.i(60998);
-      p.k(paramh, "$this$asFlexibleType");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
-      {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(60998);
-        throw paramh;
-      }
-      bg localbg = ((kotlin.l.b.a.b.m.ab)paramh).iPX();
-      paramh = localbg;
-      if (!(localbg instanceof v)) {
-        paramh = null;
-      }
-      paramh = (kotlin.l.b.a.b.m.c.g)paramh;
-      AppMethodBeat.o(60998);
-      return paramh;
-    }
-    
-    public static boolean v(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61017);
-      p.k(paramn, "$this$isCommonFinalClassConstructor");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61017);
-        throw paramn;
-      }
-      kotlin.l.b.a.b.b.h localh = ((at)paramn).iEf();
-      paramn = localh;
-      if (!(localh instanceof kotlin.l.b.a.b.b.e)) {
-        paramn = null;
-      }
-      paramn = (kotlin.l.b.a.b.b.e)paramn;
-      if (paramn == null)
-      {
-        AppMethodBeat.o(61017);
-        return false;
-      }
-      if ((x.p(paramn)) && (paramn.iDN() != kotlin.l.b.a.b.b.f.aaKb) && (paramn.iDN() != kotlin.l.b.a.b.b.f.aaKc))
-      {
-        AppMethodBeat.o(61017);
+        AppMethodBeat.o(191841);
         return true;
       }
-      AppMethodBeat.o(61017);
+      AppMethodBeat.o(191841);
       return false;
     }
     
-    public static int w(kotlin.l.b.a.b.m.c.h paramh)
+    public static kotlin.l.b.a.b.a.i l(c paramc, o paramo)
     {
-      AppMethodBeat.i(61006);
-      p.k(paramh, "$this$argumentsCount");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
+      AppMethodBeat.i(191844);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(61006);
-        throw paramh;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191844);
+        throw paramc;
       }
-      int i = ((kotlin.l.b.a.b.m.ab)paramh).iOR().size();
-      AppMethodBeat.o(61006);
-      return i;
+      paramc = ((ax)paramo).knA();
+      if (paramc == null)
+      {
+        paramc = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
+        AppMethodBeat.o(191844);
+        throw paramc;
+      }
+      paramc = h.e((l)paramc);
+      AppMethodBeat.o(191844);
+      return paramc;
     }
     
-    public static boolean w(kotlin.l.b.a.b.m.c.n paramn)
+    public static boolean l(c paramc, kotlin.l.b.a.b.m.c.i parami)
     {
-      AppMethodBeat.i(61020);
-      p.k(paramn, "$this$isAnyConstructor");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61020);
-        throw paramn;
-      }
-      boolean bool = kotlin.l.b.a.b.a.g.a((at)paramn, kotlin.l.b.a.b.a.g.aaFI.aaFM);
-      AppMethodBeat.o(61020);
+      AppMethodBeat.i(191850);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      boolean bool = t.a.b((t)paramc, parami);
+      AppMethodBeat.o(191850);
       return bool;
     }
     
-    public static kotlin.l.b.a.b.m.c.m x(kotlin.l.b.a.b.m.c.h paramh)
+    public static boolean l(c paramc, kotlin.l.b.a.b.m.c.k paramk)
     {
-      AppMethodBeat.i(61022);
-      p.k(paramh, "$this$asTypeArgument");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
-      {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(61022);
-        throw paramh;
-      }
-      paramh = (kotlin.l.b.a.b.m.c.m)kotlin.l.b.a.b.m.d.a.aN((kotlin.l.b.a.b.m.ab)paramh);
-      AppMethodBeat.o(61022);
-      return paramh;
-    }
-    
-    public static boolean x(kotlin.l.b.a.b.m.c.n paramn)
-    {
-      AppMethodBeat.i(61021);
-      p.k(paramn, "$this$isNothingConstructor");
-      if (!(paramn instanceof at))
-      {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61021);
-        throw paramn;
-      }
-      boolean bool = kotlin.l.b.a.b.a.g.a((at)paramn, kotlin.l.b.a.b.a.g.aaFI.aaFN);
-      AppMethodBeat.o(61021);
+      AppMethodBeat.i(191862);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      boolean bool = t.a.a((t)paramc, paramk);
+      AppMethodBeat.o(191862);
       return bool;
     }
     
-    public static o y(kotlin.l.b.a.b.m.c.n paramn)
+    public static kotlin.l.b.a.b.a.i m(c paramc, o paramo)
     {
-      AppMethodBeat.i(61028);
-      p.k(paramn, "$this$getTypeParameterClassifier");
-      if (!(paramn instanceof at))
+      AppMethodBeat.i(191845);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61028);
-        throw paramn;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191845);
+        throw paramc;
       }
-      kotlin.l.b.a.b.b.h localh = ((at)paramn).iEf();
-      paramn = localh;
-      if (!(localh instanceof as)) {
-        paramn = null;
+      paramc = ((ax)paramo).knA();
+      if (paramc == null)
+      {
+        paramc = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
+        AppMethodBeat.o(191845);
+        throw paramc;
       }
-      paramn = (o)paramn;
-      AppMethodBeat.o(61028);
-      return paramn;
+      paramc = h.f((l)paramc);
+      AppMethodBeat.o(191845);
+      return paramc;
     }
     
-    public static boolean y(kotlin.l.b.a.b.m.c.h paramh)
+    public static boolean m(c paramc, kotlin.l.b.a.b.m.c.i parami)
     {
-      AppMethodBeat.i(61025);
-      p.k(paramh, "$this$isNullableType");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
-      {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(61025);
-        throw paramh;
-      }
-      boolean bool = bc.aE((kotlin.l.b.a.b.m.ab)paramh);
-      AppMethodBeat.o(61025);
+      AppMethodBeat.i(191851);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      boolean bool = t.a.c((t)paramc, parami);
+      AppMethodBeat.o(191851);
       return bool;
     }
     
-    public static kotlin.l.b.a.b.m.c.h z(kotlin.l.b.a.b.m.c.h paramh)
+    public static boolean m(c paramc, kotlin.l.b.a.b.m.c.k paramk)
     {
-      AppMethodBeat.i(61031);
-      p.k(paramh, "$this$getSubstitutedUnderlyingType");
-      if (!(paramh instanceof kotlin.l.b.a.b.m.ab))
-      {
-        paramh = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramh + ", " + kotlin.g.b.ab.bO(paramh.getClass())).toString());
-        AppMethodBeat.o(61031);
-        throw paramh;
-      }
-      paramh = (kotlin.l.b.a.b.m.c.h)kotlin.l.b.a.b.j.e.ab((kotlin.l.b.a.b.m.ab)paramh);
-      AppMethodBeat.o(61031);
-      return paramh;
+      AppMethodBeat.i(191863);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramk, "receiver");
+      boolean bool = t.a.b((t)paramc, paramk);
+      AppMethodBeat.o(191863);
+      return bool;
     }
     
-    public static boolean z(kotlin.l.b.a.b.m.c.n paramn)
+    public static boolean n(c paramc, kotlin.l.b.a.b.m.c.i parami)
     {
-      AppMethodBeat.i(61029);
-      p.k(paramn, "$this$isInlineClass");
-      if (!(paramn instanceof at))
+      AppMethodBeat.i(191853);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      boolean bool = t.a.d((t)paramc, parami);
+      AppMethodBeat.o(191853);
+      return bool;
+    }
+    
+    public static boolean n(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191846);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
       {
-        paramn = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramn + ", " + kotlin.g.b.ab.bO(paramn.getClass())).toString());
-        AppMethodBeat.o(61029);
-        throw paramn;
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191846);
+        throw paramc;
       }
-      kotlin.l.b.a.b.b.h localh = ((at)paramn).iEf();
-      paramn = localh;
-      if (!(localh instanceof kotlin.l.b.a.b.b.e)) {
-        paramn = null;
-      }
-      paramn = (kotlin.l.b.a.b.b.e)paramn;
-      if ((paramn != null) && (paramn.iDU() == true))
+      paramc = ((ax)paramo).knA();
+      if ((paramc != null) && (h.d((l)paramc) == true))
       {
-        AppMethodBeat.o(61029);
+        AppMethodBeat.o(191846);
         return true;
       }
-      AppMethodBeat.o(61029);
+      AppMethodBeat.o(191846);
       return false;
+    }
+    
+    public static kotlin.l.b.a.b.f.d o(c paramc, o paramo)
+    {
+      AppMethodBeat.i(191848);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(paramo, "receiver");
+      if (!(paramo instanceof ax))
+      {
+        paramc = (Throwable)new IllegalArgumentException(("ClassicTypeSystemContext couldn't handle: " + paramo + ", " + ai.cz(paramo.getClass())).toString());
+        AppMethodBeat.o(191848);
+        throw paramc;
+      }
+      paramc = ((ax)paramo).knA();
+      if (paramc == null)
+      {
+        paramc = new NullPointerException("null cannot be cast to non-null type org.jetbrains.kotlin.descriptors.ClassDescriptor");
+        AppMethodBeat.o(191848);
+        throw paramc;
+      }
+      paramc = kotlin.l.b.a.b.j.d.a.q((l)paramc);
+      AppMethodBeat.o(191848);
+      return paramc;
+    }
+    
+    public static boolean o(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(61036);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      boolean bool = t.a.e((t)paramc, parami);
+      AppMethodBeat.o(61036);
+      return bool;
+    }
+    
+    public static boolean p(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(191855);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      boolean bool = t.a.f((t)paramc, parami);
+      AppMethodBeat.o(191855);
+      return bool;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k q(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(61039);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      paramc = t.a.g((t)paramc, parami);
+      AppMethodBeat.o(61039);
+      return paramc;
+    }
+    
+    public static o r(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(61037);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      paramc = t.a.h((t)paramc, parami);
+      AppMethodBeat.o(61037);
+      return paramc;
+    }
+    
+    public static kotlin.l.b.a.b.m.c.k s(c paramc, kotlin.l.b.a.b.m.c.i parami)
+    {
+      AppMethodBeat.i(61041);
+      kotlin.g.b.s.u(paramc, "this");
+      kotlin.g.b.s.u(parami, "receiver");
+      paramc = t.a.i((t)paramc, parami);
+      AppMethodBeat.o(61041);
+      return paramc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a.c
  * JD-Core Version:    0.7.0.1
  */

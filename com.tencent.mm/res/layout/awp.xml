@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/afz" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingTop="?z" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:orientation="vertical" android:id="@id/g2u" android:layout_width="fill_parent" android:layout_height="176.0dip">
-            <TextView android:textSize="@dimen/am7" android:textColor="@color/ab7" android:id="@id/ii7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/am6" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <FrameLayout android:id="@id/jbd" android:background="@color/afz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-                <TextView android:textSize="@dimen/am7" android:textColor="@color/ab7" android:id="@id/jbc" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/am6" android:text="@string/i3m" android:layout_centerHorizontal="true" />
-            </FrameLayout>
-            <EditText android:textSize="@dimen/am5" android:textColor="@color/ab6" android:gravity="center" android:id="@id/ii4" android:background="@color/ac_" android:paddingLeft="@dimen/a0f" android:paddingRight="@dimen/a0f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.0dip" android:cursorVisible="false" android:singleLine="true" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-            <RelativeLayout android:id="@id/ii1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/alt" android:layout_marginTop="@dimen/aln" android:layout_marginRight="@dimen/alt" android:layout_marginBottom="@dimen/aln" android:layout_alignParentBottom="true">
-                <com.tencent.mm.plugin.ipcall.ui.IPCallFuncButton android:id="@id/ii3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" custom:checkBoxMode="true" custom:drawableDisable="@drawable/ca8" custom:drawableNormal="@drawable/ca8" custom:drawablePress="@drawable/ca9" />
-                <com.tencent.mm.plugin.ipcall.ui.IPCallFuncButton android:id="@id/ii0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" custom:checkBoxMode="true" custom:drawableNormal="@drawable/ca6" custom:drawablePress="@drawable/ca7" />
-                <com.tencent.mm.plugin.ipcall.ui.IPCallFuncButton android:id="@id/ii6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" custom:checkBoxMode="true" custom:drawableDisable="@drawable/ca_" custom:drawableNormal="@drawable/ca_" custom:drawablePress="@drawable/caa" />
-            </RelativeLayout>
-            <TextView android:textSize="14.0dip" android:textColor="@color/lt" android:gravity="center" android:id="@id/ii5" android:background="@color/ac_" android:paddingLeft="@dimen/a0f" android:paddingRight="@dimen/a0f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:cursorVisible="false" android:singleLine="true" android:layout_below="@id/ii4" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/ihy" android:background="@color/ab3" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/g2u" android:layout_alignParentBottom="true">
-            <ImageView android:id="@id/ihz" android:layout_width="@dimen/alp" android:layout_height="@dimen/alp" android:src="@drawable/cab" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/ihx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="false" />
-            <ImageButton android:id="@id/ii2" android:background="@null" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="14.0dip" android:src="@drawable/a8q" android:scaleType="center" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-            <com.tencent.mm.plugin.ipcall.ui.DialPad android:id="@id/bqi" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/ii2" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </LinearLayout>
-    <ImageButton android:id="@id/e1j" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:src="@raw/ipcall_mini_action" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="@dimen/g4" android:textColor="@color/w3" android:id="@id/gzr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/gm" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="8.0dip" android:layout_height="12.0dip" android:layout_marginRight="@dimen/gm" android:src="@drawable/bah" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:background="@color/vc" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView>
+</FrameLayout>

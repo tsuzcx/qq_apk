@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="end" android:id="@id/as7" android:visibility="gone" android:layout_width="@dimen/wb" android:layout_height="@dimen/wb" android:layout_marginBottom="@dimen/wa" android:src="@drawable/b0b" android:layout_marginEnd="@dimen/w_" />
-    <ViewStub android:id="@id/asb" android:layout="@layout/q2" android:layout_width="@dimen/wg" android:layout_height="wrap_content" android:minHeight="@dimen/wf" />
-    <ViewStub android:id="@id/asf" android:layout="@layout/q3" android:layout_width="@dimen/wj" android:layout_height="wrap_content" />
-    <ImageView android:layout_gravity="end" android:id="@id/as6" android:visibility="gone" android:layout_width="@dimen/wb" android:layout_height="@dimen/wb" android:layout_marginTop="@dimen/wa" android:src="@drawable/b0c" android:layout_marginEnd="@dimen/w_" />
-</LinearLayout>
+<com.tencent.mm.ui.chatting.ChatFooterCustom android:orientation="horizontal" android:id="@id/h_o" android:background="@drawable/bya" android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:id="@id/b5b" android:background="@color/b" android:layout_width="@dimen/an" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b5a" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/icons_outlined_keyboard" android:scaleType="fitXY" android:contentDescription="@string/b3g" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/b57" android:background="@color/b" android:layout_width="0.0px" android:layout_height="fill_parent" android:weightSum="3.0" android:layout_weight="1.0">
+        <include layout="@layout/q0" />
+        <include layout="@layout/q0" />
+        <include layout="@layout/q0" />
+        <include layout="@layout/q0" />
+        <include layout="@layout/q0" />
+        <include layout="@layout/q0" />
+    </LinearLayout>
+    <ImageView android:id="@id/b56" android:background="@color/b" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ahd" />
+</com.tencent.mm.ui.chatting.ChatFooterCustom>

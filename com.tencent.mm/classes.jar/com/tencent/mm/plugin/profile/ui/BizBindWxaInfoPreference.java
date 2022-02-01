@@ -20,8 +20,8 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.appbrand.service.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -32,29 +32,29 @@ import java.util.List;
 public class BizBindWxaInfoPreference
   extends Preference
 {
-  private static DisplayMetrics rii;
-  private static int rol;
-  private static int rom;
-  private volatile boolean GWW;
-  private volatile boolean GWX;
-  private View.OnClickListener GWY;
-  private c nkB;
-  private ImageView oFa;
-  private TextView pPT;
-  private List<WxaAttributes.WxaEntryInfo> rof;
-  private View rog;
-  private TextView roh;
-  private LinearLayout roi;
-  private ViewGroup roj;
-  private View rok;
-  private View.OnClickListener vol;
+  private static DisplayMetrics uqe;
+  private static int uyg;
+  private static int uyh;
+  private volatile boolean MUP;
+  private volatile boolean MUQ;
+  private View.OnClickListener MUR;
+  private c qhK;
+  private ImageView rIe;
+  private TextView sUt;
+  private List<WxaAttributes.WxaEntryInfo> uya;
+  private View uyb;
+  private TextView uyc;
+  private LinearLayout uyd;
+  private ViewGroup uye;
+  private View uyf;
+  private View.OnClickListener yAH;
   
   static
   {
     AppMethodBeat.i(26925);
-    rii = MMApplicationContext.getContext().getResources().getDisplayMetrics();
-    rol = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 15);
-    rom = MMApplicationContext.getResources().getDimensionPixelSize(R.f.NormalIconSize);
+    uqe = MMApplicationContext.getContext().getResources().getDisplayMetrics();
+    uyg = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 15);
+    uyh = MMApplicationContext.getResources().getDimensionPixelSize(R.f.NormalIconSize);
     AppMethodBeat.o(26925);
   }
   
@@ -78,9 +78,9 @@ public class BizBindWxaInfoPreference
   {
     AppMethodBeat.i(26923);
     ImageView localImageView = new ImageView(this.mContext);
-    localImageView.setLayoutParams(new ViewGroup.LayoutParams(rom + rol, rom));
-    localImageView.setPadding(0, 0, rol, 0);
-    this.roi.addView(localImageView);
+    localImageView.setLayoutParams(new ViewGroup.LayoutParams(uyh + uyg, uyh));
+    localImageView.setPadding(0, 0, uyg, 0);
+    this.uyd.addView(localImageView);
     a(paramWxaEntryInfo, localImageView, null);
     AppMethodBeat.o(26923);
   }
@@ -97,7 +97,7 @@ public class BizBindWxaInfoPreference
     if (paramImageView != null)
     {
       paramImageView.setTag(str);
-      com.tencent.mm.modelappbrand.a.b.bhh().a(paramImageView, paramWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.bhg(), g.lzF);
+      com.tencent.mm.modelappbrand.a.b.bEY().a(paramImageView, paramWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.bEX(), g.org);
     }
     if (paramTextView != null) {
       paramTextView.setText(Util.nullAsNil(paramWxaEntryInfo.title));
@@ -105,63 +105,105 @@ public class BizBindWxaInfoPreference
     AppMethodBeat.o(26924);
   }
   
-  private void bNc()
+  private void cnr()
   {
     AppMethodBeat.i(26921);
-    if ((!this.GWW) || (this.rof == null))
+    if ((!this.MUP) || (this.uya == null))
     {
       AppMethodBeat.o(26921);
       return;
     }
-    if (!this.GWX)
+    if (!this.MUQ)
     {
       AppMethodBeat.o(26921);
       return;
     }
-    this.GWX = false;
-    if (!this.rof.isEmpty()) {}
-    for (WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.rof.get(0);; localWxaEntryInfo = null)
+    this.MUQ = false;
+    if (!this.uya.isEmpty()) {}
+    for (WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.uya.get(0);; localWxaEntryInfo = null)
     {
       if (localWxaEntryInfo != null) {
-        a(localWxaEntryInfo, this.oFa, this.pPT);
+        a(localWxaEntryInfo, this.rIe, this.sUt);
       }
-      this.roh.setText(this.mContext.getString(R.l.contact_info_bind_weapp_count, new Object[] { Integer.valueOf(this.rof.size()) }));
-      gu(this.rof);
-      if (this.rof.size() == 1)
+      this.uyc.setText(this.mContext.getString(R.l.contact_info_bind_weapp_count, new Object[] { Integer.valueOf(this.uya.size()) }));
+      ju(this.uya);
+      if (this.uya.size() == 1)
       {
-        this.rog.setVisibility(0);
-        this.roj.setTag(((WxaAttributes.WxaEntryInfo)this.rof.get(0)).username);
-        this.roj.setOnClickListener(this.vol);
+        this.uyb.setVisibility(0);
+        this.uye.setTag(((WxaAttributes.WxaEntryInfo)this.uya.get(0)).username);
+        this.uye.setOnClickListener(this.yAH);
         AppMethodBeat.o(26921);
         return;
       }
-      this.rog.setVisibility(8);
-      this.roj.setTag(null);
-      this.roj.setOnClickListener(this.GWY);
+      this.uyb.setVisibility(8);
+      this.uye.setTag(null);
+      this.uye.setOnClickListener(this.MUR);
       AppMethodBeat.o(26921);
       return;
     }
   }
   
-  private void gu(List<WxaAttributes.WxaEntryInfo> paramList)
+  private void init()
+  {
+    AppMethodBeat.i(26920);
+    this.yAH = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26914);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        paramAnonymousView = paramAnonymousView.getTag();
+        if ((paramAnonymousView == null) || (!(paramAnonymousView instanceof String)))
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(26914);
+          return;
+        }
+        localObject = new AppBrandStatObject();
+        ((AppBrandStatObject)localObject).scene = 1020;
+        ((AppBrandStatObject)localObject).hzx = BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_username;
+        ((t)h.ax(t.class)).a(BizBindWxaInfoPreference.this.mContext, (String)paramAnonymousView, null, 0, 0, null, (AppBrandStatObject)localObject, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_appId);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(26914);
+      }
+    };
+    this.MUR = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26915);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        ((v)h.ax(v.class)).a(BizBindWxaInfoPreference.this.mContext, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_username, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_appId, BizBindWxaInfoPreference.b(BizBindWxaInfoPreference.this));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(26915);
+      }
+    };
+    AppMethodBeat.o(26920);
+  }
+  
+  private void ju(List<WxaAttributes.WxaEntryInfo> paramList)
   {
     AppMethodBeat.i(26922);
-    this.roi.removeAllViews();
+    this.uyd.removeAllViews();
     if (paramList.isEmpty())
     {
       AppMethodBeat.o(26922);
       return;
     }
     int k = paramList.size();
-    int j = this.roj.getMeasuredWidth();
+    int j = this.uye.getMeasuredWidth();
     int i = j;
     if (j == 0) {
-      i = rii.widthPixels;
+      i = uqe.widthPixels;
     }
-    j = i - this.roj.getPaddingLeft() - this.roj.getPaddingRight();
-    i = j / (rom + rol);
+    j = i - this.uye.getPaddingLeft() - this.uye.getPaddingRight();
+    i = j / (uyh + uyg);
     if (i > k) {
-      this.rok.setVisibility(8);
+      this.uyf.setVisibility(8);
     }
     for (;;)
     {
@@ -175,91 +217,49 @@ public class BizBindWxaInfoPreference
         a((WxaAttributes.WxaEntryInfo)paramList.get(i));
         i += 1;
       }
-      this.rok.setVisibility(0);
-      i = (j - this.rok.getMeasuredWidth()) / (rom + rol);
+      this.uyf.setVisibility(0);
+      i = (j - this.uyf.getMeasuredWidth()) / (uyh + uyg);
     }
     Log.i("MicroMsg.BizBindWxaInfoPreference", "attachItemToContainer(size : %s)", new Object[] { Integer.valueOf(paramList.size()) });
     AppMethodBeat.o(26922);
   }
   
-  private void init()
-  {
-    AppMethodBeat.i(26920);
-    this.vol = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(26914);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        paramAnonymousView = paramAnonymousView.getTag();
-        if ((paramAnonymousView == null) || (!(paramAnonymousView instanceof String)))
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(26914);
-          return;
-        }
-        localObject = new AppBrandStatObject();
-        ((AppBrandStatObject)localObject).scene = 1020;
-        ((AppBrandStatObject)localObject).fvd = BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_username;
-        ((r)h.ae(r.class)).a(BizBindWxaInfoPreference.this.mContext, (String)paramAnonymousView, null, 0, 0, null, (AppBrandStatObject)localObject, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_appId);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(26914);
-      }
-    };
-    this.GWY = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(26915);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        ((t)h.ae(t.class)).a(BizBindWxaInfoPreference.this.mContext, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_username, BizBindWxaInfoPreference.a(BizBindWxaInfoPreference.this).field_appId, BizBindWxaInfoPreference.b(BizBindWxaInfoPreference.this));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/BizBindWxaInfoPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(26915);
-      }
-    };
-    AppMethodBeat.o(26920);
-  }
-  
   public final void a(c paramc, List<WxaAttributes.WxaEntryInfo> paramList)
   {
     AppMethodBeat.i(26919);
-    this.GWX = true;
-    this.nkB = paramc;
-    if (this.rof == null) {
-      this.rof = new LinkedList();
+    this.MUQ = true;
+    this.qhK = paramc;
+    if (this.uya == null) {
+      this.uya = new LinkedList();
     }
     for (;;)
     {
       if ((paramList != null) && (!paramList.isEmpty())) {
-        this.rof.addAll(paramList);
+        this.uya.addAll(paramList);
       }
-      bNc();
+      cnr();
       AppMethodBeat.o(26919);
       return;
-      this.rof.clear();
+      this.uya.clear();
     }
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(26918);
-    this.rog = paramView.findViewById(R.h.firstItemV);
-    this.oFa = ((ImageView)paramView.findViewById(R.h.iconIv));
-    this.pPT = ((TextView)paramView.findViewById(R.h.titleTv));
-    this.roh = ((TextView)paramView.findViewById(R.h.countTv));
-    this.rok = paramView.findViewById(R.h.moreV);
-    this.roi = ((LinearLayout)paramView.findViewById(R.h.containerV));
-    this.roj = ((ViewGroup)paramView.findViewById(R.h.itemContainerV));
-    this.GWW = true;
-    if (this.rof != null) {}
+    this.uyb = paramView.findViewById(R.h.firstItemV);
+    this.rIe = ((ImageView)paramView.findViewById(R.h.iconIv));
+    this.sUt = ((TextView)paramView.findViewById(R.h.titleTv));
+    this.uyc = ((TextView)paramView.findViewById(R.h.countTv));
+    this.uyf = paramView.findViewById(R.h.moreV);
+    this.uyd = ((LinearLayout)paramView.findViewById(R.h.containerV));
+    this.uye = ((ViewGroup)paramView.findViewById(R.h.itemContainerV));
+    this.MUP = true;
+    if (this.uya != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.GWX = bool;
-      bNc();
+      this.MUQ = bool;
+      cnr();
       super.onBindView(paramView);
       AppMethodBeat.o(26918);
       return;
@@ -268,7 +268,7 @@ public class BizBindWxaInfoPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.BizBindWxaInfoPreference
  * JD-Core Version:    0.7.0.1
  */

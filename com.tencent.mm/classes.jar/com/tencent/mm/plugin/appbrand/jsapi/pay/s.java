@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import android.content.Intent;
-import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.l.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity.a;
@@ -13,13 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class s
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = 285;
   public static final String NAME = "requestVirtualPayment";
-  boolean pkE = false;
+  boolean spF = false;
   
-  public final boolean bPy()
+  public final boolean cpE()
   {
     return true;
   }

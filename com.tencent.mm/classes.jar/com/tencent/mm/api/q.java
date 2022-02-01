@@ -5,21 +5,17 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface q
   extends a
 {
-  public abstract boolean ZM();
+  public abstract boolean a(c paramc);
   
-  public abstract boolean ZN();
+  public abstract boolean b(c paramc);
   
-  public abstract boolean ZO();
+  public abstract c hU(String paramString);
   
-  public abstract void c(c paramc);
-  
-  public abstract void d(int paramInt, String paramString1, String paramString2);
-  
-  public abstract void p(int paramInt, String paramString);
+  public abstract void hV(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.api.q
  * JD-Core Version:    0.7.0.1
  */

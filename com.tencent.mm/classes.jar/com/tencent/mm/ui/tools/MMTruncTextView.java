@@ -12,8 +12,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMTruncTextView
   extends TextView
 {
-  private boolean XTk = false;
-  private boolean XTl = false;
+  private boolean afJA = false;
+  private boolean afJz = false;
   
   public MMTruncTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,10 +31,9 @@ public class MMTruncTextView
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(143196);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(143196);
     }
@@ -47,10 +46,9 @@ public class MMTruncTextView
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(143195);
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
       AppMethodBeat.o(143195);
     }
@@ -60,7 +58,7 @@ public class MMTruncTextView
   {
     AppMethodBeat.i(143192);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.XTk)
+    if (!this.afJz)
     {
       AppMethodBeat.o(143192);
       return;
@@ -71,9 +69,9 @@ public class MMTruncTextView
       AppMethodBeat.o(143192);
       return;
     }
-    this.XTl = true;
+    this.afJA = true;
     setText(TextUtils.ellipsize(localCharSequence, getPaint(), getWidth() - getCompoundPaddingRight() - getCompoundPaddingLeft(), TextUtils.TruncateAt.END));
-    this.XTl = false;
+    this.afJA = false;
     AppMethodBeat.o(143192);
   }
   
@@ -83,10 +81,9 @@ public class MMTruncTextView
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(143194);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(143194);
     }
@@ -98,10 +95,9 @@ public class MMTruncTextView
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(143197);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(143197);
     }
@@ -112,10 +108,10 @@ public class MMTruncTextView
   {
     AppMethodBeat.i(143193);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if (!this.XTl) {}
+    if (!this.afJA) {}
     for (boolean bool = true;; bool = false)
     {
-      this.XTk = bool;
+      this.afJz = bool;
       AppMethodBeat.o(143193);
       return;
     }
@@ -123,7 +119,7 @@ public class MMTruncTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MMTruncTextView
  * JD-Core Version:    0.7.0.1
  */

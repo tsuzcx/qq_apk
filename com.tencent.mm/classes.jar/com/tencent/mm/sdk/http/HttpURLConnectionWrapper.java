@@ -49,12 +49,12 @@ public class HttpURLConnectionWrapper
   
   public void cancel()
   {
-    AppMethodBeat.i(193516);
+    AppMethodBeat.i(243173);
     Log.d("MicroMsg.HttpURLConnectionWrapper", "cancel conection.");
     if (this.conn != null) {
       this.conn.disconnect();
     }
-    AppMethodBeat.o(193516);
+    AppMethodBeat.o(243173);
   }
   
   /* Error */
@@ -199,14 +199,14 @@ public class HttpURLConnectionWrapper
     //   284: getfield 246	com/tencent/mm/sdk/http/HttpWrapperBase$Attachment:filePath	Ljava/lang/String;
     //   287: invokestatic 252	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   290: ifeq +212 -> 502
-    //   293: new 254	com/tencent/mm/vfs/q
+    //   293: new 254	com/tencent/mm/vfs/u
     //   296: dup
     //   297: aload_2
     //   298: getfield 241	com/tencent/mm/sdk/http/HttpWrapperBase$Response:attachment	Lcom/tencent/mm/sdk/http/HttpWrapperBase$Attachment;
     //   301: getfield 246	com/tencent/mm/sdk/http/HttpWrapperBase$Attachment:filePath	Ljava/lang/String;
-    //   304: invokespecial 256	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   304: invokespecial 256	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   307: iconst_1
-    //   308: invokestatic 262	com/tencent/mm/vfs/u:e	(Lcom/tencent/mm/vfs/q;Z)Ljava/io/OutputStream;
+    //   308: invokestatic 262	com/tencent/mm/vfs/y:e	(Lcom/tencent/mm/vfs/u;Z)Ljava/io/OutputStream;
     //   311: astore 5
     //   313: aload 5
     //   315: astore 7
@@ -657,7 +657,7 @@ public class HttpURLConnectionWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.http.HttpURLConnectionWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -14,24 +14,24 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomCardPreference
   extends Preference
 {
-  public boolean fxt;
-  private TextView jmk;
-  public CharSequence jml;
-  public CharSequence jmm;
-  private LinearLayout jmn;
+  public boolean hBY;
+  private TextView lPi;
+  public CharSequence lPj;
+  public CharSequence lPk;
+  private LinearLayout lPl;
   private View mView;
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.fxt = false;
+    this.hBY = false;
   }
   
   public RoomCardPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13010);
-    this.fxt = false;
+    this.hBY = false;
     setLayoutResource(a.f.mm_preference);
     AppMethodBeat.o(13010);
   }
@@ -41,26 +41,26 @@ public class RoomCardPreference
     AppMethodBeat.i(13012);
     super.onBindView(paramView);
     paramView = (ViewGroup)paramView.findViewById(a.e.content).findViewById(a.e.title_ll);
-    if (this.jmn == null) {
-      this.jmn = ((LinearLayout)paramView.getChildAt(1));
+    if (this.lPl == null) {
+      this.lPl = ((LinearLayout)paramView.getChildAt(1));
     }
-    if (this.jmk == null) {
-      this.jmk = ((TextView)paramView.findViewById(a.e.jdf));
+    if (this.lPi == null) {
+      this.lPi = ((TextView)paramView.findViewById(a.e.lFn));
     }
-    if (this.fxt)
+    if (this.hBY)
     {
-      this.jmn.setVisibility(0);
-      this.jmk.setVisibility(0);
+      this.lPl.setVisibility(0);
+      this.lPi.setVisibility(0);
     }
     for (;;)
     {
-      if (this.jmm != null) {
-        this.jmk.setText(this.jmm);
+      if (this.lPk != null) {
+        this.lPi.setText(this.lPk);
       }
       AppMethodBeat.o(13012);
       return;
-      this.jmn.setVisibility(8);
-      this.jmk.setVisibility(8);
+      this.lPl.setVisibility(8);
+      this.lPi.setVisibility(8);
     }
   }
   
@@ -72,7 +72,7 @@ public class RoomCardPreference
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.e.content);
       localViewGroup.removeAllViews();
-      View.inflate(this.mContext, a.f.jeh, localViewGroup);
+      View.inflate(this.mContext, a.f.lGr, localViewGroup);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;

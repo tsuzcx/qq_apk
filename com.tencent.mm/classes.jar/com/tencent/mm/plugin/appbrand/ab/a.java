@@ -1,119 +1,97 @@
 package com.tencent.mm.plugin.appbrand.ab;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoDBFieldAnnotation;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.plugin.appbrand.page.ad.a;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.page.cb;
+import com.tencent.skyline.IRouteDoneCallback;
+import com.tencent.skyline.SkylineLogic;
+import java.util.concurrent.atomic.AtomicBoolean;
+import junit.framework.Assert;
+import org.json.JSONObject;
 
-public final class a
-  extends MAutoStorage<a>
+public abstract class a
+  extends ah
 {
-  public static final String[] lqL;
-  
-  static
+  public a(Class<? extends af> paramClass)
   {
-    AppMethodBeat.i(48359);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(a.nFK, "AppBrandCommonKVBinaryData") };
-    AppMethodBeat.o(48359);
+    super(paramClass);
   }
   
-  public a(ISQLiteDatabase paramISQLiteDatabase)
+  private IRouteDoneCallback a(IRouteDoneCallback paramIRouteDoneCallback)
   {
-    super(paramISQLiteDatabase, a.nFK, "AppBrandCommonKVBinaryData", null);
+    return new a(paramIRouteDoneCallback);
   }
   
-  public final void clear(String paramString)
+  public final boolean a(String paramString, cb paramcb, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(48355);
-    a locala = new a();
-    locala.field_key = paramString;
-    locala.field_value = new byte[0];
-    super.replace(locala);
-    AppMethodBeat.o(48355);
-  }
-  
-  public final byte[] get(String paramString)
-  {
-    AppMethodBeat.i(48357);
-    if (Util.isNullOrNil(paramString))
+    Assert.assertTrue(cEI());
+    super.a(paramString, paramcb, paramJSONObject, paramBoolean);
+    switch (1.enn[paramcb.ordinal()])
     {
-      AppMethodBeat.o(48357);
-      return null;
+    default: 
+      throw new UnsupportedOperationException();
+    case 1: 
+      SkylineLogic.INSTANCE.appLaunch(getComponentId(), cEH());
     }
-    a locala = new a();
-    locala.field_key = paramString;
-    if (super.get(locala, new String[0]))
+    for (;;)
     {
-      paramString = locala.field_value;
-      AppMethodBeat.o(48357);
-      return paramString;
+      return true;
+      SkylineLogic.INSTANCE.switchTab(getComponentId(), cEH());
+      continue;
+      SkylineLogic.INSTANCE.navigateTo(getComponentId(), cEH(), a(new a..ExternalSyntheticLambda2(this, paramBoolean, paramcb, paramJSONObject)));
+      continue;
+      SkylineLogic.INSTANCE.redirectTo(getComponentId(), cEH(), a(new a..ExternalSyntheticLambda1(this, paramBoolean, paramcb, paramJSONObject)));
+      continue;
+      SkylineLogic.INSTANCE.reLaunch(getComponentId(), cEH(), a(new a..ExternalSyntheticLambda3(this, paramBoolean, paramcb, paramJSONObject)));
     }
-    AppMethodBeat.o(48357);
-    return null;
   }
   
-  public final void l(String paramString, byte[] paramArrayOfByte)
+  public final int ag(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(48356);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(48356);
-      return;
-    }
-    a locala = new a();
-    locala.field_key = paramString;
-    locala.field_value = paramArrayOfByte;
-    super.replace(locala);
-    AppMethodBeat.o(48356);
+    paramInt = super.ag(paramInt, paramBoolean);
+    SkylineLogic.INSTANCE.navigateBack(getComponentId(), cEH(), paramInt, paramBoolean, a(new a..ExternalSyntheticLambda0(this, paramBoolean)));
+    return paramInt;
   }
   
-  static final class a
-    extends IAutoDBItem
+  final class a
+    implements ad.a, IRouteDoneCallback
   {
-    static final IAutoDBItem.MAutoDBInfo nFK;
-    @MAutoDBFieldAnnotation(defValue="$$invalid", primaryKey=1)
-    public String field_key;
-    public byte[] field_value;
+    private final IRouteDoneCallback tVk;
+    private final AtomicBoolean tVl;
     
-    static
+    public a(IRouteDoneCallback paramIRouteDoneCallback)
     {
-      AppMethodBeat.i(48354);
-      nFK = initAutoDBInfo(a.class);
-      AppMethodBeat.o(48354);
+      AppMethodBeat.i(316905);
+      a.a(a.this, this);
+      this.tVl = new AtomicBoolean(false);
+      this.tVk = paramIRouteDoneCallback;
+      AppMethodBeat.o(316905);
     }
     
-    public final void convertFrom(Cursor paramCursor)
+    public final void ko(boolean paramBoolean) {}
+    
+    public final void onDone()
     {
-      AppMethodBeat.i(48352);
-      this.field_key = paramCursor.getString(0);
-      this.field_value = paramCursor.getBlob(1);
-      AppMethodBeat.o(48352);
+      AppMethodBeat.i(316923);
+      if (!this.tVl.getAndSet(true)) {
+        this.tVk.onDone();
+      }
+      AppMethodBeat.o(316923);
     }
     
-    public final ContentValues convertTo()
+    public final void run()
     {
-      AppMethodBeat.i(48353);
-      ContentValues localContentValues = new ContentValues(2);
-      localContentValues.put("key", this.field_key);
-      localContentValues.put("value", this.field_value);
-      AppMethodBeat.o(48353);
-      return localContentValues;
-    }
-    
-    public final IAutoDBItem.MAutoDBInfo getDBInfo()
-    {
-      return nFK;
+      AppMethodBeat.i(316930);
+      onDone();
+      AppMethodBeat.o(316930);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.a
  * JD-Core Version:    0.7.0.1
  */

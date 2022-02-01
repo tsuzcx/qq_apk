@@ -11,119 +11,75 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.selectcontact.a.b;
 import com.tencent.mm.plugin.selectcontact.a.c;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/RecordUploadProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "ui-selectcontact_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/RecordUploadProgressView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backColor", "", "getBackColor", "()I", "setBackColor", "(I)V", "foreColor", "getForeColor", "setForeColor", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "setPaint", "(Landroid/graphics/Paint;)V", "progress", "getProgress", "setProgress", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "ui-selectcontact_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RecordUploadProgressView
   extends View
 {
-  private int AZF;
-  private int AZG;
+  private int GBJ;
+  private int GBK;
   public Paint paint;
   private int progress;
   
   public RecordUploadProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(187219);
-    this.paint = new Paint();
-    paramContext = this.paint;
-    if (paramContext == null) {
-      p.bGy("paint");
-    }
-    paramContext.setStyle(Paint.Style.STROKE);
-    paramContext = this.paint;
-    if (paramContext == null) {
-      p.bGy("paint");
-    }
-    paramContext.setStrokeWidth(getResources().getDimension(a.c.select_record_0_25_A));
-    paramContext = this.paint;
-    if (paramContext == null) {
-      p.bGy("paint");
-    }
-    paramContext.setAntiAlias(true);
-    this.AZF = getResources().getColor(a.b.BW_0_Alpha_0_1);
-    this.AZG = getResources().getColor(a.b.Brand_100);
-    AppMethodBeat.o(187219);
+    AppMethodBeat.i(234740);
+    setPaint(new Paint());
+    getPaint().setStyle(Paint.Style.STROKE);
+    getPaint().setStrokeWidth(getResources().getDimension(a.c.select_record_0_25_A));
+    getPaint().setAntiAlias(true);
+    this.GBJ = getResources().getColor(a.b.BW_0_Alpha_0_1);
+    this.GBK = getResources().getColor(a.b.Brand_100);
+    AppMethodBeat.o(234740);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(187217);
+    AppMethodBeat.i(234773);
     super.draw(paramCanvas);
     int i = getWidth() / 2;
-    Object localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
+    float f = getPaint().getStrokeWidth();
+    int j = (int)(i - f / 2.0F);
+    getPaint().setColor(this.GBJ);
+    getPaint().setAntiAlias(true);
+    getPaint().setStyle(Paint.Style.STROKE);
+    if (paramCanvas != null) {
+      paramCanvas.drawCircle(i, i, j, getPaint());
     }
-    float f1 = ((Paint)localObject).getStrokeWidth();
-    int j = (int)(i - f1 / 2.0F);
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
+    getPaint().setColor(this.GBK);
+    RectF localRectF = new RectF(i - j, i - j, i + j, i + j);
+    f = this.progress * 360 / 100.0F;
+    if (paramCanvas != null) {
+      paramCanvas.drawArc(localRectF, -90.0F, f, false, getPaint());
     }
-    ((Paint)localObject).setColor(this.AZF);
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setAntiAlias(true);
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setStyle(Paint.Style.STROKE);
-    if (paramCanvas != null)
-    {
-      f1 = i;
-      float f2 = i;
-      float f3 = j;
-      localObject = this.paint;
-      if (localObject == null) {
-        p.bGy("paint");
-      }
-      paramCanvas.drawCircle(f1, f2, f3, (Paint)localObject);
-    }
-    localObject = this.paint;
-    if (localObject == null) {
-      p.bGy("paint");
-    }
-    ((Paint)localObject).setColor(this.AZG);
-    localObject = new RectF(i - j, i - j, i + j, i + j);
-    f1 = this.progress * 360 / 100.0F;
-    if (paramCanvas != null)
-    {
-      Paint localPaint = this.paint;
-      if (localPaint == null) {
-        p.bGy("paint");
-      }
-      paramCanvas.drawArc((RectF)localObject, -90.0F, f1, false, localPaint);
-      AppMethodBeat.o(187217);
-      return;
-    }
-    AppMethodBeat.o(187217);
+    AppMethodBeat.o(234773);
   }
   
   public final int getBackColor()
   {
-    return this.AZF;
+    return this.GBJ;
   }
   
   public final int getForeColor()
   {
-    return this.AZG;
+    return this.GBK;
   }
   
   public final Paint getPaint()
   {
-    AppMethodBeat.i(187190);
+    AppMethodBeat.i(234744);
     Paint localPaint = this.paint;
-    if (localPaint == null) {
-      p.bGy("paint");
+    if (localPaint != null)
+    {
+      AppMethodBeat.o(234744);
+      return localPaint;
     }
-    AppMethodBeat.o(187190);
-    return localPaint;
+    s.bIx("paint");
+    AppMethodBeat.o(234744);
+    return null;
   }
   
   public final int getProgress()
@@ -133,20 +89,20 @@ public final class RecordUploadProgressView
   
   public final void setBackColor(int paramInt)
   {
-    this.AZF = paramInt;
+    this.GBJ = paramInt;
   }
   
   public final void setForeColor(int paramInt)
   {
-    this.AZG = paramInt;
+    this.GBK = paramInt;
   }
   
   public final void setPaint(Paint paramPaint)
   {
-    AppMethodBeat.i(187193);
-    p.k(paramPaint, "<set-?>");
+    AppMethodBeat.i(234749);
+    s.u(paramPaint, "<set-?>");
     this.paint = paramPaint;
-    AppMethodBeat.o(187193);
+    AppMethodBeat.o(234749);
   }
   
   public final void setProgress(int paramInt)

@@ -17,57 +17,57 @@ public class WXStateSceneDataObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(255034);
+    AppMethodBeat.i(243024);
     Object localObject = this.stateId;
     if ((localObject != null) && (((String)localObject).length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXStateSceneDataObject", "checkArgs fail, stateId is invalid");
-      AppMethodBeat.o(255034);
+      AppMethodBeat.o(243024);
       return false;
     }
     localObject = this.stateTitle;
     if ((localObject != null) && (((String)localObject).length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXStateSceneDataObject", "checkArgs fail, stateId is invalid");
-      AppMethodBeat.o(255034);
+      AppMethodBeat.o(243024);
       return false;
     }
     localObject = this.token;
     if ((localObject != null) && (((String)localObject).length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXStateSceneDataObject", "checkArgs fail, stateId is invalid");
-      AppMethodBeat.o(255034);
+      AppMethodBeat.o(243024);
       return false;
     }
     localObject = this.stateJumpInfo;
     if (localObject == null)
     {
       Log.e("MicroMsg.SDK.WXStateSceneDataObject", "checkArgs fail, statsJumpInfo is null");
-      AppMethodBeat.o(255034);
+      AppMethodBeat.o(243024);
       return false;
     }
     boolean bool = ((IWXStateJumpInfo)localObject).checkArgs();
-    AppMethodBeat.o(255034);
+    AppMethodBeat.o(243024);
     return bool;
   }
   
   public int getJumpType()
   {
-    AppMethodBeat.i(255035);
+    AppMethodBeat.i(243027);
     IWXStateJumpInfo localIWXStateJumpInfo = this.stateJumpInfo;
     if (localIWXStateJumpInfo != null)
     {
       int i = localIWXStateJumpInfo.type();
-      AppMethodBeat.o(255035);
+      AppMethodBeat.o(243027);
       return i;
     }
-    AppMethodBeat.o(255035);
+    AppMethodBeat.o(243027);
     return 0;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(255032);
+    AppMethodBeat.i(243016);
     paramBundle.putString("_wxapi_scene_data_state_id", this.stateId);
     paramBundle.putString("_wxapi_scene_data_state_title", this.stateTitle);
     paramBundle.putString("_wxapi_scene_data_state_token", this.token);
@@ -77,12 +77,12 @@ public class WXStateSceneDataObject
       paramBundle.putString("_wxapi_scene_data_state_jump_info_identifier", localIWXStateJumpInfo.getClass().getName());
       this.stateJumpInfo.serialize(paramBundle);
     }
-    AppMethodBeat.o(255032);
+    AppMethodBeat.o(243016);
   }
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(255033);
+    AppMethodBeat.i(243021);
     this.stateId = paramBundle.getString("_wxapi_scene_data_state_id");
     this.stateTitle = paramBundle.getString("_wxapi_scene_data_state_title");
     this.token = paramBundle.getString("_wxapi_scene_data_state_token");
@@ -93,7 +93,7 @@ public class WXStateSceneDataObject
         IWXStateJumpInfo localIWXStateJumpInfo = (IWXStateJumpInfo)Class.forName(str).newInstance();
         this.stateJumpInfo = localIWXStateJumpInfo;
         localIWXStateJumpInfo.unserialize(paramBundle);
-        AppMethodBeat.o(255033);
+        AppMethodBeat.o(243021);
         return;
       }
       catch (Exception paramBundle)
@@ -101,11 +101,13 @@ public class WXStateSceneDataObject
         Log.e("MicroMsg.SDK.WXStateSceneDataObject", "get WXSceneDataObject from bundle failed: unknown ident " + str + ", ex = " + paramBundle.getMessage());
       }
     }
-    AppMethodBeat.o(255033);
+    AppMethodBeat.o(243021);
   }
   
   public static abstract interface IWXStateJumpInfo
   {
+    public static final int WX_STATE_JUMP_TYPE_CHANNEL_PROFILE = 3;
+    public static final int WX_STATE_JUMP_TYPE_MINI_PROGRAM = 2;
     public static final int WX_STATE_JUMP_TYPE_UNKNOWN = 0;
     public static final int WX_STATE_JUMP_TYPE_URL = 1;
     

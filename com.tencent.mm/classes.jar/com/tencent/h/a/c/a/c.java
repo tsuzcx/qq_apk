@@ -24,12 +24,12 @@ public final class c
     super(paramc, parama);
   }
   
-  private static void i(List<g> paramList, long paramLong)
+  private static void k(List<g> paramList, long paramLong)
   {
-    AppMethodBeat.i(207462);
+    AppMethodBeat.i(212169);
     if ((paramList == null) || (paramList.isEmpty()) || (paramLong <= 0L))
     {
-      AppMethodBeat.o(207462);
+      AppMethodBeat.o(212169);
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -37,7 +37,7 @@ public final class c
     while (i >= 0)
     {
       g localg = (g)paramList.get(i);
-      if (localg.Zqg - paramLong <= 30L) {
+      if (localg.ahuN - paramLong <= 30L) {
         break;
       }
       localArrayList.add(localg);
@@ -47,22 +47,22 @@ public final class c
     if (!localArrayList.isEmpty()) {
       paramList.removeAll(localArrayList);
     }
-    AppMethodBeat.o(207462);
+    AppMethodBeat.o(212169);
   }
   
   public final void a(HashMap<Integer, List<g>> paramHashMap, List<com.tencent.h.a.c.b.i> paramList, List<h> paramList1, b paramb)
   {
     int m = 2;
     int k = 1;
-    AppMethodBeat.i(207461);
+    AppMethodBeat.i(212187);
     if (b(paramHashMap, paramList))
     {
       a(107, null, paramb);
-      AppMethodBeat.o(207461);
+      AppMethodBeat.o(212187);
       return;
     }
     com.tencent.h.a.c.b.c localc = new com.tencent.h.a.c.b.c();
-    int j = com.tencent.g.c.c.mq(this.ZSp.mAppContext);
+    int j = com.tencent.g.c.c.oG(this.ahWN.mAppContext);
     int i;
     if (j == 0)
     {
@@ -74,13 +74,13 @@ public final class c
     label243:
     for (j = 2;; j = 1)
     {
-      localc.ZpO = j;
+      localc.ahuw = j;
       j = m;
       if (i == 0) {
         j = 1;
       }
-      localc.ZpP = j;
-      long l = ((com.tencent.h.a.c.b.i)paramList.get(paramList.size() - 1)).ZTZ;
+      localc.ahux = j;
+      long l = ((com.tencent.h.a.c.b.i)paramList.get(paramList.size() - 1)).ahYz;
       com.tencent.g.c.i.i("sensor_SingleHandle", "[method: buildDataUnit ] , endTouch : ".concat(String.valueOf(l)));
       if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
         break label249;
@@ -94,20 +94,20 @@ public final class c
           break;
         }
         paramHashMap = (List)((Map.Entry)localIterator.next()).getValue();
-        i(paramHashMap, l);
+        k(paramHashMap, l);
         if ((paramHashMap != null) && (!paramHashMap.isEmpty())) {
           localArrayList.addAll(paramHashMap);
         }
       }
-      i = com.tencent.g.c.c.mp(this.ZSp.mAppContext);
+      i = com.tencent.g.c.c.oF(this.ahWN.mAppContext);
       break;
     }
     label249:
     paramHashMap = null;
     if ((paramHashMap != null) && (!paramHashMap.isEmpty()))
     {
-      localc.Zqh = ((g)paramHashMap.get(0)).Zqg;
-      localc.ZTI = new ArrayList(paramHashMap);
+      localc.ahuO = ((g)paramHashMap.get(0)).ahuN;
+      localc.ahYi = new ArrayList(paramHashMap);
       paramHashMap = a(localc, paramList, paramList1);
       i = k;
       if (paramList != null)
@@ -124,14 +124,14 @@ public final class c
         break label416;
       }
       a(105, null, paramb);
-      AppMethodBeat.o(207461);
+      AppMethodBeat.o(212187);
       return;
-      localc.Zqh = SystemClock.uptimeMillis();
+      localc.ahuO = SystemClock.uptimeMillis();
       break;
       label356:
       paramList1 = (com.tencent.h.a.c.b.i)paramList.get(0);
       i = k;
-      if (Math.abs(((com.tencent.h.a.c.b.i)paramList.get(paramList.size() - 1)).ZTZ - paramList1.ZTZ) < this.ZTj.frq) {
+      if (Math.abs(((com.tencent.h.a.c.b.i)paramList.get(paramList.size() - 1)).ahYz - paramList1.ahYz) < this.ahXJ.hvz) {
         i = 0;
       }
     }
@@ -139,27 +139,27 @@ public final class c
     if (a(paramHashMap, 61440))
     {
       a(106, null, paramb);
-      AppMethodBeat.o(207461);
+      AppMethodBeat.o(212187);
       return;
     }
-    if ((paramHashMap.ZTq == null) || (paramHashMap.ZTq.isEmpty())) {}
+    if ((paramHashMap == null) || (paramHashMap.ahXQ == null) || (paramHashMap.ahXQ.isEmpty())) {}
     for (;;)
     {
       a(0, paramHashMap, paramb);
-      AppMethodBeat.o(207461);
+      AppMethodBeat.o(212187);
       return;
-      paramList = (f)paramHashMap.ZTq.get(0);
-      if ((paramList != null) && (paramList.ZTQ != null) && (!paramList.ZTQ.isEmpty()))
+      paramList = (f)paramHashMap.ahXQ.get(0);
+      if ((paramList != null) && (paramList.ahYq != null) && (!paramList.ahYq.isEmpty()))
       {
         paramList1 = new Comparator() {};
-        Collections.sort(paramList.ZTQ, paramList1);
+        Collections.sort(paramList.ahYq, paramList1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.a.c
  * JD-Core Version:    0.7.0.1
  */

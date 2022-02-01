@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/d4p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="320.0dip"
+<FrameLayout android:id="@id/e28" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="@android:style/TextAppearance.Material.Subhead" android:textSize="@dimen/is" android:textColor="@color/uj" android:id="@id/d4q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hci" android:layout_alignParentTop="true" android:layout_alignParentStart="true" />
-    <ImageView android:id="@id/d4r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/c9l" android:layout_below="@id/d4q" android:layout_alignParentStart="true" />
-    <TextView android:textColor="@color/uh" android:gravity="center_vertical" android:id="@id/d4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd2" android:layout_alignTop="@id/d4r" android:layout_alignBottom="@id/d4r" android:layout_marginStart="16.0dip" android:layout_toEndOf="@id/d4r" style="@android:style/TextAppearance.Material.Body1" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/a10" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/a7b">
+        <TextView android:textSize="48.0dip" android:textColor="@color/az" android:layout_gravity="center_horizontal" android:id="@id/bu6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:layout_gravity="center_horizontal" android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" android:text="@string/e1s" />
+    </LinearLayout>
+</FrameLayout>

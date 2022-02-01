@@ -1,78 +1,64 @@
 package kotlin.l.b.a.b.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.j.f.h;
-import kotlin.l.b.a.b.m.a.i;
-import kotlin.l.b.a.b.m.ay;
+import kotlin.l.b.a.b.j.g.h;
+import kotlin.l.b.a.b.m.a.g;
+import kotlin.l.b.a.b.m.bc;
 
 public abstract class t
   implements e
 {
-  public static final a aaOB = new a((byte)0);
+  public static final a aiLm = new a((byte)0);
   
-  protected abstract h a(i parami);
+  protected abstract h a(g paramg);
   
-  protected abstract h a(ay paramay, i parami);
+  protected abstract h a(bc parambc, g paramg);
   
   public static final class a
   {
-    public static h a(e parame, i parami)
+    public static h a(e parame, g paramg)
     {
       AppMethodBeat.i(57168);
-      p.k(parame, "$this$getRefinedUnsubstitutedMemberScopeIfPossible");
-      p.k(parami, "kotlinTypeRefiner");
-      if (!(parame instanceof t)) {}
-      for (Object localObject = null;; localObject = parame)
+      s.u(parame, "<this>");
+      s.u(paramg, "kotlinTypeRefiner");
+      if ((parame instanceof t)) {}
+      for (t localt = (t)parame; localt == null; localt = null)
       {
-        localObject = (t)localObject;
-        if (localObject != null)
-        {
-          localObject = ((t)localObject).a(parami);
-          parami = (i)localObject;
-          if (localObject != null) {}
-        }
-        else
-        {
-          parami = parame.iEZ();
-          p.j(parami, "this.unsubstitutedMemberScope");
-        }
+        parame = parame.kot();
+        s.s(parame, "this.unsubstitutedMemberScope");
         AppMethodBeat.o(57168);
-        return parami;
+        return parame;
       }
+      parame = localt.a(paramg);
+      AppMethodBeat.o(57168);
+      return parame;
     }
     
-    public static h a(e parame, ay paramay, i parami)
+    public static h a(e parame, bc parambc, g paramg)
     {
       AppMethodBeat.i(57169);
-      p.k(parame, "$this$getRefinedMemberScopeIfPossible");
-      p.k(paramay, "typeSubstitution");
-      p.k(parami, "kotlinTypeRefiner");
-      if (!(parame instanceof t)) {}
-      for (Object localObject = null;; localObject = parame)
+      s.u(parame, "<this>");
+      s.u(parambc, "typeSubstitution");
+      s.u(paramg, "kotlinTypeRefiner");
+      if ((parame instanceof t)) {}
+      for (t localt = (t)parame; localt == null; localt = null)
       {
-        localObject = (t)localObject;
-        if (localObject != null)
-        {
-          localObject = ((t)localObject).a(paramay, parami);
-          parami = (i)localObject;
-          if (localObject != null) {}
-        }
-        else
-        {
-          parami = parame.a(paramay);
-          p.j(parami, "this.getMemberScope(\n   …ubstitution\n            )");
-        }
+        parame = parame.a(parambc);
+        s.s(parame, "this.getMemberScope(\n   …ubstitution\n            )");
         AppMethodBeat.o(57169);
-        return parami;
+        return parame;
       }
+      parame = localt.a(parambc, paramg);
+      AppMethodBeat.o(57169);
+      return parame;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.t
  * JD-Core Version:    0.7.0.1
  */

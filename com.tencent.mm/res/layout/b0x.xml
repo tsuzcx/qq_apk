@@ -1,34 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:orientation="vertical" android:id="@id/elh" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/dq" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="right" android:orientation="vertical" android:id="@id/bf8" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/el2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb">
-            <RelativeLayout android:id="@id/el0" android:background="@drawable/adi" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bt">
-                <ImageView android:id="@id/ekz" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
-            </RelativeLayout>
-            <TextView android:textSize="12.0dip" android:textColor="@color/ag2" android:id="@id/el1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/egc" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/el6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb">
-            <RelativeLayout android:id="@id/el4" android:background="@drawable/adi" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bt">
-                <ImageView android:id="@id/el3" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
-            </RelativeLayout>
-            <TextView android:textSize="12.0dip" android:textColor="@color/ag2" android:id="@id/el5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/egd" />
-        </LinearLayout>
-        <FrameLayout android:id="@id/el_" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="right" android:orientation="vertical" android:id="@id/el8" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <RelativeLayout android:background="@drawable/adi" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bt">
-                    <ImageView android:id="@id/el7" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" />
-                    <ImageView android:id="@id/ela" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/adf" android:layout_alignParentRight="true" />
-                </RelativeLayout>
-                <TextView android:textSize="12.0dip" android:textColor="@color/ag2" android:id="@id/el9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ega" />
-            </LinearLayout>
-            <RelativeLayout android:id="@id/efa" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <LinearLayout android:gravity="center_vertical" android:id="@id/ef_" android:background="@drawable/adu" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/cl">
-                    <ImageView android:id="@id/ef6" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginStart="@dimen/c5" />
-                    <TextView android:textSize="14.0dip" android:textColor="@color/xa" android:gravity="center_vertical" android:id="@id/ejq" android:layout_width="wrap_content" android:layout_height="@dimen/cl" android:text="@string/eje" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/c5" />
-                </LinearLayout>
-                <ImageView android:id="@id/ef7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:src="@drawable/adf" android:layout_marginEnd="3.0dip" android:layout_alignEnd="@id/ef_" />
-            </RelativeLayout>
-        </FrameLayout>
-    </LinearLayout>
-</LinearLayout>
+    <View android:id="@id/gq6" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <CheckBox android:id="@id/gq5" android:background="@drawable/agp" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginTop="@dimen/ig" android:layout_marginRight="@dimen/ig" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

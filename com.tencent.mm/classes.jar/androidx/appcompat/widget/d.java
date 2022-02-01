@@ -8,52 +8,52 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.appcompat.a.j;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class d
 {
   private final View mView;
-  private final f qn;
-  private int qo;
-  private aa qp;
-  private aa qr;
-  private aa qs;
+  private final f rk;
+  private int rl;
+  private aa rm;
+  private aa rn;
+  private aa ro;
   
   d(View paramView)
   {
-    AppMethodBeat.i(240666);
-    this.qo = -1;
+    AppMethodBeat.i(200005);
+    this.rl = -1;
     this.mView = paramView;
-    this.qn = f.dq();
-    AppMethodBeat.o(240666);
+    this.rk = f.ep();
+    AppMethodBeat.o(200005);
   }
   
   private void a(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(240675);
+    AppMethodBeat.i(200013);
     if (paramColorStateList != null)
     {
-      if (this.qp == null) {
-        this.qp = new aa();
+      if (this.rm == null) {
+        this.rm = new aa();
       }
-      this.qp.jE = paramColorStateList;
-      this.qp.jG = true;
+      this.rm.kz = paramColorStateList;
+      this.rm.kB = true;
     }
     for (;;)
     {
-      dm();
-      AppMethodBeat.o(240675);
+      el();
+      AppMethodBeat.o(200013);
       return;
-      this.qp = null;
+      this.rm = null;
     }
   }
   
-  private boolean dn()
+  private boolean em()
   {
     int i = Build.VERSION.SDK_INT;
     if (i > 21) {
-      if (this.qp == null) {}
+      if (this.rm == null) {}
     }
     while (i == 21)
     {
@@ -63,155 +63,155 @@ class d
     return false;
   }
   
-  private boolean f(Drawable paramDrawable)
+  private boolean g(Drawable paramDrawable)
   {
-    AppMethodBeat.i(240676);
-    if (this.qs == null) {
-      this.qs = new aa();
+    AppMethodBeat.i(200032);
+    if (this.ro == null) {
+      this.ro = new aa();
     }
-    aa localaa = this.qs;
+    aa localaa = this.ro;
     localaa.clear();
-    Object localObject = w.ac(this.mView);
+    Object localObject = z.ap(this.mView);
     if (localObject != null)
     {
-      localaa.jG = true;
-      localaa.jE = ((ColorStateList)localObject);
+      localaa.kB = true;
+      localaa.kz = ((ColorStateList)localObject);
     }
-    localObject = w.ad(this.mView);
+    localObject = z.aq(this.mView);
     if (localObject != null)
     {
-      localaa.jH = true;
-      localaa.jF = ((PorterDuff.Mode)localObject);
+      localaa.kC = true;
+      localaa.kA = ((PorterDuff.Mode)localObject);
     }
-    if ((localaa.jG) || (localaa.jH))
+    if ((localaa.kB) || (localaa.kC))
     {
       f.a(paramDrawable, localaa, this.mView.getDrawableState());
-      AppMethodBeat.o(240676);
+      AppMethodBeat.o(200032);
       return true;
     }
-    AppMethodBeat.o(240676);
+    AppMethodBeat.o(200032);
     return false;
   }
   
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(240667);
+    AppMethodBeat.i(200043);
     paramAttributeSet = ac.a(this.mView.getContext(), paramAttributeSet, a.j.ViewBackgroundHelper, paramInt, 0);
     try
     {
-      if (paramAttributeSet.aC(a.j.ViewBackgroundHelper_android_background))
+      if (paramAttributeSet.az(a.j.ViewBackgroundHelper_android_background))
       {
-        this.qo = paramAttributeSet.r(a.j.ViewBackgroundHelper_android_background, -1);
-        ColorStateList localColorStateList = this.qn.q(this.mView.getContext(), this.qo);
+        this.rl = paramAttributeSet.w(a.j.ViewBackgroundHelper_android_background, -1);
+        ColorStateList localColorStateList = this.rk.q(this.mView.getContext(), this.rl);
         if (localColorStateList != null) {
           a(localColorStateList);
         }
       }
-      if (paramAttributeSet.aC(a.j.ViewBackgroundHelper_backgroundTint)) {
-        w.a(this.mView, paramAttributeSet.getColorStateList(a.j.ViewBackgroundHelper_backgroundTint));
+      if (paramAttributeSet.az(a.j.ViewBackgroundHelper_backgroundTint)) {
+        z.a(this.mView, paramAttributeSet.getColorStateList(a.j.ViewBackgroundHelper_backgroundTint));
       }
-      if (paramAttributeSet.aC(a.j.ViewBackgroundHelper_backgroundTintMode)) {
-        w.a(this.mView, o.c(paramAttributeSet.getInt(a.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
+      if (paramAttributeSet.az(a.j.ViewBackgroundHelper_backgroundTintMode)) {
+        z.a(this.mView, o.c(paramAttributeSet.getInt(a.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
       }
       return;
     }
     finally
     {
-      paramAttributeSet.wA.recycle();
-      AppMethodBeat.o(240667);
+      paramAttributeSet.xv.recycle();
+      AppMethodBeat.o(200043);
     }
   }
   
-  final void ar(int paramInt)
+  final void ap(int paramInt)
   {
-    AppMethodBeat.i(240669);
-    this.qo = paramInt;
-    if (this.qn != null) {}
-    for (ColorStateList localColorStateList = this.qn.q(this.mView.getContext(), paramInt);; localColorStateList = null)
+    AppMethodBeat.i(200054);
+    this.rl = paramInt;
+    if (this.rk != null) {}
+    for (ColorStateList localColorStateList = this.rk.q(this.mView.getContext(), paramInt);; localColorStateList = null)
     {
       a(localColorStateList);
-      dm();
-      AppMethodBeat.o(240669);
+      el();
+      AppMethodBeat.o(200054);
       return;
     }
   }
   
-  final void dl()
+  final void ek()
   {
-    AppMethodBeat.i(240670);
-    this.qo = -1;
+    AppMethodBeat.i(200061);
+    this.rl = -1;
     a(null);
-    dm();
-    AppMethodBeat.o(240670);
+    el();
+    AppMethodBeat.o(200061);
   }
   
-  final void dm()
+  final void el()
   {
-    AppMethodBeat.i(240674);
+    AppMethodBeat.i(200108);
     Drawable localDrawable = this.mView.getBackground();
     if (localDrawable != null)
     {
-      if ((dn()) && (f(localDrawable)))
+      if ((em()) && (g(localDrawable)))
       {
-        AppMethodBeat.o(240674);
+        AppMethodBeat.o(200108);
         return;
       }
-      if (this.qr != null)
+      if (this.rn != null)
       {
-        f.a(localDrawable, this.qr, this.mView.getDrawableState());
-        AppMethodBeat.o(240674);
+        f.a(localDrawable, this.rn, this.mView.getDrawableState());
+        AppMethodBeat.o(200108);
         return;
       }
-      if (this.qp != null) {
-        f.a(localDrawable, this.qp, this.mView.getDrawableState());
+      if (this.rm != null) {
+        f.a(localDrawable, this.rm, this.mView.getDrawableState());
       }
     }
-    AppMethodBeat.o(240674);
+    AppMethodBeat.o(200108);
   }
   
   final ColorStateList getSupportBackgroundTintList()
   {
-    if (this.qr != null) {
-      return this.qr.jE;
+    if (this.rn != null) {
+      return this.rn.kz;
     }
     return null;
   }
   
   final PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.qr != null) {
-      return this.qr.jF;
+    if (this.rn != null) {
+      return this.rn.kA;
     }
     return null;
   }
   
   final void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(240671);
-    if (this.qr == null) {
-      this.qr = new aa();
+    AppMethodBeat.i(200071);
+    if (this.rn == null) {
+      this.rn = new aa();
     }
-    this.qr.jE = paramColorStateList;
-    this.qr.jG = true;
-    dm();
-    AppMethodBeat.o(240671);
+    this.rn.kz = paramColorStateList;
+    this.rn.kB = true;
+    el();
+    AppMethodBeat.o(200071);
   }
   
   final void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(240672);
-    if (this.qr == null) {
-      this.qr = new aa();
+    AppMethodBeat.i(200089);
+    if (this.rn == null) {
+      this.rn = new aa();
     }
-    this.qr.jF = paramMode;
-    this.qr.jH = true;
-    dm();
-    AppMethodBeat.o(240672);
+    this.rn.kA = paramMode;
+    this.rn.kC = true;
+    el();
+    AppMethodBeat.o(200089);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.d
  * JD-Core Version:    0.7.0.1
  */

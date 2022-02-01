@@ -7,11 +7,11 @@ public final class b
   extends MStorage
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bottleinfo1 ( parentclientid text  , childcount int  , bottleid text  PRIMARY KEY , bottletype int  , msgtype int  , voicelen int  , content text  , createtime long  , reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text  ) " };
-  public h lvy;
+  public h omV;
   
   public b(h paramh)
   {
-    this.lvy = paramh;
+    this.omV = paramh;
   }
 }
 

@@ -8,21 +8,21 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.JsResult;
-import com.tencent.xweb.internal.e;
-import com.tencent.xweb.o;
+import com.tencent.xweb.internal.f;
+import com.tencent.xweb.q;
 
 public final class d
-  implements e
+  implements f
 {
-  WebViewClient aafp;
-  WebView aafq;
-  WebChromeClient mChromeClient;
+  private WebViewClient aimf;
+  private WebView aimg;
+  private WebChromeClient mChromeClient;
   
   public d(WebView paramWebView)
   {
     AppMethodBeat.i(153668);
-    this.aafq = paramWebView;
-    this.aafp = new WebViewClient();
+    this.aimg = paramWebView;
+    this.aimf = new WebViewClient();
     this.mChromeClient = new WebChromeClient();
     AppMethodBeat.o(153668);
   }
@@ -32,12 +32,22 @@ public final class d
     return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, o paramo)
+  public final boolean a(String paramString1, String paramString2, String paramString3, q paramq)
   {
     return false;
   }
   
   public final boolean b(String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    return false;
+  }
+  
+  public final boolean cxL()
+  {
+    return false;
+  }
+  
+  public final boolean khc()
   {
     return false;
   }
@@ -49,7 +59,7 @@ public final class d
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153669);
-    this.aafp.onPageStarted(this.aafq, paramString, paramBitmap);
+    this.aimf.onPageStarted(this.aimg, paramString, paramBitmap);
     AppMethodBeat.o(153669);
   }
 }

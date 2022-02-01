@@ -12,14 +12,14 @@ final class ImagePreviewUI$24
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(111587);
-    ImagePreviewUI.j(this.Cdw);
+    ImagePreviewUI.p(this.HPA);
     AppMethodBeat.o(111587);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.ImagePreviewUI.24
  * JD-Core Version:    0.7.0.1
  */

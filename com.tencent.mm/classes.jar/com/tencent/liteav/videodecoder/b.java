@@ -15,7 +15,7 @@ public abstract interface b
   
   public abstract void enableLimitDecCache(boolean paramBoolean);
   
-  public abstract void setListener(g paramg);
+  public abstract void setListener(h paramh);
   
   public abstract void setNotifyListener(WeakReference<com.tencent.liteav.basic.c.b> paramWeakReference);
   
@@ -25,7 +25,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.b
  * JD-Core Version:    0.7.0.1
  */

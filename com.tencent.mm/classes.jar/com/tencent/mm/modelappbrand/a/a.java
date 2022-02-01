@@ -5,35 +5,35 @@ import android.graphics.drawable.Drawable;
 import androidx.core.graphics.drawable.b;
 import androidx.core.graphics.drawable.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.c.c.d;
+import com.tencent.mm.plugin.appbrand.d.c.d;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 
 public enum a
 {
-  private static volatile WeakReference<Bitmap> lyI;
+  private static volatile WeakReference<Bitmap> oqj;
   
-  public static Drawable bhg()
+  public static Drawable bEX()
   {
     AppMethodBeat.i(121064);
-    if (lyI != null)
+    if (oqj != null)
     {
-      localObject = (Bitmap)lyI.get();
+      localObject = (Bitmap)oqj.get();
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {}
     }
     else
     {
-      lyI = new WeakReference(com.tencent.mm.compatible.f.a.decodeResource(MMApplicationContext.getResources(), c.d.miniprogram_default_avatar));
+      oqj = new WeakReference(com.tencent.mm.compatible.f.a.decodeResource(MMApplicationContext.getResources(), c.d.miniprogram_default_avatar));
     }
-    Object localObject = d.a(MMApplicationContext.getResources(), (Bitmap)lyI.get());
-    ((b)localObject).gB();
+    Object localObject = d.a(MMApplicationContext.getResources(), (Bitmap)oqj.get());
+    ((b)localObject).DL();
     AppMethodBeat.o(121064);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.a
  * JD-Core Version:    0.7.0.1
  */

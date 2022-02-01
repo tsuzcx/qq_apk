@@ -5,6 +5,7 @@ import android.media.AudioRecord;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -31,15 +32,15 @@ public class TXCAudioSysRecord
   
   static
   {
-    AppMethodBeat.i(246473);
+    AppMethodBeat.i(230515);
     TAG = "AudioCenter:" + TXCAudioSysRecord.class.getSimpleName();
     instance = null;
-    AppMethodBeat.o(246473);
+    AppMethodBeat.o(230515);
   }
   
   private TXCAudioSysRecord()
   {
-    AppMethodBeat.i(246459);
+    AppMethodBeat.i(230456);
     this.mSampleRate = 48000;
     this.mChannels = 1;
     this.mBits = 16;
@@ -52,12 +53,12 @@ public class TXCAudioSysRecord
     this.mPause = new AtomicBoolean(false);
     this.threadMutex = new Object();
     nativeClassInit();
-    AppMethodBeat.o(246459);
+    AppMethodBeat.o(230456);
   }
   
   public static TXCAudioSysRecord getInstance()
   {
-    AppMethodBeat.i(246458);
+    AppMethodBeat.i(230450);
     if (instance == null) {}
     try
     {
@@ -65,18 +66,18 @@ public class TXCAudioSysRecord
         instance = new TXCAudioSysRecord();
       }
       TXCAudioSysRecord localTXCAudioSysRecord = instance;
-      AppMethodBeat.o(246458);
+      AppMethodBeat.o(230450);
       return localTXCAudioSysRecord;
     }
     finally
     {
-      AppMethodBeat.o(246458);
+      AppMethodBeat.o(230450);
     }
   }
   
   private void init()
   {
-    AppMethodBeat.i(246466);
+    AppMethodBeat.i(230471);
     int k = this.mSampleRate;
     int m = this.mChannels;
     int n = this.mBits;
@@ -99,7 +100,7 @@ public class TXCAudioSysRecord
           TXCLog.e(TAG, "audio record: initialize the mic failed.");
           uninit();
           onRecordError(-1, "microphone permission denied!");
-          AppMethodBeat.o(246466);
+          AppMethodBeat.o(230471);
           return;
         }
       }
@@ -119,19 +120,19 @@ public class TXCAudioSysRecord
           }
           try
           {
-            this.mMic.startRecording();
-            AppMethodBeat.o(246466);
+            a.a(this.mMic, "com/tencent/liteav/audio/impl/Record/TXCAudioSysRecord", "init", "()V", "android/media/AudioRecord", "startRecording", "()V");
+            AppMethodBeat.o(230471);
             return;
           }
           catch (Exception localException)
           {
             TXCLog.e(TAG, "mic startRecording failed.", localException);
             onRecordError(-1, "start recording failed!");
-            AppMethodBeat.o(246466);
+            AppMethodBeat.o(230471);
             return;
           }
         }
-        AppMethodBeat.o(246466);
+        AppMethodBeat.o(230471);
         return;
       }
     }
@@ -143,7 +144,7 @@ public class TXCAudioSysRecord
   
   private void onRecordError(int paramInt, String paramString)
   {
-    AppMethodBeat.i(246469);
+    AppMethodBeat.i(230489);
     c localc = null;
     try
     {
@@ -153,21 +154,21 @@ public class TXCAudioSysRecord
       if (localc != null)
       {
         localc.onAudioRecordError(paramInt, paramString);
-        AppMethodBeat.o(246469);
+        AppMethodBeat.o(230489);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(246469);
+      AppMethodBeat.o(230489);
     }
     TXCLog.e(TAG, "onRecordError:no callback");
-    AppMethodBeat.o(246469);
+    AppMethodBeat.o(230489);
   }
   
   private void onRecordPcmData(byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(246468);
+    AppMethodBeat.i(230484);
     c localc = null;
     if (this.mWeakRefListener != null) {
       localc = (c)this.mWeakRefListener.get();
@@ -175,16 +176,16 @@ public class TXCAudioSysRecord
     if (localc != null)
     {
       localc.onAudioRecordPCM(paramArrayOfByte, paramInt, paramLong);
-      AppMethodBeat.o(246468);
+      AppMethodBeat.o(230484);
       return;
     }
     TXCLog.e(TAG, "onRecordPcmData:no callback");
-    AppMethodBeat.o(246468);
+    AppMethodBeat.o(230484);
   }
   
   private void onRecordStart()
   {
-    AppMethodBeat.i(246470);
+    AppMethodBeat.i(230495);
     c localc = null;
     try
     {
@@ -194,21 +195,21 @@ public class TXCAudioSysRecord
       if (localc != null)
       {
         localc.onAudioRecordStart();
-        AppMethodBeat.o(246470);
+        AppMethodBeat.o(230495);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(246470);
+      AppMethodBeat.o(230495);
     }
     TXCLog.e(TAG, "onRecordStart:no callback");
-    AppMethodBeat.o(246470);
+    AppMethodBeat.o(230495);
   }
   
   private void onRecordStop()
   {
-    AppMethodBeat.i(246471);
+    AppMethodBeat.i(230501);
     c localc = null;
     try
     {
@@ -218,21 +219,21 @@ public class TXCAudioSysRecord
       if (localc != null)
       {
         localc.onAudioRecordStop();
-        AppMethodBeat.o(246471);
+        AppMethodBeat.o(230501);
         return;
       }
     }
     finally
     {
-      AppMethodBeat.o(246471);
+      AppMethodBeat.o(230501);
     }
     TXCLog.e(TAG, "onRecordStop:no callback");
-    AppMethodBeat.o(246471);
+    AppMethodBeat.o(230501);
   }
   
   private void uninit()
   {
-    AppMethodBeat.i(246467);
+    AppMethodBeat.i(230479);
     if (this.mMic != null) {
       TXCLog.i(TAG, "stop mic");
     }
@@ -244,7 +245,7 @@ public class TXCAudioSysRecord
       this.mMic = null;
       this.mRecordBuffer = null;
       this.mIsCapFirstFrame = false;
-      AppMethodBeat.o(246467);
+      AppMethodBeat.o(230479);
       return;
     }
     catch (Exception localException)
@@ -272,28 +273,28 @@ public class TXCAudioSysRecord
   
   public void pause(boolean paramBoolean)
   {
-    AppMethodBeat.i(246464);
+    AppMethodBeat.i(230541);
     TXCLog.i(TAG, "system audio record pause");
     this.mPause.set(true);
     this.mSendMuteData = paramBoolean;
-    AppMethodBeat.o(246464);
+    AppMethodBeat.o(230541);
   }
   
   public void resume()
   {
-    AppMethodBeat.i(246465);
+    AppMethodBeat.i(230545);
     TXCLog.i(TAG, "system audio record resume");
     this.mPause.set(false);
-    AppMethodBeat.o(246465);
+    AppMethodBeat.o(230545);
   }
   
   public void run()
   {
-    AppMethodBeat.i(246472);
+    AppMethodBeat.i(230564);
     if (!this.mIsRunning)
     {
       TXCLog.w(TAG, "audio record: abandom start audio sys record thread!");
-      AppMethodBeat.o(246472);
+      AppMethodBeat.o(230564);
       return;
     }
     onRecordStart();
@@ -346,11 +347,11 @@ public class TXCAudioSysRecord
     if (j > 5)
     {
       onRecordError(-1, "read data failed!");
-      AppMethodBeat.o(246472);
+      AppMethodBeat.o(230564);
       return;
     }
     onRecordStop();
-    AppMethodBeat.o(246472);
+    AppMethodBeat.o(230564);
   }
   
   /* Error */
@@ -359,25 +360,25 @@ public class TXCAudioSysRecord
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 331
+    //   2: ldc_w 340
     //   5: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
     //   9: ifnonnull +17 -> 26
     //   12: aload_0
     //   13: aconst_null
-    //   14: putfield 185	com/tencent/liteav/audio/impl/Record/TXCAudioSysRecord:mWeakRefListener	Ljava/lang/ref/WeakReference;
-    //   17: ldc_w 331
+    //   14: putfield 194	com/tencent/liteav/audio/impl/Record/TXCAudioSysRecord:mWeakRefListener	Ljava/lang/ref/WeakReference;
+    //   17: ldc_w 340
     //   20: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: return
     //   26: aload_0
-    //   27: new 187	java/lang/ref/WeakReference
+    //   27: new 196	java/lang/ref/WeakReference
     //   30: dup
     //   31: aload_1
-    //   32: invokespecial 334	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   35: putfield 185	com/tencent/liteav/audio/impl/Record/TXCAudioSysRecord:mWeakRefListener	Ljava/lang/ref/WeakReference;
-    //   38: ldc_w 331
+    //   32: invokespecial 343	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   35: putfield 194	com/tencent/liteav/audio/impl/Record/TXCAudioSysRecord:mWeakRefListener	Ljava/lang/ref/WeakReference;
+    //   38: ldc_w 340
     //   41: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: goto -21 -> 23
     //   47: astore_1
@@ -398,7 +399,7 @@ public class TXCAudioSysRecord
   
   public void start(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(246461);
+    AppMethodBeat.i(230527);
     TXCLog.i(TAG, "start");
     synchronized (this.threadMutex)
     {
@@ -410,14 +411,14 @@ public class TXCAudioSysRecord
       this.mRecordThread = new Thread(this, "AudioSysRecord Thread");
       this.mRecordThread.start();
       TXCLog.i(TAG, "start ok");
-      AppMethodBeat.o(246461);
+      AppMethodBeat.o(230527);
       return;
     }
   }
   
   public void stop()
   {
-    AppMethodBeat.i(246463);
+    AppMethodBeat.i(230536);
     TXCLog.i(TAG, "stop");
     synchronized (this.threadMutex)
     {
@@ -435,7 +436,7 @@ public class TXCAudioSysRecord
         TXCLog.i(TAG, "stop ok,stop record cost time(MS): " + (System.currentTimeMillis() - l1));
         this.mRecordThread = null;
         TXCLog.i(TAG, "stop ok");
-        AppMethodBeat.o(246463);
+        AppMethodBeat.o(230536);
         return;
       }
       catch (Exception localException)
@@ -450,7 +451,7 @@ public class TXCAudioSysRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Record.TXCAudioSysRecord
  * JD-Core Version:    0.7.0.1
  */

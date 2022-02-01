@@ -7,24 +7,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends an
 {
-  private float aqs = 3.0F;
+  private float cfa = 3.0F;
   
-  private static float d(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private static float distance(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(192044);
+    AppMethodBeat.i(201588);
     paramFloat1 = paramFloat3 - paramFloat1;
     paramFloat2 = paramFloat4 - paramFloat2;
     paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-    AppMethodBeat.o(192044);
+    AppMethodBeat.o(201588);
     return paramFloat1;
   }
   
   public final long a(ViewGroup paramViewGroup, Transition paramTransition, w paramw1, w paramw2)
   {
-    AppMethodBeat.i(192040);
+    AppMethodBeat.i(201601);
     if ((paramw1 == null) && (paramw2 == null))
     {
-      AppMethodBeat.o(192040);
+      AppMethodBeat.o(201601);
       return 0L;
     }
     int i;
@@ -36,7 +36,7 @@ public final class b
       i = -1;
       m = f(paramw1);
       n = g(paramw1);
-      paramw1 = paramTransition.nu();
+      paramw1 = paramTransition.LX();
       if (paramw1 == null) {
         break label162;
       }
@@ -44,14 +44,14 @@ public final class b
     }
     for (int k = paramw1.centerY();; k = Math.round(paramw1[1] + paramViewGroup.getHeight() / 2 + paramViewGroup.getTranslationY()))
     {
-      float f = d(m, n, j, k) / d(0.0F, 0.0F, paramViewGroup.getWidth(), paramViewGroup.getHeight());
+      float f = distance(m, n, j, k) / distance(0.0F, 0.0F, paramViewGroup.getWidth(), paramViewGroup.getHeight());
       long l2 = paramTransition.mDuration;
       long l1 = l2;
       if (l2 < 0L) {
         l1 = 300L;
       }
-      l1 = Math.round((float)(l1 * i) / this.aqs * f);
-      AppMethodBeat.o(192040);
+      l1 = Math.round((float)(l1 * i) / this.cfa * f);
+      AppMethodBeat.o(201601);
       return l1;
       i = 1;
       paramw1 = paramw2;
@@ -65,7 +65,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.b
  * JD-Core Version:    0.7.0.1
  */

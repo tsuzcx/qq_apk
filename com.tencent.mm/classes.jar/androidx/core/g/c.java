@@ -4,66 +4,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private final Object MG;
+  final Object bsJ;
   
   c(Object paramObject)
   {
-    this.MG = paramObject;
+    this.bsJ = paramObject;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(251397);
+    AppMethodBeat.i(195710);
     if (this == paramObject)
     {
-      AppMethodBeat.o(251397);
+      AppMethodBeat.o(195710);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(251397);
+      AppMethodBeat.o(195710);
       return false;
     }
     paramObject = (c)paramObject;
-    if (this.MG == null)
-    {
-      if (paramObject.MG == null)
-      {
-        AppMethodBeat.o(251397);
-        return true;
-      }
-      AppMethodBeat.o(251397);
-      return false;
-    }
-    boolean bool = this.MG.equals(paramObject.MG);
-    AppMethodBeat.o(251397);
+    boolean bool = androidx.core.f.c.equals(this.bsJ, paramObject.bsJ);
+    AppMethodBeat.o(195710);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(251398);
-    if (this.MG == null)
+    AppMethodBeat.i(195719);
+    if (this.bsJ == null)
     {
-      AppMethodBeat.o(251398);
+      AppMethodBeat.o(195719);
       return 0;
     }
-    int i = this.MG.hashCode();
-    AppMethodBeat.o(251398);
+    int i = this.bsJ.hashCode();
+    AppMethodBeat.o(195719);
     return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(251400);
-    String str = "DisplayCutoutCompat{" + this.MG + "}";
-    AppMethodBeat.o(251400);
+    AppMethodBeat.i(195726);
+    String str = "DisplayCutoutCompat{" + this.bsJ + "}";
+    AppMethodBeat.o(195726);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.core.g.c
  * JD-Core Version:    0.7.0.1
  */

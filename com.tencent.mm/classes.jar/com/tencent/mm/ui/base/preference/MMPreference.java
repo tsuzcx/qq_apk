@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.base.preference;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -25,10 +24,13 @@ import com.tencent.mm.ah.a.h;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.a.i;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.vas.VASActivity;
+import java.util.HashSet;
 
 public abstract class MMPreference
-  extends MMActivity
+  extends VASActivity
 {
   public static final String TAG = "MicroMsg.mmui.MMPreference";
   private byte _hellAccFlag_;
@@ -37,6 +39,7 @@ public abstract class MMPreference
   protected TextView bannerTv;
   protected RelativeLayout bannerView;
   private boolean dirty = false;
+  private int ignoreCnt = 0;
   private boolean isRefreshing = false;
   private ListView list;
   private SharedPreferences sp;
@@ -48,7 +51,7 @@ public abstract class MMPreference
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
         AppMethodBeat.i(142585);
-        if ((!MMPreference.this.isRefreshing) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.WsD))
+        if ((!MMPreference.this.isRefreshing) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.adZT))
         {
           MMPreference.access$002(MMPreference.this, true);
           if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
@@ -56,7 +59,7 @@ public abstract class MMPreference
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
           paramAnonymousObject.setChecked(paramAnonymousObject.isChecked());
-          if (paramAnonymousObject.WsF) {
+          if (paramAnonymousObject.adZV) {
             MMPreference.this.sp.edit().putBoolean(paramAnonymousPreference.mKey, paramAnonymousObject.isChecked()).commit();
           }
           MMPreference.access$202(MMPreference.this, true);
@@ -83,7 +86,7 @@ public abstract class MMPreference
     });
     int i = getResourceId();
     if (i != -1) {
-      this.adapter.auC(i);
+      this.adapter.aBe(i);
     }
     this.list.setAdapter(this.adapter);
     this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -92,11 +95,11 @@ public abstract class MMPreference
       {
         AppMethodBeat.i(142588);
         b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/preference/MMPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        localb.cH(paramAnonymousAdapterView);
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.hB(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/preference/MMPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
         paramAnonymousAdapterView = (Preference)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
         if (paramAnonymousAdapterView == null)
         {
@@ -104,7 +107,7 @@ public abstract class MMPreference
           AppMethodBeat.o(142588);
           return;
         }
-        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.WsD))
+        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.adZT))
         {
           if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
           {
@@ -115,14 +118,14 @@ public abstract class MMPreference
           if ((paramAnonymousAdapterView instanceof DialogPreference))
           {
             paramAnonymousView = (DialogPreference)paramAnonymousAdapterView;
-            paramAnonymousView.elK();
-            paramAnonymousView.WqL = new DialogPreference.a()
+            paramAnonymousView.fpM();
+            paramAnonymousView.adYa = new DialogPreference.a()
             {
-              public final void hKF()
+              public final void jnj()
               {
                 AppMethodBeat.i(142586);
                 MMPreference.access$202(MMPreference.this, true);
-                if (paramAnonymousView.WsF) {
+                if (paramAnonymousView.adZV) {
                   MMPreference.this.sp.edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.getValue()).commit();
                 }
                 MMPreference.this.adapter.notifyDataSetChanged();
@@ -133,14 +136,14 @@ public abstract class MMPreference
           if ((paramAnonymousAdapterView instanceof EditPreference))
           {
             paramAnonymousView = (EditPreference)paramAnonymousAdapterView;
-            paramAnonymousView.elK();
-            paramAnonymousView.WqN = new EditPreference.a()
+            paramAnonymousView.fpM();
+            paramAnonymousView.adYc = new EditPreference.a()
             {
-              public final void hKF()
+              public final void jnj()
               {
                 AppMethodBeat.i(142587);
                 MMPreference.access$202(MMPreference.this, true);
-                if (paramAnonymousView.WsF) {
+                if (paramAnonymousView.adZV) {
                   MMPreference.this.sp.edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.value).commit();
                 }
                 MMPreference.this.adapter.notifyDataSetChanged();
@@ -267,6 +270,12 @@ public abstract class MMPreference
   
   public abstract int getResourceId();
   
+  protected boolean ignoreSecondCalled()
+  {
+    this.ignoreCnt += 1;
+    return this.ignoreCnt == 2;
+  }
+  
   public boolean onContextItemSelected(MenuItem paramMenuItem)
   {
     return super.onContextItemSelected(paramMenuItem);
@@ -332,6 +341,8 @@ public abstract class MMPreference
     }
   }
   
+  public void onPointerCaptureChanged(boolean paramBoolean) {}
+  
   public abstract boolean onPreferenceTreeClick(f paramf, Preference paramPreference);
   
   public boolean onPreferenceTreeLongClick(f paramf, Preference paramPreference, View paramView)
@@ -350,10 +361,10 @@ public abstract class MMPreference
   public boolean onSetToTop()
   {
     Object localObject1 = this.list;
-    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
+    localObject1 = new com.tencent.mm.hellhoundlib.b.a().cG(localObject1);
     Object localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aYi(), "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
     return true;
   }
@@ -374,6 +385,12 @@ public abstract class MMPreference
     this.list.setSelection(paramInt);
   }
   
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(i.class);
+  }
+  
   public void updateAdapter(h paramh)
   {
     this.adapter = paramh;
@@ -382,7 +399,7 @@ public abstract class MMPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.MMPreference
  * JD-Core Version:    0.7.0.1
  */

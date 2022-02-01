@@ -1,12 +1,16 @@
 package com.tencent.mm.plugin.appbrand;
 
-public abstract interface bj$a<T>
+import com.tencent.mm.plugin.appbrand.jsapi.s;
+
+public final class bj$a
+  extends s
 {
-  public abstract T bEA();
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "onBottomBannerButtonClicked";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bj.a
  * JD-Core Version:    0.7.0.1
  */

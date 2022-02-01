@@ -10,119 +10,288 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.thumbplayer.d.g;
-import com.tencent.mm.plugin.thumbplayer.d.g.b;
+import com.tencent.mm.plugin.thumbplayer.c.e.b;
+import com.tencent.mm.plugin.thumbplayer.e.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "COMPLETE", "getCOMPLETE", "()I", "TAG", "", "currentPlayIndex", "getCurrentPlayIndex", "setCurrentPlayIndex", "(I)V", "currentPlayer", "Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "getCurrentPlayer", "()Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "setCurrentPlayer", "(Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;)V", "effector", "Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "getEffector", "()Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "setEffector", "(Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;)V", "enableEffect", "", "initPlayerTick", "", "isStop", "lastPauseMvPosition", "getLastPauseMvPosition", "()J", "setLastPauseMvPosition", "(J)V", "listener", "Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$IFirstFrameDrawListener;", "logFrameRender", "getLogFrameRender", "()Z", "setLogFrameRender", "(Z)V", "mediaChangeListener", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "getMediaChangeListener", "()Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "setMediaChangeListener", "(Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;)V", "mediaInfoList", "", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "getMediaInfoList", "()Ljava/util/List;", "setMediaInfoList", "(Ljava/util/List;)V", "mvMusicProxy", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getMvMusicProxy", "()Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "setMvMusicProxy", "(Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;)V", "onProgressUpdate", "Lkotlin/Function2;", "", "getOnProgressUpdate", "()Lkotlin/jvm/functions/Function2;", "setOnProgressUpdate", "(Lkotlin/jvm/functions/Function2;)V", "pauseVideoOnPlay", "getPauseVideoOnPlay", "setPauseVideoOnPlay", "playTimer", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getPlayTimer", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setPlayTimer", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "playerActionListener", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerActionListener;", "getPlayerActionListener", "()Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerActionListener;", "setPlayerActionListener", "(Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerActionListener;)V", "playerSurface", "Landroid/view/Surface;", "playerSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "progressUpdateInterval", "reportInfo", "Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "getReportInfo", "()Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "setReportInfo", "(Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;)V", "surfaceTexture", "textureView", "Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "getTextureView", "()Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "setTextureView", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;)V", "totalLength", "getTotalLength", "setTotalLength", "init", "initEffector", "initPlayer", "player", "initTextureView", "onCompletion", "onStart", "onStop", "onVideoContentUpdate", "pause", "playInfo", "recreatePlayer", "recreatePlayerSurface", "recycle", "removeCompleteTimer", "resume", "seekToIndex", "index", "seekToNext", "seekToTime", "timeMs", "setEnableEffect", "enable", "setFirstFrameDrawCallback", "setMediaInfo", "needReInitTextureView", "setProgressUpdateInterval", "interval", "start", "updateCompleteTimer", "needCorrection", "needLog", "IFirstFrameDrawListener", "SurfaceTextureListener", "plugin-thumbplayer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "COMPLETE", "getCOMPLETE", "()I", "TAG", "", "currentPlayIndex", "getCurrentPlayIndex", "setCurrentPlayIndex", "(I)V", "currentPlayer", "Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "getCurrentPlayer", "()Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;", "setCurrentPlayer", "(Lcom/tencent/mm/plugin/thumbplayer/player/MMCdnTPPlayer;)V", "effector", "Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "getEffector", "()Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;", "setEffector", "(Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector;)V", "enableEffect", "", "initPlayerTick", "", "isStop", "lastPauseMvPosition", "getLastPauseMvPosition", "()J", "setLastPauseMvPosition", "(J)V", "listener", "Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$IFirstFrameDrawListener;", "logFrameRender", "getLogFrameRender", "()Z", "setLogFrameRender", "(Z)V", "mediaChangeListener", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "getMediaChangeListener", "()Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "setMediaChangeListener", "(Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;)V", "mediaInfoList", "", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "getMediaInfoList", "()Ljava/util/List;", "setMediaInfoList", "(Ljava/util/List;)V", "mvMusicProxy", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getMvMusicProxy", "()Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "setMvMusicProxy", "(Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;)V", "onProgressUpdate", "Lkotlin/Function2;", "", "getOnProgressUpdate", "()Lkotlin/jvm/functions/Function2;", "setOnProgressUpdate", "(Lkotlin/jvm/functions/Function2;)V", "pauseVideoOnPlay", "getPauseVideoOnPlay", "setPauseVideoOnPlay", "playTimer", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getPlayTimer", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setPlayTimer", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "playerActionListener", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerActionListener;", "getPlayerActionListener", "()Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerActionListener;", "setPlayerActionListener", "(Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerActionListener;)V", "playerSurface", "Landroid/view/Surface;", "playerSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "progressUpdateInterval", "reportInfo", "Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "getReportInfo", "()Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "setReportInfo", "(Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;)V", "surfaceTexture", "textureView", "Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "getTextureView", "()Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;", "setTextureView", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMThumbPlayerTextureView;)V", "totalLength", "getTotalLength", "setTotalLength", "init", "initEffector", "initPlayer", "player", "initTextureView", "onCompletion", "onStart", "onStop", "onVideoContentUpdate", "pause", "playInfo", "recreatePlayer", "recreatePlayerSurface", "recycle", "removeCompleteTimer", "resume", "seekToIndex", "index", "seekToNext", "seekToTime", "timeMs", "setEnableEffect", "enable", "setFirstFrameDrawCallback", "setMediaInfo", "needReInitTextureView", "setProgressUpdateInterval", "interval", "start", "updateCompleteTimer", "needCorrection", "needLog", "IFirstFrameDrawListener", "SurfaceTextureListener", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMMvVideoLayout
   extends FrameLayout
 {
-  private MMThumbPlayerTextureView AMp;
   private final int COMPLETE;
-  private d Gjl;
-  private com.tencent.mm.plugin.thumbplayer.e.c MQB;
-  private c MSU;
-  com.tencent.mm.plugin.thumbplayer.f.b MTP;
-  private int MTQ;
-  private List<? extends com.tencent.mm.plugin.thumbplayer.e.d> MTR;
-  private MMHandler MTS;
-  private g MTT;
-  b MTV;
-  private SurfaceTexture MTW;
-  private Surface MTX;
-  private long MTY;
-  private m<? super Long, ? super Long, x> MTZ;
-  private volatile boolean MUa;
-  private volatile boolean MUb;
-  private long MUc;
-  private a MUd;
-  long MUe;
+  private MMThumbPlayerTextureView Fld;
+  private Surface HkH;
+  private d Meq;
   final String TAG;
-  private long nHt;
+  private com.tencent.mm.plugin.thumbplayer.d.c TDf;
+  private c TFk;
+  private com.tencent.mm.plugin.thumbplayer.c.e TGA;
+  b TGB;
+  private SurfaceTexture TGC;
+  private long TGD;
+  private m<? super Long, ? super Long, ah> TGE;
+  private volatile boolean TGF;
+  private volatile boolean TGG;
+  private long TGH;
+  private MMMvVideoLayout.a TGI;
+  long TGJ;
+  private com.tencent.mm.plugin.thumbplayer.e.b TGw;
+  private int TGx;
+  private List<? extends com.tencent.mm.plugin.thumbplayer.a.b> TGy;
+  private MMHandler TGz;
+  private long qHg;
   private SurfaceTexture surfaceTexture;
-  private boolean vco;
+  private boolean yoh;
   
   public MMMvVideoLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(190495);
-    this.TAG = ("MicroMsg.TP.MMMvVideoLayout@" + hashCode());
-    this.MTT = new g();
-    this.vco = true;
-    this.MTY = 200L;
-    this.MQB = new com.tencent.mm.plugin.thumbplayer.e.c();
-    this.MUc = -1L;
-    this.MUe = -1L;
+    AppMethodBeat.i(272310);
+    this.TAG = s.X("MicroMsg.TP.MMMvVideoLayout@", Integer.valueOf(hashCode()));
+    this.TGA = new com.tencent.mm.plugin.thumbplayer.c.e();
+    this.yoh = true;
+    this.TGD = 200L;
+    this.TDf = new com.tencent.mm.plugin.thumbplayer.d.c();
+    this.TGH = -1L;
+    this.TGJ = -1L;
     init();
-    AppMethodBeat.o(190495);
+    AppMethodBeat.o(272310);
   }
   
   public MMMvVideoLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(190499);
-    this.TAG = ("MicroMsg.TP.MMMvVideoLayout@" + hashCode());
-    this.MTT = new g();
-    this.vco = true;
-    this.MTY = 200L;
-    this.MQB = new com.tencent.mm.plugin.thumbplayer.e.c();
-    this.MUc = -1L;
-    this.MUe = -1L;
+    AppMethodBeat.i(272317);
+    this.TAG = s.X("MicroMsg.TP.MMMvVideoLayout@", Integer.valueOf(hashCode()));
+    this.TGA = new com.tencent.mm.plugin.thumbplayer.c.e();
+    this.yoh = true;
+    this.TGD = 200L;
+    this.TDf = new com.tencent.mm.plugin.thumbplayer.d.c();
+    this.TGH = -1L;
+    this.TGJ = -1L;
     init();
-    AppMethodBeat.o(190499);
+    AppMethodBeat.o(272317);
   }
   
-  private final String eha()
+  private static final boolean a(MMMvVideoLayout paramMMMvVideoLayout, final Message paramMessage)
   {
-    AppMethodBeat.i(190490);
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = this.MTP;
-    if (localObject != null) {}
-    for (localObject = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).eha();; localObject = null)
+    AppMethodBeat.i(272375);
+    s.u(paramMMMvVideoLayout, "this$0");
+    s.u(paramMessage, "it");
+    long l1;
+    Object localObject1;
+    Object localObject2;
+    int i;
+    label281:
+    label418:
+    boolean bool;
+    if (paramMessage.what == paramMMMvVideoLayout.getCOMPLETE())
     {
-      localObject = (String)localObject + " layout:" + hashCode() + " currentPlayIndex:" + this.MTQ;
-      AppMethodBeat.o(190490);
+      paramMessage = paramMMMvVideoLayout.getCurrentPlayer();
+      Log.i(paramMMMvVideoLayout.TAG, "onCompletion " + paramMessage + ' ' + paramMMMvVideoLayout.hLo());
+      Log.i(paramMMMvVideoLayout.TAG, s.X("seekToNext ", paramMMMvVideoLayout.hLo()));
+      l1 = Util.currentTicks();
+      paramMessage = paramMMMvVideoLayout.TAG;
+      localObject1 = new StringBuilder("recreatePlayer currentPlayer:").append(paramMMMvVideoLayout.TGw).append(", playerSurface:");
+      localObject2 = paramMMMvVideoLayout.HkH;
+      if (localObject2 == null) {
+        break label743;
+      }
+      i = localObject2.hashCode();
+      Log.i(paramMessage, i);
+      paramMessage = paramMMMvVideoLayout.TGw;
+      if (paramMessage != null)
+      {
+        paramMessage.aF(null);
+        paramMessage.eLO();
+        com.tencent.mm.plugin.thumbplayer.e.b.c(paramMessage);
+        paramMessage.stopAsync();
+        paramMessage.recycle();
+        paramMMMvVideoLayout.getReportInfo().a(paramMMMvVideoLayout.getCurrentPlayIndex(), paramMessage.TFu);
+      }
+      paramMMMvVideoLayout.hLM();
+      paramMessage = com.tencent.mm.plugin.thumbplayer.e.d.TFK;
+      paramMessage = paramMMMvVideoLayout.getContext();
+      s.s(paramMessage, "context");
+      paramMessage = d.a.ks(paramMessage);
+      paramMMMvVideoLayout.getEffector().a(paramMessage);
+      localObject1 = ah.aiuX;
+      paramMMMvVideoLayout.TGw = paramMessage;
+      Log.i(paramMMMvVideoLayout.TAG, s.X("recreatePlayer finished, cost:", Long.valueOf(Util.ticksToNow(l1))));
+      paramMMMvVideoLayout.TGx += 1;
+      paramMessage = paramMMMvVideoLayout.TGy;
+      if (paramMessage != null) {
+        break label748;
+      }
+      i = 0;
+      if (i <= paramMMMvVideoLayout.TGx) {
+        paramMMMvVideoLayout.TGx = 0;
+      }
+      paramMessage = paramMMMvVideoLayout.TGy;
+      if (paramMessage != null)
+      {
+        paramMessage = (com.tencent.mm.plugin.thumbplayer.a.b)paramMessage.get(paramMMMvVideoLayout.TGx);
+        if (paramMessage != null)
+        {
+          localObject1 = paramMMMvVideoLayout.getCurrentPlayer();
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.thumbplayer.e.b)localObject1).setMediaInfo(paramMessage);
+          }
+          paramMessage = paramMMMvVideoLayout.TGw;
+          l1 = Util.currentTicks();
+          localObject1 = paramMMMvVideoLayout.TAG;
+          localObject2 = new StringBuilder("initPlayer ").append(paramMMMvVideoLayout.hLo()).append(", playerSurface:");
+          Surface localSurface = paramMMMvVideoLayout.HkH;
+          if (localSurface == null) {
+            break label758;
+          }
+          i = localSurface.hashCode();
+          label395:
+          localObject2 = ((StringBuilder)localObject2).append(i).append(", player:");
+          if (paramMessage == null) {
+            break label763;
+          }
+          i = paramMessage.hashCode();
+          Log.i((String)localObject1, i);
+          if (paramMessage != null) {
+            paramMessage.Flr = true;
+          }
+          if (paramMessage != null) {
+            paramMessage.setMute(true);
+          }
+          if (paramMessage != null)
+          {
+            if (paramMessage != null) {
+              break label768;
+            }
+            bool = false;
+            label461:
+            paramMessage.setLoop(bool);
+          }
+          if (paramMessage != null)
+          {
+            localObject1 = paramMessage.TFb;
+            if (localObject1 != null)
+            {
+              paramMessage.TFv = ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).TBO;
+              localObject2 = paramMMMvVideoLayout.getMediaChangeListener();
+              if (localObject2 != null) {
+                ((d)localObject2).a(paramMMMvVideoLayout.getCurrentPlayIndex(), (com.tencent.mm.plugin.thumbplayer.a.b)localObject1);
+              }
+            }
+          }
+          if (paramMessage != null) {
+            paramMessage.a((e)new f(paramMMMvVideoLayout, paramMessage), paramMMMvVideoLayout.TGD);
+          }
+          Log.i(paramMMMvVideoLayout.TAG, "start recreatePlayerSurface");
+          final long l2 = Util.currentTicks();
+          localObject1 = paramMMMvVideoLayout.HkH;
+          if (localObject1 != null) {
+            ((Surface)localObject1).release();
+          }
+          paramMMMvVideoLayout.HkH = null;
+          paramMMMvVideoLayout.TGC = null;
+          paramMMMvVideoLayout.TGA.aE((kotlin.g.a.b)new g(paramMMMvVideoLayout, paramMessage, l2));
+          paramMMMvVideoLayout.TGG = false;
+          if (paramMessage != null) {
+            paramMessage.TFk = paramMMMvVideoLayout.TFk;
+          }
+          localObject1 = paramMMMvVideoLayout.TAG;
+          localObject2 = new StringBuilder("initPlayer ");
+          if (paramMessage != null) {
+            break label795;
+          }
+        }
+      }
+    }
+    label768:
+    label795:
+    for (paramMessage = null;; paramMessage = paramMessage.hLo())
+    {
+      Log.i((String)localObject1, paramMessage + ", currentPlayIndex:" + paramMMMvVideoLayout.TGx + ", cost:" + Util.ticksToNow(l1));
+      paramMMMvVideoLayout.TGH = Util.currentTicks();
+      paramMessage = paramMMMvVideoLayout.TGw;
+      if (paramMessage != null) {
+        paramMessage.hLh();
+      }
+      a(paramMMMvVideoLayout, false, 2);
+      Log.i(paramMMMvVideoLayout.TAG, s.X("start play ", paramMMMvVideoLayout.hLo()));
+      paramMMMvVideoLayout.TDf.moe = Util.currentTicks();
+      AppMethodBeat.o(272375);
+      return false;
+      label743:
+      i = 0;
+      break;
+      label748:
+      i = paramMessage.size();
+      break label281;
+      label758:
+      i = 0;
+      break label395;
+      label763:
+      i = 0;
+      break label418;
+      localObject1 = paramMessage.TFb;
+      if (localObject1 == null)
+      {
+        bool = false;
+        break label461;
+      }
+      bool = ((com.tencent.mm.plugin.thumbplayer.a.b)localObject1).loop;
+      break label461;
+    }
+  }
+  
+  private final void hLL()
+  {
+    AppMethodBeat.i(272335);
+    this.TGA.bS((a)new c(this));
+    this.TGA.aD((kotlin.g.a.b)new d(this));
+    this.TGA.TDB = ((e.b)new e(this));
+    AppMethodBeat.o(272335);
+  }
+  
+  private final String hLo()
+  {
+    AppMethodBeat.i(272354);
+    StringBuilder localStringBuilder = new StringBuilder();
+    Object localObject = this.TGw;
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).hLo())
+    {
+      localObject = localObject + " layout:" + hashCode() + " currentPlayIndex:" + this.TGx;
+      AppMethodBeat.o(272354);
       return localObject;
     }
   }
   
-  private final void goS()
-  {
-    AppMethodBeat.i(190473);
-    this.MTT.ai((a)new d(this));
-    this.MTT.W((kotlin.g.a.b)new e(this));
-    this.MTT.MQZ = ((g.b)new f(this));
-    AppMethodBeat.o(190473);
-  }
-  
   private void init()
   {
-    AppMethodBeat.i(190463);
-    this.MQB.MSw = this.MTT.MRa;
-    this.AMp = new MMThumbPlayerTextureView(getContext());
-    MMThumbPlayerTextureView localMMThumbPlayerTextureView = this.AMp;
+    AppMethodBeat.i(272328);
+    this.TDf.TEQ = this.TGA.TDC;
+    this.Fld = new MMThumbPlayerTextureView(getContext());
+    MMThumbPlayerTextureView localMMThumbPlayerTextureView = this.Fld;
     if (localMMThumbPlayerTextureView != null) {
       localMMThumbPlayerTextureView.setTextureListenerCallback((TextureView.SurfaceTextureListener)new b());
     }
-    localMMThumbPlayerTextureView = this.AMp;
+    localMMThumbPlayerTextureView = this.Fld;
     if (localMMThumbPlayerTextureView != null) {
       localMMThumbPlayerTextureView.setAlpha(1.0F);
     }
-    this.MTS = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new c(this));
-    if (this.vco) {
-      goS();
+    this.TGz = new MMHandler(Looper.getMainLooper(), new MMMvVideoLayout..ExternalSyntheticLambda0(this));
+    if (this.yoh) {
+      hLL();
     }
-    AppMethodBeat.o(190463);
+    AppMethodBeat.o(272328);
   }
   
   public final int getCOMPLETE()
@@ -132,347 +301,332 @@ public final class MMMvVideoLayout
   
   public final int getCurrentPlayIndex()
   {
-    return this.MTQ;
+    return this.TGx;
   }
   
-  public final com.tencent.mm.plugin.thumbplayer.f.b getCurrentPlayer()
+  public final com.tencent.mm.plugin.thumbplayer.e.b getCurrentPlayer()
   {
-    return this.MTP;
+    return this.TGw;
   }
   
-  public final g getEffector()
+  public final com.tencent.mm.plugin.thumbplayer.c.e getEffector()
   {
-    return this.MTT;
+    return this.TGA;
   }
   
   public final long getLastPauseMvPosition()
   {
-    return this.MUe;
+    return this.TGJ;
   }
   
   public final boolean getLogFrameRender()
   {
-    return this.MUb;
+    return this.TGG;
   }
   
   public final d getMediaChangeListener()
   {
-    return this.Gjl;
+    return this.Meq;
   }
   
-  public final List<com.tencent.mm.plugin.thumbplayer.e.d> getMediaInfoList()
+  public final List<com.tencent.mm.plugin.thumbplayer.a.b> getMediaInfoList()
   {
-    return this.MTR;
+    return this.TGy;
   }
   
   public final b getMvMusicProxy()
   {
-    return this.MTV;
+    return this.TGB;
   }
   
-  public final m<Long, Long, x> getOnProgressUpdate()
+  public final m<Long, Long, ah> getOnProgressUpdate()
   {
-    return this.MTZ;
+    return this.TGE;
   }
   
   public final boolean getPauseVideoOnPlay()
   {
-    return this.MUa;
+    return this.TGF;
   }
   
   public final MMHandler getPlayTimer()
   {
-    return this.MTS;
+    return this.TGz;
   }
   
   public final c getPlayerActionListener()
   {
-    return this.MSU;
+    return this.TFk;
   }
   
-  public final com.tencent.mm.plugin.thumbplayer.e.c getReportInfo()
+  public final com.tencent.mm.plugin.thumbplayer.d.c getReportInfo()
   {
-    return this.MQB;
+    return this.TDf;
   }
   
   public final MMThumbPlayerTextureView getTextureView()
   {
-    return this.AMp;
+    return this.Fld;
   }
   
   public final long getTotalLength()
   {
-    return this.nHt;
+    return this.qHg;
   }
   
-  public final void goT()
+  public final void hLM()
   {
-    AppMethodBeat.i(190487);
+    AppMethodBeat.i(272624);
     Log.i(this.TAG, "removeCompleteTimer");
-    Object localObject = this.MTP;
+    Object localObject = this.TGw;
     if (localObject != null) {
-      com.tencent.mm.plugin.thumbplayer.f.b.a((com.tencent.mm.plugin.thumbplayer.f.b)localObject, null);
+      com.tencent.mm.plugin.thumbplayer.e.b.a((com.tencent.mm.plugin.thumbplayer.e.b)localObject, null);
     }
-    localObject = this.MTS;
-    if (localObject != null)
-    {
+    localObject = this.TGz;
+    if (localObject != null) {
       ((MMHandler)localObject).removeCallbacksAndMessages(null);
-      AppMethodBeat.o(190487);
-      return;
     }
-    AppMethodBeat.o(190487);
+    AppMethodBeat.o(272624);
   }
   
   public final void setCurrentPlayIndex(int paramInt)
   {
-    this.MTQ = paramInt;
+    this.TGx = paramInt;
   }
   
-  public final void setCurrentPlayer(com.tencent.mm.plugin.thumbplayer.f.b paramb)
+  public final void setCurrentPlayer(com.tencent.mm.plugin.thumbplayer.e.b paramb)
   {
-    this.MTP = paramb;
+    this.TGw = paramb;
   }
   
-  public final void setEffector(g paramg)
+  public final void setEffector(com.tencent.mm.plugin.thumbplayer.c.e parame)
   {
-    AppMethodBeat.i(190438);
-    p.k(paramg, "<set-?>");
-    this.MTT = paramg;
-    AppMethodBeat.o(190438);
+    AppMethodBeat.i(272529);
+    s.u(parame, "<set-?>");
+    this.TGA = parame;
+    AppMethodBeat.o(272529);
   }
   
   public final void setEnableEffect(boolean paramBoolean)
   {
-    AppMethodBeat.i(190467);
-    Log.i(this.TAG, "setEnableEffect:" + paramBoolean + ", enableEffect:" + this.vco + ", surfaceTexture:" + this.surfaceTexture);
-    if (this.vco != paramBoolean)
+    Object localObject2 = null;
+    AppMethodBeat.i(272607);
+    Log.i(this.TAG, "setEnableEffect:" + paramBoolean + ", enableEffect:" + this.yoh + ", surfaceTexture:" + this.surfaceTexture);
+    if (this.yoh != paramBoolean)
     {
-      this.vco = paramBoolean;
-      if (this.vco)
+      this.yoh = paramBoolean;
+      if (this.yoh)
       {
-        Object localObject = this.AMp;
-        if (localObject != null)
-        {
-          MMThumbPlayerTextureView.a locala = MMThumbPlayerTextureView.MUw;
-          ((MMThumbPlayerTextureView)localObject).setScaleType(MMThumbPlayerTextureView.gpa());
+        localObject1 = this.Fld;
+        if (localObject1 != null) {
+          ((MMThumbPlayerTextureView)localObject1).setScaleType(2);
         }
-        localObject = this.AMp;
-        if (localObject != null)
-        {
-          localObject = ((MMThumbPlayerTextureView)localObject).getLayoutParams();
-          if (localObject != null) {
-            ((ViewGroup.LayoutParams)localObject).width = -1;
-          }
+        localObject1 = this.Fld;
+        if (localObject1 != null) {
+          break label156;
         }
-        localObject = this.AMp;
-        if (localObject != null)
-        {
-          localObject = ((MMThumbPlayerTextureView)localObject).getLayoutParams();
-          if (localObject != null) {
-            ((ViewGroup.LayoutParams)localObject).height = -1;
-          }
+        localObject1 = null;
+        if (localObject1 != null) {
+          ((ViewGroup.LayoutParams)localObject1).width = -1;
         }
-        localObject = this.AMp;
-        if (localObject != null) {
-          ((MMThumbPlayerTextureView)localObject).requestLayout();
+        localObject1 = this.Fld;
+        if (localObject1 != null) {
+          break label164;
         }
-        goS();
       }
     }
-    AppMethodBeat.o(190467);
+    label156:
+    label164:
+    for (Object localObject1 = localObject2;; localObject1 = ((MMThumbPlayerTextureView)localObject1).getLayoutParams())
+    {
+      if (localObject1 != null) {
+        ((ViewGroup.LayoutParams)localObject1).height = -1;
+      }
+      localObject1 = this.Fld;
+      if (localObject1 != null) {
+        ((MMThumbPlayerTextureView)localObject1).requestLayout();
+      }
+      hLL();
+      AppMethodBeat.o(272607);
+      return;
+      localObject1 = ((MMThumbPlayerTextureView)localObject1).getLayoutParams();
+      break;
+    }
   }
   
-  public final void setFirstFrameDrawCallback(a parama)
+  public final void setFirstFrameDrawCallback(MMMvVideoLayout.a parama)
   {
-    AppMethodBeat.i(190470);
-    p.k(parama, "listener");
-    this.MUd = parama;
-    AppMethodBeat.o(190470);
+    AppMethodBeat.i(272612);
+    s.u(parama, "listener");
+    this.TGI = parama;
+    AppMethodBeat.o(272612);
   }
   
   public final void setLastPauseMvPosition(long paramLong)
   {
-    this.MUe = paramLong;
+    this.TGJ = paramLong;
   }
   
   public final void setLogFrameRender(boolean paramBoolean)
   {
-    this.MUb = paramBoolean;
+    this.TGG = paramBoolean;
   }
   
   public final void setMediaChangeListener(d paramd)
   {
-    this.Gjl = paramd;
+    this.Meq = paramd;
   }
   
-  public final void setMediaInfoList(List<? extends com.tencent.mm.plugin.thumbplayer.e.d> paramList)
+  public final void setMediaInfoList(List<? extends com.tencent.mm.plugin.thumbplayer.a.b> paramList)
   {
-    this.MTR = paramList;
+    this.TGy = paramList;
   }
   
   public final void setMvMusicProxy(b paramb)
   {
-    this.MTV = paramb;
+    this.TGB = paramb;
   }
   
-  public final void setOnProgressUpdate(m<? super Long, ? super Long, x> paramm)
+  public final void setOnProgressUpdate(m<? super Long, ? super Long, ah> paramm)
   {
-    this.MTZ = paramm;
+    this.TGE = paramm;
   }
   
   public final void setPauseVideoOnPlay(boolean paramBoolean)
   {
-    this.MUa = paramBoolean;
+    this.TGF = paramBoolean;
   }
   
   public final void setPlayTimer(MMHandler paramMMHandler)
   {
-    this.MTS = paramMMHandler;
+    this.TGz = paramMMHandler;
   }
   
   public final void setPlayerActionListener(c paramc)
   {
-    this.MSU = paramc;
+    this.TFk = paramc;
   }
   
   public final void setProgressUpdateInterval(long paramLong)
   {
     if (paramLong > 0L) {
-      this.MTY = paramLong;
+      this.TGD = paramLong;
     }
   }
   
-  public final void setReportInfo(com.tencent.mm.plugin.thumbplayer.e.c paramc)
+  public final void setReportInfo(com.tencent.mm.plugin.thumbplayer.d.c paramc)
   {
-    AppMethodBeat.i(190459);
-    p.k(paramc, "<set-?>");
-    this.MQB = paramc;
-    AppMethodBeat.o(190459);
+    AppMethodBeat.i(272599);
+    s.u(paramc, "<set-?>");
+    this.TDf = paramc;
+    AppMethodBeat.o(272599);
   }
   
   public final void setTextureView(MMThumbPlayerTextureView paramMMThumbPlayerTextureView)
   {
-    this.AMp = paramMMThumbPlayerTextureView;
+    this.Fld = paramMMThumbPlayerTextureView;
   }
   
   public final void setTotalLength(long paramLong)
   {
-    this.nHt = paramLong;
+    this.qHg = paramLong;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$IFirstFrameDrawListener;", "", "onFirstFrameDraw", "", "plugin-thumbplayer_release"})
-  public static abstract interface a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$SurfaceTextureListener;", "Landroid/view/TextureView$SurfaceTextureListener;", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout;)V", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-thumbplayer_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$SurfaceTextureListener;", "Landroid/view/TextureView$SurfaceTextureListener;", "(Lcom/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout;)V", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
     implements TextureView.SurfaceTextureListener
   {
+    public b()
+    {
+      AppMethodBeat.i(272402);
+      AppMethodBeat.o(272402);
+    }
+    
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192707);
-      String str = MMMvVideoLayout.a(this.MUf);
-      StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureAvailable, surface:");
-      if (paramSurfaceTexture != null) {}
-      for (int i = paramSurfaceTexture.hashCode();; i = 0)
+      AppMethodBeat.i(272437);
+      s.u(paramSurfaceTexture, "surface");
+      Log.i(MMMvVideoLayout.a(this.TGK), "onSurfaceTextureAvailable, surface:" + paramSurfaceTexture.hashCode() + ", width:" + paramInt1 + ", height:" + paramInt2 + ", enableEffect:" + MMMvVideoLayout.g(this.TGK));
+      MMMvVideoLayout.a(this.TGK, paramSurfaceTexture);
+      this.TGK.getEffector().mh(paramInt1, paramInt2);
+      if (MMMvVideoLayout.g(this.TGK))
       {
-        Log.i(str, i + ", width:" + paramInt1 + ", height:" + paramInt2 + ", enableEffect:" + MMMvVideoLayout.d(this.MUf));
-        MMMvVideoLayout.a(this.MUf, paramSurfaceTexture);
-        this.MUf.getEffector().ku(paramInt1, paramInt2);
-        if (!MMMvVideoLayout.d(this.MUf)) {
-          break;
-        }
-        if (paramSurfaceTexture == null) {
-          break label225;
-        }
-        this.MUf.getEffector().p(paramSurfaceTexture);
-        AppMethodBeat.o(192707);
+        this.TGK.getEffector().r(paramSurfaceTexture);
+        AppMethodBeat.o(272437);
         return;
       }
-      MMMvVideoLayout.b(this.MUf, paramSurfaceTexture);
-      if (MMMvVideoLayout.e(this.MUf) != null)
+      MMMvVideoLayout.b(this.TGK, paramSurfaceTexture);
+      if (MMMvVideoLayout.h(this.TGK) != null)
       {
-        paramSurfaceTexture = MMMvVideoLayout.e(this.MUf);
+        paramSurfaceTexture = MMMvVideoLayout.h(this.TGK);
         if (paramSurfaceTexture != null) {
           paramSurfaceTexture.release();
         }
       }
-      MMMvVideoLayout.a(this.MUf, new Surface(MMMvVideoLayout.f(this.MUf)));
-      paramSurfaceTexture = this.MUf.getCurrentPlayer();
-      if (paramSurfaceTexture != null)
-      {
-        paramSurfaceTexture.b(MMMvVideoLayout.e(this.MUf), true);
-        AppMethodBeat.o(192707);
-        return;
+      MMMvVideoLayout.a(this.TGK, new Surface(MMMvVideoLayout.i(this.TGK)));
+      paramSurfaceTexture = this.TGK.getCurrentPlayer();
+      if (paramSurfaceTexture != null) {
+        paramSurfaceTexture.b(MMMvVideoLayout.h(this.TGK), true);
       }
-      label225:
-      AppMethodBeat.o(192707);
+      AppMethodBeat.o(272437);
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(192705);
-      String str = MMMvVideoLayout.a(this.MUf);
-      StringBuilder localStringBuilder = new StringBuilder("onSurfaceTextureDestroyed, surface:");
-      if (paramSurfaceTexture != null) {}
-      for (int i = paramSurfaceTexture.hashCode();; i = 0)
+      AppMethodBeat.i(272429);
+      s.u(paramSurfaceTexture, "surface");
+      Log.i(MMMvVideoLayout.a(this.TGK), "onSurfaceTextureDestroyed, surface:" + paramSurfaceTexture.hashCode() + ' ' + MMMvVideoLayout.f(this.TGK));
+      MMMvVideoLayout.a(this.TGK, null);
+      if (!MMMvVideoLayout.g(this.TGK))
       {
-        Log.i(str, i + ' ' + MMMvVideoLayout.c(this.MUf));
-        MMMvVideoLayout.a(this.MUf, null);
-        if (!MMMvVideoLayout.d(this.MUf))
-        {
-          paramSurfaceTexture = MMMvVideoLayout.e(this.MUf);
-          if (paramSurfaceTexture != null) {
-            paramSurfaceTexture.release();
-          }
-        }
-        paramSurfaceTexture = this.MUf.getCurrentPlayer();
+        paramSurfaceTexture = MMMvVideoLayout.h(this.TGK);
         if (paramSurfaceTexture != null) {
-          com.tencent.mm.plugin.thumbplayer.f.b.a(paramSurfaceTexture, null);
+          paramSurfaceTexture.release();
         }
-        AppMethodBeat.o(192705);
-        return true;
       }
+      paramSurfaceTexture = this.TGK.getCurrentPlayer();
+      if (paramSurfaceTexture != null) {
+        com.tencent.mm.plugin.thumbplayer.e.b.a(paramSurfaceTexture, null);
+      }
+      AppMethodBeat.o(272429);
+      return true;
     }
     
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192701);
-      Log.i(MMMvVideoLayout.a(this.MUf), "onSurfaceTextureSizeChanged " + paramSurfaceTexture + ", size:[" + paramInt1 + ',' + paramInt2 + ']');
-      MMMvVideoLayout.a(this.MUf, paramSurfaceTexture);
-      this.MUf.getEffector().ku(paramInt1, paramInt2);
-      AppMethodBeat.o(192701);
+      AppMethodBeat.i(272412);
+      s.u(paramSurfaceTexture, "surface");
+      Log.i(MMMvVideoLayout.a(this.TGK), "onSurfaceTextureSizeChanged " + paramSurfaceTexture + ", size:[" + paramInt1 + ',' + paramInt2 + ']');
+      MMMvVideoLayout.a(this.TGK, paramSurfaceTexture);
+      this.TGK.getEffector().mh(paramInt1, paramInt2);
+      AppMethodBeat.o(272412);
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
     {
-      AppMethodBeat.i(192704);
-      MMMvVideoLayout.b(this.MUf);
-      MMMvVideoLayout.a(this.MUf, paramSurfaceTexture);
-      AppMethodBeat.o(192704);
+      AppMethodBeat.i(272420);
+      s.u(paramSurfaceTexture, "surface");
+      MMMvVideoLayout.b(this.TGK);
+      MMMvVideoLayout.a(this.TGK, paramSurfaceTexture);
+      AppMethodBeat.o(272420);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements MMHandler.Callback
+    extends u
+    implements a<ah>
   {
-    c(MMMvVideoLayout paramMMMvVideoLayout) {}
-    
-    public final boolean handleMessage(Message paramMessage)
+    c(MMMvVideoLayout paramMMMvVideoLayout)
     {
-      AppMethodBeat.i(189509);
-      if (paramMessage.what == this.MUf.getCOMPLETE()) {
-        MMMvVideoLayout.a(this.MUf, this.MUf.getCurrentPlayer());
-      }
-      AppMethodBeat.o(189509);
-      return false;
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "timestamp", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements a<x>
+    extends u
+    implements kotlin.g.a.b<Long, ah>
   {
     d(MMMvVideoLayout paramMMMvVideoLayout)
     {
@@ -480,113 +634,101 @@ public final class MMMvVideoLayout
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "timestamp", "", "invoke"})
-  static final class e
-    extends q
-    implements kotlin.g.a.b<Long, x>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$initEffector$3", "Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector$PlayerInfoProxy;", "currentPlayPosition", "", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements e.b
   {
-    e(MMMvVideoLayout paramMMMvVideoLayout)
+    e(MMMvVideoLayout paramMMMvVideoLayout) {}
+    
+    public final long hKQ()
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$initEffector$3", "Lcom/tencent/mm/plugin/thumbplayer/effect/TPPlayerEffector$PlayerInfoProxy;", "currentPlayPosition", "", "plugin-thumbplayer_release"})
-  public static final class f
-    implements g.b
-  {
-    public final long goc()
-    {
-      AppMethodBeat.i(189961);
-      com.tencent.mm.plugin.thumbplayer.f.b localb = this.MUf.getCurrentPlayer();
-      if (localb != null)
+      AppMethodBeat.i(272409);
+      com.tencent.mm.plugin.thumbplayer.e.b localb = this.TGK.getCurrentPlayer();
+      if (localb == null)
       {
-        long l = localb.getCurrentPositionMs();
-        AppMethodBeat.o(189961);
-        return l;
+        AppMethodBeat.o(272409);
+        return -1L;
       }
-      AppMethodBeat.o(189961);
-      return -1L;
+      long l = localb.getCurrentPositionMs();
+      AppMethodBeat.o(272409);
+      return l;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$initPlayer$2", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerProgressListener;", "onProgress", "", "media", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "timeMs", "", "plugin-thumbplayer_release"})
-  public static final class g
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/thumbplayer/view/MMMvVideoLayout$initPlayer$2", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerProgressListener;", "onProgress", "", "media", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "timeMs", "", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
     implements e
   {
-    g(com.tencent.mm.plugin.thumbplayer.f.b paramb) {}
+    f(MMMvVideoLayout paramMMMvVideoLayout, com.tencent.mm.plugin.thumbplayer.e.b paramb) {}
     
-    public final void a(com.tencent.mm.plugin.thumbplayer.e.d paramd, long paramLong)
+    public final void a(com.tencent.mm.plugin.thumbplayer.a.b paramb, long paramLong)
     {
-      AppMethodBeat.i(192919);
-      MMMvVideoLayout.a(this.MUf, false, 3);
-      Object localObject = this.HMA.MSO;
+      AppMethodBeat.i(272426);
+      MMMvVideoLayout.a(this.TGK, false, 3);
+      Object localObject = paramMessage.TFb;
       long l1;
       long l2;
-      label56:
+      label48:
       String str;
-      if (localObject != null)
+      if (localObject == null)
       {
-        l1 = ((com.tencent.mm.plugin.thumbplayer.e.d)localObject).MSF;
-        localObject = this.HMA.MSO;
-        if (localObject == null) {
-          break label229;
+        l1 = 0L;
+        localObject = paramMessage.TFb;
+        if (localObject != null) {
+          break label211;
         }
-        l2 = ((com.tencent.mm.plugin.thumbplayer.e.d)localObject).MSG;
-        str = MMMvVideoLayout.a(this.MUf);
+        l2 = 0L;
+        str = MMMvVideoLayout.a(this.TGK);
         StringBuilder localStringBuilder = new StringBuilder("timeMs=").append(paramLong).append(", originOffset=");
-        localObject = this.HMA.MSO;
-        if (localObject == null) {
-          break label235;
+        localObject = paramMessage.TFb;
+        if (localObject != null) {
+          break label221;
         }
-        localObject = Long.valueOf(((com.tencent.mm.plugin.thumbplayer.e.d)localObject).MSG);
-        label109:
+        localObject = null;
+        label94:
         localStringBuilder = localStringBuilder.append(localObject).append(", length=");
-        localObject = this.HMA.MSO;
-        if (localObject == null) {
-          break label241;
+        localObject = paramMessage.TFb;
+        if (localObject != null) {
+          break label234;
         }
-        localObject = Long.valueOf(((com.tencent.mm.plugin.thumbplayer.e.d)localObject).MSF);
-        label147:
+        localObject = null;
+        label125:
         localObject = localStringBuilder.append(localObject).append(", media=");
-        if (paramd == null) {
+        if (paramb == null) {
           break label247;
         }
       }
-      label229:
-      label235:
-      label241:
+      label211:
+      label221:
+      label234:
       label247:
-      for (int i = paramd.hashCode();; i = 0)
+      for (int i = paramb.hashCode();; i = 0)
       {
         Log.w(str, i);
-        paramd = this.MUf.getOnProgressUpdate();
-        if (paramd == null) {
-          break label253;
+        paramb = this.TGK.getOnProgressUpdate();
+        if (paramb != null) {
+          paramb.invoke(Long.valueOf(paramLong - l2), Long.valueOf(l1));
         }
-        paramd.invoke(Long.valueOf(paramLong - l2), Long.valueOf(l1));
-        AppMethodBeat.o(192919);
+        AppMethodBeat.o(272426);
         return;
-        l1 = 0L;
+        l1 = ((com.tencent.mm.plugin.thumbplayer.a.b)localObject).TBN;
         break;
-        l2 = 0L;
-        break label56;
-        localObject = null;
-        break label109;
-        localObject = null;
-        break label147;
+        l2 = ((com.tencent.mm.plugin.thumbplayer.a.b)localObject).TBO;
+        break label48;
+        localObject = Long.valueOf(((com.tencent.mm.plugin.thumbplayer.a.b)localObject).TBO);
+        break label94;
+        localObject = Long.valueOf(((com.tencent.mm.plugin.thumbplayer.a.b)localObject).TBN);
+        break label125;
       }
-      label253:
-      AppMethodBeat.o(192919);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "surface", "Landroid/graphics/SurfaceTexture;", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.b<SurfaceTexture, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "surface", "Landroid/graphics/SurfaceTexture;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.b<SurfaceTexture, ah>
   {
-    h(MMMvVideoLayout paramMMMvVideoLayout, com.tencent.mm.plugin.thumbplayer.f.b paramb, long paramLong)
+    g(MMMvVideoLayout paramMMMvVideoLayout, com.tencent.mm.plugin.thumbplayer.e.b paramb, long paramLong)
     {
       super();
     }
@@ -594,7 +736,7 @@ public final class MMMvVideoLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.view.MMMvVideoLayout
  * JD-Core Version:    0.7.0.1
  */

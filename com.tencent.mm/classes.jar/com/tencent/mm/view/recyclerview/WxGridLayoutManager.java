@@ -6,19 +6,19 @@ import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxGridLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "orientation", "reverseLayout", "", "(Landroid/content/Context;IIZ)V", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/WxGridLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "orientation", "reverseLayout", "", "(Landroid/content/Context;IIZ)V", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class WxGridLayoutManager
   extends GridLayoutManager
 {
-  public static final a YSA;
+  public static final WxGridLayoutManager.a agOr;
   
   static
   {
-    AppMethodBeat.i(187302);
-    YSA = new a((byte)0);
-    AppMethodBeat.o(187302);
+    AppMethodBeat.i(234962);
+    agOr = new WxGridLayoutManager.a((byte)0);
+    AppMethodBeat.o(234962);
   }
   
   public WxGridLayoutManager(Context paramContext, int paramInt)
@@ -28,22 +28,19 @@ public class WxGridLayoutManager
   
   public void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(187299);
+    AppMethodBeat.i(234971);
     try
     {
       super.onLayoutChildren(paramn, params);
-      AppMethodBeat.o(187299);
+      AppMethodBeat.o(234971);
       return;
     }
     catch (IndexOutOfBoundsException paramn)
     {
       Log.e("MicroMsg.WxGridLayoutManager", "meet a IOOBE in RecyclerView");
-      AppMethodBeat.o(187299);
+      AppMethodBeat.o(234971);
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxGridLayoutManager$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
 }
 
 

@@ -2,7 +2,7 @@ package com.tencent.liteapp;
 
 public final class a$c
 {
-  public static final int shadow_left = 2131234946;
+  public static final int shadow_left = 2131234189;
 }
 
 

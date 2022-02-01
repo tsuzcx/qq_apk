@@ -13,31 +13,31 @@ public final class a
 {
   public static Animator a(c paramc, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(236410);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofObject(paramc, c.b.bAg, c.a.bAf, new c.d[] { new c.d(paramFloat1, paramFloat2, paramFloat3) });
+    AppMethodBeat.i(209082);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofObject(paramc, c.b.dth, c.a.dtg, new c.d[] { new c.d(paramFloat1, paramFloat2, paramFloat3) });
     if (Build.VERSION.SDK_INT >= 21)
     {
       Object localObject = paramc.getRevealInfo();
       if (localObject == null)
       {
         paramc = new IllegalStateException("Caller must set a non-null RevealInfo before calling this.");
-        AppMethodBeat.o(236410);
+        AppMethodBeat.o(209082);
         throw paramc;
       }
       float f = ((c.d)localObject).radius;
       paramc = ViewAnimationUtils.createCircularReveal((View)paramc, (int)paramFloat1, (int)paramFloat2, f, paramFloat3);
       localObject = new AnimatorSet();
       ((AnimatorSet)localObject).playTogether(new Animator[] { localObjectAnimator, paramc });
-      AppMethodBeat.o(236410);
+      AppMethodBeat.o(209082);
       return localObject;
     }
-    AppMethodBeat.o(236410);
+    AppMethodBeat.o(209082);
     return localObjectAnimator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.circularreveal.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
-import com.tencent.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.b;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RunnableFuture;
@@ -21,9 +21,9 @@ public final class h
     if ((paramRunnable instanceof e))
     {
       e locale = (e)paramRunnable;
-      if ((locale.QLP != null) && (locale.QLP.QLs != null))
+      if ((locale.XFo != null) && (locale.XFo.XER != null))
       {
-        d.heC().bov(locale.QLP.QLs.QLQ);
+        d.iFk().boj(locale.XFo.XER.XFp);
         Log.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
       }
     }
@@ -40,14 +40,14 @@ public final class h
     AppMethodBeat.o(110622);
   }
   
-  public final void heE()
+  public final void iFm()
   {
     AppMethodBeat.i(110621);
-    d locald = d.heC();
-    if (locald.QLB != null) {
-      locald.QLB.clear();
+    d locald = d.iFk();
+    if (locald.XFa != null) {
+      locald.XFa.clear();
     }
-    super.heE();
+    super.iFm();
     AppMethodBeat.o(110621);
   }
   

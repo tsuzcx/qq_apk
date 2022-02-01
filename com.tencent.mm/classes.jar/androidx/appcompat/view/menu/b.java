@@ -9,28 +9,28 @@ import java.util.ArrayList;
 public abstract class b
   implements o
 {
-  public h is;
-  protected Context ln;
-  protected LayoutInflater lo;
-  public o.a lp;
-  private int lq;
-  private int lr;
-  public p ls;
+  public h jo;
   protected Context mContext;
   public int mId;
   protected LayoutInflater mInflater;
+  protected Context mj;
+  protected LayoutInflater mk;
+  public o.a ml;
+  private int mm;
+  private int mn;
+  public p mo;
   
   public b(Context paramContext, int paramInt1, int paramInt2)
   {
-    this.ln = paramContext;
-    this.lo = LayoutInflater.from(paramContext);
-    this.lq = paramInt1;
-    this.lr = paramInt2;
+    this.mj = paramContext;
+    this.mk = LayoutInflater.from(paramContext);
+    this.mm = paramInt1;
+    this.mn = paramInt2;
   }
   
-  public void F(boolean paramBoolean)
+  public void J(boolean paramBoolean)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.ls;
+    ViewGroup localViewGroup = (ViewGroup)this.mo;
     if (localViewGroup == null) {}
     label225:
     label231:
@@ -38,10 +38,10 @@ public abstract class b
     {
       return;
       int j;
-      if (this.is != null)
+      if (this.jo != null)
       {
-        this.is.cj();
-        ArrayList localArrayList = this.is.ci();
+        this.jo.dc();
+        ArrayList localArrayList = this.jo.db();
         int m = localArrayList.size();
         int k = 0;
         int i = 0;
@@ -68,7 +68,7 @@ public abstract class b
               if (localObject != null) {
                 ((ViewGroup)localObject).removeView(localView2);
               }
-              ((ViewGroup)this.ls).addView(localView2, i);
+              ((ViewGroup)this.mo).addView(localView2, i);
             }
             i += 1;
             k += 1;
@@ -95,7 +95,7 @@ public abstract class b
   public View a(j paramj, View paramView, ViewGroup paramViewGroup)
   {
     if ((paramView instanceof p.a)) {}
-    for (paramView = (p.a)paramView;; paramView = (p.a)this.lo.inflate(this.lr, paramViewGroup, false))
+    for (paramView = (p.a)paramView;; paramView = (p.a)this.mk.inflate(this.mn, paramViewGroup, false))
     {
       a(paramj, paramView);
       return (View)paramView;
@@ -104,26 +104,26 @@ public abstract class b
   
   public p a(ViewGroup paramViewGroup)
   {
-    if (this.ls == null)
+    if (this.mo == null)
     {
-      this.ls = ((p)this.lo.inflate(this.lq, paramViewGroup, false));
-      this.ls.g(this.is);
-      F(true);
+      this.mo = ((p)this.mk.inflate(this.mm, paramViewGroup, false));
+      this.mo.g(this.jo);
+      J(true);
     }
-    return this.ls;
+    return this.mo;
   }
   
   public void a(Context paramContext, h paramh)
   {
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
-    this.is = paramh;
+    this.jo = paramh;
   }
   
   public void a(h paramh, boolean paramBoolean)
   {
-    if (this.lp != null) {
-      this.lp.a(paramh, paramBoolean);
+    if (this.ml != null) {
+      this.ml.a(paramh, paramBoolean);
     }
   }
   
@@ -137,15 +137,15 @@ public abstract class b
   
   public boolean a(u paramu)
   {
-    if (this.lp != null) {
-      return this.lp.c(paramu);
+    if (this.ml != null) {
+      return this.ml.c(paramu);
     }
     return false;
   }
   
   public final void b(o.a parama)
   {
-    this.lp = parama;
+    this.ml = parama;
   }
   
   public boolean b(j paramj)
@@ -153,12 +153,12 @@ public abstract class b
     return true;
   }
   
-  public boolean bS()
+  public final boolean c(j paramj)
   {
     return false;
   }
   
-  public final boolean c(j paramj)
+  public boolean cL()
   {
     return false;
   }
@@ -175,7 +175,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.b
  * JD-Core Version:    0.7.0.1
  */

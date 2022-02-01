@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.wallet.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.wallet_core.c.d;
 import com.tencent.mm.pluginsdk.wallet.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 @a(7)
 public class WalletJsApiAdapterUI
   extends WalletBaseUI
 {
-  protected boolean Iog = false;
-  protected String OEB = "";
+  protected boolean Olz = false;
+  protected String VtO = "";
   protected String packageName = "";
   
   public int getLayoutId()
@@ -42,7 +41,7 @@ public class WalletJsApiAdapterUI
   public void onBackPressed()
   {
     AppMethodBeat.i(69855);
-    if (!this.Iog)
+    if (!this.Olz)
     {
       Log.d("MicroMsg.WalletJsApiAdapterUI", "back press not lock");
       finish();
@@ -59,7 +58,7 @@ public class WalletJsApiAdapterUI
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
     this.packageName = getIntent().getStringExtra("intent_jump_package");
-    this.OEB = getIntent().getStringExtra("intent_jump_ui");
+    this.VtO = getIntent().getStringExtra("intent_jump_ui");
     addSceneEndListener(580);
     if (getIntent() == null)
     {
@@ -130,20 +129,20 @@ public class WalletJsApiAdapterUI
     AppMethodBeat.o(69853);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(69857);
-    Log.i("MicroMsg.WalletJsApiAdapterUI", "onSceneEnd errType %s errCode %s errMsg %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq });
+    Log.i("MicroMsg.WalletJsApiAdapterUI", "onSceneEnd errType %s errCode %s errMsg %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramp });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramq instanceof d))
+      if ((paramp instanceof d))
       {
-        e.bsi(((d)paramq).gIv());
-        if ((!Util.isNullOrNil(this.packageName)) && (!Util.isNullOrNil(this.OEB)))
+        e.brZ(((d)paramp).ihJ());
+        if ((!Util.isNullOrNil(this.packageName)) && (!Util.isNullOrNil(this.VtO)))
         {
           paramString = new Intent();
           paramString.putExtra("intent_finish_self", true);
-          c.b(this, this.packageName, this.OEB, paramString, 1);
+          c.b(this, this.packageName, this.VtO, paramString, 1);
         }
         for (;;)
         {
@@ -157,7 +156,7 @@ public class WalletJsApiAdapterUI
     else
     {
       setResult(-1000);
-      h.cO(this, paramString);
+      k.cZ(this, paramString);
       finish();
       AppMethodBeat.o(69857);
       return true;
@@ -174,7 +173,7 @@ public class WalletJsApiAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.ui.WalletJsApiAdapterUI
  * JD-Core Version:    0.7.0.1
  */

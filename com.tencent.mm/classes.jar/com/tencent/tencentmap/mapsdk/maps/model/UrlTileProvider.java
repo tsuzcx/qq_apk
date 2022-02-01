@@ -1,7 +1,7 @@
 package com.tencent.tencentmap.mapsdk.maps.model;
 
 import com.tencent.map.tools.net.NetManager;
-import com.tencent.map.tools.net.NetManager.NetRequestBuilder;
+import com.tencent.map.tools.net.NetRequest.NetRequestBuilder;
 import com.tencent.map.tools.net.NetResponse;
 import com.tencent.map.tools.net.exception.NetErrorException;
 import java.net.URL;
@@ -69,7 +69,7 @@ public abstract class UrlTileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.UrlTileProvider
  * JD-Core Version:    0.7.0.1
  */

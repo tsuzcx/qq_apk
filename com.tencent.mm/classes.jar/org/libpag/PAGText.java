@@ -29,7 +29,7 @@ public class PAGText
   
   public PAGText()
   {
-    AppMethodBeat.i(195287);
+    AppMethodBeat.i(187400);
     this.applyFill = true;
     this.applyStroke = false;
     this.baselineShift = 0.0F;
@@ -49,7 +49,7 @@ public class PAGText
     this.justification = 0;
     this.leading = 0.0F;
     this.tracking = 0.0F;
-    AppMethodBeat.o(195287);
+    AppMethodBeat.o(187400);
   }
 }
 

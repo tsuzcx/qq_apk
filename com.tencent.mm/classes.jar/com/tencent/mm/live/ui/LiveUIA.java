@@ -21,64 +21,71 @@ import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.live.a.a.a;
-import com.tencent.mm.live.a.a.b;
 import com.tencent.mm.live.api.LiveConfig;
 import com.tencent.mm.live.b.e;
 import com.tencent.mm.live.b.f;
-import com.tencent.mm.live.b.l.j;
-import com.tencent.mm.live.b.u;
-import com.tencent.mm.live.b.u.a;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
+import com.tencent.mm.live.b.b;
+import com.tencent.mm.live.b.b.b;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.live.model.l.j;
+import com.tencent.mm.live.model.t;
+import com.tencent.mm.live.model.u;
+import com.tencent.mm.live.model.u.a;
 import com.tencent.mm.live.view.BaseLivePluginLayout;
 import com.tencent.mm.plugin.ball.a.e;
-import com.tencent.mm.plugin.ball.f.b;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.i;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
+import kotlin.Metadata;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.br;
-import kotlinx.coroutines.g;
-import org.xwalk.core.XWalkEnvironment;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.j;
 
 @com.tencent.mm.ui.base.a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIA;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "originBackground", "Landroid/graphics/drawable/Drawable;", "roomLivePageFloatBallHelper", "Lcom/tencent/mm/live/model/RoomLivePageFloatBallHelper;", "uiRouter", "Lcom/tencent/mm/live/controller/LiveUIRouter;", "addKeyBoardListener", "", "getForceOrientation", "", "getLayoutId", "initSwipeBack", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "setWindowStyle", "Companion", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/ui/LiveUIA;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "originBackground", "Landroid/graphics/drawable/Drawable;", "roomLivePageFloatBallHelper", "Lcom/tencent/mm/live/model/RoomLivePageFloatBallHelper;", "uiRouter", "Lcom/tencent/mm/live/controller/LiveUIRouter;", "addKeyBoardListener", "", "getForceOrientation", "", "getLayoutId", "initSwipeBack", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "setWindowStyle", "Companion", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class LiveUIA
   extends MMActivity
 {
-  public static final a kIr;
-  private com.tencent.mm.live.a.a kIo;
-  private com.tencent.mm.live.b.t kIp;
-  private Drawable kIq;
+  public static final LiveUIA.a nkR;
+  private com.tencent.mm.live.a.a nkS;
+  private t nkT;
+  private Drawable nkU;
   
   static
   {
-    AppMethodBeat.i(191533);
-    kIr = new a((byte)0);
-    AppMethodBeat.o(191533);
+    AppMethodBeat.i(246305);
+    nkR = new LiveUIA.a((byte)0);
+    AppMethodBeat.o(246305);
   }
   
   public int getForceOrientation()
   {
-    AppMethodBeat.i(191506);
-    Object localObject = u.kwz;
-    if (u.aOF().kwA)
+    int j = 0;
+    AppMethodBeat.i(246381);
+    Object localObject = u.mZl;
+    if (u.bis().nab)
     {
       localObject = getIntent();
-      if ((localObject != null) && (((Intent)localObject).getBooleanExtra("key_is_live_finished", false) == true))
+      int i = j;
+      if (localObject != null)
       {
-        AppMethodBeat.o(191506);
-        return 1;
+        i = j;
+        if (((Intent)localObject).getBooleanExtra("key_is_live_finished", false) == true) {
+          i = 1;
+        }
       }
-      AppMethodBeat.o(191506);
-      return 14;
+      if (i == 0)
+      {
+        AppMethodBeat.o(246381);
+        return 14;
+      }
     }
-    AppMethodBeat.o(191506);
+    AppMethodBeat.o(246381);
     return 1;
   }
   
@@ -89,59 +96,62 @@ public class LiveUIA
   
   public void initSwipeBack()
   {
-    AppMethodBeat.i(191451);
+    AppMethodBeat.i(246319);
     super.initSwipeBack();
-    g.b((ak)br.abxo, (kotlin.d.f)bc.iRs(), (m)new LiveUIA.b(this, null), 2);
-    AppMethodBeat.o(191451);
+    j.a((aq)bu.ajwo, (kotlin.d.f)bg.kCi(), null, (m)new LiveUIA.b(this, null), 2);
+    AppMethodBeat.o(246319);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(191500);
+    AppMethodBeat.i(246373);
     Log.i("MicroMsg.LiveUI", "onActivityResult (" + hashCode() + ')');
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Object localObject = this.kIo;
+    Object localObject = this.nkS;
     if (localObject != null)
     {
-      Log.i(((com.tencent.mm.live.a.a)localObject).TAG, "onActivityResult " + ((com.tencent.mm.live.a.a)localObject).kiC);
-      localObject = ((com.tencent.mm.live.a.a)localObject).kiC;
-      if (localObject != null)
-      {
+      Log.i(((com.tencent.mm.live.a.a)localObject).TAG, s.X("onActivityResult ", ((com.tencent.mm.live.a.a)localObject).mJj));
+      localObject = ((com.tencent.mm.live.a.a)localObject).mJj;
+      if (localObject != null) {
         ((BaseLivePluginLayout)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
-        AppMethodBeat.o(191500);
-        return;
       }
-      AppMethodBeat.o(191500);
-      return;
     }
-    AppMethodBeat.o(191500);
+    AppMethodBeat.o(246373);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(191519);
-    Object localObject = this.kIo;
+    int j = 0;
+    AppMethodBeat.i(246408);
+    Object localObject = this.nkS;
+    int i = j;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.live.a.a)localObject).kiC;
-      if (localObject != null) {}
-      for (boolean bool = ((BaseLivePluginLayout)localObject).onBackPress();; bool = false)
-      {
-        if (!bool)
-        {
-          Log.i("MicroMsg.LiveUI", "onBackPressed (" + hashCode() + ')');
-          super.onBackPressed();
-        }
-        AppMethodBeat.o(191519);
-        return;
+      localObject = ((com.tencent.mm.live.a.a)localObject).mJj;
+      if (localObject != null) {
+        break label85;
       }
     }
-    AppMethodBeat.o(191519);
+    label85:
+    for (boolean bool = false;; bool = ((BaseLivePluginLayout)localObject).onBackPress())
+    {
+      i = j;
+      if (!bool) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        Log.i("MicroMsg.LiveUI", "onBackPressed (" + hashCode() + ')');
+        super.onBackPressed();
+      }
+      AppMethodBeat.o(246408);
+      return;
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(191467);
+    AppMethodBeat.i(246341);
     Log.i("MicroMsg.LiveUI", "onCreate (" + hashCode() + ')');
     super.onCreate(paramBundle);
     paramBundle = getSupportActionBar();
@@ -154,325 +164,299 @@ public class LiveUIA
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().clearFlags(67108864);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle = paramBundle.getDecorView();
-      p.j(paramBundle, "window.decorView");
-      paramBundle.setSystemUiVisibility(1792);
+      getWindow().getDecorView().setSystemUiVisibility(1792);
       getWindow().addFlags(-2147483648);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setStatusBarColor(0);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setNavigationBarColor(0);
+      getWindow().setStatusBarColor(0);
+      getWindow().setNavigationBarColor(0);
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(51);
     paramBundle = findViewById(b.e.live_ui_root);
-    p.j(paramBundle, "findViewById(R.id.live_ui_root)");
-    Object localObject1 = (FrameLayout)paramBundle;
-    paramBundle = (LiveConfig)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
+    s.s(paramBundle, "findViewById(R.id.live_ui_root)");
+    paramBundle = (FrameLayout)paramBundle;
+    Object localObject1 = (LiveConfig)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
     boolean bool = getIntent().getBooleanExtra("key_is_live_finished", false);
-    Object localObject2 = (Context)this;
-    if (localObject1 == null)
-    {
-      paramBundle = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(191467);
-      throw paramBundle;
-    }
-    this.kIo = new com.tencent.mm.live.a.a((Context)localObject2, (ViewGroup)localObject1, paramBundle, bool);
-    localObject2 = this.kIo;
+    this.nkS = new com.tencent.mm.live.a.a((Context)this, (ViewGroup)paramBundle, (LiveConfig)localObject1, bool);
+    Object localObject2 = this.nkS;
     if (localObject2 != null)
     {
-      localObject1 = ((com.tencent.mm.live.a.a)localObject2).context.getSystemService("phone");
-      if (localObject1 == null)
+      paramBundle = ((com.tencent.mm.live.a.a)localObject2).context.getSystemService("phone");
+      if (paramBundle == null)
       {
-        paramBundle = new kotlin.t("null cannot be cast to non-null type android.telephony.TelephonyManager");
-        AppMethodBeat.o(191467);
+        paramBundle = new NullPointerException("null cannot be cast to non-null type android.telephony.TelephonyManager");
+        AppMethodBeat.o(246341);
         throw paramBundle;
       }
-      localObject1 = (TelephonyManager)localObject1;
-      localObject2 = ((com.tencent.mm.live.a.a)localObject2).kiE;
-      localObject2 = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject2);
-      com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/live/controller/LiveUIRouter", "onCreate", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
-      ((TelephonyManager)localObject1).listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(1)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/live/controller/LiveUIRouter", "onCreate", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      paramBundle = (TelephonyManager)paramBundle;
+      localObject2 = ((com.tencent.mm.live.a.a)localObject2).mJl;
+      localObject2 = c.a(32, new com.tencent.mm.hellhoundlib.b.a()).cG(localObject2);
+      com.tencent.mm.hellhoundlib.a.a.b(paramBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/live/controller/LiveUIRouter", "onCreate", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      paramBundle.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(1)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(paramBundle, "com/tencent/mm/live/controller/LiveUIRouter", "onCreate", "()V", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
     }
-    localObject1 = u.kwz;
+    paramBundle = u.mZl;
     int i;
-    if (paramBundle != null)
+    if (localObject1 == null)
     {
-      i = paramBundle.getFromScene();
-      u.tR(i);
-      if (paramBundle == null) {
-        break label558;
-      }
-      paramBundle = Integer.valueOf(paramBundle.aJf());
-      label465:
-      i = LiveConfig.khW;
+      paramBundle = null;
       if (paramBundle != null) {
-        break label563;
+        break label496;
       }
-      label473:
-      i = LiveConfig.khX;
+      i = LiveConfig.mIx;
+      label387:
+      u.tL(i);
+      if (localObject1 != null) {
+        break label504;
+      }
+      paramBundle = null;
+      label398:
+      i = LiveConfig.mIs;
       if (paramBundle != null) {
-        break label607;
+        break label516;
+      }
+      label406:
+      i = LiveConfig.mIt;
+      if (paramBundle != null) {
+        break label560;
       }
     }
     for (;;)
     {
-      this.kIp = new com.tencent.mm.live.b.t((com.tencent.mm.plugin.ball.a.f)new e((Activity)this));
-      paramBundle = this.kIp;
+      this.nkT = new t((com.tencent.mm.plugin.ball.a.f)new e((Activity)this));
+      paramBundle = this.nkT;
       if (paramBundle != null) {
-        paramBundle.I(21, b.cwx());
+        paramBundle.J(21, "LiveFloatBall");
       }
       paramBundle = getContext();
       if (paramBundle != null) {
-        break label651;
+        break label604;
       }
-      paramBundle = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(191467);
+      paramBundle = new NullPointerException("null cannot be cast to non-null type android.app.Activity");
+      AppMethodBeat.o(246341);
       throw paramBundle;
-      i = LiveConfig.kib;
+      paramBundle = Integer.valueOf(((LiveConfig)localObject1).fromScene);
       break;
-      label558:
-      paramBundle = null;
-      break label465;
-      label563:
+      label496:
+      i = paramBundle.intValue();
+      break label387;
+      label504:
+      paramBundle = Integer.valueOf(((LiveConfig)localObject1).mIy);
+      break label398;
+      label516:
       if (paramBundle.intValue() != i) {
-        break label473;
+        break label406;
       }
-      paramBundle = u.kwz;
-      u.x((Context)this, true);
-      paramBundle = this.kIo;
+      paramBundle = u.mZl;
+      u.y((Context)this, true);
+      paramBundle = this.nkS;
       if (paramBundle != null)
       {
-        localObject1 = l.j.kuS;
-        paramBundle.sR(l.j.aNT());
+        localObject1 = l.j.mYK;
+        paramBundle.sL(l.j.bhE());
         continue;
-        label607:
+        label560:
         if (paramBundle.intValue() == i)
         {
-          paramBundle = u.kwz;
-          u.x((Context)this, false);
-          paramBundle = this.kIo;
+          paramBundle = u.mZl;
+          u.y((Context)this, false);
+          paramBundle = this.nkS;
           if (paramBundle != null)
           {
-            localObject1 = l.j.kuS;
-            paramBundle.sR(l.j.aNU());
+            localObject1 = l.j.mYK;
+            paramBundle.sL(l.j.bhF());
           }
         }
       }
     }
-    label651:
-    paramBundle = ((Activity)paramBundle).getWindow();
-    p.j(paramBundle, "(context as Activity).window");
-    paramBundle = paramBundle.getDecorView();
-    p.j(paramBundle, "(context as Activity).window.decorView");
-    this.kIq = paramBundle.getBackground();
-    AppMethodBeat.o(191467);
+    label604:
+    this.nkU = ((Activity)paramBundle).getWindow().getDecorView().getBackground();
+    AppMethodBeat.o(246341);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(191516);
+    AppMethodBeat.i(246400);
     Log.i("MicroMsg.LiveUI", "onDestroy (" + hashCode() + ')');
     super.onDestroy();
-    Object localObject = this.kIo;
+    Object localObject = this.nkS;
     if (localObject != null) {
       ((com.tencent.mm.live.a.a)localObject).onDestroy();
     }
-    localObject = this.kIp;
-    if (localObject != null)
-    {
-      ((com.tencent.mm.live.b.t)localObject).onDestroy();
-      AppMethodBeat.o(191516);
-      return;
+    localObject = this.nkT;
+    if (localObject != null) {
+      ((t)localObject).onDestroy();
     }
-    AppMethodBeat.o(191516);
+    AppMethodBeat.o(246400);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(191530);
+    int i = 1;
+    AppMethodBeat.i(246425);
     Log.i("MicroMsg.LiveUI", "onNewIntent (" + hashCode() + ')');
     super.onNewIntent(paramIntent);
-    getSwipeBackLayout().emh();
-    if (paramIntent != null)
+    getSwipeBackLayout().jFd();
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("route_to_maximize", false) == true)) {}
+    for (;;)
     {
-      if (paramIntent.getBooleanExtra("route_to_maximize", false) != true) {
-        break label110;
-      }
-      paramIntent = this.kIo;
-      if (paramIntent == null) {
-        break label110;
-      }
-      paramIntent = paramIntent.kiC;
-      if (paramIntent != null)
+      if (i != 0)
       {
-        b.b.a(paramIntent, b.c.kzj);
-        AppMethodBeat.o(191530);
+        paramIntent = this.nkS;
+        if (paramIntent != null)
+        {
+          paramIntent = paramIntent.mJj;
+          if (paramIntent != null) {
+            b.b.a((b)paramIntent, b.c.ncy);
+          }
+        }
       }
-    }
-    else
-    {
-      AppMethodBeat.o(191530);
+      AppMethodBeat.o(246425);
       return;
+      i = 0;
     }
-    AppMethodBeat.o(191530);
-    return;
-    label110:
-    AppMethodBeat.o(191530);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(191494);
+    AppMethodBeat.i(246365);
     Log.i("MicroMsg.LiveUI", "onPause (" + hashCode() + ')');
     super.onPause();
-    Object localObject = this.kIo;
+    Object localObject = this.nkS;
     if (localObject != null)
     {
-      Log.i(((com.tencent.mm.live.a.a)localObject).TAG, "onPause " + ((com.tencent.mm.live.a.a)localObject).kiC);
-      localObject = ((com.tencent.mm.live.a.a)localObject).kiC;
+      Log.i(((com.tencent.mm.live.a.a)localObject).TAG, s.X("onPause ", ((com.tencent.mm.live.a.a)localObject).mJj));
+      localObject = ((com.tencent.mm.live.a.a)localObject).mJj;
       if (localObject != null) {
         ((BaseLivePluginLayout)localObject).pause();
       }
     }
-    localObject = this.kIp;
+    localObject = this.nkT;
     if (localObject != null) {
-      ((com.tencent.mm.live.b.t)localObject).aOj();
+      ((t)localObject).bhW();
     }
-    com.tencent.mm.plugin.ball.f.f.cwA();
-    AppMethodBeat.o(191494);
+    com.tencent.mm.plugin.ball.f.f.d(false, true, true);
+    AppMethodBeat.o(246365);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(191478);
+    AppMethodBeat.i(246347);
     Log.i("MicroMsg.LiveUI", "onResume (" + hashCode() + ')');
     super.onResume();
-    Object localObject = this.kIo;
-    if (localObject != null)
-    {
-      Log.i(((com.tencent.mm.live.a.a)localObject).TAG, "onResume " + ((com.tencent.mm.live.a.a)localObject).kiC);
-      BaseLivePluginLayout localBaseLivePluginLayout = ((com.tencent.mm.live.a.a)localObject).kiC;
-      if (localBaseLivePluginLayout != null) {
-        localBaseLivePluginLayout.resume();
-      }
-      localBaseLivePluginLayout = ((com.tencent.mm.live.a.a)localObject).kiC;
-      if (localBaseLivePluginLayout != null) {
-        localBaseLivePluginLayout.post((Runnable)new a.b((com.tencent.mm.live.a.a)localObject));
-      }
-    }
-    localObject = this.kIp;
+    Object localObject = this.nkS;
     if (localObject != null) {
-      ((com.tencent.mm.live.b.t)localObject).aOf();
+      ((com.tencent.mm.live.a.a)localObject).onResume();
     }
-    com.tencent.mm.plugin.ball.f.f.cvI();
-    AppMethodBeat.o(191478);
+    localObject = this.nkT;
+    if (localObject != null) {
+      ((t)localObject).bhT();
+    }
+    com.tencent.mm.plugin.ball.f.f.d(true, false, true);
+    AppMethodBeat.o(246347);
   }
   
   public void onStart()
   {
-    boolean bool = true;
-    AppMethodBeat.i(191487);
+    bool = true;
+    AppMethodBeat.i(246358);
     Log.i("MicroMsg.LiveUI", "onStart (" + hashCode() + ')');
     super.onStart();
-    Object localObject1 = this.kIo;
-    if (localObject1 != null)
-    {
-      Log.i(((com.tencent.mm.live.a.a)localObject1).TAG, "onStart " + ((com.tencent.mm.live.a.a)localObject1).kiC);
-      for (;;)
-      {
-        try
-        {
-          i = Settings.System.getInt(XWalkEnvironment.getContentResolver(), "accelerometer_rotation");
-          if (i != 1) {
-            continue;
-          }
-          i = 1;
-        }
-        catch (Settings.SettingNotFoundException localSettingNotFoundException)
-        {
-          Object localObject2;
-          Log.printErrStackTrace(((com.tencent.mm.live.a.a)localObject1).TAG, (Throwable)localSettingNotFoundException, "", new Object[0]);
-          int i = 0;
-          continue;
-          bool = false;
-          continue;
-          AppMethodBeat.o(191487);
-          return;
-        }
-        localObject2 = ((com.tencent.mm.live.a.a)localObject1).kiC;
-        if (localObject2 != null)
-        {
-          if ((i == 0) || (!((com.tencent.mm.live.a.a)localObject1).sp.getBoolean("settings_landscape_mode", false))) {
-            continue;
-          }
-          ((BaseLivePluginLayout)localObject2).onRotationSwitchChange(bool);
-        }
-        localObject2 = ((com.tencent.mm.live.a.a)localObject1).kiz;
-        ((a.a)localObject2).kiH.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, (ContentObserver)localObject2);
-        localObject1 = ((com.tencent.mm.live.a.a)localObject1).kiC;
-        if (localObject1 == null) {
-          continue;
-        }
-        ((BaseLivePluginLayout)localObject1).start();
-        AppMethodBeat.o(191487);
-        return;
-        i = 0;
-      }
+    localObject1 = this.nkS;
+    if (localObject1 != null) {
+      Log.i(((com.tencent.mm.live.a.a)localObject1).TAG, s.X("onStart ", ((com.tencent.mm.live.a.a)localObject1).mJj));
     }
-    AppMethodBeat.o(191487);
+    for (;;)
+    {
+      try
+      {
+        i = Settings.System.getInt(MMApplicationContext.getContext().getContentResolver(), "accelerometer_rotation");
+        if (i != 1) {
+          continue;
+        }
+        i = 1;
+      }
+      catch (Settings.SettingNotFoundException localSettingNotFoundException)
+      {
+        Object localObject2;
+        Log.printErrStackTrace(((com.tencent.mm.live.a.a)localObject1).TAG, (Throwable)localSettingNotFoundException, "", new Object[0]);
+        int i = 0;
+        continue;
+        bool = false;
+        continue;
+      }
+      localObject2 = ((com.tencent.mm.live.a.a)localObject1).mJj;
+      if (localObject2 != null)
+      {
+        if ((i == 0) || (!((com.tencent.mm.live.a.a)localObject1).sp.getBoolean("settings_landscape_mode", false))) {
+          continue;
+        }
+        ((BaseLivePluginLayout)localObject2).onRotationSwitchChange(bool);
+      }
+      localObject2 = ((com.tencent.mm.live.a.a)localObject1).mJg;
+      ((a.a)localObject2).mJn.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, (ContentObserver)localObject2);
+      localObject1 = ((com.tencent.mm.live.a.a)localObject1).mJj;
+      if (localObject1 != null) {
+        ((BaseLivePluginLayout)localObject1).start();
+      }
+      AppMethodBeat.o(246358);
+      return;
+      i = 0;
+    }
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(191513);
+    AppMethodBeat.i(246392);
     Log.i("MicroMsg.LiveUI", "onStop (" + hashCode() + ')');
     super.onStop();
-    Object localObject1 = this.kIo;
+    Object localObject1 = this.nkS;
     if (localObject1 != null)
     {
-      Log.i(((com.tencent.mm.live.a.a)localObject1).TAG, "onStop " + ((com.tencent.mm.live.a.a)localObject1).kiC);
-      Object localObject2 = ((com.tencent.mm.live.a.a)localObject1).kiz;
-      ((a.a)localObject2).kiH.unregisterContentObserver((ContentObserver)localObject2);
-      localObject2 = ((com.tencent.mm.live.a.a)localObject1).jij;
+      Log.i(((com.tencent.mm.live.a.a)localObject1).TAG, s.X("onStop ", ((com.tencent.mm.live.a.a)localObject1).mJj));
+      Object localObject2 = ((com.tencent.mm.live.a.a)localObject1).mJg;
+      ((a.a)localObject2).mJn.unregisterContentObserver((ContentObserver)localObject2);
+      localObject2 = ((com.tencent.mm.live.a.a)localObject1).lKz;
       if (localObject2 != null) {
         ((i)localObject2).close();
       }
-      localObject1 = ((com.tencent.mm.live.a.a)localObject1).kiC;
+      localObject1 = ((com.tencent.mm.live.a.a)localObject1).mJj;
       if (localObject1 != null) {
         ((BaseLivePluginLayout)localObject1).stop();
       }
     }
-    getSwipeBackLayout().emh();
-    AppMethodBeat.o(191513);
+    getSwipeBackLayout().jFd();
+    AppMethodBeat.o(246392);
   }
   
   public void onSwipeBack()
   {
-    AppMethodBeat.i(191525);
+    int j = 0;
+    AppMethodBeat.i(246416);
     Log.i("MicroMsg.LiveUI", "onSwipeBack (" + hashCode() + ')');
-    Object localObject = this.kIo;
+    Object localObject = this.nkS;
+    int i = j;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.live.a.a)localObject).kiC;
-      if (localObject != null) {}
-      for (boolean bool = ((BaseLivePluginLayout)localObject).onSwipeBack();; bool = false)
-      {
-        if (!bool)
-        {
-          Log.i("MicroMsg.LiveUI", "super onBackPressed (" + hashCode() + ')');
-          super.onSwipeBack();
-        }
-        AppMethodBeat.o(191525);
-        return;
+      localObject = ((com.tencent.mm.live.a.a)localObject).mJj;
+      if (localObject != null) {
+        break label118;
       }
     }
-    AppMethodBeat.o(191525);
+    label118:
+    for (boolean bool = false;; bool = ((BaseLivePluginLayout)localObject).onSwipeBack())
+    {
+      i = j;
+      if (!bool) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        Log.i("MicroMsg.LiveUI", "super onBackPressed (" + hashCode() + ')');
+        super.onSwipeBack();
+      }
+      AppMethodBeat.o(246416);
+      return;
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -480,13 +464,10 @@ public class LiveUIA
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIA$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIA
  * JD-Core Version:    0.7.0.1
  */

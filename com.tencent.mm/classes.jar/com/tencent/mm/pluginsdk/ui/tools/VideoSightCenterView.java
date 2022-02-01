@@ -8,19 +8,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.i.d;
-import com.tencent.mm.plugin.sight.decode.a.b;
-import com.tencent.mm.plugin.sight.decode.a.b.e;
-import com.tencent.mm.plugin.sight.decode.a.b.f;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.d;
+import com.tencent.mm.plugin.sight.decode.model.SightPlayController.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class VideoSightCenterView
   extends VideoSightView
 {
-  private volatile boolean RxU = false;
-  private MediaMetadataRetriever RxV;
+  private int EuH = 0;
+  private volatile boolean Yuq = false;
+  private MediaMetadataRetriever Yur;
   private boolean isStart = false;
-  private int zrB = 0;
   
   public VideoSightCenterView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,7 +32,7 @@ public class VideoSightCenterView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void cEw()
+  private void dYi()
   {
     AppMethodBeat.i(116255);
     if ((getLayoutParams() instanceof RelativeLayout.LayoutParams))
@@ -44,11 +44,21 @@ public class VideoSightCenterView
     AppMethodBeat.o(116255);
   }
   
+  public final void H(double paramDouble)
+  {
+    AppMethodBeat.i(116264);
+    Log.v("MicroMsg.VideoSightCenterView", "seekTo, time: %s, isStart: %s, currentPosition: %s, getLastProgresstime: %s", new Object[] { Double.valueOf(paramDouble), Boolean.valueOf(this.isStart), Integer.valueOf(this.EuH), Double.valueOf(getLastProgresstime()) });
+    if ((this.isStart) && (getLastProgresstime() > 0.0D)) {
+      super.H(paramDouble / 1000.0D);
+    }
+    AppMethodBeat.o(116264);
+  }
+  
   public int getCurrentPosition()
   {
     AppMethodBeat.i(116259);
-    Log.v("MicroMsg.VideoSightCenterView", "getCurrentPosition: %s", new Object[] { Integer.valueOf(this.zrB) });
-    int i = this.zrB;
+    Log.v("MicroMsg.VideoSightCenterView", "getCurrentPosition: %s", new Object[] { Integer.valueOf(this.EuH) });
+    int i = this.EuH;
     AppMethodBeat.o(116259);
     return i;
   }
@@ -57,15 +67,15 @@ public class VideoSightCenterView
   {
     AppMethodBeat.i(116258);
     Log.i("MicroMsg.VideoSightCenterView", "getDuration");
-    if (!Util.isNullOrNil(this.cJT)) {
+    if (!Util.isNullOrNil(this.eDC)) {
       try
       {
-        if (this.RxV == null)
+        if (this.Yur == null)
         {
-          this.RxV = new d();
-          this.RxV.setDataSource(this.cJT);
+          this.Yur = new d();
+          this.Yur.setDataSource(this.eDC);
         }
-        i = Integer.valueOf(this.RxV.extractMetadata(9)).intValue();
+        i = Integer.valueOf(this.Yur.extractMetadata(9)).intValue();
         Log.i("MicroMsg.VideoSightCenterView", "getDuration: %s", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(116258);
         return i;
@@ -91,22 +101,22 @@ public class VideoSightCenterView
   protected final void init()
   {
     AppMethodBeat.i(116256);
-    if (Util.nullAs(af.juS.jrV, "").equals("other")) {
+    if (Util.nullAs(af.lYj.lVl, "").equals("other")) {
       Log.i("MicroMsg.VideoSightCenterView", "init::use other player");
     }
     for (;;)
     {
-      setOnCompletionListener(new b.e()
+      setOnCompletionListener(new SightPlayController.d()
       {
-        public final void c(b paramAnonymousb, int paramAnonymousInt)
+        public final void c(SightPlayController paramAnonymousSightPlayController, int paramAnonymousInt)
         {
           AppMethodBeat.i(116251);
           if (-1 == paramAnonymousInt)
           {
             Log.i("MicroMsg.VideoSightCenterView", "error stop, isCompletion: %s", new Object[] { Boolean.valueOf(VideoSightCenterView.a(VideoSightCenterView.this)) });
-            if ((VideoSightCenterView.this.uXU != null) && (!VideoSightCenterView.a(VideoSightCenterView.this)))
+            if ((VideoSightCenterView.this.yki != null) && (!VideoSightCenterView.a(VideoSightCenterView.this)))
             {
-              VideoSightCenterView.this.uXU.onError(0, 0);
+              VideoSightCenterView.this.yki.onError(0, 0);
               AppMethodBeat.o(116251);
             }
           }
@@ -114,8 +124,8 @@ public class VideoSightCenterView
           {
             Log.i("MicroMsg.VideoSightCenterView", "normal stop");
             VideoSightCenterView.b(VideoSightCenterView.this);
-            if (VideoSightCenterView.this.uXU != null) {
-              VideoSightCenterView.this.uXU.onCompletion();
+            if (VideoSightCenterView.this.yki != null) {
+              VideoSightCenterView.this.yki.onCompletion();
             }
           }
           AppMethodBeat.o(116251);
@@ -123,24 +133,24 @@ public class VideoSightCenterView
       });
       AppMethodBeat.o(116256);
       return;
-      yc(true);
+      Dg(true);
     }
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(116265);
-    Log.v("MicroMsg.VideoSightCenterView", "isPlaying, isStart: %s, currentPosition: %s", new Object[] { Boolean.valueOf(this.isStart), Integer.valueOf(this.zrB) });
+    Log.v("MicroMsg.VideoSightCenterView", "isPlaying, isStart: %s, currentPosition: %s", new Object[] { Boolean.valueOf(this.isStart), Integer.valueOf(this.EuH) });
     boolean bool = this.isStart;
     AppMethodBeat.o(116265);
     return bool;
   }
   
-  public final void ju(int paramInt1, int paramInt2)
+  public final void ld(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(116254);
-    super.ju(paramInt1, paramInt2);
-    cEw();
+    super.ld(paramInt1, paramInt2);
+    dYi();
     AppMethodBeat.o(116254);
   }
   
@@ -152,21 +162,11 @@ public class VideoSightCenterView
     AppMethodBeat.o(116262);
   }
   
-  public final void q(double paramDouble)
-  {
-    AppMethodBeat.i(116264);
-    Log.v("MicroMsg.VideoSightCenterView", "seekTo, time: %s, isStart: %s, currentPosition: %s, getLastProgresstime: %s", new Object[] { Double.valueOf(paramDouble), Boolean.valueOf(this.isStart), Integer.valueOf(this.zrB), Double.valueOf(getLastProgresstime()) });
-    if ((this.isStart) && (getLastProgresstime() > 0.0D)) {
-      super.q(paramDouble / 1000.0D);
-    }
-    AppMethodBeat.o(116264);
-  }
-  
   public void setDrawableWidth(int paramInt)
   {
     AppMethodBeat.i(116253);
     super.setDrawableWidth(paramInt);
-    cEw();
+    dYi();
     AppMethodBeat.o(116253);
   }
   
@@ -175,19 +175,19 @@ public class VideoSightCenterView
     AppMethodBeat.i(116257);
     if (paramBoolean)
     {
-      setOnDecodeDurationListener(new b.f()
+      setOnDecodeDurationListener(new SightPlayController.e()
       {
-        public final void b(b paramAnonymousb, long paramAnonymousLong)
+        public final void b(SightPlayController paramAnonymousSightPlayController, long paramAnonymousLong)
         {
           AppMethodBeat.i(116252);
           if (VideoSightCenterView.this.duration == 0) {
             VideoSightCenterView.this.duration = VideoSightCenterView.this.getDuration();
           }
-          if (VideoSightCenterView.this.uXU != null)
+          if (VideoSightCenterView.this.yki != null)
           {
             Log.v("MicroMsg.VideoSightCenterView", "onPlayTime, currentTime: %s, duration: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(VideoSightCenterView.this.duration) });
             VideoSightCenterView.a(VideoSightCenterView.this, (int)(1000L * paramAnonymousLong));
-            VideoSightCenterView.this.uXU.fE((int)paramAnonymousLong, VideoSightCenterView.this.duration);
+            VideoSightCenterView.this.yki.gw((int)paramAnonymousLong, VideoSightCenterView.this.duration);
           }
           AppMethodBeat.o(116252);
         }
@@ -214,14 +214,14 @@ public class VideoSightCenterView
     AppMethodBeat.i(116261);
     Log.v("MicroMsg.VideoSightCenterView", "stop");
     super.stop();
-    this.zrB = 0;
+    this.EuH = 0;
     this.isStart = false;
     AppMethodBeat.o(116261);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoSightCenterView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,31 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum a
 {
-  private static volatile a jnG;
+  private static volatile a lQO;
   
   static
   {
     AppMethodBeat.i(155631);
-    jnF = new a("INSTANCE");
-    jnH = new a[] { jnF };
-    jnG = new a.1();
+    lQN = new a("INSTANCE");
+    lQP = new a[] { lQN };
+    lQO = new a.1();
     AppMethodBeat.o(155631);
   }
   
   private a() {}
   
-  public static void EV(long paramLong)
+  public static void T(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(155629);
-    jnG.w(853L, paramLong);
-    AppMethodBeat.o(155629);
+    AppMethodBeat.i(240799);
+    lQO.U(paramLong1, paramLong2);
+    AppMethodBeat.o(240799);
   }
   
   public static void a(a parama)
   {
     try
     {
-      jnG = parama;
+      lQO = parama;
       return;
     }
     finally
@@ -38,30 +38,30 @@ public enum a
     }
   }
   
-  public static void b(int paramInt, Object... paramVarArgs)
+  public static void c(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(263121);
-    jnG.c(paramInt, paramVarArgs);
-    AppMethodBeat.o(263121);
+    AppMethodBeat.i(240804);
+    lQO.d(paramInt, paramVarArgs);
+    AppMethodBeat.o(240804);
   }
   
-  public static void v(long paramLong1, long paramLong2)
+  public static void ho(long paramLong)
   {
-    AppMethodBeat.i(263120);
-    jnG.w(paramLong1, paramLong2);
-    AppMethodBeat.o(263120);
+    AppMethodBeat.i(155629);
+    lQO.U(853L, paramLong);
+    AppMethodBeat.o(155629);
   }
   
   public static abstract interface a
   {
-    public abstract void c(int paramInt, Object... paramVarArgs);
+    public abstract void U(long paramLong1, long paramLong2);
     
-    public abstract void w(long paramLong1, long paramLong2);
+    public abstract void d(int paramInt, Object... paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 public final class MMTagPanel$d
 {
-  public String WmS;
-  public TextView WmT;
-  public View bFK;
+  public String adUf;
+  public TextView adUg;
+  public View dyK;
 }
 
 

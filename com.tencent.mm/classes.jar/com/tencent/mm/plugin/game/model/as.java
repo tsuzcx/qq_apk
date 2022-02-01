@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cin;
-import com.tencent.mm.protocal.protobuf.cio;
+import com.tencent.mm.protocal.protobuf.cyq;
+import com.tencent.mm.protocal.protobuf.cyr;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class as
-  extends q
+  extends p
   implements m
 {
   private String appId;
-  private i callback;
-  final d jTk;
+  private h callback;
+  final c mtC;
   
   public as(String paramString)
   {
     AppMethodBeat.i(41616);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cin();
-    ((d.a)localObject).lBV = new cio();
-    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/gethvgamemenu";
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cyq();
+    ((c.a)localObject).otF = new cyr();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/gethvgamemenu";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
     this.appId = paramString;
-    this.jTk = ((d.a)localObject).bgN();
-    localObject = (cin)d.b.b(this.jTk.lBR);
-    ((cin)localObject).CPt = LocaleUtil.getApplicationLanguage();
-    ((cin)localObject).mVH = Util.getSimCountryCode(MMApplicationContext.getContext());
-    ((cin)localObject).lVG = paramString;
-    Log.i("MicroMsg.NetSceneHVGameGetMenu", "lang=%s, country=%s, appid=%s", new Object[] { ((cin)localObject).CPt, ((cin)localObject).mVH, ((cin)localObject).lVG });
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (cyq)c.b.b(this.mtC.otB);
+    ((cyq)localObject).IJD = LocaleUtil.getApplicationLanguage();
+    ((cyq)localObject).pSo = Util.getSimCountryCode(MMApplicationContext.getContext());
+    ((cyq)localObject).oOI = paramString;
+    Log.i("MicroMsg.NetSceneHVGameGetMenu", "lang=%s, country=%s, appid=%s", new Object[] { ((cyq)localObject).IJD, ((cyq)localObject).pSo, ((cyq)localObject).oOI });
     AppMethodBeat.o(41616);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(41618);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(41618);
     return i;
   }
@@ -69,7 +69,7 @@ public final class as
       AppMethodBeat.o(41617);
       return;
     }
-    if ((cio)d.c.b(((d)params).lBS) == null)
+    if ((cyr)c.c.b(((c)params).otC) == null)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(41617);

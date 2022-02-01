@@ -1,43 +1,35 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.ui.widget.Tiger2022Helper;
 
 final class SnsCommentFooter$9
-  implements View.OnClickListener
+  implements TextWatcher
 {
   SnsCommentFooter$9(SnsCommentFooter paramSnsCommentFooter) {}
   
-  public final void onClick(View paramView)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(98643);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/sns/ui/SnsCommentFooter$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (com.tencent.mm.n.h.axc().getInt("SnsAdAtFriendRedDot", 0) == 1) {
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VwG, Boolean.FALSE);
+    AppMethodBeat.i(369940);
+    if (SnsCommentFooter.g(this.RqJ) != null)
+    {
+      if (Tiger2022Helper.b(SnsCommentFooter.g(this.RqJ).getTimeLine(), paramEditable.toString()))
+      {
+        Tiger2022Helper.bE(paramEditable);
+        AppMethodBeat.o(369940);
+        return;
+      }
+      Tiger2022Helper.g(paramEditable);
     }
-    SnsCommentFooter.g(this.KQR).setVisibility(8);
-    paramView = new Intent();
-    paramView.putExtra("list_attr", 16391);
-    paramView.putExtra("block_contact", z.bcZ());
-    paramView.putExtra("max_limit_num", 1);
-    paramView.putExtra("titile", SnsCommentFooter.h(this.KQR).getString(i.j.sns_ad_comment_at_title));
-    c.d(SnsCommentFooter.h(this.KQR), ".ui.contact.SelectContactUI", paramView, 2333);
-    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentFooter$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(98643);
+    AppMethodBeat.o(369940);
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

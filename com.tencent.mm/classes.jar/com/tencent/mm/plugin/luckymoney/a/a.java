@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.luckymoney.a;
 
 import android.widget.ImageView;
-import com.tencent.mm.aj.g;
-import com.tencent.mm.protocal.protobuf.cjf;
-import com.tencent.mm.protocal.protobuf.dvl;
+import com.tencent.mm.message.g;
+import com.tencent.mm.protocal.protobuf.czi;
+import com.tencent.mm.protocal.protobuf.eoh;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void a(ImageView paramImageView, int paramInt1, int paramInt2, cjf paramcjf, boolean paramBoolean);
+  public abstract void a(ImageView paramImageView, int paramInt1, int paramInt2, czi paramczi, boolean paramBoolean);
   
-  public abstract void a(ImageView paramImageView, cjf paramcjf);
+  public abstract void a(ImageView paramImageView, czi paramczi);
   
-  public abstract void a(ImageView paramImageView, cjf paramcjf, a parama);
+  public abstract void a(ImageView paramImageView, czi paramczi, a parama);
   
   public abstract void a(ImageView paramImageView, String paramString1, String paramString2, String paramString3);
   
@@ -22,22 +22,26 @@ public abstract interface a
   
   public abstract void a(g paramg);
   
-  public abstract void a(cjf paramcjf);
+  public abstract void a(czi paramczi);
   
-  public abstract void a(dvl paramdvl, boolean paramBoolean);
+  public abstract void a(eoh parameoh, boolean paramBoolean);
   
   public abstract void a(String paramString1, String paramString2, String paramString3, a parama);
   
-  public abstract void ag(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void ay(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(ImageView paramImageView, int paramInt1, int paramInt2, czi paramczi, boolean paramBoolean);
+  
+  public abstract void b(ImageView paramImageView, czi paramczi, a parama);
   
   public static abstract interface a
   {
-    public abstract void eG(boolean paramBoolean);
+    public abstract void onComplete(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ public final class f
 {
   static
   {
-    AppMethodBeat.i(197848);
+    AppMethodBeat.i(231972);
     b.a(new f(), new String[] { "//jeversion" });
-    AppMethodBeat.o(197848);
+    AppMethodBeat.o(231972);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(197847);
+    AppMethodBeat.i(231973);
     MMApplicationContext.getContext().startService(new Intent(MMApplicationContext.getContext(), JeVersion.JeService.class));
-    AppMethodBeat.o(197847);
+    AppMethodBeat.o(231973);
     return true;
   }
 }

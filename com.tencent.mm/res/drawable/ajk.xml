@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/bm8" />
-    <item android:drawable="@drawable/bm7" />
+    <item>
+        <shape>
+            <gradient android:startColor="#00000000" android:endColor="@color/UN_BW_0_Alpha_0_5" android:angle="270.0" android:type="linear" />
+        </shape>
+    </item>
 </selector>

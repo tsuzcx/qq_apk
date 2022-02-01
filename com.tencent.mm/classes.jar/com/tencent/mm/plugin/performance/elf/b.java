@@ -9,7 +9,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -20,29 +23,29 @@ import org.json.JSONObject;
 public final class b
 {
   public static boolean DEBUG;
-  public static final MMHandler GNB;
-  public static long GOa;
-  public static final b GOg;
-  public static final b GOh;
-  public static final Runnable GOi;
-  public boolean dih = false;
+  public static final MMHandler MKQ;
+  public static long MLp;
+  public static final b MLv;
+  public static final b MLw;
+  public static final Runnable MLx;
+  public boolean egk = false;
   
   static
   {
     AppMethodBeat.i(125000);
-    GOa = 1200000L;
-    GOg = new b();
-    GNB = new MMHandler(Looper.getMainLooper());
-    GOh = new b((byte)0);
-    GOi = new a((byte)0);
+    MLp = 1200000L;
+    MLv = new b();
+    MKQ = new MMHandler(Looper.getMainLooper());
+    MLw = new b((byte)0);
+    MLx = new a((byte)0);
     DEBUG = false;
     AppMethodBeat.o(125000);
   }
   
-  public static boolean bL(float paramFloat)
+  public static boolean cP(float paramFloat)
   {
     AppMethodBeat.i(124999);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vxX, "");
+    Object localObject1 = ((c)h.ax(c.class)).a(c.a.yLy, "");
     int i;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -56,7 +59,7 @@ public final class b
           String str1 = ((JSONObject)localObject2).getString("device-brand");
           String str2 = ((JSONObject)localObject2).getString("device-model");
           int j = ((JSONObject)localObject2).getInt("sdk-version");
-          localObject2 = Build.BRAND + " " + Build.MODEL;
+          localObject2 = Build.BRAND + " " + q.aPo();
           Log.i("MicroMsg.ProcessElf", "[checkHardOpen] name:%s model:%s version:%s | %s %s ", new Object[] { str1, str2, Integer.valueOf(j), localObject2, Integer.valueOf(Build.VERSION.SDK_INT) });
           if ((j <= Build.VERSION.SDK_INT) && (((String)localObject2).contains(str1)))
           {
@@ -90,12 +93,12 @@ public final class b
     }
   }
   
-  public static long fob()
+  public static long gyW()
   {
     if (DEBUG) {
       return 8000L;
     }
-    return GOa;
+    return MLp;
   }
   
   static final class a
@@ -106,11 +109,11 @@ public final class b
       AppMethodBeat.i(124996);
       Log.i("MicroMsg.ProcessElf", "send check broadcast!");
       ElfCheckRequest localElfCheckRequest = new ElfCheckRequest();
-      localElfCheckRequest.FNJ = b.fob();
+      localElfCheckRequest.LIF = b.gyW();
       Intent localIntent = new Intent("ACTION_ELF_CHECK");
       localIntent.putExtra("MicroMsg.ElfCheckRequest", localElfCheckRequest);
       MMApplicationContext.getContext().sendBroadcast(localIntent);
-      b.GNB.postDelayed(this, b.fob());
+      b.MKQ.postDelayed(this, b.gyW());
       AppMethodBeat.o(124996);
     }
   }
@@ -130,16 +133,16 @@ public final class b
           AppMethodBeat.o(124998);
           return;
         }
-        if (!paramIntent.dih) {
-          b.GNB.removeCallbacksAndMessages(null);
+        if (!paramIntent.egk) {
+          b.MKQ.removeCallbacksAndMessages(null);
         }
-        MMHandler localMMHandler = b.GNB;
-        if ((paramIntent.dih) && (paramIntent.GNI) && (paramIntent.GNJ)) {
-          localMMHandler.postDelayed(new ElfCheckResponse.1(paramIntent, paramContext), paramIntent.GNM);
+        MMHandler localMMHandler = b.MKQ;
+        if ((paramIntent.egk) && (paramIntent.MKX) && (paramIntent.MKY)) {
+          localMMHandler.postDelayed(new ElfCheckResponse.1(paramIntent, paramContext), paramIntent.MLb);
         }
         for (boolean bool = true;; bool = false)
         {
-          Log.i("MicroMsg.ProcessElf", "[onReceive] %s, isEnable:%s, CHECK_TIME:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramIntent.dih), Long.valueOf(b.fob()) });
+          Log.i("MicroMsg.ProcessElf", "[onReceive] %s, isEnable:%s, CHECK_TIME:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramIntent.egk), Long.valueOf(b.gyW()) });
           AppMethodBeat.o(124998);
           return;
           Log.w("MicroMsg.ElfCheckResponse", "can't call process[%s]", new Object[] { paramIntent.processName });

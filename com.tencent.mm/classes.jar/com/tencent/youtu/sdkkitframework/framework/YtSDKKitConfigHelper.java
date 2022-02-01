@@ -17,16 +17,16 @@ public class YtSDKKitConfigHelper
   
   static
   {
-    AppMethodBeat.i(256863);
+    AppMethodBeat.i(218126);
     TAG = YtSDKKitConfigHelper.class.getSimpleName();
     SDK_SETTINGS = new HashMap() {};
     UI_SETTINGS = new HashMap() {};
-    AppMethodBeat.o(256863);
+    AppMethodBeat.o(218126);
   }
   
   public static String getConfigStringBy(JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(256862);
+    AppMethodBeat.i(218122);
     HashMap localHashMap = null;
     try
     {
@@ -41,7 +41,7 @@ public class YtSDKKitConfigHelper
         localHashMap.put("message", CommonUtils.makeMessageJson(3145729, "msg_param_error", paramString + "参数解析失败, 不存在或者不能为空"));
         YtFSM.getInstance().sendFSMEvent(localHashMap);
       }
-      AppMethodBeat.o(256862);
+      AppMethodBeat.o(218122);
       return paramJSONObject;
     }
     catch (JSONException paramJSONObject)
@@ -56,7 +56,7 @@ public class YtSDKKitConfigHelper
   
   public static ArrayList<String> getPipleStateNames(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode)
   {
-    AppMethodBeat.i(256859);
+    AppMethodBeat.i(218114);
     Object localObject = null;
     switch (10.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[paramYtSDKKitFrameworkWorkMode.ordinal()])
     {
@@ -65,7 +65,7 @@ public class YtSDKKitConfigHelper
     }
     for (;;)
     {
-      AppMethodBeat.o(256859);
+      AppMethodBeat.o(218114);
       return paramYtSDKKitFrameworkWorkMode;
       paramYtSDKKitFrameworkWorkMode = new ArrayList() {};
       continue;
@@ -85,11 +85,11 @@ public class YtSDKKitConfigHelper
   
   public static JSONObject getSDKConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(256853);
+    AppMethodBeat.i(218085);
     try
     {
       paramYtSDKKitFrameworkWorkMode = paramJSONObject.getJSONObject((String)SDK_SETTINGS.get(paramYtSDKKitFrameworkWorkMode));
-      AppMethodBeat.o(256853);
+      AppMethodBeat.o(218085);
       return paramYtSDKKitFrameworkWorkMode;
     }
     catch (JSONException paramYtSDKKitFrameworkWorkMode)
@@ -104,11 +104,11 @@ public class YtSDKKitConfigHelper
   
   public static JSONObject getUIConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(256857);
+    AppMethodBeat.i(218106);
     try
     {
       paramYtSDKKitFrameworkWorkMode = paramJSONObject.getJSONObject((String)UI_SETTINGS.get(paramYtSDKKitFrameworkWorkMode));
-      AppMethodBeat.o(256857);
+      AppMethodBeat.o(218106);
       return paramYtSDKKitFrameworkWorkMode;
     }
     catch (JSONException paramYtSDKKitFrameworkWorkMode)
@@ -123,39 +123,39 @@ public class YtSDKKitConfigHelper
   
   public static void setSDKConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    AppMethodBeat.i(256854);
+    AppMethodBeat.i(218090);
     try
     {
       paramJSONObject1.put((String)SDK_SETTINGS.get(paramYtSDKKitFrameworkWorkMode), paramJSONObject2);
-      AppMethodBeat.o(256854);
+      AppMethodBeat.o(218090);
       return;
     }
     catch (JSONException paramYtSDKKitFrameworkWorkMode)
     {
       YtLogger.e(TAG, paramYtSDKKitFrameworkWorkMode.getMessage());
-      AppMethodBeat.o(256854);
+      AppMethodBeat.o(218090);
     }
   }
   
   public static void setUIConfig(YtSDKKitFramework.YtSDKKitFrameworkWorkMode paramYtSDKKitFrameworkWorkMode, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    AppMethodBeat.i(256855);
+    AppMethodBeat.i(218098);
     try
     {
       paramJSONObject1.put((String)UI_SETTINGS.get(paramYtSDKKitFrameworkWorkMode), paramJSONObject2);
-      AppMethodBeat.o(256855);
+      AppMethodBeat.o(218098);
       return;
     }
     catch (JSONException paramYtSDKKitFrameworkWorkMode)
     {
       YtLogger.e(TAG, paramYtSDKKitFrameworkWorkMode.getMessage());
-      AppMethodBeat.o(256855);
+      AppMethodBeat.o(218098);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper
  * JD-Core Version:    0.7.0.1
  */

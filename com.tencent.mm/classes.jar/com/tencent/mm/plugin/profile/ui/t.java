@@ -1,64 +1,43 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.view.View;
-import android.widget.TextView;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import kotlin.l;
+import com.tencent.mm.model.z;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/ProfileWordingSetHelper;", "", "()V", "permissionTitle", "", "v", "Landroid/view/View;", "talkOnlyTips", "app_release"})
-public final class t
+final class t
+  implements HelperHeaderPreference.a
 {
-  public static final t HbX;
+  private Context context;
   
-  static
+  public t(Context paramContext)
   {
-    AppMethodBeat.i(285600);
-    HbX = new t();
-    AppMethodBeat.o(285600);
+    this.context = paramContext;
   }
   
-  public static void fK(View paramView)
+  public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    AppMethodBeat.i(285596);
-    if ((paramView instanceof TextView))
+    AppMethodBeat.i(27261);
+    if ((z.bBf() & 0x1000000) == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramView = (TextView)paramView;
-      if (!com.tencent.mm.plugin.textstatus.a.t.gkZ()) {
-        break label38;
-      }
-    }
-    label38:
-    for (int i = R.l.ePP;; i = R.l.ePO)
-    {
-      paramView.setText(i);
-      AppMethodBeat.o(285596);
+      paramHelperHeaderPreference.Ay(bool);
+      AppMethodBeat.o(27261);
       return;
     }
   }
   
-  public static void fL(View paramView)
+  public final CharSequence getHint()
   {
-    AppMethodBeat.i(285597);
-    if ((paramView instanceof TextView))
-    {
-      paramView = (TextView)paramView;
-      if (!com.tencent.mm.plugin.textstatus.a.t.gkZ()) {
-        break label38;
-      }
-    }
-    label38:
-    for (int i = R.l.ePS;; i = R.l.ePR)
-    {
-      paramView.setText(i);
-      AppMethodBeat.o(285597);
-      return;
-    }
+    AppMethodBeat.i(27260);
+    String str = this.context.getString(R.l.contact_info_linkedin_tip);
+    AppMethodBeat.o(27260);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.t
  * JD-Core Version:    0.7.0.1
  */

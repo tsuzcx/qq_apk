@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public long Dui;
+  public long JnG;
   public int keyType;
   public String text;
   
@@ -16,11 +16,11 @@ public final class g
   
   public g(String paramString, long paramLong)
   {
-    AppMethodBeat.i(213444);
+    AppMethodBeat.i(311427);
     this.keyType = 0;
     this.text = paramString;
-    this.Dui = (System.currentTimeMillis() - paramLong);
-    AppMethodBeat.o(213444);
+    this.JnG = (System.currentTimeMillis() - paramLong);
+    AppMethodBeat.o(311427);
   }
 }
 

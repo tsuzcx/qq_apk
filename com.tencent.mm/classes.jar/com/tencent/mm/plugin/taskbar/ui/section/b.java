@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.taskbar.ui.section;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnCreateContextMenuListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout;
-import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.v;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.taskbar.PluginTaskBar;
@@ -24,40 +22,37 @@ import com.tencent.mm.plugin.taskbar.d.d;
 import com.tencent.mm.plugin.taskbar.d.e;
 import com.tencent.mm.plugin.taskbar.d.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.w;
-import java.util.HashMap;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.u.i;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "sectionType", "", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "(Landroid/content/Context;Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;ILandroid/util/AttributeSet;I)V", "getCallback", "()Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "containerView", "getContainerView", "()Landroid/widget/FrameLayout;", "root", "Landroid/view/ViewGroup;", "getRoot", "()Landroid/view/ViewGroup;", "getSectionType", "()I", "title", "Landroid/widget/TextView;", "getTitle", "()Landroid/widget/TextView;", "viewModel", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "getViewModel", "()Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "setViewModel", "(Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;)V", "addContentView", "", "view", "Landroid/view/View;", "canAddToMinimize", "", "pos", "configItemViewHolderOnBind", "viewHolder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getClickedTaskBarItem", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "notifyDataSetChanged", "onViewAttachedToWindow", "multiTaskInfo", "removeItem", "titleName", "", "tryCloseOnPause", "Callback", "Companion", "plugin-taskbar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "sectionType", "", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "(Landroid/content/Context;Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;ILandroid/util/AttributeSet;I)V", "getCallback", "()Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "containerView", "getContainerView", "()Landroid/widget/FrameLayout;", "root", "Landroid/view/ViewGroup;", "getRoot", "()Landroid/view/ViewGroup;", "getSectionType", "()I", "title", "Landroid/widget/TextView;", "getTitle", "()Landroid/widget/TextView;", "viewModel", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "getViewModel", "()Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "setViewModel", "(Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;)V", "addContentView", "", "view", "Landroid/view/View;", "canAddToMinimize", "", "pos", "configItemViewHolderOnBind", "viewHolder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getClickedTaskBarItem", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "notifyDataSetChanged", "onViewAttachedToWindow", "multiTaskInfo", "removeItem", "titleName", "", "tryCloseOnPause", "Callback", "Companion", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class b
   extends FrameLayout
 {
-  public static final b.b MqN = new b.b((byte)0);
-  d MqJ;
-  private final FrameLayout MqK;
-  private final a MqL;
-  private final int MqM;
-  private HashMap _$_findViewCache;
-  private final TextView jMg;
-  private final ViewGroup kiF;
+  public static final b.b STV = new b.b((byte)0);
+  private final a STW;
+  private final int STX;
+  private d STY;
+  private final FrameLayout STZ;
+  private final ViewGroup mJe;
+  private final TextView mll;
   
   public b(Context paramContext, a parama, int paramInt1, AttributeSet paramAttributeSet, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt2);
-    this.MqL = parama;
-    this.MqM = paramInt1;
-    parama = d.MqY;
-    this.MqJ = d.gkh();
-    switch (this.MqM)
+    this.STW = parama;
+    this.STX = paramInt1;
+    parama = d.SUa;
+    this.STY = d.hEg();
+    switch (this.STX)
     {
     case 4: 
     default: 
-      paramInt1 = d.e.MmE;
+      paramInt1 = d.e.SPW;
     }
     for (;;)
     {
@@ -65,263 +60,236 @@ public abstract class b
       if (paramContext != null) {
         break;
       }
-      throw new t("null cannot be cast to non-null type android.view.ViewGroup");
-      paramInt1 = d.e.MmH;
+      throw new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      paramInt1 = d.e.SPZ;
       continue;
-      paramInt1 = d.e.MmF;
+      paramInt1 = d.e.SPX;
       continue;
-      paramInt1 = d.e.MmG;
+      paramInt1 = d.e.SPY;
     }
-    this.kiF = ((ViewGroup)paramContext);
-    if (((CharSequence)gkg()).length() > 0)
+    this.mJe = ((ViewGroup)paramContext);
+    if (((CharSequence)hEf()).length() > 0)
     {
       paramInt1 = 1;
       if (paramInt1 == 0) {
-        break label243;
+        break label240;
       }
-      this.jMg = ((TextView)this.kiF.findViewById(d.d.title));
-      paramContext = this.jMg;
-      p.j(paramContext, "title");
-      paramContext.setText((CharSequence)gkg());
+      this.mll = ((TextView)this.mJe.findViewById(d.d.title));
+      this.mll.setText((CharSequence)hEf());
     }
     for (;;)
     {
-      addView((View)this.kiF);
-      paramContext = this.kiF.findViewById(d.d.container);
-      p.j(paramContext, "root.findViewById(R.id.container)");
-      this.MqK = ((FrameLayout)paramContext);
+      setImportantForAccessibility(2);
+      addView((View)this.mJe);
+      paramContext = this.mJe.findViewById(d.d.container);
+      s.s(paramContext, "root.findViewById(R.id.container)");
+      this.STZ = ((FrameLayout)paramContext);
       return;
       paramInt1 = 0;
       break;
-      label243:
-      this.jMg = null;
+      label240:
+      this.mll = null;
     }
   }
   
-  public View _$_findCachedViewById(int paramInt)
+  private static final void a(RecyclerView.v paramv, b paramb, View paramView)
   {
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramv);
+    localb.cH(paramb);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramv, "$viewHolder");
+    s.u(paramb, "this$0");
+    int i = paramv.KJ();
+    if ((i < 0) || (i >= paramb.getViewModel().SUd.size()))
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      return;
     }
-    return localView1;
+    paramb.getCallback().Fn(paramb.aod(i));
+    paramb.getCallback().a((MultiTaskInfo)paramb.getViewModel().SUd.get(i), i);
+    ((PluginTaskBar)h.az(PluginTaskBar.class)).notifyClickTaskBarItem$plugin_taskbar_release((MultiTaskInfo)paramb.STY.SUd.get(i));
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
-  public final void ae(final RecyclerView.v paramv)
+  private static final void a(b paramb)
   {
-    p.k(paramv, "viewHolder");
-    Log.i("MicroMsg.TaskBarSectionBaseView", "configItemViewHolderOnBind %d %d", new Object[] { Integer.valueOf(paramv.md()), Integer.valueOf(this.MqM) });
-    View localView = paramv.amk;
-    localView.setTag(d.d.desktop_pop_menu, new com.tencent.mm.ui.widget.b.a(getContext(), localView));
-    localView.setOnClickListener((View.OnClickListener)new c(this, paramv));
-    localView.setOnLongClickListener((View.OnLongClickListener)new d(this, paramv));
+    s.u(paramb, "this$0");
+    paramb.getCallback().Fm(false);
   }
   
-  public boolean aja(int paramInt)
+  private static final void a(boolean paramBoolean, ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  {
+    if ((paramBoolean) && (paramContextMenu != null)) {
+      paramContextMenu.add(0, 0, 0, d.g.SQb);
+    }
+    if (paramContextMenu != null) {
+      paramContextMenu.add(0, 1, 0, d.g.SQj);
+    }
+  }
+  
+  private static final void a(boolean paramBoolean, b paramb, int paramInt1, MenuItem paramMenuItem, int paramInt2)
+  {
+    s.u(paramb, "this$0");
+    if (paramBoolean) {}
+    for (;;)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        return;
+        paramInt2 = 1;
+      }
+    }
+    paramMenuItem = (PluginTaskBar)h.az(PluginTaskBar.class);
+    String str = ((MultiTaskInfo)paramb.getViewModel().SUd.get(paramInt1)).field_id;
+    s.s(str, "viewModel.showDataList[pos].field_id");
+    paramMenuItem.addToMultiTask(str);
+    aa.db(paramb.getContext(), com.tencent.mm.cd.a.bt(paramb.getContext(), d.g.SQe));
+    return;
+    paramb.removeItem(paramInt1);
+  }
+  
+  private static final boolean a(b paramb, RecyclerView.v paramv, View paramView)
+  {
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramb);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramv);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramb, "this$0");
+    s.u(paramv, "$viewHolder");
+    localObject1 = paramb.getContext();
+    if ((localObject1 instanceof Activity))
+    {
+      localObject1 = ((ViewGroup)((Activity)localObject1).getWindow().getDecorView()).findViewById(16908290);
+      if (localObject1 != null)
+      {
+        localObject2 = new Rect();
+        ((View)localObject1).getGlobalVisibleRect((Rect)localObject2);
+        if (((Rect)localObject2).left <= 0) {}
+      }
+    }
+    for (int i = 1; i != 0; i = 0)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(false, new Object(), "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      return false;
+    }
+    i = paramv.KJ();
+    if ((i < 0) || (i >= paramb.getViewModel().SUd.size()))
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(false, new Object(), "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      return false;
+    }
+    paramv = (com.tencent.mm.ui.widget.b.a)paramView.getTag(d.d.desktop_pop_menu);
+    if ((aw.isMultiTaskMode()) && (paramb.aoc(i))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObject1 = new b..ExternalSyntheticLambda1(bool);
+      localObject2 = new b..ExternalSyntheticLambda4(bool, paramb, i);
+      if (paramv != null)
+      {
+        paramv.afLp = new b..ExternalSyntheticLambda3(paramb);
+        paramb.getCallback().Fm(true);
+        paramv.a(paramView, (View.OnCreateContextMenuListener)localObject1, (u.i)localObject2, 0, 0);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(true, new Object(), "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      return true;
+    }
+  }
+  
+  public final void Z(RecyclerView.v paramv)
+  {
+    s.u(paramv, "viewHolder");
+    Log.i("MicroMsg.TaskBarSectionBaseView", "configItemViewHolderOnBind %d %d", new Object[] { Integer.valueOf(paramv.KJ()), Integer.valueOf(this.STX) });
+    View localView = paramv.caK;
+    localView.setTag(d.d.desktop_pop_menu, new com.tencent.mm.ui.widget.b.a(getContext(), localView));
+    localView.setOnClickListener(new b..ExternalSyntheticLambda0(paramv, this));
+    localView.setOnLongClickListener(new b..ExternalSyntheticLambda2(this, paramv));
+  }
+  
+  public boolean aoc(int paramInt)
   {
     return true;
   }
   
-  protected boolean ajb(int paramInt)
+  protected boolean aod(int paramInt)
   {
     return false;
   }
   
   protected final a getCallback()
   {
-    return this.MqL;
+    return this.STW;
   }
   
   protected final FrameLayout getContainerView()
   {
-    return this.MqK;
+    return this.STZ;
   }
   
   protected final ViewGroup getRoot()
   {
-    return this.kiF;
+    return this.mJe;
   }
   
   protected final int getSectionType()
   {
-    return this.MqM;
+    return this.STX;
   }
   
   protected final TextView getTitle()
   {
-    return this.jMg;
+    return this.mll;
   }
   
   public final d getViewModel()
   {
-    return this.MqJ;
+    return this.STY;
   }
   
-  public abstract String gkg();
+  public abstract String hEf();
   
   public abstract void notifyDataSetChanged();
   
   public final void o(MultiTaskInfo paramMultiTaskInfo)
   {
-    p.k(paramMultiTaskInfo, "multiTaskInfo");
-    this.MqL.n(paramMultiTaskInfo);
+    s.u(paramMultiTaskInfo, "multiTaskInfo");
+    this.STW.n(paramMultiTaskInfo);
   }
   
   protected void removeItem(int paramInt) {}
   
   public final void setViewModel(d paramd)
   {
-    p.k(paramd, "<set-?>");
-    this.MqJ = paramd;
+    s.u(paramd, "<set-?>");
+    this.STY = paramd;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "", "disableScroll", "", "disable", "", "getTaskBarContainerBottom", "", "isLandscape", "onItemClicked", "tryCloseOnPause", "onSearchClick", "onSectionHeightChange", "sectionType", "reportOnItemAppear", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "reportOnItemClicked", "pos", "plugin-taskbar_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "", "disableScroll", "", "disable", "", "getTaskBarContainerBottom", "", "isLandscape", "onItemClicked", "tryCloseOnPause", "onSearchClick", "onSectionHeightChange", "sectionType", "reportOnItemAppear", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "exp_type", "page_type", "page", "iconAppId", "", "reportOnItemClicked", "pos", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
+    public abstract void Fm(boolean paramBoolean);
+    
+    public abstract void Fn(boolean paramBoolean);
+    
     public abstract void a(MultiTaskInfo paramMultiTaskInfo, int paramInt);
     
-    public abstract void aiX(int paramInt);
+    public abstract void anZ(int paramInt);
     
-    public abstract void gjI();
+    public abstract void bdj(String paramString);
+    
+    public abstract void hDI();
     
     public abstract void n(MultiTaskInfo paramMultiTaskInfo);
-    
-    public abstract void zV(boolean paramBoolean);
-    
-    public abstract void zW(boolean paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$1$1"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(b paramb, RecyclerView.v paramv) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(214910);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      int i = paramv.md();
-      if ((i < 0) || (i >= this.MqO.getViewModel().MqV.size()))
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(214910);
-        return;
-      }
-      this.MqO.getCallback().zW(this.MqO.ajb(i));
-      this.MqO.getCallback().a((MultiTaskInfo)this.MqO.getViewModel().MqV.get(i), i);
-      ((PluginTaskBar)h.ag(PluginTaskBar.class)).notifyClickTaskBarItem$plugin_taskbar_release((MultiTaskInfo)this.MqO.MqJ.MqV.get(i));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(214910);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick", "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$1$2"})
-  static final class d
-    implements View.OnLongClickListener
-  {
-    d(b paramb, RecyclerView.v paramv) {}
-    
-    public final boolean onLongClick(final View paramView)
-    {
-      AppMethodBeat.i(215312);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      if (com.tencent.mm.plugin.taskbar.ui.c.b.iq(this.MqO.getContext()))
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(215312);
-        return false;
-      }
-      final int i = paramv.md();
-      if ((i < 0) || (i >= this.MqO.getViewModel().MqV.size()))
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(215312);
-        return false;
-      }
-      localObject = (com.tencent.mm.ui.widget.b.a)paramView.getTag(d.d.desktop_pop_menu);
-      if ((ar.isMultiTaskMode()) && (this.MqO.aja(i))) {}
-      for (final boolean bool = true;; bool = false)
-      {
-        final View.OnCreateContextMenuListener localOnCreateContextMenuListener = (View.OnCreateContextMenuListener)new View.OnCreateContextMenuListener()
-        {
-          public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
-          {
-            AppMethodBeat.i(215724);
-            if ((this.MqP) && (paramAnonymousContextMenu != null)) {
-              paramAnonymousContextMenu.add(0, 0, 0, d.g.MmJ);
-            }
-            if (paramAnonymousContextMenu != null)
-            {
-              paramAnonymousContextMenu.add(0, 1, 0, d.g.MmQ);
-              AppMethodBeat.o(215724);
-              return;
-            }
-            AppMethodBeat.o(215724);
-          }
-        };
-        final q.g localg = (q.g)new q.g()
-        {
-          public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(215674);
-            if (bool) {
-              switch (paramAnonymousInt)
-              {
-              }
-            }
-            for (;;)
-            {
-              AppMethodBeat.o(215674);
-              return;
-              paramAnonymousInt = 1;
-              break;
-              paramAnonymousMenuItem = (PluginTaskBar)h.ag(PluginTaskBar.class);
-              String str = ((MultiTaskInfo)this.MqQ.MqO.getViewModel().MqV.get(i)).field_id;
-              p.j(str, "viewModel.showDataList[pos].field_id");
-              paramAnonymousMenuItem.addToMultiTask(str);
-              w.cR(this.MqQ.MqO.getContext(), com.tencent.mm.ci.a.ba(this.MqQ.MqO.getContext(), d.g.MmM));
-              AppMethodBeat.o(215674);
-              return;
-              this.MqQ.MqO.removeItem(i);
-            }
-          }
-        };
-        if (localObject != null)
-        {
-          ((com.tencent.mm.ui.widget.b.a)localObject).setOnDismissListener((PopupWindow.OnDismissListener)new PopupWindow.OnDismissListener()
-          {
-            public final void onDismiss()
-            {
-              AppMethodBeat.i(214342);
-              this.MqQ.MqO.getCallback().zV(false);
-              AppMethodBeat.o(214342);
-            }
-          });
-          this.MqO.getCallback().zV(true);
-          ((com.tencent.mm.ui.widget.b.a)localObject).a(paramView, localOnCreateContextMenuListener, localg, 0, 0);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$configItemViewHolderOnBind$$inlined$let$lambda$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(215312);
-        return true;
-      }
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.section.b
  * JD-Core Version:    0.7.0.1
  */

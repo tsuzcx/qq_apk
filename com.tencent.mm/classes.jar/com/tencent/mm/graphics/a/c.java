@@ -1,25 +1,26 @@
 package com.tencent.mm.graphics.a;
 
 import android.graphics.Bitmap;
+import com.davemorrissey.labs.subscaleview.decoder.ImageDecodeResult;
 
 public class c
   implements b
 {
-  public void a(com.davemorrissey.labs.subscaleview.a.c paramc) {}
+  public void onImageLoadError(ImageDecodeResult paramImageDecodeResult) {}
   
-  public void b(com.davemorrissey.labs.subscaleview.a.c paramc) {}
+  public void onImageLoaded(Bitmap paramBitmap) {}
   
-  public void c(com.davemorrissey.labs.subscaleview.a.c paramc) {}
+  public void onPreviewLoadError(ImageDecodeResult paramImageDecodeResult) {}
   
-  public void i(Bitmap paramBitmap) {}
+  public final void onPreviewLoaded() {}
   
-  public final void pP() {}
+  public final void onPreviewReleased() {}
   
-  public final void pQ() {}
+  public void onTileLoadError(ImageDecodeResult paramImageDecodeResult) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.graphics.a.c
  * JD-Core Version:    0.7.0.1
  */

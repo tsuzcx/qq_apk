@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.card.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -19,28 +18,28 @@ import com.tencent.mm.plugin.card.a.b;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 
 public abstract class CardDetailBaseUI
   extends MMActivity
 {
-  private TextView pPT;
-  private ImageView raL;
-  private View raR;
-  private TextView tuS;
-  private ImageView tuT;
-  private View tuU;
+  private TextView sUt;
+  private ImageView ugB;
+  private View ugI;
+  private TextView wzp;
+  private ImageView wzq;
+  private View wzr;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.raR = ad.kS(getContext()).inflate(a.e.thX, null);
-    this.raR.setBackgroundColor(getResources().getColor(a.a.action_bar_color));
-    this.pPT = ((TextView)this.raR.findViewById(a.d.title_area));
-    this.tuS = ((TextView)this.raR.findViewById(a.d.sub_title_area));
-    this.raL = ((ImageView)this.raR.findViewById(a.d.arrow_area_btn));
-    this.tuT = ((ImageView)this.raR.findViewById(a.d.menu_icon));
-    this.tuU = this.raR.findViewById(a.d.divider);
+    this.ugI = af.mU(getContext()).inflate(a.e.wmw, null);
+    this.ugI.setBackgroundColor(getResources().getColor(a.a.action_bar_color));
+    this.sUt = ((TextView)this.ugI.findViewById(a.d.title_area));
+    this.wzp = ((TextView)this.ugI.findViewById(a.d.sub_title_area));
+    this.ugB = ((ImageView)this.ugI.findViewById(a.d.arrow_area_btn));
+    this.wzq = ((ImageView)this.ugI.findViewById(a.d.menu_icon));
+    this.wzr = this.ugI.findViewById(a.d.divider);
     LinearLayout localLinearLayout;
     Object localObject;
     if ((getContentView() != null) && (((ViewGroup)getContentView()).getChildCount() > 0))
@@ -59,7 +58,7 @@ public abstract class CardDetailBaseUI
     for (int i = getResources().getDimensionPixelSize(a.b.DefaultActionbarHeightLand);; i = getResources().getDimensionPixelSize(a.b.DefaultActionbarHeightPort))
     {
       localObject = new LinearLayout.LayoutParams(-1, i);
-      localLinearLayout.addView(this.raR, (ViewGroup.LayoutParams)localObject);
+      localLinearLayout.addView(this.ugI, (ViewGroup.LayoutParams)localObject);
       localLinearLayout.addView(paramBundle);
       ((ViewGroup)getContentView()).addView(localLinearLayout);
       return;
@@ -74,7 +73,7 @@ public abstract class CardDetailBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardDetailBaseUI
  * JD-Core Version:    0.7.0.1
  */

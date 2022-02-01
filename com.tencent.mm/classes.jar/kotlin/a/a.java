@@ -2,14 +2,13 @@ package kotlin.a;
 
 import java.util.Collection;
 import java.util.Iterator;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.i;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
+import kotlin.g.b.j;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/AbstractCollection;", "E", "", "()V", "size", "", "getSize", "()I", "contains", "", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "", "()[Ljava/lang/Object;", "T", "array", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/collections/AbstractCollection;", "E", "", "()V", "size", "", "getSize", "()I", "contains", "", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "", "()[Ljava/lang/Object;", "T", "array", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract class a<E>
   implements Collection<E>, kotlin.g.b.a.a
 {
@@ -34,7 +33,7 @@ public abstract class a<E>
     {
       Iterator localIterator = iterator();
       while (localIterator.hasNext()) {
-        if (p.h(localIterator.next(), paramObject)) {
+        if (s.p(localIterator.next(), paramObject)) {
           return true;
         }
       }
@@ -44,7 +43,7 @@ public abstract class a<E>
   
   public boolean containsAll(Collection<? extends Object> paramCollection)
   {
-    p.k(paramCollection, "elements");
+    s.u(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
     if (!((Collection)paramCollection).isEmpty())
     {
@@ -87,27 +86,27 @@ public abstract class a<E>
   
   public Object[] toArray()
   {
-    return i.u((Collection)this);
+    return j.L((Collection)this);
   }
   
   public <T> T[] toArray(T[] paramArrayOfT)
   {
-    p.k(paramArrayOfT, "array");
-    paramArrayOfT = i.b((Collection)this, paramArrayOfT);
+    s.u(paramArrayOfT, "array");
+    paramArrayOfT = j.b((Collection)this, paramArrayOfT);
     if (paramArrayOfT == null) {
-      throw new t("null cannot be cast to non-null type kotlin.Array<T>");
+      throw new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
     }
     return paramArrayOfT;
   }
   
   public String toString()
   {
-    return j.a(this, (CharSequence)", ", (CharSequence)"[", (CharSequence)"]", 0, null, (b)new a(this), 24);
+    return p.a(this, (CharSequence)", ", (CharSequence)"[", (CharSequence)"]", 0, null, (b)new a(this), 24);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "E", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/CharSequence;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "E", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/CharSequence;"}, k=3, mv={1, 5, 1})
   static final class a
-    extends q
+    extends u
     implements b<E, CharSequence>
   {
     a(a parama)
@@ -118,7 +117,7 @@ public abstract class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,27 +7,27 @@ import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.l;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
 
 public final class a
-  extends s
+  extends w
 {
   private a(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt, 0);
-    AppMethodBeat.i(263813);
+    AppMethodBeat.i(310621);
     paramContext = getWindow();
     if (paramContext != null)
     {
       paramContext.addFlags(8);
       paramContext.getDecorView().setSystemUiVisibility(4102);
     }
-    AppMethodBeat.o(263813);
+    AppMethodBeat.o(310621);
   }
   
-  public static s aH(Context paramContext, int paramInt)
+  public static w aU(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(263814);
+    AppMethodBeat.i(310631);
     if ((paramContext instanceof Activity))
     {
       String str = "";
@@ -41,16 +41,16 @@ public final class a
       paramContext.setCancelable(true);
       paramContext.setOnCancelListener(null);
       paramContext.setCanceledOnTouchOutside(false);
-      AppMethodBeat.o(263814);
+      AppMethodBeat.o(310631);
       return paramContext;
     }
-    AppMethodBeat.o(263814);
+    AppMethodBeat.o(310631);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.a.a
  * JD-Core Version:    0.7.0.1
  */

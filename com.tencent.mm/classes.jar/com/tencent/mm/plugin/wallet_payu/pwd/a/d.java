@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.e.a.a;
+import com.tencent.mm.wallet_core.d.a.a;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -9,15 +9,15 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public String PmZ;
-  public String Pna;
-  public String fLj;
+  public String WdL;
+  public String WdM;
+  public String hQR;
   
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72147);
-    this.PmZ = paramString1;
-    this.Pna = paramString2;
+    this.WdL = paramString1;
+    this.WdM = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("payu_reference", paramString1);
     localHashMap.put("new_pin", paramString2);
@@ -25,7 +25,7 @@ public final class d
     AppMethodBeat.o(72147);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 19;
   }
@@ -33,7 +33,7 @@ public final class d
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72148);
-    this.fLj = paramJSONObject.optString("payu_reference");
+    this.hQR = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72148);
   }
 }

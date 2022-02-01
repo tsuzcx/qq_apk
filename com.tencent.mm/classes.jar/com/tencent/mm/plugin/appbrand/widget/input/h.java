@@ -8,26 +8,26 @@ import com.tencent.mm.plugin.appbrand.page.bd;
 
 public final class h
 {
-  private static final h rul;
-  private final a ruk;
+  private static final h uFq;
+  private final a uFp;
   
   static
   {
     AppMethodBeat.i(136358);
-    rul = new h();
+    uFq = new h();
     AppMethodBeat.o(136358);
   }
   
   public h()
   {
     AppMethodBeat.i(136354);
-    this.ruk = new a((byte)0);
+    this.uFp = new a((byte)0);
     AppMethodBeat.o(136354);
   }
   
-  public static h cop()
+  public static h cQR()
   {
-    return rul;
+    return uFq;
   }
   
   final void c(bd parambd)
@@ -38,7 +38,7 @@ public final class h
       AppMethodBeat.o(136355);
       return;
     }
-    this.ruk.rum.delete(parambd.hashCode());
+    this.uFp.uFr.delete(parambd.hashCode());
     try
     {
       parambd.getWrapperView().setFocusable(true);
@@ -62,8 +62,8 @@ public final class h
       AppMethodBeat.o(136356);
       return;
     }
-    int i = this.ruk.f(parambd);
-    this.ruk.a(parambd, i + 1);
+    int i = this.uFp.f(parambd);
+    this.uFp.a(parambd, i + 1);
     try
     {
       parambd.getWrapperView().setFocusable(false);
@@ -90,39 +90,39 @@ public final class h
       AppMethodBeat.o(136357);
       return;
     }
-    int i = this.ruk.f(parambd) - 1;
+    int i = this.uFp.f(parambd) - 1;
     if (i <= 0)
     {
       c(parambd);
       AppMethodBeat.o(136357);
       return;
     }
-    this.ruk.a(parambd, i);
+    this.uFp.a(parambd, i);
     AppMethodBeat.o(136357);
   }
   
   static final class a
   {
-    final SparseIntArray rum;
+    final SparseIntArray uFr;
     
     private a()
     {
       AppMethodBeat.i(136351);
-      this.rum = new SparseIntArray();
+      this.uFr = new SparseIntArray();
       AppMethodBeat.o(136351);
     }
     
     final void a(bd parambd, int paramInt)
     {
       AppMethodBeat.i(136353);
-      this.rum.put(parambd.hashCode(), paramInt);
+      this.uFr.put(parambd.hashCode(), paramInt);
       AppMethodBeat.o(136353);
     }
     
     final int f(bd parambd)
     {
       AppMethodBeat.i(136352);
-      int i = this.rum.get(parambd.hashCode(), 0);
+      int i = this.uFr.get(parambd.hashCode(), 0);
       AppMethodBeat.o(136352);
       return i;
     }
@@ -130,7 +130,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.h
  * JD-Core Version:    0.7.0.1
  */

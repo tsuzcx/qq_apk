@@ -20,20 +20,20 @@ public final class c
 {
   private final Resources mRes;
   private int mSize;
-  private final Drawable sQ;
+  private final Drawable tP;
   
   public c(Resources paramResources)
   {
     AppMethodBeat.i(8958);
     this.mRes = paramResources;
-    this.sQ = new ColorDrawable(paramResources.getColor(e.b.ujD));
-    this.mSize = paramResources.getDimensionPixelSize(e.c.ujJ);
+    this.tP = new ColorDrawable(paramResources.getColor(e.b.xpG));
+    this.mSize = paramResources.getDimensionPixelSize(e.c.xpN);
     AppMethodBeat.o(8958);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(243117);
+    AppMethodBeat.i(269693);
     int j = paramRecyclerView.getPaddingLeft();
     int k = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
     int m = paramRecyclerView.getChildCount();
@@ -41,8 +41,8 @@ public final class c
     if (i < m - 1)
     {
       View localView1 = paramRecyclerView.getChildAt(i);
-      View localView2 = localView1.findViewById(e.e.ukn);
-      View localView3 = localView1.findViewById(e.e.uko);
+      View localView2 = localView1.findViewById(e.e.xqz);
+      View localView3 = localView1.findViewById(e.e.xqA);
       View localView4 = localView1.findViewById(e.e.search_result_layout);
       if (localView1.getVisibility() == 8) {
         super.a(paramCanvas, paramRecyclerView, params);
@@ -57,34 +57,34 @@ public final class c
         int i1 = this.mSize + n;
         if (localView2.getVisibility() == 0)
         {
-          this.sQ.setBounds(j, n, k, i1);
-          this.sQ.draw(paramCanvas);
+          this.tP.setBounds(j, n, k, i1);
+          this.tP.draw(paramCanvas);
         }
         else if (localView3.getVisibility() == 0)
         {
-          this.sQ.setBounds(this.mRes.getDimensionPixelSize(e.c.ujL) + j, n, k, i1);
-          this.sQ.draw(paramCanvas);
+          this.tP.setBounds(this.mRes.getDimensionPixelSize(e.c.xpP) + j, n, k, i1);
+          this.tP.draw(paramCanvas);
         }
         else if (localView4.getVisibility() == 0)
         {
-          this.sQ.setBounds(this.mRes.getDimensionPixelSize(e.c.ujK) + j, n, k, i1);
-          this.sQ.draw(paramCanvas);
+          this.tP.setBounds(this.mRes.getDimensionPixelSize(e.c.xpO) + j, n, k, i1);
+          this.tP.draw(paramCanvas);
         }
       }
     }
-    AppMethodBeat.o(243117);
+    AppMethodBeat.o(269693);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(243118);
+    AppMethodBeat.i(269694);
     paramRect.set(0, 0, 0, this.mSize);
-    AppMethodBeat.o(243118);
+    AppMethodBeat.o(269694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.c
  * JD-Core Version:    0.7.0.1
  */

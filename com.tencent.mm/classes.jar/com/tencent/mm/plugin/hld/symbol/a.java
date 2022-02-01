@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.hld.symbol;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ISymbolTypeSelectListener;", "", "onSymbolTypeClick", "", "typeName", "", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ISymbolTypeSelectListener;", "", "onSymbolTypeClick", "", "typeName", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface a
 {
-  public abstract void aLv(String paramString);
+  public abstract void aIm(String paramString);
 }
 
 

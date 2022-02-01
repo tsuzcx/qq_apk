@@ -6,41 +6,43 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.map.a.i;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
 
 public final class j
 {
-  a EnO;
+  a Kgw;
   public Context mContext;
   public Resources mResources;
-  private d odY;
+  private e reR;
   
   public j(Context paramContext, a parama)
   {
     AppMethodBeat.i(55961);
-    this.odY = null;
+    this.reR = null;
     this.mContext = paramContext;
-    this.EnO = parama;
+    this.Kgw = parama;
     this.mResources = this.mContext.getResources();
     AppMethodBeat.o(55961);
   }
   
-  public final void ehJ()
+  public final void fjO()
   {
     AppMethodBeat.i(55962);
-    Object localObject = com.tencent.mm.kernel.h.aHG().aHp().b(67590, null);
+    Object localObject = h.baE().ban().d(67590, null);
     if (localObject == null) {}
     for (boolean bool = false; !bool; bool = ((Boolean)localObject).booleanValue())
     {
-      com.tencent.mm.ui.base.h.a(this.mContext, this.mResources.getString(a.i.location_sharing_go_on_tips), "", false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      k.a(this.mContext, this.mResources.getString(a.i.location_sharing_go_on_tips), "", false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(55957);
-          if (j.this.EnO != null) {
-            j.this.EnO.eMR();
+          if (j.this.Kgw != null) {
+            j.this.Kgw.fVk();
           }
           AppMethodBeat.o(55957);
         }
@@ -48,28 +50,28 @@ public final class j
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
       });
-      com.tencent.mm.kernel.h.aHG().aHp().i(67590, Boolean.TRUE);
+      h.baE().ban().B(67590, Boolean.TRUE);
       AppMethodBeat.o(55962);
       return;
     }
-    if (this.EnO != null) {
-      this.EnO.eMR();
+    if (this.Kgw != null) {
+      this.Kgw.fVk();
     }
     AppMethodBeat.o(55962);
   }
   
   public static abstract interface a
   {
-    public abstract void VH(int paramInt);
+    public abstract void ZD(int paramInt);
     
-    public abstract void eMR();
+    public abstract void fVk();
     
-    public abstract void eMS();
+    public abstract void fVl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.j
  * JD-Core Version:    0.7.0.1
  */

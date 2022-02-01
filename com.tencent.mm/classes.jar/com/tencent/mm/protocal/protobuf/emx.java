@@ -2,113 +2,152 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class emx
-  extends com.tencent.mm.cd.a
+public class emx
+  extends com.tencent.mm.bx.a
 {
-  public int Svi;
-  public int UpE;
-  public int UpF;
-  public int UpG;
-  public int UpH;
-  public int UpI;
-  public int UpJ;
-  public String jUb;
-  public int rWs;
+  public String MFq;
+  public int Qmp;
+  public String XOr;
+  public int abrd;
+  public int abre;
+  public int abrf;
+  public String abrg;
+  public int abrh;
+  public int lsO;
+  public int scene;
+  public long startTime;
+  public String toUser;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32457);
+    AppMethodBeat.i(260241);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.rWs);
-      paramVarArgs.aY(2, this.Svi);
-      paramVarArgs.aY(3, this.UpE);
-      paramVarArgs.aY(4, this.UpF);
-      paramVarArgs.aY(5, this.UpG);
-      paramVarArgs.aY(6, this.UpH);
-      paramVarArgs.aY(7, this.UpI);
-      paramVarArgs.aY(8, this.UpJ);
-      if (this.jUb != null) {
-        paramVarArgs.f(9, this.jUb);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.lsO);
+      paramVarArgs.bS(2, this.abrd);
+      if (this.XOr != null) {
+        paramVarArgs.g(3, this.XOr);
       }
-      AppMethodBeat.o(32457);
+      paramVarArgs.bS(4, this.abre);
+      paramVarArgs.bS(5, this.abrf);
+      paramVarArgs.bS(6, this.scene);
+      if (this.MFq != null) {
+        paramVarArgs.g(7, this.MFq);
+      }
+      if (this.abrg != null) {
+        paramVarArgs.g(8, this.abrg);
+      }
+      paramVarArgs.bS(9, this.Qmp);
+      paramVarArgs.bS(10, this.abrh);
+      if (this.toUser != null) {
+        paramVarArgs.g(11, this.toUser);
+      }
+      paramVarArgs.bv(12, this.startTime);
+      AppMethodBeat.o(260241);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.rWs) + 0 + g.a.a.b.b.a.bM(2, this.Svi) + g.a.a.b.b.a.bM(3, this.UpE) + g.a.a.b.b.a.bM(4, this.UpF) + g.a.a.b.b.a.bM(5, this.UpG) + g.a.a.b.b.a.bM(6, this.UpH) + g.a.a.b.b.a.bM(7, this.UpI) + g.a.a.b.b.a.bM(8, this.UpJ);
+      int i = i.a.a.b.b.a.cJ(1, this.lsO) + 0 + i.a.a.b.b.a.cJ(2, this.abrd);
       paramInt = i;
-      if (this.jUb != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.jUb);
+      if (this.XOr != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.XOr);
       }
-      AppMethodBeat.o(32457);
-      return paramInt;
+      i = paramInt + i.a.a.b.b.a.cJ(4, this.abre) + i.a.a.b.b.a.cJ(5, this.abrf) + i.a.a.b.b.a.cJ(6, this.scene);
+      paramInt = i;
+      if (this.MFq != null) {
+        paramInt = i + i.a.a.b.b.a.h(7, this.MFq);
+      }
+      i = paramInt;
+      if (this.abrg != null) {
+        i = paramInt + i.a.a.b.b.a.h(8, this.abrg);
+      }
+      i = i + i.a.a.b.b.a.cJ(9, this.Qmp) + i.a.a.b.b.a.cJ(10, this.abrh);
+      paramInt = i;
+      if (this.toUser != null) {
+        paramInt = i + i.a.a.b.b.a.h(11, this.toUser);
+      }
+      i = i.a.a.b.b.a.q(12, this.startTime);
+      AppMethodBeat.o(260241);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(32457);
+      AppMethodBeat.o(260241);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       emx localemx = (emx)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32457);
+        AppMethodBeat.o(260241);
         return -1;
       case 1: 
-        localemx.rWs = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.lsO = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
         return 0;
       case 2: 
-        localemx.Svi = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.abrd = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
         return 0;
       case 3: 
-        localemx.UpE = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.XOr = locala.ajGk.readString();
+        AppMethodBeat.o(260241);
         return 0;
       case 4: 
-        localemx.UpF = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.abre = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
         return 0;
       case 5: 
-        localemx.UpG = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.abrf = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
         return 0;
       case 6: 
-        localemx.UpH = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.scene = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
         return 0;
       case 7: 
-        localemx.UpI = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.MFq = locala.ajGk.readString();
+        AppMethodBeat.o(260241);
         return 0;
       case 8: 
-        localemx.UpJ = locala.abFh.AK();
-        AppMethodBeat.o(32457);
+        localemx.abrg = locala.ajGk.readString();
+        AppMethodBeat.o(260241);
+        return 0;
+      case 9: 
+        localemx.Qmp = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
+        return 0;
+      case 10: 
+        localemx.abrh = locala.ajGk.aar();
+        AppMethodBeat.o(260241);
+        return 0;
+      case 11: 
+        localemx.toUser = locala.ajGk.readString();
+        AppMethodBeat.o(260241);
         return 0;
       }
-      localemx.jUb = locala.abFh.readString();
-      AppMethodBeat.o(32457);
+      localemx.startTime = locala.ajGk.aaw();
+      AppMethodBeat.o(260241);
       return 0;
     }
-    AppMethodBeat.o(32457);
+    AppMethodBeat.o(260241);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.emx
  * JD-Core Version:    0.7.0.1
  */

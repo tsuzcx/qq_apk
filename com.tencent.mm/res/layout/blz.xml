@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/c" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/jlo" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/cn" android:src="@raw/wechat_gray_logo" app:layout_constraintBottom_toTopOf="@id/gxv" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-    <TextView android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/gxv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/e3a" android:maxLines="1" app:layout_constraintBottom_toTopOf="@id/gxu" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/jlo" style="@style/l4" />
-    <TextView android:textSize="@dimen/t" android:textColor="@color/fo" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/gxu" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/e3_" android:maxLines="2" app:layout_constraintBottom_toTopOf="@id/gc3" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/gxv" />
-    <View android:id="@id/gc3" android:layout_width="wrap_content" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/fz0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/gxu" app:layout_constraintVertical_weight="1.0" />
-    <Button android:id="@id/fz0" android:layout_marginBottom="@dimen/bx" android:text="@string/e38" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/gc3" style="@style/ov" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:orientation="horizontal" android:id="@id/hjh" android:background="@color/BW_97" android:padding="@dimen/am6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/lrp" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center" android:id="@id/f3w" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b42" />
+            <TextView android:textColor="@color/a7b" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ll4" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/lrm" android:background="@null" android:paddingTop="20.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center" android:id="@id/cwy" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b3x" />
+            <TextView android:textColor="@color/a7b" android:layout_gravity="center" android:id="@id/cx2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/lkx" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/lrn" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:id="@id/f3u" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b3z" />
+        <TextView android:textColor="@color/a7b" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ll0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/lro" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:id="@id/f3v" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b40" />
+        <TextView android:textColor="@color/a7b" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ll2" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/gzd" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:id="@id/gzc" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b41" />
+        <TextView android:textColor="@color/a7b" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ll3" />
+    </LinearLayout>
+</LinearLayout>

@@ -17,9 +17,9 @@ import com.tencent.mm.service.MMService;
 public class ExDeviceService
   extends MMService
 {
-  private h.a vjg = null;
+  private h.a yvf = null;
   
-  private static boolean cZP()
+  private static boolean dGi()
   {
     AppMethodBeat.i(23637);
     PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
@@ -41,14 +41,14 @@ public class ExDeviceService
     return bool;
   }
   
-  public final IBinder aqH()
+  public final IBinder aKF()
   {
     AppMethodBeat.i(23638);
     Log.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onBind");
-    if (this.vjg == null) {
-      this.vjg = new y();
+    if (this.yvf == null) {
+      this.yvf = new y();
     }
-    h.a locala = this.vjg;
+    h.a locala = this.yvf;
     AppMethodBeat.o(23638);
     return locala;
   }
@@ -72,13 +72,13 @@ public class ExDeviceService
     Log.i("MicroMsg.exdevice.ExDeviceService", "ExDeviceService onDestroy");
     Java2CExDevice.closeBluetoothAccessoryLib();
     super.onDestroy();
-    if (!cZP())
+    if (!dGi())
     {
       Log.i("MicroMsg.exdevice.ExDeviceService", "kill exdevice process now");
       com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
       Object localObject = new Object();
-      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)locala.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)locala.sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/exdevice/service/ExDeviceService", "killProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     }
     AppMethodBeat.o(23636);
@@ -86,7 +86,7 @@ public class ExDeviceService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.ExDeviceService
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ import com.tencent.mm.svg.c;
 public class app_attach_file_icon_epub_simple
   extends c
 {
-  private final int height = 120;
-  private final int width = 120;
+  private final int height = 40;
+  private final int width = 40;
   
   public int doCommand(int paramInt, Object... paramVarArgs)
   {
@@ -25,8 +25,8 @@ public class app_attach_file_icon_epub_simple
     for (;;)
     {
       return 0;
-      return 120;
-      return 120;
+      return 40;
+      return 40;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       Object localObject1 = c.instanceMatrix(paramVarArgs);
@@ -45,7 +45,7 @@ public class app_attach_file_icon_epub_simple
       localPaint2.setPathEffect(null);
       c.instancePaint(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
-      localObject2 = c.setMatrixFloatArray((float[])localObject2, 1.0F, 0.0F, 15.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F);
+      localObject2 = c.setMatrixFloatArray((float[])localObject2, 1.0F, 0.0F, 8.0F, 0.0F, 1.0F, 4.0F, 0.0F, 0.0F, 1.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);
       localCanvas.concat((Matrix)localObject1);
@@ -53,15 +53,15 @@ public class app_attach_file_icon_epub_simple
       localObject1 = c.instancePaint(localPaint1, paramVarArgs);
       ((Paint)localObject1).setColor(-9061376);
       localObject2 = c.instancePath(paramVarArgs);
-      ((Path)localObject2).moveTo(60.882355F, 0.0F);
-      ((Path)localObject2).lineTo(90.0F, 29.333334F);
-      ((Path)localObject2).lineTo(90.0F, 116.0F);
-      ((Path)localObject2).cubicTo(90.0F, 118.20914F, 88.222305F, 120.0F, 86.029411F, 120.0F);
-      ((Path)localObject2).lineTo(3.970588F, 120.0F);
-      ((Path)localObject2).cubicTo(1.777693F, 120.0F, 0.0F, 118.20914F, 0.0F, 116.0F);
-      ((Path)localObject2).lineTo(0.0F, 4.0F);
-      ((Path)localObject2).cubicTo(0.0F, 1.790861F, 1.777693F, 0.0F, 3.970588F, 0.0F);
-      ((Path)localObject2).lineTo(60.882355F, 0.0F);
+      ((Path)localObject2).moveTo(16.235294F, 0.0F);
+      ((Path)localObject2).lineTo(24.0F, 7.822222F);
+      ((Path)localObject2).lineTo(24.0F, 30.933332F);
+      ((Path)localObject2).cubicTo(24.0F, 31.522436F, 23.525948F, 32.0F, 22.941177F, 32.0F);
+      ((Path)localObject2).lineTo(1.058824F, 32.0F);
+      ((Path)localObject2).cubicTo(0.4740515F, 32.0F, 0.0F, 31.522436F, 0.0F, 30.933332F);
+      ((Path)localObject2).lineTo(0.0F, 1.066667F);
+      ((Path)localObject2).cubicTo(0.0F, 0.4775629F, 0.4740515F, 0.0F, 1.058824F, 0.0F);
+      ((Path)localObject2).lineTo(16.235294F, 0.0F);
       ((Path)localObject2).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject2, 1);
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
@@ -70,11 +70,11 @@ public class app_attach_file_icon_epub_simple
       localPaint1 = c.instancePaint(localPaint1, paramVarArgs);
       localPaint1.setColor(-10643968);
       localObject1 = c.instancePath(paramVarArgs);
-      ((Path)localObject1).moveTo(90.0F, 29.333334F);
-      ((Path)localObject1).lineTo(64.852943F, 29.333334F);
-      ((Path)localObject1).cubicTo(62.660046F, 29.333334F, 60.882355F, 27.542473F, 60.882355F, 25.333334F);
-      ((Path)localObject1).lineTo(60.882355F, 0.0F);
-      ((Path)localObject1).lineTo(90.0F, 29.333334F);
+      ((Path)localObject1).moveTo(24.0F, 7.822222F);
+      ((Path)localObject1).lineTo(17.294117F, 7.822222F);
+      ((Path)localObject1).cubicTo(16.709345F, 7.822222F, 16.235294F, 7.344659F, 16.235294F, 6.755556F);
+      ((Path)localObject1).lineTo(16.235294F, 0.0F);
+      ((Path)localObject1).lineTo(24.0F, 7.822222F);
       ((Path)localObject1).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject1, 1);
       localCanvas.drawPath((Path)localObject1, localPaint1);
@@ -86,7 +86,7 @@ public class app_attach_file_icon_epub_simple
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_attach_file_icon_epub_simple
  * JD-Core Version:    0.7.0.1
  */

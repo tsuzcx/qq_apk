@@ -1,29 +1,29 @@
 package com.tencent.mm.xeffect.effect;
 
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/VLogEffect;", "", "ptr", "", "(J)V", "<set-?>", "id", "getId", "()J", "setId$renderlib_release", "getPtr", "setPtr", "timeRange", "Lcom/tencent/mm/xeffect/effect/EffectTimeRange;", "duration", "finalize", "", "getTimeRange", "setTimeRange", "start", "end", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/xeffect/effect/VLogEffect;", "", "ptr", "", "(J)V", "<set-?>", "id", "getId", "()J", "setId$renderlib_release", "getPtr", "setPtr", "timeRange", "Lcom/tencent/mm/xeffect/effect/EffectTimeRange;", "duration", "finalize", "", "getTimeRange", "setTimeRange", "start", "end", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"}, k=1, mv={1, 1, 15})
 public abstract class af
 {
-  public i ZaH;
+  public i agYT;
   public long id;
   public long ptr;
   
   public af(long paramLong)
   {
     this.ptr = paramLong;
-    this.ZaH = new i();
+    this.agYT = new i();
   }
   
   private void a(i parami)
   {
-    p.k(parami, "timeRange");
-    this.ZaH = parami;
+    s.t(parami, "timeRange");
+    this.agYT = parami;
     VLogEffectJNI.INSTANCE.setEffectTime$renderlib_release(this.ptr, parami);
   }
   
-  public final void aZ(long paramLong1, long paramLong2)
+  public final void bL(long paramLong1, long paramLong2)
   {
     a(new i(paramLong1, paramLong2));
   }
@@ -33,11 +33,11 @@ public abstract class af
     VLogEffectJNI.INSTANCE.destroyEffect(this);
   }
   
-  public abstract j ika();
+  public abstract j jQi();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.af
  * JD-Core Version:    0.7.0.1
  */

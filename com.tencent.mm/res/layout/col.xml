@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.neattextview.textview.view.NeatTextView android:textSize="13.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/kpr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/bt" android:layout_marginRight="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:text="" android:includeFontPadding="false" android:lineSpacingExtra="2.0dip" />
-</FrameLayout>
+<RelativeLayout android:id="@id/mb2" android:background="@color/xd" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/mat" android:background="@drawable/cde" android:layout_width="350.0dip" android:layout_height="484.0dip" android:layout_centerInParent="true">
+        <ImageView android:layout_width="286.0dip" android:layout_height="65.0dip" android:layout_marginTop="@dimen/cv" android:src="@drawable/cdi" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="20.0dip" android:textColor="#ffba9c6a" android:id="@id/mau" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:text="@string/ltq" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        <TextView android:textSize="15.0dip" android:textColor="#ffba9c6a" android:gravity="center_horizontal" android:id="@id/maq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/ltp" android:layout_below="@id/mau" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/mar" android:background="@drawable/in" android:layout_width="@dimen/cj" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/db" android:text="@string/lsx" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+        <ImageView android:id="@id/map" android:layout_width="286.0dip" android:layout_height="160.0dip" android:src="@drawable/cdg" android:layout_above="@id/mar" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/mas" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/d0" android:src="@raw/icons_outlined_close2" android:layout_below="@id/mat" android:layout_centerHorizontal="true" app:iconColor="#ffcdab6f" />
+</RelativeLayout>

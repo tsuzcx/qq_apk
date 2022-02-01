@@ -1,76 +1,79 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.akt;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic;", "", "()V", "mReceiver", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "clear", "", "notifyReceiver", "entrances", "", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "registerEntranceInfoUpdateReceiverForId", "receiver", "requestEntranceInfo", "unregisterEntranceInfoUpdateReceiverForId", "Companion", "EntranceId", "EntranceInfoUpdateReceiver", "ShowCaseType", "plugin-appbrand-integration_release"})
-public final class ap
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaInfo;", "", "userName", "", "appId", "versionType", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getAppId", "()Ljava/lang/String;", "getUserName", "getVersionType", "()I", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class ap
 {
-  public static final a nQA;
-  public final Map<b, List<c>> nQz;
+  final String appId;
+  final int euz;
+  final String userName;
   
-  static
+  public ap(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(180446);
-    nQA = new a((byte)0);
-    AppMethodBeat.o(180446);
+    AppMethodBeat.i(319367);
+    this.userName = paramString1;
+    this.appId = paramString2;
+    this.euz = paramInt;
+    AppMethodBeat.o(319367);
   }
   
-  public ap()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(180445);
-    this.nQz = ((Map)new LinkedHashMap());
-    AppMethodBeat.o(180445);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "", "(Ljava/lang/String;I)V", "ENTRANCE_ID_NONE", "ENTRANCE_ID_NEARBY", "ENTRANCE_ID_LIVE", "ENTRANCE_ID_FRIENDS_USING", "Companion", "plugin-appbrand-integration_release"})
-  public static enum b
-  {
-    public static final a nQG;
-    
-    static
+    AppMethodBeat.i(319378);
+    if (this == paramObject)
     {
-      AppMethodBeat.i(180436);
-      b localb1 = new b("ENTRANCE_ID_NONE", 0);
-      nQB = localb1;
-      b localb2 = new b("ENTRANCE_ID_NEARBY", 1);
-      nQC = localb2;
-      b localb3 = new b("ENTRANCE_ID_LIVE", 2);
-      nQD = localb3;
-      b localb4 = new b("ENTRANCE_ID_FRIENDS_USING", 3);
-      nQE = localb4;
-      nQF = new b[] { localb1, localb2, localb3, localb4 };
-      nQG = new a((byte)0);
-      AppMethodBeat.o(180436);
+      AppMethodBeat.o(319378);
+      return true;
     }
-    
-    private b() {}
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId$Companion;", "", "()V", "getByOrdinal", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "id", "", "plugin-appbrand-integration_release"})
-    public static final class a {}
+    if (!(paramObject instanceof ap))
+    {
+      AppMethodBeat.o(319378);
+      return false;
+    }
+    paramObject = (ap)paramObject;
+    if (!s.p(this.userName, paramObject.userName))
+    {
+      AppMethodBeat.o(319378);
+      return false;
+    }
+    if (!s.p(this.appId, paramObject.appId))
+    {
+      AppMethodBeat.o(319378);
+      return false;
+    }
+    if (this.euz != paramObject.euz)
+    {
+      AppMethodBeat.o(319378);
+      return false;
+    }
+    AppMethodBeat.o(319378);
+    return true;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceInfoUpdateReceiver;", "", "getEntranceId", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$EntranceId;", "onEntranceInfoUpdate", "", "info", "Lcom/tencent/mm/protocal/protobuf/EntranceInfo;", "plugin-appbrand-integration_release"})
-  public static abstract interface c
+  public final int hashCode()
   {
-    public abstract void a(akt paramakt);
-    
-    public abstract ap.b bJK();
+    AppMethodBeat.i(319372);
+    int i = this.userName.hashCode();
+    int j = this.appId.hashCode();
+    int k = this.euz;
+    AppMethodBeat.o(319372);
+    return (i * 31 + j) * 31 + k;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType$Companion;", "", "()V", "getByOrdinal", "Lcom/tencent/mm/plugin/appbrand/appusage/WxaDesktopHeaderEntranceLogic$ShowCaseType;", "id", "", "plugin-appbrand-integration_release"})
-  public static final class d$a {}
+  public final String toString()
+  {
+    AppMethodBeat.i(319369);
+    String str = "WxaInfo(userName=" + this.userName + ", appId=" + this.appId + ", versionType=" + this.euz + ')';
+    AppMethodBeat.o(319369);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ap
  * JD-Core Version:    0.7.0.1
  */

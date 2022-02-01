@@ -4,170 +4,117 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class csf
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String AtN;
-  public String AtP;
-  public boolean Btc;
-  public boolean Btd;
-  public bfg TzP;
-  public String TzQ;
-  public LinkedList<csg> mediaList;
-  public String musicFeedId;
-  public int soundTrackType;
-  
-  public csf()
-  {
-    AppMethodBeat.i(169078);
-    this.mediaList = new LinkedList();
-    AppMethodBeat.o(169078);
-  }
+  public String code;
+  public String iaI;
+  public int scene;
+  public String wsy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169079);
+    AppMethodBeat.i(114034);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 8, this.mediaList);
-      if (this.TzP != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(2, this.TzP.computeSize());
-        this.TzP.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.AtP != null) {
-        paramVarArgs.f(3, this.AtP);
+      if (this.iaI != null) {
+        paramVarArgs.g(2, this.iaI);
       }
-      if (this.AtN != null) {
-        paramVarArgs.f(4, this.AtN);
+      paramVarArgs.bS(3, this.scene);
+      if (this.wsy != null) {
+        paramVarArgs.g(4, this.wsy);
       }
-      if (this.TzQ != null) {
-        paramVarArgs.f(5, this.TzQ);
+      if (this.code != null) {
+        paramVarArgs.g(5, this.code);
       }
-      paramVarArgs.co(6, this.Btc);
-      paramVarArgs.co(7, this.Btd);
-      paramVarArgs.aY(8, this.soundTrackType);
-      if (this.musicFeedId != null) {
-        paramVarArgs.f(9, this.musicFeedId);
-      }
-      AppMethodBeat.o(169079);
+      AppMethodBeat.o(114034);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label508;
+      }
+    }
+    label508:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      i = g.a.a.a.c(1, 8, this.mediaList) + 0;
+      int i = paramInt;
+      if (this.iaI != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.iaI);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.scene);
       paramInt = i;
-      if (this.TzP != null) {
-        paramInt = i + g.a.a.a.oD(2, this.TzP.computeSize());
+      if (this.wsy != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.wsy);
       }
       i = paramInt;
-      if (this.AtP != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.AtP);
+      if (this.code != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.code);
       }
-      paramInt = i;
-      if (this.AtN != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.AtN);
-      }
-      i = paramInt;
-      if (this.TzQ != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.TzQ);
-      }
-      i = i + (g.a.a.b.b.a.gL(6) + 1) + (g.a.a.b.b.a.gL(7) + 1) + g.a.a.b.b.a.bM(8, this.soundTrackType);
-      paramInt = i;
-      if (this.musicFeedId != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.musicFeedId);
-      }
-      AppMethodBeat.o(169079);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.mediaList.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(169079);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      csf localcsf = (csf)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      switch (paramInt)
+      AppMethodBeat.o(114034);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(169079);
-        return -1;
-      case 1: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new csg();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((csg)localObject2).parseFrom((byte[])localObject1);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
-          localcsf.mediaList.add(localObject2);
-          paramInt += 1;
         }
-        AppMethodBeat.o(169079);
-        return 0;
-      case 2: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new bfg();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((bfg)localObject2).parseFrom((byte[])localObject1);
-          }
-          localcsf.TzP = ((bfg)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(169079);
-        return 0;
-      case 3: 
-        localcsf.AtP = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(169079);
-        return 0;
-      case 4: 
-        localcsf.AtN = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(169079);
-        return 0;
-      case 5: 
-        localcsf.TzQ = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(169079);
-        return 0;
-      case 6: 
-        localcsf.Btc = ((g.a.a.a.a)localObject1).abFh.AB();
-        AppMethodBeat.o(169079);
-        return 0;
-      case 7: 
-        localcsf.Btd = ((g.a.a.a.a)localObject1).abFh.AB();
-        AppMethodBeat.o(169079);
-        return 0;
-      case 8: 
-        localcsf.soundTrackType = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(169079);
+        AppMethodBeat.o(114034);
         return 0;
       }
-      localcsf.musicFeedId = ((g.a.a.a.a)localObject1).abFh.readString();
-      AppMethodBeat.o(169079);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        csf localcsf = (csf)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(114034);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcsf.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(114034);
+          return 0;
+        case 2: 
+          localcsf.iaI = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(114034);
+          return 0;
+        case 3: 
+          localcsf.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(114034);
+          return 0;
+        case 4: 
+          localcsf.wsy = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(114034);
+          return 0;
+        }
+        localcsf.code = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(114034);
+        return 0;
+      }
+      AppMethodBeat.o(114034);
+      return -1;
     }
-    AppMethodBeat.o(169079);
-    return -1;
   }
 }
 

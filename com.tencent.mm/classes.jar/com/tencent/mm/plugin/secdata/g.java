@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.secdata;
 
-import com.tencent.mm.cd.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.kernel.b.d;
 
 public abstract interface g
@@ -16,9 +16,13 @@ public abstract interface g
   
   public abstract void removeFromMemory(int paramInt, String paramString);
   
+  public abstract <T extends a> void removeFromStorage(int paramInt, String paramString, i<T> parami);
+  
   public abstract boolean removeFromStorageSync(int paramInt, String paramString);
   
   public abstract <T extends a> void updateOnlyMemory(int paramInt, String paramString, T paramT);
+  
+  public abstract <T extends a> void updateWithSave(int paramInt, String paramString, T paramT, long paramLong, i<T> parami);
   
   public abstract <T extends a> void updateWithSave(int paramInt, String paramString, T paramT, i<T> parami);
 }

@@ -32,10 +32,9 @@ public final class b
     try
     {
       b = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
-      AppMethodBeat.o(173868);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(173868);
     }
@@ -45,22 +44,22 @@ public final class b
   {
     super(paramContext);
     AppMethodBeat.i(173858);
-    Object localObject = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
-    if (localObject != null)
+    Object localObject1 = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 0);
+    if (localObject1 != null)
     {
-      localObject = ((PackageInfo)localObject).applicationInfo;
-      if (localObject != null)
+      localObject1 = ((PackageInfo)localObject1).applicationInfo;
+      if (localObject1 != null)
       {
-        this.e = ((ApplicationInfo)localObject).packageName;
-        ((ApplicationInfo)localObject).sourceDir = paramString;
-        ((ApplicationInfo)localObject).publicSourceDir = paramString;
+        this.e = ((ApplicationInfo)localObject1).packageName;
+        ((ApplicationInfo)localObject1).sourceDir = paramString;
+        ((ApplicationInfo)localObject1).publicSourceDir = paramString;
       }
     }
     for (;;)
     {
       try
       {
-        this.c = paramContext.getPackageManager().getResourcesForApplication((ApplicationInfo)localObject);
+        this.c = paramContext.getPackageManager().getResourcesForApplication((ApplicationInfo)localObject1);
         if (this.c != null)
         {
           this.d = this.c.newTheme();
@@ -68,7 +67,7 @@ public final class b
           if (paramContext != null) {
             this.d.setTo(paramContext);
           }
-          int i = ((ApplicationInfo)localObject).theme;
+          int i = ((ApplicationInfo)localObject1).theme;
           if (i != 0) {
             this.d.applyStyle(i, true);
           }
@@ -77,7 +76,7 @@ public final class b
           return;
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
         this.c = a(paramContext, paramString);
         continue;
@@ -113,25 +112,25 @@ public final class b
     {
       AssetManager localAssetManager = (AssetManager)AssetManager.class.newInstance();
       b.invoke(localAssetManager, new Object[] { paramString });
-      Object localObject = paramContext.getResources();
-      paramContext = ((Resources)localObject).getDisplayMetrics();
-      Configuration localConfiguration = ((Resources)localObject).getConfiguration();
-      localObject = localObject.getClass();
-      boolean bool = "android.taobao.atlas.runtime.DelegateResources".equals(((Class)localObject).getName());
+      Object localObject1 = paramContext.getResources();
+      paramContext = ((Resources)localObject1).getDisplayMetrics();
+      Configuration localConfiguration = ((Resources)localObject1).getConfiguration();
+      localObject1 = localObject1.getClass();
+      boolean bool = "android.taobao.atlas.runtime.DelegateResources".equals(((Class)localObject1).getName());
       if (!bool) {
         try
         {
-          localObject = (Resources)((Class)localObject).getConstructor(new Class[] { AssetManager.class, DisplayMetrics.class, Configuration.class }).newInstance(new Object[] { localAssetManager, paramContext, localConfiguration });
+          localObject1 = (Resources)((Class)localObject1).getConstructor(new Class[] { AssetManager.class, DisplayMetrics.class, Configuration.class }).newInstance(new Object[] { localAssetManager, paramContext, localConfiguration });
           AppMethodBeat.o(173857);
-          return localObject;
+          return localObject1;
         }
-        catch (Throwable localThrowable) {}
+        finally {}
       }
       paramContext = new Resources(localAssetManager, paramContext, localConfiguration);
       AppMethodBeat.o(173857);
       return paramContext;
     }
-    catch (Throwable paramContext)
+    finally
     {
       f.b("Failed to new resources from %s", new Object[] { paramString, paramContext });
       AppMethodBeat.o(173857);
@@ -243,7 +242,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.b.b
  * JD-Core Version:    0.7.0.1
  */

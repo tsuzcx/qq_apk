@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.webkit.ValueCallback;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.m.h;
-import com.tencent.mm.plugin.appbrand.m.j;
+import com.tencent.mm.plugin.appbrand.n.h;
+import com.tencent.mm.plugin.appbrand.n.j;
 import com.tencent.mm.plugin.appbrand.page.aq;
 import com.tencent.mm.plugin.appbrand.page.ar;
 import com.tencent.mm.plugin.appbrand.page.au;
@@ -21,24 +21,12 @@ import java.util.Map;
 public final class a
   implements bd
 {
-  private ViewGroup cvl;
-  private ViewGroup cvm;
+  private ViewGroup enj;
+  private ViewGroup enk;
   
-  public final void B(String paramString1, String paramString2) {}
+  public final void G(String paramString1, String paramString2) {}
   
-  public final void PE() {}
-  
-  public final boolean PF()
-  {
-    return false;
-  }
-  
-  public final boolean PG()
-  {
-    return false;
-  }
-  
-  public final <T extends j> T Q(Class<T> paramClass)
+  public final <T extends j> T Z(Class<T> paramClass)
   {
     return null;
   }
@@ -47,34 +35,46 @@ public final class a
   
   public final void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, ValueCallback<String> paramValueCallback) {}
   
-  public final void aD(Context paramContext)
-  {
-    AppMethodBeat.i(130625);
-    if (this.cvl == null) {
-      this.cvl = new FrameLayout(paramContext);
-    }
-    if (this.cvm == null) {
-      this.cvm = new FrameLayout(paramContext);
-    }
-    AppMethodBeat.o(130625);
-  }
-  
   public final void addJavascriptInterface(Object paramObject, String paramString) {}
   
-  public final void cl(int paramInt1, int paramInt2) {}
+  public final void apO() {}
   
-  public final boolean d(Canvas paramCanvas)
+  public final boolean apP()
   {
     return false;
   }
   
+  public final boolean apQ()
+  {
+    return false;
+  }
+  
+  public final void bm(Context paramContext)
+  {
+    AppMethodBeat.i(130625);
+    if (this.enj == null) {
+      this.enj = new FrameLayout(paramContext);
+    }
+    if (this.enk == null) {
+      this.enk = new FrameLayout(paramContext);
+    }
+    AppMethodBeat.o(130625);
+  }
+  
+  public final void cZ(int paramInt1, int paramInt2) {}
+  
   public final void destroy()
   {
-    this.cvl = null;
-    this.cvm = null;
+    this.enj = null;
+    this.enk = null;
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
+  
+  public final boolean g(Canvas paramCanvas)
+  {
+    return false;
+  }
   
   public final int getContentHeight()
   {
@@ -83,7 +83,7 @@ public final class a
   
   public final View getContentView()
   {
-    return this.cvm;
+    return this.enk;
   }
   
   public final d getFullscreenImpl()
@@ -118,23 +118,21 @@ public final class a
   
   public final View getWrapperView()
   {
-    return this.cvl;
+    return this.enj;
   }
   
-  public final void i(Runnable paramRunnable)
+  public final void k(Runnable paramRunnable)
   {
-    AppMethodBeat.i(247452);
+    AppMethodBeat.i(220155);
     if (paramRunnable != null) {
       paramRunnable.run();
     }
-    AppMethodBeat.o(247452);
+    AppMethodBeat.o(220155);
   }
   
   public final void onBackground() {}
   
   public final void onForeground() {}
-  
-  public final void s(int paramInt, long paramLong) {}
   
   public final void setAppBrandInfo(Map<String, String> paramMap) {}
   
@@ -153,6 +151,8 @@ public final class a
   public final void setWebViewLayoutListener(aq paramaq) {}
   
   public final void setXWebKeyboardImpl(aw paramaw) {}
+  
+  public final void w(int paramInt, long paramLong) {}
 }
 
 

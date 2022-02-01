@@ -4,58 +4,60 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/CenterSmoothScroller;", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "calculateDxToMakeVisible", "", "view", "Landroid/view/View;", "snapPreference", "calculateDyToMakeVisible", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/CenterSmoothScroller;", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "calculateDxToMakeVisible", "", "view", "Landroid/view/View;", "snapPreference", "calculateDyToMakeVisible", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends androidx.recyclerview.widget.p
+  extends o
 {
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(203635);
-    AppMethodBeat.o(203635);
+    AppMethodBeat.i(285880);
+    AppMethodBeat.o(285880);
   }
   
-  public final int E(View paramView, int paramInt)
+  public final int I(View paramView, int paramInt)
   {
-    AppMethodBeat.i(203633);
-    kotlin.g.b.p.k(paramView, "view");
+    AppMethodBeat.i(285895);
+    s.u(paramView, "view");
     RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
     if ((localLayoutManager == null) || (!localLayoutManager.canScrollVertically()))
     {
-      AppMethodBeat.o(203633);
+      AppMethodBeat.o(285895);
       return 0;
     }
     paramInt = (paramView.getTop() + paramView.getBottom()) / 2;
     int i = localLayoutManager.getHeight() / 2;
-    AppMethodBeat.o(203633);
+    AppMethodBeat.o(285895);
     return i - paramInt;
   }
   
-  public final int F(View paramView, int paramInt)
+  public final int J(View paramView, int paramInt)
   {
-    AppMethodBeat.i(203632);
-    kotlin.g.b.p.k(paramView, "view");
+    AppMethodBeat.i(285887);
+    s.u(paramView, "view");
     RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
     if ((localLayoutManager == null) || (!localLayoutManager.canScrollHorizontally()))
     {
-      AppMethodBeat.o(203632);
+      AppMethodBeat.o(285887);
       return 0;
     }
     paramInt = (paramView.getLeft() + paramView.getRight()) / 2;
     int i = localLayoutManager.getWidth() / 2;
-    AppMethodBeat.o(203632);
+    AppMethodBeat.o(285887);
     return i - paramInt;
   }
   
-  public final float a(DisplayMetrics paramDisplayMetrics)
+  public final float c(DisplayMetrics paramDisplayMetrics)
   {
-    AppMethodBeat.i(203634);
-    kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
+    AppMethodBeat.i(285903);
+    s.u(paramDisplayMetrics, "displayMetrics");
     float f = 50.0F / paramDisplayMetrics.densityDpi;
-    AppMethodBeat.o(203634);
+    AppMethodBeat.o(285903);
     return f;
   }
 }

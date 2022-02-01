@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/a3x" android:textColor="@color/ag2" android:id="@id/dph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a3w" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-    </RelativeLayout>
-</merge>
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/cpg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.facedetect.views.FaceDetectView android:id="@id/cps" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/cq9" android:background="@drawable/sc" android:layout_width="fill_parent" android:layout_height="@dimen/a63" android:layout_alignParentTop="true" />
+    <RelativeLayout android:background="@drawable/s9" android:layout_width="fill_parent" android:layout_height="@dimen/a63" android:layout_alignParentBottom="true" />
+    <Button android:id="@id/fmx" style="@style/j7" />
+    <com.tencent.mm.plugin.facedetect.views.FaceScanRect android:id="@id/cpt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="50.0dip" android:layout_marginTop="-63.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="99.0dip" android:layout_below="@id/cq9" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/p6" android:id="@id/ckp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="164.0dip" android:layout_centerHorizontal="true" />
+</RelativeLayout>

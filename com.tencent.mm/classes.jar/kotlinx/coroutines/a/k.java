@@ -1,83 +1,61 @@
 package kotlinx.coroutines.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.ap;
-import kotlinx.coroutines.internal.v;
-import kotlinx.coroutines.o;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/channels/Closed;", "E", "Lkotlinx/coroutines/channels/Send;", "Lkotlinx/coroutines/channels/ReceiveOrClosed;", "closeCause", "", "(Ljava/lang/Throwable;)V", "offerResult", "getOfferResult", "()Lkotlinx/coroutines/channels/Closed;", "pollResult", "getPollResult", "receiveException", "getReceiveException", "()Ljava/lang/Throwable;", "sendException", "getSendException", "completeResumeReceive", "", "value", "(Ljava/lang/Object;)V", "completeResumeSend", "resumeSendClosed", "closed", "toString", "", "tryResumeReceive", "Lkotlinx/coroutines/internal/Symbol;", "otherOp", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$PrepareOp;", "(Ljava/lang/Object;Lkotlinx/coroutines/internal/LockFreeLinkedListNode$PrepareOp;)Lkotlinx/coroutines/internal/Symbol;", "tryResumeSend", "kotlinx-coroutines-core"})
-public final class k<E>
-  extends w
-  implements u<E>
+@Metadata(d1={""}, d2={"Channel", "Lkotlinx/coroutines/channels/Channel;", "E", "capacity", "", "onBufferOverflow", "Lkotlinx/coroutines/channels/BufferOverflow;", "onUndeliveredElement", "Lkotlin/Function1;", "", "getOrElse", "T", "Lkotlinx/coroutines/channels/ChannelResult;", "onFailure", "", "Lkotlin/ParameterName;", "name", "exception", "getOrElse-WpGqRn0", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "onClosed", "action", "onClosed-WpGqRn0", "onFailure-WpGqRn0", "onSuccess", "value", "onSuccess-WpGqRn0", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class k
 {
-  public final Throwable abyu;
-  
-  public k(Throwable paramThrowable)
+  private static <E> h<E> a(int paramInt, g paramg)
   {
-    this.abyu = paramThrowable;
-  }
-  
-  public final void d(k<?> paramk)
-  {
-    AppMethodBeat.i(204386);
-    if (ap.iRg())
+    int i = 1;
+    AppMethodBeat.i(189282);
+    switch (paramInt)
     {
-      paramk = (Throwable)new AssertionError();
-      AppMethodBeat.o(204386);
-      throw paramk;
+    default: 
+      if ((paramInt == 1) && (paramg == g.ajxy)) {
+        paramg = (a)new r(null);
+      }
+      break;
     }
-    AppMethodBeat.o(204386);
-  }
-  
-  public final v gn(E paramE)
-  {
-    return o.abwj;
-  }
-  
-  public final void iSf() {}
-  
-  public final v iSp()
-  {
-    return o.abwj;
-  }
-  
-  public final void iSq() {}
-  
-  public final Throwable iSy()
-  {
-    AppMethodBeat.i(204379);
-    Throwable localThrowable2 = this.abyu;
-    Throwable localThrowable1 = localThrowable2;
-    if (localThrowable2 == null) {
-      localThrowable1 = (Throwable)new m("Channel was closed");
+    for (;;)
+    {
+      paramg = (h)paramg;
+      AppMethodBeat.o(189282);
+      return paramg;
+      if (paramg == g.ajxx) {}
+      for (paramg = (a)new z(null);; paramg = (a)new e(1, paramg, null))
+      {
+        paramg = (h)paramg;
+        AppMethodBeat.o(189282);
+        return paramg;
+      }
+      if (paramg == g.ajxx) {}
+      for (paramInt = i; paramInt == 0; paramInt = 0)
+      {
+        paramg = (Throwable)new IllegalArgumentException("CONFLATED capacity cannot be used with non-default onBufferOverflow".toString());
+        AppMethodBeat.o(189282);
+        throw paramg;
+      }
+      paramg = new r(null);
+      continue;
+      paramg = new s(null);
+      continue;
+      if (paramg == g.ajxx) {
+        h.a locala = h.ajxB;
+      }
+      for (paramInt = h.a.kDo();; paramInt = 1)
+      {
+        paramg = new e(paramInt, paramg, null);
+        break;
+      }
+      paramg = (a)new e(paramInt, paramg, null);
     }
-    AppMethodBeat.o(204379);
-    return localThrowable1;
-  }
-  
-  public final Throwable iSz()
-  {
-    AppMethodBeat.i(204381);
-    Throwable localThrowable2 = this.abyu;
-    Throwable localThrowable1 = localThrowable2;
-    if (localThrowable2 == null) {
-      localThrowable1 = (Throwable)new l("Channel was closed");
-    }
-    AppMethodBeat.o(204381);
-    return localThrowable1;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(204387);
-    String str = "Closed@" + Integer.toHexString(System.identityHashCode(this)) + '[' + this.abyu + ']';
-    AppMethodBeat.o(204387);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.k
  * JD-Core Version:    0.7.0.1
  */

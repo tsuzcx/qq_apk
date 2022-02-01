@@ -7,11 +7,11 @@ import com.tencent.mm.plugin.box.webview.e;
 
 public abstract interface b
 {
-  public abstract BoxWebView cyu();
+  public abstract BoxWebView dbl();
   
-  public abstract e cyv();
+  public abstract e dbm();
   
-  public abstract d cyw();
+  public abstract d dbn();
   
   public abstract void dismiss();
   

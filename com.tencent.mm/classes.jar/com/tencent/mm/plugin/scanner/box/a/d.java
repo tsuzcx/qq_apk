@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.scanner.box.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.plugin.scanner.box.a.a.b;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/jsapi/JsApiOpenFinderView;", "Lcom/tencent/mm/plugin/scanner/box/jsapi/base/ScanBaseJsApi;", "()V", "TAG", "", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/jsapi/JsApiOpenFinderView;", "Lcom/tencent/mm/plugin/scanner/box/jsapi/base/ScanBaseJsApi;", "()V", "TAG", "", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends b
 {
-  public static final d IId;
-  private static final String fXz = "openFinderView";
+  public static final d OOc;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(219559);
-    IId = new d();
-    fXz = "openFinderView";
-    AppMethodBeat.o(219559);
+    AppMethodBeat.i(313797);
+    OOc = new d();
+    idA = "openFinderView";
+    AppMethodBeat.o(313797);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(com.tencent.mm.plugin.webview.jsapi.h paramh, p paramp)
   {
-    AppMethodBeat.i(219558);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
+    AppMethodBeat.i(313813);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
     Log.i("MicroMsg.JsApiOpenFinderView", "openFinderView");
-    String str = (String)paramn.params.get("extInfo");
+    String str = (String)paramp.params.get("extInfo");
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("extInfo", new JSONObject(str));
-      ((ak)com.tencent.mm.kernel.h.ag(ak.class)).enterFinderUI(MMApplicationContext.getContext(), localJSONObject.toString());
-      paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
+      ((cn)com.tencent.mm.kernel.h.az(cn.class)).enterFinderUI(MMApplicationContext.getContext(), localJSONObject.toString());
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail"), null);
       bool = true;
     }
     catch (Exception localException)
@@ -47,17 +47,17 @@ public final class d
       for (;;)
       {
         Log.printErrStackTrace("MicroMsg.JsApiOpenFinderView", (Throwable)localException, "openFinderView exception", new Object[0]);
-        paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
+        paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail"), null);
         boolean bool = false;
       }
     }
-    AppMethodBeat.o(219558);
+    AppMethodBeat.o(313813);
     return bool;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
 }
 

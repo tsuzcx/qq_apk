@@ -1,92 +1,88 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.v;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.afo;
-import com.tencent.mm.protocal.protobuf.afp;
-import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.aei;
+import com.tencent.mm.protocal.protobuf.aej;
+import com.tencent.mm.protocal.protobuf.cxv;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class j
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public List<String> fMr;
-  private d rr;
+  private h callback;
+  private LinkedList<cxv> hRX;
+  private final c rr;
   
-  public j(String paramString, List<String> paramList, int paramInt)
+  public j(LinkedList<cxv> paramLinkedList)
   {
-    AppMethodBeat.i(12467);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new afo();
-    ((d.a)localObject).lBV = new afp();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/delchatroommember";
-    ((d.a)localObject).funcId = 179;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (afo)d.b.b(this.rr.lBR);
-    ((afo)localObject).RIi = paramString;
-    paramString = new LinkedList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      afy localafy = new afy();
-      localafy.SrM = z.ZW(str);
-      paramString.add(localafy);
-    }
-    ((afo)localObject).RIk = paramString;
-    ((afo)localObject).iWB = paramString.size();
-    ((afo)localObject).CPw = paramInt;
-    this.fMr = paramList;
-    AppMethodBeat.o(12467);
+    AppMethodBeat.i(12458);
+    this.hRX = paramLinkedList;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aei();
+    ((c.a)localObject).otF = new aej();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/collectchatroom";
+    ((c.a)localObject).funcId = 181;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (aei)c.b.b(this.rr.otB);
+    ((aei)localObject).Zmm = paramLinkedList;
+    ((aei)localObject).Zml = paramLinkedList.size();
+    AppMethodBeat.o(12458);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(12468);
-    this.callback = parami;
+    AppMethodBeat.i(12459);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(12468);
+    AppMethodBeat.o(12459);
     return i;
   }
   
   public final int getType()
   {
-    return 179;
+    return 181;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(12469);
+    AppMethodBeat.i(12460);
     updateDispatchId(paramInt1);
-    Log.d("MicroMsg.NetSceneDelChatRoomMember", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    params = (afo)d.b.b(this.rr.lBR);
-    paramArrayOfByte = (afp)d.c.b(this.rr.lBS);
-    if (this.rr.lBS.getRetCode() != 0)
+    Log.d("MicroMsg.NetSceneCollectChatRoom", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    c.c.b(((c)params).otC);
+    if (params.getRespObj().getRetCode() != 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(12469);
+      AppMethodBeat.o(12460);
       return;
     }
-    v.a(params.RIi, paramArrayOfByte);
+    if (this.hRX != null)
+    {
+      params = this.hRX.iterator();
+      while (params.hasNext())
+      {
+        paramArrayOfByte = (cxv)params.next();
+        Log.d("MicroMsg.NetSceneCollectChatRoom", "del groupcard Name :" + paramArrayOfByte.aaDc);
+        v.Ii(paramArrayOfByte.aaDc);
+      }
+    }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(12469);
+    AppMethodBeat.o(12460);
   }
 }
 

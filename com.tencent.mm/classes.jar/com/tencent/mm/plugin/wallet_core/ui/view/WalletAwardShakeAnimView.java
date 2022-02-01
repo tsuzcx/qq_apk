@@ -19,25 +19,25 @@ import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.m.d;
-import com.tencent.mm.pluginsdk.m.d.a;
+import com.tencent.mm.pluginsdk.l.d;
+import com.tencent.mm.pluginsdk.l.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.PlaySound;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 
 public class WalletAwardShakeAnimView
   extends RelativeLayout
 {
-  private int PfA;
-  private ValueAnimator PfB;
-  private a PfC;
-  private View Pfv;
-  private TextView Pfw;
-  private String Pfx;
-  private int Pfy;
-  private String Pfz;
+  private View VWj;
+  private TextView VWk;
+  private String VWl;
+  private int VWm;
+  private String VWn;
+  private int VWo;
+  private ValueAnimator VWp;
+  private a VWq;
   private Runnable delayNofiyRunnable;
   private boolean isInvokeCallback;
   private boolean isStartShake;
@@ -50,8 +50,8 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.i(71499);
     this.isStartShake = false;
     this.isInvokeCallback = false;
-    this.Pfy = 0;
-    this.PfA = 0;
+    this.VWm = 0;
+    this.VWo = 0;
     this.delayNofiyRunnable = new Runnable()
     {
       public final void run()
@@ -71,8 +71,8 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.i(71500);
     this.isStartShake = false;
     this.isInvokeCallback = false;
-    this.Pfy = 0;
-    this.PfA = 0;
+    this.VWm = 0;
+    this.VWo = 0;
     this.delayNofiyRunnable = new Runnable()
     {
       public final void run()
@@ -86,18 +86,18 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.o(71500);
   }
   
-  private void gMw()
+  private void ilK()
   {
     AppMethodBeat.i(71505);
-    if (this.PfB != null) {
-      this.PfB.cancel();
+    if (this.VWp != null) {
+      this.VWp.cancel();
     }
-    this.PfB = ValueAnimator.ofFloat(new float[] { -30.0F, 30.0F });
-    this.PfB.setInterpolator(new LinearInterpolator());
-    this.PfB.setRepeatMode(2);
-    this.PfB.setRepeatCount(-1);
-    this.PfB.setDuration(300L);
-    this.PfB.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.VWp = ValueAnimator.ofFloat(new float[] { -30.0F, 30.0F });
+    this.VWp.setInterpolator(new LinearInterpolator());
+    this.VWp.setRepeatMode(2);
+    this.VWp.setRepeatCount(-1);
+    this.VWp.setDuration(300L);
+    this.VWp.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -106,17 +106,17 @@ public class WalletAwardShakeAnimView
         AppMethodBeat.o(71498);
       }
     });
-    this.PfB.start();
+    this.VWp.start();
     AppMethodBeat.o(71505);
   }
   
   private void init()
   {
     AppMethodBeat.i(71501);
-    ad.kS(getContext()).inflate(a.g.wallet_award_shake_anim_view, this);
+    af.mU(getContext()).inflate(a.g.wallet_award_shake_anim_view, this);
     findViewById(a.f.background).setBackground(getResources().getDrawable(a.h.wallet_new_shakea_anim_view_bg));
-    this.Pfv = findViewById(a.f.shake_icon);
-    this.Pfw = ((TextView)findViewById(a.f.shake_hint_wording));
+    this.VWj = findViewById(a.f.shake_icon);
+    this.VWk = ((TextView)findViewById(a.f.shake_hint_wording));
     AppMethodBeat.o(71501);
   }
   
@@ -125,36 +125,36 @@ public class WalletAwardShakeAnimView
     AppMethodBeat.i(71506);
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.cPS();
+      this.shakeSensor.cuD();
       this.shakeSensor = null;
     }
     this.isInvokeCallback = false;
     this.isStartShake = false;
-    if (this.PfB != null) {
-      this.PfB.cancel();
+    if (this.VWp != null) {
+      this.VWp.cancel();
     }
-    this.Pfv.setRotation(0.0F);
-    if (!Util.isNullOrNil(this.Pfx))
+    this.VWj.setRotation(0.0F);
+    if (!Util.isNullOrNil(this.VWl))
     {
-      this.Pfw.setText(this.Pfx);
-      if (this.Pfy == 0) {
+      this.VWk.setText(this.VWl);
+      if (this.VWm == 0) {
         break label130;
       }
-      this.Pfw.setTextColor(this.Pfy);
+      this.VWk.setTextColor(this.VWm);
     }
     for (;;)
     {
       MMHandlerThread.removeRunnable(this.delayNofiyRunnable);
       AppMethodBeat.o(71506);
       return;
-      this.Pfw.setText(getResources().getText(a.i.wallet_shake_award_hint_wording));
+      this.VWk.setText(getResources().getText(a.i.wallet_shake_award_hint_wording));
       break;
       label130:
-      this.Pfw.setTextColor(getResources().getColor(a.c.red_text_color));
+      this.VWk.setTextColor(getResources().getColor(a.c.red_text_color));
     }
   }
   
-  public final void gMv()
+  public final void hQe()
   {
     AppMethodBeat.i(71504);
     Log.i("MicroMsg.WalletAwardShakeAnimView", "startShake");
@@ -197,15 +197,15 @@ public class WalletAwardShakeAnimView
       {
         AppMethodBeat.i(71497);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletAwardShakeAnimView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletAwardShakeAnimView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (!WalletAwardShakeAnimView.e(WalletAwardShakeAnimView.this))
         {
           WalletAwardShakeAnimView.f(WalletAwardShakeAnimView.this);
           PlaySound.play(WalletAwardShakeAnimView.this.getContext(), a.i.shake_sound_male);
           WalletAwardShakeAnimView.h(WalletAwardShakeAnimView.this);
           if (WalletAwardShakeAnimView.i(WalletAwardShakeAnimView.this) != null) {
-            WalletAwardShakeAnimView.i(WalletAwardShakeAnimView.this).Cs(false);
+            WalletAwardShakeAnimView.i(WalletAwardShakeAnimView.this).HX(false);
           }
         }
         a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/WalletAwardShakeAnimView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -219,43 +219,43 @@ public class WalletAwardShakeAnimView
   
   public void setAfterHintWording(String paramString)
   {
-    this.Pfz = paramString;
+    this.VWn = paramString;
   }
   
   public void setAfterHintWordingColor(int paramInt)
   {
-    this.PfA = paramInt;
+    this.VWo = paramInt;
   }
   
   public void setShakeHintWording(String paramString)
   {
     AppMethodBeat.i(71502);
-    this.Pfx = paramString;
-    this.Pfw.setText(paramString);
+    this.VWl = paramString;
+    this.VWk.setText(paramString);
     AppMethodBeat.o(71502);
   }
   
   public void setShakeHintWordingColor(int paramInt)
   {
     AppMethodBeat.i(71503);
-    this.Pfy = paramInt;
-    this.Pfw.setTextColor(paramInt);
+    this.VWm = paramInt;
+    this.VWk.setTextColor(paramInt);
     AppMethodBeat.o(71503);
   }
   
   public void setShakeOrClickCallback(a parama)
   {
-    this.PfC = parama;
+    this.VWq = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void Cs(boolean paramBoolean);
+    public abstract void HX(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletAwardShakeAnimView
  * JD-Core Version:    0.7.0.1
  */

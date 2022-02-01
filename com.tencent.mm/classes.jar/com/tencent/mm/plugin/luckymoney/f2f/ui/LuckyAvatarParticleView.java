@@ -18,15 +18,15 @@ public class LuckyAvatarParticleView
   extends View
 {
   public static DisplayMetrics metrics;
-  private int EvZ;
-  private int Ewa;
-  private List<Rect> Ewb;
-  private List<Integer> Ewc;
-  private List<Integer> Ewd;
-  private int Ewe;
-  private int Ewf;
-  private int Ewg;
-  private int Ewh;
+  private int KoI;
+  private int KoJ;
+  private List<Rect> KoK;
+  private List<Integer> KoL;
+  private List<Integer> KoM;
+  private int KoN;
+  private int KoO;
+  private int KoP;
+  private int KoQ;
   private ValueAnimator animator;
   private long duration;
   private Paint paint;
@@ -35,9 +35,9 @@ public class LuckyAvatarParticleView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65051);
-    this.Ewb = new ArrayList();
-    this.Ewc = new ArrayList();
-    this.Ewd = new ArrayList();
+    this.KoK = new ArrayList();
+    this.KoL = new ArrayList();
+    this.KoM = new ArrayList();
     this.paint = new Paint();
     AppMethodBeat.o(65051);
   }
@@ -45,8 +45,8 @@ public class LuckyAvatarParticleView
   private int getRandomRectWidth()
   {
     AppMethodBeat.i(65053);
-    int i = this.Ewg;
-    int j = (int)(Math.random() * (this.Ewh - this.Ewg));
+    int i = this.KoP;
+    int j = (int)(Math.random() * (this.KoQ - this.KoP));
     AppMethodBeat.o(65053);
     return i + j;
   }
@@ -54,8 +54,8 @@ public class LuckyAvatarParticleView
   private int getRandomVelocity()
   {
     AppMethodBeat.i(65052);
-    int i = this.Ewe;
-    int j = (int)(Math.random() * (this.Ewf - this.Ewe));
+    int i = this.KoN;
+    int j = (int)(Math.random() * (this.KoO - this.KoN));
     AppMethodBeat.o(65052);
     return i + j;
   }
@@ -65,9 +65,9 @@ public class LuckyAvatarParticleView
     AppMethodBeat.i(65054);
     super.onDraw(paramCanvas);
     int i = 0;
-    while (i < this.Ewb.size())
+    while (i < this.KoK.size())
     {
-      paramCanvas.drawRect((Rect)this.Ewb.get(i), this.paint);
+      paramCanvas.drawRect((Rect)this.KoK.get(i), this.paint);
       i += 1;
     }
     AppMethodBeat.o(65054);

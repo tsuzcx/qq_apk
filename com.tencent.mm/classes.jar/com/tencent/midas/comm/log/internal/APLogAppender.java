@@ -40,7 +40,7 @@ public class APLogAppender
   
   private APLogAppender()
   {
-    AppMethodBeat.i(253985);
+    AppMethodBeat.i(217211);
     this.mCompressor = null;
     this.mEncryptor = null;
     this.mWriter = null;
@@ -53,26 +53,23 @@ public class APLogAppender
     {
       public void run()
       {
-        AppMethodBeat.i(253980);
+        AppMethodBeat.i(217218);
         try
         {
           APLogAppender.this.flushAndWrite();
           boolean bool = APLogAppender.stopAutoFlush;
           if (bool)
           {
-            AppMethodBeat.o(253980);
+            AppMethodBeat.o(217218);
             return;
           }
-          if (APLogAppender.this.autoFlushHandler != null) {
-            APLogAppender.this.autoFlushHandler.postDelayed(APLogAppender.this.autoFlushRunnable, 15000L);
-          }
-          AppMethodBeat.o(253980);
+          if (APLogAppender.this.autoFlushHandler != null) {}
           return;
         }
-        catch (Throwable localThrowable)
+        finally
         {
-          new StringBuilder("auto flush error: ").append(localThrowable.getMessage());
-          AppMethodBeat.o(253980);
+          new StringBuilder("auto flush error: ").append(localObject.getMessage());
+          AppMethodBeat.o(217218);
         }
       }
     };
@@ -85,7 +82,7 @@ public class APLogAppender
     this.autoFlushThread = new HandlerThread("LOG-FLUSH");
     this.autoFlushThread.start();
     this.autoFlushHandler = new Handler(this.autoFlushThread.getLooper());
-    AppMethodBeat.o(253985);
+    AppMethodBeat.o(217211);
   }
   
   private void checkAndFlushBuffer()
@@ -95,7 +92,7 @@ public class APLogAppender
       MappedByteBuffer localMappedByteBuffer;
       try
       {
-        AppMethodBeat.i(253997);
+        AppMethodBeat.i(217282);
       }
       finally {}
       try
@@ -104,12 +101,12 @@ public class APLogAppender
         if (localMappedByteBuffer != null) {
           continue;
         }
-        AppMethodBeat.o(253997);
+        AppMethodBeat.o(217282);
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        String.format(Locale.CHINA, "check and flush buffer error: <%s>%s", new Object[] { localThrowable.getClass().getName(), localThrowable.getMessage() });
-        AppMethodBeat.o(253997);
+        String.format(Locale.CHINA, "check and flush buffer error: <%s>%s", new Object[] { localObject2.getClass().getName(), localObject2.getMessage() });
+        AppMethodBeat.o(217282);
         continue;
       }
       return;
@@ -117,19 +114,19 @@ public class APLogAppender
       if (i <= 12)
       {
         this.seq = 12L;
-        AppMethodBeat.o(253997);
+        AppMethodBeat.o(217282);
       }
       else
       {
         flushBuffer(i - 12);
-        AppMethodBeat.o(253997);
+        AppMethodBeat.o(217282);
       }
     }
   }
   
   private void createBufferProcessor()
   {
-    AppMethodBeat.i(253989);
+    AppMethodBeat.i(217252);
     if ((APLog.getLogInfo() != null) && (APLog.getLogInfo().isCompressLog())) {
       this.mCompressor = APLogCompressor.create();
     }
@@ -137,15 +134,15 @@ public class APLogAppender
       this.mEncryptor = APLogEncryptor.create();
     }
     this.mWriter = APLogWriter.create();
-    AppMethodBeat.o(253989);
+    AppMethodBeat.o(217252);
   }
   
   private void flushBuffer(int paramInt)
   {
-    AppMethodBeat.i(253998);
+    AppMethodBeat.i(217291);
     if (this.mappedByteBuffer == null)
     {
-      AppMethodBeat.o(253998);
+      AppMethodBeat.o(217291);
       return;
     }
     int i = paramInt;
@@ -162,31 +159,31 @@ public class APLogAppender
     this.mappedByteBuffer.put(this.EMPTY_BUFFER, 12, i);
     this.mappedByteBuffer.putLong(0, 0L);
     resetPosAndSeq();
-    AppMethodBeat.o(253998);
+    AppMethodBeat.o(217291);
   }
   
   private void initMmap()
   {
-    AppMethodBeat.i(253988);
+    AppMethodBeat.i(217240);
     if (this.mappedByteBuffer == null)
     {
-      AppMethodBeat.o(253988);
+      AppMethodBeat.o(217240);
       return;
     }
     checkAndFlushBuffer();
     this.mappedByteBuffer.putLong(0, 12L);
     this.mappedByteBuffer.putInt(8, 43);
     resetPosAndSeq();
-    AppMethodBeat.o(253988);
+    AppMethodBeat.o(217240);
   }
   
   public static APLogAppender open()
   {
-    AppMethodBeat.i(253986);
+    AppMethodBeat.i(217223);
     if (instance != null)
     {
       localAPLogAppender = instance;
-      AppMethodBeat.o(253986);
+      AppMethodBeat.o(217223);
       return localAPLogAppender;
     }
     APLogAppender localAPLogAppender = new APLogAppender();
@@ -196,25 +193,25 @@ public class APLogAppender
     instance.initMmap();
     instance.startAutoFlush();
     localAPLogAppender = instance;
-    AppMethodBeat.o(253986);
+    AppMethodBeat.o(217223);
     return localAPLogAppender;
   }
   
   private void openMmapFile()
   {
-    AppMethodBeat.i(253987);
+    AppMethodBeat.i(217231);
     try
     {
       this.randomAccessFile = new RandomAccessFile(APLogFileInfo.mmapName, "rw");
       this.fileChannel = this.randomAccessFile.getChannel();
       this.mappedByteBuffer = this.fileChannel.map(FileChannel.MapMode.READ_WRITE, 0L, 153600L);
-      AppMethodBeat.o(253987);
+      AppMethodBeat.o(217231);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      String.format(Locale.CHINA, "open log mmap file error: <%s>%s", new Object[] { localThrowable.getClass().getName(), localThrowable.getMessage() });
-      AppMethodBeat.o(253987);
+      String.format(Locale.CHINA, "open log mmap file error: <%s>%s", new Object[] { localObject.getClass().getName(), localObject.getMessage() });
+      AppMethodBeat.o(217231);
     }
   }
   
@@ -222,7 +219,7 @@ public class APLogAppender
   {
     try
     {
-      AppMethodBeat.i(253993);
+      AppMethodBeat.i(217274);
       try
       {
         localObject = (System.currentTimeMillis() + " " + paramString).getBytes();
@@ -234,15 +231,15 @@ public class APLogAppender
         if (this.mEncryptor != null) {
           localObject = this.mEncryptor.encrypt(paramString);
         }
-        AppMethodBeat.o(253993);
+        AppMethodBeat.o(217274);
       }
-      catch (Throwable paramString)
+      finally
       {
         for (;;)
         {
           String.format(Locale.CHINA, "process log error: <%s>%s", new Object[] { paramString.getClass().getName(), paramString.getMessage() });
           Object localObject = this._bytes;
-          AppMethodBeat.o(253993);
+          AppMethodBeat.o(217274);
         }
       }
       return localObject;
@@ -252,33 +249,33 @@ public class APLogAppender
   
   private void resetPosAndSeq()
   {
-    AppMethodBeat.i(253999);
+    AppMethodBeat.i(217297);
     if (this.mappedByteBuffer == null)
     {
-      AppMethodBeat.o(253999);
+      AppMethodBeat.o(217297);
       return;
     }
     this.seq = 12L;
     this.mappedByteBuffer.position(12);
-    AppMethodBeat.o(253999);
+    AppMethodBeat.o(217297);
   }
   
   private void startAutoFlush()
   {
-    AppMethodBeat.i(253990);
+    AppMethodBeat.i(217259);
     if ((APLog.getLogInfo() != null) && (APLog.getLogInfo().isAutoFlush())) {
       try
       {
         this.autoFlushHandler.postDelayed(this.autoFlushRunnable, 15000L);
-        AppMethodBeat.o(253990);
+        AppMethodBeat.o(217259);
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        new StringBuilder("start auto flush error: ").append(localThrowable.getMessage());
+        new StringBuilder("start auto flush error: ").append(localObject.getMessage());
       }
     }
-    AppMethodBeat.o(253990);
+    AppMethodBeat.o(217259);
   }
   
   private void stopAutoFlush()
@@ -288,36 +285,36 @@ public class APLogAppender
   
   public void append(String paramString)
   {
-    AppMethodBeat.i(253991);
+    AppMethodBeat.i(217331);
     try
     {
       updateMmap(process(paramString));
-      AppMethodBeat.o(253991);
+      AppMethodBeat.o(217331);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
       String.format(Locale.CHINA, "append log error: <%s> %s", new Object[] { paramString.getClass().getName(), paramString.getMessage() });
-      AppMethodBeat.o(253991);
+      AppMethodBeat.o(217331);
     }
   }
   
   public void flushAndWrite()
   {
-    AppMethodBeat.i(254000);
+    AppMethodBeat.i(217347);
     try
     {
       checkAndFlushBuffer();
       if (this.mWriter != null) {
         this.mWriter.flush();
       }
-      AppMethodBeat.o(254000);
+      AppMethodBeat.o(217347);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      String.format(Locale.CHINA, "flush buffer and write error: <%s>%s", new Object[] { localThrowable.getClass().getName(), localThrowable.getMessage() });
-      AppMethodBeat.o(254000);
+      String.format(Locale.CHINA, "flush buffer and write error: <%s>%s", new Object[] { localObject.getClass().getName(), localObject.getMessage() });
+      AppMethodBeat.o(217347);
     }
   }
   
@@ -396,7 +393,7 @@ public class APLogAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.log.internal.APLogAppender
  * JD-Core Version:    0.7.0.1
  */

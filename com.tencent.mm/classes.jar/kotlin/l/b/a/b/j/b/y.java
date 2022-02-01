@@ -1,60 +1,54 @@
 package kotlin.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.a.g.a;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.a.k.a;
+import kotlin.l.b.a.b.b.ae;
 import kotlin.l.b.a.b.b.e;
-import kotlin.l.b.a.b.b.s;
-import kotlin.l.b.a.b.f.a;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.u;
+import kotlin.l.b.a.b.b.w;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.v;
 
 public final class y
-  extends aa<Long>
+  extends z<Short>
 {
-  public y(long paramLong)
+  public y(short paramShort)
   {
-    super(Long.valueOf(paramLong));
-    AppMethodBeat.i(60125);
-    AppMethodBeat.o(60125);
+    super(Short.valueOf(paramShort));
+    AppMethodBeat.i(60128);
+    AppMethodBeat.o(60128);
   }
   
-  public final ab b(kotlin.l.b.a.b.b.y paramy)
+  public final ad c(ae paramae)
   {
-    AppMethodBeat.i(60123);
-    p.k(paramy, "module");
-    a locala = g.aaFI.aaHg;
-    p.j(locala, "KotlinBuiltIns.FQ_NAMES.uLong");
-    paramy = s.b(paramy, locala);
-    if (paramy != null)
+    AppMethodBeat.i(60126);
+    s.u(paramae, "module");
+    paramae = w.b(paramae, k.a.aiDR);
+    if (paramae == null) {}
+    for (paramae = null; paramae == null; paramae = paramae.koj())
     {
-      paramy = paramy.iET();
-      if (paramy != null)
-      {
-        paramy = (ab)paramy;
-        AppMethodBeat.o(60123);
-        return paramy;
-      }
+      paramae = v.bJt("Unsigned type UShort not found");
+      s.s(paramae, "createErrorType(\"Unsigned type UShort not found\")");
+      paramae = (ad)paramae;
+      AppMethodBeat.o(60126);
+      return paramae;
     }
-    paramy = u.bHp("Unsigned type ULong not found");
-    p.j(paramy, "ErrorUtils.createErrorTy…ed type ULong not found\")");
-    paramy = (ab)paramy;
-    AppMethodBeat.o(60123);
-    return paramy;
+    paramae = (ad)paramae;
+    AppMethodBeat.o(60126);
+    return paramae;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(60124);
-    String str = ((Number)getValue()).longValue() + ".toULong()";
-    AppMethodBeat.o(60124);
+    AppMethodBeat.i(60127);
+    String str = ((Number)getValue()).intValue() + ".toUShort()";
+    AppMethodBeat.o(60127);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.y
  * JD-Core Version:    0.7.0.1
  */

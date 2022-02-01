@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.media.record;
 import android.media.MediaRecorder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.b;
-import com.tencent.mm.audio.b.b.b;
+import com.tencent.mm.audio.b.b.c;
 import com.tencent.mm.compatible.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -11,35 +11,35 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  private static b qdr = null;
-  private static String qds = null;
-  private static a.a qdt = null;
-  private static MTimerHandler qdu = null;
+  private static b tig = null;
+  private static String tih = null;
+  private static a.a tii = null;
+  private static MTimerHandler tij = null;
   
-  public static void BV(int paramInt)
+  public static void Ck(int paramInt)
   {
     AppMethodBeat.i(146139);
     Log.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (Util.isNullOrNil(qds))
+    if (Util.isNullOrNil(tih))
     {
       AppMethodBeat.o(146139);
       return;
     }
-    if (qdr == null)
+    if (tig == null)
     {
       Log.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
       AppMethodBeat.o(146139);
       return;
     }
-    qdr.TV();
-    qdr.release();
-    qdr = null;
+    tig.stop();
+    tig.release();
+    tig = null;
     stopTimer();
-    qds = null;
-    if (qdt != null) {
-      qdt.Ab(paramInt);
+    tih = null;
+    if (tii != null) {
+      tii.As(paramInt);
     }
-    qdt = null;
+    tii = null;
     AppMethodBeat.o(146139);
   }
   
@@ -47,37 +47,37 @@ public final class a
   {
     AppMethodBeat.i(146138);
     Log.i("MicroMsg.Record.AudioRecorder", "startRecord");
-    BV(1);
+    Ck(1);
     if (Util.isNullOrNil(paramString))
     {
       Log.e("MicroMsg.Record.AudioRecorder", "startRecord, path is null or nil");
       AppMethodBeat.o(146138);
       return false;
     }
-    b localb = new b(c.a.jmU);
-    qdr = localb;
-    if (localb.fry == c.a.jmT) {
-      if (localb.frw != null) {
-        localb.frw.reset();
+    b localb = new b(c.a.lQf);
+    tig = localb;
+    if (localb.hvJ == c.a.lQe) {
+      if (localb.hvH != null) {
+        localb.hvH.reset();
       }
     }
     for (;;)
     {
-      qdr.aeN();
-      qdr.aeO();
-      qdr.aeM();
-      qdr.setOutputFile(paramString);
-      qdr.a(new a.2());
+      tig.aGL();
+      tig.aGM();
+      tig.aGK();
+      tig.setOutputFile(paramString);
+      tig.a(new a.2());
       try
       {
-        qdr.prepare();
-        qdr.start();
-        qdt = parama;
-        qds = paramString;
+        tig.prepare();
+        tig.start();
+        tii = parama;
+        tih = paramString;
         long l = paramInt;
         stopTimer();
         paramString = new MTimerHandler(new a.1(), false);
-        qdu = paramString;
+        tij = paramString;
         paramString.startTimer(l);
         AppMethodBeat.o(146138);
         return true;
@@ -87,10 +87,10 @@ public final class a
         Log.e("MicroMsg.Record.AudioRecorder", "record prepare, exp = %s", new Object[] { Util.stackTraceToString(paramString) });
         AppMethodBeat.o(146138);
       }
-      if (localb.frz != b.b.frL)
+      if (localb.hvK != b.c.hvZ)
       {
         localb.release();
-        localb.aeP();
+        localb.aGN();
       }
     }
     return false;
@@ -99,16 +99,16 @@ public final class a
   private static void stopTimer()
   {
     AppMethodBeat.i(146137);
-    if (qdu != null) {
-      qdu.stopTimer();
+    if (tij != null) {
+      tij.stopTimer();
     }
-    qdu = null;
+    tij = null;
     AppMethodBeat.o(146137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a
  * JD-Core Version:    0.7.0.1
  */

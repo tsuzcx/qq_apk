@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/afz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="horizontal" android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ks" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <TextView android:textSize="@dimen/l" android:textColor="@color/u_" android:id="@id/kt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ib" android:text="@string/h51" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/kr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/l" android:textColor="@color/u_" android:id="@id/kq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h4z" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/ajv" android:layout_marginLeft="@dimen/ib" android:src="@raw/arrow_right" />
-        </LinearLayout>
-    </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/ku" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <GridView android:orientation="horizontal" android:id="@id/bio" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginBottom="18.0dip" android:listSelector="@android:color/transparent" android:numColumns="7" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="22.0dip" android:layout_toStartOf="@id/iff" />
+    <ImageView android:id="@id/iff" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_alignParentRight="true" android:layout_marginEnd="22.0dip" />
 </RelativeLayout>

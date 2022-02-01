@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:id="@id/jia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="金额" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="17.0dip" android:gravity="right" android:id="@id/jf4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="元" />
-    </LinearLayout>
-</merge>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iwl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/h7w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_search" android:importantForAccessibility="no" app:iconColor="@color/BW_70" />
+    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/j7" android:textColor="@color/a7b" android:textColorHint="@color/xo" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/h7v" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g" android:minWidth="32.0dip" android:minHeight="@dimen/hx" android:hint="@string/a2o" android:singleLine="true" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a8b" />
+</LinearLayout>

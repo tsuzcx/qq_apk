@@ -1,112 +1,144 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.avv;
-import com.tencent.mm.protocal.protobuf.avw;
-import com.tencent.mm.protocal.protobuf.bkh;
+import com.tencent.mm.plugin.findersdk.b.a.b;
+import com.tencent.mm.protocal.protobuf.aps;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.awy;
+import com.tencent.mm.protocal.protobuf.awz;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetTagContact;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "getTagScene", "", "(I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getGetTagScene", "()I", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getTagContacts", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderTagContact;", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneExtStatsReport;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "actionType", "", "extStats", "Lcom/tencent/mm/protocal/protobuf/ExtStats;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;ILcom/tencent/mm/protocal/protobuf/ExtStats;)V", "", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;ILjava/util/List;)V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "enableReportVal", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderExtStatsReportRequest;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "isEnableReport", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bu
-  extends com.tencent.mm.plugin.findersdk.b.g
+  extends com.tencent.mm.plugin.findersdk.b.h
 {
-  private static final String TAG = "Finder.NetSceneFinderGetTagContact";
-  private static final int xdh = 1;
-  public static final a xdi;
-  private i callback;
-  private d rr;
-  private final int xdg;
+  private b AAa;
+  private awy ABL;
+  private final String TAG;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  static
+  public bu(bui parambui, int paramInt, aps paramaps)
   {
-    AppMethodBeat.i(272768);
-    xdi = new a((byte)0);
-    TAG = "Finder.NetSceneFinderGetTagContact";
-    xdh = 1;
-    AppMethodBeat.o(272768);
+    this(parambui, paramInt, (List)kotlin.a.p.al(new aps[] { paramaps }));
+    AppMethodBeat.i(336346);
+    AppMethodBeat.o(336346);
   }
   
-  public bu(int paramInt)
+  public bu(bui parambui, int paramInt, List<? extends aps> paramList)
   {
-    AppMethodBeat.i(272767);
-    this.xdg = paramInt;
-    Object localObject = new d.a();
-    ((d.a)localObject).vD(getType());
-    avv localavv = new avv();
-    localavv.scene = this.xdg;
-    ao localao = ao.xcj;
-    localavv.SDi = ao.dnO();
-    ((d.a)localObject).c((a)localavv);
-    ((d.a)localObject).d((a)new avw());
-    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/findergettagcontact");
-    localObject = ((d.a)localObject).bgN();
-    p.j(localObject, "builder.buildInstance()");
-    this.rr = ((d)localObject);
-    Log.i(TAG, "NetSceneFinderGetTagContact");
-    AppMethodBeat.o(272767);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
-  {
-    AppMethodBeat.i(272765);
-    Log.i(TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    if (this.callback != null)
+    super(parambui);
+    AppMethodBeat.i(336361);
+    this.TAG = "Finder.NetSceneExtStatsReport";
+    this.AAa = b.Hdf;
+    c.a locala = new c.a();
+    locala.funcId = getType();
+    Object localObject1 = new awy();
+    ((awy)localObject1).finderUsername = z.bAW();
+    ((awy)localObject1).actionType = paramInt;
+    ((awy)localObject1).ZIn.addAll((Collection)paramList);
+    Object localObject2 = bi.ABn;
+    ((awy)localObject1).ZEc = bi.a(parambui);
+    localObject2 = ah.aiuX;
+    this.ABL = ((awy)localObject1);
+    localObject1 = bi.ABn;
+    localObject1 = this.ABL.ZEc;
+    localObject2 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    if (((Iterator)localObject2).hasNext())
     {
-      params = this.callback;
-      if (params == null) {
-        p.iCn();
+      aps localaps = (aps)((Iterator)localObject2).next();
+      if (parambui == null) {}
+      for (paramInt = 0;; paramInt = parambui.AJo)
+      {
+        paramList.add(new r(Integer.valueOf(paramInt), Long.valueOf(localaps.hKN)));
+        break;
       }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
     }
-    AppMethodBeat.o(272765);
+    bi.a((atz)localObject1, (List)paramList, parambui);
+    locala.otE = ((a)this.ABL);
+    parambui = new awz();
+    parambui.setBaseResponse(new kd());
+    locala.otF = ((a)parambui);
+    locala.uri = "/cgi-bin/micromsg-bin/finderextstatsreport";
+    parambui = locala.bEF();
+    kotlin.g.b.s.s(parambui, "builder.buildInstance()");
+    this.rr = parambui;
+    AppMethodBeat.o(336361);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params)
   {
-    AppMethodBeat.i(272764);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(272764);
-    return i;
+    AppMethodBeat.i(336389);
+    Log.i(this.TAG, "onGYNetEnd " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramString + ' ');
+    if (paramInt2 >= 4) {
+      this.AAa = b.Hdd;
+    }
+    params = this.callback;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (com.tencent.mm.am.p)this);
+    }
+    AppMethodBeat.o(336389);
   }
   
-  public final LinkedList<bkh> dot()
+  public final b dVi()
   {
-    AppMethodBeat.i(272766);
-    Object localObject = this.rr.bhY();
-    if (localObject == null)
+    return this.AAa;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(336375);
+    this.callback = paramh;
+    paramh = this.ABL.ZIn;
+    kotlin.g.b.s.s(paramh, "request.extStats");
+    aps localaps = (aps)kotlin.a.p.ae((List)paramh, 0);
+    String str;
+    StringBuilder localStringBuilder;
+    if (localaps != null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetTagContactResp");
-      AppMethodBeat.o(272766);
-      throw ((Throwable)localObject);
+      str = this.TAG;
+      localStringBuilder = new StringBuilder("doExtStatsReport scene=");
+      paramh = this.ABL.ZEc;
+      if (paramh != null) {
+        break label157;
+      }
     }
-    localObject = ((avw)localObject).SGP;
-    AppMethodBeat.o(272766);
-    return localObject;
+    label157:
+    for (paramh = null;; paramh = Integer.valueOf(paramh.scene))
+    {
+      Log.i(str, paramh + " feedActionValue=" + localaps.ZwW + " objectId=" + localaps.hKN + " username=" + localaps.finderUsername);
+      int i = dispatch(paramg, (com.tencent.mm.network.s)this.rr, (m)this);
+      AppMethodBeat.o(336375);
+      return i;
+    }
   }
   
   public final int getType()
   {
-    return 3528;
+    return 6681;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetTagContact$Companion;", "", "()V", "GetTagContactScene_Not_Interesting", "", "getGetTagContactScene_Not_Interesting", "()I", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.bu
  * JD-Core Version:    0.7.0.1
  */

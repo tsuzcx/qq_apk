@@ -6,80 +6,69 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.viewmodel.component.ag;
+import com.tencent.mm.plugin.finder.viewmodel.component.an;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderNotifyFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onViewCreated", "view", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderNotifyFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onViewCreated", "view", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderNotifyFragment
   extends FinderHomeTabFragment
 {
-  public static final a AyC;
-  private static final String TAG = "FinderNotifyFragment";
-  private HashMap _$_findViewCache;
+  public static final a FXV;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(230278);
-    AyC = new a((byte)0);
+    AppMethodBeat.i(347732);
+    FXV = new a((byte)0);
     TAG = "FinderNotifyFragment";
-    AppMethodBeat.o(230278);
-  }
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(230283);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(230283);
+    AppMethodBeat.o(347732);
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(230265);
-    Set localSet = ak.setOf(ag.class);
-    AppMethodBeat.o(230265);
+    AppMethodBeat.i(347736);
+    Set localSet = ar.setOf(an.class);
+    AppMethodBeat.o(347736);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(230269);
+    AppMethodBeat.i(347742);
     super.onCreate(paramBundle);
-    Log.i(TAG, "index:" + this.fEH);
-    paramBundle = g.Xox;
-    ((ag)g.h((Fragment)this).i(ag.class)).index = this.fEH;
-    AppMethodBeat.o(230269);
+    Log.i(TAG, s.X("index:", Integer.valueOf(this.hJx)));
+    paramBundle = k.aeZF;
+    ((an)k.y((Fragment)this).q(an.class)).index = this.hJx;
+    AppMethodBeat.o(347742);
   }
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AppMethodBeat.i(230271);
-    p.k(paramLayoutInflater, "inflater");
+    AppMethodBeat.i(347749);
+    s.u(paramLayoutInflater, "inflater");
     Log.i(TAG, " onCreateView");
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    AppMethodBeat.o(230271);
+    AppMethodBeat.o(347749);
     return paramLayoutInflater;
   }
   
   public final void onViewCreated(View paramView, Bundle paramBundle)
   {
-    AppMethodBeat.i(230273);
-    p.k(paramView, "view");
+    AppMethodBeat.i(347755);
+    s.u(paramView, "view");
     Log.i(TAG, "onViewCreated");
     super.onViewCreated(paramView, paramBundle);
-    AppMethodBeat.o(230273);
+    AppMethodBeat.o(347755);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderNotifyFragment$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderNotifyFragment$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

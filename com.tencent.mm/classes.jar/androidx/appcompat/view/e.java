@@ -15,164 +15,164 @@ public final class e
   extends b
   implements h.a
 {
-  private ActionBarContextView hT;
-  private h is;
-  private b.a it;
-  private WeakReference<View> iu;
-  private boolean jO;
+  private ActionBarContextView iR;
+  private h jo;
+  private b.a jp;
+  private WeakReference<View> jq;
+  private boolean kK;
   private Context mContext;
   private boolean mFinished;
   
   public e(Context paramContext, ActionBarContextView paramActionBarContextView, b.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(238909);
+    AppMethodBeat.i(200657);
     this.mContext = paramContext;
-    this.hT = paramActionBarContextView;
-    this.it = parama;
+    this.iR = paramActionBarContextView;
+    this.jp = parama;
     paramContext = new h(paramActionBarContextView.getContext());
-    paramContext.mG = 1;
-    this.is = paramContext;
-    this.is.a(this);
-    this.jO = paramBoolean;
-    AppMethodBeat.o(238909);
+    paramContext.nF = 1;
+    this.jo = paramContext;
+    this.jo.a(this);
+    this.kK = paramBoolean;
+    AppMethodBeat.o(200657);
   }
   
   public final void a(h paramh)
   {
-    AppMethodBeat.i(238934);
+    AppMethodBeat.i(200818);
     invalidate();
-    this.hT.cC();
-    AppMethodBeat.o(238934);
+    this.iR.dv();
+    AppMethodBeat.o(200818);
   }
   
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(238932);
-    boolean bool = this.it.a(this, paramMenuItem);
-    AppMethodBeat.o(238932);
+    AppMethodBeat.i(200808);
+    boolean bool = this.jp.a(this, paramMenuItem);
+    AppMethodBeat.o(200808);
     return bool;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(238922);
+    AppMethodBeat.i(200740);
     if (this.mFinished)
     {
-      AppMethodBeat.o(238922);
+      AppMethodBeat.o(200740);
       return;
     }
     this.mFinished = true;
-    this.hT.sendAccessibilityEvent(32);
-    this.it.a(this);
-    AppMethodBeat.o(238922);
+    this.iR.sendAccessibilityEvent(32);
+    this.jp.a(this);
+    AppMethodBeat.o(200740);
   }
   
   public final View getCustomView()
   {
-    AppMethodBeat.i(238928);
-    if (this.iu != null)
+    AppMethodBeat.i(200783);
+    if (this.jq != null)
     {
-      View localView = (View)this.iu.get();
-      AppMethodBeat.o(238928);
+      View localView = (View)this.jq.get();
+      AppMethodBeat.o(200783);
       return localView;
     }
-    AppMethodBeat.o(238928);
+    AppMethodBeat.o(200783);
     return null;
   }
   
   public final Menu getMenu()
   {
-    return this.is;
+    return this.jo;
   }
   
   public final MenuInflater getMenuInflater()
   {
-    AppMethodBeat.i(238930);
-    g localg = new g(this.hT.getContext());
-    AppMethodBeat.o(238930);
+    AppMethodBeat.i(200797);
+    g localg = new g(this.iR.getContext());
+    AppMethodBeat.o(200797);
     return localg;
   }
   
   public final CharSequence getSubtitle()
   {
-    AppMethodBeat.i(238927);
-    CharSequence localCharSequence = this.hT.getSubtitle();
-    AppMethodBeat.o(238927);
+    AppMethodBeat.i(200775);
+    CharSequence localCharSequence = this.iR.getSubtitle();
+    AppMethodBeat.o(200775);
     return localCharSequence;
   }
   
   public final CharSequence getTitle()
   {
-    AppMethodBeat.i(238925);
-    CharSequence localCharSequence = this.hT.getTitle();
-    AppMethodBeat.o(238925);
+    AppMethodBeat.i(200761);
+    CharSequence localCharSequence = this.iR.getTitle();
+    AppMethodBeat.o(200761);
     return localCharSequence;
   }
   
   public final void invalidate()
   {
-    AppMethodBeat.i(238920);
-    this.it.b(this, this.is);
-    AppMethodBeat.o(238920);
+    AppMethodBeat.i(200729);
+    this.jp.b(this, this.jo);
+    AppMethodBeat.o(200729);
   }
   
   public final boolean isTitleOptional()
   {
-    return this.hT.oc;
+    return this.iR.pb;
   }
   
   public final void setCustomView(View paramView)
   {
-    AppMethodBeat.i(238919);
-    this.hT.setCustomView(paramView);
+    AppMethodBeat.i(200720);
+    this.iR.setCustomView(paramView);
     if (paramView != null) {}
     for (paramView = new WeakReference(paramView);; paramView = null)
     {
-      this.iu = paramView;
-      AppMethodBeat.o(238919);
+      this.jq = paramView;
+      AppMethodBeat.o(200720);
       return;
     }
   }
   
   public final void setSubtitle(int paramInt)
   {
-    AppMethodBeat.i(238916);
+    AppMethodBeat.i(200692);
     setSubtitle(this.mContext.getString(paramInt));
-    AppMethodBeat.o(238916);
+    AppMethodBeat.o(200692);
   }
   
   public final void setSubtitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(238913);
-    this.hT.setSubtitle(paramCharSequence);
-    AppMethodBeat.o(238913);
+    AppMethodBeat.i(200671);
+    this.iR.setSubtitle(paramCharSequence);
+    AppMethodBeat.o(200671);
   }
   
   public final void setTitle(int paramInt)
   {
-    AppMethodBeat.i(238914);
+    AppMethodBeat.i(200685);
     setTitle(this.mContext.getString(paramInt));
-    AppMethodBeat.o(238914);
+    AppMethodBeat.o(200685);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(238911);
-    this.hT.setTitle(paramCharSequence);
-    AppMethodBeat.o(238911);
+    AppMethodBeat.i(200665);
+    this.iR.setTitle(paramCharSequence);
+    AppMethodBeat.o(200665);
   }
   
   public final void setTitleOptionalHint(boolean paramBoolean)
   {
-    AppMethodBeat.i(238917);
+    AppMethodBeat.i(200704);
     super.setTitleOptionalHint(paramBoolean);
-    this.hT.setTitleOptional(paramBoolean);
-    AppMethodBeat.o(238917);
+    this.iR.setTitleOptional(paramBoolean);
+    AppMethodBeat.o(200704);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.e
  * JD-Core Version:    0.7.0.1
  */

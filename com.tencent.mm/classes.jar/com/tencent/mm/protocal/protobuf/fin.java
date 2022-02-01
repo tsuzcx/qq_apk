@@ -1,128 +1,128 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import i.a.a.b;
 
 public final class fin
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<Integer> UIo;
-  public String appid;
-  public int id;
-  public String query;
-  
-  public fin()
-  {
-    AppMethodBeat.i(121118);
-    this.UIo = new LinkedList();
-    AppMethodBeat.o(121118);
-  }
+  public String abJp;
+  public String abJq;
+  public String abJr;
+  public String abJs;
+  public String abJt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(121119);
+    AppMethodBeat.i(101531);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abJp == null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: videoFileMD5");
+        AppMethodBeat.o(101531);
+        throw paramVarArgs;
       }
-      if (this.appid != null) {
-        paramVarArgs.f(2, this.appid);
+      if (this.abJp != null) {
+        paramVarArgs.g(1, this.abJp);
       }
-      paramVarArgs.aY(3, this.id);
-      paramVarArgs.e(4, 2, this.UIo);
-      if (this.query != null) {
-        paramVarArgs.f(5, this.query);
+      if (this.abJq != null) {
+        paramVarArgs.g(2, this.abJq);
       }
-      AppMethodBeat.o(121119);
+      if (this.abJr != null) {
+        paramVarArgs.g(3, this.abJr);
+      }
+      if (this.abJs != null) {
+        paramVarArgs.g(4, this.abJs);
+      }
+      if (this.abJt != null) {
+        paramVarArgs.g(5, this.abJt);
+      }
+      AppMethodBeat.o(101531);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label511;
+      if (this.abJp == null) {
+        break label498;
       }
     }
-    label511:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label498:
+    for (int i = i.a.a.b.b.a.h(1, this.abJp) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.appid != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.appid);
-      }
-      i = i + g.a.a.b.b.a.bM(3, this.id) + g.a.a.a.c(4, 2, this.UIo);
       paramInt = i;
-      if (this.query != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.query);
+      if (this.abJq != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.abJq);
       }
-      AppMethodBeat.o(121119);
-      return paramInt;
+      i = paramInt;
+      if (this.abJr != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.abJr);
+      }
+      paramInt = i;
+      if (this.abJs != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.abJs);
+      }
+      i = paramInt;
+      if (this.abJt != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.abJt);
+      }
+      AppMethodBeat.o(101531);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.UIo.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(121119);
+        if (this.abJp == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: videoFileMD5");
+          AppMethodBeat.o(101531);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(101531);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         fin localfin = (fin)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(121119);
+          AppMethodBeat.o(101531);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localfin.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(121119);
+          localfin.abJp = locala.ajGk.readString();
+          AppMethodBeat.o(101531);
           return 0;
         case 2: 
-          localfin.appid = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(121119);
+          localfin.abJq = locala.ajGk.readString();
+          AppMethodBeat.o(101531);
           return 0;
         case 3: 
-          localfin.id = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(121119);
+          localfin.abJr = locala.ajGk.readString();
+          AppMethodBeat.o(101531);
           return 0;
         case 4: 
-          localfin.UIo.add(Integer.valueOf(((g.a.a.a.a)localObject).abFh.AK()));
-          AppMethodBeat.o(121119);
+          localfin.abJs = locala.ajGk.readString();
+          AppMethodBeat.o(101531);
           return 0;
         }
-        localfin.query = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(121119);
+        localfin.abJt = locala.ajGk.readString();
+        AppMethodBeat.o(101531);
         return 0;
       }
-      AppMethodBeat.o(121119);
+      AppMethodBeat.o(101531);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
 import junit.framework.Assert;
 
@@ -13,26 +12,26 @@ public final class i
   public i(com.tencent.mm.plugin.messenger.foundation.a.a.i parami)
   {
     super(parami);
-    AppMethodBeat.i(240697);
+    AppMethodBeat.i(249037);
     e(getDB(), "appbrandnotifymessage");
-    a(new i.b(32, "appbrandnotifymessage", i.b.b(3500001L, 4000000L, 105000001L, 108000000L)));
-    AppMethodBeat.o(240697);
+    a(new i.b(32, "appbrandnotifymessage", i.b.d(3500001L, 4000000L, 105000001L, 108000000L)));
+    AppMethodBeat.o(249037);
   }
   
-  public final String aEK(String paramString)
+  public final String aAD(String paramString)
   {
-    AppMethodBeat.i(240700);
+    AppMethodBeat.i(249041);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!ab.QV(paramString)) {
+      if (!au.bwA(paramString)) {
         break;
       }
-      AppMethodBeat.o(240700);
+      AppMethodBeat.o(249041);
       return "appbrandnotifymessage";
     }
-    AppMethodBeat.o(240700);
+    AppMethodBeat.o(249041);
     return null;
   }
 }

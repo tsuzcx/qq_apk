@@ -17,30 +17,30 @@ public final class b
   extends RecyclerView.a<a>
 {
   private Context mContext;
-  TaskItemView.a uoh;
-  c<i> uok;
-  private boolean uol;
-  private boolean uom;
-  private boolean uon;
-  private boolean uoo;
-  boolean uop;
-  boolean uoq;
+  TaskItemView.a xuE;
+  c<i> xuH;
+  private boolean xuI;
+  private boolean xuJ;
+  private boolean xuK;
+  private boolean xuL;
+  boolean xuM;
+  boolean xuN;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(9055);
-    this.uok = new c();
-    this.uol = true;
-    this.uom = false;
-    this.uon = false;
-    this.uoo = false;
-    this.uop = false;
-    this.uoq = true;
+    this.xuH = new c();
+    this.xuI = true;
+    this.xuJ = false;
+    this.xuK = false;
+    this.xuL = false;
+    this.xuM = false;
+    this.xuN = true;
     this.mContext = paramContext;
     AppMethodBeat.o(9055);
   }
   
-  public final void W(LinkedList<i> paramLinkedList)
+  public final void Y(LinkedList<i> paramLinkedList)
   {
     AppMethodBeat.i(9058);
     if (Util.isNullOrNil(paramLinkedList))
@@ -50,37 +50,37 @@ public final class b
     }
     if (paramLinkedList.size() == 1)
     {
-      final int i = this.uok.indexOf(paramLinkedList.get(0));
-      this.uok.remove(i);
-      s.y(new Runnable()
+      final int i = this.xuH.indexOf(paramLinkedList.get(0));
+      this.xuH.remove(i);
+      s.D(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(9052);
-          b.this.cN(i);
+          b.this.fX(i);
           AppMethodBeat.o(9052);
         }
       });
       AppMethodBeat.o(9058);
       return;
     }
-    this.uok.removeAll(paramLinkedList);
-    s.y(new Runnable()
+    this.xuH.removeAll(paramLinkedList);
+    s.D(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9053);
-        b.this.alc.notifyChanged();
+        b.this.bZE.notifyChanged();
         AppMethodBeat.o(9053);
       }
     });
     AppMethodBeat.o(9058);
   }
   
-  public final boolean cQF()
+  public final boolean duY()
   {
     AppMethodBeat.i(9059);
-    if (this.uok.size() <= 5)
+    if (this.xuH.size() <= 5)
     {
       AppMethodBeat.o(9059);
       return true;
@@ -92,7 +92,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(9057);
-    int i = this.uok.size();
+    int i = this.xuH.size();
     AppMethodBeat.o(9057);
     return i;
   }
@@ -100,7 +100,7 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(9056);
-    paramInt = ((i)this.uok.get(paramInt)).type;
+    paramInt = ((i)this.xuH.get(paramInt)).type;
     AppMethodBeat.o(9056);
     return paramInt;
   }

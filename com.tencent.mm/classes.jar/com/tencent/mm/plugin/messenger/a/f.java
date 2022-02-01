@@ -1,34 +1,36 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.j;
-import com.tencent.mm.am.k;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.modelavatar.j;
+import com.tencent.mm.modelavatar.k;
+import com.tencent.mm.modelavatar.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.c.a;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.ebn;
-import com.tencent.mm.protocal.protobuf.ebo;
-import com.tencent.mm.protocal.protobuf.ebp;
-import com.tencent.mm.protocal.protobuf.ecg;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.eve;
+import com.tencent.mm.protocal.protobuf.evf;
+import com.tencent.mm.protocal.protobuf.evg;
+import com.tencent.mm.protocal.protobuf.evx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class f
-  extends com.tencent.mm.an.q
+  extends p
   implements m
 {
-  public final boolean EUK;
-  private i callback;
-  public final d rr;
+  public final boolean KPI;
+  private h callback;
+  public final c rr;
   
   public f(String paramString)
   {
@@ -48,47 +50,47 @@ public final class f
   public f(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(94802);
-    this.EUK = paramBoolean;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ebo();
-    ((d.a)localObject).lBV = new ebp();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/searchcontact";
-    ((d.a)localObject).funcId = 106;
-    ((d.a)localObject).lBW = 34;
-    ((d.a)localObject).respCmdId = 1000000034;
-    this.rr = ((d.a)localObject).bgN();
+    this.KPI = paramBoolean;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new evf();
+    ((c.a)localObject).otF = new evg();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/searchcontact";
+    ((c.a)localObject).funcId = 106;
+    ((c.a)localObject).otG = 34;
+    ((c.a)localObject).respCmdId = 1000000034;
+    this.rr = ((c.a)localObject).bEF();
     Log.d("MicroMsg.NetSceneSearchContact", "search username [%s], scene [%s]", new Object[] { paramString, Integer.valueOf(paramInt2) });
-    localObject = (ebo)d.b.b(this.rr.lBR);
-    ((ebo)localObject).SrH = new eaf().btQ(paramString);
-    ((ebo)localObject).TUY = paramInt1;
-    ((ebo)localObject).Ugu = paramInt2;
+    localObject = (evf)c.b.b(this.rr.otB);
+    ((evf)localObject).ZqL = new etl().btH(paramString);
+    ((evf)localObject).ZvF = paramInt1;
+    ((evf)localObject).abxV = paramInt2;
     AppMethodBeat.o(94802);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(94803);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(94803);
     return i;
   }
   
-  public final ebp eRV()
+  public final evg gaH()
   {
     AppMethodBeat.i(94805);
-    ebp localebp = (ebp)d.c.b(this.rr.lBS);
-    if (localebp != null)
+    evg localevg = (evg)c.c.b(this.rr.otC);
+    if (localevg != null)
     {
-      Iterator localIterator = localebp.Tdk.iterator();
+      Iterator localIterator = localevg.aaqz.iterator();
       while (localIterator.hasNext())
       {
-        ebn localebn = (ebn)localIterator.next();
-        a.bBt().bcn().nG(localebn.SrH.Ufy, localebn.Tav);
+        eve localeve = (eve)localIterator.next();
+        a.caJ().bAc().pE(localeve.ZqL.abwM, localeve.aant);
       }
     }
     AppMethodBeat.o(94805);
-    return localebp;
+    return localevg;
   }
   
   public final int getType()
@@ -99,54 +101,54 @@ public final class f
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(94804);
-    params = (ebp)d.c.b(this.rr.lBS);
-    if ((params != null) && (params.Tdj > 0)) {
-      paramArrayOfByte = params.Tdk.iterator();
+    params = (evg)c.c.b(this.rr.otC);
+    if ((params != null) && (params.aaqy > 0)) {
+      paramArrayOfByte = params.aaqz.iterator();
     }
     Object localObject;
     while (paramArrayOfByte.hasNext())
     {
-      localObject = (ebn)paramArrayOfByte.next();
-      Log.d("MicroMsg.NetSceneSearchContact", "search RES username [%s]", new Object[] { ((ebn)localObject).SrH });
+      localObject = (eve)paramArrayOfByte.next();
+      Log.d("MicroMsg.NetSceneSearchContact", "search RES username [%s]", new Object[] { ((eve)localObject).ZqL });
       j localj = new j();
-      localj.username = z.a(((ebn)localObject).SrH);
-      localj.lBe = ((ebn)localObject).SjI;
-      localj.lBd = ((ebn)localObject).SjJ;
-      localj.cUP = -1;
-      Log.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { localj.getUsername(), localj.bhH(), localj.bhI() });
-      localj.hDc = 3;
-      localj.gg(true);
-      com.tencent.mm.am.q.bhP().b(localj);
+      localj.username = w.a(((eve)localObject).ZqL);
+      localj.osN = ((eve)localObject).ZhO;
+      localj.osM = ((eve)localObject).ZhP;
+      localj.eQp = -1;
+      Log.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { localj.getUsername(), localj.bFw(), localj.bFx() });
+      localj.jZY = 3;
+      localj.gX(true);
+      q.bFE().b(localj);
       continue;
-      if ((params != null) && (!Util.isNullOrNil(z.a(params.SrH))))
+      if ((params != null) && (!Util.isNullOrNil(w.a(params.ZqL))))
       {
-        paramArrayOfByte = z.a(params.SrH);
+        paramArrayOfByte = w.a(params.ZqL);
         localObject = new j();
         ((j)localObject).username = paramArrayOfByte;
-        ((j)localObject).lBe = params.SjI;
-        ((j)localObject).lBd = params.SjJ;
-        ((j)localObject).cUP = -1;
-        Log.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((j)localObject).getUsername(), ((j)localObject).bhH(), ((j)localObject).bhI() });
-        ((j)localObject).hDc = 3;
-        ((j)localObject).gg(true);
-        com.tencent.mm.am.q.bhP().b((j)localObject);
+        ((j)localObject).osN = params.ZhO;
+        ((j)localObject).osM = params.ZhP;
+        ((j)localObject).eQp = -1;
+        Log.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((j)localObject).getUsername(), ((j)localObject).bFw(), ((j)localObject).bFx() });
+        ((j)localObject).jZY = 3;
+        ((j)localObject).gX(true);
+        q.bFE().b((j)localObject);
       }
     }
     if (params != null)
     {
-      params = params.Ugz.iterator();
+      params = params.abya.iterator();
       while (params.hasNext())
       {
-        paramArrayOfByte = (ecg)params.next();
+        paramArrayOfByte = (evx)params.next();
         localObject = new j();
         ((j)localObject).username = paramArrayOfByte.UserName;
-        ((j)localObject).lBe = paramArrayOfByte.SjI;
-        ((j)localObject).lBd = paramArrayOfByte.SjJ;
-        ((j)localObject).cUP = -1;
-        Log.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((j)localObject).getUsername(), ((j)localObject).bhH(), ((j)localObject).bhI() });
-        ((j)localObject).hDc = 3;
-        ((j)localObject).gg(true);
-        com.tencent.mm.am.q.bhP().b((j)localObject);
+        ((j)localObject).osN = paramArrayOfByte.ZhO;
+        ((j)localObject).osM = paramArrayOfByte.ZhP;
+        ((j)localObject).eQp = -1;
+        Log.d("MicroMsg.NetSceneSearchContact", "dkhurl search %s b[%s] s[%s]", new Object[] { ((j)localObject).getUsername(), ((j)localObject).bFw(), ((j)localObject).bFx() });
+        ((j)localObject).jZY = 3;
+        ((j)localObject).gX(true);
+        q.bFE().b((j)localObject);
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -155,7 +157,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.a.f
  * JD-Core Version:    0.7.0.1
  */

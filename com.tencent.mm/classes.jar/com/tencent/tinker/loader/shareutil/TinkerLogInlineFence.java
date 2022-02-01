@@ -3,7 +3,6 @@ package com.tencent.tinker.loader.shareutil;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.tinker.anno.Keep;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-@Keep
 final class TinkerLogInlineFence
   extends Handler
 {
@@ -196,7 +194,7 @@ final class TinkerLogInlineFence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.TinkerLogInlineFence
  * JD-Core Version:    0.7.0.1
  */

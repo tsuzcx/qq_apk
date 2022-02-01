@@ -19,7 +19,7 @@ public class k
       AppMethodBeat.o(54032);
       return paramClass;
     }
-    catch (Throwable paramClass)
+    finally
     {
       TbsLog.addLog(997, String.valueOf(paramClass), new Object[0]);
       AppMethodBeat.o(54032);
@@ -60,7 +60,7 @@ public class k
       }
       return null;
     }
-    catch (Throwable paramObject)
+    finally
     {
       TbsLog.addLog(997, String.valueOf(paramObject), new Object[0]);
       if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail")))
@@ -90,7 +90,7 @@ public class k
       AppMethodBeat.o(54031);
       return paramString1;
     }
-    catch (Throwable paramString1)
+    finally
     {
       TbsLog.addLog(997, String.valueOf(paramString1), new Object[0]);
       AppMethodBeat.o(54031);
@@ -126,7 +126,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.k
  * JD-Core Version:    0.7.0.1
  */

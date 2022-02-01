@@ -13,35 +13,35 @@ import java.util.Set;
 
 final class b
 {
-  static b Zx;
-  private final Map<Class<?>, a> Zy;
-  private final Map<Class<?>, Boolean> Zz;
+  static b bGQ;
+  private final Map<Class<?>, a> BY;
+  private final Map<Class<?>, Boolean> bGR;
   
   static
   {
-    AppMethodBeat.i(213323);
-    Zx = new b();
-    AppMethodBeat.o(213323);
+    AppMethodBeat.i(194435);
+    bGQ = new b();
+    AppMethodBeat.o(194435);
   }
   
   b()
   {
-    AppMethodBeat.i(213301);
-    this.Zy = new HashMap();
-    this.Zz = new HashMap();
-    AppMethodBeat.o(213301);
+    AppMethodBeat.i(194400);
+    this.BY = new HashMap();
+    this.bGR = new HashMap();
+    AppMethodBeat.o(194400);
   }
   
   private a a(Class<?> paramClass, Method[] paramArrayOfMethod)
   {
-    AppMethodBeat.i(213321);
+    AppMethodBeat.i(194432);
     Object localObject1 = paramClass.getSuperclass();
     HashMap localHashMap = new HashMap();
     if (localObject1 != null)
     {
-      localObject1 = d((Class)localObject1);
+      localObject1 = l((Class)localObject1);
       if (localObject1 != null) {
-        localHashMap.putAll(((a)localObject1).ZB);
+        localHashMap.putAll(((a)localObject1).bGT);
       }
     }
     localObject1 = paramClass.getInterfaces();
@@ -51,11 +51,11 @@ final class b
     Object localObject3;
     while (i < j)
     {
-      localObject2 = d(localObject1[i]).ZB.entrySet().iterator();
+      localObject2 = l(localObject1[i]).bGT.entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Map.Entry)((Iterator)localObject2).next();
-        a(localHashMap, (b)((Map.Entry)localObject3).getKey(), (h.a)((Map.Entry)localObject3).getValue(), paramClass);
+        a(localHashMap, (b)((Map.Entry)localObject3).getKey(), (j.a)((Map.Entry)localObject3).getValue(), paramClass);
       }
       i += 1;
     }
@@ -70,7 +70,7 @@ final class b
         break label372;
       }
       localObject1 = paramArrayOfMethod[j];
-      localObject3 = (t)((Method)localObject1).getAnnotation(t.class);
+      localObject3 = (z)((Method)localObject1).getAnnotation(z.class);
       if (localObject3 == null) {
         break label417;
       }
@@ -78,31 +78,31 @@ final class b
       if (localObject2.length <= 0) {
         break label420;
       }
-      if (localObject2[0].isAssignableFrom(l.class)) {
+      if (localObject2[0].isAssignableFrom(q.class)) {
         break;
       }
       paramClass = new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
-      AppMethodBeat.o(213321);
+      AppMethodBeat.o(194432);
       throw paramClass;
-      paramArrayOfMethod = c(paramClass);
+      paramArrayOfMethod = k(paramClass);
     }
     label417:
     label420:
     for (i = 1;; i = 0)
     {
-      localObject3 = ((t)localObject3).jl();
+      localObject3 = ((z)localObject3).Ho();
       if (localObject2.length > 1)
       {
-        if (!localObject2[1].isAssignableFrom(h.a.class))
+        if (!localObject2[1].isAssignableFrom(j.a.class))
         {
           paramClass = new IllegalArgumentException("invalid parameter type. second arg must be an event");
-          AppMethodBeat.o(213321);
+          AppMethodBeat.o(194432);
           throw paramClass;
         }
-        if (localObject3 != h.a.ON_ANY)
+        if (localObject3 != j.a.ON_ANY)
         {
           paramClass = new IllegalArgumentException("Second arg is supported only for ON_ANY value");
-          AppMethodBeat.o(213321);
+          AppMethodBeat.o(194432);
           throw paramClass;
         }
         i = 2;
@@ -110,10 +110,10 @@ final class b
       if (localObject2.length > 2)
       {
         paramClass = new IllegalArgumentException("cannot have more than 2 params");
-        AppMethodBeat.o(213321);
+        AppMethodBeat.o(194432);
         throw paramClass;
       }
-      a(localHashMap, new b(i, (Method)localObject1), (h.a)localObject3, paramClass);
+      a(localHashMap, new b(i, (Method)localObject1), (j.a)localObject3, paramClass);
       bool = true;
       for (;;)
       {
@@ -121,120 +121,120 @@ final class b
         break;
         label372:
         paramArrayOfMethod = new a(localHashMap);
-        this.Zy.put(paramClass, paramArrayOfMethod);
-        this.Zz.put(paramClass, Boolean.valueOf(bool));
-        AppMethodBeat.o(213321);
+        this.BY.put(paramClass, paramArrayOfMethod);
+        this.bGR.put(paramClass, Boolean.valueOf(bool));
+        AppMethodBeat.o(194432);
         return paramArrayOfMethod;
       }
     }
   }
   
-  private static void a(Map<b, h.a> paramMap, b paramb, h.a parama, Class<?> paramClass)
+  private static void a(Map<b, j.a> paramMap, b paramb, j.a parama, Class<?> paramClass)
   {
-    AppMethodBeat.i(213314);
-    h.a locala = (h.a)paramMap.get(paramb);
+    AppMethodBeat.i(194417);
+    j.a locala = (j.a)paramMap.get(paramb);
     if ((locala != null) && (parama != locala))
     {
       paramMap = paramb.mMethod;
       paramMap = new IllegalArgumentException("Method " + paramMap.getName() + " in " + paramClass.getName() + " already declared with different @OnLifecycleEvent value: previous value " + locala + ", new value " + parama);
-      AppMethodBeat.o(213314);
+      AppMethodBeat.o(194417);
       throw paramMap;
     }
     if (locala == null) {
       paramMap.put(paramb, parama);
     }
-    AppMethodBeat.o(213314);
+    AppMethodBeat.o(194417);
   }
   
-  private static Method[] c(Class<?> paramClass)
+  private static Method[] k(Class<?> paramClass)
   {
-    AppMethodBeat.i(213308);
+    AppMethodBeat.i(194407);
     try
     {
       paramClass = paramClass.getDeclaredMethods();
-      AppMethodBeat.o(213308);
+      AppMethodBeat.o(194407);
       return paramClass;
     }
     catch (NoClassDefFoundError paramClass)
     {
       paramClass = new IllegalArgumentException("The observer class has some methods that use newer APIs which are not available in the current OS version. Lifecycles cannot access even other methods so you should make sure that your observer classes only access framework classes that are available in your min API level OR use lifecycle:compiler annotation processor.", paramClass);
-      AppMethodBeat.o(213308);
+      AppMethodBeat.o(194407);
       throw paramClass;
     }
   }
   
-  final boolean b(Class<?> paramClass)
+  final boolean j(Class<?> paramClass)
   {
-    AppMethodBeat.i(213304);
-    Object localObject = (Boolean)this.Zz.get(paramClass);
+    AppMethodBeat.i(194445);
+    Object localObject = (Boolean)this.bGR.get(paramClass);
     if (localObject != null)
     {
       boolean bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(213304);
+      AppMethodBeat.o(194445);
       return bool;
     }
-    localObject = c(paramClass);
+    localObject = k(paramClass);
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
-      if ((t)localObject[i].getAnnotation(t.class) != null)
+      if ((z)localObject[i].getAnnotation(z.class) != null)
       {
         a(paramClass, (Method[])localObject);
-        AppMethodBeat.o(213304);
+        AppMethodBeat.o(194445);
         return true;
       }
       i += 1;
     }
-    this.Zz.put(paramClass, Boolean.FALSE);
-    AppMethodBeat.o(213304);
+    this.bGR.put(paramClass, Boolean.FALSE);
+    AppMethodBeat.o(194445);
     return false;
   }
   
-  final a d(Class<?> paramClass)
+  final a l(Class<?> paramClass)
   {
-    AppMethodBeat.i(213311);
-    a locala = (a)this.Zy.get(paramClass);
+    AppMethodBeat.i(194454);
+    a locala = (a)this.BY.get(paramClass);
     if (locala != null)
     {
-      AppMethodBeat.o(213311);
+      AppMethodBeat.o(194454);
       return locala;
     }
     paramClass = a(paramClass, null);
-    AppMethodBeat.o(213311);
+    AppMethodBeat.o(194454);
     return paramClass;
   }
   
   static final class a
   {
-    final Map<h.a, List<b.b>> ZA;
-    final Map<b.b, h.a> ZB;
+    final Map<j.a, List<b.b>> bGS;
+    final Map<b.b, j.a> bGT;
     
-    a(Map<b.b, h.a> paramMap)
+    a(Map<b.b, j.a> paramMap)
     {
-      AppMethodBeat.i(213259);
-      this.ZB = paramMap;
-      this.ZA = new HashMap();
+      AppMethodBeat.i(194462);
+      this.bGT = paramMap;
+      this.bGS = new HashMap();
       Iterator localIterator = paramMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        h.a locala = (h.a)localEntry.getValue();
-        List localList = (List)this.ZA.get(locala);
+        j.a locala = (j.a)localEntry.getValue();
+        List localList = (List)this.bGS.get(locala);
         paramMap = localList;
         if (localList == null)
         {
           paramMap = new ArrayList();
-          this.ZA.put(locala, paramMap);
+          this.bGS.put(locala, paramMap);
         }
         paramMap.add(localEntry.getKey());
       }
-      AppMethodBeat.o(213259);
+      AppMethodBeat.o(194462);
     }
     
-    static void a(List<b.b> paramList, l paraml, h.a parama, Object paramObject)
+    static void a(List<b.b> paramList, q paramq, j.a parama, Object paramObject)
     {
-      AppMethodBeat.i(213266);
+      AppMethodBeat.i(194476);
       int i;
       if (paramList != null) {
         i = paramList.size() - 1;
@@ -246,7 +246,7 @@ final class b
           b.b localb = (b.b)paramList.get(i);
           try
           {
-            switch (localb.ZC)
+            switch (localb.bGU)
             {
             case 0: 
               localb.mMethod.invoke(paramObject, new Object[0]);
@@ -255,21 +255,21 @@ final class b
           catch (InvocationTargetException paramList)
           {
             paramList = new RuntimeException("Failed to call observer method", paramList.getCause());
-            AppMethodBeat.o(213266);
+            AppMethodBeat.o(194476);
             throw paramList;
-            localb.mMethod.invoke(paramObject, new Object[] { paraml });
+            localb.mMethod.invoke(paramObject, new Object[] { paramq });
           }
           catch (IllegalAccessException paramList)
           {
             paramList = new RuntimeException(paramList);
-            AppMethodBeat.o(213266);
+            AppMethodBeat.o(194476);
             throw paramList;
           }
-          localb.mMethod.invoke(paramObject, new Object[] { paraml, parama });
+          localb.mMethod.invoke(paramObject, new Object[] { paramq, parama });
         }
         else
         {
-          AppMethodBeat.o(213266);
+          AppMethodBeat.o(194476);
           return;
         }
         i -= 1;
@@ -279,54 +279,54 @@ final class b
   
   static final class b
   {
-    final int ZC;
+    final int bGU;
     final Method mMethod;
     
     b(int paramInt, Method paramMethod)
     {
-      AppMethodBeat.i(213275);
-      this.ZC = paramInt;
+      AppMethodBeat.i(194471);
+      this.bGU = paramInt;
       this.mMethod = paramMethod;
       this.mMethod.setAccessible(true);
-      AppMethodBeat.o(213275);
+      AppMethodBeat.o(194471);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(213279);
+      AppMethodBeat.i(194480);
       if (this == paramObject)
       {
-        AppMethodBeat.o(213279);
+        AppMethodBeat.o(194480);
         return true;
       }
       if (!(paramObject instanceof b))
       {
-        AppMethodBeat.o(213279);
+        AppMethodBeat.o(194480);
         return false;
       }
       paramObject = (b)paramObject;
-      if ((this.ZC == paramObject.ZC) && (this.mMethod.getName().equals(paramObject.mMethod.getName())))
+      if ((this.bGU == paramObject.bGU) && (this.mMethod.getName().equals(paramObject.mMethod.getName())))
       {
-        AppMethodBeat.o(213279);
+        AppMethodBeat.o(194480);
         return true;
       }
-      AppMethodBeat.o(213279);
+      AppMethodBeat.o(194480);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(213283);
-      int i = this.ZC;
+      AppMethodBeat.i(194488);
+      int i = this.bGU;
       int j = this.mMethod.getName().hashCode();
-      AppMethodBeat.o(213283);
+      AppMethodBeat.o(194488);
       return i * 31 + j;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.lifecycle.b
  * JD-Core Version:    0.7.0.1
  */

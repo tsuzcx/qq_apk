@@ -9,8 +9,8 @@ import javax.crypto.spec.IvParameterSpec;
 
 public class d
 {
-  private Cipher eYq;
   private Cipher encryptCipher;
+  private Cipher hbQ;
   
   public d(String paramString)
   {
@@ -21,8 +21,8 @@ public class d
       IvParameterSpec localIvParameterSpec = new IvParameterSpec("manifest".getBytes("UTF8"));
       this.encryptCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
       this.encryptCipher.init(1, paramString, localIvParameterSpec);
-      this.eYq = Cipher.getInstance("DES/CBC/PKCS5Padding");
-      this.eYq.init(2, paramString, localIvParameterSpec);
+      this.hbQ = Cipher.getInstance("DES/CBC/PKCS5Padding");
+      this.hbQ.init(2, paramString, localIvParameterSpec);
       return;
     }
     catch (Exception paramString)
@@ -31,12 +31,12 @@ public class d
     }
   }
   
-  public final String fQ(String paramString)
+  public final String ht(String paramString)
   {
     try
     {
       Object localObject = Base64.decode(paramString, 0);
-      localObject = new String(this.eYq.doFinal((byte[])localObject), "UTF8");
+      localObject = new String(this.hbQ.doFinal((byte[])localObject), "UTF8");
       return localObject;
     }
     catch (Exception localException)
@@ -47,7 +47,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.b.d
  * JD-Core Version:    0.7.0.1
  */

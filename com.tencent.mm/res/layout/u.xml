@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include layout="@layout/aab" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/aal" />
-        <include layout="@layout/aao" />
-        <ImageView android:id="@id/coq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/cpx" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="@dimen/cm" app:desc_text="@string/cs5" app:logo_mode="d53" app:logo_style="dup" />
-    </FrameLayout>
-    <include layout="@layout/aag" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aaq" />
-    <FrameLayout android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ab0" />
-    </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ViewStub android:id="@id/d7j" android:layout="@layout/a8o" android:inflatedId="@id/d7i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </FrameLayout>
-    <include android:visibility="gone" layout="@layout/aam" />
-    <com.tencent.mm.plugin.finder.view.FinderFeedLiveNoticeView android:id="@id/cly" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
-    <include android:id="@id/d8w" android:visibility="gone" layout="@layout/aa0" />
-</LinearLayout>
+<FrameLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="152.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/FG_2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/czc" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d5" android:text="@string/esa" />
+    <include android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx" layout="@layout/aqj" />
+</FrameLayout>

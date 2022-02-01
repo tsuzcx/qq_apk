@@ -6,18 +6,18 @@ import com.tencent.mm.pluginsdk.n;
 public final class m
   implements n
 {
-  private static com.tencent.mm.pluginsdk.m mIG;
+  private static com.tencent.mm.pluginsdk.m pFn;
   
-  public static com.tencent.mm.pluginsdk.m cYL()
+  public static com.tencent.mm.pluginsdk.m dFc()
   {
-    return mIG;
+    return pFn;
   }
   
   public final void a(l paraml) {}
   
   public final void a(com.tencent.mm.pluginsdk.m paramm)
   {
-    mIG = paramm;
+    pFn = paramm;
   }
 }
 

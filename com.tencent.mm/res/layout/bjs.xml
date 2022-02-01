@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/ir" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="168.0dip" android:minHeight="64.0dip" style="@style/sa">
-        <ProgressBar android:id="@id/gle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" style="@style/a61" />
-        <TextView android:textSize="@dimen/t" android:textColor="@color/a2w" android:id="@id/glf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:maxWidth="200.0dip" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/c2c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/a3i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <FrameLayout android:id="@id/a3h" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:background="@drawable/ak0" android:layout_width="fill_parent" android:layout_height="@dimen/cu" android:layout_alignParentTop="true" />
+    <View android:background="@drawable/ajx" android:layout_width="fill_parent" android:layout_height="@dimen/cu" android:layout_alignParentBottom="true" />
+    <Button android:id="@id/bko" android:background="@drawable/je" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginBottom="@dimen/bx" android:text="@string/z9" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/og" />
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/bdy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d6" android:layout_above="@id/bko" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/a32" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/d5" android:layout_marginRight="@dimen/cp" android:src="@raw/actionbar_icon_light_back" app:iconColor="@color/az" />
+    <com.tencent.mm.plugin.music.ui.LyricView android:ellipsize="end" android:id="@id/gk3" android:fadingEdge="vertical" android:fadingEdgeLength="10.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:requiresFadingEdge="vertical" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+</RelativeLayout>

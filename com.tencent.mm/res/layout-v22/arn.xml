@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hrh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ex7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_filled_horizontal_hint" app:iconColor="@color/yd" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/yd" android:ellipsize="end" android:id="@id/ex8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="250.0dip" android:text="@string/d9j" android:maxLines="1" android:layout_marginStart="@dimen/df" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/yd" android:gravity="start" android:id="@id/l5j" android:visibility="gone" android:layout_width="@dimen/d6" android:layout_height="wrap_content" android:minWidth="@dimen/d6" android:includeFontPadding="false" />
+        <SeekBar android:id="@id/i2a" android:background="@null" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:visibility="invisible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="2.0dip" android:max="500" android:progress="500" android:progressDrawable="@drawable/b02" android:thumb="@drawable/b00" android:layout_weight="1.0" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:splitTrack="false" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/egx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="@color/yd" android:gravity="end" android:id="@id/g7_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/d4" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/yd" android:id="@id/hxd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/grj" android:layout_marginStart="@dimen/cp" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l67" android:paddingTop="@dimen/df" android:paddingBottom="@dimen/df" android:visibility="gone" android:layout_width="@dimen/cw" android:layout_height="@dimen/d1" android:src="@raw/icons_outlined_channels_minimize" android:paddingStart="@dimen/df" android:layout_marginStart="@dimen/df" android:paddingVertical="@dimen/df" app:iconColor="@color/yd" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/yd" android:gravity="end" android:id="@id/l7u" android:visibility="gone" android:layout_width="@dimen/d6" android:layout_height="wrap_content" android:minWidth="@dimen/d6" android:includeFontPadding="false" />
+    </LinearLayout>
+</merge>

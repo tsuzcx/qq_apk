@@ -4,12 +4,12 @@ public final class R
 {
   public static final class dimen
   {
-    public static final int page_padding_left_right = 2131166971;
+    public static final int page_padding_left_right = 2131167053;
   }
   
   public static final class xml
   {
-    public static final int sqlite_lint_whitelist = 2132017295;
+    public static final int sqlite_lint_whitelist = 2132017288;
   }
 }
 

@@ -17,16 +17,16 @@ final class BackupUI$1$1
   {
     AppMethodBeat.i(21486);
     Log.i("MicroMsg.BackupUI", "low battery, user click sure. battery:%d", new Object[] { Integer.valueOf(this.val$level) });
-    h.IzE.idkeyStat(485L, 21L, 1L, false);
-    h.IzE.a(11788, new Object[] { Integer.valueOf(3) });
-    paramDialogInterface = new Intent(this.rPy.rPx, BackupMoveChooseUI.class);
-    MMWizardActivity.aH(this.rPy.rPx, paramDialogInterface);
+    h.OAn.idkeyStat(485L, 21L, 1L, false);
+    h.OAn.b(11788, new Object[] { Integer.valueOf(3) });
+    paramDialogInterface = new Intent(this.vaN.vaM, BackupMoveChooseUI.class);
+    MMWizardActivity.aQ(this.vaN.vaM, paramDialogInterface);
     AppMethodBeat.o(21486);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupUI.1.1
  * JD-Core Version:    0.7.0.1
  */

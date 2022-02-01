@@ -22,15 +22,15 @@ public class ActiveMainProcessTask
   
   private ActiveMainProcessTask(byte paramByte) {}
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(78484);
     Log.i("MicroMsg.ActiveMainProcessTask", "active");
-    bPt();
+    cpA();
     AppMethodBeat.o(78484);
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(78485);
     Log.i("MicroMsg.ActiveMainProcessTask", "runInClientProcess");

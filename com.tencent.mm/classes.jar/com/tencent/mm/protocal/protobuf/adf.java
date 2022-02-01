@@ -1,105 +1,185 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public final class adf
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String RDj;
-  public long SoR;
-  public int SpI;
-  public LinkedList<ade> SpJ;
+  public int ZlK;
+  public String ZlL;
+  public long ZlM;
+  public int ZlN;
+  public long ZlO;
   
-  public adf()
+  private JSONObject toJSON()
   {
-    AppMethodBeat.i(203492);
-    this.SpJ = new LinkedList();
-    AppMethodBeat.o(203492);
+    AppMethodBeat.i(257666);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "expose_count", Integer.valueOf(this.ZlK), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "oob", this.ZlL, true);
+      com.tencent.mm.bk.a.a(localJSONObject, "first_expose_time", Long.valueOf(this.ZlM), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "had_sync_for_cold_time", Integer.valueOf(this.ZlN), true);
+      com.tencent.mm.bk.a.a(localJSONObject, "last_expose_time", Long.valueOf(this.ZlO), true);
+      label80:
+      AppMethodBeat.o(257666);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label80;
+    }
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(203496);
+    AppMethodBeat.i(257671);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.SoR);
-      if (this.RDj != null) {
-        paramVarArgs.f(2, this.RDj);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ZlK);
+      if (this.ZlL != null) {
+        paramVarArgs.g(2, this.ZlL);
       }
-      paramVarArgs.aY(3, this.SpI);
-      paramVarArgs.e(4, 8, this.SpJ);
-      AppMethodBeat.o(203496);
+      paramVarArgs.bv(3, this.ZlM);
+      paramVarArgs.bS(100, this.ZlN);
+      paramVarArgs.bv(101, this.ZlO);
+      AppMethodBeat.o(257671);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.p(1, this.SoR) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.ZlK) + 0;
       paramInt = i;
-      if (this.RDj != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.RDj);
+      if (this.ZlL != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.ZlL);
       }
-      i = g.a.a.b.b.a.bM(3, this.SpI);
-      int j = g.a.a.a.c(4, 8, this.SpJ);
-      AppMethodBeat.o(203496);
-      return paramInt + i + j;
+      i = i.a.a.b.b.a.q(3, this.ZlM);
+      int j = i.a.a.b.b.a.cJ(100, this.ZlN);
+      int k = i.a.a.b.b.a.q(101, this.ZlO);
+      AppMethodBeat.o(257671);
+      return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.SpJ.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(203496);
+      AppMethodBeat.o(257671);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       adf localadf = (adf)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(203496);
+        AppMethodBeat.o(257671);
         return -1;
       case 1: 
-        localadf.SoR = ((g.a.a.a.a)localObject).abFh.AN();
-        AppMethodBeat.o(203496);
+        localadf.ZlK = locala.ajGk.aar();
+        AppMethodBeat.o(257671);
         return 0;
       case 2: 
-        localadf.RDj = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(203496);
+        localadf.ZlL = locala.ajGk.readString();
+        AppMethodBeat.o(257671);
         return 0;
       case 3: 
-        localadf.SpI = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(203496);
+        localadf.ZlM = locala.ajGk.aaw();
+        AppMethodBeat.o(257671);
+        return 0;
+      case 100: 
+        localadf.ZlN = locala.ajGk.aar();
+        AppMethodBeat.o(257671);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        ade localade = new ade();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localade.parseFrom((byte[])localObject);
-        }
-        localadf.SpJ.add(localade);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(203496);
+      localadf.ZlO = locala.ajGk.aaw();
+      AppMethodBeat.o(257671);
       return 0;
     }
-    AppMethodBeat.o(203496);
+    AppMethodBeat.o(257671);
     return -1;
+  }
+  
+  public final com.tencent.mm.bx.a toPb(String paramString)
+  {
+    AppMethodBeat.i(257674);
+    if ((paramString == null) || ("" == paramString))
+    {
+      AppMethodBeat.o(257674);
+      return this;
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        if (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          i = -1;
+        }
+        switch (str.hashCode())
+        {
+        case 785900756: 
+          this.ZlK = ((Integer)paramString.opt(str)).intValue();
+          continue;
+          if (!str.equals("expose_count")) {
+            break label299;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("ClientStatsInfo", paramString, "", new Object[0]);
+        AppMethodBeat.o(257674);
+        return this;
+      }
+      int i = 0;
+      break label299;
+      if (str.equals("oob"))
+      {
+        i = 1;
+        break label299;
+        if (str.equals("first_expose_time"))
+        {
+          i = 2;
+          break label299;
+          if (str.equals("had_sync_for_cold_time"))
+          {
+            i = 3;
+            break label299;
+            if (str.equals("last_expose_time"))
+            {
+              i = 4;
+              break label299;
+              this.ZlL = ((String)paramString.opt(str));
+              continue;
+              this.ZlM = ((Long)paramString.opt(str)).longValue();
+              continue;
+              this.ZlN = ((Integer)paramString.opt(str)).intValue();
+              continue;
+              this.ZlO = ((Long)paramString.opt(str)).longValue();
+              continue;
+            }
+          }
+        }
+      }
+      label299:
+      switch (i)
+      {
+      }
+    }
   }
 }
 

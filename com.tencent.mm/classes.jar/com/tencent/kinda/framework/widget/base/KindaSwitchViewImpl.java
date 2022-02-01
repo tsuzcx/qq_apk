@@ -14,7 +14,7 @@ public class KindaSwitchViewImpl
   implements KSwitchView
 {
   private MMSwitchBtn mmSwitchBtn;
-  private KSwitchViewOnChangeSwitchCallback onChangeSwitchCallback;
+  public KSwitchViewOnChangeSwitchCallback onChangeSwitchCallback;
   
   public MMSwitchBtn createView(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class KindaSwitchViewImpl
   
   public boolean getOn()
   {
-    return this.mmSwitchBtn.YbZ;
+    return this.mmSwitchBtn.afTT;
   }
   
   public KImage getOnImage()
@@ -79,15 +79,16 @@ public class KindaSwitchViewImpl
     AppMethodBeat.o(18967);
   }
   
-  public void setOnChangeSwitchCallback(final KSwitchViewOnChangeSwitchCallback paramKSwitchViewOnChangeSwitchCallback)
+  public void setOnChangeSwitchCallback(KSwitchViewOnChangeSwitchCallback paramKSwitchViewOnChangeSwitchCallback)
   {
     AppMethodBeat.i(18970);
+    this.onChangeSwitchCallback = paramKSwitchViewOnChangeSwitchCallback;
     this.mmSwitchBtn.setSwitchListener(new MMSwitchBtn.a()
     {
       public void onStatusChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(18965);
-        paramKSwitchViewOnChangeSwitchCallback.onChangeSwitch();
+        KindaSwitchViewImpl.this.onChangeSwitchCallback.onChangeSwitch();
         AppMethodBeat.o(18965);
       }
     });
@@ -104,7 +105,7 @@ public class KindaSwitchViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaSwitchViewImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,22 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.i;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.plugin.sns.data.t;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.d;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.plugin.sns.model.h;
-import com.tencent.mm.plugin.sns.storage.r;
+import com.tencent.mm.plugin.sns.storage.aa;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.bb;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,37 +32,37 @@ import java.util.concurrent.ExecutorService;
 public final class c
   extends b
 {
-  private HashMap<String, Bitmap> KIO;
-  boolean KIR;
-  private int LpZ;
-  private boolean Lqa;
-  private boolean Lqb;
-  a Lqc;
-  private int Lqd;
+  private int RSS;
+  private boolean RST;
+  private boolean RSU;
+  a RSV;
+  private int RSW;
+  private HashMap<String, Bitmap> Rip;
+  boolean Ris;
   
-  public c(Context paramContext, List<?> paramList, boolean paramBoolean, a parama)
+  public c(Context paramContext, List<?> paramList, int paramInt, boolean paramBoolean, a parama)
   {
     super(paramContext);
-    AppMethodBeat.i(100268);
-    this.KIO = new HashMap();
-    this.Lqd = 0;
-    super.hU(hV(paramList));
-    this.LpZ = 9;
-    this.Lqa = paramBoolean;
-    this.Lqc = parama;
-    fYF();
-    fYG();
-    AppMethodBeat.o(100268);
+    AppMethodBeat.i(369955);
+    this.Rip = new HashMap();
+    this.RSW = 0;
+    super.kY(kZ(paramList));
+    this.RSS = paramInt;
+    this.RST = paramBoolean;
+    this.RSV = parama;
+    hrO();
+    hrP();
+    AppMethodBeat.o(369955);
   }
   
-  private void fYF()
+  private void hrO()
   {
     AppMethodBeat.i(100270);
     int i = 0;
-    while (i < this.LpY)
+    while (i < this.RSR)
     {
       d locald = new d((byte)0);
-      locald.bnW = "";
+      locald.cpt = "";
       locald.id = getCount();
       locald.id = getCount();
       add(i, locald);
@@ -69,7 +71,7 @@ public final class c
     AppMethodBeat.o(100270);
   }
   
-  private List<d> hV(List<?> paramList)
+  private List<d> kZ(List<?> paramList)
   {
     AppMethodBeat.i(100269);
     ArrayList localArrayList = new ArrayList(paramList.size());
@@ -79,7 +81,7 @@ public final class c
     {
       Object localObject = paramList.next();
       d locald = new d((byte)0);
-      locald.bnW = localObject;
+      locald.cpt = localObject;
       locald.id = i;
       localArrayList.add(locald);
       i += 1;
@@ -88,15 +90,36 @@ public final class c
     return localArrayList;
   }
   
-  public final boolean ahA(int paramInt)
+  private void v(ImageView paramImageView)
+  {
+    AppMethodBeat.i(308601);
+    if (this.RSW == 0)
+    {
+      al.hgq();
+      int i = aa.getScreenWidth();
+      if (i == 0)
+      {
+        AppMethodBeat.o(308601);
+        return;
+      }
+      this.RSW = ((i - this.mContext.getResources().getDimensionPixelSize(b.d.sns_upload_previewimg_view_margin) * 4 - this.mContext.getResources().getDimensionPixelSize(b.d.LargerPadding) * 2) / 3);
+    }
+    ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
+    localLayoutParams.width = this.RSW;
+    localLayoutParams.height = this.RSW;
+    paramImageView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(308601);
+  }
+  
+  public final boolean amC(int paramInt)
   {
     AppMethodBeat.i(100277);
-    if (paramInt < this.LpY)
+    if (paramInt < this.RSR)
     {
       AppMethodBeat.o(100277);
       return false;
     }
-    if (this.Lqb)
+    if (this.RSU)
     {
       if (paramInt != getCount() - 1)
       {
@@ -106,20 +129,20 @@ public final class c
       AppMethodBeat.o(100277);
       return false;
     }
-    boolean bool = super.ahA(paramInt);
+    boolean bool = super.amC(paramInt);
     AppMethodBeat.o(100277);
     return bool;
   }
   
-  public final boolean ahB(int paramInt)
+  public final boolean amD(int paramInt)
   {
     AppMethodBeat.i(100278);
-    if (paramInt < this.LpY)
+    if (paramInt < this.RSR)
     {
       AppMethodBeat.o(100278);
       return false;
     }
-    if (this.Lqb)
+    if (this.RSU)
     {
       if (paramInt != getCount() - 1)
       {
@@ -129,7 +152,7 @@ public final class c
       AppMethodBeat.o(100278);
       return false;
     }
-    boolean bool = super.ahB(paramInt);
+    boolean bool = super.amD(paramInt);
     AppMethodBeat.o(100278);
     return bool;
   }
@@ -138,40 +161,8 @@ public final class c
   {
     AppMethodBeat.i(100272);
     super.clear();
-    this.Lqb = false;
+    this.RSU = false;
     AppMethodBeat.o(100272);
-  }
-  
-  public final void fYG()
-  {
-    AppMethodBeat.i(100271);
-    Log.v("DynamicGridAdapter", "showAddImg %s, getCount %d, getHeaderCount %d, maxShowCount %d， showing %s", new Object[] { Boolean.valueOf(this.Lqa), Integer.valueOf(getCount()), Integer.valueOf(this.LpY), Integer.valueOf(this.LpZ), Boolean.valueOf(this.Lqb) });
-    if ((this.Lqa) && (fYH() < this.LpZ))
-    {
-      if (!this.Lqb)
-      {
-        this.Lqb = true;
-        add("");
-        AppMethodBeat.o(100271);
-      }
-    }
-    else {
-      this.Lqb = false;
-    }
-    AppMethodBeat.o(100271);
-  }
-  
-  public final int fYH()
-  {
-    AppMethodBeat.i(100274);
-    int j = getCount();
-    int k = this.LpY;
-    if (this.Lqb) {}
-    for (int i = 1;; i = 0)
-    {
-      AppMethodBeat.o(100274);
-      return j - k - i;
-    }
   }
   
   public final int getItemViewType(int paramInt)
@@ -189,82 +180,66 @@ public final class c
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(100275);
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
+    String str;
+    ImageView localImageView;
     if (paramView == null)
     {
-      localObject1 = LayoutInflater.from(getContext()).inflate(i.g.sns_preview_view_item, paramViewGroup, false);
-      localObject2 = new b((View)localObject1, (byte)0);
-      ((View)localObject1).setTag(i.f.img_preview_tag, localObject2);
-      localObject3 = ((b)localObject2).fDJ;
-      if (this.Lqd == 0)
-      {
-        aj.fOx();
-        i = r.getScreenWidth();
-        paramViewGroup = (ViewGroup)localObject2;
-        paramView = (View)localObject1;
-        if (i != 0) {
-          this.Lqd = ((i - this.mContext.getResources().getDimensionPixelSize(i.d.sns_upload_previewimg_view_margin) * 4 - this.mContext.getResources().getDimensionPixelSize(i.d.LargerPadding) * 2) / 3);
-        }
+      paramView = LayoutInflater.from(getContext()).inflate(b.g.sns_preview_view_item, paramViewGroup, false);
+      paramViewGroup = new b(paramView, (byte)0);
+      paramView.setTag(b.f.img_preview_tag, paramViewGroup);
+      v(paramViewGroup.RSX);
+      v(paramViewGroup.hIz);
+      str = getItem(paramInt).toString();
+      localImageView = paramViewGroup.hIz;
+      if (!TextUtils.isEmpty(str)) {
+        break label260;
       }
-      else
-      {
-        paramView = (LinearLayout.LayoutParams)((ImageView)localObject3).getLayoutParams();
-        paramView.width = this.Lqd;
-        paramView.height = this.Lqd;
-        ((ImageView)localObject3).setLayoutParams(paramView);
-        paramView = (View)localObject1;
-        paramViewGroup = (ViewGroup)localObject2;
-      }
-      localObject1 = getItem(paramInt).toString();
-      localObject2 = paramViewGroup.fDJ;
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label325;
-      }
-      ((ImageView)localObject2).setBackgroundResource(i.c.sns_upload_add_bg);
-      ((ImageView)localObject2).setImageResource(i.i.album_post_add_picture_btn);
-      ((ImageView)localObject2).setContentDescription(paramViewGroup.fDJ.getContext().getString(i.j.sns_add_photo));
-      int i = paramViewGroup.Lqe.Lqd * 35 / 100;
-      ((ImageView)localObject2).setPadding(i, i, i, i);
+      paramViewGroup.RSX.setBackgroundResource(b.c.sns_upload_add_bg);
+      localImageView.setImageDrawable(bb.m(localImageView.getContext(), b.i.album_post_add_picture_btn, a.w(localImageView.getContext(), b.c.FG_1)));
+      localImageView.setContentDescription(paramViewGroup.hIz.getContext().getString(b.j.sns_add_photo));
+      int i = paramViewGroup.RSY.RSW * 35 / 100;
+      localImageView.setPadding(i, i, i, i);
       if (paramInt <= 0) {
-        break label298;
+        break label233;
       }
       paramViewGroup.view.setTag(Integer.valueOf(-1));
-      label261:
-      if (paramInt >= this.LpY) {
-        break label450;
+      label182:
+      if (paramInt >= this.RSR) {
+        break label385;
       }
-      paramViewGroup.fDJ.setVisibility(4);
+      paramViewGroup.hIz.setVisibility(4);
+      paramViewGroup.RSX.setVisibility(8);
+      paramView.setVisibility(4);
     }
     for (;;)
     {
       AppMethodBeat.o(100275);
       return paramView;
-      paramViewGroup = (b)paramView.getTag(i.f.img_preview_tag);
+      paramViewGroup = (b)paramView.getTag(b.f.img_preview_tag);
       break;
-      label298:
-      if (paramInt >= paramViewGroup.Lqe.LpY) {
-        break label261;
+      label233:
+      if (paramInt >= paramViewGroup.RSY.RSR) {
+        break label182;
       }
       paramViewGroup.view.setTag(Integer.valueOf(2147483647));
-      break label261;
-      label325:
-      paramViewGroup.view.setTag(Integer.valueOf(paramInt - paramViewGroup.Lqe.LpY));
-      ((ImageView)localObject2).setBackgroundDrawable(null);
-      ((ImageView)localObject2).setTag(localObject1);
-      ((ImageView)localObject2).setContentDescription(paramViewGroup.fDJ.getContext().getString(i.j.sns_img));
-      ((ImageView)localObject2).setPadding(0, 0, 0, 0);
-      localObject3 = (Bitmap)paramViewGroup.Lqe.KIO.get(localObject1);
-      if (!t.K((Bitmap)localObject3))
+      break label182;
+      label260:
+      paramViewGroup.view.setTag(Integer.valueOf(paramInt - paramViewGroup.RSY.RSR));
+      localImageView.setBackgroundDrawable(null);
+      localImageView.setTag(str);
+      localImageView.setContentDescription(paramViewGroup.hIz.getContext().getString(b.j.sns_img));
+      localImageView.setPadding(0, 0, 0, 0);
+      Bitmap localBitmap = (Bitmap)paramViewGroup.RSY.Rip.get(str);
+      if (!t.S(localBitmap))
       {
-        new c(paramViewGroup.Lqe, (ImageView)localObject2, (String)localObject1).y(new String[] { "" });
-        break label261;
+        new c(paramViewGroup.RSY, localImageView, str).A(new String[] { "" });
+        break label182;
       }
-      ((ImageView)localObject2).setImageBitmap((Bitmap)localObject3);
-      break label261;
-      label450:
-      paramViewGroup.fDJ.setVisibility(0);
+      localImageView.setImageBitmap(localBitmap);
+      break label182;
+      label385:
+      paramViewGroup.hIz.setVisibility(0);
+      paramViewGroup.RSX.setVisibility(0);
       paramView.setVisibility(0);
     }
   }
@@ -274,42 +249,76 @@ public final class c
     return 2;
   }
   
-  public final void hU(List<?> paramList)
+  public final void hrP()
+  {
+    AppMethodBeat.i(100271);
+    Log.v("DynamicGridAdapter", "showAddImg %s, getCount %d, getHeaderCount %d, maxShowCount %d， showing %s", new Object[] { Boolean.valueOf(this.RST), Integer.valueOf(getCount()), Integer.valueOf(this.RSR), Integer.valueOf(this.RSS), Boolean.valueOf(this.RSU) });
+    if ((this.RST) && (hrQ() < this.RSS))
+    {
+      if (!this.RSU)
+      {
+        this.RSU = true;
+        add("");
+        AppMethodBeat.o(100271);
+      }
+    }
+    else {
+      this.RSU = false;
+    }
+    AppMethodBeat.o(100271);
+  }
+  
+  public final int hrQ()
+  {
+    AppMethodBeat.i(100274);
+    int j = getCount();
+    int k = this.RSR;
+    if (this.RSU) {}
+    for (int i = 1;; i = 0)
+    {
+      AppMethodBeat.o(100274);
+      return j - k - i;
+    }
+  }
+  
+  public final void kY(List<?> paramList)
   {
     AppMethodBeat.i(100273);
-    super.hU(hV(paramList));
-    fYF();
-    fYG();
+    super.kY(kZ(paramList));
+    hrO();
+    hrP();
     AppMethodBeat.o(100273);
   }
   
-  public final void kc(int paramInt1, int paramInt2)
+  public final void lP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(100279);
-    super.kc(paramInt1, paramInt2);
-    if (this.Lqc != null) {
-      this.Lqc.jT(paramInt1 - this.LpY, paramInt2 - this.LpY);
+    super.lP(paramInt1, paramInt2);
+    if (this.RSV != null) {
+      this.RSV.lF(paramInt1 - this.RSR, paramInt2 - this.RSR);
     }
     AppMethodBeat.o(100279);
   }
   
   public static abstract interface a
   {
-    public abstract void jT(int paramInt1, int paramInt2);
+    public abstract void lF(int paramInt1, int paramInt2);
     
     public abstract void removeItem(int paramInt);
   }
   
   final class b
   {
-    ImageView fDJ;
+    ImageView RSX;
+    ImageView hIz;
     View view;
     
     private b(View paramView)
     {
       AppMethodBeat.i(100263);
       this.view = paramView;
-      this.fDJ = ((ImageView)paramView.findViewById(i.f.iv));
+      this.hIz = ((ImageView)paramView.findViewById(b.f.iv));
+      this.RSX = ((ImageView)paramView.findViewById(b.f.bgview));
       AppMethodBeat.o(100263);
     }
   }
@@ -317,20 +326,20 @@ public final class c
   final class c
     extends h<String, Integer, Boolean>
   {
-    private ImageView fIv;
-    private Bitmap lAx;
+    private ImageView hNV;
+    private Bitmap orY;
     private String path;
     
     public c(ImageView paramImageView, String paramString)
     {
-      this.fIv = paramImageView;
+      this.hNV = paramImageView;
       this.path = paramString;
     }
     
-    public final ExecutorService fsl()
+    public final ExecutorService gDT()
     {
       AppMethodBeat.i(179372);
-      ExecutorService localExecutorService = aj.fOs();
+      ExecutorService localExecutorService = al.hgl();
       AppMethodBeat.o(179372);
       return localExecutorService;
     }
@@ -338,7 +347,7 @@ public final class c
   
   final class d
   {
-    public Object bnW;
+    public Object cpt;
     public int id;
     
     private d() {}
@@ -351,7 +360,7 @@ public final class c
     public final String toString()
     {
       AppMethodBeat.i(100267);
-      String str = this.bnW.toString();
+      String str = this.cpt.toString();
       AppMethodBeat.o(100267);
       return str;
     }
@@ -359,7 +368,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -14,35 +13,35 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.at;
-import com.tencent.mm.plugin.sns.model.at.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.av;
+import com.tencent.mm.plugin.sns.model.av.b;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.tools.k;
 
 public class SnsTranslateResultView
   extends LinearLayout
 {
-  private static final int Lcj;
-  private int KXB;
-  private TextView Lcg;
-  private TextView Lch;
-  private View Lci;
-  private float Lck;
-  private int Lcl;
-  private Drawable lRR;
+  private static final int RCn;
+  private TextView RCk;
+  private TextView RCl;
+  private View RCm;
+  private float RCo;
+  private int RCp;
+  private int RxC;
+  private Drawable oKD;
   
   static
   {
     AppMethodBeat.i(99450);
-    Lcj = Color.parseColor("#19000000");
+    RCn = Color.parseColor("#19000000");
     AppMethodBeat.o(99450);
   }
   
@@ -50,58 +49,57 @@ public class SnsTranslateResultView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99444);
-    this.KXB = -1;
-    this.Lck = -1.0F;
-    this.Lcl = -1;
-    LayoutInflater.from(getContext()).inflate(i.g.translate_result_layout, this);
-    this.Lcg = ((TextView)findViewById(i.f.sns_translate_brand_tv));
-    this.Lch = ((TextView)findViewById(i.f.sns_translate_result_tv));
-    this.Lci = findViewById(i.f.translate_split);
-    this.lRR = getResources().getDrawable(i.e.sns_translate_loading_icon);
-    this.lRR.setBounds(0, 0, (int)(this.Lch.getTextSize() * 0.8F), (int)(this.Lch.getTextSize() * 0.8F));
-    this.lRR.setColorFilter(Lcj, PorterDuff.Mode.SRC_IN);
+    this.RxC = -1;
+    this.RCo = -1.0F;
+    this.RCp = -1;
+    LayoutInflater.from(getContext()).inflate(b.g.translate_result_layout, this);
+    this.RCk = ((TextView)findViewById(b.f.sns_translate_brand_tv));
+    this.RCl = ((TextView)findViewById(b.f.sns_translate_result_tv));
+    this.RCm = findViewById(b.f.translate_split);
+    this.oKD = getResources().getDrawable(b.e.sns_translate_loading_icon);
+    this.oKD.setBounds(0, 0, (int)(this.RCl.getTextSize() * 0.8F), (int)(this.RCl.getTextSize() * 0.8F));
+    this.oKD.setColorFilter(RCn, PorterDuff.Mode.SRC_IN);
     AppMethodBeat.o(99444);
   }
   
-  private void fXI()
+  private void hqc()
   {
     AppMethodBeat.i(99448);
-    if ((this.Lck == -1.0F) && (this.Lcl == -1)) {
-      if (this.KXB == 2) {
-        this.Lch.setTextSize(1, 14.0F * a.ez(getContext()));
+    if ((this.RCo == -1.0F) && (this.RCp == -1)) {
+      if (this.RxC == 2) {
+        this.RCl.setTextSize(1, 14.0F * a.getScaleSize(getContext()));
       }
     }
-    while (this.KXB == 2)
+    while (this.RxC == 2)
     {
-      this.Lch.setTextColor(getContext().getResources().getColor(i.c.sns_translate_comment_result_color));
+      this.RCl.setTextColor(getContext().getResources().getColor(b.c.sns_translate_comment_result_color));
       AppMethodBeat.o(99448);
       return;
-      if (this.KXB == 1)
+      if (this.RxC == 1)
       {
-        this.Lch.setTextSize(1, 15.0F * a.ez(getContext()));
+        this.RCl.setTextSize(1, 15.0F * a.getScaleSize(getContext()));
         continue;
-        this.Lch.setTextSize(this.Lcl, this.Lck);
+        this.RCl.setTextSize(this.RCp, this.RCo);
       }
     }
-    if (this.KXB == 1) {
-      this.Lch.setTextColor(getContext().getResources().getColor(i.c.sns_translate_post_result_color));
+    if (this.RxC == 1) {
+      this.RCl.setTextColor(getContext().getResources().getColor(b.c.sns_translate_post_result_color));
     }
     AppMethodBeat.o(99448);
   }
   
-  @TargetApi(11)
-  public final void a(final at.b paramb, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public final void a(final av.b paramb, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(99449);
-    this.KXB = paramInt;
-    fXI();
+    this.RxC = paramInt;
+    hqc();
     if (!Util.isNullOrNil(paramString1))
     {
-      this.Lch.setText(paramString1);
-      l.q(this.Lch, 2);
-      this.Lch.setCompoundDrawables(null, null, null, null);
-      if ((paramBoolean) && (d.qV(11))) {
-        k.a(this.Lch, new Animator.AnimatorListener()
+      this.RCl.setText(paramString1);
+      p.t(this.RCl, 2);
+      this.RCl.setCompoundDrawables(null, null, null, null);
+      if ((paramBoolean) && (d.rb(11))) {
+        k.a(this.RCl, new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
@@ -109,7 +107,7 @@ public class SnsTranslateResultView
           {
             AppMethodBeat.i(99443);
             if (paramb != null) {
-              at.a(paramb);
+              av.a(paramb);
             }
             AppMethodBeat.o(99443);
           }
@@ -122,65 +120,65 @@ public class SnsTranslateResultView
       if (Util.isNullOrNil(paramString2)) {
         break label122;
       }
-      this.Lcg.setText(paramString2);
+      this.RCk.setText(paramString2);
     }
     for (;;)
     {
-      this.Lcg.setVisibility(0);
+      this.RCk.setVisibility(0);
       AppMethodBeat.o(99449);
       return;
-      this.Lch.setText(i.j.sns_translate_failed);
+      this.RCl.setText(b.j.sns_translate_failed);
       break;
       label122:
-      this.Lcg.setText(i.j.chatting_translate_status_got);
+      this.RCk.setText(b.j.chatting_translate_status_got);
     }
   }
   
-  public final void aht(int paramInt)
+  public final void amo(int paramInt)
   {
     AppMethodBeat.i(99445);
-    this.Lch.setCompoundDrawables(this.lRR, null, null, null);
-    this.Lch.setCompoundDrawablePadding(a.fromDPToPix(getContext(), 3));
-    this.Lch.setText(i.j.sns_translating);
-    k.a(this.Lch, null);
-    this.Lcg.setVisibility(4);
-    this.KXB = paramInt;
-    this.Lch.setTextSize(0, this.Lcg.getTextSize());
-    this.Lch.setTextColor(getContext().getResources().getColor(i.c.sns_translate_loading_text_color));
+    this.RCl.setCompoundDrawables(this.oKD, null, null, null);
+    this.RCl.setCompoundDrawablePadding(a.fromDPToPix(getContext(), 3));
+    this.RCl.setText(b.j.sns_translating);
+    k.a(this.RCl, null);
+    this.RCk.setVisibility(4);
+    this.RxC = paramInt;
+    this.RCl.setTextSize(0, this.RCk.getTextSize());
+    this.RCl.setTextColor(getContext().getResources().getColor(b.c.sns_translate_loading_text_color));
     AppMethodBeat.o(99445);
   }
   
-  public final void ci(float paramFloat)
+  public final void dr(float paramFloat)
   {
     AppMethodBeat.i(99446);
-    this.Lch.setTextSize(1, paramFloat);
-    this.Lck = paramFloat;
-    this.Lcl = 1;
+    this.RCl.setTextSize(1, paramFloat);
+    this.RCo = paramFloat;
+    this.RCp = 1;
     AppMethodBeat.o(99446);
   }
   
   public TextView getResultTextView()
   {
-    return this.Lch;
+    return this.RCl;
   }
   
   public View getSplitlineView()
   {
-    return this.Lci;
+    return this.RCm;
   }
   
   public void setResultTextSize(float paramFloat)
   {
     AppMethodBeat.i(99447);
-    this.Lch.setTextSize(0, paramFloat);
-    this.Lck = paramFloat;
-    this.Lcl = 0;
+    this.RCl.setTextSize(0, paramFloat);
+    this.RCo = paramFloat;
+    this.RCp = 0;
     AppMethodBeat.o(99447);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTranslateResultView
  * JD-Core Version:    0.7.0.1
  */

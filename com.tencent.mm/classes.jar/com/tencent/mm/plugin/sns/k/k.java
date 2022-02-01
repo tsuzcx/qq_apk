@@ -1,65 +1,98 @@
 package com.tencent.mm.plugin.sns.k;
 
-import com.tencent.mm.modelsns.l;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.Vector;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
-public abstract class k
+public final class k
+  extends com.tencent.mm.bx.a
 {
-  private Vector<l> Kjc = new Vector();
+  public LinkedList<l> QCM;
+  public long QCN;
+  public long QxZ;
   
-  public final l b(l paraml)
+  public k()
   {
-    this.Kjc.add(paraml);
-    return paraml;
+    AppMethodBeat.i(179119);
+    this.QCM = new LinkedList();
+    AppMethodBeat.o(179119);
   }
   
-  public final boolean c(l paraml)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    Iterator localIterator = this.Kjc.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(179120);
+    if (paramInt == 0)
     {
-      l locall = (l)localIterator.next();
-      if (locall.mbp == paraml.mbp) {
-        this.Kjc.remove(locall);
-      }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.QCM);
+      paramVarArgs.bv(2, this.QCN);
+      paramVarArgs.bv(3, this.QxZ);
+      AppMethodBeat.o(179120);
+      return 0;
     }
-    for (boolean bool = true;; bool = false)
+    int i;
+    if (paramInt == 1)
     {
-      this.Kjc.add(paraml);
-      return bool;
+      paramInt = i.a.a.a.c(1, 8, this.QCM);
+      i = i.a.a.b.b.a.q(2, this.QCN);
+      int j = i.a.a.b.b.a.q(3, this.QxZ);
+      AppMethodBeat.o(179120);
+      return paramInt + 0 + i + j;
     }
-  }
-  
-  public final l dU(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    try
+    if (paramInt == 2)
     {
-      Iterator localIterator = this.Kjc.iterator();
-      while (localIterator.hasNext())
-      {
-        l locall = (l)localIterator.next();
-        if (paramObject.equals(locall.mbn))
-        {
-          this.Kjc.remove(locall);
-          return locall;
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.QCM.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
         }
       }
+      AppMethodBeat.o(179120);
+      return 0;
     }
-    catch (Exception localException)
+    if (paramInt == 3)
     {
-      Log.e("MicroMsg.Ss_log_base_helper", "report by key " + localException.getMessage() + " " + paramObject);
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      k localk = (k)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(179120);
+        return -1;
+      case 1: 
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          l locall = new l();
+          if ((localObject != null) && (localObject.length > 0)) {
+            locall.parseFrom((byte[])localObject);
+          }
+          localk.QCM.add(locall);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(179120);
+        return 0;
+      case 2: 
+        localk.QCN = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(179120);
+        return 0;
+      }
+      localk.QxZ = ((i.a.a.a.a)localObject).ajGk.aaw();
+      AppMethodBeat.o(179120);
+      return 0;
     }
-    return null;
+    AppMethodBeat.o(179120);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.k.k
  * JD-Core Version:    0.7.0.1
  */

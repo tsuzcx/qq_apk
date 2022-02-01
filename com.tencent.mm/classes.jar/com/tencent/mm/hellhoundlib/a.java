@@ -9,54 +9,41 @@ import java.util.Map;
 
 public final class a
 {
-  private static a jXm;
-  private static g jXq = null;
-  private static c jXr = null;
-  private final e jXn;
-  private final f jXo;
-  public d jXp;
+  private static a mxg;
+  private static g mxk = null;
+  private static c mxl = null;
+  private final e mxh;
+  private final f mxi;
+  public d mxj;
   
   private a()
   {
     AppMethodBeat.i(55504);
-    this.jXn = new e() {};
-    this.jXo = new f() {};
-    this.jXp = null;
+    this.mxh = new e() {};
+    this.mxi = new f() {};
+    this.mxj = null;
     AppMethodBeat.o(55504);
   }
   
-  public static Object a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Object paramObject, Object[] paramArrayOfObject)
+  public static Object a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Object paramObject, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(215193);
-    paramString1 = com.tencent.mm.hellhoundlib.a.a.b(paramString1, paramString2, paramString3, paramString4, paramString5, paramObject, paramArrayOfObject);
-    AppMethodBeat.o(215193);
+    AppMethodBeat.i(231544);
+    paramString1 = com.tencent.mm.hellhoundlib.a.a.c(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramObject, paramArrayOfObject);
+    AppMethodBeat.o(231544);
     return paramString1;
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(215198);
+    AppMethodBeat.i(231559);
     if ((paramString2 == null) && (paramString3 == null))
     {
-      com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString4, paramString5, paramString6, paramObject1, paramObject2);
-      AppMethodBeat.o(215198);
+      com.tencent.mm.hellhoundlib.a.a.b(paramString1, paramString4, paramString5, paramString6, paramObject1, paramObject2);
+      AppMethodBeat.o(231559);
       return;
     }
-    com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString4, paramString5, paramString6, paramObject2);
-    AppMethodBeat.o(215198);
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Object paramObject, Object[] paramArrayOfObject)
-  {
-    AppMethodBeat.i(177066);
-    if ((paramString2 == null) && (paramString3 == null))
-    {
-      com.tencent.mm.hellhoundlib.a.a.b(paramString1, paramString4, paramString5, paramString6, paramObject, paramArrayOfObject);
-      AppMethodBeat.o(177066);
-      return;
-    }
-    com.tencent.mm.hellhoundlib.a.a.b(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramObject, paramArrayOfObject);
-    AppMethodBeat.o(177066);
+    com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2, paramString4, paramString5, paramString6, paramObject1, paramObject2);
+    AppMethodBeat.o(231559);
   }
   
   public static void a(List<Pair<String, String>> paramList, com.tencent.mm.hellhoundlib.a.b paramb)
@@ -75,9 +62,9 @@ public final class a
   
   public static void a(Map<String, List<Pair<String, String>>> paramMap, com.tencent.mm.hellhoundlib.a.c paramc)
   {
-    AppMethodBeat.i(215191);
+    AppMethodBeat.i(231539);
     com.tencent.mm.hellhoundlib.a.a.b(paramMap, paramc);
-    AppMethodBeat.o(215191);
+    AppMethodBeat.o(231539);
   }
   
   public static void a(Map<String, List<Pair<String, String>>> paramMap, com.tencent.mm.hellhoundlib.a.d paramd)
@@ -87,16 +74,16 @@ public final class a
     AppMethodBeat.o(55510);
   }
   
-  public static a aFg()
+  public static a aYh()
   {
     AppMethodBeat.i(55503);
-    if (jXm == null) {}
+    if (mxg == null) {}
     try
     {
-      if (jXm == null) {
-        jXm = new a();
+      if (mxg == null) {
+        mxg = new a();
       }
-      a locala = jXm;
+      a locala = mxg;
       AppMethodBeat.o(55503);
       return locala;
     }
@@ -104,6 +91,19 @@ public final class a
     {
       AppMethodBeat.o(55503);
     }
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Object paramObject, Object[] paramArrayOfObject)
+  {
+    AppMethodBeat.i(177066);
+    if ((paramString2 == null) && (paramString3 == null))
+    {
+      com.tencent.mm.hellhoundlib.a.a.b(paramString1, paramString4, paramString5, paramString6, paramObject, paramArrayOfObject);
+      AppMethodBeat.o(177066);
+      return;
+    }
+    com.tencent.mm.hellhoundlib.a.a.d(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramObject, paramArrayOfObject);
+    AppMethodBeat.o(177066);
   }
   
   public static void b(List<Pair<String, String>> paramList, com.tencent.mm.hellhoundlib.a.b paramb)
@@ -158,27 +158,27 @@ public final class a
   public final void a(Object paramObject, Intent paramIntent)
   {
     AppMethodBeat.i(55506);
-    if (!b.bf(paramObject))
+    if (!b.cz(paramObject))
     {
       AppMethodBeat.o(55506);
       return;
     }
-    if (this.jXp != null) {
-      this.jXp.b(paramObject, paramIntent);
+    if (this.mxj != null) {
+      this.mxj.b(paramObject, paramIntent);
     }
     AppMethodBeat.o(55506);
   }
   
-  public final void be(Object paramObject)
+  public final void cy(Object paramObject)
   {
     AppMethodBeat.i(55508);
-    if (((paramObject instanceof Activity)) && (this.jXp != null)) {
-      this.jXp.w((Activity)paramObject);
+    if (((paramObject instanceof Activity)) && (this.mxj != null)) {
+      this.mxj.y((Activity)paramObject);
     }
     AppMethodBeat.o(55508);
   }
   
-  public final void g(Object paramObject, int paramInt)
+  public final void i(Object paramObject, int paramInt)
   {
     AppMethodBeat.i(55505);
     switch (paramInt)
@@ -188,33 +188,33 @@ public final class a
     {
       AppMethodBeat.o(55505);
       return;
-      if (this.jXp != null)
+      if (this.mxj != null)
       {
-        this.jXp.bg(paramObject);
+        this.mxj.cA(paramObject);
         AppMethodBeat.o(55505);
         return;
-        if (this.jXp != null)
+        if (this.mxj != null)
         {
-          this.jXp.bh(paramObject);
+          this.mxj.cB(paramObject);
           AppMethodBeat.o(55505);
           return;
-          if (this.jXp != null)
+          if (this.mxj != null)
           {
-            this.jXp.bi(paramObject);
+            this.mxj.cC(paramObject);
             AppMethodBeat.o(55505);
             return;
-            if (this.jXp != null)
+            if (this.mxj != null)
             {
-              this.jXp.bj(paramObject);
+              this.mxj.cD(paramObject);
               AppMethodBeat.o(55505);
               return;
-              if (this.jXp != null)
+              if (this.mxj != null)
               {
-                this.jXp.bk(paramObject);
+                this.mxj.cE(paramObject);
                 AppMethodBeat.o(55505);
                 return;
-                if (this.jXp != null) {
-                  this.jXp.bl(paramObject);
+                if (this.mxj != null) {
+                  this.mxj.cF(paramObject);
                 }
               }
             }

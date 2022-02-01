@@ -5,7 +5,6 @@ import android.os.Build.VERSION;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.core.common.TPAudioPassThroughPluginDetector;
-import com.tencent.thumbplayer.core.common.TPFieldCalledByNative;
 import com.tencent.thumbplayer.core.common.TPHeadsetPluginDetector;
 import com.tencent.thumbplayer.core.common.TPMediaTrackInfo;
 import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
@@ -23,13 +22,12 @@ import java.util.Vector;
 public class TPNativePlayer
 {
   private Context mContext;
-  @TPFieldCalledByNative
   private long mNativeContext;
   private int m_playerID;
   
   public TPNativePlayer(Context paramContext)
   {
-    AppMethodBeat.i(223699);
+    AppMethodBeat.i(228436);
     this.m_playerID = -1;
     this.mContext = null;
     this.mContext = paramContext.getApplicationContext();
@@ -43,15 +41,14 @@ public class TPNativePlayer
         TPScreenRefreshRateDetector.init(this.mContext);
       }
       TPSystemInfo.initAudioBestSettings(this.mContext);
-      AppMethodBeat.o(223699);
+      AppMethodBeat.o(228436);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       TPNativeLog.printLog(4, "Failed to create native player:" + paramContext.getMessage());
       paramContext = new UnsupportedOperationException("Failed to create native player");
-      AppMethodBeat.o(223699);
-      throw paramContext;
+      AppMethodBeat.o(228436);
     }
   }
   
@@ -133,7 +130,7 @@ public class TPNativePlayer
   
   private native int _setDataSource(String paramString);
   
-  private native int _setDataSourceFd(int paramInt);
+  private native int _setDataSourceFd(int paramInt, long paramLong1, long paramLong2);
   
   private native int _setDataSourceWithHttpHeader(String paramString, Object[] paramArrayOfObject);
   
@@ -147,6 +144,8 @@ public class TPNativePlayer
   
   private native int _setInitConfigLong(int paramInt, long paramLong);
   
+  private native int _setInitConfigString(int paramInt, String paramString);
+  
   private native int _setLoopback(boolean paramBoolean, long paramLong1, long paramLong2);
   
   private native int _setMessageCallback(Object paramObject);
@@ -154,6 +153,8 @@ public class TPNativePlayer
   private native int _setOptionLong(int paramInt, long paramLong1, long paramLong2);
   
   private native int _setOptionObject(int paramInt, Object paramObject);
+  
+  private native int _setPlaySharpenSwitch();
   
   private native int _setPlaybackRate(float paramFloat);
   
@@ -175,160 +176,160 @@ public class TPNativePlayer
   
   public int addAudioTrackSource(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(223813);
+    AppMethodBeat.i(228691);
     try
     {
       int i = _addAudioTrackSource(paramString1, paramString2);
-      AppMethodBeat.o(223813);
+      AppMethodBeat.o(228691);
       return i;
     }
-    catch (Throwable paramString1)
+    finally
     {
       TPNativeLog.printLog(4, paramString1.getMessage());
-      AppMethodBeat.o(223813);
+      AppMethodBeat.o(228691);
     }
     return 1000001;
   }
   
   public int addSubtitleTrackSource(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(223811);
+    AppMethodBeat.i(228684);
     try
     {
       int i = _addSubtitleTrackSource(paramString1, paramString2);
-      AppMethodBeat.o(223811);
+      AppMethodBeat.o(228684);
       return i;
     }
-    catch (Throwable paramString1)
+    finally
     {
       TPNativeLog.printLog(4, paramString1.getMessage());
-      AppMethodBeat.o(223811);
+      AppMethodBeat.o(228684);
     }
     return 1000001;
   }
   
   public int deselectTrackAsync(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(223815);
+    AppMethodBeat.i(228707);
     try
     {
       paramInt = _deselectTrackAsync(paramInt, paramLong);
-      AppMethodBeat.o(223815);
+      AppMethodBeat.o(228707);
       return paramInt;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223815);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228707);
     }
     return 1000001;
   }
   
   public long getBufferedDurationMs()
   {
-    AppMethodBeat.i(223807);
+    AppMethodBeat.i(228671);
     try
     {
       long l = _getBufferedDurationMs();
-      AppMethodBeat.o(223807);
+      AppMethodBeat.o(228671);
       return l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223807);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228671);
     }
     return 0L;
   }
   
   public long getBufferedSize()
   {
-    AppMethodBeat.i(223808);
+    AppMethodBeat.i(228675);
     try
     {
       long l = _getBufferedSize();
-      AppMethodBeat.o(223808);
+      AppMethodBeat.o(228675);
       return l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223808);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228675);
     }
     return 0L;
   }
   
   public long getCurrentPositionMs()
   {
-    AppMethodBeat.i(223805);
+    AppMethodBeat.i(228664);
     try
     {
       long l = _getCurrentPositionMs();
-      AppMethodBeat.o(223805);
+      AppMethodBeat.o(228664);
       return l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223805);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228664);
     }
     return 0L;
   }
   
   public long getDurationMs()
   {
-    AppMethodBeat.i(223804);
+    AppMethodBeat.i(228659);
     try
     {
       long l = _getDurationMs();
-      AppMethodBeat.o(223804);
+      AppMethodBeat.o(228659);
       return l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223804);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228659);
     }
     return 0L;
   }
   
   public int getPlayerID()
   {
-    AppMethodBeat.i(223797);
+    AppMethodBeat.i(228630);
     try
     {
       int i = _getPlayerID();
-      AppMethodBeat.o(223797);
+      AppMethodBeat.o(228630);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223797);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228630);
     }
     return 0;
   }
   
   public int getProgramCount()
   {
-    AppMethodBeat.i(223820);
+    AppMethodBeat.i(228719);
     try
     {
       int i = _getProgramCount();
-      AppMethodBeat.o(223820);
+      AppMethodBeat.o(228719);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223820);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228719);
     }
     return 1000001;
   }
   
   public TPNativePlayerProgramInfo[] getProgramInfo()
   {
-    AppMethodBeat.i(223825);
+    AppMethodBeat.i(228733);
     try
     {
       int j = _getProgramCount();
@@ -339,54 +340,54 @@ public class TPNativePlayer
         arrayOfTPNativePlayerProgramInfo[i] = _getProgramInfo(i);
         i += 1;
       }
-      AppMethodBeat.o(223825);
+      AppMethodBeat.o(228733);
       return arrayOfTPNativePlayerProgramInfo;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223825);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228733);
     }
     return null;
   }
   
   public long getPropertyLong(int paramInt)
   {
-    AppMethodBeat.i(223799);
+    AppMethodBeat.i(228635);
     try
     {
       long l = _getPropertyLong(paramInt);
-      AppMethodBeat.o(223799);
+      AppMethodBeat.o(228635);
       return l;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223799);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228635);
     }
     return 0L;
   }
   
   public String getPropertyString(int paramInt)
   {
-    AppMethodBeat.i(223800);
+    AppMethodBeat.i(228643);
     try
     {
       String str = _getPropertyString(paramInt);
-      AppMethodBeat.o(223800);
+      AppMethodBeat.o(228643);
       return str;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223800);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228643);
     }
     return "";
   }
   
   public TPMediaTrackInfo[] getTrackInfo()
   {
-    AppMethodBeat.i(223819);
+    AppMethodBeat.i(228714);
     try
     {
       int j = _getTrackCount();
@@ -410,290 +411,290 @@ public class TPNativePlayer
         }
       }
       TPMediaTrackInfo[] arrayOfTPMediaTrackInfo1 = null;
-      AppMethodBeat.o(223819);
+      AppMethodBeat.o(228714);
       return arrayOfTPMediaTrackInfo1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223819);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228714);
     }
     return null;
   }
   
   public int getVideoHeight()
   {
-    AppMethodBeat.i(223802);
+    AppMethodBeat.i(228653);
     try
     {
       int i = _getVideoHeight();
-      AppMethodBeat.o(223802);
+      AppMethodBeat.o(228653);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223802);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228653);
     }
     return 0;
   }
   
   public int getVideoWidth()
   {
-    AppMethodBeat.i(223801);
+    AppMethodBeat.i(228646);
     try
     {
       int i = _getVideoWidth();
-      AppMethodBeat.o(223801);
+      AppMethodBeat.o(228646);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223801);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228646);
     }
     return 0;
   }
   
   public int pause()
   {
-    AppMethodBeat.i(223723);
+    AppMethodBeat.i(228491);
     try
     {
       int i = _pause();
-      AppMethodBeat.o(223723);
+      AppMethodBeat.o(228491);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223723);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228491);
     }
     return 1000001;
   }
   
   public int prepare()
   {
-    AppMethodBeat.i(223716);
+    AppMethodBeat.i(228473);
     try
     {
       int i = _prepare();
-      AppMethodBeat.o(223716);
+      AppMethodBeat.o(228473);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223716);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228473);
     }
     return 1000001;
   }
   
   public int prepareAsync()
   {
-    AppMethodBeat.i(223719);
+    AppMethodBeat.i(228478);
     try
     {
       int i = _prepareAsync();
-      AppMethodBeat.o(223719);
+      AppMethodBeat.o(228478);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223719);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228478);
     }
     return 1000001;
   }
   
   public void release()
   {
-    AppMethodBeat.i(223729);
+    AppMethodBeat.i(228509);
     try
     {
       _release();
-      AppMethodBeat.o(223729);
+      AppMethodBeat.o(228509);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223729);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228509);
     }
   }
   
   public void reset()
   {
-    AppMethodBeat.i(223728);
+    AppMethodBeat.i(228502);
     try
     {
       _reset();
-      AppMethodBeat.o(223728);
+      AppMethodBeat.o(228502);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223728);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228502);
     }
   }
   
   public int seekToAsync(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(223731);
+    AppMethodBeat.i(228512);
     try
     {
       paramInt1 = _seekToAsync(paramInt1, paramInt2, paramLong);
-      AppMethodBeat.o(223731);
+      AppMethodBeat.o(228512);
       return paramInt1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223731);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228512);
     }
     return 1000001;
   }
   
   public int selectProgramAsync(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(223821);
+    AppMethodBeat.i(228725);
     try
     {
       paramInt = _selectProgramAsync(paramInt, paramLong);
-      AppMethodBeat.o(223821);
+      AppMethodBeat.o(228725);
       return paramInt;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223821);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228725);
     }
     return 1000001;
   }
   
   public int selectTrackAsync(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(223814);
+    AppMethodBeat.i(228699);
     try
     {
       paramInt = _selectTrackAsync(paramInt, paramLong);
-      AppMethodBeat.o(223814);
+      AppMethodBeat.o(228699);
       return paramInt;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223814);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228699);
     }
     return 1000001;
   }
   
   public int setAudioFrameCallback(ITPNativePlayerAudioFrameCallback paramITPNativePlayerAudioFrameCallback)
   {
-    AppMethodBeat.i(223783);
+    AppMethodBeat.i(228603);
     try
     {
       int i = _setAudioFrameCallback(paramITPNativePlayerAudioFrameCallback);
-      AppMethodBeat.o(223783);
+      AppMethodBeat.o(228603);
       return i;
     }
-    catch (Throwable paramITPNativePlayerAudioFrameCallback)
+    finally
     {
       TPNativeLog.printLog(4, paramITPNativePlayerAudioFrameCallback.getMessage());
-      AppMethodBeat.o(223783);
+      AppMethodBeat.o(228603);
     }
     return 1000001;
   }
   
   public int setAudioMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(223747);
+    AppMethodBeat.i(228552);
     try
     {
       int i = _setAudioMute(paramBoolean);
-      AppMethodBeat.o(223747);
+      AppMethodBeat.o(228552);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223747);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228552);
     }
     return 1000001;
   }
   
   public int setAudioNormalizeVolumeParams(String paramString)
   {
-    AppMethodBeat.i(223751);
+    AppMethodBeat.i(228560);
     try
     {
       int i = _setAudioNormalizeVolumeParams(paramString);
-      AppMethodBeat.o(223751);
+      AppMethodBeat.o(228560);
       return i;
     }
-    catch (Throwable paramString)
+    finally
     {
       TPNativeLog.printLog(4, paramString.getMessage());
-      AppMethodBeat.o(223751);
+      AppMethodBeat.o(228560);
     }
     return 1000001;
   }
   
   public int setAudioVolume(float paramFloat)
   {
-    AppMethodBeat.i(223745);
+    AppMethodBeat.i(228545);
     try
     {
       int i = _setAudioVolume(paramFloat);
-      AppMethodBeat.o(223745);
+      AppMethodBeat.o(228545);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223745);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228545);
     }
     return 1000001;
   }
   
-  public int setDataSource(int paramInt)
+  public int setDataSource(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(223714);
+    AppMethodBeat.i(228465);
     try
     {
-      paramInt = _setDataSourceFd(paramInt);
-      AppMethodBeat.o(223714);
+      paramInt = _setDataSourceFd(paramInt, paramLong1, paramLong2);
+      AppMethodBeat.o(228465);
       return paramInt;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223714);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228465);
     }
     return 1000001;
   }
   
   public int setDataSource(String paramString)
   {
-    AppMethodBeat.i(223710);
+    AppMethodBeat.i(228440);
     try
     {
       int i = _setDataSource(paramString);
-      AppMethodBeat.o(223710);
+      AppMethodBeat.o(228440);
       return i;
     }
-    catch (Throwable paramString)
+    finally
     {
       TPNativeLog.printLog(4, paramString.getMessage());
-      AppMethodBeat.o(223710);
+      AppMethodBeat.o(228440);
     }
     return 1000001;
   }
   
   public int setDataSource(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(223713);
+    AppMethodBeat.i(228443);
     if (paramMap != null) {}
     for (;;)
     {
@@ -713,7 +714,7 @@ public class TPNativePlayer
             i += 1;
             continue;
             i = _setDataSourceWithHttpHeader(paramString, paramMap);
-            AppMethodBeat.o(223713);
+            AppMethodBeat.o(228443);
             return i;
           }
         }
@@ -724,10 +725,10 @@ public class TPNativePlayer
         }
         paramMap = arrayOfString;
       }
-      catch (Throwable paramString)
+      finally
       {
         TPNativeLog.printLog(4, paramString.getMessage());
-        AppMethodBeat.o(223713);
+        AppMethodBeat.o(228443);
         return 1000001;
       }
     }
@@ -735,48 +736,55 @@ public class TPNativePlayer
   
   public int setDemuxerCallback(ITPDemuxerCallback paramITPDemuxerCallback)
   {
-    AppMethodBeat.i(223794);
+    AppMethodBeat.i(228620);
     try
     {
       int i = _setDemuxerCallback(paramITPDemuxerCallback);
-      AppMethodBeat.o(223794);
+      AppMethodBeat.o(228620);
       return i;
     }
-    catch (Throwable paramITPDemuxerCallback)
+    finally
     {
       TPNativeLog.printLog(4, paramITPDemuxerCallback.getMessage());
-      AppMethodBeat.o(223794);
+      AppMethodBeat.o(228620);
     }
     return 1000001;
   }
   
   public void setInitConfig(TPNativePlayerInitConfig paramTPNativePlayerInitConfig)
   {
-    AppMethodBeat.i(223709);
+    AppMethodBeat.i(228438);
+    Object localObject6;
     Object localObject5;
-    Object localObject4;
     try
     {
       _resetInitConfig();
-      localObject5 = paramTPNativePlayerInitConfig.getIntMap();
+      localObject6 = paramTPNativePlayerInitConfig.getIntMap();
+      localObject5 = paramTPNativePlayerInitConfig.getStringMap();
       localObject4 = paramTPNativePlayerInitConfig.getLongMap();
       localObject3 = paramTPNativePlayerInitConfig.getFloatMap();
       localObject2 = paramTPNativePlayerInitConfig.getBoolMap();
       localObject1 = paramTPNativePlayerInitConfig.getQueueIntMap();
-      localObject5 = ((HashMap)localObject5).entrySet().iterator();
-      while (((Iterator)localObject5).hasNext())
+      localObject6 = ((HashMap)localObject6).entrySet().iterator();
+      while (((Iterator)localObject6).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject5).next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject6).next();
         _setInitConfigInt(((Integer)localEntry.getKey()).intValue(), ((Integer)localEntry.getValue()).intValue());
       }
-      localObject4 = ((HashMap)localObject4).entrySet().iterator();
+      localObject5 = ((HashMap)localObject5).entrySet().iterator();
     }
-    catch (Throwable paramTPNativePlayerInitConfig)
+    finally
     {
       TPNativeLog.printLog(4, paramTPNativePlayerInitConfig.getMessage());
-      AppMethodBeat.o(223709);
+      AppMethodBeat.o(228438);
       return;
     }
+    while (((Iterator)localObject5).hasNext())
+    {
+      localObject6 = (Map.Entry)((Iterator)localObject5).next();
+      _setInitConfigString(((Integer)((Map.Entry)localObject6).getKey()).intValue(), (String)((Map.Entry)localObject6).getValue());
+    }
+    Object localObject4 = ((HashMap)localObject4).entrySet().iterator();
     while (((Iterator)localObject4).hasNext())
     {
       localObject5 = (Map.Entry)((Iterator)localObject4).next();
@@ -825,226 +833,243 @@ public class TPNativePlayer
       }
     }
     _applyInitConfig();
-    AppMethodBeat.o(223709);
+    AppMethodBeat.o(228438);
   }
   
   public int setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(223772);
+    AppMethodBeat.i(228590);
     try
     {
       int i = _setLoopback(paramBoolean, paramLong1, paramLong2);
-      AppMethodBeat.o(223772);
+      AppMethodBeat.o(228590);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223772);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228590);
     }
     return 1000001;
   }
   
   public int setMessageCallback(ITPNativePlayerMessageCallback paramITPNativePlayerMessageCallback)
   {
-    AppMethodBeat.i(223777);
+    AppMethodBeat.i(228595);
     try
     {
       int i = _setMessageCallback(paramITPNativePlayerMessageCallback);
-      AppMethodBeat.o(223777);
+      AppMethodBeat.o(228595);
       return i;
     }
-    catch (Throwable paramITPNativePlayerMessageCallback)
+    finally
     {
       TPNativeLog.printLog(4, paramITPNativePlayerMessageCallback.getMessage());
-      AppMethodBeat.o(223777);
+      AppMethodBeat.o(228595);
     }
     return 1000001;
   }
   
   public int setOptionLong(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(223738);
+    AppMethodBeat.i(228533);
     try
     {
       paramInt = _setOptionLong(paramInt, paramLong1, paramLong2);
-      AppMethodBeat.o(223738);
+      AppMethodBeat.o(228533);
       return paramInt;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223738);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228533);
     }
     return 1000001;
   }
   
   public int setOptionObject(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(223741);
+    AppMethodBeat.i(228537);
     try
     {
       paramInt = _setOptionObject(paramInt, paramObject);
-      AppMethodBeat.o(223741);
+      AppMethodBeat.o(228537);
       return paramInt;
     }
-    catch (Throwable paramObject)
+    finally
     {
       TPNativeLog.printLog(4, paramObject.getMessage());
-      AppMethodBeat.o(223741);
+      AppMethodBeat.o(228537);
+    }
+    return 1000001;
+  }
+  
+  public int setPlaySharpenSwitch()
+  {
+    AppMethodBeat.i(228574);
+    try
+    {
+      int i = _setPlaySharpenSwitch();
+      AppMethodBeat.o(228574);
+      return i;
+    }
+    finally
+    {
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228574);
     }
     return 1000001;
   }
   
   public int setPlaybackRate(float paramFloat)
   {
-    AppMethodBeat.i(223755);
+    AppMethodBeat.i(228568);
     try
     {
       int i = _setPlaybackRate(paramFloat);
-      AppMethodBeat.o(223755);
+      AppMethodBeat.o(228568);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223755);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228568);
     }
     return 1000001;
   }
   
   public int setPostProcessFrameCallback(ITPNativePlayerPostProcessFrameCallback paramITPNativePlayerPostProcessFrameCallback)
   {
-    AppMethodBeat.i(223795);
+    AppMethodBeat.i(228626);
     try
     {
       int i = _setPostProcessFrameCallback(paramITPNativePlayerPostProcessFrameCallback);
-      AppMethodBeat.o(223795);
+      AppMethodBeat.o(228626);
       return i;
     }
-    catch (Throwable paramITPNativePlayerPostProcessFrameCallback)
+    finally
     {
       TPNativeLog.printLog(4, paramITPNativePlayerPostProcessFrameCallback.getMessage());
-      AppMethodBeat.o(223795);
+      AppMethodBeat.o(228626);
     }
     return 1000001;
   }
   
   public int setSubtitleFrameCallback(ITPNativePlayerSubtitleFrameCallback paramITPNativePlayerSubtitleFrameCallback)
   {
-    AppMethodBeat.i(223791);
+    AppMethodBeat.i(228616);
     try
     {
       int i = _setSubtitleFrameCallback(paramITPNativePlayerSubtitleFrameCallback);
-      AppMethodBeat.o(223791);
+      AppMethodBeat.o(228616);
       return i;
     }
-    catch (Throwable paramITPNativePlayerSubtitleFrameCallback)
+    finally
     {
       TPNativeLog.printLog(4, paramITPNativePlayerSubtitleFrameCallback.getMessage());
-      AppMethodBeat.o(223791);
+      AppMethodBeat.o(228616);
     }
     return 1000001;
   }
   
   public int setVideoFrameCallback(ITPNativePlayerVideoFrameCallback paramITPNativePlayerVideoFrameCallback)
   {
-    AppMethodBeat.i(223788);
+    AppMethodBeat.i(228610);
     try
     {
       int i = _setVideoFrameCallback(paramITPNativePlayerVideoFrameCallback);
-      AppMethodBeat.o(223788);
+      AppMethodBeat.o(228610);
       return i;
     }
-    catch (Throwable paramITPNativePlayerVideoFrameCallback)
+    finally
     {
       TPNativeLog.printLog(4, paramITPNativePlayerVideoFrameCallback.getMessage());
-      AppMethodBeat.o(223788);
+      AppMethodBeat.o(228610);
     }
     return 1000001;
   }
   
   public int setVideoSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(223759);
+    AppMethodBeat.i(228579);
     try
     {
       int i = _setVideoSurface(paramSurface);
-      AppMethodBeat.o(223759);
+      AppMethodBeat.o(228579);
       return i;
     }
-    catch (Throwable paramSurface)
+    finally
     {
       TPNativeLog.printLog(4, paramSurface.getMessage());
-      AppMethodBeat.o(223759);
+      AppMethodBeat.o(228579);
     }
     return 1000001;
   }
   
   public int setVideoSurfaceWithType(Surface paramSurface, int paramInt)
   {
-    AppMethodBeat.i(223766);
+    AppMethodBeat.i(228585);
     try
     {
       paramInt = _setVideoSurfaceWithType(paramSurface, paramInt);
-      AppMethodBeat.o(223766);
+      AppMethodBeat.o(228585);
       return paramInt;
     }
-    catch (Throwable paramSurface)
+    finally
     {
       TPNativeLog.printLog(4, paramSurface.getMessage());
-      AppMethodBeat.o(223766);
+      AppMethodBeat.o(228585);
     }
     return 1000001;
   }
   
   public int start()
   {
-    AppMethodBeat.i(223721);
+    AppMethodBeat.i(228485);
     try
     {
       int i = _start();
-      AppMethodBeat.o(223721);
+      AppMethodBeat.o(228485);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223721);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228485);
     }
     return 1000001;
   }
   
   public int stop()
   {
-    AppMethodBeat.i(223726);
+    AppMethodBeat.i(228497);
     try
     {
       int i = _stop();
-      AppMethodBeat.o(223726);
+      AppMethodBeat.o(228497);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      TPNativeLog.printLog(4, localThrowable.getMessage());
-      AppMethodBeat.o(223726);
+      TPNativeLog.printLog(4, localObject.getMessage());
+      AppMethodBeat.o(228497);
     }
     return 1000001;
   }
   
   public int switchDefinitionAsync(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(223735);
+    AppMethodBeat.i(228525);
     try
     {
       paramInt = _switchDefinitionAsync(paramString, paramInt, paramLong);
-      AppMethodBeat.o(223735);
+      AppMethodBeat.o(228525);
       return paramInt;
     }
-    catch (Throwable paramString)
+    finally
     {
       TPNativeLog.printLog(4, paramString.getMessage());
-      AppMethodBeat.o(223735);
+      AppMethodBeat.o(228525);
     }
     return 1000001;
   }
@@ -1052,15 +1077,15 @@ public class TPNativePlayer
   @Deprecated
   public int switchDefinitionAsync(String paramString, long paramLong)
   {
-    AppMethodBeat.i(223732);
+    AppMethodBeat.i(228519);
     int i = switchDefinitionAsync(paramString, 0, paramLong);
-    AppMethodBeat.o(223732);
+    AppMethodBeat.o(228519);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayer
  * JD-Core Version:    0.7.0.1
  */

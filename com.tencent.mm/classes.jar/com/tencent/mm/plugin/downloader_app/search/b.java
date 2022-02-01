@@ -18,11 +18,15 @@ public final class b
   long size;
   int state;
   int type;
-  String una;
-  String unb;
-  List<String> unc;
+  String version;
+  String xts;
+  String xtt;
+  List<String> xtu;
+  String xtv;
+  String xtw;
+  String xtx;
   
-  public static void au(Context paramContext, String paramString)
+  public static void av(Context paramContext, String paramString)
   {
     int i = 0;
     AppMethodBeat.i(8956);
@@ -31,7 +35,7 @@ public final class b
       AppMethodBeat.o(8956);
       return;
     }
-    av(paramContext, paramString);
+    aw(paramContext, paramString);
     paramContext = paramContext.getSharedPreferences("search_history_href", 0);
     String str = paramContext.getString("search_history_list", "");
     StringBuffer localStringBuffer = new StringBuffer();
@@ -50,7 +54,7 @@ public final class b
     AppMethodBeat.o(8956);
   }
   
-  public static void av(Context paramContext, String paramString)
+  public static void aw(Context paramContext, String paramString)
   {
     AppMethodBeat.i(8957);
     if (Util.isNullOrNil(paramString))
@@ -64,7 +68,7 @@ public final class b
     AppMethodBeat.o(8957);
   }
   
-  public static List<b> fb(Context paramContext)
+  public static List<b> fY(Context paramContext)
   {
     AppMethodBeat.i(8955);
     ArrayList localArrayList = new ArrayList();
@@ -86,7 +90,7 @@ public final class b
       {
         b localb = new b();
         localb.type = 2;
-        localb.una = new String(Base64.decode(str, 0));
+        localb.xts = new String(Base64.decode(str, 0));
         k = j + 1;
         localb.position = k;
         localArrayList.add(localb);
@@ -106,9 +110,9 @@ public final class b
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(8954);
-    if (((paramObject instanceof b)) && (((b)paramObject).una != null))
+    if (((paramObject instanceof b)) && (((b)paramObject).xts != null))
     {
-      bool = ((b)paramObject).una.equals(this.una);
+      bool = ((b)paramObject).xts.equals(this.xts);
       AppMethodBeat.o(8954);
       return bool;
     }

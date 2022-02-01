@@ -1,61 +1,92 @@
 package com.tencent.mm.an;
 
-import com.tencent.mm.model.bi;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cke;
-import com.tencent.mm.protocal.protobuf.dca;
-import com.tencent.mm.protocal.protobuf.qr;
-import com.tencent.mm.sdk.platformtools.Log;
+import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashSet;
+import kotlin.Metadata;
 
-public abstract class r
-  extends q
-  implements m
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/modelbiz/MpDataLimiter;", "", "duration", "", "(I)V", "getDuration", "()I", "setDuration", "sets", "", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "[Ljava/util/HashSet;", "slots", "", "[Ljava/lang/Long;", "add", "", "key", "clear", "contains", "", "slotId", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class r
 {
-  protected int lCA = 3;
-  private boolean lCB = false;
+  public int duration;
+  private final Long[] owI;
+  private final HashSet<String>[] owJ;
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString, s params);
-  
-  public abstract qr b(s params);
-  
-  public abstract void bie();
-  
-  public abstract i bif();
-  
-  public abstract dca c(s params);
-  
-  public abstract cke d(s params);
-  
-  public abstract int e(s params);
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public r(int paramInt)
   {
-    if ((paramInt2 == 4) && (paramInt3 == -301))
+    AppMethodBeat.i(124707);
+    this.duration = paramInt;
+    int j = s.bGY();
+    Object localObject = new Long[j];
+    paramInt = 0;
+    while (paramInt < j)
     {
-      Log.i("MicroMsg.NetSceneIDCRedirectBase", "alvinluo NetScene pre process MM_ERR_IDC_REDIRECT redirectCount: %d", new Object[] { Integer.valueOf(this.lCA) });
-      if (params != null)
-      {
-        Log.i("MicroMsg.NetSceneIDCRedirectBase", "update idc info");
-        bi.a(true, b(params), c(params), d(params), true, e(params));
-      }
-      this.lCA -= 1;
-      if (this.lCA <= 0)
-      {
-        bie();
-        this.lCB = false;
-        return;
-      }
-      Log.d("MicroMsg.NetSceneIDCRedirectBase", "redirect IDC");
-      doScene(dispatcher(), bif());
-      return;
+      localObject[paramInt] = Long.valueOf(0L);
+      paramInt += 1;
     }
-    a(paramInt2, paramInt3, paramString, params);
+    this.owI = ((Long[])localObject);
+    j = s.bGY();
+    localObject = new HashSet[j];
+    paramInt = i;
+    while (paramInt < j)
+    {
+      localObject[paramInt] = new HashSet();
+      paramInt += 1;
+    }
+    this.owJ = ((HashSet[])localObject);
+    AppMethodBeat.o(124707);
+  }
+  
+  private final long bGX()
+  {
+    AppMethodBeat.i(124706);
+    long l = Math.abs(SystemClock.elapsedRealtime() / this.duration);
+    AppMethodBeat.o(124706);
+    return l;
+  }
+  
+  public final void add(String paramString)
+  {
+    AppMethodBeat.i(124705);
+    kotlin.g.b.s.u(paramString, "key");
+    long l = bGX();
+    int i = (int)(l % s.bGY());
+    if (this.owI[i].longValue() != l)
+    {
+      this.owJ[i].clear();
+      this.owI[i] = Long.valueOf(l);
+    }
+    this.owJ[i].add(paramString);
+    AppMethodBeat.o(124705);
+  }
+  
+  public final boolean contains(String paramString)
+  {
+    AppMethodBeat.i(239463);
+    kotlin.g.b.s.u(paramString, "key");
+    HashSet localHashSet = null;
+    long l = bGX();
+    int i = (int)(l % s.bGY());
+    if (l == this.owI[i].longValue()) {
+      localHashSet = this.owJ[i];
+    }
+    while (localHashSet == null)
+    {
+      AppMethodBeat.o(239463);
+      return false;
+      i = Math.abs(i - 1) % s.bGY();
+      if (l == this.owI[i].longValue()) {
+        localHashSet = this.owJ[i];
+      }
+    }
+    boolean bool = localHashSet.contains(paramString);
+    AppMethodBeat.o(239463);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.an.r
  * JD-Core Version:    0.7.0.1
  */

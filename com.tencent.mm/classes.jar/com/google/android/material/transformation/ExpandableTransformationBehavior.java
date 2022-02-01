@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract class ExpandableTransformationBehavior
   extends ExpandableBehavior
 {
-  private AnimatorSet bHv;
+  private AnimatorSet dAu;
   
   public ExpandableTransformationBehavior() {}
   
@@ -22,25 +22,25 @@ public abstract class ExpandableTransformationBehavior
   
   protected boolean a(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.bHv != null) {}
+    if (this.dAu != null) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        this.bHv.cancel();
+        this.dAu.cancel();
       }
-      this.bHv = b(paramView1, paramView2, paramBoolean1, bool);
-      this.bHv.addListener(new AnimatorListenerAdapter()
+      this.dAu = b(paramView1, paramView2, paramBoolean1, bool);
+      this.dAu.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(240647);
+          AppMethodBeat.i(209932);
           ExpandableTransformationBehavior.a(ExpandableTransformationBehavior.this);
-          AppMethodBeat.o(240647);
+          AppMethodBeat.o(209932);
         }
       });
-      this.bHv.start();
+      this.dAu.start();
       if (!paramBoolean2) {
-        this.bHv.end();
+        this.dAu.end();
       }
       return true;
     }
@@ -50,7 +50,7 @@ public abstract class ExpandableTransformationBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.transformation.ExpandableTransformationBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -9,23 +9,23 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class c
   extends MAutoStorage<b>
 {
-  public static final String[] lqL;
+  public static final String[] nVW;
   
   static
   {
-    AppMethodBeat.i(270825);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(b.nFK, "WxaCheckDemoInfo") };
-    AppMethodBeat.o(270825);
+    AppMethodBeat.i(318603);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(b.DB_INFO, "WxaCheckDemoInfo") };
+    AppMethodBeat.o(318603);
   }
   
   public c(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, b.nFK, "WxaCheckDemoInfo", b.INDEX_CREATE);
+    super(paramISQLiteDatabase, b.DB_INFO, "WxaCheckDemoInfo", b.INDEX_CREATE);
   }
   
-  private boolean aG(String paramString, boolean paramBoolean)
+  private boolean aS(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(270821);
+    AppMethodBeat.i(318601);
     b localb = new b();
     localb.field_appId = paramString;
     boolean bool = get(localb, new String[0]);
@@ -34,36 +34,17 @@ public final class c
     if (bool)
     {
       paramBoolean = update(localb, new String[0]);
-      AppMethodBeat.o(270821);
+      AppMethodBeat.o(318601);
       return paramBoolean;
     }
     paramBoolean = insert(localb);
-    AppMethodBeat.o(270821);
+    AppMethodBeat.o(318601);
     return paramBoolean;
   }
   
-  public final boolean aF(String paramString, boolean paramBoolean)
+  public final int Xw(String paramString)
   {
-    AppMethodBeat.i(270819);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.i("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", "setWxaCheckDemoInfoData,invalid input %s", new Object[] { paramString });
-      AppMethodBeat.o(270819);
-      return false;
-    }
-    if (aG(paramString, paramBoolean))
-    {
-      Log.i("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", "setWxaCheckDemoInfoData appId:%s ok", new Object[] { paramString });
-      AppMethodBeat.o(270819);
-      return true;
-    }
-    AppMethodBeat.o(270819);
-    return false;
-  }
-  
-  public final int aeU(String paramString)
-  {
-    AppMethodBeat.i(270822);
+    AppMethodBeat.i(318633);
     try
     {
       b localb = new b();
@@ -74,60 +55,79 @@ public final class c
         long l = Util.secondsToNow(localb.field_versiontime);
         if (l > 86400L)
         {
-          AppMethodBeat.o(270822);
+          AppMethodBeat.o(318633);
           return 0;
         }
         boolean bool = localb.field_permissionDemo;
         if (bool)
         {
-          AppMethodBeat.o(270822);
+          AppMethodBeat.o(318633);
           return 2;
         }
-        AppMethodBeat.o(270822);
+        AppMethodBeat.o(318633);
         return 1;
       }
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", localException, "get with appId(%s)", new Object[] { paramString });
-      AppMethodBeat.o(270822);
+      AppMethodBeat.o(318633);
       return 0;
     }
-    AppMethodBeat.o(270822);
+    AppMethodBeat.o(318633);
     return 0;
   }
   
-  public final void bJQ()
+  public final boolean aR(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(270824);
+    AppMethodBeat.i(318625);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.i("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", "setWxaCheckDemoInfoData,invalid input %s", new Object[] { paramString });
+      AppMethodBeat.o(318625);
+      return false;
+    }
+    if (aS(paramString, paramBoolean))
+    {
+      Log.i("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", "setWxaCheckDemoInfoData appId:%s ok", new Object[] { paramString });
+      AppMethodBeat.o(318625);
+      return true;
+    }
+    AppMethodBeat.o(318625);
+    return false;
+  }
+  
+  public final void cju()
+  {
+    AppMethodBeat.i(318646);
     try
     {
       Log.i("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", "deleteAll");
       super.execSQL("WxaCheckDemoInfo", "delete from WxaCheckDemoInfo");
-      AppMethodBeat.o(270824);
+      AppMethodBeat.o(318646);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", localException, " deleteAll Exception", new Object[0]);
-      AppMethodBeat.o(270824);
+      AppMethodBeat.o(318646);
     }
   }
   
-  public final boolean ho(String paramString)
+  public final boolean iP(String paramString)
   {
-    AppMethodBeat.i(270823);
+    AppMethodBeat.i(318639);
     Log.i("MicroMsg.AppBrandTaskWxaCheckDemoInfoStorage", "delete appId(%s)", new Object[] { paramString });
     b localb = new b();
     localb.field_appId = paramString;
     boolean bool = delete(localb, new String[0]);
-    AppMethodBeat.o(270823);
+    AppMethodBeat.o(318639);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,185 +1,228 @@
 package com.tencent.mm.plugin.finder.megavideo.convert;
 
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hn;
+import com.tencent.mm.autogen.a.hy;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.model.bs;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.plugin.finder.report.v.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.d;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.model.ca;
+import com.tencent.mm.plugin.finder.publish.c;
+import com.tencent.mm.plugin.finder.publish.f;
+import com.tencent.mm.plugin.finder.report.v;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.c;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
-import com.tencent.mm.plugin.finder.upload.g;
-import com.tencent.mm.plugin.finder.utils.m;
 import com.tencent.mm.plugin.finder.view.FinderPostProgressView;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.csh;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.protocal.protobuf.djj;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert;", "Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoListItemConvert;", "presenter", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoProfileUIContract$Presenter;", "(Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoProfileUIContract$Presenter;)V", "getPresenter", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoProfileUIContract$Presenter;", "deleteItem", "", "megaVideo", "Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "posting", "", "getLayoutId", "", "initLockIcon", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "onBindViewHolder", "position", "type", "isHotPatch", "payloads", "", "", "refreshPostingLayout", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert;", "Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoListItemConvert;", "presenter", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoProfileUIContract$Presenter;", "(Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoProfileUIContract$Presenter;)V", "getPresenter", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoProfileUIContract$Presenter;", "deleteItem", "", "megaVideo", "Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "posting", "", "getLayoutId", "", "initLockIcon", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "onBindViewHolder", "position", "type", "isHotPatch", "payloads", "", "", "refreshPostingLayout", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends b
 {
-  private final com.tencent.mm.plugin.finder.megavideo.ui.d.a zwi;
+  public static final a Ezw;
+  private final com.tencent.mm.plugin.finder.megavideo.ui.d.a Ezx;
+  
+  static
+  {
+    AppMethodBeat.i(342341);
+    Ezw = new a((byte)0);
+    AppMethodBeat.o(342341);
+  }
   
   public d(com.tencent.mm.plugin.finder.megavideo.ui.d.a parama)
   {
-    AppMethodBeat.i(286703);
-    this.zwi = parama;
-    AppMethodBeat.o(286703);
+    AppMethodBeat.i(342297);
+    this.Ezx = parama;
+    AppMethodBeat.o(342297);
   }
   
-  private final void d(i parami, bs parambs)
+  private static final void a(d paramd, ca paramca, FinderItem paramFinderItem, View paramView)
   {
-    AppMethodBeat.i(286701);
-    if (!this.zwi.isSelf())
+    AppMethodBeat.i(342339);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramd);
+    localb.cH(paramca);
+    localb.cH(paramFinderItem);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    s.u(paramca, "$item");
+    s.u(paramFinderItem, "$it");
+    s.checkNotNull(paramca.ABK);
+    boolean bool;
+    if (!paramFinderItem.isPostFailed())
     {
-      AppMethodBeat.o(286701);
-      return;
-    }
-    Context localContext = parami.getContext();
-    p.j(localContext, "holder.context");
-    int i = localContext.getResources().getDimensionPixelOffset(b.d.Edge_A);
-    if (parambs.isPrivate())
-    {
-      parambs = parami.RD(b.f.video_duration_layout);
-      p.j(parambs, "it");
-      parambs.setPadding(i, parambs.getPaddingTop(), 0, parambs.getPaddingBottom());
-      parambs = parami.RD(b.f.divider);
-      p.j(parambs, "holder.getView<View>(R.id.divider)");
-      parambs.setVisibility(0);
-      parami = parami.RD(b.f.private_lock_icon);
-      p.j(parami, "holder.getView<View>(R.id.private_lock_icon)");
-      parami.setVisibility(0);
-      AppMethodBeat.o(286701);
-      return;
-    }
-    parambs = parami.RD(b.f.video_duration_layout);
-    p.j(parambs, "it");
-    parambs.setPadding(i, parambs.getPaddingTop(), i, parambs.getPaddingBottom());
-    parambs = parami.RD(b.f.divider);
-    p.j(parambs, "holder.getView<View>(R.id.divider)");
-    parambs.setVisibility(8);
-    parami = parami.RD(b.f.private_lock_icon);
-    p.j(parami, "holder.getView<View>(R.id.private_lock_icon)");
-    parami.setVisibility(8);
-    AppMethodBeat.o(286701);
-  }
-  
-  private final void e(final i parami, final bs parambs)
-  {
-    AppMethodBeat.i(286702);
-    FinderItem localFinderItem = parambs.zBs;
-    Object localObject;
-    if (localFinderItem != null)
-    {
-      if ((!localFinderItem.isPostFinish()) && (localFinderItem.getPostInfo().TAi < 100)) {
-        break label217;
+      bool = true;
+      if (paramFinderItem.getId() == 0L) {
+        break label194;
       }
-      localObject = parami.RD(b.f.post_status_layout);
-      p.j(localObject, "holder.getView<View>(R.id.post_status_layout)");
-      ((View)localObject).setVisibility(8);
-      localObject = parami.RD(b.f.video_expose_times_tv);
-      p.j(localObject, "holder.getView<View>(R.id.video_expose_times_tv)");
-      ((View)localObject).setVisibility(0);
-      localObject = parami.RD(b.f.video_create_time_tv);
-      p.j(localObject, "holder.getView<View>(R.id.video_create_time_tv)");
-      ((View)localObject).setVisibility(0);
+      paramd = com.tencent.mm.plugin.finder.storage.logic.d.FND;
+      if (!com.tencent.mm.plugin.finder.storage.logic.d.a.qs(paramFinderItem.getId())) {
+        break label194;
+      }
+      paramd = new hy();
+      paramd.hJo.id = paramFinderItem.getId();
+      paramd.publish();
+      Log.i("Finder.MegaVideoProfileConvert", s.X("deleteItem by finder video id ", Long.valueOf(paramFinderItem.getId())));
+    }
+    label194:
+    do
+    {
+      do
+      {
+        a.a(new Object(), "com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(342339);
+        return;
+        bool = false;
+        break;
+      } while (paramFinderItem.getLocalId() < 0L);
+      paramd = com.tencent.mm.plugin.finder.storage.logic.d.FND;
+      paramd = com.tencent.mm.plugin.finder.storage.logic.d.a.qr(paramFinderItem.getLocalId());
+      paramca = com.tencent.mm.plugin.finder.storage.logic.d.FND;
+    } while (!com.tencent.mm.plugin.finder.storage.logic.d.a.qu(paramFinderItem.getLocalId()));
+    if (bool)
+    {
+      ((c)h.az(c.class)).publishStatApi().tl(paramFinderItem.isLongVideo());
+      ((c)h.az(c.class)).publishStatApi().eLb();
+      if (paramd != null)
+      {
+        paramd = v.FrN;
+        v.i(paramFinderItem);
+      }
     }
     for (;;)
     {
-      parami.RD(b.f.profile_retry).setOnClickListener((View.OnClickListener)new c(localFinderItem));
-      parami.RD(b.f.profile_del).setOnClickListener((View.OnClickListener)new a(localFinderItem, this, parami, parambs));
-      if (localFinderItem == null)
-      {
-        parambs = parami.RD(b.f.post_status_layout);
-        p.j(parambs, "holder.getView<View>(R.id.post_status_layout)");
-        parambs.setVisibility(8);
-        parambs = parami.RD(b.f.video_expose_times_tv);
-        p.j(parambs, "holder.getView<View>(R.id.video_expose_times_tv)");
-        parambs.setVisibility(0);
-        parami = parami.RD(b.f.video_create_time_tv);
-        p.j(parami, "holder.getView<View>(R.id.video_create_time_tv)");
-        parami.setVisibility(0);
-        parami = x.aazN;
-      }
-      AppMethodBeat.o(286702);
+      paramd = new hy();
+      paramd.hJo.localId = paramFinderItem.getLocalId();
+      paramd.publish();
+      Log.i("Finder.MegaVideoProfileConvert", "deleteItem by localId " + paramFinderItem.getLocalId() + ", posting:" + bool);
+      break;
+      ((c)h.az(c.class)).publishStatApi().tm(paramFinderItem.isLongVideo());
+      ((c)h.az(c.class)).publishStatApi().eLc();
+    }
+  }
+  
+  private static final void a(FinderItem paramFinderItem, View paramView)
+  {
+    AppMethodBeat.i(342331);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderItem);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderItem, "$it");
+    ((c)h.az(c.class)).finderPostManager().fy(paramFinderItem);
+    a.a(new Object(), "com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(342331);
+  }
+  
+  private static final void e(FinderPostProgressView paramFinderPostProgressView, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(342325);
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramFinderPostProgressView = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(342325);
+      throw paramFinderPostProgressView;
+    }
+    paramFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
+    paramFinderPostProgressView.invalidate();
+    AppMethodBeat.o(342325);
+  }
+  
+  private final void e(j paramj, ca paramca)
+  {
+    AppMethodBeat.i(342304);
+    if (!this.Ezx.isSelf())
+    {
+      AppMethodBeat.o(342304);
       return;
-      label217:
+    }
+    int i = paramj.context.getResources().getDimensionPixelOffset(e.c.Edge_A);
+    if (paramca.isPrivate())
+    {
+      paramca = paramj.UH(e.e.video_duration_layout);
+      paramca.setPadding(i, paramca.getPaddingTop(), 0, paramca.getPaddingBottom());
+      paramj.UH(e.e.divider).setVisibility(0);
+      paramj.UH(e.e.private_lock_icon).setVisibility(0);
+      AppMethodBeat.o(342304);
+      return;
+    }
+    paramca = paramj.UH(e.e.video_duration_layout);
+    paramca.setPadding(i, paramca.getPaddingTop(), i, paramca.getPaddingBottom());
+    paramj.UH(e.e.divider).setVisibility(8);
+    paramj.UH(e.e.private_lock_icon).setVisibility(8);
+    AppMethodBeat.o(342304);
+  }
+  
+  private final void f(j paramj, ca paramca)
+  {
+    AppMethodBeat.i(342318);
+    FinderItem localFinderItem = paramca.EDG;
+    if (localFinderItem == null)
+    {
+      paramca = null;
+      if (paramca == null)
+      {
+        paramj.UH(e.e.post_status_layout).setVisibility(8);
+        paramj.UH(e.e.video_expose_times_tv).setVisibility(0);
+        paramj.UH(e.e.video_create_time_tv).setVisibility(0);
+      }
+      AppMethodBeat.o(342318);
+      return;
+    }
+    if ((localFinderItem.isPostFinish()) || (localFinderItem.getPostInfo().aaPw >= 100))
+    {
+      paramj.UH(e.e.post_status_layout).setVisibility(8);
+      paramj.UH(e.e.video_expose_times_tv).setVisibility(0);
+      paramj.UH(e.e.video_create_time_tv).setVisibility(0);
+    }
+    for (;;)
+    {
+      paramj.UH(e.e.profile_retry).setOnClickListener(new d..ExternalSyntheticLambda2(localFinderItem));
+      paramj.UH(e.e.profile_del).setOnClickListener(new d..ExternalSyntheticLambda1(this, paramca, localFinderItem));
+      paramca = localFinderItem;
+      break;
       if (localFinderItem.isPostFailed())
       {
-        localObject = parami.RD(b.f.video_expose_times_tv);
-        p.j(localObject, "holder.getView<View>(R.id.video_expose_times_tv)");
-        ((View)localObject).setVisibility(8);
-        localObject = parami.RD(b.f.video_create_time_tv);
-        p.j(localObject, "holder.getView<View>(R.id.video_create_time_tv)");
-        ((View)localObject).setVisibility(8);
-        localObject = parami.RD(b.f.post_status_layout);
-        p.j(localObject, "holder.getView<View>(R.id.post_status_layout)");
-        ((View)localObject).setVisibility(0);
-        localObject = parami.RD(b.f.posting_container);
-        p.j(localObject, "holder.getView<View>(R.id.posting_container)");
-        ((View)localObject).setVisibility(8);
-        localObject = parami.RD(b.f.posting_failed_container);
-        p.j(localObject, "holder.getView<View>(R.i…posting_failed_container)");
-        ((View)localObject).setVisibility(0);
-        localObject = parami.RD(b.f.profile_del);
-        p.j(localObject, "holder.getView<View>(R.id.profile_del)");
-        ((View)localObject).setVisibility(0);
-        localObject = parami.RD(b.f.profile_retry);
-        p.j(localObject, "holder.getView<View>(R.id.profile_retry)");
-        ((View)localObject).setVisibility(0);
+        paramj.UH(e.e.video_expose_times_tv).setVisibility(8);
+        paramj.UH(e.e.video_create_time_tv).setVisibility(8);
+        paramj.UH(e.e.post_status_layout).setVisibility(0);
+        paramj.UH(e.e.posting_container).setVisibility(8);
+        paramj.UH(e.e.posting_failed_container).setVisibility(0);
+        paramj.UH(e.e.profile_del).setVisibility(0);
+        paramj.UH(e.e.profile_retry).setVisibility(0);
       }
       else
       {
-        localObject = parami.RD(b.f.video_expose_times_tv);
-        p.j(localObject, "holder.getView<View>(R.id.video_expose_times_tv)");
-        ((View)localObject).setVisibility(8);
-        localObject = parami.RD(b.f.video_create_time_tv);
-        p.j(localObject, "holder.getView<View>(R.id.video_create_time_tv)");
-        ((View)localObject).setVisibility(8);
-        localObject = parami.RD(b.f.post_status_layout);
-        p.j(localObject, "holder.getView<View>(R.id.post_status_layout)");
-        ((View)localObject).setVisibility(0);
-        localObject = parami.RD(b.f.posting_container);
-        p.j(localObject, "holder.getView<View>(R.id.posting_container)");
-        ((View)localObject).setVisibility(0);
-        localObject = parami.RD(b.f.posting_failed_container);
-        p.j(localObject, "holder.getView<View>(R.i…posting_failed_container)");
-        ((View)localObject).setVisibility(8);
-        localObject = parami.RD(b.f.profile_del);
-        p.j(localObject, "holder.getView<View>(R.id.profile_del)");
-        ((View)localObject).setVisibility(0);
-        localObject = parami.RD(b.f.profile_retry);
-        p.j(localObject, "holder.getView<View>(R.id.profile_retry)");
-        ((View)localObject).setVisibility(8);
-        localObject = (FinderPostProgressView)parami.RD(b.f.profile_upload_progress);
-        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { ((FinderPostProgressView)localObject).getProgress(), localFinderItem.getPostInfo().TAi });
-        localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new b((FinderPostProgressView)localObject));
+        paramj.UH(e.e.video_expose_times_tv).setVisibility(8);
+        paramj.UH(e.e.video_create_time_tv).setVisibility(8);
+        paramj.UH(e.e.post_status_layout).setVisibility(0);
+        paramj.UH(e.e.posting_container).setVisibility(0);
+        paramj.UH(e.e.posting_failed_container).setVisibility(8);
+        paramj.UH(e.e.profile_del).setVisibility(0);
+        paramj.UH(e.e.profile_retry).setVisibility(8);
+        Object localObject = (FinderPostProgressView)paramj.UH(e.e.profile_upload_progress);
+        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { ((FinderPostProgressView)localObject).getProgress(), localFinderItem.getPostInfo().aaPw });
+        localValueAnimator.addUpdateListener(new d..ExternalSyntheticLambda0((FinderPostProgressView)localObject));
         localObject = localValueAnimator.setDuration(400L);
         if (localObject != null) {
           ((ValueAnimator)localObject).start();
@@ -188,11 +231,11 @@ public final class d
     }
   }
   
-  public final void a(i parami, bs parambs, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final void a(j paramj, ca paramca, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(286699);
-    p.k(parami, "holder");
-    p.k(parambs, "item");
+    AppMethodBeat.i(342378);
+    s.u(paramj, "holder");
+    s.u(paramca, "item");
     Object localObject1 = (Collection)paramList;
     int i;
     if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {
@@ -206,190 +249,74 @@ public final class d
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = ((Iterator)localObject1).next();
-          if ((localObject2 instanceof o)) {
-            switch (((Number)((o)localObject2).Mx).intValue())
+          if ((localObject2 instanceof kotlin.r)) {
+            switch (((Number)((kotlin.r)localObject2).bsC).intValue())
             {
             default: 
               break;
             case 0: 
-              d(parami, parambs);
-              AppMethodBeat.o(286699);
+              e(paramj, paramca);
+              AppMethodBeat.o(342378);
               return;
               i = 0;
               break;
             case 4: 
-              e(parami, parambs);
-              AppMethodBeat.o(286699);
+              f(paramj, paramca);
+              AppMethodBeat.o(342378);
               return;
             }
           }
         }
       }
     }
-    super.a(parami, parambs, paramInt1, paramInt2, paramBoolean, paramList);
-    e(parami, parambs);
-    paramInt2 = b.e.feed_mega_video_list_item_time_bg;
-    if (this.zwi.isSelf())
+    super.a(paramj, paramca, paramInt1, paramInt2, paramBoolean, paramList);
+    f(paramj, paramca);
+    paramInt2 = e.d.feed_mega_video_list_item_time_bg;
+    if (this.Ezx.isSelf())
     {
-      paramList = parami.getContext();
-      p.j(paramList, "holder.context");
-      paramInt1 = paramList.getResources().getColor(b.c.finder_mega_video_list_self_item_time_text_color);
-      paramInt2 = b.e.feed_mega_video_list_self_item_time_bg;
+      paramInt1 = paramj.context.getResources().getColor(e.b.finder_mega_video_list_self_item_time_text_color);
+      paramInt2 = e.d.feed_mega_video_list_self_item_time_bg;
     }
     for (;;)
     {
-      paramList = (TextView)parami.RD(b.f.video_duration_tv);
+      paramList = (TextView)paramj.UH(e.e.video_duration_tv);
       if (paramList != null) {
         paramList.setTextColor(paramInt1);
       }
-      paramList = parami.RD(b.f.video_duration_layout);
+      paramList = paramj.UH(e.e.video_duration_layout);
       if (paramList != null) {
         paramList.setBackgroundResource(paramInt2);
       }
-      d(parami, parambs);
-      paramList = (TextView)parami.RD(b.f.video_expose_times_tv);
-      if (paramList != null)
-      {
-        if (this.zwi.isSelf()) {}
-        for (paramInt1 = 1;; paramInt1 = 2)
-        {
-          parambs = m.gY(paramInt1, parambs.getFeedObject().likeCount);
-          parami = parami.getContext();
-          p.j(parami, "holder.context");
-          paramList.setText((CharSequence)parami.getResources().getString(b.j.finder_mega_video_list_item_like_count_text, new Object[] { parambs }));
-          AppMethodBeat.o(286699);
-          return;
+      e(paramj, paramca);
+      paramList = (TextView)paramj.UH(e.e.video_expose_times_tv);
+      if (paramList != null) {
+        if (!this.Ezx.isSelf()) {
+          break label343;
         }
       }
-      AppMethodBeat.o(286699);
-      return;
+      label343:
+      for (paramInt1 = 1;; paramInt1 = 2)
+      {
+        paramca = com.tencent.mm.plugin.finder.utils.r.ip(paramInt1, paramca.getFeedObject().likeCount);
+        paramList.setText((CharSequence)paramj.context.getResources().getString(e.h.finder_mega_video_list_item_like_count_text, new Object[] { paramca }));
+        AppMethodBeat.o(342378);
+        return;
+      }
       paramInt1 = -1;
     }
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_mega_video_profile_list_item;
+    return e.f.finder_mega_video_profile_list_item;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert$refreshPostingLayout$1$3"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(FinderItem paramFinderItem, d paramd, i parami, bs parambs) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(267082);
-      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert$refreshPostingLayout$$inlined$also$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-      if (parambs.xcy == null) {
-        p.iCn();
-      }
-      paramView = this.zwj;
-      boolean bool;
-      if (!this.zwj.isPostFailed())
-      {
-        bool = true;
-        if (paramView.getId() == 0L) {
-          break label164;
-        }
-        localObject1 = c.AnK;
-        if (!c.a.MT(paramView.getId())) {
-          break label164;
-        }
-        localObject1 = new hn();
-        ((hn)localObject1).fEy.id = paramView.getId();
-        EventCenter.instance.publish((IEvent)localObject1);
-        Log.i("Finder.FeedConvert", "deleteItem by finder video id " + paramView.getId());
-      }
-      label164:
-      while (paramView.getLocalId() < 0L)
-      {
-        a.a(this, "com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert$refreshPostingLayout$$inlined$also$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(267082);
-        return;
-        bool = false;
-        break;
-      }
-      localObject1 = c.AnK;
-      localObject1 = c.a.MS(paramView.getLocalId());
-      Object localObject2 = c.AnK;
-      c.a.MV(paramView.getLocalId());
-      if (bool)
-      {
-        localObject2 = v.d.zYG;
-        v.d.qw(paramView.isLongVideo());
-        localObject2 = v.d.zYG;
-        v.d.dQe();
-        if (localObject1 != null)
-        {
-          localObject1 = k.zWs;
-          k.f(paramView);
-        }
-      }
-      for (;;)
-      {
-        localObject1 = new hn();
-        ((hn)localObject1).fEy.localId = paramView.getLocalId();
-        EventCenter.instance.publish((IEvent)localObject1);
-        Log.i("Finder.FeedConvert", "deleteItem by localId " + paramView.getLocalId() + ", posting:" + bool);
-        break;
-        localObject1 = v.d.zYG;
-        v.d.qx(paramView.isLongVideo());
-        localObject1 = v.d.zYG;
-        v.d.dQf();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class b
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    b(FinderPostProgressView paramFinderPostProgressView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(286548);
-      FinderPostProgressView localFinderPostProgressView = this.xiI;
-      p.j(paramValueAnimator, "animator");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(286548);
-        throw paramValueAnimator;
-      }
-      localFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
-      this.xiI.invalidate();
-      AppMethodBeat.o(286548);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FinderItem paramFinderItem) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(292237);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert$refreshPostingLayout$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = g.AAk;
-      g.ecj().v(this.zwj);
-      a.a(this, "com/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert$refreshPostingLayout$1$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(292237);
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoProfileConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.megavideo.convert.d
  * JD-Core Version:    0.7.0.1
  */

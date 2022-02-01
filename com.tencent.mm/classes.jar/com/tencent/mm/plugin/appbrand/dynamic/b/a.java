@@ -15,16 +15,16 @@ import java.io.InputStream;
 
 public final class a
 {
-  private static final b.l ohy;
+  private static final b.l rla;
   
   static
   {
     AppMethodBeat.i(121250);
-    ohy = new b.d();
+    rla = new b.d();
     AppMethodBeat.o(121250);
   }
   
-  public static Bitmap dk(String paramString1, String paramString2)
+  public static Bitmap dD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121249);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -32,20 +32,20 @@ public final class a
       AppMethodBeat.o(121249);
       return null;
     }
-    Object localObject = LaunchParcel.adT(paramString2);
+    Object localObject = LaunchParcel.Wu(paramString2);
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(121249);
       return null;
     }
     paramString2 = paramString1 + '#' + (String)localObject;
-    Bitmap localBitmap = ohy.LI(paramString2);
+    Bitmap localBitmap = rla.Eo(paramString2);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       AppMethodBeat.o(121249);
       return localBitmap;
     }
-    paramString1 = c.dq(paramString1, (String)localObject);
+    paramString1 = c.dJ(paramString1, (String)localObject);
     if (paramString1 != null) {}
     try
     {
@@ -61,7 +61,7 @@ public final class a
       localObject = BitmapUtil.decodeStream(paramString1.mInputStream);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        ohy.put(paramString2, (Bitmap)localObject);
+        rla.put(paramString2, (Bitmap)localObject);
         return localObject;
       }
       if (paramString1 != null) {

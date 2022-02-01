@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class TimeLineObject
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public ex AppInfo;
+  public fr AppInfo;
   public String ContentDesc;
-  public adw ContentObj;
+  public agh ContentObj;
   public int CreateTime;
   public String Id;
-  public cst Location;
+  public djv Location;
   public int Privated;
   public String UserName;
-  public bc actionInfo;
+  public bh actionInfo;
   public String canvasInfo;
   public int contentDescScene;
   public int contentDescShowType;
   public int contentattr;
-  public crk liteappInfo;
+  public dif liteappInfo;
   public String publicUserName;
   public int showFlag;
   public int sightFolded;
@@ -27,178 +27,188 @@ public class TimeLineObject
   public String sourceUserName;
   public String statExtStr;
   public String statisticsData;
-  public eoq streamvideo;
-  public fiu weappInfo;
-  public flm webSearchInfo;
+  public fjo streamvideo;
+  public ffv videoTemplate;
+  public gfh weappInfo;
+  public gib webSearchInfo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(125847);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.Id != null) {
-        paramVarArgs.f(1, this.Id);
+        paramVarArgs.g(1, this.Id);
       }
       if (this.UserName != null) {
-        paramVarArgs.f(2, this.UserName);
+        paramVarArgs.g(2, this.UserName);
       }
-      paramVarArgs.aY(3, this.Privated);
-      paramVarArgs.aY(4, this.CreateTime);
+      paramVarArgs.bS(3, this.Privated);
+      paramVarArgs.bS(4, this.CreateTime);
       if (this.ContentDesc != null) {
-        paramVarArgs.f(5, this.ContentDesc);
+        paramVarArgs.g(5, this.ContentDesc);
       }
       if (this.Location != null)
       {
-        paramVarArgs.oE(6, this.Location.computeSize());
+        paramVarArgs.qD(6, this.Location.computeSize());
         this.Location.writeFields(paramVarArgs);
       }
       if (this.AppInfo != null)
       {
-        paramVarArgs.oE(7, this.AppInfo.computeSize());
+        paramVarArgs.qD(7, this.AppInfo.computeSize());
         this.AppInfo.writeFields(paramVarArgs);
       }
       if (this.ContentObj != null)
       {
-        paramVarArgs.oE(8, this.ContentObj.computeSize());
+        paramVarArgs.qD(8, this.ContentObj.computeSize());
         this.ContentObj.writeFields(paramVarArgs);
       }
       if (this.sourceUserName != null) {
-        paramVarArgs.f(9, this.sourceUserName);
+        paramVarArgs.g(9, this.sourceUserName);
       }
       if (this.sourceNickName != null) {
-        paramVarArgs.f(10, this.sourceNickName);
+        paramVarArgs.g(10, this.sourceNickName);
       }
       if (this.publicUserName != null) {
-        paramVarArgs.f(11, this.publicUserName);
+        paramVarArgs.g(11, this.publicUserName);
       }
-      paramVarArgs.aY(12, this.contentDescShowType);
-      paramVarArgs.aY(13, this.contentDescScene);
+      paramVarArgs.bS(12, this.contentDescShowType);
+      paramVarArgs.bS(13, this.contentDescScene);
       if (this.statisticsData != null) {
-        paramVarArgs.f(14, this.statisticsData);
+        paramVarArgs.g(14, this.statisticsData);
       }
       if (this.actionInfo != null)
       {
-        paramVarArgs.oE(15, this.actionInfo.computeSize());
+        paramVarArgs.qD(15, this.actionInfo.computeSize());
         this.actionInfo.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(16, this.contentattr);
+      paramVarArgs.bS(16, this.contentattr);
       if (this.streamvideo != null)
       {
-        paramVarArgs.oE(17, this.streamvideo.computeSize());
+        paramVarArgs.qD(17, this.streamvideo.computeSize());
         this.streamvideo.writeFields(paramVarArgs);
       }
       if (this.statExtStr != null) {
-        paramVarArgs.f(18, this.statExtStr);
+        paramVarArgs.g(18, this.statExtStr);
       }
       if (this.canvasInfo != null) {
-        paramVarArgs.f(19, this.canvasInfo);
+        paramVarArgs.g(19, this.canvasInfo);
       }
       if (this.weappInfo != null)
       {
-        paramVarArgs.oE(20, this.weappInfo.computeSize());
+        paramVarArgs.qD(20, this.weappInfo.computeSize());
         this.weappInfo.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(21, this.sightFolded);
+      paramVarArgs.bS(21, this.sightFolded);
       if (this.webSearchInfo != null)
       {
-        paramVarArgs.oE(22, this.webSearchInfo.computeSize());
+        paramVarArgs.qD(22, this.webSearchInfo.computeSize());
         this.webSearchInfo.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(23, this.showFlag);
+      paramVarArgs.bS(23, this.showFlag);
       if (this.liteappInfo != null)
       {
-        paramVarArgs.oE(24, this.liteappInfo.computeSize());
+        paramVarArgs.qD(24, this.liteappInfo.computeSize());
         this.liteappInfo.writeFields(paramVarArgs);
+      }
+      if (this.videoTemplate != null)
+      {
+        paramVarArgs.qD(25, this.videoTemplate.computeSize());
+        this.videoTemplate.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(125847);
       return 0;
     }
     if (paramInt == 1) {
       if (this.Id == null) {
-        break label2094;
+        break label2224;
       }
     }
-    label2094:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Id) + 0;; paramInt = 0)
+    label2224:
+    for (paramInt = i.a.a.b.b.a.h(1, this.Id) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.UserName != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.UserName);
+        i = paramInt + i.a.a.b.b.a.h(2, this.UserName);
       }
-      i = i + g.a.a.b.b.a.bM(3, this.Privated) + g.a.a.b.b.a.bM(4, this.CreateTime);
+      i = i + i.a.a.b.b.a.cJ(3, this.Privated) + i.a.a.b.b.a.cJ(4, this.CreateTime);
       paramInt = i;
       if (this.ContentDesc != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.ContentDesc);
+        paramInt = i + i.a.a.b.b.a.h(5, this.ContentDesc);
       }
       i = paramInt;
       if (this.Location != null) {
-        i = paramInt + g.a.a.a.oD(6, this.Location.computeSize());
+        i = paramInt + i.a.a.a.qC(6, this.Location.computeSize());
       }
       paramInt = i;
       if (this.AppInfo != null) {
-        paramInt = i + g.a.a.a.oD(7, this.AppInfo.computeSize());
+        paramInt = i + i.a.a.a.qC(7, this.AppInfo.computeSize());
       }
       i = paramInt;
       if (this.ContentObj != null) {
-        i = paramInt + g.a.a.a.oD(8, this.ContentObj.computeSize());
+        i = paramInt + i.a.a.a.qC(8, this.ContentObj.computeSize());
       }
       paramInt = i;
       if (this.sourceUserName != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.sourceUserName);
+        paramInt = i + i.a.a.b.b.a.h(9, this.sourceUserName);
       }
       i = paramInt;
       if (this.sourceNickName != null) {
-        i = paramInt + g.a.a.b.b.a.g(10, this.sourceNickName);
+        i = paramInt + i.a.a.b.b.a.h(10, this.sourceNickName);
       }
       paramInt = i;
       if (this.publicUserName != null) {
-        paramInt = i + g.a.a.b.b.a.g(11, this.publicUserName);
+        paramInt = i + i.a.a.b.b.a.h(11, this.publicUserName);
       }
-      i = paramInt + g.a.a.b.b.a.bM(12, this.contentDescShowType) + g.a.a.b.b.a.bM(13, this.contentDescScene);
+      i = paramInt + i.a.a.b.b.a.cJ(12, this.contentDescShowType) + i.a.a.b.b.a.cJ(13, this.contentDescScene);
       paramInt = i;
       if (this.statisticsData != null) {
-        paramInt = i + g.a.a.b.b.a.g(14, this.statisticsData);
+        paramInt = i + i.a.a.b.b.a.h(14, this.statisticsData);
       }
       i = paramInt;
       if (this.actionInfo != null) {
-        i = paramInt + g.a.a.a.oD(15, this.actionInfo.computeSize());
+        i = paramInt + i.a.a.a.qC(15, this.actionInfo.computeSize());
       }
-      i += g.a.a.b.b.a.bM(16, this.contentattr);
+      i += i.a.a.b.b.a.cJ(16, this.contentattr);
       paramInt = i;
       if (this.streamvideo != null) {
-        paramInt = i + g.a.a.a.oD(17, this.streamvideo.computeSize());
+        paramInt = i + i.a.a.a.qC(17, this.streamvideo.computeSize());
       }
       i = paramInt;
       if (this.statExtStr != null) {
-        i = paramInt + g.a.a.b.b.a.g(18, this.statExtStr);
+        i = paramInt + i.a.a.b.b.a.h(18, this.statExtStr);
       }
       paramInt = i;
       if (this.canvasInfo != null) {
-        paramInt = i + g.a.a.b.b.a.g(19, this.canvasInfo);
+        paramInt = i + i.a.a.b.b.a.h(19, this.canvasInfo);
       }
       i = paramInt;
       if (this.weappInfo != null) {
-        i = paramInt + g.a.a.a.oD(20, this.weappInfo.computeSize());
+        i = paramInt + i.a.a.a.qC(20, this.weappInfo.computeSize());
       }
-      i += g.a.a.b.b.a.bM(21, this.sightFolded);
+      i += i.a.a.b.b.a.cJ(21, this.sightFolded);
       paramInt = i;
       if (this.webSearchInfo != null) {
-        paramInt = i + g.a.a.a.oD(22, this.webSearchInfo.computeSize());
+        paramInt = i + i.a.a.a.qC(22, this.webSearchInfo.computeSize());
       }
-      i = paramInt + g.a.a.b.b.a.bM(23, this.showFlag);
+      i = paramInt + i.a.a.b.b.a.cJ(23, this.showFlag);
       paramInt = i;
       if (this.liteappInfo != null) {
-        paramInt = i + g.a.a.a.oD(24, this.liteappInfo.computeSize());
+        paramInt = i + i.a.a.a.qC(24, this.liteappInfo.computeSize());
+      }
+      i = paramInt;
+      if (this.videoTemplate != null) {
+        i = paramInt + i.a.a.a.qC(25, this.videoTemplate.computeSize());
       }
       AppMethodBeat.o(125847);
-      return paramInt;
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(125847);
@@ -206,7 +216,7 @@ public class TimeLineObject
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         TimeLineObject localTimeLineObject = (TimeLineObject)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
@@ -216,193 +226,209 @@ public class TimeLineObject
           AppMethodBeat.o(125847);
           return -1;
         case 1: 
-          localTimeLineObject.Id = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.Id = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 2: 
-          localTimeLineObject.UserName = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.UserName = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 3: 
-          localTimeLineObject.Privated = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.Privated = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(125847);
           return 0;
         case 4: 
-          localTimeLineObject.CreateTime = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.CreateTime = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(125847);
           return 0;
         case 5: 
-          localTimeLineObject.ContentDesc = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.ContentDesc = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 6: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new cst();
+            localObject2 = new djv();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((cst)localObject2).parseFrom((byte[])localObject1);
+              ((djv)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.Location = ((cst)localObject2);
+            localTimeLineObject.Location = ((djv)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 7: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new ex();
+            localObject2 = new fr();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((ex)localObject2).parseFrom((byte[])localObject1);
+              ((fr)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.AppInfo = ((ex)localObject2);
+            localTimeLineObject.AppInfo = ((fr)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 8: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new adw();
+            localObject2 = new agh();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((adw)localObject2).parseFrom((byte[])localObject1);
+              ((agh)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.ContentObj = ((adw)localObject2);
+            localTimeLineObject.ContentObj = ((agh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 9: 
-          localTimeLineObject.sourceUserName = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.sourceUserName = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 10: 
-          localTimeLineObject.sourceNickName = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.sourceNickName = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 11: 
-          localTimeLineObject.publicUserName = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.publicUserName = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 12: 
-          localTimeLineObject.contentDescShowType = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.contentDescShowType = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(125847);
           return 0;
         case 13: 
-          localTimeLineObject.contentDescScene = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.contentDescScene = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(125847);
           return 0;
         case 14: 
-          localTimeLineObject.statisticsData = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.statisticsData = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 15: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new bc();
+            localObject2 = new bh();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((bc)localObject2).parseFrom((byte[])localObject1);
+              ((bh)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.actionInfo = ((bc)localObject2);
+            localTimeLineObject.actionInfo = ((bh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 16: 
-          localTimeLineObject.contentattr = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.contentattr = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(125847);
           return 0;
         case 17: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new eoq();
+            localObject2 = new fjo();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((eoq)localObject2).parseFrom((byte[])localObject1);
+              ((fjo)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.streamvideo = ((eoq)localObject2);
+            localTimeLineObject.streamvideo = ((fjo)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 18: 
-          localTimeLineObject.statExtStr = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.statExtStr = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 19: 
-          localTimeLineObject.canvasInfo = ((g.a.a.a.a)localObject1).abFh.readString();
+          localTimeLineObject.canvasInfo = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(125847);
           return 0;
         case 20: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new fiu();
+            localObject2 = new gfh();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((fiu)localObject2).parseFrom((byte[])localObject1);
+              ((gfh)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.weappInfo = ((fiu)localObject2);
+            localTimeLineObject.weappInfo = ((gfh)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 21: 
-          localTimeLineObject.sightFolded = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.sightFolded = ((i.a.a.a.a)localObject1).ajGk.aar();
           AppMethodBeat.o(125847);
           return 0;
         case 22: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new flm();
+            localObject2 = new gib();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((flm)localObject2).parseFrom((byte[])localObject1);
+              ((gib)localObject2).parseFrom((byte[])localObject1);
             }
-            localTimeLineObject.webSearchInfo = ((flm)localObject2);
+            localTimeLineObject.webSearchInfo = ((gib)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(125847);
           return 0;
         case 23: 
-          localTimeLineObject.showFlag = ((g.a.a.a.a)localObject1).abFh.AK();
+          localTimeLineObject.showFlag = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(125847);
+          return 0;
+        case 24: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new dif();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((dif)localObject2).parseFrom((byte[])localObject1);
+            }
+            localTimeLineObject.liteappInfo = ((dif)localObject2);
+            paramInt += 1;
+          }
           AppMethodBeat.o(125847);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new crk();
+          localObject2 = new ffv();
           if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((crk)localObject2).parseFrom((byte[])localObject1);
+            ((ffv)localObject2).parseFrom((byte[])localObject1);
           }
-          localTimeLineObject.liteappInfo = ((crk)localObject2);
+          localTimeLineObject.videoTemplate = ((ffv)localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(125847);
@@ -415,7 +441,7 @@ public class TimeLineObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.TimeLineObject
  * JD-Core Version:    0.7.0.1
  */

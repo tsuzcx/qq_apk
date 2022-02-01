@@ -1,1437 +1,1928 @@
 package com.tencent.mm.plugin.performance.watchdogs;
 
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.ActivityManager.RunningServiceInfo;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.ComponentName;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Debug;
-import android.os.Debug.MemoryInfo;
-import android.os.Process;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.e.i;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mv;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
-import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.tencent.mm.z.a.a;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import junit.framework.Assert;
 
 public final class c
-  implements Application.ActivityLifecycleCallbacks, Runnable
 {
-  private static final c GQA;
-  public int GQB;
-  public int GQC;
-  private int GQD;
-  private final Set<String> GQE;
-  private boolean GQF;
-  private volatile boolean GQG;
-  private long GQH;
-  private long GQI;
-  private long GQJ;
-  private long GQK;
-  public long GQL;
-  private boolean GQM;
-  private boolean GQN;
-  public a GQO;
-  private int GQP;
-  private long GQQ;
-  private long GQR;
-  public volatile boolean cQt;
-  private volatile String fca;
-  public final ActivityManager wBe;
-  
-  static
+  public static void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString1, int paramInt2, long paramLong6, long paramLong7, long paramLong8, long paramLong9, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong10, String paramString6)
   {
-    AppMethodBeat.i(202279);
-    GQA = new c();
-    AppMethodBeat.o(202279);
-  }
-  
-  private c()
-  {
-    AppMethodBeat.i(202105);
-    this.GQD = 0;
-    this.GQE = new HashSet();
-    this.GQF = true;
-    this.cQt = true;
-    this.GQG = false;
-    this.wBe = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity"));
-    this.GQH = 524288000L;
-    this.GQI = 1258291L;
-    this.GQM = false;
-    this.GQN = false;
-    this.GQP = 0;
-    this.GQQ = 0L;
-    com.tencent.mm.bs.a.a.mAJ = new com.tencent.mm.bs.a.a.a() {};
-    com.tencent.matrix.a.cQs.a(new com.tencent.matrix.b.a()
+    AppMethodBeat.i(301117);
+    Log.d("MicroMsg.MemoryWatchDog.Reporter", "report type:%s, java:%s, native:%s, vmSize:%s, totalPss:%s, sumPss:%s, extra:%s, soCount:%s, systemPss:%s, graphic:%s, backgroundDuration:%s, systemTotalMem:%s, amsTotalPss:%s, activity: %s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), paramString1, Integer.valueOf(paramInt2), Long.valueOf(paramLong6), Long.valueOf(paramLong7), Long.valueOf(paramLong8), Long.valueOf(paramLong9), Long.valueOf(paramLong10), paramString6 });
+    f localf = f.Ozc;
+    String str = MMApplicationContext.getProcessName();
+    if (BuildInfo.IS_ARM64) {}
+    for (int i = 1;; i = 2)
     {
-      public final void onForeground(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(200810);
-        Log.d("MicroMsg.MemoryWatchDog", "[%s] isProcessForeground: %s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(paramAnonymousBoolean) });
-        c.a(c.this, paramAnonymousBoolean);
-        if (!paramAnonymousBoolean) {
-          c.a(c.this, System.currentTimeMillis());
-        }
-        AppMethodBeat.o(200810);
-      }
-    });
-    com.tencent.mm.plugin.performance.b.a.GNv.a(new com.tencent.mm.plugin.performance.b.a.a()
-    {
-      public final void action(double paramAnonymousDouble)
-      {
-        AppMethodBeat.i(201332);
-        c.a(c.this);
-        AppMethodBeat.o(201332);
-      }
-      
-      public final long cycleMinutes()
-      {
-        return 0L;
-      }
-      
-      public final String key()
-      {
-        return "MicroMsg.MemoryWatchDog";
-      }
-      
-      public final double rate()
-      {
-        AppMethodBeat.i(201334);
-        double d = 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRd, -1L);
-        AppMethodBeat.o(201334);
-        return d;
-      }
-    });
-    new IListener() {}.alive();
-    if (!BuildInfo.IS_ARM64) {
-      com.tencent.mm.plugin.performance.c.fnj();
-    }
-    AppMethodBeat.o(202105);
-  }
-  
-  private void a(b paramb, int paramInt)
-  {
-    AppMethodBeat.i(202251);
-    Log.i("MicroMsg.MemoryWatchDog", "check triggerMemoryHook");
-    if (!this.GQN)
-    {
-      if (((paramb.GRa > 209715200L) || (paramb.GRk > 1048576)) && (Build.VERSION.SDK_INT >= 26))
-      {
-        Log.i("MicroMsg.MemoryWatchDog", "trigger hook");
-        paramb = "<cmd><diagnostic><MemoryHook enable='1' source='auto' process='" + processCmd() + "' duration='24' hook='" + ".*com\\.tencent\\.mm.*\\.so$" + "' stack='1' min='0' max='0' force='1' enableExpt='0' sampling='1' mmap='0'/></diagnostic></cmd>";
-        com.tencent.mm.plugin.performance.a.a.GLp.aUm(paramb);
-        paramb = new ArrayList();
-        IDKey localIDKey1 = new IDKey(1571, 1, 1);
-        IDKey localIDKey2 = new IDKey(1571, getWatchDogTriggerProcessKey(), 1);
-        paramb.add(localIDKey1);
-        paramb.add(localIDKey2);
-        com.tencent.mm.plugin.report.service.h.IzE.b(paramb, false);
-        this.GQN = true;
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (WeChatEnvironment.hasDebugger())) {
-          com.tencent.e.h.ZvG.bc(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(202300);
-              Toast.makeText(MMApplicationContext.getContext(), "trigger memory hook\n(toast for debug/coolassist)", 0).show();
-              AppMethodBeat.o(202300);
-            }
-          });
-        }
-      }
-      AppMethodBeat.o(202251);
-      return;
-    }
-    if ((paramb.GRa > this.GQH) || (paramb.GRk > this.GQI))
-    {
-      this.GQH = (paramb.GRa + 104857600L);
-      if (this.GQI >= 2097152L) {
-        break label373;
-      }
-    }
-    label373:
-    for (this.GQI = (paramb.GRk + 102400);; this.GQI = 9223372036854775807L)
-    {
-      Log.i("MicroMsg.MemoryWatchDog", "trigger report, next threshold : native %s pss %s, isFg=%s, fgSvs=%s, bgDur=%s", new Object[] { Long.valueOf(this.GQH), Long.valueOf(this.GQI), Boolean.valueOf(paramb.cQt), Arrays.toString(paramb.GQW.toArray()), Long.valueOf(paramb.GRi) });
-      if (paramInt != 3)
-      {
-        Log.i("MicroMsg.MemoryWatchDog", "not SOURCE_AUTO_CHECK, dumpForegroundService");
-        i(paramb);
-      }
-      ((com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.GLp.bn(com.tencent.mm.plugin.performance.diagnostic.b.b.class)).b(paramb);
-      AppMethodBeat.o(202251);
+      localf.b(20731, new Object[] { Integer.valueOf(paramInt1), str, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), paramString1, Integer.valueOf(paramInt2), Long.valueOf(paramLong6), Long.valueOf(paramLong7), Integer.valueOf(i), Long.valueOf(paramLong8), Long.valueOf(paramLong9), paramString2, paramString3, paramString4, paramString5, Long.valueOf(paramLong10), paramString6 });
+      AppMethodBeat.o(301117);
       return;
     }
   }
   
-  private static int[] a(b[] paramArrayOfb)
+  private static void a(d.b paramb, boolean paramBoolean)
   {
-    int[] arrayOfInt = new int[paramArrayOfb.length];
-    int i = 0;
-    while (i < paramArrayOfb.length)
-    {
-      arrayOfInt[i] = paramArrayOfb[i].pid;
-      i += 1;
+    AppMethodBeat.i(301098);
+    if (MMApplicationContext.isMainProcess()) {
+      i = 1161;
     }
-    return arrayOfInt;
-  }
-  
-  private void abd(final int paramInt)
-  {
-    AppMethodBeat.i(202199);
-    com.tencent.e.h.ZvG.o(new Runnable()
+    while (i <= 0)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(201376);
-        c.b localb = c.this.ad(false, paramInt);
-        Log.i("MicroMsg.MemoryWatchDog", "[dumpMemoryAsync] %s", new Object[] { localb });
-        if (c.b(c.this)) {
-          c.a(c.this, localb, paramInt);
-        }
-        AppMethodBeat.o(201376);
+      AppMethodBeat.o(301098);
+      return;
+      if (MMApplicationContext.isAppBrandProcess()) {
+        i = 1162;
+      } else if (MMApplicationContext.isToolsProcess()) {
+        i = 1163;
+      } else if (MMApplicationContext.isPushProcess()) {
+        i = 1164;
+      } else if (MMApplicationContext.isToolsMpProcess()) {
+        i = 1165;
+      } else {
+        i = -1;
       }
-    }, 2000L);
-    AppMethodBeat.o(202199);
-  }
-  
-  private static String convertStreamToString(InputStream paramInputStream)
-  {
-    AppMethodBeat.i(202210);
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
+    }
+    Object localObject1 = new ArrayList();
+    Object localObject2 = new IDKey();
+    ((IDKey)localObject2).SetID(i);
+    ((IDKey)localObject2).SetValue(1L);
+    ((IDKey)localObject2).SetKey(0);
+    ((ArrayList)localObject1).add(localObject2);
+    localObject2 = new IDKey();
+    ((IDKey)localObject2).SetID(i);
+    ((IDKey)localObject2).SetValue(1L);
+    long l3;
+    label224:
+    long l4;
+    label281:
+    long l5;
+    label340:
+    int i7;
+    if (BuildInfo.IS_ARM64)
     {
-      localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream));
-      try
+      j = 254;
+      ((IDKey)localObject2).SetKey(j);
+      ((ArrayList)localObject1).add(localObject2);
+      l3 = paramb.MOA - paramb.MOB;
+      b(paramb, true);
+      localObject2 = new IDKey();
+      ((IDKey)localObject2).SetID(i);
+      ((IDKey)localObject2).SetValue(1L);
+      if (l3 >= 104857600L) {
+        break label856;
+      }
+      ((IDKey)localObject2).SetKey(1);
+      ((ArrayList)localObject1).add(localObject2);
+      l4 = paramb.MOy;
+      c(paramb, true);
+      localObject2 = new IDKey();
+      ((IDKey)localObject2).SetID(i);
+      ((IDKey)localObject2).SetValue(1L);
+      if (l4 >= 104857600L) {
+        break label1033;
+      }
+      ((IDKey)localObject2).SetKey(33);
+      ((ArrayList)localObject1).add(localObject2);
+      l5 = paramb.MOt;
+      d(paramb, true);
+      localObject2 = new IDKey();
+      ((IDKey)localObject2).SetID(i);
+      ((IDKey)localObject2).SetValue(1L);
+      if (l5 >= 1572864.0D) {
+        break label1214;
+      }
+      ((IDKey)localObject2).SetKey(65);
+      ((ArrayList)localObject1).add(localObject2);
+      i7 = paramb.FrK;
+      e(paramb, true);
+      f(paramb, true);
+      localObject2 = new IDKey();
+      ((IDKey)localObject2).SetID(i);
+      ((IDKey)localObject2).SetValue(1L);
+      if (i7 >= 102400) {
+        break label1565;
+      }
+      if (!BuildInfo.IS_ARM64) {
+        break label1559;
+      }
+    }
+    long l1;
+    long l2;
+    int n;
+    int k;
+    Object localObject3;
+    int m;
+    String str;
+    int i9;
+    int i2;
+    int i1;
+    Object localObject4;
+    label1033:
+    label1559:
+    for (int i = 154;; i = 122)
+    {
+      ((IDKey)localObject2).SetKey(i);
+      ((ArrayList)localObject1).add(localObject2);
+      if (MMApplicationContext.isMainProcess()) {
+        ((ArrayList)localObject1).addAll(c(paramb));
+      }
+      f.Ozc.b((ArrayList)localObject1, false);
+      l1 = -1L;
+      l2 = -1L;
+      if (paramb.MOr != null)
       {
-        for (;;)
+        l1 = Util.getLong((String)paramb.MOr.get("summary.system"), -1L);
+        l2 = Util.getLong((String)paramb.MOr.get("summary.graphics"), -1L);
+      }
+      Log.i("MicroMsg.MemoryWatchDog.Reporter", "systemPss = %d, graphics = %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+      n = 0;
+      localObject2 = new StringBuilder();
+      i = 0;
+      k = 0;
+      Log.d("MicroMsg.MemoryWatchDog.Reporter", "mergeType = 0");
+      localObject3 = a.values();
+      int i8 = localObject3.length;
+      m = 0;
+      if (m >= i8) {
+        break label2252;
+      }
+      str = localObject3[m];
+      if (str.MNJ >= 3) {
+        str.type |= 0x1;
+      }
+      if (str.MNK >= 3) {
+        str.type |= 0x2;
+      }
+      if (str.MNL >= 3) {
+        str.type |= 0x4;
+      }
+      if (str.MNM >= 3) {
+        str.type |= 0x8;
+      }
+      if (str.MNN >= 3) {
+        str.type |= 0x10;
+      }
+      if (str.MNO > 3) {
+        str.type |= 0x200;
+      }
+      i9 = str.type;
+      i2 = k;
+      i1 = n;
+      j = i;
+      if (!a.afv(i9)) {
+        break label2189;
+      }
+      i2 = k;
+      i1 = n;
+      j = i;
+      if (str.MNP) {
+        break label2189;
+      }
+      if (((i9 & 0x10) != 16) || (i != 0)) {
+        break label2569;
+      }
+      ((StringBuilder)localObject2).append("allProcess:");
+      localObject1 = paramb.MOL;
+      j = localObject1.length;
+      i = 0;
+      while (i < j)
+      {
+        localObject4 = localObject1[i];
+        ((StringBuilder)localObject2).append(((d.b)localObject4).pid).append("-").append(((d.b)localObject4).processName).append("-pss:").append(((d.b)localObject4).FrK).append(";");
+        i += 1;
+      }
+      j = 255;
+      break;
+      label856:
+      if (l3 < 209715200L)
+      {
+        ((IDKey)localObject2).SetKey(2);
+        break label224;
+      }
+      if (l3 < 314572800L)
+      {
+        ((IDKey)localObject2).SetKey(3);
+        break label224;
+      }
+      if (l3 < 419430400L)
+      {
+        ((IDKey)localObject2).SetKey(4);
+        break label224;
+      }
+      if (l3 < 524288000L)
+      {
+        ((IDKey)localObject2).SetKey(5);
+        break label224;
+      }
+      if (l3 < 629145600L)
+      {
+        ((IDKey)localObject2).SetKey(6);
+        break label224;
+      }
+      if (l3 < 734003200L)
+      {
+        ((IDKey)localObject2).SetKey(7);
+        break label224;
+      }
+      if (l3 < 838860800L)
+      {
+        ((IDKey)localObject2).SetKey(8);
+        break label224;
+      }
+      if (l3 < 943718400L)
+      {
+        ((IDKey)localObject2).SetKey(9);
+        break label224;
+      }
+      if (l3 < 1048576000L)
+      {
+        ((IDKey)localObject2).SetKey(10);
+        break label224;
+      }
+      ((IDKey)localObject2).SetKey(11);
+      break label224;
+      if (l4 < 209715200L)
+      {
+        ((IDKey)localObject2).SetKey(34);
+        break label281;
+      }
+      if (l4 < 314572800L)
+      {
+        ((IDKey)localObject2).SetKey(35);
+        break label281;
+      }
+      if (l4 < 419430400L)
+      {
+        ((IDKey)localObject2).SetKey(36);
+        break label281;
+      }
+      if (l4 < 524288000L)
+      {
+        ((IDKey)localObject2).SetKey(37);
+        break label281;
+      }
+      if (l4 < 629145600L)
+      {
+        ((IDKey)localObject2).SetKey(38);
+        break label281;
+      }
+      if (l4 < 734003200L)
+      {
+        ((IDKey)localObject2).SetKey(39);
+        break label281;
+      }
+      if (l4 < 838860800L)
+      {
+        ((IDKey)localObject2).SetKey(40);
+        break label281;
+      }
+      if (l4 < 943718400L)
+      {
+        ((IDKey)localObject2).SetKey(41);
+        break label281;
+      }
+      if (l4 < 1048576000L)
+      {
+        ((IDKey)localObject2).SetKey(42);
+        break label281;
+      }
+      ((IDKey)localObject2).SetKey(43);
+      break label281;
+      label1214:
+      if (l5 < 2097152L)
+      {
+        ((IDKey)localObject2).SetKey(66);
+        break label340;
+      }
+      if (l5 < 2621440.0D)
+      {
+        ((IDKey)localObject2).SetKey(67);
+        break label340;
+      }
+      if (l5 < 3145728L)
+      {
+        ((IDKey)localObject2).SetKey(68);
+        break label340;
+      }
+      if (l5 < 3670016.0D)
+      {
+        ((IDKey)localObject2).SetKey(69);
+        break label340;
+      }
+      if (l5 < 4194304L)
+      {
+        ((IDKey)localObject2).SetKey(70);
+        break label340;
+      }
+      if (l5 < 4718592.0D)
+      {
+        ((IDKey)localObject2).SetKey(71);
+        break label340;
+      }
+      if (l5 < 5242880L)
+      {
+        ((IDKey)localObject2).SetKey(72);
+        break label340;
+      }
+      if (l5 < 5767168.0D)
+      {
+        ((IDKey)localObject2).SetKey(73);
+        break label340;
+      }
+      if (l5 < 6291456.0D)
+      {
+        ((IDKey)localObject2).SetKey(74);
+        break label340;
+      }
+      if (l5 < 6815744.0D)
+      {
+        ((IDKey)localObject2).SetKey(75);
+        break label340;
+      }
+      if (l5 < 7340032.0D)
+      {
+        ((IDKey)localObject2).SetKey(76);
+        break label340;
+      }
+      if (l5 < 7864320.0D)
+      {
+        ((IDKey)localObject2).SetKey(77);
+        break label340;
+      }
+      if (l5 < 8388608.0D)
+      {
+        ((IDKey)localObject2).SetKey(78);
+        break label340;
+      }
+      if (l5 < 8912896.0D)
+      {
+        ((IDKey)localObject2).SetKey(79);
+        break label340;
+      }
+      if (l5 < 9437184.0D)
+      {
+        ((IDKey)localObject2).SetKey(80);
+        break label340;
+      }
+      if (l5 < 9961472.0D)
+      {
+        ((IDKey)localObject2).SetKey(81);
+        break label340;
+      }
+      if (l5 < 10485760L)
+      {
+        ((IDKey)localObject2).SetKey(82);
+        break label340;
+      }
+      ((IDKey)localObject2).SetKey(83);
+      break label340;
+    }
+    label1565:
+    if (i7 < 204800)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 155;; i = 123)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 307200)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 156;; i = 124)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 409600)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 157;; i = 125)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 512000)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 158;; i = 126)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 614400)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 159;; i = 127)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 716800)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 160;; i = 128)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 819200)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 161;; i = 129)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 921600)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 162;; i = 130)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (i7 < 1024000)
+    {
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 163;; i = 131)
+      {
+        ((IDKey)localObject2).SetKey(i);
+        break;
+      }
+    }
+    if (BuildInfo.IS_ARM64) {}
+    for (i = 164;; i = 132)
+    {
+      ((IDKey)localObject2).SetKey(i);
+      break;
+    }
+    label2433:
+    label2569:
+    for (int j = 1;; j = i)
+    {
+      i = k;
+      if ((i9 & 0x4) == 4)
+      {
+        i = k;
+        if (k == 0)
         {
-          paramInputStream = localBufferedReader.readLine();
-          if (paramInputStream == null) {
+          if (j != 0) {
+            ((StringBuilder)localObject2).append("--------;");
+          }
+          localObject4 = paramb.MOM.iterator();
+          if (((Iterator)localObject4).hasNext())
+          {
+            Map.Entry localEntry = (Map.Entry)((Iterator)localObject4).next();
+            localObject1 = (String)localEntry.getKey();
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+            for (localObject1 = "<no-name>";; localObject1 = "'" + (String)localObject1 + "'")
+            {
+              ((StringBuilder)localObject2).append((String)localObject1).append(':').append(localEntry.getValue()).append(" bytes;");
+              break;
+            }
+          }
+          i = 1;
+        }
+      }
+      label2058:
+      label2069:
+      label2080:
+      int i3;
+      label2092:
+      int i4;
+      label2104:
+      int i5;
+      if (b(paramb, false))
+      {
+        k = 1;
+        if (!c(paramb, false)) {
+          break label2214;
+        }
+        i1 = 2;
+        if (!d(paramb, false)) {
+          break label2220;
+        }
+        i2 = 4;
+        if (!e(paramb, false)) {
+          break label2226;
+        }
+        i3 = 8;
+        if (!g(paramb, false)) {
+          break label2232;
+        }
+        i4 = 16;
+        if (!f(paramb, false)) {
+          break label2238;
+        }
+        i5 = 512;
+        label2117:
+        if (!paramb.MOu.isEmpty()) {
+          break label2244;
+        }
+      }
+      label2189:
+      label2214:
+      label2220:
+      label2226:
+      label2232:
+      label2238:
+      label2244:
+      for (int i6 = 0;; i6 = 256)
+      {
+        i1 = n | i6 | i9 | k | i1 | i2 | i3 | i4 | i5;
+        Log.d("MicroMsg.MemoryWatchDog.Reporter", "mergeType |= sceneType ==> %s", new Object[] { Integer.valueOf(i1) });
+        str.MNP = true;
+        i2 = i;
+        m += 1;
+        k = i2;
+        n = i1;
+        i = j;
+        break;
+        k = 0;
+        break label2058;
+        i1 = 0;
+        break label2069;
+        i2 = 0;
+        break label2080;
+        i3 = 0;
+        break label2092;
+        i4 = 0;
+        break label2104;
+        i5 = 0;
+        break label2117;
+      }
+      label2252:
+      if (!TextUtils.isEmpty(paramb.extra)) {
+        ((StringBuilder)localObject2).append(paramb.extra);
+      }
+      Log.d("MicroMsg.MemoryWatchDog.Reporter", "final mergeType = %s, checkRunningOutBits = %s", new Object[] { Integer.valueOf(n), Boolean.valueOf(a.afv(n)) });
+      long l6;
+      long l7;
+      long l8;
+      long l9;
+      if ((a.afv(n)) || (paramBoolean))
+      {
+        if (MMApplicationContext.isMainProcess())
+        {
+          if (!TextUtils.isEmpty(paramb.MON)) {
+            break label2497;
+          }
+          paramb.MON = ("graphic:" + a.hU);
+        }
+        l6 = i7;
+        l7 = paramb.MOK;
+        localObject4 = ((StringBuilder)localObject2).toString();
+        l8 = paramb.MOH;
+        l9 = paramb.MOI.totalMem;
+        if (!TextUtils.isEmpty(paramb.MON)) {
+          break label2533;
+        }
+        localObject1 = "";
+        label2403:
+        if (!TextUtils.isEmpty(paramb.MOO)) {
+          break label2542;
+        }
+        localObject2 = "";
+        label2418:
+        if (!TextUtils.isEmpty(paramb.MOP)) {
+          break label2551;
+        }
+        localObject3 = "";
+        if (!TextUtils.isEmpty(paramb.MOQ)) {
+          break label2560;
+        }
+      }
+      for (str = "";; str = paramb.MOQ)
+      {
+        a(n, l3, l4, l5, l6, l7, (String)localObject4, -1, l1, l2, l8, l9, (String)localObject1, (String)localObject2, (String)localObject3, str, paramb.MOJ, paramb.hfG);
+        AppMethodBeat.o(301098);
+        return;
+        label2497:
+        paramb.MON = (paramb.MON + "|graphic:" + a.hU);
+        break;
+        label2533:
+        localObject1 = paramb.MON;
+        break label2403;
+        label2542:
+        localObject2 = paramb.MOO;
+        break label2418;
+        label2551:
+        localObject3 = paramb.MOP;
+        break label2433;
+      }
+    }
+  }
+  
+  public static void a(d.b paramb, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(301064);
+    ArrayList localArrayList = new ArrayList();
+    IDKey localIDKey1 = new IDKey();
+    localIDKey1.SetID(959);
+    localIDKey1.SetValue(1L);
+    label111:
+    int j;
+    label160:
+    label292:
+    label490:
+    long l;
+    if (paramb.MOA - paramb.MOB < 104857600L)
+    {
+      localIDKey1.SetKey(120);
+      localArrayList.add(localIDKey1);
+      localIDKey1 = new IDKey();
+      localIDKey1.SetID(959);
+      localIDKey1.SetValue(1L);
+      if (paramb.MOy >= 104857600L) {
+        break label995;
+      }
+      localIDKey1.SetKey(131);
+      localArrayList.add(localIDKey1);
+      localIDKey1 = new IDKey();
+      localIDKey1.SetID(959);
+      localIDKey1.SetValue(1L);
+      if (paramb.MOt >= 2097152) {
+        break label1160;
+      }
+      localIDKey1.SetKey(142);
+      if (paramb.MOt >= 3858759.8F)
+      {
+        IDKey localIDKey2 = new IDKey();
+        localIDKey2.SetID(959);
+        localIDKey2.SetValue(1L);
+        localIDKey2.SetKey(149);
+        localArrayList.add(localIDKey2);
+      }
+      localArrayList.add(localIDKey1);
+      localIDKey1 = new IDKey();
+      localIDKey1.SetID(959);
+      localIDKey1.SetValue(1L);
+      localIDKey1.SetKey(151);
+      localArrayList.add(localIDKey1);
+      f.Ozc.b(localArrayList, false);
+      a(paramb, paramBoolean2);
+      localArrayList = new ArrayList();
+      i = 0;
+      if (!MMApplicationContext.isMainProcess()) {
+        break label1286;
+      }
+      i = 10;
+      localIDKey1 = new IDKey();
+      localIDKey1.SetID(1031);
+      localIDKey1.SetKey(i);
+      localIDKey1.SetValue((paramb.MOA - paramb.MOB) / 1024L / 1024L);
+      localArrayList.add(localIDKey1);
+      localIDKey1 = new IDKey();
+      localIDKey1.SetID(1031);
+      localIDKey1.SetKey(i + 1);
+      localIDKey1.SetValue(paramb.MOy / 1024L / 1024L);
+      localArrayList.add(localIDKey1);
+      localIDKey1 = new IDKey();
+      localIDKey1.SetID(1031);
+      localIDKey1.SetKey(i + 2);
+      localIDKey1.SetValue(1L);
+      localArrayList.add(localIDKey1);
+      f.Ozc.b(localArrayList, false);
+      if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
+      {
+        Log.d("MicroMsg.MemoryWatchDog.Reporter", "reportPreloadProcessMemory: hasActivity = %s", new Object[] { Boolean.valueOf(paramBoolean1) });
+        if (!MMApplicationContext.isAppBrandProcess()) {
+          break label1316;
+        }
+        i = 1462;
+        if (i > 0)
+        {
+          localArrayList = new ArrayList();
+          localArrayList.add(new IDKey(i, 0, 1));
+          if (!paramBoolean1) {
+            break label1347;
+          }
+          j = 1;
+          label526:
+          localArrayList.add(new IDKey(i, j, 1));
+          l = paramb.MOA - paramb.MOB;
+          localIDKey1 = new IDKey();
+          localIDKey1.SetID(i);
+          localIDKey1.SetValue(1L);
+          if (l >= 52428800L) {
+            break label1360;
+          }
+          if (!paramBoolean1) {
+            break label1353;
+          }
+          j = 3;
+          label591:
+          localIDKey1.SetKey(j);
+          localArrayList.add(localIDKey1);
+          l = paramb.MOy;
+          localIDKey1 = new IDKey();
+          localIDKey1.SetID(i);
+          localIDKey1.SetValue(1L);
+          if (l >= 104857600L) {
+            break label1730;
+          }
+          if (!paramBoolean1) {
+            break label1723;
+          }
+          j = 55;
+          label650:
+          localIDKey1.SetKey(j);
+          localArrayList.add(localIDKey1);
+          if (!BuildInfo.IS_ARM64)
+          {
+            localIDKey1 = new IDKey();
+            localIDKey1.SetID(i);
+            localIDKey1.SetValue(1L);
+            l = paramb.MOt;
+            if (l >= 1572864.0D) {
+              break label2068;
+            }
+            if (!paramBoolean1) {
+              break label2061;
+            }
+            j = 111;
+            label717:
+            localIDKey1.SetKey(j);
+            localArrayList.add(localIDKey1);
+          }
+          localIDKey1 = new IDKey();
+          localIDKey1.SetID(i);
+          localIDKey1.SetValue(1L);
+          i = paramb.FrK;
+          if (i >= 102400) {
+            break label2238;
+          }
+          if (!paramBoolean1) {
+            break label2231;
+          }
+        }
+      }
+    }
+    label1160:
+    label1316:
+    label2231:
+    for (int i = 139;; i = 153)
+    {
+      localIDKey1.SetKey(i);
+      localArrayList.add(localIDKey1);
+      f.Ozc.b(localArrayList, false);
+      AppMethodBeat.o(301064);
+      return;
+      if (paramb.MOA - paramb.MOB < 209715200L)
+      {
+        localIDKey1.SetKey(121);
+        break;
+      }
+      if (paramb.MOA - paramb.MOB < 314572800L)
+      {
+        localIDKey1.SetKey(122);
+        break;
+      }
+      if (paramb.MOA - paramb.MOB < 419430400L)
+      {
+        localIDKey1.SetKey(123);
+        break;
+      }
+      if (paramb.MOA - paramb.MOB < 524288000L)
+      {
+        localIDKey1.SetKey(124);
+        break;
+      }
+      if (paramb.MOA - paramb.MOB < 629145600L)
+      {
+        localIDKey1.SetKey(125);
+        break;
+      }
+      if (paramb.MOA - paramb.MOB < 734003200L)
+      {
+        localIDKey1.SetKey(126);
+        break;
+      }
+      if (paramb.MOA - paramb.MOB < 838860800L)
+      {
+        localIDKey1.SetKey(127);
+        break;
+      }
+      localIDKey1.SetKey(128);
+      break;
+      label995:
+      if (paramb.MOy < 209715200L)
+      {
+        localIDKey1.SetKey(132);
+        break label111;
+      }
+      if (paramb.MOy < 314572800L)
+      {
+        localIDKey1.SetKey(133);
+        break label111;
+      }
+      if (paramb.MOy < 419430400L)
+      {
+        localIDKey1.SetKey(134);
+        break label111;
+      }
+      if (paramb.MOy < 524288000L)
+      {
+        localIDKey1.SetKey(135);
+        break label111;
+      }
+      if (paramb.MOy < 629145600L)
+      {
+        localIDKey1.SetKey(136);
+        break label111;
+      }
+      if (paramb.MOy < 734003200L)
+      {
+        localIDKey1.SetKey(137);
+        break label111;
+      }
+      if (paramb.MOy < 838860800L)
+      {
+        localIDKey1.SetKey(138);
+        break label111;
+      }
+      localIDKey1.SetKey(139);
+      break label111;
+      if (paramb.MOt < 2516582.5F)
+      {
+        localIDKey1.SetKey(143);
+        break label160;
+      }
+      if (paramb.MOt < 2936012.8F)
+      {
+        localIDKey1.SetKey(144);
+        break label160;
+      }
+      if (paramb.MOt < 3145728.0F)
+      {
+        localIDKey1.SetKey(145);
+        break label160;
+      }
+      if (paramb.MOt < 3565158.5F)
+      {
+        localIDKey1.SetKey(146);
+        break label160;
+      }
+      if (paramb.MOt < 3984588.8F)
+      {
+        localIDKey1.SetKey(147);
+        break label160;
+      }
+      localIDKey1.SetKey(148);
+      break label160;
+      if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
+      {
+        i = 20;
+        break label292;
+      }
+      if (!MMApplicationContext.isAppBrandProcess()) {
+        break label292;
+      }
+      i = 30;
+      break label292;
+      if (MMApplicationContext.isToolsProcess())
+      {
+        i = 1463;
+        break label490;
+      }
+      if (MMApplicationContext.isToolsMpProcess())
+      {
+        i = 1464;
+        break label490;
+      }
+      i = -1;
+      break label490;
+      label1347:
+      j = 2;
+      break label526;
+      label1353:
+      j = 16;
+      break label591;
+      label1360:
+      if (l < 104857600L)
+      {
+        if (paramBoolean1) {}
+        for (j = 4;; j = 17)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 209715200L)
+      {
+        if (paramBoolean1) {}
+        for (j = 5;; j = 18)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 314572800L)
+      {
+        if (paramBoolean1) {}
+        for (j = 6;; j = 19)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 419430400L)
+      {
+        if (paramBoolean1) {}
+        for (j = 7;; j = 20)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 524288000L)
+      {
+        if (paramBoolean1) {}
+        for (j = 8;; j = 21)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 629145600L)
+      {
+        if (paramBoolean1) {}
+        for (j = 9;; j = 22)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 734003200L)
+      {
+        if (paramBoolean1) {}
+        for (j = 10;; j = 23)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 838860800L)
+      {
+        if (paramBoolean1) {}
+        for (j = 11;; j = 24)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 943718400L)
+      {
+        if (paramBoolean1) {}
+        for (j = 12;; j = 25)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 1048576000L)
+      {
+        if (paramBoolean1) {}
+        for (j = 13;; j = 26)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (paramBoolean1) {}
+      for (j = 14;; j = 27)
+      {
+        localIDKey1.SetKey(j);
+        break;
+      }
+      label1723:
+      j = 69;
+      break label650;
+      label1730:
+      if (l < 209715200L)
+      {
+        if (paramBoolean1) {}
+        for (j = 56;; j = 70)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 314572800L)
+      {
+        if (paramBoolean1) {}
+        for (j = 57;; j = 71)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 419430400L)
+      {
+        if (paramBoolean1) {}
+        for (j = 58;; j = 72)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 524288000L)
+      {
+        if (paramBoolean1) {}
+        for (j = 59;; j = 73)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 629145600L)
+      {
+        if (paramBoolean1) {}
+        for (j = 60;; j = 74)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 734003200L)
+      {
+        if (paramBoolean1) {}
+        for (j = 61;; j = 75)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 838860800L)
+      {
+        if (paramBoolean1) {}
+        for (j = 62;; j = 76)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 943718400L)
+      {
+        if (paramBoolean1) {}
+        for (j = 63;; j = 77)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 1048576000L)
+      {
+        if (paramBoolean1) {}
+        for (j = 64;; j = 78)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (paramBoolean1) {}
+      for (j = 65;; j = 79)
+      {
+        localIDKey1.SetKey(j);
+        break;
+      }
+      j = 118;
+      break label717;
+      if (l < 2097152L)
+      {
+        if (paramBoolean1) {}
+        for (j = 112;; j = 119)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 2621440.0D)
+      {
+        if (paramBoolean1) {}
+        for (j = 113;; j = 120)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 3145728L)
+      {
+        if (paramBoolean1) {}
+        for (j = 114;; j = 121)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (l < 3670016.0D)
+      {
+        if (paramBoolean1) {}
+        for (j = 115;; j = 122)
+        {
+          localIDKey1.SetKey(j);
+          break;
+        }
+      }
+      if (paramBoolean1) {}
+      for (j = 116;; j = 123)
+      {
+        localIDKey1.SetKey(j);
+        break;
+      }
+    }
+    label1286:
+    label2061:
+    label2068:
+    label2238:
+    if (i < 204800)
+    {
+      if (paramBoolean1) {}
+      for (i = 140;; i = 154)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 307200)
+    {
+      if (paramBoolean1) {}
+      for (i = 141;; i = 155)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 409600)
+    {
+      if (paramBoolean1) {}
+      for (i = 142;; i = 156)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 512000)
+    {
+      if (paramBoolean1) {}
+      for (i = 143;; i = 157)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 614400)
+    {
+      if (paramBoolean1) {}
+      for (i = 144;; i = 158)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 716800)
+    {
+      if (paramBoolean1) {}
+      for (i = 145;; i = 159)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 819200)
+    {
+      if (paramBoolean1) {}
+      for (i = 146;; i = 160)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 921600)
+    {
+      if (paramBoolean1) {}
+      for (i = 147;; i = 161)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (i < 1024000)
+    {
+      if (paramBoolean1) {}
+      for (i = 148;; i = 162)
+      {
+        localIDKey1.SetKey(i);
+        break;
+      }
+    }
+    if (paramBoolean1) {}
+    for (i = 149;; i = 163)
+    {
+      localIDKey1.SetKey(i);
+      break;
+    }
+  }
+  
+  private static int afu(int paramInt)
+  {
+    if (paramInt < 102400)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 42;
+      }
+      return 2;
+    }
+    if (paramInt < 204800)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 43;
+      }
+      return 3;
+    }
+    if (paramInt < 307200)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 44;
+      }
+      return 4;
+    }
+    if (paramInt < 409600)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 45;
+      }
+      return 5;
+    }
+    if (paramInt < 512000)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 46;
+      }
+      return 6;
+    }
+    if (paramInt < 614400)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 47;
+      }
+      return 7;
+    }
+    if (paramInt < 716800)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 48;
+      }
+      return 8;
+    }
+    if (paramInt < 819200)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 49;
+      }
+      return 9;
+    }
+    if (paramInt < 921600)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 50;
+      }
+      return 10;
+    }
+    if (paramInt < 1024000)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 51;
+      }
+      return 11;
+    }
+    if (paramInt < 1126400)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 52;
+      }
+      return 12;
+    }
+    if (paramInt < 1228800)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 53;
+      }
+      return 13;
+    }
+    if (paramInt < 1331200)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 54;
+      }
+      return 14;
+    }
+    if (paramInt < 1433600)
+    {
+      if (BuildInfo.IS_ARM64) {
+        return 55;
+      }
+      return 15;
+    }
+    if (BuildInfo.IS_ARM64) {
+      return 56;
+    }
+    return 16;
+  }
+  
+  private static boolean b(d.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(301101);
+    if (paramb.MOA - paramb.MOB > 262144000L)
+    {
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(301101);
+        return true;
+      }
+      a locala = a.MNw;
+      locala.MNJ += 1;
+      if (paramb.MOv)
+      {
+        if (!paramb.MNY) {
+          break label128;
+        }
+        locala = a.MNx;
+      }
+      for (locala.MNJ += 1;; locala.MNJ += 1)
+      {
+        label128:
+        do
+        {
+          paramb = a.aRE(paramb.hfG).iterator();
+          while (paramb.hasNext())
+          {
+            locala = (a)paramb.next();
+            locala.MNJ += 1;
+          }
+          if (paramb.eLx) {
             break;
           }
-          localStringBuilder.append(paramInputStream).append('\n');
-        }
-        if (localBufferedReader == null) {
-          break label62;
-        }
+          locala = a.MNy;
+          locala.MNJ += 1;
+        } while ((paramb.hfG == null) || ((!paramb.hfG.contains("default")) && (!paramb.hfG.contains("LauncherUI"))));
+        locala = a.MNG;
       }
-      finally {}
+      AppMethodBeat.o(301101);
+      return true;
     }
-    finally
-    {
-      for (;;)
-      {
-        BufferedReader localBufferedReader = null;
-      }
-    }
-    localBufferedReader.close();
-    label62:
-    AppMethodBeat.o(202210);
-    throw paramInputStream;
-    localBufferedReader.close();
-    paramInputStream = localStringBuilder.toString();
-    AppMethodBeat.o(202210);
-    return paramInputStream;
+    AppMethodBeat.o(301101);
+    return false;
   }
   
-  public static c fou()
+  private static ArrayList<IDKey> c(d.b paramb)
   {
-    return GQA;
-  }
-  
-  private b[] fov()
-  {
-    AppMethodBeat.i(202193);
-    Object localObject1 = this.wBe.getRunningAppProcesses();
+    AppMethodBeat.i(301085);
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < ((List)localObject1).size())
+    Object localObject1 = new IDKey();
+    ((IDKey)localObject1).SetID(1308);
+    ((IDKey)localObject1).SetValue(1L);
+    int i;
+    Object localObject2;
+    label543:
+    Object localObject3;
+    Object localObject4;
+    if (BuildInfo.IS_ARM64)
     {
-      Object localObject2 = (ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i);
-      String str = WeChatBrands.AppInfo.current().getPackageName();
-      Log.d("MicroMsg.MemoryWatchDog", "pkg name is [%s]", new Object[] { str });
-      if ((Process.myUid() != ((ActivityManager.RunningAppProcessInfo)localObject2).uid) || (TextUtils.isEmpty(((ActivityManager.RunningAppProcessInfo)localObject2).processName)) || (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.startsWith(str))) {
-        Log.e("MicroMsg.MemoryWatchDog", "info with uid [%s] & process name [%s] is not current app [%s][%s]", new Object[] { Integer.valueOf(((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).uid), ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).processName, Integer.valueOf(Process.myUid()), str });
+      i = 1;
+      ((IDKey)localObject1).SetKey(i);
+      localArrayList.add(localObject1);
+      localObject1 = new IDKey();
+      ((IDKey)localObject1).SetID(1308);
+      ((IDKey)localObject1).SetValue(1L);
+      ((IDKey)localObject1).SetKey(afu(paramb.MOK));
+      localArrayList.add(localObject1);
+      g(paramb, true);
+      localObject2 = WeChatBrands.AppInfo.current().getPackageName();
+      localObject1 = new HashMap();
+      ((Map)localObject1).put(String.valueOf(localObject2), Integer.valueOf(1595));
+      ((Map)localObject1).put((String)localObject2 + ":appbrand0", Integer.valueOf(1596));
+      ((Map)localObject1).put((String)localObject2 + ":appbrand1", Integer.valueOf(1596));
+      ((Map)localObject1).put((String)localObject2 + ":appbrand2", Integer.valueOf(1596));
+      ((Map)localObject1).put((String)localObject2 + ":appbrand3", Integer.valueOf(1596));
+      ((Map)localObject1).put((String)localObject2 + ":appbrand4", Integer.valueOf(1596));
+      ((Map)localObject1).put((String)localObject2 + ":tools", Integer.valueOf(1607));
+      ((Map)localObject1).put((String)localObject2 + ":toolsmp", Integer.valueOf(1598));
+      ((Map)localObject1).put((String)localObject2 + ":push", Integer.valueOf(1599));
+      ((Map)localObject1).put((String)localObject2 + ":hotpot..", Integer.valueOf(1600));
+      ((Map)localObject1).put((String)localObject2 + ":sandbox", Integer.valueOf(1601));
+      ((Map)localObject1).put((String)localObject2 + ":exdevice", Integer.valueOf(1610));
+      localObject2 = paramb.MOL;
+      int m = localObject2.length;
+      i = 0;
+      if (i >= m) {
+        break label693;
       }
-      for (;;)
+      localObject3 = localObject2[i];
+      localObject4 = (Integer)((Map)localObject1).remove(localObject3.processName);
+      if (localObject4 == null) {
+        break label1285;
+      }
+    }
+    label1285:
+    for (int j = ((Integer)localObject4).intValue();; j = 1602)
+    {
+      Log.d("MicroMsg.MemoryWatchDog.Reporter", "id = %s, process = %s", new Object[] { Integer.valueOf(j), localObject3.processName });
+      if (BuildInfo.IS_ARM64) {}
+      for (int k = 1;; k = 0)
       {
+        localArrayList.add(new IDKey(j, k, 1));
+        localObject4 = new IDKey();
+        ((IDKey)localObject4).SetID(j);
+        ((IDKey)localObject4).SetValue(1L);
+        ((IDKey)localObject4).SetKey(afu(localObject3.FrK));
+        localArrayList.add(localObject4);
         i += 1;
+        break label543;
+        i = 0;
         break;
-        localObject2 = new b();
-        ((b)localObject2).pid = ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).pid;
-        ((b)localObject2).processName = ((ActivityManager.RunningAppProcessInfo)((List)localObject1).get(i)).processName;
-        localArrayList.add(localObject2);
-        Log.d("MicroMsg.MemoryWatchDog", "pid = %s, process = %s", new Object[] { Integer.valueOf(((b)localObject2).pid), ((b)localObject2).processName });
+      }
+      label693:
+      localObject1 = ((Map)localObject1).entrySet().iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        Log.d("MicroMsg.MemoryWatchDog.Reporter", "stub : id = %s, process = %s", new Object[] { ((Map.Entry)localObject2).getValue(), ((Map.Entry)localObject2).getKey() });
+        j = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
+        if (BuildInfo.IS_ARM64)
+        {
+          i = 1;
+          label783:
+          localArrayList.add(new IDKey(j, i, 1));
+          j = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
+          if (!BuildInfo.IS_ARM64) {
+            break label846;
+          }
+        }
+        label846:
+        for (i = 57;; i = 17)
+        {
+          localArrayList.add(new IDKey(j, i, 1));
+          break;
+          i = 0;
+          break label783;
+        }
+      }
+      localObject1 = new IDKey();
+      ((IDKey)localObject1).SetID(1308);
+      ((IDKey)localObject1).SetValue(1L);
+      long l = paramb.MOI.availMem;
+      if (l < 104857600L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 113;; i = 82)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          localArrayList.add(localObject1);
+          AppMethodBeat.o(301085);
+          return localArrayList;
+        }
+      }
+      if (l < 209715200L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 114;; i = 83)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 314572800L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 115;; i = 84)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 419430400L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 116;; i = 85)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 524288000L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 117;; i = 86)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 629145600L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 118;; i = 87)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 734003200L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 119;; i = 88)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 838860800L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 120;; i = 89)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 943718400L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 121;; i = 90)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 1048576000L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 122;; i = 91)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (l < 1572864000L)
+      {
+        if (BuildInfo.IS_ARM64) {}
+        for (i = 123;; i = 92)
+        {
+          ((IDKey)localObject1).SetKey(i);
+          break;
+        }
+      }
+      if (BuildInfo.IS_ARM64) {}
+      for (i = 124;; i = 93)
+      {
+        ((IDKey)localObject1).SetKey(i);
+        break;
       }
     }
-    localObject1 = new b[localArrayList.size()];
-    localArrayList.toArray((Object[])localObject1);
-    AppMethodBeat.o(202193);
-    return localObject1;
   }
   
-  private boolean fox()
+  private static boolean c(d.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(202215);
-    long l = SystemClock.uptimeMillis();
-    if (l - this.GQR > 2000L) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(301104);
+    if (paramb.MOy > 524288000L)
     {
-      this.GQR = l;
-      AppMethodBeat.o(202215);
-      return bool;
-    }
-  }
-  
-  static boolean foy()
-  {
-    AppMethodBeat.i(202225);
-    if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
-    {
-      AppMethodBeat.o(202225);
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(301104);
+        return true;
+      }
+      a locala = a.MNw;
+      locala.MNK += 1;
+      if (paramb.MOv)
+      {
+        if (!paramb.MNY) {
+          break label123;
+        }
+        locala = a.MNx;
+      }
+      for (locala.MNK += 1;; locala.MNK += 1)
+      {
+        label123:
+        do
+        {
+          paramb = a.aRE(paramb.hfG).iterator();
+          while (paramb.hasNext())
+          {
+            locala = (a)paramb.next();
+            locala.MNK += 1;
+          }
+          if (paramb.eLx) {
+            break;
+          }
+          locala = a.MNy;
+          locala.MNK += 1;
+        } while ((paramb.hfG == null) || ((!paramb.hfG.contains("default")) && (!paramb.hfG.contains("LauncherUI"))));
+        locala = a.MNG;
+      }
+      AppMethodBeat.o(301104);
       return true;
     }
-    AppMethodBeat.o(202225);
+    AppMethodBeat.o(301104);
     return false;
   }
   
-  private boolean foz()
+  private static boolean d(d.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(202237);
-    com.tencent.mm.booter.d locald = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).iQW;
-    if ((locald != null) && (Util.nullAs(locald.JE(".com.tencent.mm.debug.disable_memory_hook"), false)))
+    AppMethodBeat.i(301108);
+    if ((!BuildInfo.IS_ARM64) && (paramb.MOt > 3879731.2000000002D))
     {
-      Log.e("MicroMsg.MemoryWatchDog", "disabled by assist");
-      AppMethodBeat.o(202237);
-      return false;
-    }
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vZH, false))
-    {
-      AppMethodBeat.o(202237);
-      return false;
-    }
-    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (com.tencent.mm.protocal.d.RAG) || (WeChatEnvironment.hasDebugger()) || (this.GQM))
-    {
-      AppMethodBeat.o(202237);
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(301108);
+        return true;
+      }
+      a locala = a.MNw;
+      locala.MNL += 1;
+      if (paramb.MOv)
+      {
+        if (!paramb.MNY) {
+          break label130;
+        }
+        locala = a.MNx;
+      }
+      for (locala.MNL += 1;; locala.MNL += 1)
+      {
+        label130:
+        do
+        {
+          paramb = a.aRE(paramb.hfG).iterator();
+          while (paramb.hasNext())
+          {
+            locala = (a)paramb.next();
+            locala.MNL += 1;
+          }
+          if (paramb.eLx) {
+            break;
+          }
+          locala = a.MNy;
+          locala.MNL += 1;
+        } while ((paramb.hfG == null) || ((!paramb.hfG.contains("default")) && (!paramb.hfG.contains("LauncherUI"))));
+        locala = a.MNG;
+      }
+      AppMethodBeat.o(301108);
       return true;
     }
-    AppMethodBeat.o(202237);
+    AppMethodBeat.o(301108);
     return false;
   }
   
-  private static String getStringFromFile(String paramString)
+  private static boolean e(d.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(202213);
-    Object localObject1 = new q(paramString);
-    paramString = null;
-    try
+    AppMethodBeat.i(301111);
+    if (paramb.FrK > 1024000)
     {
-      localObject1 = u.al((q)localObject1);
-      paramString = (String)localObject1;
-      String str = convertStreamToString((InputStream)localObject1);
-      if (localObject1 != null) {
-        ((InputStream)localObject1).close();
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(301111);
+        return true;
       }
-      AppMethodBeat.o(202213);
-      return str;
-    }
-    finally
-    {
-      if (paramString != null) {
-        paramString.close();
+      a locala = a.MNw;
+      locala.MNM += 1;
+      if (paramb.MOv)
+      {
+        if (!paramb.MNY) {
+          break label122;
+        }
+        locala = a.MNx;
       }
-      AppMethodBeat.o(202213);
+      for (locala.MNM += 1;; locala.MNM += 1)
+      {
+        label122:
+        do
+        {
+          paramb = a.aRE(paramb.hfG).iterator();
+          while (paramb.hasNext())
+          {
+            locala = (a)paramb.next();
+            locala.MNM += 1;
+          }
+          if (paramb.eLx) {
+            break;
+          }
+          locala = a.MNy;
+          locala.MNM += 1;
+        } while ((paramb.hfG == null) || ((!paramb.hfG.contains("default")) && (!paramb.hfG.contains("LauncherUI"))));
+        locala = a.MNG;
+      }
+      AppMethodBeat.o(301111);
+      return true;
     }
+    AppMethodBeat.o(301111);
+    return false;
   }
   
-  private static String getVmSize()
+  private static boolean f(d.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(202208);
-    Object localObject = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
-    try
+    AppMethodBeat.i(301113);
+    if (paramb.MOJ > 1024000)
     {
-      localObject = getStringFromFile((String)localObject).trim().split("\n");
-      int j = localObject.length;
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(301113);
+        return true;
+      }
+      a locala = a.MNw;
+      locala.MNO += 1;
+      if (paramb.MOv)
+      {
+        if (!paramb.MNY) {
+          break label122;
+        }
+        locala = a.MNx;
+      }
+      for (locala.MNO += 1;; locala.MNO += 1)
+      {
+        label122:
+        do
+        {
+          paramb = a.aRE(paramb.hfG).iterator();
+          while (paramb.hasNext())
+          {
+            locala = (a)paramb.next();
+            locala.MNO += 1;
+          }
+          if (paramb.eLx) {
+            break;
+          }
+          locala = a.MNy;
+          locala.MNO += 1;
+        } while ((paramb.hfG == null) || ((!paramb.hfG.contains("default")) && (!paramb.hfG.contains("LauncherUI"))));
+        locala = a.MNG;
+      }
+      AppMethodBeat.o(301113);
+      return true;
+    }
+    AppMethodBeat.o(301113);
+    return false;
+  }
+  
+  private static boolean g(d.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(301115);
+    if (paramb.MOK > 2097152)
+    {
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(301115);
+        return true;
+      }
+      a locala = a.MNw;
+      locala.MNN += 1;
+      if (paramb.MOv)
+      {
+        if (!paramb.MNY) {
+          break label122;
+        }
+        locala = a.MNx;
+      }
+      for (locala.MNN += 1;; locala.MNN += 1)
+      {
+        label122:
+        do
+        {
+          paramb = a.aRE(paramb.hfG).iterator();
+          while (paramb.hasNext())
+          {
+            locala = (a)paramb.next();
+            locala.MNN += 1;
+          }
+          if (paramb.eLx) {
+            break;
+          }
+          locala = a.MNy;
+          locala.MNN += 1;
+        } while ((paramb.hfG == null) || ((!paramb.hfG.contains("default")) && (!paramb.hfG.contains("LauncherUI"))));
+        locala = a.MNG;
+      }
+      AppMethodBeat.o(301115);
+      return true;
+    }
+    AppMethodBeat.o(301115);
+    return false;
+  }
+  
+  static enum a
+  {
+    static final int MNH;
+    List<String> MNI;
+    int MNJ;
+    int MNK;
+    int MNL;
+    int MNM;
+    int MNN;
+    int MNO;
+    boolean MNP;
+    int type;
+    
+    static
+    {
+      AppMethodBeat.i(301011);
+      MNw = new a("GLOBAL", 0, new String[0]);
+      MNx = new a("FOREGROUND", 1, new String[0]);
+      MNy = new a("BACKGROUND", 2, new String[0]);
+      MNz = new a("VOIP", 3, new String[] { "VideoActivity", "VoipCSMainUI", "MultiTalkMainUI", "VoipScoreDialog" });
+      MNA = new a("SNS", 4, new String[] { "Sns.*UI", "SnsOnlineVideoActivity" });
+      MNB = new a("FINDER", 5, new String[] { "Finder.*UI" });
+      MNC = new a("ALBUM_GALLERY", 6, new String[] { "AlbumPreviewUI", "ImagePreviewUI", "ImageGalleryUI" });
+      MND = new a("STORY", 7, new String[] { "Story.*UI" });
+      MNE = new a("RECORD", 8, new String[] { "MMRecordUI" });
+      MNF = new a("FINDER_LIVE", 9, new String[] { ".*Live.*UI", "NearbyUI" });
+      MNG = new a("LAUNCHER_BACKGROUND", 10, new String[0]);
+      MNQ = new a[] { MNw, MNx, MNy, MNz, MNA, MNB, MNC, MND, MNE, MNF, MNG };
+      MNH = -2147483648 >> values().length;
+      AppMethodBeat.o(301011);
+    }
+    
+    private a(String... paramVarArgs)
+    {
+      AppMethodBeat.i(300991);
+      this.MNJ = 0;
+      this.MNK = 0;
+      this.MNL = 0;
+      this.MNM = 0;
+      this.MNN = 0;
+      this.MNO = 0;
+      this.MNP = false;
+      int i = a.MNR;
+      a.MNR = i + 1;
+      this.type = (-2147483648 >>> i);
+      this.MNI = Arrays.asList(paramVarArgs);
+      AppMethodBeat.o(300991);
+    }
+    
+    static List<a> aRE(String paramString)
+    {
+      AppMethodBeat.i(300995);
+      ArrayList localArrayList = new ArrayList();
+      a[] arrayOfa = values();
+      int j = arrayOfa.length;
       int i = 0;
       while (i < j)
       {
-        String str = localObject[i];
-        boolean bool = str.startsWith("VmSize");
-        if (bool)
+        a locala = arrayOfa[i];
+        Iterator localIterator = locala.MNI.iterator();
+        while (localIterator.hasNext())
         {
-          AppMethodBeat.o(202208);
-          return str;
+          String str = (String)localIterator.next();
+          if ((!locala.MNP) && (paramString.matches(str)))
+          {
+            Log.d("MicroMsg.MemoryWatchDog.Reporter", "%s matches %s(%s)", new Object[] { paramString, str, locala.name() });
+            localArrayList.add(locala);
+          }
         }
         i += 1;
       }
-      Log.w("MicroMsg.MemoryWatchDog", "[getVmSize] Wrong!", new Object[] { localObject[12] });
-      localObject = localObject[12];
-      AppMethodBeat.o(202208);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(202208);
-    }
-    return "";
-  }
-  
-  private static int getWatchDogTriggerProcessKey()
-  {
-    AppMethodBeat.i(202243);
-    if (MMApplicationContext.isMainProcess())
-    {
-      AppMethodBeat.o(202243);
-      return 30;
-    }
-    if (MMApplicationContext.isAppBrandProcess())
-    {
-      AppMethodBeat.o(202243);
-      return 31;
-    }
-    if ((MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsIsolatedProcess()))
-    {
-      AppMethodBeat.o(202243);
-      return 32;
-    }
-    AppMethodBeat.o(202243);
-    return -1;
-  }
-  
-  private void i(b paramb)
-  {
-    AppMethodBeat.i(202153);
-    long l = System.currentTimeMillis();
-    Iterator localIterator = this.wBe.getRunningServices(2147483647).iterator();
-    while (localIterator.hasNext())
-    {
-      ActivityManager.RunningServiceInfo localRunningServiceInfo = (ActivityManager.RunningServiceInfo)localIterator.next();
-      if (localRunningServiceInfo.uid == Process.myUid())
-      {
-        Log.d("MicroMsg.MemoryWatchDog", "foreground %s, stared %s, lastActivityTime %s, activeSince %s, class %s", new Object[] { Boolean.valueOf(localRunningServiceInfo.foreground), Boolean.valueOf(localRunningServiceInfo.started), Long.valueOf(localRunningServiceInfo.lastActivityTime), Long.valueOf(localRunningServiceInfo.activeSince), localRunningServiceInfo.service.getClassName() });
-        if (localRunningServiceInfo.foreground) {
-          paramb.GQW.add(localRunningServiceInfo.service.getClassName());
-        }
-      }
-    }
-    Log.d("MicroMsg.MemoryWatchDog", "getting running service info cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(202153);
-  }
-  
-  /* Error */
-  private void j(b paramb)
-  {
-    // Byte code:
-    //   0: ldc_w 654
-    //   3: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 604	java/lang/System:currentTimeMillis	()J
-    //   9: lstore 11
-    //   11: aload_1
-    //   12: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
-    //   15: invokeinterface 660 1 0
-    //   20: new 662	java/util/HashMap
-    //   23: dup
-    //   24: invokespecial 663	java/util/HashMap:<init>	()V
-    //   27: astore 17
-    //   29: aconst_null
-    //   30: astore 15
-    //   32: new 370	java/io/BufferedReader
-    //   35: dup
-    //   36: new 665	java/io/FileReader
-    //   39: dup
-    //   40: ldc_w 667
-    //   43: invokespecial 668	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   46: invokespecial 378	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   49: astore 16
-    //   51: aload 16
-    //   53: invokevirtual 381	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   56: astore 15
-    //   58: aload 15
-    //   60: ifnull +389 -> 449
-    //   63: aload 15
-    //   65: invokevirtual 576	java/lang/String:trim	()Ljava/lang/String;
-    //   68: astore 18
-    //   70: aload 18
-    //   72: invokevirtual 670	java/lang/String:isEmpty	()Z
-    //   75: ifne -24 -> 51
-    //   78: iconst_1
-    //   79: istore_3
-    //   80: iconst_0
-    //   81: istore_2
-    //   82: iconst_0
-    //   83: istore 4
-    //   85: lconst_0
-    //   86: lstore 7
-    //   88: iconst_0
-    //   89: istore 6
-    //   91: iconst_0
-    //   92: istore 5
-    //   94: iload_2
-    //   95: aload 18
-    //   97: invokevirtual 673	java/lang/String:length	()I
-    //   100: if_icmpge +464 -> 564
-    //   103: iload_3
-    //   104: tableswitch	default:+466 -> 570, 1:+94->198, 2:+113->217, 3:+133->237
-    //   133: iconst_m1
-    //   134: if_icmpgt +22803 -> 22937
-    //   137: iconst_m1
-    //   138: if_acmpeq -18686 -> -18548
-    //   141: if_acmpne +14863 -> 15004
-    //   144: ldc_w 654
-    //   147: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   150: aload 15
-    //   152: athrow
-    //   153: astore 17
-    //   155: aload 16
-    //   157: astore 15
-    //   159: aload 17
-    //   161: astore 16
-    //   163: ldc 177
-    //   165: aload 16
-    //   167: ldc_w 680
-    //   170: iconst_0
-    //   171: anewarray 4	java/lang/Object
-    //   174: invokestatic 684	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   177: aload_1
-    //   178: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
-    //   181: invokeinterface 660 1 0
-    //   186: aload 15
-    //   188: invokestatic 688	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   191: ldc_w 654
-    //   194: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   197: return
-    //   198: aload 18
-    //   200: iload_2
-    //   201: invokevirtual 692	java/lang/String:charAt	(I)C
-    //   204: invokestatic 698	java/lang/Character:isSpaceChar	(C)Z
-    //   207: ifeq +366 -> 573
-    //   210: iload_2
-    //   211: iconst_1
-    //   212: iadd
-    //   213: istore_2
-    //   214: goto -120 -> 94
-    //   217: aload 18
-    //   219: iload_2
-    //   220: invokevirtual 692	java/lang/String:charAt	(I)C
-    //   223: invokestatic 698	java/lang/Character:isSpaceChar	(C)Z
-    //   226: ifeq +355 -> 581
-    //   229: iload_2
-    //   230: istore 6
-    //   232: iconst_3
-    //   233: istore_3
-    //   234: goto -140 -> 94
-    //   237: iload 4
-    //   239: ifne +189 -> 428
-    //   242: aload 18
-    //   244: iload 5
-    //   246: iload 6
-    //   248: invokevirtual 702	java/lang/String:substring	(II)Ljava/lang/String;
-    //   251: invokevirtual 576	java/lang/String:trim	()Ljava/lang/String;
-    //   254: astore 19
-    //   256: aload 19
-    //   258: bipush 45
-    //   260: invokevirtual 706	java/lang/String:indexOf	(I)I
-    //   263: istore_3
-    //   264: iload_3
-    //   265: iflt +299 -> 564
-    //   268: aload 19
-    //   270: iconst_0
-    //   271: iload_3
-    //   272: invokevirtual 702	java/lang/String:substring	(II)Ljava/lang/String;
-    //   275: astore 15
-    //   277: aload 19
-    //   279: iload_3
-    //   280: iconst_1
-    //   281: iadd
-    //   282: invokevirtual 709	java/lang/String:substring	(I)Ljava/lang/String;
-    //   285: astore 19
-    //   287: aload 19
-    //   289: bipush 16
-    //   291: invokestatic 713	java/lang/Long:parseLong	(Ljava/lang/String;I)J
-    //   294: lstore 9
-    //   296: aload 15
-    //   298: bipush 16
-    //   300: invokestatic 713	java/lang/Long:parseLong	(Ljava/lang/String;I)J
-    //   303: lstore 13
-    //   305: lload 9
-    //   307: lload 13
-    //   309: lsub
-    //   310: lstore 7
-    //   312: iload 4
-    //   314: iconst_1
-    //   315: iadd
-    //   316: istore 4
-    //   318: iconst_1
-    //   319: istore_3
-    //   320: goto -226 -> 94
-    //   323: astore 15
-    //   325: aconst_null
-    //   326: astore 15
-    //   328: iload_2
-    //   329: aload 18
-    //   331: invokevirtual 673	java/lang/String:length	()I
-    //   334: if_icmpne +224 -> 558
-    //   337: aload 15
-    //   339: ifnonnull +219 -> 558
-    //   342: ldc_w 591
-    //   345: astore 15
-    //   347: aload 15
-    //   349: ifnull -298 -> 51
-    //   352: lload 7
-    //   354: lconst_0
-    //   355: lcmp
-    //   356: ifle -305 -> 51
-    //   359: aload 17
-    //   361: aload 15
-    //   363: invokeinterface 718 2 0
-    //   368: checkcast 294	java/lang/Long
-    //   371: astore 18
-    //   373: lload 7
-    //   375: lstore 9
-    //   377: aload 18
-    //   379: ifnull +13 -> 392
-    //   382: lload 7
-    //   384: aload 18
-    //   386: invokevirtual 721	java/lang/Long:longValue	()J
-    //   389: ladd
-    //   390: lstore 9
-    //   392: aload 17
-    //   394: aload 15
-    //   396: lload 9
-    //   398: invokestatic 298	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   401: invokeinterface 725 3 0
-    //   406: pop
-    //   407: goto -356 -> 51
-    //   410: astore_1
-    //   411: aload 16
-    //   413: astore 15
-    //   415: aload 15
-    //   417: invokestatic 688	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   420: ldc_w 654
-    //   423: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   426: aload_1
-    //   427: athrow
-    //   428: iload 4
-    //   430: iconst_4
-    //   431: if_icmpne +130 -> 561
-    //   434: aload 18
-    //   436: iload 6
-    //   438: invokevirtual 709	java/lang/String:substring	(I)Ljava/lang/String;
-    //   441: invokevirtual 576	java/lang/String:trim	()Ljava/lang/String;
-    //   444: astore 15
-    //   446: goto -118 -> 328
-    //   449: aload 16
-    //   451: invokestatic 688	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   454: aload_1
-    //   455: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
-    //   458: aload 17
-    //   460: invokeinterface 729 1 0
-    //   465: invokeinterface 733 2 0
-    //   470: pop
-    //   471: aload_1
-    //   472: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
-    //   475: new 18	com/tencent/mm/plugin/performance/watchdogs/c$5
-    //   478: dup
-    //   479: aload_0
-    //   480: invokespecial 734	com/tencent/mm/plugin/performance/watchdogs/c$5:<init>	(Lcom/tencent/mm/plugin/performance/watchdogs/c;)V
-    //   483: invokestatic 740	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   486: aload_1
-    //   487: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
-    //   490: bipush 20
-    //   492: aload_1
-    //   493: getfield 657	com/tencent/mm/plugin/performance/watchdogs/c$b:GRo	Ljava/util/List;
-    //   496: invokeinterface 399 1 0
-    //   501: invokeinterface 744 3 0
-    //   506: invokeinterface 660 1 0
-    //   511: ldc 177
-    //   513: ldc_w 746
-    //   516: iconst_1
-    //   517: anewarray 4	java/lang/Object
-    //   520: dup
-    //   521: iconst_0
-    //   522: invokestatic 604	java/lang/System:currentTimeMillis	()J
-    //   525: lload 11
-    //   527: lsub
-    //   528: invokestatic 298	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   531: aastore
-    //   532: invokestatic 421	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   535: ldc_w 654
-    //   538: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   541: return
-    //   542: astore_1
-    //   543: aconst_null
-    //   544: astore 15
-    //   546: goto -131 -> 415
-    //   549: astore_1
-    //   550: goto -135 -> 415
-    //   553: astore 16
-    //   555: goto -392 -> 163
-    //   558: goto -211 -> 347
-    //   561: goto -249 -> 312
-    //   564: aconst_null
-    //   565: astore 15
-    //   567: goto -239 -> 328
-    //   570: goto -438 -> 132
-    //   573: iload_2
-    //   574: istore 5
-    //   576: iconst_2
-    //   577: istore_3
-    //   578: goto -484 -> 94
-    //   581: iload_2
-    //   582: iconst_1
-    //   583: iadd
-    //   584: istore_2
-    //   585: goto -491 -> 94
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	588	0	this	c
-    //   0	588	1	paramb	b
-    //   81	504	2	i	int
-    //   79	499	3	j	int
-    //   83	349	4	k	int
-    //   92	483	5	m	int
-    //   89	348	6	n	int
-    //   86	297	7	l1	long
-    //   294	103	9	l2	long
-    //   9	517	11	l3	long
-    //   303	5	13	l4	long
-    //   30	267	15	localObject1	Object
-    //   323	1	15	localThrowable1	java.lang.Throwable
-    //   326	240	15	localObject2	Object
-    //   49	401	16	localObject3	Object
-    //   553	1	16	localThrowable2	java.lang.Throwable
-    //   27	1	17	localHashMap	HashMap
-    //   153	306	17	localThrowable3	java.lang.Throwable
-    //   68	367	18	localObject4	Object
-    //   254	34	19	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   51	58	153	java/lang/Throwable
-    //   63	78	153	java/lang/Throwable
-    //   94	103	153	java/lang/Throwable
-    //   132	153	153	java/lang/Throwable
-    //   198	210	153	java/lang/Throwable
-    //   217	229	153	java/lang/Throwable
-    //   242	264	153	java/lang/Throwable
-    //   268	287	153	java/lang/Throwable
-    //   328	337	153	java/lang/Throwable
-    //   359	373	153	java/lang/Throwable
-    //   382	392	153	java/lang/Throwable
-    //   392	407	153	java/lang/Throwable
-    //   434	446	153	java/lang/Throwable
-    //   287	305	323	java/lang/Throwable
-    //   51	58	410	finally
-    //   63	78	410	finally
-    //   94	103	410	finally
-    //   132	153	410	finally
-    //   198	210	410	finally
-    //   217	229	410	finally
-    //   242	264	410	finally
-    //   268	287	410	finally
-    //   287	305	410	finally
-    //   328	337	410	finally
-    //   359	373	410	finally
-    //   382	392	410	finally
-    //   392	407	410	finally
-    //   434	446	410	finally
-    //   32	51	542	finally
-    //   163	186	549	finally
-    //   32	51	553	java/lang/Throwable
-  }
-  
-  private static String processCmd()
-  {
-    AppMethodBeat.i(202255);
-    if (MMApplicationContext.isMainProcess())
-    {
-      AppMethodBeat.o(202255);
-      return "mm";
-    }
-    if (MMApplicationContext.isAppBrandProcess())
-    {
-      AppMethodBeat.o(202255);
-      return "appbrand";
-    }
-    if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
-    {
-      AppMethodBeat.o(202255);
-      return "tools";
-    }
-    AppMethodBeat.o(202255);
-    return "all";
-  }
-  
-  public final b ad(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(202139);
-    long l1 = System.currentTimeMillis();
-    b localb = new b();
-    if (this.fca != null) {
-      localb.fca = this.fca;
-    }
-    localb.source = paramInt;
-    localb.GRf = this.GQB;
-    localb.GRg = this.GQC;
-    long l2;
-    if (paramBoolean)
-    {
-      try
-      {
-        l2 = System.currentTimeMillis();
-        localObject1 = new Debug.MemoryInfo();
-        Debug.getMemoryInfo((Debug.MemoryInfo)localObject1);
-        localb.GRk = ((Debug.MemoryInfo)localObject1).getTotalPss();
-        if (Build.VERSION.SDK_INT < 23) {
-          break label397;
-        }
-        localb.GQT = ((Debug.MemoryInfo)localObject1).getMemoryStats();
-        localObject1 = this.wBe.getProcessMemoryInfo(new int[] { Process.myPid() });
-        if ((localObject1 != null) && (localObject1.length == 1))
-        {
-          localObject1 = localObject1[0];
-          localb.GRl = ((Debug.MemoryInfo)localObject1).getTotalPss();
-          if (Build.VERSION.SDK_INT < 23) {
-            break label898;
-          }
-          localb.GQT.put("summary.graphics", ((Debug.MemoryInfo)localObject1).getMemoryStat("summary.graphics"));
-          localb.GQU = ((Debug.MemoryInfo)localObject1).getMemoryStats();
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Object localObject1;
-          Log.printErrStackTrace("MicroMsg.MemoryWatchDog", localException, "", new Object[0]);
-          localb.jVo = (System.currentTimeMillis() - l1);
-          if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (localb.jVo > 30L) && (this.GQF))
-          {
-            this.GQD += 1;
-            if (this.GQD > 10)
-            {
-              Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
-              this.GQF = false;
-            }
-          }
-          if (localb.GRj == null)
-          {
-            Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
-            localb.GRj = new ActivityManager.MemoryInfo();
-          }
-          localb.cQt = this.cQt;
-          localb.GQG = this.GQG;
-          if (foy())
-          {
-            if (this.GQE.isEmpty()) {
-              break;
-            }
-            bool = true;
-            localb.GQY = bool;
-          }
-          if ((!foy()) || (localb.GQG)) {
-            break label1646;
-          }
-          localb.GRi = (System.currentTimeMillis() - this.GQK);
-          localb1 = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class);
-          Object localObject4 = b.a.wbU;
-          if ((!BuildInfo.DEBUG) && (!com.tencent.mm.protocal.d.RAG) && (!WeChatEnvironment.hasDebugger())) {
-            break label1676;
-          }
-          bool = true;
-          if (localb1.a((b.a)localObject4, bool))
-          {
-            l1 = System.currentTimeMillis();
-            if (l1 - this.GQQ >= TimeUnit.SECONDS.toMillis(30L)) {
-              break label1682;
-            }
-            Log.i("MicroMsg.MemoryWatchDog", "less than 30 seconds since last publish");
-          }
-          paramInt = 0;
-          if (paramInt != 0) {
-            c(localb, paramBoolean);
-          }
-          AppMethodBeat.o(202139);
-          return localb;
-          localb.GQU = new HashMap();
-          localb.GQU.put("summary.java-heap", String.valueOf(localb1.dalvikPrivateDirty));
-          localb.GQU.put("summary.native-heap", String.valueOf(localb1.nativePrivateDirty));
-          localb.GQU.put("summary.code", "-1");
-          localb.GQU.put("summary.stack", "-1");
-          localb.GQU.put("summary.graphics", "-1");
-          localb.GQU.put("summary.private-other", "-1");
-          localb.GQU.put("summary.system", String.valueOf(localb1.getTotalPss() - localb1.getTotalPrivateClean() - localb1.getTotalPrivateDirty()));
-          localb.GQU.put("summary.total-pss", String.valueOf(localb1.getTotalPss()));
-          localb.GQU.put("summary.total-swap", "-1");
-        }
-      }
-      finally
-      {
-        localb.jVo = (System.currentTimeMillis() - l1);
-        if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (paramBoolean) || (localb.jVo <= 30L) || (!this.GQF)) {
-          break label1178;
-        }
-        this.GQD += 1;
-        if (this.GQD <= 10) {
-          break label1178;
-        }
-        Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
-        this.GQF = false;
-        if (localb.GRj != null) {
-          break label1206;
-        }
-        Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
-        localb.GRj = new ActivityManager.MemoryInfo();
-        AppMethodBeat.o(202139);
-      }
-      Log.d("MicroMsg.MemoryWatchDog", "getting process memory info costs %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-      if (MMApplicationContext.isMainProcess())
-      {
-        l2 = System.currentTimeMillis();
-        localObject1 = fov();
-        localObject4 = this.wBe.getProcessMemoryInfo(a((b[])localObject1));
-        if (localObject4 == null) {
-          break label1549;
-        }
-        Log.d("MicroMsg.MemoryWatchDog", "pidMemInfoArray2 size = %s, memoryInfos size = %s", new Object[] { Integer.valueOf(localObject4.length), Integer.valueOf(localObject1.length) });
-        if ((!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED) && (!WeChatEnvironment.isCoolassistEnv())) {
-          break label2033;
-        }
-        Assert.assertEquals(localObject1.length, localObject4.length);
-        break label2033;
-      }
-    }
-    for (;;)
-    {
-      if (i < Math.min(localObject4.length, localObject1.length))
-      {
-        Log.d("MicroMsg.MemoryWatchDog", "total pss = %d", new Object[] { Integer.valueOf(localObject4[i].getTotalPss()) });
-        localObject1[i].GRk = localObject4[i].getTotalPss();
-        j += localObject1[i].GRk;
-        i += 1;
-        continue;
-        label397:
-        localb.GQT = new HashMap();
-        localb.GQT.put("summary.java-heap", String.valueOf(((Debug.MemoryInfo)localObject1).dalvikPrivateDirty));
-        localb.GQT.put("summary.native-heap", String.valueOf(((Debug.MemoryInfo)localObject1).nativePrivateDirty));
-        localb.GQT.put("summary.code", "-1");
-        localb.GQT.put("summary.stack", "-1");
-        localb.GQT.put("summary.graphics", "-1");
-        localb.GQT.put("summary.private-other", "-1");
-        localb.GQT.put("summary.system", String.valueOf(((Debug.MemoryInfo)localObject1).getTotalPss() - ((Debug.MemoryInfo)localObject1).getTotalPrivateClean() - ((Debug.MemoryInfo)localObject1).getTotalPrivateDirty()));
-        localb.GQT.put("summary.total-pss", String.valueOf(((Debug.MemoryInfo)localObject1).getTotalPss()));
-        localb.GQT.put("summary.total-swap", "-1");
-        break;
-      }
-      label878:
-      label1274:
-      double d;
-      label898:
-      label1178:
-      label1206:
-      label1229:
-      Object localObject3;
-      label1549:
-      label1682:
-      for (;;)
-      {
-        com.tencent.mm.plugin.expt.b.b localb1;
-        localb.GRm = j;
-        localb.GRn = localObject2;
-        Log.d("MicroMsg.MemoryWatchDog", "getting process memory info costs %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-        i(localb);
-        if (this.GQO == null)
-        {
-          Log.e("MicroMsg.MemoryWatchDog", "mAppbrandExtraMemoryInfo == null");
-          if ((!BuildInfo.IS_ARM64) && (paramInt == 4) && (com.tencent.mm.protocal.d.RAG)) {
-            if (!com.tencent.mm.plugin.performance.c.fnj()) {
-              break label1633;
-            }
-          }
-        }
-        label1633:
-        for (d = 2700000.0D;; d = 3400000.0D)
-        {
-          l2 = d;
-          if (localb.GQV > l2) {
-            j(localb);
-          }
-          localObject3 = Pattern.compile("\\d+").matcher(getVmSize());
-          if (((Matcher)localObject3).find()) {
-            localb.GQV = Util.safeParseInt(((Matcher)localObject3).group());
-          }
-          localb.GQZ = Debug.getNativeHeapSize();
-          localb.GRa = Debug.getNativeHeapAllocatedSize();
-          localb.GRb = Debug.getNativeHeapFreeSize();
-          localb.GRc = Runtime.getRuntime().totalMemory();
-          localb.GRd = Runtime.getRuntime().freeMemory();
-          localb.GRe = Runtime.getRuntime().maxMemory();
-          localObject3 = new ActivityManager.MemoryInfo();
-          this.wBe.getMemoryInfo((ActivityManager.MemoryInfo)localObject3);
-          localb.GRj = ((ActivityManager.MemoryInfo)localObject3);
-          localb.jVo = (System.currentTimeMillis() - l1);
-          if ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!paramBoolean) && (localb.jVo > 30L) && (this.GQF))
-          {
-            this.GQD += 1;
-            if (this.GQD > 10)
-            {
-              Log.w("MicroMsg.MemoryWatchDog", "adjust for printing async!");
-              this.GQF = false;
-            }
-          }
-          if (localb.GRj != null) {
-            break;
-          }
-          Log.e("MicroMsg.MemoryWatchDog", "Something wrong when dumping memory");
-          localb.GRj = new ActivityManager.MemoryInfo();
-          break;
-          Log.e("MicroMsg.MemoryWatchDog", "pidMemInfoArray2 == null");
-          break label1229;
-          localb.extra = this.GQO.chx();
-          localb.GRp = this.GQO.chy();
-          localb.GRq = this.GQO.chz();
-          localb.GRr = this.GQO.chA();
-          localb.GRs = this.GQO.chB();
-          break label1274;
-        }
-        boolean bool = false;
-        continue;
-        label1646:
-        if ((!foy()) && (!localb.cQt))
-        {
-          localb.GRi = (System.currentTimeMillis() - this.GQJ);
-          continue;
-          bool = false;
-          continue;
-          if (l1 - this.GQQ > TimeUnit.MINUTES.toMinutes(30L))
-          {
-            Log.i("MicroMsg.MemoryWatchDog", "has not published for more than 30 minutes. reset publish times limit");
-            this.GQP = 0;
-          }
-          if (this.GQP <= 5) {
-            break;
-          }
-          Log.i("MicroMsg.MemoryWatchDog", "has published more than 5 times, ignore in 30 minutes");
-        }
-      }
-      label1676:
-      if ((!BuildInfo.IS_ARM64) && (com.tencent.mm.plugin.performance.c.fnj()))
-      {
-        paramInt = 1;
-        label1748:
-        localObject3 = new ArrayList();
-        ((ArrayList)localObject3).add(new IDKey(1660, 0, 1));
-        if (BuildInfo.IS_ARM64) {
-          break label1868;
-        }
-        if (paramInt == 0) {
-          break label1856;
-        }
-        d = 2700000.0D;
-        label1789:
-        l1 = d;
-        if (localb.GQV <= l1) {
-          break label1868;
-        }
-        Log.i("MicroMsg.MemoryWatchDog", "shouldPublish: vmsize");
-        if (paramInt == 0) {
-          break label1863;
-        }
-      }
-      label1856:
-      label1863:
-      for (paramInt = 1;; paramInt = 4)
-      {
-        ((ArrayList)localObject3).add(new IDKey(1660, paramInt, 1));
-        com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject3, false);
-        paramInt = 1;
-        break;
-        paramInt = 0;
-        break label1748;
-        d = 3700000.0D;
-        break label1789;
-      }
-      label1868:
-      if (paramInt != 0)
-      {
-        l1 = 367001600L;
-        label1877:
-        if (localb.GRc - localb.GRd <= l1) {
-          break label1953;
-        }
-        Log.i("MicroMsg.MemoryWatchDog", "shouldPublish: java heap");
-        if (paramInt == 0) {
-          break label1948;
-        }
-      }
-      label1948:
-      for (paramInt = 2;; paramInt = 5)
-      {
-        ((ArrayList)localObject3).add(new IDKey(1660, paramInt, 1));
-        com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject3, false);
-        paramInt = 1;
-        break;
-        l1 = 471859200L;
-        break label1877;
-      }
-      label1953:
-      if (paramInt != 0)
-      {
-        l1 = 734003200L;
-        label1962:
-        if (localb.GRa <= l1) {
-          break label2025;
-        }
-        Log.i("MicroMsg.MemoryWatchDog", "shouldPublish: native heap");
-        if (paramInt == 0) {
-          break label2027;
-        }
-      }
-      label2025:
-      label2027:
-      for (paramInt = 3;; paramInt = 6)
-      {
-        ((ArrayList)localObject3).add(new IDKey(1660, paramInt, 1));
-        com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject3, false);
-        paramInt = 1;
-        break label878;
-        l1 = 943718400L;
-        break label1962;
-        break;
-      }
-      label2033:
-      int j = 0;
-      int i = 0;
-    }
-  }
-  
-  public final void c(b paramb, boolean paramBoolean)
-  {
-    AppMethodBeat.i(202145);
-    this.GQQ = System.currentTimeMillis();
-    this.GQP += 1;
-    mv localmv = new mv();
-    localmv.fKU.bnA = 1;
-    localmv.fKU.fKV = paramb.GQV;
-    localmv.fKU.fKW = paramb.GQZ;
-    localmv.fKU.fKX = paramb.GRa;
-    localmv.fKU.fKY = (paramb.GRc - paramb.GRd);
-    if (paramBoolean)
-    {
-      localmv.fKU.fKZ = paramb.GRk;
-      localmv.fKU.fLa = Util.getInt((String)paramb.GQT.get("summary.graphics"), 0);
-      localmv.fKU.fLb = Util.getInt((String)paramb.GQT.get("summary.native-heap"), 0);
-      localmv.fKU.fLc = paramb.GRm;
-    }
-    EventCenter.instance.publish(localmv);
-    AppMethodBeat.o(202145);
-  }
-  
-  public final void cN(boolean paramBoolean)
-  {
-    AppMethodBeat.i(202219);
-    Log.d("MicroMsg.MemoryWatchDog", "isAppForeground: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.cQt = paramBoolean;
-    if (!paramBoolean)
-    {
-      this.GQJ = System.currentTimeMillis();
-      AppMethodBeat.o(202219);
-      return;
-    }
-    long l = System.currentTimeMillis();
-    if (l - this.GQL > 300000L)
-    {
-      Log.i("MicroMsg.MemoryWatchDog", "onAppForeground: forward check");
-      this.GQL = l;
-      com.tencent.e.h.ZvG.bDh("MicroMsg.MemoryWatchDog");
-      com.tencent.e.h.ZvG.a(this, 300000L, "MicroMsg.MemoryWatchDog");
-    }
-    AppMethodBeat.o(202219);
-  }
-  
-  public final b fow()
-  {
-    AppMethodBeat.i(293064);
-    b localb = ad(true, 0);
-    AppMethodBeat.o(293064);
-    return localb;
-  }
-  
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    AppMethodBeat.i(202259);
-    if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()))
-    {
-      paramActivity = paramActivity.toString() + ":" + paramActivity.hashCode();
-      this.GQE.add(paramActivity);
-      Log.i("MicroMsg.MemoryWatchDog", "onActivityCreated: %s, mActivities.size = %s", new Object[] { paramActivity, Integer.valueOf(this.GQE.size()) });
-    }
-    AppMethodBeat.o(202259);
-  }
-  
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    AppMethodBeat.i(202267);
-    if ((MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isToolsProcess()))
-    {
-      paramActivity = paramActivity.toString() + ":" + paramActivity.hashCode();
-      this.GQE.remove(paramActivity);
-      Log.i("MicroMsg.MemoryWatchDog", "onActivityDestroyed: %s, mActivities.size = %s", new Object[] { paramActivity, Integer.valueOf(this.GQE.size()) });
-    }
-    AppMethodBeat.o(202267);
-  }
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity)
-  {
-    AppMethodBeat.i(202222);
-    this.fca = paramActivity.getClass().getSimpleName();
-    if (fox()) {
-      abd(1);
-    }
-    AppMethodBeat.o(202222);
-  }
-  
-  public final void onActivityStopped(Activity paramActivity)
-  {
-    AppMethodBeat.i(202223);
-    if (fox()) {
-      abd(2);
-    }
-    AppMethodBeat.o(202223);
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(202240);
-    vU(false);
-    this.GQL = System.currentTimeMillis();
-    i locali = com.tencent.e.h.ZvG;
-    if (this.cQt) {}
-    for (long l = 300000L;; l = 1800000L)
-    {
-      locali.a(this, l, "MicroMsg.MemoryWatchDog");
-      AppMethodBeat.o(202240);
-      return;
-    }
-  }
-  
-  public final void vU(boolean paramBoolean)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(202230);
-    b localb = ad(true, 3);
-    new StringBuilder("[AutoCheck] ").append(localb);
-    Log.i("MicroMsg.MemoryWatchDog", "[AutoCheck] process = %s AppForeground = %s %s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(this.cQt), localb });
-    if (!this.GQE.isEmpty()) {}
-    for (;;)
-    {
-      b.a(localb, bool, paramBoolean);
-      if (foz()) {
-        a(localb, 3);
-      }
-      AppMethodBeat.o(202230);
-      return;
-      bool = false;
-    }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract String chA();
-    
-    public abstract String chB();
-    
-    public abstract String chx();
-    
-    public abstract String chy();
-    
-    public abstract String chz();
-  }
-  
-  public static final class b
-  {
-    public boolean GQG;
-    public Map<String, String> GQT;
-    public Map<String, String> GQU;
-    public int GQV;
-    public List<String> GQW;
-    public boolean GQX;
-    public boolean GQY;
-    public long GQZ;
-    public long GRa;
-    public long GRb;
-    public long GRc;
-    public long GRd;
-    public long GRe;
-    public long GRf;
-    public long GRg;
-    public long GRh;
-    public long GRi;
-    public ActivityManager.MemoryInfo GRj;
-    public int GRk;
-    public int GRl;
-    public int GRm;
-    public b[] GRn;
-    public List<Map.Entry<String, Long>> GRo;
-    public String GRp;
-    public String GRq;
-    public String GRr;
-    public String GRs;
-    public boolean cQt;
-    public String extra;
-    public String fca;
-    public long jVo;
-    public int pid;
-    public String processName;
-    public int source;
-    
-    public b()
-    {
-      AppMethodBeat.i(201358);
-      this.processName = "current";
-      this.source = 0;
-      this.fca = "default";
-      this.GQW = new ArrayList();
-      this.GQX = c.foy();
-      this.GRh = Thread.currentThread().getId();
-      this.GRi = -1L;
-      this.GRn = new b[0];
-      this.GRo = new ArrayList();
-      AppMethodBeat.o(201358);
+      AppMethodBeat.o(300995);
+      return localArrayList;
     }
     
-    private static String ay(Map<String, String> paramMap)
+    static boolean afv(int paramInt)
     {
-      AppMethodBeat.i(201368);
-      if (paramMap == null)
-      {
-        AppMethodBeat.o(201368);
-        return "null";
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        if ((!((String)localEntry.getKey()).equals("java-heap")) && (!((String)localEntry.getKey()).equals("native-heap"))) {
-          localStringBuilder.append(((String)localEntry.getKey()).replaceFirst("summary.", "")).append("=").append((String)localEntry.getValue()).append(", ");
-        }
-      }
-      localStringBuilder.delete(localStringBuilder.length() - 2, localStringBuilder.length());
-      paramMap = localStringBuilder.toString();
-      AppMethodBeat.o(201368);
-      return paramMap;
+      return ((MNH ^ 0xFFFFFFFF) & paramInt) != 0;
     }
     
-    public final String foA()
+    static final class a
     {
-      AppMethodBeat.i(201360);
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (!this.GRo.isEmpty())
-      {
-        localStringBuilder.append("| Top 20 mapped memory region sizes:\n");
-        Iterator localIterator = this.GRo.iterator();
-        if (localIterator.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (TextUtils.isEmpty((CharSequence)localEntry.getKey())) {}
-          for (str = "!no-name!";; str = "'" + (String)localEntry.getKey() + "'")
-          {
-            localStringBuilder.append("|   name: ").append(str).append(", size: ").append(localEntry.getValue()).append(" bytes\n");
-            break;
-          }
-        }
-      }
-      String str = localStringBuilder.toString();
-      AppMethodBeat.o(201360);
-      return str;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(201362);
-      StringBuilder localStringBuilder1 = new StringBuilder(" \n");
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(String.format(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> MemoryInfo(tid=%s) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", new Object[] { Long.valueOf(this.GRh) })).append("\n| Activity:\t").append(this.fca).append("\tAppForeground:").append(this.cQt).append("\tProcessForeground:").append(this.GQG);
-      if (c.foy())
-      {
-        localObject = "\thasActivity:";
-        localStringBuilder2 = localStringBuilder2.append((String)localObject);
-        if (!c.foy()) {
-          break label486;
-        }
-      }
-      label486:
-      for (Object localObject = Boolean.valueOf(this.GQY);; localObject = "")
-      {
-        localStringBuilder2.append(localObject).append("\n| Source:\t ").append(this.source).append("\n| VmSize:\t ").append(this.GQV).append("kB\n| SystemMemoryInfo:\t totalMem=").append(this.GRj.totalMem).append(", availMem=").append(this.GRj.availMem).append(", lowMemory=").append(this.GRj.lowMemory).append(", threshold=").append(this.GRj.threshold).append("\n| Dalvik:\t memClass=").append(this.GRf).append(", memLargeClass=").append(this.GRg).append(" B, TalMemory=").append(this.GRc).append(" B, FreeMemory=").append(this.GRd).append(" B, MaxMemory=").append(this.GRe).append(" B\n| NATIVE:\t HeapSize=").append(this.GQZ).append(" B, AllocatedSize=").append(this.GRa).append(" B, FreeSize=").append(this.GRb).append(" B\n| Stats:\t pss-sum:").append(this.GRm).append(" KB, ").append(ay(this.GQT)).append("\n| AMSStats:\t ").append(ay(this.GQU)).append("\n| FgService:\t").append(Arrays.toString(this.GQW.toArray())).append("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END(cost:").append(this.jVo).append("ms) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-        if (this.GRn == null) {
-          break label492;
-        }
-        localObject = this.GRn;
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          localStringBuilder2 = localObject[i];
-          localStringBuilder1.append("| Process: ").append(localStringBuilder2.processName).append(", pid: ").append(localStringBuilder2.pid).append(", totalPss: ").append(localStringBuilder2.GRk).append("\n");
-          i += 1;
-        }
-        localObject = "";
-        break;
-      }
-      label492:
-      localObject = localStringBuilder1.toString();
-      AppMethodBeat.o(201362);
-      return localObject;
+      static int MNR = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.watchdogs.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.k.f.c;
-import com.tencent.luggage.sdk.h.a;
+import android.graphics.Bitmap;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.SyncTask;
 
-public final class av
-  extends c<v>
+public class av<S extends y>
+  extends c<S>
 {
-  public static final int CTRL_INDEX = 501;
-  public static final String NAME = "chooseInvoice";
-  final int oux;
+  public static final int CTRL_INDEX = 250;
+  public static final String NAME = "captureScreen";
   
-  public av()
+  public Bitmap j(final S paramS)
   {
-    AppMethodBeat.i(174751);
-    this.oux = a.aI(this);
-    AppMethodBeat.o(174751);
+    AppMethodBeat.i(139839);
+    paramS = paramS.getCurrentPageView();
+    if (paramS == null)
+    {
+      AppMethodBeat.o(139839);
+      return null;
+    }
+    paramS = (Bitmap)new SyncTask()new MMHandler {}.exec(new MMHandler(Looper.getMainLooper()));
+    AppMethodBeat.o(139839);
+    return paramS;
   }
 }
 

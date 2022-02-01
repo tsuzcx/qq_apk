@@ -1,11 +1,13 @@
 package com.tencent.thumbplayer.a.a;
 
+import android.content.res.AssetFileDescriptor;
 import android.os.ParcelFileDescriptor;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode;
+import com.tencent.thumbplayer.api.TPCommonEnum.TPSurfaceType;
 import com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
@@ -16,7 +18,7 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract void L(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
+  public abstract void N(String paramString, @TPCommonEnum.TPSwitchDefMode int paramInt, long paramLong);
   
   public abstract void a(c.a parama);
   
@@ -68,7 +70,7 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
-  public abstract void h(String paramString1, String paramString2, List<TPOptionalParam> paramList);
+  public abstract void j(String paramString1, String paramString2, List<TPOptionalParam> paramList);
   
   public abstract void pause();
   
@@ -92,6 +94,8 @@ public abstract interface b
   
   public abstract void setAudioNormalizeVolumeParams(String paramString);
   
+  public abstract void setDataSource(AssetFileDescriptor paramAssetFileDescriptor);
+  
   public abstract void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor);
   
   public abstract void setDataSource(ITPMediaAsset paramITPMediaAsset);
@@ -104,11 +108,13 @@ public abstract interface b
   
   public abstract void setOutputMute(boolean paramBoolean);
   
+  public abstract void setPlaySharpenSwitch();
+  
   public abstract void setPlaySpeedRatio(float paramFloat);
   
   public abstract void setPlayerOptionalParam(TPOptionalParam paramTPOptionalParam);
   
-  public abstract void setSurface(Surface paramSurface);
+  public abstract void setSurface(Surface paramSurface, @TPCommonEnum.TPSurfaceType int paramInt);
   
   public abstract void setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
   
@@ -120,7 +126,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.b
  * JD-Core Version:    0.7.0.1
  */

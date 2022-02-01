@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.wallet_core.model.w;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,43 +10,39 @@ import org.json.JSONObject;
 public final class q
   extends m
 {
-  public q(String paramString1, String paramString2)
+  public q(w paramw)
   {
-    AppMethodBeat.i(69570);
+    AppMethodBeat.i(69572);
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("resetpwd_token", paramString2);
-    localHashMap1.put("passwd", paramString1);
+    localHashMap1.put("verify_code", paramw.VJo);
+    localHashMap1.put("token", paramw.token);
+    setPayInfo(paramw.Nxi, localHashMap1, localHashMap2);
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
-    AppMethodBeat.o(69570);
+    AppMethodBeat.o(69572);
   }
   
   public final int getFuncId()
   {
-    return 1371;
+    return 470;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 1371;
+    return 11;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/resetpwdbytoken";
+    return "/cgi-bin/mmpay-bin/tenpay/resetpwdverify";
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(69571);
-    Log.d("MicroMsg.NetSceneTenpayResetPwdByToken", " json %s", new Object[] { paramJSONObject.toString() });
-    AppMethodBeat.o(69571);
-  }
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.q
  * JD-Core Version:    0.7.0.1
  */

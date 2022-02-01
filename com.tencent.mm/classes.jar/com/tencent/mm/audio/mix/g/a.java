@@ -5,19 +5,19 @@ import com.tencent.mm.al.b;
 public final class a
   implements c
 {
-  private b fnS;
+  private b hsd;
   
   public a(b paramb)
   {
-    this.fnS = paramb;
+    this.hsd = paramb;
   }
   
-  public final b aeD()
+  public final b aGB()
   {
-    return this.fnS;
+    return this.hsd;
   }
   
-  public final String aeE()
+  public final String aGC()
   {
     return null;
   }
@@ -38,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.audio.mix.g.a
  * JD-Core Version:    0.7.0.1
  */

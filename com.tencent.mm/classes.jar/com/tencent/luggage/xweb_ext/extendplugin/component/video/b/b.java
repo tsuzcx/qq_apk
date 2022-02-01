@@ -2,45 +2,46 @@ package com.tencent.luggage.xweb_ext.extendplugin.component.video.b;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.g.b;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.c.j.b;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
 
 public abstract interface b
 {
-  public abstract f Uj();
+  public abstract com.tencent.mm.plugin.appbrand.jsapi.al.e.b a(a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
   
-  public abstract e Uk();
-  
-  public abstract c Ul();
-  
-  public abstract d Um();
-  
-  public abstract a Un();
-  
-  public abstract com.tencent.mm.plugin.appbrand.jsapi.ai.e.b a(a parama, com.tencent.luggage.xweb_ext.extendplugin.a parama1);
-  
-  public abstract com.tencent.mm.plugin.appbrand.jsapi.video.e.e a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Handler paramHandler);
+  public abstract g a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Handler paramHandler);
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Bitmap paramBitmap);
   
-  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame);
+  public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.a parama, g paramg);
   
-  public abstract void a(g.b paramb);
+  public abstract void a(j.b paramb);
   
-  public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame, int paramInt1, int paramInt2, String paramString);
+  public abstract void a(g paramg);
   
-  public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame, long paramLong);
+  public abstract void a(g paramg, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame, String paramString);
+  public abstract void a(g paramg, long paramLong);
+  
+  public abstract void a(g paramg, String paramString);
+  
+  public abstract f auM();
+  
+  public abstract e auN();
+  
+  public abstract c auO();
+  
+  public abstract d auP();
+  
+  public abstract a auQ();
   
   public abstract String b(com.tencent.luggage.xweb_ext.extendplugin.a parama, String paramString);
   
-  public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.a parama, com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame);
+  public abstract void b(com.tencent.luggage.xweb_ext.extendplugin.a parama, g paramg);
   
-  public abstract void c(com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame);
+  public abstract void b(g paramg);
   
-  public abstract void d(com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame);
-  
-  public abstract void e(com.tencent.mm.plugin.appbrand.jsapi.video.e.e parame);
+  public abstract void c(g paramg);
   
   public abstract boolean j(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
@@ -58,7 +59,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b.b
  * JD-Core Version:    0.7.0.1
  */

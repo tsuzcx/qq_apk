@@ -9,8 +9,8 @@ public class SampleTask1
   extends MainProcessTask
 {
   public static final Parcelable.Creator<SampleTask1> CREATOR;
-  public String orR;
-  public String orS;
+  public String rvN;
+  public String rvO;
   
   static
   {
@@ -22,39 +22,39 @@ public class SampleTask1
   public SampleTask1(Parcel paramParcel)
   {
     AppMethodBeat.i(134859);
-    f(paramParcel);
+    h(paramParcel);
     AppMethodBeat.o(134859);
   }
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(134860);
-    Log.e("SampleTask", this.orR);
-    this.orS = "String from Main Process";
-    bPt();
+    Log.e("SampleTask", this.rvN);
+    this.rvO = "String from Main Process";
+    cpA();
     AppMethodBeat.o(134860);
   }
   
-  public final void bsK()
+  public final void bQr()
   {
     AppMethodBeat.i(134861);
-    Log.e("SampleTask", this.orS);
+    Log.e("SampleTask", this.rvO);
     AppMethodBeat.o(134861);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     AppMethodBeat.i(134862);
-    this.orR = paramParcel.readString();
-    this.orS = paramParcel.readString();
+    this.rvN = paramParcel.readString();
+    this.rvO = paramParcel.readString();
     AppMethodBeat.o(134862);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134863);
-    paramParcel.writeString(this.orR);
-    paramParcel.writeString(this.orS);
+    paramParcel.writeString(this.rvN);
+    paramParcel.writeString(this.rvO);
     AppMethodBeat.o(134863);
   }
 }

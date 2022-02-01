@@ -10,55 +10,55 @@ public abstract class j
   extends b
   implements l
 {
-  private final f aaMN;
+  private final f aiJy;
   
   public j(g paramg, f paramf)
   {
     super(paramg);
-    this.aaMN = paramf;
+    this.aiJy = paramf;
   }
   
   public static String i(l paraml)
   {
     try
     {
-      String str1 = c.abhN.k(paraml) + "[" + paraml.getClass().getSimpleName() + "@" + Integer.toHexString(System.identityHashCode(paraml)) + "]";
+      String str1 = c.ajgB.k(paraml) + "[" + paraml.getClass().getSimpleName() + "@" + Integer.toHexString(System.identityHashCode(paraml)) + "]";
       paraml = str1;
       if (str1 == null)
       {
-        aDG(5);
+        aKu(5);
         paraml = str1;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       String str2;
       do
       {
-        str2 = paraml.getClass().getSimpleName() + " " + paraml.iEU();
+        str2 = paraml.getClass().getSimpleName() + " " + paraml.kok();
         paraml = str2;
       } while (str2 != null);
-      aDG(6);
+      aKu(6);
       return str2;
     }
     return paraml;
   }
   
-  public l iER()
+  public final f kok()
   {
-    if (this == null) {
-      aDG(3);
-    }
-    return this;
-  }
-  
-  public final f iEU()
-  {
-    f localf = this.aaMN;
+    f localf = this.aiJy;
     if (localf == null) {
-      aDG(2);
+      aKu(2);
     }
     return localf;
+  }
+  
+  public l kor()
+  {
+    if (this == null) {
+      aKu(3);
+    }
+    return this;
   }
   
   public String toString()
@@ -68,7 +68,7 @@ public abstract class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.j
  * JD-Core Version:    0.7.0.1
  */

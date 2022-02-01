@@ -1,8 +1,10 @@
 package com.tencent.mm.ui.base.preference;
 
+import android.view.View;
+
 public abstract interface CheckBoxPreference$a
 {
-  public abstract void edU();
+  public abstract void afterOnBind(View paramView);
 }
 
 

@@ -12,7 +12,7 @@ public class ClickableFrameLayout
   extends FrameLayout
 {
   private View.OnClickListener mOnClickListener;
-  private GestureDetector pCU;
+  private GestureDetector mQj;
   
   public ClickableFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,7 +31,7 @@ public class ClickableFrameLayout
   
   public void setGestureDetector(GestureDetector paramGestureDetector)
   {
-    this.pCU = paramGestureDetector;
+    this.mQj = paramGestureDetector;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)

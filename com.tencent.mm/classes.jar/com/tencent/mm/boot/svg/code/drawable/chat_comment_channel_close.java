@@ -1,0 +1,81 @@
+package com.tencent.mm.boot.svg.code.drawable;
+
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.os.Looper;
+import com.tencent.mm.svg.WeChatSVGRenderC2Java;
+import com.tencent.mm.svg.c;
+
+public class chat_comment_channel_close
+  extends c
+{
+  private final int height = 16;
+  private final int width = 16;
+  
+  public int doCommand(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return 0;
+      return 16;
+      return 16;
+      Canvas localCanvas = (Canvas)paramVarArgs[0];
+      paramVarArgs = (Looper)paramVarArgs[1];
+      c.instanceMatrix(paramVarArgs);
+      c.instanceMatrixArray(paramVarArgs);
+      Paint localPaint = c.instancePaint(paramVarArgs);
+      localPaint.setFlags(385);
+      localPaint.setStyle(Paint.Style.FILL);
+      Object localObject = c.instancePaint(paramVarArgs);
+      ((Paint)localObject).setFlags(385);
+      ((Paint)localObject).setStyle(Paint.Style.STROKE);
+      localPaint.setColor(-16777216);
+      ((Paint)localObject).setStrokeWidth(1.0F);
+      ((Paint)localObject).setStrokeCap(Paint.Cap.BUTT);
+      ((Paint)localObject).setStrokeJoin(Paint.Join.MITER);
+      ((Paint)localObject).setStrokeMiter(4.0F);
+      ((Paint)localObject).setPathEffect(null);
+      localCanvas.save();
+      localPaint = c.instancePaint(localPaint, paramVarArgs);
+      localPaint.setColor(-2130706433);
+      localObject = c.instancePath(paramVarArgs);
+      ((Path)localObject).moveTo(8.00004F, 14.6668F);
+      ((Path)localObject).cubicTo(4.31814F, 14.6668F, 1.33337F, 11.6821F, 1.33337F, 8.00016F);
+      ((Path)localObject).cubicTo(1.33337F, 4.31826F, 4.31814F, 1.3335F, 8.00004F, 1.3335F);
+      ((Path)localObject).cubicTo(11.6819F, 1.3335F, 14.6667F, 4.31826F, 14.6667F, 8.00016F);
+      ((Path)localObject).cubicTo(14.6667F, 11.6821F, 11.6819F, 14.6668F, 8.00004F, 14.6668F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(10.0035F, 5.28956F);
+      ((Path)localObject).lineTo(10.7106F, 5.99666F);
+      ((Path)localObject).lineTo(8.707151F, 8.00016F);
+      ((Path)localObject).lineTo(10.7106F, 10.0036F);
+      ((Path)localObject).lineTo(10.0035F, 10.7107F);
+      ((Path)localObject).lineTo(8.00004F, 8.70727F);
+      ((Path)localObject).lineTo(5.9966F, 10.7107F);
+      ((Path)localObject).lineTo(5.2895F, 10.0036F);
+      ((Path)localObject).lineTo(7.29293F, 8.00016F);
+      ((Path)localObject).lineTo(5.28944F, 5.99666F);
+      ((Path)localObject).lineTo(5.99654F, 5.28956F);
+      ((Path)localObject).lineTo(8.00004F, 7.29306F);
+      ((Path)localObject).lineTo(10.0035F, 5.28956F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
+      localCanvas.drawPath((Path)localObject, localPaint);
+      localCanvas.restore();
+      c.done(paramVarArgs);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
+ * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.chat_comment_channel_close
+ * JD-Core Version:    0.7.0.1
+ */

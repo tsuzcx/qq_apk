@@ -12,41 +12,41 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.y;
+import com.tencent.mm.autogen.b.z;
 import com.tencent.mm.game.report.api.a;
 import com.tencent.mm.game.report.g;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.game.g.d;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.plugin.game.g.j;
-import com.tencent.mm.plugin.game.model.ax;
+import com.tencent.mm.plugin.game.h.d;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.h.i;
+import com.tencent.mm.plugin.game.h.j;
+import com.tencent.mm.plugin.game.model.aw;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.pluginsdk.model.app.r;
+import com.tencent.mm.pluginsdk.model.app.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.ui.widget.a.i;
 import java.util.Set;
 
 public final class d
 {
   private static Object lock;
-  int CKU;
-  private h CSG;
-  private u CSH;
-  private q CSI;
-  private t CSJ;
-  DialogInterface.OnClickListener CSK;
-  private int CSL;
-  String CSv;
-  private Dialog dialog;
+  int IFc;
+  String IML;
+  private h IMW;
+  private u IMX;
+  private q IMY;
+  private t IMZ;
+  DialogInterface.OnClickListener INa;
+  private int INb;
   private Context mContext;
-  private MTimerHandler uiU;
+  private Dialog uCz;
+  private MTimerHandler xoX;
   
   static
   {
@@ -58,15 +58,15 @@ public final class d
   public d(Context paramContext)
   {
     AppMethodBeat.i(41873);
-    this.CSG = null;
-    this.CSH = null;
-    this.CSI = null;
-    this.CSJ = null;
-    this.CSK = null;
-    this.CKU = 0;
-    this.CSv = null;
-    this.CSL = 3000;
-    this.uiU = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.IMW = null;
+    this.IMX = null;
+    this.IMY = null;
+    this.IMZ = null;
+    this.INa = null;
+    this.IFc = 0;
+    this.IML = null;
+    this.INb = 3000;
+    this.xoX = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -111,16 +111,16 @@ public final class d
     paramButton.setVisibility(0);
     if (paramc.status == 1)
     {
-      if (paramc.moD)
+      if (paramc.piu)
       {
         paramButton.setEnabled(false);
-        paramButton.setText(g.i.Cos);
+        paramButton.setText(h.i.IaA);
         paramButton.setVisibility(0);
         paramProgressBar.setVisibility(8);
         AppMethodBeat.o(41875);
         return;
       }
-      paramButton.setText(g.i.Cor);
+      paramButton.setText(h.i.Iaz);
       paramButton.setVisibility(0);
       paramProgressBar.setVisibility(8);
       AppMethodBeat.o(41875);
@@ -128,7 +128,7 @@ public final class d
     }
     if (com.tencent.mm.pluginsdk.model.app.h.a(this.mContext, paramc))
     {
-      int i = com.tencent.mm.plugin.game.d.c.aKt(paramc.field_packageName);
+      int i = com.tencent.mm.plugin.game.d.c.aHj(paramc.field_packageName);
       if (paramc.versionCode > i) {
         if (paraml.status == 1)
         {
@@ -143,35 +143,35 @@ public final class d
         AppMethodBeat.o(41875);
         return;
         if (paramc.scene == 12) {
-          paramButton.setText(g.i.CoL);
+          paramButton.setText(h.i.IaT);
         }
         for (;;)
         {
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           break;
-          paramButton.setText(g.i.Cou);
+          paramButton.setText(h.i.IaC);
         }
         paramButton.setVisibility(0);
         paramProgressBar.setVisibility(8);
         if (paramc.scene == 12) {
-          paramButton.setText(g.i.CoJ);
+          paramButton.setText(h.i.IaR);
         } else {
-          paramButton.setText(g.i.Cpg);
+          paramButton.setText(h.i.Ibo);
         }
       }
     }
-    if (paramc.exW())
+    if (paramc.fFS())
     {
       paramButton.setVisibility(0);
       paramProgressBar.setVisibility(8);
       if (paramc.scene == 12)
       {
-        paramButton.setText(g.i.CoJ);
+        paramButton.setText(h.i.IaR);
         AppMethodBeat.o(41875);
         return;
       }
-      paramButton.setText(g.i.Cpg);
+      paramButton.setText(h.i.Ibo);
       AppMethodBeat.o(41875);
       return;
     }
@@ -199,11 +199,11 @@ public final class d
         break;
       case 0: 
         if (paramc.scene == 12) {
-          if (paramc.CIg)
+          if (paramc.ICq)
           {
             paraml = paramc.field_appId;
-            if (!a(e.gv(this.mContext), paraml)) {
-              paramButton.setText(g.i.CoO);
+            if (!a(e.hO(this.mContext), paraml)) {
+              paramButton.setText(h.i.IaW);
             }
           }
         }
@@ -212,13 +212,13 @@ public final class d
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           break;
-          paramButton.setText(g.i.Cpc);
+          paramButton.setText(h.i.Ibk);
           continue;
-          paramButton.setText(g.i.Cpb);
+          paramButton.setText(h.i.Ibj);
         }
       case 1: 
         if (paraml.mode == 3) {
-          paramButton.setText(g.i.Cpe);
+          paramButton.setText(h.i.Ibm);
         }
       case 2: 
       case 3: 
@@ -235,41 +235,41 @@ public final class d
           paramProgressBar.setVisibility(0);
           break;
           if (paramc.scene == 12) {
-            paramButton.setText(g.i.CoN);
+            paramButton.setText(h.i.IaV);
           }
           for (;;)
           {
             paramButton.setVisibility(0);
             paramProgressBar.setVisibility(8);
             break;
-            paramButton.setText(g.i.Cpd);
+            paramButton.setText(h.i.Ibl);
           }
           if (paramc.scene == 12) {
-            paramButton.setText(g.i.Cpa);
+            paramButton.setText(h.i.Ibi);
           } else {
-            paramButton.setText(g.i.CoZ);
+            paramButton.setText(h.i.Ibh);
           }
         }
-        if (paramc.moD)
+        if (paramc.piu)
         {
           paramButton.setEnabled(false);
-          paramButton.setText(g.i.Cos);
+          paramButton.setText(h.i.IaA);
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
         }
         else
         {
-          paramButton.setText(g.i.Cor);
+          paramButton.setText(h.i.Iaz);
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           continue;
-          paramButton.setText(g.i.Coq);
+          paramButton.setText(h.i.Iay);
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           continue;
           if (paraml == null)
           {
-            paramButton.setText(g.i.Cop);
+            paramButton.setText(h.i.Iax);
             paramButton.setVisibility(0);
             paramProgressBar.setVisibility(8);
             AppMethodBeat.o(41875);
@@ -280,7 +280,7 @@ public final class d
           default: 
             break;
           case 0: 
-            paramButton.setText(g.i.Cop);
+            paramButton.setText(h.i.Iax);
           case 1: 
           case 2: 
           case 3: 
@@ -291,7 +291,7 @@ public final class d
               break;
               if (paraml.mode == 3)
               {
-                paramButton.setText(g.i.Cpe);
+                paramButton.setText(h.i.Ibm);
                 break;
               }
               if (paraml.mode != 1) {
@@ -302,22 +302,22 @@ public final class d
               paramProgressBar.setVisibility(0);
               break;
               if (paramc.scene == 12) {
-                paramButton.setText(g.i.CoN);
+                paramButton.setText(h.i.IaV);
               }
               for (;;)
               {
                 paramButton.setVisibility(0);
                 paramProgressBar.setVisibility(8);
                 break;
-                paramButton.setText(g.i.Cpd);
+                paramButton.setText(h.i.Ibl);
               }
               if (paramc.scene == 12) {
-                paramButton.setText(g.i.Cpa);
+                paramButton.setText(h.i.Ibi);
               } else {
-                paramButton.setText(g.i.CoZ);
+                paramButton.setText(h.i.Ibh);
               }
             }
-            paramButton.setText(g.i.Cot);
+            paramButton.setText(h.i.IaB);
             paramButton.setVisibility(0);
             paramProgressBar.setVisibility(8);
           }
@@ -339,15 +339,15 @@ public final class d
     Object localObject1 = new View(this.mContext);
     ((View)localObject1).setTag(paramc);
     Log.i("MicroMsg.GameActionBtnHandler", "App Status: %d, Download Mode: %d, Download Status: %d", new Object[] { Integer.valueOf(paramc.status), Integer.valueOf(paraml.mode), Integer.valueOf(paraml.status) });
-    if ((com.tencent.mm.pluginsdk.model.app.h.u(this.mContext, paramc.field_appId)) || (paramc.exW())) {
+    if ((com.tencent.mm.pluginsdk.model.app.h.y(this.mContext, paramc.field_appId)) || (paramc.fFS())) {
       paraml.mode = 1;
     }
     int i;
     if (paraml.mode == 3)
     {
-      ax.ezg();
-      i = ax.j(this.mContext, "com.tencent.android.qqdownloader", paramc.hrS);
-      Log.i("MicroMsg.GameActionBtnHandler", "qqdownloader install status:[%d], yybSupportedVersionCode:[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramc.hrS) });
+      aw.fHc();
+      i = aw.l(this.mContext, "com.tencent.android.qqdownloader", paramc.jOF);
+      Log.i("MicroMsg.GameActionBtnHandler", "qqdownloader install status:[%d], yybSupportedVersionCode:[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramc.jOF) });
       if ((i == -1) || (i == 1) || (i == 2)) {
         paraml.mode = 1;
       }
@@ -363,88 +363,88 @@ public final class d
       {
       default: 
         Log.d("MicroMsg.GameActionBtnHandler", "summertoken downloadInfo.mode[%d]", new Object[] { Integer.valueOf(paraml.mode) });
-        if (this.CSG == null) {
-          this.CSG = new h(this.mContext);
+        if (this.IMW == null) {
+          this.IMW = new h(this.mContext);
         }
-        this.CSG.setSourceScene(this.CKU);
-        this.CSG.hX(this.CSv, "");
-        this.CSG.onClick((View)localObject1);
+        this.IMW.setSourceScene(this.IFc);
+        this.IMW.je(this.IML, "");
+        this.IMW.onClick((View)localObject1);
       }
-      while (paramc.CIg)
+      while (paramc.ICq)
       {
-        localObject1 = e.gv(this.mContext);
+        localObject1 = e.hO(this.mContext);
         if (!a((Set)localObject1, paramc.field_appId))
         {
           if (paraml.mode != 3)
           {
-            paraml = LayoutInflater.from(this.mContext).inflate(g.f.Cnr, null);
-            ((LinearLayout)paraml.findViewById(g.e.mm_alert_msg_area)).setGravity(17);
-            localObject2 = (ImageView)paraml.findViewById(g.e.mm_alert_msg_icon);
-            localObject3 = (TextView)paraml.findViewById(g.e.mm_alert_msg);
-            TextView localTextView = (TextView)paraml.findViewById(g.e.mm_alert_msg_subdesc);
-            ((ImageView)localObject2).setBackgroundResource(g.d.Chd);
-            ((TextView)localObject3).setText(g.i.CoU);
-            localTextView.setText(g.i.CoT);
-            this.dialog = new i(this.mContext, g.j.Cqh);
-            this.dialog.setContentView(paraml);
-            this.dialog.setCancelable(true);
-            this.dialog.setCanceledOnTouchOutside(true);
-            this.dialog.show();
-            this.uiU.startTimer(this.CSL);
+            paraml = LayoutInflater.from(this.mContext).inflate(h.f.HZz, null);
+            ((LinearLayout)paraml.findViewById(h.e.mm_alert_msg_area)).setGravity(17);
+            localObject2 = (ImageView)paraml.findViewById(h.e.mm_alert_msg_icon);
+            localObject3 = (TextView)paraml.findViewById(h.e.mm_alert_msg);
+            TextView localTextView = (TextView)paraml.findViewById(h.e.mm_alert_msg_subdesc);
+            ((ImageView)localObject2).setBackgroundResource(h.d.HTm);
+            ((TextView)localObject3).setText(h.i.Ibc);
+            localTextView.setText(h.i.Ibb);
+            this.uCz = new i(this.mContext, h.j.Icq);
+            this.uCz.setContentView(paraml);
+            this.uCz.setCancelable(true);
+            this.uCz.setCanceledOnTouchOutside(true);
+            this.uCz.show();
+            this.xoX.startTimer(this.INb);
           }
-          a.jTp.c(paramc.field_appId, 1, 0, null, null);
+          a.mtH.c(paramc.field_appId, 1, 0, null, null);
           ((Set)localObject1).add(paramc.field_appId);
           e.a(this.mContext, (Set)localObject1);
         }
         AppMethodBeat.o(41874);
         return;
-        Object localObject2 = f.cPZ().asZ(paramc.field_appId);
+        Object localObject2 = f.duv().amO(paramc.field_appId);
         if ((localObject2 != null) && (((FileDownloadTaskInfo)localObject2).id > 0L)) {
-          f.cPZ().Iw(((FileDownloadTaskInfo)localObject2).id);
+          f.duv().kR(((FileDownloadTaskInfo)localObject2).id);
         }
-        if (this.CSH == null) {
-          this.CSH = new u(this.mContext);
+        if (this.IMX == null) {
+          this.IMX = new u(this.mContext);
         }
-        localObject2 = this.CSH;
-        i = this.CKU;
-        Object localObject3 = this.CSv;
-        ((u)localObject2).CKU = i;
-        ((u)localObject2).CSv = ((String)localObject3);
-        this.CSH.onClick((View)localObject1);
+        localObject2 = this.IMX;
+        i = this.IFc;
+        Object localObject3 = this.IML;
+        ((u)localObject2).IFc = i;
+        ((u)localObject2).IML = ((String)localObject3);
+        this.IMX.onClick((View)localObject1);
         continue;
-        if (!Util.isNullOrNil(paramc.hrJ))
+        if (!Util.isNullOrNil(paramc.jOw))
         {
           Log.i("MicroMsg.GameActionBtnHandler", "gp download url is not null and download flag is download directly by gp store");
-          r.cw(this.mContext, paramc.hrJ);
-          g.a(this.mContext, paramc.scene, paramc.fSl, paramc.position, 25, paramc.field_appId, this.CKU, paramc.fwt, this.CSv);
+          v.cH(this.mContext, paramc.jOw);
+          g.a(this.mContext, paramc.scene, paramc.hYi, paramc.position, 25, paramc.field_appId, this.IFc, paramc.hAR, this.IML);
         }
       }
-      if (this.CSJ == null)
+      if (this.IMZ == null)
       {
-        this.CSJ = new t(this.mContext);
-        this.CSJ.DaT = this.CSK;
+        this.IMZ = new t(this.mContext);
+        this.IMZ.IVh = this.INa;
       }
-      this.CSJ.CKU = this.CKU;
-      this.CSJ.onClick((View)localObject1);
-      g.a(this.mContext, paramc.scene, paramc.fSl, paramc.position, 9, paramc.field_appId, this.CKU, paramc.fwt, this.CSv);
+      this.IMZ.IFc = this.IFc;
+      this.IMZ.onClick((View)localObject1);
+      g.a(this.mContext, paramc.scene, paramc.hYi, paramc.position, 9, paramc.field_appId, this.IFc, paramc.hAR, this.IML);
       AppMethodBeat.o(41874);
       return;
-      paraml = f.cPZ().asZ(paramc.field_appId);
+      paraml = f.duv().amO(paramc.field_appId);
       if ((paraml != null) && (paraml.id > 0L)) {
-        f.cPZ().Iw(paraml.id);
+        f.duv().kR(paraml.id);
       }
-      if (this.CSI == null) {
-        this.CSI = new q(this.mContext);
+      if (this.IMY == null) {
+        this.IMY = new q(this.mContext);
       }
-      this.CSI.jaR = this.CKU;
-      this.CSI.CZK = paramc.hrN;
-      this.CSI.onClick((View)localObject1);
+      this.IMY.lCR = this.IFc;
+      this.IMY.IUa = paramc.jOA;
+      this.IMY.onClick((View)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.d
  * JD-Core Version:    0.7.0.1
  */

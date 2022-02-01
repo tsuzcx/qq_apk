@@ -1,6 +1,5 @@
 package com.tencent.mars.ilink.comm;
 
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -91,45 +90,46 @@ public class NetworkSignalUtil
   private static void updateWiFiInfo()
   {
     Log.d("MicroMsg.NetworkSignalUtil", "update wifiinfo!");
-    Object localObject1 = (ConnectivityManager)context.getSystemService("connectivity");
-    if (((ConnectivityManager)localObject1).getActiveNetworkInfo() == null) {
-      curwifiinfo.reset();
-    }
-    for (;;)
+    Object localObject1 = ((ConnectivityManager)context.getSystemService("connectivity")).getActiveNetworkInfo();
+    if (localObject1 == null)
     {
+      curwifiinfo.reset();
       return;
-      if (((ConnectivityManager)localObject1).getActiveNetworkInfo().getType() != 1)
+    }
+    if (((NetworkInfo)localObject1).getType() != 1)
+    {
+      curwifiinfo.reset();
+      return;
+    }
+    localObject1 = (WifiManager)context.getSystemService("wifi");
+    if (localObject1 == null)
+    {
+      curwifiinfo.reset();
+      return;
+    }
+    if ((Build.VERSION.SDK_INT >= 29) && (context.checkCallingOrSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    {
+      Log.e("MicroMsg.NetworkSignalUtil", "access_fine_location perm not granted.");
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 27) {
+      try
       {
-        curwifiinfo.reset();
-        return;
-      }
-      localObject1 = (WifiManager)context.getSystemService("wifi");
-      if (localObject1 == null)
-      {
-        curwifiinfo.reset();
-        return;
-      }
-      if ((Build.VERSION.SDK_INT >= 29) && (context.checkCallingOrSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
-      {
-        Log.e("MicroMsg.NetworkSignalUtil", "access_fine_location perm not granted.");
-        return;
-      }
-      if (Build.VERSION.SDK_INT >= 27) {
-        try
+        if ((context.checkCallingOrSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) || (context.checkCallingOrSelfPermission("android.permission.ACCESS_COARSE_LOCATION") == 0))
         {
-          if ((context.checkCallingOrSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) || (context.checkCallingOrSelfPermission("android.permission.ACCESS_COARSE_LOCATION") == 0))
-          {
-            WifiInfo localWifiInfo2 = (WifiInfo)a.a(localObject1, "com/tencent/mars/ilink/comm/NetworkSignalUtil", "updateWiFiInfo", "()V", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
-            curwifiinfo.fill(localWifiInfo2.getRssi(), localWifiInfo2.getBSSID(), localWifiInfo2.getSSID(), localWifiInfo2.getNetworkId(), localWifiInfo2.getIpAddress());
-            return;
-          }
+          WifiInfo localWifiInfo2 = (WifiInfo)a.a(localObject1, "com/tencent/mars/ilink/comm/NetworkSignalUtil", "updateWiFiInfo", "()V", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
+          curwifiinfo.fill(localWifiInfo2.getRssi(), localWifiInfo2.getBSSID(), localWifiInfo2.getSSID(), localWifiInfo2.getNetworkId(), localWifiInfo2.getIpAddress());
+          return;
         }
-        catch (Throwable localThrowable2)
+      }
+      finally
+      {
+        for (;;)
         {
           Log.printErrStackTrace("MicroMsg.NetworkSignalUtil", localThrowable2, "get wifi info failed directly", new Object[0]);
           try
           {
-            Object localObject2 = ((WifiManager)localObject1).getConfiguredNetworks();
+            Object localObject2 = (List)a.a(localObject1, "com/tencent/mars/ilink/comm/NetworkSignalUtil", "updateWiFiInfo", "()V", "android/net/wifi/WifiManager", "getConfiguredNetworks", "()Ljava/util/List;");
             localObject1 = (WifiInfo)a.a(localObject1, "com/tencent/mars/ilink/comm/NetworkSignalUtil", "updateWiFiInfo", "()V", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
             localObject2 = ((List)localObject2).iterator();
             do
@@ -141,7 +141,7 @@ public class NetworkSignalUtil
             curwifiinfo.fill(((WifiInfo)localObject1).getRssi(), ((WifiInfo)localObject1).getBSSID(), ((WifiInfo)localObject1).getSSID(), ((WifiInfo)localObject1).getNetworkId(), ((WifiInfo)localObject1).getIpAddress());
             return;
           }
-          catch (Throwable localThrowable1)
+          finally
           {
             Log.printErrStackTrace("MicroMsg.NetworkSignalUtil", localThrowable1, "get wifi info failed from configurations", new Object[0]);
             return;
@@ -215,7 +215,6 @@ public class NetworkSignalUtil
     }
   }
   
-  @SuppressLint({"NewApi"})
   static class NetworkCallbackImpl24
     extends ConnectivityManager.NetworkCallback
   {
@@ -271,7 +270,7 @@ public class NetworkSignalUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.ilink.comm.NetworkSignalUtil
  * JD-Core Version:    0.7.0.1
  */

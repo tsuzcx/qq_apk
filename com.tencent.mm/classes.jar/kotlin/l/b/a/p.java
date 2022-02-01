@@ -1,112 +1,181 @@
 package kotlin.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.k;
-import kotlin.l;
-import kotlin.l.b.a.b.b.ah;
-import kotlin.l.r.a;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.ag;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.am;
+import kotlin.l.b.a.b.b.bd;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.n;
+import kotlin.l.n.a;
+import kotlin.l.o;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/KProperty1Impl;", "T", "R", "Lkotlin/reflect/KProperty1;", "Lkotlin/reflect/jvm/internal/KPropertyImpl;", "container", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "name", "", "signature", "boundReceiver", "", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V", "descriptor", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "(Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;Lorg/jetbrains/kotlin/descriptors/PropertyDescriptor;)V", "_getter", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "kotlin.jvm.PlatformType", "delegateField", "Lkotlin/Lazy;", "Ljava/lang/reflect/Field;", "getter", "getGetter", "()Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "get", "receiver", "(Ljava/lang/Object;)Ljava/lang/Object;", "getDelegate", "invoke", "Getter", "kotlin-reflection"})
-public class p<T, R>
-  extends r<R>
-  implements kotlin.l.r<T, R>
+@Metadata(d1={""}, d2={"Lkotlin/reflect/jvm/internal/KParameterImpl;", "Lkotlin/reflect/KParameter;", "callable", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "index", "", "kind", "Lkotlin/reflect/KParameter$Kind;", "computeDescriptor", "Lkotlin/Function0;", "Lkotlin/reflect/jvm/internal/impl/descriptors/ParameterDescriptor;", "(Lkotlin/reflect/jvm/internal/KCallableImpl;ILkotlin/reflect/KParameter$Kind;Lkotlin/jvm/functions/Function0;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "annotations$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "getCallable", "()Lkotlin/reflect/jvm/internal/KCallableImpl;", "descriptor", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/ParameterDescriptor;", "descriptor$delegate", "getIndex", "()I", "isOptional", "", "()Z", "isVararg", "getKind", "()Lkotlin/reflect/KParameter$Kind;", "name", "", "getName", "()Ljava/lang/String;", "type", "Lkotlin/reflect/KType;", "getType", "()Lkotlin/reflect/KType;", "equals", "other", "", "hashCode", "toString", "kotlin-reflection"}, k=1, mv={1, 5, 1})
+public final class p
+  implements n
 {
-  private final y.b<a<T, R>> aaDP;
-  private final f<Field> aaDT;
+  private final ac.a aiyA;
+  private final ac.a aiyz;
+  final f<?> aizD;
+  final n.a aizE;
+  final int index;
   
-  public p(i parami, String paramString1, String paramString2, Object paramObject)
+  static
   {
-    super(parami, paramString1, paramString2, paramObject);
-    AppMethodBeat.i(56462);
-    parami = y.at((a)new b(this));
-    kotlin.g.b.p.j(parami, "ReflectProperties.lazy { Getter(this) }");
-    this.aaDP = parami;
-    this.aaDT = g.a(k.aazC, (a)new c(this));
-    AppMethodBeat.o(56462);
+    AppMethodBeat.i(56434);
+    aYe = new o[] { (o)ai.a(new ag(ai.cz(p.class), "descriptor", "getDescriptor()Lorg/jetbrains/kotlin/descriptors/ParameterDescriptor;")), (o)ai.a(new ag(ai.cz(p.class), "annotations", "getAnnotations()Ljava/util/List;")) };
+    AppMethodBeat.o(56434);
   }
   
-  public p(i parami, ah paramah)
+  public p(f<?> paramf, int paramInt, n.a parama, kotlin.g.a.a<? extends am> parama1)
   {
-    super(parami, paramah);
-    AppMethodBeat.i(56463);
-    parami = y.at((a)new b(this));
-    kotlin.g.b.p.j(parami, "ReflectProperties.lazy { Getter(this) }");
-    this.aaDP = parami;
-    this.aaDT = g.a(k.aazC, (a)new c(this));
-    AppMethodBeat.o(56463);
+    AppMethodBeat.i(56440);
+    this.aizD = paramf;
+    this.index = paramInt;
+    this.aizE = parama;
+    this.aiyz = ac.cp(parama1);
+    this.aiyA = ac.cp((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(56440);
   }
   
-  private a<T, R> iCV()
+  private final am kmm()
   {
-    AppMethodBeat.i(56457);
-    Object localObject = this.aaDP.invoke();
-    kotlin.g.b.p.j(localObject, "_getter()");
-    localObject = (a)localObject;
-    AppMethodBeat.o(56457);
+    AppMethodBeat.i(56435);
+    am localam = (am)this.aiyz.invoke();
+    AppMethodBeat.o(56435);
+    return localam;
+  }
+  
+  public final boolean ahk()
+  {
+    AppMethodBeat.i(191369);
+    am localam = kmm();
+    Object localObject = localam;
+    if (!(localam instanceof bd)) {
+      localObject = null;
+    }
+    localObject = (bd)localObject;
+    if (localObject != null)
+    {
+      boolean bool = kotlin.l.b.a.b.j.d.a.b((bd)localObject);
+      AppMethodBeat.o(191369);
+      return bool;
+    }
+    AppMethodBeat.o(191369);
+    return false;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(56437);
+    if (((paramObject instanceof p)) && (s.p(this.aizD, ((p)paramObject).aizD)) && (this.index == ((p)paramObject).index))
+    {
+      AppMethodBeat.o(56437);
+      return true;
+    }
+    AppMethodBeat.o(56437);
+    return false;
+  }
+  
+  public final String getName()
+  {
+    AppMethodBeat.i(56436);
+    am localam = kmm();
+    Object localObject = localam;
+    if (!(localam instanceof bd)) {
+      localObject = null;
+    }
+    localObject = (bd)localObject;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(56436);
+      return null;
+    }
+    if (((bd)localObject).kpo().koe())
+    {
+      AppMethodBeat.o(56436);
+      return null;
+    }
+    localObject = ((bd)localObject).kok();
+    s.s(localObject, "valueParameter.name");
+    if (((kotlin.l.b.a.b.f.f)localObject).ajeG)
+    {
+      AppMethodBeat.o(56436);
+      return null;
+    }
+    localObject = ((kotlin.l.b.a.b.f.f)localObject).PF();
+    AppMethodBeat.o(56436);
     return localObject;
   }
   
-  public final R get(T paramT)
+  public final int hashCode()
   {
-    AppMethodBeat.i(56460);
-    paramT = iCV().ak(new Object[] { paramT });
-    AppMethodBeat.o(56460);
-    return paramT;
+    AppMethodBeat.i(56438);
+    int i = this.aizD.hashCode();
+    int j = Integer.valueOf(this.index).hashCode();
+    AppMethodBeat.o(56438);
+    return i * 31 + j;
   }
   
-  public R invoke(T paramT)
+  public final kotlin.l.u klN()
   {
-    AppMethodBeat.i(56461);
-    paramT = get(paramT);
-    AppMethodBeat.o(56461);
-    return paramT;
+    AppMethodBeat.i(191367);
+    Object localObject = kmm().koG();
+    s.s(localObject, "descriptor.type");
+    localObject = (kotlin.l.u)new v((ad)localObject, (kotlin.g.a.a)new b(this));
+    AppMethodBeat.o(191367);
+    return localObject;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "T", "R", "Lkotlin/reflect/jvm/internal/KPropertyImpl$Getter;", "Lkotlin/reflect/KProperty1$Getter;", "property", "Lkotlin/reflect/jvm/internal/KProperty1Impl;", "(Lkotlin/reflect/jvm/internal/KProperty1Impl;)V", "getProperty", "()Lkotlin/reflect/jvm/internal/KProperty1Impl;", "invoke", "receiver", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-reflection"})
-  public static final class a<T, R>
-    extends r.c<R>
-    implements r.a<T, R>
+  public final n.a klO()
   {
-    private final p<T, R> aaDU;
-    
-    public a(p<T, ? extends R> paramp)
+    return this.aizE;
+  }
+  
+  public final boolean klP()
+  {
+    AppMethodBeat.i(191370);
+    am localam = kmm();
+    if (((localam instanceof bd)) && (((bd)localam).kpq() != null))
     {
-      AppMethodBeat.i(56454);
-      this.aaDU = paramp;
-      AppMethodBeat.o(56454);
+      AppMethodBeat.o(191370);
+      return true;
     }
-    
-    public final R invoke(T paramT)
-    {
-      AppMethodBeat.i(56453);
-      paramT = this.aaDU.get(paramT);
-      AppMethodBeat.o(56453);
-      return paramT;
-    }
+    AppMethodBeat.o(191370);
+    return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lkotlin/reflect/jvm/internal/KProperty1Impl$Getter;", "T", "R", "invoke"})
-  static final class b
-    extends q
-    implements a<p.a<T, ? extends R>>
+  public final String toString()
   {
-    b(p paramp)
+    AppMethodBeat.i(56439);
+    Object localObject = ae.aiAr;
+    localObject = ae.b(this);
+    AppMethodBeat.o(56439);
+    return localObject;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "invoke"}, k=3, mv={1, 5, 1})
+  static final class a
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<List<? extends Annotation>>
+  {
+    a(p paramp)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/lang/reflect/Field;", "T", "R", "invoke"})
-  static final class c
-    extends q
-    implements a<Field>
+  @Metadata(d1={""}, d2={"<anonymous>", "Ljava/lang/reflect/Type;", "invoke"}, k=3, mv={1, 5, 1})
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<Type>
   {
-    c(p paramp)
+    b(p paramp)
     {
       super();
     }
@@ -114,7 +183,7 @@ public class p<T, R>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.p
  * JD-Core Version:    0.7.0.1
  */

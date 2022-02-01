@@ -9,13 +9,13 @@ public abstract interface e
   
   public abstract boolean a(Activity paramActivity, Runnable paramRunnable);
   
-  public abstract boolean abA();
+  public abstract boolean aDw();
   
-  public abstract boolean p(Intent paramIntent);
+  public abstract boolean q(Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.e
  * JD-Core Version:    0.7.0.1
  */

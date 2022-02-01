@@ -1,22 +1,16 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -24,24 +18,21 @@ import com.tencent.mm.R.e;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.ipcall.a.c;
 import com.tencent.mm.plugin.ipcall.model.h.g;
-import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorageEventData;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.v;
-import com.tencent.mm.ui.v.a;
+import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.x.a;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -50,18 +41,18 @@ import java.util.Set;
 public class IPCallMsgUI
   extends MMActivity
 {
-  private a DWx;
-  private MStorage.IOnStorageChange DWy;
+  private a JNG;
+  private MStorage.IOnStorageChange JNH;
   private ListView list;
-  private View sxR;
-  private View tzj;
-  private boolean tzk;
+  private View vDA;
+  private View wDF;
+  private boolean wDG;
   
   public IPCallMsgUI()
   {
     AppMethodBeat.i(25824);
-    this.tzk = true;
-    this.DWy = new MStorage.IOnStorageChange()
+    this.wDG = true;
+    this.JNH = new MStorage.IOnStorageChange()
     {
       public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
       {
@@ -93,21 +84,21 @@ public class IPCallMsgUI
   
   public int getLayoutId()
   {
-    return R.i.eib;
+    return R.i.gkW;
   }
   
   public void initView()
   {
     AppMethodBeat.i(25827);
-    setMMTitle(R.l.eJG);
-    this.sxR = findViewById(R.h.dKc);
-    this.list = ((ListView)findViewById(R.h.dKd));
-    this.tzj = ad.kS(this).inflate(R.i.mm_footerview, null);
-    this.list.addFooterView(this.tzj);
-    this.DWx = new a(this, new g());
-    this.DWx.setGetViewPositionCallback(new MMSlideDelView.c()
+    setMMTitle(R.l.gLn);
+    this.vDA = findViewById(R.h.fLw);
+    this.list = ((ListView)findViewById(R.h.fLx));
+    this.wDF = af.mU(this).inflate(R.i.mm_footerview, null);
+    this.list.addFooterView(this.wDF);
+    this.JNG = new a(this, new g());
+    this.JNG.setGetViewPositionCallback(new MMSlideDelView.c()
     {
-      public final int dO(View paramAnonymousView)
+      public final int eB(View paramAnonymousView)
       {
         AppMethodBeat.i(25805);
         int i = IPCallMsgUI.a(IPCallMsgUI.this).getPositionForView(paramAnonymousView);
@@ -115,18 +106,18 @@ public class IPCallMsgUI
         return i;
       }
     });
-    this.DWx.setPerformItemClickListener(new MMSlideDelView.g()
+    this.JNG.setPerformItemClickListener(new MMSlideDelView.g()
     {
-      public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void performItemClick(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(25806);
         IPCallMsgUI.a(IPCallMsgUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(25806);
       }
     });
-    this.DWx.a(new v.a()
+    this.JNG.a(new x.a()
     {
-      public final void bxN()
+      public final void bWC()
       {
         AppMethodBeat.i(25807);
         if (IPCallMsgUI.b(IPCallMsgUI.this).getCount() == 0)
@@ -141,32 +132,8 @@ public class IPCallMsgUI
         AppMethodBeat.o(25807);
       }
     });
-    this.list.setAdapter(this.DWx);
-    this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(25808);
-        b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        a.c("com/tencent/mm/plugin/ipcall/ui/IPCallMsgUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
-        paramAnonymousAdapterView = (g)IPCallMsgUI.b(IPCallMsgUI.this).getItem(paramAnonymousInt);
-        if (!Util.isNullOrNil(paramAnonymousAdapterView.field_descUrl))
-        {
-          paramAnonymousInt = paramAnonymousAdapterView.field_msgType;
-          com.tencent.mm.plugin.report.service.h.IzE.a(13780, new Object[] { Integer.valueOf(paramAnonymousInt) });
-          paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.field_descUrl);
-          paramAnonymousView.putExtra("showShare", false);
-          com.tencent.mm.by.c.b(IPCallMsgUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
-        }
-        a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallMsgUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(25808);
-      }
-    });
+    this.list.setAdapter(this.JNG);
+    this.list.setOnItemClickListener(new IPCallMsgUI.4(this));
     this.list.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -177,9 +144,9 @@ public class IPCallMsgUI
         if (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1)
         {
           paramAnonymousAbsListView = IPCallMsgUI.b(IPCallMsgUI.this);
-          if (paramAnonymousAbsListView.cJI()) {
-            if (IPCallMsgUI.d(paramAnonymousAbsListView.DWz).getParent() != null) {
-              IPCallMsgUI.a(paramAnonymousAbsListView.DWz).removeFooterView(IPCallMsgUI.d(paramAnonymousAbsListView.DWz));
+          if (paramAnonymousAbsListView.dmY()) {
+            if (IPCallMsgUI.d(paramAnonymousAbsListView.JNI).getParent() != null) {
+              IPCallMsgUI.a(paramAnonymousAbsListView.JNI).removeFooterView(IPCallMsgUI.d(paramAnonymousAbsListView.JNI));
             }
           }
           for (;;)
@@ -187,43 +154,34 @@ public class IPCallMsgUI
             IPCallMsgUI.b(IPCallMsgUI.this).onNotifyChange(null, null);
             AppMethodBeat.o(25809);
             return;
-            paramAnonymousAbsListView.tzm += 10;
-            if (paramAnonymousAbsListView.tzm > paramAnonymousAbsListView.jlf) {
-              paramAnonymousAbsListView.tzm = paramAnonymousAbsListView.jlf;
+            paramAnonymousAbsListView.wDI += 10;
+            if (paramAnonymousAbsListView.wDI > paramAnonymousAbsListView.lNX) {
+              paramAnonymousAbsListView.wDI = paramAnonymousAbsListView.lNX;
             }
           }
         }
         AppMethodBeat.o(25809);
       }
     });
-    if (this.DWx.getCount() == 0)
+    if (this.JNG.getCount() == 0)
     {
       this.list.setVisibility(8);
-      this.sxR.setVisibility(0);
+      this.vDA.setVisibility(0);
       enableOptionMenu(false);
     }
     for (;;)
     {
-      if (this.DWx.cJI()) {
-        this.list.removeFooterView(this.tzj);
+      if (this.JNG.dmY()) {
+        this.list.removeFooterView(this.wDF);
       }
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(25810);
-          IPCallMsgUI.this.finish();
-          AppMethodBeat.o(25810);
-          return true;
-        }
-      });
-      if (this.DWx.cJI()) {
-        this.list.removeFooterView(this.tzj);
+      setBackBtn(new IPCallMsgUI.6(this));
+      if (this.JNG.dmY()) {
+        this.list.removeFooterView(this.wDF);
       }
       AppMethodBeat.o(25827);
       return;
       this.list.setVisibility(0);
-      this.sxR.setVisibility(8);
+      this.vDA.setVisibility(8);
       enableOptionMenu(true);
     }
   }
@@ -232,7 +190,7 @@ public class IPCallMsgUI
   {
     AppMethodBeat.i(25825);
     super.onCreate(paramBundle);
-    i.eJz().add(this.DWy);
+    com.tencent.mm.plugin.ipcall.model.h.fRz().add(this.JNH);
     initView();
     AppMethodBeat.o(25825);
   }
@@ -241,9 +199,9 @@ public class IPCallMsgUI
   {
     AppMethodBeat.i(25826);
     Log.d("MicroMsg.IPCallMsgUI", "msgui onDestroy");
-    i.eJz().remove(this.DWy);
-    this.DWx.eKd();
-    com.tencent.mm.plugin.ipcall.model.h.h localh = i.eJz();
+    com.tencent.mm.plugin.ipcall.model.h.fRz().remove(this.JNH);
+    this.JNG.fSd();
+    com.tencent.mm.plugin.ipcall.model.h.h localh = com.tencent.mm.plugin.ipcall.model.h.fRz();
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("isRead", Short.valueOf((short)1));
     localh.db.update(localh.getTableName(), localContentValues, "isRead!=? ", new String[] { "1" });
@@ -258,39 +216,39 @@ public class IPCallMsgUI
   }
   
   final class a
-    extends v<g>
+    extends x<g>
   {
-    private Set<MMSlideDelView> DWB;
-    int jlf;
-    protected MMSlideDelView.g snh;
-    protected MMSlideDelView.c sni;
-    protected MMSlideDelView.d snk;
-    int tzm;
+    private Set<MMSlideDelView> JNK;
+    int lNX;
+    protected MMSlideDelView.g vzf;
+    protected MMSlideDelView.c vzg;
+    protected MMSlideDelView.d vzi;
+    int wDI;
     
     public a(Context paramContext, g paramg)
     {
       super(paramg);
       AppMethodBeat.i(25817);
-      this.DWB = new HashSet();
-      this.snk = new MMSlideDelView.d()
+      this.JNK = new HashSet();
+      this.vzi = new MMSlideDelView.d()
       {
         public final void a(MMSlideDelView paramAnonymousMMSlideDelView, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(25813);
           if (paramAnonymousBoolean)
           {
-            DWB.add(paramAnonymousMMSlideDelView);
+            JNK.add(paramAnonymousMMSlideDelView);
             AppMethodBeat.o(25813);
             return;
           }
-          DWB.remove(paramAnonymousMMSlideDelView);
+          JNK.remove(paramAnonymousMMSlideDelView);
           AppMethodBeat.o(25813);
         }
         
-        public final boolean eKl()
+        public final boolean fSl()
         {
           AppMethodBeat.i(25814);
-          if (DWB.size() > 0)
+          if (JNK.size() > 0)
           {
             AppMethodBeat.o(25814);
             return true;
@@ -299,61 +257,61 @@ public class IPCallMsgUI
           return false;
         }
         
-        public final void eKm()
+        public final void fSm()
         {
           AppMethodBeat.i(25815);
-          Iterator localIterator = DWB.iterator();
+          Iterator localIterator = JNK.iterator();
           while (localIterator.hasNext())
           {
             MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
             if (localMMSlideDelView != null) {
-              localMMSlideDelView.hJY();
+              localMMSlideDelView.jmE();
             }
           }
-          DWB.clear();
+          JNK.clear();
           AppMethodBeat.o(25815);
         }
         
-        public final void eKn()
+        public final void fSn()
         {
           AppMethodBeat.i(25816);
-          Iterator localIterator = DWB.iterator();
+          Iterator localIterator = JNK.iterator();
           while (localIterator.hasNext())
           {
             MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
             if (localMMSlideDelView != null) {
-              localMMSlideDelView.hJX();
+              localMMSlideDelView.jmD();
             }
           }
-          DWB.clear();
+          JNK.clear();
           AppMethodBeat.o(25816);
         }
       };
-      this.tzm = 10;
-      this.jlf = this.tzm;
+      this.wDI = 10;
+      this.lNX = this.wDI;
       AppMethodBeat.o(25817);
     }
     
-    public final void atr()
+    public final void aNy()
     {
       AppMethodBeat.i(25821);
-      this.jlf = i.eJz().getCount();
-      v(i.eJz().Vo(this.tzm));
+      this.lNX = com.tencent.mm.plugin.ipcall.model.h.fRz().getCount();
+      w(com.tencent.mm.plugin.ipcall.model.h.fRz().Zj(this.wDI));
       notifyDataSetChanged();
       AppMethodBeat.o(25821);
     }
     
-    public final void ats()
+    public final void aNz()
     {
       AppMethodBeat.i(25819);
-      eKd();
-      atr();
+      fSd();
+      aNy();
       AppMethodBeat.o(25819);
     }
     
-    public final boolean cJI()
+    public final boolean dmY()
     {
-      return this.tzm >= this.jlf;
+      return this.wDI >= this.lNX;
     }
     
     public final long getItemId(int paramInt)
@@ -374,14 +332,14 @@ public class IPCallMsgUI
       Object localObject2;
       if ((paramView == null) || (!(paramView.getTag() instanceof a)))
       {
-        localView = ad.kS(this.context).inflate(R.i.eia, null);
+        localView = af.mU(this.context).inflate(R.i.gkV, null);
         paramViewGroup = new a();
         paramViewGroup.titleTv = ((TextView)localView.findViewById(R.h.titleTv));
-        paramViewGroup.kMh = ((TextView)localView.findViewById(R.h.dCH));
+        paramViewGroup.noc = ((TextView)localView.findViewById(R.h.fDw));
         paramViewGroup.timeTv = ((TextView)localView.findViewById(R.h.timeTv));
         localView.setTag(paramViewGroup);
         paramViewGroup.titleTv.setText(localg.field_title);
-        paramViewGroup.kMh.setText(localg.field_content);
+        paramViewGroup.noc.setText(localg.field_content);
         TextView localTextView = paramViewGroup.timeTv;
         paramView = IPCallMsgUI.this.getContext();
         l1 = localg.field_pushTime * 1000L;
@@ -393,9 +351,9 @@ public class IPCallMsgUI
         }
         localObject2 = localObject1.split("-")[0];
         localObject1 = localObject1.split("-")[1];
-        localObject2 = com.tencent.mm.plugin.ipcall.a.c.br(paramView, (String)localObject2);
+        localObject2 = c.bt(paramView, (String)localObject2);
         localObject1 = (String)localObject1 + " " + (String)localObject2 + " ";
-        paramView = (String)localObject1 + " " + (String)com.tencent.mm.plugin.ipcall.a.c.k(paramView, l1);
+        paramView = (String)localObject1 + " " + (String)c.l(paramView, l1);
         label313:
         localTextView.setText(paramView);
         if (localg.field_isRead != 1) {
@@ -406,7 +364,7 @@ public class IPCallMsgUI
         if (paramInt == 0) {
           break label541;
         }
-        paramViewGroup.titleTv.setTextColor(IPCallMsgUI.this.getResources().getColor(R.e.dkw));
+        paramViewGroup.titleTv.setTextColor(IPCallMsgUI.this.getResources().getColor(R.e.fkE));
       }
       for (;;)
       {
@@ -419,22 +377,22 @@ public class IPCallMsgUI
         long l2 = l1 - ((GregorianCalendar)localObject2).getTimeInMillis();
         if ((l2 > 0L) && (l2 <= 86400000L))
         {
-          paramView = (String)com.tencent.mm.plugin.ipcall.a.c.k(paramView, l1);
+          paramView = (String)c.l(paramView, l1);
           break label313;
         }
         l2 = l1 - ((GregorianCalendar)localObject2).getTimeInMillis() + 86400000L;
         if ((l2 > 0L) && (l2 <= 86400000L))
         {
-          paramView = paramView.getString(R.l.fmt_pre_yesterday) + " " + (String)com.tencent.mm.plugin.ipcall.a.c.k(paramView, l1);
+          paramView = paramView.getString(R.l.fmt_pre_yesterday) + " " + (String)c.l(paramView, l1);
           break label313;
         }
-        paramView = (String)localObject1 + " " + (String)com.tencent.mm.plugin.ipcall.a.c.k(paramView, l1);
+        paramView = (String)localObject1 + " " + (String)c.l(paramView, l1);
         break label313;
         label536:
         paramInt = 0;
         break label330;
         label541:
-        paramViewGroup.titleTv.setTextColor(IPCallMsgUI.this.getResources().getColor(R.e.dkx));
+        paramViewGroup.titleTv.setTextColor(IPCallMsgUI.this.getResources().getColor(R.e.fkF));
       }
     }
     
@@ -456,17 +414,17 @@ public class IPCallMsgUI
     
     public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
     {
-      this.sni = paramc;
+      this.vzg = paramc;
     }
     
     public final void setPerformItemClickListener(MMSlideDelView.g paramg)
     {
-      this.snh = paramg;
+      this.vzf = paramg;
     }
     
     final class a
     {
-      TextView kMh;
+      TextView noc;
       TextView timeTv;
       TextView titleTv;
       

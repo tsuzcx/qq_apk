@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.widget.input.a;
 
 public final class b$a
 {
-  public int rzB;
-  public int rzC;
-  public int rzD;
+  public int uKE;
+  public int uKF;
+  public int uKG;
 }
 
 

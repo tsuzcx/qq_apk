@@ -15,7 +15,7 @@ public class TPDecoderType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPDecoderType
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,9 @@ import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -179,7 +181,7 @@ public class DownloadHelper
       return localObject1;
       continue;
       label70:
-      Object localObject3 = ((ConnectivityManager)((Context)localObject3).getSystemService("connectivity")).getActiveNetworkInfo();
+      Object localObject3 = ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
       if (localObject3 == null)
       {
         localObject3 = "";
@@ -246,7 +248,7 @@ public class DownloadHelper
     }
     try
     {
-      boolean bool2 = new q(TMAssistantFile.getSaveFilePath(paramString)).ifE();
+      boolean bool2 = new u(TMAssistantFile.getSaveFilePath(paramString)).jKS();
       if (bool2) {
         bool1 = true;
       }
@@ -272,7 +274,7 @@ public class DownloadHelper
     AppMethodBeat.i(101955);
     try
     {
-      boolean bool2 = new q(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).ifE();
+      boolean bool2 = new u(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).jKS();
       if (bool2) {
         bool1 = true;
       }
@@ -295,16 +297,15 @@ public class DownloadHelper
   public static boolean isNetworkConncted()
   {
     AppMethodBeat.i(101954);
-    Object localObject = GlobalUtil.getInstance().getContext();
-    if (localObject == null)
+    if (GlobalUtil.getInstance().getContext() == null)
     {
       TMLog.w(TAG, "GlobalUtil.getInstance().getContext() == null.");
       AppMethodBeat.o(101954);
       return false;
     }
-    localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
-    if (localObject != null) {}
-    for (boolean bool = ((NetworkInfo)localObject).isAvailable();; bool = false)
+    NetworkInfo localNetworkInfo = ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
+    if (localNetworkInfo != null) {}
+    for (boolean bool = localNetworkInfo.isAvailable();; bool = false)
     {
       AppMethodBeat.o(101954);
       return bool;
@@ -325,16 +326,16 @@ public class DownloadHelper
       l3 = (paramString.getAvailableBlocks() - 4L) * l1;
       l1 = l3;
       if (l3 >= 0L) {
-        break label185;
+        break label188;
       }
       l1 = l2;
     }
-    label185:
+    label188:
     for (;;)
     {
       paramLong = ((float)paramLong * 1.5F);
       if (paramLong <= 104857600L) {
-        break label196;
+        break label199;
       }
       if (l1 < paramLong) {
         break;
@@ -346,7 +347,7 @@ public class DownloadHelper
         l1 = l2;
         if ("mounted".equals(Environment.getExternalStorageState()))
         {
-          paramString = new StatFs(new q(Environment.getExternalStorageDirectory().getPath()).getPath());
+          paramString = new StatFs(ah.v(new u(Environment.getExternalStorageDirectory().getPath()).mUri));
           l1 = paramString.getBlockSize();
           l3 = (paramString.getAvailableBlocks() - 4L) * l1;
           l1 = l2;
@@ -358,7 +359,7 @@ public class DownloadHelper
     }
     AppMethodBeat.o(101957);
     return false;
-    label196:
+    label199:
     if (l1 >= 104857600L)
     {
       AppMethodBeat.o(101957);
@@ -377,7 +378,7 @@ public class DownloadHelper
       new URI(correctURL(paramString));
       bool = true;
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
@@ -410,7 +411,7 @@ public class DownloadHelper
     for (String str = paramString;; str = arrayOfString[0] + "(" + i + ")" + arrayOfString[1])
     {
       i += 1;
-      if (new q(TMAssistantFile.getSavePathRootDir() + "/" + str).ifE()) {
+      if (new u(TMAssistantFile.getSavePathRootDir() + "/" + str).jKS()) {
         break;
       }
       AppMethodBeat.o(101950);
@@ -420,7 +421,7 @@ public class DownloadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadHelper
  * JD-Core Version:    0.7.0.1
  */

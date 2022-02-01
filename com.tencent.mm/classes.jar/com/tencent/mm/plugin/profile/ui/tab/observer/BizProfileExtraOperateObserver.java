@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.profile.ui.tab.observer;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.f;
 import junit.framework.Assert;
 
 public class BizProfileExtraOperateObserver
   extends BaseBizProfileOperateObserver
 {
-  private static String HdC = "crashFlag";
-  private static boolean HdD = false;
+  private static boolean NdK = false;
+  private static String NdL = "crashFlag";
   
-  public final boolean a(f paramf, as paramas)
+  public final boolean a(f paramf, au paramau)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(291241);
-    if (paramas != null)
+    AppMethodBeat.i(306198);
+    if (paramau != null)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      if (Util.nullAsNil(paramas.field_username).length() <= 0) {
+      if (Util.nullAsNil(paramau.field_username).length() <= 0) {
         break label62;
       }
     }
@@ -34,7 +34,7 @@ public class BizProfileExtraOperateObserver
         bool1 = true;
       }
       Assert.assertTrue(bool1);
-      AppMethodBeat.o(291241);
+      AppMethodBeat.o(306198);
       return true;
       bool1 = false;
       break;
@@ -43,7 +43,7 @@ public class BizProfileExtraOperateObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.observer.BizProfileExtraOperateObserver
  * JD-Core Version:    0.7.0.1
  */

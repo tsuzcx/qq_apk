@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/d" android:padding="@dimen/cp" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.snackbar.SnackContainer android:id="@id/hts" style="@style/ue" />
-</FrameLayout>
+    <Button android:id="@id/kho" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="test" style="@style/oh" />
+    <Button android:id="@id/apu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="cancel" style="@style/oh" />
+</LinearLayout>

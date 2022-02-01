@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/dh3" android:background="@color/a1q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/dgz" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/dh0" android:background="@drawable/ac2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/a7o" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dh2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginBottom="@dimen/df" android:text="@string/drs" android:layout_centerHorizontal="true" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/dh1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/drr" android:layout_below="@id/dh2" android:layout_centerHorizontal="true" />
+                <RelativeLayout android:id="@id/dgw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bz" android:layout_marginBottom="@dimen/db" android:layout_below="@id/dh1" android:layout_centerHorizontal="true">
+                    <Button android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/dgx" android:background="@drawable/yb" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/ds3" android:layout_marginEnd="@dimen/df" />
+                    <Button android:textSize="17.0dip" android:textColor="@color/az" android:id="@id/dgy" android:background="@drawable/yd" android:layout_width="@dimen/c8" android:layout_height="@dimen/d4" android:text="@string/dri" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/dgx" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</LinearLayout>

@@ -96,7 +96,7 @@ public class app_brand_app_default_icon_for_tail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_brand_app_default_icon_for_tail
  * JD-Core Version:    0.7.0.1
  */

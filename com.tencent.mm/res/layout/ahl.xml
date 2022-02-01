@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:id="@id/e2a" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginBottom="@dimen/ct" style="@style/mz"
+<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:paddingTop="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/x1" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/a2c" android:layout_centerVertical="true" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/d2d" android:singleLine="true" android:layout_weight="1.0" android:layout_toRightOf="@id/x1" android:layout_centerVertical="true" style="@style/hv" />
-    <TextView android:ellipsize="end" android:id="@id/fn8" android:layout_marginRight="@dimen/cb" android:minWidth="@dimen/c5" android:minHeight="@dimen/c5" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:layout_constraintCircleAngle="45" app:layout_constraintCircleRadius="@dimen/cb" style="@style/zr" />
-</RelativeLayout>
+    <CheckBox android:id="@id/bab" android:layout_width="@dimen/a78" android:layout_height="@dimen/a78" style="@style/lq" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/m4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="@string/le9" />
+</LinearLayout>

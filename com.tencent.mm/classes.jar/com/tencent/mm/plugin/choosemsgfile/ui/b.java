@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.choosemsgfile.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitask.b.c;
 import com.tencent.mm.plugin.multitask.g;
-import com.tencent.mm.protocal.protobuf.apf;
+import com.tencent.mm.protocal.protobuf.asy;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 
 public final class b
   extends c
 {
   private String mFilePath;
-  private apf qhY;
-  private String qia;
-  private int tOb;
+  private asy tmK;
+  private String tmM;
+  private int wRr;
   
   public b(com.tencent.mm.plugin.multitask.a.a parama)
   {
     super(parama);
-    AppMethodBeat.i(243541);
+    AppMethodBeat.i(262556);
     this.mFilePath = "";
-    this.qia = "";
-    this.tOb = 0;
-    this.qhY = new apf();
-    AppMethodBeat.o(243541);
+    this.tmM = "";
+    this.wRr = 0;
+    this.tmK = new asy();
+    AppMethodBeat.o(262556);
   }
   
-  public final void M(String paramString1, String paramString2, int paramInt)
+  public final void T(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(243544);
+    AppMethodBeat.i(262563);
     Log.i("MicroMsg.FilesFloatBall.ChooseMsgFilesPageMultiTaskHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
     this.mFilePath = paramString1;
-    this.qia = paramString2;
-    this.tOb = paramInt;
-    super.I(4, g.aQW(paramString1));
-    this.qhY.filePath = paramString1;
-    this.qhY.Rwe = u.bBQ(paramString1);
-    this.qhY.jmx = paramString2;
-    this.qhY.tNG = paramInt;
-    this.qhY.SCl = false;
+    this.tmM = paramString2;
+    this.wRr = paramInt;
+    super.J(4, g.aNO(paramString1));
+    this.tmK.filePath = paramString1;
+    this.tmK.Ysz = y.bEl(paramString1);
+    this.tmK.lPJ = paramString2;
+    this.tmK.wQW = paramInt;
+    this.tmK.ZDd = false;
     try
     {
-      this.FHd.field_data = this.qhY.toByteArray();
-      faR();
-      AppMethodBeat.o(243544);
+      this.LCE.field_data = this.tmK.toByteArray();
+      gjW();
+      AppMethodBeat.o(262563);
       return;
     }
     catch (IOException paramString1)
@@ -56,19 +56,19 @@ public final class b
     }
   }
   
-  public final boolean cbG()
+  public final boolean cBZ()
   {
     return true;
   }
   
-  public final boolean cbH()
+  public final boolean cCa()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.b
  * JD-Core Version:    0.7.0.1
  */

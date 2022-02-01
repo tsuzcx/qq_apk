@@ -12,140 +12,153 @@ import android.widget.TabHost.OnTabChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
+@Deprecated
 public class FragmentTabHost
   extends TabHost
   implements TabHost.OnTabChangeListener
 {
-  private TabHost.OnTabChangeListener Wn;
-  private a Wo;
-  private boolean Wp;
-  private final ArrayList<a> hV;
+  private boolean NE;
+  private TabHost.OnTabChangeListener bDC;
+  private a bDD;
+  private final ArrayList<a> iT;
   private int mContainerId;
-  private e mFragmentManager;
+  private FragmentManager mFragmentManager;
   
+  @Deprecated
   public FragmentTabHost(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(212881);
-    this.hV = new ArrayList();
+    AppMethodBeat.i(193881);
+    this.iT = new ArrayList();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842995 }, 0, 0);
     this.mContainerId = paramContext.getResourceId(0, 0);
     paramContext.recycle();
     super.setOnTabChangedListener(this);
-    AppMethodBeat.o(212881);
+    AppMethodBeat.o(193881);
   }
   
-  private i a(i parami)
+  private a GB()
   {
-    AppMethodBeat.i(212892);
-    iE();
-    if (this.Wo != null)
+    AppMethodBeat.i(193896);
+    if (this.iT.size() > 0)
     {
-      parami = this.mFragmentManager.beginTransaction();
-      if (this.Wo != null)
-      {
-        AppMethodBeat.o(212892);
-        throw null;
-      }
-      this.Wo = null;
-    }
-    AppMethodBeat.o(212892);
-    return parami;
-  }
-  
-  private a iE()
-  {
-    AppMethodBeat.i(212894);
-    if (this.hV.size() > 0)
-    {
-      this.hV.get(0);
-      AppMethodBeat.o(212894);
+      this.iT.get(0);
+      AppMethodBeat.o(193896);
       throw null;
     }
-    AppMethodBeat.o(212894);
+    AppMethodBeat.o(193896);
     return null;
   }
   
+  private r a(r paramr)
+  {
+    AppMethodBeat.i(193892);
+    a locala = GB();
+    if (this.bDD != locala)
+    {
+      paramr = this.mFragmentManager.beginTransaction();
+      if (this.bDD != null)
+      {
+        AppMethodBeat.o(193892);
+        throw null;
+      }
+      if (locala != null)
+      {
+        AppMethodBeat.o(193892);
+        throw null;
+      }
+      this.bDD = locala;
+    }
+    AppMethodBeat.o(193892);
+    return paramr;
+  }
+  
+  @Deprecated
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(212884);
+    AppMethodBeat.i(193920);
     super.onAttachedToWindow();
     getCurrentTabTag();
-    if (this.hV.size() > 0)
+    if (this.iT.size() > 0)
     {
-      this.hV.get(0);
-      AppMethodBeat.o(212884);
+      this.iT.get(0);
+      AppMethodBeat.o(193920);
       throw null;
     }
-    this.Wp = true;
-    i locali = a(null);
-    if (locali != null)
+    this.NE = true;
+    r localr = a(null);
+    if (localr != null)
     {
-      locali.in();
+      localr.FW();
       this.mFragmentManager.executePendingTransactions();
     }
-    AppMethodBeat.o(212884);
+    AppMethodBeat.o(193920);
   }
   
+  @Deprecated
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(212886);
+    AppMethodBeat.i(193928);
     super.onDetachedFromWindow();
-    this.Wp = false;
-    AppMethodBeat.o(212886);
+    this.NE = false;
+    AppMethodBeat.o(193928);
   }
   
+  @Deprecated
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(212888);
+    AppMethodBeat.i(193942);
     if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(212888);
+      AppMethodBeat.o(193942);
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    setCurrentTabByTag(paramParcelable.Wq);
-    AppMethodBeat.o(212888);
+    setCurrentTabByTag(paramParcelable.bDE);
+    AppMethodBeat.o(193942);
   }
   
+  @Deprecated
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(212887);
+    AppMethodBeat.i(193937);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.Wq = getCurrentTabTag();
-    AppMethodBeat.o(212887);
+    localSavedState.bDE = getCurrentTabTag();
+    AppMethodBeat.o(193937);
     return localSavedState;
   }
   
+  @Deprecated
   public void onTabChanged(String paramString)
   {
-    AppMethodBeat.i(212890);
-    if (this.Wp)
+    AppMethodBeat.i(193947);
+    if (this.NE)
     {
-      i locali = a(null);
-      if (locali != null) {
-        locali.in();
+      r localr = a(null);
+      if (localr != null) {
+        localr.FW();
       }
     }
-    if (this.Wn != null) {
-      this.Wn.onTabChanged(paramString);
+    if (this.bDC != null) {
+      this.bDC.onTabChanged(paramString);
     }
-    AppMethodBeat.o(212890);
+    AppMethodBeat.o(193947);
   }
   
+  @Deprecated
   public void setOnTabChangedListener(TabHost.OnTabChangeListener paramOnTabChangeListener)
   {
-    this.Wn = paramOnTabChangeListener;
+    this.bDC = paramOnTabChangeListener;
   }
   
   @Deprecated
   public void setup()
   {
-    AppMethodBeat.i(212883);
+    AppMethodBeat.i(193903);
     IllegalStateException localIllegalStateException = new IllegalStateException("Must call setup() that takes a Context and FragmentManager");
-    AppMethodBeat.o(212883);
+    AppMethodBeat.o(193903);
     throw localIllegalStateException;
   }
   
@@ -153,21 +166,21 @@ public class FragmentTabHost
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    String Wq;
+    String bDE;
     
     static
     {
-      AppMethodBeat.i(212879);
+      AppMethodBeat.i(193895);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(212879);
+      AppMethodBeat.o(193895);
     }
     
     SavedState(Parcel paramParcel)
     {
       super();
-      AppMethodBeat.i(212875);
-      this.Wq = paramParcel.readString();
-      AppMethodBeat.o(212875);
+      AppMethodBeat.i(193891);
+      this.bDE = paramParcel.readString();
+      AppMethodBeat.o(193891);
     }
     
     SavedState(Parcelable paramParcelable)
@@ -177,18 +190,18 @@ public class FragmentTabHost
     
     public String toString()
     {
-      AppMethodBeat.i(212878);
-      String str = "FragmentTabHost.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " curTab=" + this.Wq + "}";
-      AppMethodBeat.o(212878);
+      AppMethodBeat.i(193908);
+      String str = "FragmentTabHost.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " curTab=" + this.bDE + "}";
+      AppMethodBeat.o(193908);
       return str;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(212876);
+      AppMethodBeat.i(193901);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeString(this.Wq);
-      AppMethodBeat.o(212876);
+      paramParcel.writeString(this.bDE);
+      AppMethodBeat.o(193901);
     }
   }
   
@@ -196,7 +209,7 @@ public class FragmentTabHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.fragment.app.FragmentTabHost
  * JD-Core Version:    0.7.0.1
  */

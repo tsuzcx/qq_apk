@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.cast;
 
 public final class b$d
 {
-  public static final int dVJ = 2131308974;
-  public static final int detail_tv = 2131299646;
-  public static final int tIk = 2131298294;
-  public static final int tIl = 2131306262;
-  public static final int tIm = 2131306263;
-  public static final int tIn = 2131306276;
-  public static final int tIo = 2131307852;
-  public static final int tIp = 2131308940;
-  public static final int tIq = 2131308941;
+  public static final int detail_tv = 2131300125;
+  public static final int fYg = 2131310983;
+  public static final int wLS = 2131298534;
+  public static final int wLT = 2131307967;
+  public static final int wLU = 2131307968;
+  public static final int wLV = 2131308000;
+  public static final int wLW = 2131309669;
+  public static final int wLX = 2131310953;
+  public static final int wLY = 2131310954;
 }
 
 

@@ -10,7 +10,7 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.plugin.webview.model.ao;
-import com.tencent.mm.plugin.webview.modeltools.f;
+import com.tencent.mm.plugin.webview.modeltools.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public static JSONObject agO(String paramString)
+  public static JSONObject ZL(String paramString)
   {
     AppMethodBeat.i(78767);
     if (Util.isNullOrNil(paramString))
@@ -41,7 +41,7 @@ public final class c
     return null;
   }
   
-  public static boolean ane(String paramString)
+  public static boolean agu(String paramString)
   {
     AppMethodBeat.i(78769);
     if ((!Util.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
@@ -53,7 +53,7 @@ public final class c
     return false;
   }
   
-  public static WebViewJSSDKFileItem bkw(String paramString)
+  public static WebViewJSSDKFileItem bkh(String paramString)
   {
     AppMethodBeat.i(78768);
     if (Util.isNullOrNil(paramString))
@@ -64,7 +64,7 @@ public final class c
     }
     if (MMApplicationContext.isMMProcess())
     {
-      paramString = f.gWt().bkI(paramString);
+      paramString = g.ivZ().bks(paramString);
       AppMethodBeat.o(78768);
       return paramString;
     }

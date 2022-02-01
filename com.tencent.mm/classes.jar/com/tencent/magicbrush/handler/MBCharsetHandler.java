@@ -1,16 +1,13 @@
 package com.tencent.magicbrush.handler;
 
-import androidx.annotation.Keep;
 import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
 
-@Keep
 public class MBCharsetHandler
 {
   private static final String TAG = "MicroMsg.MBCharsetHandler";
   
-  @Keep
   static String decode(byte[] paramArrayOfByte, String paramString)
   {
     AppMethodBeat.i(139997);
@@ -35,7 +32,6 @@ public class MBCharsetHandler
     }
   }
   
-  @Keep
   public static byte[] encode(String paramString1, String paramString2)
   {
     Object localObject = null;

@@ -1,69 +1,82 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.item.b;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/EditRenderScript;", "", "path", "", "startMs", "", "endMS", "playRate", "", "(Ljava/lang/String;JJF)V", "getEndMS", "()J", "setEndMS", "(J)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getPlayRate", "()F", "setPlayRate", "(F)V", "getStartMs", "setStartMs", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/EditRenderScript;", "", "path", "", "startMs", "", "endMS", "playRate", "", "(Ljava/lang/String;JJF)V", "getEndMS", "()J", "setEndMS", "(J)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getPlayRate", "()F", "setPlayRate", "(F)V", "getStartMs", "setStartMs", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public long Idl;
-  public long gcH;
+  public long NZH;
   public String path;
-  public float pvh;
+  public float sAn;
+  public long startMs;
   
   public a(String paramString, long paramLong1, long paramLong2, float paramFloat)
   {
-    AppMethodBeat.i(218691);
+    AppMethodBeat.i(280206);
     this.path = paramString;
-    this.gcH = paramLong1;
-    this.Idl = paramLong2;
-    this.pvh = paramFloat;
-    AppMethodBeat.o(218691);
+    this.startMs = paramLong1;
+    this.NZH = paramLong2;
+    this.sAn = paramFloat;
+    AppMethodBeat.o(280206);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(218699);
-    if (this != paramObject)
+    AppMethodBeat.i(280252);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((!p.h(this.path, paramObject.path)) || (this.gcH != paramObject.gcH) || (this.Idl != paramObject.Idl) || (Float.compare(this.pvh, paramObject.pvh) != 0)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(218699);
+      AppMethodBeat.o(280252);
       return true;
     }
-    AppMethodBeat.o(218699);
-    return false;
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(280252);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (!s.p(this.path, paramObject.path))
+    {
+      AppMethodBeat.o(280252);
+      return false;
+    }
+    if (this.startMs != paramObject.startMs)
+    {
+      AppMethodBeat.o(280252);
+      return false;
+    }
+    if (this.NZH != paramObject.NZH)
+    {
+      AppMethodBeat.o(280252);
+      return false;
+    }
+    if (!s.p(Float.valueOf(this.sAn), Float.valueOf(paramObject.sAn)))
+    {
+      AppMethodBeat.o(280252);
+      return false;
+    }
+    AppMethodBeat.o(280252);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(218695);
-    String str = this.path;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      long l = this.gcH;
-      int j = (int)(l ^ l >>> 32);
-      l = this.Idl;
-      int k = (int)(l ^ l >>> 32);
-      int m = Float.floatToIntBits(this.pvh);
-      AppMethodBeat.o(218695);
-      return ((i * 31 + j) * 31 + k) * 31 + m;
-    }
+    AppMethodBeat.i(280241);
+    int i = this.path.hashCode();
+    int j = q.a..ExternalSyntheticBackport0.m(this.startMs);
+    int k = q.a..ExternalSyntheticBackport0.m(this.NZH);
+    int m = Float.floatToIntBits(this.sAn);
+    AppMethodBeat.o(280241);
+    return ((i * 31 + j) * 31 + k) * 31 + m;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(218693);
-    String str = "EditRenderScript(path=" + this.path + ", startMs=" + this.gcH + ", endMS=" + this.Idl + ", playRate=" + this.pvh + ")";
-    AppMethodBeat.o(218693);
+    AppMethodBeat.i(280225);
+    String str = "EditRenderScript(path=" + this.path + ", startMs=" + this.startMs + ", endMS=" + this.NZH + ", playRate=" + this.sAn + ')';
+    AppMethodBeat.o(280225);
     return str;
   }
 }

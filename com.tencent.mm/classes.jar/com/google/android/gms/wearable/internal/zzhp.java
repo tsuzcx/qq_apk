@@ -6,7 +6,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import com.google.android.gms.common.GooglePlayServicesUtilLight;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
 import com.google.android.gms.common.wrappers.Wrappers;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -16,9 +15,7 @@ import java.util.Arrays;
 public class zzhp
 {
   private static zzhp zzfs;
-  @VisibleForTesting
   private static final byte[] zzfu;
-  @VisibleForTesting
   private static final byte[] zzfv;
   private final Context zzft;
   
@@ -30,7 +27,6 @@ public class zzhp
     AppMethodBeat.o(101425);
   }
   
-  @VisibleForTesting
   private zzhp(Context paramContext)
   {
     AppMethodBeat.i(101418);
@@ -57,7 +53,6 @@ public class zzhp
     }
   }
   
-  @VisibleForTesting
   private static boolean zza(PackageInfo paramPackageInfo, boolean paramBoolean)
   {
     AppMethodBeat.i(101423);
@@ -161,7 +156,7 @@ public class zzhp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzhp
  * JD-Core Version:    0.7.0.1
  */

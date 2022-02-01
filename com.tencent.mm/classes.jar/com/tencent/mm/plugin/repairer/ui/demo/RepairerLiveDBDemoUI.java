@@ -1,73 +1,97 @@
 package com.tencent.mm.plugin.repairer.ui.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.livelist.MMLiveList;
-import com.tencent.mm.plugin.repairer.ui.b.a;
-import com.tencent.mm.plugin.repairer.ui.b.b;
-import com.tencent.mm.sdk.storage.observer.IStorageObserver;
-import com.tencent.mm.ui.report.MMSecDataActivity;
+import com.tencent.mm.plugin.mvvmlist.MvvmList;
+import com.tencent.mm.plugin.repairer.ui.BaseRepairerUI;
+import com.tencent.mm.plugin.repairer.ui.b.c;
+import com.tencent.mm.plugin.repairer.ui.b.d;
+import com.tencent.mm.sdk.storage.observer.StorageEventId;
+import com.tencent.mm.sdk.storage.observer.StorageEventId.Companion;
+import com.tencent.mm.sdk.storage.observer.StorageObserverEvent;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.view.recyclerview.f;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI;", "Lcom/tencent/mm/ui/report/MMSecDataActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ThreadTag", "getThreadTag", "adapter", "Lcom/tencent/mm/plugin/livelist/MMLiveRecyclerAdapter;", "Lcom/tencent/mm/plugin/repairer/ui/demo/DemoLiveListItem;", "getAdapter", "()Lcom/tencent/mm/plugin/livelist/MMLiveRecyclerAdapter;", "adapter$delegate", "Lkotlin/Lazy;", "liveList", "Lcom/tencent/mm/plugin/livelist/MMLiveList;", "getLiveList", "()Lcom/tencent/mm/plugin/livelist/MMLiveList;", "liveList$delegate", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ui-repairer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerUI;", "()V", "ThreadTag", "", "getThreadTag", "()Ljava/lang/String;", "adapter", "Lcom/tencent/mm/plugin/mvvmlist/MvvmRecyclerAdapter;", "Lcom/tencent/mm/plugin/repairer/ui/demo/DemoLiveListItem;", "getAdapter", "()Lcom/tencent/mm/plugin/mvvmlist/MvvmRecyclerAdapter;", "adapter$delegate", "Lkotlin/Lazy;", "liveList", "Lcom/tencent/mm/plugin/mvvmlist/MvvmList;", "getLiveList", "()Lcom/tencent/mm/plugin/mvvmlist/MvvmList;", "liveList$delegate", "recycleView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecycleView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecycleView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RepairerLiveDBDemoUI
-  extends MMSecDataActivity
+  extends BaseRepairerUI
 {
-  final f BiY;
-  private final f GkY;
-  final String TAG;
-  final String qNn;
-  WxRecyclerView vnF;
+  public static final RepairerLiveDBDemoUI.a OwZ;
+  private final j FWi;
+  private final String tRX;
+  final j xZP;
+  WxRecyclerView yAg;
+  
+  static
+  {
+    AppMethodBeat.i(278214);
+    OwZ = new RepairerLiveDBDemoUI.a((byte)0);
+    AppMethodBeat.o(278214);
+  }
   
   public RepairerLiveDBDemoUI()
   {
-    AppMethodBeat.i(227470);
-    this.TAG = "MicroMsg.RepairerLiveDBDemoUI";
-    this.qNn = "DemoThread";
-    this.GkY = g.ar((kotlin.g.a.a)new c(this));
-    this.BiY = g.ar((kotlin.g.a.a)new a(this));
-    AppMethodBeat.o(227470);
+    AppMethodBeat.i(278176);
+    this.tRX = "DemoThread";
+    this.FWi = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.xZP = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    AppMethodBeat.o(278176);
   }
   
-  public final MMLiveList<d> fBg()
+  private static final void a(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI, View paramView)
   {
-    AppMethodBeat.i(227466);
-    MMLiveList localMMLiveList = (MMLiveList)this.GkY.getValue();
-    AppMethodBeat.o(227466);
-    return localMMLiveList;
+    AppMethodBeat.i(278190);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramRepairerLiveDBDemoUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramRepairerLiveDBDemoUI, "this$0");
+    com.tencent.mm.ae.d.e(paramRepairerLiveDBDemoUI.tRX, (kotlin.g.a.a)f.Oxb);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(278190);
+  }
+  
+  private static final boolean a(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(278182);
+    kotlin.g.b.s.u(paramRepairerLiveDBDemoUI, "this$0");
+    paramRepairerLiveDBDemoUI.finish();
+    AppMethodBeat.o(278182);
+    return true;
+  }
+  
+  public final MvvmList<k> gNg()
+  {
+    AppMethodBeat.i(278227);
+    MvvmList localMvvmList = (MvvmList)this.FWi.getValue();
+    AppMethodBeat.o(278227);
+    return localMvvmList;
   }
   
   public final int getLayoutId()
   {
-    return b.b.IwL;
+    return b.d.Ovy;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(227469);
+    AppMethodBeat.i(278235);
     super.onCreate(paramBundle);
     setMMTitle("LiveDBDemo");
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
-    com.tencent.mm.ae.d.c(this.qNn, (kotlin.g.a.a)new e(this));
-    paramBundle = findViewById(b.a.Iwj);
-    if (paramBundle != null)
-    {
-      paramBundle.setOnClickListener((View.OnClickListener)new f(this));
-      AppMethodBeat.o(227469);
-      return;
+    setBackBtn(new RepairerLiveDBDemoUI..ExternalSyntheticLambda0(this));
+    com.tencent.mm.ae.d.e(this.tRX, (kotlin.g.a.a)new e(this));
+    paramBundle = findViewById(b.c.Ouc);
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener(new RepairerLiveDBDemoUI..ExternalSyntheticLambda1(this));
     }
-    AppMethodBeat.o(227469);
+    AppMethodBeat.o(278235);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -76,75 +100,109 @@ public final class RepairerLiveDBDemoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/livelist/MMLiveRecyclerAdapter;", "Lcom/tencent/mm/plugin/repairer/ui/demo/DemoLiveListItem;", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.livelist.h<d>>
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/mvvmlist/MvvmRecyclerAdapter;", "Lcom/tencent/mm/plugin/repairer/ui/demo/DemoLiveListItem;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.mvvmlist.g<k>>
   {
-    a(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI)
+    b(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/livelist/MMLiveList;", "Lcom/tencent/mm/plugin/repairer/ui/demo/DemoLiveListItem;", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<MMLiveList<d>>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI$buildItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements com.tencent.mm.view.recyclerview.g
   {
-    c(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI)
+    public final f<?> yF(int paramInt)
     {
-      super();
+      AppMethodBeat.i(278312);
+      f localf = (f)new d();
+      AppMethodBeat.o(278312);
+      return localf;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/mvvmlist/MvvmList;", "Lcom/tencent/mm/plugin/repairer/ui/demo/DemoLiveListItem;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    implements MenuItem.OnMenuItemClickListener
+    extends u
+    implements kotlin.g.a.a<MvvmList<k>>
   {
-    d(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
+    d(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI)
     {
-      AppMethodBeat.i(227416);
-      this.IxJ.finish();
-      AppMethodBeat.o(227416);
-      return true;
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     e(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI)
     {
       super();
     }
+    
+    private static final void a(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI, StorageObserverEvent paramStorageObserverEvent)
+    {
+      AppMethodBeat.i(278325);
+      kotlin.g.b.s.u(paramRepairerLiveDBDemoUI, "this$0");
+      kotlin.g.b.s.u(paramStorageObserverEvent, "event");
+      StorageEventId localStorageEventId = paramStorageObserverEvent.getEventId();
+      if (kotlin.g.b.s.p(localStorageEventId, StorageEventId.Companion.getINSERT()))
+      {
+        paramStorageObserverEvent = (s)paramStorageObserverEvent.getObj();
+        if (paramStorageObserverEvent != null)
+        {
+          MvvmList.a(paramRepairerLiveDBDemoUI.gNg(), (com.tencent.mm.plugin.mvvmlist.b)new k(paramStorageObserverEvent));
+          AppMethodBeat.o(278325);
+        }
+      }
+      else if (kotlin.g.b.s.p(localStorageEventId, StorageEventId.Companion.getUPDATE()))
+      {
+        paramStorageObserverEvent = (s)paramStorageObserverEvent.getObj();
+        if (paramStorageObserverEvent != null)
+        {
+          MvvmList.b(paramRepairerLiveDBDemoUI.gNg(), (com.tencent.mm.plugin.mvvmlist.b)new k(paramStorageObserverEvent));
+          AppMethodBeat.o(278325);
+        }
+      }
+      else if (kotlin.g.b.s.p(localStorageEventId, StorageEventId.Companion.getDELETE()))
+      {
+        paramStorageObserverEvent = (s)paramStorageObserverEvent.getObj();
+        if (paramStorageObserverEvent != null) {
+          paramRepairerLiveDBDemoUI.gNg().a((com.tencent.mm.plugin.mvvmlist.b)new k(paramStorageObserverEvent));
+        }
+      }
+      AppMethodBeat.o(278325);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    implements View.OnClickListener
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    f(RepairerLiveDBDemoUI paramRepairerLiveDBDemoUI) {}
+    public static final f Oxb;
     
-    public final void onClick(View paramView)
+    static
     {
-      AppMethodBeat.i(226976);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      com.tencent.mm.ae.d.c(this.IxJ.qNn, (kotlin.g.a.a)1.IxL);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/repairer/ui/demo/RepairerLiveDBDemoUI$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(226976);
+      AppMethodBeat.i(278322);
+      Oxb = new f();
+      AppMethodBeat.o(278322);
+    }
+    
+    f()
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.repairer.ui.demo.RepairerLiveDBDemoUI
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ final class LoginIndepPass$9
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128153);
-    LoginIndepPass.a(this.nes);
+    LoginIndepPass.a(this.qbg);
     AppMethodBeat.o(128153);
     return true;
   }

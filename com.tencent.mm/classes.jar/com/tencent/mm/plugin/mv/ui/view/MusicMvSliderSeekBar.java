@@ -8,10 +8,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.SliderSeekBar;
 import com.tencent.mm.plugin.mmsight.segment.SliderSeekBar.b;
 import com.tencent.mm.plugin.mv.b.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvSliderSeekBar;", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "barMode", "", "getUnscaledDrawable", "Landroid/graphics/drawable/Drawable;", "drawableRes", "iconSize", "init", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvSliderSeekBar;", "Lcom/tencent/mm/plugin/mmsight/segment/SliderSeekBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "barMode", "", "getUnscaledDrawable", "Landroid/graphics/drawable/Drawable;", "drawableRes", "iconSize", "init", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicMvSliderSeekBar
   extends SliderSeekBar
 {
@@ -25,48 +25,42 @@ public final class MusicMvSliderSeekBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final Drawable iD(int paramInt1, int paramInt2)
+  private final Drawable kh(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(227507);
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources().getDrawable(paramInt1);
-    p.j(localObject, "drawable");
-    int i = ((Drawable)localObject).getIntrinsicWidth();
+    AppMethodBeat.i(287227);
+    int i = getContext().getResources().getDrawable(paramInt1).getIntrinsicWidth();
     float f = 1.0F * paramInt2 / i;
-    localObject = getContext();
-    p.j(localObject, "context");
-    localObject = com.tencent.mm.svg.a.a.a(((Context)localObject).getResources(), paramInt1, f);
-    p.j(localObject, "SVGCompat.getSVGDrawable…rces, drawableRes, scale)");
-    AppMethodBeat.o(227507);
-    return localObject;
+    Drawable localDrawable = com.tencent.mm.svg.a.a.a(getContext().getResources(), paramInt1, f);
+    s.s(localDrawable, "getSVGDrawable(context.r…rces, drawableRes, scale)");
+    AppMethodBeat.o(287227);
+    return localDrawable;
   }
   
-  public final void eUk()
+  public final void gcY()
   {
-    AppMethodBeat.i(227510);
-    int i = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
-    this.FcR = ((Drawable)new SliderSeekBar.b(this, iD(b.g.music_mv_left_bar, i), iD(b.g.music_mv_left_bar, i)));
-    this.FcS = ((Drawable)new SliderSeekBar.b(this, iD(b.g.music_mv_right_bar, i), iD(b.g.music_mv_right_bar, i)));
-    this.Fdj = true;
+    AppMethodBeat.i(287236);
+    int i = com.tencent.mm.cd.a.fromDPToPix(getContext(), 16);
+    this.KYA = ((Drawable)new SliderSeekBar.b((SliderSeekBar)this, kh(b.g.music_mv_left_bar, i), kh(b.g.music_mv_left_bar, i)));
+    this.KYB = ((Drawable)new SliderSeekBar.b((SliderSeekBar)this, kh(b.g.music_mv_right_bar, i), kh(b.g.music_mv_right_bar, i)));
+    this.KYS = true;
     postInvalidate();
-    AppMethodBeat.o(227510);
+    AppMethodBeat.o(287236);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(227504);
+    AppMethodBeat.i(287230);
     super.init();
-    this.FcT = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
-    this.FcU = (this.FcT * 0.5F);
-    this.Fdg = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
-    eUi();
-    AppMethodBeat.o(227504);
+    this.KYC = com.tencent.mm.cd.a.fromDPToPix(getContext(), 16);
+    this.KYD = (this.KYC * 0.5F);
+    this.KYP = com.tencent.mm.cd.a.fromDPToPix(getContext(), 16);
+    this.KYv = true;
+    AppMethodBeat.o(287230);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.MusicMvSliderSeekBar
  * JD-Core Version:    0.7.0.1
  */

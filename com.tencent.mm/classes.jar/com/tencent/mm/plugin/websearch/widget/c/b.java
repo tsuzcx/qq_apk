@@ -8,7 +8,7 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  private String fXM;
+  private String eventId;
   private int x;
   private int y;
   
@@ -16,10 +16,15 @@ public final class b
   {
     this.x = paramInt1;
     this.y = paramInt2;
-    this.fXM = paramString;
+    this.eventId = paramString;
   }
   
-  public final String gRN()
+  public final String getName()
+  {
+    return "onTap";
+  }
+  
+  public final String ire()
   {
     AppMethodBeat.i(116656);
     Object localObject = new JSONObject();
@@ -27,7 +32,7 @@ public final class b
     {
       ((JSONObject)localObject).put("x", this.x);
       ((JSONObject)localObject).put("y", this.y);
-      ((JSONObject)localObject).put("eventId", this.fXM);
+      ((JSONObject)localObject).put("eventId", this.eventId);
       localObject = ((JSONObject)localObject).toString();
       AppMethodBeat.o(116656);
       return localObject;
@@ -40,15 +45,10 @@ public final class b
       }
     }
   }
-  
-  public final String getName()
-  {
-    return "onTap";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.b
  * JD-Core Version:    0.7.0.1
  */

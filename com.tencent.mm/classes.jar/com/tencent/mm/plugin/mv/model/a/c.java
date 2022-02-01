@@ -1,114 +1,71 @@
 package com.tencent.mm.plugin.mv.model.a;
 
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dat;
-import com.tencent.mm.protocal.protobuf.dau;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.pluginsdk.platformtools.f;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneMusicMvCheckPermission;", "Lcom/tencent/mm/plugin/mv/model/netscene/BaseMvNetScene;", "songInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "pageHashCode", "", "(Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/MusicLiveCheckPermissionReq;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/MusicLiveCheckPermissionReq;", "setRequest", "(Lcom/tencent/mm/protocal/protobuf/MusicLiveCheckPermissionReq;)V", "response", "Lcom/tencent/mm/protocal/protobuf/MusicLiveCheckPermissionResp;", "getResponse", "()Lcom/tencent/mm/protocal/protobuf/MusicLiveCheckPermissionResp;", "setResponse", "(Lcom/tencent/mm/protocal/protobuf/MusicLiveCheckPermissionResp;)V", "getSongInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/netscene/NetSceneCostObj;", "", "type", "", "create", "", "dispatch", "callback", "(IJJJ)V", "getCallback", "()J", "getCreate", "getDispatch", "getType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends a
 {
-  private final bds GaB;
-  private dat Gdc;
-  public dau Gdd;
-  private final String TAG;
-  private i callback;
-  private d lKU;
+  private final long LYJ;
+  private final long LYK;
+  private final long LYL;
+  private final int type;
   
-  public c(bds parambds, int paramInt)
+  public c(int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    super(paramInt);
-    AppMethodBeat.i(229921);
-    this.GaB = parambds;
-    this.TAG = "MicroMsg.Mv.NetSceneMusicMvCheckPermission";
-    parambds = new d.a();
-    parambds.vD(5286);
-    parambds.TW("/cgi-bin/micromsg-bin/musiclivecheckpermission");
-    parambds.c((com.tencent.mm.cd.a)new dat());
-    parambds.d((com.tencent.mm.cd.a)new dau());
-    parambds = parambds.bgN();
-    p.j(parambds, "commReqResp");
-    Object localObject = parambds.bhX();
-    if (localObject == null)
+    this.type = paramInt;
+    this.LYJ = paramLong1;
+    this.LYK = paramLong2;
+    this.LYL = paramLong3;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      parambds = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MusicLiveCheckPermissionReq");
-      AppMethodBeat.o(229921);
-      throw parambds;
-    }
-    this.Gdc = ((dat)localObject);
-    localObject = this.Gdc;
-    if (localObject != null) {
-      ((dat)localObject).TIn = this.GaB;
-    }
-    this.lKU = parambds;
-    AppMethodBeat.o(229921);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(229916);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.lKU, (m)this);
-    AppMethodBeat.o(229916);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 5286;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(229919);
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
-    Log.i(this.TAG, "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      params = this.callback;
-      if (params != null)
-      {
-        params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-        AppMethodBeat.o(229919);
-        return;
+      return true;
+      if (!(paramObject instanceof c)) {
+        return false;
       }
-      AppMethodBeat.o(229919);
-      return;
-    }
-    params = this.lKU;
-    if (params != null) {}
-    for (params = params.bhY(); params == null; params = null)
-    {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MusicLiveCheckPermissionResp");
-      AppMethodBeat.o(229919);
-      throw paramString;
-    }
-    this.Gdd = ((dau)params);
-    params = this.callback;
-    if (params != null)
-    {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(229919);
-      return;
-    }
-    AppMethodBeat.o(229919);
+      paramObject = (c)paramObject;
+      if (this.type != paramObject.type) {
+        return false;
+      }
+      if (this.LYJ != paramObject.LYJ) {
+        return false;
+      }
+      if (this.LYK != paramObject.LYK) {
+        return false;
+      }
+    } while (this.LYL == paramObject.LYL);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(286295);
+    int i = this.type;
+    int j = q.a..ExternalSyntheticBackport0.m(this.LYJ);
+    int k = q.a..ExternalSyntheticBackport0.m(this.LYK);
+    int m = q.a..ExternalSyntheticBackport0.m(this.LYL);
+    AppMethodBeat.o(286295);
+    return ((i * 31 + j) * 31 + k) * 31 + m;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(286280);
+    String str = this.type + ": cost:" + (this.LYL - this.LYJ) + " dispatchCost:" + (this.LYL - this.LYK) + " time:" + f.formatTime("yyyy-MM-dd HH:mm:ss", this.LYJ / 1000L);
+    AppMethodBeat.o(286280);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.model.a.c
  * JD-Core Version:    0.7.0.1
  */

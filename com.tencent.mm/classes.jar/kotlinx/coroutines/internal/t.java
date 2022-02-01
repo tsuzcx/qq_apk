@@ -1,60 +1,66 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.a.b;
-import kotlin.d.b.a.e;
-import kotlin.d.d;
-import kotlin.d.f;
-import kotlin.l;
-import kotlinx.coroutines.a;
-import kotlinx.coroutines.ay;
-import kotlinx.coroutines.y;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.f;
+import kotlinx.coroutines.cm;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/ScopeCoroutine;", "T", "Lkotlinx/coroutines/AbstractCoroutine;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "Lkotlinx/coroutines/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "uCont", "Lkotlin/coroutines/Continuation;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "isScopedCoroutine", "", "()Z", "parent", "Lkotlinx/coroutines/Job;", "getParent$kotlinx_coroutines_core", "()Lkotlinx/coroutines/Job;", "afterCompletion", "", "state", "", "afterResume", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "Lkotlinx/coroutines/internal/StackTraceElement;", "kotlinx-coroutines-core"})
-public class t<T>
-  extends a<T>
-  implements e
+@Metadata(d1={""}, d2={"FAST_SERVICE_LOADER_PROPERTY_NAME", "", "SUPPORT_MISSING", "", "getSUPPORT_MISSING$annotations", "()V", "createMissingDispatcher", "Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "cause", "", "errorHint", "throwMissingMainDispatcherException", "", "isMissing", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "tryCreateDispatcher", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "factories", "", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class t
 {
-  public final d<T> abzw;
+  private static final boolean ajAK = true;
   
-  public t(f paramf, d<? super T> paramd)
+  public static final cm a(MainDispatcherFactory paramMainDispatcherFactory, List<? extends MainDispatcherFactory> paramList)
   {
-    super(paramf, true);
-    this.abzw = paramd;
+    AppMethodBeat.i(189389);
+    try
+    {
+      paramList = paramMainDispatcherFactory.createDispatcher(paramList);
+      paramMainDispatcherFactory = paramList;
+    }
+    finally
+    {
+      for (;;)
+      {
+        paramMainDispatcherFactory = (cm)e(paramList, paramMainDispatcherFactory.hintOnError());
+      }
+    }
+    AppMethodBeat.o(189389);
+    return paramMainDispatcherFactory;
   }
   
-  public void fT(Object paramObject)
+  private static final u e(Throwable paramThrowable, String paramString)
   {
-    AppMethodBeat.i(205089);
-    this.abzw.resumeWith(y.b(paramObject, this.abzw));
-    AppMethodBeat.o(205089);
+    AppMethodBeat.i(189393);
+    if (ajAK)
+    {
+      paramThrowable = new u(paramThrowable, paramString);
+      AppMethodBeat.o(189393);
+      return paramThrowable;
+    }
+    if (paramThrowable != null)
+    {
+      AppMethodBeat.o(189393);
+      throw paramThrowable;
+    }
+    kEk();
+    paramThrowable = new f();
+    AppMethodBeat.o(189393);
+    throw paramThrowable;
   }
   
-  public void fU(Object paramObject)
+  public static final Void kEk()
   {
-    AppMethodBeat.i(205088);
-    ay.a(b.k(this.abzw), y.b(paramObject, this.abzw));
-    AppMethodBeat.o(205088);
-  }
-  
-  public final e getCallerFrame()
-  {
-    return (e)this.abzw;
-  }
-  
-  public final StackTraceElement getStackTraceElement()
-  {
-    return null;
-  }
-  
-  public final boolean iQJ()
-  {
-    return true;
+    AppMethodBeat.i(189410);
+    IllegalStateException localIllegalStateException = new IllegalStateException("Module with the Main dispatcher is missing. Add dependency providing the Main dispatcher, e.g. 'kotlinx-coroutines-android' and ensure it has the same version as 'kotlinx-coroutines-core'");
+    AppMethodBeat.o(189410);
+    throw localIllegalStateException;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.t
  * JD-Core Version:    0.7.0.1
  */

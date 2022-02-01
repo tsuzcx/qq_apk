@@ -1,46 +1,22 @@
 package com.tencent.mm.plugin.webview.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public final class b
-  extends a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/reporter/IsColdBootWebView;", "", "value", "", "(Ljava/lang/String;II)V", "None", "ColdBoot", "WarmBoot", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum b
 {
-  public final boolean a(f paramf, n paramn)
+  static
   {
-    AppMethodBeat.i(268424);
-    Object localObject = paramn.POv;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(268424);
-      return false;
-    }
-    localObject = ((IAppBrandBatchPreloadController)com.tencent.mm.kernel.h.ae(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
-    if (!Util.isNullOrNil((String)localObject)) {
-      paramf.PNo.h(paramn.POu, paramn.function + ":" + (String)localObject, null);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(268424);
-      return true;
-      paramf.PNo.h(paramn.POu, paramn.function + ":error", null);
-    }
+    AppMethodBeat.i(294714);
+    WQs = new b("None", 0);
+    WQt = new b("ColdBoot", 1);
+    WQu = new b("WarmBoot", 2);
+    WQv = new b[] { WQs, WQt, WQu };
+    AppMethodBeat.o(294714);
   }
   
-  public final String fCm()
-  {
-    return "batchPreloadMiniProgram";
-  }
-  
-  public final int fCn()
-  {
-    return 366;
-  }
+  private b() {}
 }
 
 

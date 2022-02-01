@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.taskbar.ui.TaskBarBottomView android:id="@id/nl" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/be3" android:background="@color/ac_" android:paddingTop="@dimen/k5" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <LinearLayout android:orientation="horizontal" android:id="@id/eh" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ei" android:background="@null" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/k5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/icons_outlined_multitask" android:contentDescription="@string/he" />
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_gravity="bottom" android:id="@id/eah" android:clickable="true" android:layout_width="fill_parent" android:layout_height="72.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eaj" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/eai" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_weight="0.0">
+            <ImageView android:id="@id/eao" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/eaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffececec" android:ellipsize="end" android:id="@id/ean" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
         </LinearLayout>
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="38.0dip" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
-                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="@dimen/t" android:textColor="@color/bv" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" />
-                    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom" android:id="@id/dpw" android:paddingLeft="@dimen/k5" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="23.0dip" android:src="@raw/teen_mode" app:iconColor="@color/fp" />
-                </LinearLayout>
-                <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@android:id/text2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/r" android:singleLine="true" style="@style/lq" />
-            </LinearLayout>
-        </RelativeLayout>
-        <RelativeLayout android:paddingRight="@dimen/c5" android:layout_width="@dimen/cl" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/he6" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/actionbar_icon_dark_search" android:scaleType="center" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/he7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5" android:src="@drawable/b1a" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout android:paddingRight="@dimen/c5" android:layout_width="@dimen/cl" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gdh" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_add2" android:scaleType="center" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/gdi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5" android:src="@drawable/b1a" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        </RelativeLayout>
+        <FrameLayout android:id="@id/eak" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="20.0dip" android:layout_weight="0.0" />
     </LinearLayout>
-</FrameLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

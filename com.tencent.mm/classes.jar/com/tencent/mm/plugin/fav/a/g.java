@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.fav.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.by;
+import com.tencent.mm.autogen.b.cb;
 import com.tencent.mm.plugin.fav.a.a.a;
 import com.tencent.mm.plugin.fav.a.a.b;
 import com.tencent.mm.plugin.fav.a.a.c;
 import com.tencent.mm.plugin.fav.a.a.d;
-import com.tencent.mm.plugin.findersdk.a.k;
-import com.tencent.mm.protocal.protobuf.ank;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.ann;
-import com.tencent.mm.protocal.protobuf.ano;
-import com.tencent.mm.protocal.protobuf.ant;
-import com.tencent.mm.protocal.protobuf.anu;
-import com.tencent.mm.protocal.protobuf.anw;
-import com.tencent.mm.protocal.protobuf.aob;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aoi;
-import com.tencent.mm.protocal.protobuf.aol;
-import com.tencent.mm.protocal.protobuf.aop;
-import com.tencent.mm.protocal.protobuf.aor;
-import com.tencent.mm.protocal.protobuf.bje;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.ard;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.arh;
+import com.tencent.mm.protocal.protobuf.arm;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.arp;
+import com.tencent.mm.protocal.protobuf.aru;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.asb;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.protocal.protobuf.asi;
+import com.tencent.mm.protocal.protobuf.ask;
+import com.tencent.mm.protocal.protobuf.bvl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -30,49 +30,33 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-public final class g
-  extends by
+public class g
+  extends cb
 {
+  private static g.a Act;
+  private static g.a Acu;
   public static IAutoDBItem.MAutoDBInfo info;
-  private static a wGk;
-  private static a wGl;
-  public String fDQ;
-  public boolean wGh;
-  public g wGi;
-  public String wGj;
+  public boolean Acq;
+  public g Acr;
+  public String Acs;
+  public String hIG;
   
   static
   {
     AppMethodBeat.i(103387);
-    info = by.aoY();
-    wGk = new a()
-    {
-      public final void log(String paramAnonymousString)
-      {
-        AppMethodBeat.i(103370);
-        Log.d("MicroMsg.FavItemInfo", paramAnonymousString);
-        AppMethodBeat.o(103370);
-      }
-    };
-    wGl = new a()
-    {
-      public final void log(String paramAnonymousString)
-      {
-        AppMethodBeat.i(103371);
-        Log.e("MicroMsg.FavItemInfo", paramAnonymousString);
-        AppMethodBeat.o(103371);
-      }
-    };
+    info = cb.aJm();
+    Act = new g.1();
+    Acu = new g.2();
     AppMethodBeat.o(103387);
   }
   
   public g()
   {
     AppMethodBeat.i(103372);
-    this.wGh = false;
-    this.wGi = null;
-    this.fDQ = "";
-    this.wGj = "";
+    this.Acq = false;
+    this.Acr = null;
+    this.hIG = "";
+    this.Acs = "";
     this.field_flag = -1;
     this.field_fromUser = "";
     this.field_toUser = "";
@@ -84,106 +68,106 @@ public final class g
     this.field_updateSeq = -1;
     this.field_xml = "";
     this.field_itemStatus = 0;
-    djz();
+    dQk();
     AppMethodBeat.o(103372);
   }
   
-  private static void a(String paramString, a parama, ant paramant)
+  private static void a(String paramString, g.a parama, arm paramarm)
   {
     AppMethodBeat.i(103380);
-    if (paramant == null)
+    if (paramarm == null)
     {
       AppMethodBeat.o(103380);
       return;
     }
     parama.log(paramString + " ----loc item----");
-    parama.log(paramString + "  lng: " + paramant.lng);
-    parama.log(paramString + "  lat: " + paramant.lat);
-    parama.log(paramString + "  scale: " + paramant.fKJ);
-    parama.log(paramString + "  label: " + paramant.label);
-    parama.log(paramString + "  poiname: " + paramant.fPN);
+    parama.log(paramString + "  lng: " + paramarm.lng);
+    parama.log(paramString + "  lat: " + paramarm.lat);
+    parama.log(paramString + "  scale: " + paramarm.hQp);
+    parama.log(paramString + "  label: " + paramarm.label);
+    parama.log(paramString + "  poiname: " + paramarm.hVI);
     AppMethodBeat.o(103380);
   }
   
-  private static void a(String paramString, a parama, anw paramanw)
+  private static void a(String paramString, g.a parama, arp paramarp)
   {
     AppMethodBeat.i(103378);
-    if (paramanw == null)
+    if (paramarp == null)
     {
       AppMethodBeat.o(103378);
       return;
     }
     parama.log(paramString + " ----noteInfoItem item----");
-    parama.log(paramString + "  author: " + paramanw.SAu);
-    parama.log(paramString + "  editor: " + paramanw.SAv);
+    parama.log(paramString + "  author: " + paramarp.ZBm);
+    parama.log(paramString + "  editor: " + paramarp.ZBn);
     AppMethodBeat.o(103378);
   }
   
-  private static void a(String paramString, a parama, aob paramaob)
+  private static void a(String paramString, g.a parama, aru paramaru)
   {
     AppMethodBeat.i(103379);
-    if (paramaob == null)
+    if (paramaru == null)
     {
       AppMethodBeat.o(103379);
       return;
     }
     parama.log(paramString + " ----product item----");
-    parama.log(paramString + "  title: " + paramaob.title);
-    parama.log(paramString + "  desc: " + paramaob.desc);
-    parama.log(paramString + "  thumbUrl: " + paramaob.thumbUrl);
-    parama.log(paramString + "  type: " + paramaob.type);
+    parama.log(paramString + "  title: " + paramaru.title);
+    parama.log(paramString + "  desc: " + paramaru.desc);
+    parama.log(paramString + "  thumbUrl: " + paramaru.thumbUrl);
+    parama.log(paramString + "  type: " + paramaru.type);
     AppMethodBeat.o(103379);
   }
   
-  private static void a(String paramString, a parama, aol paramaol)
+  private static void a(String paramString, g.a parama, ase paramase)
   {
     AppMethodBeat.i(103377);
-    if (paramaol == null)
+    if (paramase == null)
     {
       AppMethodBeat.o(103377);
       return;
     }
     parama.log(paramString + " ----tv item----");
-    parama.log(paramString + "  title: " + paramaol.title);
-    parama.log(paramString + "  desc: " + paramaol.desc);
-    parama.log(paramString + "  thumbUrl: " + paramaol.thumbUrl);
+    parama.log(paramString + "  title: " + paramase.title);
+    parama.log(paramString + "  desc: " + paramase.desc);
+    parama.log(paramString + "  thumbUrl: " + paramase.thumbUrl);
     AppMethodBeat.o(103377);
   }
   
-  private static void a(String paramString, a parama, aor paramaor)
+  private static void a(String paramString, g.a parama, ask paramask)
   {
     AppMethodBeat.i(103381);
-    if (paramaor == null)
+    if (paramask == null)
     {
       AppMethodBeat.o(103381);
       return;
     }
     parama.log(paramString + " ----url item----");
-    parama.log(paramString + "  title: " + paramaor.title);
-    parama.log(paramString + "  desc: " + paramaor.desc);
-    parama.log(paramString + "  cleanUrl: " + paramaor.SBc);
-    parama.log(paramString + "  thumbUrl: " + paramaor.thumbUrl);
-    parama.log(paramString + "  opencache: " + paramaor.SBe);
-    parama.log(paramString + "  topstory: " + paramaor.SBh);
+    parama.log(paramString + "  title: " + paramask.title);
+    parama.log(paramString + "  desc: " + paramask.desc);
+    parama.log(paramString + "  cleanUrl: " + paramask.ZBV);
+    parama.log(paramString + "  thumbUrl: " + paramask.thumbUrl);
+    parama.log(paramString + "  opencache: " + paramask.ZBX);
+    parama.log(paramString + "  topstory: " + paramask.ZCa);
     AppMethodBeat.o(103381);
   }
   
-  private void djz()
+  private void dQk()
   {
     AppMethodBeat.i(103373);
-    this.field_favProto = new aoc();
-    aoi localaoi = new aoi();
-    localaoi.arz(1);
-    this.field_favProto.a(localaoi);
-    this.field_favProto.c(new aor());
-    this.field_favProto.f(new anu());
-    this.field_favProto.d(new ant());
-    this.field_favProto.b(new aob());
-    this.field_favProto.b(new aol());
-    this.field_favProto.d(new bje());
-    this.field_favProto.arx(-1);
-    this.field_tagProto = new aop();
-    this.field_favProto.a(new anw());
+    this.field_favProto = new arv();
+    asb localasb = new asb();
+    localasb.axH(1);
+    this.field_favProto.a(localasb);
+    this.field_favProto.c(new ask());
+    this.field_favProto.f(new arn());
+    this.field_favProto.d(new arm());
+    this.field_favProto.b(new aru());
+    this.field_favProto.b(new ase());
+    this.field_favProto.h(new bvl());
+    this.field_favProto.axF(-1);
+    this.field_tagProto = new asi();
+    this.field_favProto.a(new arp());
     AppMethodBeat.o(103373);
   }
   
@@ -196,83 +180,83 @@ public final class g
     localStringBuffer1.append(">");
     Object localObject2 = paramg.field_favProto;
     StringBuilder localStringBuilder = new StringBuilder();
-    if (!Util.isNullOrNil(((aoc)localObject2).title)) {
-      localStringBuilder.append("<title>").append(Util.escapeStringForXml(((aoc)localObject2).title)).append("</title>");
+    if (!Util.isNullOrNil(((arv)localObject2).title)) {
+      localStringBuilder.append("<title>").append(Util.escapeStringForXml(((arv)localObject2).title)).append("</title>");
     }
-    if (!Util.isNullOrNil(((aoc)localObject2).desc)) {
-      localStringBuilder.append("<desc>").append(Util.escapeStringForXml(((aoc)localObject2).desc)).append("</desc>");
+    if (!Util.isNullOrNil(((arv)localObject2).desc)) {
+      localStringBuilder.append("<desc>").append(Util.escapeStringForXml(((arv)localObject2).desc)).append("</desc>");
     }
-    if (((aoc)localObject2).uTt > 0L) {
-      localStringBuilder.append("<edittime>").append(((aoc)localObject2).uTt).append("</edittime>");
+    if (((arv)localObject2).ygh > 0L) {
+      localStringBuilder.append("<edittime>").append(((arv)localObject2).ygh).append("</edittime>");
     }
-    if ((((aoc)localObject2).RDh != null) && (!Util.isNullOrNil(((aoc)localObject2).RDh.SAv))) {
-      localStringBuilder.append("<editusr>").append(((aoc)localObject2).RDh.SAv).append("</editusr>");
+    if ((((arv)localObject2).YzK != null) && (!Util.isNullOrNil(((arv)localObject2).YzK.ZBn))) {
+      localStringBuilder.append("<editusr>").append(((arv)localObject2).YzK.ZBn).append("</editusr>");
     }
-    if (!Util.isNullOrNil(((aoc)localObject2).remark))
+    if (!Util.isNullOrNil(((arv)localObject2).remark))
     {
       localStringBuilder.append("<remark ");
-      if (((aoc)localObject2).Szy > 0L) {
-        localStringBuilder.append(" time ='").append(((aoc)localObject2).Szy).append("'");
+      if (((arv)localObject2).ZAq > 0L) {
+        localStringBuilder.append(" time ='").append(((arv)localObject2).ZAq).append("'");
       }
-      localStringBuilder.append(">").append(Util.escapeStringForXml(((aoc)localObject2).remark)).append("</remark>");
+      localStringBuilder.append(">").append(Util.escapeStringForXml(((arv)localObject2).remark)).append("</remark>");
     }
-    if (((aoc)localObject2).SzB) {
-      localStringBuilder.append("<ctrlflag>").append(((aoc)localObject2).SzA).append("</ctrlflag>");
+    if (((arv)localObject2).ZAt) {
+      localStringBuilder.append("<ctrlflag>").append(((arv)localObject2).ZAs).append("</ctrlflag>");
     }
-    if (((aoc)localObject2).SAE)
+    if (((arv)localObject2).ZBw)
     {
-      localStringBuilder.append("<version>").append(((aoc)localObject2).version).append("</version>");
-      localObject1 = ((aoc)localObject2).SAB;
-      if ((localObject1 != null) && (((aoi)localObject1).computeSize() != 0)) {
+      localStringBuilder.append("<version>").append(((arv)localObject2).version).append("</version>");
+      localObject1 = ((arv)localObject2).ZBt;
+      if ((localObject1 != null) && (((asb)localObject1).computeSize() != 0)) {
         break label679;
       }
       Log.w("MicroMsg.FavSourceItemParser", "klem toXml, source item empty");
       localObject1 = "";
       label381:
       localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(a.dK(((aoc)localObject2).syG));
-      localObject1 = paramg.field_favProto.Szp;
-      if ((localObject1 != null) && (((ant)localObject1).computeSize() != 0)) {
+      localStringBuilder.append(a.fF(((arv)localObject2).vEn));
+      localObject1 = paramg.field_favProto.ZAh;
+      if ((localObject1 != null) && (((arm)localObject1).computeSize() != 0)) {
         break label1029;
       }
       Log.d("MicroMsg.FavLocItemParser", "klem toXml, loc item empty");
       localObject1 = "";
       label431:
       localStringBuilder.append((String)localObject1);
-      localObject1 = paramg.field_favProto.Szr;
-      if ((localObject1 != null) && (((aor)localObject1).computeSize() != 0)) {
+      localObject1 = paramg.field_favProto.ZAj;
+      if ((localObject1 != null) && (((ask)localObject1).computeSize() != 0)) {
         break label1213;
       }
       Log.d("MicroMsg.FavUrlItemParser", "klem toXml, url item empty");
       localObject1 = "";
       label468:
       localStringBuilder.append((String)localObject1);
-      localObject1 = paramg.field_favProto.Szt;
-      if ((localObject1 != null) && (((aob)localObject1).computeSize() != 0)) {
+      localObject1 = paramg.field_favProto.ZAl;
+      if ((localObject1 != null) && (((aru)localObject1).computeSize() != 0)) {
         break label1534;
       }
       Log.d("MicroMsg.FavProductItemParser", "klem toXml, product item empty");
       localObject1 = "";
       label505:
       localStringBuilder.append((String)localObject1);
-      localObject1 = paramg.field_favProto.Szv;
-      if ((localObject1 != null) && (((aol)localObject1).computeSize() != 0)) {
+      localObject1 = paramg.field_favProto.ZAn;
+      if ((localObject1 != null) && (((ase)localObject1).computeSize() != 0)) {
         break label1736;
       }
       Log.d("MicroMsg.FavTVItemParser", "klem toXml, product item empty");
       localObject1 = "";
       label542:
       localStringBuilder.append((String)localObject1);
-      localObject1 = ((aoc)localObject2).RDh;
-      if ((localObject1 != null) && (((anw)localObject1).computeSize() != 0)) {
+      localObject1 = ((arv)localObject2).YzK;
+      if ((localObject1 != null) && (((arp)localObject1).computeSize() != 0)) {
         break label1900;
       }
       Log.w("MicroMsg.FavNoteInfoItemParser", "klem toXml, source item empty");
       localObject1 = "";
       label577:
       localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(k.b(((aoc)localObject2).SzJ));
-      localObject1 = paramg.field_favProto.SzE;
+      localStringBuilder.append(q.d(((arv)localObject2).ZAB));
+      localObject1 = paramg.field_favProto.ZAw;
       if (localObject1 != null) {
         break label1986;
       }
@@ -294,36 +278,36 @@ public final class g
       label679:
       StringBuffer localStringBuffer2 = new StringBuffer();
       localStringBuffer2.append("<source");
-      if (((aoi)localObject1).SzX) {
-        localStringBuffer2.append(" sourcetype='").append(((aoi)localObject1).sourceType).append("'");
+      if (((asb)localObject1).ZAP) {
+        localStringBuffer2.append(" sourcetype='").append(((asb)localObject1).sourceType).append("'");
       }
-      if (((aoi)localObject1).SAK) {
-        localStringBuffer2.append(" sourceid='").append(((aoi)localObject1).SAJ).append("'");
+      if (((asb)localObject1).ZBC) {
+        localStringBuffer2.append(" sourceid='").append(((asb)localObject1).ZBB).append("'");
       }
       localStringBuffer2.append(">");
-      if (((aoi)localObject1).SzY) {
-        localStringBuffer2.append("<fromusr>").append(Util.escapeStringForXml(((aoi)localObject1).fLi)).append("</fromusr>");
+      if (((asb)localObject1).ZAQ) {
+        localStringBuffer2.append("<fromusr>").append(Util.escapeStringForXml(((asb)localObject1).hQQ)).append("</fromusr>");
       }
-      if (((aoi)localObject1).SzZ) {
-        localStringBuffer2.append("<tousr>").append(Util.escapeStringForXml(((aoi)localObject1).toUser)).append("</tousr>");
+      if (((asb)localObject1).ZAR) {
+        localStringBuffer2.append("<tousr>").append(Util.escapeStringForXml(((asb)localObject1).toUser)).append("</tousr>");
       }
-      if (((aoi)localObject1).SAc) {
-        localStringBuffer2.append("<realchatname>").append(Util.escapeStringForXml(((aoi)localObject1).SAb)).append("</realchatname>");
+      if (((asb)localObject1).ZAU) {
+        localStringBuffer2.append("<realchatname>").append(Util.escapeStringForXml(((asb)localObject1).ZAT)).append("</realchatname>");
       }
-      if (((aoi)localObject1).SAd) {
-        localStringBuffer2.append("<msgid>").append(((aoi)localObject1).msgId).append("</msgid>");
+      if (((asb)localObject1).ZAV) {
+        localStringBuffer2.append("<msgid>").append(((asb)localObject1).msgId).append("</msgid>");
       }
-      if (((aoi)localObject1).SAe) {
-        localStringBuffer2.append("<eventid>").append(((aoi)localObject1).fXM).append("</eventid>");
+      if (((asb)localObject1).ZAW) {
+        localStringBuffer2.append("<eventid>").append(((asb)localObject1).eventId).append("</eventid>");
       }
-      if (((aoi)localObject1).SAf) {
-        localStringBuffer2.append("<appid>").append(((aoi)localObject1).appId).append("</appid>");
+      if (((asb)localObject1).ZAX) {
+        localStringBuffer2.append("<appid>").append(((asb)localObject1).appId).append("</appid>");
       }
-      if (((aoi)localObject1).SAg) {
-        localStringBuffer2.append("<link>").append(Util.escapeStringForXml(((aoi)localObject1).link)).append("</link>");
+      if (((asb)localObject1).ZAY) {
+        localStringBuffer2.append("<link>").append(Util.escapeStringForXml(((asb)localObject1).link)).append("</link>");
       }
-      if (((aoi)localObject1).SAj) {
-        localStringBuffer2.append("<brandid>").append(Util.escapeStringForXml(((aoi)localObject1).fuO)).append("</brandid>");
+      if (((asb)localObject1).ZBb) {
+        localStringBuffer2.append("<brandid>").append(Util.escapeStringForXml(((asb)localObject1).hzi)).append("</brandid>");
       }
       localStringBuffer2.append("</source>");
       localObject1 = localStringBuffer2.toString();
@@ -331,20 +315,20 @@ public final class g
       label1029:
       localStringBuffer2 = new StringBuffer();
       localStringBuffer2.append("<locitem>");
-      if (((ant)localObject1).SAr) {
-        localStringBuffer2.append("<label>").append(Util.escapeStringForXml(((ant)localObject1).label)).append("</label>");
+      if (((arm)localObject1).ZBj) {
+        localStringBuffer2.append("<label>").append(Util.escapeStringForXml(((arm)localObject1).label)).append("</label>");
       }
-      if (((ant)localObject1).SAp) {
-        localStringBuffer2.append("<lat>").append(((ant)localObject1).lat).append("</lat>");
+      if (((arm)localObject1).ZBh) {
+        localStringBuffer2.append("<lat>").append(((arm)localObject1).lat).append("</lat>");
       }
-      if (((ant)localObject1).SAo) {
-        localStringBuffer2.append("<lng>").append(((ant)localObject1).lng).append("</lng>");
+      if (((arm)localObject1).ZBg) {
+        localStringBuffer2.append("<lng>").append(((arm)localObject1).lng).append("</lng>");
       }
-      if (((ant)localObject1).SAq) {
-        localStringBuffer2.append("<scale>").append(((ant)localObject1).fKJ).append("</scale>");
+      if (((arm)localObject1).ZBi) {
+        localStringBuffer2.append("<scale>").append(((arm)localObject1).hQp).append("</scale>");
       }
-      if (((ant)localObject1).SAs) {
-        localStringBuffer2.append("<poiname>").append(((ant)localObject1).fPN).append("</poiname>");
+      if (((arm)localObject1).ZBk) {
+        localStringBuffer2.append("<poiname>").append(((arm)localObject1).hVI).append("</poiname>");
       }
       localStringBuffer2.append("</locitem>");
       localObject1 = localStringBuffer2.toString();
@@ -352,53 +336,53 @@ public final class g
       label1213:
       localStringBuffer2 = new StringBuffer();
       localStringBuffer2.append("<weburlitem>");
-      if (((aor)localObject1).SBd) {
-        localStringBuffer2.append("<clean_url>").append(Util.escapeStringForXml(((aor)localObject1).SBc)).append("</clean_url>");
+      if (((ask)localObject1).ZBW) {
+        localStringBuffer2.append("<clean_url>").append(Util.escapeStringForXml(((ask)localObject1).ZBV)).append("</clean_url>");
       }
-      if (((aor)localObject1).SxI) {
-        localStringBuffer2.append("<pagedesc>").append(Util.escapeStringForXml(((aor)localObject1).desc)).append("</pagedesc>");
+      if (((ask)localObject1).ZyA) {
+        localStringBuffer2.append("<pagedesc>").append(Util.escapeStringForXml(((ask)localObject1).desc)).append("</pagedesc>");
       }
-      if (((aor)localObject1).SAy) {
-        localStringBuffer2.append("<pagethumb_url>").append(Util.escapeStringForXml(((aor)localObject1).thumbUrl)).append("</pagethumb_url>");
+      if (((ask)localObject1).ZBq) {
+        localStringBuffer2.append("<pagethumb_url>").append(Util.escapeStringForXml(((ask)localObject1).thumbUrl)).append("</pagethumb_url>");
       }
-      if (((aor)localObject1).SxH) {
-        localStringBuffer2.append("<pagetitle>").append(Util.escapeStringForXml(((aor)localObject1).title)).append("</pagetitle>");
+      if (((ask)localObject1).Zyz) {
+        localStringBuffer2.append("<pagetitle>").append(Util.escapeStringForXml(((ask)localObject1).title)).append("</pagetitle>");
       }
-      if (((aor)localObject1).SBf) {
-        localStringBuffer2.append("<opencache>").append(((aor)localObject1).SBe).append("</opencache>");
+      if (((ask)localObject1).ZBY) {
+        localStringBuffer2.append("<opencache>").append(((ask)localObject1).ZBX).append("</opencache>");
       }
-      if (((aor)localObject1).SBg) {
-        localStringBuffer2.append("<contentattr>").append(((aor)localObject1).contentattr).append("</contentattr>");
+      if (((ask)localObject1).ZBZ) {
+        localStringBuffer2.append("<contentattr>").append(((ask)localObject1).contentattr).append("</contentattr>");
       }
-      if (((aor)localObject1).SyR) {
-        localStringBuffer2.append("<canvasPageXml>").append(((aor)localObject1).canvasPageXml).append("</canvasPageXml>");
+      if (((ask)localObject1).ZzJ) {
+        localStringBuffer2.append("<canvasPageXml>").append(((ask)localObject1).canvasPageXml).append("</canvasPageXml>");
       }
-      if (((aor)localObject1).SBi) {
-        localStringBuffer2.append("<wsVideoFlowXml>").append(Util.escapeStringForXml(((aor)localObject1).SBh)).append("</wsVideoFlowXml>");
+      if (((ask)localObject1).ZCb) {
+        localStringBuffer2.append("<wsVideoFlowXml>").append(Util.escapeStringForXml(((ask)localObject1).ZCa)).append("</wsVideoFlowXml>");
       }
-      localStringBuffer2.append("<forwardflag>").append(((aor)localObject1).mjT).append("</forwardflag>");
-      localStringBuffer2.append(b.a(paramg.field_favProto.PTL));
+      localStringBuffer2.append("<forwardflag>").append(((ask)localObject1).pdq).append("</forwardflag>");
+      localStringBuffer2.append(b.a(paramg.field_favProto.WKx));
       localStringBuffer2.append("</weburlitem>");
       localObject1 = localStringBuffer2.toString();
       break label468;
       label1534:
       localStringBuffer2 = new StringBuffer();
       localStringBuffer2.append("<productitem");
-      if (((aob)localObject1).SAA) {
-        localStringBuffer2.append(" type='").append(((aob)localObject1).type).append("'");
+      if (((aru)localObject1).ZBs) {
+        localStringBuffer2.append(" type='").append(((aru)localObject1).type).append("'");
       }
       localStringBuffer2.append(">");
-      if (((aob)localObject1).SxH) {
-        localStringBuffer2.append("<producttitle>").append(Util.escapeStringForXml(((aob)localObject1).title)).append("</producttitle>");
+      if (((aru)localObject1).Zyz) {
+        localStringBuffer2.append("<producttitle>").append(Util.escapeStringForXml(((aru)localObject1).title)).append("</producttitle>");
       }
-      if (((aob)localObject1).SxI) {
-        localStringBuffer2.append("<productdesc>").append(Util.escapeStringForXml(((aob)localObject1).desc)).append("</productdesc>");
+      if (((aru)localObject1).ZyA) {
+        localStringBuffer2.append("<productdesc>").append(Util.escapeStringForXml(((aru)localObject1).desc)).append("</productdesc>");
       }
-      if (((aob)localObject1).SAy) {
-        localStringBuffer2.append("<productthumb_url>").append(Util.escapeStringForXml(((aob)localObject1).thumbUrl)).append("</productthumb_url>");
+      if (((aru)localObject1).ZBq) {
+        localStringBuffer2.append("<productthumb_url>").append(Util.escapeStringForXml(((aru)localObject1).thumbUrl)).append("</productthumb_url>");
       }
-      if (((aob)localObject1).SAz) {
-        localStringBuffer2.append("<productinfo>").append(Util.escapeStringForXml(((aob)localObject1).fTp)).append("</productinfo>");
+      if (((aru)localObject1).ZBr) {
+        localStringBuffer2.append("<productinfo>").append(Util.escapeStringForXml(((aru)localObject1).hZn)).append("</productinfo>");
       }
       localStringBuffer2.append("</productitem>");
       localObject1 = localStringBuffer2.toString();
@@ -406,17 +390,17 @@ public final class g
       label1736:
       localStringBuffer2 = new StringBuffer();
       localStringBuffer2.append("<tvitem>");
-      if (((aol)localObject1).SxH) {
-        localStringBuffer2.append("<tvtitle>").append(Util.escapeStringForXml(((aol)localObject1).title)).append("</tvtitle>");
+      if (((ase)localObject1).Zyz) {
+        localStringBuffer2.append("<tvtitle>").append(Util.escapeStringForXml(((ase)localObject1).title)).append("</tvtitle>");
       }
-      if (((aol)localObject1).SxI) {
-        localStringBuffer2.append("<tvdesc>").append(Util.escapeStringForXml(((aol)localObject1).desc)).append("</tvdesc>");
+      if (((ase)localObject1).ZyA) {
+        localStringBuffer2.append("<tvdesc>").append(Util.escapeStringForXml(((ase)localObject1).desc)).append("</tvdesc>");
       }
-      if (((aol)localObject1).SAy) {
-        localStringBuffer2.append("<tvthumb_url>").append(Util.escapeStringForXml(((aol)localObject1).thumbUrl)).append("</tvthumb_url>");
+      if (((ase)localObject1).ZBq) {
+        localStringBuffer2.append("<tvthumb_url>").append(Util.escapeStringForXml(((ase)localObject1).thumbUrl)).append("</tvthumb_url>");
       }
-      if (((aol)localObject1).SAz) {
-        localStringBuffer2.append("<tvinfo>").append(Util.escapeStringForXml(((aol)localObject1).fTp)).append("</tvinfo>");
+      if (((ase)localObject1).ZBr) {
+        localStringBuffer2.append("<tvinfo>").append(Util.escapeStringForXml(((ase)localObject1).hZn)).append("</tvinfo>");
       }
       localStringBuffer2.append("</tvitem>");
       localObject1 = localStringBuffer2.toString();
@@ -424,31 +408,32 @@ public final class g
       label1900:
       localStringBuffer2 = new StringBuffer();
       localStringBuffer2.append("<noteinfo>");
-      localStringBuffer2.append("<noteauthor>").append(Util.escapeStringForXml(((anw)localObject1).SAu)).append("</noteauthor>");
-      localStringBuffer2.append("<noteeditor>").append(Util.escapeStringForXml(((anw)localObject1).SAv)).append("</noteeditor>");
+      localStringBuffer2.append("<noteauthor>").append(Util.escapeStringForXml(((arp)localObject1).ZBm)).append("</noteauthor>");
+      localStringBuffer2.append("<noteeditor>").append(Util.escapeStringForXml(((arp)localObject1).ZBn)).append("</noteeditor>");
       localStringBuffer2.append("</noteinfo>");
       localObject1 = localStringBuffer2.toString();
       break label577;
       label1986:
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("<appbranditem>");
-      ((StringBuilder)localObject2).append("<username>").append(Util.escapeStringForXml(((ank)localObject1).username)).append("</username>");
-      ((StringBuilder)localObject2).append("<appid>").append(Util.escapeStringForXml(((ank)localObject1).appId)).append("</appid>");
-      ((StringBuilder)localObject2).append("<pkgtype>").append(((ank)localObject1).fES).append("</pkgtype>");
-      ((StringBuilder)localObject2).append("<iconurl>").append(Util.escapeStringForXml(((ank)localObject1).iconUrl)).append("</iconurl>");
-      ((StringBuilder)localObject2).append("<type>").append(((ank)localObject1).type).append("</type>");
-      ((StringBuilder)localObject2).append("<pagepath>").append(Util.escapeStringForXml(((ank)localObject1).fve)).append("</pagepath>");
-      ((StringBuilder)localObject2).append("<sourcedisplayname>").append(Util.escapeStringForXml(((ank)localObject1).SxE)).append("</sourcedisplayname>");
-      ((StringBuilder)localObject2).append("<version>").append(((ank)localObject1).version).append("</version>");
-      ((StringBuilder)localObject2).append("<disableforward>").append(((ank)localObject1).otE).append("</disableforward>");
-      ((StringBuilder)localObject2).append("<tradingguaranteeflag>").append(((ank)localObject1).nYp).append("</tradingguaranteeflag>");
-      ((StringBuilder)localObject2).append("<messageextradata>").append(String.format("<![CDATA[%s]]>", new Object[] { ((ank)localObject1).fXg })).append("</messageextradata>");
-      ((StringBuilder)localObject2).append("<subtype>").append(((ank)localObject1).subType).append("</subtype>");
+      ((StringBuilder)localObject2).append("<username>").append(Util.escapeStringForXml(((ard)localObject1).username)).append("</username>");
+      ((StringBuilder)localObject2).append("<appid>").append(Util.escapeStringForXml(((ard)localObject1).appId)).append("</appid>");
+      ((StringBuilder)localObject2).append("<pkgtype>").append(((ard)localObject1).hJK).append("</pkgtype>");
+      ((StringBuilder)localObject2).append("<iconurl>").append(Util.escapeStringForXml(((ard)localObject1).iconUrl)).append("</iconurl>");
+      ((StringBuilder)localObject2).append("<type>").append(((ard)localObject1).type).append("</type>");
+      ((StringBuilder)localObject2).append("<pagepath>").append(Util.escapeStringForXml(((ard)localObject1).hzy)).append("</pagepath>");
+      ((StringBuilder)localObject2).append("<sourcedisplayname>").append(Util.escapeStringForXml(((ard)localObject1).Zyw)).append("</sourcedisplayname>");
+      ((StringBuilder)localObject2).append("<version>").append(((ard)localObject1).version).append("</version>");
+      ((StringBuilder)localObject2).append("<disableforward>").append(((ard)localObject1).rxs).append("</disableforward>");
+      ((StringBuilder)localObject2).append("<tradingguaranteeflag>").append(((ard)localObject1).rbZ).append("</tradingguaranteeflag>");
+      ((StringBuilder)localObject2).append("<showRelievedBuyFlag>").append(((ard)localObject1).nOX).append("</showRelievedBuyFlag>");
+      ((StringBuilder)localObject2).append("<messageextradata>").append(String.format("<![CDATA[%s]]>", new Object[] { ((ard)localObject1).idf })).append("</messageextradata>");
+      ((StringBuilder)localObject2).append("<subtype>").append(((ard)localObject1).subType).append("</subtype>");
       ((StringBuilder)localObject2).append("</appbranditem>");
     }
   }
   
-  public final g azR(String paramString)
+  public final g atX(String paramString)
   {
     AppMethodBeat.i(103375);
     if ((paramString == null) || (paramString.equals("")))
@@ -468,43 +453,43 @@ public final class g
     {
       try
       {
-        djz();
-        aoc localaoc = this.field_favProto;
-        localaoc.btv((String)localMap.get(".favitem.title"));
-        localaoc.btw((String)localMap.get(".favitem.desc"));
-        localaoc.btu((String)localMap.get(".favitem.remark"));
-        localaoc.Uc(Util.getLong((String)localMap.get(".favitem.remark.$time"), 0L));
+        dQk();
+        arv localarv = this.field_favProto;
+        localarv.btm((String)localMap.get(".favitem.title"));
+        localarv.btn((String)localMap.get(".favitem.desc"));
+        localarv.btl((String)localMap.get(".favitem.remark"));
+        localarv.ys(Util.getLong((String)localMap.get(".favitem.remark.$time"), 0L));
         localObject = (String)localMap.get(".favitem.edittime");
-        localaoc.ary(Util.getInt((String)localMap.get(".favitem.version"), 0));
-        localaoc.Ud(Util.getLong((String)localObject, 0L));
-        localaoc.arx(Util.getInt((String)localMap.get(".favitem.ctrlflag"), -1));
-        localObject = localaoc.SAB;
-        ((aoi)localObject).arz(Util.getInt((String)localMap.get(".favitem.source" + ".$sourcetype"), 0));
-        ((aoi)localObject).btz((String)localMap.get(".favitem.source" + ".$sourceid"));
-        ((aoi)localObject).btx((String)localMap.get(".favitem.source" + ".fromusr"));
-        ((aoi)localObject).bty((String)localMap.get(".favitem.source" + ".tousr"));
-        ((aoi)localObject).btA((String)localMap.get(".favitem.source" + ".realchatname"));
-        ((aoi)localObject).Ue(Util.getLong((String)localMap.get(".favitem.source" + ".createtime"), 0L));
-        ((aoi)localObject).btB((String)localMap.get(".favitem.source" + ".msgid"));
-        ((aoi)localObject).btC((String)localMap.get(".favitem.source" + ".eventid"));
-        ((aoi)localObject).btD((String)localMap.get(".favitem.source" + ".appid"));
-        ((aoi)localObject).btE((String)localMap.get(".favitem.source" + ".link"));
-        ((aoi)localObject).btF((String)localMap.get(".favitem.source" + ".brandid"));
-        c.a(paramString, localaoc);
-        paramString = localaoc.Szp;
+        localarv.axG(Util.getInt((String)localMap.get(".favitem.version"), 0));
+        localarv.yt(Util.getLong((String)localObject, 0L));
+        localarv.axF(Util.getInt((String)localMap.get(".favitem.ctrlflag"), -1));
+        localObject = localarv.ZBt;
+        ((asb)localObject).axH(Util.getInt((String)localMap.get(".favitem.source" + ".$sourcetype"), 0));
+        ((asb)localObject).btq((String)localMap.get(".favitem.source" + ".$sourceid"));
+        ((asb)localObject).bto((String)localMap.get(".favitem.source" + ".fromusr"));
+        ((asb)localObject).btp((String)localMap.get(".favitem.source" + ".tousr"));
+        ((asb)localObject).btr((String)localMap.get(".favitem.source" + ".realchatname"));
+        ((asb)localObject).yu(Util.getLong((String)localMap.get(".favitem.source" + ".createtime"), 0L));
+        ((asb)localObject).bts((String)localMap.get(".favitem.source" + ".msgid"));
+        ((asb)localObject).btt((String)localMap.get(".favitem.source" + ".eventid"));
+        ((asb)localObject).btu((String)localMap.get(".favitem.source" + ".appid"));
+        ((asb)localObject).btv((String)localMap.get(".favitem.source" + ".link"));
+        ((asb)localObject).btw((String)localMap.get(".favitem.source" + ".brandid"));
+        c.a(paramString, localarv);
+        paramString = localarv.ZAh;
         if (!Util.isNullOrNil((String)localMap.get(".favitem.locitem" + ".label"))) {
-          paramString.bto((String)localMap.get(".favitem.locitem" + ".label"));
+          paramString.btf((String)localMap.get(".favitem.locitem" + ".label"));
         }
         if (!Util.isNullOrNil((String)localMap.get(".favitem.locitem" + ".poiname"))) {
-          paramString.btp((String)localMap.get(".favitem.locitem" + ".poiname"));
+          paramString.btg((String)localMap.get(".favitem.locitem" + ".poiname"));
         }
         localObject = (String)localMap.get(".favitem.locitem" + ".lng");
         if (!Util.isNullOrNil((String)localObject)) {
-          paramString.D(Util.getDouble((String)localObject, 0.0D));
+          paramString.V(Util.getDouble((String)localObject, 0.0D));
         }
         localObject = (String)localMap.get(".favitem.locitem" + ".lat");
         if (!Util.isNullOrNil((String)localObject)) {
-          paramString.E(Util.getDouble((String)localObject, 0.0D));
+          paramString.W(Util.getDouble((String)localObject, 0.0D));
         }
         localObject = (String)localMap.get(".favitem.locitem" + ".scale");
         if (!Util.isNullOrNil((String)localObject))
@@ -512,65 +497,66 @@ public final class g
           if (((String)localObject).indexOf('.') == -1) {
             continue;
           }
-          paramString.arv(Util.getInt(((String)localObject).substring(0, ((String)localObject).indexOf('.')), -1));
+          paramString.axD(Util.getInt(((String)localObject).substring(0, ((String)localObject).indexOf('.')), -1));
         }
-        paramString = localaoc.Szr;
-        paramString.btM((String)localMap.get(".favitem.weburlitem" + ".clean_url"));
-        paramString.btL((String)localMap.get(".favitem.weburlitem" + ".pagedesc"));
-        paramString.btN((String)localMap.get(".favitem.weburlitem" + ".pagethumb_url"));
-        paramString.btK((String)localMap.get(".favitem.weburlitem" + ".pagetitle"));
-        paramString.arA(Util.getInt((String)localMap.get(".favitem.weburlitem" + ".opencache"), 0));
-        paramString.arB(Util.getInt((String)localMap.get(".favitem.weburlitem" + ".contentattr"), 0));
-        paramString.btO((String)localMap.get(".favitem.weburlitem" + ".canvasPageXml"));
-        paramString.btP((String)localMap.get(".favitem.weburlitem" + ".wsVideoFlowXml"));
-        paramString.arC(Util.getInt((String)localMap.get(".favitem.weburlitem" + ".forwardflag"), 0));
-        localaoc.d(k.w(".favitem", localMap));
-        if (localaoc.PTL != null) {
-          localaoc.f(b.s(".favitem.weburlitem.appmsgshareitem", localMap));
+        paramString = localarv.ZAj;
+        paramString.btD((String)localMap.get(".favitem.weburlitem" + ".clean_url"));
+        paramString.btC((String)localMap.get(".favitem.weburlitem" + ".pagedesc"));
+        paramString.btE((String)localMap.get(".favitem.weburlitem" + ".pagethumb_url"));
+        paramString.btB((String)localMap.get(".favitem.weburlitem" + ".pagetitle"));
+        paramString.axI(Util.getInt((String)localMap.get(".favitem.weburlitem" + ".opencache"), 0));
+        paramString.axJ(Util.getInt((String)localMap.get(".favitem.weburlitem" + ".contentattr"), 0));
+        paramString.btF((String)localMap.get(".favitem.weburlitem" + ".canvasPageXml"));
+        paramString.btG((String)localMap.get(".favitem.weburlitem" + ".wsVideoFlowXml"));
+        paramString.axK(Util.getInt((String)localMap.get(".favitem.weburlitem" + ".forwardflag"), 0));
+        localarv.h(q.C(".favitem", localMap));
+        if (localarv.WKx != null) {
+          localarv.f(b.u(".favitem.weburlitem.appmsgshareitem", localMap));
         }
-        paramString = localaoc.Szt;
-        paramString.btq((String)localMap.get(".favitem.productitem" + ".producttitle"));
-        paramString.btr((String)localMap.get(".favitem.productitem" + ".productdesc"));
-        paramString.bts((String)localMap.get(".favitem.productitem" + ".productthumb_url"));
-        paramString.btt((String)localMap.get(".favitem.productitem" + ".productinfo"));
-        paramString.arw(Util.getInt((String)localMap.get(".favitem.productitem" + ".$type"), 0));
-        paramString = localaoc.Szv;
-        paramString.btG((String)localMap.get(".favitem.tvitem" + ".tvtitle"));
-        paramString.btH((String)localMap.get(".favitem.tvitem" + ".tvdesc"));
-        paramString.btI((String)localMap.get(".favitem.tvitem" + ".tvthumb_url"));
-        paramString.btJ((String)localMap.get(".favitem.tvitem" + ".tvinfo"));
-        paramString = localaoc.RDh;
-        paramString.SAu = ((String)localMap.get(".favitem.noteinfo" + ".noteauthor"));
-        paramString.SAv = ((String)localMap.get(".favitem.noteinfo" + ".noteeditor"));
+        paramString = localarv.ZAl;
+        paramString.bth((String)localMap.get(".favitem.productitem" + ".producttitle"));
+        paramString.bti((String)localMap.get(".favitem.productitem" + ".productdesc"));
+        paramString.btj((String)localMap.get(".favitem.productitem" + ".productthumb_url"));
+        paramString.btk((String)localMap.get(".favitem.productitem" + ".productinfo"));
+        paramString.axE(Util.getInt((String)localMap.get(".favitem.productitem" + ".$type"), 0));
+        paramString = localarv.ZAn;
+        paramString.btx((String)localMap.get(".favitem.tvitem" + ".tvtitle"));
+        paramString.bty((String)localMap.get(".favitem.tvitem" + ".tvdesc"));
+        paramString.btz((String)localMap.get(".favitem.tvitem" + ".tvthumb_url"));
+        paramString.btA((String)localMap.get(".favitem.tvitem" + ".tvinfo"));
+        paramString = localarv.YzK;
+        paramString.ZBm = ((String)localMap.get(".favitem.noteinfo" + ".noteauthor"));
+        paramString.ZBn = ((String)localMap.get(".favitem.noteinfo" + ".noteeditor"));
         if (localMap.containsKey(".favitem.appbranditem"))
         {
-          paramString = new ank();
+          paramString = new ard();
           paramString.username = ((String)localMap.get(".favitem.appbranditem" + ".username"));
           paramString.appId = ((String)localMap.get(".favitem.appbranditem" + ".appid"));
-          paramString.fES = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".pkgtype"), 0);
+          paramString.hJK = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".pkgtype"), 0);
           paramString.iconUrl = ((String)localMap.get(".favitem.appbranditem" + ".iconurl"));
           paramString.type = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".type"), 0);
-          paramString.fve = ((String)localMap.get(".favitem.appbranditem" + ".pagepath"));
-          paramString.SxE = ((String)localMap.get(".favitem.appbranditem" + ".sourcedisplayname"));
+          paramString.hzy = ((String)localMap.get(".favitem.appbranditem" + ".pagepath"));
+          paramString.Zyw = ((String)localMap.get(".favitem.appbranditem" + ".sourcedisplayname"));
           paramString.version = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".version"), 0);
-          paramString.otE = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".disableforward"), 0);
-          paramString.nYp = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".tradingguaranteeflag"), 0);
-          paramString.fXg = ((String)localMap.get(".favitem.appbranditem" + ".messageextradata"));
+          paramString.rxs = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".disableforward"), 0);
+          paramString.rbZ = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".tradingguaranteeflag"), 0);
+          paramString.nOX = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".showRelievedBuyFlag"), 0);
+          paramString.idf = ((String)localMap.get(".favitem.appbranditem" + ".messageextradata"));
           paramString.subType = Util.getInt((String)localMap.get(".favitem.appbranditem" + ".subtype"), 0);
-          localaoc.c(paramString);
+          localarv.c(paramString);
         }
-        if (localaoc.PTL != null) {
-          localaoc.f(b.s(".favitem.weburlitem.appmsgshareitem", localMap));
+        if (localarv.WKx != null) {
+          localarv.f(b.u(".favitem.weburlitem.appmsgshareitem", localMap));
         }
-        if (this.field_favProto.SAB != null)
+        if (this.field_favProto.ZBt != null)
         {
-          paramString = this.field_favProto.SAB;
-          this.field_sourceId = paramString.SAJ;
+          paramString = this.field_favProto.ZBt;
+          this.field_sourceId = paramString.ZBB;
           this.field_sourceType = paramString.sourceType;
-          this.field_fromUser = paramString.fLi;
+          this.field_fromUser = paramString.hQQ;
           this.field_toUser = paramString.toUser;
         }
-        this.field_edittime = this.field_favProto.uTt;
+        this.field_edittime = this.field_favProto.ygh;
         d.a(localMap, this.field_tagProto);
       }
       catch (Exception paramString)
@@ -582,14 +568,14 @@ public final class g
       }
       AppMethodBeat.o(103375);
       return this;
-      paramString.arv(Util.getInt((String)localObject, -1));
+      paramString.axD(Util.getInt((String)localObject, -1));
     }
   }
   
-  public final void azS(String paramString)
+  public final void atY(String paramString)
   {
     AppMethodBeat.i(103376);
-    a locala = wGk;
+    g.a locala = Act;
     locala.log("----dump favitem from[" + paramString + "] beg----");
     locala.log("type: " + this.field_type);
     locala.log("favId: " + this.field_id);
@@ -608,93 +594,93 @@ public final class g
     locala.log("realChatName: " + this.field_realChatName);
     if (this.field_favProto != null)
     {
-      locala.log("remarktime: " + this.field_favProto.Szy);
-      locala.log("dataitemCount: " + this.field_favProto.syG.size());
-      if (this.field_favProto.SAB != null)
+      locala.log("remarktime: " + this.field_favProto.ZAq);
+      locala.log("dataitemCount: " + this.field_favProto.vEn.size());
+      if (this.field_favProto.ZBt != null)
       {
         locala.log(" ----source item----");
-        paramString = this.field_favProto.SAB;
+        paramString = this.field_favProto.ZBt;
         locala.log("  sourceType: " + paramString.sourceType);
-        locala.log("  fromUser: " + paramString.fLi);
+        locala.log("  fromUser: " + paramString.hQQ);
         locala.log("  toUser: " + paramString.toUser);
-        locala.log("  sourceId: " + paramString.SAJ);
-        locala.log("  realChatName: " + paramString.SAb);
+        locala.log("  sourceId: " + paramString.ZBB);
+        locala.log("  realChatName: " + paramString.ZAT);
         locala.log("  createTime: " + paramString.createTime);
         locala.log("  msgId: " + paramString.msgId);
-        locala.log("  eventId: " + paramString.fXM);
+        locala.log("  eventId: " + paramString.eventId);
         locala.log("  appId: " + paramString.appId);
         locala.log("  link: " + paramString.link);
-        locala.log("  mediaId: " + paramString.SAh);
-        locala.log("  brandId: " + paramString.fuO);
+        locala.log("  mediaId: " + paramString.ZAZ);
+        locala.log("  brandId: " + paramString.hzi);
       }
-      paramString = this.field_favProto.syG.iterator();
+      paramString = this.field_favProto.vEn.iterator();
       int i = 0;
       while (paramString.hasNext())
       {
-        anm localanm = (anm)paramString.next();
+        arf localarf = (arf)paramString.next();
         locala.log(" ----data item " + i + "----");
-        locala.log("  dataId: " + localanm.fEa);
-        locala.log("  dataType: " + localanm.dataType);
-        locala.log("  dataSouceId: " + localanm.Syu);
-        locala.log("  svrDataStatus: " + localanm.SyC);
-        locala.log("  cdnThumbUrl: " + localanm.lmm);
-        locala.log("  cdnThumbKey: " + localanm.SxK);
-        locala.log("  cdnDataUrl: " + localanm.Rwb);
-        locala.log("  cdnDataKey: " + localanm.SxP);
-        locala.log("  cdnEncryVer: " + localanm.SxR);
-        locala.log("  fullmd5: " + localanm.Sye);
-        locala.log("  head256md5: " + localanm.Syg);
-        locala.log("  fullsize: " + localanm.Syi);
-        locala.log("  thumbMd5: " + localanm.Kll);
-        locala.log("  thumbHead256md5: " + localanm.Syq);
-        locala.log("  thumbfullsize: " + localanm.Sys);
-        locala.log("  duration: " + localanm.duration);
-        locala.log("  datafmt: " + localanm.Syc);
-        locala.log("  streamWebUrl: " + localanm.SxU);
-        locala.log("  streamDataUrl: " + localanm.SxW);
-        locala.log("  streamLowBandUrl: " + localanm.SxY);
-        locala.log("  ext: " + localanm.fyu);
-        locala.log("  msgUuid: " + localanm.mic);
-        if (localanm.SyG != null)
+        locala.log("  dataId: " + localarf.hIQ);
+        locala.log("  dataType: " + localarf.dataType);
+        locala.log("  dataSouceId: " + localarf.Zzm);
+        locala.log("  svrDataStatus: " + localarf.Zzu);
+        locala.log("  cdnThumbUrl: " + localarf.nRr);
+        locala.log("  cdnThumbKey: " + localarf.ZyC);
+        locala.log("  cdnDataUrl: " + localarf.Ysw);
+        locala.log("  cdnDataKey: " + localarf.ZyH);
+        locala.log("  cdnEncryVer: " + localarf.ZyJ);
+        locala.log("  fullmd5: " + localarf.ZyW);
+        locala.log("  head256md5: " + localarf.ZyY);
+        locala.log("  fullsize: " + localarf.Zza);
+        locala.log("  thumbMd5: " + localarf.QJs);
+        locala.log("  thumbHead256md5: " + localarf.Zzi);
+        locala.log("  thumbfullsize: " + localarf.Zzk);
+        locala.log("  duration: " + localarf.duration);
+        locala.log("  datafmt: " + localarf.ZyU);
+        locala.log("  streamWebUrl: " + localarf.ZyM);
+        locala.log("  streamDataUrl: " + localarf.ZyO);
+        locala.log("  streamLowBandUrl: " + localarf.ZyQ);
+        locala.log("  ext: " + localarf.hDd);
+        locala.log("  msgUuid: " + localarf.pbn);
+        if (localarf.Zzy != null)
         {
-          locala.log("  remarktime: " + localanm.SyG.Szy);
-          locala.log("  ctrlflag: " + localanm.SyG.SzA);
-          locala.log("  edittime: " + localanm.SyG.uTt);
-          if (localanm.SyG.Szn != null)
+          locala.log("  remarktime: " + localarf.Zzy.ZAq);
+          locala.log("  ctrlflag: " + localarf.Zzy.ZAs);
+          locala.log("  edittime: " + localarf.Zzy.ygh);
+          if (localarf.Zzy.ZAf != null)
           {
             locala.log("   ----data source item----");
-            ano localano = localanm.SyG.Szn;
-            locala.log("    sourceType: " + localano.sourceType);
-            locala.log("    fromUser: " + localano.fLi);
-            locala.log("    toUser: " + localano.toUser);
-            locala.log("    realChatName: " + localano.SAb);
-            locala.log("    createTime: " + localano.createTime);
-            locala.log("    msgId: " + localano.msgId);
-            locala.log("    eventId: " + localano.fXM);
-            locala.log("    appId: " + localano.appId);
-            locala.log("    link: " + localano.link);
-            locala.log("    mediaId: " + localano.SAh);
-            locala.log("    brandId: " + localano.fuO);
+            arh localarh = localarf.Zzy.ZAf;
+            locala.log("    sourceType: " + localarh.sourceType);
+            locala.log("    fromUser: " + localarh.hQQ);
+            locala.log("    toUser: " + localarh.toUser);
+            locala.log("    realChatName: " + localarh.ZAT);
+            locala.log("    createTime: " + localarh.createTime);
+            locala.log("    msgId: " + localarh.msgId);
+            locala.log("    eventId: " + localarh.eventId);
+            locala.log("    appId: " + localarh.appId);
+            locala.log("    link: " + localarh.link);
+            locala.log("    mediaId: " + localarh.ZAZ);
+            locala.log("    brandId: " + localarh.hzi);
           }
-          a("  ", locala, localanm.SyG.Szp);
-          a("  ", locala, localanm.SyG.Szr);
-          a("  ", locala, localanm.SyG.Szt);
-          a("  ", locala, localanm.SyG.Szv);
-          a("  ", locala, localanm.SyG.RDh);
+          a("  ", locala, localarf.Zzy.ZAh);
+          a("  ", locala, localarf.Zzy.ZAj);
+          a("  ", locala, localarf.Zzy.ZAl);
+          a("  ", locala, localarf.Zzy.ZAn);
+          a("  ", locala, localarf.Zzy.YzK);
         }
         i += 1;
       }
-      a("", locala, this.field_favProto.Szp);
-      a("", locala, this.field_favProto.Szr);
-      a("", locala, this.field_favProto.Szt);
-      a("", locala, this.field_favProto.Szv);
-      a("  ", locala, this.field_favProto.RDh);
+      a("", locala, this.field_favProto.ZAh);
+      a("", locala, this.field_favProto.ZAj);
+      a("", locala, this.field_favProto.ZAl);
+      a("", locala, this.field_favProto.ZAn);
+      a("  ", locala, this.field_favProto.YzK);
     }
     locala.log("----dump favitem end----");
     AppMethodBeat.o(103376);
   }
   
-  public final boolean azT(String paramString)
+  public final boolean atZ(String paramString)
   {
     AppMethodBeat.i(103382);
     if (Util.isNullOrNil(paramString))
@@ -702,7 +688,7 @@ public final class g
       AppMethodBeat.o(103382);
       return false;
     }
-    Iterator localIterator = this.field_tagProto.SAP.iterator();
+    Iterator localIterator = this.field_tagProto.ZBH.iterator();
     while (localIterator.hasNext()) {
       if (paramString.equals((String)localIterator.next()))
       {
@@ -710,50 +696,50 @@ public final class g
         return false;
       }
     }
-    this.field_tagProto.SAP.add(paramString);
+    this.field_tagProto.ZBH.add(paramString);
     AppMethodBeat.o(103382);
     return true;
   }
   
-  public final boolean djA()
+  public final boolean dQl()
   {
-    return (this.field_favProto.SzA & 0x1) != 0;
+    return (this.field_favProto.ZAs & 0x1) != 0;
   }
   
-  public final boolean djB()
+  public final boolean dQm()
   {
-    return (this.field_favProto.SzA & 0x2) != 0;
+    return (this.field_favProto.ZAs & 0x2) != 0;
   }
   
-  public final Bundle djC()
+  public final Bundle dQn()
   {
     AppMethodBeat.i(103374);
     Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_ctrl_flag_open_chat", djA());
-    localBundle.putBoolean("key_ctrl_flag_open_sns", djB());
-    if ((this.field_favProto.SzA & 0x4) != 0)
+    localBundle.putBoolean("key_ctrl_flag_open_chat", dQl());
+    localBundle.putBoolean("key_ctrl_flag_open_sns", dQm());
+    if ((this.field_favProto.ZAs & 0x4) != 0)
     {
       bool = true;
       localBundle.putBoolean("key_ctrl_flag_open_weibo", bool);
-      if ((this.field_favProto.SzA & 0x8) == 0) {
+      if ((this.field_favProto.ZAs & 0x8) == 0) {
         break label183;
       }
       bool = true;
       label73:
       localBundle.putBoolean("key_ctrl_flag_open_cplink", bool);
-      if ((this.field_favProto.SzA & 0x10) == 0) {
+      if ((this.field_favProto.ZAs & 0x10) == 0) {
         break label188;
       }
       bool = true;
       label96:
       localBundle.putBoolean("key_ctrl_flag_open_browser", bool);
-      if ((this.field_favProto.SzA & 0x20) == 0) {
+      if ((this.field_favProto.ZAs & 0x20) == 0) {
         break label193;
       }
       bool = true;
       label119:
       localBundle.putBoolean("key_ctrl_flag_open_weiyun", bool);
-      if ((this.field_favProto.SzA & 0x40) == 0) {
+      if ((this.field_favProto.ZAs & 0x40) == 0) {
         break label198;
       }
     }
@@ -778,32 +764,32 @@ public final class g
     }
   }
   
-  public final boolean djD()
+  public final boolean dQo()
   {
     return (this.field_itemStatus == 1) || (this.field_itemStatus == 4) || (this.field_itemStatus == 9) || (this.field_itemStatus == 12) || (this.field_itemStatus == 13) || (this.field_itemStatus == 15) || (this.field_itemStatus == 17);
   }
   
-  public final boolean djE()
+  public final boolean dQp()
   {
     return (this.field_itemStatus == 3) || (this.field_itemStatus == 6) || (this.field_itemStatus == 11) || (this.field_itemStatus == 14) || (this.field_itemStatus == 16) || (this.field_itemStatus == 18);
   }
   
-  public final boolean djF()
+  public final boolean dQq()
   {
     return this.field_itemStatus == 8;
   }
   
-  public final boolean djG()
+  public final boolean dQr()
   {
     return (this.field_itemStatus == 15) || (this.field_itemStatus == 16);
   }
   
-  public final boolean djH()
+  public final boolean dQs()
   {
     return (this.field_itemStatus == 12) || (this.field_itemStatus == 13) || (this.field_itemStatus == 14);
   }
   
-  public final g djI()
+  public final g dQt()
   {
     AppMethodBeat.i(103384);
     g localg = new g();
@@ -826,19 +812,19 @@ public final class g
     localg.field_type = this.field_type;
     localg.field_xml = this.field_xml;
     localg.field_datatotalsize = this.field_datatotalsize;
-    localg.wGh = this.wGh;
-    localg.wGi = this.wGi;
-    localg.fDQ = this.fDQ;
+    localg.Acq = this.Acq;
+    localg.Acr = this.Acr;
+    localg.hIG = this.hIG;
     AppMethodBeat.o(103384);
     return localg;
   }
   
-  public final boolean djJ()
+  public final boolean dQu()
   {
     AppMethodBeat.i(103385);
-    Iterator localIterator = this.field_favProto.syG.iterator();
+    Iterator localIterator = this.field_favProto.vEn.iterator();
     while (localIterator.hasNext()) {
-      if (((anm)localIterator.next()).SyY != 0)
+      if (((arf)localIterator.next()).ZzQ != 0)
       {
         AppMethodBeat.o(103385);
         return true;
@@ -848,7 +834,7 @@ public final class g
     return false;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -862,15 +848,10 @@ public final class g
   {
     return this.field_itemStatus == 7;
   }
-  
-  static abstract interface a
-  {
-    public abstract void log(String paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.g
  * JD-Core Version:    0.7.0.1
  */

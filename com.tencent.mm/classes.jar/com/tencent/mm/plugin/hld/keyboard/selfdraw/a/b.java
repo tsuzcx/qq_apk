@@ -4,70 +4,78 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.KeyboardView;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "bgPaint", "Landroid/graphics/Paint;", "bgRect", "Landroid/graphics/RectF;", "getKeyboard", "()Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "drawBackground", "", "canvas", "Landroid/graphics/Canvas;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "drawButton", "getType", "", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "bgPaint", "Landroid/graphics/Paint;", "bgRect", "Landroid/graphics/RectF;", "getKeyboard", "()Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "drawBackground", "", "canvas", "Landroid/graphics/Canvas;", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "drawButton", "getType", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class b
 {
-  private final RectF DAS;
-  private final KeyboardView DzB;
-  private final Paint opo;
+  private final KeyboardView JsC;
+  private final RectF JtS;
+  private final Paint rsW;
   
   public b(KeyboardView paramKeyboardView)
   {
-    this.DzB = paramKeyboardView;
-    this.opo = new Paint();
-    this.DAS = new RectF();
+    this.JsC = paramKeyboardView;
+    paramKeyboardView = new Paint();
+    ah localah = ah.aiuX;
+    this.rsW = paramKeyboardView;
+    this.JtS = new RectF();
   }
   
   public abstract void a(Canvas paramCanvas, com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb);
   
   public final void b(Canvas paramCanvas, com.tencent.mm.plugin.hld.keyboard.selfdraw.b paramb)
   {
-    p.k(paramCanvas, "canvas");
-    p.k(paramb, "button");
+    s.u(paramCanvas, "canvas");
+    s.u(paramb, "button");
     int i;
     RectF localRectF;
+    ah localah;
     if (paramb.shadowColor != 0)
     {
       i = paramb.shadowColor;
-      this.opo.setColor(i);
+      this.rsW.setColor(i);
       paramCanvas.save();
-      localRectF = this.DAS;
-      localRectF.set(paramb.DzD);
-      localRectF.offset(0.0F, paramb.DzK / 2.0F);
+      localRectF = this.JtS;
+      localRectF.set(paramb.JsG);
+      localRectF.offset(0.0F, paramb.JsN / 2.0F);
+      localah = ah.aiuX;
       paramCanvas.clipRect(localRectF);
-      localRectF = this.DAS;
-      localRectF.set(paramb.DzD);
-      localRectF.offset(0.0F, paramb.DzK / 2.0F);
-      localRectF.top = (localRectF.bottom - paramb.DzJ * 2);
-      paramCanvas.drawRoundRect(localRectF, paramb.DzJ, paramb.DzJ, this.opo);
+      localRectF = this.JtS;
+      localRectF.set(paramb.JsG);
+      localRectF.offset(0.0F, paramb.JsN / 2.0F);
+      localRectF.top = (localRectF.bottom - paramb.JsM * 2);
+      localah = ah.aiuX;
+      paramCanvas.drawRoundRect(localRectF, paramb.JsM, paramb.JsM, this.rsW);
       paramCanvas.restore();
     }
     if (paramb.bgColor != 0)
     {
       i = paramb.bgColor;
-      this.opo.setColor(i);
-      localRectF = this.DAS;
-      localRectF.set(paramb.DzD);
-      localRectF.offset(0.0F, -paramb.DzK / 2.0F);
-      paramCanvas.drawRoundRect(localRectF, paramb.DzJ, paramb.DzJ, this.opo);
+      this.rsW.setColor(i);
+      localRectF = this.JtS;
+      localRectF.set(paramb.JsG);
+      localRectF.offset(0.0F, -paramb.JsN / 2.0F);
+      localah = ah.aiuX;
+      paramCanvas.drawRoundRect(localRectF, paramb.JsM, paramb.JsM, this.rsW);
     }
-    if ((paramb.DzM != 0) && (p.h(paramb.sSq, "press")))
+    if ((paramb.JsP != 0) && (s.p(paramb.vXL, "press")))
     {
-      i = paramb.DzM;
-      this.opo.setColor(i);
-      localRectF = this.DAS;
-      localRectF.set(paramb.DzD);
-      localRectF.offset(0.0F, -paramb.DzK / 2.0F);
-      paramCanvas.drawRoundRect(localRectF, paramb.DzJ, paramb.DzJ, this.opo);
+      i = paramb.JsP;
+      this.rsW.setColor(i);
+      localRectF = this.JtS;
+      localRectF.set(paramb.JsG);
+      localRectF.offset(0.0F, -paramb.JsN / 2.0F);
+      localah = ah.aiuX;
+      paramCanvas.drawRoundRect(localRectF, paramb.JsM, paramb.JsM, this.rsW);
     }
   }
   
-  public final KeyboardView eDR()
+  public final KeyboardView fLU()
   {
-    return this.DzB;
+    return this.JsC;
   }
   
   public abstract String getType();

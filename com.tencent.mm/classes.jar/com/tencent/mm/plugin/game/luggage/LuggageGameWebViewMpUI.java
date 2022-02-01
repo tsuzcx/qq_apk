@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LuggageGameWebViewMpUI

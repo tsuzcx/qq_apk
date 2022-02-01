@@ -8,437 +8,474 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.e;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.f.e;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.n;
 import com.tencent.mm.plugin.hld.view.ImeKeyButton;
 import com.tencent.mm.plugin.hld.view.ImeKeyRelativeLayout;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.threadpool.h;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.Future;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard;", "Lcom/tencent/mm/plugin/hld/keyboard/Keyboard;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "deleteExeFuture", "Ljava/util/concurrent/Future;", "deleteFuture", "deleteKeyType", "deleteKeyWidth", "lastDeleteKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "mKeyboardActionListener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "getMKeyboardActionListener", "()Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "setMKeyboardActionListener", "(Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;)V", "mLastClickTime", "", "mLastClickView", "Landroid/view/View;", "mLastUpperMode", "mUpperMode", "supportDoubleKeyOnClickHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "triggerLeftDeleteMode", "", "closeDeleteTouch", "", "v", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "event", "Landroid/view/MotionEvent;", "doDelete", "deleteLength", "delayTime", "getActionKey", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "getKeyboardType", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "getUpperMode", "handleDeleteKey", "reportKeyArea", "(Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;Landroid/view/MotionEvent;Ljava/lang/Integer;)Z", "handleDoubleClick", "isOnlySupportClickFloatViewKey", "view", "isSupportFloatViewKey", "isUpper", "onClickForSupportDoubleClick", "onCreate", "onDoubleClick", "onReset", "onResume", "listener", "onSelectCandidate", "text", "", "id", "", "suffix", "onUpdateSelection", "oldSelStart", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "supportDoubleClick", "switchUpperMode", "upperMode", "transparentBg", "transparent", "updateEnterKey", "actionStr", "actionMode", "updateUpperKey", "updateUpperKeyImp", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard;", "Lcom/tencent/mm/plugin/hld/keyboard/Keyboard;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "deleteExeFuture", "Ljava/util/concurrent/Future;", "deleteFuture", "deleteKeyType", "deleteKeyWidth", "lastDeleteKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "mKeyboardActionListener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "getMKeyboardActionListener", "()Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "setMKeyboardActionListener", "(Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;)V", "mLastClickTime", "", "mLastClickView", "Landroid/view/View;", "mLastUpperMode", "mUpperMode", "supportDoubleKeyOnClickHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "triggerLeftDeleteMode", "", "closeDeleteTouch", "", "v", "Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;", "event", "Landroid/view/MotionEvent;", "doDelete", "deleteLength", "delayTime", "getActionKey", "Lcom/tencent/mm/plugin/hld/view/ImeKeyButton;", "getKeyboardType", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "getUpperMode", "handleDeleteKey", "reportKeyArea", "(Lcom/tencent/mm/plugin/hld/view/ImeKeyRelativeLayout;Landroid/view/MotionEvent;Ljava/lang/Integer;)Z", "handleDoubleClick", "isOnlySupportClickFloatViewKey", "view", "isSupportFloatViewKey", "isUpper", "onClickForSupportDoubleClick", "onCreate", "onDoubleClick", "onReset", "onResume", "listener", "onSelectCandidate", "text", "", "id", "", "suffix", "onUpdateSelection", "oldSelStart", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "supportDoubleClick", "switchUpperMode", "upperMode", "transparentBg", "transparent", "updateEnterKey", "actionStr", "actionMode", "updateUpperKey", "updateUpperKeyImp", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class ImeKeyboard
   extends Keyboard
 {
-  public static final a Dyb;
-  private com.tencent.mm.plugin.hld.a.c DvY;
-  private int DxQ;
-  private int DxR;
-  private View DxS;
-  private long DxT;
-  private final MMHandler DxU;
-  private Future<?> DxV;
-  private Future<?> DxW;
-  private int DxX;
-  private b DxY;
-  private int DxZ;
-  private boolean Dya;
+  public static final ImeKeyboard.a JqV;
+  private com.tencent.mm.plugin.hld.a.c Jpf;
+  private int JqW;
+  private int JqX;
+  private View JqY;
+  private long JqZ;
+  private final MMHandler Jra;
+  private Future<?> Jrb;
+  private Future<?> Jrc;
+  private int Jrd;
+  private b Jre;
+  private int Jrf;
+  private boolean Jrg;
   
   static
   {
-    AppMethodBeat.i(216681);
-    Dyb = new a((byte)0);
-    AppMethodBeat.o(216681);
+    AppMethodBeat.i(313072);
+    JqV = new ImeKeyboard.a((byte)0);
+    AppMethodBeat.o(313072);
   }
   
   public ImeKeyboard(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216675);
-    this.DxR = 1;
-    this.DxU = ((MMHandler)new d(this, Looper.getMainLooper()));
-    AppMethodBeat.o(216675);
+    AppMethodBeat.i(312999);
+    this.JqX = 1;
+    this.Jra = ((MMHandler)new b(this, Looper.getMainLooper()));
+    AppMethodBeat.o(312999);
   }
   
   public ImeKeyboard(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(216678);
-    this.DxR = 1;
-    this.DxU = ((MMHandler)new d(this, Looper.getMainLooper()));
-    AppMethodBeat.o(216678);
+    AppMethodBeat.i(313006);
+    this.JqX = 1;
+    this.Jra = ((MMHandler)new b(this, Looper.getMainLooper()));
+    AppMethodBeat.o(313006);
   }
   
   public ImeKeyboard(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(216680);
-    this.DxR = 1;
-    this.DxU = ((MMHandler)new d(this, Looper.getMainLooper()));
-    AppMethodBeat.o(216680);
+    AppMethodBeat.i(313014);
+    this.JqX = 1;
+    this.Jra = ((MMHandler)new b(this, Looper.getMainLooper()));
+    AppMethodBeat.o(313014);
+  }
+  
+  private static final void a(long paramLong, ImeKeyboard paramImeKeyboard, int paramInt)
+  {
+    AppMethodBeat.i(313065);
+    s.u(paramImeKeyboard, "this$0");
+    Log.i("WxIme.ImeKeyboard", s.X("doDeleteImp inter time:", Long.valueOf(System.currentTimeMillis() - paramLong)));
+    com.tencent.mm.plugin.hld.a.c localc = paramImeKeyboard.getMKeyboardActionListener();
+    if (localc != null) {
+      localc.K(1, new Keyboard.a(paramImeKeyboard.Jrd, paramInt));
+    }
+    AppMethodBeat.o(313065);
+  }
+  
+  private static final void a(ImeKeyboard paramImeKeyboard)
+  {
+    AppMethodBeat.i(313057);
+    s.u(paramImeKeyboard, "this$0");
+    for (;;)
+    {
+      int i;
+      long l;
+      try
+      {
+        Object localObject = e.Jym;
+        Thread.sleep(e.fOd());
+        int j = 1;
+        i = j;
+        if (paramImeKeyboard.Jrd == 2)
+        {
+          l = System.currentTimeMillis();
+          localObject = paramImeKeyboard.Jre;
+          s.checkNotNull(localObject);
+          l -= ((b)localObject).time;
+          if (l > 2000L) {
+            i = 3;
+          }
+        }
+        else
+        {
+          paramImeKeyboard.aE(i, 0L);
+          continue;
+        }
+        i = j;
+      }
+      catch (InterruptedException paramImeKeyboard)
+      {
+        Log.e("WxIme.ImeKeyboard", s.X("deleteFuture ", paramImeKeyboard.getMessage()));
+        AppMethodBeat.o(313057);
+        return;
+      }
+      if (l > 5000L) {
+        i = 5;
+      }
+    }
   }
   
   public static boolean a(ImeKeyRelativeLayout paramImeKeyRelativeLayout)
   {
-    AppMethodBeat.i(216669);
-    p.k(paramImeKeyRelativeLayout, "view");
+    AppMethodBeat.i(313029);
+    s.u(paramImeKeyRelativeLayout, "view");
     if (((paramImeKeyRelativeLayout.getType() & 0x2) != 2) && ((paramImeKeyRelativeLayout.getType() & 0x4) != 4))
     {
-      com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-      if (!com.tencent.mm.plugin.hld.f.l.e(paramImeKeyRelativeLayout)) {}
+      l locall = l.JyV;
+      if (!l.e(paramImeKeyRelativeLayout)) {}
     }
     else
     {
-      AppMethodBeat.o(216669);
+      AppMethodBeat.o(313029);
       return false;
     }
-    AppMethodBeat.o(216669);
+    AppMethodBeat.o(313029);
     return true;
   }
   
-  private final void ax(int paramInt, long paramLong)
+  private final void aE(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(216671);
-    final long l = System.currentTimeMillis();
-    this.DxW = ((Future)h.ZvG.n((Runnable)new b(this, l, paramInt), paramLong));
-    AppMethodBeat.o(216671);
+    AppMethodBeat.i(313042);
+    long l = System.currentTimeMillis();
+    this.Jrc = ((Future)h.ahAA.o(new ImeKeyboard..ExternalSyntheticLambda0(l, this, paramInt), paramLong));
+    AppMethodBeat.o(313042);
   }
   
   public static boolean b(ImeKeyRelativeLayout paramImeKeyRelativeLayout)
   {
-    AppMethodBeat.i(216670);
-    p.k(paramImeKeyRelativeLayout, "view");
-    boolean bool = p.h(paramImeKeyRelativeLayout.eHG(), Boolean.TRUE);
-    AppMethodBeat.o(216670);
+    AppMethodBeat.i(313035);
+    s.u(paramImeKeyRelativeLayout, "view");
+    boolean bool = s.p(paramImeKeyRelativeLayout.fPs(), Boolean.TRUE);
+    AppMethodBeat.o(313035);
     return bool;
   }
   
-  public final void Uu(int paramInt)
+  public final void Yr(int paramInt)
   {
-    this.DxQ = this.DxR;
-    this.DxR = paramInt;
+    this.JqW = this.JqX;
+    this.JqX = paramInt;
   }
   
   public final void a(ImeKeyRelativeLayout paramImeKeyRelativeLayout, MotionEvent paramMotionEvent)
   {
     Object localObject = null;
-    AppMethodBeat.i(216667);
-    p.k(paramImeKeyRelativeLayout, "v");
-    com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-    if (!com.tencent.mm.plugin.hld.f.l.e(paramImeKeyRelativeLayout))
+    int i = 1;
+    AppMethodBeat.i(313188);
+    s.u(paramImeKeyRelativeLayout, "v");
+    l locall = l.JyV;
+    if (!l.e(paramImeKeyRelativeLayout))
     {
-      paramImeKeyRelativeLayout = this.DxV;
+      paramImeKeyRelativeLayout = this.Jrb;
       if (paramImeKeyRelativeLayout != null)
       {
         paramImeKeyRelativeLayout.cancel(true);
-        this.DxV = null;
+        this.Jrb = null;
+      }
+      if (paramMotionEvent != null) {
+        break label109;
       }
       paramImeKeyRelativeLayout = localObject;
-      if (paramMotionEvent != null) {
-        paramImeKeyRelativeLayout = Integer.valueOf(paramMotionEvent.getActionMasked());
+      if (paramImeKeyRelativeLayout != null) {
+        break label120;
       }
-      if (paramImeKeyRelativeLayout == null) {}
-      while (paramImeKeyRelativeLayout.intValue() != 5)
-      {
-        if (paramImeKeyRelativeLayout != null) {
-          break;
-        }
-        AppMethodBeat.o(216667);
-        return;
+      label63:
+      if (paramImeKeyRelativeLayout != null) {
+        break label131;
       }
-      while (paramImeKeyRelativeLayout.intValue() == 0)
+      label67:
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i != 0)
       {
-        paramImeKeyRelativeLayout = this.DxY;
-        if (paramImeKeyRelativeLayout == null) {
-          break;
+        paramImeKeyRelativeLayout = this.Jre;
+        if (paramImeKeyRelativeLayout != null)
+        {
+          paramImeKeyRelativeLayout = (View)paramImeKeyRelativeLayout.viewRef.get();
+          if (paramImeKeyRelativeLayout != null) {
+            paramImeKeyRelativeLayout.setSelected(false);
+          }
         }
-        paramImeKeyRelativeLayout = (View)paramImeKeyRelativeLayout.aFW.get();
-        if (paramImeKeyRelativeLayout == null) {
-          break label143;
-        }
-        p.j(paramImeKeyRelativeLayout, "v");
-        paramImeKeyRelativeLayout.setSelected(false);
-        AppMethodBeat.o(216667);
-        return;
+      }
+      AppMethodBeat.o(313188);
+      return;
+      label109:
+      paramImeKeyRelativeLayout = Integer.valueOf(paramMotionEvent.getActionMasked());
+      break;
+      label120:
+      if (paramImeKeyRelativeLayout.intValue() != 5) {
+        break label63;
+      }
+      continue;
+      label131:
+      if (paramImeKeyRelativeLayout.intValue() != 0) {
+        break label67;
       }
     }
-    AppMethodBeat.o(216667);
-    return;
-    label143:
-    AppMethodBeat.o(216667);
   }
   
   public void a(String paramString1, byte[] paramArrayOfByte, String paramString2)
   {
-    AppMethodBeat.i(216660);
-    p.k(paramString1, "text");
-    p.k(paramArrayOfByte, "id");
-    AppMethodBeat.o(216660);
+    AppMethodBeat.i(313160);
+    s.u(paramString1, "text");
+    s.u(paramArrayOfByte, "id");
+    AppMethodBeat.o(313160);
   }
   
   protected final boolean a(ImeKeyRelativeLayout paramImeKeyRelativeLayout, MotionEvent paramMotionEvent, Integer paramInteger)
   {
-    AppMethodBeat.i(216664);
-    p.k(paramImeKeyRelativeLayout, "v");
+    AppMethodBeat.i(313182);
+    s.u(paramImeKeyRelativeLayout, "v");
     Object localObject1;
     Object localObject2;
-    label39:
-    int i;
-    label62:
+    label30:
     int j;
+    label50:
     long l1;
-    if (paramMotionEvent != null)
+    label123:
+    int i;
+    if (paramMotionEvent == null)
     {
-      localObject1 = Integer.valueOf(paramMotionEvent.getActionMasked());
-      if (paramMotionEvent == null) {
-        break label175;
+      localObject1 = null;
+      if (paramMotionEvent != null) {
+        break label325;
       }
-      localObject2 = Float.valueOf(paramMotionEvent.getRawX());
-      i = (int)((Float)localObject2).floatValue();
-      if (paramMotionEvent == null) {
-        break label184;
+      localObject2 = Double.valueOf(0.0D);
+      j = (int)((Float)localObject2).floatValue();
+      if (paramMotionEvent != null) {
+        break label337;
       }
-      paramMotionEvent = Float.valueOf(paramMotionEvent.getRawY());
-      j = (int)((Float)paramMotionEvent).floatValue();
+      paramMotionEvent = Double.valueOf(0.0D);
+      int k = (int)((Float)paramMotionEvent).floatValue();
       l1 = System.currentTimeMillis();
-      Log.d("WxIme.ImeKeyboard", "handleBackKey action " + localObject1 + ' ' + i + ' ' + j + ' ' + l1);
+      Log.d("WxIme.ImeKeyboard", "handleBackKey action " + localObject1 + ' ' + j + ' ' + k + ' ' + l1);
       if (localObject1 != null) {
-        break label192;
-      }
-      label136:
-      if (localObject1 != null) {
-        break label385;
+        break label348;
       }
       if (localObject1 != null) {
-        break label402;
+        break label363;
       }
-      label146:
-      if (localObject1 != null) {
-        break label546;
+      label128:
+      i = 0;
+      label131:
+      if (i == 0) {
+        break label383;
       }
-      label151:
-      if (localObject1 != null) {
-        break label626;
+      paramMotionEvent = com.tencent.mm.plugin.hld.f.i.JyA;
+      com.tencent.mm.plugin.hld.f.i.aC((View)paramImeKeyRelativeLayout, 2);
+      this.Jre = new b(j, k, l1, null, new WeakReference(paramImeKeyRelativeLayout), 0L, 88);
+      this.Jrf = ((ViewGroup)paramImeKeyRelativeLayout.findViewById(a.f.inside_root)).getWidth();
+      paramImeKeyRelativeLayout.setSelected(true);
+      paramImeKeyRelativeLayout = n.JvW;
+      if (!n.fMH()) {
+        break label377;
       }
-      if (localObject1 != null) {
-        break label639;
+      i = 2;
+      label212:
+      this.Jrd = i;
+      paramImeKeyRelativeLayout = e.Jym;
+      aE(1, e.fOe());
+      paramImeKeyRelativeLayout = this.Jrb;
+      if (paramImeKeyRelativeLayout != null) {
+        paramImeKeyRelativeLayout.cancel(true);
+      }
+      paramImeKeyRelativeLayout = h.ahAA;
+      paramMotionEvent = new ImeKeyboard..ExternalSyntheticLambda1(this);
+      localObject1 = e.Jym;
+      this.Jrb = ((Future)paramImeKeyRelativeLayout.p(paramMotionEvent, e.fOe()));
+      if (paramInteger != null)
+      {
+        i = ((Number)paramInteger).intValue();
+        paramImeKeyRelativeLayout = com.tencent.mm.plugin.hld.model.k.JvH;
+        com.tencent.mm.plugin.hld.model.k.js(i, 1);
       }
     }
     for (;;)
     {
-      label161:
-      AppMethodBeat.o(216664);
+      AppMethodBeat.o(313182);
       return false;
-      localObject1 = null;
+      localObject1 = Integer.valueOf(paramMotionEvent.getActionMasked());
       break;
-      label175:
-      localObject2 = Double.valueOf(0.0D);
-      break label39;
-      label184:
-      paramMotionEvent = Double.valueOf(0.0D);
-      break label62;
-      label192:
+      label325:
+      localObject2 = Float.valueOf(paramMotionEvent.getRawX());
+      break label30;
+      label337:
+      paramMotionEvent = Float.valueOf(paramMotionEvent.getRawY());
+      break label50;
+      label348:
       if (((Integer)localObject1).intValue() != 5) {
-        break label136;
+        break label123;
       }
-      label201:
-      paramMotionEvent = com.tencent.mm.plugin.hld.f.i.DHq;
-      com.tencent.mm.plugin.hld.f.i.an((View)paramImeKeyRelativeLayout, 2);
-      this.DxY = new b(i, j, l1, null, new WeakReference(paramImeKeyRelativeLayout), 0L, 88);
-      paramMotionEvent = paramImeKeyRelativeLayout.findViewById(a.f.inside_root);
-      p.j(paramMotionEvent, "v.findViewById<ViewGroup>(R.id.inside_root)");
-      this.DxZ = ((ViewGroup)paramMotionEvent).getWidth();
-      paramImeKeyRelativeLayout.setSelected(true);
-      paramImeKeyRelativeLayout = n.DEn;
-      if (n.eEE()) {}
-      for (i = 2;; i = 1)
+      i = 1;
+      break label131;
+      label363:
+      if (((Integer)localObject1).intValue() != 0) {
+        break label128;
+      }
+      i = 1;
+      break label131;
+      label377:
+      i = 1;
+      break label212;
+      label383:
+      if (localObject1 == null)
       {
-        this.DxX = i;
-        paramImeKeyRelativeLayout = e.DGW;
-        ax(1, e.eGr());
-        paramImeKeyRelativeLayout = this.DxV;
-        if (paramImeKeyRelativeLayout != null) {
+        if (localObject1 != null) {
+          break label626;
+        }
+        if (localObject1 != null) {
+          break label641;
+        }
+        i = 0;
+        if (i == 0) {
+          break label657;
+        }
+        i = 1;
+      }
+      for (;;)
+      {
+        label388:
+        label393:
+        label398:
+        label401:
+        if (i == 0) {
+          break label681;
+        }
+        paramImeKeyRelativeLayout.setSelected(false);
+        paramImeKeyRelativeLayout = this.Jrb;
+        if (paramImeKeyRelativeLayout != null)
+        {
           paramImeKeyRelativeLayout.cancel(true);
+          this.Jrb = null;
         }
-        paramImeKeyRelativeLayout = h.ZvG;
-        paramMotionEvent = (Runnable)new c(this);
-        localObject1 = e.DGW;
-        this.DxV = ((Future)paramImeKeyRelativeLayout.o(paramMotionEvent, e.eGr()));
-        if (paramInteger == null) {
-          break label161;
+        if (!this.Jrg) {
+          break label692;
         }
-        i = ((Number)paramInteger).intValue();
-        paramImeKeyRelativeLayout = com.tencent.mm.plugin.hld.model.k.DDb;
-        com.tencent.mm.plugin.hld.model.k.hO(i, 1);
-        break label161;
-        label385:
-        if (((Integer)localObject1).intValue() != 0) {
+        this.Jrg = false;
+        paramImeKeyRelativeLayout = this.Jre;
+        if (paramImeKeyRelativeLayout == null) {
           break;
         }
-        break label201;
-      }
-      label402:
-      if (((Integer)localObject1).intValue() != 2) {
-        break label146;
-      }
-      if (!this.Dya)
-      {
-        paramImeKeyRelativeLayout = this.DxY;
-        if ((paramImeKeyRelativeLayout != null) && (this.DxX == 1))
-        {
-          paramMotionEvent = this.DxY;
-          if (paramMotionEvent == null) {
-            p.iCn();
-          }
-          long l2 = paramMotionEvent.time;
-          paramMotionEvent = e.DGW;
-          if ((l1 - l2 < e.eGr() - 5L) && (paramImeKeyRelativeLayout.x - i > this.DxZ) && (this.DxZ != 0))
-          {
-            paramImeKeyRelativeLayout = this.DxV;
-            if (paramImeKeyRelativeLayout != null)
-            {
-              paramImeKeyRelativeLayout.cancel(true);
-              this.DxV = null;
-            }
-            paramImeKeyRelativeLayout = this.DxW;
-            if (paramImeKeyRelativeLayout != null)
-            {
-              paramImeKeyRelativeLayout.cancel(true);
-              this.DxW = null;
-            }
-            this.Dya = true;
-            continue;
-            label546:
-            if (((Integer)localObject1).intValue() != 3) {
-              break label151;
-            }
-            for (;;)
-            {
-              paramImeKeyRelativeLayout.setSelected(false);
-              paramImeKeyRelativeLayout = this.DxV;
-              if (paramImeKeyRelativeLayout != null)
-              {
-                paramImeKeyRelativeLayout.cancel(true);
-                this.DxV = null;
-              }
-              if (!this.Dya) {
-                break label660;
-              }
-              this.Dya = false;
-              paramImeKeyRelativeLayout = this.DxY;
-              if (paramImeKeyRelativeLayout == null) {
-                break label161;
-              }
-              if (paramImeKeyRelativeLayout.x - i <= this.DxZ) {
-                break label651;
-              }
-              n.DEn.eEO();
-              break label161;
-              label626:
-              if (((Integer)localObject1).intValue() != 6)
-              {
-                break;
-                label639:
-                if (((Integer)localObject1).intValue() != 1) {
-                  break label161;
-                }
-              }
-            }
-            label651:
-            ax(1, 0L);
-            continue;
-            label660:
-            paramImeKeyRelativeLayout = this.DxY;
-            if (paramImeKeyRelativeLayout == null) {
-              p.iCn();
-            }
-            l2 = paramImeKeyRelativeLayout.time;
-            paramImeKeyRelativeLayout = e.DGW;
-            if (l1 - l2 < e.eGr() - 5L)
-            {
-              paramImeKeyRelativeLayout = this.DxW;
-              if (paramImeKeyRelativeLayout != null)
-              {
-                paramImeKeyRelativeLayout.cancel(true);
-                this.DxW = null;
-              }
-              ax(1, 0L);
-            }
-          }
+        if (paramImeKeyRelativeLayout.x - j <= this.Jrf) {
+          break label683;
         }
+        n.JvW.fMR();
+        break;
+        if (((Integer)localObject1).intValue() != 2) {
+          break label388;
+        }
+        if (this.Jrg) {
+          break;
+        }
+        paramImeKeyRelativeLayout = this.Jre;
+        if ((paramImeKeyRelativeLayout == null) || (this.Jrd != 1)) {
+          break;
+        }
+        paramMotionEvent = this.Jre;
+        s.checkNotNull(paramMotionEvent);
+        l2 = paramMotionEvent.time;
+        paramMotionEvent = e.Jym;
+        if ((l1 - l2 >= e.fOe() - 5L) || (paramImeKeyRelativeLayout.x - j <= this.Jrf) || (this.Jrf == 0)) {
+          break;
+        }
+        paramImeKeyRelativeLayout = this.Jrb;
+        if (paramImeKeyRelativeLayout != null)
+        {
+          paramImeKeyRelativeLayout.cancel(true);
+          this.Jrb = null;
+        }
+        paramImeKeyRelativeLayout = this.Jrc;
+        if (paramImeKeyRelativeLayout != null)
+        {
+          paramImeKeyRelativeLayout.cancel(true);
+          this.Jrc = null;
+        }
+        this.Jrg = true;
+        break;
+        label626:
+        if (((Integer)localObject1).intValue() != 3) {
+          break label393;
+        }
+        i = 1;
+        break label401;
+        label641:
+        if (((Integer)localObject1).intValue() != 6) {
+          break label398;
+        }
+        i = 1;
+        break label401;
+        label657:
+        if (localObject1 == null) {}
+        while (((Integer)localObject1).intValue() != 1)
+        {
+          i = 0;
+          break;
+        }
+        i = 1;
+      }
+      label681:
+      continue;
+      label683:
+      aE(1, 0L);
+      continue;
+      label692:
+      paramImeKeyRelativeLayout = this.Jre;
+      s.checkNotNull(paramImeKeyRelativeLayout);
+      long l2 = paramImeKeyRelativeLayout.time;
+      paramImeKeyRelativeLayout = e.Jym;
+      if (l1 - l2 < e.fOe() - 5L)
+      {
+        paramImeKeyRelativeLayout = this.Jrc;
+        if (paramImeKeyRelativeLayout != null)
+        {
+          paramImeKeyRelativeLayout.cancel(true);
+          this.Jrc = null;
+        }
+        aE(1, 0L);
       }
     }
   }
   
   public void b(com.tencent.mm.plugin.hld.a.c paramc)
   {
-    this.DvY = paramc;
+    this.Jpf = paramc;
   }
   
-  public final boolean eDJ()
+  public void fG(String paramString, int paramInt)
   {
-    return this.DxR != 1;
-  }
-  
-  public final void eDK()
-  {
-    AppMethodBeat.i(216657);
-    if (this.DxQ != this.DxR) {
-      eDL();
-    }
-    AppMethodBeat.o(216657);
-  }
-  
-  protected void eDL() {}
-  
-  public void eO(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(216659);
-    p.k(paramString, "actionStr");
+    AppMethodBeat.i(313148);
+    s.u(paramString, "actionStr");
     ImeKeyButton localImeKeyButton = getActionKey();
-    if (localImeKeyButton != null)
+    if (localImeKeyButton != null) {
+      ImeKeyRelativeLayout.a((ImeKeyRelativeLayout)localImeKeyButton, paramString);
+    }
+    switch (paramInt)
     {
-      ImeKeyRelativeLayout.a(localImeKeyButton, paramString);
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(216659);
-        return;
-      case 2: 
-        localImeKeyButton.setClickable(true);
-        paramString = com.tencent.mm.plugin.hld.f.k.DHH;
-        if (com.tencent.mm.plugin.hld.f.k.UK(localImeKeyButton.getViewType()))
-        {
-          paramString = localImeKeyButton.getInsideView();
-          if (paramString != null) {
-            paramString.setBackground(getResources().getDrawable(a.e.ime_key_grey_bg));
-          }
-        }
-        for (;;)
-        {
-          localImeKeyButton.UO(a.c.ime_key_text_color);
-          AppMethodBeat.o(216659);
-          return;
-          localImeKeyButton.setBackground(getResources().getDrawable(a.e.ime_key_grey_bg));
-        }
-      case 3: 
-        localImeKeyButton.setClickable(true);
-        paramString = com.tencent.mm.plugin.hld.f.k.DHH;
-        if (com.tencent.mm.plugin.hld.f.k.UK(localImeKeyButton.getViewType()))
-        {
-          paramString = localImeKeyButton.getInsideView();
-          if (paramString != null) {
-            paramString.setBackground(getResources().getDrawable(a.e.ime_key_green_bg));
-          }
-        }
-        for (;;)
-        {
-          localImeKeyButton.UO(a.c.White);
-          AppMethodBeat.o(216659);
-          return;
-          localImeKeyButton.setBackground(getResources().getDrawable(a.e.ime_key_green_bg));
-        }
-      }
-      localImeKeyButton.setClickable(false);
-      paramString = com.tencent.mm.plugin.hld.f.k.DHH;
-      if (com.tencent.mm.plugin.hld.f.k.UK(localImeKeyButton.getViewType()))
+    default: 
+      AppMethodBeat.o(313148);
+      return;
+    case 2: 
+      localImeKeyButton.setClickable(true);
+      paramString = com.tencent.mm.plugin.hld.f.k.JyF;
+      if (com.tencent.mm.plugin.hld.f.k.YI(localImeKeyButton.getViewType()))
       {
         paramString = localImeKeyButton.getInsideView();
         if (paramString != null) {
@@ -447,46 +484,61 @@ public class ImeKeyboard
       }
       for (;;)
       {
-        localImeKeyButton.UO(a.c.S2_text_invalid_color);
-        break;
+        localImeKeyButton.YM(a.c.ime_key_text_color);
+        AppMethodBeat.o(313148);
+        return;
         localImeKeyButton.setBackground(getResources().getDrawable(a.e.ime_key_grey_bg));
       }
+    case 3: 
+      localImeKeyButton.setClickable(true);
+      paramString = com.tencent.mm.plugin.hld.f.k.JyF;
+      if (com.tencent.mm.plugin.hld.f.k.YI(localImeKeyButton.getViewType()))
+      {
+        paramString = localImeKeyButton.getInsideView();
+        if (paramString != null) {
+          paramString.setBackground(getResources().getDrawable(a.e.ime_key_green_bg));
+        }
+      }
+      for (;;)
+      {
+        localImeKeyButton.YM(a.c.White);
+        AppMethodBeat.o(313148);
+        return;
+        localImeKeyButton.setBackground(getResources().getDrawable(a.e.ime_key_green_bg));
+      }
     }
-    AppMethodBeat.o(216659);
-  }
-  
-  public boolean fa(View paramView)
-  {
-    return false;
-  }
-  
-  public void fb(View paramView) {}
-  
-  public void fc(View paramView) {}
-  
-  public final boolean fd(View paramView)
-  {
-    AppMethodBeat.i(216661);
-    View localView = this.DxS;
-    long l = this.DxT;
-    this.DxS = paramView;
-    this.DxT = System.currentTimeMillis();
-    if (!fa(paramView))
+    localImeKeyButton.setClickable(false);
+    paramString = com.tencent.mm.plugin.hld.f.k.JyF;
+    if (com.tencent.mm.plugin.hld.f.k.YI(localImeKeyButton.getViewType()))
     {
-      AppMethodBeat.o(216661);
-      return false;
+      paramString = localImeKeyButton.getInsideView();
+      if (paramString != null) {
+        paramString.setBackground(getResources().getDrawable(a.e.ime_key_grey_bg));
+      }
     }
-    if ((p.h(paramView, localView)) && (System.currentTimeMillis() - l <= 200L))
+    for (;;)
     {
-      fc(paramView);
-      AppMethodBeat.o(216661);
-      return true;
+      localImeKeyButton.YM(a.c.S2_text_invalid_color);
+      break;
+      localImeKeyButton.setBackground(getResources().getDrawable(a.e.ime_key_grey_bg));
     }
-    Log.d("WxIme.ImeKeyboard", "supportDoubleKeyOnClickHandler");
-    fb(paramView);
-    AppMethodBeat.o(216661);
-    return true;
   }
+  
+  public final boolean fLL()
+  {
+    return this.JqX != 1;
+  }
+  
+  public final void fLM()
+  {
+    AppMethodBeat.i(313131);
+    if (this.JqW != this.JqX) {
+      fLN();
+    }
+    AppMethodBeat.o(313131);
+  }
+  
+  protected void fLN() {}
   
   protected ImeKeyButton getActionKey()
   {
@@ -495,127 +547,85 @@ public class ImeKeyboard
   
   public c getKeyboardType()
   {
-    return c.Dyl;
+    return c.Jrp;
   }
   
   protected final com.tencent.mm.plugin.hld.a.c getMKeyboardActionListener()
   {
-    return this.DvY;
+    return this.Jpf;
   }
   
   public int getUpperMode()
   {
-    return this.DxR;
+    return this.JqX;
+  }
+  
+  public boolean hL(View paramView)
+  {
+    return false;
+  }
+  
+  public void hM(View paramView) {}
+  
+  public void hN(View paramView) {}
+  
+  public final boolean hO(View paramView)
+  {
+    AppMethodBeat.i(313171);
+    View localView = this.JqY;
+    long l = this.JqZ;
+    this.JqY = paramView;
+    this.JqZ = System.currentTimeMillis();
+    if (!hL(paramView))
+    {
+      AppMethodBeat.o(313171);
+      return false;
+    }
+    if ((s.p(paramView, localView)) && (System.currentTimeMillis() - l <= 200L))
+    {
+      hN(paramView);
+      AppMethodBeat.o(313171);
+      return true;
+    }
+    Log.d("WxIme.ImeKeyboard", "supportDoubleKeyOnClickHandler");
+    hM(paramView);
+    AppMethodBeat.o(313171);
+    return true;
   }
   
   public void onCreate() {}
   
   public void onReset()
   {
-    AppMethodBeat.i(216655);
-    Uu(1);
-    eDK();
-    AppMethodBeat.o(216655);
+    AppMethodBeat.i(313108);
+    Yr(1);
+    fLM();
+    AppMethodBeat.o(313108);
   }
-  
-  public void sM(boolean paramBoolean) {}
   
   protected final void setMKeyboardActionListener(com.tencent.mm.plugin.hld.a.c paramc)
   {
-    this.DvY = paramc;
+    this.Jpf = paramc;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
+  public void wS(boolean paramBoolean) {}
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(ImeKeyboard paramImeKeyboard, long paramLong, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(214009);
-      Log.i("WxIme.ImeKeyboard", "doDeleteImp inter time:" + (System.currentTimeMillis() - l));
-      com.tencent.mm.plugin.hld.a.c localc = this.Dyc.getMKeyboardActionListener();
-      if (localc != null)
-      {
-        localc.q(1, new Keyboard.a(ImeKeyboard.a(this.Dyc), this.Dyd));
-        AppMethodBeat.o(214009);
-        return;
-      }
-      AppMethodBeat.o(214009);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(ImeKeyboard paramImeKeyboard) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216624);
-      for (;;)
-      {
-        int i;
-        long l;
-        try
-        {
-          Object localObject = e.DGW;
-          Thread.sleep(e.eGq());
-          int j = 1;
-          i = j;
-          if (ImeKeyboard.a(this.Dyc) == 2)
-          {
-            l = System.currentTimeMillis();
-            localObject = ImeKeyboard.b(this.Dyc);
-            if (localObject == null) {
-              p.iCn();
-            }
-            l -= ((b)localObject).time;
-            if (l > 2000L) {
-              i = 3;
-            }
-          }
-          else
-          {
-            ImeKeyboard.a(this.Dyc, i);
-            continue;
-          }
-          i = j;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          Log.e("WxIme.ImeKeyboard", "deleteFuture " + localInterruptedException.getMessage());
-          AppMethodBeat.o(216624);
-          return;
-        }
-        if (l > 5000L) {
-          i = 5;
-        }
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/keyboard/ImeKeyboard$supportDoubleKeyOnClickHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-hld_release"})
-  public static final class d
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/keyboard/ImeKeyboard$supportDoubleKeyOnClickHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     extends MMHandler
   {
-    d(Looper paramLooper)
+    b(ImeKeyboard paramImeKeyboard, Looper paramLooper)
     {
       super();
     }
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(209824);
-      p.k(paramMessage, "msg");
+      AppMethodBeat.i(312945);
+      s.u(paramMessage, "msg");
       Log.d("WxIme.ImeKeyboard", "supportDoubleKeyOnClickHandler");
-      this.Dyc.fb((View)paramMessage.obj);
-      AppMethodBeat.o(209824);
+      this.Jrh.hM((View)paramMessage.obj);
+      AppMethodBeat.o(312945);
     }
   }
 }

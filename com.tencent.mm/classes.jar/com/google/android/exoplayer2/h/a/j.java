@@ -16,24 +16,24 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class j
 {
-  private q bpC;
-  final HashMap<String, i> bpZ;
-  final SparseArray<String> bqa;
-  final b bqb;
-  private final Cipher bqc;
-  private final SecretKeySpec bqd;
-  private final boolean bqe;
-  boolean bqf;
+  final HashMap<String, i> djD;
+  final SparseArray<String> djE;
+  final b djF;
+  private final Cipher djG;
+  private final SecretKeySpec djH;
+  private final boolean djI;
+  boolean djJ;
+  private q djg;
   
   public j(File paramFile)
   {
     AppMethodBeat.i(92981);
-    this.bqe = false;
-    this.bqc = null;
-    this.bqd = null;
-    this.bpZ = new HashMap();
-    this.bqa = new SparseArray();
-    this.bqb = new b(new File(paramFile, "cached_content_index.exi"));
+    this.djI = false;
+    this.djG = null;
+    this.djH = null;
+    this.djD = new HashMap();
+    this.djE = new SparseArray();
+    this.djF = new b(new File(paramFile, "cached_content_index.exi"));
     AppMethodBeat.o(92981);
   }
   
@@ -70,8 +70,8 @@ public final class j
   private void a(i parami)
   {
     AppMethodBeat.i(92989);
-    this.bpZ.put(parami.key, parami);
-    this.bqa.put(parami.id, parami.key);
+    this.djD.put(parami.key, parami);
+    this.djE.put(parami.id, parami.key);
     AppMethodBeat.o(92989);
   }
   
@@ -79,109 +79,59 @@ public final class j
   {
     AppMethodBeat.i(92990);
     a(parami);
-    this.bqf = true;
+    this.djJ = true;
     AppMethodBeat.o(92990);
   }
   
-  public final i bB(String paramString)
-  {
-    AppMethodBeat.i(92983);
-    i locali2 = (i)this.bpZ.get(paramString);
-    i locali1 = locali2;
-    if (locali2 == null) {
-      locali1 = h(paramString, -1L);
-    }
-    AppMethodBeat.o(92983);
-    return locali1;
-  }
-  
-  public final i bC(String paramString)
-  {
-    AppMethodBeat.i(92984);
-    paramString = (i)this.bpZ.get(paramString);
-    AppMethodBeat.o(92984);
-    return paramString;
-  }
-  
-  public final int bD(String paramString)
-  {
-    AppMethodBeat.i(92985);
-    int i = bB(paramString).id;
-    AppMethodBeat.o(92985);
-    return i;
-  }
-  
-  public final void bE(String paramString)
-  {
-    AppMethodBeat.i(92986);
-    paramString = (i)this.bpZ.remove(paramString);
-    if (paramString != null)
-    {
-      a.checkState(paramString.bpY.isEmpty());
-      this.bqa.remove(paramString.id);
-      this.bqf = true;
-    }
-    AppMethodBeat.o(92986);
-  }
-  
-  final i h(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(92991);
-    paramString = new i(a(this.bqa), paramString, paramLong);
-    b(paramString);
-    AppMethodBeat.o(92991);
-    return paramString;
-  }
-  
   /* Error */
-  public final void uW()
+  public final void Uv()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
     //   2: iconst_1
     //   3: istore_2
-    //   4: ldc 164
+    //   4: ldc 112
     //   6: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 104	com/google/android/exoplayer2/h/a/j:bqf	Z
+    //   10: getfield 104	com/google/android/exoplayer2/h/a/j:djJ	Z
     //   13: ifne +9 -> 22
-    //   16: ldc 164
+    //   16: ldc 112
     //   18: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: return
     //   22: aload_0
-    //   23: getfield 62	com/google/android/exoplayer2/h/a/j:bqb	Lcom/google/android/exoplayer2/i/b;
-    //   26: invokevirtual 168	com/google/android/exoplayer2/i/b:va	()Ljava/io/OutputStream;
+    //   23: getfield 62	com/google/android/exoplayer2/h/a/j:djF	Lcom/google/android/exoplayer2/i/b;
+    //   26: invokevirtual 116	com/google/android/exoplayer2/i/b:Uz	()Ljava/io/OutputStream;
     //   29: astore 4
     //   31: aload_0
-    //   32: getfield 170	com/google/android/exoplayer2/h/a/j:bpC	Lcom/google/android/exoplayer2/i/q;
+    //   32: getfield 118	com/google/android/exoplayer2/h/a/j:djg	Lcom/google/android/exoplayer2/i/q;
     //   35: ifnonnull +296 -> 331
     //   38: aload_0
-    //   39: new 172	com/google/android/exoplayer2/i/q
+    //   39: new 120	com/google/android/exoplayer2/i/q
     //   42: dup
     //   43: aload 4
-    //   45: invokespecial 175	com/google/android/exoplayer2/i/q:<init>	(Ljava/io/OutputStream;)V
-    //   48: putfield 170	com/google/android/exoplayer2/h/a/j:bpC	Lcom/google/android/exoplayer2/i/q;
-    //   51: new 177	java/io/DataOutputStream
+    //   45: invokespecial 123	com/google/android/exoplayer2/i/q:<init>	(Ljava/io/OutputStream;)V
+    //   48: putfield 118	com/google/android/exoplayer2/h/a/j:djg	Lcom/google/android/exoplayer2/i/q;
+    //   51: new 125	java/io/DataOutputStream
     //   54: dup
     //   55: aload_0
-    //   56: getfield 170	com/google/android/exoplayer2/h/a/j:bpC	Lcom/google/android/exoplayer2/i/q;
-    //   59: invokespecial 178	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   56: getfield 118	com/google/android/exoplayer2/h/a/j:djg	Lcom/google/android/exoplayer2/i/q;
+    //   59: invokespecial 126	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   62: astore 5
     //   64: aload 5
     //   66: astore 4
     //   68: aload 5
     //   70: iconst_1
-    //   71: invokevirtual 181	java/io/DataOutputStream:writeInt	(I)V
+    //   71: invokevirtual 129	java/io/DataOutputStream:writeInt	(I)V
     //   74: aload 5
     //   76: astore 4
     //   78: aload_0
-    //   79: getfield 35	com/google/android/exoplayer2/h/a/j:bqe	Z
+    //   79: getfield 35	com/google/android/exoplayer2/h/a/j:djI	Z
     //   82: ifeq +302 -> 384
     //   85: aload 5
     //   87: astore 4
     //   89: aload_0
-    //   90: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
+    //   90: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
     //   93: ifnull +291 -> 384
     //   96: iconst_1
     //   97: istore_1
@@ -190,7 +140,7 @@ public final class j
     //   103: astore 4
     //   105: aload 5
     //   107: iload_2
-    //   108: invokevirtual 181	java/io/DataOutputStream:writeInt	(I)V
+    //   108: invokevirtual 129	java/io/DataOutputStream:writeInt	(I)V
     //   111: aload 5
     //   113: astore_3
     //   114: iload_1
@@ -202,74 +152,74 @@ public final class j
     //   126: astore_3
     //   127: aload 5
     //   129: astore 4
-    //   131: new 183	java/util/Random
+    //   131: new 131	java/util/Random
     //   134: dup
-    //   135: invokespecial 184	java/util/Random:<init>	()V
+    //   135: invokespecial 132	java/util/Random:<init>	()V
     //   138: aload_3
-    //   139: invokevirtual 188	java/util/Random:nextBytes	([B)V
+    //   139: invokevirtual 136	java/util/Random:nextBytes	([B)V
     //   142: aload 5
     //   144: astore 4
     //   146: aload 5
     //   148: aload_3
-    //   149: invokevirtual 191	java/io/DataOutputStream:write	([B)V
+    //   149: invokevirtual 139	java/io/DataOutputStream:write	([B)V
     //   152: aload 5
     //   154: astore 4
-    //   156: new 193	javax/crypto/spec/IvParameterSpec
+    //   156: new 141	javax/crypto/spec/IvParameterSpec
     //   159: dup
     //   160: aload_3
-    //   161: invokespecial 195	javax/crypto/spec/IvParameterSpec:<init>	([B)V
+    //   161: invokespecial 143	javax/crypto/spec/IvParameterSpec:<init>	([B)V
     //   164: astore_3
     //   165: aload 5
     //   167: astore 4
     //   169: aload_0
-    //   170: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
+    //   170: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
     //   173: iconst_1
     //   174: aload_0
-    //   175: getfield 39	com/google/android/exoplayer2/h/a/j:bqd	Ljavax/crypto/spec/SecretKeySpec;
+    //   175: getfield 39	com/google/android/exoplayer2/h/a/j:djH	Ljavax/crypto/spec/SecretKeySpec;
     //   178: aload_3
-    //   179: invokevirtual 201	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
+    //   179: invokevirtual 149	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
     //   182: aload 5
     //   184: astore 4
     //   186: aload 5
-    //   188: invokevirtual 204	java/io/DataOutputStream:flush	()V
+    //   188: invokevirtual 152	java/io/DataOutputStream:flush	()V
     //   191: aload 5
     //   193: astore 4
-    //   195: new 177	java/io/DataOutputStream
+    //   195: new 125	java/io/DataOutputStream
     //   198: dup
-    //   199: new 206	javax/crypto/CipherOutputStream
+    //   199: new 154	javax/crypto/CipherOutputStream
     //   202: dup
     //   203: aload_0
-    //   204: getfield 170	com/google/android/exoplayer2/h/a/j:bpC	Lcom/google/android/exoplayer2/i/q;
+    //   204: getfield 118	com/google/android/exoplayer2/h/a/j:djg	Lcom/google/android/exoplayer2/i/q;
     //   207: aload_0
-    //   208: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
-    //   211: invokespecial 209	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
-    //   214: invokespecial 178	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   208: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
+    //   211: invokespecial 157	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
+    //   214: invokespecial 126	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   217: astore_3
     //   218: aload_3
     //   219: astore 4
     //   221: aload_3
     //   222: aload_0
-    //   223: getfield 44	com/google/android/exoplayer2/h/a/j:bpZ	Ljava/util/HashMap;
-    //   226: invokevirtual 210	java/util/HashMap:size	()I
-    //   229: invokevirtual 181	java/io/DataOutputStream:writeInt	(I)V
+    //   223: getfield 44	com/google/android/exoplayer2/h/a/j:djD	Ljava/util/HashMap;
+    //   226: invokevirtual 158	java/util/HashMap:size	()I
+    //   229: invokevirtual 129	java/io/DataOutputStream:writeInt	(I)V
     //   232: aload_3
     //   233: astore 4
     //   235: aload_0
-    //   236: getfield 44	com/google/android/exoplayer2/h/a/j:bpZ	Ljava/util/HashMap;
-    //   239: invokevirtual 214	java/util/HashMap:values	()Ljava/util/Collection;
-    //   242: invokeinterface 220 1 0
+    //   236: getfield 44	com/google/android/exoplayer2/h/a/j:djD	Ljava/util/HashMap;
+    //   239: invokevirtual 162	java/util/HashMap:values	()Ljava/util/Collection;
+    //   242: invokeinterface 168 1 0
     //   247: astore 5
     //   249: iconst_0
     //   250: istore_1
     //   251: aload_3
     //   252: astore 4
     //   254: aload 5
-    //   256: invokeinterface 225 1 0
+    //   256: invokeinterface 174 1 0
     //   261: ifeq +170 -> 431
     //   264: aload_3
     //   265: astore 4
     //   267: aload 5
-    //   269: invokeinterface 229 1 0
+    //   269: invokeinterface 178 1 0
     //   274: checkcast 83	com/google/android/exoplayer2/h/a/i
     //   277: astore 6
     //   279: aload_3
@@ -277,23 +227,23 @@ public final class j
     //   282: aload_3
     //   283: aload 6
     //   285: getfield 95	com/google/android/exoplayer2/h/a/i:id	I
-    //   288: invokevirtual 181	java/io/DataOutputStream:writeInt	(I)V
+    //   288: invokevirtual 129	java/io/DataOutputStream:writeInt	(I)V
     //   291: aload_3
     //   292: astore 4
     //   294: aload_3
     //   295: aload 6
     //   297: getfield 87	com/google/android/exoplayer2/h/a/i:key	Ljava/lang/String;
-    //   300: invokevirtual 232	java/io/DataOutputStream:writeUTF	(Ljava/lang/String;)V
+    //   300: invokevirtual 182	java/io/DataOutputStream:writeUTF	(Ljava/lang/String;)V
     //   303: aload_3
     //   304: astore 4
     //   306: aload_3
     //   307: aload 6
-    //   309: getfield 236	com/google/android/exoplayer2/h/a/i:aFL	J
-    //   312: invokevirtual 240	java/io/DataOutputStream:writeLong	(J)V
+    //   309: getfield 186	com/google/android/exoplayer2/h/a/i:length	J
+    //   312: invokevirtual 190	java/io/DataOutputStream:writeLong	(J)V
     //   315: aload_3
     //   316: astore 4
     //   318: aload 6
-    //   320: invokevirtual 243	com/google/android/exoplayer2/h/a/i:uV	()I
+    //   320: invokevirtual 193	com/google/android/exoplayer2/h/a/i:Uu	()I
     //   323: istore_2
     //   324: iload_2
     //   325: iload_1
@@ -301,17 +251,17 @@ public final class j
     //   327: istore_1
     //   328: goto -77 -> 251
     //   331: aload_0
-    //   332: getfield 170	com/google/android/exoplayer2/h/a/j:bpC	Lcom/google/android/exoplayer2/i/q;
+    //   332: getfield 118	com/google/android/exoplayer2/h/a/j:djg	Lcom/google/android/exoplayer2/i/q;
     //   335: aload 4
-    //   337: invokevirtual 245	com/google/android/exoplayer2/i/q:a	(Ljava/io/OutputStream;)V
+    //   337: invokevirtual 195	com/google/android/exoplayer2/i/q:a	(Ljava/io/OutputStream;)V
     //   340: goto -289 -> 51
     //   343: astore 4
-    //   345: new 247	com/google/android/exoplayer2/h/a/a$a
+    //   345: new 197	com/google/android/exoplayer2/h/a/a$a
     //   348: dup
     //   349: aload 4
-    //   351: invokespecial 250	com/google/android/exoplayer2/h/a/a$a:<init>	(Ljava/io/IOException;)V
+    //   351: invokespecial 200	com/google/android/exoplayer2/h/a/a$a:<init>	(Ljava/io/IOException;)V
     //   354: astore 4
-    //   356: ldc 164
+    //   356: ldc 112
     //   358: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   361: aload 4
     //   363: athrow
@@ -321,8 +271,8 @@ public final class j
     //   369: aload 5
     //   371: astore_3
     //   372: aload 4
-    //   374: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   377: ldc 164
+    //   374: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   377: ldc 112
     //   379: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   382: aload_3
     //   383: athrow
@@ -335,14 +285,14 @@ public final class j
     //   394: astore_3
     //   395: aload 5
     //   397: astore 4
-    //   399: new 258	java/lang/IllegalStateException
+    //   399: new 208	java/lang/IllegalStateException
     //   402: dup
     //   403: aload_3
-    //   404: invokespecial 261	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
+    //   404: invokespecial 211	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
     //   407: astore_3
     //   408: aload 5
     //   410: astore 4
-    //   412: ldc 164
+    //   412: ldc 112
     //   414: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   417: aload 5
     //   419: astore 4
@@ -356,28 +306,28 @@ public final class j
     //   432: astore 4
     //   434: aload_3
     //   435: iload_1
-    //   436: invokevirtual 181	java/io/DataOutputStream:writeInt	(I)V
+    //   436: invokevirtual 129	java/io/DataOutputStream:writeInt	(I)V
     //   439: aload_3
     //   440: astore 4
     //   442: aload_0
-    //   443: getfield 62	com/google/android/exoplayer2/h/a/j:bqb	Lcom/google/android/exoplayer2/i/b;
+    //   443: getfield 62	com/google/android/exoplayer2/h/a/j:djF	Lcom/google/android/exoplayer2/i/b;
     //   446: astore 5
     //   448: aload_3
     //   449: astore 4
     //   451: aload_3
-    //   452: invokevirtual 266	java/io/OutputStream:close	()V
+    //   452: invokevirtual 216	java/io/OutputStream:close	()V
     //   455: aload_3
     //   456: astore 4
     //   458: aload 5
-    //   460: getfield 270	com/google/android/exoplayer2/i/b:bqz	Ljava/io/File;
-    //   463: invokevirtual 273	java/io/File:delete	()Z
+    //   460: getfield 220	com/google/android/exoplayer2/i/b:dkd	Ljava/io/File;
+    //   463: invokevirtual 223	java/io/File:delete	()Z
     //   466: pop
     //   467: aconst_null
-    //   468: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   468: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
     //   471: aload_0
     //   472: iconst_0
-    //   473: putfield 104	com/google/android/exoplayer2/h/a/j:bqf	Z
-    //   476: ldc 164
+    //   473: putfield 104	com/google/android/exoplayer2/h/a/j:djJ	Z
+    //   476: ldc 112
     //   478: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   481: return
     //   482: astore_3
@@ -479,367 +429,417 @@ public final class j
     //   169	182	498	java/security/InvalidKeyException
   }
   
-  public final void uX()
+  public final void Uw()
   {
     AppMethodBeat.i(92987);
     Object localObject = new LinkedList();
-    Iterator localIterator = this.bpZ.values().iterator();
+    Iterator localIterator = this.djD.values().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if (locali.bpY.isEmpty()) {
+      if (locali.djC.isEmpty()) {
         ((LinkedList)localObject).add(locali.key);
       }
     }
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      bE((String)((Iterator)localObject).next());
+      cW((String)((Iterator)localObject).next());
     }
     AppMethodBeat.o(92987);
   }
   
   /* Error */
-  final boolean uY()
+  final boolean Ux()
   {
     // Byte code:
-    //   0: ldc_w 291
-    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aconst_null
-    //   7: astore 8
-    //   9: aconst_null
-    //   10: astore 5
-    //   12: aload 5
-    //   14: astore 6
-    //   16: aload 8
-    //   18: astore 7
-    //   20: aload_0
-    //   21: getfield 62	com/google/android/exoplayer2/h/a/j:bqb	Lcom/google/android/exoplayer2/i/b;
-    //   24: astore 9
-    //   26: aload 5
-    //   28: astore 6
-    //   30: aload 8
-    //   32: astore 7
-    //   34: aload 9
-    //   36: getfield 270	com/google/android/exoplayer2/i/b:bqz	Ljava/io/File;
-    //   39: invokevirtual 294	java/io/File:exists	()Z
-    //   42: ifeq +42 -> 84
-    //   45: aload 5
-    //   47: astore 6
-    //   49: aload 8
-    //   51: astore 7
-    //   53: aload 9
-    //   55: getfield 297	com/google/android/exoplayer2/i/b:bqy	Ljava/io/File;
-    //   58: invokevirtual 273	java/io/File:delete	()Z
-    //   61: pop
-    //   62: aload 5
-    //   64: astore 6
-    //   66: aload 8
-    //   68: astore 7
-    //   70: aload 9
-    //   72: getfield 270	com/google/android/exoplayer2/i/b:bqz	Ljava/io/File;
-    //   75: aload 9
-    //   77: getfield 297	com/google/android/exoplayer2/i/b:bqy	Ljava/io/File;
-    //   80: invokevirtual 301	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   83: pop
-    //   84: aload 5
-    //   86: astore 6
-    //   88: aload 8
-    //   90: astore 7
-    //   92: new 303	java/io/BufferedInputStream
-    //   95: dup
-    //   96: new 305	java/io/FileInputStream
-    //   99: dup
-    //   100: aload 9
-    //   102: getfield 297	com/google/android/exoplayer2/i/b:bqy	Ljava/io/File;
-    //   105: invokespecial 306	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   108: invokespecial 309	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   111: astore 9
-    //   113: aload 5
-    //   115: astore 6
-    //   117: aload 8
-    //   119: astore 7
-    //   121: new 311	java/io/DataInputStream
-    //   124: dup
-    //   125: aload 9
-    //   127: invokespecial 312	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   130: astore 5
-    //   132: aload 5
-    //   134: invokevirtual 315	java/io/DataInputStream:readInt	()I
-    //   137: istore_1
-    //   138: iload_1
-    //   139: iconst_1
-    //   140: if_icmpeq +16 -> 156
-    //   143: aload 5
-    //   145: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   148: ldc_w 291
-    //   151: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   154: iconst_0
-    //   155: ireturn
-    //   156: aload 5
-    //   158: invokevirtual 315	java/io/DataInputStream:readInt	()I
-    //   161: iconst_1
-    //   162: iand
-    //   163: ifeq +216 -> 379
-    //   166: aload_0
-    //   167: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
-    //   170: astore 6
-    //   172: aload 6
-    //   174: ifnonnull +16 -> 190
-    //   177: aload 5
-    //   179: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   182: ldc_w 291
-    //   185: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   188: iconst_0
-    //   189: ireturn
-    //   190: bipush 16
-    //   192: newarray byte
-    //   194: astore 6
-    //   196: aload 5
-    //   198: aload 6
-    //   200: invokevirtual 318	java/io/DataInputStream:readFully	([B)V
-    //   203: new 193	javax/crypto/spec/IvParameterSpec
-    //   206: dup
-    //   207: aload 6
-    //   209: invokespecial 195	javax/crypto/spec/IvParameterSpec:<init>	([B)V
-    //   212: astore 6
-    //   214: aload_0
-    //   215: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
-    //   218: iconst_2
-    //   219: aload_0
-    //   220: getfield 39	com/google/android/exoplayer2/h/a/j:bqd	Ljavax/crypto/spec/SecretKeySpec;
-    //   223: aload 6
-    //   225: invokevirtual 201	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   228: new 311	java/io/DataInputStream
-    //   231: dup
-    //   232: new 320	javax/crypto/CipherInputStream
-    //   235: dup
-    //   236: aload 9
-    //   238: aload_0
-    //   239: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
-    //   242: invokespecial 323	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
-    //   245: invokespecial 312	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   248: astore 6
-    //   250: aload 6
-    //   252: astore 5
-    //   254: aload 5
-    //   256: astore 6
-    //   258: aload 5
-    //   260: astore 7
-    //   262: aload 5
-    //   264: invokevirtual 315	java/io/DataInputStream:readInt	()I
-    //   267: istore_3
-    //   268: iconst_0
-    //   269: istore_1
-    //   270: iconst_0
-    //   271: istore_2
-    //   272: iload_2
-    //   273: iload_3
-    //   274: if_icmpge +120 -> 394
-    //   277: aload 5
-    //   279: astore 6
-    //   281: aload 5
-    //   283: astore 7
-    //   285: new 83	com/google/android/exoplayer2/h/a/i
-    //   288: dup
-    //   289: aload 5
-    //   291: invokespecial 326	com/google/android/exoplayer2/h/a/i:<init>	(Ljava/io/DataInputStream;)V
-    //   294: astore 8
-    //   296: aload 5
-    //   298: astore 6
-    //   300: aload 5
-    //   302: astore 7
-    //   304: aload_0
-    //   305: aload 8
-    //   307: invokespecial 102	com/google/android/exoplayer2/h/a/j:a	(Lcom/google/android/exoplayer2/h/a/i;)V
-    //   310: aload 5
-    //   312: astore 6
-    //   314: aload 5
-    //   316: astore 7
-    //   318: aload 8
-    //   320: invokevirtual 243	com/google/android/exoplayer2/h/a/i:uV	()I
-    //   323: istore 4
-    //   325: iload_1
-    //   326: iload 4
-    //   328: iadd
-    //   329: istore_1
-    //   330: iload_2
-    //   331: iconst_1
-    //   332: iadd
-    //   333: istore_2
-    //   334: goto -62 -> 272
-    //   337: astore 6
-    //   339: new 258	java/lang/IllegalStateException
-    //   342: dup
-    //   343: aload 6
-    //   345: invokespecial 261	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
-    //   348: astore 6
-    //   350: ldc_w 291
-    //   353: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   356: aload 6
-    //   358: athrow
-    //   359: astore 6
-    //   361: aload 5
-    //   363: ifnull +8 -> 371
-    //   366: aload 5
-    //   368: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   371: ldc_w 291
-    //   374: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   377: iconst_0
-    //   378: ireturn
-    //   379: aload_0
-    //   380: getfield 37	com/google/android/exoplayer2/h/a/j:bqc	Ljavax/crypto/Cipher;
-    //   383: ifnull +8 -> 391
-    //   386: aload_0
-    //   387: iconst_1
-    //   388: putfield 104	com/google/android/exoplayer2/h/a/j:bqf	Z
-    //   391: goto -137 -> 254
-    //   394: aload 5
-    //   396: astore 6
-    //   398: aload 5
-    //   400: astore 7
-    //   402: aload 5
-    //   404: invokevirtual 315	java/io/DataInputStream:readInt	()I
-    //   407: istore_2
-    //   408: iload_2
-    //   409: iload_1
-    //   410: if_icmpeq +16 -> 426
-    //   413: aload 5
-    //   415: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   418: ldc_w 291
-    //   421: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   424: iconst_0
-    //   425: ireturn
-    //   426: aload 5
-    //   428: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   431: ldc_w 291
-    //   434: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   437: iconst_1
-    //   438: ireturn
-    //   439: astore 5
-    //   441: aload 6
-    //   443: ifnull +8 -> 451
-    //   446: aload 6
-    //   448: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   451: ldc_w 291
-    //   454: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   457: iconst_0
-    //   458: ireturn
-    //   459: astore 5
-    //   461: aload 7
-    //   463: ifnull +8 -> 471
-    //   466: aload 7
-    //   468: invokestatic 256	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
-    //   471: ldc_w 291
-    //   474: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   477: aload 5
-    //   479: athrow
-    //   480: astore 6
-    //   482: aload 5
-    //   484: astore 7
-    //   486: aload 6
-    //   488: astore 5
-    //   490: goto -29 -> 461
-    //   493: astore 6
-    //   495: aload 5
-    //   497: astore 6
-    //   499: goto -58 -> 441
-    //   502: astore 5
-    //   504: aconst_null
-    //   505: astore 5
-    //   507: goto -146 -> 361
-    //   510: astore 6
-    //   512: goto -151 -> 361
-    //   515: astore 6
-    //   517: goto -178 -> 339
+    //   0: ldc 251
+    //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aconst_null
+    //   6: astore 8
+    //   8: aconst_null
+    //   9: astore 5
+    //   11: aload 5
+    //   13: astore 6
+    //   15: aload 8
+    //   17: astore 7
+    //   19: aload_0
+    //   20: getfield 62	com/google/android/exoplayer2/h/a/j:djF	Lcom/google/android/exoplayer2/i/b;
+    //   23: astore 9
+    //   25: aload 5
+    //   27: astore 6
+    //   29: aload 8
+    //   31: astore 7
+    //   33: aload 9
+    //   35: getfield 220	com/google/android/exoplayer2/i/b:dkd	Ljava/io/File;
+    //   38: invokevirtual 254	java/io/File:exists	()Z
+    //   41: ifeq +42 -> 83
+    //   44: aload 5
+    //   46: astore 6
+    //   48: aload 8
+    //   50: astore 7
+    //   52: aload 9
+    //   54: getfield 257	com/google/android/exoplayer2/i/b:dkc	Ljava/io/File;
+    //   57: invokevirtual 223	java/io/File:delete	()Z
+    //   60: pop
+    //   61: aload 5
+    //   63: astore 6
+    //   65: aload 8
+    //   67: astore 7
+    //   69: aload 9
+    //   71: getfield 220	com/google/android/exoplayer2/i/b:dkd	Ljava/io/File;
+    //   74: aload 9
+    //   76: getfield 257	com/google/android/exoplayer2/i/b:dkc	Ljava/io/File;
+    //   79: invokevirtual 261	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   82: pop
+    //   83: aload 5
+    //   85: astore 6
+    //   87: aload 8
+    //   89: astore 7
+    //   91: new 263	java/io/BufferedInputStream
+    //   94: dup
+    //   95: new 265	java/io/FileInputStream
+    //   98: dup
+    //   99: aload 9
+    //   101: getfield 257	com/google/android/exoplayer2/i/b:dkc	Ljava/io/File;
+    //   104: invokespecial 266	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   107: invokespecial 269	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   110: astore 9
+    //   112: aload 5
+    //   114: astore 6
+    //   116: aload 8
+    //   118: astore 7
+    //   120: new 271	java/io/DataInputStream
+    //   123: dup
+    //   124: aload 9
+    //   126: invokespecial 272	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   129: astore 5
+    //   131: aload 5
+    //   133: invokevirtual 275	java/io/DataInputStream:readInt	()I
+    //   136: istore_1
+    //   137: iload_1
+    //   138: iconst_1
+    //   139: if_icmpeq +15 -> 154
+    //   142: aload 5
+    //   144: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   147: ldc 251
+    //   149: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: iconst_0
+    //   153: ireturn
+    //   154: aload 5
+    //   156: invokevirtual 275	java/io/DataInputStream:readInt	()I
+    //   159: iconst_1
+    //   160: iand
+    //   161: ifeq +213 -> 374
+    //   164: aload_0
+    //   165: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
+    //   168: astore 6
+    //   170: aload 6
+    //   172: ifnonnull +15 -> 187
+    //   175: aload 5
+    //   177: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   180: ldc 251
+    //   182: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: iconst_0
+    //   186: ireturn
+    //   187: bipush 16
+    //   189: newarray byte
+    //   191: astore 6
+    //   193: aload 5
+    //   195: aload 6
+    //   197: invokevirtual 278	java/io/DataInputStream:readFully	([B)V
+    //   200: new 141	javax/crypto/spec/IvParameterSpec
+    //   203: dup
+    //   204: aload 6
+    //   206: invokespecial 143	javax/crypto/spec/IvParameterSpec:<init>	([B)V
+    //   209: astore 6
+    //   211: aload_0
+    //   212: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
+    //   215: iconst_2
+    //   216: aload_0
+    //   217: getfield 39	com/google/android/exoplayer2/h/a/j:djH	Ljavax/crypto/spec/SecretKeySpec;
+    //   220: aload 6
+    //   222: invokevirtual 149	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
+    //   225: new 271	java/io/DataInputStream
+    //   228: dup
+    //   229: new 280	javax/crypto/CipherInputStream
+    //   232: dup
+    //   233: aload 9
+    //   235: aload_0
+    //   236: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
+    //   239: invokespecial 283	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   242: invokespecial 272	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   245: astore 6
+    //   247: aload 6
+    //   249: astore 5
+    //   251: aload 5
+    //   253: astore 6
+    //   255: aload 5
+    //   257: astore 7
+    //   259: aload 5
+    //   261: invokevirtual 275	java/io/DataInputStream:readInt	()I
+    //   264: istore_3
+    //   265: iconst_0
+    //   266: istore_1
+    //   267: iconst_0
+    //   268: istore_2
+    //   269: iload_2
+    //   270: iload_3
+    //   271: if_icmpge +118 -> 389
+    //   274: aload 5
+    //   276: astore 6
+    //   278: aload 5
+    //   280: astore 7
+    //   282: new 83	com/google/android/exoplayer2/h/a/i
+    //   285: dup
+    //   286: aload 5
+    //   288: invokespecial 286	com/google/android/exoplayer2/h/a/i:<init>	(Ljava/io/DataInputStream;)V
+    //   291: astore 8
+    //   293: aload 5
+    //   295: astore 6
+    //   297: aload 5
+    //   299: astore 7
+    //   301: aload_0
+    //   302: aload 8
+    //   304: invokespecial 102	com/google/android/exoplayer2/h/a/j:a	(Lcom/google/android/exoplayer2/h/a/i;)V
+    //   307: aload 5
+    //   309: astore 6
+    //   311: aload 5
+    //   313: astore 7
+    //   315: aload 8
+    //   317: invokevirtual 193	com/google/android/exoplayer2/h/a/i:Uu	()I
+    //   320: istore 4
+    //   322: iload_1
+    //   323: iload 4
+    //   325: iadd
+    //   326: istore_1
+    //   327: iload_2
+    //   328: iconst_1
+    //   329: iadd
+    //   330: istore_2
+    //   331: goto -62 -> 269
+    //   334: astore 6
+    //   336: new 208	java/lang/IllegalStateException
+    //   339: dup
+    //   340: aload 6
+    //   342: invokespecial 211	java/lang/IllegalStateException:<init>	(Ljava/lang/Throwable;)V
+    //   345: astore 6
+    //   347: ldc 251
+    //   349: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   352: aload 6
+    //   354: athrow
+    //   355: astore 6
+    //   357: aload 5
+    //   359: ifnull +8 -> 367
+    //   362: aload 5
+    //   364: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   367: ldc 251
+    //   369: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   372: iconst_0
+    //   373: ireturn
+    //   374: aload_0
+    //   375: getfield 37	com/google/android/exoplayer2/h/a/j:djG	Ljavax/crypto/Cipher;
+    //   378: ifnull +8 -> 386
+    //   381: aload_0
+    //   382: iconst_1
+    //   383: putfield 104	com/google/android/exoplayer2/h/a/j:djJ	Z
+    //   386: goto -135 -> 251
+    //   389: aload 5
+    //   391: astore 6
+    //   393: aload 5
+    //   395: astore 7
+    //   397: aload 5
+    //   399: invokevirtual 275	java/io/DataInputStream:readInt	()I
+    //   402: istore_2
+    //   403: iload_2
+    //   404: iload_1
+    //   405: if_icmpeq +15 -> 420
+    //   408: aload 5
+    //   410: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   413: ldc 251
+    //   415: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   418: iconst_0
+    //   419: ireturn
+    //   420: aload 5
+    //   422: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   425: ldc 251
+    //   427: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   430: iconst_1
+    //   431: ireturn
+    //   432: astore 5
+    //   434: aload 6
+    //   436: ifnull +8 -> 444
+    //   439: aload 6
+    //   441: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   444: ldc 251
+    //   446: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   449: iconst_0
+    //   450: ireturn
+    //   451: astore 5
+    //   453: aload 7
+    //   455: ifnull +8 -> 463
+    //   458: aload 7
+    //   460: invokestatic 206	com/google/android/exoplayer2/i/x:closeQuietly	(Ljava/io/Closeable;)V
+    //   463: ldc 251
+    //   465: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   468: aload 5
+    //   470: athrow
+    //   471: astore 6
+    //   473: aload 5
+    //   475: astore 7
+    //   477: aload 6
+    //   479: astore 5
+    //   481: goto -28 -> 453
+    //   484: astore 6
+    //   486: aload 5
+    //   488: astore 6
+    //   490: goto -56 -> 434
+    //   493: astore 5
+    //   495: aconst_null
+    //   496: astore 5
+    //   498: goto -141 -> 357
+    //   501: astore 6
+    //   503: goto -146 -> 357
+    //   506: astore 6
+    //   508: goto -172 -> 336
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	520	0	this	j
-    //   137	274	1	i	int
-    //   271	140	2	j	int
-    //   267	8	3	k	int
-    //   323	6	4	m	int
-    //   10	417	5	localObject1	Object
-    //   439	1	5	localIOException1	java.io.IOException
-    //   459	24	5	localObject2	Object
-    //   488	8	5	localObject3	Object
-    //   502	1	5	localFileNotFoundException1	java.io.FileNotFoundException
-    //   505	1	5	localObject4	Object
-    //   14	299	6	localObject5	Object
-    //   337	7	6	localInvalidAlgorithmParameterException	java.security.InvalidAlgorithmParameterException
-    //   348	9	6	localIllegalStateException	java.lang.IllegalStateException
-    //   359	1	6	localFileNotFoundException2	java.io.FileNotFoundException
-    //   396	51	6	localObject6	Object
-    //   480	7	6	localObject7	Object
-    //   493	1	6	localIOException2	java.io.IOException
-    //   497	1	6	localObject8	Object
-    //   510	1	6	localFileNotFoundException3	java.io.FileNotFoundException
-    //   515	1	6	localInvalidKeyException	java.security.InvalidKeyException
-    //   18	467	7	localObject9	Object
-    //   7	312	8	locali	i
-    //   24	213	9	localObject10	Object
+    //   0	511	0	this	j
+    //   136	270	1	i	int
+    //   268	138	2	j	int
+    //   264	8	3	k	int
+    //   320	6	4	m	int
+    //   9	412	5	localObject1	Object
+    //   432	1	5	localIOException1	java.io.IOException
+    //   451	23	5	localObject2	Object
+    //   479	8	5	localObject3	Object
+    //   493	1	5	localFileNotFoundException1	java.io.FileNotFoundException
+    //   496	1	5	localObject4	Object
+    //   13	297	6	localObject5	Object
+    //   334	7	6	localInvalidAlgorithmParameterException	java.security.InvalidAlgorithmParameterException
+    //   345	8	6	localIllegalStateException	java.lang.IllegalStateException
+    //   355	1	6	localFileNotFoundException2	java.io.FileNotFoundException
+    //   391	49	6	localObject6	Object
+    //   471	7	6	localObject7	Object
+    //   484	1	6	localIOException2	java.io.IOException
+    //   488	1	6	localObject8	Object
+    //   501	1	6	localFileNotFoundException3	java.io.FileNotFoundException
+    //   506	1	6	localInvalidKeyException	java.security.InvalidKeyException
+    //   17	459	7	localObject9	Object
+    //   6	310	8	locali	i
+    //   23	211	9	localObject10	Object
     // Exception table:
     //   from	to	target	type
-    //   214	228	337	java/security/InvalidAlgorithmParameterException
-    //   132	138	359	java/io/FileNotFoundException
-    //   156	172	359	java/io/FileNotFoundException
-    //   190	214	359	java/io/FileNotFoundException
-    //   214	228	359	java/io/FileNotFoundException
-    //   228	250	359	java/io/FileNotFoundException
-    //   339	359	359	java/io/FileNotFoundException
-    //   379	391	359	java/io/FileNotFoundException
-    //   20	26	439	java/io/IOException
-    //   34	45	439	java/io/IOException
-    //   53	62	439	java/io/IOException
-    //   70	84	439	java/io/IOException
-    //   92	113	439	java/io/IOException
-    //   121	132	439	java/io/IOException
-    //   262	268	439	java/io/IOException
-    //   285	296	439	java/io/IOException
-    //   304	310	439	java/io/IOException
-    //   318	325	439	java/io/IOException
-    //   402	408	439	java/io/IOException
-    //   20	26	459	finally
-    //   34	45	459	finally
-    //   53	62	459	finally
-    //   70	84	459	finally
-    //   92	113	459	finally
-    //   121	132	459	finally
-    //   262	268	459	finally
-    //   285	296	459	finally
-    //   304	310	459	finally
-    //   318	325	459	finally
-    //   402	408	459	finally
-    //   132	138	480	finally
-    //   156	172	480	finally
-    //   190	214	480	finally
-    //   214	228	480	finally
-    //   228	250	480	finally
-    //   339	359	480	finally
-    //   379	391	480	finally
-    //   132	138	493	java/io/IOException
-    //   156	172	493	java/io/IOException
-    //   190	214	493	java/io/IOException
-    //   214	228	493	java/io/IOException
-    //   228	250	493	java/io/IOException
-    //   339	359	493	java/io/IOException
-    //   379	391	493	java/io/IOException
-    //   20	26	502	java/io/FileNotFoundException
-    //   34	45	502	java/io/FileNotFoundException
-    //   53	62	502	java/io/FileNotFoundException
-    //   70	84	502	java/io/FileNotFoundException
-    //   92	113	502	java/io/FileNotFoundException
-    //   121	132	502	java/io/FileNotFoundException
-    //   262	268	510	java/io/FileNotFoundException
-    //   285	296	510	java/io/FileNotFoundException
-    //   304	310	510	java/io/FileNotFoundException
-    //   318	325	510	java/io/FileNotFoundException
-    //   402	408	510	java/io/FileNotFoundException
-    //   214	228	515	java/security/InvalidKeyException
+    //   211	225	334	java/security/InvalidAlgorithmParameterException
+    //   131	137	355	java/io/FileNotFoundException
+    //   154	170	355	java/io/FileNotFoundException
+    //   187	211	355	java/io/FileNotFoundException
+    //   211	225	355	java/io/FileNotFoundException
+    //   225	247	355	java/io/FileNotFoundException
+    //   336	355	355	java/io/FileNotFoundException
+    //   374	386	355	java/io/FileNotFoundException
+    //   19	25	432	java/io/IOException
+    //   33	44	432	java/io/IOException
+    //   52	61	432	java/io/IOException
+    //   69	83	432	java/io/IOException
+    //   91	112	432	java/io/IOException
+    //   120	131	432	java/io/IOException
+    //   259	265	432	java/io/IOException
+    //   282	293	432	java/io/IOException
+    //   301	307	432	java/io/IOException
+    //   315	322	432	java/io/IOException
+    //   397	403	432	java/io/IOException
+    //   19	25	451	finally
+    //   33	44	451	finally
+    //   52	61	451	finally
+    //   69	83	451	finally
+    //   91	112	451	finally
+    //   120	131	451	finally
+    //   259	265	451	finally
+    //   282	293	451	finally
+    //   301	307	451	finally
+    //   315	322	451	finally
+    //   397	403	451	finally
+    //   131	137	471	finally
+    //   154	170	471	finally
+    //   187	211	471	finally
+    //   211	225	471	finally
+    //   225	247	471	finally
+    //   336	355	471	finally
+    //   374	386	471	finally
+    //   131	137	484	java/io/IOException
+    //   154	170	484	java/io/IOException
+    //   187	211	484	java/io/IOException
+    //   211	225	484	java/io/IOException
+    //   225	247	484	java/io/IOException
+    //   336	355	484	java/io/IOException
+    //   374	386	484	java/io/IOException
+    //   19	25	493	java/io/FileNotFoundException
+    //   33	44	493	java/io/FileNotFoundException
+    //   52	61	493	java/io/FileNotFoundException
+    //   69	83	493	java/io/FileNotFoundException
+    //   91	112	493	java/io/FileNotFoundException
+    //   120	131	493	java/io/FileNotFoundException
+    //   259	265	501	java/io/FileNotFoundException
+    //   282	293	501	java/io/FileNotFoundException
+    //   301	307	501	java/io/FileNotFoundException
+    //   315	322	501	java/io/FileNotFoundException
+    //   397	403	501	java/io/FileNotFoundException
+    //   211	225	506	java/security/InvalidKeyException
+  }
+  
+  public final i cT(String paramString)
+  {
+    AppMethodBeat.i(92983);
+    i locali2 = (i)this.djD.get(paramString);
+    i locali1 = locali2;
+    if (locali2 == null) {
+      locali1 = h(paramString, -1L);
+    }
+    AppMethodBeat.o(92983);
+    return locali1;
+  }
+  
+  public final i cU(String paramString)
+  {
+    AppMethodBeat.i(92984);
+    paramString = (i)this.djD.get(paramString);
+    AppMethodBeat.o(92984);
+    return paramString;
+  }
+  
+  public final int cV(String paramString)
+  {
+    AppMethodBeat.i(92985);
+    int i = cT(paramString).id;
+    AppMethodBeat.o(92985);
+    return i;
+  }
+  
+  public final void cW(String paramString)
+  {
+    AppMethodBeat.i(92986);
+    paramString = (i)this.djD.remove(paramString);
+    if (paramString != null)
+    {
+      a.checkState(paramString.djC.isEmpty());
+      this.djE.remove(paramString.id);
+      this.djJ = true;
+    }
+    AppMethodBeat.o(92986);
+  }
+  
+  final i h(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(92991);
+    paramString = new i(a(this.djE), paramString, paramLong);
+    b(paramString);
+    AppMethodBeat.o(92991);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.j
  * JD-Core Version:    0.7.0.1
  */

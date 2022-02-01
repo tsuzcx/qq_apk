@@ -16,11 +16,11 @@ public final class b
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       localByteArrayOutputStream.write(paramArrayOfByte1);
-      localByteArrayOutputStream.write(o.jO(paramInt1));
+      localByteArrayOutputStream.write(o.nE(paramInt1));
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort1 >> 8 & 0xFF), (byte)(paramShort1 & 0xFF) });
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort2 >> 8 & 0xFF), (byte)(paramShort2 & 0xFF) });
-      localByteArrayOutputStream.write(o.jO(paramInt2));
-      localByteArrayOutputStream.write(o.jO(0));
+      localByteArrayOutputStream.write(o.nE(paramInt2));
+      localByteArrayOutputStream.write(o.nE(0));
       localByteArrayOutputStream.write(paramArrayOfByte2);
       paramArrayOfByte1 = new CRC32();
       paramArrayOfByte1.update(localByteArrayOutputStream.toByteArray());
@@ -59,7 +59,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.b
  * JD-Core Version:    0.7.0.1
  */

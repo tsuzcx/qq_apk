@@ -152,7 +152,7 @@ public class PlayerConfigManager
         AppMethodBeat.o(76721);
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         Logger.e("PlayerConfigManager", localThrowable);
         AppMethodBeat.o(76721);
@@ -226,7 +226,7 @@ public class PlayerConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.PlayerConfigManager
  * JD-Core Version:    0.7.0.1
  */

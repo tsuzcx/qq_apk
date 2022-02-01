@@ -1,31 +1,39 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MirrorMode;", "", "()V", "AUTO", "", "getAUTO", "()I", "SAME", "getSAME", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicUserAttr;", "", "()V", "BuyProduct", "", "getBuyProduct", "()I", "FollowedAnchor", "getFollowedAnchor", "RewardedAnchor", "getRewardedAnchor", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$l
 {
-  private static final int kkB = 0;
-  private static final int kkC = 1;
-  public static final l kkD;
+  public static final l mLn;
+  private static final int mLo;
+  private static final int mLp;
+  private static final int mLq;
   
   static
   {
-    AppMethodBeat.i(198350);
-    kkD = new l();
-    kkC = 1;
-    AppMethodBeat.o(198350);
+    AppMethodBeat.i(248173);
+    mLn = new l();
+    mLo = 1;
+    mLp = 2;
+    mLq = 4;
+    AppMethodBeat.o(248173);
   }
   
-  public static int aKE()
+  public static int bdt()
   {
-    return kkB;
+    return mLo;
   }
   
-  public static int aKF()
+  public static int bdu()
   {
-    return kkC;
+    return mLp;
+  }
+  
+  public static int bdv()
+  {
+    return mLq;
   }
 }
 

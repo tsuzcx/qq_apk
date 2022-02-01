@@ -7,25 +7,15 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract float a(b.a parama, float paramFloat);
+  public abstract void J(Context paramContext, Intent paramIntent);
   
-  public abstract int a(b.a parama, int paramInt);
+  public abstract void aqa(String paramString);
   
-  public abstract int a(b.a parama, com.tencent.mm.util.b.a parama1, int paramInt);
-  
-  public abstract long a(b.a parama, long paramLong);
-  
-  public abstract String a(b.a parama, String paramString);
-  
-  public abstract boolean a(b.a parama, boolean paramBoolean);
-  
-  public abstract void r(Context paramContext, Intent paramIntent);
-  
-  public abstract void s(Context paramContext, Intent paramIntent);
+  public abstract void dHM();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.b
  * JD-Core Version:    0.7.0.1
  */

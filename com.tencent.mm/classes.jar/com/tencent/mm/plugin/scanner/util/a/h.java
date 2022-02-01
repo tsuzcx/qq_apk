@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.scanner.util.a;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressResult;", "", "()V", "bitmap", "Landroid/graphics/Bitmap;", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "originImageSize", "Landroid/graphics/Point;", "getOriginImageSize", "()Landroid/graphics/Point;", "setOriginImageSize", "(Landroid/graphics/Point;)V", "success", "", "getSuccess", "()Z", "setSuccess", "(Z)V", "scan-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressResult;", "", "()V", "bitmap", "Landroid/graphics/Bitmap;", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "originImageSize", "Landroid/graphics/Point;", "getOriginImageSize", "()Landroid/graphics/Point;", "setOriginImageSize", "(Landroid/graphics/Point;)V", "success", "", "getSuccess", "()Z", "setSuccess", "(Z)V", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
 {
-  public Point Jag;
+  public Point PjY;
   public Bitmap bitmap;
   boolean success;
 }

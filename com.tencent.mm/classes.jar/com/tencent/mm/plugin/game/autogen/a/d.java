@@ -4,57 +4,57 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class d
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<c> CqD;
+  public LinkedList<c> IcM;
   
   public d()
   {
-    AppMethodBeat.i(196513);
-    this.CqD = new LinkedList();
-    AppMethodBeat.o(196513);
+    AppMethodBeat.i(275450);
+    this.IcM = new LinkedList();
+    AppMethodBeat.o(275450);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(196521);
+    AppMethodBeat.i(275452);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.CqD);
-      AppMethodBeat.o(196521);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.IcM);
+      AppMethodBeat.o(275452);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 8, this.CqD);
-      AppMethodBeat.o(196521);
+      paramInt = i.a.a.a.c(1, 8, this.IcM);
+      AppMethodBeat.o(275452);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.CqD.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.IcM.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(196521);
+      AppMethodBeat.o(275452);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(196521);
+        AppMethodBeat.o(275452);
         return -1;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       int i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -64,19 +64,19 @@ public final class d
         if ((localObject != null) && (localObject.length > 0)) {
           localc.parseFrom((byte[])localObject);
         }
-        locald.CqD.add(localc);
+        locald.IcM.add(localc);
         paramInt += 1;
       }
-      AppMethodBeat.o(196521);
+      AppMethodBeat.o(275452);
       return 0;
     }
-    AppMethodBeat.o(196521);
+    AppMethodBeat.o(275452);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.autogen.a.d
  * JD-Core Version:    0.7.0.1
  */

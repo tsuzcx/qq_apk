@@ -1,48 +1,190 @@
 package com.tencent.mm.plugin.sns.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.LinkedList;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/sns/statistics/RecordConfigProviderHelper;", "", "()V", "TAG", "", "defaultVideoProviderConfig", "", "provider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getEditRecordConfigProvider", "inputPath", "maxRecordTime", "", "getRecordVideoConfigProvider", "filePath", "thumbPath", "videoParams", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "plugin-sns_release"})
 public final class c
+  extends com.tencent.mm.bx.a
 {
-  public static final c KfL;
+  public LinkedList<e> QCA;
+  public LinkedList<e> QCB;
+  public LinkedList<d> QCw;
+  public LinkedList<d> QCx;
+  public LinkedList<d> QCy;
+  public LinkedList<d> QCz;
   
-  static
+  public c()
   {
-    AppMethodBeat.i(268338);
-    KfL = new c();
-    AppMethodBeat.o(268338);
+    AppMethodBeat.i(96154);
+    this.QCw = new LinkedList();
+    this.QCx = new LinkedList();
+    this.QCy = new LinkedList();
+    this.QCz = new LinkedList();
+    this.QCA = new LinkedList();
+    this.QCB = new LinkedList();
+    AppMethodBeat.o(96154);
   }
   
-  public static RecordConfigProvider a(String paramString1, String paramString2, VideoTransPara paramVideoTransPara, int paramInt)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(268335);
-    p.k(paramString1, "filePath");
-    p.k(paramString2, "thumbPath");
-    p.k(paramVideoTransPara, "videoParams");
-    paramString1 = RecordConfigProvider.a(paramString1, paramString2, paramVideoTransPara, paramInt, 2);
-    p.j(paramString1, "provider");
-    m(paramString1);
-    AppMethodBeat.o(268335);
-    return paramString1;
-  }
-  
-  public static void m(RecordConfigProvider paramRecordConfigProvider)
-  {
-    AppMethodBeat.i(268336);
-    paramRecordConfigProvider.scene = 2;
-    b localb = b.KfK;
-    b.l(paramRecordConfigProvider);
-    AppMethodBeat.o(268336);
+    AppMethodBeat.i(96155);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.QCw);
+      paramVarArgs.e(2, 8, this.QCx);
+      paramVarArgs.e(3, 8, this.QCy);
+      paramVarArgs.e(4, 8, this.QCz);
+      paramVarArgs.e(5, 8, this.QCA);
+      paramVarArgs.e(6, 8, this.QCB);
+      AppMethodBeat.o(96155);
+      return 0;
+    }
+    int i;
+    if (paramInt == 1)
+    {
+      paramInt = i.a.a.a.c(1, 8, this.QCw);
+      i = i.a.a.a.c(2, 8, this.QCx);
+      int j = i.a.a.a.c(3, 8, this.QCy);
+      int k = i.a.a.a.c(4, 8, this.QCz);
+      int m = i.a.a.a.c(5, 8, this.QCA);
+      int n = i.a.a.a.c(6, 8, this.QCB);
+      AppMethodBeat.o(96155);
+      return paramInt + 0 + i + j + k + m + n;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.QCw.clear();
+      this.QCx.clear();
+      this.QCy.clear();
+      this.QCz.clear();
+      this.QCA.clear();
+      this.QCB.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(96155);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+      c localc = (c)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(96155);
+        return -1;
+      case 1: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new d();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((d)localObject2).parseFrom((byte[])localObject1);
+          }
+          localc.QCw.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(96155);
+        return 0;
+      case 2: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new d();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((d)localObject2).parseFrom((byte[])localObject1);
+          }
+          localc.QCx.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(96155);
+        return 0;
+      case 3: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new d();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((d)localObject2).parseFrom((byte[])localObject1);
+          }
+          localc.QCy.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(96155);
+        return 0;
+      case 4: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new d();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((d)localObject2).parseFrom((byte[])localObject1);
+          }
+          localc.QCz.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(96155);
+        return 0;
+      case 5: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new e();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((e)localObject2).parseFrom((byte[])localObject1);
+          }
+          localc.QCA.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(96155);
+        return 0;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new e();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((e)localObject2).parseFrom((byte[])localObject1);
+        }
+        localc.QCB.add(localObject2);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(96155);
+      return 0;
+    }
+    AppMethodBeat.o(96155);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.k.c
  * JD-Core Version:    0.7.0.1
  */

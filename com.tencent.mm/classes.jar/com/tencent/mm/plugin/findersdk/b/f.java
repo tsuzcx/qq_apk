@@ -1,21 +1,38 @@
 package com.tencent.mm.plugin.findersdk.b;
 
-import android.content.Context;
-import java.lang.ref.WeakReference;
-import kotlin.l;
+import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/cgi/LoadingWidget;", "", "()V", "context", "Ljava/lang/ref/WeakReference;", "Landroid/content/Context;", "getContext", "()Ljava/lang/ref/WeakReference;", "setContext", "(Ljava/lang/ref/WeakReference;)V", "dismiss", "", "show", "finder-sdk_release"})
-public abstract class f
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/cgi/LoadingProgressBar;", "Lcom/tencent/mm/plugin/findersdk/cgi/LoadingWidget;", "()V", "loadingProgressBar", "Landroid/widget/ProgressBar;", "getLoadingProgressBar", "()Landroid/widget/ProgressBar;", "setLoadingProgressBar", "(Landroid/widget/ProgressBar;)V", "dismiss", "", "show", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class f
+  extends g
 {
-  public WeakReference<Context> context;
+  ProgressBar Dlp;
   
-  public abstract void dismiss();
+  public final void dismiss()
+  {
+    AppMethodBeat.i(273901);
+    ProgressBar localProgressBar = this.Dlp;
+    if (localProgressBar != null) {
+      localProgressBar.setVisibility(8);
+    }
+    AppMethodBeat.o(273901);
+  }
   
-  public abstract void show();
+  public final void show()
+  {
+    AppMethodBeat.i(273894);
+    ProgressBar localProgressBar = this.Dlp;
+    if (localProgressBar != null) {
+      localProgressBar.setVisibility(0);
+    }
+    AppMethodBeat.o(273894);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.findersdk.b.f
  * JD-Core Version:    0.7.0.1
  */

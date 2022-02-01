@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ed4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="30.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/hd" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/f5k" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:gravity="center|left" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/ko8" android:layout_width="@dimen/f9" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ig" android:singleLine="true" style="@style/m4" />
+    <com.tencent.mm.ui.base.MMSingelLinePanel android:gravity="center|left" android:id="@id/bp9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" flowlayout:horizontalSpacing="@dimen/g" flowlayout:verticalSpacing="@dimen/g" />
 </LinearLayout>

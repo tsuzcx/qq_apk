@@ -2,45 +2,49 @@ package com.tencent.mm.plugin.game.luggage.d.a;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.oo;
-import com.tencent.mm.plugin.lite.jsapi.b;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.py;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.lite.api.c;
+import com.tencent.mm.plugin.lite.api.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class n
-  extends b
+  extends e
 {
   public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(231425);
+    AppMethodBeat.i(277053);
     if (!paramJSONObject.has("url"))
     {
-      AppMethodBeat.o(231425);
+      AppMethodBeat.o(277053);
       return;
     }
     try
     {
-      paramString = new oo();
-      paramString.fNq.type = 2;
+      paramString = new py();
+      paramString.hTd.type = 2;
       Intent localIntent = new Intent();
       localIntent.putExtra("rawUrl", paramJSONObject.getString("url"));
-      localIntent.putExtra("nextAnimIn", bb(paramJSONObject));
-      localIntent.putExtra("currentAnimOut", bc(paramJSONObject));
-      paramString.fNq.intent = localIntent;
-      EventCenter.instance.publish(paramString);
-      AppMethodBeat.o(231425);
+      localIntent.putExtra("nextAnimIn", ((c)h.ax(c.class)).bo(paramJSONObject));
+      localIntent.putExtra("currentAnimOut", ((c)h.ax(c.class)).bp(paramJSONObject));
+      if (paramJSONObject.has("extraInfo")) {
+        localIntent.putExtra("game_liteapp_pass_data", paramJSONObject.getJSONObject("extraInfo").toString());
+      }
+      paramString.hTd.intent = localIntent;
+      paramString.publish();
+      AppMethodBeat.o(277053);
       return;
     }
     catch (JSONException paramString)
     {
       Log.printErrStackTrace("LiteAppJsApiStartGameWebview", paramString, "get url", new Object[0]);
-      AppMethodBeat.o(231425);
+      AppMethodBeat.o(277053);
     }
   }
   
-  public final int ewF()
+  public final int fEx()
   {
     return 1;
   }

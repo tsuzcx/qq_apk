@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.webview.ui.tools.browser;
 
 import android.app.Activity;
 import android.app.PendingIntent;
-import android.app.PendingIntent.OnFinished;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -17,8 +16,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.v;
-import com.tencent.mm.pluginsdk.model.y;
+import com.tencent.mm.pluginsdk.model.aa;
+import com.tencent.mm.pluginsdk.model.x;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,43 +25,42 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseDialogHelper;", "", "()V", "BUNDLE_KEY_TARGET_INTENT", "", "BUNDLE_KEY_TARGET_URL", "TAG", "qqBrowserHelper", "Lcom/tencent/mm/pluginsdk/model/QQBrowserHelper;", "createBrowserChooser", "Landroid/content/Intent;", "activity", "Landroid/app/Activity;", "target", "url", "filterBrowserList", "", "Landroid/content/pm/ResolveInfo;", "resolveList", "getAppDisplayName", "context", "Landroid/content/Context;", "resolveInfo", "getBrowserInfo", "packageName", "getBrowserList", "getBrowserListInternal", "isQQBrowser", "", "isSystemApplication", "loadIconForResolveInfo", "Landroid/graphics/drawable/Drawable;", "loadIconFromResourceId", "res", "Landroid/content/res/Resources;", "resId", "", "openInBrowser", "", "tryFixIntentData", "intent", "BrowserSettingResult", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseDialogHelper;", "", "()V", "BUNDLE_KEY_TARGET_INTENT", "", "BUNDLE_KEY_TARGET_URL", "TAG", "qqBrowserHelper", "Lcom/tencent/mm/pluginsdk/model/QQBrowserHelper;", "createBrowserChooser", "Landroid/content/Intent;", "activity", "Landroid/app/Activity;", "target", "url", "filterBrowserList", "", "Landroid/content/pm/ResolveInfo;", "resolveList", "getAppDisplayName", "context", "Landroid/content/Context;", "resolveInfo", "getBrowserInfo", "packageName", "getBrowserList", "getBrowserListInternal", "isQQBrowser", "", "isSystemApplication", "loadIconForResolveInfo", "Landroid/graphics/drawable/Drawable;", "loadIconFromResourceId", "res", "Landroid/content/res/Resources;", "resId", "", "openInBrowser", "", "tryFixIntentData", "intent", "BrowserSettingResult", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static v QiR;
-  public static final b QiS;
+  public static final b XaP;
+  private static x XaQ;
   
   static
   {
-    AppMethodBeat.i(268030);
-    QiS = new b();
-    AppMethodBeat.o(268030);
+    AppMethodBeat.i(296671);
+    XaP = new b();
+    AppMethodBeat.o(296671);
   }
   
-  public static final ResolveInfo V(Context paramContext, String paramString1, String paramString2)
+  public static final ResolveInfo Z(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(268024);
-    p.k(paramContext, "context");
-    p.k(paramString1, "packageName");
+    AppMethodBeat.i(296601);
+    s.u(paramContext, "context");
+    s.u(paramString1, "packageName");
     if (((CharSequence)paramString1).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(268024);
+      AppMethodBeat.o(296601);
       return null;
     }
-    Object localObject = d.Qjc;
-    if (d.gZI())
+    Object localObject = d.XaV;
+    if (d.izL())
     {
-      localObject = d.Qjc;
-      if (d.bmz(paramString1))
+      localObject = d.XaV;
+      if (d.bma(paramString1))
       {
-        AppMethodBeat.o(268024);
+        AppMethodBeat.o(296601);
         return null;
       }
     }
@@ -73,24 +71,26 @@ public final class b
     paramString2 = new Intent("android.intent.action.VIEW", Uri.parse((String)localObject));
     paramString2.setPackage(paramString1);
     paramContext = paramContext.getPackageManager();
-    if (paramContext != null)
+    if (paramContext == null)
     {
-      paramContext = paramContext.queryIntentActivities(paramString2, 65536);
-      if (paramContext != null)
-      {
-        paramContext = (ResolveInfo)j.M(paramContext, 0);
-        AppMethodBeat.o(268024);
-        return paramContext;
-      }
+      AppMethodBeat.o(296601);
+      return null;
     }
-    AppMethodBeat.o(268024);
-    return null;
+    paramContext = paramContext.queryIntentActivities(paramString2, 65536);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(296601);
+      return null;
+    }
+    paramContext = (ResolveInfo)p.ae(paramContext, 0);
+    AppMethodBeat.o(296601);
+    return paramContext;
   }
   
   public static final Intent a(Activity paramActivity, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(268020);
-    p.k(paramActivity, "activity");
+    AppMethodBeat.i(296571);
+    s.u(paramActivity, "activity");
     Log.v("MicroMsg.BrowserChooseDialogHelper", "alvinluo createBrowserChooser activity: %s, url: %s", new Object[] { paramActivity, paramString });
     Bundle localBundle = new Bundle();
     localBundle.putString("target_url", paramString);
@@ -101,24 +101,24 @@ public final class b
     paramString.putExtra("scene", 4);
     paramString.putExtra("targetintent", (Parcelable)paramIntent);
     paramString.putExtra("transferback", localBundle);
-    AppMethodBeat.o(268020);
+    AppMethodBeat.o(296571);
     return paramString;
   }
   
   public static final Drawable a(Context paramContext, ResolveInfo paramResolveInfo)
   {
     Object localObject = null;
-    AppMethodBeat.i(268026);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(296632);
+    s.u(paramContext, "context");
     if (paramResolveInfo == null)
     {
-      AppMethodBeat.o(268026);
+      AppMethodBeat.o(296632);
       return null;
     }
     PackageManager localPackageManager = paramContext.getPackageManager();
     if (localPackageManager == null)
     {
-      AppMethodBeat.o(268026);
+      AppMethodBeat.o(296632);
       return null;
     }
     try
@@ -126,11 +126,11 @@ public final class b
       if ((paramResolveInfo.resolvePackageName != null) && (paramResolveInfo.icon != 0))
       {
         paramContext = localPackageManager.getResourcesForApplication(paramResolveInfo.resolvePackageName);
-        p.j(paramContext, "packageManager.getResour…eInfo.resolvePackageName)");
-        paramContext = d(paramContext, paramResolveInfo.icon);
+        s.s(paramContext, "packageManager.getResour…eInfo.resolvePackageName)");
+        paramContext = e(paramContext, paramResolveInfo.icon);
         if (paramContext != null)
         {
-          AppMethodBeat.o(268026);
+          AppMethodBeat.o(296632);
           return paramContext;
         }
       }
@@ -138,168 +138,193 @@ public final class b
       if (i != 0)
       {
         paramContext = localPackageManager.getResourcesForApplication(paramResolveInfo.activityInfo.packageName);
-        p.j(paramContext, "packageManager.getResour…activityInfo.packageName)");
-        Drawable localDrawable = d(paramContext, i);
+        s.s(paramContext, "packageManager.getResour…activityInfo.packageName)");
+        Drawable localDrawable = e(paramContext, i);
         if (localDrawable != null)
         {
-          ActivityInfo localActivityInfo = paramResolveInfo.activityInfo;
-          paramContext = localObject;
-          if (localActivityInfo != null) {
-            paramContext = localActivityInfo.packageName;
+          paramContext = paramResolveInfo.activityInfo;
+          if (paramContext == null) {}
+          for (paramContext = localObject;; paramContext = paramContext.packageName)
+          {
+            Log.d("MicroMsg.BrowserChooseDialogHelper", "loadIconForResolveInfo %s, iconRes %d done", new Object[] { paramContext, Integer.valueOf(i) });
+            AppMethodBeat.o(296632);
+            return localDrawable;
           }
-          Log.d("MicroMsg.BrowserChooseDialogHelper", "loadIconForResolveInfo %s, iconRes %d done", new Object[] { paramContext, Integer.valueOf(i) });
-          AppMethodBeat.o(268026);
-          return localDrawable;
         }
       }
+      return paramContext;
     }
     catch (Exception paramContext)
     {
       Log.e("MicroMsg.BrowserChooseDialogHelper", "Couldn't find resources for package", new Object[] { paramContext });
       paramContext = paramResolveInfo.loadIcon(localPackageManager);
-      AppMethodBeat.o(268026);
+      AppMethodBeat.o(296632);
     }
-    return paramContext;
+  }
+  
+  private static final void a(PendingIntent paramPendingIntent, Intent paramIntent, int paramInt, String paramString, Bundle paramBundle)
+  {
+    AppMethodBeat.i(296665);
+    Log.i("MicroMsg.BrowserChooseDialogHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    AppMethodBeat.o(296665);
   }
   
   public static final void a(Context paramContext, Intent paramIntent, ResolveInfo paramResolveInfo)
   {
-    AppMethodBeat.i(268029);
-    if (paramIntent != null) {}
+    AppMethodBeat.i(296661);
+    String str;
+    Object localObject1;
+    if (paramIntent == null)
+    {
+      str = null;
+      if (paramResolveInfo != null) {
+        break label116;
+      }
+      localObject1 = null;
+      break label403;
+    }
     for (;;)
     {
       try
       {
-        str = paramIntent.getStringExtra("targeturl");
-        if (paramResolveInfo == null) {
-          break label367;
-        }
-        localObject1 = paramResolveInfo.activityInfo;
-        if (localObject1 == null) {
-          break label367;
-        }
-        localObject1 = ((ActivityInfo)localObject1).packageName;
-        if (paramIntent == null) {
-          break label373;
-        }
-        localObject2 = paramIntent.getData();
-        if (localObject2 == null) {
-          break label373;
-        }
-        localObject2 = ((Uri)localObject2).toString();
         Log.i("MicroMsg.BrowserChooseDialogHelper", "alvinluo openInBrowser package: %s, uri: %s, url: %s", new Object[] { localObject1, localObject2, str });
-        y.hhf();
-        localObject2 = (v)y.C(0, null);
-        if (paramResolveInfo == null) {
-          break label379;
+        aa.iIe();
+        localObject1 = aa.F(0, null);
+        if (localObject1 != null) {
+          break label165;
         }
-        localObject1 = paramResolveInfo.activityInfo;
-        if (localObject1 == null) {
-          break label379;
-        }
-        localObject1 = ((ActivityInfo)localObject1).packageName;
-        if (((v)localObject2).bpD((String)localObject1))
-        {
-          ((v)localObject2).cs(paramContext, str);
-          AppMethodBeat.o(268029);
-          return;
-        }
-        if (paramIntent != null)
-        {
-          paramIntent.addFlags(524288);
-          if (paramResolveInfo == null) {
-            break label385;
-          }
-          paramResolveInfo = paramResolveInfo.activityInfo;
-          if (paramResolveInfo == null) {
-            break label385;
-          }
-          str = paramResolveInfo.packageName;
-          paramResolveInfo = str;
-          if (str == null) {
-            break label385;
-          }
-          paramIntent.setPackage(paramResolveInfo);
-          if (!com.tencent.mm.compatible.util.d.qV(29)) {
-            break label272;
-          }
-          paramIntent = PendingIntent.getActivity(paramContext, 0, paramIntent, 134217728);
-          if (paramIntent == null) {
-            break label265;
-          }
-          paramIntent.send(paramContext, 1, null, (PendingIntent.OnFinished)a.QiT, null);
-          AppMethodBeat.o(268029);
-          return;
-        }
+        paramContext = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.pluginsdk.model.QQBrowserHelper");
+        AppMethodBeat.o(296661);
+        throw paramContext;
       }
       catch (Exception paramContext)
       {
         Log.printErrStackTrace("MicroMsg.BrowserChooseDialogHelper", (Throwable)paramContext, "onBrowserItemClick exception", new Object[0]);
-        AppMethodBeat.o(268029);
-        return;
       }
-      paramIntent = null;
-      continue;
-      label265:
-      AppMethodBeat.o(268029);
+      label98:
+      AppMethodBeat.o(296661);
       return;
-      label272:
-      if (paramContext != null)
+      str = paramIntent.getStringExtra("targeturl");
+      break;
+      label116:
+      localObject1 = paramResolveInfo.activityInfo;
+      if (localObject1 == null)
       {
-        paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
-        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseDialogHelper", "openInBrowser", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/pm/ResolveInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramIntent.sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseDialogHelper", "openInBrowser", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/pm/ResolveInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(268029);
+        localObject1 = null;
+        break label403;
+      }
+      localObject1 = ((ActivityInfo)localObject1).packageName;
+      break label403;
+      label138:
+      localObject2 = paramIntent.getData();
+      if (localObject2 == null) {
+        localObject2 = null;
+      } else {
+        localObject2 = ((Uri)localObject2).toString();
+      }
+    }
+    label165:
+    Object localObject2 = (x)localObject1;
+    if (paramResolveInfo == null) {
+      localObject1 = null;
+    }
+    while (((x)localObject2).bpt((String)localObject1))
+    {
+      ((x)localObject2).cD(paramContext, str);
+      AppMethodBeat.o(296661);
+      return;
+      localObject1 = paramResolveInfo.activityInfo;
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = ((ActivityInfo)localObject1).packageName;
+      }
+    }
+    for (;;)
+    {
+      if (com.tencent.mm.compatible.util.d.rb(29))
+      {
+        paramIntent = PendingIntent.getActivity(paramContext, 0, paramIntent, 134217728);
+        if (paramIntent == null) {
+          break label98;
+        }
+        paramIntent.send(paramContext, 1, null, b..ExternalSyntheticLambda0.INSTANCE, null);
+        AppMethodBeat.o(296661);
         return;
       }
-      AppMethodBeat.o(268029);
-      return;
-      String str = null;
-      continue;
-      label367:
-      Object localObject1 = null;
-      continue;
-      label373:
-      Object localObject2 = null;
-      continue;
-      label379:
-      localObject1 = null;
-      continue;
-      label385:
-      paramResolveInfo = "";
+      label403:
+      do
+      {
+        paramIntent.addFlags(524288);
+        if (paramResolveInfo == null) {
+          paramResolveInfo = "";
+        }
+        for (;;)
+        {
+          paramIntent.setPackage(paramResolveInfo);
+          break;
+          paramResolveInfo = paramResolveInfo.activityInfo;
+          if (paramResolveInfo == null)
+          {
+            paramResolveInfo = "";
+          }
+          else
+          {
+            localObject1 = paramResolveInfo.packageName;
+            paramResolveInfo = (ResolveInfo)localObject1;
+            if (localObject1 == null) {
+              paramResolveInfo = "";
+            }
+          }
+        }
+        if (paramContext == null) {
+          break label98;
+        }
+        paramIntent = new com.tencent.mm.hellhoundlib.b.a().cG(paramIntent);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aYi(), "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseDialogHelper", "openInBrowser", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/pm/ResolveInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramIntent.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/webview/ui/tools/browser/BrowserChooseDialogHelper", "openInBrowser", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/pm/ResolveInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(296661);
+        return;
+        if (paramIntent != null) {
+          break label138;
+        }
+        localObject2 = null;
+        break;
+      } while (paramIntent != null);
+      paramIntent = null;
     }
   }
   
-  public static final List<ResolveInfo> aB(Context paramContext, Intent paramIntent)
+  public static final List<ResolveInfo> aK(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(268023);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(296587);
+    s.u(paramContext, "context");
     if (paramIntent == null)
     {
       paramContext = (List)new ArrayList();
-      AppMethodBeat.o(268023);
+      AppMethodBeat.o(296587);
       return paramContext;
     }
     paramIntent.addCategory("android.intent.category.BROWSABLE");
     Object localObject1 = paramIntent.getData();
     Object localObject2;
     int i;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      localObject1 = ((Uri)localObject1).toString();
+      localObject1 = null;
       localObject2 = (CharSequence)localObject1;
       if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-        break label196;
+        break label188;
       }
       i = 1;
-      label80:
+      label77:
       localObject2 = paramIntent;
       if (i == 0) {
-        if (!n.M((String)localObject1, "https://view.inews.qq.com", false))
+        if (!n.U((String)localObject1, "https://view.inews.qq.com", false))
         {
           localObject2 = paramIntent;
-          if (!n.M((String)localObject1, "http://view.inews.qq.com", false)) {}
+          if (!n.U((String)localObject1, "http://view.inews.qq.com", false)) {}
         }
         else
         {
@@ -311,10 +336,10 @@ public final class b
       if (Build.VERSION.SDK_INT < 23) {
         break label206;
       }
-      if (paramContext == null) {
-        break label201;
+      if (paramContext != null) {
+        break label193;
       }
-      paramContext = paramContext.queryIntentActivities((Intent)localObject2, 131072);
+      paramContext = null;
     }
     for (;;)
     {
@@ -322,87 +347,78 @@ public final class b
       if (paramContext == null) {
         paramIntent = (List)new ArrayList();
       }
-      paramContext = jb(paramIntent);
-      AppMethodBeat.o(268023);
+      paramContext = mk(paramIntent);
+      AppMethodBeat.o(296587);
       return paramContext;
-      localObject1 = null;
+      localObject1 = ((Uri)localObject1).toString();
       break;
-      label196:
+      label188:
       i = 0;
-      break label80;
-      label201:
-      paramContext = null;
+      break label77;
+      label193:
+      paramContext = paramContext.queryIntentActivities((Intent)localObject2, 131072);
       continue;
       label206:
-      if (paramContext != null) {
-        paramContext = paramContext.queryIntentActivities((Intent)localObject2, 65536);
-      } else {
+      if (paramContext == null) {
         paramContext = null;
+      } else {
+        paramContext = paramContext.queryIntentActivities((Intent)localObject2, 65536);
       }
     }
   }
   
   public static final String b(Context paramContext, ResolveInfo paramResolveInfo)
   {
-    AppMethodBeat.i(268028);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(296645);
+    s.u(paramContext, "context");
     if (paramResolveInfo == null)
     {
-      AppMethodBeat.o(268028);
+      AppMethodBeat.o(296645);
       return "";
     }
     paramContext = paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager());
-    if (paramContext != null)
-    {
-      paramResolveInfo = paramContext.toString();
-      paramContext = paramResolveInfo;
-      if (paramResolveInfo != null) {}
-    }
-    else
-    {
+    if (paramContext == null) {
       paramContext = "";
     }
-    paramResolveInfo = Pattern.compile("\\(.*推荐.*\\)", 2).matcher((CharSequence)paramContext);
-    if (paramResolveInfo.find())
+    for (;;)
     {
-      paramContext = paramResolveInfo.replaceAll("");
-      if (paramContext != null)
-      {
-        if (paramContext == null)
-        {
-          paramContext = new t("null cannot be cast to non-null type kotlin.CharSequence");
-          AppMethodBeat.o(268028);
-          throw paramContext;
-        }
-        paramResolveInfo = n.bb((CharSequence)paramContext).toString();
-        paramContext = paramResolveInfo;
-        if (paramResolveInfo != null) {}
+      paramResolveInfo = Pattern.compile("\\(.*推荐.*\\)", 2).matcher((CharSequence)paramContext);
+      if (!paramResolveInfo.find()) {
+        break label135;
       }
-      else
-      {
+      paramContext = paramResolveInfo.replaceAll("");
+      if (paramContext != null) {
+        break;
+      }
+      AppMethodBeat.o(296645);
+      return "";
+      paramResolveInfo = paramContext.toString();
+      paramContext = paramResolveInfo;
+      if (paramResolveInfo == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(268028);
-      return paramContext;
     }
+    paramContext = n.bq((CharSequence)paramContext).toString();
     if (paramContext == null)
     {
-      paramContext = new t("null cannot be cast to non-null type kotlin.CharSequence");
-      AppMethodBeat.o(268028);
-      throw paramContext;
+      AppMethodBeat.o(296645);
+      return "";
     }
-    paramContext = n.bb((CharSequence)paramContext).toString();
-    AppMethodBeat.o(268028);
+    AppMethodBeat.o(296645);
+    return paramContext;
+    label135:
+    paramContext = n.bq((CharSequence)paramContext).toString();
+    AppMethodBeat.o(296645);
     return paramContext;
   }
   
-  private static Drawable d(Resources paramResources, int paramInt)
+  private static Drawable e(Resources paramResources, int paramInt)
   {
-    AppMethodBeat.i(268027);
+    AppMethodBeat.i(296637);
     try
     {
-      paramResources = com.tencent.mm.cj.b.f(paramResources, paramInt);
-      AppMethodBeat.o(268027);
+      paramResources = com.tencent.mm.ce.d.g(paramResources, paramInt);
+      AppMethodBeat.o(296637);
       return paramResources;
     }
     catch (Resources.NotFoundException paramResources)
@@ -414,10 +430,10 @@ public final class b
     }
   }
   
-  private static List<ResolveInfo> jb(List<? extends ResolveInfo> paramList)
+  private static List<ResolveInfo> mk(List<? extends ResolveInfo> paramList)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(268025);
+    AppMethodBeat.i(296621);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList3 = new ArrayList();
@@ -428,140 +444,139 @@ public final class b
       while (localIterator.hasNext())
       {
         ResolveInfo localResolveInfo = (ResolveInfo)localIterator.next();
-        if (localResolveInfo != null)
+        if (localResolveInfo == null)
         {
+          localObject1 = null;
+          label88:
+          Log.v("MicroMsg.BrowserChooseDialogHelper", "alvinluo filterBrowserList packageName: %s", new Object[] { localObject1 });
+          if (localResolveInfo == null) {
+            continue;
+          }
+          if (localResolveInfo != null) {
+            break label190;
+          }
+          i = 0;
+          label116:
+          if ((i & 0x1) <= 0) {
+            break label227;
+          }
+          i = 1;
+          label124:
+          if (i == 0) {
+            break label240;
+          }
           localObject1 = localResolveInfo.activityInfo;
-          if (localObject1 != null)
-          {
-            localObject1 = ((ActivityInfo)localObject1).packageName;
-            label101:
-            Log.v("MicroMsg.BrowserChooseDialogHelper", "alvinluo filterBrowserList packageName: %s", new Object[] { localObject1 });
-            if (localResolveInfo == null) {
-              continue;
-            }
-            if (localResolveInfo == null) {
-              break label210;
-            }
-            localObject1 = localResolveInfo.activityInfo;
-            if (localObject1 == null) {
-              break label210;
-            }
-            localObject1 = ((ActivityInfo)localObject1).applicationInfo;
-            if (localObject1 == null) {
-              break label210;
-            }
-            i = ((ApplicationInfo)localObject1).flags;
-            label151:
-            if ((i & 0x1) <= 0) {
-              break label215;
-            }
-            i = 1;
-            label159:
-            if (i == 0) {
-              break label225;
-            }
-            localObject1 = localResolveInfo.activityInfo;
-            if (localObject1 == null) {
-              break label220;
-            }
+          if (localObject1 != null) {
+            break label232;
           }
         }
-        label210:
-        label215:
-        label220:
-        for (localObject1 = ((ActivityInfo)localObject1).packageName;; localObject1 = null)
+        label190:
+        label227:
+        label232:
+        for (Object localObject1 = null;; localObject1 = ((ActivityInfo)localObject1).packageName)
         {
           Log.i("MicroMsg.BrowserChooseDialogHelper", "alvinluo filterBrowserList package: %s is system application", new Object[] { localObject1 });
           localArrayList3.add(localResolveInfo);
           break;
-          localObject1 = null;
-          break label101;
-          i = 0;
-          break label151;
-          i = 0;
-          break label159;
-        }
-        label225:
-        localObject1 = d.Qjc;
-        localObject1 = localResolveInfo.activityInfo;
-        if (localObject1 != null)
-        {
+          localObject1 = localResolveInfo.activityInfo;
+          if (localObject1 == null)
+          {
+            localObject1 = null;
+            break label88;
+          }
           localObject1 = ((ActivityInfo)localObject1).packageName;
-          if (!d.bmy((String)localObject1)) {
-            break label380;
+          break label88;
+          localObject1 = localResolveInfo.activityInfo;
+          if (localObject1 == null)
+          {
+            i = 0;
+            break label116;
+          }
+          localObject1 = ((ActivityInfo)localObject1).applicationInfo;
+          if (localObject1 == null)
+          {
+            i = 0;
+            break label116;
+          }
+          i = ((ApplicationInfo)localObject1).flags;
+          break label116;
+          i = 0;
+          break label124;
+        }
+        label240:
+        localObject1 = d.XaV;
+        localObject1 = localResolveInfo.activityInfo;
+        label256:
+        label275:
+        x localx;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          if (!d.blZ((String)localObject1)) {
+            break label369;
           }
           localObject1 = localResolveInfo.activityInfo;
-          if (localObject1 == null) {
-            break label327;
-          }
-        }
-        v localv;
-        label327:
-        for (localObject1 = ((ActivityInfo)localObject1).packageName;; localObject1 = null)
-        {
-          if (QiR == null) {
-            QiR = new v();
-          }
-          localv = QiR;
-          if (localv == null) {
-            p.iCn();
-          }
-          if (localObject1 == null) {
-            break label364;
-          }
           if (localObject1 != null) {
-            break label332;
+            break label335;
           }
-          paramList = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(268025);
-          throw paramList;
           localObject1 = null;
-          break;
+          if (XaQ == null) {
+            XaQ = new x();
+          }
+          localx = XaQ;
+          s.checkNotNull(localx);
+          if (localObject1 != null) {
+            break label343;
+          }
+          localObject1 = null;
         }
-        label332:
-        localObject1 = ((String)localObject1).toLowerCase();
-        p.j(localObject1, "(this as java.lang.String).toLowerCase()");
         for (;;)
         {
-          if (!localv.bpD((String)localObject1)) {
-            break label369;
+          if (!localx.bpt((String)localObject1)) {
+            break label358;
           }
           localArrayList4.add(localResolveInfo);
           break;
-          label364:
-          localObject1 = null;
+          localObject1 = ((ActivityInfo)localObject1).packageName;
+          break label256;
+          label335:
+          localObject1 = ((ActivityInfo)localObject1).packageName;
+          break label275;
+          label343:
+          localObject1 = ((String)localObject1).toLowerCase();
+          s.s(localObject1, "(this as java.lang.String).toLowerCase()");
         }
-        label369:
+        label358:
         localArrayList2.add(localResolveInfo);
         continue;
-        label380:
-        localObject1 = d.Qjc;
-        if (d.gZI())
+        label369:
+        localObject1 = d.XaV;
+        if (d.izL())
         {
-          localObject1 = d.Qjc;
+          localObject1 = d.XaV;
           localObject1 = localResolveInfo.activityInfo;
-          if (localObject1 != null)
+          if (localObject1 == null)
           {
-            localObject1 = ((ActivityInfo)localObject1).packageName;
-            label409:
-            if (!d.bmz((String)localObject1)) {
-              break label460;
+            localObject1 = null;
+            label395:
+            if (!d.bma((String)localObject1)) {
+              break label449;
             }
             localObject1 = localResolveInfo.activityInfo;
-            if (localObject1 == null) {
-              break label455;
+            if (localObject1 != null) {
+              break label441;
             }
           }
-          label455:
-          for (localObject1 = ((ActivityInfo)localObject1).packageName;; localObject1 = null)
+          label441:
+          for (localObject1 = null;; localObject1 = ((ActivityInfo)localObject1).packageName)
           {
             Log.i("MicroMsg.BrowserChooseDialogHelper", "alvinluo filterBrowserList package: %s is in block list", new Object[] { localObject1 });
             break;
-            localObject1 = null;
-            break label409;
+            localObject1 = ((ActivityInfo)localObject1).packageName;
+            break label395;
           }
         }
-        label460:
+        label449:
         localArrayList1.add(localResolveInfo);
       }
     }
@@ -569,34 +584,13 @@ public final class b
     localArrayList1.addAll(localArrayList3.size(), (Collection)localArrayList4);
     int i = localArrayList3.size();
     localArrayList1.addAll(localArrayList4.size() + i, (Collection)localArrayList2);
-    Object localObject1 = localObject2;
-    if (paramList != null) {
-      localObject1 = Integer.valueOf(paramList.size());
-    }
-    Log.i("MicroMsg.BrowserChooseDialogHelper", "alvinluo filterBrowserList resolveList: %s, finalList: %s, systemBrowserCount: %d, qqBrowserList: %s, filteredAllowList: %s", new Object[] { localObject1, Integer.valueOf(localArrayList1.size()), Integer.valueOf(localArrayList3.size()), Integer.valueOf(localArrayList4.size()), Integer.valueOf(localArrayList2.size()) });
-    paramList = (List)localArrayList1;
-    AppMethodBeat.o(268025);
-    return paramList;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "pendingIntent", "Landroid/app/PendingIntent;", "kotlin.jvm.PlatformType", "intent", "Landroid/content/Intent;", "resultCode", "", "resultData", "", "resultExtras", "Landroid/os/Bundle;", "onSendFinished"})
-  static final class a
-    implements PendingIntent.OnFinished
-  {
-    public static final a QiT;
-    
-    static
+    if (paramList == null) {}
+    for (paramList = localObject2;; paramList = Integer.valueOf(paramList.size()))
     {
-      AppMethodBeat.i(265641);
-      QiT = new a();
-      AppMethodBeat.o(265641);
-    }
-    
-    public final void onSendFinished(PendingIntent paramPendingIntent, Intent paramIntent, int paramInt, String paramString, Bundle paramBundle)
-    {
-      AppMethodBeat.i(265637);
-      Log.i("MicroMsg.BrowserChooseDialogHelper", "onSendFinished resultCode: %d, , resultData: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-      AppMethodBeat.o(265637);
+      Log.i("MicroMsg.BrowserChooseDialogHelper", "alvinluo filterBrowserList resolveList: %s, finalList: %s, systemBrowserCount: %d, qqBrowserList: %s, filteredAllowList: %s", new Object[] { paramList, Integer.valueOf(localArrayList1.size()), Integer.valueOf(localArrayList3.size()), Integer.valueOf(localArrayList4.size()), Integer.valueOf(localArrayList2.size()) });
+      paramList = (List)localArrayList1;
+      AppMethodBeat.o(296621);
+      return paramList;
     }
   }
 }

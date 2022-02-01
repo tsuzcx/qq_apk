@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/k25" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <org.libpag.PAGView android:layout_gravity="center_horizontal" android:id="@id/kgq" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/bv" />
-        <TextView android:textSize="20.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kgr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/jrn" />
+    <LinearLayout android:orientation="vertical" android:id="@id/lfo" android:background="@drawable/c90" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:minHeight="128.0dip">
+        <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="128.0dip" android:minHeight="128.0dip">
+            <ImageView android:id="@id/a74" android:layout_width="217.0dip" android:layout_height="106.0dip" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <ImageView android:id="@id/a5r" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="19.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="7.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/al6" android:ellipsize="end" android:id="@id/a5w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_toRightOf="@id/a5r" android:layout_alignTop="@id/a5r" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:id="@id/a7d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/a5w" android:layout_alignLeft="@id/a5w" android:alpha="0.5" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="63.0dip" android:layout_marginTop="28.0dip" android:layout_below="@id/a5r" android:layout_alignParentLeft="true" android:layout_alignWithParentIfMissing="true">
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6d" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6h" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6i" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6j" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6k" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="16.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6l" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6m" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6n" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6o" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="16.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6e" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6f" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <com.tencent.mm.wallet_core.ui.noscale.NoScaleView android:id="@id/a6g" android:background="@drawable/b1q" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="5.0dip" />
+                <TextView android:textSize="32.0dip" android:textColor="@color/al6" android:gravity="left" android:id="@id/a6v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
+            </LinearLayout>
+            <ImageView android:id="@id/a75" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/bankcard_new" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <TextView android:id="@id/a6u" android:background="@drawable/c91" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.5dip" android:layout_marginRight="0.5dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <TextView android:textColor="#4c000000" android:id="@id/a6p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:text="@string/ku2" android:layout_alignTop="@id/a5r" android:layout_alignParentRight="true" />
+            <TextView android:textColor="@color/a7b" android:id="@id/a7_" android:background="@drawable/ez" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:text="" android:layout_alignTop="@id/a5r" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/a6r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="56.0dip" android:layout_alignParentBottom="true">
+            <View android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:alpha="0.1" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textColor="#ffe2e2e2" android:id="@id/a6c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:alpha="0.6" />
+                <ImageView android:layout_width="7.0dip" android:layout_height="12.0dip" android:layout_marginRight="12.0dip" android:src="@raw/aa_right_arrow" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
+    <View android:background="@drawable/ex" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="3.0dip" />
 </FrameLayout>

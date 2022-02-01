@@ -5,7 +5,7 @@ import android.app.Activity;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract Activity hHi();
+  public abstract Activity jjs();
 }
 
 

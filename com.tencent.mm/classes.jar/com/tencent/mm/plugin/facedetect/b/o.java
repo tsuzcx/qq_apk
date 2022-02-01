@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dvv;
-import com.tencent.mm.protocal.protobuf.dvw;
+import com.tencent.mm.protocal.protobuf.eov;
+import com.tencent.mm.protocal.protobuf.eow;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends q
+  extends p
   implements m, f
 {
-  private i callback;
-  private d rr;
-  private boolean wvU;
-  private String wvY;
+  private h callback;
+  private c rr;
+  private boolean zSb;
+  private String zSf;
   
   public o(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(103610);
-    this.wvU = false;
-    this.wvY = null;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dvv();
-    ((d.a)localObject).lBV = new dvw();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/registerface";
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (dvv)d.b.b(this.rr.lBR);
-    ((dvv)localObject).TbM = paramLong;
-    ((dvv)localObject).UbO = paramString1;
-    ((dvv)localObject).UbP = paramString2;
+    this.zSb = false;
+    this.zSf = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new eov();
+    ((c.a)localObject).otF = new eow();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/registerface";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (eov)c.b.b(this.rr.otB);
+    ((eov)localObject).aaoY = paramLong;
+    ((eov)localObject).absZ = paramString1;
+    ((eov)localObject).abta = paramString2;
     AppMethodBeat.o(103610);
   }
   
-  public final boolean dhS()
+  public final boolean dOD()
   {
     return true;
   }
   
-  public final String dhT()
+  public final String dOE()
   {
-    return this.wvY;
+    return this.zSf;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(103611);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(103611);
     return i;
@@ -70,16 +70,16 @@ public final class o
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103612);
-    params = (dvw)d.c.b(((d)params).lBS);
+    params = (eow)c.c.b(((c)params).otC);
     boolean bool;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (params.UbR == 0)
+      if (params.abtc == 0)
       {
         bool = true;
-        this.wvU = bool;
-        this.wvY = params.UbQ;
-        paramInt1 = params.UbR;
-        Log.i("MicroMsg.NetSceneFaceRegFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.wvU) });
+        this.zSb = bool;
+        this.zSf = params.abtb;
+        paramInt1 = params.abtc;
+        Log.i("MicroMsg.NetSceneFaceRegFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.zSb) });
       }
     }
     for (;;)
@@ -95,10 +95,10 @@ public final class o
       if (params != null)
       {
         paramInt1 = paramInt3;
-        if (params.UbR != 0)
+        if (params.abtc != 0)
         {
           Log.i("MicroMsg.NetSceneFaceRegFace", "hy: has detail ret. use");
-          paramInt1 = params.UbR;
+          paramInt1 = params.abtc;
         }
       }
     }
@@ -106,7 +106,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.o
  * JD-Core Version:    0.7.0.1
  */

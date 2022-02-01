@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/ib" android:paddingBottom="@dimen/ib" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center_horizontal" android:id="@id/hgi" android:src="@drawable/bcb" style="@style/t3" />
-    <TextView android:id="@id/hgk" android:layout_marginTop="@dimen/g" style="@style/t4" />
-    <TextView android:textColor="#fffd8f44" android:id="@id/hgl" android:visibility="gone" style="@style/t4" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/j3d" android:background="@drawable/aqj" android:layout_width="@dimen/db" android:layout_height="@dimen/d0" android:layout_marginBottom="@dimen/cd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="15.0dip" android:textColor="@color/az" android:id="@id/j3c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/j3a" android:layout_width="168.0dip" android:layout_height="fill_parent" android:layout_alignParentEnd="true">
+        <RelativeLayout android:id="@id/j3f" android:background="@drawable/aqk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/d0">
+            <TextView android:textColor="@color/az" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ifk" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

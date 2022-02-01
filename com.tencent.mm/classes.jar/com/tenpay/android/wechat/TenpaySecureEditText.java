@@ -25,15 +25,24 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tenpay.R.color;
 import com.tenpay.ndk.Encrypt;
+import com.tenpay.ndk.FitSmCertUtil;
+import com.tenpay.ndk.MessageDigestUtil;
+import java.io.File;
 import java.lang.reflect.Field;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,15 +52,16 @@ public final class TenpaySecureEditText
   public static final int AREA_ID_CARD_TYPE_HUIXIANG = 5;
   public static final int AREA_ID_CARD_TYPE_SHENFEN = 1;
   public static final int AREA_ID_CARD_TYPE_TAIBAO = 9;
-  private static int BANK_CARD_LENGTH_LIMIT = 14;
-  private static int CARD_TAIL_SPACE = 15;
-  private static int CVV_4_PAYMENT_LENGTH;
-  private static int CVV_PAYMENT_LENGTH;
   private static int PASSWD_BLACK_DOT_SIZE = 7;
   private static int PASSWD_LEFT_PADDING = -1500000;
-  private static int PASSWD_LENGTH = 6;
-  private static int VALID_THRU_LEN = 4;
   private static String mTimeStamp;
+  private int BANK_CARD_LENGTH_LIMIT;
+  private int CARD_TAIL_SPACE;
+  private int CVV_4_PAYMENT_LENGTH;
+  private int CVV_PAYMENT_LENGTH;
+  private int PASSWD_LENGTH;
+  private int VALID_THRU_LEN;
+  private ArrayList<TextWatcher> mBackupListeners;
   private String mCardTailNum;
   private Drawable mClearBtnImg;
   private float mDensity;
@@ -70,13 +80,11 @@ public final class TenpaySecureEditText
   private OnPasswdInputListener mPasswdListener;
   private Paint mPasswdSeparedPaint;
   private Paint mTitlePaint;
+  private boolean noUpdate;
+  private byte[] randomKey;
+  private byte[] realContent;
+  private int realLength;
   private String regExFilterInput;
-  
-  static
-  {
-    CVV_PAYMENT_LENGTH = 3;
-    CVV_4_PAYMENT_LENGTH = 4;
-  }
   
   public TenpaySecureEditText(Context paramContext)
   {
@@ -89,7 +97,17 @@ public final class TenpaySecureEditText
     AppMethodBeat.i(73210);
     this.mEditState = EditState.DEFAULT;
     this.mNewPwdStyle = true;
+    this.PASSWD_LENGTH = 6;
+    this.CVV_PAYMENT_LENGTH = 3;
+    this.CVV_4_PAYMENT_LENGTH = 4;
+    this.BANK_CARD_LENGTH_LIMIT = 14;
+    this.CARD_TAIL_SPACE = 15;
+    this.VALID_THRU_LEN = 4;
     this.mIEncrypt = new TenpaySecureEncrypt();
+    this.randomKey = new byte[this.PASSWD_LENGTH];
+    this.realContent = new byte[this.PASSWD_LENGTH];
+    this.realLength = 0;
+    this.noUpdate = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(73210);
   }
@@ -100,7 +118,17 @@ public final class TenpaySecureEditText
     AppMethodBeat.i(73211);
     this.mEditState = EditState.DEFAULT;
     this.mNewPwdStyle = true;
+    this.PASSWD_LENGTH = 6;
+    this.CVV_PAYMENT_LENGTH = 3;
+    this.CVV_4_PAYMENT_LENGTH = 4;
+    this.BANK_CARD_LENGTH_LIMIT = 14;
+    this.CARD_TAIL_SPACE = 15;
+    this.VALID_THRU_LEN = 4;
     this.mIEncrypt = new TenpaySecureEncrypt();
+    this.randomKey = new byte[this.PASSWD_LENGTH];
+    this.realContent = new byte[this.PASSWD_LENGTH];
+    this.realLength = 0;
+    this.noUpdate = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(73211);
   }
@@ -115,7 +143,7 @@ public final class TenpaySecureEditText
       if (j == -1) {
         i = 44;
       }
-      paramCanvas.drawText(this.mCardTailNum, CARD_TAIL_SPACE * this.mDensity + getPaint().measureText(getText().toString()), i, this.mTitlePaint);
+      paramCanvas.drawText(this.mCardTailNum, this.CARD_TAIL_SPACE * this.mDensity + getPaint().measureText(getText().toString()), i, this.mTitlePaint);
     }
     AppMethodBeat.o(73228);
   }
@@ -127,7 +155,7 @@ public final class TenpaySecureEditText
     {
       int i = getWidth();
       int j = getHeight();
-      int k = i / CVV_4_PAYMENT_LENGTH;
+      int k = i / this.CVV_4_PAYMENT_LENGTH;
       int m = getText().length();
       i = 0;
       while (i < m)
@@ -146,7 +174,7 @@ public final class TenpaySecureEditText
     {
       int i = getWidth();
       int j = getHeight();
-      int k = i / CVV_PAYMENT_LENGTH;
+      int k = i / this.CVV_PAYMENT_LENGTH;
       int m = getText().length();
       i = 0;
       while (i < m)
@@ -186,7 +214,7 @@ public final class TenpaySecureEditText
     {
       int i1 = getWidth();
       int k = getHeight();
-      int n = i1 / PASSWD_LENGTH;
+      int n = i1 / this.PASSWD_LENGTH;
       int m = getText().length();
       if (!this.mNewPwdStyle)
       {
@@ -197,7 +225,7 @@ public final class TenpaySecureEditText
           i += 1;
         }
         i = 1;
-        while (i < PASSWD_LENGTH)
+        while (i < this.PASSWD_LENGTH)
         {
           paramCanvas.drawLine(n * i, 0.0F, n * i, k, this.mPasswdSeparedPaint);
           i += 1;
@@ -206,9 +234,9 @@ public final class TenpaySecureEditText
         return;
       }
       j = a.fromDPToPix(getContext(), 8);
-      n = (i1 - (PASSWD_LENGTH - 1) * j) / PASSWD_LENGTH;
+      n = (i1 - (this.PASSWD_LENGTH - 1) * j) / this.PASSWD_LENGTH;
       k -= n;
-      while (i < PASSWD_LENGTH)
+      while (i < this.PASSWD_LENGTH)
       {
         float f1 = (n + j) * i;
         float f2 = n + f1;
@@ -265,7 +293,7 @@ public final class TenpaySecureEditText
           if (localObject2 != null)
           {
             localObject1 = localObject2;
-            if (((String)localObject2).length() == VALID_THRU_LEN)
+            if (((String)localObject2).length() == this.VALID_THRU_LEN)
             {
               localObject1 = ((String)localObject2).substring(0, 2);
               localObject2 = ((String)localObject2).substring(2);
@@ -277,10 +305,25 @@ public final class TenpaySecureEditText
     }
   }
   
+  private String getUniqueID()
+  {
+    AppMethodBeat.i(208572);
+    String str = q.eD(false);
+    if (Util.isNullOrNil(str))
+    {
+      str = q.aPg();
+      AppMethodBeat.o(208572);
+      return str;
+    }
+    AppMethodBeat.o(208572);
+    return str;
+  }
+  
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(73212);
     this.mDensity = getResources().getDisplayMetrics().density;
+    initFitSmcCertUtil(paramContext);
     if (paramAttributeSet != null)
     {
       int[] arrayOfInt = TenpayUtil.getResourceDeclareStyleableIntArray(paramContext, "TenpaySecureEditText");
@@ -312,6 +355,18 @@ public final class TenpaySecureEditText
     AppMethodBeat.o(73212);
   }
   
+  private void initFitSmcCertUtil(Context paramContext)
+  {
+    AppMethodBeat.i(208574);
+    paramContext = paramContext.getApplicationContext();
+    paramContext = paramContext.getFilesDir().getParentFile().getAbsolutePath() + "/smcert";
+    FitSmCertUtil localFitSmCertUtil = FitSmCertUtil.getInstance();
+    String str = getUniqueID();
+    h.baC();
+    localFitSmCertUtil.init(paramContext, str, b.aZs());
+    AppMethodBeat.o(208574);
+  }
+  
   private boolean isMatchPattern(String paramString1, String paramString2)
   {
     AppMethodBeat.i(73246);
@@ -332,6 +387,40 @@ public final class TenpaySecureEditText
     return false;
   }
   
+  private void removeAllListeners()
+  {
+    AppMethodBeat.i(208615);
+    if (this.mBackupListeners != null)
+    {
+      ArrayList localArrayList = this.mBackupListeners;
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        super.removeTextChangedListener((TextWatcher)localArrayList.get(i));
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(208615);
+  }
+  
+  private void restoreAllListeners()
+  {
+    AppMethodBeat.i(208618);
+    if (this.mBackupListeners != null)
+    {
+      ArrayList localArrayList = this.mBackupListeners;
+      int j = localArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        super.addTextChangedListener((TextWatcher)localArrayList.get(i));
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(208618);
+  }
+  
   public static void setSalt(String paramString)
   {
     AppMethodBeat.i(73231);
@@ -343,11 +432,71 @@ public final class TenpaySecureEditText
     AppMethodBeat.o(73231);
   }
   
+  private void updateText(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(208612);
+    if (this.noUpdate)
+    {
+      this.noUpdate = false;
+      AppMethodBeat.o(208612);
+      return;
+    }
+    int j = paramString.length();
+    if ((this.randomKey == null) || (j > this.PASSWD_LENGTH))
+    {
+      AppMethodBeat.o(208612);
+      return;
+    }
+    if (this.realLength == 0) {
+      new SecureRandom().nextBytes(this.randomKey);
+    }
+    if (j < this.realLength)
+    {
+      this.realLength -= 1;
+      AppMethodBeat.o(208612);
+      return;
+    }
+    int k = j - 1;
+    this.realContent[k] = ((byte)(paramString.charAt(k) ^ this.randomKey[k]));
+    this.realLength = j;
+    this.noUpdate = true;
+    paramString = new StringBuffer();
+    while (i < this.realLength)
+    {
+      paramString.append('*');
+      i += 1;
+    }
+    removeAllListeners();
+    setText(paramString.toString());
+    setSelection(this.realLength);
+    restoreAllListeners();
+    AppMethodBeat.o(208612);
+  }
+  
   public final void ClearInput()
   {
     AppMethodBeat.i(73247);
     setText("");
+    this.realLength = 0;
+    int i = 0;
+    while (i < this.PASSWD_LENGTH)
+    {
+      this.realContent[i] = 0;
+      i += 1;
+    }
     AppMethodBeat.o(73247);
+  }
+  
+  public final void addTextChangedListener(TextWatcher paramTextWatcher)
+  {
+    AppMethodBeat.i(208721);
+    if (this.mBackupListeners == null) {
+      this.mBackupListeners = new ArrayList();
+    }
+    this.mBackupListeners.add(paramTextWatcher);
+    super.addTextChangedListener(paramTextWatcher);
+    AppMethodBeat.o(208721);
   }
   
   public final String get3DesEncrptData()
@@ -430,42 +579,112 @@ public final class TenpaySecureEditText
   public final String getEncryptDataWithHash(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(73234);
-    Object localObject2 = getInputText();
-    if ((localObject2 == null) || (((String)localObject2).length() == 0))
+    if (this.mEditState == EditState.PASSWORD)
     {
-      AppMethodBeat.o(73234);
-      return null;
-    }
-    Log.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
-    if (this.mIEncrypt != null)
-    {
-      if (paramBoolean2)
+      if (this.realLength != this.PASSWD_LENGTH)
       {
-        localObject1 = this.mIEncrypt.encryptPasswdWithRSA2048(paramBoolean1, (String)localObject2, mTimeStamp);
         AppMethodBeat.o(73234);
-        return localObject1;
+        return null;
       }
-      localObject1 = this.mIEncrypt.encryptPasswd(paramBoolean1, (String)localObject2, mTimeStamp);
+      localObject1 = new byte[this.realLength];
+      int i = 0;
+      while (i < this.realLength)
+      {
+        localObject1[i] = ((byte)(this.realContent[i] ^ this.randomKey[i]));
+        i += 1;
+      }
+      localObject1 = new String((byte[])localObject1);
+    }
+    do
+    {
+      Log.i("TenpaySecureEditText", "timestamp: %s, 2048: %s", new Object[] { mTimeStamp, Boolean.valueOf(paramBoolean2) });
+      if (this.mIEncrypt == null) {
+        break label209;
+      }
+      if (!paramBoolean2) {
+        break label183;
+      }
+      localObject1 = this.mIEncrypt.encryptPasswdWithRSA2048(paramBoolean1, (String)localObject1, mTimeStamp);
       AppMethodBeat.o(73234);
       return localObject1;
-    }
-    Object localObject1 = localObject2;
+      localObject2 = getInputText();
+      if (localObject2 == null) {
+        break;
+      }
+      localObject1 = localObject2;
+    } while (((String)localObject2).length() != 0);
+    AppMethodBeat.o(73234);
+    return null;
+    label183:
+    Object localObject1 = this.mIEncrypt.encryptPasswd(paramBoolean1, (String)localObject1, mTimeStamp);
+    AppMethodBeat.o(73234);
+    return localObject1;
+    label209:
+    Object localObject2 = localObject1;
     if (paramBoolean1) {
-      localObject1 = TenpayUtil.md5HexDigest((String)localObject2);
+      localObject2 = TenpayUtil.md5HexDigest((String)localObject1);
     }
-    localObject2 = new Encrypt();
+    localObject1 = new Encrypt();
     if (mTimeStamp != null) {
-      ((Encrypt)localObject2).setTimeStamp(mTimeStamp);
+      ((Encrypt)localObject1).setTimeStamp(mTimeStamp);
     }
     if (paramBoolean2)
     {
-      localObject1 = ((Encrypt)localObject2).encryptPasswdWithRSA2048((String)localObject1);
+      localObject1 = ((Encrypt)localObject1).encryptPasswdWithRSA2048((String)localObject2);
       AppMethodBeat.o(73234);
       return localObject1;
     }
-    localObject1 = ((Encrypt)localObject2).encryptPasswd((String)localObject1);
+    localObject1 = ((Encrypt)localObject1).encryptPasswd((String)localObject2);
     AppMethodBeat.o(73234);
     return localObject1;
+  }
+  
+  public final String getEncryptPassword(EncryptMode paramEncryptMode, long paramLong, String paramString)
+  {
+    AppMethodBeat.i(208687);
+    if (this.realLength != this.PASSWD_LENGTH)
+    {
+      AppMethodBeat.o(208687);
+      return null;
+    }
+    Object localObject = new byte[this.realLength];
+    int i = 0;
+    while (i < this.realLength)
+    {
+      localObject[i] = ((byte)(this.realContent[i] ^ this.randomKey[i]));
+      i += 1;
+    }
+    localObject = TenpayUtil.md5HexDigest(new String((byte[])localObject));
+    Log.i("TenpaySecureEditText", "encrypt mode %d, md5 text length:%d, nonce length:%d", new Object[] { Integer.valueOf(paramEncryptMode.ordinal()), Integer.valueOf(((String)localObject).length()), Integer.valueOf(paramString.length()) });
+    switch (6.$SwitchMap$com$tenpay$android$wechat$TenpaySecureEditText$EncryptMode[paramEncryptMode.ordinal()])
+    {
+    default: 
+      AppMethodBeat.o(208687);
+      return null;
+    case 1: 
+      paramEncryptMode = new Encrypt();
+      if (mTimeStamp != null) {
+        paramEncryptMode.setTimeStamp(mTimeStamp);
+      }
+      paramEncryptMode = paramEncryptMode.encryptPasswd((String)localObject);
+      AppMethodBeat.o(208687);
+      return paramEncryptMode;
+    case 2: 
+      paramEncryptMode = new Encrypt();
+      if (mTimeStamp != null) {
+        paramEncryptMode.setTimeStamp(mTimeStamp);
+      }
+      paramEncryptMode = paramEncryptMode.encryptPasswdWithRSA2048((String)localObject);
+      AppMethodBeat.o(208687);
+      return paramEncryptMode;
+    case 3: 
+      paramEncryptMode = FitSmCertUtil.getInstance().encryptPassword((String)localObject, paramLong, paramString, 6);
+      AppMethodBeat.o(208687);
+      return paramEncryptMode;
+    }
+    paramEncryptMode = FitSmCertUtil.getInstance().encryptPassword((String)localObject, paramLong, paramString, 7);
+    AppMethodBeat.o(208687);
+    return paramEncryptMode;
   }
   
   public final int getInputLength()
@@ -480,6 +699,26 @@ public final class TenpaySecureEditText
     int i = str.length();
     AppMethodBeat.o(73248);
     return i;
+  }
+  
+  public final String getPasswordHash()
+  {
+    AppMethodBeat.i(208680);
+    if (this.mEditState != EditState.PASSWORD)
+    {
+      AppMethodBeat.o(208680);
+      return null;
+    }
+    Object localObject = new byte[this.realLength];
+    int i = 0;
+    while (i < this.realLength)
+    {
+      localObject[i] = ((byte)(this.realContent[i] ^ this.randomKey[i]));
+      i += 1;
+    }
+    localObject = new MessageDigestUtil().getSHA256Hex((byte[])localObject);
+    AppMethodBeat.o(208680);
+    return localObject;
   }
   
   public final boolean isAreaIDCardNum(int paramInt)
@@ -506,7 +745,7 @@ public final class TenpaySecureEditText
   public final boolean isBankcardNum()
   {
     AppMethodBeat.i(73240);
-    if ((getInputLength() >= BANK_CARD_LENGTH_LIMIT) || (getText().toString().contains("**")))
+    if ((getInputLength() >= this.BANK_CARD_LENGTH_LIMIT) || (getText().toString().contains("**")))
     {
       AppMethodBeat.o(73240);
       return true;
@@ -626,7 +865,7 @@ public final class TenpaySecureEditText
     AppMethodBeat.i(73249);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     int i;
-    if ((this.mFilterChar != null) && (!TextUtils.isEmpty(paramCharSequence)))
+    if ((this.mFilterChar != null) && (!TextUtils.isEmpty(paramCharSequence)) && (this.mEditState != EditState.PASSWORD))
     {
       i = paramInt1;
       while (i < paramInt1 + paramInt3)
@@ -658,16 +897,16 @@ public final class TenpaySecureEditText
       if ((isFocused()) && (this.mClearBtnImg != null) && (EditState.PASSWORD != this.mEditState) && (EditState.CVV_PAYMENT != this.mEditState) && (EditState.CVV_4_PAYMENT != this.mEditState))
       {
         if (!getText().toString().equals("")) {
-          break label345;
+          break label357;
         }
         setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
       }
-      label268:
+      label278:
       if (this.mEditState == null) {
-        break label409;
+        break label428;
       }
     }
-    label345:
+    label357:
     do
     {
       do
@@ -689,8 +928,9 @@ public final class TenpaySecureEditText
           bool = false;
           break;
           setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.mClearBtnImg, getCompoundDrawables()[3]);
-          break label268;
-          if ((((String)localObject1).length() == PASSWD_LENGTH) && (this.mPasswdListener != null))
+          break label278;
+          updateText((String)localObject1);
+          if ((((String)localObject1).length() == this.PASSWD_LENGTH) && (this.mPasswdListener != null))
           {
             this.mPasswdListener.onDone();
             AppMethodBeat.o(73249);
@@ -699,12 +939,12 @@ public final class TenpaySecureEditText
         }
         AppMethodBeat.o(73249);
         return;
-      } while ((((String)localObject1).length() != CVV_PAYMENT_LENGTH) || (this.mPasswdListener == null));
+      } while ((((String)localObject1).length() != this.CVV_PAYMENT_LENGTH) || (this.mPasswdListener == null));
       this.mPasswdListener.onDone();
       AppMethodBeat.o(73249);
       return;
-    } while ((((String)localObject1).length() != CVV_4_PAYMENT_LENGTH) || (this.mPasswdListener == null));
-    label409:
+    } while ((((String)localObject1).length() != this.CVV_4_PAYMENT_LENGTH) || (this.mPasswdListener == null));
+    label428:
     this.mPasswdListener.onDone();
     AppMethodBeat.o(73249);
     return;
@@ -715,12 +955,12 @@ public final class TenpaySecureEditText
       if (((String)localObject1).length() > 0)
       {
         if (paramInt3 > ((String)localObject1).length()) {
-          break label932;
+          break label953;
         }
         paramCharSequence = ((String)localObject1).substring(0, paramInt3);
         localObject2 = paramCharSequence.replaceAll(" ", "");
         paramInt1 = paramCharSequence.length() - ((String)localObject2).length();
-        label547:
+        label568:
         paramCharSequence = ((String)localObject1).replaceAll(" ", "");
         localObject1 = new StringBuffer();
         i = paramCharSequence.length();
@@ -734,7 +974,7 @@ public final class TenpaySecureEditText
         ((StringBuffer)localObject1).append(paramCharSequence.substring(paramInt2));
         paramCharSequence = ((StringBuffer)localObject1).toString();
         if (paramInt3 > paramCharSequence.length()) {
-          break label702;
+          break label723;
         }
         localObject1 = paramCharSequence.substring(0, paramInt3);
         localObject2 = ((String)localObject1).replaceAll(" ", "");
@@ -746,7 +986,7 @@ public final class TenpaySecureEditText
         setSelection(paramInt2 + paramInt3 - paramInt1);
         AppMethodBeat.o(73249);
         return;
-        label702:
+        label723:
         localObject1 = paramCharSequence.replaceAll(" ", "");
       }
     }
@@ -774,7 +1014,7 @@ public final class TenpaySecureEditText
             break;
           }
           if (!((String)localObject1).contains("/")) {
-            break label937;
+            break label958;
           }
           setSelection(1);
           AppMethodBeat.o(73249);
@@ -795,8 +1035,8 @@ public final class TenpaySecureEditText
       AppMethodBeat.o(73249);
       return;
       setSelection(i);
-      label932:
-      label937:
+      label953:
+      label958:
       do
       {
         AppMethodBeat.o(73249);
@@ -804,7 +1044,7 @@ public final class TenpaySecureEditText
         this.mIsSelfSet = false;
         break;
         paramInt1 = 0;
-        break label547;
+        break label568;
       } while (i != 2);
       if (paramInt3 > paramInt2) {
         paramInt1 = 3;
@@ -836,6 +1076,20 @@ public final class TenpaySecureEditText
     boolean bool = super.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(73215);
     return bool;
+  }
+  
+  public final void removeTextChangedListener(TextWatcher paramTextWatcher)
+  {
+    AppMethodBeat.i(208726);
+    if (this.mBackupListeners != null)
+    {
+      int i = this.mBackupListeners.indexOf(paramTextWatcher);
+      if (i >= 0) {
+        this.mBackupListeners.remove(i);
+      }
+    }
+    super.removeTextChangedListener(paramTextWatcher);
+    AppMethodBeat.o(208726);
   }
   
   public final void set3DesEncrptData(String paramString)
@@ -915,7 +1169,7 @@ public final class TenpaySecureEditText
     if (this.mClearBtnImg != null) {
       if ((paramInt3 != 0) && (paramInt4 != 0))
       {
-        this.mClearBtnImg.setBounds(0, 0, aw.fromDPToPix(getContext(), paramInt3), aw.fromDPToPix(getContext(), paramInt4));
+        this.mClearBtnImg.setBounds(0, 0, bd.fromDPToPix(getContext(), paramInt3), bd.fromDPToPix(getContext(), paramInt4));
         setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
           public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
@@ -1088,21 +1342,21 @@ public final class TenpaySecureEditText
   
   public final void setIsPasswordFormat(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(204779);
+    AppMethodBeat.i(208648);
     if (paramBoolean1)
     {
       this.mNewPwdStyle = paramBoolean2;
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      if (ar.isDarkMode())
+      if (aw.isDarkMode())
       {
         this.mPaintBackground.setColor(getResources().getColor(R.color.BW_100_Alpha_0_8));
         this.mEditState = EditState.PASSWORD;
         this.mPasswdSeparedPaint = new Paint(1);
         this.mPasswdSeparedPaint.setStyle(Paint.Style.STROKE);
         this.mPasswdSeparedPaint.setStrokeWidth(1.5F);
-        if (!ar.isDarkMode()) {
+        if (!aw.isDarkMode()) {
           break label206;
         }
         this.mPasswdSeparedPaint.setColor(getResources().getColor(R.color.FG_4));
@@ -1111,11 +1365,11 @@ public final class TenpaySecureEditText
       {
         this.mPasswdBgPaint = new Paint(1);
         this.mPasswdBgPaint.setStyle(Paint.Style.FILL);
-        if (!ar.isDarkMode()) {
+        if (!aw.isDarkMode()) {
           break label226;
         }
         this.mPasswdBgPaint.setColor(218103807);
-        AppMethodBeat.o(204779);
+        AppMethodBeat.o(208648);
         return;
         this.mPaintBackground.setColor(getResources().getColor(R.color.BW_0));
         break;
@@ -1124,14 +1378,14 @@ public final class TenpaySecureEditText
       }
       label226:
       this.mPasswdBgPaint.setColor(getResources().getColor(R.color.BG_0));
-      AppMethodBeat.o(204779);
+      AppMethodBeat.o(208648);
       return;
     }
     this.mPaintBackground = null;
     if (EditState.PASSWORD == this.mEditState) {
       this.mEditState = EditState.DEFAULT;
     }
-    AppMethodBeat.o(204779);
+    AppMethodBeat.o(208648);
   }
   
   public final void setIsSecurityAnswerFormat(boolean paramBoolean)
@@ -1165,6 +1419,11 @@ public final class TenpaySecureEditText
     this.mPasswdListener = paramOnPasswdInputListener;
   }
   
+  public final void setPwdLength(int paramInt)
+  {
+    this.PASSWD_LENGTH = paramInt;
+  }
+  
   public final void setSecureEncrypt(ISecureEncrypt paramISecureEncrypt)
   {
     this.mIEncrypt = paramISecureEncrypt;
@@ -1178,7 +1437,7 @@ public final class TenpaySecureEditText
   public final void setValidThru(String paramString)
   {
     AppMethodBeat.i(73220);
-    if ((paramString != null) && (paramString.length() == VALID_THRU_LEN))
+    if ((paramString != null) && (paramString.length() == this.VALID_THRU_LEN))
     {
       setText(paramString);
       this.mEditState = EditState.VALID_THRU;
@@ -1213,6 +1472,22 @@ public final class TenpaySecureEditText
     private EditState() {}
   }
   
+  public static enum EncryptMode
+  {
+    static
+    {
+      AppMethodBeat.i(208570);
+      RSA1024_WITH_MD5 = new EncryptMode("RSA1024_WITH_MD5", 0);
+      RSA2048_WITH_MD5 = new EncryptMode("RSA2048_WITH_MD5", 1);
+      SM2_WITH_MD5 = new EncryptMode("SM2_WITH_MD5", 2);
+      SM2_WITH_PBKDF2 = new EncryptMode("SM2_WITH_PBKDF2", 3);
+      $VALUES = new EncryptMode[] { RSA1024_WITH_MD5, RSA2048_WITH_MD5, SM2_WITH_MD5, SM2_WITH_PBKDF2 };
+      AppMethodBeat.o(208570);
+    }
+    
+    private EncryptMode() {}
+  }
+  
   public static abstract interface IKindaEditTextCallBackListener
   {
     public abstract void onCallBackKinda();
@@ -1220,7 +1495,7 @@ public final class TenpaySecureEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpaySecureEditText
  * JD-Core Version:    0.7.0.1
  */

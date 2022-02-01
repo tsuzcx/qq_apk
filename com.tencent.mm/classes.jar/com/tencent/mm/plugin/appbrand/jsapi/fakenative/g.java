@@ -8,12 +8,12 @@ import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 public final class g
   extends l
 {
-  public static final g oRw;
+  public static final g rWW;
   
   static
   {
     AppMethodBeat.i(46298);
-    oRw = new g();
+    rWW = new g();
     AppMethodBeat.o(46298);
   }
   
@@ -24,7 +24,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.g
  * JD-Core Version:    0.7.0.1
  */

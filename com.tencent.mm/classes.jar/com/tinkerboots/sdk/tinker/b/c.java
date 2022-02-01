@@ -51,10 +51,10 @@ public final class c
     AppMethodBeat.o(3449);
   }
   
-  public final void aC(Intent paramIntent)
+  public final void aW(Intent paramIntent)
   {
     AppMethodBeat.i(3448);
-    super.aC(paramIntent);
+    super.aW(paramIntent);
     AppMethodBeat.o(3448);
   }
   
@@ -65,16 +65,16 @@ public final class c
     AppMethodBeat.o(3452);
   }
   
-  public final void g(File paramFile, int paramInt)
+  public final void h(File paramFile, int paramInt)
   {
     AppMethodBeat.i(3453);
-    super.g(paramFile, paramInt);
+    super.h(paramFile, paramInt);
     AppMethodBeat.o(3453);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.b.c
  * JD-Core Version:    0.7.0.1
  */

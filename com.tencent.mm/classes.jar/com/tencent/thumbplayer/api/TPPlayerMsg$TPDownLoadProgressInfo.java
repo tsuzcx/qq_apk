@@ -10,7 +10,7 @@ public class TPPlayerMsg$TPDownLoadProgressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo
  * JD-Core Version:    0.7.0.1
  */

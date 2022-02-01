@@ -2,132 +2,130 @@ package com.tencent.mm.plugin.radar.ui;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableRow;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "", "mGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "mContext", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "count", "", "getCount", "()I", "mColumn", "getMContext", "()Landroid/content/Context;", "getMGridView", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "fillDataToTable", "", "getChanged", "", "position", "getItem", "getView", "Landroid/view/View;", "convertView", "makeRow", "Landroid/widget/TableRow;", "notifyDataChanged", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "", "mGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "mContext", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "count", "", "getCount", "()I", "mColumn", "getMContext", "()Landroid/content/Context;", "getMGridView", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "fillDataToTable", "", "getChanged", "", "position", "getItem", "getView", "Landroid/view/View;", "convertView", "makeRow", "Landroid/widget/TableRow;", "notifyDataChanged", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
 {
-  public static final a HuN = new a((byte)0);
+  public static final a.a Nsy = new a.a((byte)0);
   private static final String TAG = "MicroMsg.RadarGridView.GridDataAdapter";
-  private int HuL;
-  final RadarSpecialGridView HuM;
+  private int NsA;
+  private final RadarSpecialGridView Nsz;
   private final Context mContext;
   
   public a(RadarSpecialGridView paramRadarSpecialGridView, Context paramContext)
   {
-    this.HuM = paramRadarSpecialGridView;
+    this.Nsz = paramRadarSpecialGridView;
     this.mContext = paramContext;
-    this.HuL = 3;
+    this.NsA = 3;
   }
   
-  public abstract View as(View paramView, int paramInt);
-  
-  public final void cnv()
+  private static final void a(a parama, int paramInt, View paramView)
   {
-    if (this.HuL == 0)
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.sc(paramInt);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/radar/ui/GridDataAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    parama = parama.Nsz.getOnItemClickListener();
+    if (parama != null)
+    {
+      s.s(paramView, "v");
+      parama.c(paramInt, paramView);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/radar/ui/GridDataAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+  }
+  
+  public abstract View aK(View paramView, int paramInt);
+  
+  public final void cPy()
+  {
+    if (this.NsA == 0)
     {
       Log.e(TAG, "column is 0, pls check!");
       return;
     }
-    int k = getCount();
-    final int i = 0;
-    if (i < k)
+    int m = getCount();
+    if (m > 0) {}
+    int k;
+    label128:
+    label278:
+    label283:
+    label309:
+    for (int i = 0;; i = k)
     {
-      int j = i / this.HuL;
-      int m = this.HuM.getMTable().getChildCount();
+      k = i + 1;
+      int j = i / this.NsA;
+      int n = this.Nsz.getMTable().getChildCount();
       Object localObject;
-      label93:
-      label117:
       View localView1;
       View localView2;
-      if (m > j)
+      if (n > j)
       {
-        localObject = this.HuM.getMTable().getChildAt(m - 1 - j);
+        localObject = this.Nsz.getMTable().getChildAt(n - 1 - j);
         if (localObject == null) {
-          throw new t("null cannot be cast to non-null type android.widget.TableRow");
+          throw new NullPointerException("null cannot be cast to non-null type android.widget.TableRow");
         }
         localObject = (TableRow)localObject;
-        m = i % this.HuL;
-        int n = ((TableRow)localObject).getChildCount();
-        if (n > m) {
-          break label237;
+        n = i % this.NsA;
+        int i1 = ((TableRow)localObject).getChildCount();
+        boolean bool = gFd();
+        if (i1 > n) {
+          break label278;
         }
         j = 1;
-        localView1 = null;
-        m = n - 1 - m;
-        if (j == 0) {
-          localView1 = ((TableRow)localObject).getChildAt(m);
+        if ((j != 0) || (bool))
+        {
+          localView1 = null;
+          n = i1 - 1 - n;
+          if (j == 0) {
+            localView1 = ((TableRow)localObject).getChildAt(n);
+          }
+          localView2 = aK(localView1, i);
+          if (j == 0) {
+            break label283;
+          }
+          ((TableRow)localObject).addView(localView2, 0);
         }
-        localView2 = as(localView1, i);
-        if (j == 0) {
-          break label242;
-        }
-        ((TableRow)localObject).addView(localView2, 0);
       }
       for (;;)
       {
-        localView2.setOnClickListener((View.OnClickListener)new b(this, i));
-        i += 1;
-        break;
+        localView2.setOnClickListener(new a..ExternalSyntheticLambda0(this, i));
+        if (k < m) {
+          break label309;
+        }
+        Log.v(TAG, s.X("mTable rows count : ", Integer.valueOf(this.Nsz.getMTable().getChildCount())));
+        return;
         localObject = new TableRow(this.mContext);
         ((TableRow)localObject).setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-        this.HuM.getMTable().addView((View)localObject, 0);
-        break label93;
-        label237:
+        this.Nsz.getMTable().addView((View)localObject, 0);
+        break;
         j = 0;
-        break label117;
-        label242:
+        break label128;
         if (localView2 != localView1)
         {
-          ((TableRow)localObject).removeViewAt(m);
-          ((TableRow)localObject).addView(localView2, m);
+          ((TableRow)localObject).removeViewAt(n);
+          ((TableRow)localObject).addView(localView2, n);
         }
       }
     }
-    Log.v(TAG, "mTable rows count : " + this.HuM.getMTable().getChildCount());
   }
+  
+  public abstract boolean gFd();
   
   public abstract int getCount();
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(138585);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/radar/ui/GridDataAdapter$fillDataToTable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      localObject = this.HuO.HuM.getOnItemClickListener();
-      if (localObject != null)
-      {
-        int i = i;
-        p.j(paramView, "v");
-        ((RadarSpecialGridView.a)localObject).b(i, paramView);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/radar/ui/GridDataAdapter$fillDataToTable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(138585);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.a
  * JD-Core Version:    0.7.0.1
  */

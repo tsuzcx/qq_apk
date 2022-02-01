@@ -11,30 +11,30 @@ import java.util.Set;
 
 final class b
 {
-  private final String JRP;
-  private final String JRQ;
-  private final String JRR;
-  private final String JRS;
+  private final String QoB;
+  private final String QoC;
+  private final String QoD;
+  private final String QoE;
   
   private b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.JRP = paramString1;
-    this.JRQ = paramString2;
-    this.JRR = paramString3;
-    this.JRS = paramString4;
+    this.QoB = paramString1;
+    this.QoC = paramString2;
+    this.QoD = paramString3;
+    this.QoE = paramString4;
   }
   
-  static b H(String paramString1, String paramString2, String paramString3, String paramString4)
+  static b J(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(264460);
+    AppMethodBeat.i(306346);
     paramString1 = new b(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(264460);
+    AppMethodBeat.o(306346);
     return paramString1;
   }
   
-  private static Uri kx(String paramString1, String paramString2)
+  private static Uri ma(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(264464);
+    AppMethodBeat.i(306365);
     paramString1 = Uri.parse(paramString1);
     Object localObject;
     if (!TextUtils.isEmpty(paramString2))
@@ -46,7 +46,7 @@ final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(264464);
+      AppMethodBeat.o(306365);
       return paramString1;
       if (!paramString2.equals(paramString1.getQueryParameter("id")))
       {
@@ -72,48 +72,48 @@ final class b
     }
   }
   
-  final Intent fNt()
+  final Intent heV()
   {
-    AppMethodBeat.i(264462);
+    AppMethodBeat.i(306373);
     try
     {
-      Object localObject2 = this.JRP;
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      Object localObject3 = this.QoB;
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
       {
         Intent localIntent = new Intent();
-        Object localObject1 = this.JRR;
+        Object localObject1 = this.QoD;
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject2 = kx((String)localObject2, (String)localObject1);
+          localObject3 = ma((String)localObject3, (String)localObject1);
         }
         String str;
         do
         {
           localIntent.putExtra("target_app_id", (String)localObject1);
           localIntent.setAction("android.intent.action.VIEW");
-          localIntent.setData((Uri)localObject2);
-          if (!TextUtils.isEmpty(this.JRQ)) {
-            localIntent.setPackage(this.JRQ);
+          localIntent.setData((Uri)localObject3);
+          if (!TextUtils.isEmpty(this.QoC)) {
+            localIntent.setPackage(this.QoC);
           }
-          if (!TextUtils.isEmpty(this.JRS)) {
-            localIntent.putExtra("market_app_name", this.JRS);
+          if (!TextUtils.isEmpty(this.QoE)) {
+            localIntent.putExtra("market_app_name", this.QoE);
           }
-          AppMethodBeat.o(264462);
+          AppMethodBeat.o(306373);
           return localIntent;
-          localObject2 = Uri.parse((String)localObject2);
-          str = ((Uri)localObject2).getQueryParameter("id");
+          localObject3 = Uri.parse((String)localObject3);
+          str = ((Uri)localObject3).getQueryParameter("id");
           localObject1 = str;
         } while (!TextUtils.isEmpty(str));
-        AppMethodBeat.o(264462);
+        AppMethodBeat.o(306373);
         return null;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.e("MicroMsg.AdAppMarketIntentNode", "there is something wrong in toIntent");
-      AppMethodBeat.o(264462);
+      AppMethodBeat.o(306373);
       return null;
     }
-    AppMethodBeat.o(264462);
+    AppMethodBeat.o(306373);
     return null;
   }
 }

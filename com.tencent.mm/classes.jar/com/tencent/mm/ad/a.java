@@ -2,17 +2,19 @@ package com.tencent.mm.ad;
 
 public abstract interface a
 {
-  public abstract a E(int paramInt, boolean paramBoolean);
+  public abstract a A(double paramDouble);
   
-  public abstract a Ft(long paramLong);
+  public abstract a C(int paramInt, Object paramObject);
   
-  public abstract a bu(Object paramObject);
+  public abstract a S(int paramInt, boolean paramBoolean);
   
-  public abstract a c(int paramInt, double paramDouble);
+  public abstract a cO(Object paramObject);
   
-  public abstract a dn(int paramInt1, int paramInt2);
+  public abstract a dZ(int paramInt1, int paramInt2);
   
-  public abstract a eN(boolean paramBoolean);
+  public abstract a f(int paramInt, double paramDouble);
+  
+  public abstract a fx(boolean paramBoolean);
   
   public abstract Object get(int paramInt);
   
@@ -26,11 +28,9 @@ public abstract interface a
   
   public abstract String getString(int paramInt);
   
+  public abstract a hC(long paramLong);
+  
   public abstract boolean isNull(int paramInt);
-  
-  public abstract a j(int paramInt, Object paramObject);
-  
-  public abstract a k(double paramDouble);
   
   public abstract int length();
   
@@ -58,25 +58,25 @@ public abstract interface a
   
   public abstract Object remove(int paramInt);
   
-  public abstract a sp(int paramInt);
+  public abstract a sl(int paramInt);
   
-  public abstract a sq(int paramInt);
+  public abstract a sm(int paramInt);
   
-  public abstract a sr(int paramInt);
+  public abstract a sn(int paramInt);
   
-  public abstract c ss(int paramInt);
+  public abstract c so(int paramInt);
   
-  public abstract c st(int paramInt);
+  public abstract c sp(int paramInt);
   
   public abstract String toString();
   
   public abstract String toString(int paramInt);
   
-  public abstract a v(int paramInt, long paramLong);
+  public abstract a z(int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ad.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface f<T>
 {
-  public abstract void aH(T paramT);
+  public abstract void onCallback(T paramT);
 }
 
 

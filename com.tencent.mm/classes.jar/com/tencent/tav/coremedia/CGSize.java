@@ -11,9 +11,9 @@ public class CGSize
   
   static
   {
-    AppMethodBeat.i(202870);
+    AppMethodBeat.i(215798);
     CGSizeZero = new CGSize(0.0F, 0.0F);
-    AppMethodBeat.o(202870);
+    AppMethodBeat.o(215798);
   }
   
   public CGSize()
@@ -29,9 +29,9 @@ public class CGSize
   
   public CGSize clone()
   {
-    AppMethodBeat.i(202866);
+    AppMethodBeat.i(215825);
     CGSize localCGSize = new CGSize(this.width, this.height);
-    AppMethodBeat.o(202866);
+    AppMethodBeat.o(215825);
     return localCGSize;
   }
   
@@ -45,9 +45,9 @@ public class CGSize
   
   public String toString()
   {
-    AppMethodBeat.i(202862);
+    AppMethodBeat.i(215805);
     String str = "[" + this.width + "," + this.height + "]";
-    AppMethodBeat.o(202862);
+    AppMethodBeat.o(215805);
     return str;
   }
 }

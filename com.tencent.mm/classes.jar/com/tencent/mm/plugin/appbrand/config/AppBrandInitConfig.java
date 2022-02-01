@@ -12,14 +12,14 @@ public class AppBrandInitConfig
 {
   public static final Parcelable.Creator<AppBrandInitConfig> CREATOR;
   public String appId;
-  public int cBI;
-  public String cCi;
-  public String fzM;
+  public String euP;
+  public int eul;
+  public String hEy;
   public String iconUrl;
-  public String nBq;
-  public String nXX;
-  public boolean nXY;
   public int originalFlag;
+  public String qAF;
+  public String qXZ;
+  public int qYa;
   
   static
   {
@@ -38,40 +38,35 @@ public class AppBrandInitConfig
   {
     AppMethodBeat.i(134787);
     this.appId = paramParcel.readString();
-    this.fzM = paramParcel.readString();
+    this.hEy = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
-    this.cBI = paramParcel.readInt();
-    this.nBq = paramParcel.readString();
-    this.cCi = paramParcel.readString();
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.nXY = bool;
-      this.originalFlag = paramParcel.readInt();
-      this.nXX = paramParcel.readString();
-      AppMethodBeat.o(134787);
-      return;
-    }
+    this.eul = paramParcel.readInt();
+    this.qAF = paramParcel.readString();
+    this.euP = paramParcel.readString();
+    this.originalFlag = paramParcel.readInt();
+    this.qXZ = paramParcel.readString();
+    this.qYa = paramParcel.readInt();
+    AppMethodBeat.o(134787);
   }
   
-  public JSONObject QA()
+  public JSONObject aqM()
   {
     AppMethodBeat.i(134785);
     AppMethodBeat.o(134785);
     return null;
   }
   
-  public AppBrandInitConfig QC()
+  public AppBrandInitConfig aqO()
   {
     AppMethodBeat.i(134783);
-    Parcel localParcel = bLg();
-    AppBrandInitConfig localAppBrandInitConfig = (AppBrandInitConfig)a.ce(getClass()).ao(new Object[] { localParcel }).object;
+    Parcel localParcel = ckF();
+    AppBrandInitConfig localAppBrandInitConfig = (AppBrandInitConfig)a.cQ(getClass()).av(new Object[] { localParcel }).object;
     localParcel.recycle();
     AppMethodBeat.o(134783);
     return localAppBrandInitConfig;
   }
   
-  public Parcel bLg()
+  public Parcel ckF()
   {
     AppMethodBeat.i(134784);
     Parcel localParcel = Parcel.obtain();
@@ -80,11 +75,6 @@ public class AppBrandInitConfig
     localParcel.setDataPosition(0);
     AppMethodBeat.o(134784);
     return localParcel;
-  }
-  
-  public final int bLh()
-  {
-    return this.cBI;
   }
   
   public int describeContents()
@@ -96,25 +86,20 @@ public class AppBrandInitConfig
   {
     AppMethodBeat.i(134788);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.fzM);
+    paramParcel.writeString(this.hEy);
     paramParcel.writeString(this.iconUrl);
-    paramParcel.writeInt(this.cBI);
-    paramParcel.writeString(this.nBq);
-    paramParcel.writeString(this.cCi);
-    if (this.nXY) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.originalFlag);
-      paramParcel.writeString(this.nXX);
-      AppMethodBeat.o(134788);
-      return;
-    }
+    paramParcel.writeInt(this.eul);
+    paramParcel.writeString(this.qAF);
+    paramParcel.writeString(this.euP);
+    paramParcel.writeInt(this.originalFlag);
+    paramParcel.writeString(this.qXZ);
+    paramParcel.writeInt(this.qYa);
+    AppMethodBeat.o(134788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig
  * JD-Core Version:    0.7.0.1
  */

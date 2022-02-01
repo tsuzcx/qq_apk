@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet_core.d;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.BankcardScene;
-import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +26,7 @@ public final class c
   
   public c(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, BankcardScene.info, "WalletBankcardScene", null);
+    super(paramISQLiteDatabase, BankcardScene.info, "WalletBankcardScene", BankcardScene.INDEX_CREATE);
     AppMethodBeat.i(70591);
     this.listeners = new LinkedList();
     this.db = paramISQLiteDatabase;
@@ -49,7 +49,33 @@ public final class c
     return false;
   }
   
-  public final boolean amA(int paramInt)
+  public final ArrayList<BankcardScene> aso(int paramInt)
+  {
+    ArrayList localArrayList = null;
+    AppMethodBeat.i(301087);
+    Object localObject = "select * from WalletBankcardScene where scene=".concat(String.valueOf(paramInt));
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(301087);
+      return null;
+    }
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localArrayList = new ArrayList();
+      do
+      {
+        BankcardScene localBankcardScene = new BankcardScene();
+        localBankcardScene.convertFrom((Cursor)localObject);
+        localArrayList.add(localBankcardScene);
+      } while (((Cursor)localObject).moveToNext());
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(301087);
+    return localArrayList;
+  }
+  
+  public final boolean asp(int paramInt)
   {
     AppMethodBeat.i(70595);
     String str = "delete from WalletBankcardScene where scene=".concat(String.valueOf(paramInt));
@@ -58,21 +84,7 @@ public final class c
     return bool;
   }
   
-  public final boolean byd()
-  {
-    AppMethodBeat.i(70594);
-    int i = getCount();
-    int j = this.db.delete("WalletBankcardScene", "", new String[0]);
-    if (i != j)
-    {
-      Log.w("MicroMsg.BankcardScene", "count: %s, deleteCount: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      h.IzE.el(1589, 6);
-    }
-    AppMethodBeat.o(70594);
-    return true;
-  }
-  
-  public final boolean iR(List<BankcardScene> paramList)
+  public final boolean lZ(List<BankcardScene> paramList)
   {
     AppMethodBeat.i(70592);
     paramList = paramList.iterator();
@@ -89,7 +101,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.c
  * JD-Core Version:    0.7.0.1
  */

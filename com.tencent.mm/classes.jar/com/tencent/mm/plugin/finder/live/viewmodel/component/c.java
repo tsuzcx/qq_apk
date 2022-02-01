@@ -1,676 +1,512 @@
 package com.tencent.mm.plugin.finder.live.viewmodel.component;
 
 import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.ax;
+import com.tencent.mm.plugin.f;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.h;
 import com.tencent.mm.plugin.finder.live.report.k;
-import com.tencent.mm.plugin.finder.live.report.s.ak;
-import com.tencent.mm.plugin.finder.loader.e;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.arp;
-import com.tencent.mm.protocal.protobuf.bbh;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.finder.live.report.q.cf;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.protocal.protobuf.bjb;
+import com.tencent.mm.protocal.protobuf.bjc;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.ebc;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.tools.g.a;
-import com.tencent.mm.ui.widget.MMEditText;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.r;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "MAX_INPUT_LENGTH", "", "getMAX_INPUT_LENGTH", "()I", "MAX_INPUT_SIZE", "getMAX_INPUT_SIZE", "TAG", "", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "dialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getDialog", "()Lcom/tencent/mm/ui/base/MMProgressDialog;", "setDialog", "(Lcom/tencent/mm/ui/base/MMProgressDialog;)V", "isFromProfile", "", "mAuthView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getMAuthView", "()Landroid/widget/ImageView;", "mAuthView$delegate", "Lkotlin/Lazy;", "mAvatarView", "getMAvatarView", "mAvatarView$delegate", "mBackBtn", "Landroid/widget/TextView;", "getMBackBtn", "()Landroid/widget/TextView;", "mBackBtn$delegate", "mConfirmBtn", "getMConfirmBtn", "mConfirmBtn$delegate", "mEditLayout", "Landroid/view/View;", "getMEditLayout", "()Landroid/view/View;", "mEditLayout$delegate", "mEditView", "Lcom/tencent/mm/ui/widget/MMEditText;", "getMEditView", "()Lcom/tencent/mm/ui/widget/MMEditText;", "mEditView$delegate", "mLimitText", "getMLimitText", "mLimitText$delegate", "mNameView", "getMNameView", "mNameView$delegate", "mNoticeTimeLayout", "getMNoticeTimeLayout", "mNoticeTimeLayout$delegate", "mNoticeTimeTxt", "getMNoticeTimeTxt", "mNoticeTimeTxt$delegate", "selectedNoticeTime", "afterCreateNotice", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLiveNoticeResponse;", "checkTextLimit", "doCreateFinderNotice", "startTime", "getLayoutId", "initData", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateLiveNote", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refreshTimeView", "firstIndex", "secIndex", "thirdIndex", "setWindowStyle", "showOrDimissLoading", "show", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveLotteryDetailUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends UIComponent
-  implements com.tencent.mm.an.i
 {
-  private static final String zdN = "KEY_FINDER_LIVE_NOTICE_CONTACT";
-  private static final String zdO = "KEY_FINDER_LIVE_NOTICE_INFO";
-  private static final int zdP = 100;
-  private static final String zdQ = "KEY_FINDER_LIVE_NOTICE_IS_FROM_PROFILE";
-  public static final a zdR;
-  private final int MAX_INPUT_SIZE;
-  private final String TAG;
-  private FinderContact contact;
-  private boolean moh;
-  s oTk;
-  private final f ycj;
-  private final f yck;
-  private final f ycl;
-  final int zbo;
-  private final f zdF;
-  private final f zdG;
-  private final f zdH;
-  private final f zdI;
-  private final f zdJ;
-  private final f zdK;
-  private final f zdL;
-  private int zdM;
+  public static final a Eap;
   
   static
   {
-    AppMethodBeat.i(279914);
-    zdR = new a((byte)0);
-    zdN = "KEY_FINDER_LIVE_NOTICE_CONTACT";
-    zdO = "KEY_FINDER_LIVE_NOTICE_INFO";
-    zdP = 100;
-    zdQ = "KEY_FINDER_LIVE_NOTICE_IS_FROM_PROFILE";
-    AppMethodBeat.o(279914);
+    AppMethodBeat.i(356918);
+    Eap = new a((byte)0);
+    AppMethodBeat.o(356918);
   }
   
   public c(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(279913);
-    this.TAG = "FinderLiveNoticeUIC";
-    this.zdF = kotlin.g.ar((kotlin.g.a.a)new n(paramAppCompatActivity));
-    this.ycj = kotlin.g.ar((kotlin.g.a.a)new m(paramAppCompatActivity));
-    this.yck = kotlin.g.ar((kotlin.g.a.a)new s(paramAppCompatActivity));
-    this.ycl = kotlin.g.ar((kotlin.g.a.a)new l(paramAppCompatActivity));
-    this.zdG = kotlin.g.ar((kotlin.g.a.a)new q(paramAppCompatActivity));
-    this.zdH = kotlin.g.ar((kotlin.g.a.a)new p(paramAppCompatActivity));
-    this.zdI = kotlin.g.ar((kotlin.g.a.a)new t(paramAppCompatActivity));
-    this.zdJ = kotlin.g.ar((kotlin.g.a.a)new u(paramAppCompatActivity));
-    this.zdK = kotlin.g.ar((kotlin.g.a.a)new o(paramAppCompatActivity));
-    this.zdL = kotlin.g.ar((kotlin.g.a.a)new r(paramAppCompatActivity));
-    this.MAX_INPUT_SIZE = 60;
-    this.zbo = (this.MAX_INPUT_SIZE * 2);
-    AppMethodBeat.o(279913);
+    AppMethodBeat.i(356892);
+    AppMethodBeat.o(356892);
   }
   
-  private final MMEditText dGr()
+  private static final void a(c paramc, bjc parambjc, long paramLong, bui parambui, String paramString, View paramView)
   {
-    AppMethodBeat.i(279907);
-    MMEditText localMMEditText = (MMEditText)this.zdG.getValue();
-    AppMethodBeat.o(279907);
-    return localMMEditText;
+    AppMethodBeat.i(356911);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.cH(parambjc);
+    localb.hB(paramLong);
+    localb.cH(parambui);
+    localb.cH(paramString);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveLotteryDetailUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "this$0");
+    localObject = d.FAy;
+    if (((Number)d.eTo().bmg()).intValue() <= 0)
+    {
+      aa.makeText(paramView.getContext(), (CharSequence)paramView.getContext().getResources().getString(p.h.Cgw), 0).show();
+      a.a(new Object(), "com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveLotteryDetailUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(356911);
+      return;
+    }
+    paramView = new bjb();
+    paramView.username = paramString;
+    paramView.ZPU = false;
+    paramString = (f)h.ax(f.class);
+    localObject = (Context)paramc.getActivity();
+    paramc = parambjc.ZSM;
+    if (paramc == null) {}
+    for (int i = 0;; i = paramc.abgH)
+    {
+      parambjc = parambjc.id;
+      paramc = parambjc;
+      if (parambjc == null) {
+        paramc = "";
+      }
+      paramString.a((Context)localObject, i, paramView, paramc, paramLong, parambui, false);
+      k.a(k.Doi, q.cf.DFn, "");
+      a.a(new Object(), "com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveLotteryDetailUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(356911);
+      return;
+    }
   }
   
-  private final TextView dGs()
+  private static final boolean a(MMActivity paramMMActivity, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(279908);
-    TextView localTextView = (TextView)this.zdJ.getValue();
-    AppMethodBeat.o(279908);
-    return localTextView;
-  }
-  
-  private final void py(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(279911);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new w(this, paramBoolean, null));
-    AppMethodBeat.o(279911);
+    AppMethodBeat.i(356899);
+    s.u(paramMMActivity, "$this_run");
+    paramMMActivity.finish();
+    AppMethodBeat.o(356899);
+    return true;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_notice_ui;
+    return p.f.Cer;
   }
   
-  public final void onCreate(Bundle paramBundle)
+  /* Error */
+  public final void onCreate(android.os.Bundle paramBundle)
   {
-    AppMethodBeat.i(279909);
-    super.onCreate(paramBundle);
-    paramBundle = getIntent().getByteArrayExtra(zdN);
-    if (paramBundle != null)
-    {
-      this.contact = new FinderContact();
-      localObject1 = this.contact;
-      if (localObject1 == null) {
-        p.bGy("contact");
-      }
-      ((FinderContact)localObject1).parseFrom(paramBundle);
-    }
-    this.moh = getIntent().getBooleanExtra(zdQ, false);
-    ((TextView)this.zdF.getValue()).setOnClickListener((View.OnClickListener)new e(this));
-    paramBundle = com.tencent.mm.plugin.finder.loader.t.ztT;
-    paramBundle = com.tencent.mm.plugin.finder.loader.t.dJh();
-    Object localObject1 = this.contact;
-    if (localObject1 == null) {
-      p.bGy("contact");
-    }
-    localObject1 = new e(((FinderContact)localObject1).headUrl);
-    Object localObject2 = (ImageView)this.ycj.getValue();
-    p.j(localObject2, "mAvatarView");
-    com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
-    paramBundle.a(localObject1, (ImageView)localObject2, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
-    paramBundle = (TextView)this.yck.getValue();
-    p.j(paramBundle, "mNameView");
-    localObject1 = (Context)getActivity();
-    localObject2 = this.contact;
-    if (localObject2 == null) {
-      p.bGy("contact");
-    }
-    paramBundle.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)((FinderContact)localObject2).nickname));
-    paramBundle = com.tencent.mm.plugin.finder.utils.aj.AGc;
-    paramBundle = (ImageView)this.ycl.getValue();
-    p.j(paramBundle, "mAuthView");
-    localObject1 = this.contact;
-    if (localObject1 == null) {
-      p.bGy("contact");
-    }
-    com.tencent.mm.plugin.finder.utils.aj.a(paramBundle, ((FinderContact)localObject1).authInfo);
-    ((View)this.zdI.getValue()).setOnClickListener((View.OnClickListener)new f(this));
-    ((TextView)this.zdK.getValue()).setOnClickListener((View.OnClickListener)new g(this));
-    dGs().post((Runnable)new h(this));
-    ((View)this.zdH.getValue()).setOnClickListener((View.OnClickListener)new i(this));
-    paramBundle = (InputFilter)new k(this);
-    localObject1 = (InputFilter)new com.tencent.mm.ui.tools.g(this.zbo, g.a.XSu);
-    localObject2 = dGr();
-    p.j(localObject2, "mEditView");
-    ((MMEditText)localObject2).setFilters(new InputFilter[] { paramBundle, localObject1 });
-    dGr().addTextChangedListener((TextWatcher)new j(this));
-    h.aGY().a(6653, (com.tencent.mm.an.i)this);
-    AppMethodBeat.o(279909);
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: ldc 239
+    //   5: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: aload_1
+    //   10: invokespecial 241	com/tencent/mm/ui/component/UIComponent:onCreate	(Landroid/os/Bundle;)V
+    //   13: aload_0
+    //   14: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   17: checkcast 229	com/tencent/mm/ui/MMActivity
+    //   20: astore_1
+    //   21: aload_1
+    //   22: getstatic 244	com/tencent/mm/plugin/finder/live/p$h:Coo	I
+    //   25: invokevirtual 247	com/tencent/mm/ui/MMActivity:setMMTitle	(I)V
+    //   28: aload_1
+    //   29: new 249	com/tencent/mm/plugin/finder/live/viewmodel/component/c$$ExternalSyntheticLambda0
+    //   32: dup
+    //   33: aload_1
+    //   34: invokespecial 252	com/tencent/mm/plugin/finder/live/viewmodel/component/c$$ExternalSyntheticLambda0:<init>	(Lcom/tencent/mm/ui/MMActivity;)V
+    //   37: invokevirtual 256	com/tencent/mm/ui/MMActivity:setBackBtn	(Landroid/view/MenuItem$OnMenuItemClickListener;)V
+    //   40: aload_0
+    //   41: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   44: invokevirtual 262	androidx/appcompat/app/AppCompatActivity:getIntent	()Landroid/content/Intent;
+    //   47: ldc_w 264
+    //   50: invokevirtual 270	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   53: astore 7
+    //   55: aload_0
+    //   56: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   59: invokevirtual 262	androidx/appcompat/app/AppCompatActivity:getIntent	()Landroid/content/Intent;
+    //   62: ldc_w 272
+    //   65: invokevirtual 276	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
+    //   68: astore 6
+    //   70: aload 6
+    //   72: ifnonnull +46 -> 118
+    //   75: aconst_null
+    //   76: astore 6
+    //   78: aload_0
+    //   79: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   82: invokevirtual 262	androidx/appcompat/app/AppCompatActivity:getIntent	()Landroid/content/Intent;
+    //   85: ldc_w 278
+    //   88: lconst_0
+    //   89: invokevirtual 282	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   92: lstore_3
+    //   93: aload 6
+    //   95: ifnonnull +67 -> 162
+    //   98: aload 5
+    //   100: astore_1
+    //   101: aload_1
+    //   102: ifnonnull +10 -> 112
+    //   105: aload_0
+    //   106: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   109: invokevirtual 283	androidx/appcompat/app/AppCompatActivity:finish	()V
+    //   112: ldc 239
+    //   114: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: return
+    //   118: new 193	com/tencent/mm/protocal/protobuf/bjc
+    //   121: dup
+    //   122: invokespecial 284	com/tencent/mm/protocal/protobuf/bjc:<init>	()V
+    //   125: astore_1
+    //   126: aload_1
+    //   127: aload 6
+    //   129: invokevirtual 288	com/tencent/mm/protocal/protobuf/bjc:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   132: pop
+    //   133: aload_1
+    //   134: astore 6
+    //   136: goto -58 -> 78
+    //   139: astore_1
+    //   140: ldc_w 290
+    //   143: ldc_w 292
+    //   146: iconst_1
+    //   147: anewarray 73	java/lang/Object
+    //   150: dup
+    //   151: iconst_0
+    //   152: aload_1
+    //   153: aastore
+    //   154: invokestatic 298	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   157: aconst_null
+    //   158: astore_1
+    //   159: goto -26 -> 133
+    //   162: getstatic 304	com/tencent/mm/plugin/finder/api/d:AwY	Lcom/tencent/mm/plugin/finder/api/d$a;
+    //   165: astore_1
+    //   166: aload 7
+    //   168: invokestatic 310	com/tencent/mm/plugin/finder/api/d$a:auT	(Ljava/lang/String;)Lcom/tencent/mm/plugin/finder/api/m;
+    //   171: astore 8
+    //   173: aload_0
+    //   174: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   177: invokevirtual 311	androidx/appcompat/app/AppCompatActivity:getResources	()Landroid/content/res/Resources;
+    //   180: getstatic 314	com/tencent/mm/plugin/finder/live/p$h:CmE	I
+    //   183: invokevirtual 152	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   186: astore 5
+    //   188: aload 5
+    //   190: ldc_w 316
+    //   193: invokestatic 319	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   196: aload 5
+    //   198: astore_1
+    //   199: aload 8
+    //   201: ifnull +33 -> 234
+    //   204: new 321	java/lang/StringBuilder
+    //   207: dup
+    //   208: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   211: aload 5
+    //   213: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: sipush 183
+    //   219: invokevirtual 329	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   222: aload 8
+    //   224: invokevirtual 335	com/tencent/mm/plugin/finder/api/m:getNickname	()Ljava/lang/String;
+    //   227: invokevirtual 326	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: invokevirtual 338	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: astore_1
+    //   234: aload_0
+    //   235: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   238: getstatic 343	com/tencent/mm/plugin/finder/live/p$e:BXC	I
+    //   241: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   244: checkcast 349	android/widget/TextView
+    //   247: aload_1
+    //   248: checkcast 154	java/lang/CharSequence
+    //   251: invokevirtual 353	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   254: aload 6
+    //   256: getfield 356	com/tencent/mm/protocal/protobuf/bjc:description	Ljava/lang/String;
+    //   259: checkcast 154	java/lang/CharSequence
+    //   262: astore_1
+    //   263: aload_1
+    //   264: ifnull +12 -> 276
+    //   267: aload_1
+    //   268: invokeinterface 359 1 0
+    //   273: ifne +341 -> 614
+    //   276: iconst_1
+    //   277: istore_2
+    //   278: iload_2
+    //   279: ifeq +340 -> 619
+    //   282: aload_0
+    //   283: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   286: getstatic 362	com/tencent/mm/plugin/finder/live/p$e:BXx	I
+    //   289: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   292: bipush 8
+    //   294: invokevirtual 365	android/view/View:setVisibility	(I)V
+    //   297: aload_0
+    //   298: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   301: getstatic 368	com/tencent/mm/plugin/finder/live/p$e:BXz	I
+    //   304: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   307: checkcast 349	android/widget/TextView
+    //   310: aload 6
+    //   312: getfield 356	com/tencent/mm/protocal/protobuf/bjc:description	Ljava/lang/String;
+    //   315: checkcast 154	java/lang/CharSequence
+    //   318: invokevirtual 353	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   321: aload 6
+    //   323: getfield 372	com/tencent/mm/protocal/protobuf/bjc:ZQa	Lcom/tencent/mm/protocal/protobuf/bja;
+    //   326: astore_1
+    //   327: aload_1
+    //   328: ifnonnull +308 -> 636
+    //   331: aconst_null
+    //   332: astore_1
+    //   333: aload_1
+    //   334: ifnonnull +313 -> 647
+    //   337: aload_1
+    //   338: ifnonnull +322 -> 660
+    //   341: iconst_0
+    //   342: istore_2
+    //   343: iload_2
+    //   344: ifeq +405 -> 749
+    //   347: aload 6
+    //   349: getfield 372	com/tencent/mm/protocal/protobuf/bjc:ZQa	Lcom/tencent/mm/protocal/protobuf/bja;
+    //   352: astore_1
+    //   353: aload_1
+    //   354: ifnonnull +319 -> 673
+    //   357: aconst_null
+    //   358: astore_1
+    //   359: aload_1
+    //   360: astore 5
+    //   362: aload_1
+    //   363: ifnonnull +21 -> 384
+    //   366: aload_0
+    //   367: checkcast 2	com/tencent/mm/plugin/finder/live/viewmodel/component/c
+    //   370: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   373: invokevirtual 311	androidx/appcompat/app/AppCompatActivity:getResources	()Landroid/content/res/Resources;
+    //   376: getstatic 375	com/tencent/mm/plugin/finder/live/p$h:CmK	I
+    //   379: invokevirtual 152	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   382: astore 5
+    //   384: aload 5
+    //   386: ldc_w 377
+    //   389: invokestatic 319	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   392: aload_0
+    //   393: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   396: getstatic 380	com/tencent/mm/plugin/finder/live/p$e:BXB	I
+    //   399: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   402: checkcast 349	android/widget/TextView
+    //   405: aload 5
+    //   407: checkcast 154	java/lang/CharSequence
+    //   410: invokevirtual 353	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   413: aload_0
+    //   414: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   417: getstatic 383	com/tencent/mm/plugin/finder/live/p$e:BXy	I
+    //   420: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   423: checkcast 349	android/widget/TextView
+    //   426: aload_0
+    //   427: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   430: invokevirtual 311	androidx/appcompat/app/AppCompatActivity:getResources	()Landroid/content/res/Resources;
+    //   433: getstatic 386	com/tencent/mm/plugin/finder/live/p$h:CmD	I
+    //   436: iconst_1
+    //   437: anewarray 73	java/lang/Object
+    //   440: dup
+    //   441: iconst_0
+    //   442: aload 6
+    //   444: getfield 389	com/tencent/mm/protocal/protobuf/bjc:Czn	I
+    //   447: invokestatic 395	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   450: aastore
+    //   451: invokevirtual 398	android/content/res/Resources:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   454: checkcast 154	java/lang/CharSequence
+    //   457: invokevirtual 353	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   460: aload_0
+    //   461: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   464: getstatic 401	com/tencent/mm/plugin/finder/live/p$e:BXA	I
+    //   467: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   470: checkcast 349	android/widget/TextView
+    //   473: ldc_w 403
+    //   476: aload 6
+    //   478: getfield 406	com/tencent/mm/protocal/protobuf/bjc:endTime	I
+    //   481: i2l
+    //   482: invokestatic 412	com/tencent/mm/pluginsdk/platformtools/f:formatTime	(Ljava/lang/String;J)Ljava/lang/String;
+    //   485: checkcast 154	java/lang/CharSequence
+    //   488: invokevirtual 353	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   491: ldc_w 414
+    //   494: invokestatic 187	com/tencent/mm/kernel/h:ax	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   497: checkcast 414	com/tencent/mm/plugin/h
+    //   500: aload_0
+    //   501: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   504: checkcast 229	com/tencent/mm/ui/MMActivity
+    //   507: checkcast 136	android/content/Context
+    //   510: invokeinterface 418 2 0
+    //   515: astore_1
+    //   516: aload_1
+    //   517: ifnonnull +299 -> 816
+    //   520: aconst_null
+    //   521: astore_1
+    //   522: getstatic 424	com/tencent/mm/plugin/finder/report/f:FnM	Lcom/tencent/mm/plugin/finder/report/f;
+    //   525: astore 5
+    //   527: invokestatic 428	com/tencent/mm/plugin/finder/report/f:eMn	()Lcom/tencent/mm/plugin/finder/report/f$b;
+    //   530: astore 8
+    //   532: invokestatic 433	com/tencent/mm/model/z:bAW	()Ljava/lang/String;
+    //   535: astore 9
+    //   537: aload 9
+    //   539: ldc_w 435
+    //   542: invokestatic 319	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   545: aload 7
+    //   547: ifnonnull +279 -> 826
+    //   550: ldc 201
+    //   552: astore 5
+    //   554: aload 8
+    //   556: aload 9
+    //   558: ldc 201
+    //   560: aload 5
+    //   562: invokevirtual 441	com/tencent/mm/plugin/finder/report/f$b:ak	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   565: getstatic 424	com/tencent/mm/plugin/finder/report/f:FnM	Lcom/tencent/mm/plugin/finder/report/f;
+    //   568: astore 5
+    //   570: invokestatic 428	com/tencent/mm/plugin/finder/report/f:eMn	()Lcom/tencent/mm/plugin/finder/report/f$b;
+    //   573: aload_1
+    //   574: ldc2_w 442
+    //   577: invokestatic 446	com/tencent/mm/plugin/finder/report/f$b:a	(Lcom/tencent/mm/plugin/finder/report/f$b;Lcom/tencent/mm/protocal/protobuf/bui;J)V
+    //   580: aload_0
+    //   581: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   584: getstatic 449	com/tencent/mm/plugin/finder/live/p$e:BXJ	I
+    //   587: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   590: new 451	com/tencent/mm/plugin/finder/live/viewmodel/component/c$$ExternalSyntheticLambda1
+    //   593: dup
+    //   594: aload_0
+    //   595: aload 6
+    //   597: lload_3
+    //   598: aload_1
+    //   599: aload 7
+    //   601: invokespecial 454	com/tencent/mm/plugin/finder/live/viewmodel/component/c$$ExternalSyntheticLambda1:<init>	(Lcom/tencent/mm/plugin/finder/live/viewmodel/component/c;Lcom/tencent/mm/protocal/protobuf/bjc;JLcom/tencent/mm/protocal/protobuf/bui;Ljava/lang/String;)V
+    //   604: invokevirtual 458	android/view/View:setOnClickListener	(Landroid/view/View$OnClickListener;)V
+    //   607: getstatic 464	kotlin/ah:aiuX	Lkotlin/ah;
+    //   610: astore_1
+    //   611: goto -510 -> 101
+    //   614: iconst_0
+    //   615: istore_2
+    //   616: goto -338 -> 278
+    //   619: aload_0
+    //   620: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   623: getstatic 362	com/tencent/mm/plugin/finder/live/p$e:BXx	I
+    //   626: invokevirtual 347	androidx/appcompat/app/AppCompatActivity:findViewById	(I)Landroid/view/View;
+    //   629: iconst_0
+    //   630: invokevirtual 365	android/view/View:setVisibility	(I)V
+    //   633: goto -336 -> 297
+    //   636: aload_1
+    //   637: getfield 469	com/tencent/mm/protocal/protobuf/bja:ZSK	I
+    //   640: invokestatic 395	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   643: astore_1
+    //   644: goto -311 -> 333
+    //   647: aload_1
+    //   648: invokevirtual 470	java/lang/Integer:intValue	()I
+    //   651: iconst_1
+    //   652: if_icmpne -315 -> 337
+    //   655: iconst_1
+    //   656: istore_2
+    //   657: goto -314 -> 343
+    //   660: aload_1
+    //   661: invokevirtual 470	java/lang/Integer:intValue	()I
+    //   664: iconst_3
+    //   665: if_icmpne -324 -> 341
+    //   668: iconst_1
+    //   669: istore_2
+    //   670: goto -327 -> 343
+    //   673: aload_1
+    //   674: getfield 473	com/tencent/mm/protocal/protobuf/bja:CJJ	Ljava/lang/String;
+    //   677: astore_1
+    //   678: aload_1
+    //   679: ifnonnull +8 -> 687
+    //   682: aconst_null
+    //   683: astore_1
+    //   684: goto -325 -> 359
+    //   687: aload_1
+    //   688: checkcast 154	java/lang/CharSequence
+    //   691: invokeinterface 359 1 0
+    //   696: ifle +18 -> 714
+    //   699: iconst_1
+    //   700: istore_2
+    //   701: iload_2
+    //   702: ifeq +17 -> 719
+    //   705: aload_1
+    //   706: ifnonnull +18 -> 724
+    //   709: aconst_null
+    //   710: astore_1
+    //   711: goto -352 -> 359
+    //   714: iconst_0
+    //   715: istore_2
+    //   716: goto -15 -> 701
+    //   719: aconst_null
+    //   720: astore_1
+    //   721: goto -16 -> 705
+    //   724: aload_0
+    //   725: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   728: invokevirtual 311	androidx/appcompat/app/AppCompatActivity:getResources	()Landroid/content/res/Resources;
+    //   731: getstatic 476	com/tencent/mm/plugin/finder/live/p$h:Cmz	I
+    //   734: iconst_1
+    //   735: anewarray 73	java/lang/Object
+    //   738: dup
+    //   739: iconst_0
+    //   740: aload_1
+    //   741: aastore
+    //   742: invokevirtual 398	android/content/res/Resources:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   745: astore_1
+    //   746: goto -387 -> 359
+    //   749: aload_1
+    //   750: ifnonnull +14 -> 764
+    //   753: aload_1
+    //   754: ifnonnull +36 -> 790
+    //   757: ldc 201
+    //   759: astore 5
+    //   761: goto -377 -> 384
+    //   764: aload_1
+    //   765: invokevirtual 470	java/lang/Integer:intValue	()I
+    //   768: iconst_2
+    //   769: if_icmpne -16 -> 753
+    //   772: aload_0
+    //   773: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   776: invokevirtual 311	androidx/appcompat/app/AppCompatActivity:getResources	()Landroid/content/res/Resources;
+    //   779: getstatic 479	com/tencent/mm/plugin/finder/live/p$h:CmL	I
+    //   782: invokevirtual 152	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   785: astore 5
+    //   787: goto -403 -> 384
+    //   790: aload_1
+    //   791: invokevirtual 470	java/lang/Integer:intValue	()I
+    //   794: iconst_4
+    //   795: if_icmpne -38 -> 757
+    //   798: aload_0
+    //   799: invokevirtual 191	com/tencent/mm/plugin/finder/live/viewmodel/component/c:getActivity	()Landroidx/appcompat/app/AppCompatActivity;
+    //   802: invokevirtual 311	androidx/appcompat/app/AppCompatActivity:getResources	()Landroid/content/res/Resources;
+    //   805: getstatic 482	com/tencent/mm/plugin/finder/live/p$h:Cmv	I
+    //   808: invokevirtual 152	android/content/res/Resources:getString	(I)Ljava/lang/String;
+    //   811: astore 5
+    //   813: goto -429 -> 384
+    //   816: aload_1
+    //   817: invokeinterface 488 1 0
+    //   822: astore_1
+    //   823: goto -301 -> 522
+    //   826: aload 7
+    //   828: astore 5
+    //   830: goto -276 -> 554
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	833	0	this	c
+    //   0	833	1	paramBundle	android.os.Bundle
+    //   277	439	2	i	int
+    //   92	506	3	l	long
+    //   1	828	5	localObject1	Object
+    //   68	528	6	localObject2	Object
+    //   53	774	7	str1	String
+    //   171	384	8	localObject3	Object
+    //   535	22	9	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   126	133	139	finally
   }
   
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(279910);
-    super.onDestroy();
-    h.aGY().b(6653, (com.tencent.mm.an.i)this);
-    AppMethodBeat.o(279910);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
-  {
-    AppMethodBeat.i(279912);
-    Log.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
-    py(false);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof ax)))
-    {
-      final arp localarp = ((ax)paramq).dnW();
-      s.ak localak;
-      if (this.moh)
-      {
-        com.tencent.mm.ae.d.a(500L, (kotlin.g.a.a)new b(this, localarp));
-        paramString = k.yBj;
-        localak = s.ak.yJb;
-        paramString = localarp.live_notice_info;
-        if (paramString != null)
-        {
-          paramq = paramString.SNb;
-          paramString = paramq;
-          if (paramq != null) {}
-        }
-        else
-        {
-          paramString = "";
-        }
-        k.a(localak, "", paramString);
-        AppMethodBeat.o(279912);
-        return;
-      }
-      if (localarp.live_notice_info != null)
-      {
-        paramString = k.yBj;
-        localak = s.ak.yJa;
-        paramString = localarp.live_notice_info;
-        if (paramString != null)
-        {
-          paramInt1 = paramString.fod;
-          label192:
-          long l = paramInt1;
-          paramString = localarp.live_notice_info;
-          if (paramString != null)
-          {
-            paramq = paramString.SNb;
-            paramString = paramq;
-            if (paramq != null) {}
-          }
-          else
-          {
-            paramString = "";
-          }
-          k.a(localak, String.valueOf(l * 1000L), paramString);
-        }
-      }
-      else
-      {
-        paramq = new Intent();
-        paramq.putExtra("finder_username", z.bdh());
-        paramq.putExtra("KEY_FINDER_SELF_FLAG", true);
-        if (localarp == null) {
-          break label361;
-        }
-        paramString = localarp.live_notice_info;
-        if (paramString == null) {
-          break label361;
-        }
-      }
-      label361:
-      for (paramString = paramString.toByteArray();; paramString = null)
-      {
-        paramq.putExtra("KEY_FINDER_LIVE_NOTICE_INFO", paramString);
-        paramString = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-        aj.a.a((Context)getActivity(), paramq, 0L, 0, false, 124);
-        paramString = com.tencent.mm.plugin.finder.utils.a.ACH;
-        com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)getActivity(), paramq);
-        com.tencent.mm.ae.d.a(500L, (kotlin.g.a.a)new c(this));
-        break;
-        paramInt1 = 0;
-        break label192;
-      }
-    }
-    w.w((Context)getActivity(), getActivity().getResources().getString(b.j.finder_live_notice_create_failed), b.i.icons_filled_info);
-    AppMethodBeat.o(279912);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$Companion;", "", "()V", "KEY_FINDER_LIVE_NOTICE_CONTACT", "", "getKEY_FINDER_LIVE_NOTICE_CONTACT", "()Ljava/lang/String;", "KEY_FINDER_LIVE_NOTICE_INFO", "getKEY_FINDER_LIVE_NOTICE_INFO", "KEY_FINDER_LIVE_NOTICE_IS_FROM_PROFILE", "getKEY_FINDER_LIVE_NOTICE_IS_FROM_PROFILE", "REQUEST_CODE_ENTER_LIVE_NOTICE_UI", "", "getREQUEST_CODE_ENTER_LIVE_NOTICE_UI", "()I", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveLotteryDetailUIC$Companion;", "", "()V", "KEY_LOTTERY_HISTORY_DETAIL_INFO", "", "KEY_LOTTERY_HISTORY_OBJECT_ID", "TAG", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    b(c paramc, arp paramarp)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    c(c paramc)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$checkTextLimit$1", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "doWhenLess", "", "text", "", "doWhenMore", "doWhenOK", "plugin-finder_release"})
-  public static final class d
-    implements com.tencent.mm.ui.tools.b.c.a
-  {
-    public final void abc(String paramString)
-    {
-      AppMethodBeat.i(284504);
-      int i = kotlin.k.i.ov(com.tencent.mm.ui.tools.g.dq(this.zdS.zbo, paramString) / 2, 0);
-      paramString = c.e(this.zdS);
-      p.j(paramString, "mLimitText");
-      paramString.setText((CharSequence)String.valueOf(i));
-      AppMethodBeat.o(284504);
-    }
-    
-    public final void abd(String paramString) {}
-    
-    public final void dN(String paramString)
-    {
-      AppMethodBeat.i(284502);
-      paramString = c.e(this.zdS);
-      p.j(paramString, "mLimitText");
-      paramString.setText((CharSequence)"0");
-      AppMethodBeat.o(284502);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(c paramc) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(291911);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.zdS.getActivity().finish();
-      this.zdS.getActivity().overridePendingTransition(com.tencent.mm.plugin.finder.b.a.anim_not_change, com.tencent.mm.plugin.finder.b.a.sight_slide_bottom_out);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(291911);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
-    implements View.OnClickListener
-  {
-    f(c paramc) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(286688);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      c.a(this.zdS);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(286688);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class g
-    implements View.OnClickListener
-  {
-    g(c paramc) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(278012);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      c.a(this.zdS, c.b(this.zdS));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(278012);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class h
-    implements Runnable
-  {
-    h(c paramc) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(267903);
-      c.a(this.zdS, 1, 12, 0);
-      AppMethodBeat.o(267903);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class i
-    implements View.OnClickListener
-  {
-    i(c paramc) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(291273);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      c.c(this.zdS).requestFocus();
-      if ((this.zdS.getActivity() instanceof MMActivity))
-      {
-        localObject = this.zdS.getActivity();
-        paramView = (View)localObject;
-        if (!(localObject instanceof MMActivity)) {
-          paramView = null;
-        }
-        paramView = (MMActivity)paramView;
-        if (paramView != null) {
-          paramView.showVKB();
-        }
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(291273);
-        return;
-        paramView = (InputMethodManager)this.zdS.getActivity().getSystemService("input_method");
-        if (paramView != null) {
-          paramView.showSoftInput((View)c.c(this.zdS), 0);
-        }
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveNoticeUIC$initView$6", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "p0", "", "p1", "", "p2", "p3", "onTextChanged", "plugin-finder_release"})
-  public static final class j
-    implements TextWatcher
-  {
-    public final void afterTextChanged(Editable paramEditable)
-    {
-      AppMethodBeat.i(264005);
-      c.d(this.zdS);
-      AppMethodBeat.o(264005);
-    }
-    
-    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-    
-    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "filter"})
-  static final class k
-    implements InputFilter
-  {
-    k(c paramc) {}
-    
-    public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
-    {
-      AppMethodBeat.i(291512);
-      paramSpanned = c.c(this.zdS);
-      p.j(paramSpanned, "mEditView");
-      paramSpanned.getText();
-      paramCharSequence = paramCharSequence.toString();
-      paramSpanned = (CharSequence)"\n";
-      if (paramCharSequence == null)
-      {
-        paramCharSequence = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(291512);
-        throw paramCharSequence;
-      }
-      if (paramCharSequence.contentEquals(paramSpanned))
-      {
-        paramCharSequence = (CharSequence)"";
-        AppMethodBeat.o(291512);
-        return paramCharSequence;
-      }
-      AppMethodBeat.o(291512);
-      return null;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class l
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<ImageView>
-  {
-    l(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class m
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<ImageView>
-  {
-    m(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class n
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<TextView>
-  {
-    n(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class o
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<TextView>
-  {
-    o(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class p
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<View>
-  {
-    p(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMEditText;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class q
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<MMEditText>
-  {
-    q(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class r
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<TextView>
-  {
-    r(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class s
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<TextView>
-  {
-    s(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class t
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<View>
-  {
-    t(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class u
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<TextView>
-  {
-    u(AppCompatActivity paramAppCompatActivity)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "hasSetResult", "", "result", "", "kotlin.jvm.PlatformType", "secondResult", "thirdResult", "onResult"})
-  static final class v<T>
-    implements com.tencent.mm.ui.widget.picker.b.a<Object>
-  {
-    v(c paramc, com.tencent.mm.ui.widget.picker.b paramb, aa.f paramf) {}
-    
-    public final void a(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3)
-    {
-      AppMethodBeat.i(271594);
-      this.zdU.hide();
-      List localList;
-      if (paramBoolean)
-      {
-        try
-        {
-          localList = (List)((r)this.zdV.aaBC).Mx;
-          if (paramObject1 != null) {
-            break label76;
-          }
-          paramObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-          AppMethodBeat.o(271594);
-          throw paramObject1;
-        }
-        catch (Throwable paramObject1)
-        {
-          Log.i(c.f(this.zdS), paramObject1.getMessage());
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(271594);
-        return;
-      }
-      label76:
-      int i = j.a(localList, (CharSequence)paramObject1);
-      paramObject1 = ((ArrayList)((r)this.zdV.aaBC).My).get(i);
-      p.j(paramObject1, "triple.second[firstChosenIndex]");
-      paramObject1 = (List)paramObject1;
-      if (paramObject2 == null)
-      {
-        paramObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(271594);
-        throw paramObject1;
-      }
-      int j = j.a(paramObject1, (CharSequence)paramObject2);
-      paramObject1 = ((ArrayList)((r)this.zdV.aaBC).aazK).get(j);
-      p.j(paramObject1, "triple.third[secChosenIndex]");
-      paramObject1 = (List)paramObject1;
-      if (paramObject3 == null)
-      {
-        paramObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(271594);
-        throw paramObject1;
-      }
-      int k = j.a(paramObject1, (CharSequence)paramObject3);
-      c.a(this.zdS, i, j, k);
-      AppMethodBeat.o(271594);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class w
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    w(c paramc, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.component.c
  * JD-Core Version:    0.7.0.1
  */

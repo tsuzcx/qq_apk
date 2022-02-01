@@ -1,50 +1,23 @@
 package com.tencent.mm.plugin.msgquote.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.eu;
+import com.tencent.mm.autogen.b.fj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class b
-  extends eu
+  extends fj
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(88813);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[5];
-    localMAutoDBInfo.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "msgId";
-    localMAutoDBInfo.colsMap.put("msgId", "LONG");
-    localStringBuilder.append(" msgId LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[1] = "msgSvrId";
-    localMAutoDBInfo.colsMap.put("msgSvrId", "LONG");
-    localStringBuilder.append(" msgSvrId LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "quotedMsgId";
-    localMAutoDBInfo.colsMap.put("quotedMsgId", "LONG");
-    localStringBuilder.append(" quotedMsgId LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "quotedMsgSvrId";
-    localMAutoDBInfo.colsMap.put("quotedMsgSvrId", "LONG");
-    localStringBuilder.append(" quotedMsgSvrId LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "status";
-    localMAutoDBInfo.colsMap.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localMAutoDBInfo.columns[5] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = fj.aJm();
     AppMethodBeat.o(88813);
   }
   
-  private b eVb()
+  private b gdO()
   {
     AppMethodBeat.i(88811);
     b localb = new b();

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_payu.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.e.a.a;
+import com.tencent.mm.wallet_core.d.a.a;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public final class c
     AppMethodBeat.o(72145);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 3;
   }

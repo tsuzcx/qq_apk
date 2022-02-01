@@ -2,50 +2,52 @@ package com.tencent.mm.plugin.secdata.a;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.p.c;
-import com.tencent.mm.plugin.p.h;
+import com.tencent.mm.plugin.ac.g;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
-import kotlin.g.b.ab;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.storage.mvvm.IMvvmDBProvider;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/model/SecReportDataInfoStorage;", "Lcom/tencent/mm/plugin/livestorage/MMLiveStorage;", "Lcom/tencent/mm/plugin/secdata/model/SecReportDataInfo;", "dbProvider", "Lcom/tencent/mm/plugin/livestorage/ILiveDBProvider;", "(Lcom/tencent/mm/plugin/livestorage/ILiveDBProvider;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cleanExpireData", "", "deleteById", "", "id", "getById", "getLogTag", "plugin-sec-data_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/secdata/model/SecReportDataInfoStorage;", "Lcom/tencent/mm/plugin/mvvmstorage/MvvmStorage;", "Lcom/tencent/mm/plugin/secdata/model/SecReportDataInfo;", "dbProvider", "Lcom/tencent/mm/sdk/storage/mvvm/IMvvmDBProvider;", "(Lcom/tencent/mm/sdk/storage/mvvm/IMvvmDBProvider;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cleanExpireData", "", "deleteById", "", "id", "getById", "getLogTag", "plugin-sec-data_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends h<b>
+  extends g<b>
 {
   public final String TAG;
   
-  public d(c paramc)
+  public d(IMvvmDBProvider paramIMvvmDBProvider)
   {
-    super(paramc);
-    AppMethodBeat.i(197908);
+    super(paramIMvvmDBProvider);
+    AppMethodBeat.i(261453);
     this.TAG = "MicroMsg.SecData.SecReportDataInfoStorage";
-    AppMethodBeat.o(197908);
+    AppMethodBeat.o(261453);
   }
   
-  public final b aXJ(String paramString)
+  public final b aVs(String paramString)
   {
-    AppMethodBeat.i(197905);
-    p.k(paramString, "id");
+    AppMethodBeat.i(261462);
+    s.u(paramString, "id");
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("id", paramString);
-    paramString = (b)a(localContentValues, ab.bO(b.class));
-    AppMethodBeat.o(197905);
+    paramString = ah.aiuX;
+    paramString = (b)a(localContentValues, ai.cz(b.class));
+    AppMethodBeat.o(261462);
     return paramString;
   }
   
-  public final int aXK(String paramString)
+  public final int aVt(String paramString)
   {
-    AppMethodBeat.i(197907);
-    p.k(paramString, "id");
-    paramString = aXJ(paramString);
+    AppMethodBeat.i(261471);
+    s.u(paramString, "id");
+    paramString = aVs(paramString);
     if (paramString != null)
     {
-      int i = h.b(this, (IAutoDBItem)paramString, false, false, 6);
-      AppMethodBeat.o(197907);
+      int i = g.b((g)this, (IAutoDBItem)paramString, false, false, 6);
+      AppMethodBeat.o(261471);
       return i;
     }
-    AppMethodBeat.o(197907);
+    AppMethodBeat.o(261471);
     return 0;
   }
   
@@ -56,7 +58,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.secdata.a.d
  * JD-Core Version:    0.7.0.1
  */

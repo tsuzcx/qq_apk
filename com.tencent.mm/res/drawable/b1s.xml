@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:left="7.0dip" android:top="7.0dip" android:right="7.0dip" android:bottom="7.0dip">
-        <shape android:shape="oval">
-            <shape android:shape="oval">
-                <solid android:color="@color/am" />
-            </shape>
-            <size android:height="16.0dip" android:width="16.0dip" />
-        </shape>
-    </item>
-    <item android:left="12.0dip" android:top="12.0dip" android:right="12.0dip" android:bottom="12.0dip">
-        <shape android:shape="oval">
-            <solid android:color="@color/am" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_enabled="false" android:drawable="@raw/wallet_banner_logo_disabled" />
+    <item android:drawable="@raw/wallet_banner_logo_normal" />
+</selector>

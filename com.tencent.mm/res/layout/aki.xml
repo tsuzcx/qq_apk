@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.TouchableLayout android:id="@id/ify" android:background="@color/rv" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/h7u" android:background="@color/rv" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/auy" app:refreshLayout="@layout/auz">
-            <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/in5" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <view android:layout_gravity="center|top" android:id="@id/dc6" android:layout_width="fill_parent" android:layout_height="wrap_content" class="com.tencent.mm.view.RefreshLoadMoreLayout$StickTopLoadingLayout" />
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/c4" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/c5" android:background="@drawable/wy" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ip8" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/finder_self_feed_like_arrow" android:rotation="-90.0" app:iconColor="@color/v9" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/v9" android:id="@id/ip5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clj" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/c3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" />
-    </LinearLayout>
-    <FrameLayout android:id="@id/dc7" android:background="@drawable/a5k" android:layout_width="fill_parent" android:layout_height="@dimen/c3" />
-    <FrameLayout android:id="@id/hcn" android:background="@color/afz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
-    <ViewStub android:layout_gravity="top" android:id="@id/kyn" android:layout="@layout/cnc" android:layout_width="fill_parent" android:layout_height="292.0dip" />
-    <com.tencent.mm.plugin.finder.view.TestPreloadPreview android:layout_gravity="top" android:id="@id/ijo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.tencent.mm.view.TouchableLayout>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/i4b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+    <View android:layout_gravity="center_vertical" android:id="@id/i4a" android:background="@color/rq" android:visibility="gone" android:layout_width="1.0px" android:layout_height="8.0dip" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/df" />
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/i4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+</merge>

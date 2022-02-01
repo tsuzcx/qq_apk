@@ -8,7 +8,7 @@ import android.os.Build;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.n;
+import com.tencent.mm.compatible.util.o;
 import java.lang.reflect.Method;
 
 public class Meizu
@@ -16,7 +16,7 @@ public class Meizu
   private static int getStatusBarHeight(Context paramContext)
   {
     AppMethodBeat.i(175933);
-    int i = n.F(paramContext, 0);
+    int i = o.I(paramContext, 0);
     AppMethodBeat.o(175933);
     return i;
   }
@@ -49,21 +49,21 @@ public class Meizu
   
   public static void hideMeizuSmartBar(Activity paramActivity, View paramView)
   {
-    AppMethodBeat.i(209870);
+    AppMethodBeat.i(243181);
     if (!hasSmartBar())
     {
-      AppMethodBeat.o(209870);
+      AppMethodBeat.o(243181);
       return;
     }
     if (paramActivity.getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(209870);
+      AppMethodBeat.o(243181);
       return;
     }
     paramActivity.getWindow().setFlags(1024, 1024);
     paramActivity.getWindow().addFlags(2048);
     paramView.setPadding(0, getStatusBarHeight(paramActivity), 0, 0);
-    AppMethodBeat.o(209870);
+    AppMethodBeat.o(243181);
   }
 }
 

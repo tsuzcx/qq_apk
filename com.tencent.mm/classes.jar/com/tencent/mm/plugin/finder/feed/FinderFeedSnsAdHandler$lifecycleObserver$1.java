@@ -1,43 +1,45 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.z;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderFeedSnsAdHandler$lifecycleObserver$1", "Landroidx/lifecycle/LifecycleObserver;", "isFirstResume", "", "onPause", "", "onResume", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/FinderFeedSnsAdHandler$lifecycleObserver$1", "Landroidx/lifecycle/LifecycleObserver;", "isFirstResume", "", "onPause", "", "onResume", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFeedSnsAdHandler$lifecycleObserver$1
-  implements k
+  implements p
 {
-  private boolean wXR;
+  private boolean AuP;
   
-  @t(jl=h.a.ON_PAUSE)
+  FinderFeedSnsAdHandler$lifecycleObserver$1(o paramo) {}
+  
+  @z(Ho=j.a.ON_PAUSE)
   public final void onPause()
   {
-    AppMethodBeat.i(288655);
-    RecyclerView localRecyclerView = this.xyD.jLl;
+    AppMethodBeat.i(363477);
+    RecyclerView localRecyclerView = this.AVE.mkw;
     if (localRecyclerView != null) {
-      localRecyclerView.removeCallbacks(p.b(this.xyD));
+      localRecyclerView.removeCallbacks(o.f(this.AVE));
     }
-    p.a(this.xyD, p.d(p.d(this.xyD)));
-    p.e(this.xyD);
-    AppMethodBeat.o(288655);
+    o.a(this.AVE, o.g(o.g(this.AVE)));
+    o.h(this.AVE);
+    AppMethodBeat.o(363477);
   }
   
-  @t(jl=h.a.ON_RESUME)
+  @z(Ho=j.a.ON_RESUME)
   public final void onResume()
   {
-    AppMethodBeat.i(288654);
-    if (!this.wXR)
+    AppMethodBeat.i(363472);
+    if (!this.AuP)
     {
-      this.wXR = true;
-      AppMethodBeat.o(288654);
+      this.AuP = true;
+      AppMethodBeat.o(363472);
       return;
     }
-    p.c(this.xyD);
-    AppMethodBeat.o(288654);
+    o.e(this.AVE);
+    AppMethodBeat.o(363472);
   }
 }
 

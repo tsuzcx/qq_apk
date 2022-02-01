@@ -13,60 +13,60 @@ import java.util.Set;
 public final class e
   implements c
 {
-  public static final e GMC;
-  private final Map<String, a> GMD;
+  public static final e MJy;
+  private final Map<String, a> MJz;
   
   static
   {
-    AppMethodBeat.i(201347);
-    GMC = new e();
-    AppMethodBeat.o(201347);
+    AppMethodBeat.i(300889);
+    MJy = new e();
+    AppMethodBeat.o(300889);
   }
   
   public e()
   {
-    AppMethodBeat.i(201342);
-    this.GMD = new HashMap();
-    AppMethodBeat.o(201342);
+    AppMethodBeat.i(300884);
+    this.MJz = new HashMap();
+    AppMethodBeat.o(300884);
   }
   
   public final void a(String paramString, a parama)
   {
-    AppMethodBeat.i(201343);
+    AppMethodBeat.i(300895);
     if (TextUtils.isEmpty(paramString))
     {
       Log.e("MicroMsg.ReportLogic", "tag or reporter should not be null");
-      AppMethodBeat.o(201343);
+      AppMethodBeat.o(300895);
       return;
     }
-    this.GMD.put(paramString, parama);
-    AppMethodBeat.o(201343);
+    this.MJz.put(paramString, parama);
+    AppMethodBeat.o(300895);
   }
   
-  public final void au(Map<String, String> paramMap)
+  public final void aK(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(201345);
-    Iterator localIterator = this.GMD.entrySet().iterator();
+    AppMethodBeat.i(300905);
+    Iterator localIterator = this.MJz.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if (paramMap.containsKey(".cmd.diagnostic.report." + (String)localEntry.getKey())) {
-        ((a)localEntry.getValue()).fnA();
+        ((a)localEntry.getValue()).gyo();
       }
     }
-    AppMethodBeat.o(201345);
+    AppMethodBeat.o(300905);
   }
   
-  public final String fnm()
+  public final String gxZ()
   {
     return ".cmd.diagnostic.report";
   }
   
-  public final void fnn() {}
+  public final void gya() {}
   
   public static abstract interface a
   {
-    public abstract void fnA();
+    public abstract void gyo();
   }
 }
 

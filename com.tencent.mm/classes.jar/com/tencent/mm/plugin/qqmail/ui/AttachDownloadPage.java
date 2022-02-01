@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,245 +17,225 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.qqmail.b.a.a;
 import com.tencent.mm.plugin.qqmail.b.c;
 import com.tencent.mm.plugin.qqmail.c.b;
-import com.tencent.mm.plugin.qqmail.d.k;
 import com.tencent.mm.plugin.qqmail.e.e;
 import com.tencent.mm.plugin.qqmail.e.f;
 import com.tencent.mm.plugin.qqmail.e.h;
 import com.tencent.mm.plugin.qqmail.e.i;
+import com.tencent.mm.plugin.qqmail.model.j;
+import com.tencent.mm.plugin.qqmail.model.u;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.model.x;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.aw;
-import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.d;
+import com.tencent.mm.ui.bd;
+import com.tencent.mm.vfs.y;
 
 public class AttachDownloadPage
   extends MMActivity
 {
-  private String Hls;
-  private MMImageView HnZ;
-  private ImageView Hoa;
-  private ImageView Hob;
-  private TextView Hoc;
-  private LinearLayout Hod;
-  private String Hoe;
-  private int Hof;
-  private boolean Hog = false;
-  private String Hoh;
-  private String Hoi;
-  private boolean Hoj = true;
+  private Button AkC;
+  private View AkF;
+  private long Bjl;
+  private String Njg;
+  private MMImageView NlM;
+  private ImageView NlN;
+  private ImageView NlO;
+  private TextView NlP;
+  private LinearLayout NlQ;
+  private String NlR;
+  private int NlS;
+  private boolean NlT = false;
+  private String NlU;
+  private String NlV;
+  private boolean NlW = true;
   private String downloadUrl;
-  private TextView jmj;
-  private int mfw = 0;
-  private long mgh = 0L;
+  private TextView lPf;
+  private int oYs = 0;
+  private long oZd = 0L;
   private ProgressBar progressBar;
-  private TextView qVN;
-  private long rKZ;
   private int retryCount = 0;
-  private Button uId;
-  private Button wOa;
-  private View wOd;
-  private long yjR;
+  private long uWn;
+  private TextView ubv;
+  private Button xQS;
   
-  private void eiT()
+  private String AL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(122879);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.NlR).append(gEl());
+    if (!paramBoolean) {}
+    for (String str = "";; str = ".temp")
+    {
+      str = str;
+      AppMethodBeat.o(122879);
+      return str;
+    }
+  }
+  
+  private void fkW()
   {
     AppMethodBeat.i(122875);
     Intent localIntent = new Intent();
     localIntent.putExtra("key_favorite", true);
     localIntent.putExtra("key_favorite_source_type", 9);
-    localIntent.putExtra("key_image_path", wl(false));
-    com.tencent.mm.plugin.qqmail.a.a.mIG.d(getContext(), localIntent);
+    localIntent.putExtra("key_image_path", AL(false));
+    com.tencent.mm.plugin.qqmail.a.a.pFn.d(getContext(), localIntent);
     finish();
     AppMethodBeat.o(122875);
   }
   
-  private void fsA()
+  private void gEi()
+  {
+    AppMethodBeat.i(122873);
+    this.AkF.setVisibility(0);
+    this.xQS.setVisibility(8);
+    this.AkC.setVisibility(8);
+    this.NlN.setVisibility(0);
+    this.NlO.setVisibility(8);
+    this.NlP.setVisibility(8);
+    this.lPf.setVisibility(8);
+    this.ubv.setVisibility(8);
+    this.NlN.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(122859);
+        b localb = new b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        AttachDownloadPage.a(AttachDownloadPage.this, 2);
+        ((j)h.az(j.class)).getNormalMailAppService().cancel(AttachDownloadPage.b(AttachDownloadPage.this));
+        AttachDownloadPage.c(AttachDownloadPage.this);
+        AttachDownloadPage.d(AttachDownloadPage.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(122859);
+      }
+    });
+    this.NlO.setOnClickListener(new AttachDownloadPage.4(this));
+    AppMethodBeat.o(122873);
+  }
+  
+  private void gEj()
   {
     AppMethodBeat.i(122874);
-    if (this.Hof == 1)
+    if (this.NlS == 1)
     {
-      if (FileExplorerUI.brM(this.Hoh))
+      if (FileExplorerUI.brB(this.NlU))
       {
-        if (this.mfw == 3)
+        if (this.oYs == 3)
         {
-          eiT();
+          fkW();
           AppMethodBeat.o(122874);
           return;
         }
-        if ((this.mfw == 0) || (this.Hoj))
+        if ((this.oYs == 0) || (this.NlW))
         {
           this.retryCount = 0;
-          this.Hoj = false;
-          fsB();
-          fsz();
+          this.NlW = false;
+          gEk();
+          gEi();
           AppMethodBeat.o(122874);
           return;
         }
       }
-      this.wOd.setVisibility(8);
-      this.jmj.setVisibility(0);
-      this.Hoc.setVisibility(8);
-      this.uId.setVisibility(0);
-      this.wOa.setVisibility(8);
-      this.qVN.setVisibility(0);
-      this.uId.setOnClickListener(new View.OnClickListener()
+      this.AkF.setVisibility(8);
+      this.lPf.setVisibility(0);
+      this.NlP.setVisibility(8);
+      this.xQS.setVisibility(0);
+      this.AkC.setVisibility(8);
+      this.ubv.setVisibility(0);
+      this.xQS.setOnClickListener(new AttachDownloadPage.5(this));
+      if (this.oYs == 3)
       {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(122861);
-          b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          AttachDownloadPage.g(AttachDownloadPage.this);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(122861);
-        }
-      });
-      if (this.mfw == 3)
-      {
-        this.jmj.setText(e.i.mail_attach_preview_status);
-        this.qVN.setText(e.i.mail_attach_preview_open_downloaded);
-        this.qVN.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(122862);
-            b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            AttachDownloadPage.b(AttachDownloadPage.this, AttachDownloadPage.a(AttachDownloadPage.this));
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(122862);
-          }
-        });
+        this.lPf.setText(e.i.mail_attach_preview_status);
+        this.ubv.setText(e.i.mail_attach_preview_open_downloaded);
+        this.ubv.setOnClickListener(new AttachDownloadPage.6(this));
         enableOptionMenu(true);
         AppMethodBeat.o(122874);
         return;
       }
-      this.jmj.setText(e.i.mail_attach_preview_status);
-      if (this.mfw == 2) {
-        this.qVN.setText(e.i.mail_attach_preview_open_redownload);
+      this.lPf.setText(e.i.mail_attach_preview_status);
+      if (this.oYs == 2) {
+        this.ubv.setText(e.i.mail_attach_preview_open_redownload);
       }
       for (;;)
       {
-        this.qVN.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(122863);
-            b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            AttachDownloadPage.e(AttachDownloadPage.this);
-            AttachDownloadPage.f(AttachDownloadPage.this);
-            AttachDownloadPage.h(AttachDownloadPage.this);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(122863);
-          }
-        });
+        this.ubv.setOnClickListener(new AttachDownloadPage.7(this));
         AppMethodBeat.o(122874);
         return;
-        this.qVN.setText(e.i.mail_attach_preview_open_notdownload);
+        this.ubv.setText(e.i.mail_attach_preview_open_notdownload);
       }
     }
-    if (this.Hof == 0)
+    if (this.NlS == 0)
     {
-      this.wOd.setVisibility(8);
-      this.uId.setVisibility(8);
-      this.wOa.setVisibility(0);
-      this.Hoc.setVisibility(8);
-      this.jmj.setVisibility(0);
-      this.qVN.setVisibility(8);
-      if (this.mfw != 3) {
+      this.AkF.setVisibility(8);
+      this.xQS.setVisibility(8);
+      this.AkC.setVisibility(0);
+      this.NlP.setVisibility(8);
+      this.lPf.setVisibility(0);
+      this.ubv.setVisibility(8);
+      if (this.oYs != 3) {
         break label380;
       }
-      this.wOa.setText(e.i.mail_attach_downloaded);
+      this.AkC.setText(e.i.mail_attach_downloaded);
       enableOptionMenu(true);
     }
     for (;;)
     {
-      this.jmj.setText(e.i.mail_attach_download_status);
-      this.wOa.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(122864);
-          b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (AttachDownloadPage.i(AttachDownloadPage.this) == 3) {
-            AttachDownloadPage.b(AttachDownloadPage.this, AttachDownloadPage.a(AttachDownloadPage.this));
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(122864);
-            return;
-            AttachDownloadPage.h(AttachDownloadPage.this);
-            AttachDownloadPage.e(AttachDownloadPage.this);
-            AttachDownloadPage.f(AttachDownloadPage.this);
-          }
-        }
-      });
+      this.lPf.setText(e.i.mail_attach_download_status);
+      this.AkC.setOnClickListener(new AttachDownloadPage.8(this));
       AppMethodBeat.o(122874);
       return;
       label380:
-      if (this.mfw == 2) {
-        this.wOa.setText(e.i.mail_attach_redownload);
+      if (this.oYs == 2) {
+        this.AkC.setText(e.i.mail_attach_redownload);
       } else {
-        this.wOa.setText(e.i.mail_attach_download);
+        this.AkC.setText(e.i.mail_attach_download);
       }
     }
   }
   
-  private void fsB()
+  private void gEk()
   {
     AppMethodBeat.i(122876);
-    fsE();
-    if (this.mfw == 4) {
+    gEn();
+    if (this.oYs == 4) {
       if (this.retryCount < 5)
       {
         this.retryCount += 1;
-        fsB();
+        gEk();
       }
     }
     for (;;)
     {
-      String str = wl(true);
+      String str = AL(true);
       c.b localb = new c.b();
-      localb.Hle = false;
-      localb.Hlf = false;
+      localb.NiR = false;
+      localb.NiS = false;
       Log.i("MicroMsg.AttachDownloadPage", "download attach url %s", new Object[] { this.downloadUrl });
       c.a(this.downloadUrl, str, getIntent().getStringExtra("qqmail_cookie"), new a.a()
       {
-        public final void abM(int paramAnonymousInt)
+        public final void aM(Bundle paramAnonymousBundle)
         {
-          AppMethodBeat.i(122865);
-          Log.d("MicroMsg.AttachDownloadPage", "download progress : ".concat(String.valueOf(paramAnonymousInt)));
-          AttachDownloadPage.j(AttachDownloadPage.this);
-          AttachDownloadPage.a(AttachDownloadPage.this, 1);
-          AppMethodBeat.o(122865);
-        }
-        
-        public final void ao(Bundle paramAnonymousBundle)
-        {
-          AppMethodBeat.i(250014);
+          AppMethodBeat.i(266955);
           if (paramAnonymousBundle != null)
           {
             int i = paramAnonymousBundle.getInt("result_http_code", -1);
             Log.i("MicroMsg.AttachDownloadPage", "result http code %d", new Object[] { Integer.valueOf(i) });
             if (i == 200)
             {
-              u.bj(AttachDownloadPage.k(AttachDownloadPage.this), AttachDownloadPage.l(AttachDownloadPage.this) + ".temp", AttachDownloadPage.l(AttachDownloadPage.this));
+              y.bF(AttachDownloadPage.k(AttachDownloadPage.this), AttachDownloadPage.l(AttachDownloadPage.this) + ".temp", AttachDownloadPage.l(AttachDownloadPage.this));
               AttachDownloadPage.a(AttachDownloadPage.this, 3);
               Toast.makeText(AttachDownloadPage.this, AttachDownloadPage.this.getString(e.i.download_success) + " : " + AttachDownloadPage.a(AttachDownloadPage.this), 5000).show();
               AttachDownloadPage.d(AttachDownloadPage.this);
-              AppMethodBeat.o(250014);
+              AppMethodBeat.o(266955);
               return;
             }
           }
@@ -265,38 +244,47 @@ public class AttachDownloadPage
           {
             AttachDownloadPage.n(AttachDownloadPage.this);
             AttachDownloadPage.f(AttachDownloadPage.this);
-            AppMethodBeat.o(250014);
+            AppMethodBeat.o(266955);
             return;
           }
           Toast.makeText(AttachDownloadPage.this, e.i.mail_attach_download_failed, 0).show();
           AttachDownloadPage.d(AttachDownloadPage.this);
-          AppMethodBeat.o(250014);
+          AppMethodBeat.o(266955);
+        }
+        
+        public final void aga(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(122865);
+          Log.d("MicroMsg.AttachDownloadPage", "download progress : ".concat(String.valueOf(paramAnonymousInt)));
+          AttachDownloadPage.j(AttachDownloadPage.this);
+          AttachDownloadPage.a(AttachDownloadPage.this, 1);
+          AppMethodBeat.o(122865);
         }
       });
       AppMethodBeat.o(122876);
       return;
-      fsA();
+      gEj();
       continue;
-      if (this.mfw == 3)
+      if (this.oYs == 3)
       {
-        u.bj(this.Hoe, fsC() + ".temp", fsC());
-        this.mfw = 3;
-        fsA();
+        y.bF(this.NlR, gEl() + ".temp", gEl());
+        this.oYs = 3;
+        gEj();
       }
     }
   }
   
-  private String fsC()
+  private String gEl()
   {
     AppMethodBeat.i(122878);
-    int i = this.Hoi.hashCode();
-    int j = this.Hoh.lastIndexOf(".");
+    int i = this.NlV.hashCode();
+    int j = this.NlU.lastIndexOf(".");
     String str2 = "";
     String str1;
     if (j != -1)
     {
-      str1 = this.Hoh.substring(0, j);
-      str2 = this.Hoh;
+      str1 = this.NlU.substring(0, j);
+      str2 = this.NlU;
       str2 = str2.substring(j, str2.length());
     }
     for (;;)
@@ -304,116 +292,59 @@ public class AttachDownloadPage
       str1 = String.format("%s_%d%s", new Object[] { str1, Integer.valueOf(i & 0xFFFF), str2 });
       AppMethodBeat.o(122878);
       return str1;
-      str1 = this.Hoh;
+      str1 = this.NlU;
     }
   }
   
-  private String fsD()
+  private String gEm()
   {
     AppMethodBeat.i(122880);
-    String str = this.Hoe + this.Hoh;
+    String str = this.NlR + this.NlU;
     AppMethodBeat.o(122880);
     return str;
   }
   
-  private void fsE()
+  private void gEn()
   {
     AppMethodBeat.i(122881);
-    if (u.agG(wl(true)))
+    if (y.ZC(AL(true)))
     {
-      this.mgh = u.bBQ(wl(true));
-      this.mfw = 2;
+      this.oZd = y.bEl(AL(true));
+      this.oYs = 2;
       AppMethodBeat.o(122881);
       return;
     }
-    if (u.agG(wl(false)))
+    if (y.ZC(AL(false)))
     {
-      this.mfw = 3;
+      this.oYs = 3;
       AppMethodBeat.o(122881);
       return;
     }
-    if (u.agG(fsD()))
+    if (y.ZC(gEm()))
     {
-      if (u.bBQ(fsD()) == this.rKZ)
+      if (y.bEl(gEm()) == this.uWn)
       {
-        u.bj(this.Hoe, this.Hoh, fsC());
-        this.mfw = 3;
+        y.bF(this.NlR, this.NlU, gEl());
+        this.oYs = 3;
         AppMethodBeat.o(122881);
         return;
       }
-      if (u.bBQ(fsD()) > this.rKZ)
+      if (y.bEl(gEm()) > this.uWn)
       {
-        u.deleteFile(fsD());
-        this.mgh = 0L;
-        this.mfw = 4;
+        y.deleteFile(gEm());
+        this.oZd = 0L;
+        this.oYs = 4;
         AppMethodBeat.o(122881);
         return;
       }
-      this.mgh = 0L;
-      this.mfw = 0;
+      this.oZd = 0L;
+      this.oYs = 0;
       AppMethodBeat.o(122881);
       return;
     }
-    this.mgh = 0L;
-    this.mfw = 0;
+    this.oZd = 0L;
+    this.oYs = 0;
     AppMethodBeat.o(122881);
-  }
-  
-  private void fsz()
-  {
-    AppMethodBeat.i(122873);
-    this.wOd.setVisibility(0);
-    this.uId.setVisibility(8);
-    this.wOa.setVisibility(8);
-    this.Hoa.setVisibility(0);
-    this.Hob.setVisibility(8);
-    this.Hoc.setVisibility(8);
-    this.jmj.setVisibility(8);
-    this.qVN.setVisibility(8);
-    this.Hoa.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(122859);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        AttachDownloadPage.a(AttachDownloadPage.this, 2);
-        ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().cancel(AttachDownloadPage.b(AttachDownloadPage.this));
-        AttachDownloadPage.c(AttachDownloadPage.this);
-        AttachDownloadPage.d(AttachDownloadPage.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(122859);
-      }
-    });
-    this.Hob.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(122860);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        AttachDownloadPage.e(AttachDownloadPage.this);
-        AttachDownloadPage.f(AttachDownloadPage.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/AttachDownloadPage$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(122860);
-      }
-    });
-    AppMethodBeat.o(122873);
-  }
-  
-  private String wl(boolean paramBoolean)
-  {
-    AppMethodBeat.i(122879);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.Hoe).append(fsC());
-    if (!paramBoolean) {}
-    for (String str = "";; str = ".temp")
-    {
-      str = str;
-      AppMethodBeat.o(122879);
-      return str;
-    }
   }
   
   public int getLayoutId()
@@ -424,32 +355,23 @@ public class AttachDownloadPage
   public void initView()
   {
     AppMethodBeat.i(122872);
-    this.HnZ = ((MMImageView)findViewById(e.e.download_type_icon));
-    this.wOd = findViewById(e.e.download_progress_area);
+    this.NlM = ((MMImageView)findViewById(e.e.download_type_icon));
+    this.AkF = findViewById(e.e.download_progress_area);
     this.progressBar = ((ProgressBar)findViewById(e.e.download_pb));
-    this.Hoa = ((ImageView)findViewById(e.e.download_stop_btn));
-    this.Hob = ((ImageView)findViewById(e.e.download_restart_btn));
-    this.Hoc = ((TextView)findViewById(e.e.attach_download_speed_tv));
-    this.uId = ((Button)findViewById(e.e.attach_preview_btn));
-    this.wOa = ((Button)findViewById(e.e.attach_download_btn));
-    this.Hod = ((LinearLayout)findViewById(e.e.attach_bottom_ll));
-    this.jmj = ((TextView)findViewById(e.e.attach_download_status_tv));
-    this.qVN = ((TextView)findViewById(e.e.attach_try_open_tv));
-    if (FileExplorerUI.brM(this.Hoh)) {
-      this.HnZ.setBackgroundResource(e.h.download_image_icon);
+    this.NlN = ((ImageView)findViewById(e.e.download_stop_btn));
+    this.NlO = ((ImageView)findViewById(e.e.download_restart_btn));
+    this.NlP = ((TextView)findViewById(e.e.attach_download_speed_tv));
+    this.xQS = ((Button)findViewById(e.e.attach_preview_btn));
+    this.AkC = ((Button)findViewById(e.e.attach_download_btn));
+    this.NlQ = ((LinearLayout)findViewById(e.e.attach_bottom_ll));
+    this.lPf = ((TextView)findViewById(e.e.attach_download_status_tv));
+    this.ubv = ((TextView)findViewById(e.e.attach_try_open_tv));
+    if (FileExplorerUI.brB(this.NlU)) {
+      this.NlM.setBackgroundResource(e.h.download_image_icon);
     }
     for (;;)
     {
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(122856);
-          AttachDownloadPage.this.finish();
-          AppMethodBeat.o(122856);
-          return true;
-        }
-      });
+      setBackBtn(new AttachDownloadPage.1(this));
       addIconOptionMenu(0, e.h.icons_outlined_share, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -457,9 +379,9 @@ public class AttachDownloadPage
           AppMethodBeat.i(122858);
           paramAnonymousMenuItem = AttachDownloadPage.this;
           String str = AttachDownloadPage.this.getString(e.i.plugin_favorite_opt);
-          h.d local1 = new h.d()
+          k.d local1 = new k.d()
           {
-            public final void qy(int paramAnonymous2Int)
+            public final void qz(int paramAnonymous2Int)
             {
               AppMethodBeat.i(122857);
               switch (paramAnonymous2Int)
@@ -473,34 +395,34 @@ public class AttachDownloadPage
               }
             }
           };
-          com.tencent.mm.ui.base.h.b(paramAnonymousMenuItem, "", new String[] { str }, "", local1);
+          k.b(paramAnonymousMenuItem, "", new String[] { str }, "", local1);
           AppMethodBeat.o(122858);
           return true;
         }
       });
       enableOptionMenu(false);
-      fsE();
-      if (this.mfw != 1) {
+      gEn();
+      if (this.oYs != 1) {
         break;
       }
-      fsz();
+      gEi();
       AppMethodBeat.o(122872);
       return;
-      if (FileExplorerUI.brN(this.Hoh))
+      if (FileExplorerUI.brC(this.NlU))
       {
-        this.HnZ.setImageResource(e.h.app_attach_file_icon_video);
+        this.NlM.setImageResource(e.h.app_attach_file_icon_video);
       }
       else
       {
-        int i = com.tencent.mm.pluginsdk.model.v.bpJ(u.asq(this.Hoh));
+        int i = x.bpA(y.alV(this.NlU));
         if (i > 0) {
-          this.HnZ.setImageResource(i);
+          this.NlM.setImageResource(i);
         } else {
-          this.HnZ.setImageResource(e.h.app_attach_file_icon_unknow);
+          this.NlM.setImageResource(e.h.app_attach_file_icon_unknow);
         }
       }
     }
-    fsA();
+    gEj();
     AppMethodBeat.o(122872);
   }
   
@@ -517,17 +439,17 @@ public class AttachDownloadPage
     AppMethodBeat.i(122882);
     super.onConfigurationChanged(paramConfiguration);
     int i = getResources().getConfiguration().orientation;
-    paramConfiguration = (FrameLayout.LayoutParams)this.Hod.getLayoutParams();
+    paramConfiguration = (FrameLayout.LayoutParams)this.NlQ.getLayoutParams();
     if (i == 2) {
-      paramConfiguration.bottomMargin = aw.fromDPToPix(getContext(), 60);
+      paramConfiguration.bottomMargin = bd.fromDPToPix(getContext(), 60);
     }
     for (;;)
     {
-      this.Hod.setLayoutParams(paramConfiguration);
+      this.NlQ.setLayoutParams(paramConfiguration);
       AppMethodBeat.o(122882);
       return;
       if (i == 1) {
-        paramConfiguration.bottomMargin = aw.fromDPToPix(getContext(), 120);
+        paramConfiguration.bottomMargin = bd.fromDPToPix(getContext(), 120);
       }
     }
   }
@@ -536,16 +458,16 @@ public class AttachDownloadPage
   {
     AppMethodBeat.i(122868);
     super.onCreate(paramBundle);
-    this.Hof = getIntent().getIntExtra("is_preview", 0);
-    this.Hog = getIntent().getBooleanExtra("is_compress", false);
-    this.Hoh = getIntent().getStringExtra("attach_name");
-    this.Hls = getIntent().getStringExtra("mail_id");
-    this.Hoi = getIntent().getStringExtra("attach_id");
-    this.downloadUrl = (com.tencent.mm.plugin.qqmail.d.v.fss() + getIntent().getStringExtra("attach_url"));
-    this.rKZ = getIntent().getIntExtra("total_size", 0);
-    ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService();
-    this.Hoe = com.tencent.mm.plugin.qqmail.d.v.fst();
-    setMMTitle(this.Hoh);
+    this.NlS = getIntent().getIntExtra("is_preview", 0);
+    this.NlT = getIntent().getBooleanExtra("is_compress", false);
+    this.NlU = getIntent().getStringExtra("attach_name");
+    this.Njg = getIntent().getStringExtra("mail_id");
+    this.NlV = getIntent().getStringExtra("attach_id");
+    this.downloadUrl = (u.gEa() + getIntent().getStringExtra("attach_url"));
+    this.uWn = getIntent().getIntExtra("total_size", 0);
+    ((j)h.az(j.class)).getNormalMailAppService();
+    this.NlR = u.gEb();
+    setMMTitle(this.NlU);
     initView();
     AppMethodBeat.o(122868);
   }
@@ -554,7 +476,7 @@ public class AttachDownloadPage
   {
     AppMethodBeat.i(122871);
     super.onDestroy();
-    ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().cancel(this.yjR);
+    ((j)h.az(j.class)).getNormalMailAppService().cancel(this.Bjl);
     AppMethodBeat.o(122871);
   }
   
@@ -580,7 +502,7 @@ public class AttachDownloadPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.AttachDownloadPage
  * JD-Core Version:    0.7.0.1
  */

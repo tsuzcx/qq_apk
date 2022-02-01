@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Base64;
 import androidx.b.a;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.security.KeyPair;
@@ -59,7 +58,6 @@ public class InstanceID
     return paramContext;
   }
   
-  @KeepForSdk
   public static InstanceID getInstance(Context paramContext, Bundle paramBundle)
   {
     for (;;)
@@ -207,7 +205,6 @@ public class InstanceID
     return str;
   }
   
-  @KeepForSdk
   public String getSubtype()
   {
     return this.zzbv;
@@ -360,7 +357,7 @@ public class InstanceID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.iid.InstanceID
  * JD-Core Version:    0.7.0.1
  */

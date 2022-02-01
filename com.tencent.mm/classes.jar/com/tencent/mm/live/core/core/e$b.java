@@ -1,36 +1,36 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AudienceMode;", "", "()V", "CDN_MODE", "", "getCDN_MODE", "()I", "TRTC_MODE", "getTRTC_MODE", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$AudienceMode;", "", "()V", "CDN_MODE", "", "getCDN_MODE", "()I", "TRTC_MODE", "getTRTC_MODE", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$b
 {
-  private static final int kjx = 0;
-  private static final int kjy = 1;
-  public static final b kjz;
+  public static final b mKf;
+  private static final int mKg = 0;
+  private static final int mKh;
   
   static
   {
-    AppMethodBeat.i(198519);
-    kjz = new b();
-    kjy = 1;
-    AppMethodBeat.o(198519);
+    AppMethodBeat.i(247843);
+    mKf = new b();
+    mKh = 1;
+    AppMethodBeat.o(247843);
   }
   
-  public static int aJJ()
+  public static int bct()
   {
-    return kjx;
+    return mKg;
   }
   
-  public static int aJK()
+  public static int bcu()
   {
-    return kjy;
+    return mKh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -4,54 +4,127 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.story.a.a;
+import com.tencent.mm.plugin.story.a.d;
 import com.tencent.mm.plugin.story.a.e;
 import com.tencent.mm.plugin.story.a.f;
 import com.tencent.mm.plugin.story.a.g;
-import com.tencent.mm.ui.au;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog;", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "delete", "Landroid/view/View;", "deleteIcon", "Landroid/widget/ImageView;", "favorite", "favoriteIcon", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isPrivacy", "setPrivacy", "onDelete", "Lkotlin/Function0;", "", "getOnDelete", "()Lkotlin/jvm/functions/Function0;", "setOnDelete", "(Lkotlin/jvm/functions/Function0;)V", "onResend", "getOnResend", "setOnResend", "onSetFavorite", "getOnSetFavorite", "setOnSetFavorite", "onSetPrivacy", "getOnSetPrivacy", "setOnSetPrivacy", "privacy", "privacyIcon", "privacyTv", "resend", "resendIcon", "showDelete", "getShowDelete", "setShowDelete", "showFavorite", "getShowFavorite", "setShowFavorite", "showPrivacy", "getShowPrivacy", "setShowPrivacy", "showResend", "getShowResend", "setShowResend", "initDelBtn", "initFavoriteBtn", "initPrivacyBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog;", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "delete", "Landroid/view/View;", "deleteIcon", "Landroid/widget/ImageView;", "favorite", "favoriteIcon", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isPrivacy", "setPrivacy", "onDelete", "Lkotlin/Function0;", "", "getOnDelete", "()Lkotlin/jvm/functions/Function0;", "setOnDelete", "(Lkotlin/jvm/functions/Function0;)V", "onResend", "getOnResend", "setOnResend", "onSetFavorite", "getOnSetFavorite", "setOnSetFavorite", "onSetPrivacy", "getOnSetPrivacy", "setOnSetPrivacy", "privacy", "privacyIcon", "privacyTv", "resend", "resendIcon", "showDelete", "getShowDelete", "setShowDelete", "showFavorite", "getShowFavorite", "setShowFavorite", "showPrivacy", "getShowPrivacy", "setShowPrivacy", "showResend", "getShowResend", "setShowResend", "initDelBtn", "initFavoriteBtn", "initPrivacyBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends com.google.android.material.bottomsheet.a
 {
-  private View HZA;
-  private TextView HZB;
-  private ImageView HZC;
-  boolean KVS;
-  kotlin.g.a.a<x> LYA;
-  kotlin.g.a.a<x> LYB;
-  kotlin.g.a.a<x> LYC;
-  kotlin.g.a.a<x> LYD;
-  boolean LYE;
-  boolean LYF;
-  boolean LYG;
-  boolean LYH;
-  private View LYu;
-  private View LYv;
-  private View LYw;
-  private ImageView LYx;
-  private ImageView LYy;
-  private TextView LYz;
-  boolean qBp;
-  private ImageView vae;
+  private View NWg;
+  private TextView NWh;
+  private ImageView NWi;
+  boolean RvP;
+  kotlin.g.a.a<ah> SAa;
+  kotlin.g.a.a<ah> SAb;
+  kotlin.g.a.a<ah> SAc;
+  boolean SAd;
+  boolean SAe;
+  boolean SAf;
+  boolean SAg;
+  private View SzU;
+  private View SzV;
+  private View SzW;
+  private ImageView SzX;
+  private ImageView SzY;
+  kotlin.g.a.a<ah> SzZ;
+  boolean tGy;
+  private TextView xta;
+  private ImageView ymf;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(120325);
-    this.qBp = true;
-    this.LYF = true;
-    this.LYH = true;
-    setContentView(a.e.LCQ);
+    this.tGy = true;
+    this.SAe = true;
+    this.SAg = true;
+    setContentView(a.e.SgB);
     AppMethodBeat.o(120325);
+  }
+  
+  private static final void a(a parama, View paramView)
+  {
+    AppMethodBeat.i(367687);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    paramView = parama.SAb;
+    if (paramView != null) {
+      paramView.invoke();
+    }
+    parama.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367687);
+  }
+  
+  private static final void b(a parama, View paramView)
+  {
+    AppMethodBeat.i(367692);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    paramView = parama.SAc;
+    if (paramView != null) {
+      paramView.invoke();
+    }
+    parama.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367692);
+  }
+  
+  private static final void c(a parama, View paramView)
+  {
+    AppMethodBeat.i(367698);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    paramView = parama.SzZ;
+    if (paramView != null) {
+      paramView.invoke();
+    }
+    parama.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367698);
+  }
+  
+  private static final void d(a parama, View paramView)
+  {
+    AppMethodBeat.i(367702);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    paramView = parama.SAa;
+    if (paramView != null) {
+      paramView.invoke();
+    }
+    parama.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(367702);
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -64,258 +137,143 @@ public final class a
       paramBundle.addFlags(134218752);
       paramBundle.clearFlags(2);
     }
-    this.LYu = findViewById(com.tencent.mm.plugin.story.a.d.LBk);
-    this.LYv = findViewById(com.tencent.mm.plugin.story.a.d.LBs);
-    this.LYw = findViewById(com.tencent.mm.plugin.story.a.d.LBp);
-    this.vae = ((ImageView)findViewById(com.tencent.mm.plugin.story.a.d.LBl));
-    this.LYx = ((ImageView)findViewById(com.tencent.mm.plugin.story.a.d.LBt));
-    this.LYy = ((ImageView)findViewById(com.tencent.mm.plugin.story.a.d.LBq));
-    this.LYz = ((TextView)findViewById(com.tencent.mm.plugin.story.a.d.LBr));
-    this.HZA = findViewById(com.tencent.mm.plugin.story.a.d.LBm);
-    this.HZA = findViewById(com.tencent.mm.plugin.story.a.d.LBm);
-    this.HZB = ((TextView)findViewById(com.tencent.mm.plugin.story.a.d.LBo));
-    this.HZC = ((ImageView)findViewById(com.tencent.mm.plugin.story.a.d.LBn));
-    paramBundle = getContext();
-    p.j(paramBundle, "context");
-    int i = paramBundle.getResources().getColor(com.tencent.mm.plugin.story.a.a.Red);
-    paramBundle = this.vae;
+    this.SzU = findViewById(a.d.SeV);
+    this.SzV = findViewById(a.d.Sfd);
+    this.SzW = findViewById(a.d.Sfa);
+    this.ymf = ((ImageView)findViewById(a.d.SeW));
+    this.SzX = ((ImageView)findViewById(a.d.Sfe));
+    this.SzY = ((ImageView)findViewById(a.d.Sfb));
+    this.xta = ((TextView)findViewById(a.d.Sfc));
+    this.NWg = findViewById(a.d.SeX);
+    this.NWg = findViewById(a.d.SeX);
+    this.NWh = ((TextView)findViewById(a.d.SeZ));
+    this.NWi = ((ImageView)findViewById(a.d.SeY));
+    int i = getContext().getResources().getColor(a.a.Red);
+    paramBundle = this.ymf;
     if (paramBundle != null) {
-      paramBundle.setImageDrawable(au.o(getContext(), a.f.delete_icon_nor, i));
+      paramBundle.setImageDrawable(bb.m(getContext(), a.f.delete_icon_nor, i));
     }
-    paramBundle = this.LYx;
-    Context localContext1;
-    Context localContext2;
-    if (paramBundle != null)
-    {
-      localContext1 = getContext();
-      i = a.f.icons_outlined_refresh;
-      localContext2 = getContext();
-      p.j(localContext2, "context");
-      paramBundle.setImageDrawable(au.o(localContext1, i, localContext2.getResources().getColor(com.tencent.mm.plugin.story.a.a.BW_0_Alpha_0_9)));
-    }
-    paramBundle = this.HZC;
-    if (paramBundle != null)
-    {
-      localContext1 = getContext();
-      i = a.f.icons_outlined_star;
-      localContext2 = getContext();
-      p.j(localContext2, "context");
-      paramBundle.setImageDrawable(au.o(localContext1, i, localContext2.getResources().getColor(com.tencent.mm.plugin.story.a.a.BW_0_Alpha_0_9)));
-    }
-    paramBundle = this.LYv;
+    paramBundle = this.SzX;
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new d(this));
+      paramBundle.setImageDrawable(bb.m(getContext(), a.f.icons_outlined_refresh, getContext().getResources().getColor(a.a.BW_0_Alpha_0_9)));
     }
-    if (this.LYE)
+    paramBundle = this.NWi;
+    if (paramBundle != null) {
+      paramBundle.setImageDrawable(bb.m(getContext(), a.f.icons_outlined_star, getContext().getResources().getColor(a.a.BW_0_Alpha_0_9)));
+    }
+    paramBundle = this.SzV;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener(new a..ExternalSyntheticLambda3(this));
+    }
+    if (this.SAd)
     {
-      paramBundle = this.LYv;
+      paramBundle = this.SzV;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
     }
-    if (this.qBp)
+    if (this.tGy)
     {
-      paramBundle = this.LYu;
+      paramBundle = this.SzU;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.LYu;
+      paramBundle = this.SzU;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new a(this));
+        paramBundle.setOnClickListener(new a..ExternalSyntheticLambda0(this));
       }
-      if (!this.LYF) {
-        break label746;
-      }
-      paramBundle = this.LYw;
-      if (paramBundle != null) {
-        paramBundle.setVisibility(0);
-      }
-      paramBundle = this.LYw;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new c(this));
-      }
-      if (!this.KVS) {
+      if (!this.SAe) {
         break label666;
       }
-      paramBundle = this.LYy;
-      if (paramBundle != null)
-      {
-        localContext1 = getContext();
-        i = a.f.icons_outlined_unlock;
-        localContext2 = getContext();
-        p.j(localContext2, "context");
-        paramBundle.setImageDrawable(au.o(localContext1, i, localContext2.getResources().getColor(com.tencent.mm.plugin.story.a.a.BW_0_Alpha_0_9)));
-      }
-      paramBundle = this.LYz;
-      if (paramBundle != null) {
-        paramBundle.setText((CharSequence)getContext().getString(a.g.LDL));
-      }
-      label536:
-      if ((!this.LYH) || (!com.tencent.mm.plugin.story.c.a.a.LEY.gbw())) {
-        break label793;
-      }
-      paramBundle = this.HZA;
+      paramBundle = this.SzW;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.HZA;
+      paramBundle = this.SzW;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b(this));
+        paramBundle.setOnClickListener(new a..ExternalSyntheticLambda1(this));
       }
-      if (!this.LYG) {
-        break label764;
+      if (!this.RvP) {
+        break label601;
       }
-      paramBundle = this.HZB;
+      paramBundle = this.SzY;
       if (paramBundle != null) {
-        paramBundle.setText((CharSequence)getContext().getString(a.g.LDK));
+        paramBundle.setImageDrawable(bb.m(getContext(), a.f.icons_outlined_unlock, getContext().getResources().getColor(a.a.BW_0_Alpha_0_9)));
+      }
+      paramBundle = this.xta;
+      if (paramBundle != null) {
+        paramBundle.setText((CharSequence)getContext().getString(a.g.Shw));
+      }
+      label474:
+      if ((!this.SAg) || (!com.tencent.mm.plugin.story.c.a.a.SiJ.huP())) {
+        break label713;
+      }
+      paramBundle = this.NWg;
+      if (paramBundle != null) {
+        paramBundle.setVisibility(0);
+      }
+      paramBundle = this.NWg;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener(new a..ExternalSyntheticLambda2(this));
+      }
+      if (!this.SAf) {
+        break label684;
+      }
+      paramBundle = this.NWh;
+      if (paramBundle != null) {
+        paramBundle.setText((CharSequence)getContext().getString(a.g.Shv));
       }
     }
     for (;;)
     {
-      paramBundle = findViewById(com.tencent.mm.plugin.story.a.d.design_bottom_sheet);
-      if (paramBundle == null) {
-        break label811;
+      paramBundle = findViewById(a.d.design_bottom_sheet);
+      if (paramBundle != null) {
+        paramBundle.setBackgroundResource(a.a.transparent);
       }
-      paramBundle.setBackgroundResource(com.tencent.mm.plugin.story.a.a.transparent);
       AppMethodBeat.o(120324);
       return;
-      paramBundle = this.LYu;
+      paramBundle = this.SzU;
       if (paramBundle == null) {
         break;
       }
       paramBundle.setVisibility(8);
       break;
+      label601:
+      paramBundle = this.SzY;
+      if (paramBundle != null) {
+        paramBundle.setImageDrawable(bb.m(getContext(), a.f.icons_outlined_lock, getContext().getResources().getColor(a.a.BW_0_Alpha_0_9)));
+      }
+      paramBundle = this.xta;
+      if (paramBundle == null) {
+        break label474;
+      }
+      paramBundle.setText((CharSequence)getContext().getString(a.g.Sfc));
+      break label474;
       label666:
-      paramBundle = this.LYy;
-      if (paramBundle != null)
-      {
-        localContext1 = getContext();
-        i = a.f.icons_outlined_lock;
-        localContext2 = getContext();
-        p.j(localContext2, "context");
-        paramBundle.setImageDrawable(au.o(localContext1, i, localContext2.getResources().getColor(com.tencent.mm.plugin.story.a.a.BW_0_Alpha_0_9)));
-      }
-      paramBundle = this.LYz;
+      paramBundle = this.SzW;
       if (paramBundle == null) {
-        break label536;
-      }
-      paramBundle.setText((CharSequence)getContext().getString(a.g.LBr));
-      break label536;
-      label746:
-      paramBundle = this.LYw;
-      if (paramBundle == null) {
-        break label536;
+        break label474;
       }
       paramBundle.setVisibility(8);
-      break label536;
-      label764:
-      paramBundle = this.HZB;
+      break label474;
+      label684:
+      paramBundle = this.NWh;
       if (paramBundle != null)
       {
-        paramBundle.setText((CharSequence)getContext().getString(a.g.LBo));
+        paramBundle.setText((CharSequence)getContext().getString(a.g.SeZ));
         continue;
-        label793:
-        paramBundle = this.HZA;
+        label713:
+        paramBundle = this.NWg;
         if (paramBundle != null) {
           paramBundle.setVisibility(8);
         }
       }
     }
-    label811:
-    AppMethodBeat.o(120324);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(120320);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initDelBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.LYI.LYA;
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      this.LYI.dismiss();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initDelBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(120320);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(120321);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initFavoriteBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.LYI.LYD;
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      this.LYI.dismiss();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initFavoriteBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(120321);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(120322);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initPrivacyBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.LYI.LYC;
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      this.LYI.dismiss();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$initPrivacyBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(120322);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(120323);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.LYI.LYB;
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      this.LYI.dismiss();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(120323);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.a
  * JD-Core Version:    0.7.0.1
  */

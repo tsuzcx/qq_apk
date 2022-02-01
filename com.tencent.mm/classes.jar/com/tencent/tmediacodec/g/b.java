@@ -5,93 +5,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
 {
   private static String TAG;
-  private static String ZPG;
-  private static boolean ZPH;
-  private static a ZPI;
+  private static String ahUH;
+  private static boolean ahUI;
+  private static a ahUJ;
   private static int mLogLevel;
   
   static
   {
-    AppMethodBeat.i(224604);
+    AppMethodBeat.i(210873);
     TAG = "LogUtils";
-    ZPG = "TMediaCodec";
+    ahUH = "TMediaCodec";
     mLogLevel = 2;
-    ZPH = true;
-    ZPI = new a() {};
-    AppMethodBeat.o(224604);
+    ahUI = true;
+    ahUJ = new a() {};
+    AppMethodBeat.o(210873);
   }
   
-  private static boolean aCk(int paramInt)
+  public static void O(String paramString)
   {
-    return (ZPH) && (paramInt >= mLogLevel);
-  }
-  
-  public static void bDO(String paramString)
-  {
-    AppMethodBeat.i(224591);
-    if (aCk(2)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    AppMethodBeat.i(210822);
+    if (aIZ(3)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224591);
+    AppMethodBeat.o(210822);
   }
   
-  public static void bDP(String paramString)
+  public static void Q(String paramString)
   {
-    AppMethodBeat.i(224592);
-    if (aCk(3)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    AppMethodBeat.i(210828);
+    if (aIZ(4)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224592);
+    AppMethodBeat.o(210828);
   }
   
-  public static void bDQ(String paramString)
+  public static void R(String paramString)
   {
-    AppMethodBeat.i(224593);
-    if (aCk(4)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    AppMethodBeat.i(210835);
+    if (aIZ(5)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224593);
+    AppMethodBeat.o(210835);
   }
   
-  public static void bDR(String paramString)
+  public static void S(String paramString)
   {
-    AppMethodBeat.i(224594);
-    if (aCk(5)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    AppMethodBeat.i(210843);
+    if (aIZ(5)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224594);
+    AppMethodBeat.o(210843);
   }
   
-  public static void bDS(String paramString)
+  public static void T(String paramString)
   {
-    AppMethodBeat.i(224595);
-    if (aCk(5)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    AppMethodBeat.i(210848);
+    if (aIZ(6)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224595);
+    AppMethodBeat.o(210848);
   }
   
-  public static void bDT(String paramString)
+  public static void U(String paramString)
   {
-    AppMethodBeat.i(224596);
-    if (aCk(6)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    AppMethodBeat.i(210856);
+    if (aIZ(6)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224596);
+    AppMethodBeat.o(210856);
   }
   
-  public static void bDU(String paramString)
+  private static boolean aIZ(int paramInt)
   {
-    AppMethodBeat.i(224599);
-    if (aCk(6)) {
-      new StringBuilder().append(ZPG).append(".").append(paramString);
+    return (ahUI) && (paramInt >= mLogLevel);
+  }
+  
+  public static void bGt(String paramString)
+  {
+    AppMethodBeat.i(210815);
+    if (aIZ(2)) {
+      new StringBuilder().append(ahUH).append(".").append(paramString);
     }
-    AppMethodBeat.o(224599);
+    AppMethodBeat.o(210815);
   }
   
   public static boolean isLogEnable()
   {
-    return ZPH;
+    return ahUI;
   }
 }
 

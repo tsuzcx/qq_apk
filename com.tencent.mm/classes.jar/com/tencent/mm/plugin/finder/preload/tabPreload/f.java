@@ -4,39 +4,40 @@ import android.content.Intent;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.cgi.aa.f;
-import com.tencent.mm.plugin.finder.storage.d;
-import com.tencent.mm.protocal.protobuf.bju;
+import com.tencent.mm.plugin.finder.cgi.aq.d;
+import com.tencent.mm.protocal.protobuf.bwf;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "getOutTimeOutPreloadSource", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getOuterTime", "", "isAcceptCgiBack", "", "source", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "isValid", "log", "", "performChangeEnterTargetTab", "", "lastTab", "", "targetTab", "performServerConfigChanged", "fromTabType", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "preload", "intent", "Landroid/content/Intent;", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "Lkotlin/ParameterName;", "name", "ret", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "getOutTimeOutPreloadSource", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "isAcceptCgiBack", "", "source", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "isValid", "log", "", "performServerConfigChanged", "", "fromTabType", "", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "preload", "intent", "Landroid/content/Intent;", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "Lkotlin/ParameterName;", "name", "ret", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends g
 {
   public f(c paramc)
   {
     super(4, paramc);
-    AppMethodBeat.i(270433);
-    AppMethodBeat.o(270433);
+    AppMethodBeat.i(346187);
+    AppMethodBeat.o(346187);
   }
   
-  public final void a(int paramInt, bju parambju)
+  public final void a(int paramInt, bwf parambwf)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(270429);
-    p.k(parambju, "serverConfig");
-    super.a(paramInt, parambju);
-    d locald = d.AjH;
-    int i = ((Number)d.dVB().aSr()).intValue();
-    boolean bool1 = parambju.SUr;
+    AppMethodBeat.i(346216);
+    s.u(parambwf, "serverConfig");
+    super.a(paramInt, parambwf);
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+    int i = ((Number)com.tencent.mm.plugin.finder.storage.d.eTU().bmg()).intValue();
+    boolean bool1 = parambwf.aaez;
     boolean bool3;
     label102:
     long l;
@@ -48,216 +49,200 @@ public final class f
     }
     else
     {
-      if ((paramInt == this.fEH) || (!bool1) || (!this.zLs)) {
-        break label302;
+      if ((paramInt == this.hJx) || (!bool1) || (!this.EWd)) {
+        break label305;
       }
-      bool3 = this.zLz.OO(this.fEH);
-      if (this.zLy.zLA == null) {
-        break label268;
+      bool3 = this.EWb.Rp(this.hJx);
+      if (this.EWk.BeG == null) {
+        break label271;
       }
       bool1 = true;
-      l = c.OP(this.fEH);
-      if (cm.bfE() - this.zLy.kje < c.OP(this.fEH)) {
-        break label274;
+      l = c.Rr(this.hJx);
+      if (cn.bDw() - this.EWk.mJI < c.Rr(this.hJx)) {
+        break label277;
       }
     }
     for (;;)
     {
-      Log.i(this.TAG, "[performConfigChange] isAutoRefresh=" + bool3 + " isLoading=" + this.isLoading + " isOverTime=" + bool2 + " expired=" + l + " debugValue=" + i + " hasCache=" + bool1);
-      if ((!bool3) || (this.isLoading) || (!bool2)) {
-        break label280;
+      Log.i(this.TAG, "[performConfigChange] isAutoRefresh=" + bool3 + " isLoading=" + this.EWm + " isOverTime=" + bool2 + " expired=" + l + " debugValue=" + i + " hasCache=" + bool1);
+      if ((!bool3) || (this.EWm.isLoading) || (!bool2)) {
+        break label283;
       }
-      this.zLt.aDJ("performServerConfigChanged");
-      this.zLt.a((a.a)new a(this), 0L, "performConfigChange");
-      AppMethodBeat.o(270429);
+      this.EWe.azn("performServerConfigChanged");
+      this.EWe.a((a.a)new a(this), 0L, "performConfigChange");
+      AppMethodBeat.o(346216);
       return;
       bool1 = false;
       break;
-      label268:
+      label271:
       bool1 = false;
       break label102;
-      label274:
+      label277:
       bool2 = false;
     }
-    label280:
-    Log.i(this.TAG, "[performConfigChange] not need to preload. debugValue=".concat(String.valueOf(i)));
-    AppMethodBeat.o(270429);
+    label283:
+    Log.i(this.TAG, s.X("[performConfigChange] not need to preload. debugValue=", Integer.valueOf(i)));
+    AppMethodBeat.o(346216);
     return;
-    label302:
+    label305:
     Log.i(this.TAG, "[performConfigChange] not need to check hot preload. debugValue=" + i + " fromTabType=" + paramInt);
-    AppMethodBeat.o(270429);
+    AppMethodBeat.o(346216);
   }
   
-  public final void a(g.c paramc, Intent paramIntent, kotlin.g.a.b<? super g.d, x> paramb)
+  public final void a(g.g paramg, Intent paramIntent, kotlin.g.a.b<? super g.h, ah> paramb)
   {
-    AppMethodBeat.i(270431);
-    p.k(paramc, "source");
-    p.k(paramb, "call");
-    if ((c.a(paramc)) && (g.a(this, paramc)) && (paramc != g.c.zLL))
+    AppMethodBeat.i(346240);
+    s.u(paramg, "source");
+    s.u(paramb, "call");
+    if ((c.a(paramg)) && (g.a((g)this, paramg)) && (paramg != g.g.EWE))
     {
-      Object localObject = h.aHG();
-      p.j(localObject, "MMKernel.storage()");
-      boolean bool = p.h(((com.tencent.mm.kernel.f)localObject).aHp().get(ar.a.VyB, Integer.valueOf(0)), Integer.valueOf(0));
-      localObject = d.AjH;
-      int i = ((Number)d.dVO().aSr()).intValue();
+      boolean bool = s.p(h.baE().ban().get(at.a.adax, Integer.valueOf(0)), Integer.valueOf(0));
+      com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.FAy;
+      int i = ((Number)com.tencent.mm.plugin.finder.storage.d.eUq().bmg()).intValue();
       if ((i > 0) && (bool) && (SystemClock.uptimeMillis() % i != 0L))
       {
-        Log.i(this.TAG, "[isValid] isFirst but not hit, random=".concat(String.valueOf(i)));
-        paramb.invoke(g.d.zLP);
-        AppMethodBeat.o(270431);
+        Log.i(this.TAG, s.X("[isValid] isFirst but not hit, random=", Integer.valueOf(i)));
+        paramb.invoke(g.h.EWK);
+        AppMethodBeat.o(346240);
         return;
       }
-      localObject = h.aHG();
-      p.j(localObject, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.f)localObject).aHp().set(ar.a.VyB, Integer.valueOf(1));
+      h.baE().ban().set(at.a.adax, Integer.valueOf(1));
     }
-    super.a(paramc, paramIntent, paramb);
-    AppMethodBeat.o(270431);
+    super.a(paramg, paramIntent, paramb);
+    AppMethodBeat.o(346240);
   }
   
-  public final boolean a(g.c paramc, aa.f paramf)
+  public final boolean a(g.g paramg, aq.d paramd)
   {
     int i = 1;
-    AppMethodBeat.i(270430);
-    p.k(paramc, "source");
-    p.k(paramf, "resp");
-    if (paramc == g.c.zLL)
+    AppMethodBeat.i(346227);
+    s.u(paramg, "source");
+    s.u(paramd, "resp");
+    if (paramg == g.g.EWE)
     {
       Log.i(this.TAG, "[isAcceptCgiBack] is finder enter load.");
-      AppMethodBeat.o(270430);
+      AppMethodBeat.o(346227);
       return true;
     }
-    com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
-    if (((com.tencent.mm.plugin.finder.viewmodel.b)com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.b.class)).Bgp == 4)
+    k localk = k.aeZF;
+    if (((com.tencent.mm.plugin.finder.viewmodel.d)k.cn(PluginFinder.class).q(com.tencent.mm.plugin.finder.viewmodel.d.class)).GKp == 4)
     {
       Log.i(this.TAG, "[isAcceptCgiBack] is In hot tab.");
-      AppMethodBeat.o(270430);
+      AppMethodBeat.o(346227);
       return false;
     }
-    if (paramc == g.c.zLK) {
-      if (cm.bfE() - this.zLy.kje < c.an(this.fEH, false)) {}
-    }
-    while (i == 0)
+    boolean bool2;
+    if ((paramg == g.g.EWD) || (paramg == g.g.EWz))
     {
-      Log.i(this.TAG, "[isAcceptCgiBack] is not over time. lastTime=" + this.zLy.kje);
-      AppMethodBeat.o(270430);
+      long l1 = cn.bDw();
+      long l2 = this.EWk.mJI;
+      int j = this.hJx;
+      if (paramg == g.g.EWz)
+      {
+        bool1 = true;
+        if (this.EWk.BeG == null) {
+          break label207;
+        }
+        bool2 = true;
+        label148:
+        if (l1 - l2 < c.i(j, bool1, bool2)) {
+          break label213;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        break label245;
+      }
+      Log.i(this.TAG, s.X("[isAcceptCgiBack] is not over time. lastTime=", Long.valueOf(this.EWk.mJI)));
+      AppMethodBeat.o(346227);
       return false;
+      bool1 = false;
+      break;
+      label207:
+      bool2 = false;
+      break label148;
+      label213:
       i = 0;
       continue;
-      if (cm.bfE() - this.zLy.kje < c.OP(this.fEH)) {
+      if (cn.bDw() - this.EWk.mJI < c.Rr(this.hJx)) {
         i = 0;
       }
     }
-    if ((paramc == g.c.zLK) && (this.zLs))
+    label245:
+    if (((paramg == g.g.EWD) || (paramg == g.g.EWz)) && (this.EWd))
     {
       Log.i(this.TAG, "[isAcceptCgiBack] is form outside but now is in finder.");
-      AppMethodBeat.o(270430);
+      AppMethodBeat.o(346227);
       return false;
     }
-    boolean bool = super.a(paramc, paramf);
-    AppMethodBeat.o(270430);
-    return bool;
+    boolean bool1 = super.a(paramg, paramd);
+    AppMethodBeat.o(346227);
+    return bool1;
   }
   
-  public final boolean a(g.c paramc, String paramString)
+  public final boolean a(g.g paramg, String paramString)
   {
-    AppMethodBeat.i(270432);
-    p.k(paramc, "source");
-    p.k(paramString, "log");
+    AppMethodBeat.i(346255);
+    s.u(paramg, "source");
+    s.u(paramString, "log");
     boolean bool1;
     boolean bool3;
-    if (this.zLz.dMI().ekb() == 4)
+    if (this.EWb.eHM().fmM() == 4)
     {
       bool1 = true;
-      bool3 = this.zLz.OO(this.fEH);
-      if (((paramc == g.c.zLI) || (paramc == g.c.zLK) || (paramc == g.c.zLL)) && (((!bool1) || (!bool3)) && ((paramc != g.c.zLJ) || (!this.zLs)))) {
-        break label160;
+      bool3 = this.EWb.Rp(this.hJx);
+      if (((paramg == g.g.EWz) || (paramg == g.g.EWB) || (paramg == g.g.EWD) || (paramg == g.g.EWE)) && (((!bool1) || (!bool3)) && (((paramg != g.g.EWC) && (paramg != g.g.EWF)) || (!this.EWd)))) {
+        break label174;
       }
     }
-    label160:
+    label174:
     for (boolean bool2 = true;; bool2 = false)
     {
-      if ((!super.a(paramc, ", ret=" + bool2 + " targetEnterHot=" + bool1 + " isAutoRefresh=" + bool3)) || (!bool2)) {
-        break label166;
+      if ((!super.a(paramg, ", ret=" + bool2 + " targetEnterHot=" + bool1 + " isAutoRefresh=" + bool3)) || (!bool2)) {
+        break label180;
       }
-      AppMethodBeat.o(270432);
+      AppMethodBeat.o(346255);
       return true;
       bool1 = false;
       break;
     }
-    label166:
-    AppMethodBeat.o(270432);
+    label180:
+    AppMethodBeat.o(346255);
     return false;
   }
   
-  public final g.c dML()
+  public final g.g eHO()
   {
-    return g.c.zLK;
+    return g.g.EWD;
   }
   
-  public final long dMM()
-  {
-    AppMethodBeat.i(270427);
-    long l = c.an(this.fEH, false);
-    AppMethodBeat.o(270427);
-    return l;
-  }
-  
-  public final void gO(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(270428);
-    super.gO(paramInt1, paramInt2);
-    boolean bool = ((PluginFinder)h.ag(PluginFinder.class)).isInFinder();
-    Log.i(this.TAG, "[performChangeEnterTargetTab] isInFinder=".concat(String.valueOf(bool)));
-    if (bool)
-    {
-      AppMethodBeat.o(270428);
-      return;
-    }
-    if (paramInt2 != this.fEH)
-    {
-      this.zLt.aDJ("performChangeEnterTargetTab");
-      AppMethodBeat.o(270428);
-      return;
-    }
-    if (!bool)
-    {
-      long l = dMN();
-      bool = pV(true);
-      Log.i(this.TAG, "[performChangeEnterTargetTab] clearCache lastTab=" + paramInt1 + " targetTab=" + paramInt2 + " delayed=" + l + " ms");
-      this.zLt.a(this.zLx, l, "performChangeEnterTargetTab");
-      if (bool)
-      {
-        b localb = b.zLe;
-        b.c(0, 3, 3, false, 115);
-      }
-    }
-    AppMethodBeat.o(270428);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker$performServerConfigChanged$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "run", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker$performServerConfigChanged$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "run", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends a.a
   {
+    a(f paramf) {}
+    
     public final void run()
     {
-      AppMethodBeat.i(279197);
-      this.zLp.a(g.c.zLJ, null, (kotlin.g.a.b)a.zLq);
-      AppMethodBeat.o(279197);
+      AppMethodBeat.i(346213);
+      g.a((g)this.EVY, g.g.EWC, (kotlin.g.a.b)a.EVZ);
+      AppMethodBeat.o(346213);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends q
-      implements kotlin.g.a.b<g.d, x>
+      extends u
+      implements kotlin.g.a.b<g.h, ah>
     {
-      public static final a zLq;
+      public static final a EVZ;
       
       static
       {
-        AppMethodBeat.i(287229);
-        zLq = new a();
-        AppMethodBeat.o(287229);
+        AppMethodBeat.i(346220);
+        EVZ = new a();
+        AppMethodBeat.o(346220);
       }
       
       a()
@@ -269,7 +254,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.tabPreload.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.audio.mix.decode;
 
-import com.tencent.mm.f.a.z;
+import com.tencent.mm.autogen.a.ac;
 
 public abstract interface m
 {
-  public abstract void a(z paramz);
+  public abstract void a(ac paramac);
 }
 
 

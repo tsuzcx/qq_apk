@@ -4,198 +4,193 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  public static final int aUA;
-  public static final int aUB;
-  public static final int aUC;
-  public static final int aUD;
-  public static final int aUE;
-  public static final int aUF;
-  public static final int aUG;
-  public static final int aUH;
-  public static final int aUI;
-  public static final int aUJ;
-  public static final int aUK;
-  public static final int aUL;
-  public static final int aUM;
-  public static final int aUN;
-  public static final int aUO;
-  public static final int aUP;
-  public static final int aUQ;
-  public static final int aUR;
-  public static final int aUS;
-  public static final int aUT;
-  public static final int aUU;
-  public static final int aUV;
-  public static final int aUW;
-  public static final int aUX;
-  public static final int aUZ;
-  public static final int aUl;
-  public static final int aUm;
-  public static final int aUn;
-  public static final int aUo;
-  public static final int aUp;
-  public static final int aUq;
-  public static final int aUr;
-  public static final int aUs;
-  public static final int aUt;
-  public static final int aUv;
-  public static final int aUy;
-  public static final int aUz;
-  public static final int aVA;
-  public static final int aVB;
-  public static final int aVD;
-  public static final int aVE;
-  public static final int aVF;
-  public static final int aVG;
-  public static final int aVH;
-  public static final int aVJ;
-  public static final int aVK;
-  public static final int aVL;
-  public static final int aVM;
-  public static final int aVN;
-  public static final int aVO;
-  public static final int aVP;
-  public static final int aVQ;
-  public static final int aVa;
-  public static final int aVb;
-  public static final int aVc;
-  public static final int aVd;
-  public static final int aVe;
-  public static final int aVf;
-  public static final int aVg;
-  public static final int aVh;
-  public static final int aVi;
-  public static final int aVj;
-  public static final int aVk;
-  public static final int aVl;
-  public static final int aVm;
-  public static final int aVn;
-  public static final int aVo;
-  public static final int aVr;
-  public static final int aVs;
-  public static final int aVt;
-  public static final int aVu;
-  public static final int aVv;
-  public static final int aVw;
-  public static final int aVx;
-  public static final int aVy;
-  public static final int aVz;
-  public static final int mHc;
-  private int mHd;
-  private long mHe;
-  public long mHf;
+  public static final int cOA;
+  public static final int cOB;
+  public static final int cOC;
+  public static final int cOD;
+  public static final int cOE;
+  public static final int cOF;
+  public static final int cOG;
+  public static final int cOH;
+  public static final int cOI;
+  public static final int cOJ;
+  public static final int cOK;
+  public static final int cOL;
+  public static final int cOM;
+  public static final int cON;
+  public static final int cOO;
+  public static final int cOP;
+  public static final int cOQ;
+  public static final int cOR;
+  public static final int cOS;
+  public static final int cOT;
+  public static final int cOV;
+  public static final int cOW;
+  public static final int cOX;
+  public static final int cOY;
+  public static final int cOZ;
+  public static final int cOh;
+  public static final int cOi;
+  public static final int cOj;
+  public static final int cOk;
+  public static final int cOl;
+  public static final int cOm;
+  public static final int cOn;
+  public static final int cOo;
+  public static final int cOp;
+  public static final int cOr;
+  public static final int cOu;
+  public static final int cOv;
+  public static final int cOw;
+  public static final int cOx;
+  public static final int cOy;
+  public static final int cOz;
+  public static final int cPA;
+  public static final int cPB;
+  public static final int cPC;
+  public static final int cPD;
+  public static final int cPF;
+  public static final int cPG;
+  public static final int cPH;
+  public static final int cPI;
+  public static final int cPJ;
+  public static final int cPK;
+  public static final int cPL;
+  public static final int cPM;
+  public static final int cPa;
+  public static final int cPb;
+  public static final int cPc;
+  public static final int cPd;
+  public static final int cPe;
+  public static final int cPf;
+  public static final int cPg;
+  public static final int cPh;
+  public static final int cPi;
+  public static final int cPj;
+  public static final int cPk;
+  public static final int cPn;
+  public static final int cPo;
+  public static final int cPp;
+  public static final int cPq;
+  public static final int cPr;
+  public static final int cPs;
+  public static final int cPt;
+  public static final int cPu;
+  public static final int cPv;
+  public static final int cPw;
+  public static final int cPx;
+  public static final int cPz;
+  public static final int pDD;
+  private int pDE;
+  private long pDF;
+  public long pDG;
   private int type;
   
   static
   {
     AppMethodBeat.i(133849);
-    aUl = c.bU("ftyp");
-    aUm = c.bU("avc1");
-    aUn = c.bU("avc3");
-    aUo = c.bU("hvc1");
-    aUp = c.bU("hev1");
-    aUq = c.bU("s263");
-    aUr = c.bU("d263");
-    aUs = c.bU("mdat");
-    aUt = c.bU("mp4a");
-    aUv = c.bU("wave");
-    aUy = c.bU("ac-3");
-    aUz = c.bU("dac3");
-    aUA = c.bU("ec-3");
-    aUB = c.bU("dec3");
-    aUC = c.bU("dtsc");
-    aUD = c.bU("dtsh");
-    aUE = c.bU("dtsl");
-    aUF = c.bU("dtse");
-    aUG = c.bU("ddts");
-    aUH = c.bU("tfdt");
-    aUI = c.bU("tfhd");
-    aUJ = c.bU("trex");
-    aUK = c.bU("trun");
-    aUL = c.bU("sidx");
-    aUM = c.bU("moov");
-    aUN = c.bU("mvhd");
-    aUO = c.bU("trak");
-    aUP = c.bU("mdia");
-    aUQ = c.bU("minf");
-    aUR = c.bU("stbl");
-    aUS = c.bU("avcC");
-    aUT = c.bU("hvcC");
-    aUU = c.bU("esds");
-    aUV = c.bU("moof");
-    aUW = c.bU("traf");
-    aUX = c.bU("mvex");
-    aUZ = c.bU("tkhd");
-    aVa = c.bU("edts");
-    aVb = c.bU("elst");
-    aVc = c.bU("mdhd");
-    aVd = c.bU("hdlr");
-    aVe = c.bU("stsd");
-    aVf = c.bU("pssh");
-    aVg = c.bU("sinf");
-    aVh = c.bU("schm");
-    aVi = c.bU("schi");
-    aVj = c.bU("tenc");
-    aVk = c.bU("encv");
-    aVl = c.bU("enca");
-    aVm = c.bU("frma");
-    aVn = c.bU("saiz");
-    aVo = c.bU("saio");
-    aVr = c.bU("uuid");
-    aVs = c.bU("senc");
-    aVt = c.bU("pasp");
-    aVu = c.bU("TTML");
-    aVv = c.bU("vmhd");
-    aVw = c.bU("mp4v");
-    aVx = c.bU("stts");
-    aVy = c.bU("stss");
-    aVz = c.bU("ctts");
-    aVA = c.bU("stsc");
-    aVB = c.bU("stsz");
-    aVD = c.bU("stco");
-    aVE = c.bU("co64");
-    aVF = c.bU("tx3g");
-    aVG = c.bU("wvtt");
-    aVH = c.bU("stpp");
-    aVJ = c.bU("samr");
-    aVK = c.bU("sawb");
-    aVL = c.bU("udta");
-    aVM = c.bU("meta");
-    aVN = c.bU("ilst");
-    aVO = c.bU("mean");
-    aVP = c.bU("name");
-    aVQ = c.bU("data");
-    mHc = c.bU("----");
+    cOh = c.du("ftyp");
+    cOi = c.du("avc1");
+    cOj = c.du("avc3");
+    cOk = c.du("hvc1");
+    cOl = c.du("hev1");
+    cOm = c.du("s263");
+    cOn = c.du("d263");
+    cOo = c.du("mdat");
+    cOp = c.du("mp4a");
+    cOr = c.du("wave");
+    cOu = c.du("ac-3");
+    cOv = c.du("dac3");
+    cOw = c.du("ec-3");
+    cOx = c.du("dec3");
+    cOy = c.du("dtsc");
+    cOz = c.du("dtsh");
+    cOA = c.du("dtsl");
+    cOB = c.du("dtse");
+    cOC = c.du("ddts");
+    cOD = c.du("tfdt");
+    cOE = c.du("tfhd");
+    cOF = c.du("trex");
+    cOG = c.du("trun");
+    cOH = c.du("sidx");
+    cOI = c.du("moov");
+    cOJ = c.du("mvhd");
+    cOK = c.du("trak");
+    cOL = c.du("mdia");
+    cOM = c.du("minf");
+    cON = c.du("stbl");
+    cOO = c.du("avcC");
+    cOP = c.du("hvcC");
+    cOQ = c.du("esds");
+    cOR = c.du("moof");
+    cOS = c.du("traf");
+    cOT = c.du("mvex");
+    cOV = c.du("tkhd");
+    cOW = c.du("edts");
+    cOX = c.du("elst");
+    cOY = c.du("mdhd");
+    cOZ = c.du("hdlr");
+    cPa = c.du("stsd");
+    cPb = c.du("pssh");
+    cPc = c.du("sinf");
+    cPd = c.du("schm");
+    cPe = c.du("schi");
+    cPf = c.du("tenc");
+    cPg = c.du("encv");
+    cPh = c.du("enca");
+    cPi = c.du("frma");
+    cPj = c.du("saiz");
+    cPk = c.du("saio");
+    cPn = c.du("uuid");
+    cPo = c.du("senc");
+    cPp = c.du("pasp");
+    cPq = c.du("TTML");
+    cPr = c.du("vmhd");
+    cPs = c.du("mp4v");
+    cPt = c.du("stts");
+    cPu = c.du("stss");
+    cPv = c.du("ctts");
+    cPw = c.du("stsc");
+    cPx = c.du("stsz");
+    cPz = c.du("stco");
+    cPA = c.du("co64");
+    cPB = c.du("tx3g");
+    cPC = c.du("wvtt");
+    cPD = c.du("stpp");
+    cPF = c.du("samr");
+    cPG = c.du("sawb");
+    cPH = c.du("udta");
+    cPI = c.du("meta");
+    cPJ = c.du("ilst");
+    cPK = c.du("mean");
+    cPL = c.du("name");
+    cPM = c.du("data");
+    pDD = c.du("----");
     AppMethodBeat.o(133849);
   }
   
   public a(int paramInt1, long paramLong1, int paramInt2, long paramLong2)
   {
-    this.mHd = paramInt1;
-    this.mHf = paramLong1;
+    this.pDE = paramInt1;
+    this.pDG = paramLong1;
     this.type = paramInt2;
-    this.mHe = paramLong2;
+    this.pDF = paramLong2;
   }
   
-  public final boolean bvE()
+  public final boolean bTR()
   {
-    return this.type == aUM;
+    return this.type == cOI;
   }
   
-  public final boolean bvF()
+  public final boolean bTS()
   {
-    return this.mHd == 0;
-  }
-  
-  public final long bvG()
-  {
-    return this.mHf;
+    return this.pDE == 0;
   }
   
   public final long getEndPos()
   {
     AppMethodBeat.i(133847);
-    long l1 = this.mHf;
+    long l1 = this.pDG;
     long l2 = getSize();
     AppMethodBeat.o(133847);
     return l1 + l2;
@@ -203,25 +198,25 @@ public class a
   
   public final long getSize()
   {
-    if (this.mHe > 0L) {
-      return this.mHe;
+    if (this.pDF > 0L) {
+      return this.pDF;
     }
-    return this.mHd;
+    return this.pDE;
   }
   
   public String toString()
   {
     AppMethodBeat.i(133848);
-    Object localObject = new StringBuilder("Atom{atomSize=").append(this.mHd).append(", atomLargeSize=").append(this.mHe).append(", type=");
+    Object localObject = new StringBuilder("Atom{atomSize=").append(this.pDE).append(", atomLargeSize=").append(this.pDF).append(", type=");
     int i = this.type;
-    localObject = new String(new byte[] { (byte)(i >> 24 & 0xFF), (byte)(i >> 16 & 0xFF), (byte)(i >> 8 & 0xFF), (byte)(i & 0xFF) }) + ", beginPos=" + this.mHf + '}';
+    localObject = new String(new byte[] { (byte)(i >> 24 & 0xFF), (byte)(i >> 16 & 0xFF), (byte)(i >> 8 & 0xFF), (byte)(i & 0xFF) }) + ", beginPos=" + this.pDG + '}';
     AppMethodBeat.o(133848);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.a.a
  * JD-Core Version:    0.7.0.1
  */

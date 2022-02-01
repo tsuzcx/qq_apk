@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan;
 
-import android.annotation.TargetApi;
 import android.bluetooth.le.ScanRecord;
 import android.os.ParcelUuid;
 import android.util.SparseArray;
@@ -17,42 +16,41 @@ import java.util.Set;
 public final class i
 {
   public final String mDeviceName;
-  private final int oKZ;
-  public final List<ParcelUuid> oLa;
-  public final SparseArray<byte[]> oLb;
-  public final Map<ParcelUuid, byte[]> oLc;
-  private final int oLd;
-  final byte[] oLe;
-  public final SparseArray<byte[]> oLf;
+  private final int rOS;
+  public final List<ParcelUuid> rOT;
+  public final SparseArray<byte[]> rOU;
+  public final Map<ParcelUuid, byte[]> rOV;
+  private final int rOW;
+  final byte[] rOX;
+  public final SparseArray<byte[]> rOY;
   
-  @TargetApi(21)
   i(ScanRecord paramScanRecord)
   {
     AppMethodBeat.i(144632);
-    this.oLa = paramScanRecord.getServiceUuids();
-    this.oLb = paramScanRecord.getManufacturerSpecificData();
-    this.oLc = paramScanRecord.getServiceData();
+    this.rOT = paramScanRecord.getServiceUuids();
+    this.rOU = paramScanRecord.getManufacturerSpecificData();
+    this.rOV = paramScanRecord.getServiceData();
     this.mDeviceName = paramScanRecord.getDeviceName();
-    this.oKZ = paramScanRecord.getAdvertiseFlags();
-    this.oLd = paramScanRecord.getTxPowerLevel();
-    this.oLe = paramScanRecord.getBytes();
-    this.oLf = this.oLb;
+    this.rOS = paramScanRecord.getAdvertiseFlags();
+    this.rOW = paramScanRecord.getTxPowerLevel();
+    this.rOX = paramScanRecord.getBytes();
+    this.rOY = this.rOU;
     AppMethodBeat.o(144632);
   }
   
   private i(List<ParcelUuid> paramList, SparseArray<byte[]> paramSparseArray1, Map<ParcelUuid, byte[]> paramMap, int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte, SparseArray<byte[]> paramSparseArray2)
   {
-    this.oLa = paramList;
-    this.oLb = paramSparseArray1;
-    this.oLc = paramMap;
+    this.rOT = paramList;
+    this.rOU = paramSparseArray1;
+    this.rOV = paramMap;
     this.mDeviceName = paramString;
-    this.oKZ = paramInt1;
-    this.oLd = paramInt2;
-    this.oLe = paramArrayOfByte;
-    this.oLf = paramSparseArray2;
+    this.rOS = paramInt1;
+    this.rOW = paramInt2;
+    this.rOX = paramArrayOfByte;
+    this.rOY = paramSparseArray2;
   }
   
-  private static byte[] C(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static byte[] A(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(144636);
     byte[] arrayOfByte = new byte[paramInt2];
@@ -61,7 +59,7 @@ public final class i
     return arrayOfByte;
   }
   
-  private static <T> String F(Map<T, byte[]> paramMap)
+  private static <T> String M(Map<T, byte[]> paramMap)
   {
     AppMethodBeat.i(144638);
     if (paramMap == null)
@@ -96,7 +94,7 @@ public final class i
     AppMethodBeat.i(144635);
     while (paramInt2 > 0)
     {
-      paramList.add(d.aU(C(paramArrayOfByte, paramInt1, paramInt3)));
+      paramList.add(d.aU(A(paramArrayOfByte, paramInt1, paramInt3)));
       paramInt2 -= paramInt3;
       paramInt1 += paramInt3;
     }
@@ -151,13 +149,13 @@ public final class i
     break label521;
     a(paramArrayOfByte, m, k, 16, localArrayList);
     break label521;
-    Object localObject2 = new String(C(paramArrayOfByte, m, k));
+    Object localObject2 = new String(A(paramArrayOfByte, m, k));
     break label521;
-    locala.put(d.aU(C(paramArrayOfByte, m, 2)), C(paramArrayOfByte, m + 2, k - 2));
+    locala.put(d.aU(A(paramArrayOfByte, m, 2)), A(paramArrayOfByte, m + 2, k - 2));
     break label521;
     int n = paramArrayOfByte[(m + 1)];
     n = (paramArrayOfByte[m] & 0xFF) + ((n & 0xFF) << 8);
-    Object localObject3 = C(paramArrayOfByte, m + 2, k - 2);
+    Object localObject3 = A(paramArrayOfByte, m + 2, k - 2);
     localSparseArray2.put(n, localObject3);
     byte[] arrayOfByte1 = (byte[])localSparseArray1.get(n);
     if (arrayOfByte1 != null)
@@ -221,14 +219,14 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(144634);
-    String str = "ScanRecord [mAdvertiseFlags=" + this.oKZ + ", mServiceUuids=" + this.oLa + ", mManufacturerSpecificData=" + d(this.oLb) + ", mServiceData=" + F(this.oLc) + ", mTxPowerLevel=" + this.oLd + ", mDeviceName=" + this.mDeviceName + ", mBytes=" + Arrays.toString(this.oLe) + ", mManufacturerSpecificDataFixed=" + d(this.oLf) + "]";
+    String str = "ScanRecord [mAdvertiseFlags=" + this.rOS + ", mServiceUuids=" + this.rOT + ", mManufacturerSpecificData=" + d(this.rOU) + ", mServiceData=" + M(this.rOV) + ", mTxPowerLevel=" + this.rOW + ", mDeviceName=" + this.mDeviceName + ", mBytes=" + Arrays.toString(this.rOX) + ", mManufacturerSpecificDataFixed=" + d(this.rOY) + "]";
     AppMethodBeat.o(144634);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.i
  * JD-Core Version:    0.7.0.1
  */

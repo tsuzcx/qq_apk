@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/is" android:textColor="@color/BW_0_Alpha_0_9" android:textColorLink="@color/Link" android:id="@id/a7g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:minHeight="116.0dip" android:maxLines="3" android:lineSpacingExtra="8.0dip" android:layout_marginStart="@dimen/ir" android:layout_marginEnd="@dimen/ir" app:collapseButtonPosition="c" app:noCollapseCenter="true" />
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/BW_0_Alpha_0_2" android:id="@id/biz_slot_show_desc_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/a7g" />
-</RelativeLayout>
+<com.tencent.mm.plugin.profile.ui.tab.view.BizProfileRecyclerView android:id="@id/iix" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

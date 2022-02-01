@@ -2,7 +2,7 @@ package com.tencent.scanlib;
 
 public final class a$a
 {
-  public static final int scan_code_stroke_width = 2131167063;
+  public static final int scan_code_stroke_width = 2131167147;
 }
 
 

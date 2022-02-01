@@ -20,7 +20,7 @@ public abstract interface a
     extends Binder
     implements a
   {
-    public static a g(IBinder paramIBinder)
+    public static a h(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;

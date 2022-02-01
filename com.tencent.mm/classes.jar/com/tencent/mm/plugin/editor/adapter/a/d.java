@@ -20,172 +20,172 @@ import com.tencent.mm.sdk.platformtools.Log;
 public abstract class d
   extends a
 {
-  public static float uqI = Resources.getSystem().getDisplayMetrics().density;
-  public static int uqJ = Resources.getSystem().getDisplayMetrics().widthPixels;
-  public static int uqK = (int)(40.0F * uqI + 0.5F);
-  public ImageView fDJ;
-  public LinearLayout ndX;
-  public View uqA;
-  public LinearLayout uqB;
-  public LinearLayout uqC;
-  public LinearLayout uqD;
-  public LinearLayout uqE;
-  public LinearLayout uqF;
-  public LinearLayout uqG;
-  public LinearLayout uqH;
-  public View.OnClickListener uqL = new View.OnClickListener()
+  public static float xxf = Resources.getSystem().getDisplayMetrics().density;
+  public static int xxg = Resources.getSystem().getDisplayMetrics().widthPixels;
+  public static int xxh = (int)(40.0F * xxf + 0.5F);
+  public ImageView hIz;
+  public LinearLayout pZr;
+  public WXRTEditText xwR;
+  public WXRTEditText xwS;
+  public LinearLayout xwT;
+  public TextView xwU;
+  public TextView xwV;
+  public ImageView xwW;
+  public View xwX;
+  public LinearLayout xwY;
+  public LinearLayout xwZ;
+  public LinearLayout xxa;
+  public LinearLayout xxb;
+  public LinearLayout xxc;
+  public LinearLayout xxd;
+  public LinearLayout xxe;
+  public View.OnClickListener xxi = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(181651);
       b localb = new b();
-      localb.bn(paramAnonymousView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      d.this.uoT.utR.cRp().cRf();
+      localb.cH(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+      d.this.xvq.xAo.dvI().dvy();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(181651);
     }
   };
-  public WXRTEditText uqu;
-  public WXRTEditText uqv;
-  public LinearLayout uqw;
-  public TextView uqx;
-  public TextView uqy;
-  public ImageView uqz;
   
   public d(View paramView, j paramj)
   {
     super(paramView, paramj);
-    this.fDJ = ((ImageView)paramView.findViewById(d.e.dFr));
-    this.uqA = paramView.findViewById(d.e.dYE);
-    this.uqw = ((LinearLayout)paramView.findViewById(d.e.dPL));
-    this.ndX = ((LinearLayout)paramView.findViewById(d.e.dQh));
-    this.uqx = ((TextView)paramView.findViewById(d.e.dPM));
-    this.uqy = ((TextView)paramView.findViewById(d.e.dPJ));
-    this.uqz = ((ImageView)paramView.findViewById(d.e.dPK));
-    this.uqx.setTextSize(16.0F);
-    this.uqy.setTextSize(12.0F);
-    this.uqB = ((LinearLayout)paramView.findViewById(d.e.dQf));
-    this.uqB.setVisibility(8);
-    this.uqD = ((LinearLayout)paramView.findViewById(d.e.dQa));
-    this.uqD.setVisibility(8);
-    this.uqE = ((LinearLayout)paramView.findViewById(d.e.dPI));
-    this.uqE.setVisibility(8);
-    this.uqF = ((LinearLayout)paramView.findViewById(d.e.dQG));
-    this.uqF.setBackgroundColor(1347529272);
-    this.uqF.setVisibility(8);
-    this.uqF.setOnClickListener(new View.OnClickListener()
+    this.hIz = ((ImageView)paramView.findViewById(d.e.fGw));
+    this.xwX = paramView.findViewById(d.e.gbs);
+    this.xwT = ((LinearLayout)paramView.findViewById(d.e.fRQ));
+    this.pZr = ((LinearLayout)paramView.findViewById(d.e.fSm));
+    this.xwU = ((TextView)paramView.findViewById(d.e.fRR));
+    this.xwV = ((TextView)paramView.findViewById(d.e.fRO));
+    this.xwW = ((ImageView)paramView.findViewById(d.e.fRP));
+    this.xwU.setTextSize(16.0F);
+    this.xwV.setTextSize(12.0F);
+    this.xwY = ((LinearLayout)paramView.findViewById(d.e.fSk));
+    this.xwY.setVisibility(8);
+    this.xxa = ((LinearLayout)paramView.findViewById(d.e.fSf));
+    this.xxa.setVisibility(8);
+    this.xxb = ((LinearLayout)paramView.findViewById(d.e.fRN));
+    this.xxb.setVisibility(8);
+    this.xxc = ((LinearLayout)paramView.findViewById(d.e.fSM));
+    this.xxc.setBackgroundColor(1347529272);
+    this.xxc.setVisibility(8);
+    this.xxc.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181648);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        e.cSy().cSE();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        e.dwQ().dwW();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181648);
       }
     });
-    this.uqG = ((LinearLayout)paramView.findViewById(d.e.dQJ));
-    this.uqG.setBackgroundColor(1347529272);
-    this.uqG.setVisibility(4);
-    this.uqH = ((LinearLayout)paramView.findViewById(d.e.dQH));
-    this.uqH.setBackgroundColor(1347529272);
-    this.uqH.setVisibility(4);
-    this.uqC = ((LinearLayout)paramView.findViewById(d.e.dFs));
-    paramj = (RelativeLayout.LayoutParams)this.uqC.getLayoutParams();
-    paramj.width = (uqJ - uqK);
+    this.xxd = ((LinearLayout)paramView.findViewById(d.e.fSP));
+    this.xxd.setBackgroundColor(1347529272);
+    this.xxd.setVisibility(4);
+    this.xxe = ((LinearLayout)paramView.findViewById(d.e.fSN));
+    this.xxe.setBackgroundColor(1347529272);
+    this.xxe.setVisibility(4);
+    this.xwZ = ((LinearLayout)paramView.findViewById(d.e.fGz));
+    paramj = (RelativeLayout.LayoutParams)this.xwZ.getLayoutParams();
+    paramj.width = (xxg - xxh);
     paramj.height = -2;
-    this.uqC.setLayoutParams(paramj);
-    this.uqv = ((WXRTEditText)paramView.findViewById(d.e.duD));
-    this.uqu = ((WXRTEditText)paramView.findViewById(d.e.duF));
-    ((LinearLayout)paramView.findViewById(d.e.duE)).setOnClickListener(new View.OnClickListener()
+    this.xwZ.setLayoutParams(paramj);
+    this.xwS = ((WXRTEditText)paramView.findViewById(d.e.fuV));
+    this.xwR = ((WXRTEditText)paramView.findViewById(d.e.fuX));
+    ((LinearLayout)paramView.findViewById(d.e.fuW)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181649);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.this.uqv.cSk();
-        d.this.uqv.requestFocus();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        d.this.xwS.dwC();
+        d.this.xwS.requestFocus();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181649);
       }
     });
-    ((LinearLayout)paramView.findViewById(d.e.duG)).setOnClickListener(new View.OnClickListener()
+    ((LinearLayout)paramView.findViewById(d.e.fuY)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181650);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.this.uqu.cSk();
-        d.this.uqu.requestFocus();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        d.this.xwR.dwC();
+        d.this.xwR.requestFocus();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/itemholder/EditorOtherItemHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181650);
       }
     });
-    this.uqv.setEditTextType(2);
-    this.uqu.setEditTextType(1);
-    this.uqu.utn = this;
-    this.uqv.utn = this;
-    if (!this.uoT.utX)
+    this.xwS.setEditTextType(2);
+    this.xwR.setEditTextType(1);
+    this.xwR.xzK = this;
+    this.xwS.xzK = this;
+    if (!this.xvq.xAu)
     {
-      this.uqv.setKeyListener(null);
-      this.uqv.setEnabled(false);
-      this.uqv.setFocusable(false);
-      this.uqu.setKeyListener(null);
-      this.uqu.setEnabled(false);
-      this.uqu.setFocusable(false);
+      this.xwS.setKeyListener(null);
+      this.xwS.setEnabled(false);
+      this.xwS.setFocusable(false);
+      this.xwR.setKeyListener(null);
+      this.xwR.setEnabled(false);
+      this.xwR.setFocusable(false);
     }
-    this.uoT.q(this.uqu);
-    this.uoT.q(this.uqv);
+    this.xvq.q(this.xwR);
+    this.xvq.q(this.xwS);
   }
   
   public void a(com.tencent.mm.plugin.editor.model.a.a parama, int paramInt1, int paramInt2)
   {
-    Log.i("MicroMsg.EditorOtherItemHolder", "ImageItemHolder position is " + mc());
-    this.uqu.setPosInDataList(paramInt1);
-    this.uqv.setPosInDataList(paramInt1);
+    Log.i("MicroMsg.EditorOtherItemHolder", "ImageItemHolder position is " + KI());
+    this.xwR.setPosInDataList(paramInt1);
+    this.xwS.setPosInDataList(paramInt1);
     if (e.isEnabled()) {
-      e.cSy().a(this.uqF, this.uqG, this.uqH, paramInt1);
+      e.dwQ().a(this.xxc, this.xxd, this.xxe, paramInt1);
     }
-    parama.urJ = this.uqu;
-    parama.urK = this.uqv;
-    parama.urL = null;
-    if (parama.urG) {
-      if (parama.urM) {
-        this.uqu.requestFocus();
+    parama.xye = this.xwR;
+    parama.xyf = this.xwS;
+    parama.xyg = null;
+    if (parama.xyb) {
+      if (parama.xyh) {
+        this.xwR.requestFocus();
       }
     }
     for (;;)
     {
-      if (this.uqw.getVisibility() == 0)
+      if (this.xwT.getVisibility() == 0)
       {
-        if (!parama.urN) {
+        if (!parama.xyi) {
           break;
         }
-        this.uqw.setBackgroundResource(d.d.upx);
+        this.xwT.setBackgroundResource(d.d.xvU);
       }
       return;
-      this.uqv.requestFocus();
+      this.xwS.requestFocus();
       continue;
-      if (this.uqu.hasFocus()) {
-        this.uqu.clearFocus();
+      if (this.xwR.hasFocus()) {
+        this.xwR.clearFocus();
       }
-      if (this.uqv.hasFocus()) {
-        this.uqv.clearFocus();
+      if (this.xwS.hasFocus()) {
+        this.xwS.clearFocus();
       }
     }
-    this.uqw.setBackgroundResource(d.d.upw);
+    this.xwT.setBackgroundResource(d.d.xvT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.d
  * JD-Core Version:    0.7.0.1
  */

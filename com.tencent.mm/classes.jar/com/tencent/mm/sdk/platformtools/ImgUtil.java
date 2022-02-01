@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,11 +15,11 @@ public class ImgUtil
   
   public static int[] getImgWdithAndHeightFromStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(261720);
+    AppMethodBeat.i(243467);
     if (paramInputStream == null)
     {
       Log.w("MicroMsg.ImgUtil", "hy: the input stream is null");
-      AppMethodBeat.o(261720);
+      AppMethodBeat.o(243467);
       return null;
     }
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -27,7 +27,7 @@ public class ImgUtil
     MMBitmapFactory.decodeStream(paramInputStream, null, localOptions);
     int i = localOptions.outWidth;
     int j = localOptions.outHeight;
-    AppMethodBeat.o(261720);
+    AppMethodBeat.o(243467);
     return new int[] { i, j };
   }
   
@@ -42,7 +42,7 @@ public class ImgUtil
     //   8: aconst_null
     //   9: astore_3
     //   10: aload_0
-    //   11: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokestatic 68	com/tencent/mm/vfs/y:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore 5
     //   16: aload 5
     //   18: astore_3
@@ -206,7 +206,7 @@ public class ImgUtil
   
   private static int getSampleRate(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(261723);
+    AppMethodBeat.i(243474);
     paramInt1 = Math.max(paramInt1, paramInt2);
     paramInt2 = 1;
     while (paramInt1 > 64)
@@ -214,7 +214,7 @@ public class ImgUtil
       paramInt2 *= 2;
       paramInt1 /= paramInt2;
     }
-    AppMethodBeat.o(261723);
+    AppMethodBeat.o(243474);
     return paramInt2;
   }
   
@@ -226,7 +226,7 @@ public class ImgUtil
       AppMethodBeat.o(156188);
       return "";
     }
-    paramString = identifyImgType(u.aY(paramString, 0, 2));
+    paramString = identifyImgType(y.bi(paramString, 0, 2));
     AppMethodBeat.o(156188);
     return paramString;
   }
@@ -347,7 +347,7 @@ public class ImgUtil
     //   8: aconst_null
     //   9: astore_3
     //   10: aload_0
-    //   11: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokestatic 68	com/tencent/mm/vfs/y:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore_0
     //   15: aload_0
     //   16: astore_3
@@ -559,154 +559,133 @@ public class ImgUtil
     //   0: iconst_1
     //   1: istore_2
     //   2: aconst_null
-    //   3: astore 7
-    //   5: aconst_null
-    //   6: astore 6
-    //   8: ldc 190
-    //   10: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   13: aload_0
-    //   14: ifnull +10 -> 24
-    //   17: aload_0
-    //   18: invokevirtual 193	java/lang/String:length	()I
-    //   21: ifne +17 -> 38
-    //   24: ldc 11
-    //   26: ldc 195
-    //   28: invokestatic 198	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   31: ldc 190
-    //   33: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   36: iconst_0
-    //   37: ireturn
-    //   38: aload_0
-    //   39: invokevirtual 193	java/lang/String:length	()I
-    //   42: iconst_3
-    //   43: if_icmpge +10 -> 53
-    //   46: ldc 190
-    //   48: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   51: iconst_0
-    //   52: ireturn
-    //   53: new 38	android/graphics/BitmapFactory$Options
-    //   56: dup
-    //   57: invokespecial 39	android/graphics/BitmapFactory$Options:<init>	()V
-    //   60: astore 8
-    //   62: aload 8
-    //   64: iconst_1
-    //   65: putfield 43	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   68: aload 6
-    //   70: astore 5
-    //   72: aload 7
-    //   74: astore 4
-    //   76: aload_0
-    //   77: invokestatic 201	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
-    //   80: istore_3
-    //   81: iload_3
-    //   82: ifne +14 -> 96
-    //   85: aconst_null
-    //   86: invokestatic 207	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   89: ldc 190
-    //   91: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: iconst_0
-    //   95: ireturn
-    //   96: aload 6
-    //   98: astore 5
-    //   100: aload 7
-    //   102: astore 4
-    //   104: aload_0
-    //   105: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   108: astore_0
+    //   3: astore 5
+    //   5: ldc 188
+    //   7: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: aload_0
+    //   11: ifnull +10 -> 21
+    //   14: aload_0
+    //   15: invokevirtual 191	java/lang/String:length	()I
+    //   18: ifne +17 -> 35
+    //   21: ldc 11
+    //   23: ldc 193
+    //   25: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: ldc 188
+    //   30: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: iconst_0
+    //   34: ireturn
+    //   35: aload_0
+    //   36: invokevirtual 191	java/lang/String:length	()I
+    //   39: iconst_3
+    //   40: if_icmpge +10 -> 50
+    //   43: ldc 188
+    //   45: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: iconst_0
+    //   49: ireturn
+    //   50: new 38	android/graphics/BitmapFactory$Options
+    //   53: dup
+    //   54: invokespecial 39	android/graphics/BitmapFactory$Options:<init>	()V
+    //   57: astore 6
+    //   59: aload 6
+    //   61: iconst_1
+    //   62: putfield 43	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   65: aload 5
+    //   67: astore 4
+    //   69: aload_0
+    //   70: invokestatic 199	com/tencent/mm/vfs/y:ZC	(Ljava/lang/String;)Z
+    //   73: istore_3
+    //   74: iload_3
+    //   75: ifne +14 -> 89
+    //   78: aconst_null
+    //   79: invokestatic 205	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   82: ldc 188
+    //   84: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: iconst_0
+    //   88: ireturn
+    //   89: aload 5
+    //   91: astore 4
+    //   93: aload_0
+    //   94: invokestatic 68	com/tencent/mm/vfs/y:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   97: astore_0
+    //   98: aload_0
+    //   99: astore 4
+    //   101: aload_0
+    //   102: aconst_null
+    //   103: aload 6
+    //   105: invokestatic 49	com/tencent/mm/graphics/MMBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   108: pop
     //   109: aload_0
-    //   110: astore 5
-    //   112: aload_0
-    //   113: astore 4
-    //   115: aload_0
-    //   116: aconst_null
-    //   117: aload 8
-    //   119: invokestatic 49	com/tencent/mm/graphics/MMBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   122: pop
-    //   123: aload_0
-    //   124: astore 5
-    //   126: aload_0
-    //   127: astore 4
-    //   129: aload 8
-    //   131: getfield 52	android/graphics/BitmapFactory$Options:outWidth	I
-    //   134: ifle +30 -> 164
-    //   137: aload_0
-    //   138: astore 5
-    //   140: aload_0
-    //   141: astore 4
-    //   143: aload 8
-    //   145: getfield 55	android/graphics/BitmapFactory$Options:outHeight	I
-    //   148: istore_1
-    //   149: iload_1
-    //   150: ifle +14 -> 164
-    //   153: aload_0
-    //   154: invokestatic 207	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   157: ldc 190
-    //   159: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   162: iload_2
-    //   163: ireturn
-    //   164: iconst_0
-    //   165: istore_2
-    //   166: goto -13 -> 153
-    //   169: astore_0
-    //   170: aload 5
-    //   172: astore 4
-    //   174: ldc 11
-    //   176: aload_0
-    //   177: ldc 209
-    //   179: iconst_0
-    //   180: anewarray 4	java/lang/Object
-    //   183: invokestatic 101	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   186: aload 5
-    //   188: invokestatic 207	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   191: ldc 190
-    //   193: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   196: iconst_0
-    //   197: ireturn
-    //   198: astore_0
-    //   199: aload 4
-    //   201: invokestatic 207	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-    //   204: ldc 190
-    //   206: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   209: aload_0
-    //   210: athrow
+    //   110: astore 4
+    //   112: aload 6
+    //   114: getfield 52	android/graphics/BitmapFactory$Options:outWidth	I
+    //   117: ifle +27 -> 144
+    //   120: aload_0
+    //   121: astore 4
+    //   123: aload 6
+    //   125: getfield 55	android/graphics/BitmapFactory$Options:outHeight	I
+    //   128: istore_1
+    //   129: iload_1
+    //   130: ifle +14 -> 144
+    //   133: aload_0
+    //   134: invokestatic 205	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   137: ldc 188
+    //   139: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   142: iload_2
+    //   143: ireturn
+    //   144: iconst_0
+    //   145: istore_2
+    //   146: goto -13 -> 133
+    //   149: astore_0
+    //   150: ldc 11
+    //   152: aload_0
+    //   153: ldc 207
+    //   155: iconst_0
+    //   156: anewarray 4	java/lang/Object
+    //   159: invokestatic 101	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   162: aload 4
+    //   164: invokestatic 205	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   167: ldc 188
+    //   169: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   172: iconst_0
+    //   173: ireturn
+    //   174: astore_0
+    //   175: aload 4
+    //   177: invokestatic 205	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   180: ldc 188
+    //   182: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: aload_0
+    //   186: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	211	0	paramString	String
-    //   148	2	1	i	int
-    //   1	165	2	bool1	boolean
-    //   80	2	3	bool2	boolean
-    //   74	126	4	localObject1	Object
-    //   70	117	5	localObject2	Object
-    //   6	91	6	localObject3	Object
-    //   3	98	7	localObject4	Object
-    //   60	84	8	localOptions	BitmapFactory.Options
+    //   0	187	0	paramString	String
+    //   128	2	1	i	int
+    //   1	145	2	bool1	boolean
+    //   73	2	3	bool2	boolean
+    //   67	109	4	localObject1	Object
+    //   3	87	5	localObject2	Object
+    //   57	67	6	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   76	81	169	java/lang/Throwable
-    //   104	109	169	java/lang/Throwable
-    //   115	123	169	java/lang/Throwable
-    //   129	137	169	java/lang/Throwable
-    //   143	149	169	java/lang/Throwable
-    //   76	81	198	finally
-    //   104	109	198	finally
-    //   115	123	198	finally
-    //   129	137	198	finally
-    //   143	149	198	finally
-    //   174	186	198	finally
+    //   69	74	149	finally
+    //   93	98	149	finally
+    //   101	109	149	finally
+    //   112	120	149	finally
+    //   123	129	149	finally
+    //   150	162	174	finally
   }
   
   /* Error */
   public static boolean isWXGF(String paramString)
   {
     // Byte code:
-    //   0: ldc 211
+    //   0: ldc 209
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aconst_null
     //   6: astore 4
     //   8: aconst_null
     //   9: astore_3
     //   10: aload_0
-    //   11: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokestatic 68	com/tencent/mm/vfs/y:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore_0
     //   15: aload_0
     //   16: astore_3
@@ -756,7 +735,7 @@ public class ImgUtil
     //   89: aload_0
     //   90: astore 4
     //   92: aload 5
-    //   94: ldc 213
+    //   94: ldc 211
     //   96: invokevirtual 174	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   99: istore_2
     //   100: iload_2
@@ -765,7 +744,7 @@ public class ImgUtil
     //   105: ifnull +7 -> 112
     //   108: aload_0
     //   109: invokevirtual 93	java/io/InputStream:close	()V
-    //   112: ldc 211
+    //   112: ldc 209
     //   114: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: iconst_0
     //   118: ireturn
@@ -773,7 +752,7 @@ public class ImgUtil
     //   120: ifnull +7 -> 127
     //   123: aload_0
     //   124: invokevirtual 93	java/io/InputStream:close	()V
-    //   127: ldc 211
+    //   127: ldc 209
     //   129: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   132: iconst_1
     //   133: ireturn
@@ -782,7 +761,7 @@ public class ImgUtil
     //   136: ifnull +7 -> 143
     //   139: aload_3
     //   140: invokevirtual 93	java/io/InputStream:close	()V
-    //   143: ldc 211
+    //   143: ldc 209
     //   145: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   148: iconst_0
     //   149: ireturn
@@ -791,7 +770,7 @@ public class ImgUtil
     //   153: ifnull +8 -> 161
     //   156: aload 4
     //   158: invokevirtual 93	java/io/InputStream:close	()V
-    //   161: ldc 211
+    //   161: ldc 209
     //   163: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   166: aload_0
     //   167: athrow
@@ -874,7 +853,7 @@ public class ImgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ImgUtil
  * JD-Core Version:    0.7.0.1
  */

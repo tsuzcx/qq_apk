@@ -7,11 +7,11 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class g
 {
   long beginTime;
-  long cCY;
+  long cost;
   long endTime;
-  boolean gbt;
-  long mds;
-  long mdt;
+  boolean ihD;
+  long oWl;
+  long oWm;
   int rtType;
   
   public g() {}
@@ -19,34 +19,34 @@ public final class g
   public g(int paramInt, boolean paramBoolean, long paramLong)
   {
     this.rtType = paramInt;
-    this.gbt = paramBoolean;
-    this.mds = paramLong;
-    this.mdt = 0L;
+    this.ihD = paramBoolean;
+    this.oWl = paramLong;
+    this.oWm = 0L;
   }
   
-  public final void GP(long paramLong)
-  {
-    AppMethodBeat.i(151080);
-    if (this.mds == 0L) {
-      this.mds = paramLong;
-    }
-    this.cCY = (Util.currentTicks() - this.cCY);
-    this.endTime = Util.nowMilliSecond();
-    Log.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.mds + " Count:" + this.mdt + " type:" + this.rtType);
-    WatchDogPushReceiver.a(this);
-    AppMethodBeat.o(151080);
-  }
-  
-  public final void bpw()
+  public final void bNd()
   {
     AppMethodBeat.i(151079);
-    if (this.mdt == 0L)
+    if (this.oWm == 0L)
     {
       this.beginTime = Util.nowMilliSecond();
-      this.cCY = Util.currentTicks();
+      this.cost = Util.currentTicks();
     }
-    this.mdt += 1L;
+    this.oWm += 1L;
     AppMethodBeat.o(151079);
+  }
+  
+  public final void ja(long paramLong)
+  {
+    AppMethodBeat.i(151080);
+    if (this.oWl == 0L) {
+      this.oWl = paramLong;
+    }
+    this.cost = (Util.currentTicks() - this.cost);
+    this.endTime = Util.nowMilliSecond();
+    Log.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.oWl + " Count:" + this.oWm + " type:" + this.rtType);
+    WatchDogPushReceiver.a(this);
+    AppMethodBeat.o(151080);
   }
 }
 

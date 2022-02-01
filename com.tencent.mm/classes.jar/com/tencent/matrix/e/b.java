@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class b
 {
-  public static boolean dal = false;
-  private static volatile HandlerThread diY;
-  private static volatile Handler diZ;
-  private static volatile Handler dja = new Handler(Looper.getMainLooper());
-  private static HashSet<HandlerThread> djb = new HashSet();
+  public static boolean eYL = false;
+  private static volatile HandlerThread fiT;
+  private static volatile Handler fiU;
+  private static volatile Handler fiV = new Handler(Looper.getMainLooper());
+  private static HashSet<HandlerThread> fiW = new HashSet();
   
-  public static HandlerThread L(String paramString, int paramInt)
+  public static HandlerThread T(String paramString, int paramInt)
   {
-    Object localObject = djb.iterator();
+    Object localObject = fiW.iterator();
     while (((Iterator)localObject).hasNext()) {
       if (!((HandlerThread)((Iterator)localObject).next()).isAlive())
       {
@@ -33,23 +33,23 @@ public class b
     localObject = new HandlerThread(paramString);
     ((HandlerThread)localObject).setPriority(paramInt);
     ((HandlerThread)localObject).start();
-    djb.add(localObject);
-    c.w("Matrix.HandlerThread", "warning: create new handler thread with name %s, alive thread size:%d", new Object[] { paramString, Integer.valueOf(djb.size()) });
+    fiW.add(localObject);
+    c.w("Matrix.HandlerThread", "warning: create new handler thread with name %s, alive thread size:%d", new Object[] { paramString, Integer.valueOf(fiW.size()) });
     return localObject;
   }
   
-  public static Handler Ys()
+  public static Handler aAn()
   {
-    return dja;
+    return fiV;
   }
   
   /* Error */
-  public static HandlerThread Yt()
+  public static HandlerThread aAo()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 113	com/tencent/matrix/e/b:diY	Landroid/os/HandlerThread;
+    //   3: getstatic 113	com/tencent/matrix/e/b:fiT	Landroid/os/HandlerThread;
     //   6: ifnonnull +83 -> 89
     //   9: new 65	android/os/HandlerThread
     //   12: dup
@@ -57,19 +57,19 @@ public class b
     //   15: invokespecial 84	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
     //   18: astore_0
     //   19: aload_0
-    //   20: putstatic 113	com/tencent/matrix/e/b:diY	Landroid/os/HandlerThread;
+    //   20: putstatic 113	com/tencent/matrix/e/b:fiT	Landroid/os/HandlerThread;
     //   23: aload_0
     //   24: invokevirtual 91	android/os/HandlerThread:start	()V
     //   27: new 25	android/os/Handler
     //   30: dup
-    //   31: getstatic 113	com/tencent/matrix/e/b:diY	Landroid/os/HandlerThread;
+    //   31: getstatic 113	com/tencent/matrix/e/b:fiT	Landroid/os/HandlerThread;
     //   34: invokevirtual 118	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
     //   37: invokespecial 35	android/os/Handler:<init>	(Landroid/os/Looper;)V
-    //   40: putstatic 120	com/tencent/matrix/e/b:diZ	Landroid/os/Handler;
-    //   43: getstatic 113	com/tencent/matrix/e/b:diY	Landroid/os/HandlerThread;
+    //   40: putstatic 120	com/tencent/matrix/e/b:fiU	Landroid/os/Handler;
+    //   43: getstatic 113	com/tencent/matrix/e/b:fiT	Landroid/os/HandlerThread;
     //   46: invokevirtual 118	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
     //   49: astore_1
-    //   50: getstatic 45	com/tencent/matrix/e/b:dal	Z
+    //   50: getstatic 45	com/tencent/matrix/e/b:eYL	Z
     //   53: ifeq +45 -> 98
     //   56: new 6	com/tencent/matrix/e/b$a
     //   59: dup
@@ -84,11 +84,11 @@ public class b
     //   74: anewarray 4	java/lang/Object
     //   77: dup
     //   78: iconst_0
-    //   79: getstatic 45	com/tencent/matrix/e/b:dal	Z
+    //   79: getstatic 45	com/tencent/matrix/e/b:eYL	Z
     //   82: invokestatic 132	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   85: aastore
     //   86: invokestatic 81	com/tencent/matrix/e/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   89: getstatic 113	com/tencent/matrix/e/b:diY	Landroid/os/HandlerThread;
+    //   89: getstatic 113	com/tencent/matrix/e/b:fiT	Landroid/os/HandlerThread;
     //   92: astore_0
     //   93: ldc 2
     //   95: monitorexit
@@ -114,34 +114,34 @@ public class b
     //   89	96	103	finally
   }
   
-  public static Handler Yu()
+  public static Handler aAp()
   {
-    if (diZ == null) {
-      Yt();
+    if (fiU == null) {
+      aAo();
     }
-    return diZ;
+    return fiU;
   }
   
   static final class a
     implements Printer, com.tencent.matrix.b.a
   {
-    private boolean dgo;
-    private ConcurrentHashMap<String, a> djc = new ConcurrentHashMap();
+    private boolean ffv;
+    private ConcurrentHashMap<String, a> fiX = new ConcurrentHashMap();
     
     a()
     {
-      com.tencent.matrix.a.cQs.a(this);
-      this.dgo = com.tencent.matrix.a.cQs.cQt;
+      com.tencent.matrix.a.eLw.a(this);
+      this.ffv = com.tencent.matrix.a.eLw.eLx;
     }
     
     public final void onForeground(boolean paramBoolean)
     {
-      this.dgo = paramBoolean;
+      this.ffv = paramBoolean;
       if (paramBoolean)
       {
         long l = System.currentTimeMillis();
         LinkedList localLinkedList = new LinkedList();
-        Iterator localIterator = this.djc.values().iterator();
+        Iterator localIterator = this.fiX.values().iterator();
         while (localIterator.hasNext())
         {
           a locala = (a)localIterator.next();
@@ -150,18 +150,18 @@ public class b
           }
         }
         Collections.sort(localLinkedList, new Comparator() {});
-        this.djc.clear();
+        this.fiX.clear();
         if (!localLinkedList.isEmpty()) {
           c.i("Matrix.HandlerThread", "matrix default thread has exec in background! %s cost:%s", new Object[] { localLinkedList, Long.valueOf(System.currentTimeMillis() - l) });
         }
         return;
       }
-      this.djc.clear();
+      this.fiX.clear();
     }
     
     public final void println(String paramString)
     {
-      if (this.dgo) {}
+      if (this.ffv) {}
       int i;
       int j;
       do
@@ -174,13 +174,13 @@ public class b
         j = paramString.indexOf("@", i);
       } while ((i < 0) || (j < 0));
       String str = paramString.substring(i, j);
-      a locala = (a)this.djc.get(str);
+      a locala = (a)this.fiX.get(str);
       paramString = locala;
       if (locala == null)
       {
         paramString = new a();
         paramString.key = str;
-        this.djc.put(str, paramString);
+        this.fiX.put(str, paramString);
       }
       paramString.count += 1;
     }
@@ -201,7 +201,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.e.b
  * JD-Core Version:    0.7.0.1
  */

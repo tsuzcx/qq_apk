@@ -16,7 +16,7 @@ import org.b.b.b;
 public final class c
 {
   private static String CHARSET;
-  private static final Map<String, String> abMh;
+  private static final Map<String, String> ajZb;
   
   static
   {
@@ -26,21 +26,21 @@ public final class c
     localHashMap.put("*", "%2A");
     localHashMap.put("+", "%20");
     localHashMap.put("%7E", "~");
-    abMh = Collections.unmodifiableMap(localHashMap);
+    ajZb = Collections.unmodifiableMap(localHashMap);
     AppMethodBeat.o(40580);
   }
   
-  public static String aT(String paramString)
+  public static String cg(String paramString)
   {
     AppMethodBeat.i(40581);
-    d.n(paramString, "Cannot encode null object");
+    d.x(paramString, "Cannot encode null object");
     for (;;)
     {
       Iterator localIterator;
       try
       {
         paramString = URLEncoder.encode(paramString, CHARSET);
-        localIterator = abMh.entrySet().iterator();
+        localIterator = ajZb.entrySet().iterator();
         if (!localIterator.hasNext())
         {
           AppMethodBeat.o(40581);
@@ -60,10 +60,10 @@ public final class c
     }
   }
   
-  public static String aU(String paramString)
+  public static String ch(String paramString)
   {
     AppMethodBeat.i(40582);
-    d.n(paramString, "Cannot decode null object");
+    d.x(paramString, "Cannot decode null object");
     try
     {
       paramString = URLDecoder.decode(paramString, CHARSET);
@@ -80,7 +80,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.g.c
  * JD-Core Version:    0.7.0.1
  */

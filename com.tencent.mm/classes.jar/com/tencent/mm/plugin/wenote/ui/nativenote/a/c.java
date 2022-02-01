@@ -24,58 +24,58 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class c
   extends j
 {
-  public NoteEditorVoiceBaseView QKf;
-  private l QKg;
-  public LinearLayout uqY;
-  public LinearLayout uqZ;
-  public ImageView urb;
-  private TextView urc;
-  private TextView urd;
-  private final MMHandler urf;
+  public NoteEditorVoiceBaseView XDE;
+  private l XDF;
+  private TextView xxA;
+  private final MMHandler xxC;
+  public LinearLayout xxv;
+  public LinearLayout xxw;
+  public ImageView xxy;
+  private TextView xxz;
   
   public c(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30851);
-    this.urf = new MMHandler()
+    this.xxC = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(30850);
-        if (c.a(c.this).urU)
+        if (c.a(c.this).xyp)
         {
           c.b(c.this).removeMessages(4096);
           AppMethodBeat.o(30850);
           return;
         }
-        paramAnonymousMessage = " " + com.tencent.mm.bn.a.N(MMApplicationContext.getContext(), c.a(c.this).urW).toString();
+        paramAnonymousMessage = " " + com.tencent.mm.bf.a.Q(MMApplicationContext.getContext(), c.a(c.this).xyr).toString();
         c.c(c.this).setText(paramAnonymousMessage);
         sendEmptyMessageDelayed(4096, 500L);
         AppMethodBeat.o(30850);
       }
     };
-    this.uqY = ((LinearLayout)paramView.findViewById(R.h.dQj));
-    this.uqZ = ((LinearLayout)paramView.findViewById(R.h.dPN));
-    this.urb = ((ImageView)paramView.findViewById(R.h.dQk));
-    this.urc = ((TextView)paramView.findViewById(R.h.dQl));
-    this.urd = ((TextView)paramView.findViewById(R.h.dQm));
-    this.QKf = ((NoteEditorVoiceBaseView)paramView.findViewById(R.h.dPS));
-    com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.hec().a(this.QKf);
-    this.ndX.setVisibility(0);
-    this.uqY.setVisibility(8);
-    this.uqZ.setVisibility(0);
-    this.fDJ.setVisibility(8);
-    this.uqw.setVisibility(8);
-    this.ndX.setOnClickListener(new View.OnClickListener()
+    this.xxv = ((LinearLayout)paramView.findViewById(R.h.fSo));
+    this.xxw = ((LinearLayout)paramView.findViewById(R.h.fRS));
+    this.xxy = ((ImageView)paramView.findViewById(R.h.fSp));
+    this.xxz = ((TextView)paramView.findViewById(R.h.fSq));
+    this.xxA = ((TextView)paramView.findViewById(R.h.fSr));
+    this.XDE = ((NoteEditorVoiceBaseView)paramView.findViewById(R.h.fRX));
+    com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.iEK().a(this.XDE);
+    this.pZr.setVisibility(0);
+    this.xxv.setVisibility(8);
+    this.xxw.setVisibility(0);
+    this.hIz.setVisibility(8);
+    this.xwT.setVisibility(8);
+    this.pZr.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30849);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteChatVoiceItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if ((c.a(c.this) != null) && (c.a(c.this).usd.booleanValue())) {
-          c.a(c.this).use = Boolean.TRUE;
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteChatVoiceItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if ((c.a(c.this) != null) && (c.a(c.this).xyz.booleanValue())) {
+          c.a(c.this).xyA = Boolean.TRUE;
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteChatVoiceItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30849);
@@ -87,23 +87,23 @@ public final class c
   public final void a(com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30852);
-    this.QKg = ((l)paramc);
+    this.XDF = ((l)paramc);
     Object localObject1;
     Object localObject2;
-    if (this.QKg.urU)
+    if (this.XDF.xyp)
     {
-      this.uqZ.setVisibility(0);
-      this.uqY.setVisibility(8);
-      this.ndX.setPadding(0, 0, 0, 0);
-      if (paramc.urN)
+      this.xxw.setVisibility(0);
+      this.xxv.setVisibility(8);
+      this.pZr.setPadding(0, 0, 0, 0);
+      if (paramc.xyi)
       {
-        this.QKf.setBackgroundResource(R.g.dpz);
-        localObject1 = this.QKf;
-        localObject2 = this.QKg.fNU;
-        int i = this.QKg.fEi;
-        String str = this.QKg.urX;
+        this.XDE.setBackgroundResource(R.g.fpO);
+        localObject1 = this.XDE;
+        localObject2 = this.XDF.hTM;
+        int i = this.XDF.hIY;
+        String str = this.XDF.xyt;
         ((NoteEditorVoiceBaseView)localObject1).path = Util.nullAs((String)localObject2, "");
-        ((NoteEditorVoiceBaseView)localObject1).fEi = i;
+        ((NoteEditorVoiceBaseView)localObject1).hIY = i;
         ((NoteEditorVoiceBaseView)localObject1).setText(str);
       }
     }
@@ -112,24 +112,24 @@ public final class c
       super.a(paramc, paramInt1, paramInt2);
       AppMethodBeat.o(30852);
       return;
-      this.QKf.setBackgroundResource(R.g.dpy);
+      this.XDE.setBackgroundResource(R.g.fpN);
       break;
-      this.ndX.setPadding(26, 7, 0, 7);
-      this.uqZ.setVisibility(8);
-      this.uqY.setVisibility(0);
-      localObject1 = this.urb;
+      this.pZr.setPadding(26, 7, 0, 7);
+      this.xxw.setVisibility(8);
+      this.xxv.setVisibility(0);
+      localObject1 = this.xxy;
       if (((ImageView)localObject1).getAnimation() != null) {
         ((ImageView)localObject1).startAnimation(((ImageView)localObject1).getAnimation());
       }
       for (;;)
       {
-        if (!this.QKg.usd.booleanValue()) {
+        if (!this.XDF.xyz.booleanValue()) {
           break label344;
         }
-        this.urf.sendEmptyMessage(4096);
-        this.urc.setText(R.l.favorite_wenote_voice_recording);
-        localObject1 = " " + com.tencent.mm.bn.a.N(MMApplicationContext.getContext(), this.QKg.urW).toString();
-        this.urd.setText((CharSequence)localObject1);
+        this.xxC.sendEmptyMessage(4096);
+        this.xxz.setText(R.l.favorite_wenote_voice_recording);
+        localObject1 = " " + com.tencent.mm.bf.a.Q(MMApplicationContext.getContext(), this.XDF.xyr).toString();
+        this.xxA.setText((CharSequence)localObject1);
         break;
         localObject2 = new AlphaAnimation(1.0F, 0.0F);
         ((Animation)localObject2).setDuration(500L);
@@ -139,20 +139,20 @@ public final class c
         ((ImageView)localObject1).startAnimation((Animation)localObject2);
       }
       label344:
-      this.urc.setText(R.l.favorite_wenote_voice_downloading);
-      localObject1 = " " + com.tencent.mm.bn.a.N(MMApplicationContext.getContext(), (int)com.tencent.mm.bn.a.GW(this.QKg.fEj)).toString();
-      this.urd.setText((CharSequence)localObject1);
+      this.xxz.setText(R.l.favorite_wenote_voice_downloading);
+      localObject1 = " " + com.tencent.mm.bf.a.Q(MMApplicationContext.getContext(), (int)com.tencent.mm.bf.a.jh(this.XDF.hIZ)).toString();
+      this.xxA.setText((CharSequence)localObject1);
     }
   }
   
-  public final int cRD()
+  public final int dvW()
   {
     return 20;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.wallet.wecoin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bwl;
-import com.tencent.mm.protocal.protobuf.bwm;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.protocal.protobuf.cwk;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetWecoinIncomePageInfoRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetIncomePageInfoResponse;", "()V", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetWecoinBalanceRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetWecoinBalanceResponse;", "()V", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends m<bwm>
+  extends n<cwk>
 {
   public h()
   {
-    AppMethodBeat.i(250547);
-    bwl localbwl = new bwl();
-    bwm localbwm = new bwm();
-    a((dyl)localbwl, (dyy)localbwm, 5852, "/cgi-bin/micromsg-bin/getincomepageinfo");
-    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetWecoinIncomePageInfoRequest: ");
-    AppMethodBeat.o(250547);
+    AppMethodBeat.i(315702);
+    cwj localcwj = new cwj();
+    cwk localcwk = new cwk();
+    a((erp)localcwj, (esc)localcwk, 6401, "/cgi-bin/micromsg-bin/getwecoinbalance");
+    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetWecoinBalanceRequest: ");
+    AppMethodBeat.o(315702);
   }
 }
 

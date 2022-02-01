@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.contact.privacy;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,22 +11,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.k.i;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.ac;
+import com.tencent.mm.plugin.finder.storage.ae;
+import com.tencent.mm.plugin.finder.storage.af;
+import com.tencent.mm.plugin.finder.storage.ar;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.plugin.sport.a.d;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.protocal.protobuf.cyd;
-import com.tencent.mm.protocal.protobuf.kn;
+import com.tencent.mm.protocal.protobuf.dpi;
+import com.tencent.mm.protocal.protobuf.dpj;
+import com.tencent.mm.protocal.protobuf.lj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.contact.a.j;
 import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.w;
@@ -41,198 +43,224 @@ import java.util.Set;
 public class FinderBlockListUI
   extends ContactMgrUIBase
 {
-  private static int Aox = 20;
-  private String TTU;
-  private LinkedList<FinderContact> XyE;
-  private Set<q> XyF;
-  private TextView XyG;
+  private static int FON = 20;
+  private ar ECo;
+  private String abky;
+  private LinkedList<FinderContact> afkU;
+  private Set<p> afkV;
+  private TextView afkW;
   private int type;
-  private com.tencent.mm.plugin.finder.storage.aj zAg;
   
   public FinderBlockListUI()
   {
-    AppMethodBeat.i(279149);
+    AppMethodBeat.i(253407);
     this.type = 0;
-    this.zAg = null;
-    this.XyF = new HashSet();
-    AppMethodBeat.o(279149);
+    this.ECo = null;
+    this.afkV = new HashSet();
+    AppMethodBeat.o(253407);
   }
   
-  private void hVK()
+  private void jzG()
   {
-    AppMethodBeat.i(279157);
-    this.TTU = getResources().getString(this.zAg.dRw());
-    setMMTitle(this.TTU);
-    if (this.kGU != null)
+    AppMethodBeat.i(253420);
+    this.abky = getResources().getString(this.ECo.ePJ());
+    setMMTitle(this.abky);
+    if (this.njO != null)
     {
-      this.kGU.setText(this.zAg.dRy());
-      localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      com.tencent.mm.plugin.finder.utils.aj.a(this.kGU, new SpannableString(this.zAg.dRy()));
+      this.njO.setText(this.ECo.gS(this));
+      localObject = av.GiL;
+      av.a(this.njO, new SpannableString(this.ECo.gS(this)));
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(286306);
+        AppMethodBeat.i(253355);
         FinderBlockListUI.this.finish();
-        AppMethodBeat.o(286306);
+        AppMethodBeat.o(253355);
         return false;
       }
     });
-    this.XyE = this.zAg.dRB();
-    this.unc.clear();
-    Object localObject = com.tencent.mm.pluginsdk.j.a.hhV();
+    this.afkU = this.ECo.ePM();
+    this.xtu.clear();
+    Object localObject = com.tencent.mm.pluginsdk.platformtools.a.iIW();
     int i = 0;
-    while (i < this.XyE.size())
+    while (i < this.afkU.size())
     {
-      FinderContact localFinderContact = (FinderContact)this.XyE.get(i);
+      FinderContact localFinderContact = (FinderContact)this.afkU.get(i);
       if ((localFinderContact != null) && (!((List)localObject).contains(localFinderContact.username))) {
-        this.unc.add(localFinderContact.username);
+        this.xtu.add(localFinderContact.username);
       }
       i += 1;
     }
-    AppMethodBeat.o(279157);
+    AppMethodBeat.o(253420);
   }
   
   protected final ContactMgrUIBase.a a(o paramo)
   {
-    AppMethodBeat.i(279154);
+    AppMethodBeat.i(253477);
     paramo = new a(paramo);
-    AppMethodBeat.o(279154);
+    AppMethodBeat.o(253477);
     return paramo;
   }
   
-  public final void awS(int paramInt)
+  public final void aDz(int paramInt)
   {
-    AppMethodBeat.i(279156);
-    Object localObject = this.Xyt.awM(paramInt);
+    AppMethodBeat.i(253480);
+    Object localObject = this.afkK.aDt(paramInt);
     if ((localObject == null) || (!(localObject instanceof com.tencent.mm.ui.contact.a.f)))
     {
-      AppMethodBeat.o(279156);
+      AppMethodBeat.o(253480);
       return;
     }
     localObject = ((com.tencent.mm.ui.contact.a.f)localObject).username;
     Intent localIntent = new Intent();
     localIntent.putExtra("Contact_User", (String)localObject);
-    com.tencent.mm.by.c.b(this, "profile", ".ui.ContactInfoUI", localIntent);
-    AppMethodBeat.o(279156);
+    com.tencent.mm.br.c.b(this, "profile", ".ui.ContactInfoUI", localIntent);
+    AppMethodBeat.o(253480);
   }
   
-  public final void bH(Intent paramIntent)
+  protected final void aMl()
   {
-    AppMethodBeat.i(279163);
+    AppMethodBeat.i(253491);
+    if ((this.afkK != null) && (this.afkK.getContactCount() > 0))
+    {
+      setMMTitle(this.abky + "(" + this.afkK.getContactCount() + ")");
+      AppMethodBeat.o(253491);
+      return;
+    }
+    setMMTitle(this.abky);
+    AppMethodBeat.o(253491);
+  }
+  
+  public final void ck(Intent paramIntent)
+  {
+    AppMethodBeat.i(253511);
     paramIntent = paramIntent.getStringExtra("Select_Contact");
     if (Util.isNullOrNil(paramIntent))
     {
-      AppMethodBeat.o(279163);
+      AppMethodBeat.o(253511);
       return;
     }
     paramIntent = Util.stringsToList(paramIntent.split(","));
     if (paramIntent == null)
     {
-      AppMethodBeat.o(279163);
+      AppMethodBeat.o(253511);
       return;
     }
-    this.XyF.clear();
-    int k = com.tencent.mm.n.h.axc().getInt("MMBatchModContactTypeMaxNumForServer", 30);
-    int j = 0;
-    while (j < paramIntent.size())
+    this.afkV.clear();
+    int k = i.aRC().getInt("MMBatchModContactTypeMaxNumForServer", 30);
+    int i = 0;
+    while (i < paramIntent.size())
     {
       Object localObject = new ArrayList();
-      int i = 0;
-      while ((j < paramIntent.size()) && (i < k))
+      int j = 0;
+      while ((i < paramIntent.size()) && (j < k))
       {
-        ((List)localObject).add(paramIntent.get(j));
-        j += 1;
+        ((List)localObject).add((String)paramIntent.get(i));
         i += 1;
+        j += 1;
       }
-      localObject = this.zAg.eM((List)localObject);
-      this.XyF.add(localObject);
+      localObject = this.ECo.hy((List)localObject);
+      this.afkV.add(localObject);
     }
-    this.Xyw = true;
-    this.Xyz.aT(new Runnable()
+    this.afkM = true;
+    this.afkP.bc(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(278317);
+        AppMethodBeat.i(253353);
         Iterator localIterator = FinderBlockListUI.a(FinderBlockListUI.this).iterator();
         while (localIterator.hasNext())
         {
-          q localq = (q)localIterator.next();
-          com.tencent.mm.kernel.h.aHH();
-          com.tencent.mm.kernel.h.aHF().kcd.a(localq);
+          p localp = (p)localIterator.next();
+          com.tencent.mm.kernel.h.baF();
+          com.tencent.mm.kernel.h.baD().mCm.a(localp);
         }
-        AppMethodBeat.o(278317);
+        AppMethodBeat.o(253353);
       }
     });
-    AppMethodBeat.o(279163);
+    AppMethodBeat.o(253511);
   }
   
-  public final void bI(final Intent paramIntent)
+  public final void cl(final Intent paramIntent)
   {
-    AppMethodBeat.i(279164);
+    AppMethodBeat.i(253518);
     paramIntent = paramIntent.getStringExtra("Select_Contact");
     if (Util.isNullOrNil(paramIntent))
     {
-      AppMethodBeat.o(279164);
+      AppMethodBeat.o(253518);
       return;
     }
     paramIntent = Util.stringsToList(paramIntent.split(","));
     if (paramIntent == null)
     {
-      AppMethodBeat.o(279164);
+      AppMethodBeat.o(253518);
       return;
     }
-    this.Xyz.b(new Runnable()new Runnable
+    this.afkP.b(new Runnable()new Runnable
     {
       public final void run()
       {
-        AppMethodBeat.i(286686);
+        AppMethodBeat.i(253359);
         ArrayList localArrayList = new ArrayList();
-        FinderBlockListUI.this.Xyx = true;
+        FinderBlockListUI.this.afkN = true;
         Iterator localIterator = paramIntent.iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (String)localIterator.next();
           if (!Util.isNullOrNil((String)localObject))
           {
-            bh.beI();
-            localObject = com.tencent.mm.model.c.bbL().RG((String)localObject);
+            bh.bCz();
+            localObject = com.tencent.mm.model.c.bzA().JE((String)localObject);
             FinderContact localFinderContact = new FinderContact();
-            localFinderContact.username = ((ax)localObject).field_username;
-            localFinderContact.coverImgUrl = ((ax)localObject).hDr;
+            localFinderContact.username = ((az)localObject).field_username;
+            localFinderContact.coverImgUrl = ((az)localObject).kam;
             localArrayList.add(localFinderContact);
           }
         }
-        FinderBlockListUI.a(FinderBlockListUI.this, FinderBlockListUI.b(FinderBlockListUI.this).eL(localArrayList));
-        AppMethodBeat.o(286686);
+        FinderBlockListUI.a(FinderBlockListUI.this, FinderBlockListUI.b(FinderBlockListUI.this).hx(localArrayList));
+        AppMethodBeat.o(253359);
       }
     }, new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(291962);
+        AppMethodBeat.i(253344);
         Iterator localIterator = FinderBlockListUI.a(FinderBlockListUI.this).iterator();
         while (localIterator.hasNext())
         {
-          q localq = (q)localIterator.next();
-          com.tencent.mm.kernel.h.aHH();
-          com.tencent.mm.kernel.h.aHF().kcd.a(localq);
+          p localp = (p)localIterator.next();
+          com.tencent.mm.kernel.h.baF();
+          com.tencent.mm.kernel.h.baD().mCm.a(localp);
         }
-        AppMethodBeat.o(291962);
+        AppMethodBeat.o(253344);
       }
     });
-    AppMethodBeat.o(279164);
+    AppMethodBeat.o(253518);
   }
   
   public int getLayoutId()
   {
-    return R.i.ejW;
+    return R.i.gmZ;
   }
   
-  protected final void hVA()
+  protected final void jzC()
   {
-    AppMethodBeat.i(279151);
+    AppMethodBeat.i(253484);
+    if ((this.afkK != null) && (this.afkK.getContactCount() == 0) && (this.afkW != null))
+    {
+      this.afkW.setVisibility(8);
+      AppMethodBeat.o(253484);
+      return;
+    }
+    this.afkW.setVisibility(0);
+    AppMethodBeat.o(253484);
+  }
+  
+  protected final void jzw()
+  {
+    AppMethodBeat.i(253464);
     Intent localIntent = new Intent(this, SelectPrivacyContactsFromRangeUI.class);
     localIntent.putExtra("intent_status_mgr", true);
     localIntent.putExtra("list_type", 16);
@@ -241,10 +269,10 @@ public class FinderBlockListUI
     }
     for (;;)
     {
-      bJ(localIntent);
-      localIntent.putExtra("titile", getResources().getString(R.l.ePd));
+      cm(localIntent);
+      localIntent.putExtra("titile", getResources().getString(R.l.gRF));
       startActivityForResult(localIntent, 2);
-      AppMethodBeat.o(279151);
+      AppMethodBeat.o(253464);
       return;
       if (this.type == 1) {
         localIntent.putExtra("filter_type", "@finder.block.his.liked.android");
@@ -252,97 +280,84 @@ public class FinderBlockListUI
     }
   }
   
-  protected final void hVB()
+  protected final void jzx()
   {
-    AppMethodBeat.i(279153);
+    AppMethodBeat.i(253472);
     Log.i("MicroMsg.FinderBlockListUI", "doCallSelectContactUIForMultiRetransmit");
     Intent localIntent = new Intent();
     localIntent.setClassName(this, "com.tencent.mm.ui.contact.SelectContactUI");
     localIntent.putExtra("list_type", 1);
     localIntent.putExtra("titile", getString(R.l.finder_mod_block_select_user));
-    localIntent.putExtra("always_select_contact", Util.listToString(this.unc, ","));
-    localIntent.putExtra("list_attr", w.XtK);
-    localIntent.putExtra("block_contact", z.bcZ());
-    localIntent.putExtra("max_limit_num", Aox);
+    localIntent.putExtra("always_select_contact", Util.listToString(this.xtu, ","));
+    localIntent.putExtra("list_attr", w.affo);
+    localIntent.putExtra("block_contact", z.bAM());
+    localIntent.putExtra("max_limit_num", FON);
     localIntent.putExtra("Forbid_SelectChatRoom", true);
     localIntent.putExtra("show_too_many_member", false);
     localIntent.putExtra("without_openim", true);
     localIntent.putExtra("filter_type", "@all.contact.without.chatroom.without.openim");
     startActivityForResult(localIntent, 1);
-    AppMethodBeat.o(279153);
-  }
-  
-  protected final void hVG()
-  {
-    AppMethodBeat.i(279158);
-    if ((this.Xyt != null) && (this.Xyt.getContactCount() == 0) && (this.XyG != null))
-    {
-      this.XyG.setVisibility(8);
-      AppMethodBeat.o(279158);
-      return;
-    }
-    this.XyG.setVisibility(0);
-    AppMethodBeat.o(279158);
+    AppMethodBeat.o(253472);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(279150);
+    AppMethodBeat.i(253452);
     this.type = getIntent().getIntExtra("BLOCK_LIST_TYPE", 0);
     if (this.type == 1)
     {
-      this.zAg = new ab();
-      if (this.zAg == null) {
+      this.ECo = new ae();
+      if (this.ECo == null) {
         finish();
       }
       super.onCreate(paramBundle);
-      this.XyG = ((TextView)findViewById(R.h.dXW));
-      if (this.XyG != null)
+      this.afkW = ((TextView)findViewById(R.h.gaC));
+      if (this.afkW != null)
       {
-        this.XyG.setText(this.zAg.dRy());
-        paramBundle = com.tencent.mm.plugin.finder.utils.aj.AGc;
-        com.tencent.mm.plugin.finder.utils.aj.a(this.XyG, new SpannableString(this.zAg.dRy()));
+        this.afkW.setText(this.ECo.gS(this));
+        paramBundle = av.GiL;
+        av.a(this.afkW, new SpannableString(this.ECo.gS(this)));
       }
       if (this.type != 1) {
-        break label181;
+        break label183;
       }
-      this.Xyv = getString(R.l.ePf);
+      this.afkL = getString(R.l.gRH);
     }
     for (;;)
     {
-      d.rE(39);
-      hVK();
-      hVD();
-      AppMethodBeat.o(279150);
+      d.rG(39);
+      jzG();
+      jzz();
+      AppMethodBeat.o(253452);
       return;
       if (this.type != 2) {
         break;
       }
-      this.zAg = new ac();
+      this.ECo = new af();
       break;
-      label181:
+      label183:
       if (this.type == 2) {
-        this.Xyv = getString(R.l.ePe);
+        this.afkL = getString(R.l.gRG);
       }
     }
   }
   
   public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(279160);
+    AppMethodBeat.i(253496);
     Log.i("MicroMsg.FinderBlockListUI", "onNotifyChange: event = " + paramInt + " stg = " + paramMStorageEx + " obj = " + paramObject);
     if (paramInt == 4) {
-      hVE();
+      jzA();
     }
-    AppMethodBeat.o(279160);
+    AppMethodBeat.o(253496);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(279161);
-    super.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
-    this.Xyz.dismiss();
-    paramString = (com.tencent.mm.modelmulti.c)paramq;
+    AppMethodBeat.i(253505);
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramp);
+    this.afkP.dismiss();
+    paramString = (com.tencent.mm.modelmulti.h)paramp;
     if (3990 == paramString.getType())
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
@@ -351,56 +366,56 @@ public class FinderBlockListUI
       Object localObject;
       if (paramString.op == 1)
       {
-        if ((paramString.bnd() != null) && (paramString.bnd().RPN != null))
+        if ((paramString.bKO() != null) && (paramString.bKO().YNb != null))
         {
-          localObject = paramString.bnd().RPN.iterator();
+          localObject = paramString.bKO().YNb.iterator();
           while (((Iterator)localObject).hasNext())
           {
-            cyd localcyd = (cyd)((Iterator)localObject).next();
-            if ((localcyd.TGC != null) && (!Util.isNullOrNil(localcyd.TGC.UserName)) && (!this.unc.contains(localcyd.TGC.UserName))) {
-              this.unc.add(localcyd.TGC.UserName);
+            dpj localdpj = (dpj)((Iterator)localObject).next();
+            if ((localdpj.aaWj != null) && (!Util.isNullOrNil(localdpj.aaWj.UserName)) && (!this.xtu.contains(localdpj.aaWj.UserName))) {
+              this.xtu.add(localdpj.aaWj.UserName);
             }
           }
         }
-        hVE();
+        jzA();
       }
       if (paramString.op == 2)
       {
-        if ((paramString.bnd() != null) && (paramString.bnd().RPN != null))
+        if ((paramString.bKO() != null) && (paramString.bKO().YNb != null))
         {
-          paramString = paramString.bnd().RPN.iterator();
+          paramString = paramString.bKO().YNb.iterator();
           while (paramString.hasNext())
           {
-            localObject = (cyd)paramString.next();
-            if ((((cyd)localObject).TGC != null) && (!Util.isNullOrNil(((cyd)localObject).TGC.UserName)) && (this.unc.contains(((cyd)localObject).TGC.UserName))) {
-              this.unc.remove(((cyd)localObject).TGC.UserName);
+            localObject = (dpj)paramString.next();
+            if ((((dpj)localObject).aaWj != null) && (!Util.isNullOrNil(((dpj)localObject).aaWj.UserName)) && (this.xtu.contains(((dpj)localObject).aaWj.UserName))) {
+              this.xtu.remove(((dpj)localObject).aaWj.UserName);
             }
           }
         }
-        hVE();
+        jzA();
       }
-      if (this.XyF.contains(paramq))
+      if (this.afkV.contains(paramp))
       {
-        this.XyF.remove(paramq);
-        if (this.XyF.isEmpty()) {
-          hVH();
+        this.afkV.remove(paramp);
+        if (this.afkV.isEmpty()) {
+          jzD();
         }
       }
     }
     for (;;)
     {
-      hVE();
+      jzA();
       label358:
       do
       {
-        this.Xyw = false;
-        this.Xyx = false;
-        AppMethodBeat.o(279161);
+        this.afkM = false;
+        this.afkN = false;
+        AppMethodBeat.o(253505);
         return;
-      } while (!this.XyF.contains(paramq));
-      this.XyF.remove(paramq);
-      if (this.XyF.isEmpty()) {
-        hVI();
+      } while (!this.afkV.contains(paramp));
+      this.afkV.remove(paramp);
+      if (this.afkV.isEmpty()) {
+        jzE();
       }
     }
   }
@@ -411,19 +426,6 @@ public class FinderBlockListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  protected final void updateTitle()
-  {
-    AppMethodBeat.i(279159);
-    if ((this.Xyt != null) && (this.Xyt.getContactCount() > 0))
-    {
-      setMMTitle(this.TTU + "(" + this.Xyt.getContactCount() + ")");
-      AppMethodBeat.o(279159);
-      return;
-    }
-    setMMTitle(this.TTU);
-    AppMethodBeat.o(279159);
-  }
-  
   final class a
     extends ContactMgrUIBase.a
   {
@@ -432,29 +434,29 @@ public class FinderBlockListUI
       super(paramo);
     }
     
-    protected final com.tencent.mm.ui.contact.a.a dm(int paramInt, String paramString)
+    protected final com.tencent.mm.ui.contact.a.a cf(int paramInt, String paramString)
     {
-      AppMethodBeat.i(270247);
+      AppMethodBeat.i(253321);
       j localj = new j(paramInt);
       localj.header = paramString;
-      AppMethodBeat.o(270247);
+      AppMethodBeat.o(253321);
       return localj;
     }
     
-    public final String hVC()
+    public final String jzy()
     {
-      AppMethodBeat.i(270246);
+      AppMethodBeat.i(253312);
       if (FinderBlockListUI.c(FinderBlockListUI.this) == 2)
       {
-        AppMethodBeat.o(270246);
+        AppMethodBeat.o(253312);
         return "@finder.block.my.liked.android";
       }
       if (FinderBlockListUI.c(FinderBlockListUI.this) == 1)
       {
-        AppMethodBeat.o(270246);
+        AppMethodBeat.o(253312);
         return "@finder.block.his.liked.android";
       }
-      AppMethodBeat.o(270246);
+      AppMethodBeat.o(253312);
       return null;
     }
   }

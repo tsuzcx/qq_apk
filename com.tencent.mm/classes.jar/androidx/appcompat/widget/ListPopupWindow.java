@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.database.DataSetObserver;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -30,72 +29,71 @@ import android.widget.PopupWindow.OnDismissListener;
 import androidx.appcompat.a.a;
 import androidx.appcompat.a.j;
 import androidx.appcompat.view.menu.s;
-import androidx.core.g.e;
-import androidx.core.g.w;
-import androidx.core.widget.g;
+import androidx.core.g.z;
+import androidx.core.widget.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 
 public class ListPopupWindow
   implements s
 {
-  private static Method sV;
-  private static Method sW;
-  private static Method sX;
-  private ListAdapter eP;
-  public int lI;
+  private static Method tU;
+  private static Method tV;
+  private static Method tW;
+  private ListAdapter fR;
   private Context mContext;
+  public int mE;
   final Handler mHandler;
   private DataSetObserver mObserver;
   private final Rect mTempRect;
-  public Rect nq;
-  private boolean qU;
-  public int rj;
-  public p sY;
-  private int sZ;
-  public int ta;
-  private int tb;
-  private int tc;
-  private boolean td;
-  private boolean te;
-  private boolean tf;
-  private boolean tg;
-  private boolean th;
-  int ti;
-  private View tj;
-  private int tk;
-  public View tl;
-  private Drawable tn;
-  public AdapterView.OnItemClickListener tp;
-  private AdapterView.OnItemSelectedListener tq;
-  final e tr;
-  private final d tt;
-  private final c tu;
-  private final a tv;
-  private Runnable tw;
-  public boolean tx;
-  public PopupWindow ty;
+  public Rect om;
+  private boolean rR;
+  private int sh;
+  public p tX;
+  private int tY;
+  public int tZ;
+  private int ua;
+  private int ub;
+  private boolean uc;
+  private boolean ud;
+  private boolean ue;
+  private boolean uf;
+  private boolean ug;
+  int uh;
+  private View uj;
+  private int uk;
+  public View ul;
+  private Drawable um;
+  public AdapterView.OnItemClickListener un;
+  private AdapterView.OnItemSelectedListener uo;
+  final e uq;
+  private final d ur;
+  private final c ut;
+  private final a uu;
+  private Runnable uv;
+  public boolean uw;
+  public PopupWindow ux;
   
   static
   {
-    AppMethodBeat.i(241427);
+    AppMethodBeat.i(199734);
     try
     {
-      sV = PopupWindow.class.getDeclaredMethod("setClipToScreenEnabled", new Class[] { Boolean.TYPE });
+      tU = PopupWindow.class.getDeclaredMethod("setClipToScreenEnabled", new Class[] { Boolean.TYPE });
       try
       {
         label25:
-        sW = PopupWindow.class.getDeclaredMethod("getMaxAvailableHeight", new Class[] { View.class, Integer.TYPE, Boolean.TYPE });
+        tV = PopupWindow.class.getDeclaredMethod("getMaxAvailableHeight", new Class[] { View.class, Integer.TYPE, Boolean.TYPE });
         try
         {
           label56:
-          sX = PopupWindow.class.getDeclaredMethod("setEpicenterBounds", new Class[] { Rect.class });
-          AppMethodBeat.o(241427);
+          tW = PopupWindow.class.getDeclaredMethod("setEpicenterBounds", new Class[] { Rect.class });
+          AppMethodBeat.o(199734);
           return;
         }
         catch (NoSuchMethodException localNoSuchMethodException1)
         {
-          AppMethodBeat.o(241427);
+          AppMethodBeat.o(199734);
           return;
         }
       }
@@ -127,238 +125,223 @@ public class ListPopupWindow
   
   public ListPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241408);
-    this.sZ = -2;
-    this.rj = -2;
-    this.tc = 1002;
-    this.te = true;
-    this.lI = 0;
-    this.tg = false;
-    this.th = false;
-    this.ti = 2147483647;
-    this.tk = 0;
-    this.tr = new e();
-    this.tt = new d();
-    this.tu = new c();
-    this.tv = new a();
+    AppMethodBeat.i(199694);
+    this.tY = -2;
+    this.sh = -2;
+    this.ub = 1002;
+    this.ud = true;
+    this.mE = 0;
+    this.uf = false;
+    this.ug = false;
+    this.uh = 2147483647;
+    this.uk = 0;
+    this.uq = new e();
+    this.ur = new d();
+    this.ut = new c();
+    this.uu = new a();
     this.mTempRect = new Rect();
     this.mContext = paramContext;
     this.mHandler = new Handler(paramContext.getMainLooper());
     TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ListPopupWindow, paramInt1, paramInt2);
-    this.ta = localTypedArray.getDimensionPixelOffset(a.j.ListPopupWindow_android_dropDownHorizontalOffset, 0);
-    this.tb = localTypedArray.getDimensionPixelOffset(a.j.ListPopupWindow_android_dropDownVerticalOffset, 0);
-    if (this.tb != 0) {
-      this.td = true;
+    this.tZ = localTypedArray.getDimensionPixelOffset(a.j.ListPopupWindow_android_dropDownHorizontalOffset, 0);
+    this.ua = localTypedArray.getDimensionPixelOffset(a.j.ListPopupWindow_android_dropDownVerticalOffset, 0);
+    if (this.ua != 0) {
+      this.uc = true;
     }
     localTypedArray.recycle();
-    this.ty = new AppCompatPopupWindow(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    this.ty.setInputMethodMode(1);
-    AppMethodBeat.o(241408);
+    this.ux = new AppCompatPopupWindow(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    this.ux.setInputMethodMode(1);
+    AppMethodBeat.o(199694);
   }
   
   private int a(View paramView, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(241426);
-    if (sW != null) {
+    AppMethodBeat.i(199723);
+    if (tV != null) {
       try
       {
-        int i = ((Integer)sW.invoke(this.ty, new Object[] { paramView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) })).intValue();
-        AppMethodBeat.o(241426);
+        int i = ((Integer)tV.invoke(this.ux, new Object[] { paramView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) })).intValue();
+        AppMethodBeat.o(199723);
         return i;
       }
       catch (Exception localException) {}
     }
-    paramInt = this.ty.getMaxAvailableHeight(paramView, paramInt);
-    AppMethodBeat.o(241426);
+    paramInt = this.ux.getMaxAvailableHeight(paramView, paramInt);
+    AppMethodBeat.o(199723);
     return paramInt;
   }
   
-  private void dM()
+  private void eM()
   {
-    AppMethodBeat.i(241420);
-    if (this.tj != null)
+    AppMethodBeat.i(199709);
+    if (this.uj != null)
     {
-      ViewParent localViewParent = this.tj.getParent();
+      ViewParent localViewParent = this.uj.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.tj);
+        ((ViewGroup)localViewParent).removeView(this.uj);
       }
     }
-    AppMethodBeat.o(241420);
+    AppMethodBeat.o(199709);
   }
   
-  public final void P(boolean paramBoolean)
+  public final void ad(int paramInt)
   {
-    AppMethodBeat.i(241412);
-    this.tx = paramBoolean;
-    this.ty.setFocusable(paramBoolean);
-    AppMethodBeat.o(241412);
+    this.ua = paramInt;
+    this.uc = true;
   }
   
-  public final void ah(int paramInt)
+  public final void dismiss()
   {
-    this.tb = paramInt;
-    this.td = true;
+    AppMethodBeat.i(199906);
+    this.ux.dismiss();
+    eM();
+    this.ux.setContentView(null);
+    this.tX = null;
+    this.mHandler.removeCallbacks(this.uq);
+    AppMethodBeat.o(199906);
   }
   
-  public final void ax(int paramInt)
+  public final void eJ()
   {
-    AppMethodBeat.i(241414);
-    this.ty.setAnimationStyle(paramInt);
-    AppMethodBeat.o(241414);
+    this.uk = 0;
   }
   
-  public final void dK()
+  public final void eK()
   {
-    this.tk = 0;
+    AppMethodBeat.i(199770);
+    this.uw = true;
+    this.ux.setFocusable(true);
+    AppMethodBeat.o(199770);
   }
   
-  public final int dL()
+  public final int eL()
   {
-    if (!this.td) {
+    if (!this.uc) {
       return 0;
     }
-    return this.tb;
+    return this.ua;
   }
   
-  public final void dN()
+  public final void eN()
   {
-    AppMethodBeat.i(241421);
-    this.ty.setInputMethodMode(2);
-    AppMethodBeat.o(241421);
+    AppMethodBeat.i(199929);
+    this.ux.setInputMethodMode(2);
+    AppMethodBeat.o(199929);
   }
   
-  public final void dO()
+  public final void eO()
   {
-    AppMethodBeat.i(241422);
-    p localp = this.sY;
+    AppMethodBeat.i(199941);
+    p localp = this.tX;
     if (localp != null)
     {
       localp.setListSelectionHidden(true);
       localp.requestLayout();
     }
-    AppMethodBeat.o(241422);
+    AppMethodBeat.o(199941);
   }
   
-  public final boolean dP()
+  public final boolean eP()
   {
-    AppMethodBeat.i(241424);
-    if (this.ty.getInputMethodMode() == 2)
+    AppMethodBeat.i(199966);
+    if (this.ux.getInputMethodMode() == 2)
     {
-      AppMethodBeat.o(241424);
+      AppMethodBeat.o(199966);
       return true;
     }
-    AppMethodBeat.o(241424);
+    AppMethodBeat.o(199966);
     return false;
   }
   
-  public final void dQ()
+  public final void eQ()
   {
-    this.tf = true;
-    this.qU = true;
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(241418);
-    this.ty.dismiss();
-    dM();
-    this.ty.setContentView(null);
-    this.sY = null;
-    this.mHandler.removeCallbacks(this.tr);
-    AppMethodBeat.o(241418);
+    this.ue = true;
+    this.rR = true;
   }
   
   public final ListView getListView()
   {
-    return this.sY;
+    return this.tX;
+  }
+  
+  public final int getWidth()
+  {
+    return this.sh;
   }
   
   p h(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(241425);
+    AppMethodBeat.i(199992);
     paramContext = new p(paramContext, paramBoolean);
-    AppMethodBeat.o(241425);
+    AppMethodBeat.o(199992);
     return paramContext;
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(292988);
-    boolean bool = this.ty.isShowing();
-    AppMethodBeat.o(292988);
+    AppMethodBeat.i(369509);
+    boolean bool = this.ux.isShowing();
+    AppMethodBeat.o(369509);
     return bool;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    AppMethodBeat.i(241410);
+    AppMethodBeat.i(199745);
     if (this.mObserver == null) {
       this.mObserver = new b();
     }
     for (;;)
     {
-      this.eP = paramListAdapter;
+      this.fR = paramListAdapter;
       if (paramListAdapter != null) {
         paramListAdapter.registerDataSetObserver(this.mObserver);
       }
-      if (this.sY != null) {
-        this.sY.setAdapter(this.eP);
+      if (this.tX != null) {
+        this.tX.setAdapter(this.fR);
       }
-      AppMethodBeat.o(241410);
+      AppMethodBeat.o(199745);
       return;
-      if (this.eP != null) {
-        this.eP.unregisterDataSetObserver(this.mObserver);
+      if (this.fR != null) {
+        this.fR.unregisterDataSetObserver(this.mObserver);
       }
     }
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241413);
-    this.ty.setBackgroundDrawable(paramDrawable);
-    AppMethodBeat.o(241413);
+    AppMethodBeat.i(199782);
+    this.ux.setBackgroundDrawable(paramDrawable);
+    AppMethodBeat.o(199782);
   }
   
   public final void setContentWidth(int paramInt)
   {
-    AppMethodBeat.i(241415);
-    Drawable localDrawable = this.ty.getBackground();
+    AppMethodBeat.i(199838);
+    Drawable localDrawable = this.ux.getBackground();
     if (localDrawable != null)
     {
       localDrawable.getPadding(this.mTempRect);
-      this.rj = (this.mTempRect.left + this.mTempRect.right + paramInt);
-      AppMethodBeat.o(241415);
+      this.sh = (this.mTempRect.left + this.mTempRect.right + paramInt);
+      AppMethodBeat.o(199838);
       return;
     }
-    this.rj = paramInt;
-    AppMethodBeat.o(241415);
-  }
-  
-  public final void setHeight(int paramInt)
-  {
-    AppMethodBeat.i(241416);
-    if ((paramInt < 0) && (-2 != paramInt) && (-1 != paramInt))
-    {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid height. Must be a positive value, MATCH_PARENT, or WRAP_CONTENT.");
-      AppMethodBeat.o(241416);
-      throw localIllegalArgumentException;
-    }
-    this.sZ = paramInt;
-    AppMethodBeat.o(241416);
+    this.sh = paramInt;
+    AppMethodBeat.o(199838);
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    AppMethodBeat.i(241419);
-    this.ty.setOnDismissListener(paramOnDismissListener);
-    AppMethodBeat.o(241419);
+    AppMethodBeat.i(199920);
+    this.ux.setOnDismissListener(paramOnDismissListener);
+    AppMethodBeat.o(199920);
   }
   
   public void show()
   {
     boolean bool3 = true;
     boolean bool2 = true;
-    AppMethodBeat.i(241417);
+    AppMethodBeat.i(199894);
     Object localObject2;
     boolean bool1;
     Object localObject1;
@@ -367,69 +350,69 @@ public class ListPopupWindow
     label250:
     int i;
     int j;
-    if (this.sY == null)
+    if (this.tX == null)
     {
       localObject2 = this.mContext;
-      this.tw = new Runnable()
+      this.uv = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(241370);
-          View localView = ListPopupWindow.this.tl;
+          AppMethodBeat.i(199385);
+          View localView = ListPopupWindow.this.ul;
           if ((localView != null) && (localView.getWindowToken() != null)) {
             ListPopupWindow.this.show();
           }
-          AppMethodBeat.o(241370);
+          AppMethodBeat.o(199385);
         }
       };
-      if (!this.tx)
+      if (!this.uw)
       {
         bool1 = true;
-        this.sY = h((Context)localObject2, bool1);
-        if (this.tn != null) {
-          this.sY.setSelector(this.tn);
+        this.tX = h((Context)localObject2, bool1);
+        if (this.um != null) {
+          this.tX.setSelector(this.um);
         }
-        this.sY.setAdapter(this.eP);
-        this.sY.setOnItemClickListener(this.tp);
-        this.sY.setFocusable(true);
-        this.sY.setFocusableInTouchMode(true);
-        this.sY.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        this.tX.setAdapter(this.fR);
+        this.tX.setOnItemClickListener(this.un);
+        this.tX.setFocusable(true);
+        this.tX.setFocusableInTouchMode(true);
+        this.tX.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
           public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
-            AppMethodBeat.i(241372);
+            AppMethodBeat.i(199410);
             if (paramAnonymousInt != -1)
             {
-              paramAnonymousAdapterView = ListPopupWindow.this.sY;
+              paramAnonymousAdapterView = ListPopupWindow.this.tX;
               if (paramAnonymousAdapterView != null) {
                 paramAnonymousAdapterView.setListSelectionHidden(false);
               }
             }
-            AppMethodBeat.o(241372);
+            AppMethodBeat.o(199410);
           }
           
           public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
         });
-        this.sY.setOnScrollListener(this.tu);
-        if (this.tq != null) {
-          this.sY.setOnItemSelectedListener(this.tq);
+        this.tX.setOnScrollListener(this.ut);
+        if (this.uo != null) {
+          this.tX.setOnItemSelectedListener(this.uo);
         }
-        localObject1 = this.sY;
-        localView = this.tj;
+        localObject1 = this.tX;
+        localView = this.uj;
         if (localView == null) {
-          break label1375;
+          break label1306;
         }
         localObject2 = new LinearLayout((Context)localObject2);
         ((LinearLayout)localObject2).setOrientation(1);
         localLayoutParams = new LinearLayout.LayoutParams(-1, 0, 1.0F);
-        switch (this.tk)
+        switch (this.uk)
         {
         default: 
-          new StringBuilder("Invalid hint position ").append(this.tk);
-          if (this.rj >= 0)
+          new StringBuilder("Invalid hint position ").append(this.uk);
+          if (this.sh >= 0)
           {
             i = -2147483648;
-            j = this.rj;
+            j = this.sh;
             label266:
             localView.measure(View.MeasureSpec.makeMeasureSpec(j, i), 0);
             localObject1 = (LinearLayout.LayoutParams)localView.getLayoutParams();
@@ -442,49 +425,44 @@ public class ListPopupWindow
     }
     for (;;)
     {
-      this.ty.setContentView((View)localObject1);
-      label780:
-      label801:
-      label934:
-      label939:
-      label1068:
+      this.ux.setContentView((View)localObject1);
       for (;;)
       {
         label318:
-        localObject1 = this.ty.getBackground();
+        localObject1 = this.ux.getBackground();
         if (localObject1 != null)
         {
           ((Drawable)localObject1).getPadding(this.mTempRect);
           j = this.mTempRect.top + this.mTempRect.bottom;
-          if (this.td) {
-            break label1367;
+          if (this.uc) {
+            break label1298;
           }
-          this.tb = (-this.mTempRect.top);
+          this.ua = (-this.mTempRect.top);
         }
-        label590:
-        label982:
-        label1367:
+        label780:
+        label1295:
+        label1298:
         for (;;)
         {
           label377:
-          if (this.ty.getInputMethodMode() == 2) {}
+          if (this.ux.getInputMethodMode() == 2) {}
           int m;
           for (bool1 = true;; bool1 = false)
           {
-            m = a(this.tl, this.tb, bool1);
-            if ((!this.tg) && (this.sZ != -1)) {
+            m = a(this.ul, this.ua, bool1);
+            if ((!this.uf) && (this.tY != -1)) {
               break label590;
             }
             i = m + j;
-            bool1 = dP();
-            g.a(this.ty, this.tc);
-            if (!this.ty.isShowing()) {
+            bool1 = eP();
+            h.a(this.ux, this.ub);
+            if (!this.ux.isShowing()) {
               break label1005;
             }
-            if (w.al(this.tl)) {
+            if (z.ay(this.ul)) {
               break label757;
             }
-            AppMethodBeat.o(241417);
+            AppMethodBeat.o(199894);
             return;
             bool1 = false;
             break;
@@ -497,10 +475,10 @@ public class ListPopupWindow
             i = 0;
             j = 0;
             break label266;
-            this.ty.getContentView();
-            localObject1 = this.tj;
+            this.ux.getContentView();
+            localObject1 = this.uj;
             if (localObject1 == null) {
-              break label1370;
+              break label1301;
             }
             localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
             i = ((View)localObject1).getMeasuredHeight() + ((LinearLayout.LayoutParams)localObject2).topMargin + ((LinearLayout.LayoutParams)localObject2).bottomMargin;
@@ -509,18 +487,19 @@ public class ListPopupWindow
             j = 0;
             break label377;
           }
+          label590:
           int k;
-          switch (this.rj)
+          switch (this.sh)
           {
           default: 
-            k = View.MeasureSpec.makeMeasureSpec(this.rj, 1073741824);
+            k = View.MeasureSpec.makeMeasureSpec(this.sh, 1073741824);
           }
           for (;;)
           {
-            m = this.sY.d(k, 0, -1, m - i, -1);
+            m = this.tX.d(k, 0, -1, m - i, -1);
             k = i;
             if (m > 0) {
-              k = i + (this.sY.getPaddingTop() + this.sY.getPaddingBottom() + j);
+              k = i + (this.tX.getPaddingTop() + this.tX.getPaddingBottom() + j);
             }
             i = m + k;
             break;
@@ -529,10 +508,10 @@ public class ListPopupWindow
             k = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
           }
           label757:
-          if (this.rj == -1)
+          if (this.sh == -1)
           {
             j = -1;
-            if (this.sZ != -1) {
+            if (this.tY != -1) {
               break label982;
             }
             if (!bool1) {
@@ -541,25 +520,27 @@ public class ListPopupWindow
             if (!bool1) {
               break label944;
             }
-            localObject1 = this.ty;
-            if (this.rj != -1) {
+            localObject1 = this.ux;
+            if (this.sh != -1) {
               break label939;
             }
             k = -1;
             ((PopupWindow)localObject1).setWidth(k);
-            this.ty.setHeight(0);
+            this.ux.setHeight(0);
           }
           for (;;)
           {
-            localObject1 = this.ty;
-            if ((!this.th) && (!this.tg)) {}
+            label801:
+            label815:
+            localObject1 = this.ux;
+            if ((!this.ug) && (!this.uf)) {}
             for (bool1 = bool2;; bool1 = false)
             {
               ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-              localObject1 = this.ty;
-              localObject2 = this.tl;
-              m = this.ta;
-              int n = this.tb;
+              localObject1 = this.ux;
+              localObject2 = this.ul;
+              m = this.tZ;
+              int n = this.ua;
               k = j;
               if (j < 0) {
                 k = -1;
@@ -569,101 +550,92 @@ public class ListPopupWindow
                 j = -1;
               }
               ((PopupWindow)localObject1).update((View)localObject2, m, n, k, j);
-              AppMethodBeat.o(241417);
+              AppMethodBeat.o(199894);
               return;
-              if (this.rj == -2)
+              if (this.sh == -2)
               {
-                j = this.tl.getWidth();
+                j = this.ul.getWidth();
                 break;
               }
-              j = this.rj;
+              j = this.sh;
               break;
+              label934:
               i = -1;
               break label780;
+              label939:
               k = 0;
               break label801;
-              localObject1 = this.ty;
-              if (this.rj == -1) {}
+              label944:
+              localObject1 = this.ux;
+              if (this.sh == -1) {}
               for (k = -1;; k = 0)
               {
                 ((PopupWindow)localObject1).setWidth(k);
-                this.ty.setHeight(-1);
+                this.ux.setHeight(-1);
                 break;
               }
-              if (this.sZ == -2) {
-                break label1364;
+              label982:
+              if (this.tY == -2) {
+                break label1295;
               }
-              i = this.sZ;
+              i = this.tY;
               break label815;
             }
             label1005:
-            if (this.rj == -1) {
+            if (this.sh == -1) {
               j = -1;
             }
             for (;;)
             {
-              if (this.sZ == -1)
+              if (this.tY == -1)
               {
                 i = -1;
-                this.ty.setWidth(j);
-                this.ty.setHeight(i);
-                if (sV == null) {}
+                this.ux.setWidth(j);
+                this.ux.setHeight(i);
+                if (tU == null) {}
               }
               try
               {
-                sV.invoke(this.ty, new Object[] { Boolean.TRUE });
-                localObject1 = this.ty;
-                if ((!this.th) && (!this.tg))
+                tU.invoke(this.ux, new Object[] { Boolean.TRUE });
+                label1068:
+                localObject1 = this.ux;
+                if ((!this.ug) && (!this.uf))
                 {
                   bool1 = bool3;
                   ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-                  this.ty.setTouchInterceptor(this.tt);
-                  if (this.tf) {
-                    g.a(this.ty, this.qU);
+                  this.ux.setTouchInterceptor(this.ur);
+                  if (this.ue) {
+                    h.a(this.ux, this.rR);
                   }
-                  if (sX == null) {}
+                  if (tW == null) {}
                 }
                 try
                 {
-                  sX.invoke(this.ty, new Object[] { this.nq });
-                  localObject1 = this.ty;
-                  localObject2 = this.tl;
-                  j = this.ta;
-                  k = this.tb;
-                  m = this.lI;
-                  if (Build.VERSION.SDK_INT >= 19) {
-                    ((PopupWindow)localObject1).showAsDropDown((View)localObject2, j, k, m);
+                  tW.invoke(this.ux, new Object[] { this.om });
+                  h.a(this.ux, this.ul, this.tZ, this.ua, this.mE);
+                  this.tX.setSelection(-1);
+                  if ((!this.uw) || (this.tX.isInTouchMode())) {
+                    eO();
                   }
-                  for (;;)
+                  if (!this.uw) {
+                    this.mHandler.post(this.uu);
+                  }
+                  AppMethodBeat.o(199894);
+                  return;
+                  if (this.sh == -2)
                   {
-                    this.sY.setSelection(-1);
-                    if ((!this.tx) || (this.sY.isInTouchMode())) {
-                      dO();
-                    }
-                    if (!this.tx) {
-                      this.mHandler.post(this.tv);
-                    }
-                    AppMethodBeat.o(241417);
-                    return;
-                    if (this.rj == -2)
-                    {
-                      j = this.tl.getWidth();
-                      break;
-                    }
-                    j = this.rj;
-                    break;
-                    if (this.sZ == -2) {
+                    j = this.ul.getWidth();
+                  }
+                  else
+                  {
+                    j = this.sh;
+                    continue;
+                    if (this.tY == -2) {
                       break label1025;
                     }
-                    i = this.sZ;
+                    i = this.tY;
                     break label1025;
                     bool1 = false;
-                    break label1092;
-                    i = j;
-                    if ((e.D(m, w.I((View)localObject2)) & 0x7) == 5) {
-                      i = j - (((PopupWindow)localObject1).getWidth() - ((View)localObject2).getWidth());
-                    }
-                    ((PopupWindow)localObject1).showAsDropDown((View)localObject2, i, k);
                   }
                 }
                 catch (Exception localException1)
@@ -678,16 +650,12 @@ public class ListPopupWindow
             }
           }
         }
-        label815:
-        label944:
-        label1092:
-        label1364:
-        label1370:
+        label1025:
+        label1156:
+        label1301:
         i = 0;
       }
-      label1025:
-      label1156:
-      label1375:
+      label1306:
       i = 0;
     }
   }
@@ -699,9 +667,9 @@ public class ListPopupWindow
     
     public final void run()
     {
-      AppMethodBeat.i(241373);
-      ListPopupWindow.this.dO();
-      AppMethodBeat.o(241373);
+      AppMethodBeat.i(200262);
+      ListPopupWindow.this.eO();
+      AppMethodBeat.o(200262);
     }
   }
   
@@ -712,18 +680,18 @@ public class ListPopupWindow
     
     public final void onChanged()
     {
-      AppMethodBeat.i(241376);
-      if (ListPopupWindow.this.ty.isShowing()) {
+      AppMethodBeat.i(200258);
+      if (ListPopupWindow.this.ux.isShowing()) {
         ListPopupWindow.this.show();
       }
-      AppMethodBeat.o(241376);
+      AppMethodBeat.o(200258);
     }
     
     public final void onInvalidated()
     {
-      AppMethodBeat.i(241378);
+      AppMethodBeat.i(200263);
       ListPopupWindow.this.dismiss();
-      AppMethodBeat.o(241378);
+      AppMethodBeat.o(200263);
     }
   }
   
@@ -736,13 +704,13 @@ public class ListPopupWindow
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
     {
-      AppMethodBeat.i(241385);
-      if ((paramInt == 1) && (!ListPopupWindow.this.dP()) && (ListPopupWindow.this.ty.getContentView() != null))
+      AppMethodBeat.i(200267);
+      if ((paramInt == 1) && (!ListPopupWindow.this.eP()) && (ListPopupWindow.this.ux.getContentView() != null))
       {
-        ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.tr);
-        ListPopupWindow.this.tr.run();
+        ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.uq);
+        ListPopupWindow.this.uq.run();
       }
-      AppMethodBeat.o(241385);
+      AppMethodBeat.o(200267);
     }
   }
   
@@ -753,19 +721,19 @@ public class ListPopupWindow
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(241389);
+      AppMethodBeat.i(200251);
       int i = paramMotionEvent.getAction();
       int j = (int)paramMotionEvent.getX();
       int k = (int)paramMotionEvent.getY();
-      if ((i == 0) && (ListPopupWindow.this.ty != null) && (ListPopupWindow.this.ty.isShowing()) && (j >= 0) && (j < ListPopupWindow.this.ty.getWidth()) && (k >= 0) && (k < ListPopupWindow.this.ty.getHeight())) {
-        ListPopupWindow.this.mHandler.postDelayed(ListPopupWindow.this.tr, 250L);
+      if ((i == 0) && (ListPopupWindow.this.ux != null) && (ListPopupWindow.this.ux.isShowing()) && (j >= 0) && (j < ListPopupWindow.this.ux.getWidth()) && (k >= 0) && (k < ListPopupWindow.this.ux.getHeight())) {
+        ListPopupWindow.this.mHandler.postDelayed(ListPopupWindow.this.uq, 250L);
       }
       for (;;)
       {
-        AppMethodBeat.o(241389);
+        AppMethodBeat.o(200251);
         return false;
         if (i == 1) {
-          ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.tr);
+          ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.uq);
         }
       }
     }
@@ -778,19 +746,19 @@ public class ListPopupWindow
     
     public final void run()
     {
-      AppMethodBeat.i(241392);
-      if ((ListPopupWindow.this.sY != null) && (w.al(ListPopupWindow.this.sY)) && (ListPopupWindow.this.sY.getCount() > ListPopupWindow.this.sY.getChildCount()) && (ListPopupWindow.this.sY.getChildCount() <= ListPopupWindow.this.ti))
+      AppMethodBeat.i(200244);
+      if ((ListPopupWindow.this.tX != null) && (z.ay(ListPopupWindow.this.tX)) && (ListPopupWindow.this.tX.getCount() > ListPopupWindow.this.tX.getChildCount()) && (ListPopupWindow.this.tX.getChildCount() <= ListPopupWindow.this.uh))
       {
-        ListPopupWindow.this.ty.setInputMethodMode(2);
+        ListPopupWindow.this.ux.setInputMethodMode(2);
         ListPopupWindow.this.show();
       }
-      AppMethodBeat.o(241392);
+      AppMethodBeat.o(200244);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.ListPopupWindow
  * JD-Core Version:    0.7.0.1
  */

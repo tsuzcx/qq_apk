@@ -19,84 +19,84 @@ import com.tencent.mm.plugin.scanner.l.c;
 public class ScanMaskView
   extends View
 {
-  private Rect IRA;
-  private Rect IRB;
-  private Rect IRC;
-  private Rect IRD;
-  private Rect IRE;
-  private Rect IRF;
-  private Rect IRG;
-  private Rect IRH;
-  private Rect IRI;
-  private int IRJ;
-  private long IRK;
-  private boolean IRL;
-  private int IRM;
-  private float IRN;
-  private float IRO;
-  private float IRP;
-  private float IRQ;
-  private Paint IRR;
-  private ValueAnimator IRS;
-  private a IRT;
-  private Bitmap IRs;
-  private Bitmap IRt;
-  private Bitmap IRu;
-  private Bitmap IRv;
-  int IRw;
-  int IRx;
-  private boolean IRy;
-  private Rect IRz;
+  private Rect PaA;
+  private Rect PaB;
+  private Rect PaC;
+  private Rect PaD;
+  private int PaE;
+  private long PaF;
+  private boolean PaG;
+  private int PaH;
+  private float PaI;
+  private float PaJ;
+  private float PaK;
+  private float PaL;
+  private Paint PaM;
+  private ValueAnimator PaN;
+  private a PaO;
+  private Bitmap Pan;
+  private Bitmap Pao;
+  private Bitmap Pap;
+  private Bitmap Paq;
+  int Par;
+  int Pas;
+  private boolean Pat;
+  private Rect Pau;
+  private Rect Pav;
+  private Rect Paw;
+  private Rect Pax;
+  private Rect Pay;
+  private Rect Paz;
   private Paint mPaint;
-  private Path uWB;
+  private Path yjb;
   
   public ScanMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51913);
-    this.IRs = null;
-    this.IRt = null;
-    this.IRu = null;
-    this.IRv = null;
-    this.IRw = 0;
-    this.IRx = 0;
-    this.IRy = false;
-    this.IRz = new Rect();
-    this.IRA = new Rect();
-    this.IRB = new Rect();
-    this.IRC = new Rect();
-    this.IRD = new Rect();
-    this.IRE = new Rect();
-    this.IRF = new Rect();
-    this.IRG = new Rect();
-    this.IRH = new Rect();
-    this.uWB = new Path();
-    this.IRJ = l.c.scan_mask_bg_color;
-    this.IRK = 0L;
-    this.IRL = false;
-    this.IRM = 300;
-    this.IRN = 0.0F;
-    this.IRO = 0.0F;
-    this.IRP = 0.0F;
-    this.IRQ = 0.0F;
-    this.IRS = null;
+    this.Pan = null;
+    this.Pao = null;
+    this.Pap = null;
+    this.Paq = null;
+    this.Par = 0;
+    this.Pas = 0;
+    this.Pat = false;
+    this.Pau = new Rect();
+    this.Pav = new Rect();
+    this.Paw = new Rect();
+    this.Pax = new Rect();
+    this.Pay = new Rect();
+    this.Paz = new Rect();
+    this.PaA = new Rect();
+    this.PaB = new Rect();
+    this.PaC = new Rect();
+    this.yjb = new Path();
+    this.PaE = l.c.scan_mask_bg_color;
+    this.PaF = 0L;
+    this.PaG = false;
+    this.PaH = 300;
+    this.PaI = 0.0F;
+    this.PaJ = 0.0F;
+    this.PaK = 0.0F;
+    this.PaL = 0.0F;
+    this.PaN = null;
     AppMethodBeat.o(51913);
   }
   
   public int getMaskAnimDuration()
   {
-    return this.IRM;
+    return this.PaH;
   }
   
   public Rect getMaskRect()
   {
-    return this.IRI;
+    return this.PaD;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(51914);
-    if ((this.IRI == null) || (this.IRy))
+    if ((this.PaD == null) || (this.Pat))
     {
       AppMethodBeat.o(51914);
       return;
@@ -105,71 +105,71 @@ public class ScanMaskView
     System.currentTimeMillis();
     int i = paramCanvas.save();
     this.mPaint.reset();
-    if (d.qW(18))
+    if (d.rc(18))
     {
-      this.IRE.left = 0;
-      this.IRE.top = this.IRI.top;
-      this.IRE.right = this.IRI.left;
-      this.IRE.bottom = this.IRI.bottom;
-      this.IRF.left = this.IRI.left;
-      this.IRF.top = 0;
-      this.IRF.right = this.IRI.right;
-      this.IRF.bottom = this.IRI.top;
-      this.IRG.left = this.IRI.right;
-      this.IRG.top = this.IRI.top;
-      this.IRG.right = getWidth();
-      this.IRG.bottom = this.IRI.bottom;
-      this.IRH.left = this.IRI.left;
-      this.IRH.top = this.IRI.bottom;
-      this.IRH.right = this.IRI.right;
-      this.IRH.bottom = getHeight();
-      this.IRA.left = 0;
-      this.IRA.top = 0;
-      this.IRA.right = this.IRI.left;
-      this.IRA.bottom = this.IRI.top;
-      this.IRB.left = this.IRI.right;
-      this.IRB.top = 0;
-      this.IRB.right = getWidth();
-      this.IRB.bottom = this.IRI.top;
-      this.IRC.left = 0;
-      this.IRC.top = this.IRI.bottom;
-      this.IRC.right = this.IRI.left;
-      this.IRC.bottom = getHeight();
-      this.IRD.left = this.IRI.right;
-      this.IRD.top = this.IRI.bottom;
-      this.IRD.right = getWidth();
-      this.IRD.bottom = getHeight();
+      this.Paz.left = 0;
+      this.Paz.top = this.PaD.top;
+      this.Paz.right = this.PaD.left;
+      this.Paz.bottom = this.PaD.bottom;
+      this.PaA.left = this.PaD.left;
+      this.PaA.top = 0;
+      this.PaA.right = this.PaD.right;
+      this.PaA.bottom = this.PaD.top;
+      this.PaB.left = this.PaD.right;
+      this.PaB.top = this.PaD.top;
+      this.PaB.right = getWidth();
+      this.PaB.bottom = this.PaD.bottom;
+      this.PaC.left = this.PaD.left;
+      this.PaC.top = this.PaD.bottom;
+      this.PaC.right = this.PaD.right;
+      this.PaC.bottom = getHeight();
+      this.Pav.left = 0;
+      this.Pav.top = 0;
+      this.Pav.right = this.PaD.left;
+      this.Pav.bottom = this.PaD.top;
+      this.Paw.left = this.PaD.right;
+      this.Paw.top = 0;
+      this.Paw.right = getWidth();
+      this.Paw.bottom = this.PaD.top;
+      this.Pax.left = 0;
+      this.Pax.top = this.PaD.bottom;
+      this.Pax.right = this.PaD.left;
+      this.Pax.bottom = getHeight();
+      this.Pay.left = this.PaD.right;
+      this.Pay.top = this.PaD.bottom;
+      this.Pay.right = getWidth();
+      this.Pay.bottom = getHeight();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRE, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.Paz, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRF, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.PaA, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRG, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.PaB, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRH, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.PaC, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRA, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.Pav, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRB, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.Paw, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRC, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.Pax, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.IRD, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.Pay, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
       paramCanvas.restore();
     }
     for (;;)
@@ -182,36 +182,36 @@ public class ScanMaskView
       this.mPaint.setStrokeWidth(1.0F);
       this.mPaint.setColor(-3355444);
       this.mPaint.setAntiAlias(true);
-      paramCanvas.drawRect(this.IRI, this.mPaint);
+      paramCanvas.drawRect(this.PaD, this.mPaint);
       System.currentTimeMillis();
       System.currentTimeMillis();
-      paramCanvas.drawBitmap(this.IRs, this.IRI.left, this.IRI.top, this.IRR);
-      paramCanvas.drawBitmap(this.IRt, this.IRI.right - this.IRw, this.IRI.top, this.IRR);
-      paramCanvas.drawBitmap(this.IRu, this.IRI.left, this.IRI.bottom - this.IRx, this.IRR);
-      paramCanvas.drawBitmap(this.IRv, this.IRI.right - this.IRw, this.IRI.bottom - this.IRx, this.IRR);
+      paramCanvas.drawBitmap(this.Pan, this.PaD.left, this.PaD.top, this.PaM);
+      paramCanvas.drawBitmap(this.Pao, this.PaD.right - this.Par, this.PaD.top, this.PaM);
+      paramCanvas.drawBitmap(this.Pap, this.PaD.left, this.PaD.bottom - this.Pas, this.PaM);
+      paramCanvas.drawBitmap(this.Paq, this.PaD.right - this.Par, this.PaD.bottom - this.Pas, this.PaM);
       System.currentTimeMillis();
       super.onDraw(paramCanvas);
       System.currentTimeMillis();
       AppMethodBeat.o(51914);
       return;
-      paramCanvas.clipRect(this.IRI, Region.Op.DIFFERENCE);
-      paramCanvas.drawColor(getResources().getColor(this.IRJ));
+      paramCanvas.clipRect(this.PaD, Region.Op.DIFFERENCE);
+      paramCanvas.drawColor(getResources().getColor(this.PaE));
     }
   }
   
   public void setMaskAnimaListener(a parama)
   {
-    this.IRT = parama;
+    this.PaO = parama;
   }
   
   public void setMaskColorRsid(int paramInt)
   {
-    this.IRJ = paramInt;
+    this.PaE = paramInt;
   }
   
   public void setMastAnimaDuration(int paramInt)
   {
-    this.IRM = paramInt;
+    this.PaH = paramInt;
   }
   
   static abstract interface a {}

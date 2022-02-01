@@ -1,78 +1,77 @@
 package com.tencent.mm.plugin.hld.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.crash.a.b;
+import com.tencent.mm.crash.b.b;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler;
 import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler.IOnUncaughtExceptionListener;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/recovery/ImeRecovery;", "Lcom/tencent/mm/crash/WeChatNativeCrash$INativeCrashCallback;", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler$IOnUncaughtExceptionListener;", "()V", "TAG", "", "lastCrashNum", "", "lastCrashTime", "maxCrashNum", "monitorTime", "startMonitorTime", "initRecovery", "", "onNativeCrash", "", "recordCrashInfo", "reset", "startMonitor", "uncaughtException", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "msg", "ex", "", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/recovery/ImeRecovery;", "Lcom/tencent/mm/crash/WeChatNativeCrash$INativeCrashCallback;", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler$IOnUncaughtExceptionListener;", "()V", "TAG", "", "lastCrashNum", "", "lastCrashTime", "maxCrashNum", "monitorTime", "startMonitorTime", "initRecovery", "", "onNativeCrash", "", "recordCrashInfo", "reset", "startMonitor", "uncaughtException", "ueh", "Lcom/tencent/mm/sdk/platformtools/MMUncaughtExceptionHandler;", "msg", "ex", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements a.b, MMUncaughtExceptionHandler.IOnUncaughtExceptionListener
+  implements b.b, MMUncaughtExceptionHandler.IOnUncaughtExceptionListener
 {
-  public static long DEZ;
-  public static long DFa;
-  public static long DFb;
-  public static long DFc;
-  public static long DFd;
-  public static final b DFe;
+  public static final b JwG;
+  public static long JwH;
+  public static long JwI;
+  public static long JwJ;
+  public static long JwK;
+  public static long JwL;
   
   static
   {
-    AppMethodBeat.i(211549);
-    DFe = new b();
-    DFa = 60000L;
-    DFb = 4L;
-    AppMethodBeat.o(211549);
+    AppMethodBeat.i(312036);
+    JwG = new b();
+    JwI = 60000L;
+    JwJ = 4L;
+    AppMethodBeat.o(312036);
   }
   
-  private static void eFv()
+  private static void fNn()
   {
-    AppMethodBeat.i(211547);
-    String str = System.currentTimeMillis() + '_' + (DFd + 1L);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    localObject = com.tencent.mm.plugin.hld.f.l.getKV();
+    AppMethodBeat.i(312020);
+    String str = System.currentTimeMillis() + '_' + (JwL + 1L);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
     if (localObject != null) {
       ((MultiProcessMMKV)localObject).putString("ime_recovery_last_crash_info", str);
     }
-    Log.i("WxIme.ImeRecovery", "recordCrashInfo ".concat(String.valueOf(str)));
-    AppMethodBeat.o(211547);
+    Log.i("WxIme.ImeRecovery", s.X("recordCrashInfo ", str));
+    AppMethodBeat.o(312020);
   }
   
   public static void reset()
   {
-    AppMethodBeat.i(211548);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    localObject = com.tencent.mm.plugin.hld.f.l.getKV();
-    if (localObject != null)
-    {
+    AppMethodBeat.i(312029);
+    Object localObject = l.JyV;
+    localObject = l.getKV();
+    if (localObject != null) {
       ((MultiProcessMMKV)localObject).putString("ime_recovery_last_crash_info", "");
-      AppMethodBeat.o(211548);
-      return;
     }
-    AppMethodBeat.o(211548);
+    AppMethodBeat.o(312029);
   }
   
-  public final void ayz()
+  public final void aTc()
   {
-    AppMethodBeat.i(211543);
-    Object localObject = new StringBuilder("onNativeCrash ");
-    a locala = a.DEX;
-    Log.e("WxIme.ImeRecovery", a.eFt());
-    localObject = a.DEX;
-    if (!a.eFt()) {
-      eFv();
+    AppMethodBeat.i(312044);
+    a locala = a.JwD;
+    Log.e("WxIme.ImeRecovery", s.X("onNativeCrash ", Boolean.valueOf(a.fNk())));
+    locala = a.JwD;
+    if (!a.fNk()) {
+      fNn();
     }
-    AppMethodBeat.o(211543);
+    AppMethodBeat.o(312044);
   }
   
   public final void uncaughtException(MMUncaughtExceptionHandler paramMMUncaughtExceptionHandler, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(211545);
+    AppMethodBeat.i(312051);
     Log.e("WxIme.ImeRecovery", "uncaughtException ");
-    eFv();
-    AppMethodBeat.o(211545);
+    fNn();
+    AppMethodBeat.o(312051);
   }
 }
 

@@ -11,7 +11,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.internal.ApiExceptionMapper;
 import com.google.android.gms.common.internal.PendingResultUtil;
 import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.dynamite.DynamiteModule;
 import com.google.android.gms.tasks.Task;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -20,7 +19,6 @@ public class GoogleSignInClient
   extends GoogleApi<GoogleSignInOptions>
 {
   private static final zzd zzef;
-  @VisibleForTesting
   private static int zzeg;
   
   static
@@ -147,7 +145,6 @@ public class GoogleSignInClient
     implements PendingResultUtil.ResultConverter<GoogleSignInResult, GoogleSignInAccount>
   {}
   
-  @VisibleForTesting
   static enum zze
   {
     public static int[] values$50KLMJ33DTMIUPRFDTJMOP9FC5N68SJFD5I2UPRDECNM2TBKD0NM2S395TPMIPRED5N2UHRFDTJMOPAJD5JMSIBE8DM6IPBEEGI4IRBGDHIMQPBEEHGN8QBFDOTG____0()
@@ -161,7 +158,7 @@ public class GoogleSignInClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignInClient
  * JD-Core Version:    0.7.0.1
  */

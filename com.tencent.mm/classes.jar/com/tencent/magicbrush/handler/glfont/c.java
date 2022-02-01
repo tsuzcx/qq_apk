@@ -1,10 +1,11 @@
 package com.tencent.magicbrush.handler.glfont;
 
 import android.graphics.Paint;
+import android.graphics.Typeface;
 
 public abstract interface c
 {
-  public abstract void a(Paint paramPaint, String paramString, float paramFloat);
+  public abstract void updateFontStyle(Paint paramPaint, Typeface paramTypeface, String paramString, float paramFloat1, boolean paramBoolean1, float paramFloat2, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 

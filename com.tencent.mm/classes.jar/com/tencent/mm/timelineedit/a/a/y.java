@@ -1,34 +1,36 @@
 package com.tencent.mm.timelineedit.a.a;
 
-import com.google.b.aj.a;
-import com.google.b.aj.f;
-import com.google.b.bb;
-import com.google.b.bb.a;
-import com.google.b.bb.b;
-import com.google.b.bb.e;
-import com.google.b.bt;
-import com.google.b.c;
-import com.google.b.ci;
-import com.google.b.da;
-import com.google.b.i;
+import com.google.d.am.a;
+import com.google.d.am.f;
+import com.google.d.am.j;
+import com.google.d.bg;
+import com.google.d.bg.a;
+import com.google.d.bg.b;
+import com.google.d.bg.e;
+import com.google.d.bg.f;
+import com.google.d.c;
+import com.google.d.cb;
+import com.google.d.cs;
+import com.google.d.dn;
+import com.google.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
-  extends bb
+  extends bg
   implements z
 {
-  private static final y VNo;
-  private static final ci<y> bRf;
-  float VNn;
-  private byte bRd = -1;
+  private static final cs<y> PARSER;
+  private static final y adrt;
+  float adrs;
+  private byte memoizedIsInitialized = -1;
   int type_;
   
   static
   {
-    AppMethodBeat.i(261383);
-    VNo = new y();
-    bRf = new c() {};
-    AppMethodBeat.o(261383);
+    AppMethodBeat.i(232805);
+    adrt = new y();
+    PARSER = new c() {};
+    AppMethodBeat.o(232805);
   }
   
   private y()
@@ -36,13 +38,13 @@ public final class y
     this.type_ = 0;
   }
   
-  private y(bb.a<?> parama)
+  private y(bg.a<?> parama)
   {
     super(parama);
   }
   
   /* Error */
-  private y(com.google.b.h paramh, com.google.b.ap paramap)
+  private y(com.google.d.i parami, com.google.d.at paramat)
   {
     // Byte code:
     //   0: aload_0
@@ -59,14 +61,14 @@ public final class y
     //   23: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: aload_1
     //   27: athrow
-    //   28: invokestatic 70	com/google/b/da:Jj	()Lcom/google/b/da$a;
+    //   28: invokestatic 70	com/google/d/dn:ajE	()Lcom/google/d/dn$a;
     //   31: astore 5
     //   33: iconst_0
     //   34: istore_3
     //   35: iload_3
     //   36: ifne +140 -> 176
     //   39: aload_1
-    //   40: invokevirtual 76	com/google/b/h:Av	()I
+    //   40: invokevirtual 76	com/google/d/i:aac	()I
     //   43: istore 4
     //   45: iload 4
     //   47: lookupswitch	default:+148->195, 0:+151->198, 8:+51->98, 21:+96->143
@@ -74,20 +76,20 @@ public final class y
     //   82: aload 5
     //   84: aload_2
     //   85: iload 4
-    //   87: invokevirtual 79	com/tencent/mm/timelineedit/a/a/y:a	(Lcom/google/b/h;Lcom/google/b/da$a;Lcom/google/b/ap;I)Z
+    //   87: invokevirtual 80	com/tencent/mm/timelineedit/a/a/y:parseUnknownField	(Lcom/google/d/i;Lcom/google/d/dn$a;Lcom/google/d/at;I)Z
     //   90: ifne -55 -> 35
     //   93: iconst_1
     //   94: istore_3
     //   95: goto -60 -> 35
     //   98: aload_0
     //   99: aload_1
-    //   100: invokevirtual 82	com/google/b/h:AF	()I
+    //   100: invokevirtual 83	com/google/d/i:aam	()I
     //   103: putfield 48	com/tencent/mm/timelineedit/a/a/y:type_	I
     //   106: goto -71 -> 35
     //   109: astore_1
     //   110: aload_1
     //   111: aload_0
-    //   112: putfield 86	com/google/b/bf:bZj	Lcom/google/b/bw;
+    //   112: putfield 87	com/google/d/bk:dST	Lcom/google/d/ce;
     //   115: ldc 61
     //   117: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   120: aload_1
@@ -95,38 +97,38 @@ public final class y
     //   122: astore_1
     //   123: aload_0
     //   124: aload 5
-    //   126: invokevirtual 92	com/google/b/da$a:Jm	()Lcom/google/b/da;
-    //   129: putfield 96	com/tencent/mm/timelineedit/a/a/y:bVW	Lcom/google/b/da;
+    //   126: invokevirtual 93	com/google/d/dn$a:ajH	()Lcom/google/d/dn;
+    //   129: putfield 97	com/tencent/mm/timelineedit/a/a/y:unknownFields	Lcom/google/d/dn;
     //   132: aload_0
-    //   133: invokevirtual 99	com/tencent/mm/timelineedit/a/a/y:HZ	()V
+    //   133: invokevirtual 100	com/tencent/mm/timelineedit/a/a/y:makeExtensionsImmutable	()V
     //   136: ldc 61
     //   138: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload_1
     //   142: athrow
     //   143: aload_0
     //   144: aload_1
-    //   145: invokevirtual 103	com/google/b/h:readFloat	()F
-    //   148: putfield 105	com/tencent/mm/timelineedit/a/a/y:VNn	F
+    //   145: invokevirtual 104	com/google/d/i:readFloat	()F
+    //   148: putfield 106	com/tencent/mm/timelineedit/a/a/y:adrs	F
     //   151: goto -116 -> 35
     //   154: astore_1
-    //   155: new 58	com/google/b/bf
+    //   155: new 58	com/google/d/bk
     //   158: dup
     //   159: aload_1
-    //   160: invokespecial 108	com/google/b/bf:<init>	(Ljava/io/IOException;)V
+    //   160: invokespecial 109	com/google/d/bk:<init>	(Ljava/io/IOException;)V
     //   163: astore_1
     //   164: aload_1
     //   165: aload_0
-    //   166: putfield 86	com/google/b/bf:bZj	Lcom/google/b/bw;
+    //   166: putfield 87	com/google/d/bk:dST	Lcom/google/d/ce;
     //   169: ldc 61
     //   171: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: aload_1
     //   175: athrow
     //   176: aload_0
     //   177: aload 5
-    //   179: invokevirtual 92	com/google/b/da$a:Jm	()Lcom/google/b/da;
-    //   182: putfield 96	com/tencent/mm/timelineedit/a/a/y:bVW	Lcom/google/b/da;
+    //   179: invokevirtual 93	com/google/d/dn$a:ajH	()Lcom/google/d/dn;
+    //   182: putfield 97	com/tencent/mm/timelineedit/a/a/y:unknownFields	Lcom/google/d/dn;
     //   185: aload_0
-    //   186: invokevirtual 99	com/tencent/mm/timelineedit/a/a/y:HZ	()V
+    //   186: invokevirtual 100	com/tencent/mm/timelineedit/a/a/y:makeExtensionsImmutable	()V
     //   189: ldc 61
     //   191: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   194: return
@@ -137,17 +139,17 @@ public final class y
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	203	0	this	y
-    //   0	203	1	paramh	com.google.b.h
-    //   0	203	2	paramap	com.google.b.ap
+    //   0	203	1	parami	com.google.d.i
+    //   0	203	2	paramat	com.google.d.at
     //   34	166	3	i	int
     //   43	43	4	j	int
-    //   31	147	5	locala	com.google.b.da.a
+    //   31	147	5	locala	com.google.d.dn.a
     // Exception table:
     //   from	to	target	type
-    //   39	45	109	com/google/b/bf
-    //   80	93	109	com/google/b/bf
-    //   98	106	109	com/google/b/bf
-    //   143	151	109	com/google/b/bf
+    //   39	45	109	com/google/d/bk
+    //   80	93	109	com/google/d/bk
+    //   98	106	109	com/google/d/bk
+    //   143	151	109	com/google/d/bk
     //   39	45	122	finally
     //   80	93	122	finally
     //   98	106	122	finally
@@ -162,221 +164,225 @@ public final class y
   
   public static a a(y paramy)
   {
-    AppMethodBeat.i(261373);
-    paramy = VNo.hEh().d(paramy);
-    AppMethodBeat.o(261373);
+    AppMethodBeat.i(232701);
+    paramy = adrt.jgs().d(paramy);
+    AppMethodBeat.o(232701);
     return paramy;
   }
   
-  public static ci<y> hCD()
+  public static y jgt()
   {
-    return bRf;
+    return adrt;
   }
   
-  public static y hEi()
+  public static cs<y> parser()
   {
-    return VNo;
-  }
-  
-  public final int Ad()
-  {
-    AppMethodBeat.i(261369);
-    int i = this.bOZ;
-    if (i != -1)
-    {
-      AppMethodBeat.o(261369);
-      return i;
-    }
-    i = 0;
-    if (this.type_ != n.VMw.getNumber()) {
-      i = i.bO(1, this.type_) + 0;
-    }
-    int j = i;
-    if (this.VNn != 0.0F) {
-      j = i + i.gJ(2);
-    }
-    i = j + this.bVW.Ad();
-    this.bOZ = i;
-    AppMethodBeat.o(261369);
-    return i;
-  }
-  
-  public final da Ca()
-  {
-    return this.bVW;
-  }
-  
-  public final bb.e Cb()
-  {
-    AppMethodBeat.i(261365);
-    bb.e locale = ae.VNZ.b(y.class, a.class);
-    AppMethodBeat.o(261365);
-    return locale;
-  }
-  
-  public final ci<y> Co()
-  {
-    return bRf;
-  }
-  
-  public final void a(i parami)
-  {
-    AppMethodBeat.i(261367);
-    if (this.type_ != n.VMw.getNumber()) {
-      parami.bJ(1, this.type_);
-    }
-    if (this.VNn != 0.0F) {
-      parami.i(2, this.VNn);
-    }
-    this.bVW.a(parami);
-    AppMethodBeat.o(261367);
+    return PARSER;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(261370);
+    AppMethodBeat.i(232890);
     if (paramObject == this)
     {
-      AppMethodBeat.o(261370);
+      AppMethodBeat.o(232890);
       return true;
     }
     if (!(paramObject instanceof y))
     {
       boolean bool = super.equals(paramObject);
-      AppMethodBeat.o(261370);
+      AppMethodBeat.o(232890);
       return bool;
     }
     paramObject = (y)paramObject;
     if (this.type_ != paramObject.type_)
     {
-      AppMethodBeat.o(261370);
+      AppMethodBeat.o(232890);
       return false;
     }
-    if (Float.floatToIntBits(this.VNn) != Float.floatToIntBits(paramObject.VNn))
+    if (Float.floatToIntBits(this.adrs) != Float.floatToIntBits(paramObject.adrs))
     {
-      AppMethodBeat.o(261370);
+      AppMethodBeat.o(232890);
       return false;
     }
-    if (!this.bVW.equals(paramObject.bVW))
+    if (!this.unknownFields.equals(paramObject.unknownFields))
     {
-      AppMethodBeat.o(261370);
+      AppMethodBeat.o(232890);
       return false;
     }
-    AppMethodBeat.o(261370);
+    AppMethodBeat.o(232890);
     return true;
   }
   
-  public final a hEh()
+  public final cs<y> getParserForType()
   {
-    AppMethodBeat.i(261374);
-    if (this == VNo)
+    return PARSER;
+  }
+  
+  public final int getSerializedSize()
+  {
+    AppMethodBeat.i(232879);
+    int i = this.memoizedSize;
+    if (i != -1)
     {
-      locala = new a((byte)0);
-      AppMethodBeat.o(261374);
-      return locala;
+      AppMethodBeat.o(232879);
+      return i;
     }
-    a locala = new a((byte)0).d(this);
-    AppMethodBeat.o(261374);
-    return locala;
+    i = 0;
+    if (this.type_ != n.adqB.getNumber()) {
+      i = k.cM(1, this.type_) + 0;
+    }
+    int j = i;
+    if (this.adrs != 0.0F) {
+      j = i + k.kl(2);
+    }
+    i = j + this.unknownFields.getSerializedSize();
+    this.memoizedSize = i;
+    AppMethodBeat.o(232879);
+    return i;
+  }
+  
+  public final dn getUnknownFields()
+  {
+    return this.unknownFields;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(261371);
-    if (this.bPa != 0)
+    AppMethodBeat.i(232900);
+    if (this.memoizedHashCode != 0)
     {
-      i = this.bPa;
-      AppMethodBeat.o(261371);
+      i = this.memoizedHashCode;
+      AppMethodBeat.o(232900);
       return i;
     }
-    int i = (((((ae.VNY.hashCode() + 779) * 37 + 1) * 53 + this.type_) * 37 + 2) * 53 + Float.floatToIntBits(this.VNn)) * 29 + this.bVW.hashCode();
-    this.bPa = i;
-    AppMethodBeat.o(261371);
+    int i = (((((ae.adsd.hashCode() + 779) * 37 + 1) * 53 + this.type_) * 37 + 2) * 53 + Float.floatToIntBits(this.adrs)) * 29 + this.unknownFields.hashCode();
+    this.memoizedHashCode = i;
+    AppMethodBeat.o(232900);
     return i;
+  }
+  
+  public final bg.e internalGetFieldAccessorTable()
+  {
+    AppMethodBeat.i(232839);
+    bg.e locale = ae.adse.b(y.class, a.class);
+    AppMethodBeat.o(232839);
+    return locale;
   }
   
   public final boolean isInitialized()
   {
-    int i = this.bRd;
+    int i = this.memoizedIsInitialized;
     if (i == 1) {
       return true;
     }
     if (i == 0) {
       return false;
     }
-    this.bRd = 1;
+    this.memoizedIsInitialized = 1;
     return true;
   }
   
+  public final a jgs()
+  {
+    AppMethodBeat.i(232910);
+    if (this == adrt)
+    {
+      locala = new a((byte)0);
+      AppMethodBeat.o(232910);
+      return locala;
+    }
+    a locala = new a((byte)0).d(this);
+    AppMethodBeat.o(232910);
+    return locala;
+  }
+  
+  public final Object newInstance(bg.f paramf)
+  {
+    AppMethodBeat.i(232815);
+    paramf = new y();
+    AppMethodBeat.o(232815);
+    return paramf;
+  }
+  
+  public final void writeTo(k paramk)
+  {
+    AppMethodBeat.i(232865);
+    if (this.type_ != n.adqB.getNumber()) {
+      paramk.cF(1, this.type_);
+    }
+    if (this.adrs != 0.0F) {
+      paramk.l(2, this.adrs);
+    }
+    this.unknownFields.writeTo(paramk);
+    AppMethodBeat.o(232865);
+  }
+  
   public static final class a
-    extends bb.a<a>
+    extends bg.a<a>
     implements z
   {
-    private float VNn;
+    private float adrs;
     private int type_;
     
     private a()
     {
-      AppMethodBeat.i(261279);
+      AppMethodBeat.i(232703);
       this.type_ = 0;
-      AppMethodBeat.o(261279);
+      y.ayB();
+      AppMethodBeat.o(232703);
     }
     
-    private a(bb.b paramb)
+    private a(bg.b paramb)
     {
       super();
-      AppMethodBeat.i(261281);
+      AppMethodBeat.i(232710);
       this.type_ = 0;
-      AppMethodBeat.o(261281);
+      y.ayB();
+      AppMethodBeat.o(232710);
     }
     
-    private a W(bt parambt)
+    private a T(am.f paramf, int paramInt, Object paramObject)
     {
-      AppMethodBeat.i(261291);
-      if ((parambt instanceof y))
-      {
-        parambt = d((y)parambt);
-        AppMethodBeat.o(261291);
-        return parambt;
-      }
-      super.a(parambt);
-      AppMethodBeat.o(261291);
-      return this;
+      AppMethodBeat.i(232775);
+      paramf = (a)super.setRepeatedField(paramf, paramInt, paramObject);
+      AppMethodBeat.o(232775);
+      return paramf;
     }
     
     /* Error */
-    private a X(com.google.b.h paramh, com.google.b.ap paramap)
+    private a T(com.google.d.i parami, com.google.d.at paramat)
     {
       // Byte code:
-      //   0: ldc 58
+      //   0: ldc 54
       //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: invokestatic 62	com/tencent/mm/timelineedit/a/a/y:hCE	()Lcom/google/b/ci;
+      //   7: invokestatic 58	com/tencent/mm/timelineedit/a/a/y:jeJ	()Lcom/google/d/cs;
       //   10: aload_1
       //   11: aload_2
-      //   12: invokeinterface 67 3 0
+      //   12: invokeinterface 64 3 0
       //   17: checkcast 9	com/tencent/mm/timelineedit/a/a/y
       //   20: astore_1
       //   21: aload_1
       //   22: ifnull +9 -> 31
       //   25: aload_0
       //   26: aload_1
-      //   27: invokevirtual 50	com/tencent/mm/timelineedit/a/a/y$a:d	(Lcom/tencent/mm/timelineedit/a/a/y;)Lcom/tencent/mm/timelineedit/a/a/y$a;
+      //   27: invokevirtual 68	com/tencent/mm/timelineedit/a/a/y$a:d	(Lcom/tencent/mm/timelineedit/a/a/y;)Lcom/tencent/mm/timelineedit/a/a/y$a;
       //   30: pop
-      //   31: ldc 58
+      //   31: ldc 54
       //   33: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   36: aload_0
       //   37: areturn
       //   38: astore_1
       //   39: aload_1
-      //   40: getfield 71	com/google/b/bf:bZj	Lcom/google/b/bw;
+      //   40: getfield 72	com/google/d/bk:dST	Lcom/google/d/ce;
       //   43: checkcast 9	com/tencent/mm/timelineedit/a/a/y
       //   46: astore_2
       //   47: aload_1
-      //   48: invokevirtual 75	com/google/b/bf:Im	()Ljava/io/IOException;
+      //   48: invokevirtual 76	com/google/d/bk:aii	()Ljava/io/IOException;
       //   51: astore_1
-      //   52: ldc 58
+      //   52: ldc 54
       //   54: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   57: aload_1
       //   58: athrow
@@ -385,9 +391,9 @@ public final class y
       //   61: ifnull +9 -> 70
       //   64: aload_0
       //   65: aload_2
-      //   66: invokevirtual 50	com/tencent/mm/timelineedit/a/a/y$a:d	(Lcom/tencent/mm/timelineedit/a/a/y;)Lcom/tencent/mm/timelineedit/a/a/y$a;
+      //   66: invokevirtual 68	com/tencent/mm/timelineedit/a/a/y$a:d	(Lcom/tencent/mm/timelineedit/a/a/y;)Lcom/tencent/mm/timelineedit/a/a/y$a;
       //   69: pop
-      //   70: ldc 58
+      //   70: ldc 54
       //   72: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   75: aload_1
       //   76: athrow
@@ -398,134 +404,174 @@ public final class y
       // Local variable table:
       //   start	length	slot	name	signature
       //   0	83	0	this	a
-      //   0	83	1	paramh	com.google.b.h
-      //   0	83	2	paramap	com.google.b.ap
+      //   0	83	1	parami	com.google.d.i
+      //   0	83	2	paramat	com.google.d.at
       //   6	73	3	localObject	Object
       // Exception table:
       //   from	to	target	type
-      //   7	21	38	com/google/b/bf
+      //   7	21	38	com/google/d/bk
       //   47	59	59	finally
       //   7	21	77	finally
       //   39	47	77	finally
     }
     
-    private a aS(aj.f paramf, Object paramObject)
+    private a U(cb paramcb)
     {
-      AppMethodBeat.i(261288);
-      paramf = (a)super.d(paramf, paramObject);
-      AppMethodBeat.o(261288);
+      AppMethodBeat.i(232800);
+      if ((paramcb instanceof y))
+      {
+        paramcb = d((y)paramcb);
+        AppMethodBeat.o(232800);
+        return paramcb;
+      }
+      super.mergeFrom(paramcb);
+      AppMethodBeat.o(232800);
+      return this;
+    }
+    
+    private a X(am.j paramj)
+    {
+      AppMethodBeat.i(232765);
+      paramj = (a)super.clearOneof(paramj);
+      AppMethodBeat.o(232765);
+      return paramj;
+    }
+    
+    private a aO(am.f paramf, Object paramObject)
+    {
+      AppMethodBeat.i(232740);
+      paramf = (a)super.setField(paramf, paramObject);
+      AppMethodBeat.o(232740);
       return paramf;
     }
     
-    private a aT(aj.f paramf, Object paramObject)
+    private a aP(am.f paramf, Object paramObject)
     {
-      AppMethodBeat.i(261289);
-      paramf = (a)super.c(paramf, paramObject);
-      AppMethodBeat.o(261289);
+      AppMethodBeat.i(232788);
+      paramf = (a)super.addRepeatedField(paramf, paramObject);
+      AppMethodBeat.o(232788);
       return paramf;
     }
     
-    private a aU(da paramda)
+    private a aQ(dn paramdn)
     {
-      AppMethodBeat.i(261304);
-      paramda = (a)super.e(paramda);
-      AppMethodBeat.o(261304);
-      return paramda;
+      AppMethodBeat.i(232848);
+      paramdn = (a)super.setUnknownFields(paramdn);
+      AppMethodBeat.o(232848);
+      return paramdn;
     }
     
-    private a aV(da paramda)
+    private a aR(dn paramdn)
     {
-      AppMethodBeat.i(261305);
-      paramda = (a)super.d(paramda);
-      AppMethodBeat.o(261305);
-      return paramda;
+      AppMethodBeat.i(232859);
+      paramdn = (a)super.mergeUnknownFields(paramdn);
+      AppMethodBeat.o(232859);
+      return paramdn;
     }
     
-    private a atu(int paramInt)
+    private a ab(am.f paramf)
     {
-      AppMethodBeat.i(261302);
+      AppMethodBeat.i(232750);
+      paramf = (a)super.clearField(paramf);
+      AppMethodBeat.o(232750);
+      return paramf;
+    }
+    
+    private a azK(int paramInt)
+    {
+      AppMethodBeat.i(232826);
       this.type_ = paramInt;
       onChanged();
-      AppMethodBeat.o(261302);
+      AppMethodBeat.o(232826);
       return this;
     }
     
-    private a cA(float paramFloat)
+    private a dM(float paramFloat)
     {
-      AppMethodBeat.i(261303);
-      this.VNn = paramFloat;
+      AppMethodBeat.i(232835);
+      this.adrs = paramFloat;
       onChanged();
-      AppMethodBeat.o(261303);
+      AppMethodBeat.o(232835);
       return this;
     }
     
-    private y hEj()
+    private a jgu()
     {
-      AppMethodBeat.i(261283);
-      Object localObject = hEk();
+      AppMethodBeat.i(232721);
+      super.clear();
+      this.type_ = 0;
+      this.adrs = 0.0F;
+      AppMethodBeat.o(232721);
+      return this;
+    }
+    
+    private y jgv()
+    {
+      AppMethodBeat.i(232730);
+      Object localObject = jgw();
       if (!((y)localObject).isInitialized())
       {
-        localObject = b((bt)localObject);
-        AppMethodBeat.o(261283);
+        localObject = newUninitializedMessageException((cb)localObject);
+        AppMethodBeat.o(232730);
         throw ((Throwable)localObject);
       }
-      AppMethodBeat.o(261283);
+      AppMethodBeat.o(232730);
       return localObject;
-    }
-    
-    public final bb.e Cb()
-    {
-      AppMethodBeat.i(261278);
-      bb.e locale = ae.VNZ.b(y.class, a.class);
-      AppMethodBeat.o(261278);
-      return locale;
-    }
-    
-    public final aj.a Cv()
-    {
-      return ae.VNY;
     }
     
     public final a d(y paramy)
     {
-      AppMethodBeat.i(261294);
-      if (paramy == y.hEi())
+      AppMethodBeat.i(232919);
+      if (paramy == y.jgt())
       {
-        AppMethodBeat.o(261294);
+        AppMethodBeat.o(232919);
         return this;
       }
       if (y.b(paramy) != 0) {
-        atu(paramy.type_);
+        azK(paramy.type_);
       }
-      if (paramy.VNn != 0.0F) {
-        cA(paramy.VNn);
+      if (paramy.adrs != 0.0F) {
+        dM(paramy.adrs);
       }
-      aV(y.c(paramy));
+      aR(y.c(paramy));
       onChanged();
-      AppMethodBeat.o(261294);
+      AppMethodBeat.o(232919);
       return this;
     }
     
-    public final y hEk()
+    public final am.a getDescriptorForType()
     {
-      AppMethodBeat.i(261285);
-      y localy = new y(this, (byte)0);
-      y.a(localy, this.type_);
-      y.a(localy, this.VNn);
-      Ib();
-      AppMethodBeat.o(261285);
-      return localy;
+      return ae.adsd;
+    }
+    
+    public final bg.e internalGetFieldAccessorTable()
+    {
+      AppMethodBeat.i(232891);
+      bg.e locale = ae.adse.b(y.class, a.class);
+      AppMethodBeat.o(232891);
+      return locale;
     }
     
     public final boolean isInitialized()
     {
       return true;
     }
+    
+    public final y jgw()
+    {
+      AppMethodBeat.i(232909);
+      y localy = new y(this, (byte)0);
+      y.a(localy, this.type_);
+      y.a(localy, this.adrs);
+      onBuilt();
+      AppMethodBeat.o(232909);
+      return localy;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.timelineedit.a.a.y
  * JD-Core Version:    0.7.0.1
  */

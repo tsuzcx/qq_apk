@@ -5,9 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.d;
 import com.tencent.mm.modelappbrand.a.b.l;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ac.h;
+import com.tencent.mm.plugin.appbrand.af.j;
 import com.tencent.mm.plugin.appbrand.appcache.bl;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -18,31 +18,31 @@ import java.util.Set;
 
 public final class aa
 {
-  private static final b.l qsj;
-  private static final h<AppBrandRuntime, String> qsk;
+  private static final b.l twO;
+  private static final j<AppBrandRuntime, String> twP;
   
   static
   {
     AppMethodBeat.i(135112);
-    qsj = new b.d();
-    qsk = new h();
+    twO = new b.d();
+    twP = new j();
     AppMethodBeat.o(135112);
   }
   
-  public static void af(AppBrandRuntime paramAppBrandRuntime)
+  public static void at(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(244068);
-    paramAppBrandRuntime = qsk.cO(paramAppBrandRuntime);
+    AppMethodBeat.i(325190);
+    paramAppBrandRuntime = twP.ek(paramAppBrandRuntime);
     if (paramAppBrandRuntime != null)
     {
       paramAppBrandRuntime = paramAppBrandRuntime.iterator();
       while (paramAppBrandRuntime.hasNext())
       {
         String str = (String)paramAppBrandRuntime.next();
-        qsj.remove(str);
+        twO.remove(str);
       }
     }
-    AppMethodBeat.o(244068);
+    AppMethodBeat.o(325190);
   }
   
   public static Bitmap l(AppBrandRuntime paramAppBrandRuntime, String paramString)
@@ -53,15 +53,15 @@ public final class aa
       AppMethodBeat.o(135111);
       return null;
     }
-    Object localObject = o.adR(paramString);
+    Object localObject = t.Ws(paramString);
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(135111);
       return null;
     }
     paramString = paramAppBrandRuntime.hashCode() + 35 + (String)localObject;
-    qsk.k(paramAppBrandRuntime, paramString);
-    Bitmap localBitmap = qsj.LI(paramString);
+    twP.v(paramAppBrandRuntime, paramString);
+    Bitmap localBitmap = twO.Eo(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       AppMethodBeat.o(135111);
@@ -78,7 +78,7 @@ public final class aa
       localObject = BitmapUtil.decodeStream(paramAppBrandRuntime);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        qsj.put(paramString, (Bitmap)localObject);
+        twO.put(paramString, (Bitmap)localObject);
         return localObject;
       }
       if (paramAppBrandRuntime != null) {
@@ -109,7 +109,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.aa
  * JD-Core Version:    0.7.0.1
  */

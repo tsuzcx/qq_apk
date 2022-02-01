@@ -53,9 +53,9 @@ public class SQLiteLint
   
   public static void init()
   {
-    AppMethodBeat.i(203239);
+    AppMethodBeat.i(229324);
     SQLiteLintNativeBridge.loadLibrary();
-    AppMethodBeat.o(203239);
+    AppMethodBeat.o(229324);
   }
   
   public static void install(Context paramContext, SQLiteDatabase paramSQLiteDatabase)
@@ -278,7 +278,7 @@ public class SQLiteLint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLint
  * JD-Core Version:    0.7.0.1
  */

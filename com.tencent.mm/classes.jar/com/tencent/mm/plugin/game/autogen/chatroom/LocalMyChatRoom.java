@@ -4,73 +4,102 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class LocalMyChatRoom
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public LinkedList<MyChatroomInfo> my_chatroom_info_list;
+  public MyChatroomNotice my_chatroom_notice;
   
   public LocalMyChatRoom()
   {
-    AppMethodBeat.i(195201);
+    AppMethodBeat.i(275536);
     this.my_chatroom_info_list = new LinkedList();
-    AppMethodBeat.o(195201);
+    AppMethodBeat.o(275536);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195203);
+    AppMethodBeat.i(275544);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.my_chatroom_info_list);
-      AppMethodBeat.o(195203);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.my_chatroom_info_list);
+      if (this.my_chatroom_notice != null)
+      {
+        paramVarArgs.qD(2, this.my_chatroom_notice.computeSize());
+        this.my_chatroom_notice.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(275544);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 8, this.my_chatroom_info_list);
-      AppMethodBeat.o(195203);
-      return paramInt + 0;
+      i = i.a.a.a.c(1, 8, this.my_chatroom_info_list) + 0;
+      paramInt = i;
+      if (this.my_chatroom_notice != null) {
+        paramInt = i + i.a.a.a.qC(2, this.my_chatroom_notice.computeSize());
+      }
+      AppMethodBeat.o(275544);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
       this.my_chatroom_info_list.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(195203);
+      AppMethodBeat.o(275544);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
       LocalMyChatRoom localLocalMyChatRoom = (LocalMyChatRoom)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(195203);
+        AppMethodBeat.o(275544);
         return -1;
+      case 1: 
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new MyChatroomInfo();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((MyChatroomInfo)localObject2).parseFrom((byte[])localObject1);
+          }
+          localLocalMyChatRoom.my_chatroom_info_list.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(275544);
+        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      int i = paramVarArgs.size();
+      paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+      i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        MyChatroomInfo localMyChatroomInfo = new MyChatroomInfo();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localMyChatroomInfo.parseFrom((byte[])localObject);
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new MyChatroomNotice();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((MyChatroomNotice)localObject2).parseFrom((byte[])localObject1);
         }
-        localLocalMyChatRoom.my_chatroom_info_list.add(localMyChatroomInfo);
+        localLocalMyChatRoom.my_chatroom_notice = ((MyChatroomNotice)localObject2);
         paramInt += 1;
       }
-      AppMethodBeat.o(195203);
+      AppMethodBeat.o(275544);
       return 0;
     }
-    AppMethodBeat.o(195203);
+    AppMethodBeat.o(275544);
     return -1;
   }
 }

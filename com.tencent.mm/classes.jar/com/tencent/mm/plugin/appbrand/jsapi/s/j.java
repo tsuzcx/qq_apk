@@ -1,129 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
-import android.view.View;
+import android.content.SharedPreferences;
+import com.tencent.luggage.sdk.b.a.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPicker;
-import com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPickerV3;
-import com.tencent.mm.plugin.appbrand.widget.picker.a;
-import com.tencent.mm.plugin.appbrand.widget.picker.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-final class j
-  extends e
+public final class j
+  implements b
 {
-  final void ag(JSONObject paramJSONObject)
+  public final boolean aro()
   {
-    AppMethodBeat.i(137610);
-    super.ag(paramJSONObject);
-    AppMethodBeat.o(137610);
-  }
-  
-  final void ah(final JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(137611);
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("array");
-    final int j = paramJSONObject.optInt("current", 0);
-    if ((localJSONArray == null) || (localJSONArray.length() <= 0))
+    AppMethodBeat.i(327276);
+    Object localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_nativelibuv", "");
+    if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close"))) {}
+    for (localObject = Boolean.TRUE; ((Boolean)localObject).booleanValue(); localObject = Boolean.FALSE)
     {
-      Log.i("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "showPickerView as selector, empty range");
-      p("ok", null);
-      P(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(137602);
-          j.a(j.this);
-          AppMethodBeat.o(137602);
-        }
-      });
-      AppMethodBeat.o(137611);
-      return;
+      Log.i("MicroMsg.AppBrand.NativeInstallHelperSwitchDelegateImpl", "use libuv Command close");
+      AppMethodBeat.o(327276);
+      return false;
     }
-    paramJSONObject = new String[localJSONArray.length()];
-    int i = 0;
-    try
-    {
-      while (i < localJSONArray.length())
-      {
-        paramJSONObject[i] = localJSONArray.getString(i);
-        i += 1;
-      }
-      P(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(137603);
-          j.a(j.this, paramJSONObject, j);
-          AppMethodBeat.o(137603);
-        }
-      });
-    }
-    catch (Exception paramJSONObject)
-    {
-      Log.e("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "opt data.array, exp = %s", new Object[] { Util.stackTraceToString(paramJSONObject) });
-      p("fail", null);
-      AppMethodBeat.o(137611);
-      return;
-    }
-    AppMethodBeat.o(137611);
-  }
-  
-  final void ai(final JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(137612);
-    JSONArray localJSONArray = paramJSONObject.optJSONArray("array");
-    final int j = paramJSONObject.optInt("current", 0);
-    if ((localJSONArray == null) || (localJSONArray.length() <= 0))
-    {
-      Log.i("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "showPickerView as selector, empty range");
-      p("ok", null);
-      P(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(137604);
-          j.b(j.this);
-          AppMethodBeat.o(137604);
-        }
-      });
-      AppMethodBeat.o(137612);
-      return;
-    }
-    paramJSONObject = new String[localJSONArray.length()];
-    int i = 0;
-    try
-    {
-      while (i < localJSONArray.length())
-      {
-        paramJSONObject[i] = localJSONArray.getString(i);
-        i += 1;
-      }
-      P(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(137605);
-          j.b(j.this, paramJSONObject, j);
-          AppMethodBeat.o(137605);
-        }
-      });
-    }
-    catch (Exception paramJSONObject)
-    {
-      Log.e("MicroMsg.AppBrand.JsApi.OptionsPickerHandler", "opt data.array, exp = %s", new Object[] { Util.stackTraceToString(paramJSONObject) });
-      p("fail", null);
-      AppMethodBeat.o(137612);
-      return;
-    }
-    AppMethodBeat.o(137612);
+    AppMethodBeat.o(327276);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.j
  * JD-Core Version:    0.7.0.1
  */

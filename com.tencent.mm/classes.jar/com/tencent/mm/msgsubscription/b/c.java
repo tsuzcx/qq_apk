@@ -13,271 +13,265 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager;", "", "service", "Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService;", "(Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService;)V", "subscribeMsgService", "updatingTaskIdSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "doUpdateSubscribeStatus", "", "updateTask", "Lcom/tencent/mm/msgsubscription/model/SubscribeMsgService$UpdateSubscribeStatusTask;", "isTemplateMsgSubscribed", "bizUsername", "templateId", "callback", "Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$SubscribeStatusOpCallback;", "onUpdateSubscribeStatusSuccess", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "switchSubscribeStatus", "tmpItem", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "updateGetSubscribeStatusTimestamp", "timestamp", "", "updateSubscribeStatus", "updateSubscribeStatusIfNecessary", "subscribeMsgTmpItem", "Companion", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager;", "", "service", "Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService;", "(Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService;)V", "subscribeMsgService", "updatingTaskIdSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "doUpdateSubscribeStatus", "", "updateTask", "Lcom/tencent/mm/msgsubscription/model/SubscribeMsgService$UpdateSubscribeStatusTask;", "isTemplateMsgSubscribed", "bizUsername", "templateId", "callback", "Lcom/tencent/mm/msgsubscription/api/ISubscribeMsgService$SubscribeStatusOpCallback;", "onUpdateSubscribeStatusSuccess", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "switchSubscribeStatus", "tmpItem", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "updateGetSubscribeStatusTimestamp", "timestamp", "", "updateSubscribeStatus", "updateSubscribeStatusIfNecessary", "subscribeMsgTmpItem", "Companion", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final c.a mpq;
-  private final HashSet<String> mpo;
-  ISubscribeMsgService mpp;
+  public static final c.a pjb;
+  private final HashSet<String> pjc;
+  ISubscribeMsgService pjd;
   
   static
   {
-    AppMethodBeat.i(221577);
-    mpq = new c.a((byte)0);
-    AppMethodBeat.o(221577);
+    AppMethodBeat.i(236432);
+    pjb = new c.a((byte)0);
+    AppMethodBeat.o(236432);
   }
   
   public c(ISubscribeMsgService paramISubscribeMsgService)
   {
-    AppMethodBeat.i(221574);
-    this.mpo = new HashSet();
-    this.mpp = paramISubscribeMsgService;
-    AppMethodBeat.o(221574);
+    AppMethodBeat.i(236346);
+    this.pjc = new HashSet();
+    this.pjd = paramISubscribeMsgService;
+    AppMethodBeat.o(236346);
   }
   
   private final void a(a.b paramb)
   {
-    AppMethodBeat.i(221568);
-    if (this.mpo.contains(paramb.lnb))
+    AppMethodBeat.i(236354);
+    if (this.pjc.contains(paramb.nSg))
     {
-      Log.i("MicroMsg.SubscribeStatusUpdateManager", "alvinluo updateSubscribeStatus templateId: %s is updating", new Object[] { paramb.lnb });
-      AppMethodBeat.o(221568);
+      Log.i("MicroMsg.SubscribeStatusUpdateManager", "alvinluo updateSubscribeStatus templateId: %s is updating", new Object[] { paramb.nSg });
+      AppMethodBeat.o(236354);
       return;
     }
     b(paramb);
-    AppMethodBeat.o(221568);
+    AppMethodBeat.o(236354);
   }
   
   private final void b(final a.b paramb)
   {
-    AppMethodBeat.i(221571);
-    Log.i("MicroMsg.SubscribeStatusUpdateManager", "alvinluo doUpdateSubscribeStatus templateId: %s, bizUsername: %s", new Object[] { paramb.lnb, paramb.fOX });
-    this.mpo.add(paramb.lnb);
-    ISubscribeMsgService localISubscribeMsgService = this.mpp;
+    AppMethodBeat.i(236363);
+    Log.i("MicroMsg.SubscribeStatusUpdateManager", "alvinluo doUpdateSubscribeStatus templateId: %s, bizUsername: %s", new Object[] { paramb.nSg, paramb.hUQ });
+    this.pjc.add(paramb.nSg);
+    ISubscribeMsgService localISubscribeMsgService = this.pjd;
     if (localISubscribeMsgService != null) {
-      localISubscribeMsgService.a(paramb.fOX, j.mutableListOf(new String[] { paramb.lnb }), (a)new b(this, paramb));
+      localISubscribeMsgService.a(paramb.hUQ, p.mutableListOf(new String[] { paramb.nSg }), (a)new b(this, paramb));
     }
-    h(paramb.fOX, paramb.lnb, System.currentTimeMillis() + 30000L);
-    AppMethodBeat.o(221571);
+    h(paramb.hUQ, paramb.nSg, System.currentTimeMillis() + 30000L);
+    AppMethodBeat.o(236363);
   }
   
   private final void h(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(221572);
-    ISubscribeMsgService localISubscribeMsgService = this.mpp;
-    if (localISubscribeMsgService != null)
-    {
+    AppMethodBeat.i(236377);
+    ISubscribeMsgService localISubscribeMsgService = this.pjd;
+    if (localISubscribeMsgService != null) {
       localISubscribeMsgService.g(paramString1, paramString2, paramLong);
-      AppMethodBeat.o(221572);
-      return;
     }
-    AppMethodBeat.o(221572);
+    AppMethodBeat.o(236377);
   }
   
   final void a(SubscribeMsgTmpItem paramSubscribeMsgTmpItem, a.b paramb)
   {
-    AppMethodBeat.i(221564);
-    b localb = b.mpn;
+    AppMethodBeat.i(236439);
+    b localb = b.pja;
     if (b.b(paramSubscribeMsgTmpItem))
     {
       a(paramb);
-      AppMethodBeat.o(221564);
+      AppMethodBeat.o(236439);
       return;
     }
     Log.v("MicroMsg.SubscribeStatusUpdateManager", "alvinluo updateSubscribeStatusIfNecessary no need to update");
-    AppMethodBeat.o(221564);
+    AppMethodBeat.o(236439);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$doUpdateSubscribeStatus$1", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$doUpdateSubscribeStatus$1", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements a
   {
-    b(a.b paramb) {}
+    b(c paramc, a.b paramb) {}
     
     public final void a(String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
-      AppMethodBeat.i(196361);
-      p.k(paramString, "bizUsername");
-      p.k(paramSubscribeMsgRequestResult, "result");
-      c.b(this.mpr).remove(paramb.lnb);
-      c.a(this.mpr, paramSubscribeMsgRequestResult, paramb);
-      AppMethodBeat.o(196361);
+      AppMethodBeat.i(236311);
+      s.u(paramString, "bizUsername");
+      s.u(paramSubscribeMsgRequestResult, "result");
+      c.b(this.pje).remove(paramb.nSg);
+      c.a(this.pje, paramSubscribeMsgRequestResult, paramb);
+      AppMethodBeat.o(236311);
     }
     
-    public final void i(int paramInt1, int paramInt2, String paramString)
+    public final void j(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(196363);
-      p.k(paramString, "errMsg");
-      Log.e("MicroMsg.SubscribeStatusUpdateManager", "alvinluo getSubscribeStatus onError templateId: " + paramb.lnb + ", errType: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-      c.b(this.mpr).remove(paramb.lnb);
-      paramString = paramb.mpg;
-      if (paramString != null)
-      {
-        paramString.onError();
-        AppMethodBeat.o(196363);
-        return;
+      AppMethodBeat.i(236316);
+      s.u(paramString, "errMsg");
+      Log.e("MicroMsg.SubscribeStatusUpdateManager", "alvinluo getSubscribeStatus onError templateId: " + paramb.nSg + ", errType: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
+      c.b(this.pje).remove(paramb.nSg);
+      paramString = paramb.piU;
+      if (paramString != null) {
+        paramString.atR();
       }
-      AppMethodBeat.o(196363);
+      AppMethodBeat.o(236316);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$isTemplateMsgSubscribed$2", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$isTemplateMsgSubscribed$2", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements a
   {
-    c(String paramString, ISubscribeMsgService.b paramb, aa.f paramf) {}
+    c(c paramc, ah.f<SubscribeMsgTmpItem> paramf, String paramString, ISubscribeMsgService.b paramb) {}
     
     public final void a(String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
-      AppMethodBeat.i(238316);
-      p.k(paramString, "bizUsername");
-      p.k(paramSubscribeMsgRequestResult, "result");
-      paramSubscribeMsgRequestResult = paramSubscribeMsgRequestResult.mnO;
+      AppMethodBeat.i(236322);
+      s.u(paramString, "bizUsername");
+      s.u(paramSubscribeMsgRequestResult, "result");
+      paramSubscribeMsgRequestResult = paramSubscribeMsgRequestResult.phC;
+      label72:
+      SubscribeMsgTmpItem localSubscribeMsgTmpItem;
       if (!((Collection)paramSubscribeMsgRequestResult).isEmpty())
       {
         i = 1;
         if (i == 0) {
-          break label180;
+          break label190;
         }
-        paramSubscribeMsgRequestResult = ((Iterable)paramSubscribeMsgRequestResult).iterator();
-        label50:
+        localObject3 = (Iterable)paramSubscribeMsgRequestResult;
+        paramSubscribeMsgRequestResult = this.oad;
+        localObject1 = this.piZ;
+        localObject2 = this.pjg;
+        localObject3 = ((Iterable)localObject3).iterator();
         do
         {
-          if (!paramSubscribeMsgRequestResult.hasNext()) {
+          if (!((Iterator)localObject3).hasNext()) {
             break;
           }
-          localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.next();
-        } while (!this.mpi.equals(localSubscribeMsgTmpItem.lnb));
-        if (localSubscribeMsgTmpItem.mof != 1) {
-          break label174;
+          localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)((Iterator)localObject3).next();
+        } while (!paramSubscribeMsgRequestResult.equals(localSubscribeMsgTmpItem.nSg));
+        if (localSubscribeMsgTmpItem.phT != 1) {
+          break label184;
         }
       }
-      label174:
+      label184:
       for (boolean bool = true;; bool = false)
       {
-        localObject1 = new ISubscribeMsgService.c(bool, localSubscribeMsgTmpItem.gZ);
-        ((ISubscribeMsgService.c)localObject1).mok = localSubscribeMsgTmpItem.mok;
-        ((ISubscribeMsgService.c)localObject1).mnH = localSubscribeMsgTmpItem.mnH;
-        localObject2 = this.mpm;
-        if (localObject2 != null) {
-          ((ISubscribeMsgService.b)localObject2).a(this.mpi, (ISubscribeMsgService.c)localObject1);
+        ISubscribeMsgService.c localc = new ISubscribeMsgService.c(bool, localSubscribeMsgTmpItem.hU);
+        localc.phY = localSubscribeMsgTmpItem.phY;
+        localc.phu = localSubscribeMsgTmpItem.phu;
+        if (localObject1 != null) {
+          ((ISubscribeMsgService.b)localObject1).a(paramSubscribeMsgRequestResult, localc);
         }
-        this.mpt.aaBC = localSubscribeMsgTmpItem;
-        break label50;
+        ((ah.f)localObject2).aqH = localSubscribeMsgTmpItem;
+        break label72;
         i = 0;
         break;
       }
-      label180:
-      paramSubscribeMsgRequestResult = this.mpr;
-      SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)this.mpt.aaBC;
-      Object localObject1 = this.mpi;
-      Object localObject2 = (SubscribeMsgTmpItem)this.mpt.aaBC;
-      if (localObject2 != null) {}
-      for (int i = ((SubscribeMsgTmpItem)localObject2).mof;; i = -1)
+      label190:
+      paramSubscribeMsgRequestResult = this.pje;
+      Object localObject1 = (SubscribeMsgTmpItem)this.pjg.aqH;
+      Object localObject2 = this.oad;
+      Object localObject3 = (SubscribeMsgTmpItem)this.pjg.aqH;
+      if (localObject3 == null) {}
+      for (int i = -1;; i = ((SubscribeMsgTmpItem)localObject3).phT)
       {
-        paramString = new a.b(paramString, (String)localObject1, i);
-        paramString.mpg = this.mpm;
-        c.a(paramSubscribeMsgRequestResult, localSubscribeMsgTmpItem, paramString);
-        AppMethodBeat.o(238316);
+        paramString = new a.b(paramString, (String)localObject2, i);
+        paramString.piU = this.piZ;
+        localObject2 = ah.aiuX;
+        c.a(paramSubscribeMsgRequestResult, (SubscribeMsgTmpItem)localObject1, paramString);
+        AppMethodBeat.o(236322);
         return;
       }
     }
     
-    public final void i(int paramInt1, int paramInt2, String paramString)
+    public final void j(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(238322);
-      p.k(paramString, "errMsg");
-      Log.e("MicroMsg.SubscribeStatusUpdateManager", "alvinluo loadSubscribeMsgList onError templateId: " + this.mpi + ", errType: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-      paramString = this.mpm;
-      if (paramString != null)
-      {
-        paramString.onError();
-        AppMethodBeat.o(238322);
-        return;
+      AppMethodBeat.i(236330);
+      s.u(paramString, "errMsg");
+      Log.e("MicroMsg.SubscribeStatusUpdateManager", "alvinluo loadSubscribeMsgList onError templateId: " + this.oad + ", errType: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
+      paramString = this.piZ;
+      if (paramString != null) {
+        paramString.atR();
       }
-      AppMethodBeat.o(238322);
+      AppMethodBeat.o(236330);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$switchSubscribeStatus$1", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$switchSubscribeStatus$1", "Lcom/tencent/mm/msgsubscription/api/SubscribeMsgOpCallback;", "onError", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "bizUsername", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     implements a
   {
-    d(SubscribeMsgTmpItem paramSubscribeMsgTmpItem, ISubscribeMsgService.b paramb, String paramString) {}
+    d(SubscribeMsgTmpItem paramSubscribeMsgTmpItem, ISubscribeMsgService.b paramb, c paramc, String paramString) {}
     
     public final void a(String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
     {
-      AppMethodBeat.i(221954);
-      p.k(paramString, "bizUsername");
-      p.k(paramSubscribeMsgRequestResult, "result");
-      Log.v("MicroMsg.SubscribeStatusUpdateManager", "alvinluo switchSubscribeStatus onSuccess bizUsername: %s, templateId: %s, settingStatus: %d", new Object[] { paramString, this.mpl.lnb, Integer.valueOf(this.mpl.mof) });
-      Object localObject = ((Iterable)paramSubscribeMsgRequestResult.mnO).iterator();
+      AppMethodBeat.i(236321);
+      s.u(paramString, "bizUsername");
+      s.u(paramSubscribeMsgRequestResult, "result");
+      Log.v("MicroMsg.SubscribeStatusUpdateManager", "alvinluo switchSubscribeStatus onSuccess bizUsername: %s, templateId: %s, settingStatus: %d", new Object[] { paramString, this.piY.nSg, Integer.valueOf(this.piY.phT) });
+      Object localObject2 = (Iterable)paramSubscribeMsgRequestResult.phC;
+      Object localObject1 = this.piY;
+      localObject2 = ((Iterable)localObject2).iterator();
       boolean bool1 = false;
       boolean bool2 = false;
-      while (((Iterator)localObject).hasNext())
+      while (((Iterator)localObject2).hasNext())
       {
-        SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)((Iterator)localObject).next();
-        if (this.mpl.lnb.equals(localSubscribeMsgTmpItem.lnb))
+        SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)((Iterator)localObject2).next();
+        if (((SubscribeMsgTmpItem)localObject1).nSg.equals(localSubscribeMsgTmpItem.nSg))
         {
-          bool1 = localSubscribeMsgTmpItem.gZ;
+          bool1 = localSubscribeMsgTmpItem.hU;
           bool2 = true;
         }
       }
       boolean bool3;
       if (bool2) {
-        if (this.mpl.mof == 1) {
+        if (this.piY.phT == 1) {
           bool3 = true;
         }
       }
-      for (localObject = new ISubscribeMsgService.c(bool3, bool1);; localObject = new ISubscribeMsgService.c(false, this.mpl.gZ))
+      for (localObject1 = new ISubscribeMsgService.c(bool3, bool1);; localObject1 = new ISubscribeMsgService.c(false, this.piY.hU))
       {
-        ((ISubscribeMsgService.c)localObject).mok = this.mpl.mok;
-        ((ISubscribeMsgService.c)localObject).mnH = this.mpl.mnH;
-        Log.i("MicroMsg.SubscribeStatusUpdateManager", "alvinluo switchSubscribeStatus onSuccess hasResult: %b, isSubscribed: %b, switchOpen: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((ISubscribeMsgService.c)localObject).moD), Boolean.valueOf(((ISubscribeMsgService.c)localObject).moE) });
-        this.mpm.a(this.mpl.lnb, (ISubscribeMsgService.c)localObject);
-        localObject = c.a(this.mpr);
-        if (localObject == null) {
-          break label299;
+        ((ISubscribeMsgService.c)localObject1).phY = this.piY.phY;
+        ((ISubscribeMsgService.c)localObject1).phu = this.piY.phu;
+        Log.i("MicroMsg.SubscribeStatusUpdateManager", "alvinluo switchSubscribeStatus onSuccess hasResult: %b, isSubscribed: %b, switchOpen: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((ISubscribeMsgService.c)localObject1).piu), Boolean.valueOf(((ISubscribeMsgService.c)localObject1).piv) });
+        this.piZ.a(this.piY.nSg, (ISubscribeMsgService.c)localObject1);
+        localObject1 = c.a(this.pje);
+        if (localObject1 != null) {
+          ISubscribeMsgService.a.a((ISubscribeMsgService)localObject1, paramString, (List)paramSubscribeMsgRequestResult.phC);
         }
-        ISubscribeMsgService.a.a((ISubscribeMsgService)localObject, paramString, (List)paramSubscribeMsgRequestResult.mnO);
-        AppMethodBeat.o(221954);
+        AppMethodBeat.o(236321);
         return;
         bool3 = false;
         break;
       }
-      label299:
-      AppMethodBeat.o(221954);
     }
     
-    public final void i(int paramInt1, int paramInt2, String paramString)
+    public final void j(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(221957);
-      p.k(paramString, "errMsg");
-      Log.e("MicroMsg.SubscribeStatusUpdateManager", "alvinluo switchSubscribeStatus onError templateId: " + this.mpl.lnb + ", errType: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-      if (this.mpl.mof == 1) {}
-      for (this.mpl.mof = 0;; this.mpl.mof = 1)
+      AppMethodBeat.i(236329);
+      s.u(paramString, "errMsg");
+      Log.e("MicroMsg.SubscribeStatusUpdateManager", "alvinluo switchSubscribeStatus onError templateId: " + this.piY.nSg + ", errType: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
+      if (this.piY.phT == 1) {}
+      for (this.piY.phT = 0;; this.piY.phT = 1)
       {
-        this.mpm.onError();
-        paramString = c.a(this.mpr);
-        if (paramString == null) {
-          break;
+        this.piZ.atR();
+        paramString = c.a(this.pje);
+        if (paramString != null) {
+          ISubscribeMsgService.a.a(paramString, this.pjh, p.mutableListOf(new SubscribeMsgTmpItem[] { this.piY }));
         }
-        ISubscribeMsgService.a.a(paramString, this.mpu, j.mutableListOf(new SubscribeMsgTmpItem[] { this.mpl }));
-        AppMethodBeat.o(221957);
+        AppMethodBeat.o(236329);
         return;
       }
-      AppMethodBeat.o(221957);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.b.c
  * JD-Core Version:    0.7.0.1
  */

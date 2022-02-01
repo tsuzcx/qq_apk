@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sight.encode.ui;
 
 public abstract interface b
 {
-  public abstract void fJi();
+  public abstract void gZc();
   
   public abstract void startChattingUI(String paramString);
 }

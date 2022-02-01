@@ -7,14 +7,14 @@ import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class y
 {
-  static final String iQX;
+  static final String lsT;
   Context context;
   
   static
   {
-    AppMethodBeat.i(241750);
-    iQX = "https://" + WeChatHosts.domainString(R.l.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/reportdevice";
-    AppMethodBeat.o(241750);
+    AppMethodBeat.i(238878);
+    lsT = "https://" + WeChatHosts.domainString(R.l.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/reportdevice";
+    AppMethodBeat.o(238878);
   }
   
   public y(Context paramContext)

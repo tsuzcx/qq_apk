@@ -1,90 +1,38 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.ac.i;
-import com.tencent.mm.vfs.q;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface r
-  extends b
+public enum r
 {
-  public abstract m a(i<String> parami);
-  
-  public abstract m a(q paramq, String paramString, i<String> parami);
-  
-  public abstract m a(q paramq, String paramString, boolean paramBoolean, i<String> parami);
-  
-  public abstract m a(String paramString, long paramLong1, long paramLong2, i<ByteBuffer> parami);
-  
-  public abstract m a(String paramString, i<List<k>> parami);
-  
-  public abstract m a(String paramString1, i<Map<String, ByteBuffer>> parami, String paramString2, long paramLong1, long paramLong2);
-  
-  public abstract m a(String paramString, FileStructStat paramFileStructStat);
-  
-  public abstract m a(String paramString, q paramq);
-  
-  public abstract m a(String paramString, q paramq, boolean paramBoolean);
-  
-  public abstract m a(String paramString, InputStream paramInputStream, boolean paramBoolean);
-  
-  public abstract boolean acS(String paramString);
-  
-  public abstract m acT(String paramString);
-  
-  public abstract m acV(String paramString);
-  
-  public abstract q adI(String paramString);
-  
-  public abstract boolean adJ(String paramString);
-  
-  public abstract m adK(String paramString);
-  
-  public abstract q adL(String paramString);
-  
-  public abstract boolean adM(String paramString);
-  
-  public abstract q adN(String paramString);
-  
-  public abstract boolean adO(String paramString);
-  
-  public abstract boolean adP(String paramString);
-  
-  public abstract InputStream adQ(String paramString);
-  
-  public abstract q ah(String paramString, boolean paramBoolean);
-  
-  public abstract m aj(String paramString, boolean paramBoolean);
-  
-  public abstract m ak(String paramString, boolean paramBoolean);
-  
-  public abstract m b(String paramString, i<ByteBuffer> parami);
-  
-  public abstract List<? extends a> bIG();
-  
-  public abstract t bIH();
-  
-  public abstract m h(String paramString, List<z> paramList);
-  
-  public abstract void initialize();
-  
-  public abstract void release();
-  
-  public static abstract interface a
+  static
   {
-    public abstract long bIw();
-    
-    public abstract String getFileName();
-    
-    public abstract long lastModified();
+    AppMethodBeat.i(140590);
+    qML = new r("OK", 0);
+    qMM = new r("ERR_OP_FAIL", 1);
+    qMN = new r("ERR_FS_NOT_MOUNTED", 2);
+    qMO = new r("ERR_PARENT_DIR_NOT_EXISTS", 3);
+    qMP = new r("ERR_PERMISSION_DENIED", 4);
+    qMQ = new r("RET_ALREADY_EXISTS", 5);
+    qMR = new r("RET_NOT_EXISTS", 6);
+    qMS = new r("ERR_DIR_NOT_EMPTY", 7);
+    qMT = new r("ERR_IS_FILE", 8);
+    qMU = new r("ERR_IS_DIRECTORY", 9);
+    qMV = new r("ERR_SYMLINK", 10);
+    qMW = new r("ERR_ILLEGAL_READ_POSITION", 11);
+    qMX = new r("ERR_ILLEGAL_READ_LENGTH", 12);
+    qMY = new r("ERR_BAD_ZIP_FILE", 13);
+    qMZ = new r("ERR_WRITE_ZIP_ENTRY", 14);
+    qNa = new r("ERR_EXCEED_DIRECTORY_MAX_SIZE", 15);
+    qNb = new r("ERR_NOT_SUPPORTED", 16);
+    qNc = new r[] { qML, qMM, qMN, qMO, qMP, qMQ, qMR, qMS, qMT, qMU, qMV, qMW, qMX, qMY, qMZ, qNa, qNb };
+    AppMethodBeat.o(140590);
   }
+  
+  private r() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.r
  * JD-Core Version:    0.7.0.1
  */

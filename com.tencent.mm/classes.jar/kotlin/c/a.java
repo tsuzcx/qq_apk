@@ -1,25 +1,25 @@
 package kotlin.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"thread", "Ljava/lang/Thread;", "start", "", "isDaemon", "contextClassLoader", "Ljava/lang/ClassLoader;", "name", "", "priority", "", "block", "Lkotlin/Function0;", "", "getOrSet", "T", "", "Ljava/lang/ThreadLocal;", "default", "(Ljava/lang/ThreadLocal;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"thread", "Ljava/lang/Thread;", "start", "", "isDaemon", "contextClassLoader", "Ljava/lang/ClassLoader;", "name", "", "priority", "", "block", "Lkotlin/Function0;", "", "getOrSet", "T", "", "Ljava/lang/ThreadLocal;", "default", "(Ljava/lang/ThreadLocal;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "kotlin-stdlib"}, k=2, mv={1, 5, 1})
 public final class a
 {
-  public static Thread as(kotlin.g.a.a<x> parama)
+  public static Thread cn(kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(217244);
-    p.k(parama, "block");
+    AppMethodBeat.i(190815);
+    s.u(parama, "block");
     parama = new a(parama);
     parama.start();
     parama = (Thread)parama;
-    AppMethodBeat.o(217244);
+    AppMethodBeat.o(190815);
     return parama;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/concurrent/ThreadsKt$thread$thread$1", "Ljava/lang/Thread;", "run", "", "kotlin-stdlib"})
+  @Metadata(d1={""}, d2={"kotlin/concurrent/ThreadsKt$thread$thread$1", "Ljava/lang/Thread;", "run", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
   public static final class a
     extends Thread
   {

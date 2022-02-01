@@ -6,12 +6,12 @@ import org.json.JSONObject;
 public final class b
   extends d
 {
-  JSONObject cqn;
+  JSONObject eif;
   String mName;
   
-  public final JSONObject NU()
+  public final JSONObject aoe()
   {
-    return this.cqn;
+    return this.eif;
   }
   
   public final String name()

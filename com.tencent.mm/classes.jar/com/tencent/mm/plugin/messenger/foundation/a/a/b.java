@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.k.a.a.c;
-import com.tencent.mm.k.a.a.d;
+import com.tencent.mm.h.a.a.c;
+import com.tencent.mm.h.a.a.d;
 import com.tencent.mm.sdk.storage.IStorageEx;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.al;
 
 public abstract interface b
   extends IStorageEx
 {
-  public abstract long a(aj paramaj);
+  public abstract int E(String paramString, long paramLong1, long paramLong2);
   
-  public abstract long a(aj paramaj, boolean paramBoolean);
+  public abstract long a(al paramal);
+  
+  public abstract long a(al paramal, boolean paramBoolean);
   
   public abstract boolean a(String paramString, d paramd);
   
-  public abstract boolean aD(String paramString, long paramLong);
+  public abstract long aLi(String paramString);
   
-  public abstract boolean aE(String paramString, long paramLong);
+  public abstract long aLj(String paramString);
   
-  public abstract boolean aF(String paramString, long paramLong);
+  public abstract long aLk(String paramString);
   
-  public abstract boolean aG(String paramString, long paramLong);
+  public abstract long aLl(String paramString);
   
-  public abstract c aH(String paramString, long paramLong);
+  public abstract long aLm(String paramString);
   
-  public abstract long aOj(String paramString);
+  public abstract d aLn(String paramString);
   
-  public abstract long aOk(String paramString);
+  public abstract boolean aLo(String paramString);
   
-  public abstract long aOl(String paramString);
+  public abstract c aLp(String paramString);
   
-  public abstract long aOm(String paramString);
+  public abstract al aLq(String paramString);
   
-  public abstract long aOn(String paramString);
+  public abstract StringBuilder aLr(String paramString);
   
-  public abstract d aOo(String paramString);
+  public abstract boolean aM(String paramString, long paramLong);
   
-  public abstract boolean aOp(String paramString);
+  public abstract boolean aN(String paramString, long paramLong);
   
-  public abstract c aOq(String paramString);
+  public abstract boolean aO(String paramString, long paramLong);
   
-  public abstract aj aOr(String paramString);
+  public abstract boolean aP(String paramString, long paramLong);
   
-  public abstract StringBuilder aOs(String paramString);
+  public abstract c aQ(String paramString, long paramLong);
   
-  public abstract long b(aj paramaj);
+  public abstract long b(al paramal);
   
   public abstract c d(String paramString, long paramLong, boolean paramBoolean);
   
-  public abstract boolean eSg();
-  
-  public abstract int z(String paramString, long paramLong1, long paramLong2);
+  public abstract boolean gbb();
   
   public static final class a
   {
-    public boolean EVH;
+    public boolean KRh;
     public int id;
     public String username;
   }

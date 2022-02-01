@@ -3,260 +3,272 @@ package com.tencent.mm.plugin.finder.live.model.mic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer;", "", "()V", "TAG", "", "acceptBattleTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptBattleTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptBattleTimeoutTask$1;", "acceptMicTimeoutTaskMap", "Ljava/util/HashMap;", "Ljava/lang/Runnable;", "Lkotlin/collections/HashMap;", "acceptPkMicTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptPkMicTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptPkMicTimeoutTask$1;", "applyBattleTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyBattleTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyBattleTimeoutTask$1;", "applyMicTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyMicTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyMicTimeoutTask$1;", "applyPkMicTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyPkMicTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyPkMicTimeoutTask$1;", "timerImplInstance", "Lcom/tencent/mm/plugin/finder/live/model/mic/ILinkMicTimeoutTimer;", "release", "", "setupTimer", "timer", "startAcceptBattleTimer", "delay", "", "startAcceptMicTimer", "micId", "startAcceptPkMicTimer", "startApplyBattleTimer", "startApplyMicPkTimer", "startApplyMicTimer", "stopAcceptMicTimer", "stopAcceptPkMicTimer", "stopApplyBattleTimer", "stopApplyMicPkTimer", "stopApplyMicTimer", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer;", "", "()V", "RANDOM_MATCH_DEFAULT_TIMEOUT", "", "TAG", "", "acceptBattleTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptBattleTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptBattleTimeoutTask$1;", "acceptMicTimeoutTaskMap", "Ljava/util/HashMap;", "Ljava/lang/Runnable;", "Lkotlin/collections/HashMap;", "acceptPkMicTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptPkMicTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptPkMicTimeoutTask$1;", "applyBattleTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyBattleTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyBattleTimeoutTask$1;", "applyMicTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyMicTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyMicTimeoutTask$1;", "applyPkMicTimeoutTask", "com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyPkMicTimeoutTask$1", "Lcom/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyPkMicTimeoutTask$1;", "randomMatchTimeoutTask", "timerImplInstance", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/live/model/mic/ILinkMicTimeoutTimer;", "release", "", "setupTimer", "timer", "startAcceptBattleTimer", "delay", "", "startAcceptMicTimer", "micId", "startAcceptPkMicTimer", "startApplyBattleTimer", "startApplyMicPkTimer", "startApplyMicTimer", "startRandomMatchTimer", "stopAcceptMicTimer", "stopAcceptPkMicTimer", "stopApplyBattleTimer", "stopApplyMicPkTimer", "stopApplyMicTimer", "stopRandomMatchTimer", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final String TAG = "Finder.LinkMicTimeoutTimer";
-  private static final a ykA;
-  private static a ykB;
-  public static final b ykC;
-  private static final d ykv;
-  private static final HashMap<String, Runnable> ykw;
-  private static final e ykx;
-  private static final b yky;
-  private static final c ykz;
+  public static final b CMY;
+  private static final d CMZ;
+  private static final HashMap<String, Runnable> CNa;
+  private static final b.e CNb;
+  private static final b CNc;
+  private static final c CNd;
+  private static final a CNe;
+  private static final Runnable CNf;
+  private static WeakReference<a> CNg;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(254142);
-    ykC = new b();
+    AppMethodBeat.i(359799);
+    CMY = new b();
     TAG = "Finder.LinkMicTimeoutTimer";
-    ykv = new d();
-    ykw = new HashMap();
-    ykx = new e();
-    yky = new b();
-    ykz = new c();
-    ykA = new a();
-    AppMethodBeat.o(254142);
+    CMZ = new d();
+    CNa = new HashMap();
+    CNb = new b.e();
+    CNc = new b();
+    CNd = new c();
+    CNe = new a();
+    CNf = b..ExternalSyntheticLambda0.INSTANCE;
+    AppMethodBeat.o(359799);
   }
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(254129);
-    p.k(parama, "timer");
-    ykB = parama;
-    AppMethodBeat.o(254129);
+    AppMethodBeat.i(359696);
+    s.u(parama, "timer");
+    CNg = new WeakReference(parama);
+    AppMethodBeat.o(359696);
   }
   
-  public static void aCj(String paramString)
+  public static void awH(String paramString)
   {
-    AppMethodBeat.i(254134);
+    AppMethodBeat.i(359720);
     Log.i(TAG, "startAcceptMicTimer micId:" + paramString + " delay:10000");
     if (paramString != null)
     {
       f localf = new f();
-      localf.ktE = paramString;
-      ((Map)ykw).put(paramString, localf);
+      localf.mXx = paramString;
+      ((Map)CNa).put(paramString, localf);
       MMHandlerThread.postToMainThreadDelayed((Runnable)localf, 10000L);
-      AppMethodBeat.o(254134);
-      return;
     }
-    AppMethodBeat.o(254134);
+    AppMethodBeat.o(359720);
   }
   
-  public static void aCk(String paramString)
+  public static void awI(String paramString)
   {
-    AppMethodBeat.i(254139);
-    Log.i(TAG, "stopAcceptMicTimer micId:".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(359751);
+    Log.i(TAG, s.X("stopAcceptMicTimer micId:", paramString));
     if (paramString != null) {
-      MMHandlerThread.removeRunnable((Runnable)ykw.get(paramString));
+      MMHandlerThread.removeRunnable((Runnable)CNa.get(paramString));
     }
-    AppMethodBeat.o(254139);
+    AppMethodBeat.o(359751);
   }
   
-  public static void dAd()
+  public static void ena()
   {
-    AppMethodBeat.i(254131);
-    Log.i(TAG, "startApplyMicTimer delay:60000");
-    MMHandlerThread.postToMainThreadDelayed((Runnable)ykv, 60000L);
-    AppMethodBeat.o(254131);
+    AppMethodBeat.i(359705);
+    Log.i(TAG, s.X("startApplyMicTimer delay:", Long.valueOf(60000L)));
+    MMHandlerThread.postToMainThreadDelayed((Runnable)CMZ, 60000L);
+    AppMethodBeat.o(359705);
   }
   
-  public static void dAe()
+  public static void enb()
   {
-    AppMethodBeat.i(254132);
-    Log.i(TAG, "startApplyMicPkTimer delay:60000");
-    MMHandlerThread.postToMainThreadDelayed((Runnable)ykx, 60000L);
-    AppMethodBeat.o(254132);
+    AppMethodBeat.i(359711);
+    Log.i(TAG, s.X("startApplyMicPkTimer delay:", Long.valueOf(60000L)));
+    MMHandlerThread.postToMainThreadDelayed((Runnable)CNb, 60000L);
+    AppMethodBeat.o(359711);
   }
   
-  public static void dAf()
+  public static void enc()
   {
-    AppMethodBeat.i(254133);
-    Log.i(TAG, "startApplyBattleTimer delay:60000");
-    MMHandlerThread.postToMainThreadDelayed((Runnable)ykz, 60000L);
-    AppMethodBeat.o(254133);
+    AppMethodBeat.i(359717);
+    Log.i(TAG, s.X("startApplyBattleTimer delay:", Long.valueOf(60000L)));
+    MMHandlerThread.postToMainThreadDelayed((Runnable)CNd, 60000L);
+    AppMethodBeat.o(359717);
   }
   
-  public static void dAg()
+  public static void ene()
   {
-    AppMethodBeat.i(254135);
-    Log.i(TAG, "startAcceptPkMicTimer delay:15000");
-    MMHandlerThread.postToMainThreadDelayed((Runnable)yky, 15000L);
-    AppMethodBeat.o(254135);
+    AppMethodBeat.i(359725);
+    Log.i(TAG, s.X("startAcceptPkMicTimer delay:", Long.valueOf(15000L)));
+    MMHandlerThread.postToMainThreadDelayed((Runnable)CNc, 15000L);
+    AppMethodBeat.o(359725);
   }
   
-  public static void dAh()
+  public static void enf()
   {
-    AppMethodBeat.i(254136);
+    AppMethodBeat.i(359736);
     Log.i(TAG, "stopApplyMicTimer");
-    MMHandlerThread.removeRunnable((Runnable)ykv);
-    AppMethodBeat.o(254136);
+    MMHandlerThread.removeRunnable((Runnable)CMZ);
+    AppMethodBeat.o(359736);
   }
   
-  public static void dAi()
+  public static void eng()
   {
-    AppMethodBeat.i(254138);
+    AppMethodBeat.i(359743);
     Log.i(TAG, "stopApplyMicPkTimer");
-    MMHandlerThread.removeRunnable((Runnable)ykx);
-    AppMethodBeat.o(254138);
+    MMHandlerThread.removeRunnable((Runnable)CNb);
+    AppMethodBeat.o(359743);
   }
   
-  public static void dAj()
+  public static void enh()
   {
-    AppMethodBeat.i(254140);
+    AppMethodBeat.i(359758);
     Log.i(TAG, "stopAcceptPkMicTimer");
-    MMHandlerThread.removeRunnable((Runnable)yky);
-    AppMethodBeat.o(254140);
+    MMHandlerThread.removeRunnable((Runnable)CNc);
+    AppMethodBeat.o(359758);
   }
   
-  public static void dAk()
+  public static void eni()
   {
-    AppMethodBeat.i(254141);
+    AppMethodBeat.i(359763);
     Log.i(TAG, "stopApplyBattleTimer");
-    MMHandlerThread.removeRunnable((Runnable)ykz);
-    AppMethodBeat.o(254141);
+    MMHandlerThread.removeRunnable((Runnable)CNd);
+    AppMethodBeat.o(359763);
+  }
+  
+  public static void enj()
+  {
+    AppMethodBeat.i(359770);
+    Log.i(TAG, "stopRandomMatchTimer");
+    MMHandlerThread.removeRunnable(CNf);
+    AppMethodBeat.o(359770);
+  }
+  
+  private static final void enk()
+  {
+    AppMethodBeat.i(359779);
+    Object localObject = CNg;
+    if (localObject != null)
+    {
+      localObject = (a)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((a)localObject).onRandomMatchTimeout();
+      }
+    }
+    AppMethodBeat.o(359779);
+  }
+  
+  public static void om(long paramLong)
+  {
+    AppMethodBeat.i(359730);
+    Log.i(TAG, s.X("startRandomMatchTimer delay:", Long.valueOf(paramLong)));
+    MMHandlerThread.postToMainThreadDelayed(CNf, paramLong);
+    AppMethodBeat.o(359730);
   }
   
   public static void release()
   {
-    ykB = null;
+    CNg = null;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptBattleTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptBattleTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Runnable
   {
     public final void run()
     {
-      AppMethodBeat.i(289276);
-      Object localObject = b.ykC;
-      localObject = b.dAl();
+      AppMethodBeat.i(359695);
+      Object localObject = b.enl();
       if (localObject != null)
       {
-        ((a)localObject).onAcceptBattleTimeout();
-        AppMethodBeat.o(289276);
-        return;
+        localObject = (a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((a)localObject).onAcceptBattleTimeout();
+        }
       }
-      AppMethodBeat.o(289276);
+      AppMethodBeat.o(359695);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptPkMicTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$acceptPkMicTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements Runnable
   {
     public final void run()
     {
-      AppMethodBeat.i(286698);
-      Object localObject = b.ykC;
-      localObject = b.dAl();
+      AppMethodBeat.i(359694);
+      Object localObject = b.enl();
       if (localObject != null)
       {
-        ((a)localObject).onAcceptMicPkTimeout();
-        AppMethodBeat.o(286698);
-        return;
+        localObject = (a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((a)localObject).onAcceptMicPkTimeout();
+        }
       }
-      AppMethodBeat.o(286698);
+      AppMethodBeat.o(359694);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyBattleTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyBattleTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements Runnable
   {
     public final void run()
     {
-      AppMethodBeat.i(271310);
-      Object localObject = b.ykC;
-      localObject = b.dAl();
+      AppMethodBeat.i(359692);
+      Object localObject = b.enl();
       if (localObject != null)
       {
-        ((a)localObject).onApplyBattleTimeout();
-        AppMethodBeat.o(271310);
-        return;
+        localObject = (a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((a)localObject).onApplyBattleTimeout();
+        }
       }
-      AppMethodBeat.o(271310);
+      AppMethodBeat.o(359692);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyMicTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyMicTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
     implements Runnable
   {
     public final void run()
     {
-      AppMethodBeat.i(285492);
-      Object localObject = b.ykC;
-      localObject = b.dAl();
+      AppMethodBeat.i(359700);
+      Object localObject = b.enl();
       if (localObject != null)
       {
-        ((a)localObject).onApplyMicTimeout();
-        AppMethodBeat.o(285492);
-        return;
+        localObject = (a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((a)localObject).onApplyMicTimeout();
+        }
       }
-      AppMethodBeat.o(285492);
+      AppMethodBeat.o(359700);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$applyPkMicTimeoutTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-finder_release"})
-  public static final class e
-    implements Runnable
-  {
-    public final void run()
-    {
-      AppMethodBeat.i(267565);
-      Object localObject = b.ykC;
-      localObject = b.dAl();
-      if (localObject != null)
-      {
-        ((a)localObject).onApplyMicPkTimeout();
-        AppMethodBeat.o(267565);
-        return;
-      }
-      AppMethodBeat.o(267565);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$startAcceptMicTimer$1$acceptMicTimeoutTask$1", "Ljava/lang/Runnable;", "micId", "", "getMicId", "()Ljava/lang/String;", "setMicId", "(Ljava/lang/String;)V", "run", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/model/mic/LinkMicTimeoutTimer$startAcceptMicTimer$1$acceptMicTimeoutTask$1", "Ljava/lang/Runnable;", "micId", "", "getMicId", "()Ljava/lang/String;", "setMicId", "(Ljava/lang/String;)V", "run", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
     implements Runnable
   {
-    String ktE;
+    String mXx;
     
     public final void run()
     {
-      AppMethodBeat.i(287748);
-      Object localObject = b.ykC;
-      localObject = b.dAl();
+      AppMethodBeat.i(359690);
+      Object localObject = b.enl();
       if (localObject != null)
       {
-        ((a)localObject).onAcceptMicTimeout(this.ktE);
-        AppMethodBeat.o(287748);
-        return;
+        localObject = (a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((a)localObject).onAcceptMicTimeout(this.mXx);
+        }
       }
-      AppMethodBeat.o(287748);
+      AppMethodBeat.o(359690);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.mic.b
  * JD-Core Version:    0.7.0.1
  */

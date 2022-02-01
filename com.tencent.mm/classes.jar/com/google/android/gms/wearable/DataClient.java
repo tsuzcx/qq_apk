@@ -9,6 +9,9 @@ import com.google.android.gms.common.api.GoogleApi.Settings;
 import com.google.android.gms.common.api.Releasable;
 import com.google.android.gms.tasks.Task;
 import java.io.InputStream;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public abstract class DataClient
   extends GoogleApi<Wearable.WearableOptions>
@@ -51,6 +54,9 @@ public abstract class DataClient
   
   public abstract Task<Boolean> removeListener(OnDataChangedListener paramOnDataChangedListener);
   
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface FilterType {}
+  
   public static abstract class GetFdForAssetResponse
     implements Releasable
   {
@@ -67,7 +73,7 @@ public abstract class DataClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataClient
  * JD-Core Version:    0.7.0.1
  */

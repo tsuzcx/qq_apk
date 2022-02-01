@@ -7,21 +7,21 @@ public enum j
   static
   {
     AppMethodBeat.i(40514);
-    abLS = new j("GET", 0);
-    abLT = new j("POST", 1);
-    abLU = new j("PUT", 2);
-    abLV = new j("DELETE", 3);
-    abLW = new j("HEAD", 4);
-    abLX = new j("OPTIONS", 5);
-    abLY = new j("TRACE", 6);
-    abLZ = new j("PATCH", 7);
-    abMa = new j[] { abLS, abLT, abLU, abLV, abLW, abLX, abLY, abLZ };
+    ajYM = new j("GET", 0);
+    ajYN = new j("POST", 1);
+    ajYO = new j("PUT", 2);
+    ajYP = new j("DELETE", 3);
+    ajYQ = new j("HEAD", 4);
+    ajYR = new j("OPTIONS", 5);
+    ajYS = new j("TRACE", 6);
+    ajYT = new j("PATCH", 7);
+    ajYU = new j[] { ajYM, ajYN, ajYO, ajYP, ajYQ, ajYR, ajYS, ajYT };
     AppMethodBeat.o(40514);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.rtmp.sharp.jni;
 
-import android.annotation.SuppressLint;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import android.os.Build.VERSION;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
@@ -36,7 +35,6 @@ public class MediaCodecDecoder
     AppMethodBeat.o(13650);
   }
   
-  @SuppressLint({"NewApi"})
   public int createAACDecoder(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(13651);
@@ -87,7 +85,6 @@ public class MediaCodecDecoder
     }
   }
   
-  @SuppressLint({"NewApi"})
   public int decodeInternalAACFrame(int paramInt)
   {
     AppMethodBeat.i(13653);
@@ -99,7 +96,7 @@ public class MediaCodecDecoder
         i = this.mAudioAACDecoder.dequeueInputBuffer(200L);
         if (i >= 0)
         {
-          if (Build.VERSION.SDK_INT >= 21)
+          if (TXCBuild.VersionInt() >= 21)
           {
             this.mInputBuffer = this.mAudioAACDecoder.getInputBuffer(i);
             this.mInputBuffer.clear();
@@ -119,7 +116,7 @@ public class MediaCodecDecoder
         }
         this.mInputBuffer = this.mAudioAACDecoder.getInputBuffers()[i];
         continue;
-        if (Build.VERSION.SDK_INT < 21) {}
+        if (TXCBuild.VersionInt() < 21) {}
       }
       catch (Exception localException1)
       {
@@ -150,7 +147,6 @@ public class MediaCodecDecoder
     }
   }
   
-  @SuppressLint({"NewApi"})
   public int releaseAACDecoder()
   {
     AppMethodBeat.i(13654);
@@ -183,7 +179,7 @@ public class MediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.MediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

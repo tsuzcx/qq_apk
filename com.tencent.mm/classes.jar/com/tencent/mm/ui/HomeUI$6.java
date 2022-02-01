@@ -1,35 +1,36 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.crash.CrashReportFactory;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.ce.b;
+import com.tencent.mm.plugin.setting.c;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class HomeUI$6
-  implements View.OnLongClickListener
+  implements g.c
 {
   HomeUI$6(HomeUI paramHomeUI) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void onDialogClick(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(246668);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/HomeUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-    if ((BuildInfo.DEBUG) || (CrashReportFactory.hasDebuger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
-      HomeUI.o(this.VWJ);
+    AppMethodBeat.i(249302);
+    if (!paramBoolean)
+    {
+      com.tencent.mm.ce.a.ats(com.tencent.mm.ce.a.mu(MMApplicationContext.getContext()));
+      b.axU(0);
+      paramString = new Intent();
+      paramString.putExtra("Intro_Need_Clear_Top ", true);
+      c.pFn.n(paramString, HomeUI.c(this.adBf));
+      com.tencent.mm.bv.a.lJ(HomeUI.c(this.adBf));
     }
-    a.a(false, this, "com/tencent/mm/ui/HomeUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(246668);
-    return false;
+    AppMethodBeat.o(249302);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,125 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dwe;
-import com.tencent.mm.protocal.protobuf.egi;
-import com.tencent.mm.protocal.protobuf.egj;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.exb;
+import com.tencent.mm.protocal.z.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import junit.framework.Assert;
 
 public final class z
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d lKU;
+  private com.tencent.mm.am.h callback;
+  private final s ouH;
   
-  public z(int paramInt, dwe paramdwe)
+  public z(int paramInt, String paramString)
   {
-    AppMethodBeat.i(20647);
-    Log.i("MicroMsg.NetSceneSetMsgRemind", "[NetSceneSetMsgRemind] opType:%s RemindId:%s time:%s Type:%s SubType:%s", new Object[] { Integer.valueOf(paramInt), paramdwe.Ucf, Integer.valueOf(paramdwe.vhF), Integer.valueOf(paramdwe.rWu), Integer.valueOf(paramdwe.TVM) });
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new egi();
-    ((d.a)localObject).lBV = new egj();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/setmsgremind";
-    ((d.a)localObject).funcId = 525;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.lKU = ((d.a)localObject).bgN();
-    localObject = (egi)d.b.b(this.lKU.lBR);
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = 1;
-    }
-    ((egi)localObject).jUk = i;
-    ((egi)localObject).Uje = paramdwe;
-    AppMethodBeat.o(20647);
+    this(paramInt, paramString, "");
   }
   
-  public final int doScene(g paramg, i parami)
+  public z(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(20648);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lKU, this);
-    AppMethodBeat.o(20648);
+    AppMethodBeat.i(150946);
+    this.ouH = new g();
+    z.a locala = (z.a)this.ouH.getReqObj();
+    locala.YyH.UserName = com.tencent.mm.model.z.bAM();
+    exb localexb = locala.YyH;
+    Object localObject = new StringBuilder();
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = 64;
+    }
+    StringBuilder localStringBuilder = ((StringBuilder)localObject).append(i).append(";");
+    localObject = paramString1;
+    if (paramString1 == null) {
+      localObject = "";
+    }
+    localexb.nUB = ((String)localObject);
+    Log.d("MicroMsg.NetSceneSendCard", "content:" + locala.YyH.nUB);
+    Assert.assertTrue("empty sendcard", true);
+    locala.YyH.abab = 64;
+    if ((paramString2 != null) && (paramString2.length() > 0)) {
+      locala.YyH.abzf = paramString2;
+    }
+    AppMethodBeat.o(150946);
+  }
+  
+  public z(String paramString)
+  {
+    AppMethodBeat.i(150947);
+    this.ouH = new g();
+    z.a locala = (z.a)this.ouH.getReqObj();
+    locala.YyH.UserName = com.tencent.mm.model.z.bAM();
+    locala.YyH.nUB = paramString;
+    Log.d("MicroMsg.NetSceneSendCard", "content:".concat(String.valueOf(paramString)));
+    locala.YyH.bcb = Util.nullAsNil((Integer)com.tencent.mm.kernel.h.baE().ban().d(66561, null));
+    Assert.assertTrue("empty sendcard", true);
+    locala.YyH.abab = 128;
+    AppMethodBeat.o(150947);
+  }
+  
+  public z(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(150948);
+    this.ouH = new g();
+    z.a locala = (z.a)this.ouH.getReqObj();
+    locala.YyH.UserName = com.tencent.mm.model.z.bAM();
+    locala.YyH.nUB = paramString;
+    Log.d("MicroMsg.NetSceneSendCard", "content:".concat(String.valueOf(paramString)));
+    locala.YyH.bcb = Util.nullAsNil((Integer)com.tencent.mm.kernel.h.baE().ban().d(66561, null));
+    int i;
+    if (paramBoolean1)
+    {
+      i = 1;
+      if (!paramBoolean2) {
+        break label146;
+      }
+    }
+    label146:
+    for (int j = 4;; j = 0)
+    {
+      Assert.assertTrue("empty sendcard", true);
+      locala.YyH.abab = (j | i | 0x0 | 0x0 | 0x8);
+      AppMethodBeat.o(150948);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(150949);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.ouH, this);
+    AppMethodBeat.o(150949);
     return i;
   }
   
   public final int getType()
   {
-    return 525;
+    return 26;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(20649);
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      Log.i("MicroMsg.NetSceneSetMsgRemind", "[onGYNetEnd] RemindId:%s", new Object[] { ((egj)d.c.b(this.lKU.lBS)).Ucf });
-    }
-    for (;;)
-    {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(20649);
-      return;
-      Log.e("MicroMsg.NetSceneSetMsgRemind", "[onGYNetEnd] errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    }
+    AppMethodBeat.i(150950);
+    updateDispatchId(paramInt1);
+    this.callback.onSceneEnd(paramInt2, paramInt3, params.getRespObj().getErrMsg(), this);
+    AppMethodBeat.o(150950);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.z
  * JD-Core Version:    0.7.0.1
  */

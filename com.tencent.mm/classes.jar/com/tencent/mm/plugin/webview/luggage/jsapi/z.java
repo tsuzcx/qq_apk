@@ -1,49 +1,45 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.c.a.a;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.Map;
 
 public class z
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78561);
-    Log.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = paramb.crh.cqn.optJSONArray("menuList");
-    if (localJSONArray == null)
-    {
-      Log.i("MicroMsg.JsApiHideMenuItems", "data is null");
-      paramb.a("invalid_data", null);
-      AppMethodBeat.o(78561);
-      return;
-    }
-    m localm = ((g)paramb.crg).gUx();
-    if (localm != null) {
-      localm.V(localJSONArray);
-    }
-    paramb.a("", null);
-    AppMethodBeat.o(78561);
+    AppMethodBeat.i(78560);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("osVersion", Integer.valueOf(Build.VERSION.SDK_INT));
+    localHashMap.put("cpuCores", Integer.valueOf(a.getNumberOfCPUCores()));
+    localHashMap.put("cpuFreqHz", Integer.valueOf(a.Pb()));
+    localHashMap.put("memory", Long.valueOf(a.aG(MMApplicationContext.getContext())));
+    localHashMap.put("brand", Build.BRAND);
+    localHashMap.put("model", q.aPo());
+    paramb.d("", localHashMap);
+    AppMethodBeat.o(78560);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "hideMenuItems";
+    return "getSystemInfo";
   }
 }
 

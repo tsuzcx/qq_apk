@@ -1,41 +1,40 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.czi;
-import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.protocal.protobuf.dqp;
+import com.tencent.mm.protocal.protobuf.dqq;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class h
   extends r
 {
-  public czj DJG;
-  public long DJH;
+  public dqq JAC;
+  public long JAD;
   private final String TAG;
   
   public h(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(64626);
     this.TAG = "MicroMsg.NetSceneModifyHoneyPayerCreditLine";
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new czi();
-    ((d.a)localObject).lBV = new czj();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyhppayercreditline";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (czi)d.b.b(this.rr.lBR);
-    ((czi)localObject).SqZ = paramLong;
-    ((czi)localObject).SqY = paramString1;
-    ((czi)localObject).TfK = paramString2;
-    this.DJH = paramLong;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new dqp();
+    ((c.a)localObject).otF = new dqq();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyhppayercreditline";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (dqp)c.b.b(this.rr.otB);
+    ((dqp)localObject).Zqa = paramLong;
+    ((dqp)localObject).ZpZ = paramString1;
+    ((dqp)localObject).aatc = paramString2;
+    this.JAD = paramLong;
     Log.d("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "cardNo: %s, authToken: %s", new Object[] { paramString2, paramString1 });
     Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "credit line: %s", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(64626);
@@ -45,8 +44,8 @@ public final class h
   {
     AppMethodBeat.i(64627);
     Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.DJG = ((czj)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DJG.tqa), this.DJG.tqb });
+    this.JAC = ((dqq)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.JAC.wuz), this.JAC.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -55,11 +54,11 @@ public final class h
   
   public final void f(s params)
   {
-    AppMethodBeat.i(273849);
-    params = (czj)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(273849);
+    AppMethodBeat.i(267302);
+    params = (dqq)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(267302);
   }
   
   public final int getType()

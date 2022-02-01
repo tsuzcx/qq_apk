@@ -10,16 +10,16 @@ public class VertifyInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VertifyInfo> CREATOR;
-  public int JzA = 0;
-  public String NGZ = "";
-  public int NHl;
-  public int NHm;
-  public int NHn = 0;
-  public boolean NHo = false;
+  public boolean Aah = false;
+  public int POh = 0;
+  public String UsZ = "";
+  public int Utl;
+  public int Utm;
+  public int Utn = 0;
+  public boolean Uto = false;
   public String mFileName = "";
   public String mText = "";
-  public String ndo = "";
-  public boolean wDW = false;
+  public String pZt = "";
   
   static
   {
@@ -37,18 +37,18 @@ public class VertifyInfo
   {
     int i = 1;
     AppMethodBeat.i(29790);
-    paramParcel.writeInt(this.NHl);
-    paramParcel.writeInt(this.NHm);
-    paramParcel.writeInt(this.NHn);
-    paramParcel.writeInt(this.JzA);
+    paramParcel.writeInt(this.Utl);
+    paramParcel.writeInt(this.Utm);
+    paramParcel.writeInt(this.Utn);
+    paramParcel.writeInt(this.POh);
     paramParcel.writeString(Util.nullAs(this.mText, ""));
-    paramParcel.writeString(Util.nullAs(this.NGZ, ""));
+    paramParcel.writeString(Util.nullAs(this.UsZ, ""));
     paramParcel.writeString(Util.nullAs(this.mFileName, ""));
-    if (this.NHo)
+    if (this.Uto)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.wDW) {
+      if (!this.Aah) {
         break label119;
       }
     }
@@ -65,7 +65,7 @@ public class VertifyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.VertifyInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardCanvasView android:id="@id/ksm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/ai9" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/iwp" android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/bb" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/krx" android:background="@color/FG_3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/br7" android:paddingLeft="@dimen/br" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/bb" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/kpd" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m4" />
+                    </LinearLayout>
+                    <TextView android:gravity="right" android:layout_gravity="right" android:id="@android:id/summary" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/iw" android:paddingBottom="@dimen/m2" android:layout_width="0.0dip" android:layout_marginLeft="@dimen/cp" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/m7" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="end|center" android:layout_gravity="center_vertical" android:id="@id/j7m" android:background="?uy" android:paddingRight="@dimen/br" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/kjp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/it7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+                <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toStartOf="@id/it7" />
+            </RelativeLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/itc" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

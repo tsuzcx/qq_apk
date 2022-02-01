@@ -2,7 +2,7 @@ package com.tencent.mm.model;
 
 public final class am$a
 {
-  public static am.b lto;
+  public static am.b okN;
 }
 
 

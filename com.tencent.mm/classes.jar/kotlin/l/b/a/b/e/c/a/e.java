@@ -1,166 +1,68 @@
 package kotlin.l.b.a.b.e.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
+import java.util.Arrays;
+import kotlin.l.b.a.b.e.b.a;
 
-public abstract class e
+public final class e
+  extends a
 {
-  public abstract String getDesc();
+  public static final e.a ajed;
+  public static final e ajef;
+  public static final e ajeg;
+  private final boolean ajee;
   
-  public abstract String getName();
-  
-  public abstract String qu();
-  
-  public final String toString()
+  static
   {
-    return qu();
+    AppMethodBeat.i(59244);
+    ajed = new e.a((byte)0);
+    ajef = new e(new int[] { 1, 5, 1 });
+    ajeg = new e(new int[0]);
+    AppMethodBeat.o(59244);
   }
   
-  public static final class a
-    extends e
+  public e(int... paramVarArgs)
   {
-    public final String desc;
-    public final String name;
-    
-    public a(String paramString1, String paramString2)
-    {
-      super();
-      AppMethodBeat.i(59234);
-      this.name = paramString1;
-      this.desc = paramString2;
-      AppMethodBeat.o(59234);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(59236);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((!p.h(this.name, paramObject.name)) || (!p.h(this.desc, paramObject.desc))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(59236);
-        return true;
-      }
-      AppMethodBeat.o(59236);
-      return false;
-    }
-    
-    public final String getDesc()
-    {
-      return this.desc;
-    }
-    
-    public final String getName()
-    {
-      return this.name;
-    }
-    
-    public final int hashCode()
-    {
-      int j = 0;
-      AppMethodBeat.i(59235);
-      String str = this.name;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
-      {
-        str = this.desc;
-        if (str != null) {
-          j = str.hashCode();
-        }
-        AppMethodBeat.o(59235);
-        return i * 31 + j;
-      }
-    }
-    
-    public final String qu()
-    {
-      AppMethodBeat.i(59233);
-      String str = this.name + ':' + this.desc;
-      AppMethodBeat.o(59233);
-      return str;
-    }
+    this(paramVarArgs, false);
+    AppMethodBeat.i(59243);
+    AppMethodBeat.o(59243);
   }
   
-  public static final class b
-    extends e
+  public e(int[] paramArrayOfInt, boolean paramBoolean)
   {
-    public final String desc;
-    public final String name;
-    
-    public b(String paramString1, String paramString2)
+    super(Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length));
+    AppMethodBeat.i(59242);
+    this.ajee = paramBoolean;
+    AppMethodBeat.o(59242);
+  }
+  
+  public final boolean axM()
+  {
+    AppMethodBeat.i(59241);
+    if ((this.rid != 1) || (this.rie != 0))
     {
-      super();
-      AppMethodBeat.i(59238);
-      this.name = paramString1;
-      this.desc = paramString2;
-      AppMethodBeat.o(59238);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(59240);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.h(this.name, paramObject.name)) || (!p.h(this.desc, paramObject.desc))) {}
-        }
+      boolean bool;
+      if (this.ajee) {
+        bool = a((a)ajef);
       }
-      else
+      while (bool)
       {
-        AppMethodBeat.o(59240);
+        AppMethodBeat.o(59241);
         return true;
-      }
-      AppMethodBeat.o(59240);
-      return false;
-    }
-    
-    public final String getDesc()
-    {
-      return this.desc;
-    }
-    
-    public final String getName()
-    {
-      return this.name;
-    }
-    
-    public final int hashCode()
-    {
-      int j = 0;
-      AppMethodBeat.i(59239);
-      String str = this.name;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
-      {
-        str = this.desc;
-        if (str != null) {
-          j = str.hashCode();
+        if ((this.rid == ajef.rid) && (this.rie <= ajef.rie + 1)) {
+          bool = true;
+        } else {
+          bool = false;
         }
-        AppMethodBeat.o(59239);
-        return i * 31 + j;
       }
     }
-    
-    public final String qu()
-    {
-      AppMethodBeat.i(59237);
-      String str = this.name + this.desc;
-      AppMethodBeat.o(59237);
-      return str;
-    }
+    AppMethodBeat.o(59241);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     kotlin.l.b.a.b.e.c.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,31 +3,30 @@ package com.tencent.mm.plugin.gamelive.event;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload;", "Landroid/os/Parcelable;", "liveId", "", "currOnlineCount", "totalViewCount", "currLikeCount", "totalRewardCount", "msgList", "", "Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveSingleCommentPayload;", "(JJJJJLjava/util/List;)V", "getCurrLikeCount", "()J", "setCurrLikeCount", "(J)V", "getCurrOnlineCount", "setCurrOnlineCount", "getLiveId", "setLiveId", "getMsgList", "()Ljava/util/List;", "setMsgList", "(Ljava/util/List;)V", "getTotalRewardCount", "setTotalRewardCount", "getTotalViewCount", "setTotalViewCount", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload;", "Landroid/os/Parcelable;", "liveId", "", "currOnlineCount", "totalViewCount", "currLikeCount", "totalRewardCount", "msgList", "", "Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveSingleCommentPayload;", "(JJJJJLjava/util/List;)V", "getCurrLikeCount", "()J", "setCurrLikeCount", "(J)V", "getCurrOnlineCount", "setCurrOnlineCount", "getLiveId", "setLiveId", "getMsgList", "()Ljava/util/List;", "setMsgList", "(Ljava/util/List;)V", "getTotalRewardCount", "setTotalRewardCount", "getTotalViewCount", "setTotalViewCount", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  public long Dmf;
-  public long Dmg;
-  public long Dmh;
-  public long Dmi;
+  public static final Parcelable.Creator<LiveCommentWrapperInfoPayload> CREATOR;
+  public List<GameLiveAppbrandEventService.LiveSingleCommentPayload> EgE;
+  public long Jfo;
+  public long Jfp;
+  public long Jfq;
+  public long Jfr;
   public long liveId;
-  public List<GameLiveAppbrandEventService.LiveSingleCommentPayload> ziq;
   
   static
   {
-    AppMethodBeat.i(208673);
-    CREATOR = new a();
-    AppMethodBeat.o(208673);
+    AppMethodBeat.i(277424);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(277424);
   }
   
   private GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload(byte paramByte)
@@ -38,11 +37,11 @@ public final class GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload
   public GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, List<GameLiveAppbrandEventService.LiveSingleCommentPayload> paramList)
   {
     this.liveId = paramLong1;
-    this.Dmf = paramLong2;
-    this.Dmg = paramLong3;
-    this.Dmh = paramLong4;
-    this.Dmi = paramLong5;
-    this.ziq = paramList;
+    this.Jfo = paramLong2;
+    this.Jfp = paramLong3;
+    this.Jfq = paramLong4;
+    this.Jfr = paramLong5;
+    this.EgE = paramList;
   }
   
   public final int describeContents()
@@ -52,117 +51,105 @@ public final class GameLiveAppbrandEventService$LiveCommentWrapperInfoPayload
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(208670);
-    if (this != paramObject)
+    AppMethodBeat.i(277442);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof LiveCommentWrapperInfoPayload))
-      {
-        paramObject = (LiveCommentWrapperInfoPayload)paramObject;
-        if ((this.liveId != paramObject.liveId) || (this.Dmf != paramObject.Dmf) || (this.Dmg != paramObject.Dmg) || (this.Dmh != paramObject.Dmh) || (this.Dmi != paramObject.Dmi) || (!p.h(this.ziq, paramObject.ziq))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(208670);
+      AppMethodBeat.o(277442);
       return true;
     }
-    AppMethodBeat.o(208670);
-    return false;
+    if (!(paramObject instanceof LiveCommentWrapperInfoPayload))
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    paramObject = (LiveCommentWrapperInfoPayload)paramObject;
+    if (this.liveId != paramObject.liveId)
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    if (this.Jfo != paramObject.Jfo)
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    if (this.Jfp != paramObject.Jfp)
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    if (this.Jfq != paramObject.Jfq)
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    if (this.Jfr != paramObject.Jfr)
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    if (!s.p(this.EgE, paramObject.EgE))
+    {
+      AppMethodBeat.o(277442);
+      return false;
+    }
+    AppMethodBeat.o(277442);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(208668);
-    long l = this.liveId;
-    int j = (int)(l ^ l >>> 32);
-    l = this.Dmf;
-    int k = (int)(l ^ l >>> 32);
-    l = this.Dmg;
-    int m = (int)(l ^ l >>> 32);
-    l = this.Dmh;
-    int n = (int)(l ^ l >>> 32);
-    l = this.Dmi;
-    int i1 = (int)(l ^ l >>> 32);
-    List localList = this.ziq;
-    if (localList != null) {}
-    for (int i = localList.hashCode();; i = 0)
+    AppMethodBeat.i(277433);
+    int j = q.a..ExternalSyntheticBackport0.m(this.liveId);
+    int k = q.a..ExternalSyntheticBackport0.m(this.Jfo);
+    int m = q.a..ExternalSyntheticBackport0.m(this.Jfp);
+    int n = q.a..ExternalSyntheticBackport0.m(this.Jfq);
+    int i1 = q.a..ExternalSyntheticBackport0.m(this.Jfr);
+    if (this.EgE == null) {}
+    for (int i = 0;; i = this.EgE.hashCode())
     {
-      AppMethodBeat.o(208668);
+      AppMethodBeat.o(277433);
       return i + ((((j * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(208667);
-    String str = "LiveCommentWrapperInfoPayload(liveId=" + this.liveId + ", currOnlineCount=" + this.Dmf + ", totalViewCount=" + this.Dmg + ", currLikeCount=" + this.Dmh + ", totalRewardCount=" + this.Dmi + ", msgList=" + this.ziq + ")";
-    AppMethodBeat.o(208667);
+    AppMethodBeat.i(277429);
+    String str = "LiveCommentWrapperInfoPayload(liveId=" + this.liveId + ", currOnlineCount=" + this.Jfo + ", totalViewCount=" + this.Jfp + ", currLikeCount=" + this.Jfq + ", totalRewardCount=" + this.Jfr + ", msgList=" + this.EgE + ')';
+    AppMethodBeat.o(277429);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(208672);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(277458);
+    s.u(paramParcel, "out");
     paramParcel.writeLong(this.liveId);
-    paramParcel.writeLong(this.Dmf);
-    paramParcel.writeLong(this.Dmg);
-    paramParcel.writeLong(this.Dmh);
-    paramParcel.writeLong(this.Dmi);
-    Object localObject = this.ziq;
-    if (localObject != null)
+    paramParcel.writeLong(this.Jfo);
+    paramParcel.writeLong(this.Jfp);
+    paramParcel.writeLong(this.Jfq);
+    paramParcel.writeLong(this.Jfr);
+    Object localObject = this.EgE;
+    if (localObject == null)
     {
-      paramParcel.writeInt(1);
-      paramParcel.writeInt(((Collection)localObject).size());
-      localObject = ((Collection)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((GameLiveAppbrandEventService.LiveSingleCommentPayload)((Iterator)localObject).next()).writeToParcel(paramParcel, 0);
-      }
-      AppMethodBeat.o(208672);
+      paramParcel.writeInt(0);
+      AppMethodBeat.o(277458);
       return;
     }
-    paramParcel.writeInt(0);
-    AppMethodBeat.o(208672);
+    paramParcel.writeInt(1);
+    paramParcel.writeInt(((List)localObject).size());
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GameLiveAppbrandEventService.LiveSingleCommentPayload)((Iterator)localObject).next()).writeToParcel(paramParcel, paramInt);
+    }
+    AppMethodBeat.o(277458);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(208391);
-      p.k(paramParcel, "in");
-      long l1 = paramParcel.readLong();
-      long l2 = paramParcel.readLong();
-      long l3 = paramParcel.readLong();
-      long l4 = paramParcel.readLong();
-      long l5 = paramParcel.readLong();
-      if (paramParcel.readInt() != 0)
-      {
-        int i = paramParcel.readInt();
-        ArrayList localArrayList2 = new ArrayList(i);
-        for (;;)
-        {
-          localArrayList1 = localArrayList2;
-          if (i == 0) {
-            break;
-          }
-          localArrayList2.add((GameLiveAppbrandEventService.LiveSingleCommentPayload)GameLiveAppbrandEventService.LiveSingleCommentPayload.CREATOR.createFromParcel(paramParcel));
-          i -= 1;
-        }
-      }
-      ArrayList localArrayList1 = null;
-      paramParcel = new GameLiveAppbrandEventService.LiveCommentWrapperInfoPayload(l1, l2, l3, l4, l5, localArrayList1);
-      AppMethodBeat.o(208391);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new GameLiveAppbrandEventService.LiveCommentWrapperInfoPayload[paramInt];
-    }
-  }
+    implements Parcelable.Creator<GameLiveAppbrandEventService.LiveCommentWrapperInfoPayload>
+  {}
 }
 
 

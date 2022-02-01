@@ -17,7 +17,7 @@ public final class b
     if (paramContext == null) {
       localContext = MMApplicationContext.getContext();
     }
-    paramContext = d.a.RrK.y(localContext, paramString);
+    paramContext = d.a.YnY.C(localContext, paramString);
     if (paramContext != null)
     {
       paramContext.start = paramInt1;
@@ -29,7 +29,7 @@ public final class b
     return paramContext;
   }
   
-  public static u b(Context paramContext, String paramString, int paramInt1, int paramInt2)
+  public static u c(Context paramContext, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152260);
     paramContext = a(paramContext, paramString, paramInt1, paramInt2, 0, 0);
@@ -37,16 +37,16 @@ public final class b
     return paramContext;
   }
   
-  public static ArrayList<u> cz(Context paramContext, String paramString)
+  public static ArrayList<u> cK(Context paramContext, String paramString)
   {
     AppMethodBeat.i(152259);
     ArrayList localArrayList = new ArrayList();
-    paramString = k.a.RrV.matcher(paramString);
+    paramString = o.a.Yoo.matcher(paramString);
     while (paramString.find())
     {
       int i = paramString.start();
       int j = paramString.end();
-      u localu = b(paramContext, paramString.group(), i, j);
+      u localu = c(paramContext, paramString.group(), i, j);
       if (localu != null) {
         localArrayList.add(localu);
       }

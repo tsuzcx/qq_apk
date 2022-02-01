@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  private static String DB(int paramInt)
+  private static String Ea(int paramInt)
   {
     AppMethodBeat.i(131469);
     int i;
@@ -64,11 +64,11 @@ public final class a
     return str;
   }
   
-  public static String L(MotionEvent paramMotionEvent)
+  public static String N(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(131468);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MotionEvent { action=").append(DB(paramMotionEvent.getAction()));
+    localStringBuilder.append("MotionEvent { action=").append(Ea(paramMotionEvent.getAction()));
     int j = paramMotionEvent.getPointerCount();
     int i = 0;
     while (i < j)
@@ -94,7 +94,7 @@ public final class a
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString2).append(' ');
-    localStringBuilder.append("[apptouch] MotionEvent { action=").append(DB(paramMotionEvent.getAction()));
+    localStringBuilder.append("[apptouch] MotionEvent { action=").append(Ea(paramMotionEvent.getAction()));
     int j = paramMotionEvent.getPointerCount();
     int i = 0;
     while (i < j)
@@ -111,7 +111,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.base.a
  * JD-Core Version:    0.7.0.1
  */

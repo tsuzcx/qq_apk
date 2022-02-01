@@ -8,14 +8,14 @@ public abstract interface p
   {
     public abstract void a(j paramj);
     
-    public abstract boolean bL();
+    public abstract boolean cE();
     
     public abstract j getItemData();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.menu.p
  * JD-Core Version:    0.7.0.1
  */

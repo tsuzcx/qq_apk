@@ -1,25 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.autogen.a.nx;
+import com.tencent.mm.sdk.event.IListener;
 
-final class LoginUI$2
-  implements View.OnClickListener
+class LoginUI$2
+  extends IListener<nx>
 {
-  LoginUI$2(LoginUI paramLoginUI) {}
-  
-  public final void onClick(View paramView)
+  LoginUI$2(LoginUI paramLoginUI, q paramq)
   {
-    AppMethodBeat.i(128203);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/ui/LoginUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    LoginUI.c(this.neS);
-    a.a(this, "com/tencent/mm/plugin/account/ui/LoginUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(128203);
+    super(paramq);
+    AppMethodBeat.i(304902);
+    this.__eventId = nx.class.getName().hashCode();
+    AppMethodBeat.o(304902);
   }
 }
 

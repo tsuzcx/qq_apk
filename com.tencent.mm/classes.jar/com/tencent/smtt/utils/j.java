@@ -17,10 +17,9 @@ public class j
       Class localClass = Class.forName("android.os.SystemProperties");
       a = localClass;
       b = localClass.getDeclaredMethod("get", new Class[] { String.class, String.class });
-      AppMethodBeat.o(53937);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(53937);
     }
@@ -53,7 +52,7 @@ public class j
       AppMethodBeat.o(53936);
       return paramString1;
     }
-    catch (Throwable paramString1)
+    finally
     {
       for (;;)
       {

@@ -12,22 +12,22 @@ import org.xmlpull.v1.XmlSerializer;
 public final class g
   implements ITPMediaDRMAsset
 {
-  private Map<String, String> ZBI;
+  private Map<String, String> ahGL;
   private int mDrmType;
   private String mPlayUrl;
   
   public g(int paramInt, String paramString)
   {
-    AppMethodBeat.i(220220);
+    AppMethodBeat.i(226959);
     this.mPlayUrl = paramString;
     this.mDrmType = paramInt;
-    this.ZBI = new HashMap();
-    AppMethodBeat.o(220220);
+    this.ahGL = new HashMap();
+    AppMethodBeat.o(226959);
   }
   
   public final Map<String, String> getDrmAllProperties()
   {
-    return this.ZBI;
+    return this.ahGL;
   }
   
   public final String getDrmPlayUrl()
@@ -37,19 +37,19 @@ public final class g
   
   public final String getDrmProperty(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220223);
-    if ((this.ZBI == null) || (this.ZBI.isEmpty()))
+    AppMethodBeat.i(226969);
+    if ((this.ahGL == null) || (this.ahGL.isEmpty()))
     {
-      AppMethodBeat.o(220223);
+      AppMethodBeat.o(226969);
       return paramString2;
     }
-    paramString1 = (String)this.ZBI.get(paramString1);
+    paramString1 = (String)this.ahGL.get(paramString1);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(220223);
+      AppMethodBeat.o(226969);
       return paramString2;
     }
-    AppMethodBeat.o(220223);
+    AppMethodBeat.o(226969);
     return paramString1;
   }
   
@@ -66,7 +66,7 @@ public final class g
   public final String getUrl()
   {
     int i = 0;
-    AppMethodBeat.i(220238);
+    AppMethodBeat.i(226992);
     try
     {
       Object localObject = Xml.newSerializer();
@@ -123,7 +123,7 @@ public final class g
         ((XmlSerializer)localObject).endTag("", "assets");
         ((XmlSerializer)localObject).endDocument();
         localObject = localStringWriter.toString();
-        AppMethodBeat.o(220238);
+        AppMethodBeat.o(226992);
         return localObject;
         if (1 == j) {
           i = 1;
@@ -140,7 +140,7 @@ public final class g
     catch (IOException localIOException)
     {
       com.tencent.thumbplayer.utils.g.e("TPMediaDRMAsset", localIOException);
-      AppMethodBeat.o(220238);
+      AppMethodBeat.o(226992);
     }
   }
   
@@ -151,9 +151,9 @@ public final class g
   
   public final void setDrmProperty(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220222);
-    this.ZBI.put(paramString1, paramString2);
-    AppMethodBeat.o(220222);
+    AppMethodBeat.i(226964);
+    this.ahGL.put(paramString1, paramString2);
+    AppMethodBeat.o(226964);
   }
   
   public final void setDrmType(int paramInt)
@@ -163,7 +163,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,112 +1,96 @@
 package com.tencent.mm.plugin.appbrand.widget.recent;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appusage.af;
 import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandDesktopViewStorageHelper;", "", "()V", "TAG", "", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandCollectionStorageWithCache;", "usageStorage", "Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandUsageStorageWithCache;", "asyncPreloadData", "", "obtainCollectionStorage", "obtainUsageStorage", "release", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandDesktopViewStorageHelper;", "", "()V", "TAG", "", "collectionStorage", "Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandCollectionStorageWithCache;", "usageStorage", "Lcom/tencent/mm/plugin/appbrand/widget/recent/AppBrandUsageStorageWithCache;", "asyncPreloadData", "", "obtainCollectionStorage", "obtainUsageStorage", "release", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static b rEA;
-  public static final c rEB;
-  private static i rEz;
+  public static final c uPM;
+  private static i uPN;
+  private static b uPO;
   
   static
   {
-    AppMethodBeat.i(277053);
-    rEB = new c();
-    AppMethodBeat.o(277053);
+    AppMethodBeat.i(324074);
+    uPM = new c();
+    AppMethodBeat.o(324074);
   }
   
-  public static void cqg()
+  public static void cSL()
   {
-    AppMethodBeat.i(277049);
-    com.tencent.e.h.ZvG.bf((Runnable)a.rEC);
-    AppMethodBeat.o(277049);
+    AppMethodBeat.i(324058);
+    com.tencent.threadpool.h.ahAA.bn(c..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(324058);
+  }
+  
+  private static final void cSM()
+  {
+    AppMethodBeat.i(324070);
+    Object localObject = uPM.cSJ();
+    if (localObject != null) {
+      ((i)localObject).a((l)h.uPX);
+    }
+    localObject = uPM.cSK();
+    if (localObject != null) {
+      ((b)localObject).a((l)h.uPW);
+    }
+    AppMethodBeat.o(324070);
   }
   
   public static void release()
   {
-    AppMethodBeat.i(277051);
+    AppMethodBeat.i(324063);
     Log.i("MicroMsg.AppBrandDesktopDataHelper", "onAccountRelease");
-    rEz = null;
-    rEA = null;
-    AppMethodBeat.o(277051);
+    uPN = null;
+    uPO = null;
+    AppMethodBeat.o(324063);
   }
   
-  public final i cqe()
+  public final i cSJ()
   {
     try
     {
-      AppMethodBeat.i(277047);
-      if (rEz == null)
+      AppMethodBeat.i(324083);
+      if (uPN == null)
       {
-        localObject1 = (ah)com.tencent.mm.kernel.h.ae(ah.class);
+        localObject1 = (ag)com.tencent.mm.kernel.h.ax(ag.class);
         if (localObject1 != null) {
-          rEz = new i((ah)localObject1);
+          uPN = new i((ag)localObject1);
         }
       }
-      Object localObject1 = rEz;
-      AppMethodBeat.o(277047);
+      Object localObject1 = uPN;
+      AppMethodBeat.o(324083);
       return localObject1;
     }
     finally {}
   }
   
-  public final b cqf()
+  public final b cSK()
   {
     try
     {
-      AppMethodBeat.i(277048);
-      if (rEA == null)
+      AppMethodBeat.i(324087);
+      if (uPO == null)
       {
-        localObject1 = (ag)com.tencent.mm.kernel.h.ae(ag.class);
+        localObject1 = (af)com.tencent.mm.kernel.h.ax(af.class);
         if (localObject1 != null) {
-          rEA = new b((ag)localObject1);
+          uPO = new b((af)localObject1);
         }
       }
-      Object localObject1 = rEA;
-      AppMethodBeat.o(277048);
+      Object localObject1 = uPO;
+      AppMethodBeat.o(324087);
       return localObject1;
     }
     finally {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    public static final a rEC;
-    
-    static
-    {
-      AppMethodBeat.i(279897);
-      rEC = new a();
-      AppMethodBeat.o(279897);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(279896);
-      Object localObject = c.rEB.cqe();
-      if (localObject != null) {
-        ((i)localObject).a((l)h.rEK);
-      }
-      localObject = c.rEB.cqf();
-      if (localObject != null)
-      {
-        ((b)localObject).a((l)h.rEJ);
-        AppMethodBeat.o(279896);
-        return;
-      }
-      AppMethodBeat.o(279896);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.c
  * JD-Core Version:    0.7.0.1
  */

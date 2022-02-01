@@ -117,7 +117,7 @@ public class TbsLog
       }
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
       w(paramString, "app_extra exception:" + Log.getStackTraceString(paramContext));
       AppMethodBeat.o(53983);
@@ -319,7 +319,7 @@ public class TbsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLog
  * JD-Core Version:    0.7.0.1
  */

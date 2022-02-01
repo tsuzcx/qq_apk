@@ -1,6 +1,5 @@
 package com.tencent.midas.comm;
 
-import android.annotation.SuppressLint;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.midas.comm.log.APLogFileInfo;
@@ -11,7 +10,6 @@ import com.tencent.midas.comm.log.util.APLogFileUtil;
 public class APLog
 {
   private static boolean hasLogCallback;
-  @SuppressLint({"StaticFieldLeak"})
   private static APLogInfo logInfo;
   private static APLogger logger;
   private static boolean shouldPrintLog;
@@ -19,93 +17,93 @@ public class APLog
   
   static
   {
-    AppMethodBeat.i(253927);
+    AppMethodBeat.i(217358);
     logger = null;
     logInfo = new APLogInfo();
     shouldWriteLog = false;
     shouldPrintLog = true;
     hasLogCallback = false;
-    AppMethodBeat.o(253927);
+    AppMethodBeat.o(217358);
   }
   
   public static void closeLog()
   {
-    AppMethodBeat.i(253923);
+    AppMethodBeat.i(217335);
     flush();
-    AppMethodBeat.o(253923);
+    AppMethodBeat.o(217335);
   }
   
   private static String composeLogMsg(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253925);
+    AppMethodBeat.i(217351);
     paramString1 = paramString1 + " | " + Thread.currentThread().getName() + " | " + paramString2 + "\r\n";
-    AppMethodBeat.o(253925);
+    AppMethodBeat.o(217351);
     return paramString1;
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253903);
+    AppMethodBeat.i(217216);
     paramString1 = composeLogMsg(paramString1, paramString2);
     if (hasLogCallback)
     {
       APCallbackLogger.log(2, logInfo.getLogTag(), paramString1);
-      AppMethodBeat.o(253903);
+      AppMethodBeat.o(217216);
       return;
     }
     if (shouldPrintLog) {
       APLogger.log(2, logInfo.getLogTag(), paramString1);
     }
     writeLog(paramString1);
-    AppMethodBeat.o(253903);
+    AppMethodBeat.o(217216);
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253904);
+    AppMethodBeat.i(217226);
     d(paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253904);
+    AppMethodBeat.o(217226);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253911);
+    AppMethodBeat.i(217268);
     paramString1 = composeLogMsg(paramString1, paramString2);
     if (hasLogCallback)
     {
       APCallbackLogger.log(5, logInfo.getLogTag(), paramString1);
-      AppMethodBeat.o(253911);
+      AppMethodBeat.o(217268);
       return;
     }
     if (shouldPrintLog) {
       APLogger.log(5, logInfo.getLogTag(), paramString1);
     }
     writeLog(paramString1);
-    AppMethodBeat.o(253911);
+    AppMethodBeat.o(217268);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253914);
+    AppMethodBeat.i(217278);
     e(paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253914);
+    AppMethodBeat.o(217278);
   }
   
   public static void flush()
   {
-    AppMethodBeat.i(253924);
+    AppMethodBeat.i(217344);
     try
     {
       if (logger != null) {
         logger.flush();
       }
-      AppMethodBeat.o(253924);
+      AppMethodBeat.o(217344);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      new StringBuilder("flush log error: ").append(localThrowable.toString());
-      AppMethodBeat.o(253924);
+      new StringBuilder("flush log error: ").append(localObject.toString());
+      AppMethodBeat.o(217344);
     }
   }
   
@@ -116,34 +114,34 @@ public class APLog
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253901);
+    AppMethodBeat.i(217201);
     paramString1 = composeLogMsg(paramString1, paramString2);
     if (hasLogCallback)
     {
       APCallbackLogger.log(3, logInfo.getLogTag(), paramString1);
-      AppMethodBeat.o(253901);
+      AppMethodBeat.o(217201);
       return;
     }
     if (shouldPrintLog) {
       APLogger.log(3, logInfo.getLogTag(), paramString1);
     }
     writeLog(paramString1);
-    AppMethodBeat.o(253901);
+    AppMethodBeat.o(217201);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253902);
+    AppMethodBeat.i(217209);
     i(paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253902);
+    AppMethodBeat.o(217209);
   }
   
   public static void init(APLogInfo paramAPLogInfo)
   {
-    AppMethodBeat.i(253899);
+    AppMethodBeat.i(217186);
     if (paramAPLogInfo == null)
     {
-      AppMethodBeat.o(253899);
+      AppMethodBeat.o(217186);
       return;
     }
     try
@@ -154,7 +152,7 @@ public class APLog
         if (APCallbackLogger.init(paramAPLogInfo.getLogCallbackClassName()))
         {
           hasLogCallback = true;
-          AppMethodBeat.o(253899);
+          AppMethodBeat.o(217186);
         }
       }
       else
@@ -173,132 +171,132 @@ public class APLog
           logger = APLogger.open();
         }
       }
-      AppMethodBeat.o(253899);
+      AppMethodBeat.o(217186);
       return;
     }
-    catch (Throwable paramAPLogInfo)
+    finally
     {
       new StringBuilder("Log init failed: ").append(paramAPLogInfo.toString());
-      AppMethodBeat.o(253899);
+      AppMethodBeat.o(217186);
     }
   }
   
   public static void s(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253919);
+    AppMethodBeat.i(217304);
     writeLog(composeLogMsg(paramString1, paramString2));
-    AppMethodBeat.o(253919);
+    AppMethodBeat.o(217304);
   }
   
   public static void s(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253920);
+    AppMethodBeat.i(217314);
     s(paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253920);
+    AppMethodBeat.o(217314);
   }
   
   public static void s(boolean paramBoolean, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253916);
+    AppMethodBeat.i(217290);
     paramString1 = composeLogMsg(paramString1, paramString2);
     if (hasLogCallback)
     {
       APCallbackLogger.log(6, logInfo.getLogTag(), paramString1);
-      AppMethodBeat.o(253916);
+      AppMethodBeat.o(217290);
       return;
     }
     if ((shouldPrintLog) && (!paramBoolean)) {
       APLogger.log(6, logInfo.getLogTag(), paramString1);
     }
     writeLog(paramString1);
-    AppMethodBeat.o(253916);
+    AppMethodBeat.o(217290);
   }
   
   public static void s(boolean paramBoolean, String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253917);
+    AppMethodBeat.i(217296);
     s(paramBoolean, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253917);
+    AppMethodBeat.o(217296);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253905);
+    AppMethodBeat.i(217235);
     paramString1 = composeLogMsg(paramString1, paramString2);
     if (hasLogCallback)
     {
       APCallbackLogger.log(1, logInfo.getLogTag(), paramString1);
-      AppMethodBeat.o(253905);
+      AppMethodBeat.o(217235);
       return;
     }
     if (shouldPrintLog) {
       APLogger.log(1, logInfo.getLogTag(), paramString1);
     }
     writeLog(paramString1);
-    AppMethodBeat.o(253905);
+    AppMethodBeat.o(217235);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253906);
+    AppMethodBeat.i(217244);
     v(paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253906);
+    AppMethodBeat.o(217244);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253908);
+    AppMethodBeat.i(217254);
     paramString1 = composeLogMsg(paramString1, paramString2);
     if (hasLogCallback)
     {
       APCallbackLogger.log(4, logInfo.getLogTag(), paramString1);
-      AppMethodBeat.o(253908);
+      AppMethodBeat.o(217254);
       return;
     }
     if (shouldPrintLog) {
       APLogger.log(4, logInfo.getLogTag(), paramString1);
     }
     writeLog(paramString1);
-    AppMethodBeat.o(253908);
+    AppMethodBeat.o(217254);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(253910);
+    AppMethodBeat.i(217261);
     w(paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(253910);
+    AppMethodBeat.o(217261);
   }
   
   private static void write(String paramString)
   {
-    AppMethodBeat.i(253922);
+    AppMethodBeat.i(217326);
     try
     {
       if (logger != null) {
         logger.write(paramString);
       }
-      AppMethodBeat.o(253922);
+      AppMethodBeat.o(217326);
       return;
     }
-    catch (Throwable paramString)
+    finally
     {
       new StringBuilder("Log write error: ").append(paramString.toString());
-      AppMethodBeat.o(253922);
+      AppMethodBeat.o(217326);
     }
   }
   
   private static void writeLog(String paramString)
   {
-    AppMethodBeat.i(253921);
+    AppMethodBeat.i(217321);
     if (shouldWriteLog) {
       write(paramString);
     }
-    AppMethodBeat.o(253921);
+    AppMethodBeat.o(217321);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.APLog
  * JD-Core Version:    0.7.0.1
  */

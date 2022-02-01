@@ -8,68 +8,58 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.i;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.memory.h;
+import com.tencent.mm.memory.m;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class a
   extends Drawable
-  implements i
+  implements h
 {
   boolean DEBUG;
-  protected final Paint ljP;
-  private final MMHandler ljQ;
-  protected n ljR;
-  private Runnable ljS;
+  protected final Paint nOA;
+  private final MMHandler nOB;
+  protected m nOC;
+  private Runnable nOD;
   protected String tag;
   
-  public a(String paramString, n paramn)
+  public a(String paramString, m paramm)
   {
     AppMethodBeat.i(156523);
-    this.ljP = new Paint();
+    this.nOA = new Paint();
     this.DEBUG = false;
-    this.ljS = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(156522);
-        Log.d("MicroMsg.MaskBitmapDrawable", "refresh tag=%s", new Object[] { a.this.tag });
-        a.this.invalidateSelf();
-        AppMethodBeat.o(156522);
-      }
-    };
+    this.nOD = new a.1(this);
     this.tag = paramString;
-    this.ljR = paramn;
-    this.ljP.setAntiAlias(true);
-    this.ljP.setFilterBitmap(false);
-    this.ljP.setColor(-1118482);
-    this.ljQ = new MMHandler(Looper.getMainLooper());
+    this.nOC = paramm;
+    this.nOA.setAntiAlias(true);
+    this.nOA.setFilterBitmap(false);
+    this.nOA.setColor(-1118482);
+    this.nOB = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(156523);
   }
   
-  public final void baR()
+  public final void bvM()
   {
     AppMethodBeat.i(156525);
-    if (this.ljR != null) {
-      this.ljR.baR();
+    if (this.nOC != null) {
+      this.nOC.bvM();
     }
     AppMethodBeat.o(156525);
   }
   
-  public final void baS()
+  public final void bvN()
   {
     AppMethodBeat.i(156526);
-    if (this.ljR != null) {
-      this.ljR.baS();
+    if (this.nOC != null) {
+      this.nOC.bvN();
     }
     AppMethodBeat.o(156526);
   }
   
-  public final n bbo()
+  public final m bwj()
   {
-    if (this.ljR != null) {
-      return this.ljR;
+    if (this.nOC != null) {
+      return this.nOC;
     }
     return null;
   }
@@ -78,30 +68,30 @@ public class a
   {
     AppMethodBeat.i(156524);
     Rect localRect = getBounds();
-    n localn = this.ljR;
-    if ((localn == null) || (localn.baX()))
+    m localm = this.nOC;
+    if ((localm == null) || (localm.bvS()))
     {
       paramCanvas.drawColor(-1118482);
       AppMethodBeat.o(156524);
       return;
     }
-    Paint localPaint = this.ljP;
-    paramCanvas.drawBitmap(localn.bitmap, null, localRect, localPaint);
+    Paint localPaint = this.nOA;
+    paramCanvas.drawBitmap(localm.bitmap, null, localRect, localPaint);
     AppMethodBeat.o(156524);
   }
   
   public int getIntrinsicHeight()
   {
     AppMethodBeat.i(156528);
-    if (this.ljR == null)
+    if (this.nOC == null)
     {
       AppMethodBeat.o(156528);
       return 0;
     }
-    n localn = this.ljR;
-    if ((localn != null) && (!localn.baX()))
+    m localm = this.nOC;
+    if ((localm != null) && (!localm.bvS()))
     {
-      int i = localn.bitmap.getHeight();
+      int i = localm.bitmap.getHeight();
       AppMethodBeat.o(156528);
       return i;
     }
@@ -112,15 +102,15 @@ public class a
   public int getIntrinsicWidth()
   {
     AppMethodBeat.i(156527);
-    if (this.ljR == null)
+    if (this.nOC == null)
     {
       AppMethodBeat.o(156527);
       return 0;
     }
-    n localn = this.ljR;
-    if ((localn != null) && (!localn.baX()))
+    m localm = this.nOC;
+    if ((localm != null) && (!localm.bvS()))
     {
-      int i = localn.bitmap.getWidth();
+      int i = localm.bitmap.getWidth();
       AppMethodBeat.o(156527);
       return i;
     }
@@ -144,8 +134,8 @@ public class a
     {
       String str2 = super.toString() + " code: " + hashCode();
       str1 = str2;
-      if (this.ljR != null) {
-        str1 = str2 + this.ljR;
+      if (this.nOC != null) {
+        str1 = str2 + this.nOC;
       }
       AppMethodBeat.o(156529);
       return str1;
@@ -157,7 +147,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,70 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.appstorage.ab;
-import com.tencent.mm.plugin.appbrand.appstorage.g;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.jsapi.file.av;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiClearStorageTask;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.g.a.b;
 
-public final class bd
+final class bd
+  implements be
 {
-  public static void a(t paramt, String paramString)
+  final ConcurrentSkipListSet<be> qyi;
+  final AtomicBoolean qyj;
+  
+  bd()
   {
-    AppMethodBeat.i(282887);
-    a locala = new a();
-    HashMap localHashMap = new HashMap(1);
-    localHashMap.put("currentPath", paramString);
-    locala.D(localHashMap).i(paramt.bDA()).bPO();
-    AppMethodBeat.o(282887);
+    AppMethodBeat.i(316591);
+    this.qyi = new ConcurrentSkipListSet(new Comparator() {});
+    this.qyj = new AtomicBoolean(false);
+    AppMethodBeat.o(316591);
   }
   
-  static void acf(String paramString)
+  private void N(b<be, Void> paramb)
   {
-    AppMethodBeat.i(180182);
-    ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dX(paramString).aa(2, paramString);
-    AppMethodBeat.o(180182);
-  }
-  
-  public static boolean s(t paramt)
-  {
-    AppMethodBeat.i(180181);
-    if (paramt.bDy().launchMode == 1)
-    {
-      AppMethodBeat.o(180181);
-      return true;
+    AppMethodBeat.i(316597);
+    Iterator localIterator = new LinkedList(this.qyi).iterator();
+    while (localIterator.hasNext()) {
+      paramb.invoke((be)localIterator.next());
     }
-    AppMethodBeat.o(180181);
-    return false;
+    AppMethodBeat.o(316597);
   }
   
-  public static final class a
-    extends r
+  public final void UF(final String paramString)
   {
-    public static final int CTRL_INDEX = -2;
-    public static final String NAME = "onBottomBannerButtonClicked";
+    AppMethodBeat.i(316611);
+    N(new b() {});
+    AppMethodBeat.o(316611);
+  }
+  
+  public final void cbz()
+  {
+    AppMethodBeat.i(316615);
+    N(new b() {});
+    AppMethodBeat.o(316615);
+  }
+  
+  public final void cdA()
+  {
+    AppMethodBeat.i(316608);
+    N(new b() {});
+    this.qyj.set(true);
+    this.qyi.clear();
+    AppMethodBeat.o(316608);
+  }
+  
+  public final void cdz()
+  {
+    AppMethodBeat.i(316603);
+    N(new b() {});
+    AppMethodBeat.o(316603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bd
  * JD-Core Version:    0.7.0.1
  */

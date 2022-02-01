@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.radar.ui.RadarTipsView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="150.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/gqi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/gqk" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iwp" android:background="@drawable/ah0" android:layout_width="fill_parent" android:layout_height="@dimen/ik"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/g4d" android:background="@drawable/bgq" android:visibility="gone" android:layout_width="@dimen/j4" android:layout_height="@dimen/j4" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/m2" android:layout_marginRight="@dimen/m2" android:layout_marginBottom="@dimen/m2" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="@dimen/ik" android:layout_marginLeft="@dimen/j6" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/fno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/fnn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item price]" android:singleLine="true" />
+        <TextView android:textSize="@dimen/m8" android:textColor="@color/a17" android:id="@id/fnm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item desc]" android:singleLine="true" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/gql" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/blx" />
-        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/ftf" />
-    </LinearLayout>
-</com.tencent.mm.plugin.radar.ui.RadarTipsView>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j_h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/j6" android:src="@raw/radio_on" android:scaleType="fitXY" app:iconColor="#ff1aad19" />
+</LinearLayout>

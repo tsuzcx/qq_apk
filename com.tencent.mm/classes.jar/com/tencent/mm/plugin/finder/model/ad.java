@@ -1,48 +1,18 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedSearchHotScrollTipsData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "wording", "", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;Ljava/lang/String;)V", "getWording", "()Ljava/lang/String;", "setWording", "(Ljava/lang/String;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFeedPlaceHolder;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ad
-  implements bu
+  extends BaseFinderFeed
 {
-  public String wording;
-  
-  public ad(FinderItem paramFinderItem, String paramString)
+  public ad(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(281608);
-    this.wording = paramString;
-    AppMethodBeat.o(281608);
-  }
-  
-  public final int a(k paramk)
-  {
-    AppMethodBeat.i(281606);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(281606);
-    return -1;
-  }
-  
-  public final void aDu(String paramString)
-  {
-    AppMethodBeat.i(281607);
-    p.k(paramString, "<set-?>");
-    this.wording = paramString;
-    AppMethodBeat.o(281607);
-  }
-  
-  public final int bAQ()
-  {
-    return -11;
-  }
-  
-  public final long mf()
-  {
-    return -1L;
+    super(paramFinderItem);
+    AppMethodBeat.i(332038);
+    AppMethodBeat.o(332038);
   }
 }
 

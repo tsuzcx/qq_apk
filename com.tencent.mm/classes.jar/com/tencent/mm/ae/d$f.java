@@ -1,39 +1,43 @@
 package com.tencent.mm.ae;
 
-import com.tencent.e.i.j;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.b;
+import androidx.lifecycle.q;
+import androidx.lifecycle.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/kt/CommonKt$threadPoolTag$1", "Lcom/tencent/threadpool/runnable/LoggingRunnable;", "getKey", "", "isLogging", "", "run", "", "libktcomm_release"})
-public final class d$f
-  implements j
+@Metadata(d1={""}, d2={"<anonymous>", "", "T"}, k=3, mv={1, 5, 1}, xi=48)
+final class d$f
+  extends u
+  implements a<ah>
 {
-  d$f(String paramString, a parama) {}
-  
-  public final String getKey()
+  d$f(LiveData<T> paramLiveData, q paramq, y<T> paramy)
   {
-    AppMethodBeat.i(243394);
-    String str = this.khp + "#" + this.$block.hashCode();
-    AppMethodBeat.o(243394);
-    return str;
+    super(0);
   }
   
-  public final boolean isLogging()
+  private static final void b(LiveData paramLiveData, q paramq, y paramy)
   {
-    return this.kho;
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(243395);
-    this.$block.invoke();
-    AppMethodBeat.o(243395);
+    AppMethodBeat.i(233423);
+    s.u(paramLiveData, "$this_observeWithNotify");
+    s.u(paramq, "$owner");
+    s.u(paramy, "$observer");
+    paramLiveData = paramLiveData.getValue();
+    if ((paramLiveData != null) && (paramq.getLifecycle().getCurrentState().d(j.b.bHj))) {
+      paramy.onChanged(paramLiveData);
+    }
+    AppMethodBeat.o(233423);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ae.d.f
  * JD-Core Version:    0.7.0.1
  */

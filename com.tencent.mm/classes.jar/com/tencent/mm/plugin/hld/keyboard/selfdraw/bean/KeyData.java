@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.hld.keyboard.selfdraw.bean;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyData;", "", "id", "", "type", "", "drawerType", "mainText", "mainTextSize", "mainTextColor", "floatText", "floatTextSize", "floatTextColor", "imgSrc", "iconWidth", "", "iconHeight", "bgCorner", "bgColor", "shadowColor", "shadowHeight", "initialColor", "pressMaskColor", "width", "height", "leftMargin", "leftPadding", "topMargin", "topPadding", "bottomPadding", "rightMargin", "rightPadding", "clickable", "", "longClickable", "touchFunctionCode", "clickFunctionCode", "longClickFunctionCode", "swipeable", "(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;)V", "getBgColor", "()Ljava/lang/String;", "setBgColor", "(Ljava/lang/String;)V", "getBgCorner", "()Ljava/lang/Float;", "setBgCorner", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "getBottomPadding", "setBottomPadding", "getClickFunctionCode", "()Ljava/lang/Integer;", "setClickFunctionCode", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "getClickable", "()Ljava/lang/Boolean;", "setClickable", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "getDrawerType", "setDrawerType", "getFloatText", "setFloatText", "getFloatTextColor", "setFloatTextColor", "getFloatTextSize", "setFloatTextSize", "getHeight", "setHeight", "getIconHeight", "setIconHeight", "getIconWidth", "setIconWidth", "getId", "setId", "getImgSrc", "setImgSrc", "getInitialColor", "setInitialColor", "getLeftMargin", "setLeftMargin", "getLeftPadding", "setLeftPadding", "getLongClickFunctionCode", "setLongClickFunctionCode", "getLongClickable", "setLongClickable", "getMainText", "setMainText", "getMainTextColor", "setMainTextColor", "getMainTextSize", "setMainTextSize", "getPressMaskColor", "setPressMaskColor", "getRightMargin", "setRightMargin", "getRightPadding", "setRightPadding", "getShadowColor", "setShadowColor", "getShadowHeight", "setShadowHeight", "getSwipeable", "setSwipeable", "getTopMargin", "setTopMargin", "getTopPadding", "setTopPadding", "getTouchFunctionCode", "setTouchFunctionCode", "getType", "setType", "getWidth", "setWidth", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component18", "component19", "component2", "component20", "component21", "component22", "component23", "component24", "component25", "component26", "component27", "component28", "component29", "component3", "component30", "component31", "component32", "component33", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;)Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyData;", "equals", "other", "", "hashCode", "toString", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyData;", "", "id", "", "type", "", "drawerType", "mainText", "mainTextSize", "mainTextColor", "floatText", "floatTextSize", "floatTextColor", "imgSrc", "iconWidth", "", "iconHeight", "bgCorner", "bgColor", "shadowColor", "shadowHeight", "initialColor", "pressMaskColor", "width", "height", "leftMargin", "leftPadding", "topMargin", "topPadding", "bottomPadding", "rightMargin", "rightPadding", "clickable", "", "longClickable", "touchFunctionCode", "clickFunctionCode", "longClickFunctionCode", "swipeable", "(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;)V", "getBgColor", "()Ljava/lang/String;", "setBgColor", "(Ljava/lang/String;)V", "getBgCorner", "()Ljava/lang/Float;", "setBgCorner", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "getBottomPadding", "setBottomPadding", "getClickFunctionCode", "()Ljava/lang/Integer;", "setClickFunctionCode", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "getClickable", "()Ljava/lang/Boolean;", "setClickable", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "getDrawerType", "setDrawerType", "getFloatText", "setFloatText", "getFloatTextColor", "setFloatTextColor", "getFloatTextSize", "setFloatTextSize", "getHeight", "setHeight", "getIconHeight", "setIconHeight", "getIconWidth", "setIconWidth", "getId", "setId", "getImgSrc", "setImgSrc", "getInitialColor", "setInitialColor", "getLeftMargin", "setLeftMargin", "getLeftPadding", "setLeftPadding", "getLongClickFunctionCode", "setLongClickFunctionCode", "getLongClickable", "setLongClickable", "getMainText", "setMainText", "getMainTextColor", "setMainTextColor", "getMainTextSize", "setMainTextSize", "getPressMaskColor", "setPressMaskColor", "getRightMargin", "setRightMargin", "getRightPadding", "setRightPadding", "getShadowColor", "setShadowColor", "getShadowHeight", "setShadowHeight", "getSwipeable", "setSwipeable", "getTopMargin", "setTopMargin", "getTopPadding", "setTopPadding", "getTouchFunctionCode", "setTouchFunctionCode", "getType", "setType", "getWidth", "setWidth", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component16", "component17", "component18", "component19", "component2", "component20", "component21", "component22", "component23", "component24", "component25", "component26", "component27", "component28", "component29", "component3", "component30", "component31", "component32", "component33", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;)Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyData;", "equals", "other", "", "hashCode", "toString", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class KeyData
   implements Cloneable
 {
@@ -49,7 +49,7 @@ public final class KeyData
   
   public KeyData(String paramString1, Integer paramInteger1, String paramString2, String paramString3, Integer paramInteger2, String paramString4, String paramString5, Integer paramInteger3, String paramString6, String paramString7, Float paramFloat1, Float paramFloat2, Float paramFloat3, String paramString8, String paramString9, Float paramFloat4, String paramString10, String paramString11, Float paramFloat5, Float paramFloat6, Float paramFloat7, Float paramFloat8, Float paramFloat9, Float paramFloat10, Float paramFloat11, Float paramFloat12, Float paramFloat13, Boolean paramBoolean1, Boolean paramBoolean2, Integer paramInteger4, Integer paramInteger5, Integer paramInteger6, Boolean paramBoolean3)
   {
-    AppMethodBeat.i(214509);
+    AppMethodBeat.i(313150);
     this.id = paramString1;
     this.type = paramInteger1;
     this.drawerType = paramString2;
@@ -83,14 +83,14 @@ public final class KeyData
     this.clickFunctionCode = paramInteger5;
     this.longClickFunctionCode = paramInteger6;
     this.swipeable = paramBoolean3;
-    AppMethodBeat.o(214509);
+    AppMethodBeat.o(313150);
   }
   
   public final Object clone()
   {
-    AppMethodBeat.i(214516);
+    AppMethodBeat.i(313407);
     Object localObject = super.clone();
-    AppMethodBeat.o(214516);
+    AppMethodBeat.o(313407);
     return localObject;
   }
   
@@ -261,31 +261,194 @@ public final class KeyData
   
   public final KeyData copy(String paramString1, Integer paramInteger1, String paramString2, String paramString3, Integer paramInteger2, String paramString4, String paramString5, Integer paramInteger3, String paramString6, String paramString7, Float paramFloat1, Float paramFloat2, Float paramFloat3, String paramString8, String paramString9, Float paramFloat4, String paramString10, String paramString11, Float paramFloat5, Float paramFloat6, Float paramFloat7, Float paramFloat8, Float paramFloat9, Float paramFloat10, Float paramFloat11, Float paramFloat12, Float paramFloat13, Boolean paramBoolean1, Boolean paramBoolean2, Integer paramInteger4, Integer paramInteger5, Integer paramInteger6, Boolean paramBoolean3)
   {
-    AppMethodBeat.i(214566);
-    p.k(paramString1, "id");
+    AppMethodBeat.i(313528);
+    s.u(paramString1, "id");
     paramString1 = new KeyData(paramString1, paramInteger1, paramString2, paramString3, paramInteger2, paramString4, paramString5, paramInteger3, paramString6, paramString7, paramFloat1, paramFloat2, paramFloat3, paramString8, paramString9, paramFloat4, paramString10, paramString11, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramFloat9, paramFloat10, paramFloat11, paramFloat12, paramFloat13, paramBoolean1, paramBoolean2, paramInteger4, paramInteger5, paramInteger6, paramBoolean3);
-    AppMethodBeat.o(214566);
+    AppMethodBeat.o(313528);
     return paramString1;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(214578);
-    if (this != paramObject)
+    AppMethodBeat.i(313551);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof KeyData))
-      {
-        paramObject = (KeyData)paramObject;
-        if ((!p.h(this.id, paramObject.id)) || (!p.h(this.type, paramObject.type)) || (!p.h(this.drawerType, paramObject.drawerType)) || (!p.h(this.mainText, paramObject.mainText)) || (!p.h(this.mainTextSize, paramObject.mainTextSize)) || (!p.h(this.mainTextColor, paramObject.mainTextColor)) || (!p.h(this.floatText, paramObject.floatText)) || (!p.h(this.floatTextSize, paramObject.floatTextSize)) || (!p.h(this.floatTextColor, paramObject.floatTextColor)) || (!p.h(this.imgSrc, paramObject.imgSrc)) || (!p.h(this.iconWidth, paramObject.iconWidth)) || (!p.h(this.iconHeight, paramObject.iconHeight)) || (!p.h(this.bgCorner, paramObject.bgCorner)) || (!p.h(this.bgColor, paramObject.bgColor)) || (!p.h(this.shadowColor, paramObject.shadowColor)) || (!p.h(this.shadowHeight, paramObject.shadowHeight)) || (!p.h(this.initialColor, paramObject.initialColor)) || (!p.h(this.pressMaskColor, paramObject.pressMaskColor)) || (!p.h(this.width, paramObject.width)) || (!p.h(this.height, paramObject.height)) || (!p.h(this.leftMargin, paramObject.leftMargin)) || (!p.h(this.leftPadding, paramObject.leftPadding)) || (!p.h(this.topMargin, paramObject.topMargin)) || (!p.h(this.topPadding, paramObject.topPadding)) || (!p.h(this.bottomPadding, paramObject.bottomPadding)) || (!p.h(this.rightMargin, paramObject.rightMargin)) || (!p.h(this.rightPadding, paramObject.rightPadding)) || (!p.h(this.clickable, paramObject.clickable)) || (!p.h(this.longClickable, paramObject.longClickable)) || (!p.h(this.touchFunctionCode, paramObject.touchFunctionCode)) || (!p.h(this.clickFunctionCode, paramObject.clickFunctionCode)) || (!p.h(this.longClickFunctionCode, paramObject.longClickFunctionCode)) || (!p.h(this.swipeable, paramObject.swipeable))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(214578);
+      AppMethodBeat.o(313551);
       return true;
     }
-    AppMethodBeat.o(214578);
-    return false;
+    if (!(paramObject instanceof KeyData))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    paramObject = (KeyData)paramObject;
+    if (!s.p(this.id, paramObject.id))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.type, paramObject.type))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.drawerType, paramObject.drawerType))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.mainText, paramObject.mainText))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.mainTextSize, paramObject.mainTextSize))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.mainTextColor, paramObject.mainTextColor))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.floatText, paramObject.floatText))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.floatTextSize, paramObject.floatTextSize))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.floatTextColor, paramObject.floatTextColor))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.imgSrc, paramObject.imgSrc))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.iconWidth, paramObject.iconWidth))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.iconHeight, paramObject.iconHeight))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.bgCorner, paramObject.bgCorner))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.bgColor, paramObject.bgColor))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.shadowColor, paramObject.shadowColor))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.shadowHeight, paramObject.shadowHeight))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.initialColor, paramObject.initialColor))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.pressMaskColor, paramObject.pressMaskColor))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.width, paramObject.width))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.height, paramObject.height))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.leftMargin, paramObject.leftMargin))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.leftPadding, paramObject.leftPadding))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.topMargin, paramObject.topMargin))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.topPadding, paramObject.topPadding))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.bottomPadding, paramObject.bottomPadding))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.rightMargin, paramObject.rightMargin))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.rightPadding, paramObject.rightPadding))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.clickable, paramObject.clickable))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.longClickable, paramObject.longClickable))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.touchFunctionCode, paramObject.touchFunctionCode))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.clickFunctionCode, paramObject.clickFunctionCode))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.longClickFunctionCode, paramObject.longClickFunctionCode))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    if (!s.p(this.swipeable, paramObject.swipeable))
+    {
+      AppMethodBeat.o(313551);
+      return false;
+    }
+    AppMethodBeat.o(313551);
+    return true;
   }
   
   public final String getBgColor()
@@ -455,315 +618,295 @@ public final class KeyData
   
   public final int hashCode()
   {
-    int i28 = 0;
-    AppMethodBeat.i(214576);
-    Object localObject = this.id;
+    int i27 = 0;
+    AppMethodBeat.i(313543);
+    int i28 = this.id.hashCode();
     int i;
     int j;
-    label43:
+    label36:
     int k;
-    label60:
+    label45:
     int m;
-    label78:
+    label55:
     int n;
-    label96:
+    label65:
     int i1;
-    label114:
+    label75:
     int i2;
-    label132:
+    label85:
     int i3;
-    label150:
+    label95:
     int i4;
-    label168:
+    label105:
     int i5;
-    label186:
+    label115:
     int i6;
-    label204:
+    label125:
     int i7;
-    label222:
+    label135:
     int i8;
-    label240:
+    label145:
     int i9;
-    label258:
+    label155:
     int i10;
-    label276:
+    label165:
     int i11;
-    label294:
+    label175:
     int i12;
-    label312:
+    label185:
     int i13;
-    label330:
+    label195:
     int i14;
-    label348:
+    label205:
     int i15;
-    label366:
+    label215:
     int i16;
-    label384:
+    label225:
     int i17;
-    label402:
+    label235:
     int i18;
-    label420:
+    label245:
     int i19;
-    label438:
+    label255:
     int i20;
-    label456:
+    label265:
     int i21;
-    label474:
+    label275:
     int i22;
-    label492:
+    label285:
     int i23;
-    label510:
+    label295:
     int i24;
-    label528:
+    label305:
     int i25;
-    label546:
+    label315:
     int i26;
-    if (localObject != null)
+    if (this.type == null)
     {
-      i = localObject.hashCode();
-      localObject = this.type;
-      if (localObject == null) {
+      i = 0;
+      if (this.drawerType != null) {
+        break label541;
+      }
+      j = 0;
+      if (this.mainText != null) {
+        break label552;
+      }
+      k = 0;
+      if (this.mainTextSize != null) {
+        break label563;
+      }
+      m = 0;
+      if (this.mainTextColor != null) {
+        break label575;
+      }
+      n = 0;
+      if (this.floatText != null) {
+        break label587;
+      }
+      i1 = 0;
+      if (this.floatTextSize != null) {
+        break label599;
+      }
+      i2 = 0;
+      if (this.floatTextColor != null) {
+        break label611;
+      }
+      i3 = 0;
+      if (this.imgSrc != null) {
+        break label623;
+      }
+      i4 = 0;
+      if (this.iconWidth != null) {
+        break label635;
+      }
+      i5 = 0;
+      if (this.iconHeight != null) {
+        break label647;
+      }
+      i6 = 0;
+      if (this.bgCorner != null) {
+        break label659;
+      }
+      i7 = 0;
+      if (this.bgColor != null) {
+        break label671;
+      }
+      i8 = 0;
+      if (this.shadowColor != null) {
+        break label683;
+      }
+      i9 = 0;
+      if (this.shadowHeight != null) {
+        break label695;
+      }
+      i10 = 0;
+      if (this.initialColor != null) {
+        break label707;
+      }
+      i11 = 0;
+      if (this.pressMaskColor != null) {
+        break label719;
+      }
+      i12 = 0;
+      if (this.width != null) {
+        break label731;
+      }
+      i13 = 0;
+      if (this.height != null) {
+        break label743;
+      }
+      i14 = 0;
+      if (this.leftMargin != null) {
+        break label755;
+      }
+      i15 = 0;
+      if (this.leftPadding != null) {
+        break label767;
+      }
+      i16 = 0;
+      if (this.topMargin != null) {
+        break label779;
+      }
+      i17 = 0;
+      if (this.topPadding != null) {
+        break label791;
+      }
+      i18 = 0;
+      if (this.bottomPadding != null) {
         break label803;
       }
-      j = localObject.hashCode();
-      localObject = this.drawerType;
-      if (localObject == null) {
-        break label808;
+      i19 = 0;
+      if (this.rightMargin != null) {
+        break label815;
       }
-      k = localObject.hashCode();
-      localObject = this.mainText;
-      if (localObject == null) {
-        break label813;
+      i20 = 0;
+      if (this.rightPadding != null) {
+        break label827;
       }
-      m = localObject.hashCode();
-      localObject = this.mainTextSize;
-      if (localObject == null) {
-        break label819;
+      i21 = 0;
+      if (this.clickable != null) {
+        break label839;
       }
-      n = localObject.hashCode();
-      localObject = this.mainTextColor;
-      if (localObject == null) {
-        break label825;
+      i22 = 0;
+      if (this.longClickable != null) {
+        break label851;
       }
-      i1 = localObject.hashCode();
-      localObject = this.floatText;
-      if (localObject == null) {
-        break label831;
+      i23 = 0;
+      if (this.touchFunctionCode != null) {
+        break label863;
       }
-      i2 = localObject.hashCode();
-      localObject = this.floatTextSize;
-      if (localObject == null) {
-        break label837;
+      i24 = 0;
+      if (this.clickFunctionCode != null) {
+        break label875;
       }
-      i3 = localObject.hashCode();
-      localObject = this.floatTextColor;
-      if (localObject == null) {
-        break label843;
+      i25 = 0;
+      if (this.longClickFunctionCode != null) {
+        break label887;
       }
-      i4 = localObject.hashCode();
-      localObject = this.imgSrc;
-      if (localObject == null) {
-        break label849;
-      }
-      i5 = localObject.hashCode();
-      localObject = this.iconWidth;
-      if (localObject == null) {
-        break label855;
-      }
-      i6 = localObject.hashCode();
-      localObject = this.iconHeight;
-      if (localObject == null) {
-        break label861;
-      }
-      i7 = localObject.hashCode();
-      localObject = this.bgCorner;
-      if (localObject == null) {
-        break label867;
-      }
-      i8 = localObject.hashCode();
-      localObject = this.bgColor;
-      if (localObject == null) {
-        break label873;
-      }
-      i9 = localObject.hashCode();
-      localObject = this.shadowColor;
-      if (localObject == null) {
-        break label879;
-      }
-      i10 = localObject.hashCode();
-      localObject = this.shadowHeight;
-      if (localObject == null) {
-        break label885;
-      }
-      i11 = localObject.hashCode();
-      localObject = this.initialColor;
-      if (localObject == null) {
-        break label891;
-      }
-      i12 = localObject.hashCode();
-      localObject = this.pressMaskColor;
-      if (localObject == null) {
-        break label897;
-      }
-      i13 = localObject.hashCode();
-      localObject = this.width;
-      if (localObject == null) {
-        break label903;
-      }
-      i14 = localObject.hashCode();
-      localObject = this.height;
-      if (localObject == null) {
-        break label909;
-      }
-      i15 = localObject.hashCode();
-      localObject = this.leftMargin;
-      if (localObject == null) {
-        break label915;
-      }
-      i16 = localObject.hashCode();
-      localObject = this.leftPadding;
-      if (localObject == null) {
-        break label921;
-      }
-      i17 = localObject.hashCode();
-      localObject = this.topMargin;
-      if (localObject == null) {
-        break label927;
-      }
-      i18 = localObject.hashCode();
-      localObject = this.topPadding;
-      if (localObject == null) {
-        break label933;
-      }
-      i19 = localObject.hashCode();
-      localObject = this.bottomPadding;
-      if (localObject == null) {
-        break label939;
-      }
-      i20 = localObject.hashCode();
-      localObject = this.rightMargin;
-      if (localObject == null) {
-        break label945;
-      }
-      i21 = localObject.hashCode();
-      localObject = this.rightPadding;
-      if (localObject == null) {
-        break label951;
-      }
-      i22 = localObject.hashCode();
-      localObject = this.clickable;
-      if (localObject == null) {
-        break label957;
-      }
-      i23 = localObject.hashCode();
-      localObject = this.longClickable;
-      if (localObject == null) {
-        break label963;
-      }
-      i24 = localObject.hashCode();
-      localObject = this.touchFunctionCode;
-      if (localObject == null) {
-        break label969;
-      }
-      i25 = localObject.hashCode();
-      localObject = this.clickFunctionCode;
-      if (localObject == null) {
-        break label975;
-      }
-      i26 = localObject.hashCode();
-      label564:
-      localObject = this.longClickFunctionCode;
-      if (localObject == null) {
-        break label981;
+      i26 = 0;
+      label325:
+      if (this.swipeable != null) {
+        break label899;
       }
     }
-    label803:
-    label808:
-    label813:
-    label819:
-    label825:
-    label831:
-    label837:
-    label843:
-    label849:
-    label981:
-    for (int i27 = localObject.hashCode();; i27 = 0)
+    for (;;)
     {
-      localObject = this.swipeable;
-      if (localObject != null) {
-        i28 = localObject.hashCode();
-      }
-      AppMethodBeat.o(214576);
-      return (i27 + (i26 + (i25 + (i24 + (i23 + (i22 + (i21 + (i20 + (i19 + (i18 + (i17 + (i16 + (i15 + (i14 + (i13 + (i12 + (i11 + (i10 + (i9 + (i8 + (i7 + (i6 + (i5 + (i4 + (i3 + (i2 + (i1 + (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i28;
-      i = 0;
+      AppMethodBeat.o(313543);
+      return (i26 + (i25 + (i24 + (i23 + (i22 + (i21 + (i20 + (i19 + (i18 + (i17 + (i16 + (i15 + (i14 + (i13 + (i12 + (i11 + (i10 + (i9 + (i8 + (i7 + (i6 + (i5 + (i4 + (i3 + (i2 + (i1 + (n + (m + (k + (j + (i + i28 * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i27;
+      i = this.type.hashCode();
       break;
-      j = 0;
-      break label43;
-      k = 0;
-      break label60;
-      m = 0;
-      break label78;
-      n = 0;
-      break label96;
-      i1 = 0;
-      break label114;
-      i2 = 0;
-      break label132;
-      i3 = 0;
-      break label150;
-      i4 = 0;
-      break label168;
-      i5 = 0;
-      break label186;
-      label855:
-      i6 = 0;
-      break label204;
-      label861:
-      i7 = 0;
-      break label222;
-      label867:
-      i8 = 0;
-      break label240;
-      label873:
-      i9 = 0;
-      break label258;
-      label879:
-      i10 = 0;
-      break label276;
-      label885:
-      i11 = 0;
-      break label294;
-      label891:
-      i12 = 0;
-      break label312;
-      i13 = 0;
-      break label330;
-      i14 = 0;
-      break label348;
-      i15 = 0;
-      break label366;
-      i16 = 0;
-      break label384;
-      i17 = 0;
-      break label402;
-      i18 = 0;
-      break label420;
-      i19 = 0;
-      break label438;
-      i20 = 0;
-      break label456;
-      i21 = 0;
-      break label474;
-      i22 = 0;
-      break label492;
-      i23 = 0;
-      break label510;
-      i24 = 0;
-      break label528;
-      i25 = 0;
-      break label546;
-      i26 = 0;
-      break label564;
+      label541:
+      j = this.drawerType.hashCode();
+      break label36;
+      label552:
+      k = this.mainText.hashCode();
+      break label45;
+      label563:
+      m = this.mainTextSize.hashCode();
+      break label55;
+      label575:
+      n = this.mainTextColor.hashCode();
+      break label65;
+      label587:
+      i1 = this.floatText.hashCode();
+      break label75;
+      label599:
+      i2 = this.floatTextSize.hashCode();
+      break label85;
+      label611:
+      i3 = this.floatTextColor.hashCode();
+      break label95;
+      label623:
+      i4 = this.imgSrc.hashCode();
+      break label105;
+      label635:
+      i5 = this.iconWidth.hashCode();
+      break label115;
+      label647:
+      i6 = this.iconHeight.hashCode();
+      break label125;
+      label659:
+      i7 = this.bgCorner.hashCode();
+      break label135;
+      label671:
+      i8 = this.bgColor.hashCode();
+      break label145;
+      label683:
+      i9 = this.shadowColor.hashCode();
+      break label155;
+      label695:
+      i10 = this.shadowHeight.hashCode();
+      break label165;
+      label707:
+      i11 = this.initialColor.hashCode();
+      break label175;
+      label719:
+      i12 = this.pressMaskColor.hashCode();
+      break label185;
+      label731:
+      i13 = this.width.hashCode();
+      break label195;
+      label743:
+      i14 = this.height.hashCode();
+      break label205;
+      label755:
+      i15 = this.leftMargin.hashCode();
+      break label215;
+      label767:
+      i16 = this.leftPadding.hashCode();
+      break label225;
+      label779:
+      i17 = this.topMargin.hashCode();
+      break label235;
+      label791:
+      i18 = this.topPadding.hashCode();
+      break label245;
+      label803:
+      i19 = this.bottomPadding.hashCode();
+      break label255;
+      label815:
+      i20 = this.rightMargin.hashCode();
+      break label265;
+      label827:
+      i21 = this.rightPadding.hashCode();
+      break label275;
+      label839:
+      i22 = this.clickable.hashCode();
+      break label285;
+      label851:
+      i23 = this.longClickable.hashCode();
+      break label295;
+      label863:
+      i24 = this.touchFunctionCode.hashCode();
+      break label305;
+      label875:
+      i25 = this.clickFunctionCode.hashCode();
+      break label315;
+      label887:
+      i26 = this.longClickFunctionCode.hashCode();
+      break label325;
+      label899:
+      i27 = this.swipeable.hashCode();
     }
   }
   
@@ -829,10 +972,10 @@ public final class KeyData
   
   public final void setId(String paramString)
   {
-    AppMethodBeat.i(214428);
-    p.k(paramString, "<set-?>");
+    AppMethodBeat.i(313190);
+    s.u(paramString, "<set-?>");
     this.id = paramString;
-    AppMethodBeat.o(214428);
+    AppMethodBeat.o(313190);
   }
   
   public final void setImgSrc(String paramString)
@@ -937,10 +1080,14 @@ public final class KeyData
   
   public final String toString()
   {
-    AppMethodBeat.i(214573);
-    String str = "KeyData(id=" + this.id + ", type=" + this.type + ", drawerType=" + this.drawerType + ", mainText=" + this.mainText + ", mainTextSize=" + this.mainTextSize + ", mainTextColor=" + this.mainTextColor + ", floatText=" + this.floatText + ", floatTextSize=" + this.floatTextSize + ", floatTextColor=" + this.floatTextColor + ", imgSrc=" + this.imgSrc + ", iconWidth=" + this.iconWidth + ", iconHeight=" + this.iconHeight + ", bgCorner=" + this.bgCorner + ", bgColor=" + this.bgColor + ", shadowColor=" + this.shadowColor + ", shadowHeight=" + this.shadowHeight + ", initialColor=" + this.initialColor + ", pressMaskColor=" + this.pressMaskColor + ", width=" + this.width + ", height=" + this.height + ", leftMargin=" + this.leftMargin + ", leftPadding=" + this.leftPadding + ", topMargin=" + this.topMargin + ", topPadding=" + this.topPadding + ", bottomPadding=" + this.bottomPadding + ", rightMargin=" + this.rightMargin + ", rightPadding=" + this.rightPadding + ", clickable=" + this.clickable + ", longClickable=" + this.longClickable + ", touchFunctionCode=" + this.touchFunctionCode + ", clickFunctionCode=" + this.clickFunctionCode + ", longClickFunctionCode=" + this.longClickFunctionCode + ", swipeable=" + this.swipeable + ")";
-    AppMethodBeat.o(214573);
-    return str;
+    AppMethodBeat.i(313535);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("KeyData(id=").append(this.id).append(", type=").append(this.type).append(", drawerType=").append(this.drawerType).append(", mainText=").append(this.mainText).append(", mainTextSize=").append(this.mainTextSize).append(", mainTextColor=").append(this.mainTextColor).append(", floatText=").append(this.floatText).append(", floatTextSize=").append(this.floatTextSize).append(", floatTextColor=").append(this.floatTextColor).append(", imgSrc=").append(this.imgSrc).append(", iconWidth=").append(this.iconWidth).append(", iconHeight=");
+    ((StringBuilder)localObject).append(this.iconHeight).append(", bgCorner=").append(this.bgCorner).append(", bgColor=").append(this.bgColor).append(", shadowColor=").append(this.shadowColor).append(", shadowHeight=").append(this.shadowHeight).append(", initialColor=").append(this.initialColor).append(", pressMaskColor=").append(this.pressMaskColor).append(", width=").append(this.width).append(", height=").append(this.height).append(", leftMargin=").append(this.leftMargin).append(", leftPadding=").append(this.leftPadding).append(", topMargin=").append(this.topMargin);
+    ((StringBuilder)localObject).append(", topPadding=").append(this.topPadding).append(", bottomPadding=").append(this.bottomPadding).append(", rightMargin=").append(this.rightMargin).append(", rightPadding=").append(this.rightPadding).append(", clickable=").append(this.clickable).append(", longClickable=").append(this.longClickable).append(", touchFunctionCode=").append(this.touchFunctionCode).append(", clickFunctionCode=").append(this.clickFunctionCode).append(", longClickFunctionCode=").append(this.longClickFunctionCode).append(", swipeable=").append(this.swipeable).append(')');
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(313535);
+    return localObject;
   }
 }
 

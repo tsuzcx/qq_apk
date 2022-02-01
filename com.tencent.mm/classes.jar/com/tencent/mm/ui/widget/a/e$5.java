@@ -1,31 +1,33 @@
 package com.tencent.mm.ui.widget.a;
 
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.widget.ScrollView;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.CustomScrollView.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class e$5
-  implements CustomScrollView.a
+  implements View.OnClickListener
 {
-  e$5(e parame) {}
+  e$5(e parame, a parama) {}
   
-  public final void a(ScrollView paramScrollView, int paramInt1, int paramInt2)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(251641);
-    if (paramScrollView.getChildAt(0).getMeasuredHeight() - (paramScrollView.getHeight() + paramScrollView.getScrollY()) < 50)
-    {
-      e.d(this.Ynn).setVisibility(8);
-      AppMethodBeat.o(251641);
-      return;
+    AppMethodBeat.i(251765);
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/dialog/MMAlertDialog$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.agef.acqX != null) {
+      this.agef.acqX.onClick(this.aged, -2);
     }
-    e.d(this.Ynn).setVisibility(0);
-    AppMethodBeat.o(251641);
+    this.aged.dismiss();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(251765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.e.5
  * JD-Core Version:    0.7.0.1
  */

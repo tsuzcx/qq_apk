@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
@@ -19,24 +18,24 @@ public final class c
   private static final int CTRL_INDEX = 580;
   private static final String NAME = "hideVirtualBottomNavigationBar";
   
-  private void H(final e parame)
+  private void J(final f paramf)
   {
     AppMethodBeat.i(138278);
-    parame = AndroidContextUtil.castActivityOrNull(parame.getContext());
-    if (parame == null)
+    paramf = AndroidContextUtil.castActivityOrNull(paramf.getContext());
+    if (paramf == null)
     {
       Log.i("JsApiHideVirtualBottomNavigationBar", "null == activity");
       AppMethodBeat.o(138278);
       return;
     }
-    parame = parame.getWindow();
-    if (parame == null)
+    paramf = paramf.getWindow();
+    if (paramf == null)
     {
       Log.i("JsApiHideVirtualBottomNavigationBar", "null == window");
       AppMethodBeat.o(138278);
       return;
     }
-    int j = parame.getDecorView().getSystemUiVisibility();
+    int j = paramf.getDecorView().getSystemUiVisibility();
     final int i = j;
     if (Build.VERSION.SDK_INT >= 20) {
       i = j | 0x200 | 0x2;
@@ -46,14 +45,14 @@ public final class c
       j = i | 0x1000;
     }
     i = j | 0x100;
-    parame.getDecorView().setSystemUiVisibility(i);
-    parame.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+    paramf.getDecorView().setSystemUiVisibility(i);
+    paramf.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
     {
       public final void onSystemUiVisibilityChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(138275);
         if ((paramAnonymousInt & 0x4) == 0) {
-          parame.getDecorView().setSystemUiVisibility(i);
+          paramf.getDecorView().setSystemUiVisibility(i);
         }
         AppMethodBeat.o(138275);
       }
@@ -61,14 +60,14 @@ public final class c
     AppMethodBeat.o(138278);
   }
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(138276);
-    d(parame, paramInt);
+    j(paramf, paramInt);
     AppMethodBeat.o(138276);
   }
   
-  final void d(final e parame, final int paramInt)
+  final void j(final f paramf, final int paramInt)
   {
     AppMethodBeat.i(138277);
     if (!MMHandlerThread.isMainThread())
@@ -78,7 +77,7 @@ public final class c
         public final void run()
         {
           AppMethodBeat.i(138274);
-          c.this.d(parame, paramInt);
+          c.this.j(paramf, paramInt);
           AppMethodBeat.o(138274);
         }
       });
@@ -86,8 +85,8 @@ public final class c
       return;
     }
     Log.i("JsApiHideVirtualBottomNavigationBar", "hide");
-    H(parame);
-    parame.j(paramInt, h("ok", null));
+    J(paramf);
+    paramf.callback(paramInt, ZP("ok"));
     AppMethodBeat.o(138277);
   }
 }

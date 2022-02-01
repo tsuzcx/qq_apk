@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(185105);
-    fkk = new a("NONE", 0);
-    fkl = new a("RESUME", 1);
-    fkm = new a("ENQUEUE", 2);
-    fkn = new a[] { fkk, fkl, fkm };
+    hox = new a("NONE", 0);
+    hoy = new a("RESUME", 1);
+    hoz = new a("ENQUEUE", 2);
+    hoA = new a[] { hox, hoy, hoz };
     AppMethodBeat.o(185105);
   }
   

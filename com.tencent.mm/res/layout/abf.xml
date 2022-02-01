@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="@dimen/bt"
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="@dimen/d_"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <include layout="@layout/abg" />
-        <include layout="@layout/abe" />
-    </LinearLayout>
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <View android:id="@id/c8l" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="@dimen/df" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9_Night_Mode" android:gravity="center_vertical" android:id="@id/c2g" android:layout_width="wrap_content" android:layout_height="@dimen/d6" android:layout_marginLeft="16.0dip" android:text="@string/en6" android:layout_weight="1.0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/c8l" />
+    <View android:background="@drawable/aov" android:layout_width="fill_parent" android:layout_height="@dimen/df" android:layout_marginTop="@dimen/d6" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

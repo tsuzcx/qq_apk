@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/elo" style="@style/k7">
+        <ImageView android:id="@id/elr" android:layout_width="@dimen/iy" android:layout_height="@dimen/iy" android:layout_marginRight="@dimen/ln" android:layout_alignParentLeft="true" />
+        <TextView android:id="@id/elm" android:layout_marginLeft="5.0dip" android:minHeight="24.0dip" android:layout_alignTop="@id/elr" android:layout_alignParentRight="true" style="@style/m_" />
+        <TextView android:gravity="center_vertical" android:id="@id/elt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="24.0dip" android:layout_toLeftOf="@id/elm" android:layout_toRightOf="@id/elr" android:layout_alignTop="@id/elr" style="@style/ma" />
+        <TextView android:gravity="center_vertical" android:id="@id/elp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minHeight="24.0dip" android:singleLine="true" android:layout_toRightOf="@id/elr" android:layout_alignLeft="@id/elt" android:layout_alignBottom="@id/elr" style="@style/m_" />
+        <TextView android:gravity="center_vertical" android:id="@id/elu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="3.0dip" android:maxLines="2" android:singleLine="false" android:layout_below="@id/elr" android:layout_alignParentLeft="true" style="@style/m_" />
+    </RelativeLayout>
+</FrameLayout>

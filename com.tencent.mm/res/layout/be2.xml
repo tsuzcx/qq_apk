@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/d82" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_" android:layout_weight="1.0">
+        <TextView android:id="@id/ko8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/m4" />
+        <TextView android:gravity="center_vertical" android:id="@id/o7" android:layout_width="@dimen/f9" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ig" android:singleLine="true" style="@style/m4" />
+        <RelativeLayout android:layout_width="@dimen/i" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4t" android:layout_width="@dimen/i" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="@dimen/i" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4u" android:layout_width="@dimen/i" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="@dimen/i" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4v" android:layout_width="@dimen/i" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="@dimen/i" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
+            <ImageView android:id="@id/f4w" android:layout_width="@dimen/i" android:layout_height="@dimen/db" android:scaleType="centerCrop" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:background="@color/n9" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

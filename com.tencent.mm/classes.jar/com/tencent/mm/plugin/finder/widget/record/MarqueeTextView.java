@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.widget.record;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -12,18 +11,17 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.l;
+import com.tencent.mm.plugin.finder.e.j;
 
-@SuppressLint({"AppCompatCustomView"})
 public class MarqueeTextView
   extends TextView
 {
-  private int BuA;
-  private int BuB;
-  private int Bux;
-  private int Buy;
-  private boolean Buz;
-  private boolean arU;
+  private int Hbi;
+  private int Hbj;
+  private boolean Hbk;
+  private int Hbl;
+  private int Hbm;
+  private boolean cgD;
   private Scroller mScroller;
   
   public MarqueeTextView(Context paramContext, AttributeSet paramAttributeSet)
@@ -34,50 +32,50 @@ public class MarqueeTextView
   public MarqueeTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(276550);
-    this.Buy = 0;
-    this.arU = true;
-    this.Buz = true;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, b.l.MarqueeTextView);
-    this.Bux = paramContext.getInt(b.l.MarqueeTextView_scroll_interval, 10000);
-    this.BuA = paramContext.getInt(b.l.MarqueeTextView_scroll_mode, 100);
-    this.BuB = paramContext.getInt(b.l.MarqueeTextView_scroll_first_delay, 1000);
+    AppMethodBeat.i(330644);
+    this.Hbj = 0;
+    this.cgD = true;
+    this.Hbk = true;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, e.j.MarqueeTextView);
+    this.Hbi = paramContext.getInt(e.j.MarqueeTextView_scroll_interval, 10000);
+    this.Hbl = paramContext.getInt(e.j.MarqueeTextView_scroll_mode, 100);
+    this.Hbm = paramContext.getInt(e.j.MarqueeTextView_scroll_first_delay, 1000);
     paramContext.recycle();
     setSingleLine();
     setEllipsize(null);
-    AppMethodBeat.o(276550);
+    AppMethodBeat.o(330644);
   }
   
   public void computeScroll()
   {
-    AppMethodBeat.i(276551);
+    AppMethodBeat.i(330675);
     super.computeScroll();
     if (this.mScroller == null)
     {
-      AppMethodBeat.o(276551);
+      AppMethodBeat.o(330675);
       return;
     }
-    if ((this.mScroller.isFinished()) && (!this.arU))
+    if ((this.mScroller.isFinished()) && (!this.cgD))
     {
-      if (this.BuA == 101)
+      if (this.Hbl == 101)
       {
         if (this.mScroller == null)
         {
-          AppMethodBeat.o(276551);
+          AppMethodBeat.o(330675);
           return;
         }
-        this.Buy = 0;
-        this.arU = true;
-        this.Buz = true;
+        this.Hbj = 0;
+        this.cgD = true;
+        this.Hbk = true;
         this.mScroller.startScroll(0, 0, 0, 0, 0);
         invalidate();
-        AppMethodBeat.o(276551);
+        AppMethodBeat.o(330675);
         return;
       }
-      this.arU = true;
-      this.Buy = (getWidth() * -1);
-      this.Buz = false;
-      if (this.arU)
+      this.cgD = true;
+      this.Hbj = (getWidth() * -1);
+      this.Hbk = false;
+      if (this.cgD)
       {
         setHorizontallyScrolling(true);
         if (this.mScroller == null)
@@ -90,65 +88,65 @@ public class MarqueeTextView
         String str = getText().toString();
         localTextPaint.getTextBounds(str, 0, str.length(), localRect);
         final int j = localRect.width();
-        final int i = j - this.Buy;
-        j = Double.valueOf(this.Bux * i * 1.0D / j).intValue();
-        if (this.Buz)
+        final int i = j - this.Hbj;
+        j = Double.valueOf(this.Hbi * i * 1.0D / j).intValue();
+        if (this.Hbk)
         {
           new Handler(Looper.getMainLooper()).postDelayed(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(269023);
+              AppMethodBeat.i(330640);
               MarqueeTextView.b(MarqueeTextView.this).startScroll(MarqueeTextView.a(MarqueeTextView.this), 0, i, 0, j);
               MarqueeTextView.this.invalidate();
               MarqueeTextView.c(MarqueeTextView.this);
-              AppMethodBeat.o(269023);
+              AppMethodBeat.o(330640);
             }
-          }, this.BuB);
-          AppMethodBeat.o(276551);
+          }, this.Hbm);
+          AppMethodBeat.o(330675);
           return;
         }
-        this.mScroller.startScroll(this.Buy, 0, i, 0, j);
+        this.mScroller.startScroll(this.Hbj, 0, i, 0, j);
         invalidate();
-        this.arU = false;
+        this.cgD = false;
       }
     }
-    AppMethodBeat.o(276551);
+    AppMethodBeat.o(330675);
   }
   
   public int getRndDuration()
   {
-    return this.Bux;
+    return this.Hbi;
   }
   
   public int getScrollFirstDelay()
   {
-    return this.BuB;
+    return this.Hbm;
   }
   
   public int getScrollMode()
   {
-    return this.BuA;
+    return this.Hbl;
   }
   
   public void setRndDuration(int paramInt)
   {
-    this.Bux = paramInt;
+    this.Hbi = paramInt;
   }
   
   public void setScrollFirstDelay(int paramInt)
   {
-    this.BuB = paramInt;
+    this.Hbm = paramInt;
   }
   
   public void setScrollMode(int paramInt)
   {
-    this.BuA = paramInt;
+    this.Hbl = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.record.MarqueeTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.matrix.a;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,13 +16,12 @@ import java.util.ListIterator;
 
 public final class b
 {
-  @SuppressLint({"StaticFieldLeak"})
-  static volatile b cSD;
-  static long cSE = 0L;
-  final List<c> cSF = new LinkedList();
-  final a cSG = new a();
-  boolean cSH = true;
-  public d cSI;
+  static volatile b eNT;
+  static long eNU = 0L;
+  final List<c> eNV = new LinkedList();
+  final a eNW = new a();
+  boolean eNX = true;
+  public d eNY;
   final Context mContext;
   final Handler mUiHandler = new Handler(Looper.getMainLooper());
   
@@ -35,27 +33,27 @@ public final class b
     this.mContext = paramContext;
   }
   
-  public static b VJ()
+  public static b awt()
   {
-    if (cSD == null) {
+    if (eNT == null) {
       try
       {
-        if (cSD == null) {
+        if (eNT == null) {
           throw new IllegalStateException("Call #init() first!");
         }
       }
       finally {}
     }
-    return cSD;
+    return eNT;
   }
   
   public static void c(Application paramApplication)
   {
-    if (cSD == null) {}
+    if (eNT == null) {}
     try
     {
-      if (cSD == null) {
-        cSD = new b(paramApplication);
+      if (eNT == null) {
+        eNT = new b(paramApplication);
       }
       return;
     }
@@ -65,14 +63,14 @@ public final class b
   public static boolean isInit()
   {
     boolean bool = true;
-    if (cSD != null) {
+    if (eNT != null) {
       return true;
     }
     for (;;)
     {
       try
       {
-        if (cSD != null) {
+        if (eNT != null) {
           return bool;
         }
       }
@@ -81,32 +79,32 @@ public final class b
     }
   }
   
-  public final b VK()
-  {
-    b localb = new b(this.mContext);
-    d locald = this.cSI;
-    if (locald != null) {
-      localb.cSI = locald;
-    }
-    return localb;
-  }
-  
   public final void a(c paramc)
   {
-    synchronized (this.cSF)
+    synchronized (this.eNV)
     {
-      if (!this.cSF.contains(paramc)) {
-        this.cSF.add(paramc);
+      if (!this.eNV.contains(paramc)) {
+        this.eNV.add(paramc);
       }
       return;
     }
   }
   
+  public final b awu()
+  {
+    b localb = new b(this.mContext);
+    d locald = this.eNY;
+    if (locald != null) {
+      localb.eNY = locald;
+    }
+    return localb;
+  }
+  
   public final void b(c paramc)
   {
-    synchronized (this.cSF)
+    synchronized (this.eNV)
     {
-      ListIterator localListIterator = this.cSF.listIterator();
+      ListIterator localListIterator = this.eNV.listIterator();
       while (localListIterator.hasNext()) {
         if ((c)localListIterator.next() == paramc) {
           localListIterator.remove();
@@ -115,25 +113,32 @@ public final class b
     }
   }
   
-  final void bj(long paramLong)
+  final void dB(long paramLong)
   {
-    synchronized (this.cSF)
+    synchronized (this.eNV)
     {
-      Iterator localIterator = this.cSF.iterator();
-      if (localIterator.hasNext()) {
-        ((c)localIterator.next()).a(VK(), paramLong);
+      Iterator localIterator = this.eNV.iterator();
+      while (localIterator.hasNext()) {
+        if (((c)localIterator.next()).a(awu(), paramLong)) {
+          return;
+        }
       }
+      return;
     }
   }
   
-  final void m(Intent paramIntent)
+  final void n(Intent paramIntent)
   {
     c.i("Matrix.battery.LifeCycle", "onSateChanged >> " + paramIntent.getAction(), new Object[0]);
-    synchronized (this.cSF)
+    synchronized (this.eNV)
     {
-      Iterator localIterator = this.cSF.iterator();
-      if (localIterator.hasNext()) {
-        ((c)localIterator.next()).eM(paramIntent.getAction());
+      Iterator localIterator = this.eNV.iterator();
+      while (localIterator.hasNext())
+      {
+        c localc = (c)localIterator.next();
+        if (localc.gl(paramIntent.getAction())) {
+          b(localc);
+        }
       }
     }
   }
@@ -141,39 +146,39 @@ public final class b
   public final class a
     implements Runnable
   {
-    long cSL;
+    long eOb;
     
     public a() {}
     
-    final long bk(long paramLong)
+    final long dC(long paramLong)
     {
-      this.cSL += paramLong;
+      this.eOb += paramLong;
       return paramLong;
     }
     
     public final void run()
     {
-      if (!b.this.cSH)
+      if (!b.this.eNX)
       {
-        if (!com.tencent.matrix.a.b.b.bo(b.this.mContext)) {
-          b.a(b.this, this.cSL);
+        if (!com.tencent.matrix.a.b.b.bZ(b.this.mContext)) {
+          b.a(b.this, this.eOb);
         }
-        if (this.cSL > 300000L) {
+        if (this.eOb > 300000L) {
           break label65;
         }
-        b.this.mUiHandler.postDelayed(this, bk(300000L));
+        b.this.mUiHandler.postDelayed(this, dC(300000L));
       }
       label65:
-      while (this.cSL > 600000L) {
+      while (this.eOb > 600000L) {
         return;
       }
-      b.this.mUiHandler.postDelayed(this, bk(1200000L));
+      b.this.mUiHandler.postDelayed(this, dC(1200000L));
     }
   }
   
   public static final class b
   {
-    d cSI;
+    d eNY;
     public final Context mContext;
     
     public b(Context paramContext)
@@ -181,23 +186,23 @@ public final class b
       this.mContext = paramContext;
     }
     
+    public final long awv()
+    {
+      if (isForeground()) {}
+      while (b.eNU <= 0L) {
+        return 0L;
+      }
+      return SystemClock.uptimeMillis() - b.eNU;
+    }
+    
     public final boolean isForeground()
     {
-      return (this.cSI == null) || (this.cSI.cUh);
+      return (this.eNY == null) || (this.eNY.ePI);
     }
     
     public final String toString()
     {
-      long l = 0L;
-      StringBuilder localStringBuilder = new StringBuilder("BatteryState{fg=").append(isForeground()).append(", charge=").append(com.tencent.matrix.a.b.b.bo(this.mContext)).append(", screen=").append(com.tencent.matrix.a.b.b.bp(this.mContext)).append(", doze=").append(com.tencent.matrix.a.b.b.bq(this.mContext)).append(", bgMillis=");
-      if (isForeground()) {}
-      for (;;)
-      {
-        return l + '}';
-        if (b.cSE > 0L) {
-          l = SystemClock.uptimeMillis() - b.cSE;
-        }
-      }
+      return "BatteryState{fg=" + isForeground() + ", charge=" + com.tencent.matrix.a.b.b.bZ(this.mContext) + ", screen=" + com.tencent.matrix.a.b.b.ca(this.mContext) + ", doze=" + com.tencent.matrix.a.b.b.cb(this.mContext) + ", bgMillis=" + awv() + '}';
     }
   }
   
@@ -205,12 +210,12 @@ public final class b
   {
     public abstract boolean a(b.b paramb, long paramLong);
     
-    public abstract boolean eM(String paramString);
+    public abstract boolean gl(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.b
  * JD-Core Version:    0.7.0.1
  */

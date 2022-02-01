@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,14 +12,17 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,49 +41,45 @@ import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
 import com.tencent.mm.ah.a.d;
 import com.tencent.mm.ah.a.f;
-import com.tencent.mm.f.a.qp;
-import com.tencent.mm.f.a.se;
-import com.tencent.mm.f.a.xc;
-import com.tencent.mm.f.b.a.jo;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.sd;
+import com.tencent.mm.autogen.a.tu;
+import com.tencent.mm.autogen.a.yv;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.autogen.mmdata.rpt.ma;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
-import com.tencent.mm.openim.b.o;
-import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.openim.model.r;
+import com.tencent.mm.openim.model.t;
 import com.tencent.mm.plugin.comm.c.e;
 import com.tencent.mm.plugin.comm.c.f;
 import com.tencent.mm.plugin.comm.c.h;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.label.e;
-import com.tencent.mm.plugin.sns.b.p;
+import com.tencent.mm.pluginsdk.model.v;
 import com.tencent.mm.pluginsdk.ui.applet.a.b;
-import com.tencent.mm.pluginsdk.ui.applet.aa;
-import com.tencent.mm.pluginsdk.ui.applet.aa.a;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.pluginsdk.ui.applet.ab.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ah;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.storage.bn;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.co;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cr;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.k;
-import com.tencent.mm.ui.f.d;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.f.e;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
-import com.tencent.mm.ui.widget.a.f.a;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -89,330 +90,138 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SayHiWithSnsPermissionUI2
   extends MMActivity
-  implements com.tencent.mm.an.i, com.tencent.mm.ui.tools.h
+  implements com.tencent.mm.am.h, com.tencent.mm.ui.tools.h
 {
-  String BAU;
-  private View EeB;
-  private HashSet<String> EeR;
-  private HashSet<String> EeS;
-  private HashSet<String> EeT;
-  private ObjectAnimator EeU;
-  private k Eeu;
-  private String GsA;
-  private MMSwitchBtn HbE;
-  private MMSwitchBtn HbF;
-  private WeImageView HbG;
-  private WeImageView HbH;
-  private boolean HbI;
-  private boolean HbJ;
-  private TextView HbQ;
-  private EditText HbZ;
-  final boolean[] HcA;
-  private int HcB;
-  int HcE;
-  TextView HcF;
-  View HcG;
-  private boolean HcV;
-  private EditText Hca;
-  private View Hcb;
-  private TextView Hcc;
-  private boolean Hcd;
-  private boolean Hce;
-  private boolean Hcf;
-  private boolean Hcg;
-  private boolean Hch;
-  private List<String> Hci;
-  private ArrayList<String> Hcj;
-  private ArrayList<String> Hck;
-  private ImageView Hcl;
-  private LinearLayout Hcm;
-  private TextView Hcn;
-  private Button Hco;
-  private boolean Hcp;
-  private String Hcq;
-  private String Hcr;
-  private int Hcs;
-  private boolean Hct;
-  private int Hcu;
-  private int Hcv;
-  private List<String> Hcw;
-  private HashSet<String> Hcx;
-  private CharSequence Hcy;
-  final boolean[] Hcz;
+  String His;
+  private boolean JVi;
+  private HashSet<String> JWF;
+  private HashSet<String> JWG;
+  private HashSet<String> JWH;
+  private ObjectAnimator JWJ;
+  private m JWf;
+  private View JWm;
+  private MMSwitchBtn MZL;
+  private MMSwitchBtn MZM;
+  private WeImageView MZN;
+  private WeImageView MZO;
+  private boolean MZP;
+  private boolean MZQ;
+  private TextView MZY;
+  private String MoA;
+  private Button NaA;
+  private String NaB;
+  private String NaC;
+  private int NaD;
+  private boolean NaE;
+  private int NaF;
+  private int NaG;
+  private List<String> NaH;
+  private HashSet<String> NaI;
+  private CharSequence NaJ;
+  final boolean[] NaK;
+  final boolean[] NaL;
+  private int NaM;
+  int NaP;
+  TextView NaQ;
+  View NaR;
+  private EditText Nah;
+  private EditText Nai;
+  private View Naj;
+  private TextView Nak;
+  private TextView Nal;
+  private TextView Nam;
+  private TextView Nan;
+  private boolean Nap;
+  private boolean Naq;
+  private boolean Nar;
+  private boolean Nas;
+  private boolean Nat;
+  private List<String> Nau;
+  private ArrayList<String> Nav;
+  private ArrayList<String> Naw;
+  private ImageView Nax;
+  private LinearLayout Nay;
+  private TextView Naz;
+  private TextView Nbg;
+  private TextView Nbh;
+  private boolean Nbi;
+  private boolean akiI;
   private String chatroomName;
-  private String cip;
-  private long fOa;
-  private ProgressDialog iXX;
-  private ScrollView jbL;
-  private com.tencent.mm.ui.tools.i jij;
-  View mUM;
-  com.tencent.mm.ui.widget.a.d mUO;
-  private int mXL;
-  private int[] nei;
+  private String dYO;
+  private long hTS;
+  private ScrollView lDL;
+  private com.tencent.mm.ui.tools.i lKz;
+  private ProgressDialog lzP;
   private String nickName;
-  EditText qDO;
+  View pRt;
+  e pRv;
+  private int pUt;
+  private int[] pZy;
+  EditText tID;
   String userName;
   
   public SayHiWithSnsPermissionUI2()
   {
     AppMethodBeat.i(179689);
-    this.iXX = null;
-    this.nei = new int[8];
-    this.HbI = false;
-    this.HbJ = false;
-    this.Hcf = false;
-    this.Hcg = false;
-    this.Hci = new ArrayList();
-    this.Hcj = new ArrayList();
-    this.Hck = new ArrayList();
-    this.Hch = false;
-    this.Hcp = false;
-    this.Hcs = 0;
-    this.Hcw = new ArrayList();
-    this.Hcx = new HashSet();
-    this.EeR = new HashSet();
-    this.EeS = new HashSet();
-    this.EeT = new HashSet();
-    this.Hcy = null;
-    this.Hcz = new boolean[] { true };
-    this.HcA = new boolean[] { false };
-    this.HcV = true;
-    this.fOa = System.currentTimeMillis();
-    this.HcB = 0;
-    this.HcE = 0;
-    this.EeU = null;
-    this.mUO = null;
+    this.lzP = null;
+    this.pZy = new int[8];
+    this.MZP = false;
+    this.MZQ = false;
+    this.Nar = false;
+    this.Nas = false;
+    this.Nau = new ArrayList();
+    this.Nav = new ArrayList();
+    this.Naw = new ArrayList();
+    this.Nat = false;
+    this.akiI = false;
+    this.JVi = false;
+    this.NaD = 0;
+    this.NaH = new ArrayList();
+    this.NaI = new HashSet();
+    this.JWF = new HashSet();
+    this.JWG = new HashSet();
+    this.JWH = new HashSet();
+    this.NaJ = null;
+    this.NaK = new boolean[] { true };
+    this.NaL = new boolean[] { false };
+    this.Nbi = true;
+    this.hTS = System.currentTimeMillis();
+    this.NaM = 0;
+    this.NaP = 0;
+    this.JWJ = null;
+    this.pRv = null;
     AppMethodBeat.o(179689);
   }
   
-  private static boolean aUR(String paramString)
-  {
-    AppMethodBeat.i(179698);
-    boolean bool = p.JPf.aUR(paramString);
-    AppMethodBeat.o(179698);
-    return bool;
-  }
-  
-  private void dFf()
-  {
-    AppMethodBeat.i(179695);
-    Object localObject = this.HbG;
-    if ((this.Hcf) || (this.HbJ))
-    {
-      i = 0;
-      ((WeImageView)localObject).setVisibility(i);
-      localObject = this.HbH;
-      if ((this.Hcf) || (this.HbJ)) {
-        break label420;
-      }
-      i = 0;
-      label53:
-      ((WeImageView)localObject).setVisibility(i);
-      if (this.HcV)
-      {
-        if ((!this.Hcf) && (!this.HbJ))
-        {
-          bh.beI();
-          int j = com.tencent.mm.model.c.bbL().c(ab.lsO, new String[] { z.bcZ(), "weixin", "helper_entry", "filehelper" });
-          i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWE, 200);
-          if (j >= i)
-          {
-            this.HbG.setVisibility(0);
-            this.HbH.setVisibility(4);
-            ((TextView)findViewById(R.h.dWc)).setText(getString(R.l.ePT, new Object[] { Integer.valueOf(i) }));
-            j = com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.VCU, 0);
-            if (j < ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWF, 3))
-            {
-              localObject = new f.a(this).bBl(getString(R.l.ePU, new Object[] { Integer.valueOf(i) }));
-              ((f.a)localObject).Qlf = true;
-              ((f.a)localObject).ayp(R.l.app_i_know).b(new SayHiWithSnsPermissionUI2.13(this, j)).show();
-            }
-          }
-        }
-        this.HcV = false;
-      }
-      ((View)this.HbG.getParent()).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(179685);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() != 0)
-          {
-            SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).setVisibility(0);
-            SayHiWithSnsPermissionUI2.r(SayHiWithSnsPermissionUI2.this).setVisibility(4);
-            SayHiWithSnsPermissionUI2.this.findViewById(R.h.dPA).setVisibility(8);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(179685);
-        }
-      });
-      View localView = (View)this.HbH.getParent();
-      if (!this.HbJ) {
-        break label425;
-      }
-      localObject = null;
-      label336:
-      localView.setOnClickListener((View.OnClickListener)localObject);
-      findViewById(R.h.dPA).setVisibility(8);
-      localObject = (TextView)findViewById(R.h.dVv);
-      if (!this.HbJ) {
-        break label437;
-      }
-    }
-    label420:
-    label425:
-    label437:
-    for (int i = getResources().getColor(R.e.hint_text_color);; i = getResources().getColor(R.e.normal_text_color))
-    {
-      ((TextView)localObject).setTextColor(i);
-      if (this.HbJ) {
-        this.HbQ.setVisibility(0);
-      }
-      this.Hcf = false;
-      AppMethodBeat.o(179695);
-      return;
-      i = 4;
-      break;
-      i = 4;
-      break label53;
-      localObject = new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(179686);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (SayHiWithSnsPermissionUI2.r(SayHiWithSnsPermissionUI2.this).getVisibility() != 0)
-          {
-            SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).setVisibility(4);
-            SayHiWithSnsPermissionUI2.r(SayHiWithSnsPermissionUI2.this).setVisibility(0);
-            SayHiWithSnsPermissionUI2.this.findViewById(R.h.dPA).setVisibility(8);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(179686);
-        }
-      };
-      break label336;
-    }
-  }
-  
-  private String fqL()
-  {
-    AppMethodBeat.i(179696);
-    String str = "";
-    if (this.Hca.getText() != null) {
-      str = this.Hca.getText().toString();
-    }
-    if (!Util.isNullOrNil(str))
-    {
-      if (str.length() <= 50)
-      {
-        AppMethodBeat.o(179696);
-        return str;
-      }
-      str = str.substring(0, 50);
-      AppMethodBeat.o(179696);
-      return str;
-    }
-    AppMethodBeat.o(179696);
-    return str;
-  }
-  
-  private void fqM()
-  {
-    AppMethodBeat.i(267464);
-    if (this.Hcd)
-    {
-      String str = this.HbZ.getText().toString().trim();
-      if ((Util.isNullOrNil(str)) || (str.equals(this.Hcy)) || (!Util.isNullOrNil(this.chatroomName)))
-      {
-        bh.beI();
-        com.tencent.mm.model.c.aHp().i(294913, "");
-        AppMethodBeat.o(267464);
-        return;
-      }
-      bh.beI();
-      com.tencent.mm.model.c.aHp().i(294913, str);
-    }
-    AppMethodBeat.o(267464);
-  }
-  
-  private void gw(List<String> paramList)
-  {
-    AppMethodBeat.i(267456);
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      this.Hcn.setText("");
-      AppMethodBeat.o(267456);
-      return;
-    }
-    String str = "";
-    int i = 0;
-    if (i < paramList.size())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append(str).append((String)paramList.get(i));
-      if (i < paramList.size() - 1) {}
-      for (str = "，";; str = "")
-      {
-        str = str;
-        i += 1;
-        break;
-      }
-    }
-    this.Hcn.setText(str);
-    AppMethodBeat.o(267456);
-  }
-  
-  private static boolean t(List<String> paramList1, List<String> paramList2)
-  {
-    AppMethodBeat.i(267459);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList1.addAll(paramList1);
-    localArrayList2.addAll(paramList2);
-    Collections.sort(localArrayList1);
-    Collections.sort(localArrayList2);
-    if (localArrayList1.equals(localArrayList2))
-    {
-      AppMethodBeat.o(267459);
-      return false;
-    }
-    AppMethodBeat.o(267459);
-    return true;
-  }
-  
-  private void wc(boolean paramBoolean)
+  private void Az(boolean paramBoolean)
   {
     AppMethodBeat.i(179700);
     int k;
     int m;
-    if (this.Hcd)
+    if (this.Nap)
     {
       k = 1;
-      if (!Util.isNullOrNil(fqL())) {
+      if (!Util.isNullOrNil(gCg())) {
         break label380;
       }
       m = 3;
     }
     for (;;)
     {
-      label29:
+      label28:
       int j;
-      if (this.HbJ) {
+      if (this.MZQ) {
         j = 6;
       }
       for (;;)
       {
-        label39:
+        label38:
         int i;
-        switch (this.mXL)
+        switch (this.pUt)
         {
         default: 
           i = 11;
@@ -421,17 +230,17 @@ public class SayHiWithSnsPermissionUI2
         StringBuilder localStringBuilder1;
         for (;;)
         {
-          localObject = this.Hcj;
+          localObject = this.Nav;
           i1 = ((List)localObject).size();
           localStringBuilder1 = new StringBuilder();
-          i2 = this.Hck.size();
+          i2 = this.Naw.size();
           if (i2 <= 0) {
             break label541;
           }
           n = 0;
           while (n < i2)
           {
-            localStringBuilder1.append((String)this.Hck.get(n));
+            localStringBuilder1.append((String)this.Naw.get(n));
             if (n < i2 - 1) {
               localStringBuilder1.append("#");
             }
@@ -445,31 +254,31 @@ public class SayHiWithSnsPermissionUI2
           k = 3;
           break;
           label380:
-          if ((!fqL().equals(this.nickName)) && (!fqL().equals(this.GsA))) {
-            break label804;
+          if ((!gCg().equals(this.nickName)) && (!gCg().equals(this.MoA))) {
+            break label803;
           }
           m = 2;
-          break label29;
-          if ((this.HcB & 0x8) != 0)
+          break label28;
+          if ((this.NaM & 0x8) != 0)
           {
             j = 5;
-            break label39;
+            break label38;
           }
-          if (((this.HcB & 0x1) != 0) && ((this.HcB & 0x2) != 0))
+          if (((this.NaM & 0x1) != 0) && ((this.NaM & 0x2) != 0))
           {
             j = 4;
-            break label39;
+            break label38;
           }
-          if ((this.HcB & 0x2) != 0)
+          if ((this.NaM & 0x2) != 0)
           {
             j = 3;
-            break label39;
+            break label38;
           }
-          if ((this.HcB & 0x1) == 0) {
-            break label799;
+          if ((this.NaM & 0x1) == 0) {
+            break label798;
           }
           j = 2;
-          break label39;
+          break label38;
           i = 1;
           continue;
           i = 2;
@@ -508,100 +317,350 @@ public class SayHiWithSnsPermissionUI2
           }
         }
         Object localObject = localStringBuilder2.toString();
-        bh.beI();
-        int n = com.tencent.mm.model.c.bbL().c(ab.lsO, new String[] { z.bcZ(), "weixin", "helper_entry", "filehelper" });
-        com.tencent.mm.plugin.report.service.h.IzE.a(18713, new Object[] { this.userName, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(2), Long.valueOf(System.currentTimeMillis() - this.fOa), Integer.valueOf(n), "", localObject, localStringBuilder1, Integer.valueOf(i1), Integer.valueOf(this.HcE) });
+        bh.bCz();
+        int n = com.tencent.mm.model.c.bzA().d(com.tencent.mm.model.ab.oko, new String[] { z.bAM(), "weixin", "helper_entry", "filehelper" });
+        com.tencent.mm.plugin.report.service.h.OAn.b(18713, new Object[] { this.userName, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(2), Long.valueOf(System.currentTimeMillis() - this.hTS), Integer.valueOf(n), "", localObject, localStringBuilder1, Integer.valueOf(i1), Integer.valueOf(this.NaP) });
         AppMethodBeat.o(179700);
         return;
-        label799:
+        label798:
         j = 1;
       }
-      label804:
+      label803:
       m = 1;
     }
   }
   
-  public final void A(int paramInt, boolean paramBoolean)
+  private static boolean H(List<String> paramList1, List<String> paramList2)
   {
-    AppMethodBeat.i(267470);
-    Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "height:%s", new Object[] { Integer.valueOf(paramInt) });
-    if ((this.EeU != null) && (this.EeU.isRunning())) {
-      this.EeU.cancel();
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.Eeu != null)
+    AppMethodBeat.i(305694);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    localArrayList1.addAll(paramList1);
+    localArrayList2.addAll(paramList2);
+    Collections.sort(localArrayList1);
+    Collections.sort(localArrayList2);
+    if (localArrayList1.equals(localArrayList2))
     {
-      localObject1 = localObject2;
-      if (this.Eeu.isShowing())
+      AppMethodBeat.o(305694);
+      return false;
+    }
+    AppMethodBeat.o(305694);
+    return true;
+  }
+  
+  private static boolean aRZ(String paramString)
+  {
+    AppMethodBeat.i(179698);
+    boolean bool = com.tencent.mm.plugin.sns.c.q.Qkl.aRZ(paramString);
+    AppMethodBeat.o(179698);
+    return bool;
+  }
+  
+  private void eGg()
+  {
+    AppMethodBeat.i(305704);
+    Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "dismissTipDialog");
+    if (this.lzP != null)
+    {
+      this.lzP.dismiss();
+      this.lzP = null;
+    }
+    AppMethodBeat.o(305704);
+  }
+  
+  private void evt()
+  {
+    AppMethodBeat.i(179695);
+    Object localObject = this.MZN;
+    if ((this.Nar) || (this.MZQ))
+    {
+      i = 0;
+      ((WeImageView)localObject).setVisibility(i);
+      localObject = this.MZO;
+      if ((this.Nar) || (this.MZQ)) {
+        break label414;
+      }
+      i = 0;
+      label53:
+      ((WeImageView)localObject).setVisibility(i);
+      if (this.Nbi)
       {
-        localObject1 = localObject2;
-        if (this.Eeu.oFW != null)
+        if ((!this.Nar) && (!this.MZQ))
         {
-          localObject1 = localObject2;
-          if ((this.Eeu.oFW.getParent() instanceof View)) {
-            localObject1 = (View)this.Eeu.oFW.getParent();
+          bh.bCz();
+          int j = com.tencent.mm.model.c.bzA().d(com.tencent.mm.model.ab.oko, new String[] { z.bAM(), "weixin", "helper_entry", "filehelper" });
+          i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.zpj, 200);
+          if (j >= i)
+          {
+            this.MZN.setVisibility(0);
+            this.MZO.setVisibility(4);
+            this.Nbg.setText(getString(R.l.gSw, new Object[] { Integer.valueOf(i) }));
+            j = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adfO, 0);
+            if (j < ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.zpk, 3))
+            {
+              localObject = new g.a(this).bDE(getString(R.l.gSx, new Object[] { Integer.valueOf(i) }));
+              ((g.a)localObject).Xdm = true;
+              ((g.a)localObject).aEX(R.l.app_i_know).b(new SayHiWithSnsPermissionUI2.16(this, j)).show();
+            }
           }
         }
+        this.Nbi = false;
+      }
+      ((View)this.MZN.getParent()).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(179686);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() != 0)
+          {
+            SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).setVisibility(0);
+            SayHiWithSnsPermissionUI2.s(SayHiWithSnsPermissionUI2.this).setVisibility(4);
+            SayHiWithSnsPermissionUI2.this.findViewById(R.h.fRF).setVisibility(8);
+          }
+          SayHiWithSnsPermissionUI2.t(SayHiWithSnsPermissionUI2.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(179686);
+        }
+      });
+      View localView = (View)this.MZO.getParent();
+      if (!this.MZQ) {
+        break label419;
+      }
+      localObject = null;
+      label330:
+      localView.setOnClickListener((View.OnClickListener)localObject);
+      findViewById(R.h.fRF).setVisibility(8);
+      localObject = (TextView)findViewById(R.h.fXR);
+      if (!this.MZQ) {
+        break label431;
       }
     }
-    if (localObject1 == null)
+    label414:
+    label419:
+    label431:
+    for (int i = getResources().getColor(R.e.hint_text_color);; i = getResources().getColor(R.e.normal_text_color))
     {
-      AppMethodBeat.o(267470);
+      ((TextView)localObject).setTextColor(i);
+      if (this.MZQ) {
+        this.MZY.setVisibility(0);
+      }
+      this.Nar = false;
+      AppMethodBeat.o(179695);
+      return;
+      i = 4;
+      break;
+      i = 4;
+      break label53;
+      localObject = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(305452);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          if (SayHiWithSnsPermissionUI2.s(SayHiWithSnsPermissionUI2.this).getVisibility() != 0)
+          {
+            SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).setVisibility(4);
+            SayHiWithSnsPermissionUI2.s(SayHiWithSnsPermissionUI2.this).setVisibility(0);
+            SayHiWithSnsPermissionUI2.this.findViewById(R.h.fRF).setVisibility(8);
+          }
+          SayHiWithSnsPermissionUI2.t(SayHiWithSnsPermissionUI2.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(305452);
+        }
+      };
+      break label330;
+    }
+  }
+  
+  private String gCf()
+  {
+    AppMethodBeat.i(305700);
+    String str = this.Nah.getText().toString().trim();
+    if (str.length() <= 50)
+    {
+      AppMethodBeat.o(305700);
+      return str;
+    }
+    str = str.substring(0, 50);
+    AppMethodBeat.o(305700);
+    return str;
+  }
+  
+  private String gCg()
+  {
+    AppMethodBeat.i(179696);
+    String str = "";
+    if (this.Nai.getText() != null) {
+      str = this.Nai.getText().toString();
+    }
+    if (!Util.isNullOrNil(str))
+    {
+      if (str.length() <= 50)
+      {
+        AppMethodBeat.o(179696);
+        return str;
+      }
+      str = str.substring(0, 50);
+      AppMethodBeat.o(179696);
+      return str;
+    }
+    AppMethodBeat.o(179696);
+    return str;
+  }
+  
+  private void gCh()
+  {
+    AppMethodBeat.i(305703);
+    if (this.Nap)
+    {
+      String str = this.Nah.getText().toString().trim();
+      if ((Util.isNullOrNil(str)) || (str.equals(this.NaJ)) || (!Util.isNullOrNil(this.chatroomName)))
+      {
+        bh.bCz();
+        com.tencent.mm.model.c.ban().B(294913, "");
+        AppMethodBeat.o(305703);
+        return;
+      }
+      bh.bCz();
+      com.tencent.mm.model.c.ban().B(294913, str);
+    }
+    AppMethodBeat.o(305703);
+  }
+  
+  private void gCk()
+  {
+    AppMethodBeat.i(305712);
+    TextView localTextView;
+    StringBuilder localStringBuilder;
+    if ((this.Nbh != null) && (this.MZO != null))
+    {
+      localTextView = this.Nbh;
+      localStringBuilder = new StringBuilder().append(this.Nbh.getText());
+      if (this.MZO.getVisibility() != 0)
+      {
+        str = getResources().getString(R.l.say_permission_contentdes_unselect);
+        localTextView.setContentDescription(str);
+      }
+    }
+    else if ((this.Nbg != null) && (this.MZN != null))
+    {
+      localTextView = this.Nbg;
+      localStringBuilder = new StringBuilder().append(this.Nbg.getText());
+      if (this.MZN.getVisibility() == 0) {
+        break label167;
+      }
+    }
+    label167:
+    for (String str = getResources().getString(R.l.say_permission_contentdes_unselect);; str = getResources().getString(R.l.say_permission_contentdes_select))
+    {
+      localTextView.setContentDescription(str);
+      AppMethodBeat.o(305712);
+      return;
+      str = getResources().getString(R.l.say_permission_contentdes_select);
+      break;
+    }
+  }
+  
+  private void jw(List<String> paramList)
+  {
+    AppMethodBeat.i(305690);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      this.Naz.setText("");
+      AppMethodBeat.o(305690);
       return;
     }
-    if (paramInt > 0) {
-      if (((View)localObject1).getTranslationY() != 0.0F) {
-        ((View)localObject1).setTranslationY(0.0F);
+    String str = "";
+    int i = 0;
+    if (i < paramList.size())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append(str).append((String)paramList.get(i));
+      if (i < paramList.size() - 1) {}
+      for (str = "，";; str = "")
+      {
+        str = str;
+        i += 1;
+        break;
       }
     }
-    for (this.EeU = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { 0.0F, -paramInt });; this.EeU = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { ((View)localObject1).getTranslationY(), 0.0F }))
+    this.Naz.setText(str);
+    AppMethodBeat.o(305690);
+  }
+  
+  public final void AA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(305987);
+    Object localObject = new Intent(this, SayHiWithSnsPermissionUI2.class);
+    ((Intent)localObject).putExtras(getIntent().getExtras());
+    ((Intent)localObject).putExtra("Contact_IsForceVerifyFriend", true);
+    if (this.MZN.getVisibility() != 0) {}
+    for (int i = 1;; i = 0)
     {
-      this.EeU.setDuration(200L);
-      this.EeU.setInterpolator(new androidx.f.a.a.b());
-      this.EeU.addUpdateListener(new SayHiWithSnsPermissionUI2.4(this));
-      this.EeU.start();
-      AppMethodBeat.o(267470);
+      int j = i;
+      if (this.MZN.getVisibility() == 0) {
+        j = i | 0x8;
+      }
+      if (paramBoolean) {
+        ((Intent)localObject).putExtra("sayhi_with_sns_perm_send_verify", true);
+      }
+      ((Intent)localObject).putExtra("Contact_default_permission", j);
+      ((Intent)localObject).putExtra("Contact_RemarkName", gCg());
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2", "gotoSelfPageWithoutDialog", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2", "gotoSelfPageWithoutDialog", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      finish();
+      AppMethodBeat.o(305987);
       return;
     }
   }
   
-  public final void Ph(final long paramLong)
+  public int getLayoutId()
   {
-    AppMethodBeat.i(267471);
-    com.tencent.e.h.ZvG.be(new Runnable()
+    return R.i.gnG;
+  }
+  
+  public final void hm(final long paramLong)
+  {
+    AppMethodBeat.i(305993);
+    com.tencent.threadpool.h.ahAA.bm(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(209966);
-        jo localjo = new jo();
-        if (SayHiWithSnsPermissionUI2.x(SayHiWithSnsPermissionUI2.this) == null) {
-          SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, new ArrayList());
-        }
+        AppMethodBeat.i(305441);
+        ma localma = new ma();
         if (SayHiWithSnsPermissionUI2.y(SayHiWithSnsPermissionUI2.this) == null) {
           SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, new ArrayList());
         }
-        if (SayHiWithSnsPermissionUI2.y(SayHiWithSnsPermissionUI2.this) == null) {
+        if (SayHiWithSnsPermissionUI2.z(SayHiWithSnsPermissionUI2.this) == null) {
           SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, new ArrayList());
         }
-        Object localObject1 = SayHiWithSnsPermissionUI2.x(SayHiWithSnsPermissionUI2.this);
-        localjo.AC(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
+        if (SayHiWithSnsPermissionUI2.z(SayHiWithSnsPermissionUI2.this) == null) {
+          SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, new ArrayList());
+        }
+        Object localObject1 = SayHiWithSnsPermissionUI2.y(SayHiWithSnsPermissionUI2.this);
+        localma.uI(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
         long l;
         Object localObject2;
         int i;
         label142:
         String str;
-        if (SayHiWithSnsPermissionUI2.z(SayHiWithSnsPermissionUI2.this))
+        if (SayHiWithSnsPermissionUI2.A(SayHiWithSnsPermissionUI2.this))
         {
           l = 1L;
-          localjo.gLo = l;
+          localma.jaJ = l;
           localObject2 = ((List)localObject1).iterator();
           i = 0;
           if (!((Iterator)localObject2).hasNext()) {
             break label192;
           }
           str = (String)((Iterator)localObject2).next();
-          if (!SayHiWithSnsPermissionUI2.A(SayHiWithSnsPermissionUI2.this).contains(str)) {
+          if (!SayHiWithSnsPermissionUI2.B(SayHiWithSnsPermissionUI2.this).contains(str)) {
             break label1010;
           }
           i += 1;
@@ -617,23 +676,23 @@ public class SayHiWithSnsPermissionUI2
           break label142;
           l = 0L;
           break;
-          localjo.gLq = i;
+          localma.jaL = i;
           l = 0L;
           localObject2 = ((List)localObject1).iterator();
           while (((Iterator)localObject2).hasNext())
           {
             str = (String)((Iterator)localObject2).next();
-            if (SayHiWithSnsPermissionUI2.B(SayHiWithSnsPermissionUI2.this).contains(str)) {
+            if (SayHiWithSnsPermissionUI2.C(SayHiWithSnsPermissionUI2.this).contains(str)) {
               l += 1L;
             }
           }
-          localjo.gLs = l;
+          localma.jaN = l;
           localObject2 = ((List)localObject1).iterator();
           int j = 0;
           if (((Iterator)localObject2).hasNext())
           {
             str = (String)((Iterator)localObject2).next();
-            if (!SayHiWithSnsPermissionUI2.C(SayHiWithSnsPermissionUI2.this).contains(str)) {
+            if (!SayHiWithSnsPermissionUI2.D(SayHiWithSnsPermissionUI2.this).contains(str)) {
               break label1007;
             }
             j += 1;
@@ -641,13 +700,13 @@ public class SayHiWithSnsPermissionUI2
           for (;;)
           {
             break;
-            localjo.gLr = j;
+            localma.jaM = j;
             localObject2 = ((List)localObject1).iterator();
             int k = 0;
             if (((Iterator)localObject2).hasNext())
             {
               str = (String)((Iterator)localObject2).next();
-              if (!SayHiWithSnsPermissionUI2.D(SayHiWithSnsPermissionUI2.this).contains(str)) {
+              if (!SayHiWithSnsPermissionUI2.E(SayHiWithSnsPermissionUI2.this).contains(str)) {
                 break label1004;
               }
               k += 1;
@@ -655,18 +714,18 @@ public class SayHiWithSnsPermissionUI2
             for (;;)
             {
               break;
-              localjo.gLp = k;
-              localjo.guX = (System.currentTimeMillis() - SayHiWithSnsPermissionUI2.E(SayHiWithSnsPermissionUI2.this));
-              localjo.gLw = SayHiWithSnsPermissionUI2.F(SayHiWithSnsPermissionUI2.this);
-              localjo.gLx = paramLong;
-              localjo.gLt = SayHiWithSnsPermissionUI2.G(SayHiWithSnsPermissionUI2.this);
+              localma.jaK = k;
+              localma.iGM = (System.currentTimeMillis() - SayHiWithSnsPermissionUI2.F(SayHiWithSnsPermissionUI2.this));
+              localma.jaR = SayHiWithSnsPermissionUI2.G(SayHiWithSnsPermissionUI2.this);
+              localma.jaS = paramLong;
+              localma.jaO = SayHiWithSnsPermissionUI2.H(SayHiWithSnsPermissionUI2.this);
               int n = 0;
               localObject2 = ((List)localObject1).iterator();
               int m = 0;
               if (((Iterator)localObject2).hasNext())
               {
                 str = (String)((Iterator)localObject2).next();
-                if (SayHiWithSnsPermissionUI2.y(SayHiWithSnsPermissionUI2.this).contains(str)) {
+                if (SayHiWithSnsPermissionUI2.z(SayHiWithSnsPermissionUI2.this).contains(str)) {
                   break label1001;
                 }
                 m += 1;
@@ -674,7 +733,7 @@ public class SayHiWithSnsPermissionUI2
               for (;;)
               {
                 break;
-                localObject2 = SayHiWithSnsPermissionUI2.y(SayHiWithSnsPermissionUI2.this).iterator();
+                localObject2 = SayHiWithSnsPermissionUI2.z(SayHiWithSnsPermissionUI2.this).iterator();
                 if (((Iterator)localObject2).hasNext())
                 {
                   if (((List)localObject1).contains((String)((Iterator)localObject2).next())) {
@@ -685,7 +744,7 @@ public class SayHiWithSnsPermissionUI2
                 for (;;)
                 {
                   break;
-                  localjo.gmT = 2L;
+                  localma.iuA = 2L;
                   localObject2 = "";
                   localObject1 = localObject2;
                   if (SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this) != null)
@@ -703,27 +762,27 @@ public class SayHiWithSnsPermissionUI2
                   if (localObject1 == null) {
                     localObject2 = "";
                   }
-                  if (!ae.isNullOrNil(SayHiWithSnsPermissionUI2.H(SayHiWithSnsPermissionUI2.this))) {
-                    if (SayHiWithSnsPermissionUI2.H(SayHiWithSnsPermissionUI2.this).equals(localObject2)) {
+                  if (!com.tencent.mm.platformtools.ab.isNullOrNil(SayHiWithSnsPermissionUI2.I(SayHiWithSnsPermissionUI2.this))) {
+                    if (SayHiWithSnsPermissionUI2.I(SayHiWithSnsPermissionUI2.this).equals(localObject2)) {
                       SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 3);
                     }
                   }
                   for (;;)
                   {
-                    localjo.gLy = SayHiWithSnsPermissionUI2.K(SayHiWithSnsPermissionUI2.this);
-                    localjo.gLv = m;
-                    localjo.gLu = n;
-                    localjo.bpa();
-                    Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "22865 setAddedLabelCnt = " + m + ",setRemovedLabelCnt = " + n + ",oriLabelCnt = " + SayHiWithSnsPermissionUI2.G(SayHiWithSnsPermissionUI2.this) + ",opResult = " + paramLong + ",totalLabelCnt = " + SayHiWithSnsPermissionUI2.F(SayHiWithSnsPermissionUI2.this) + ",selectNewLabelCnt = " + k + ",selectAddLabelCnt = " + j + ",addRemarkType = " + SayHiWithSnsPermissionUI2.K(SayHiWithSnsPermissionUI2.this) + ",scene= 2,newLebalCountBySearch = " + i + ",searchAddLabelCnt = " + l);
-                    AppMethodBeat.o(209966);
+                    localma.jaT = SayHiWithSnsPermissionUI2.L(SayHiWithSnsPermissionUI2.this);
+                    localma.jaQ = m;
+                    localma.jaP = n;
+                    localma.bMH();
+                    Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "22865 setAddedLabelCnt = " + m + ",setRemovedLabelCnt = " + n + ",oriLabelCnt = " + SayHiWithSnsPermissionUI2.H(SayHiWithSnsPermissionUI2.this) + ",opResult = " + paramLong + ",totalLabelCnt = " + SayHiWithSnsPermissionUI2.G(SayHiWithSnsPermissionUI2.this) + ",selectNewLabelCnt = " + k + ",selectAddLabelCnt = " + j + ",addRemarkType = " + SayHiWithSnsPermissionUI2.L(SayHiWithSnsPermissionUI2.this) + ",scene= 2,newLebalCountBySearch = " + i + ",searchAddLabelCnt = " + l);
+                    AppMethodBeat.o(305441);
                     return;
                     SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 2);
                     continue;
-                    if (!SayHiWithSnsPermissionUI2.I(SayHiWithSnsPermissionUI2.this)) {
+                    if (!SayHiWithSnsPermissionUI2.J(SayHiWithSnsPermissionUI2.this)) {
                       SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 3);
-                    } else if (!ae.isNullOrNil(SayHiWithSnsPermissionUI2.J(SayHiWithSnsPermissionUI2.this)))
+                    } else if (!com.tencent.mm.platformtools.ab.isNullOrNil(SayHiWithSnsPermissionUI2.K(SayHiWithSnsPermissionUI2.this)))
                     {
-                      if (SayHiWithSnsPermissionUI2.J(SayHiWithSnsPermissionUI2.this).equals(localObject2)) {
+                      if (SayHiWithSnsPermissionUI2.K(SayHiWithSnsPermissionUI2.this).equals(localObject2)) {
                         SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 1);
                       } else if (Util.isNullOrNil((String)localObject2)) {
                         SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 3);
@@ -731,7 +790,7 @@ public class SayHiWithSnsPermissionUI2
                         SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 2);
                       }
                     }
-                    else if (((String)localObject2).equals(SayHiWithSnsPermissionUI2.J(SayHiWithSnsPermissionUI2.this))) {
+                    else if (((String)localObject2).equals(SayHiWithSnsPermissionUI2.K(SayHiWithSnsPermissionUI2.this))) {
                       SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 3);
                     } else {
                       SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this, 2);
@@ -744,105 +803,122 @@ public class SayHiWithSnsPermissionUI2
         }
       }
     });
-    AppMethodBeat.o(267471);
+    AppMethodBeat.o(305993);
   }
   
-  public int getLayoutId()
+  public Set<Class<? extends UIComponent>> importUIComponents()
   {
-    return R.i.ekB;
+    AppMethodBeat.i(306002);
+    HashSet localHashSet = new HashSet(super.importUIComponents());
+    localHashSet.add(com.tencent.mm.plugin.profile.ui.a.d.class);
+    AppMethodBeat.o(306002);
+    return localHashSet;
   }
   
   public void initView()
   {
     AppMethodBeat.i(179694);
-    this.Hcd = getIntent().getBooleanExtra("sayhi_with_sns_perm_send_verify", false);
-    this.Hce = getIntent().getBooleanExtra("sayhi_with_sns_perm_add_remark", false);
+    this.Nap = getIntent().getBooleanExtra("sayhi_with_sns_perm_send_verify", false);
+    this.Naq = getIntent().getBooleanExtra("sayhi_with_sns_perm_add_remark", false);
     this.userName = getIntent().getStringExtra("Contact_User");
-    this.mXL = getIntent().getIntExtra("Contact_Scene", 9);
+    this.pUt = getIntent().getIntExtra("Contact_Scene", 9);
     this.chatroomName = getIntent().getStringExtra("room_name");
-    this.cip = getIntent().getStringExtra("Contact_RemarkName");
+    this.dYO = getIntent().getStringExtra("Contact_RemarkName");
     this.nickName = getIntent().getStringExtra("Contact_Nick");
-    this.GsA = getIntent().getStringExtra("Contact_RoomNickname");
-    this.Hcr = this.cip;
-    this.Hcb = findViewById(R.h.dMG);
-    this.Hcc = ((TextView)findViewById(R.h.dMH));
-    if ((com.tencent.mm.plugin.profile.c.aUI(this.userName)) && (!getIntent().getBooleanExtra("Contact_IsForceVerifyFriend", false))) {}
-    label261:
-    label332:
+    this.MoA = getIntent().getStringExtra("Contact_RoomNickname");
+    this.NaC = this.dYO;
+    this.Naj = findViewById(R.h.fOr);
+    this.Nak = ((TextView)findViewById(R.h.fOs));
+    boolean bool;
+    label202:
+    Object localObject1;
+    label255:
     int i;
-    label524:
-    label547:
-    label594:
+    label308:
+    label379:
     Object localObject3;
+    label619:
     Object localObject2;
+    label648:
+    label695:
     Object localObject4;
-    for (boolean bool = true;; bool = false)
+    if ((com.tencent.mm.plugin.profile.c.aRQ(this.userName)) && (!getIntent().getBooleanExtra("Contact_IsForceVerifyFriend", false)))
     {
-      this.Hch = bool;
-      if (!as.bvK(this.userName)) {
-        break;
+      bool = true;
+      this.Nat = bool;
+      if ((this.Nat) || (!this.Nap)) {
+        break label1567;
+      }
+      bool = true;
+      this.akiI = bool;
+      if (!au.bwO(this.userName)) {
+        break label1572;
       }
       Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "initLabelPanelAll, isOpenIM, userName: %s.", new Object[] { this.userName });
-      localObject1 = findViewById(R.h.dKH);
+      localObject1 = findViewById(R.h.fMg);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
       }
-      if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("MMSocialBlackListFlag", 1) != 1) {
-        break label1840;
+      Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "isCurrentHappenChatting = " + this.Nat);
+      if (((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getInt("MMSocialBlackListFlag", 1) != 1) {
+        break label1960;
       }
       bool = true;
-      this.HbI = bool;
-      if (!this.HbI) {
-        findViewById(R.h.dWd).setVisibility(8);
+      this.MZP = bool;
+      if (!this.MZP) {
+        findViewById(R.h.fYH).setVisibility(8);
       }
-      com.tencent.mm.kernel.h.aHH();
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(this.userName);
-      if (com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.VCJ, 0) != 1) {
-        break label1845;
+      com.tencent.mm.kernel.h.baF();
+      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(this.userName);
+      if (com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adfD, 0) != 1) {
+        break label1965;
       }
       bool = true;
-      this.Hcf = bool;
-      this.HbE = ((MMSwitchBtn)findViewById(R.h.dPy).findViewById(R.h.dPC));
+      this.Nar = bool;
+      this.MZL = ((MMSwitchBtn)findViewById(R.h.fRD).findViewById(R.h.fRH));
       getIntent().getBooleanExtra("sayhi_with_sns_permission", false);
-      this.HbE.setCheck(((as)localObject1).ayi());
-      this.HbG = ((WeImageView)findViewById(R.h.dWa));
-      this.HbH = ((WeImageView)findViewById(R.h.dVu));
-      this.HbQ = ((TextView)findViewById(R.h.dWb));
-      this.HbF = ((MMSwitchBtn)findViewById(R.h.dVt).findViewById(R.h.dPE));
-      bool = aUR(this.userName);
-      this.HbF.setCheck(bool);
-      findViewById(R.h.dux).setOnClickListener(new SayHiWithSnsPermissionUI2.1(this));
-      i = ((com.tencent.mm.f.c.ax)localObject1).sex;
+      this.MZL.setCheck(((au)localObject1).aSL());
+      this.MZN = ((WeImageView)findViewById(R.h.fYE));
+      this.MZO = ((WeImageView)findViewById(R.h.fXP));
+      this.Nan = ((TextView)findViewById(R.h.fYJ));
+      this.MZY = ((TextView)findViewById(R.h.fYF));
+      this.MZM = ((MMSwitchBtn)findViewById(R.h.fXO).findViewById(R.h.fRJ));
+      bool = aRZ(this.userName);
+      this.MZM.setCheck(bool);
+      this.Nbg = ((TextView)findViewById(R.h.fYG));
+      this.Nbh = ((TextView)findViewById(R.h.fXQ));
+      findViewById(R.h.fuN).setOnClickListener(new SayHiWithSnsPermissionUI2.1(this));
+      i = ((com.tencent.mm.autogen.b.az)localObject1).sex;
       Log.d("MicroMsg.SayHiWithSnsPermissionUI2", "sex:%d", new Object[] { Integer.valueOf(i) });
-      localObject1 = (TextView)findViewById(R.h.dPD);
+      this.Nal = ((TextView)findViewById(R.h.fRI));
       if (i != 1) {
-        break label1850;
+        break label1970;
       }
-      ((TextView)localObject1).setText(R.l.sns_outside_permiss_male);
-      localObject1 = (TextView)findViewById(R.h.dPF);
+      this.Nal.setText(R.l.sns_outside_permiss_male);
+      this.Nam = ((TextView)findViewById(R.h.fRK));
       if (i != 1) {
-        break label1865;
+        break label1988;
       }
-      ((TextView)localObject1).setText(R.l.sns_black_permiss_male);
-      bool = as.bvK(this.userName);
-      this.Hcg = bool;
+      this.Nam.setText(R.l.sns_black_permiss_male);
+      bool = au.bwO(this.userName);
+      this.Nas = bool;
       if (!bool) {
-        break label1880;
+        break label2006;
       }
-      findViewById(R.h.dWd).setVisibility(8);
-      localObject1 = findViewById(R.h.dPA);
+      findViewById(R.h.fYH).setVisibility(8);
+      localObject1 = findViewById(R.h.fRF);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(8);
       }
-      if (this.Hcg) {
-        this.HbF.setCheck(true);
+      if (this.Nas) {
+        this.MZM.setCheck(true);
       }
-      if (this.Hcd)
+      if (this.Nap)
       {
-        this.HbZ = ((EditText)findViewById(R.h.dTd));
-        com.tencent.mm.ui.tools.b.c.i(this.HbZ).axx(100).a(null);
-        this.HbZ.setFilters(com.tencent.mm.pluginsdk.ui.tools.m.Rxd);
-        this.HbZ.addTextChangedListener(new TextWatcher()
+        this.Nah = ((EditText)findViewById(R.h.fVk));
+        com.tencent.mm.ui.tools.b.c.i(this.Nah).aEg(100).a(null);
+        this.Nah.setFilters(com.tencent.mm.pluginsdk.ui.tools.k.Ytp);
+        this.Nah.addTextChangedListener(new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymousEditable) {}
           
@@ -851,670 +927,709 @@ public class SayHiWithSnsPermissionUI2
           public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
           {
             AppMethodBeat.i(179675);
-            if (SayHiWithSnsPermissionUI2.this.Hcz[0] != 0)
+            if (SayHiWithSnsPermissionUI2.this.NaK[0] != 0)
             {
-              SayHiWithSnsPermissionUI2.this.Hcz[0] = false;
-              com.tencent.mm.plugin.normsg.a.d.GxJ.aTh("ie_ver_usr");
+              SayHiWithSnsPermissionUI2.this.NaK[0] = false;
+              com.tencent.mm.plugin.normsg.a.d.MtP.aQh("ie_ver_usr");
             }
-            com.tencent.mm.plugin.normsg.a.d.GxJ.aTi("ie_ver_usr");
+            com.tencent.mm.plugin.normsg.a.d.MtP.aQi("ie_ver_usr");
             AppMethodBeat.o(179675);
           }
         });
-        ((LinearLayout)this.HbZ.getParent()).setVisibility(0);
-        bh.beI();
-        localObject3 = (String)com.tencent.mm.model.c.aHp().b(294913, null);
-        localObject2 = z.bdb();
+        bh.bCz();
+        localObject3 = (String)com.tencent.mm.model.c.ban().d(294913, null);
+        localObject2 = z.bAO();
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
         localObject4 = getString(R.l.sendgreeting_content);
         if (((String)localObject4).length() + ((String)localObject1).length() <= 50) {
-          break label2670;
+          break label2882;
         }
         localObject1 = ((String)localObject1).substring(0, 50 - ((String)localObject4).length());
-        label759:
+      }
+    }
+    label1567:
+    label1572:
+    label1960:
+    label1965:
+    label1970:
+    label2101:
+    label2879:
+    label2882:
+    for (;;)
+    {
+      localObject2 = localObject3;
+      if (!Util.isNullOrNil(this.chatroomName))
+      {
+        au localau = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(this.chatroomName);
         localObject2 = localObject3;
-        if (!Util.isNullOrNil(this.chatroomName))
+        if (localau != null)
         {
-          as localas = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(this.chatroomName);
           localObject2 = localObject3;
-          if (localas != null)
+          if (!Util.isNullOrNil(localau.field_nickname))
           {
+            localObject3 = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK().Jv(this.chatroomName).getDisplayName(z.bAM());
             localObject2 = localObject3;
-            if (!Util.isNullOrNil(localas.field_nickname))
-            {
-              localObject3 = ((com.tencent.mm.plugin.chatroom.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rx(this.chatroomName).PJ(z.bcZ());
-              localObject2 = localObject3;
-              if (Util.isNullOrNil((CharSequence)localObject3)) {
-                localObject2 = localObject1;
-              }
-              Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "chatroomName:%s nick:%s", new Object[] { this.chatroomName, localas.field_nickname });
-              localObject2 = l.b(getContext(), getResources().getString(R.l.sendgreeting_content_chatroom, new Object[] { localas.field_nickname, localObject2 }), this.HbZ.getTextSize());
-              this.Hcy = ((CharSequence)localObject2);
+            if (Util.isNullOrNil((CharSequence)localObject3)) {
+              localObject2 = localObject1;
             }
+            Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "chatroomName:%s nick:%s", new Object[] { this.chatroomName, localau.field_nickname });
+            localObject2 = com.tencent.mm.pluginsdk.ui.span.p.b(getContext(), getResources().getString(R.l.sendgreeting_content_chatroom, new Object[] { localau.field_nickname, localObject2 }), this.Nah.getTextSize());
+            this.NaJ = ((CharSequence)localObject2);
           }
         }
-        if (Util.isNullOrNil(this.Hcy)) {
-          this.Hcy = l.b(getContext(), String.format((String)localObject4, new Object[] { localObject1 }), this.HbZ.getTextSize());
-        }
-        if (!Util.isNullOrNil((CharSequence)localObject2)) {
-          break label1947;
-        }
-        this.HbZ.setText(this.Hcy);
-        label1005:
-        this.HbZ.clearFocus();
       }
-      if (this.Hce)
+      if (Util.isNullOrNil(this.NaJ)) {
+        this.NaJ = com.tencent.mm.pluginsdk.ui.span.p.b(getContext(), String.format((String)localObject4, new Object[] { localObject1 }), this.Nah.getTextSize());
+      }
+      if (Util.isNullOrNil((CharSequence)localObject2))
       {
-        this.Hca = ((EditText)findViewById(R.h.dTe));
-        ((LinearLayout)this.Hca.getParent()).setVisibility(0);
-        if (!this.Hcd) {
-          this.Hca.clearFocus();
+        this.Nah.setText(this.NaJ);
+        label1092:
+        this.Nah.clearFocus();
+        if ((this.Nah != null) && ((this.Nah.getParent() instanceof LinearLayout))) {
+          break label2101;
         }
-        com.tencent.mm.ui.tools.b.c.i(this.Hca).axx(100).a(null);
-        this.Hca.setFilters(com.tencent.mm.pluginsdk.ui.tools.m.Rxd);
-        if (this.Hcd) {
-          break label1975;
+        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "updateSayHiContextVisiable");
+        label1128:
+        if (this.Naq)
+        {
+          this.Nai = ((EditText)findViewById(R.h.fVl));
+          ((LinearLayout)this.Nai.getParent()).setVisibility(0);
+          if (!this.Nap) {
+            this.Nai.clearFocus();
+          }
+          com.tencent.mm.ui.tools.b.c.i(this.Nai).aEg(100).a(null);
+          this.Nai.setFilters(com.tencent.mm.pluginsdk.ui.tools.k.Ytp);
+          if (this.Nap) {
+            break label2186;
+          }
+          setMMTitle(R.l.gSA);
+          this.pZy[0] = 1;
+          if (Util.isNullOrNil(this.dYO)) {
+            break label2196;
+          }
+          this.Nai.setText(com.tencent.mm.pluginsdk.ui.span.p.b(getContext(), this.dYO, this.Nai.getTextSize()));
+          this.pZy[6] = 1;
+          if ((this.Nai.getHint() != null) && (!Util.isNullOrNil(this.Nai.getHint().toString()))) {
+            this.NaB = this.Nai.getHint().toString();
+          }
+          if ((this.Nai.getText() != null) && (!Util.isNullOrNil(this.Nai.getText().toString()))) {
+            this.NaB = this.Nai.getText().toString();
+          }
         }
-        setMMTitle(R.l.ePW);
-        this.nei[0] = 1;
-        label1108:
-        if (Util.isNullOrNil(this.cip)) {
-          break label1985;
+        label1224:
+        localObject1 = getString(R.l.app_send);
+        if (!this.Nap) {
+          localObject1 = getString(R.l.app_finish);
         }
-        this.Hca.setText(l.b(getContext(), this.cip, this.Hca.getTextSize()));
-        this.nei[6] = 1;
-        if ((this.Hca.getHint() != null) && (!Util.isNullOrNil(this.Hca.getHint().toString()))) {
-          this.Hcq = this.Hca.getHint().toString();
+        if (!this.Nat) {
+          break label2879;
         }
-        if ((this.Hca.getText() != null) && (!Util.isNullOrNil(this.Hca.getText().toString()))) {
-          this.Hcq = this.Hca.getText().toString();
-        }
-      }
-      localObject1 = getString(R.l.app_send);
-      if (!this.Hcd) {
         localObject1 = getString(R.l.app_finish);
       }
-      if (!this.Hch) {
-        break label2667;
-      }
-      localObject1 = getString(R.l.app_finish);
-      label1273:
-      localObject2 = com.tencent.mm.plugin.normsg.a.c.aaA(3);
-      this.Hco = ((Button)findViewById(R.h.finish_btn));
-      this.Hco.setText((CharSequence)localObject1);
-      this.Hco.setOnClickListener(new View.OnClickListener()
+      for (;;)
       {
-        public final void onClick(final View paramAnonymousView)
+        localObject2 = com.tencent.mm.plugin.normsg.a.c.aeT(3);
+        this.NaA = ((Button)findViewById(R.h.finish_btn));
+        this.NaA.setText((CharSequence)localObject1);
+        this.NaA.setOnClickListener(new View.OnClickListener()
         {
-          AppMethodBeat.i(208949);
-          Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
-          if ((SayHiWithSnsPermissionUI2.c(SayHiWithSnsPermissionUI2.this) != null) && (SayHiWithSnsPermissionUI2.c(SayHiWithSnsPermissionUI2.this).isShowing()))
+          public final void onClick(final View paramAnonymousView)
           {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(208949);
-            return;
-          }
-          final LinkedList localLinkedList2;
-          final LinkedList localLinkedList1;
-          final HashMap localHashMap;
-          int j;
-          if (SayHiWithSnsPermissionUI2.this.HcA[0] != 0)
-          {
-            SayHiWithSnsPermissionUI2.this.HcA[0] = false;
-            com.tencent.mm.plugin.normsg.a.d.GxJ.fx(this.HcL, 3);
-            if (!SayHiWithSnsPermissionUI2.d(SayHiWithSnsPermissionUI2.this)) {
-              break label730;
-            }
-            localLinkedList2 = new LinkedList();
-            localLinkedList2.add(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
-            localLinkedList1 = new LinkedList();
-            localLinkedList1.add(Integer.valueOf(SayHiWithSnsPermissionUI2.f(SayHiWithSnsPermissionUI2.this)));
-            localObject1 = SayHiWithSnsPermissionUI2.g(SayHiWithSnsPermissionUI2.this);
-            localHashMap = new HashMap();
-            if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() == 0) {
-              break label1060;
-            }
-            if (!SayHiWithSnsPermissionUI2.i(SayHiWithSnsPermissionUI2.this).YbZ) {
-              break label1055;
-            }
-            j = 1;
-            label214:
-            i = j;
-            if (!SayHiWithSnsPermissionUI2.j(SayHiWithSnsPermissionUI2.this).YbZ) {}
-          }
-          label782:
-          label1055:
-          label1060:
-          for (int i = j | 0x2;; i = 0)
-          {
-            j = i;
-            if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() == 0) {
-              j = i | 0x8;
-            }
-            SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, j);
-            localHashMap.put(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), Integer.valueOf(j));
-            Log.d("MicroMsg.SayHiWithSnsPermissionUI2", "select sns permission, %s", new Object[] { Integer.valueOf(j) });
-            Object localObject2;
-            if (SayHiWithSnsPermissionUI2.k(SayHiWithSnsPermissionUI2.this))
-            {
-              paramAnonymousView = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra(f.d.VRW);
-              paramAnonymousView = new o(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), (String)localObject1, paramAnonymousView, j);
-              bh.aGY().a(paramAnonymousView, 0);
-              localObject1 = SayHiWithSnsPermissionUI2.this;
-              localObject2 = SayHiWithSnsPermissionUI2.this.getContext();
-              SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
-              SayHiWithSnsPermissionUI2.a((SayHiWithSnsPermissionUI2)localObject1, com.tencent.mm.ui.base.h.a((Context)localObject2, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
-              {
-                public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
-                {
-                  AppMethodBeat.i(179677);
-                  bh.aGY().a(paramAnonymousView);
-                  AppMethodBeat.o(179677);
-                }
-              }));
-            }
-            label730:
-            do
+            AppMethodBeat.i(305647);
+            Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject1).cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aYj());
+            if ((SayHiWithSnsPermissionUI2.c(SayHiWithSnsPermissionUI2.this) != null) && (SayHiWithSnsPermissionUI2.c(SayHiWithSnsPermissionUI2.this).isShowing()))
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(208949);
+              AppMethodBeat.o(305647);
               return;
-              com.tencent.mm.plugin.normsg.a.d.GxJ.av("ce_ver_usr", "<VerifyUsr>", this.HcL);
-              paramAnonymousView = MotionEvent.obtain(0L, 0L, 1, 0.0F, 0.0F, 65535);
-              com.tencent.mm.plugin.normsg.a.d.GxJ.a("ce_ver_usr", paramAnonymousView);
-              com.tencent.mm.plugin.normsg.a.d.GxJ.aTm("ce_ver_usr");
-              break;
-              Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "addTextOptionMenu:send addcontact.");
-              final String str1 = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_user_name");
-              final String str2 = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_nick_name");
-              localObject2 = new com.tencent.mm.pluginsdk.ui.applet.a(SayHiWithSnsPermissionUI2.this, null);
-              if (SayHiWithSnsPermissionUI2.l(SayHiWithSnsPermissionUI2.this)) {}
-              for (paramAnonymousView = "";; paramAnonymousView = (View)localObject1)
+            }
+            final LinkedList localLinkedList2;
+            final LinkedList localLinkedList1;
+            final HashMap localHashMap;
+            int j;
+            if (SayHiWithSnsPermissionUI2.this.NaL[0] != 0)
+            {
+              SayHiWithSnsPermissionUI2.this.NaL[0] = false;
+              com.tencent.mm.plugin.normsg.a.d.MtP.gq(this.NaW, 3);
+              if (!SayHiWithSnsPermissionUI2.d(SayHiWithSnsPermissionUI2.this)) {
+                break label737;
+              }
+              localLinkedList2 = new LinkedList();
+              localLinkedList2.add(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
+              localLinkedList1 = new LinkedList();
+              localLinkedList1.add(Integer.valueOf(SayHiWithSnsPermissionUI2.f(SayHiWithSnsPermissionUI2.this)));
+              localObject1 = SayHiWithSnsPermissionUI2.g(SayHiWithSnsPermissionUI2.this);
+              localHashMap = new HashMap();
+              if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() == 0) {
+                break label1067;
+              }
+              if (!SayHiWithSnsPermissionUI2.i(SayHiWithSnsPermissionUI2.this).afTT) {
+                break label1062;
+              }
+              j = 1;
+              label214:
+              i = j;
+              if (!SayHiWithSnsPermissionUI2.j(SayHiWithSnsPermissionUI2.this).afTT) {}
+            }
+            label789:
+            label1062:
+            label1067:
+            for (int i = j | 0x2;; i = 0)
+            {
+              j = i;
+              if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() == 0) {
+                j = i | 0x8;
+              }
+              SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, j);
+              localHashMap.put(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), Integer.valueOf(j));
+              Log.d("MicroMsg.SayHiWithSnsPermissionUI2", "select sns permission, %s", new Object[] { Integer.valueOf(j) });
+              Object localObject2;
+              if (SayHiWithSnsPermissionUI2.k(SayHiWithSnsPermissionUI2.this))
               {
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).content = paramAnonymousView;
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).np(str1, str2);
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).ReR = localHashMap;
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).chatroomName = SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this);
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).ReH = new a.b()
+                paramAnonymousView = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra(f.e.adwe);
+                paramAnonymousView = new r(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), (String)localObject1, paramAnonymousView, j);
+                bh.aZW().a(paramAnonymousView, 0);
+                localObject1 = SayHiWithSnsPermissionUI2.this;
+                localObject2 = SayHiWithSnsPermissionUI2.this.getContext();
+                SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
+                SayHiWithSnsPermissionUI2.a((SayHiWithSnsPermissionUI2)localObject1, com.tencent.mm.ui.base.k.a((Context)localObject2, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
                 {
-                  public final boolean m(final String paramAnonymous2String1, int paramAnonymous2Int, String paramAnonymous2String2)
+                  public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                   {
-                    AppMethodBeat.i(279224);
-                    Object localObject;
-                    if (paramAnonymous2Int == -4000)
+                    AppMethodBeat.i(179677);
+                    bh.aZW().a(paramAnonymousView);
+                    AppMethodBeat.o(179677);
+                  }
+                }));
+              }
+              label737:
+              do
+              {
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI2$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(305647);
+                return;
+                com.tencent.mm.plugin.normsg.a.d.MtP.aJ("ce_ver_usr", "<VerifyUsr>", this.NaW);
+                paramAnonymousView = MotionEvent.obtain(0L, 0L, 1, 0.0F, 0.0F, 65535);
+                com.tencent.mm.plugin.normsg.a.d.MtP.a("ce_ver_usr", paramAnonymousView);
+                com.tencent.mm.plugin.normsg.a.d.MtP.aQm("ce_ver_usr");
+                break;
+                Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "addTextOptionMenu:send addcontact.");
+                final String str1 = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_user_name");
+                final String str2 = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_nick_name");
+                localObject2 = new com.tencent.mm.pluginsdk.ui.applet.a(SayHiWithSnsPermissionUI2.this, null);
+                if (SayHiWithSnsPermissionUI2.l(SayHiWithSnsPermissionUI2.this)) {}
+                for (paramAnonymousView = "";; paramAnonymousView = (View)localObject1)
+                {
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).content = paramAnonymousView;
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).pk(str1, str2);
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).YaW = localHashMap;
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).chatroomName = SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this);
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).YaM = new a.b()
+                  {
+                    public final boolean n(final String paramAnonymous2String1, int paramAnonymous2Int, String paramAnonymous2String2)
                     {
-                      Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "addTextOptionMenu:send addcontact.");
-                      localObject = new com.tencent.mm.pluginsdk.ui.applet.a(SayHiWithSnsPermissionUI2.this, null);
-                      if (SayHiWithSnsPermissionUI2.l(SayHiWithSnsPermissionUI2.this))
+                      AppMethodBeat.i(305653);
+                      Object localObject;
+                      if (paramAnonymous2Int == -4000)
                       {
-                        paramAnonymous2String1 = "";
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).content = paramAnonymous2String1;
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).np(str1, str2);
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).ReR = localHashMap;
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).chatroomName = SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this);
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).ReH = new a.b()
+                        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "addTextOptionMenu:send addcontact.");
+                        localObject = new com.tencent.mm.pluginsdk.ui.applet.a(SayHiWithSnsPermissionUI2.this, null);
+                        if (SayHiWithSnsPermissionUI2.l(SayHiWithSnsPermissionUI2.this))
                         {
-                          public final boolean m(String paramAnonymous3String1, int paramAnonymous3Int, String paramAnonymous3String2)
+                          paramAnonymous2String1 = "";
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).content = paramAnonymous2String1;
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).pk(str1, str2);
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).YaW = localHashMap;
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).chatroomName = SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this);
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).YaM = new a.b()
                           {
-                            return true;
-                          }
-                        };
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).fgi = false;
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).ReU = paramAnonymous2String2;
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).ReQ = new aa.a()
+                            public final boolean n(String paramAnonymous3String1, int paramAnonymous3Int, String paramAnonymous3String2)
+                            {
+                              return true;
+                            }
+                          };
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).hks = false;
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).YaZ = paramAnonymous2String2;
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).YaV = new ab.a()
+                          {
+                            public final void gCl()
+                            {
+                              AppMethodBeat.i(305518);
+                              SayHiWithSnsPermissionUI2.n(SayHiWithSnsPermissionUI2.this);
+                              AppMethodBeat.o(305518);
+                            }
+                            
+                            public final void gCm()
+                            {
+                              SayHiWithSnsPermissionUI2 localSayHiWithSnsPermissionUI2 = SayHiWithSnsPermissionUI2.this;
+                              localSayHiWithSnsPermissionUI2.NaP += 1;
+                            }
+                          };
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).YaZ = paramAnonymous2String2;
+                          com.tencent.mm.kernel.h.baF();
+                          paramAnonymous2String1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
+                          ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).a(SayHiWithSnsPermissionUI2.this, paramAnonymous2String1, SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), localLinkedList1);
+                          SayHiWithSnsPermissionUI2.o(SayHiWithSnsPermissionUI2.this);
+                          paramAnonymous2String1 = SayHiWithSnsPermissionUI2.this;
+                          paramAnonymous2String2 = SayHiWithSnsPermissionUI2.this.getContext();
+                          SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
+                          SayHiWithSnsPermissionUI2.a(paramAnonymous2String1, com.tencent.mm.ui.base.k.a(paramAnonymous2String2, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
+                          {
+                            public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
+                            {
+                              AppMethodBeat.i(305521);
+                              this.Nbc.iKU();
+                              AppMethodBeat.o(305521);
+                            }
+                          }));
+                        }
+                      }
+                      for (;;)
+                      {
+                        AppMethodBeat.o(305653);
+                        return true;
+                        paramAnonymous2String1 = this.val$content;
+                        break;
+                        if (SayHiWithSnsPermissionUI2.l(SayHiWithSnsPermissionUI2.this))
                         {
-                          public final void fqN()
+                          paramAnonymous2String1 = SayHiWithSnsPermissionUI2.this;
+                          bh.bCz();
+                          paramAnonymous2String2 = com.tencent.mm.model.c.bzA().JE(paramAnonymous2String1.userName);
+                          label357:
+                          boolean bool;
+                          if (paramAnonymous2String2 != null)
                           {
-                            AppMethodBeat.i(289332);
-                            SayHiWithSnsPermissionUI2.n(SayHiWithSnsPermissionUI2.this);
-                            AppMethodBeat.o(289332);
+                            paramAnonymous2String1.His = paramAnonymous2String1.getResources().getString(R.l.contact_info_verify_content, new Object[] { paramAnonymous2String2.field_nickname });
+                            paramAnonymous2String1.pRt = View.inflate(paramAnonymous2String1, c.f.sendrequest_dialog, null);
+                            if (paramAnonymous2String1.His != null) {
+                              break label617;
+                            }
+                            bool = true;
+                            label379:
+                            if (paramAnonymous2String1.His != null) {
+                              break label623;
+                            }
                           }
-                          
-                          public final void fqO()
+                          label617:
+                          label623:
+                          for (paramAnonymous2Int = 0;; paramAnonymous2Int = paramAnonymous2String1.His.length())
                           {
-                            SayHiWithSnsPermissionUI2 localSayHiWithSnsPermissionUI2 = SayHiWithSnsPermissionUI2.this;
-                            localSayHiWithSnsPermissionUI2.HcE += 1;
+                            Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramAnonymous2Int), paramAnonymous2String1.His });
+                            if (!Util.isNullOrNil(paramAnonymous2String1.His)) {
+                              ((TextView)paramAnonymous2String1.pRt.findViewById(c.e.sendrequest_tip)).setText(paramAnonymous2String1.His);
+                            }
+                            paramAnonymous2String1.NaR = paramAnonymous2String1.pRt.findViewById(c.e.edittext_container);
+                            paramAnonymous2String1.tID = ((EditText)paramAnonymous2String1.pRt.findViewById(c.e.sendrequest_content));
+                            paramAnonymous2String1.NaQ = ((TextView)paramAnonymous2String1.pRt.findViewById(c.e.wordcount));
+                            paramAnonymous2String1.NaQ.setVisibility(0);
+                            paramAnonymous2String1.tID.setText(null);
+                            paramAnonymous2String1.NaQ.setText("50");
+                            paramAnonymous2String1.tID.setVisibility(8);
+                            paramAnonymous2String1.NaR.setVisibility(8);
+                            paramAnonymous2String2 = new SayHiWithSnsPermissionUI2.7(paramAnonymous2String1);
+                            localObject = new SayHiWithSnsPermissionUI2.8(paramAnonymous2String1);
+                            paramAnonymous2String1.pRv = com.tencent.mm.ui.base.k.a(paramAnonymous2String1, "", paramAnonymous2String1.getString(c.h.contact_info_verify_accept), paramAnonymous2String1.pRt, paramAnonymous2String2, (DialogInterface.OnClickListener)localObject);
+                            if (paramAnonymous2String1.pRv != null) {
+                              break;
+                            }
+                            paramAnonymous2String1.onStop();
+                            break;
+                            paramAnonymous2String1.His = paramAnonymous2String1.getResources().getString(R.l.contact_info_verify_content_default);
+                            break label357;
+                            bool = false;
+                            break label379;
                           }
-                        };
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).ReU = paramAnonymous2String2;
-                        com.tencent.mm.kernel.h.aHH();
-                        paramAnonymous2String1 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
-                        ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).a(SayHiWithSnsPermissionUI2.this, paramAnonymous2String1, SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), localLinkedList1);
-                        paramAnonymous2String1 = SayHiWithSnsPermissionUI2.this;
-                        paramAnonymous2String2 = SayHiWithSnsPermissionUI2.this.getContext();
+                        }
+                        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "dealAddContactError, resend request ver.");
+                        paramAnonymous2String2 = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_user_name");
+                        localObject = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_nick_name");
+                        paramAnonymous2String1 = new com.tencent.mm.pluginsdk.ui.applet.ab(SayHiWithSnsPermissionUI2.this, null);
+                        paramAnonymous2String1.content = this.val$content;
+                        paramAnonymous2String1.pg(paramAnonymous2String2, (String)localObject);
+                        paramAnonymous2String1.YaW = localHashMap;
+                        paramAnonymous2String1.chatroomName = SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this);
+                        paramAnonymous2String1.S(localLinkedList2, localLinkedList1);
+                        SayHiWithSnsPermissionUI2.o(SayHiWithSnsPermissionUI2.this);
+                        paramAnonymous2String2 = SayHiWithSnsPermissionUI2.this;
+                        localObject = SayHiWithSnsPermissionUI2.this.getContext();
                         SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
-                        SayHiWithSnsPermissionUI2.a(paramAnonymous2String1, com.tencent.mm.ui.base.h.a(paramAnonymous2String2, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
+                        SayHiWithSnsPermissionUI2.a(paramAnonymous2String2, com.tencent.mm.ui.base.k.a((Context)localObject, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
                         {
                           public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
                           {
-                            AppMethodBeat.i(289497);
-                            this.HcR.hkc();
-                            AppMethodBeat.o(289497);
+                            AppMethodBeat.i(305522);
+                            paramAnonymous2String1.iKU();
+                            AppMethodBeat.o(305522);
                           }
                         }));
                       }
                     }
-                    for (;;)
+                  };
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).hks = false;
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).YaV = new ab.a()
+                  {
+                    public final void gCl()
                     {
-                      AppMethodBeat.o(279224);
-                      return true;
-                      paramAnonymous2String1 = this.val$content;
-                      break;
-                      if (SayHiWithSnsPermissionUI2.l(SayHiWithSnsPermissionUI2.this))
-                      {
-                        paramAnonymous2String1 = SayHiWithSnsPermissionUI2.this;
-                        bh.beI();
-                        paramAnonymous2String2 = com.tencent.mm.model.c.bbL().RG(paramAnonymous2String1.userName);
-                        label347:
-                        boolean bool;
-                        if (paramAnonymous2String2 != null)
-                        {
-                          paramAnonymous2String1.BAU = paramAnonymous2String1.getResources().getString(R.l.contact_info_verify_content, new Object[] { paramAnonymous2String2.field_nickname });
-                          paramAnonymous2String1.mUM = View.inflate(paramAnonymous2String1, c.f.sendrequest_dialog, null);
-                          if (paramAnonymous2String1.BAU != null) {
-                            break label607;
-                          }
-                          bool = true;
-                          label369:
-                          if (paramAnonymous2String1.BAU != null) {
-                            break label613;
-                          }
-                        }
-                        label607:
-                        label613:
-                        for (paramAnonymous2Int = 0;; paramAnonymous2Int = paramAnonymous2String1.BAU.length())
-                        {
-                          Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "verifyTip is null: %b, length : %d, value : [%s]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramAnonymous2Int), paramAnonymous2String1.BAU });
-                          if (!Util.isNullOrNil(paramAnonymous2String1.BAU)) {
-                            ((TextView)paramAnonymous2String1.mUM.findViewById(c.e.sendrequest_tip)).setText(paramAnonymous2String1.BAU);
-                          }
-                          paramAnonymous2String1.HcG = paramAnonymous2String1.mUM.findViewById(c.e.edittext_container);
-                          paramAnonymous2String1.qDO = ((EditText)paramAnonymous2String1.mUM.findViewById(c.e.sendrequest_content));
-                          paramAnonymous2String1.HcF = ((TextView)paramAnonymous2String1.mUM.findViewById(c.e.wordcount));
-                          paramAnonymous2String1.HcF.setVisibility(0);
-                          paramAnonymous2String1.qDO.setText(null);
-                          paramAnonymous2String1.HcF.setText("50");
-                          paramAnonymous2String1.qDO.setVisibility(8);
-                          paramAnonymous2String1.HcG.setVisibility(8);
-                          paramAnonymous2String2 = new SayHiWithSnsPermissionUI2.5(paramAnonymous2String1);
-                          localObject = new SayHiWithSnsPermissionUI2.6(paramAnonymous2String1);
-                          paramAnonymous2String1.mUO = com.tencent.mm.ui.base.h.a(paramAnonymous2String1, "", paramAnonymous2String1.getString(c.h.contact_info_verify_accept), paramAnonymous2String1.mUM, paramAnonymous2String2, (DialogInterface.OnClickListener)localObject);
-                          if (paramAnonymous2String1.mUO != null) {
-                            break;
-                          }
-                          paramAnonymous2String1.onStop();
-                          break;
-                          paramAnonymous2String1.BAU = paramAnonymous2String1.getResources().getString(R.l.contact_info_verify_content_default);
-                          break label347;
-                          bool = false;
-                          break label369;
-                        }
-                      }
-                      Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "dealAddContactError, resend request ver.");
-                      paramAnonymous2String2 = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_user_name");
-                      localObject = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("source_from_nick_name");
-                      paramAnonymous2String1 = new aa(SayHiWithSnsPermissionUI2.this, null);
-                      paramAnonymous2String1.content = this.val$content;
-                      paramAnonymous2String1.nl(paramAnonymous2String2, (String)localObject);
-                      paramAnonymous2String1.ReR = localHashMap;
-                      paramAnonymous2String1.chatroomName = SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this);
-                      paramAnonymous2String1.F(localLinkedList2, localLinkedList1);
-                      paramAnonymous2String2 = SayHiWithSnsPermissionUI2.this;
-                      localObject = SayHiWithSnsPermissionUI2.this.getContext();
-                      SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
-                      SayHiWithSnsPermissionUI2.a(paramAnonymous2String2, com.tencent.mm.ui.base.h.a((Context)localObject, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
-                      {
-                        public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
-                        {
-                          AppMethodBeat.i(229049);
-                          paramAnonymous2String1.hkc();
-                          AppMethodBeat.o(229049);
-                        }
-                      }));
+                      AppMethodBeat.i(305661);
+                      SayHiWithSnsPermissionUI2.n(SayHiWithSnsPermissionUI2.this);
+                      AppMethodBeat.o(305661);
                     }
-                  }
-                };
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).fgi = false;
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).ReQ = new aa.a()
-                {
-                  public final void fqN()
-                  {
-                    AppMethodBeat.i(284270);
-                    SayHiWithSnsPermissionUI2.n(SayHiWithSnsPermissionUI2.this);
-                    AppMethodBeat.o(284270);
-                  }
-                  
-                  public final void fqO()
-                  {
-                    SayHiWithSnsPermissionUI2 localSayHiWithSnsPermissionUI2 = SayHiWithSnsPermissionUI2.this;
-                    localSayHiWithSnsPermissionUI2.HcE += 1;
-                  }
-                };
-                com.tencent.mm.kernel.h.aHH();
-                paramAnonymousView = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
-                ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).a(SayHiWithSnsPermissionUI2.this, paramAnonymousView, SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), localLinkedList1);
-                paramAnonymousView = SayHiWithSnsPermissionUI2.this;
-                localObject1 = SayHiWithSnsPermissionUI2.this.getContext();
-                SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
-                SayHiWithSnsPermissionUI2.a(paramAnonymousView, com.tencent.mm.ui.base.h.a((Context)localObject1, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
-                {
-                  public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
-                  {
-                    AppMethodBeat.i(179680);
-                    this.HcR.hkc();
-                    AppMethodBeat.o(179680);
-                  }
-                }));
-                break;
-              }
-            } while (!SayHiWithSnsPermissionUI2.o(SayHiWithSnsPermissionUI2.this));
-            paramAnonymousView = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("Verify_ticket");
-            if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() != 0) {
-              if (SayHiWithSnsPermissionUI2.i(SayHiWithSnsPermissionUI2.this).YbZ)
-              {
-                j = 1;
-                i = j;
-                if (!SayHiWithSnsPermissionUI2.j(SayHiWithSnsPermissionUI2.this).YbZ) {}
-              }
-            }
-            for (i = j | 0x2;; i = 0)
-            {
-              if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() == 0) {
-                i |= 0x8;
-              }
-              for (;;)
-              {
-                SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, i);
-                Log.d("MicroMsg.SayHiWithSnsPermissionUI2", "select sns permission, %s", new Object[] { Integer.valueOf(i) });
-                if (SayHiWithSnsPermissionUI2.k(SayHiWithSnsPermissionUI2.this))
-                {
-                  paramAnonymousView = new com.tencent.mm.openim.b.q(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), paramAnonymousView, i);
-                  bh.aGY().a(paramAnonymousView, 0);
-                  localObject1 = SayHiWithSnsPermissionUI2.this;
-                  localObject2 = SayHiWithSnsPermissionUI2.this.getContext();
+                    
+                    public final void gCm()
+                    {
+                      SayHiWithSnsPermissionUI2 localSayHiWithSnsPermissionUI2 = SayHiWithSnsPermissionUI2.this;
+                      localSayHiWithSnsPermissionUI2.NaP += 1;
+                    }
+                  };
+                  com.tencent.mm.kernel.h.baF();
+                  paramAnonymousView = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this));
+                  ((com.tencent.mm.pluginsdk.ui.applet.a)localObject2).a(SayHiWithSnsPermissionUI2.this, paramAnonymousView, SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), localLinkedList1);
+                  SayHiWithSnsPermissionUI2.o(SayHiWithSnsPermissionUI2.this);
+                  paramAnonymousView = SayHiWithSnsPermissionUI2.this;
+                  localObject1 = SayHiWithSnsPermissionUI2.this.getContext();
                   SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
-                  SayHiWithSnsPermissionUI2.a((SayHiWithSnsPermissionUI2)localObject1, com.tencent.mm.ui.base.h.a((Context)localObject2, SayHiWithSnsPermissionUI2.this.getString(R.l.eys), true, new DialogInterface.OnCancelListener()
+                  SayHiWithSnsPermissionUI2.a(paramAnonymousView, com.tencent.mm.ui.base.k.a((Context)localObject1, SayHiWithSnsPermissionUI2.this.getString(R.l.sendrequest_sending), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                     {
-                      AppMethodBeat.i(288872);
-                      bh.aGY().a(paramAnonymousView);
-                      AppMethodBeat.o(288872);
+                      AppMethodBeat.i(179680);
+                      this.Nbc.iKU();
+                      AppMethodBeat.o(179680);
                     }
                   }));
                   break;
                 }
-                paramAnonymousView = new com.tencent.mm.pluginsdk.model.t(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), paramAnonymousView, SayHiWithSnsPermissionUI2.f(SayHiWithSnsPermissionUI2.this), SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this), i);
-                bh.aGY().a(paramAnonymousView, 0);
-                localObject1 = SayHiWithSnsPermissionUI2.this;
-                localObject2 = SayHiWithSnsPermissionUI2.this.getContext();
-                SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
-                SayHiWithSnsPermissionUI2.a((SayHiWithSnsPermissionUI2)localObject1, com.tencent.mm.ui.base.h.a((Context)localObject2, SayHiWithSnsPermissionUI2.this.getString(R.l.eys), true, new DialogInterface.OnCancelListener()
+              } while (!SayHiWithSnsPermissionUI2.p(SayHiWithSnsPermissionUI2.this));
+              paramAnonymousView = SayHiWithSnsPermissionUI2.this.getIntent().getStringExtra("Verify_ticket");
+              if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() != 0) {
+                if (SayHiWithSnsPermissionUI2.i(SayHiWithSnsPermissionUI2.this).afTT)
                 {
-                  public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+                  j = 1;
+                  i = j;
+                  if (!SayHiWithSnsPermissionUI2.j(SayHiWithSnsPermissionUI2.this).afTT) {}
+                }
+              }
+              for (i = j | 0x2;; i = 0)
+              {
+                if (SayHiWithSnsPermissionUI2.h(SayHiWithSnsPermissionUI2.this).getVisibility() == 0) {
+                  i |= 0x8;
+                }
+                for (;;)
+                {
+                  SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this, i);
+                  Log.d("MicroMsg.SayHiWithSnsPermissionUI2", "select sns permission, %s", new Object[] { Integer.valueOf(i) });
+                  if (SayHiWithSnsPermissionUI2.k(SayHiWithSnsPermissionUI2.this))
                   {
-                    AppMethodBeat.i(274433);
-                    bh.aGY().a(paramAnonymousView);
-                    AppMethodBeat.o(274433);
+                    paramAnonymousView = new t(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), paramAnonymousView, i);
+                    bh.aZW().a(paramAnonymousView, 0);
+                    localObject1 = SayHiWithSnsPermissionUI2.this;
+                    localObject2 = SayHiWithSnsPermissionUI2.this.getContext();
+                    SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
+                    SayHiWithSnsPermissionUI2.a((SayHiWithSnsPermissionUI2)localObject1, com.tencent.mm.ui.base.k.a((Context)localObject2, SayHiWithSnsPermissionUI2.this.getString(R.l.gBk), true, new DialogInterface.OnCancelListener()
+                    {
+                      public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+                      {
+                        AppMethodBeat.i(305664);
+                        bh.aZW().a(paramAnonymousView);
+                        AppMethodBeat.o(305664);
+                      }
+                    }));
+                    break;
                   }
-                }));
-                break;
+                  paramAnonymousView = new v(SayHiWithSnsPermissionUI2.e(SayHiWithSnsPermissionUI2.this), paramAnonymousView, SayHiWithSnsPermissionUI2.f(SayHiWithSnsPermissionUI2.this), SayHiWithSnsPermissionUI2.m(SayHiWithSnsPermissionUI2.this), i);
+                  bh.aZW().a(paramAnonymousView, 0);
+                  localObject1 = SayHiWithSnsPermissionUI2.this;
+                  localObject2 = SayHiWithSnsPermissionUI2.this.getContext();
+                  SayHiWithSnsPermissionUI2.this.getString(R.l.app_tip);
+                  SayHiWithSnsPermissionUI2.a((SayHiWithSnsPermissionUI2)localObject1, com.tencent.mm.ui.base.k.a((Context)localObject2, SayHiWithSnsPermissionUI2.this.getString(R.l.gBk), true, new DialogInterface.OnCancelListener()
+                  {
+                    public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+                    {
+                      AppMethodBeat.i(305667);
+                      bh.aZW().a(paramAnonymousView);
+                      AppMethodBeat.o(305667);
+                    }
+                  }));
+                  break;
+                }
+                j = 0;
+                break label789;
               }
               j = 0;
-              break label782;
-            }
-            j = 0;
-            break label214;
-          }
-        }
-      });
-      this.Hco.setOnTouchListener(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(179682);
-          switch (paramAnonymousMotionEvent.getAction())
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(179682);
-            return false;
-            SayHiWithSnsPermissionUI2.this.HcA[0] = true;
-            com.tencent.mm.plugin.normsg.a.d.GxJ.av("ce_ver_usr", "<VerifyUsr>", this.HcL);
-            continue;
-            com.tencent.mm.plugin.normsg.a.d.GxJ.a("ce_ver_usr", paramAnonymousMotionEvent);
-            com.tencent.mm.plugin.normsg.a.d.GxJ.aTm("ce_ver_usr");
-          }
-        }
-      });
-      this.Hco.setTextColor(getResources().getColor(a.d.color_btn_text_selector));
-      this.Hco.setBackground(getDrawable(a.f.btn_solid_green));
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(179683);
-          if (SayHiWithSnsPermissionUI2.o(SayHiWithSnsPermissionUI2.this)) {
-            SayHiWithSnsPermissionUI2.p(SayHiWithSnsPermissionUI2.this)[1] = 1;
-          }
-          SayHiWithSnsPermissionUI2.this.finish();
-          SayHiWithSnsPermissionUI2.q(SayHiWithSnsPermissionUI2.this);
-          SayHiWithSnsPermissionUI2.this.Ph(2L);
-          AppMethodBeat.o(179683);
-          return true;
-        }
-      });
-      this.jij = new com.tencent.mm.ui.tools.i(this);
-      this.jij.XSx = this;
-      if (this.Hch)
-      {
-        setMMTitle(R.l.ePX);
-        if ((this.HbZ != null) && ((LinearLayout)this.HbZ.getParent() != null)) {
-          ((LinearLayout)this.HbZ.getParent()).setVisibility(8);
-        }
-      }
-      AppMethodBeat.o(179694);
-      return;
-    }
-    this.Hcn = ((TextView)findViewById(R.h.dBe));
-    this.Hcn.setVisibility(0);
-    this.Hcm = ((LinearLayout)findViewById(R.h.dBf));
-    this.Hcl = ((ImageView)findViewById(R.h.drW));
-    if (this.Hcl != null) {
-      this.Hcl.setImageDrawable(com.tencent.mm.ui.au.o(this, R.k.icons_outlined_arrow, com.tencent.mm.ci.a.w(getContext(), R.e.BW_70)));
-    }
-    this.Hcm.setOnClickListener(new SayHiWithSnsPermissionUI2.2(this));
-    this.jbL = ((ScrollView)findViewById(R.h.scrollView));
-    this.EeB = findViewById(R.h.dKI);
-    this.EeB.setBackgroundDrawable(null);
-    this.EeB.setVisibility(0);
-    this.Hci = e.eLd().hyg();
-    if (this.Hcj != null)
-    {
-      bh.beI();
-      localObject1 = com.tencent.mm.model.c.bbM().aPj(this.userName);
-      if (localObject1 != null)
-      {
-        localObject1 = ((co)localObject1).field_contactLabels;
-        label1639:
-        localObject3 = localObject1;
-        if (Util.isNullOrNil((String)localObject1))
-        {
-          bh.beI();
-          localObject4 = com.tencent.mm.model.c.bbL().RG(this.userName);
-          localObject3 = ((com.tencent.mm.f.c.ax)localObject4).field_encryptUsername;
-          localObject2 = localObject1;
-          if (!Util.isNullOrNil((String)localObject3))
-          {
-            bh.beI();
-            localObject3 = com.tencent.mm.model.c.bbM().aPj((String)localObject3);
-            localObject2 = localObject1;
-            if (localObject3 != null) {
-              localObject2 = ((co)localObject3).field_contactLabels;
+              break label214;
             }
           }
-          localObject3 = localObject2;
-          if (Util.isNullOrNil((String)localObject2))
+        });
+        this.NaA.setOnTouchListener(new View.OnTouchListener()
+        {
+          public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            localObject1 = ((com.tencent.mm.f.c.ax)localObject4).field_username;
-            bh.beI();
-            localObject1 = com.tencent.mm.model.c.bbM().aPj((String)localObject1);
-            localObject3 = localObject2;
-            if (localObject1 != null) {
-              localObject3 = ((co)localObject1).field_contactLabels;
+            AppMethodBeat.i(179682);
+            switch (paramAnonymousMotionEvent.getAction())
+            {
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(179682);
+              return false;
+              SayHiWithSnsPermissionUI2.this.NaL[0] = true;
+              com.tencent.mm.plugin.normsg.a.d.MtP.aJ("ce_ver_usr", "<VerifyUsr>", this.NaW);
+              continue;
+              com.tencent.mm.plugin.normsg.a.d.MtP.a("ce_ver_usr", paramAnonymousMotionEvent);
+              com.tencent.mm.plugin.normsg.a.d.MtP.aQm("ce_ver_usr");
             }
           }
+        });
+        this.NaA.setTextColor(getResources().getColor(a.d.color_btn_text_selector));
+        this.NaA.setBackground(getDrawable(a.f.btn_solid_green));
+        setBackBtn(new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(179683);
+            if (SayHiWithSnsPermissionUI2.p(SayHiWithSnsPermissionUI2.this)) {
+              SayHiWithSnsPermissionUI2.q(SayHiWithSnsPermissionUI2.this)[1] = 1;
+            }
+            SayHiWithSnsPermissionUI2.this.finish();
+            SayHiWithSnsPermissionUI2.r(SayHiWithSnsPermissionUI2.this);
+            SayHiWithSnsPermissionUI2.this.hm(2L);
+            AppMethodBeat.o(179683);
+            return true;
+          }
+        });
+        this.lKz = new com.tencent.mm.ui.tools.i(this);
+        this.lKz.afIL = this;
+        if (this.Nat) {
+          setMMTitle(R.l.gSB);
         }
-      }
-    }
-    for (Object localObject1 = (ArrayList)com.tencent.mm.plugin.label.a.a.eLe().aMP((String)localObject3);; localObject1 = null)
-    {
-      if (localObject1 != null) {
-        this.Hcj.addAll((Collection)localObject1);
-      }
-      if (this.Hci != null) {
-        this.Hcu = this.Hci.size();
-      }
-      if (localObject1 != null)
-      {
-        this.Hcv = ((ArrayList)localObject1).size();
-        this.Hcw.addAll((Collection)localObject1);
-      }
-      gw((List)localObject1);
-      break;
-      label1840:
-      bool = false;
-      break label261;
-      label1845:
-      bool = false;
-      break label332;
-      label1850:
-      if (i != 2) {
-        break label524;
-      }
-      ((TextView)localObject1).setText(R.l.sns_outside_permiss_female);
-      break label524;
-      label1865:
-      if (i != 2) {
-        break label547;
-      }
-      ((TextView)localObject1).setText(R.l.sns_black_permiss_female);
-      break label547;
-      label1880:
-      dFf();
-      i = getIntent().getIntExtra("Contact_default_permission", -1);
-      if (i <= 0) {
-        break label594;
-      }
-      if ((i & 0x8) == 8)
-      {
-        this.HbG.setVisibility(0);
-        this.HbH.setVisibility(4);
-        break label594;
-      }
-      this.HbG.setVisibility(4);
-      this.HbH.setVisibility(0);
-      break label594;
-      label1947:
-      localObject1 = l.b(getContext(), (CharSequence)localObject2, this.HbZ.getTextSize());
-      this.HbZ.setText((CharSequence)localObject1);
-      break label1005;
-      label1975:
-      setMMTitle(R.l.ePZ);
-      break label1108;
-      label1985:
-      if (!Util.isNullOrNil(this.nickName))
-      {
-        this.Hca.setHint(l.b(getContext(), this.nickName, this.Hca.getTextSize()));
-        this.Hca.setOnFocusChangeListener(new SayHiWithSnsPermissionUI2.9(this));
-      }
-      switch (this.mXL)
-      {
-      case 9: 
-      case 12: 
-      default: 
-        i = 0;
-      }
-      while ((!this.Hcd) && (i == 0))
-      {
-        localObject1 = com.tencent.mm.bl.d.bqb().bwU(this.userName);
-        if (localObject1 == null) {
-          break;
-        }
-        localObject2 = com.tencent.mm.pluginsdk.ui.preference.b.c(this, (bn)localObject1);
-        if ((Util.isNullOrNil(((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).lpM)) || (((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).lpM.equals(getString(R.l.eFl)))) {
-          break;
-        }
-        localObject3 = getString(R.l.sendgreeting_content).substring(0, getString(R.l.sendgreeting_content).indexOf("%s"));
-        localObject1 = ((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).lpM;
-        if (((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).lpM.startsWith((String)localObject3)) {
-          localObject1 = ((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).lpM.substring(((String)localObject3).length());
-        }
-        this.Hcb.setVisibility(0);
-        this.Hcc.setText(l.b(this, Util.nullAsNil(getString(R.l.ezp, new Object[] { ((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).lpM })), this.Hcc.getTextSize()));
-        localObject2 = new com.tencent.mm.pluginsdk.ui.span.m(getString(R.l.write_contact_remark));
-        ((com.tencent.mm.pluginsdk.ui.span.m)localObject2).setSpan(new SayHiWithSnsPermissionUI2.a(this, (String)localObject1), 0, ((com.tencent.mm.pluginsdk.ui.span.m)localObject2).length(), 17);
-        this.Hcc.append(" ");
-        this.Hcc.append((CharSequence)localObject2);
-        this.Hcc.setMovementMethod(LinkMovementMethod.getInstance());
-        this.nei[3] = 3;
+        gCk();
+        com.tencent.mm.ui.tools.b.c.i(this.Nai).aEg(32).a(new com.tencent.mm.ui.tools.b.c.a()
+        {
+          public final void Tw(String paramAnonymousString) {}
+          
+          public final void Tx(String paramAnonymousString) {}
+          
+          public final void eY(String paramAnonymousString) {}
+        });
+        AppMethodBeat.o(179694);
+        return;
+        bool = false;
         break;
-        localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(this.userName);
-        if ((localObject1 == null) || (Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT())) || (((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT().equals(this.Hca.getText().toString())))
+        bool = false;
+        break label202;
+        this.Naz = ((TextView)findViewById(R.h.fCs));
+        this.Naz.setVisibility(0);
+        this.Nay = ((LinearLayout)findViewById(R.h.fCt));
+        this.Nax = ((ImageView)findViewById(R.h.fso));
+        if (this.Nax != null) {
+          this.Nax.setImageDrawable(bb.m(this, R.k.icons_outlined_arrow, com.tencent.mm.cd.a.w(getContext(), R.e.BW_70)));
+        }
+        this.Nay.setOnClickListener(new SayHiWithSnsPermissionUI2.3(this));
+        this.lDL = ((ScrollView)findViewById(R.h.scrollView));
+        this.JWm = findViewById(R.h.fMh);
+        this.JWm.setBackgroundDrawable(null);
+        this.JWm.setVisibility(0);
+        this.Nau = com.tencent.mm.plugin.label.d.fTa().iZN();
+        localObject1 = null;
+        if (this.Nav != null)
         {
+          localObject1 = null;
+          bh.bCz();
+          localObject2 = com.tencent.mm.model.c.bzB().aMi(this.userName);
+          if (localObject2 != null) {
+            localObject1 = ((cr)localObject2).field_contactLabels;
+          }
+          localObject3 = localObject1;
+          if (Util.isNullOrNil((String)localObject1))
+          {
+            bh.bCz();
+            localObject4 = com.tencent.mm.model.c.bzA().JE(this.userName);
+            localObject3 = ((com.tencent.mm.autogen.b.az)localObject4).field_encryptUsername;
+            localObject2 = localObject1;
+            if (!Util.isNullOrNil((String)localObject3))
+            {
+              bh.bCz();
+              localObject3 = com.tencent.mm.model.c.bzB().aMi((String)localObject3);
+              localObject2 = localObject1;
+              if (localObject3 != null) {
+                localObject2 = ((cr)localObject3).field_contactLabels;
+              }
+            }
+            localObject3 = localObject2;
+            if (Util.isNullOrNil((String)localObject2))
+            {
+              localObject1 = ((com.tencent.mm.autogen.b.az)localObject4).field_username;
+              bh.bCz();
+              localObject1 = com.tencent.mm.model.c.bzB().aMi((String)localObject1);
+              localObject3 = localObject2;
+              if (localObject1 != null) {
+                localObject3 = ((cr)localObject1).field_contactLabels;
+              }
+            }
+          }
+          localObject1 = (ArrayList)com.tencent.mm.plugin.label.a.a.fTb().aJI((String)localObject3);
+        }
+        if (localObject1 != null) {
+          this.Nav.addAll((Collection)localObject1);
+        }
+        if (this.Nau != null) {
+          this.NaF = this.Nau.size();
+        }
+        if (localObject1 != null)
+        {
+          this.NaG = ((ArrayList)localObject1).size();
+          this.NaH.addAll((Collection)localObject1);
+        }
+        jw((List)localObject1);
+        break label255;
+        bool = false;
+        break label308;
+        bool = false;
+        break label379;
+        if (i != 2) {
+          break label619;
+        }
+        this.Nal.setText(R.l.sns_outside_permiss_female);
+        break label619;
+        label1988:
+        if (i != 2) {
+          break label648;
+        }
+        this.Nam.setText(R.l.sns_black_permiss_female);
+        break label648;
+        label2006:
+        evt();
+        i = getIntent().getIntExtra("Contact_default_permission", -1);
+        if (i <= 0) {
+          break label695;
+        }
+        if ((i & 0x8) == 8)
+        {
+          this.MZN.setVisibility(0);
+          this.MZO.setVisibility(4);
+          break label695;
+        }
+        this.MZN.setVisibility(4);
+        this.MZO.setVisibility(0);
+        break label695;
+        localObject1 = com.tencent.mm.pluginsdk.ui.span.p.b(getContext(), (CharSequence)localObject2, this.Nah.getTextSize());
+        this.Nah.setText((CharSequence)localObject1);
+        break label1092;
+        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "updateSayHiContextVisiable, needVerify = %s, sayHiContent= %s, isNeedSendSayHiContext= %s.", new Object[] { Boolean.valueOf(this.Nap), Boolean.valueOf(this.Nat), Boolean.valueOf(this.akiI) });
+        if (this.akiI)
+        {
+          ((LinearLayout)this.Nah.getParent()).setVisibility(0);
+          break label1128;
+        }
+        ((LinearLayout)this.Nah.getParent()).setVisibility(8);
+        break label1128;
+        setMMTitle(R.l.gSD);
+        break label1224;
+        if (!Util.isNullOrNil(this.nickName))
+        {
+          this.Nai.setHint(com.tencent.mm.pluginsdk.ui.span.p.b(getContext(), this.nickName, this.Nai.getTextSize()));
+          this.Nai.setOnFocusChangeListener(new View.OnFocusChangeListener()
+          {
+            public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+            {
+              AppMethodBeat.i(179676);
+              if (paramAnonymousBoolean)
+              {
+                if ((!Util.isNullOrNil(SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).getHint())) && (Util.isNullOrNil(SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).getText())))
+                {
+                  SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).setText(SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).getHint());
+                  SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).setHint(null);
+                }
+                SayHiWithSnsPermissionUI2.b(SayHiWithSnsPermissionUI2.this);
+                SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).setSelection(SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).getText().length());
+              }
+              AppMethodBeat.o(179676);
+            }
+          });
+        }
+        switch (this.pUt)
+        {
+        case 9: 
+        case 12: 
+        default: 
           i = 0;
         }
-        else
+        while ((!this.Nap) && (i == 0))
         {
-          this.Hcb.setVisibility(0);
-          this.Hcc.setText(l.b(this, Util.nullAsNil(getString(R.l.ezo, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT() })), this.Hcc.getTextSize()));
-          localObject2 = new com.tencent.mm.pluginsdk.ui.span.m(getString(R.l.write_contact_remark));
-          ((com.tencent.mm.pluginsdk.ui.span.m)localObject2).setSpan(new SayHiWithSnsPermissionUI2.a(this, ((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT()), 0, ((com.tencent.mm.pluginsdk.ui.span.m)localObject2).length(), 17);
-          this.Hcc.append(" ");
-          this.Hcc.append((CharSequence)localObject2);
-          this.Hcc.setMovementMethod(LinkMovementMethod.getInstance());
-          this.nei[3] = 1;
-          i = 1;
-          continue;
-          if ((Util.isNullOrNil(this.GsA)) || (this.GsA.equals(this.Hca.getText().toString())))
+          localObject1 = com.tencent.mm.modelverify.d.bNH().byn(this.userName);
+          if (localObject1 == null) {
+            break;
+          }
+          localObject2 = com.tencent.mm.pluginsdk.ui.preference.b.c(this, (bp)localObject1);
+          if ((Util.isNullOrNil(((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).nUO)) || (((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).nUO.equals(getString(R.l.gIf)))) {
+            break;
+          }
+          localObject3 = getString(R.l.sendgreeting_content).substring(0, getString(R.l.sendgreeting_content).indexOf("%s"));
+          localObject1 = ((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).nUO;
+          if (((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).nUO.startsWith((String)localObject3)) {
+            localObject1 = ((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).nUO.substring(((String)localObject3).length());
+          }
+          this.Naj.setVisibility(0);
+          this.Nak.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(getString(R.l.gCe, new Object[] { ((com.tencent.mm.pluginsdk.ui.preference.b)localObject2).nUO })), this.Nak.getTextSize()));
+          localObject2 = new com.tencent.mm.pluginsdk.ui.span.q(getString(R.l.write_contact_remark));
+          ((com.tencent.mm.pluginsdk.ui.span.q)localObject2).setSpan(new a((String)localObject1), 0, ((com.tencent.mm.pluginsdk.ui.span.q)localObject2).length(), 17);
+          this.Nak.append(" ");
+          this.Nak.append((CharSequence)localObject2);
+          this.Nak.setMovementMethod(LinkMovementMethod.getInstance());
+          this.pZy[3] = 3;
+          break;
+          localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(this.userName);
+          if ((localObject1 == null) || (Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI())) || (((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI().equals(this.Nai.getText().toString())))
           {
             i = 0;
           }
           else
           {
-            this.Hcb.setVisibility(0);
-            this.Hcc.setText(l.b(this, Util.nullAsNil(getString(R.l.ezn, new Object[] { this.GsA })), this.Hcc.getTextSize()));
-            localObject1 = new com.tencent.mm.pluginsdk.ui.span.m(getString(R.l.write_contact_remark));
-            ((com.tencent.mm.pluginsdk.ui.span.m)localObject1).setSpan(new SayHiWithSnsPermissionUI2.a(this, this.GsA), 0, ((com.tencent.mm.pluginsdk.ui.span.m)localObject1).length(), 17);
-            this.Hcc.append(" ");
-            this.Hcc.append((CharSequence)localObject1);
-            this.Hcc.setMovementMethod(LinkMovementMethod.getInstance());
-            this.nei[3] = 2;
+            this.Naj.setVisibility(0);
+            this.Nak.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(getString(R.l.gCd, new Object[] { ((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI() })), this.Nak.getTextSize()));
+            localObject2 = new com.tencent.mm.pluginsdk.ui.span.q(getString(R.l.write_contact_remark));
+            ((com.tencent.mm.pluginsdk.ui.span.q)localObject2).setSpan(new a(((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI()), 0, ((com.tencent.mm.pluginsdk.ui.span.q)localObject2).length(), 17);
+            this.Nak.append(" ");
+            this.Nak.append((CharSequence)localObject2);
+            this.Nak.setMovementMethod(LinkMovementMethod.getInstance());
+            this.pZy[3] = 1;
             i = 1;
+            continue;
+            if ((Util.isNullOrNil(this.MoA)) || (this.MoA.equals(this.Nai.getText().toString())))
+            {
+              i = 0;
+            }
+            else
+            {
+              this.Naj.setVisibility(0);
+              this.Nak.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(getString(R.l.gCc, new Object[] { this.MoA })), this.Nak.getTextSize()));
+              localObject1 = new com.tencent.mm.pluginsdk.ui.span.q(getString(R.l.write_contact_remark));
+              ((com.tencent.mm.pluginsdk.ui.span.q)localObject1).setSpan(new a(this.MoA), 0, ((com.tencent.mm.pluginsdk.ui.span.q)localObject1).length(), 17);
+              this.Nak.append(" ");
+              this.Nak.append((CharSequence)localObject1);
+              this.Nak.setMovementMethod(LinkMovementMethod.getInstance());
+              this.pZy[3] = 2;
+              i = 1;
+            }
           }
         }
       }
-      label2667:
-      break label1273;
-      label2670:
-      break label759;
-      localObject1 = null;
-      break label1639;
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(267458);
+    AppMethodBeat.i(305924);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt2 != -1) || (paramIntent == null))
     {
-      AppMethodBeat.o(267458);
+      AppMethodBeat.o(305924);
       return;
     }
     ArrayList localArrayList;
@@ -1529,10 +1644,10 @@ public class SayHiWithSnsPermissionUI2
     label503:
     for (;;)
     {
-      Object localObject1 = com.tencent.mm.plugin.label.a.a.eLe().eLb();
-      if ((!t(localArrayList, this.Hcj)) && (!t((List)localObject1, this.Hci)))
+      Object localObject1 = com.tencent.mm.plugin.label.a.a.fTb().fSY();
+      if ((!H(localArrayList, this.Nav)) && (!H((List)localObject1, this.Nau)))
       {
-        AppMethodBeat.o(267458);
+        AppMethodBeat.o(305924);
         return;
       }
       Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "cpan[All onActivityResult], labelLists: %s", new Object[] { localArrayList });
@@ -1541,54 +1656,54 @@ public class SayHiWithSnsPermissionUI2
       }
       for (;;)
       {
-        if (this.Hci == null) {
-          this.Hci = new ArrayList();
+        if (this.Nau == null) {
+          this.Nau = new ArrayList();
         }
         Object localObject2 = ((List)localObject1).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           String str = (String)((Iterator)localObject2).next();
-          if ((!this.Hci.contains(str)) && (!this.Hck.contains(str))) {
-            this.Hck.add(str);
+          if ((!this.Nau.contains(str)) && (!this.Naw.contains(str))) {
+            this.Naw.add(str);
           }
         }
-        this.Hci = ((List)localObject1);
+        this.Nau = ((List)localObject1);
         localObject1 = localArrayList.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (String)((Iterator)localObject1).next();
-          if (this.Hci.contains(localObject2)) {
-            this.Hci.remove(localObject2);
+          if (this.Nau.contains(localObject2)) {
+            this.Nau.remove(localObject2);
           }
         }
         localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll(this.Hci);
-        this.Hci.clear();
-        this.Hci.addAll(localArrayList);
-        this.Hci.addAll((Collection)localObject1);
-        this.Hcj.clear();
-        this.Hcj.addAll(localArrayList);
+        ((ArrayList)localObject1).addAll(this.Nau);
+        this.Nau.clear();
+        this.Nau.addAll(localArrayList);
+        this.Nau.addAll((Collection)localObject1);
+        this.Nav.clear();
+        this.Nav.addAll(localArrayList);
         localObject1 = paramIntent.getStringArrayListExtra("contact_search_label_new_list");
         if (localObject1 != null) {
-          this.Hcx.addAll((Collection)localObject1);
+          this.NaI.addAll((Collection)localObject1);
         }
         localObject1 = paramIntent.getStringArrayListExtra("contact_search_label_add_list");
         if (localObject1 != null) {
-          this.EeR.addAll((Collection)localObject1);
+          this.JWF.addAll((Collection)localObject1);
         }
         localObject1 = paramIntent.getStringArrayListExtra("contact_select_label_add_list");
         if (localObject1 != null) {
-          this.EeT.addAll((Collection)localObject1);
+          this.JWH.addAll((Collection)localObject1);
         }
         paramIntent = paramIntent.getStringArrayListExtra("contact_select_label_new_list");
         if (paramIntent != null) {
-          this.EeS.addAll(paramIntent);
+          this.JWG.addAll(paramIntent);
         }
-        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "cpan[All onActivityResult], labelLists: %s, mCurrentSelectLabelStrList: %s,mAllCanShowLabelStrList:%s.", new Object[] { localArrayList, this.Hcj, this.Hci });
-        gw(this.Hcj);
-        AppMethodBeat.o(267458);
+        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "cpan[All onActivityResult], labelLists: %s, mCurrentSelectLabelStrList: %s,mAllCanShowLabelStrList:%s.", new Object[] { localArrayList, this.Nav, this.Nau });
+        jw(this.Nav);
+        AppMethodBeat.o(305924);
         return;
-        AppMethodBeat.o(267458);
+        AppMethodBeat.o(305924);
         return;
       }
     }
@@ -1601,24 +1716,24 @@ public class SayHiWithSnsPermissionUI2
     setActionbarColor(getContext().getResources().getColor(R.e.white));
     hideActionbarLine();
     initView();
-    bh.aGY().a(30, this);
-    bh.aGY().a(243, this);
-    bh.aGY().a(853, this);
+    bh.aZW().a(30, this);
+    bh.aZW().a(243, this);
+    bh.aZW().a(853, this);
     AppMethodBeat.o(179690);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(179693);
-    bh.aGY().b(30, this);
-    bh.aGY().b(243, this);
-    bh.aGY().b(853, this);
-    com.tencent.mm.plugin.report.service.h.IzE.a(14036, new Object[] { Integer.valueOf(this.nei[0]), Integer.valueOf(this.nei[1]), Integer.valueOf(this.nei[2]), Integer.valueOf(this.nei[3]), Integer.valueOf(this.nei[4]), Integer.valueOf(this.nei[5]), Integer.valueOf(this.nei[6]), Integer.valueOf(this.nei[7]), this.userName });
+    bh.aZW().b(30, this);
+    bh.aZW().b(243, this);
+    bh.aZW().b(853, this);
+    com.tencent.mm.plugin.report.service.h.OAn.b(14036, new Object[] { Integer.valueOf(this.pZy[0]), Integer.valueOf(this.pZy[1]), Integer.valueOf(this.pZy[2]), Integer.valueOf(this.pZy[3]), Integer.valueOf(this.pZy[4]), Integer.valueOf(this.pZy[5]), Integer.valueOf(this.pZy[6]), Integer.valueOf(this.pZy[7]), this.userName });
     super.onDestroy();
     removeAllOptionMenu();
-    com.tencent.mm.plugin.normsg.a.d.GxJ.aTj("ie_ver_usr");
-    if (this.jij != null) {
-      this.jij.close();
+    com.tencent.mm.plugin.normsg.a.d.MtP.aQj("ie_ver_usr");
+    if (this.lKz != null) {
+      this.lKz.close();
     }
     AppMethodBeat.o(179693);
   }
@@ -1628,9 +1743,9 @@ public class SayHiWithSnsPermissionUI2
     AppMethodBeat.i(179699);
     if (paramInt == 4)
     {
-      this.nei[0] = 1;
+      this.pZy[0] = 1;
       finish();
-      wc(false);
+      Az(false);
       AppMethodBeat.o(179699);
       return true;
     }
@@ -1639,44 +1754,93 @@ public class SayHiWithSnsPermissionUI2
     return bool;
   }
   
+  public void onKeyboardHeightChanged(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(305979);
+    Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "height:%s", new Object[] { Integer.valueOf(paramInt) });
+    if ((this.JWJ != null) && (this.JWJ.isRunning())) {
+      this.JWJ.cancel();
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.JWf != null)
+    {
+      localObject1 = localObject2;
+      if (this.JWf.isShowing())
+      {
+        localObject1 = localObject2;
+        if (this.JWf.rootView != null)
+        {
+          localObject1 = localObject2;
+          if ((this.JWf.rootView.getParent() instanceof View)) {
+            localObject1 = (View)this.JWf.rootView.getParent();
+          }
+        }
+      }
+    }
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(305979);
+      return;
+    }
+    if (paramInt > 0) {
+      if (((View)localObject1).getTranslationY() != 0.0F) {
+        ((View)localObject1).setTranslationY(0.0F);
+      }
+    }
+    for (this.JWJ = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { 0.0F, -paramInt });; this.JWJ = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { ((View)localObject1).getTranslationY(), 0.0F }))
+    {
+      this.JWJ.setDuration(200L);
+      this.JWJ.setInterpolator(new androidx.g.a.a.b());
+      this.JWJ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          AppMethodBeat.i(305444);
+          Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "onAnimationUpdate %s", new Object[] { Float.valueOf(((Float)paramAnonymousValueAnimator.getAnimatedValue("translationY")).floatValue()) });
+          AppMethodBeat.o(305444);
+        }
+      });
+      this.JWJ.start();
+      AppMethodBeat.o(305979);
+      return;
+    }
+  }
+  
   public void onPause()
   {
-    AppMethodBeat.i(267446);
-    bh.aGY().b(635, this);
-    if (this.jij != null) {
-      this.jij.close();
+    AppMethodBeat.i(305883);
+    bh.aZW().b(635, this);
+    if (this.lKz != null) {
+      this.lKz.close();
     }
     super.onPause();
-    AppMethodBeat.o(267446);
+    AppMethodBeat.o(305883);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(179691);
     super.onResume();
-    bh.aGY().a(635, this);
-    if (this.jij != null) {
-      this.jij.start();
+    bh.aZW().a(635, this);
+    if (this.lKz != null) {
+      this.lKz.start();
     }
     AppMethodBeat.o(179691);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(179697);
     long l1 = System.currentTimeMillis();
     Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     try
     {
-      if (this.iXX != null)
+      eGg();
+      if ((paramp instanceof v))
       {
-        this.iXX.dismiss();
-        this.iXX = null;
-      }
-      if ((paramq instanceof com.tencent.mm.pluginsdk.model.t))
-      {
-        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "onSceneEnd: getopCode: %s.", new Object[] { Integer.valueOf(((com.tencent.mm.pluginsdk.model.t)paramq).fDn) });
-        if (((paramInt1 != 0) || (paramInt2 != 0)) && (((com.tencent.mm.pluginsdk.model.t)paramq).fDn == 1)) {
+        Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "onSceneEnd: getopCode: %s.", new Object[] { Integer.valueOf(((v)paramp).hId) });
+        if (((paramInt1 != 0) || (paramInt2 != 0)) && (((v)paramp).hId == 1)) {
           Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "onSceneEnd:is MM_VERIFYUSER_ADDCONTACT return");
         }
       }
@@ -1684,52 +1848,52 @@ public class SayHiWithSnsPermissionUI2
       {
         Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "onSceneEnd: is no NetSceneVerifyUser.");
       }
-      fqM();
+      gCh();
       Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "sendrequest_second");
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label1276;
+        break label1272;
       }
-      com.tencent.mm.ui.base.h.cO(this, getString(R.l.sendrequest_send_success));
-      com.tencent.mm.plugin.account.friend.a.au.bb(this.userName, 1);
-      paramString = new se();
-      paramString.fRL.username = this.userName;
-      paramString.fRL.type = 1;
-      EventCenter.instance.publish(paramString);
-      if ((this.mXL == 17) && ((paramq instanceof com.tencent.mm.pluginsdk.model.t)))
+      com.tencent.mm.ui.base.k.cZ(this, getString(R.l.sendrequest_send_success));
+      com.tencent.mm.plugin.account.friend.model.ar.br(this.userName, 1);
+      paramString = new tu();
+      paramString.hXJ.username = this.userName;
+      paramString.hXJ.type = 1;
+      paramString.publish();
+      if ((this.pUt == 17) && ((paramp instanceof v)))
       {
         long l2 = getIntent().getLongExtra("key_msg_id", 0L);
         if (l2 > 0L)
         {
-          paramString = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().Oq(l2);
+          paramString = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).gaZ().sl(l2);
           if (paramString.field_msgId > 0L)
           {
-            paramString.hzS();
-            ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(l2, paramString);
+            paramString.jbX();
+            ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).gaZ().a(l2, paramString);
           }
         }
       }
-      if (!this.Hce) {
-        break label975;
+      if (!this.Naq) {
+        break label948;
       }
-      paramString = fqL();
+      paramString = gCg();
       if (Util.isNullOrNil(paramString)) {
-        break label1082;
+        break label1078;
       }
       Log.i("MicroMsg.SayHiWithSnsPermissionUI2", "set temp remark of %s", new Object[] { this.userName });
-      bh.beI();
-      localObject = com.tencent.mm.model.c.bbL().RG(this.userName);
-      ((as)localObject).Ir(paramString);
-      bh.beI();
-      co localco = com.tencent.mm.model.c.bbM().aPj(this.userName);
-      localco.field_encryptUsername = this.userName;
-      localco.field_conRemark = paramString;
-      bh.beI();
-      com.tencent.mm.model.c.bbM().replace(localco);
-      bh.beI();
-      com.tencent.mm.model.c.bbL().au((as)localObject);
-      this.nei[2] = 1;
+      bh.bCz();
+      localObject = com.tencent.mm.model.c.bzA().JE(this.userName);
+      ((au)localObject).AW(paramString);
+      bh.bCz();
+      cr localcr = com.tencent.mm.model.c.bzB().aMi(this.userName);
+      localcr.field_encryptUsername = this.userName;
+      localcr.field_conRemark = paramString;
+      bh.bCz();
+      com.tencent.mm.model.c.bzB().replace(localcr);
+      bh.bCz();
+      com.tencent.mm.model.c.bzA().aA((au)localObject);
+      this.pZy[2] = 1;
       if ((!Util.isNullOrNil(this.nickName)) && (!paramString.equals(this.nickName))) {
-        this.nei[5] = 1;
+        this.pZy[5] = 1;
       }
     }
     catch (Exception paramString)
@@ -1737,16 +1901,16 @@ public class SayHiWithSnsPermissionUI2
       for (;;)
       {
         Object localObject;
-        label660:
-        label739:
+        label642:
+        label718:
         boolean bool;
-        label810:
-        label975:
+        label789:
+        label948:
+        label1078:
         Log.e("MicroMsg.SayHiWithSnsPermissionUI2", "exception in onSceneEnd : " + paramString.getMessage());
-        label1050:
-        label1082:
+        label1046:
         return;
-        this.nei[2] = 2;
+        this.pZy[2] = 2;
       }
     }
     finally
@@ -1755,60 +1919,60 @@ public class SayHiWithSnsPermissionUI2
       AppMethodBeat.o(179697);
     }
     paramString = new LinkedList();
-    if ((paramq instanceof com.tencent.mm.pluginsdk.model.t))
+    if ((paramp instanceof v))
     {
-      paramInt1 = ((com.tencent.mm.pluginsdk.model.t)paramq).fDn;
-      paramString = ((com.tencent.mm.pluginsdk.model.t)paramq).QVu;
-      if ((paramInt1 == 3) || ((paramq instanceof com.tencent.mm.openim.b.q)))
+      paramInt1 = ((v)paramp).hId;
+      paramString = ((v)paramp).XRr;
+      if ((paramInt1 == 3) || ((paramp instanceof t)))
       {
-        localObject = com.tencent.mm.bl.d.bqb().bwU(this.userName);
-        bh.beI();
-        paramq = com.tencent.mm.model.c.bbL().RG(this.userName);
+        localObject = com.tencent.mm.modelverify.d.bNH().byn(this.userName);
+        bh.bCz();
+        paramp = com.tencent.mm.model.c.bzA().JE(this.userName);
         if ((paramString != null) && (paramString.contains(this.userName)))
         {
-          paramString = paramq;
-          if ((int)paramq.jxt != 0) {
-            break label1231;
+          paramString = paramp;
+          if ((int)paramp.maN != 0) {
+            break label1227;
           }
-          paramq = com.tencent.mm.pluginsdk.ui.preference.b.a((bn)localObject);
-          paramq.setUsername(this.userName);
-          bh.beI();
-          paramString = paramq;
-          if (com.tencent.mm.model.c.bbL().av(paramq)) {
-            break label1231;
+          paramp = com.tencent.mm.pluginsdk.ui.preference.b.a((bp)localObject);
+          paramp.setUsername(this.userName);
+          bh.bCz();
+          paramString = paramp;
+          if (com.tencent.mm.model.c.bzA().aB(paramp)) {
+            break label1227;
           }
           Log.e("MicroMsg.SayHiWithSnsPermissionUI2", "canAddContact fail, insert fail");
         }
-        bh.beI();
-        paramString = com.tencent.mm.model.c.bbL().RG(this.userName);
-        paramq = new xc();
-        paramq.fVZ.fWb = true;
-        paramq.fVZ.fWa = false;
-        paramq.fVZ.username = this.userName;
-        EventCenter.instance.publish(paramq);
-        if (!this.HbE.YbZ) {
-          break label1269;
+        bh.bCz();
+        paramString = com.tencent.mm.model.c.bzA().JE(this.userName);
+        paramp = new yv();
+        paramp.ibZ.icb = true;
+        paramp.ibZ.ica = false;
+        paramp.ibZ.username = this.userName;
+        paramp.publish();
+        if (!this.MZL.afTT) {
+          break label1265;
         }
-        ab.B(paramString);
-        paramString = new xc();
-        paramString.fVZ.fWb = false;
-        paramString.fVZ.fWa = true;
-        paramString.fVZ.username = this.userName;
-        bool = aUR(this.userName);
-        paramString.fVZ.fWc = bool;
+        com.tencent.mm.model.ab.C(paramString);
+        paramString = new yv();
+        paramString.ibZ.icb = false;
+        paramString.ibZ.ica = true;
+        paramString.ibZ.username = this.userName;
+        bool = aRZ(this.userName);
+        paramString.ibZ.icc = bool;
         localObject = this.userName;
-        if (this.HbF.YbZ) {
-          break label1500;
+        if (this.MZM.afTT) {
+          break label1594;
         }
         paramInt1 = 2;
-        paramq = new LinkedList();
-        paramq.add(localObject);
-        localObject = new qp();
-        ((qp)localObject).fPl.list = paramq;
-        ((qp)localObject).fPl.fCN = paramInt1;
-        ((qp)localObject).fPl.fPm = 5L;
-        EventCenter.instance.publish((IEvent)localObject);
-        EventCenter.instance.publish(paramString);
+        paramp = new LinkedList();
+        paramp.add(localObject);
+        localObject = new sd();
+        ((sd)localObject).hVg.list = paramp;
+        ((sd)localObject).hVg.hHC = paramInt1;
+        ((sd)localObject).hVg.hVh = 5L;
+        ((sd)localObject).publish();
+        paramString.publish();
         if (getIntent().getBooleanExtra("sayhi_with_jump_to_profile", false))
         {
           paramString = new Intent();
@@ -1816,17 +1980,20 @@ public class SayHiWithSnsPermissionUI2
           paramString.setAction("friend_message_accept_" + this.userName);
           paramString.putExtra("MMActivity.OverrideEnterAnimation", R.a.slide_right_in);
           paramString.putExtra("MMActivity.OverrideExitAnimation", R.a.slide_left_out);
-          com.tencent.mm.by.c.b(this, "subapp", ".ui.friend.FMessageTransferUI", paramString);
+          com.tencent.mm.br.c.b(this, "subapp", ".ui.friend.FMessageTransferUI", paramString);
         }
       }
       getIntent().putExtra("CONTACT_INFO_UI_SOURCE", 7);
-      com.tencent.mm.plugin.profile.d.a(getIntent(), 1, 1, this.userName);
+      com.tencent.mm.plugin.profile.d.b(getIntent(), 1, 1, this.userName);
       setResult(-1, getIntent());
+      if (this.akiI) {
+        com.tencent.mm.plugin.profile.c.p(this.userName, gCf(), 1, this.pUt);
+      }
       finish();
-      wc(true);
-      Ph(1L);
-      if ((this.HcB & 0x8) == 0) {
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCJ, Integer.valueOf(0));
+      Az(true);
+      hm(1L);
+      if ((this.NaM & 0x8) == 0) {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adfD, Integer.valueOf(0));
       }
     }
     for (;;)
@@ -1836,71 +2003,91 @@ public class SayHiWithSnsPermissionUI2
       return;
       if (!Util.isNullOrNil(this.nickName))
       {
-        this.nei[2] = 0;
+        this.pZy[2] = 0;
         break;
       }
-      if (!(paramq instanceof com.tencent.mm.openim.b.q)) {
-        break label1495;
+      if (!(paramp instanceof t)) {
+        break label1589;
       }
-      paramString.add(((com.tencent.mm.openim.b.q)paramq).myd);
-      break label1495;
-      label1231:
-      ab.H(paramString);
-      bh.getNotification().aqY();
-      com.tencent.mm.bl.d.bqc().hx(this.userName, 1);
-      com.tencent.mm.pluginsdk.ui.preference.b.cX(this.userName, this.mXL);
-      break label660;
-      label1269:
-      ab.C(paramString);
-      break label739;
-      label1276:
-      if ((paramInt1 != 4) || (paramInt2 != -24) || (Util.isNullOrNil(paramString))) {
-        break label1505;
+      paramString.add(((t)paramp).psp);
+      break label1589;
+      label1227:
+      com.tencent.mm.model.ab.I(paramString);
+      bh.getNotification().aKV();
+      com.tencent.mm.modelverify.d.bNI().fP(this.userName, 1);
+      com.tencent.mm.pluginsdk.ui.preference.b.dz(this.userName, this.pUt);
+      break label642;
+      label1265:
+      com.tencent.mm.model.ab.D(paramString);
+      break label718;
+      label1272:
+      if ((paramInt1 == 4) && (paramInt2 == -302))
+      {
+        paramInt1 = 0;
+        if (paramp.getType() == 30) {
+          paramInt1 = ((v)paramp).hId;
+        }
+        Log.w("MicroMsg.SayHiWithSnsPermissionUI2", "VerifyBaseHandler onSceneEnd, verify relation out of date, opCode = %d", new Object[] { Integer.valueOf(paramInt1) });
+        com.tencent.mm.ui.base.k.b(this, getString(R.l.contact_info_verify_outofdate_msg), getString(R.l.app_tip), getString(R.l.app_add), getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(305436);
+            SayHiWithSnsPermissionUI2.this.AA(true);
+            AppMethodBeat.o(305436);
+          }
+        }, null);
       }
-      Toast.makeText(this, paramString, 1).show();
+      else
+      {
+        if ((paramInt1 != 4) || (paramInt2 != -24) || (Util.isNullOrNil(paramString))) {
+          break label1599;
+        }
+        Toast.makeText(this, paramString, 1).show();
+      }
     }
     for (;;)
     {
-      label1306:
+      label1400:
       if (!Util.isNullOrNil(paramString))
       {
-        com.tencent.mm.ui.base.h.a(this, paramString, "", getString(R.l.app_ok), null);
-        break label1050;
+        com.tencent.mm.ui.base.k.a(this, paramString, "", getString(R.l.app_ok), null);
+        break label1046;
       }
-      label1495:
-      label1500:
-      label1505:
+      label1589:
+      label1594:
+      label1599:
       do
       {
         do
         {
-          if ((this.Hcd) && ((paramInt2 == -24) || (paramInt2 == -34)))
+          if ((this.Nap) && ((paramInt2 == -24) || (paramInt2 == -34)))
           {
             Toast.makeText(this, R.l.fmessage_request_too_offen, 0).show();
-            break label1050;
+            break label1046;
           }
-          if ((paramInt1 == 4) && (paramInt2 == -3400) && (this.HbI))
+          if ((paramInt1 == 4) && (paramInt2 == -3400) && (this.MZP))
           {
-            this.HbJ = true;
-            com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCJ, Integer.valueOf(1));
+            this.MZQ = true;
+            com.tencent.mm.kernel.h.baE().ban().set(at.a.adfD, Integer.valueOf(1));
             if (!Util.isNullOrNil(paramString)) {
-              this.HbQ.setText(paramString);
+              this.MZY.setText(paramString);
             }
-            dFf();
-            paramq = new f.a(this);
-            paramq.bBl(paramString).HL(true).bBq(getString(R.l.ePC)).ayp(R.l.ePD);
-            paramq.c(new SayHiWithSnsPermissionUI2.3(this)).show();
-            break label1050;
+            evt();
+            paramp = new g.a(this);
+            paramp.bDE(paramString).NF(true).bDJ(getString(R.l.gSe)).aEX(R.l.gSf);
+            paramp.c(new SayHiWithSnsPermissionUI2.5(this)).show();
+            break label1046;
           }
           Toast.makeText(this, R.l.sendrequest_send_fail, 0).show();
-          break label1050;
+          break label1046;
           paramInt1 = 0;
           break;
           paramInt1 = 1;
-          break label810;
+          break label789;
         } while (paramInt1 != 4);
         if (paramInt2 == -2) {
-          break label1306;
+          break label1400;
         }
       } while (paramInt2 != -101);
     }
@@ -1915,18 +2102,51 @@ public class SayHiWithSnsPermissionUI2
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(267447);
+    AppMethodBeat.i(305889);
     AppMethodBeat.at(this, paramBoolean);
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jij != null) {
-      this.jij.start();
+    if (this.lKz != null) {
+      this.lKz.start();
     }
-    AppMethodBeat.o(267447);
+    AppMethodBeat.o(305889);
+  }
+  
+  final class a
+    extends ClickableSpan
+  {
+    public String remark;
+    
+    public a(String paramString)
+    {
+      this.remark = paramString;
+    }
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(179687);
+      paramView = Util.nullAsNil(com.tencent.mm.ui.tools.b.c.bCI(this.remark));
+      if ((paramView != null) && (this.remark != null) && (paramView.length() < this.remark.length())) {
+        Toast.makeText(SayHiWithSnsPermissionUI2.this, SayHiWithSnsPermissionUI2.this.getString(R.l.remark_name_mast_count), 0).show();
+      }
+      SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).setText(com.tencent.mm.pluginsdk.ui.span.p.b(SayHiWithSnsPermissionUI2.this, paramView, SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).getTextSize()));
+      SayHiWithSnsPermissionUI2.a(SayHiWithSnsPermissionUI2.this).setSelection(paramView.length());
+      SayHiWithSnsPermissionUI2.v(SayHiWithSnsPermissionUI2.this).setVisibility(8);
+      SayHiWithSnsPermissionUI2.q(SayHiWithSnsPermissionUI2.this)[4] = 1;
+      AppMethodBeat.o(179687);
+    }
+    
+    public final void updateDrawState(TextPaint paramTextPaint)
+    {
+      AppMethodBeat.i(179688);
+      paramTextPaint.setColor(SayHiWithSnsPermissionUI2.this.getResources().getColor(R.e.blue_text_color));
+      paramTextPaint.setUnderlineText(false);
+      AppMethodBeat.o(179688);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI2
  * JD-Core Version:    0.7.0.1
  */

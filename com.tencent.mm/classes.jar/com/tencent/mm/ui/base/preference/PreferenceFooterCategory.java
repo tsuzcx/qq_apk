@@ -10,22 +10,22 @@ import com.tencent.mm.ah.a.h;
 public class PreferenceFooterCategory
   extends Preference
 {
-  public boolean WsU;
+  public boolean aeal;
   
   public PreferenceFooterCategory(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(192710);
-    this.WsU = false;
+    AppMethodBeat.i(251495);
+    this.aeal = false;
     setLayoutResource(a.h.mm_preference_info_footer);
-    AppMethodBeat.o(192710);
+    AppMethodBeat.o(251495);
   }
   
   public PreferenceFooterCategory(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142656);
-    this.WsU = false;
+    this.aeal = false;
     setLayoutResource(a.h.mm_preference_info_footer);
     AppMethodBeat.o(142656);
   }
@@ -34,7 +34,7 @@ public class PreferenceFooterCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142657);
-    this.WsU = false;
+    this.aeal = false;
     setLayoutResource(a.h.mm_preference_info_footer);
     AppMethodBeat.o(142657);
   }
@@ -57,7 +57,7 @@ public class PreferenceFooterCategory
     }
     paramView.setVisibility(0);
     paramView.setText(getTitle());
-    if (this.WsU) {
+    if (this.aeal) {
       paramView.setTextSize(0, 38.0F);
     }
     AppMethodBeat.o(142658);

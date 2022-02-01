@@ -1,93 +1,77 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.zp;
+import com.tencent.mm.autogen.a.zp.a;
+import com.tencent.mm.autogen.a.zp.b;
+import com.tencent.mm.compatible.util.r;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.vfs.u;
 import org.json.JSONObject;
 
 public class as
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(final b<g>.a paramb)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(78598);
-    Log.i("MicroMsg.GameJsApiPreviewVideo", "invoke");
-    if (Util.isNullOrNil(paramb.crh.cqn.optString("localId")))
+    AppMethodBeat.i(78591);
+    Log.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
+    paramString = c.ZL(paramString);
+    if (paramString == null)
     {
-      Log.i("MicroMsg.GameJsApiPreviewVideo", "data is invalid");
-      paramb.a("invalid_data", null);
-      AppMethodBeat.o(78598);
+      parama.j("fail_invalid_data", null);
+      AppMethodBeat.o(78591);
       return;
     }
-    String str = paramb.crh.cqn.optString("localId");
-    Log.i("MicroMsg.GameJsApiPreviewVideo", "localId:%s", new Object[] { str });
-    final MMActivity localMMActivity = (MMActivity)((g)paramb.crg).mContext;
-    localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
+    String str1 = paramString.optString("currentUrl");
+    String str2 = paramString.optString("preVerifyAppId");
+    zp localzp = new zp();
+    localzp.icM.context = paramContext;
+    localzp.icM.userName = paramString.optString("userName");
+    localzp.icM.appId = paramString.optString("appId");
+    localzp.icM.icO = paramString.optString("relativeURL");
+    localzp.icM.appVersion = paramString.optInt("appVersion", 0);
+    localzp.icM.scene = paramString.optInt("scene", 1018);
+    localzp.icM.hzx = paramString.optString("sceneNote");
+    if (Util.isNullOrNil(localzp.icM.hzx)) {
+      localzp.icM.hzx = r.cg(Util.nullAsNil(str1));
+    }
+    localzp.icM.icR = paramString.optString("downloadURL");
+    localzp.icM.icP = paramString.optInt("openType", 0);
+    localzp.icM.icS = paramString.optString("checkSumMd5");
+    localzp.icM.icU = false;
+    localzp.icM.icV.opW = paramString.optString("extJsonInfo");
+    localzp.icM.idb = str2;
+    if (Util.isNullOrNil(localzp.icM.idb)) {
+      localzp.icM.idb = paramString.optString("sourceAppId");
+    }
+    localzp.icM.idc = str1;
+    localzp.icM.idd = paramString.optString("privateExtraData");
+    localzp.publish();
+    if (localzp.icN.idi)
     {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(78597);
-        if (paramAnonymousInt1 == (as.this.hashCode() & 0xFFFF)) {
-          switch (paramAnonymousInt2)
-          {
-          default: 
-            paramb.a("fail", null);
-          }
-        }
-        for (;;)
-        {
-          localMMActivity.mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(78597);
-          return;
-          paramb.a("cancel", null);
-          continue;
-          paramb.a("", null);
-        }
-      }
-    });
-    Intent localIntent = new Intent();
-    if (Util.nullAsNil(str).trim().startsWith("weixin://bgmixid/"))
-    {
-      localIntent.putExtra("game_bg_mix_fake_local_id", Util.nullAsNil(str).trim());
-      com.tencent.mm.by.c.b(localMMActivity, "game", ".media.background.GameFakeVideoUI", localIntent, hashCode() & 0xFFFF);
-      AppMethodBeat.o(78598);
+      parama.j(null, null);
+      AppMethodBeat.o(78591);
       return;
     }
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = com.tencent.mm.plugin.webview.luggage.c.c.bkw(str);
-    if ((localWebViewJSSDKFileItem == null) || (TextUtils.isEmpty(localWebViewJSSDKFileItem.nVa)) || (!u.agG(localWebViewJSSDKFileItem.nVa)))
-    {
-      Log.e("MicroMsg.GameJsApiPreviewVideo", "the item is null or the File item not exist for localId: %s", new Object[] { str });
-      paramb.a("fail", null);
-      AppMethodBeat.o(78598);
-      return;
-    }
-    localIntent.putExtra("key_video_path", localWebViewJSSDKFileItem.nVa);
-    com.tencent.mm.by.c.b(localMMActivity, "card", ".ui.CardGiftVideoUI", localIntent, hashCode() & 0xFFFF);
-    AppMethodBeat.o(78598);
+    parama.j(Util.nullAsNil(localzp.icN.idj), null);
+    AppMethodBeat.o(78591);
   }
   
-  public final int cDj()
+  public final void b(b<g>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "previewVideo";
+    return "openWeApp";
   }
 }
 

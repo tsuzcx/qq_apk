@@ -12,15 +12,15 @@ public class FCMInstanceIDListenerService
   public final void onTokenRefresh()
   {
     AppMethodBeat.i(127565);
-    String str = FirebaseInstanceId.yw().getToken();
+    String str = FirebaseInstanceId.Yh().getToken();
     Log.i("MicroMsg.FCM.FCMInstanceIDListenerService", "Refreshed token: ".concat(String.valueOf(str)));
-    h.aHE();
-    if (com.tencent.mm.kernel.b.aGL())
+    h.baC();
+    if (com.tencent.mm.kernel.b.aZM())
     {
-      b localb = b.dmn();
+      b localb = b.dTd();
       if (localb != null)
       {
-        localb.aAE(str);
+        localb.auM(str);
         AppMethodBeat.o(127565);
         return;
       }
@@ -34,7 +34,7 @@ public class FCMInstanceIDListenerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.FCMInstanceIDListenerService
  * JD-Core Version:    0.7.0.1
  */

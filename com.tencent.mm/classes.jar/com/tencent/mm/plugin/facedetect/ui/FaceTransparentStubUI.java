@@ -1,15 +1,13 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ti;
-import com.tencent.mm.f.a.ti.b;
+import com.tencent.mm.autogen.a.ux;
+import com.tencent.mm.autogen.a.ux.b;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
@@ -41,24 +39,24 @@ public class FaceTransparentStubUI
     Object localObject = getIntent().getBundleExtra("KEY_EXTRAS");
     if (!((Bundle)localObject).containsKey("k_user_name"))
     {
-      h.aHE();
-      if (b.aGL()) {
-        ((Bundle)localObject).putString("k_user_name", z.bdc());
+      h.baC();
+      if (b.aZM()) {
+        ((Bundle)localObject).putString("k_user_name", z.bAP());
       }
     }
-    paramBundle = new ti();
-    paramBundle.fSO.context = this;
-    paramBundle.fSO.fSJ = i;
-    paramBundle.fSO.extras = ((Bundle)localObject);
-    EventCenter.instance.publish(paramBundle);
-    Log.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.fSP.fSG) });
-    if (!paramBundle.fSP.fSG)
+    paramBundle = new ux();
+    paramBundle.hYM.context = this;
+    paramBundle.hYM.hYH = i;
+    paramBundle.hYM.extras = ((Bundle)localObject);
+    paramBundle.publish();
+    Log.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.hYN.hYE) });
+    if (!paramBundle.hYN.hYE)
     {
-      if (paramBundle.fSP.extras == null) {
-        break label181;
+      if (paramBundle.hYN.extras == null) {
+        break label178;
       }
       localObject = new Intent();
-      ((Intent)localObject).putExtras(paramBundle.fSP.extras);
+      ((Intent)localObject).putExtras(paramBundle.hYN.extras);
       setResult(1, (Intent)localObject);
     }
     for (;;)
@@ -66,7 +64,7 @@ public class FaceTransparentStubUI
       finish();
       AppMethodBeat.o(104033);
       return;
-      label181:
+      label178:
       setResult(1);
     }
   }

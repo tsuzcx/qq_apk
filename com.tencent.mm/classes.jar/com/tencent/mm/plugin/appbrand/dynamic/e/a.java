@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.dynamic.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ac.b.d;
-import com.tencent.mm.plugin.appbrand.m.c;
-import com.tencent.mm.plugin.appbrand.m.u;
+import com.tencent.mm.plugin.appbrand.n.c;
+import com.tencent.mm.plugin.appbrand.n.u;
 
 public final class a
   extends c
@@ -16,10 +16,10 @@ public final class a
     AppMethodBeat.o(121382);
   }
   
-  public final boolean aGi()
+  public final boolean aZi()
   {
     AppMethodBeat.i(121385);
-    if (Q(u.class) != null)
+    if (Z(u.class) != null)
     {
       AppMethodBeat.o(121385);
       return true;
@@ -28,11 +28,16 @@ public final class a
     return false;
   }
   
+  public final boolean aZj()
+  {
+    return false;
+  }
+  
   public final void pause()
   {
     AppMethodBeat.i(121383);
-    if (aGi()) {
-      ((u)Q(u.class)).pause();
+    if (aZi()) {
+      ((u)Z(u.class)).pause();
     }
     AppMethodBeat.o(121383);
   }
@@ -40,15 +45,15 @@ public final class a
   public final void resume()
   {
     AppMethodBeat.i(121384);
-    if (aGi()) {
-      ((u)Q(u.class)).resume();
+    if (aZi()) {
+      ((u)Z(u.class)).resume();
     }
     AppMethodBeat.o(121384);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.e.a
  * JD-Core Version:    0.7.0.1
  */

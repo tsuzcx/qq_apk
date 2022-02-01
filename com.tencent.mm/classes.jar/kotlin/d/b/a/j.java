@@ -1,26 +1,21 @@
 package kotlin.d.b.a;
 
-import kotlin.g.b.ab;
-import kotlin.g.b.m;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.d.d;
+import kotlin.g.b.ai;
+import kotlin.g.b.o;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/coroutines/jvm/internal/SuspendLambda;", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;", "Lkotlin/jvm/internal/FunctionBase;", "", "Lkotlin/coroutines/jvm/internal/SuspendFunction;", "arity", "", "(I)V", "completion", "Lkotlin/coroutines/Continuation;", "(ILkotlin/coroutines/Continuation;)V", "getArity", "()I", "toString", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/coroutines/jvm/internal/RestrictedSuspendLambda;", "Lkotlin/coroutines/jvm/internal/RestrictedContinuationImpl;", "Lkotlin/jvm/internal/FunctionBase;", "", "Lkotlin/coroutines/jvm/internal/SuspendFunction;", "arity", "", "(I)V", "completion", "Lkotlin/coroutines/Continuation;", "(ILkotlin/coroutines/Continuation;)V", "getArity", "()I", "toString", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract class j
-  extends d
-  implements m<Object>
+  extends i
+  implements o<Object>
 {
-  private final int arity;
+  private final int arity = 2;
   
-  public j(int paramInt)
-  {
-    this(paramInt, null);
-  }
-  
-  public j(int paramInt, kotlin.d.d<Object> paramd)
+  public j(d<Object> paramd)
   {
     super(paramd);
-    this.arity = paramInt;
   }
   
   public int getArity()
@@ -32,8 +27,8 @@ public abstract class j
   {
     if (getCompletion() == null)
     {
-      String str = ab.a((m)this);
-      p.j(str, "Reflection.renderLambdaToString(this)");
+      String str = ai.a((o)this);
+      s.s(str, "Reflection.renderLambdaToString(this)");
       return str;
     }
     return super.toString();
@@ -41,7 +36,7 @@ public abstract class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.d.b.a.j
  * JD-Core Version:    0.7.0.1
  */

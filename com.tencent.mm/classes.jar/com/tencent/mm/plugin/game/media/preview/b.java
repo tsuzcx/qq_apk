@@ -13,20 +13,20 @@ public final class b
     super(paramContext);
   }
   
-  public final void AS(int paramInt) {}
+  public final void Bh(int paramInt) {}
   
   public final int getVideoTotalTime()
   {
     return 0;
   }
   
-  public final void iF(boolean paramBoolean) {}
+  public final void jJ(boolean paramBoolean) {}
   
   public final void setVideoTotalTime(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.preview.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,27 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.fl;
-import com.tencent.mm.protocal.protobuf.vd;
+import com.tencent.mm.autogen.b.gd;
+import com.tencent.mm.protocal.protobuf.wu;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class ak
-  extends fl
+  extends gd
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(112869);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[2];
-    localMAutoDBInfo.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "cardUserId";
-    localMAutoDBInfo.colsMap.put("cardUserId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" cardUserId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "cardUserId";
-    localMAutoDBInfo.columns[1] = "retryCount";
-    localMAutoDBInfo.colsMap.put("retryCount", "INTEGER");
-    localStringBuilder.append(" retryCount INTEGER");
-    localMAutoDBInfo.columns[2] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = gd.aJm();
     AppMethodBeat.o(112869);
   }
   
-  public static ak b(vd paramvd)
+  public static ak b(wu paramwu)
   {
     AppMethodBeat.i(112868);
     ak localak = new ak();
-    localak.field_cardUserId = paramvd.RVi;
+    localak.field_cardUserId = paramwu.YSF;
     AppMethodBeat.o(112868);
     return localak;
   }

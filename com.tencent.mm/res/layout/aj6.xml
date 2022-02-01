@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.view.HardTouchableLayout android:id="@id/bea" android:background="@color/FG_2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/bg4" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.google.android.material.appbar.AppBarLayout android:orientation="vertical" android:id="@id/sm" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="10.0dip" app:expanded="true">
-            <FrameLayout android:layout_gravity="start|center" android:id="@id/dnv" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b9" app:layout_scrollFlags="c6i|hci" />
-            <FrameLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mm.view.HardTouchableLayout android:id="@id/ifu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/cb">
-                    <com.google.android.material.tabs.TabLayout android:layout_gravity="center" android:id="@id/ift" android:layout_width="wrap_content" android:layout_height="@dimen/ci" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicator="@drawable/a3c" app:tabIndicatorColor="@color/a2x" app:tabIndicatorHeight="2.0dip" app:tabMode="d5n" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
-                </com.tencent.mm.view.HardTouchableLayout>
-                <View android:layout_gravity="bottom" android:id="@id/igc" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            </FrameLayout>
-        </com.google.android.material.appbar.AppBarLayout>
-        <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/j7c" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <include android:id="@id/khj" android:visibility="visible" layout="@layout/cds" />
-    <include layout="@layout/aiq" />
-</com.tencent.mm.view.HardTouchableLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:id="@id/il4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:text="{remain}" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="20.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/bv" android:src="@raw/finder_live_icons_outlined_arrow_down" app:iconColor="@color/Link" />
+</LinearLayout>

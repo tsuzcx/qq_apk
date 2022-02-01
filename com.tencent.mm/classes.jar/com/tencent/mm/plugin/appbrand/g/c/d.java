@@ -13,10 +13,10 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public final class d
 {
-  ServerSocket aFm;
+  ServerSocket cAY;
   String ip;
-  c.a ofs;
   int port = -1;
+  c.a riW;
   boolean running = false;
   
   public final void start()
@@ -37,9 +37,9 @@ public final class d
       {
         try
         {
-          this.ip = g.bMW();
-          this.aFm = new ServerSocket(0, 32, InetAddress.getByName(this.ip));
-          this.port = this.aFm.getLocalPort();
+          this.ip = g.cnl();
+          this.cAY = new ServerSocket(0, 32, InetAddress.getByName(this.ip));
+          this.port = this.cAY.getLocalPort();
           new Thread(new b()).start();
           AppMethodBeat.o(158976);
         }
@@ -65,9 +65,9 @@ public final class d
           return;
         }
         this.running = false;
-        if (this.aFm != null)
+        if (this.cAY != null)
         {
-          boolean bool = this.aFm.isClosed();
+          boolean bool = this.cAY.isClosed();
           if (!bool) {}
         }
       }
@@ -75,7 +75,7 @@ public final class d
       {
         try
         {
-          this.aFm.close();
+          this.cAY.close();
           AppMethodBeat.o(158977);
         }
         catch (IOException localIOException) {}
@@ -88,17 +88,17 @@ public final class d
   final class a
     implements Callable<Void>
   {
-    private Socket aFp;
+    private Socket cBb;
     
     a(Socket paramSocket)
     {
-      this.aFp = paramSocket;
+      this.cBb = paramSocket;
     }
     
     private void a(com.tencent.mm.plugin.appbrand.g.c.b.d paramd, BufferedWriter paramBufferedWriter)
     {
       AppMethodBeat.i(158972);
-      c.a locala = d.this.ofs;
+      c.a locala = d.this.riW;
       if ((locala == null) || (locala.b(paramd)))
       {
         paramBufferedWriter.write("HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n");
@@ -110,7 +110,7 @@ public final class d
     }
     
     /* Error */
-    private Void call()
+    private Void cni()
     {
       // Byte code:
       //   0: iconst_0
@@ -118,10 +118,10 @@ public final class d
       //   2: ldc 60
       //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   8: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   11: invokevirtual 66	java/net/Socket:getInputStream	()Ljava/io/InputStream;
       //   14: astore 5
-      //   16: invokestatic 72	com/tencent/mm/plugin/appbrand/g/c/j:bNa	()Lcom/tencent/mm/plugin/appbrand/g/c/j;
+      //   16: invokestatic 72	com/tencent/mm/plugin/appbrand/g/c/j:cnp	()Lcom/tencent/mm/plugin/appbrand/g/c/j;
       //   19: astore 7
       //   21: new 74	com/tencent/mm/plugin/appbrand/g/c/b/d
       //   24: dup
@@ -161,10 +161,10 @@ public final class d
       //   99: ifle +367 -> 466
       //   102: aload 6
       //   104: aload 4
-      //   106: invokestatic 107	com/tencent/mm/plugin/appbrand/g/c/j:afS	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
-      //   109: putfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:ogb	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
+      //   106: invokestatic 107	com/tencent/mm/plugin/appbrand/g/c/j:YO	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
+      //   109: putfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:rjF	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
       //   112: aload 6
-      //   114: getfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:ogb	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
+      //   114: getfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:rjF	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
       //   117: ldc 113
       //   119: invokevirtual 119	com/tencent/mm/plugin/appbrand/g/c/b/b:get	(Ljava/lang/String;)Ljava/lang/String;
       //   122: astore 9
@@ -198,28 +198,28 @@ public final class d
       //   179: ifle +12 -> 191
       //   182: aload 6
       //   184: aload_3
-      //   185: invokestatic 107	com/tencent/mm/plugin/appbrand/g/c/j:afS	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
-      //   188: putfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:ogb	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
+      //   185: invokestatic 107	com/tencent/mm/plugin/appbrand/g/c/j:YO	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
+      //   188: putfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:rjF	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
       //   191: aload 4
       //   193: invokevirtual 100	java/lang/String:length	()I
       //   196: ifle +15 -> 211
       //   199: aload 6
       //   201: aload 7
       //   203: aload 4
-      //   205: invokevirtual 145	com/tencent/mm/plugin/appbrand/g/c/j:afT	(Ljava/lang/String;)Ljava/util/HashMap;
-      //   208: putfield 149	com/tencent/mm/plugin/appbrand/g/c/b/d:ogc	Ljava/util/Map;
+      //   205: invokevirtual 145	com/tencent/mm/plugin/appbrand/g/c/j:YP	(Ljava/lang/String;)Ljava/util/HashMap;
+      //   208: putfield 149	com/tencent/mm/plugin/appbrand/g/c/b/d:rjG	Ljava/util/Map;
       //   211: new 46	java/io/BufferedWriter
       //   214: dup
       //   215: new 151	java/io/OutputStreamWriter
       //   218: dup
       //   219: aload_0
-      //   220: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   220: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   223: invokevirtual 155	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
       //   226: invokespecial 158	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
       //   229: invokespecial 161	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
       //   232: astore_3
       //   233: aload 6
-      //   235: getfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:ogb	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
+      //   235: getfield 111	com/tencent/mm/plugin/appbrand/g/c/b/d:rjF	Lcom/tencent/mm/plugin/appbrand/g/c/b/b;
       //   238: ldc 163
       //   240: invokevirtual 119	com/tencent/mm/plugin/appbrand/g/c/b/b:get	(Ljava/lang/String;)Ljava/lang/String;
       //   243: astore 4
@@ -235,13 +235,13 @@ public final class d
       //   290: aload 5
       //   292: invokevirtual 177	java/io/InputStream:close	()V
       //   295: aload_0
-      //   296: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   296: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   299: invokevirtual 178	java/net/Socket:close	()V
       //   302: aload_0
-      //   303: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   303: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   306: ifnull +10 -> 316
       //   309: aload_0
-      //   310: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   310: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   313: invokevirtual 178	java/net/Socket:close	()V
       //   316: ldc 60
       //   318: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -258,10 +258,10 @@ public final class d
       //   339: goto -278 -> 61
       //   342: astore_3
       //   343: aload_0
-      //   344: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   344: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   347: ifnull -31 -> 316
       //   350: aload_0
-      //   351: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   351: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   354: invokevirtual 178	java/net/Socket:close	()V
       //   357: goto -41 -> 316
       //   360: astore_3
@@ -282,7 +282,7 @@ public final class d
       //   391: goto +82 -> 473
       //   394: aload 6
       //   396: ldc 194
-      //   398: putfield 198	com/tencent/mm/plugin/appbrand/g/c/b/d:oga	Ljava/lang/String;
+      //   398: putfield 198	com/tencent/mm/plugin/appbrand/g/c/b/d:rjE	Ljava/lang/String;
       //   401: aload_0
       //   402: aload 6
       //   404: aload_3
@@ -290,10 +290,10 @@ public final class d
       //   408: goto -126 -> 282
       //   411: astore_3
       //   412: aload_0
-      //   413: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   413: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   416: ifnull +10 -> 426
       //   419: aload_0
-      //   420: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:aFp	Ljava/net/Socket;
+      //   420: getfield 23	com/tencent/mm/plugin/appbrand/g/c/d$a:cBb	Ljava/net/Socket;
       //   423: invokevirtual 178	java/net/Socket:close	()V
       //   426: ldc 60
       //   428: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -301,7 +301,7 @@ public final class d
       //   432: athrow
       //   433: aload 6
       //   435: ldc 202
-      //   437: putfield 198	com/tencent/mm/plugin/appbrand/g/c/b/d:oga	Ljava/lang/String;
+      //   437: putfield 198	com/tencent/mm/plugin/appbrand/g/c/b/d:rjE	Ljava/lang/String;
       //   440: aload_0
       //   441: aload 6
       //   443: aload_3
@@ -396,7 +396,7 @@ public final class d
       while (d.this.running) {
         try
         {
-          Socket localSocket = d.this.aFm.accept();
+          Socket localSocket = d.this.cAY.accept();
           localScheduledExecutorService.submit(new d.a(d.this, localSocket));
         }
         catch (IOException localIOException) {}
@@ -407,19 +407,19 @@ public final class d
   
   static final class c
   {
-    private static d ofA;
+    private static d rje;
     
     static
     {
       AppMethodBeat.i(158975);
-      ofA = new d((byte)0);
+      rje = new d((byte)0);
       AppMethodBeat.o(158975);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.d
  * JD-Core Version:    0.7.0.1
  */

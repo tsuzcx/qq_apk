@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/jnu" layout="@layout/pb" />
-    <View android:id="@id/akq" android:background="@drawable/rc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginRight="@dimen/r" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/jnu" android:layerType="software" />
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.MMWebView android:id="@id/lmj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

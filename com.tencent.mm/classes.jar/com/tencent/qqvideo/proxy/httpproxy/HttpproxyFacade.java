@@ -42,7 +42,7 @@ public class HttpproxyFacade
         }
       }
     }
-    catch (Throwable paramString1)
+    finally
     {
       print(6, TAG, "idKeyReport exception");
       AppMethodBeat.o(89680);
@@ -75,9 +75,9 @@ public class HttpproxyFacade
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 90
-    //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 56	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:instance	()Lcom/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade;
+    //   3: ldc 88
+    //   5: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 54	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:instance	()Lcom/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade;
     //   11: astore_1
     //   12: aload_1
     //   13: getfield 35	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:mUtils	Lcom/tencent/qqvideo/proxy/api/IUtils;
@@ -87,19 +87,19 @@ public class HttpproxyFacade
     //   23: iconst_4
     //   24: getstatic 27	com/tencent/qqvideo/proxy/httpproxy/HttpproxyFacade:TAG	Ljava/lang/String;
     //   27: aload_0
-    //   28: invokeinterface 92 4 0
-    //   33: ldc 90
-    //   35: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: invokeinterface 90 4 0
+    //   33: ldc 88
+    //   35: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: ldc 2
     //   40: monitorexit
     //   41: return
-    //   42: ldc 94
+    //   42: ldc 92
     //   44: aload_0
-    //   45: invokestatic 100	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   48: invokevirtual 104	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: invokestatic 98	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   48: invokevirtual 102	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   51: pop
-    //   52: ldc 90
-    //   54: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: ldc 88
+    //   54: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: goto -19 -> 38
     //   60: astore_0
     //   61: ldc 2
@@ -168,7 +168,7 @@ public class HttpproxyFacade
           AppMethodBeat.o(89679);
         }
       }
-      catch (Throwable paramString)
+      finally
       {
         print(6, TAG, "reportMTA exception");
         AppMethodBeat.o(89679);
@@ -209,7 +209,7 @@ public class HttpproxyFacade
         return;
       }
     }
-    catch (Throwable paramString)
+    finally
     {
       print(6, TAG, "kvReport exception");
       AppMethodBeat.o(89681);
@@ -276,7 +276,7 @@ public class HttpproxyFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.httpproxy.HttpproxyFacade
  * JD-Core Version:    0.7.0.1
  */

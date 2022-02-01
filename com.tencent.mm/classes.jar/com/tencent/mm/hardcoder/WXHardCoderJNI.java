@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,6 +25,7 @@ public class WXHardCoderJNI
   public static final int GETPARAMETERS_TYPE_BASE = 0;
   public static final int GETPARAMETERS_TYPE_CAMERA_VENDOR_TAG = 2;
   public static final int GETPARAMETERS_TYPE_CODECDESP = 3;
+  public static final int GETPARAMETERS_TYPE_MEDIA_CODEC_B_FRAME = 4;
   public static final int GETPARAMETERS_TYPE_QP_MEDIACODEC = 1;
   public static final boolean HC_ENABLE_FOR_TEST = false;
   public static final String KEY_HC_BEGIN_TIME_HOUR = "KEY_HC_BEGIN_TIME_HOUR";
@@ -82,7 +84,7 @@ public class WXHardCoderJNI
   private static volatile Class<?> sSystemPropertiesClazz;
   public static final int sTIMEOUTMARGIN = 0;
   private static c.d sceneReportCallback;
-  private static SystemEventCallback systemEventCallback;
+  private static WXHardCoderJNI.SystemEventCallback systemEventCallback;
   private static d.a wxHardCoderLog;
   
   static
@@ -111,87 +113,8 @@ public class WXHardCoderJNI
     sSystemPropertiesClazz = null;
     sGetStringPropsMethod = null;
     wxHardCoderLog = new WXHardCoderJNI.1();
-    sceneReportCallback = new c.d()
-    {
-      public final void sceneReport(int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(155949);
-        if (WXHardCoderJNI.needMapAPPScene)
-        {
-          AppMethodBeat.o(155949);
-          return;
-        }
-        Integer localInteger = (Integer)WXHardCoderJNI.SCENE_ID_MAP.get(Integer.valueOf(paramAnonymousInt));
-        if (localInteger == null)
-        {
-          AppMethodBeat.o(155949);
-          return;
-        }
-        WXHardCoderJNI.access$100(new j(localInteger.intValue()));
-        AppMethodBeat.o(155949);
-      }
-    };
-    funcRet = new c.b()
-    {
-      public final void onFuncRet(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, byte[] paramAnonymousArrayOfByte)
-      {
-        int i = 0;
-        AppMethodBeat.i(155950);
-        Log.i("MicroMsg.WXHardCoderJNI", "FuncRetCallback callbackType:" + paramAnonymousInt1 + ", requestId:" + paramAnonymousLong + ", retCode:" + paramAnonymousInt2 + ", funcId:" + paramAnonymousInt3 + ", dataType:" + paramAnonymousInt4);
-        if (paramAnonymousInt1 == 2) {
-          switch (paramAnonymousInt3)
-          {
-          }
-        }
-        do
-        {
-          do
-          {
-            AppMethodBeat.o(155950);
-            return;
-          } while (WXHardCoderJNI.systemEventCallback == null);
-          try
-          {
-            paramAnonymousInt1 = new JSONObject(new String(paramAnonymousArrayOfByte)).optInt("system_event_code", 0);
-            Log.i("MicroMsg.WXHardCoderJNI", "onData SYSTEM_EVENT_CODE: ".concat(String.valueOf(paramAnonymousInt1)));
-            WXHardCoderJNI.systemEventCallback.onEvent(paramAnonymousInt1);
-            AppMethodBeat.o(155950);
-            return;
-          }
-          catch (JSONException paramAnonymousArrayOfByte)
-          {
-            Log.i("MicroMsg.WXHardCoderJNI", "onData parse system event e:" + paramAnonymousArrayOfByte.getMessage());
-            AppMethodBeat.o(155950);
-            return;
-          }
-        } while (WXHardCoderJNI.getParametersCallback == null);
-        for (;;)
-        {
-          try
-          {
-            paramAnonymousArrayOfByte = new JSONObject(new String(paramAnonymousArrayOfByte));
-          }
-          catch (JSONException localJSONException1)
-          {
-            try
-            {
-              paramAnonymousInt1 = paramAnonymousArrayOfByte.getInt("getparameterstype");
-              Log.i("MicroMsg.WXHardCoderJNI", "onData GET_PARAMETERS: " + paramAnonymousArrayOfByte + ", type:" + paramAnonymousInt1);
-              WXHardCoderJNI.getParametersCallback.onGetParameters(paramAnonymousInt1, paramAnonymousArrayOfByte);
-            }
-            catch (JSONException localJSONException2)
-            {
-              break label279;
-            }
-            localJSONException1 = localJSONException1;
-            paramAnonymousArrayOfByte = null;
-          }
-          label279:
-          Log.i("MicroMsg.WXHardCoderJNI", "onData parse get parameters e:" + localJSONException1.getMessage());
-          paramAnonymousInt1 = i;
-        }
-      }
-    };
+    sceneReportCallback = new WXHardCoderJNI.3();
+    funcRet = new WXHardCoderJNI.4();
     AppMethodBeat.o(155976);
   }
   
@@ -199,7 +122,7 @@ public class WXHardCoderJNI
   {
     AppMethodBeat.i(155965);
     String str1 = Build.MANUFACTURER;
-    String str2 = Build.MODEL;
+    String str2 = q.aPo();
     String str3 = readServerAddr(false);
     Log.i("MicroMsg.WXHardCoderJNI", "checkHardCoderEnv manufacture[%s], model[%s], remote[%s]", new Object[] { str1, str2, str3 });
     if (!Util.isNullOrNil(str3))
@@ -301,16 +224,7 @@ public class WXHardCoderJNI
     d.a(wxHardCoderLog);
     HardCoderJNI.setSceneReportCallback(sceneReportCallback);
     Log.i("MicroMsg.WXHardCoderJNI", "initHardCoder hcDebug[%b] hcEnable[%b] checkEnv[%b] TICK_RATE[%d]", new Object[] { Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Boolean.valueOf(HardCoderJNI.isCheckEnv()), Integer.valueOf(HardCoderJNI.tickRate) });
-    int i = HardCoderJNI.initHardCoder(str, 0, MMApplicationContext.getPackageName() + ".hardcoder.client.sock", new HardCoderJNI.HCPerfManagerThread()
-    {
-      public final Thread newThread(Runnable paramAnonymousRunnable, String paramAnonymousString, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(155948);
-        paramAnonymousRunnable = com.tencent.e.c.d.b(paramAnonymousString, paramAnonymousRunnable, paramAnonymousInt);
-        AppMethodBeat.o(155948);
-        return paramAnonymousRunnable;
-      }
-    }, parama2);
+    int i = HardCoderJNI.initHardCoder(str, 0, MMApplicationContext.getPackageName() + ".hardcoder.client.sock", new WXHardCoderJNI.2(), parama2);
     AppMethodBeat.o(155964);
     return i;
   }
@@ -438,7 +352,7 @@ public class WXHardCoderJNI
           }
           AppMethodBeat.o(155962);
         }
-        catch (Throwable localThrowable)
+        finally
         {
           Object localObject1;
           Log.printErrStackTrace("MicroMsg.WXHardCoderJNI", localThrowable, "readServerAddr", new Object[0]);
@@ -489,7 +403,7 @@ public class WXHardCoderJNI
     }
   }
   
-  public static long registerSystemEventCallback(SystemEventCallback paramSystemEventCallback)
+  public static long registerSystemEventCallback(WXHardCoderJNI.SystemEventCallback paramSystemEventCallback)
   {
     AppMethodBeat.i(155974);
     if (!HardCoderJNI.isCheckEnv())
@@ -772,15 +686,10 @@ public class WXHardCoderJNI
     AppMethodBeat.o(155956);
     return paramLong;
   }
-  
-  public static abstract interface SystemEventCallback
-  {
-    public abstract void onEvent(int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.hardcoder.WXHardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

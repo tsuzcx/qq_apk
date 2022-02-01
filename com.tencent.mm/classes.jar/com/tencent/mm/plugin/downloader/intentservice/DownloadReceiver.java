@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.downloader.intentservice;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ba;
-import com.tencent.mm.plugin.notification.d;
+import com.tencent.mm.plugin.notification.f;
 
 public class DownloadReceiver
   extends ResultReceiver
 {
   private static final String TAG;
-  private e.d Jh;
+  private f.d bpk;
   
   static
   {
@@ -27,20 +27,20 @@ public class DownloadReceiver
     if (paramInt == 4657)
     {
       paramInt = paramBundle.getInt("progress");
-      if (d.GzE == null)
+      if (f.MvN == null)
       {
         AppMethodBeat.o(88886);
         return;
       }
       if (paramInt < 100)
       {
-        this.Jh.b(100, paramInt, false).l("Download in progress:".concat(String.valueOf(paramInt)));
-        d.GzE.c(4657, this.Jh.gr());
+        this.bpk.d(100, paramInt, false).m("Download in progress:".concat(String.valueOf(paramInt)));
+        f.MvN.c(4657, this.bpk.DA());
         AppMethodBeat.o(88886);
         return;
       }
-      this.Jh.b(0, 0, false).l("Download Complete");
-      d.GzE.c(4658, this.Jh.gr());
+      this.bpk.d(0, 0, false).m("Download Complete");
+      f.MvN.c(4658, this.bpk.DA());
     }
     AppMethodBeat.o(88886);
   }

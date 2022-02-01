@@ -5,29 +5,29 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/TouchableLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/TouchableLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class TouchableLayout
   extends FrameLayout
 {
-  public static final a YOD;
-  private static int nmj;
-  private static int nmk;
+  public static final TouchableLayout.a agKp;
+  private static int qjs;
+  private static int qjt;
   
   static
   {
     AppMethodBeat.i(164649);
-    YOD = new a((byte)0);
+    agKp = new TouchableLayout.a((byte)0);
     AppMethodBeat.o(164649);
   }
   
   public TouchableLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(207249);
-    AppMethodBeat.o(207249);
+    AppMethodBeat.i(234608);
+    AppMethodBeat.o(234608);
   }
   
   public TouchableLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -47,19 +47,16 @@ public class TouchableLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164646);
-    p.k(paramMotionEvent, "ev");
+    s.u(paramMotionEvent, "ev");
     if (paramMotionEvent.getAction() == 0)
     {
-      nmj = (int)paramMotionEvent.getRawX();
-      nmk = (int)paramMotionEvent.getRawY();
+      qjs = (int)paramMotionEvent.getRawX();
+      qjt = (int)paramMotionEvent.getRawY();
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(164646);
     return bool;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/TouchableLayout$Companion;", "", "()V", "downX", "", "getDownX", "()I", "setDownX", "(I)V", "downY", "getDownY", "setDownY", "libmmui_release"})
-  public static final class a {}
 }
 
 

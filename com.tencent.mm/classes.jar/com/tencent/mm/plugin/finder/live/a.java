@@ -1,138 +1,143 @@
 package com.tencent.mm.plugin.finder.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.findersdk.a.aj;
+import com.tencent.mm.protocal.protobuf.bkk;
 import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache;", "", "()V", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache$CacheKey;", "Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache$CacheValue;", "requestInterval", "", "getRequestInterval", "()I", "setRequestInterval", "(I)V", "getNoticeState", "", "username", "", "noticeId", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Boolean;", "save", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "update", "reserved", "CacheKey", "CacheValue", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderLiveAdNoticeCache;", "()V", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache$CacheKey;", "Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache$CacheValue;", "requestInterval", "", "getRequestInterval", "()I", "setRequestInterval", "(I)V", "assignRequestInterval", "", "_requestInterval", "getNoticeState", "", "username", "", "noticeId", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Boolean;", "save", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "update", "reserved", "CacheKey", "CacheValue", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
+  implements aj
 {
-  private static final ConcurrentHashMap<a.a, b> cache;
-  private static int xUB;
-  public static final a xUC;
+  public static final a BvB;
+  private static int BvC;
+  private static final ConcurrentHashMap<a.a, b> BvD;
   
   static
   {
-    AppMethodBeat.i(288888);
-    xUC = new a();
-    xUB = 60;
-    cache = new ConcurrentHashMap();
-    AppMethodBeat.o(288888);
+    AppMethodBeat.i(350719);
+    BvB = new a();
+    BvC = 60;
+    BvD = new ConcurrentHashMap();
+    AppMethodBeat.o(350719);
   }
   
-  public static void MT(int paramInt)
+  public final void Ow(int paramInt)
   {
-    xUB = paramInt;
+    BvC = paramInt;
   }
   
-  public static void a(String paramString1, String paramString2, bbh parambbh)
+  public final void a(String paramString1, String paramString2, bkk parambkk)
   {
-    AppMethodBeat.i(288885);
-    p.k(paramString1, "username");
-    p.k(paramString2, "noticeId");
-    p.k(parambbh, "noticeInfo");
-    cache.put(new a.a(paramString1, paramString2), new b(parambbh, cm.bfF()));
-    AppMethodBeat.o(288885);
+    AppMethodBeat.i(350727);
+    s.u(paramString1, "username");
+    s.u(paramString2, "noticeId");
+    s.u(parambkk, "noticeInfo");
+    BvD.put(new a.a(paramString1, paramString2), new b(parambkk, cn.getSyncServerTimeSecond()));
+    AppMethodBeat.o(350727);
   }
   
-  public static Boolean gY(String paramString1, String paramString2)
+  public final Boolean hJ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(288887);
-    p.k(paramString1, "username");
-    p.k(paramString2, "noticeId");
-    paramString1 = (b)cache.get(new a.a(paramString1, paramString2));
-    if ((paramString1 != null) && (cm.bfF() - paramString1.xUE < xUB))
+    AppMethodBeat.i(350737);
+    s.u(paramString1, "username");
+    s.u(paramString2, "noticeId");
+    paramString1 = (b)BvD.get(new a.a(paramString1, paramString2));
+    if ((paramString1 != null) && (cn.getSyncServerTimeSecond() - paramString1.BvF < BvC))
     {
-      if (paramString1.xUD.status == 0) {}
+      if (paramString1.BvE.status == 0) {}
       for (boolean bool = true;; bool = false)
       {
-        AppMethodBeat.o(288887);
+        AppMethodBeat.o(350737);
         return Boolean.valueOf(bool);
       }
     }
-    AppMethodBeat.o(288887);
+    AppMethodBeat.o(350737);
     return null;
   }
   
-  public static void r(String paramString1, String paramString2, boolean paramBoolean)
+  public final void u(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(288886);
-    p.k(paramString1, "username");
-    p.k(paramString2, "noticeId");
+    AppMethodBeat.i(350732);
+    s.u(paramString1, "username");
+    s.u(paramString2, "noticeId");
     paramString1 = new a.a(paramString1, paramString2);
-    paramString1 = (b)cache.get(paramString1);
+    paramString1 = (b)BvD.get(paramString1);
     if (paramString1 != null)
     {
-      paramString1 = paramString1.xUD;
-      if (paramString1 != null)
-      {
-        if (paramBoolean) {}
-        for (int i = 0;; i = 1)
-        {
-          paramString1.status = i;
-          AppMethodBeat.o(288886);
-          return;
-        }
+      paramString1 = paramString1.BvE;
+      if (!paramBoolean) {
+        break label66;
       }
     }
-    AppMethodBeat.o(288886);
+    label66:
+    for (int i = 0;; i = 1)
+    {
+      paramString1.status = i;
+      AppMethodBeat.o(350732);
+      return;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache$CacheValue;", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "saveTimeSec", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;I)V", "getNoticeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "getSaveTimeSec", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/FinderLiveAdNoticeCache$CacheValue;", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "saveTimeSec", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;I)V", "getNoticeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "getSaveTimeSec", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
   {
-    final bbh xUD;
-    final int xUE;
+    final bkk BvE;
+    final int BvF;
     
-    public b(bbh parambbh, int paramInt)
+    public b(bkk parambkk, int paramInt)
     {
-      AppMethodBeat.i(256856);
-      this.xUD = parambbh;
-      this.xUE = paramInt;
-      AppMethodBeat.o(256856);
+      AppMethodBeat.i(351222);
+      this.BvE = parambkk;
+      this.BvF = paramInt;
+      AppMethodBeat.o(351222);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(256864);
-      if (this != paramObject)
+      AppMethodBeat.i(351259);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.h(this.xUD, paramObject.xUD)) || (this.xUE != paramObject.xUE)) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(256864);
+        AppMethodBeat.o(351259);
         return true;
       }
-      AppMethodBeat.o(256864);
-      return false;
+      if (!(paramObject instanceof b))
+      {
+        AppMethodBeat.o(351259);
+        return false;
+      }
+      paramObject = (b)paramObject;
+      if (!s.p(this.BvE, paramObject.BvE))
+      {
+        AppMethodBeat.o(351259);
+        return false;
+      }
+      if (this.BvF != paramObject.BvF)
+      {
+        AppMethodBeat.o(351259);
+        return false;
+      }
+      AppMethodBeat.o(351259);
+      return true;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(256861);
-      bbh localbbh = this.xUD;
-      if (localbbh != null) {}
-      for (int i = localbbh.hashCode();; i = 0)
-      {
-        int j = this.xUE;
-        AppMethodBeat.o(256861);
-        return i * 31 + j;
-      }
+      AppMethodBeat.i(351251);
+      int i = this.BvE.hashCode();
+      int j = this.BvF;
+      AppMethodBeat.o(351251);
+      return i * 31 + j;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(256858);
-      String str = "CacheValue(noticeInfo=" + this.xUD + ", saveTimeSec=" + this.xUE + ")";
-      AppMethodBeat.o(256858);
+      AppMethodBeat.i(351239);
+      String str = "CacheValue(noticeInfo=" + this.BvE + ", saveTimeSec=" + this.BvF + ')';
+      AppMethodBeat.o(351239);
       return str;
     }
   }

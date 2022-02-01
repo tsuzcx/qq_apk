@@ -2,144 +2,93 @@ package com.tencent.mm.plugin.websearch.api;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.b;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.czx;
-import com.tencent.mm.protocal.protobuf.czy;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.protocal.protobuf.evt;
+import com.tencent.mm.protocal.protobuf.evu;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class am
 {
-  public static czy Pzo;
+  public static evu Wpw;
   
-  public static String bVR()
+  public static String cwe()
   {
-    AppMethodBeat.i(117731);
-    String str = "key_pb_most_search_biz_list" + z.bcZ();
-    AppMethodBeat.o(117731);
+    AppMethodBeat.i(117724);
+    String str = "key_pb_history_list" + z.bAM();
+    AppMethodBeat.o(117724);
     return str;
   }
   
-  public static void biS(String paramString)
+  public static evu iqd()
   {
-    AppMethodBeat.i(117732);
-    if (b.WF((String)h.aHG().aHp().b(274436, null)))
-    {
-      AppMethodBeat.o(117732);
-      return;
-    }
-    if (!ab.Qm(paramString))
-    {
-      AppMethodBeat.o(117732);
-      return;
-    }
-    if (Pzo == null) {
-      gQT();
-    }
-    long l1 = System.currentTimeMillis();
-    Object localObject1 = null;
-    int i = 0;
-    Object localObject2;
-    if (i < Pzo.rVy.size())
-    {
-      localObject2 = (czx)Pzo.rVy.get(i);
-      long l2 = (l1 - ((czx)localObject2).THv) / 86400000L;
-      ((czx)localObject2).THu *= Math.pow(0.98D, l2);
-      ((czx)localObject2).THv = (l2 * 86400000L + ((czx)localObject2).THv);
-      Log.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((czx)localObject2).THu), Long.valueOf(((czx)localObject2).THv), ((czx)localObject2).Username });
-      if (!((czx)localObject2).Username.equals(paramString)) {
-        break label479;
-      }
-      localObject1 = localObject2;
-    }
-    label479:
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (localObject1 == null)
-      {
-        localObject1 = new czx();
-        ((czx)localObject1).THu = 1.0D;
-        ((czx)localObject1).THv = l1;
-        ((czx)localObject1).Username = paramString;
-        Pzo.rVy.add(localObject1);
-        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
-      }
-      for (;;)
-      {
-        Collections.sort(Pzo.rVy, new Comparator() {});
-        i = Pzo.rVy.size() - 1;
-        while ((i < Pzo.rVy.size()) && (Pzo.rVy.size() > 8))
-        {
-          if (((czx)Pzo.rVy.get(i)).THu < 0.5D) {
-            Pzo.rVy.remove(i);
-          }
-          i += 1;
-        }
-        ((czx)localObject1).THu += 1.0D;
-        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((czx)localObject1).THu) });
-      }
-      paramString = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
-      try
-      {
-        localObject1 = bVR();
-        localObject2 = Base64.encodeToString(Pzo.toByteArray(), 0);
-        paramString.edit().putString((String)localObject1, (String)localObject2).commit();
-        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
-        AppMethodBeat.o(117732);
-        return;
-      }
-      catch (IOException paramString)
-      {
-        AppMethodBeat.o(117732);
-        return;
-      }
-    }
-  }
-  
-  public static czy gQT()
-  {
-    AppMethodBeat.i(117730);
+    AppMethodBeat.i(117723);
     Object localObject;
-    if (Pzo == null)
+    if (Wpw == null)
     {
-      localObject = bVR();
-      Pzo = new czy();
+      localObject = cwe();
+      Wpw = new evu();
+      localObject = MMApplicationContext.getContext().getSharedPreferences("fts_history_search_sp", 0).getString((String)localObject, "");
+      if (!Util.isNullOrNil((String)localObject)) {
+        localObject = Base64.decode(((String)localObject).getBytes(), 0);
+      }
     }
     try
     {
-      localObject = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
-      if (!Util.isNullOrNil((String)localObject))
-      {
-        localObject = Base64.decode(((String)localObject).getBytes(), 0);
-        Pzo.parseFrom((byte[])localObject);
-      }
+      Wpw.parseFrom((byte[])localObject);
       label67:
-      if (b.WF((String)h.aHG().aHp().b(274436, null))) {
-        Pzo.rVy.clear();
-      }
-      localObject = Pzo;
-      AppMethodBeat.o(117730);
+      localObject = Wpw;
+      AppMethodBeat.o(117723);
       return localObject;
     }
-    catch (Exception localException)
+    catch (IOException localIOException)
     {
       break label67;
     }
+  }
+  
+  public static String iqe()
+  {
+    AppMethodBeat.i(117725);
+    evu localevu = iqd();
+    int j = localevu.vgO.size();
+    Object localObject = new JSONObject();
+    try
+    {
+      JSONArray localJSONArray1 = new JSONArray();
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONArray localJSONArray2 = new JSONArray();
+      int i = 0;
+      while ((i < localevu.vgO.size()) && (i < j))
+      {
+        evt localevt = (evt)localevu.vgO.get(i);
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject2.put("word", localevt.YWK);
+        localJSONArray2.put(localJSONObject2);
+        i += 1;
+      }
+      localJSONObject1.put("items", localJSONArray2);
+      localJSONObject1.put("count", localJSONArray2.length());
+      localJSONObject1.put("type", 4);
+      localJSONArray1.put(localJSONObject1);
+      ((JSONObject)localObject).put("data", localJSONArray1);
+      ((JSONObject)localObject).put("ret", 0);
+    }
+    catch (JSONException localJSONException)
+    {
+      label177:
+      break label177;
+    }
+    localObject = ((JSONObject)localObject).toString();
+    AppMethodBeat.o(117725);
+    return localObject;
   }
 }
 

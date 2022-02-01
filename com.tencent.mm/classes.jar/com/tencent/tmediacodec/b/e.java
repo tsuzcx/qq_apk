@@ -9,37 +9,37 @@ import java.util.ArrayList;
 
 public final class e
 {
-  private boolean ZOj;
-  public ArrayList<byte[]> ZOk;
-  private String aMN;
-  public final String aMQ;
-  public int aMR;
-  public int aMV;
+  private boolean AnF;
+  public int Gj;
+  private boolean ahTk;
+  public ArrayList<byte[]> ahTl;
+  private String cGK;
+  public final String cGN;
+  public int cGO;
   public int channelCount;
   public int height;
   public int maxHeight;
   public int maxWidth;
   public int sampleRate;
-  private boolean wRb;
   public int width;
   
   private e(String paramString)
   {
-    AppMethodBeat.i(224267);
-    this.aMN = "";
-    this.ZOk = new ArrayList();
+    AppMethodBeat.i(210791);
+    this.cGK = "";
+    this.ahTl = new ArrayList();
     this.width = -1;
     this.height = -1;
     this.maxWidth = -1;
     this.maxHeight = -1;
-    this.aMR = -1;
-    this.aMQ = paramString;
-    AppMethodBeat.o(224267);
+    this.cGO = -1;
+    this.cGN = paramString;
+    AppMethodBeat.o(210791);
   }
   
-  private static String J(String paramString, byte[] paramArrayOfByte)
+  private static String M(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(224288);
+    AppMethodBeat.i(210809);
     paramString = new StringBuilder(paramString);
     paramString.append(", length:");
     paramString.append(paramArrayOfByte.length);
@@ -55,29 +55,16 @@ public final class e
     }
     paramString.append("]");
     paramString = paramString.toString();
-    AppMethodBeat.o(224288);
+    AppMethodBeat.o(210809);
     return paramString;
   }
   
-  private static int b(MediaFormat paramMediaFormat, String paramString)
+  public static void cl(ArrayList<byte[]> paramArrayList)
   {
-    AppMethodBeat.i(224290);
-    if (paramMediaFormat.containsKey(paramString))
-    {
-      int i = paramMediaFormat.getInteger(paramString);
-      AppMethodBeat.o(224290);
-      return i;
-    }
-    AppMethodBeat.o(224290);
-    return -1;
-  }
-  
-  public static void bL(ArrayList<byte[]> paramArrayList)
-  {
-    AppMethodBeat.i(224286);
+    AppMethodBeat.i(210804);
     if (paramArrayList == null)
     {
-      AppMethodBeat.o(224286);
+      AppMethodBeat.o(210804);
       return;
     }
     if (b.isLogEnable())
@@ -86,62 +73,75 @@ public final class e
       int i = 0;
       while (i < paramArrayList.size())
       {
-        localStringBuilder.append(J(d.ZPL[i], (byte[])paramArrayList.get(i)));
+        localStringBuilder.append(M(d.ahUM[i], (byte[])paramArrayList.get(i)));
         localStringBuilder.append("\n");
         i += 1;
       }
       new StringBuilder("csdData size:").append(paramArrayList.size()).append("    ").append(localStringBuilder.toString());
-      b.bDP("FormatWrapper");
+      b.O("FormatWrapper");
     }
-    AppMethodBeat.o(224286);
+    AppMethodBeat.o(210804);
+  }
+  
+  private static int d(MediaFormat paramMediaFormat, String paramString)
+  {
+    AppMethodBeat.i(210816);
+    if (paramMediaFormat.containsKey(paramString))
+    {
+      int i = paramMediaFormat.getInteger(paramString);
+      AppMethodBeat.o(210816);
+      return i;
+    }
+    AppMethodBeat.o(210816);
+    return -1;
   }
   
   public static e g(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(224280);
+    AppMethodBeat.i(210801);
     e locale = new e(paramMediaFormat.getString("mime"));
     try
     {
-      locale.sampleRate = b(paramMediaFormat, "sample-rate");
-      locale.aMR = b(paramMediaFormat, "max-input-size");
-      locale.ZOk = d.h(paramMediaFormat);
-      if (locale.dlR())
+      locale.sampleRate = d(paramMediaFormat, "sample-rate");
+      locale.cGO = d(paramMediaFormat, "max-input-size");
+      locale.ahTl = d.h(paramMediaFormat);
+      if (locale.dSH())
       {
-        locale.aMV = b(paramMediaFormat, "rotation-degrees");
-        locale.width = b(paramMediaFormat, "width");
-        locale.height = b(paramMediaFormat, "height");
+        locale.Gj = d(paramMediaFormat, "rotation-degrees");
+        locale.width = d(paramMediaFormat, "width");
+        locale.height = d(paramMediaFormat, "height");
         if (Build.VERSION.SDK_INT >= 19)
         {
-          locale.maxWidth = b(paramMediaFormat, "max-width");
-          locale.maxHeight = b(paramMediaFormat, "max-height");
+          locale.maxWidth = d(paramMediaFormat, "max-width");
+          locale.maxHeight = d(paramMediaFormat, "max-height");
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(224280);
+        AppMethodBeat.o(210801);
         return locale;
-        locale.channelCount = b(paramMediaFormat, "channel-count");
+        locale.channelCount = d(paramMediaFormat, "channel-count");
       }
     }
-    catch (Throwable paramMediaFormat)
+    finally
     {
       for (;;)
       {
-        b.bDU("FormatWrapper");
+        b.U("FormatWrapper");
       }
     }
   }
   
-  public final boolean dlR()
+  public final boolean dSH()
   {
-    AppMethodBeat.i(224272);
-    if (!this.ZOj)
+    AppMethodBeat.i(210823);
+    if (!this.ahTk)
     {
-      this.ZOj = true;
-      this.wRb = d.bJ(this.aMQ);
+      this.ahTk = true;
+      this.AnF = d.isVideo(this.cGN);
     }
-    boolean bool = this.wRb;
-    AppMethodBeat.o(224272);
+    boolean bool = this.AnF;
+    AppMethodBeat.o(210823);
     return bool;
   }
 }

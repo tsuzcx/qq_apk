@@ -1,89 +1,60 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class cyf
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public ahx TGF;
+  public String jump_url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43108);
+    AppMethodBeat.i(259267);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TGF == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DisturbSetting");
-        AppMethodBeat.o(43108);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.jump_url != null) {
+        paramVarArgs.g(1, this.jump_url);
       }
-      if (this.TGF != null)
-      {
-        paramVarArgs.oE(1, this.TGF.computeSize());
-        this.TGF.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(43108);
+      AppMethodBeat.o(259267);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.TGF == null) {
-        break label336;
+      if (this.jump_url == null) {
+        break label209;
       }
     }
-    label336:
-    for (paramInt = g.a.a.a.oD(1, this.TGF.computeSize()) + 0;; paramInt = 0)
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.jump_url) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(43108);
+      AppMethodBeat.o(259267);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.TGF == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: DisturbSetting");
-          AppMethodBeat.o(43108);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(43108);
+        AppMethodBeat.o(259267);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cyf localcyf = (cyf)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(43108);
+          AppMethodBeat.o(259267);
           return -1;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          ahx localahx = new ahx();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localahx.parseFrom((byte[])localObject);
-          }
-          localcyf.TGF = localahx;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(43108);
+        localcyf.jump_url = locala.ajGk.readString();
+        AppMethodBeat.o(259267);
         return 0;
       }
-      AppMethodBeat.o(43108);
+      AppMethodBeat.o(259267);
       return -1;
     }
   }

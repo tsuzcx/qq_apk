@@ -3,16 +3,15 @@ package com.tencent.mm.plugin.fav.ui;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.ah;
+import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.a.y;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.asb;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,58 +22,30 @@ public final class k
   static void G(g paramg)
   {
     AppMethodBeat.i(106788);
-    String str = z.bcZ();
-    aoi localaoi = new aoi();
-    localaoi.btx(str);
-    localaoi.bty(str);
-    localaoi.arz(paramg.field_sourceType);
-    localaoi.Ue(Util.nowMilliSecond());
-    paramg.field_favProto.a(localaoi);
-    paramg.field_fromUser = localaoi.fLi;
-    paramg.field_toUser = localaoi.toUser;
+    String str = z.bAM();
+    asb localasb = new asb();
+    localasb.bto(str);
+    localasb.btp(str);
+    localasb.axH(paramg.field_sourceType);
+    localasb.yu(Util.nowMilliSecond());
+    paramg.field_favProto.a(localasb);
+    paramg.field_fromUser = localasb.hQQ;
+    paramg.field_toUser = localasb.toUser;
     AppMethodBeat.o(106788);
   }
   
-  private static g Kr(long paramLong)
-  {
-    AppMethodBeat.i(106785);
-    g localg = new g();
-    localg.field_type = 18;
-    localg.field_sourceType = 6;
-    String str = z.bcZ();
-    aoi localaoi = new aoi();
-    localaoi.btx(str);
-    localaoi.bty(str);
-    localaoi.arz(localg.field_sourceType);
-    localaoi.Ue(Util.nowMilliSecond());
-    localg.field_favProto.a(localaoi);
-    localg.field_fromUser = localaoi.fLi;
-    localg.field_toUser = localaoi.toUser;
-    localg.field_favProto.ary(1);
-    localg.field_favProto.arx(127);
-    localg.field_edittime = Util.nowSecond();
-    localg.field_updateTime = Util.nowMilliSecond();
-    localg.field_favProto.Ud(localg.field_edittime);
-    localg.field_favProto.SAB.Ue(Util.nowMilliSecond());
-    localg.field_itemStatus = 9;
-    localg.field_localId = paramLong;
-    ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().z(localg);
-    AppMethodBeat.o(106785);
-    return localg;
-  }
-  
-  public static g a(LinkedList<anm> paramLinkedList, long paramLong)
+  public static g a(LinkedList<arf> paramLinkedList, long paramLong)
   {
     AppMethodBeat.i(106784);
     Object localObject1 = null;
     if (paramLong != -1L)
     {
-      localObject2 = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(paramLong);
+      localObject2 = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().mK(paramLong);
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = Kr(paramLong);
+        localObject1 = mP(paramLong);
       }
-      ((g)localObject1).field_favProto.syG.clear();
+      ((g)localObject1).field_favProto.vEn.clear();
     }
     Object localObject2 = localObject1;
     if (localObject1 == null)
@@ -83,19 +54,19 @@ public final class k
       ((g)localObject2).field_type = 18;
       ((g)localObject2).field_sourceType = 6;
       G((g)localObject2);
-      ((g)localObject2).field_favProto.ary(1);
-      ((g)localObject2).field_favProto.arx(127);
+      ((g)localObject2).field_favProto.axG(1);
+      ((g)localObject2).field_favProto.axF(127);
     }
     ((g)localObject2).field_edittime = Util.nowSecond();
     ((g)localObject2).field_updateTime = Util.nowMilliSecond();
-    ((g)localObject2).field_favProto.Ud(((g)localObject2).field_edittime);
-    ((g)localObject2).field_favProto.SAB.Ue(Util.nowMilliSecond());
-    ((g)localObject2).field_favProto.cg(paramLinkedList);
+    ((g)localObject2).field_favProto.yt(((g)localObject2).field_edittime);
+    ((g)localObject2).field_favProto.ZBt.yu(Util.nowMilliSecond());
+    ((g)localObject2).field_favProto.cs(paramLinkedList);
     AppMethodBeat.o(106784);
     return localObject2;
   }
   
-  public static boolean a(String paramString, LinkedList<anm> paramLinkedList, long paramLong)
+  public static boolean a(String paramString, LinkedList<arf> paramLinkedList, long paramLong)
   {
     AppMethodBeat.i(106783);
     if (paramString.length() == 0)
@@ -105,15 +76,15 @@ public final class k
       return false;
     }
     if (-1L == paramLong) {}
-    for (paramString = a(paramLinkedList, paramLong);; paramString = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(paramLong))
+    for (paramString = a(paramLinkedList, paramLong);; paramString = ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().mK(paramLong))
     {
-      b.C(paramString);
+      a.C(paramString);
       AppMethodBeat.o(106783);
       return true;
     }
   }
   
-  private static List<String> dN(List<String> paramList)
+  private static List<String> fI(List<String> paramList)
   {
     AppMethodBeat.i(106786);
     if ((paramList == null) || (paramList.size() == 0))
@@ -129,7 +100,7 @@ public final class k
       List<String> localList = null;
       try
       {
-        paramList = u.Tf(str);
+        paramList = com.tencent.mm.vfs.y.Lh(str);
         if (paramList == null) {
           Util.qualityClose(paramList);
         } else {
@@ -152,10 +123,10 @@ public final class k
     return localArrayList;
   }
   
-  public static boolean dO(List<String> paramList)
+  public static boolean fJ(List<String> paramList)
   {
     AppMethodBeat.i(106787);
-    paramList = dN(paramList);
+    paramList = fI(paramList);
     if ((paramList == null) || (paramList.size() == 0))
     {
       Log.e("MicroMsg.FavPostLogic", "postImgs path null");
@@ -170,23 +141,51 @@ public final class k
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      anm localanm = new anm();
-      localanm.bsL(str);
-      localanm.bsK(com.tencent.mm.plugin.fav.a.b.dN(localanm.toString(), 2));
-      BitmapUtil.createThumbNail(str, 150, 150, Bitmap.CompressFormat.JPEG, 90, com.tencent.mm.plugin.fav.a.b.a(localanm), true);
-      localanm.bsM(com.tencent.mm.plugin.fav.a.b.a(localanm));
-      localanm.arq(2);
-      localg.field_favProto.syG.add(localanm);
+      arf localarf = new arf();
+      localarf.bsC(str);
+      localarf.bsB(b.er(localarf.toString(), 2));
+      BitmapUtil.createThumbNail(str, 150, 150, Bitmap.CompressFormat.JPEG, 90, b.a(localarf), true);
+      localarf.bsD(b.a(localarf));
+      localarf.axy(2);
+      localg.field_favProto.vEn.add(localarf);
     }
-    b.C(localg);
-    com.tencent.mm.plugin.report.service.h.IzE.a(10648, new Object[] { Integer.valueOf(2), Integer.valueOf(paramList.size()) });
+    a.C(localg);
+    com.tencent.mm.plugin.report.service.h.OAn.b(10648, new Object[] { Integer.valueOf(2), Integer.valueOf(paramList.size()) });
     AppMethodBeat.o(106787);
     return true;
+  }
+  
+  private static g mP(long paramLong)
+  {
+    AppMethodBeat.i(106785);
+    g localg = new g();
+    localg.field_type = 18;
+    localg.field_sourceType = 6;
+    String str = z.bAM();
+    asb localasb = new asb();
+    localasb.bto(str);
+    localasb.btp(str);
+    localasb.axH(localg.field_sourceType);
+    localasb.yu(Util.nowMilliSecond());
+    localg.field_favProto.a(localasb);
+    localg.field_fromUser = localasb.hQQ;
+    localg.field_toUser = localasb.toUser;
+    localg.field_favProto.axG(1);
+    localg.field_favProto.axF(127);
+    localg.field_edittime = Util.nowSecond();
+    localg.field_updateTime = Util.nowMilliSecond();
+    localg.field_favProto.yt(localg.field_edittime);
+    localg.field_favProto.ZBt.yu(Util.nowMilliSecond());
+    localg.field_itemStatus = 9;
+    localg.field_localId = paramLong;
+    ((ah)com.tencent.mm.kernel.h.az(ah.class)).getFavItemInfoStorage().z(localg);
+    AppMethodBeat.o(106785);
+    return localg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.k
  * JD-Core Version:    0.7.0.1
  */

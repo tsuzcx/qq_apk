@@ -24,22 +24,22 @@ import java.lang.ref.WeakReference;
 public class s
   implements LeadingMarginSpan, g<Boolean>, h<Boolean>
 {
-  public boolean uvK;
-  public boolean uvL;
-  private WeakReference<Drawable> uvM;
-  private int uvj;
-  public boolean uvk;
-  public boolean uvp;
-  public boolean uvq;
+  private int xBG;
+  public boolean xBH;
+  public boolean xBN;
+  public boolean xBO;
+  public boolean xCj;
+  public boolean xCk;
+  private WeakReference<Drawable> xCl;
   
   public s(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(181963);
-    this.uvp = false;
-    this.uvq = false;
-    this.uvK = false;
-    this.uvL = false;
-    this.uvj = paramInt;
+    this.xBN = false;
+    this.xBO = false;
+    this.xCj = false;
+    this.xCk = false;
+    this.xBG = paramInt;
     boolean bool1 = bool2;
     if (paramBoolean2)
     {
@@ -52,18 +52,18 @@ public class s
         }
       }
     }
-    this.uvk = bool1;
-    this.uvL = paramBoolean1;
-    this.uvp = paramBoolean3;
-    this.uvq = paramBoolean4;
-    this.uvK = paramBoolean2;
+    this.xBH = bool1;
+    this.xCk = paramBoolean1;
+    this.xBN = paramBoolean3;
+    this.xBO = paramBoolean4;
+    this.xCj = paramBoolean2;
     AppMethodBeat.o(181963);
   }
   
-  private s cTf()
+  private s dxy()
   {
     AppMethodBeat.i(181965);
-    s locals = new s(this.uvL, this.uvj, this.uvK, this.uvp, this.uvq);
+    s locals = new s(this.xCk, this.xBG, this.xCj, this.xBN, this.xBO);
     AppMethodBeat.o(181965);
     return locals;
   }
@@ -71,7 +71,7 @@ public class s
   public final void a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent, s params)
   {
     AppMethodBeat.i(181966);
-    if (paramMotionEvent.getX() > this.uvj)
+    if (paramMotionEvent.getX() > this.xBG)
     {
       Log.e("MicroMsg.TodoSpan", "x > mGapWidth");
       AppMethodBeat.o(181966);
@@ -79,24 +79,24 @@ public class s
     }
     int i = paramSpannable.getSpanStart(params);
     int j = paramSpannable.getSpanEnd(params);
-    if (this.uvL)
+    if (this.xCk)
     {
       paramMotionEvent = "true";
       Log.i("MicroMsg.TodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
       paramSpannable.removeSpan(this);
-      if (this.uvL) {
+      if (this.xCk) {
         break label173;
       }
     }
     label173:
     for (boolean bool = true;; bool = false)
     {
-      this.uvL = bool;
-      paramSpannable.setSpan(cTf(), i, j, 33);
+      this.xCk = bool;
+      paramSpannable.setSpan(dxy(), i, j, 33);
       paramTextView = (WXRTEditText)paramTextView;
       if (paramTextView.getEditTextType() == 0)
       {
-        paramTextView = c.cRT().Jd(paramTextView.getRecyclerItemPosition());
+        paramTextView = c.dwm().JL(paramTextView.getRecyclerItemPosition());
         if ((paramTextView != null) && (paramTextView.getType() == 1)) {
           ((j)paramTextView).content = b.a(paramSpannable);
         }
@@ -112,23 +112,23 @@ public class s
   {
     AppMethodBeat.i(181964);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.uvk) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.xBH) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
-      paramLayout = this.uvM;
+      paramLayout = this.xCl;
       paramCharSequence = null;
       if (paramLayout != null) {
         paramCharSequence = (Drawable)paramLayout.get();
       }
       paramLayout = paramCharSequence;
       if (paramCharSequence == null) {
-        if (!this.uvL) {
+        if (!this.xCk) {
           break label111;
         }
       }
       label111:
-      for (paramCharSequence = androidx.core.content.a.m(MMApplicationContext.getContext(), d.d.upy);; paramCharSequence = androidx.core.content.a.m(MMApplicationContext.getContext(), d.d.upz))
+      for (paramCharSequence = androidx.core.content.a.m(MMApplicationContext.getContext(), d.d.xvV);; paramCharSequence = androidx.core.content.a.m(MMApplicationContext.getContext(), d.d.xvW))
       {
-        this.uvM = new WeakReference(paramCharSequence);
+        this.xCl = new WeakReference(paramCharSequence);
         paramLayout = paramCharSequence;
         if (paramLayout != null) {
           break;
@@ -149,15 +149,15 @@ public class s
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.uvk) {
+    if (this.xBH) {
       return 0;
     }
-    return this.uvj;
+    return this.xBG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.s
  * JD-Core Version:    0.7.0.1
  */

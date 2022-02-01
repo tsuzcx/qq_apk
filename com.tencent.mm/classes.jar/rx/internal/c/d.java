@@ -9,47 +9,47 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class d
   implements j
 {
-  private static final ScheduledExecutorService abPA;
-  public static final d abPB;
-  private static int abPD;
-  private static final ScheduledExecutorService[] abPz;
-  private final AtomicReference<ScheduledExecutorService[]> abPC;
+  private static final ScheduledExecutorService[] akcr;
+  private static final ScheduledExecutorService akcs;
+  public static final d akct;
+  private static int akcv;
+  private final AtomicReference<ScheduledExecutorService[]> akcu;
   
   static
   {
     AppMethodBeat.i(90373);
-    abPz = new ScheduledExecutorService[0];
+    akcr = new ScheduledExecutorService[0];
     ScheduledExecutorService localScheduledExecutorService = Executors.newScheduledThreadPool(0);
-    abPA = localScheduledExecutorService;
+    akcs = localScheduledExecutorService;
     localScheduledExecutorService.shutdown();
-    abPB = new d();
+    akct = new d();
     AppMethodBeat.o(90373);
   }
   
   private d()
   {
     AppMethodBeat.i(90369);
-    this.abPC = new AtomicReference(abPz);
+    this.akcu = new AtomicReference(akcr);
     start();
     AppMethodBeat.o(90369);
   }
   
-  public static ScheduledExecutorService iVU()
+  public static ScheduledExecutorService kR()
   {
     AppMethodBeat.i(90372);
-    Object localObject = (ScheduledExecutorService[])abPB.abPC.get();
-    if (localObject == abPz)
+    Object localObject = (ScheduledExecutorService[])akct.akcu.get();
+    if (localObject == akcr)
     {
-      localObject = abPA;
+      localObject = akcs;
       AppMethodBeat.o(90372);
       return localObject;
     }
-    int j = abPD + 1;
+    int j = akcv + 1;
     int i = j;
     if (j >= localObject.length) {
       i = 0;
     }
-    abPD = i;
+    akcv = i;
     localObject = localObject[i];
     AppMethodBeat.o(90372);
     return localObject;
@@ -61,13 +61,13 @@ public final class d
     ScheduledExecutorService[] arrayOfScheduledExecutorService;
     do
     {
-      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.abPC.get();
-      if (arrayOfScheduledExecutorService == abPz)
+      arrayOfScheduledExecutorService = (ScheduledExecutorService[])this.akcu.get();
+      if (arrayOfScheduledExecutorService == akcr)
       {
         AppMethodBeat.o(90371);
         return;
       }
-    } while (!this.abPC.compareAndSet(arrayOfScheduledExecutorService, abPz));
+    } while (!this.akcu.compareAndSet(arrayOfScheduledExecutorService, akcr));
     int j = arrayOfScheduledExecutorService.length;
     int i = 0;
     while (i < j)
@@ -99,10 +99,10 @@ public final class d
       j = 0;
       while (j < i)
       {
-        arrayOfScheduledExecutorService[j] = e.iVV();
+        arrayOfScheduledExecutorService[j] = e.kKs();
         j += 1;
       }
-      if (this.abPC.compareAndSet(abPz, arrayOfScheduledExecutorService))
+      if (this.akcu.compareAndSet(akcr, arrayOfScheduledExecutorService))
       {
         j = arrayOfScheduledExecutorService.length;
         i = k;
@@ -131,7 +131,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.internal.c.d
  * JD-Core Version:    0.7.0.1
  */

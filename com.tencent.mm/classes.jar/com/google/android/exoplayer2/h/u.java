@@ -8,50 +8,50 @@ import java.io.InputStream;
 public final class u<T>
   implements t.c
 {
-  private final g aRo;
-  public final j bgL;
-  private final a<? extends T> bpu;
-  public volatile long bpv;
+  private final g cLk;
+  public final j daF;
+  private final a<? extends T> diX;
+  public volatile long diY;
   private volatile boolean isCanceled;
   public volatile T result;
   public final int type;
   
   public u(g paramg, Uri paramUri, a<? extends T> parama)
   {
-    AppMethodBeat.i(199988);
-    this.aRo = paramg;
-    this.bgL = new j(paramUri, 1);
+    AppMethodBeat.i(210318);
+    this.cLk = paramg;
+    this.daF = new j(paramUri, 1);
     this.type = 4;
-    this.bpu = parama;
-    AppMethodBeat.o(199988);
+    this.diX = parama;
+    AppMethodBeat.o(210318);
   }
   
-  public final void tA()
-  {
-    AppMethodBeat.i(93101);
-    i locali = new i(this.aRo, this.bgL);
-    try
-    {
-      locali.uI();
-      this.result = this.bpu.b(this.aRo.getUri(), locali);
-      return;
-    }
-    finally
-    {
-      this.bpv = locali.boq;
-      x.closeQuietly(locali);
-      AppMethodBeat.o(93101);
-    }
-  }
-  
-  public final void ty()
+  public final void Tb()
   {
     this.isCanceled = true;
   }
   
-  public final boolean tz()
+  public final boolean Tc()
   {
     return this.isCanceled;
+  }
+  
+  public final void Td()
+  {
+    AppMethodBeat.i(93101);
+    i locali = new i(this.cLk, this.daF);
+    try
+    {
+      locali.checkOpened();
+      this.result = this.diX.b(this.cLk.getUri(), locali);
+      return;
+    }
+    finally
+    {
+      this.diY = locali.totalBytesRead;
+      x.closeQuietly(locali);
+      AppMethodBeat.o(93101);
+    }
   }
   
   public static abstract interface a<T>
@@ -61,7 +61,7 @@ public final class u<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.u
  * JD-Core Version:    0.7.0.1
  */

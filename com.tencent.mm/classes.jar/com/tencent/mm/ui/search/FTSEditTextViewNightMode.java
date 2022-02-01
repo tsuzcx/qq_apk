@@ -22,7 +22,7 @@ public class FTSEditTextViewNightMode
     return a.h.fts_edittext_view_night_mode;
   }
   
-  protected final boolean hXM()
+  protected final boolean jCt()
   {
     return true;
   }

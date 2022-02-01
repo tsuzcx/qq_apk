@@ -1,38 +1,14 @@
 package com.tencent.mm.plugin.teenmode.a;
 
-import android.content.Context;
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface b
-  extends a
 {
-  public abstract boolean ZM();
+  public abstract boolean aD(long paramLong1, long paramLong2);
   
-  public abstract void a(c paramc);
-  
-  public abstract void b(c paramc);
-  
-  public abstract int dYS();
-  
-  public abstract void gkq();
-  
-  public abstract int gkr();
-  
-  public abstract int gks();
-  
-  public abstract void gkt();
-  
-  public abstract boolean gku();
-  
-  public abstract void ir(Context paramContext);
-  
-  public abstract void rE(int paramInt);
-  
-  public abstract void setScene(int paramInt);
+  public abstract boolean aE(long paramLong1, long paramLong2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.a.b
  * JD-Core Version:    0.7.0.1
  */

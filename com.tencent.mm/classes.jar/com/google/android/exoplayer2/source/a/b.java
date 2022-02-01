@@ -10,7 +10,7 @@ public final class b
     boolean bool1 = bool2;
     if ((paramException instanceof s.e))
     {
-      int i = ((s.e)paramException).bpg;
+      int i = ((s.e)paramException).responseCode;
       if (i != 404)
       {
         bool1 = bool2;
@@ -26,7 +26,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a.b
  * JD-Core Version:    0.7.0.1
  */

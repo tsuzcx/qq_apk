@@ -1,5 +1,7 @@
 package com.tenpay.ndk;
 
+import android.text.TextUtils;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
 
@@ -19,13 +21,32 @@ public class Encrypt
   
   private native boolean encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  private native boolean encryptPasswd(byte paramByte, byte[] paramArrayOfByte);
-  
-  private native boolean encryptPasswdWithRSA2048(byte paramByte, byte[] paramArrayOfByte, int paramInt);
+  private native boolean encryptPasswdWithRSA(byte paramByte, byte[] paramArrayOfByte, int paramInt);
   
   private native boolean encryptVerifyCode(byte[] paramArrayOfByte);
   
+  private native byte[] encryptWithRSA(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
+  
   private native byte[] getRandom();
+  
+  private static byte[] hexToBytes(String paramString)
+  {
+    AppMethodBeat.i(208507);
+    if ((TextUtils.isEmpty(paramString)) || (paramString.length() % 2 != 0))
+    {
+      AppMethodBeat.o(208507);
+      return null;
+    }
+    byte[] arrayOfByte = new byte[paramString.length() / 2];
+    int i = 0;
+    while (i < paramString.length())
+    {
+      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
+      i += 2;
+    }
+    AppMethodBeat.o(208507);
+    return arrayOfByte;
+  }
   
   public String desedeDecode(String paramString1, String paramString2)
   {
@@ -184,7 +205,7 @@ public class Encrypt
       try
       {
         this.raw_passwd = paramString.getBytes("UTF-8");
-        encryptPasswd((byte)2, this.raw_passwd);
+        encryptPasswdWithRSA((byte)2, this.raw_passwd, 0);
         if (this.enc_passwd == null)
         {
           AppMethodBeat.o(73323);
@@ -201,10 +222,7 @@ public class Encrypt
     {
       try
       {
-        int i = this.enc_passwd.length / 2;
-        paramString = new byte[i];
-        System.arraycopy(this.enc_passwd, i, paramString, 0, i);
-        paramString = new String(paramString, "UTF-8");
+        paramString = new String(this.enc_passwd, "UTF-8");
         AppMethodBeat.o(73323);
         return paramString;
       }
@@ -233,7 +251,7 @@ public class Encrypt
           try
           {
             this.raw_passwd = paramString.getBytes("UTF-8");
-            if (!encryptPasswdWithRSA2048((byte)2, this.raw_passwd, 1))
+            if (!encryptPasswdWithRSA((byte)2, this.raw_passwd, 1))
             {
               AppMethodBeat.o(73322);
               return null;
@@ -263,6 +281,48 @@ public class Encrypt
       AppMethodBeat.o(73322);
     }
     return null;
+  }
+  
+  public String encryptWithRSA1024(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(208530);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      AppMethodBeat.o(208530);
+      return null;
+    }
+    paramString2 = hexToBytes(paramString2);
+    paramString3 = hexToBytes(paramString3);
+    paramString1 = encryptWithRSA(paramString1.getBytes(), paramString2, paramString3, 0);
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(208530);
+      return null;
+    }
+    paramString1 = Base64.encodeToString(paramString1, 0);
+    AppMethodBeat.o(208530);
+    return paramString1;
+  }
+  
+  public String encryptWithRSA2048(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(208528);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      AppMethodBeat.o(208528);
+      return null;
+    }
+    paramString2 = hexToBytes(paramString2);
+    paramString3 = hexToBytes(paramString3);
+    paramString1 = encryptWithRSA(paramString1.getBytes(), paramString2, paramString3, 1);
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(208528);
+      return null;
+    }
+    paramString1 = Base64.encodeToString(paramString1, 0);
+    AppMethodBeat.o(208528);
+    return paramString1;
   }
   
   public String getPasswdTimeStamp()
@@ -296,13 +356,13 @@ public class Encrypt
     this.server_time_stamp = paramString;
   }
   
-  public native byte[] sm4BCDDecryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
+  public native byte[] sm4DecryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
   
-  public native byte[] sm4BCDEncryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
+  public native byte[] sm4EncryptCBC(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.ndk.Encrypt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:key="wallet_modify_password" android:layout="@layout/b8j" android:title="@string/imj" />
-    <Preference android:key="wallet_forget_password" android:layout="@layout/b8j" android:title="@string/imd" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="wallet_open_gesture_password" android:layout="@layout/b8j" android:title="@string/imk" />
-    <Preference android:key="wallet_modify_gesture_password" android:layout="@layout/b8j" android:title="@string/imi" />
-    <PreferenceCategory />
-</PreferenceScreen>
+<RelativeLayout android:id="@id/f8_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/FG_2" android:id="@id/ap0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k1" android:singleLine="true" android:includeFontPadding="false" android:layout_centerHorizontal="true" keybutton:textSize="@dimen/k2" />
+    <TextView android:textSize="@dimen/jz" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/aoz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_centerHorizontal="true" android:lineSpacingExtra="@dimen/jy" />
+</RelativeLayout>

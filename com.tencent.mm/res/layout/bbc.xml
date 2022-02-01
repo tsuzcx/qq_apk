@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:id="@id/hoo" android:layout_width="@dimen/aiu" android:layout_height="wrap_content" android:layout_marginRight="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0dip" android:textColor="@color/afp" android:layout_gravity="center_horizontal" android:id="@id/jd5" android:layout_width="wrap_content" android:layout_marginTop="@dimen/hs" android:text="@string/f2o" style="@style/no" />
-        <TextView android:textSize="16.0dip" android:layout_gravity="center_horizontal" android:id="@id/jd4" android:layout_width="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/f2n" style="@style/no" />
-        <TextView android:textSize="28.0dip" android:textStyle="bold" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:id="@id/jd2" android:layout_width="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="10.0dip" style="@style/qc" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="4.0dip">
-            <ProgressBar android:id="@id/jd6" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/of" />
-            <View android:layout_gravity="bottom" android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-        </FrameLayout>
-    </LinearLayout>
-    <ListView android:orientation="vertical" android:id="@id/jd3" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/fbv" android:clickable="false" android:layout_width="@dimen/aiu" android:layout_height="@dimen/aiu" android:src="@raw/mall_order_trade_empty_icon" />
+    <TextView android:textSize="@dimen/m8" android:textColor="@color/a3q" android:ellipsize="end" android:gravity="center" android:id="@id/fbu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:maxLines="2" />
 </LinearLayout>

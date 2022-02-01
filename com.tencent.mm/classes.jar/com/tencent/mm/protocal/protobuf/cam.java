@@ -4,71 +4,102 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cam
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
+  public LinkedList<or> YRS;
+  public op aajx;
+  
+  public cam()
+  {
+    AppMethodBeat.i(124489);
+    this.YRS = new LinkedList();
+    AppMethodBeat.o(124489);
+  }
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(263612);
+    AppMethodBeat.i(124490);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aajx != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.aajx.computeSize());
+        this.aajx.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(263612);
+      paramVarArgs.e(2, 8, this.YRS);
+      AppMethodBeat.o(124490);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label288;
+      if (this.aajx == null) {
+        break label406;
       }
     }
-    label288:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label406:
+    for (paramInt = i.a.a.a.qC(1, this.aajx.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(263612);
-      return paramInt;
+      int i = i.a.a.a.c(2, 8, this.YRS);
+      AppMethodBeat.o(124490);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.YRS.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(263612);
+        AppMethodBeat.o(124490);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         cam localcam = (cam)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(263612);
+          AppMethodBeat.o(124490);
           return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new op();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((op)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcam.aajx = ((op)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124490);
+          return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          jg localjg = new jg();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localjg.parseFrom((byte[])localObject);
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new or();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((or)localObject2).parseFrom((byte[])localObject1);
           }
-          localcam.BaseRequest = localjg;
+          localcam.YRS.add(localObject2);
           paramInt += 1;
         }
-        AppMethodBeat.o(263612);
+        AppMethodBeat.o(124490);
         return 0;
       }
-      AppMethodBeat.o(263612);
+      AppMethodBeat.o(124490);
       return -1;
     }
   }

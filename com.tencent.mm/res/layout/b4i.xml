@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/v3" android:background="@drawable/ce" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginBottom="@dimen/m2" android:layout_centerHorizontal="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/app_brand_desktop_icon_info" />
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/a7b" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/v2" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/ig" android:includeFontPadding="false" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/f2u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/v3">
+        <FrameLayout android:gravity="center" android:id="@id/f2j" android:layout_width="@dimen/ri" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center" android:id="@id/f1c" android:layout_width="@dimen/re" android:layout_height="@dimen/re" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2" android:src="@drawable/b__" />
+            <ImageView android:layout_gravity="center" android:id="@id/f1r" android:background="@drawable/d0" android:layout_width="@dimen/re" android:layout_height="@dimen/re" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2" />
+            <TextView android:textSize="8.0dip" android:textColor="@color/al6" android:ellipsize="end" android:layout_gravity="center" android:id="@id/khq" android:background="@drawable/d1" android:padding="1.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="18.0dip" android:text="@string/hm7" android:singleLine="true" />
+        </FrameLayout>
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/k1l" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/ig" android:src="@raw/app_brand_desktop_add_icon" android:layout_alignRight="@id/f2j" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</RelativeLayout>

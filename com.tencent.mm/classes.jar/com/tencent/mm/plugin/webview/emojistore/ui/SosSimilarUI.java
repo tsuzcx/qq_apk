@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.webview.emojistore.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup.LayoutParams;
@@ -19,165 +18,171 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.GridLayoutManager.b;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.emoji.b.b.ae;
-import com.tencent.mm.emoji.panel.a.e;
-import com.tencent.mm.f.b.a.kn;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.messenger.a.d;
+import com.tencent.mm.autogen.mmdata.rpt.ng;
+import com.tencent.mm.emoji.panel.a.n;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.messenger.a.g;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
 import com.tencent.mm.plugin.secdata.ui.a.a;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.as;
 import com.tencent.mm.plugin.webview.c.c;
 import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.c.j;
-import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.protocal.protobuf.dxu;
-import com.tencent.mm.protocal.protobuf.ein;
+import com.tencent.mm.protocal.protobuf.eqy;
+import com.tencent.mm.protocal.protobuf.fcp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.search.data.SimilarEmojiQueryModel;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.report.MMSecDataActivity;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.z;
 import com.tencent.mm.view.TouchableLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.aa.f;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.ah.f;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI;", "Lcom/tencent/mm/ui/report/MMSecDataActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$IOnLoadingStateChangedListener;", "()V", "adapter", "Lcom/tencent/mm/search/ui/SimilarEmojiAdapter;", "data", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiDataManager;", "emojiList", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiRecyclerView;", "lastClickTimestamp", "", "lastReportExposeStartPosition", "", "dp2px", "context", "Landroid/content/Context;", "dpValue", "", "getLayoutId", "getRecyclerViewPadding", "getReportScene", "initHeadInfo", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onLoadMore", "parent", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "report18742", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "bOk", "", "reportExpose", "Companion", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI;", "Lcom/tencent/mm/plugin/secdata/ui/MMSecDataActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView$IOnLoadingStateChangedListener;", "()V", "adapter", "Lcom/tencent/mm/search/ui/SimilarEmojiAdapter;", "data", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiDataManager;", "emojiList", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SosSimilarEmojiRecyclerView;", "lastClickTimestamp", "", "lastReportExposeStartPosition", "", "dp2px", "context", "Landroid/content/Context;", "dpValue", "", "getLayoutId", "getRecyclerViewPadding", "getReportScene", "initHeadInfo", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onLoadMore", "parent", "Lcom/tencent/mm/plugin/webview/emojistore/ui/SimilarEmojiLoadMoreRecyclerView;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "report18742", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "bOk", "", "reportExpose", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SosSimilarUI
   extends MMSecDataActivity
-  implements i, SimilarEmojiLoadMoreRecyclerView.a
+  implements com.tencent.mm.am.h, SimilarEmojiLoadMoreRecyclerView.a
 {
-  public static final SosSimilarUI.a PKb;
-  private final c PJS;
-  private final com.tencent.mm.search.d.a PJX;
-  private SosSimilarEmojiRecyclerView PJY;
-  private int PJZ;
-  private long PKa;
+  public static final SosSimilarUI.a WAp;
+  private final c WAk;
+  private final com.tencent.mm.search.d.a WAq;
+  private SosSimilarEmojiRecyclerView WAr;
+  private int WAs;
+  private long WAt;
   
   static
   {
     AppMethodBeat.i(82509);
-    PKb = new SosSimilarUI.a((byte)0);
+    WAp = new SosSimilarUI.a((byte)0);
     AppMethodBeat.o(82509);
   }
   
   public SosSimilarUI()
   {
     AppMethodBeat.i(82508);
-    this.PJS = new c();
-    this.PJX = new com.tencent.mm.search.d.a();
+    this.WAk = new c();
+    this.WAq = new com.tencent.mm.search.d.a();
     AppMethodBeat.o(82508);
   }
   
-  private final void cBa()
+  private static final boolean a(SosSimilarUI paramSosSimilarUI, MenuItem paramMenuItem)
   {
-    int j = 0;
-    int i = 0;
+    AppMethodBeat.i(294785);
+    kotlin.g.b.s.u(paramSosSimilarUI, "this$0");
+    paramSosSimilarUI.finish();
+    AppMethodBeat.o(294785);
+    return false;
+  }
+  
+  private final void def()
+  {
     AppMethodBeat.i(82504);
-    dxu localdxu;
+    eqy localeqy;
     Object localObject1;
     Object localObject2;
+    int i;
     Object localObject3;
-    if (this.PJZ < this.PJX.uJL)
+    if (this.WAs < this.WAq.xSC)
     {
-      localdxu = new dxu();
-      if (!this.PJS.gTo()) {
-        break label334;
+      localeqy = new eqy();
+      if (!this.WAk.itb()) {
+        break label325;
       }
       localObject1 = "";
-      localObject2 = ((Iterable)this.PJS.MGI).iterator();
+      localObject2 = ((Iterable)this.WAk.Trs).iterator();
+      i = 0;
       if (((Iterator)localObject2).hasNext())
       {
         localObject3 = ((Iterator)localObject2).next();
         if (i < 0) {
-          kotlin.a.j.iBO();
+          kotlin.a.p.kkW();
         }
-        localObject3 = (com.tencent.mm.emoji.b.b.h)localObject3;
-        if ((i <= this.PJZ) || (i > this.PJX.uJL - 2)) {
-          break label597;
+        localObject3 = (com.tencent.mm.emoji.c.b.h)localObject3;
+        if ((i <= this.WAs) || (i > this.WAq.xSC - 2)) {
+          break label588;
         }
-        localObject1 = (String)localObject1 + ((com.tencent.mm.emoji.b.b.h)localObject3).jHh.getMd5() + ';';
+        localObject1 = (String)localObject1 + ((com.tencent.mm.emoji.c.b.h)localObject3).mgK.getMd5() + ';';
       }
     }
-    label334:
-    label594:
-    label597:
+    label325:
+    label585:
+    label588:
     for (;;)
     {
       i += 1;
       break;
-      localObject3 = new StringBuilder("logid=17368&sessionid=").append(this.PJS.uMC).append("&searchid=").append(this.PJS.uMC).append("&scene=59&md5=");
-      localObject2 = this.PJS.PJV;
-      if (localObject2 != null) {}
-      for (localObject2 = ((SimilarEmojiQueryModel)localObject2).emojiMD5;; localObject2 = null)
+      localObject3 = new StringBuilder("logid=17368&sessionid=").append(this.WAk.xVe).append("&searchid=").append(this.WAk.xVe).append("&scene=59&md5=");
+      localObject2 = this.WAk.WAo;
+      if (localObject2 == null) {}
+      for (localObject2 = null;; localObject2 = ((SimilarEmojiQueryModel)localObject2).emojiMD5)
       {
-        localdxu.Udk = ((String)localObject2 + "&md5content=" + (String)localObject1 + "&pos=" + (this.PJZ + 2) + "&clienttimestamp=" + System.currentTimeMillis() + "&tab=0&requestid=" + this.PJS.uMC);
-        localObject1 = new ad(localdxu);
-        com.tencent.mm.kernel.h.aGY().b((q)localObject1);
-        this.PJZ = this.PJX.uJL;
-        Log.i("MicroMsg.WebSearch.SosSimilarUI", localdxu.Udk);
+        localeqy.abuE = (localObject2 + "&md5content=" + (String)localObject1 + "&pos=" + (this.WAs + 2) + "&clienttimestamp=" + System.currentTimeMillis() + "&tab=0&requestid=" + this.WAk.xVe);
+        localObject1 = new com.tencent.mm.plugin.websearch.api.ae(localeqy);
+        com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localObject1, 0);
+        this.WAs = this.WAq.xSC;
+        Log.i("MicroMsg.WebSearch.SosSimilarUI", localeqy.abuE);
         AppMethodBeat.o(82504);
         return;
       }
       localObject1 = "";
-      localObject2 = ((Iterable)this.PJS.MGI).iterator();
-      i = j;
-      label356:
+      localObject2 = ((Iterable)this.WAk.Trs).iterator();
+      i = 0;
+      label346:
       if (((Iterator)localObject2).hasNext())
       {
         localObject3 = ((Iterator)localObject2).next();
         if (i < 0) {
-          kotlin.a.j.iBO();
+          kotlin.a.p.kkW();
         }
-        localObject3 = (com.tencent.mm.emoji.b.b.h)localObject3;
-        if ((i <= this.PJZ) || (i > this.PJX.uJL - 2)) {
-          break label594;
+        localObject3 = (com.tencent.mm.emoji.c.b.h)localObject3;
+        if ((i <= this.WAs) || (i > this.WAq.xSC - 2)) {
+          break label585;
         }
-        localObject1 = (String)localObject1 + "256:" + ((com.tencent.mm.emoji.b.b.h)localObject3).jJd + ':' + cm.bfE() + ';';
+        localObject1 = (String)localObject1 + "256:" + ((com.tencent.mm.emoji.c.b.h)localObject3).miv + ':' + cn.bDw() + ';';
       }
       for (;;)
       {
         i += 1;
-        break label356;
-        localObject3 = new StringBuilder("isexpose=1&searchid=").append(this.PJS.uMC).append("&content=").append((String)localObject1).append("&query=");
-        localObject1 = this.PJS.PJV;
-        if (localObject1 != null)
-        {
-          localObject2 = ((SimilarEmojiQueryModel)localObject1).query;
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
+        break label346;
+        localObject3 = new StringBuilder("isexpose=1&searchid=").append(this.WAk.xVe).append("&content=").append((String)localObject1).append("&query=");
+        localObject1 = this.WAk.WAo;
+        if (localObject1 == null) {
           localObject1 = "";
         }
-        localdxu.Udk = ((String)localObject1 + "&ishomepage=0&&sessionid=" + this.PJS.sessionId + "&scene=78&logtype=1&requestid=" + this.PJS.uMC + "&pageno=" + this.PJS.jJe);
-        break;
+        for (;;)
+        {
+          localeqy.abuE = ((String)localObject1 + "&ishomepage=0&&sessionid=" + this.WAk.sessionId + "&scene=78&logtype=1&requestid=" + this.WAk.xVe + "&pageno=" + this.WAk.miw);
+          break;
+          localObject2 = ((SimilarEmojiQueryModel)localObject1).query;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = "";
+          }
+        }
       }
     }
   }
   
-  private final int gTp()
+  private final int itc()
   {
     AppMethodBeat.i(82502);
-    int i = com.tencent.mm.ui.ar.getDeviceWidth();
+    int i = aw.getDeviceWidth();
     AppCompatActivity localAppCompatActivity = getContext();
-    kotlin.g.b.p.j(localAppCompatActivity, "context");
-    i = (i - iW((Context)localAppCompatActivity) * 3) / 8;
-    Log.i("MicroMsg.WebSearch.SosSimilarUI", "recycler view padding :".concat(String.valueOf(i)));
+    kotlin.g.b.s.s(localAppCompatActivity, "context");
+    i = (i - kM((Context)localAppCompatActivity) * 3) / 8;
+    Log.i("MicroMsg.WebSearch.SosSimilarUI", kotlin.g.b.s.X("recycler view padding :", Integer.valueOf(i)));
     if (i > 0)
     {
       AppMethodBeat.o(82502);
@@ -187,64 +192,37 @@ public final class SosSimilarUI
     return 0;
   }
   
-  private static int iW(Context paramContext)
+  private static int kM(Context paramContext)
   {
     AppMethodBeat.i(82507);
-    paramContext = paramContext.getResources();
-    kotlin.g.b.p.j(paramContext, "context.resources");
-    int i = (int)(paramContext.getDisplayMetrics().density * 108.0F + 0.5F);
+    int i = (int)(paramContext.getResources().getDisplayMetrics().density * 108.0F + 0.5F);
     AppMethodBeat.o(82507);
     return i;
   }
   
-  public final int eBv()
-  {
-    AppMethodBeat.i(253471);
-    if (this.PJS.gTo())
-    {
-      AppMethodBeat.o(253471);
-      return 59;
-    }
-    AppMethodBeat.o(253471);
-    return 78;
-  }
-  
   public final void f(EmojiInfo paramEmojiInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(253474);
-    kotlin.g.b.p.k(paramEmojiInfo, "emojiInfo");
+    AppMethodBeat.i(294845);
+    kotlin.g.b.s.u(paramEmojiInfo, "emojiInfo");
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      com.tencent.mm.plugin.report.f.Iyx.a(18742, new Object[] { Integer.valueOf(eBv()), this.PJS.uMC, this.PJS.uMC, this.PJS.uMC, Integer.valueOf(i), paramEmojiInfo.getMd5() });
-      AppMethodBeat.o(253474);
+      com.tencent.mm.plugin.report.f.Ozc.b(18742, new Object[] { Integer.valueOf(fJx()), this.WAk.xVe, this.WAk.xVe, this.WAk.xVe, Integer.valueOf(i), paramEmojiInfo.getMd5() });
+      AppMethodBeat.o(294845);
       return;
     }
   }
   
-  public final void gTm()
+  public final int fJx()
   {
-    AppMethodBeat.i(253486);
-    if (this.PJS.xcp)
+    AppMethodBeat.i(294838);
+    if (this.WAk.itb())
     {
-      SosSimilarEmojiRecyclerView localSosSimilarEmojiRecyclerView = this.PJY;
-      if (localSosSimilarEmojiRecyclerView == null) {
-        break label68;
-      }
-      if (!localSosSimilarEmojiRecyclerView.gTl())
-      {
-        localSosSimilarEmojiRecyclerView = this.PJY;
-        if (localSosSimilarEmojiRecyclerView != null) {
-          localSosSimilarEmojiRecyclerView.showLoading(true);
-        }
-        cBa();
-        this.PJS.e((i)this);
-      }
+      AppMethodBeat.o(294838);
+      return 59;
     }
-    AppMethodBeat.o(253486);
-    return;
-    label68:
-    AppMethodBeat.o(253486);
+    AppMethodBeat.o(294838);
+    return 78;
   }
   
   public final int getLayoutId()
@@ -252,27 +230,52 @@ public final class SosSimilarUI
     return -1;
   }
   
+  public final void isZ()
+  {
+    AppMethodBeat.i(294882);
+    SosSimilarEmojiRecyclerView localSosSimilarEmojiRecyclerView;
+    if (this.WAk.ABD)
+    {
+      localSosSimilarEmojiRecyclerView = this.WAr;
+      if ((localSosSimilarEmojiRecyclerView == null) || (localSosSimilarEmojiRecyclerView.uRi)) {
+        break label74;
+      }
+    }
+    label74:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localSosSimilarEmojiRecyclerView = this.WAr;
+        if (localSosSimilarEmojiRecyclerView != null) {
+          localSosSimilarEmojiRecyclerView.showLoading(true);
+        }
+        def();
+        this.WAk.e((com.tencent.mm.am.h)this);
+      }
+      AppMethodBeat.o(294882);
+      return;
+    }
+  }
+  
   public final void onCreate(final Bundle paramBundle)
   {
     AppMethodBeat.i(82501);
     super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    kotlin.g.b.p.j(paramBundle, "window");
-    paramBundle.getDecorView().setBackgroundColor(getResources().getColor(c.c.BW_93));
-    Object localObject2 = this.PJS;
+    getWindow().getDecorView().setBackgroundColor(getResources().getColor(c.c.BW_93));
+    Object localObject2 = this.WAk;
     paramBundle = (Context)this;
     Object localObject1 = getIntent();
-    kotlin.g.b.p.j(localObject1, "intent");
-    kotlin.g.b.p.k(paramBundle, "context");
-    kotlin.g.b.p.k(localObject1, "intent");
-    com.tencent.mm.kernel.h.aGY().a(2999, (i)localObject2);
-    com.tencent.mm.kernel.h.aGY().a(719, (i)localObject2);
-    ((c)localObject2).PJV = ((SimilarEmojiQueryModel)((Intent)localObject1).getParcelableExtra("KEY_NET_PARAM"));
-    localObject1 = com.tencent.mm.plugin.secdata.ui.a.JbV;
-    paramBundle = a.a.hU(paramBundle);
+    kotlin.g.b.s.u(paramBundle, "context");
+    kotlin.g.b.s.u(localObject1, "intent");
+    com.tencent.mm.kernel.h.aZW().a(2999, (com.tencent.mm.am.h)localObject2);
+    com.tencent.mm.kernel.h.aZW().a(719, (com.tencent.mm.am.h)localObject2);
+    ((c)localObject2).WAo = ((SimilarEmojiQueryModel)((Intent)localObject1).getParcelableExtra("KEY_NET_PARAM"));
+    localObject1 = com.tencent.mm.plugin.secdata.ui.a.PlI;
+    paramBundle = a.a.jC(paramBundle);
     if (paramBundle != null)
     {
-      paramBundle = (ein)paramBundle.c(1, ein.class);
+      paramBundle = (fcp)paramBundle.c(1, fcp.class);
       if (paramBundle != null)
       {
         localObject1 = paramBundle.SessionId;
@@ -280,146 +283,144 @@ public final class SosSimilarUI
         if (localObject1 == null) {
           paramBundle = "";
         }
+        kotlin.g.b.s.u(paramBundle, "<set-?>");
         ((c)localObject2).sessionId = paramBundle;
-        Log.i("MicroMsg.SimilarEmoji", "report sessionId=" + ((c)localObject2).sessionId);
+        Log.i("MicroMsg.SimilarEmoji", kotlin.g.b.s.X("report sessionId=", ((c)localObject2).sessionId));
       }
     }
     paramBundle = getContext();
-    kotlin.g.b.p.j(paramBundle, "context");
-    this.PJY = new SosSimilarEmojiRecyclerView((Context)new x((Context)paramBundle, c.j.EmojiPanel));
-    paramBundle = this.PJY;
+    kotlin.g.b.s.s(paramBundle, "context");
+    this.WAr = new SosSimilarEmojiRecyclerView((Context)new z((Context)paramBundle, c.j.EmojiPanel));
+    paramBundle = this.WAr;
     if (paramBundle != null) {
       paramBundle.setBackgroundColor(getResources().getColor(c.c.BW_93));
     }
-    paramBundle = this.PJY;
+    paramBundle = this.WAr;
     if (paramBundle != null) {
       paramBundle.setOnLoadingStateChangedListener((SimilarEmojiLoadMoreRecyclerView.a)this);
     }
     paramBundle = new FrameLayout.LayoutParams(-1, -1);
     localObject1 = new TouchableLayout((Context)this);
-    localObject2 = this.PJY;
+    localObject2 = this.WAr;
     if (localObject2 != null) {
-      ((SosSimilarEmojiRecyclerView)localObject2).setPadding(gTp(), 0, gTp(), 0);
+      ((SosSimilarEmojiRecyclerView)localObject2).setPadding(itc(), 0, itc(), 0);
     }
-    ((TouchableLayout)localObject1).addView((View)this.PJY, (ViewGroup.LayoutParams)paramBundle);
+    ((TouchableLayout)localObject1).addView((View)this.WAr, (ViewGroup.LayoutParams)paramBundle);
     setContentView((View)localObject1, (ViewGroup.LayoutParams)paramBundle);
-    paramBundle = this.PJS.PJV;
-    if (paramBundle != null)
+    paramBundle = this.WAk.WAo;
+    if (paramBundle == null)
     {
-      localObject1 = paramBundle.query;
-      if (localObject1 != null)
+      paramBundle = null;
+      localObject1 = paramBundle;
+      if (paramBundle == null)
       {
-        paramBundle = (Bundle)localObject1;
-        if (localObject1 != null) {
-          break label386;
+        localObject1 = MMApplicationContext.getContext().getString(c.i.sos_similar_emoji_title);
+        kotlin.g.b.s.s(localObject1, "getContext().getString(R….sos_similar_emoji_title)");
+      }
+      setMMTitle((String)localObject1);
+      setBackBtn(new SosSimilarUI..ExternalSyntheticLambda0(this));
+      getContext();
+      paramBundle = new GridLayoutManager(3);
+      paramBundle.bWq = ((GridLayoutManager.b)new b(this, paramBundle));
+      localObject1 = this.WAr;
+      if (localObject1 != null) {
+        ((SosSimilarEmojiRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)paramBundle);
+      }
+      paramBundle = this.WAr;
+      if (paramBundle != null) {
+        paramBundle.setItemViewCacheSize(0);
+      }
+      paramBundle = this.WAr;
+      if (paramBundle != null) {
+        paramBundle.setAdapter((RecyclerView.a)this.WAq);
+      }
+      this.WAq.mkY = ((n)new c(this));
+      this.WAq.acsm = false;
+      paramBundle = this.WAk.ita();
+      if (paramBundle != null)
+      {
+        if (!this.WAk.itb()) {
+          break label572;
         }
+        this.WAq.G(paramBundle);
       }
-    }
-    paramBundle = MMApplicationContext.getContext().getString(c.i.sos_similar_emoji_title);
-    kotlin.g.b.p.j(paramBundle, "run {\n            MMAppl…ar_emoji_title)\n        }");
-    label386:
-    setMMTitle(paramBundle);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    getContext();
-    paramBundle = new GridLayoutManager(3);
-    paramBundle.a((GridLayoutManager.b)new c(this, paramBundle));
-    localObject1 = this.PJY;
-    if (localObject1 != null) {
-      ((SosSimilarEmojiRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)paramBundle);
-    }
-    paramBundle = this.PJY;
-    if (paramBundle != null) {
-      paramBundle.setItemViewCacheSize(0);
-    }
-    paramBundle = this.PJY;
-    if (paramBundle != null) {
-      paramBundle.setAdapter((RecyclerView.a)this.PJX);
-    }
-    this.PJX.jLP = ((com.tencent.mm.emoji.panel.a.p)new d(this));
-    this.PJX.UXc = false;
-    paramBundle = this.PJS.gTn();
-    if (paramBundle != null)
-    {
-      if (!this.PJS.gTo()) {
-        break label582;
-      }
-      this.PJX.G(paramBundle);
     }
     for (;;)
     {
-      this.PJX.htz();
-      this.PJX.notifyDataSetChanged();
-      this.PJS.e((i)this);
-      paramBundle = com.tencent.mm.search.c.a.UWW;
-      com.tencent.mm.search.c.a.htr();
+      this.WAq.iTE();
+      this.WAq.bZE.notifyChanged();
+      this.WAk.e((com.tencent.mm.am.h)this);
+      paramBundle = com.tencent.mm.search.c.a.acsi;
+      com.tencent.mm.search.c.a.iTy();
       AppMethodBeat.o(82501);
       return;
-      label582:
-      this.PJX.H(paramBundle);
+      localObject1 = paramBundle.query;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 != null) {
+        break;
+      }
+      paramBundle = null;
+      break;
+      label572:
+      this.WAq.H(paramBundle);
     }
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(82506);
-    cBa();
+    def();
     super.onDestroy();
-    c localc = this.PJS;
+    c localc = this.WAk;
     localc.callback = null;
-    com.tencent.mm.kernel.c localc1 = com.tencent.mm.kernel.h.aHF();
-    kotlin.g.b.p.j(localc1, "MMKernel.network()");
-    localc1.aGY().cancel(2999);
-    localc1 = com.tencent.mm.kernel.h.aHF();
-    kotlin.g.b.p.j(localc1, "MMKernel.network()");
-    localc1.aGY().b(2999, (i)localc);
-    localc1 = com.tencent.mm.kernel.h.aHF();
-    kotlin.g.b.p.j(localc1, "MMKernel.network()");
-    localc1.aGY().cancel(719);
-    com.tencent.mm.kernel.h.aGY().b(719, (i)localc);
+    com.tencent.mm.kernel.h.baD().mCm.cancel(2999);
+    com.tencent.mm.kernel.h.baD().mCm.b(2999, (com.tencent.mm.am.h)localc);
+    com.tencent.mm.kernel.h.baD().mCm.cancel(719);
+    com.tencent.mm.kernel.h.aZW().b(719, (com.tencent.mm.am.h)localc);
     AppMethodBeat.o(82506);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(82503);
-    paramq = this.PJY;
-    if (paramq != null) {
-      paramq.showLoading(false);
+    paramp = this.WAr;
+    if (paramp != null) {
+      paramp.showLoading(false);
     }
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (((List)this.PJS.MGI).size() > 1))
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (((List)this.WAk.Trs).size() > 1))
     {
-      paramInt1 = this.PJX.getItemCount();
-      this.PJX.UXc = true;
-      this.PJX.aa((List)this.PJS.MGI);
+      paramInt1 = this.WAq.getItemCount();
+      this.WAq.acsm = true;
+      this.WAq.bz((List)this.WAk.Trs);
       if (paramInt1 - 2 <= 0)
       {
-        this.PJX.notifyDataSetChanged();
+        this.WAq.bZE.notifyChanged();
         AppMethodBeat.o(82503);
         return;
       }
-      this.PJX.cL(paramInt1 - 1);
-      cBa();
+      this.WAq.fV(paramInt1 - 1);
+      def();
       AppMethodBeat.o(82503);
       return;
     }
     Log.i("MicroMsg.WebSearch.SosSimilarUI", "onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + ' ');
     paramString = new ArrayList();
-    this.PJX.setData((List)paramString);
-    paramString = this.PJS.gTn();
+    this.WAq.setData((List)paramString);
+    paramString = this.WAk.ita();
     if (paramString != null)
     {
-      if (!this.PJS.gTo()) {
-        break label237;
+      if (!this.WAk.itb()) {
+        break label244;
       }
-      this.PJX.G(paramString);
+      this.WAq.G(paramString);
     }
     for (;;)
     {
-      this.PJX.htA();
-      this.PJX.notifyDataSetChanged();
+      this.WAq.iTF();
+      this.WAq.bZE.notifyChanged();
       break;
-      label237:
-      this.PJX.H(paramString);
+      label244:
+      this.WAq.H(paramString);
     }
   }
   
@@ -429,31 +430,16 @@ public final class SosSimilarUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(SosSimilarUI paramSosSimilarUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(82497);
-      this.PKc.finish();
-      AppMethodBeat.o(82497);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI$onCreate$2", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "plugin-webview_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI$onCreate$2", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     extends GridLayoutManager.b
   {
-    c(GridLayoutManager paramGridLayoutManager) {}
+    b(SosSimilarUI paramSosSimilarUI, GridLayoutManager paramGridLayoutManager) {}
     
-    public final int cx(int paramInt)
+    public final int fJ(int paramInt)
     {
       AppMethodBeat.i(82498);
-      switch (SosSimilarUI.a(this.PKc).getItemViewType(paramInt))
+      switch (SosSimilarUI.a(this.WAu).getItemViewType(paramInt))
       {
       case 101: 
       case 102: 
@@ -462,232 +448,267 @@ public final class SosSimilarUI
         AppMethodBeat.o(82498);
         return 1;
       }
-      paramInt = paramBundle.ku();
+      paramInt = paramBundle.bWl;
       AppMethodBeat.o(82498);
       return paramInt;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI$onCreate$3", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "onClick", "", "view", "Landroid/view/View;", "context", "Landroid/content/Context;", "position", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "onLongClick", "plugin-webview_release"})
-  public static final class d
-    implements com.tencent.mm.emoji.panel.a.p
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/webview/emojistore/ui/SosSimilarUI$onCreate$3", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "onClick", "", "view", "Landroid/view/View;", "context", "Landroid/content/Context;", "position", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "onLongClick", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements n
   {
-    public final void a(View paramView, Context paramContext, int paramInt)
+    c(SosSimilarUI paramSosSimilarUI) {}
+    
+    private static final void a(SosSimilarUI paramSosSimilarUI, ah.f paramf, Context paramContext, boolean paramBoolean, String paramString, int paramInt)
     {
-      AppMethodBeat.i(260646);
-      kotlin.g.b.p.k(paramContext, "context");
-      Object localObject2 = SosSimilarUI.a(this.PKc).rF(paramInt);
-      int i;
-      label82:
+      Object localObject2 = null;
+      AppMethodBeat.i(294769);
+      kotlin.g.b.s.u(paramSosSimilarUI, "this$0");
+      kotlin.g.b.s.u(paramf, "$emojiInfo");
+      kotlin.g.b.s.u(paramContext, "$context");
       Object localObject3;
-      Object localObject1;
-      if ((localObject2 instanceof com.tencent.mm.emoji.b.b.h))
+      if (paramBoolean)
       {
-        paramContext = com.tencent.mm.plugin.emoji.model.p.getEmojiStorageMgr();
-        kotlin.g.b.p.j(paramContext, "SubCoreEmoji.getEmojiStorageMgr()");
-        paramContext = paramContext.ctY().bxK(((com.tencent.mm.emoji.b.b.h)localObject2).jHh.field_md5);
-        if (paramContext == null) {
-          break label384;
+        localObject3 = com.tencent.mm.plugin.emoji.model.s.dAl();
+        localObject1 = SosSimilarUI.b(paramSosSimilarUI).WAo;
+        if (localObject1 != null) {
+          break label145;
         }
-        i = paramContext.hBy();
-        if (i != EmojiInfo.YCD) {
-          break label390;
-        }
-        i = 1;
-        localObject3 = new kn();
-        ((kn)localObject3).vc(this.PKc.eBv());
-        ((kn)localObject3).By(SosSimilarUI.b(this.PKc).sessionId);
-        ((kn)localObject3).Bz(SosSimilarUI.b(this.PKc).uMC);
-        ((kn)localObject3).BA(((com.tencent.mm.emoji.b.b.h)localObject2).jHh.field_md5);
-        paramContext = SosSimilarUI.b(this.PKc).PJV;
-        if (paramContext != null)
+        localObject1 = null;
+        ((com.tencent.mm.plugin.emoji.mgr.f)localObject3).a((String)localObject1, (EmojiInfo)paramf.aqH, null);
+        if (!Util.isNullOrNil(paramString))
         {
-          localObject1 = paramContext.emojiMD5;
-          paramContext = (Context)localObject1;
-          if (localObject1 != null) {}
-        }
-        else
-        {
-          paramContext = "";
-        }
-        ((kn)localObject3).BB(paramContext);
-        ((kn)localObject3).vd(SosSimilarUI.b(this.PKc).offset);
-        ((kn)localObject3).ve(paramInt);
-        ((kn)localObject3).vf(System.currentTimeMillis());
-        ((kn)localObject3).BC(SosSimilarUI.b(this.PKc).uMC);
-        ((kn)localObject3).vg(1L);
-        if (i == 0) {
-          break label396;
+          localObject3 = g.gaI();
+          localObject1 = SosSimilarUI.b(paramSosSimilarUI).WAo;
+          if (localObject1 != null) {
+            break label155;
+          }
         }
       }
-      label384:
-      label390:
-      label396:
-      for (long l = 1L;; l = 0L)
+      label145:
+      label155:
+      for (Object localObject1 = localObject2;; localObject1 = ((SimilarEmojiQueryModel)localObject1).toUser)
       {
-        ((kn)localObject3).vh(l);
-        ((kn)localObject3).bpa();
-        com.tencent.mm.plugin.websearch.api.ar.a((com.tencent.mm.plugin.report.a)localObject3);
-        if (i == 0)
-        {
-          paramContext = new com.tencent.mm.ui.widget.b.a((Context)this.PKc);
-          localObject1 = (View.OnCreateContextMenuListener)new a((com.tencent.mm.emoji.b.b.h)localObject2);
-          localObject2 = (q.g)new b((Context)this.PKc, (com.tencent.mm.emoji.b.b.h)localObject2, SosSimilarUI.b(this.PKc), paramInt);
-          localObject3 = TouchableLayout.YOD;
-          paramInt = TouchableLayout.igZ();
-          localObject3 = TouchableLayout.YOD;
-          paramContext.a(paramView, 0, 0L, (View.OnCreateContextMenuListener)localObject1, (q.g)localObject2, paramInt, TouchableLayout.iha());
-        }
-        AppMethodBeat.o(260646);
+        ((com.tencent.mm.plugin.messenger.a.d)localObject3).ke(paramString, (String)localObject1);
+        aa.makeText(paramContext, (CharSequence)paramContext.getString(c.i.app_sent), 1).show();
+        paramSosSimilarUI.f((EmojiInfo)paramf.aqH, paramBoolean);
+        AppMethodBeat.o(294769);
         return;
-        i = 0;
+        localObject1 = ((SimilarEmojiQueryModel)localObject1).toUser;
         break;
-        i = 0;
-        break label82;
       }
     }
     
-    public final void a(View paramView, final Context paramContext, int paramInt, ae paramae)
+    private static final void a(SosSimilarUI paramSosSimilarUI, ah.f paramf, boolean paramBoolean, String paramString, int paramInt)
     {
-      StringBuilder localStringBuilder = null;
-      AppMethodBeat.i(260648);
-      kotlin.g.b.p.k(paramContext, "context");
-      if ((paramae == null) || (!(paramae instanceof com.tencent.mm.emoji.b.b.h)) || (((com.tencent.mm.emoji.b.b.h)paramae).jJc != 103))
+      AppMethodBeat.i(294761);
+      kotlin.g.b.s.u(paramSosSimilarUI, "this$0");
+      kotlin.g.b.s.u(paramf, "$emojiInfo");
+      com.tencent.mm.plugin.emoji.mgr.f localf;
+      if (paramBoolean)
       {
-        AppMethodBeat.o(260648);
+        localf = com.tencent.mm.plugin.emoji.model.s.dAl();
+        paramString = SosSimilarUI.b(paramSosSimilarUI).WAo;
+        if (paramString != null) {
+          break label92;
+        }
+      }
+      label92:
+      for (paramString = null;; paramString = paramString.toUser)
+      {
+        localf.a(paramString, (EmojiInfo)paramf.aqH, null);
+        paramString = new Intent();
+        paramString.putExtra("KEY_EMOJI_INFO_RESULT", (Parcelable)paramf.aqH);
+        paramSosSimilarUI.setResult(-1, paramString);
+        paramSosSimilarUI.finish();
+        AppMethodBeat.o(294761);
         return;
       }
-      if (System.currentTimeMillis() - SosSimilarUI.c(this.PKc) < 500L)
+    }
+    
+    private static final void a(ah.f paramf, Context paramContext, SosSimilarUI paramSosSimilarUI, boolean paramBoolean, String paramString, int paramInt)
+    {
+      AppMethodBeat.i(294758);
+      kotlin.g.b.s.u(paramf, "$emojiInfo");
+      kotlin.g.b.s.u(paramContext, "$context");
+      kotlin.g.b.s.u(paramSosSimilarUI, "this$0");
+      if (paramBoolean)
       {
-        AppMethodBeat.o(260648);
+        paramString = com.tencent.mm.search.b.a.acse;
+        paramString = com.tencent.mm.search.b.a.iTv();
+        if (paramString != null)
+        {
+          paramString = paramString.mkP;
+          if (paramString != null) {
+            paramString.o((EmojiInfo)paramf.aqH);
+          }
+        }
+        aa.makeText(paramContext, (CharSequence)paramContext.getString(c.i.app_sent), 1).show();
+      }
+      paramSosSimilarUI.f((EmojiInfo)paramf.aqH, paramBoolean);
+      AppMethodBeat.o(294758);
+    }
+    
+    public final void a(View paramView, Context paramContext, int paramInt)
+    {
+      AppMethodBeat.i(294795);
+      kotlin.g.b.s.u(paramContext, "context");
+      Object localObject2 = SosSimilarUI.a(this.WAu).rH(paramInt);
+      int i;
+      label71:
+      Object localObject3;
+      if ((localObject2 instanceof com.tencent.mm.emoji.c.b.h))
+      {
+        paramContext = com.tencent.mm.plugin.emoji.model.s.getEmojiStorageMgr().adju.bza(((com.tencent.mm.emoji.c.b.h)localObject2).mgK.field_md5);
+        if (paramContext != null) {
+          break label354;
+        }
+        i = 0;
+        if (i != EmojiInfo.aklM) {
+          break label363;
+        }
+        i = 1;
+        localObject3 = new ng();
+        ((ng)localObject3).iqr = this.WAu.fJx();
+        ((ng)localObject3).vA(SosSimilarUI.b(this.WAu).sessionId);
+        ((ng)localObject3).vB(SosSimilarUI.b(this.WAu).xVe);
+        ((ng)localObject3).vC(((com.tencent.mm.emoji.c.b.h)localObject2).mgK.field_md5);
+        paramContext = SosSimilarUI.b(this.WAu).WAo;
+        if (paramContext != null) {
+          break label369;
+        }
+        paramContext = "";
+        label161:
+        ((ng)localObject3).vD(paramContext);
+        ((ng)localObject3).jeA = SosSimilarUI.b(this.WAu).offset;
+        ((ng)localObject3).jeB = paramInt;
+        ((ng)localObject3).ivT = System.currentTimeMillis();
+        ((ng)localObject3).vE(SosSimilarUI.b(this.WAu).xVe);
+        ((ng)localObject3).ioV = 1L;
+        if (i == 0) {
+          break label390;
+        }
+      }
+      label390:
+      for (long l = 1L;; l = 0L)
+      {
+        ((ng)localObject3).iyE = l;
+        ((ng)localObject3).bMH();
+        as.a((com.tencent.mm.plugin.report.a)localObject3);
+        if (i == 0)
+        {
+          paramContext = new com.tencent.mm.ui.widget.b.a((Context)this.WAu);
+          localObject1 = (View.OnCreateContextMenuListener)new a((com.tencent.mm.emoji.c.b.h)localObject2);
+          localObject2 = (u.i)new b((Context)this.WAu, (com.tencent.mm.emoji.c.b.h)localObject2, SosSimilarUI.b(this.WAu), paramInt);
+          localObject3 = TouchableLayout.agKp;
+          paramInt = TouchableLayout.jMn();
+          localObject3 = TouchableLayout.agKp;
+          paramContext.a(paramView, 0, 0L, (View.OnCreateContextMenuListener)localObject1, (u.i)localObject2, paramInt, TouchableLayout.jMo());
+        }
+        AppMethodBeat.o(294795);
+        return;
+        label354:
+        i = paramContext.field_catalog;
+        break;
+        label363:
+        i = 0;
+        break label71;
+        label369:
+        Object localObject1 = paramContext.emojiMD5;
+        paramContext = (Context)localObject1;
+        if (localObject1 != null) {
+          break label161;
+        }
+        paramContext = "";
+        break label161;
+      }
+    }
+    
+    public final void a(View paramView, Context paramContext, int paramInt, com.tencent.mm.emoji.c.b.ae paramae)
+    {
+      AppMethodBeat.i(294811);
+      kotlin.g.b.s.u(paramContext, "context");
+      if ((paramae == null) || (!(paramae instanceof com.tencent.mm.emoji.c.b.h)) || (((com.tencent.mm.emoji.c.b.h)paramae).miu != 103))
+      {
+        AppMethodBeat.o(294811);
         return;
       }
-      SosSimilarUI.a(this.PKc, System.currentTimeMillis());
-      Object localObject1 = com.tencent.mm.search.b.a.UWT;
-      localObject1 = com.tencent.mm.search.b.a.hto();
+      if (System.currentTimeMillis() - SosSimilarUI.c(this.WAu) < 500L)
+      {
+        AppMethodBeat.o(294811);
+        return;
+      }
+      SosSimilarUI.a(this.WAu, System.currentTimeMillis());
+      Object localObject1 = com.tencent.mm.search.b.a.acse;
+      localObject1 = com.tencent.mm.search.b.a.iTv();
       if (localObject1 != null) {
         ((com.tencent.mm.search.b.c)localObject1).a(paramView, paramContext, paramInt, paramae);
       }
-      localObject1 = new aa.f();
-      ((aa.f)localObject1).aaBC = ((com.tencent.mm.emoji.b.b.h)paramae).jHh;
+      localObject1 = new ah.f();
+      ((ah.f)localObject1).aqH = ((com.tencent.mm.emoji.c.b.h)paramae).mgK;
       Object localObject2;
-      if (SosSimilarUI.b(this.PKc).gTo())
+      if (SosSimilarUI.b(this.WAu).itb())
       {
-        localObject2 = (com.tencent.mm.pluginsdk.j)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.j.class);
-        paramView = SosSimilarUI.b(this.PKc).PJV;
-        if (paramView != null)
+        localObject2 = (com.tencent.mm.pluginsdk.j)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.j.class);
+        paramView = SosSimilarUI.b(this.WAu).WAo;
+        if (paramView == null)
         {
-          paramView = paramView.toUser;
-          ((com.tencent.mm.pluginsdk.j)localObject2).c(paramContext, paramView, ((EmojiInfo)((aa.f)localObject1).aaBC).getMd5(), ((EmojiInfo)((aa.f)localObject1).aaBC).ZuN, (y.a)new a(this, (aa.f)localObject1, paramContext));
-          localObject2 = new dxu();
-          if (!SosSimilarUI.b(this.PKc).gTo()) {
-            break label546;
+          paramView = null;
+          ((com.tencent.mm.pluginsdk.j)localObject2).d(paramContext, paramView, ((EmojiInfo)((ah.f)localObject1).aqH).getMd5(), ((EmojiInfo)((ah.f)localObject1).aqH).akmc, new SosSimilarUI.c..ExternalSyntheticLambda2((ah.f)localObject1, paramContext, this.WAu));
+          label213:
+          localObject2 = new eqy();
+          if (!SosSimilarUI.b(this.WAu).itb()) {
+            break label642;
           }
-          paramContext = new StringBuilder("logid=17372&sessionid=").append(SosSimilarUI.b(this.PKc).uMC).append("&searchid=").append(SosSimilarUI.b(this.PKc).uMC).append("&scene=59&clickmd5=").append(((EmojiInfo)((aa.f)localObject1).aaBC).getMd5()).append("&querymd5=");
-          paramae = SosSimilarUI.b(this.PKc).PJV;
-          paramView = localStringBuilder;
-          if (paramae != null) {
-            paramView = paramae.emojiMD5;
+          paramContext = new StringBuilder("logid=17372&sessionid=").append(SosSimilarUI.b(this.WAu).xVe).append("&searchid=").append(SosSimilarUI.b(this.WAu).xVe).append("&scene=59&clickmd5=").append(((EmojiInfo)((ah.f)localObject1).aqH).getMd5()).append("&querymd5=");
+          paramView = SosSimilarUI.b(this.WAu).WAo;
+          if (paramView != null) {
+            break label634;
           }
         }
       }
-      for (((dxu)localObject2).Udk = (paramView + "&offset=" + SosSimilarUI.b(this.PKc).offset + "&pos=" + paramInt + "&clienttimestamp=" + System.currentTimeMillis() + "&tab=0&requestid=" + SosSimilarUI.b(this.PKc).uMC);; ((dxu)localObject2).Udk = (paramView + "&sessionid=" + SosSimilarUI.b(this.PKc).sessionId + "&nettype=" + ai.anV() + "&requestid=" + SosSimilarUI.b(this.PKc).uMC + "&reqbusinesstype=256&pageno=" + ((com.tencent.mm.emoji.b.b.h)paramae).jJe))
+      label634:
+      for (paramView = null;; paramView = paramView.emojiMD5)
       {
-        paramView = new ad((dxu)localObject2);
-        com.tencent.mm.kernel.h.aGY().b((q)paramView);
-        Log.i("MicroMsg.WebSearch.SosSimilarUI", ((dxu)localObject2).Udk);
-        AppMethodBeat.o(260648);
+        ((eqy)localObject2).abuE = (paramView + "&offset=" + SosSimilarUI.b(this.WAu).offset + "&pos=" + paramInt + "&clienttimestamp=" + System.currentTimeMillis() + "&tab=0&requestid=" + SosSimilarUI.b(this.WAu).xVe);
+        paramView = new com.tencent.mm.plugin.websearch.api.ae((eqy)localObject2);
+        com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)paramView, 0);
+        Log.i("MicroMsg.WebSearch.SosSimilarUI", ((eqy)localObject2).abuE);
+        AppMethodBeat.o(294811);
         return;
-        paramView = null;
+        paramView = paramView.toUser;
         break;
-        localObject2 = (com.tencent.mm.pluginsdk.j)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.j.class);
-        paramView = SosSimilarUI.b(this.PKc).PJV;
-        if (paramView != null) {}
-        for (paramView = paramView.toUser;; paramView = null)
+        if (this.WAu.getIntent().getBooleanExtra("KEY_GET_EMOJI_INFO_DIRECTLY", false))
         {
-          ((com.tencent.mm.pluginsdk.j)localObject2).b(paramContext, paramView, ((EmojiInfo)((aa.f)localObject1).aaBC).getMd5(), ((EmojiInfo)((aa.f)localObject1).aaBC).field_designerID, "", ((EmojiInfo)((aa.f)localObject1).aaBC).field_thumbUrl, (y.a)new b(this, (aa.f)localObject1, paramContext));
+          paramView = (com.tencent.mm.pluginsdk.j)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.j.class);
+          SosSimilarUI.b(this.WAu);
+          paramView.a(paramContext, ((EmojiInfo)((ah.f)localObject1).aqH).getMd5(), ((EmojiInfo)((ah.f)localObject1).aqH).field_designerID, "", ((EmojiInfo)((ah.f)localObject1).aqH).field_thumbUrl, new SosSimilarUI.c..ExternalSyntheticLambda0(this.WAu, (ah.f)localObject1));
+          break label213;
+        }
+        localObject2 = (com.tencent.mm.pluginsdk.j)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.j.class);
+        paramView = SosSimilarUI.b(this.WAu).WAo;
+        if (paramView == null) {}
+        for (paramView = null;; paramView = paramView.toUser)
+        {
+          ((com.tencent.mm.pluginsdk.j)localObject2).b(paramContext, paramView, ((EmojiInfo)((ah.f)localObject1).aqH).getMd5(), ((EmojiInfo)((ah.f)localObject1).aqH).field_designerID, "", ((EmojiInfo)((ah.f)localObject1).aqH).field_thumbUrl, new SosSimilarUI.c..ExternalSyntheticLambda1(this.WAu, (ah.f)localObject1, paramContext));
           break;
         }
-        label546:
-        localStringBuilder = new StringBuilder("scene=78&searchid=").append(SosSimilarUI.b(this.PKc).uMC).append("&businesstype=256&docid=").append(((com.tencent.mm.emoji.b.b.h)paramae).jJd).append("&docpos=").append(paramInt).append("&typepos=0&ishomepage=0&clienttimestamp=").append(cm.bfE()).append("&sceneactiontype=1&query=");
-        paramView = SosSimilarUI.b(this.PKc).PJV;
-        if (paramView != null)
-        {
-          paramContext = paramView.query;
-          paramView = paramContext;
-          if (paramContext != null) {}
-        }
-        else
-        {
+      }
+      label642:
+      localObject1 = new StringBuilder("scene=78&searchid=").append(SosSimilarUI.b(this.WAu).xVe).append("&businesstype=256&docid=").append(((com.tencent.mm.emoji.c.b.h)paramae).miv).append("&docpos=").append(paramInt).append("&typepos=0&ishomepage=0&clienttimestamp=").append(cn.bDw()).append("&sceneactiontype=1&query=");
+      paramView = SosSimilarUI.b(this.WAu).WAo;
+      if (paramView == null) {
+        paramView = "";
+      }
+      for (;;)
+      {
+        ((eqy)localObject2).abuE = (paramView + "&sessionid=" + SosSimilarUI.b(this.WAu).sessionId + "&nettype=" + aj.gtA() + "&requestid=" + SosSimilarUI.b(this.WAu).xVe + "&reqbusinesstype=256&pageno=" + ((com.tencent.mm.emoji.c.b.h)paramae).miw);
+        break;
+        paramContext = paramView.query;
+        paramView = paramContext;
+        if (paramContext == null) {
           paramView = "";
-        }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "parsterLen", "", "onDialogClick"})
-    static final class a
-      implements y.a
-    {
-      a(SosSimilarUI.d paramd, aa.f paramf, Context paramContext) {}
-      
-      public final void a(boolean paramBoolean, String paramString, int paramInt)
-      {
-        AppMethodBeat.i(82499);
-        if (paramBoolean)
-        {
-          paramString = com.tencent.mm.search.b.a.UWT;
-          paramString = com.tencent.mm.search.b.a.hto();
-          if (paramString != null)
-          {
-            paramString = paramString.jLH;
-            if (paramString != null) {
-              paramString.o((EmojiInfo)this.PKe.aaBC);
-            }
-          }
-          w.makeText(paramContext, (CharSequence)paramContext.getString(c.i.app_sent), 1).show();
-        }
-        this.PKd.PKc.f((EmojiInfo)this.PKe.aaBC, paramBoolean);
-        AppMethodBeat.o(82499);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "parsterLen", "", "onDialogClick"})
-    static final class b
-      implements y.a
-    {
-      b(SosSimilarUI.d paramd, aa.f paramf, Context paramContext) {}
-      
-      public final void a(boolean paramBoolean, String paramString, int paramInt)
-      {
-        Object localObject2 = null;
-        AppMethodBeat.i(267708);
-        Object localObject3;
-        if (paramBoolean)
-        {
-          localObject3 = com.tencent.mm.plugin.emoji.model.p.cUO();
-          localObject1 = SosSimilarUI.b(this.PKd.PKc).PJV;
-          if (localObject1 == null) {
-            break label166;
-          }
-        }
-        label166:
-        for (Object localObject1 = ((SimilarEmojiQueryModel)localObject1).toUser;; localObject1 = null)
-        {
-          ((com.tencent.mm.plugin.emoji.e.f)localObject3).a((String)localObject1, (EmojiInfo)this.PKe.aaBC, null);
-          if (!Util.isNullOrNil(paramString))
-          {
-            localObject3 = g.eRW();
-            SimilarEmojiQueryModel localSimilarEmojiQueryModel = SosSimilarUI.b(this.PKd.PKc).PJV;
-            localObject1 = localObject2;
-            if (localSimilarEmojiQueryModel != null) {
-              localObject1 = localSimilarEmojiQueryModel.toUser;
-            }
-            ((d)localObject3).iQ(paramString, (String)localObject1);
-          }
-          w.makeText(paramContext, (CharSequence)paramContext.getString(c.i.app_sent), 1).show();
-          this.PKd.PKc.f((EmojiInfo)this.PKe.aaBC, paramBoolean);
-          AppMethodBeat.o(267708);
-          return;
         }
       }
     }

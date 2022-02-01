@@ -7,69 +7,69 @@ import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.r;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenThumbLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "mRecycleView", "Landroidx/recyclerview/widget/RecyclerView;", "context", "Landroid/content/Context;", "orientation", "", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/content/Context;I)V", "TAG", "", "contentWidth", "itemWidth", "getMRecycleView", "()Landroidx/recyclerview/widget/RecyclerView;", "setMRecycleView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "applyWidthSize", "", "onLayoutChildren", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateChildWithIndex", "index", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenThumbLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "mRecycleView", "Landroidx/recyclerview/widget/RecyclerView;", "context", "Landroid/content/Context;", "orientation", "", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/content/Context;I)V", "TAG", "", "contentWidth", "itemWidth", "getMRecycleView", "()Landroidx/recyclerview/widget/RecyclerView;", "setMRecycleView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "applyWidthSize", "", "onLayoutChildren", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollHorizontallyBy", "dx", "scrollToPosition", "position", "smoothScrollToPosition", "recyclerView", "updateChildWithIndex", "index", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ScreenThumbLayoutManager
   extends LinearLayoutManager
 {
-  private RecyclerView CEY;
+  private RecyclerView Izb;
   private final String TAG;
   public int contentWidth;
-  public int tHY;
+  public int wLI;
   
   public ScreenThumbLayoutManager(RecyclerView paramRecyclerView, Context paramContext)
   {
     super(0, false);
-    AppMethodBeat.i(205090);
-    this.CEY = paramRecyclerView;
+    AppMethodBeat.i(285877);
+    this.Izb = paramRecyclerView;
     this.TAG = "MicroMsg.ScreenThumbLayoutManager";
-    AppMethodBeat.o(205090);
+    AppMethodBeat.o(285877);
   }
   
   public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(205084);
-    p.k(paramn, "recycler");
-    p.k(params, "state");
+    AppMethodBeat.i(285883);
+    s.u(paramn, "recycler");
+    s.u(params, "state");
     super.onLayoutChildren(paramn, params);
-    AppMethodBeat.o(205084);
+    AppMethodBeat.o(285883);
   }
   
   public final int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(205085);
-    p.k(paramn, "recycler");
-    p.k(params, "state");
+    AppMethodBeat.i(285893);
+    s.u(paramn, "recycler");
+    s.u(params, "state");
     paramInt = super.scrollHorizontallyBy(paramInt, paramn, params);
-    AppMethodBeat.o(205085);
+    AppMethodBeat.o(285893);
     return paramInt;
   }
   
   public final void scrollToPosition(int paramInt)
   {
-    AppMethodBeat.i(205087);
-    au(paramInt, (this.contentWidth - this.tHY) / 2);
-    AppMethodBeat.o(205087);
+    AppMethodBeat.i(285906);
+    bo(paramInt, (this.contentWidth - this.wLI) / 2);
+    AppMethodBeat.o(285906);
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(205086);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(params, "state");
+    AppMethodBeat.i(285900);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(params, "state");
     if (paramInt == -1)
     {
-      AppMethodBeat.o(205086);
+      AppMethodBeat.o(285900);
       return;
     }
     paramRecyclerView = paramRecyclerView.getContext();
-    p.j(paramRecyclerView, "recyclerView.context");
+    s.s(paramRecyclerView, "recyclerView.context");
     paramRecyclerView = new a(paramRecyclerView);
-    paramRecyclerView.cV(paramInt);
+    paramRecyclerView.cag = paramInt;
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(205086);
+    AppMethodBeat.o(285900);
   }
 }
 

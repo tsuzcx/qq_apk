@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="right" android:orientation="vertical" android:background="@drawable/v4" android:layout_width="414.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/db">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/deg" android:padding="@dimen/cp" android:layout_width="@dimen/d5" android:layout_height="@dimen/d_" android:layout_marginLeft="@dimen/df" android:src="@raw/icons_outlined_back" android:layout_centerVertical="true" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+        <RelativeLayout android:id="@id/dmz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dn0" android:visibility="invisible" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/wecoin_balance_icons" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" app:iconColor="@color/ar" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/dn2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/bv" android:layout_toEndOf="@id/dn0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dmy" android:visibility="invisible" android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/df" android:layout_toEndOf="@id/dn2" app:iconColor="@color/BW_100_Alpha_0_3" />
+            <ProgressBar android:id="@id/dn1" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_centerInParent="true" style="@style/a75" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/hsl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dc1" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/df" android:src="@raw/wecoin_balance_icons" android:layout_centerVertical="true" app:iconColor="@color/ar" />
+            <TextView android:textSize="40.0dip" android:textColor="@color/az" android:id="@id/hts" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/az" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/dlk" android:background="@drawable/a11" android:paddingLeft="@dimen/cp" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cp" android:paddingBottom="@dimen/df" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/d_" android:layout_marginBottom="@dimen/cv" android:text="@string/dbx" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/ah5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:text="@string/dc2" android:maxLines="1" />
+</LinearLayout>

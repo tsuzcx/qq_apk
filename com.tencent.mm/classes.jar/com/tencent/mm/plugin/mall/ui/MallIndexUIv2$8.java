@@ -1,29 +1,58 @@
 package com.tencent.mm.plugin.mall.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.mall.a.d;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.autogen.a.zp;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.wallet_core.ui.i;
+import java.util.ArrayList;
 
 final class MallIndexUIv2$8
-  implements View.OnClickListener
+  implements u.i
 {
-  MallIndexUIv2$8(MallIndexUIv2 paramMallIndexUIv2, d paramd) {}
+  MallIndexUIv2$8(MallIndexUIv2 paramMallIndexUIv2) {}
   
-  public final void onClick(View paramView)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(275255);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/mall/ui/MallIndexUIv2$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    new Intent();
-    g.cY(this.ERS, this.ERG.EOB);
-    a.a(this, "com/tencent/mm/plugin/mall/ui/MallIndexUIv2$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(275255);
+    AppMethodBeat.i(262409);
+    paramMenuItem = (t)MallIndexUIv2.k(this.KMs).get(paramMenuItem.getItemId());
+    Log.i("MicorMsg.MallIndexUIv2", "selected pay manga label, jump type = " + paramMenuItem.jumpType);
+    switch (paramMenuItem.jumpType)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(262409);
+      return;
+      if (!Util.isNullOrNil(paramMenuItem.jumpUrl))
+      {
+        i.o(this.KMs.getContext(), paramMenuItem.jumpUrl, false);
+        AppMethodBeat.o(262409);
+        return;
+        if (!Util.isNullOrNil(paramMenuItem.username))
+        {
+          zp localzp = new zp();
+          localzp.icM.userName = paramMenuItem.username;
+          localzp.icM.icO = Util.nullAs(paramMenuItem.path, "");
+          localzp.icM.scene = 1066;
+          localzp.icM.icP = 0;
+          localzp.publish();
+          AppMethodBeat.o(262409);
+          return;
+          h.OAn.b(23388, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
+          c.g(this.KMs.getContext(), "wallet_core", ".ui.WalletSwitchWalletCurrencyUI", 65281);
+          AppMethodBeat.o(262409);
+          return;
+          h.OAn.b(23388, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+          c.ai(this.KMs.getContext(), "mall", ".ui.MallFunctionSettingsUI");
+        }
+      }
+    }
   }
 }
 

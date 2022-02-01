@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/adr" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.game.ui.GameFeedSocialInfoView android:orientation="vertical" android:id="@id/eny" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.webview.ui.tools.browser.view.BrowserIconImageView android:id="@id/adq" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@drawable/icon" android:importantForAccessibility="no" />
-    <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:gravity="center|top" android:id="@id/adv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="@dimen/bt" android:layout_marginRight="@dimen/bt" android:maxLines="2" android:lines="2" android:includeFontPadding="false" android:importantForAccessibility="no" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/a2_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/va" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/gx" />
+        <com.tencent.mm.plugin.game.widget.GameSmallAvatarList android:orientation="horizontal" android:id="@id/a2b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/gx" />
+        <TextView android:textSize="@dimen/h2" android:textColor="@color/w1" android:id="@id/a21" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/c21" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/va" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/gx" />
+        <TextView android:textSize="@dimen/h2" android:textColor="@color/w1" android:id="@id/c2f" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.tencent.mm.plugin.game.ui.GameFeedSocialInfoView>

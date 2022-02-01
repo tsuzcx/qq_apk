@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="i">1</integer>
+    <integer name="n">1</integer>
 </resources>

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
-import com.tencent.mm.plugin.appbrand.utils.e.a;
+import com.tencent.mm.plugin.appbrand.utils.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public final class j
   private static final int CTRL_INDEX = 361;
   public static final String NAME = "updateLivePusher";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145899);
     int i = paramJSONObject.optInt("livePusherId");
@@ -25,7 +25,7 @@ public final class j
   }
   
   /* Error */
-  public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.g paramg, int paramInt, final android.view.View paramView, JSONObject paramJSONObject)
+  public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt, final android.view.View paramView, JSONObject paramJSONObject)
   {
     // Byte code:
     //   0: ldc 47
@@ -60,7 +60,7 @@ public final class j
     //   55: aload_3
     //   56: checkcast 66	com/tencent/mm/plugin/appbrand/jsapi/coverview/CoverViewContainer
     //   59: ldc 73
-    //   61: invokevirtual 77	com/tencent/mm/plugin/appbrand/jsapi/coverview/CoverViewContainer:aA	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   61: invokevirtual 77	com/tencent/mm/plugin/appbrand/jsapi/coverview/CoverViewContainer:aT	(Ljava/lang/Class;)Ljava/lang/Object;
     //   64: checkcast 73	android/view/View
     //   67: astore_3
     //   68: aload_3
@@ -84,17 +84,17 @@ public final class j
     //   105: aload 4
     //   107: ldc 87
     //   109: aload_3
-    //   110: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:cHV	Ljava/lang/String;
+    //   110: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:eBs	Ljava/lang/String;
     //   113: invokevirtual 98	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   116: putfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:cHV	Ljava/lang/String;
+    //   116: putfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:eBs	Ljava/lang/String;
     //   119: aload_3
     //   120: aload 4
     //   122: ldc 100
     //   124: aconst_null
     //   125: invokevirtual 98	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   128: putfield 103	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:cHW	Ljava/lang/String;
+    //   128: putfield 103	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:eBt	Ljava/lang/String;
     //   131: aload_3
-    //   132: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:cHV	Ljava/lang/String;
+    //   132: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:eBs	Ljava/lang/String;
     //   135: invokestatic 108	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   138: ifeq +170 -> 308
     //   141: aload 4
@@ -104,8 +104,8 @@ public final class j
     //   150: pop
     //   151: aload_3
     //   152: aload 4
-    //   154: invokestatic 120	com/tencent/mm/plugin/appbrand/jsapi/live/n:ad	(Lorg/json/JSONObject;)Landroid/os/Bundle;
-    //   157: invokevirtual 124	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:Q	(Landroid/os/Bundle;)V
+    //   154: invokestatic 120	com/tencent/mm/plugin/appbrand/jsapi/live/n:an	(Lorg/json/JSONObject;)Landroid/os/Bundle;
+    //   157: invokevirtual 124	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ab	(Landroid/os/Bundle;)V
     //   160: aload 4
     //   162: ldc 126
     //   164: invokevirtual 91	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -172,12 +172,12 @@ public final class j
     //   302: invokestatic 71	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   305: goto -154 -> 151
     //   308: aload_3
-    //   309: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:cHV	Ljava/lang/String;
+    //   309: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:eBs	Ljava/lang/String;
     //   312: ldc 150
     //   314: invokevirtual 155	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   317: ifne +15 -> 332
     //   320: aload_3
-    //   321: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:cHV	Ljava/lang/String;
+    //   321: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:eBs	Ljava/lang/String;
     //   324: ldc 157
     //   326: invokevirtual 155	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   329: ifeq -178 -> 151
@@ -195,7 +195,7 @@ public final class j
     //   353: aload_3
     //   354: aload 5
     //   356: invokespecial 164	com/tencent/mm/plugin/appbrand/jsapi/live/j$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/j;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;Ljava/lang/String;)V
-    //   359: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/e:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/e;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/e$a;)V
+    //   359: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/g:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/f;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/g$a;)V
     //   362: goto -159 -> 203
     //   365: astore 5
     //   367: ldc 49
@@ -222,7 +222,7 @@ public final class j
     //   403: aload_3
     //   404: aload 5
     //   406: invokespecial 177	com/tencent/mm/plugin/appbrand/jsapi/live/j$2:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/j;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;Ljava/lang/String;)V
-    //   409: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/e:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/e;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/e$a;)V
+    //   409: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/g:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/f;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/g$a;)V
     //   412: goto -175 -> 237
     //   415: astore 5
     //   417: ldc 49
@@ -248,7 +248,7 @@ public final class j
     //   453: aload_0
     //   454: aload_3
     //   455: invokespecial 180	com/tencent/mm/plugin/appbrand/jsapi/live/j$3:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/j;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;)V
-    //   458: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/e:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/e;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/e$a;)V
+    //   458: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/g:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/f;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/g$a;)V
     //   461: goto -181 -> 280
     //   464: astore_1
     //   465: ldc 49
@@ -269,7 +269,7 @@ public final class j
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	491	0	this	j
-    //   0	491	1	paramg	com.tencent.mm.plugin.appbrand.jsapi.g
+    //   0	491	1	paramh	com.tencent.mm.plugin.appbrand.jsapi.h
     //   0	491	2	paramInt	int
     //   0	491	3	paramView	android.view.View
     //   0	491	4	paramJSONObject	JSONObject
@@ -291,7 +291,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.j
  * JD-Core Version:    0.7.0.1
  */

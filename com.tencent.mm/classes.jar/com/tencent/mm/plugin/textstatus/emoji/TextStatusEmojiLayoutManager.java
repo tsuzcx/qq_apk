@@ -6,55 +6,52 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "maxHeight", "scrollY", "tenDpHeight", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "updateChildren", "updateHideArea", "rect", "Companion", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "hideRect", "Landroid/graphics/Rect;", "maxHeight", "scrollY", "tenDpHeight", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "updateChildren", "updateHideArea", "rect", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusEmojiLayoutManager
   extends GridLayoutManager
 {
-  public static final a MBj;
-  private int fVl;
-  private final Rect jLp;
+  public static final TextStatusEmojiLayoutManager.a TkP;
+  private int ibi;
+  private final Rect mkA;
   
   static
   {
-    AppMethodBeat.i(235908);
-    MBj = new a((byte)0);
-    AppMethodBeat.o(235908);
+    AppMethodBeat.i(290826);
+    TkP = new TextStatusEmojiLayoutManager.a((byte)0);
+    AppMethodBeat.o(290826);
   }
   
   public TextStatusEmojiLayoutManager(Context paramContext)
   {
     super(7);
-    AppMethodBeat.i(235907);
-    this.jLp = new Rect();
-    AppMethodBeat.o(235907);
+    AppMethodBeat.i(290815);
+    this.mkA = new Rect();
+    AppMethodBeat.o(290815);
   }
   
-  public final void aji(int paramInt)
+  public final void aoq(int paramInt)
   {
-    AppMethodBeat.i(235905);
+    AppMethodBeat.i(290842);
     if (paramInt != -1) {
-      this.fVl = paramInt;
+      this.ibi = paramInt;
     }
-    if (this.jLp.isEmpty())
+    if (this.mkA.isEmpty())
     {
-      AppMethodBeat.o(235905);
+      AppMethodBeat.o(290842);
       return;
     }
-    AppMethodBeat.o(235905);
+    AppMethodBeat.o(290842);
   }
   
   public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(235903);
+    AppMethodBeat.i(290832);
     super.onLayoutChildren(paramn, params);
-    aji(-1);
-    AppMethodBeat.o(235903);
+    aoq(-1);
+    AppMethodBeat.o(290832);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/emoji/TextStatusEmojiLayoutManager$Companion;", "", "()V", "TAG", "", "plugin-textstatus_release"})
-  public static final class a {}
 }
 
 

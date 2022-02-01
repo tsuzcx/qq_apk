@@ -2,170 +2,187 @@ package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.recordvideo.c.e;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"enableAddFinderAudio", "", "enableExport1080WidescreenVideo", "enableFallbackFailedSoftEncode", "enableImageAddMusic", "enableImageAutoAddMusic", "enableMagic", "enableMusicLyrics", "enableRecordAddAudio", "enableVideoTemplate", "finderEnableEncodeHevc", "longVideo", "duration", "", "finderEnableHevcHardwareEncode", "finderEnableHevcSoftEncode", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"enableAddFinderAudio", "", "enableExport1080WidescreenVideo", "enableFallbackFailedSoftEncode", "enableImageAddMusic", "enableImageAutoAddMusic", "enableImageAutoAddMusicPanel", "enableMagic", "enableMusicLyrics", "enableRecordAddAudio", "enableVideoTemplate", "finderEnableEncodeHevc", "longVideo", "duration", "", "finderEnableHevcHardwareEncode", "finderEnableHevcSoftEncode", "plugin-vlog_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class w
 {
-  public static final boolean gtn()
+  public static final boolean hQM()
   {
-    AppMethodBeat.i(235346);
+    AppMethodBeat.i(283539);
     if (!BuildInfo.IS_FLAVOR_PURPLE) {
       boolean bool = BuildInfo.DEBUG;
     }
     if (MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_EDITOR_MAGIC_INT_SYNC", 0) == 1)
     {
-      AppMethodBeat.o(235346);
+      AppMethodBeat.o(283539);
       return true;
     }
-    AppMethodBeat.o(235346);
+    AppMethodBeat.o(283539);
     return false;
   }
   
-  public static final boolean gto()
+  public static final boolean hQN()
   {
-    AppMethodBeat.i(235350);
+    AppMethodBeat.i(283547);
     MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_EDITOR_VIDEO_TEMPLATE_INT_SYNC", 0);
-    AppMethodBeat.o(235350);
+    AppMethodBeat.o(283547);
     return false;
   }
   
-  public static final boolean gtp()
+  public static final boolean hQO()
   {
-    AppMethodBeat.i(235353);
+    AppMethodBeat.i(283556);
     int i = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("FINDER_FOLLOW_PAT_ENTRANCE", 0);
-    int j = ((b)h.ae(b.class)).a(b.a.vJa, 0);
+    int j = ((c)h.ax(c.class)).a(c.a.yZe, 0);
     if ((i == 1) || (j == 1))
     {
-      AppMethodBeat.o(235353);
+      AppMethodBeat.o(283556);
       return true;
     }
-    AppMethodBeat.o(235353);
+    AppMethodBeat.o(283556);
     return false;
   }
   
-  public static final boolean gtq()
+  public static final boolean hQP()
   {
-    AppMethodBeat.i(235361);
-    Object localObject = n.NlN;
-    if (n.gsU())
+    AppMethodBeat.i(283582);
+    Object localObject = m.TYW;
+    if (m.hQq())
     {
-      localObject = n.NlN;
-      if (n.gsX() == 2)
+      localObject = m.TYW;
+      if (m.hQt() == 2)
       {
-        AppMethodBeat.o(235361);
+        AppMethodBeat.o(283582);
         return true;
       }
-      AppMethodBeat.o(235361);
+      AppMethodBeat.o(283582);
       return false;
     }
     int i = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_HEVC_ENCODE_OPTION_INT_SYNC", 0);
-    localObject = e.HJM;
-    boolean bool = e.fvz();
+    localObject = e.NGK;
+    boolean bool = e.gHo();
     if ((i == 2) || (bool))
     {
-      AppMethodBeat.o(235361);
+      AppMethodBeat.o(283582);
       return true;
     }
-    AppMethodBeat.o(235361);
+    AppMethodBeat.o(283582);
     return false;
   }
   
-  public static final boolean gtr()
+  public static final boolean hQQ()
   {
-    AppMethodBeat.i(235362);
-    if ((((b)h.ae(b.class)).a(b.a.vLo, 1) == 1) && (gtp()))
+    AppMethodBeat.i(283591);
+    if ((((c)h.ax(c.class)).a(c.a.zbO, 1) == 1) && (hQO()))
     {
-      AppMethodBeat.o(235362);
+      AppMethodBeat.o(283591);
       return true;
     }
-    AppMethodBeat.o(235362);
+    AppMethodBeat.o(283591);
     return false;
   }
   
-  public static final boolean gts()
+  public static final boolean hQR()
   {
-    AppMethodBeat.i(235365);
-    if (((b)h.ae(b.class)).a(b.a.vLq, 0) == 1)
+    AppMethodBeat.i(283597);
+    if ((((c)h.ax(c.class)).a(c.a.zbP, 0) == 1) && (hQQ()))
     {
-      AppMethodBeat.o(235365);
+      AppMethodBeat.o(283597);
       return true;
     }
-    AppMethodBeat.o(235365);
+    AppMethodBeat.o(283597);
     return false;
   }
   
-  public static final boolean gtt()
+  public static final boolean hQS()
   {
-    AppMethodBeat.i(235368);
-    if (((b)h.ae(b.class)).a(b.a.vLr, 0) == 1)
+    AppMethodBeat.i(283600);
+    if (((c)h.ax(c.class)).a(c.a.zbR, 0) == 1)
     {
-      AppMethodBeat.o(235368);
+      AppMethodBeat.o(283600);
       return true;
     }
-    AppMethodBeat.o(235368);
+    AppMethodBeat.o(283600);
     return false;
   }
   
-  public static final boolean gtu()
+  public static final boolean hQT()
   {
-    AppMethodBeat.i(235370);
-    if (((b)h.ae(b.class)).a(b.a.vLs, 1) == 1)
+    AppMethodBeat.i(283603);
+    if (((c)h.ax(c.class)).a(c.a.zbS, 0) == 1)
     {
-      AppMethodBeat.o(235370);
+      AppMethodBeat.o(283603);
       return true;
     }
-    AppMethodBeat.o(235370);
+    AppMethodBeat.o(283603);
     return false;
   }
   
-  public static final boolean o(boolean paramBoolean, long paramLong)
+  public static final boolean hQU()
   {
-    AppMethodBeat.i(235355);
-    if ((p(paramBoolean, paramLong)) || (gtq()))
+    AppMethodBeat.i(283608);
+    if (((c)h.ax(c.class)).a(c.a.zbT, 1) == 1)
     {
-      AppMethodBeat.o(235355);
+      AppMethodBeat.o(283608);
       return true;
     }
-    AppMethodBeat.o(235355);
+    AppMethodBeat.o(283608);
     return false;
   }
   
-  public static final boolean p(boolean paramBoolean, long paramLong)
+  public static final boolean s(boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(235358);
-    Object localObject = n.NlN;
-    if (n.gsU())
+    AppMethodBeat.i(283566);
+    if ((t(paramBoolean, paramLong)) || (hQP()))
     {
-      localObject = n.NlN;
-      if (n.gsX() == 1)
+      AppMethodBeat.o(283566);
+      return true;
+    }
+    AppMethodBeat.o(283566);
+    return false;
+  }
+  
+  public static final boolean t(boolean paramBoolean, long paramLong)
+  {
+    AppMethodBeat.i(283575);
+    Object localObject = m.TYW;
+    if (m.hQq())
+    {
+      localObject = m.TYW;
+      if (m.hQt() == 1)
       {
-        AppMethodBeat.o(235358);
+        AppMethodBeat.o(283575);
         return true;
       }
-      AppMethodBeat.o(235358);
+      AppMethodBeat.o(283575);
       return false;
     }
-    int i = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_HEVC_ENCODE_OPTION_INT_SYNC", 0);
-    localObject = e.HJM;
-    paramBoolean = e.k(paramBoolean, paramLong);
-    if ((i == 1) || (paramBoolean))
+    int i = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_HEVC_ENCODE_OPTION_INT_SYNC", -1);
+    localObject = e.NGK;
+    paramBoolean = e.n(paramBoolean, paramLong);
+    if (i != -1)
     {
-      AppMethodBeat.o(235358);
-      return true;
+      if (i == 1)
+      {
+        AppMethodBeat.o(283575);
+        return true;
+      }
+      AppMethodBeat.o(283575);
+      return false;
     }
-    AppMethodBeat.o(235358);
-    return false;
+    AppMethodBeat.o(283575);
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.w
  * JD-Core Version:    0.7.0.1
  */

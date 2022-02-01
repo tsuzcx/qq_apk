@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:id="@id/cv2" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/c_q" android:background="@drawable/c77" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:id="@id/c95" android:background="@drawable/u8" android:layout_width="62.0dip" android:layout_height="fill_parent" android:alpha="0.75" />
-        <RelativeLayout android:background="@drawable/c71" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/c_o" android:layout_marginLeft="@dimen/a42" style="@style/iz" />
-            <ImageView android:id="@id/c_p" android:layout_marginRight="@dimen/a42" android:layout_alignParentRight="true" style="@style/iz" />
-            <ImageView android:id="@id/c_i" android:layout_marginLeft="@dimen/a42" android:layout_alignParentBottom="true" style="@style/iz" />
-            <ImageView android:id="@id/c_j" android:layout_marginRight="@dimen/a42" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/iz" />
-            <ImageView android:id="@id/c_l" android:layout_marginTop="@dimen/a42" style="@style/j0" />
-            <ImageView android:id="@id/c_k" android:layout_marginBottom="@dimen/a42" android:layout_alignParentBottom="true" style="@style/j0" />
-            <ImageView android:id="@id/c_n" android:layout_marginTop="@dimen/a42" android:layout_alignParentRight="true" style="@style/j0" />
-            <ImageView android:id="@id/c_m" android:layout_marginBottom="@dimen/a42" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/j0" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/c8u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</merge>
+    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bk9" />
+    <TextView android:textSize="@dimen/uy" android:textColor="@color/al6" android:id="@id/cv3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cne" />
+</LinearLayout>

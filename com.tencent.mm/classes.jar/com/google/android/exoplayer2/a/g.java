@@ -8,27 +8,115 @@ import java.util.Arrays;
 final class g
   implements d
 {
-  private int aPP = -1;
-  int[] aPQ;
-  private int[] aPR;
-  private boolean aPS;
   private boolean active;
-  private ByteBuffer buffer = aOp;
+  private ByteBuffer buffer = cIl;
+  private int cJL = -1;
+  int[] cJM;
+  private int[] cJN;
+  private boolean cJO;
   private int channelCount = -1;
-  private ByteBuffer outputBuffer = aOp;
+  private ByteBuffer outputBuffer = cIl;
   
-  public final void c(ByteBuffer paramByteBuffer)
+  public final boolean C(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(91802);
+    if (!Arrays.equals(this.cJM, this.cJN)) {}
+    for (int k = 1;; k = 0)
+    {
+      this.cJN = this.cJM;
+      if (this.cJN != null) {
+        break;
+      }
+      this.active = false;
+      AppMethodBeat.o(91802);
+      return k;
+    }
+    d.a locala;
+    if (paramInt3 != 2)
+    {
+      locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(91802);
+      throw locala;
+    }
+    if ((k == 0) && (this.cJL == paramInt1) && (this.channelCount == paramInt2))
+    {
+      AppMethodBeat.o(91802);
+      return false;
+    }
+    this.cJL = paramInt1;
+    this.channelCount = paramInt2;
+    if (paramInt2 != this.cJN.length) {}
+    int i;
+    for (k = 1;; k = 0)
+    {
+      this.active = k;
+      i = 0;
+      if (i >= this.cJN.length) {
+        break label231;
+      }
+      j = this.cJN[i];
+      if (j < paramInt2) {
+        break;
+      }
+      locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(91802);
+      throw locala;
+    }
+    k = this.active;
+    if (j != i) {}
+    for (int j = 1;; j = 0)
+    {
+      this.active = (j | k);
+      i += 1;
+      break;
+    }
+    label231:
+    AppMethodBeat.o(91802);
+    return true;
+  }
+  
+  public final boolean QU()
+  {
+    return (this.cJO) && (this.outputBuffer == cIl);
+  }
+  
+  public final int Rb()
+  {
+    if (this.cJN == null) {
+      return this.channelCount;
+    }
+    return this.cJN.length;
+  }
+  
+  public final int Rc()
+  {
+    return 2;
+  }
+  
+  public final void Rd()
+  {
+    this.cJO = true;
+  }
+  
+  public final ByteBuffer Re()
+  {
+    ByteBuffer localByteBuffer = this.outputBuffer;
+    this.outputBuffer = cIl;
+    return localByteBuffer;
+  }
+  
+  public final void d(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(91803);
     int i = paramByteBuffer.position();
     int k = paramByteBuffer.limit();
-    int j = (k - i) / (this.channelCount * 2) * this.aPR.length * 2;
+    int j = (k - i) / (this.channelCount * 2) * this.cJN.length * 2;
     if (this.buffer.capacity() < j) {
       this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
     }
     while (i < k)
     {
-      int[] arrayOfInt = this.aPR;
+      int[] arrayOfInt = this.cJN;
       int m = arrayOfInt.length;
       j = 0;
       for (;;)
@@ -53,8 +141,8 @@ final class g
   
   public final void flush()
   {
-    this.outputBuffer = aOp;
-    this.aPS = false;
+    this.outputBuffer = cIl;
+    this.cJO = false;
   }
   
   public final boolean isActive()
@@ -62,99 +150,16 @@ final class g
     return this.active;
   }
   
-  public final boolean m(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(91802);
-    if (!Arrays.equals(this.aPQ, this.aPR)) {}
-    for (int k = 1;; k = 0)
-    {
-      this.aPR = this.aPQ;
-      if (this.aPR != null) {
-        break;
-      }
-      this.active = false;
-      AppMethodBeat.o(91802);
-      return k;
-    }
-    d.a locala;
-    if (paramInt3 != 2)
-    {
-      locala = new d.a(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(91802);
-      throw locala;
-    }
-    if ((k == 0) && (this.aPP == paramInt1) && (this.channelCount == paramInt2))
-    {
-      AppMethodBeat.o(91802);
-      return false;
-    }
-    this.aPP = paramInt1;
-    this.channelCount = paramInt2;
-    if (paramInt2 != this.aPR.length) {}
-    int i;
-    for (k = 1;; k = 0)
-    {
-      this.active = k;
-      i = 0;
-      if (i >= this.aPR.length) {
-        break label231;
-      }
-      j = this.aPR[i];
-      if (j < paramInt2) {
-        break;
-      }
-      locala = new d.a(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(91802);
-      throw locala;
-    }
-    k = this.active;
-    if (j != i) {}
-    for (int j = 1;; j = 0)
-    {
-      this.active = (j | k);
-      i += 1;
-      break;
-    }
-    label231:
-    AppMethodBeat.o(91802);
-    return true;
-  }
-  
-  public final void rA()
-  {
-    this.aPS = true;
-  }
-  
-  public final ByteBuffer rB()
-  {
-    ByteBuffer localByteBuffer = this.outputBuffer;
-    this.outputBuffer = aOp;
-    return localByteBuffer;
-  }
-  
   public final void reset()
   {
     AppMethodBeat.i(91804);
     flush();
-    this.buffer = aOp;
+    this.buffer = cIl;
     this.channelCount = -1;
-    this.aPP = -1;
-    this.aPR = null;
+    this.cJL = -1;
+    this.cJN = null;
     this.active = false;
     AppMethodBeat.o(91804);
-  }
-  
-  public final boolean rt()
-  {
-    return (this.aPS) && (this.outputBuffer == aOp);
-  }
-  
-  public final int rz()
-  {
-    if (this.aPR == null) {
-      return this.channelCount;
-    }
-    return this.aPR.length;
   }
 }
 

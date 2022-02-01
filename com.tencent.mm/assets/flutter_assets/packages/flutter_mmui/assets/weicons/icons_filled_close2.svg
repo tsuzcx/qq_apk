@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_filled_close2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons_filled_close2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="common_icons_miniprogram" fill="#000000" fill-rule="nonzero">
+            <path d="M39.1819805,36 L48.197592,26.9843885 L45.0156115,23.802408 L36,32.8180195 L26.9843885,23.802408 L23.802408,26.9843885 L32.8180195,36 L23.802408,45.0156115 L26.9843885,48.197592 L36,39.1819805 L45.0156115,48.197592 L48.197592,45.0156115 L39.1819805,36 Z M36,66 C19.4314575,66 6,52.5685425 6,36 C6,19.4314575 19.4314575,6 36,6 C52.5685425,6 66,19.4314575 66,36 C66,52.5685425 52.5685425,66 36,66 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

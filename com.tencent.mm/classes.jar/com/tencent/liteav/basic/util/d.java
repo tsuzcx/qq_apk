@@ -17,19 +17,19 @@ public class d
 {
   public static long a(File paramFile)
   {
-    AppMethodBeat.i(240813);
+    AppMethodBeat.i(230106);
     long l = a(paramFile, 5);
-    AppMethodBeat.o(240813);
+    AppMethodBeat.o(230106);
     return l;
   }
   
   public static long a(File paramFile, int paramInt)
   {
     long l1 = 0L;
-    AppMethodBeat.i(240815);
+    AppMethodBeat.i(230114);
     if (paramInt <= 0)
     {
-      AppMethodBeat.o(240815);
+      AppMethodBeat.o(230114);
       return 0L;
     }
     long l2 = l1;
@@ -63,7 +63,7 @@ public class d
       catch (Exception paramFile)
       {
         TXCLog.i("FileUtil", "getFolderSize exception " + paramFile.toString());
-        AppMethodBeat.o(240815);
+        AppMethodBeat.o(230114);
         return l2;
       }
       i += 1;
@@ -197,23 +197,23 @@ public class d
   
   public static void a(Closeable paramCloseable)
   {
-    AppMethodBeat.i(240828);
+    AppMethodBeat.i(230201);
     if (paramCloseable != null) {}
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(240828);
+      AppMethodBeat.o(230201);
       return;
     }
     catch (IOException paramCloseable)
     {
-      AppMethodBeat.o(240828);
+      AppMethodBeat.o(230201);
     }
   }
   
   public static void a(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(240820);
+    AppMethodBeat.i(230136);
     byte[] arrayOfByte = new byte[1024];
     for (;;)
     {
@@ -223,7 +223,7 @@ public class d
       }
       paramOutputStream.write(arrayOfByte, 0, i);
     }
-    AppMethodBeat.o(240820);
+    AppMethodBeat.o(230136);
   }
   
   /* Error */
@@ -382,7 +382,7 @@ public class d
   
   public static boolean a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(240825);
+    AppMethodBeat.i(230179);
     paramContext = paramContext.getAssets();
     try
     {
@@ -393,7 +393,7 @@ public class d
         if (paramContext[i].equals(paramString.trim()))
         {
           TXCLog.i("isAssetFileExists", paramString + " exist");
-          AppMethodBeat.o(240825);
+          AppMethodBeat.o(230179);
           return true;
         }
         i += 1;
@@ -403,10 +403,10 @@ public class d
     catch (IOException paramContext)
     {
       TXCLog.i("isAssetFileExists", paramString + " not exist");
-      AppMethodBeat.o(240825);
+      AppMethodBeat.o(230179);
       return false;
     }
-    AppMethodBeat.o(240825);
+    AppMethodBeat.o(230179);
     return false;
   }
   
@@ -700,7 +700,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.util.d
  * JD-Core Version:    0.7.0.1
  */

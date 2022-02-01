@@ -23,12 +23,12 @@ public final class m
   public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121340);
-    parama = parama.aGj();
+    parama = parama.aZk();
     String str = parama.getString("__page_view_id", "");
     Bundle localBundle = new Bundle();
     localBundle.putString("id", str);
     localBundle.putString("data", paramJSONObject.toString());
-    XIPCInvoker.a(parama.getString("__process_name", ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).mProcessName), localBundle, a.class, new f() {});
+    XIPCInvoker.a(parama.getString("__process_name", ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).mProcessName), localBundle, a.class, new f() {});
     AppMethodBeat.o(121340);
   }
   
@@ -38,7 +38,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.m
  * JD-Core Version:    0.7.0.1
  */

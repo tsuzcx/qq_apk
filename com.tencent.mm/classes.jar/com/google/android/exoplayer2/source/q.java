@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 public final class q
 {
-  private int aNf;
-  public final Format[] bgf;
+  private int cHb;
+  public final Format[] cZY;
   public final int length;
   
   public q(Format... paramVarArgs)
@@ -18,7 +18,7 @@ public final class q
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.bgf = paramVarArgs;
+      this.cZY = paramVarArgs;
       this.length = paramVarArgs.length;
       AppMethodBeat.o(92720);
       return;
@@ -39,7 +39,7 @@ public final class q
       return false;
     }
     paramObject = (q)paramObject;
-    if ((this.length == paramObject.length) && (Arrays.equals(this.bgf, paramObject.bgf)))
+    if ((this.length == paramObject.length) && (Arrays.equals(this.cZY, paramObject.cZY)))
     {
       AppMethodBeat.o(92722);
       return true;
@@ -51,10 +51,10 @@ public final class q
   public final int hashCode()
   {
     AppMethodBeat.i(92721);
-    if (this.aNf == 0) {
-      this.aNf = (Arrays.hashCode(this.bgf) + 527);
+    if (this.cHb == 0) {
+      this.cHb = (Arrays.hashCode(this.cZY) + 527);
     }
-    int i = this.aNf;
+    int i = this.cHb;
     AppMethodBeat.o(92721);
     return i;
   }
@@ -62,9 +62,9 @@ public final class q
   public final int j(Format paramFormat)
   {
     int i = 0;
-    while (i < this.bgf.length)
+    while (i < this.cZY.length)
     {
-      if (paramFormat == this.bgf[i]) {
+      if (paramFormat == this.cZY[i]) {
         return i;
       }
       i += 1;

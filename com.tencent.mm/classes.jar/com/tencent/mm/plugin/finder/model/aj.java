@@ -1,49 +1,34 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.view.recyclerview.h.b;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.view.recyclerview.a;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderHeaderFullMergedData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "msgNotifyData", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;", "privateMsgNotifyData", "Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;", "commentFailedNotifyDataList", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderCommentFailedNotifyData;", "(Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;Ljava/util/concurrent/ConcurrentLinkedQueue;)V", "getCommentFailedNotifyDataList", "()Ljava/util/concurrent/ConcurrentLinkedQueue;", "getMsgNotifyData", "()Lcom/tencent/mm/plugin/finder/model/FeedHeaderMsgNotifyData;", "getPrivateMsgNotifyData", "()Lcom/tencent/mm/plugin/finder/model/FinderPrivateMsgNotifyData;", "compare", "", "obj", "getItemId", "", "getItemType", "isEmpty", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getItemId", "", "getItemType", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aj
-  extends h.b
-  implements k
+  implements a
 {
-  public final h msgNotifyData;
-  public final bm xCY;
-  public final ConcurrentLinkedQueue<f> xDc;
+  public final m contact;
   
-  public aj(h paramh, bm parambm, ConcurrentLinkedQueue<f> paramConcurrentLinkedQueue)
+  public aj(m paramm)
   {
-    AppMethodBeat.i(281045);
-    this.msgNotifyData = paramh;
-    this.xCY = parambm;
-    this.xDc = paramConcurrentLinkedQueue;
-    AppMethodBeat.o(281045);
+    AppMethodBeat.i(332137);
+    this.contact = paramm;
+    AppMethodBeat.o(332137);
   }
   
-  public final int a(k paramk)
+  public final long bZA()
   {
-    AppMethodBeat.i(281040);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(281040);
-    return 2147483647;
+    return 0L;
   }
   
-  public final int bAQ()
+  public final int bZB()
   {
-    return 2019;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(281042);
-    long l = hashCode();
-    AppMethodBeat.o(281042);
-    return l;
+    AppMethodBeat.i(332149);
+    int i = aj.class.getName().hashCode();
+    AppMethodBeat.o(332149);
+    return i;
   }
 }
 

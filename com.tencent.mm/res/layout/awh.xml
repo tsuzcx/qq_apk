@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/lw" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
-</LinearLayout>
+    <Button android:id="@id/ekf" android:layout_width="60.0dip" android:layout_height="30.0dip" android:text="@string/f_f" style="@style/k_" />
+    <com.tencent.mm.plugin.game.widget.TextProgressBar android:id="@id/ekh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:max="100" style="@style/k9" />
+</merge>

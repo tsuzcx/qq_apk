@@ -17,38 +17,38 @@ import java.util.concurrent.ConcurrentHashMap;
 public class y
   implements a, com.tencent.mm.kernel.api.c, f, h, com.tencent.mm.kernel.b.c
 {
-  private static ConcurrentHashMap<String, y> lsv;
-  private volatile a lsr;
-  private volatile Class<? extends be> lss;
-  private volatile be lst;
-  private volatile boolean lsu;
+  private static ConcurrentHashMap<String, y> ojT;
+  private volatile a ojP;
+  private volatile Class<? extends be> ojQ;
+  private volatile be ojR;
+  private volatile boolean ojS;
   
   static
   {
     AppMethodBeat.i(42788);
-    lsv = new ConcurrentHashMap();
+    ojT = new ConcurrentHashMap();
     AppMethodBeat.o(42788);
   }
   
   public y(a parama)
   {
-    this.lsu = false;
-    this.lsr = parama;
+    this.ojS = false;
+    this.ojP = parama;
   }
   
   public y(Class<? extends be> paramClass)
   {
     AppMethodBeat.i(42773);
-    this.lsu = false;
-    this.lss = paramClass;
-    a(this.lss.getName(), this);
+    this.ojS = false;
+    this.ojQ = paramClass;
+    a(this.ojQ.getName(), this);
     AppMethodBeat.o(42773);
   }
   
-  public static y PC(String paramString)
+  public static y Ix(String paramString)
   {
     AppMethodBeat.i(42778);
-    y localy = (y)lsv.get(paramString);
+    y localy = (y)ojT.get(paramString);
     if (localy == null) {
       Log.i("MicroMsg.CompatSubCore", "compatSubCore is null by name %s", new Object[] { paramString });
     }
@@ -56,16 +56,16 @@ public class y
     {
       AppMethodBeat.o(42778);
       return localy;
-      com.tencent.mm.kernel.a.c.aHV().bB(localy);
+      com.tencent.mm.kernel.a.c.baR().cU(localy);
     }
   }
   
   public static y a(String paramString, y paramy)
   {
     AppMethodBeat.i(42777);
-    y localy = (y)lsv.putIfAbsent(paramString, paramy);
+    y localy = (y)ojT.putIfAbsent(paramString, paramy);
     if (localy == null) {
-      com.tencent.mm.kernel.a.c.aHV().bC(paramy);
+      com.tencent.mm.kernel.a.c.baR().cV(paramy);
     }
     for (;;)
     {
@@ -76,25 +76,25 @@ public class y
     }
   }
   
-  public static <T extends be> T as(Class<T> paramClass)
+  public static <T extends be> T aL(Class<T> paramClass)
   {
     AppMethodBeat.i(42781);
-    y localy2 = PC(paramClass.getName());
+    y localy2 = Ix(paramClass.getName());
     y localy1 = localy2;
     if (localy2 == null)
     {
       localy1 = new y(paramClass);
       a(paramClass.getName(), localy1);
     }
-    paramClass = localy1.bcW();
+    paramClass = localy1.bAJ();
     AppMethodBeat.o(42781);
     return paramClass;
   }
   
-  public static void bcX()
+  public static void bAK()
   {
     AppMethodBeat.i(42779);
-    Iterator localIterator = lsv.values().iterator();
+    Iterator localIterator = ojT.values().iterator();
     while (localIterator.hasNext()) {
       ((y)localIterator.next()).reset();
     }
@@ -106,14 +106,14 @@ public class y
     AppMethodBeat.i(42776);
     try
     {
-      Log.i("MicroMsg.CompatSubCore", "createSubCore(), %s %s", new Object[] { this.lss, this.lsr });
-      if (this.lsr != null)
+      Log.i("MicroMsg.CompatSubCore", "createSubCore(), %s %s", new Object[] { this.ojQ, this.ojP });
+      if (this.ojP != null)
       {
-        localbe = this.lsr.createSubCore();
+        localbe = this.ojP.createSubCore();
         AppMethodBeat.o(42776);
         return localbe;
       }
-      be localbe = (be)this.lss.newInstance();
+      be localbe = (be)this.ojQ.newInstance();
       AppMethodBeat.o(42776);
       return localbe;
     }
@@ -137,8 +137,8 @@ public class y
   {
     try
     {
-      this.lst = null;
-      this.lsu = false;
+      this.ojR = null;
+      this.ojS = false;
       return;
     }
     finally
@@ -148,13 +148,13 @@ public class y
     }
   }
   
-  public static void uH(int paramInt)
+  public static void uT(int paramInt)
   {
     AppMethodBeat.i(42780);
-    Iterator localIterator = lsv.values().iterator();
+    Iterator localIterator = ojT.values().iterator();
     while (localIterator.hasNext())
     {
-      be localbe = ((y)localIterator.next()).bcW();
+      be localbe = ((y)localIterator.next()).bAJ();
       if (localbe != null) {
         localbe.clearPluginData(paramInt);
       }
@@ -162,16 +162,16 @@ public class y
     AppMethodBeat.o(42780);
   }
   
-  public void MU(String paramString) {}
+  public void FD(String paramString) {}
   
   public final void a(be parambe)
   {
     AppMethodBeat.i(42775);
     try
     {
-      this.lst = parambe;
-      if ((this.lss == null) && (this.lst != null)) {
-        this.lss = this.lst.getClass();
+      this.ojR = parambe;
+      if ((this.ojQ == null) && (this.ojR != null)) {
+        this.ojQ = this.ojR.getClass();
       }
       return;
     }
@@ -181,50 +181,50 @@ public class y
     }
   }
   
-  public final void aHQ()
-  {
-    AppMethodBeat.i(42785);
-    be localbe = bcW();
-    if (localbe == null)
-    {
-      AppMethodBeat.o(42785);
-      return;
-    }
-    if (!this.lsu)
-    {
-      AppMethodBeat.o(42785);
-      return;
-    }
-    localbe.onSdcardMount(e.avA());
-    AppMethodBeat.o(42785);
-  }
-  
-  public final void aHR()
-  {
-    AppMethodBeat.i(42786);
-    bcW();
-    AppMethodBeat.o(42786);
-  }
-  
-  public final be bcW()
+  public final be bAJ()
   {
     try
     {
       AppMethodBeat.i(42774);
-      if (this.lst == null) {
+      if (this.ojR == null) {
         a(createSubCore());
       }
-      be localbe = this.lst;
+      be localbe = this.ojR;
       AppMethodBeat.o(42774);
       return localbe;
     }
     finally {}
   }
   
+  public final void baN()
+  {
+    AppMethodBeat.i(42785);
+    be localbe = bAJ();
+    if (localbe == null)
+    {
+      AppMethodBeat.o(42785);
+      return;
+    }
+    if (!this.ojS)
+    {
+      AppMethodBeat.o(42785);
+      return;
+    }
+    localbe.onSdcardMount(e.aPU());
+    AppMethodBeat.o(42785);
+  }
+  
+  public final void baO()
+  {
+    AppMethodBeat.i(42786);
+    bAJ();
+    AppMethodBeat.o(42786);
+  }
+  
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
     AppMethodBeat.i(42782);
-    Object localObject = bcW();
+    Object localObject = bAJ();
     if (localObject == null)
     {
       AppMethodBeat.o(42782);
@@ -238,21 +238,21 @@ public class y
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(42783);
-    be localbe = bcW();
+    be localbe = bAJ();
     if (localbe == null)
     {
       AppMethodBeat.o(42783);
       return;
     }
-    localbe.onAccountPostReset(paramc.kcX);
-    this.lsu = true;
+    localbe.onAccountPostReset(paramc.mDg);
+    this.ojS = true;
     AppMethodBeat.o(42783);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(42784);
-    be localbe = bcW();
+    be localbe = bAJ();
     if (localbe == null)
     {
       AppMethodBeat.o(42784);
@@ -265,7 +265,7 @@ public class y
   public String toString()
   {
     AppMethodBeat.i(42787);
-    String str = super.toString() + " " + this.lss + " " + this.lsr + " " + this.lst;
+    String str = super.toString() + " " + this.ojQ + " " + this.ojP + " " + this.ojR;
     AppMethodBeat.o(42787);
     return str;
   }
@@ -277,7 +277,7 @@ public class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.y
  * JD-Core Version:    0.7.0.1
  */

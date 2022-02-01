@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 
 public abstract class b
-  extends q
+  extends p
 {
-  protected String Ln;
-  protected int PxG;
+  protected int WnM;
+  protected String brD;
   protected int mScene;
-  
-  public final int gQm()
-  {
-    return this.PxG;
-  }
-  
-  public abstract String gQp();
   
   public final String getQuery()
   {
-    return this.Ln;
+    return this.brD;
   }
+  
+  public final int ipD()
+  {
+    return this.WnM;
+  }
+  
+  public abstract String ipG();
 }
 
 

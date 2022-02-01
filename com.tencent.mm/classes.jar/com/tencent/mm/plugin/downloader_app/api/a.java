@@ -9,11 +9,11 @@ public abstract interface a
     static
     {
       AppMethodBeat.i(153082);
-      ulA = new a("OK", 0);
-      ulB = new a("FAIL", 1);
-      ulC = new a("WAIT_FOR_WIFI", 2);
-      ulD = new a("CANCEL", 3);
-      ulE = new a[] { ulA, ulB, ulC, ulD };
+      xrM = new a("OK", 0);
+      xrN = new a("FAIL", 1);
+      xrO = new a("WAIT_FOR_WIFI", 2);
+      xrP = new a("CANCEL", 3);
+      xrQ = new a[] { xrM, xrN, xrO, xrP };
       AppMethodBeat.o(153082);
     }
     
@@ -27,7 +27,7 @@ public abstract interface a
   
   public static abstract interface c
   {
-    public abstract void bPX();
+    public abstract void cqd();
   }
 }
 

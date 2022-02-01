@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/k1f" android:layout_width="fill_parent" android:layout_height="128.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="top" android:id="@id/gca" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.view.TouchableLayout android:layout_gravity="top" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/ecx" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.view.RefreshLoadMoreLayout android:gravity="top" android:orientation="vertical" android:id="@id/gyl" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <androidx.recyclerview.widget.RecyclerView android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            </com.tencent.mm.view.RefreshLoadMoreLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <FrameLayout android:id="@id/gcb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <FrameLayout android:layout_gravity="bottom" android:id="@id/gc_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.view.TouchableLayout>
-</merge>
+    <include android:layout_width="@dimen/amb" android:layout_height="@dimen/ama" layout="@layout/bm9" />
+    <include android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" layout="@layout/bm3" />
+    <include android:layout_gravity="fill_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/amb" android:layout_toLeftOf="@id/apw" android:layout_marginStart="@dimen/amb" android:layout_toStartOf="@id/apw" layout="@layout/bm_" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/gq3" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_alignParentBottom="true" android:layoutDirection="ltr" />
+    <ImageView android:id="@id/e8" android:background="?android:dividerHorizontal" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_above="@id/gq3" />
+</RelativeLayout>

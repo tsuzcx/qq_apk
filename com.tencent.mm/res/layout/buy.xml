@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/h8y" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdStreamVideoView android:layout_gravity="center" android:id="@id/j6y" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <include layout="@layout/bsy" />
+    <ImageView android:id="@id/j2e" android:background="@color/g_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.3" />
+    <ImageView android:layout_gravity="top" android:id="@id/j2f" android:background="@drawable/c59" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/j2c" android:background="@drawable/apz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d0" />
 </FrameLayout>

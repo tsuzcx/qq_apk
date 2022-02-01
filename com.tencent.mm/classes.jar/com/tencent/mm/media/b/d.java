@@ -5,37 +5,38 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.EncoderCapabilities;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/config/VideoCodecConfig;", "Lcom/tencent/mm/media/config/BaseCodecConfig;", "enableHevc", "", "(Z)V", "bitrate", "", "getBitrate", "()I", "setBitrate", "(I)V", "codecInfo", "Landroid/media/MediaCodecInfo;", "getCodecInfo", "()Landroid/media/MediaCodecInfo;", "setCodecInfo", "(Landroid/media/MediaCodecInfo;)V", "colorFormat", "getColorFormat", "setColorFormat", "forceCQ", "getForceCQ", "()Z", "setForceCQ", "frameRate", "getFrameRate", "setFrameRate", "iFrameInterval", "getIFrameInterval", "setIFrameInterval", "initError", "getInitError", "setInitError", "maxQP", "getMaxQP", "setMaxQP", "mimeType", "", "getMimeType", "()Ljava/lang/String;", "setMimeType", "(Ljava/lang/String;)V", "minQP", "getMinQP", "setMinQP", "name", "getName", "setName", "targetHeight", "getTargetHeight", "setTargetHeight", "targetWidth", "getTargetWidth", "setTargetWidth", "useHWQP", "getUseHWQP", "setUseHWQP", "configToFormat", "Landroid/media/MediaFormat;", "isHevcType", "toString", "Companion", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/config/VideoCodecConfig;", "Lcom/tencent/mm/media/config/BaseCodecConfig;", "enableHevc", "", "(Z)V", "bitrate", "", "getBitrate", "()I", "setBitrate", "(I)V", "codecInfo", "Landroid/media/MediaCodecInfo;", "getCodecInfo", "()Landroid/media/MediaCodecInfo;", "setCodecInfo", "(Landroid/media/MediaCodecInfo;)V", "colorFormat", "getColorFormat", "setColorFormat", "forceCQ", "getForceCQ", "()Z", "setForceCQ", "frameRate", "getFrameRate", "setFrameRate", "iFrameInterval", "getIFrameInterval", "setIFrameInterval", "initError", "getInitError", "setInitError", "maxQP", "getMaxQP", "setMaxQP", "mimeType", "", "getMimeType", "()Ljava/lang/String;", "setMimeType", "(Ljava/lang/String;)V", "minQP", "getMinQP", "setMinQP", "name", "getName", "setName", "targetHeight", "getTargetHeight", "setTargetHeight", "targetWidth", "getTargetWidth", "setTargetWidth", "useHWQP", "getUseHWQP", "setUseHWQP", "configBFrameFormat", "", "mediaFormat", "Landroid/media/MediaFormat;", "configToFormat", "enableSetBFrameToCodec", "isHevcType", "toString", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class d
   extends a
 {
-  public static final a kSo;
+  public static final d.a nxN;
   public int bitrate;
   private int colorFormat;
   public int frameRate;
-  public int kSh;
-  public boolean kSi;
-  public boolean kSj;
-  private boolean kSk;
-  public int kSl;
-  public int kSm;
-  private MediaCodecInfo kSn;
   public String mimeType;
   public String name;
-  public int targetHeight;
-  public int targetWidth;
+  public int nxO;
+  public int nxP;
+  public int nxQ;
+  public boolean nxR;
+  public boolean nxS;
+  private boolean nxT;
+  public int nxU;
+  public int nxV;
+  private MediaCodecInfo nxW;
   
   static
   {
     AppMethodBeat.i(93521);
-    kSo = new a((byte)0);
+    nxN = new d.a((byte)0);
     AppMethodBeat.o(93521);
   }
   
@@ -43,73 +44,66 @@ public class d
   {
     AppMethodBeat.i(93520);
     this.colorFormat = 2130708361;
-    this.kSh = 1;
+    this.nxQ = 1;
     this.mimeType = "video/avc";
-    Log.i("MicroMsg.VideoCodecConfig", "init, enableHevc:".concat(String.valueOf(paramBoolean)));
+    Log.i("MicroMsg.VideoCodecConfig", s.X("init, enableHevc:", Boolean.valueOf(paramBoolean)));
     if (paramBoolean)
     {
-      this.kSn = selectCodec("video/hevc");
-      if (this.kSn == null)
+      this.nxW = selectCodec("video/hevc");
+      if (this.nxW == null)
       {
         Log.e("MicroMsg.VideoCodecConfig", "cannot found hevc codec info! fallback to select avc codec");
-        this.kSn = selectCodec("video/avc");
+        this.nxW = selectCodec("video/avc");
         this.mimeType = "video/avc";
-        com.tencent.mm.plugin.report.service.h.IzE.p(1280L, 61L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(1280L, 61L, 1L);
       }
     }
-    while (this.kSn == null)
+    while (this.nxW == null)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.p(1047L, 0L, 1L);
-      this.kSi = true;
+      com.tencent.mm.plugin.report.service.h.OAn.p(1047L, 0L, 1L);
+      this.nxR = true;
       AppMethodBeat.o(93520);
       return;
-      StringBuilder localStringBuilder = new StringBuilder("success select hevc codec:");
-      localObject = this.kSn;
-      if (localObject != null) {}
-      for (localObject = ((MediaCodecInfo)localObject).getName();; localObject = null)
+      localObject = this.nxW;
+      if (localObject == null) {}
+      for (localObject = null;; localObject = ((MediaCodecInfo)localObject).getName())
       {
-        Log.i("MicroMsg.VideoCodecConfig", (String)localObject);
+        Log.i("MicroMsg.VideoCodecConfig", s.X("success select hevc codec:", localObject));
         this.mimeType = "video/hevc";
-        com.tencent.mm.plugin.report.service.h.IzE.p(1280L, 60L, 1L);
+        com.tencent.mm.plugin.report.service.h.OAn.p(1280L, 60L, 1L);
         break;
       }
-      this.kSn = selectCodec("video/avc");
+      this.nxW = selectCodec("video/avc");
       this.mimeType = "video/avc";
     }
-    Object localObject = this.kSn;
-    if (localObject == null) {
-      p.iCn();
-    }
+    Object localObject = this.nxW;
+    s.checkNotNull(localObject);
     this.name = ((MediaCodecInfo)localObject).getName();
-    this.kSh = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vwe, 1);
-    Log.i("MicroMsg.VideoCodecConfig", "codecInfo.name : " + this.name + "  iFrameInterval " + this.kSh);
+    this.nxQ = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yJg, 1);
+    Log.i("MicroMsg.VideoCodecConfig", "codecInfo.name : " + this.name + "  iFrameInterval " + this.nxQ);
     AppMethodBeat.o(93520);
   }
   
-  public final MediaFormat aUd()
+  public final MediaFormat boH()
   {
     AppMethodBeat.i(93518);
-    Log.i("MicroMsg.VideoCodecConfig", "targetWidth:" + this.targetWidth + ", targetHeight:" + this.targetHeight + ", bitrate:" + this.bitrate + ", frameRate:" + this.frameRate + ", colorFormat:" + this.colorFormat + ", iFrameInterval:" + this.kSh + ", value: minQP:" + this.kSl + ", maxQP:" + this.kSm);
-    MediaFormat localMediaFormat = MediaFormat.createVideoFormat(this.mimeType, this.targetWidth, this.targetHeight);
-    Object localObject1 = this.kSn;
-    if (localObject1 == null) {
-      p.iCn();
-    }
-    p.j(localMediaFormat, "mediaFormat");
+    Log.i("MicroMsg.VideoCodecConfig", "targetWidth:" + this.nxO + ", targetHeight:" + this.nxP + ", bitrate:" + this.bitrate + ", frameRate:" + this.frameRate + ", colorFormat:" + this.colorFormat + ", iFrameInterval:" + this.nxQ + ", value: minQP:" + this.nxU + ", maxQP:" + this.nxV);
+    MediaFormat localMediaFormat = MediaFormat.createVideoFormat(this.mimeType, this.nxO, this.nxP);
+    s.s(localMediaFormat, "createVideoFormat(mimeTy…argetWidth, targetHeight)");
+    Object localObject1 = this.nxW;
+    s.checkNotNull(localObject1);
     a((MediaCodecInfo)localObject1, localMediaFormat, this.mimeType);
-    localObject1 = this.kSn;
-    if (localObject1 == null) {
-      p.iCn();
-    }
+    localObject1 = this.nxW;
+    s.checkNotNull(localObject1);
     Object localObject2 = this.mimeType;
-    p.k(localObject1, "codecInfo");
-    p.k(localMediaFormat, "mediaFormat");
-    p.k(localObject2, "mimeType");
+    s.u(localObject1, "codecInfo");
+    s.u(localMediaFormat, "mediaFormat");
+    s.u(localObject2, "mimeType");
     for (;;)
     {
       try
       {
-        if (com.tencent.mm.compatible.util.d.qV(21))
+        if (com.tencent.mm.compatible.util.d.rb(21))
         {
           localObject1 = ((MediaCodecInfo)localObject1).getCapabilitiesForType((String)localObject2);
           if (localObject1 != null)
@@ -128,21 +122,28 @@ public class d
       }
       catch (Exception localException)
       {
+        MultiProcessMMKV localMultiProcessMMKV;
+        int i;
+        int j;
         Log.e("MicroMsg.VideoCodecConfig", "trySetBitRateMode error: %s", new Object[] { localException.getMessage() });
         continue;
         Log.i("MicroMsg.VideoCodecConfig", "both vbr and cbr bitrate mode not support!");
+        continue;
+        boolean bool = false;
+        continue;
+        Log.i("MicroMsg.VideoCodecConfig", "configBFrameFormat, not contain BFrameKey");
         continue;
       }
       localMediaFormat.setInteger("bitrate", this.bitrate);
       localMediaFormat.setInteger("frame-rate", this.frameRate);
       localMediaFormat.setInteger("color-format", this.colorFormat);
-      localMediaFormat.setInteger("i-frame-interval", this.kSh);
-      if (this.kSj)
+      localMediaFormat.setInteger("i-frame-interval", this.nxQ);
+      if (this.nxS)
       {
         Log.i("MicroMsg.VideoCodecConfig", "mediaformat force set BITRATE_MODE_CQ, %s", new Object[] { localMediaFormat.toString() });
         localMediaFormat.setInteger("bitrate-mode", 0);
       }
-      if ((this.kSl != 0) && (this.kSm != 0))
+      if ((this.nxU != 0) && (this.nxV != 0))
       {
         localObject2 = MultiProcessMMKV.getMMKV("HardcoderQP");
         if (localObject2 != null)
@@ -151,12 +152,36 @@ public class d
           localObject2 = ((MultiProcessMMKV)localObject2).decodeString("HCMaxQPKey", null);
           if ((localObject1 != null) && (localObject2 != null))
           {
-            localMediaFormat.setInteger((String)localObject2, this.kSm);
-            localMediaFormat.setInteger((String)localObject1, this.kSl);
-            this.kSk = true;
-            Log.i("MicroMsg.VideoCodecConfig", "steve:[hardcoder]configToFormat mediaformat set QP! key: min:" + (String)localObject1 + ", max:" + (String)localObject2 + ", value: minQP:" + this.kSl + ", maxQP:" + this.kSm);
+            localMediaFormat.setInteger((String)localObject2, this.nxV);
+            localMediaFormat.setInteger((String)localObject1, this.nxU);
+            this.nxT = true;
+            Log.i("MicroMsg.VideoCodecConfig", "steve:[hardcoder]configToFormat mediaformat set QP! key: min:" + localObject1 + ", max:" + localObject2 + ", value: minQP:" + this.nxU + ", maxQP:" + this.nxV);
           }
         }
+      }
+      if (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zwD, 1) != 1) {
+        continue;
+      }
+      bool = true;
+      Log.i("MicroMsg.VideoCodecConfig", s.X("enableSetBFrameToCodec:", Boolean.valueOf(bool)));
+      if (bool)
+      {
+        localMultiProcessMMKV = MultiProcessMMKV.getMMKV("HardcoderBFrame");
+        if (!localMultiProcessMMKV.containsKey("BFrameKey")) {
+          continue;
+        }
+        localObject2 = localMultiProcessMMKV.getString("BFrameKey", "");
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        i = localMultiProcessMMKV.getInt("BFrameKeyOptionOpen", -1);
+        j = localMultiProcessMMKV.getInt("BFrameKeyOptionClose", -1);
+        Log.i("MicroMsg.VideoCodecConfig", "configBFrameFormat, get BFrameKey:" + (String)localObject1 + ", BFrameKeyOptionOpen:" + i + ", BFrameKeyOptionClose:" + j);
+        if ((!Util.isNullOrNil((String)localObject1)) && (i != -1) && (j != -1)) {
+          localMediaFormat.setInteger((String)localObject1, i);
+        }
+        Log.i("MicroMsg.VideoCodecConfig", s.X("finished configBFrame, mediaFormat:", localMediaFormat));
       }
       Log.i("MicroMsg.VideoCodecConfig", "mediaFormat: %s", new Object[] { localMediaFormat });
       AppMethodBeat.o(93518);
@@ -172,17 +197,14 @@ public class d
   public String toString()
   {
     AppMethodBeat.i(93519);
-    String str = "VideoCodecConfig(targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", bitrate=" + this.bitrate + ", frameRate=" + this.frameRate + ", colorFormat=" + this.colorFormat + ", iFrameInterval=" + this.kSh + ", name=" + this.name + ", initError=" + this.kSi + ", forceCQ=" + this.kSj + ", codecInfo=" + this.kSn + ')';
+    String str = "VideoCodecConfig(targetWidth=" + this.nxO + ", targetHeight=" + this.nxP + ", bitrate=" + this.bitrate + ", frameRate=" + this.frameRate + ", colorFormat=" + this.colorFormat + ", iFrameInterval=" + this.nxQ + ", name=" + this.name + ", initError=" + this.nxR + ", forceCQ=" + this.nxS + ", codecInfo=" + this.nxW + ')';
     AppMethodBeat.o(93519);
     return str;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/config/VideoCodecConfig$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.b.d
  * JD-Core Version:    0.7.0.1
  */

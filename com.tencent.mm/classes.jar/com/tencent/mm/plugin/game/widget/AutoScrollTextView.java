@@ -8,8 +8,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.g.a;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.plugin.game.h.a;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.ArrayList;
@@ -18,21 +18,21 @@ import java.util.List;
 public class AutoScrollTextView
   extends LinearLayout
 {
-  private MTimerHandler CSP;
-  private ArrayList<String> CUd;
-  private Animation CUk;
-  private Animation CUl;
-  private TextView Def;
-  private TextView Deg;
-  private int uPV;
+  private MTimerHandler INf;
+  private Animation IOB;
+  private Animation IOC;
+  private ArrayList<String> IOu;
+  private TextView IYw;
+  private TextView IYx;
+  private int xYG;
   
   public AutoScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(42571);
-    this.CUd = new ArrayList();
-    this.uPV = 0;
-    this.CSP = new MTimerHandler(new MTimerHandler.CallBack()
+    this.IOu = new ArrayList();
+    this.xYG = 0;
+    this.INf = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -42,24 +42,24 @@ public class AutoScrollTextView
         return true;
       }
     }, true);
-    this.Def = new TextView(paramContext, paramAttributeSet);
-    this.Def.setVisibility(8);
-    this.Deg = new TextView(paramContext, paramAttributeSet);
-    this.Deg.setVisibility(8);
-    addView(this.Def);
-    addView(this.Deg);
+    this.IYw = new TextView(paramContext, paramAttributeSet);
+    this.IYw.setVisibility(8);
+    this.IYx = new TextView(paramContext, paramAttributeSet);
+    this.IYx.setVisibility(8);
+    addView(this.IYw);
+    addView(this.IYx);
     setOrientation(1);
     setGravity(17);
     setPadding(0, 0, 0, 0);
-    this.CUk = AnimationUtils.loadAnimation(paramContext, g.a.slide_bottom_in);
-    this.CUl = AnimationUtils.loadAnimation(paramContext, g.a.slide_top_out);
+    this.IOB = AnimationUtils.loadAnimation(paramContext, h.a.slide_bottom_in);
+    this.IOC = AnimationUtils.loadAnimation(paramContext, h.a.slide_top_out);
     AppMethodBeat.o(42571);
   }
   
   private void f(TextView paramTextView, String paramString)
   {
     AppMethodBeat.i(42573);
-    paramTextView.setText(new SpannableString(l.b(getContext(), paramString, paramTextView.getTextSize())));
+    paramTextView.setText(new SpannableString(p.b(getContext(), paramString, paramTextView.getTextSize())));
     AppMethodBeat.o(42573);
   }
   
@@ -67,38 +67,38 @@ public class AutoScrollTextView
   {
     AppMethodBeat.i(42574);
     super.onDetachedFromWindow();
-    this.CSP.stopTimer();
+    this.INf.stopTimer();
     AppMethodBeat.o(42574);
   }
   
   public void setText(List<String> paramList)
   {
     AppMethodBeat.i(42572);
-    this.CUd.clear();
-    this.CSP.stopTimer();
+    this.IOu.clear();
+    this.INf.stopTimer();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.Def.setVisibility(8);
-      this.Deg.setVisibility(8);
+      this.IYw.setVisibility(8);
+      this.IYx.setVisibility(8);
       AppMethodBeat.o(42572);
       return;
     }
-    this.CUd.addAll(paramList);
-    f(this.Def, (String)this.CUd.get(0));
-    this.Def.setVisibility(0);
-    this.uPV = 0;
-    if (this.CUd.size() == 1)
+    this.IOu.addAll(paramList);
+    f(this.IYw, (String)this.IOu.get(0));
+    this.IYw.setVisibility(0);
+    this.xYG = 0;
+    if (this.IOu.size() == 1)
     {
       AppMethodBeat.o(42572);
       return;
     }
-    this.CSP.startTimer(5000L);
+    this.INf.startTimer(5000L);
     AppMethodBeat.o(42572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.AutoScrollTextView
  * JD-Core Version:    0.7.0.1
  */

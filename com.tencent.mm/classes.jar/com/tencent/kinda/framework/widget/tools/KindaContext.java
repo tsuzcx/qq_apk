@@ -28,7 +28,7 @@ public class KindaContext
     AppMethodBeat.i(19388);
     sActivityLifeCycleCallbacks = new Application.ActivityLifecycleCallbacks()
     {
-      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+      public void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(19378);
         Log.d("KindaContext", "onActivityCreated：".concat(String.valueOf(paramAnonymousActivity)));
@@ -48,7 +48,7 @@ public class KindaContext
               str1 = localComponentName.getClassName();
             }
             Log.w("KindaContext", "created activity: %s not in the top, top is %s, fullClassName: %s", new Object[] { paramAnonymousBundle, str2, str1 });
-            h.IzE.p(1589L, 2L, 1L);
+            h.OAn.p(1589L, 2L, 1L);
           }
           KindaContext.sContextStack.push(new WeakReference(paramAnonymousActivity));
           Log.i("KindaContext", "sContextStack.push：".concat(String.valueOf(paramAnonymousActivity)));
@@ -56,9 +56,9 @@ public class KindaContext
         AppMethodBeat.o(19378);
       }
       
-      public final void onActivityDestroyed(Activity paramAnonymousActivity) {}
+      public void onActivityDestroyed(Activity paramAnonymousActivity) {}
       
-      public final void onActivityPaused(Activity paramAnonymousActivity)
+      public void onActivityPaused(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(19379);
         Log.d("KindaContext", "onActivityPaused：".concat(String.valueOf(paramAnonymousActivity)));
@@ -87,13 +87,13 @@ public class KindaContext
         }
       }
       
-      public final void onActivityResumed(Activity paramAnonymousActivity) {}
+      public void onActivityResumed(Activity paramAnonymousActivity) {}
       
-      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
+      public void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
       
-      public final void onActivityStarted(Activity paramAnonymousActivity) {}
+      public void onActivityStarted(Activity paramAnonymousActivity) {}
       
-      public final void onActivityStopped(Activity paramAnonymousActivity) {}
+      public void onActivityStopped(Activity paramAnonymousActivity) {}
     };
     AppMethodBeat.o(19388);
   }

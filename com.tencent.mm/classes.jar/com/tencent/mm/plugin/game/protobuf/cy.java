@@ -1,85 +1,92 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 
 public final class cy
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CMB;
-  public String CMD;
+  public int IKZ;
+  public String IcT;
+  public String oOI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41811);
+    AppMethodBeat.i(276911);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CMB == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.oOI == null)
       {
-        paramVarArgs = new b("Not all required fields were included: Desc");
-        AppMethodBeat.o(41811);
+        paramVarArgs = new b("Not all required fields were included: AppId");
+        AppMethodBeat.o(276911);
         throw paramVarArgs;
       }
-      if (this.CMB != null) {
-        paramVarArgs.f(1, this.CMB);
+      if (this.oOI != null) {
+        paramVarArgs.g(1, this.oOI);
       }
-      if (this.CMD != null) {
-        paramVarArgs.f(2, this.CMD);
+      if (this.IcT != null) {
+        paramVarArgs.g(2, this.IcT);
       }
-      AppMethodBeat.o(41811);
+      paramVarArgs.bS(3, this.IKZ);
+      AppMethodBeat.o(276911);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CMB == null) {
-        break label322;
+      if (this.oOI == null) {
+        break label362;
       }
     }
-    label322:
-    for (paramInt = g.a.a.b.b.a.g(1, this.CMB) + 0;; paramInt = 0)
+    label362:
+    for (paramInt = i.a.a.b.b.a.h(1, this.oOI) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.CMD != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.CMD);
+      if (this.IcT != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.IcT);
       }
-      AppMethodBeat.o(41811);
-      return i;
+      paramInt = i.a.a.b.b.a.cJ(3, this.IKZ);
+      AppMethodBeat.o(276911);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.CMB == null)
+        if (this.oOI == null)
         {
-          paramVarArgs = new b("Not all required fields were included: Desc");
-          AppMethodBeat.o(41811);
+          paramVarArgs = new b("Not all required fields were included: AppId");
+          AppMethodBeat.o(276911);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(41811);
+        AppMethodBeat.o(276911);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cy localcy = (cy)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41811);
+          AppMethodBeat.o(276911);
           return -1;
         case 1: 
-          localcy.CMB = locala.abFh.readString();
-          AppMethodBeat.o(41811);
+          localcy.oOI = locala.ajGk.readString();
+          AppMethodBeat.o(276911);
+          return 0;
+        case 2: 
+          localcy.IcT = locala.ajGk.readString();
+          AppMethodBeat.o(276911);
           return 0;
         }
-        localcy.CMD = locala.abFh.readString();
-        AppMethodBeat.o(41811);
+        localcy.IKZ = locala.ajGk.aar();
+        AppMethodBeat.o(276911);
         return 0;
       }
-      AppMethodBeat.o(41811);
+      AppMethodBeat.o(276911);
       return -1;
     }
   }

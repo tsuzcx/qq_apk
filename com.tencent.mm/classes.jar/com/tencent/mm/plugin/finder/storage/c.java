@@ -4,147 +4,123 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.av;
-import com.tencent.mm.plugin.finder.service.i;
+import com.tencent.mm.plugin.finder.cgi.bq;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.service.n;
 import com.tencent.mm.plugin.finder.storage.data.g;
 import com.tencent.mm.plugin.finder.utils.a;
+import com.tencent.mm.plugin.findersdk.a.ck;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.atr;
-import com.tencent.mm.protocal.protobuf.bep;
+import com.tencent.mm.protocal.protobuf.ayh;
+import com.tencent.mm.protocal.protobuf.bpq;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderBlockPosterConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "()V", "firstPageData", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "oplogCallbacks", "Ljava/util/Vector;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "canAddList", "", "getCache", "getEmptyTips", "", "getInitData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "getItemData", "netScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "getLastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "getNetScene", "lastBuff", "getSubTitleStr", "getTips", "fromPrivacySelect", "getTitleStrId", "", "needLoadMore", "onAddUserList", "nameList", "", "", "onItemDelete", "contact", "callBack", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "", "contacts", "onSearchBarClick", "", "context", "Landroid/content/Context;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderBlockPosterConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "()V", "firstPageData", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "oplogCallbacks", "Ljava/util/Vector;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "canAddList", "", "getCache", "getEmptyTips", "", "context", "Landroid/content/Context;", "getInitData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "getItemData", "netScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "getLastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "getNetScene", "lastBuff", "getSubTitleStr", "getTips", "fromPrivacySelect", "getTitleStrId", "", "needLoadMore", "onAddUserList", "nameList", "", "", "onItemDelete", "contact", "callBack", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "", "contacts", "onSearchBarClick", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  implements aj
+  implements ar
 {
-  public static final a AdT;
-  private Vector<com.tencent.mm.plugin.findersdk.a.aj<bep>> AdS;
-  private final g zMR;
+  public static final a FAt;
+  private final g EXF;
+  private Vector<ck<bpq>> FAu;
   
   static
   {
-    AppMethodBeat.i(270422);
-    AdT = new a((byte)0);
-    AppMethodBeat.o(270422);
+    AppMethodBeat.i(339190);
+    FAt = new a((byte)0);
+    AppMethodBeat.o(339190);
   }
   
   public c()
   {
-    AppMethodBeat.i(270420);
-    this.zMR = new g("blockPoster.fp");
-    this.AdS = new Vector();
-    AppMethodBeat.o(270420);
+    AppMethodBeat.i(339181);
+    this.EXF = new g("blockPoster.fp");
+    this.FAu = new Vector();
+    AppMethodBeat.o(339181);
   }
   
-  public final q a(final FinderContact paramFinderContact, final aj.a parama)
+  public final p a(final FinderContact paramFinderContact, final ar.a parama)
   {
-    AppMethodBeat.i(270411);
-    p.k(paramFinderContact, "contact");
+    AppMethodBeat.i(339213);
+    s.u(paramFinderContact, "contact");
     String str = paramFinderContact.username;
     if (str != null)
     {
       paramFinderContact = new b(this, parama, paramFinderContact);
-      this.AdS.add(paramFinderContact);
-      parama = (i)h.ae(i.class);
-      p.j(str, "it");
-      parama.a(str, false, (com.tencent.mm.plugin.findersdk.a.aj)paramFinderContact);
+      this.FAu.add(paramFinderContact);
+      ((n)h.ax(n.class)).a(str, false, (ck)paramFinderContact);
     }
-    AppMethodBeat.o(270411);
+    AppMethodBeat.o(339213);
     return null;
   }
   
-  public final q d(b paramb)
+  public final int ePJ()
   {
-    AppMethodBeat.i(270413);
-    paramb = (q)new av(paramb);
-    AppMethodBeat.o(270413);
-    return paramb;
+    return e.h.finder_account_black_list;
   }
   
-  public final g dRA()
-  {
-    return this.zMR;
-  }
-  
-  public final LinkedList<FinderContact> dRB()
-  {
-    AppMethodBeat.i(270416);
-    LinkedList localLinkedList = this.zMR.bvg();
-    AppMethodBeat.o(270416);
-    return localLinkedList;
-  }
-  
-  public final boolean dRC()
-  {
-    return true;
-  }
-  
-  public final CharSequence dRD()
-  {
-    AppMethodBeat.i(270418);
-    Object localObject = MMApplicationContext.getContext().getString(b.j.finder_block_poster_empty);
-    p.j(localObject, "MMApplicationContext.get…inder_block_poster_empty)");
-    localObject = (CharSequence)localObject;
-    AppMethodBeat.o(270418);
-    return localObject;
-  }
-  
-  public final int dRw()
-  {
-    return b.j.finder_account_black_list;
-  }
-  
-  public final CharSequence dRx()
-  {
-    AppMethodBeat.i(270409);
-    Object localObject = MMApplicationContext.getContext().getString(b.j.finder_mod_block_poster_sub_title);
-    p.j(localObject, "MMApplicationContext.get…d_block_poster_sub_title)");
-    localObject = (CharSequence)localObject;
-    AppMethodBeat.o(270409);
-    return localObject;
-  }
-  
-  public final CharSequence dRy()
-  {
-    return null;
-  }
-  
-  public final boolean dRz()
+  public final boolean ePK()
   {
     return false;
   }
   
-  public final Set<q> eL(List<? extends FinderContact> paramList)
+  public final g ePL()
   {
-    AppMethodBeat.i(270412);
-    p.k(paramList, "contacts");
-    AppMethodBeat.o(270412);
+    return this.EXF;
+  }
+  
+  public final LinkedList<FinderContact> ePM()
+  {
+    AppMethodBeat.i(339248);
+    LinkedList localLinkedList = this.EXF.bTt();
+    AppMethodBeat.o(339248);
+    return localLinkedList;
+  }
+  
+  public final boolean ePN()
+  {
+    return true;
+  }
+  
+  public final p g(b paramb)
+  {
+    AppMethodBeat.i(339228);
+    paramb = (p)new bq(paramb);
+    AppMethodBeat.o(339228);
+    return paramb;
+  }
+  
+  public final CharSequence gR(Context paramContext)
+  {
+    AppMethodBeat.i(339199);
+    s.u(paramContext, "context");
+    paramContext = MMApplicationContext.getContext().getString(e.h.finder_mod_block_poster_sub_title);
+    s.s(paramContext, "getContext().getString(R…d_block_poster_sub_title)");
+    paramContext = (CharSequence)paramContext;
+    AppMethodBeat.o(339199);
+    return paramContext;
+  }
+  
+  public final CharSequence gS(Context paramContext)
+  {
+    AppMethodBeat.i(339202);
+    s.u(paramContext, "context");
+    AppMethodBeat.o(339202);
     return null;
   }
   
-  public final q eM(List<String> paramList)
+  public final void gT(Context paramContext)
   {
-    AppMethodBeat.i(270417);
-    p.k(paramList, "nameList");
-    AppMethodBeat.o(270417);
-    return null;
-  }
-  
-  public final void fD(Context paramContext)
-  {
-    AppMethodBeat.i(270410);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(339210);
+    s.u(paramContext, "context");
     Intent localIntent = new Intent();
     Object localObject;
     if (!(paramContext instanceof Activity)) {
@@ -160,9 +136,9 @@ public final class c
         localIntent.putExtra("request_type", 8);
         localIntent.putExtra("need_history", false);
         label56:
-        localObject = a.ACH;
+        localObject = a.GfO;
         a.a(paramContext, null, localIntent);
-        AppMethodBeat.o(270410);
+        AppMethodBeat.o(339210);
         return;
         localObject = null;
       }
@@ -173,54 +149,81 @@ public final class c
     }
   }
   
-  public final b i(q paramq)
+  public final CharSequence gU(Context paramContext)
   {
-    AppMethodBeat.i(270414);
-    if (paramq == null)
-    {
-      paramq = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneBlockPosterList");
-      AppMethodBeat.o(270414);
-      throw paramq;
-    }
-    paramq = ((av)paramq).dnU();
-    if (paramq != null)
-    {
-      paramq = paramq.lastBuffer;
-      AppMethodBeat.o(270414);
-      return paramq;
-    }
-    AppMethodBeat.o(270414);
+    AppMethodBeat.i(339260);
+    s.u(paramContext, "context");
+    paramContext = MMApplicationContext.getContext().getString(e.h.finder_block_poster_empty);
+    s.s(paramContext, "getContext().getString(R…inder_block_poster_empty)");
+    paramContext = (CharSequence)paramContext;
+    AppMethodBeat.o(339260);
+    return paramContext;
+  }
+  
+  public final Set<p> hx(List<? extends FinderContact> paramList)
+  {
+    AppMethodBeat.i(339221);
+    s.u(paramList, "contacts");
+    AppMethodBeat.o(339221);
     return null;
   }
   
-  public final LinkedList<FinderContact> j(q paramq)
+  public final p hy(List<String> paramList)
   {
-    AppMethodBeat.i(270415);
-    if (paramq == null)
-    {
-      paramq = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneBlockPosterList");
-      AppMethodBeat.o(270415);
-      throw paramq;
-    }
-    paramq = ((av)paramq).dnU();
-    if (paramq != null)
-    {
-      paramq = paramq.SFU;
-      AppMethodBeat.o(270415);
-      return paramq;
-    }
-    AppMethodBeat.o(270415);
+    AppMethodBeat.i(339253);
+    s.u(paramList, "nameList");
+    AppMethodBeat.o(339253);
     return null;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderBlockPosterConfig$Companion;", "", "()V", "FIRST_PAGE_FILE_NAME", "", "plugin-finder_release"})
+  public final b i(p paramp)
+  {
+    AppMethodBeat.i(339233);
+    if (paramp == null)
+    {
+      paramp = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneBlockPosterList");
+      AppMethodBeat.o(339233);
+      throw paramp;
+    }
+    paramp = ((bq)paramp).dVB();
+    if (paramp == null)
+    {
+      AppMethodBeat.o(339233);
+      return null;
+    }
+    paramp = paramp.lastBuffer;
+    AppMethodBeat.o(339233);
+    return paramp;
+  }
+  
+  public final LinkedList<FinderContact> j(p paramp)
+  {
+    AppMethodBeat.i(339239);
+    if (paramp == null)
+    {
+      paramp = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneBlockPosterList");
+      AppMethodBeat.o(339239);
+      throw paramp;
+    }
+    paramp = ((bq)paramp).dVB();
+    if (paramp == null)
+    {
+      AppMethodBeat.o(339239);
+      return null;
+    }
+    paramp = paramp.ZIt;
+    AppMethodBeat.o(339239);
+    return paramp;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderBlockPosterConfig$Companion;", "", "()V", "FIRST_PAGE_FILE_NAME", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/storage/FinderBlockPosterConfig$onItemDelete$1$callback$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/storage/FinderBlockPosterConfig$onItemDelete$1$callback$1", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements com.tencent.mm.plugin.findersdk.a.aj<bep>
+    implements ck<bpq>
   {
-    b(c paramc, aj.a parama, FinderContact paramFinderContact) {}
+    b(c paramc, ar.a parama, FinderContact paramFinderContact) {}
   }
 }
 

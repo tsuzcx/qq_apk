@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:background="@drawable/zo" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/bfn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/ct" android:singleLine="true" />
-    <View android:id="@id/i3m" android:background="@color/px" android:layout_width="1.0dip" android:layout_height="@dimen/cc" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bfm" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/ct" android:src="@raw/icons_outlined_up" app:iconColor="@color/am" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dd7" android:background="@color/UN_BW_0_Alpha_0_5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="22.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/hs2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cm" android:text="@string/e1x" />
+    <TextView android:textSize="32.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center" android:id="@id/hs3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_0" android:gravity="center" android:id="@id/isb" android:background="@drawable/yf" android:paddingLeft="@dimen/d1" android:paddingTop="@dimen/df" android:paddingRight="@dimen/d1" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:text="@string/e1u" />
 </LinearLayout>

@@ -591,81 +591,78 @@ public class WeJson
     i = 0;
     for (;;)
     {
-      int k;
-      String str;
+      if (i < localObject2.length) {
+        localObject1 = localObject2[i];
+      }
       try
       {
-        if (i < localObject2.length)
+        int k = ((Field)localObject1).getModifiers();
+        if ((k & 0x8) == 0)
         {
-          localObject1 = localObject2[i];
-          k = ((Field)localObject1).getModifiers();
-          if ((k & 0x8) != 0) {
-            break label478;
-          }
-          str = ((Field)localObject1).getName();
-          if (str.contains("$")) {
-            break label478;
-          }
-          if ((k & 0x1) != 0)
-          {
-            localObject1 = ((Field)localObject1).get(paramT);
-            if (localObject1 != null) {
-              ((Map)localObject3).put(str, localObject1);
-            }
-          }
-          else
-          {
-            Class localClass = paramT.getClass();
-            StringBuilder localStringBuilder = new StringBuilder("get").append(str.substring(0, 1).toUpperCase());
-            if (str.length() == 1)
+          String str = ((Field)localObject1).getName();
+          if (!str.contains("$")) {
+            if ((k & 0x1) != 0)
             {
-              localObject1 = "";
-              localObject1 = localClass.getMethod((String)localObject1, new Class[0]);
-              if (localObject1 == null) {
-                break label478;
+              localObject1 = ((Field)localObject1).get(paramT);
+              if (localObject1 != null) {
+                ((Map)localObject3).put(str, localObject1);
               }
-              localObject1 = ((Method)localObject1).invoke(paramT, new Object[0]);
-              if (localObject1 == null) {
-                break label478;
+            }
+            else
+            {
+              Class localClass = paramT.getClass();
+              StringBuilder localStringBuilder = new StringBuilder("get").append(str.substring(0, 1).toUpperCase());
+              if (str.length() == 1) {}
+              for (localObject1 = "";; localObject1 = str.substring(1))
+              {
+                localObject1 = localClass.getMethod((String)localObject1, new Class[0]);
+                if (localObject1 == null) {
+                  break;
+                }
+                localObject1 = ((Method)localObject1).invoke(paramT, new Object[0]);
+                if (localObject1 == null) {
+                  break;
+                }
+                ((Map)localObject3).put(str, localObject1);
+                break;
               }
-              ((Map)localObject3).put(str, localObject1);
+              paramStringBuilder.append('{');
+              k = ((Map)localObject3).size();
+              paramT = ((Map)localObject3).entrySet().iterator();
+              i = j;
+              for (;;)
+              {
+                if (paramT.hasNext())
+                {
+                  localObject2 = (Map.Entry)paramT.next();
+                  i += 1;
+                  localObject1 = (String)((Map.Entry)localObject2).getKey();
+                  localObject2 = ((Map.Entry)localObject2).getValue();
+                  if ((!(localObject2 instanceof String)) || (!localObject2.equals("")))
+                  {
+                    paramStringBuilder.append('"').append((String)localObject1).append('"').append(':');
+                    process(paramStringBuilder, localObject2);
+                    if (i < k) {
+                      paramStringBuilder.append(',');
+                    }
+                  }
+                }
+                else
+                {
+                  paramStringBuilder.append('}');
+                  AppMethodBeat.o(73414);
+                  return;
+                }
+              }
             }
           }
         }
       }
-      catch (Exception paramT)
+      catch (Exception localException)
       {
-        paramStringBuilder.append('{');
-        k = ((Map)localObject3).size();
-        paramT = ((Map)localObject3).entrySet().iterator();
-        i = j;
+        label480:
+        break label480;
       }
-      label475:
-      for (;;)
-      {
-        if (paramT.hasNext())
-        {
-          localObject2 = (Map.Entry)paramT.next();
-          i += 1;
-          localObject1 = (String)((Map.Entry)localObject2).getKey();
-          localObject2 = ((Map.Entry)localObject2).getValue();
-          if (((localObject2 instanceof String)) && (localObject2.equals(""))) {
-            break label475;
-          }
-          paramStringBuilder.append('"').append((String)localObject1).append('"').append(':');
-          process(paramStringBuilder, localObject2);
-          if (i < k) {
-            paramStringBuilder.append(',');
-          }
-          continue;
-          localObject1 = str.substring(1);
-          break;
-        }
-        paramStringBuilder.append('}');
-        AppMethodBeat.o(73414);
-        return;
-      }
-      label478:
       i += 1;
     }
   }
@@ -746,7 +743,7 @@ public class WeJson
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.tools.wejson.WeJson
  * JD-Core Version:    0.7.0.1
  */

@@ -24,30 +24,30 @@ import org.json.JSONArray;
 public final class d
   implements com.tencent.mm.plugin.game.luggage.a.a
 {
-  private static void aJl(String paramString)
+  private static void aFX(String paramString)
   {
     AppMethodBeat.i(82990);
     Log.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(paramString);
-    com.tencent.mm.plugin.webview.b.b.gTg().b("wx62d9035fd4fd2059", localJSONArray);
+    com.tencent.mm.plugin.webview.b.b.isU().b("wx62d9035fd4fd2059", localJSONArray);
     AppMethodBeat.o(82990);
   }
   
-  public final String aJj(String paramString)
+  public final String aFV(String paramString)
   {
     AppMethodBeat.i(82988);
-    com.tencent.mm.plugin.webview.b.b.gTg();
-    paramString = com.tencent.mm.plugin.webview.b.b.bjM(paramString);
+    com.tencent.mm.plugin.webview.b.b.isU();
+    paramString = com.tencent.mm.plugin.webview.b.b.bjy(paramString);
     AppMethodBeat.o(82988);
     return paramString;
   }
   
-  public final boolean aJk(String paramString)
+  public final boolean aFW(String paramString)
   {
     AppMethodBeat.i(82989);
     if (MMApplicationContext.isMainProcess()) {
-      aJl(paramString);
+      aFX(paramString);
     }
     for (;;)
     {
@@ -57,9 +57,9 @@ public final class d
     }
   }
   
-  public final Map<String, Class> ewv()
+  public final Map<String, Class> fEp()
   {
-    AppMethodBeat.i(231670);
+    AppMethodBeat.i(276954);
     HashMap localHashMap = new HashMap();
     localHashMap.put("addDownloadTaskStraight", com.tencent.mm.plugin.game.luggage.d.a.a.class);
     localHashMap.put("bookDownloadGame", com.tencent.mm.plugin.game.luggage.d.a.b.class);
@@ -76,15 +76,16 @@ public final class d
     localHashMap.put("startGameWebView", n.class);
     localHashMap.put("openGameCenter", i.class);
     localHashMap.put("openGameTabHome", com.tencent.mm.plugin.game.luggage.d.a.j.class);
-    AppMethodBeat.o(231670);
+    localHashMap.put("openAdCanvas", com.tencent.mm.plugin.sns.ad.f.a.a.class);
+    AppMethodBeat.o(276954);
     return localHashMap;
   }
   
-  public final LinkedList<Class> eww()
+  public final LinkedList<Class> fEq()
   {
-    AppMethodBeat.i(231674);
-    LinkedList localLinkedList = new LinkedList(com.tencent.mm.plugin.game.luggage.i.b.ewB());
-    AppMethodBeat.o(231674);
+    AppMethodBeat.i(276958);
+    LinkedList localLinkedList = new LinkedList(com.tencent.mm.plugin.game.luggage.h.b.fEv());
+    AppMethodBeat.o(276958);
     return localLinkedList;
   }
   

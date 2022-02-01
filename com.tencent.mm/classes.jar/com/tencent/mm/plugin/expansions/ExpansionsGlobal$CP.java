@@ -14,6 +14,7 @@ import android.os.RemoteException;
 import androidx.a.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.toolkit.frontia.a.c.a;
 import java.util.concurrent.Callable;
 
 public class ExpansionsGlobal$CP
@@ -26,7 +27,7 @@ public class ExpansionsGlobal$CP
     {
       Log.i("MicroMsg.exp.ExpansionsGlobal", "cp receive remote expansions call, request");
       paramString1 = new a() {};
-      f.a(new Callable() {}).a(new d() {}, f.awc);
+      f.a(new Callable() {}).a(new d() {}, f.cky);
     }
     AppMethodBeat.o(152971);
     return null;
@@ -64,7 +65,7 @@ public class ExpansionsGlobal$CP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.ExpansionsGlobal.CP
  * JD-Core Version:    0.7.0.1
  */

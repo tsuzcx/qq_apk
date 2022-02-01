@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:id="@id/e_t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k5" android:text="@string/fab" />
-    <CheckBox android:textSize="@dimen/hc" android:layout_gravity="left" android:id="@id/e_s" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tl" android:drawablePadding="4.0dip" style="@style/p9" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/evp" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <FrameLayout android:layout_gravity="start|center" android:id="@id/bec" android:background="@drawable/bf4" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/d0" android:layout_centerVertical="true" android:contentDescription="@string/bfi">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/bek" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_0" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/j7" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/iq7" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <View android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/FG_1" android:layout_gravity="center_horizontal" android:id="@id/cje" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/db" />
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iix" android:paddingBottom="@dimen/db" android:clipToPadding="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

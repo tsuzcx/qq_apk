@@ -16,38 +16,38 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   extends b
 {
-  public Animator.AnimatorListener atS;
-  private RectF eYA;
-  Matrix eYB;
-  public long eYC;
-  private int eYt;
-  private ValueAnimator eYu;
-  c eYv;
-  private float eYw;
-  private float eYx;
-  private float eYy;
-  Rect eYz;
+  public Animator.AnimatorListener cip;
+  private int hbT;
+  private ValueAnimator hbU;
+  c hbV;
+  private float hbW;
+  private float hbX;
+  private float hbY;
+  Rect hbZ;
+  private RectF hca;
+  Matrix hcb;
+  public long hcc;
   
   public a(c paramc)
   {
     AppMethodBeat.i(9108);
-    this.eYt = 200;
-    this.eYC = 0L;
-    this.eYv = paramc;
-    this.eYB = new Matrix();
-    this.eYA = new RectF();
+    this.hbT = 200;
+    this.hcc = 0L;
+    this.hbV = paramc;
+    this.hcb = new Matrix();
+    this.hca = new RectF();
     AppMethodBeat.o(9108);
   }
   
   public final void a(float paramFloat1, Rect paramRect, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(259755);
-    this.eYx = paramFloat2;
-    this.eYy = paramFloat3;
-    this.eYz = paramRect;
-    this.eYA.set(this.eYz);
-    this.eYw = paramFloat1;
-    AppMethodBeat.o(259755);
+    AppMethodBeat.i(236241);
+    this.hbX = paramFloat2;
+    this.hbY = paramFloat3;
+    this.hbZ = paramRect;
+    this.hca.set(this.hbZ);
+    this.hbW = paramFloat1;
+    AppMethodBeat.o(236241);
   }
   
   public final void cancel()
@@ -55,9 +55,9 @@ public final class a
     AppMethodBeat.i(9110);
     Log.d("MicroMsg.CropActionUpAnim", "[cancel]");
     this.isStarted = false;
-    this.eYG = true;
-    if (this.eYu != null) {
-      this.eYu.cancel();
+    this.hcg = true;
+    if (this.hbU != null) {
+      this.hbU.cancel();
     }
     AppMethodBeat.o(9110);
   }
@@ -66,18 +66,18 @@ public final class a
   {
     AppMethodBeat.i(9109);
     Log.i("MicroMsg.CropActionUpAnim", "[play]");
-    if (!this.eYG)
+    if (!this.hcg)
     {
       AppMethodBeat.o(9109);
       return;
     }
     this.isStarted = false;
-    this.eYG = false;
-    this.eYu = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scale", new float[] { 1.0F, this.eYw }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, this.eYx }), PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, this.eYy }), PropertyValuesHolder.ofFloat("background_alpha", new float[] { 0.0F, 255.0F }) });
-    this.eYu.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.hcg = false;
+    this.hbU = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scale", new float[] { 1.0F, this.hbW }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, this.hbX }), PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, this.hbY }), PropertyValuesHolder.ofFloat("background_alpha", new float[] { 0.0F, 255.0F }) });
+    this.hbU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
-      Matrix eYD;
-      Rect eYE;
+      Matrix hcd;
+      Rect hce;
       
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -86,37 +86,37 @@ public final class a
         float f2 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("deltaX")).floatValue();
         float f3 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("scale")).floatValue();
         float f4 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("background_alpha")).floatValue();
-        a.this.eYB.reset();
-        a.this.eYB.postTranslate(f2, f1);
-        paramAnonymousValueAnimator = new RectF(this.eYE);
-        a.this.eYB.mapRect(paramAnonymousValueAnimator);
-        paramAnonymousValueAnimator.round(a.this.eYz);
-        a.this.eYB.postScale(f3, f3, a.this.eYz.centerX(), a.this.eYz.centerY());
-        paramAnonymousValueAnimator = new Matrix(this.eYD);
-        paramAnonymousValueAnimator.postConcat(a.this.eYB);
-        a.this.eYv.getMainMatrix().set(paramAnonymousValueAnimator);
-        com.tencent.mm.ab.a.sn((int)f4);
-        paramAnonymousValueAnimator = new RectF(this.eYE);
-        a.this.eYB.mapRect(paramAnonymousValueAnimator);
-        paramAnonymousValueAnimator.round(a.this.eYz);
-        a.this.eYv.acH();
+        a.this.hcb.reset();
+        a.this.hcb.postTranslate(f2, f1);
+        paramAnonymousValueAnimator = new RectF(this.hce);
+        a.this.hcb.mapRect(paramAnonymousValueAnimator);
+        paramAnonymousValueAnimator.round(a.this.hbZ);
+        a.this.hcb.postScale(f3, f3, a.this.hbZ.centerX(), a.this.hbZ.centerY());
+        paramAnonymousValueAnimator = new Matrix(this.hcd);
+        paramAnonymousValueAnimator.postConcat(a.this.hcb);
+        a.this.hbV.getMainMatrix().set(paramAnonymousValueAnimator);
+        com.tencent.mm.ab.a.sj((int)f4);
+        paramAnonymousValueAnimator = new RectF(this.hce);
+        a.this.hcb.mapRect(paramAnonymousValueAnimator);
+        paramAnonymousValueAnimator.round(a.this.hbZ);
+        a.this.hbV.aEH();
         AppMethodBeat.o(9106);
       }
     });
-    this.eYu.addListener(new Animator.AnimatorListener()
+    this.hbU.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(9107);
-        a.this.eYG = true;
+        a.this.hcg = true;
         a.this.isStarted = false;
-        a.this.eYC = 0L;
-        a.this.eYv.acK();
-        a.this.eYv.acI();
-        if (a.this.atS != null) {
-          a.this.atS.onAnimationEnd(paramAnonymousAnimator);
+        a.this.hcc = 0L;
+        a.this.hbV.aEK();
+        a.this.hbV.aEI();
+        if (a.this.cip != null) {
+          a.this.cip.onAnimationEnd(paramAnonymousAnimator);
         }
         AppMethodBeat.o(9107);
       }
@@ -125,21 +125,21 @@ public final class a
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        a.this.eYv.flj = true;
-        a.this.eYG = false;
+        a.this.hbV.hpw = true;
+        a.this.hcg = false;
         a.this.isStarted = true;
       }
     });
-    this.eYu.setInterpolator(new LinearInterpolator());
-    this.eYu.setDuration(this.eYt);
-    this.eYu.setStartDelay(this.eYC);
-    this.eYu.start();
+    this.hbU.setInterpolator(new LinearInterpolator());
+    this.hbU.setDuration(this.hbT);
+    this.hbU.setStartDelay(this.hcc);
+    this.hbU.start();
     AppMethodBeat.o(9109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.c.a
  * JD-Core Version:    0.7.0.1
  */

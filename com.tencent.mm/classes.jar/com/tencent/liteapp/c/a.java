@@ -1,8 +1,8 @@
 package com.tencent.liteapp.c;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloader;", "", "startDownload", "", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloadCallback;", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloader;", "", "startDownload", "", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppDownloadCallback;", "startDownloadBaselib", "baselib", "Lcom/tencent/liteapp/storage/WxaLiteAppBaselibInfo;", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public abstract interface a {}
 
 

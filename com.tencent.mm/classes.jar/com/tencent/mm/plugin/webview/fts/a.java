@@ -1,250 +1,302 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.RemoteException;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.b.a.ah;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.ar;
-import com.tencent.mm.plugin.websearch.api.v;
-import com.tencent.mm.plugin.webview.modeltools.f;
-import com.tencent.mm.protocal.protobuf.flh;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.mmdata.rpt.ap;
+import com.tencent.mm.plugin.websearch.api.ab;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.as;
+import com.tencent.mm.plugin.websearch.api.w;
+import com.tencent.mm.plugin.webview.modeltools.g;
+import com.tencent.mm.plugin.webview.stub.f;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.k;
+import com.tencent.mm.protocal.protobuf.ghw;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.Map;
+import kotlin.Metadata;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/fts/ChatSearchLogic;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "THREAD_TAG", "mJSCallback", "Lcom/tencent/mm/plugin/webview/fts/PreGetController$JSCallback;", "getCgiAction", "content", "getChatSearchData", "", "params", "", "", "getSessionId", "url", "onDataBack", "", "tag", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "reportAction", "action", "sessionId", "cgiRet", "cgiAction", "start", "stop", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/fts/ChatSearchLogic;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "THREAD_TAG", "mJSCallback", "Lcom/tencent/mm/plugin/webview/fts/PreGetController$JSCallback;", "getCgiAction", "content", "getChatSearchData", "", "params", "", "", "getSessionId", "url", "onDataBack", "", "tag", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "reportAction", "action", "sessionId", "cgiRet", "cgiAction", "start", "stop", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  public static final h.a PKf;
-  public static final a PKg;
-  public static final String TAG = "MicroMsg.WebSearch.ChatSearchLogic";
-  private static final String THREAD_TAG = "WebSearch.ChatSearchLogic";
+  private static final String TAG;
+  private static final String THREAD_TAG;
+  public static final a WAv;
+  private static final h.a WAw;
   
   static
   {
-    AppMethodBeat.i(253416);
-    PKg = new a();
+    AppMethodBeat.i(295667);
+    WAv = new a();
     TAG = "MicroMsg.WebSearch.ChatSearchLogic";
     THREAD_TAG = "WebSearch.ChatSearchLogic";
-    PKf = (h.a)b.PKi;
-    AppMethodBeat.o(253416);
+    WAw = a..ExternalSyntheticLambda0.INSTANCE;
+    AppMethodBeat.o(295667);
   }
   
-  private static void b(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
+  private static final void a(w paramw)
   {
-    AppMethodBeat.i(253406);
-    ah localah = new ah();
-    localah.le(paramInt1);
-    localah.lg(paramInt2);
-    localah.iZ("");
-    localah.ja("");
-    localah.lh(0);
-    localah.iX(paramString1);
-    localah.cq(System.currentTimeMillis());
-    localah.li(paramInt3);
-    localah.jc(paramString2);
-    localah.bpa();
-    ar.a((com.tencent.mm.plugin.report.a)localah);
-    AppMethodBeat.o(253406);
+    AppMethodBeat.i(295660);
+    kotlin.g.b.s.u(paramw, "$model");
+    Object localObject = new ab(paramw);
+    com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
+    localObject = paramw.Wow;
+    kotlin.g.b.s.s(localObject, "model.imageSearchSessionId");
+    c(6, (String)localObject, paramw.scene, 0, bjD(paramw.content));
+    AppMethodBeat.o(295660);
   }
   
-  public static String bjQ(String paramString)
+  private static final void a(h.b paramb)
   {
-    AppMethodBeat.i(253401);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(295665);
+    if (((paramb.WBq instanceof w)) && ((paramb.WBr instanceof String)))
     {
-      AppMethodBeat.o(253401);
-      return "";
-    }
-    try
-    {
-      localObject = Uri.parse(paramString).getQueryParameter("sessionId");
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
-      }
-      AppMethodBeat.o(253401);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(253401);
-    }
-    return "";
-  }
-  
-  private static String bjR(String paramString)
-  {
-    AppMethodBeat.i(253403);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(253403);
-      return "";
-    }
-    try
-    {
-      localObject = new JSONObject(paramString).optString("action");
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
-      }
-      AppMethodBeat.o(253403);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(253403);
-    }
-    return "";
-  }
-  
-  private static void ms(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(253413);
-    j localj = f.gWr();
-    p.j(localj, "SubCoreTools.getFTSWebSearchLogic()");
-    localj.gTv().a(0, paramString2, paramString1, PKf);
-    AppMethodBeat.o(253413);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(253411);
-    if ((paramq instanceof aa)) {
-      if (!TextUtils.isEmpty((CharSequence)((aa)paramq).gQy().content))
+      Object localObject1 = paramb.WBq;
+      if (localObject1 == null)
       {
-        paramString = ((aa)paramq).gQy().content;
-        p.j(paramString, "scene.model.content");
+        paramb = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.websearch.api.NetSceneRequestModel");
+        AppMethodBeat.o(295665);
+        throw paramb;
+      }
+      Object localObject2 = (w)localObject1;
+      localObject1 = k.auP(((w)localObject2).hVk);
+      paramb = paramb.WBr;
+      if (paramb == null)
+      {
+        paramb = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(295665);
+        throw paramb;
+      }
+      paramb = (String)paramb;
+      localObject2 = ((w)localObject2).hOG;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("fts_key_json_data", paramb);
+      localBundle.putString("fts_key_req_id", (String)localObject2);
+      try
+      {
+        if (((com.tencent.mm.plugin.webview.ui.tools.jsapi.j)localObject1).WFb != null) {
+          ((com.tencent.mm.plugin.webview.ui.tools.jsapi.j)localObject1).WFb.i(127, localBundle);
+        }
+        AppMethodBeat.o(295665);
+        return;
+      }
+      catch (RemoteException paramb)
+      {
+        Log.w("MicroMsg.MsgHandler", "onChatSearchDataReady exception" + paramb.getMessage());
+      }
+    }
+    AppMethodBeat.o(295665);
+  }
+  
+  private static String bjC(String paramString)
+  {
+    AppMethodBeat.i(295647);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(295647);
+      return "";
+    }
+    try
+    {
+      paramString = Uri.parse(paramString).getQueryParameter("sessionId");
+      if (paramString == null)
+      {
+        AppMethodBeat.o(295647);
+        return "";
+      }
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(295647);
+      return "";
+    }
+    AppMethodBeat.o(295647);
+    return paramString;
+  }
+  
+  private static String bjD(String paramString)
+  {
+    AppMethodBeat.i(295650);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(295650);
+      return "";
+    }
+    try
+    {
+      paramString = new JSONObject(paramString).optString("action");
+      if (paramString == null)
+      {
+        AppMethodBeat.o(295650);
+        return "";
+      }
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(295650);
+      return "";
+    }
+    AppMethodBeat.o(295650);
+    return paramString;
+  }
+  
+  public static boolean bz(Map<String, ? extends Object> paramMap)
+  {
+    AppMethodBeat.i(295644);
+    kotlin.g.b.s.u(paramMap, "params");
+    Log.i(TAG, "start getChatSearchData：%s", new Object[] { paramMap });
+    w localw = new w();
+    localw.scene = aj.c(paramMap, "scene", 0);
+    localw.hOG = aj.au(paramMap, "requestId");
+    localw.Wou = aj.c(paramMap, "type", 0);
+    localw.hVk = aj.c(paramMap, "webview_instance_id", -1);
+    localw.Wow = bjC(aj.au(paramMap, "url"));
+    paramMap = aj.au(paramMap, "params");
+    CharSequence localCharSequence = (CharSequence)paramMap;
+    int i;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0))
+    {
+      i = 1;
+      if (i == 0)
+      {
+        paramMap = new JSONObject(paramMap);
+        localw.hAT = paramMap.optString("reqKey", "");
+        localw.content = paramMap.optString("content", "");
+      }
+      if (TextUtils.isEmpty((CharSequence)localw.content)) {
+        break label259;
+      }
+      paramMap = localw.content;
+      kotlin.g.b.s.s(paramMap, "model.content");
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty((CharSequence)localw.content))
+      {
+        g.ivX();
+        paramMap = h.aHT(localw.content);
+        kotlin.g.b.s.s(paramMap, "getFTSWebSearchLogic().p…ContentKey(model.content)");
+      }
+      g.ivX().WBQ.a(0, paramMap, localw, new a..ExternalSyntheticLambda1(localw), WAw);
+      AppMethodBeat.o(295644);
+      return false;
+      i = 0;
+      break;
+      label259:
+      paramMap = localw.hOG;
+      kotlin.g.b.s.s(paramMap, "model.requestId");
+    }
+  }
+  
+  private static void c(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
+  {
+    AppMethodBeat.i(295654);
+    ap localap = new ap();
+    localap.ilm = paramInt1;
+    localap.imW = paramInt2;
+    localap.kE("");
+    localap.kF("");
+    localap.imM = 0;
+    localap.kC(paramString1);
+    localap.ipe = System.currentTimeMillis();
+    localap.ipf = paramInt3;
+    localap.ipg = localap.F("CgiAction", paramString2, true);
+    localap.bMH();
+    as.a((com.tencent.mm.plugin.report.a)localap);
+    AppMethodBeat.o(295654);
+  }
+  
+  private static void og(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(295656);
+    g.ivX().WBQ.a(0, paramString2, paramString1, WAw);
+    AppMethodBeat.o(295656);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(295684);
+    if ((paramp instanceof ab)) {
+      if (!TextUtils.isEmpty((CharSequence)((ab)paramp).WnS.content))
+      {
+        paramString = ((ab)paramp).WnS.content;
+        kotlin.g.b.s.s(paramString, "scene.model.content");
       }
     }
     for (;;)
     {
-      flh localflh = ((aa)paramq).gQD();
-      Object localObject1 = ((aa)paramq).gQy();
+      if (!TextUtils.isEmpty((CharSequence)((ab)paramp).WnS.content))
+      {
+        g.ivX();
+        paramString = h.aHT(((ab)paramp).WnS.content);
+        kotlin.g.b.s.s(paramString, "getFTSWebSearchLogic().p…tKey(scene.model.content)");
+      }
+      ghw localghw = ((ab)paramp).WoC;
+      Object localObject1 = ((ab)paramp).WnS;
       Object localObject2;
       int i;
-      if ((localflh != null) && (localObject1 != null))
+      if ((localghw != null) && (localObject1 != null))
       {
-        localObject2 = (CharSequence)((v)localObject1).Pyp;
+        localObject2 = (CharSequence)((w)localObject1).Wow;
         if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
         {
           i = 1;
-          label109:
+          label157:
           if (i == 0)
           {
-            localObject2 = ((v)localObject1).Pyp;
-            p.j(localObject2, "model.imageSearchSessionId");
-            b(7, (String)localObject2, ((v)localObject1).scene, paramInt2, bjR(((v)localObject1).content));
+            localObject2 = ((w)localObject1).Wow;
+            kotlin.g.b.s.s(localObject2, "model.imageSearchSessionId");
+            c(7, (String)localObject2, ((w)localObject1).scene, paramInt2, bjD(((w)localObject1).content));
           }
           if ((paramInt1 == 0) && (paramInt2 == 0)) {
-            break label283;
+            break label333;
           }
-          Log.i(TAG, "net scene fail requestId:" + ((aa)paramq).gQy().fIY + " reqKey:" + ((aa)paramq).gQy().fwv);
-          paramq = new JSONObject();
+          Log.i(TAG, "net scene fail requestId:" + ((ab)paramp).WnS.hOG + " reqKey:" + ((ab)paramp).WnS.hAT);
+          paramp = new JSONObject();
         }
       }
       try
       {
-        paramq.put("ret", -1);
-        label228:
-        paramq = paramq.toString();
-        p.j(paramq, "resultObject.toString()");
-        ms(paramq, paramString);
-        AppMethodBeat.o(253411);
+        paramp.put("ret", -1);
+        label277:
+        paramp = paramp.toString();
+        kotlin.g.b.s.s(paramp, "resultObject.toString()");
+        og(paramp, paramString);
+        AppMethodBeat.o(295684);
         return;
-        paramString = ((aa)paramq).gQy().fIY;
-        p.j(paramString, "scene.model.requestId");
+        paramString = ((ab)paramp).WnS.hOG;
+        kotlin.g.b.s.s(paramString, "scene.model.requestId");
         continue;
         i = 0;
-        break label109;
-        label283:
+        break label157;
+        label333:
         localObject1 = TAG;
-        localObject2 = new StringBuilder("net scene success requestId:").append(((aa)paramq).gQy().fIY).append(" reqKey:").append(((aa)paramq).gQy().fwv).append(" jsonStr:");
-        paramq = localflh.RSB;
-        if (paramq != null) {}
-        for (paramq = Integer.valueOf(paramq.length());; paramq = null)
+        localObject2 = new StringBuilder("net scene success requestId:").append(((ab)paramp).WnS.hOG).append(" reqKey:").append(((ab)paramp).WnS.hAT).append(" jsonStr:");
+        paramp = localghw.YQb;
+        if (paramp == null) {}
+        for (paramp = null;; paramp = Integer.valueOf(paramp.length()))
         {
-          Log.i((String)localObject1, paramq);
-          paramq = localflh.RSB;
-          p.j(paramq, "response.json_str");
-          ms(paramq, paramString);
-          AppMethodBeat.o(253411);
+          Log.i((String)localObject1, paramp);
+          paramp = localghw.YQb;
+          kotlin.g.b.s.s(paramp, "response.json_str");
+          og(paramp, paramString);
+          AppMethodBeat.o(295684);
           return;
         }
       }
       catch (Exception localException)
       {
-        break label228;
+        break label277;
       }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  public static final class a
-    implements Runnable
-  {
-    public a(v paramv) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(225091);
-      Object localObject = new aa(this.PKh);
-      com.tencent.mm.kernel.h.aGY().b((q)localObject);
-      localObject = a.PKg;
-      localObject = this.PKh.Pyp;
-      p.j(localObject, "model.imageSearchSessionId");
-      int i = this.PKh.scene;
-      a locala = a.PKg;
-      a.Q((String)localObject, i, a.bjS(this.PKh.content));
-      AppMethodBeat.o(225091);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/webview/fts/PreGetController$ReqStatus;", "kotlin.jvm.PlatformType", "handleCallback"})
-  static final class b
-    implements h.a
-  {
-    public static final b PKi;
-    
-    static
-    {
-      AppMethodBeat.i(242502);
-      PKi = new b();
-      AppMethodBeat.o(242502);
-    }
-    
-    public final void a(h.b paramb)
-    {
-      AppMethodBeat.i(242501);
-      if (((paramb.PLd instanceof v)) && ((paramb.PLe instanceof String)))
-      {
-        Object localObject = paramb.PLd;
-        if (localObject == null)
-        {
-          paramb = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.websearch.api.NetSceneRequestModel");
-          AppMethodBeat.o(242501);
-          throw paramb;
-        }
-        localObject = (v)localObject;
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.h localh = com.tencent.mm.plugin.webview.ui.tools.jsapi.i.aoU(((v)localObject).fPp);
-        paramb = paramb.PLe;
-        if (paramb == null)
-        {
-          paramb = new kotlin.t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(242501);
-          throw paramb;
-        }
-        localh.mH((String)paramb, ((v)localObject).fIY);
-      }
-      AppMethodBeat.o(242501);
     }
   }
 }

@@ -1,6 +1,5 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -101,7 +100,7 @@ public class IssueDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.IssueDetailActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -4,49 +4,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
 {
-  public long aZM;
-  private long brm;
-  public volatile long brn;
+  public long cTH;
+  private long dkQ;
+  public volatile long dkR;
   
   public u(long paramLong)
   {
     AppMethodBeat.i(93205);
-    this.brn = -9223372036854775807L;
-    ar(paramLong);
+    this.dkR = -9223372036854775807L;
+    cF(paramLong);
     AppMethodBeat.o(93205);
   }
   
-  public static long au(long paramLong)
+  public static long cI(long paramLong)
   {
     return 1000000L * paramLong / 90000L;
   }
   
-  public static long av(long paramLong)
+  public static long cJ(long paramLong)
   {
     return 90000L * paramLong / 1000000L;
   }
   
+  public final long UU()
+  {
+    long l = -9223372036854775807L;
+    if (this.cTH == 9223372036854775807L) {
+      l = 0L;
+    }
+    while (this.dkR == -9223372036854775807L) {
+      return l;
+    }
+    return this.dkQ;
+  }
+  
+  public final void UV()
+  {
+    try
+    {
+      AppMethodBeat.i(93209);
+      while (this.dkR == -9223372036854775807L) {
+        wait();
+      }
+      AppMethodBeat.o(93209);
+    }
+    finally {}
+  }
+  
   /* Error */
-  public final void ar(long paramLong)
+  public final void cF(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 39
+    //   2: ldc 52
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 24	com/google/android/exoplayer2/i/u:brn	J
+    //   8: getfield 24	com/google/android/exoplayer2/i/u:dkR	J
     //   11: ldc2_w 21
     //   14: lcmp
     //   15: ifne +22 -> 37
     //   18: iconst_1
     //   19: istore_3
     //   20: iload_3
-    //   21: invokestatic 45	com/google/android/exoplayer2/i/a:checkState	(Z)V
+    //   21: invokestatic 58	com/google/android/exoplayer2/i/a:checkState	(Z)V
     //   24: aload_0
     //   25: lload_1
-    //   26: putfield 47	com/google/android/exoplayer2/i/u:aZM	J
-    //   29: ldc 39
+    //   26: putfield 42	com/google/android/exoplayer2/i/u:cTH	J
+    //   29: ldc 52
     //   31: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
     //   35: monitorexit
@@ -71,7 +96,7 @@ public final class u
     //   20	34	42	finally
   }
   
-  public final long as(long paramLong)
+  public final long cG(long paramLong)
   {
     AppMethodBeat.i(93207);
     if (paramLong == -9223372036854775807L)
@@ -79,9 +104,9 @@ public final class u
       AppMethodBeat.o(93207);
       return -9223372036854775807L;
     }
-    if (this.brn != -9223372036854775807L)
+    if (this.dkR != -9223372036854775807L)
     {
-      long l2 = av(this.brn);
+      long l2 = cJ(this.dkR);
       long l3 = (4294967296L + l2) / 8589934592L;
       long l1 = (l3 - 1L) * 8589934592L + paramLong;
       paramLong = l3 * 8589934592L + paramLong;
@@ -91,13 +116,13 @@ public final class u
     }
     for (;;)
     {
-      paramLong = at(au(paramLong));
+      paramLong = cH(cI(paramLong));
       AppMethodBeat.o(93207);
       return paramLong;
     }
   }
   
-  public final long at(long paramLong)
+  public final long cH(long paramLong)
   {
     AppMethodBeat.i(93208);
     if (paramLong == -9223372036854775807L)
@@ -105,20 +130,20 @@ public final class u
       AppMethodBeat.o(93208);
       return -9223372036854775807L;
     }
-    if (this.brn != -9223372036854775807L) {
-      this.brn = paramLong;
+    if (this.dkR != -9223372036854775807L) {
+      this.dkR = paramLong;
     }
     for (;;)
     {
-      long l = this.brm;
+      long l = this.dkQ;
       AppMethodBeat.o(93208);
       return l + paramLong;
-      if (this.aZM != 9223372036854775807L) {
-        this.brm = (this.aZM - paramLong);
+      if (this.cTH != 9223372036854775807L) {
+        this.dkQ = (this.cTH - paramLong);
       }
       try
       {
-        this.brn = paramLong;
+        this.dkR = paramLong;
         notifyAll();
       }
       finally
@@ -129,35 +154,10 @@ public final class u
       }
     }
   }
-  
-  public final long vv()
-  {
-    long l = -9223372036854775807L;
-    if (this.aZM == 9223372036854775807L) {
-      l = 0L;
-    }
-    while (this.brn == -9223372036854775807L) {
-      return l;
-    }
-    return this.brm;
-  }
-  
-  public final void vw()
-  {
-    try
-    {
-      AppMethodBeat.i(93209);
-      while (this.brn == -9223372036854775807L) {
-        wait();
-      }
-      AppMethodBeat.o(93209);
-    }
-    finally {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.i.u
  * JD-Core Version:    0.7.0.1
  */

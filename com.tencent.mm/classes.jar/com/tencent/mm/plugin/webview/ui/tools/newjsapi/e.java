@@ -3,57 +3,58 @@ package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import kotlin.l;
+import com.tencent.mm.plugin.webview.ui.tools.WebViewUIStyleHelper;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoHide;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoHide;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends a
 {
-  private static final int IIl = 347;
-  public static final e QuT;
-  private static final String TAG = "MicroMsg.JsApiCurrentMpInfoHide";
-  private static final String fXz = "currentMpInfoHide";
+  private static final int OOk;
+  private static final String TAG;
+  public static final e XmQ;
+  private static final String idA;
   
   static
   {
     AppMethodBeat.i(175680);
-    QuT = new e();
+    XmQ = new e();
     TAG = "MicroMsg.JsApiCurrentMpInfoHide";
-    IIl = 347;
-    fXz = "currentMpInfoHide";
+    OOk = 347;
+    idA = "currentMpInfoHide";
     AppMethodBeat.o(175680);
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(221859);
-    kotlin.g.b.p.k(paramf, "env");
-    kotlin.g.b.p.k(paramn, "msg");
-    Context localContext = paramf.context;
-    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).PHI != null))
+    AppMethodBeat.i(297899);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Context localContext = paramh.context;
+    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).Wyi != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putBoolean("key_current_info_show", false);
-      ((WebViewUI)localContext).PHI.ba(localBundle);
+      ((WebViewUI)localContext).Wyi.bD(localBundle);
     }
-    paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
-    AppMethodBeat.o(221859);
+    paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), null);
+    AppMethodBeat.o(297899);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
 }
 

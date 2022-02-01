@@ -1,37 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.y;
 import java.util.Map;
+import org.json.JSONObject;
 
 public abstract class r
-  extends az
 {
-  public r D(Map<String, Object> paramMap)
+  protected y qqV;
+  private int ror;
+  private p ros;
+  protected ad rwA;
+  protected JSONObject rwB;
+  
+  public r(p paramp, y paramy, ad paramad, JSONObject paramJSONObject, int paramInt)
   {
-    super.E(paramMap);
-    return this;
+    if ((paramp == null) || (paramy == null) || (paramJSONObject == null)) {
+      throw new IllegalArgumentException("JsApiAsyncRequest");
+    }
+    this.ros = paramp;
+    this.qqV = paramy;
+    this.rwA = paramad;
+    this.ror = paramInt;
+    this.rwB = paramJSONObject;
   }
   
-  public final r a(e parame, int paramInt)
+  protected final void J(Map<String, ? extends Object> paramMap)
   {
-    super.b(parame, paramInt);
-    return this;
+    this.qqV.callback(this.ror, this.ros.m("ok", paramMap));
   }
   
-  public final r agT(String paramString)
+  public final y ari()
   {
-    super.agU(paramString);
-    return this;
+    return this.qqV;
   }
   
-  public final r i(e parame)
+  public final JSONObject cpO()
   {
-    super.j(parame);
-    return this;
+    return this.rwB;
+  }
+  
+  protected final void o(String paramString, Map<String, ? extends Object> paramMap)
+  {
+    this.qqV.callback(this.ror, this.ros.m(paramString, paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r
  * JD-Core Version:    0.7.0.1
  */

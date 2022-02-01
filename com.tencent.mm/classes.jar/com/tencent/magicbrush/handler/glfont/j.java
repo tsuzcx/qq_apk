@@ -5,72 +5,72 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public Typeface bGp = null;
-  public String cOk = "normal";
-  public boolean cOl;
-  public a cOm;
+  public Typeface bbO = null;
+  public String eJF = "normal";
+  public boolean eJG;
+  public a eJH;
   public float fontSize;
   public float strokeWidth;
   
   j(String paramString, a parama)
   {
-    this.cOk = paramString;
+    this.eJF = paramString;
     this.fontSize = 20.0F;
-    this.cOl = false;
+    this.eJG = false;
     this.strokeWidth = 0.0F;
-    this.cOm = parama;
+    this.eJH = parama;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(140053);
-    String str = "MBFontStyle[" + this.cOk + "][" + this.fontSize + "][" + this.strokeWidth + "]";
+    String str = "MBFontStyle[" + this.eJF + "][" + this.fontSize + "][" + this.strokeWidth + "]";
     AppMethodBeat.o(140053);
     return str;
   }
   
   public static enum a
   {
-    int cOr;
+    int eJM;
     
     static
     {
       AppMethodBeat.i(140052);
-      cOn = new a("NORMAL", 0, 0);
-      cOo = new a("BOLD", 1, 1);
-      cOp = new a("ITALIC", 2, 2);
-      cOq = new a("BOLD_ITALIC", 3, 3);
-      cOs = new a[] { cOn, cOo, cOp, cOq };
+      eJI = new a("NORMAL", 0, 0);
+      eJJ = new a("BOLD", 1, 1);
+      eJK = new a("ITALIC", 2, 2);
+      eJL = new a("BOLD_ITALIC", 3, 3);
+      eJN = new a[] { eJI, eJJ, eJK, eJL };
       AppMethodBeat.o(140052);
     }
     
     private a(int paramInt)
     {
-      this.cOr = paramInt;
+      this.eJM = paramInt;
     }
     
-    public static a m(boolean paramBoolean1, boolean paramBoolean2)
+    public static a o(boolean paramBoolean1, boolean paramBoolean2)
     {
       if ((paramBoolean1) && (paramBoolean2)) {
-        return cOq;
+        return eJL;
       }
       if (paramBoolean1) {
-        return cOp;
+        return eJK;
       }
       if (paramBoolean2) {
-        return cOo;
+        return eJJ;
       }
-      return cOn;
+      return eJI;
     }
     
-    public final boolean Vl()
+    public final boolean avO()
     {
-      return (this == cOo) || (this == cOq);
+      return (this == eJJ) || (this == eJL);
     }
     
-    public final boolean Vm()
+    public final boolean avP()
     {
-      return (this == cOp) || (this == cOq);
+      return (this == eJK) || (this == eJL);
     }
   }
 }

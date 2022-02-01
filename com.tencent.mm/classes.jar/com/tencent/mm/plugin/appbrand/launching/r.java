@@ -1,72 +1,46 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.Locale;
+import com.tencent.mm.autogen.b.bf;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class r
+  extends bf
 {
-  private static final Uri CONTENT_URI;
-  private static final r pUB;
+  static final IAutoDBItem.MAutoDBInfo DB_INFO;
+  static final String[] qDJ;
   
   static
   {
-    AppMethodBeat.i(146066);
-    pUB = new r();
-    CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/DevPkgLaunchExtInfo");
-    AppMethodBeat.o(146066);
+    int i = 0;
+    AppMethodBeat.i(146064);
+    qDJ = new String[] { "appId", "versionType" };
+    DB_INFO = bf.aJm();
+    String str = " PRIMARY KEY (";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
+    }
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = DB_INFO;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(146064);
   }
   
-  public static r bZP()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return pUB;
-  }
-  
-  public static String cs(String paramString, int paramInt)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(146065);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(146065);
-      return null;
-    }
-    Cursor localCursor = MMApplicationContext.getContext().getContentResolver().query(CONTENT_URI, null, String.format(Locale.US, "%s=? And %s=?", new Object[] { "appId", "versionType" }), new String[] { paramString, String.valueOf(paramInt) }, null, null);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(146065);
-      return null;
-    }
-    paramString = localObject;
-    if (!localCursor.isClosed())
-    {
-      paramString = localObject;
-      if (localCursor.moveToFirst())
-      {
-        paramString = new q();
-        paramString.convertFrom(localCursor);
-      }
-    }
-    localCursor.close();
-    if (paramString != null)
-    {
-      paramString = paramString.field_extJson;
-      AppMethodBeat.o(146065);
-      return paramString;
-    }
-    AppMethodBeat.o(146065);
-    return "";
+    return DB_INFO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.r
  * JD-Core Version:    0.7.0.1
  */

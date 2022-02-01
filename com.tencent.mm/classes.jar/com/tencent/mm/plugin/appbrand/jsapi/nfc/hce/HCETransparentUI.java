@@ -29,7 +29,7 @@ public class HCETransparentUI
     AppMethodBeat.i(136179);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     Log.i("MicroMsg.HCETransparentUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    a.pfy.AG(paramInt1);
+    a.skT.AU(paramInt1);
     AppMethodBeat.o(136179);
   }
   
@@ -40,8 +40,8 @@ public class HCETransparentUI
     overridePendingTransition(0, 0);
     setContentView(a.a.hce_transparent_ui);
     this.dK = ((ResultReceiver)getIntent().getParcelableExtra("HCE_Result_Receiver"));
-    a.pfy.a(this, this.dK);
-    a.pfy.resetStatus();
+    a.skT.a(this, this.dK);
+    a.skT.resetStatus();
     AppMethodBeat.o(136177);
   }
   
@@ -56,7 +56,7 @@ public class HCETransparentUI
   {
     AppMethodBeat.i(136180);
     super.onPause();
-    a.pfy.dismissDialog();
+    a.skT.aDM();
     AppMethodBeat.o(136180);
   }
   
@@ -67,8 +67,8 @@ public class HCETransparentUI
     Log.i("MicroMsg.HCETransparentUI", "alvinluo onResume");
     overridePendingTransition(0, 0);
     ComponentName localComponentName = new ComponentName(this, HCEService.class.getCanonicalName());
-    a.pfy.c(localComponentName);
-    a.pfy.bTv();
+    a.skT.c(localComponentName);
+    a.skT.ctA();
     AppMethodBeat.o(136178);
   }
   
@@ -80,7 +80,7 @@ public class HCETransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCETransparentUI
  * JD-Core Version:    0.7.0.1
  */

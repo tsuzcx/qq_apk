@@ -129,7 +129,10 @@ public abstract interface ITencentSmartcardOpenService
     
     public static boolean setDefaultImpl(ITencentSmartcardOpenService paramITencentSmartcardOpenService)
     {
-      if ((Proxy.sDefaultImpl == null) && (paramITencentSmartcardOpenService != null))
+      if (Proxy.sDefaultImpl != null) {
+        throw new IllegalStateException("setDefaultImpl() called twice");
+      }
+      if (paramITencentSmartcardOpenService != null)
       {
         Proxy.sDefaultImpl = paramITencentSmartcardOpenService;
         return true;
@@ -231,7 +234,7 @@ public abstract interface ITencentSmartcardOpenService
       
       public String checkIssueConditions(Map paramMap)
       {
-        AppMethodBeat.i(278006);
+        AppMethodBeat.i(243217);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -251,13 +254,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278006);
+          AppMethodBeat.o(243217);
         }
       }
       
       public String checkServiceStatus(Map paramMap)
       {
-        AppMethodBeat.i(278004);
+        AppMethodBeat.i(243208);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -277,13 +280,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278004);
+          AppMethodBeat.o(243208);
         }
       }
       
       public String deleteCard(Map paramMap)
       {
-        AppMethodBeat.i(278003);
+        AppMethodBeat.i(243206);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -303,13 +306,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278003);
+          AppMethodBeat.o(243206);
         }
       }
       
       public String doAction(String paramString, Map paramMap)
       {
-        AppMethodBeat.i(278007);
+        AppMethodBeat.i(243222);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -330,7 +333,7 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278007);
+          AppMethodBeat.o(243222);
         }
       }
       
@@ -341,7 +344,7 @@ public abstract interface ITencentSmartcardOpenService
       
       public String issueCard(Map paramMap)
       {
-        AppMethodBeat.i(278000);
+        AppMethodBeat.i(243194);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -361,13 +364,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278000);
+          AppMethodBeat.o(243194);
         }
       }
       
       public String preIssueCard(Map paramMap)
       {
-        AppMethodBeat.i(277998);
+        AppMethodBeat.i(243191);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -387,13 +390,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(277998);
+          AppMethodBeat.o(243191);
         }
       }
       
       public String queryCplc()
       {
-        AppMethodBeat.i(277997);
+        AppMethodBeat.i(243185);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -412,13 +415,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(277997);
+          AppMethodBeat.o(243185);
         }
       }
       
       public String queryTrafficCardInfo(String paramString, int paramInt)
       {
-        AppMethodBeat.i(278002);
+        AppMethodBeat.i(243199);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -439,13 +442,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278002);
+          AppMethodBeat.o(243199);
         }
       }
       
       public String recharge(Map paramMap)
       {
-        AppMethodBeat.i(278001);
+        AppMethodBeat.i(243195);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -465,13 +468,13 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278001);
+          AppMethodBeat.o(243195);
         }
       }
       
       public String startSetDefault(Map paramMap)
       {
-        AppMethodBeat.i(278005);
+        AppMethodBeat.i(243213);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -491,7 +494,7 @@ public abstract interface ITencentSmartcardOpenService
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(278005);
+          AppMethodBeat.o(243213);
         }
       }
     }
@@ -499,7 +502,7 @@ public abstract interface ITencentSmartcardOpenService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.sdk.trafficcard.ITencentSmartcardOpenService
  * JD-Core Version:    0.7.0.1
  */

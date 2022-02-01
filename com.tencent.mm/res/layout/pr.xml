@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView android:orientation="vertical" android:background="@color/c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/be8" android:background="@color/c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/hd" android:textStyle="bold" android:textColor="@color/a2x" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/f_p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ce" android:layout_marginRight="@dimen/ci" android:text="@string/avn" />
-        <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/f_k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/ct" android:text="@string/avo" android:includeFontPadding="false" android:lineSpacingMultiplier="1.4" />
-        <LinearLayout android:orientation="vertical" android:id="@id/f_n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce">
-            <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/avq" android:lineSpacingMultiplier="1.4" />
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/f_o" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:overScrollMode="never" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/f_l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce">
-            <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/avp" android:lineSpacingMultiplier="1.4" />
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/f_m" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:overScrollMode="never" />
-        </LinearLayout>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+<LinearLayout android:orientation="vertical" android:background="@drawable/m6" android:layout_width="@dimen/yg" android:layout_height="wrap_content" android:minHeight="@dimen/yf" android:paddingStart="@dimen/yd"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ye">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/gg" android:id="@id/b26" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b6t" android:layout_centerVertical="true" android:layout_toStartOf="@id/b27" android:layout_alignParentStart="true" />
+        <Button android:textSize="@dimen/lx" android:textColor="@android:color/white" android:id="@id/b27" android:text="@string/b6s" android:layout_centerVertical="true" android:paddingStart="14.0dip" android:paddingEnd="14.0dip" android:layout_marginEnd="@dimen/yd" android:layout_alignParentEnd="true" style="@style/oi" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="@string/b6u" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/b20" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" />
+    <View android:background="@color/mx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" android:layout_marginTop="@dimen/cp" />
+    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/b1x" android:background="@drawable/m3" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b6i" style="@style/zn" />
+    <View android:background="@color/mx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/b1y" android:background="@drawable/m3" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b6j" android:layout_marginEnd="@dimen/g" style="@style/zn" />
+</LinearLayout>

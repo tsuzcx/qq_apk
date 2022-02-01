@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <View android:id="@id/g8b" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-        <ListView android:id="@id/hhi" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/g8b" style="@style/np" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bch" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/g8b">
-            <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/bcg" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <Button android:id="@id/hh1" android:layout_marginRight="@dimen/k5" android:text="@string/eye" style="@style/p5" />
-        </LinearLayout>
-        <ImageView android:id="@id/hn9" android:background="@drawable/c5t" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bch" />
-        <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/hhk" android:visibility="gone" android:layout_width="@dimen/e" android:layout_height="wrap_content" android:layout_below="@id/bch" android:layout_alignParentRight="true" />
-        <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/hhh" android:background="@color/afz" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/g" android:paddingRight="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bch">
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <include layout="@layout/bpf" />
-                <com.tencent.mm.ui.base.MMTagPanel android:id="@id/bcb" android:paddingTop="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/g" />
-            </LinearLayout>
-        </com.tencent.mm.ui.contact.LabelContainerView>
-        <LinearLayout android:gravity="center_horizontal" android:id="@id/g02" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bch">
-            <TextView android:id="@id/g01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/eve" />
-        </LinearLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/frc" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="12.0dip" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/gb" android:id="@id/frd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toEndOf="@id/frc" />
+        <ImageView android:layout_gravity="end|center" android:id="@id/frb" android:layout_width="@dimen/cd" android:layout_height="@dimen/cv" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" />
     </RelativeLayout>
+    <RelativeLayout android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginStart="68.0dip" />
 </LinearLayout>

@@ -8,6 +8,8 @@ import android.view.View;
 import com.tencent.map.lib.MapLanguage;
 import com.tencent.map.sdk.comps.indoor.IIndoor;
 import com.tencent.map.sdk.comps.mylocation.IMyLocation;
+import com.tencent.map.sdk.comps.vis.VisualLayer;
+import com.tencent.map.sdk.comps.vis.VisualLayerOptions;
 import com.tencent.tencentmap.mapsdk.maps.model.AoiLayer;
 import com.tencent.tencentmap.mapsdk.maps.model.AoiLayer.OnAoiLayerLoadListener;
 import com.tencent.tencentmap.mapsdk.maps.model.AoiLayerOptions;
@@ -25,6 +27,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.IndoorBuilding;
 import com.tencent.tencentmap.mapsdk.maps.model.Language;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds;
+import com.tencent.tencentmap.mapsdk.maps.model.MapFontSize;
 import com.tencent.tencentmap.mapsdk.maps.model.MapPoi;
 import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
@@ -38,8 +41,11 @@ import com.tencent.tencentmap.mapsdk.maps.model.RestrictBoundsFitMode;
 import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
 import com.tencent.tencentmap.mapsdk.maps.model.TileOverlay;
 import com.tencent.tencentmap.mapsdk.maps.model.TileOverlayOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.TrafficEvent;
 import com.tencent.tencentmap.mapsdk.maps.model.VectorHeatOverlay;
 import com.tencent.tencentmap.mapsdk.maps.model.VectorHeatOverlayOptions;
+import com.tencent.tencentmap.mapsdk.maps.model.VectorOverlay;
+import com.tencent.tencentmap.mapsdk.maps.model.VectorOverlayProvider;
 import java.util.List;
 
 public abstract interface TencentMap
@@ -82,6 +88,10 @@ public abstract interface TencentMap
   public abstract TileOverlay addTileOverlay(TileOverlayOptions paramTileOverlayOptions);
   
   public abstract VectorHeatOverlay addVectorHeatOverlay(VectorHeatOverlayOptions paramVectorHeatOverlayOptions);
+  
+  public abstract <L extends VectorOverlay> L addVectorOverlay(VectorOverlayProvider paramVectorOverlayProvider);
+  
+  public abstract VisualLayer addVisualLayer(VisualLayerOptions paramVisualLayerOptions);
   
   public abstract void animateCamera(CameraUpdate paramCameraUpdate);
   
@@ -177,6 +187,8 @@ public abstract interface TencentMap
   
   public abstract void setMapCenterAndScale(float paramFloat1, float paramFloat2, float paramFloat3);
   
+  public abstract void setMapFontSize(MapFontSize paramMapFontSize);
+  
   public abstract void setMapFrameRate(float paramFloat);
   
   public abstract void setMapStyle(int paramInt);
@@ -191,7 +203,7 @@ public abstract interface TencentMap
   
   public abstract void setOnCameraChangeListener(OnCameraChangeListener paramOnCameraChangeListener);
   
-  public abstract void setOnCompassClickedListener(TencentMap.OnCompassClickedListener paramOnCompassClickedListener);
+  public abstract void setOnCompassClickedListener(OnCompassClickedListener paramOnCompassClickedListener);
   
   public abstract void setOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
@@ -207,11 +219,15 @@ public abstract interface TencentMap
   
   public abstract void setOnMarkerDragListener(OnMarkerDragListener paramOnMarkerDragListener);
   
+  public abstract void setOnPolygonClickListener(OnPolygonClickListener paramOnPolygonClickListener);
+  
   public abstract void setOnPolylineClickListener(OnPolylineClickListener paramOnPolylineClickListener);
   
   public abstract void setOnTapMapViewInfoWindowHidden(boolean paramBoolean);
   
-  public abstract void setOnTrafficEventClickListener(TencentMap.OnTrafficEventClickListener paramOnTrafficEventClickListener);
+  public abstract void setOnTrafficEventClickListener(OnTrafficEventClickListener paramOnTrafficEventClickListener);
+  
+  public abstract void setOverSeaEnable(boolean paramBoolean);
   
   public abstract void setOverSeaTileProvider(OverSeaTileProvider paramOverSeaTileProvider);
   
@@ -241,6 +257,13 @@ public abstract interface TencentMap
   
   public abstract void stopAnimation();
   
+  public abstract void updateVectorOverlay(VectorOverlay paramVectorOverlay, VectorOverlayProvider paramVectorOverlayProvider);
+  
+  public static abstract interface AsyncOperateCallback<T>
+  {
+    public abstract void onOperateFinished(T paramT);
+  }
+  
   public static abstract interface CancelableCallback
   {
     public abstract void onCancel();
@@ -260,6 +283,11 @@ public abstract interface TencentMap
     public abstract void onCameraChange(CameraPosition paramCameraPosition);
     
     public abstract void onCameraChangeFinished(CameraPosition paramCameraPosition);
+  }
+  
+  public static abstract interface OnCompassClickedListener
+  {
+    public abstract void onCompassClicked();
   }
   
   public static abstract interface OnIndoorStateChangeListener
@@ -322,9 +350,19 @@ public abstract interface TencentMap
     public abstract boolean onMyLocationClicked(LatLng paramLatLng);
   }
   
+  public static abstract interface OnPolygonClickListener
+  {
+    public abstract void onPolygonClick(Polygon paramPolygon, LatLng paramLatLng);
+  }
+  
   public static abstract interface OnPolylineClickListener
   {
     public abstract void onPolylineClick(Polyline paramPolyline, LatLng paramLatLng);
+  }
+  
+  public static abstract interface OnTrafficEventClickListener
+  {
+    public abstract void onTrafficEventClicked(TrafficEvent paramTrafficEvent);
   }
   
   public static abstract interface SnapshotReadyCallback
@@ -334,7 +372,7 @@ public abstract interface TencentMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMap
  * JD-Core Version:    0.7.0.1
  */

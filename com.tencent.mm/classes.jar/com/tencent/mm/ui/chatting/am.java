@@ -1,393 +1,348 @@
 package com.tencent.mm.ui.chatting;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.webkit.ValueCallback;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.multitalk.ui.widget.f;
-import com.tencent.mm.plugin.multitalk.ui.widget.k;
-import com.tencent.mm.plugin.multitalk.ui.widget.k.a;
-import com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI;
-import com.tencent.mm.pluginsdk.ui.tools.FileSelectorUI.b;
+import com.tencent.mm.autogen.a.nw;
+import com.tencent.mm.autogen.a.nw.b;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.d;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cc.a;
 import com.tencent.mm.vfs.u;
-import com.tencent.xweb.h;
-import com.tencent.xweb.h.a;
-import com.tencent.xweb.h.c;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/ScreenProfileReadyUI;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "filePath", "", "fileExt", "scene", "", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;I)V", "getFileExt", "()Ljava/lang/String;", "setFileExt", "(Ljava/lang/String;)V", "getFilePath", "setFilePath", "isShowChangeOrientationTip", "", "pluginControlLayout", "Landroid/widget/RelativeLayout;", "getPluginControlLayout", "()Landroid/widget/RelativeLayout;", "setPluginControlLayout", "(Landroid/widget/RelativeLayout;)V", "profilePluginUi", "Lcom/tencent/mm/ui/ScreenProfileReadyPluginUI;", "getProfilePluginUi", "()Lcom/tencent/mm/ui/ScreenProfileReadyPluginUI;", "setProfilePluginUi", "(Lcom/tencent/mm/ui/ScreenProfileReadyPluginUI;)V", "readerContentLayout", "getReaderContentLayout", "setReaderContentLayout", "applyPluginLayout", "", "applyReaderLayout", "checkRatioIsLand", "w", "h", "inputFileInfo", "refreshLayout", "release", "showProfileUi", "showRotateScreenInfo", "Companion", "app_release"})
 public final class am
-  extends FrameLayout
 {
-  public static final am.a WEb;
-  private RelativeLayout WDX;
-  private RelativeLayout WDY;
-  aj WDZ;
-  private boolean WEa;
-  private String filePath;
-  private String jmx;
-  private final int scene;
+  List<cc> aehr;
+  private String aelj;
+  String aelk;
+  ArrayList<Uri> aell;
+  private Context context;
+  private au hRm;
+  private SimpleDateFormat vaj;
   
-  static
+  public am(Context paramContext, List<cc> paramList, au paramau)
   {
-    AppMethodBeat.i(285653);
-    WEb = new am.a((byte)0);
-    AppMethodBeat.o(285653);
+    AppMethodBeat.i(34842);
+    this.aelj = null;
+    this.hRm = null;
+    this.vaj = new SimpleDateFormat("yyyy-MM-dd");
+    this.aelk = null;
+    this.aell = new ArrayList();
+    this.context = paramContext;
+    this.aehr = paramList;
+    this.hRm = paramau;
+    AppMethodBeat.o(34842);
   }
   
-  public am(Context paramContext, String paramString1, String paramString2, int paramInt)
+  private String cl(cc paramcc)
   {
-    super(paramContext);
-    AppMethodBeat.i(285652);
-    this.filePath = paramString1;
-    this.jmx = paramString2;
-    this.scene = paramInt;
-    LayoutInflater.from(paramContext).inflate(R.i.screen_profile_ready_main, (ViewGroup)this);
-    this.WDX = ((RelativeLayout)findViewById(R.h.screen_profile_content_ui));
-    this.WDY = ((RelativeLayout)findViewById(R.h.screen_profile_plugin_ui));
-    this.WDZ = new aj(paramContext, this.filePath, this.scene, (byte)0);
-    hNy();
-    hNx();
-    AppMethodBeat.o(285652);
-  }
-  
-  public static boolean mz(int paramInt1, int paramInt2)
-  {
-    return paramInt1 / paramInt2 >= 1.333333F;
-  }
-  
-  private final void nX(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(285649);
-    Object localObject1 = new File(paramString1);
-    if ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()))
-    {
-      AppMethodBeat.o(285649);
-      return;
+    AppMethodBeat.i(34845);
+    Object localObject1 = null;
+    if (paramcc.iYj()) {
+      localObject1 = String.format("[%s]", new Object[] { this.context.getString(R.l.gFm) });
     }
-    switch (this.scene)
-    {
-    default: 
-      localObject1 = h.c.aaai;
-    }
-    HashMap localHashMap;
-    long l1;
-    long l2;
     for (;;)
     {
-      localHashMap = new HashMap();
-      ((Map)localHashMap).put("extra_param_disable_scale", "false");
-      ((Map)localHashMap).put("extra_param_bg_color", String.valueOf(Color.parseColor("#ededed")));
-      ((Map)localHashMap).put("extra_param_disable_finish_activity", "true");
-      ((Map)localHashMap).put("extra_param_set_max_scale", "3");
-      ((Map)localHashMap).put("extra_param_disable_password", "true");
-      ((Map)localHashMap).put("extra_param_download_text_color", "-16777216");
-      localObject2 = k.Fzb;
-      localObject2 = u.buc(paramString1);
-      p.j(localObject2, "VFSFileOp.getFileMD5String(filePath)");
-      k.a.aQK((String)localObject2);
-      l1 = hashCode();
-      l2 = System.currentTimeMillis();
-      localObject2 = getContext();
-      if (localObject2 != null) {
-        break;
-      }
-      paramString1 = new t("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(285649);
-      throw paramString1;
-      localObject1 = h.c.aaai;
-      continue;
-      localObject1 = h.c.aaah;
-    }
-    Object localObject2 = (Activity)localObject2;
-    RelativeLayout localRelativeLayout = this.WDX;
-    if (localRelativeLayout == null)
-    {
-      paramString1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(285649);
-      throw paramString1;
-    }
-    h.a(paramString1, paramString2, String.valueOf(l1 + l2), true, localHashMap, (h.c)localObject1, (Activity)localObject2, (ViewGroup)localRelativeLayout, (h.a)new b(this), (ValueCallback)new c(this));
-    AppMethodBeat.o(285649);
-  }
-  
-  public final String getFileExt()
-  {
-    return this.jmx;
-  }
-  
-  public final String getFilePath()
-  {
-    return this.filePath;
-  }
-  
-  public final RelativeLayout getPluginControlLayout()
-  {
-    return this.WDY;
-  }
-  
-  public final aj getProfilePluginUi()
-  {
-    return this.WDZ;
-  }
-  
-  public final RelativeLayout getReaderContentLayout()
-  {
-    return this.WDX;
-  }
-  
-  public final void hNx()
-  {
-    AppMethodBeat.i(285645);
-    Object localObject1 = this.WDX;
-    if (localObject1 != null)
-    {
-      localObject1 = ((RelativeLayout)localObject1).getLayoutParams();
-      if (localObject1 != null)
+      Log.i("MicroMsg.OtherMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject1 });
+      paramcc = String.format("%s\n\n%s\n\n", new Object[] { cm(paramcc), localObject1 });
+      AppMethodBeat.o(34845);
+      return paramcc;
+      if (paramcc.jbx())
       {
-        if (localObject1 == null)
-        {
-          localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(285645);
-          throw ((Throwable)localObject1);
+        if (paramcc.field_isSend == 1) {
+          localObject1 = this.context.getString(R.l.gFk);
+        } else {
+          localObject1 = this.context.getString(R.l.gFj);
         }
-        Object localObject2 = k.Fzb;
-        localObject2 = getContext();
-        p.j(localObject2, "context");
-        if (k.a.hB((Context)localObject2) != 90)
-        {
-          localObject2 = k.Fzb;
-          localObject2 = getContext();
-          p.j(localObject2, "context");
-          if (k.a.hB((Context)localObject2) != 270) {}
-        }
-        else
-        {
-          ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
-          ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(f.Fyg);
-          AppMethodBeat.o(285645);
-          return;
-        }
-        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = f.Fyg;
-        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(0);
-        AppMethodBeat.o(285645);
-        return;
       }
-    }
-    AppMethodBeat.o(285645);
-  }
-  
-  public final void hNy()
-  {
-    AppMethodBeat.i(285646);
-    RelativeLayout localRelativeLayout = this.WDY;
-    if (localRelativeLayout != null)
-    {
-      Object localObject = this.WDY;
-      if (localObject != null) {
-        ((RelativeLayout)localObject).removeAllViews();
-      }
-      localObject = k.Fzb;
-      localObject = getContext();
-      p.j(localObject, "context");
-      if (k.a.hB((Context)localObject) != 90)
+      else if (paramcc.fxT())
       {
-        localObject = k.Fzb;
-        localObject = getContext();
-        p.j(localObject, "context");
-        if (k.a.hB((Context)localObject) != 270) {}
+        localObject1 = new nw();
+        ((nw)localObject1).hQs.hQm = 1;
+        ((nw)localObject1).hQs.hzO = paramcc;
+        ((nw)localObject1).publish();
+        localObject1 = String.format("[%s]", new Object[] { ((nw)localObject1).hQt.hLS });
       }
       else
       {
-        localObject = this.WDZ;
-        if (localObject != null)
+        Object localObject2;
+        if (paramcc.fxR())
         {
-          ((aj)localObject).S((ViewGroup)localRelativeLayout);
-          AppMethodBeat.o(285646);
-          return;
-        }
-        AppMethodBeat.o(285646);
-        return;
-      }
-      localObject = this.WDZ;
-      if (localObject != null)
-      {
-        ((aj)localObject).R((ViewGroup)localRelativeLayout);
-        AppMethodBeat.o(285646);
-        return;
-      }
-      AppMethodBeat.o(285646);
-      return;
-    }
-    AppMethodBeat.o(285646);
-  }
-  
-  public final void hNz()
-  {
-    AppMethodBeat.i(285647);
-    nX(this.filePath, this.jmx);
-    AppMethodBeat.o(285647);
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(285644);
-    aj localaj = this.WDZ;
-    if (localaj != null)
-    {
-      localaj.release();
-      AppMethodBeat.o(285644);
-      return;
-    }
-    AppMethodBeat.o(285644);
-  }
-  
-  public final void setFileExt(String paramString)
-  {
-    AppMethodBeat.i(285651);
-    p.k(paramString, "<set-?>");
-    this.jmx = paramString;
-    AppMethodBeat.o(285651);
-  }
-  
-  public final void setFilePath(String paramString)
-  {
-    AppMethodBeat.i(285650);
-    p.k(paramString, "<set-?>");
-    this.filePath = paramString;
-    AppMethodBeat.o(285650);
-  }
-  
-  public final void setPluginControlLayout(RelativeLayout paramRelativeLayout)
-  {
-    this.WDY = paramRelativeLayout;
-  }
-  
-  public final void setProfilePluginUi(aj paramaj)
-  {
-    this.WDZ = paramaj;
-  }
-  
-  public final void setReaderContentLayout(RelativeLayout paramRelativeLayout)
-  {
-    this.WDX = paramRelativeLayout;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/chatting/ScreenProfileReadyUI$inputFileInfo$1", "Lcom/tencent/xweb/FileReaderXWeb$ActionCallback;", "onDoubleTap", "", "e", "Landroid/view/MotionEvent;", "onPageChange", "pageIndex", "", "pageWidth", "pageHeight", "onPageCountUpdate", "totalCount", "onReachEnd", "onSingleTap", "onThumbnailLoad", "thumbnail", "Landroid/graphics/Bitmap;", "onUserCancel", "onUserOperated", "onViewStatusChange", "index", "zoom", "", "curWidth", "curHeight", "transX", "transY", "app_release"})
-  public static final class b
-    implements h.a
-  {
-    public final void NB(int paramInt)
-    {
-      AppMethodBeat.i(278274);
-      Log.i("MicroMsg.ScreenProfileReadyUI", "xfile onPageCountUpdate ".concat(String.valueOf(paramInt)));
-      aj localaj = this.WEc.getProfilePluginUi();
-      if (localaj != null) {
-        localaj.iWH = paramInt;
-      }
-      localaj = this.WEc.getProfilePluginUi();
-      if (localaj != null)
-      {
-        localaj.hIx();
-        AppMethodBeat.o(278274);
-        return;
-      }
-      AppMethodBeat.o(278274);
-    }
-    
-    public final void a(int paramInt1, float paramFloat, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-    
-    public final void a(int paramInt, Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(278277);
-      p.k(paramBitmap, "thumbnail");
-      Log.i("MicroMsg.ScreenProfileReadyUI", "xfile onThumbnailLoad ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(278277);
-    }
-    
-    public final void ag(int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(278276);
-      Log.i("MicroMsg.ScreenProfileReadyUI", "xfile onPageChange " + paramInt1 + " and pageWidth " + paramInt2 + " and pageHeight " + paramInt3);
-      Object localObject = this.WEc.getProfilePluginUi();
-      if (localObject != null) {
-        ((aj)localObject).uPV = paramInt1;
-      }
-      localObject = this.WEc.getProfilePluginUi();
-      if (localObject != null) {
-        ((aj)localObject).hIx();
-      }
-      if ((!am.a(this.WEc)) && (am.mz(paramInt2, paramInt3)))
-      {
-        localObject = FileSelectorUI.Rvv;
-        localObject = this.WEc.getContext();
-        p.j(localObject, "context");
-        if (FileSelectorUI.b.hB((Context)localObject) != 0)
-        {
-          localObject = FileSelectorUI.Rvv;
-          localObject = this.WEc.getContext();
-          p.j(localObject, "context");
-          if (FileSelectorUI.b.hB((Context)localObject) != 180) {}
-        }
-        else
-        {
-          am.b(this.WEc);
-          localObject = this.WEc.WDZ;
-          if (localObject != null)
+          localObject2 = k.b.Hf(Util.processXml(paramcc.field_content));
+          if (localObject2 != null)
           {
-            ((aj)localObject).WdX = w.l(((aj)localObject).context, (CharSequence)((aj)localObject).context.getResources().getString(R.l.multitalk_rotate_to_horizontal_urs), R.g.multitalk_rotate_screen_v2h);
-            AppMethodBeat.o(278276);
-            return;
+            switch (((k.b)localObject2).type)
+            {
+            }
+            for (;;)
+            {
+              localObject1 = h.s(((k.b)localObject2).appId, true, false);
+              if (localObject1 != null) {
+                break label309;
+              }
+              localObject1 = "";
+              break;
+              localObject1 = as.cWJ().bpI(((k.b)localObject2).hzM);
+              if (localObject1 != null)
+              {
+                localObject1 = new u(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
+                if (((u)localObject1).jKS()) {
+                  this.aell.add(FileProviderHelper.getUriForFile(this.context, (u)localObject1));
+                }
+              }
+            }
+            label309:
+            localObject1 = ((g)localObject1).field_appName;
+            if (6 == ((k.b)localObject2).type) {
+              localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(R.l.gFc), localObject1, this.context.getString(R.l.gFd) });
+            } else {
+              localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.gFc), localObject1 });
+            }
           }
         }
+        else if (paramcc.jbB())
+        {
+          bh.bCz();
+          localObject1 = com.tencent.mm.model.c.bzD().aLU(paramcc.field_content).nickname;
+          localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.gFe), localObject1 });
+        }
+        else if (paramcc.dSH())
+        {
+          localObject1 = this.context.getString(R.l.gFl);
+          com.tencent.mm.modelvideo.v.bOh();
+          localObject2 = String.format("[%s: %s(%s)]", new Object[] { localObject1, new u(com.tencent.mm.modelvideo.aa.PX(paramcc.field_imgPath)).getName(), this.context.getString(R.l.gFd) });
+          com.tencent.mm.modelvideo.v.bOh();
+          u localu = new u(com.tencent.mm.modelvideo.aa.PX(paramcc.field_imgPath));
+          localObject1 = localObject2;
+          if (localu.jKS())
+          {
+            this.aell.add(FileProviderHelper.getUriForFile(this.context, localu));
+            localObject1 = localObject2;
+          }
+        }
+        else if ((paramcc.jbG()) || (paramcc.jbH()))
+        {
+          localObject1 = String.format("[%s]", new Object[] { this.context.getString(R.l.gFf) });
+        }
       }
-      AppMethodBeat.o(278276);
     }
-    
-    public final void bQm()
-    {
-      AppMethodBeat.i(278275);
-      Log.i("MicroMsg.ScreenProfileReadyUI", "xfile on user cancel finish");
-      AppMethodBeat.o(278275);
-    }
-    
-    public final void dCv() {}
-    
-    public final void dCw() {}
-    
-    public final void dCx() {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "kotlin.jvm.PlatformType", "onReceiveValue", "(Ljava/lang/Integer;)V"})
-  static final class c<T>
-    implements ValueCallback<Integer>
+  private String cm(cc paramcc)
   {
-    c(am paramam) {}
+    AppMethodBeat.i(34846);
+    String str = null;
+    if (!au.bwE(this.hRm.field_username)) {
+      str = com.tencent.mm.model.aa.getDisplayName(paramcc.field_talker);
+    }
+    for (;;)
+    {
+      if (paramcc.field_isSend == 1)
+      {
+        Log.i("MicroMsg.OtherMailHistoryExporter", "isSend");
+        str = z.bAO();
+      }
+      long l = paramcc.getCreateTime();
+      paramcc = new SimpleDateFormat("HH:mm").format(new Date(l));
+      Object localObject = new StringBuilder("");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("  ");
+      ((StringBuilder)localObject).append(paramcc);
+      paramcc = ((StringBuilder)localObject).toString();
+      AppMethodBeat.o(34846);
+      return paramcc;
+      localObject = paramcc.field_content;
+      int i = br.JG((String)localObject);
+      if (i != -1) {
+        str = com.tencent.mm.model.aa.getDisplayName(((String)localObject).substring(0, i).trim());
+      }
+    }
+  }
+  
+  private String jqc()
+  {
+    AppMethodBeat.i(34844);
+    Object localObject;
+    if (!au.bwE(this.hRm.field_username))
+    {
+      str1 = this.context.getString(R.l.gUO);
+      localObject = this.hRm.aSU();
+      bh.bCz();
+      str1 = String.format(str1, new Object[] { localObject, com.tencent.mm.model.c.ban().d(4, null) });
+      AppMethodBeat.o(34844);
+      return str1;
+    }
+    if (Util.isNullOrNil(this.hRm.field_nickname))
+    {
+      localObject = com.tencent.mm.model.v.Il(this.hRm.field_username).iterator();
+      String str2;
+      for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
+        str2 = com.tencent.mm.model.aa.getDisplayName((String)((Iterator)localObject).next());
+      }
+    }
+    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.hRm.aSU())
+    {
+      str1 = String.format(this.context.getString(R.l.gUN), new Object[] { str1 });
+      break;
+    }
+  }
+  
+  private String zI(long paramLong)
+  {
+    AppMethodBeat.i(34847);
+    String str = this.vaj.format(new Date(paramLong));
+    AppMethodBeat.o(34847);
+    return str;
+  }
+  
+  public final String jqb()
+  {
+    AppMethodBeat.i(34843);
+    if (this.aelk == null) {}
+    Object localObject1;
+    for (boolean bool = true;; bool = false)
+    {
+      Log.d("MicroMsg.OtherMailHistoryExporter", "export: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.aehr.size()) });
+      if (this.aelk == null) {
+        break;
+      }
+      localObject1 = this.aelk;
+      AppMethodBeat.o(34843);
+      return localObject1;
+    }
+    this.aell.clear();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jqc());
+    localStringBuilder.append("\n\n");
+    Iterator localIterator = this.aehr.iterator();
+    cc localcc;
+    if (localIterator.hasNext())
+    {
+      localcc = (cc)localIterator.next();
+      if (this.aelj == null)
+      {
+        this.aelj = zI(localcc.getCreateTime());
+        localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.aelj }));
+        localStringBuilder.append("\n");
+        label196:
+        if (!localcc.iYl()) {
+          break label428;
+        }
+        if (!localcc.iYl()) {
+          break label422;
+        }
+        if (localcc.field_isSend != 1) {
+          break label324;
+        }
+        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { cm(localcc), localcc.field_content });
+      }
+    }
+    label422:
+    label428:
+    for (;;)
+    {
+      localStringBuilder.append((String)localObject1);
+      break;
+      localObject1 = zI(localcc.getCreateTime());
+      if (((String)localObject1).equals(this.aelj)) {
+        break label196;
+      }
+      this.aelj = ((String)localObject1);
+      localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.aelj }));
+      localStringBuilder.append("\n");
+      break label196;
+      label324:
+      if (!au.bwE(this.hRm.field_username))
+      {
+        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { cm(localcc), localcc.field_content });
+      }
+      else
+      {
+        int i = br.JG(localcc.field_content);
+        if (i != -1)
+        {
+          localObject1 = String.format("%s\n\n%s\n\n", new Object[] { cm(localcc), localcc.field_content.substring(i + 1).trim() });
+          continue;
+          localObject1 = null;
+          continue;
+          if (localcc.iYk())
+          {
+            if (localcc.iYk())
+            {
+              long l1 = localcc.field_msgId;
+              long l2 = localcc.field_msgSvrId;
+              Object localObject2 = af.cy(localcc.field_talker, l1);
+              localObject1 = localObject2;
+              if (Util.isNullOrNil((String)localObject2)) {
+                localObject1 = af.cz(localcc.field_talker, l2);
+              }
+              Log.d("MicroMsg.OtherMailHistoryExporter", "imgPath[%s]", new Object[] { localObject1 });
+              if (!Util.isNullOrNil((String)localObject1))
+              {
+                localObject1 = new u((String)localObject1);
+                localObject2 = FileProviderHelper.getUriForFile(this.context, (u)localObject1);
+                this.aell.add(localObject2);
+                localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(R.l.gFh), ((u)localObject1).getName(), this.context.getString(R.l.gFd) });
+              }
+            }
+            for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { cm(localcc), localObject1 });; localObject1 = null)
+            {
+              localStringBuilder.append((String)localObject1);
+              break;
+            }
+          }
+          if (localcc.fxR())
+          {
+            localObject1 = k.b.Hf(localcc.field_content);
+            if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57)))
+            {
+              if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57))) {}
+              for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { cm(localcc), ((k.b)localObject1).title });; localObject1 = null)
+              {
+                localStringBuilder.append((String)localObject1);
+                break;
+              }
+            }
+            localStringBuilder.append(cl(localcc));
+            break;
+          }
+          localStringBuilder.append(cl(localcc));
+          break;
+          localStringBuilder.append("\n\n");
+          this.aelk = localStringBuilder.toString();
+          localObject1 = this.aelk;
+          AppMethodBeat.o(34843);
+          return localObject1;
+        }
+        localObject1 = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.am
  * JD-Core Version:    0.7.0.1
  */

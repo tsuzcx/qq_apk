@@ -8,10 +8,10 @@ public class PAGSolidLayer
 {
   static
   {
-    AppMethodBeat.i(195250);
+    AppMethodBeat.i(187398);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(195250);
+    AppMethodBeat.o(187398);
   }
   
   public PAGSolidLayer(long paramLong)
@@ -27,7 +27,7 @@ public class PAGSolidLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.PAGSolidLayer
  * JD-Core Version:    0.7.0.1
  */

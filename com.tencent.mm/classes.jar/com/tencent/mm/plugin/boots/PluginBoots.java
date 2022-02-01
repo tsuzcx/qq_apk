@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.boots;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.bu;
-import com.tencent.mm.f.a.bw;
-import com.tencent.mm.kernel.a.b.b;
-import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.autogen.a.cd;
+import com.tencent.mm.autogen.a.cf;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.model.y;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.hp.model.HotpatchIPXXApplyService;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.af;
 import java.util.HashMap;
 
 public class PluginBoots
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.boots.a.d
 {
-  private com.tencent.mm.plugin.boots.b.a sms;
-  private com.tencent.mm.plugin.hp.b.c smt;
-  private IListener<bw> smu;
-  private IListener<bu> smv;
+  private com.tencent.mm.plugin.boots.b.a vyr;
+  private HotpatchIPXXApplyService vys;
+  private IListener<cf> vyt;
+  private IListener<cd> vyu;
   
   public PluginBoots()
   {
     AppMethodBeat.i(117361);
-    this.smt = new com.tencent.mm.plugin.hp.b.c();
-    this.smu = new IListener() {};
-    this.smv = new IListener() {};
+    this.vys = new HotpatchIPXXApplyService();
+    this.vyt = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.vyu = new IListener(com.tencent.mm.app.f.hfK) {};
     AppMethodBeat.o(117361);
   }
   
@@ -51,7 +50,7 @@ public class PluginBoots
   public void configure(g paramg)
   {
     AppMethodBeat.i(117365);
-    ab.a("HotPatchDownload", "WebNetFile", 2592000000L, 519);
+    af.a("HotPatchDownload", "WebNetFile", 2592000000L, 519);
     super.configure(paramg);
     AppMethodBeat.o(117365);
   }
@@ -60,7 +59,7 @@ public class PluginBoots
   {
     AppMethodBeat.i(117364);
     Log.d("MicroMsg.Boots.PluginBoots", "[cpan] boots dependency");
-    dependsOn(com.tencent.mm.plugin.comm.a.a.class);
+    dependsOn(com.tencent.mm.plugin.comm.a.b.class);
     AppMethodBeat.o(117364);
   }
   
@@ -68,30 +67,30 @@ public class PluginBoots
   {
     AppMethodBeat.i(117366);
     Log.d("MicroMsg.Boots.PluginBoots", "[cpan] boots execute %s", new Object[] { paramg.mProcessName });
-    this.sms = com.tencent.mm.plugin.boots.b.a.cyn();
-    if ((paramg.aIE()) || (paramg.MY(":patch")))
+    this.vyr = com.tencent.mm.plugin.boots.b.a.dbe();
+    if ((paramg.bbA()) || (paramg.FH(":patch")))
     {
-      com.tencent.mm.plugin.hp.tinker.e.eIj();
-      com.tencent.mm.plugin.hp.tinker.e.b(com.tencent.mm.app.d.fcb);
-      EventCenter.instance.addListener(this.smt);
-      EventCenter.instance.addListener(this.smv);
-      EventCenter.instance.addListener(this.smu);
+      com.tencent.mm.plugin.hp.tinker.e.fQc();
+      com.tencent.mm.plugin.hp.tinker.e.b(com.tencent.mm.app.e.hfI);
+      this.vys.alive();
+      this.vyu.alive();
+      this.vyt.alive();
     }
-    if (paramg.aIE()) {
+    if (paramg.bbA()) {
       com.tencent.mm.kernel.h.a(a.class, new com.tencent.mm.kernel.c.e(new a()));
     }
-    if (paramg.aIE()) {
+    if (paramg.bbA()) {
       com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.boots.a.c.class, new com.tencent.mm.kernel.c.e(new a()));
     }
-    if (paramg.aIE()) {
-      com.tencent.mm.plugin.hp.c.a.eIc();
+    if (paramg.bbA()) {
+      com.tencent.mm.plugin.hp.stat.a.fPV();
     }
     AppMethodBeat.o(117366);
   }
   
   public com.tencent.mm.plugin.boots.a.e getTinkerLogic()
   {
-    return this.sms;
+    return this.vyr;
   }
   
   public void installed()
@@ -117,8 +116,8 @@ public class PluginBoots
   {
     AppMethodBeat.i(117368);
     Log.d("MicroMsg.Boots.PluginBoots", "[cpan] boots onDataBaseOpened");
-    if (this.sms != null) {
-      this.sms.smW = new com.tencent.mm.plugin.boots.b.a.a(paramh1);
+    if (this.vyr != null) {
+      this.vyr.vyU = new com.tencent.mm.plugin.boots.b.a.a(paramh1);
     }
     AppMethodBeat.o(117368);
   }
@@ -133,7 +132,7 @@ public class PluginBoots
   
   static final class a
     extends y
-    implements b
+    implements com.tencent.mm.kernel.a.b.b
   {
     a()
     {

@@ -4,30 +4,30 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.luggage.sdk.processes.client.LuggageClientProcessMessage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.t;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.w;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/task/ipc/AppBrandFinishMessage;", "Lcom/tencent/luggage/sdk/processes/client/LuggageClientProcessMessage;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "appId", "", "(Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "describeContents", "", "runInLuggageProcess", "", "runtime", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/task/ipc/AppBrandFinishMessage;", "Lcom/tencent/luggage/sdk/processes/client/LuggageClientProcessMessage;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "appId", "", "(Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "describeContents", "", "runInLuggageProcess", "", "runtime", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppBrandFinishMessage
-  extends LuggageClientProcessMessage<t>
+  extends LuggageClientProcessMessage<w>
 {
-  public static final Parcelable.Creator CREATOR;
+  public static final Parcelable.Creator<AppBrandFinishMessage> CREATOR;
   private final String appId;
   
   static
   {
-    AppMethodBeat.i(262258);
-    CREATOR = new a();
-    AppMethodBeat.o(262258);
+    AppMethodBeat.i(318643);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(318643);
   }
   
   public AppBrandFinishMessage(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(262254);
+    AppMethodBeat.i(318638);
     this.appId = paramString;
-    AppMethodBeat.o(262254);
+    AppMethodBeat.o(318638);
   }
   
   public final int describeContents()
@@ -42,30 +42,16 @@ public final class AppBrandFinishMessage
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(262256);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(318658);
+    s.u(paramParcel, "out");
     paramParcel.writeString(this.appId);
-    AppMethodBeat.o(262256);
+    AppMethodBeat.o(318658);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(278370);
-      p.k(paramParcel, "in");
-      paramParcel = new AppBrandFinishMessage(paramParcel.readString());
-      AppMethodBeat.o(278370);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new AppBrandFinishMessage[paramInt];
-    }
-  }
+    implements Parcelable.Creator<AppBrandFinishMessage>
+  {}
 }
 
 

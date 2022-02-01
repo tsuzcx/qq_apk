@@ -1,52 +1,77 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.cs;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.b;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.dc;
+import com.tencent.mm.kernel.api.g;
+import com.tencent.mm.kernel.i;
 import com.tencent.mm.sdk.event.IListener;
+import kotlin.Metadata;
 import kotlin.Result;
 import kotlin.Result.Companion;
 import kotlin.ResultKt;
-import kotlin.d.b.a.j;
+import kotlin.ah;
+import kotlin.d.b.a.k;
+import kotlin.d.d<-Lkotlin.ah;>;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.br;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bu;
+import kotlinx.coroutines.j;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ipc/AccountScopedMainProcessTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "callAccountNotReadyDefaultHandler", "", "onAccountNotReady", "runInAccountScope", "runInMainProcess", "waitForAccount", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "waitForKernel", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ipc/AccountScopedMainProcessTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "callAccountNotReadyDefaultHandler", "", "onAccountNotReady", "runInAccountScope", "runInMainProcess", "waitForAccount", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "waitForKernel", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class AccountScopedMainProcessTask
   extends MainProcessTask
 {
-  public static void bPd()
+  private static Object R(kotlin.d.d<? super ah> paramd)
   {
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)a.oqA);
+    if (com.tencent.mm.kernel.h.baF().mDl.mDG) {
+      paramd = ah.aiuX;
+    }
+    Object localObject;
+    do
+    {
+      return paramd;
+      localObject = new kotlin.d.h(kotlin.d.a.b.au(paramd));
+      kotlin.d.d locald = (kotlin.d.d)localObject;
+      com.tencent.mm.kernel.h.baF().a((g)new c(locald));
+      localObject = ((kotlin.d.h)localObject).kli();
+      if (localObject == kotlin.d.a.a.aiwj) {
+        s.u(paramd, "frame");
+      }
+      paramd = (kotlin.d.d<? super ah>)localObject;
+    } while (localObject == kotlin.d.a.a.aiwj);
+    return ah.aiuX;
   }
   
-  public final void RW()
+  public static void cps()
   {
-    kotlinx.coroutines.g.b((ak)br.abxo, null, (m)new b(this, null), 3);
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)a.rut);
   }
   
-  public abstract void bPb();
+  public final void asn()
+  {
+    j.a((aq)bu.ajwo, null, null, (m)new b(this, null), 3);
+  }
   
-  public void bPc() {}
+  public abstract void cpq();
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  public void cpr() {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public static final a oqA;
+    public static final a rut;
     
     static
     {
-      AppMethodBeat.i(279824);
-      oqA = new a();
-      AppMethodBeat.o(279824);
+      AppMethodBeat.i(319401);
+      rut = new a();
+      AppMethodBeat.o(319401);
     }
     
     a()
@@ -55,118 +80,96 @@ public abstract class AccountScopedMainProcessTask
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends j
-    implements m<ak, kotlin.d.d<? super x>, Object>
+    extends k
+    implements m<aq, kotlin.d.d<? super ah>, Object>
   {
-    Object L$0;
     int label;
-    private ak p$;
     
-    b(AccountScopedMainProcessTask paramAccountScopedMainProcessTask, kotlin.d.d paramd)
+    b(AccountScopedMainProcessTask paramAccountScopedMainProcessTask, kotlin.d.d<? super b> paramd)
     {
       super(paramd);
     }
     
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+    public final kotlin.d.d<ah> create(Object paramObject, kotlin.d.d<?> paramd)
     {
-      AppMethodBeat.i(278939);
-      p.k(paramd, "completion");
-      paramd = new b(this.oqB, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(278939);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(278941);
-      paramObject1 = ((b)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(278941);
-      return paramObject1;
+      AppMethodBeat.i(319408);
+      paramObject = (kotlin.d.d)new b(this.ruu, paramd);
+      AppMethodBeat.o(319408);
+      return paramObject;
     }
     
     public final Object invokeSuspend(Object paramObject)
     {
-      AppMethodBeat.i(278938);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      AppMethodBeat.i(319403);
+      kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
       switch (this.label)
       {
       default: 
         paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(278938);
+        AppMethodBeat.o(319403);
         throw paramObject;
       case 0: 
         ResultKt.throwOnFailure(paramObject);
-        paramObject = this.p$;
-        this.L$0 = paramObject;
+        paramObject = (kotlin.d.d)this;
         this.label = 1;
-        if (AccountScopedMainProcessTask.a(this) == locala)
+        if (AccountScopedMainProcessTask.S(paramObject) == locala)
         {
-          AppMethodBeat.o(278938);
+          AppMethodBeat.o(319403);
           return locala;
         }
         break;
       case 1: 
-        ak localak = (ak)this.L$0;
         ResultKt.throwOnFailure(paramObject);
-        paramObject = localak;
       }
       try
       {
-        this.L$0 = paramObject;
+        paramObject = (kotlin.d.d)this;
         this.label = 2;
-        paramObject = AccountScopedMainProcessTask.b(this);
+        paramObject = AccountScopedMainProcessTask.T(paramObject);
         if (paramObject == locala)
         {
-          AppMethodBeat.o(278938);
+          AppMethodBeat.o(319403);
           return locala;
           ResultKt.throwOnFailure(paramObject);
         }
-        this.oqB.bPb();
+        this.ruu.cpq();
       }
-      catch (b paramObject)
+      catch (com.tencent.mm.model.b paramObject)
       {
         for (;;)
         {
-          this.oqB.bPc();
+          this.ruu.cpr();
         }
       }
-      paramObject = x.aazN;
-      AppMethodBeat.o(278938);
+      paramObject = ah.aiuX;
+      AppMethodBeat.o(319403);
       return paramObject;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ipc/AccountScopedMainProcessTask$waitForAccount$2$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CoreAccountInitializationNotifiedEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ipc/AccountScopedMainProcessTask$waitForKernel$2$1", "Lcom/tencent/mm/kernel/api/IKernelCallback;", "onExit", "", "killService", "", "onStartupDone", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
-    extends IListener<cs>
+    implements g
   {
-    c(kotlin.d.d paramd) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ipc/AccountScopedMainProcessTask$waitForKernel$2$1", "Lcom/tencent/mm/kernel/api/IKernelCallback;", "onExit", "", "killService", "", "onStartupDone", "plugin-appbrand-integration_release"})
-  public static final class d
-    implements com.tencent.mm.kernel.api.g
-  {
-    d(kotlin.d.d paramd) {}
+    c(kotlin.d.d<? super ah> paramd) {}
     
-    public final void abB()
+    public final void aDv()
     {
-      AppMethodBeat.i(279637);
-      kotlin.d.d locald = this.oqC;
-      x localx = x.aazN;
+      AppMethodBeat.i(319400);
+      kotlin.d.d locald = this.msc;
+      ah localah = ah.aiuX;
       Result.Companion localCompanion = Result.Companion;
-      locald.resumeWith(Result.constructor-impl(localx));
-      AppMethodBeat.o(279637);
+      locald.resumeWith(Result.constructor-impl(localah));
+      AppMethodBeat.o(319400);
     }
     
-    public final void dn(boolean paramBoolean)
+    public final void dZ(boolean paramBoolean)
     {
-      AppMethodBeat.i(279638);
-      h.aHH().b((com.tencent.mm.kernel.api.g)this);
-      AppMethodBeat.o(279638);
+      AppMethodBeat.i(319404);
+      com.tencent.mm.kernel.h.baF().b((g)this);
+      AppMethodBeat.o(319404);
     }
   }
 }

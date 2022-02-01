@@ -4,112 +4,148 @@ import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.Stick
 import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo.StickerBackType;
 import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo.TriggerAction;
 import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo.a;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m.c;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sticker.a.a;
 import com.tencent.mm.sticker.e;
-import com.tencent.mm.vfs.u;
-import com.tencent.mm.vfs.z;
+import com.tencent.mm.vfs.y;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Lcom.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.StickerItemInfo;>;
 import java.util.Map;
-import kotlin.a.ae;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.s;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.n.n;
+import kotlin.v;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyAdapterCoreLogic;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseResApplyAdapterCoreLogic;", "()V", "STICKER_ELEMENT_RES_NAME_DELIMITER", "", "STICKER_ELEMENT_RES_NAME_DELIMITER_2", "STICKER_ELEMENT_RES_NAME_SUFFIX", "", "TAG", "stickerTransform", "Lcom/tencent/mm/sticker/StickerTransform;", "getStickerTransform", "()Lcom/tencent/mm/sticker/StickerTransform;", "stickerTransform$delegate", "Lkotlin/Lazy;", "convert2StickerApplyParams", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyParams;", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "itemInfoList", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "copyStickerItemResourcesIfNeed", "", "itemResCount", "", "itemResDir", "Lcom/tencent/mm/vfs/VFSFile;", "itemName", "stickerResDir", "generateStickerResDirName", "realConvert2StickerApplyParams", "stickerType", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyAdapterCoreLogic;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseResApplyAdapterCoreLogic;", "()V", "STICKER_ELEMENT_RES_NAME_DELIMITER", "", "STICKER_ELEMENT_RES_NAME_DELIMITER_2", "STICKER_ELEMENT_RES_NAME_SUFFIX", "", "TAG", "stickerTransform", "Lcom/tencent/mm/sticker/StickerTransform;", "getStickerTransform", "()Lcom/tencent/mm/sticker/StickerTransform;", "stickerTransform$delegate", "Lkotlin/Lazy;", "convert2StickerApplyParams", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/StickerApplyParams;", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$StickerType;", "itemInfoList", "", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/StickerItemInfo;", "copyStickerItemResourcesIfNeed", "", "itemResCount", "", "itemResDir", "Lcom/tencent/mm/vfs/VFSFile;", "itemName", "stickerResDir", "generateStickerResDirName", "realConvert2StickerApplyParams", "stickerType", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
   extends b
 {
-  private static final f rIG;
-  public static final k rIH;
+  public static final k uTX;
+  private static final j uTY;
   
   static
   {
-    AppMethodBeat.i(283955);
-    rIH = new k();
-    rIG = kotlin.g.ar((kotlin.g.a.a)c.rIJ);
-    AppMethodBeat.o(283955);
+    AppMethodBeat.i(317166);
+    uTX = new k();
+    uTY = kotlin.k.cm((kotlin.g.a.a)c.uTZ);
+    AppMethodBeat.o(317166);
   }
   
-  private static boolean a(int paramInt, com.tencent.mm.vfs.q paramq1, String paramString, com.tencent.mm.vfs.q paramq2)
+  private static boolean a(int paramInt, com.tencent.mm.vfs.u paramu1, String paramString, com.tencent.mm.vfs.u paramu2)
   {
-    AppMethodBeat.i(283954);
-    paramq2 = new com.tencent.mm.vfs.q(paramq2, paramString);
-    paramString = com.tencent.mm.plugin.appbrand.jsapi.ai.c.d.pKE;
-    if (com.tencent.mm.plugin.appbrand.jsapi.ai.c.d.C(paramq2))
+    AppMethodBeat.i(317143);
+    paramu2 = new com.tencent.mm.vfs.u(paramu2, paramString);
+    paramString = com.tencent.mm.plugin.appbrand.jsapi.al.c.d.sPx;
+    if (com.tencent.mm.plugin.appbrand.jsapi.al.c.d.C(paramu2))
     {
-      Log.i("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, stickerItemDir(" + paramq2 + ") already exist");
-      AppMethodBeat.o(283954);
+      Log.i("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, stickerItemDir(" + paramu2 + ") already exist");
+      AppMethodBeat.o(317143);
       return true;
     }
-    paramString = paramq1.b((z)new k.a(i.ou(0, paramInt)));
-    paramq1 = paramString;
+    paramString = paramu1.b(new k..ExternalSyntheticLambda0(kotlin.k.k.qt(0, paramInt)));
+    paramu1 = paramString;
     if (paramString == null) {
-      paramq1 = new com.tencent.mm.vfs.q[0];
+      paramu1 = (com.tencent.mm.vfs.u[])new com.tencent.mm.vfs.u[0];
     }
-    p.j(paramq1, "itemResDir.listFiles { _…        } ?: emptyArray()");
-    if (paramInt != paramq1.length)
+    if (paramInt != paramu1.length)
     {
       Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, can not find all res");
-      AppMethodBeat.o(283954);
+      AppMethodBeat.o(317143);
       return false;
     }
-    if ((!paramq2.ifE()) && (!paramq2.ifL()))
+    if ((!paramu2.jKS()) && (!paramu2.jKY()))
     {
       Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, create stickerItemDir fail");
-      AppMethodBeat.o(283954);
+      AppMethodBeat.o(317143);
       return false;
     }
-    int i = paramq1.length;
+    int i = paramu1.length;
     paramInt = 0;
     while (paramInt < i)
     {
-      paramString = paramq1[paramInt];
-      p.j(paramString, "itemResFile");
+      paramString = paramu1[paramInt];
       Object localObject = paramString.getName();
-      p.j(localObject, "itemResFile.name");
-      Log.d("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, itemResName: ".concat(String.valueOf(localObject)));
-      localObject = new com.tencent.mm.vfs.q(paramq2, (String)localObject);
-      if (0L > u.on(paramString.bOF(), ((com.tencent.mm.vfs.q)localObject).bOF()))
+      s.s(localObject, "itemResFile.name");
+      Log.d("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", s.X("copyStickerItemResourcesIfNeed, itemResName: ", localObject));
+      localObject = new com.tencent.mm.vfs.u(paramu2, (String)localObject);
+      if (0L > y.O(com.tencent.mm.vfs.ah.v(paramString.jKT()), com.tencent.mm.vfs.ah.v(((com.tencent.mm.vfs.u)localObject).jKT()), false))
       {
         Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, copy fail");
-        AppMethodBeat.o(283954);
+        AppMethodBeat.o(317143);
         return false;
       }
       paramInt += 1;
     }
-    paramq1 = com.tencent.mm.plugin.appbrand.jsapi.ai.c.d.pKE;
-    if (!com.tencent.mm.plugin.appbrand.jsapi.ai.c.d.B(paramq2))
+    paramu1 = com.tencent.mm.plugin.appbrand.jsapi.al.c.d.sPx;
+    if (!com.tencent.mm.plugin.appbrand.jsapi.al.c.d.B(paramu2))
     {
       Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "copyStickerItemResourcesIfNeed, record stickerItemDir fail");
-      AppMethodBeat.o(283954);
+      AppMethodBeat.o(317143);
       return false;
     }
-    AppMethodBeat.o(283954);
+    AppMethodBeat.o(317143);
     return true;
   }
   
-  private static String bV(List<StickerItemInfo> paramList)
+  private static final boolean a(kotlin.k.g paramg, com.tencent.mm.vfs.u paramu, String paramString)
+  {
+    AppMethodBeat.i(317161);
+    s.u(paramg, "$range");
+    s.u(paramString, "name");
+    paramu = n.a((CharSequence)paramString, new char[] { '.' }, 0, 6);
+    if ((2 > paramu.size()) || (!s.p("png", kotlin.a.p.oM(paramu))))
+    {
+      Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", s.X("copyStickerItemResourcesIfNeed, invalid res: ", paramString));
+      AppMethodBeat.o(317161);
+      return false;
+    }
+    paramu = n.a((CharSequence)paramu.get(0), new char[] { '_' }, 0, 6);
+    Object localObject = ((Collection)paramu).toArray(new String[0]);
+    if (localObject == null)
+    {
+      paramg = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(317161);
+      throw paramg;
+    }
+    localObject = Arrays.toString((Object[])localObject);
+    s.s(localObject, "java.util.Arrays.toString(this)");
+    Log.d("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", s.X("copyStickerItemResourcesIfNeed, nameList2: ", localObject));
+    if (2 > paramu.size())
+    {
+      Log.w("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", s.X("copyStickerItemResourcesIfNeed, invalid res: ", paramString));
+      AppMethodBeat.o(317161);
+      return false;
+    }
+    paramu = n.bJF((String)kotlin.a.p.oM(paramu));
+    if ((paramu != null) && (paramg.aKs(paramu.intValue())))
+    {
+      AppMethodBeat.o(317161);
+      return true;
+    }
+    AppMethodBeat.o(317161);
+    return false;
+  }
+  
+  private static String dN(List<StickerItemInfo> paramList)
   {
     int i = 0;
-    AppMethodBeat.i(283953);
+    AppMethodBeat.i(317126);
     paramList = ((Collection)paramList).toArray(new StickerItemInfo[0]);
     if (paramList == null)
     {
-      paramList = new t("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(283953);
+      paramList = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(317126);
       throw paramList;
     }
     paramList = (StickerItemInfo[])paramList;
@@ -118,82 +154,83 @@ public final class k
     int j = paramList.length;
     while (i < j)
     {
-      ((StringBuilder)localObject).append(paramList[i].TD());
+      ((StringBuilder)localObject).append(paramList[i].aui());
       ((StringBuilder)localObject).append(", ");
       i += 1;
     }
     ((StringBuilder)localObject).append(']');
     paramList = ((StringBuilder)localObject).toString();
-    p.j(paramList, "StringBuilder().apply(builderAction).toString()");
+    s.s(paramList, "StringBuilder().apply(builderAction).toString()");
     localObject = kotlin.n.d.UTF_8;
     if (paramList == null)
     {
-      paramList = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(283953);
+      paramList = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(317126);
       throw paramList;
     }
     paramList = paramList.getBytes((Charset)localObject);
-    p.j(paramList, "(this as java.lang.String).getBytes(charset)");
+    s.s(paramList, "(this as java.lang.String).getBytes(charset)");
     paramList = com.tencent.mm.b.g.getMessageDigest(paramList);
-    p.j(paramList, "MD5.getMessageDigest(ite…nfoListStr.toByteArray())");
-    AppMethodBeat.o(283953);
+    s.s(paramList, "getMessageDigest(itemInfoListStr.toByteArray())");
+    AppMethodBeat.o(317126);
     return paramList;
   }
   
-  public final m b(m.c paramc, List<StickerItemInfo> paramList)
+  public final l b(o.c paramc, List<StickerItemInfo> paramList)
   {
-    AppMethodBeat.i(283952);
-    p.k(paramc, "type");
-    p.k(paramList, "itemInfoList");
-    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(cqW(), bV(paramList));
-    Object localObject1 = (Iterable)j.a((Iterable)paramList, (Comparator)new b());
-    paramList = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
+    AppMethodBeat.i(317172);
+    s.u(paramc, "type");
+    s.u(paramList, "itemInfoList");
+    com.tencent.mm.vfs.u localu = new com.tencent.mm.vfs.u(cTD(), dN(paramList));
+    Object localObject1 = (Iterable)kotlin.a.p.a((Iterable)paramList, (Comparator)new k.b());
+    paramList = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
     if (((Iterator)localObject1).hasNext())
     {
       Object localObject3 = (StickerItemInfo)((Iterator)localObject1).next();
-      if (!a(((StickerItemInfo)localObject3).frameCount, new com.tencent.mm.vfs.q(((StickerItemInfo)localObject3).cIr), ((StickerItemInfo)localObject3).name, localq))
+      if (!a(((StickerItemInfo)localObject3).frameCount, new com.tencent.mm.vfs.u(((StickerItemInfo)localObject3).eBX), ((StickerItemInfo)localObject3).name, localu))
       {
         paramc = null;
         if (paramc == null) {
-          u.deleteDir(localq.bOF());
+          y.ew(com.tencent.mm.vfs.ah.v(localu.jKT()), true);
         }
-        AppMethodBeat.o(283952);
+        AppMethodBeat.o(317172);
         return paramc;
       }
       localObject2 = ((StickerItemInfo)localObject3).name;
       com.tencent.mm.sticker.d locald = new com.tencent.mm.sticker.d();
       locald.setName(((StickerItemInfo)localObject3).name);
-      locald.fTZ = ((StickerItemInfo)localObject3).frameCount;
-      locald.Vax = ((StickerItemInfo)localObject3).cIq.getJsonVal();
-      if (m.c.cHr == paramc) {
-        locald.Vay = ((StickerItemInfo)localObject3).cIu.getJsonVal();
+      locald.len = ((StickerItemInfo)localObject3).frameCount;
+      locald.acBQ = ((StickerItemInfo)localObject3).eBW.getJsonVal();
+      if (o.c.eAO == paramc) {
+        locald.acBR = ((StickerItemInfo)localObject3).eCa.getJsonVal();
       }
       for (;;)
       {
-        paramList.add(s.M(localObject2, locald));
+        localObject3 = kotlin.ah.aiuX;
+        paramList.add(v.Y(localObject2, locald));
         break;
-        localObject3 = ((StickerItemInfo)localObject3).cIt;
+        localObject3 = ((StickerItemInfo)localObject3).eBZ;
         if (localObject3 != null)
         {
           double[] arrayOfDouble = new double[4];
-          arrayOfDouble[0] = ((StickerItemInfo.a)localObject3).cIv;
-          arrayOfDouble[1] = ((StickerItemInfo.a)localObject3).cIw;
-          arrayOfDouble[2] = ((StickerItemInfo.a)localObject3).cIx;
-          arrayOfDouble[3] = ((StickerItemInfo.a)localObject3).cIy;
-          p.k(arrayOfDouble, "<set-?>");
-          locald.VaB = arrayOfDouble;
+          arrayOfDouble[0] = ((StickerItemInfo.a)localObject3).eCb;
+          arrayOfDouble[1] = ((StickerItemInfo.a)localObject3).eCc;
+          arrayOfDouble[2] = ((StickerItemInfo.a)localObject3).eCd;
+          arrayOfDouble[3] = ((StickerItemInfo.a)localObject3).eCe;
+          s.u(arrayOfDouble, "<set-?>");
+          locald.acBU = arrayOfDouble;
         }
       }
     }
-    Object localObject2 = (HashMap)ae.a((Iterable)paramList, (Map)new HashMap());
+    Object localObject2 = (HashMap)ak.a((Iterable)paramList, (Map)new HashMap());
     localObject1 = new e();
-    ((e)localObject1).bLJ = 1.0D;
-    switch (l.$EnumSwitchMapping$0[paramc.ordinal()])
+    ((e)localObject1).dFr = 1.0D;
+    switch (a.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
-      paramc = new kotlin.m();
-      AppMethodBeat.o(283952);
+      paramc = new kotlin.p();
+      AppMethodBeat.o(317172);
       throw paramc;
     case 1: 
       paramList = "Sticker2D";
@@ -201,18 +238,21 @@ public final class k
     for (;;)
     {
       ((e)localObject1).setType(paramList);
-      ((e)localObject1).v((HashMap)localObject2);
-      if (m.c.cHt == paramc) {
-        ((e)localObject1).a((com.tencent.mm.sticker.g)rIG.getValue());
+      ((e)localObject1).y((HashMap)localObject2);
+      if (o.c.eAQ == paramc) {
+        ((e)localObject1).a((com.tencent.mm.sticker.g)uTY.getValue());
       }
-      paramList = new com.tencent.mm.vfs.q(localq, "config.json").bOF();
-      p.j(paramList, "stickerConfigFile.absolutePath");
-      Log.d("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", "realConvert2StickerApplyParams, stickerConfigPath: ".concat(String.valueOf(paramList)));
-      localObject2 = com.tencent.mm.sticker.a.Vas;
+      paramList = com.tencent.mm.vfs.ah.v(new com.tencent.mm.vfs.u(localu, "config.json").jKT());
+      s.s(paramList, "stickerConfigFile.absolutePath");
+      Log.d("MicroMsg.AppBrand.StickerApplyAdapterCoreLogic", s.X("realConvert2StickerApplyParams, stickerConfigPath: ", paramList));
+      localObject2 = com.tencent.mm.sticker.a.acBM;
       a.a.a((com.tencent.mm.sticker.a)localObject1, paramList);
-      paramList = localq.bOF();
-      p.j(paramList, "stickerResDir.absolutePath");
-      paramc = new m(paramc, paramList);
+      localObject1 = y.n(com.tencent.mm.vfs.ah.v(localu.jKT()), false);
+      paramList = (List<StickerItemInfo>)localObject1;
+      if (localObject1 == null) {
+        paramList = "";
+      }
+      paramc = new l(paramc, paramList);
       break;
       paramList = "StickerFixed";
       continue;
@@ -220,31 +260,18 @@ public final class k
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
-  public static final class b<T>
-    implements Comparator<T>
-  {
-    public final int compare(T paramT1, T paramT2)
-    {
-      AppMethodBeat.i(269083);
-      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((StickerItemInfo)paramT1).id), (Comparable)Integer.valueOf(((StickerItemInfo)paramT2).id));
-      AppMethodBeat.o(269083);
-      return i;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sticker/StickerTransform;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sticker/StickerTransform;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
+    extends kotlin.g.b.u
     implements kotlin.g.a.a<com.tencent.mm.sticker.g>
   {
-    public static final c rIJ;
+    public static final c uTZ;
     
     static
     {
-      AppMethodBeat.i(256081);
-      rIJ = new c();
-      AppMethodBeat.o(256081);
+      AppMethodBeat.i(317129);
+      uTZ = new c();
+      AppMethodBeat.o(317129);
     }
     
     c()

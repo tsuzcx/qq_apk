@@ -11,15 +11,15 @@ final class TopStoryFSVideoUI$11
   public final void run()
   {
     AppMethodBeat.i(126346);
-    if (this.NbZ.NbT.getVisibility() == 0) {
-      this.NbZ.NbT.setVisibility(8);
+    if (this.TOI.TOC.getVisibility() == 0) {
+      this.TOI.TOC.setVisibility(8);
     }
     AppMethodBeat.o(126346);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryFSVideoUI.11
  * JD-Core Version:    0.7.0.1
  */

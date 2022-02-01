@@ -1,127 +1,111 @@
 package com.tencent.mm.plugin.textstatus.proto;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.protocal.protobuf.kd;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class ai
-  extends dyl
+  extends esc
 {
-  public String MEN;
-  public int MFK;
-  public String MFz;
-  public int type;
-  public String username;
+  public int TpF;
+  public int TpG;
+  public int live_member_count;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(243767);
+    AppMethodBeat.i(289978);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(289978);
+        throw paramVarArgs;
       }
-      if (this.MFz != null) {
-        paramVarArgs.f(2, this.MFz);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.MEN != null) {
-        paramVarArgs.f(3, this.MEN);
-      }
-      if (this.username != null) {
-        paramVarArgs.f(4, this.username);
-      }
-      paramVarArgs.aY(5, this.MFK);
-      paramVarArgs.aY(6, this.type);
-      AppMethodBeat.o(243767);
+      paramVarArgs.bS(2, this.TpF);
+      paramVarArgs.bS(3, this.live_member_count);
+      paramVarArgs.bS(4, this.TpG);
+      AppMethodBeat.o(289978);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label560;
+      if (this.BaseResponse == null) {
+        break label468;
       }
     }
-    label560:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label468:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.MFz != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.MFz);
-      }
-      i = paramInt;
-      if (this.MEN != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.MEN);
-      }
-      paramInt = i;
-      if (this.username != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.username);
-      }
-      i = g.a.a.b.b.a.bM(5, this.MFK);
-      int j = g.a.a.b.b.a.bM(6, this.type);
-      AppMethodBeat.o(243767);
-      return paramInt + i + j;
+      int i = i.a.a.b.b.a.cJ(2, this.TpF);
+      int j = i.a.a.b.b.a.cJ(3, this.live_member_count);
+      int k = i.a.a.b.b.a.cJ(4, this.TpG);
+      AppMethodBeat.o(289978);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(243767);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(289978);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(289978);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ai localai = (ai)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(243767);
+          AppMethodBeat.o(289978);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            kd localkd = new kd();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localkd.parseFrom((byte[])localObject);
             }
-            localai.BaseRequest = localjg;
+            localai.BaseResponse = localkd;
             paramInt += 1;
           }
-          AppMethodBeat.o(243767);
+          AppMethodBeat.o(289978);
           return 0;
         case 2: 
-          localai.MFz = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(243767);
+          localai.TpF = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(289978);
           return 0;
         case 3: 
-          localai.MEN = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(243767);
-          return 0;
-        case 4: 
-          localai.username = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(243767);
-          return 0;
-        case 5: 
-          localai.MFK = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(243767);
+          localai.live_member_count = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(289978);
           return 0;
         }
-        localai.type = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(243767);
+        localai.TpG = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(289978);
         return 0;
       }
-      AppMethodBeat.o(243767);
+      AppMethodBeat.o(289978);
       return -1;
     }
   }

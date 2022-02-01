@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.MMSwitchBtn android:layout_gravity="center|right" android:id="@id/b0m" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" android:minHeight="@dimen/kg"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="#80ffffff" android:gravity="center_vertical" android:id="@id/m8u" android:background="@color/a3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentTop="true" android:paddingStart="16.0dip" android:layout_alignParentStart="true" />
+    <RelativeLayout android:id="@id/m3g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/m8u">
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/fcj" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:src="@drawable/b__" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_alignParentStart="true" app:radius="20.0dip" />
+        <TextView android:textSize="17.0dip" android:textColor="#ccffffff" android:id="@id/kxm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="12.0dip" android:layout_toEndOf="@id/fcj" />
+        <TextView android:textSize="14.0dip" android:textColor="#ccffffff" android:id="@id/m8n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="12.0dip" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true" />
+        <View android:background="#0dffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" android:layout_alignStart="@id/kxm" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/un" android:gravity="center" android:id="@id/m25" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="仅展示最近发言，可通过搜索@更多" android:layout_below="@id/m3g" />
+</RelativeLayout>

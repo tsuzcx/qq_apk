@@ -28,53 +28,53 @@ public class b
   
   static
   {
-    AppMethodBeat.i(236893);
+    AppMethodBeat.i(230244);
     a = b.class.getSimpleName();
     l = new int[] { 12339, 1, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12326, 0, 12352, 4, 12344 };
     m = new int[] { 12339, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12326, 0, 12352, 4, 12610, 1, 12344 };
-    AppMethodBeat.o(236893);
+    AppMethodBeat.o(230244);
   }
   
   private b()
   {
-    AppMethodBeat.i(236865);
+    AppMethodBeat.i(230206);
     this.i = 0;
     this.j = 0;
     this.k = new int[2];
-    AppMethodBeat.o(236865);
+    AppMethodBeat.o(230206);
   }
   
   public static b a(EGLConfig paramEGLConfig, EGLContext paramEGLContext, Surface paramSurface, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236867);
+    AppMethodBeat.i(230213);
     b localb = new b();
     localb.i = paramInt1;
     localb.j = paramInt2;
     if (localb.a(paramEGLConfig, paramEGLContext, paramSurface))
     {
-      AppMethodBeat.o(236867);
+      AppMethodBeat.o(230213);
       return localb;
     }
-    AppMethodBeat.o(236867);
+    AppMethodBeat.o(230213);
     return null;
   }
   
   private EGLContext a(EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(236888);
+    AppMethodBeat.i(230235);
     EGLContext localEGLContext = paramEGLContext;
     if (paramEGLContext == null) {
       localEGLContext = EGL10.EGL_NO_CONTEXT;
     }
     paramEGLDisplay = this.b.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, new int[] { 12440, paramInt, 12344 });
     g();
-    AppMethodBeat.o(236888);
+    AppMethodBeat.o(230235);
     return paramEGLDisplay;
   }
   
   private boolean a(EGLConfig paramEGLConfig, EGLContext paramEGLContext, Surface paramSurface)
   {
-    AppMethodBeat.i(236880);
+    AppMethodBeat.i(230225);
     this.b = ((EGL10)EGLContext.getEGL());
     this.c = this.b.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
     this.b.eglInitialize(this.c, this.k);
@@ -112,7 +112,7 @@ public class b
             break label323;
           }
           e();
-          AppMethodBeat.o(236880);
+          AppMethodBeat.o(230225);
           return false;
           paramEGLConfig = m;
           continue;
@@ -131,7 +131,7 @@ public class b
           catch (d paramEGLConfig)
           {
             TXCLog.e(a, "failed to create EGLContext of 3.0. ".concat(String.valueOf(paramEGLConfig)));
-            AppMethodBeat.o(236880);
+            AppMethodBeat.o(230225);
             return false;
           }
           this.h = this.b.eglCreateWindowSurface(this.c, this.d, paramSurface, null);
@@ -140,10 +140,10 @@ public class b
         if (!this.b.eglMakeCurrent(this.c, this.h, this.h, this.f))
         {
           e();
-          AppMethodBeat.o(236880);
+          AppMethodBeat.o(230225);
           return false;
         }
-        AppMethodBeat.o(236880);
+        AppMethodBeat.o(230225);
       }
     }
     return true;
@@ -151,37 +151,37 @@ public class b
   
   private void g()
   {
-    AppMethodBeat.i(236890);
+    AppMethodBeat.i(230239);
     int n = this.b.eglGetError();
     if (n != 12288)
     {
       d locald = new d(n);
-      AppMethodBeat.o(236890);
+      AppMethodBeat.o(230239);
       throw locald;
     }
-    AppMethodBeat.o(236890);
+    AppMethodBeat.o(230239);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(236870);
+    AppMethodBeat.i(230251);
     boolean bool = this.b.eglSwapBuffers(this.c, this.h);
     e();
-    AppMethodBeat.o(236870);
+    AppMethodBeat.o(230251);
     return bool;
   }
   
   public void b()
   {
-    AppMethodBeat.i(236872);
+    AppMethodBeat.i(230256);
     this.b.eglMakeCurrent(this.c, this.h, this.h, this.f);
     e();
-    AppMethodBeat.o(236872);
+    AppMethodBeat.o(230256);
   }
   
   public void c()
   {
-    AppMethodBeat.i(236874);
+    AppMethodBeat.i(230264);
     EGL10 localEGL10 = this.b;
     EGLDisplay localEGLDisplay = this.c;
     EGLSurface localEGLSurface = EGL10.EGL_NO_SURFACE;
@@ -197,7 +197,7 @@ public class b
     this.c = null;
     this.h = null;
     this.c = null;
-    AppMethodBeat.o(236874);
+    AppMethodBeat.o(230264);
   }
   
   public EGLContext d()
@@ -207,17 +207,17 @@ public class b
   
   public void e()
   {
-    AppMethodBeat.i(236884);
+    AppMethodBeat.i(230279);
     int n = this.b.eglGetError();
     if (n != 12288) {
       TXCLog.e(a, "EGL error: 0x" + Integer.toHexString(n));
     }
-    AppMethodBeat.o(236884);
+    AppMethodBeat.o(230279);
   }
   
   public e f()
   {
-    AppMethodBeat.i(236886);
+    AppMethodBeat.i(230288);
     Object localObject = new int[1];
     int[] arrayOfInt = new int[1];
     boolean bool1 = this.b.eglQuerySurface(this.c, this.h, 12375, (int[])localObject);
@@ -225,17 +225,17 @@ public class b
     if ((bool1) && (bool2))
     {
       localObject = new e(localObject[0], arrayOfInt[0]);
-      AppMethodBeat.o(236886);
+      AppMethodBeat.o(230288);
       return localObject;
     }
     localObject = new e(0, 0);
-    AppMethodBeat.o(236886);
+    AppMethodBeat.o(230288);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.opengl.b
  * JD-Core Version:    0.7.0.1
  */

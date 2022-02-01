@@ -61,14 +61,14 @@ public class YtVideoEncoder
   
   static
   {
-    AppMethodBeat.i(256727);
+    AppMethodBeat.i(218432);
     TAG = YtVideoEncoder.class.getSimpleName();
-    AppMethodBeat.o(256727);
+    AppMethodBeat.o(218432);
   }
   
   public YtVideoEncoder(IYUVToVideoEncoderCallback paramIYUVToVideoEncoderCallback, boolean paramBoolean)
   {
-    AppMethodBeat.i(256674);
+    AppMethodBeat.i(218304);
     this.vidoeEncodeQueue = new ConcurrentLinkedQueue();
     this.audioEncodeQueue = new ConcurrentLinkedQueue();
     this.mediaDataQueue = new ConcurrentLinkedQueue();
@@ -91,12 +91,12 @@ public class YtVideoEncoder
     this.audioSampleRate = 8000;
     this.mCallback = paramIYUVToVideoEncoderCallback;
     this.mNeedWork = paramBoolean;
-    AppMethodBeat.o(256674);
+    AppMethodBeat.o(218304);
   }
   
   private byte[] I420ToNV21(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    AppMethodBeat.i(256716);
+    AppMethodBeat.i(218410);
     if (this.yuvnv12 == null) {
       this.yuvnv12 = new byte[paramInt1 * paramInt2 * 3 / 2];
     }
@@ -117,13 +117,13 @@ public class YtVideoEncoder
       i += 2;
     }
     paramYuvImage = this.yuvnv12;
-    AppMethodBeat.o(256716);
+    AppMethodBeat.o(218410);
     return paramYuvImage;
   }
   
   private byte[] NV12ToNV21(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    AppMethodBeat.i(256712);
+    AppMethodBeat.i(218404);
     if (this.yuvnv12 == null) {
       this.yuvnv12 = new byte[paramInt1 * paramInt2 * 3 / 2];
     }
@@ -143,7 +143,7 @@ public class YtVideoEncoder
       paramInt1 += 1;
     }
     paramYuvImage = this.yuvnv12;
-    AppMethodBeat.o(256712);
+    AppMethodBeat.o(218404);
     return paramYuvImage;
   }
   
@@ -154,15 +154,15 @@ public class YtVideoEncoder
   
   private byte[] convertYUV(int paramInt1, int paramInt2, YuvImage paramYuvImage)
   {
-    AppMethodBeat.i(256709);
+    AppMethodBeat.i(218397);
     if (this.colorFormat == 21)
     {
       paramYuvImage = NV12ToNV21(paramInt1, paramInt2, paramYuvImage);
-      AppMethodBeat.o(256709);
+      AppMethodBeat.o(218397);
       return paramYuvImage;
     }
     paramYuvImage = I420ToNV21(paramInt1, paramInt2, paramYuvImage);
-    AppMethodBeat.o(256709);
+    AppMethodBeat.o(218397);
     return paramYuvImage;
   }
   
@@ -251,65 +251,65 @@ public class YtVideoEncoder
   
   private ByteBuffer getInputBuffer(YtVideoEncoder.MediaType paramMediaType, int paramInt)
   {
-    AppMethodBeat.i(256695);
+    AppMethodBeat.i(218351);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
       {
         paramMediaType = this.videoEncoder.getInputBuffer(paramInt);
-        AppMethodBeat.o(256695);
+        AppMethodBeat.o(218351);
         return paramMediaType;
       }
       paramMediaType = this.audioEncoder.getInputBuffer(paramInt);
-      AppMethodBeat.o(256695);
+      AppMethodBeat.o(218351);
       return paramMediaType;
     }
     if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
     {
       paramMediaType = this.videoEncoder.getInputBuffers()[paramInt];
-      AppMethodBeat.o(256695);
+      AppMethodBeat.o(218351);
       return paramMediaType;
     }
     paramMediaType = this.audioEncoder.getInputBuffers()[paramInt];
-    AppMethodBeat.o(256695);
+    AppMethodBeat.o(218351);
     return paramMediaType;
   }
   
   private byte[] getNV21(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(256719);
+    AppMethodBeat.i(218417);
     int[] arrayOfInt = new int[paramInt1 * paramInt2];
     paramBitmap.getPixels(arrayOfInt, 0, paramInt1, 0, 0, paramInt1, paramInt2);
     byte[] arrayOfByte = new byte[paramInt1 * paramInt2 * 3 / 2];
     encodeYUV420SP(arrayOfByte, arrayOfInt, paramInt1, paramInt2);
     paramBitmap.recycle();
-    AppMethodBeat.o(256719);
+    AppMethodBeat.o(218417);
     return arrayOfByte;
   }
   
   private ByteBuffer getOutputBuffer(YtVideoEncoder.MediaType paramMediaType, int paramInt)
   {
-    AppMethodBeat.i(256697);
+    AppMethodBeat.i(218359);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
       {
         paramMediaType = this.videoEncoder.getOutputBuffer(paramInt);
-        AppMethodBeat.o(256697);
+        AppMethodBeat.o(218359);
         return paramMediaType;
       }
       paramMediaType = this.audioEncoder.getOutputBuffer(paramInt);
-      AppMethodBeat.o(256697);
+      AppMethodBeat.o(218359);
       return paramMediaType;
     }
     if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
     {
       paramMediaType = this.videoEncoder.getOutputBuffers()[paramInt];
-      AppMethodBeat.o(256697);
+      AppMethodBeat.o(218359);
       return paramMediaType;
     }
     paramMediaType = this.audioEncoder.getOutputBuffers()[paramInt];
-    AppMethodBeat.o(256697);
+    AppMethodBeat.o(218359);
     return paramMediaType;
   }
   
@@ -325,7 +325,7 @@ public class YtVideoEncoder
   
   private void onAudioStart()
   {
-    AppMethodBeat.i(256681);
+    AppMethodBeat.i(218339);
     this.audioEncoder.start();
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
     long l4 = 0L;
@@ -439,116 +439,119 @@ public class YtVideoEncoder
     //   12: monitorenter
     //   13: aload_0
     //   14: getfield 213	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   17: ifnull +31 -> 48
+    //   17: ifnull +38 -> 55
     //   20: aload_0
     //   21: getfield 213	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   24: invokevirtual 378	android/media/MediaCodec:stop	()V
+    //   24: invokevirtual 378	android/media/MediaCodec:reset	()V
     //   27: aload_0
     //   28: getfield 213	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   31: invokevirtual 380	android/media/MediaCodec:release	()V
+    //   31: invokevirtual 381	android/media/MediaCodec:stop	()V
     //   34: aload_0
-    //   35: aconst_null
-    //   36: putfield 213	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
-    //   39: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   42: ldc_w 382
-    //   45: invokestatic 325	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   48: aload_0
-    //   49: getfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   52: astore_2
-    //   53: aload_2
-    //   54: ifnull +38 -> 92
-    //   57: aload_0
-    //   58: getfield 384	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncodeThread	Ljava/lang/Thread;
-    //   61: invokevirtual 387	java/lang/Thread:join	()V
+    //   35: getfield 213	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
+    //   38: invokevirtual 383	android/media/MediaCodec:release	()V
+    //   41: aload_0
+    //   42: aconst_null
+    //   43: putfield 213	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:videoEncoder	Landroid/media/MediaCodec;
+    //   46: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
+    //   49: ldc_w 385
+    //   52: invokestatic 325	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   55: aload_0
+    //   56: getfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
+    //   59: astore_2
+    //   60: aload_2
+    //   61: ifnull +38 -> 99
     //   64: aload_0
-    //   65: getfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   68: invokevirtual 378	android/media/MediaCodec:stop	()V
+    //   65: getfield 387	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncodeThread	Ljava/lang/Thread;
+    //   68: invokevirtual 390	java/lang/Thread:join	()V
     //   71: aload_0
     //   72: getfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   75: invokevirtual 380	android/media/MediaCodec:release	()V
+    //   75: invokevirtual 381	android/media/MediaCodec:stop	()V
     //   78: aload_0
-    //   79: aconst_null
-    //   80: putfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
-    //   83: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   86: ldc_w 389
-    //   89: invokestatic 325	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   92: aload_0
-    //   93: getfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   96: astore_2
-    //   97: aload_2
-    //   98: ifnull +36 -> 134
-    //   101: aload_0
-    //   102: getfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   105: invokevirtual 390	android/media/MediaMuxer:stop	()V
+    //   79: getfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
+    //   82: invokevirtual 383	android/media/MediaCodec:release	()V
+    //   85: aload_0
+    //   86: aconst_null
+    //   87: putfield 220	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:audioEncoder	Landroid/media/MediaCodec;
+    //   90: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
+    //   93: ldc_w 392
+    //   96: invokestatic 325	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   99: aload_0
+    //   100: getfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
+    //   103: astore_2
+    //   104: aload_2
+    //   105: ifnull +36 -> 141
     //   108: aload_0
     //   109: getfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   112: invokevirtual 391	android/media/MediaMuxer:release	()V
+    //   112: invokevirtual 393	android/media/MediaMuxer:stop	()V
     //   115: aload_0
-    //   116: aconst_null
-    //   117: putfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
-    //   120: aload_0
-    //   121: iconst_0
-    //   122: putfield 112	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:isMediaMuxerStarted	Z
-    //   125: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   128: ldc_w 393
-    //   131: invokestatic 325	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   134: aload_1
-    //   135: monitorexit
-    //   136: ldc_w 375
-    //   139: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   142: return
-    //   143: astore_2
-    //   144: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   147: aload_2
-    //   148: invokevirtual 270	java/lang/InterruptedException:getLocalizedMessage	()Ljava/lang/String;
-    //   151: invokestatic 276	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   154: goto -90 -> 64
-    //   157: astore_2
-    //   158: aload_1
-    //   159: monitorexit
-    //   160: ldc_w 375
-    //   163: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   166: aload_2
-    //   167: athrow
-    //   168: astore_2
-    //   169: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
-    //   172: new 338	java/lang/StringBuilder
-    //   175: dup
-    //   176: ldc_w 395
-    //   179: invokespecial 343	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   182: aload_2
-    //   183: invokevirtual 396	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   186: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: invokevirtual 355	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   192: invokestatic 276	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   195: goto -87 -> 108
+    //   116: getfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
+    //   119: invokevirtual 394	android/media/MediaMuxer:release	()V
+    //   122: aload_0
+    //   123: aconst_null
+    //   124: putfield 357	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:mediaMuxer	Landroid/media/MediaMuxer;
+    //   127: aload_0
+    //   128: iconst_0
+    //   129: putfield 112	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:isMediaMuxerStarted	Z
+    //   132: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
+    //   135: ldc_w 396
+    //   138: invokestatic 325	com/tencent/youtu/sdkkitframework/common/YtLogger:d	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   141: aload_1
+    //   142: monitorexit
+    //   143: ldc_w 375
+    //   146: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   149: return
+    //   150: astore_2
+    //   151: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
+    //   154: aload_2
+    //   155: invokevirtual 270	java/lang/InterruptedException:getLocalizedMessage	()Ljava/lang/String;
+    //   158: invokestatic 276	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: goto -90 -> 71
+    //   164: astore_2
+    //   165: aload_1
+    //   166: monitorexit
+    //   167: ldc_w 375
+    //   170: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   173: aload_2
+    //   174: athrow
+    //   175: astore_2
+    //   176: getstatic 92	com/tencent/youtu/sdkkitframework/common/YtVideoEncoder:TAG	Ljava/lang/String;
+    //   179: new 338	java/lang/StringBuilder
+    //   182: dup
+    //   183: ldc_w 398
+    //   186: invokespecial 343	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   189: aload_2
+    //   190: invokevirtual 399	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
+    //   193: invokevirtual 352	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: invokevirtual 355	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   199: invokestatic 276	com/tencent/youtu/sdkkitframework/common/YtLogger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   202: goto -87 -> 115
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	this	YtVideoEncoder
-    //   10	149	1	localObject1	Object
-    //   52	46	2	localObject2	Object
-    //   143	5	2	localInterruptedException	InterruptedException
-    //   157	10	2	localObject3	Object
-    //   168	15	2	localException	Exception
+    //   0	205	0	this	YtVideoEncoder
+    //   10	156	1	localObject1	Object
+    //   59	46	2	localObject2	Object
+    //   150	5	2	localInterruptedException	InterruptedException
+    //   164	10	2	localObject3	Object
+    //   175	15	2	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   57	64	143	java/lang/InterruptedException
-    //   13	48	157	finally
-    //   48	53	157	finally
-    //   57	64	157	finally
-    //   64	92	157	finally
-    //   92	97	157	finally
-    //   101	108	157	finally
-    //   108	134	157	finally
-    //   134	136	157	finally
-    //   144	154	157	finally
-    //   169	195	157	finally
-    //   101	108	168	java/lang/Exception
+    //   64	71	150	java/lang/InterruptedException
+    //   13	55	164	finally
+    //   55	60	164	finally
+    //   64	71	164	finally
+    //   71	99	164	finally
+    //   99	104	164	finally
+    //   108	115	164	finally
+    //   115	141	164	finally
+    //   141	143	164	finally
+    //   151	161	164	finally
+    //   176	202	164	finally
+    //   108	115	175	java/lang/Exception
   }
   
   private static MediaCodecInfo selectCodec(String paramString)
   {
-    AppMethodBeat.i(256701);
+    AppMethodBeat.i(218382);
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     while (i < k)
@@ -562,7 +565,7 @@ public class YtVideoEncoder
         {
           if (arrayOfString[j].equalsIgnoreCase(paramString))
           {
-            AppMethodBeat.o(256701);
+            AppMethodBeat.o(218382);
             return localMediaCodecInfo;
           }
           j += 1;
@@ -570,13 +573,13 @@ public class YtVideoEncoder
       }
       i += 1;
     }
-    AppMethodBeat.o(256701);
+    AppMethodBeat.o(218382);
     return null;
   }
   
   private static int selectColorFormat(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(256704);
+    AppMethodBeat.i(218390);
     paramMediaCodecInfo = paramMediaCodecInfo.getCapabilitiesForType(paramString);
     int i = 0;
     while (i < paramMediaCodecInfo.colorFormats.length)
@@ -585,21 +588,21 @@ public class YtVideoEncoder
       YtLogger.d(TAG, "found colorformat: ".concat(String.valueOf(j)));
       if (isRecognizedFormat(j))
       {
-        AppMethodBeat.o(256704);
+        AppMethodBeat.o(218390);
         return j;
       }
       i += 1;
     }
-    AppMethodBeat.o(256704);
+    AppMethodBeat.o(218390);
     return 0;
   }
   
   private void startAudioEncoding(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256679);
+    AppMethodBeat.i(218313);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(256679);
+      AppMethodBeat.o(218313);
       return;
     }
     this.needAudio = true;
@@ -618,29 +621,29 @@ public class YtVideoEncoder
       {
         public void run()
         {
-          AppMethodBeat.i(256657);
+          AppMethodBeat.i(218287);
           YtVideoEncoder.access$000(YtVideoEncoder.this);
-          AppMethodBeat.o(256657);
+          AppMethodBeat.o(218287);
         }
       });
       this.audioEncodeThread.start();
-      AppMethodBeat.o(256679);
+      AppMethodBeat.o(218313);
       return;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(256679);
+      AppMethodBeat.o(218313);
     }
   }
   
   private void startAudioRecord()
   {
-    AppMethodBeat.i(256680);
+    AppMethodBeat.i(218322);
     new Thread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(256666);
+        AppMethodBeat.i(218296);
         YtVideoEncoder.access$102(YtVideoEncoder.this, AudioRecord.getMinBufferSize(YtVideoEncoder.this.audioSampleRate, 16, 2));
         int i = Math.min(16384, YtVideoEncoder.this.minAudioBufferSize * 2);
         YtVideoEncoder.access$302(YtVideoEncoder.this, new AudioRecord(1, YtVideoEncoder.this.audioSampleRate, 16, 2, i));
@@ -656,20 +659,20 @@ public class YtVideoEncoder
         YtVideoEncoder.this.audioRecord.stop();
         YtVideoEncoder.this.audioRecord.release();
         YtVideoEncoder.access$302(YtVideoEncoder.this, null);
-        AppMethodBeat.o(256666);
+        AppMethodBeat.o(218296);
       }
     }).start();
-    AppMethodBeat.o(256680);
+    AppMethodBeat.o(218322);
   }
   
   private void startMediaMuxer(YtVideoEncoder.MediaType paramMediaType, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(256722);
+    AppMethodBeat.i(218423);
     synchronized (this.mediaMuxerSync)
     {
       if (this.isMediaMuxerStarted)
       {
-        AppMethodBeat.o(256722);
+        AppMethodBeat.o(218423);
         return;
       }
       if (paramMediaType == YtVideoEncoder.MediaType.VideoType)
@@ -691,7 +694,7 @@ public class YtVideoEncoder
       }
       for (;;)
       {
-        AppMethodBeat.o(256722);
+        AppMethodBeat.o(218423);
         return;
         boolean bool = this.needAudio;
         if (!bool) {
@@ -708,7 +711,7 @@ public class YtVideoEncoder
   
   public void abortEncoding()
   {
-    AppMethodBeat.i(256689);
+    AppMethodBeat.i(218443);
     this.isEncodingStarted = false;
     if (this.mOutputFile != null)
     {
@@ -718,13 +721,13 @@ public class YtVideoEncoder
     }
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(256689);
+      AppMethodBeat.o(218443);
       return;
     }
     if ((this.videoEncoder == null) || (this.mediaMuxer == null))
     {
       YtLogger.i(TAG, "Failed to abort encoding since it never started");
-      AppMethodBeat.o(256689);
+      AppMethodBeat.o(218443);
       return;
     }
     YtLogger.i(TAG, "Aborting encoding");
@@ -738,28 +741,28 @@ public class YtVideoEncoder
         this.mNewFrameLatch.countDown();
       }
       release();
-      AppMethodBeat.o(256689);
+      AppMethodBeat.o(218443);
       return;
     }
   }
   
   public void encode()
   {
-    AppMethodBeat.i(256693);
+    AppMethodBeat.i(218447);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(256693);
+      AppMethodBeat.o(218447);
       return;
     }
     if (!this.isEncodingStarted)
     {
-      AppMethodBeat.o(256693);
+      AppMethodBeat.o(218447);
       return;
     }
     YtLogger.d(TAG, "Encoder started");
     if ((this.mNoMoreFrames) && (this.vidoeEncodeQueue.size() == 0))
     {
-      AppMethodBeat.o(256693);
+      AppMethodBeat.o(218447);
       return;
     }
     YuvImage localYuvImage = (YuvImage)this.vidoeEncodeQueue.poll();
@@ -777,10 +780,10 @@ public class YtVideoEncoder
       ??? = (YuvImage)this.vidoeEncodeQueue.poll();
       if (??? == null)
       {
-        AppMethodBeat.o(256693);
+        AppMethodBeat.o(218447);
         return;
         localObject2 = finally;
-        AppMethodBeat.o(256693);
+        AppMethodBeat.o(218447);
         throw localObject2;
       }
       ??? = convertYUV(mWidth, mHeight, (YuvImage)???);
@@ -799,20 +802,20 @@ public class YtVideoEncoder
       if (i == -1)
       {
         YtLogger.e(TAG, "No output from encoder available");
-        AppMethodBeat.o(256693);
+        AppMethodBeat.o(218447);
         return;
       }
       if (i == -2)
       {
         ??? = this.videoEncoder.getOutputFormat();
         startMediaMuxer(YtVideoEncoder.MediaType.VideoType, (MediaFormat)???);
-        AppMethodBeat.o(256693);
+        AppMethodBeat.o(218447);
         return;
       }
       if (i < 0)
       {
         YtLogger.e(TAG, "unexpected result from encoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
-        AppMethodBeat.o(256693);
+        AppMethodBeat.o(218447);
         return;
       }
       ByteBuffer localByteBuffer;
@@ -822,7 +825,7 @@ public class YtVideoEncoder
         if (localByteBuffer == null)
         {
           YtLogger.e(TAG, "encoderOutputBuffer " + i + " was null");
-          AppMethodBeat.o(256693);
+          AppMethodBeat.o(218447);
           return;
         }
         localByteBuffer.position(((MediaCodec.BufferInfo)localObject3).offset);
@@ -833,7 +836,7 @@ public class YtVideoEncoder
       {
         this.mediaMuxer.writeSampleData(this.videoTrackIndex, localByteBuffer, (MediaCodec.BufferInfo)localObject3);
         this.videoEncoder.releaseOutputBuffer(i, false);
-        AppMethodBeat.o(256693);
+        AppMethodBeat.o(218447);
         return;
       }
     }
@@ -845,9 +848,9 @@ public class YtVideoEncoder
   
   public void encodeAudioData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(256683);
+    AppMethodBeat.i(218437);
     this.audioEncodeQueue.add(paramArrayOfByte);
-    AppMethodBeat.o(256683);
+    AppMethodBeat.o(218437);
   }
   
   public int getColorFormat()
@@ -857,9 +860,9 @@ public class YtVideoEncoder
   
   public int getYUVImageSize()
   {
-    AppMethodBeat.i(256676);
+    AppMethodBeat.i(218436);
     int i = this.vidoeEncodeQueue.size();
-    AppMethodBeat.o(256676);
+    AppMethodBeat.o(218436);
     return i;
   }
   
@@ -870,15 +873,15 @@ public class YtVideoEncoder
   
   public void queueFrame(YuvImage arg1)
   {
-    AppMethodBeat.i(256691);
+    AppMethodBeat.i(218445);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(256691);
+      AppMethodBeat.o(218445);
       return;
     }
     if ((this.videoEncoder == null) || (this.mediaMuxer == null))
     {
-      AppMethodBeat.o(256691);
+      AppMethodBeat.o(218445);
       return;
     }
     YtLogger.d(TAG, "Queueing frame");
@@ -888,14 +891,14 @@ public class YtVideoEncoder
       if ((this.mNewFrameLatch != null) && (this.mNewFrameLatch.getCount() > 0L)) {
         this.mNewFrameLatch.countDown();
       }
-      AppMethodBeat.o(256691);
+      AppMethodBeat.o(218445);
       return;
     }
   }
   
   public void startAudioVideoEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(256685);
+    AppMethodBeat.i(218438);
     try
     {
       paramFile.delete();
@@ -912,26 +915,26 @@ public class YtVideoEncoder
       try
       {
         Thread.sleep(300L);
-        AppMethodBeat.o(256685);
+        AppMethodBeat.o(218438);
         return;
       }
       catch (InterruptedException paramFile)
       {
-        AppMethodBeat.o(256685);
+        AppMethodBeat.o(218438);
       }
       localIOException = localIOException;
       YtLogger.e(TAG, "Unable to get path for ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(256685);
+      AppMethodBeat.o(218438);
       return;
     }
   }
   
   public void startEncoding(int paramInt1, int paramInt2, File paramFile, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(256686);
+    AppMethodBeat.i(218441);
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(256686);
+      AppMethodBeat.o(218441);
       return;
     }
     mWidth = paramInt1;
@@ -947,14 +950,14 @@ public class YtVideoEncoder
       if (paramFile == null)
       {
         YtLogger.e(TAG, "Unable to find an appropriate codec for video/avc");
-        AppMethodBeat.o(256686);
+        AppMethodBeat.o(218441);
         return;
       }
     }
     catch (IOException localIOException)
     {
       YtLogger.e(TAG, "Unable to get path for ".concat(String.valueOf(paramFile)));
-      AppMethodBeat.o(256686);
+      AppMethodBeat.o(218441);
       return;
     }
     YtLogger.i(TAG, "found codec: " + paramFile.getName());
@@ -981,13 +984,13 @@ public class YtVideoEncoder
           this.videoEncoder.start();
           YtLogger.i(TAG, "Initialization complete. Starting encoder...");
           this.isEncodingStarted = true;
-          AppMethodBeat.o(256686);
+          AppMethodBeat.o(218441);
           return;
         }
         catch (Exception paramFile)
         {
           YtLogger.e(TAG, "Unable to create MediaCodec " + paramFile.getMessage());
-          AppMethodBeat.o(256686);
+          AppMethodBeat.o(218441);
         }
         localException = localException;
         this.colorFormat = 21;
@@ -997,16 +1000,16 @@ public class YtVideoEncoder
   
   public void stopEncoding()
   {
-    AppMethodBeat.i(256688);
+    AppMethodBeat.i(218442);
     this.isEncodingStarted = false;
     if (!this.mNeedWork)
     {
-      AppMethodBeat.o(256688);
+      AppMethodBeat.o(218442);
       return;
     }
     if ((this.videoEncoder == null) || (this.mediaMuxer == null))
     {
-      AppMethodBeat.o(256688);
+      AppMethodBeat.o(218442);
       return;
     }
     YtLogger.i(TAG, "Stopping encoding");
@@ -1017,7 +1020,7 @@ public class YtVideoEncoder
         this.mNewFrameLatch.countDown();
       }
       release();
-      AppMethodBeat.o(256688);
+      AppMethodBeat.o(218442);
       return;
     }
   }
@@ -1045,7 +1048,7 @@ public class YtVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

@@ -6,62 +6,62 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCCaptureRequest;", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "mCameraId", "", "mWCEffectRequestList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureRequest$Builder;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMRequest", "()Landroid/hardware/camera2/CaptureRequest$Builder;", "setMRequest", "(Landroid/hardware/camera2/CaptureRequest$Builder;)V", "getMWCEffectRequestList", "()Ljava/util/ArrayList;", "setMWCEffectRequestList", "(Ljava/util/ArrayList;)V", "checkEffectSupported", "", "key", "stream", "getSupportedValue", "child", "index", "getSupportedVendorTag", "requestList", "", "set", "enable", "value", "setBase", "Companion", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCCaptureRequest;", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "mCameraId", "", "mWCEffectRequestList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureRequest$Builder;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMRequest", "()Landroid/hardware/camera2/CaptureRequest$Builder;", "setMRequest", "(Landroid/hardware/camera2/CaptureRequest$Builder;)V", "getMWCEffectRequestList", "()Ljava/util/ArrayList;", "setMWCEffectRequestList", "(Ljava/util/ArrayList;)V", "checkEffectSupported", "", "key", "stream", "getSupportedValue", "child", "index", "getSupportedVendorTag", "requestList", "", "set", "enable", "value", "setBase", "Companion", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final String ldX = "cameraeffect.request.facebeauty";
-  private static final String ldY = "level";
-  private static final String ldZ = "slim";
-  private static final String lea = "skin";
-  private static final String leb = "cameraeffect.request.denois";
-  private static final String lec = "cameraeffect.request.hdr";
-  private static final String led = "cameraeffect.request.stabilization";
-  private static final String lee = "cameraeffect.request.hdrchecker";
-  public static final b.a lef;
-  public int ldU;
-  private CaptureRequest.Builder ldV;
-  public ArrayList<a> ldW;
+  public static final b.a nIE;
+  private static final String nII;
+  private static final String nIJ;
+  private static final String nIK;
+  private static final String nIL;
+  private static final String nIM;
+  private static final String nIN;
+  private static final String nIO;
+  private static final String nIP;
+  private CaptureRequest.Builder nIF;
+  public ArrayList<a> nIG;
+  public int nIH;
   
   static
   {
     AppMethodBeat.i(94200);
-    lef = new b.a((byte)0);
-    ldX = "cameraeffect.request.facebeauty";
-    ldY = "level";
-    ldZ = "slim";
-    lea = "skin";
-    leb = "cameraeffect.request.denois";
-    lec = "cameraeffect.request.hdr";
-    led = "cameraeffect.request.stabilization";
-    lee = "cameraeffect.request.hdrchecker";
+    nIE = new b.a((byte)0);
+    nII = "cameraeffect.request.facebeauty";
+    nIJ = "level";
+    nIK = "slim";
+    nIL = "skin";
+    nIM = "cameraeffect.request.denois";
+    nIN = "cameraeffect.request.hdr";
+    nIO = "cameraeffect.request.stabilization";
+    nIP = "cameraeffect.request.hdrchecker";
     AppMethodBeat.o(94200);
   }
   
   public b(CaptureRequest.Builder paramBuilder, String paramString, ArrayList<a> paramArrayList)
   {
     AppMethodBeat.i(94199);
-    this.ldV = paramBuilder;
-    this.ldW = paramArrayList;
-    if (p.h(paramString, "0")) {
-      paramBuilder = com.tencent.mm.media.widget.b.a.b.ldu;
+    this.nIF = paramBuilder;
+    this.nIG = paramArrayList;
+    if (s.p(paramString, "0")) {
+      paramBuilder = com.tencent.mm.media.widget.b.a.b.nIb;
     }
-    for (int i = com.tencent.mm.media.widget.b.a.b.aYK();; i = com.tencent.mm.media.widget.b.a.b.aYL())
+    for (int i = com.tencent.mm.media.widget.b.a.b.btJ();; i = com.tencent.mm.media.widget.b.a.b.btK())
     {
-      this.ldU = i;
+      this.nIH = i;
       AppMethodBeat.o(94199);
       return;
-      paramBuilder = com.tencent.mm.media.widget.b.a.b.ldu;
+      paramBuilder = com.tencent.mm.media.widget.b.a.b.nIb;
     }
   }
   
   public final boolean a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(94195);
-    p.k(paramString1, "key");
-    p.k(paramString2, "child");
+    s.u(paramString1, "key");
+    s.u(paramString2, "child");
     paramBoolean = a(paramString1, paramString2, paramBoolean, Integer.valueOf(paramInt1), paramInt2);
     AppMethodBeat.o(94195);
     return paramBoolean;
@@ -70,63 +70,77 @@ public final class b
   public final boolean a(String paramString1, String paramString2, boolean paramBoolean, Object paramObject, int paramInt)
   {
     AppMethodBeat.i(94196);
-    Object localObject1 = this.ldW;
-    if (localObject1 != null)
+    Object localObject1 = this.nIG;
+    if (localObject1 == null) {}
+    for (paramString1 = null; paramString1 == null; paramString1 = (List)localObject1)
     {
+      AppMethodBeat.o(94196);
+      return false;
       Object localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList();
       localObject2 = ((Iterable)localObject2).iterator();
-      label145:
-      label177:
-      label181:
+      label154:
+      label174:
+      label206:
+      label212:
+      label218:
+      label222:
       while (((Iterator)localObject2).hasNext())
       {
         Object localObject3 = ((Iterator)localObject2).next();
         a locala = (a)localObject3;
+        label123:
         boolean bool;
-        if (p.h(locala.ldO, paramString1))
+        if (s.p(locala.nIy, paramString1))
         {
-          Integer localInteger = locala.ldP;
-          if ((localInteger == null) || ((localInteger.intValue() & this.ldU) != 0))
+          Integer localInteger = locala.nIz;
+          if ((localInteger != null) && ((localInteger.intValue() & this.nIH) == 0))
           {
-            localInteger = locala.ldT;
+            i = 1;
+            if (i != 0) {
+              break label218;
+            }
+            localInteger = locala.nID;
             if ((localInteger == null) || ((localInteger.intValue() & paramInt) != 0)) {
-              if (paramString2 != null)
-              {
-                bool = p.h(locala.ldQ, paramString2);
-                if (!bool) {
-                  break label177;
-                }
-              }
+              break label206;
+            }
+            i = 1;
+            if (i != 0) {
+              break label218;
+            }
+            if (paramString2 == null) {
+              break label212;
+            }
+            bool = s.p(locala.nIA, paramString2);
+            if (!bool) {
+              break label218;
             }
           }
         }
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
-            break label181;
+            break label222;
           }
           ((Collection)localObject1).add(localObject3);
           break;
+          i = 0;
+          break label123;
+          i = 0;
+          break label154;
           bool = true;
-          break label145;
-        }
-      }
-      paramString1 = (List)localObject1;
-      if (paramObject == null)
-      {
-        paramString1 = ((Iterable)paramString1).iterator();
-        while (paramString1.hasNext())
-        {
-          paramString2 = (a)paramString1.next();
-          com.tencent.mm.media.widget.b.a.b.a(this.ldV, paramString2, paramBoolean);
+          break label174;
         }
       }
     }
-    else
+    if (paramObject == null)
     {
-      AppMethodBeat.o(94196);
-      return false;
+      paramString1 = ((Iterable)paramString1).iterator();
+      while (paramString1.hasNext())
+      {
+        paramString2 = (a)paramString1.next();
+        com.tencent.mm.media.widget.b.a.b.a(this.nIF, paramString2, paramBoolean);
+      }
       AppMethodBeat.o(94196);
       return true;
     }
@@ -134,137 +148,164 @@ public final class b
     while (paramString1.hasNext())
     {
       paramString2 = (a)paramString1.next();
-      com.tencent.mm.media.widget.b.a.b.a(this.ldV, paramString2, paramBoolean, paramObject);
+      com.tencent.mm.media.widget.b.a.b.a(this.nIF, paramString2, paramBoolean, paramObject);
     }
     AppMethodBeat.o(94196);
     return true;
   }
   
-  public final ArrayList<String> ai(List<String> paramList)
+  public final boolean aG(String paramString, int paramInt)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(94197);
+    s.u(paramString, "key");
+    Object localObject2 = this.nIG;
+    if (localObject2 == null)
+    {
+      paramString = localObject1;
+      if (paramString == null)
+      {
+        AppMethodBeat.o(94197);
+        return false;
+      }
+    }
+    else
+    {
+      localObject2 = ((Iterable)localObject2).iterator();
+      label51:
+      int i;
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = ((Iterator)localObject2).next();
+        Object localObject3 = (a)localObject1;
+        if (s.p(((a)localObject3).nIy, paramString))
+        {
+          Integer localInteger = ((a)localObject3).nIz;
+          if ((localInteger != null) && ((localInteger.intValue() & this.nIH) == 0))
+          {
+            i = 1;
+            label116:
+            if (i != 0) {
+              break label175;
+            }
+            localObject3 = ((a)localObject3).nID;
+            if ((localObject3 == null) || ((((Integer)localObject3).intValue() & paramInt) != 0)) {
+              break label170;
+            }
+            i = 1;
+            label144:
+            if (i != 0) {
+              break label175;
+            }
+            i = 1;
+            label150:
+            if (i == 0) {
+              break label178;
+            }
+          }
+        }
+      }
+      for (paramString = localObject1;; paramString = null)
+      {
+        paramString = (a)paramString;
+        break;
+        i = 0;
+        break label116;
+        label170:
+        i = 0;
+        break label144;
+        label175:
+        i = 0;
+        break label150;
+        label178:
+        break label51;
+      }
+    }
+    AppMethodBeat.o(94197);
+    return true;
+  }
+  
+  public final boolean b(String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(94194);
+    s.u(paramString, "key");
+    paramBoolean = a(paramString, null, paramBoolean, null, paramInt);
+    AppMethodBeat.o(94194);
+    return paramBoolean;
+  }
+  
+  public final ArrayList<String> bJ(List<String> paramList)
   {
     AppMethodBeat.i(94198);
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
     {
       Iterator localIterator1 = ((Iterable)paramList).iterator();
-      label133:
-      label137:
-      label142:
-      label180:
-      label192:
-      label195:
+      label164:
+      label170:
+      label187:
+      label190:
+      label197:
+      label203:
       while (localIterator1.hasNext())
       {
         String str = (String)localIterator1.next();
-        paramList = this.ldW;
-        label70:
-        int i;
-        if (paramList != null)
+        paramList = this.nIG;
+        if (paramList == null)
         {
+          paramList = null;
+          if (paramList != null) {
+            break label197;
+          }
+        }
+        for (str = null;; str = paramList.nIC)
+        {
+          if (str == null) {
+            break label203;
+          }
+          paramList = paramList.nIC;
+          s.checkNotNull(paramList);
+          localArrayList.add(paramList);
+          break;
           Iterator localIterator2 = ((Iterable)paramList).iterator();
+          label101:
+          int i;
           if (localIterator2.hasNext())
           {
             paramList = localIterator2.next();
             Object localObject = (a)paramList;
-            if (p.h(((a)localObject).ldO, str))
+            if (s.p(((a)localObject).nIy, str))
             {
-              localObject = ((a)localObject).ldP;
-              if ((localObject == null) || ((((Integer)localObject).intValue() & this.ldU) != 0))
+              localObject = ((a)localObject).nIz;
+              if ((localObject != null) && ((((Integer)localObject).intValue() & this.nIH) == 0))
               {
                 i = 1;
-                if (i == 0) {
-                  break label180;
+                if (i != 0) {
+                  break label187;
                 }
-                paramList = (a)paramList;
-                if (paramList == null) {
-                  break label192;
+                i = 1;
+                if (i == 0) {
+                  break label190;
                 }
               }
             }
           }
-        }
-        for (str = paramList.ldS;; str = null)
-        {
-          if (str == null) {
-            break label195;
+          for (;;)
+          {
+            paramList = (a)paramList;
+            break;
+            i = 0;
+            break label164;
+            i = 0;
+            break label170;
+            break label101;
+            paramList = null;
           }
-          paramList = paramList.ldS;
-          if (paramList == null) {
-            p.iCn();
-          }
-          localArrayList.add(paramList);
-          break;
-          i = 0;
-          break label133;
-          break label70;
-          paramList = null;
-          break label137;
-          paramList = null;
-          break label142;
         }
       }
     }
     AppMethodBeat.o(94198);
     return localArrayList;
-  }
-  
-  public final boolean ax(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(94197);
-    p.k(paramString, "key");
-    Object localObject1 = this.ldW;
-    int i;
-    if (localObject1 != null)
-    {
-      Iterator localIterator = ((Iterable)localObject1).iterator();
-      if (!localIterator.hasNext()) {
-        break label147;
-      }
-      localObject1 = localIterator.next();
-      Object localObject2 = (a)localObject1;
-      if (!p.h(((a)localObject2).ldO, paramString)) {
-        break label142;
-      }
-      Integer localInteger = ((a)localObject2).ldP;
-      if ((localInteger != null) && ((localInteger.intValue() & this.ldU) == 0)) {
-        break label142;
-      }
-      localObject2 = ((a)localObject2).ldT;
-      if ((localObject2 != null) && ((((Integer)localObject2).intValue() & paramInt) == 0)) {
-        break label142;
-      }
-      i = 1;
-      label121:
-      if (i == 0) {
-        break label145;
-      }
-    }
-    label142:
-    label145:
-    label147:
-    for (paramString = (String)localObject1;; paramString = null)
-    {
-      if ((a)paramString != null) {
-        break label152;
-      }
-      AppMethodBeat.o(94197);
-      return false;
-      i = 0;
-      break label121;
-      break;
-    }
-    label152:
-    AppMethodBeat.o(94197);
-    return true;
-  }
-  
-  public final boolean c(String paramString, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(94194);
-    p.k(paramString, "key");
-    paramBoolean = a(paramString, null, paramBoolean, null, paramInt);
-    AppMethodBeat.o(94194);
-    return paramBoolean;
   }
 }
 

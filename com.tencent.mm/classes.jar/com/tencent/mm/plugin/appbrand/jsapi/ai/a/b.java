@@ -1,39 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ai.a;
 
-import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.utils.ak;
-import com.tencent.mm.ui.statusbar.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ai.c;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class b
-  implements com.tencent.mm.plugin.appbrand.jsapi.camera.e
+public class b
+  extends a
 {
-  public final int[] r(com.tencent.mm.plugin.appbrand.jsapi.e parame)
+  private com.tencent.mm.audio.d.a.a sJY;
+  private Runnable sJZ;
+  
+  public b()
   {
-    AppMethodBeat.i(226132);
-    if (parame == null)
+    AppMethodBeat.i(137896);
+    this.sJZ = new Runnable()
     {
-      parame = new int[2];
-      AppMethodBeat.o(226132);
-      return parame;
-    }
-    if ((parame instanceof j))
+      public final void run()
+      {
+        AppMethodBeat.i(137895);
+        b.this.cxx();
+        AppMethodBeat.o(137895);
+      }
+    };
+    AppMethodBeat.o(137896);
+  }
+  
+  public c cxx()
+  {
+    AppMethodBeat.i(137898);
+    if (this.sJY == null)
     {
-      parame = ak.f((j)parame);
-      AppMethodBeat.o(226132);
-      return parame;
+      Log.e("MicroMsg.DefaultLuggageRecorder", "mRecorderPcm is null, err");
+      c localc = new c("may be not start", new Object[0]);
+      AppMethodBeat.o(137898);
+      return localc;
     }
-    parame = d.au(parame.getContext());
-    int i = parame.x;
-    int j = parame.y;
-    AppMethodBeat.o(226132);
-    return new int[] { i, j };
+    AppMethodBeat.o(137898);
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ai.a.b
  * JD-Core Version:    0.7.0.1
  */

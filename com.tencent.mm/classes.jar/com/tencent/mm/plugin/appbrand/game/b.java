@@ -7,11 +7,11 @@ public abstract interface b
 {
   public abstract void b(a parama);
   
-  public abstract com.tencent.mm.plugin.appbrand.report.b bOq();
+  public abstract com.tencent.mm.plugin.appbrand.report.b coF();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b
  * JD-Core Version:    0.7.0.1
  */

@@ -52,7 +52,7 @@ public final class CommentFrame
       return false;
     }
     paramObject = (CommentFrame)paramObject;
-    if ((x.h(this.description, paramObject.description)) && (x.h(this.language, paramObject.language)) && (x.h(this.text, paramObject.text)))
+    if ((x.p(this.description, paramObject.description)) && (x.p(this.language, paramObject.language)) && (x.p(this.text, paramObject.text)))
     {
       AppMethodBeat.o(92422);
       return true;

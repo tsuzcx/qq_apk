@@ -9,15 +9,15 @@ import java.util.Arrays;
 
 public abstract class i<T extends Comparable<T>>
 {
-  protected final com.tencent.tinker.a.a.i ZKh;
-  protected final com.tencent.tinker.c.a.b.a ZKj;
-  private final c ZKk;
+  protected final com.tencent.tinker.a.a.i ahPj;
+  protected final com.tencent.tinker.c.a.b.a ahPl;
+  private final c ahPm;
   
   public i(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami, c paramc)
   {
-    this.ZKj = parama;
-    this.ZKh = parami;
-    this.ZKk = paramc;
+    this.ahPl = parama;
+    this.ahPj = parami;
+    this.ahPm = paramc;
   }
   
   private static int a(int paramInt, T paramT)
@@ -28,14 +28,14 @@ public abstract class i<T extends Comparable<T>>
     return paramInt;
   }
   
-  private int[] aBS(int paramInt)
+  private int[] aIH(int paramInt)
   {
     int[] arrayOfInt = new int[paramInt];
     int i = 0;
     int j = 0;
     while (i < paramInt)
     {
-      j = o.a(this.ZKj.ZLg) + j;
+      j = o.a(this.ahPl.ahQi) + j;
       arrayOfInt[i] = j;
       i += 1;
     }
@@ -57,15 +57,15 @@ public abstract class i<T extends Comparable<T>>
   
   public final void execute()
   {
-    int[] arrayOfInt1 = aBS(o.b(this.ZKj.ZLg));
-    int[] arrayOfInt2 = aBS(o.b(this.ZKj.ZLg));
-    int[] arrayOfInt3 = aBS(o.b(this.ZKj.ZLg));
-    Object localObject = c(this.ZKh);
+    int[] arrayOfInt1 = aIH(o.b(this.ahPl.ahQi));
+    int[] arrayOfInt2 = aIH(o.b(this.ahPl.ahQi));
+    int[] arrayOfInt3 = aIH(o.b(this.ahPl.ahQi));
+    Object localObject = c(this.ahPj);
     i.e locale;
     int k;
-    if (((s.a)localObject).ifE())
+    if (((s.a)localObject).jKS())
     {
-      locale = this.ZKh.a((s.a)localObject);
+      locale = this.ahPj.a((s.a)localObject);
       k = ((s.a)localObject).size;
     }
     for (;;)
@@ -81,34 +81,34 @@ public abstract class i<T extends Comparable<T>>
       while ((j < k) || (i < k + i3 - i2)) {
         if ((n < i3) && (arrayOfInt2[n] == i))
         {
-          f(a(this.ZKj.ZLg));
+          f(a(this.ahPl.ahQi));
           i += 1;
           n += 1;
         }
         else if ((i1 < i4) && (arrayOfInt3[i1] == i))
         {
-          f(a(this.ZKj.ZLg));
+          f(a(this.ahPl.ahQi));
           i += 1;
           i1 += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt1, j) >= 0)
         {
           localObject = a(locale);
-          a(this.ZKk, j, a(j, (Comparable)localObject));
+          a(this.ahPm, j, a(j, (Comparable)localObject));
           j += 1;
           m += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt3, j) >= 0)
         {
           localObject = a(locale);
-          a(this.ZKk, j, a(j, (Comparable)localObject));
+          a(this.ahPm, j, a(j, (Comparable)localObject));
           j += 1;
         }
         else if (j < k)
         {
-          localObject = a(this.ZKk, a(locale));
+          localObject = a(this.ahPm, a(locale));
           int i5 = f((Comparable)localObject);
-          a(this.ZKk, j, a(j, (Comparable)localObject), i, i5);
+          a(this.ahPm, j, a(j, (Comparable)localObject), i, i5);
           j += 1;
           i += 1;
         }
@@ -126,7 +126,7 @@ public abstract class i<T extends Comparable<T>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.c.a.a.a.i
  * JD-Core Version:    0.7.0.1
  */

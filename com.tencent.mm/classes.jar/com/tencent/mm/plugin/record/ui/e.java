@@ -18,20 +18,29 @@ public final class e
     super(paramContext, parama);
   }
   
+  protected final com.tencent.mm.plugin.record.ui.viewWrappers.a a(com.tencent.mm.plugin.record.ui.viewWrappers.a parama)
+  {
+    parama.fromScene = this.fromScene;
+    return parama;
+  }
+  
   public final void a(int paramInt, j paramj)
   {
     AppMethodBeat.i(27864);
-    fuE();
+    gGt();
     AppMethodBeat.o(27864);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(27863);
-    this.HDX = parama;
-    this.HDy.clear();
-    this.HDy.addAll(parama.HDy);
-    notifyDataSetChanged();
+    if (parama != null)
+    {
+      this.NBz = parama;
+      this.NBa.clear();
+      this.NBa.addAll(parama.NBa);
+      notifyDataSetChanged();
+    }
     AppMethodBeat.o(27863);
   }
   
@@ -39,9 +48,9 @@ public final class e
   {
     paramb.dataType = 0;
     paramb.fromScene = this.fromScene;
-    paramb.HDZ = this.HDZ;
-    paramb.msgId = ((f)this.HDX).msgId;
-    paramb.fRy = ((f)this.HDX).fRy;
+    paramb.NBB = this.NBB;
+    paramb.msgId = ((f)this.NBz).msgId;
+    paramb.hXv = ((f)this.NBz).hXv;
   }
   
   protected final int getFromScene()
@@ -51,7 +60,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.e
  * JD-Core Version:    0.7.0.1
  */

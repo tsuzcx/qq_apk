@@ -1,24 +1,16 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Queue;
-import kotlin.ResultKt;
-import kotlin.d.a.a;
-import kotlin.d.b.a.j;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.d.b.a.k;
 import kotlin.d.d;
 import kotlin.g.a.b;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.al;
-import kotlinx.coroutines.aw;
+import kotlinx.coroutines.aq;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"batchRun", "", "T", "data", "delay", "", "key", "", "run", "Lkotlin/Function1;", "", "(Ljava/lang/Object;JLjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "libcompatible_release"})
+@Metadata(d1={""}, d2={"batchRun", "", "T", "data", "delay", "", "key", "", "run", "Lkotlin/Function1;", "", "(Ljava/lang/Object;JLjava/lang/String;Lkotlin/jvm/functions/Function1;)V", "libcompatible_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class MMBatchRunKt {}
 
 

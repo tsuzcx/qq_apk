@@ -2,99 +2,100 @@ package com.tencent.mm.pluginsdk.wallet;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.a.abm;
-import com.tencent.mm.f.a.abm.b;
-import com.tencent.mm.f.a.abn;
-import com.tencent.mm.f.a.abn.b;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.a.adj;
+import com.tencent.mm.autogen.a.adj.b;
+import com.tencent.mm.autogen.a.adk;
+import com.tencent.mm.autogen.a.adk.b;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.ab;
+import com.tencent.mm.message.j;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.aq.a.h;
+import com.tencent.mm.plugin.ar.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
-  public static boolean bn(ca paramca)
+  public static boolean bD(cc paramcc)
   {
     Object localObject1 = null;
     AppMethodBeat.i(116324);
-    if (paramca.getType() == 419430449)
+    if (paramcc.getType() == 419430449)
     {
-      if (paramca.field_isSend != 0) {
-        break label372;
+      if (paramcc.field_isSend != 0) {
+        break label366;
       }
-      localObject1 = paramca.field_content;
+      localObject1 = paramcc.field_content;
       if (localObject1 == null) {
-        break label386;
+        break label380;
       }
     }
-    label386:
-    for (localObject1 = k.b.aG((String)localObject1, paramca.field_reserved);; localObject1 = null)
+    label366:
+    label373:
+    label380:
+    for (localObject1 = k.b.aP((String)localObject1, paramcc.field_reserved);; localObject1 = null)
     {
       int i;
       if (localObject1 != null)
       {
-        Object localObject2 = (j)((k.b)localObject1).ar(j.class);
-        if ((ab.Lj(paramca.field_talker)) && (!z.bcZ().equals(((j)localObject2).llO)))
+        Object localObject2 = (j)((k.b)localObject1).aK(j.class);
+        if ((au.bwE(paramcc.field_talker)) && (!z.bAM().equals(((j)localObject2).nQU)))
         {
           AppMethodBeat.o(116324);
           return false;
         }
-        paramca = new abn();
-        paramca.gbr.fJG = ((k.b)localObject1).lnf;
-        EventCenter.instance.publish(paramca);
-        j = paramca.gbs.status;
+        paramcc = new adk();
+        paramcc.ihB.hPj = ((k.b)localObject1).nSk;
+        paramcc.publish();
+        j = paramcc.ihC.status;
         i = j;
         if (j <= 0) {
-          i = ((k.b)localObject1).lnc;
+          i = ((k.b)localObject1).nSh;
         }
         if ((i >= 0) && ((i == 1) || (i == 7)))
         {
           AppMethodBeat.o(116324);
           return true;
-          if ((paramca.getType() == 436207665) && (paramca.field_isSend == 0))
+          if ((paramcc.getType() == 436207665) && (paramcc.field_isSend == 0))
           {
-            localObject2 = paramca.field_content;
+            localObject2 = paramcc.field_content;
             if (localObject2 != null) {
-              localObject1 = k.b.OQ((String)localObject2);
+              localObject1 = k.b.Hf((String)localObject2);
             }
             if (localObject1 != null) {
-              if ((!"1001".equals(((k.b)localObject1).lnG)) && (!ab.Lj(paramca.field_talker)))
+              if ((!"1001".equals(((k.b)localObject1).nSK)) && (!au.bwE(paramcc.field_talker)))
               {
-                paramca = new abm();
-                if (!Util.isNullOrNil(((k.b)localObject1).lnH))
+                paramcc = new adj();
+                if (!Util.isNullOrNil(((k.b)localObject1).nSL))
                 {
-                  paramca.gbl.gbn = ((k.b)localObject1).lnH;
-                  EventCenter.instance.publish(paramca);
-                  if (paramca.gbm.gbq == 0)
+                  paramcc.ihv.ihx = ((k.b)localObject1).nSL;
+                  paramcc.publish();
+                  if (paramcc.ihw.ihA == 0)
                   {
                     AppMethodBeat.o(116324);
                     return true;
                   }
                 }
               }
-              else if (ab.Lj(paramca.field_talker))
+              else if (au.bwE(paramcc.field_talker))
               {
-                paramca = z.bcZ();
-                if (Util.isNullOrNil(((k.b)localObject1).lnW)) {
-                  break label379;
+                paramcc = z.bAM();
+                if (Util.isNullOrNil(((k.b)localObject1).nTa)) {
+                  break label373;
                 }
-                localObject1 = ((k.b)localObject1).lnW.iterator();
+                localObject1 = ((k.b)localObject1).nTa.iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
                   localObject2 = ((String)((Iterator)localObject1).next()).split(",");
-                  if ((localObject2.length == 3) && (localObject2[0].equals(paramca))) {
+                  if ((localObject2.length == 3) && (localObject2[0].equals(paramcc))) {
                     i = Util.getInt(localObject2[2], -1);
                   }
                 }
@@ -110,19 +111,17 @@ public final class d
           AppMethodBeat.o(116324);
           return true;
         }
-        label372:
         AppMethodBeat.o(116324);
         return false;
-        label379:
         i = 0;
       }
     }
   }
   
-  public static String bsh(String paramString)
+  public static String brY(String paramString)
   {
     AppMethodBeat.i(116323);
-    paramString = ((n)h.ae(n.class)).eSe().aPe(paramString);
+    paramString = ((n)h.ax(n.class)).gaZ().aMd(paramString);
     int k;
     int j;
     int i;
@@ -135,8 +134,8 @@ public final class d
       i = 0;
       while (localIterator.hasNext())
       {
-        paramString = (ca)localIterator.next();
-        if (!bn(paramString)) {
+        paramString = (cc)localIterator.next();
+        if (!bD(paramString)) {
           break label329;
         }
         if (paramString.getType() == 419430449)
@@ -157,11 +156,11 @@ public final class d
     }
     label329:
     label332:
-    for (paramString = k.b.OQ(paramString);; paramString = null)
+    for (paramString = k.b.Hf(paramString);; paramString = null)
     {
       if (paramString != null)
       {
-        if ("1001".equals(paramString.lnG))
+        if ("1001".equals(paramString.nSK))
         {
           j += 1;
           break;

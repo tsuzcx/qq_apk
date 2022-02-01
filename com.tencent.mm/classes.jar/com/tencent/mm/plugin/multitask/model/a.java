@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.multitask.model;
 
-import com.tencent.mm.plugin.p.f;
-import com.tencent.mm.plugin.p.g;
-import kotlin.l;
+import com.tencent.mm.plugin.ac.e;
+import com.tencent.mm.plugin.ac.f;
+import kotlin.Metadata;
 
-@f(eLU={MultiTaskInfo.class})
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/model/MultiTaskDBExt;", "Lcom/tencent/mm/plugin/livestorage/MMLiveMainDBExt;", "()V", "plugin-multitask_release"})
+@e(gsA={MultiTaskInfo.class})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/model/MultiTaskDBExt;", "Lcom/tencent/mm/plugin/mvvmstorage/MvvmMainDBExt;", "()V", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends g
+  extends f
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.model.a
  * JD-Core Version:    0.7.0.1
  */

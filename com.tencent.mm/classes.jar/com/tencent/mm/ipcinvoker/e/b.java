@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker.e;
 
 public abstract interface b
 {
-  public abstract void h(Exception paramException);
+  public abstract void i(Exception paramException);
 }
 
 

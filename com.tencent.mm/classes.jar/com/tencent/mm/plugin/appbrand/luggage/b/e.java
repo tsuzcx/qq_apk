@@ -5,18 +5,18 @@ import android.content.pm.PackageInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.ac.b;
-import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.plugin.appbrand.af.b;
+import com.tencent.mm.plugin.appbrand.af.r.a;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 
 public final class e
-  implements p.a
+  implements r.a
 {
   private Context mContext;
   private String version = "";
@@ -26,12 +26,12 @@ public final class e
     this.mContext = paramContext;
   }
   
-  public static String akk(String paramString)
+  public static String adq(String paramString)
   {
-    AppMethodBeat.i(215534);
-    if (!ar.hIE())
+    AppMethodBeat.i(319871);
+    if (!aw.jkP())
     {
-      AppMethodBeat.o(215534);
+      AppMethodBeat.o(319871);
       return paramString;
     }
     String str = Util.nullAsNil(paramString);
@@ -39,11 +39,11 @@ public final class e
     if (!str.contains("Android Tablet")) {
       paramString = str + " Android Tablet";
     }
-    AppMethodBeat.o(215534);
+    AppMethodBeat.o(319871);
     return paramString;
   }
   
-  public final String Qq()
+  public final String aqA()
   {
     return " MicroMessenger/";
   }
@@ -63,9 +63,9 @@ public final class e
       localObject = b.getPackageInfo(this.mContext, MMApplicationContext.getPackageName());
       if (localObject != null)
       {
-        this.version += ChannelUtil.formatVersion(null, d.RAD);
+        this.version += ChannelUtil.formatVersion(null, d.Yxh);
         this.version = (this.version + "." + ((PackageInfo)localObject).versionCode);
-        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.RAD) }) + ")");
+        this.version = (this.version + "(" + String.format("0x%08X", new Object[] { Integer.valueOf(d.Yxh) }) + ")");
         StringBuilder localStringBuilder = new StringBuilder().append(this.version).append(" Process/");
         localObject = MMApplicationContext.getPackageName().trim().toLowerCase();
         str2 = MMApplicationContext.getProcessName().trim().toLowerCase();
@@ -75,7 +75,7 @@ public final class e
         localObject = "mm";
         this.version = ((String)localObject);
         localStringBuilder = new StringBuilder().append(this.version).append(" WeChat/");
-        if (!q.is64BitRuntime()) {
+        if (!q.awm()) {
           break label386;
         }
         localObject = "arm64";
@@ -85,7 +85,7 @@ public final class e
           this.version += " GPVersion/1";
         }
       }
-      this.version = akk(this.version);
+      this.version = adq(this.version);
       localObject = this.version;
       AppMethodBeat.o(103126);
       return localObject;

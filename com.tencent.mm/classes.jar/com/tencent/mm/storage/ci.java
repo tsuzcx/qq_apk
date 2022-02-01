@@ -1,92 +1,69 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/RecMsgReportInfo;", "", "mid", "", "idx", "", "style", "recInfo", "", "extData", "bizUsername", "(JIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getBizUsername", "()Ljava/lang/String;", "getExtData", "getIdx", "()I", "getMid", "()J", "getRecInfo", "getStyle", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "plugin-biz_release"})
 public final class ci
+  extends MAutoStorage<ch>
 {
-  final String VHs;
-  final String extData;
-  final String fOX;
-  final int idx;
-  final long lqo;
-  final int style;
+  public static final String[] SQL_CREATE;
+  public ISQLiteDatabase db;
   
-  public ci(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  static
   {
-    this.lqo = paramLong;
-    this.idx = paramInt1;
-    this.style = paramInt2;
-    this.VHs = paramString1;
-    this.extData = paramString2;
-    this.fOX = paramString3;
+    AppMethodBeat.i(32885);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ch.info, "OpenMsgListener") };
+    AppMethodBeat.o(32885);
   }
   
-  public final boolean equals(Object paramObject)
+  public ci(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(206851);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof ci))
-      {
-        paramObject = (ci)paramObject;
-        if ((this.lqo != paramObject.lqo) || (this.idx != paramObject.idx) || (this.style != paramObject.style) || (!p.h(this.VHs, paramObject.VHs)) || (!p.h(this.extData, paramObject.extData)) || (!p.h(this.fOX, paramObject.fOX))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(206851);
-      return true;
-    }
-    AppMethodBeat.o(206851);
-    return false;
+    super(paramISQLiteDatabase, ch.info, "OpenMsgListener", null);
+    AppMethodBeat.i(32881);
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
+    paramISQLiteDatabase.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
+    AppMethodBeat.o(32881);
   }
   
-  public final int hashCode()
+  public final ch byD(String paramString)
   {
-    int k = 0;
-    AppMethodBeat.i(206850);
-    long l = this.lqo;
-    int m = (int)(l ^ l >>> 32);
-    int n = this.idx;
-    int i1 = this.style;
-    String str = this.VHs;
-    int i;
-    if (str != null)
+    AppMethodBeat.i(32882);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      i = str.hashCode();
-      str = this.extData;
-      if (str == null) {
-        break label127;
-      }
+      AppMethodBeat.o(32882);
+      return null;
     }
-    label127:
-    for (int j = str.hashCode();; j = 0)
+    Cursor localCursor = this.db.query("OpenMsgListener", null, "appId=?", new String[] { Util.escapeSqlValue(paramString) }, null, null, null, 2);
+    if (!localCursor.moveToFirst())
     {
-      str = this.fOX;
-      if (str != null) {
-        k = str.hashCode();
-      }
-      AppMethodBeat.o(206850);
-      return (j + (i + ((m * 31 + n) * 31 + i1) * 31) * 31) * 31 + k;
-      i = 0;
-      break;
+      Log.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(32882);
+      return null;
     }
+    paramString = new ch();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(32882);
+    return paramString;
   }
   
-  public final String toString()
+  public final Cursor jcE()
   {
-    AppMethodBeat.i(206849);
-    String str = "RecMsgReportInfo(mid=" + this.lqo + ", idx=" + this.idx + ", style=" + this.style + ", recInfo=" + this.VHs + ", extData=" + this.extData + ", bizUsername=" + this.fOX + ")";
-    AppMethodBeat.o(206849);
-    return str;
+    AppMethodBeat.i(32883);
+    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
+    AppMethodBeat.o(32883);
+    return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.ci
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class i
   
   public i(Context paramContext, g paramg, a.a parama)
   {
-    AppMethodBeat.i(231034);
+    AppMethodBeat.i(229341);
     this.c = null;
     this.d = null;
     this.i = "";
@@ -51,12 +51,12 @@ public class i
     this.g = paramg.a;
     this.h = paramg.b;
     TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
-    AppMethodBeat.o(231034);
+    AppMethodBeat.o(229341);
   }
   
   private boolean a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(231095);
+    AppMethodBeat.i(229347);
     try
     {
       if (paramQueue.isEmpty()) {
@@ -65,23 +65,23 @@ public class i
       Runnable localRunnable = (Runnable)paramQueue.poll();
       if (localRunnable == null)
       {
-        AppMethodBeat.o(231095);
+        AppMethodBeat.o(229347);
         return false;
       }
     }
     finally
     {
-      AppMethodBeat.o(231095);
+      AppMethodBeat.o(229347);
     }
     localObject.run();
-    AppMethodBeat.o(231095);
+    AppMethodBeat.o(229347);
     return true;
   }
   
   private e c(int paramInt1, int paramInt2)
   {
     int i2 = 720;
-    AppMethodBeat.i(231037);
+    AppMethodBeat.i(229343);
     int i1;
     e locale;
     if (paramInt1 > paramInt2)
@@ -106,7 +106,7 @@ public class i
     for (paramInt1 = Math.min(paramInt1, paramInt2);; paramInt1 = Math.max(paramInt1, paramInt2))
     {
       locale.b = paramInt1;
-      AppMethodBeat.o(231037);
+      AppMethodBeat.o(229343);
       return locale;
       i1 = 0;
       break;
@@ -135,31 +135,31 @@ public class i
   
   private void f(boolean paramBoolean)
   {
-    AppMethodBeat.i(231102);
+    AppMethodBeat.i(229350);
     if (paramBoolean)
     {
       if (this.g > this.h)
       {
         b(this.h, this.g);
-        AppMethodBeat.o(231102);
+        AppMethodBeat.o(229350);
       }
     }
     else if (this.g < this.h) {
       b(this.h, this.g);
     }
-    AppMethodBeat.o(231102);
+    AppMethodBeat.o(229350);
   }
   
   public void a()
   {
-    AppMethodBeat.i(231039);
+    AppMethodBeat.i(229354);
     Monitor.a(2, String.format("VideoCapture[%d]: start screen", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     this.k = 0L;
     this.l = 0L;
     this.m = 0L;
     this.n = true;
     this.a.a(this.f.a, this.f.b, this.e);
-    AppMethodBeat.o(231039);
+    AppMethodBeat.o(229354);
   }
   
   public void a(float paramFloat) {}
@@ -170,13 +170,13 @@ public class i
   
   public void a(int paramInt1, EGLContext paramEGLContext, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
-    AppMethodBeat.i(231097);
+    AppMethodBeat.i(229482);
     this.c = paramEGLContext;
     while (a(this.o)) {}
     if (paramInt1 != 0)
     {
       TXCLog.e("TXCScreenCaptureSource", "onScreenCaptureFrame failed");
-      AppMethodBeat.o(231097);
+      AppMethodBeat.o(229482);
       return;
     }
     if (this.n)
@@ -214,7 +214,7 @@ public class i
       paramEGLContext.j = 0;
       paramEGLContext.l = h.a(paramEGLContext.e, paramEGLContext.f, this.g, this.h);
       this.b.b(paramEGLContext);
-      AppMethodBeat.o(231097);
+      AppMethodBeat.o(229482);
       return;
     }
   }
@@ -223,12 +223,12 @@ public class i
   
   public void a(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(231074);
+    AppMethodBeat.i(229437);
     this.d = new WeakReference(paramb);
     if (this.a != null) {
       this.a.a(paramb);
     }
-    AppMethodBeat.o(231074);
+    AppMethodBeat.o(229437);
   }
   
   public void a(com.tencent.liteav.basic.structs.b paramb) {}
@@ -240,21 +240,21 @@ public class i
   
   public void a(Object paramObject)
   {
-    AppMethodBeat.i(231100);
+    AppMethodBeat.i(229487);
     while (a(this.o)) {}
     if (this.b != null) {
       this.b.t();
     }
-    AppMethodBeat.o(231100);
+    AppMethodBeat.o(229487);
   }
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(231070);
+    AppMethodBeat.i(229431);
     if (this.a != null) {
       this.a.a(paramRunnable);
     }
-    AppMethodBeat.o(231070);
+    AppMethodBeat.o(229431);
   }
   
   public void a(String paramString)
@@ -264,10 +264,10 @@ public class i
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(231042);
+    AppMethodBeat.i(229361);
     Monitor.a(2, String.format("VideoCapture[%d]: stop screen", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     this.a.a(null);
-    AppMethodBeat.o(231042);
+    AppMethodBeat.o(229361);
   }
   
   public boolean a(int paramInt)
@@ -277,9 +277,9 @@ public class i
   
   public void b()
   {
-    AppMethodBeat.i(231048);
+    AppMethodBeat.i(229373);
     this.a.a(true);
-    AppMethodBeat.o(231048);
+    AppMethodBeat.o(229373);
   }
   
   public void b(int paramInt) {}
@@ -292,7 +292,7 @@ public class i
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(231050);
+    AppMethodBeat.i(229377);
     e locale = c(this.g, this.h);
     if (!locale.equals(this.f))
     {
@@ -300,14 +300,14 @@ public class i
       this.a.a(locale.a, locale.b);
       TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
     }
-    AppMethodBeat.o(231050);
+    AppMethodBeat.o(229377);
   }
   
   public void c()
   {
-    AppMethodBeat.i(231046);
+    AppMethodBeat.i(229370);
     this.a.a(false);
-    AppMethodBeat.o(231046);
+    AppMethodBeat.o(229370);
   }
   
   public void c(int paramInt) {}
@@ -342,10 +342,10 @@ public class i
   
   public void f(int paramInt)
   {
-    AppMethodBeat.i(231082);
+    AppMethodBeat.i(229448);
     this.e = paramInt;
     this.a.a(paramInt);
-    AppMethodBeat.o(231082);
+    AppMethodBeat.o(229448);
   }
   
   public int g()
@@ -385,7 +385,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.i
  * JD-Core Version:    0.7.0.1
  */

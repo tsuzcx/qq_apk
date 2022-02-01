@@ -10,9 +10,9 @@ import java.io.ByteArrayInputStream;
 public final class b
   implements com.github.henryye.nativeiv.b.b
 {
-  private static String[] cPc = { "jpeg", "png", "gif", "svg+xml" };
+  private static String[] eKh = { "jpeg", "png", "gif", "svg+xml" };
   
-  private static int eF(String paramString)
+  private static int gd(String paramString)
   {
     int j = 11;
     AppMethodBeat.i(140064);
@@ -26,7 +26,7 @@ public final class b
       AppMethodBeat.o(140064);
       return 0;
     }
-    String[] arrayOfString = cPc;
+    String[] arrayOfString = eKh;
     int k = arrayOfString.length;
     int i = 0;
     if (i < k)
@@ -55,7 +55,21 @@ public final class b
     }
   }
   
-  public final boolean V(Object paramObject)
+  public final String Qj()
+  {
+    return "base64";
+  }
+  
+  public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
+  {
+    AppMethodBeat.i(228801);
+    paramObject = (String)paramObject;
+    paramObject = new b.a(new ByteArrayInputStream(Base64.decode(paramObject.substring(gd(paramObject)), 2)));
+    AppMethodBeat.o(228801);
+    return paramObject;
+  }
+  
+  public final boolean be(Object paramObject)
   {
     AppMethodBeat.i(140065);
     if (!(paramObject instanceof String))
@@ -63,7 +77,7 @@ public final class b
       AppMethodBeat.o(140065);
       return false;
     }
-    if (eF((String)paramObject) > 0)
+    if (gd((String)paramObject) > 0)
     {
       AppMethodBeat.o(140065);
       return true;
@@ -71,24 +85,10 @@ public final class b
     AppMethodBeat.o(140065);
     return false;
   }
-  
-  public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
-  {
-    AppMethodBeat.i(203886);
-    paramObject = (String)paramObject;
-    paramObject = new b.a(new ByteArrayInputStream(Base64.decode(paramObject.substring(eF(paramObject)), 2)));
-    AppMethodBeat.o(203886);
-    return paramObject;
-  }
-  
-  public final String qG()
-  {
-    return "base64";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.b.b
  * JD-Core Version:    0.7.0.1
  */

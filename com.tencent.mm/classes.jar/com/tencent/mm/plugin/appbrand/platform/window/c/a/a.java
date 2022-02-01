@@ -6,124 +6,123 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.platform.window.e.a;
 import com.tencent.mm.plugin.appbrand.platform.window.e.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.a.e;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/platform/window/view/center_inside/CenterInsideWindowOrientationHandler;", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "window", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;)V", "getCurrentOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "hasExecutingOrPendingRequests", "", "onConfigurationChanged", "", "newConfig", "Landroid/content/res/Configuration;", "onPause", "onResume", "release", "requestDeviceOrientation", "reqOrientation", "listener", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$OnOrientationChangedListener;", "Companion", "luggage-wxa-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/platform/window/view/center_inside/CenterInsideWindowOrientationHandler;", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "window", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;)V", "getCurrentOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "hasExecutingOrPendingRequests", "", "onConfigurationChanged", "", "newConfig", "Landroid/content/res/Configuration;", "onPause", "onResume", "release", "requestDeviceOrientation", "reqOrientation", "listener", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$OnOrientationChangedListener;", "Companion", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements com.tencent.mm.plugin.appbrand.platform.window.a.c
 {
-  private static final e.b[] qHL;
+  private static final a.a tMt;
   @Deprecated
-  public static final a.a qHM;
-  private final com.tencent.mm.plugin.appbrand.platform.window.c qHK;
+  private static final e.b[] tMv;
+  private final com.tencent.mm.plugin.appbrand.platform.window.c tMu;
   
   static
   {
-    AppMethodBeat.i(242882);
-    qHM = new a.a((byte)0);
-    qHL = e.b.qGC;
-    AppMethodBeat.o(242882);
+    AppMethodBeat.i(317508);
+    tMt = new a.a((byte)0);
+    tMv = e.b.tLo;
+    AppMethodBeat.o(317508);
   }
   
   public a(com.tencent.mm.plugin.appbrand.platform.window.c paramc)
   {
-    AppMethodBeat.i(242880);
-    this.qHK = paramc;
-    AppMethodBeat.o(242880);
+    AppMethodBeat.i(317505);
+    this.tMu = paramc;
+    AppMethodBeat.o(317505);
   }
   
   public final void a(e.b paramb, e.a parama)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    AppMethodBeat.i(242874);
+    boolean bool = true;
+    AppMethodBeat.i(317514);
     if (paramb == null)
     {
-      ((kotlin.g.a.a)new b(parama)).invoke();
-      AppMethodBeat.o(242874);
+      if (parama != null) {
+        parama.onOrientationChanged(null, false);
+      }
+      AppMethodBeat.o(317514);
       return;
     }
-    Log.i("MicroMsg.CenterInsideWindowOrientationHandler", "requestDeviceOrientation: " + paramb.qGB + ',' + paramb.name());
-    if (paramb == e.b.qGv)
+    Log.i("MicroMsg.CenterInsideWindowOrientationHandler", "requestDeviceOrientation: " + paramb.tLn + ',' + paramb.name());
+    int i = b.$EnumSwitchMapping$0[paramb.ordinal()];
+    Object localObject;
+    if (i == 1)
     {
-      this.qHK.setSoftOrientation("portrait");
+      this.tMu.setSoftOrientation("portrait");
       if (parama != null)
       {
-        localObject = cgS();
-        if (cgS() == paramb) {}
-        for (;;)
+        localObject = cHQ();
+        if (cHQ() == paramb) {}
+        for (bool = true;; bool = false)
         {
-          parama.a((e.b)localObject, bool1);
-          AppMethodBeat.o(242874);
+          parama.onOrientationChanged((e.b)localObject, bool);
+          AppMethodBeat.o(317514);
           return;
-          bool1 = false;
         }
       }
-      AppMethodBeat.o(242874);
-      return;
     }
-    Object localObject = qHL;
-    p.j(localObject, "LANDSCAPE_ENUMS");
-    if (e.contains((Object[])localObject, paramb))
+    else
     {
-      this.qHK.setSoftOrientation("landscape");
+      localObject = tMv;
+      s.s(localObject, "LANDSCAPE_ENUMS");
+      if (!k.contains((Object[])localObject, paramb)) {
+        break label218;
+      }
+      this.tMu.setSoftOrientation("landscape");
       if (parama != null)
       {
-        paramb = cgS();
-        localObject = qHL;
-        p.j(localObject, "LANDSCAPE_ENUMS");
-        parama.a(paramb, e.contains((Object[])localObject, cgS()));
-        AppMethodBeat.o(242874);
-        return;
+        localObject = cHQ();
+        paramb = tMv;
+        s.s(paramb, "LANDSCAPE_ENUMS");
+        bool = k.contains((Object[])paramb, cHQ());
       }
-      AppMethodBeat.o(242874);
-      return;
     }
-    if (paramb == e.b.qGw)
+    for (;;)
     {
-      this.qHK.setSoftOrientation("auto");
-      if (parama != null)
+      parama.onOrientationChanged((e.b)localObject, bool);
+      label218:
+      do
       {
-        parama.a(cgS(), true);
-        AppMethodBeat.o(242874);
-        return;
-      }
-      AppMethodBeat.o(242874);
-      return;
-    }
-    this.qHK.setSoftOrientation("portrait");
-    if (parama != null)
-    {
-      localObject = cgS();
-      if (cgS() == paramb) {}
-      for (bool1 = bool2;; bool1 = false)
+        do
+        {
+          AppMethodBeat.o(317514);
+          return;
+          if (i != 2) {
+            break;
+          }
+          this.tMu.setSoftOrientation("auto");
+        } while (parama == null);
+        localObject = cHQ();
+        break;
+        this.tMu.setSoftOrientation("portrait");
+      } while (parama == null);
+      e.b localb = cHQ();
+      localObject = localb;
+      if (cHQ() != paramb)
       {
-        parama.a((e.b)localObject, bool1);
-        AppMethodBeat.o(242874);
-        return;
+        bool = false;
+        localObject = localb;
       }
     }
-    AppMethodBeat.o(242874);
   }
   
-  public final e.b cgS()
+  public final e.b cHQ()
   {
-    AppMethodBeat.i(242879);
-    Object localObject = this.qHK.getVDisplayMetrics();
+    AppMethodBeat.i(317529);
+    Object localObject = this.tMu.getVDisplayMetrics();
     if (((DisplayMetrics)localObject).heightPixels >= ((DisplayMetrics)localObject).widthPixels)
     {
       Log.i("MicroMsg.CenterInsideWindowOrientationHandler", "getCurrentOrientation: portrait");
-      localObject = e.b.qGv;
-      AppMethodBeat.o(242879);
+      localObject = e.b.tLh;
+      AppMethodBeat.o(317529);
       return localObject;
     }
     Log.i("MicroMsg.CenterInsideWindowOrientationHandler", "getCurrentOrientation: landscape");
-    localObject = e.b.qGx;
-    AppMethodBeat.o(242879);
+    localObject = e.b.tLj;
+    AppMethodBeat.o(317529);
     return localObject;
   }
   
@@ -134,21 +133,10 @@ public final class a
   public final void onResume() {}
   
   public final void release() {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    b(e.a parama)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.c.a.a
  * JD-Core Version:    0.7.0.1
  */

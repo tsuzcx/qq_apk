@@ -5,76 +5,76 @@ import org.json.JSONObject;
 
 public final class s
 {
-  public long OQA;
-  public long OQB;
-  public int OQC;
-  public int OQD;
-  public long OQE;
-  public long cpu;
+  public long VGu;
+  public long VGv;
+  public int VGw;
+  public int VGx;
+  public long VGy;
+  public long ehe;
   
-  public final void bV(JSONObject paramJSONObject)
+  public final void cq(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70311);
-    this.cpu = paramJSONObject.optLong("activity_id");
-    this.OQA = paramJSONObject.optLong("activity_type", 0L);
-    this.OQB = paramJSONObject.optLong("award_id");
-    this.OQC = paramJSONObject.optInt("send_record_id");
-    this.OQD = paramJSONObject.optInt("user_record_id");
-    this.OQE = paramJSONObject.optLong("activity_mch_id", 0L);
+    this.ehe = paramJSONObject.optLong("activity_id");
+    this.VGu = paramJSONObject.optLong("activity_type", 0L);
+    this.VGv = paramJSONObject.optLong("award_id");
+    this.VGw = paramJSONObject.optInt("send_record_id");
+    this.VGx = paramJSONObject.optInt("user_record_id");
+    this.VGy = paramJSONObject.optLong("activity_mch_id", 0L);
     AppMethodBeat.o(70311);
   }
   
   public static final class a
   {
-    public String GUf;
-    public String OQF;
-    public String OQG;
+    public String MRI;
+    public String VGA;
+    public String VGz;
     public String name;
     public String title;
     public int type;
     public String url;
     
-    public final void bV(JSONObject paramJSONObject)
+    public final void cq(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(70309);
       this.url = paramJSONObject.optString("url");
       this.name = paramJSONObject.optString("wording");
-      this.GUf = paramJSONObject.optString("icon");
-      this.OQF = paramJSONObject.optString("btn_text");
+      this.MRI = paramJSONObject.optString("icon");
+      this.VGz = paramJSONObject.optString("btn_text");
       this.type = paramJSONObject.optInt("type");
       this.title = paramJSONObject.optString("title");
-      this.OQG = paramJSONObject.optString("small_title");
+      this.VGA = paramJSONObject.optString("small_title");
       AppMethodBeat.o(70309);
     }
   }
   
   public static final class b
   {
-    public String ODu;
-    public String OQH;
-    public String OQI;
-    public String OQJ;
-    public int OQK;
-    public String Ooe;
-    public String Oof;
+    public String VGB;
+    public String VGC;
+    public String VGD;
+    public int VGE;
+    public String VcU;
+    public String VcV;
+    public String VsI;
     
-    public final void bV(JSONObject paramJSONObject)
+    public final void cq(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(70310);
-      this.ODu = paramJSONObject.optString("tinyapp_name");
-      this.OQH = paramJSONObject.optString("tinyapp_logo");
-      this.OQI = paramJSONObject.optString("tinyapp_desc");
-      this.Ooe = paramJSONObject.optString("tinyapp_username");
-      this.Oof = paramJSONObject.optString("tinyapp_path");
-      this.OQJ = paramJSONObject.optString("activity_tinyapp_btn_text");
-      this.OQK = paramJSONObject.optInt("tinyapp_version", 0);
+      this.VsI = paramJSONObject.optString("tinyapp_name");
+      this.VGB = paramJSONObject.optString("tinyapp_logo");
+      this.VGC = paramJSONObject.optString("tinyapp_desc");
+      this.VcU = paramJSONObject.optString("tinyapp_username");
+      this.VcV = paramJSONObject.optString("tinyapp_path");
+      this.VGD = paramJSONObject.optString("activity_tinyapp_btn_text");
+      this.VGE = paramJSONObject.optInt("tinyapp_version", 0);
       AppMethodBeat.o(70310);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.s
  * JD-Core Version:    0.7.0.1
  */

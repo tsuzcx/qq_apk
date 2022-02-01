@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ei6" android:background="#80ffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ei4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/ei3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a62" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/fuw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/egq" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
-</RelativeLayout>
+<com.tencent.mm.plugin.hld.view.ImeTouchSoundView android:layout_width="wrap_content" android:layout_height="@dimen/afx"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:background="@drawable/a9u" android:layout_width="wrap_content" android:layout_height="@dimen/afx" android:layout_marginStart="6.0dip" android:layout_marginEnd="6.0dip">
+        <TextView android:textSize="@dimen/afq" android:textColor="@color/zs" android:id="@id/aqa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" android:lineSpacingExtra="@dimen/afr" android:layout_marginStart="@dimen/afw" android:layout_marginEnd="@dimen/afw" />
+    </RelativeLayout>
+</com.tencent.mm.plugin.hld.view.ImeTouchSoundView>

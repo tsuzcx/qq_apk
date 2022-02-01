@@ -3,23 +3,23 @@ package com.tencent.mm.util;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/util/ExptSettingLogic;", "", "()V", "isInnerUser", "", "isRedOrPurple", "libcompatible_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/util/ExptSettingLogic;", "", "()V", "isInnerUser", "", "isRedOrPurple", "libcompatible_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final d YyA;
+  public static final d agsY;
   
   static
   {
-    AppMethodBeat.i(261312);
-    YyA = new d();
-    AppMethodBeat.o(261312);
+    AppMethodBeat.i(233993);
+    agsY = new d();
+    AppMethodBeat.o(233993);
   }
   
-  public static boolean ien()
+  public static boolean jJv()
   {
-    AppMethodBeat.i(261308);
+    AppMethodBeat.i(233987);
     if (!BuildInfo.DEBUG) {
       if ((!BuildInfo.IS_FLAVOR_PURPLE) && (!BuildInfo.IS_FLAVOR_RED)) {
         break label42;
@@ -28,10 +28,10 @@ public final class d
     label42:
     for (int i = 1; (i != 0) || (WeChatEnvironment.hasDebugger()); i = 0)
     {
-      AppMethodBeat.o(261308);
+      AppMethodBeat.o(233987);
       return true;
     }
-    AppMethodBeat.o(261308);
+    AppMethodBeat.o(233987);
     return false;
   }
 }

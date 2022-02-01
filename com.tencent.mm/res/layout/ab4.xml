@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" app:cornerRadius="@dimen/bt"
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:background="@drawable/wp" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/ab5" />
-        <include layout="@layout/ab3" />
-    </LinearLayout>
-    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/cw_" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="@dimen/bt" app:logo_mode="g42" app:logo_style="dup" />
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cn2" />
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/finder_live_icon" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/bv" app:iconColor="@color/s8" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/yf" android:id="@id/g18" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d9i" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6t" android:src="@drawable/bxj" android:layout_marginStart="@dimen/bv" android:layout_marginEnd="@dimen/cd" app:iconColor="@color/yf" />
+</LinearLayout>

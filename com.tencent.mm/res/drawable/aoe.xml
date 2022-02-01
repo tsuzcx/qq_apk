@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval" android:useLevel="false">
-            <solid android:color="@color/afp" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@drawable/ben" />
+    <item android:drawable="@drawable/beo" />
+</selector>

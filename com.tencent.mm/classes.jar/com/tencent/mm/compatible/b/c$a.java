@@ -7,12 +7,12 @@ public enum c$a
   static
   {
     AppMethodBeat.i(155551);
-    jmS = new a("PCM", 0);
-    jmT = new a("AMR", 1);
-    jmU = new a("SILK", 2);
-    jmV = new a("SPEEX", 3);
-    jmW = new a("UNKNOWN", 4);
-    jmX = new a[] { jmS, jmT, jmU, jmV, jmW };
+    lQd = new a("PCM", 0);
+    lQe = new a("AMR", 1);
+    lQf = new a("SILK", 2);
+    lQg = new a("SPEEX", 3);
+    lQh = new a("UNKNOWN", 4);
+    lQi = new a[] { lQd, lQe, lQf, lQg, lQh };
     AppMethodBeat.o(155551);
   }
   
@@ -20,7 +20,7 @@ public enum c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.compatible.b.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.e.c;
+import com.tencent.mm.compatible.deviceinfo.q;
 import java.util.TimeZone;
 
 public final class MrsLogic
@@ -43,7 +44,7 @@ public final class MrsLogic
   private static PhoneInfo getPhoneInfoInternal()
   {
     PhoneInfo localPhoneInfo = new PhoneInfo();
-    localPhoneInfo.deviceModel = replayUnderlineWithDoc(Build.MODEL);
+    localPhoneInfo.deviceModel = replayUnderlineWithDoc(q.aPo());
     localPhoneInfo.deviceBrand = replayUnderlineWithDoc(Build.BRAND);
     String str2 = Build.MANUFACTURER;
     String str1 = str2;
@@ -175,7 +176,7 @@ public final class MrsLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.mrs.core.MrsLogic
  * JD-Core Version:    0.7.0.1
  */

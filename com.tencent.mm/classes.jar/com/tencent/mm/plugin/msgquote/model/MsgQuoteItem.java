@@ -9,13 +9,13 @@ public class MsgQuoteItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MsgQuoteItem> CREATOR;
-  public long FkS;
-  public String FkT;
-  public String FkU;
-  public String FkV;
-  public String FkW;
+  public long LgU;
+  public String LgV;
+  public String LgW;
+  public String LgX;
+  public String LgY;
   public String content;
-  public String hxy;
+  public String jUr;
   public int type;
   
   static
@@ -31,13 +31,13 @@ public class MsgQuoteItem
   {
     AppMethodBeat.i(117602);
     this.type = paramParcel.readInt();
-    this.FkS = paramParcel.readLong();
-    this.FkT = paramParcel.readString();
-    this.FkU = paramParcel.readString();
-    this.FkV = paramParcel.readString();
-    this.FkW = paramParcel.readString();
+    this.LgU = paramParcel.readLong();
+    this.LgV = paramParcel.readString();
+    this.LgW = paramParcel.readString();
+    this.LgX = paramParcel.readString();
+    this.LgY = paramParcel.readString();
     this.content = paramParcel.readString();
-    this.hxy = paramParcel.readString();
+    this.jUr = paramParcel.readString();
     AppMethodBeat.o(117602);
   }
   
@@ -49,7 +49,7 @@ public class MsgQuoteItem
   public String toString()
   {
     AppMethodBeat.i(117600);
-    String str = "MsgQuoteItem{type=" + this.type + ", svrid=" + this.FkS + ", fromusr='" + this.FkT + '\'' + ", chatuser='" + this.FkU + '\'' + ", displayname='" + this.FkV + '\'' + ", msgsource='" + this.FkW + '\'' + ", content='" + this.content + '\'' + ", msgSource='" + this.hxy + '\'' + '}';
+    String str = "MsgQuoteItem{type=" + this.type + ", svrid=" + this.LgU + ", fromusr='" + this.LgV + '\'' + ", chatuser='" + this.LgW + '\'' + ", displayname='" + this.LgX + '\'' + ", msgsource='" + this.LgY + '\'' + ", content='" + this.content + '\'' + ", msgSource='" + this.jUr + '\'' + '}';
     AppMethodBeat.o(117600);
     return str;
   }
@@ -58,13 +58,13 @@ public class MsgQuoteItem
   {
     AppMethodBeat.i(117601);
     paramParcel.writeInt(this.type);
-    paramParcel.writeLong(this.FkS);
-    paramParcel.writeString(this.FkT);
-    paramParcel.writeString(this.FkU);
-    paramParcel.writeString(this.FkV);
-    paramParcel.writeString(this.FkW);
+    paramParcel.writeLong(this.LgU);
+    paramParcel.writeString(this.LgV);
+    paramParcel.writeString(this.LgW);
+    paramParcel.writeString(this.LgX);
+    paramParcel.writeString(this.LgY);
     paramParcel.writeString(this.content);
-    paramParcel.writeString(this.hxy);
+    paramParcel.writeString(this.jUr);
     AppMethodBeat.o(117601);
   }
 }

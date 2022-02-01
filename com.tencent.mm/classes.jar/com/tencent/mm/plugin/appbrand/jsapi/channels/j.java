@@ -1,36 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.channels;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.jsapi.EmptyResult;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsPostPageTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
-final class j
-  extends AppBrandProxyUIProcessTask
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsTopic;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class j
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  private static final int CTRL_INDEX = 1065;
+  private static final String NAME = "openChannelsTopic";
+  public static final a rRN;
+  
+  static
   {
-    AppMethodBeat.i(275421);
-    if (!(paramProcessRequest instanceof OpenChannelsPostPageRequest))
-    {
-      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsPostPage", "handleRequest#OpenChannelsPostPageTask, request is not OpenChannelsPostPageRequest");
-      AppMethodBeat.o(275421);
-      return;
-    }
-    paramProcessRequest = (ak)h.ag(ak.class);
-    if (paramProcessRequest != null) {
-      paramProcessRequest.openChannelsPostPage((Activity)bPf());
-    }
-    b((AppBrandProxyUIProcessTask.ProcessResult)new EmptyResult());
-    AppMethodBeat.o(275421);
+    AppMethodBeat.i(327876);
+    rRN = new a((byte)0);
+    AppMethodBeat.o(327876);
   }
+  
+  private static final void a(com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt, j paramj, EmptyResult paramEmptyResult)
+  {
+    AppMethodBeat.i(327871);
+    s.u(paramj, "this$0");
+    Log.i("MicroMsg.AppBrand.JsApiOpenChannelsTopic", "onReceiveResult#IProcessResultReceiver");
+    paramc.callback(paramInt, paramj.a(null, a.e.rVt, null));
+    AppMethodBeat.o(327871);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsTopic$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

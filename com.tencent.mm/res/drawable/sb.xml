@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape android:shape="ring" android:thickness="2.0dip">
-            <solid android:color="@color/wb" />
-        </shape>
-    </item>
-    <item android:id="@android:id/secondaryProgress">
-        <rotate android:fromDegrees="270.0" android:toDegrees="270.0">
-            <shape android:shape="ring" android:useLevel="true" android:innerRadius="13.0dip" android:thickness="2.0dip">
-                <gradient android:startColor="@color/a4j" android:endColor="@color/a4j" android:useLevel="false" android:angle="0.0" android:type="sweep" />
-            </shape>
-        </rotate>
-    </item>
-    <item android:id="@android:id/progress">
-        <rotate android:fromDegrees="270.0" android:toDegrees="270.0">
-            <shape android:shape="ring" android:useLevel="true" android:innerRadius="13.0dip" android:thickness="2.0dip">
-                <gradient android:startColor="@color/afo" android:endColor="@color/afo" android:useLevel="false" android:angle="0.0" android:type="sweep" />
-            </shape>
-        </rotate>
-    </item>
-</layer-list>
+    <gradient android:startColor="@color/ahb" android:endColor="@color/pl" android:angle="0.0" />
+</shape>

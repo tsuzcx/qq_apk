@@ -8,6 +8,8 @@ public abstract interface ITPDownloadProxy
   
   public abstract String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
+  public abstract String getNativeInfo(int paramInt);
+  
   public abstract String getPlayErrorCodeStr(int paramInt);
   
   public abstract String getPlayUrl(int paramInt1, int paramInt2);
@@ -54,7 +56,7 @@ public abstract interface ITPDownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPDownloadProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.sdk;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.x;
+import com.tencent.mm.vfs.ab;
 import java.io.BufferedReader;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public class NativeLibraries
     try
     {
       HashSet localHashSet = new HashSet();
-      localObject = new BufferedReader(new x("/proc/" + Process.myPid() + "/maps"));
+      localObject = new BufferedReader(new ab("/proc/" + Process.myPid() + "/maps"));
       Log.i("MicroMsg.NativeLibraries", "Dump NativeLibrares:");
       for (;;)
       {
@@ -34,7 +34,7 @@ public class NativeLibraries
       }
       localObject = localThrowable.iterator();
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.NativeLibraries", localThrowable, "", new Object[0]);
       AppMethodBeat.o(32814);

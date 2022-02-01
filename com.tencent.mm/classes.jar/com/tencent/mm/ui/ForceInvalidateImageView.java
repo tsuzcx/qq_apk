@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -20,7 +19,6 @@ public class ForceInvalidateImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  @TargetApi(8)
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
     AppMethodBeat.i(33136);

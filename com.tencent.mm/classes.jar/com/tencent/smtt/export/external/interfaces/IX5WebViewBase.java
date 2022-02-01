@@ -313,14 +313,6 @@ public abstract interface IX5WebViewBase
       this.mType = paramInt;
     }
     
-    public class AnchorData
-    {
-      public String mAnchorTitle;
-      public String mAnchorUrl;
-      
-      public AnchorData() {}
-    }
-    
     public class DeepImageData
     {
       public Bitmap mBmp;
@@ -338,14 +330,6 @@ public abstract interface IX5WebViewBase
         AppMethodBeat.o(53219);
         return localBitmap;
       }
-    }
-    
-    public class EditableData
-    {
-      public String mEditableText;
-      public boolean mIsPassword;
-      
-      public EditableData() {}
     }
     
     public class ImageAnchorData
@@ -430,7 +414,7 @@ public abstract interface IX5WebViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebViewBase
  * JD-Core Version:    0.7.0.1
  */

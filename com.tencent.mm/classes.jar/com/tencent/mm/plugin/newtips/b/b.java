@@ -43,7 +43,7 @@ public final class b
     return bool;
   }
   
-  public final a aas(int paramInt)
+  public final a aeL(int paramInt)
   {
     AppMethodBeat.i(127265);
     if (this.db == null)
@@ -102,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.b
  * JD-Core Version:    0.7.0.1
  */

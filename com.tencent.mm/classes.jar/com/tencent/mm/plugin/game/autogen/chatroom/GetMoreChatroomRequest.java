@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.game.autogen.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.kc;
 import java.util.LinkedList;
 
 public class GetMoreChatroomRequest
-  extends dyl
+  extends erp
 {
   public String chatroom_filter;
   public Lbs lbs_info;
@@ -14,90 +14,90 @@ public class GetMoreChatroomRequest
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195612);
+    AppMethodBeat.i(275526);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
       if (this.chatroom_filter != null) {
-        paramVarArgs.f(2, this.chatroom_filter);
+        paramVarArgs.g(2, this.chatroom_filter);
       }
       if (this.lbs_info != null)
       {
-        paramVarArgs.oE(3, this.lbs_info.computeSize());
+        paramVarArgs.qD(3, this.lbs_info.computeSize());
         this.lbs_info.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(4, this.limit);
-      AppMethodBeat.o(195612);
+      paramVarArgs.bS(4, this.limit);
+      AppMethodBeat.o(275526);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label526;
+        break label522;
       }
     }
-    label526:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label522:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
       if (this.chatroom_filter != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.chatroom_filter);
+        paramInt = i + i.a.a.b.b.a.h(2, this.chatroom_filter);
       }
       i = paramInt;
       if (this.lbs_info != null) {
-        i = paramInt + g.a.a.a.oD(3, this.lbs_info.computeSize());
+        i = paramInt + i.a.a.a.qC(3, this.lbs_info.computeSize());
       }
-      paramInt = g.a.a.b.b.a.bM(4, this.limit);
-      AppMethodBeat.o(195612);
+      paramInt = i.a.a.b.b.a.cJ(4, this.limit);
+      AppMethodBeat.o(275526);
       return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(195612);
+        AppMethodBeat.o(275526);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         GetMoreChatroomRequest localGetMoreChatroomRequest = (GetMoreChatroomRequest)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(195612);
+          AppMethodBeat.o(275526);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
+            localObject2 = new kc();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+              ((kc)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetMoreChatroomRequest.BaseRequest = ((jg)localObject2);
+            localGetMoreChatroomRequest.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(195612);
+          AppMethodBeat.o(275526);
           return 0;
         case 2: 
-          localGetMoreChatroomRequest.chatroom_filter = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(195612);
+          localGetMoreChatroomRequest.chatroom_filter = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(275526);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -110,14 +110,14 @@ public class GetMoreChatroomRequest
             localGetMoreChatroomRequest.lbs_info = ((Lbs)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(195612);
+          AppMethodBeat.o(275526);
           return 0;
         }
-        localGetMoreChatroomRequest.limit = ((g.a.a.a.a)localObject1).abFh.AK();
-        AppMethodBeat.o(195612);
+        localGetMoreChatroomRequest.limit = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(275526);
         return 0;
       }
-      AppMethodBeat.o(195612);
+      AppMethodBeat.o(275526);
       return -1;
     }
   }

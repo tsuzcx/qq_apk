@@ -11,10 +11,10 @@ public class g
 {
   public static void a(Context paramContext)
   {
-    AppMethodBeat.i(254660);
+    AppMethodBeat.i(186147);
     b(paramContext);
     Object localObject1 = c(paramContext);
-    Object localObject2 = q.e(q.a(paramContext, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
+    Object localObject2 = r.e(r.b(paramContext, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
     Object localObject3;
     int i;
     if ((localObject1 != null) && (((List)localObject1).size() != 0) && (((List)localObject2).size() != 0))
@@ -52,7 +52,7 @@ public class g
         if (j != 0)
         {
           localObject4 = new byte[2048];
-          localObject5 = paramContext.getFilesDir().getAbsolutePath() + File.separator + q.b;
+          localObject5 = paramContext.getFilesDir().getAbsolutePath() + File.separator + r.b;
           localObject1 = paramContext.getFilesDir().getAbsolutePath() + File.separator + "TencentLocation_sapp/lastComp";
           localObject3 = new ArrayList();
           localObject6 = ((List)localObject2).iterator();
@@ -66,12 +66,12 @@ public class g
             Object localObject8 = new File((String)localObject1, ((a)localObject7).c);
             if (((File)localObject8).exists())
             {
-              localObject8 = q.a((File)localObject8);
+              localObject8 = r.a((File)localObject8);
               if (((a)localObject7).e.equals(localObject8)) {
                 continue;
               }
             }
-            if (q.b(paramContext, (String)localObject5 + File.separator + ((a)localObject7).c, (String)localObject1, "tmp__sapp" + ((a)localObject7).c, ((a)localObject7).d, (byte[])localObject4))
+            if (r.b(paramContext, (String)localObject5 + File.separator + ((a)localObject7).c, (String)localObject1, "tmp__sapp" + ((a)localObject7).c, ((a)localObject7).d, (byte[])localObject4))
             {
               ((List)localObject3).add(localObject7);
               continue;
@@ -109,10 +109,10 @@ public class g
                 }
                 new File((String)localObject1, "tmp__sapp" + ((a)localObject4).c).renameTo((File)localObject5);
               }
-              q.b(paramContext, "__SP_LAST_TencentLoc_COMP_INFO__sapp_", q.a((List)localObject3));
-              q.b(paramContext, "__SP_LAST_TencentLoc_COMP_SDK_VER__sapp_", h.a);
+              r.c(paramContext, "__SP_LAST_TencentLoc_COMP_INFO__sapp_", r.a((List)localObject3));
+              r.c(paramContext, "__SP_LAST_TencentLoc_COMP_SDK_VER__sapp_", h.a);
             }
-            AppMethodBeat.o(254660);
+            AppMethodBeat.o(186147);
             return;
           }
           i = 1;
@@ -123,18 +123,18 @@ public class g
   
   public static void b(Context paramContext)
   {
-    AppMethodBeat.i(254662);
+    AppMethodBeat.i(186278);
     paramContext = new File(paramContext.getFilesDir(), "TencentLocation_sapp/lastComp");
     if (!paramContext.exists()) {
       paramContext.mkdirs();
     }
-    AppMethodBeat.o(254662);
+    AppMethodBeat.o(186278);
   }
   
   public static List<String> c(Context paramContext)
   {
-    AppMethodBeat.i(254665);
-    Object localObject = new File(paramContext.getFilesDir(), q.b);
+    AppMethodBeat.i(186283);
+    Object localObject = new File(paramContext.getFilesDir(), r.b);
     ArrayList localArrayList = null;
     paramContext = localArrayList;
     if (((File)localObject).exists())
@@ -159,20 +159,20 @@ public class g
                 break;
               }
               paramContext = localObject[i];
-              localArrayList.add(paramContext.getName() + "," + paramContext.length() + "," + q.a(paramContext));
+              localArrayList.add(paramContext.getName() + "," + paramContext.length() + "," + r.a(paramContext));
               i += 1;
             }
           }
         }
       }
     }
-    AppMethodBeat.o(254665);
+    AppMethodBeat.o(186283);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     c.t.m.sapp.c.g
  * JD-Core Version:    0.7.0.1
  */

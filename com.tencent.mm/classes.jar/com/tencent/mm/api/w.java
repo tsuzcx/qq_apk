@@ -1,17 +1,16 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.kernel.c.a;
+import android.graphics.Bitmap;
 
 public abstract interface w
-  extends a
 {
-  public abstract void recordImage(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4);
+  public abstract void b(Bitmap paramBitmap, boolean paramBoolean);
   
-  public abstract void recordVideo(String paramString1, String paramString2, String paramString3, String paramString4);
+  public abstract void f(Exception paramException);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.api.w
  * JD-Core Version:    0.7.0.1
  */

@@ -12,25 +12,25 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.voip.b.e;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 @com.tencent.mm.ui.base.a(3)
 public class MMSuperAlert
   extends HellActivity
 {
-  public static void m(Context paramContext, int paramInt1, int paramInt2)
+  public static void q(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241236);
+    AppMethodBeat.i(292412);
     Object localObject = new Intent(paramContext, MMSuperAlert.class);
     ((Intent)localObject).putExtra("MMSuperAlert_title", paramInt1);
     ((Intent)localObject).putExtra("MMSuperAlert_msg", paramInt2);
     ((Intent)localObject).putExtra("MMSuperAlert_cancelable", false);
     ((Intent)localObject).setFlags(268435456);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(241236);
+    AppMethodBeat.o(292412);
   }
   
   public Resources getResources()
@@ -71,7 +71,7 @@ public class MMSuperAlert
         label76:
         for (String str2 = "";; str2 = MMSuperAlert.this.getString(j))
         {
-          h.a(MMSuperAlert.this, str1, str2, bool, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          k.a(MMSuperAlert.this, str1, str2, bool, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {

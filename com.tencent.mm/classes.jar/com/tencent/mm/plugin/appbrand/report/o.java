@@ -1,185 +1,166 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.content.Context;
+import android.util.SparseArray;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.qb;
-import com.tencent.mm.plugin.appbrand.jsapi.ai.e.a.c;
-import com.tencent.mm.plugin.appbrand.platform.window.b;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.autogen.mmdata.rpt.pj;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import com.tencent.mm.plugin.appbrand.ui.af;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandVideoCastReportHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/xwebplugin/video/cast/IVideoCastReportHelper;", "Lcom/tencent/luggage/base/ICustomize;", "()V", "appId", "", "isInFullScreen", "", "()Z", "setInFullScreen", "(Z)V", "pagePath", "videoPath", "baseStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppVideoCastStruct;", "caseId", "", "doReport", "", "isConnectSuccess", "deviceName", "manufactureName", "deviceCount", "getFullscreenStatusListener", "Lcom/tencent/mm/plugin/appbrand/platform/window/FullscreenStatusListener;", "setAppId", "setPagePath", "setVideoPath", "path", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandUIStandaloneTaskVisitReporter;", "", "activity", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "(Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;)V", "reportPVKeyOnResumed", "", "reportKey", "", "key", "reportLifecycle", "lifecycle", "", "reportWeAppLoadKV", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "reportWeAppSwitchFromSystemTaskBarKV", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  implements c
 {
-  public static final o.a qJJ;
-  private String appId = "";
-  private String fve = "";
-  boolean nzN;
-  private String videoPath = "";
+  private static final SparseArray<o> sLp;
+  public static final a tOo;
+  private final AppBrandUI tOp;
+  private int tOq;
   
   static
   {
-    AppMethodBeat.i(51023);
-    qJJ = new o.a((byte)0);
-    AppMethodBeat.o(51023);
+    AppMethodBeat.i(321527);
+    tOo = new a((byte)0);
+    sLp = new SparseArray();
+    AppMethodBeat.o(321527);
   }
   
-  public final void Bv(final int paramInt)
+  public o(AppBrandUI paramAppBrandUI)
   {
-    AppMethodBeat.i(51020);
-    h.ZvG.be((Runnable)new b(this, paramInt));
-    AppMethodBeat.o(51020);
+    AppMethodBeat.i(321507);
+    this.tOp = paramAppBrandUI;
+    AppMethodBeat.o(321507);
   }
   
-  public final void a(final boolean paramBoolean, final String paramString1, final String paramString2, final int paramInt)
+  private static void AQ(int paramInt)
   {
-    AppMethodBeat.i(51022);
-    p.k(paramString1, "deviceName");
-    p.k(paramString2, "manufactureName");
-    h.ZvG.be((Runnable)new d(this, paramInt, paramBoolean, paramString1, paramString2));
-    AppMethodBeat.o(51022);
+    AppMethodBeat.i(321510);
+    com.tencent.threadpool.h.ahAA.j(new o..ExternalSyntheticLambda0(paramInt), "AppBrandUIStandaloneTaskVisitReporter");
+    AppMethodBeat.o(321510);
   }
   
-  public final void ajJ(String paramString)
+  private static final void Db(int paramInt)
   {
-    AppMethodBeat.i(51017);
-    p.k(paramString, "pagePath");
-    this.fve = paramString;
-    AppMethodBeat.o(51017);
+    AppMethodBeat.i(321515);
+    com.tencent.mm.plugin.report.service.h.OAn.kJ(1758, paramInt + 100);
+    AppMethodBeat.o(321515);
   }
   
-  public final b bYE()
+  private static void h(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(175211);
-    b localb = (b)new e(this);
-    AppMethodBeat.o(175211);
-    return localb;
+    AppMethodBeat.i(321513);
+    pj localpj = new pj();
+    localpj.ioV = 1L;
+    localpj.aIW();
+    localpj.wL(paramAppBrandInitConfigWC.appId);
+    localpj.wM(paramAppBrandInitConfigWC.eoP);
+    localpj.bMH();
+    AppMethodBeat.o(321513);
   }
   
-  public final void eP(final int paramInt1, final int paramInt2)
+  public final void afR(String paramString)
   {
-    AppMethodBeat.i(51021);
-    h.ZvG.be((Runnable)new c(this, paramInt2, paramInt1));
-    AppMethodBeat.o(51021);
-  }
-  
-  public final void setAppId(String paramString)
-  {
-    AppMethodBeat.i(51018);
-    p.k(paramString, "appId");
-    this.appId = paramString;
-    AppMethodBeat.o(51018);
-  }
-  
-  public final void setVideoPath(String paramString)
-  {
-    AppMethodBeat.i(51016);
-    p.k(paramString, "path");
-    this.videoPath = paramString;
-    AppMethodBeat.o(51016);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(o paramo, int paramInt) {}
-    
-    public final void run()
+    AppMethodBeat.i(321535);
+    s.u(paramString, "lifecycle");
+    if (n.U(paramString, "onCreate", false))
     {
-      AppMethodBeat.i(51013);
-      try
+      this.tOq = 3;
+      paramString = this.tOp.getInitConfig();
+      if (paramString != null)
       {
-        o.a(this.qJK, paramInt).bpa();
-        AppMethodBeat.o(51013);
-        return;
-      }
-      catch (Exception localException)
-      {
-        Log.d("AppBrandVideoCastReportHelperWC", "catch: " + localException.getMessage());
-        AppMethodBeat.o(51013);
+        h(paramString);
+        AppMethodBeat.o(321535);
       }
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(o paramo, int paramInt1, int paramInt2) {}
-    
-    public final void run()
+    else
     {
-      AppMethodBeat.i(51014);
-      try
+      switch (paramString.hashCode())
       {
-        qb localqb = o.a(this.qJK, paramInt2);
-        localqb.DB(paramInt1);
-        localqb.bpa();
-        AppMethodBeat.o(51014);
-        return;
-      }
-      catch (Exception localException)
-      {
-        Log.d("AppBrandVideoCastReportHelperWC", "catch: " + localException.getMessage());
-        AppMethodBeat.o(51014);
       }
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(o paramo, int paramInt, boolean paramBoolean, String paramString1, String paramString2) {}
-    
-    public final void run()
+    for (;;)
     {
-      AppMethodBeat.i(51015);
-      try
+      AppMethodBeat.o(321535);
+      return;
+      if (!paramString.equals("onDestroy"))
       {
-        qb localqb = o.a(this.qJK, paramInt);
-        if (paramBoolean) {}
-        for (long l = 1L;; l = 0L)
+        AppMethodBeat.o(321535);
+        return;
+        if (!paramString.equals("onNewIntent"))
         {
-          localqb.DC(l);
-          localqb.GZ(paramString1);
-          localqb.Ha(paramString2);
-          localqb.bpa();
-          AppMethodBeat.o(51015);
+          AppMethodBeat.o(321535);
           return;
+          if (!paramString.equals("onPause"))
+          {
+            AppMethodBeat.o(321535);
+            return;
+            if (!paramString.equals("onResume")) {
+              AppMethodBeat.o(321535);
+            }
+          }
+          else
+          {
+            this.tOq = 0;
+            af.c((Context)this.tOp, (b)new o.b(this));
+            AppMethodBeat.o(321535);
+            return;
+          }
+          AQ(1);
+          if (this.tOq > 0) {}
+          for (int i = this.tOq;; i = 2)
+          {
+            AQ(i);
+            if (2 != i) {
+              break;
+            }
+            paramString = this.tOp.getInitConfig();
+            if (paramString == null) {
+              break;
+            }
+            pj localpj = new pj();
+            localpj.ioV = 2L;
+            localpj.aIW();
+            localpj.wL(paramString.appId);
+            localpj.wM(paramString.eoP);
+            localpj.bMH();
+            AppMethodBeat.o(321535);
+            return;
+          }
         }
-        return;
+        this.tOq = 4;
+        paramString = this.tOp.getInitConfig();
+        if (paramString != null)
+        {
+          h(paramString);
+          AppMethodBeat.o(321535);
+        }
       }
-      catch (Exception localException)
+      else
       {
-        Log.d("AppBrandVideoCastReportHelperWC", "catch: " + localException.getMessage());
-        AppMethodBeat.o(51015);
+        a.a(this.tOp);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/report/AppBrandVideoCastReportHelper$getFullscreenStatusListener$1", "Lcom/tencent/mm/plugin/appbrand/platform/window/FullscreenStatusListener;", "onEnterFullscreen", "", "onExitFullscreen", "plugin-appbrand-integration_release"})
-  public static final class e
-    extends b
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandUIStandaloneTaskVisitReporter$Companion;", "", "()V", "ID", "", "KEY_PV_RESUME_AFTER_CREATE", "KEY_PV_RESUME_AFTER_NEW_INTENT", "KEY_PV_RESUME_AFTER_SCREEN_ON", "KEY_PV_RESUME_TOTAL", "KEY_PV_UNKNOWN_RESUME", "KEY_UV_RESUME_AFTER_CREATE", "KEY_UV_RESUME_AFTER_NEW_INTENT", "KEY_UV_RESUME_AFTER_SCREEN_ON", "KEY_UV_RESUME_TOTAL", "KEY_UV_UNKNOWN_RESUME", "map", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandUIStandaloneTaskVisitReporter;", "obtain", "activity", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "releaseRef", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    public final void PS()
+    public static void a(AppBrandUI paramAppBrandUI)
     {
-      this.qJK.nzN = false;
-    }
-    
-    public final void bOO()
-    {
-      this.qJK.nzN = true;
+      AppMethodBeat.i(321357);
+      o.cIB().remove(paramAppBrandUI.hashCode());
+      AppMethodBeat.o(321357);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.o
  * JD-Core Version:    0.7.0.1
  */

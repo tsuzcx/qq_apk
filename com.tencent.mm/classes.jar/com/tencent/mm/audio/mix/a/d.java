@@ -7,21 +7,21 @@ import java.util.Arrays;
 
 public final class d
 {
-  private static long fmG = 0L;
-  private static long fmH = 0L;
+  private static long hqR = 0L;
+  private static long hqS = 0L;
   private String appId;
-  public boolean awf;
   private long bufferSize;
   public int channels;
+  public boolean ckB;
   private int count;
   public long duration;
-  private ArrayList<e> fmA;
-  public String fmB;
-  public boolean fmC;
-  public boolean fmD;
-  private a fmE;
-  public String fmF;
-  public int fmx;
+  public int hqI;
+  private ArrayList<e> hqL;
+  public String hqM;
+  public boolean hqN;
+  public boolean hqO;
+  private a hqP;
+  public String hqQ;
   private int index;
   public int sampleRate;
   
@@ -31,29 +31,29 @@ public final class d
     this.index = 0;
     this.count = 0;
     this.bufferSize = 0L;
-    this.fmD = false;
+    this.hqO = false;
     this.sampleRate = 44100;
     this.channels = 2;
-    this.fmx = 2;
-    this.fmA = new ArrayList();
-    this.fmB = paramString;
+    this.hqI = 2;
+    this.hqL = new ArrayList();
+    this.hqM = paramString;
     AppMethodBeat.o(136709);
   }
   
-  private void acX()
+  private void aEX()
   {
     AppMethodBeat.i(136719);
-    this.fmD = false;
-    adb();
+    this.hqO = false;
+    aFb();
     AppMethodBeat.o(136719);
   }
   
-  private void acZ()
+  private void aEZ()
   {
     try
     {
       AppMethodBeat.i(136721);
-      ada();
+      aFa();
       AppMethodBeat.o(136721);
       return;
     }
@@ -64,34 +64,34 @@ public final class d
     }
   }
   
-  private void ada()
+  private void aFa()
   {
     AppMethodBeat.i(136722);
-    if (this.fmE == null)
+    if (this.hqP == null)
     {
-      this.fmE = new a(this.appId, this.fmB);
-      if (this.fmE.open())
+      this.hqP = new a(this.appId, this.hqM);
+      if (this.hqP.open())
       {
         b.i("MicroMsg.Mix.PcmBufferProvider", "openCacheFile success");
-        this.fmE.bI(getBufferSize());
+        this.hqP.dY(getBufferSize());
         AppMethodBeat.o(136722);
         return;
       }
       b.i("MicroMsg.Mix.PcmBufferProvider", "openCacheFile fail");
-      this.fmD = false;
-      adb();
+      this.hqO = false;
+      aFb();
     }
     AppMethodBeat.o(136722);
   }
   
-  private void adb()
+  private void aFb()
   {
     AppMethodBeat.i(136723);
-    if (this.fmE != null)
+    if (this.hqP != null)
     {
-      this.fmE.close();
-      this.fmE.acW();
-      this.fmE = null;
+      this.hqP.close();
+      this.hqP.aEW();
+      this.hqP = null;
     }
     AppMethodBeat.o(136723);
   }
@@ -99,9 +99,9 @@ public final class d
   private int b(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
     AppMethodBeat.i(136724);
-    if (this.fmE != null)
+    if (this.hqP != null)
     {
-      paramInt = this.fmE.b(paramArrayOfByte, paramLong, paramInt);
+      paramInt = this.hqP.b(paramArrayOfByte, paramLong, paramInt);
       AppMethodBeat.o(136724);
       return paramInt;
     }
@@ -109,21 +109,21 @@ public final class d
     return 0;
   }
   
-  private void kq(int paramInt)
+  private void nX(int paramInt)
   {
     AppMethodBeat.i(136713);
-    b.i("MicroMsg.Mix.PcmBufferProvider", "resetProvider src:%s, size:%d, complete:%b, duration:%d, supportMixPlay:%b, bufferSize:%d", new Object[] { this.fmB, Integer.valueOf(paramInt), Boolean.valueOf(this.awf), Long.valueOf(this.duration), Boolean.valueOf(this.fmC), Long.valueOf(this.bufferSize) });
-    this.fmA.clear();
-    this.awf = false;
+    b.i("MicroMsg.Mix.PcmBufferProvider", "resetProvider src:%s, size:%d, complete:%b, duration:%d, supportMixPlay:%b, bufferSize:%d", new Object[] { this.hqM, Integer.valueOf(paramInt), Boolean.valueOf(this.ckB), Long.valueOf(this.duration), Boolean.valueOf(this.hqN), Long.valueOf(this.bufferSize) });
+    this.hqL.clear();
+    this.ckB = false;
     this.duration = 0L;
-    this.fmC = false;
+    this.hqN = false;
     this.index = 0;
     this.bufferSize = 0L;
-    acX();
+    aEX();
     AppMethodBeat.o(136713);
   }
   
-  private e ks(int paramInt)
+  private e nZ(int paramInt)
   {
     AppMethodBeat.i(136725);
     if (paramInt >= this.count)
@@ -131,67 +131,76 @@ public final class d
       AppMethodBeat.o(136725);
       return null;
     }
-    if (this.fmE == null)
+    if (this.hqP == null)
     {
       AppMethodBeat.o(136725);
       return null;
     }
     int i = paramInt * 3536;
-    if (i > this.fmE.getLength())
+    if (i > this.hqP.getLength())
     {
       AppMethodBeat.o(136725);
       return null;
     }
-    e locale = com.tencent.mm.audio.mix.b.d.ado().adp();
+    e locale = com.tencent.mm.audio.mix.b.d.aFn().aFo();
     if (locale == null)
     {
       AppMethodBeat.o(136725);
       return null;
     }
-    if (locale.fmy == null) {
-      locale.fmy = new byte[3536];
+    if (locale.hqJ == null) {
+      locale.hqJ = new byte[3536];
     }
     for (;;)
     {
       System.nanoTime();
-      if (b(locale.fmy, i, locale.fmy.length) > 0) {
+      if (b(locale.hqJ, i, locale.hqJ.length) > 0) {
         break;
       }
-      com.tencent.mm.audio.mix.b.d.ado().b(locale);
+      com.tencent.mm.audio.mix.b.d.aFn().b(locale);
       AppMethodBeat.o(136725);
       return null;
-      Arrays.fill(locale.fmy, 0, locale.fmy.length, (byte)0);
+      Arrays.fill(locale.hqJ, 0, locale.hqJ.length, (byte)0);
     }
-    locale.fmF = this.fmF;
+    locale.hqQ = this.hqQ;
     locale.sampleRate = this.sampleRate;
     locale.channels = this.channels;
-    locale.fmx = this.fmx;
-    locale.fmI = (paramInt * 20);
+    locale.hqI = this.hqI;
+    locale.hqT = (paramInt * 20);
     AppMethodBeat.o(136725);
     return locale;
+  }
+  
+  public final void GK()
+  {
+    AppMethodBeat.i(136717);
+    this.ckB = true;
+    this.count = size();
+    b.i("MicroMsg.Mix.PcmBufferProvider", "src:%s is complete cache", new Object[] { this.hqM });
+    AppMethodBeat.o(136717);
   }
   
   public final void a(e parame)
   {
     AppMethodBeat.i(136715);
     this.index += 1;
-    parame.fmI = (this.index * 20);
-    if (this.fmA != null) {
-      this.fmA.add(parame);
+    parame.hqT = (this.index * 20);
+    if (this.hqL != null) {
+      this.hqL.add(parame);
     }
     AppMethodBeat.o(136715);
   }
   
-  public final void acY()
+  public final void aEY()
   {
     try
     {
       AppMethodBeat.i(136720);
-      if (this.fmE != null)
+      if (this.hqP != null)
       {
         b.i("MicroMsg.Mix.PcmBufferProvider", "closeCacheFileWithNoDiscard success");
-        this.fmE.close();
-        this.fmE = null;
+        this.hqP.close();
+        this.hqP = null;
       }
       AppMethodBeat.o(136720);
       return;
@@ -214,7 +223,7 @@ public final class d
     return l;
   }
   
-  public final boolean hm(String paramString)
+  public final boolean iN(String paramString)
   {
     for (;;)
     {
@@ -222,65 +231,65 @@ public final class d
       try
       {
         AppMethodBeat.i(136712);
-        if (this.fmD)
+        if (this.hqO)
         {
-          b.i("MicroMsg.Mix.PcmBufferProvider", "cache to file has finish, file:%s", new Object[] { this.fmB });
+          b.i("MicroMsg.Mix.PcmBufferProvider", "cache to file has finish, file:%s", new Object[] { this.hqM });
           AppMethodBeat.o(136712);
           bool = true;
           return bool;
         }
         this.appId = paramString;
-        int j = this.fmA.size();
+        int j = this.hqL.size();
         if (j > 0) {
-          ada();
+          aFa();
         }
-        if (this.fmE == null)
+        if (this.hqP == null)
         {
           b.e("MicroMsg.Mix.PcmBufferProvider", "cacheFile is null");
-          this.fmD = false;
+          this.hqO = false;
           AppMethodBeat.o(136712);
           bool = false;
           continue;
           if (i < j)
           {
-            paramString = (e)this.fmA.get(i);
+            paramString = (e)this.hqL.get(i);
             if (i == 0)
             {
-              this.fmF = paramString.fmF;
+              this.hqQ = paramString.hqQ;
               this.sampleRate = paramString.sampleRate;
-              this.fmx = paramString.fmx;
+              this.hqI = paramString.hqI;
               this.channels = paramString.channels;
             }
             if (paramString == null) {
-              break label301;
+              break label302;
             }
-            byte[] arrayOfByte = paramString.fmy;
+            byte[] arrayOfByte = paramString.hqJ;
             long l = i * 3536;
-            int k = paramString.fmy.length;
-            if (this.fmE == null) {
-              break label295;
+            int k = paramString.hqJ.length;
+            if (this.hqP == null) {
+              break label296;
             }
-            bool = this.fmE.c(arrayOfByte, l, k);
+            bool = this.hqP.c(arrayOfByte, l, k);
             if (bool) {
-              break label301;
+              break label302;
             }
-            adb();
+            aFb();
             b.e("MicroMsg.Mix.PcmBufferProvider", "setCacheToFile fail");
-            this.fmD = false;
+            this.hqO = false;
             AppMethodBeat.o(136712);
             bool = false;
             continue;
           }
-          this.fmD = true;
+          this.hqO = true;
           i = j - 1;
           if (i >= 0)
           {
-            paramString = (e)this.fmA.remove(i);
+            paramString = (e)this.hqL.remove(i);
             if (paramString == null) {
-              break label308;
+              break label309;
             }
-            com.tencent.mm.audio.mix.b.e.adq().b(paramString);
-            break label308;
+            com.tencent.mm.audio.mix.b.e.aFp().b(paramString);
+            break label309;
           }
           b.i("MicroMsg.Mix.PcmBufferProvider", "setCacheToFile finish");
           AppMethodBeat.o(136712);
@@ -291,55 +300,46 @@ public final class d
       }
       finally {}
       continue;
-      label295:
+      label296:
       boolean bool = false;
       continue;
-      label301:
+      label302:
       i += 1;
       continue;
-      label308:
+      label309:
       i -= 1;
     }
   }
   
-  public final e kr(int paramInt)
+  public final e nY(int paramInt)
   {
     AppMethodBeat.i(136714);
-    if ((this.fmD) && (this.fmE != null))
+    if ((this.hqO) && (this.hqP != null))
     {
-      locale = ks(paramInt);
+      locale = nZ(paramInt);
       AppMethodBeat.o(136714);
       return locale;
     }
-    if ((this.fmD) && (this.fmE == null))
+    if ((this.hqO) && (this.hqP == null))
     {
-      acZ();
-      locale = ks(paramInt);
+      aEZ();
+      locale = nZ(paramInt);
       AppMethodBeat.o(136714);
       return locale;
     }
-    if ((this.fmA == null) || (this.fmA.size() == 0))
+    if ((this.hqL == null) || (this.hqL.size() == 0))
     {
       AppMethodBeat.o(136714);
       return null;
     }
-    if (paramInt >= this.fmA.size())
+    if (paramInt >= this.hqL.size())
     {
       AppMethodBeat.o(136714);
       return null;
     }
-    e locale = (e)this.fmA.get(paramInt);
+    e locale = (e)this.hqL.get(paramInt);
     AppMethodBeat.o(136714);
     return locale;
-  }
-  
-  public final void ph()
-  {
-    AppMethodBeat.i(136717);
-    this.awf = true;
-    this.count = size();
-    b.i("MicroMsg.Mix.PcmBufferProvider", "src:%s is complete cache", new Object[] { this.fmB });
-    AppMethodBeat.o(136717);
   }
   
   public final void recycle()
@@ -350,18 +350,18 @@ public final class d
       try
       {
         AppMethodBeat.i(136711);
-        int j = this.fmA.size();
+        int j = this.hqL.size();
         i = j - 1;
         if (i >= 0)
         {
-          e locale = (e)this.fmA.remove(i);
+          e locale = (e)this.hqL.remove(i);
           if (locale != null) {
-            com.tencent.mm.audio.mix.b.e.adq().b(locale);
+            com.tencent.mm.audio.mix.b.e.aFp().b(locale);
           }
         }
         else
         {
-          kq(j);
+          nX(j);
           AppMethodBeat.o(136711);
           return;
         }
@@ -379,20 +379,20 @@ public final class d
       try
       {
         AppMethodBeat.i(136710);
-        int j = this.fmA.size();
+        int j = this.hqL.size();
         i = j - 1;
         if (i >= 0)
         {
-          e locale = (e)this.fmA.remove(i);
+          e locale = (e)this.hqL.remove(i);
           if (locale != null)
           {
-            locale.fmF = null;
-            locale.fmy = null;
+            locale.hqQ = null;
+            locale.hqJ = null;
           }
         }
         else
         {
-          kq(j);
+          nX(j);
           AppMethodBeat.o(136710);
           return;
         }
@@ -405,13 +405,13 @@ public final class d
   public final int size()
   {
     AppMethodBeat.i(136716);
-    if ((this.count > 0) && (this.awf))
+    if ((this.count > 0) && (this.ckB))
     {
       i = this.count;
       AppMethodBeat.o(136716);
       return i;
     }
-    int i = this.fmA.size();
+    int i = this.hqL.size();
     AppMethodBeat.o(136716);
     return i;
   }

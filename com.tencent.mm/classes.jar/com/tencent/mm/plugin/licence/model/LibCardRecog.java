@@ -4,10 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class LibCardRecog
 {
+  private byte _hellAccFlag_;
+  
   static
   {
     AppMethodBeat.i(40586);
-    System.loadLibrary("IDCardRecog");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("IDCardRecog");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/licence/model/LibCardRecog", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/licence/model/LibCardRecog", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(40586);
   }
   
@@ -29,7 +35,7 @@ public final class LibCardRecog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.licence.model.LibCardRecog
  * JD-Core Version:    0.7.0.1
  */

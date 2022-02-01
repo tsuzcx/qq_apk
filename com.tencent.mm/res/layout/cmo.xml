@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/h9a" android:background="@color/a3k" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/imb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <TextView android:textSize="@dimen/eo" android:textColor="@color/ag2" android:id="@id/kl9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bt" android:text="--:--" android:maxLines="1" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/bt" />
-    <View android:id="@id/kt_" android:background="@drawable/d13" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mm.ui.widget.FoursquareRelativeLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="64.0dip">
+        <ImageView android:layout_gravity="center" android:id="@id/m2o" android:layout_width="300.0dip" android:layout_height="200.0dip" android:src="@color/Orange_BG_100" />
+        <ImageView android:layout_gravity="center" android:id="@id/m2p" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@color/Orange_100_CARE" />
+    </FrameLayout>
+    <EditText android:id="@id/lyl" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    <EditText android:id="@id/lym" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/xd" android:id="@id/is_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_marginTop="@dimen/cp" android:text="开始" style="@style/oh" />
+</LinearLayout>

@@ -2,10 +2,9 @@ package kotlin.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Closeable;
-import kotlin.a;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"closeFinally", "", "Ljava/io/Closeable;", "cause", "", "use", "R", "T", "block", "Lkotlin/Function1;", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Closeable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"closeFinally", "", "Ljava/io/Closeable;", "cause", "", "use", "R", "T", "block", "Lkotlin/Function1;", "Requires newer compiler version to be inlined correctly.", "(Ljava/io/Closeable;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlin-stdlib"}, k=2, mv={1, 5, 1})
 public final class b
 {
   public static final void a(Closeable paramCloseable, Throwable paramThrowable)
@@ -25,9 +24,9 @@ public final class b
         AppMethodBeat.o(129275);
         return;
       }
-      catch (Throwable paramCloseable)
+      finally
       {
-        a.a(paramThrowable, paramCloseable);
+        kotlin.b.a(paramThrowable, paramCloseable);
       }
     }
     AppMethodBeat.o(129275);

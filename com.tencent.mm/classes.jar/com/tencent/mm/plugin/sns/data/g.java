@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public int JPY = -1;
-  public int JPZ = -1;
-  public boolean JQa = false;
-  public int JQb = -1;
-  public String JQc = "";
-  public String JQd = "";
-  public String JQe = "";
-  public int JQf = -1;
-  public int JQg = 0;
-  public boolean JQh = false;
-  public int JQi = -1;
-  public boolean JQj = false;
-  public int JQk = -1;
-  public int JQl = 0;
-  public int zKD = 0;
+  public int EVk = 0;
+  public int QmF = -1;
+  public int QmG = -1;
+  public boolean QmH = false;
+  public int QmI = -1;
+  public String QmJ = "";
+  public String QmK = "";
+  public String QmL = "";
+  public int QmM = -1;
+  public int QmN = 0;
+  public boolean QmO = false;
+  public int QmP = -1;
+  public boolean QmQ = false;
+  public int QmR = -1;
+  public int QmS = 0;
   
-  private static boolean afy(int paramInt)
+  private static boolean akm(int paramInt)
   {
     switch (paramInt)
     {
@@ -53,69 +53,69 @@ public final class g
     return true;
   }
   
-  public final void fNi()
+  public final void heJ()
   {
-    this.JPZ = -1;
-    this.JQi = -1;
-    this.JPY = -1;
-    this.JQc = "";
-    this.JQd = "";
-    this.JQe = "";
-    this.JQh = false;
-    this.JQa = false;
-    this.JQj = false;
-    this.JQk = -1;
-    this.JQb = -1;
-    this.JQf = -1;
-    this.JQg = 0;
-    this.zKD = 0;
-    this.JQl = 0;
+    this.QmG = -1;
+    this.QmP = -1;
+    this.QmF = -1;
+    this.QmJ = "";
+    this.QmK = "";
+    this.QmL = "";
+    this.QmO = false;
+    this.QmH = false;
+    this.QmQ = false;
+    this.QmR = -1;
+    this.QmI = -1;
+    this.QmM = -1;
+    this.QmN = 0;
+    this.EVk = 0;
+    this.QmS = 0;
   }
   
-  public final boolean fNj()
+  public final boolean heK()
   {
     AppMethodBeat.i(95065);
-    if (this.JQf == 2)
+    if (this.QmM == 2)
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if (this.JPZ == -1)
+    if (this.QmG == -1)
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if (this.JQf != this.JQb)
+    if (this.QmM != this.QmI)
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if (afy(this.JQf))
+    if (akm(this.QmM))
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if (afy(this.JQb))
+    if (akm(this.QmI))
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if ((this.JQg > 1) || (this.zKD > 1))
+    if ((this.QmN > 1) || (this.EVk > 1))
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if ((this.JQe != null) && (!this.JQe.equals("")))
+    if ((this.QmL != null) && (!this.QmL.equals("")))
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if ((this.JQc != null) && (!this.JQc.equals("")))
+    if ((this.QmJ != null) && (!this.QmJ.equals("")))
     {
       AppMethodBeat.o(95065);
       return true;
     }
-    if (this.JPY != this.JPZ)
+    if (this.QmF != this.QmG)
     {
       AppMethodBeat.o(95065);
       return true;
@@ -124,35 +124,35 @@ public final class g
     return false;
   }
   
-  public final boolean fNk()
+  public final boolean heL()
   {
     AppMethodBeat.i(95066);
-    if (this.JQi == -1)
+    if (this.QmP == -1)
     {
       AppMethodBeat.o(95066);
       return true;
     }
-    if (this.JQb != this.JQk)
+    if (this.QmI != this.QmR)
     {
       AppMethodBeat.o(95066);
       return true;
     }
-    if (afy(this.JQk))
+    if (akm(this.QmR))
     {
       AppMethodBeat.o(95066);
       return true;
     }
-    if (this.JQl > 1)
+    if (this.QmS > 1)
     {
       AppMethodBeat.o(95066);
       return true;
     }
-    if ((this.JQd != null) && (!this.JQd.equals("")))
+    if ((this.QmK != null) && (!this.QmK.equals("")))
     {
       AppMethodBeat.o(95066);
       return true;
     }
-    if (this.JPZ != this.JQi)
+    if (this.QmG != this.QmP)
     {
       AppMethodBeat.o(95066);
       return true;
@@ -163,7 +163,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.g
  * JD-Core Version:    0.7.0.1
  */

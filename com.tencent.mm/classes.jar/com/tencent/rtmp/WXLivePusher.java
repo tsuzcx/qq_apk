@@ -451,19 +451,19 @@ public class WXLivePusher
   
   private boolean isRtmpProxyUrl(String paramString)
   {
-    AppMethodBeat.i(216797);
+    AppMethodBeat.i(218471);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(216797);
+      AppMethodBeat.o(218471);
       return false;
     }
     if ((paramString.startsWith("room://cloud.tencent.com/rtc")) || (paramString.startsWith("room://rtc.tencent.com")))
     {
-      AppMethodBeat.o(216797);
+      AppMethodBeat.o(218471);
       return false;
     }
     boolean bool = paramString.startsWith("room://cloud.tencent.com");
-    AppMethodBeat.o(216797);
+    AppMethodBeat.o(218471);
     return bool;
   }
   
@@ -713,9 +713,9 @@ public class WXLivePusher
       AppMethodBeat.o(13984);
       return false;
     }
-    m = 0;
+    i1 = 0;
     i = 0;
-    n = 0;
+    i2 = 0;
     j = 0;
     localObject1 = "";
     localObject2 = "";
@@ -723,224 +723,261 @@ public class WXLivePusher
     localObject4 = "";
     localObject6 = "";
     localObject5 = "";
+    i3 = 0;
     k = 0;
+    i4 = 0;
+    m = 0;
+    n = 0;
     try
     {
       arrayOfString = paramString.split("[?&]");
-      i3 = arrayOfString.length;
-      m = 0;
-      k = 0;
+      i7 = arrayOfString.length;
+      i1 = 0;
+      n = 0;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
         String[] arrayOfString;
-        int i3;
+        int i7;
         Object localObject7;
         Object localObject8;
         Object localObject9;
         Object localObject10;
         Object localObject11;
         Object localObject12;
-        int i1;
-        int i2;
+        int i5;
+        int i6;
         CharSequence localCharSequence;
-        j = n;
-        i = m;
+        m = i4;
+        k = i3;
+        j = i2;
+        i = i1;
         continue;
-        m += 1;
-        k = n;
+        i1 += 1;
+        n = i2;
+        m = i3;
+        k = i4;
         localObject5 = localObject7;
         localObject6 = localObject8;
         localObject4 = localObject9;
         localObject3 = localObject10;
         localObject2 = localObject11;
         localObject1 = localObject12;
-        j = i1;
-        i = i2;
+        j = i5;
+        i = i6;
       }
     }
-    if (m < i3)
+    if (i1 < i7)
     {
-      paramString = arrayOfString[m];
-      n = k;
+      paramString = arrayOfString[i1];
+      i2 = n;
+      i3 = m;
+      i4 = k;
       localObject7 = localObject5;
       localObject8 = localObject6;
       localObject9 = localObject4;
       localObject10 = localObject3;
       localObject11 = localObject2;
       localObject12 = localObject1;
-      i1 = j;
-      i2 = i;
+      i5 = j;
+      i6 = i;
       try
       {
         if (paramString.indexOf("=") == -1) {
-          break label2149;
+          break label2523;
         }
         paramString = paramString.split("[=]");
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
+        i5 = j;
+        i6 = i;
         if (paramString.length != 2) {
-          break label2149;
+          break label2523;
         }
         localCharSequence = paramString[0];
         paramString = paramString[1];
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
+        i5 = j;
+        i6 = i;
         if (TextUtils.isEmpty(localCharSequence)) {
-          break label2149;
+          break label2523;
         }
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
+        i5 = j;
+        i6 = i;
         if (TextUtils.isEmpty(paramString)) {
-          break label2149;
+          break label2523;
         }
         if (localCharSequence.equalsIgnoreCase("sdkappid"))
         {
-          i2 = Integer.parseInt(paramString);
-          n = k;
+          i6 = Integer.parseInt(paramString);
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i1 = j;
+          i5 = j;
         }
         else if (localCharSequence.equalsIgnoreCase("roomid"))
         {
-          i1 = Long.valueOf(paramString).intValue();
-          n = k;
+          i5 = Long.valueOf(paramString).intValue();
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i2 = i;
+          i6 = i;
         }
         else if (localCharSequence.equalsIgnoreCase("userid"))
         {
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = paramString;
-          i1 = j;
-          i2 = i;
+          i5 = j;
+          i6 = i;
         }
         else if (localCharSequence.equalsIgnoreCase("usersig"))
         {
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = paramString;
           localObject12 = localObject1;
-          i1 = j;
-          i2 = i;
+          i5 = j;
+          i6 = i;
         }
         else if (localCharSequence.equalsIgnoreCase("cloudenv"))
         {
           if (paramString.equalsIgnoreCase("pro"))
           {
             WXTRTCCloud.setNetEnv(0);
-            n = k;
+            i2 = n;
+            i3 = m;
+            i4 = k;
             localObject7 = localObject5;
             localObject8 = localObject6;
             localObject9 = localObject4;
             localObject10 = localObject3;
             localObject11 = localObject2;
             localObject12 = localObject1;
-            i1 = j;
-            i2 = i;
+            i5 = j;
+            i6 = i;
           }
         }
       }
       catch (Exception paramString) {}
       TXCLog.e("WXLivePusher", "parse trtc params failed.", paramString);
-      paramString = (String)localObject6;
+      i1 = m;
+      m = k;
+      k = i1;
+      i1 = i;
     }
-    for (m = i; (m == 0) || ((j == 0) && (TextUtils.isEmpty(paramString))) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)); m = i)
+    while ((i1 == 0) || ((j == 0) && (TextUtils.isEmpty((CharSequence)localObject6))) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
     {
       AppMethodBeat.o(13984);
       return false;
       if (paramString.equalsIgnoreCase("dev"))
       {
         WXTRTCCloud.setNetEnv(1);
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (paramString.equalsIgnoreCase("uat"))
       {
         WXTRTCCloud.setNetEnv(2);
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
-      n = k;
+      i2 = n;
+      i3 = m;
+      i4 = k;
       localObject7 = localObject5;
       localObject8 = localObject6;
       localObject9 = localObject4;
       localObject10 = localObject3;
       localObject11 = localObject2;
       localObject12 = localObject1;
-      i1 = j;
-      i2 = i;
+      i5 = j;
+      i6 = i;
       if (!paramString.equalsIgnoreCase("ccc")) {
-        break label2149;
+        break label2523;
       }
       WXTRTCCloud.setNetEnv(3);
-      n = k;
+      i2 = n;
+      i3 = m;
+      i4 = k;
       localObject7 = localObject5;
       localObject8 = localObject6;
       localObject9 = localObject4;
       localObject10 = localObject3;
       localObject11 = localObject2;
       localObject12 = localObject1;
-      i1 = j;
-      i2 = i;
-      break label2149;
+      i5 = j;
+      i6 = i;
+      break label2523;
       if (localCharSequence.equalsIgnoreCase("encsmall"))
       {
         localObject7 = new TRTCCloudDef.TRTCVideoEncParam();
@@ -951,337 +988,396 @@ public class WXLivePusher
         if (Integer.parseInt(paramString) == 1)
         {
           this.mTRTCCloud.enableEncSmallVideoStream(true, (TRTCCloudDef.TRTCVideoEncParam)localObject7);
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i1 = j;
-          i2 = i;
-          break label2149;
+          i5 = j;
+          i6 = i;
+          break label2523;
         }
         this.mTRTCCloud.enableEncSmallVideoStream(false, (TRTCCloudDef.TRTCVideoEncParam)localObject7);
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("enableblackstream"))
       {
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
+        i5 = j;
+        i6 = i;
         if (Integer.parseInt(paramString) != 1) {
-          break label2149;
+          break label2523;
         }
         this.mTRTCCloud.enableBlackStream(true);
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("appscene"))
       {
         if (paramString.equalsIgnoreCase("live"))
         {
           this.mAppScene = 1;
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i1 = j;
-          i2 = i;
-          break label2149;
+          i5 = j;
+          i6 = i;
+          break label2523;
         }
         if (paramString.equalsIgnoreCase("videocall"))
         {
           this.mAppScene = 0;
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i1 = j;
-          i2 = i;
-          break label2149;
+          i5 = j;
+          i6 = i;
+          break label2523;
         }
         if (paramString.equalsIgnoreCase("audiocall"))
         {
           this.mAppScene = 2;
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i1 = j;
-          i2 = i;
-          break label2149;
+          i5 = j;
+          i6 = i;
+          break label2523;
         }
         if (paramString.equalsIgnoreCase("voicechatroom"))
         {
           this.mAppScene = 3;
-          n = k;
+          i2 = n;
+          i3 = m;
+          i4 = k;
           localObject7 = localObject5;
           localObject8 = localObject6;
           localObject9 = localObject4;
           localObject10 = localObject3;
           localObject11 = localObject2;
           localObject12 = localObject1;
-          i1 = j;
-          i2 = i;
-          break label2149;
+          i5 = j;
+          i6 = i;
+          break label2523;
         }
         this.mAppScene = 0;
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("recvmode"))
       {
-        n = Integer.parseInt(paramString);
-        if (n != 1)
+        i2 = Integer.parseInt(paramString);
+        if (i2 != 1)
         {
-          if (n == 2)
+          if (i2 == 2)
           {
             this.mAutoRecvAudio = true;
             this.mAutoRecvVideo = false;
-            n = k;
+            i2 = n;
+            i3 = m;
+            i4 = k;
             localObject7 = localObject5;
             localObject8 = localObject6;
             localObject9 = localObject4;
             localObject10 = localObject3;
             localObject11 = localObject2;
             localObject12 = localObject1;
-            i1 = j;
-            i2 = i;
-            break label2149;
+            i5 = j;
+            i6 = i;
+            break label2523;
           }
-          if (n == 3)
+          if (i2 == 3)
           {
             this.mAutoRecvAudio = false;
             this.mAutoRecvVideo = true;
-            n = k;
+            i2 = n;
+            i3 = m;
+            i4 = k;
             localObject7 = localObject5;
             localObject8 = localObject6;
             localObject9 = localObject4;
             localObject10 = localObject3;
             localObject11 = localObject2;
             localObject12 = localObject1;
-            i1 = j;
-            i2 = i;
-            break label2149;
+            i5 = j;
+            i6 = i;
+            break label2523;
           }
-          if (n == 4)
+          if (i2 == 4)
           {
             this.mAutoRecvAudio = false;
             this.mAutoRecvVideo = false;
-            n = k;
+            i2 = n;
+            i3 = m;
+            i4 = k;
             localObject7 = localObject5;
             localObject8 = localObject6;
             localObject9 = localObject4;
             localObject10 = localObject3;
             localObject11 = localObject2;
             localObject12 = localObject1;
-            i1 = j;
-            i2 = i;
-            break label2149;
+            i5 = j;
+            i6 = i;
+            break label2523;
           }
         }
         this.mAutoRecvAudio = true;
         this.mAutoRecvVideo = true;
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("streamid"))
       {
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = paramString;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("userdefinerecordid"))
       {
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = localObject6;
         localObject9 = paramString;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("strroomid"))
       {
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = localObject5;
         localObject8 = paramString;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
       if (localCharSequence.equalsIgnoreCase("privatemapkey"))
       {
-        n = k;
+        i2 = n;
+        i3 = m;
+        i4 = k;
         localObject7 = paramString;
         localObject8 = localObject6;
         localObject9 = localObject4;
         localObject10 = localObject3;
         localObject11 = localObject2;
         localObject12 = localObject1;
-        i1 = j;
-        i2 = i;
-        break label2149;
+        i5 = j;
+        i6 = i;
+        break label2523;
       }
-      n = k;
+      if (localCharSequence.equalsIgnoreCase("pureaudiomode"))
+      {
+        i4 = Integer.parseInt(paramString);
+        i2 = n;
+        i3 = m;
+        localObject7 = localObject5;
+        localObject8 = localObject6;
+        localObject9 = localObject4;
+        localObject10 = localObject3;
+        localObject11 = localObject2;
+        localObject12 = localObject1;
+        i5 = j;
+        i6 = i;
+        break label2523;
+      }
+      i2 = n;
+      i3 = m;
+      i4 = k;
       localObject7 = localObject5;
       localObject8 = localObject6;
       localObject9 = localObject4;
       localObject10 = localObject3;
       localObject11 = localObject2;
       localObject12 = localObject1;
-      i1 = j;
-      i2 = i;
-      if (!localCharSequence.equalsIgnoreCase("pureaudiomode")) {
-        break label2149;
+      i5 = j;
+      i6 = i;
+      if (!localCharSequence.equalsIgnoreCase("uc_biz_type")) {
+        break label2523;
       }
-      n = Integer.parseInt(paramString);
+      i3 = Integer.parseInt(paramString);
+      i2 = 1;
+      i4 = k;
       localObject7 = localObject5;
       localObject8 = localObject6;
       localObject9 = localObject4;
       localObject10 = localObject3;
       localObject11 = localObject2;
       localObject12 = localObject1;
-      i1 = j;
-      i2 = i;
-      break label2149;
-      paramString = (String)localObject6;
+      i5 = j;
+      i6 = i;
+      break label2523;
+      i2 = k;
+      i1 = i;
+      k = m;
+      m = i2;
     }
-    n = 0;
-    i = n;
-    if (!TextUtils.isEmpty(paramString))
+    i2 = 0;
+    i = i2;
+    if (!TextUtils.isEmpty((CharSequence)localObject6))
     {
-      i = n;
+      i = i2;
       if (j == 0) {
         i = 1;
       }
     }
-    this.mTRTCParams.sdkAppId = m;
-    localObject6 = this.mTRTCParams;
+    this.mTRTCParams.sdkAppId = i1;
+    paramString = this.mTRTCParams;
     if (i != 0)
     {
       j = -1;
-      ((TRTCCloudDef.TRTCParams)localObject6).roomId = j;
+      paramString.roomId = j;
       this.mTRTCParams.userId = ((String)localObject1);
       this.mTRTCParams.userSig = ((String)localObject2);
       this.mTRTCParams.privateMapKey = ((String)localObject5);
       if ((this.mAppScene != 1) && (this.mAppScene != 3)) {
-        break label2088;
+        break label2454;
       }
       this.mNeedCheckRole = true;
-      label1902:
+      label2245:
       if ((localObject3 == null) || (((String)localObject3).length() <= 0)) {
-        break label2096;
+        break label2462;
       }
       j = 1;
-      label1917:
+      label2260:
       if ((localObject4 == null) || (((String)localObject4).length() <= 0)) {
-        break label2101;
+        break label2467;
       }
-      m = 1;
-      label1933:
-      if ((k != 1) && (k != 2)) {
-        break label2107;
+      i1 = 1;
+      label2276:
+      if ((m != 1) && (m != 2)) {
+        break label2473;
       }
-      n = 1;
-      label1948:
-      if ((j == 0) && (m == 0) && (i == 0) && (n == 0)) {
-        break label2126;
+      i2 = 1;
+      label2291:
+      if ((j == 0) && (i1 == 0) && (i == 0) && (i2 == 0) && (n == 0)) {
+        break label2492;
       }
     }
     for (;;)
     {
       try
       {
-        localObject1 = new JSONObject();
-        if ((j != 0) || (m != 0))
+        paramString = new JSONObject();
+        if ((j != 0) || (i1 != 0) || (n != 0))
         {
-          localObject2 = new JSONObject();
+          localObject1 = new JSONObject();
           if (j != 0) {
-            ((JSONObject)localObject2).put("userdefine_streamid_main", localObject3);
+            ((JSONObject)localObject1).put("userdefine_streamid_main", localObject3);
           }
-          if (m != 0) {
-            ((JSONObject)localObject2).put("userdefine_record_id", localObject4);
+          if (i1 != 0) {
+            ((JSONObject)localObject1).put("userdefine_record_id", localObject4);
+          }
+          if (i2 != 0) {
+            ((JSONObject)localObject1).put("pure_audio_push_mod", m);
           }
           if (n != 0) {
-            ((JSONObject)localObject2).put("pure_audio_push_mod", k);
+            ((JSONObject)localObject1).put("uc_biz_type", k);
           }
-          ((JSONObject)localObject1).put("Str_uc_params", localObject2);
+          paramString.put("Str_uc_params", localObject1);
         }
         if (i != 0) {
-          ((JSONObject)localObject1).put("strGroupId", paramString);
+          paramString.put("strGroupId", localObject6);
         }
-        this.mTRTCParams.businessInfo = ((JSONObject)localObject1).toString();
+        this.mTRTCParams.businessInfo = paramString.toString();
       }
       catch (Exception paramString)
       {
-        label2088:
-        label2096:
-        label2101:
-        label2107:
+        label2454:
+        label2462:
+        label2467:
+        label2473:
         TXCLog.e("WXLivePusher", "build json object failed.", paramString);
         continue;
       }
@@ -1289,14 +1385,14 @@ public class WXLivePusher
       return true;
       break;
       this.mNeedCheckRole = false;
-      break label1902;
+      break label2245;
       j = 0;
-      break label1917;
-      m = 0;
-      break label1933;
-      n = 0;
-      break label1948;
-      label2126:
+      break label2260;
+      i1 = 0;
+      break label2276;
+      i2 = 0;
+      break label2291;
+      label2492:
       this.mTRTCParams.businessInfo = "";
     }
   }
@@ -1449,7 +1545,7 @@ public class WXLivePusher
   
   public void apiOnlineLog(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(216803);
+    AppMethodBeat.i(218522);
     String str = paramString;
     if (paramString == null) {
       str = "";
@@ -1458,11 +1554,11 @@ public class WXLivePusher
     if (paramBoolean)
     {
       Monitor.a(1, paramString + " " + str, "", 0, "");
-      AppMethodBeat.o(216803);
+      AppMethodBeat.o(218522);
       return;
     }
     TXCLog.i("WXLivePusher", paramString + " " + str);
-    AppMethodBeat.o(216803);
+    AppMethodBeat.o(218522);
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -2082,7 +2178,7 @@ public class WXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePusher
  * JD-Core Version:    0.7.0.1
  */

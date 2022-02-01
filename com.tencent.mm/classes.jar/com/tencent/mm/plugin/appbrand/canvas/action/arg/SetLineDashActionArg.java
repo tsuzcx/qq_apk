@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -14,8 +14,8 @@ public class SetLineDashActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineDashActionArg> CREATOR;
-  public float[] nTW = null;
-  public float nTX = 1.4E-45F;
+  public float[] qTH = null;
+  public float qTI = 1.4E-45F;
   
   static
   {
@@ -55,7 +55,7 @@ public class SetLineDashActionArg
       return false;
     }
     paramObject = (SetLineDashActionArg)paramObject;
-    if ((Float.compare(paramObject.nTX, this.nTX) == 0) && (Arrays.equals(this.nTW, paramObject.nTW)))
+    if ((Float.compare(paramObject.qTI, this.qTI) == 0) && (Arrays.equals(this.qTH, paramObject.qTH)))
     {
       AppMethodBeat.o(145200);
       return true;
@@ -67,23 +67,23 @@ public class SetLineDashActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145201);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.nTX) });
-    int j = Arrays.hashCode(this.nTW);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.qTI) });
+    int j = Arrays.hashCode(this.qTH);
     AppMethodBeat.o(145201);
     return i * 31 + j;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145197);
-    super.i(paramParcel);
+    super.k(paramParcel);
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.nTW = new float[i];
-      paramParcel.readFloatArray(this.nTW);
+      this.qTH = new float[i];
+      paramParcel.readFloatArray(this.qTH);
     }
-    this.nTX = paramParcel.readFloat();
+    this.qTI = paramParcel.readFloat();
     AppMethodBeat.o(145197);
   }
   
@@ -106,13 +106,13 @@ public class SetLineDashActionArg
         AppMethodBeat.o(145198);
         return;
       }
-      this.nTW = new float[localJSONArray.length()];
-      while (i < this.nTW.length)
+      this.qTH = new float[localJSONArray.length()];
+      while (i < this.qTH.length)
       {
-        this.nTW[i] = g.f(localJSONArray, i);
+        this.qTH[i] = i.f(localJSONArray, i);
         i += 1;
       }
-      this.nTX = g.f(paramJSONObject, 1);
+      this.qTI = i.f(paramJSONObject, 1);
       AppMethodBeat.o(145198);
       return;
     }
@@ -126,18 +126,18 @@ public class SetLineDashActionArg
   {
     AppMethodBeat.i(145199);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.nTW != null)
+    if (this.qTH != null)
     {
-      paramParcel.writeInt(this.nTW.length);
-      paramParcel.writeFloatArray(this.nTW);
+      paramParcel.writeInt(this.qTH.length);
+      paramParcel.writeFloatArray(this.qTH);
     }
-    paramParcel.writeFloat(this.nTX);
+    paramParcel.writeFloat(this.qTI);
     AppMethodBeat.o(145199);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineDashActionArg
  * JD-Core Version:    0.7.0.1
  */

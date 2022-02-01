@@ -9,10 +9,10 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aq;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.as;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.q;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,16 +20,16 @@ import java.util.List;
 public final class f
   extends a
 {
-  private l JAh;
-  private z KpV;
-  private List<m> ayS;
+  private q PPI;
+  private z QOc;
+  private List<n> aAO;
   
   public f(Context paramContext, z paramz, ViewGroup paramViewGroup)
   {
     super(paramContext, paramz, paramViewGroup);
     AppMethodBeat.i(96438);
-    this.KpV = paramz;
-    this.ayS = new ArrayList();
+    this.QOc = paramz;
+    this.aAO = new ArrayList();
     AppMethodBeat.o(96438);
   }
   
@@ -37,59 +37,59 @@ public final class f
   {
     AppMethodBeat.i(96448);
     if ((paramaa instanceof z)) {
-      this.KpV = ((z)paramaa);
+      this.QOc = ((z)paramaa);
     }
     super.c(paramaa);
     AppMethodBeat.o(96448);
   }
   
-  protected final void fKe()
+  protected final void had()
   {
     AppMethodBeat.i(96439);
-    if (this.JAh == null)
+    if (this.PPI == null)
     {
-      this.JAh = new l(this.KpV.ayS, this.context, (FrameLayout)this.contentView);
-      this.JAh.fP();
-      this.ayS = fKf();
+      this.PPI = new q(this.QOc.aAO, this.context, (FrameLayout)this.contentView);
+      this.PPI.CY();
+      this.aAO = hai();
     }
     for (;;)
     {
-      aq.a(this.contentView, this.KpV.KmA);
+      as.a(this.contentView, this.QOc.QKF);
       AppMethodBeat.o(96439);
       return;
-      this.JAh.notify(this.KpV.ayS);
+      this.PPI.notify(this.QOc.aAO);
     }
   }
   
-  public final List<m> fKf()
+  public final List<n> hai()
   {
     AppMethodBeat.i(96447);
-    ArrayList localArrayList = new ArrayList(this.JAh.fRQ());
+    ArrayList localArrayList = new ArrayList(this.PPI.hjV());
     AppMethodBeat.o(96447);
     return localArrayList;
   }
   
-  protected final void fKi()
+  protected final void hal()
   {
     AppMethodBeat.i(96440);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.QOV.paddingLeft, (int)this.QOV.paddingTop, (int)this.QOV.paddingRight, (int)this.QOV.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96440);
   }
   
-  protected final View fKj()
+  protected final View ham()
   {
     AppMethodBeat.i(96441);
     FrameLayout localFrameLayout = new FrameLayout(this.context);
-    if (this.KpV.cornerRadius > 0)
+    if (this.QOc.cornerRadius > 0)
     {
       GradientDrawable localGradientDrawable = new GradientDrawable();
       localGradientDrawable.setShape(0);
       localGradientDrawable.setColor(this.backgroundColor);
-      localGradientDrawable.setCornerRadius(this.KpV.cornerRadius);
+      localGradientDrawable.setCornerRadius(this.QOc.cornerRadius);
       localFrameLayout.setBackground(localGradientDrawable);
       localFrameLayout.setClipToOutline(true);
     }
@@ -97,81 +97,81 @@ public final class f
     return localFrameLayout;
   }
   
-  public final void fKk()
+  public final void hao()
   {
     AppMethodBeat.i(96442);
-    Iterator localIterator = this.ayS.iterator();
+    Iterator localIterator = this.aAO.iterator();
     while (localIterator.hasNext())
     {
-      m localm = (m)localIterator.next();
-      if (localm.fRj()) {
-        localm.fKk();
+      n localn = (n)localIterator.next();
+      if (localn.hji()) {
+        localn.hao();
       }
     }
-    super.fKk();
+    super.hao();
     AppMethodBeat.o(96442);
   }
   
-  public final void fKl()
+  public final void hap()
   {
     AppMethodBeat.i(96443);
-    Iterator localIterator = this.ayS.iterator();
+    Iterator localIterator = this.aAO.iterator();
     while (localIterator.hasNext()) {
-      ((m)localIterator.next()).fKl();
+      ((n)localIterator.next()).hap();
     }
-    super.fKl();
+    super.hap();
     AppMethodBeat.o(96443);
   }
   
-  public final void fKm()
+  public final void haq()
   {
     AppMethodBeat.i(96444);
-    Iterator localIterator = this.ayS.iterator();
+    Iterator localIterator = this.aAO.iterator();
     while (localIterator.hasNext())
     {
-      m localm = (m)localIterator.next();
-      if (localm.fRj()) {
-        localm.fKm();
+      n localn = (n)localIterator.next();
+      if (localn.hji()) {
+        localn.haq();
       }
     }
-    super.fKm();
+    super.haq();
     AppMethodBeat.o(96444);
   }
   
-  public final void fKn()
+  public final void har()
   {
     AppMethodBeat.i(96445);
-    Iterator localIterator = this.ayS.iterator();
+    Iterator localIterator = this.aAO.iterator();
     while (localIterator.hasNext())
     {
-      m localm = (m)localIterator.next();
-      if (localm.fRj())
+      n localn = (n)localIterator.next();
+      if (localn.hji())
       {
-        localm.fKk();
-        localm.fKm();
+        localn.hao();
+        localn.haq();
       }
       else
       {
-        localm.fKl();
+        localn.hap();
       }
     }
     AppMethodBeat.o(96445);
   }
   
-  public final void fKo()
+  public final void has()
   {
     AppMethodBeat.i(96446);
-    super.fKo();
-    Iterator localIterator = this.ayS.iterator();
+    super.has();
+    Iterator localIterator = this.aAO.iterator();
     while (localIterator.hasNext()) {
-      ((m)localIterator.next()).fKo();
+      ((n)localIterator.next()).has();
     }
     AppMethodBeat.o(96446);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.f
  * JD-Core Version:    0.7.0.1
  */

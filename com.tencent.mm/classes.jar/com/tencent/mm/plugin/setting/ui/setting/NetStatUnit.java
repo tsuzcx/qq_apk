@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -13,7 +12,7 @@ class NetStatUnit
   extends View
 {
   protected static long max;
-  private long JeN;
+  private long Ppj;
   private long total;
   
   public NetStatUnit(Context paramContext)
@@ -31,7 +30,7 @@ class NetStatUnit
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static void Qd(long paramLong)
+  private static void uj(long paramLong)
   {
     paramLong = (paramLong / 1572864L + 1L) * 1572864L;
     if (94371840L > paramLong) {
@@ -52,13 +51,13 @@ class NetStatUnit
     }
   }
   
-  public final void au(long paramLong1, long paramLong2)
+  public final void be(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(173792);
-    this.JeN = paramLong1;
+    this.Ppj = paramLong1;
     this.total = paramLong2;
     if (paramLong1 > 94371840L) {
-      this.JeN = 94371840L;
+      this.Ppj = 94371840L;
     }
     if (paramLong2 > 94371840L) {
       this.total = 94371840L;
@@ -66,14 +65,13 @@ class NetStatUnit
     if (paramLong1 > paramLong2) {}
     for (;;)
     {
-      Qd(paramLong1);
+      uj(paramLong1);
       AppMethodBeat.o(173792);
       return;
       paramLong1 = paramLong2;
     }
   }
   
-  @SuppressLint({"DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(73901);
@@ -86,7 +84,7 @@ class NetStatUnit
     Rect localRect2 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-7829368);
     paramCanvas.drawRect(localRect2, localPaint);
-    f1 = localRect1.height() * (float)this.JeN / (float)max;
+    f1 = localRect1.height() * (float)this.Ppj / (float)max;
     f2 = localRect1.width();
     localRect1 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-16711936);

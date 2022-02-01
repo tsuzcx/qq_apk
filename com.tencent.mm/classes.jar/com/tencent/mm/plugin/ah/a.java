@@ -10,32 +10,32 @@ import java.util.List;
 public final class a
   implements b, c
 {
-  private static a Ifr;
+  private static a ObL;
   
-  public static a fzH()
+  public static a gLt()
   {
     try
     {
       AppMethodBeat.i(90773);
-      if (Ifr == null) {
-        Ifr = new a();
+      if (ObL == null) {
+        ObL = new a();
       }
-      a locala = Ifr;
+      a locala = ObL;
       AppMethodBeat.o(90773);
       return locala;
     }
     finally {}
   }
   
-  public static String fzI()
+  public static String gLu()
   {
     AppMethodBeat.i(90774);
-    String str = h.aHG().kcB + "remark/";
+    String str = h.baE().mCJ + "remark/";
     AppMethodBeat.o(90774);
     return str;
   }
   
-  public final List<String> aHP()
+  public final List<String> baM()
   {
     return null;
   }

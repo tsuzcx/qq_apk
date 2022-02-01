@@ -23,14 +23,13 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import androidx.appcompat.a.i;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.g.ae;
-import androidx.core.g.ae.e;
+import androidx.core.g.ah;
 import androidx.core.g.s;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.google.android.material.a.f;
 import com.google.android.material.a.j;
 import com.google.android.material.a.k;
-import com.google.android.material.internal.c;
+import com.google.android.material.internal.d;
 import com.google.android.material.internal.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
@@ -38,28 +37,28 @@ import java.util.List;
 public class CollapsingToolbarLayout
   extends FrameLayout
 {
-  ae buI;
-  private boolean bvf;
-  private Toolbar bvg;
-  private View bvh;
-  private View bvi;
-  private int bvj;
-  private int bvk;
-  private int bvl;
-  private int bvm;
-  private final Rect bvn;
-  final c bvo;
-  private boolean bvp;
-  private boolean bvq;
-  private Drawable bvr;
-  Drawable bvs;
-  private int bvt;
-  private boolean bvu;
-  private ValueAnimator bvv;
-  private long bvw;
-  private AppBarLayout.b bvx;
-  int bvy;
+  ah dnL;
+  private AppBarLayout.b doA;
+  int doB;
+  private boolean doi;
+  private Toolbar doj;
+  private View dok;
+  private View dol;
+  private int dom;
+  private int don;
+  private int doo;
+  private int dop;
+  final com.google.android.material.internal.c doq;
+  private boolean dor;
+  private boolean dos;
+  private Drawable dou;
+  Drawable dov;
+  private int dow;
+  private boolean dox;
+  private ValueAnimator doy;
+  private long doz;
   private int scrimVisibleHeightTrigger;
+  private final Rect tmpRect;
   private int toolbarId;
   
   public CollapsingToolbarLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -70,137 +69,98 @@ public class CollapsingToolbarLayout
   public CollapsingToolbarLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(234619);
-    this.bvf = true;
-    this.bvn = new Rect();
+    AppMethodBeat.i(210063);
+    this.doi = true;
+    this.tmpRect = new Rect();
     this.scrimVisibleHeightTrigger = -1;
-    this.bvo = new c(this);
-    this.bvo.c(com.google.android.material.a.a.buq);
+    this.doq = new com.google.android.material.internal.c(this);
+    this.doq.c(com.google.android.material.a.a.dnu);
     paramContext = k.a(paramContext, paramAttributeSet, a.k.CollapsingToolbarLayout, paramInt, a.j.Widget_Design_CollapsingToolbar, new int[0]);
-    this.bvo.fV(paramContext.getInt(a.k.CollapsingToolbarLayout_expandedTitleGravity, 8388691));
-    this.bvo.fW(paramContext.getInt(a.k.CollapsingToolbarLayout_collapsedTitleGravity, 8388627));
+    this.doq.jk(paramContext.getInt(a.k.CollapsingToolbarLayout_expandedTitleGravity, 8388691));
+    this.doq.jl(paramContext.getInt(a.k.CollapsingToolbarLayout_collapsedTitleGravity, 8388627));
     paramInt = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMargin, 0);
-    this.bvm = paramInt;
-    this.bvl = paramInt;
-    this.bvk = paramInt;
-    this.bvj = paramInt;
+    this.dop = paramInt;
+    this.doo = paramInt;
+    this.don = paramInt;
+    this.dom = paramInt;
     if (paramContext.hasValue(a.k.CollapsingToolbarLayout_expandedTitleMarginStart)) {
-      this.bvj = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginStart, 0);
+      this.dom = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginStart, 0);
     }
     if (paramContext.hasValue(a.k.CollapsingToolbarLayout_expandedTitleMarginEnd)) {
-      this.bvl = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginEnd, 0);
+      this.doo = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginEnd, 0);
     }
     if (paramContext.hasValue(a.k.CollapsingToolbarLayout_expandedTitleMarginTop)) {
-      this.bvk = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginTop, 0);
+      this.don = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginTop, 0);
     }
     if (paramContext.hasValue(a.k.CollapsingToolbarLayout_expandedTitleMarginBottom)) {
-      this.bvm = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginBottom, 0);
+      this.dop = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_expandedTitleMarginBottom, 0);
     }
-    this.bvp = paramContext.getBoolean(a.k.CollapsingToolbarLayout_titleEnabled, true);
+    this.dor = paramContext.getBoolean(a.k.CollapsingToolbarLayout_titleEnabled, true);
     setTitle(paramContext.getText(a.k.CollapsingToolbarLayout_title));
-    this.bvo.fY(a.j.TextAppearance_Design_CollapsingToolbar_Expanded);
-    this.bvo.fX(a.i.TextAppearance_AppCompat_Widget_ActionBar_Title);
+    this.doq.jn(a.j.TextAppearance_Design_CollapsingToolbar_Expanded);
+    this.doq.jm(a.i.TextAppearance_AppCompat_Widget_ActionBar_Title);
     if (paramContext.hasValue(a.k.CollapsingToolbarLayout_expandedTitleTextAppearance)) {
-      this.bvo.fY(paramContext.getResourceId(a.k.CollapsingToolbarLayout_expandedTitleTextAppearance, 0));
+      this.doq.jn(paramContext.getResourceId(a.k.CollapsingToolbarLayout_expandedTitleTextAppearance, 0));
     }
     if (paramContext.hasValue(a.k.CollapsingToolbarLayout_collapsedTitleTextAppearance)) {
-      this.bvo.fX(paramContext.getResourceId(a.k.CollapsingToolbarLayout_collapsedTitleTextAppearance, 0));
+      this.doq.jm(paramContext.getResourceId(a.k.CollapsingToolbarLayout_collapsedTitleTextAppearance, 0));
     }
     this.scrimVisibleHeightTrigger = paramContext.getDimensionPixelSize(a.k.CollapsingToolbarLayout_scrimVisibleHeightTrigger, -1);
-    this.bvw = paramContext.getInt(a.k.CollapsingToolbarLayout_scrimAnimationDuration, 600);
+    this.doz = paramContext.getInt(a.k.CollapsingToolbarLayout_scrimAnimationDuration, 600);
     setContentScrim(paramContext.getDrawable(a.k.CollapsingToolbarLayout_contentScrim));
     setStatusBarScrim(paramContext.getDrawable(a.k.CollapsingToolbarLayout_statusBarScrim));
     this.toolbarId = paramContext.getResourceId(a.k.CollapsingToolbarLayout_toolbarId, -1);
     paramContext.recycle();
     setWillNotDraw(false);
-    w.a(this, new s()
+    z.a(this, new s()
     {
-      public final ae a(View paramAnonymousView, ae paramAnonymousae)
+      public final ah a(View paramAnonymousView, ah paramAnonymousah)
       {
-        AppMethodBeat.i(234520);
+        AppMethodBeat.i(210041);
         CollapsingToolbarLayout localCollapsingToolbarLayout = CollapsingToolbarLayout.this;
         paramAnonymousView = null;
-        if (w.Z(localCollapsingToolbarLayout)) {
-          paramAnonymousView = paramAnonymousae;
+        if (z.al(localCollapsingToolbarLayout)) {
+          paramAnonymousView = paramAnonymousah;
         }
-        if (!androidx.core.f.d.equals(localCollapsingToolbarLayout.buI, paramAnonymousView))
+        if (!androidx.core.f.c.equals(localCollapsingToolbarLayout.dnL, paramAnonymousView))
         {
-          localCollapsingToolbarLayout.buI = paramAnonymousView;
+          localCollapsingToolbarLayout.dnL = paramAnonymousView;
           localCollapsingToolbarLayout.requestLayout();
         }
-        paramAnonymousView = paramAnonymousae.Oa.hl();
-        AppMethodBeat.o(234520);
+        paramAnonymousView = paramAnonymousah.Es();
+        AppMethodBeat.o(210041);
         return paramAnonymousView;
       }
     });
-    AppMethodBeat.o(234619);
+    AppMethodBeat.o(210063);
   }
   
-  private View bX(View paramView)
+  private void VB()
   {
-    AppMethodBeat.i(234628);
-    ViewParent localViewParent = paramView.getParent();
-    View localView = paramView;
-    for (paramView = localViewParent; (paramView != this) && (paramView != null); paramView = paramView.getParent()) {
-      if ((paramView instanceof View)) {
-        localView = (View)paramView;
-      }
-    }
-    AppMethodBeat.o(234628);
-    return localView;
+    AppMethodBeat.i(210098);
+    setContentDescription(getTitle());
+    AppMethodBeat.o(210098);
   }
   
-  private static int bY(View paramView)
+  private void Vy()
   {
-    AppMethodBeat.i(234638);
-    Object localObject = paramView.getLayoutParams();
-    if ((localObject instanceof ViewGroup.MarginLayoutParams))
+    AppMethodBeat.i(210069);
+    if (!this.doi)
     {
-      localObject = (ViewGroup.MarginLayoutParams)localObject;
-      i = paramView.getHeight();
-      int j = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
-      int k = ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
-      AppMethodBeat.o(234638);
-      return k + (i + j);
-    }
-    int i = paramView.getHeight();
-    AppMethodBeat.o(234638);
-    return i;
-  }
-  
-  static a bZ(View paramView)
-  {
-    AppMethodBeat.i(234639);
-    a locala2 = (a)paramView.getTag(a.f.view_offset_helper);
-    a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala1 = new a(paramView);
-      paramView.setTag(a.f.view_offset_helper, locala1);
-    }
-    AppMethodBeat.o(234639);
-    return locala1;
-  }
-  
-  private void vZ()
-  {
-    AppMethodBeat.i(234627);
-    if (!this.bvf)
-    {
-      AppMethodBeat.o(234627);
+      AppMethodBeat.o(210069);
       return;
     }
-    this.bvg = null;
-    this.bvh = null;
+    this.doj = null;
+    this.dok = null;
     if (this.toolbarId != -1)
     {
-      this.bvg = ((Toolbar)findViewById(this.toolbarId));
-      if (this.bvg != null) {
-        this.bvh = bX(this.bvg);
+      this.doj = ((Toolbar)findViewById(this.toolbarId));
+      if (this.doj != null) {
+        this.dok = ct(this.doj);
       }
     }
     int i;
-    if (this.bvg == null)
+    if (this.doj == null)
     {
       int j = getChildCount();
       i = 0;
@@ -216,56 +176,99 @@ public class CollapsingToolbarLayout
     label137:
     for (Object localObject = (Toolbar)localObject;; localObject = null)
     {
-      this.bvg = ((Toolbar)localObject);
-      wa();
-      this.bvf = false;
-      AppMethodBeat.o(234627);
+      this.doj = ((Toolbar)localObject);
+      Vz();
+      this.doi = false;
+      AppMethodBeat.o(210069);
       return;
       i += 1;
       break;
     }
   }
   
-  private void wa()
+  private void Vz()
   {
-    AppMethodBeat.i(234630);
-    if ((!this.bvp) && (this.bvi != null))
+    AppMethodBeat.i(210082);
+    if ((!this.dor) && (this.dol != null))
     {
-      ViewParent localViewParent = this.bvi.getParent();
+      ViewParent localViewParent = this.dol.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.bvi);
+        ((ViewGroup)localViewParent).removeView(this.dol);
       }
     }
-    if ((this.bvp) && (this.bvg != null))
+    if ((this.dor) && (this.doj != null))
     {
-      if (this.bvi == null) {
-        this.bvi = new View(getContext());
+      if (this.dol == null) {
+        this.dol = new View(getContext());
       }
-      if (this.bvi.getParent() == null) {
-        this.bvg.addView(this.bvi, -1, -1);
+      if (this.dol.getParent() == null) {
+        this.doj.addView(this.dol, -1, -1);
       }
     }
-    AppMethodBeat.o(234630);
+    AppMethodBeat.o(210082);
   }
   
-  private void wc()
+  private View ct(View paramView)
   {
-    AppMethodBeat.i(234696);
-    setContentDescription(getTitle());
-    AppMethodBeat.o(234696);
+    AppMethodBeat.i(210075);
+    ViewParent localViewParent = paramView.getParent();
+    View localView = paramView;
+    for (paramView = localViewParent; (paramView != this) && (paramView != null); paramView = paramView.getParent()) {
+      if ((paramView instanceof View)) {
+        localView = (View)paramView;
+      }
+    }
+    AppMethodBeat.o(210075);
+    return localView;
   }
   
-  final int ca(View paramView)
+  private static int cu(View paramView)
   {
-    AppMethodBeat.i(234693);
-    a locala = bZ(paramView);
-    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
-    int i = getHeight();
-    int j = locala.bvT;
-    int k = paramView.getHeight();
-    int m = localLayoutParams.bottomMargin;
-    AppMethodBeat.o(234693);
-    return i - j - k - m;
+    AppMethodBeat.i(210086);
+    Object localObject = paramView.getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams))
+    {
+      localObject = (ViewGroup.MarginLayoutParams)localObject;
+      i = paramView.getHeight();
+      int j = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
+      int k = ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
+      AppMethodBeat.o(210086);
+      return k + (i + j);
+    }
+    int i = paramView.getHeight();
+    AppMethodBeat.o(210086);
+    return i;
+  }
+  
+  static a cv(View paramView)
+  {
+    AppMethodBeat.i(210092);
+    a locala2 = (a)paramView.getTag(a.f.view_offset_helper);
+    a locala1 = locala2;
+    if (locala2 == null)
+    {
+      locala1 = new a(paramView);
+      paramView.setTag(a.f.view_offset_helper, locala1);
+    }
+    AppMethodBeat.o(210092);
+    return locala1;
+  }
+  
+  final void VA()
+  {
+    AppMethodBeat.i(210283);
+    if ((this.dou != null) || (this.dov != null)) {
+      if (getHeight() + this.doB >= getScrimVisibleHeightTrigger()) {
+        break label50;
+      }
+    }
+    label50:
+    for (boolean bool = true;; bool = false)
+    {
+      setScrimsShown(bool);
+      AppMethodBeat.o(210283);
+      return;
+    }
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -273,51 +276,64 @@ public class CollapsingToolbarLayout
     return paramLayoutParams instanceof LayoutParams;
   }
   
+  final int cw(View paramView)
+  {
+    AppMethodBeat.i(210284);
+    a locala = cv(paramView);
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
+    int i = getHeight();
+    int j = locala.doW;
+    int k = paramView.getHeight();
+    int m = localLayoutParams.bottomMargin;
+    AppMethodBeat.o(210284);
+    return i - j - k - m;
+  }
+  
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(234624);
+    AppMethodBeat.i(210121);
     super.draw(paramCanvas);
-    vZ();
-    if ((this.bvg == null) && (this.bvr != null) && (this.bvt > 0))
+    Vy();
+    if ((this.doj == null) && (this.dou != null) && (this.dow > 0))
     {
-      this.bvr.mutate().setAlpha(this.bvt);
-      this.bvr.draw(paramCanvas);
+      this.dou.mutate().setAlpha(this.dow);
+      this.dou.draw(paramCanvas);
     }
-    if ((this.bvp) && (this.bvq)) {
-      this.bvo.draw(paramCanvas);
+    if ((this.dor) && (this.dos)) {
+      this.doq.draw(paramCanvas);
     }
-    if ((this.bvs != null) && (this.bvt > 0)) {
-      if (this.buI == null) {
+    if ((this.dov != null) && (this.dow > 0)) {
+      if (this.dnL == null) {
         break label165;
       }
     }
     label165:
-    for (int i = this.buI.hd();; i = 0)
+    for (int i = this.dnL.En();; i = 0)
     {
       if (i > 0)
       {
-        this.bvs.setBounds(0, -this.bvy, getWidth(), i - this.bvy);
-        this.bvs.mutate().setAlpha(this.bvt);
-        this.bvs.draw(paramCanvas);
+        this.dov.setBounds(0, -this.doB, getWidth(), i - this.doB);
+        this.dov.mutate().setAlpha(this.dow);
+        this.dov.draw(paramCanvas);
       }
-      AppMethodBeat.o(234624);
+      AppMethodBeat.o(210121);
       return;
     }
   }
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    AppMethodBeat.i(234625);
-    if ((this.bvr != null) && (this.bvt > 0)) {
-      if ((this.bvh == null) || (this.bvh == this)) {
-        if (paramView == this.bvg)
+    AppMethodBeat.i(210125);
+    if ((this.dou != null) && (this.dow > 0)) {
+      if ((this.dok == null) || (this.dok == this)) {
+        if (paramView == this.doj)
         {
           i = 1;
           if (i == 0) {
             break label133;
           }
-          this.bvr.mutate().setAlpha(this.bvt);
-          this.bvr.draw(paramCanvas);
+          this.dou.mutate().setAlpha(this.dow);
+          this.dou.draw(paramCanvas);
         }
       }
     }
@@ -326,11 +342,11 @@ public class CollapsingToolbarLayout
     {
       if ((super.drawChild(paramCanvas, paramView, paramLong)) || (i != 0))
       {
-        AppMethodBeat.o(234625);
+        AppMethodBeat.o(210125);
         return true;
         i = 0;
         break;
-        if (paramView == this.bvh)
+        if (paramView == this.dok)
         {
           i = 1;
           break;
@@ -338,18 +354,18 @@ public class CollapsingToolbarLayout
         i = 0;
         break;
       }
-      AppMethodBeat.o(234625);
+      AppMethodBeat.o(210125);
       return false;
     }
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(234657);
+    AppMethodBeat.i(210202);
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
     boolean bool2 = false;
-    Drawable localDrawable = this.bvs;
+    Drawable localDrawable = this.dov;
     boolean bool1 = bool2;
     if (localDrawable != null)
     {
@@ -358,7 +374,7 @@ public class CollapsingToolbarLayout
         bool1 = localDrawable.setState(arrayOfInt) | false;
       }
     }
-    localDrawable = this.bvr;
+    localDrawable = this.dou;
     bool2 = bool1;
     if (localDrawable != null)
     {
@@ -368,225 +384,225 @@ public class CollapsingToolbarLayout
       }
     }
     bool1 = bool2;
-    if (this.bvo != null) {
-      bool1 = bool2 | this.bvo.setState(arrayOfInt);
+    if (this.doq != null) {
+      bool1 = bool2 | this.doq.setState(arrayOfInt);
     }
     if (bool1) {
       invalidate();
     }
-    AppMethodBeat.o(234657);
+    AppMethodBeat.o(210202);
   }
   
   public FrameLayout.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(234690);
+    AppMethodBeat.i(210281);
     paramAttributeSet = new LayoutParams(getContext(), paramAttributeSet);
-    AppMethodBeat.o(234690);
+    AppMethodBeat.o(210281);
     return paramAttributeSet;
   }
   
   public int getCollapsedTitleGravity()
   {
-    return this.bvo.bBA;
+    return this.doq.duC;
   }
   
   public Typeface getCollapsedTitleTypeface()
   {
-    c localc = this.bvo;
-    if (localc.bBL != null) {
-      return localc.bBL;
+    com.google.android.material.internal.c localc = this.doq;
+    if (localc.duN != null) {
+      return localc.duN;
     }
     return Typeface.DEFAULT;
   }
   
   public Drawable getContentScrim()
   {
-    return this.bvr;
+    return this.dou;
   }
   
   public int getExpandedTitleGravity()
   {
-    return this.bvo.bBz;
+    return this.doq.duB;
   }
   
   public int getExpandedTitleMarginBottom()
   {
-    return this.bvm;
+    return this.dop;
   }
   
   public int getExpandedTitleMarginEnd()
   {
-    return this.bvl;
+    return this.doo;
   }
   
   public int getExpandedTitleMarginStart()
   {
-    return this.bvj;
+    return this.dom;
   }
   
   public int getExpandedTitleMarginTop()
   {
-    return this.bvk;
+    return this.don;
   }
   
   public Typeface getExpandedTitleTypeface()
   {
-    c localc = this.bvo;
-    if (localc.bBM != null) {
-      return localc.bBM;
+    com.google.android.material.internal.c localc = this.doq;
+    if (localc.duO != null) {
+      return localc.duO;
     }
     return Typeface.DEFAULT;
   }
   
   int getScrimAlpha()
   {
-    return this.bvt;
+    return this.dow;
   }
   
   public long getScrimAnimationDuration()
   {
-    return this.bvw;
+    return this.doz;
   }
   
   public int getScrimVisibleHeightTrigger()
   {
-    AppMethodBeat.i(234689);
+    AppMethodBeat.i(210278);
     if (this.scrimVisibleHeightTrigger >= 0)
     {
       i = this.scrimVisibleHeightTrigger;
-      AppMethodBeat.o(234689);
+      AppMethodBeat.o(210278);
       return i;
     }
-    if (this.buI != null) {}
-    for (int i = this.buI.hd();; i = 0)
+    if (this.dnL != null) {}
+    for (int i = this.dnL.En();; i = 0)
     {
-      int j = w.P(this);
+      int j = z.ab(this);
       if (j <= 0) {
         break;
       }
       i = Math.min(i + j * 2, getHeight());
-      AppMethodBeat.o(234689);
+      AppMethodBeat.o(210278);
       return i;
     }
     i = getHeight() / 3;
-    AppMethodBeat.o(234689);
+    AppMethodBeat.o(210278);
     return i;
   }
   
   public Drawable getStatusBarScrim()
   {
-    return this.bvs;
+    return this.dov;
   }
   
   public CharSequence getTitle()
   {
-    if (this.bvp) {
-      return this.bvo.LV;
+    if (this.dor) {
+      return this.doq.bba;
     }
     return null;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(234620);
+    AppMethodBeat.i(210106);
     super.onAttachedToWindow();
     ViewParent localViewParent = getParent();
     if ((localViewParent instanceof AppBarLayout))
     {
-      w.c(this, w.Z((View)localViewParent));
-      if (this.bvx == null) {
-        this.bvx = new a();
+      z.c(this, z.al((View)localViewParent));
+      if (this.doA == null) {
+        this.doA = new a();
       }
-      ((AppBarLayout)localViewParent).a(this.bvx);
-      w.Y(this);
+      ((AppBarLayout)localViewParent).a(this.doA);
+      z.ak(this);
     }
-    AppMethodBeat.o(234620);
+    AppMethodBeat.o(210106);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(234622);
+    AppMethodBeat.i(210114);
     Object localObject = getParent();
-    if ((this.bvx != null) && ((localObject instanceof AppBarLayout)))
+    if ((this.doA != null) && ((localObject instanceof AppBarLayout)))
     {
       localObject = (AppBarLayout)localObject;
-      AppBarLayout.b localb = this.bvx;
+      AppBarLayout.b localb = this.doA;
       if ((((AppBarLayout)localObject).listeners != null) && (localb != null)) {
         ((AppBarLayout)localObject).listeners.remove(localb);
       }
     }
     super.onDetachedFromWindow();
-    AppMethodBeat.o(234622);
+    AppMethodBeat.o(210114);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = 1;
     int m = 0;
-    AppMethodBeat.i(234636);
+    AppMethodBeat.i(210143);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     int k;
     int n;
     Object localObject;
-    if (this.buI != null)
+    if (this.dnL != null)
     {
-      k = this.buI.hd();
+      k = this.dnL.En();
       n = getChildCount();
       i = 0;
       while (i < n)
       {
         localObject = getChildAt(i);
-        if ((!w.Z((View)localObject)) && (((View)localObject).getTop() < k)) {
-          w.s((View)localObject, k);
+        if ((!z.al((View)localObject)) && (((View)localObject).getTop() < k)) {
+          z.s((View)localObject, k);
         }
         i += 1;
       }
     }
-    if ((this.bvp) && (this.bvi != null))
+    if ((this.dor) && (this.dol != null))
     {
-      if ((!w.al(this.bvi)) || (this.bvi.getVisibility() != 0)) {
+      if ((!z.ay(this.dol)) || (this.dol.getVisibility() != 0)) {
         break label410;
       }
       paramBoolean = true;
-      this.bvq = paramBoolean;
-      if (this.bvq)
+      this.dos = paramBoolean;
+      if (this.dos)
       {
-        if (w.I(this) != 1) {
+        if (z.U(this) != 1) {
           break label415;
         }
         i = j;
         label157:
-        if (this.bvh == null) {
+        if (this.dok == null) {
           break label421;
         }
-        localObject = this.bvh;
+        localObject = this.dok;
         label170:
-        n = ca((View)localObject);
-        com.google.android.material.internal.d.a(this, this.bvi, this.bvn);
-        localObject = this.bvo;
-        int i1 = this.bvn.left;
+        n = cw((View)localObject);
+        d.a(this, this.dol, this.tmpRect);
+        localObject = this.doq;
+        int i1 = this.tmpRect.left;
         if (i == 0) {
           break label430;
         }
-        j = this.bvg.getTitleMarginEnd();
+        j = this.doj.getTitleMarginEnd();
         label219:
-        int i2 = this.bvn.top;
-        int i3 = this.bvg.getTitleMarginTop();
-        int i4 = this.bvn.right;
+        int i2 = this.tmpRect.top;
+        int i3 = this.doj.getTitleMarginTop();
+        int i4 = this.tmpRect.right;
         if (i == 0) {
           break label442;
         }
-        k = this.bvg.getTitleMarginStart();
+        k = this.doj.getTitleMarginStart();
         label260:
-        ((c)localObject).q(i1 + j, i3 + (i2 + n), k + i4, n + this.bvn.bottom - this.bvg.getTitleMarginBottom());
-        localObject = this.bvo;
+        ((com.google.android.material.internal.c)localObject).z(i1 + j, i3 + (i2 + n), k + i4, n + this.tmpRect.bottom - this.doj.getTitleMarginBottom());
+        localObject = this.doq;
         if (i == 0) {
           break label454;
         }
-        j = this.bvl;
+        j = this.doo;
         label318:
-        k = this.bvn.top;
-        n = this.bvk;
+        k = this.tmpRect.top;
+        n = this.don;
         if (i == 0) {
           break label463;
         }
@@ -599,267 +615,267 @@ public class CollapsingToolbarLayout
     label442:
     label454:
     label463:
-    for (int i = this.bvj;; i = this.bvl)
+    for (int i = this.dom;; i = this.doo)
     {
-      ((c)localObject).p(j, k + n, paramInt3 - paramInt1 - i, paramInt4 - paramInt2 - this.bvm);
-      this.bvo.xq();
+      ((com.google.android.material.internal.c)localObject).y(j, k + n, paramInt3 - paramInt1 - i, paramInt4 - paramInt2 - this.dop);
+      this.doq.xQ();
       paramInt2 = getChildCount();
       paramInt1 = m;
       while (paramInt1 < paramInt2)
       {
-        bZ(getChildAt(paramInt1)).wf();
+        cv(getChildAt(paramInt1)).VE();
         paramInt1 += 1;
       }
       paramBoolean = false;
       break;
       i = 0;
       break label157;
-      localObject = this.bvg;
+      localObject = this.doj;
       break label170;
-      j = this.bvg.getTitleMarginStart();
+      j = this.doj.getTitleMarginStart();
       break label219;
-      k = this.bvg.getTitleMarginEnd();
+      k = this.doj.getTitleMarginEnd();
       break label260;
-      j = this.bvj;
+      j = this.dom;
       break label318;
     }
-    if (this.bvg != null)
+    if (this.doj != null)
     {
-      if ((this.bvp) && (TextUtils.isEmpty(this.bvo.LV))) {
-        setTitle(this.bvg.getTitle());
+      if ((this.dor) && (TextUtils.isEmpty(this.doq.bba))) {
+        setTitle(this.doj.getTitle());
       }
-      if ((this.bvh != null) && (this.bvh != this)) {
+      if ((this.dok != null) && (this.dok != this)) {
         break label547;
       }
-      setMinimumHeight(bY(this.bvg));
+      setMinimumHeight(cu(this.doj));
     }
     for (;;)
     {
-      wb();
-      AppMethodBeat.o(234636);
+      VA();
+      AppMethodBeat.o(210143);
       return;
       label547:
-      setMinimumHeight(bY(this.bvh));
+      setMinimumHeight(cu(this.dok));
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(234633);
-    vZ();
+    AppMethodBeat.i(210137);
+    Vy();
     super.onMeasure(paramInt1, paramInt2);
     int i = View.MeasureSpec.getMode(paramInt2);
-    if (this.buI != null) {}
-    for (paramInt2 = this.buI.hd();; paramInt2 = 0)
+    if (this.dnL != null) {}
+    for (paramInt2 = this.dnL.En();; paramInt2 = 0)
     {
       if ((i == 0) && (paramInt2 > 0)) {
         super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(paramInt2 + getMeasuredHeight(), 1073741824));
       }
-      AppMethodBeat.o(234633);
+      AppMethodBeat.o(210137);
       return;
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(234626);
+    AppMethodBeat.i(210131);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.bvr != null) {
-      this.bvr.setBounds(0, 0, paramInt1, paramInt2);
+    if (this.dou != null) {
+      this.dou.setBounds(0, 0, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(234626);
+    AppMethodBeat.o(210131);
   }
   
   public void setCollapsedTitleGravity(int paramInt)
   {
-    AppMethodBeat.i(234666);
-    this.bvo.fW(paramInt);
-    AppMethodBeat.o(234666);
+    AppMethodBeat.i(210241);
+    this.doq.jl(paramInt);
+    AppMethodBeat.o(210241);
   }
   
   public void setCollapsedTitleTextAppearance(int paramInt)
   {
-    AppMethodBeat.i(234663);
-    this.bvo.fX(paramInt);
-    AppMethodBeat.o(234663);
+    AppMethodBeat.i(210229);
+    this.doq.jm(paramInt);
+    AppMethodBeat.o(210229);
   }
   
   public void setCollapsedTitleTextColor(int paramInt)
   {
-    AppMethodBeat.i(234664);
+    AppMethodBeat.i(210233);
     setCollapsedTitleTextColor(ColorStateList.valueOf(paramInt));
-    AppMethodBeat.o(234664);
+    AppMethodBeat.o(210233);
   }
   
   public void setCollapsedTitleTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(234665);
-    this.bvo.e(paramColorStateList);
-    AppMethodBeat.o(234665);
+    AppMethodBeat.i(210236);
+    this.doq.e(paramColorStateList);
+    AppMethodBeat.o(210236);
   }
   
   public void setCollapsedTitleTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(234676);
-    c localc = this.bvo;
-    if (localc.bBL != paramTypeface)
+    AppMethodBeat.i(210258);
+    com.google.android.material.internal.c localc = this.doq;
+    if (localc.duN != paramTypeface)
     {
-      localc.bBL = paramTypeface;
-      localc.xq();
+      localc.duN = paramTypeface;
+      localc.xQ();
     }
-    AppMethodBeat.o(234676);
+    AppMethodBeat.o(210258);
   }
   
   public void setContentScrim(Drawable paramDrawable)
   {
     Drawable localDrawable = null;
-    AppMethodBeat.i(234650);
-    if (this.bvr != paramDrawable)
+    AppMethodBeat.i(210181);
+    if (this.dou != paramDrawable)
     {
-      if (this.bvr != null) {
-        this.bvr.setCallback(null);
+      if (this.dou != null) {
+        this.dou.setCallback(null);
       }
       if (paramDrawable != null) {
         localDrawable = paramDrawable.mutate();
       }
-      this.bvr = localDrawable;
-      if (this.bvr != null)
+      this.dou = localDrawable;
+      if (this.dou != null)
       {
-        this.bvr.setBounds(0, 0, getWidth(), getHeight());
-        this.bvr.setCallback(this);
-        this.bvr.setAlpha(this.bvt);
+        this.dou.setBounds(0, 0, getWidth(), getHeight());
+        this.dou.setCallback(this);
+        this.dou.setAlpha(this.dow);
       }
-      w.G(this);
+      z.Q(this);
     }
-    AppMethodBeat.o(234650);
+    AppMethodBeat.o(210181);
   }
   
   public void setContentScrimColor(int paramInt)
   {
-    AppMethodBeat.i(234652);
+    AppMethodBeat.i(210183);
     setContentScrim(new ColorDrawable(paramInt));
-    AppMethodBeat.o(234652);
+    AppMethodBeat.o(210183);
   }
   
   public void setContentScrimResource(int paramInt)
   {
-    AppMethodBeat.i(234653);
+    AppMethodBeat.i(210187);
     setContentScrim(androidx.core.content.a.m(getContext(), paramInt));
-    AppMethodBeat.o(234653);
+    AppMethodBeat.o(210187);
   }
   
   public void setExpandedTitleColor(int paramInt)
   {
-    AppMethodBeat.i(234669);
+    AppMethodBeat.i(210248);
     setExpandedTitleTextColor(ColorStateList.valueOf(paramInt));
-    AppMethodBeat.o(234669);
+    AppMethodBeat.o(210248);
   }
   
   public void setExpandedTitleGravity(int paramInt)
   {
-    AppMethodBeat.i(234674);
-    this.bvo.fV(paramInt);
-    AppMethodBeat.o(234674);
+    AppMethodBeat.i(210254);
+    this.doq.jk(paramInt);
+    AppMethodBeat.o(210254);
   }
   
   public void setExpandedTitleMarginBottom(int paramInt)
   {
-    AppMethodBeat.i(234687);
-    this.bvm = paramInt;
+    AppMethodBeat.i(210274);
+    this.dop = paramInt;
     requestLayout();
-    AppMethodBeat.o(234687);
+    AppMethodBeat.o(210274);
   }
   
   public void setExpandedTitleMarginEnd(int paramInt)
   {
-    AppMethodBeat.i(234685);
-    this.bvl = paramInt;
+    AppMethodBeat.i(210272);
+    this.doo = paramInt;
     requestLayout();
-    AppMethodBeat.o(234685);
+    AppMethodBeat.o(210272);
   }
   
   public void setExpandedTitleMarginStart(int paramInt)
   {
-    AppMethodBeat.i(234682);
-    this.bvj = paramInt;
+    AppMethodBeat.i(210268);
+    this.dom = paramInt;
     requestLayout();
-    AppMethodBeat.o(234682);
+    AppMethodBeat.o(210268);
   }
   
   public void setExpandedTitleMarginTop(int paramInt)
   {
-    AppMethodBeat.i(234684);
-    this.bvk = paramInt;
+    AppMethodBeat.i(210270);
+    this.don = paramInt;
     requestLayout();
-    AppMethodBeat.o(234684);
+    AppMethodBeat.o(210270);
   }
   
   public void setExpandedTitleTextAppearance(int paramInt)
   {
-    AppMethodBeat.i(234668);
-    this.bvo.fY(paramInt);
-    AppMethodBeat.o(234668);
+    AppMethodBeat.i(210246);
+    this.doq.jn(paramInt);
+    AppMethodBeat.o(210246);
   }
   
   public void setExpandedTitleTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(234673);
-    this.bvo.f(paramColorStateList);
-    AppMethodBeat.o(234673);
+    AppMethodBeat.i(210251);
+    this.doq.f(paramColorStateList);
+    AppMethodBeat.o(210251);
   }
   
   public void setExpandedTitleTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(234680);
-    c localc = this.bvo;
-    if (localc.bBM != paramTypeface)
+    AppMethodBeat.i(210263);
+    com.google.android.material.internal.c localc = this.doq;
+    if (localc.duO != paramTypeface)
     {
-      localc.bBM = paramTypeface;
-      localc.xq();
+      localc.duO = paramTypeface;
+      localc.xQ();
     }
-    AppMethodBeat.o(234680);
+    AppMethodBeat.o(210263);
   }
   
   void setScrimAlpha(int paramInt)
   {
-    AppMethodBeat.i(234649);
-    if (paramInt != this.bvt)
+    AppMethodBeat.i(210171);
+    if (paramInt != this.dow)
     {
-      if ((this.bvr != null) && (this.bvg != null)) {
-        w.G(this.bvg);
+      if ((this.dou != null) && (this.doj != null)) {
+        z.Q(this.doj);
       }
-      this.bvt = paramInt;
-      w.G(this);
+      this.dow = paramInt;
+      z.Q(this);
     }
-    AppMethodBeat.o(234649);
+    AppMethodBeat.o(210171);
   }
   
   public void setScrimAnimationDuration(long paramLong)
   {
-    this.bvw = paramLong;
+    this.doz = paramLong;
   }
   
   public void setScrimVisibleHeightTrigger(int paramInt)
   {
-    AppMethodBeat.i(234688);
+    AppMethodBeat.i(210276);
     if (this.scrimVisibleHeightTrigger != paramInt)
     {
       this.scrimVisibleHeightTrigger = paramInt;
-      wb();
+      VA();
     }
-    AppMethodBeat.o(234688);
+    AppMethodBeat.o(210276);
   }
   
   public void setScrimsShown(boolean paramBoolean)
   {
     int j = 255;
-    AppMethodBeat.i(234648);
+    AppMethodBeat.i(210164);
     label46:
     TimeInterpolator localTimeInterpolator;
-    if ((w.ah(this)) && (!isInEditMode()))
+    if ((z.au(this)) && (!isInEditMode()))
     {
       i = 1;
-      if (this.bvu != paramBoolean)
+      if (this.dox != paramBoolean)
       {
         if (i == 0) {
           break label199;
@@ -868,36 +884,36 @@ public class CollapsingToolbarLayout
           break label166;
         }
         i = 255;
-        vZ();
-        if (this.bvv != null) {
+        Vy();
+        if (this.doy != null) {
           break label179;
         }
-        this.bvv = new ValueAnimator();
-        this.bvv.setDuration(this.bvw);
-        ValueAnimator localValueAnimator = this.bvv;
-        if (i <= this.bvt) {
+        this.doy = new ValueAnimator();
+        this.doy.setDuration(this.doz);
+        ValueAnimator localValueAnimator = this.doy;
+        if (i <= this.dow) {
           break label171;
         }
-        localTimeInterpolator = com.google.android.material.a.a.buo;
+        localTimeInterpolator = com.google.android.material.a.a.dns;
         label99:
         localValueAnimator.setInterpolator(localTimeInterpolator);
-        this.bvv.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        this.doy.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            AppMethodBeat.i(234540);
+            AppMethodBeat.i(210044);
             CollapsingToolbarLayout.this.setScrimAlpha(((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-            AppMethodBeat.o(234540);
+            AppMethodBeat.o(210044);
           }
         });
       }
     }
     for (;;)
     {
-      this.bvv.setIntValues(new int[] { this.bvt, i });
-      this.bvv.start();
-      this.bvu = paramBoolean;
-      AppMethodBeat.o(234648);
+      this.doy.setIntValues(new int[] { this.dow, i });
+      this.doy.start();
+      this.dox = paramBoolean;
+      AppMethodBeat.o(210164);
       return;
       i = 0;
       break;
@@ -905,11 +921,11 @@ public class CollapsingToolbarLayout
       i = 0;
       break label46;
       label171:
-      localTimeInterpolator = com.google.android.material.a.a.bup;
+      localTimeInterpolator = com.google.android.material.a.a.dnt;
       break label99;
       label179:
-      if (this.bvv.isRunning()) {
-        this.bvv.cancel();
+      if (this.doy.isRunning()) {
+        this.doy.cancel();
       }
     }
     label199:
@@ -924,23 +940,23 @@ public class CollapsingToolbarLayout
   public void setStatusBarScrim(Drawable paramDrawable)
   {
     Drawable localDrawable = null;
-    AppMethodBeat.i(234656);
-    if (this.bvs != paramDrawable)
+    AppMethodBeat.i(210197);
+    if (this.dov != paramDrawable)
     {
-      if (this.bvs != null) {
-        this.bvs.setCallback(null);
+      if (this.dov != null) {
+        this.dov.setCallback(null);
       }
       if (paramDrawable != null) {
         localDrawable = paramDrawable.mutate();
       }
-      this.bvs = localDrawable;
-      if (this.bvs != null)
+      this.dov = localDrawable;
+      if (this.dov != null)
       {
-        if (this.bvs.isStateful()) {
-          this.bvs.setState(getDrawableState());
+        if (this.dov.isStateful()) {
+          this.dov.setState(getDrawableState());
         }
-        androidx.core.graphics.drawable.a.b(this.bvs, w.I(this));
-        paramDrawable = this.bvs;
+        androidx.core.graphics.drawable.a.b(this.dov, z.U(this));
+        paramDrawable = this.dov;
         if (getVisibility() != 0) {
           break label137;
         }
@@ -950,127 +966,110 @@ public class CollapsingToolbarLayout
     for (boolean bool = true;; bool = false)
     {
       paramDrawable.setVisible(bool, false);
-      this.bvs.setCallback(this);
-      this.bvs.setAlpha(this.bvt);
-      w.G(this);
-      AppMethodBeat.o(234656);
+      this.dov.setCallback(this);
+      this.dov.setAlpha(this.dow);
+      z.Q(this);
+      AppMethodBeat.o(210197);
       return;
     }
   }
   
   public void setStatusBarScrimColor(int paramInt)
   {
-    AppMethodBeat.i(234660);
+    AppMethodBeat.i(210217);
     setStatusBarScrim(new ColorDrawable(paramInt));
-    AppMethodBeat.o(234660);
+    AppMethodBeat.o(210217);
   }
   
   public void setStatusBarScrimResource(int paramInt)
   {
-    AppMethodBeat.i(234661);
+    AppMethodBeat.i(210223);
     setStatusBarScrim(androidx.core.content.a.m(getContext(), paramInt));
-    AppMethodBeat.o(234661);
+    AppMethodBeat.o(210223);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(234641);
-    this.bvo.setText(paramCharSequence);
-    wc();
-    AppMethodBeat.o(234641);
+    AppMethodBeat.i(210150);
+    this.doq.setText(paramCharSequence);
+    VB();
+    AppMethodBeat.o(210150);
   }
   
   public void setTitleEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(234644);
-    if (paramBoolean != this.bvp)
+    AppMethodBeat.i(210156);
+    if (paramBoolean != this.dor)
     {
-      this.bvp = paramBoolean;
-      wc();
-      wa();
+      this.dor = paramBoolean;
+      VB();
+      Vz();
       requestLayout();
     }
-    AppMethodBeat.o(234644);
+    AppMethodBeat.o(210156);
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(234659);
+    AppMethodBeat.i(210212);
     super.setVisibility(paramInt);
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((this.bvs != null) && (this.bvs.isVisible() != bool)) {
-        this.bvs.setVisible(bool, false);
+      if ((this.dov != null) && (this.dov.isVisible() != bool)) {
+        this.dov.setVisible(bool, false);
       }
-      if ((this.bvr != null) && (this.bvr.isVisible() != bool)) {
-        this.bvr.setVisible(bool, false);
+      if ((this.dou != null) && (this.dou.isVisible() != bool)) {
+        this.dou.setVisible(bool, false);
       }
-      AppMethodBeat.o(234659);
+      AppMethodBeat.o(210212);
       return;
     }
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(234658);
-    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.bvr) || (paramDrawable == this.bvs))
+    AppMethodBeat.i(210207);
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.dou) || (paramDrawable == this.dov))
     {
-      AppMethodBeat.o(234658);
+      AppMethodBeat.o(210207);
       return true;
     }
-    AppMethodBeat.o(234658);
+    AppMethodBeat.o(210207);
     return false;
-  }
-  
-  final void wb()
-  {
-    AppMethodBeat.i(234691);
-    if ((this.bvr != null) || (this.bvs != null)) {
-      if (getHeight() + this.bvy >= getScrimVisibleHeightTrigger()) {
-        break label50;
-      }
-    }
-    label50:
-    for (boolean bool = true;; bool = false)
-    {
-      setScrimsShown(bool);
-      AppMethodBeat.o(234691);
-      return;
-    }
   }
   
   public static class LayoutParams
     extends FrameLayout.LayoutParams
   {
-    int bvA;
-    float bvB;
+    int doD;
+    float doE;
     
     public LayoutParams()
     {
       super(-1);
-      this.bvA = 0;
-      this.bvB = 0.5F;
+      this.doD = 0;
+      this.doE = 0.5F;
     }
     
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(234551);
-      this.bvA = 0;
-      this.bvB = 0.5F;
+      AppMethodBeat.i(210008);
+      this.doD = 0;
+      this.doE = 0.5F;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.CollapsingToolbarLayout_Layout);
-      this.bvA = paramContext.getInt(a.k.CollapsingToolbarLayout_Layout_layout_collapseMode, 0);
-      this.bvB = paramContext.getFloat(a.k.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier, 0.5F);
+      this.doD = paramContext.getInt(a.k.CollapsingToolbarLayout_Layout_layout_collapseMode, 0);
+      this.doE = paramContext.getFloat(a.k.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier, 0.5F);
       paramContext.recycle();
-      AppMethodBeat.o(234551);
+      AppMethodBeat.o(210008);
     }
     
     public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
     {
       super();
-      this.bvA = 0;
-      this.bvB = 0.5F;
+      this.doD = 0;
+      this.doE = 0.5F;
     }
   }
   
@@ -1079,17 +1078,17 @@ public class CollapsingToolbarLayout
   {
     a() {}
     
-    public final void c(AppBarLayout paramAppBarLayout, int paramInt)
+    public final void onOffsetChanged(AppBarLayout paramAppBarLayout, int paramInt)
     {
-      AppMethodBeat.i(234581);
-      CollapsingToolbarLayout.this.bvy = paramInt;
+      AppMethodBeat.i(210064);
+      CollapsingToolbarLayout.this.doB = paramInt;
       int i;
       label47:
       CollapsingToolbarLayout.LayoutParams localLayoutParams;
       a locala;
-      if (CollapsingToolbarLayout.this.buI != null)
+      if (CollapsingToolbarLayout.this.dnL != null)
       {
-        i = CollapsingToolbarLayout.this.buI.hd();
+        i = CollapsingToolbarLayout.this.dnL.En();
         k = CollapsingToolbarLayout.this.getChildCount();
         j = 0;
         if (j >= k) {
@@ -1097,8 +1096,8 @@ public class CollapsingToolbarLayout
         }
         paramAppBarLayout = CollapsingToolbarLayout.this.getChildAt(j);
         localLayoutParams = (CollapsingToolbarLayout.LayoutParams)paramAppBarLayout.getLayoutParams();
-        locala = CollapsingToolbarLayout.bZ(paramAppBarLayout);
-        switch (localLayoutParams.bvA)
+        locala = CollapsingToolbarLayout.cv(paramAppBarLayout);
+        switch (localLayoutParams.doD)
         {
         }
       }
@@ -1108,26 +1107,26 @@ public class CollapsingToolbarLayout
         break label47;
         i = 0;
         break;
-        locala.fT(androidx.core.b.a.clamp(-paramInt, 0, CollapsingToolbarLayout.this.ca(paramAppBarLayout)));
+        locala.ji(androidx.core.b.a.clamp(-paramInt, 0, CollapsingToolbarLayout.this.cw(paramAppBarLayout)));
         continue;
         float f = -paramInt;
-        locala.fT(Math.round(localLayoutParams.bvB * f));
+        locala.ji(Math.round(localLayoutParams.doE * f));
       }
       label169:
-      CollapsingToolbarLayout.this.wb();
-      if ((CollapsingToolbarLayout.this.bvs != null) && (i > 0)) {
-        w.G(CollapsingToolbarLayout.this);
+      CollapsingToolbarLayout.this.VA();
+      if ((CollapsingToolbarLayout.this.dov != null) && (i > 0)) {
+        z.Q(CollapsingToolbarLayout.this);
       }
       int j = CollapsingToolbarLayout.this.getHeight();
-      int k = w.P(CollapsingToolbarLayout.this);
-      CollapsingToolbarLayout.this.bvo.T(Math.abs(paramInt) / (j - k - i));
-      AppMethodBeat.o(234581);
+      int k = z.ab(CollapsingToolbarLayout.this);
+      CollapsingToolbarLayout.this.doq.aU(Math.abs(paramInt) / (j - k - i));
+      AppMethodBeat.o(210064);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.appbar.CollapsingToolbarLayout
  * JD-Core Version:    0.7.0.1
  */

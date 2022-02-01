@@ -1,71 +1,58 @@
 package com.tencent.mm.plugin.wallet_core.utils;
 
+import android.app.Activity;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import org.json.JSONObject;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet_core/utils/VerifyPwdAccessibilityConfig;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "firstFocus", "", "getFirstFocus", "()Z", "setFirstFocus", "(Z)V", "focusSubTitle", "", "initConfig", "onUserVisibleFocused", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
+  extends MMBaseAccessibilityConfig
 {
-  public static void ch(JSONObject paramJSONObject)
+  private boolean VYi;
+  
+  public i(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(71641);
-    if (paramJSONObject == null)
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(301412);
+    AppMethodBeat.o(301412);
+  }
+  
+  public final void imc()
+  {
+    AppMethodBeat.i(301420);
+    ((TextView)getContext().findViewById(a.f.wallet_pwd_content)).sendAccessibilityEvent(128);
+    AppMethodBeat.o(301420);
+  }
+  
+  public final void initConfig()
+  {
+    AppMethodBeat.i(301415);
+    root(a.g.wallet_check_pwd).view(a.f.input_et).expand(12, 12, 12, 12);
+    AppMethodBeat.o(301415);
+  }
+  
+  public final void onUserVisibleFocused()
+  {
+    AppMethodBeat.i(301424);
+    super.onUserVisibleFocused();
+    if (!this.VYi)
     {
-      Log.e("MicroMsg.WalletNetSceneUtil", "parseLuckyMoneySnsPayData() json is null");
-      AppMethodBeat.o(71641);
-      return;
+      this.VYi = true;
+      imc();
     }
-    Log.i("MicroMsg.WalletNetSceneUtil", "parseLuckyMoneySnsPayData()");
-    String str2 = "";
-    String str1 = "";
-    int i = paramJSONObject.optInt("is_open_sns_pay", 0);
-    int j = paramJSONObject.optInt("can_open_sns_pay", 0);
-    int k = paramJSONObject.optInt("is_white_user", 0);
-    if (j == 1)
-    {
-      str2 = paramJSONObject.optString("open_sns_pay_title");
-      str1 = paramJSONObject.optString("open_sns_pay_wording");
-      h.aHH();
-      h.aHG().aHp().set(ar.a.VkX, str2);
-      h.aHH();
-      h.aHG().aHp().set(ar.a.VkY, str1);
-    }
-    Log.i("MicroMsg.WalletNetSceneUtil", "is_open_sns_pay:" + i + ", can_open_sns_pay:" + j + ", is_white_user:" + k);
-    Log.i("MicroMsg.WalletNetSceneUtil", "open_sns_pay_title:" + str2 + ", open_sns_pay_wording:" + str1);
-    h.aHH();
-    h.aHG().aHp().set(ar.a.VkU, Integer.valueOf(i));
-    h.aHH();
-    h.aHG().aHp().set(ar.a.VkV, Integer.valueOf(j));
-    h.aHH();
-    h.aHG().aHp().set(ar.a.VkW, Integer.valueOf(k));
-    if (k == 1)
-    {
-      str1 = paramJSONObject.optString("set_sns_pay_title");
-      paramJSONObject = paramJSONObject.optString("set_sns_pay_wording");
-      h.aHH();
-      h.aHG().aHp().set(ar.a.VkZ, str1);
-      h.aHH();
-      h.aHG().aHp().set(ar.a.Vla, paramJSONObject);
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.WalletNetSceneUtil", "set_sns_pay_title:" + str1 + ", set_sns_pay_wording:" + paramJSONObject);
-      h.aHH();
-      h.aHG().aHp().hxT();
-      AppMethodBeat.o(71641);
-      return;
-      paramJSONObject = "";
-      str1 = "";
-    }
+    AppMethodBeat.o(301424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.i
  * JD-Core Version:    0.7.0.1
  */

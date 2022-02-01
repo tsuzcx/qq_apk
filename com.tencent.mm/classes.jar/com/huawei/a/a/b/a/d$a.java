@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum d$a
 {
-  int chP = 1;
+  int dXX = 1;
   
   static
   {
-    AppMethodBeat.i(213596);
-    chO = new a("HWAUDIO_FEATURE_KARAOKE");
-    chQ = new a[] { chO };
-    AppMethodBeat.o(213596);
+    AppMethodBeat.i(208267);
+    dXW = new a("HWAUDIO_FEATURE_KARAOKE");
+    dXY = new a[] { dXW };
+    AppMethodBeat.o(208267);
   }
   
   private d$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.huawei.a.a.b.a.d.a
  * JD-Core Version:    0.7.0.1
  */

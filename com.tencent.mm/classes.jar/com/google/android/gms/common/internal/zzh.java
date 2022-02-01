@@ -8,12 +8,10 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.util.Log;
 import com.google.android.gms.common.stats.ConnectionTracker;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzh
   extends GmsClientSupervisor
@@ -21,7 +19,6 @@ final class zzh
 {
   private final Handler mHandler;
   private final Context zzau;
-  @GuardedBy("mConnectionStatus")
   private final HashMap<GmsClientSupervisor.ConnectionStatusConfig, zzi> zztr;
   private final ConnectionTracker zzts;
   private final long zztt;
@@ -140,7 +137,6 @@ final class zzh
     }
   }
   
-  @VisibleForTesting
   public final void resetForTesting()
   {
     AppMethodBeat.i(4891);
@@ -194,7 +190,7 @@ final class zzh
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.zzh
  * JD-Core Version:    0.7.0.1
  */

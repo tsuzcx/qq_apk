@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.exdevice.service;
 
 public abstract class c$a
 {
-  public int fAV;
+  public int hFI;
   
   public c$a(int paramInt)
   {
-    this.fAV = paramInt;
+    this.hFI = paramInt;
   }
   
-  public abstract void cZf();
+  public abstract void dFw();
 }
 
 

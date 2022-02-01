@@ -3,34 +3,25 @@ package com.tencent.mm.plugin.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.r;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/Atom/Mp4ParserStat;", "", "()V", "ID", "", "TAG", "", "markIncrementParseCost", "", "cost", "markParse", "useLazy", "", "markParseCost", "timeTableLength", "", "plugin-playvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/Atom/Mp4ParserStat;", "", "()V", "ID", "", "TAG", "", "markIncrementParseCost", "", "cost", "markParse", "useLazy", "", "markParseCost", "timeTableLength", "", "plugin-playvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
 {
-  public static final l mHX;
+  public static final l pEx;
   
   static
   {
     AppMethodBeat.i(175938);
-    mHX = new l();
+    pEx = new l();
     AppMethodBeat.o(175938);
-  }
-  
-  public static void Hb(long paramLong)
-  {
-    AppMethodBeat.i(175937);
-    Log.i("MicroMsg.Mp4ParserStat", "markIncrementParseCost:".concat(String.valueOf(paramLong)));
-    if (paramLong >= 0L)
-    {
-      h.IzE.p(1290L, 72L, paramLong);
-      h.IzE.p(1290L, 73L, 1L);
-    }
-    AppMethodBeat.o(175937);
   }
   
   public static void a(boolean paramBoolean, long paramLong, int paramInt)
   {
+    int j = 1;
     AppMethodBeat.i(175936);
     Log.i("MicroMsg.Mp4ParserStat", "markParseCost, useLazy:" + paramBoolean + ", cost:" + paramLong + ", timetTableLength:" + paramInt);
     if ((paramLong < 0L) || (paramInt < 0))
@@ -38,136 +29,176 @@ public final class l
       AppMethodBeat.o(175936);
       return;
     }
-    label94:
-    label100:
+    int i;
     label106:
-    label112:
-    label119:
-    r localr;
+    u localu;
     if (paramBoolean)
     {
-      h.IzE.p(1290L, 8L, paramLong);
-      h.IzE.p(1290L, 9L, 1L);
-      if (paramInt >= 0) {
-        break label258;
+      h.OAn.p(1290L, 8L, paramLong);
+      h.OAn.p(1290L, 9L, 1L);
+      if (paramInt < 0) {
+        break label256;
       }
-      if (31 <= paramInt) {
-        break label322;
+      if (paramInt > 30) {
+        break label250;
       }
-      if (61 <= paramInt) {
-        break label386;
-      }
-      if (121 <= paramInt) {
-        break label450;
-      }
-      if (181 <= paramInt) {
-        break label515;
+      i = 1;
+      if (i == 0) {
+        break label289;
       }
       if (!paramBoolean) {
-        break label580;
+        break label262;
       }
-      localr = new r(Integer.valueOf(18), Integer.valueOf(43), Integer.valueOf(44));
+      localu = new u(Integer.valueOf(13), Integer.valueOf(22), Integer.valueOf(23));
     }
     for (;;)
     {
-      paramInt = ((Number)localr.Mx).intValue();
-      int i = ((Number)localr.My).intValue();
-      int j = ((Number)localr.aazK).intValue();
-      h.IzE.p(1290L, paramInt, 1L);
-      h.IzE.p(1290L, i, paramLong);
-      h.IzE.p(1290L, j, 1L);
+      paramInt = ((Number)localu.bsC).intValue();
+      i = ((Number)localu.bsD).intValue();
+      j = ((Number)localu.aiuN).intValue();
+      h.OAn.p(1290L, paramInt, 1L);
+      h.OAn.p(1290L, i, paramLong);
+      h.OAn.p(1290L, j, 1L);
       AppMethodBeat.o(175936);
       return;
-      h.IzE.p(1290L, 3L, paramLong);
-      h.IzE.p(1290L, 4L, 1L);
+      h.OAn.p(1290L, 3L, paramLong);
+      h.OAn.p(1290L, 4L, 1L);
       break;
-      label258:
-      if (30 < paramInt) {
-        break label94;
-      }
-      if (paramBoolean)
-      {
-        localr = new r(Integer.valueOf(13), Integer.valueOf(22), Integer.valueOf(23));
-      }
-      else
-      {
-        localr = new r(Integer.valueOf(13), Integer.valueOf(47), Integer.valueOf(48));
-        continue;
-        label322:
-        if (60 < paramInt) {
-          break label100;
+      label250:
+      i = 0;
+      break label106;
+      label256:
+      i = 0;
+      break label106;
+      label262:
+      localu = new u(Integer.valueOf(13), Integer.valueOf(47), Integer.valueOf(48));
+      continue;
+      label289:
+      if (31 <= paramInt) {
+        if (paramInt <= 60) {
+          i = 1;
         }
-        if (paramBoolean)
+      }
+      for (;;)
+      {
+        if (i != 0)
         {
-          localr = new r(Integer.valueOf(14), Integer.valueOf(26), Integer.valueOf(27));
-        }
-        else
-        {
-          localr = new r(Integer.valueOf(14), Integer.valueOf(51), Integer.valueOf(52));
-          continue;
-          label386:
-          if (120 < paramInt) {
-            break label106;
-          }
           if (paramBoolean)
           {
-            localr = new r(Integer.valueOf(15), Integer.valueOf(30), Integer.valueOf(31));
-          }
-          else
-          {
-            localr = new r(Integer.valueOf(15), Integer.valueOf(55), Integer.valueOf(56));
+            localu = new u(Integer.valueOf(14), Integer.valueOf(26), Integer.valueOf(27));
+            break;
+            i = 0;
             continue;
-            label450:
-            if (180 < paramInt) {
-              break label112;
-            }
-            if (paramBoolean)
-            {
-              localr = new r(Integer.valueOf(16), Integer.valueOf(34), Integer.valueOf(35));
-            }
-            else
-            {
-              localr = new r(Integer.valueOf(16), Integer.valueOf(59), Integer.valueOf(60));
-              continue;
-              label515:
-              if (240 < paramInt) {
-                break label119;
-              }
-              if (paramBoolean)
-              {
-                localr = new r(Integer.valueOf(17), Integer.valueOf(38), Integer.valueOf(39));
-              }
-              else
-              {
-                localr = new r(Integer.valueOf(17), Integer.valueOf(63), Integer.valueOf(64));
-                continue;
-                label580:
-                localr = new r(Integer.valueOf(18), Integer.valueOf(67), Integer.valueOf(68));
-              }
-            }
+            i = 0;
+            continue;
           }
+          localu = new u(Integer.valueOf(14), Integer.valueOf(51), Integer.valueOf(52));
+          break;
         }
+      }
+      if (61 <= paramInt) {
+        if (paramInt <= 120) {
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          if (paramBoolean)
+          {
+            localu = new u(Integer.valueOf(15), Integer.valueOf(30), Integer.valueOf(31));
+            break;
+            i = 0;
+            continue;
+            i = 0;
+            continue;
+          }
+          localu = new u(Integer.valueOf(15), Integer.valueOf(55), Integer.valueOf(56));
+          break;
+        }
+      }
+      if (121 <= paramInt) {
+        if (paramInt <= 180) {
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          if (paramBoolean)
+          {
+            localu = new u(Integer.valueOf(16), Integer.valueOf(34), Integer.valueOf(35));
+            break;
+            i = 0;
+            continue;
+            i = 0;
+            continue;
+          }
+          localu = new u(Integer.valueOf(16), Integer.valueOf(59), Integer.valueOf(60));
+          break;
+        }
+      }
+      if (181 <= paramInt) {
+        if (paramInt <= 240) {
+          paramInt = j;
+        }
+      }
+      for (;;)
+      {
+        if (paramInt != 0)
+        {
+          if (paramBoolean)
+          {
+            localu = new u(Integer.valueOf(17), Integer.valueOf(38), Integer.valueOf(39));
+            break;
+            paramInt = 0;
+            continue;
+            paramInt = 0;
+            continue;
+          }
+          localu = new u(Integer.valueOf(17), Integer.valueOf(63), Integer.valueOf(64));
+          break;
+        }
+      }
+      if (paramBoolean) {
+        localu = new u(Integer.valueOf(18), Integer.valueOf(43), Integer.valueOf(44));
+      } else {
+        localu = new u(Integer.valueOf(18), Integer.valueOf(67), Integer.valueOf(68));
       }
     }
   }
   
-  public static void gQ(boolean paramBoolean)
+  public static void hF(boolean paramBoolean)
   {
     AppMethodBeat.i(175935);
-    Log.i("MicroMsg.Mp4ParserStat", "markParse, useLazy:".concat(String.valueOf(paramBoolean)));
+    Log.i("MicroMsg.Mp4ParserStat", s.X("markParse, useLazy:", Boolean.valueOf(paramBoolean)));
     if (paramBoolean)
     {
-      h.IzE.p(1290L, 0L, 1L);
+      h.OAn.p(1290L, 0L, 1L);
       AppMethodBeat.o(175935);
       return;
     }
-    h.IzE.p(1290L, 1L, 1L);
+    h.OAn.p(1290L, 1L, 1L);
     AppMethodBeat.o(175935);
+  }
+  
+  public static void jl(long paramLong)
+  {
+    AppMethodBeat.i(175937);
+    Log.i("MicroMsg.Mp4ParserStat", s.X("markIncrementParseCost:", Long.valueOf(paramLong)));
+    if (paramLong >= 0L)
+    {
+      h.OAn.p(1290L, 72L, paramLong);
+      h.OAn.p(1290L, 73L, 1L);
+    }
+    AppMethodBeat.o(175937);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.a.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,484 +6,674 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.utils.f;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.d;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.utils.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animator", "Landroid/animation/Animator;", "onModeSwitch", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isSuitMode", "", "getOnModeSwitch", "()Lkotlin/jvm/functions/Function1;", "setOnModeSwitch", "(Lkotlin/jvm/functions/Function1;)V", "onSuitSwitch", "suit", "getOnSuitSwitch", "setOnSuitSwitch", "value", "getSuit", "()I", "setSuit", "(I)V", "suitMode", "getSuitMode", "()Z", "setSuitMode", "(Z)V", "executeMakeSureNumberColor", "onDetachedFromWindow", "switchModeByUser", "mode", "switchSuitByUser", "suitSelect", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animator", "Landroid/animation/Animator;", "onModeSwitch", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isSuitMode", "", "getOnModeSwitch", "()Lkotlin/jvm/functions/Function1;", "setOnModeSwitch", "(Lkotlin/jvm/functions/Function1;)V", "onSuitSwitch", "suit", "getOnSuitSwitch", "setOnSuitSwitch", "value", "getSuit", "()I", "setSuit", "(I)V", "suitMode", "getSuitMode", "()Z", "setSuitMode", "(Z)V", "executeMakeSureNumberColor", "onDetachedFromWindow", "setFixedTextSize", "textView", "Landroid/widget/TextView;", "size", "", "switchModeByUser", "mode", "switchSuitByUser", "suitSelect", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveCameraOptBeautyPowerfulSuitView
   extends RelativeLayout
 {
-  public static final FinderLiveCameraOptBeautyPowerfulSuitView.a yTs;
-  private Animator VU;
-  private HashMap _$_findViewCache;
-  private kotlin.g.a.b<? super Boolean, x> yTo;
-  private kotlin.g.a.b<? super Integer, x> yTp;
-  private int yTq;
-  private boolean yTr;
+  public static final FinderLiveCameraOptBeautyPowerfulSuitView.a DLP;
+  private kotlin.g.a.b<? super Boolean, ah> DLQ;
+  private kotlin.g.a.b<? super Integer, ah> DLR;
+  private int DLS;
+  private boolean DLT;
+  private Animator bCA;
   
   static
   {
-    AppMethodBeat.i(284456);
-    yTs = new FinderLiveCameraOptBeautyPowerfulSuitView.a((byte)0);
-    AppMethodBeat.o(284456);
+    AppMethodBeat.i(358464);
+    DLP = new FinderLiveCameraOptBeautyPowerfulSuitView.a((byte)0);
+    AppMethodBeat.o(358464);
   }
   
   public FinderLiveCameraOptBeautyPowerfulSuitView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, (byte)0);
+    AppMethodBeat.i(358294);
+    AppMethodBeat.o(358294);
   }
   
   public FinderLiveCameraOptBeautyPowerfulSuitView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(284454);
-    this.yTq = -1000;
-    this.yTr = true;
-    View.inflate(paramContext, b.g.finder_live_beauty_powerful_panel_suit_view, (ViewGroup)this);
-    paramContext = (LinearLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_1);
+    AppMethodBeat.i(358253);
+    this.DLS = -1000;
+    this.DLT = true;
+    View.inflate(paramContext, p.f.Cdi, (ViewGroup)this);
+    paramContext = findViewById(p.e.BIo);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(274888);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          FinderLiveCameraOptBeautyPowerfulSuitView.b(this.yTt);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(274888);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda5(this));
     }
-    paramContext = (LinearLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_2);
+    paramContext = findViewById(p.e.BIq);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(279373);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          FinderLiveCameraOptBeautyPowerfulSuitView.b(this.yTt);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(279373);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda9(this));
     }
-    paramContext = (LinearLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_3);
+    paramContext = findViewById(p.e.BIs);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(290547);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          FinderLiveCameraOptBeautyPowerfulSuitView.b(this.yTt);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(290547);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda7(this));
     }
-    paramContext = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_1);
+    paramContext = findViewById(p.e.BIw);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(285504);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          FinderLiveCameraOptBeautyPowerfulSuitView.a(this.yTt, 0);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(285504);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda11(this));
     }
-    paramContext = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_2);
+    paramContext = findViewById(p.e.BIx);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(271138);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          FinderLiveCameraOptBeautyPowerfulSuitView.a(this.yTt, 1);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(271138);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda4(this));
     }
-    paramContext = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_3);
+    paramContext = findViewById(p.e.BIy);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(256488);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          FinderLiveCameraOptBeautyPowerfulSuitView.a(this.yTt, 2);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(256488);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda8(this));
     }
-    paramContext = (RelativeLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_1);
+    paramContext = findViewById(p.e.BIi);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(228428);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (!this.yTt.getSuitMode()) {
-            FinderLiveCameraOptBeautyPowerfulSuitView.a(this.yTt, 0);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(228428);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda6(this));
     }
-    paramContext = (RelativeLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_2);
+    paramContext = findViewById(p.e.BIk);
     if (paramContext != null) {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(265516);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (!this.yTt.getSuitMode()) {
-            FinderLiveCameraOptBeautyPowerfulSuitView.a(this.yTt, 1);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(265516);
-        }
-      });
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda12(this));
     }
-    paramContext = (RelativeLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_3);
-    if (paramContext != null)
-    {
-      paramContext.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(276627);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          if (!this.yTt.getSuitMode()) {
-            FinderLiveCameraOptBeautyPowerfulSuitView.a(this.yTt, 2);
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(276627);
-        }
-      });
-      AppMethodBeat.o(284454);
-      return;
+    paramContext = findViewById(p.e.BIm);
+    if (paramContext != null) {
+      paramContext.setOnClickListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda10(this));
     }
-    AppMethodBeat.o(284454);
+    paramContext = findViewById(p.e.BIp);
+    s.s(paramContext, "findViewById(R.id.finder…erful_go_to_details_1_tv)");
+    a((TextView)paramContext, 14.0F);
+    paramContext = findViewById(p.e.BIr);
+    s.s(paramContext, "findViewById(R.id.finder…erful_go_to_details_2_tv)");
+    a((TextView)paramContext, 14.0F);
+    paramContext = findViewById(p.e.BIt);
+    s.s(paramContext, "findViewById(R.id.finder…erful_go_to_details_3_tv)");
+    a((TextView)paramContext, 14.0F);
+    paramContext = findViewById(p.e.BIA);
+    s.s(paramContext, "findViewById(R.id.finder…beauty_powerful_number_1)");
+    a((TextView)paramContext, 24.0F);
+    paramContext = findViewById(p.e.BIB);
+    s.s(paramContext, "findViewById(R.id.finder…beauty_powerful_number_2)");
+    a((TextView)paramContext, 24.0F);
+    paramContext = findViewById(p.e.BIC);
+    s.s(paramContext, "findViewById(R.id.finder…beauty_powerful_number_3)");
+    a((TextView)paramContext, 24.0F);
+    AppMethodBeat.o(358253);
   }
   
-  private final void dEY()
+  private final void Pw(int paramInt)
+  {
+    AppMethodBeat.i(358279);
+    Log.i("Finder.FinderLiveCameraOptBeautyPowerfulSuitView", s.X("#switchSuitByUser suitSelect=", Integer.valueOf(paramInt)));
+    int i = paramInt;
+    if (this.DLS == paramInt)
+    {
+      i = paramInt;
+      if (this.DLT) {
+        i = -1;
+      }
+    }
+    setSuit(i);
+    kotlin.g.a.b localb = this.DLR;
+    if (localb != null) {
+      localb.invoke(Integer.valueOf(this.DLS));
+    }
+    AppMethodBeat.o(358279);
+  }
+  
+  private static final void a(int paramInt1, int paramInt2, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(358333);
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(358333);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+    }
+    a(paramFinderLiveCameraOptBeautyPowerfulSuitView, paramInt1, paramInt2, ((Float)paramValueAnimator).floatValue());
+    AppMethodBeat.o(358333);
+  }
+  
+  private final void a(TextView paramTextView, float paramFloat)
+  {
+    AppMethodBeat.i(358286);
+    Object localObject = com.tencent.mm.plugin.finder.accessibility.a.Ate;
+    localObject = getContext();
+    s.s(localObject, "context");
+    paramTextView.setTextSize(1, com.tencent.mm.plugin.finder.accessibility.a.g((Context)localObject, paramFloat));
+    AppMethodBeat.o(358286);
+  }
+  
+  private static final void a(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, float paramFloat)
+  {
+    AppMethodBeat.i(358316);
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIu).setAlpha(paramFloat);
+    AppMethodBeat.o(358316);
+  }
+  
+  private static final void a(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, int paramInt1, int paramInt2, float paramFloat)
+  {
+    AppMethodBeat.i(358327);
+    float f = paramInt2 - paramInt1;
+    paramFloat = paramInt1 + f * paramFloat;
+    ((TextView)paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIA)).setTextSize(0, paramFloat);
+    ((TextView)paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIB)).setTextSize(0, paramFloat);
+    ((TextView)paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIC)).setTextSize(0, paramFloat);
+    AppMethodBeat.o(358327);
+  }
+  
+  private static final void a(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
+  {
+    AppMethodBeat.i(358302);
+    if (paramFinderLiveCameraOptBeautyPowerfulSuitView.DLT) {
+      paramInt1 = kotlin.h.a.eH(paramInt1 * paramFloat);
+    }
+    for (paramInt2 = kotlin.h.a.eH(paramInt2 * paramFloat);; paramInt2 = kotlin.h.a.eH(paramInt2 * (1.0F - paramFloat)))
+    {
+      paramInt2 += paramInt3;
+      localObject = paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIA).getLayoutParams();
+      if (localObject != null) {
+        break;
+      }
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(358302);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+      paramInt1 = kotlin.h.a.eH(paramInt1 * (1.0F - paramFloat));
+    }
+    Object localObject = (RelativeLayout.LayoutParams)localObject;
+    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt1;
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt2;
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIA).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIB).getLayoutParams();
+    if (localObject == null)
+    {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(358302);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
+    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt1;
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIB).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIC).getLayoutParams();
+    if (localObject == null)
+    {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(358302);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+    }
+    localObject = (RelativeLayout.LayoutParams)localObject;
+    ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt1;
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt2;
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIC).setLayoutParams((ViewGroup.LayoutParams)localObject);
+    AppMethodBeat.o(358302);
+  }
+  
+  private static final void a(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, int paramInt1, int paramInt2, int paramInt3, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(358309);
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(358309);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+    }
+    a(paramFinderLiveCameraOptBeautyPowerfulSuitView, paramInt1, paramInt2, paramInt3, ((Float)paramValueAnimator).floatValue());
+    AppMethodBeat.o(358309);
+  }
+  
+  private static final void a(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(358323);
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(358323);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    if (paramFinderLiveCameraOptBeautyPowerfulSuitView.DLT) {}
+    for (;;)
+    {
+      a(paramFinderLiveCameraOptBeautyPowerfulSuitView, f);
+      AppMethodBeat.o(358323);
+      return;
+      f = 1.0F - f;
+    }
+  }
+  
+  private static final void a(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358360);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.evg();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358360);
+  }
+  
+  private static final void b(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, float paramFloat)
+  {
+    AppMethodBeat.i(358339);
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BID).setAlpha(paramFloat);
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIi).setAlpha(1.0F - paramFloat);
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIk).setAlpha(1.0F - paramFloat);
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.findViewById(p.e.BIm).setAlpha(1.0F - paramFloat);
+    AppMethodBeat.o(358339);
+  }
+  
+  private static final void b(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(358350);
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(358350);
+      throw paramFinderLiveCameraOptBeautyPowerfulSuitView;
+    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    if (paramFinderLiveCameraOptBeautyPowerfulSuitView.DLT) {}
+    for (;;)
+    {
+      b(paramFinderLiveCameraOptBeautyPowerfulSuitView, f);
+      AppMethodBeat.o(358350);
+      return;
+      f = 1.0F - f;
+    }
+  }
+  
+  private static final void b(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358369);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.evg();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358369);
+  }
+  
+  private static final void c(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358377);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.evg();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358377);
+  }
+  
+  private static final void d(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358387);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.Pw(0);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358387);
+  }
+  
+  private static final void e(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358394);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.Pw(1);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358394);
+  }
+  
+  private final void evf()
   {
     int m = 1;
-    AppMethodBeat.i(284452);
-    Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = ((Context)localObject).getResources();
+    AppMethodBeat.i(358268);
+    Object localObject = getContext().getResources();
     int i;
     int j;
-    label78:
+    label56:
     int k;
-    if (this.yTr)
+    if (this.DLT)
     {
-      i = b.c.hot_tab_BW_100_Alpha_0_8;
+      i = p.b.hot_tab_BW_100_Alpha_0_8;
       i = ((Resources)localObject).getColor(i);
-      localObject = getContext();
-      p.j(localObject, "context");
-      localObject = ((Context)localObject).getResources();
-      if (!this.yTr) {
-        break label338;
+      localObject = getContext().getResources();
+      if (!this.DLT) {
+        break label316;
       }
-      j = b.c.finder_live_black_Alpha_80;
+      j = p.b.ByS;
       j = ((Resources)localObject).getColor(j);
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1);
-      if (this.yTq != 0) {
-        break label345;
+      localObject = (TextView)findViewById(p.e.BIA);
+      if (this.DLS != 0) {
+        break label323;
       }
       k = j;
-      label106:
+      label84:
       ((TextView)localObject).setTextColor(k);
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_2);
-      if (this.yTq != 1) {
-        break label350;
+      localObject = (TextView)findViewById(p.e.BIB);
+      if (this.DLS != 1) {
+        break label328;
       }
       k = j;
-      label134:
+      label112:
       ((TextView)localObject).setTextColor(k);
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_3);
-      if (this.yTq != 2) {
-        break label355;
+      localObject = (TextView)findViewById(p.e.BIC);
+      if (this.DLS != 2) {
+        break label333;
       }
-      label160:
+      label138:
       ((TextView)localObject).setTextColor(j);
-      if (this.yTr) {
-        break label375;
+      if (this.DLT) {
+        break label353;
       }
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1);
+      localObject = (TextView)findViewById(p.e.BIA);
       Typeface localTypeface;
       if (localObject != null)
       {
         localTypeface = ((TextView)localObject).getTypeface();
-        if (this.yTq != 0) {
-          break label360;
+        if (getSuit() != 0) {
+          break label338;
         }
         i = 1;
-        label206:
+        label184:
         ((TextView)localObject).setTypeface(localTypeface, i);
       }
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_2);
+      localObject = (TextView)findViewById(p.e.BIB);
       if (localObject != null)
       {
         localTypeface = ((TextView)localObject).getTypeface();
-        if (this.yTq != 1) {
-          break label365;
+        if (getSuit() != 1) {
+          break label343;
         }
         i = 1;
-        label248:
+        label226:
         ((TextView)localObject).setTypeface(localTypeface, i);
       }
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_3);
+      localObject = (TextView)findViewById(p.e.BIC);
       if (localObject != null)
       {
         localTypeface = ((TextView)localObject).getTypeface();
-        if (this.yTq != 2) {
-          break label370;
+        if (getSuit() != 2) {
+          break label348;
         }
         i = m;
-        label291:
+        label269:
         ((TextView)localObject).setTypeface(localTypeface, i);
       }
     }
     for (;;)
     {
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1);
-      p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_1");
-      f.i((TextView)localObject);
-      AppMethodBeat.o(284452);
+      localObject = findViewById(p.e.BIA);
+      s.s(localObject, "findViewById<TextView>(R…beauty_powerful_number_1)");
+      i.setTextBold((TextView)localObject);
+      AppMethodBeat.o(358268);
       return;
-      i = b.c.hot_tab_BW_100_Alpha_0_3;
+      i = p.b.hot_tab_BW_100_Alpha_0_3;
       break;
-      label338:
-      j = b.c.hot_tab_BW_100_Alpha_0_9;
-      break label78;
-      label345:
+      label316:
+      j = p.b.Bzh;
+      break label56;
+      label323:
       k = i;
-      break label106;
-      label350:
+      break label84;
+      label328:
       k = i;
-      break label134;
-      label355:
+      break label112;
+      label333:
       j = i;
-      break label160;
-      label360:
+      break label138;
+      label338:
       i = 0;
-      break label206;
-      label365:
+      break label184;
+      label343:
       i = 0;
-      break label248;
-      label370:
+      break label226;
+      label348:
       i = 0;
-      break label291;
-      label375:
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1);
-      p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_1");
-      f.t((TextView)localObject);
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_2);
-      p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_2");
-      f.t((TextView)localObject);
-      localObject = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_3);
-      p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_3");
-      f.t((TextView)localObject);
+      break label269;
+      label353:
+      localObject = findViewById(p.e.BIA);
+      s.s(localObject, "findViewById<TextView>(R…beauty_powerful_number_1)");
+      i.w((TextView)localObject);
+      localObject = findViewById(p.e.BIB);
+      s.s(localObject, "findViewById<TextView>(R…beauty_powerful_number_2)");
+      i.w((TextView)localObject);
+      localObject = findViewById(p.e.BIC);
+      s.s(localObject, "findViewById<TextView>(R…beauty_powerful_number_3)");
+      i.w((TextView)localObject);
     }
   }
   
-  public final View _$_findCachedViewById(int paramInt)
+  private final void evg()
   {
-    AppMethodBeat.i(284459);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(358276);
+    if (!this.DLT) {}
+    for (boolean bool = true;; bool = false)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      Log.i("Finder.FinderLiveCameraOptBeautyPowerfulSuitView", s.X("#switchModeByUser mode=", Boolean.valueOf(bool)));
+      setSuitMode(bool);
+      kotlin.g.a.b localb = this.DLQ;
+      if (localb != null) {
+        localb.invoke(Boolean.valueOf(this.DLT));
+      }
+      AppMethodBeat.o(358276);
+      return;
     }
-    AppMethodBeat.o(284459);
-    return localView1;
   }
   
-  public final kotlin.g.a.b<Boolean, x> getOnModeSwitch()
+  private static final void f(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
   {
-    return this.yTo;
+    AppMethodBeat.i(358401);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    paramFinderLiveCameraOptBeautyPowerfulSuitView.Pw(2);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358401);
   }
   
-  public final kotlin.g.a.b<Integer, x> getOnSuitSwitch()
+  private static final void g(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
   {
-    return this.yTp;
+    AppMethodBeat.i(358409);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    if (!paramFinderLiveCameraOptBeautyPowerfulSuitView.getSuitMode()) {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView.Pw(0);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358409);
+  }
+  
+  private static final void h(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358417);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    if (!paramFinderLiveCameraOptBeautyPowerfulSuitView.getSuitMode()) {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView.Pw(1);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358417);
+  }
+  
+  private static final void i(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, View paramView)
+  {
+    AppMethodBeat.i(358425);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCameraOptBeautyPowerfulSuitView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCameraOptBeautyPowerfulSuitView, "this$0");
+    if (!paramFinderLiveCameraOptBeautyPowerfulSuitView.getSuitMode()) {
+      paramFinderLiveCameraOptBeautyPowerfulSuitView.Pw(2);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(358425);
+  }
+  
+  public final kotlin.g.a.b<Boolean, ah> getOnModeSwitch()
+  {
+    return this.DLQ;
+  }
+  
+  public final kotlin.g.a.b<Integer, ah> getOnSuitSwitch()
+  {
+    return this.DLR;
   }
   
   public final int getSuit()
   {
-    return this.yTq;
+    return this.DLS;
   }
   
   public final boolean getSuitMode()
   {
-    return this.yTr;
+    return this.DLT;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(284453);
+    AppMethodBeat.i(358645);
     super.onDetachedFromWindow();
-    Animator localAnimator = this.VU;
-    if (localAnimator != null)
-    {
+    Animator localAnimator = this.bCA;
+    if (localAnimator != null) {
       localAnimator.cancel();
-      AppMethodBeat.o(284453);
-      return;
     }
-    AppMethodBeat.o(284453);
+    AppMethodBeat.o(358645);
   }
   
-  public final void setOnModeSwitch(kotlin.g.a.b<? super Boolean, x> paramb)
+  public final void setOnModeSwitch(kotlin.g.a.b<? super Boolean, ah> paramb)
   {
-    this.yTo = paramb;
+    this.DLQ = paramb;
   }
   
-  public final void setOnSuitSwitch(kotlin.g.a.b<? super Integer, x> paramb)
+  public final void setOnSuitSwitch(kotlin.g.a.b<? super Integer, ah> paramb)
   {
-    this.yTp = paramb;
+    this.DLR = paramb;
   }
   
   public final void setSuit(int paramInt)
   {
-    AppMethodBeat.i(284450);
-    Object localObject2 = new StringBuilder("#suit set value=").append(paramInt).append(' ').append("field=").append(this.yTq).append(' ').append("isAnimatorRunning=");
-    Object localObject1 = this.VU;
-    if (localObject1 != null) {}
-    for (localObject1 = Boolean.valueOf(((Animator)localObject1).isRunning());; localObject1 = null)
+    AppMethodBeat.i(358617);
+    Object localObject2 = new StringBuilder("#suit set value=").append(paramInt).append(" field=").append(this.DLS).append(" isAnimatorRunning=");
+    Object localObject1 = this.bCA;
+    if (localObject1 == null)
     {
+      localObject1 = null;
       Log.i("Finder.FinderLiveCameraOptBeautyPowerfulSuitView", localObject1);
-      if (paramInt == this.yTq) {
-        break;
+      if (paramInt != this.DLS)
+      {
+        localObject1 = this.bCA;
+        if ((localObject1 == null) || (((Animator)localObject1).isRunning() != true)) {
+          break label116;
+        }
       }
-      localObject1 = this.VU;
-      if ((localObject1 == null) || (((Animator)localObject1).isRunning() != true)) {
-        break label126;
-      }
-      AppMethodBeat.o(284450);
-      return;
     }
-    AppMethodBeat.o(284450);
-    return;
-    label126:
-    this.yTq = paramInt;
-    paramInt = b.e.selector_finder_live_camera_opt_panel_beauty_powerful_number_circle_bg_normal;
-    int i = b.e.selector_finder_live_camera_opt_panel_beauty_powerful_number_circle_bg_select;
-    localObject1 = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_none_tips);
-    p.j(localObject1, "finder_live_camera_opt_p…beauty_powerful_none_tips");
-    ((TextView)localObject1).setVisibility(4);
-    localObject1 = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_1_line);
-    p.j(localObject1, "finder_live_camera_opt_p…_powerful_area_top_1_line");
-    ((View)localObject1).setVisibility(4);
-    localObject1 = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_2_line);
-    p.j(localObject1, "finder_live_camera_opt_p…_powerful_area_top_2_line");
-    ((View)localObject1).setVisibility(4);
-    localObject1 = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_3_line);
-    p.j(localObject1, "finder_live_camera_opt_p…_powerful_area_top_3_line");
-    ((View)localObject1).setVisibility(4);
-    _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_1).setBackgroundResource(paramInt);
-    _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_2).setBackgroundResource(paramInt);
-    _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_3).setBackgroundResource(paramInt);
-    localObject1 = (LinearLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_1);
-    p.j(localObject1, "finder_live_camera_opt_p…_powerful_go_to_details_1");
-    ((LinearLayout)localObject1).setVisibility(4);
-    localObject1 = (LinearLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_2);
-    p.j(localObject1, "finder_live_camera_opt_p…_powerful_go_to_details_2");
-    ((LinearLayout)localObject1).setVisibility(4);
-    localObject1 = (LinearLayout)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_3);
-    p.j(localObject1, "finder_live_camera_opt_p…_powerful_go_to_details_3");
-    ((LinearLayout)localObject1).setVisibility(4);
+    label116:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label121;
+      }
+      AppMethodBeat.o(358617);
+      return;
+      localObject1 = Boolean.valueOf(((Animator)localObject1).isRunning());
+      break;
+    }
+    label121:
+    this.DLS = paramInt;
+    paramInt = p.d.BBj;
+    i = p.d.BBk;
+    findViewById(p.e.BIz).setVisibility(4);
+    findViewById(p.e.BIj).setVisibility(4);
+    findViewById(p.e.BIl).setVisibility(4);
+    findViewById(p.e.BIn).setVisibility(4);
+    findViewById(p.e.BIw).setBackgroundResource(paramInt);
+    findViewById(p.e.BIx).setBackgroundResource(paramInt);
+    findViewById(p.e.BIy).setBackgroundResource(paramInt);
+    findViewById(p.e.BIo).setVisibility(4);
+    findViewById(p.e.BIq).setVisibility(4);
+    findViewById(p.e.BIs).setVisibility(4);
     View localView;
-    switch (this.yTq)
+    switch (this.DLS)
     {
     default: 
       localObject1 = null;
       localObject2 = null;
       localView = null;
-      if (this.yTq == -1)
-      {
-        localObject1 = (TextView)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_none_tips);
-        p.j(localObject1, "finder_live_camera_opt_p…beauty_powerful_none_tips");
-        ((TextView)localObject1).setVisibility(0);
+      if (this.DLS == -1) {
+        findViewById(p.e.BIz).setVisibility(0);
       }
       break;
     }
     for (;;)
     {
-      dEY();
-      AppMethodBeat.o(284450);
+      evf();
+      AppMethodBeat.o(358617);
       return;
-      localView = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_1_line);
-      localObject2 = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_1);
-      localObject1 = (View)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_1);
+      localView = findViewById(p.e.BIj);
+      localObject2 = findViewById(p.e.BIw);
+      localObject1 = findViewById(p.e.BIo);
       break;
-      localView = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_2_line);
-      localObject2 = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_2);
-      localObject1 = (View)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_2);
+      localView = findViewById(p.e.BIl);
+      localObject2 = findViewById(p.e.BIx);
+      localObject1 = findViewById(p.e.BIq);
       break;
-      localView = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_3_line);
-      localObject2 = _$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group_bg_3);
-      localObject1 = (View)_$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_go_to_details_3);
+      localView = findViewById(p.e.BIn);
+      localObject2 = findViewById(p.e.BIy);
+      localObject1 = findViewById(p.e.BIs);
       break;
       if (localView != null) {
         localView.setVisibility(0);
@@ -499,409 +689,177 @@ public final class FinderLiveCameraOptBeautyPowerfulSuitView
   
   public final void setSuitMode(boolean paramBoolean)
   {
-    int j = 24;
-    AppMethodBeat.i(284451);
-    Object localObject2 = new StringBuilder("#mode set value=").append(paramBoolean).append(' ').append("field=").append(this.yTr).append(' ').append("isAnimatorRunning=");
-    Object localObject1 = this.VU;
-    if (localObject1 != null) {}
-    for (localObject1 = Boolean.valueOf(((Animator)localObject1).isRunning());; localObject1 = null)
+    AppMethodBeat.i(358639);
+    Object localObject2 = new StringBuilder("#mode set value=").append(paramBoolean).append(" field=").append(this.DLT).append(" isAnimatorRunning=");
+    Object localObject1 = this.bCA;
+    if (localObject1 == null)
     {
+      localObject1 = null;
       Log.i("Finder.FinderLiveCameraOptBeautyPowerfulSuitView", localObject1);
-      if (paramBoolean == this.yTr) {
-        break;
-      }
-      localObject1 = this.VU;
-      if ((localObject1 == null) || (((Animator)localObject1).isRunning() != true)) {
-        break label138;
-      }
-      AppMethodBeat.o(284451);
-      return;
-    }
-    AppMethodBeat.o(284451);
-    return;
-    label138:
-    this.yTr = paramBoolean;
-    localObject1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    final int i = com.tencent.mm.ci.a.fromDPToPix(getContext(), 11);
-    localObject2 = new b(com.tencent.mm.ci.a.fromDPToPix(getContext(), 95), com.tencent.mm.ci.a.fromDPToPix(getContext(), 67), i, this);
-    ((ValueAnimator)localObject1).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new f((b)localObject2));
-    ((ValueAnimator)localObject1).addListener((Animator.AnimatorListener)new g((b)localObject2));
-    ((ValueAnimator)localObject1).setDuration(200L);
-    localObject2 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    Object localObject3 = new h(this);
-    ((ValueAnimator)localObject2).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new i((h)localObject3, this));
-    ((ValueAnimator)localObject2).addListener((Animator.AnimatorListener)new j((h)localObject3, this));
-    ((ValueAnimator)localObject2).setDuration(200L);
-    localObject3 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    Object localObject4 = getContext();
-    final int k;
-    if (this.yTr)
-    {
-      i = 17;
-      k = com.tencent.mm.ci.a.fromDPToPix((Context)localObject4, i);
-      localObject4 = getContext();
-      if (!this.yTr) {
-        break label579;
+      if (paramBoolean != this.DLT)
+      {
+        localObject1 = this.bCA;
+        if ((localObject1 == null) || (((Animator)localObject1).isRunning() != true)) {
+          break label127;
+        }
       }
     }
-    label579:
-    for (i = j;; i = 17)
+    label127:
+    for (final int i = 1;; i = 0)
     {
-      i = com.tencent.mm.ci.a.fromDPToPix((Context)localObject4, i);
-      localObject4 = new k(this);
-      ((ValueAnimator)localObject3).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new l((k)localObject4, k, i));
-      ((ValueAnimator)localObject3).addListener((Animator.AnimatorListener)new m((k)localObject4, k, i));
-      ((ValueAnimator)localObject3).setDuration(200L);
-      localObject4 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      Object localObject5 = new c(this);
-      ((ValueAnimator)localObject4).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new d((c)localObject5, this));
-      ((ValueAnimator)localObject4).addListener((Animator.AnimatorListener)new e((c)localObject5, this));
-      ((ValueAnimator)localObject4).setDuration(200L);
-      localObject5 = new AnimatorSet();
-      ((AnimatorSet)localObject5).play((Animator)localObject1).with((Animator)localObject2).with((Animator)localObject3).with((Animator)localObject4);
-      ((AnimatorSet)localObject5).start();
-      this.VU = ((Animator)localObject5);
-      dEY();
-      AppMethodBeat.o(284451);
+      if (i == 0) {
+        break label133;
+      }
+      AppMethodBeat.o(358639);
       return;
-      i = 24;
+      localObject1 = Boolean.valueOf(((Animator)localObject1).isRunning());
       break;
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"execute", "", "progress", "", "invoke", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepOne$1$1"})
-  static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Float, x>
-  {
-    b(int paramInt1, int paramInt2, int paramInt3, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView)
+    label133:
+    this.DLT = paramBoolean;
+    localObject1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    i = com.tencent.mm.cd.a.fromDPToPix(getContext(), 11);
+    final int j = com.tencent.mm.cd.a.fromDPToPix(getContext(), 95);
+    final int k = com.tencent.mm.cd.a.fromDPToPix(getContext(), 67);
+    ((ValueAnimator)localObject1).addUpdateListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda3(this, j, k, i));
+    ((ValueAnimator)localObject1).addListener((Animator.AnimatorListener)new c(this, j, k, i));
+    ((ValueAnimator)localObject1).setDuration(200L);
+    localObject2 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    ((ValueAnimator)localObject2).addUpdateListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda1(this));
+    ((ValueAnimator)localObject2).addListener((Animator.AnimatorListener)new e(this));
+    ((ValueAnimator)localObject2).setDuration(200L);
+    ValueAnimator localValueAnimator1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    Object localObject3 = com.tencent.mm.plugin.finder.accessibility.a.Ate;
+    localObject3 = getContext();
+    s.s(localObject3, "context");
+    float f1 = com.tencent.mm.plugin.finder.accessibility.a.g((Context)localObject3, 17.0F);
+    localObject3 = com.tencent.mm.plugin.finder.accessibility.a.Ate;
+    localObject3 = getContext();
+    s.s(localObject3, "context");
+    float f2 = com.tencent.mm.plugin.finder.accessibility.a.g((Context)localObject3, 24.0F);
+    localObject3 = getContext();
+    float f3;
+    if (getSuitMode())
     {
-      super();
+      f3 = f1;
+      i = com.tencent.mm.cd.a.fromDPToPix((Context)localObject3, f3);
+      localObject3 = getContext();
+      if (!getSuitMode()) {
+        break label587;
+      }
     }
-    
-    public final void bh(float paramFloat)
+    for (;;)
     {
-      AppMethodBeat.i(281418);
-      int i;
-      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this)) {
-        i = kotlin.h.a.dm(this.yTu * paramFloat);
-      }
-      for (int j = kotlin.h.a.dm(this.yTv * paramFloat);; j = kotlin.h.a.dm(this.yTv * (1.0F - paramFloat)))
-      {
-        j += i;
-        localObject = (TextView)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1);
-        p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_1");
-        localObject = ((TextView)localObject).getLayoutParams();
-        if (localObject != null) {
-          break;
-        }
-        localObject = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-        AppMethodBeat.o(281418);
-        throw ((Throwable)localObject);
-        i = kotlin.h.a.dm(this.yTu * (1.0F - paramFloat));
-      }
-      Object localObject = (RelativeLayout.LayoutParams)localObject;
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = j;
-      TextView localTextView = (TextView)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1);
-      p.j(localTextView, "finder_live_camera_opt_p…_beauty_powerful_number_1");
-      localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (TextView)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_2);
-      p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_2");
-      localObject = ((TextView)localObject).getLayoutParams();
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-        AppMethodBeat.o(281418);
-        throw ((Throwable)localObject);
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      localTextView = (TextView)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_2);
-      p.j(localTextView, "finder_live_camera_opt_p…_beauty_powerful_number_2");
-      localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = (TextView)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_3);
-      p.j(localObject, "finder_live_camera_opt_p…_beauty_powerful_number_3");
-      localObject = ((TextView)localObject).getLayoutParams();
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-        AppMethodBeat.o(281418);
-        throw ((Throwable)localObject);
-      }
-      localObject = (RelativeLayout.LayoutParams)localObject;
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = j;
-      localTextView = (TextView)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_3);
-      p.j(localTextView, "finder_live_camera_opt_p…_beauty_powerful_number_3");
-      localTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      AppMethodBeat.o(281418);
+      j = com.tencent.mm.cd.a.fromDPToPix((Context)localObject3, f2);
+      localValueAnimator1.addUpdateListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda0(i, j, this));
+      localValueAnimator1.addListener((Animator.AnimatorListener)new d(i, j, this));
+      localValueAnimator1.setDuration(200L);
+      ValueAnimator localValueAnimator2 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      localValueAnimator2.addUpdateListener(new FinderLiveCameraOptBeautyPowerfulSuitView..ExternalSyntheticLambda2(this));
+      localValueAnimator2.addListener((Animator.AnimatorListener)new b(this));
+      localValueAnimator2.setDuration(200L);
+      localObject3 = new AnimatorSet();
+      ((AnimatorSet)localObject3).play((Animator)localObject1).with((Animator)localObject2).with((Animator)localValueAnimator1).with((Animator)localValueAnimator2);
+      ((AnimatorSet)localObject3).start();
+      localObject1 = ah.aiuX;
+      this.bCA = ((Animator)localObject3);
+      evf();
+      AppMethodBeat.o(358639);
+      return;
+      f3 = f2;
+      break;
+      label587:
+      f2 = f1;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"execute", "", "progress", "", "invoke", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepFour$1$1"})
-  static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Float, x>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepFour$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends AnimatorListenerAdapter
   {
-    c(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView)
-    {
-      super();
-    }
+    b(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
     
-    public final void bh(float paramFloat)
+    public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(291713);
-      Object localObject = (TextView)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_title);
-      p.j(localObject, "finder_live_camera_opt_panel_beauty_powerful_title");
-      ((TextView)localObject).setAlpha(paramFloat);
-      localObject = (RelativeLayout)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_1);
-      p.j(localObject, "finder_live_camera_opt_p…eauty_powerful_area_top_1");
-      ((RelativeLayout)localObject).setAlpha(1.0F - paramFloat);
-      localObject = (RelativeLayout)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_2);
-      p.j(localObject, "finder_live_camera_opt_p…eauty_powerful_area_top_2");
-      ((RelativeLayout)localObject).setAlpha(1.0F - paramFloat);
-      localObject = (RelativeLayout)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_area_top_3);
-      p.j(localObject, "finder_live_camera_opt_p…eauty_powerful_area_top_3");
-      ((RelativeLayout)localObject).setAlpha(1.0F - paramFloat);
-      AppMethodBeat.o(291713);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepFour$1$2"})
-  static final class d
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    d(FinderLiveCameraOptBeautyPowerfulSuitView.c paramc, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(270284);
-      p.j(paramValueAnimator, "it");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
+      AppMethodBeat.i(358164);
+      super.onAnimationEnd(paramAnimator);
+      paramAnimator = this.DLU;
+      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(this.DLU)) {}
+      for (float f = 1.0F;; f = 0.0F)
       {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(270284);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this)) {}
-      for (;;)
-      {
-        this.yTx.bh(f);
-        AppMethodBeat.o(270284);
+        FinderLiveCameraOptBeautyPowerfulSuitView.d(paramAnimator, f);
+        AppMethodBeat.o(358164);
         return;
-        f = 1.0F - f;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepFour$1$3", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepOne$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    extends AnimatorListenerAdapter
+  {
+    c(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(358161);
+      super.onAnimationEnd(paramAnimator);
+      FinderLiveCameraOptBeautyPowerfulSuitView.a(this.DLU, j, k, i);
+      AppMethodBeat.o(358161);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepThree$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends AnimatorListenerAdapter
+  {
+    d(int paramInt1, int paramInt2, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(358165);
+      super.onAnimationEnd(paramAnimator);
+      FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this, this.DLY, j);
+      AppMethodBeat.o(358165);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepTwo$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class e
     extends AnimatorListenerAdapter
   {
-    e(FinderLiveCameraOptBeautyPowerfulSuitView.c paramc, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
+    e(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(278354);
+      AppMethodBeat.i(358162);
       super.onAnimationEnd(paramAnimator);
-      paramAnimator = this.yTx;
-      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this)) {}
-      for (float f = 1.0F;; f = 0.0F)
-      {
-        paramAnimator.bh(f);
-        AppMethodBeat.o(278354);
-        return;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepOne$1$2"})
-  static final class f
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    f(FinderLiveCameraOptBeautyPowerfulSuitView.b paramb) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(284971);
-      FinderLiveCameraOptBeautyPowerfulSuitView.b localb = this.yTy;
-      p.j(paramValueAnimator, "it");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(284971);
-        throw paramValueAnimator;
-      }
-      localb.bh(((Float)paramValueAnimator).floatValue());
-      AppMethodBeat.o(284971);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepOne$1$3", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
-  public static final class g
-    extends AnimatorListenerAdapter
-  {
-    g(FinderLiveCameraOptBeautyPowerfulSuitView.b paramb) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(271723);
-      super.onAnimationEnd(paramAnimator);
-      this.yTy.bh(1.0F);
-      AppMethodBeat.o(271723);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"execute", "", "progress", "", "invoke", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepTwo$1$1"})
-  static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<Float, x>
-  {
-    h(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView)
-    {
-      super();
-    }
-    
-    public final void bh(float paramFloat)
-    {
-      AppMethodBeat.i(255112);
-      LinearLayout localLinearLayout = (LinearLayout)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group);
-      p.j(localLinearLayout, "finder_live_camera_opt_panel_beauty_powerful_group");
-      localLinearLayout.setAlpha(paramFloat);
-      AppMethodBeat.o(255112);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepTwo$1$2"})
-  static final class i
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    i(FinderLiveCameraOptBeautyPowerfulSuitView.h paramh, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(225335);
-      p.j(paramValueAnimator, "it");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(225335);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this)) {}
-      for (;;)
-      {
-        this.yTz.bh(f);
-        AppMethodBeat.o(225335);
-        return;
-        f = 1.0F - f;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepTwo$1$3", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
-  public static final class j
-    extends AnimatorListenerAdapter
-  {
-    j(FinderLiveCameraOptBeautyPowerfulSuitView.h paramh, FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(266014);
-      super.onAnimationEnd(paramAnimator);
-      paramAnimator = this.yTz;
+      paramAnimator = this.DLU;
       float f;
-      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this))
+      if (FinderLiveCameraOptBeautyPowerfulSuitView.a(this.DLU))
       {
         f = 1.0F;
-        paramAnimator.bh(f);
-        paramAnimator = (LinearLayout)jdField_this._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_group);
-        p.j(paramAnimator, "finder_live_camera_opt_panel_beauty_powerful_group");
-        if (!FinderLiveCameraOptBeautyPowerfulSuitView.a(jdField_this)) {
-          break label80;
+        FinderLiveCameraOptBeautyPowerfulSuitView.c(paramAnimator, f);
+        paramAnimator = this.DLU.findViewById(p.e.BIu);
+        if (!FinderLiveCameraOptBeautyPowerfulSuitView.a(this.DLU)) {
+          break label71;
         }
       }
-      label80:
+      label71:
       for (int i = 0;; i = 8)
       {
         paramAnimator.setVisibility(i);
-        AppMethodBeat.o(266014);
+        AppMethodBeat.o(358162);
         return;
         f = 0.0F;
         break;
       }
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"execute", "", "from", "", "to", "progress", "", "invoke", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepThree$1$1"})
-  static final class k
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<Integer, Integer, Float, x>
-  {
-    k(FinderLiveCameraOptBeautyPowerfulSuitView paramFinderLiveCameraOptBeautyPowerfulSuitView)
-    {
-      super();
-    }
-    
-    public final void e(int paramInt1, int paramInt2, float paramFloat)
-    {
-      AppMethodBeat.i(276838);
-      float f = paramInt2 - paramInt1;
-      paramFloat = paramInt1 + f * paramFloat;
-      ((TextView)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_1)).setTextSize(0, paramFloat);
-      ((TextView)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_2)).setTextSize(0, paramFloat);
-      ((TextView)this.yTt._$_findCachedViewById(b.f.finder_live_camera_opt_panel_beauty_powerful_number_3)).setTextSize(0, paramFloat);
-      AppMethodBeat.o(276838);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepThree$1$2"})
-  static final class l
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    l(FinderLiveCameraOptBeautyPowerfulSuitView.k paramk, int paramInt1, int paramInt2) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(288094);
-      p.j(paramValueAnimator, "it");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(288094);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      this.yTA.e(k, i, f);
-      AppMethodBeat.o(288094);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/view/FinderLiveCameraOptBeautyPowerfulSuitView$suitMode$animatorStepThree$1$3", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
-  public static final class m
-    extends AnimatorListenerAdapter
-  {
-    m(FinderLiveCameraOptBeautyPowerfulSuitView.k paramk, int paramInt1, int paramInt2) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(290827);
-      super.onAnimationEnd(paramAnimator);
-      this.yTA.e(k, i, 1.0F);
-      AppMethodBeat.o(290827);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulSuitView
  * JD-Core Version:    0.7.0.1
  */

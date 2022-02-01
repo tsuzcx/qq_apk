@@ -1,123 +1,125 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class cp
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String RIi;
-  public LinkedList<String> RIj;
+  public dfn YEV;
+  public LinkedList<dfo> YEW;
   
   public cp()
   {
-    AppMethodBeat.i(138165);
-    this.RIj = new LinkedList();
-    AppMethodBeat.o(138165);
+    AppMethodBeat.i(116325);
+    this.YEW = new LinkedList();
+    AppMethodBeat.o(116325);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(138166);
+    AppMethodBeat.i(116326);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RIi == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YEV == null)
       {
-        paramVarArgs = new b("Not all required fields were included: ChatRoomName");
-        AppMethodBeat.o(138166);
+        paramVarArgs = new b("Not all required fields were included: LogHead");
+        AppMethodBeat.o(116326);
         throw paramVarArgs;
       }
-      if (this.BaseRequest != null)
+      if (this.YEV != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.YEV.computeSize());
+        this.YEV.writeFields(paramVarArgs);
       }
-      if (this.RIi != null) {
-        paramVarArgs.f(2, this.RIi);
-      }
-      paramVarArgs.e(3, 1, this.RIj);
-      AppMethodBeat.o(138166);
+      paramVarArgs.e(2, 8, this.YEW);
+      AppMethodBeat.o(116326);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label456;
+      if (this.YEV == null) {
+        break label454;
       }
     }
-    label456:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label454:
+    for (paramInt = i.a.a.a.qC(1, this.YEV.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.RIi != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.RIi);
-      }
-      paramInt = g.a.a.a.c(3, 1, this.RIj);
-      AppMethodBeat.o(138166);
-      return i + paramInt;
+      int i = i.a.a.a.c(2, 8, this.YEW);
+      AppMethodBeat.o(116326);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.RIj.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        this.YEW.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.RIi == null)
+        if (this.YEV == null)
         {
-          paramVarArgs = new b("Not all required fields were included: ChatRoomName");
-          AppMethodBeat.o(138166);
+          paramVarArgs = new b("Not all required fields were included: LogHead");
+          AppMethodBeat.o(116326);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(138166);
+        AppMethodBeat.o(116326);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         cp localcp = (cp)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(138166);
+          AppMethodBeat.o(116326);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new dfn();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((dfn)localObject2).parseFrom((byte[])localObject1);
             }
-            localcp.BaseRequest = localjg;
+            localcp.YEV = ((dfn)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(138166);
-          return 0;
-        case 2: 
-          localcp.RIi = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(138166);
+          AppMethodBeat.o(116326);
           return 0;
         }
-        localcp.RIj.add(((g.a.a.a.a)localObject).abFh.readString());
-        AppMethodBeat.o(138166);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new dfo();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((dfo)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcp.YEW.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(116326);
         return 0;
       }
-      AppMethodBeat.o(138166);
+      AppMethodBeat.o(116326);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cp
  * JD-Core Version:    0.7.0.1
  */

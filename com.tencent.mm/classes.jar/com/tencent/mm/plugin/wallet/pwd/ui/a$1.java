@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class a$1
-  implements f.c
+  implements g.c
 {
   a$1(a parama) {}
   
-  public final void g(boolean paramBoolean, String paramString)
+  public final void onDialogClick(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(69780);
     Log.i("MicroMsg.WalletRefundTimeDialog", "onDialogClick() bOk:%s", new Object[] { Boolean.valueOf(paramBoolean) });

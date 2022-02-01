@@ -4,7 +4,7 @@ import java.util.concurrent.Future;
 
 public abstract interface b
 {
-  public abstract Future<?> e(Runnable paramRunnable, long paramLong);
+  public abstract Future<?> f(Runnable paramRunnable, long paramLong);
 }
 
 

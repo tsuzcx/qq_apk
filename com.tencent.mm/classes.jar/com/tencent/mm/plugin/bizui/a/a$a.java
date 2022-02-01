@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.bizui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class a$a
-  extends q
+  extends u
   implements a<Boolean>
 {
-  public static final a shH;
+  public static final a vtF;
   
   static
   {
-    AppMethodBeat.i(195700);
-    shH = new a();
-    AppMethodBeat.o(195700);
+    AppMethodBeat.i(260853);
+    vtF = new a();
+    AppMethodBeat.o(260853);
   }
   
   a$a()

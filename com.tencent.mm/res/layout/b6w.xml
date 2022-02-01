@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/cp" android:text="@string/g__" android:maxLines="1" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fru" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" app:on_color="@color/a_f" />
+        <TextView android:id="@id/frv" android:layout_width="@dimen/mg" android:layout_height="@dimen/md" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <View android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp" />
+</LinearLayout>

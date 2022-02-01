@@ -1,6 +1,5 @@
 package com.tencent.matrix.trace.view;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -17,7 +16,7 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.a.a;
 import com.tencent.matrix.trace.a.b;
-import com.tencent.matrix.trace.f.c.b;
+import com.tencent.matrix.trace.tracer.b.b;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
@@ -25,38 +24,11 @@ public final class a
   extends com.tencent.matrix.trace.e.b
   implements com.tencent.matrix.b.a
 {
-  private static Handler die = new Handler(Looper.getMainLooper());
-  private static a dif;
+  private static a fhT;
   private static final Object lock = new Object();
-  private DisplayMetrics cCm = new DisplayMetrics();
-  private long dgV;
-  private int[] dgY = new int[c.b.values().length];
-  private int dhR;
-  private int dhS;
-  private int dhT;
-  private int dhU;
-  private int dhV;
-  private WindowManager.LayoutParams dib;
-  public boolean dic;
-  private FloatFrameView did;
-  public View.OnClickListener dig;
-  public boolean dih = true;
-  private float dii = 1.0F * (float)com.tencent.matrix.trace.core.b.Ya().cQd / 1000000.0F;
-  private float dij = Math.round(1000.0F / this.dii);
-  private long[] dik = new long[1];
-  private long dil;
-  private int dim = this.dhR;
-  private long[] din = new long[1];
-  private int[] dio = new int[c.b.values().length];
-  private String dip = "default";
-  private Runnable diq = new Runnable()
-  {
-    public final void run()
-    {
-      a.g(a.this).dht.setText(String.format("%.2f FPS", new Object[] { Float.valueOf(a.f(a.this)) }));
-      a.g(a.this).dht.setTextColor(a.g(a.this).getResources().getColor(a.a.level_best_color));
-    }
-  };
+  private static Handler mainHandler = new Handler(Looper.getMainLooper());
+  public boolean egk = true;
+  private DisplayMetrics euS = new DisplayMetrics();
   private Executor executor = new Executor()
   {
     public final void execute(Runnable paramAnonymousRunnable)
@@ -64,30 +36,56 @@ public final class a
       a.h(a.this).post(paramAnonymousRunnable);
     }
   };
+  private long fge;
+  private int[] fgh = new int[b.b.values().length];
+  private int fhG;
+  private int fhH;
+  private int fhI;
+  private int fhJ;
+  private int fhK;
+  private WindowManager.LayoutParams fhQ;
+  public boolean fhR;
+  private FloatFrameView fhS;
+  public View.OnClickListener fhU;
+  private float fhV = 1.0F * (float)com.tencent.matrix.trace.core.b.azL().eLi / 1000000.0F;
+  private float fhW = Math.round(1000.0F / this.fhV);
+  private long[] fhX = new long[1];
+  private long fhY;
+  private int fhZ = this.fhG;
+  private long[] fia = new long[1];
+  private int[] fib = new int[b.b.values().length];
+  private String fic = "default";
+  private Runnable fid = new Runnable()
+  {
+    public final void run()
+    {
+      a.g(a.this).fhi.setText(String.format("%.2f FPS", new Object[] { Float.valueOf(a.f(a.this)) }));
+      a.g(a.this).fhi.setTextColor(a.g(a.this).getResources().getColor(a.a.level_best_color));
+    }
+  };
   private Handler handler;
   private WindowManager windowManager;
   
-  @SuppressLint({"ClickableViewAccessibility"})
   private a(Context paramContext, FloatFrameView paramFloatFrameView)
   {
-    this.did = paramFloatFrameView;
-    paramFloatFrameView.dht.setText(String.format("%.2f FPS", new Object[] { Float.valueOf(this.dij) }));
-    this.dhR = paramContext.getResources().getColor(a.a.level_best_color);
-    this.dhS = paramContext.getResources().getColor(a.a.level_normal_color);
-    this.dhT = paramContext.getResources().getColor(a.a.level_middle_color);
-    this.dhU = paramContext.getResources().getColor(a.a.level_high_color);
-    this.dhV = paramContext.getResources().getColor(a.a.level_frozen_color);
-    com.tencent.matrix.a.cQs.a(this);
+    this.fhS = paramFloatFrameView;
+    paramFloatFrameView.fhi.setText(String.format("%.2f FPS", new Object[] { Float.valueOf(this.fhW) }));
+    this.fhG = paramContext.getResources().getColor(a.a.level_best_color);
+    this.fhH = paramContext.getResources().getColor(a.a.level_normal_color);
+    this.fhI = paramContext.getResources().getColor(a.a.level_middle_color);
+    this.fhJ = paramContext.getResources().getColor(a.a.level_high_color);
+    this.fhK = paramContext.getResources().getColor(a.a.level_frozen_color);
+    com.tencent.matrix.a.eLw.a(this);
     paramFloatFrameView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener()
     {
       public final void onViewAttachedToWindow(View paramAnonymousView)
       {
         com.tencent.matrix.e.c.i("Matrix.FrameDecorator", "onViewAttachedToWindow", new Object[0]);
-        if (com.tencent.matrix.b.Vt())
+        if (com.tencent.matrix.c.isInstalled())
         {
-          paramAnonymousView = (com.tencent.matrix.trace.b)com.tencent.matrix.b.Vu().Y(com.tencent.matrix.trace.b.class);
+          paramAnonymousView = (com.tencent.matrix.trace.b)com.tencent.matrix.c.avW().ai(com.tencent.matrix.trace.b.class);
           if (paramAnonymousView != null) {
-            paramAnonymousView.deH.a(a.this);
+            paramAnonymousView.fdr.a(a.this);
           }
         }
       }
@@ -95,11 +93,11 @@ public final class a
       public final void onViewDetachedFromWindow(View paramAnonymousView)
       {
         com.tencent.matrix.e.c.i("Matrix.FrameDecorator", "onViewDetachedFromWindow", new Object[0]);
-        if (com.tencent.matrix.b.Vt())
+        if (com.tencent.matrix.c.isInstalled())
         {
-          paramAnonymousView = (com.tencent.matrix.trace.b)com.tencent.matrix.b.Vu().Y(com.tencent.matrix.trace.b.class);
+          paramAnonymousView = (com.tencent.matrix.trace.b)com.tencent.matrix.c.avW().ai(com.tencent.matrix.trace.b.class);
           if (paramAnonymousView != null) {
-            paramAnonymousView.deH.b(a.this);
+            paramAnonymousView.fdr.b(a.this);
           }
         }
       }
@@ -112,23 +110,23 @@ public final class a
         paramContext = new DisplayMetrics();
         if (this.windowManager.getDefaultDisplay() != null)
         {
-          this.windowManager.getDefaultDisplay().getMetrics(this.cCm);
+          this.windowManager.getDefaultDisplay().getMetrics(this.euS);
           this.windowManager.getDefaultDisplay().getMetrics(paramContext);
         }
-        this.dib = new WindowManager.LayoutParams();
+        this.fhQ = new WindowManager.LayoutParams();
         if (Build.VERSION.SDK_INT < 26) {
           continue;
         }
-        this.dib.type = 2038;
-        this.dib.flags = 40;
-        this.dib.gravity = 8388659;
-        if (this.did != null) {
-          this.dib.x = (paramContext.widthPixels - this.did.getLayoutParams().width * 2);
+        this.fhQ.type = 2038;
+        this.fhQ.flags = 40;
+        this.fhQ.gravity = 8388659;
+        if (this.fhS != null) {
+          this.fhQ.x = (paramContext.widthPixels - this.fhS.getLayoutParams().width * 2);
         }
-        this.dib.y = 0;
-        this.dib.width = -2;
-        this.dib.height = -2;
-        this.dib.format = -2;
+        this.fhQ.y = 0;
+        this.fhQ.width = -2;
+        this.fhQ.height = -2;
+        this.fhQ.format = -2;
       }
       catch (Exception paramContext)
       {
@@ -136,35 +134,35 @@ public final class a
       }
       paramFloatFrameView.setOnTouchListener(new a.2(this, paramFloatFrameView));
       return;
-      this.dib.type = 2002;
+      this.fhQ.type = 2002;
     }
   }
   
-  public static a bw(Context paramContext)
+  public static a cj(Context paramContext)
   {
-    if (dif == null)
+    if (fhT == null)
     {
       if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
         break label41;
       }
-      dif = new a(paramContext, new FloatFrameView(paramContext));
+      fhT = new a(paramContext, new FloatFrameView(paramContext));
     }
     for (;;)
     {
-      return dif;
+      return fhT;
       try
       {
         synchronized (lock)
         {
           label41:
-          die.post(new Runnable()
+          mainHandler.post(new Runnable()
           {
             public final void run()
             {
               a.i(new a(this.val$context, new FloatFrameView(this.val$context), (byte)0));
-              synchronized (a.Yn())
+              synchronized (a.aAg())
               {
-                a.Yn().notifyAll();
+                a.aAg().notifyAll();
                 return;
               }
             }
@@ -176,19 +174,19 @@ public final class a
     }
   }
   
-  public final void a(String paramString, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
+  public final void b(String paramString, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
   {
-    super.a(paramString, paramLong1, paramLong2, paramInt, paramBoolean, paramLong3, paramLong4, paramLong5, paramLong6);
-    if (!Objects.equals(paramString, this.dip))
+    super.b(paramString, paramLong1, paramLong2, paramInt, paramBoolean, paramLong3, paramLong4, paramLong5, paramLong6);
+    if (!Objects.equals(paramString, this.fic))
     {
-      this.dgY = new int[c.b.values().length];
-      this.dip = paramString;
-      this.dik[0] = 0L;
-      this.din[0] = 0L;
+      this.fgh = new int[b.b.values().length];
+      this.fic = paramString;
+      this.fhX[0] = 0L;
+      this.fia[0] = 0L;
     }
-    this.dgV = (((float)this.dgV + (paramInt + 1) * this.dii));
-    this.dil += 1L;
-    float f1 = (float)(this.dgV - this.dik[0]);
+    this.fge = (((float)this.fge + (paramInt + 1) * this.fhV));
+    this.fhY += 1L;
+    float f1 = (float)(this.fge - this.fhX[0]);
     float f9;
     int n;
     int i1;
@@ -213,28 +211,28 @@ public final class a
     float f7;
     if (paramInt >= 42)
     {
-      paramString = this.dgY;
-      paramInt = c.b.dgN.index;
+      paramString = this.fgh;
+      paramInt = b.b.ffW.index;
       paramString[paramInt] += 1;
-      paramString = this.dio;
-      paramInt = c.b.dgN.index;
+      paramString = this.fib;
+      paramInt = b.b.ffW.index;
       paramString[paramInt] += 1;
-      this.dim = this.dhV;
-      paramLong1 = this.dil;
-      paramLong2 = this.din[0];
+      this.fhZ = this.fhK;
+      paramLong1 = this.fhY;
+      paramLong2 = this.fia[0];
       if (f1 >= 200.0F)
       {
-        f9 = Math.min(this.dij, (float)(paramLong1 - paramLong2) * 1000.0F / f1);
-        paramString = this.did;
-        paramInt = this.dim;
-        n = this.dgY[c.b.dgQ.index];
-        i1 = this.dgY[c.b.dgP.index];
-        i2 = this.dgY[c.b.dgO.index];
-        i3 = this.dgY[c.b.dgN.index];
-        i = this.dio[c.b.dgQ.index];
-        j = this.dio[c.b.dgP.index];
-        k = this.dio[c.b.dgO.index];
-        m = this.dio[c.b.dgN.index];
+        f9 = Math.min(this.fhW, (float)(paramLong1 - paramLong2) * 1000.0F / f1);
+        paramString = this.fhS;
+        paramInt = this.fhZ;
+        n = this.fgh[b.b.ffZ.index];
+        i1 = this.fgh[b.b.ffY.index];
+        i2 = this.fgh[b.b.ffX.index];
+        i3 = this.fgh[b.b.ffW.index];
+        i = this.fib[b.b.ffZ.index];
+        j = this.fib[b.b.ffY.index];
+        k = this.fib[b.b.ffX.index];
+        m = this.fib[b.b.ffW.index];
         i4 = n + i1 + i2 + i3;
         if (i4 > 0) {
           break label1103;
@@ -289,65 +287,65 @@ public final class a
       String str9 = String.format("%.1f", new Object[] { Float.valueOf(f8) });
       String str10 = String.format("sum: %.1f", new Object[] { Float.valueOf(f5 + f6 + f7 + f8) });
       String str11 = String.format("%.2f FPS", new Object[] { Float.valueOf(f9) });
-      die.post(new a.4(this, paramString, f9, paramInt, str11, str5, str1, str2, str3, str4, str10, str6, str7, str8, str9));
-      this.dim = this.dhR;
-      this.dik[0] = this.dgV;
-      this.din[0] = this.dil;
-      die.removeCallbacks(this.diq);
-      die.postDelayed(this.diq, 250L);
+      mainHandler.post(new a.4(this, paramString, f9, paramInt, str11, str5, str1, str2, str3, str4, str10, str6, str7, str8, str9));
+      this.fhZ = this.fhG;
+      this.fhX[0] = this.fge;
+      this.fia[0] = this.fhY;
+      mainHandler.removeCallbacks(this.fid);
+      mainHandler.postDelayed(this.fid, 250L);
       return;
       if (paramInt >= 24)
       {
-        paramString = this.dgY;
-        paramInt = c.b.dgO.index;
+        paramString = this.fgh;
+        paramInt = b.b.ffX.index;
         paramString[paramInt] += 1;
-        paramString = this.dio;
-        paramInt = c.b.dgO.index;
+        paramString = this.fib;
+        paramInt = b.b.ffX.index;
         paramString[paramInt] += 1;
-        if (this.dim == this.dhV) {
+        if (this.fhZ == this.fhK) {
           break;
         }
-        this.dim = this.dhU;
+        this.fhZ = this.fhJ;
         break;
       }
       if (paramInt >= 9)
       {
-        paramString = this.dgY;
-        paramInt = c.b.dgP.index;
+        paramString = this.fgh;
+        paramInt = b.b.ffY.index;
         paramString[paramInt] += 1;
-        paramString = this.dio;
-        paramInt = c.b.dgP.index;
+        paramString = this.fib;
+        paramInt = b.b.ffY.index;
         paramString[paramInt] += 1;
-        if ((this.dim == this.dhV) || (this.dim == this.dhU)) {
+        if ((this.fhZ == this.fhK) || (this.fhZ == this.fhJ)) {
           break;
         }
-        this.dim = this.dhT;
+        this.fhZ = this.fhI;
         break;
       }
       if (paramInt >= 3)
       {
-        paramString = this.dgY;
-        paramInt = c.b.dgQ.index;
+        paramString = this.fgh;
+        paramInt = b.b.ffZ.index;
         paramString[paramInt] += 1;
-        paramString = this.dio;
-        paramInt = c.b.dgQ.index;
+        paramString = this.fib;
+        paramInt = b.b.ffZ.index;
         paramString[paramInt] += 1;
-        if ((this.dim == this.dhV) || (this.dim == this.dhU) || (this.dim == this.dhT)) {
+        if ((this.fhZ == this.fhK) || (this.fhZ == this.fhJ) || (this.fhZ == this.fhI)) {
           break;
         }
-        this.dim = this.dhS;
+        this.fhZ = this.fhH;
         break;
       }
-      paramString = this.dgY;
-      paramInt = c.b.dgR.index;
+      paramString = this.fgh;
+      paramInt = b.b.fga.index;
       paramString[paramInt] += 1;
-      paramString = this.dio;
-      paramInt = c.b.dgR.index;
+      paramString = this.fib;
+      paramInt = b.b.fga.index;
       paramString[paramInt] += 1;
-      if ((this.dim == this.dhV) || (this.dim == this.dhU) || (this.dim == this.dhT) || (this.dim == this.dhS)) {
+      if ((this.fhZ == this.fhK) || (this.fhZ == this.fhJ) || (this.fhZ == this.fhI) || (this.fhZ == this.fhH)) {
         break;
       }
-      this.dim = this.dhR;
+      this.fhZ = this.fhG;
       break;
       label1103:
       f1 = i3 * 1.0F / i4 * 60.0F;
@@ -371,10 +369,10 @@ public final class a
   
   public final void dismiss()
   {
-    if (!this.dih) {
+    if (!this.egk) {
       return;
     }
-    die.post(new Runnable()
+    mainHandler.post(new Runnable()
     {
       public final void run()
       {
@@ -387,30 +385,30 @@ public final class a
     });
   }
   
-  public final void fL(String paramString)
+  public final Executor hI()
   {
-    if (this.did != null)
+    return this.executor;
+  }
+  
+  public final void hn(String paramString)
+  {
+    if (this.fhS != null)
     {
-      TextView localTextView = (TextView)this.did.findViewById(a.b.extra_info);
+      TextView localTextView = (TextView)this.fhS.findViewById(a.b.extra_info);
       if (localTextView != null) {
         localTextView.setText(paramString);
       }
     }
   }
   
-  public final Executor getExecutor()
-  {
-    return this.executor;
-  }
-  
   public final void onForeground(final boolean paramBoolean)
   {
     com.tencent.matrix.e.c.i("Matrix.FrameDecorator", "[onForeground] isForeground:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!this.dih) {}
-    while (die == null) {
+    if (!this.egk) {}
+    while (mainHandler == null) {
       return;
     }
-    die.post(new Runnable()
+    mainHandler.post(new Runnable()
     {
       public final void run()
       {
@@ -426,10 +424,10 @@ public final class a
   
   public final void show()
   {
-    if (!this.dih) {
+    if (!this.egk) {
       return;
     }
-    die.post(new Runnable()
+    mainHandler.post(new Runnable()
     {
       public final void run()
       {
@@ -444,7 +442,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.trace.view.a
  * JD-Core Version:    0.7.0.1
  */

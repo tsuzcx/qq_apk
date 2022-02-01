@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.game.ui.tab;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GameTabWebUI2

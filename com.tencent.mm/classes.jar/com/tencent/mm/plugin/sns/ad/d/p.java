@@ -13,121 +13,123 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  protected View Dbo;
-  protected View JzE;
-  protected AnimatorSet JzF;
-  protected AnimatorSet JzG;
-  protected boolean JzH;
-  protected boolean JzI;
-  private int JzJ;
-  public a JzL;
-  private int eYt;
+  protected View POr;
+  protected Object POs;
+  protected AnimatorSet POt;
+  protected AnimatorSet POu;
+  protected boolean POv;
+  protected boolean POw;
+  private int POx;
+  private int hbT;
   protected Context mContext;
-  protected boolean qov;
+  protected boolean ttc;
   
-  public p(View paramView1, View paramView2, Context paramContext)
+  public p(View paramView, Object paramObject, Context paramContext, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(270500);
-    this.qov = false;
-    this.JzE = paramView1;
-    this.Dbo = paramView2;
+    AppMethodBeat.i(309959);
+    this.ttc = false;
+    this.POr = paramView;
+    this.POs = paramObject;
     this.mContext = paramContext;
-    this.JzI = false;
-    this.eYt = 1000;
-    this.JzJ = -6000;
-    paramView2 = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
-    paramView2.setDuration(0L);
-    if (this.JzI)
+    this.POw = paramBoolean;
+    this.hbT = 500;
+    this.POx = paramInt;
+    paramContext = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
+    paramContext.setDuration(0L);
+    if (this.POw)
     {
-      paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -180.0F, 0.0F });
-      paramView1.setDuration(this.eYt);
-      paramContext = ObjectAnimator.ofFloat(null, "alpha", new float[] { 0.0F, 1.0F });
-      paramContext.setDuration(0L);
-      paramContext.setStartDelay(this.eYt / 2);
+      paramView = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -180.0F, 10.0F });
+      paramView.setDuration(this.hbT);
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(null, "alpha", new float[] { 0.0F, 1.0F });
+      localObjectAnimator.setDuration(0L);
+      localObjectAnimator.setStartDelay(this.hbT / 2);
+      if (!this.POw) {
+        break label437;
+      }
+      paramObject = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 10.0F, 0.0F });
+      label173:
+      paramObject.setDuration(this.hbT);
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.play(paramView2).with(paramView1).with(paramContext);
-      this.JzF = localAnimatorSet;
-      if (!this.JzI) {
-        break label375;
+      localAnimatorSet.play(paramContext).with(paramView).with(localObjectAnimator);
+      localAnimatorSet.play(paramObject).after(paramView);
+      this.POt = localAnimatorSet;
+      if (!this.POw) {
+        break label459;
       }
     }
-    label375:
-    for (paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, 180.0F });; paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, -180.0F }))
+    label437:
+    label459:
+    for (paramView = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, 190.0F });; paramView = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, -190.0F }))
     {
-      paramView1.setDuration(this.eYt);
-      paramView2 = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
-      paramView2.setDuration(0L);
-      paramView2.setStartDelay(this.eYt / 2);
+      paramView.setDuration(this.hbT);
+      paramObject = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
+      paramObject.setDuration(0L);
+      paramObject.setStartDelay(this.hbT / 2);
       paramContext = new AnimatorSet();
-      paramContext.play(paramView1).with(paramView2);
-      this.JzG = paramContext;
-      this.JzF.addListener(new AnimatorListenerAdapter()
+      paramContext.play(paramView).with(paramObject);
+      this.POu = paramContext;
+      this.POt.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(270128);
+          AppMethodBeat.i(310075);
           super.onAnimationStart(paramAnonymousAnimator);
-          p.this.qov = true;
-          AppMethodBeat.o(270128);
+          p.this.ttc = true;
+          AppMethodBeat.o(310075);
         }
       });
-      this.JzG.addListener(new AnimatorListenerAdapter()
+      this.POu.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(232812);
+          AppMethodBeat.i(310067);
           super.onAnimationEnd(paramAnonymousAnimator);
-          p.this.qov = false;
-          if (p.this.JzL != null) {
-            p.this.JzL.fKb();
-          }
-          AppMethodBeat.o(232812);
+          p.this.ttc = false;
+          AppMethodBeat.o(310067);
         }
       });
-      int i = this.JzJ;
-      float f = this.JzE.getContext().getResources().getDisplayMetrics().density;
-      f = i * f;
-      this.JzE.setCameraDistance(f);
-      this.Dbo.setCameraDistance(f);
-      AppMethodBeat.o(270500);
+      paramInt = this.POx;
+      float f = this.POr.getContext().getResources().getDisplayMetrics().density * paramInt;
+      this.POr.setCameraDistance(f);
+      if ((this.POs instanceof View)) {
+        ((View)this.POs).setCameraDistance(f);
+      }
+      AppMethodBeat.o(309959);
       return;
-      paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 180.0F, 0.0F });
+      paramView = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 180.0F, -10.0F });
       break;
+      paramObject = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -10.0F, 0.0F });
+      break label173;
     }
   }
   
-  public final void fKa()
+  public final void gZV()
   {
-    AppMethodBeat.i(270501);
-    if (!this.qov)
+    AppMethodBeat.i(309967);
+    if (!this.ttc)
     {
-      if (!this.JzH)
+      if (!this.POv)
       {
-        this.JzF.setTarget(this.JzE);
-        this.JzG.setTarget(this.Dbo);
-        this.JzF.start();
-        this.JzG.start();
-        this.JzH = true;
-        AppMethodBeat.o(270501);
+        this.POt.setTarget(this.POr);
+        this.POu.setTarget(this.POs);
+        this.POt.start();
+        this.POu.start();
+        this.POv = true;
+        AppMethodBeat.o(309967);
         return;
       }
-      this.JzF.setTarget(this.Dbo);
-      this.JzG.setTarget(this.JzE);
-      this.JzF.start();
-      this.JzG.start();
-      this.JzH = false;
+      this.POt.setTarget(this.POs);
+      this.POu.setTarget(this.POr);
+      this.POt.start();
+      this.POu.start();
+      this.POv = false;
     }
-    AppMethodBeat.o(270501);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void fKb();
+    AppMethodBeat.o(309967);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.d.p
  * JD-Core Version:    0.7.0.1
  */

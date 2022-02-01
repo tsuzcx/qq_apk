@@ -5,21 +5,21 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface d
   extends a
 {
-  public abstract String aKH(String paramString);
+  public abstract String aHx(String paramString);
   
-  public abstract String aKI(String paramString);
+  public abstract String aHy(String paramString);
   
-  public abstract void eAl();
+  public abstract void fIl();
   
-  public abstract boolean eAm();
+  public abstract boolean fIm();
   
-  public abstract boolean eAn();
+  public abstract boolean fIn();
   
-  public abstract boolean eAo();
+  public abstract boolean fIo();
   
-  public abstract boolean eAp();
+  public abstract boolean fIp();
   
-  public abstract String eI(String paramString, int paramInt);
+  public abstract String fy(String paramString, int paramInt);
 }
 
 

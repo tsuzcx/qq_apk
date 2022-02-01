@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
-import com.tencent.mm.plugin.av.c;
-import kotlin.l;
+import com.tencent.mm.plugin.ax.c;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClientContext;", "Lcom/tencent/mm/plugin/webjsapi/JSEngineAPIContext;", "error", "", "msg", "", "log", "postMessage", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/GamePrefetcherClientContext;", "Lcom/tencent/mm/plugin/webjsapi/JSEngineAPIContext;", "error", "", "msg", "", "log", "postMessage", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
   extends c
 {

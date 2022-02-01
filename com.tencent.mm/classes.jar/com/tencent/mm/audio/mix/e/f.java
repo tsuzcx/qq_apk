@@ -8,24 +8,22 @@ import java.util.List;
 public abstract class f
   implements h
 {
-  protected int fpA = 32767;
-  protected int fpB = -32768;
-  protected com.tencent.mm.audio.mix.a.b fpC;
-  protected short[][] fpv = (short[][])Array.newInstance(Short.TYPE, new int[] { 1, 1 });
-  protected int fpw = 1;
-  protected int fpx = 1;
-  protected short[] fpy = new short[1];
-  protected int fpz = 1;
+  protected short[][] htE = (short[][])Array.newInstance(Short.TYPE, new int[] { 1, 1 });
+  protected int htF = 1;
+  protected int htG = 1;
+  protected short[] htH = new short[1];
+  protected int htI = 1;
+  protected int htJ = 32767;
+  protected int htK = -32768;
+  protected com.tencent.mm.audio.mix.a.b htL;
   
-  private byte[] aem()
+  private byte[] aGj()
   {
-    if (this.fpC != null) {
-      return this.fpC.fmy;
+    if (this.htL != null) {
+      return this.htL.hqJ;
     }
     return null;
   }
-  
-  protected abstract byte[] K(int paramInt1, int paramInt2, int paramInt3);
   
   public final boolean a(com.tencent.mm.audio.mix.a.b paramb, List<e> paramList)
   {
@@ -38,10 +36,10 @@ public abstract class f
     int i = 0;
     while (i < paramList.size())
     {
-      localObject1[i] = ((e)paramList.get(i)).fmy;
+      localObject1[i] = ((e)paramList.get(i)).hqJ;
       i += 1;
     }
-    this.fpC = paramb;
+    this.htL = paramb;
     if (localObject1.length == 0) {
       localObject1 = null;
     }
@@ -56,7 +54,7 @@ public abstract class f
       }
       else if (localObject1.length == 1)
       {
-        byte[] arrayOfByte = aem();
+        byte[] arrayOfByte = aGj();
         if (arrayOfByte != null)
         {
           localObject1 = arrayOfByte;
@@ -87,42 +85,44 @@ public abstract class f
         label232:
         int k = localObject1.length;
         int m = localObject2.length / 2;
-        if ((k != this.fpw) || (m != this.fpx))
+        if ((k != this.htF) || (m != this.htG))
         {
-          this.fpv = ((short[][])Array.newInstance(Short.TYPE, new int[] { k, m }));
-          this.fpw = k;
-          this.fpx = m;
+          this.htE = ((short[][])Array.newInstance(Short.TYPE, new int[] { k, m }));
+          this.htF = k;
+          this.htG = m;
         }
         i = 0;
         while (i < k)
         {
-          Arrays.fill(this.fpv[i], 0, m - 1, (short)0);
+          Arrays.fill(this.htE[i], 0, m - 1, (short)0);
           int j = 0;
           while (j < m)
           {
-            this.fpv[i][j] = ((short)(localObject1[i][(j * 2)] & 0xFF | (localObject1[i][(j * 2 + 1)] & 0xFF) << 8));
+            this.htE[i][j] = ((short)(localObject1[i][(j * 2)] & 0xFF | (localObject1[i][(j * 2 + 1)] & 0xFF) << 8));
             j += 1;
           }
           i += 1;
         }
-        if (this.fpz != m)
+        if (this.htI != m)
         {
-          this.fpz = m;
-          this.fpy = new short[m];
+          this.htI = m;
+          this.htH = new short[m];
         }
-        Arrays.fill(this.fpy, 0, m - 1, (short)0);
-        localObject1 = K(k, m, localObject2.length);
+        Arrays.fill(this.htH, 0, m - 1, (short)0);
+        localObject1 = aa(k, m, localObject2.length);
       }
     }
-    paramb.fmy = ((byte[])localObject1);
+    paramb.hqJ = ((byte[])localObject1);
     paramb.channels = ((e)paramList.get(0)).channels;
     paramb.sampleRate = ((e)paramList.get(0)).sampleRate;
     return true;
   }
   
-  protected final byte[] cB(int paramInt1, int paramInt2)
+  protected abstract byte[] aa(int paramInt1, int paramInt2, int paramInt3);
+  
+  protected final byte[] dr(int paramInt1, int paramInt2)
   {
-    byte[] arrayOfByte2 = aem();
+    byte[] arrayOfByte2 = aGj();
     byte[] arrayOfByte1;
     if (arrayOfByte2 != null)
     {
@@ -136,20 +136,20 @@ public abstract class f
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      arrayOfByte1[(paramInt1 * 2)] = ((byte)(this.fpy[paramInt1] & 0xFF));
-      arrayOfByte1[(paramInt1 * 2 + 1)] = ((byte)((this.fpy[paramInt1] & 0xFF00) >> 8));
+      arrayOfByte1[(paramInt1 * 2)] = ((byte)(this.htH[paramInt1] & 0xFF));
+      arrayOfByte1[(paramInt1 * 2 + 1)] = ((byte)((this.htH[paramInt1] & 0xFF00) >> 8));
       paramInt1 += 1;
     }
     return arrayOfByte1;
   }
   
-  protected final short kx(int paramInt)
+  protected final short oe(int paramInt)
   {
-    if (paramInt > this.fpA) {
-      return (short)this.fpA;
+    if (paramInt > this.htJ) {
+      return (short)this.htJ;
     }
-    if (paramInt < this.fpB) {
-      return (short)this.fpB;
+    if (paramInt < this.htK) {
+      return (short)this.htK;
     }
     return (short)paramInt;
   }

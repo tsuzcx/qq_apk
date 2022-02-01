@@ -15,11 +15,11 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 public class WcPayCashierBankcardItemLayout
   extends LinearLayout
 {
-  public FavourLayout OYp;
-  public TextView Pdv;
-  public TextView Pdw;
-  public RadioButton Pdx;
-  public CdnImageView tCM;
+  public FavourLayout VOD;
+  public TextView VUc;
+  public TextView VUd;
+  public RadioButton VUe;
+  public CdnImageView wGP;
   
   public WcPayCashierBankcardItemLayout(Context paramContext)
   {
@@ -49,17 +49,17 @@ public class WcPayCashierBankcardItemLayout
   {
     AppMethodBeat.i(71323);
     View.inflate(getContext(), a.g.wc_pay_cashier_bankcard_item, this);
-    this.tCM = ((CdnImageView)findViewById(a.f.wpcb_bank_logo_iv));
-    this.Pdv = ((TextView)findViewById(a.f.wpcb_bankname_tv));
-    this.Pdw = ((TextView)findViewById(a.f.wpcb_bottom_tips_tv));
-    this.Pdx = ((RadioButton)findViewById(a.f.wpcb_rb));
-    this.OYp = ((FavourLayout)findViewById(a.f.wpcb_favour_layout));
+    this.wGP = ((CdnImageView)findViewById(a.f.wpcb_bank_logo_iv));
+    this.VUc = ((TextView)findViewById(a.f.wpcb_bankname_tv));
+    this.VUd = ((TextView)findViewById(a.f.wpcb_bottom_tips_tv));
+    this.VUe = ((RadioButton)findViewById(a.f.wpcb_rb));
+    this.VOD = ((FavourLayout)findViewById(a.f.wpcb_favour_layout));
     AppMethodBeat.o(71323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierBankcardItemLayout
  * JD-Core Version:    0.7.0.1
  */

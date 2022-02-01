@@ -1,168 +1,186 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.h.f;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.plugin.appbrand.page.n;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
-import com.tencent.mm.plugin.appbrand.ui.z;
+import com.tencent.mm.plugin.appbrand.ui.ag;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandEntryPageFastLoadHelper;", "", "()V", "TAG", "", "createFastLoadPrompt", "Landroid/view/View;", "parent", "Landroid/view/ViewGroup;", "tryFastLoadEntryPage", "", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/AppBrandEntryPageFastLoadHelper;", "", "()V", "TAG", "", "createFastLoadPrompt", "Landroid/view/View;", "parent", "Landroid/view/ViewGroup;", "tryFastLoadEntryPage", "", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
 {
-  public static final h nsH;
+  public static final h qrq;
   
   static
   {
-    AppMethodBeat.i(275373);
-    nsH = new h();
-    AppMethodBeat.o(275373);
+    AppMethodBeat.i(316823);
+    qrq = new h();
+    AppMethodBeat.o(316823);
   }
   
   public static final void a(ah paramah)
   {
-    AppMethodBeat.i(275372);
-    p.k(paramah, "$this$tryFastLoadEntryPage");
+    AppMethodBeat.i(316804);
+    s.u(paramah, "<this>");
     if (paramah.getRuntime() == null)
     {
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316804);
       return;
     }
-    Object localObject = paramah.getRuntime();
-    p.j(localObject, "this.runtime");
-    if (((t)localObject).isDestroyed())
+    if (paramah.getRuntime().qsE.get())
     {
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316804);
       return;
     }
-    localObject = paramah.getRuntime();
-    p.j(localObject, "this.runtime");
-    if (((t)localObject).Qv())
+    if (paramah.getRuntime().aqJ())
     {
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316804);
       return;
     }
-    if (AppBrandRuntimeWCAccessible.F((AppBrandRuntime)paramah.getRuntime()))
+    if (AppBrandRuntimeWCAccessible.H((AppBrandRuntime)paramah.getRuntime()))
     {
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316804);
       return;
     }
-    if (!paramah.cet())
+    if (!paramah.txm)
     {
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316804);
       return;
     }
-    localObject = paramah.getRuntime();
-    p.j(localObject, "this.runtime");
-    if ((((t)localObject).bCz() instanceof z))
+    if (paramah.getRuntime().getInitConfig().aqE() == com.tencent.mm.plugin.appbrand.config.z.raW)
     {
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316804);
       return;
     }
-    localObject = paramah.getRuntime();
-    p.j(localObject, "this.runtime");
-    if (!((t)localObject).bDl())
+    if ((paramah.getRuntime().cbM() instanceof ag))
     {
-      localObject = paramah.cdY();
-      p.j(localObject, "this.actionBar");
+      AppMethodBeat.o(316804);
+      return;
+    }
+    if (!paramah.getRuntime().ccB())
+    {
       int i;
-      if ((!((com.tencent.mm.plugin.appbrand.widget.actionbar.b)localObject).cne()) || ((paramah.cdS() instanceof n)))
+      if ((!paramah.cEC().cOX()) || ((paramah.txk instanceof n)))
       {
         i = 1;
         if (i != 0) {
-          break label223;
+          break label208;
         }
-        localObject = com.tencent.mm.plugin.appbrand.report.quality.b.amO(paramah.getAppId());
-        if (localObject == null) {
-          break label218;
+        localObject = com.tencent.mm.plugin.appbrand.report.quality.b.afZ(paramah.getAppId());
+        if (localObject != null) {
+          break label200;
         }
       }
-      label218:
-      for (localObject = ((QualitySessionRuntime)localObject).qNN;; localObject = null)
+      label200:
+      for (localObject = null;; localObject = ((QualitySessionRuntime)localObject).tSx)
       {
-        if (localObject == com.tencent.mm.plugin.appbrand.report.quality.j.qNe) {
-          break label223;
+        if (localObject == com.tencent.mm.plugin.appbrand.report.quality.i.tRO) {
+          break label208;
         }
-        AppMethodBeat.o(275372);
+        AppMethodBeat.o(316804);
         return;
         i = 0;
         break;
       }
     }
-    label223:
-    localObject = new Boolean[1];
+    label208:
+    Object localObject = new Boolean[1];
     localObject[0] = Boolean.FALSE;
-    final View[] arrayOfView = new View[1];
-    final Long[] arrayOfLong = new Long[1];
+    View[] arrayOfView = new View[1];
+    Long[] arrayOfLong = new Long[1];
     arrayOfLong[0] = Long.valueOf(0L);
-    paramah.a((h.f)new a(paramah, (Boolean[])localObject, arrayOfLong, arrayOfView));
+    paramah.a(new h..ExternalSyntheticLambda0((Boolean[])localObject, arrayOfLong, paramah, arrayOfView));
     View localView = paramah.getContentView();
-    if (localView != null)
+    if (localView != null) {
+      localView.post(new h..ExternalSyntheticLambda1((Boolean[])localObject, paramah, arrayOfView, arrayOfLong));
+    }
+    AppMethodBeat.o(316804);
+  }
+  
+  private static final void a(Boolean[] paramArrayOfBoolean, ah paramah, View[] paramArrayOfView, Long[] paramArrayOfLong)
+  {
+    AppMethodBeat.i(316815);
+    s.u(paramArrayOfBoolean, "$pageOnReadyCalled");
+    s.u(paramah, "$this_tryFastLoadEntryPage");
+    s.u(paramArrayOfView, "$promptViewRef");
+    s.u(paramArrayOfLong, "$promptTick");
+    if (paramArrayOfBoolean[0].booleanValue())
     {
-      localView.post((Runnable)new b(paramah, (Boolean[])localObject, arrayOfView, arrayOfLong));
-      AppMethodBeat.o(275372);
+      AppMethodBeat.o(316815);
       return;
     }
-    AppMethodBeat.o(275372);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onReady"})
-  static final class a
-    implements h.f
-  {
-    a(ah paramah, Boolean[] paramArrayOfBoolean, Long[] paramArrayOfLong, View[] paramArrayOfView) {}
-    
-    public final void NR()
+    paramArrayOfBoolean = paramah.getContentView();
+    if ((paramArrayOfBoolean instanceof ViewGroup)) {}
+    for (paramArrayOfBoolean = (ViewGroup)paramArrayOfBoolean; paramArrayOfBoolean == null; paramArrayOfBoolean = null)
     {
-      AppMethodBeat.i(268019);
-      this.nsJ[0] = Boolean.TRUE;
-      Object localObject1;
-      if (arrayOfLong[0].longValue() > 0L)
-      {
-        long l = arrayOfLong[0].longValue();
-        localObject1 = new StringBuilder("tryFastLoadEntryPage, onReady called with promptView shown, appId[");
-        localObject2 = this.nsI.getRuntime();
-        p.j(localObject2, "this.runtime");
-        Log.i("MicroMsg.AppBrandEntryPageFastLoadHelper", ((t)localObject2).getAppId() + "], time diff: " + (Util.currentTicks() - l));
-      }
-      Object localObject2 = arrayOfView[0];
-      if (localObject2 != null)
-      {
-        com.tencent.mm.plugin.appbrand.ui.j.da((View)localObject2);
-        localObject1 = localObject2;
-        if (!(localObject2 instanceof ThreeDotsLoadingView)) {
-          localObject1 = null;
-        }
-        localObject1 = (ThreeDotsLoadingView)localObject1;
-        if (localObject1 != null)
-        {
-          ((ThreeDotsLoadingView)localObject1).hZY();
-          AppMethodBeat.o(268019);
-          return;
-        }
-        AppMethodBeat.o(268019);
-        return;
-      }
-      AppMethodBeat.o(268019);
+      AppMethodBeat.o(316815);
+      return;
     }
+    paramArrayOfBoolean = paramArrayOfBoolean.getContext();
+    s.s(paramArrayOfBoolean, "parent.context");
+    paramArrayOfBoolean = new ProgressBar((Context)new com.tencent.mm.ui.z(paramArrayOfBoolean, ba.j.mediumCustomProgressBar));
+    paramArrayOfBoolean.setIndeterminateDrawable(androidx.core.content.a.m(paramArrayOfBoolean.getContext(), ba.e.progress_medium_holo));
+    int i = kotlin.h.a.eH(paramArrayOfBoolean.getContext().getResources().getDisplayMetrics().density * 36.0F);
+    paramArrayOfBoolean.setLayoutParams(new ViewGroup.LayoutParams(i, i));
+    paramArrayOfBoolean = (View)paramArrayOfBoolean;
+    Log.i("MicroMsg.AppBrandEntryPageFastLoadHelper", "tryFastLoadEntryPage, show promptView, appId[" + paramah.getRuntime().mAppId + ']');
+    paramArrayOfView[0] = paramArrayOfBoolean;
+    paramArrayOfLong[0] = Long.valueOf(Util.currentTicks());
+    paramah.txj.a(paramArrayOfBoolean, 10000L);
+    paramah.getRuntime().cbx();
+    AppMethodBeat.o(316815);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    implements Runnable
+  private static final void a(Boolean[] paramArrayOfBoolean, Long[] paramArrayOfLong, ah paramah, View[] paramArrayOfView)
   {
-    b(ah paramah, Boolean[] paramArrayOfBoolean, View[] paramArrayOfView, Long[] paramArrayOfLong) {}
+    AppMethodBeat.i(316808);
+    s.u(paramArrayOfBoolean, "$pageOnReadyCalled");
+    s.u(paramArrayOfLong, "$promptTick");
+    s.u(paramah, "$this_tryFastLoadEntryPage");
+    s.u(paramArrayOfView, "$promptViewRef");
+    paramArrayOfBoolean[0] = Boolean.TRUE;
+    if (paramArrayOfLong[0].longValue() > 0L)
+    {
+      long l = paramArrayOfLong[0].longValue();
+      Log.i("MicroMsg.AppBrandEntryPageFastLoadHelper", "tryFastLoadEntryPage, onReady called with promptView shown, appId[" + paramah.getRuntime().mAppId + "], time diff: " + (Util.currentTicks() - l));
+    }
+    paramArrayOfBoolean = paramArrayOfView[0];
+    if (paramArrayOfBoolean != null)
+    {
+      com.tencent.mm.plugin.appbrand.ui.i.dI(paramArrayOfBoolean);
+      if (!(paramArrayOfBoolean instanceof ThreeDotsLoadingView)) {
+        break label138;
+      }
+    }
+    label138:
+    for (paramArrayOfBoolean = (ThreeDotsLoadingView)paramArrayOfBoolean;; paramArrayOfBoolean = null)
+    {
+      if (paramArrayOfBoolean != null) {
+        paramArrayOfBoolean.jFf();
+      }
+      AppMethodBeat.o(316808);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h
  * JD-Core Version:    0.7.0.1
  */

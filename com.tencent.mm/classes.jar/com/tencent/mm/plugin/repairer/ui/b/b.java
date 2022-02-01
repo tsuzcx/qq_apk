@@ -1,53 +1,29 @@
 package com.tencent.mm.plugin.repairer.ui.b;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dwp;
-import com.tencent.mm.util.b.a;
-import com.tencent.mm.view.recyclerview.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.ball.a.e;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/repairer/ui/model/RepairerConvertDataItem;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "item", "Lcom/tencent/mm/protocal/protobuf/RepairerItem;", "value", "", "(Lcom/tencent/mm/protocal/protobuf/RepairerItem;Ljava/lang/String;)V", "getItem", "()Lcom/tencent/mm/protocal/protobuf/RepairerItem;", "getValue", "()Ljava/lang/String;", "setValue", "(Ljava/lang/String;)V", "getItemId", "", "getItemType", "", "ui-repairer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/floatball/RepairerFloatBallPageAdapter;", "Lcom/tencent/mm/plugin/ball/adapter/FloatBallPageAdapter;", "activity", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "getIndicatorBottomMargin", "", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements a
+  extends e
 {
-  public final dwp Iye;
-  public String value;
-  
-  public b(dwp paramdwp, String paramString)
+  public b(Activity paramActivity)
   {
-    AppMethodBeat.i(226595);
-    this.Iye = paramdwp;
-    this.value = paramString;
-    AppMethodBeat.o(226595);
+    super(paramActivity);
+    AppMethodBeat.i(277979);
+    AppMethodBeat.o(277979);
   }
   
-  public final int bAQ()
+  public final int cXC()
   {
-    return this.Iye.type;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(226592);
-    String str = this.Iye.key;
-    p.j(str, "item.key");
-    long l = b.a.valueOf(str).ordinal();
-    AppMethodBeat.o(226592);
-    return l;
-  }
-  
-  public final void setValue(String paramString)
-  {
-    AppMethodBeat.i(226593);
-    p.k(paramString, "<set-?>");
-    this.value = paramString;
-    AppMethodBeat.o(226593);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.repairer.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

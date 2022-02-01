@@ -9,6 +9,8 @@ import com.tencent.qqmusic.mediaplayer.network.IMediaHTTPService;
 import com.tencent.qqmusic.mediaplayer.seektable.SeekTable;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSourceFactory;
 import com.tencent.qqmusic.mediaplayer.upstream.UriLoader;
+import com.tencent.qqmusic.mediaplayer.util.Logger;
+import java.io.File;
 import java.io.FileDescriptor;
 
 public abstract class BaseMediaPlayer
@@ -19,6 +21,7 @@ public abstract class BaseMediaPlayer
   private static final String TAG = "BaseMediaPlayer";
   private long duration = 0L;
   private boolean isPaused = false;
+  protected String mCacheDir = null;
   private long startTime = 0L;
   
   protected abstract void TransferStateTo(int paramInt);
@@ -104,6 +107,16 @@ public abstract class BaseMediaPlayer
   
   public void setLeastCommonMultiple(int paramInt) {}
   
+  public void setOnlinePlayCacheDir(String paramString)
+  {
+    if (new File(paramString).isDirectory())
+    {
+      this.mCacheDir = paramString;
+      return;
+    }
+    Logger.e("BaseMediaPlayer", "setOnlinePlayCacheDir cacheDir is invalid! cacheDir = ".concat(String.valueOf(paramString)));
+  }
+  
   public void setPlayLocalPath(String paramString) {}
   
   public abstract void setPlayerListenerCallback(PlayerListenerCallback paramPlayerListenerCallback);
@@ -118,7 +131,7 @@ public abstract class BaseMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.BaseMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.google.firebase.iid;
 
-import androidx.annotation.Keep;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.firebase.components.a.a;
 import com.google.firebase.components.e;
 import com.google.firebase.components.f;
@@ -10,22 +8,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.List;
 
-@Keep
-@KeepForSdk
 public final class Registrar
   implements e
 {
-  @Keep
   public final List<com.google.firebase.components.a<?>> getComponents()
   {
     AppMethodBeat.i(4148);
-    Object localObject = com.google.firebase.components.a.n(FirebaseInstanceId.class).a(f.p(com.google.firebase.a.class)).a(g.bJd);
+    Object localObject = com.google.firebase.components.a.w(FirebaseInstanceId.class).a(f.y(com.google.firebase.a.class)).a(g.dCL);
     if (((a.a)localObject).zzad == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      r.c(bool, "Instantiation type has already been set.");
+      r.b(bool, "Instantiation type has already been set.");
       ((a.a)localObject).zzad = 1;
-      localObject = Arrays.asList(new com.google.firebase.components.a[] { ((a.a)localObject).yt(), com.google.firebase.components.a.n(com.google.firebase.iid.a.a.class).a(f.p(FirebaseInstanceId.class)).a(h.bJd).yt() });
+      localObject = Arrays.asList(new com.google.firebase.components.a[] { ((a.a)localObject).Ye(), com.google.firebase.components.a.w(com.google.firebase.iid.a.a.class).a(f.y(FirebaseInstanceId.class)).a(h.dCL).Ye() });
       AppMethodBeat.o(4148);
       return localObject;
     }
@@ -34,17 +29,17 @@ public final class Registrar
   static final class a
     implements com.google.firebase.iid.a.a
   {
-    private final FirebaseInstanceId bIW;
+    private final FirebaseInstanceId dCE;
     
     public a(FirebaseInstanceId paramFirebaseInstanceId)
     {
-      this.bIW = paramFirebaseInstanceId;
+      this.dCE = paramFirebaseInstanceId;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.Registrar
  * JD-Core Version:    0.7.0.1
  */

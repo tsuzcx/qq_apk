@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.e;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.g.a.d;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.google.android.material.a.f;
 import com.google.android.material.a.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -24,11 +24,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   extends e
 {
-  private BottomSheetBehavior<FrameLayout> bxN;
-  boolean bxO;
-  boolean bxP;
-  boolean bxQ;
-  private BottomSheetBehavior.a bxR;
+  private BottomSheetBehavior<FrameLayout> dqQ;
+  boolean dqR;
+  boolean dqS;
+  boolean dqT;
+  private BottomSheetBehavior.a dqU;
   
   public a(Context paramContext)
   {
@@ -39,7 +39,7 @@ public class a
   
   private View a(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(235474);
+    AppMethodBeat.i(209519);
     FrameLayout localFrameLayout = (FrameLayout)View.inflate(getContext(), a.h.design_bottom_sheet_dialog, null);
     CoordinatorLayout localCoordinatorLayout = (CoordinatorLayout)localFrameLayout.findViewById(a.f.coordinator);
     View localView = paramView;
@@ -51,9 +51,9 @@ public class a
       }
     }
     paramView = (FrameLayout)localCoordinatorLayout.findViewById(a.f.design_bottom_sheet);
-    this.bxN = BottomSheetBehavior.cg(paramView);
-    this.bxN.bxG = this.bxR;
-    this.bxN.bxz = this.bxO;
+    this.dqQ = BottomSheetBehavior.cC(paramView);
+    this.dqQ.dqJ = this.dqU;
+    this.dqQ.dqC = this.dqR;
     if (paramLayoutParams == null) {
       paramView.addView(localView);
     }
@@ -63,52 +63,52 @@ public class a
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(235429);
-          if ((a.this.bxO) && (a.this.isShowing()))
+          AppMethodBeat.i(209498);
+          if ((a.this.dqR) && (a.this.isShowing()))
           {
             paramAnonymousView = a.this;
-            if (!paramAnonymousView.bxQ)
+            if (!paramAnonymousView.dqT)
             {
               TypedArray localTypedArray = paramAnonymousView.getContext().obtainStyledAttributes(new int[] { 16843611 });
-              paramAnonymousView.bxP = localTypedArray.getBoolean(0, true);
+              paramAnonymousView.dqS = localTypedArray.getBoolean(0, true);
               localTypedArray.recycle();
-              paramAnonymousView.bxQ = true;
+              paramAnonymousView.dqT = true;
             }
-            if (paramAnonymousView.bxP) {
+            if (paramAnonymousView.dqS) {
               a.this.cancel();
             }
           }
-          AppMethodBeat.o(235429);
+          AppMethodBeat.o(209498);
         }
       });
-      w.a(paramView, new androidx.core.g.a()
+      z.a(paramView, new androidx.core.g.a()
       {
         public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, d paramAnonymousd)
         {
-          AppMethodBeat.i(235433);
+          AppMethodBeat.i(209492);
           super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousd);
-          if (a.this.bxO)
+          if (a.this.dqR)
           {
-            paramAnonymousd.bA(1048576);
-            paramAnonymousd.ac(true);
-            AppMethodBeat.o(235433);
+            paramAnonymousd.eu(1048576);
+            paramAnonymousd.aI(true);
+            AppMethodBeat.o(209492);
             return;
           }
-          paramAnonymousd.ac(false);
-          AppMethodBeat.o(235433);
+          paramAnonymousd.aI(false);
+          AppMethodBeat.o(209492);
         }
         
         public final boolean performAccessibilityAction(View paramAnonymousView, int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
-          AppMethodBeat.i(235435);
-          if ((paramAnonymousInt == 1048576) && (a.this.bxO))
+          AppMethodBeat.i(209499);
+          if ((paramAnonymousInt == 1048576) && (a.this.dqR))
           {
             a.this.cancel();
-            AppMethodBeat.o(235435);
+            AppMethodBeat.o(209499);
             return true;
           }
           boolean bool = super.performAccessibilityAction(paramAnonymousView, paramAnonymousInt, paramAnonymousBundle);
-          AppMethodBeat.o(235435);
+          AppMethodBeat.o(209499);
           return bool;
         }
       });
@@ -119,7 +119,7 @@ public class a
           return true;
         }
       });
-      AppMethodBeat.o(235474);
+      AppMethodBeat.o(209519);
       return localFrameLayout;
       paramView.addView(localView, paramLayoutParams);
     }
@@ -127,7 +127,7 @@ public class a
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(235458);
+    AppMethodBeat.i(209543);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null)
@@ -139,69 +139,69 @@ public class a
       }
       paramBundle.setLayout(-1, -1);
     }
-    AppMethodBeat.o(235458);
+    AppMethodBeat.o(209543);
   }
   
   protected void onStart()
   {
-    AppMethodBeat.i(235469);
+    AppMethodBeat.i(209591);
     super.onStart();
-    if ((this.bxN != null) && (this.bxN.state == 5)) {
-      this.bxN.setState(4);
+    if ((this.dqQ != null) && (this.dqQ.state == 5)) {
+      this.dqQ.setState(4);
     }
-    AppMethodBeat.o(235469);
+    AppMethodBeat.o(209591);
   }
   
   public void setCancelable(boolean paramBoolean)
   {
-    AppMethodBeat.i(235467);
+    AppMethodBeat.i(209578);
     super.setCancelable(paramBoolean);
-    if (this.bxO != paramBoolean)
+    if (this.dqR != paramBoolean)
     {
-      this.bxO = paramBoolean;
-      if (this.bxN != null) {
-        this.bxN.bxz = paramBoolean;
+      this.dqR = paramBoolean;
+      if (this.dqQ != null) {
+        this.dqQ.dqC = paramBoolean;
       }
     }
-    AppMethodBeat.o(235467);
+    AppMethodBeat.o(209578);
   }
   
   public void setCanceledOnTouchOutside(boolean paramBoolean)
   {
-    AppMethodBeat.i(235471);
+    AppMethodBeat.i(209601);
     super.setCanceledOnTouchOutside(paramBoolean);
-    if ((paramBoolean) && (!this.bxO)) {
-      this.bxO = true;
+    if ((paramBoolean) && (!this.dqR)) {
+      this.dqR = true;
     }
-    this.bxP = paramBoolean;
-    this.bxQ = true;
-    AppMethodBeat.o(235471);
+    this.dqS = paramBoolean;
+    this.dqT = true;
+    AppMethodBeat.o(209601);
   }
   
   public void setContentView(int paramInt)
   {
-    AppMethodBeat.i(235457);
+    AppMethodBeat.i(209533);
     super.setContentView(a(paramInt, null, null));
-    AppMethodBeat.o(235457);
+    AppMethodBeat.o(209533);
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(235461);
+    AppMethodBeat.i(209556);
     super.setContentView(a(0, paramView, null));
-    AppMethodBeat.o(235461);
+    AppMethodBeat.o(209556);
   }
   
   public void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(235464);
+    AppMethodBeat.i(209567);
     super.setContentView(a(0, paramView, paramLayoutParams));
-    AppMethodBeat.o(235464);
+    AppMethodBeat.o(209567);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.material.bottomsheet.a
  * JD-Core Version:    0.7.0.1
  */

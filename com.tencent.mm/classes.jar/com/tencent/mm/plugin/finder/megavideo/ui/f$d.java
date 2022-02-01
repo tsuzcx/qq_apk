@@ -3,35 +3,35 @@ package com.tencent.mm.plugin.finder.megavideo.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoTLPresenter$addVideoFloatBall$1", "Lcom/tencent/mm/pluginsdk/permission/RequestFloatWindowPermissionDialog$OverlayPermissionResultCallBack;", "onResultAllow", "", "dialog", "Lcom/tencent/mm/pluginsdk/permission/RequestFloatWindowPermissionDialog;", "onResultCancel", "onResultRefuse", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/megavideo/ui/FinderMegaVideoTLPresenter$addVideoFloatBall$1", "Lcom/tencent/mm/pluginsdk/permission/RequestFloatWindowPermissionDialog$OverlayPermissionResultCallBack;", "onResultAllow", "", "dialog", "Lcom/tencent/mm/pluginsdk/permission/RequestFloatWindowPermissionDialog;", "onResultCancel", "onResultRefuse", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f$d
   implements RequestFloatWindowPermissionDialog.a
 {
   public final void a(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog)
   {
-    AppMethodBeat.i(238022);
-    p.k(paramRequestFloatWindowPermissionDialog, "dialog");
+    AppMethodBeat.i(341930);
+    s.u(paramRequestFloatWindowPermissionDialog, "dialog");
     paramRequestFloatWindowPermissionDialog.finish();
-    AppMethodBeat.o(238022);
+    AppMethodBeat.o(341930);
   }
   
   public final void b(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog)
   {
-    AppMethodBeat.i(238023);
-    p.k(paramRequestFloatWindowPermissionDialog, "dialog");
+    AppMethodBeat.i(341934);
+    s.u(paramRequestFloatWindowPermissionDialog, "dialog");
     paramRequestFloatWindowPermissionDialog.finish();
-    AppMethodBeat.o(238023);
+    AppMethodBeat.o(341934);
   }
   
   public final void c(RequestFloatWindowPermissionDialog paramRequestFloatWindowPermissionDialog)
   {
-    AppMethodBeat.i(238025);
-    p.k(paramRequestFloatWindowPermissionDialog, "dialog");
+    AppMethodBeat.i(341940);
+    s.u(paramRequestFloatWindowPermissionDialog, "dialog");
     paramRequestFloatWindowPermissionDialog.finish();
-    AppMethodBeat.o(238025);
+    AppMethodBeat.o(341940);
   }
 }
 

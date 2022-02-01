@@ -8,17 +8,11 @@ public abstract interface a
   
   public abstract int a(g.a parama, int paramInt, boolean paramBoolean);
   
-  public abstract void agC();
+  public abstract boolean aIA();
   
-  public abstract boolean agD();
+  public abstract void aIz();
   
-  public abstract boolean in(String paramString);
-  
-  public static final class a
-  {
-    public int count = 0;
-    public long ftU = 0L;
-  }
+  public abstract boolean jO(String paramString);
 }
 
 

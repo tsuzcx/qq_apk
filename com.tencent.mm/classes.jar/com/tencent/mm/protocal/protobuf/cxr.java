@@ -3,58 +3,58 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cxr
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String v;
+  public String YNO;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(155441);
+    AppMethodBeat.i(155422);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.v != null) {
-        paramVarArgs.f(1, this.v);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YNO != null) {
+        paramVarArgs.g(1, this.YNO);
       }
-      AppMethodBeat.o(155441);
+      AppMethodBeat.o(155422);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.v == null) {
-        break label213;
+      if (this.YNO == null) {
+        break label209;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.v) + 0;; paramInt = 0)
+    label209:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YNO) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(155441);
+      AppMethodBeat.o(155422);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(155441);
+        AppMethodBeat.o(155422);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         cxr localcxr = (cxr)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(155441);
+          AppMethodBeat.o(155422);
           return -1;
         }
-        localcxr.v = locala.abFh.readString();
-        AppMethodBeat.o(155441);
+        localcxr.YNO = locala.ajGk.readString();
+        AppMethodBeat.o(155422);
         return 0;
       }
-      AppMethodBeat.o(155441);
+      AppMethodBeat.o(155422);
       return -1;
     }
   }

@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bg1" android:layout_width="fill_parent" android:layout_height="@dimen/iq" android:baselineAligned="false" android:minHeight="@dimen/iq"
+<RelativeLayout android:orientation="vertical" android:id="@id/iwz" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_gravity="center_vertical" android:layout_width="@dimen/il" android:layout_height="@dimen/il" android:layout_marginLeft="@dimen/br" android:layout_marginRight="@dimen/bt">
-        <ImageView android:id="@id/x1" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        <TextView android:id="@id/iot" android:visibility="gone" android:layout_marginRight="@dimen/k_" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zr" />
-        <ImageView android:id="@id/x9" android:visibility="gone" android:layout_marginTop="@dimen/iu" android:layout_marginRight="@dimen/g" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/zs" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="?sg" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="top" android:orientation="horizontal" android:id="@id/ikd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/iu">
-            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/is" android:id="@id/fzg" android:tag="nickname_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mp" />
-            </LinearLayout>
-            <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/hc" android:textColor="?a2u" android:gravity="center|right" android:id="@id/j0l" android:tag="update_time_tv" android:layout_width="@dimen/b4" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="22.0dip" android:layout_marginTop="@dimen/ih">
-            <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <ImageView android:gravity="center|left" android:id="@id/e7u" android:layout_width="14.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/i2" />
-                <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/ka" android:textColor="@color/wj" android:ellipsize="end" android:gravity="center|left" android:id="@id/e7t" android:tag="last_msg_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{lastmsg}" style="@style/mo" />
-            </LinearLayout>
-            <LinearLayout android:gravity="bottom|center|right" android:layout_width="60.0dip" android:layout_height="fill_parent">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/dwf" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_outlined_bellring_off" app:iconColor="@color/en" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="right" android:layout_gravity="center|right" android:id="@id/fok" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/k_" android:src="@raw/icons_filled_groupcall" android:contentDescription="@string/hb" app:iconColor="@color/en" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/eqt" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/k_" android:src="@raw/icons_outlined_location" android:contentDescription="@string/hb" app:iconColor="@color/BW_0_Alpha_0_3" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/k8n" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/k_" android:contentDescription="@string/hb" />
-            </LinearLayout>
-        </LinearLayout>
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView android:id="@id/bxj" android:focusable="false" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:dividerHeight="12.0dip" android:overScrollMode="never" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bbh" android:background="@color/lz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bbg" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="96.0dip" android:src="@raw/coupon" android:importantForAccessibility="no" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/FG_2" android:id="@id/bbi" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ayd" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

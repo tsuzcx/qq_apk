@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/l1" android:textColor="@color/a2x" android:textColorHint="#ffb2b2b2" android:gravity="right" android:id="@id/jf4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minWidth="70.0dip" android:singleLine="true" android:textAlignment="viewEnd" />
-</LinearLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/ekr" android:background="#ff333333" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/al6" android:gravity="center_vertical" android:id="@id/emi" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/f_v" android:layout_alignParentLeft="true" />
+        <Button android:enabled="false" android:textSize="14.0dip" android:textColor="@drawable/a7u" android:id="@id/emg" android:background="@drawable/a7t" android:layout_width="68.0dip" android:layout_height="32.0dip" android:text="@string/f_t" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/eme" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/ekr" />
+</RelativeLayout>

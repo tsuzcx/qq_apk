@@ -13,33 +13,33 @@ import com.tencent.mm.plugin.setting.b.f;
 import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PersonalPreference
   extends Preference
 {
-  int JeO;
+  ImageView Aop;
+  int Ppk;
+  private View.OnClickListener Ppl;
   String avatar;
-  private String fPU;
-  private String idS;
-  private TextView jbe;
-  Bitmap lAx;
+  private String hVP;
+  private String kDc;
+  private TextView lDe;
+  Bitmap orY;
   private TextView userTV;
   private String username;
-  ImageView wRM;
-  private View.OnClickListener xhO;
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jbe = null;
+    this.lDe = null;
     this.userTV = null;
-    this.wRM = null;
-    this.lAx = null;
-    this.JeO = -1;
+    this.Aop = null;
+    this.orY = null;
+    this.Ppk = -1;
     this.avatar = null;
   }
   
@@ -47,55 +47,55 @@ public class PersonalPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73903);
-    this.jbe = null;
+    this.lDe = null;
     this.userTV = null;
-    this.wRM = null;
-    this.lAx = null;
-    this.JeO = -1;
+    this.Aop = null;
+    this.orY = null;
+    this.Ppk = -1;
     this.avatar = null;
     setLayoutResource(b.g.mm_preference);
-    auN(b.g.mm_preference_submenu);
+    aBp(b.g.mm_preference_submenu);
     AppMethodBeat.o(73903);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(73905);
-    if (this.wRM == null) {
-      this.wRM = ((ImageView)paramView.findViewById(b.f.image_iv));
+    if (this.Aop == null) {
+      this.Aop = ((ImageView)paramView.findViewById(b.f.image_iv));
     }
-    if (this.lAx != null)
+    if (this.orY != null)
     {
-      this.wRM.setImageBitmap(this.lAx);
-      this.wRM.setOnClickListener(this.xhO);
-      if ((this.jbe != null) && (this.fPU != null)) {
-        this.jbe.setText(l.b(this.mContext, this.fPU, this.jbe.getTextSize()));
+      this.Aop.setImageBitmap(this.orY);
+      this.Aop.setOnClickListener(this.Ppl);
+      if ((this.lDe != null) && (this.hVP != null)) {
+        this.lDe.setText(p.b(this.mContext, this.hVP, this.lDe.getTextSize()));
       }
       if (this.userTV != null) {
-        if (!Util.isNullOrNil(this.idS)) {
+        if (!Util.isNullOrNil(this.kDc)) {
           break label232;
         }
       }
     }
     label232:
-    for (String str = this.username;; str = this.idS)
+    for (String str = this.username;; str = this.kDc)
     {
-      if ((Util.isNullOrNil(this.idS)) && (as.bvU(this.username))) {
+      if ((Util.isNullOrNil(this.kDc)) && (au.bxb(this.username))) {
         this.userTV.setVisibility(8);
       }
       this.userTV.setText(this.mContext.getString(b.i.app_field_username) + str);
       super.onBindView(paramView);
       AppMethodBeat.o(73905);
       return;
-      if (this.JeO > 0)
+      if (this.Ppk > 0)
       {
-        this.wRM.setImageResource(this.JeO);
+        this.Aop.setImageResource(this.Ppk);
         break;
       }
       if (this.avatar == null) {
         break;
       }
-      a.b.c(this.wRM, this.avatar);
+      a.b.g(this.Aop, this.avatar);
       break;
     }
   }
@@ -113,7 +113,7 @@ public class PersonalPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PersonalPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.Selection;
@@ -18,7 +17,6 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
@@ -29,21 +27,21 @@ import com.tencent.neattextview.textview.view.NeatTextView.b;
 public class MMNeat7extView
   extends NeatTextView
 {
-  public static boolean Ybv;
-  private static final String Ybw;
-  private static boolean gZ;
-  private final View.AccessibilityDelegate YbA;
-  private View.OnLongClickListener Ybx;
-  private a Yby;
-  private MMNeat7extView.b Ybz;
-  private GestureDetector pCU;
+  public static boolean afTn;
+  private static final String afTo;
+  private static boolean hU;
+  private View.OnLongClickListener afTp;
+  private a afTq;
+  private MMNeat7extView.b afTr;
+  private final View.AccessibilityDelegate afTs;
+  private GestureDetector mQj;
   
   static
   {
     AppMethodBeat.i(143376);
-    Ybv = false;
-    Ybw = "^[\\u0001-\\u00b7\\u4E00-\\u9FA5\\ue001-\\ue537\\u2005-\\u2027\\u3001-\\u3011\\uff01-\\uffe5\\u2100-\\u2900[\\ud83c\\udc00-\\ud83c\\udfff]|[\\ud83d\\udc00-\\ud83d\\udfff]]+$".substring(1, 149);
-    gZ = true;
+    afTn = false;
+    afTo = "^[\\u0001-\\u00b7\\u4E00-\\u9FA5\\ue001-\\ue537\\u2005-\\u2027\\u3001-\\u3011\\uff01-\\uffe5\\u2100-\\u2900[\\ud83c\\udc00-\\ud83c\\udfff]|[\\ud83d\\udc00-\\ud83d\\udfff]]+$".substring(1, 149);
+    hU = true;
     AppMethodBeat.o(143376);
   }
   
@@ -51,30 +49,29 @@ public class MMNeat7extView
   {
     super(paramContext);
     AppMethodBeat.i(164209);
-    this.YbA = new View.AccessibilityDelegate()
+    this.afTs = new View.AccessibilityDelegate()
     {
       public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
       {
-        AppMethodBeat.i(220046);
+        AppMethodBeat.i(251736);
         super.onInitializeAccessibilityEvent(paramAnonymousView, paramAnonymousAccessibilityEvent);
         if (paramAnonymousAccessibilityEvent.getEventType() == 8192)
         {
-          paramAnonymousAccessibilityEvent.setFromIndex(Selection.getSelectionStart(MMNeat7extView.this.ikC()));
-          paramAnonymousAccessibilityEvent.setToIndex(Selection.getSelectionEnd(MMNeat7extView.this.ikC()));
-          paramAnonymousAccessibilityEvent.setItemCount(MMNeat7extView.this.ikC().length());
+          paramAnonymousAccessibilityEvent.setFromIndex(Selection.getSelectionStart(MMNeat7extView.this.jPy()));
+          paramAnonymousAccessibilityEvent.setToIndex(Selection.getSelectionEnd(MMNeat7extView.this.jPy()));
+          paramAnonymousAccessibilityEvent.setItemCount(MMNeat7extView.this.jPy().length());
         }
-        AppMethodBeat.o(220046);
+        AppMethodBeat.o(251736);
       }
       
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
       {
-        AppMethodBeat.i(220050);
+        AppMethodBeat.i(251738);
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
-        paramAnonymousAccessibilityNodeInfo.setText(MMNeat7extView.this.ikC());
+        paramAnonymousAccessibilityNodeInfo.setText(MMNeat7extView.this.jPy());
         paramAnonymousAccessibilityNodeInfo.setContentDescription(null);
-        paramAnonymousAccessibilityNodeInfo.setAccessibilityFocused(true);
-        paramAnonymousAccessibilityNodeInfo.setClickable(true);
-        if (!TextUtils.isEmpty(MMNeat7extView.this.ikC()))
+        paramAnonymousAccessibilityNodeInfo.setFocusable(true);
+        if (!TextUtils.isEmpty(MMNeat7extView.this.jPy()))
         {
           paramAnonymousAccessibilityNodeInfo.addAction(256);
           paramAnonymousAccessibilityNodeInfo.addAction(512);
@@ -87,7 +84,7 @@ public class MMNeat7extView
         if (MMNeat7extView.this.getMaxLines() > 0) {
           paramAnonymousAccessibilityNodeInfo.setMultiLine(true);
         }
-        AppMethodBeat.o(220050);
+        AppMethodBeat.o(251738);
       }
     };
     init();
@@ -98,30 +95,29 @@ public class MMNeat7extView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143366);
-    this.YbA = new View.AccessibilityDelegate()
+    this.afTs = new View.AccessibilityDelegate()
     {
       public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
       {
-        AppMethodBeat.i(220046);
+        AppMethodBeat.i(251736);
         super.onInitializeAccessibilityEvent(paramAnonymousView, paramAnonymousAccessibilityEvent);
         if (paramAnonymousAccessibilityEvent.getEventType() == 8192)
         {
-          paramAnonymousAccessibilityEvent.setFromIndex(Selection.getSelectionStart(MMNeat7extView.this.ikC()));
-          paramAnonymousAccessibilityEvent.setToIndex(Selection.getSelectionEnd(MMNeat7extView.this.ikC()));
-          paramAnonymousAccessibilityEvent.setItemCount(MMNeat7extView.this.ikC().length());
+          paramAnonymousAccessibilityEvent.setFromIndex(Selection.getSelectionStart(MMNeat7extView.this.jPy()));
+          paramAnonymousAccessibilityEvent.setToIndex(Selection.getSelectionEnd(MMNeat7extView.this.jPy()));
+          paramAnonymousAccessibilityEvent.setItemCount(MMNeat7extView.this.jPy().length());
         }
-        AppMethodBeat.o(220046);
+        AppMethodBeat.o(251736);
       }
       
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
       {
-        AppMethodBeat.i(220050);
+        AppMethodBeat.i(251738);
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
-        paramAnonymousAccessibilityNodeInfo.setText(MMNeat7extView.this.ikC());
+        paramAnonymousAccessibilityNodeInfo.setText(MMNeat7extView.this.jPy());
         paramAnonymousAccessibilityNodeInfo.setContentDescription(null);
-        paramAnonymousAccessibilityNodeInfo.setAccessibilityFocused(true);
-        paramAnonymousAccessibilityNodeInfo.setClickable(true);
-        if (!TextUtils.isEmpty(MMNeat7extView.this.ikC()))
+        paramAnonymousAccessibilityNodeInfo.setFocusable(true);
+        if (!TextUtils.isEmpty(MMNeat7extView.this.jPy()))
         {
           paramAnonymousAccessibilityNodeInfo.addAction(256);
           paramAnonymousAccessibilityNodeInfo.addAction(512);
@@ -134,7 +130,7 @@ public class MMNeat7extView
         if (MMNeat7extView.this.getMaxLines() > 0) {
           paramAnonymousAccessibilityNodeInfo.setMultiLine(true);
         }
-        AppMethodBeat.o(220050);
+        AppMethodBeat.o(251738);
       }
     };
     init();
@@ -144,17 +140,17 @@ public class MMNeat7extView
   private void init()
   {
     AppMethodBeat.i(164210);
-    this.pCU = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    this.mQj = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(206281);
+        AppMethodBeat.i(251742);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(206281);
+        AppMethodBeat.o(251742);
         return bool;
       }
       
@@ -162,15 +158,15 @@ public class MMNeat7extView
       {
         AppMethodBeat.i(143364);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         if (MMNeat7extView.this.getOnDoubleClickListener() == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143364);
           return false;
         }
-        boolean bool = MMNeat7extView.this.getOnDoubleClickListener().ie(MMNeat7extView.this);
+        boolean bool = MMNeat7extView.this.getOnDoubleClickListener().lA(MMNeat7extView.this);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(143364);
         return bool;
@@ -178,28 +174,28 @@ public class MMNeat7extView
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(206280);
+        AppMethodBeat.i(251740);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(206280);
+        AppMethodBeat.o(251740);
       }
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(206277);
+        AppMethodBeat.i(251739);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMNeat7extView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(206277);
+        AppMethodBeat.o(251739);
         return bool;
       }
     });
-    setAccessibilityDelegate(this.YbA);
+    setAccessibilityDelegate(this.afTs);
     AppMethodBeat.o(164210);
   }
   
@@ -209,82 +205,81 @@ public class MMNeat7extView
     try
     {
       super.a(paramCharSequence, paramBufferType);
-      if ((this.sTK) && (this.Ybz != null)) {
+      if ((this.vZb) && (this.afTr != null)) {
         paramCharSequence.toString();
       }
-      if (this.Yby != null) {
-        this.Yby.aI(paramCharSequence);
-      }
-      AppMethodBeat.o(143373);
-      return;
+      setContentDescription(paramCharSequence);
     }
     catch (Exception paramBufferType)
     {
       for (;;)
       {
-        String str = ikC().toString().replaceAll(Ybw, "*");
+        String str = jPy().toString().replaceAll(afTo, "*");
         Log.e("MicroMsg.MMNeat7extView", "[_setText] replaceContent:%s exception:%s", new Object[] { str, paramBufferType });
-        if (this.Ybz == null) {
+        if (this.afTr == null) {
           break;
         }
-        this.Ybz.a(paramBufferType, str, "_setText");
+        this.afTr.a(paramBufferType, str, "_setText");
       }
       AppMethodBeat.o(143373);
       throw paramBufferType;
     }
+    if (this.afTq != null) {
+      this.afTq.aW(paramCharSequence);
+    }
+    AppMethodBeat.o(143373);
   }
   
-  public final void aL(CharSequence paramCharSequence)
+  public final void aZ(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(143372);
-    for (;;)
+    try
     {
-      try
-      {
-        super.aL(paramCharSequence);
-        if ((this.sTK) && (this.Ybz != null)) {
-          paramCharSequence.toString();
-        }
-        if (this.Yby != null)
-        {
-          a locala = this.Yby;
-          if ((paramCharSequence instanceof Spannable))
-          {
-            localObject = TextView.BufferType.SPANNABLE;
-            locala.aI(paramCharSequence);
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(143372);
-          return;
-        }
+      super.aZ(paramCharSequence);
+      if ((this.vZb) && (this.afTr != null)) {
+        paramCharSequence.toString();
       }
-      catch (Exception localException)
+      setContentDescription(paramCharSequence);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localObject = ikC().toString().replaceAll(Ybw, "*");
+        a locala;
+        localObject = jPy().toString().replaceAll(afTo, "*");
         Log.e("MicroMsg.MMNeat7extView", "[_setText] replaceContent:%s exception:%s", new Object[] { localObject, localException });
-        if (this.Ybz != null)
-        {
-          this.Ybz.a(localException, (String)localObject, "_setText");
-          continue;
+        if (this.afTr == null) {
+          break;
         }
-        AppMethodBeat.o(143372);
-        throw localException;
+        this.afTr.a(localException, (String)localObject, "_setText");
       }
-      Object localObject = TextView.BufferType.NORMAL;
+      AppMethodBeat.o(143372);
+      throw localException;
+    }
+    if (this.afTq != null)
+    {
+      locala = this.afTq;
+      if (!(paramCharSequence instanceof Spannable)) {
+        break label140;
+      }
+    }
+    label140:
+    for (Object localObject = TextView.BufferType.SPANNABLE;; localObject = TextView.BufferType.NORMAL)
+    {
+      locala.aW(paramCharSequence);
+      AppMethodBeat.o(143372);
+      return;
     }
   }
   
   public CharSequence getAccessibilityClassName()
   {
-    AppMethodBeat.i(200383);
+    AppMethodBeat.i(251737);
     String str = TextView.class.getName();
-    AppMethodBeat.o(200383);
+    AppMethodBeat.o(251737);
     return str;
   }
   
-  @SuppressLint({"GetContentDescriptionOverride"})
   public CharSequence getContentDescription()
   {
     AppMethodBeat.i(143368);
@@ -295,7 +290,7 @@ public class MMNeat7extView
     if ((bool1) && (bool2)) {}
     for (int i = 1; (i != 0) || (CrashReportFactory.hasDebuger()); i = 0)
     {
-      localObject = super.ikC();
+      localObject = super.jPy();
       AppMethodBeat.o(143368);
       return localObject;
     }
@@ -305,24 +300,24 @@ public class MMNeat7extView
   
   public int getSelectionEnd()
   {
-    AppMethodBeat.i(200380);
-    int i = Selection.getSelectionEnd(ikC());
-    AppMethodBeat.o(200380);
+    AppMethodBeat.i(251734);
+    int i = Selection.getSelectionEnd(jPy());
+    AppMethodBeat.o(251734);
     return i;
   }
   
   public int getSelectionStart()
   {
-    AppMethodBeat.i(200379);
-    int i = Selection.getSelectionStart(ikC());
-    AppMethodBeat.o(200379);
+    AppMethodBeat.i(251731);
+    int i = Selection.getSelectionStart(jPy());
+    AppMethodBeat.o(251731);
     return i;
   }
   
   public float getVerticalOffset()
   {
     AppMethodBeat.i(143367);
-    if (Ybv)
+    if (afTn)
     {
       f = super.getVerticalOffset();
       getMeasuredHeight();
@@ -334,9 +329,9 @@ public class MMNeat7extView
     return f;
   }
   
-  public final boolean hZE()
+  public final boolean jEM()
   {
-    return gZ;
+    return hU;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -350,11 +345,11 @@ public class MMNeat7extView
     }
     catch (Exception paramCanvas)
     {
-      String str = ikC().toString().replaceAll(Ybw, "*");
+      String str = jPy().toString().replaceAll(afTo, "*");
       Log.e("MicroMsg.MMNeat7extView", "[onDraw] replaceContent:%s exception:%s", new Object[] { str, paramCanvas });
-      if (this.Ybz != null)
+      if (this.afTr != null)
       {
-        this.Ybz.a(paramCanvas, str, "onDraw");
+        this.afTr.a(paramCanvas, str, "onDraw");
         AppMethodBeat.o(143370);
         return;
       }
@@ -374,11 +369,11 @@ public class MMNeat7extView
     }
     catch (Exception localException)
     {
-      String str = ikC().toString().replaceAll(Ybw, "*");
+      String str = jPy().toString().replaceAll(afTo, "*");
       Log.e("MicroMsg.MMNeat7extView", "[onMeasure] replaceContent:%s exception:%s", new Object[] { str, localException });
-      if (this.Ybz != null)
+      if (this.afTr != null)
       {
-        this.Ybz.a(localException, str, "onMeasure");
+        this.afTr.a(localException, str, "onMeasure");
         AppMethodBeat.o(143371);
         return;
       }
@@ -390,12 +385,12 @@ public class MMNeat7extView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143369);
-    if ((!gZ) || ((this.sTK) && (this.pCU != null)))
+    if ((!hU) || ((this.vZb) && (this.mQj != null)))
     {
-      GestureDetector localGestureDetector = this.pCU;
-      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/ui/widget/MMNeat7extView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/ui/widget/MMNeat7extView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      GestureDetector localGestureDetector = this.mQj;
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aYi(), "com/tencent/mm/ui/widget/MMNeat7extView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sb(0)), "com/tencent/mm/ui/widget/MMNeat7extView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(143369);
@@ -404,57 +399,35 @@ public class MMNeat7extView
   
   public void setIsOpen(boolean paramBoolean)
   {
-    gZ = paramBoolean;
+    hU = paramBoolean;
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
     AppMethodBeat.i(143374);
-    this.Ybx = paramOnLongClickListener;
-    super.setOnLongClickListener(new View.OnLongClickListener()
-    {
-      public final boolean onLongClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(143365);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/MMNeat7extView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-        if (MMNeat7extView.Ybv) {
-          Toast.makeText(MMNeat7extView.this.getContext(), MMNeat7extView.bBb(MMNeat7extView.this.ikC().toString()), 1).show();
-        }
-        if (MMNeat7extView.f(MMNeat7extView.this) != null)
-        {
-          boolean bool = MMNeat7extView.f(MMNeat7extView.this).onLongClick(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMNeat7extView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(143365);
-          return bool;
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/MMNeat7extView$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(143365);
-        return false;
-      }
-    });
+    this.afTp = paramOnLongClickListener;
+    super.setOnLongClickListener(new MMNeat7extView.2(this));
     AppMethodBeat.o(143374);
   }
   
   public void setTextCrashListener(MMNeat7extView.b paramb)
   {
-    this.Ybz = paramb;
+    this.afTr = paramb;
   }
   
   public void setTextListener(a parama)
   {
-    this.Yby = parama;
+    this.afTq = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void aI(CharSequence paramCharSequence);
+    public abstract void aW(CharSequence paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMNeat7extView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,91 +5,98 @@ import com.tencent.luggage.bridge.o;
 import com.tencent.luggage.d.c;
 import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.m.g;
-import com.tencent.mm.plugin.aw.f;
+import com.tencent.mm.plugin.appbrand.n.g;
+import com.tencent.mm.plugin.ay.d;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/adapter/GamePrefetchJsRuntimeAdapter;", "Lcom/tencent/luggage/container/LuggageRuntime;", "Lcom/tencent/luggage/container/LuggageComponent;", "()V", "TAG", "", "jsCore", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/adapter/GamePrefetchJsCoreAdapter;", "attach", "", "appId", "contextName", "evaluateJavascript", "script", "resultCallback", "Landroid/webkit/ValueCallback;", "getBridge", "Lcom/tencent/luggage/bridge/LuggageBridge;", "getContext", "Landroid/content/Context;", "getRuntime", "getUserAgent", "init", "context", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "url", "initCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "contextReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineContextReporter;", "isService", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/adapter/GamePrefetchJsRuntimeAdapter;", "Lcom/tencent/luggage/container/LuggageRuntime;", "Lcom/tencent/luggage/container/LuggageComponent;", "()V", "TAG", "", "jsCore", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/adapter/GamePrefetchJsCoreAdapter;", "attach", "", "appId", "contextName", "evaluateJavascript", "script", "resultCallback", "Landroid/webkit/ValueCallback;", "getBridge", "Lcom/tencent/luggage/bridge/LuggageBridge;", "getContext", "Landroid/content/Context;", "getRuntime", "getUserAgent", "init", "context", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "url", "initCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "contextReporter", "Lcom/tencent/mm/plugin/webjsengine/WebJsEngineContextReporter;", "isService", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends n
   implements com.tencent.luggage.d.a
 {
-  private static a sQt;
-  public static final b sQu;
+  public static final b vVH;
+  private static a vVI;
   
   static
   {
-    AppMethodBeat.i(262328);
-    sQu = new b();
-    AppMethodBeat.o(262328);
+    AppMethodBeat.i(303176);
+    vVH = new b();
+    AppMethodBeat.o(303176);
   }
   
-  public static final void a(g paramg, String paramString, m<? super Boolean, ? super String, x> paramm, f paramf)
+  public static final void a(g paramg, String paramString, m<? super Boolean, ? super String, ah> paramm, d paramd)
   {
-    AppMethodBeat.i(262310);
-    p.k(paramg, "context");
-    p.k(paramm, "initCallback");
-    p.k(paramf, "contextReporter");
-    a.a(paramg, paramString, paramm, paramf);
-    sQt = a.sQi;
-    paramg = com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.b.a.sQw;
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.b.a.a((n)sQu, (c)sQu);
-    AppMethodBeat.o(262310);
+    AppMethodBeat.i(303170);
+    s.u(paramg, "context");
+    s.u(paramm, "initCallback");
+    s.u(paramd, "contextReporter");
+    a.a(paramg, paramString, paramm, paramd);
+    vVI = a.vVy;
+    paramg = com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.b.a.vVJ;
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a.b.a.a((n)vVH, (c)vVH);
+    AppMethodBeat.o(303170);
   }
   
-  public static final void fz(String paramString1, String paramString2)
+  public static final void fZ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(262306);
-    p.k(paramString1, "appId");
-    p.k(paramString2, "contextName");
-    a.fz(paramString1, paramString2);
-    AppMethodBeat.o(262306);
+    AppMethodBeat.i(303163);
+    s.u(paramString1, "appId");
+    s.u(paramString2, "contextName");
+    a.fZ(paramString1, paramString2);
+    AppMethodBeat.o(303163);
   }
   
-  public final n NS()
+  public final n aod()
   {
     return (n)this;
   }
   
   public final o getBridge()
   {
-    AppMethodBeat.i(262313);
-    if (sQt == null) {
-      p.bGy("jsCore");
+    AppMethodBeat.i(303183);
+    if (vVI == null) {
+      s.bIx("jsCore");
     }
     o localo = a.getBridge();
-    AppMethodBeat.o(262313);
+    AppMethodBeat.o(303183);
     return localo;
   }
   
   public final Context getContext()
   {
-    AppMethodBeat.i(262322);
-    Object localObject = sQt;
-    if (localObject == null) {
-      p.bGy("jsCore");
+    AppMethodBeat.i(303193);
+    a locala = vVI;
+    Object localObject = locala;
+    if (locala == null)
+    {
+      s.bIx("jsCore");
+      localObject = null;
     }
     localObject = ((a)localObject).getContext();
-    AppMethodBeat.o(262322);
+    AppMethodBeat.o(303193);
     return localObject;
   }
   
   public final String getUserAgent()
   {
-    AppMethodBeat.i(262316);
-    Object localObject = sQt;
-    if (localObject == null) {
-      p.bGy("jsCore");
+    AppMethodBeat.i(303187);
+    a locala = vVI;
+    Object localObject = locala;
+    if (locala == null)
+    {
+      s.bIx("jsCore");
+      localObject = null;
     }
-    String str = ((a)localObject).getUserAgent();
-    localObject = str;
-    if (str == null) {
-      localObject = "";
+    localObject = ((a)localObject).getUserAgent();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(303187);
+      return "";
     }
-    AppMethodBeat.o(262316);
+    AppMethodBeat.o(303187);
     return localObject;
   }
 }

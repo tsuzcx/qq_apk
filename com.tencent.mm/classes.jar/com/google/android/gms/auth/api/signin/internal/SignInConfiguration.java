@@ -7,23 +7,14 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="SignInConfigurationCreator")
-@SafeParcelable.Reserved({1})
 public final class SignInConfiguration
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<SignInConfiguration> CREATOR;
-  @SafeParcelable.Field(getter="getConsumerPkgName", id=2)
   private final String zzfe;
-  @SafeParcelable.Field(getter="getGoogleConfig", id=5)
   private GoogleSignInOptions zzff;
   
   static
@@ -33,8 +24,7 @@ public final class SignInConfiguration
     AppMethodBeat.o(88301);
   }
   
-  @SafeParcelable.Constructor
-  public SignInConfiguration(@SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=5) GoogleSignInOptions paramGoogleSignInOptions)
+  public SignInConfiguration(String paramString, GoogleSignInOptions paramGoogleSignInOptions)
   {
     AppMethodBeat.i(88297);
     this.zzfe = Preconditions.checkNotEmpty(paramString);
@@ -104,7 +94,7 @@ public final class SignInConfiguration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.SignInConfiguration
  * JD-Core Version:    0.7.0.1
  */

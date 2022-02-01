@@ -24,22 +24,22 @@ import java.lang.ref.WeakReference;
 public class k
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  public boolean uvK;
-  public boolean uvL;
-  private WeakReference<Drawable> uvM;
-  private int uvj;
-  public boolean uvk;
-  public boolean uvp;
-  public boolean uvq;
+  private int xBG;
+  public boolean xBH;
+  public boolean xBN;
+  public boolean xBO;
+  public boolean xCj;
+  public boolean xCk;
+  private WeakReference<Drawable> xCl;
   
   public k(boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(30641);
-    this.uvp = false;
-    this.uvq = false;
-    this.uvK = false;
-    this.uvL = false;
-    this.uvj = paramInt;
+    this.xBN = false;
+    this.xBO = false;
+    this.xCj = false;
+    this.xCk = false;
+    this.xBG = paramInt;
     boolean bool1 = bool2;
     if (paramBoolean2)
     {
@@ -52,18 +52,18 @@ public class k
         }
       }
     }
-    this.uvk = bool1;
-    this.uvL = paramBoolean1;
-    this.uvp = paramBoolean3;
-    this.uvq = paramBoolean4;
-    this.uvK = paramBoolean2;
+    this.xBH = bool1;
+    this.xCk = paramBoolean1;
+    this.xBN = paramBoolean3;
+    this.xBO = paramBoolean4;
+    this.xCj = paramBoolean2;
     AppMethodBeat.o(30641);
   }
   
-  private k hdP()
+  private k iEw()
   {
     AppMethodBeat.i(30643);
-    k localk = new k(this.uvL, this.uvj, this.uvK, this.uvp, this.uvq);
+    k localk = new k(this.xCk, this.xBG, this.xCj, this.xBN, this.xBO);
     AppMethodBeat.o(30643);
     return localk;
   }
@@ -71,7 +71,7 @@ public class k
   public final void a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent, k paramk)
   {
     AppMethodBeat.i(30644);
-    if (paramMotionEvent.getX() > this.uvj)
+    if (paramMotionEvent.getX() > this.xBG)
     {
       Log.e("MicroMsg.NoteTodoSpan", "x > mGapWidth");
       AppMethodBeat.o(30644);
@@ -79,24 +79,24 @@ public class k
     }
     int i = paramSpannable.getSpanStart(paramk);
     int j = paramSpannable.getSpanEnd(paramk);
-    if (this.uvL)
+    if (this.xCk)
     {
       paramMotionEvent = "true";
       Log.i("MicroMsg.NoteTodoSpan", "current mIsTodoCheck: %s", new Object[] { paramMotionEvent });
       paramSpannable.removeSpan(this);
-      if (this.uvL) {
+      if (this.xCk) {
         break label176;
       }
     }
     label176:
     for (boolean bool = true;; bool = false)
     {
-      this.uvL = bool;
-      paramSpannable.setSpan(hdP(), i, j, 33);
+      this.xCk = bool;
+      paramSpannable.setSpan(iEw(), i, j, 33);
       paramTextView = (WXRTEditText)paramTextView;
       if (paramTextView.getEditTextType() == 0)
       {
-        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.hdz().aph(paramTextView.getRecyclerItemPosition());
+        paramTextView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.iEg().avf(paramTextView.getRecyclerItemPosition());
         if ((paramTextView != null) && (paramTextView.getType() == 1)) {
           ((i)paramTextView).content = b.a(paramSpannable);
         }
@@ -112,23 +112,23 @@ public class k
   {
     AppMethodBeat.i(30642);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.uvk) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.xBH) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
-      paramLayout = this.uvM;
+      paramLayout = this.xCl;
       paramCharSequence = null;
       if (paramLayout != null) {
         paramCharSequence = (Drawable)paramLayout.get();
       }
       paramLayout = paramCharSequence;
       if (paramCharSequence == null) {
-        if (!this.uvL) {
+        if (!this.xCk) {
           break label113;
         }
       }
       label113:
-      for (paramCharSequence = a.m(MMApplicationContext.getContext(), R.g.dol);; paramCharSequence = a.m(MMApplicationContext.getContext(), R.g.dom))
+      for (paramCharSequence = a.m(MMApplicationContext.getContext(), R.g.foJ);; paramCharSequence = a.m(MMApplicationContext.getContext(), R.g.foK))
       {
-        this.uvM = new WeakReference(paramCharSequence);
+        this.xCl = new WeakReference(paramCharSequence);
         paramLayout = paramCharSequence;
         if (paramLayout != null) {
           break;
@@ -149,15 +149,15 @@ public class k
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.uvk) {
+    if (this.xBH) {
       return 0;
     }
-    return this.uvj;
+    return this.xBG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.k
  * JD-Core Version:    0.7.0.1
  */

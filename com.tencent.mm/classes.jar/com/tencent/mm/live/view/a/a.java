@@ -1,90 +1,95 @@
 package com.tencent.mm.live.view.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/adapter/CommentData;", "", "identityId", "", "headImageUrl", "content", "", "msgType", "", "time", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/CharSequence;II)V", "getContent", "()Ljava/lang/CharSequence;", "setContent", "(Ljava/lang/CharSequence;)V", "getHeadImageUrl", "()Ljava/lang/String;", "setHeadImageUrl", "(Ljava/lang/String;)V", "getIdentityId", "setIdentityId", "getMsgType", "()I", "setMsgType", "(I)V", "getTime", "setTime", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/adapter/CommentData;", "", "identityId", "", "headImageUrl", "content", "", "msgType", "", "time", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/CharSequence;II)V", "getContent", "()Ljava/lang/CharSequence;", "setContent", "(Ljava/lang/CharSequence;)V", "getHeadImageUrl", "()Ljava/lang/String;", "setHeadImageUrl", "(Ljava/lang/String;)V", "getIdentityId", "setIdentityId", "getMsgType", "()I", "setMsgType", "(I)V", "getTime", "setTime", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public String kLV;
-  String kLW;
-  public CharSequence kLX;
   public int msgType;
+  public String nnR;
+  String nnS;
+  public CharSequence nnT;
   public int time;
   
   public a(String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193452);
-    this.kLV = paramString1;
-    this.kLW = paramString2;
-    this.kLX = paramCharSequence;
+    AppMethodBeat.i(246204);
+    this.nnR = paramString1;
+    this.nnS = paramString2;
+    this.nnT = paramCharSequence;
     this.msgType = paramInt1;
     this.time = paramInt2;
-    AppMethodBeat.o(193452);
+    AppMethodBeat.o(246204);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(193457);
-    if (this != paramObject)
+    AppMethodBeat.i(246238);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((!p.h(this.kLV, paramObject.kLV)) || (!p.h(this.kLW, paramObject.kLW)) || (!p.h(this.kLX, paramObject.kLX)) || (this.msgType != paramObject.msgType) || (this.time != paramObject.time)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(193457);
+      AppMethodBeat.o(246238);
       return true;
     }
-    AppMethodBeat.o(193457);
-    return false;
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(246238);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (!s.p(this.nnR, paramObject.nnR))
+    {
+      AppMethodBeat.o(246238);
+      return false;
+    }
+    if (!s.p(this.nnS, paramObject.nnS))
+    {
+      AppMethodBeat.o(246238);
+      return false;
+    }
+    if (!s.p(this.nnT, paramObject.nnT))
+    {
+      AppMethodBeat.o(246238);
+      return false;
+    }
+    if (this.msgType != paramObject.msgType)
+    {
+      AppMethodBeat.o(246238);
+      return false;
+    }
+    if (this.time != paramObject.time)
+    {
+      AppMethodBeat.o(246238);
+      return false;
+    }
+    AppMethodBeat.o(246238);
+    return true;
   }
   
   public final int hashCode()
   {
-    int k = 0;
-    AppMethodBeat.i(193456);
-    Object localObject = this.kLV;
-    int i;
-    if (localObject != null)
-    {
-      i = localObject.hashCode();
-      localObject = this.kLW;
-      if (localObject == null) {
-        break label104;
-      }
-    }
-    label104:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.kLX;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      int m = this.msgType;
-      int n = this.time;
-      AppMethodBeat.o(193456);
-      return (((j + i * 31) * 31 + k) * 31 + m) * 31 + n;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.i(246231);
+    int i = this.nnR.hashCode();
+    int j = this.nnS.hashCode();
+    int k = this.nnT.hashCode();
+    int m = this.msgType;
+    int n = this.time;
+    AppMethodBeat.o(246231);
+    return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + n;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(193455);
-    String str = "CommentData(identityId=" + this.kLV + ", headImageUrl=" + this.kLW + ", content=" + this.kLX + ", msgType=" + this.msgType + ", time=" + this.time + ")";
-    AppMethodBeat.o(193455);
+    AppMethodBeat.i(246222);
+    String str = "CommentData(identityId=" + this.nnR + ", headImageUrl=" + this.nnS + ", content=" + this.nnT + ", msgType=" + this.msgType + ", time=" + this.time + ')';
+    AppMethodBeat.o(246222);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.view.a.a
  * JD-Core Version:    0.7.0.1
  */

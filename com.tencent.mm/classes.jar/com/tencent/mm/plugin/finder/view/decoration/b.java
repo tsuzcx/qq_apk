@@ -10,24 +10,23 @@ import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.s;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/decoration/ItemDividerDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerHeight", "", "(Landroid/graphics/drawable/Drawable;I)V", "orientation", "(Landroid/graphics/drawable/Drawable;II)V", "padding", "", "(Landroid/graphics/drawable/Drawable;I[I)V", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "onDraw", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/decoration/ItemDividerDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "divider", "Landroid/graphics/drawable/Drawable;", "dividerHeight", "", "(Landroid/graphics/drawable/Drawable;I)V", "orientation", "(Landroid/graphics/drawable/Drawable;II)V", "padding", "", "(Landroid/graphics/drawable/Drawable;I[I)V", "drawHorizontal", "", "c", "Landroid/graphics/Canvas;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "drawVertical", "getItemOffsets", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "onDraw", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends RecyclerView.h
 {
-  private int[] Bew;
-  private int FO;
-  private Drawable nbH;
+  private int[] GGT;
+  private int orientation;
+  private Drawable pYO;
   
   public b(Drawable paramDrawable, int paramInt)
   {
     AppMethodBeat.i(168501);
-    this.nbH = paramDrawable;
-    this.FO = 1;
-    if (this.FO == 0)
+    this.pYO = paramDrawable;
+    this.orientation = 1;
+    if (this.orientation == 0)
     {
       paramDrawable.setBounds(0, 0, paramInt, 0);
       AppMethodBeat.o(168501);
@@ -39,244 +38,253 @@ public final class b
   
   public b(Drawable paramDrawable, int paramInt, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(274569);
-    this.nbH = paramDrawable;
-    this.Bew = paramArrayOfInt;
-    this.FO = 1;
-    if (this.FO == 0)
+    AppMethodBeat.i(344940);
+    this.pYO = paramDrawable;
+    this.GGT = paramArrayOfInt;
+    this.orientation = 1;
+    if (this.orientation == 0)
     {
       paramDrawable.setBounds(0, 0, paramInt, 0);
-      AppMethodBeat.o(274569);
+      AppMethodBeat.o(344940);
       return;
     }
     paramDrawable.setBounds(0, 0, 0, paramInt);
-    AppMethodBeat.o(274569);
+    AppMethodBeat.o(344940);
+  }
+  
+  private final void a(Canvas paramCanvas, RecyclerView paramRecyclerView)
+  {
+    AppMethodBeat.i(344953);
+    int n = paramRecyclerView.getChildCount();
+    if (n > 0) {}
+    int m;
+    label264:
+    label273:
+    for (int i = 0;; i = m)
+    {
+      m = i + 1;
+      Object localObject1 = paramRecyclerView.getChildAt(i);
+      Object localObject2 = ((View)localObject1).getLayoutParams();
+      if (localObject2 == null)
+      {
+        paramCanvas = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
+        AppMethodBeat.o(344953);
+        throw paramCanvas;
+      }
+      localObject2 = (RecyclerView.LayoutParams)localObject2;
+      int i1 = ((View)localObject1).getLeft();
+      int i2 = ((RecyclerView.LayoutParams)localObject2).leftMargin;
+      int[] arrayOfInt = this.GGT;
+      int i3;
+      int j;
+      label121:
+      int i4;
+      int i5;
+      label159:
+      int i6;
+      if (arrayOfInt == null)
+      {
+        i = 0;
+        k = ((View)localObject1).getBottom();
+        i3 = ((RecyclerView.LayoutParams)localObject2).bottomMargin;
+        arrayOfInt = this.GGT;
+        if (arrayOfInt != null) {
+          break label246;
+        }
+        j = 0;
+        i3 = j + (i3 + k);
+        i4 = ((View)localObject1).getRight();
+        i5 = ((RecyclerView.LayoutParams)localObject2).rightMargin;
+        localObject1 = this.GGT;
+        if (localObject1 != null) {
+          break label255;
+        }
+        j = 0;
+        i6 = this.pYO.getBounds().height();
+        localObject1 = this.GGT;
+        if (localObject1 != null) {
+          break label264;
+        }
+      }
+      for (int k = 0;; k = localObject1[3])
+      {
+        this.pYO.setBounds(i1 - i2 + i, i3, i4 + i5 - j, i3 + i6 - k);
+        this.pYO.draw(paramCanvas);
+        if (m < n) {
+          break label273;
+        }
+        AppMethodBeat.o(344953);
+        return;
+        i = arrayOfInt[0];
+        break;
+        label246:
+        j = arrayOfInt[1];
+        break label121;
+        label255:
+        j = localObject1[2];
+        break label159;
+      }
+    }
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    int i = 0;
-    AppMethodBeat.i(274567);
-    p.k(paramCanvas, "c");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
+    AppMethodBeat.i(344960);
+    s.u(paramCanvas, "c");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
     super.a(paramCanvas, paramRecyclerView, params);
-    int n;
-    int j;
-    label161:
-    label165:
-    label169:
-    label208:
-    label226:
-    label238:
-    label250:
     int k;
-    label262:
-    int i3;
-    switch (this.FO)
+    int i;
+    if (this.orientation == 0)
     {
-    default: 
-      n = paramRecyclerView.getChildCount();
+      k = paramRecyclerView.getChildCount();
       i = 0;
-      if (i >= n) {
-        break label562;
-      }
-      params = paramRecyclerView.getChildAt(i);
-      p.j(params, "child");
-      localObject = params.getLayoutParams();
-      if (localObject == null)
+      if (k <= 0) {}
+    }
+    for (;;)
+    {
+      int j = i + 1;
+      View localView = paramRecyclerView.getChildAt(i);
+      params = paramRecyclerView.bj(localView);
+      if (params == null)
       {
-        paramCanvas = new t("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
-        AppMethodBeat.o(274567);
+        params = null;
+        if (params != null) {
+          break label132;
+        }
+      }
+      label90:
+      label94:
+      while (params.intValue() != -2)
+      {
+        if (params != null) {
+          break label154;
+        }
+        if (params != null) {
+          break label166;
+        }
+        if (params != null) {
+          break label178;
+        }
+        params = localView.getLayoutParams();
+        if (params != null) {
+          break label190;
+        }
+        paramCanvas = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
+        AppMethodBeat.o(344960);
         throw paramCanvas;
+        params = Integer.valueOf(params.caO);
+        break;
       }
-      break;
-    case 0: 
-      j = paramRecyclerView.getChildCount();
-      if (i < j)
+      for (;;)
       {
-        localObject = paramRecyclerView.getChildAt(i);
-        params = paramRecyclerView.aQ((View)localObject);
-        if (params != null)
+        label132:
+        if (j >= k)
         {
-          params = Integer.valueOf(params.mg());
-          if (params != null) {
-            break label208;
-          }
-        }
-        while (params.intValue() != -2)
-        {
-          if (params != null) {
-            break label226;
-          }
-          if (params != null) {
-            break label238;
-          }
-          if (params != null) {
-            break label250;
-          }
-          p.j(localObject, "child");
-          params = ((View)localObject).getLayoutParams();
-          if (params != null) {
-            break label262;
-          }
-          paramCanvas = new t("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView.LayoutParams");
-          AppMethodBeat.o(274567);
-          throw paramCanvas;
-          params = null;
-          break;
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
+          AppMethodBeat.o(344960);
+          return;
+          label154:
           if (params.intValue() != -3)
           {
-            break label161;
+            break;
+            label166:
             if (params.intValue() != -4)
             {
-              break label165;
+              break label90;
+              label178:
               if (params.intValue() != -5) {
-                break label169;
+                break label94;
               }
               continue;
+              label190:
               params = (RecyclerView.LayoutParams)params;
-              k = ((View)localObject).getRight() + params.rightMargin;
-              m = ((View)localObject).getTop();
-              n = params.topMargin;
-              i1 = this.nbH.getBounds().width();
-              i2 = ((View)localObject).getBottom();
-              i3 = params.bottomMargin;
-              this.nbH.setBounds(k, m - n, i1 + k, i3 + i2);
-              this.nbH.draw(paramCanvas);
+              i = localView.getRight() + params.rightMargin;
+              int m = localView.getTop();
+              int n = params.topMargin;
+              int i1 = this.pYO.getBounds().width();
+              int i2 = localView.getBottom();
+              int i3 = params.bottomMargin;
+              this.pYO.setBounds(i, m - n, i1 + i, i3 + i2);
+              this.pYO.draw(paramCanvas);
+              continue;
+              a(paramCanvas, paramRecyclerView);
+              AppMethodBeat.o(344960);
+              return;
             }
           }
         }
       }
-      AppMethodBeat.o(274567);
-      return;
+      i = j;
     }
-    Object localObject = (RecyclerView.LayoutParams)localObject;
-    int i1 = params.getLeft();
-    int i2 = ((RecyclerView.LayoutParams)localObject).leftMargin;
-    int[] arrayOfInt = this.Bew;
-    label395:
-    label425:
-    int i4;
-    int i5;
-    label462:
-    int i6;
-    if (arrayOfInt != null)
-    {
-      j = arrayOfInt[0];
-      m = params.getBottom();
-      i3 = ((RecyclerView.LayoutParams)localObject).bottomMargin;
-      arrayOfInt = this.Bew;
-      if (arrayOfInt == null) {
-        break label544;
-      }
-      k = arrayOfInt[1];
-      i3 = k + (i3 + m);
-      i4 = params.getRight();
-      i5 = ((RecyclerView.LayoutParams)localObject).rightMargin;
-      params = this.Bew;
-      if (params == null) {
-        break label550;
-      }
-      k = params[2];
-      i6 = this.nbH.getBounds().height();
-      params = this.Bew;
-      if (params == null) {
-        break label556;
-      }
-    }
-    label544:
-    label550:
-    label556:
-    for (int m = params[3];; m = 0)
-    {
-      this.nbH.setBounds(i1 - i2 + j, i3, i4 + i5 - k, i3 + i6 - m);
-      this.nbH.draw(paramCanvas);
-      i += 1;
-      break;
-      j = 0;
-      break label395;
-      k = 0;
-      break label425;
-      k = 0;
-      break label462;
-    }
-    label562:
-    AppMethodBeat.o(274567);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(274568);
-    p.k(paramRect, "outRect");
-    p.k(paramView, "view");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
+    AppMethodBeat.i(344971);
+    s.u(paramRect, "outRect");
+    s.u(paramView, "view");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
     super.a(paramRect, paramView, paramRecyclerView, params);
-    paramView = paramRecyclerView.aQ(paramView);
-    if (paramView != null)
+    paramView = paramRecyclerView.bj(paramView);
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.mg());
-      label57:
+      paramView = null;
       if (paramView != null) {
-        break label124;
+        break label108;
       }
     }
-    label69:
-    label73:
-    label124:
+    label63:
+    label67:
+    label108:
     while (paramView.intValue() != -2)
     {
       if (paramView != null) {
-        break label139;
+        break label123;
       }
       if (paramView != null) {
-        break label151;
+        break label135;
       }
       if (paramView != null) {
-        break label163;
+        break label147;
       }
-      switch (this.FO)
-      {
-      default: 
-        paramRect.set(0, 0, 0, this.nbH.getBounds().height());
-        AppMethodBeat.o(274568);
-        return;
-        paramView = null;
-        break label57;
+      if (this.orientation != 0) {
+        break label159;
       }
+      paramRect.set(0, 0, this.pYO.getBounds().width(), 0);
+      AppMethodBeat.o(344971);
+      return;
+      paramView = Integer.valueOf(paramView.caO);
+      break;
     }
+    label135:
+    label147:
     for (;;)
     {
-      AppMethodBeat.o(274568);
+      AppMethodBeat.o(344971);
       return;
-      label139:
+      label123:
       if (paramView.intValue() != -3)
       {
         break;
-        label151:
         if (paramView.intValue() != -4)
         {
-          break label69;
-          label163:
+          break label63;
           if (paramView.intValue() != -5) {
-            break label73;
+            break label67;
           }
         }
       }
     }
-    paramRect.set(0, 0, this.nbH.getBounds().width(), 0);
-    AppMethodBeat.o(274568);
+    label159:
+    paramRect.set(0, 0, 0, this.pYO.getBounds().height());
+    AppMethodBeat.o(344971);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.decoration.b
  * JD-Core Version:    0.7.0.1
  */

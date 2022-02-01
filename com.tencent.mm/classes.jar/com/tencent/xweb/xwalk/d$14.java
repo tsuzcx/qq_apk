@@ -2,7 +2,8 @@ package com.tencent.xweb.xwalk;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -10,18 +11,27 @@ import com.tencent.mm.hellhoundlib.b.b;
 final class d$14
   implements View.OnClickListener
 {
-  d$14(d paramd) {}
+  d$14(d paramd, LinearLayout paramLinearLayout) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(154165);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/xweb/xwalk/WebDebugPage$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    d.mC(this.aaht.aaaH);
-    Toast.makeText(this.aaht.aaaH, "开始检测插件更新", 0).show();
-    a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(154165);
+    localb.cH(paramView);
+    a.c("com/tencent/xweb/xwalk/WebDebugPage$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.aiob.getVisibility() == 8)
+    {
+      this.aiob.setVisibility(0);
+      ((Button)paramView).setText("隐藏插件设置");
+    }
+    for (;;)
+    {
+      a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(154165);
+      return;
+      this.aiob.setVisibility(8);
+      ((Button)paramView).setText("插件设置");
+    }
   }
 }
 

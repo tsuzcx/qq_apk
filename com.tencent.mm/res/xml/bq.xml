@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:key="contact_is_mute" android:title="@string/g86" />
-    <CheckBoxPreference android:key="contact_info_subscribe_bizinfo" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bh4" />
-    <Preference android:layout="@layout/xv" android:title="@string/b_x" />
+  xmlns:android1="http://schemas.android.com/apk/res/android" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference newtip:key="roominfo_contact_anchor" />
+    <Preference newtip:key="see_room_member" newtip:layout="@layout/pf" newtip:title="@string/iib" />
+    <PreferenceSmallCategory newtip:key="roominfo_contact_anchor_small_category" />
+    <com.tencent.mm.chatroom.ui.story.StoryLoadIconPreference newtip:key="chat_room_story_videos" newtip:title="@string/b4h" />
+    <Preference newtip:key="room_name" newtip:layout="@layout/bdi" newtip:title="@string/i7v" />
+    <Preference newtip:key="room_qr_code" newtip:layout="@layout/bdi" newtip:title="@string/i8a" newtip:widgetLayout="@layout/bew" />
+    <com.tencent.mm.chatroom.ui.preference.RoomCardPreference newtip:key="room_card" newtip:layout="@layout/bdi" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference newtip:key="manage_room" newtip:layout="@layout/bdi" newtip:path="chatroommgr" newtip:title="@string/gpa" />
+    <KeyValuePreference newtip:key="room_remark" newtip:layout="@layout/bdi" newtip:title="@string/i8i" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="contact_info_locate" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bck" />
-    <Preference android:key="contact_info_template_recv" android:layout="@layout/b8j" android:title="@string/bh6" />
+    <Preference newtip:key="room_search_chatting_content" newtip:layout="@layout/bdi" newtip:title="@string/i92" />
     <PreferenceSmallCategory />
+    <Preference newtip:key="room_upgrade_entry" newtip:layout="@layout/bdi" newtip:title="@string/i9w" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_add_shortcut_btn" android:layout="@layout/b8j" android:title="@string/b9p" />
-    <Preference android:key="contact_info_clear_msg" android:layout="@layout/b8j" android:title="@string/b_6" />
+    <com.tencent.mm.pluginsdk.ui.preference.SpecialCheckBoxPreference newtip:key="chatroom_info_chexboxes" newtip:layout="@layout/bdo" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_subscribe_msg" android:layout="@layout/b8j" android:title="@string/bh5" />
+    <CheckBoxPreference newtip:key="room_notify_new_msg" newtip:layout="@layout/bdi" newtip:title="@string/i7s" />
+    <com.tencent.mm.ui.base.preference.SubCheckBoxPreference newtip:key="room_set_to_conv_box" newtip:layout="@layout/bdi" newtip:title="@string/i9e" />
+    <com.tencent.mm.ui.base.preference.SubPreference newtip:key="room_special_follow_member" newtip:layout="@layout/bdi" newtip:title="@string/i9h" />
+    <CheckBoxPreference newtip:key="room_placed_to_the_top" newtip:layout="@layout/bdi" newtip:title="@string/i8_" />
+    <CheckBoxPreference newtip:key="room_save_to_contact" newtip:layout="@layout/bdi" newtip:title="@string/i8w" />
+    <PreferenceSmallCategory />
+    <KeyValuePreference newtip:key="room_nickname" newtip:layout="@layout/bdi" newtip:title="@string/i7u" />
+    <CheckBoxPreference newtip:key="room_msg_show_username" newtip:title="@string/i7t" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_set_chatting_background" newtip:layout="@layout/bdi" newtip:title="@string/i99" />
+    <Preference newtip:key="room_report_it" newtip:layout="@layout/bdi" newtip:title="@string/i6v" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/i63" newtip:key="room_clear_chatting_history" newtip:layout="@layout/bo3" newtip:title_color="@color/Red" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/i68" newtip:key="room_del_quit" newtip:layout="@layout/bo3" newtip:title_color="@color/Red" />
+    <PreferenceCategory newtip:key="chatroom_bottom_pc" />
+    <Preference newtip:key="room_openim_about" newtip:layout="@layout/bf2" newtip:title="@string/i86" />
 </PreferenceScreen>

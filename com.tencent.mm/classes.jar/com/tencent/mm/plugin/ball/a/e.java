@@ -21,20 +21,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class e
   implements f
 {
-  private WeakReference<Activity> rYb;
+  private WeakReference<Activity> vjr;
   
   public e(Activity paramActivity)
   {
-    AppMethodBeat.i(191298);
-    this.rYb = new WeakReference(paramActivity);
-    AppMethodBeat.o(191298);
+    AppMethodBeat.i(288307);
+    this.vjr = new WeakReference(paramActivity);
+    AppMethodBeat.o(288307);
   }
   
-  public final void K(Activity paramActivity)
+  public final void S(Activity paramActivity)
   {
-    AppMethodBeat.i(191303);
-    this.rYb = new WeakReference(paramActivity);
-    AppMethodBeat.o(191303);
+    AppMethodBeat.i(288309);
+    this.vjr = new WeakReference(paramActivity);
+    AppMethodBeat.o(288309);
   }
   
   public void a(f.a parama)
@@ -54,36 +54,36 @@ public class e
     final AtomicInteger localAtomicInteger = new AtomicInteger(0);
     b.a(getActivity(), new b.b()
     {
-      public final void eG(boolean paramAnonymousBoolean)
+      public final void onComplete(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(191274);
+        AppMethodBeat.i(288321);
         if ((!paramAnonymousBoolean) && (localAtomicInteger.getAndIncrement() <= 0))
         {
           b.a(e.this.getActivity(), new b.b()
           {
-            public final void eG(boolean paramAnonymous2Boolean)
+            public final void onComplete(boolean paramAnonymous2Boolean)
             {
-              AppMethodBeat.i(191166);
-              if (e.1.this.rYd != null) {
-                e.1.this.rYd.eG(paramAnonymous2Boolean);
+              AppMethodBeat.i(288315);
+              if (e.1.this.vjt != null) {
+                e.1.this.vjt.onComplete(paramAnonymous2Boolean);
               }
-              AppMethodBeat.o(191166);
+              AppMethodBeat.o(288315);
             }
           });
-          AppMethodBeat.o(191274);
+          AppMethodBeat.o(288321);
           return;
         }
         if (paramb != null) {
-          paramb.eG(paramAnonymousBoolean);
+          paramb.onComplete(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(191274);
+        AppMethodBeat.o(288321);
       }
     });
     Log.i("MicroMsg.FloatBallPageAdapter", "float ball page convertActivityToTranslucent");
     AppMethodBeat.o(127524);
   }
   
-  public boolean aOg()
+  public boolean bhU()
   {
     AppMethodBeat.i(127521);
     if (((getActivity() instanceof MMActivity)) && (((MMActivity)getActivity()).getSwipeBackLayout() != null))
@@ -95,12 +95,7 @@ public class e
     return false;
   }
   
-  public boolean bOd()
-  {
-    return true;
-  }
-  
-  public ViewGroup cuR()
+  public ViewGroup cXB()
   {
     AppMethodBeat.i(127517);
     Object localObject = getActivity();
@@ -114,21 +109,26 @@ public class e
     return localObject;
   }
   
-  public int cuS()
+  public int cXC()
   {
     return -1;
   }
   
+  public boolean cor()
+  {
+    return true;
+  }
+  
   public Activity getActivity()
   {
-    AppMethodBeat.i(191306);
-    if (this.rYb.get() == null)
+    AppMethodBeat.i(288312);
+    if (this.vjr.get() == null)
     {
-      AppMethodBeat.o(191306);
+      AppMethodBeat.o(288312);
       return null;
     }
-    Activity localActivity = (Activity)this.rYb.get();
-    AppMethodBeat.o(191306);
+    Activity localActivity = (Activity)this.vjr.get();
+    AppMethodBeat.o(288312);
     return localActivity;
   }
   
@@ -182,7 +182,7 @@ public class e
     return null;
   }
   
-  public void hS(boolean paramBoolean)
+  public void iR(boolean paramBoolean)
   {
     AppMethodBeat.i(127523);
     Log.i("MicroMsg.FloatBallPageAdapter", "finish, withAnimation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
@@ -209,7 +209,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.e
  * JD-Core Version:    0.7.0.1
  */

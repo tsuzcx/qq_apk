@@ -1,970 +1,1083 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import com.tencent.e.i;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.text.style.ForegroundColorSpan;
+import android.util.DisplayMetrics;
+import androidx.lifecycle.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.protocal.protobuf.cro;
-import com.tencent.mm.protocal.protobuf.emk;
+import com.tencent.mm.ae.e;
+import com.tencent.mm.ae.e.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.extension.reddot.l;
+import com.tencent.mm.plugin.finder.extension.reddot.l.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.view.q;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.findersdk.a.bw;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.awx;
+import com.tencent.mm.protocal.protobuf.axa;
+import com.tencent.mm.protocal.protobuf.boi;
+import com.tencent.mm.protocal.protobuf.brg;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.ArrayList<Lcom.tencent.mm.protocal.protobuf.emk;>;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.a.ae;
-import kotlin.a.j;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.s;
+import kotlin.n.k;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LiveVisitorFlowStats;", "", "()V", "INNER_VERSION", "", "getINNER_VERSION", "()I", "KEY_ID", "", "RV_VISITOR", "", "getRV_VISITOR", "()Ljava/lang/String;", "TAG", "containBeingPlay", "", "getContainBeingPlay", "()Z", "setContainBeingPlay", "(Z)V", "flows", "Ljava/util/HashMap;", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/StatFlowTag;", "Lkotlin/collections/ArrayList;", "Lkotlin/collections/HashMap;", "getFlows", "()Ljava/util/HashMap;", "historyLog", "getHistoryLog", "playPath", "getPlayPath", "setPlayPath", "(I)V", "preloadMap", "getPreloadMap", "timeRecord", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/utils/PlayTimeCostRecord;", "getTimeRecord", "()Ljava/util/concurrent/ConcurrentHashMap;", "checkEndState", "id", "stage", "isEnd", "stateList", "checkStage", "checkStartState", "isStart", "clear", "", "clearAll", "end", "delay", "getData", "maxIndex", "dataList", "logStage", "config", "Lcom/tencent/mm/plugin/finder/utils/LiveVisitorFlowStats$StageLogConfig;", "reportLinkAppluSuc", "reportLinkApplyFail", "reportLinkHangupFail", "reportLinkHangupSuc", "reportRewardConsumeFail", "reportRewardFail", "reportRewardLevel", "wecoin", "reportRewardSuc", "saveTime", "beginPlayTime", "selectToPlayTimeCost", "setPreloadLiveState", "preloadLive", "tag", "extra", "Lcom/tencent/mm/protobuf/ByteString;", "tagEnterLive", "userClickPlay", "StageLogConfig", "TimeCost", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderTextUtils;", "", "()V", "Edge_2A", "", "Edge_2_5_A", "getEdge_2_5_A", "()I", "TAG", "", "_2dp", "", "campaignColor", "disableColor", "iconPadding", "iconWidth", "layoutWidth", "linkBgColor", "linkColor1", "linkColor2", "measureTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "normalLinkColor", "poiColor", "addReportParamForBizUrl", "url", "scene", "subScene", "clickTime", "appendHeadLeading", "text", "copySpan", "Landroid/text/SpannableString;", "src", "dest", "formatRecommendDesc", "Landroid/text/SpannableStringBuilder;", "incCount", "prefix", "context", "Landroid/content/Context;", "isNewsObject", "", "hotFireIconColor", "hotFireIconSize", "isIconFilled", "getBubbleMessageCount", "count", "getCampaignSpan", "Lkotlin/Pair;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "linkColor", "availWidth", "getCampaignTagTitle", "activityEvent", "Lcom/tencent/mm/protocal/protobuf/FinderObjectEventDesc;", "getCampaignText", "isWithEllipse", "getFriendRecommendText", "friendRecommendCount", "likeCount", "commentCount", "totalCount", "getLimitDescSpan", "layout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "limitCount", "desc", "getLinkSpan", "getPoiSpan", "getTimeText", "isFinderSelfScene", "getTimelineBubbleWidth", "getWxBubbleText", "handleCampaignOnClick", "", "handleLinkTvOnClick", "link", "handlePoiOnClick", "poiText", "makeTest", "mergeContent", "Lkotlin/Triple;", "isSelfScene", "AsyncGetDescText", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ar
 {
-  private static final long AGW = 1552L;
-  private static final int AIK = 1;
-  private static final String AIL = "RV_VISITOR_";
-  private static final HashMap<String, ArrayList<emk>> AIM;
-  private static final HashMap<String, String> AIN;
-  private static final HashMap<String, Boolean> AIO;
-  public static final ConcurrentHashMap<String, aw> AIP;
-  private static int AIQ = 0;
-  private static boolean AIR = false;
-  public static final ar AIS;
-  private static final String TAG = "Finder.LiveFlowStats";
+  private static final float AIr;
+  private static final int Edge_2A;
+  private static final int Edge_2_5_A;
+  private static final int GiA;
+  private static final int GiB;
+  private static final int GiC;
+  private static final int GiD;
+  private static final MMNeat7extView GiE;
+  public static final ar Giw;
+  private static final int Gix;
+  private static final int Giy;
+  private static final int Giz;
+  private static final int iconPadding;
+  private static final int iconWidth;
+  private static final int layoutWidth;
   
   static
   {
-    AppMethodBeat.i(287089);
-    AIS = new ar();
-    TAG = "Finder.LiveFlowStats";
-    AIK = 1;
-    AIL = "RV_VISITOR_";
-    AIM = new HashMap();
-    AIN = new HashMap();
-    AIO = new HashMap();
-    AIP = new ConcurrentHashMap();
-    AGW = 1552L;
-    AppMethodBeat.o(287089);
+    AppMethodBeat.i(333146);
+    Giw = new ar();
+    iconPadding = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 24);
+    AIr = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 2.0F);
+    Edge_2A = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.Edge_2A);
+    Edge_2_5_A = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.Edge_2_5_A);
+    iconWidth = Edge_2A;
+    Gix = MMApplicationContext.getContext().getResources().getColor(e.b.hot_tab_BW_0_Alpha_0_1);
+    Giy = com.tencent.mm.cd.a.w(MMApplicationContext.getContext(), e.b.finder_btn_disable_color);
+    Giz = Color.parseColor("#DEE9FF");
+    GiA = MMApplicationContext.getContext().getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_8);
+    GiB = MMApplicationContext.getContext().getResources().getColor(e.b.Orange);
+    GiC = MMApplicationContext.getContext().getResources().getColor(e.b.Brand);
+    GiD = MMApplicationContext.getContext().getResources().getColor(e.b.Brand);
+    layoutWidth = MMApplicationContext.getContext().getResources().getDisplayMetrics().widthPixels - Edge_2A * 2;
+    MMNeat7extView localMMNeat7extView = new MMNeat7extView(MMApplicationContext.getContext());
+    localMMNeat7extView.setTextSize(1, com.tencent.mm.cd.a.getScaleSize(MMApplicationContext.getContext()) * 15.0F);
+    localMMNeat7extView.setMaxWidth(layoutWidth);
+    GiE = localMMNeat7extView;
+    AppMethodBeat.o(333146);
   }
   
-  public static void Rp(int paramInt)
+  private static String TY(int paramInt)
   {
-    AIQ = paramInt;
+    AppMethodBeat.i(333107);
+    if (paramInt > 99)
+    {
+      AppMethodBeat.o(333107);
+      return "99+";
+    }
+    AppMethodBeat.o(333107);
+    return String.valueOf(paramInt);
   }
   
-  public static void Rq(int paramInt)
+  public static String a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(287088);
-    if (paramInt < 10)
+    AppMethodBeat.i(333098);
+    s.u(paramContext, "context");
+    if (paramInt2 == 0)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 82L);
-      AppMethodBeat.o(287088);
-      return;
+      if (paramInt1 > 0)
+      {
+        paramContext = b(paramContext, paramInt1, paramInt2, paramInt3, paramInt4);
+        AppMethodBeat.o(333098);
+        return paramContext;
+      }
+      paramContext = paramContext.getResources().getString(e.h.finder_message_comment_tip, new Object[] { TY(paramInt3) });
+      s.s(paramContext, "{\n                    co…Count))\n                }");
+      AppMethodBeat.o(333098);
+      return paramContext;
     }
-    if (paramInt < 50)
+    if (paramInt3 == 0)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 83L);
-      AppMethodBeat.o(287088);
-      return;
+      if (paramInt1 > 0)
+      {
+        paramContext = b(paramContext, paramInt1, paramInt2, paramInt3, paramInt4);
+        AppMethodBeat.o(333098);
+        return paramContext;
+      }
+      paramContext = paramContext.getResources().getString(e.h.finder_message_like_tip, new Object[] { TY(paramInt2) });
+      s.s(paramContext, "{\n                    co…Count))\n                }");
+      AppMethodBeat.o(333098);
+      return paramContext;
     }
-    if (paramInt < 200)
+    if (paramInt1 > 0)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 84L);
-      AppMethodBeat.o(287088);
-      return;
+      paramContext = b(paramContext, paramInt1, paramInt2, paramInt3, paramInt4);
+      AppMethodBeat.o(333098);
+      return paramContext;
     }
-    if (paramInt < 500)
-    {
-      com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 85L);
-      AppMethodBeat.o(287088);
-      return;
-    }
-    if (paramInt < 1000)
-    {
-      com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 86L);
-      AppMethodBeat.o(287088);
-      return;
-    }
-    if (paramInt < 5000)
-    {
-      com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 87L);
-      AppMethodBeat.o(287088);
-      return;
-    }
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 88L);
-    AppMethodBeat.o(287088);
+    paramContext = paramContext.getResources().getString(e.h.finder_new_message_tip, new Object[] { TY(paramInt4) });
+    s.s(paramContext, "{\n                contex…otalCount))\n            }");
+    AppMethodBeat.o(333098);
+    return paramContext;
   }
   
-  private final String a(String paramString, a parama)
+  public static String a(brg parambrg, Context paramContext)
   {
+    Object localObject2 = null;
+    AppMethodBeat.i(333070);
+    s.u(parambrg, "activityEvent");
+    s.u(paramContext, "context");
+    Object localObject1 = av.GiL;
+    boolean bool = av.qI(parambrg.ZZn);
+    if ((Util.isNullOrNil(parambrg.eventName)) || (Util.isNullOrNil(parambrg.ZZl))) {
+      parambrg = paramContext.getString(e.h.finder_activity_title);
+    }
     for (;;)
     {
-      Object localObject1;
-      int i;
-      int j;
-      try
+      s.s(parambrg, "if (Util.isNullOrNil(act…          }\n            }");
+      AppMethodBeat.o(333070);
+      return parambrg;
+      localObject1 = parambrg.ZHN;
+      if (localObject1 == null)
       {
-        AppMethodBeat.i(287078);
-        ArrayList localArrayList = (ArrayList)AIM.get(paramString);
-        if (localArrayList != null)
-        {
-          StringBuilder localStringBuilder1 = new StringBuilder();
-          p.j(localArrayList, "dataList");
-          localObject1 = (emk)j.lp((List)localArrayList);
-          if (localObject1 != null)
-          {
-            l2 = ((emk)localObject1).GhA;
-            localObject1 = (emk)j.lr((List)localArrayList);
-            if (localObject1 == null) {
-              break label559;
-            }
-            l1 = ((emk)localObject1).GhA;
-            l2 = l1 - l2;
-            Iterator localIterator = ((Iterable)localArrayList).iterator();
-            i = 0;
-            if (localIterator.hasNext())
-            {
-              localObject1 = localIterator.next();
-              j = i + 1;
-              if (i < 0) {
-                j.iBO();
-              }
-              emk localemk = (emk)localObject1;
-              if (i == 0)
-              {
-                p.j(localStringBuilder1.append("start at " + localemk.GhA + "\n " + localemk.BHO + " \n "), "flowStr.append(\"start at…\\n ${curData.stage} \\n \")");
-                i = j;
-                continue;
-              }
-              localObject2 = (emk)localArrayList.get(i - 1);
-              localObject1 = (String)parama.AIT.get(localemk.BHO);
-              if (localObject1 == null) {
-                break label584;
-              }
-              localObject2 = b((String)localObject1, i, localArrayList);
-              break label565;
-              label260:
-              if ((l2 <= 0L) || (localObject2 == null)) {
-                break label587;
-              }
-              StringBuilder localStringBuilder2 = new StringBuilder();
-              af localaf = af.aaBG;
-              long l3 = localemk.GhA;
-              if (localObject2 == null) {
-                p.iCn();
-              }
-              localObject2 = String.format("%.1f", Arrays.copyOf(new Object[] { Float.valueOf((float)(l3 - ((emk)localObject2).GhA) * 100.0F / (float)l2) }, 1));
-              p.j(localObject2, "java.lang.String.format(format, *args)");
-              localObject2 = (String)localObject2 + "%";
-              localStringBuilder1.append(localemk.BHO + '[' + (String)localObject1 + "ms " + (String)localObject2 + "] \n ");
-              if (i != localArrayList.size() - 1) {
-                break label578;
-              }
-              localStringBuilder1.append("end at ".concat(String.valueOf(l1)));
-              break label578;
-              l3 = localemk.GhA;
-              if (localObject2 == null) {
-                p.iCn();
-              }
-              localObject1 = String.valueOf(l3 - ((emk)localObject2).GhA);
-              continue;
-            }
-            parama = "Total Cost:" + l2 + "ms... " + localStringBuilder1;
-            AIN.put(paramString, parama);
-            Log.i(TAG, parama);
-            AppMethodBeat.o(287078);
-            paramString = parama;
-            return paramString;
-          }
+        localObject1 = null;
+        label89:
+        if (localObject1 == null) {
+          break label191;
         }
-        else
-        {
-          paramString = "";
-          AppMethodBeat.o(287078);
-          continue;
+        if (!bool) {
+          break label157;
         }
-        long l2 = 0L;
+        localObject1 = parambrg.ZHN;
+        if (localObject1 != null) {
+          break label149;
+        }
       }
-      finally {}
-      continue;
-      label559:
-      long l1 = 0L;
-      continue;
-      label565:
-      label578:
-      label584:
-      for (;;)
+      label149:
+      for (localObject1 = localObject2;; localObject1 = ((awx)localObject1).ZIb)
       {
-        if (localObject2 != null) {
-          break label585;
-        }
-        localObject1 = "null ";
-        break label260;
-        i = j;
+        parambrg = s.X((String)localObject1, paramContext.getString(e.h.finder_activity_config_feed_tag, new Object[] { parambrg.ZZl, "" }));
         break;
+        localObject1 = ((awx)localObject1).ZIb;
+        break label89;
       }
-      label585:
-      continue;
-      label587:
-      Object localObject2 = "";
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, b paramb, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    label438:
-    label447:
-    label471:
-    for (;;)
-    {
-      ap.a locala;
-      int i;
-      try
+      label157:
+      parambrg = parambrg.ZHN;
+      if (parambrg == null)
       {
-        AppMethodBeat.i(287074);
-        p.k(paramString1, "id");
-        p.k(paramString2, "stage");
-        ArrayList localArrayList = (ArrayList)AIM.get(paramString1);
-        if (localArrayList != null) {
-          break label471;
-        }
-        localArrayList = new ArrayList();
-        p.j(localArrayList, "flows.get(id) ?: ArrayList()");
-        Object localObject = ap.AIh;
-        if (p.h(paramString2, ap.efi().name)) {
-          ((Map)AIO).put(paramString1, Boolean.valueOf(paramBoolean3));
-        }
-        paramBoolean3 = paramBoolean1;
-        if (aGb(paramString1))
-        {
-          localObject = ap.AIh;
-          paramBoolean3 = paramBoolean1;
-          if ((p.h(paramString2, ap.efr().name) ^ true)) {
-            paramBoolean3 = false;
-          }
-        }
-        paramString2 = j(paramString2, localArrayList);
-        paramBoolean1 = a(paramString1, paramString2, paramBoolean2, localArrayList);
-        if (paramBoolean3)
-        {
-          localArrayList.clear();
-          localObject = new emk();
-          ((emk)localObject).id = paramString1;
-          ((emk)localObject).BHO = paramString2;
-          ((emk)localObject).GhA = cm.bfC();
-          if (!paramBoolean3) {
-            break label447;
-          }
-          locala = ap.AIh;
-          i = ap.efd();
-          ((emk)localObject).type = i;
-          ((emk)localObject).UoX = paramb;
-          paramb = b.AJc;
-          b.a((emk)localObject, localArrayList, paramBoolean1);
-          localArrayList.add(localObject);
-          ((Map)AIM).put(paramString1, localArrayList);
-          Log.i(TAG, "tag, stage:" + paramString2 + ", isStart:" + paramBoolean3 + ", isEnd:" + paramBoolean1);
-          if (paramBoolean1) {
-            com.tencent.e.h.ZvG.o((Runnable)new c(paramString1), 0L);
-          }
-          AppMethodBeat.o(287074);
-          return;
-        }
-        if (localArrayList.isEmpty()) {
-          break label438;
-        }
-        localObject = (emk)j.lp((List)localArrayList);
-        if (localObject != null)
-        {
-          i = ((emk)localObject).type;
-          localObject = ap.AIh;
-          if (i != ap.efd()) {
-            break label438;
-          }
-          localObject = (emk)j.lr((List)localArrayList);
-          if (localObject == null) {
-            continue;
-          }
-          i = ((emk)localObject).type;
-          localObject = ap.AIh;
-          if (i != ap.efe()) {
-            continue;
-          }
-          AppMethodBeat.o(287074);
-          continue;
-        }
-        AppMethodBeat.o(287074);
-      }
-      finally {}
-      continue;
-      AppMethodBeat.o(287074);
-      continue;
-      if (paramBoolean1)
-      {
-        locala = ap.AIh;
-        i = ap.efe();
+        parambrg = "";
       }
       else
       {
-        i = 0;
-      }
-    }
-  }
-  
-  private static boolean a(String paramString1, String paramString2, boolean paramBoolean, ArrayList<emk> paramArrayList)
-  {
-    AppMethodBeat.i(287077);
-    if ((p.h((Boolean)AIO.get(paramString1), Boolean.TRUE) ^ true))
-    {
-      AppMethodBeat.o(287077);
-      return paramBoolean;
-    }
-    paramString1 = ap.AIh;
-    if (p.h(paramString2, ap.efo().name))
-    {
-      paramString1 = ((Iterable)paramArrayList).iterator();
-      while (paramString1.hasNext())
-      {
-        Object localObject1 = (emk)paramString1.next();
-        Object localObject2 = ((emk)localObject1).BHO;
-        ap.a locala = ap.AIh;
-        if (!p.h(localObject2, ap.efl().name))
+        paramContext = parambrg.ZIb;
+        parambrg = paramContext;
+        if (paramContext == null)
         {
-          localObject1 = ((emk)localObject1).BHO;
-          localObject2 = ap.AIh;
-          if (!p.h(localObject1, ap.efn().name)) {
-            break;
+          parambrg = "";
+          continue;
+          label191:
+          if (bool) {
+            parambrg = paramContext.getString(e.h.finder_activity_feed_tag, new Object[] { parambrg.ZZl, "" });
+          } else {
+            parambrg = paramContext.getString(e.h.finder_activity_title_with_quote);
           }
         }
-        else
-        {
-          AppMethodBeat.o(287077);
-          return true;
-        }
       }
     }
-    paramString1 = ap.AIh;
-    if (!p.h(paramString2, ap.efl().name))
-    {
-      paramString1 = ap.AIh;
-      if (!p.h(paramString2, ap.efn().name)) {}
-    }
-    else
-    {
-      paramString1 = ((Iterable)paramArrayList).iterator();
-      while (paramString1.hasNext())
-      {
-        paramString2 = ((emk)paramString1.next()).BHO;
-        paramArrayList = ap.AIh;
-        if (p.h(paramString2, ap.efo().name))
-        {
-          AppMethodBeat.o(287077);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(287077);
-    return false;
   }
   
-  private static boolean aGb(String paramString)
+  public static kotlin.u<Boolean, Integer, SpannableString> a(final Context paramContext, final BaseFinderFeed paramBaseFinderFeed, boolean paramBoolean)
   {
-    AppMethodBeat.i(287072);
-    if (AIP.containsKey(paramString))
-    {
-      paramString = (aw)AIP.get(paramString);
-      if ((paramString == null) || (paramString.qLu != 0L))
-      {
-        AppMethodBeat.o(287072);
-        return true;
-      }
-    }
-    AppMethodBeat.o(287072);
-    return false;
-  }
-  
-  private static emk b(String paramString, int paramInt, ArrayList<emk> paramArrayList)
-  {
-    AppMethodBeat.i(287080);
-    Object localObject = null;
-    Iterator localIterator = ((Iterable)paramArrayList).iterator();
-    int i = 0;
-    paramArrayList = (ArrayList<emk>)localObject;
-    if (localIterator.hasNext())
-    {
-      localObject = localIterator.next();
-      if (i < 0) {
-        j.iBO();
-      }
-      localObject = (emk)localObject;
-      if ((i >= paramInt) || (!p.h(((emk)localObject).BHO, paramString))) {
-        break label93;
-      }
-      paramArrayList = (ArrayList<emk>)localObject;
-    }
-    label93:
-    for (;;)
-    {
-      i += 1;
-      break;
-      AppMethodBeat.o(287080);
-      return paramArrayList;
-    }
-  }
-  
-  public static int efU()
-  {
-    return AIK;
-  }
-  
-  public static String efV()
-  {
-    return AIL;
-  }
-  
-  public static HashMap<String, ArrayList<emk>> efW()
-  {
-    return AIM;
-  }
-  
-  public static HashMap<String, String> efX()
-  {
-    return AIN;
-  }
-  
-  public static ConcurrentHashMap<String, aw> efY()
-  {
-    return AIP;
-  }
-  
-  public static int efZ()
-  {
-    return AIQ;
-  }
-  
-  public static boolean ega()
-  {
-    return AIR;
-  }
-  
-  public static void egb()
-  {
-    AppMethodBeat.i(287081);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 70L);
-    AppMethodBeat.o(287081);
-  }
-  
-  public static void egc()
-  {
-    AppMethodBeat.i(287082);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 71L);
-    AppMethodBeat.o(287082);
-  }
-  
-  public static void egd()
-  {
-    AppMethodBeat.i(287083);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 72L);
-    AppMethodBeat.o(287083);
-  }
-  
-  public static void ege()
-  {
-    AppMethodBeat.i(287084);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 73L);
-    AppMethodBeat.o(287084);
-  }
-  
-  public static void egf()
-  {
-    AppMethodBeat.i(287085);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 79L);
-    AppMethodBeat.o(287085);
-  }
-  
-  public static void egg()
-  {
-    AppMethodBeat.i(287086);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 80L);
-    AppMethodBeat.o(287086);
-  }
-  
-  public static void egh()
-  {
-    AppMethodBeat.i(287087);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 81L);
-    AppMethodBeat.o(287087);
-  }
-  
-  private static String j(String paramString, ArrayList<emk> paramArrayList)
-  {
-    AppMethodBeat.i(287076);
-    Object localObject = ap.AIh;
-    if (p.h(paramString, ap.efo().name))
-    {
-      paramArrayList = ((Iterable)paramArrayList).iterator();
-      while (paramArrayList.hasNext())
-      {
-        localObject = ((emk)paramArrayList.next()).BHO;
-        ap.a locala = ap.AIh;
-        if (p.h(localObject, ap.efo().name))
-        {
-          paramString = ap.AIh;
-          paramString = ap.efq().name;
-          AppMethodBeat.o(287076);
-          return paramString;
-        }
-      }
-    }
-    AppMethodBeat.o(287076);
-    return paramString;
-  }
-  
-  public static void qU(boolean paramBoolean)
-  {
-    AIR = paramBoolean;
-  }
-  
-  public final void clear(String paramString)
-  {
+    AppMethodBeat.i(333050);
+    s.u(paramContext, "context");
+    s.u(paramBaseFinderFeed, "item");
+    System.nanoTime();
+    SpannableString localSpannableString = paramBaseFinderFeed.feedObject.getDescriptionFullSpan();
+    Object localObject1;
+    int i;
+    int j;
     try
     {
-      AppMethodBeat.i(287079);
-      p.k(paramString, "id");
-      AIM.remove(paramString);
-      AIO.remove(paramString);
-      AIP.remove(paramString);
-      Log.i(TAG, "clear id:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(287079);
-      return;
+      localObject1 = Result.Companion;
+      localSpannableStringBuilder1 = new SpannableStringBuilder((CharSequence)localSpannableString);
+      localSpannableStringBuilder2 = new SpannableStringBuilder();
+      if (((bw)h.ax(bw.class)).aBu()) {
+        break label1523;
+      }
+      i = Giz;
+      f1 = layoutWidth - iconPadding - iconWidth;
+      localObject3 = GiE;
+      f2 = layoutWidth - iconWidth;
+      j = paramBaseFinderFeed.feedObject.getFeedObject().adFlag;
+      Log.i("Finder.TextUtils", s.X("getCampaignSpan adFlag:", Integer.valueOf(j)));
+      if (4 != j) {
+        break label1531;
+      }
+      localObject1 = new kotlin.r(Integer.valueOf(-1), null);
+      label160:
+      m = ((Number)((kotlin.r)localObject1).bsC).intValue();
+      localObject3 = (SpannableString)((kotlin.r)localObject1).bsD;
+      localObject4 = GiE;
+      localObject1 = av.GiL;
+      localObject1 = paramBaseFinderFeed.feedObject.getLocation().city;
+      localObject2 = (CharSequence)localObject1;
+      if (localObject2 == null) {
+        break label2630;
+      }
+      if (((CharSequence)localObject2).length() != 0) {
+        break label2832;
+      }
     }
     finally
     {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LiveVisitorFlowStats$StageLogConfig;", "", "cmpMap", "", "", "(Ljava/util/Map;)V", "getCmpMap", "()Ljava/util/Map;", "plugin-finder_release"})
-  public static final class a
-  {
-    final Map<String, String> AIT;
-    
-    public a(Map<String, String> paramMap)
-    {
-      AppMethodBeat.i(283254);
-      this.AIT = paramMap;
-      AppMethodBeat.o(283254);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LiveVisitorFlowStats$TimeCost;", "", "()V", "CDNPlay", "", "cdnConnect", "cdnConnectCount", "failedReason1", "failedReason2", "failedReason3", "failedReason4", "id", "joinLive", "joinLiveCount", "logId", "", "stageConfig", "Lcom/tencent/mm/plugin/finder/utils/LiveVisitorFlowStats$StageLogConfig;", "total", "totalCount", "trtcConnect", "trtcConnectCount", "processTag", "", "curTagData", "Lcom/tencent/mm/protocal/protobuf/StatFlowTag;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "isEnd", "", "reportCdnConnect", "time", "reportErrorCode", "extra", "Lcom/tencent/mm/protocal/protobuf/LiveFailedTagExtra;", "reportFailedReason1", "reportFailedReason2", "reportFailedReason3", "reportFailedReason4", "reportFlow", "", "originDataList", "reportJoinLive", "reportPlay", "reportTotal", "reportTrtcConnect", "plugin-finder_release"})
-  public static final class b
-  {
-    private static final long AHg = 50L;
-    private static final long AHh = 51L;
-    private static final long AHi = 52L;
-    private static final long AHj = 54L;
-    private static final long AIU = 1L;
-    private static final long AIV = 2L;
-    private static final long AIW = 3L;
-    private static final long AIX = 5L;
-    private static final long AIY = 6L;
-    private static final long AIZ = 7L;
-    private static final long AJa = 8L;
-    private static final ar.a AJb;
-    public static final b AJc;
-    private static final long id = 1552L;
-    private static final int jTq = 21173;
-    private static final long total = 0L;
-    private static final long xEc = 4L;
-    
-    static
-    {
-      AppMethodBeat.i(273060);
-      AJc = new b();
-      id = 1552L;
-      AIU = 1L;
-      AIV = 2L;
-      AIW = 3L;
-      xEc = 4L;
-      AIX = 5L;
-      AIY = 6L;
-      AIZ = 7L;
-      AJa = 8L;
-      AHg = 50L;
-      AHh = 51L;
-      AHi = 52L;
-      AHj = 54L;
-      HashMap localHashMap = new HashMap();
-      Object localObject = ap.AIh;
-      localObject = ap.efl().name;
-      ap.a locala = ap.AIh;
-      localHashMap.put(localObject, ap.efi().name);
-      localObject = ap.AIh;
-      localObject = ap.efn().name;
-      locala = ap.AIh;
-      localHashMap.put(localObject, ap.efi().name);
-      localObject = ap.AIh;
-      localObject = ap.efo().name;
-      locala = ap.AIh;
-      localHashMap.put(localObject, ap.efm().name);
-      localObject = ap.AIh;
-      localObject = ap.efq().name;
-      locala = ap.AIh;
-      localHashMap.put(localObject, ap.efh().name);
-      localObject = ap.AIh;
-      localObject = ap.efp().name;
-      locala = ap.AIh;
-      localHashMap.put(localObject, ap.efm().name);
-      AJb = new ar.a((Map)localHashMap);
-      jTq = 21173;
-      AppMethodBeat.o(273060);
-    }
-    
-    public static void a(emk paramemk, ArrayList<emk> paramArrayList, boolean paramBoolean)
-    {
-      AppMethodBeat.i(273057);
-      p.k(paramemk, "curTagData");
-      p.k(paramArrayList, "dataList");
-      Object localObject1 = (String)AJb.AIT.get(paramemk.BHO);
-      Object localObject3;
-      long l;
-      if (localObject1 != null)
-      {
-        localObject3 = ar.AIS;
-        localObject1 = ar.c((String)localObject1, paramArrayList.size(), paramArrayList);
-        if (localObject1 != null)
-        {
-          l = paramemk.GhA - ((emk)localObject1).GhA;
-          localObject1 = paramemk.BHO;
-          localObject3 = ap.AIh;
-          if (!p.h(localObject1, ap.efl().name))
-          {
-            localObject3 = ap.AIh;
-            if (!p.h(localObject1, ap.efn().name)) {
-              break label447;
-            }
-          }
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AIU, l, false);
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AIX, 1L, false);
-          localObject1 = paramemk.BHO;
-          localObject3 = ap.AIh;
-          if (p.h(localObject1, ap.efn().name))
-          {
-            localObject3 = paramemk.UoX;
-            if (localObject3 != null)
-            {
-              localObject1 = (a)new cro();
-              localObject3 = ((b)localObject3).toByteArray();
-            }
-          }
-        }
-      }
       for (;;)
       {
-        Object localObject2;
-        try
+        SpannableStringBuilder localSpannableStringBuilder1;
+        SpannableStringBuilder localSpannableStringBuilder2;
+        float f1;
+        Object localObject3;
+        float f2;
+        int m;
+        Object localObject4;
+        Object localObject5;
+        Object localObject6;
+        Drawable localDrawable;
+        paramBaseFinderFeed = Result.Companion;
+        paramContext = Result.constructor-impl(ResultKt.createFailure(paramContext));
+        continue;
+        i = ((com.tencent.neattextview.textview.layout.a)localObject1).jQH();
+        continue;
+        paramContext = new SpannableString((CharSequence)"");
+        continue;
+        paramContext = (CharSequence)"";
+      }
+      AppMethodBeat.o(333050);
+      return paramContext;
+    }
+    Object localObject2 = paramBaseFinderFeed.feedObject.getLocation().poiName;
+    localObject5 = (CharSequence)localObject2;
+    label267:
+    label300:
+    label316:
+    label335:
+    int n;
+    int i1;
+    label417:
+    label454:
+    int k;
+    if (localObject5 != null)
+    {
+      if (((CharSequence)localObject5).length() != 0) {
+        break label2841;
+      }
+      break label2644;
+      localObject1 = av.cn((String)localObject1, (String)localObject2);
+      if (localObject1 != null)
+      {
+        if (((CharSequence)localObject1).length() != 0) {
+          break label2847;
+        }
+        j = 1;
+        break label2658;
+        if (((CharSequence)localObject1).length() != 0) {
+          break label2853;
+        }
+        j = 1;
+        if (j != 0)
         {
-          ((a)localObject1).parseFrom((byte[])localObject3);
-          localObject1 = (cro)localObject1;
-          if (localObject1 != null) {}
-          switch (((cro)localObject1).errCode)
+          localObject1 = new kotlin.r(Integer.valueOf(-1), null);
+          n = ((Number)((kotlin.r)localObject1).bsC).intValue();
+          localObject4 = (SpannableString)((kotlin.r)localObject1).bsD;
+          localObject5 = GiE;
+          i1 = paramBaseFinderFeed.feedObject.getExtReading().style;
+          localObject1 = av.GiL;
+          localObject1 = paramBaseFinderFeed.feedObject.getExtReading().link;
+          localObject2 = (CharSequence)localObject1;
+          if (localObject2 == null) {
+            break label2671;
+          }
+          if (((CharSequence)localObject2).length() != 0) {
+            break label2866;
+          }
+          break label2671;
+          localObject2 = paramBaseFinderFeed.feedObject.getExtReading().title;
+          localObject6 = (CharSequence)localObject2;
+          if (localObject6 == null) {
+            break label2685;
+          }
+          if (((CharSequence)localObject6).length() != 0) {
+            break label2875;
+          }
+          break label2685;
+          localObject6 = aw.Gjk;
+          if ((localObject1 == null) || (localObject2 == null)) {
+            break label2500;
+          }
+          localObject5 = s.X("  ", TextUtils.ellipsize((CharSequence)localObject2, ((MMNeat7extView)localObject5).getPaint(), f1, TextUtils.TruncateAt.END));
+          localObject6 = new SpannableString((CharSequence)localObject5);
+          if ((!((bw)h.ax(bw.class)).aBu()) && (!paramBaseFinderFeed.isPreview)) {
+            break label2484;
+          }
+          j = Giz;
+          label537:
+          if (i1 == 1) {
+            break label2492;
+          }
+          k = e.g.icons_filled_link;
+          label548:
+          localDrawable = bb.m(paramContext, k, j);
+          localDrawable.setBounds(0, 0, (int)(iconWidth * 1.0F * localDrawable.getIntrinsicWidth() / localDrawable.getIntrinsicHeight()), iconWidth);
+          if ((((bw)h.ax(bw.class)).aBu()) || (paramBaseFinderFeed.isPreview)) {
+            i = Giz;
+          }
+          ((SpannableString)localObject6).setSpan(new com.tencent.mm.ui.widget.a(localDrawable, 1), 0, 1, 17);
+          localObject1 = new q((String)localObject2, i, Gix, (kotlin.g.a.b)new c(paramContext, paramBaseFinderFeed, (String)localObject1));
+          ((q)localObject1).shadowRadius = AIr;
+          localObject2 = ah.aiuX;
+          ((SpannableString)localObject6).setSpan(localObject1, 1, ((String)localObject5).length(), 17);
+          switch (i1)
           {
           default: 
-            com.tencent.mm.plugin.report.service.h.IzE.F(id, AHj);
-            localObject1 = ar.AIS;
-            Log.i(ar.egi(), "reportJoinLive ".concat(String.valueOf(l)));
-            if (!paramBoolean) {
-              break label681;
-            }
-            paramArrayList = (emk)j.lp((List)paramArrayList);
-            if (paramArrayList == null) {
-              break label681;
-            }
-            l = paramemk.GhA - paramArrayList.GhA;
-            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, total, l, false);
-            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, xEc, 1L, false);
-            paramemk = ar.AIS;
-            Log.i(ar.egi(), "reportTotal ".concat(String.valueOf(l)));
-            AppMethodBeat.o(273057);
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          Log.printDebugStack("safeParser", "", new Object[] { localException });
-          localObject2 = null;
-          continue;
-          com.tencent.mm.plugin.report.service.h.IzE.F(id, AHg);
-          continue;
-          com.tencent.mm.plugin.report.service.h.IzE.F(id, AHh);
-          continue;
-          com.tencent.mm.plugin.report.service.h.IzE.F(id, AHi);
-          continue;
-        }
-        label447:
-        localObject3 = ap.AIh;
-        if (p.h(localObject2, ap.efo().name))
-        {
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AIV, l, false);
-          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AIY, 1L, false);
-          localObject2 = ar.AIS;
-          Log.i(ar.egi(), "reportCdnConnect ".concat(String.valueOf(l)));
-        }
-        else
-        {
-          localObject3 = ap.AIh;
-          if (p.h(localObject2, ap.efp().name))
-          {
-            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AIW, l, false);
-            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AIZ, 1L, false);
-            localObject2 = ar.AIS;
-            Log.i(ar.egi(), "reportTrtcConnect ".concat(String.valueOf(l)));
-          }
-          else
-          {
-            localObject3 = ap.AIh;
-            if (p.h(localObject2, ap.efq().name))
+            label720:
+            localObject1 = new kotlin.r(Integer.valueOf(i), localObject6);
+            label736:
+            k = ((Number)((kotlin.r)localObject1).bsC).intValue();
+            localObject1 = (SpannableString)((kotlin.r)localObject1).bsD;
+            if ((!paramBoolean) && (paramBaseFinderFeed.feedObject.getCreateTime() > 0))
             {
-              localObject2 = paramemk.id;
-              if (localObject2 != null)
-              {
-                localObject3 = ar.AIS;
-                p.j(localObject2, "it");
-                ar.f((String)localObject2, paramemk.GhA, (int)l);
+              if (paramBaseFinderFeed.feedObject.getFeedObject().objectType != 1) {
+                break label2893;
               }
-              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(id, AJa, l, false);
-              localObject2 = ar.AIS;
-              Log.i(ar.egi(), "reportBeginPlay ".concat(String.valueOf(l)));
-            }
-          }
-        }
-      }
-      label681:
-      AppMethodBeat.o(273057);
-    }
-    
-    public static void k(String paramString, ArrayList<emk> paramArrayList)
-    {
-      AppMethodBeat.i(273059);
-      p.k(paramString, "id");
-      p.k(paramArrayList, "originDataList");
-      Object localObject1 = ar.AIS;
-      ar.Rp(0);
-      localObject1 = ar.AIS;
-      ar.qU(false);
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll((Collection)paramArrayList);
-      Object localObject2 = (emk)j.lp((List)localObject1);
-      paramArrayList = (emk)j.lr((List)localObject1);
-      long l1;
-      long l2;
-      int i;
-      int j;
-      label373:
-      int n;
-      if ((localObject2 != null) && (paramArrayList != null) && ((p.h(localObject2, paramArrayList) ^ true)))
-      {
-        l1 = paramArrayList.GhA;
-        l2 = ((emk)localObject2).GhA;
-        localObject2 = paramArrayList.BHO;
-        Object localObject3 = ap.AIh;
-        if (p.h(localObject2, ap.efo().name)) {
-          i = 1;
-        }
-        for (;;)
-        {
-          localObject2 = new StringBuilder();
-          localObject3 = ((Iterable)localObject1).iterator();
-          j = 0;
-          while (((Iterator)localObject3).hasNext())
-          {
-            Object localObject4 = ((Iterator)localObject3).next();
-            if (j < 0) {
-              j.iBO();
-            }
-            localObject4 = (emk)localObject4;
-            if (j > 0)
-            {
-              Object localObject5 = ((ArrayList)localObject1).get(j - 1);
-              p.j(localObject5, "dataList.get(index - 1)");
-              localObject5 = (emk)localObject5;
-              ((StringBuilder)localObject2).append(((emk)localObject4).BHO + ':' + (((emk)localObject4).GhA - ((emk)localObject5).GhA) + ';');
-              localObject5 = ar.AIS;
-              if (ar.efZ() == 0)
+              i = 1;
+              break label2705;
+              label793:
+              localObject2 = new SpannableString((CharSequence)r.q(paramContext, paramBaseFinderFeed.feedObject.getCreateTime() * 1000L));
+              ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_4)), 0, ((SpannableString)localObject2).length(), 17);
+              if (!paramBoolean) {
+                break label2899;
+              }
+              i = 1;
+              label858:
+              paramContext = new kotlin.r(Integer.valueOf(i), localObject2);
+              label873:
+              i1 = ((Number)paramContext.bsC).intValue();
+              localObject2 = (SpannableString)paramContext.bsD;
+              paramContext = new ah.a();
+              localObject5 = (CharSequence)localSpannableString;
+              if (localObject5 == null) {
+                break label2717;
+              }
+              if (((CharSequence)localObject5).length() != 0) {
+                break label2905;
+              }
+              break label2717;
+              label927:
+              paramContext.aiwY = paramBoolean;
+              if (m >= 0)
               {
-                localObject5 = ((emk)localObject4).BHO;
-                ap.a locala = ap.AIh;
-                if (!p.h(localObject5, ap.eft().name))
+                if (paramContext.aiwY) {
+                  localSpannableStringBuilder2.append((CharSequence)"\n");
+                }
+                localSpannableStringBuilder2.append((CharSequence)localObject3);
+                paramContext.aiwY = true;
+              }
+              if ((k > n) && (k > 0) && (n == 0))
+              {
+                b(k, paramContext, localSpannableStringBuilder2, (SpannableString)localObject1);
+                a(n, paramContext, localSpannableStringBuilder2, (SpannableString)localObject4);
+                label1009:
+                if (i1 >= 0)
                 {
-                  localObject5 = ((emk)localObject4).BHO;
-                  locala = ap.AIh;
-                  if (!p.h(localObject5, ap.efs().name))
+                  if (paramContext.aiwY) {
+                    localSpannableStringBuilder2.append((CharSequence)"\n");
+                  }
+                  localSpannableStringBuilder2.append((CharSequence)localObject2);
+                  paramContext.aiwY = true;
+                }
+                localObject1 = paramBaseFinderFeed.feedObject.getDescLayout();
+                if (localObject1 != null) {
+                  break label2572;
+                }
+                i = 2;
+                j = Math.min(i, 2);
+                i = j;
+                if (m <= 0) {
+                  break label2730;
+                }
+                i = j + 1;
+                break label2730;
+                label1092:
+                k = Math.max(j, 2);
+                System.nanoTime();
+                if (paramContext.aiwY)
+                {
+                  paramContext = (CharSequence)localSpannableString;
+                  if (paramContext == null) {
+                    break label2778;
+                  }
+                  if (paramContext.length() != 0) {
+                    break label2916;
+                  }
+                  break label2778;
+                  label1133:
+                  if (i == 0)
                   {
-                    localObject5 = ((emk)localObject4).BHO;
-                    locala = ap.AIh;
-                    if (!p.h(localObject5, ap.efu().name)) {
-                      break label373;
+                    paramBaseFinderFeed = paramBaseFinderFeed.feedObject.getDescLayout();
+                    paramContext = paramBaseFinderFeed;
+                    if (paramBaseFinderFeed == null)
+                    {
+                      GiE.setMaxLines(2);
+                      GiE.setEllipsize(TextUtils.TruncateAt.END);
+                      GiE.aZ((CharSequence)localSpannableString);
+                      paramContext = GiE.pE(layoutWidth, 2147483647);
+                    }
+                    if (paramContext.aGN(1) > 0)
+                    {
+                      localSpannableStringBuilder1.clear();
+                      localSpannableStringBuilder1.clearSpans();
+                      s.s(paramContext, "descLayout");
+                      i = paramContext.aGM(1);
+                      j = paramContext.dk(1);
+                      if ((j + i <= 0) || (localSpannableString == null)) {
+                        break label2584;
+                      }
+                      paramContext = (SpannableString)localSpannableString.subSequence(0, Math.min(j + i, localSpannableString.length()));
+                      localSpannableStringBuilder1.append((CharSequence)new SpannableString((CharSequence)new SpannableStringBuilder((CharSequence)paramContext).append((CharSequence)"…")));
                     }
                   }
                 }
-                localObject5 = ar.AIS;
-                ar.Rp(1);
-              }
-              localObject4 = ((emk)localObject4).BHO;
-              localObject5 = ap.AIh;
-              if (p.h(localObject4, ap.efq().name))
-              {
-                localObject4 = ar.AIS;
-                ar.qU(true);
+                System.nanoTime();
+                localSpannableStringBuilder1.append((CharSequence)localSpannableStringBuilder2);
+                paramContext = (CharSequence)localSpannableStringBuilder1;
+                i = n.bt(paramContext);
               }
             }
-            j += 1;
-          }
-          localObject3 = ap.AIh;
-          if (p.h(localObject2, ap.efp().name))
-          {
-            i = 2;
-          }
-          else
-          {
-            localObject3 = ap.AIh;
-            if (p.h(localObject2, ap.efn().name)) {
-              i = 3;
-            } else {
-              i = 0;
-            }
+            break;
           }
         }
-        localObject1 = ar.AIS;
-        if (!ar.ega())
-        {
-          localObject1 = ar.AIS;
-          ar.Rp(1);
-        }
-        n = 0;
-        localObject1 = paramArrayList.UoX;
-        if (localObject1 == null) {
-          break label887;
-        }
-        paramArrayList = (a)new cro();
-        localObject1 = ((b)localObject1).toByteArray();
       }
-      for (;;)
+    }
+    label1588:
+    label1752:
+    label1884:
+    label2784:
+    for (;;)
+    {
+      if (i >= 0) {
+        if (paramContext.charAt(i) != '\n') {
+          break label2922;
+        }
+      }
+      label2147:
+      label2790:
+      label2922:
+      for (j = 1;; j = 0)
       {
-        try
+        if (j != 0) {
+          break label2928;
+        }
+        paramContext = paramContext.subSequence(0, i + 1);
+        paramContext = new SpannableString(paramContext);
+        paramContext = Result.constructor-impl(new kotlin.u(Boolean.FALSE, Integer.valueOf(k), paramContext));
+        paramBaseFinderFeed = Result.exceptionOrNull-impl(paramContext);
+        if (paramBaseFinderFeed != null)
         {
-          paramArrayList.parseFrom((byte[])localObject1);
-          paramArrayList = (cro)paramArrayList;
-          if (paramArrayList != null)
-          {
-            n = paramArrayList.errCode;
-            paramArrayList = paramArrayList.errMsg;
-            if (paramArrayList != null)
-            {
-              localObject1 = n.l(paramArrayList, ",", ";", false);
-              paramArrayList = (ArrayList<emk>)localObject1;
-              if (localObject1 != null) {}
-            }
-            else
-            {
-              paramArrayList = "";
-            }
-            j = 0;
-            m = 0;
-            k = 0;
-            localObject1 = ar.AIS;
-            if (ar.efY().containsKey(paramString))
-            {
-              localObject1 = ar.AIS;
-              localObject1 = (aw)ar.efY().get(paramString);
-              if ((localObject1 != null) && (((aw)localObject1).qLu == 0L)) {
-                break label894;
-              }
-              j = 1;
-              localObject1 = ar.AIS;
-              localObject1 = (aw)ar.efY().get(paramString);
-              if (localObject1 == null) {
-                break label899;
-              }
-              m = ((aw)localObject1).AJA;
-              localObject1 = ar.AIS;
-              localObject1 = (aw)ar.efY().get(paramString);
-              if (localObject1 == null) {
-                break label905;
-              }
-              k = ((aw)localObject1).AJB;
-            }
-            paramString = new StringBuilder().append(paramString).append(',').append(l1 - l2).append(',').append(i).append(',').append(localObject2).append(',').append(n).append(',').append(paramArrayList).append(',');
-            paramArrayList = ar.AIS;
-            paramString = paramString.append(ar.efU()).append(',').append(j).append(',').append(m).append(',').append(k).append(',');
-            paramArrayList = ar.AIS;
-            paramString = ar.efZ();
-            com.tencent.mm.plugin.report.service.h.IzE.kvStat(jTq, paramString);
-            paramArrayList = ar.AIS;
-            Log.i(ar.egi(), "reportFlow 21173, ".concat(String.valueOf(paramString)));
-            AppMethodBeat.o(273059);
-            return;
+          e.a.a((e)com.tencent.mm.plugin.findersdk.b.HbT, "mergeContent_crash", false, null, false, (kotlin.g.a.a)new ar.e(paramBaseFinderFeed), 28);
+          Log.printErrStackTrace("Finder.TextUtils", paramBaseFinderFeed, "", new Object[0]);
+        }
+        if (Result.isFailure-impl(paramContext))
+        {
+          paramContext = null;
+          paramContext = (kotlin.u)paramContext;
+          if (paramContext != null) {
+            break label2614;
           }
+          paramBaseFinderFeed = Boolean.FALSE;
+          paramContext = localSpannableString;
+          if (localSpannableString == null) {
+            paramContext = new SpannableString((CharSequence)"");
+          }
+          paramContext = new kotlin.u(paramBaseFinderFeed, Integer.valueOf(2), paramContext);
+          AppMethodBeat.o(333050);
+          return paramContext;
+          label1523:
+          i = GiA;
+          break;
+          label1531:
+          localObject1 = paramBaseFinderFeed.feedObject.getFeedObject().objectDesc;
+          if (localObject1 != null)
+          {
+            localObject4 = ((FinderObjectDesc)localObject1).event;
+            if (localObject4 != null)
+            {
+              localObject1 = (CharSequence)((brg)localObject4).eventName;
+              if (localObject1 == null) {
+                break label2784;
+              }
+              if (((CharSequence)localObject1).length() != 0) {
+                break label2797;
+              }
+              break label2784;
+              if (j == 0)
+              {
+                float f3 = ((MMNeat7extView)localObject3).getPaint().measureText("  ");
+                localObject5 = a((brg)localObject4, paramContext);
+                if (((brg)localObject4).ZZm == 0)
+                {
+                  localObject1 = s.X((String)localObject5, ((brg)localObject4).eventName);
+                  localObject2 = new SpannableString((CharSequence)s.X("  ", localObject1));
+                  j = paramContext.getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_8);
+                  if (((bw)h.ax(bw.class)).aBu()) {
+                    break label2790;
+                  }
+                  if (!paramBaseFinderFeed.isPreview) {
+                    break label2147;
+                  }
+                  break label2790;
+                }
+                for (;;)
+                {
+                  localObject3 = bb.m(paramContext, e.g.finder_filled_activity, k);
+                  k = iconWidth;
+                  ((Drawable)localObject3).setBounds(0, 0, k, k);
+                  k = j;
+                  if (!((bw)h.ax(bw.class)).aBu())
+                  {
+                    if (!paramBaseFinderFeed.isPreview) {
+                      break label2825;
+                    }
+                    k = j;
+                  }
+                  ((SpannableString)localObject2).setSpan(new com.tencent.mm.ui.widget.a((Drawable)localObject3, 1), 0, 1, 17);
+                  localObject1 = new q((String)localObject1, k, Gix, (kotlin.g.a.b)new b(paramBaseFinderFeed, paramContext, (brg)localObject4));
+                  ((q)localObject1).shadowRadius = AIr;
+                  ((q)localObject1).GDi = true;
+                  localObject3 = ah.aiuX;
+                  ((SpannableString)localObject2).setSpan(localObject1, 1, ((SpannableString)localObject2).length(), 17);
+                  localObject1 = new kotlin.r(Integer.valueOf(1), localObject2);
+                  break;
+                  localObject1 = av.GiL;
+                  if (!av.a(((brg)localObject4).ZHN)) {
+                    break label2622;
+                  }
+                  localObject1 = ((brg)localObject4).ZHN;
+                  if (localObject1 == null)
+                  {
+                    localObject1 = null;
+                    localObject1 = (CharSequence)localObject1;
+                    if (localObject1 == null) {
+                      break label2803;
+                    }
+                    if (((CharSequence)localObject1).length() != 0) {
+                      break label2816;
+                    }
+                    break label2803;
+                    label1909:
+                    if (j == 0) {
+                      break label2103;
+                    }
+                    localObject6 = r.ip(2, ((brg)localObject4).ZZm);
+                    localObject1 = ((brg)localObject4).ZHN;
+                    if (localObject1 != null) {
+                      break label2056;
+                    }
+                  }
+                  for (localObject1 = null;; localObject1 = s.X((String)localObject2, ((awx)localObject1).ZIe))
+                  {
+                    localObject2 = localObject1;
+                    if (localObject1 != null) {
+                      break label2809;
+                    }
+                    localObject2 = paramContext.getString(e.h.finder_activity_feed_participate_tag, new Object[] { " ", localObject6 });
+                    s.s(localObject2, "context.getString(\n     …teCount\n                )");
+                    break label2809;
+                    localObject2 = av.GiL;
+                    localObject6 = ((MMNeat7extView)localObject3).getPaint();
+                    s.s(localObject6, "measureTv.paint");
+                    localObject3 = ((brg)localObject4).eventName;
+                    localObject2 = localObject3;
+                    if (localObject3 == null) {
+                      localObject2 = "";
+                    }
+                    localObject1 = av.a((TextPaint)localObject6, (String)localObject5, (String)localObject2, (String)localObject1, f2 - f3);
+                    break;
+                    localObject1 = ((awx)localObject1).ZIm;
+                    break label1884;
+                    localObject2 = paramContext.getString(e.h.finder_activity_feed_participate_tag_new, new Object[] { "", localObject6 });
+                    s.s(localObject2, "context.getString(\n     …unt\n                    )");
+                  }
+                  localObject1 = ((brg)localObject4).ZHN;
+                  if (localObject1 == null)
+                  {
+                    localObject1 = "";
+                    break label2822;
+                  }
+                  localObject2 = ((awx)localObject1).ZIm;
+                  localObject1 = localObject2;
+                  if (localObject2 != null) {
+                    break label2822;
+                  }
+                  localObject1 = "";
+                  break label2822;
+                  k = GiB;
+                }
+              }
+            }
+          }
+          localObject1 = new kotlin.r(Integer.valueOf(-1), null);
+          break label160;
+          localObject2 = new SpannableString((CharSequence)s.X("  ", TextUtils.ellipsize((CharSequence)localObject1, ((MMNeat7extView)localObject4).getPaint(), f1, TextUtils.TruncateAt.END)));
+          if ((((bw)h.ax(bw.class)).aBu()) || (paramBaseFinderFeed.isPreview))
+          {
+            j = Giz;
+            localObject4 = bb.m(paramContext, e.g.icons_filled_location, j);
+            j = iconWidth;
+            ((Drawable)localObject4).setBounds(0, 0, j, j);
+            if ((!((bw)h.ax(bw.class)).aBu()) && (!paramBaseFinderFeed.isPreview)) {
+              break label2859;
+            }
+            j = Giz;
+            label2292:
+            ((SpannableString)localObject2).setSpan(new com.tencent.mm.ui.widget.a((Drawable)localObject4, 1), 0, 1, 17);
+            localObject1 = new q((String)localObject1, j, Gix, (kotlin.g.a.b)new d(paramBaseFinderFeed, paramContext));
+            ((q)localObject1).shadowRadius = AIr;
+            ((q)localObject1).zID = true;
+            localObject4 = ah.aiuX;
+            ((SpannableString)localObject2).setSpan(localObject1, 1, ((SpannableString)localObject2).length(), 17);
+            localObject1 = as.GSQ;
+            localObject1 = as.a.hu(paramContext);
+            if (localObject1 != null) {
+              break label2439;
+            }
+          }
+          for (j = 0;; j = ((as)localObject1).AJo)
+          {
+            if ((j != 16) || (paramBaseFinderFeed.feedObject.getFeedObject().is_poi_same_city != 1)) {
+              break label2449;
+            }
+            localObject1 = new kotlin.r(Integer.valueOf(1), localObject2);
+            break;
+            j = GiC;
+            break label2236;
+          }
+          localObject1 = new kotlin.r(Integer.valueOf(0), localObject2);
+          break label335;
+          localObject1 = new kotlin.r(Integer.valueOf(-1), null);
+          break label335;
+          j = GiD;
+          break label537;
+          k = e.g.icons_filled_red_envelope_big;
+          break label548;
+          localObject1 = new kotlin.r(Integer.valueOf(-1), null);
+          break label736;
         }
-        catch (Exception paramArrayList)
+        label2671:
+        label2674:
+        label2685:
+        do
         {
-          Log.printDebugStack("safeParser", "", new Object[] { paramArrayList });
-          paramArrayList = null;
-          continue;
-          paramArrayList = "";
-          continue;
+          paramContext = new kotlin.r(Integer.valueOf(-1), null);
+          break label873;
+          a(n, paramContext, localSpannableStringBuilder2, (SpannableString)localObject4);
+          b(k, paramContext, localSpannableStringBuilder2, (SpannableString)localObject1);
+          break label1009;
+          localObject1 = "";
+          break label1984;
+          j = 1;
+          if (j == 0) {
+            break label2838;
+          }
+          localObject1 = null;
+          break;
+          j = 1;
+          if (j == 0) {
+            break label267;
+          }
+          localObject2 = null;
+          break label267;
+          if (j == 0) {
+            break label300;
+          }
+          localObject1 = "";
+          break label300;
+          j = 1;
+          if (j == 0) {
+            break label2872;
+          }
+          localObject1 = null;
+          break label417;
+          j = 1;
+          if (j == 0) {
+            break label454;
+          }
+          localObject2 = null;
+          break label454;
+          i = -1;
+          break label720;
+          if (i != 0) {
+            break label793;
+          }
+        } while (!paramBoolean);
+        break label793;
+        for (i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label2911;
+          }
+          paramBoolean = true;
+          break label927;
+          j = i;
+          if (n > 0) {
+            j = i + 1;
+          }
+          i = j;
+          if (k > 0) {
+            i = j + 1;
+          }
+          j = i;
+          if (i1 <= 0) {
+            break label1092;
+          }
+          j = i + 1;
+          break label1092;
+          i = 1;
+          break label1133;
+          j = 1;
+          break label1588;
+          k = j;
+          break label1693;
+          label2797:
+          j = 0;
+          break label1588;
+          label2803:
+          j = 1;
+          break label1909;
+          label2809:
+          localObject1 = localObject2;
+          break label1984;
+          j = 0;
+          break label1909;
+          break label1984;
+          k = i;
+          break label1752;
+          j = 0;
+          break label2633;
+          break;
+          j = 0;
+          break label2647;
+          j = 0;
+          break label2658;
+          j = 0;
+          break label316;
+          j = i;
+          break label2292;
+          j = 0;
+          break label2674;
+          break label417;
+          j = 0;
+          break label2688;
+          i = 0;
+          break label720;
+          i = 1;
+          break label720;
+          i = 0;
+          break label2705;
+          i = 0;
+          break label858;
         }
-        label887:
-        paramArrayList = "";
-        continue;
-        label894:
-        j = 0;
-        continue;
-        label899:
-        int m = 0;
-        continue;
-        label905:
-        int k = 0;
+        paramBoolean = false;
+        break label927;
+        i = 0;
+        break label1133;
       }
+      label2658:
+      label2916:
+      label2928:
+      i -= 1;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
+  private static final void a(int paramInt, ah.a parama, SpannableStringBuilder paramSpannableStringBuilder, SpannableString paramSpannableString)
   {
-    c(String paramString) {}
-    
-    public final void run()
+    AppMethodBeat.i(370220);
+    if (paramInt >= 0)
     {
-      AppMethodBeat.i(288568);
-      Object localObject1 = ar.AIS;
-      localObject1 = (ArrayList)ar.efW().get(this.sKs);
-      if (localObject1 != null)
-      {
-        Object localObject2 = ar.b.AJc;
-        localObject2 = this.sKs;
-        p.j(localObject1, "dataList");
-        ar.b.k((String)localObject2, (ArrayList)localObject1);
+      if (parama.aiwY) {
+        paramSpannableStringBuilder.append((CharSequence)"\n");
       }
-      ar.a(ar.AIS, this.sKs, new ar.a(ae.iBR()));
-      ar.AIS.clear(this.sKs);
-      AppMethodBeat.o(288568);
+      paramSpannableStringBuilder.append((CharSequence)paramSpannableString);
+      parama.aiwY = true;
+    }
+    AppMethodBeat.o(370220);
+  }
+  
+  public static String aBF(String paramString)
+  {
+    AppMethodBeat.i(333088);
+    s.u(paramString, "text");
+    if ((paramString.length() >= 2) && (n.U(paramString, "\t", false)) && (!n.e(paramString.subSequence(1, 2), (CharSequence)"\t")))
+    {
+      paramString = s.X("\t\t\t", paramString);
+      AppMethodBeat.o(333088);
+      return paramString;
+    }
+    AppMethodBeat.o(333088);
+    return paramString;
+  }
+  
+  public static String ap(String paramString, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    AppMethodBeat.i(333080);
+    int j = ad.getSessionId();
+    Object localObject;
+    String str;
+    if (paramString != null)
+    {
+      localObject = (CharSequence)paramString;
+      str = WeChatHosts.domainString(e.h.host_mp_weixin_qq_com);
+      s.s(str, "domainString(R.string.host_mp_weixin_qq_com)");
+      if ((!n.a((CharSequence)localObject, (CharSequence)str, false)) && (paramInt1 < 0)) {}
+      str = "";
+      int k = n.a((CharSequence)paramString, "#", 0, false, 6);
+      if (k <= 0) {
+        break label381;
+      }
+      localObject = paramString.substring(0, k);
+      s.s(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      str = paramString.substring(k);
+      s.s(str, "(this as java.lang.String).substring(startIndex)");
+      if (n.a((CharSequence)paramString, (CharSequence)"?", false)) {
+        break label387;
+      }
+      paramString = s.X((String)localObject, "?");
+      i = 1;
+    }
+    for (;;)
+    {
+      paramString = (CharSequence)paramString;
+      paramString = new k("(scene=[\\d]*)").e(paramString, "");
+      localObject = paramString + "&scene=156";
+      paramString = (String)localObject;
+      if (paramInt1 >= 0)
+      {
+        paramString = (CharSequence)localObject;
+        paramString = new k("(subscene=[\\d]*)").e(paramString, "");
+        paramString = paramString + "&subscene=" + paramInt1;
+      }
+      localObject = paramString;
+      if (j > 0) {
+        localObject = paramString + "&sessionid=" + j;
+      }
+      paramString = (String)localObject;
+      if (paramInt2 > 0)
+      {
+        paramString = (String)localObject + "&clicktime=" + paramInt2;
+        paramString = paramString + "&enterid=" + paramInt2;
+      }
+      localObject = paramString;
+      if (i != 0) {
+        localObject = n.bV(paramString, "?&", "?");
+      }
+      paramString = s.X((String)localObject, str);
+      AppMethodBeat.o(333080);
+      return paramString;
+      AppMethodBeat.o(333080);
+      return paramString;
+      label381:
+      localObject = paramString;
+      break;
+      label387:
+      paramString = (String)localObject;
+    }
+  }
+  
+  private static String b(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(333102);
+    if ((paramInt1 == 1) && (paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramContext = paramContext.getResources().getString(e.h.finder_message_single_friend_recommend_tip);
+      s.s(paramContext, "{\n            context.re…_recommend_tip)\n        }");
+      AppMethodBeat.o(333102);
+      return paramContext;
+    }
+    if ((paramInt1 > 1) && (paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramContext = paramContext.getResources().getString(e.h.finder_message_multi_friend_recommend_tip, new Object[] { TY(paramInt1) });
+      s.s(paramContext, "{\n            context.re…ecommendCount))\n        }");
+      AppMethodBeat.o(333102);
+      return paramContext;
+    }
+    if ((paramInt1 > 0) && (paramInt2 == 0) && (paramInt3 > 0))
+    {
+      paramContext = paramContext.getResources().getString(e.h.finder_message_comment_tip, new Object[] { TY(paramInt4) });
+      s.s(paramContext, "{\n            context.re…)\n            )\n        }");
+      AppMethodBeat.o(333102);
+      return paramContext;
+    }
+    if (((paramInt1 > 0) || (paramInt3 > 0)) && (paramInt2 > 0))
+    {
+      paramContext = paramContext.getResources().getString(e.h.finder_new_message_tip, new Object[] { TY(paramInt4) });
+      s.s(paramContext, "{\n            context.re…)\n            )\n        }");
+      AppMethodBeat.o(333102);
+      return paramContext;
+    }
+    AppMethodBeat.o(333102);
+    return "";
+  }
+  
+  private static final void b(int paramInt, ah.a parama, SpannableStringBuilder paramSpannableStringBuilder, SpannableString paramSpannableString)
+  {
+    AppMethodBeat.i(370221);
+    if (paramInt >= 0)
+    {
+      if (parama.aiwY) {
+        paramSpannableStringBuilder.append((CharSequence)"\n");
+      }
+      paramSpannableStringBuilder.append((CharSequence)paramSpannableString);
+      parama.aiwY = true;
+    }
+    AppMethodBeat.o(370221);
+  }
+  
+  public static int ffK()
+  {
+    return Edge_2_5_A;
+  }
+  
+  public final int ffL()
+  {
+    AppMethodBeat.i(333161);
+    int i = h.baE().ban().getInt(at.a.adcq, 0);
+    int j = h.baE().ban().getInt(at.a.adcs, 0);
+    int k = h.baE().ban().getInt(at.a.adct, 0);
+    int m = h.baE().ban().getInt(at.a.adcu, 0);
+    int n = h.baE().ban().getInt(at.a.adcw, 0);
+    int i1 = j + i + k + m + n;
+    TextPaint localTextPaint = new TextPaint();
+    localTextPaint.setTextSize(com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 14) * com.tencent.mm.cd.a.getScaleSize(MMApplicationContext.getContext()));
+    com.tencent.mm.ui.aw.a((Paint)localTextPaint, 0.8F);
+    if (i1 > 0)
+    {
+      Object localObject = MMApplicationContext.getContext();
+      s.s(localObject, "getContext()");
+      i = (int)localTextPaint.measureText(a((Context)localObject, n, j + k + m, i, i1));
+      localObject = l.ARA;
+      localObject = (l.a)l.dZP().getValue();
+      if ((localObject == null) || (((l.a)localObject).hBY != true)) {
+        break label340;
+      }
+      j = 1;
+      label205:
+      if (j == 0) {
+        break label345;
+      }
+      localObject = MMApplicationContext.getContext().getResources().getString(e.h.finder_private_msg_bubble_text);
+      s.s(localObject, "getContext().resources.g…_private_msg_bubble_text)");
+      j = (int)localTextPaint.measureText((String)localObject);
+      label240:
+      if (i <= j) {
+        break label350;
+      }
+    }
+    label340:
+    label345:
+    label350:
+    for (k = i;; k = j)
+    {
+      Log.i("Finder.TextUtils", "bubbleWidth :" + i + " privateMsgWidth:" + j + " width:" + k);
+      i = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.Edge_10_5_A);
+      j = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.finder_18_25_A);
+      if (k <= i) {
+        break label355;
+      }
+      AppMethodBeat.o(333161);
+      return k + j - i;
+      i = 0;
+      break;
+      j = 0;
+      break label205;
+      j = 0;
+      break label240;
+    }
+    label355:
+    AppMethodBeat.o(333161);
+    return j;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderTextUtils$AsyncGetDescText;", "", "onGetDescText", "", "isNeedRefresh", "", "desc", "Landroid/text/SpannableStringBuilder;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, SpannableStringBuilder paramSpannableStringBuilder);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "txt", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<String, ah>
+  {
+    b(BaseFinderFeed paramBaseFinderFeed, Context paramContext, brg parambrg)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "txt", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<String, ah>
+  {
+    c(Context paramContext, BaseFinderFeed paramBaseFinderFeed, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "txt", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<String, ah>
+  {
+    d(BaseFinderFeed paramBaseFinderFeed, Context paramContext)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.ar
  * JD-Core Version:    0.7.0.1
  */

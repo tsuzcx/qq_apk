@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileInputUI$6
-  implements TextWatcher
+  implements TextView.OnEditorActionListener
 {
   MobileInputUI$6(MobileInputUI paramMobileInputUI) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(128339);
-    this.nfN.nfz.setEnabled(this.nfN.bzC());
-    AppMethodBeat.o(128339);
+    AppMethodBeat.i(305185);
+    if ((paramInt == 6) || (paramInt == 5))
+    {
+      boolean bool = this.qcW.bYo();
+      AppMethodBeat.o(305185);
+      return bool;
+    }
+    AppMethodBeat.o(305185);
+    return false;
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

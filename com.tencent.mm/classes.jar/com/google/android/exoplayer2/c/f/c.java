@@ -14,19 +14,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements e
 {
-  public static final h aRP;
-  private static final int aZL;
-  private final long aZM;
-  private boolean aZP;
-  private final d aZW;
-  private final m aZX;
+  public static final h cLL;
+  private static final int cTG;
+  private final long cTH;
+  private boolean cTK;
+  private final d cTR;
+  private final m cTS;
   
   static
   {
     AppMethodBeat.i(92209);
-    aRP = new h()
+    cLL = new h()
     {
-      public final e[] ss()
+      public final e[] RV()
       {
         AppMethodBeat.i(92203);
         c localc = new c();
@@ -34,7 +34,7 @@ public final class c
         return new e[] { localc };
       }
     };
-    aZL = x.bU("ID3");
+    cTG = x.du("ID3");
     AppMethodBeat.o(92209);
   }
   
@@ -46,29 +46,37 @@ public final class c
   public c(long paramLong)
   {
     AppMethodBeat.i(92204);
-    this.aZM = paramLong;
-    this.aZW = new d();
-    this.aZX = new m(200);
+    this.cTH = paramLong;
+    this.cTR = new d();
+    this.cTS = new m(200);
     AppMethodBeat.o(92204);
+  }
+  
+  public final void C(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(92207);
+    this.cTK = false;
+    this.cTR.Sl();
+    AppMethodBeat.o(92207);
   }
   
   public final int a(f paramf, k paramk)
   {
     AppMethodBeat.i(92208);
-    int i = paramf.read(this.aZX.data, 0, 200);
+    int i = paramf.read(this.cTS.data, 0, 200);
     if (i == -1)
     {
       AppMethodBeat.o(92208);
       return -1;
     }
-    this.aZX.setPosition(0);
-    this.aZX.ft(i);
-    if (!this.aZP)
+    this.cTS.setPosition(0);
+    this.cTS.iG(i);
+    if (!this.cTK)
     {
-      this.aZW.timeUs = this.aZM;
-      this.aZP = true;
+      this.cTR.timeUs = this.cTH;
+      this.cTK = true;
     }
-    this.aZW.t(this.aZX);
+    this.cTR.t(this.cTS);
     AppMethodBeat.o(92208);
     return 0;
   }
@@ -76,8 +84,8 @@ public final class c
   public final void a(g paramg)
   {
     AppMethodBeat.i(92206);
-    this.aZW.a(paramg, new v.d(0, 1));
-    paramg.st();
+    this.cTR.a(paramg, new v.d(0, 1));
+    paramg.RW();
     paramg.a(new l.a(-9223372036854775807L));
     AppMethodBeat.o(92206);
   }
@@ -92,16 +100,16 @@ public final class c
     {
       paramf.b(localm.data, 0, 10);
       localm.setPosition(0);
-      if (localm.vj() != aZL) {
+      if (localm.UI() != cTG) {
         break;
       }
-      localm.fu(3);
-      j = localm.vn();
+      localm.iH(3);
+      j = localm.UM();
       i += j + 10;
-      paramf.ee(j);
+      paramf.hu(j);
     }
-    paramf.sp();
-    paramf.ee(i);
+    paramf.RS();
+    paramf.hu(i);
     int k = 0;
     int j = 0;
     int m = i;
@@ -111,14 +119,14 @@ public final class c
       localm.setPosition(0);
       if ((localm.readUnsignedShort() & 0xFFF6) != 65520)
       {
-        paramf.sp();
+        paramf.RS();
         m += 1;
         if (m - i >= 8192)
         {
           AppMethodBeat.o(92205);
           return false;
         }
-        paramf.ee(m);
+        paramf.hu(m);
         k = 0;
         j = 0;
       }
@@ -132,29 +140,21 @@ public final class c
         }
         paramf.b(localm.data, 0, 4);
         locall.setPosition(14);
-        int n = locall.eA(13);
+        int n = locall.hQ(13);
         if (n <= 6)
         {
           AppMethodBeat.o(92205);
           return false;
         }
-        paramf.ee(n - 6);
+        paramf.hu(n - 6);
         j += n;
       }
     }
   }
-  
-  public final void g(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(92207);
-    this.aZP = false;
-    this.aZW.sI();
-    AppMethodBeat.o(92207);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.c
  * JD-Core Version:    0.7.0.1
  */

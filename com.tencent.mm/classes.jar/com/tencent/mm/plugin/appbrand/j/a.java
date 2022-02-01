@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.m;
-import com.tencent.mm.plugin.appbrand.appusage.x;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appusage.w;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorageEventData;
@@ -16,7 +16,7 @@ final class a
   public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(45009);
-    if (m.bFN() == null)
+    if (n.cfk() == null)
     {
       Log.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
       AppMethodBeat.o(45009);
@@ -38,16 +38,16 @@ final class a
           while (paramString.hasNext())
           {
             paramMStorageEventData = (String)paramString.next();
-            localLinkedList.addAll(m.bFN().aei(paramMStorageEventData));
+            localLinkedList.addAll(n.cfk().WL(paramMStorageEventData));
           }
         }
       }
       else
       {
-        localLinkedList.addAll(m.bFN().aei(paramMStorageEventData.obj.toString()));
+        localLinkedList.addAll(n.cfk().WL(paramMStorageEventData.obj.toString()));
         if (!localLinkedList.isEmpty())
         {
-          m.bFN().doNotify("batch", 3, localLinkedList);
+          n.cfk().doNotify("batch", 3, localLinkedList);
           AppMethodBeat.o(45009);
           return;
           localLinkedList = new LinkedList();
@@ -59,15 +59,15 @@ final class a
               while (paramString.hasNext())
               {
                 paramMStorageEventData = (String)paramString.next();
-                localLinkedList.addAll(m.bFN().aei(paramMStorageEventData));
+                localLinkedList.addAll(n.cfk().WL(paramMStorageEventData));
               }
             }
           }
           else
           {
-            localLinkedList.addAll(m.bFN().aei(paramMStorageEventData.obj.toString()));
+            localLinkedList.addAll(n.cfk().WL(paramMStorageEventData.obj.toString()));
             if (!localLinkedList.isEmpty()) {
-              m.bFN().doNotify("batch", 5, localLinkedList);
+              n.cfk().doNotify("batch", 5, localLinkedList);
             }
           }
         }
@@ -77,7 +77,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.a
  * JD-Core Version:    0.7.0.1
  */

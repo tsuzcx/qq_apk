@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.cw.g;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.cp.g;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,26 +16,26 @@ public enum f
   static
   {
     AppMethodBeat.i(44381);
-    nJl = new f("INSTANCE");
-    nJm = new f[] { nJl };
+    qIT = new f("INSTANCE");
+    qIU = new f[] { qIT };
     AppMethodBeat.o(44381);
   }
   
   private f() {}
   
-  public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
+  public final g.b a(String paramString, Map<String, String> paramMap, g.a parama)
   {
     AppMethodBeat.i(44379);
     paramString = (String)paramMap.get(".sysmsg.WeAppSyncCommand.Base64JsonContent");
     if (!Util.isNullOrNil(paramString)) {
-      g.eE(paramString).j(new a()
+      g.ha(paramString).j(new a()
       {
-        private static Void adm(String paramAnonymousString)
+        private static Void VI(String paramAnonymousString)
         {
           AppMethodBeat.i(44375);
           try
           {
-            f.adl(paramAnonymousString);
+            f.VH(paramAnonymousString);
             AppMethodBeat.o(44375);
             return null;
           }
@@ -55,7 +55,7 @@ public enum f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.f
  * JD-Core Version:    0.7.0.1
  */

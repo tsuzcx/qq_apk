@@ -9,26 +9,26 @@ import java.util.regex.Pattern;
 
 public final class i
 {
-  public static final a.a aRA;
-  private static final Pattern aRB;
-  public int aNa = -1;
-  public int aNb = -1;
+  public static final a.a cLw;
+  private static final Pattern cLx;
+  public int cGW = -1;
+  public int cGX = -1;
   
   static
   {
     AppMethodBeat.i(91998);
-    aRA = new a.a()
+    cLw = new a.a()
     {
-      public final boolean g(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5)
+      public final boolean h(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5)
       {
         return (paramAnonymousInt2 == 67) && (paramAnonymousInt3 == 79) && (paramAnonymousInt4 == 77) && ((paramAnonymousInt5 == 77) || (paramAnonymousInt1 == 2));
       }
     };
-    aRB = Pattern.compile("^ [0-9a-fA-F]{8} ([0-9a-fA-F]{8}) ([0-9a-fA-F]{8})");
+    cLx = Pattern.compile("^ [0-9a-fA-F]{8} ([0-9a-fA-F]{8}) ([0-9a-fA-F]{8})");
     AppMethodBeat.o(91998);
   }
   
-  private boolean m(String paramString1, String paramString2)
+  private boolean u(String paramString1, String paramString2)
   {
     AppMethodBeat.i(91997);
     if (!"iTunSMPB".equals(paramString1))
@@ -36,7 +36,7 @@ public final class i
       AppMethodBeat.o(91997);
       return false;
     }
-    paramString1 = aRB.matcher(paramString2);
+    paramString1 = cLx.matcher(paramString2);
     if (paramString1.find()) {
       try
       {
@@ -44,8 +44,8 @@ public final class i
         int j = Integer.parseInt(paramString1.group(2), 16);
         if ((i > 0) || (j > 0))
         {
-          this.aNa = i;
-          this.aNb = j;
+          this.cGW = i;
+          this.cGX = j;
           AppMethodBeat.o(91997);
           return true;
         }
@@ -56,17 +56,22 @@ public final class i
     return false;
   }
   
+  public final boolean RX()
+  {
+    return (this.cGW != -1) && (this.cGX != -1);
+  }
+  
   public final boolean c(Metadata paramMetadata)
   {
     AppMethodBeat.i(91996);
     int i = 0;
-    while (i < paramMetadata.bdA.length)
+    while (i < paramMetadata.cXu.length)
     {
-      Object localObject = paramMetadata.bdA[i];
+      Object localObject = paramMetadata.cXu[i];
       if ((localObject instanceof CommentFrame))
       {
         localObject = (CommentFrame)localObject;
-        if (m(((CommentFrame)localObject).description, ((CommentFrame)localObject).text))
+        if (u(((CommentFrame)localObject).description, ((CommentFrame)localObject).text))
         {
           AppMethodBeat.o(91996);
           return true;
@@ -76,11 +81,6 @@ public final class i
     }
     AppMethodBeat.o(91996);
     return false;
-  }
-  
-  public final boolean su()
-  {
-    return (this.aNa != -1) && (this.aNb != -1);
   }
 }
 

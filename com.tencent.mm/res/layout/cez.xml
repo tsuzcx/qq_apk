@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/csu" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/k0c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt">
-        <ImageView android:id="@id/jx2" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" />
-        <TextView android:textSize="@dimen/c5" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/jx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="2.0dip" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="6.0dip" android:layout_height="@dimen/c5" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_8" />
-    </LinearLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/b4m" android:paddingLeft="@dimen/bh" android:paddingTop="@dimen/bh" android:paddingRight="@dimen/bh" android:paddingBottom="@dimen/i6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/llg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/llh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bxo" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/llf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
 </LinearLayout>

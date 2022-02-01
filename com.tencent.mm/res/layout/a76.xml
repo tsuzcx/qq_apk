@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/g3n" android:background="@drawable/azn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/g3p" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/awi" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/cb2" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:src="@raw/fav_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:gravity="center_vertical" android:id="@id/g3r" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/c8f" android:layout_toLeftOf="@id/cb2" android:layout_toRightOf="@id/g3p" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:gravity="center_vertical" android:id="@id/g3s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/c8g" android:layout_toLeftOf="@id/cb2" android:layout_toRightOf="@id/g3p" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <FrameLayout android:id="@id/euq" android:background="@drawable/t5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/xo" android:gravity="left" android:id="@id/ko8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" android:text="@string/cmt" />
+    </FrameLayout>
+    <com.tencent.mm.ui.widget.MMWebView android:id="@id/lmj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

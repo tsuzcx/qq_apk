@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import android.widget.ImageView;
+import com.tencent.mm.ui.component.c;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IFinderFeedDescriptionUIC;", "Lcom/tencent/mm/ui/component/ApiUIC;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface af
-{
-  public abstract void a(Object paramObject, ImageView paramImageView);
-}
+  extends c
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

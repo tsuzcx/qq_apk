@@ -8,11 +8,11 @@ import android.webkit.URLUtil;
 import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ac.i;
+import com.tencent.mm.plugin.appbrand.af.k;
 import com.tencent.mm.plugin.appbrand.appcache.bl;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
-import com.tencent.mm.plugin.appbrand.s.j;
-import com.tencent.mm.plugin.appbrand.s.n;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
+import com.tencent.mm.plugin.appbrand.t.i;
+import com.tencent.mm.plugin.appbrand.t.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.ByteArrayInputStream;
 import java.lang.reflect.Field;
@@ -21,27 +21,27 @@ import java.security.cert.X509Certificate;
 
 public class ao
 {
-  ad cvo;
-  private n qum;
-  volatile String qun;
+  ad enm;
+  private m tzd;
+  volatile String tze;
   
   public ao(ad paramad)
   {
-    this.cvo = paramad;
+    this.enm = paramad;
   }
   
   public final boolean a(SslCertificate paramSslCertificate)
   {
     AppMethodBeat.i(135249);
-    if (this.cvo.getRuntime() == null)
+    if (this.enm.getRuntime() == null)
     {
       AppMethodBeat.o(135249);
       return false;
     }
-    if (this.qum == null) {
-      this.qum = j.b((com.tencent.mm.plugin.appbrand.s.a)this.cvo.getRuntime().au(com.tencent.mm.plugin.appbrand.s.a.class));
+    if (this.tzd == null) {
+      this.tzd = i.b((com.tencent.mm.plugin.appbrand.t.a)this.enm.getRuntime().aN(com.tencent.mm.plugin.appbrand.t.a.class));
     }
-    if (this.qum == null)
+    if (this.tzd == null)
     {
       AppMethodBeat.o(135249);
       return false;
@@ -63,7 +63,7 @@ public class ao
       }
       try
       {
-        this.qum.checkServerTrusted(new X509Certificate[] { paramSslCertificate }, "generic");
+        this.tzd.checkServerTrusted(new X509Certificate[] { paramSslCertificate }, "generic");
         bool = true;
       }
       catch (Exception paramSslCertificate)
@@ -76,7 +76,7 @@ public class ao
     return bool;
   }
   
-  public final WebResourceResponse alN(String paramString)
+  public final WebResourceResponse aeT(String paramString)
   {
     Object localObject1 = null;
     AppMethodBeat.i(135250);
@@ -85,12 +85,12 @@ public class ao
       AppMethodBeat.o(135250);
       return null;
     }
-    if (!this.cvo.isRunning())
+    if (!this.enm.isRunning())
     {
       AppMethodBeat.o(135250);
       return null;
     }
-    Object localObject2 = this.qun;
+    Object localObject2 = this.tze;
     if (TextUtils.isEmpty((CharSequence)localObject2))
     {
       Log.e("Luggage.AppBrandWebViewClient", "getAppResourceResponse with reqURL[%s], hostURL isEmpty", new Object[] { paramString });
@@ -99,7 +99,7 @@ public class ao
     }
     if (paramString.startsWith((String)localObject2))
     {
-      localObject2 = bl.e(this.cvo.getRuntime(), paramString.replaceFirst((String)localObject2, ""));
+      localObject2 = bl.e(this.enm.getRuntime(), paramString.replaceFirst((String)localObject2, ""));
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -123,15 +123,19 @@ public class ao
         AppMethodBeat.o(135250);
         return null;
       }
-      localObject2 = new i();
-      this.cvo.getRuntime().getFileSystem().b(paramString, (i)localObject2);
-      if (((i)localObject2).value != null) {
-        localObject1 = new WebResourceResponse("", "", new com.tencent.luggage.k.a((ByteBuffer)((i)localObject2).value));
+      localObject2 = new k();
+      this.enm.getRuntime().getFileSystem().b(paramString, (k)localObject2);
+      if (((k)localObject2).value != null)
+      {
+        localObject1 = new WebResourceResponse("", "", new com.tencent.luggage.l.a((ByteBuffer)((k)localObject2).value));
+        if (Build.VERSION.SDK_INT >= 21) {
+          ((WebResourceResponse)localObject1).setStatusCodeAndReasonPhrase(200, "OK");
+        }
       }
     }
   }
   
-  public void dw(String paramString) {}
+  public void eH(String paramString) {}
 }
 
 

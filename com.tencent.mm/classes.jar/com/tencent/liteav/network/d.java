@@ -12,9 +12,9 @@ import java.util.Iterator;
 import java.util.Vector;
 
 public class d
-  implements f
+  implements h
 {
-  private f a = null;
+  private h a = null;
   private b b = null;
   private long c = 0L;
   private long d = 0L;
@@ -45,9 +45,9 @@ public class d
     this.g = paramLong;
   }
   
-  public void a(TXIStreamDownloader paramTXIStreamDownloader1, TXIStreamDownloader paramTXIStreamDownloader2, long paramLong1, long paramLong2, String paramString)
+  public void a(TXIStreamDownloader paramTXIStreamDownloader1, TXIStreamDownloader paramTXIStreamDownloader2, long paramLong1, long paramLong2, String paramString, e parame)
   {
-    AppMethodBeat.i(15401);
+    AppMethodBeat.i(229622);
     TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] old downloader:" + paramTXIStreamDownloader1.hashCode() + " new downloader:" + paramTXIStreamDownloader2.hashCode());
     this.c = paramTXIStreamDownloader1.getCurrentTS();
     this.d = paramTXIStreamDownloader1.getLastIFrameTS();
@@ -55,13 +55,13 @@ public class d
     this.b.a(this);
     ((TXCFLVDownloader)paramTXIStreamDownloader1).recvData(true);
     Vector localVector = new Vector();
-    localVector.add(new e(paramString, false));
+    localVector.add(new f(paramString, false));
     paramTXIStreamDownloader2.setOriginUrl(paramString);
     ((TXCFLVDownloader)paramTXIStreamDownloader2).recvData(true);
-    paramTXIStreamDownloader2.startDownload(localVector, false, false, paramTXIStreamDownloader1.mEnableMessage, paramTXIStreamDownloader1.mEnableMetaData);
+    paramTXIStreamDownloader2.startDownload(localVector, false, false, paramTXIStreamDownloader1.mEnableMessage, paramTXIStreamDownloader1.mEnableMetaData, parame);
     this.e = new b(paramTXIStreamDownloader2, this);
     this.e.a(this.c);
-    AppMethodBeat.o(15401);
+    AppMethodBeat.o(229622);
   }
   
   void a(TXIStreamDownloader paramTXIStreamDownloader, boolean paramBoolean)
@@ -74,9 +74,9 @@ public class d
     AppMethodBeat.o(15403);
   }
   
-  public void a(f paramf)
+  public void a(h paramh)
   {
-    this.a = paramf;
+    this.a = paramh;
   }
   
   public void b()
@@ -103,13 +103,13 @@ public class d
   
   long c()
   {
-    AppMethodBeat.i(243849);
+    AppMethodBeat.i(229629);
     if (this.b != null) {
       this.b.b(this.c);
     }
     TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] stop original downloader, when video ts is" + this.c);
     long l = this.c;
-    AppMethodBeat.o(243849);
+    AppMethodBeat.o(229629);
     return l;
   }
   
@@ -141,7 +141,7 @@ public class d
   }
   
   static class b
-    implements b, f
+    implements b, h
   {
     private final int a;
     private long b;
@@ -155,7 +155,7 @@ public class d
     private ArrayList<a> j;
     private TXIStreamDownloader k;
     private WeakReference<d> l;
-    private f m;
+    private h m;
     
     public b(TXIStreamDownloader paramTXIStreamDownloader, d paramd)
     {
@@ -185,10 +185,10 @@ public class d
       {
         this.d += 1;
         TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] processing... current video ts:" + paramTXSNALPacket.pts + " target video ts:" + paramTXSNALPacket.pts + " check times:" + this.d + " maxTimes:2");
-        if ((localObject1 != null) && ((d.a((d)localObject1) <= paramTXSNALPacket.pts) || (this.d == 2)))
+        if ((localObject1 != null) && (d.a((d)localObject1) > 0L) && ((d.a((d)localObject1) <= paramTXSNALPacket.pts) || (this.d == 2)))
         {
           if (d.a((d)localObject1) > paramTXSNALPacket.pts) {
-            break label164;
+            break label173;
           }
           TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] switch video success, video data is ready.");
         }
@@ -202,7 +202,7 @@ public class d
         }
         AppMethodBeat.o(15497);
         return;
-        label164:
+        label173:
         if (this.d == 2) {
           TXCLog.e("TXCMultiStreamDownloader", "[SwitchStream] switch video failed. all times retried. max times:2");
         }
@@ -361,9 +361,9 @@ public class d
       AppMethodBeat.o(15491);
     }
     
-    public void a(f paramf)
+    public void a(h paramh)
     {
-      this.m = paramf;
+      this.m = paramh;
     }
     
     public void b(long paramLong)
@@ -446,7 +446,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.d
  * JD-Core Version:    0.7.0.1
  */

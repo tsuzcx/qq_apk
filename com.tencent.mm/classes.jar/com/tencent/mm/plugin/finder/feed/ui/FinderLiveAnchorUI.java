@@ -7,119 +7,135 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.api.LiveConfig;
 import com.tencent.mm.plugin.ball.a.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.live.model.FinderLiveBundle;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.live.report.k;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.report.j;
 import com.tencent.mm.plugin.finder.live.viewmodel.data.g;
+import com.tencent.mm.plugin.finder.live.viewmodel.k;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bkk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.tools.h;
+import com.tencent.mm.ui.tools.i;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
 @com.tencent.mm.ui.base.a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveAnchorUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "anchorPluginLayout", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveAnchorPluginLayout;", "finderLivePageFloatBallHelper", "Lcom/tencent/mm/plugin/finder/live/view/FinderLivePageFloatBallHelper;", "isKeyBoardShow", "", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "swipeBack", "getSwipeBack", "()Z", "setSwipeBack", "(Z)V", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "keyboardChange", "", "show", "height", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "setWindowStyle", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveAnchorUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "anchorPluginLayout", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveAnchorPluginLayout;", "finderLivePageFloatBallHelper", "Lcom/tencent/mm/plugin/finder/live/view/FinderLivePageFloatBallHelper;", "isKeyBoardShow", "", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "swipeBack", "getSwipeBack", "()Z", "setSwipeBack", "(Z)V", "getLayoutId", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "keyboardChange", "", "show", "height", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "onPause", "onResume", "onStart", "onStop", "onSwipeBack", "setWindowStyle", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveAnchorUI
   extends MMFinderUI
 {
+  private boolean BoA;
+  private com.tencent.mm.plugin.finder.live.view.b BoC;
+  private com.tencent.mm.plugin.finder.live.view.f BoD;
   private final String TAG = "MicroMsg.FinderLiveAnchorUI";
-  private HashMap _$_findViewCache;
-  private com.tencent.mm.ui.tools.i jij;
-  private boolean kiD;
-  private boolean xOB;
-  private com.tencent.mm.plugin.finder.live.view.b xOD;
-  private com.tencent.mm.plugin.finder.live.view.f xOE;
+  private i lKz;
+  private boolean mJk;
   
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderLiveAnchorUI paramFinderLiveAnchorUI)
   {
-    AppMethodBeat.i(233124);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233124);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233123);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    AppMethodBeat.i(364414);
+    s.u(paramFinderLiveAnchorUI, "this$0");
+    if (paramFinderLiveAnchorUI.lKz == null)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      Object localObject = paramFinderLiveAnchorUI.getContext();
+      if (localObject == null)
+      {
+        paramFinderLiveAnchorUI = new NullPointerException("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(364414);
+        throw paramFinderLiveAnchorUI;
+      }
+      paramFinderLiveAnchorUI.lKz = new i((Activity)localObject);
+      localObject = paramFinderLiveAnchorUI.lKz;
+      if (localObject != null) {
+        ((i)localObject).afIL = new FinderLiveAnchorUI..ExternalSyntheticLambda0(paramFinderLiveAnchorUI);
+      }
     }
-    AppMethodBeat.o(233123);
-    return localView1;
+    paramFinderLiveAnchorUI = paramFinderLiveAnchorUI.lKz;
+    if (paramFinderLiveAnchorUI != null) {
+      paramFinderLiveAnchorUI.start();
+    }
+    AppMethodBeat.o(364414);
   }
+  
+  private static final void a(FinderLiveAnchorUI paramFinderLiveAnchorUI, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(364402);
+    s.u(paramFinderLiveAnchorUI, "this$0");
+    Log.i(paramFinderLiveAnchorUI.TAG, "onKeyboardHeightChanged, height:" + paramInt + ", isResized:" + paramBoolean);
+    if (paramInt > 0) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      if (paramFinderLiveAnchorUI.mJk != paramBoolean)
+      {
+        paramFinderLiveAnchorUI.mJk = paramBoolean;
+        paramFinderLiveAnchorUI = paramFinderLiveAnchorUI.BoC;
+        if (paramFinderLiveAnchorUI != null) {
+          paramFinderLiveAnchorUI.keyboardChange(paramBoolean, paramInt);
+        }
+      }
+      AppMethodBeat.o(364402);
+      return;
+    }
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_root;
+    return p.f.Cfw;
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(233099);
-    Set localSet = ak.setOf(com.tencent.mm.plugin.finder.live.viewmodel.i.class);
-    AppMethodBeat.o(233099);
+    AppMethodBeat.i(364446);
+    Set localSet = ar.setOf(k.class);
+    AppMethodBeat.o(364446);
     return localSet;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(233119);
+    AppMethodBeat.i(364596);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.plugin.finder.live.view.b localb = this.xOD;
-    if (localb != null)
-    {
+    com.tencent.mm.plugin.finder.live.view.b localb = this.BoC;
+    if (localb != null) {
       localb.onActivityResult(paramInt1, paramInt2, paramIntent);
-      AppMethodBeat.o(233119);
-      return;
     }
-    AppMethodBeat.o(233119);
+    AppMethodBeat.o(364596);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(233117);
-    com.tencent.mm.plugin.finder.live.view.b localb = this.xOD;
-    if (localb != null)
+    AppMethodBeat.i(364571);
+    com.tencent.mm.plugin.finder.live.view.b localb = this.BoC;
+    if ((localb != null) && (!localb.onBackPress())) {}
+    for (int i = 1;; i = 0)
     {
-      if (!localb.onBackPress()) {
+      if (i != 0) {
         super.onBackPressed();
       }
-      AppMethodBeat.o(233117);
+      AppMethodBeat.o(364571);
       return;
     }
-    AppMethodBeat.o(233117);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(233107);
+    AppMethodBeat.i(364496);
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
@@ -128,104 +144,95 @@ public final class FinderLiveAnchorUI
     if (Build.VERSION.SDK_INT >= 21)
     {
       getWindow().clearFlags(67108864);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle = paramBundle.getDecorView();
-      p.j(paramBundle, "window.decorView");
-      paramBundle.setSystemUiVisibility(1792);
+      getWindow().getDecorView().setSystemUiVisibility(1792);
       getWindow().addFlags(-2147483648);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setStatusBarColor(0);
-      paramBundle = getWindow();
-      p.j(paramBundle, "window");
-      paramBundle.setNavigationBarColor(0);
+      getWindow().setStatusBarColor(0);
+      getWindow().setNavigationBarColor(0);
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(51);
     FinderLiveBundle localFinderLiveBundle = (FinderLiveBundle)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG");
-    this.xOD = new com.tencent.mm.plugin.finder.live.view.b((MMActivity)this, null);
-    ((FrameLayout)findViewById(b.f.finder_live_content_root)).addView((View)this.xOD);
-    paramBundle = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
-    paramBundle = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
+    this.BoC = new com.tencent.mm.plugin.finder.live.view.b((MMActivity)this, null);
+    ((FrameLayout)findViewById(p.e.BKe)).addView((View)this.BoC);
+    paramBundle = com.tencent.mm.plugin.finder.live.model.context.a.CMm;
+    paramBundle = com.tencent.mm.plugin.finder.live.model.context.a.emY();
     int i;
-    label262:
-    label297:
+    label201:
+    label229:
     boolean bool;
-    if (paramBundle != null)
+    if (paramBundle == null)
     {
-      paramBundle = (c)paramBundle.business(c.class);
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.liveInfo;
-        if (paramBundle != null)
-        {
-          paramBundle = Long.valueOf(paramBundle.liveId);
-          if (localFinderLiveBundle == null) {
-            break label450;
-          }
-          if (((Collection)localFinderLiveBundle.yeC).isEmpty()) {
-            break label439;
-          }
-          i = 1;
-          if (i == 0) {
-            break label450;
-          }
-          localObject1 = (LiveConfig)j.lp((List)localFinderLiveBundle.yeC);
-          if (localObject1 == null) {
-            break label444;
-          }
-          localObject1 = Long.valueOf(((LiveConfig)localObject1).getLiveId());
-          if (!(p.h(localObject1, paramBundle) ^ true)) {
-            break label450;
-          }
-          localObject1 = (LiveConfig)j.lp((List)localFinderLiveBundle.yeC);
-          paramBundle = (Bundle)localObject1;
-          if (localObject1 == null)
-          {
-            paramBundle = LiveConfig.an("", 0);
-            p.j(paramBundle, "LiveConfig.getDefaultAnchorConfig(\"\", 0)");
-          }
-          paramBundle = new com.tencent.mm.plugin.finder.live.viewmodel.data.f(paramBundle);
-          bool = false;
-        }
+      paramBundle = null;
+      if (localFinderLiveBundle == null) {
+        break label427;
       }
+      if (((Collection)localFinderLiveBundle.CFa).isEmpty()) {
+        break label409;
+      }
+      i = 1;
+      if (i == 0) {
+        break label427;
+      }
+      localObject1 = (LiveConfig)p.oL((List)localFinderLiveBundle.CFa);
+      if (localObject1 != null) {
+        break label414;
+      }
+      localObject1 = null;
+      if (s.p(localObject1, paramBundle)) {
+        break label427;
+      }
+      localObject1 = (LiveConfig)p.oL((List)localFinderLiveBundle.CFa);
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null) {
+        paramBundle = LiveConfig.aw("", 0);
+      }
+      s.s(paramBundle, "configProvider.liveConfi…efaultAnchorConfig(\"\", 0)");
+      paramBundle = new com.tencent.mm.plugin.finder.live.viewmodel.data.f(paramBundle);
+      bool = false;
     }
     for (;;)
     {
       localObject1 = "onCreate isFromFloat:" + bool + ", finderLiveData:" + paramBundle;
       Log.i(this.TAG, (String)localObject1);
-      localObject2 = com.tencent.mm.plugin.findersdk.f.b.Bxg;
-      com.tencent.mm.plugin.findersdk.f.b.hA(this.TAG, (String)localObject1);
+      localObject2 = com.tencent.mm.plugin.findersdk.f.b.HeJ;
+      com.tencent.mm.plugin.findersdk.f.b.iz(this.TAG, (String)localObject1);
       if (paramBundle != null) {
-        break label524;
+        break label508;
       }
       Log.w(this.TAG, "unkonwn data source! finish!");
       finish();
-      AppMethodBeat.o(233107);
+      AppMethodBeat.o(364496);
       return;
-      paramBundle = null;
+      paramBundle = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)paramBundle.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class);
+      if (paramBundle == null)
+      {
+        paramBundle = null;
+        break;
+      }
+      paramBundle = paramBundle.liveInfo;
+      if (paramBundle == null)
+      {
+        paramBundle = null;
+        break;
+      }
+      paramBundle = Long.valueOf(paramBundle.liveId);
       break;
-      label439:
+      label409:
       i = 0;
-      break label262;
-      label444:
-      localObject1 = null;
-      break label297;
-      label450:
+      break label201;
+      label414:
+      localObject1 = Long.valueOf(((LiveConfig)localObject1).liveId);
+      break label229;
+      label427:
       if (paramBundle == null) {}
       while (paramBundle.longValue() != 0L)
       {
-        paramBundle = ah.yhC;
-        paramBundle = ah.dwh();
-        if (paramBundle == null) {
-          break label517;
+        paramBundle = aj.CGT;
+        paramBundle = aj.egD();
+        if (paramBundle != null) {
+          break label476;
         }
-        paramBundle = paramBundle.zeA;
-        if (paramBundle == null) {
-          break label517;
-        }
-        paramBundle = (com.tencent.mm.plugin.finder.live.viewmodel.data.f)j.lp((List)paramBundle);
+        paramBundle = null;
         bool = true;
         break;
       }
@@ -233,223 +240,165 @@ public final class FinderLiveAnchorUI
       paramBundle = null;
       bool = false;
       continue;
-      label517:
-      paramBundle = null;
-      bool = true;
+      label476:
+      paramBundle = paramBundle.Ebx;
+      if (paramBundle == null)
+      {
+        paramBundle = null;
+        bool = true;
+      }
+      else
+      {
+        paramBundle = (com.tencent.mm.plugin.finder.live.viewmodel.data.f)p.oL((List)paramBundle);
+        bool = true;
+      }
     }
-    label524:
-    Object localObject1 = ah.yhC;
+    label508:
+    Object localObject1 = aj.CGT;
     localObject1 = new g();
-    ((g)localObject1).aj(j.ag(new com.tencent.mm.plugin.finder.live.viewmodel.data.f[] { paramBundle }));
-    ah.a((g)localObject1);
+    ((g)localObject1).an(p.al(new com.tencent.mm.plugin.finder.live.viewmodel.data.f[] { paramBundle }));
+    Object localObject2 = ah.aiuX;
+    aj.a((g)localObject1);
     localObject1 = getIntent().getByteArrayExtra("KEY_PARAMS_NOTICE");
     if (localObject1 != null)
     {
-      paramBundle.xUD = new bbh();
-      localObject2 = paramBundle.xUD;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      ((bbh)localObject2).parseFrom((byte[])localObject1);
+      paramBundle.BvE = new bkk();
+      localObject2 = paramBundle.BvE;
+      s.checkNotNull(localObject2);
+      ((bkk)localObject2).parseFrom((byte[])localObject1);
     }
-    localObject1 = ah.yhC;
-    Object localObject2 = ah.a(paramBundle);
+    localObject1 = aj.CGT;
+    localObject2 = aj.a(paramBundle);
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new com.tencent.mm.plugin.finder.live.model.context.a();
     }
-    localObject2 = this.xOD;
+    localObject2 = this.BoC;
     if (localObject2 != null) {
-      com.tencent.mm.plugin.finder.live.view.a.bindData$default((com.tencent.mm.plugin.finder.live.view.a)localObject2, paramBundle, false, 2, null);
+      ((com.tencent.mm.plugin.finder.live.view.b)localObject2).bindData(paramBundle);
     }
-    localObject2 = ah.yhC;
-    com.tencent.mm.plugin.finder.live.view.b localb = this.xOD;
-    if (localb == null) {
-      p.iCn();
-    }
-    ah.a((ah)localObject2, (com.tencent.mm.plugin.finder.live.model.context.a)localObject1, (com.tencent.mm.plugin.finder.live.view.a)localb, 0, 0, null, 24);
-    localObject1 = this.xOD;
+    localObject2 = aj.CGT;
+    com.tencent.mm.plugin.finder.live.view.b localb = this.BoC;
+    s.checkNotNull(localb);
+    aj.a((aj)localObject2, (com.tencent.mm.plugin.finder.live.model.context.a)localObject1, (com.tencent.mm.plugin.finder.live.view.a)localb, 0, null, 12);
+    localObject1 = this.BoC;
     if (localObject1 != null) {
       ((com.tencent.mm.plugin.finder.live.view.b)localObject1).activate(paramBundle, bool, false);
     }
-    localObject1 = this.xOD;
+    localObject1 = this.BoC;
     if (localObject1 != null) {
       ((com.tencent.mm.plugin.finder.live.view.b)localObject1).mount();
     }
-    paramBundle.xUD = new bbh();
-    this.xOE = new com.tencent.mm.plugin.finder.live.view.f((com.tencent.mm.plugin.ball.a.f)new e((Activity)this));
-    localObject1 = this.xOE;
+    paramBundle.BvE = new bkk();
+    this.BoD = new com.tencent.mm.plugin.finder.live.view.f((com.tencent.mm.plugin.ball.a.f)new e((Activity)this));
+    localObject1 = this.BoD;
     if (localObject1 != null) {
-      ((com.tencent.mm.plugin.finder.live.view.f)localObject1).I(21, com.tencent.mm.plugin.ball.f.b.cwx());
+      ((com.tencent.mm.plugin.finder.live.view.f)localObject1).J(21, "LiveFloatBall");
     }
-    localObject1 = k.yBj;
-    k.a(paramBundle, localFinderLiveBundle);
-    AppMethodBeat.o(233107);
+    j.Dob.a(paramBundle, localFinderLiveBundle);
+    AppMethodBeat.o(364496);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(233116);
+    AppMethodBeat.i(364561);
     super.onDestroy();
-    Object localObject = this.xOD;
+    Object localObject = this.BoC;
     if (localObject != null) {
       ((com.tencent.mm.plugin.finder.live.view.b)localObject).unMount();
     }
-    localObject = this.xOE;
-    if (localObject != null)
-    {
+    localObject = this.BoD;
+    if (localObject != null) {
       ((com.tencent.mm.plugin.finder.live.view.f)localObject).onDestroy();
-      AppMethodBeat.o(233116);
-      return;
     }
-    AppMethodBeat.o(233116);
+    AppMethodBeat.o(364561);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(233101);
+    AppMethodBeat.i(364458);
     super.onNewIntent(paramIntent);
-    com.tencent.mm.plugin.finder.live.view.b localb = this.xOD;
-    if (localb != null)
-    {
+    com.tencent.mm.plugin.finder.live.view.b localb = this.BoC;
+    if (localb != null) {
       localb.onNewIntent(paramIntent);
-      AppMethodBeat.o(233101);
-      return;
     }
-    AppMethodBeat.o(233101);
+    AppMethodBeat.o(364458);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(233113);
+    AppMethodBeat.i(364540);
     super.onPause();
-    Object localObject = this.jij;
+    Object localObject = this.lKz;
     if (localObject != null) {
-      ((com.tencent.mm.ui.tools.i)localObject).close();
+      ((i)localObject).close();
     }
-    localObject = this.xOD;
-    if (localObject != null)
-    {
+    localObject = this.BoC;
+    if (localObject != null) {
       ((com.tencent.mm.plugin.finder.live.view.b)localObject).pause();
-      AppMethodBeat.o(233113);
-      return;
     }
-    AppMethodBeat.o(233113);
+    AppMethodBeat.o(364540);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(233111);
+    AppMethodBeat.i(364526);
     super.onResume();
-    com.tencent.mm.plugin.finder.live.view.b localb = this.xOD;
+    com.tencent.mm.plugin.finder.live.view.b localb = this.BoC;
     if (localb != null) {
       localb.resume();
     }
-    localb = this.xOD;
-    if (localb != null)
-    {
-      localb.post((Runnable)new a(this));
-      AppMethodBeat.o(233111);
-      return;
+    localb = this.BoC;
+    if (localb != null) {
+      localb.post(new FinderLiveAnchorUI..ExternalSyntheticLambda1(this));
     }
-    AppMethodBeat.o(233111);
+    AppMethodBeat.o(364526);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(233109);
+    AppMethodBeat.i(364511);
     super.onStart();
-    Object localObject = this.xOD;
+    Object localObject = this.BoC;
     if (localObject != null) {
       ((com.tencent.mm.plugin.finder.live.view.b)localObject).start();
     }
-    localObject = this.xOE;
+    localObject = this.BoD;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.finder.live.view.f)localObject).aOf();
+      ((com.tencent.mm.plugin.finder.live.view.f)localObject).bhT();
     }
-    com.tencent.mm.plugin.ball.f.f.cvI();
-    AppMethodBeat.o(233109);
+    com.tencent.mm.plugin.ball.f.f.d(true, false, true);
+    AppMethodBeat.o(364511);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(233115);
+    AppMethodBeat.i(364551);
     super.onStop();
-    Object localObject = this.xOD;
+    Object localObject = this.BoC;
     if (localObject != null) {
       ((com.tencent.mm.plugin.finder.live.view.b)localObject).stop();
     }
-    localObject = this.xOE;
+    localObject = this.BoD;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.finder.live.view.f)localObject).aOj();
+      ((com.tencent.mm.plugin.finder.live.view.f)localObject).bhW();
     }
-    com.tencent.mm.plugin.ball.f.f.cwA();
-    AppMethodBeat.o(233115);
+    com.tencent.mm.plugin.ball.f.f.d(false, true, true);
+    AppMethodBeat.o(364551);
   }
   
   public final void onSwipeBack()
   {
-    AppMethodBeat.i(233118);
+    AppMethodBeat.i(364584);
     super.onSwipeBack();
-    this.xOB = true;
-    AppMethodBeat.o(233118);
+    this.BoA = true;
+    AppMethodBeat.o(364584);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(FinderLiveAnchorUI paramFinderLiveAnchorUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(233459);
-      if (FinderLiveAnchorUI.a(this.xOF) == null)
-      {
-        localObject = this.xOF;
-        AppCompatActivity localAppCompatActivity = this.xOF.getContext();
-        if (localAppCompatActivity == null)
-        {
-          localObject = new t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(233459);
-          throw ((Throwable)localObject);
-        }
-        FinderLiveAnchorUI.a((FinderLiveAnchorUI)localObject, new com.tencent.mm.ui.tools.i((Activity)localAppCompatActivity));
-        localObject = FinderLiveAnchorUI.a(this.xOF);
-        if (localObject != null) {
-          ((com.tencent.mm.ui.tools.i)localObject).setKeyboardHeightObserver((h)new h()
-          {
-            public final void A(int paramAnonymousInt, boolean paramAnonymousBoolean)
-            {
-              AppMethodBeat.i(232448);
-              Log.i(FinderLiveAnchorUI.b(this.xOG.xOF), "onKeyboardHeightChanged, height:" + paramAnonymousInt + ", isResized:" + paramAnonymousBoolean);
-              FinderLiveAnchorUI localFinderLiveAnchorUI = this.xOG.xOF;
-              if (paramAnonymousInt > 0) {}
-              for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
-              {
-                FinderLiveAnchorUI.a(localFinderLiveAnchorUI, paramAnonymousBoolean, paramAnonymousInt);
-                AppMethodBeat.o(232448);
-                return;
-              }
-            }
-          });
-        }
-      }
-      Object localObject = FinderLiveAnchorUI.a(this.xOF);
-      if (localObject != null)
-      {
-        ((com.tencent.mm.ui.tools.i)localObject).start();
-        AppMethodBeat.o(233459);
-        return;
-      }
-      AppMethodBeat.o(233459);
-    }
   }
 }
 

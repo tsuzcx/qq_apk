@@ -15,16 +15,18 @@ final class ImageFolderMgrView$3
   {
     AppMethodBeat.i(111532);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    ImageFolderMgrView.c(this.Ccw);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.HOz.HOy != null) {
+      this.HOz.HOy.fBy();
+    }
     a.a(this, "com/tencent/mm/plugin/gallery/ui/ImageFolderMgrView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(111532);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.ImageFolderMgrView.3
  * JD-Core Version:    0.7.0.1
  */

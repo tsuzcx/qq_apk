@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cwi" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:orientation="vertical" android:id="@id/ktd" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/cwj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c5b" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/c6" android:src="@raw/icons_filled_error" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="22.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/c5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/csi" android:layout_below="@id/c5b" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/c5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ci" android:text="@string/cyf" android:layout_below="@id/c5e" />
-    </RelativeLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c5f" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_outlined_back" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" />
-    <RelativeLayout android:id="@id/cq2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/cwj">
-        <Button android:textSize="17.0dip" android:id="@id/c5c" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bx" android:text="@string/cyd" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/p3" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:gravity="center" android:id="@id/cjf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cj" android:text="@string/ekr" style="@style/zo" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/bsn" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/ivk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView android:id="@id/i6r" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>

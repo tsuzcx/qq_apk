@@ -9,10 +9,10 @@ public class PAGFile
 {
   static
   {
-    AppMethodBeat.i(194903);
+    AppMethodBeat.i(187479);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(194903);
+    AppMethodBeat.o(187479);
   }
   
   private PAGFile(long paramLong)
@@ -22,25 +22,25 @@ public class PAGFile
   
   public static PAGFile Load(AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(194876);
+    AppMethodBeat.i(187441);
     paramAssetManager = LoadFromAssets(paramAssetManager, paramString);
-    AppMethodBeat.o(194876);
+    AppMethodBeat.o(187441);
     return paramAssetManager;
   }
   
   public static PAGFile Load(String paramString)
   {
-    AppMethodBeat.i(194874);
+    AppMethodBeat.i(187426);
     paramString = LoadFromPath(paramString);
-    AppMethodBeat.o(194874);
+    AppMethodBeat.o(187426);
     return paramString;
   }
   
   public static PAGFile Load(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(194875);
+    AppMethodBeat.i(187434);
     paramArrayOfByte = LoadFromBytes(paramArrayOfByte, paramArrayOfByte.length);
-    AppMethodBeat.o(194875);
+    AppMethodBeat.o(187434);
     return paramArrayOfByte;
   }
   
@@ -72,15 +72,15 @@ public class PAGFile
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(194889);
+    AppMethodBeat.i(187514);
     if (paramPAGImage == null)
     {
       nativeReplaceImage(paramInt, 0L);
-      AppMethodBeat.o(194889);
+      AppMethodBeat.o(187514);
       return;
     }
     nativeReplaceImage(paramInt, paramPAGImage.nativeContext);
-    AppMethodBeat.o(194889);
+    AppMethodBeat.o(187514);
   }
   
   public native void replaceText(int paramInt, PAGText paramPAGText);
@@ -95,7 +95,7 @@ public class PAGFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.PAGFile
  * JD-Core Version:    0.7.0.1
  */

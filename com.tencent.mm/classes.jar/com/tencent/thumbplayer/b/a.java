@@ -10,7 +10,7 @@ public final class a
 {
   public static Bitmap l(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(220030);
+    AppMethodBeat.i(227276);
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
     Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.RGB_565);
     localBitmap.copyPixelsFromBuffer(paramArrayOfByte);
@@ -21,13 +21,13 @@ public final class a
       paramArrayOfByte.postRotate(paramInt3);
       paramArrayOfByte = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), localBitmap.getHeight(), paramArrayOfByte, true);
     }
-    AppMethodBeat.o(220030);
+    AppMethodBeat.o(227276);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.b.a
  * JD-Core Version:    0.7.0.1
  */

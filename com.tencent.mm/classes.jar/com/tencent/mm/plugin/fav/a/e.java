@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.bw;
+import com.tencent.mm.autogen.b.bz;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class e
-  extends bw
+  extends bz
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(103368);
-    info = bw.aoY();
+    info = bz.aJm();
     AppMethodBeat.o(103368);
   }
   

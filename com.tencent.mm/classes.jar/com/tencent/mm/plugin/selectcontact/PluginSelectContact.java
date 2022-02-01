@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.selectcontact;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.dk;
+import com.tencent.mm.autogen.a.du;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.selectcontact.a.a;
@@ -11,22 +11,22 @@ import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.ui.contact.w;
 
 public class PluginSelectContact
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements c, a
 {
-  private IListener Jcp;
+  private IListener Pme;
   
   public PluginSelectContact()
   {
     AppMethodBeat.i(102768);
-    this.Jcp = new IListener() {};
+    this.Pme = new IListener(com.tencent.mm.app.f.hfK) {};
     AppMethodBeat.o(102768);
   }
   
   public void configure(g paramg)
   {
     AppMethodBeat.i(102770);
-    paramg.aIE();
+    paramg.bbA();
     AppMethodBeat.o(102770);
   }
   
@@ -35,7 +35,7 @@ public class PluginSelectContact
   public void execute(g paramg)
   {
     AppMethodBeat.i(102771);
-    paramg.aIE();
+    paramg.bbA();
     AppMethodBeat.o(102771);
   }
   
@@ -55,14 +55,14 @@ public class PluginSelectContact
   {
     AppMethodBeat.i(102772);
     w.init();
-    this.Jcp.alive();
+    this.Pme.alive();
     AppMethodBeat.o(102772);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(102773);
-    this.Jcp.dead();
+    this.Pme.dead();
     AppMethodBeat.o(102773);
   }
 }

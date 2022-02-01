@@ -1,81 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class dzd
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String UeJ;
-  public int UeK;
-  public int UeL;
-  public int interval;
+  public adx abat;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91673);
+    AppMethodBeat.i(43118);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UeJ != null) {
-        paramVarArgs.f(1, this.UeJ);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abat == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Oplog");
+        AppMethodBeat.o(43118);
+        throw paramVarArgs;
       }
-      paramVarArgs.aY(2, this.interval);
-      paramVarArgs.aY(3, this.UeK);
-      paramVarArgs.aY(4, this.UeL);
-      AppMethodBeat.o(91673);
+      if (this.abat != null)
+      {
+        paramVarArgs.qD(1, this.abat.computeSize());
+        this.abat.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(43118);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.UeJ == null) {
-        break label350;
+      if (this.abat == null) {
+        break label332;
       }
     }
-    label350:
-    for (paramInt = g.a.a.b.b.a.g(1, this.UeJ) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = i.a.a.a.qC(1, this.abat.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.interval);
-      int j = g.a.a.b.b.a.bM(3, this.UeK);
-      int k = g.a.a.b.b.a.bM(4, this.UeL);
-      AppMethodBeat.o(91673);
-      return paramInt + i + j + k;
+      AppMethodBeat.o(43118);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(91673);
+        if (this.abat == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Oplog");
+          AppMethodBeat.o(43118);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(43118);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         dzd localdzd = (dzd)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(91673);
+          AppMethodBeat.o(43118);
           return -1;
-        case 1: 
-          localdzd.UeJ = locala.abFh.readString();
-          AppMethodBeat.o(91673);
-          return 0;
-        case 2: 
-          localdzd.interval = locala.abFh.AK();
-          AppMethodBeat.o(91673);
-          return 0;
-        case 3: 
-          localdzd.UeK = locala.abFh.AK();
-          AppMethodBeat.o(91673);
-          return 0;
         }
-        localdzd.UeL = locala.abFh.AK();
-        AppMethodBeat.o(91673);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          adx localadx = new adx();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localadx.parseFrom((byte[])localObject);
+          }
+          localdzd.abat = localadx;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(43118);
         return 0;
       }
-      AppMethodBeat.o(91673);
+      AppMethodBeat.o(43118);
       return -1;
     }
   }

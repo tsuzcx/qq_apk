@@ -2,57 +2,57 @@ package androidx.appcompat.widget;
 
 final class v
 {
-  int tF = 0;
-  int tG = 0;
-  int tH = -2147483648;
-  int tI = -2147483648;
-  int tJ = 0;
-  int tK = 0;
-  boolean tL = false;
-  boolean tM = false;
+  int uE = 0;
+  int uF = 0;
+  int uG = -2147483648;
+  int uH = -2147483648;
+  int uI = 0;
+  int uJ = 0;
+  boolean uK = false;
+  boolean uL = false;
   
-  public final void k(int paramInt1, int paramInt2)
+  public final void p(int paramInt1, int paramInt2)
   {
-    this.tH = paramInt1;
-    this.tI = paramInt2;
-    this.tM = true;
-    if (this.tL)
+    this.uG = paramInt1;
+    this.uH = paramInt2;
+    this.uL = true;
+    if (this.uK)
     {
       if (paramInt2 != -2147483648) {
-        this.tF = paramInt2;
+        this.uE = paramInt2;
       }
       if (paramInt1 != -2147483648) {
-        this.tG = paramInt1;
+        this.uF = paramInt1;
       }
     }
     do
     {
       return;
       if (paramInt1 != -2147483648) {
-        this.tF = paramInt1;
+        this.uE = paramInt1;
       }
     } while (paramInt2 == -2147483648);
-    this.tG = paramInt2;
+    this.uF = paramInt2;
   }
   
-  public final void l(int paramInt1, int paramInt2)
+  public final void q(int paramInt1, int paramInt2)
   {
-    this.tM = false;
+    this.uL = false;
     if (paramInt1 != -2147483648)
     {
-      this.tJ = paramInt1;
-      this.tF = paramInt1;
+      this.uI = paramInt1;
+      this.uE = paramInt1;
     }
     if (paramInt2 != -2147483648)
     {
-      this.tK = paramInt2;
-      this.tG = paramInt2;
+      this.uJ = paramInt2;
+      this.uF = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.v
  * JD-Core Version:    0.7.0.1
  */

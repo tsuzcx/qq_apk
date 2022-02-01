@@ -1,62 +1,58 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.predownload.e.c;
-import com.tencent.mm.plugin.appbrand.launching.w.a;
-import com.tencent.mm.plugin.appbrand.launching.w.e;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.storage.c;
+import com.tencent.mm.plugin.appbrand.launching.y.a;
+import com.tencent.mm.plugin.appbrand.launching.y.e;
 import com.tencent.stubs.logger.Log;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/action/ActionGetNormalPkg;", "", "record", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/storage/CmdGetCodePersistentInfo;", "onComplete", "Lkotlin/Function0;", "", "(Lcom/tencent/mm/plugin/appbrand/appcache/predownload/storage/CmdGetCodePersistentInfo;Lkotlin/jvm/functions/Function0;)V", "isRetryAction", "", "reportId", "", "LOG", "level", "message", "", "reportResult", "isSuccess", "start", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/action/ActionGetNormalPkg;", "", "record", "Lcom/tencent/mm/plugin/appbrand/appcache/predownload/storage/CmdGetCodePersistentInfo;", "onComplete", "Lkotlin/Function0;", "", "(Lcom/tencent/mm/plugin/appbrand/appcache/predownload/storage/CmdGetCodePersistentInfo;Lkotlin/jvm/functions/Function0;)V", "isRetryAction", "", "reportId", "", "LOG", "level", "message", "", "reportResult", "isSuccess", "start", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  @Deprecated
-  public static final a nJK;
-  public final boolean nJH;
-  public final c nJI;
-  private final a<x> nJJ;
+  private static final b.a qJo;
+  public final c qJp;
+  private final a<ah> qJq;
+  public final boolean qJr;
   public final int reportId;
   
   static
   {
-    AppMethodBeat.i(281928);
-    nJK = new a((byte)0);
-    AppMethodBeat.o(281928);
+    AppMethodBeat.i(320461);
+    qJo = new b.a((byte)0);
+    AppMethodBeat.o(320461);
   }
   
-  public b(c paramc, a<x> parama)
+  public b(c paramc, a<ah> parama)
   {
-    AppMethodBeat.i(281926);
-    this.nJI = paramc;
-    this.nJJ = parama;
-    this.reportId = this.nJI.field_reportId;
-    if (this.nJI.field_retriedCount > 0) {}
+    AppMethodBeat.i(320426);
+    this.qJp = paramc;
+    this.qJq = parama;
+    this.reportId = this.qJp.field_reportId;
+    if (this.qJp.field_retriedCount > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nJH = bool;
-      AppMethodBeat.o(281926);
+      this.qJr = bool;
+      AppMethodBeat.o(320426);
       return;
     }
   }
   
-  private final void Z(int paramInt, String paramString)
+  private final void ah(int paramInt, String paramString)
   {
-    AppMethodBeat.i(281921);
-    Log.printFormat(paramInt, "MicroMsg.AppBrand.PreDownload.ActionGetNormalPkg", "appId:" + this.nJI.field_appId + ", packageKey:" + this.nJI.field_packageKey + ", packageType:" + this.nJI.field_packageType + ", version:" + this.nJI.field_version + ", " + paramString, new Object[0]);
-    AppMethodBeat.o(281921);
+    AppMethodBeat.i(320429);
+    Log.printFormat(paramInt, "MicroMsg.AppBrand.PreDownload.ActionGetNormalPkg", "appId:" + this.qJp.field_appId + ", packageKey:" + this.qJp.field_packageKey + ", packageType:" + this.qJp.field_packageType + ", version:" + this.qJp.field_version + ", " + paramString, new Object[0]);
+    AppMethodBeat.o(320429);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/action/ActionGetNormalPkg$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$Response;"}, k=3, mv={1, 5, 1}, xi=48)
   public static final class b
-    extends q
-    implements kotlin.g.a.b<w.e, x>
+    extends u
+    implements kotlin.g.a.b<y.e, ah>
   {
     public b(b paramb)
     {
@@ -64,10 +60,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "error", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "message", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "error", "Lcom/tencent/mm/plugin/appbrand/launching/ICommonPkgFetcher$ERROR;", "message", ""}, k=3, mv={1, 5, 1}, xi=48)
   public static final class c
-    extends q
-    implements m<w.a, String, x>
+    extends u
+    implements m<y.a, String, ah>
   {
     public c(b paramb)
     {
@@ -77,7 +73,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.a.b
  * JD-Core Version:    0.7.0.1
  */

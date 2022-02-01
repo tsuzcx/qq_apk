@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.vfs.y;
 
 final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$d
   extends AppBrandProxyUIProcessTask
 {
-  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  public final void handleRequest(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
     AppMethodBeat.i(45690);
     if (!(paramProcessRequest instanceof JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCSendToFriendEmojiRequest))
@@ -26,14 +27,14 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$d
       return;
     }
     Object localObject = JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCSendToFriendEmojiRequest.a((JsApiShowImageOperateSheet.BottomSheetLogicHelper.IPCSendToFriendEmojiRequest)paramProcessRequest);
-    paramProcessRequest = u.buc((String)localObject);
-    paramProcessRequest = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramProcessRequest);
+    paramProcessRequest = y.bub((String)localObject);
+    paramProcessRequest = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoe(paramProcessRequest);
     if (paramProcessRequest == null)
     {
-      paramProcessRequest = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
+      paramProcessRequest = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr();
       MMApplicationContext.getContext();
-      paramProcessRequest = paramProcessRequest.auf((String)localObject);
-      paramProcessRequest = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramProcessRequest);
+      paramProcessRequest = paramProcessRequest.aog((String)localObject);
+      paramProcessRequest = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getEmojiMgr().aoe(paramProcessRequest);
     }
     for (;;)
     {
@@ -42,32 +43,28 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$d
       {
         l = 0L;
         if (paramProcessRequest != null) {
-          break label244;
+          break label230;
         }
         label121:
         BitmapFactory.Options localOptions = new BitmapFactory.Options();
         localOptions.inJustDecodeBounds = true;
-        if (((BitmapUtil.decodeFile((String)localObject, localOptions) == null) || (localOptions.outHeight <= com.tencent.mm.n.c.awH())) && (localOptions.outWidth <= com.tencent.mm.n.c.awH())) {
-          break label318;
+        if (((BitmapUtil.decodeFile((String)localObject, localOptions) == null) || (localOptions.outHeight <= com.tencent.mm.k.c.aRh())) && (localOptions.outWidth <= com.tencent.mm.k.c.aRh())) {
+          break label304;
         }
       }
-      label318:
+      label304:
       for (int i = 1;; i = 0)
       {
-        if ((l > com.tencent.mm.n.c.awI()) || (i != 0))
+        if ((l > com.tencent.mm.k.c.aRi()) || (i != 0))
         {
-          paramProcessRequest = bPf();
-          i = au.i.emoji_custom_gif_max_size_limit_cannot_send;
-          localObject = MMApplicationContext.getResources().getString(i);
-          i = au.i.i_know_it;
-          com.tencent.mm.ui.base.h.a(paramProcessRequest, (String)localObject, "", MMApplicationContext.getResources().getString(i), null);
-          b(null);
+          k.a(getActivityContext(), getString(ba.i.emoji_custom_gif_max_size_limit_cannot_send), "", getString(ba.i.i_know_it), null);
+          finishProcess(null);
           AppMethodBeat.o(45690);
           return;
-          l = u.bBQ(paramProcessRequest.ifh());
+          l = y.bEl(paramProcessRequest.kMn());
           break;
-          label244:
-          localObject = paramProcessRequest.ifh();
+          label230:
+          localObject = paramProcessRequest.kMn();
           break label121;
         }
         localObject = new Intent();
@@ -77,7 +74,7 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$d
           ((Intent)localObject).putExtra("Retr_File_Name", paramProcessRequest);
           ((Intent)localObject).putExtra("Retr_Msg_Type", 5);
           ((Intent)localObject).putExtra("Retr_MsgImgScene", 1);
-          com.tencent.mm.by.c.f(bPf(), ".ui.transmit.MsgRetransmitUI", (Intent)localObject);
+          com.tencent.mm.br.c.g(getActivityContext(), ".ui.transmit.MsgRetransmitUI", (Intent)localObject);
           break;
         }
       }

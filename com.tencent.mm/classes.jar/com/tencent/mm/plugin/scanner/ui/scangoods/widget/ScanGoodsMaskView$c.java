@@ -1,41 +1,34 @@
 package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-final class ScanGoodsMaskView$c
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateHideBlurView$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ScanGoodsMaskView$c
+  implements Animator.AnimatorListener
 {
-  ScanGoodsMaskView$c(ScanGoodsMaskView paramScanGoodsMaskView) {}
+  ScanGoodsMaskView$c(a<ah> parama) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void onAnimationCancel(Animator paramAnimator) {}
+  
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(223029);
-    p.j(paramValueAnimator, "animation");
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null)
-    {
-      paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-      AppMethodBeat.o(223029);
-      throw paramValueAnimator;
-    }
-    float f = ((Float)paramValueAnimator).floatValue();
-    ScanGoodsMaskView.a(this.IVU).setRotation(360.0F - Math.abs(15.0F + -15.0F * f));
-    ScanGoodsMaskView.a(this.IVU).setAlpha(f);
-    ScanGoodsMaskView.c(this.IVU).setAlpha(1.0F - f);
-    AppMethodBeat.o(223029);
+    AppMethodBeat.i(52289);
+    this.PeJ.invoke();
+    AppMethodBeat.o(52289);
   }
+  
+  public final void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public final void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanGoodsMaskView.c
  * JD-Core Version:    0.7.0.1
  */

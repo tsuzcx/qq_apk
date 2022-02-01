@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
 
 class JsApiLuggageStartSoterAuthentication$1
@@ -15,13 +15,13 @@ class JsApiLuggageStartSoterAuthentication$1
     if (paramInt == -1)
     {
       Log.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
-      localb = this.oGN;
-      locale = this.cyJ;
-      paramInt = this.cuf;
+      localb = this.rJM;
+      localf = this.erj;
+      paramInt = this.elZ;
       if (paramBundle != null) {}
       for (;;)
       {
-        b.a(localb, locale, paramInt, paramBundle, "ok");
+        b.a(localb, localf, paramInt, paramBundle, "ok");
         AppMethodBeat.o(159050);
         return;
         paramBundle = null;
@@ -30,26 +30,26 @@ class JsApiLuggageStartSoterAuthentication$1
     if (paramInt == 1)
     {
       Log.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
-      localb = this.oGN;
-      locale = this.cyJ;
-      paramInt = this.cuf;
+      localb = this.rJM;
+      localf = this.erj;
+      paramInt = this.elZ;
       if (paramBundle != null) {}
       for (;;)
       {
-        b.a(localb, locale, paramInt, paramBundle, "fail");
+        b.a(localb, localf, paramInt, paramBundle, "fail");
         AppMethodBeat.o(159050);
         return;
         paramBundle = null;
       }
     }
     Log.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
-    b localb = this.oGN;
-    e locale = this.cyJ;
-    paramInt = this.cuf;
+    b localb = this.rJM;
+    f localf = this.erj;
+    paramInt = this.elZ;
     if (paramBundle != null) {}
     for (;;)
     {
-      b.a(localb, locale, paramInt, paramBundle, "cancel");
+      b.a(localb, localf, paramInt, paramBundle, "cancel");
       AppMethodBeat.o(159050);
       return;
       paramBundle = null;

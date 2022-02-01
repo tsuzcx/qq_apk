@@ -1,24 +1,14 @@
 package com.tencent.mm.model;
 
+import android.content.Context;
+
 public abstract interface as
 {
-  public abstract void Lr(String paramString);
+  public abstract as a(t paramt);
   
-  public abstract void Ls(String paramString);
+  public abstract as b(t paramt);
   
-  public abstract ar Lt(String paramString);
-  
-  public abstract ar Lu(String paramString);
-  
-  public abstract void Lv(String paramString);
-  
-  public abstract void Lw(String paramString);
-  
-  public abstract void Lx(String paramString);
-  
-  public abstract void Ly(String paramString);
-  
-  public abstract void ar(String paramString1, String paramString2);
+  public abstract void m(Context paramContext, String paramString1, String paramString2);
 }
 
 

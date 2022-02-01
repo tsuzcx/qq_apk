@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.wepkg.downloader;
 
 public final class g
 {
-  public f QLs;
-  public int QMb;
+  public f XER;
+  public int XFz;
   public int mRetryTimes;
   int mStatus;
-  public int vdb;
+  public int yoO;
   
   public g(f paramf, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.QLs = paramf;
+    this.XER = paramf;
     this.mStatus = paramInt1;
-    this.vdb = paramInt2;
-    this.QMb = paramInt3;
+    this.yoO = paramInt2;
+    this.XFz = paramInt3;
     this.mRetryTimes = paramInt4;
   }
 }

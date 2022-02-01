@@ -1,27 +1,14 @@
 package com.tencent.mm.ay;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.d;
-import com.tencent.mm.modelmulti.o.d;
-import com.tencent.mm.modelmulti.o.e;
-import com.tencent.mm.protocal.protobuf.eyc;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import java.util.List;
 
 public final class c
-  extends o.e
+  extends b
 {
-  public String aesKey;
-  public d jYa;
-  public eyc lNr;
-  public g lNs;
-  public o.a lNt;
-  
-  public static c blC()
+  public c(List<k.b> paramList)
   {
-    AppMethodBeat.i(198744);
-    c localc = new c();
-    localc.lUB = o.d.lUm;
-    AppMethodBeat.o(198744);
-    return localc;
+    super(paramList);
   }
 }
 

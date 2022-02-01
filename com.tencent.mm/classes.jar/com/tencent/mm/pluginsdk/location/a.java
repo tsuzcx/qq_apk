@@ -1,18 +1,11 @@
 package com.tencent.mm.pluginsdk.location;
 
-import com.tencent.mm.protocal.protobuf.cqf;
-import com.tencent.mm.protocal.protobuf.cqg;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.dha;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void a(cqg paramcqg, a parama);
-  
-  public static abstract interface a
-  {
-    public abstract void t(String paramString, List<cqf> paramList);
-  }
+  public abstract void a(dha paramdha, a.a parama);
 }
 
 

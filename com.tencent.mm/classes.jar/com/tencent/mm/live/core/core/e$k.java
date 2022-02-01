@@ -1,25 +1,39 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicUserStatus;", "", "()V", "micUserStatusNotTalking", "", "getMicUserStatusNotTalking", "()I", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$MicSettingSwitchFlag;", "", "()V", "DisableBuyProductAudienceSetting", "", "getDisableBuyProductAudienceSetting", "()I", "DisableFollowedAnchorAudienceSetting", "getDisableFollowedAnchorAudienceSetting", "DisableRewardedAnchorAudienceSetting", "getDisableRewardedAnchorAudienceSetting", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$k
 {
-  public static final k kkA;
-  private static final int kkz = 1;
+  public static final k mLj;
+  private static final int mLk;
+  private static final int mLl;
+  private static final int mLm;
   
   static
   {
-    AppMethodBeat.i(199044);
-    kkA = new k();
-    kkz = 1;
-    AppMethodBeat.o(199044);
+    AppMethodBeat.i(248178);
+    mLj = new k();
+    mLk = 1;
+    mLl = 2;
+    mLm = 4;
+    AppMethodBeat.o(248178);
   }
   
-  public static int aKD()
+  public static int bdq()
   {
-    return kkz;
+    return mLk;
+  }
+  
+  public static int bdr()
+  {
+    return mLl;
+  }
+  
+  public static int bds()
+  {
+    return mLm;
   }
 }
 

@@ -13,7 +13,7 @@ public abstract class a
   
   public void onActivityPaused(Activity paramActivity)
   {
-    s(paramActivity, "onActivityPaused");
+    v(paramActivity, "onActivityPaused");
   }
   
   public void onActivityResumed(Activity paramActivity) {}
@@ -24,11 +24,11 @@ public abstract class a
   
   public void onActivityStopped(Activity paramActivity) {}
   
-  public abstract void s(Activity paramActivity, String paramString);
+  public abstract void v(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.c.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

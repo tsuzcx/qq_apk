@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="wrap_content" android:layout_height="40.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/ddr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/dds" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" />
-    </LinearLayout>
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="@dimen/dc"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/j99" android:background="@drawable/um" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginEnd="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <ImageView android:id="@id/j98" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:layout_marginEnd="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j9_" android:padding="12.0dip" android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/finder_filled_activity" android:layout_marginEnd="@dimen/cp" app:iconColor="@color/BW_0_Alpha_0_5" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/j9b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="aa" android:singleLine="true" android:includeFontPadding="false" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/df" app:layout_constraintBottom_toTopOf="@id/j9a" app:layout_constraintEnd_toStartOf="@id/j99" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintVertical_chainStyle="hqs" />
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/j9a" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_marginEnd="@dimen/df" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toStartOf="@id/j99" app:layout_constraintStart_toStartOf="@id/j9b" app:layout_constraintTop_toBottomOf="@id/j9b" />
+    <ImageView android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cp" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

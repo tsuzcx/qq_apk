@@ -1,37 +1,29 @@
 package kotlinx.coroutines;
 
-import java.util.concurrent.locks.LockSupport;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"})
-public abstract class bk
-  extends bi
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/DisposeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public final class bk
+  extends ch
 {
-  protected final void c(long paramLong, bj.c paramc)
+  private final bi ajvj;
+  
+  public bk(bi parambi)
   {
-    if (ap.iRg())
-    {
-      if ((bk)this != ar.abwJ) {}
-      for (int i = 1; i == 0; i = 0) {
-        throw ((Throwable)new AssertionError());
-      }
-    }
-    ar.abwJ.a(paramLong, paramc);
+    this.ajvj = parambi;
   }
   
-  protected abstract Thread getThread();
-  
-  protected final void iRB()
+  public final void N(Throwable paramThrowable)
   {
-    Thread localThread = getThread();
-    if ((Thread.currentThread() != localThread) && (cx.abxP == null)) {
-      LockSupport.unpark(localThread);
-    }
+    AppMethodBeat.i(188850);
+    this.ajvj.dispose();
+    AppMethodBeat.o(188850);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bk
  * JD-Core Version:    0.7.0.1
  */

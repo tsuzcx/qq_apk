@@ -2,7 +2,7 @@ package com.tencent.mm.view;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.h;
+import com.tencent.mm.api.i;
 
 public final class m
   extends a
@@ -12,15 +12,15 @@ public final class m
     super(paramContext);
   }
   
-  public final h[] getFeatures()
+  public final i[] getFeatures()
   {
-    if (this.YKd == null) {
-      this.YKd = new h[] { h.fan, h.fap, h.fao, h.faq, h.far };
+    if (this.agFV == null) {
+      this.agFV = new i[] { i.hdO, i.hdQ, i.hdP, i.hdR, i.hdS };
     }
-    return this.YKd;
+    return this.agFV;
   }
   
-  protected final com.tencent.mm.view.b.a igR()
+  protected final com.tencent.mm.view.b.a jMg()
   {
     AppMethodBeat.i(9363);
     com.tencent.mm.view.b.c localc = new com.tencent.mm.view.b.c(getContext(), getPresenter());
@@ -28,7 +28,7 @@ public final class m
     return localc;
   }
   
-  protected final com.tencent.mm.view.footer.a igS()
+  protected final com.tencent.mm.view.footer.a jMh()
   {
     AppMethodBeat.i(9364);
     com.tencent.mm.view.footer.c localc = new com.tencent.mm.view.footer.c(getContext(), getPresenter());
@@ -38,7 +38,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.view.m
  * JD-Core Version:    0.7.0.1
  */

@@ -2,52 +2,39 @@ package com.tencent.mm.plugin.appbrand.jsapi.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.n.i;
+import com.tencent.mm.plugin.appbrand.n.k;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Collection;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONArray;
+import java.util.Objects;
 import org.json.JSONObject;
 
 public final class b
-  extends c
+  extends c<y>
 {
-  private static final int CTRL_INDEX = 223;
-  private static final String NAME = "getBeacons";
+  public static final int CTRL_INDEX = 861;
+  public static final String NAME = "faceDetect";
+  private static String rWB = "Thread.AppBrand.JsApiFaceDetect";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final ByteBuffer a(String paramString, k paramk, int paramInt)
   {
-    AppMethodBeat.i(144674);
-    Log.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
-    paramJSONObject = new JSONArray();
-    Object localObject = a.ahC(parame.getAppId());
-    if (localObject != null)
+    AppMethodBeat.i(326554);
+    if ("frameBuffer".equalsIgnoreCase(paramString))
     {
-      localObject = ((a.a)localObject).oTV;
-      Log.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
-      if ((localObject != null) && (((Map)localObject).size() > 0))
-      {
-        localObject = ((Map)localObject).values().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          paramJSONObject.put((JSONObject)((Iterator)localObject).next());
-        }
-      }
+      paramString = paramk.ae(paramInt, true);
+      AppMethodBeat.o(326554);
+      return paramString;
     }
-    else
-    {
-      Log.e("MicroMsg.JsApiGetBeacons", "not found device");
-    }
-    localObject = new HashMap();
-    ((Map)localObject).put("beacons", paramJSONObject);
-    parame.j(paramInt, m("ok", (Map)localObject));
-    AppMethodBeat.o(144674);
+    paramString = super.a(paramString, paramk, paramInt);
+    AppMethodBeat.o(326554);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.h.b
  * JD-Core Version:    0.7.0.1
  */

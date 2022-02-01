@@ -14,23 +14,23 @@ import java.util.ListIterator;
 public final class c
   extends b
 {
-  e eYH;
-  public com.tencent.mm.ab.c eYI;
-  public String eYJ;
-  float eYK = 0.0F;
-  float eYL = 0.0F;
-  public ValueAnimator eYu;
-  public float eYx;
-  public float eYy;
+  public ValueAnimator hbU;
+  public float hbX;
+  public float hbY;
+  e hch;
+  public com.tencent.mm.ab.c hci;
+  public String hcj;
+  float hck = 0.0F;
+  float hcl = 0.0F;
   
   public c(e parame)
   {
-    this.eYH = parame;
+    this.hch = parame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.c.c
  * JD-Core Version:    0.7.0.1
  */

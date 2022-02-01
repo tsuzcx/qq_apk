@@ -1,637 +1,821 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.media.Image;
-import android.media.Image.Plane;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.opengl.EGLContext;
-import android.opengl.EGLDisplay;
-import android.opengl.EGLExt;
-import android.opengl.EGLSurface;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.Surface;
-import com.tencent.e.c.d;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.util.Pair;
+import android.util.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.k.c;
-import com.tencent.mm.media.k.c.a;
-import com.tencent.mm.media.k.c.b;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.recordvideo.ui.editor.b.c;
+import com.tencent.mm.plugin.vlog.model.local.a.c;
+import com.tencent.mm.protocal.protobuf.afa;
+import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.afc;
+import com.tencent.mm.protocal.protobuf.afd;
+import com.tencent.mm.protocal.protobuf.ahj;
+import com.tencent.mm.protocal.protobuf.amj;
+import com.tencent.mm.protocal.protobuf.amk;
+import com.tencent.mm.protocal.protobuf.dmc;
+import com.tencent.mm.protocal.protobuf.dmt;
+import com.tencent.mm.protocal.protobuf.dzm;
+import com.tencent.mm.protocal.protobuf.enx;
+import com.tencent.mm.protocal.protobuf.fhx;
+import com.tencent.mm.protocal.protobuf.fos;
+import com.tencent.mm.protocal.protobuf.fqf;
+import com.tencent.mm.protocal.protobuf.fxt;
+import com.tencent.mm.protocal.protobuf.jy;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.tav.core.ExportConfig;
-import com.tencent.tav.coremedia.CGSize;
-import com.tencent.tav.coremedia.CMSampleBuffer;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tav.coremedia.TextureInfo;
-import com.tencent.tav.decoder.AssetWriterVideoEncoder;
-import com.tencent.tav.decoder.RenderContext;
-import com.tencent.tav.decoder.muxer.IMediaMuxer;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.util.concurrent.Semaphore;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.vfs.y;
+import com.tencent.mm.videocomposition.g;
+import com.tencent.mm.xeffect.XEffectLog;
+import com.tencent.mm.xeffect.effect.EffectManager;
+import com.tencent.mm.xeffect.effect.EffectManager.a;
+import com.tencent.mm.xeffect.effect.VLogEffectJNI;
+import com.tencent.mm.xeffect.effect.af;
+import com.tencent.mm.xeffect.effect.p.a;
+import com.tencent.mm.xeffect.effect.t;
+import com.tencent.mm.xeffect.effect.w;
+import com.tencent.mm.xeffect.effect.x;
+import com.tencent.tav.coremedia.CMTimeRange;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/CompositionSoftwareEncoder;", "Lcom/tencent/tav/decoder/AssetWriterVideoEncoder;", "()V", "bufId", "", "copyTmpBuffer", "Ljava/nio/ByteBuffer;", "encodeRGB2YuvHandler", "Landroid/os/Handler;", "encodeRGB2YuvHandlerThread", "Landroid/os/HandlerThread;", "encodeRGB2YuvImageReader", "Landroid/media/ImageReader;", "encodeSurfaceImageReader", "encodeYuvCount", "fakeVideoBuffer", "kotlin.jvm.PlatformType", "imageReaderInitSucc", "", "isInputEndOfStream", "isStopped", "muxer", "Lcom/tencent/tav/decoder/muxer/IMediaMuxer;", "renderRgb2YuvLock", "Ljava/util/concurrent/Semaphore;", "renderYuvCount", "rgb2yuvEGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "rgbAvailableCount", "sampleTimeUs", "", "startEncodeTick", "stopLock", "Ljava/lang/Object;", "videoBitrate", "videoFormat", "Landroid/media/MediaFormat;", "videoFps", "videoHeight", "videoSampleRenderContext", "Lcom/tencent/tav/decoder/RenderContext;", "videoSize", "Lcom/tencent/tav/coremedia/CGSize;", "videoWidth", "writeRGBCount", "writeYuvCount", "yuvHeight", "yuvRenderProc", "Lcom/tencent/mm/media/render/proc/RGB2YUVPortraitRenderProc;", "yuvWidth", "checkInitBufId", "", "createInputSurface", "Landroid/view/Surface;", "finishEncode", "getEncodeFormat", "getEncodePresentationTimeUs", "getEncodeSize", "initRgb2YuvImageReader", "isEncodeToEndOfStream", "isNeedVideoOutputTexture", "onInputEndOfStream", "prepare", "outputConfig", "Lcom/tencent/tav/core/ExportConfig;", "processImageYUVBufferToWriteYUVData", "width", "height", "plane", "Landroid/media/Image$Plane;", "processVideoTexture", "sampleBufferRenderOutputTexture", "Lcom/tencent/tav/coremedia/TextureInfo;", "sampleTime", "Lcom/tencent/tav/coremedia/CMTime;", "release", "requestConvertGpuRgb2YuvRender", "timestamp", "setMediaMuxer", "setVideoSampleRenderContext", "renderContext", "signalEndOfInputStream", "start", "stop", "writeVideoSample", "sampleBuffer", "Lcom/tencent/tav/coremedia/CMSampleBuffer;", "isEndOfStream", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"TAG", "", "externalStickerEffectList", "", "Lcom/tencent/mm/protocal/protobuf/StickerEffectProto;", "clearStickerEffectList", "", "compositionToProto", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "outputConfig", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "cropInfoToProto", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "proto", "Lcom/tencent/mm/protocal/protobuf/CropInfoProto;", "matrixToProto", "matrix", "Landroid/graphics/Matrix;", "Lcom/tencent/mm/protocal/protobuf/MatrixProto;", "protoToComposition", "effectMgr", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "protoToCropInfo", "cropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "protoToFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameSeeker;", "protoToImageEnhancementEffect", "protoToMagic", "protoToMatrix", "protoToPagSticker", "protoToRect", "Lcom/tencent/mm/protocal/protobuf/RectProto;", "rect", "Landroid/graphics/Rect;", "protoToSticker", "protoToTrack", "Lcom/tencent/mm/protocal/protobuf/TrackInfoProto;", "protoToTransitionInfo", "Lcom/tencent/mm/protocal/protobuf/TransitionInfoProto;", "transition", "Lcom/tencent/mm/videocomposition/TrackTransition;", "protoToVLogEffectMgr", "protoToVideoTemplate", "rectToProto", "saveStickerEffectList", "stickers", "", "scriptToTrackList", "", "script", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "sourceTrackList", "selectCompositionOutputFpsByTrackList", "", "trackList", "targetFps", "trackToProto", "transitionInfoToProto", "videoTemplateToProto", "Lcom/tencent/mm/protocal/protobuf/VideoTemplateInfoProto;", "videoTemplate", "Lcom/tencent/mm/plugin/vlog/model/local/LocalEffectManager$VideoTemplateInfo;", "fileName", "getTrackByTimeMs", "timeMs", "", "toInputTexture", "Lcom/tencent/mm/xeffect/InputTexture;", "Lcom/tencent/tav/coremedia/TextureInfo;", "plugin-vlog_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class h
-  implements AssetWriterVideoEncoder
 {
-  public static final h.a Nlm;
-  private RenderContext Nld;
-  private volatile boolean Nle;
-  private ImageReader Nlf;
-  private volatile boolean Nlg;
-  private final Semaphore Nlh;
-  private volatile int Nli;
-  private int Nlj;
-  private int Nlk;
-  private ByteBuffer Nll;
-  private final Object aFF;
-  private volatile long bao;
-  private int bufId;
-  private c.b kUA;
-  private int kUB;
-  private int kUC;
-  private volatile boolean kUD;
-  private long kUE;
-  private volatile int kUI;
-  private volatile int kUJ;
-  private ByteBuffer kUv;
-  private ImageReader kUw;
-  private Handler kUx;
-  private HandlerThread kUy;
-  private com.tencent.mm.media.j.b.h kUz;
-  private IMediaMuxer muxer;
-  private int videoBitrate;
-  private MediaFormat videoFormat;
-  private int videoFps;
-  private int videoHeight;
-  private CGSize videoSize;
-  private int videoWidth;
+  private static final String TAG;
+  private static final List<fhx> TYQ;
   
   static
   {
-    AppMethodBeat.i(245045);
-    Nlm = new h.a((byte)0);
-    AppMethodBeat.o(245045);
+    AppMethodBeat.i(283610);
+    TAG = "MicroMsg.Converter";
+    TYQ = (List)new ArrayList();
+    AppMethodBeat.o(283610);
   }
   
-  public h()
+  public static final ad a(ac paramac, long paramLong)
   {
-    AppMethodBeat.i(245044);
-    HandlerThread localHandlerThread = d.ij("finder_soft_encode_rgb2yuv_thread", -4);
-    p.j(localHandlerThread, "SpecialThreadFactory.cre….THREAD_PRIORITY_DISPLAY)");
-    this.kUy = localHandlerThread;
-    this.bufId = -1;
-    this.aFF = new Object();
-    this.Nlh = new Semaphore(1);
-    this.Nll = ByteBuffer.allocate(1);
-    AppMethodBeat.o(245044);
-  }
-  
-  private final boolean a(int paramInt1, int paramInt2, Image.Plane paramPlane)
-  {
-    AppMethodBeat.i(245019);
-    Object localObject2;
-    synchronized (this.aFF)
+    AppMethodBeat.i(283604);
+    s.u(paramac, "<this>");
+    Iterator localIterator = ((Iterable)paramac.TDz).iterator();
+    int i;
+    if (localIterator.hasNext())
     {
-      if ((this.bufId >= 0) || (!(this.muxer instanceof TAVKitMuxer.SightVideoJNIMediaMuxer))) {
-        break label145;
-      }
-      localObject2 = this.muxer;
-      if (localObject2 == null)
+      paramac = localIterator.next();
+      ad localad = (ad)paramac;
+      if ((localad.UaI.startTimeMs <= paramLong) && (localad.UaI.endTimeMs > paramLong))
       {
-        paramPlane = new t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.TAVKitMuxer.SightVideoJNIMediaMuxer");
-        AppMethodBeat.o(245019);
-        throw paramPlane;
-      }
-    }
-    if (((TAVKitMuxer.SightVideoJNIMediaMuxer)localObject2).getBufId() >= 0)
-    {
-      localObject2 = this.muxer;
-      if (localObject2 == null)
-      {
-        paramPlane = new t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.TAVKitMuxer.SightVideoJNIMediaMuxer");
-        AppMethodBeat.o(245019);
-        throw paramPlane;
-      }
-      this.bufId = ((TAVKitMuxer.SightVideoJNIMediaMuxer)localObject2).getBufId();
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "set bufId:" + this.bufId);
-    }
-    label145:
-    if (this.bufId >= 0)
-    {
-      long l = Util.currentTicks();
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "processImageYUVBufferToWriteYUVData, width:" + paramInt1 + ", height:" + paramInt2 + ", videoWidth:" + this.videoWidth + ", videoHeight:" + this.videoHeight);
-      paramInt1 = paramPlane.getRowStride();
-      paramInt2 = paramPlane.getPixelStride();
-      if (this.kUv == null) {
-        this.kUv = ByteBuffer.allocateDirect(this.kUB * this.kUC * paramInt2);
-      }
-      localObject2 = this.kUv;
-      if (localObject2 != null) {
-        ((ByteBuffer)localObject2).position(0);
-      }
-      paramPlane = paramPlane.getBuffer();
-      paramPlane.position(0);
-      SightVideoJNI.nativeBufferCopy(paramPlane, this.kUv, this.kUB * paramInt2, this.kUC, paramInt1 - paramInt2 * this.kUB);
-      SightVideoJNI.writeYuvDataForMMSightEncode(this.bufId, (Buffer)this.kUv, this.videoWidth, this.videoHeight);
-      paramPlane = this.muxer;
-      if (paramPlane != null)
-      {
-        localObject2 = this.muxer;
-        if (localObject2 == null) {
-          break label426;
+        i = 1;
+        label80:
+        if (i == 0) {
+          break label99;
         }
       }
-      label426:
-      for (paramInt1 = ((IMediaMuxer)localObject2).videoTrackIndex();; paramInt1 = -1)
-      {
-        localObject2 = this.Nll;
-        MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-        localBufferInfo.presentationTimeUs = this.bao;
-        paramPlane.writeSampleData(paramInt1, (ByteBuffer)localObject2, localBufferInfo);
-        Log.i("MicroMsg.CompositionSoftwareEncoder", "end processImageYUVBufferToWriteYUVData, cost:" + Util.ticksToNow(l));
-        AppMethodBeat.o(245019);
-        return true;
-      }
-    }
-    paramPlane = x.aazN;
-    AppMethodBeat.o(245019);
-    return false;
-  }
-  
-  private final void aUx()
-  {
-    AppMethodBeat.i(245036);
-    synchronized (this.aFF)
-    {
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "finishEncode, imageReader:" + this.Nlf + ", isInputEndOfStream:" + this.Nle);
-      this.kUD = true;
-      Object localObject2 = this.Nlf;
-      if (localObject2 != null) {
-        ((ImageReader)localObject2).close();
-      }
-      localObject2 = this.kUw;
-      if (localObject2 != null) {
-        ((ImageReader)localObject2).close();
-      }
-      localObject2 = this.kUA;
-      if (localObject2 != null)
-      {
-        Handler localHandler = this.kUx;
-        if (localHandler != null) {
-          localHandler.post((Runnable)new b((c.b)localObject2, this));
-        }
-      }
-      if (this.bufId >= 0) {
-        SightVideoJNI.finishVideoEncode(this.bufId);
-      }
-      this.bufId = -1;
-      this.kUy.quitSafely();
-      this.kUx = null;
-      this.kUw = null;
-      this.kUA = null;
-      this.Nlf = null;
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "finishEncode, encodeYuvCount:" + this.Nli + ", writeYuvCount:" + this.kUJ + ", renderYuvCount:" + this.kUI);
-      localObject2 = x.aazN;
-      AppMethodBeat.o(245036);
-      return;
-    }
-  }
-  
-  private final void gsS()
-  {
-    AppMethodBeat.i(245042);
-    this.Nle = true;
-    this.bao = -1L;
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "onInputEndOfStream, renderYuvCount:" + this.kUI + ", writeYuvCount:" + this.kUJ + ", writeRGBCount:" + this.Nlj + ", rgbAvailableCount:" + this.Nlk);
-    AppMethodBeat.o(245042);
-  }
-  
-  public final Surface createInputSurface()
-  {
-    AppMethodBeat.i(245025);
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "createInputSurface");
-    Object localObject = this.Nlf;
-    if (localObject != null)
-    {
-      localObject = ((ImageReader)localObject).getSurface();
-      AppMethodBeat.o(245025);
-      return localObject;
-    }
-    AppMethodBeat.o(245025);
-    return null;
-  }
-  
-  public final MediaFormat getEncodeFormat()
-  {
-    AppMethodBeat.i(245021);
-    MediaFormat localMediaFormat = this.videoFormat;
-    if (localMediaFormat == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(245021);
-    return localMediaFormat;
-  }
-  
-  public final long getEncodePresentationTimeUs()
-  {
-    return this.bao;
-  }
-  
-  public final CGSize getEncodeSize()
-  {
-    AppMethodBeat.i(245031);
-    CGSize localCGSize2 = this.videoSize;
-    CGSize localCGSize1 = localCGSize2;
-    if (localCGSize2 == null)
-    {
-      localCGSize1 = CGSize.CGSizeZero;
-      p.j(localCGSize1, "CGSize.CGSizeZero");
-    }
-    AppMethodBeat.o(245031);
-    return localCGSize1;
-  }
-  
-  public final boolean isEncodeToEndOfStream()
-  {
-    return this.Nle;
-  }
-  
-  public final boolean isNeedVideoOutputTexture()
-  {
-    return true;
-  }
-  
-  public final boolean prepare(ExportConfig paramExportConfig, MediaFormat paramMediaFormat)
-  {
-    AppMethodBeat.i(245015);
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "prepare, outputConfig:" + paramExportConfig + ", videoFormat:" + paramMediaFormat);
-    if (paramExportConfig != null)
-    {
-      this.videoWidth = paramExportConfig.getOutputWidth();
-      this.videoHeight = paramExportConfig.getOutputHeight();
-      this.videoFps = paramExportConfig.getVideoFrameRate();
-      this.videoBitrate = paramExportConfig.getVideoBitRate();
-      this.videoSize = new CGSize(this.videoWidth, this.videoHeight);
-      this.videoFormat = paramMediaFormat;
-      this.Nlf = ImageReader.newInstance(this.videoWidth, this.videoHeight, 1, 1);
-      AppMethodBeat.o(245015);
-      return true;
-    }
-    AppMethodBeat.o(245015);
-    return false;
-  }
-  
-  public final void processVideoTexture(TextureInfo paramTextureInfo, CMTime paramCMTime)
-  {
-    AppMethodBeat.i(245039);
-    p.k(paramCMTime, "sampleTime");
-    if (!this.Nlg)
-    {
-      Log.e("MicroMsg.CompositionSoftwareEncoder", "processVideoTexture imageReader not init now");
-      paramTextureInfo = (Throwable)new Exception("ImageReader not init");
-      AppMethodBeat.o(245039);
-      throw paramTextureInfo;
-    }
-    Object localObject = this.muxer;
-    if ((localObject != null) && (((IMediaMuxer)localObject).isMuxerStarted() == true) && (paramTextureInfo != null))
-    {
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "input sample buffer render texture:" + paramTextureInfo + ", sampleTime:" + paramCMTime.getTimeUs());
-      localObject = this.kUz;
-      if (localObject != null) {
-        ((com.tencent.mm.media.j.b.h)localObject).kZT = paramTextureInfo.textureID;
-      }
-      localObject = this.kUz;
-      if (localObject != null) {
-        ((com.tencent.mm.media.j.b.h)localObject).dv(paramTextureInfo.width, paramTextureInfo.height);
-      }
-    }
-    this.bao = paramCMTime.getTimeUs();
-    if (this.kUA != null)
-    {
-      final long l = this.bao;
-      paramTextureInfo = this.kUx;
-      if (paramTextureInfo != null) {
-        paramTextureInfo.post((Runnable)new e(this, l));
-      }
-      if (!this.kUD)
-      {
-        l = Util.currentTicks();
-        this.Nlh.acquire();
-        Log.i("MicroMsg.CompositionSoftwareEncoder", "wait output yuv data cost:" + Util.ticksToNow(l));
-      }
-    }
-    AppMethodBeat.o(245039);
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(245035);
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "release");
-    aUx();
-    AppMethodBeat.o(245035);
-  }
-  
-  public final void setMediaMuxer(IMediaMuxer paramIMediaMuxer)
-  {
-    AppMethodBeat.i(245028);
-    this.muxer = paramIMediaMuxer;
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "setMediaMuxer: ".concat(String.valueOf(paramIMediaMuxer)));
-    if ((paramIMediaMuxer instanceof TAVKitMuxer.SightVideoJNIMediaMuxer)) {
-      ((TAVKitMuxer.SightVideoJNIMediaMuxer)paramIMediaMuxer).configMuxerToSoftEncode(true);
-    }
-    AppMethodBeat.o(245028);
-  }
-  
-  public final void setVideoSampleRenderContext(RenderContext paramRenderContext)
-  {
-    AppMethodBeat.i(245022);
-    this.Nld = paramRenderContext;
-    if ((this.Nld != null) && (this.kUA == null))
-    {
-      int i = this.videoWidth;
-      int j = this.videoHeight;
-      this.kUB = (i / 4);
-      this.kUC = (j * 3 / 2);
-      this.kUw = ImageReader.newInstance(this.kUB, this.kUC, 1, 1);
-      paramRenderContext = this.kUw;
-      if (paramRenderContext != null)
-      {
-        this.kUy.start();
-        this.kUx = new Handler(this.kUy.getLooper());
-        paramRenderContext.setOnImageAvailableListener((ImageReader.OnImageAvailableListener)new c(this), this.kUx);
-        Handler localHandler = this.kUx;
-        if (localHandler != null) {
-          localHandler.post((Runnable)new d(paramRenderContext, this));
-        }
-      }
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "initRgb2YuvImageReader, yuv size:[" + this.kUB + 'x' + this.kUC + ']');
-    }
-    AppMethodBeat.o(245022);
-  }
-  
-  public final void signalEndOfInputStream()
-  {
-    AppMethodBeat.i(245024);
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "signalEndOfInputStream");
-    gsS();
-    AppMethodBeat.o(245024);
-  }
-  
-  public final boolean start()
-  {
-    AppMethodBeat.i(245026);
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "start");
-    this.kUE = Util.currentTicks();
-    AppMethodBeat.o(245026);
-    return true;
-  }
-  
-  public final void stop()
-  {
-    AppMethodBeat.i(245029);
-    Log.i("MicroMsg.CompositionSoftwareEncoder", "stop");
-    aUx();
-    AppMethodBeat.o(245029);
-  }
-  
-  public final boolean writeVideoSample(CMSampleBuffer paramCMSampleBuffer, boolean paramBoolean)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(245040);
-    Object localObject;
-    if (paramCMSampleBuffer != null)
-    {
-      localObject = this.muxer;
-      if ((localObject == null) || (((IMediaMuxer)localObject).isMuxerStarted() != true)) {}
     }
     for (;;)
     {
-      if (paramCMSampleBuffer != null)
-      {
-        localObject = new StringBuilder("writeVideoSample sampleTimeUs:");
-        CMTime localCMTime = paramCMSampleBuffer.getTime();
-        p.j(localCMTime, "sampleBuffer.time");
-        Log.i("MicroMsg.CompositionSoftwareEncoder", localCMTime.getTimeUs());
-        if ((this.kUA != null) && (this.Nle)) {
-          this.bao = -1L;
-        }
-      }
-      if (paramBoolean)
-      {
-        Log.i("MicroMsg.CompositionSoftwareEncoder", "writeVideoSample endOfStream, sampleBuffer:".concat(String.valueOf(paramCMSampleBuffer)));
-        gsS();
-      }
-      AppMethodBeat.o(245040);
-      return bool;
-      bool = false;
+      paramac = (ad)paramac;
+      AppMethodBeat.o(283604);
+      return paramac;
+      i = 0;
+      break label80;
+      label99:
+      break;
+      paramac = null;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/vlog/model/CompositionSoftwareEncoder$finishEncode$1$1$1", "com/tencent/mm/plugin/vlog/model/CompositionSoftwareEncoder$$special$$inlined$let$lambda$1"})
-  static final class b
-    implements Runnable
+  public static final afb a(ac paramac, afc paramafc)
   {
-    b(c.b paramb, h paramh) {}
-    
-    public final void run()
+    AppMethodBeat.i(283531);
+    s.u(paramac, "composition");
+    s.u(paramafc, "outputConfig");
+    afb localafb = new afb();
+    localafb.Znh = (paramac.Uaw.jLV().getStartUs() / 1000L);
+    localafb.Zni = (paramac.Uaw.jLV().getEndUs() / 1000L);
+    Object localObject1 = localafb.Zng;
+    Object localObject3 = (Iterable)paramac.TDz;
+    Object localObject2 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      AppMethodBeat.i(247725);
-      Object localObject = h.h(jdField_this);
-      if (localObject != null) {
-        ((com.tencent.mm.media.j.b.h)localObject).release();
+      ad localad = (ad)((Iterator)localObject3).next();
+      fos localfos = new fos();
+      a(localad, localfos);
+      localfos.Uaj = localad.Uaj;
+      ((Collection)localObject2).add(localfos);
+    }
+    ((LinkedList)localObject1).addAll((Collection)localObject2);
+    localafb.Uax = paramac.Uax;
+    localafb.Znj = true;
+    localafb.TYB = paramafc;
+    localafb.nBT = paramac.nBT;
+    localafb.Uay = paramac.Uay;
+    localafb.Znm = new LinkedList();
+    paramac = com.tencent.mm.plugin.vlog.model.local.a.UbD;
+    paramac = ((Map)com.tencent.mm.plugin.vlog.model.local.a.hRx()).entrySet().iterator();
+    while (paramac.hasNext())
+    {
+      localObject1 = (Map.Entry)paramac.next();
+      paramafc = new afd();
+      paramafc.path = ((String)((Map.Entry)localObject1).getKey());
+      localObject2 = ((Pair)((Map.Entry)localObject1).getValue()).first;
+      s.s(localObject2, "it.value.first");
+      paramafc.label = ((Number)localObject2).intValue();
+      localObject1 = ((Pair)((Map.Entry)localObject1).getValue()).second;
+      s.s(localObject1, "it.value.second");
+      paramafc.Znx = ((Number)localObject1).longValue();
+      localafb.Znm.add(paramafc);
+    }
+    AppMethodBeat.o(283531);
+    return localafb;
+  }
+  
+  public static final void a(Rect paramRect, enx paramenx)
+  {
+    AppMethodBeat.i(283400);
+    s.u(paramRect, "rect");
+    s.u(paramenx, "proto");
+    paramenx.aaTg.clear();
+    paramenx.aaTg.add(Integer.valueOf(paramRect.left));
+    paramenx.aaTg.add(Integer.valueOf(paramRect.top));
+    paramenx.aaTg.add(Integer.valueOf(paramRect.right));
+    paramenx.aaTg.add(Integer.valueOf(paramRect.bottom));
+    AppMethodBeat.o(283400);
+  }
+  
+  private static final void a(ac paramac, afb paramafb, EffectManager paramEffectManager)
+  {
+    AppMethodBeat.i(283565);
+    HashMap localHashMap = new HashMap();
+    paramafb = paramafb.Znm;
+    s.s(paramafb, "proto.trackLabelInfoList");
+    paramafb = ((Iterable)paramafb).iterator();
+    while (paramafb.hasNext())
+    {
+      afd localafd = (afd)paramafb.next();
+      Map localMap = (Map)localHashMap;
+      String str = localafd.path;
+      s.s(str, "it.path");
+      localMap.put(str, Integer.valueOf(localafd.label));
+    }
+    paramafb = paramEffectManager.a(com.tencent.mm.xeffect.effect.j.agXY);
+    if ((paramafb instanceof com.tencent.mm.xeffect.effect.n))
+    {
+      paramafb = (com.tencent.mm.xeffect.effect.n)paramafb;
+      if (paramafb != null) {
+        paramafb.bL(paramac.Uaw.getPlayStart(), paramac.Uaw.hQW());
       }
-      localObject = c.lar;
-      c.a.a(this.kUN);
-      AppMethodBeat.o(247725);
+      paramEffectManager.b((af)paramafb);
+      if (MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_SHOW_IMAGE_ENHANCEMENT_FACE_LANDMARKS_INT_SYNC", 0) != 1) {
+        break label221;
+      }
+    }
+    label221:
+    for (boolean bool = true;; bool = false)
+    {
+      if ((bool) && (paramafb != null)) {
+        paramafb.Oo(bool);
+      }
+      paramEffectManager = com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.UlR;
+      com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.a(paramafb);
+      paramac.a((com.tencent.mm.videocomposition.c.e)new ai(paramac, localHashMap, paramafb));
+      AppMethodBeat.o(283565);
+      return;
+      paramafb = null;
+      break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "reader", "Landroid/media/ImageReader;", "kotlin.jvm.PlatformType", "onImageAvailable", "com/tencent/mm/plugin/vlog/model/CompositionSoftwareEncoder$initRgb2YuvImageReader$1$1"})
-  static final class c
-    implements ImageReader.OnImageAvailableListener
+  private static void a(ac paramac, EffectManager paramEffectManager)
   {
-    c(h paramh) {}
-    
-    public final void onImageAvailable(ImageReader paramImageReader)
+    AppMethodBeat.i(283439);
+    s.u(paramac, "composition");
+    s.u(paramEffectManager, "effectMgr");
+    Iterator localIterator = ((Iterable)paramac.TDz).iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.i(241001);
-      paramImageReader = paramImageReader.acquireNextImage();
-      if (paramImageReader != null) {
-        try
-        {
-          Object localObject1 = new StringBuilder("nextYUVImage, size:[").append(paramImageReader.getWidth()).append('x').append(paramImageReader.getHeight()).append("], format:").append(paramImageReader.getFormat()).append(", planes.size:").append(paramImageReader.getPlanes().length).append(", timestamp:").append(paramImageReader.getTimestamp()).append(", rowStride:");
-          Object localObject3 = paramImageReader.getPlanes()[0];
-          p.j(localObject3, "image.planes[0]");
-          localObject1 = ((StringBuilder)localObject1).append(((Image.Plane)localObject3).getRowStride()).append(", pixelStride:");
-          localObject3 = paramImageReader.getPlanes()[0];
-          p.j(localObject3, "image.planes[0]");
-          localObject1 = ((StringBuilder)localObject1).append(((Image.Plane)localObject3).getPixelStride()).append(',').append("buffer.capacity:");
-          localObject3 = paramImageReader.getPlanes()[0];
-          p.j(localObject3, "image.planes[0]");
-          Log.i("MicroMsg.CompositionSoftwareEncoder", ((Image.Plane)localObject3).getBuffer().capacity());
-          localObject1 = this.Nln;
-          int i = paramImageReader.getWidth();
-          int j = paramImageReader.getHeight();
-          localObject3 = paramImageReader.getPlanes()[0];
-          p.j(localObject3, "image.planes[0]");
-          h.a((h)localObject1, i, j, (Image.Plane)localObject3);
-          localObject1 = this.Nln;
-          h.a((h)localObject1, h.a((h)localObject1) + 1);
-          localObject1 = h.b(this.Nln);
-          if (localObject1 != null)
-          {
-            localObject3 = h.b(this.Nln);
-            if (localObject3 == null) {
-              break label348;
-            }
-          }
-          label348:
-          for (i = ((IMediaMuxer)localObject3).videoTrackIndex();; i = -1)
-          {
-            localObject3 = h.c(this.Nln);
-            MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
-            localBufferInfo.presentationTimeUs = h.d(this.Nln);
-            ((IMediaMuxer)localObject1).writeSampleData(i, (ByteBuffer)localObject3, localBufferInfo);
-            h.e(this.Nln).release();
-            return;
-          }
-          AppMethodBeat.o(241001);
-        }
-        catch (Exception localException)
-        {
-          Log.printErrStackTrace("MicroMsg.CompositionSoftwareEncoder", (Throwable)localException, "acquireNextImage error", new Object[0]);
-          return;
-        }
-        finally
-        {
-          paramImageReader.close();
-          AppMethodBeat.o(241001);
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/vlog/model/CompositionSoftwareEncoder$initRgb2YuvImageReader$1$2"})
-  static final class d
-    implements Runnable
-  {
-    d(ImageReader paramImageReader, h paramh) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(227258);
-      try
+      ad localad = (ad)localIterator.next();
+      if (localad.hRe())
       {
-        Object localObject1 = this.kUT.getSurface();
-        p.j(localObject1, "it.surface");
-        if (((Surface)localObject1).isValid())
+        AssetManager localAssetManager;
+        if (kotlin.n.n.U(localad.hRf(), "assets://", false))
         {
-          Object localObject2 = jdField_this;
-          c.a locala = c.lar;
-          Surface localSurface = this.kUT.getSurface();
-          localObject1 = h.g(jdField_this);
-          if (localObject1 != null)
-          {
-            localObject1 = ((RenderContext)localObject1).eglContext();
-            h.a((h)localObject2, c.a.a(locala, localSurface, 0, 0, (EGLContext)localObject1, 14));
-            h.a(jdField_this, new com.tencent.mm.media.j.b.h(1, 15));
-            localObject1 = h.h(jdField_this);
-            if (localObject1 != null) {
-              ((com.tencent.mm.media.j.b.h)localObject1).du(h.i(jdField_this), h.j(jdField_this));
-            }
-            localObject2 = new StringBuilder("create rgb2yuvEGLEnvironment:").append(h.f(jdField_this)).append(", shareEGLContext:");
-            localObject1 = h.g(jdField_this);
-            if (localObject1 == null) {
-              break label197;
-            }
-            localObject1 = ((RenderContext)localObject1).eglContext();
-            label165:
-            Log.i("MicroMsg.CompositionSoftwareEncoder", localObject1);
-          }
+          localObject = com.tencent.mm.xeffect.effect.j.agXN;
+          localAssetManager = MMApplicationContext.getContext().getAssets();
+          s.s(localAssetManager, "getContext().assets");
         }
-        for (;;)
+        for (Object localObject = paramEffectManager.a((com.tencent.mm.xeffect.effect.j)localObject, localAssetManager, localad.hRf());; localObject = paramEffectManager.a(com.tencent.mm.xeffect.effect.j.agXN, localad.hRf()))
         {
-          h.a(jdField_this, true);
-          AppMethodBeat.o(227258);
-          return;
-          localObject1 = null;
+          localad.UaI.TDy.Uby = ((af)localObject);
+          paramEffectManager.b((af)localObject);
           break;
-          label197:
-          localObject1 = null;
-          break label165;
-          Log.e("MicroMsg.CompositionSoftwareEncoder", "create rgb2yuvEGLEnvironment error surface invalid");
         }
-        return;
       }
-      catch (Exception localException)
+    }
+    paramac.a(paramEffectManager);
+    AppMethodBeat.o(283439);
+  }
+  
+  private static void a(ad paramad, fos paramfos)
+  {
+    AppMethodBeat.i(283429);
+    s.u(paramad, "track");
+    s.u(paramfos, "proto");
+    paramfos.path = paramad.path;
+    paramfos.type = paramad.type;
+    paramfos.startTimeMs = paramad.UaI.startTimeMs;
+    paramfos.endTimeMs = paramad.UaI.endTimeMs;
+    paramfos.TDw = paramad.UaI.TDw;
+    paramfos.TDx = paramad.UaI.TDx;
+    paramfos.UjZ = paramad.UaI.UjZ;
+    paramfos.UaC = paramad.UaC;
+    paramfos.UaD = paramad.UaD;
+    paramfos.UaE = paramad.UaE;
+    paramfos.volume = paramad.UaI.volume;
+    paramfos.abOZ = new ahj();
+    Object localObject1 = paramfos.abOZ;
+    s.s(localObject1, "proto.cropInfo");
+    s.u(paramad, "track");
+    s.u(localObject1, "proto");
+    ((ahj)localObject1).Zqp = new dmt();
+    ((ahj)localObject1).Zqs = new enx();
+    ((ahj)localObject1).Zqq = new enx();
+    ((ahj)localObject1).Zqr = new enx();
+    ((ahj)localObject1).Zqt = new enx();
+    Object localObject2 = paramad.UaF.matrix;
+    Object localObject3 = ((ahj)localObject1).Zqp;
+    s.s(localObject3, "proto.matrix");
+    s.u(localObject2, "matrix");
+    s.u(localObject3, "proto");
+    float[] arrayOfFloat = new float[9];
+    ((Matrix)localObject2).getValues(arrayOfFloat);
+    ((dmt)localObject3).aaTg.clear();
+    int i = 0;
+    while (i < 9)
+    {
+      float f = arrayOfFloat[i];
+      ((dmt)localObject3).aaTg.add(Float.valueOf(f));
+      i += 1;
+    }
+    localObject2 = paramad.UaF.yok;
+    localObject3 = ((ahj)localObject1).Zqs;
+    s.s(localObject3, "proto.contentRect");
+    a((Rect)localObject2, (enx)localObject3);
+    localObject2 = paramad.UaF.Gl;
+    localObject3 = ((ahj)localObject1).Zqq;
+    s.s(localObject3, "proto.cropRect");
+    a((Rect)localObject2, (enx)localObject3);
+    localObject2 = paramad.UaF.viewRect;
+    localObject3 = ((ahj)localObject1).Zqr;
+    s.s(localObject3, "proto.viewRect");
+    a((Rect)localObject2, (enx)localObject3);
+    localObject2 = paramad.UaI.agDz;
+    localObject1 = ((ahj)localObject1).Zqt;
+    s.s(localObject1, "proto.trackCropRect");
+    a((Rect)localObject2, (enx)localObject1);
+    paramfos.abPa = new fqf();
+    paramad = paramad.UaI.TDy;
+    paramfos = paramfos.abPa;
+    s.s(paramfos, "proto.transitionInfo");
+    a(paramad, paramfos);
+    AppMethodBeat.o(283429);
+  }
+  
+  private static void a(afb paramafb, EffectManager paramEffectManager)
+  {
+    AppMethodBeat.i(283481);
+    s.u(paramafb, "proto");
+    s.u(paramEffectManager, "effectMgr");
+    paramafb = paramafb.Zno;
+    s.s(paramafb, "proto.stickerEffectList");
+    Iterator localIterator = ((Iterable)kotlin.a.p.b((Collection)paramafb, (Iterable)TYQ)).iterator();
+    label132:
+    label279:
+    label418:
+    label421:
+    while (localIterator.hasNext())
+    {
+      fhx localfhx = (fhx)localIterator.next();
+      paramafb = (CharSequence)localfhx.path;
+      int i;
+      label101:
+      Object localObject1;
+      if ((paramafb == null) || (paramafb.length() == 0))
       {
-        Log.printErrStackTrace("MicroMsg.CompositionSoftwareEncoder", (Throwable)localException, "configure imageReader render error", new Object[0]);
-        h.a(jdField_this, false);
-        AppMethodBeat.o(227258);
+        i = 1;
+        if (i != 0) {
+          break label279;
+        }
+        paramafb = com.tencent.mm.xeffect.effect.j.agYc;
+        localObject1 = localfhx.path;
+        s.s(localObject1, "effectProto.path");
+        paramafb = paramEffectManager.a(paramafb, (String)localObject1);
+        if (!(paramafb instanceof com.tencent.mm.xeffect.effect.ac)) {
+          break label418;
+        }
       }
+      for (paramafb = (com.tencent.mm.xeffect.effect.ac)paramafb;; paramafb = null)
+      {
+        if (paramafb == null) {
+          break label421;
+        }
+        localObject1 = localfhx.abIK;
+        Object localObject2 = localfhx.abIL;
+        paramafb.bL(((amk)localObject1).startTimeMs, ((amk)localObject1).endTimeMs);
+        localObject1 = new com.tencent.mm.xeffect.effect.f(((amj)localObject2).centerX, ((amj)localObject2).centerY, ((amj)localObject2).scale, ((amj)localObject2).aBi);
+        s.t(localObject1, "layoutInfo");
+        paramafb.agXI.a((com.tencent.mm.xeffect.effect.f)localObject1);
+        if ((localfhx.width != 0) && (localfhx.height != 0))
+        {
+          i = localfhx.width;
+          int j = localfhx.height;
+          VLogEffectJNI.INSTANCE.setStickerSize$renderlib_release(paramafb.ptr, i, j);
+        }
+        paramEffectManager.b((af)paramafb);
+        break;
+        i = 0;
+        break label101;
+        if (localfhx.abIJ != null)
+        {
+          localObject1 = com.tencent.mm.xeffect.effect.j.agYc;
+          localObject2 = localfhx.abIJ.Op;
+          s.s(localObject2, "effectProto.bytes.bytes");
+          s.t(localObject1, "type");
+          s.t(localObject2, "bytes");
+          long l = paramEffectManager.nCreateEffectBinary(paramEffectManager.nNg, ((com.tencent.mm.xeffect.effect.j)localObject1).ordinal(), (byte[])localObject2, localObject2.length);
+          paramafb = EffectManager.agXK;
+          paramafb = EffectManager.a.a(l, (com.tencent.mm.xeffect.effect.j)localObject1);
+          XEffectLog.i(EffectManager.TAG, "create effect binary ptr:" + l + ", type:" + localObject1 + ", " + localObject2.length, new Object[0]);
+          break label132;
+        }
+        paramafb = null;
+        break label132;
+      }
+    }
+    AppMethodBeat.o(283481);
+  }
+  
+  private static void a(afb paramafb, EffectManager paramEffectManager, ac paramac)
+  {
+    AppMethodBeat.i(283599);
+    s.u(paramafb, "proto");
+    s.u(paramEffectManager, "effectMgr");
+    s.u(paramac, "composition");
+    if (paramafb.Znl != null)
+    {
+      Object localObject1 = paramafb.Znl.Wqc;
+      s.s(localObject1, "proto.videoTemplate.templatePath");
+      Object localObject2;
+      label134:
+      label142:
+      label177:
+      int i;
+      if (kotlin.n.n.U((String)localObject1, "assets://", false))
+      {
+        localObject1 = com.tencent.mm.xeffect.effect.j.agXQ;
+        localObject2 = MMApplicationContext.getContext().getAssets();
+        s.s(localObject2, "getContext().assets");
+        Object localObject3 = paramafb.Znl.Wqc;
+        s.s(localObject3, "proto.videoTemplate.templatePath");
+        localObject2 = paramEffectManager.a((com.tencent.mm.xeffect.effect.j)localObject1, (AssetManager)localObject2, (String)localObject3);
+        paramEffectManager.b((af)localObject2);
+        if (!(localObject2 instanceof w)) {
+          break label389;
+        }
+        localObject1 = (w)localObject2;
+        if (localObject1 != null) {
+          break label395;
+        }
+        localObject1 = null;
+        localObject3 = localObject1;
+        if (localObject1 == null) {
+          localObject3 = new Size(0, 0);
+        }
+        if (!(localObject2 instanceof w)) {
+          break label405;
+        }
+        localObject1 = (w)localObject2;
+        if (localObject1 != null) {
+          break label411;
+        }
+        i = 0;
+        label184:
+        localObject1 = paramafb.Znl.Wqc;
+        s.s(localObject1, "proto.videoTemplate.templatePath");
+        String str = paramafb.Znl.nBT;
+        s.s(str, "proto.videoTemplate.musicPath");
+        localObject1 = new a.c((String)localObject1, str, (Size)localObject3, paramafb.Znl.duration, i, paramafb.Znl.UbT, null, null, 0L, null, 1920);
+        paramEffectManager.jQl();
+        if (localObject2 != null) {
+          ((af)localObject2).bL(0L, ((a.c)localObject1).duration);
+        }
+        if (localObject2 != null) {
+          break label420;
+        }
+      }
+      label389:
+      label395:
+      label405:
+      label411:
+      label420:
+      for (long l = 0L;; l = ((af)localObject2).id)
+      {
+        ((a.c)localObject1).UbU = l;
+        paramafb = paramafb.Znl.nBT;
+        s.s(paramafb, "proto.videoTemplate.musicPath");
+        ac.a(paramac, paramafb);
+        paramafb = ((Iterable)paramac.TDz).iterator();
+        while (paramafb.hasNext()) {
+          ((ad)paramafb.next()).UaI.agDA = false;
+        }
+        localObject1 = com.tencent.mm.xeffect.effect.j.agXQ;
+        localObject2 = paramafb.Znl.Wqc;
+        s.s(localObject2, "proto.videoTemplate.templatePath");
+        localObject2 = paramEffectManager.a((com.tencent.mm.xeffect.effect.j)localObject1, (String)localObject2);
+        break;
+        localObject1 = null;
+        break label134;
+        localObject1 = ((t)localObject1).Kz;
+        break label142;
+        localObject1 = null;
+        break label177;
+        i = ((t)localObject1).agYP;
+        break label184;
+      }
+    }
+    AppMethodBeat.o(283599);
+  }
+  
+  public static final void a(enx paramenx, Rect paramRect)
+  {
+    AppMethodBeat.i(283411);
+    s.u(paramRect, "rect");
+    if (paramenx == null)
+    {
+      AppMethodBeat.o(283411);
+      return;
+    }
+    if (paramenx.aaTg.size() == 4)
+    {
+      Object localObject = paramenx.aaTg.get(0);
+      s.s(localObject, "proto.values[0]");
+      int i = ((Number)localObject).intValue();
+      localObject = paramenx.aaTg.get(1);
+      s.s(localObject, "proto.values[1]");
+      int j = ((Number)localObject).intValue();
+      localObject = paramenx.aaTg.get(2);
+      s.s(localObject, "proto.values[2]");
+      int k = ((Number)localObject).intValue();
+      paramenx = paramenx.aaTg.get(3);
+      s.s(paramenx, "proto.values[3]");
+      paramRect.set(i, j, k, ((Number)paramenx).intValue());
+    }
+    AppMethodBeat.o(283411);
+  }
+  
+  public static final void a(g paramg, fqf paramfqf)
+  {
+    AppMethodBeat.i(283420);
+    s.u(paramg, "transition");
+    s.u(paramfqf, "proto");
+    paramfqf.path = paramg.path;
+    paramfqf.duration = paramg.duration;
+    AppMethodBeat.o(283420);
+  }
+  
+  public static final fxt b(a.c paramc)
+  {
+    AppMethodBeat.i(283588);
+    s.u(paramc, "videoTemplate");
+    fxt localfxt = new fxt();
+    localfxt.Wqc = paramc.path;
+    String str = com.tencent.mm.loader.i.b.bmr() + System.currentTimeMillis() + ".mp3";
+    y.O(paramc.nBT, str, false);
+    localfxt.nBT = str;
+    localfxt.duration = paramc.duration;
+    localfxt.UbT = paramc.UbT;
+    AppMethodBeat.o(283588);
+    return localfxt;
+  }
+  
+  private static void b(afb paramafb, EffectManager paramEffectManager)
+  {
+    AppMethodBeat.i(283505);
+    s.u(paramafb, "proto");
+    s.u(paramEffectManager, "effectMgr");
+    Object localObject1 = paramafb.TYC.Znd;
+    s.s(localObject1, "proto.editData.baseItemData");
+    Object localObject2 = (Iterable)localObject1;
+    localObject1 = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    Object localObject3;
+    label123:
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = ((Iterator)localObject2).next();
+      if (((jy)localObject3).dataType == com.tencent.mm.plugin.recordvideo.ui.editor.item.d.NYk.value) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label123;
+        }
+        ((Collection)localObject1).add(localObject3);
+        break;
+      }
+    }
+    Iterator localIterator = ((Iterable)localObject1).iterator();
+    if (localIterator.hasNext())
+    {
+      localObject1 = (jy)localIterator.next();
+      s.s(localObject1, "it");
+      com.tencent.mm.plugin.recordvideo.ui.editor.item.p localp = new com.tencent.mm.plugin.recordvideo.ui.editor.item.p((jy)localObject1);
+      if (kotlin.n.n.U(localp.LWN, "assets://", false))
+      {
+        localObject1 = com.tencent.mm.xeffect.effect.j.agXP;
+        localObject2 = MMApplicationContext.getContext().getAssets();
+        s.s(localObject2, "getContext().assets");
+        localObject2 = paramEffectManager.a((com.tencent.mm.xeffect.effect.j)localObject1, (AssetManager)localObject2, localp.LWN);
+        label232:
+        paramEffectManager.b((af)localObject2);
+        if (!(localObject2 instanceof x)) {
+          break label471;
+        }
+        localObject1 = (x)localObject2;
+        label254:
+        if (localObject1 != null)
+        {
+          ((x)localObject1).bL(localp.NXR.getStart(), localp.NXR.getEnd());
+          ((x)localObject1).a(new com.tencent.mm.xeffect.effect.f((int)localp.centerX, (int)localp.centerY, localp.scale, localp.aBi));
+          ((x)localObject1).a(new com.tencent.mm.xeffect.effect.h(localp.text, null, 30));
+        }
+        if (!(localObject2 instanceof t)) {
+          break label477;
+        }
+        localObject1 = (t)localObject2;
+        label349:
+        if (localObject1 != null) {
+          break label483;
+        }
+        localObject1 = null;
+        label357:
+        localObject3 = localObject1;
+        if (localObject1 == null) {
+          localObject3 = new Size(0, 0);
+        }
+        localp.width = ((Size)localObject3).getWidth();
+        localp.height = ((Size)localObject3).getHeight();
+        localObject1 = new Rect();
+        a(paramafb.TYC.Znc, (Rect)localObject1);
+        localp.NZn.set((Rect)localObject1);
+        localp.i(localp.matrix);
+        if (localObject2 != null) {
+          break label493;
+        }
+      }
+      label471:
+      label477:
+      label483:
+      label493:
+      for (long l = 0L;; l = ((af)localObject2).id)
+      {
+        localp.NZm = l;
+        break;
+        localObject2 = paramEffectManager.a(com.tencent.mm.xeffect.effect.j.agXP, localp.LWN);
+        break label232;
+        localObject1 = null;
+        break label254;
+        localObject1 = null;
+        break label349;
+        localObject1 = ((t)localObject1).Kz;
+        break label357;
+      }
+    }
+    AppMethodBeat.o(283505);
+  }
+  
+  public static final String beZ(String paramString)
+  {
+    AppMethodBeat.i(283392);
+    s.u(paramString, "<this>");
+    CharSequence localCharSequence = (CharSequence)paramString;
+    int i = localCharSequence.length() - 1;
+    int j;
+    if (i >= 0) {
+      if (localCharSequence.charAt(i) == '/')
+      {
+        j = 1;
+        label44:
+        if (j == 0) {
+          break label76;
+        }
+      }
+    }
+    for (;;)
+    {
+      paramString = paramString.substring(i + 1);
+      s.s(paramString, "(this as java.lang.String).substring(startIndex)");
+      AppMethodBeat.o(283392);
+      return paramString;
+      j = 0;
+      break label44;
+      label76:
+      i -= 1;
+      break;
+      i = -1;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
+  private static void c(afb paramafb, EffectManager paramEffectManager)
   {
-    e(h paramh, long paramLong) {}
-    
-    public final void run()
+    AppMethodBeat.i(283517);
+    s.u(paramafb, "proto");
+    s.u(paramEffectManager, "effectMgr");
+    paramafb = paramafb.Znk;
+    s.s(paramafb, "proto.magicInfoList");
+    Iterator localIterator = ((Iterable)paramafb).iterator();
+    if (localIterator.hasNext())
     {
-      Object localObject3 = null;
-      AppMethodBeat.i(250181);
-      Log.i("MicroMsg.CompositionSoftwareEncoder", "render gpu rgb2yuv, timestamp:" + l);
-      Object localObject1 = h.h(this.Nln);
-      if (localObject1 != null) {
-        ((com.tencent.mm.media.j.b.h)localObject1).aMU();
-      }
-      localObject1 = h.f(this.Nln);
-      Object localObject2;
-      if (localObject1 != null)
+      dmc localdmc = (dmc)localIterator.next();
+      paramafb = localdmc.path;
+      s.s(paramafb, "it.path");
+      Object localObject;
+      String str;
+      if (kotlin.n.n.U(paramafb, "assets://", false))
       {
-        localObject1 = ((c.b)localObject1).las;
-        localObject2 = h.f(this.Nln);
-        if (localObject2 == null) {
-          break label170;
-        }
-        localObject2 = ((c.b)localObject2).eglSurface;
-        label81:
-        EGLExt.eglPresentationTimeANDROID((EGLDisplay)localObject1, (EGLSurface)localObject2, l * 1000L);
-        localObject1 = c.lar;
-        localObject1 = h.f(this.Nln);
-        if (localObject1 == null) {
-          break label175;
-        }
+        paramafb = com.tencent.mm.xeffect.effect.j.agXR;
+        localObject = MMApplicationContext.getContext().getAssets();
+        s.s(localObject, "getContext().assets");
+        str = localdmc.path;
+        s.s(str, "it.path");
       }
-      label170:
-      label175:
-      for (localObject1 = ((c.b)localObject1).las;; localObject1 = null)
+      for (paramafb = paramEffectManager.a(paramafb, (AssetManager)localObject, str);; paramafb = paramEffectManager.a(paramafb, (String)localObject))
       {
-        c.b localb = h.f(this.Nln);
-        localObject2 = localObject3;
-        if (localb != null) {
-          localObject2 = localb.eglSurface;
+        if (paramafb != null) {
+          paramafb.bL(localdmc.start, localdmc.axI);
         }
-        c.a.a((EGLDisplay)localObject1, (EGLSurface)localObject2);
-        localObject1 = this.Nln;
-        h.b((h)localObject1, h.k((h)localObject1) + 1);
-        AppMethodBeat.o(250181);
-        return;
-        localObject1 = null;
+        paramEffectManager.b(paramafb);
         break;
-        localObject2 = null;
-        break label81;
+        paramafb = com.tencent.mm.xeffect.effect.j.agXR;
+        localObject = localdmc.path;
+        s.s(localObject, "it.path");
       }
+    }
+    AppMethodBeat.o(283517);
+  }
+  
+  public static final ac d(afb paramafb, EffectManager paramEffectManager)
+  {
+    AppMethodBeat.i(283553);
+    s.u(paramafb, "proto");
+    s.u(paramEffectManager, "effectMgr");
+    Object localObject1 = new LinkedList();
+    Object localObject2 = paramafb.Zng;
+    s.s(localObject2, "proto.tracks");
+    Object localObject3 = (Iterable)localObject2;
+    localObject2 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      Object localObject5 = (fos)((Iterator)localObject3).next();
+      Object localObject4 = ((fos)localObject5).path;
+      s.s(localObject4, "it.path");
+      localObject4 = new ad((String)localObject4, ((fos)localObject5).type);
+      s.s(localObject5, "it");
+      s.u(localObject5, "proto");
+      s.u(localObject4, "track");
+      ((ad)localObject4).setStartTimeMs(((fos)localObject5).startTimeMs);
+      ((ad)localObject4).wA(((fos)localObject5).endTimeMs);
+      ((ad)localObject4).wB(((fos)localObject5).TDw);
+      ((ad)localObject4).wC(((fos)localObject5).TDx);
+      ((ad)localObject4).UaC = ((fos)localObject5).UaC;
+      ((ad)localObject4).UaD = ((fos)localObject5).UaD;
+      ((ad)localObject4).UaE = ((fos)localObject5).UaE;
+      ((ad)localObject4).setVolume(((fos)localObject5).volume);
+      a(((fos)localObject5).abOZ.Zqq, ((ad)localObject4).UaI.Gl);
+      a(((fos)localObject5).abOZ.Zqt, ((ad)localObject4).UaI.agDz);
+      localObject5 = ((fos)localObject5).abPa;
+      if (localObject5 != null)
+      {
+        g localg = ((ad)localObject4).UaI.TDy;
+        s.u(localObject5, "proto");
+        s.u(localg, "transition");
+        String str = ((fqf)localObject5).path;
+        s.s(str, "proto.path");
+        localg.setPath(str);
+        localg.duration = ((fqf)localObject5).duration;
+      }
+      ((Collection)localObject2).add(localObject4);
+    }
+    ((LinkedList)localObject1).addAll((Collection)localObject2);
+    localObject1 = new ac((List)localObject1);
+    int j;
+    if (paramafb.TYB.Znu != null)
+    {
+      localObject2 = new Rect();
+      a(paramafb.TYB.Znu, (Rect)localObject2);
+      j = ((Rect)localObject2).width();
+    }
+    for (int i = ((Rect)localObject2).height();; i = paramafb.TYB.HJO)
+    {
+      ((ac)localObject1).getComposition().pk(j, i);
+      ((ac)localObject1).bs(paramafb.Znh, paramafb.Zni);
+      if (!Util.isNullOrNil(paramafb.nBT))
+      {
+        localObject2 = paramafb.nBT;
+        s.s(localObject2, "proto.musicPath");
+        ((ac)localObject1).dv((String)localObject2, true);
+      }
+      ((ac)localObject1).FO(paramafb.Uax);
+      if (paramafb.TYB.Znp == null) {
+        break;
+      }
+      localObject2 = new Rect();
+      a(paramafb.TYB.Znp, (Rect)localObject2);
+      ((ac)localObject1).F((Rect)localObject2);
+      a((ac)localObject1, paramEffectManager);
+      a(paramafb, paramEffectManager);
+      b(paramafb, paramEffectManager);
+      c(paramafb, paramEffectManager);
+      a(paramafb, paramEffectManager, (ac)localObject1);
+      ((ac)localObject1).Uay = paramafb.Uay;
+      if (((ac)localObject1).Uay) {
+        a((ac)localObject1, paramafb, paramEffectManager);
+      }
+      AppMethodBeat.o(283553);
+      return localObject1;
+      j = paramafb.TYB.HJN;
+    }
+    localObject2 = new Rect();
+    if (paramafb.TYB.Znv != null) {
+      a(paramafb.TYB.Znv.Zqq, (Rect)localObject2);
+    }
+    for (;;)
+    {
+      ((ac)localObject1).F((Rect)localObject2);
+      break;
+      a(paramafb.TYB.Znw.Zqq, (Rect)localObject2);
+    }
+  }
+  
+  public static final c e(afb paramafb)
+  {
+    AppMethodBeat.i(283577);
+    s.u(paramafb, "proto");
+    Object localObject1 = com.tencent.mm.plugin.recordvideo.background.e.NDU;
+    localObject1 = paramafb.TYC.Znd;
+    s.s(localObject1, "proto.editData.baseItemData");
+    Object localObject2 = MMApplicationContext.getContext();
+    s.s(localObject2, "getContext()");
+    localObject1 = com.tencent.mm.plugin.recordvideo.background.e.b((LinkedList)localObject1, (Context)localObject2);
+    localObject2 = paramafb.TYC.Znc.aaTg;
+    s.s(localObject2, "proto.editData.drawingRect.values");
+    Object localObject3 = (Iterable)localObject2;
+    localObject2 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext()) {
+      ((Collection)localObject2).add(Float.valueOf(((Integer)((Iterator)localObject3).next()).intValue()));
+    }
+    localObject2 = kotlin.a.p.H((Collection)localObject2);
+    localObject3 = paramafb.TYC.Znf;
+    if (localObject3 != null)
+    {
+      localObject3 = ((enx)localObject3).aaTg;
+      s.s(localObject3, "rectProto.values");
+      Object localObject4 = (Iterable)localObject3;
+      localObject3 = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject4, 10));
+      localObject4 = ((Iterable)localObject4).iterator();
+      while (((Iterator)localObject4).hasNext()) {
+        ((Collection)localObject3).add(Float.valueOf(((Integer)((Iterator)localObject4).next()).intValue()));
+      }
+      kotlin.a.p.H((Collection)localObject3);
+    }
+    int i;
+    if (paramafb.TYB.Znu == null) {
+      i = paramafb.TYB.HJN;
+    }
+    for (int j = paramafb.TYB.HJO;; j = ((Rect)localObject3).height())
+    {
+      paramafb = (c)new com.tencent.mm.plugin.recordvideo.ui.editor.b.f((float[])localObject2, (List)localObject1, i, j);
+      AppMethodBeat.o(283577);
+      return paramafb;
+      localObject3 = new Rect();
+      a(paramafb.TYB.Znu, (Rect)localObject3);
+      i = ((Rect)localObject3).width();
     }
   }
 }

@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.accessibility.AccessibilityEvent;
@@ -13,35 +12,34 @@ public class LayoutListenerView
   extends FrameLayout
 {
   private String TAG;
-  private byte[] VYp;
-  private a VYq;
-  private c VYr;
-  private b VYs;
+  private byte[] adCK;
+  private a adCL;
+  private c adCM;
+  private b adCN;
   
   public LayoutListenerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141306);
     this.TAG = "MicroMsg.LayoutListenerView";
-    this.VYp = new byte[0];
+    this.adCK = new byte[0];
     AppMethodBeat.o(141306);
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(141312);
-    synchronized (this.VYp)
+    synchronized (this.adCK)
     {
-      this.VYq = null;
-      this.VYr = null;
-      this.VYs = null;
+      this.adCL = null;
+      this.adCM = null;
+      this.adCN = null;
       super.onDetachedFromWindow();
       AppMethodBeat.o(141312);
       return;
     }
   }
   
-  @TargetApi(14)
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
     AppMethodBeat.i(141311);
@@ -50,7 +48,6 @@ public class LayoutListenerView
     AppMethodBeat.o(141311);
   }
   
-  @TargetApi(14)
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     AppMethodBeat.i(141309);
@@ -62,13 +59,12 @@ public class LayoutListenerView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(141307);
-    byte[] arrayOfByte = this.VYp;
+    byte[] arrayOfByte = this.adCK;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    arrayOfByte = this.VYp;
+    arrayOfByte = this.adCK;
     AppMethodBeat.o(141307);
   }
   
-  @TargetApi(14)
   public void onPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
     AppMethodBeat.i(141310);
@@ -81,10 +77,10 @@ public class LayoutListenerView
   {
     AppMethodBeat.i(141308);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    synchronized (this.VYp)
+    synchronized (this.adCK)
     {
-      if (this.VYr != null) {
-        this.VYr.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (this.adCM != null) {
+        this.adCM.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       }
       AppMethodBeat.o(141308);
       return;
@@ -93,27 +89,27 @@ public class LayoutListenerView
   
   public void setOnLayoutListener(a parama)
   {
-    synchronized (this.VYp)
+    synchronized (this.adCK)
     {
-      this.VYq = parama;
+      this.adCL = parama;
       return;
     }
   }
   
   public void setOnPreLayoutListener(b paramb)
   {
-    synchronized (this.VYp)
+    synchronized (this.adCK)
     {
-      this.VYs = paramb;
+      this.adCN = paramb;
       return;
     }
   }
   
   public void setOnResizedListener(c paramc)
   {
-    synchronized (this.VYp)
+    synchronized (this.adCK)
     {
-      this.VYr = paramc;
+      this.adCM = paramc;
       return;
     }
   }
@@ -129,7 +125,7 @@ public class LayoutListenerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.LayoutListenerView
  * JD-Core Version:    0.7.0.1
  */

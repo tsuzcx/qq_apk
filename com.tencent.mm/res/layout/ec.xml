@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/nv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="160.0dip" android:minHeight="40.0dip" android:layout_centerInParent="true" style="@style/p3" />
-    <TextView android:textSize="@dimen/p" android:textColor="@color/a2x" android:gravity="center" android:id="@id/nx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:text="@string/et1" android:layout_above="@id/nv" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nw" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginBottom="24.0dip" android:scaleType="fitCenter" android:layout_above="@id/nx" android:layout_centerHorizontal="true" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/d_">
+        <LinearLayout android:orientation="vertical" android:id="@id/sa" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/s8" android:layout_width="68.0dip" android:layout_height="68.0dip" android:layout_marginTop="50.0dip" android:layout_marginBottom="35.0dip" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/s7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" />
+            <View android:id="@id/sb" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/iq" android:layout_marginRight="@dimen/i6" android:layout_marginBottom="@dimen/i6" />
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/sc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/a7b" android:id="@id/s4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/br" android:layout_marginRight="@dimen/i6" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/i_" android:layout_marginRight="@dimen/i6">
+                <CheckBox android:textSize="@dimen/m3" android:id="@id/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a2t" style="@style/ov" />
+                <TextView android:textSize="@dimen/m3" android:textColor="@color/a1_" android:id="@id/us" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <Button android:id="@id/s6" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:layout_below="@id/s4" style="@style/og" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/s3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textColor="@color/a1_" android:id="@id/sd" android:padding="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <View android:id="@id/sf" android:background="@color/a1_" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/j9" android:layout_marginBottom="@dimen/j9" />
+        <TextView android:textColor="@color/a1_" android:id="@id/se" android:padding="@dimen/j6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>

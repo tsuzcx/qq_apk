@@ -7,31 +7,31 @@ public final class n
 {
   float value = 0.0F;
   
-  public final void be(int paramInt)
+  public final void dS(int paramInt)
   {
-    AppMethodBeat.i(229805);
+    AppMethodBeat.i(194078);
     if ((this.state == 0) || (this.value != paramInt))
     {
       this.value = paramInt;
       if (this.state == 1) {
         invalidate();
       }
-      fV();
+      De();
     }
-    AppMethodBeat.o(229805);
+    AppMethodBeat.o(194078);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(229801);
+    AppMethodBeat.i(194071);
     super.reset();
     this.value = 0.0F;
-    AppMethodBeat.o(229801);
+    AppMethodBeat.o(194071);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.n
  * JD-Core Version:    0.7.0.1
  */

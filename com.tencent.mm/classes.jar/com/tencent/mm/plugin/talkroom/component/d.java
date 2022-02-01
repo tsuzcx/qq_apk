@@ -9,11 +9,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface d
   extends IInterface
 {
-  public abstract void dmi();
+  public abstract void bck();
   
-  public abstract void fLJ();
+  public abstract void bcl();
   
-  public abstract int gij();
+  public abstract int hCk();
   
   public abstract void release();
   
@@ -28,7 +28,7 @@ public abstract interface d
       attachInterface(this, "com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
     }
     
-    public static d J(IBinder paramIBinder)
+    public static d O(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -40,9 +40,9 @@ public abstract interface d
       return new a(paramIBinder);
     }
     
-    public static d gil()
+    public static d hCm()
     {
-      return a.MiY;
+      return a.SMu;
     }
     
     public IBinder asBinder()
@@ -61,12 +61,12 @@ public abstract interface d
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-        dmi();
+        bck();
         paramParcel2.writeNoException();
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-        fLJ();
+        bcl();
         paramParcel2.writeNoException();
         return true;
       case 3: 
@@ -76,7 +76,7 @@ public abstract interface d
         return true;
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-        paramInt1 = gij();
+        paramInt1 = hCk();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -90,7 +90,7 @@ public abstract interface d
     static final class a
       implements d
     {
-      public static d MiY;
+      public static d SMu;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -103,7 +103,7 @@ public abstract interface d
         return this.mRemote;
       }
       
-      public final void dmi()
+      public final void bck()
       {
         AppMethodBeat.i(29389);
         Parcel localParcel1 = Parcel.obtain();
@@ -111,9 +111,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.gil() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.hCm() != null))
           {
-            d.a.gil().dmi();
+            d.a.hCm().bck();
             return;
           }
           localParcel2.readException();
@@ -127,7 +127,7 @@ public abstract interface d
         }
       }
       
-      public final void fLJ()
+      public final void bcl()
       {
         AppMethodBeat.i(29390);
         Parcel localParcel1 = Parcel.obtain();
@@ -135,9 +135,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.gil() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.hCm() != null))
           {
-            d.a.gil().fLJ();
+            d.a.hCm().bcl();
             return;
           }
           localParcel2.readException();
@@ -151,7 +151,7 @@ public abstract interface d
         }
       }
       
-      public final int gij()
+      public final int hCk()
       {
         AppMethodBeat.i(29392);
         Parcel localParcel1 = Parcel.obtain();
@@ -159,9 +159,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.gil() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.hCm() != null))
           {
-            i = d.a.gil().gij();
+            i = d.a.hCm().hCk();
             return i;
           }
           localParcel2.readException();
@@ -184,9 +184,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.gil() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.hCm() != null))
           {
-            d.a.gil().release();
+            d.a.hCm().release();
             return;
           }
           localParcel2.readException();
@@ -208,9 +208,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ITalkRoomPlayer_AIDL");
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (d.a.gil() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (d.a.hCm() != null))
           {
-            d.a.gil().start();
+            d.a.hCm().start();
             return;
           }
           localParcel2.readException();
@@ -228,7 +228,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,54 +3,54 @@ package com.tencent.mm.msgsubscription.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/model/SubscribeMsgUpdateStrategy;", "", "()V", "TAG", "", "checkSubscribeStatusNeedUpdate", "", "subscribeMsgTmpItem", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/model/SubscribeMsgUpdateStrategy;", "", "()V", "TAG", "", "checkSubscribeStatusNeedUpdate", "", "subscribeMsgTmpItem", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b mpn;
+  public static final b pja;
   
   static
   {
-    AppMethodBeat.i(224855);
-    mpn = new b();
-    AppMethodBeat.o(224855);
+    AppMethodBeat.i(236344);
+    pja = new b();
+    AppMethodBeat.o(236344);
   }
   
   public static boolean b(SubscribeMsgTmpItem paramSubscribeMsgTmpItem)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(224854);
-    Object localObject1;
+    Object localObject = null;
+    AppMethodBeat.i(236340);
+    String str;
     boolean bool;
-    if ((paramSubscribeMsgTmpItem == null) || (paramSubscribeMsgTmpItem.mog == 0L)) {
-      if (paramSubscribeMsgTmpItem != null)
+    if ((paramSubscribeMsgTmpItem == null) || (paramSubscribeMsgTmpItem.phU == 0L)) {
+      if (paramSubscribeMsgTmpItem == null)
       {
-        localObject1 = paramSubscribeMsgTmpItem.lnb;
-        Log.i("MicroMsg.SubscribeMsgUpdateStrategy", "alvinluo checkSubscribeStatusNeedUpdate first time and do update templateId: %s", new Object[] { localObject1 });
+        str = null;
+        Log.i("MicroMsg.SubscribeMsgUpdateStrategy", "alvinluo checkSubscribeStatusNeedUpdate first time and do update templateId: %s", new Object[] { str });
         bool = true;
+        label43:
+        if (paramSubscribeMsgTmpItem != null) {
+          break label134;
+        }
       }
     }
-    for (;;)
+    label134:
+    for (paramSubscribeMsgTmpItem = localObject;; paramSubscribeMsgTmpItem = Long.valueOf(paramSubscribeMsgTmpItem.phU))
     {
-      localObject1 = localObject2;
-      if (paramSubscribeMsgTmpItem != null) {
-        localObject1 = Long.valueOf(paramSubscribeMsgTmpItem.mog);
-      }
-      Log.v("MicroMsg.SubscribeMsgUpdateStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp: %s, now: %s, needUpdate: %b", new Object[] { localObject1, Long.valueOf(System.currentTimeMillis()), Boolean.valueOf(bool) });
-      AppMethodBeat.o(224854);
+      Log.v("MicroMsg.SubscribeMsgUpdateStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp: %s, now: %s, needUpdate: %b", new Object[] { paramSubscribeMsgTmpItem, Long.valueOf(System.currentTimeMillis()), Boolean.valueOf(bool) });
+      AppMethodBeat.o(236340);
       return bool;
-      localObject1 = null;
+      str = paramSubscribeMsgTmpItem.nSg;
       break;
-      if (paramSubscribeMsgTmpItem.mog < System.currentTimeMillis())
+      if (paramSubscribeMsgTmpItem.phU < System.currentTimeMillis())
       {
-        Log.i("MicroMsg.SubscribeMsgUpdateStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp expired and do update, templateId: %s", new Object[] { paramSubscribeMsgTmpItem.lnb });
+        Log.i("MicroMsg.SubscribeMsgUpdateStrategy", "alvinluo checkSubscribeStatusNeedUpdate updateTimestamp expired and do update, templateId: %s", new Object[] { paramSubscribeMsgTmpItem.nSg });
         bool = true;
+        break label43;
       }
-      else
-      {
-        bool = false;
-      }
+      bool = false;
+      break label43;
     }
   }
 }

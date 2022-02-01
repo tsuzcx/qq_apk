@@ -1,12 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.luggage.m.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class cb
-  extends c<v>
+  extends c<y>
 {
-  public static final int CTRL_INDEX = 201;
-  public static final String NAME = "openUrl";
+  public static final int CTRL_INDEX = 247;
+  public static final String NAME = "openDeliveryList";
+  private static final String rzJ;
+  
+  static
+  {
+    AppMethodBeat.i(325539);
+    rzJ = "https://" + WeChatHosts.domainString(a.g.host_mp_weixin_qq_com) + "/bizmall/expressentry";
+    AppMethodBeat.o(325539);
+  }
 }
 
 

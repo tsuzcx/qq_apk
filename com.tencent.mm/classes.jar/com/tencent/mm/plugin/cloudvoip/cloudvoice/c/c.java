@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Log.LogImp;
 import java.nio.ByteBuffer;
@@ -9,9 +9,9 @@ import java.nio.ByteOrder;
 
 public final class c
 {
-  public static void ad(int paramInt, boolean paramBoolean)
+  public static void au(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(203143);
+    AppMethodBeat.i(268375);
     int i = 2;
     switch (paramInt)
     {
@@ -23,9 +23,9 @@ public final class c
       ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
       localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
       localByteBuffer.put((byte)paramInt);
-      q localq = q.tRM;
-      q.f(21, localByteBuffer.array(), 4);
-      AppMethodBeat.o(203143);
+      q localq = q.wVc;
+      q.e(21, localByteBuffer.array(), 4);
+      AppMethodBeat.o(268375);
       return;
       paramInt += 1;
       continue;
@@ -37,7 +37,7 @@ public final class c
     }
   }
   
-  public static int cNs()
+  public static int dqY()
   {
     AppMethodBeat.i(90787);
     if (Log.getImpl() != null)
@@ -52,7 +52,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c
  * JD-Core Version:    0.7.0.1
  */

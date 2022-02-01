@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transitionGroup="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ViewStub android:id="@id/j6e" android:layout="@layout/avn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textColor="@color/a5c" android:id="@id/bl3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/hrx" android:visibility="gone" android:layout="@layout/bsb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.ui.base.WxImageView android:gravity="center" android:id="@id/jrc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:tileBackgroundColor="@color/am" />
-    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/dup" android:layout_width="fill_parent" android:layout_height="fill_parent" app:imageBackgroundColor="@color/am" />
-    <ViewStub android:id="@id/dvq" android:layout="@layout/avl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/dvo" android:layout="@layout/avm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/dvn" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a62" />
-</FrameLayout>
+<com.tencent.mm.plugin.game.chatroom.view.GameChatListView android:id="@id/eim" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

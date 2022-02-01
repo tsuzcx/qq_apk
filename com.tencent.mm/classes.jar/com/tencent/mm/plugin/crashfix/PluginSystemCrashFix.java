@@ -6,10 +6,10 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.plugin.crashfix.d.b;
-import com.tencent.mm.plugin.crashfix.d.c;
-import com.tencent.mm.plugin.crashfix.d.c.1;
-import com.tencent.mm.plugin.crashfix.d.d.d;
+import com.tencent.mm.plugin.crashfix.patch.b;
+import com.tencent.mm.plugin.crashfix.patch.b.d;
+import com.tencent.mm.plugin.crashfix.patch.c;
+import com.tencent.mm.plugin.crashfix.patch.c.1;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,28 +33,29 @@ public class PluginSystemCrashFix
     AppMethodBeat.i(145616);
     Log.i("MicroMsg.SystemCrashFixPatch", "api level : " + Build.VERSION.SDK_INT);
     paramg = new Handler(Looper.myLooper());
-    if (c.ubA == null)
+    if (c.xfm == null)
     {
       localObject = new ArrayList();
-      c.ubA = (List)localObject;
+      c.xfm = (List)localObject;
       ((List)localObject).add(new d());
-      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.e.a());
-      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.a.a());
-      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.b.a());
-      c.ubA.add(new com.tencent.mm.plugin.crashfix.d.c.a());
+      c.xfm.add(new com.tencent.mm.plugin.crashfix.patch.c.a());
+      c.xfm.add(new com.tencent.mm.plugin.crashfix.patch.a.a());
+      c.xfm.add(new com.tencent.mm.plugin.crashfix.patch.killself.a());
+      c.xfm.add(new com.tencent.mm.plugin.crashfix.patch.phonestateoverflow.a());
     }
-    Object localObject = c.ubA.iterator();
+    Object localObject = c.xfm.iterator();
     while (((Iterator)localObject).hasNext())
     {
       b localb = (b)((Iterator)localObject).next();
-      if (localb.IP(Build.VERSION.SDK_INT)) {
-        if ((localb instanceof com.tencent.mm.plugin.crashfix.d.a))
+      if (localb.Js(Build.VERSION.SDK_INT)) {
+        if ((localb instanceof com.tencent.mm.plugin.crashfix.patch.a))
         {
-          paramg.postDelayed(new c.1((com.tencent.mm.plugin.crashfix.d.a)localb, localb), 0L);
+          com.tencent.mm.plugin.crashfix.patch.a locala = (com.tencent.mm.plugin.crashfix.patch.a)localb;
+          paramg.postDelayed(new c.1(locala, localb), locala.dsZ());
         }
         else
         {
-          boolean bool = localb.cPs();
+          boolean bool = localb.dtc();
           Log.i("MicroMsg.SystemCrashFixPatch", localb.getClass().getCanonicalName() + " : " + bool);
         }
       }
@@ -71,7 +72,7 @@ public class PluginSystemCrashFix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.PluginSystemCrashFix
  * JD-Core Version:    0.7.0.1
  */

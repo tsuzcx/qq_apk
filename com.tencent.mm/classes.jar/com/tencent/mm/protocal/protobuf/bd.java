@@ -3,156 +3,101 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bd
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long RFU;
-  public String RFV;
-  public String RFW;
-  public String RFX;
-  public String RFY;
-  public String RFZ;
-  public String city;
-  public double latitude;
-  public double longitude;
-  public String province;
+  public String YCm;
+  public String YCn;
+  public String YCo;
+  public String oOI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91341);
+    AppMethodBeat.i(125688);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.province != null) {
-        paramVarArgs.f(1, this.province);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.oOI != null) {
+        paramVarArgs.g(1, this.oOI);
       }
-      if (this.city != null) {
-        paramVarArgs.f(2, this.city);
+      if (this.YCm != null) {
+        paramVarArgs.g(2, this.YCm);
       }
-      paramVarArgs.e(3, this.latitude);
-      paramVarArgs.e(4, this.longitude);
-      paramVarArgs.bm(5, this.RFU);
-      if (this.RFV != null) {
-        paramVarArgs.f(6, this.RFV);
+      if (this.YCn != null) {
+        paramVarArgs.g(3, this.YCn);
       }
-      if (this.RFW != null) {
-        paramVarArgs.f(7, this.RFW);
+      if (this.YCo != null) {
+        paramVarArgs.g(4, this.YCo);
       }
-      if (this.RFX != null) {
-        paramVarArgs.f(8, this.RFX);
-      }
-      if (this.RFY != null) {
-        paramVarArgs.f(9, this.RFY);
-      }
-      if (this.RFZ != null) {
-        paramVarArgs.f(10, this.RFZ);
-      }
-      AppMethodBeat.o(91341);
+      AppMethodBeat.o(125688);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.province == null) {
-        break label716;
+      if (this.oOI == null) {
+        break label390;
       }
     }
-    label716:
-    for (paramInt = g.a.a.b.b.a.g(1, this.province) + 0;; paramInt = 0)
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.oOI) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.city != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.city);
-      }
-      i = i + (g.a.a.b.b.a.gL(3) + 8) + (g.a.a.b.b.a.gL(4) + 8) + g.a.a.b.b.a.p(5, this.RFU);
       paramInt = i;
-      if (this.RFV != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.RFV);
+      if (this.YCm != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.YCm);
       }
       i = paramInt;
-      if (this.RFW != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.RFW);
+      if (this.YCn != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YCn);
       }
       paramInt = i;
-      if (this.RFX != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.RFX);
+      if (this.YCo != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.YCo);
       }
-      i = paramInt;
-      if (this.RFY != null) {
-        i = paramInt + g.a.a.b.b.a.g(9, this.RFY);
-      }
-      paramInt = i;
-      if (this.RFZ != null) {
-        paramInt = i + g.a.a.b.b.a.g(10, this.RFZ);
-      }
-      AppMethodBeat.o(91341);
+      AppMethodBeat.o(125688);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(91341);
+        AppMethodBeat.o(125688);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         bd localbd = (bd)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91341);
+          AppMethodBeat.o(125688);
           return -1;
         case 1: 
-          localbd.province = locala.abFh.readString();
-          AppMethodBeat.o(91341);
+          localbd.oOI = locala.ajGk.readString();
+          AppMethodBeat.o(125688);
           return 0;
         case 2: 
-          localbd.city = locala.abFh.readString();
-          AppMethodBeat.o(91341);
+          localbd.YCm = locala.ajGk.readString();
+          AppMethodBeat.o(125688);
           return 0;
         case 3: 
-          localbd.latitude = Double.longBitsToDouble(locala.abFh.AP());
-          AppMethodBeat.o(91341);
-          return 0;
-        case 4: 
-          localbd.longitude = Double.longBitsToDouble(locala.abFh.AP());
-          AppMethodBeat.o(91341);
-          return 0;
-        case 5: 
-          localbd.RFU = locala.abFh.AN();
-          AppMethodBeat.o(91341);
-          return 0;
-        case 6: 
-          localbd.RFV = locala.abFh.readString();
-          AppMethodBeat.o(91341);
-          return 0;
-        case 7: 
-          localbd.RFW = locala.abFh.readString();
-          AppMethodBeat.o(91341);
-          return 0;
-        case 8: 
-          localbd.RFX = locala.abFh.readString();
-          AppMethodBeat.o(91341);
-          return 0;
-        case 9: 
-          localbd.RFY = locala.abFh.readString();
-          AppMethodBeat.o(91341);
+          localbd.YCn = locala.ajGk.readString();
+          AppMethodBeat.o(125688);
           return 0;
         }
-        localbd.RFZ = locala.abFh.readString();
-        AppMethodBeat.o(91341);
+        localbd.YCo = locala.ajGk.readString();
+        AppMethodBeat.o(125688);
         return 0;
       }
-      AppMethodBeat.o(91341);
+      AppMethodBeat.o(125688);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bd
  * JD-Core Version:    0.7.0.1
  */

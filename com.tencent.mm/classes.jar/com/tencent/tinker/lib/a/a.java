@@ -31,66 +31,66 @@ public class a
     {
       try
       {
-        Object localObject4 = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
-        Object localObject1 = (List)ShareReflectUtil.findField(localObject4, "nativeLibraryDirectories").get(localObject4);
+        Object localObject6 = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
+        Object localObject1 = (List)ShareReflectUtil.findField(localObject6, "nativeLibraryDirectories").get(localObject6);
         if (localObject1 != null) {
           break label365;
         }
         localObject1 = new ArrayList(2);
-        Object localObject2 = ((List)localObject1).iterator();
-        if (((Iterator)localObject2).hasNext())
+        Object localObject4 = ((List)localObject1).iterator();
+        if (((Iterator)localObject4).hasNext())
         {
-          if (!paramFile.equals((File)((Iterator)localObject2).next())) {
+          if (!paramFile.equals((File)((Iterator)localObject4).next())) {
             continue;
           }
-          ((Iterator)localObject2).remove();
+          ((Iterator)localObject4).remove();
         }
         ((List)localObject1).add(0, paramFile);
-        Object localObject3 = (List)ShareReflectUtil.findField(localObject4, "systemNativeLibraryDirectories").get(localObject4);
-        localObject2 = localObject3;
-        if (localObject3 == null) {
-          localObject2 = new ArrayList(2);
+        Object localObject5 = (List)ShareReflectUtil.findField(localObject6, "systemNativeLibraryDirectories").get(localObject6);
+        localObject4 = localObject5;
+        if (localObject5 == null) {
+          localObject4 = new ArrayList(2);
         }
-        localObject3 = new ArrayList(((List)localObject1).size() + ((List)localObject2).size() + 1);
-        ((List)localObject3).addAll((Collection)localObject1);
-        ((List)localObject3).addAll((Collection)localObject2);
-        localObject1 = (Object[])ShareReflectUtil.findMethod(localObject4, "makePathElements", new Class[] { List.class }).invoke(localObject4, new Object[] { localObject3 });
-        ShareReflectUtil.findField(localObject4, "nativeLibraryPathElements").set(localObject4, localObject1);
+        localObject5 = new ArrayList(((List)localObject1).size() + ((List)localObject4).size() + 1);
+        ((List)localObject5).addAll((Collection)localObject1);
+        ((List)localObject5).addAll((Collection)localObject4);
+        localObject1 = (Object[])ShareReflectUtil.findMethod(localObject6, "makePathElements", new Class[] { List.class }).invoke(localObject6, new Object[] { localObject5 });
+        ShareReflectUtil.findField(localObject6, "nativeLibraryPathElements").set(localObject6, localObject1);
         return;
       }
-      catch (Throwable localThrowable1)
+      finally
       {
-        ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, v25 fail, sdk: %d, error: %s, try to fallback to V23", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localThrowable1.getMessage() });
-        b.d(paramClassLoader, paramFile);
+        ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, v25 fail, sdk: %d, error: %s, try to fallback to V23", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localObject2.getMessage() });
+        a.b.d(paramClassLoader, paramFile);
         return;
       }
       if (Build.VERSION.SDK_INT >= 23) {
         try
         {
-          b.d(paramClassLoader, paramFile);
+          a.b.d(paramClassLoader, paramFile);
           return;
         }
-        catch (Throwable localThrowable2)
+        finally
         {
-          ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, v23 fail, sdk: %d, error: %s, try to fallback to V14", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localThrowable2.getMessage() });
-          a.c(paramClassLoader, paramFile);
+          ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath, v23 fail, sdk: %d, error: %s, try to fallback to V14", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), localObject3.getMessage() });
+          a.a.c(paramClassLoader, paramFile);
           return;
         }
       }
       if (Build.VERSION.SDK_INT >= 14)
       {
-        a.c(paramClassLoader, paramFile);
+        a.a.c(paramClassLoader, paramFile);
         return;
       }
-      c.b(paramClassLoader, paramFile);
+      a.c.b(paramClassLoader, paramFile);
       return;
     }
   }
   
   public static boolean a(ApplicationLike paramApplicationLike, String paramString)
   {
-    Object localObject = b.d(paramApplicationLike);
-    if (ShareTinkerInternals.isNullOrNil((String)localObject))
+    Object localObject1 = b.d(paramApplicationLike);
+    if (ShareTinkerInternals.isNullOrNil((String)localObject1))
     {
       ShareTinkerLog.e("Tinker.LoadLibrary", "failed to get current patch version.", new Object[0]);
       return false;
@@ -101,8 +101,8 @@ public class a
       ShareTinkerLog.e("Tinker.LoadLibrary", "failed to get current patch directory.", new Object[0]);
       return false;
     }
-    localObject = new File(localFile.getAbsolutePath() + "/" + SharePatchFileUtil.getPatchVersionDirectory((String)localObject));
-    paramString = new File(((File)localObject).getAbsolutePath() + "/lib/lib/" + paramString);
+    localObject1 = new File(localFile.getAbsolutePath() + "/" + SharePatchFileUtil.getPatchVersionDirectory((String)localObject1));
+    paramString = new File(((File)localObject1).getAbsolutePath() + "/lib/lib/" + paramString);
     if (!paramString.exists())
     {
       ShareTinkerLog.e("Tinker.LoadLibrary", "tinker lib path [%s] is not exists.", new Object[] { paramString });
@@ -117,113 +117,29 @@ public class a
     ShareTinkerLog.i("Tinker.LoadLibrary", "before hack classloader:" + paramApplicationLike.toString(), new Object[0]);
     try
     {
-      localObject = a.class.getDeclaredMethod("a", new Class[] { ClassLoader.class, File.class });
-      ((Method)localObject).setAccessible(true);
-      ((Method)localObject).invoke(null, new Object[] { paramApplicationLike, paramString });
+      localObject1 = a.class.getDeclaredMethod("a", new Class[] { ClassLoader.class, File.class });
+      ((Method)localObject1).setAccessible(true);
+      ((Method)localObject1).invoke(null, new Object[] { paramApplicationLike, paramString });
+      ShareTinkerLog.i("Tinker.LoadLibrary", "after hack classloader:" + paramApplicationLike.toString(), new Object[0]);
       return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath fail:" + paramString + ", thr: " + localThrowable, new Object[0]);
-      return false;
     }
     finally
     {
-      ShareTinkerLog.i("Tinker.LoadLibrary", "after hack classloader:" + paramApplicationLike.toString(), new Object[0]);
-    }
-  }
-  
-  static final class a
-  {
-    private static void b(ClassLoader paramClassLoader, File paramFile)
-    {
-      paramClassLoader = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
-      Field localField = ShareReflectUtil.findField(paramClassLoader, "nativeLibraryDirectories");
-      File[] arrayOfFile = (File[])localField.get(paramClassLoader);
-      ArrayList localArrayList = new ArrayList(arrayOfFile.length + 1);
-      localArrayList.add(paramFile);
-      int j = arrayOfFile.length;
-      int i = 0;
-      while (i < j)
+      try
       {
-        File localFile = arrayOfFile[i];
-        if (!paramFile.equals(localFile)) {
-          localArrayList.add(localFile);
-        }
-        i += 1;
+        ShareTinkerLog.e("Tinker.LoadLibrary", "installNativeLibraryPath fail:" + paramString + ", thr: " + localObject2, new Object[0]);
+        return false;
       }
-      localField.set(paramClassLoader, localArrayList.toArray(new File[0]));
-    }
-  }
-  
-  static final class b
-  {
-    private static void b(ClassLoader paramClassLoader, File paramFile)
-    {
-      Object localObject2 = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
-      paramClassLoader = (List)ShareReflectUtil.findField(localObject2, "nativeLibraryDirectories").get(localObject2);
-      if (paramClassLoader == null) {
-        paramClassLoader = new ArrayList(2);
-      }
-      for (;;)
+      finally
       {
-        Object localObject1 = paramClassLoader.iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          if (paramFile.equals((File)((Iterator)localObject1).next())) {
-            ((Iterator)localObject1).remove();
-          }
-        }
-        paramClassLoader.add(0, paramFile);
-        localObject1 = (List)ShareReflectUtil.findField(localObject2, "systemNativeLibraryDirectories").get(localObject2);
-        paramFile = (File)localObject1;
-        if (localObject1 == null) {
-          paramFile = new ArrayList(2);
-        }
-        localObject1 = new ArrayList(paramClassLoader.size() + paramFile.size() + 1);
-        ((List)localObject1).addAll(paramClassLoader);
-        ((List)localObject1).addAll(paramFile);
-        paramClassLoader = (Object[])ShareReflectUtil.findMethod(localObject2, "makePathElements", new Class[] { List.class, File.class, List.class }).invoke(localObject2, new Object[] { localObject1, null, new ArrayList() });
-        ShareReflectUtil.findField(localObject2, "nativeLibraryPathElements").set(localObject2, paramClassLoader);
-        return;
+        ShareTinkerLog.i("Tinker.LoadLibrary", "after hack classloader:" + paramApplicationLike.toString(), new Object[0]);
       }
-    }
-  }
-  
-  static final class c
-  {
-    static void b(ClassLoader paramClassLoader, File paramFile)
-    {
-      paramFile = paramFile.getPath();
-      Field localField = ShareReflectUtil.findField(paramClassLoader, "libPath");
-      Object localObject1 = ((String)localField.get(paramClassLoader)).split(":");
-      Object localObject2 = new StringBuilder(paramFile);
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject3 = localObject1[i];
-        if ((localObject3 != null) && (!paramFile.equals(localObject3))) {
-          ((StringBuilder)localObject2).append(':').append(localObject3);
-        }
-        i += 1;
-      }
-      localField.set(paramClassLoader, ((StringBuilder)localObject2).toString());
-      localField = ShareReflectUtil.findField(paramClassLoader, "libraryPathElements");
-      localObject1 = (List)localField.get(paramClassLoader);
-      localObject2 = ((List)localObject1).iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        if (paramFile.equals((String)((Iterator)localObject2).next())) {
-          ((Iterator)localObject2).remove();
-        }
-      }
-      ((List)localObject1).add(0, paramFile);
-      localField.set(paramClassLoader, localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.lib.a.a
  * JD-Core Version:    0.7.0.1
  */

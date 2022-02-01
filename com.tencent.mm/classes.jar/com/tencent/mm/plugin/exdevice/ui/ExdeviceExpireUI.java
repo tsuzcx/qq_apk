@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -14,14 +13,14 @@ public class ExdeviceExpireUI
 {
   public int getLayoutId()
   {
-    return R.i.egr;
+    return R.i.gjk;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(24036);
     super.onCreate(paramBundle);
-    setMMTitle(R.l.eDY);
+    setMMTitle(R.l.gGM);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

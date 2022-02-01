@@ -1,71 +1,37 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import androidx.b.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Set;
-import kotlin.g.b.p;
+import java.util.LinkedList;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/model/LinearPreload;", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "()V", "preloadOnlyOnIdle", "", "retrievePreloadItems", "", "", "state", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "lastState", "first", "last", "limit", "Companion", "plugin-gallery_release"})
-public final class l
-  implements j
+public abstract interface l
 {
-  public static final l.a BVv;
+  public abstract LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, c paramc, long paramLong);
   
-  static
+  public abstract void fAa();
+  
+  public abstract LinkedList<GalleryItem.AlbumItem> fzT();
+  
+  public abstract void fzZ();
+  
+  public abstract boolean isCancelled();
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(111789);
-    BVv = new l.a((byte)0);
-    AppMethodBeat.o(111789);
+    public abstract void bm(LinkedList<GalleryItem.AlbumItem> paramLinkedList);
   }
   
-  public final Set<Integer> a(p.c paramc1, p.c paramc2, int paramInt1, int paramInt2, int paramInt3)
+  public static abstract interface b
   {
-    int j = 0;
-    int i = 0;
-    AppMethodBeat.i(111788);
-    p.k(paramc1, "state");
-    p.k(paramc2, "lastState");
-    b localb = new b();
-    if ((paramInt1 != -1) && (paramInt2 != -1) && (paramInt1 < paramInt2) && (p.c.BVO == paramc1))
-    {
-      Log.d("MicroMsg.LinearPreload", "start LinearPreload!!!");
-      switch (m.$EnumSwitchMapping$0[paramc2.ordinal()])
-      {
-      }
-    }
-    for (;;)
-    {
-      paramc1 = (Set)localb;
-      AppMethodBeat.o(111788);
-      return paramc1;
-      paramInt2 = paramInt1 - 1 + 0;
-      paramInt3 = i;
-      while ((paramInt3 > -32) && (paramInt2 >= 0))
-      {
-        localb.add(Integer.valueOf(paramInt2));
-        paramInt3 -= 1;
-        paramInt2 = paramInt1 - 1 + paramInt3;
-      }
-      paramInt1 = paramInt2 + 1 + 0;
-      i = j;
-      while ((i < 32) && (paramInt1 < paramInt3))
-      {
-        localb.add(Integer.valueOf(paramInt1));
-        i += 1;
-        paramInt1 = paramInt2 + 1 + i;
-      }
-    }
+    public abstract void c(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong);
   }
   
-  public final boolean etO()
+  public static abstract interface c
   {
-    return true;
+    public abstract void b(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.l
  * JD-Core Version:    0.7.0.1
  */

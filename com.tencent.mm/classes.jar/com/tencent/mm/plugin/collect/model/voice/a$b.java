@@ -8,37 +8,37 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class a$b
   implements c
 {
-  private a.c tWl;
-  private ConcurrentLinkedQueue<a.a> tWm;
+  private a.c wZF;
+  private ConcurrentLinkedQueue<a.a> wZG;
   
   public a$b(a parama, a.c paramc)
   {
     AppMethodBeat.i(63864);
-    this.tWm = new ConcurrentLinkedQueue();
-    this.tWl = paramc;
+    this.wZG = new ConcurrentLinkedQueue();
+    this.wZF = paramc;
     AppMethodBeat.o(63864);
   }
   
   public final void a(a.a parama)
   {
     AppMethodBeat.i(63865);
-    this.tWm.add(parama);
+    this.wZG.add(parama);
     AppMethodBeat.o(63865);
   }
   
   public final void p(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63866);
-    if (this.tWl == null) {}
+    if (this.wZF == null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.F2fRcvVoiceOffLineLogic.Listener", "onGetResult() errorCode:%s (voiceLlistener == null):%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      if (this.tWl != null)
+      if (this.wZF != null)
       {
-        a.a locala = (a.a)this.tWm.poll();
-        this.tWl.a(paramInt, locala.fyd, locala.fye, locala.fyf, locala.fee, a.cOg().cOn(), paramArrayOfByte);
+        a.a locala = (a.a)this.wZG.poll();
+        this.wZF.a(paramInt, locala.hCI, locala.hCJ, locala.hCK, locala.fee, a.drL().drS(), paramArrayOfByte);
         if (paramInt < 0) {
-          h.IzE.idkeyStat(1143L, 20L, 1L, false);
+          h.OAn.idkeyStat(1143L, 20L, 1L, false);
         }
       }
       AppMethodBeat.o(63866);

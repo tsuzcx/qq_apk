@@ -1,6 +1,5 @@
 package android.support.v4.os;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
@@ -8,36 +7,35 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.RemoteException;
 
-@SuppressLint({"BanParcelableUsage"})
 public class ResultReceiver
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
-  final boolean eg;
-  a eh;
+  final boolean eh;
+  a ei;
   protected final Handler mHandler;
   
   public ResultReceiver(Handler paramHandler)
   {
-    this.eg = true;
+    this.eh = true;
     this.mHandler = paramHandler;
   }
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.eg = false;
+    this.eh = false;
     this.mHandler = null;
-    this.eh = a.a.e(paramParcel.readStrongBinder());
+    this.ei = a.a.e(paramParcel.readStrongBinder());
   }
   
   public final void c(int paramInt, Bundle paramBundle)
   {
-    if (this.eg) {
+    if (this.eh) {
       if (this.mHandler != null) {
         this.mHandler.post(new b(paramInt, paramBundle));
       }
     }
-    while (this.eh == null)
+    while (this.ei == null)
     {
       return;
       onReceiveResult(paramInt, paramBundle);
@@ -45,7 +43,7 @@ public class ResultReceiver
     }
     try
     {
-      this.eh.c(paramInt, paramBundle);
+      this.ei.c(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -62,10 +60,10 @@ public class ResultReceiver
   {
     try
     {
-      if (this.eh == null) {
-        this.eh = new a();
+      if (this.ei == null) {
+        this.ei = new a();
       }
-      paramParcel.writeStrongBinder(this.eh.asBinder());
+      paramParcel.writeStrongBinder(this.ei.asBinder());
       return;
     }
     finally {}
@@ -90,24 +88,24 @@ public class ResultReceiver
   final class b
     implements Runnable
   {
-    final Bundle ej;
+    final Bundle ek;
     final int mResultCode;
     
     b(int paramInt, Bundle paramBundle)
     {
       this.mResultCode = paramInt;
-      this.ej = paramBundle;
+      this.ek = paramBundle;
     }
     
     public final void run()
     {
-      ResultReceiver.this.onReceiveResult(this.mResultCode, this.ej);
+      ResultReceiver.this.onReceiveResult(this.mResultCode, this.ek);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.os.ResultReceiver
  * JD-Core Version:    0.7.0.1
  */

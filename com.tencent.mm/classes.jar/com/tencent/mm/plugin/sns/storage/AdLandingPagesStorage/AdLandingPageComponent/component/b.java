@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u;
@@ -31,53 +31,95 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  extends m
+  extends n
 {
-  LinearLayoutManager Arh;
-  int KoO;
-  private RecyclerView KoP;
-  private b KoQ;
-  private Map<Integer, a> KoR;
-  Set<Integer> KoS;
+  LinearLayoutManager AJH;
+  int QMV;
+  private RecyclerView QMW;
+  private b QMX;
+  private Map<Integer, a> QMY;
+  Set<Integer> QMZ;
   
   public b(Context paramContext, s params, ViewGroup paramViewGroup)
   {
     super(paramContext, params, paramViewGroup);
     AppMethodBeat.i(96405);
-    this.KoO = com.tencent.mm.ci.a.fromDPToPix(paramContext, 12);
-    this.KoR = new HashMap();
-    this.KoS = new HashSet();
+    this.QMV = com.tencent.mm.cd.a.fromDPToPix(paramContext, 12);
+    this.QMY = new HashMap();
+    this.QMZ = new HashSet();
     AppMethodBeat.o(96405);
   }
   
-  private void fQJ()
+  private void hiH()
   {
     AppMethodBeat.i(96407);
-    if (this.Arh != null) {
-      jI(this.Arh.kJ(), this.Arh.kL());
+    if (this.AJH != null) {
+      lu(this.AJH.Ju(), this.AJH.Jw());
     }
     AppMethodBeat.o(96407);
   }
   
-  private void jI(int paramInt1, int paramInt2)
+  private void lu(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96408);
     while (paramInt1 <= paramInt2)
     {
-      a locala2 = (a)this.KoR.get(Integer.valueOf(paramInt1));
+      a locala2 = (a)this.QMY.get(Integer.valueOf(paramInt1));
       a locala1 = locala2;
       if (locala2 == null)
       {
         locala1 = new a((byte)0);
-        this.KoR.put(Integer.valueOf(paramInt1), locala1);
+        this.QMY.put(Integer.valueOf(paramInt1), locala1);
       }
-      locala1.fQK();
+      locala1.hiI();
       paramInt1 += 1;
     }
     AppMethodBeat.o(96408);
   }
   
-  public final boolean H(JSONArray paramJSONArray)
+  public final void Gs()
+  {
+    AppMethodBeat.i(96406);
+    this.QMW = ((RecyclerView)this.contentView.findViewById(b.f.recyclerView));
+    this.QMW.setBackgroundColor(((s)this.QOV).backgroundColor);
+    Object localObject = ((s)this.QOV).QKh.iterator();
+    int i = 0;
+    int j;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      aa localaa = (aa)((Iterator)localObject).next();
+      if (!(localaa instanceof u)) {
+        break label257;
+      }
+      u localu = (u)localaa;
+      float f = localaa.paddingBottom;
+      j = (int)(localaa.paddingTop + f + localu.height) + (this.QMV << 1);
+    } while (i > j);
+    label257:
+    for (;;)
+    {
+      i = j;
+      continue;
+      localObject = this.QMW.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = i;
+      this.QMW.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.QMX = new b((byte)0);
+      this.QMW.setAdapter(this.QMX);
+      this.AJH = new LinearLayoutManager();
+      this.AJH.setOrientation(0);
+      this.QMW.setLayoutManager(this.AJH);
+      this.QMW.a(new c(this.QMW, this.AJH));
+      this.QMW.setNestedScrollingEnabled(false);
+      this.QMW.setHasFixedSize(true);
+      AppMethodBeat.o(96406);
+      return;
+    }
+  }
+  
+  public final boolean M(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(96411);
     if (paramJSONArray == null)
@@ -86,30 +128,30 @@ public final class b
       return false;
     }
     Object localObject1 = new JSONObject();
-    if (super.by((JSONObject)localObject1)) {
+    if (super.bP((JSONObject)localObject1)) {
       paramJSONArray.put(localObject1);
     }
     try
     {
-      Object localObject2 = this.KoR;
-      localObject1 = this.KoS;
-      this.KoS = new HashSet();
-      this.KoR = new HashMap();
+      Object localObject2 = this.QMY;
+      localObject1 = this.QMZ;
+      this.QMZ = new HashSet();
+      this.QMY = new HashMap();
       localObject2 = ((Map)localObject2).entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Object localObject4 = (Map.Entry)((Iterator)localObject2).next();
-        Object localObject3 = (aa)((s)this.KqB).Kmd.get(((Integer)((Map.Entry)localObject4).getKey()).intValue());
-        if ((!((aa)localObject3).KmK) && ((localObject3 instanceof u)))
+        Object localObject3 = (aa)((s)this.QOV).QKh.get(((Integer)((Map.Entry)localObject4).getKey()).intValue());
+        if ((!((aa)localObject3).QKP) && ((localObject3 instanceof u)))
         {
           Object localObject5 = (u)localObject3;
           localObject3 = new JSONObject();
-          ((JSONObject)localObject3).put("cid", ((aa)((s)this.KqB).Kmd.get(((Integer)((Map.Entry)localObject4).getKey()).intValue())).KmB);
+          ((JSONObject)localObject3).put("cid", ((aa)((s)this.QOV).QKh.get(((Integer)((Map.Entry)localObject4).getKey()).intValue())).QKG);
           ((JSONObject)localObject3).put("exposureCount", ((a)((Map.Entry)localObject4).getValue()).count);
           ((JSONObject)localObject3).put("stayTime", ((a)((Map.Entry)localObject4).getValue()).time);
           if (((Set)localObject1).contains(((Map.Entry)localObject4).getKey()))
           {
-            localObject4 = MD5Util.getMD5String(((u)localObject5).Kmf);
+            localObject4 = MD5Util.getMD5String(((u)localObject5).QKj);
             localObject5 = new JSONObject();
             ((JSONObject)localObject5).put("urlMd5", localObject4);
             ((JSONObject)localObject5).put("needDownload", 1);
@@ -129,27 +171,32 @@ public final class b
     return true;
   }
   
-  public final void fKk()
+  protected final int getLayout()
+  {
+    return b.g.sns_ad_native_landing_pages_item_carousel;
+  }
+  
+  public final void hao()
   {
     AppMethodBeat.i(96409);
-    super.fKk();
-    fQJ();
+    super.hao();
+    hiH();
     AppMethodBeat.o(96409);
   }
   
-  public final void fKl()
+  public final void hap()
   {
     AppMethodBeat.i(96410);
-    super.fKl();
-    if (this.Arh != null)
+    super.hap();
+    if (this.AJH != null)
     {
-      int i = this.Arh.kJ();
-      int j = this.Arh.kL();
+      int i = this.AJH.Ju();
+      int j = this.AJH.Jw();
       while (i <= j)
       {
-        a locala = (a)this.KoR.get(Integer.valueOf(i));
+        a locala = (a)this.QMY.get(Integer.valueOf(i));
         if (locala != null) {
-          locala.fQL();
+          locala.hiJ();
         }
         i += 1;
       }
@@ -157,63 +204,16 @@ public final class b
     AppMethodBeat.o(96410);
   }
   
-  public final void fKp()
-  {
-    AppMethodBeat.i(96406);
-    this.KoP = ((RecyclerView)this.contentView.findViewById(i.f.recyclerView));
-    this.KoP.setBackgroundColor(((s)this.KqB).backgroundColor);
-    Object localObject = ((s)this.KqB).Kmd.iterator();
-    int i = 0;
-    int j;
-    do
-    {
-      if (!((Iterator)localObject).hasNext()) {
-        break;
-      }
-      aa localaa = (aa)((Iterator)localObject).next();
-      if (!(localaa instanceof u)) {
-        break label259;
-      }
-      u localu = (u)localaa;
-      float f = localaa.paddingBottom;
-      j = (int)(localaa.paddingTop + f + localu.height) + (this.KoO << 1);
-    } while (i > j);
-    label259:
-    for (;;)
-    {
-      i = j;
-      continue;
-      localObject = this.KoP.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).height = i;
-      this.KoP.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.KoQ = new b((byte)0);
-      this.KoP.setAdapter(this.KoQ);
-      this.Arh = new LinearLayoutManager();
-      this.Arh.setOrientation(0);
-      this.KoP.setLayoutManager(this.Arh);
-      this.KoP.a(new c(this.KoP, this.Arh));
-      this.KoP.setNestedScrollingEnabled(false);
-      this.KoP.setHasFixedSize(true);
-      AppMethodBeat.o(96406);
-      return;
-    }
-  }
-  
-  protected final int getLayout()
-  {
-    return i.g.sns_ad_native_landing_pages_item_carousel;
-  }
-  
   final class a
   {
-    long KoT;
+    long QNa;
     int count;
     boolean isVisible;
     long time;
     
     private a() {}
     
-    final void fQK()
+    final void hiI()
     {
       AppMethodBeat.i(96394);
       if (this.isVisible)
@@ -222,21 +222,21 @@ public final class b
         return;
       }
       this.isVisible = true;
-      this.KoT = System.currentTimeMillis();
+      this.QNa = System.currentTimeMillis();
       this.count += 1;
       AppMethodBeat.o(96394);
     }
     
-    final void fQL()
+    final void hiJ()
     {
       AppMethodBeat.i(96395);
       if (this.isVisible)
       {
         this.isVisible = false;
-        if (this.KoT > 0L)
+        if (this.QNa > 0L)
         {
-          this.time += System.currentTimeMillis() - this.KoT;
-          this.KoT = 0L;
+          this.time += System.currentTimeMillis() - this.QNa;
+          this.QNa = 0L;
         }
       }
       AppMethodBeat.o(96395);
@@ -251,7 +251,7 @@ public final class b
     public final int getItemCount()
     {
       AppMethodBeat.i(96396);
-      int i = ((s)b.this.KqB).Kmd.size();
+      int i = ((s)b.this.QOV).QKh.size();
       AppMethodBeat.o(96396);
       return i;
     }
@@ -259,12 +259,12 @@ public final class b
     final class a
       extends RecyclerView.v
     {
-      private h KoV;
+      private h QNc;
       
       public a(View paramView, h paramh)
       {
         super();
-        this.KoV = paramh;
+        this.QNc = paramh;
       }
     }
   }
@@ -272,22 +272,22 @@ public final class b
   final class c
     extends RecyclerView.l
   {
-    private int KoX;
-    private int KoY;
-    private int KoZ;
-    private long Kpa;
-    private Runnable Kpb;
-    private RecyclerView jLl;
-    private LinearLayoutManager set;
+    private int QNe;
+    private int QNf;
+    private int QNg;
+    private long QNh;
+    private Runnable QNi;
+    private RecyclerView mkw;
+    private LinearLayoutManager vqi;
     
     public c(RecyclerView paramRecyclerView, LinearLayoutManager paramLinearLayoutManager)
     {
-      AppMethodBeat.i(227829);
-      this.KoX = 2147483647;
-      this.KoY = -1;
-      this.KoZ = -1;
-      this.Kpa = 0L;
-      this.Kpb = new Runnable()
+      AppMethodBeat.i(307191);
+      this.QNe = 2147483647;
+      this.QNf = -1;
+      this.QNg = -1;
+      this.QNh = 0L;
+      this.QNi = new Runnable()
       {
         public final void run()
         {
@@ -300,19 +300,19 @@ public final class b
           AppMethodBeat.o(96399);
         }
       };
-      this.jLl = paramRecyclerView;
-      this.set = paramLinearLayoutManager;
-      AppMethodBeat.o(227829);
+      this.mkw = paramRecyclerView;
+      this.vqi = paramLinearLayoutManager;
+      AppMethodBeat.o(307191);
     }
     
-    private void fQM()
+    private void hiK()
     {
       AppMethodBeat.i(96401);
-      this.jLl.getHandler().removeCallbacks(this.Kpb);
+      this.mkw.getHandler().removeCallbacks(this.QNi);
       AppMethodBeat.o(96401);
     }
     
-    private void s(int paramInt1, int paramInt2, long paramLong)
+    private void v(int paramInt1, int paramInt2, long paramLong)
     {
       AppMethodBeat.i(96404);
       Log.d("AdLandingCarouselComp", "flyingItems start %d, end %d, timeExposure %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
@@ -322,16 +322,16 @@ public final class b
     
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(227840);
+      AppMethodBeat.i(307215);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingCarouselComp$MyScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingCarouselComp$MyScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
       super.onScrollStateChanged(paramRecyclerView, paramInt);
-      if (paramInt != this.KoX)
+      if (paramInt != this.QNe)
       {
         if (paramInt != 1) {
-          fQM();
+          hiK();
         }
         switch (paramInt)
         {
@@ -339,30 +339,30 @@ public final class b
       }
       for (;;)
       {
-        this.KoX = paramInt;
+        this.QNe = paramInt;
         Log.d("AdLandingCarouselComp", "state ".concat(String.valueOf(paramInt)));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingCarouselComp$MyScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-        AppMethodBeat.o(227840);
+        AppMethodBeat.o(307215);
         return;
         b.a(b.this);
-        if (this.KoX == 2)
+        if (this.QNe == 2)
         {
-          int i = this.set.kJ();
-          int j = this.set.kL();
-          if (j < this.KoY)
+          int i = this.vqi.Ju();
+          int j = this.vqi.Jw();
+          if (j < this.QNf)
           {
-            s(j, this.KoY, System.currentTimeMillis() - this.Kpa);
+            v(j, this.QNf, System.currentTimeMillis() - this.QNh);
           }
-          else if (i > this.KoZ)
+          else if (i > this.QNg)
           {
-            s(this.KoZ, i, System.currentTimeMillis() - this.Kpa);
+            v(this.QNg, i, System.currentTimeMillis() - this.QNh);
             continue;
-            fQM();
-            this.jLl.postDelayed(this.Kpb, 100L);
+            hiK();
+            this.mkw.postDelayed(this.QNi, 100L);
             continue;
-            this.KoY = this.set.kJ();
-            this.KoZ = this.set.kL();
-            this.Kpa = System.currentTimeMillis();
+            this.QNf = this.vqi.Ju();
+            this.QNg = this.vqi.Jw();
+            this.QNh = System.currentTimeMillis();
           }
         }
       }
@@ -370,21 +370,21 @@ public final class b
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(227842);
+      AppMethodBeat.i(307219);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt1);
-      localb.sg(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingCarouselComp$MyScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt1);
+      localb.sc(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingCarouselComp$MyScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingCarouselComp$MyScrollListener", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-      AppMethodBeat.o(227842);
+      AppMethodBeat.o(307219);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.b
  * JD-Core Version:    0.7.0.1
  */

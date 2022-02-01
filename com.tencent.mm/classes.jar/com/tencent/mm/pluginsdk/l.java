@@ -5,76 +5,78 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.tencent.mm.an.j;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.cyb;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.ca.a;
+import com.tencent.mm.am.i;
+import com.tencent.mm.am.p;
+import com.tencent.mm.protocal.protobuf.dph;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc.a;
 
 @Deprecated
 public abstract interface l
 {
-  public abstract String O(String paramString, int paramInt);
+  public abstract String X(String paramString, int paramInt);
   
-  public abstract String V(String paramString1, String paramString2);
+  public abstract p a(i parami);
   
-  public abstract q a(j paramj);
+  public abstract void a(Context paramContext, au paramau, cc.a parama, Bundle paramBundle, String paramString);
   
-  public abstract void a(Context paramContext, as paramas, ca.a parama, Bundle paramBundle, String paramString);
-  
-  public abstract void a(Context paramContext, ca.a parama, Bundle paramBundle);
+  public abstract void a(Context paramContext, cc.a parama, Bundle paramBundle);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5);
   
   public abstract void a(Intent paramIntent, String paramString);
   
-  public abstract void a(cyb paramcyb, String paramString, int paramInt);
+  public abstract void a(dph paramdph, String paramString, int paramInt);
   
   public abstract void a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong);
   
   public abstract boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString);
   
-  public abstract boolean a(as paramas);
+  public abstract boolean a(au paramau);
   
-  public abstract void abC();
+  public abstract void aDA();
   
-  public abstract void abE();
+  public abstract Intent aDB();
   
-  public abstract void abF();
+  public abstract boolean aDC();
   
-  public abstract Intent abG();
+  public abstract void aDD();
   
-  public abstract void abH();
+  public abstract boolean aDE();
   
-  public abstract boolean abI();
+  public abstract void aDx();
+  
+  public abstract void aDz();
+  
+  public abstract String ab(String paramString1, String paramString2);
   
   public abstract Bitmap b(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
   
   public abstract boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void bS(Context paramContext);
+  public abstract void cE(Context paramContext);
   
-  public abstract q jdMethod_do(boolean paramBoolean);
+  public abstract p ea(boolean paramBoolean);
   
-  public abstract String e(Context paramContext, String paramString1, String paramString2);
+  public abstract String i(Context paramContext, String paramString1, String paramString2);
   
-  public abstract String gY(String paramString);
+  public abstract boolean iA(String paramString);
   
-  public abstract boolean gZ(String paramString);
+  public abstract boolean iB(String paramString);
   
-  public abstract boolean ha(String paramString);
+  public abstract void iC(String paramString);
   
-  public abstract void hb(String paramString);
+  public abstract String iz(String paramString);
   
-  public abstract void kd(int paramInt);
+  public abstract void nK(int paramInt);
   
-  public abstract boolean r(Activity paramActivity);
+  public abstract boolean t(Activity paramActivity);
   
-  public abstract void s(Activity paramActivity);
+  public abstract void u(Activity paramActivity);
   
-  public abstract String t(Context paramContext, String paramString);
+  public abstract String x(Context paramContext, String paramString);
   
-  public abstract boolean u(Context paramContext, String paramString);
+  public abstract boolean y(Context paramContext, String paramString);
 }
 
 

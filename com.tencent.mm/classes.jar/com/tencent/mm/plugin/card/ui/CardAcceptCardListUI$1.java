@@ -14,7 +14,7 @@ final class CardAcceptCardListUI$1
   {
     AppMethodBeat.i(113150);
     Log.v("MicroMsg.CardAcceptCardListUI", "setBackBtn cancel");
-    CardAcceptCardListUI.a(this.tuK, 1);
+    CardAcceptCardListUI.a(this.wzh, 1);
     AppMethodBeat.o(113150);
     return true;
   }

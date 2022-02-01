@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:paddingTop="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/hv"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/Link_100" android:id="@id/kq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h50" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kp" android:layout_width="wrap_content" android:layout_height="@dimen/ajv" android:layout_marginLeft="@dimen/kb" android:src="@raw/arrow_right" app:iconColor="@color/Link_100" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_gravity="center_horizontal" android:id="@id/j3i" android:background="#50000000" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/h4s" android:background="@drawable/aik" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:layout_marginBottom="8.0dip" android:layout_alignParentBottom="true" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h4y" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j3h" android:background="@raw/icons_filled_board" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/az" android:id="@id/j3j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ifo" android:layout_centerInParent="true" android:layout_marginStart="@dimen/bv" android:layout_toEndOf="@id/j3h" />
+    </RelativeLayout>
+</RelativeLayout>

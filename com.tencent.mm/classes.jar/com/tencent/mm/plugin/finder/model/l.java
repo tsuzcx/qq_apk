@@ -1,33 +1,34 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.asg;
+import com.tencent.mm.protocal.protobuf.awt;
 import com.tencent.mm.view.recyclerview.a;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderActivityInfoData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "eventInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;)V", "getEventInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderActivityInfoData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "eventInfo", "Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;)V", "getEventInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderEventInfo;", "getItemId", "", "getItemType", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
   implements a
 {
-  public final asg wWV;
+  public final awt AtP;
   
-  public l(asg paramasg)
+  public l(awt paramawt)
   {
-    AppMethodBeat.i(277573);
-    this.wWV = paramasg;
-    AppMethodBeat.o(277573);
+    AppMethodBeat.i(332203);
+    this.AtP = paramawt;
+    AppMethodBeat.o(332203);
   }
   
-  public final int bAQ()
-  {
-    AppMethodBeat.i(277572);
-    int i = l.class.getName().hashCode();
-    AppMethodBeat.o(277572);
-    return i;
-  }
-  
-  public final long mf()
+  public final long bZA()
   {
     return 0L;
+  }
+  
+  public final int bZB()
+  {
+    AppMethodBeat.i(332216);
+    int i = l.class.getName().hashCode();
+    AppMethodBeat.o(332216);
+    return i;
   }
 }
 

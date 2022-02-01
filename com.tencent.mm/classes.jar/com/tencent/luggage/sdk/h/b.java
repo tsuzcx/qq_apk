@@ -2,43 +2,40 @@ package com.tencent.luggage.sdk.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.atomic.AtomicInteger;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/wxa_ktx/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/wxa_ktx/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private final Runnable cDk;
-  private final AtomicInteger counter;
+  private final Runnable evI;
+  private final AtomicInteger evJ;
   
   public b(Runnable paramRunnable, int paramInt)
   {
-    AppMethodBeat.i(237051);
-    this.cDk = paramRunnable;
+    AppMethodBeat.i(220564);
+    this.evI = paramRunnable;
     if (paramInt > 0) {}
     for (int i = 1; i == 0; i = 0)
     {
       paramRunnable = (Throwable)new IllegalArgumentException("count <= 0".toString());
-      AppMethodBeat.o(237051);
+      AppMethodBeat.o(220564);
       throw paramRunnable;
     }
-    this.counter = new AtomicInteger(paramInt);
-    AppMethodBeat.o(237051);
+    this.evJ = new AtomicInteger(paramInt);
+    AppMethodBeat.o(220564);
   }
   
-  public final void Sz()
+  public final void asP()
   {
-    AppMethodBeat.i(237050);
-    if (this.counter.decrementAndGet() == 0)
+    AppMethodBeat.i(220568);
+    if (this.evJ.decrementAndGet() == 0)
     {
-      Runnable localRunnable = this.cDk;
-      if (localRunnable != null)
-      {
+      Runnable localRunnable = this.evI;
+      if (localRunnable != null) {
         localRunnable.run();
-        AppMethodBeat.o(237050);
-        return;
       }
     }
-    AppMethodBeat.o(237050);
+    AppMethodBeat.o(220568);
   }
 }
 

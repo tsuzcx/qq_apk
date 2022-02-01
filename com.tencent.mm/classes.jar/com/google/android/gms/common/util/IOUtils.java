@@ -14,11 +14,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.channels.FileChannel;
 import java.util.Arrays;
-import javax.annotation.Nullable;
 
 public final class IOUtils
 {
-  public static void close(@Nullable Closeable paramCloseable, String paramString1, String paramString2)
+  public static void close(Closeable paramCloseable, String paramString1, String paramString2)
   {
     AppMethodBeat.i(5247);
     if (paramCloseable != null) {
@@ -33,7 +32,7 @@ public final class IOUtils
     AppMethodBeat.o(5247);
   }
   
-  public static void closeQuietly(@Nullable ParcelFileDescriptor paramParcelFileDescriptor)
+  public static void closeQuietly(ParcelFileDescriptor paramParcelFileDescriptor)
   {
     AppMethodBeat.i(5244);
     if (paramParcelFileDescriptor != null) {
@@ -48,7 +47,7 @@ public final class IOUtils
     AppMethodBeat.o(5244);
   }
   
-  public static void closeQuietly(@Nullable Closeable paramCloseable)
+  public static void closeQuietly(Closeable paramCloseable)
   {
     AppMethodBeat.i(5243);
     if (paramCloseable != null) {
@@ -63,7 +62,7 @@ public final class IOUtils
     AppMethodBeat.o(5243);
   }
   
-  public static void closeQuietly(@Nullable ServerSocket paramServerSocket)
+  public static void closeQuietly(ServerSocket paramServerSocket)
   {
     AppMethodBeat.i(5246);
     if (paramServerSocket != null) {
@@ -78,7 +77,7 @@ public final class IOUtils
     AppMethodBeat.o(5246);
   }
   
-  public static void closeQuietly(@Nullable Socket paramSocket)
+  public static void closeQuietly(Socket paramSocket)
   {
     AppMethodBeat.i(5245);
     if (paramSocket != null) {
@@ -155,45 +154,45 @@ public final class IOUtils
   {
     // Byte code:
     //   0: sipush 5255
-    //   3: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 81	java/io/File:exists	()Z
+    //   7: invokevirtual 79	java/io/File:exists	()Z
     //   10: ifne +19 -> 29
-    //   13: new 83	java/io/FileNotFoundException
+    //   13: new 81	java/io/FileNotFoundException
     //   16: dup
-    //   17: invokespecial 84	java/io/FileNotFoundException:<init>	()V
+    //   17: invokespecial 82	java/io/FileNotFoundException:<init>	()V
     //   20: astore_0
     //   21: sipush 5255
-    //   24: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_0
     //   28: athrow
-    //   29: new 86	java/io/RandomAccessFile
+    //   29: new 84	java/io/RandomAccessFile
     //   32: dup
     //   33: aload_0
-    //   34: ldc 88
-    //   36: invokespecial 91	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   34: ldc 86
+    //   36: invokespecial 89	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   39: astore_2
     //   40: aload_2
-    //   41: invokevirtual 95	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
+    //   41: invokevirtual 93	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
     //   44: astore_0
     //   45: aload_0
-    //   46: invokevirtual 101	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
+    //   46: invokevirtual 99	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
     //   49: astore_1
     //   50: aload_0
     //   51: lconst_0
-    //   52: invokevirtual 105	java/nio/channels/FileChannel:truncate	(J)Ljava/nio/channels/FileChannel;
+    //   52: invokevirtual 103	java/nio/channels/FileChannel:truncate	(J)Ljava/nio/channels/FileChannel;
     //   55: pop
     //   56: aload_1
     //   57: ifnull +14 -> 71
     //   60: aload_1
-    //   61: invokevirtual 110	java/nio/channels/FileLock:isValid	()Z
+    //   61: invokevirtual 108	java/nio/channels/FileLock:isValid	()Z
     //   64: ifeq +7 -> 71
     //   67: aload_1
-    //   68: invokevirtual 113	java/nio/channels/FileLock:release	()V
+    //   68: invokevirtual 111	java/nio/channels/FileLock:release	()V
     //   71: aload_2
-    //   72: invokestatic 70	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   72: invokestatic 68	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   75: sipush 5255
-    //   78: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: return
     //   82: astore_0
     //   83: aconst_null
@@ -203,16 +202,16 @@ public final class IOUtils
     //   87: aload_1
     //   88: ifnull +14 -> 102
     //   91: aload_1
-    //   92: invokevirtual 110	java/nio/channels/FileLock:isValid	()Z
+    //   92: invokevirtual 108	java/nio/channels/FileLock:isValid	()Z
     //   95: ifeq +7 -> 102
     //   98: aload_1
-    //   99: invokevirtual 113	java/nio/channels/FileLock:release	()V
+    //   99: invokevirtual 111	java/nio/channels/FileLock:release	()V
     //   102: aload_2
     //   103: ifnull +7 -> 110
     //   106: aload_2
-    //   107: invokestatic 70	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
+    //   107: invokestatic 68	com/google/android/gms/common/util/IOUtils:closeQuietly	(Ljava/io/Closeable;)V
     //   110: sipush 5255
-    //   113: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: aload_0
     //   117: athrow
     //   118: astore_0
@@ -392,7 +391,7 @@ public final class IOUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.IOUtils
  * JD-Core Version:    0.7.0.1
  */

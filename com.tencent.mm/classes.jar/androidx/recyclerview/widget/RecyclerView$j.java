@@ -2,7 +2,7 @@ package androidx.recyclerview.widget;
 
 public abstract class RecyclerView$j
 {
-  public abstract boolean aI(int paramInt1, int paramInt2);
+  public abstract boolean bC(int paramInt1, int paramInt2);
 }
 
 

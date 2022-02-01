@@ -1,163 +1,69 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bmg
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String EBW;
-  public String SXh;
-  public int SXi;
-  public String city;
-  public String gbn;
-  public int msgType;
-  public String province;
-  public String ybP;
+  public int HWO;
+  public int ZKz;
+  public long update_time;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(269635);
+    AppMethodBeat.i(259084);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      if (this.gbn != null) {
-        paramVarArgs.f(2, this.gbn);
-      }
-      if (this.ybP != null) {
-        paramVarArgs.f(3, this.ybP);
-      }
-      if (this.SXh != null) {
-        paramVarArgs.f(4, this.SXh);
-      }
-      if (this.province != null) {
-        paramVarArgs.f(5, this.province);
-      }
-      if (this.city != null) {
-        paramVarArgs.f(6, this.city);
-      }
-      if (this.EBW != null) {
-        paramVarArgs.f(7, this.EBW);
-      }
-      paramVarArgs.aY(8, this.msgType);
-      paramVarArgs.aY(9, this.SXi);
-      AppMethodBeat.o(269635);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ZKz);
+      paramVarArgs.bS(2, this.HWO);
+      paramVarArgs.bv(3, this.update_time);
+      AppMethodBeat.o(259084);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label748;
-      }
-    }
-    label748:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
-      paramInt = i;
-      if (this.gbn != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.gbn);
-      }
-      i = paramInt;
-      if (this.ybP != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.ybP);
-      }
-      paramInt = i;
-      if (this.SXh != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.SXh);
-      }
-      i = paramInt;
-      if (this.province != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.province);
-      }
-      paramInt = i;
-      if (this.city != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.city);
-      }
-      i = paramInt;
-      if (this.EBW != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.EBW);
-      }
-      paramInt = g.a.a.b.b.a.bM(8, this.msgType);
-      int j = g.a.a.b.b.a.bM(9, this.SXi);
-      AppMethodBeat.o(269635);
-      return i + paramInt + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(269635);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        bmg localbmg = (bmg)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(269635);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localbmg.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(269635);
-          return 0;
-        case 2: 
-          localbmg.gbn = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(269635);
-          return 0;
-        case 3: 
-          localbmg.ybP = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(269635);
-          return 0;
-        case 4: 
-          localbmg.SXh = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(269635);
-          return 0;
-        case 5: 
-          localbmg.province = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(269635);
-          return 0;
-        case 6: 
-          localbmg.city = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(269635);
-          return 0;
-        case 7: 
-          localbmg.EBW = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(269635);
-          return 0;
-        case 8: 
-          localbmg.msgType = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(269635);
-          return 0;
-        }
-        localbmg.SXi = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(269635);
-        return 0;
-      }
-      AppMethodBeat.o(269635);
-      return -1;
+      paramInt = i.a.a.b.b.a.cJ(1, this.ZKz);
+      int i = i.a.a.b.b.a.cJ(2, this.HWO);
+      int j = i.a.a.b.b.a.q(3, this.update_time);
+      AppMethodBeat.o(259084);
+      return paramInt + 0 + i + j;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(259084);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      bmg localbmg = (bmg)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(259084);
+        return -1;
+      case 1: 
+        localbmg.ZKz = locala.ajGk.aar();
+        AppMethodBeat.o(259084);
+        return 0;
+      case 2: 
+        localbmg.HWO = locala.ajGk.aar();
+        AppMethodBeat.o(259084);
+        return 0;
+      }
+      localbmg.update_time = locala.ajGk.aaw();
+      AppMethodBeat.o(259084);
+      return 0;
+    }
+    AppMethodBeat.o(259084);
+    return -1;
   }
 }
 

@@ -1,33 +1,18 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.bm;
+import com.tencent.mm.autogen.b.bp;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public final class h
-  extends bm
+  extends bp
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105105);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[2];
-    localMAutoDBInfo.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "groupID";
-    localMAutoDBInfo.colsMap.put("groupID", "TEXT");
-    localStringBuilder.append(" groupID TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[1] = "desc";
-    localMAutoDBInfo.colsMap.put("desc", "TEXT");
-    localStringBuilder.append(" desc TEXT");
-    localMAutoDBInfo.columns[2] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
+    info = aJm();
     AppMethodBeat.o(105105);
   }
   

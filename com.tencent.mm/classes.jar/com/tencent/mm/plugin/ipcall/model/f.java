@@ -9,51 +9,51 @@ import java.util.Map;
 
 public final class f
 {
-  private static Map<Integer, List<Integer>> DOJ;
-  public int pzp = -1;
+  private static Map<Integer, List<Integer>> JFY;
+  public int sEu = -1;
   
   static
   {
     AppMethodBeat.i(25362);
-    DOJ = new HashMap();
+    JFY = new HashMap();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(3));
     localArrayList.add(Integer.valueOf(2));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    DOJ.put(Integer.valueOf(1), localArrayList);
+    JFY.put(Integer.valueOf(1), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(12));
     localArrayList.add(Integer.valueOf(8));
-    DOJ.put(Integer.valueOf(2), localArrayList);
+    JFY.put(Integer.valueOf(2), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(4));
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    DOJ.put(Integer.valueOf(3), localArrayList);
+    JFY.put(Integer.valueOf(3), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(5));
     localArrayList.add(Integer.valueOf(8));
     localArrayList.add(Integer.valueOf(12));
-    DOJ.put(Integer.valueOf(4), localArrayList);
+    JFY.put(Integer.valueOf(4), localArrayList);
     localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(9));
     localArrayList.add(Integer.valueOf(10));
     localArrayList.add(Integer.valueOf(11));
-    DOJ.put(Integer.valueOf(5), localArrayList);
+    JFY.put(Integer.valueOf(5), localArrayList);
     AppMethodBeat.o(25362);
   }
   
-  private boolean Vi(int paramInt)
+  private boolean Zd(int paramInt)
   {
     AppMethodBeat.i(25360);
-    if (this.pzp == -1)
+    if (this.sEu == -1)
     {
       AppMethodBeat.o(25360);
       return true;
     }
-    if ((DOJ.containsKey(Integer.valueOf(this.pzp))) && (((List)DOJ.get(Integer.valueOf(this.pzp))).contains(Integer.valueOf(paramInt))))
+    if ((JFY.containsKey(Integer.valueOf(this.sEu))) && (((List)JFY.get(Integer.valueOf(this.sEu))).contains(Integer.valueOf(paramInt))))
     {
       AppMethodBeat.o(25360);
       return true;
@@ -62,7 +62,7 @@ public final class f
     return false;
   }
   
-  public static String Vj(int paramInt)
+  public static String Ze(int paramInt)
   {
     AppMethodBeat.i(25361);
     switch (paramInt)
@@ -108,44 +108,44 @@ public final class f
     return "CANCEL_BY_ERR";
   }
   
-  public final boolean Vh(int paramInt)
+  public final boolean Zc(int paramInt)
   {
     AppMethodBeat.i(25359);
-    if (Vi(paramInt))
+    if (Zd(paramInt))
     {
-      Log.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { Vj(this.pzp), Vj(paramInt) });
-      this.pzp = paramInt;
+      Log.i("MicroMsg.IPCallStateIndicator", "updateState, origin: %s, new: %s", new Object[] { Ze(this.sEu), Ze(paramInt) });
+      this.sEu = paramInt;
       AppMethodBeat.o(25359);
       return true;
     }
-    Log.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { Vj(i.eJu().pzp), Vj(paramInt) });
+    Log.i("MicroMsg.IPCallStateIndicator", "transform state error, origin state: %s, new state: %s", new Object[] { Ze(h.fRu().sEu), Ze(paramInt) });
     AppMethodBeat.o(25359);
     return false;
   }
   
-  public final boolean eJj()
+  public final boolean fRj()
   {
-    return (this.pzp == 1) || (this.pzp == 3) || (this.pzp == 4) || (this.pzp == 5);
+    return (this.sEu == 1) || (this.sEu == 3) || (this.sEu == 4) || (this.sEu == 5);
   }
   
-  public final boolean eJk()
+  public final boolean fRk()
   {
-    return (this.pzp == 4) || (this.pzp == 5);
+    return (this.sEu == 4) || (this.sEu == 5);
   }
   
-  public final boolean eJl()
+  public final boolean fRl()
   {
-    return this.pzp == 5;
+    return this.sEu == 5;
   }
   
-  public final boolean eJm()
+  public final boolean fRm()
   {
-    return this.pzp == 5;
+    return this.sEu == 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f
  * JD-Core Version:    0.7.0.1
  */

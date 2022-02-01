@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_payu.pay.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.ui.RemittanceF2fLargeMoneyUI;
 
@@ -15,7 +14,7 @@ public class WalletPayUOrderInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.ui.WalletPayUOrderInfoUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/hit" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:id="@id/gxp" android:background="@drawable/y7" android:layout_width="@dimen/bt" android:layout_height="@dimen/bt" android:layout_marginBottom="@dimen/ct" android:layout_below="@id/hit" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.order.ui.OrderTabView android:id="@id/hoz" android:layout_width="fill_parent" android:layout_height="93.0dip" app:layout_constraintTop_toTopOf="hr_" />
+    <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/l8k" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toBottomOf="@id/hoz" />
+</androidx.constraintlayout.widget.ConstraintLayout>

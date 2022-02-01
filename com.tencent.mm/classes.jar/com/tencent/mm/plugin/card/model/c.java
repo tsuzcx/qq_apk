@@ -7,8 +7,8 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class c
   extends MAutoStorage<CardInfo>
@@ -36,15 +36,15 @@ public final class c
     Object localObject = "update UserCardInfo set stickyIndex=0, stickyEndTime=0 where stickyIndex>0 and (" + l + ">stickyEndTime and stickyEndTime<>0)";
     this.db.execSQL("UserCardInfo", (String)localObject);
     localObject = new StringBuilder("select * from UserCardInfo");
-    switch (1.tpn[parama.ordinal()])
+    switch (1.wtM[parama.ordinal()])
     {
     }
     for (;;)
     {
       ((StringBuilder)localObject).append(" order by stickyIndex desc, status asc , updateTime desc");
-      if (parama == n.a.tpW)
+      if (parama == n.a.wuv)
       {
-        int i = ((Integer)h.aHG().aHp().get(ar.a.Vio, Integer.valueOf(3))).intValue();
+        int i = ((Integer)h.baE().ban().get(at.a.acJI, Integer.valueOf(3))).intValue();
         ((StringBuilder)localObject).append(" LIMIT ").append(i);
       }
       parama = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
@@ -64,7 +64,7 @@ public final class c
     }
   }
   
-  public final CardInfo aqX(String paramString)
+  public final CardInfo akC(String paramString)
   {
     AppMethodBeat.i(112768);
     CardInfo localCardInfo = new CardInfo();
@@ -79,7 +79,7 @@ public final class c
   }
   
   /* Error */
-  public final java.util.List<CardInfo> cHi()
+  public final java.util.List<CardInfo> dkz()
   {
     // Byte code:
     //   0: ldc 179
@@ -167,7 +167,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.c
  * JD-Core Version:    0.7.0.1
  */

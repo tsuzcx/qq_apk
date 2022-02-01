@@ -4,23 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.security.Principal;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
-import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class ClientCertRequestHandler
   implements ClientCertRequest
 {
   private Object bridge;
   private ReflectMethod cancelMethod;
-  private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod getHostMethod;
   private ReflectMethod getKeyTypesMethod;
   private ReflectMethod getPortMethod;
   private ReflectMethod getPrincipalsMethod;
   private ReflectMethod ignoreMethod;
-  private ReflectMethod postWrapperMethod;
   private ReflectMethod proceedPrivateKeyListMethod;
   
   public ClientCertRequestHandler(Object paramObject)
@@ -36,6 +33,26 @@ public class ClientCertRequestHandler
     this.bridge = paramObject;
     reflectionInit();
     AppMethodBeat.o(154590);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154598);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154598);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    this.proceedPrivateKeyListMethod.init(this.bridge, null, "proceedSuper", new Class[] { PrivateKey.class, List.class });
+    this.ignoreMethod.init(this.bridge, null, "ignoreSuper", new Class[0]);
+    this.cancelMethod.init(this.bridge, null, "cancelSuper", new Class[0]);
+    this.getHostMethod.init(this.bridge, null, "getHostSuper", new Class[0]);
+    this.getPortMethod.init(this.bridge, null, "getPortSuper", new Class[0]);
+    this.getKeyTypesMethod.init(this.bridge, null, "getKeyTypesSuper", new Class[0]);
+    this.getPrincipalsMethod.init(this.bridge, null, "getPrincipalsSuper", new Class[0]);
+    AppMethodBeat.o(154598);
   }
   
   public void cancel()
@@ -206,31 +223,10 @@ public class ClientCertRequestHandler
       AppMethodBeat.o(154591);
     }
   }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154598);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154598);
-      return;
-    }
-    this.proceedPrivateKeyListMethod.init(this.bridge, null, "proceedSuper", new Class[] { PrivateKey.class, List.class });
-    this.ignoreMethod.init(this.bridge, null, "ignoreSuper", new Class[0]);
-    this.cancelMethod.init(this.bridge, null, "cancelSuper", new Class[0]);
-    this.getHostMethod.init(this.bridge, null, "getHostSuper", new Class[0]);
-    this.getPortMethod.init(this.bridge, null, "getPortSuper", new Class[0]);
-    this.getKeyTypesMethod.init(this.bridge, null, "getKeyTypesSuper", new Class[0]);
-    this.getPrincipalsMethod.init(this.bridge, null, "getPrincipalsSuper", new Class[0]);
-    AppMethodBeat.o(154598);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.ClientCertRequestHandler
  * JD-Core Version:    0.7.0.1
  */

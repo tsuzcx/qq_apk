@@ -17,38 +17,38 @@ import java.util.Set;
 public class b
   extends JceStruct
 {
-  protected HashMap<String, HashMap<String, byte[]>> cig;
-  private HashMap<String, Object> cih;
-  private HashMap<String, Object> cii;
-  protected String cij;
-  JceInputStream cik;
+  protected HashMap<String, HashMap<String, byte[]>> dYF;
+  private HashMap<String, Object> dYG;
+  private HashMap<String, Object> dYH;
+  protected String dYI;
+  JceInputStream dYJ;
   
   static
   {
-    AppMethodBeat.i(186363);
+    AppMethodBeat.i(208296);
     if (!b.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(186363);
+      AppMethodBeat.o(208296);
       return;
     }
   }
   
   public b()
   {
-    AppMethodBeat.i(186349);
-    this.cig = new HashMap();
-    this.cih = new HashMap(128);
-    this.cii = new HashMap(128);
-    this.cij = "GBK";
-    this.cik = new JceInputStream();
-    AppMethodBeat.o(186349);
+    AppMethodBeat.i(208291);
+    this.dYF = new HashMap();
+    this.dYG = new HashMap(128);
+    this.dYH = new HashMap(128);
+    this.dYI = "GBK";
+    this.dYJ = new JceInputStream();
+    AppMethodBeat.o(208291);
   }
   
-  private void c(ArrayList<String> paramArrayList, Object paramObject)
+  private void e(ArrayList<String> paramArrayList, Object paramObject)
   {
-    AppMethodBeat.i(186343);
+    AppMethodBeat.i(208285);
     for (;;)
     {
       if (paramObject.getClass().isArray())
@@ -56,7 +56,7 @@ public class b
         if (!paramObject.getClass().getComponentType().toString().equals("byte"))
         {
           paramArrayList = new IllegalArgumentException("only byte[] is supported");
-          AppMethodBeat.o(186343);
+          AppMethodBeat.o(208285);
           throw paramArrayList;
         }
         if (Array.getLength(paramObject) > 0)
@@ -68,7 +68,7 @@ public class b
         {
           paramArrayList.add("Array");
           paramArrayList.add("?");
-          AppMethodBeat.o(186343);
+          AppMethodBeat.o(208285);
         }
       }
       else
@@ -76,7 +76,7 @@ public class b
         if ((paramObject instanceof Array))
         {
           paramArrayList = new IllegalArgumentException("can not support Array, please use List");
-          AppMethodBeat.o(186343);
+          AppMethodBeat.o(208285);
           throw paramArrayList;
         }
         if ((paramObject instanceof List))
@@ -90,7 +90,7 @@ public class b
           else
           {
             paramArrayList.add("?");
-            AppMethodBeat.o(186343);
+            AppMethodBeat.o(208285);
           }
         }
         else
@@ -111,61 +111,27 @@ public class b
     }
     paramArrayList.add("?");
     paramArrayList.add("?");
-    AppMethodBeat.o(186343);
+    AppMethodBeat.o(208285);
     return;
     label257:
     paramArrayList.add(paramObject.getClass().getName());
-    AppMethodBeat.o(186343);
+    AppMethodBeat.o(208285);
   }
   
-  public byte[] Km()
+  public byte[] akn()
   {
-    AppMethodBeat.i(186346);
+    AppMethodBeat.i(208302);
     Object localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.cij);
-    ((JceOutputStream)localObject).write(this.cig, 0);
+    ((JceOutputStream)localObject).setServerEncoding(this.dYI);
+    ((JceOutputStream)localObject).write(this.dYF, 0);
     localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-    AppMethodBeat.o(186346);
+    AppMethodBeat.o(208302);
     return localObject;
-  }
-  
-  public <T> void c(String paramString, T paramT)
-  {
-    AppMethodBeat.i(186340);
-    if (paramString == null)
-    {
-      paramString = new IllegalArgumentException("put key can not is null");
-      AppMethodBeat.o(186340);
-      throw paramString;
-    }
-    if (paramT == null)
-    {
-      paramString = new IllegalArgumentException("put value can not is null");
-      AppMethodBeat.o(186340);
-      throw paramString;
-    }
-    if ((paramT instanceof Set))
-    {
-      paramString = new IllegalArgumentException("can not support Set");
-      AppMethodBeat.o(186340);
-      throw paramString;
-    }
-    Object localObject = new JceOutputStream();
-    ((JceOutputStream)localObject).setServerEncoding(this.cij);
-    ((JceOutputStream)localObject).write(paramT, 0);
-    localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-    HashMap localHashMap = new HashMap(1);
-    ArrayList localArrayList = new ArrayList(1);
-    c(localArrayList, paramT);
-    localHashMap.put(a.d(localArrayList), localObject);
-    this.cii.remove(paramString);
-    this.cig.put(paramString, localHashMap);
-    AppMethodBeat.o(186340);
   }
   
   public Object clone()
   {
-    AppMethodBeat.i(186355);
+    AppMethodBeat.i(208309);
     localObject1 = null;
     try
     {
@@ -176,51 +142,85 @@ public class b
     {
       while ($assertionsDisabled) {}
       localObject1 = new AssertionError();
-      AppMethodBeat.o(186355);
+      AppMethodBeat.o(208309);
       throw ((Throwable)localObject1);
     }
-    AppMethodBeat.o(186355);
+    AppMethodBeat.o(208309);
     return localObject1;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(186361);
-    new JceDisplayer(paramStringBuilder, paramInt).display(this.cig, "_data");
-    AppMethodBeat.o(186361);
+    AppMethodBeat.i(208318);
+    new JceDisplayer(paramStringBuilder, paramInt).display(this.dYF, "_data");
+    AppMethodBeat.o(208318);
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(186353);
-    boolean bool = JceUtil.equals(Integer.valueOf(1), ((b)paramObject).cig);
-    AppMethodBeat.o(186353);
+    AppMethodBeat.i(208306);
+    boolean bool = JceUtil.equals(Integer.valueOf(1), ((b)paramObject).dYF);
+    AppMethodBeat.o(208306);
     return bool;
+  }
+  
+  public <T> void j(String paramString, T paramT)
+  {
+    AppMethodBeat.i(208299);
+    if (paramString == null)
+    {
+      paramString = new IllegalArgumentException("put key can not is null");
+      AppMethodBeat.o(208299);
+      throw paramString;
+    }
+    if (paramT == null)
+    {
+      paramString = new IllegalArgumentException("put value can not is null");
+      AppMethodBeat.o(208299);
+      throw paramString;
+    }
+    if ((paramT instanceof Set))
+    {
+      paramString = new IllegalArgumentException("can not support Set");
+      AppMethodBeat.o(208299);
+      throw paramString;
+    }
+    Object localObject = new JceOutputStream();
+    ((JceOutputStream)localObject).setServerEncoding(this.dYI);
+    ((JceOutputStream)localObject).write(paramT, 0);
+    localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+    HashMap localHashMap = new HashMap(1);
+    ArrayList localArrayList = new ArrayList(1);
+    e(localArrayList, paramT);
+    localHashMap.put(a.g(localArrayList), localObject);
+    this.dYH.remove(paramString);
+    this.dYF.put(paramString, localHashMap);
+    AppMethodBeat.o(208299);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(186359);
-    this.cig.clear();
+    AppMethodBeat.i(208315);
+    this.dYF.clear();
     HashMap localHashMap = new HashMap();
     byte[] arrayOfByte = (byte[])new byte[1];
     ((byte[])arrayOfByte)[0] = Byte.valueOf(0).byteValue();
     localHashMap.put("", arrayOfByte);
-    this.cig.put("", localHashMap);
-    this.cig = ((HashMap)paramJceInputStream.read(this.cig, 0, true));
-    AppMethodBeat.o(186359);
+    this.dYF.put("", localHashMap);
+    this.dYF = ((HashMap)paramJceInputStream.read(this.dYF, 0, true));
+    AppMethodBeat.o(208315);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(186357);
-    paramJceOutputStream.write(this.cig, 0);
-    AppMethodBeat.o(186357);
+    AppMethodBeat.i(208312);
+    paramJceOutputStream.write(this.dYF, 0);
+    AppMethodBeat.o(208312);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.a.a.b
  * JD-Core Version:    0.7.0.1
  */

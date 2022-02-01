@@ -8,14 +8,14 @@ public final class b
   extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] mKU;
+  private static final String[] pHB;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(64646);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "HoneyPayMsgRecord") };
-    mKU = new String[] { "*", "rowid" };
+    pHB = new String[] { "*", "rowid" };
     AppMethodBeat.o(64646);
   }
   
@@ -27,7 +27,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.b
  * JD-Core Version:    0.7.0.1
  */

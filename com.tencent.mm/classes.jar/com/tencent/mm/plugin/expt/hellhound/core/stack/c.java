@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bm;
+import com.tencent.mm.protocal.protobuf.bu;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static void a(bm parambm)
+  public static void a(bu parambu)
   {
     AppMethodBeat.i(121880);
-    if (parambm == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(121880);
       return;
@@ -18,50 +18,50 @@ public final class c
     Object localObject = null;
     try
     {
-      parambm = parambm.toByteArray();
-      b.r("hell_astackd_mmkv_key", parambm);
+      parambu = parambu.toByteArray();
+      b.u("hell_astackd_mmkv_key", parambu);
       AppMethodBeat.o(121880);
       return;
     }
-    catch (Exception parambm)
+    catch (Exception parambu)
     {
       for (;;)
       {
-        Log.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambm, "ActivityStackDao write", new Object[0]);
-        parambm = localObject;
+        Log.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambu, "ActivityStackDao write", new Object[0]);
+        parambu = localObject;
       }
     }
   }
   
-  public static bm dcC()
+  public static bu dJe()
   {
     AppMethodBeat.i(121879);
-    bm localbm2 = dcD();
-    bm localbm1 = localbm2;
-    if (localbm2 == null)
+    bu localbu2 = dJf();
+    bu localbu1 = localbu2;
+    if (localbu2 == null)
     {
-      localbm1 = new bm();
-      a(localbm1);
+      localbu1 = new bu();
+      a(localbu1);
     }
     AppMethodBeat.o(121879);
-    return localbm1;
+    return localbu1;
   }
   
-  private static bm dcD()
+  private static bu dJf()
   {
     AppMethodBeat.i(121881);
-    byte[] arrayOfByte = b.awZ("hell_astackd_mmkv_key");
+    byte[] arrayOfByte = b.ard("hell_astackd_mmkv_key");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
       AppMethodBeat.o(121881);
       return null;
     }
-    bm localbm = new bm();
+    bu localbu = new bu();
     try
     {
-      localbm.parseFrom(arrayOfByte);
+      localbu.parseFrom(arrayOfByte);
       AppMethodBeat.o(121881);
-      return localbm;
+      return localbu;
     }
     catch (Exception localException)
     {
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.c
  * JD-Core Version:    0.7.0.1
  */

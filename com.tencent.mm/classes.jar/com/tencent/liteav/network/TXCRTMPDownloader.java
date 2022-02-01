@@ -32,7 +32,7 @@ public class TXCRTMPDownloader
   private Object mRTMPThreadLock;
   private String mServerIp;
   private HandlerThread mThread;
-  private Vector<e> mVecPlayUrls;
+  private Vector<f> mVecPlayUrls;
   
   public TXCRTMPDownloader(Context paramContext)
   {
@@ -90,10 +90,10 @@ public class TXCRTMPDownloader
       }
       if ((paramBoolean) && (this.mVecPlayUrls != null) && (!this.mVecPlayUrls.isEmpty()))
       {
-        e locale = (e)this.mVecPlayUrls.get(0);
+        f localf = (f)this.mVecPlayUrls.get(0);
         this.mVecPlayUrls.remove(0);
-        this.mPlayUrl = locale.a;
-        this.mQuicChannel = locale.b;
+        this.mPlayUrl = localf.a;
+        this.mQuicChannel = localf.b;
       }
       if ((bool) && (this.mHasTcpPlayUrl))
       {
@@ -270,17 +270,24 @@ public class TXCRTMPDownloader
     AppMethodBeat.o(15475);
   }
   
-  public void startDownload(Vector<e> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(15477);
+    startDownload(paramVector, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, null);
+    AppMethodBeat.o(15477);
+  }
+  
+  public void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, e parame)
+  {
+    AppMethodBeat.i(229690);
     if (this.mIsRunning)
     {
-      AppMethodBeat.o(15477);
+      AppMethodBeat.o(229690);
       return;
     }
     if ((paramVector == null) || (paramVector.isEmpty()))
     {
-      AppMethodBeat.o(15477);
+      AppMethodBeat.o(229690);
       return;
     }
     this.mEnableMessage = paramBoolean3;
@@ -290,21 +297,20 @@ public class TXCRTMPDownloader
     this.mVecPlayUrls = paramVector;
     this.mHasTcpPlayUrl = false;
     int i = 0;
-    StringBuilder localStringBuilder;
     if (i < this.mVecPlayUrls.size())
     {
-      if (!((e)this.mVecPlayUrls.elementAt(i)).b) {
+      if (!((f)this.mVecPlayUrls.elementAt(i)).b) {
         this.mHasTcpPlayUrl = true;
       }
     }
     else
     {
-      paramVector = (e)this.mVecPlayUrls.get(0);
+      paramVector = (f)this.mVecPlayUrls.get(0);
       this.mVecPlayUrls.remove(0);
       this.mPlayUrl = paramVector.a;
       this.mQuicChannel = paramVector.b;
       this.mIsRunning = true;
-      localStringBuilder = new StringBuilder("start pull with url:").append(this.mPlayUrl).append(" quic:");
+      parame = new StringBuilder("start pull with url:").append(this.mPlayUrl).append(" quic:");
       if (!this.mQuicChannel) {
         break label282;
       }
@@ -333,7 +339,7 @@ public class TXCRTMPDownloader
         }
       };
       startInternal();
-      AppMethodBeat.o(15477);
+      AppMethodBeat.o(229690);
       return;
       i += 1;
       break;
@@ -516,7 +522,7 @@ public class TXCRTMPDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.TXCRTMPDownloader
  * JD-Core Version:    0.7.0.1
  */

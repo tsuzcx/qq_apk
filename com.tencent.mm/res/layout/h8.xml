@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/b43" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/j1n" android:background="@color/x5" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/e" android:visibility="gone" android:layout_width="fill_parent" android:layout_alignParentStart="true" style="@style/nq" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e1v" android:background="@drawable/qa" android:paddingLeft="@dimen/cb" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
-        <com.tencent.mm.ui.base.MaskLayout android:id="@id/v7" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn">
-            <ImageView android:id="@id/be9" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-        </com.tencent.mm.ui.base.MaskLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/b9w" android:paddingRight="@dimen/cb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/cp" android:layout_weight="1.0">
-            <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/v8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k_" android:text="{nick}" android:singleLine="true" style="@style/mp" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:id="@id/b16" android:background="@color/a6w" android:scrollbars="vertical" style="@style/na" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/cje" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cg" />
+</FrameLayout>

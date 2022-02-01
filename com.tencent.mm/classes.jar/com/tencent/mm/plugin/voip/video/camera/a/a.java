@@ -1,43 +1,45 @@
 package com.tencent.mm.plugin.voip.video.camera.a;
 
 import android.graphics.SurfaceTexture;
-import com.tencent.mm.compatible.deviceinfo.ad;
-import kotlin.l;
+import android.util.Size;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/camera/common/BaseCaptureRenderer;", "", "()V", "bind", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "exchangeCapture", "focusOnFace", "faceLocation", "", "isClickScreen", "", "getCameraErrCode", "", "getCurrentCameraIsFace", "getDisplayOrientation", "getPreviewSize", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "getRotateAngle", "initCapture", "dataCallback", "Lcom/tencent/mm/plugin/voip/video/camera/common/ICaptureRenderListener;", "bFaceFirst", "isCameraRemote180", "isMirror", "isPreviewing", "onOrientationChange", "rotation", "setDisplayOrientation", "startCapture", "stopCapture", "plugin-voip_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/video/camera/common/BaseCaptureRenderer;", "", "()V", "bind", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "exchangeCapture", "focusOnFace", "faceLocation", "", "isClickScreen", "", "getCameraErrCode", "", "getCameraFps", "getCurrentCameraIsFace", "getDisplayOrientation", "getPreviewSize", "Landroid/util/Size;", "getRotateAngle", "initCapture", "dataCallback", "Lcom/tencent/mm/plugin/voip/video/camera/common/ICaptureRenderListener;", "bFaceFirst", "isCameraRemote180", "isMirror", "isPreviewing", "onOrientationChange", "rotation", "setDisplayOrientation", "startCapture", "stopCapture", "unInit", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
 {
   public abstract int a(c paramc, boolean paramBoolean);
   
-  public abstract void eXS();
+  public abstract boolean boa();
   
-  public abstract boolean egx();
+  public abstract boolean bqb();
   
-  public abstract int gDA();
+  public abstract void ggH();
   
-  public abstract int gDB();
+  public abstract Size hq();
   
-  public abstract ad gDC();
+  public abstract int icA();
   
-  public abstract void gDD();
+  public abstract void icB();
   
-  public abstract int gDE();
+  public abstract int icC();
   
-  public abstract boolean gDF();
+  public abstract boolean icu();
   
-  public abstract void gDG();
+  public abstract boolean icv();
   
-  public abstract int gDH();
+  public abstract int icw();
   
-  public abstract void gDI();
+  public abstract int icx();
   
-  public abstract boolean gDy();
+  public abstract void icy();
   
-  public abstract boolean gDz();
+  public abstract int icz();
   
   public abstract void onOrientationChange(int paramInt);
   
-  public abstract void t(SurfaceTexture paramSurfaceTexture);
+  public abstract void unInit();
+  
+  public abstract void v(SurfaceTexture paramSurfaceTexture);
 }
 
 

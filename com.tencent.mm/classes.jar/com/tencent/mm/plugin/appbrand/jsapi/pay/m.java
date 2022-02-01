@@ -1,8 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -12,28 +11,28 @@ public final class m
   public static final int CTRL_INDEX = 431;
   public static final String NAME = "requestMallPayment";
   
-  public final void a(j paramj, JSONObject paramJSONObject, int paramInt)
+  public final void a(k paramk, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(281083);
+    AppMethodBeat.i(327838);
     if (paramJSONObject == null)
     {
-      paramj.j(paramInt, h("fail", null));
-      AppMethodBeat.o(281083);
+      paramk.callback(paramInt, ZP("fail"));
+      AppMethodBeat.o(327838);
       return;
     }
     try
     {
-      paramJSONObject.put("appId", paramj.getAppId());
+      paramJSONObject.put("appId", paramk.getAppId());
       paramJSONObject.put("pay_for_wallet_type", 3);
-      super.a(paramj, paramJSONObject, paramInt);
-      AppMethodBeat.o(281083);
+      super.a(paramk, paramJSONObject, paramInt);
+      AppMethodBeat.o(327838);
       return;
     }
     catch (Exception paramJSONObject)
     {
       Log.e("MicroMsg.JsApiRequestMallPayment", paramJSONObject.getMessage());
-      paramj.j(paramInt, h("fail", null));
-      AppMethodBeat.o(281083);
+      paramk.callback(paramInt, ZP("fail"));
+      AppMethodBeat.o(327838);
     }
   }
 }

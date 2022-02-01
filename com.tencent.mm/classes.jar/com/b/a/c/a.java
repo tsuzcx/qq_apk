@@ -13,7 +13,7 @@ public final class a
   extends SQLiteOpenHelper
   implements b
 {
-  private static final String[] aFR = { "_id", "url", "length", "mime" };
+  private static final String[] cBB = { "_id", "url", "length", "mime" };
   
   public a(Context paramContext)
   {
@@ -37,14 +37,14 @@ public final class a
       }
       i += 1;
     }
-    if (aX(paramString) != null) {}
+    if (ck(paramString) != null) {}
     ContentValues localContentValues;
     for (i = 1;; i = 0)
     {
       localContentValues = new ContentValues();
       localContentValues.put("url", paramq.url);
-      localContentValues.put("length", Long.valueOf(paramq.aFL));
-      localContentValues.put("mime", paramq.aFM);
+      localContentValues.put("length", Long.valueOf(paramq.length));
+      localContentValues.put("mime", paramq.cBw);
       if (i == 0) {
         break;
       }
@@ -56,14 +56,14 @@ public final class a
     AppMethodBeat.o(183634);
   }
   
-  public final q aX(String paramString)
+  public final q ck(String paramString)
   {
     localObject2 = null;
     AppMethodBeat.i(183633);
     l.checkNotNull(paramString);
     try
     {
-      localObject1 = getReadableDatabase().query("SourceInfo", aFR, "url=?", new String[] { paramString }, null, null, null);
+      localObject1 = getReadableDatabase().query("SourceInfo", cBB, "url=?", new String[] { paramString }, null, null, null);
       if (localObject1 != null) {}
       try
       {
@@ -111,7 +111,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.b.a.c.a
  * JD-Core Version:    0.7.0.1
  */

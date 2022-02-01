@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/bod" android:background="@color/c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/b3q" android:dividerHeight="0.5dip" style="@style/ns" />
-    <View android:layout_gravity="center_horizontal" android:id="@id/evz" android:background="@color/a7t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.30000007dip" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" />
-</LinearLayout>
+    <ListView android:id="@id/fa5" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/na" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/a4v" android:gravity="center" android:id="@id/fa4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/fwf" android:layout_centerVertical="true" />
+</RelativeLayout>

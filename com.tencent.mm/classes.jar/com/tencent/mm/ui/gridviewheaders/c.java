@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.gridviewheaders;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.view.View;
@@ -17,12 +16,12 @@ import java.util.List;
 public final class c
   extends BaseAdapter
 {
-  private static boolean XHD;
-  private DataSetObserver QT;
-  final b XHE;
-  private GridHeadersGridView XHF;
-  private final List<View> XHG;
-  private View[] XHH;
+  private static boolean afvj;
+  final b afvk;
+  private GridHeadersGridView afvl;
+  private final List<View> afvm;
+  private View[] afvn;
+  private DataSetObserver bxk;
   private final Context mContext;
   int mCount;
   int mNumColumns;
@@ -30,7 +29,7 @@ public final class c
   public c(Context paramContext, GridHeadersGridView paramGridHeadersGridView, b paramb)
   {
     AppMethodBeat.i(142775);
-    this.QT = new DataSetObserver()
+    this.bxk = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -38,9 +37,9 @@ public final class c
         AppMethodBeat.i(142759);
         c localc = c.this;
         localc.mCount = 0;
-        int j = localc.XHE.hXa();
+        int j = localc.afvk.jBx();
         if (j == 0) {
-          localc.mCount = localc.XHE.getCount();
+          localc.mCount = localc.afvk.getCount();
         }
         for (;;)
         {
@@ -49,7 +48,7 @@ public final class c
           return;
           while (i < j)
           {
-            localc.mCount += localc.XHE.axg(i) + localc.mNumColumns;
+            localc.mCount += localc.afvk.aDO(i) + localc.mNumColumns;
             i += 1;
           }
         }
@@ -63,27 +62,27 @@ public final class c
         AppMethodBeat.o(142760);
       }
     };
-    this.XHG = new ArrayList();
+    this.afvm = new ArrayList();
     this.mNumColumns = 1;
     this.mContext = paramContext;
-    this.XHE = paramb;
-    this.XHF = paramGridHeadersGridView;
-    paramb.registerDataSetObserver(this.QT);
+    this.afvk = paramb;
+    this.afvl = paramGridHeadersGridView;
+    paramb.registerDataSetObserver(this.bxk);
     AppMethodBeat.o(142775);
   }
   
-  private void axh(int paramInt)
+  private void aDP(int paramInt)
   {
     AppMethodBeat.i(142788);
-    this.XHH = new View[paramInt];
-    Arrays.fill(this.XHH, null);
+    this.afvn = new View[paramInt];
+    Arrays.fill(this.afvn, null);
     AppMethodBeat.o(142788);
   }
   
-  private int axi(int paramInt)
+  private int aDQ(int paramInt)
   {
     AppMethodBeat.i(142789);
-    paramInt = this.XHE.axg(paramInt) % this.mNumColumns;
+    paramInt = this.afvk.aDO(paramInt) % this.mNumColumns;
     if (paramInt == 0)
     {
       AppMethodBeat.o(142789);
@@ -94,10 +93,10 @@ public final class c
     return i - paramInt;
   }
   
-  protected final long Ix(int paramInt)
+  protected final long Ja(int paramInt)
   {
     AppMethodBeat.i(142790);
-    long l = axj(paramInt).XHL;
+    long l = aDR(paramInt).afvr;
     AppMethodBeat.o(142790);
     return l;
   }
@@ -105,29 +104,24 @@ public final class c
   protected final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142791);
-    if (this.XHE.hXa() == 0)
+    if (this.afvk.jBx() == 0)
     {
       AppMethodBeat.o(142791);
       return null;
     }
-    paramView = this.XHE.a(axj(paramInt).XHL, paramView, paramViewGroup);
+    paramView = this.afvk.a(aDR(paramInt).afvr, paramView, paramViewGroup);
     AppMethodBeat.o(142791);
     return paramView;
   }
   
-  public final boolean areAllItemsEnabled()
-  {
-    return false;
-  }
-  
-  protected final c axj(int paramInt)
+  protected final c aDR(int paramInt)
   {
     int k = 0;
     AppMethodBeat.i(142792);
-    int m = this.XHE.hXa();
+    int m = this.afvk.jBx();
     if (m == 0)
     {
-      if (paramInt >= this.XHE.getCount())
+      if (paramInt >= this.afvk.getCount())
       {
         localc = new c(-1, 0);
         AppMethodBeat.o(142792);
@@ -142,7 +136,7 @@ public final class c
     paramInt = k;
     while (paramInt < m)
     {
-      k = this.XHE.axg(paramInt);
+      k = this.afvk.aDO(paramInt);
       if (j == 0)
       {
         localc = new c(-2, paramInt);
@@ -163,7 +157,7 @@ public final class c
         AppMethodBeat.o(142792);
         return localc;
       }
-      int n = axi(paramInt);
+      int n = aDQ(paramInt);
       j -= k + n;
       paramInt += 1;
       i -= n;
@@ -173,21 +167,26 @@ public final class c
     return localc;
   }
   
+  public final boolean areAllItemsEnabled()
+  {
+    return false;
+  }
+  
   public final int getCount()
   {
     int i = 0;
     AppMethodBeat.i(142776);
     this.mCount = 0;
-    int j = this.XHE.hXa();
+    int j = this.afvk.jBx();
     if (j == 0)
     {
-      i = this.XHE.getCount();
+      i = this.afvk.getCount();
       AppMethodBeat.o(142776);
       return i;
     }
     while (i < j)
     {
-      this.mCount += this.XHE.axg(i) + axi(i) + this.mNumColumns;
+      this.mCount += this.afvk.aDO(i) + aDQ(i) + this.mNumColumns;
       i += 1;
     }
     i = this.mCount;
@@ -198,13 +197,13 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142777);
-    Object localObject = axj(paramInt);
+    Object localObject = aDR(paramInt);
     if ((((c)localObject).mPosition == -1) || (((c)localObject).mPosition == -2))
     {
       AppMethodBeat.o(142777);
       return null;
     }
-    localObject = this.XHE.getItem(((c)localObject).mPosition);
+    localObject = this.afvk.getItem(((c)localObject).mPosition);
     AppMethodBeat.o(142777);
     return localObject;
   }
@@ -212,7 +211,7 @@ public final class c
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142778);
-    c localc = axj(paramInt);
+    c localc = aDR(paramInt);
     if (localc.mPosition == -2)
     {
       AppMethodBeat.o(142778);
@@ -223,7 +222,7 @@ public final class c
       AppMethodBeat.o(142778);
       return -2L;
     }
-    long l = this.XHE.getItemId(localc.mPosition);
+    long l = this.afvk.getItemId(localc.mPosition);
     AppMethodBeat.o(142778);
     return l;
   }
@@ -231,7 +230,7 @@ public final class c
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(142779);
-    c localc = axj(paramInt);
+    c localc = aDR(paramInt);
     if (localc.mPosition == -2)
     {
       AppMethodBeat.o(142779);
@@ -242,7 +241,7 @@ public final class c
       AppMethodBeat.o(142779);
       return 0;
     }
-    paramInt = this.XHE.getItemViewType(localc.mPosition);
+    paramInt = this.afvk.getItemViewType(localc.mPosition);
     if (paramInt == -1)
     {
       AppMethodBeat.o(142779);
@@ -263,14 +262,14 @@ public final class c
     }
     for (;;)
     {
-      Object localObject2 = axj(paramInt);
+      Object localObject2 = aDR(paramInt);
       if (((c)localObject2).mPosition == -2)
       {
         localObject1 = new b(this.mContext);
-        ((b)localObject1).setHeaderWidth(this.XHF.getWidth());
-        ((b)localObject1).setHeaderId(((c)localObject2).XHL);
+        ((b)localObject1).setHeaderWidth(this.afvl.getWidth());
+        ((b)localObject1).setHeaderId(((c)localObject2).afvr);
         View localView = (View)((View)localObject1).getTag();
-        ((View)localObject1).setTag(this.XHE.a(((c)localObject2).XHL, localView, paramViewGroup));
+        ((View)localObject1).setTag(this.afvk.a(((c)localObject2).afvr, localView, paramViewGroup));
       }
       for (;;)
       {
@@ -282,15 +281,15 @@ public final class c
         ((d)localObject2).addView((View)localObject1);
         ((d)localObject2).setPosition(paramInt);
         ((d)localObject2).setNumColumns(this.mNumColumns);
-        this.XHH[(paramInt % this.mNumColumns)] = localObject2;
+        this.afvn[(paramInt % this.mNumColumns)] = localObject2;
         if (paramInt % this.mNumColumns != 0) {
           break label293;
         }
-        XHD = true;
+        afvj = true;
         int i = 1;
-        while (i < this.XHH.length)
+        while (i < this.afvn.length)
         {
-          this.XHH[i] = getView(paramInt + i, null, paramViewGroup);
+          this.afvn[i] = getView(paramInt + i, null, paramViewGroup);
           i += 1;
         }
         if (((c)localObject2).mPosition == -1)
@@ -303,14 +302,14 @@ public final class c
         }
         else
         {
-          localObject1 = this.XHE.getView(((c)localObject2).mPosition, (View)localObject1, paramViewGroup);
+          localObject1 = this.afvk.getView(((c)localObject2).mPosition, (View)localObject1, paramViewGroup);
         }
       }
-      XHD = false;
+      afvj = false;
       label293:
-      ((d)localObject2).setRowSiblings(this.XHH);
-      if ((!XHD) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
-        axh(this.mNumColumns);
+      ((d)localObject2).setRowSiblings(this.afvn);
+      if ((!afvj) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
+        aDP(this.mNumColumns);
       }
       AppMethodBeat.o(142780);
       return localObject2;
@@ -323,7 +322,7 @@ public final class c
   public final int getViewTypeCount()
   {
     AppMethodBeat.i(142781);
-    int i = this.XHE.getViewTypeCount();
+    int i = this.afvk.getViewTypeCount();
     AppMethodBeat.o(142781);
     return i + 2;
   }
@@ -331,7 +330,7 @@ public final class c
   public final boolean hasStableIds()
   {
     AppMethodBeat.i(142782);
-    boolean bool = this.XHE.hasStableIds();
+    boolean bool = this.afvk.hasStableIds();
     AppMethodBeat.o(142782);
     return bool;
   }
@@ -339,7 +338,7 @@ public final class c
   public final boolean isEmpty()
   {
     AppMethodBeat.i(142783);
-    boolean bool = this.XHE.isEmpty();
+    boolean bool = this.afvk.isEmpty();
     AppMethodBeat.o(142783);
     return bool;
   }
@@ -347,13 +346,13 @@ public final class c
   public final boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(142784);
-    c localc = axj(paramInt);
+    c localc = aDR(paramInt);
     if ((localc.mPosition == -1) || (localc.mPosition == -2))
     {
       AppMethodBeat.o(142784);
       return false;
     }
-    boolean bool = this.XHE.isEnabled(localc.mPosition);
+    boolean bool = this.afvk.isEnabled(localc.mPosition);
     AppMethodBeat.o(142784);
     return bool;
   }
@@ -361,7 +360,7 @@ public final class c
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(142785);
-    this.XHE.registerDataSetObserver(paramDataSetObserver);
+    this.afvk.registerDataSetObserver(paramDataSetObserver);
     AppMethodBeat.o(142785);
   }
   
@@ -369,14 +368,14 @@ public final class c
   {
     AppMethodBeat.i(142786);
     this.mNumColumns = paramInt;
-    axh(paramInt);
+    aDP(paramInt);
     AppMethodBeat.o(142786);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(142787);
-    this.XHE.unregisterDataSetObserver(paramDataSetObserver);
+    this.afvk.unregisterDataSetObserver(paramDataSetObserver);
     AppMethodBeat.o(142787);
   }
   
@@ -392,8 +391,8 @@ public final class c
   protected final class b
     extends FrameLayout
   {
-    private int XHJ;
-    private int XHK;
+    private int afvp;
+    private int afvq;
     
     public b(Context paramContext)
     {
@@ -410,7 +409,7 @@ public final class c
     
     public final int getHeaderId()
     {
-      return this.XHJ;
+      return this.afvp;
     }
     
     protected final void onMeasure(int paramInt1, int paramInt2)
@@ -421,7 +420,7 @@ public final class c
         localView.setLayoutParams(generateDefaultLayoutParams());
       }
       if ((localView.getVisibility() != 8) && (localView.getMeasuredHeight() == 0)) {
-        localView.measure(View.MeasureSpec.makeMeasureSpec(this.XHK, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
+        localView.measure(View.MeasureSpec.makeMeasureSpec(this.afvq, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
       }
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), localView.getMeasuredHeight());
       AppMethodBeat.o(142762);
@@ -429,32 +428,32 @@ public final class c
     
     public final void setHeaderId(int paramInt)
     {
-      this.XHJ = paramInt;
+      this.afvp = paramInt;
     }
     
     public final void setHeaderWidth(int paramInt)
     {
-      this.XHK = paramInt;
+      this.afvq = paramInt;
     }
   }
   
   protected final class c
   {
-    protected int XHL;
+    protected int afvr;
     protected int mPosition;
     
     protected c(int paramInt1, int paramInt2)
     {
       this.mPosition = paramInt1;
-      this.XHL = paramInt2;
+      this.afvr = paramInt2;
     }
   }
   
   protected final class d
     extends FrameLayout
   {
-    private View[] XHH;
-    private boolean XHM;
+    private View[] afvn;
+    private boolean afvs;
     private int mNumColumns;
     private int mPosition;
     
@@ -474,7 +473,13 @@ public final class c
     public final Object getTag()
     {
       AppMethodBeat.i(142766);
-      Object localObject = getChildAt(0).getTag();
+      Object localObject = getChildAt(0);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(142766);
+        return null;
+      }
+      localObject = ((View)localObject).getTag();
       AppMethodBeat.o(142766);
       return localObject;
     }
@@ -482,7 +487,13 @@ public final class c
     public final Object getTag(int paramInt)
     {
       AppMethodBeat.i(142767);
-      Object localObject = getChildAt(0).getTag(paramInt);
+      Object localObject = getChildAt(0);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(142767);
+        return null;
+      }
+      localObject = ((View)localObject).getTag(paramInt);
       AppMethodBeat.o(142767);
       return localObject;
     }
@@ -505,10 +516,10 @@ public final class c
         AppMethodBeat.o(142772);
         return;
       }
-      if ((this.mPosition % this.mNumColumns == 0) && (!this.XHM))
+      if ((this.mPosition % this.mNumColumns == 0) && (!this.afvs))
       {
-        this.XHM = true;
-        arrayOfView = this.XHH;
+        this.afvs = true;
+        arrayOfView = this.afvn;
         k = arrayOfView.length;
         i = 0;
         while (i < k)
@@ -516,10 +527,10 @@ public final class c
           arrayOfView[i].measure(paramInt1, paramInt2);
           i += 1;
         }
-        this.XHM = false;
+        this.afvs = false;
       }
       int k = getMeasuredHeight();
-      View[] arrayOfView = this.XHH;
+      View[] arrayOfView = this.afvn;
       int m = arrayOfView.length;
       int i = k;
       paramInt2 = j;
@@ -552,10 +563,9 @@ public final class c
       this.mPosition = paramInt;
     }
     
-    @SuppressLint({"NewApi"})
     public final void setRowSiblings(View[] paramArrayOfView)
     {
-      this.XHH = paramArrayOfView;
+      this.afvn = paramArrayOfView;
     }
     
     public final void setTag(int paramInt, Object paramObject)
@@ -575,7 +585,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.c
  * JD-Core Version:    0.7.0.1
  */

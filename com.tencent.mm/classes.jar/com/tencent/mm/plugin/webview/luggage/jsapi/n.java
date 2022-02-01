@@ -9,55 +9,55 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.handoff.a.a;
 import com.tencent.mm.plugin.handoff.model.HandOffURL;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.q;
-import com.tencent.mm.plugin.webview.luggage.t;
+import com.tencent.mm.plugin.webview.luggage.r;
+import com.tencent.mm.plugin.webview.luggage.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
 public class n
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78546);
-    Object localObject = paramb.crh.cqn;
+    Object localObject = paramb.eiZ.eif;
     String str1 = ((JSONObject)localObject).optString("brandIcon");
     String str2 = ((JSONObject)localObject).optString("brandName");
     localObject = ((JSONObject)localObject).optString("title");
     Log.i("MicroMsg.JsApiCurrentMpInfo", "doCurrentMpInfo brandIcon:%s", new Object[] { str1 });
     if (!Util.isNullOrNil(str1))
     {
-      ((g)paramb.crg).gUD().aox(str1);
-      t localt = ((g)paramb.crg).gUE();
-      p.k(str1, "icon");
-      localt.PRs = str1;
-      localt.aox(str1);
+      ((g)paramb.eiY).ium().ahT(str1);
+      u localu = ((g)paramb.eiY).iun();
+      s.u(str1, "icon");
+      localu.WHQ = str1;
+      localu.ahT(str1);
     }
     if (!Util.isNullOrNil(str2)) {
-      ((g)paramb.crg).gUE().aQZ(str2);
+      ((g)paramb.eiY).iun().aNR(str2);
     }
     if (!Util.isNullOrNil((String)localObject))
     {
-      ((g)paramb.crg).gUD().aoy((String)localObject);
-      ((g)paramb.crg).gUE().aMT((String)localObject);
+      ((g)paramb.eiY).ium().ahU((String)localObject);
+      ((g)paramb.eiY).iun().updateTitle((String)localObject);
     }
-    if (((g)paramb.crg).gUF() != null)
+    if (((g)paramb.eiY).iuo() != null)
     {
-      ((g)paramb.crg).gUF().setIcon(Util.nullAsNil(str1));
+      ((g)paramb.eiY).iuo().setIcon(Util.nullAsNil(str1));
       if (!Util.isNullOrNil(str2)) {
-        ((g)paramb.crg).gUF().setTitle(str2);
+        ((g)paramb.eiY).iuo().setTitle(str2);
       }
-      ((a)h.ae(a.class)).e(((g)paramb.crg).gUF());
+      ((a)h.ax(a.class)).e(((g)paramb.eiY).iuo());
     }
     paramb.a("", null);
     AppMethodBeat.o(78546);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

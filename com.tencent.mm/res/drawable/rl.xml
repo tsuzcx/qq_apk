@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-selector
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:id="@id/j8m" android:drawable="@drawable/b8z" />
-    <item android:id="@id/fad" android:drawable="@drawable/b90" />
-    <transition android:drawable="@drawable/er" android:toId="@id/j8m" android:fromId="@id/fad" />
-    <transition android:drawable="@drawable/eq" android:toId="@id/fad" android:fromId="@id/j8m" />
-</animated-selector>
+    <item android:state_selected="true" android:drawable="@drawable/bxu" />
+    <item android:drawable="@drawable/bxv" />
+</selector>

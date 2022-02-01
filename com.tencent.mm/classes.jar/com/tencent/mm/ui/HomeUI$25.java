@@ -1,35 +1,25 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.autogen.a.qd;
+import com.tencent.mm.autogen.a.qd.a;
+import com.tencent.mm.sdk.event.IListener;
 
-final class HomeUI$25
-  implements DialogInterface.OnClickListener
+class HomeUI$25
+  extends IListener<qd>
 {
-  HomeUI$25(HomeUI paramHomeUI, int paramInt) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  HomeUI$25(HomeUI paramHomeUI, q paramq)
   {
-    AppMethodBeat.i(33203);
-    try
-    {
-      NetStatusUtil.startSettingItent(HomeUI.c(this.VWJ), this.val$type);
-      AppMethodBeat.o(33203);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      Log.printErrStackTrace("MicroMsg.LauncherUI.HomeUI", paramDialogInterface, "", new Object[0]);
-      AppMethodBeat.o(33203);
-    }
+    super(paramq);
+    AppMethodBeat.i(249093);
+    this.__eventId = qd.class.getName().hashCode();
+    AppMethodBeat.o(249093);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.25
  * JD-Core Version:    0.7.0.1
  */

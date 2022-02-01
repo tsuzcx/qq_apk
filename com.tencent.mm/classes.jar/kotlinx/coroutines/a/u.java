@@ -1,20 +1,40 @@
 package kotlinx.coroutines.a;
 
-import kotlin.l;
-import kotlinx.coroutines.internal.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.d.f;
+import kotlinx.coroutines.an;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/channels/ReceiveOrClosed;", "E", "", "offerResult", "getOfferResult", "()Ljava/lang/Object;", "completeResumeReceive", "", "value", "(Ljava/lang/Object;)V", "tryResumeReceive", "Lkotlinx/coroutines/internal/Symbol;", "otherOp", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode$PrepareOp;", "Lkotlinx/coroutines/internal/PrepareOp;", "(Ljava/lang/Object;Lkotlinx/coroutines/internal/LockFreeLinkedListNode$PrepareOp;)Lkotlinx/coroutines/internal/Symbol;", "kotlinx-coroutines-core"})
-public abstract interface u<E>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/channels/ProducerCoroutine;", "E", "Lkotlinx/coroutines/channels/ChannelCoroutine;", "Lkotlinx/coroutines/channels/ProducerScope;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "channel", "Lkotlinx/coroutines/channels/Channel;", "(Lkotlin/coroutines/CoroutineContext;Lkotlinx/coroutines/channels/Channel;)V", "isActive", "", "()Z", "onCancelled", "", "cause", "", "handled", "onCompleted", "value", "(Lkotlin/Unit;)V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public class u<E>
+  extends i<E>
+  implements v<E>
 {
-  public abstract v gn(E paramE);
+  public u(f paramf, h<E> paramh)
+  {
+    super(paramf, paramh);
+  }
   
-  public abstract Object iSA();
+  public final void b(Throwable paramThrowable, boolean paramBoolean)
+  {
+    AppMethodBeat.i(189275);
+    if ((!kDp().k(paramThrowable)) && (!paramBoolean)) {
+      an.b(getContext(), paramThrowable);
+    }
+    AppMethodBeat.o(189275);
+  }
   
-  public abstract void iSf();
+  public final boolean isActive()
+  {
+    AppMethodBeat.i(189269);
+    boolean bool = super.isActive();
+    AppMethodBeat.o(189269);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.u
  * JD-Core Version:    0.7.0.1
  */

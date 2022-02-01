@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/fod" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ct" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="24.0dip">
-        <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/fp7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/fp6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
-        <RelativeLayout android:id="@id/xb" android:background="@drawable/icon_shadow_multitalk_avatar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cc" android:layout_alignParentBottom="true" />
-        <TextView android:textSize="10.0dip" android:textColor="@color/am" android:ellipsize="end" android:id="@id/fpd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" />
-        <RelativeLayout android:orientation="horizontal" android:id="@id/jbb" android:background="@drawable/b31" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/fon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="16.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/foo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/i3b" android:layout_below="@id/fon" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="@dimen/amz" layout="@layout/b28" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/km2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/lvw" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/gz1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/bz8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/exr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/gtw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.picker.base.view.WheelView android:id="@id/j7i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

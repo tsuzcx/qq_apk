@@ -1,83 +1,74 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bvq;
-import com.tencent.mm.protocal.protobuf.bvr;
-import com.tencent.mm.protocal.protobuf.bvs;
-import com.tencent.mm.protocal.protobuf.bvt;
+import com.tencent.mm.protocal.protobuf.dao;
+import com.tencent.mm.protocal.protobuf.fpg;
+import com.tencent.mm.protocal.protobuf.fph;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.LinkedList;
 
 public final class aa
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  d jTk;
-  private String vgj;
+  private h callback;
+  private c rr;
+  ae ysf;
   
-  public aa(LinkedList<bvr> paramLinkedList, String paramString1, String paramString2)
+  public aa(dao paramdao, ae paramae)
   {
-    AppMethodBeat.i(23424);
-    this.vgj = "";
-    this.jTk = null;
-    this.jQg = null;
-    this.vgj = paramString2;
-    paramString2 = new d.a();
-    paramString2.lBU = new bvs();
-    paramString2.lBV = new bvt();
-    paramString2.uri = "/cgi-bin/micromsg-bin/getharddeviceoperticket";
-    paramString2.funcId = 543;
-    paramString2.lBW = 0;
-    paramString2.respCmdId = 0;
-    this.jTk = paramString2.bgN();
-    paramString2 = (bvs)d.b.b(this.jTk.lBR);
-    if (!Util.isNullOrNil(paramString1))
-    {
-      bvq localbvq = new bvq();
-      localbvq.RPP = paramString1;
-      paramString2.TfB = localbvq;
-    }
-    paramString2.TfA = paramLinkedList;
-    AppMethodBeat.o(23424);
+    AppMethodBeat.i(274583);
+    this.callback = null;
+    this.rr = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fpg();
+    ((c.a)localObject).otF = new fph();
+    ((c.a)localObject).uri = "/cgi-bin/mmiot-bin/mmiot/mmiot_transfermsgtodevice";
+    ((c.a)localObject).funcId = 6844;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    Log.i("MicroMsg.exdevice.NetSceneTransferToIotDevice", "deviceid %s", new Object[] { paramae.deviceID });
+    localObject = (fpg)c.b.b(this.rr.otB);
+    ((fpg)localObject).abcm = paramae.hFT;
+    ((fpg)localObject).ZoO = paramae.deviceID;
+    ((fpg)localObject).abPi = paramdao;
+    this.ysf = paramae;
+    AppMethodBeat.o(274583);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(23425);
-    this.jQg = parami;
-    int i = dispatch(paramg, this.jTk, this);
-    AppMethodBeat.o(23425);
+    AppMethodBeat.i(274586);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(274586);
     return i;
   }
   
   public final int getType()
   {
-    return 543;
+    return 6844;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23426);
-    Log.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.jQg != null) {
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(23426);
+    AppMethodBeat.i(274585);
+    Log.i("MicroMsg.exdevice.NetSceneTransferToIotDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(274585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.aa
  * JD-Core Version:    0.7.0.1
  */

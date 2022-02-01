@@ -18,7 +18,7 @@ public class CircleOptions
   public CircleOptions()
   {
     AppMethodBeat.i(173128);
-    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.iLevel = 2;
     this.latlngCenter = new LatLng(39.984253000000002D, 116.307439D);
     this.dRadius = 1.0D;
     this.fStrokeWidth = 1.0F;
@@ -32,7 +32,7 @@ public class CircleOptions
   CircleOptions(int paramInt1, LatLng paramLatLng, double paramDouble, float paramFloat, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     AppMethodBeat.i(181059);
-    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.iLevel = 2;
     this.latlngCenter = new LatLng(39.984253000000002D, 116.307439D);
     this.dRadius = 1.0D;
     this.fStrokeWidth = 1.0F;
@@ -114,7 +114,7 @@ public class CircleOptions
   
   public CircleOptions level(int paramInt)
   {
-    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+    if ((paramInt < 0) || (paramInt > 2)) {
       return this;
     }
     this.iLevel = paramInt;
@@ -170,7 +170,7 @@ public class CircleOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.CircleOptions
  * JD-Core Version:    0.7.0.1
  */

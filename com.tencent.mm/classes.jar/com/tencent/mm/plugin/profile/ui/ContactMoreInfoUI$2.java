@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.z;
@@ -18,12 +18,12 @@ final class ContactMoreInfoUI$2
   {
     AppMethodBeat.i(27027);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.GYA.GYz);
-    paramView.putExtra("geta8key_username", z.bcZ());
-    c.b(this.GYA, "webview", ".ui.tools.WebViewUI", paramView);
+    paramView.putExtra("rawUrl", this.MWD.MWC);
+    paramView.putExtra("geta8key_username", z.bAM());
+    c.b(this.MWD, "webview", ".ui.tools.WebViewUI", paramView);
     a.a(this, "com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(27027);
   }

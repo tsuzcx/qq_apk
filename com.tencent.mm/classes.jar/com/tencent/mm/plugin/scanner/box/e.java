@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.scanner.box;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "", "dismissDialog", "", "exitType", "", "isShowingDialog", "", "onPause", "onResume", "showDialog", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "", "dismissDialog", "", "exitType", "", "isShowingDialog", "", "onPause", "onResume", "showDialog", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface e
 {
-  public static final a IGX = a.IGY;
+  public static final a ONc = a.ONd;
   
-  public abstract void adl(int paramInt);
+  public abstract void xM(int paramInt);
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel$Companion;", "", "()V", "CLOSE_TYPE_BACK_PRESSED", "", "CLOSE_TYPE_CLICK_CLOSE_BUTTON", "CLOSE_TYPE_DEFAULT", "CLOSE_TYPE_SCROLL_DOWN", "CLOSE_TYPE_SCROLL_LEFT", "CLOSE_TYPE_TOUCH_OUTSIDE", "DIALOG_STATE_DEFAULT", "DIALOG_STATE_FULL_SCREEN", "DIALOG_STATE_HALF_SCREEN", "plugin-scan_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel$Companion;", "", "()V", "CLOSE_TYPE_BACK_PRESSED", "", "CLOSE_TYPE_CLICK_CLOSE_BUTTON", "CLOSE_TYPE_DEFAULT", "CLOSE_TYPE_SCROLL_DOWN", "CLOSE_TYPE_SCROLL_LEFT", "CLOSE_TYPE_TOUCH_OUTSIDE", "DIALOG_STATE_DEFAULT", "DIALOG_STATE_FULL_SCREEN", "DIALOG_STATE_HALF_SCREEN", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
     static
     {
       AppMethodBeat.i(52083);
-      IGY = new a();
+      ONd = new a();
       AppMethodBeat.o(52083);
     }
   }

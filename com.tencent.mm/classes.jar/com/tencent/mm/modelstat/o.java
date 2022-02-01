@@ -1,25 +1,30 @@
 package com.tencent.mm.modelstat;
 
+import android.content.Context;
+import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.modelsns.n;
-import com.tencent.mm.modelvideo.w;
-import com.tencent.mm.modelvideo.y;
+import com.tencent.mm.modelvideo.ab;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.emn;
-import com.tencent.mm.protocal.protobuf.emp;
-import com.tencent.mm.protocal.protobuf.emq;
+import com.tencent.mm.protocal.protobuf.atg;
+import com.tencent.mm.protocal.protobuf.fhl;
+import com.tencent.mm.protocal.protobuf.fhn;
+import com.tencent.mm.protocal.protobuf.fho;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public final class o
 {
-  public static emq Xr(String paramString)
+  public static fho Pt(String paramString)
   {
     AppMethodBeat.i(94880);
     if (Util.isNullOrNil(paramString))
@@ -28,11 +33,11 @@ public final class o
       return null;
     }
     byte[] arrayOfByte = Base64.decode(paramString, 0);
-    paramString = new emp();
+    paramString = new fhn();
     try
     {
       paramString.parseFrom(arrayOfByte);
-      paramString = paramString.Upe;
+      paramString = paramString.abIc;
       AppMethodBeat.o(94880);
       return paramString;
     }
@@ -45,12 +50,23 @@ public final class o
     }
   }
   
-  public static String a(emq paramemq)
+  public static String a(atg paramatg)
+  {
+    AppMethodBeat.i(242908);
+    if ((TextUtils.isEmpty(paramatg.ZDL)) || ((paramatg.FOi & 1L) == 1L)) {}
+    for (paramatg = paramatg.ZDK;; paramatg = MMApplicationContext.getContext().getString(b.j.sns_share_finder_activity_card, new Object[] { paramatg.ZDL, paramatg.ZDK }))
+    {
+      AppMethodBeat.o(242908);
+      return paramatg;
+    }
+  }
+  
+  public static String a(fho paramfho)
   {
     AppMethodBeat.i(94882);
-    if (paramemq != null)
+    if (paramfho != null)
     {
-      Object localObject = paramemq.RzC;
+      Object localObject = paramfho.Ywb;
       String str2 = "";
       String str1 = str2;
       if (!Util.isNullOrNil((String)localObject))
@@ -67,13 +83,13 @@ public final class o
       }
       try
       {
-        paramemq = String.format("expId=%d&adgroup_id=%s&snsId=%s", new Object[] { Integer.valueOf(paramemq.Upi), URLEncoder.encode(str1, "UTF-8"), paramemq.Uph });
+        paramfho = String.format("expId=%d&adgroup_id=%s&snsId=%s", new Object[] { Integer.valueOf(paramfho.abIg), URLEncoder.encode(str1, "UTF-8"), paramfho.abIf });
         AppMethodBeat.o(94882);
-        return paramemq;
+        return paramfho;
       }
-      catch (UnsupportedEncodingException paramemq)
+      catch (UnsupportedEncodingException paramfho)
       {
-        Log.e("MicroMsg.SnsStatExtUtil", "", new Object[] { paramemq });
+        Log.e("MicroMsg.SnsStatExtUtil", "", new Object[] { paramfho });
       }
     }
     AppMethodBeat.o(94882);
@@ -89,15 +105,15 @@ public final class o
       return "";
     }
     Object localObject = Base64.decode(paramString, 0);
-    paramString = new emp();
+    paramString = new fhn();
     try
     {
       paramString.parseFrom((byte[])localObject);
-      localObject = paramString.Upe.RzC;
-      String str = paramString.Upe.Uph;
-      localObject = String.format("snsId=%s&uxInfo=%s&source=%d&snsStatExt=%s", new Object[] { URLEncoder.encode((String)localObject, "UTF-8"), URLEncoder.encode(str, "UTF-8"), Integer.valueOf(paramString.Upe.source), URLEncoder.encode(a(paramString.Upe), "UTF-8") });
-      if (paramString.Upg == null) {}
-      for (paramString = "";; paramString = paramString.Upg.CIO)
+      localObject = paramString.abIc.Ywb;
+      String str = paramString.abIc.abIf;
+      localObject = String.format("snsId=%s&uxInfo=%s&source=%d&snsStatExt=%s", new Object[] { URLEncoder.encode((String)localObject, "UTF-8"), URLEncoder.encode(str, "UTF-8"), Integer.valueOf(paramString.abIc.source), URLEncoder.encode(a(paramString.abIc), "UTF-8") });
+      if (paramString.abIe == null) {}
+      for (paramString = "";; paramString = paramString.abIe.ICZ)
       {
         paramPString.value = paramString;
         AppMethodBeat.o(94881);
@@ -132,7 +148,7 @@ public final class o
       AppMethodBeat.o(94879);
       return;
     }
-    paramString = Xr(paramString);
+    paramString = Pt(paramString);
     StringBuilder localStringBuilder = paramStringBuilder.append(",");
     if (paramString == null) {}
     for (int i = -1;; i = paramString.source)
@@ -144,34 +160,34 @@ public final class o
     }
   }
   
-  public static String ao(ca paramca)
+  public static String at(cc paramcc)
   {
     AppMethodBeat.i(94883);
-    if (paramca == null)
+    if (paramcc == null)
     {
       AppMethodBeat.o(94883);
       return "";
     }
     Object localObject = null;
-    if (paramca.erk())
+    if (paramcc.fxR())
     {
-      localObject = k.b.OQ(paramca.field_content);
-      if ((localObject == null) || (Util.isNullOrNil(((k.b)localObject).fUk)))
+      localObject = k.b.Hf(paramcc.field_content);
+      if ((localObject == null) || (Util.isNullOrNil(((k.b)localObject).iah)))
       {
         AppMethodBeat.o(94883);
         return "";
       }
-      localObject = ((k.b)localObject).fUk;
+      localObject = ((k.b)localObject).iah;
     }
-    if (paramca.dlT())
+    if (paramcc.dSJ())
     {
-      paramca = y.Yk(paramca.field_imgPath);
-      if ((paramca == null) || (Util.isNullOrNil(paramca.fUk)))
+      paramcc = ab.Qo(paramcc.field_imgPath);
+      if ((paramcc == null) || (Util.isNullOrNil(paramcc.iah)))
       {
         AppMethodBeat.o(94883);
         return "";
       }
-      localObject = paramca.fUk;
+      localObject = paramcc.iah;
     }
     AppMethodBeat.o(94883);
     return localObject;
@@ -185,13 +201,13 @@ public final class o
       AppMethodBeat.o(94878);
       return;
     }
-    paramString = Xr(paramString);
+    paramString = Pt(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramString == null) {}
     for (int i = -1;; i = paramString.source)
     {
-      paramn.m("Source", i + ",");
-      paramn.m("SnsStatExt", a(paramString));
+      paramn.s("Source", i + ",");
+      paramn.s("SnsStatExt", a(paramString));
       AppMethodBeat.o(94878);
       return;
     }
@@ -204,10 +220,10 @@ public final class o
     static
     {
       AppMethodBeat.i(94876);
-      meE = new a("Chat", 0, 1);
-      meF = new a("TalkChat", 1, 2);
-      meG = new a("Sns", 2, 3);
-      meH = new a[] { meE, meF, meG };
+      oXw = new a("Chat", 0, 1);
+      oXx = new a("TalkChat", 1, 2);
+      oXy = new a("Sns", 2, 3);
+      oXz = new a[] { oXw, oXx, oXy };
       AppMethodBeat.o(94876);
     }
     
@@ -219,7 +235,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelstat.o
  * JD-Core Version:    0.7.0.1
  */

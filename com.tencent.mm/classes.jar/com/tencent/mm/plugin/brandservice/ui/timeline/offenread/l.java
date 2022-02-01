@@ -1,91 +1,93 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.an.af;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.protocal.protobuf.aba;
-import com.tencent.mm.protocal.protobuf.erq;
-import com.tencent.mm.protocal.protobuf.err;
-import com.tencent.mm.protocal.protobuf.eru;
+import com.tencent.mm.protocal.protobuf.ada;
+import com.tencent.mm.protocal.protobuf.fmy;
+import com.tencent.mm.protocal.protobuf.fmz;
+import com.tencent.mm.protocal.protobuf.fnc;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.bx;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class l
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private d rr;
+  private com.tencent.mm.am.h callback;
+  c rr;
   
   public l()
   {
     AppMethodBeat.i(6151);
-    Object localObject1 = new d.a();
-    ((d.a)localObject1).lBU = new erq();
-    ((d.a)localObject1).lBV = new err();
-    ((d.a)localObject1).uri = "/cgi-bin/mmbiz-bin/bizattr/timeline_often_read_biz";
-    ((d.a)localObject1).funcId = 2768;
-    ((d.a)localObject1).lBW = 0;
-    ((d.a)localObject1).respCmdId = 0;
-    this.rr = ((d.a)localObject1).bgN();
-    localObject1 = (erq)d.b.b(this.rr.lBR);
-    Object localObject2 = g.cBq();
-    if (localObject2 == null) {}
-    for (;;)
+    Object localObject2 = new c.a();
+    ((c.a)localObject2).otE = new fmy();
+    ((c.a)localObject2).otF = new fmz();
+    ((c.a)localObject2).uri = "/cgi-bin/mmbiz-bin/bizattr/timeline_often_read_biz";
+    ((c.a)localObject2).funcId = 2768;
+    ((c.a)localObject2).otG = 0;
+    ((c.a)localObject2).respCmdId = 0;
+    this.rr = ((c.a)localObject2).bEF();
+    localObject2 = (fmy)c.b.b(this.rr.otB);
+    Object localObject3 = g.deD();
+    if (localObject3 == null)
     {
-      ((erq)localObject1).UtG = localLinkedList;
+      ((fmy)localObject2).abNb = ((LinkedList)localObject1);
+      localObject1 = b.vPq;
+      if (!b.dew()) {
+        break label295;
+      }
+      localObject1 = b.vPq;
+      if (!b.dex()) {
+        break label295;
+      }
+    }
+    label295:
+    for (int i = 1;; i = 0)
+    {
+      ((fmy)localObject2).ZZN = i;
       AppMethodBeat.o(6151);
       return;
-      localObject2 = ((err)localObject2).UtH;
-      if (!Util.isNullOrNil((List)localObject2))
+      localObject3 = ((fmz)localObject3).abNc;
+      if (Util.isNullOrNil((List)localObject3)) {
+        break;
+      }
+      localObject1 = new LinkedList();
+      localObject3 = ((LinkedList)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        localLinkedList = new LinkedList();
-        localObject2 = ((LinkedList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        Object localObject4 = (fnc)((Iterator)localObject3).next();
+        if (localObject4 != null)
         {
-          Object localObject3 = (eru)((Iterator)localObject2).next();
-          if (localObject3 != null)
-          {
-            aba localaba = new aba();
-            localaba.RKL = ((eru)localObject3).RKL;
-            long l = ((n)h.ae(n.class)).bbL().bwk(((eru)localObject3).RKL);
-            localObject3 = af.bjB().UA(l);
-            if (localObject3 != null) {
-              localaba.Snq = ((int)(((z)localObject3).field_createTime / 1000L));
-            }
-            localLinkedList.add(localaba);
+          ada localada = new ada();
+          localada.YIf = ((fnc)localObject4).YIf;
+          long l = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzA().bxx(((fnc)localObject4).YIf);
+          localObject4 = af.bHl().yK(l);
+          if (localObject4 != null) {
+            localada.ZlC = ((int)(((ab)localObject4).field_createTime / 1000L));
           }
+          ((LinkedList)localObject1).add(localada);
         }
       }
+      break;
     }
   }
   
-  public final err cBt()
-  {
-    AppMethodBeat.i(258173);
-    err localerr = (err)d.c.b(this.rr.lBS);
-    AppMethodBeat.o(258173);
-    return localerr;
-  }
-  
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(6153);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(6153);
     return i;
@@ -105,7 +107,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.l
  * JD-Core Version:    0.7.0.1
  */

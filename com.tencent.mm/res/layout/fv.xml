@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/rk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/rt" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/c" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center" android:id="@id/rr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerInParent="true" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
+        <ImageView android:id="@id/rs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/s7" android:src="@raw/app_brand_loading_game_original" android:scaleType="fitCenter" android:minWidth="@dimen/s8" android:minHeight="@dimen/s6" android:layout_below="@id/rr" android:layout_centerHorizontal="true" />
+        <include android:id="@id/g3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/s3" android:layout_below="@id/rs" android:layout_centerHorizontal="true" layout="@layout/h1" />
+        <FrameLayout android:id="@id/rp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_above="@id/rr" android:layout_centerHorizontal="true">
+            <com.tencent.mm.plugin.appbrand.ui.AppBrandCircleProgressView android:layout_gravity="center" android:id="@id/rq" android:visibility="visible" android:layout_width="64.0dip" android:layout_height="64.0dip" />
+            <ImageView android:layout_gravity="center" android:id="@id/rn" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="fitCenter" />
+        </FrameLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/ro" android:paddingLeft="@dimen/rw" android:paddingRight="@dimen/rx" android:paddingBottom="@dimen/s0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerInParent="true">
+            <TextView android:textColor="@color/a14" android:gravity="center" android:id="@id/rm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a6b" android:importantForAccessibility="no" />
+            <ImageView android:id="@id/rl" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/rp" android:scaleType="fitCenter" android:minWidth="@dimen/rv" android:minHeight="@dimen/ru" />
+        </LinearLayout>
+        <ImageView android:id="@id/rv" android:layout_width="71.0dip" android:layout_height="21.0dip" android:layout_marginBottom="@dimen/rz" android:src="@raw/app_brand_loading_game" android:scaleType="fitCenter" android:layout_above="@id/ro" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/rg" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/rh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentStart="true" />
+        <com.tencent.mm.plugin.appbrand.game.preload.ui.BootstrapProgressBar android:id="@id/ri" android:layout_width="@dimen/rt" android:layout_height="8.0dip" android:layout_marginBottom="@dimen/rs" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

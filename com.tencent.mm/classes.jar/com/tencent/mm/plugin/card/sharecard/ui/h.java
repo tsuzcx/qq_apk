@@ -7,17 +7,17 @@ import com.tencent.mm.plugin.card.base.b;
 public final class h
   implements a
 {
-  private g ttw;
+  private g wxT;
   
   public h(g paramg)
   {
-    this.ttw = paramg;
+    this.wxT = paramg;
   }
   
-  public final b HE(int paramInt)
+  public final b If(int paramInt)
   {
     AppMethodBeat.i(113099);
-    if (this.ttw != null)
+    if (this.wxT != null)
     {
       AppMethodBeat.o(113099);
       throw null;
@@ -29,14 +29,14 @@ public final class h
   public final void onCreate()
   {
     AppMethodBeat.i(113096);
-    this.ttw.notifyDataSetChanged();
+    this.wxT.notifyDataSetChanged();
     AppMethodBeat.o(113096);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113097);
-    if (this.ttw != null)
+    if (this.wxT != null)
     {
       AppMethodBeat.o(113097);
       throw null;
@@ -47,15 +47,15 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113098);
-    if (this.ttw != null) {
-      this.ttw.notifyDataSetChanged();
+    if (this.wxT != null) {
+      this.wxT.notifyDataSetChanged();
     }
     AppMethodBeat.o(113098);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.h
  * JD-Core Version:    0.7.0.1
  */

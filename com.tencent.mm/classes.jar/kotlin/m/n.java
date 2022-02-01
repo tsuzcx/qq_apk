@@ -1,193 +1,103 @@
 package kotlin.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
-import kotlin.a.j;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"all", "", "T", "Lkotlin/sequences/Sequence;", "predicate", "Lkotlin/Function1;", "any", "asIterable", "", "asSequence", "associate", "", "K", "V", "transform", "Lkotlin/Pair;", "associateBy", "keySelector", "valueTransform", "associateByTo", "M", "", "destination", "(Lkotlin/sequences/Sequence;Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "(Lkotlin/sequences/Sequence;Ljava/util/Map;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "associateTo", "associateWith", "valueSelector", "associateWithTo", "average", "", "", "averageOfByte", "averageOfDouble", "", "averageOfFloat", "", "averageOfInt", "", "averageOfLong", "", "averageOfShort", "chunked", "", "size", "R", "contains", "Lkotlin/internal/OnlyInputTypes;", "element", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;)Z", "count", "distinct", "distinctBy", "selector", "drop", "n", "dropWhile", "elementAt", "index", "(Lkotlin/sequences/Sequence;I)Ljava/lang/Object;", "elementAtOrElse", "defaultValue", "(Lkotlin/sequences/Sequence;ILkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "elementAtOrNull", "filter", "filterIndexed", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "filterIndexedTo", "C", "", "(Lkotlin/sequences/Sequence;Ljava/util/Collection;Lkotlin/jvm/functions/Function2;)Ljava/util/Collection;", "filterIsInstance", "Lkotlin/internal/NoInfer;", "filterIsInstanceTo", "(Lkotlin/sequences/Sequence;Ljava/util/Collection;)Ljava/util/Collection;", "filterNot", "filterNotNull", "", "filterNotNullTo", "filterNotTo", "(Lkotlin/sequences/Sequence;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "filterTo", "find", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "findLast", "first", "(Lkotlin/sequences/Sequence;)Ljava/lang/Object;", "firstOrNull", "flatMap", "flatMapTo", "fold", "initial", "operation", "acc", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "foldIndexed", "Lkotlin/Function3;", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "forEach", "", "action", "forEachIndexed", "groupBy", "groupByTo", "", "groupingBy", "Lkotlin/collections/Grouping;", "indexOf", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;)I", "indexOfFirst", "indexOfLast", "joinTo", "A", "Ljava/lang/Appendable;", "Lkotlin/text/Appendable;", "buffer", "separator", "", "prefix", "postfix", "limit", "truncated", "(Lkotlin/sequences/Sequence;Ljava/lang/Appendable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;)Ljava/lang/Appendable;", "joinToString", "", "last", "lastIndexOf", "lastOrNull", "map", "mapIndexed", "mapIndexedNotNull", "mapIndexedNotNullTo", "mapIndexedTo", "mapNotNull", "mapNotNullTo", "mapTo", "max", "", "(Lkotlin/sequences/Sequence;)Ljava/lang/Comparable;", "(Lkotlin/sequences/Sequence;)Ljava/lang/Double;", "(Lkotlin/sequences/Sequence;)Ljava/lang/Float;", "maxBy", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Lkotlin/sequences/Sequence;Ljava/util/Comparator;)Ljava/lang/Object;", "min", "minBy", "minWith", "minus", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "elements", "", "(Lkotlin/sequences/Sequence;[Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "minusElement", "none", "onEach", "partition", "plus", "plusElement", "reduce", "S", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;", "reduceIndexed", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function3;)Ljava/lang/Object;", "reduceOrNull", "requireNoNulls", "scan", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Lkotlin/sequences/Sequence;", "scanIndexed", "(Lkotlin/sequences/Sequence;Ljava/lang/Object;Lkotlin/jvm/functions/Function3;)Lkotlin/sequences/Sequence;", "scanReduce", "scanReduceIndexed", "single", "singleOrNull", "sorted", "sortedBy", "sortedByDescending", "sortedDescending", "sortedWith", "sum", "sumOfByte", "sumOfDouble", "sumOfFloat", "sumOfInt", "sumOfLong", "sumOfShort", "sumBy", "sumByDouble", "take", "takeWhile", "toCollection", "toHashSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "toList", "toMutableList", "toMutableSet", "", "toSet", "", "windowed", "step", "partialWindows", "withIndex", "Lkotlin/collections/IndexedValue;", "zip", "other", "a", "b", "zipWithNext", "kotlin-stdlib"}, iBN=1)
+@Metadata(d1={""}, d2={"Sequence", "Lkotlin/sequences/Sequence;", "T", "iterator", "Lkotlin/Function0;", "", "emptySequence", "flatMapIndexed", "R", "C", "source", "transform", "Lkotlin/Function2;", "", "Lkotlin/Function1;", "generateSequence", "", "nextFunction", "seedFunction", "seed", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;", "sequenceOf", "elements", "", "([Ljava/lang/Object;)Lkotlin/sequences/Sequence;", "asSequence", "constrainOnce", "flatten", "flatten$SequencesKt__SequencesKt", "", "flattenSequenceOfIterable", "ifEmpty", "defaultValue", "orEmpty", "shuffled", "random", "Lkotlin/random/Random;", "unzip", "Lkotlin/Pair;", "", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/sequences/SequencesKt")
 public class n
   extends m
 {
-  public static final <T, A extends Appendable> A a(h<? extends T> paramh, A paramA, CharSequence paramCharSequence1, CharSequence paramCharSequence2, CharSequence paramCharSequence3, CharSequence paramCharSequence4)
+  public static final <T> h<T> a(h<? extends T> paramh)
   {
-    AppMethodBeat.i(129517);
-    kotlin.g.b.p.k(paramh, "$this$joinTo");
-    kotlin.g.b.p.k(paramA, "buffer");
-    kotlin.g.b.p.k(paramCharSequence1, "separator");
-    kotlin.g.b.p.k(paramCharSequence2, "prefix");
-    kotlin.g.b.p.k(paramCharSequence3, "postfix");
-    kotlin.g.b.p.k(paramCharSequence4, "truncated");
-    paramA.append(paramCharSequence2);
-    int i = 0;
-    paramh = paramh.iterator();
-    while (paramh.hasNext())
+    AppMethodBeat.i(129531);
+    s.u(paramh, "$this$constrainOnce");
+    if ((paramh instanceof a))
     {
-      paramCharSequence2 = paramh.next();
-      i += 1;
-      if (i > 1) {
-        paramA.append(paramCharSequence1);
-      }
-      kotlin.n.n.a(paramA, paramCharSequence2, null);
+      AppMethodBeat.o(129531);
+      return paramh;
     }
-    paramA.append(paramCharSequence3);
-    AppMethodBeat.o(129517);
-    return paramA;
-  }
-  
-  public static final <T, C extends Collection<? super T>> C a(h<? extends T> paramh, C paramC)
-  {
-    AppMethodBeat.i(129510);
-    kotlin.g.b.p.k(paramh, "$this$toCollection");
-    kotlin.g.b.p.k(paramC, "destination");
-    paramh = paramh.iterator();
-    while (paramh.hasNext()) {
-      paramC.add(paramh.next());
-    }
-    AppMethodBeat.o(129510);
-    return paramC;
-  }
-  
-  public static final <T> h<T> a(h<? extends T> paramh, b<? super T, Boolean> paramb)
-  {
-    AppMethodBeat.i(129507);
-    kotlin.g.b.p.k(paramh, "$this$filter");
-    kotlin.g.b.p.k(paramb, "predicate");
-    paramh = (h)new e(paramh, true, paramb);
-    AppMethodBeat.o(129507);
+    paramh = (h)new a(paramh);
+    AppMethodBeat.o(129531);
     return paramh;
   }
   
-  public static final <T> h<T> b(h<? extends T> paramh)
+  public static final <T> h<T> as(T... paramVarArgs)
   {
-    AppMethodBeat.i(129509);
-    kotlin.g.b.p.k(paramh, "$this$filterNotNull");
-    paramh = i.b(paramh, (b)b.abvn);
-    AppMethodBeat.o(129509);
-    return paramh;
-  }
-  
-  public static final <T> h<T> b(h<? extends T> paramh, b<? super T, Boolean> paramb)
-  {
-    AppMethodBeat.i(129508);
-    kotlin.g.b.p.k(paramh, "$this$filterNot");
-    kotlin.g.b.p.k(paramb, "predicate");
-    paramh = (h)new e(paramh, false, paramb);
-    AppMethodBeat.o(129508);
-    return paramh;
-  }
-  
-  public static final <T> List<T> c(h<? extends T> paramh)
-  {
-    AppMethodBeat.i(129511);
-    kotlin.g.b.p.k(paramh, "$this$toList");
-    paramh = j.ll(i.d(paramh));
-    AppMethodBeat.o(129511);
-    return paramh;
-  }
-  
-  public static final <T, R> h<R> c(h<? extends T> paramh, b<? super T, ? extends h<? extends R>> paramb)
-  {
-    AppMethodBeat.i(129513);
-    kotlin.g.b.p.k(paramh, "$this$flatMap");
-    kotlin.g.b.p.k(paramb, "transform");
-    paramh = (h)new f(paramh, paramb, (b)c.abvo);
-    AppMethodBeat.o(129513);
-    return paramh;
-  }
-  
-  public static final <T> List<T> d(h<? extends T> paramh)
-  {
-    AppMethodBeat.i(129512);
-    kotlin.g.b.p.k(paramh, "$this$toMutableList");
-    paramh = (List)i.a(paramh, (Collection)new ArrayList());
-    AppMethodBeat.o(129512);
-    return paramh;
-  }
-  
-  public static final <T, R> h<R> d(h<? extends T> paramh, b<? super T, ? extends R> paramb)
-  {
-    AppMethodBeat.i(129514);
-    kotlin.g.b.p.k(paramh, "$this$map");
-    kotlin.g.b.p.k(paramb, "transform");
-    paramh = (h)new p(paramh, paramb);
-    AppMethodBeat.o(129514);
-    return paramh;
-  }
-  
-  public static final <T> int e(h<? extends T> paramh)
-  {
-    AppMethodBeat.i(129516);
-    kotlin.g.b.p.k(paramh, "$this$count");
-    int i = 0;
-    paramh = paramh.iterator();
-    while (paramh.hasNext())
+    AppMethodBeat.i(129530);
+    s.u(paramVarArgs, "elements");
+    if (paramVarArgs.length == 0) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramh.next();
-      int j = i + 1;
-      i = j;
-      if (j < 0)
-      {
-        j.iBP();
-        i = j;
-      }
+      paramVarArgs = (h)d.ajtZ;
+      AppMethodBeat.o(129530);
+      return paramVarArgs;
     }
-    AppMethodBeat.o(129516);
-    return i;
+    paramVarArgs = kotlin.a.k.aj(paramVarArgs);
+    AppMethodBeat.o(129530);
+    return paramVarArgs;
   }
   
-  public static final <T, R> h<R> e(h<? extends T> paramh, b<? super T, ? extends R> paramb)
+  public static final <T> h<T> b(T paramT, b<? super T, ? extends T> paramb)
   {
-    AppMethodBeat.i(129515);
-    kotlin.g.b.p.k(paramh, "$this$mapNotNull");
-    kotlin.g.b.p.k(paramb, "transform");
-    paramh = i.b((h)new p(paramh, paramb));
-    AppMethodBeat.o(129515);
-    return paramh;
+    AppMethodBeat.i(129533);
+    s.u(paramb, "nextFunction");
+    if (paramT == null)
+    {
+      paramT = (h)d.ajtZ;
+      AppMethodBeat.o(129533);
+      return paramT;
+    }
+    paramT = (h)new g((kotlin.g.a.a)new e(paramT), paramb);
+    AppMethodBeat.o(129533);
+    return paramT;
   }
   
-  public static final <T> Iterable<T> f(h<? extends T> paramh)
+  public static final <T> h<T> ct(kotlin.g.a.a<? extends T> parama)
   {
-    AppMethodBeat.i(129519);
-    kotlin.g.b.p.k(paramh, "$this$asIterable");
-    paramh = (Iterable)new a(paramh);
-    AppMethodBeat.o(129519);
-    return paramh;
+    AppMethodBeat.i(129532);
+    s.u(parama, "nextFunction");
+    parama = k.a((h)new g(parama, (b)new d(parama)));
+    AppMethodBeat.o(129532);
+    return parama;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/collections/CollectionsKt__IterablesKt$Iterable$1", "", "iterator", "", "kotlin-stdlib"})
+  public static final <T> h<T> d(Iterator<? extends T> paramIterator)
+  {
+    AppMethodBeat.i(190934);
+    s.u(paramIterator, "$this$asSequence");
+    paramIterator = k.a((h)new a(paramIterator));
+    AppMethodBeat.o(190934);
+    return paramIterator;
+  }
+  
+  @Metadata(d1={""}, d2={"kotlin/sequences/SequencesKt__SequencesKt$Sequence$1", "Lkotlin/sequences/Sequence;", "iterator", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
   public static final class a
-    implements Iterable<T>, a
+    implements h<T>
   {
-    public a(h paramh) {}
+    public a(Iterator paramIterator) {}
     
     public final Iterator<T> iterator()
     {
-      AppMethodBeat.i(129474);
-      Iterator localIterator = this.abvm.iterator();
-      AppMethodBeat.o(129474);
-      return localIterator;
+      return this.ajup;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "", "it", "invoke", "(Ljava/lang/Object;)Z"})
-  static final class b
-    extends q
-    implements b<T, Boolean>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"}, k=3, mv={1, 5, 1})
+  public static final class b
+    extends u
+    implements b<h<? extends T>, Iterator<? extends T>>
   {
-    public static final b abvn;
+    public static final b ajuq;
     
     static
     {
-      AppMethodBeat.i(129492);
-      abvn = new b();
-      AppMethodBeat.o(129492);
+      AppMethodBeat.i(129476);
+      ajuq = new b();
+      AppMethodBeat.o(129476);
     }
     
     b()
@@ -196,23 +106,64 @@ public class n
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "R", "T", "it", "Lkotlin/sequences/Sequence;", "invoke"})
-  static final class c
-    extends q
-    implements b<h<? extends R>, Iterator<? extends R>>
+  @Metadata(d1={""}, d2={"<anonymous>", "T", "R", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"}, k=3, mv={1, 5, 1})
+  public static final class c
+    extends u
+    implements b<T, T>
   {
-    public static final c abvo;
+    public static final c ajur;
     
     static
     {
-      AppMethodBeat.i(129506);
-      abvo = new c();
-      AppMethodBeat.o(129506);
+      AppMethodBeat.i(129488);
+      ajur = new c();
+      AppMethodBeat.o(129488);
     }
     
     c()
     {
       super();
+    }
+    
+    public final T invoke(T paramT)
+    {
+      return paramT;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "T", "", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/Object;"}, k=3, mv={1, 5, 1})
+  static final class d
+    extends u
+    implements b<T, T>
+  {
+    d(kotlin.g.a.a parama)
+    {
+      super();
+    }
+    
+    public final T invoke(T paramT)
+    {
+      AppMethodBeat.i(129473);
+      s.u(paramT, "it");
+      paramT = this.ajus.invoke();
+      AppMethodBeat.o(129473);
+      return paramT;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "T", "", "invoke", "()Ljava/lang/Object;"}, k=3, mv={1, 5, 1})
+  static final class e
+    extends u
+    implements kotlin.g.a.a<T>
+  {
+    e(Object paramObject)
+    {
+      super();
+    }
+    
+    public final T invoke()
+    {
+      return this.ajut;
     }
   }
 }

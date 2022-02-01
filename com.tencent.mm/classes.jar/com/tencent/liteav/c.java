@@ -45,7 +45,7 @@ public class c
   
   public c(Context paramContext, g paramg, n paramn, boolean paramBoolean)
   {
-    AppMethodBeat.i(242288);
+    AppMethodBeat.i(229331);
     this.g = 0;
     this.h = null;
     this.i = false;
@@ -67,7 +67,7 @@ public class c
       this.f.X = paramBoolean;
       this.c.b(this.f.V);
       TXCLog.i("TXCCameraCaptureSource", "camera capture with nv21: %b", new Object[] { Boolean.valueOf(this.f.X) });
-      AppMethodBeat.o(242288);
+      AppMethodBeat.o(229331);
       return;
     }
     catch (CloneNotSupportedException paramg)
@@ -88,10 +88,10 @@ public class c
   
   private void a(int paramInt1, byte[] paramArrayOfByte, float[] paramArrayOfFloat, int paramInt2)
   {
-    AppMethodBeat.i(242330);
+    AppMethodBeat.i(229345);
     if (!this.e)
     {
-      AppMethodBeat.o(242330);
+      AppMethodBeat.o(229345);
       return;
     }
     if (!this.i)
@@ -145,7 +145,7 @@ public class c
         this.l = this.j;
         this.k = (l1 + this.k);
       }
-      AppMethodBeat.o(242330);
+      AppMethodBeat.o(229345);
       return;
       bool = false;
       break;
@@ -158,7 +158,7 @@ public class c
   
   private void c(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(242321);
+    AppMethodBeat.i(229334);
     int i1;
     if ((paramSurfaceTexture != null) && (!this.e) && (this.c != null))
     {
@@ -180,7 +180,7 @@ public class c
           Monitor.a(2, String.format("VideoCapture[%d]: start %s camera successfully", new Object[] { Integer.valueOf(i1), paramSurfaceTexture }), String.format("w*h:%d*%d orientation:%d", new Object[] { Integer.valueOf(this.f.a), Integer.valueOf(this.f.b), Integer.valueOf(this.f.m) }), 0);
           a(1003, "Enabled camera successfully");
           this.i = false;
-          AppMethodBeat.o(242321);
+          AppMethodBeat.o(229334);
           return;
         }
       }
@@ -195,45 +195,45 @@ public class c
     for (paramSurfaceTexture = "front";; paramSurfaceTexture = "back")
     {
       Monitor.a(2, String.format("VideoCapture[%d]: start %s camera failed", new Object[] { Integer.valueOf(i1), paramSurfaceTexture }), String.format("w*h:%d*%d orientation:%d", new Object[] { Integer.valueOf(this.f.a), Integer.valueOf(this.f.b), Integer.valueOf(this.f.m) }), 0);
-      AppMethodBeat.o(242321);
+      AppMethodBeat.o(229334);
       return;
     }
   }
   
   private a.a n()
   {
-    AppMethodBeat.i(242332);
+    AppMethodBeat.i(229348);
     if (this.f.U)
     {
       locala = a.a.i;
-      AppMethodBeat.o(242332);
+      AppMethodBeat.o(229348);
       return locala;
     }
     switch (3.a[this.f.l.ordinal()])
     {
     default: 
       locala = a.a.g;
-      AppMethodBeat.o(242332);
+      AppMethodBeat.o(229348);
       return locala;
     case 1: 
       locala = a.a.a;
-      AppMethodBeat.o(242332);
+      AppMethodBeat.o(229348);
       return locala;
     case 2: 
       locala = a.a.e;
-      AppMethodBeat.o(242332);
+      AppMethodBeat.o(229348);
       return locala;
     case 3: 
       locala = a.a.f;
-      AppMethodBeat.o(242332);
+      AppMethodBeat.o(229348);
       return locala;
     case 4: 
       locala = a.a.h;
-      AppMethodBeat.o(242332);
+      AppMethodBeat.o(229348);
       return locala;
     }
     a.a locala = a.a.d;
-    AppMethodBeat.o(242332);
+    AppMethodBeat.o(229348);
     return locala;
   }
   
@@ -287,9 +287,9 @@ public class c
   
   public int a(int paramInt, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(242326);
+    AppMethodBeat.i(229513);
     a(paramInt, null, paramArrayOfFloat, 4);
-    AppMethodBeat.o(242326);
+    AppMethodBeat.o(229513);
     return 0;
   }
   
@@ -356,18 +356,18 @@ public class c
   
   public void a(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(242310);
+    AppMethodBeat.i(229470);
     this.a = new WeakReference(paramb);
-    AppMethodBeat.o(242310);
+    AppMethodBeat.o(229470);
   }
   
   public void a(com.tencent.liteav.basic.structs.b paramb)
   {
-    AppMethodBeat.i(242304);
+    AppMethodBeat.i(229451);
     if (this.h != null) {
       this.h.a(paramb.a, paramb.i, this.g, paramb.e, paramb.f, this.c.i());
     }
-    AppMethodBeat.o(242304);
+    AppMethodBeat.o(229451);
   }
   
   public void a(l paraml)
@@ -379,9 +379,9 @@ public class c
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(242306);
+    AppMethodBeat.i(229459);
     this.h.a(paramRunnable);
-    AppMethodBeat.o(242306);
+    AppMethodBeat.o(229459);
   }
   
   public void a(String paramString)
@@ -416,34 +416,34 @@ public class c
   
   public void a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(242333);
+    AppMethodBeat.i(229521);
     if (this.h != null) {
       this.h.a(paramArrayOfByte);
     }
-    AppMethodBeat.o(242333);
+    AppMethodBeat.o(229521);
   }
   
   public void a(byte[] paramArrayOfByte, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(242328);
+    AppMethodBeat.i(229516);
     a(-1, paramArrayOfByte, paramArrayOfFloat, 3);
-    AppMethodBeat.o(242328);
+    AppMethodBeat.o(229516);
   }
   
   public boolean a(int paramInt)
   {
-    AppMethodBeat.i(242296);
+    AppMethodBeat.i(229416);
     boolean bool = this.c.b(paramInt);
-    AppMethodBeat.o(242296);
+    AppMethodBeat.o(229416);
     return bool;
   }
   
   public void b()
   {
-    AppMethodBeat.i(242290);
+    AppMethodBeat.i(229390);
     TXCLog.i("CameraCapture", "startCapture->enter with getSurfaceTexture:" + this.h.getSurfaceTexture());
     c(this.h.getSurfaceTexture());
-    AppMethodBeat.o(242290);
+    AppMethodBeat.o(229390);
   }
   
   public void b(int paramInt)
@@ -465,13 +465,13 @@ public class c
   
   public void b(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(242324);
+    AppMethodBeat.i(229507);
     c();
     TXCLog.i("CameraCapture", "onSurfaceTextureDestroy->enter with mListener:" + this.d);
     if (this.d != null) {
       this.d.t();
     }
-    AppMethodBeat.o(242324);
+    AppMethodBeat.o(229507);
   }
   
   public void b(boolean paramBoolean)
@@ -534,12 +534,12 @@ public class c
   
   public void c()
   {
-    AppMethodBeat.i(242291);
+    AppMethodBeat.i(229393);
     TXCLog.i("CameraCapture", "stopCapture->enter with null");
     this.c.a(null);
     this.c.g();
     this.e = false;
-    AppMethodBeat.o(242291);
+    AppMethodBeat.o(229393);
   }
   
   public void c(int paramInt)
@@ -617,9 +617,9 @@ public class c
   
   public EGLContext f()
   {
-    AppMethodBeat.i(242308);
+    AppMethodBeat.i(229462);
     EGLContext localEGLContext = this.h.getGLContext();
-    AppMethodBeat.o(242308);
+    AppMethodBeat.o(229462);
     return localEGLContext;
   }
   
@@ -650,66 +650,66 @@ public class c
   
   public boolean h()
   {
-    AppMethodBeat.i(242313);
+    AppMethodBeat.i(229488);
     if (this.c != null)
     {
       boolean bool = this.c.b();
-      AppMethodBeat.o(242313);
+      AppMethodBeat.o(229488);
       return bool;
     }
-    AppMethodBeat.o(242313);
+    AppMethodBeat.o(229488);
     return false;
   }
   
   public boolean i()
   {
-    AppMethodBeat.i(242315);
+    AppMethodBeat.i(229489);
     if (this.c != null)
     {
       boolean bool = this.c.c();
-      AppMethodBeat.o(242315);
+      AppMethodBeat.o(229489);
       return bool;
     }
-    AppMethodBeat.o(242315);
+    AppMethodBeat.o(229489);
     return false;
   }
   
   public boolean j()
   {
-    AppMethodBeat.i(242316);
+    AppMethodBeat.i(229492);
     if (this.c != null)
     {
       boolean bool = this.c.d();
-      AppMethodBeat.o(242316);
+      AppMethodBeat.o(229492);
       return bool;
     }
-    AppMethodBeat.o(242316);
+    AppMethodBeat.o(229492);
     return false;
   }
   
   public boolean k()
   {
-    AppMethodBeat.i(242317);
+    AppMethodBeat.i(229496);
     if (this.c != null)
     {
       boolean bool = this.c.e();
-      AppMethodBeat.o(242317);
+      AppMethodBeat.o(229496);
       return bool;
     }
-    AppMethodBeat.o(242317);
+    AppMethodBeat.o(229496);
     return false;
   }
   
   public boolean l()
   {
-    AppMethodBeat.i(242319);
+    AppMethodBeat.i(229500);
     if (this.c != null)
     {
       boolean bool = this.c.i();
-      AppMethodBeat.o(242319);
+      AppMethodBeat.o(229500);
       return bool;
     }
-    AppMethodBeat.o(242319);
+    AppMethodBeat.o(229500);
     return false;
   }
   
@@ -776,7 +776,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.c
  * JD-Core Version:    0.7.0.1
  */

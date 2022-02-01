@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
 {
-  Bitmap cNH;
-  private d cNI;
-  Rect cNJ;
-  int[] cNK;
+  Bitmap eJc;
+  private d eJd;
+  Rect eJe;
+  int[] eJf;
   
   e(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(140012);
-    this.cNI = new l();
-    this.cNJ = new Rect();
-    this.cNK = new int[4];
+    this.eJd = new l();
+    this.eJe = new Rect();
+    this.eJf = new int[4];
     int i = paramInt1;
     if (paramInt1 <= 0) {
       i = 512;
@@ -26,9 +26,9 @@ final class e
     if (paramInt2 <= 0) {
       paramInt1 = 512;
     }
-    this.cNH = Bitmap.createBitmap(i, paramInt1, Bitmap.Config.ARGB_8888);
-    this.cNI.init(i, paramInt1);
-    this.cNJ.setEmpty();
+    this.eJc = Bitmap.createBitmap(i, paramInt1, Bitmap.Config.ARGB_8888);
+    this.eJd.init(i, paramInt1);
+    this.eJe.setEmpty();
     AppMethodBeat.o(140012);
   }
   
@@ -46,13 +46,13 @@ final class e
       AppMethodBeat.o(140013);
       return false;
     }
-    this.cNI.a(paramInt1, paramInt2, paramRect);
+    this.eJd.a(paramInt1, paramInt2, paramRect);
     if ((paramRect.left < 0) || (paramRect.right < 0) || (paramRect.width() <= 0) || (paramRect.height() <= 0))
     {
       AppMethodBeat.o(140013);
       return false;
     }
-    this.cNJ.union(paramRect);
+    this.eJe.union(paramRect);
     AppMethodBeat.o(140013);
     return true;
   }
@@ -60,10 +60,10 @@ final class e
   final void clear()
   {
     AppMethodBeat.i(140014);
-    this.cNJ.setEmpty();
-    this.cNI.reset();
-    if (this.cNH != null) {
-      this.cNH.eraseColor(0);
+    this.eJe.setEmpty();
+    this.eJd.reset();
+    if (this.eJc != null) {
+      this.eJc.eraseColor(0);
     }
     AppMethodBeat.o(140014);
   }
@@ -71,9 +71,9 @@ final class e
   final int height()
   {
     AppMethodBeat.i(140016);
-    if (this.cNH != null)
+    if (this.eJc != null)
     {
-      int i = this.cNH.getHeight();
+      int i = this.eJc.getHeight();
       AppMethodBeat.o(140016);
       return i;
     }
@@ -84,9 +84,9 @@ final class e
   final int width()
   {
     AppMethodBeat.i(140015);
-    if (this.cNH != null)
+    if (this.eJc != null)
     {
-      int i = this.cNH.getWidth();
+      int i = this.eJc.getWidth();
       AppMethodBeat.o(140015);
       return i;
     }

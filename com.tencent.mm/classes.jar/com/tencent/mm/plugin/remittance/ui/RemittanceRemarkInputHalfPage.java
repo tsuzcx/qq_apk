@@ -1,476 +1,676 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import android.animation.Animator.AnimatorListener;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.text.Editable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.remittance.model.al;
+import com.tencent.mm.plugin.wallet_core.utils.WcPayTextApppearanceSpan;
 import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.u;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.ui.widget.a.g;
-import com.tencent.mm.ui.widget.a.g.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage;", "Landroidx/lifecycle/LifecycleObserver;", "context", "Lcom/tencent/mm/ui/MMActivity;", "maxLimitLength", "", "placeorderReserves", "", "(Lcom/tencent/mm/ui/MMActivity;ILjava/lang/String;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "mHalfPageDialog", "Lcom/tencent/mm/ui/widget/dialog/MMHalfBottomDialog;", "mKeyboardHeight", "mKeyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "getMaxLimitLength", "()I", "getPlaceorderReserves", "()Ljava/lang/String;", "animHideKeyboard", "", "animShowKeyboard", "height", "onActivityPause", "onActivityResume", "showDialog", "desc", "callback", "Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$InputResultCallback;", "transferReportType", "actionFlow", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "Companion", "InputResultCallback", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage;", "Landroidx/lifecycle/LifecycleObserver;", "context", "Lcom/tencent/mm/ui/MMActivity;", "maxLimitLength", "", "placeorderReserves", "", "entryScene", "Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$EntryScene;", "(Lcom/tencent/mm/ui/MMActivity;ILjava/lang/String;Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$EntryScene;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "getEntryScene", "()Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$EntryScene;", "mHalfPageDialog", "Lcom/tencent/mm/ui/widget/dialog/MMHalfBottomDialog;", "mKeyboardHeight", "mKeyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "getMaxLimitLength", "()I", "getPlaceorderReserves", "()Ljava/lang/String;", "animHideKeyboard", "", "animShowKeyboard", "height", "onActivityPause", "onActivityResume", "showDialog", "desc", "hint", "callback", "Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$InputResultCallback;", "transferReportType", "actionFlow", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "Companion", "EntryScene", "InputResultCallback", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RemittanceRemarkInputHalfPage
-  implements k
+  implements androidx.lifecycle.p
 {
-  public static final RemittanceRemarkInputHalfPage.a IuS;
-  com.tencent.mm.ui.tools.i Cwc;
-  g IuP;
-  final int IuQ;
-  final String IuR;
-  final MMActivity iXq;
-  private int jPS;
+  public static final RemittanceRemarkInputHalfPage.a Ost;
+  final int Osu;
+  final String Osv;
+  final RemittanceRemarkInputHalfPage.b Osw;
+  private com.tencent.mm.ui.widget.a.j Osx;
+  private com.tencent.mm.ui.tools.i Osy;
+  final MMActivity lzt;
+  private int moI;
   
   static
   {
-    AppMethodBeat.i(270522);
-    IuS = new RemittanceRemarkInputHalfPage.a((byte)0);
-    AppMethodBeat.o(270522);
+    AppMethodBeat.i(289055);
+    Ost = new RemittanceRemarkInputHalfPage.a((byte)0);
+    AppMethodBeat.o(289055);
   }
   
-  public RemittanceRemarkInputHalfPage(MMActivity paramMMActivity, String paramString)
+  public RemittanceRemarkInputHalfPage(MMActivity paramMMActivity, int paramInt, String paramString, RemittanceRemarkInputHalfPage.b paramb)
   {
-    AppMethodBeat.i(270520);
-    this.iXq = paramMMActivity;
-    this.IuQ = 60;
-    this.IuR = paramString;
-    this.Cwc = new com.tencent.mm.ui.tools.i((Activity)this.iXq);
-    this.iXq.getLifecycle().a((k)this);
-    this.Cwc.setKeyboardHeightObserver((com.tencent.mm.ui.tools.h)new com.tencent.mm.ui.tools.h()
-    {
-      public final void A(int paramAnonymousInt, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(275966);
-        RemittanceRemarkInputHalfPage.a(this.IuT, paramAnonymousInt);
-        if (paramAnonymousInt > 0)
-        {
-          RemittanceRemarkInputHalfPage.b(this.IuT, paramAnonymousInt);
-          AppMethodBeat.o(275966);
-          return;
-        }
-        RemittanceRemarkInputHalfPage.b(this.IuT);
-        AppMethodBeat.o(275966);
-      }
-    });
-    AppMethodBeat.o(270520);
+    AppMethodBeat.i(288999);
+    this.lzt = paramMMActivity;
+    this.Osu = paramInt;
+    this.Osv = paramString;
+    this.Osw = paramb;
+    this.Osy = new com.tencent.mm.ui.tools.i((Activity)this.lzt);
+    this.lzt.getLifecycle().addObserver((androidx.lifecycle.p)this);
+    this.Osy.afIL = new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda5(this);
+    AppMethodBeat.o(288999);
   }
   
-  @androidx.lifecycle.t(jl=h.a.ON_PAUSE)
+  private static final void a(c paramc, MMEditText paramMMEditText, ah.f paramf, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, com.tencent.mm.ui.widget.a.j paramj, ArrayList paramArrayList)
+  {
+    AppMethodBeat.i(289042);
+    s.u(paramc, "$callback");
+    s.u(paramMMEditText, "$remarkEt");
+    s.u(paramf, "$addressString");
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    s.u(paramj, "$it");
+    s.u(paramArrayList, "$actionFlow");
+    paramc.f(false, paramMMEditText.getText().toString(), (String)paramf.aqH);
+    paramRemittanceRemarkInputHalfPage.lzt.hideVKB((View)paramMMEditText);
+    paramj.cyW();
+    int i;
+    if (!paramArrayList.isEmpty())
+    {
+      paramc = Util.listToString((List)paramArrayList, ",");
+      Log.i("MicroMsg.RemittanceRemarkInputHalfPage", "action flow: %s", new Object[] { paramc });
+      s.s(paramc, "s");
+      if ((n.U(paramc, "1,2,1", false)) || (n.U(paramc, "2,1", false))) {
+        i = 5;
+      }
+    }
+    for (;;)
+    {
+      if ((i != 0) && (paramRemittanceRemarkInputHalfPage.Osw == RemittanceRemarkInputHalfPage.b.Osz)) {
+        com.tencent.mm.plugin.report.service.h.OAn.b(22750, new Object[] { Integer.valueOf(i), paramRemittanceRemarkInputHalfPage.Osv });
+      }
+      AppMethodBeat.o(289042);
+      return;
+      if (n.U(paramc, "1,2", false)) {
+        i = 3;
+      } else if (n.U(paramc, "1", false)) {
+        i = 2;
+      } else if (n.U(paramc, "2", false)) {
+        i = 4;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  private static final void a(c paramc, ah.f paramf, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, MMEditText paramMMEditText, com.tencent.mm.ui.widget.a.j paramj)
+  {
+    AppMethodBeat.i(289032);
+    s.u(paramc, "$callback");
+    s.u(paramf, "$addressString");
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    s.u(paramMMEditText, "$remarkEt");
+    s.u(paramj, "$it");
+    paramc.f(true, null, (String)paramf.aqH);
+    paramRemittanceRemarkInputHalfPage.lzt.hideVKB((View)paramMMEditText);
+    paramj.cyW();
+    AppMethodBeat.o(289032);
+  }
+  
+  private static final void a(RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage)
+  {
+    AppMethodBeat.i(289010);
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    paramRemittanceRemarkInputHalfPage.lzt.showVKB();
+    AppMethodBeat.o(289010);
+  }
+  
+  private static final void a(RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(289001);
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    paramRemittanceRemarkInputHalfPage.moI = paramInt;
+    Object localObject;
+    if (paramInt > 0)
+    {
+      localObject = paramRemittanceRemarkInputHalfPage.Osx;
+      if ((localObject != null) && (((com.tencent.mm.ui.widget.a.j)localObject).isShowing()))
+      {
+        if (((com.tencent.mm.ui.widget.a.j)localObject).rootView.getLayoutParams() == null)
+        {
+          paramRemittanceRemarkInputHalfPage = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+          AppMethodBeat.o(289001);
+          throw paramRemittanceRemarkInputHalfPage;
+        }
+        ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt });
+        localValueAnimator.setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
+        localValueAnimator.addUpdateListener(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda0(paramRemittanceRemarkInputHalfPage, (com.tencent.mm.ui.widget.a.j)localObject));
+        localValueAnimator.addListener((Animator.AnimatorListener)new RemittanceRemarkInputHalfPage.e((com.tencent.mm.ui.widget.a.j)localObject));
+        localValueAnimator.setDuration(200L);
+        localValueAnimator.start();
+      }
+      AppMethodBeat.o(289001);
+      return;
+    }
+    paramRemittanceRemarkInputHalfPage = paramRemittanceRemarkInputHalfPage.Osx;
+    if ((paramRemittanceRemarkInputHalfPage != null) && (paramRemittanceRemarkInputHalfPage.isShowing()))
+    {
+      if (paramRemittanceRemarkInputHalfPage.rootView.getLayoutParams() == null)
+      {
+        paramRemittanceRemarkInputHalfPage = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(289001);
+        throw paramRemittanceRemarkInputHalfPage;
+      }
+      localObject = ValueAnimator.ofInt(new int[] { paramRemittanceRemarkInputHalfPage.rootView.getPaddingBottom(), 0 });
+      ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
+      ((ValueAnimator)localObject).addUpdateListener(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda1(paramRemittanceRemarkInputHalfPage));
+      paramRemittanceRemarkInputHalfPage.rootView.getPaddingBottom();
+      ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new RemittanceRemarkInputHalfPage.d(paramRemittanceRemarkInputHalfPage));
+      ((ValueAnimator)localObject).setDuration(200L);
+      ((ValueAnimator)localObject).start();
+    }
+    AppMethodBeat.o(289001);
+  }
+  
+  private static final void a(RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, MMEditText paramMMEditText, ah.a parama, ah.f paramf, ArrayList paramArrayList, View paramView)
+  {
+    AppMethodBeat.i(289026);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramRemittanceRemarkInputHalfPage);
+    localb.cH(paramMMEditText);
+    localb.cH(parama);
+    localb.cH(paramf);
+    localb.cH(paramArrayList);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    s.u(paramMMEditText, "$remarkEt");
+    s.u(parama, "$isInsertAddress");
+    s.u(paramf, "$addressString");
+    s.u(paramArrayList, "$actionFlow");
+    paramView = new Intent();
+    paramView.putExtra("launch_from_remittance", true);
+    paramRemittanceRemarkInputHalfPage.lzt.mmSetOnActivityResultCallback(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda4(paramMMEditText, parama, paramf, paramArrayList, paramRemittanceRemarkInputHalfPage));
+    paramRemittanceRemarkInputHalfPage.lzt.hideVKB((View)paramMMEditText);
+    c.b((Context)paramRemittanceRemarkInputHalfPage.lzt, "address", ".ui.WalletSelectAddrUI", paramView, 123);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(289026);
+  }
+  
+  private static final void a(RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, com.tencent.mm.ui.widget.a.j paramj, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(289046);
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    s.u(paramj, "$it");
+    if ((!w.mO((Context)paramRemittanceRemarkInputHalfPage.lzt)) && (!aw.jlb()) && (d.rc(30)))
+    {
+      paramRemittanceRemarkInputHalfPage = paramj.rootView;
+      paramj = paramValueAnimator.getAnimatedValue();
+      if (paramj == null)
+      {
+        paramRemittanceRemarkInputHalfPage = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(289046);
+        throw paramRemittanceRemarkInputHalfPage;
+      }
+      paramRemittanceRemarkInputHalfPage.setPadding(0, 0, 0, ((Integer)paramj).intValue());
+    }
+    AppMethodBeat.o(289046);
+  }
+  
+  private static final void a(MMEditText paramMMEditText, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, WeImageView paramWeImageView)
+  {
+    AppMethodBeat.i(289045);
+    s.u(paramMMEditText, "$remarkEt");
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    s.u(paramWeImageView, "$addressIcon");
+    paramMMEditText.requestFocus();
+    paramRemittanceRemarkInputHalfPage.lzt.showVKB();
+    if (paramWeImageView.isShown())
+    {
+      paramRemittanceRemarkInputHalfPage = paramWeImageView.getLayoutParams();
+      if (paramRemittanceRemarkInputHalfPage == null)
+      {
+        paramMMEditText = new NullPointerException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
+        AppMethodBeat.o(289045);
+        throw paramMMEditText;
+      }
+      paramRemittanceRemarkInputHalfPage = (LinearLayout.LayoutParams)paramRemittanceRemarkInputHalfPage;
+      if ((paramMMEditText.getLineCount() <= 1) && (paramRemittanceRemarkInputHalfPage.gravity != 16))
+      {
+        paramRemittanceRemarkInputHalfPage.gravity = 16;
+        paramWeImageView.setLayoutParams((ViewGroup.LayoutParams)paramRemittanceRemarkInputHalfPage);
+        AppMethodBeat.o(289045);
+        return;
+      }
+      if ((paramMMEditText.getLineCount() > 1) && (paramRemittanceRemarkInputHalfPage.gravity > 0))
+      {
+        paramRemittanceRemarkInputHalfPage.gravity = 0;
+        paramWeImageView.setLayoutParams((ViewGroup.LayoutParams)paramRemittanceRemarkInputHalfPage);
+      }
+    }
+    AppMethodBeat.o(289045);
+  }
+  
+  private static final void a(MMEditText paramMMEditText, ah.a parama, ah.f paramf, ArrayList paramArrayList, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(289017);
+    s.u(paramMMEditText, "$remarkEt");
+    s.u(parama, "$isInsertAddress");
+    s.u(paramf, "$addressString");
+    s.u(paramArrayList, "$actionFlow");
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    if (paramInt1 == 123)
+    {
+      if (paramInt2 != -1) {
+        break label612;
+      }
+      Object localObject6 = paramIntent.getStringExtra("userName");
+      Object localObject5 = paramIntent.getStringExtra("telNumber");
+      Object localObject4 = paramIntent.getStringExtra("proviceFirstStageName");
+      Object localObject3 = paramIntent.getStringExtra("addressCitySecondStageName");
+      Object localObject1 = paramIntent.getStringExtra("addressCountiesThirdStageName");
+      paramIntent = paramIntent.getStringExtra("addressDetailInfo");
+      Object localObject2 = new StringBuilder();
+      CharSequence localCharSequence = (CharSequence)localObject6;
+      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+        break label564;
+      }
+      paramInt1 = 1;
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append((String)localObject6);
+      }
+      localObject6 = (CharSequence)localObject5;
+      if ((localObject6 != null) && (((CharSequence)localObject6).length() != 0)) {
+        break label570;
+      }
+      paramInt1 = 1;
+      label183:
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append((String)localObject5);
+      }
+      if (((CharSequence)localObject2).length() != 0) {
+        break label576;
+      }
+      paramInt1 = 1;
+      label212:
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append(" ");
+      }
+      localObject5 = (CharSequence)localObject4;
+      if ((localObject5 != null) && (((CharSequence)localObject5).length() != 0)) {
+        break label582;
+      }
+      paramInt1 = 1;
+      label251:
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append((String)localObject4);
+      }
+      localObject4 = (CharSequence)localObject3;
+      if ((localObject4 != null) && (((CharSequence)localObject4).length() != 0)) {
+        break label588;
+      }
+      paramInt1 = 1;
+      label289:
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append((String)localObject3);
+      }
+      localObject3 = (CharSequence)localObject1;
+      if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+        break label594;
+      }
+      paramInt1 = 1;
+      label327:
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append((String)localObject1);
+      }
+      localObject1 = (CharSequence)paramIntent;
+      if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+        break label600;
+      }
+      paramInt1 = 1;
+      label365:
+      if (paramInt1 == 0) {
+        ((StringBuilder)localObject2).append(paramIntent);
+      }
+      paramIntent = ((StringBuilder)localObject2).toString();
+      s.s(paramIntent, "StringBuilder().apply(builderAction).toString()");
+      localObject1 = paramMMEditText.getText().toString();
+      localObject2 = (CharSequence)localObject1;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label606;
+      }
+      paramInt1 = 1;
+      label427:
+      if ((paramInt1 == 0) && (!n.rs((String)localObject1, ";")))
+      {
+        paramMMEditText.getText().append((CharSequence)";");
+        paramMMEditText.setSelection(paramMMEditText.getText().length());
+      }
+      parama.aiwY = true;
+      paramMMEditText.bDt(s.X(paramIntent, ";"));
+      paramf.aqH = s.X((String)paramf.aqH, paramIntent);
+      if ((paramArrayList.isEmpty()) || (!s.p(kotlin.a.p.oM((List)paramArrayList), "2"))) {
+        paramArrayList.add("2");
+      }
+    }
+    for (;;)
+    {
+      com.tencent.threadpool.h.ahAA.o(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda8(paramRemittanceRemarkInputHalfPage), 100L);
+      AppMethodBeat.o(289017);
+      return;
+      label564:
+      paramInt1 = 0;
+      break;
+      label570:
+      paramInt1 = 0;
+      break label183;
+      label576:
+      paramInt1 = 0;
+      break label212;
+      label582:
+      paramInt1 = 0;
+      break label251;
+      label588:
+      paramInt1 = 0;
+      break label289;
+      label594:
+      paramInt1 = 0;
+      break label327;
+      label600:
+      paramInt1 = 0;
+      break label365;
+      label606:
+      paramInt1 = 0;
+      break label427;
+      label612:
+      Log.i("MicroMsg.RemittanceRemarkInputHalfPage", "cancel select address");
+    }
+  }
+  
+  private static final void a(com.tencent.mm.ui.widget.a.j paramj, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(289051);
+    s.u(paramj, "$it");
+    paramj = paramj.rootView;
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null)
+    {
+      paramj = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(289051);
+      throw paramj;
+    }
+    paramj.setPadding(0, 0, 0, ((Integer)paramValueAnimator).intValue());
+    AppMethodBeat.o(289051);
+  }
+  
+  private static final boolean a(com.tencent.mm.ui.widget.a.j paramj, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, MMEditText paramMMEditText, DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(289006);
+    s.u(paramj, "$it");
+    s.u(paramRemittanceRemarkInputHalfPage, "this$0");
+    s.u(paramMMEditText, "$remarkEt");
+    if ((paramInt == 4) && (paramj.isShowing()))
+    {
+      if (paramRemittanceRemarkInputHalfPage.moI <= 0) {
+        break label63;
+      }
+      paramRemittanceRemarkInputHalfPage.lzt.hideVKB((View)paramMMEditText);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(289006);
+      return false;
+      label63:
+      paramj.cyW();
+    }
+  }
+  
+  public final void a(String paramString1, String paramString2, c paramc)
+  {
+    AppMethodBeat.i(289100);
+    s.u(paramString1, "desc");
+    s.u(paramString2, "hint");
+    s.u(paramc, "callback");
+    final com.tencent.mm.ui.widget.a.j localj = this.Osx;
+    if (localj != null) {
+      localj.cyW();
+    }
+    this.Osx = new com.tencent.mm.ui.widget.a.j((Context)this.lzt, 1, 2, false);
+    final ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new ah.a();
+    localj = this.Osx;
+    Object localObject2;
+    Object localObject3;
+    ViewGroup localViewGroup;
+    TextView localTextView;
+    Object localObject4;
+    if (localj != null)
+    {
+      localj.jHS();
+      localObject2 = LayoutInflater.from((Context)this.lzt);
+      i = a.g.remittance_remark_input_half_page;
+      localObject3 = localj.rootView;
+      if (localObject3 == null)
+      {
+        paramString1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(289100);
+        throw paramString1;
+      }
+      localObject2 = ((LayoutInflater)localObject2).inflate(i, (ViewGroup)localObject3, false);
+      if (localObject2 == null)
+      {
+        paramString1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(289100);
+        throw paramString1;
+      }
+      localViewGroup = (ViewGroup)localObject2;
+      localObject2 = localViewGroup.findViewById(a.f.remittance_remark_input_et);
+      s.s(localObject2, "rootView.findViewById(R.…mittance_remark_input_et)");
+      localObject2 = (MMEditText)localObject2;
+      localObject3 = localViewGroup.findViewById(a.f.remittance_remark_address_icon);
+      s.s(localObject3, "rootView.findViewById(R.…ance_remark_address_icon)");
+      localObject3 = (WeImageView)localObject3;
+      localTextView = (TextView)localViewGroup.findViewById(a.f.remittance_remark_limit_tv);
+      localObject4 = localViewGroup.findViewById(a.f.remittance_input_bg_ll);
+      s.s(localObject4, "rootView.findViewById(R.id.remittance_input_bg_ll)");
+      localObject4 = (LinearLayout)localObject4;
+      if (!Util.isNullOrNil(paramString2)) {
+        ((MMEditText)localObject2).setHint((CharSequence)paramString2);
+      }
+      paramString2 = new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda2(localj, this, (MMEditText)localObject2);
+      localj.sRs.setOnKeyListener(paramString2);
+      com.tencent.mm.wallet_core.ui.i.bG((View)localObject3, com.tencent.mm.cd.a.fromDPToPix((Context)this.lzt, 20));
+      if (this.Osw != RemittanceRemarkInputHalfPage.b.Osz) {
+        break label902;
+      }
+      ((LinearLayout)localObject4).setPadding(com.tencent.mm.cd.a.fromDPToPix((Context)this.lzt, 16), com.tencent.mm.cd.a.fromDPToPix((Context)this.lzt, 16), com.tencent.mm.cd.a.fromDPToPix((Context)this.lzt, 6), com.tencent.mm.cd.a.fromDPToPix((Context)this.lzt, 16));
+    }
+    label896:
+    label902:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        ((WeImageView)localObject3).setVisibility(0);
+        if (Build.VERSION.SDK_INT >= 23) {
+          ((WeImageView)localObject3).setForeground(this.lzt.getDrawable(a.e.remittance_address_icon_selector));
+        }
+        paramString2 = new ah.f();
+        paramString2.aqH = "";
+        i = paramString1.length();
+        if (i <= this.Osu) {
+          break label881;
+        }
+        localj.NG(false);
+        localTextView.setTextColor(this.lzt.getResources().getColor(a.c.Red));
+        localTextView.setVisibility(0);
+        label498:
+        ((WeImageView)localObject3).setOnClickListener(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda3(this, (MMEditText)localObject2, (ah.a)localObject1, paramString2, localArrayList));
+        localObject4 = am.aixg;
+        localObject4 = String.format("%s/%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), Integer.valueOf(this.Osu) }, 2));
+        s.s(localObject4, "java.lang.String.format(format, *args)");
+        localTextView.setText((CharSequence)localObject4);
+        ((MMEditText)localObject2).addTextChangedListener((TextWatcher)new f(localTextView, this, localj, new ah.a(), (ah.a)localObject1, localArrayList));
+        if (((CharSequence)paramString1).length() != 0) {
+          break label896;
+        }
+      }
+      for (i = 1;; i = 0)
+      {
+        if (i == 0)
+        {
+          ((MMEditText)localObject2).setText((CharSequence)paramString1);
+          ((MMEditText)localObject2).setSelection(paramString1.length());
+        }
+        localj.setCustomView((View)localViewGroup);
+        paramString1 = new SpannableStringBuilder();
+        paramString1.append((CharSequence)this.lzt.getString(a.i.bank_remit_remittance_desc_text));
+        localObject1 = new WcPayTextApppearanceSpan(0, null);
+        ((WcPayTextApppearanceSpan)localObject1).VYt = 1;
+        paramString1.setSpan(localObject1, 0, paramString1.length(), 18);
+        localj.bh((CharSequence)paramString1);
+        localj.d((CharSequence)this.lzt.getString(a.i.app_cancel), (CharSequence)this.lzt.getString(a.i.app_ok));
+        localj.a(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda7(paramc, paramString2, this, (MMEditText)localObject2, localj), new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda6(paramc, (MMEditText)localObject2, paramString2, this, localj, localArrayList));
+        paramString1 = this.Osy;
+        if (paramString1 != null) {
+          paramString1.start();
+        }
+        localj.dDn();
+        com.tencent.threadpool.h.ahAA.o(new RemittanceRemarkInputHalfPage..ExternalSyntheticLambda9((MMEditText)localObject2, this, (WeImageView)localObject3), 50L);
+        if (this.Osw == RemittanceRemarkInputHalfPage.b.Osz) {
+          com.tencent.mm.plugin.report.service.h.OAn.b(22750, new Object[] { Integer.valueOf(1), this.Osv });
+        }
+        AppMethodBeat.o(289100);
+        return;
+        ((WeImageView)localObject3).setVisibility(8);
+        break;
+        label881:
+        localj.NG(true);
+        localTextView.setVisibility(4);
+        break label498;
+      }
+    }
+  }
+  
+  @z(Ho=j.a.ON_PAUSE)
   public final void onActivityPause()
   {
-    AppMethodBeat.i(270519);
-    com.tencent.mm.ui.tools.i locali = this.Cwc;
-    if (locali != null)
-    {
+    AppMethodBeat.i(289109);
+    com.tencent.mm.ui.tools.i locali = this.Osy;
+    if (locali != null) {
       locali.close();
-      AppMethodBeat.o(270519);
-      return;
     }
-    AppMethodBeat.o(270519);
+    AppMethodBeat.o(289109);
   }
   
-  @androidx.lifecycle.t(jl=h.a.ON_RESUME)
+  @z(Ho=j.a.ON_RESUME)
   public final void onActivityResume()
   {
-    AppMethodBeat.i(270517);
-    com.tencent.mm.ui.tools.i locali = this.Cwc;
-    if (locali != null)
-    {
+    AppMethodBeat.i(289103);
+    com.tencent.mm.ui.tools.i locali = this.Osy;
+    if (locali != null) {
       locali.start();
-      AppMethodBeat.o(270517);
-      return;
     }
-    AppMethodBeat.o(270517);
+    AppMethodBeat.o(289103);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$InputResultCallback;", "", "onResult", "", "canceled", "", "result", "", "addressString", "plugin-wxpay_release"})
-  public static abstract interface b
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$InputResultCallback;", "", "onResult", "", "canceled", "", "result", "", "addressString", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface c
   {
-    public abstract void g(boolean paramBoolean, String paramString1, String paramString2);
+    public abstract void f(boolean paramBoolean, String paramString1, String paramString2);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$animShowKeyboard$1$1"})
-  static final class e
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    e(g paramg, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, int paramInt) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(210618);
-      if (!u.kL((Context)this.IuT.iXq))
-      {
-        View localView = this.IuU.oFW;
-        p.j(paramValueAnimator, "anim");
-        paramValueAnimator = paramValueAnimator.getAnimatedValue();
-        if (paramValueAnimator == null)
-        {
-          paramValueAnimator = new kotlin.t("null cannot be cast to non-null type kotlin.Int");
-          AppMethodBeat.o(210618);
-          throw paramValueAnimator;
-        }
-        localView.setPadding(0, 0, 0, ((Integer)paramValueAnimator).intValue());
-      }
-      AppMethodBeat.o(210618);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "keyCode", "", "event", "Landroid/view/KeyEvent;", "onKey", "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$1"})
-  static final class g
-    implements DialogInterface.OnKeyListener
-  {
-    g(g paramg, MMEditText paramMMEditText, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, String paramString, aa.a parama, ArrayList paramArrayList, RemittanceRemarkInputHalfPage.b paramb) {}
-    
-    public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-    {
-      AppMethodBeat.i(186447);
-      if ((paramInt == 4) && (this.IuU.isShowing()))
-      {
-        if (RemittanceRemarkInputHalfPage.a(this.IuT) <= 0) {
-          break label54;
-        }
-        this.IuT.iXq.hideVKB((View)this.IuV);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(186447);
-        return false;
-        label54:
-        this.IuU.bYF();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$2"})
-  static final class h
-    implements View.OnClickListener
-  {
-    h(MMEditText paramMMEditText, aa.f paramf, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, String paramString, aa.a parama, ArrayList paramArrayList, RemittanceRemarkInputHalfPage.b paramb) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(220417);
-      b localb = new b();
-      localb.bn(paramView);
-      a.c("com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = new Intent();
-      paramView.putExtra("launch_from_remittance", true);
-      this.IuT.iXq.mmSetOnActivityResultCallback((MMActivity.a)new MMActivity.a()
-      {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-        {
-          AppMethodBeat.i(274326);
-          if (paramAnonymousInt1 == 123)
-          {
-            if (paramAnonymousInt2 != -1) {
-              break label628;
-            }
-            Object localObject6 = paramAnonymousIntent.getStringExtra("userName");
-            Object localObject5 = paramAnonymousIntent.getStringExtra("telNumber");
-            Object localObject4 = paramAnonymousIntent.getStringExtra("proviceFirstStageName");
-            Object localObject3 = paramAnonymousIntent.getStringExtra("addressCitySecondStageName");
-            Object localObject1 = paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName");
-            paramAnonymousIntent = paramAnonymousIntent.getStringExtra("addressDetailInfo");
-            Object localObject2 = new StringBuilder();
-            CharSequence localCharSequence = (CharSequence)localObject6;
-            if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-              break label588;
-            }
-            paramAnonymousInt1 = 1;
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append((String)localObject6);
-            }
-            localObject6 = (CharSequence)localObject5;
-            if ((localObject6 != null) && (((CharSequence)localObject6).length() != 0)) {
-              break label593;
-            }
-            paramAnonymousInt1 = 1;
-            label132:
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append((String)localObject5);
-            }
-            if (((CharSequence)localObject2).length() != 0) {
-              break label598;
-            }
-            paramAnonymousInt1 = 1;
-            label159:
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append(" ");
-            }
-            localObject5 = (CharSequence)localObject4;
-            if ((localObject5 != null) && (((CharSequence)localObject5).length() != 0)) {
-              break label603;
-            }
-            paramAnonymousInt1 = 1;
-            label195:
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append((String)localObject4);
-            }
-            localObject4 = (CharSequence)localObject3;
-            if ((localObject4 != null) && (((CharSequence)localObject4).length() != 0)) {
-              break label608;
-            }
-            paramAnonymousInt1 = 1;
-            label231:
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append((String)localObject3);
-            }
-            localObject3 = (CharSequence)localObject1;
-            if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
-              break label613;
-            }
-            paramAnonymousInt1 = 1;
-            label267:
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append((String)localObject1);
-            }
-            localObject1 = (CharSequence)paramAnonymousIntent;
-            if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-              break label618;
-            }
-            paramAnonymousInt1 = 1;
-            label302:
-            if (paramAnonymousInt1 == 0) {
-              ((StringBuilder)localObject2).append(paramAnonymousIntent);
-            }
-            paramAnonymousIntent = ((StringBuilder)localObject2).toString();
-            p.j(paramAnonymousIntent, "StringBuilder().apply(builderAction).toString()");
-            localObject1 = this.Ivb.IuV.getText().toString();
-            localObject2 = (CharSequence)localObject1;
-            if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-              break label623;
-            }
-            paramAnonymousInt1 = 1;
-            label364:
-            if ((paramAnonymousInt1 == 0) && (!n.pu((String)localObject1, ";")))
-            {
-              this.Ivb.IuV.getText().append((CharSequence)";");
-              this.Ivb.IuV.setSelection(this.Ivb.IuV.getText().length());
-            }
-            this.Ivb.IuX.aaBx = true;
-            this.Ivb.IuV.bBa(paramAnonymousIntent + ';');
-            localObject1 = this.Ivb.Iva;
-            localObject2 = (String)((aa.f)localObject1).aaBC;
-            ((aa.f)localObject1).aaBC = ((String)localObject2 + paramAnonymousIntent);
-            if ((this.Ivb.IuY.isEmpty()) || ((p.h((String)j.lq((List)this.Ivb.IuY), "2") ^ true))) {
-              this.Ivb.IuY.add("2");
-            }
-          }
-          for (;;)
-          {
-            com.tencent.e.h.ZvG.n((Runnable)new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(197713);
-                this.Ivc.Ivb.IuT.iXq.showVKB();
-                AppMethodBeat.o(197713);
-              }
-            }, 100L);
-            AppMethodBeat.o(274326);
-            return;
-            label588:
-            paramAnonymousInt1 = 0;
-            break;
-            label593:
-            paramAnonymousInt1 = 0;
-            break label132;
-            label598:
-            paramAnonymousInt1 = 0;
-            break label159;
-            label603:
-            paramAnonymousInt1 = 0;
-            break label195;
-            label608:
-            paramAnonymousInt1 = 0;
-            break label231;
-            label613:
-            paramAnonymousInt1 = 0;
-            break label267;
-            label618:
-            paramAnonymousInt1 = 0;
-            break label302;
-            label623:
-            paramAnonymousInt1 = 0;
-            break label364;
-            label628:
-            Log.i("MicroMsg.RemittanceRemarkInputHalfPage", "cancel select address");
-          }
-        }
-      });
-      this.IuT.iXq.hideVKB((View)this.IuV);
-      c.b((Context)this.IuT.iXq, "address", ".ui.WalletSelectAddrUI", paramView, 123);
-      a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$$inlined$let$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(220417);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-wxpay_release"})
-  public static final class i
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
     implements TextWatcher
   {
-    i(TextView paramTextView, g paramg, aa.a parama1, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, String paramString, aa.a parama2, ArrayList paramArrayList, RemittanceRemarkInputHalfPage.b paramb) {}
+    f(TextView paramTextView, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, com.tencent.mm.ui.widget.a.j paramj, ah.a parama1, ah.a parama2, ArrayList<String> paramArrayList) {}
     
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(272808);
-      p.k(paramEditable, "s");
+      AppMethodBeat.i(288931);
+      s.u(paramEditable, "s");
       int i = paramEditable.toString().length();
-      paramEditable = this.Ivd;
-      p.j(paramEditable, "limitTv");
-      Object localObject = af.aaBG;
-      localObject = String.format("%s/%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), Integer.valueOf(this.IuT.IuQ) }, 2));
-      p.j(localObject, "java.lang.String.format(format, *args)");
+      paramEditable = this.OsD;
+      Object localObject = am.aixg;
+      localObject = String.format("%s/%s", Arrays.copyOf(new Object[] { Integer.valueOf(i), Integer.valueOf(jdField_this.Osu) }, 2));
+      s.s(localObject, "java.lang.String.format(format, *args)");
       paramEditable.setText((CharSequence)localObject);
-      if (i > this.IuT.IuQ)
+      paramEditable = k.aeZF;
+      ((al)k.d((AppCompatActivity)jdField_this.lzt).q(al.class)).setValue("desc_length_key", String.valueOf(i));
+      paramEditable = k.aeZF;
+      ((al)k.d((AppCompatActivity)jdField_this.lzt).q(al.class)).setValue("desc_max_length_key", String.valueOf(jdField_this.Osu));
+      if (i > jdField_this.Osu)
       {
-        this.IuU.HM(false);
-        this.Ivd.setTextColor(this.IuT.iXq.getResources().getColor(a.c.Red));
-        if (!this.Ive.aaBx) {
-          com.tencent.mm.plugin.report.service.h.IzE.a(22750, new Object[] { Integer.valueOf(6), this.IuT.IuR });
+        localj.NG(false);
+        this.OsD.setTextColor(jdField_this.lzt.getResources().getColor(a.c.Red));
+        this.OsD.setVisibility(0);
+        if ((!this.OsF.aiwY) && (jdField_this.Osw == RemittanceRemarkInputHalfPage.b.Osz)) {
+          com.tencent.mm.plugin.report.service.h.OAn.b(22750, new Object[] { Integer.valueOf(6), jdField_this.Osv });
         }
       }
-      for (this.Ive.aaBx = true; !this.IuX.aaBx; this.Ive.aaBx = false)
+      for (this.OsF.aiwY = true; !this.OsG.aiwY; this.OsF.aiwY = false)
       {
-        if ((!this.IuY.isEmpty()) && (!(p.h((String)j.lq((List)this.IuY), "1") ^ true))) {
-          break label282;
+        if ((!localArrayList.isEmpty()) && (s.p(kotlin.a.p.oM((List)localArrayList), "1"))) {
+          break label351;
         }
-        this.IuY.add("1");
-        AppMethodBeat.o(272808);
+        localArrayList.add("1");
+        AppMethodBeat.o(288931);
         return;
-        this.IuU.HM(true);
-        this.Ivd.setTextColor(this.IuT.iXq.getResources().getColor(a.c.half_alpha_black));
+        localj.NG(true);
+        this.OsD.setVisibility(4);
       }
-      this.IuX.aaBx = false;
-      label282:
-      AppMethodBeat.o(272808);
+      this.OsG.aiwY = false;
+      label351:
+      AppMethodBeat.o(288931);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(272805);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(272805);
+      AppMethodBeat.i(288924);
+      s.u(paramCharSequence, "s");
+      AppMethodBeat.o(288924);
     }
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(272806);
-      p.k(paramCharSequence, "s");
-      AppMethodBeat.o(272806);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick", "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$4"})
-  static final class j
-    implements g.a
-  {
-    j(aa.f paramf, MMEditText paramMMEditText, g paramg, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, String paramString, aa.a parama, ArrayList paramArrayList, RemittanceRemarkInputHalfPage.b paramb) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(272416);
-      this.IuZ.g(true, null, (String)this.Iva.aaBC);
-      this.IuT.iXq.hideVKB((View)this.IuV);
-      this.IuU.bYF();
-      AppMethodBeat.o(272416);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick", "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$5"})
-  static final class k
-    implements g.a
-  {
-    k(MMEditText paramMMEditText, aa.f paramf, g paramg, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, String paramString, aa.a parama, ArrayList paramArrayList, RemittanceRemarkInputHalfPage.b paramb) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(218673);
-      this.IuZ.g(false, this.IuV.getText().toString(), (String)this.Iva.aaBC);
-      this.IuT.iXq.hideVKB((View)this.IuV);
-      this.IuU.bYF();
-      int i = RemittanceRemarkInputHalfPage.aT(this.IuY);
-      if (i != 0) {
-        com.tencent.mm.plugin.report.service.h.IzE.a(22750, new Object[] { Integer.valueOf(i), this.IuT.IuR });
-      }
-      AppMethodBeat.o(218673);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/remittance/ui/RemittanceRemarkInputHalfPage$showDialog$1$6"})
-  static final class l
-    implements Runnable
-  {
-    l(MMEditText paramMMEditText, WeImageView paramWeImageView, RemittanceRemarkInputHalfPage paramRemittanceRemarkInputHalfPage, String paramString, aa.a parama, ArrayList paramArrayList, RemittanceRemarkInputHalfPage.b paramb) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(186668);
-      this.IuV.requestFocus();
-      this.IuT.iXq.showVKB();
-      if (this.Ivf.isShown())
-      {
-        Object localObject = this.Ivf.getLayoutParams();
-        if (localObject == null)
-        {
-          localObject = new kotlin.t("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-          AppMethodBeat.o(186668);
-          throw ((Throwable)localObject);
-        }
-        localObject = (LinearLayout.LayoutParams)localObject;
-        if ((this.IuV.getLineCount() <= 1) && (((LinearLayout.LayoutParams)localObject).gravity != 16))
-        {
-          ((LinearLayout.LayoutParams)localObject).gravity = 16;
-          this.Ivf.setLayoutParams((ViewGroup.LayoutParams)localObject);
-          AppMethodBeat.o(186668);
-          return;
-        }
-        if ((this.IuV.getLineCount() > 1) && (((LinearLayout.LayoutParams)localObject).gravity > 0))
-        {
-          ((LinearLayout.LayoutParams)localObject).gravity = 0;
-          this.Ivf.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-      }
-      AppMethodBeat.o(186668);
+      AppMethodBeat.i(288926);
+      s.u(paramCharSequence, "s");
+      AppMethodBeat.o(288926);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceRemarkInputHalfPage
  * JD-Core Version:    0.7.0.1
  */

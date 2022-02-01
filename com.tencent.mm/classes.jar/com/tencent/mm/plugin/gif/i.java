@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Arrays;
 
 public final class i
   implements a
 {
-  private long DnO;
-  private long DnP;
-  private int Doa;
+  private int JhJ;
+  private long Jhx;
+  private long Jhy;
   private int height;
-  private String uVk;
+  private String outputPath;
   private int width;
   
   public i(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(104683);
-    this.DnO = 0L;
-    this.Doa = -1;
-    this.uVk = paramString;
+    this.Jhx = 0L;
+    this.JhJ = -1;
+    this.outputPath = paramString;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.DnP = paramLong;
-    this.Doa = 20;
+    this.Jhy = paramLong;
+    this.JhJ = 20;
     Log.i("MicroMsg.MMWxAMEncoder", "create MMWxAMEncoder, width: %s, height: %s, frameDurationMs: %s, qp: %s, outputPath: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(20), paramString });
     AppMethodBeat.o(104683);
   }
@@ -34,13 +34,13 @@ public final class i
   public final boolean e(byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(104685);
-    if ((this.DnO != 0L) && (!Util.isNullOrNil(paramArrayOfByte)) && (paramArrayOfByte.length == this.width * this.height * 4))
+    if ((this.Jhx != 0L) && (!Util.isNullOrNil(paramArrayOfByte)) && (paramArrayOfByte.length == this.width * this.height * 4))
     {
-      long l = this.DnP;
+      long l = this.Jhy;
       if (paramLong >= 0L) {
         l = paramLong;
       }
-      int i = MMWXGFJNI.nativeAddWxAMEncodeRgbaFrame(this.DnO, this.width, this.height, paramArrayOfByte, l);
+      int i = MMWXGFJNI.nativeAddWxAMEncodeRgbaFrame(this.Jhx, this.width, this.height, paramArrayOfByte, l);
       if (i < 0)
       {
         Log.e("MicroMsg.MMWxAMEncoder", "add rgba frame failed: %s", new Object[] { Integer.valueOf(i) });
@@ -55,12 +55,12 @@ public final class i
     return false;
   }
   
-  public final boolean eAU()
+  public final boolean fIZ()
   {
     AppMethodBeat.i(104686);
-    if (this.DnO != 0L)
+    if (this.Jhx != 0L)
     {
-      byte[] arrayOfByte = MMWXGFJNI.nativeFinishWxAMEncode(this.DnO);
+      byte[] arrayOfByte = MMWXGFJNI.nativeFinishWxAMEncode(this.Jhx);
       if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
       {
         Log.i("MicroMsg.MMWxAMEncoder", "finish encode error, buf: %s", new Object[] { Arrays.toString(arrayOfByte) });
@@ -68,9 +68,9 @@ public final class i
         return false;
       }
       Log.i("MicroMsg.MMWxAMEncoder", "encoder buffer size: %s", new Object[] { Integer.valueOf(arrayOfByte.length) });
-      if (!Util.isNullOrNil(this.uVk))
+      if (!Util.isNullOrNil(this.outputPath))
       {
-        u.H(this.uVk, arrayOfByte);
+        y.f(this.outputPath, arrayOfByte, arrayOfByte.length);
         AppMethodBeat.o(104686);
         return true;
       }
@@ -82,22 +82,22 @@ public final class i
   public final boolean init()
   {
     AppMethodBeat.i(104684);
-    this.DnO = MMWXGFJNI.nativeInitWxAMEncoder(this.width, this.height, this.DnP, this.Doa);
-    if (this.DnO == 0L)
+    this.Jhx = MMWXGFJNI.nativeInitWxAMEncoder(this.width, this.height, this.Jhy, this.JhJ);
+    if (this.Jhx == 0L)
     {
-      h.IzE.el(852, 12);
-      Log.e("MicroMsg.MMWxAMEncoder", "init wxam encoder failed! %s", new Object[] { Long.valueOf(this.DnO) });
+      h.OAn.kJ(852, 12);
+      Log.e("MicroMsg.MMWxAMEncoder", "init wxam encoder failed! %s", new Object[] { Long.valueOf(this.Jhx) });
       AppMethodBeat.o(104684);
       return false;
     }
-    Log.i("MicroMsg.MMWxAMEncoder", "successfully init wxam encoder: %s", new Object[] { Long.valueOf(this.DnO) });
+    Log.i("MicroMsg.MMWxAMEncoder", "successfully init wxam encoder: %s", new Object[] { Long.valueOf(this.Jhx) });
     AppMethodBeat.o(104684);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.i
  * JD-Core Version:    0.7.0.1
  */

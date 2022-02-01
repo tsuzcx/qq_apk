@@ -17,13 +17,12 @@ import com.tencent.liteav.renderer.a.a;
 import com.tencent.liteav.renderer.e;
 import com.tencent.liteav.renderer.f;
 import com.tencent.liteav.videodecoder.TXCVideoDecoder;
-import com.tencent.liteav.videodecoder.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 public class TXCRenderAndDec
   extends com.tencent.liteav.basic.module.a
-  implements com.tencent.liteav.basic.c.b, a.a, f, g
+  implements com.tencent.liteav.basic.c.b, a.a, f, com.tencent.liteav.videodecoder.h
 {
   public static final String TAG = "TXCRenderAndDec";
   private h mConfig;
@@ -179,22 +178,22 @@ public class TXCRenderAndDec
   
   public void enableLimitDecCache(boolean paramBoolean)
   {
-    AppMethodBeat.i(242483);
+    AppMethodBeat.i(229556);
     this.mEnableLimitHWDecCache = paramBoolean;
     TXCVideoDecoder localTXCVideoDecoder = this.mVideoDecoder;
     if (localTXCVideoDecoder != null) {
       localTXCVideoDecoder.enableLimitDecCache(paramBoolean);
     }
-    AppMethodBeat.o(242483);
+    AppMethodBeat.o(229556);
   }
   
   public void enableReport(boolean paramBoolean)
   {
-    AppMethodBeat.i(242473);
+    AppMethodBeat.i(229503);
     if (this.mVideoRender != null) {
       this.mVideoRender.b(paramBoolean);
     }
-    AppMethodBeat.o(242473);
+    AppMethodBeat.o(229503);
   }
   
   public void enableRestartDecoder(boolean paramBoolean)
@@ -563,20 +562,20 @@ public class TXCRenderAndDec
   
   public void resetPeriodFeelingStatistics()
   {
-    AppMethodBeat.i(242476);
+    AppMethodBeat.i(229512);
     if (this.mVideoRender != null) {
       this.mVideoRender.n();
     }
-    AppMethodBeat.o(242476);
+    AppMethodBeat.o(229512);
   }
   
   public void resetPeriodStatistics()
   {
-    AppMethodBeat.i(242475);
+    AppMethodBeat.i(229506);
     if (this.mVideoRender != null) {
       this.mVideoRender.m();
     }
-    AppMethodBeat.o(242475);
+    AppMethodBeat.o(229506);
   }
   
   public void restartDecoder()
@@ -600,12 +599,12 @@ public class TXCRenderAndDec
   
   public void setConfig(h paramh)
   {
-    AppMethodBeat.i(242467);
+    AppMethodBeat.i(229471);
     this.mConfig = paramh;
     if (this.mVideoRender != null) {
       this.mVideoRender.b(this.mConfig.d);
     }
-    AppMethodBeat.o(242467);
+    AppMethodBeat.o(229471);
   }
   
   public void setDecListener(a parama)
@@ -628,9 +627,9 @@ public class TXCRenderAndDec
   
   public void setNotifyListener(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(242459);
+    AppMethodBeat.i(229456);
     this.mNotifyListener = new WeakReference(paramb);
-    AppMethodBeat.o(242459);
+    AppMethodBeat.o(229456);
   }
   
   public void setRenderAndDecDelegate(b paramb)
@@ -642,12 +641,12 @@ public class TXCRenderAndDec
   
   public void setRenderMirrorType(int paramInt)
   {
-    AppMethodBeat.i(242481);
+    AppMethodBeat.i(229526);
     TXCLog.i("TXCRenderAndDec", "setRenderMirrorType ".concat(String.valueOf(paramInt)));
     if (this.mVideoRender != null) {
       this.mVideoRender.d(paramInt);
     }
-    AppMethodBeat.o(242481);
+    AppMethodBeat.o(229526);
   }
   
   public void setRenderMode(int paramInt)
@@ -686,7 +685,7 @@ public class TXCRenderAndDec
   
   public void setVideoFrameListener(o paramo, com.tencent.liteav.basic.b.b paramb)
   {
-    AppMethodBeat.i(242464);
+    AppMethodBeat.i(229466);
     this.mVideoFrameListener = paramo;
     this.mVideoFrameFormat = paramb;
     TXCLog.i("TXCRenderAndDec", "setVideoFrameListener->enter listener: " + paramo + ", format: " + paramb);
@@ -696,13 +695,13 @@ public class TXCRenderAndDec
       {
         TXCLog.i("TXCRenderAndDec", "setCustomRenderListener-> clean listener.");
         ((com.tencent.liteav.renderer.a)this.mVideoRender).b(null);
-        AppMethodBeat.o(242464);
+        AppMethodBeat.o(229466);
         return;
       }
       TXCLog.i("TXCRenderAndDec", "setCustomRenderListener-> set listener.");
       ((com.tencent.liteav.renderer.a)this.mVideoRender).b(this);
     }
-    AppMethodBeat.o(242464);
+    AppMethodBeat.o(229466);
   }
   
   public void setVideoRender(e parame)
@@ -867,7 +866,7 @@ public class TXCRenderAndDec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.TXCRenderAndDec
  * JD-Core Version:    0.7.0.1
  */

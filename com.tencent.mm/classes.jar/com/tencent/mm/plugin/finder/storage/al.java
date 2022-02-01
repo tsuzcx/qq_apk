@@ -1,38 +1,39 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ce;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.autogen.b.de;
+import com.tencent.mm.plugin.finder.conv.p;
+import com.tencent.mm.plugin.finder.conv.p.a;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "Lcom/tencent/mm/autogen/table/BaseFinderAction;", "()V", "obj", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "uniqueId", "", "Companion", "plugin-finder-base_release"})
-public class al
-  extends ce
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderShareInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/conv/FinderShareInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteShareInfo", "", "shareInfo", "getByUserName", "username", "", "query", "", "offset", "", "nextCount", "queryLimit", "limitCount", "updateShareInfos", "userNames", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class al
+  extends MAutoStorage<p>
 {
-  private static final String AmI = "table_index_select_1";
-  private static final String AmJ = "table_index_select_2";
-  public static final a AmK;
-  private static final IAutoDBItem.MAutoDBInfo info;
+  public static final a FMu;
+  private static final String[] SQL_CREATE;
+  private final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(167032);
-    AmK = new a((byte)0);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ce.aoY();
-    p.j(localMAutoDBInfo, "initAutoDBInfo(LocalFinderAction::class.java)");
-    info = localMAutoDBInfo;
-    AmI = "table_index_select_1";
-    AmJ = "table_index_select_2";
-    AppMethodBeat.o(167032);
+    AppMethodBeat.i(339408);
+    FMu = new a((byte)0);
+    p.a locala = p.AHe;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(p.access$getInfo$cp(), "FinderShareInfo") };
+    AppMethodBeat.o(339408);
   }
   
-  public IAutoDBItem.MAutoDBInfo getDBInfo()
+  public al(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return info;
+    super(paramISQLiteDatabase, p.access$getInfo$cp(), "FinderShareInfo", de.INDEX_CREATE);
+    AppMethodBeat.i(339399);
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(339399);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction$Companion;", "", "()V", "TABLEINDEX1", "", "getTABLEINDEX1", "()Ljava/lang/String;", "TABLEINDEX2", "getTABLEINDEX2", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderShareInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

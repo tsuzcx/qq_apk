@@ -1,104 +1,43 @@
 package kotlin.l.b.a.b.m;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.b.c.ai;
-import kotlin.l.b.a.b.b.l;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.a.g;
 
-public final class p
+public abstract class p
+  extends o
 {
-  public static ba a(List<as> paramList1, ay paramay, l paraml, List<as> paramList2)
+  private final al aiUV;
+  
+  public p(al paramal)
   {
-    AppMethodBeat.i(60639);
-    if (paramList1 == null) {
-      aDG(0);
-    }
-    if (paramay == null) {
-      aDG(1);
-    }
-    if (paraml == null) {
-      aDG(2);
-    }
-    if (paramList2 == null) {
-      aDG(3);
-    }
-    paramList1 = a(paramList1, paramay, paraml, paramList2, null);
-    if (paramList1 == null)
-    {
-      paramList1 = new AssertionError("Substitution failed");
-      AppMethodBeat.o(60639);
-      throw paramList1;
-    }
-    if (paramList1 == null) {
-      aDG(4);
-    }
-    AppMethodBeat.o(60639);
-    return paramList1;
+    this.aiUV = paramal;
   }
   
-  public static ba a(List<as> paramList1, ay paramay, l paraml, List<as> paramList2, boolean[] paramArrayOfBoolean)
+  private p i(g paramg)
   {
-    AppMethodBeat.i(60640);
-    if (paramList1 == null) {
-      aDG(5);
+    s.u(paramg, "newAnnotations");
+    if (paramg != knl()) {
+      return (p)new i((al)this, paramg);
     }
-    if (paramay == null) {
-      aDG(6);
+    return this;
+  }
+  
+  public final al Pq(boolean paramBoolean)
+  {
+    if (paramBoolean == ksB()) {
+      return (al)this;
     }
-    if (paraml == null) {
-      aDG(7);
-    }
-    if (paramList2 == null) {
-      aDG(8);
-    }
-    Object localObject1 = new HashMap();
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    Object localObject2 = paramList1.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      as localas = (as)((Iterator)localObject2).next();
-      ai localai = ai.a(paraml, localas.iDY(), localas.iEX(), localas.iEW(), localas.iEU(), i, an.aaKE, localas.iEV());
-      ((Map)localObject1).put(localas.iDL(), new ax(localai.iET()));
-      localHashMap.put(localas, localai);
-      paramList2.add(localai);
-      i += 1;
-    }
-    paramay = ba.b(paramay, au.cI((Map)localObject1));
-    paramList1 = paramList1.iterator();
-    while (paramList1.hasNext())
-    {
-      paramList2 = (as)paramList1.next();
-      paraml = (ai)localHashMap.get(paramList2);
-      paramList2 = paramList2.iCz().iterator();
-      while (paramList2.hasNext())
-      {
-        localObject1 = (ab)paramList2.next();
-        localObject2 = paramay.c((ab)localObject1, bh.abrq);
-        if (localObject2 == null)
-        {
-          AppMethodBeat.o(60640);
-          return null;
-        }
-        if ((localObject2 != localObject1) && (paramArrayOfBoolean != null)) {
-          paramArrayOfBoolean[0] = true;
-        }
-        paraml.K((ab)localObject2);
-      }
-      paraml.iGP();
-    }
-    AppMethodBeat.o(60640);
-    return paramay;
+    return this.aiUV.Pq(paramBoolean).d(knl());
+  }
+  
+  protected final al ksx()
+  {
+    return this.aiUV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.p
  * JD-Core Version:    0.7.0.1
  */

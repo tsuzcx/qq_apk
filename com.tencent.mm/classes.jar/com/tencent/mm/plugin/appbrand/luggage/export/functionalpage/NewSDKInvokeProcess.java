@@ -1,140 +1,205 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.am.b.a;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.opensdk.channel.MMessageActV2;
-import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
-import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Resp;
-import com.tencent.mm.plugin.appbrand.ai.a.a.a;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.page.y;
-import com.tencent.mm.plugin.appbrand.permission.a.a.c;
-import com.tencent.mm.protocal.protobuf.fpl;
+import com.tencent.mm.plugin.appbrand.permission.a.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.g.d.b;
-import kotlin.g.a.b;
-import kotlin.t;
-import kotlin.x;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "CALLBACK_ID", "", "newSdkInvokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "navigateBack", "", "transitiveData", "", "invokeResult", "onCallback", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "data", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "Companion", "NewSdkInvokeBackData", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalAPIInvokeProcess;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "CALLBACK_ID", "", "newSdkInvokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "navigateBack", "", "transitiveData", "", "invokeResult", "onCallback", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "data", "onPayAheadCallback", "callbackStr", "performInvoke", "invokeData", "Companion", "NewSdkInvokeBackData", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class NewSDKInvokeProcess
   implements o
 {
-  @Deprecated
-  public static final a qbc;
-  final l qaH;
-  private WechatNativeExtraDataInvokeFunctionalPage qba;
-  private final int qbb;
+  private static final NewSDKInvokeProcess.a tgg;
+  private final l tfN;
+  private WechatNativeExtraDataInvokeFunctionalPage tgh;
+  private final int tgi;
   
   static
   {
-    AppMethodBeat.i(275982);
-    qbc = new a((byte)0);
-    AppMethodBeat.o(275982);
+    AppMethodBeat.i(320077);
+    tgg = new NewSDKInvokeProcess.a((byte)0);
+    AppMethodBeat.o(320077);
   }
   
   public NewSDKInvokeProcess(l paraml)
   {
-    AppMethodBeat.i(275981);
-    this.qaH = paraml;
-    this.qbb = (hashCode() & 0xFFFF);
-    AppMethodBeat.o(275981);
+    AppMethodBeat.i(320007);
+    this.tfN = paraml;
+    this.tgi = (hashCode() & 0xFFFF);
+    AppMethodBeat.o(320007);
   }
   
-  private final void akq(String paramString)
+  private static final void a(NewSdkInvokeBackData paramNewSdkInvokeBackData, com.tencent.mm.ipcinvoker.f paramf, b.a parama)
   {
-    AppMethodBeat.i(275979);
-    Log.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.NewSDKInvokeProcess", "navigateBack, instance(" + hashCode() + ", invokeResult(" + paramString + ')');
-    com.tencent.e.h.ZvG.bc((Runnable)new b(this));
-    WechatNativeExtraDataInvokeFunctionalPage localWechatNativeExtraDataInvokeFunctionalPage = this.qba;
-    if (localWechatNativeExtraDataInvokeFunctionalPage == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    AppMethodBeat.i(320037);
+    a(paramNewSdkInvokeBackData, paramf);
+    AppMethodBeat.o(320037);
+  }
+  
+  private static final void a(NewSdkInvokeBackData paramNewSdkInvokeBackData, com.tencent.mm.ipcinvoker.f paramf, Object paramObject)
+  {
+    AppMethodBeat.i(320040);
+    a(paramNewSdkInvokeBackData, paramf);
+    AppMethodBeat.o(320040);
+  }
+  
+  private static final void a(NewSDKInvokeProcess paramNewSDKInvokeProcess)
+  {
+    AppMethodBeat.i(320021);
+    s.u(paramNewSDKInvokeProcess, "this$0");
+    paramNewSDKInvokeProcess = AndroidContextUtil.castActivityOrNull(paramNewSDKInvokeProcess.tfN.mContext);
+    if (paramNewSDKInvokeProcess != null)
+    {
+      paramNewSDKInvokeProcess = (Context)paramNewSDKInvokeProcess;
+      MMApplicationContext.getContext().getString(ba.i.app_tip);
+      com.tencent.mm.ui.base.k.a(paramNewSDKInvokeProcess, MMApplicationContext.getContext().getString(ba.i.wxa_redirecting_page_before_navigate_back_app), false, null);
     }
-    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new NewSdkInvokeBackData(localWechatNativeExtraDataInvokeFunctionalPage, paramString), (com.tencent.mm.ipcinvoker.d)c.qbg, (f)new d(this));
-    AppMethodBeat.o(275979);
+    AppMethodBeat.o(320021);
+  }
+  
+  private static final void a(NewSDKInvokeProcess paramNewSDKInvokeProcess, IPCVoid paramIPCVoid)
+  {
+    AppMethodBeat.i(320053);
+    s.u(paramNewSDKInvokeProcess, "this$0");
+    paramNewSDKInvokeProcess.tfN.cBq();
+    AppMethodBeat.o(320053);
+  }
+  
+  private final void adw(String paramString)
+  {
+    AppMethodBeat.i(320014);
+    Log.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.NewSDKInvokeProcess", "navigateBack, instance(" + hashCode() + ", invokeResult(" + paramString + ')');
+    h.ahAA.bk(new NewSDKInvokeProcess..ExternalSyntheticLambda5(this));
+    WechatNativeExtraDataInvokeFunctionalPage localWechatNativeExtraDataInvokeFunctionalPage2 = this.tgh;
+    WechatNativeExtraDataInvokeFunctionalPage localWechatNativeExtraDataInvokeFunctionalPage1 = localWechatNativeExtraDataInvokeFunctionalPage2;
+    if (localWechatNativeExtraDataInvokeFunctionalPage2 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      localWechatNativeExtraDataInvokeFunctionalPage1 = null;
+    }
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new NewSdkInvokeBackData(localWechatNativeExtraDataInvokeFunctionalPage1, paramString), (com.tencent.mm.ipcinvoker.d)NewSDKInvokeProcess..ExternalSyntheticLambda0.INSTANCE, new NewSDKInvokeProcess..ExternalSyntheticLambda2(this));
+    AppMethodBeat.o(320014);
+  }
+  
+  private static final void b(NewSdkInvokeBackData paramNewSdkInvokeBackData, com.tencent.mm.ipcinvoker.f paramf)
+  {
+    AppMethodBeat.i(320047);
+    Object localObject = a.tfJ;
+    localObject = paramNewSdkInvokeBackData.tgj.invokeTicket;
+    s.checkNotNull(localObject);
+    a.a.eQ((String)localObject, paramNewSdkInvokeBackData.tgk).bFJ().a(new NewSDKInvokeProcess..ExternalSyntheticLambda4(paramNewSdkInvokeBackData, paramf)).a(new NewSDKInvokeProcess..ExternalSyntheticLambda3(paramNewSdkInvokeBackData, paramf));
+    AppMethodBeat.o(320047);
+  }
+  
+  private static final void c(NewSdkInvokeBackData paramNewSdkInvokeBackData, com.tencent.mm.ipcinvoker.f paramf)
+  {
+    AppMethodBeat.i(320059);
+    Object localObject = a.tfJ;
+    localObject = paramNewSdkInvokeBackData.tgj.invokeTicket;
+    s.checkNotNull(localObject);
+    a.a.eQ((String)localObject, paramNewSdkInvokeBackData.tgk).bFJ();
+    if (paramf != null) {
+      com.tencent.mm.ipcinvoker.wx_extension.b.a.b(paramf);
+    }
+    AppMethodBeat.o(320059);
   }
   
   public final void a(p paramp, int paramInt, String paramString)
   {
-    AppMethodBeat.i(275978);
-    kotlin.g.b.p.k(paramp, "component");
-    kotlin.g.b.p.k(paramString, "data");
+    AppMethodBeat.i(320142);
+    s.u(paramp, "component");
+    s.u(paramString, "data");
     Log.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.NewSDKInvokeProcess", "onCallback, instance(" + hashCode() + ", callbackId(" + paramInt + "), data(" + paramString + ')');
-    if (this.qbb == paramInt)
+    if (this.tgi == paramInt)
     {
-      if (this.qba == null) {
-        kotlin.g.b.p.bGy("newSdkInvokeArgs");
+      if (this.tgh == null) {
+        s.bIx("newSdkInvokeArgs");
       }
-      akq(paramString);
+      adw(paramString);
     }
-    AppMethodBeat.o(275978);
+    AppMethodBeat.o(320142);
   }
   
-  public final void akp(final String paramString)
+  public final void adv(String paramString)
   {
-    AppMethodBeat.i(275976);
-    kotlin.g.b.p.k(paramString, "invokeData");
-    Log.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.NewSDKInvokeProcess", "performInvoke with instance(" + hashCode() + ") callbackId(" + this.qbb + ") appId(" + this.qaH.getAppId() + ") data(" + paramString + ')');
+    AppMethodBeat.i(320137);
+    s.u(paramString, "invokeData");
+    Log.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.NewSDKInvokeProcess", "performInvoke with instance(" + hashCode() + ") callbackId(" + this.tgi + ") appId(" + this.tfN.mAppId + ") data(" + paramString + ')');
     Object localObject1 = new WechatNativeExtraDataInvokeFunctionalPage();
-    ((WechatNativeExtraDataInvokeFunctionalPage)localObject1).aq(new JSONObject(paramString));
-    this.qba = ((WechatNativeExtraDataInvokeFunctionalPage)localObject1);
-    paramString = this.qba;
-    if (paramString == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    ((WechatNativeExtraDataInvokeFunctionalPage)localObject1).aA(new JSONObject(paramString));
+    paramString = ah.aiuX;
+    this.tgh = ((WechatNativeExtraDataInvokeFunctionalPage)localObject1);
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
     }
-    localObject1 = paramString.qbq;
-    paramString = this.qba;
-    if (paramString == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    final String str1 = paramString.efV;
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
     }
-    Object localObject2 = paramString.qbr;
-    paramString = this.qba;
-    if (paramString == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    Object localObject2 = paramString.tgs;
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
     }
-    final String str = paramString.nYF;
-    paramString = this.qba;
-    if (paramString == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    final String str2 = paramString.qYI;
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
     }
-    paramString = paramString.qbv;
-    Object localObject3;
+    paramString = paramString.tgw;
     if (paramString != null)
     {
-      localObject3 = this.qaH.caX();
-      if (localObject3 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      kotlin.g.b.p.j(localObject3, "runtime.currentPageView!!");
-      ((k)localObject3).agC(paramString);
+      localObject1 = this.tfN.cBr();
+      s.checkNotNull(localObject1);
+      ((k)localObject1).Zy(paramString);
     }
-    paramString = this.qba;
-    if (paramString == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
     }
-    paramString = paramString.qbw;
+    paramString = paramString.tgx;
     if (paramString != null)
     {
-      localObject3 = this.qaH.caX();
-      if (localObject3 == null) {
-        kotlin.g.b.p.iCn();
-      }
-      kotlin.g.b.p.j(localObject3, "runtime.currentPageView!!");
-      ((k)localObject3).ako(paramString);
+      localObject1 = this.tfN.cBr();
+      s.checkNotNull(localObject1);
+      ((k)localObject1).tfV = paramString;
     }
-    paramString = (CharSequence)localObject1;
+    paramString = (CharSequence)str1;
     if ((paramString == null) || (paramString.length() == 0))
     {
       i = 1;
@@ -142,168 +207,167 @@ final class NewSDKInvokeProcess
       {
         paramString = (CharSequence)localObject2;
         if ((paramString != null) && (paramString.length() != 0)) {
-          break label333;
+          break label346;
         }
       }
     }
-    label333:
+    label346:
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        break label338;
+        break label351;
       }
-      akq("fail invalid args");
-      AppMethodBeat.o(275976);
+      adw("fail invalid args");
+      AppMethodBeat.o(320137);
       return;
       i = 0;
       break;
     }
-    label338:
-    paramString = this.qba;
-    if (paramString == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
-    }
-    if (paramString.csz) {
-      if (this.qaH.bDA().agR((String)localObject1) != null)
-      {
-        paramString = this.qaH.bDA();
-        if (paramString == null)
-        {
-          paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
-          AppMethodBeat.o(275976);
-          throw paramString;
-        }
-        paramString = (p)paramString;
-      }
-    }
-    for (;;)
+    label351:
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
     {
-      localObject2 = (kotlin.g.a.a)new g(this, paramString, (String)localObject1, (String)localObject2);
-      localObject3 = this.qba;
-      if (localObject3 == null) {
-        kotlin.g.b.p.bGy("newSdkInvokeArgs");
-      }
-      if (3 != ((WechatNativeExtraDataInvokeFunctionalPage)localObject3).qbt) {
-        break label819;
-      }
-      if (paramString != null) {
-        break;
-      }
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.AppBrandComponentWxaShared");
-      AppMethodBeat.o(275976);
-      throw paramString;
-      paramString = this.qaH.caX();
-      if (paramString == null) {
-        kotlin.g.b.p.iCn();
-      }
-      if (paramString.agR((String)localObject1) != null)
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
+    }
+    kotlin.g.a.a locala;
+    if (paramString.ekt)
+    {
+      if (this.tfN.ccO().ZO(str1) != null)
       {
-        paramString = this.qaH.caX();
+        paramString = this.tfN.ccO();
         if (paramString == null)
         {
-          paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalPageView");
-          AppMethodBeat.o(275976);
+          paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
+          AppMethodBeat.o(320137);
           throw paramString;
         }
-        paramString = (p)paramString;
+        paramString = (e)paramString;
       }
-      else
+      for (;;)
       {
-        paramString = this.qaH.bDA();
-        if (paramString == null)
-        {
-          paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
-          AppMethodBeat.o(275976);
-          throw paramString;
-        }
         paramString = (p)paramString;
-        continue;
-        paramString = this.qba;
-        if (paramString == null) {
-          kotlin.g.b.p.bGy("newSdkInvokeArgs");
-        }
-        paramString = paramString.qbs;
-        if (paramString == null) {}
-        do
+        locala = (kotlin.g.a.a)new c(paramString, str1, (String)localObject2, this);
+        localObject2 = this.tgh;
+        localObject1 = localObject2;
+        if (localObject2 == null)
         {
-          do
+          s.bIx("newSdkInvokeArgs");
+          localObject1 = null;
+        }
+        if (3 != ((WechatNativeExtraDataInvokeFunctionalPage)localObject1).tgu) {
+          break;
+        }
+        com.tencent.mm.plugin.appbrand.permission.a.a.a(new com.tencent.mm.plugin.appbrand.permission.a.c((g)paramString, str1, null, null, this.tgi), (a.d)new b(locala, this, str2, str1));
+        AppMethodBeat.o(320137);
+        return;
+        paramString = this.tfN.cBr();
+        s.checkNotNull(paramString);
+        if (paramString.ZO(str1) != null)
+        {
+          localObject1 = this.tfN.cBr();
+          paramString = (String)localObject1;
+          if (localObject1 == null)
           {
-            for (;;)
-            {
-              akq(d.eB("fail invalid jsapiType", (String)localObject1));
-              paramString = (Throwable)new RuntimeException();
-              AppMethodBeat.o(275976);
-              throw paramString;
-              switch (paramString.hashCode())
-              {
-              }
-            }
-          } while (!paramString.equals("webview"));
-          paramString = this.qaH.bDz();
-          kotlin.g.b.p.j(paramString, "runtime.pageContainer");
-          paramString = paramString.getPageView();
-          if (paramString != null) {
-            break;
+            paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalPageView");
+            AppMethodBeat.o(320137);
+            throw paramString;
           }
-          paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalPageView");
-          AppMethodBeat.o(275976);
-          throw paramString;
-        } while (!paramString.equals("appservice"));
-        paramString = this.qaH.bDA();
-        if (paramString == null)
-        {
-          paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
-          AppMethodBeat.o(275976);
-          throw paramString;
         }
-        paramString = (p)paramString;
-        continue;
-        paramString = (p)paramString;
+        else
+        {
+          paramString = this.tfN.ccO();
+          if (paramString == null)
+          {
+            paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
+            AppMethodBeat.o(320137);
+            throw paramString;
+          }
+          paramString = (e)paramString;
+        }
       }
     }
-    com.tencent.mm.plugin.appbrand.permission.a.a.a(new com.tencent.mm.plugin.appbrand.permission.a.c((g)paramString, (String)localObject1, null, this.qbb), (a.c)new f(this, (kotlin.g.a.a)localObject2, str, (String)localObject1));
-    AppMethodBeat.o(275976);
-    return;
-    label819:
-    ((kotlin.g.a.a)localObject2).invoke();
-    AppMethodBeat.o(275976);
+    localObject1 = this.tgh;
+    paramString = (String)localObject1;
+    if (localObject1 == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramString = null;
+    }
+    paramString = paramString.tgt;
+    if (s.p(paramString, "appservice"))
+    {
+      paramString = this.tfN.ccO();
+      if (paramString == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalAppService");
+        AppMethodBeat.o(320137);
+        throw paramString;
+      }
+    }
+    for (paramString = (e)paramString;; paramString = (k)paramString)
+    {
+      paramString = (p)paramString;
+      break;
+      if (!s.p(paramString, "webview")) {
+        break label750;
+      }
+      paramString = this.tfN.ccN().getPageView();
+      if (paramString == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalPageView");
+        AppMethodBeat.o(320137);
+        throw paramString;
+      }
+    }
+    label750:
+    adw(d.eS("fail invalid jsapiType", str1));
+    paramString = new RuntimeException();
+    AppMethodBeat.o(320137);
+    throw paramString;
+    locala.invoke();
+    AppMethodBeat.o(320137);
   }
   
   public final void b(p paramp, int paramInt, String paramString)
   {
-    AppMethodBeat.i(275980);
-    kotlin.g.b.p.k(paramp, "component");
-    kotlin.g.b.p.k(paramString, "callbackStr");
+    AppMethodBeat.i(320147);
+    s.u(paramp, "component");
+    s.u(paramString, "callbackStr");
     Log.i("MicroMsg.AppBrand.FunctionalAPIInvokeManager.NewSDKInvokeProcess", "onPayAheadCallback, instance(" + hashCode() + ", callbackId(" + paramInt + "), callbackStr(" + paramString + ')');
-    paramp = this.qba;
-    if (paramp == null) {
-      kotlin.g.b.p.bGy("newSdkInvokeArgs");
+    WechatNativeExtraDataInvokeFunctionalPage localWechatNativeExtraDataInvokeFunctionalPage = this.tgh;
+    paramp = localWechatNativeExtraDataInvokeFunctionalPage;
+    if (localWechatNativeExtraDataInvokeFunctionalPage == null)
+    {
+      s.bIx("newSdkInvokeArgs");
+      paramp = null;
     }
-    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new NewSdkInvokeBackData(paramp, paramString), (com.tencent.mm.ipcinvoker.d)e.qbj, null);
-    AppMethodBeat.o(275980);
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new NewSdkInvokeBackData(paramp, paramString), (com.tencent.mm.ipcinvoker.d)NewSDKInvokeProcess..ExternalSyntheticLambda1.INSTANCE);
+    AppMethodBeat.o(320147);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$NewSdkInvokeBackData;", "Landroid/os/Parcelable;", "invokeReq", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "backData", "", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;Ljava/lang/String;)V", "getBackData", "()Ljava/lang/String;", "getInvokeReq", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$NewSdkInvokeBackData;", "Landroid/os/Parcelable;", "invokeReq", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "backData", "", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;Ljava/lang/String;)V", "getBackData", "()Ljava/lang/String;", "getInvokeReq", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "component1", "component2", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class NewSdkInvokeBackData
     implements Parcelable
   {
-    public static final Parcelable.Creator CREATOR;
-    final WechatNativeExtraDataInvokeFunctionalPage qbd;
-    final String qbe;
+    public static final Parcelable.Creator<NewSdkInvokeBackData> CREATOR;
+    final WechatNativeExtraDataInvokeFunctionalPage tgj;
+    final String tgk;
     
     static
     {
-      AppMethodBeat.i(275402);
-      CREATOR = new a();
-      AppMethodBeat.o(275402);
+      AppMethodBeat.i(319920);
+      CREATOR = (Parcelable.Creator)new a();
+      AppMethodBeat.o(319920);
     }
     
     public NewSdkInvokeBackData(WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, String paramString)
     {
-      AppMethodBeat.i(275396);
-      this.qbd = paramWechatNativeExtraDataInvokeFunctionalPage;
-      this.qbe = paramString;
-      AppMethodBeat.o(275396);
+      AppMethodBeat.i(319911);
+      this.tgj = paramWechatNativeExtraDataInvokeFunctionalPage;
+      this.tgk = paramString;
+      AppMethodBeat.o(319911);
     }
     
     public final int describeContents()
@@ -313,178 +377,106 @@ final class NewSDKInvokeProcess
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(275399);
-      if (this != paramObject)
+      AppMethodBeat.i(319945);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof NewSdkInvokeBackData))
-        {
-          paramObject = (NewSdkInvokeBackData)paramObject;
-          if ((!kotlin.g.b.p.h(this.qbd, paramObject.qbd)) || (!kotlin.g.b.p.h(this.qbe, paramObject.qbe))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(275399);
+        AppMethodBeat.o(319945);
         return true;
       }
-      AppMethodBeat.o(275399);
-      return false;
+      if (!(paramObject instanceof NewSdkInvokeBackData))
+      {
+        AppMethodBeat.o(319945);
+        return false;
+      }
+      paramObject = (NewSdkInvokeBackData)paramObject;
+      if (!s.p(this.tgj, paramObject.tgj))
+      {
+        AppMethodBeat.o(319945);
+        return false;
+      }
+      if (!s.p(this.tgk, paramObject.tgk))
+      {
+        AppMethodBeat.o(319945);
+        return false;
+      }
+      AppMethodBeat.o(319945);
+      return true;
     }
     
     public final int hashCode()
     {
-      int j = 0;
-      AppMethodBeat.i(275398);
-      Object localObject = this.qbd;
-      if (localObject != null) {}
-      for (int i = localObject.hashCode();; i = 0)
+      AppMethodBeat.i(319940);
+      int j = this.tgj.hashCode();
+      if (this.tgk == null) {}
+      for (int i = 0;; i = this.tgk.hashCode())
       {
-        localObject = this.qbe;
-        if (localObject != null) {
-          j = localObject.hashCode();
-        }
-        AppMethodBeat.o(275398);
-        return i * 31 + j;
+        AppMethodBeat.o(319940);
+        return i + j * 31;
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(275397);
-      String str = "NewSdkInvokeBackData(invokeReq=" + this.qbd + ", backData=" + this.qbe + ")";
-      AppMethodBeat.o(275397);
+      AppMethodBeat.i(319927);
+      String str = "NewSdkInvokeBackData(invokeReq=" + this.tgj + ", backData=" + this.tgk + ')';
+      AppMethodBeat.o(319927);
       return str;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(275401);
-      kotlin.g.b.p.k(paramParcel, "parcel");
-      this.qbd.writeToParcel(paramParcel, 0);
-      paramParcel.writeString(this.qbe);
-      AppMethodBeat.o(275401);
+      AppMethodBeat.i(319959);
+      s.u(paramParcel, "out");
+      this.tgj.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeString(this.tgk);
+      AppMethodBeat.o(319959);
     }
     
-    @kotlin.l(iBK={1, 1, 16})
+    @Metadata(k=3, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements Parcelable.Creator
-    {
-      public final Object createFromParcel(Parcel paramParcel)
-      {
-        AppMethodBeat.i(273407);
-        kotlin.g.b.p.k(paramParcel, "in");
-        paramParcel = new NewSDKInvokeProcess.NewSdkInvokeBackData((WechatNativeExtraDataInvokeFunctionalPage)WechatNativeExtraDataInvokeFunctionalPage.CREATOR.createFromParcel(paramParcel), paramParcel.readString());
-        AppMethodBeat.o(273407);
-        return paramParcel;
-      }
-      
-      public final Object[] newArray(int paramInt)
-      {
-        return new NewSDKInvokeProcess.NewSdkInvokeBackData[paramInt];
-      }
-    }
+      implements Parcelable.Creator<NewSDKInvokeProcess.NewSdkInvokeBackData>
+    {}
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$performInvoke$4", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/AppBrandJsApiUserAuth$OnUserAuthResultListener;", "onCancel", "", "onConfirm", "onDeny", "reason", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements a.d
   {
-    b(NewSDKInvokeProcess paramNewSDKInvokeProcess) {}
+    b(kotlin.g.a.a<String> parama, NewSDKInvokeProcess paramNewSDKInvokeProcess, String paramString1, String paramString2) {}
     
-    public final void run()
+    public final void adx(String paramString)
     {
-      AppMethodBeat.i(252819);
-      Object localObject = this.qbf.qaH.getContext();
-      if (localObject != null)
-      {
-        localObject = (Context)localObject;
-        MMApplicationContext.getContext().getString(au.i.app_tip);
-        com.tencent.mm.ui.base.h.a((Context)localObject, MMApplicationContext.getContext().getString(au.i.wxa_redirecting_page_before_navigate_back_app), false, null);
-        AppMethodBeat.o(252819);
-        return;
-      }
-      AppMethodBeat.o(252819);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$NewSdkInvokeBackData;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class c<InputType, ResultType>
-    implements com.tencent.mm.ipcinvoker.d<NewSDKInvokeProcess.NewSdkInvokeBackData, IPCVoid>
-  {
-    public static final c qbg;
-    
-    static
-    {
-      AppMethodBeat.i(280528);
-      qbg = new c();
-      AppMethodBeat.o(280528);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class d<T>
-    implements f<IPCVoid>
-  {
-    d(NewSDKInvokeProcess paramNewSDKInvokeProcess) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$NewSdkInvokeBackData;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class e<InputType, ResultType>
-    implements com.tencent.mm.ipcinvoker.d<NewSDKInvokeProcess.NewSdkInvokeBackData, IPCVoid>
-  {
-    public static final e qbj;
-    
-    static
-    {
-      AppMethodBeat.i(276117);
-      qbj = new e();
-      AppMethodBeat.o(276117);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/luggage/export/functionalpage/NewSDKInvokeProcess$performInvoke$4", "Lcom/tencent/mm/plugin/appbrand/permission/jsauth/AppBrandJsApiUserAuth$OnUserAuthResultListener;", "onCancel", "", "onConfirm", "onDeny", "reason", "", "plugin-appbrand-integration_release"})
-  public static final class f
-    implements a.c
-  {
-    f(kotlin.g.a.a parama, String paramString1, String paramString2) {}
-    
-    public final void akr(String paramString)
-    {
-      AppMethodBeat.i(272078);
-      NewSDKInvokeProcess localNewSDKInvokeProcess = this.qbf;
-      StringBuilder localStringBuilder = new StringBuilder("fail ");
+      AppMethodBeat.i(320004);
+      NewSDKInvokeProcess localNewSDKInvokeProcess = jdField_this;
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      NewSDKInvokeProcess.a(localNewSDKInvokeProcess, d.eB(str, this.qbm));
-      AppMethodBeat.o(272078);
+      NewSDKInvokeProcess.a(localNewSDKInvokeProcess, d.eS(s.X("fail ", str), str1));
+      AppMethodBeat.o(320004);
     }
     
-    public final void caY()
+    public final void bSs()
     {
-      AppMethodBeat.i(272077);
-      this.qbk.invoke();
-      AppMethodBeat.o(272077);
+      AppMethodBeat.i(319995);
+      this.tgl.invoke();
+      AppMethodBeat.o(319995);
     }
     
     public final void onCancel()
     {
-      AppMethodBeat.i(272079);
-      NewSDKInvokeProcess.a(this.qbf, d.eB("fail:auth canceled", this.qbm));
-      AppMethodBeat.o(272079);
+      AppMethodBeat.i(320010);
+      NewSDKInvokeProcess.a(jdField_this, d.eS("fail:auth canceled", str1));
+      AppMethodBeat.o(320010);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
+  @Metadata(d1={""}, d2={"<anonymous>", "", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
     implements kotlin.g.a.a<String>
   {
-    g(NewSDKInvokeProcess paramNewSDKInvokeProcess, p paramp, String paramString1, String paramString2)
+    c(p paramp, String paramString1, String paramString2, NewSDKInvokeProcess paramNewSDKInvokeProcess)
     {
       super();
     }
@@ -492,7 +484,7 @@ final class NewSDKInvokeProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.NewSDKInvokeProcess
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<whilte-list>
-    <checker name="ExplainQueryPlanChecker">
-        <element>sqlite_master</element>
-        <element>select *,rowid from snsinfo where snsinfo.snsid = ?</element>
-        <element>select *,rowid from snsinfo where snsinfo.snsid = ? limit ?</element>
-    </checker>
-    <checker name="AvoidAutoIncrementChecker" />
-    <checker name="AvoidSelectAllChecker" />
-    <checker name="WithoutRowIdBetterChecker">
-        <element>AppBrandStarApp</element>
-    </checker>
-    <checker name="PreparedStatementBetterChecker" />
-    <checker name="RedundantIndexChecker" />
-</whilte-list>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceSmallCategory android:key="settings_tag_name_category" />
+    <Preference android:key="settings_tag_name" android:layout="@layout/bdi" android:title="@string/ji6" />
+    <PreferenceTitleCategory android:key="outside" android:title="@string/ji9" />
+    <PreferenceTitleCategory android:key="black" android:title="@string/ji7" />
+    <PreferenceTitleCategory android:key="group" android:title="@string/ji3" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory android:key="delete_tag_name_category" />
+    <Preference android:key="delete_tag_name" android:layout="@layout/b93" android:title="@string/imj" />
+    <PreferenceSmallCategory />
+</PreferenceScreen>

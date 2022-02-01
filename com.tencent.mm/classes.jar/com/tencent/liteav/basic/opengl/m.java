@@ -21,7 +21,7 @@ public class m
   
   public static float[] a(l paraml, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(236605);
+    AppMethodBeat.i(230227);
     float[] arrayOfFloat;
     switch (1.a[paraml.ordinal()])
     {
@@ -59,7 +59,7 @@ public class m
       }
       for (;;)
       {
-        AppMethodBeat.o(236605);
+        AppMethodBeat.o(230227);
         return paraml;
         paraml = (float[])b.clone();
         break;
@@ -73,7 +73,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.opengl.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,66 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.cgi.ao;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.cgi.bi;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.biy;
-import com.tencent.mm.protocal.protobuf.biz;
-import com.tencent.mm.protocal.protobuf.bnp;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.cxh;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.bdh;
+import com.tencent.mm.protocal.protobuf.bdi;
+import com.tencent.mm.protocal.protobuf.bgw;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveAnchorStatus;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderSetAnchorStatusResponse;", "liveId", "", "objectId", "status", "", "finderUserName", "", "liveStatus", "micFlag", "gameTeamMode", "callback", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveAnchorStatus$CallBack;", "(JJILjava/lang/String;IJILcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveAnchorStatus$CallBack;)V", "TAG", "anchorStatus", "micSettingFlag", "request", "Lcom/tencent/mm/protocal/protobuf/FinderSetAnchorStatusRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveAnchorOpFanClub;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAnchorOpFanClubResponse;", "opCode", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILcom/tencent/mm/protocal/protobuf/FinderLiveFanClubInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveFanClubInfo;", "getOpCode", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAnchorOpFanClubRequest;", "getRequest", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveAnchorOpFanClubRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends c<biz>
+  extends c<bdi>
 {
+  private final bgw CuX;
+  private final bdh CuY;
   private final String TAG;
-  private int anchorStatus;
-  private a xXR;
-  private biy xXS;
-  private long xXT;
+  private final int hHC;
   
-  public d(long paramLong1, long paramLong2, int paramInt1, String paramString, int paramInt2, long paramLong3, int paramInt3, a parama)
+  public d(int paramInt, bgw parambgw)
   {
-    AppMethodBeat.i(282261);
-    this.TAG = "Finder.CgiFinderLiveAnchorStatus";
-    this.xXR = parama;
-    this.xXS = new biy();
-    this.anchorStatus = paramInt1;
-    this.xXT = paramLong3;
-    this.xXS.liveId = paramLong1;
-    this.xXS.xbk = paramLong2;
-    this.xXS.finderUsername = paramString;
-    paramString = this.xXS;
-    parama = ao.xcj;
-    paramString.SDi = ao.dnO();
-    this.xXS.liveStatus = paramInt2;
-    paramString = new crm();
-    paramString.Tyz = paramInt1;
-    paramString.Tyy = cm.bfD();
-    parama = new cxh();
-    parama.TFP = this.xXT;
-    paramString.SEm = parama;
-    parama = new bnp();
-    parama.SYJ = paramInt3;
-    paramString.TyA = parama;
-    this.xXS.SLc = b.cU(paramString.toByteArray());
-    paramString = new com.tencent.mm.an.d.a();
-    paramString.c((a)this.xXS);
-    parama = new biz();
-    parama.setBaseResponse(new jh());
-    parama.getBaseResponse().Tef = new eaf();
-    paramString.d((a)parama);
-    paramString.TW("/cgi-bin/micromsg-bin/findersetanchorstatus");
-    paramString.vD(6443);
-    c(paramString.bgN());
-    Log.i(this.TAG, "init " + this.xXS.liveId + ',' + this.xXS.finderUsername + ',' + this.anchorStatus + ',' + this.xXT);
-    AppMethodBeat.o(282261);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveAnchorStatus$CallBack;", "", "onFail", "", "errType", "", "errCode", "errMsg", "", "anchorStatus", "onSuccess", "micSettingFlag", "", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void ai(int paramInt, long paramLong);
-    
-    public abstract void b(int paramInt1, int paramInt2, String paramString, int paramInt3);
+    super(null);
+    AppMethodBeat.i(351105);
+    this.hHC = paramInt;
+    this.CuX = parambgw;
+    this.TAG = "Finder.CgiFinderLiveAnchorOpFanClub";
+    this.CuY = new bdh();
+    parambgw = this.CuY;
+    Object localObject = bi.ABn;
+    parambgw.YIY = bi.dVu();
+    this.CuY.YIZ = z.bAW();
+    this.CuY.ZlE = this.hHC;
+    this.CuY.ZNT = this.CuX;
+    parambgw = new c.a();
+    parambgw.otE = ((a)this.CuY);
+    localObject = new bdi();
+    ((bdi)localObject).setBaseResponse(new kd());
+    ((bdi)localObject).getBaseResponse().akjO = new etl();
+    parambgw.otF = ((a)localObject);
+    parambgw.uri = "/cgi-bin/micromsg-bin/finderliveanchoropfanclub";
+    parambgw.funcId = 6632;
+    c(parambgw.bEF());
+    localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("init ").append(this.CuY.YIZ).append(',').append(this.CuY.ZlE).append(',');
+    parambgw = this.CuY.ZNT;
+    if (parambgw == null) {}
+    for (parambgw = null;; parambgw = parambgw.ZQn)
+    {
+      Log.i((String)localObject, parambgw);
+      AppMethodBeat.o(351105);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.d
  * JD-Core Version:    0.7.0.1
  */

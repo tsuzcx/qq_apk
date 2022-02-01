@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "", "scene", "", "safeMode", "", "(IZ)V", "getSafeMode", "()Z", "getScene", "()I", "component1", "component2", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "", "scene", "", "safeMode", "", "(IZ)V", "getSafeMode", "()Z", "getScene", "()I", "component1", "component2", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f$a$a
 {
   public final boolean safeMode;
@@ -17,17 +17,18 @@ public final class f$a$a
   
   public final boolean equals(Object paramObject)
   {
-    if (this != paramObject)
+    if (this == paramObject) {}
+    do
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((this.scene != paramObject.scene) || (this.safeMode != paramObject.safeMode)) {}
-      }
-    }
-    else {
       return true;
-    }
+      if (!(paramObject instanceof a)) {
+        return false;
+      }
+      paramObject = (a)paramObject;
+      if (this.scene != paramObject.scene) {
+        return false;
+      }
+    } while (this.safeMode == paramObject.safeMode);
     return false;
   }
   
@@ -38,9 +39,9 @@ public final class f$a$a
   
   public final String toString()
   {
-    AppMethodBeat.i(286711);
-    String str = "DrawerCreateData(scene=" + this.scene + ", safeMode=" + this.safeMode + ")";
-    AppMethodBeat.o(286711);
+    AppMethodBeat.i(344515);
+    String str = "DrawerCreateData(scene=" + this.scene + ", safeMode=" + this.safeMode + ')';
+    AppMethodBeat.o(344515);
     return str;
   }
 }

@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
+import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.g;
 import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.r;
@@ -23,100 +24,100 @@ import com.tencent.mm.ui.contact.r;
 public class CommonChatroomInfoUI
   extends MMBaseSelectContactUI
 {
-  private a GXq;
-  private b GXr;
-  private as contact;
+  private b MVn;
+  private c MVo;
+  private au contact;
   
-  public final void N(View paramView, int paramInt)
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(278372);
-    g localg = (g)getContentLV().getAdapter().getItem(paramInt);
-    if (localg != null)
+    AppMethodBeat.i(305514);
+    paramAdapterView = (g)getContentLV().getAdapter().getItem(paramInt);
+    if (paramAdapterView != null)
     {
-      if (((as.bvK(localg.contact.field_username)) || (as.bvL(localg.contact.field_username))) && (!WeChatBrands.Business.Entries.GlobalWeCom.checkAvailable(paramView.getContext())))
+      if (((au.bwO(paramAdapterView.contact.field_username)) || (au.bwP(paramAdapterView.contact.field_username))) && (!WeChatBrands.Business.Entries.GlobalWeCom.checkAvailable(paramView.getContext())))
       {
-        AppMethodBeat.o(278372);
+        AppMethodBeat.o(305514);
         return;
       }
-      com.tencent.mm.by.c.f(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", localg.contact.field_username).putExtra("finish_direct", true));
+      com.tencent.mm.br.c.g(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", paramAdapterView.contact.field_username).putExtra("finish_direct", true));
     }
-    AppMethodBeat.o(278372);
+    AppMethodBeat.o(305514);
   }
   
-  public final void ata()
+  public final void aNi()
   {
     AppMethodBeat.i(26944);
-    super.ata();
+    super.aNi();
     String str = getIntent().getStringExtra("Select_Talker_Name");
-    bh.beI();
-    this.contact = com.tencent.mm.model.c.bbL().RG(str);
+    bh.bCz();
+    this.contact = com.tencent.mm.model.c.bzA().JE(str);
     AppMethodBeat.o(26944);
   }
   
-  public final boolean bwH()
+  public final r bVA()
+  {
+    AppMethodBeat.i(26947);
+    if (this.MVn == null) {
+      this.MVn = new b(this, this.scene, this.contact);
+    }
+    b localb = this.MVn;
+    AppMethodBeat.o(26947);
+    return localb;
+  }
+  
+  public final p bVB()
+  {
+    AppMethodBeat.i(26948);
+    if (this.MVo == null) {
+      this.MVo = new c(this, this.scene, this.contact);
+    }
+    c localc = this.MVo;
+    AppMethodBeat.o(26948);
+    return localc;
+  }
+  
+  public final boolean bVx()
   {
     return true;
   }
   
-  public final boolean bwI()
+  public final boolean bVy()
   {
     return false;
   }
   
-  public final String bwJ()
+  public final String bVz()
   {
     AppMethodBeat.i(26946);
     if (this.contact.sex == 1)
     {
-      str = getString(R.l.eyp);
+      str = getString(R.l.gBh);
       AppMethodBeat.o(26946);
       return str;
     }
     if (this.contact.sex == 2)
     {
-      str = getString(R.l.eyo);
+      str = getString(R.l.gBg);
       AppMethodBeat.o(26946);
       return str;
     }
-    String str = getString(R.l.eyr);
+    String str = getString(R.l.gBj);
     AppMethodBeat.o(26946);
     return str;
-  }
-  
-  public final r bwK()
-  {
-    AppMethodBeat.i(26947);
-    if (this.GXq == null) {
-      this.GXq = new a(this, this.scene, this.contact);
-    }
-    a locala = this.GXq;
-    AppMethodBeat.o(26947);
-    return locala;
-  }
-  
-  public final p bwL()
-  {
-    AppMethodBeat.i(26948);
-    if (this.GXr == null) {
-      this.GXr = new b(this, this.scene, this.contact);
-    }
-    b localb = this.GXr;
-    AppMethodBeat.o(26948);
-    return localb;
   }
   
   public void initView()
   {
     AppMethodBeat.i(26945);
     super.initView();
-    a locala = this.GXq;
-    j localj = new j();
-    localj.query = locala.contact.field_username;
-    localj.BIU = locala;
-    localj.handler = locala.handler;
-    localj.nRn = 6;
-    localj.BIT = new a.a((byte)0);
-    ((n)h.ag(n.class)).search(2, localj);
+    b localb = this.MVn;
+    l locall = new l();
+    locall.query = localb.contact.field_username;
+    locall.HtC = localb;
+    locall.handler = localb.handler;
+    locall.qRb = 6;
+    locall.HtB = new b.a((byte)0);
+    ((n)h.az(n.class)).search(2, locall);
     AppMethodBeat.o(26945);
   }
   

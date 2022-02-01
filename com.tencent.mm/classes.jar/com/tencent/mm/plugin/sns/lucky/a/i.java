@@ -5,22 +5,22 @@ import java.util.LinkedList;
 
 public final class i
 {
-  private static i JSW = null;
-  private static String JSm = "";
-  LinkedList<h> JSX;
+  private static i QpY = null;
+  private static String Qpo = "";
+  LinkedList<h> QpZ;
   StringBuffer sb;
   
   public i()
   {
     AppMethodBeat.i(95184);
-    this.JSX = new LinkedList();
+    this.QpZ = new LinkedList();
     this.sb = new StringBuffer();
     AppMethodBeat.o(95184);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.i
  * JD-Core Version:    0.7.0.1
  */

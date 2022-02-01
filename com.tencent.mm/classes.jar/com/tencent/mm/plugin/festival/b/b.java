@@ -8,37 +8,43 @@ import com.tencent.mm.plugin.festival.a.d;
 import com.tencent.mm.plugin.festival.a.a.a;
 import com.tencent.mm.plugin.festival.ui.bak.FestivalSecondBakUI;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/festival/model/FestivalExportService;", "Lcom/tencent/mm/plugin/festival/api/IFestivalExportService;", "()V", "enterFestivalFinderLiveUI", "", "context", "Landroid/content/Context;", "fromScene", "", "forceCloseFestivalLiveFloatBall", "getFestivalLiveInfo", "Lcom/tencent/mm/plugin/festival/api/IFestivalExportService$FestivalLiveInfo;", "infoUpdateCallback", "Lcom/tencent/mm/plugin/festival/api/IFestivalExportService$LiveInfoUpdateCallback;", "getMultiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "isFestivalLiveOpen", "", "Companion", "plugin-festival_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/festival/model/FestivalExportService;", "Lcom/tencent/mm/plugin/festival/api/IFestivalExportService;", "()V", "enterFestivalFinderLiveUI", "", "context", "Landroid/content/Context;", "fromScene", "", "forceCloseFestivalLiveFloatBall", "getFestivalLiveInfo", "Lcom/tencent/mm/plugin/festival/api/IFestivalExportService$FestivalLiveInfo;", "infoUpdateCallback", "Lcom/tencent/mm/plugin/festival/api/IFestivalExportService$LiveInfoUpdateCallback;", "getMultiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "isFestivalLiveOpen", "", "Companion", "plugin-festival_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements com.tencent.mm.plugin.festival.a.a
 {
-  public static final a wUx;
+  public static final a Arf;
   
   static
   {
-    AppMethodBeat.i(258595);
-    wUx = new a((byte)0);
-    AppMethodBeat.o(258595);
+    AppMethodBeat.i(260888);
+    Arf = new a((byte)0);
+    AppMethodBeat.o(260888);
   }
   
-  public final a.a dmu()
+  public final boolean dTk()
   {
-    AppMethodBeat.i(258591);
+    return false;
+  }
+  
+  public final a.a dTl()
+  {
+    AppMethodBeat.i(260907);
     a.a locala = new a.a();
-    locala.gZ = false;
-    locala.wUt = -1L;
-    locala.wUu = -1;
-    locala.title = MMApplicationContext.getContext().getString(a.d.wUs);
+    locala.hU = false;
+    locala.Arc = -1L;
+    locala.Ard = -1;
+    locala.title = MMApplicationContext.getContext().getString(a.d.Arb);
     locala.liveStatus = 2;
-    AppMethodBeat.o(258591);
+    AppMethodBeat.o(260907);
     return locala;
   }
   
-  public final void fp(Context paramContext)
+  public final void gn(Context paramContext)
   {
-    AppMethodBeat.i(258589);
+    AppMethodBeat.i(260899);
     if (paramContext != null)
     {
       Object localObject = new Intent();
@@ -47,17 +53,16 @@ public final class b
       if (!(paramContext instanceof Activity)) {
         ((Intent)localObject).addFlags(335544320);
       }
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/festival/model/FestivalExportService", "enterFestivalFinderLiveUI", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      ah localah = ah.aiuX;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/festival/model/FestivalExportService", "enterFestivalFinderLiveUI", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/festival/model/FestivalExportService", "enterFestivalFinderLiveUI", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(258589);
-      return;
     }
-    AppMethodBeat.o(258589);
+    AppMethodBeat.o(260899);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/festival/model/FestivalExportService$Companion;", "", "()V", "TAG", "", "liveStatus", "", "plugin-festival_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/festival/model/FestivalExportService$Companion;", "", "()V", "TAG", "", "liveStatus", "", "plugin-festival_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

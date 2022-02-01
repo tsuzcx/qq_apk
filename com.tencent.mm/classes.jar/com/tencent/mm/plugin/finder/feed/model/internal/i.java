@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "D", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "alive", "", "dead", "fetch", "request", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "D", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "alive", "", "dead", "fetch", "request", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "isAuto", "", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class i<D extends k>
 {
   public static final a Companion = new a((byte)0);
@@ -33,18 +33,18 @@ public abstract class i<D extends k>
     Log.i(getTAG(), "dead.");
   }
   
-  public void fetch(Object paramObject, h<D> paramh)
+  public void fetch(Object paramObject, h<D> paramh, boolean paramBoolean)
   {
-    p.k(paramh, "callback");
+    s.u(paramh, "callback");
   }
   
   public abstract void fetchInit(h<D> paramh);
   
-  public abstract void fetchLoadMore(h<D> paramh);
+  public abstract void fetchLoadMore(h<D> paramh, boolean paramBoolean);
   
   public void fetchPreload(h<D> paramh)
   {
-    p.k(paramh, "callback");
+    s.u(paramh, "callback");
   }
   
   public abstract void fetchRefresh(h<D> paramh);
@@ -56,18 +56,18 @@ public abstract class i<D extends k>
   
   public void setTAG(String paramString)
   {
-    p.k(paramString, "<set-?>");
+    s.u(paramString, "<set-?>");
     this.TAG = paramString;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
     public static boolean getDEBUG()
     {
-      AppMethodBeat.i(259063);
+      AppMethodBeat.i(366610);
       boolean bool = i.access$getDEBUG$cp();
-      AppMethodBeat.o(259063);
+      AppMethodBeat.o(366610);
       return bool;
     }
   }

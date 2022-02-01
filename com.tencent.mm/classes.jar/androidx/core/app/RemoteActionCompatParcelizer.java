@@ -9,33 +9,33 @@ public class RemoteActionCompatParcelizer
 {
   public static RemoteActionCompat read(a parama)
   {
-    AppMethodBeat.i(250455);
+    AppMethodBeat.i(196400);
     RemoteActionCompat localRemoteActionCompat = new RemoteActionCompat();
-    localRemoteActionCompat.HY = ((IconCompat)parama.d(localRemoteActionCompat.HY));
+    localRemoteActionCompat.bob = ((IconCompat)parama.d(localRemoteActionCompat.bob));
     localRemoteActionCompat.cZ = parama.d(localRemoteActionCompat.cZ, 2);
-    localRemoteActionCompat.kX = parama.d(localRemoteActionCompat.kX, 3);
-    localRemoteActionCompat.JF = ((PendingIntent)parama.b(localRemoteActionCompat.JF, 4));
+    localRemoteActionCompat.lT = parama.d(localRemoteActionCompat.lT, 3);
+    localRemoteActionCompat.bpI = ((PendingIntent)parama.b(localRemoteActionCompat.bpI, 4));
     localRemoteActionCompat.mEnabled = parama.d(localRemoteActionCompat.mEnabled, 5);
-    localRemoteActionCompat.JG = parama.d(localRemoteActionCompat.JG, 6);
-    AppMethodBeat.o(250455);
+    localRemoteActionCompat.bpJ = parama.d(localRemoteActionCompat.bpJ, 6);
+    AppMethodBeat.o(196400);
     return localRemoteActionCompat;
   }
   
   public static void write(RemoteActionCompat paramRemoteActionCompat, a parama)
   {
-    AppMethodBeat.i(250457);
-    parama.a(paramRemoteActionCompat.HY);
+    AppMethodBeat.i(196410);
+    parama.a(paramRemoteActionCompat.bob);
     parama.c(paramRemoteActionCompat.cZ, 2);
-    parama.c(paramRemoteActionCompat.kX, 3);
-    parama.a(paramRemoteActionCompat.JF, 4);
+    parama.c(paramRemoteActionCompat.lT, 3);
+    parama.a(paramRemoteActionCompat.bpI, 4);
     parama.c(paramRemoteActionCompat.mEnabled, 5);
-    parama.c(paramRemoteActionCompat.JG, 6);
-    AppMethodBeat.o(250457);
+    parama.c(paramRemoteActionCompat.bpJ, 6);
+    AppMethodBeat.o(196410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.app.RemoteActionCompatParcelizer
  * JD-Core Version:    0.7.0.1
  */

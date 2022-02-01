@@ -5,13 +5,13 @@ import com.tencent.mars.app.AppLogic.AccountInfo;
 import com.tencent.mars.app.AppLogic.DeviceInfo;
 import com.tencent.mars.app.AppLogic.ICallBack;
 import com.tencent.mm.network.a;
-import com.tencent.mm.network.af;
-import com.tencent.mm.network.v;
+import com.tencent.mm.network.ag;
+import com.tencent.mm.network.w;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -20,7 +20,7 @@ public class AppCallBack
 {
   private static final String TAG = "AppCallBack";
   private Context context = null;
-  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.RAB, d.kQZ);
+  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.Yxf, d.nsC);
   
   public AppCallBack(Context paramContext)
   {
@@ -37,17 +37,17 @@ public class AppCallBack
   public AppLogic.AccountInfo getAccountInfo()
   {
     AppLogic.AccountInfo localAccountInfo = new AppLogic.AccountInfo();
-    if ((af.btU() == null) || (af.btU().muM == null)) {}
+    if ((ag.bRx() == null) || (ag.bRx().poh == null)) {}
     for (;;)
     {
       return localAccountInfo;
       try
       {
-        localAccountInfo.uin = af.btU().muM.getUin();
-        localAccountInfo.userName = af.btU().muM.bis();
+        localAccountInfo.uin = ag.bRx().poh.getUin();
+        localAccountInfo.userName = ag.bRx().poh.bGc();
         if (Util.isNullOrNil(localAccountInfo.userName))
         {
-          localAccountInfo.userName = af.btU().muM.getUsername();
+          localAccountInfo.userName = ag.bRx().poh.getUsername();
           return localAccountInfo;
         }
       }
@@ -65,11 +65,11 @@ public class AppCallBack
     }
     try
     {
-      Object localObject = q.Q(this.context.getFilesDir());
-      if (!((q)localObject).ifE()) {
-        ((q)localObject).ifM();
+      Object localObject = u.V(this.context.getFilesDir());
+      if (!((u)localObject).jKS()) {
+        ((u)localObject).jKZ();
       }
-      localObject = ((q)localObject).toString();
+      localObject = ((u)localObject).toString();
       return localObject;
     }
     catch (Exception localException)
@@ -82,7 +82,7 @@ public class AppCallBack
   
   public int getClientVersion()
   {
-    return d.RAD;
+    return d.Yxh;
   }
   
   public String getCurLanguage()
@@ -97,7 +97,7 @@ public class AppCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.mm.AppCallBack
  * JD-Core Version:    0.7.0.1
  */

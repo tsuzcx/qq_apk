@@ -1,30 +1,52 @@
 package com.tencent.mm.plugin.finder.convert;
 
+import android.graphics.Paint;
+import android.view.View;
+import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.model.at;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.b;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderLotteryWinnersHeaderConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderLotteryWinnerListHeader;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMoreSimilarTopicConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/BaseLocalFeed;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bc
-  extends e<at>
+  extends f<b>
 {
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  public static final a ALi;
+  private static int ALj;
+  
+  static
   {
-    AppMethodBeat.i(286387);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(286387);
+    AppMethodBeat.i(350274);
+    ALi = new a((byte)0);
+    ALj = -2;
+    AppMethodBeat.o(350274);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+  {
+    AppMethodBeat.i(350285);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramj.tag = Integer.valueOf(ALj);
+    paramj.caK.setTag(Integer.valueOf(ALj));
+    aw.a((Paint)((TextView)paramj.UH(e.e.finder_similar_feed_tv)).getPaint(), 0.8F);
+    AppMethodBeat.o(350285);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_lottery_winner_header_layout;
+    return e.f.finder_more_similar_feed_layout;
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderMoreSimilarTopicConvert$Companion;", "", "()V", "VIEW_TYPE_MORE_SIMILAR", "", "getVIEW_TYPE_MORE_SIMILAR", "()I", "setVIEW_TYPE_MORE_SIMILAR", "(I)V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

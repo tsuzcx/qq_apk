@@ -2,64 +2,64 @@ package com.tencent.mm.plugin.appbrand.jsapi.webview;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebViewStore;", "", "()V", "map", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/VIEW;", "add", "", "webview", "get", "binderID", "", "remove", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebViewStore;", "", "()V", "map", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/HTMLWebViewContract$IView;", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/VIEW;", "add", "", "webview", "get", "binderID", "", "remove", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static final SparseArray<g.c> pGf;
-  public static final c pGg;
+  public static final c sLo;
+  private static final SparseArray<g.c> sLp;
   
   static
   {
     AppMethodBeat.i(175192);
-    pGg = new c();
-    pGf = new SparseArray();
+    sLo = new c();
+    sLp = new SparseArray();
     AppMethodBeat.o(175192);
   }
   
-  public static g.c Bj(int paramInt)
+  public static g.c Bw(int paramInt)
   {
-    AppMethodBeat.i(283979);
-    synchronized (pGf)
+    AppMethodBeat.i(327473);
+    synchronized (sLp)
     {
-      g.c localc = (g.c)pGf.get(paramInt);
-      AppMethodBeat.o(283979);
+      g.c localc = (g.c)sLp.get(paramInt);
+      AppMethodBeat.o(327473);
       return localc;
     }
   }
   
   public static void a(g.c paramc)
   {
-    AppMethodBeat.i(283977);
-    p.k(paramc, "webview");
-    synchronized (pGf)
+    AppMethodBeat.i(327468);
+    s.u(paramc, "webview");
+    synchronized (sLp)
     {
-      pGf.put(paramc.getBinderID(), paramc);
-      paramc = x.aazN;
-      AppMethodBeat.o(283977);
+      sLp.put(paramc.getBinderID(), paramc);
+      paramc = ah.aiuX;
+      AppMethodBeat.o(327468);
       return;
     }
   }
   
   public static void b(g.c paramc)
   {
-    AppMethodBeat.i(283978);
-    p.k(paramc, "webview");
-    synchronized (pGf)
+    AppMethodBeat.i(327471);
+    s.u(paramc, "webview");
+    synchronized (sLp)
     {
-      pGf.remove(paramc.getBinderID());
-      paramc = x.aazN;
-      AppMethodBeat.o(283978);
+      sLp.remove(paramc.getBinderID());
+      paramc = ah.aiuX;
+      AppMethodBeat.o(327471);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.webview.c
  * JD-Core Version:    0.7.0.1
  */

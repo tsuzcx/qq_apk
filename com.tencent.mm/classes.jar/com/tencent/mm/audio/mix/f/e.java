@@ -5,21 +5,21 @@ import com.tencent.mm.audio.mix.h.b;
 
 public final class e<T>
 {
-  private T fqz;
+  private T huI;
   
   public e(T paramT)
   {
-    this.fqz = paramT;
+    this.huI = paramT;
   }
   
-  public final T aY(T paramT)
+  public final T cu(T paramT)
   {
     try
     {
       AppMethodBeat.i(136943);
-      Object localObject = this.fqz;
-      this.fqz = paramT;
-      b.i("StateRunner", localObject.toString() + " -> " + this.fqz.toString());
+      Object localObject = this.huI;
+      this.huI = paramT;
+      b.i("StateRunner", localObject.toString() + " -> " + this.huI.toString());
       AppMethodBeat.o(136943);
       return localObject;
     }
@@ -30,15 +30,29 @@ public final class e<T>
     }
   }
   
+  public final T get()
+  {
+    try
+    {
+      Object localObject1 = this.huI;
+      return localObject1;
+    }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
   /* Error */
-  public final boolean f(T... paramVarArgs)
+  public final boolean i(T... paramVarArgs)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 55
+    //   4: ldc 57
     //   6: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: iconst_0
     //   10: istore_2
@@ -49,13 +63,13 @@ public final class e<T>
     //   17: aaload
     //   18: astore 4
     //   20: aload_0
-    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:fqz	Ljava/lang/Object;
+    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:huI	Ljava/lang/Object;
     //   24: aload 4
-    //   26: invokevirtual 59	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   26: invokevirtual 61	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   29: ifeq +14 -> 43
     //   32: iconst_1
     //   33: istore_3
-    //   34: ldc 55
+    //   34: ldc 57
     //   36: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   39: aload_0
     //   40: monitorexit
@@ -66,7 +80,7 @@ public final class e<T>
     //   45: iadd
     //   46: istore_2
     //   47: goto -36 -> 11
-    //   50: ldc 55
+    //   50: ldc 57
     //   52: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   55: goto -16 -> 39
     //   58: astore_1
@@ -87,20 +101,6 @@ public final class e<T>
     //   20	32	58	finally
     //   34	39	58	finally
     //   50	55	58	finally
-  }
-  
-  public final T get()
-  {
-    try
-    {
-      Object localObject1 = this.fqz;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
   }
 }
 

@@ -5,25 +5,23 @@ import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
-@Keep
 public class FlutterMutatorsStack
 {
   private List<Path> finalClippingPaths;
   private Matrix finalMatrix;
-  private List<a> mutators;
+  private List<FlutterMutator> mutators;
   
   public FlutterMutatorsStack()
   {
-    AppMethodBeat.i(253659);
+    AppMethodBeat.i(190113);
     this.mutators = new ArrayList();
     this.finalMatrix = new Matrix();
     this.finalClippingPaths = new ArrayList();
-    AppMethodBeat.o(253659);
+    AppMethodBeat.o(190113);
   }
   
   public List<Path> getFinalClippingPaths()
@@ -36,92 +34,118 @@ public class FlutterMutatorsStack
     return this.finalMatrix;
   }
   
-  public List<a> getMutators()
+  public List<FlutterMutator> getMutators()
   {
     return this.mutators;
   }
   
   public void pushClipRRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(253665);
+    AppMethodBeat.i(190146);
     Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    Object localObject = new a(localRect, paramArrayOfFloat);
+    Object localObject = new FlutterMutator(localRect, paramArrayOfFloat);
     this.mutators.add(localObject);
     localObject = new Path();
     ((Path)localObject).addRoundRect(new RectF(localRect), paramArrayOfFloat, Path.Direction.CCW);
     ((Path)localObject).transform(this.finalMatrix);
     this.finalClippingPaths.add(localObject);
-    AppMethodBeat.o(253665);
+    AppMethodBeat.o(190146);
   }
   
   public void pushClipRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(253664);
+    AppMethodBeat.i(190132);
     Rect localRect = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    Object localObject = new a(localRect);
+    Object localObject = new FlutterMutator(localRect);
     this.mutators.add(localObject);
     localObject = new Path();
     ((Path)localObject).addRect(new RectF(localRect), Path.Direction.CCW);
     ((Path)localObject).transform(this.finalMatrix);
     this.finalClippingPaths.add(localObject);
-    AppMethodBeat.o(253664);
+    AppMethodBeat.o(190132);
   }
   
   public void pushTransform(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(253661);
+    AppMethodBeat.i(190123);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(paramArrayOfFloat);
-    paramArrayOfFloat = new a(localMatrix);
+    paramArrayOfFloat = new FlutterMutator(localMatrix);
     this.mutators.add(paramArrayOfFloat);
-    this.finalMatrix.preConcat(paramArrayOfFloat.aHZ);
-    AppMethodBeat.o(253661);
+    this.finalMatrix.preConcat(paramArrayOfFloat.getMatrix());
+    AppMethodBeat.o(190123);
   }
   
-  public final class a
+  public class FlutterMutator
   {
-    Matrix aHZ;
-    private float[] aarG;
-    private FlutterMutatorsStack.b aarH = FlutterMutatorsStack.b.aarK;
-    private Rect byG;
+    private Matrix matrix;
+    private Path path;
+    private float[] radiis;
+    private Rect rect;
+    private FlutterMutatorsStack.FlutterMutatorType type = FlutterMutatorsStack.FlutterMutatorType.CLIP_RRECT;
     
-    public a(Matrix paramMatrix)
+    public FlutterMutator(Matrix paramMatrix)
     {
-      this.aHZ = paramMatrix;
+      this.matrix = paramMatrix;
     }
     
-    public a(Rect paramRect)
+    public FlutterMutator(Path paramPath)
     {
-      this.byG = paramRect;
+      this.path = paramPath;
     }
     
-    public a(Rect paramRect, float[] paramArrayOfFloat)
+    public FlutterMutator(Rect paramRect)
     {
-      this.byG = paramRect;
-      this.aarG = paramArrayOfFloat;
+      this.rect = paramRect;
+    }
+    
+    public FlutterMutator(Rect paramRect, float[] paramArrayOfFloat)
+    {
+      this.rect = paramRect;
+      this.radiis = paramArrayOfFloat;
+    }
+    
+    public Matrix getMatrix()
+    {
+      return this.matrix;
+    }
+    
+    public Path getPath()
+    {
+      return this.path;
+    }
+    
+    public Rect getRect()
+    {
+      return this.rect;
+    }
+    
+    public FlutterMutatorsStack.FlutterMutatorType getType()
+    {
+      return this.type;
     }
   }
   
-  public static enum b
+  public static enum FlutterMutatorType
   {
     static
     {
-      AppMethodBeat.i(255357);
-      aarJ = new b("CLIP_RECT", 0);
-      aarK = new b("CLIP_RRECT", 1);
-      aarL = new b("CLIP_PATH", 2);
-      aarM = new b("TRANSFORM", 3);
-      aarN = new b("OPACITY", 4);
-      aarO = new b[] { aarJ, aarK, aarL, aarM, aarN };
-      AppMethodBeat.o(255357);
+      AppMethodBeat.i(190166);
+      CLIP_RECT = new FlutterMutatorType("CLIP_RECT", 0);
+      CLIP_RRECT = new FlutterMutatorType("CLIP_RRECT", 1);
+      CLIP_PATH = new FlutterMutatorType("CLIP_PATH", 2);
+      TRANSFORM = new FlutterMutatorType("TRANSFORM", 3);
+      OPACITY = new FlutterMutatorType("OPACITY", 4);
+      $VALUES = new FlutterMutatorType[] { CLIP_RECT, CLIP_RRECT, CLIP_PATH, TRANSFORM, OPACITY };
+      AppMethodBeat.o(190166);
     }
     
-    private b() {}
+    private FlutterMutatorType() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     io.flutter.embedding.engine.mutatorsstack.FlutterMutatorsStack
  * JD-Core Version:    0.7.0.1
  */

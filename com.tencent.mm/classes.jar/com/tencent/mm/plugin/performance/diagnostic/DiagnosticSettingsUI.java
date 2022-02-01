@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.performance.diagnostic;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -25,36 +24,36 @@ public class DiagnosticSettingsUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private CheckBox GLX;
-  private CheckBox GLY;
-  private CheckBox GLZ;
-  private com.tencent.mm.plugin.performance.diagnostic.c.a GMA;
-  private CheckBox GMa;
-  private CheckBox GMb;
-  private CheckBox GMc;
-  private CheckBox GMd;
-  private CheckBox GMe;
-  private EditText GMf;
-  private EditText GMg;
-  private EditText GMh;
-  private EditText GMi;
-  private EditText GMj;
-  private EditText GMk;
-  private EditText GMl;
-  private Button GMm;
-  private Button GMn;
-  private CheckBox GMo;
-  private CheckBox GMp;
-  private CheckBox GMq;
-  private CheckBox GMr;
-  private CheckBox GMs;
-  private EditText GMt;
-  private EditText GMu;
-  private EditText GMv;
-  private EditText GMw;
-  private Button GMx;
-  private Button GMy;
-  private com.tencent.mm.plugin.performance.diagnostic.b.a GMz;
+  private CheckBox MIT;
+  private CheckBox MIU;
+  private CheckBox MIV;
+  private CheckBox MIW;
+  private CheckBox MIX;
+  private CheckBox MIY;
+  private CheckBox MIZ;
+  private CheckBox MJa;
+  private EditText MJb;
+  private EditText MJc;
+  private EditText MJd;
+  private EditText MJe;
+  private EditText MJf;
+  private EditText MJg;
+  private EditText MJh;
+  private Button MJi;
+  private Button MJj;
+  private CheckBox MJk;
+  private CheckBox MJl;
+  private CheckBox MJm;
+  private CheckBox MJn;
+  private CheckBox MJo;
+  private EditText MJp;
+  private EditText MJq;
+  private EditText MJr;
+  private EditText MJs;
+  private Button MJt;
+  private Button MJu;
+  private com.tencent.mm.plugin.performance.diagnostic.b.a MJv;
+  private com.tencent.mm.plugin.performance.diagnostic.c.a MJw;
   
   public DiagnosticSettingsUI()
   {
@@ -71,40 +70,40 @@ public class DiagnosticSettingsUI
   {
     AppMethodBeat.i(124912);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/performance/diagnostic/DiagnosticSettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/performance/diagnostic/DiagnosticSettingsUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     int i = paramView.getId();
     if (b.a.diag_bt_memory_confirm == i) {
-      if (this.GMc.isChecked())
+      if (this.MIY.isChecked())
       {
         paramView = "all";
         localObject = new StringBuilder("<cmd><diagnostic><MemoryHook enable='");
-        if (!this.GLX.isChecked()) {
+        if (!this.MIT.isChecked()) {
           break label465;
         }
         i = 1;
         label81:
-        paramView = ((StringBuilder)localObject).append(i).append("' process='").append(paramView).append("' source='push' duration='").append(Util.getInt(this.GMh.getText().toString(), 1)).append("' stacklog='").append(Util.getInt(this.GMl.getText().toString(), 52428800)).append("' hook='").append(this.GMf.getText().toString()).append("' ignore='").append(this.GMg.getText().toString()).append("' stack='");
-        if (!this.GLY.isChecked()) {
+        paramView = ((StringBuilder)localObject).append(i).append("' process='").append(paramView).append("' source='push' duration='").append(Util.getInt(this.MJd.getText().toString(), 1)).append("' stacklog='").append(Util.getInt(this.MJh.getText().toString(), 52428800)).append("' hook='").append(this.MJb.getText().toString()).append("' ignore='").append(this.MJc.getText().toString()).append("' stack='");
+        if (!this.MIU.isChecked()) {
           break label470;
         }
         i = 1;
         label194:
-        paramView = paramView.append(i).append("' min='").append(Util.getInt(this.GMi.getText().toString(), 0)).append("' max='").append(Util.getInt(this.GMj.getText().toString(), 0)).append("' sampling='").append(Util.getDouble(this.GMk.getText().toString(), 1.0D)).append("' extreme='");
-        if (!this.GMd.isChecked()) {
+        paramView = paramView.append(i).append("' min='").append(Util.getInt(this.MJe.getText().toString(), 0)).append("' max='").append(Util.getInt(this.MJf.getText().toString(), 0)).append("' sampling='").append(Util.getDouble(this.MJg.getText().toString(), 1.0D)).append("' extreme='");
+        if (!this.MIZ.isChecked()) {
           break label475;
         }
         i = 1;
         label283:
         paramView = paramView.append(i).append("' mmap='");
-        if (!this.GMe.isChecked()) {
+        if (!this.MJa.isChecked()) {
           break label480;
         }
         i = 1;
         label306:
         paramView = i + "'/></diagnostic></cmd>";
         Log.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
-        com.tencent.mm.plugin.performance.a.a.GLp.aUm(paramView);
+        com.tencent.mm.plugin.performance.a.a.MIk.aRq(paramView);
         Toast.makeText(this, "MemoryHook:Confirmed, pls restart process", 0).show();
       }
     }
@@ -114,18 +113,18 @@ public class DiagnosticSettingsUI
       AppMethodBeat.o(124912);
       return;
       localObject = new StringBuilder();
-      if (this.GLZ.isChecked())
+      if (this.MIV.isChecked())
       {
         paramView = "mm;";
         label392:
         localObject = ((StringBuilder)localObject).append(paramView);
-        if (!this.GMa.isChecked()) {
+        if (!this.MIW.isChecked()) {
           break label451;
         }
         paramView = "appbrand;";
         label412:
         localObject = ((StringBuilder)localObject).append(paramView);
-        if (!this.GMb.isChecked()) {
+        if (!this.MIX.isChecked()) {
           break label458;
         }
       }
@@ -154,18 +153,18 @@ public class DiagnosticSettingsUI
       break label306;
       if (b.a.diag_bt_memory_report == i)
       {
-        com.tencent.mm.plugin.performance.a.a.GLp.au(XmlParser.parseXml("<cmd><diagnostic><report><MemoryHook/></report></diagnostic></cmd>", "cmd", null));
+        com.tencent.mm.plugin.performance.a.a.MIk.aK(XmlParser.parseXml("<cmd><diagnostic><report><MemoryHook/></report></diagnostic></cmd>", "cmd", null));
         Toast.makeText(this, "MemoryHook:Reported, pls run `logcat |grep MemoryHookLogic` for result", 0).show();
       }
       else
       {
         if (b.a.diag_bt_pthread_confirm == i)
         {
-          if (this.GMs.isChecked())
+          if (this.MJo.isChecked())
           {
             paramView = "all";
             localObject = new StringBuilder("<cmd><diagnostic><PthreadHook enable='");
-            if (!this.GMo.isChecked()) {
+            if (!this.MJk.isChecked()) {
               break label798;
             }
           }
@@ -174,24 +173,24 @@ public class DiagnosticSettingsUI
           label798:
           for (i = 1;; i = 0)
           {
-            paramView = i + "' source='push' process='" + paramView + "' duration='" + Util.getInt(this.GMw.getText().toString(), 1) + "' hook='" + this.GMt.getText().toString() + "' ignore='" + this.GMu.getText().toString() + "' thread='" + this.GMv.getText().toString() + "'/></diagnostic></cmd>";
+            paramView = i + "' source='push' process='" + paramView + "' duration='" + Util.getInt(this.MJs.getText().toString(), 1) + "' hook='" + this.MJp.getText().toString() + "' ignore='" + this.MJq.getText().toString() + "' thread='" + this.MJr.getText().toString() + "'/></diagnostic></cmd>";
             Log.d("MicroMsg.DiagnosticSettingsUI", "cmd = [%s]", new Object[] { paramView });
-            com.tencent.mm.plugin.performance.a.a.GLp.aUm(paramView);
+            com.tencent.mm.plugin.performance.a.a.MIk.aRq(paramView);
             Toast.makeText(this, "PthreadHook:Confirmed, pls restart process", 0).show();
             break;
             localObject = new StringBuilder();
-            if (this.GMp.isChecked())
+            if (this.MJl.isChecked())
             {
               paramView = "mm;";
               label725:
               localObject = ((StringBuilder)localObject).append(paramView);
-              if (!this.GMq.isChecked()) {
+              if (!this.MJm.isChecked()) {
                 break label784;
               }
               paramView = "appbrand;";
               label745:
               localObject = ((StringBuilder)localObject).append(paramView);
-              if (!this.GMr.isChecked()) {
+              if (!this.MJn.isChecked()) {
                 break label791;
               }
             }
@@ -208,7 +207,7 @@ public class DiagnosticSettingsUI
         }
         if (b.a.diag_bt_pthread_report == i)
         {
-          com.tencent.mm.plugin.performance.a.a.GLp.aUm("<cmd><diagnostic><report><PthreadHook/></report></diagnostic></cmd>");
+          com.tencent.mm.plugin.performance.a.a.MIk.aRq("<cmd><diagnostic><report><PthreadHook/></report></diagnostic></cmd>");
           Toast.makeText(this, "PthreadHook:Reported, pls run `logcat |grep PthreadHookLogic` for result", 0).show();
         }
       }
@@ -231,157 +230,157 @@ public class DiagnosticSettingsUI
       }
     });
     setMMTitle("诊断模式");
-    this.GMz = ((com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.GLp.bn(com.tencent.mm.plugin.performance.diagnostic.b.b.class)).GNl;
-    this.GMA = ((com.tencent.mm.plugin.performance.diagnostic.c.b)com.tencent.mm.plugin.performance.a.a.GLp.bn(com.tencent.mm.plugin.performance.diagnostic.c.b.class)).GNu;
-    this.GLX = ((CheckBox)findViewById(b.a.diag_cb_memory_enable));
-    this.GLY = ((CheckBox)findViewById(b.a.diag_cb_memory_stacktrace));
-    this.GLZ = ((CheckBox)findViewById(b.a.diag_cb_memory_process_mm));
-    this.GMa = ((CheckBox)findViewById(b.a.diag_cb_memory_process_appbrand));
-    this.GMb = ((CheckBox)findViewById(b.a.diag_cb_memory_process_tools));
-    this.GMc = ((CheckBox)findViewById(b.a.diag_cb_memory_process_all));
-    this.GMd = ((CheckBox)findViewById(b.a.diag_cb_memory_extreme));
-    this.GMe = ((CheckBox)findViewById(b.a.diag_cb_memory_mmap));
-    this.GLZ.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MJv = ((com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.MIk.bX(com.tencent.mm.plugin.performance.diagnostic.b.b.class)).MKD;
+    this.MJw = ((com.tencent.mm.plugin.performance.diagnostic.c.b)com.tencent.mm.plugin.performance.a.a.MIk.bX(com.tencent.mm.plugin.performance.diagnostic.c.b.class)).MKM;
+    this.MIT = ((CheckBox)findViewById(b.a.diag_cb_memory_enable));
+    this.MIU = ((CheckBox)findViewById(b.a.diag_cb_memory_stacktrace));
+    this.MIV = ((CheckBox)findViewById(b.a.diag_cb_memory_process_mm));
+    this.MIW = ((CheckBox)findViewById(b.a.diag_cb_memory_process_appbrand));
+    this.MIX = ((CheckBox)findViewById(b.a.diag_cb_memory_process_tools));
+    this.MIY = ((CheckBox)findViewById(b.a.diag_cb_memory_process_all));
+    this.MIZ = ((CheckBox)findViewById(b.a.diag_cb_memory_extreme));
+    this.MJa = ((CheckBox)findViewById(b.a.diag_cb_memory_mmap));
+    this.MIV.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(201756);
+        AppMethodBeat.i(300917);
         if (paramAnonymousBoolean) {
           DiagnosticSettingsUI.a(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(201756);
+        AppMethodBeat.o(300917);
       }
     });
-    this.GMa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MIW.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(200869);
+        AppMethodBeat.i(300914);
         if (paramAnonymousBoolean) {
           DiagnosticSettingsUI.a(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(200869);
+        AppMethodBeat.o(300914);
       }
     });
-    this.GMb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MIX.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(201243);
+        AppMethodBeat.i(300913);
         if (paramAnonymousBoolean) {
           DiagnosticSettingsUI.a(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(201243);
+        AppMethodBeat.o(300913);
       }
     });
-    this.GMc.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MIY.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(201329);
+        AppMethodBeat.i(300915);
         if (paramAnonymousBoolean)
         {
           DiagnosticSettingsUI.b(DiagnosticSettingsUI.this).setChecked(false);
           DiagnosticSettingsUI.c(DiagnosticSettingsUI.this).setChecked(false);
           DiagnosticSettingsUI.d(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(201329);
+        AppMethodBeat.o(300915);
       }
     });
-    this.GMf = ((EditText)findViewById(b.a.diag_et_memory_hook));
-    this.GMg = ((EditText)findViewById(b.a.diag_et_memory_ignore));
-    this.GMh = ((EditText)findViewById(b.a.diag_et_memory_duration));
-    this.GMi = ((EditText)findViewById(b.a.diag_et_memory_min));
-    this.GMj = ((EditText)findViewById(b.a.diag_et_memory_max));
-    this.GMk = ((EditText)findViewById(b.a.diag_et_memory_sampling));
-    this.GMl = ((EditText)findViewById(b.a.diag_et_memory_stack_log_threshold));
-    this.GMm = ((Button)findViewById(b.a.diag_bt_memory_confirm));
-    this.GMn = ((Button)findViewById(b.a.diag_bt_memory_report));
-    this.GMm.setOnClickListener(this);
-    this.GMn.setOnClickListener(this);
-    this.GLX.setChecked(this.GMz.fnB());
-    this.GLY.setChecked(this.GMz.fnO());
-    this.GLZ.setChecked(this.GMz.getTargetProcess().contains("mm"));
-    this.GMa.setChecked(this.GMz.getTargetProcess().contains("appbrand"));
-    this.GMb.setChecked(this.GMz.getTargetProcess().contains("tools"));
-    this.GMc.setChecked(this.GMz.getTargetProcess().contains("all"));
-    this.GMd.setChecked(this.GMz.fnS());
-    this.GMe.setChecked(this.GMz.fnT());
-    this.GMf.setText(this.GMz.aUr(".*com\\.tencent\\.mm.*\\.so$"));
-    this.GMg.setText(this.GMz.fnN());
-    this.GMh.setText(Long.toString(this.GMz.aba(1)));
-    this.GMi.setText(Integer.toString(this.GMz.fnP()));
-    this.GMj.setText(Integer.toString(this.GMz.fnQ()));
-    this.GMk.setText(Double.toString(this.GMz.fnR()));
-    this.GMo = ((CheckBox)findViewById(b.a.diag_cb_pthread_enable));
-    this.GMp = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_mm));
-    this.GMq = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_appbrand));
-    this.GMr = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_tools));
-    this.GMs = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_all));
-    this.GMt = ((EditText)findViewById(b.a.diag_et_pthread_hook_so));
-    this.GMu = ((EditText)findViewById(b.a.diag_et_pthread_ignore_so));
-    this.GMv = ((EditText)findViewById(b.a.diag_et_pthread_hook_thread_name));
-    this.GMw = ((EditText)findViewById(b.a.diag_et_pthread_duration));
-    this.GMx = ((Button)findViewById(b.a.diag_bt_pthread_confirm));
-    this.GMy = ((Button)findViewById(b.a.diag_bt_pthread_report));
-    this.GMp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MJb = ((EditText)findViewById(b.a.diag_et_memory_hook));
+    this.MJc = ((EditText)findViewById(b.a.diag_et_memory_ignore));
+    this.MJd = ((EditText)findViewById(b.a.diag_et_memory_duration));
+    this.MJe = ((EditText)findViewById(b.a.diag_et_memory_min));
+    this.MJf = ((EditText)findViewById(b.a.diag_et_memory_max));
+    this.MJg = ((EditText)findViewById(b.a.diag_et_memory_sampling));
+    this.MJh = ((EditText)findViewById(b.a.diag_et_memory_stack_log_threshold));
+    this.MJi = ((Button)findViewById(b.a.diag_bt_memory_confirm));
+    this.MJj = ((Button)findViewById(b.a.diag_bt_memory_report));
+    this.MJi.setOnClickListener(this);
+    this.MJj.setOnClickListener(this);
+    this.MIT.setChecked(this.MJv.gyp());
+    this.MIU.setChecked(this.MJv.gyK());
+    this.MIV.setChecked(this.MJv.getTargetProcess().contains("mm"));
+    this.MIW.setChecked(this.MJv.getTargetProcess().contains("appbrand"));
+    this.MIX.setChecked(this.MJv.getTargetProcess().contains("tools"));
+    this.MIY.setChecked(this.MJv.getTargetProcess().contains("all"));
+    this.MIZ.setChecked(this.MJv.gyO());
+    this.MJa.setChecked(this.MJv.gyP());
+    this.MJb.setText(this.MJv.aRz(".*com\\.tencent\\.mm.*\\.so$"));
+    this.MJc.setText(this.MJv.gyJ());
+    this.MJd.setText(Long.toString(this.MJv.aft(1)));
+    this.MJe.setText(Integer.toString(this.MJv.gyL()));
+    this.MJf.setText(Integer.toString(this.MJv.gyM()));
+    this.MJg.setText(Double.toString(this.MJv.gyN()));
+    this.MJk = ((CheckBox)findViewById(b.a.diag_cb_pthread_enable));
+    this.MJl = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_mm));
+    this.MJm = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_appbrand));
+    this.MJn = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_tools));
+    this.MJo = ((CheckBox)findViewById(b.a.diag_cb_pthread_process_all));
+    this.MJp = ((EditText)findViewById(b.a.diag_et_pthread_hook_so));
+    this.MJq = ((EditText)findViewById(b.a.diag_et_pthread_ignore_so));
+    this.MJr = ((EditText)findViewById(b.a.diag_et_pthread_hook_thread_name));
+    this.MJs = ((EditText)findViewById(b.a.diag_et_pthread_duration));
+    this.MJt = ((Button)findViewById(b.a.diag_bt_pthread_confirm));
+    this.MJu = ((Button)findViewById(b.a.diag_bt_pthread_report));
+    this.MJl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(200606);
+        AppMethodBeat.i(300916);
         if (paramAnonymousBoolean) {
           DiagnosticSettingsUI.e(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(200606);
+        AppMethodBeat.o(300916);
       }
     });
-    this.GMq.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MJm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(202379);
+        AppMethodBeat.i(300903);
         if (paramAnonymousBoolean) {
           DiagnosticSettingsUI.e(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(202379);
+        AppMethodBeat.o(300903);
       }
     });
-    this.GMr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MJn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(201629);
+        AppMethodBeat.i(300898);
         if (paramAnonymousBoolean) {
           DiagnosticSettingsUI.e(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(201629);
+        AppMethodBeat.o(300898);
       }
     });
-    this.GMs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.MJo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(200576);
+        AppMethodBeat.i(300900);
         if (paramAnonymousBoolean)
         {
           DiagnosticSettingsUI.f(DiagnosticSettingsUI.this).setChecked(false);
           DiagnosticSettingsUI.g(DiagnosticSettingsUI.this).setChecked(false);
           DiagnosticSettingsUI.h(DiagnosticSettingsUI.this).setChecked(false);
         }
-        AppMethodBeat.o(200576);
+        AppMethodBeat.o(300900);
       }
     });
-    this.GMo.setChecked(this.GMA.fnB());
-    this.GMt.setText(this.GMA.aUr(".*\\.so$"));
-    this.GMu.setText(this.GMA.fnN());
-    this.GMv.setText(this.GMA.aUs(".*"));
-    this.GMw.setText(Integer.toString(this.GMA.aba(1)));
-    this.GMp.setChecked(this.GMA.getTargetProcess().contains("mm"));
-    this.GMq.setChecked(this.GMA.getTargetProcess().contains("appbrand"));
-    this.GMr.setChecked(this.GMA.getTargetProcess().contains("tools"));
-    this.GMs.setChecked(this.GMA.getTargetProcess().contains("all"));
-    this.GMx.setOnClickListener(this);
-    this.GMy.setOnClickListener(this);
+    this.MJk.setChecked(this.MJw.gyp());
+    this.MJp.setText(this.MJw.aRz(".*\\.so$"));
+    this.MJq.setText(this.MJw.gyJ());
+    this.MJr.setText(this.MJw.aRA(".*"));
+    this.MJs.setText(Integer.toString(this.MJw.aft(1)));
+    this.MJl.setChecked(this.MJw.getTargetProcess().contains("mm"));
+    this.MJm.setChecked(this.MJw.getTargetProcess().contains("appbrand"));
+    this.MJn.setChecked(this.MJw.getTargetProcess().contains("tools"));
+    this.MJo.setChecked(this.MJw.getTargetProcess().contains("all"));
+    this.MJt.setOnClickListener(this);
+    this.MJu.setOnClickListener(this);
     AppMethodBeat.o(124911);
   }
   
@@ -393,7 +392,7 @@ public class DiagnosticSettingsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.DiagnosticSettingsUI
  * JD-Core Version:    0.7.0.1
  */

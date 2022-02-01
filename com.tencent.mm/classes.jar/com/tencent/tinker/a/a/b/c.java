@@ -2,29 +2,7 @@ package com.tencent.tinker.a.a.b;
 
 public final class c
 {
-  public static int a(byte paramByte1, byte paramByte2)
-  {
-    if (paramByte1 == paramByte2) {
-      return 0;
-    }
-    if ((paramByte1 & 0xFF) < (paramByte2 & 0xFF)) {
-      return -1;
-    }
-    return 1;
-  }
-  
-  public static int a(short paramShort1, short paramShort2)
-  {
-    if (paramShort1 == paramShort2) {
-      return 0;
-    }
-    if ((paramShort1 & 0xFFFF) < (0xFFFF & paramShort2)) {
-      return -1;
-    }
-    return 1;
-  }
-  
-  public static <T extends Comparable<T>> int a(T[] paramArrayOfT1, T[] paramArrayOfT2)
+  public static <T extends Comparable<T>> int b(T[] paramArrayOfT1, T[] paramArrayOfT2)
   {
     int m = paramArrayOfT1.length;
     int i = paramArrayOfT2.length;
@@ -53,7 +31,7 @@ public final class c
     return 0;
   }
   
-  public static int a(short[] paramArrayOfShort1, short[] paramArrayOfShort2)
+  public static int b(short[] paramArrayOfShort1, short[] paramArrayOfShort2)
   {
     int m = paramArrayOfShort1.length;
     int i = paramArrayOfShort2.length;
@@ -71,7 +49,7 @@ public final class c
       if (j >= m) {
         break label59;
       }
-      int k = a(paramArrayOfShort1[j], paramArrayOfShort2[j]);
+      int k = c(paramArrayOfShort1[j], paramArrayOfShort2[j]);
       i = k;
       if (k != 0) {
         break;
@@ -80,6 +58,28 @@ public final class c
     }
     label59:
     return 0;
+  }
+  
+  public static int c(byte paramByte1, byte paramByte2)
+  {
+    if (paramByte1 == paramByte2) {
+      return 0;
+    }
+    if ((paramByte1 & 0xFF) < (paramByte2 & 0xFF)) {
+      return -1;
+    }
+    return 1;
+  }
+  
+  public static int c(short paramShort1, short paramShort2)
+  {
+    if (paramShort1 == paramShort2) {
+      return 0;
+    }
+    if ((paramShort1 & 0xFFFF) < (0xFFFF & paramShort2)) {
+      return -1;
+    }
+    return 1;
   }
   
   public static int c(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
@@ -100,7 +100,7 @@ public final class c
       if (j >= m) {
         break label59;
       }
-      int k = nV(paramArrayOfInt1[j], paramArrayOfInt2[j]);
+      int k = pS(paramArrayOfInt1[j], paramArrayOfInt2[j]);
       i = k;
       if (k != 0) {
         break;
@@ -111,7 +111,7 @@ public final class c
     return 0;
   }
   
-  public static int nU(int paramInt1, int paramInt2)
+  public static int pR(int paramInt1, int paramInt2)
   {
     if (paramInt1 == paramInt2) {
       return 0;
@@ -122,7 +122,7 @@ public final class c
     return 1;
   }
   
-  public static int nV(int paramInt1, int paramInt2)
+  public static int pS(int paramInt1, int paramInt2)
   {
     if (paramInt1 == paramInt2) {
       return 0;
@@ -133,7 +133,7 @@ public final class c
     return 1;
   }
   
-  public static int r(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static int s(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     int m = paramArrayOfByte1.length;
     int i = paramArrayOfByte2.length;
@@ -151,7 +151,7 @@ public final class c
       if (j >= m) {
         break label59;
       }
-      int k = a(paramArrayOfByte1[j], paramArrayOfByte2[j]);
+      int k = c(paramArrayOfByte1[j], paramArrayOfByte2[j]);
       i = k;
       if (k != 0) {
         break;
@@ -164,7 +164,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.a.b.c
  * JD-Core Version:    0.7.0.1
  */

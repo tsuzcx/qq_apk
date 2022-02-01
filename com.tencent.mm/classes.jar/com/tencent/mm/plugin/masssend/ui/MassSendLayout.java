@@ -11,7 +11,7 @@ import java.util.List;
 public class MassSendLayout
   extends BasePanelKeybordLayout
 {
-  private View tzi;
+  private View uiF;
   
   public MassSendLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,19 +27,19 @@ public class MassSendLayout
   {
     AppMethodBeat.i(26445);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.tzi);
+    localArrayList.add(this.uiF);
     AppMethodBeat.o(26445);
     return localArrayList;
   }
   
   public void setPanel(View paramView)
   {
-    this.tzi = paramView;
+    this.uiF = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.sport.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.at;
 
 public final class a
 {
   @Deprecated
-  public static final String Lxy;
+  public static final String Sbk;
   @Deprecated
-  public static final String Lxz;
+  public static final String Sbl;
   
   static
   {
     AppMethodBeat.i(116810);
-    Lxy = ar.Vgb + "stepcounter.cfg";
-    Lxz = ar.Vgb + "PUSH_stepcounter.cfg";
+    Sbk = at.acHq + "stepcounter.cfg";
+    Sbl = at.acHq + "PUSH_stepcounter.cfg";
     AppMethodBeat.o(116810);
   }
 }

@@ -98,6 +98,18 @@
             "destroyWhenReplacedOnRight":"true"
           },
           {
+            "name":"com.tencent.mm.plugin.finder.feed.ui.FinderLiveVisitorWithoutAffinityUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorWithoutAffinityUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
             "name":"com.tencent.mm.plugin.recordvideo.activity.MMRecordUI",
             "defaultFullScreen":"true",
             "isSupportTaskSplitScreen":"false"
@@ -199,6 +211,11 @@
           },
           {
             "name":"com.tencent.mm.plugin.location_soso.SoSoProxyUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.sns.ui.SnsTimeLineUI",
             "defaultFullScreen":"true",
             "isSupportTaskSplitScreen":"false"
           }

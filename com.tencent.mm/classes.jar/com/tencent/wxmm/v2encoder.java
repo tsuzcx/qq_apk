@@ -1,6 +1,5 @@
 package com.tencent.wxmm;
 
-import android.annotation.SuppressLint;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
@@ -140,7 +139,6 @@ public class v2encoder
     AppMethodBeat.o(40790);
   }
   
-  @SuppressLint({"NewApi"})
   private void StopEncoder()
   {
     AppMethodBeat.i(40783);
@@ -161,7 +159,6 @@ public class v2encoder
     }
   }
   
-  @SuppressLint({"NewApi"})
   private boolean SupportAvcCodec(String paramString, int paramInt)
   {
     AppMethodBeat.i(40775);
@@ -314,7 +311,6 @@ public class v2encoder
     return null;
   }
   
-  @SuppressLint({"NewApi"})
   private void trySetBitRateMode(MediaCodecInfo paramMediaCodecInfo)
   {
     AppMethodBeat.i(40778);
@@ -575,7 +571,6 @@ public class v2encoder
     return i;
   }
   
-  @SuppressLint({"NewApi"})
   public void MakeIFrame()
   {
     AppMethodBeat.i(40788);
@@ -588,7 +583,6 @@ public class v2encoder
     AppMethodBeat.o(40788);
   }
   
-  @SuppressLint({"NewApi"})
   public boolean SetBitRate(int paramInt)
   {
     AppMethodBeat.i(40787);
@@ -611,7 +605,6 @@ public class v2encoder
     return false;
   }
   
-  @SuppressLint({"NewApi"})
   public int StartEncoder()
   {
     AppMethodBeat.i(40779);

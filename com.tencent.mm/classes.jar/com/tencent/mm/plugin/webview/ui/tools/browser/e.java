@@ -14,63 +14,53 @@ import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask;", "Landroid/os/AsyncTask;", "Landroid/content/pm/ResolveInfo;", "Ljava/lang/Void;", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "key", "", "callback", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;)V", "convertDrawableToRoundedBitmap", "Landroid/graphics/Bitmap;", "drawable", "doInBackground", "params", "", "([Landroid/content/pm/ResolveInfo;)Landroid/graphics/drawable/Drawable;", "getRoundedBitmapDrawable", "Landroid/graphics/drawable/BitmapDrawable;", "bitmap", "recycleBitmap", "", "onPostExecute", "", "result", "BrowserIconLoadCallback", "Companion", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask;", "Landroid/os/AsyncTask;", "Landroid/content/pm/ResolveInfo;", "Ljava/lang/Void;", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "key", "", "callback", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;)V", "convertDrawableToRoundedBitmap", "Landroid/graphics/Bitmap;", "drawable", "doInBackground", "params", "", "([Landroid/content/pm/ResolveInfo;)Landroid/graphics/drawable/Drawable;", "getRoundedBitmapDrawable", "Landroid/graphics/drawable/BitmapDrawable;", "bitmap", "recycleBitmap", "", "onPostExecute", "", "result", "BrowserIconLoadCallback", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends AsyncTask<ResolveInfo, Void, Drawable>
 {
-  public static final b Qje;
-  private final a Qjd;
+  public static final b XaZ;
+  private final a Xba;
   private final Context context;
   private final String key;
   
   static
   {
-    AppMethodBeat.i(221611);
-    Qje = new b((byte)0);
-    AppMethodBeat.o(221611);
+    AppMethodBeat.i(296577);
+    XaZ = new b((byte)0);
+    AppMethodBeat.o(296577);
   }
   
   public e(Context paramContext, String paramString, a parama)
   {
-    AppMethodBeat.i(221610);
+    AppMethodBeat.i(296548);
     this.context = paramContext;
     this.key = paramString;
-    this.Qjd = parama;
-    AppMethodBeat.o(221610);
+    this.Xba = parama;
+    AppMethodBeat.o(296548);
   }
   
   private Drawable a(ResolveInfo... paramVarArgs)
   {
-    Object localObject = null;
+    Object localObject1 = null;
     Rect localRect = null;
-    AppMethodBeat.i(221597);
-    p.k(paramVarArgs, "params");
+    AppMethodBeat.i(296563);
+    s.u(paramVarArgs, "params");
     paramVarArgs = paramVarArgs[0];
+    label135:
+    int i;
+    int j;
     for (;;)
     {
       try
       {
         paramVarArgs = b.a(this.context, paramVarArgs);
       }
-      catch (Throwable localThrowable2)
+      finally
       {
-        int j;
-        Canvas localCanvas;
         continue;
-        continue;
-        int k = i;
-        if (i > 0) {
-          continue;
-        }
-        k = 1;
-        int i = j;
-        if (j > 0) {
-          continue;
-        }
-        i = 1;
         continue;
       }
       try
@@ -78,49 +68,45 @@ public final class e
         if (!(paramVarArgs instanceof BitmapDrawable)) {
           continue;
         }
-        localObject = f(((BitmapDrawable)paramVarArgs).getBitmap(), false);
-        if (localObject == null) {
+        localObject1 = h(((BitmapDrawable)paramVarArgs).getBitmap(), false);
+        if (localObject1 != null) {
           continue;
         }
-        localObject = (Drawable)localObject;
-        paramVarArgs = (ResolveInfo[])localObject;
-        localObject = paramVarArgs;
+        localObject1 = paramVarArgs;
         Log.i("MicroMsg.BrowserIconLoadTask", "alvinluo BrowserIconLoadTask doInBackground name: " + this.key + ", iconDrawable " + paramVarArgs);
       }
-      catch (Throwable localThrowable1)
+      finally
       {
-        localObject = paramVarArgs;
-        Log.printErrStackTrace("MicroMsg.BrowserIconLoadTask", localThrowable1, "alvinluo loadBrowserIcon exception", new Object[0]);
-        paramVarArgs = (ResolveInfo[])localObject;
+        localObject1 = paramVarArgs;
+        Log.printErrStackTrace("MicroMsg.BrowserIconLoadTask", localThrowable, "alvinluo loadBrowserIcon exception", new Object[0]);
+        paramVarArgs = (ResolveInfo[])localObject1;
         continue;
         i = paramVarArgs.getIntrinsicWidth();
         continue;
         j = paramVarArgs.getIntrinsicHeight();
+        break label332;
       }
-      AppMethodBeat.o(221597);
+      AppMethodBeat.o(296563);
       return paramVarArgs;
+      localObject1 = (Drawable)localObject1;
+      paramVarArgs = (ResolveInfo[])localObject1;
       continue;
-      if ((Build.VERSION.SDK_INT < 26) || (!(paramVarArgs instanceof AdaptiveIconDrawable))) {
-        continue;
-      }
-      if (paramVarArgs == null)
+      if ((Build.VERSION.SDK_INT >= 26) && ((paramVarArgs instanceof AdaptiveIconDrawable)))
       {
-        localObject = localRect;
-        localObject = f((Bitmap)localObject, true);
-        if (localObject != null)
+        if (paramVarArgs == null) {}
+        for (localObject1 = localRect;; localObject1 = ((BitmapDrawable)paramVarArgs).getBitmap())
         {
-          localObject = (Drawable)localObject;
-          paramVarArgs = (ResolveInfo[])localObject;
+          localObject1 = h((Bitmap)localObject1, true);
+          if (localObject1 != null) {
+            break label308;
+          }
+          break label329;
+          if (!(paramVarArgs instanceof BitmapDrawable)) {
+            break;
+          }
         }
-      }
-      else if ((paramVarArgs instanceof BitmapDrawable))
-      {
-        localObject = ((BitmapDrawable)paramVarArgs).getBitmap();
-      }
-      else
-      {
         localRect = paramVarArgs.getBounds();
-        p.j(localRect, "drawable.bounds");
+        s.s(localRect, "drawable.bounds");
         if (!localRect.isEmpty())
         {
           i = localRect.width();
@@ -128,38 +114,56 @@ public final class e
             continue;
           }
           j = localRect.height();
-          continue;
-          localObject = Bitmap.createBitmap(k, i, Bitmap.Config.ARGB_8888);
-          localCanvas = new Canvas((Bitmap)localObject);
-          paramVarArgs.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-          paramVarArgs.draw(localCanvas);
-          paramVarArgs.setBounds(localRect);
+          break label332;
         }
+      }
+    }
+    for (;;)
+    {
+      localObject1 = Bitmap.createBitmap(k, i, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas((Bitmap)localObject1);
+      paramVarArgs.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramVarArgs.draw(localCanvas);
+      paramVarArgs.setBounds(localRect);
+      break label135;
+      label308:
+      localObject1 = (Drawable)localObject1;
+      paramVarArgs = (ResolveInfo[])localObject1;
+      label329:
+      break;
+      label332:
+      int k = i;
+      if (i <= 0) {
+        k = 1;
+      }
+      i = j;
+      if (j <= 0) {
+        i = 1;
       }
     }
   }
   
-  private final BitmapDrawable f(Bitmap paramBitmap, boolean paramBoolean)
+  private final BitmapDrawable h(Bitmap paramBitmap, boolean paramBoolean)
   {
-    AppMethodBeat.i(221606);
+    AppMethodBeat.i(296570);
     if (paramBitmap == null)
     {
-      AppMethodBeat.o(221606);
+      AppMethodBeat.o(296570);
       return null;
     }
     paramBitmap = BitmapUtil.getRoundedCornerBitmap(paramBitmap, paramBoolean, Math.min(paramBitmap.getWidth(), paramBitmap.getHeight()) * 0.1666667F);
     paramBitmap = new BitmapDrawable(this.context.getResources(), paramBitmap);
-    AppMethodBeat.o(221606);
+    AppMethodBeat.o(296570);
     return paramBitmap;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "", "onLoadFinish", "", "drawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "", "onLoadFinish", "", "drawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void H(Drawable paramDrawable);
+    public abstract void R(Drawable paramDrawable);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$Companion;", "", "()V", "ROUND_CORNER_SIZE_FACTOR", "", "TAG", "", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$Companion;", "", "()V", "ROUND_CORNER_SIZE_FACTOR", "", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b {}
 }
 

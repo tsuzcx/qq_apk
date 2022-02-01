@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/ckh" />
-    <item android:state_checked="true" android:drawable="@drawable/ckj" />
-    <item android:state_pressed="true" android:drawable="@drawable/ckj" />
-    <item android:drawable="@drawable/cki" />
-</selector>
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#00ffffff" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <solid android:color="@color/aks" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/aks" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

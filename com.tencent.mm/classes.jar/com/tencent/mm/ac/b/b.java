@@ -36,12 +36,12 @@ public class b<InputType, InputType2, CallbackType>
   
   public static abstract interface a<T>
   {
-    public abstract void bt(T paramT);
+    public abstract void cN(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ac.b.b
  * JD-Core Version:    0.7.0.1
  */

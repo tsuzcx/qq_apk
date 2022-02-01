@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class b
   implements a
 {
-  private final g aaLb;
+  private final g aiHM;
   
   public b(g paramg)
   {
     AppMethodBeat.i(56924);
-    this.aaLb = paramg;
+    this.aiHM = paramg;
     AppMethodBeat.o(56924);
   }
   
-  public g iDY()
+  public g knl()
   {
     AppMethodBeat.i(56925);
-    g localg = this.aaLb;
+    g localg = this.aiHM;
     if (localg == null) {
-      aDG(1);
+      aKu(1);
     }
     AppMethodBeat.o(56925);
     return localg;
@@ -27,7 +27,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.a.b
  * JD-Core Version:    0.7.0.1
  */

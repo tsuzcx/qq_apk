@@ -7,22 +7,23 @@ import android.widget.RelativeLayout;
 import com.tencent.mm.media.widget.camerarecordview.b.b;
 import com.tencent.mm.plugin.recordvideo.activity.a;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.recordvideo.plugin.u;
-import com.tencent.mm.plugin.recordvideo.plugin.u.a;
+import com.tencent.mm.plugin.recordvideo.plugin.v;
+import com.tencent.mm.plugin.recordvideo.plugin.v.a;
 import java.util.ArrayList;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "isAttached", "", "()Z", "setAttached", "(Z)V", "pluginList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "findPluginByClass", "T", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "findPluginByName", "name", "", "(Ljava/lang/String;)Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "registerPlugin", "plugin", "release", "reset", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "browserTimeMs", "", "getBrowserTimeMs", "()J", "setBrowserTimeMs", "(J)V", "isAttached", "", "()Z", "setAttached", "(Z)V", "pluginList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getPluginList", "()Ljava/util/ArrayList;", "startTimeMs", "getStartTimeMs", "setStartTimeMs", "findPluginByClass", "T", "clazz", "Ljava/lang/Class;", "(Ljava/lang/Class;)Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "findPluginByName", "name", "", "(Ljava/lang/String;)Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "loadCurrentPage", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "onDetach", "onPause", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "registerPlugin", "plugin", "release", "reset", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class BasePluginLayout
   extends RelativeLayout
-  implements u
+  implements v
 {
-  public static final a HQP = new a((byte)0);
-  private boolean ljV;
-  private final ArrayList<u> pluginList = new ArrayList();
+  public static final BasePluginLayout.a NNq = new BasePluginLayout.a((byte)0);
+  private final ArrayList<v> NNr = new ArrayList();
+  private long NNs;
+  private boolean nOG;
+  private long startTimeMs;
   
   public BasePluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,70 +32,89 @@ public abstract class BasePluginLayout
   
   public void a(b paramb)
   {
-    bbp();
+    bwk();
     reset();
     setVisibility(0);
   }
   
-  public abstract void a(a parama, RecordConfigProvider paramRecordConfigProvider);
-  
-  public void bbp()
+  public void a(a parama, RecordConfigProvider paramRecordConfigProvider)
   {
-    this.ljV = true;
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
-    while (localIterator.hasNext()) {
-      ((u)localIterator.next()).bbp();
+    s.u(parama, "navigator");
+    s.u(paramRecordConfigProvider, "configProvider");
+    parama = ((Iterable)this.NNr).iterator();
+    while (parama.hasNext()) {
+      ((v)parama.next()).a(paramRecordConfigProvider);
     }
   }
   
-  public final <T extends u> T bp(Class<T> paramClass)
+  public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    p.k(paramClass, "clazz");
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    v.a.a(this, paramRecordConfigProvider);
+  }
+  
+  public final <T extends v> T bZ(Class<T> paramClass)
+  {
+    s.u(paramClass, "clazz");
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext())
     {
-      u localu = (u)localIterator.next();
-      if (p.h(localu.name(), paramClass.getName()))
-      {
-        paramClass = localu;
-        if (localu != null) {
-          return paramClass;
-        }
-        throw new t("null cannot be cast to non-null type T");
+      v localv = (v)localIterator.next();
+      if (s.p(localv.name(), paramClass.getName())) {
+        return localv;
       }
     }
-    paramClass = null;
-    return paramClass;
+    return null;
   }
   
-  protected final ArrayList<u> getPluginList()
+  public void bwk()
   {
-    return this.pluginList;
+    s.u((v)this, "this");
+    this.nOG = true;
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
+    while (localIterator.hasNext()) {
+      ((v)localIterator.next()).bwk();
+    }
+  }
+  
+  public final long getBrowserTimeMs()
+  {
+    return this.NNs;
+  }
+  
+  protected final ArrayList<v> getPluginList()
+  {
+    return this.NNr;
+  }
+  
+  protected final long getStartTimeMs()
+  {
+    return this.startTimeMs;
   }
   
   public final boolean isAttached()
   {
-    return this.ljV;
+    return this.nOG;
   }
   
   public final String name()
   {
-    return getClass().getName();
+    return v.a.b(this);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    s.u((v)this, "this");
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
+      ((v)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public boolean onBackPress()
   {
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      if (((u)localIterator.next()).onBackPress()) {
+      if (((v)localIterator.next()).onBackPress()) {
         return true;
       }
     }
@@ -103,59 +123,73 @@ public abstract class BasePluginLayout
   
   public void onDetach()
   {
-    this.ljV = false;
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    this.NNs = (System.currentTimeMillis() - this.startTimeMs);
+    s.u((v)this, "this");
+    this.nOG = false;
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).onDetach();
+      ((v)localIterator.next()).onDetach();
     }
   }
   
   public void onPause()
   {
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).onPause();
+      ((v)localIterator.next()).onPause();
     }
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    u.a.a(paramArrayOfString, paramArrayOfInt);
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    s.u(paramArrayOfString, "permissions");
+    s.u(paramArrayOfInt, "grantResults");
+    v.a.a((v)this, paramArrayOfString, paramArrayOfInt);
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+      ((v)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
   }
   
   public void onResume()
   {
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    this.startTimeMs = System.currentTimeMillis();
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).onResume();
+      ((v)localIterator.next()).onResume();
     }
   }
   
   public void release()
   {
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).release();
+      ((v)localIterator.next()).release();
     }
   }
   
   public void reset()
   {
-    Iterator localIterator = ((Iterable)this.pluginList).iterator();
+    s.u((v)this, "this");
+    Iterator localIterator = ((Iterable)this.NNr).iterator();
     while (localIterator.hasNext()) {
-      ((u)localIterator.next()).reset();
+      ((v)localIterator.next()).reset();
     }
   }
   
   protected final void setAttached(boolean paramBoolean)
   {
-    this.ljV = paramBoolean;
+    this.nOG = paramBoolean;
+  }
+  
+  public final void setBrowserTimeMs(long paramLong)
+  {
+    this.NNs = paramLong;
+  }
+  
+  protected final void setStartTimeMs(long paramLong)
+  {
+    this.startTimeMs = paramLong;
   }
   
   public void setVisibility(int paramInt)
@@ -168,13 +202,10 @@ public abstract class BasePluginLayout
     }
     onPause();
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.parent.BasePluginLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class d
-  extends q
+  extends p
   implements m
 {
-  private h LvX;
+  private h RZw;
   
-  public abstract void Sl(int paramInt);
+  public abstract void VE(int paramInt);
   
   public abstract void d(int paramInt1, int paramInt2, String paramString, s params);
   
-  public abstract void epa();
+  public abstract void fuc();
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     int i = 1;
     Log.i("MicroMsg.NetSceneSoterBase", "onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.LvX = new h(new a((byte)0));
-    this.LvX.Lwa = -3202;
-    paramArrayOfByte = this.LvX;
+    this.RZw = new h(new a((byte)0));
+    this.RZw.RZz = -3202;
+    paramArrayOfByte = this.RZw;
     if ((paramInt2 == 4) && (paramInt3 == -3200))
     {
       com.tencent.soter.a.a.a(new h.1(paramArrayOfByte), true, new f());
@@ -36,12 +36,12 @@ public abstract class d
         d(paramInt2, paramInt3, paramString, params);
       }
       return;
-      if ((paramInt2 == 4) && (paramInt3 == paramArrayOfByte.Lwa))
+      if ((paramInt2 == 4) && (paramInt3 == paramArrayOfByte.RZz))
       {
         paramInt1 = i;
-        if (paramArrayOfByte.LvZ != null)
+        if (paramArrayOfByte.RZy != null)
         {
-          paramArrayOfByte.LvZ.fZW();
+          paramArrayOfByte.RZy.htn();
           paramInt1 = i;
         }
       }
@@ -57,24 +57,24 @@ public abstract class d
   {
     private a() {}
     
-    public final void ahM(int paramInt)
+    public final void amN(int paramInt)
     {
       AppMethodBeat.i(130810);
-      d.this.Sl(paramInt);
+      d.this.VE(paramInt);
       AppMethodBeat.o(130810);
     }
     
-    public final void fZW()
+    public final void htn()
     {
       AppMethodBeat.i(130809);
-      d.this.epa();
+      d.this.fuc();
       AppMethodBeat.o(130809);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.d
  * JD-Core Version:    0.7.0.1
  */

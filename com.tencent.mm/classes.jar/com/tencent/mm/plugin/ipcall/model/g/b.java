@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.ipcall.model.e.g;
 
 public final class b
 {
-  private static b DSx;
-  private g DSy;
+  private static b JJH;
+  private g JJI;
   
-  public static b eJS()
+  public static b fRS()
   {
     AppMethodBeat.i(25513);
-    if (DSx == null) {
-      DSx = new b();
+    if (JJH == null) {
+      JJH = new b();
     }
-    b localb = DSx;
+    b localb = JJH;
     AppMethodBeat.o(25513);
     return localb;
   }
   
-  public final void tA(boolean paramBoolean)
+  public final void xL(boolean paramBoolean)
   {
     AppMethodBeat.i(25514);
-    bh.aGY().a(this.DSy);
-    this.DSy = null;
+    bh.aZW().a(this.JJI);
+    this.JJI = null;
     if (paramBoolean) {}
-    for (this.DSy = new g(1);; this.DSy = new g(0))
+    for (this.JJI = new g(1);; this.JJI = new g(0))
     {
-      bh.aGY().a(this.DSy, 0);
+      bh.aZW().a(this.JJI, 0);
       AppMethodBeat.o(25514);
       return;
     }
@@ -37,7 +37,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.b
  * JD-Core Version:    0.7.0.1
  */

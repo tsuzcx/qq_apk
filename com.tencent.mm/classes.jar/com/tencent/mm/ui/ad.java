@@ -1,52 +1,36 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class ad
+public abstract class ad
+  implements MenuItem.OnMenuItemClickListener
 {
-  public static final int[] Wbe = { 16843087, 16843088, 16843379 };
-  public static final int[] Wbf = { 16843379 };
+  private long JqZ = -1L;
   
-  public static LayoutInflater b(LayoutInflater paramLayoutInflater)
-  {
-    AppMethodBeat.i(141465);
-    a.ez(paramLayoutInflater.getContext());
-    paramLayoutInflater = paramLayoutInflater.cloneInContext(paramLayoutInflater.getContext());
-    ad.a locala = new ad.a((byte)0);
-    locala.layoutInflater = paramLayoutInflater;
-    paramLayoutInflater.setFactory(locala);
-    AppMethodBeat.o(141465);
-    return paramLayoutInflater;
-  }
+  public abstract void d(MenuItem paramMenuItem);
   
-  public static void c(LayoutInflater paramLayoutInflater)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(216563);
-    a.ez(paramLayoutInflater.getContext());
-    ad.a locala = new ad.a((byte)0);
-    locala.layoutInflater = paramLayoutInflater;
-    paramLayoutInflater.setFactory(locala);
-    AppMethodBeat.o(216563);
-  }
-  
-  public static LayoutInflater kS(Context paramContext)
-  {
-    AppMethodBeat.i(141466);
-    a.ez(paramContext);
-    paramContext = LayoutInflater.from(paramContext).cloneInContext(paramContext);
-    ad.a locala = new ad.a((byte)0);
-    locala.layoutInflater = paramContext;
-    paramContext.setFactory(locala);
-    AppMethodBeat.o(141466);
-    return paramContext;
+    Log.i("MicroMsg.MMCustomMenuItemClickListener", "button onclick");
+    if (this.JqZ != -1L)
+    {
+      long l = (System.nanoTime() - this.JqZ) / 1000000L;
+      if (l < 500L)
+      {
+        Log.i("MicroMsg.MMCustomMenuItemClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(500L) });
+        return false;
+      }
+    }
+    this.JqZ = System.nanoTime();
+    d(paramMenuItem);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.ad
  * JD-Core Version:    0.7.0.1
  */

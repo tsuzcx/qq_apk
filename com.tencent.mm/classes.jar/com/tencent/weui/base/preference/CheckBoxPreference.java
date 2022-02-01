@@ -9,22 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.c;
-import com.tencent.mm.cr.a.f;
-import com.tencent.mm.cr.a.g;
+import com.tencent.mm.ck.a.c;
+import com.tencent.mm.ck.a.f;
+import com.tencent.mm.ck.a.g;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public class CheckBoxPreference
   extends Preference
 {
-  private int OAB;
-  private String OAC;
-  private int OAD;
-  private TextView OEk;
-  boolean bBh;
+  private int VpO;
+  private String VpP;
+  private int VpQ;
+  private TextView Vtv;
+  public boolean duj;
   private View mView;
-  private MMSwitchBtn wrR;
+  private MMSwitchBtn zNX;
   
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,49 +35,49 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159986);
-    this.bBh = false;
-    this.OAB = -1;
-    this.OAC = "";
-    this.OAD = 8;
+    this.duj = false;
+    this.VpO = -1;
+    this.VpP = "";
+    this.VpQ = 8;
     setLayoutResource(a.g.mm_preference);
     AppMethodBeat.o(159986);
   }
   
-  public final void BT(boolean paramBoolean)
+  public final void Hy(boolean paramBoolean)
   {
-    AppMethodBeat.i(249529);
-    if (this.wrR != null)
+    AppMethodBeat.i(210682);
+    if (this.zNX != null)
     {
-      this.bBh = paramBoolean;
-      this.wrR.setCheck(paramBoolean);
+      this.duj = paramBoolean;
+      this.zNX.setCheck(paramBoolean);
     }
-    AppMethodBeat.o(249529);
+    AppMethodBeat.o(210682);
   }
   
-  public final void amm(int paramInt)
+  public final void arW(int paramInt)
   {
-    AppMethodBeat.i(249530);
-    this.OAD = paramInt;
-    if (this.OEk != null) {
-      this.OEk.setVisibility(this.OAD);
+    AppMethodBeat.i(210684);
+    this.VpQ = paramInt;
+    if (this.Vtv != null) {
+      this.Vtv.setVisibility(this.VpQ);
     }
-    AppMethodBeat.o(249530);
+    AppMethodBeat.o(210684);
   }
   
   public final boolean isChecked()
   {
-    if (this.wrR != null) {
-      return this.wrR.YbZ;
+    if (this.zNX != null) {
+      return this.zNX.afTT;
     }
-    return this.bBh;
+    return this.duj;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(159988);
     super.onBindView(paramView);
-    this.wrR = ((MMSwitchBtn)paramView.findViewById(a.f.checkbox));
-    this.wrR.setSwitchListener(new MMSwitchBtn.a()
+    this.zNX = ((MMSwitchBtn)paramView.findViewById(a.f.checkbox));
+    this.zNX.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -86,27 +86,27 @@ public class CheckBoxPreference
         AppMethodBeat.o(159985);
       }
     });
-    this.wrR.setCheck(this.bBh);
+    this.zNX.setCheck(this.duj);
     if (!isEnabled())
     {
-      this.wrR.setEnabled(false);
+      this.zNX.setEnabled(false);
       ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(a.c.black_text_color_disabled));
     }
-    this.OEk = ((TextView)paramView.findViewById(a.f.tipicon));
-    paramView = this.OAC;
-    int i = this.OAB;
-    this.OAB = i;
-    this.OAC = paramView;
-    if (this.OEk != null)
+    this.Vtv = ((TextView)paramView.findViewById(a.f.tipicon));
+    paramView = this.VpP;
+    int i = this.VpO;
+    this.VpO = i;
+    this.VpP = paramView;
+    if (this.Vtv != null)
     {
       if (i > 0) {
-        this.OEk.setBackgroundResource(this.OAB);
+        this.Vtv.setBackgroundResource(this.VpO);
       }
-      if (!TextUtils.isEmpty(this.OAC)) {
-        this.OEk.setText(this.OAC);
+      if (!TextUtils.isEmpty(this.VpP)) {
+        this.Vtv.setText(this.VpP);
       }
     }
-    amm(this.OAD);
+    arW(this.VpQ);
     AppMethodBeat.o(159988);
   }
   
@@ -122,15 +122,10 @@ public class CheckBoxPreference
     AppMethodBeat.o(159987);
     return paramViewGroup;
   }
-  
-  public final void setChecked(boolean paramBoolean)
-  {
-    this.bBh = paramBoolean;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.weui.base.preference.CheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

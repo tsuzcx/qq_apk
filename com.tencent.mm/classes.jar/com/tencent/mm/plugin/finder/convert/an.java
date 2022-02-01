@@ -1,175 +1,68 @@
 package com.tencent.mm.plugin.finder.convert;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.loader.r;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.loader.x;
-import com.tencent.mm.plugin.finder.loader.y;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.view.recyclerview.i;
-import java.util.List;
-import java.util.List<Ljava.lang.Object;>;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.model.k;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoRoundCornerConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedRoundCornerConvert;", "()V", "screenWidth", "", "getScreenWidth", "()I", "screenWidth$delegate", "Lkotlin/Lazy;", "bindLive", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "localFinderMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "onBindViewHolder", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-public class an
-  extends ag
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/convert/FinderLbsBarEntranceConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedLbsBarData;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class an
+  extends f<k>
 {
-  private final f xlu;
-  
-  public an()
+  private static final void fv(View paramView)
   {
-    super(b.g.finder_feed_round_corner_media_item);
-    AppMethodBeat.i(289748);
-    this.xlu = g.ar((kotlin.g.a.a)an.a.xmK);
-    AppMethodBeat.o(289748);
+    AppMethodBeat.i(350211);
+    Object localObject1 = new Object();
+    Object localObject2 = new b();
+    ((b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/convert/FinderLbsBarEntranceConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((b)localObject2).aYj());
+    localObject1 = com.tencent.mm.plugin.finder.report.s.Fqv;
+    com.tencent.mm.plugin.finder.report.s.eMN();
+    localObject1 = new Intent();
+    localObject2 = as.GSQ;
+    localObject2 = paramView.getContext();
+    kotlin.g.b.s.s(localObject2, "it.context");
+    as.a.a((Context)localObject2, (Intent)localObject1, 0L, 0, true, 60);
+    localObject2 = com.tencent.mm.plugin.finder.utils.a.GfO;
+    paramView = paramView.getContext();
+    if (paramView == null)
+    {
+      paramView = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+      AppMethodBeat.o(350211);
+      throw paramView;
+    }
+    com.tencent.mm.plugin.finder.utils.a.c((MMActivity)paramView, (Intent)localObject1);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/convert/FinderLbsBarEntranceConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(350211);
   }
   
-  public void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(165436);
-    p.k(parami, "holder");
-    p.k(paramBaseFinderFeed, "item");
-    super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    if (paramBaseFinderFeed.feedObject.isLiveFeed())
-    {
-      localObject1 = (csg)j.lo((List)paramBaseFinderFeed.feedObject.getLiveMediaList());
-      paramList = (ImageView)parami.RD(b.f.thumb_iv);
-      p.j(paramList, "thumbIv");
-      localObject2 = paramList.getLayoutParams();
-      paramInt1 = ((Number)this.xlu.getValue()).intValue();
-      localObject3 = parami.getContext();
-      p.j(localObject3, "holder.context");
-      paramInt1 = (paramInt1 - (int)((Context)localObject3).getResources().getDimension(b.d.Edge_1_5_A)) / 2;
-      localObject3 = aj.AGc;
-      paramInt2 = aj.a(paramBaseFinderFeed, (csg)localObject1, paramInt1);
-      if (paramInt2 > 0)
-      {
-        ((ViewGroup.LayoutParams)localObject2).width = paramInt1;
-        ((ViewGroup.LayoutParams)localObject2).height = paramInt2;
-        paramList.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      }
-      if (!Util.isNullOrNil(((csg)localObject1).coverUrl)) {
-        break label586;
-      }
-      localObject2 = new r((csg)localObject1, u.Alz, null, null, 12);
-      localObject3 = t.ztT;
-      localObject3 = t.dJe();
-      localObject4 = t.ztT;
-      ((d)localObject3).a(localObject2, paramList, t.a(t.a.ztU));
-      label228:
-      localObject3 = (ImageView)parami.RD(b.f.thumb_iv);
-      localObject2 = ((csg)localObject1).coverUrl;
-      paramList = (List<Object>)localObject2;
-      if (localObject2 == null) {
-        paramList = "";
-      }
-      p.j(paramList, "localFinderMedia.coverUrl ?: \"\"");
-      if (!Util.isNullOrNil(paramList)) {
-        break label727;
-      }
-      paramList = p.I(((csg)localObject1).thumbUrl, Util.nullAsNil(((csg)localObject1).thumb_url_token));
-    }
-    label454:
-    label586:
-    label717:
-    label722:
-    label727:
-    for (;;)
-    {
-      localObject1 = (FinderLiveOnliveWidget)parami.RD(b.f.finder_live_mask_view);
-      localObject2 = parami.RD(b.f.finder_live_onlive_widget);
-      localObject4 = (TextView)parami.RD(b.f.finder_desc);
-      if (paramBaseFinderFeed.feedObject.isLiveFeed())
-      {
-        Object localObject5 = paramBaseFinderFeed.feedObject.getLiveInfo();
-        if ((localObject5 != null) && (((bac)localObject5).liveStatus == 1))
-        {
-          localObject5 = t.ztT;
-          localObject5 = t.dJe();
-          paramList = new x(paramList, u.Aly);
-          p.j(localObject3, "thumbIv");
-          t localt = t.ztT;
-          ((d)localObject5).a(paramList, (ImageView)localObject3, t.a(t.a.ztU));
-          p.j(localObject1, "liveFinishView");
-          ((FinderLiveOnliveWidget)localObject1).setVisibility(8);
-          p.j(localObject2, "onliveWidget");
-          ((View)localObject2).setVisibility(0);
-          p.j(localObject4, "desc");
-          ((TextView)localObject4).setVisibility(8);
-          l(parami, paramBaseFinderFeed);
-          paramList = new StringBuilder("mediaType:").append(paramBaseFinderFeed.feedObject.getMediaType()).append(",liveStatus:");
-          parami = paramBaseFinderFeed.feedObject.getLiveInfo();
-          if (parami == null) {
-            break label717;
-          }
-          parami = Integer.valueOf(parami.liveStatus);
-          label507:
-          paramList = paramList.append(parami).append(",contact liveStatus:");
-          parami = paramBaseFinderFeed.feedObject.getRefObjectContact();
-          if (parami == null) {
-            break label722;
-          }
-        }
-      }
-      for (parami = Integer.valueOf(parami.liveStatus);; parami = null)
-      {
-        Log.i("FinderFeedVideoRoundCornerConvert", parami.intValue());
-        AppMethodBeat.o(165436);
-        return;
-        localObject1 = (csg)j.lo((List)paramBaseFinderFeed.feedObject.getMediaList());
-        break;
-        localObject2 = new y((csg)localObject1, u.Aly);
-        localObject3 = t.ztT;
-        localObject3 = t.dJe();
-        localObject4 = t.ztT;
-        ((d)localObject3).a(localObject2, paramList, t.a(t.a.ztU));
-        break label228;
-        localObject4 = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-        p.j(localObject3, "thumbIv");
-        com.tencent.mm.plugin.finder.live.utils.a.g((ImageView)localObject3, paramList);
-        p.j(localObject1, "liveFinishView");
-        ((FinderLiveOnliveWidget)localObject1).setVisibility(0);
-        p.j(localObject2, "onliveWidget");
-        ((View)localObject2).setVisibility(8);
-        break label454;
-        p.j(localObject1, "liveFinishView");
-        ((FinderLiveOnliveWidget)localObject1).setVisibility(8);
-        p.j(localObject2, "onliveWidget");
-        ((View)localObject2).setVisibility(8);
-        break label454;
-        parami = null;
-        break label507;
-      }
-    }
+    AppMethodBeat.i(350234);
+    kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+    kotlin.g.b.s.u(paramj, "holder");
+    aw.a((Paint)((TextView)paramj.UH(e.e.lbs_entrance_bar_title_tv)).getPaint(), 0.8F);
+    paramj.caK.setOnClickListener(an..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(350234);
+  }
+  
+  public final int getLayoutId()
+  {
+    return e.f.finder_lbs_entrance_bar_layout;
   }
 }
 

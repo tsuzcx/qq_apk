@@ -15,10 +15,10 @@ final class EmojiStoreV2RewardUI$3
   {
     AppMethodBeat.i(109272);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2RewardUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (EmojiStoreV2RewardUI.g(this.uOR) == EmojiStoreV2RewardUI.a.uOS) {
-      EmojiStoreV2RewardUI.a(this.uOR, EmojiStoreV2RewardUI.a.uOT);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2RewardUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (EmojiStoreV2RewardUI.g(this.xXB) == EmojiStoreV2RewardUI.a.xXC) {
+      EmojiStoreV2RewardUI.a(this.xXB, EmojiStoreV2RewardUI.a.xXD);
     }
     a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2RewardUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109272);
@@ -26,7 +26,7 @@ final class EmojiStoreV2RewardUI$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardUI.3
  * JD-Core Version:    0.7.0.1
  */

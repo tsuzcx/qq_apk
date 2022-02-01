@@ -7,11 +7,11 @@ public enum BaseActivity$a
   static
   {
     AppMethodBeat.i(159094);
-    VRc = new a("CUSTOM", 0);
-    VRd = new a("BACK", 1);
-    VRe = new a("CLOSE", 2);
-    VRf = new a("NONE", 3);
-    VRg = new a[] { VRc, VRd, VRe, VRf };
+    advk = new a("CUSTOM", 0);
+    advl = new a("BACK", 1);
+    advm = new a("CLOSE", 2);
+    advn = new a("NONE", 3);
+    advo = new a[] { advk, advl, advm, advn };
     AppMethodBeat.o(159094);
   }
   
@@ -19,7 +19,7 @@ public enum BaseActivity$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.BaseActivity.a
  * JD-Core Version:    0.7.0.1
  */

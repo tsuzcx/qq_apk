@@ -10,63 +10,63 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.plugin.emoji.i.c;
-import com.tencent.mm.plugin.emoji.i.d;
-import com.tencent.mm.plugin.emoji.i.e;
-import com.tencent.mm.plugin.emoji.i.f;
-import com.tencent.mm.plugin.emoji.i.h;
-import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.emoji.h.c;
+import com.tencent.mm.plugin.emoji.h.d;
+import com.tencent.mm.plugin.emoji.h.e;
+import com.tencent.mm.plugin.emoji.h.f;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.model.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.c;
 import java.util.List;
 
 public final class e
   extends ArrayAdapter<EmojiGroupInfo>
 {
-  private static final int uAb = i.f.emoji_sort_item;
+  private static final int xGE = h.f.emoji_sort_item;
   private final String TAG;
   private Context mContext;
-  private int uAc;
-  public List<EmojiGroupInfo> uAd;
+  private int xGF;
+  public List<EmojiGroupInfo> xGG;
   
   public e(Context paramContext, List<EmojiGroupInfo> paramList)
   {
-    super(paramContext, uAb, paramList);
+    super(paramContext, xGE, paramList);
     AppMethodBeat.i(108316);
     this.TAG = "MicroMsg.emoji.EmojiSortAdapter";
-    this.uAc = paramContext.getResources().getDimensionPixelSize(i.c.emoji_item_list_height);
+    this.xGF = paramContext.getResources().getDimensionPixelSize(h.c.emoji_item_list_height);
     this.mContext = paramContext;
-    this.uAd = paramList;
+    this.xGG = paramList;
     AppMethodBeat.o(108316);
   }
   
-  public final void cTP()
+  public final void dyk()
   {
     AppMethodBeat.i(108317);
-    if (this.uAd == null)
+    if (this.xGG == null)
     {
       AppMethodBeat.o(108317);
       return;
     }
-    int j = this.uAd.size();
+    int j = this.xGG.size();
     int i = 0;
     while (i < j)
     {
-      ((EmojiGroupInfo)this.uAd.get(i)).field_idx = i;
+      ((EmojiGroupInfo)this.xGG.get(i)).field_idx = i;
       i += 1;
     }
-    p.getEmojiStorageMgr().VFI.jQ(this.uAd);
-    EmojiGroupInfo localEmojiGroupInfo = p.getEmojiStorageMgr().VFI.dt(EmojiGroupInfo.YCv, false);
-    localEmojiGroupInfo.field_sort = (this.uAd.size() + 2);
-    p.getEmojiStorageMgr();
-    if (!c.hAZ())
+    s.getEmojiStorageMgr().adjv.ne(this.xGG);
+    EmojiGroupInfo localEmojiGroupInfo = s.getEmojiStorageMgr().adjv.ec(EmojiGroupInfo.aklE, false);
+    localEmojiGroupInfo.field_sort = (this.xGG.size() + 2);
+    s.getEmojiStorageMgr();
+    if (!com.tencent.mm.storage.emotion.c.jda())
     {
-      c localc = p.getEmojiStorageMgr().VFI;
+      com.tencent.mm.storage.emotion.c localc = s.getEmojiStorageMgr().adjv;
       if (localEmojiGroupInfo != null)
       {
         Log.d("MicroMsg.emoji.EmojiGroupInfoStorage", "jacks updateEmojiGroupInfo: packname: %s, lasttime: %d, sort: %d", new Object[] { localEmojiGroupInfo.field_packName, Long.valueOf(localEmojiGroupInfo.field_lastUseTime), Integer.valueOf(localEmojiGroupInfo.field_sort) });
@@ -83,52 +83,49 @@ public final class e
     EmojiGroupInfo localEmojiGroupInfo;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(uAb, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(xGE, null);
       paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
       localEmojiGroupInfo = (EmojiGroupInfo)getItem(paramInt);
-      if (!com.tencent.mm.plugin.emoji.i.a.b(localEmojiGroupInfo)) {
-        break label135;
+      if (!com.tencent.mm.plugin.emoji.g.c.a(localEmojiGroupInfo)) {
+        break label115;
       }
-      paramViewGroup.mNb.setText(i.h.emoji_store_tuzi_title);
+      paramViewGroup.pJJ.setText(h.h.emoji_store_tuzi_title);
       label74:
-      if (!com.tencent.mm.plugin.emoji.i.a.b(localEmojiGroupInfo)) {
-        break label150;
+      if (!com.tencent.mm.plugin.emoji.g.c.a(localEmojiGroupInfo)) {
+        break label130;
       }
-      paramViewGroup.qps.setImageResource(i.d.icon_002_cover);
+      paramViewGroup.ttT.setImageResource(h.d.icon_002_cover);
     }
     for (;;)
     {
-      if (paramInt + 1 == getCount()) {
-        paramViewGroup.uAe.setBackgroundResource(i.d.comm_list_item_selector_no_divider);
-      }
       paramView.setVisibility(0);
       AppMethodBeat.o(108318);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
-      label135:
-      paramViewGroup.mNb.setText(localEmojiGroupInfo.field_packName);
+      label115:
+      paramViewGroup.pJJ.setText(localEmojiGroupInfo.field_packName);
       break label74;
-      label150:
-      q.bml().a(localEmojiGroupInfo.field_packIconUrl, paramViewGroup.qps, com.tencent.mm.plugin.emoji.e.e.gd(localEmojiGroupInfo.field_productID, localEmojiGroupInfo.field_packIconUrl));
+      label130:
+      r.bKe().a(localEmojiGroupInfo.field_packIconUrl, paramViewGroup.ttT, com.tencent.mm.plugin.emoji.mgr.e.gJ(localEmojiGroupInfo.field_productID, localEmojiGroupInfo.field_packIconUrl));
     }
   }
   
   final class a
   {
-    TextView mNb;
-    ImageView qps;
-    View uAe;
-    ImageView uAf;
+    TextView pJJ;
+    ImageView ttT;
+    View xGH;
+    ImageView xGI;
     
     public a(View paramView)
     {
       AppMethodBeat.i(108315);
-      this.uAf = ((ImageView)paramView.findViewById(i.e.emoji_store_manager_list_item_updonw));
-      this.qps = ((ImageView)paramView.findViewById(i.e.emoji_store_manager_list_item_icon));
-      this.mNb = ((TextView)paramView.findViewById(i.e.emoji_store_manager_list_item_title));
-      this.uAe = paramView.findViewById(i.e.emoji_item_container);
+      this.xGI = ((ImageView)paramView.findViewById(h.e.emoji_store_manager_list_item_updonw));
+      this.ttT = ((ImageView)paramView.findViewById(h.e.emoji_store_manager_list_item_icon));
+      this.pJJ = ((TextView)paramView.findViewById(h.e.emoji_store_manager_list_item_title));
+      this.xGH = paramView.findViewById(h.e.emoji_item_container);
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
       if (localLayoutParams != null)
       {

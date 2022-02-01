@@ -7,85 +7,85 @@ import com.tencent.mm.ui.base.preference.MMPreferenceFragment;
 
 public abstract class AbstractTabChildPreference
   extends MMPreferenceFragment
-  implements o
+  implements p
 {
-  private boolean VPs;
-  private boolean VPt;
-  private boolean VPu;
-  private boolean VPv;
-  protected boolean VPw = false;
-  protected boolean VPx = false;
-  protected boolean VPy;
+  private boolean adtA;
+  protected boolean adtB = false;
+  protected boolean adtC = false;
+  protected boolean adtD;
+  private boolean adtx;
+  private boolean adty;
+  private boolean adtz;
   private Bundle savedInstanceState;
   
-  private void hFn()
+  private void jhz()
   {
-    if (this.VPt)
+    if (this.adty)
     {
-      hFb();
-      this.VPt = false;
+      jhn();
+      this.adty = false;
     }
-    while (!this.VPs) {
+    while (!this.adtx) {
       return;
     }
-    hFg();
-    hFb();
+    jhs();
+    jhn();
     Log.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-    this.VPs = false;
+    this.adtx = false;
   }
   
-  protected abstract void hFb();
-  
-  protected abstract void hFc();
-  
-  protected abstract void hFd();
-  
-  protected abstract void hFe();
-  
-  protected abstract void hFf();
-  
-  protected abstract void hFg();
-  
-  public final void hFk()
+  public final void jhA()
   {
-    hFi();
-    this.VPu = true;
-  }
-  
-  public final void hFm()
-  {
-    this.VPx = true;
-  }
-  
-  public final void hFo()
-  {
-    if (!this.VPw) {
+    if (!this.adtB) {
       return;
     }
-    hFn();
+    jhz();
     long l = System.currentTimeMillis();
-    if (this.VPu)
+    if (this.adtz)
     {
-      hFj();
-      this.VPu = false;
+      jhv();
+      this.adtz = false;
     }
-    hKS();
-    hFc();
+    jnz();
+    jho();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.VPv = true;
-    this.VPw = false;
+    this.adtA = true;
+    this.adtB = false;
+  }
+  
+  protected abstract void jhn();
+  
+  protected abstract void jho();
+  
+  protected abstract void jhp();
+  
+  protected abstract void jhq();
+  
+  protected abstract void jhr();
+  
+  protected abstract void jhs();
+  
+  public final void jhw()
+  {
+    jhu();
+    this.adtz = true;
+  }
+  
+  public final void jhy()
+  {
+    this.adtC = true;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
     this.savedInstanceState = paramBundle;
-    this.VPt = true;
+    this.adty = true;
   }
   
   public void onDestroy()
   {
-    hFg();
+    jhs();
     super.onDestroy();
   }
   
@@ -100,52 +100,52 @@ public abstract class AbstractTabChildPreference
   public void onPause()
   {
     super.onPause();
-    this.VPy = true;
-    if (this.VPy)
+    this.adtD = true;
+    if (this.adtD)
     {
-      if (!this.VPv) {
-        this.VPy = false;
+      if (!this.adtA) {
+        this.adtD = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    hFe();
+    jhq();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.VPv = false;
-    this.VPy = false;
+    this.adtA = false;
+    this.adtD = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    hFl();
+    jhx();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.adBJ)) {}
     do
     {
       return;
-      this.VPw = true;
-    } while (!this.VPx);
-    hFo();
-    this.VPx = false;
+      this.adtB = true;
+    } while (!this.adtC);
+    jhA();
+    this.adtC = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.adBJ)) {
       return;
     }
-    hFd();
+    jhp();
   }
   
   public void onStop()
   {
     super.onStop();
-    hFf();
+    jhr();
   }
 }
 

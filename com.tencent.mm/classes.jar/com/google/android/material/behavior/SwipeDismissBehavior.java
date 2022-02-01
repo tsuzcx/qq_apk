@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewParent;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import androidx.customview.a.c;
 import androidx.customview.a.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -13,43 +13,84 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class SwipeDismissBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  c bwa;
-  private boolean bwb;
-  private float bwc;
-  private boolean bwd;
-  public int bwe;
-  float bwf;
-  public float bwg;
-  public float bwh;
-  private final c.a bwi;
+  c dpd;
+  private boolean dpe;
+  private float dpf;
+  private boolean dpg;
+  public int dph;
+  float dpi;
+  public float dpj;
+  public float dpk;
+  private final c.a dpl;
   
   public SwipeDismissBehavior()
   {
-    AppMethodBeat.i(234892);
-    this.bwc = 0.0F;
-    this.bwe = 2;
-    this.bwf = 0.5F;
-    this.bwg = 0.0F;
-    this.bwh = 0.5F;
-    this.bwi = new c.a()
+    AppMethodBeat.i(209910);
+    this.dpf = 0.0F;
+    this.dph = 2;
+    this.dpi = 0.5F;
+    this.dpj = 0.0F;
+    this.dpk = 0.5F;
+    this.dpl = new c.a()
     {
-      private int bvF = -1;
-      private int bwj;
+      private int doI = -1;
+      private int dpm;
       
-      public final void G(int paramAnonymousInt) {}
+      public final void D(View paramAnonymousView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(209934);
+        this.doI = paramAnonymousInt;
+        this.dpm = paramAnonymousView.getLeft();
+        paramAnonymousView = paramAnonymousView.getParent();
+        if (paramAnonymousView != null) {
+          paramAnonymousView.requestDisallowInterceptTouchEvent(true);
+        }
+        AppMethodBeat.o(209934);
+      }
       
-      public final void a(View paramAnonymousView, float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void F(int paramAnonymousInt) {}
+      
+      public final void a(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(209976);
+        float f1 = this.dpm + paramAnonymousView.getWidth() * SwipeDismissBehavior.this.dpj;
+        float f2 = this.dpm + paramAnonymousView.getWidth() * SwipeDismissBehavior.this.dpk;
+        if (paramAnonymousInt1 <= f1)
+        {
+          paramAnonymousView.setAlpha(1.0F);
+          AppMethodBeat.o(209976);
+          return;
+        }
+        if (paramAnonymousInt1 >= f2)
+        {
+          paramAnonymousView.setAlpha(0.0F);
+          AppMethodBeat.o(209976);
+          return;
+        }
+        paramAnonymousView.setAlpha(SwipeDismissBehavior.aQ(1.0F - SwipeDismissBehavior.m(f1, f2, paramAnonymousInt1)));
+        AppMethodBeat.o(209976);
+      }
+      
+      public final int aQ(View paramAnonymousView)
+      {
+        AppMethodBeat.i(209957);
+        int i = paramAnonymousView.getWidth();
+        AppMethodBeat.o(209957);
+        return i;
+      }
+      
+      public final void b(View paramAnonymousView, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         boolean bool = true;
-        AppMethodBeat.i(234882);
-        this.bvF = -1;
+        AppMethodBeat.i(209951);
+        this.doI = -1;
         int j = paramAnonymousView.getWidth();
         int i;
         if (paramAnonymousFloat1 != 0.0F) {
-          if (w.I(paramAnonymousView) == 1)
+          if (z.U(paramAnonymousView) == 1)
           {
             i = 1;
-            if (SwipeDismissBehavior.this.bwe != 2) {
+            if (SwipeDismissBehavior.this.dph != 2) {
               break label124;
             }
             i = 1;
@@ -57,24 +98,24 @@ public class SwipeDismissBehavior<V extends View>
             if (i == 0) {
               break label300;
             }
-            if (paramAnonymousView.getLeft() >= this.bwj) {
+            if (paramAnonymousView.getLeft() >= this.dpm) {
               break label288;
             }
-            i = this.bwj - j;
+            i = this.dpm - j;
           }
         }
         for (;;)
         {
-          if (!SwipeDismissBehavior.this.bwa.I(i, paramAnonymousView.getTop())) {
+          if (!SwipeDismissBehavior.this.dpd.aD(i, paramAnonymousView.getTop())) {
             break label312;
           }
-          w.a(paramAnonymousView, new SwipeDismissBehavior.a(SwipeDismissBehavior.this, paramAnonymousView, bool));
-          AppMethodBeat.o(234882);
+          z.b(paramAnonymousView, new SwipeDismissBehavior.a(SwipeDismissBehavior.this, paramAnonymousView, bool));
+          AppMethodBeat.o(209951);
           return;
           i = 0;
           break;
           label124:
-          if (SwipeDismissBehavior.this.bwe == 0)
+          if (SwipeDismissBehavior.this.dph == 0)
           {
             if (i != 0)
             {
@@ -94,7 +135,7 @@ public class SwipeDismissBehavior<V extends View>
             i = 0;
             break label50;
           }
-          if (SwipeDismissBehavior.this.bwe == 1)
+          if (SwipeDismissBehavior.this.dph == 1)
           {
             if (i != 0)
             {
@@ -114,8 +155,8 @@ public class SwipeDismissBehavior<V extends View>
             i = 0;
             break label50;
             i = paramAnonymousView.getLeft();
-            int k = this.bwj;
-            int m = Math.round(paramAnonymousView.getWidth() * SwipeDismissBehavior.this.bwf);
+            int k = this.dpm;
+            int m = Math.round(paramAnonymousView.getWidth() * SwipeDismissBehavior.this.dpi);
             if (Math.abs(i - k) >= m)
             {
               i = 1;
@@ -127,155 +168,114 @@ public class SwipeDismissBehavior<V extends View>
           i = 0;
           break label50;
           label288:
-          i = this.bwj + j;
+          i = this.dpm + j;
           continue;
           label300:
-          i = this.bwj;
+          i = this.dpm;
           bool = false;
         }
         label312:
-        AppMethodBeat.o(234882);
-      }
-      
-      public final void a(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(234886);
-        float f1 = this.bwj + paramAnonymousView.getWidth() * SwipeDismissBehavior.this.bwg;
-        float f2 = this.bwj + paramAnonymousView.getWidth() * SwipeDismissBehavior.this.bwh;
-        if (paramAnonymousInt1 <= f1)
-        {
-          paramAnonymousView.setAlpha(1.0F);
-          AppMethodBeat.o(234886);
-          return;
-        }
-        if (paramAnonymousInt1 >= f2)
-        {
-          paramAnonymousView.setAlpha(0.0F);
-          AppMethodBeat.o(234886);
-          return;
-        }
-        paramAnonymousView.setAlpha(SwipeDismissBehavior.P(1.0F - SwipeDismissBehavior.j(f1, f2, paramAnonymousInt1)));
-        AppMethodBeat.o(234886);
-      }
-      
-      public final int aC(View paramAnonymousView)
-      {
-        AppMethodBeat.i(234883);
-        int i = paramAnonymousView.getWidth();
-        AppMethodBeat.o(234883);
-        return i;
+        AppMethodBeat.o(209951);
       }
       
       public final boolean b(View paramAnonymousView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(234876);
-        if ((this.bvF == -1) && (SwipeDismissBehavior.this.cf(paramAnonymousView)))
+        AppMethodBeat.i(209928);
+        if ((this.doI == -1) && (SwipeDismissBehavior.this.cB(paramAnonymousView)))
         {
-          AppMethodBeat.o(234876);
+          AppMethodBeat.o(209928);
           return true;
         }
-        AppMethodBeat.o(234876);
+        AppMethodBeat.o(209928);
         return false;
       }
       
       public final int c(View paramAnonymousView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(234885);
+        AppMethodBeat.i(209968);
         paramAnonymousInt = paramAnonymousView.getTop();
-        AppMethodBeat.o(234885);
+        AppMethodBeat.o(209968);
         return paramAnonymousInt;
       }
       
       public final int d(View paramAnonymousView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(234884);
+        AppMethodBeat.i(209964);
         int i;
         int j;
-        if (w.I(paramAnonymousView) == 1)
+        if (z.U(paramAnonymousView) == 1)
         {
           i = 1;
-          if (SwipeDismissBehavior.this.bwe != 0) {
+          if (SwipeDismissBehavior.this.dph != 0) {
             break label84;
           }
           if (i == 0) {
             break label65;
           }
-          i = this.bwj - paramAnonymousView.getWidth();
-          j = this.bwj;
+          i = this.dpm - paramAnonymousView.getWidth();
+          j = this.dpm;
         }
         for (;;)
         {
           paramAnonymousInt = SwipeDismissBehavior.clamp(i, paramAnonymousInt, j);
-          AppMethodBeat.o(234884);
+          AppMethodBeat.o(209964);
           return paramAnonymousInt;
           i = 0;
           break;
           label65:
-          i = this.bwj;
-          j = this.bwj + paramAnonymousView.getWidth();
+          i = this.dpm;
+          j = this.dpm + paramAnonymousView.getWidth();
           continue;
           label84:
-          if (SwipeDismissBehavior.this.bwe == 1)
+          if (SwipeDismissBehavior.this.dph == 1)
           {
             if (i != 0)
             {
-              i = this.bwj;
-              j = this.bwj + paramAnonymousView.getWidth();
+              i = this.dpm;
+              j = this.dpm + paramAnonymousView.getWidth();
             }
             else
             {
-              i = this.bwj - paramAnonymousView.getWidth();
-              j = this.bwj;
+              i = this.dpm - paramAnonymousView.getWidth();
+              j = this.dpm;
             }
           }
           else
           {
-            i = this.bwj - paramAnonymousView.getWidth();
-            j = this.bwj + paramAnonymousView.getWidth();
+            i = this.dpm - paramAnonymousView.getWidth();
+            j = this.dpm + paramAnonymousView.getWidth();
           }
         }
       }
-      
-      public final void z(View paramAnonymousView, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(234878);
-        this.bvF = paramAnonymousInt;
-        this.bwj = paramAnonymousView.getLeft();
-        paramAnonymousView = paramAnonymousView.getParent();
-        if (paramAnonymousView != null) {
-          paramAnonymousView.requestDisallowInterceptTouchEvent(true);
-        }
-        AppMethodBeat.o(234878);
-      }
     };
-    AppMethodBeat.o(234892);
+    AppMethodBeat.o(209910);
   }
   
-  public static float P(float paramFloat)
+  public static float aQ(float paramFloat)
   {
-    AppMethodBeat.i(234896);
+    AppMethodBeat.i(209917);
     paramFloat = Math.min(Math.max(0.0F, paramFloat), 1.0F);
-    AppMethodBeat.o(234896);
+    AppMethodBeat.o(209917);
     return paramFloat;
   }
   
   static int clamp(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(234898);
+    AppMethodBeat.i(209922);
     paramInt1 = Math.min(Math.max(paramInt1, paramInt2), paramInt3);
-    AppMethodBeat.o(234898);
+    AppMethodBeat.o(209922);
     return paramInt1;
   }
   
-  static float j(float paramFloat1, float paramFloat2, float paramFloat3)
+  static float m(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     return (paramFloat3 - paramFloat1) / (paramFloat2 - paramFloat1);
   }
   
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(234894);
-    boolean bool2 = this.bwb;
+    AppMethodBeat.i(209937);
+    boolean bool2 = this.dpe;
     boolean bool1 = bool2;
     switch (paramMotionEvent.getActionMasked())
     {
@@ -285,46 +285,46 @@ public class SwipeDismissBehavior<V extends View>
       if (!bool1) {
         break label159;
       }
-      if (this.bwa == null) {
-        if (!this.bwd) {
+      if (this.dpd == null) {
+        if (!this.dpg) {
           break label147;
         }
       }
       break;
     }
     label147:
-    for (paramCoordinatorLayout = c.a(paramCoordinatorLayout, this.bwc, this.bwi);; paramCoordinatorLayout = c.a(paramCoordinatorLayout, this.bwi))
+    for (paramCoordinatorLayout = c.a(paramCoordinatorLayout, this.dpf, this.dpl);; paramCoordinatorLayout = c.a(paramCoordinatorLayout, this.dpl))
     {
-      this.bwa = paramCoordinatorLayout;
-      bool1 = this.bwa.i(paramMotionEvent);
-      AppMethodBeat.o(234894);
+      this.dpd = paramCoordinatorLayout;
+      bool1 = this.dpd.i(paramMotionEvent);
+      AppMethodBeat.o(209937);
       return bool1;
-      this.bwb = paramCoordinatorLayout.d(paramV, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
-      bool1 = this.bwb;
+      this.dpe = paramCoordinatorLayout.d(paramV, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      bool1 = this.dpe;
       break;
-      this.bwb = false;
+      this.dpe = false;
       bool1 = bool2;
       break;
     }
     label159:
-    AppMethodBeat.o(234894);
+    AppMethodBeat.o(209937);
     return false;
   }
   
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(234895);
-    if (this.bwa != null)
+    AppMethodBeat.i(209946);
+    if (this.dpd != null)
     {
-      this.bwa.j(paramMotionEvent);
-      AppMethodBeat.o(234895);
+      this.dpd.j(paramMotionEvent);
+      AppMethodBeat.o(209946);
       return true;
     }
-    AppMethodBeat.o(234895);
+    AppMethodBeat.o(209946);
     return false;
   }
   
-  public boolean cf(View paramView)
+  public boolean cB(View paramView)
   {
     return true;
   }
@@ -332,31 +332,31 @@ public class SwipeDismissBehavior<V extends View>
   final class a
     implements Runnable
   {
-    private final boolean aJK;
+    private final boolean cDH;
     private final View view;
     
     a(View paramView, boolean paramBoolean)
     {
       this.view = paramView;
-      this.aJK = paramBoolean;
+      this.cDH = paramBoolean;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(234889);
-      if ((SwipeDismissBehavior.this.bwa != null) && (SwipeDismissBehavior.this.bwa.hM()))
+      AppMethodBeat.i(209908);
+      if ((SwipeDismissBehavior.this.dpd != null) && (SwipeDismissBehavior.this.dpd.Fx()))
       {
-        w.a(this.view, this);
-        AppMethodBeat.o(234889);
+        z.b(this.view, this);
+        AppMethodBeat.o(209908);
         return;
       }
-      AppMethodBeat.o(234889);
+      AppMethodBeat.o(209908);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.behavior.SwipeDismissBehavior
  * JD-Core Version:    0.7.0.1
  */

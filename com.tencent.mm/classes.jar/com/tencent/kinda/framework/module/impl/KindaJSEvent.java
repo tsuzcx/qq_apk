@@ -47,7 +47,7 @@ public class KindaJSEvent
       localIntent.putExtra("key_jsapi_close_page_after_pay", i);
       Log.i("MicroMsg.KindaJSEvent", "[kindaCloseWebViewImpl] The data from JsApiPayUseCase: isCloseWebView: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       if (this.mIMMOnActivityResult != null) {
-        this.mIMMOnActivityResult.d(this.mRequestCode, this.mResultCode, localIntent);
+        this.mIMMOnActivityResult.mmOnActivityResult(this.mRequestCode, this.mResultCode, localIntent);
       }
       if (paramVoidCallback != null) {
         paramVoidCallback.call();
@@ -90,7 +90,7 @@ public class KindaJSEvent
       for (;;)
       {
         if (this.mIMMOnActivityResult != null) {
-          this.mIMMOnActivityResult.d(this.mRequestCode, this.mResultCode, (Intent)localObject);
+          this.mIMMOnActivityResult.mmOnActivityResult(this.mRequestCode, this.mResultCode, (Intent)localObject);
         }
         AppMethodBeat.o(170114);
         return;
@@ -116,15 +116,15 @@ public class KindaJSEvent
   
   public KindaJSEventType kindaGetType()
   {
-    AppMethodBeat.i(264266);
+    AppMethodBeat.i(226679);
     if (this.mDelegate != null)
     {
       localKindaJSEventType = this.mDelegate.kindaGetType();
-      AppMethodBeat.o(264266);
+      AppMethodBeat.o(226679);
       return localKindaJSEventType;
     }
     KindaJSEventType localKindaJSEventType = this.mEventType;
-    AppMethodBeat.o(264266);
+    AppMethodBeat.o(226679);
     return localKindaJSEventType;
   }
   
@@ -154,7 +154,7 @@ public class KindaJSEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaJSEvent
  * JD-Core Version:    0.7.0.1
  */

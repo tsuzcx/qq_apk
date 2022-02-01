@@ -10,19 +10,19 @@ import com.tencent.mm.plugin.appbrand.widget.input.ag;
 public abstract interface b
   extends ag
 {
-  public abstract boolean DW(int paramInt);
+  public abstract boolean Ew(int paramInt);
   
-  public abstract void ce(boolean paramBoolean);
+  public abstract void cL(boolean paramBoolean);
   
-  public abstract boolean cpA();
+  public abstract void cSc();
   
-  public abstract boolean cpB();
+  public abstract boolean cSd();
   
-  public abstract void cpz();
+  public abstract boolean cSe();
   
   public abstract View getPanelView();
   
-  public abstract void ku(boolean paramBoolean);
+  public abstract void lG(boolean paramBoolean);
   
   public abstract void onDestroy();
   
@@ -30,14 +30,14 @@ public abstract interface b
   
   public abstract void onResume();
   
-  public abstract void setOnEmoticonOperationListener(d paramd);
+  public abstract void setOnEmoticonOperationListener(e parame);
   
-  public abstract void setOnTextOperationListener(e parame);
+  public abstract void setOnTextOperationListener(f paramf);
   
   public static final class a
     implements b
   {
-    int cpO;
+    int ehF;
     boolean mInLayout;
     private View mView;
     
@@ -58,8 +58,8 @@ public abstract interface b
         protected final void onMeasure(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(136689);
-          if (b.a.this.cpO > 0) {
-            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(b.a.this.cpO, 1073741824);
+          if (b.a.this.ehF > 0) {
+            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(b.a.this.ehF, 1073741824);
           }
           super.onMeasure(paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(136689);
@@ -68,24 +68,31 @@ public abstract interface b
       AppMethodBeat.o(136691);
     }
     
-    public final boolean DW(int paramInt)
+    public final boolean Ew(int paramInt)
     {
-      if ((paramInt > 0) && (this.cpO != paramInt))
+      if ((paramInt > 0) && (this.ehF != paramInt))
       {
-        this.cpO = paramInt;
+        this.ehF = paramInt;
         return true;
       }
       return false;
     }
     
-    public final void ce(boolean paramBoolean) {}
+    public final void cL(boolean paramBoolean) {}
     
-    public final boolean coN()
+    public final boolean cRp()
     {
       return true;
     }
     
-    public final boolean cpA()
+    public final void cSc()
+    {
+      AppMethodBeat.i(136692);
+      this.mView.setVisibility(0);
+      AppMethodBeat.o(136692);
+    }
+    
+    public final boolean cSd()
     {
       AppMethodBeat.i(136694);
       if (Build.VERSION.SDK_INT >= 18)
@@ -99,16 +106,9 @@ public abstract interface b
       return bool;
     }
     
-    public final boolean cpB()
+    public final boolean cSe()
     {
       return false;
-    }
-    
-    public final void cpz()
-    {
-      AppMethodBeat.i(136692);
-      this.mView.setVisibility(0);
-      AppMethodBeat.o(136692);
     }
     
     public final View getPanelView()
@@ -116,11 +116,11 @@ public abstract interface b
       return this.mView;
     }
     
-    public final void ku(boolean paramBoolean)
+    public final void lG(boolean paramBoolean)
     {
-      AppMethodBeat.i(215183);
+      AppMethodBeat.i(324618);
       this.mView.setVisibility(4);
-      AppMethodBeat.o(215183);
+      AppMethodBeat.o(324618);
     }
     
     public final void onDestroy() {}
@@ -129,20 +129,20 @@ public abstract interface b
     
     public final void onResume() {}
     
-    public final void setOnEmoticonOperationListener(d paramd) {}
+    public final void setOnEmoticonOperationListener(e parame) {}
     
-    public final void setOnTextOperationListener(e parame) {}
+    public final void setOnTextOperationListener(f paramf) {}
   }
   
   public static abstract interface b
     extends com.tencent.luggage.a.b
   {
-    public abstract b eD(Context paramContext);
+    public abstract b F(Context paramContext, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.b
  * JD-Core Version:    0.7.0.1
  */

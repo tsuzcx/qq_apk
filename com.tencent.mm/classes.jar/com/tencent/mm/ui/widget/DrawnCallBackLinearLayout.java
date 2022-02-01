@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.widget;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -14,8 +13,8 @@ public class DrawnCallBackLinearLayout
 {
   public final boolean DEBUG = true;
   public final String TAG = "MicroMsg.TestTimeForChatting";
-  private a Yai;
-  private b Yaj;
+  private DrawnCallBackLinearLayout.a afSd;
+  private b afSe;
   
   public DrawnCallBackLinearLayout(Context paramContext)
   {
@@ -27,7 +26,6 @@ public class DrawnCallBackLinearLayout
     super(paramContext, paramAttributeSet);
   }
   
-  @TargetApi(11)
   public DrawnCallBackLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -37,10 +35,10 @@ public class DrawnCallBackLinearLayout
   {
     AppMethodBeat.i(143316);
     super.dispatchDraw(paramCanvas);
-    if (this.Yai != null)
+    if (this.afSd != null)
     {
-      this.Yai.hQB();
-      this.Yai = null;
+      this.afSd.jtE();
+      this.afSd = null;
     }
     AppMethodBeat.o(143316);
   }
@@ -48,8 +46,8 @@ public class DrawnCallBackLinearLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143314);
-    if (this.Yaj != null) {
-      this.Yaj = null;
+    if (this.afSe != null) {
+      this.afSe = null;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(143314);
@@ -61,30 +59,25 @@ public class DrawnCallBackLinearLayout
     AppMethodBeat.i(143315);
     long l = System.currentTimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    Log.i("MicroMsg.TestTimeForChatting", "[onLayout] " + (System.currentTimeMillis() - l));
+    Log.d("MicroMsg.TestTimeForChatting", "[onLayout] " + (System.currentTimeMillis() - l));
     AppMethodBeat.o(143315);
   }
   
-  public void setListener(a parama)
+  public void setListener(DrawnCallBackLinearLayout.a parama)
   {
-    this.Yai = parama;
+    this.afSd = parama;
   }
   
   public void setTouchedCallback(b paramb)
   {
-    this.Yaj = paramb;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void hQB();
+    this.afSe = paramb;
   }
   
   public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.DrawnCallBackLinearLayout
  * JD-Core Version:    0.7.0.1
  */

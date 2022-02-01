@@ -1,38 +1,49 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.asm;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.axb;
+import com.tencent.mm.protocal.protobuf.bqs;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/PageMegaVideoItem;", "Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "source", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "(Lcom/tencent/mm/protocal/protobuf/FinderFPItem;)V", "type", "", "id", "", "sourceFlag", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "(IJILcom/tencent/mm/protocal/protobuf/FinderObject;)V", "extract", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "targetDataType", "toRVFeed", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/PageLbsSection;", "Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "source", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "(Lcom/tencent/mm/protocal/protobuf/FinderFPItem;)V", "type", "", "id", "", "sourceFlag", "lbsSection", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "(IJILcom/tencent/mm/protocal/protobuf/FinderNearbySection;)V", "extract", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "targetDataType", "toRVFeed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends r
+  extends s
 {
-  public t(long paramLong, int paramInt, FinderObject paramFinderObject)
+  public t(long paramLong, bqs parambqs)
   {
-    AppMethodBeat.i(278970);
-    asm localasm = this.AnB;
-    localasm.id = paramLong;
-    localasm.type = 0;
-    localasm.SFP = paramFinderObject;
-    localasm.SFQ = paramInt;
-    paramFinderObject = o.Anz;
-    localasm.dataType = 2;
-    localasm.SFS = null;
-    AppMethodBeat.o(278970);
+    AppMethodBeat.i(339308);
+    axb localaxb = this.FNr;
+    localaxb.id = paramLong;
+    localaxb.type = 0;
+    localaxb.ZIo = new FinderObject();
+    localaxb.ZIp = 1;
+    localaxb.ZIq = parambqs;
+    parambqs = m.FNo;
+    localaxb.dataType = m.fac();
+    AppMethodBeat.o(339308);
   }
   
-  public t(asm paramasm)
+  public t(axb paramaxb)
   {
-    super(paramasm);
-    AppMethodBeat.i(278969);
-    AppMethodBeat.o(278969);
+    super(paramaxb);
+    AppMethodBeat.i(339300);
+    AppMethodBeat.o(339300);
+  }
+  
+  public final cc eIE()
+  {
+    AppMethodBeat.i(339317);
+    Object localObject = m.FNo;
+    localObject = (cc)m.b(this.FNr);
+    AppMethodBeat.o(339317);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;"}, k=3, mv={1, 5, 1}, xi=48)
 final class StoryFavAlbumUI$b
-  implements MenuItem.OnMenuItemClickListener
+  extends u
+  implements b<StoryFavoritePanel.c, ah>
 {
-  StoryFavAlbumUI$b(StoryFavAlbumUI paramStoryFavAlbumUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  StoryFavAlbumUI$b(StoryFavAlbumUI paramStoryFavAlbumUI)
   {
-    AppMethodBeat.i(119847);
-    this.LTl.finish();
-    AppMethodBeat.o(119847);
-    return true;
+    super(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryFavAlbumUI.b
  * JD-Core Version:    0.7.0.1
  */

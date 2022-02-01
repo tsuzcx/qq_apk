@@ -8,31 +8,31 @@ public abstract class a
   extends b
   implements d
 {
-  private AtomicBoolean ZSW = new AtomicBoolean(false);
+  private AtomicBoolean ahXw = new AtomicBoolean(false);
   
   public a(c paramc)
   {
     super(paramc);
   }
   
-  public final void IG(boolean paramBoolean)
+  public final void OI(boolean paramBoolean)
   {
-    this.ZSW.set(paramBoolean);
+    this.ahXw.set(paramBoolean);
   }
   
-  public boolean itZ()
+  public boolean kdv()
   {
     return false;
   }
   
-  public final boolean iua()
+  public final boolean kdw()
   {
-    return this.ZSW.get();
+    return this.ahXw.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.b.c.a.a
  * JD-Core Version:    0.7.0.1
  */

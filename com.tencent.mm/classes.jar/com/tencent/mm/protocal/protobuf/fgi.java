@@ -1,98 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class fgi
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public ffj UGw;
-  public int UGx;
+  public int ZqV;
+  public int aaLC;
+  public int abGl;
+  public int abGm;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147810);
+    AppMethodBeat.i(125840);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UGw == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: base_request");
-        AppMethodBeat.o(147810);
-        throw paramVarArgs;
-      }
-      if (this.UGw != null)
-      {
-        paramVarArgs.oE(1, this.UGw.computeSize());
-        this.UGw.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aY(2, this.UGx);
-      AppMethodBeat.o(147810);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ZqV);
+      paramVarArgs.bS(2, this.aaLC);
+      paramVarArgs.bS(3, this.abGl);
+      paramVarArgs.bS(4, this.abGm);
+      AppMethodBeat.o(125840);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.UGw == null) {
-        break label380;
-      }
-    }
-    label380:
-    for (paramInt = g.a.a.a.oD(1, this.UGw.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(2, this.UGx);
-      AppMethodBeat.o(147810);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.UGw == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: base_request");
-          AppMethodBeat.o(147810);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(147810);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        fgi localfgi = (fgi)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(147810);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            ffj localffj = new ffj();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localffj.parseFrom((byte[])localObject);
-            }
-            localfgi.UGw = localffj;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(147810);
-          return 0;
-        }
-        localfgi.UGx = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(147810);
-        return 0;
-      }
-      AppMethodBeat.o(147810);
-      return -1;
+      paramInt = i.a.a.b.b.a.cJ(1, this.ZqV);
+      int i = i.a.a.b.b.a.cJ(2, this.aaLC);
+      int j = i.a.a.b.b.a.cJ(3, this.abGl);
+      int k = i.a.a.b.b.a.cJ(4, this.abGm);
+      AppMethodBeat.o(125840);
+      return paramInt + 0 + i + j + k;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(125840);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      fgi localfgi = (fgi)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(125840);
+        return -1;
+      case 1: 
+        localfgi.ZqV = locala.ajGk.aar();
+        AppMethodBeat.o(125840);
+        return 0;
+      case 2: 
+        localfgi.aaLC = locala.ajGk.aar();
+        AppMethodBeat.o(125840);
+        return 0;
+      case 3: 
+        localfgi.abGl = locala.ajGk.aar();
+        AppMethodBeat.o(125840);
+        return 0;
+      }
+      localfgi.abGm = locala.ajGk.aar();
+      AppMethodBeat.o(125840);
+      return 0;
+    }
+    AppMethodBeat.o(125840);
+    return -1;
   }
 }
 

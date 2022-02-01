@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -12,8 +13,8 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public abstract class MainProcessTask
   implements Parcelable
 {
-  private final d orG = new d((byte)0);
-  private final a orH = new a((byte)0);
+  private final d rvA = new d((byte)0);
+  private final a rvB = new a((byte)0);
   
   private static void a(Parcelable paramParcelable, MainProcessTask paramMainProcessTask)
   {
@@ -23,29 +24,30 @@ public abstract class MainProcessTask
     Parcel localParcel = Parcel.obtain();
     paramParcelable.writeToParcel(localParcel, 0);
     localParcel.setDataPosition(0);
-    paramMainProcessTask.f(localParcel);
+    paramMainProcessTask.h(localParcel);
     localParcel.recycle();
   }
   
-  public abstract void RW();
+  public abstract void asn();
   
-  @Deprecated
-  public final void bPk()
+  public void bQr() {}
+  
+  public final void bQt()
   {
-    this.orH.orI.orP = null;
+    j.a(MMApplicationContext.getMainProcessName(), this, b.class, this.rvB.rvC, "MicroMsg.AppBrand.MainProcessTask");
   }
   
-  public final boolean bPt()
+  public final boolean cpA()
   {
-    if (this.orG.orO != null) {
-      this.orG.orO.run();
+    if (this.rvA.rvI != null) {
+      this.rvA.rvI.run();
     }
     return true;
   }
   
-  public final boolean bPu()
+  public final boolean cpB()
   {
-    if (!j.Mp(MMApplicationContext.getMainProcessName())) {}
+    if (!j.EX(MMApplicationContext.getMainProcessName())) {}
     Parcelable localParcelable;
     do
     {
@@ -53,15 +55,14 @@ public abstract class MainProcessTask
       localParcelable = j.a(MMApplicationContext.getMainProcessName(), this, c.class);
     } while (localParcelable == null);
     a(localParcelable, this);
-    bsK();
+    bQr();
     return true;
   }
   
-  public void bsK() {}
-  
-  public final void bsM()
+  @Deprecated
+  public final void cpx()
   {
-    j.a(MMApplicationContext.getMainProcessName(), this, b.class, this.orH.orI, "MicroMsg.AppBrand.MainProcessTask");
+    this.rvB.rvC.rvJ = null;
   }
   
   public int describeContents()
@@ -69,19 +70,19 @@ public abstract class MainProcessTask
     return 0;
   }
   
-  public void f(Parcel paramParcel) {}
+  public void h(Parcel paramParcel) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
   
   final class a
   {
-    final f<Parcelable> orI;
+    final g<Parcelable> rvC;
     
     private a()
     {
-      AppMethodBeat.i(210407);
-      this.orI = new f(new com.tencent.mm.ipcinvoker.f() {});
-      AppMethodBeat.o(210407);
+      AppMethodBeat.i(319429);
+      this.rvC = new g(new f() {});
+      AppMethodBeat.o(319429);
     }
   }
   
@@ -95,7 +96,7 @@ public abstract class MainProcessTask
   
   final class d
   {
-    transient Runnable orO = null;
+    transient Runnable rvI = null;
     
     private d() {}
   }

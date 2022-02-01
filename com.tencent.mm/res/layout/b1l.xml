@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/h93" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/emd" android:background="@drawable/azr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cm">
-        <FrameLayout android:id="@id/eme" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5">
-                <ListView android:id="@id/ema" android:background="@color/a2r" android:paddingBottom="@dimen/cr" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxHeight="312.0dip" android:divider="@color/a2r" android:dividerHeight="@dimen/ct" />
-            </LinearLayout>
-            <RelativeLayout android:layout_gravity="bottom" android:background="?si" android:layout_width="fill_parent" android:layout_height="@dimen/cs">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom|center" android:id="@id/em_" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="@dimen/bu" android:layout_height="@dimen/cp" android:layout_marginBottom="@dimen/bt" android:src="@raw/icons_tipsbar_unfold" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-        </FrameLayout>
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:background="@color/a2r" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:orientation="vertical" android:id="@id/em9" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RelativeLayout android:id="@id/em6" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/cb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-                <TextView android:textSize="@dimen/bd" android:textColor="@color/uj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/t2" />
-            </RelativeLayout>
-            <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/em5" android:background="@drawable/azy" android:paddingLeft="@dimen/cb" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/ct" android:layout_centerHorizontal="true">
-                <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:layout_gravity="center_vertical" android:id="@id/k74" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginEnd="@dimen/bt" app:logo_height="@dimen/cb" app:logo_mode="ao_" app:logo_style="mz" app:logo_width="@dimen/cb" />
-                <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_0_5" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/emc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在直播" android:singleLine="true" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/uk" android:layout_width="@dimen/ct" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/cb" android:src="@raw/icons_outlined_arrow" android:scaleType="fitCenter" android:contentDescription="@null" />
-            </LinearLayout>
-        </RelativeLayout>
-        <View android:layout_gravity="bottom" android:id="@id/aar" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
+<com.tencent.mm.plugin.hld.keyboard.S2ChineseQwertyKeyboard android:orientation="vertical" android:id="@id/iwl" android:background="@drawable/a_n" android:layout_width="fill_parent" android:layout_height="@dimen/adp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyg" keybutton:imeKeyMarginLeft="@string/ae" keybutton:key_only_click_float="true" keybutton:text="@string/a1" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyp" keybutton:key_only_click_float="true" keybutton:text="@string/av" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy3" keybutton:key_only_click_float="true" keybutton:text="@string/g" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyh" keybutton:key_only_click_float="true" keybutton:text="@string/a2" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyl" keybutton:key_only_click_float="true" keybutton:text="@string/as" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyr" keybutton:key_only_click_float="true" keybutton:text="@string/ax" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iym" keybutton:key_only_click_float="true" keybutton:text="@string/at" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy8" keybutton:key_only_click_float="true" keybutton:text="@string/p" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iye" keybutton:key_only_click_float="true" keybutton:text="@string/z" style="@style/a55" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyf" keybutton:imeKeyMarginRight="@string/ae" keybutton:key_only_click_float="true" keybutton:text="@string/a0" style="@style/a55" />
     </LinearLayout>
-</FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/ixv" keybutton:imeKeyMarginLeft="@string/a7" keybutton:key_only_click_float="true" keybutton:text="@string/a" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyi" keybutton:key_only_click_float="true" keybutton:text="@string/a3" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy1" keybutton:key_only_click_float="true" keybutton:text="@string/f" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy5" keybutton:key_only_click_float="true" keybutton:text="@string/h" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy6" keybutton:key_only_click_float="true" keybutton:text="@string/n" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy7" keybutton:key_only_click_float="true" keybutton:text="@string/o" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy9" keybutton:key_only_click_float="true" keybutton:text="@string/r" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy_" keybutton:key_only_click_float="true" keybutton:text="@string/s" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iya" keybutton:imeKeyMarginRight="@string/a6" keybutton:key_only_click_float="true" keybutton:text="@string/t" style="@style/a5a" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyn" keybutton:functionCode="@integer/aj" keybutton:icon_color="@color/ag" keybutton:icon_height="@dimen/k4" keybutton:icon_src="@raw/icons_outlined_capslock" keybutton:icon_width="@dimen/k4" keybutton:imeKeyHeight="@string/a5" keybutton:imeKeyMarginLeft="@string/ae" keybutton:imeKeyMarginRight="@string/aa" keybutton:imeKeyWidth="@string/al" style="@style/a59" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iys" keybutton:imeKeyMarginLeft="@string/a_" keybutton:text="@string/ay" keybutton:up_text="@string/fyy" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyq" keybutton:text="@string/aw" keybutton:up_text="@string/fz4" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/ixz" keybutton:text="@string/c" keybutton:up_text="@string/fz7" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyo" keybutton:text="@string/au" keybutton:up_text="@string/fyu" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/ixy" keybutton:text="@string/b" keybutton:up_text="@string/fz2" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyc" keybutton:text="@string/v" keybutton:up_text="@string/fyz" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyb" keybutton:imeKeyMarginRight="@string/a9" keybutton:text="@string/u" keybutton:up_text="@string/fyw" style="@style/a5a" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy2" keybutton:functionCode="@integer/ac" keybutton:icon_color="@color/ag" keybutton:icon_height="@dimen/k4" keybutton:icon_src="@raw/icons_outlined_delemoji" keybutton:icon_width="@dimen/k4" keybutton:imeKeyHeight="@string/a5" keybutton:imeKeyMarginLeft="@string/aa" keybutton:imeKeyMarginRight="@string/ae" keybutton:imeKeyWidth="@string/al" style="@style/a59" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyk" keybutton:functionCode="@integer/ai" keybutton:imeKeyBackground="@drawable/a_c" keybutton:imeKeyMarginLeft="@string/ae" keybutton:text="@string/jsn" style="@style/a57" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyd" keybutton:functionCode="@integer/af" keybutton:imeKeyBackground="@drawable/a_c" keybutton:text="@string/hdy" style="@style/a57" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/ixx" keybutton:icon_color="@color/ag" keybutton:icon_height="@dimen/ac0" keybutton:icon_src="@raw/ime_key_at" keybutton:icon_width="@dimen/ac0" keybutton:imeKeyWidth="@string/ai" keybutton:text="@string/fyr" keybutton:up_text="@string/fzh" style="@style/a5c" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iyj" keybutton:functionCode="@integer/ah" keybutton:imeKeyWidth="@string/aj" keybutton:text="@string/jlu" style="@style/a57" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy0" keybutton:icon_color="@color/ag" keybutton:icon_height="@dimen/ac0" keybutton:icon_src="@raw/ime_icon_chinese_comma" keybutton:icon_width="@dimen/ac0" keybutton:imeKeyWidth="@string/ai" keybutton:text="@string/fo0" keybutton:up_text="@string/c0d" style="@style/a5c" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/iy4" keybutton:functionCode="@integer/aa" keybutton:imeKeyBackground="@drawable/a_c" keybutton:imeKeyWidth="@string/al" keybutton:key_up_text_size="@dimen/ad1" keybutton:key_view_type="@integer/az" keybutton:text="@string/bd4" keybutton:up_text="@string/caj" style="@style/a57" />
+        <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/ixw" keybutton:functionCode="@integer/a8" keybutton:imeKeyBackground="@drawable/a_c" keybutton:imeKeyMarginRight="@string/ae" keybutton:imeKeyWidth="@string/ak" keybutton:text="@string/h8m" style="@style/a57" />
+    </LinearLayout>
+</com.tencent.mm.plugin.hld.keyboard.S2ChineseQwertyKeyboard>

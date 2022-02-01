@@ -8,33 +8,33 @@ import com.tencent.mm.plugin.hld.keyboard.selfdraw.a.e;
 import com.tencent.mm.plugin.hld.keyboard.selfdraw.a.g;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ButtonDrawer;", "", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "canvas", "Landroid/graphics/Canvas;", "getCanvas", "()Landroid/graphics/Canvas;", "setCanvas", "(Landroid/graphics/Canvas;)V", "drawerMap", "", "", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "getKeyboard", "()Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "bindDrawMethod", "", "drawMethod", "drawButton", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "initCanvas", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ButtonDrawer;", "", "keyboard", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "(Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;)V", "canvas", "Landroid/graphics/Canvas;", "getCanvas", "()Landroid/graphics/Canvas;", "setCanvas", "(Landroid/graphics/Canvas;)V", "drawerMap", "", "", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/drawmethod/DrawMethod;", "getKeyboard", "()Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardView;", "bindDrawMethod", "", "drawMethod", "drawButton", "button", "Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/ImeButton;", "initCanvas", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  final Map<String, b> DzA;
-  final KeyboardView DzB;
-  Canvas aBC;
+  final KeyboardView JsC;
+  final Map<String, b> JsD;
+  Canvas cxr;
   
   public a(KeyboardView paramKeyboardView)
   {
-    AppMethodBeat.i(211959);
-    this.DzB = paramKeyboardView;
-    this.DzA = ((Map)new LinkedHashMap());
-    a((b)new g(this.DzB));
-    a((b)new d(this.DzB));
-    a((b)new e(this.DzB));
-    AppMethodBeat.o(211959);
+    AppMethodBeat.i(313004);
+    this.JsC = paramKeyboardView;
+    this.JsD = ((Map)new LinkedHashMap());
+    a((b)new g(this.JsC));
+    a((b)new d(this.JsC));
+    a((b)new e(this.JsC));
+    AppMethodBeat.o(313004);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(211956);
-    p.k(paramb, "drawMethod");
-    this.DzA.put(paramb.getType(), paramb);
-    AppMethodBeat.o(211956);
+    AppMethodBeat.i(313013);
+    s.u(paramb, "drawMethod");
+    this.JsD.put(paramb.getType(), paramb);
+    AppMethodBeat.o(313013);
   }
 }
 

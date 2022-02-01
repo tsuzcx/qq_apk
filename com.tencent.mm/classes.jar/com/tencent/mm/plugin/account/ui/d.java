@@ -19,25 +19,25 @@ public final class d
 {
   private Context mContext;
   private final Object mLock;
-  private List<String> nbO;
-  private ArrayList<String> nbP;
-  private a nbQ;
-  private String nbR;
+  private List<String> pYV;
+  private ArrayList<String> pYW;
+  private a pYX;
+  private String pYY;
   
   public d(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(127871);
     this.mLock = new Object();
     this.mContext = paramContext;
-    this.nbO = Arrays.asList(paramArrayOfString);
-    this.nbR = paramString;
+    this.pYV = Arrays.asList(paramArrayOfString);
+    this.pYY = paramString;
     AppMethodBeat.o(127871);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(127873);
-    String str = (String)this.nbO.get(paramInt);
+    String str = (String)this.pYV.get(paramInt);
     AppMethodBeat.o(127873);
     return str;
   }
@@ -45,7 +45,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(127872);
-    int i = this.nbO.size();
+    int i = this.pYV.size();
     AppMethodBeat.o(127872);
     return i;
   }
@@ -53,10 +53,10 @@ public final class d
   public final Filter getFilter()
   {
     AppMethodBeat.i(127875);
-    if (this.nbQ == null) {
-      this.nbQ = new a((byte)0);
+    if (this.pYX == null) {
+      this.pYX = new a((byte)0);
     }
-    a locala = this.nbQ;
+    a locala = this.pYX;
     AppMethodBeat.o(127875);
     return locala;
   }
@@ -73,13 +73,13 @@ public final class d
     {
       paramView = View.inflate(this.mContext, r.g.auto_complete_dropdown_item, null);
       paramViewGroup = new b();
-      paramViewGroup.bFR = ((TextView)paramView.findViewById(r.f.textview1));
+      paramViewGroup.dyR = ((TextView)paramView.findViewById(r.f.textview1));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
       String str = getItem(paramInt);
-      paramViewGroup.bFR.setText(str);
+      paramViewGroup.dyR.setText(str);
       paramView.setBackgroundResource(r.e.comm_list_item_selector);
       AppMethodBeat.o(127874);
       return paramView;
@@ -167,12 +167,12 @@ public final class d
   
   static final class b
   {
-    public TextView bFR;
+    public TextView dyR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.d
  * JD-Core Version:    0.7.0.1
  */

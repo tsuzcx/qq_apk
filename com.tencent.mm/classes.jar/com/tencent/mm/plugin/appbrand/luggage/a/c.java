@@ -4,13 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.d;
+import com.tencent.mm.plugin.appbrand.canvas.e;
 import com.tencent.mm.plugin.appbrand.canvas.e.a;
 import com.tencent.mm.plugin.appbrand.f.a;
-import com.tencent.mm.plugin.appbrand.f.a.b;
 import com.tencent.mm.plugin.appbrand.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 
 public final class c
-  implements com.tencent.mm.plugin.appbrand.canvas.e
+  implements e
 {
   public final Bitmap a(d paramd, String paramString)
   {
@@ -20,25 +21,12 @@ public final class c
     return paramd;
   }
   
-  public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
+  public final Bitmap a(d paramd, String paramString, Rect paramRect, e.a parama)
   {
     AppMethodBeat.i(47475);
-    com.tencent.mm.plugin.appbrand.jsapi.e locale = paramd.cyi;
-    String str = ((b)locale.K(b.class)).b(locale, paramString);
-    paramd = ((a)locale.K(a.class)).a(str, paramRect, new a.b()
-    {
-      public final void O(Bitmap paramAnonymousBitmap)
-      {
-        AppMethodBeat.i(47472);
-        if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
-        {
-          AppMethodBeat.o(47472);
-          return;
-        }
-        parama.a(paramd);
-        AppMethodBeat.o(47472);
-      }
-    });
+    f localf = paramd.eqB;
+    String str = ((b)localf.T(b.class)).b(localf, paramString);
+    paramd = ((a)localf.T(a.class)).a(str, paramRect, new c.1(this, parama, paramd, paramString));
     AppMethodBeat.o(47475);
     return paramd;
   }
@@ -53,7 +41,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/dgi" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <FrameLayout android:id="@id/dgg" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn">
-        <TextView android:textColor="@color/uj" android:ellipsize="end" android:id="@id/dgh" android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-    </FrameLayout>
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/m4" android:id="@id/j6" android:padding="@dimen/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:text="@string/exw" android:singleLine="false" style="@style/m4" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/j4" android:background="@drawable/abx" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/cd" android:paddingRight="@dimen/df" android:paddingBottom="@dimen/cd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ebm" android:background="@raw/find_more_friend_mobile_icon" android:layout_width="@dimen/j4" android:layout_height="@dimen/j4" android:layout_marginRight="@dimen/j6" android:layout_centerVertical="true" />
+        <TextView android:id="@id/ebn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/m2" android:text="@string/cw0" android:singleLine="true" android:layout_toRightOf="@id/ebm" android:layout_centerVertical="true" style="@style/m4" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@raw/arrow_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/j6" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/f_" />
+    </RelativeLayout>
 </LinearLayout>

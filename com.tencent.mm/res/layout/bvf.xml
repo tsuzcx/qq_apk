@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a9r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/iwz" android:background="@color/a84" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <LinearLayout android:orientation="vertical" android:background="@drawable/bc6" android:layout_width="275.0dip" android:layout_height="320.0dip" android:layout_marginTop="23.0dip">
-                    <GridView android:gravity="center" android:id="@id/beq" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="8.0dip" android:listSelector="@drawable/aij" android:horizontalSpacing="4.0dip" android:verticalSpacing="1.0dip" android:stretchMode="columnWidth" android:numColumns="4" />
-                    <TextView android:textSize="12.0dip" android:textColor="@color/a9t" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="50.0dip" android:text="@string/h54" android:singleLine="false" android:shadowColor="@color/afz" android:shadowDx="2.0" />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <LinearLayout android:gravity="right" android:layout_width="295.0dip" android:layout_height="320.0dip" android:layout_marginTop="15.0dip">
-                    <ImageButton android:id="@id/b46" android:background="@drawable/k2" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-        </FrameLayout>
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/gqx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/gql" android:background="@color/z2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/kzo" android:background="@drawable/a9n" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_alignParentBottom="true" android:layout_alignStart="@id/gqx" android:layout_alignEnd="@id/gqx" />
+    <ImageView android:id="@id/kzq" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:src="@raw/video_icon_in_gird" android:layout_alignParentBottom="true" android:layout_centerVertical="true" android:layout_marginStart="6.0dip" android:layout_alignParentStart="true" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:id="@id/kzs" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="--:--" android:maxLines="1" android:layout_alignTop="@id/kzq" android:layout_marginStart="10.0dip" android:layout_toEndOf="@id/kzq" />
+    <ImageView android:id="@id/c77" android:background="#e6323232" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/cd" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/lyg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.widget.MMNumberCheckbox android:textSize="@dimen/m3" android:textColor="@color/al6" android:gravity="center" android:id="@id/gq5" android:background="@drawable/aag" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginTop="@dimen/ig" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/ig" android:layout_alignParentEnd="true" />
+</com.tencent.mm.ui.widget.FoursquareRelativeLayout>

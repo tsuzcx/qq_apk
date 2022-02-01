@@ -16,7 +16,7 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(125335);
-    com.tencent.mm.plugin.voip_cs.c.c localc = new com.tencent.mm.plugin.voip_cs.c.c();
+    com.tencent.mm.plugin.voip_cs.model.c localc = new com.tencent.mm.plugin.voip_cs.model.c();
     AppMethodBeat.o(125335);
     return localc;
   }

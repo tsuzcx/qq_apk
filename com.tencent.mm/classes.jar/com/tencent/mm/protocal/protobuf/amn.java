@@ -1,292 +1,260 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
+import i.a.a.b;
 
 public final class amn
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public int EvK;
-  public String EvL;
-  public String EvM;
-  public String EvN;
-  public int EvO;
-  public String EvP;
-  public String EvQ;
-  public String Ezw;
-  public dtj Sih;
-  public cmb SwQ;
-  public int amount;
-  public int fwx;
-  public int fyO;
-  public int gbp;
-  public int gbq;
-  public String tVo;
-  public String ybP;
+  public String ActivityID;
+  public String AesKey;
+  public String AttachedText;
+  public String AttachedTextColor;
+  public String DesignerID;
+  public String EmojiAttr;
+  public String EncryptUrl;
+  public String ExternMd5;
+  public String ExternUrl;
+  public String LensId;
+  public String Md5;
+  public String ProductID;
+  public String ThumbUrl;
+  public String Url;
+  public String Ztx;
+  public String Zty;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91453);
+    AppMethodBeat.i(104759);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.Md5 == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(91453);
+        paramVarArgs = new b("Not all required fields were included: Md5");
+        AppMethodBeat.o(104759);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.Md5 != null) {
+        paramVarArgs.g(1, this.Md5);
       }
-      paramVarArgs.aY(2, this.fwx);
-      if (this.tVo != null) {
-        paramVarArgs.f(3, this.tVo);
+      if (this.Url != null) {
+        paramVarArgs.g(2, this.Url);
       }
-      paramVarArgs.aY(4, this.fyO);
-      if (this.ybP != null) {
-        paramVarArgs.f(5, this.ybP);
+      if (this.ThumbUrl != null) {
+        paramVarArgs.g(3, this.ThumbUrl);
       }
-      paramVarArgs.aY(6, this.gbp);
-      paramVarArgs.aY(7, this.gbq);
-      if (this.Ezw != null) {
-        paramVarArgs.f(8, this.Ezw);
+      if (this.DesignerID != null) {
+        paramVarArgs.g(4, this.DesignerID);
       }
-      paramVarArgs.aY(9, this.amount);
-      if (this.Sih != null)
-      {
-        paramVarArgs.oE(10, this.Sih.computeSize());
-        this.Sih.writeFields(paramVarArgs);
+      if (this.EncryptUrl != null) {
+        paramVarArgs.g(5, this.EncryptUrl);
       }
-      paramVarArgs.aY(11, this.EvK);
-      if (this.EvL != null) {
-        paramVarArgs.f(12, this.EvL);
+      if (this.AesKey != null) {
+        paramVarArgs.g(6, this.AesKey);
       }
-      if (this.EvM != null) {
-        paramVarArgs.f(13, this.EvM);
+      if (this.ProductID != null) {
+        paramVarArgs.g(7, this.ProductID);
       }
-      if (this.EvN != null) {
-        paramVarArgs.f(14, this.EvN);
+      if (this.ExternUrl != null) {
+        paramVarArgs.g(8, this.ExternUrl);
       }
-      paramVarArgs.aY(15, this.EvO);
-      if (this.EvP != null) {
-        paramVarArgs.f(16, this.EvP);
+      if (this.ExternMd5 != null) {
+        paramVarArgs.g(9, this.ExternMd5);
       }
-      if (this.EvQ != null) {
-        paramVarArgs.f(17, this.EvQ);
+      if (this.ActivityID != null) {
+        paramVarArgs.g(10, this.ActivityID);
       }
-      if (this.SwQ != null)
-      {
-        paramVarArgs.oE(18, this.SwQ.computeSize());
-        this.SwQ.writeFields(paramVarArgs);
+      if (this.AttachedText != null) {
+        paramVarArgs.g(11, this.AttachedText);
       }
-      AppMethodBeat.o(91453);
+      if (this.AttachedTextColor != null) {
+        paramVarArgs.g(12, this.AttachedTextColor);
+      }
+      if (this.LensId != null) {
+        paramVarArgs.g(13, this.LensId);
+      }
+      if (this.EmojiAttr != null) {
+        paramVarArgs.g(14, this.EmojiAttr);
+      }
+      if (this.Ztx != null) {
+        paramVarArgs.g(15, this.Ztx);
+      }
+      if (this.Zty != null) {
+        paramVarArgs.g(16, this.Zty);
+      }
+      AppMethodBeat.o(104759);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label1412;
+      if (this.Md5 == null) {
+        break label1182;
       }
     }
-    label1412:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label1182:
+    for (int i = i.a.a.b.b.a.h(1, this.Md5) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.fwx);
       paramInt = i;
-      if (this.tVo != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.tVo);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(4, this.fyO);
-      paramInt = i;
-      if (this.ybP != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.ybP);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(6, this.gbp) + g.a.a.b.b.a.bM(7, this.gbq);
-      paramInt = i;
-      if (this.Ezw != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.Ezw);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(9, this.amount);
-      paramInt = i;
-      if (this.Sih != null) {
-        paramInt = i + g.a.a.a.oD(10, this.Sih.computeSize());
-      }
-      i = paramInt + g.a.a.b.b.a.bM(11, this.EvK);
-      paramInt = i;
-      if (this.EvL != null) {
-        paramInt = i + g.a.a.b.b.a.g(12, this.EvL);
+      if (this.Url != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.Url);
       }
       i = paramInt;
-      if (this.EvM != null) {
-        i = paramInt + g.a.a.b.b.a.g(13, this.EvM);
+      if (this.ThumbUrl != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ThumbUrl);
       }
       paramInt = i;
-      if (this.EvN != null) {
-        paramInt = i + g.a.a.b.b.a.g(14, this.EvN);
-      }
-      i = paramInt + g.a.a.b.b.a.bM(15, this.EvO);
-      paramInt = i;
-      if (this.EvP != null) {
-        paramInt = i + g.a.a.b.b.a.g(16, this.EvP);
+      if (this.DesignerID != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.DesignerID);
       }
       i = paramInt;
-      if (this.EvQ != null) {
-        i = paramInt + g.a.a.b.b.a.g(17, this.EvQ);
+      if (this.EncryptUrl != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.EncryptUrl);
       }
       paramInt = i;
-      if (this.SwQ != null) {
-        paramInt = i + g.a.a.a.oD(18, this.SwQ.computeSize());
+      if (this.AesKey != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.AesKey);
       }
-      AppMethodBeat.o(91453);
+      i = paramInt;
+      if (this.ProductID != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.ProductID);
+      }
+      paramInt = i;
+      if (this.ExternUrl != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.ExternUrl);
+      }
+      i = paramInt;
+      if (this.ExternMd5 != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.ExternMd5);
+      }
+      paramInt = i;
+      if (this.ActivityID != null) {
+        paramInt = i + i.a.a.b.b.a.h(10, this.ActivityID);
+      }
+      i = paramInt;
+      if (this.AttachedText != null) {
+        i = paramInt + i.a.a.b.b.a.h(11, this.AttachedText);
+      }
+      paramInt = i;
+      if (this.AttachedTextColor != null) {
+        paramInt = i + i.a.a.b.b.a.h(12, this.AttachedTextColor);
+      }
+      i = paramInt;
+      if (this.LensId != null) {
+        i = paramInt + i.a.a.b.b.a.h(13, this.LensId);
+      }
+      paramInt = i;
+      if (this.EmojiAttr != null) {
+        paramInt = i + i.a.a.b.b.a.h(14, this.EmojiAttr);
+      }
+      i = paramInt;
+      if (this.Ztx != null) {
+        i = paramInt + i.a.a.b.b.a.h(15, this.Ztx);
+      }
+      paramInt = i;
+      if (this.Zty != null) {
+        paramInt = i + i.a.a.b.b.a.h(16, this.Zty);
+      }
+      AppMethodBeat.o(104759);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.Md5 == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(91453);
+          paramVarArgs = new b("Not all required fields were included: Md5");
+          AppMethodBeat.o(104759);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(91453);
+        AppMethodBeat.o(104759);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         amn localamn = (amn)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91453);
+          AppMethodBeat.o(104759);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
-            }
-            localamn.BaseResponse = ((jh)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91453);
+          localamn.Md5 = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 2: 
-          localamn.fwx = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
+          localamn.Url = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 3: 
-          localamn.tVo = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.ThumbUrl = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 4: 
-          localamn.fyO = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
+          localamn.DesignerID = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 5: 
-          localamn.ybP = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.EncryptUrl = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 6: 
-          localamn.gbp = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
+          localamn.AesKey = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 7: 
-          localamn.gbq = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
+          localamn.ProductID = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 8: 
-          localamn.Ezw = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.ExternUrl = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 9: 
-          localamn.amount = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
+          localamn.ExternMd5 = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 10: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new dtj();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((dtj)localObject2).parseFrom((byte[])localObject1);
-            }
-            localamn.Sih = ((dtj)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91453);
+          localamn.ActivityID = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 11: 
-          localamn.EvK = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
+          localamn.AttachedText = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 12: 
-          localamn.EvL = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.AttachedTextColor = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 13: 
-          localamn.EvM = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.LensId = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 14: 
-          localamn.EvN = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.EmojiAttr = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 15: 
-          localamn.EvO = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(91453);
-          return 0;
-        case 16: 
-          localamn.EvP = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
-          return 0;
-        case 17: 
-          localamn.EvQ = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(91453);
+          localamn.Ztx = locala.ajGk.readString();
+          AppMethodBeat.o(104759);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new cmb();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((cmb)localObject2).parseFrom((byte[])localObject1);
-          }
-          localamn.SwQ = ((cmb)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(91453);
+        localamn.Zty = locala.ajGk.readString();
+        AppMethodBeat.o(104759);
         return 0;
       }
-      AppMethodBeat.o(91453);
+      AppMethodBeat.o(104759);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.amn
  * JD-Core Version:    0.7.0.1
  */

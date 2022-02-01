@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.fav.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.a.am;
-import com.tencent.mm.plugin.findersdk.a.k;
-import com.tencent.mm.protocal.protobuf.ank;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.ann;
-import com.tencent.mm.protocal.protobuf.ano;
-import com.tencent.mm.protocal.protobuf.anp;
-import com.tencent.mm.protocal.protobuf.ant;
-import com.tencent.mm.protocal.protobuf.anu;
-import com.tencent.mm.protocal.protobuf.aob;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aol;
-import com.tencent.mm.protocal.protobuf.aor;
+import com.tencent.mm.plugin.findersdk.a.cq;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.ard;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.arh;
+import com.tencent.mm.protocal.protobuf.ari;
+import com.tencent.mm.protocal.protobuf.arm;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.aru;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.protocal.protobuf.ask;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -30,10 +30,10 @@ import org.xml.sax.InputSource;
 
 public final class c
 {
-  public static void a(String paramString, aoc paramaoc)
+  public static void a(String paramString, arv paramarv)
   {
     AppMethodBeat.i(103499);
-    paramaoc.syG.clear();
+    paramarv.vEn.clear();
     Object localObject1 = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -45,68 +45,68 @@ public final class c
         paramString.normalize();
         paramString = paramString.getDocumentElement().getElementsByTagName("datalist");
         if (paramString == null) {
-          break label4357;
+          break label4396;
         }
         NodeList localNodeList = paramString.item(0).getChildNodes();
         if ((localNodeList == null) || (localNodeList.getLength() <= 0)) {
-          break label4357;
+          break label4396;
         }
         int j = localNodeList.getLength();
         i = 0;
         if (i >= j) {
-          break label4357;
+          break label4396;
         }
         localObject1 = localNodeList.item(i);
         paramString = XmlParser.nodeToString((Node)localObject1);
         localObject1 = ((Element)localObject1).getElementsByTagName("recordxml");
         if ((localObject1 == null) || (((NodeList)localObject1).getLength() <= 0)) {
-          break label4368;
+          break label4407;
         }
         localObject1 = XmlParser.nodeToString(((NodeList)localObject1).item(0).getFirstChild());
         if (!paramString.trim().startsWith("<dataitem")) {
-          break label4363;
+          break label4402;
         }
         paramString = XmlParser.parseXml(paramString, "dataitem", null);
         if (paramString == null) {
-          break label4374;
+          break label4413;
         }
-        anm localanm = new anm();
-        localanm.arq(Util.getInt((String)paramString.get(".dataitem" + ".$datatype"), 0));
-        localanm.bsP((String)paramString.get(".dataitem" + ".$datasourceid"));
-        localanm.arr(Util.getInt((String)paramString.get(".dataitem" + ".$datastatus"), 0));
-        localanm.bsH((String)paramString.get(".dataitem" + ".datafmt"));
-        localanm.bsx((String)paramString.get(".dataitem" + ".datatitle"));
-        localanm.bsy((String)paramString.get(".dataitem" + ".datadesc"));
-        localanm.bsz((String)paramString.get(".dataitem" + ".cdn_thumburl"));
-        localanm.bsA((String)paramString.get(".dataitem" + ".cdn_thumbkey"));
-        localanm.arn(Util.getInt((String)paramString.get(".dataitem" + ".thumb_width"), 0));
-        localanm.aro(Util.getInt((String)paramString.get(".dataitem" + ".thumb_height"), 0));
-        localanm.bsB((String)paramString.get(".dataitem" + ".cdn_dataurl"));
-        localanm.bsC((String)paramString.get(".dataitem" + ".cdn_datakey"));
+        arf localarf = new arf();
+        localarf.axy(Util.getInt((String)paramString.get(".dataitem" + ".$datatype"), 0));
+        localarf.bsG((String)paramString.get(".dataitem" + ".$datasourceid"));
+        localarf.axz(Util.getInt((String)paramString.get(".dataitem" + ".$datastatus"), 0));
+        localarf.bsy((String)paramString.get(".dataitem" + ".datafmt"));
+        localarf.bso((String)paramString.get(".dataitem" + ".datatitle"));
+        localarf.bsp((String)paramString.get(".dataitem" + ".datadesc"));
+        localarf.bsq((String)paramString.get(".dataitem" + ".cdn_thumburl"));
+        localarf.bsr((String)paramString.get(".dataitem" + ".cdn_thumbkey"));
+        localarf.axv(Util.getInt((String)paramString.get(".dataitem" + ".thumb_width"), 0));
+        localarf.axw(Util.getInt((String)paramString.get(".dataitem" + ".thumb_height"), 0));
+        localarf.bss((String)paramString.get(".dataitem" + ".cdn_dataurl"));
+        localarf.bst((String)paramString.get(".dataitem" + ".cdn_datakey"));
         localObject2 = (String)paramString.get(".dataitem" + ".duration");
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-          localanm.arp(Util.getInt((String)localObject2, 0));
+          localarf.axx(Util.getInt((String)localObject2, 0));
         }
-        localanm.bsE((String)paramString.get(".dataitem" + ".stream_dataurl"));
-        localanm.bsF((String)paramString.get(".dataitem" + ".stream_lowbandurl"));
-        localanm.bsD((String)paramString.get(".dataitem" + ".stream_weburl"));
-        localanm.btd((String)paramString.get(".dataitem" + ".songalbumurl"));
-        localanm.bte((String)paramString.get(".dataitem" + ".songlyric"));
-        localanm.bsW((String)paramString.get(".dataitem" + ".canvasPageXml"));
-        localanm.bsI((String)paramString.get(".dataitem" + ".fullmd5"));
-        localanm.bsJ((String)paramString.get(".dataitem" + ".head256md5"));
+        localarf.bsv((String)paramString.get(".dataitem" + ".stream_dataurl"));
+        localarf.bsw((String)paramString.get(".dataitem" + ".stream_lowbandurl"));
+        localarf.bsu((String)paramString.get(".dataitem" + ".stream_weburl"));
+        localarf.bsU((String)paramString.get(".dataitem" + ".songalbumurl"));
+        localarf.bsV((String)paramString.get(".dataitem" + ".songlyric"));
+        localarf.bsN((String)paramString.get(".dataitem" + ".canvasPageXml"));
+        localarf.bsz((String)paramString.get(".dataitem" + ".fullmd5"));
+        localarf.bsA((String)paramString.get(".dataitem" + ".head256md5"));
         localObject2 = (String)paramString.get(".dataitem" + ".fullsize");
         if (!Util.isNullOrNil((String)localObject2)) {
-          localanm.TY(Util.getInt((String)localObject2, 0));
+          localarf.yo(Util.getInt((String)localObject2, 0));
         }
-        localanm.bsG((String)paramString.get(".dataitem" + ".dataext"));
-        localanm.bsN((String)paramString.get(".dataitem" + ".thumbfullmd5"));
-        localanm.bsO((String)paramString.get(".dataitem" + ".thumbhead256md5"));
+        localarf.bsx((String)paramString.get(".dataitem" + ".dataext"));
+        localarf.bsE((String)paramString.get(".dataitem" + ".thumbfullmd5"));
+        localarf.bsF((String)paramString.get(".dataitem" + ".thumbhead256md5"));
         localObject2 = (String)paramString.get(".dataitem" + ".thumbfullsize");
         if (!Util.isNullOrNil((String)localObject2)) {
-          localanm.TZ(Util.getInt((String)localObject2, 0));
+          localarf.yp(Util.getInt((String)localObject2, 0));
         }
-        localanm.bsQ((String)paramString.get(".dataitem" + ".stream_videoid"));
+        localarf.bsH((String)paramString.get(".dataitem" + ".stream_videoid"));
         localObject3 = (String)paramString.get(".dataitem" + ".$dataid");
         if (!Util.isNullOrNil((String)localObject3))
         {
@@ -115,29 +115,29 @@ public final class c
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.fav.a.b.dN(localanm.toString(), localanm.dataType);
+          localObject2 = com.tencent.mm.plugin.fav.a.b.er(localarf.toString(), localarf.dataType);
         }
-        localanm.bsK((String)localObject2);
-        localanm.bsR((String)paramString.get(".dataitem" + ".datasrctitle"));
-        localanm.bsS((String)paramString.get(".dataitem" + ".datasrcname"));
-        localanm.bsT((String)paramString.get(".dataitem" + ".datasrctime"));
-        localanm.bsV((String)paramString.get(".dataitem" + ".statextstr"));
-        localanm.bsU((String)paramString.get(".dataitem" + ".$htmlid"));
-        localanm.ars(Util.getInt((String)paramString.get(".dataitem" + ".$dataillegaltype"), 0));
-        localanm.btf((String)paramString.get(".dataitem" + ".messageuuid"));
+        localarf.bsB((String)localObject2);
+        localarf.bsI((String)paramString.get(".dataitem" + ".datasrctitle"));
+        localarf.bsJ((String)paramString.get(".dataitem" + ".datasrcname"));
+        localarf.bsK((String)paramString.get(".dataitem" + ".datasrctime"));
+        localarf.bsM((String)paramString.get(".dataitem" + ".statextstr"));
+        localarf.bsL((String)paramString.get(".dataitem" + ".$htmlid"));
+        localarf.axA(Util.getInt((String)paramString.get(".dataitem" + ".$dataillegaltype"), 0));
+        localarf.bsW((String)paramString.get(".dataitem" + ".messageuuid"));
         if (localObject1 != null) {
-          localanm.bsX((String)localObject1);
+          localarf.bsO((String)localObject1);
         }
-        localObject1 = new anp();
-        ((anp)localObject1).lor = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideourl"), "");
-        ((anp)localObject1).SAk = Util.safeParseInt((String)paramString.get(".dataitem" + ".streamvideo.streamvideototaltime"));
-        ((anp)localObject1).lot = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideotitle"), "");
-        ((anp)localObject1).lou = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideowording"), "");
-        ((anp)localObject1).lov = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideoweburl"), "");
-        ((anp)localObject1).lox = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideoaduxinfo"), "");
-        ((anp)localObject1).loy = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideopublishid"), "");
-        localanm.a((anp)localObject1);
-        localObject1 = new ann();
+        localObject1 = new ari();
+        ((ari)localObject1).nTu = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideourl"), "");
+        ((ari)localObject1).ZBc = Util.safeParseInt((String)paramString.get(".dataitem" + ".streamvideo.streamvideototaltime"));
+        ((ari)localObject1).nTw = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideotitle"), "");
+        ((ari)localObject1).nTx = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideowording"), "");
+        ((ari)localObject1).nTy = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideoweburl"), "");
+        ((ari)localObject1).nTA = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideoaduxinfo"), "");
+        ((ari)localObject1).nTB = Util.nullAs((String)paramString.get(".dataitem" + ".streamvideo.streamvideopublishid"), "");
+        localarf.a((ari)localObject1);
+        localObject1 = new arg();
         localObject2 = ".dataitem" + ".dataitemsource";
         if (!paramString.containsKey(localObject2))
         {
@@ -151,11 +151,11 @@ public final class c
               break label3170;
             }
             Log.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
-            ((ann)localObject1).c(k.w(".dataitem", paramString));
-            ((ann)localObject1).e(am.C(".dataitem", paramString));
-            ((ann)localObject1).f(k.u(".dataitem", paramString));
-            ((ann)localObject1).e(k.y(".dataitem", paramString));
-            ((ann)localObject1).d(k.y(".dataitem", paramString));
+            ((arg)localObject1).g(q.C(".dataitem", paramString));
+            ((arg)localObject1).e(cq.J(".dataitem", paramString));
+            ((arg)localObject1).g(q.z(".dataitem", paramString));
+            ((arg)localObject1).d(q.F(".dataitem", paramString));
+            ((arg)localObject1).c(q.F(".dataitem", paramString));
             localObject2 = ".dataitem" + ".productitem";
             if (paramString.containsKey(localObject2)) {
               break label3525;
@@ -171,38 +171,38 @@ public final class c
               break label3893;
             }
             Log.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
-            localObject2 = b.s(".dataitem" + ".weburlitem.appmsgshareitem", paramString);
+            localObject2 = b.u(".dataitem" + ".weburlitem.appmsgshareitem", paramString);
             if (localObject2 != null) {
-              ((ann)localObject1).d((anu)localObject2);
+              ((arg)localObject1).d((arn)localObject2);
             }
-            paramString = b.t(".dataitem" + ".favbrandmpvideo", paramString);
+            paramString = b.v(".dataitem" + ".favbrandmpvideo", paramString);
             if (paramString != null) {
-              ((ann)localObject1).e(paramString);
+              ((arg)localObject1).e(paramString);
             }
-            localanm.a((ann)localObject1);
-            paramaoc.syG.add(localanm);
-            break label4374;
+            localarf.a((arg)localObject1);
+            paramarv.vEn.add(localarf);
+            break label4413;
           }
         }
         else
         {
-          localObject3 = new ano();
-          ((ano)localObject3).aru(Util.getInt((String)paramString.get((String)localObject2 + ".$sourcetype"), 0));
-          ((ano)localObject3).bti((String)paramString.get((String)localObject2 + ".$sourceid"));
-          ((ano)localObject3).btg((String)paramString.get((String)localObject2 + ".fromusr"));
-          ((ano)localObject3).bth((String)paramString.get((String)localObject2 + ".tousr"));
-          ((ano)localObject3).btj((String)paramString.get((String)localObject2 + ".realchatname"));
-          ((ano)localObject3).Ub(Util.getLong((String)paramString.get((String)localObject2 + ".createtime"), 0L));
-          ((ano)localObject3).btk((String)paramString.get((String)localObject2 + ".msgid"));
-          ((ano)localObject3).fXM = ((String)paramString.get((String)localObject2 + ".eventid"));
-          ((ano)localObject3).SAe = true;
-          ((ano)localObject3).btl((String)paramString.get((String)localObject2 + ".appid"));
-          ((ano)localObject3).btm((String)paramString.get((String)localObject2 + ".link"));
-          ((ano)localObject3).btn((String)paramString.get((String)localObject2 + ".brandid"));
-          ((ann)localObject1).c((ano)localObject3);
+          localObject3 = new arh();
+          ((arh)localObject3).axC(Util.getInt((String)paramString.get((String)localObject2 + ".$sourcetype"), 0));
+          ((arh)localObject3).bsZ((String)paramString.get((String)localObject2 + ".$sourceid"));
+          ((arh)localObject3).bsX((String)paramString.get((String)localObject2 + ".fromusr"));
+          ((arh)localObject3).bsY((String)paramString.get((String)localObject2 + ".tousr"));
+          ((arh)localObject3).bta((String)paramString.get((String)localObject2 + ".realchatname"));
+          ((arh)localObject3).yr(Util.getLong((String)paramString.get((String)localObject2 + ".createtime"), 0L));
+          ((arh)localObject3).btb((String)paramString.get((String)localObject2 + ".msgid"));
+          ((arh)localObject3).eventId = ((String)paramString.get((String)localObject2 + ".eventid"));
+          ((arh)localObject3).ZAW = true;
+          ((arh)localObject3).btc((String)paramString.get((String)localObject2 + ".appid"));
+          ((arh)localObject3).btd((String)paramString.get((String)localObject2 + ".link"));
+          ((arh)localObject3).bte((String)paramString.get((String)localObject2 + ".brandid"));
+          ((arg)localObject1).c((arh)localObject3);
           continue;
         }
-        localObject2 = new ant();
+        localObject2 = new arm();
       }
       catch (Exception paramString)
       {
@@ -211,18 +211,18 @@ public final class c
         return;
       }
       if (!Util.isNullOrNil((String)paramString.get((String)localObject3 + ".label"))) {
-        ((ant)localObject2).bto((String)paramString.get((String)localObject3 + ".label"));
+        ((arm)localObject2).btf((String)paramString.get((String)localObject3 + ".label"));
       }
       if (!Util.isNullOrNil((String)paramString.get((String)localObject3 + ".poiname"))) {
-        ((ant)localObject2).btp((String)paramString.get((String)localObject3 + ".poiname"));
+        ((arm)localObject2).btg((String)paramString.get((String)localObject3 + ".poiname"));
       }
       String str = (String)paramString.get((String)localObject3 + ".lng");
       if (!Util.isNullOrNil(str)) {
-        ((ant)localObject2).D(Util.getDouble(str, 0.0D));
+        ((arm)localObject2).V(Util.getDouble(str, 0.0D));
       }
       str = (String)paramString.get((String)localObject3 + ".lat");
       if (!Util.isNullOrNil(str)) {
-        ((ant)localObject2).E(Util.getDouble(str, 0.0D));
+        ((arm)localObject2).W(Util.getDouble(str, 0.0D));
       }
       Object localObject3 = (String)paramString.get((String)localObject3 + ".scale");
       if (!Util.isNullOrNil((String)localObject3))
@@ -230,142 +230,143 @@ public final class c
         if (((String)localObject3).indexOf('.') == -1) {
           break label3155;
         }
-        ((ant)localObject2).arv(Util.getInt(((String)localObject3).substring(0, ((String)localObject3).indexOf('.')), -1));
+        ((arm)localObject2).axD(Util.getInt(((String)localObject3).substring(0, ((String)localObject3).indexOf('.')), -1));
       }
       for (;;)
       {
-        ((ann)localObject1).c((ant)localObject2);
+        ((arg)localObject1).c((arm)localObject2);
         break;
         label3155:
-        ((ant)localObject2).arv(Util.getInt((String)localObject3, -1));
+        ((arm)localObject2).axD(Util.getInt((String)localObject3, -1));
       }
       label3170:
-      localObject3 = new aor();
-      ((aor)localObject3).btM((String)paramString.get((String)localObject2 + ".clean_url"));
-      ((aor)localObject3).btL((String)paramString.get((String)localObject2 + ".pagedesc"));
-      ((aor)localObject3).btN((String)paramString.get((String)localObject2 + ".pagethumb_url"));
-      ((aor)localObject3).btK((String)paramString.get((String)localObject2 + ".pagetitle"));
-      ((aor)localObject3).arA(Util.getInt((String)paramString.get((String)localObject2 + ".opencache"), 0));
-      ((aor)localObject3).arB(Util.getInt((String)paramString.get((String)localObject2 + ".contentattr"), 0));
-      ((aor)localObject3).btO((String)paramString.get((String)localObject2 + ".canvasPageXml"));
-      ((aor)localObject3).btP((String)paramString.get((String)localObject2 + ".wsVideoFlowXml"));
-      ((aor)localObject3).arC(Util.getInt((String)paramString.get((String)localObject2 + ".forwardflag"), 0));
-      ((ann)localObject1).b((aor)localObject3);
+      localObject3 = new ask();
+      ((ask)localObject3).btD((String)paramString.get((String)localObject2 + ".clean_url"));
+      ((ask)localObject3).btC((String)paramString.get((String)localObject2 + ".pagedesc"));
+      ((ask)localObject3).btE((String)paramString.get((String)localObject2 + ".pagethumb_url"));
+      ((ask)localObject3).btB((String)paramString.get((String)localObject2 + ".pagetitle"));
+      ((ask)localObject3).axI(Util.getInt((String)paramString.get((String)localObject2 + ".opencache"), 0));
+      ((ask)localObject3).axJ(Util.getInt((String)paramString.get((String)localObject2 + ".contentattr"), 0));
+      ((ask)localObject3).btF((String)paramString.get((String)localObject2 + ".canvasPageXml"));
+      ((ask)localObject3).btG((String)paramString.get((String)localObject2 + ".wsVideoFlowXml"));
+      ((ask)localObject3).axK(Util.getInt((String)paramString.get((String)localObject2 + ".forwardflag"), 0));
+      ((arg)localObject1).b((ask)localObject3);
       continue;
       label3525:
-      localObject3 = new aob();
-      ((aob)localObject3).btq((String)paramString.get((String)localObject2 + ".producttitle"));
-      ((aob)localObject3).btr((String)paramString.get((String)localObject2 + ".productdesc"));
-      ((aob)localObject3).bts((String)paramString.get((String)localObject2 + ".productthumb_url"));
-      ((aob)localObject3).btt((String)paramString.get((String)localObject2 + ".productinfo"));
-      ((aob)localObject3).arw(Util.getInt((String)paramString.get((String)localObject2 + ".$type"), 0));
-      ((ann)localObject1).a((aob)localObject3);
+      localObject3 = new aru();
+      ((aru)localObject3).bth((String)paramString.get((String)localObject2 + ".producttitle"));
+      ((aru)localObject3).bti((String)paramString.get((String)localObject2 + ".productdesc"));
+      ((aru)localObject3).btj((String)paramString.get((String)localObject2 + ".productthumb_url"));
+      ((aru)localObject3).btk((String)paramString.get((String)localObject2 + ".productinfo"));
+      ((aru)localObject3).axE(Util.getInt((String)paramString.get((String)localObject2 + ".$type"), 0));
+      ((arg)localObject1).a((aru)localObject3);
       continue;
       label3729:
-      localObject3 = new aol();
-      ((aol)localObject3).btG((String)paramString.get((String)localObject2 + ".tvtitle"));
-      ((aol)localObject3).btH((String)paramString.get((String)localObject2 + ".tvdesc"));
-      ((aol)localObject3).btI((String)paramString.get((String)localObject2 + ".tvthumb_url"));
-      ((aol)localObject3).btJ((String)paramString.get((String)localObject2 + ".tvinfo"));
-      ((ann)localObject1).a((aol)localObject3);
+      localObject3 = new ase();
+      ((ase)localObject3).btx((String)paramString.get((String)localObject2 + ".tvtitle"));
+      ((ase)localObject3).bty((String)paramString.get((String)localObject2 + ".tvdesc"));
+      ((ase)localObject3).btz((String)paramString.get((String)localObject2 + ".tvthumb_url"));
+      ((ase)localObject3).btA((String)paramString.get((String)localObject2 + ".tvinfo"));
+      ((arg)localObject1).a((ase)localObject3);
       continue;
       label3893:
-      localObject3 = new ank();
-      ((ank)localObject3).username = ((String)paramString.get((String)localObject2 + ".username"));
-      ((ank)localObject3).appId = ((String)paramString.get((String)localObject2 + ".appid"));
-      ((ank)localObject3).fES = Util.getInt((String)paramString.get((String)localObject2 + ".pkgtype"), 0);
-      ((ank)localObject3).iconUrl = ((String)paramString.get((String)localObject2 + ".iconurl"));
-      ((ank)localObject3).type = Util.getInt((String)paramString.get((String)localObject2 + ".type"), 0);
-      ((ank)localObject3).fve = ((String)paramString.get((String)localObject2 + ".pagepath"));
-      ((ank)localObject3).SxE = ((String)paramString.get((String)localObject2 + ".sourcedisplayname"));
-      ((ank)localObject3).version = Util.getInt((String)paramString.get((String)localObject2 + ".version"), 0);
-      ((ank)localObject3).otE = Util.getInt((String)paramString.get((String)localObject2 + ".disableforward"), 0);
-      ((ank)localObject3).nYp = Util.getInt((String)paramString.get((String)localObject2 + ".tradingguaranteeflag"), 0);
-      ((ank)localObject3).fXg = ((String)paramString.get((String)localObject2 + ".messageextradata"));
-      ((ank)localObject3).subType = Util.getInt((String)paramString.get((String)localObject2 + ".subtype"), 0);
-      ((ann)localObject1).b((ank)localObject3);
+      localObject3 = new ard();
+      ((ard)localObject3).username = ((String)paramString.get((String)localObject2 + ".username"));
+      ((ard)localObject3).appId = ((String)paramString.get((String)localObject2 + ".appid"));
+      ((ard)localObject3).hJK = Util.getInt((String)paramString.get((String)localObject2 + ".pkgtype"), 0);
+      ((ard)localObject3).iconUrl = ((String)paramString.get((String)localObject2 + ".iconurl"));
+      ((ard)localObject3).type = Util.getInt((String)paramString.get((String)localObject2 + ".type"), 0);
+      ((ard)localObject3).hzy = ((String)paramString.get((String)localObject2 + ".pagepath"));
+      ((ard)localObject3).Zyw = ((String)paramString.get((String)localObject2 + ".sourcedisplayname"));
+      ((ard)localObject3).version = Util.getInt((String)paramString.get((String)localObject2 + ".version"), 0);
+      ((ard)localObject3).rxs = Util.getInt((String)paramString.get((String)localObject2 + ".disableforward"), 0);
+      ((ard)localObject3).rbZ = Util.getInt((String)paramString.get((String)localObject2 + ".tradingguaranteeflag"), 0);
+      ((ard)localObject3).nOX = Util.getInt((String)paramString.get((String)localObject2 + ".showRelievedBuyFlag"), 0);
+      ((ard)localObject3).idf = ((String)paramString.get((String)localObject2 + ".messageextradata"));
+      ((ard)localObject3).subType = Util.getInt((String)paramString.get((String)localObject2 + ".subtype"), 0);
+      ((arg)localObject1).b((ard)localObject3);
       continue;
-      label4357:
+      label4396:
       AppMethodBeat.o(103499);
       return;
-      label4363:
+      label4402:
       paramString = null;
       continue;
-      label4368:
+      label4407:
       localObject1 = null;
       continue;
-      label4374:
+      label4413:
       i += 1;
     }
   }
   
-  public static aoc c(aoc paramaoc)
+  public static arv c(arv paramarv)
   {
     AppMethodBeat.i(103500);
-    if (paramaoc == null)
+    if (paramarv == null)
     {
       AppMethodBeat.o(103500);
       return null;
     }
-    aoc localaoc = new aoc();
-    if (paramaoc.SAC) {
-      localaoc.a(paramaoc.SAB);
+    arv localarv = new arv();
+    if (paramarv.ZBu) {
+      localarv.a(paramarv.ZBt);
     }
-    if (paramaoc.SAD) {
-      localaoc.cg(paramaoc.syG);
+    if (paramarv.ZBv) {
+      localarv.cs(paramarv.vEn);
     }
-    if (paramaoc.Szq) {
-      localaoc.d(paramaoc.Szp);
+    if (paramarv.ZAi) {
+      localarv.d(paramarv.ZAh);
     }
-    if (paramaoc.Szs) {
-      localaoc.c(paramaoc.Szr);
+    if (paramarv.ZAk) {
+      localarv.c(paramarv.ZAj);
     }
-    if (paramaoc.Szx) {
-      localaoc.btu(paramaoc.remark);
+    if (paramarv.ZAp) {
+      localarv.btl(paramarv.remark);
     }
-    if (paramaoc.SxH) {
-      localaoc.btv(paramaoc.title);
+    if (paramarv.Zyz) {
+      localarv.btm(paramarv.title);
     }
-    if (paramaoc.SxI) {
-      localaoc.btw(paramaoc.desc);
+    if (paramarv.ZyA) {
+      localarv.btn(paramarv.desc);
     }
-    if (paramaoc.Szz) {
-      localaoc.Uc(paramaoc.Szy);
+    if (paramarv.ZAr) {
+      localarv.ys(paramarv.ZAq);
     }
-    if (paramaoc.SzB) {
-      localaoc.arx(paramaoc.SzA);
+    if (paramarv.ZAt) {
+      localarv.axF(paramarv.ZAs);
     }
-    if (paramaoc.Szu) {
-      localaoc.b(paramaoc.Szt);
+    if (paramarv.ZAm) {
+      localarv.b(paramarv.ZAl);
     }
-    if (paramaoc.SzC) {
-      localaoc.Ud(paramaoc.uTt);
+    if (paramarv.ZAu) {
+      localarv.yt(paramarv.ygh);
     }
-    if (paramaoc.Szw) {
-      localaoc.b(paramaoc.Szv);
+    if (paramarv.ZAo) {
+      localarv.b(paramarv.ZAn);
     }
-    if (paramaoc.SAE) {
-      localaoc.ary(paramaoc.version);
+    if (paramarv.ZBw) {
+      localarv.axG(paramarv.version);
     }
-    if (paramaoc.SzD) {
-      localaoc.a(paramaoc.RDh);
+    if (paramarv.ZAv) {
+      localarv.a(paramarv.YzK);
     }
-    if (paramaoc.SzF) {
-      localaoc.c(paramaoc.SzE);
+    if (paramarv.ZAx) {
+      localarv.c(paramarv.ZAw);
     }
-    if (paramaoc.SzG) {
-      localaoc.f(paramaoc.PTL);
+    if (paramarv.ZAy) {
+      localarv.f(paramarv.WKx);
     }
-    if (paramaoc.SzK) {
-      localaoc.d(paramaoc.SzJ);
+    if (paramarv.ZAC) {
+      localarv.h(paramarv.ZAB);
     }
     AppMethodBeat.o(103500);
-    return localaoc;
+    return localarv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.a.c
  * JD-Core Version:    0.7.0.1
  */

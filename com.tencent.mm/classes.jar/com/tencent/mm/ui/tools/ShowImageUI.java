@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,37 +18,38 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.autogen.a.ex;
+import com.tencent.mm.autogen.a.ex.b;
+import com.tencent.mm.br.c;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.f.a.dd;
-import com.tencent.mm.f.a.em;
-import com.tencent.mm.f.a.em.b;
-import com.tencent.mm.platformtools.u;
+import com.tencent.mm.platformtools.r;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.plugin.gif.f;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.gif.j;
+import com.tencent.mm.pluginsdk.model.l;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.ImgUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.e;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.k.e;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ShowImageUI
   extends MMActivity
 {
-  private boolean XUT;
-  private a XUU;
-  private MMGestureGallery mLL;
-  private boolean orn;
+  private boolean afLi;
+  private a afLj;
+  private MMGestureGallery pIt;
+  private boolean rvh;
   
   public int getLayoutId()
   {
-    return R.i.elj;
+    return R.i.gon;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -61,14 +61,14 @@ public class ShowImageUI
     if (!Util.isNullOrNil(paramBundle)) {
       setMMTitle(paramBundle);
     }
-    this.XUT = getIntent().getBooleanExtra("key_favorite", false);
-    this.orn = getIntent().getBooleanExtra("show_menu", true);
-    this.mLL = ((MMGestureGallery)findViewById(R.h.gallery));
-    this.mLL.setVerticalFadingEdgeEnabled(false);
-    this.mLL.setHorizontalFadingEdgeEnabled(false);
-    this.XUU = new a((byte)0);
-    this.XUU.imagePath = getIntent().getStringExtra("key_image_path");
-    this.mLL.setAdapter(this.XUU);
+    this.afLi = getIntent().getBooleanExtra("key_favorite", false);
+    this.rvh = getIntent().getBooleanExtra("show_menu", true);
+    this.pIt = ((MMGestureGallery)findViewById(R.h.gallery));
+    this.pIt.setVerticalFadingEdgeEnabled(false);
+    this.pIt.setHorizontalFadingEdgeEnabled(false);
+    this.afLj = new a((byte)0);
+    this.afLj.imagePath = getIntent().getStringExtra("key_image_path");
+    this.pIt.setAdapter(this.afLj);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -79,7 +79,7 @@ public class ShowImageUI
         return true;
       }
     });
-    if (this.orn) {
+    if (this.rvh) {
       addIconOptionMenu(0, R.k.icons_outlined_share, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -87,7 +87,7 @@ public class ShowImageUI
           AppMethodBeat.i(39189);
           paramAnonymousMenuItem = new LinkedList();
           LinkedList localLinkedList = new LinkedList();
-          if ((ShowImageUI.a(ShowImageUI.this)) && (c.blP("favorite")))
+          if ((ShowImageUI.a(ShowImageUI.this)) && (c.blq("favorite")))
           {
             localLinkedList.add(Integer.valueOf(0));
             paramAnonymousMenuItem.add(ShowImageUI.this.getString(R.l.retransmits));
@@ -98,17 +98,17 @@ public class ShowImageUI
           }
           for (;;)
           {
-            em localem = new em();
-            localem.fAp.msgId = ShowImageUI.this.getIntent().getLongExtra("key_message_id", -1L);
-            EventCenter.instance.publish(localem);
-            if (localem.fAq.fzO)
+            ex localex = new ex();
+            localex.hFc.msgId = ShowImageUI.this.getIntent().getLongExtra("key_message_id", -1L);
+            localex.publish();
+            if (localex.hFd.hEn)
             {
               localLinkedList.add(Integer.valueOf(3));
-              paramAnonymousMenuItem.add(ShowImageUI.this.getString(R.l.evU));
+              paramAnonymousMenuItem.add(ShowImageUI.this.getString(R.l.gyu));
             }
-            h.b(ShowImageUI.this, "", paramAnonymousMenuItem, localLinkedList, "", new h.e()
+            k.b(ShowImageUI.this, "", paramAnonymousMenuItem, localLinkedList, "", new k.e()
             {
-              public final void cS(int paramAnonymous2Int1, int paramAnonymous2Int2)
+              public final void onClick(int paramAnonymous2Int1, int paramAnonymous2Int2)
               {
                 AppMethodBeat.i(39188);
                 switch (paramAnonymous2Int2)
@@ -122,20 +122,20 @@ public class ShowImageUI
                   AppMethodBeat.o(39188);
                   return;
                   ShowImageUI localShowImageUI = ShowImageUI.this;
-                  dd localdd = new dd();
+                  dn localdn = new dn();
                   long l = localShowImageUI.getIntent().getLongExtra("key_message_id", -1L);
                   if (-1L == l)
                   {
                     Log.w("MicroMsg.ShowImageUI", "msg id error, try fav simple data");
-                    com.tencent.mm.pluginsdk.model.j.a(localdd, localShowImageUI.getIntent().getIntExtra("key_favorite_source_type", 1), localShowImageUI.getIntent().getStringExtra("key_image_path"));
+                    l.a(localdn, localShowImageUI.getIntent().getIntExtra("key_favorite_source_type", 1), localShowImageUI.getIntent().getStringExtra("key_image_path"));
                   }
                   for (;;)
                   {
-                    localdd.fyI.activity = localShowImageUI;
-                    EventCenter.instance.publish(localdd);
+                    localdn.hDr.activity = localShowImageUI;
+                    localdn.publish();
                     AppMethodBeat.o(39188);
                     return;
-                    com.tencent.mm.pluginsdk.model.j.a(localdd, l);
+                    l.a(localdn, l);
                   }
                   ShowImageUI.c(ShowImageUI.this);
                   AppMethodBeat.o(39188);
@@ -196,8 +196,8 @@ public class ShowImageUI
         if ((paramView == null) || (!(paramView instanceof MMAnimateView))) {}
         for (paramView = new MMAnimateView((Context)localObject);; paramView = (MMAnimateView)paramView)
         {
-          paramView.id(paramViewGroup, paramViewGroup);
-          paramView.a(paramViewGroup, new com.tencent.mm.plugin.gif.j()
+          paramView.jk(paramViewGroup, paramViewGroup);
+          paramView.a(paramViewGroup, new j()
           {
             public final void invalidate()
             {
@@ -212,7 +212,7 @@ public class ShowImageUI
           return paramView;
         }
       }
-      Object localObject = u.ZS(this.imagePath);
+      Object localObject = r.Sg(this.imagePath);
       paramInt = Exif.fromFile(this.imagePath).getOrientationInDegree();
       Log.d("MicroMsg.ShowImageUI", "imagePath : %s degree : %d", new Object[] { this.imagePath, Integer.valueOf(paramInt) });
       localObject = BitmapUtil.rotate((Bitmap)localObject, paramInt);
@@ -226,7 +226,7 @@ public class ShowImageUI
         }
         else
         {
-          localObject = View.inflate(paramViewGroup.getContext(), R.i.elk, null);
+          localObject = View.inflate(paramViewGroup.getContext(), R.i.goo, null);
         }
         ((ImageView)((View)localObject).findViewById(R.h.image_iv)).setImageResource(R.k.download_image_icon);
         ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
@@ -245,14 +245,14 @@ public class ShowImageUI
         AppMethodBeat.o(39191);
         return paramView;
         paramView = (MultiTouchImageView)paramView;
-        paramView.di(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+        paramView.dU(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShowImageUI
  * JD-Core Version:    0.7.0.1
  */

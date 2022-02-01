@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.protobuf.ck;
+import com.tencent.mm.plugin.game.protobuf.cl;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -9,38 +9,38 @@ import java.util.LinkedList;
 public final class c
   extends g
 {
-  public String CHV;
-  public String CHW;
-  public String CHX;
-  public String CHY;
-  public String CHZ;
-  public String CIa;
-  public String CIb;
-  public String CIc;
-  public LinkedList<String> CId;
-  public String CIe;
-  public LinkedList<String> CIf;
-  public boolean CIg;
-  public boolean CIh;
-  public String CIi;
-  public String CIj;
-  public String CIk;
-  public String CIl;
-  public String CIm;
-  public boolean CIn;
-  public String CIo;
-  public ck CIp;
+  public String ICf;
+  public String ICg;
+  public String ICh;
+  public String ICi;
+  public String ICj;
+  public String ICk;
+  public String ICl;
+  public String ICm;
+  public LinkedList<String> ICn;
+  public String ICo;
+  public LinkedList<String> ICp;
+  public boolean ICq;
+  public boolean ICr;
+  public String ICs;
+  public String ICt;
+  public String ICu;
+  public String ICv;
+  public String ICw;
+  public boolean ICx;
+  public String ICy;
+  public cl ICz;
   public int appType;
-  public int fGH;
-  public int fSl;
-  public String fwt;
-  public boolean moD;
-  public String nQm;
+  public String hAR;
+  public int hMd;
+  public int hYi;
   public String name;
+  public boolean piu;
   public int position;
-  public long qLO;
+  public String qQb;
   public int scene;
   public int status;
+  public long tQv;
   public int type;
   public int versionCode;
   
@@ -49,44 +49,44 @@ public final class c
     AppMethodBeat.i(41356);
     this.status = 0;
     this.type = 0;
-    this.CHV = "";
-    this.CHW = "";
-    this.CHX = "#929292";
-    this.CHY = "";
-    this.CHZ = "";
-    this.fwt = "";
-    this.moD = false;
+    this.ICf = "";
+    this.ICg = "";
+    this.ICh = "#929292";
+    this.ICi = "";
+    this.ICj = "";
+    this.hAR = "";
+    this.piu = false;
     this.scene = 0;
-    this.fSl = 0;
+    this.hYi = 0;
     this.position = 1;
     this.versionCode = 0;
-    this.CIa = "";
-    this.CIb = "";
-    this.CIc = "";
-    this.CId = new LinkedList();
-    this.CIe = "";
-    this.CIf = new LinkedList();
-    this.CIg = false;
-    this.CIh = false;
-    this.CIi = "";
-    this.CIj = "#fca28a";
-    this.CIk = "";
-    this.nQm = "";
+    this.ICk = "";
+    this.ICl = "";
+    this.ICm = "";
+    this.ICn = new LinkedList();
+    this.ICo = "";
+    this.ICp = new LinkedList();
+    this.ICq = false;
+    this.ICr = false;
+    this.ICs = "";
+    this.ICt = "#fca28a";
+    this.ICu = "";
+    this.qQb = "";
     this.name = "";
-    this.CIl = "#222222";
-    this.CIm = "";
-    this.CIn = false;
-    this.CIo = "";
-    this.qLO = 0L;
-    this.fGH = 0;
+    this.ICv = "#222222";
+    this.ICw = "";
+    this.ICx = false;
+    this.ICy = "";
+    this.tQv = 0L;
+    this.hMd = 0;
     this.appType = 0;
     AppMethodBeat.o(41356);
   }
   
-  public final boolean exW()
+  public final boolean fFS()
   {
     AppMethodBeat.i(41357);
-    if (((this.appType == 1) || (this.appType == 2)) && (this.CIp != null) && (!Util.isNullOrNil(this.CIp.CQy)))
+    if (((this.appType == 1) || (this.appType == 2)) && (this.ICz != null) && (!Util.isNullOrNil(this.ICz.IKI)))
     {
       AppMethodBeat.o(41357);
       return true;
@@ -97,7 +97,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.plugin.music.f.a.d;
+import com.tencent.mm.plugin.music.e.a.d;
+import com.tencent.mm.plugin.music.logic.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -26,30 +26,30 @@ public final class a
         if ((paramAnonymousInt == -2) || (paramAnonymousInt == -3))
         {
           Log.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus lossTransient");
-          if (k.fet().feg().bnz())
+          if (j.gnw().gnj().bLm())
           {
-            k.fet().feg().fde();
+            j.gnw().gnj().gmh();
             AppMethodBeat.o(137438);
           }
         }
         else if ((paramAnonymousInt == 1) || (paramAnonymousInt == 2) || (paramAnonymousInt == 3))
         {
           Log.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus gain");
-          if (k.fet().feg().bnz())
+          if (j.gnw().gnj().bLm())
           {
-            k.fet().feg().resume();
+            j.gnw().gnj().resume();
             AppMethodBeat.o(137438);
           }
         }
         else if (paramAnonymousInt == -1)
         {
           Log.i("MicroMsg.Music.MusicAudioFocusHelper", "audio focus loss, passive pause");
-          if (k.fet().feg().bnz())
+          if (j.gnw().gnj().bLm())
           {
-            k.fet().feg().fde();
-            k.fet();
-            k.fes();
-            k.fet().Zl(600000);
+            j.gnw().gnj().gmh();
+            j.gnw();
+            j.gnv();
+            j.gnw().adx(600000);
           }
           if (a.this.audioManager != null) {
             a.this.audioManager.abandonAudioFocus(a.this.audioFocusChangeListener);
@@ -62,7 +62,20 @@ public final class a
     AppMethodBeat.o(137439);
   }
   
-  public final boolean avy()
+  public final void cyG()
+  {
+    AppMethodBeat.i(137441);
+    Log.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
+    if (this.audioManager == null)
+    {
+      AppMethodBeat.o(137441);
+      return;
+    }
+    this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
+    AppMethodBeat.o(137441);
+  }
+  
+  public final boolean requestFocus()
   {
     AppMethodBeat.i(137440);
     if (this.audioManager == null)
@@ -84,23 +97,10 @@ public final class a
     AppMethodBeat.o(137440);
     return false;
   }
-  
-  public final void bYq()
-  {
-    AppMethodBeat.i(137441);
-    Log.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
-    if (this.audioManager == null)
-    {
-      AppMethodBeat.o(137441);
-      return;
-    }
-    this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
-    AppMethodBeat.o(137441);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.a
  * JD-Core Version:    0.7.0.1
  */

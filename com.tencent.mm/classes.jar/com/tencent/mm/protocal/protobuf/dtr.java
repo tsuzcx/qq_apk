@@ -1,125 +1,111 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import org.json.JSONObject;
 
 public final class dtr
-  extends dyl
+  extends com.tencent.mm.bx.a
 {
-  public String OIl;
-  public String ONe;
-  public int TZS;
-  public String fHb;
+  public String seq;
+  public String token;
+  public String url;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(259386);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "seq", this.seq, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "url", this.url, false);
+      com.tencent.mm.bk.a.a(localJSONObject, "token", this.token, false);
+      label46:
+      AppMethodBeat.o(259386);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label46;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(174536);
+    AppMethodBeat.i(259387);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.seq != null) {
+        paramVarArgs.g(1, this.seq);
       }
-      if (this.OIl != null) {
-        paramVarArgs.f(2, this.OIl);
+      if (this.url != null) {
+        paramVarArgs.g(2, this.url);
       }
-      if (this.ONe != null) {
-        paramVarArgs.f(3, this.ONe);
+      if (this.token != null) {
+        paramVarArgs.g(3, this.token);
       }
-      paramVarArgs.aY(4, this.TZS);
-      if (this.fHb != null) {
-        paramVarArgs.f(5, this.fHb);
-      }
-      AppMethodBeat.o(174536);
+      AppMethodBeat.o(259387);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label512;
+      if (this.seq == null) {
+        break label330;
       }
     }
-    label512:
-    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label330:
+    for (int i = i.a.a.b.b.a.h(1, this.seq) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.OIl != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.OIl);
+      if (this.url != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.url);
       }
       i = paramInt;
-      if (this.ONe != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.ONe);
+      if (this.token != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.token);
       }
-      i += g.a.a.b.b.a.bM(4, this.TZS);
-      paramInt = i;
-      if (this.fHb != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.fHb);
-      }
-      AppMethodBeat.o(174536);
-      return paramInt;
+      AppMethodBeat.o(259387);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(174536);
+        AppMethodBeat.o(259387);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dtr localdtr = (dtr)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(174536);
+          AppMethodBeat.o(259387);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
-            }
-            localdtr.BaseRequest = localjg;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(174536);
+          localdtr.seq = locala.ajGk.readString();
+          AppMethodBeat.o(259387);
           return 0;
         case 2: 
-          localdtr.OIl = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(174536);
-          return 0;
-        case 3: 
-          localdtr.ONe = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(174536);
-          return 0;
-        case 4: 
-          localdtr.TZS = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(174536);
+          localdtr.url = locala.ajGk.readString();
+          AppMethodBeat.o(259387);
           return 0;
         }
-        localdtr.fHb = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(174536);
+        localdtr.token = locala.ajGk.readString();
+        AppMethodBeat.o(259387);
         return 0;
       }
-      AppMethodBeat.o(174536);
+      AppMethodBeat.o(259387);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dtr
  * JD-Core Version:    0.7.0.1
  */

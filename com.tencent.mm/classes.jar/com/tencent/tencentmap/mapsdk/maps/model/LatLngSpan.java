@@ -15,7 +15,21 @@ public class LatLngSpan
   static
   {
     AppMethodBeat.i(181074);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new Parcelable.Creator()
+    {
+      private static LatLngSpan a(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(218016);
+        paramAnonymousParcel = new LatLngSpan(paramAnonymousParcel, null);
+        AppMethodBeat.o(218016);
+        return paramAnonymousParcel;
+      }
+      
+      private static LatLngSpan[] a(int paramAnonymousInt)
+      {
+        return new LatLngSpan[paramAnonymousInt];
+      }
+    };
     AppMethodBeat.o(181074);
   }
   
@@ -102,7 +116,7 @@ public class LatLngSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.LatLngSpan
  * JD-Core Version:    0.7.0.1
  */

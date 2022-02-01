@@ -1,89 +1,67 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class akn
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public eae RQU;
+  public int YYF;
+  public String hAP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152540);
+    AppMethodBeat.i(91436);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RQU == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-        AppMethodBeat.o(152540);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.hAP != null) {
+        paramVarArgs.g(1, this.hAP);
       }
-      if (this.RQU != null)
-      {
-        paramVarArgs.oE(1, this.RQU.computeSize());
-        this.RQU.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(152540);
+      paramVarArgs.bS(2, this.YYF);
+      AppMethodBeat.o(91436);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RQU == null) {
-        break label336;
+      if (this.hAP == null) {
+        break label254;
       }
     }
-    label336:
-    for (paramInt = g.a.a.a.oD(1, this.RQU.computeSize()) + 0;; paramInt = 0)
+    label254:
+    for (paramInt = i.a.a.b.b.a.h(1, this.hAP) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(152540);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.YYF);
+      AppMethodBeat.o(91436);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.RQU == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-          AppMethodBeat.o(152540);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152540);
+        AppMethodBeat.o(91436);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         akn localakn = (akn)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152540);
+          AppMethodBeat.o(91436);
           return -1;
+        case 1: 
+          localakn.hAP = locala.ajGk.readString();
+          AppMethodBeat.o(91436);
+          return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          eae localeae = new eae();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localeae.dd((byte[])localObject);
-          }
-          localakn.RQU = localeae;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(152540);
+        localakn.YYF = locala.ajGk.aar();
+        AppMethodBeat.o(91436);
         return 0;
       }
-      AppMethodBeat.o(152540);
+      AppMethodBeat.o(91436);
       return -1;
     }
   }

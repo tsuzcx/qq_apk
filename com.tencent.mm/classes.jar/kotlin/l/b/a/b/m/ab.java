@@ -1,70 +1,76 @@
 package kotlin.l.b.a.b.m;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.l.b.a.b.b.a.a;
-import kotlin.l.b.a.b.m.a.i;
-import kotlin.l.b.a.b.m.a.t;
+import kotlin.ak;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ba;
 
-public abstract class ab
-  implements a, kotlin.l.b.a.b.m.c.h
+public final class ab
+  extends bc
 {
-  private int abqG;
+  public final ba[] ajpK;
+  public final az[] ajpL;
+  private final boolean ajpM;
   
-  public abstract ab d(i parami);
-  
-  public final boolean equals(Object paramObject)
+  public ab(List<? extends ba> paramList, List<? extends az> paramList1)
   {
-    if ((ab)this == paramObject) {
-      return true;
-    }
-    if (!(paramObject instanceof ab)) {
-      return false;
-    }
-    if (iIu() == ((ab)paramObject).iIu())
-    {
-      t localt = t.abrV;
-      if (t.a(iPX(), ((ab)paramObject).iPX())) {
-        return true;
-      }
-    }
-    return false;
+    this(paramList, (az[])paramList1);
+    AppMethodBeat.i(60753);
+    AppMethodBeat.o(60753);
   }
   
-  public final int hashCode()
+  public ab(ba[] paramArrayOfba, az[] paramArrayOfaz, boolean paramBoolean)
   {
-    int i = this.abqG;
-    if (i != 0) {
-      return i;
-    }
-    if (ad.ap(this))
+    AppMethodBeat.i(60752);
+    this.ajpK = paramArrayOfba;
+    this.ajpL = paramArrayOfaz;
+    this.ajpM = paramBoolean;
+    if (this.ajpK.length <= this.ajpL.length) {}
+    for (int i = 1; (ak.aiuY) && (i == 0); i = 0)
     {
-      i = super.hashCode();
-      this.abqG = i;
-      return i;
+      paramArrayOfba = (Throwable)new AssertionError("Number of arguments should not be less than number of parameters, but: parameters=" + this.ajpK.length + ", args=" + this.ajpL.length);
+      AppMethodBeat.o(60752);
+      throw paramArrayOfba;
     }
-    int j = iOU().hashCode();
-    int k = iOR().hashCode();
-    if (iIu()) {}
-    for (i = 1;; i = 0)
-    {
-      i += (j * 31 + k) * 31;
-      break;
-    }
+    AppMethodBeat.o(60752);
   }
   
-  public abstract kotlin.l.b.a.b.j.f.h iEC();
+  public final az G(ad paramad)
+  {
+    AppMethodBeat.i(60751);
+    s.u(paramad, "key");
+    paramad = paramad.kzm().knA();
+    if ((paramad instanceof ba)) {}
+    for (paramad = (ba)paramad; paramad == null; paramad = null)
+    {
+      AppMethodBeat.o(60751);
+      return null;
+    }
+    int i = paramad.getIndex();
+    if ((i < this.ajpK.length) && (s.p(this.ajpK[i].kmZ(), paramad.kmZ())))
+    {
+      paramad = this.ajpL[i];
+      AppMethodBeat.o(60751);
+      return paramad;
+    }
+    AppMethodBeat.o(60751);
+    return null;
+  }
   
-  public abstract boolean iIu();
+  public final boolean isEmpty()
+  {
+    return this.ajpL.length == 0;
+  }
   
-  public abstract List<av> iOR();
-  
-  public abstract at iOU();
-  
-  public abstract bg iPX();
+  public final boolean kzo()
+  {
+    return this.ajpM;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ab
  * JD-Core Version:    0.7.0.1
  */

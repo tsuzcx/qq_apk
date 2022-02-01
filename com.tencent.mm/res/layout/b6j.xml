@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/rj"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/agp" android:paddingLeft="8.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aum"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/fag" android:background="@color/j4" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ListView android:id="@id/faf" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" style="@style/np" />
-        </com.tencent.mm.ui.base.MMPullDownView>
-        <ScrollView android:id="@id/fae" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:layout_marginTop="@dimen/hi" android:src="@raw/mass_send_icon" />
-                <TextView android:gravity="center" android:layout_marginLeft="@dimen/jv" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/jv" android:text="@string/ey_" android:lineSpacingExtra="4.0dip" style="@style/m0" />
-                <Button android:id="@id/fax" android:layout_marginLeft="@dimen/jv" android:layout_marginTop="@dimen/hw" android:layout_marginRight="@dimen/jv" android:text="@string/ey4" style="@style/ou" />
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:id="@id/faw" android:background="@drawable/b6d" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/fav" android:layout_margin="@dimen/k5" android:text="@string/ey4" style="@style/ow" />
-    </LinearLayout>
+    <ImageView android:id="@id/fpl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_loud_icon" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/al6" android:gravity="center_vertical" android:id="@id/fpm" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a0t" android:layout_weight="1.0" />
+    <ImageButton android:id="@id/fpk" android:background="@color/ahb" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/ai7" android:scaleType="center" />
 </LinearLayout>

@@ -1,194 +1,198 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.ui.widget.a.g;
+import com.tencent.mm.ad.f;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.brandservice.api.h.a;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import kotlin.a.ae;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.s;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "showRequestPhoneNumDialog", "", "phoneNumber", "GetUserBindPhoneNumber", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "BIZ_TYPE_PREFETCH_WEB_PAGE", "", "BIZ_TYPE_PRELOAD_VIDEO", "TAG", "", "controlByte", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "WebPrefetchTask", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class u
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends a
 {
-  public static final u QvB;
+  public static final u Xnr;
   
   static
   {
-    AppMethodBeat.i(268447);
-    QvB = new u();
-    AppMethodBeat.o(268447);
+    AppMethodBeat.i(297727);
+    Xnr = new u();
+    AppMethodBeat.o(297727);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, final n paramn)
+  public final boolean a(com.tencent.mm.plugin.webview.jsapi.h paramh, p paramp)
   {
-    AppMethodBeat.i(268445);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Object localObject2 = paramn.params.get("requestName");
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
-    }
-    String str = (String)localObject1;
-    localObject2 = paramn.params.get("requestIconUrl");
-    localObject1 = localObject2;
-    if (!(localObject2 instanceof String)) {
-      localObject1 = null;
-    }
-    localObject1 = (String)localObject1;
-    localObject2 = (CharSequence)str;
-    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
+    AppMethodBeat.i(297745);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    String str = (String)paramp.params.get("urlList");
+    if (Util.isNullOrNil(str))
     {
-      i = 1;
-      if (i == 0)
-      {
-        localObject1 = (CharSequence)localObject1;
-        if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-          break label174;
-        }
-      }
-    }
-    label174:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label179;
-      }
-      paramf.PNo.h(paramn.POu, "requestBindPhoneNumber:fail requestName or requestIcon is null", null);
-      AppMethodBeat.o(268445);
+      com.tencent.e.f.h.jXD();
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail"), null);
+      AppMethodBeat.o(297745);
       return true;
-      i = 0;
-      break;
     }
-    label179:
-    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(null, (d)new a(), (com.tencent.mm.ipcinvoker.f)new b(paramf, paramn));
-    AppMethodBeat.o(268445);
-    return true;
-  }
-  
-  public final String fCm()
-  {
-    return "requestBindPhoneNumber";
-  }
-  
-  public final int fCn()
-  {
-    return 387;
-  }
-  
-  @com.tencent.mm.ipcinvoker.c.a
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$GetUserBindPhoneNumber;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
-  public static final class a
-    implements d<IPCVoid, IPCString>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "onCallback"})
-  static final class b<T>
-    implements com.tencent.mm.ipcinvoker.f<IPCString>
-  {
-    b(com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(g paramg, com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
-    
-    public final void onClick(View paramView)
+    Object localObject = paramp.params.get("bizType");
+    Bundle localBundle;
+    if (localObject == null)
     {
-      AppMethodBeat.i(218919);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$showRequestPhoneNumDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      this.kvu.bYF();
-      paramView = this.IIg.PNo;
-      localObject = this.sRE.POu;
-      StringBuilder localStringBuilder = new StringBuilder();
-      u localu = u.QvB;
-      paramView.h((String)localObject, "requestBindPhoneNumber:cancel", null);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$showRequestPhoneNumDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(218919);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class d
-    implements View.OnClickListener
-  {
-    d(g paramg, String paramString, com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(242568);
-      Object localObject1 = new b();
-      ((b)localObject1).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$showRequestPhoneNumDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
-      this.kvu.bYF();
-      paramView = (CharSequence)this.QvE;
-      int i;
-      Object localObject2;
-      Object localObject3;
-      if ((paramView == null) || (paramView.length() == 0))
-      {
-        i = 1;
-        if (i == 0) {
-          break label137;
-        }
-        paramView = this.IIg.PNo;
-        localObject1 = this.sRE.POu;
-        localObject2 = new StringBuilder();
-        localObject3 = u.QvB;
-        paramView.h((String)localObject1, "requestBindPhoneNumber:fail not bind phone", null);
+      localObject = "";
+      localBundle = new Bundle();
+      localBundle.putString("urlList", str);
+      if (!s.p(localObject, "1")) {
+        break label185;
       }
+      localBundle.putInt("bizType", 1);
+      label128:
+      if (!((Bundle)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localBundle, a.class)).getBoolean("ret")) {
+        break label196;
+      }
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), null);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(297745);
+      return true;
+      break;
+      label185:
+      localBundle.putInt("bizType", 0);
+      break label128;
+      label196:
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail"), null);
+    }
+  }
+  
+  public final String gPX()
+  {
+    return "onWebPageUrlExposed";
+  }
+  
+  public final int gPZ()
+  {
+    return 373;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed$WebPrefetchTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "data", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    implements m<Bundle, Bundle>
+  {
+    private static Bundle Z(Bundle paramBundle)
+    {
+      AppMethodBeat.i(297709);
+      localBundle = new Bundle();
+      if (paramBundle == null)
+      {
+        localBundle.putBoolean("ret", false);
+        AppMethodBeat.o(297709);
+        return localBundle;
+      }
+      localArrayList = new ArrayList();
       for (;;)
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$showRequestPhoneNumDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(242568);
-        return;
-        i = 0;
-        break;
-        label137:
-        paramView = ae.d(s.M("phoneNumber", this.QvE));
-        localObject1 = this.IIg.PNo;
-        localObject2 = this.sRE.POu;
-        localObject3 = new StringBuilder();
-        u localu = u.QvB;
-        ((h)localObject1).h((String)localObject2, "requestBindPhoneNumber:ok", paramView);
+        try
+        {
+          localObject1 = paramBundle.getString("urlList");
+          i = paramBundle.getInt("bizType", 0);
+        }
+        catch (Exception paramBundle)
+        {
+          Object localObject1;
+          int m;
+          int k;
+          Object localObject2;
+          String str1;
+          int n;
+          String str2;
+          int i = 0;
+          continue;
+          int j = k;
+          continue;
+          continue;
+        }
+        try
+        {
+          paramBundle = new f((String)localObject1);
+          if (paramBundle.length() <= 0)
+          {
+            com.tencent.e.f.h.jXD();
+            localBundle.putBoolean("ret", false);
+            AppMethodBeat.o(297709);
+            return localBundle;
+          }
+          m = paramBundle.length();
+          if (m <= 0) {
+            continue;
+          }
+          j = 0;
+          k = j + 1;
+          localObject2 = paramBundle.su(j);
+          if (localObject2 != null)
+          {
+            str1 = ((i)localObject2).optString("url");
+            n = ((i)localObject2).optInt("bizScene");
+            if ((str1 == null) || (n.bp((CharSequence)str1) != true)) {
+              continue;
+            }
+            j = 1;
+            if (j == 0) {
+              continue;
+            }
+            com.tencent.e.f.h.jXD();
+          }
+          if (k < m) {
+            continue;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          com.tencent.e.f.h.jXD();
+          continue;
+          localBundle.putBoolean("ret", true);
+          s.X("WebPrefetchTask  bizType:", Integer.valueOf(i));
+          com.tencent.e.f.h.jXD();
+          if (i != 1) {
+            continue;
+          }
+          ((com.tencent.mm.plugin.brandservice.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.h.class)).ej((List)localArrayList);
+          AppMethodBeat.o(297709);
+          return localBundle;
+          ((com.tencent.mm.plugin.brandservice.api.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.h.class)).ei((List)localArrayList);
+          continue;
+        }
+        if (!localArrayList.isEmpty()) {
+          continue;
+        }
+        com.tencent.e.f.h.jXD();
+        localBundle.putBoolean("ret", false);
+        AppMethodBeat.o(297709);
+        return localBundle;
+        j = 0;
+        continue;
+        str2 = ((i)localObject2).optString("extInfo");
+        localObject1 = new h.a();
+        ((h.a)localObject1).url = str1;
+        ((h.a)localObject1).extInfo = str2;
+        ((h.a)localObject1).vAZ = 176;
+        ((h.a)localObject1).vBa = n;
+        ((h.a)localObject1).vAY = ((i)localObject2).optString("prefetchId", "");
+        localObject2 = ah.aiuX;
+        localArrayList.add(localObject1);
       }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
-  {
-    e(g paramg, com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(219116);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$showRequestPhoneNumDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      this.kvu.bYF();
-      paramView = this.IIg.PNo;
-      localObject = this.sRE.POu;
-      StringBuilder localStringBuilder = new StringBuilder();
-      u localu = u.QvB;
-      paramView.h((String)localObject, "requestBindPhoneNumber:fail not bind phone", null);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestBindPhoneNumber$showRequestPhoneNumDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(219116);
     }
   }
 }

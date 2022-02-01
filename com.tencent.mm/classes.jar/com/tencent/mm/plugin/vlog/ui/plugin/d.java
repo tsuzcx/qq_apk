@@ -15,25 +15,31 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.i;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.j;
 import com.tencent.mm.plugin.vlog.a.d;
 import com.tencent.mm.plugin.vlog.model.ac;
 import com.tencent.mm.plugin.vlog.model.ad;
-import com.tencent.mm.plugin.vlog.model.o;
+import com.tencent.mm.plugin.vlog.model.i;
+import com.tencent.mm.plugin.vlog.model.n;
+import com.tencent.mm.plugin.vlog.model.t;
+import com.tencent.mm.plugin.vlog.model.v;
 import com.tencent.mm.plugin.vlog.ui.widget.MultiEditCropLayout;
 import com.tencent.mm.plugin.vlog.ui.widget.MultiEditCropOperationLayout;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
 import com.tencent.mm.ui.widget.cropview.CropLayout.c;
 import com.tencent.mm.ui.widget.cropview.CropLayout.d;
 import com.tencent.mm.ui.widget.cropview.CropLayout.e;
+import com.tencent.mm.videocomposition.j;
 import com.tencent.mm.videocomposition.play.VideoCompositionPlayView;
 import com.tencent.mm.videocomposition.play.a.a.a;
 import com.tencent.mm.videocomposition.play.a.a.b;
@@ -43,351 +49,331 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "layout", "Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;", "operationLayout", "Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "audioPlayRangeOffset", "", "getAudioPlayRangeOffset", "()J", "setAudioPlayRangeOffset", "(J)V", "audioSeekTimeOffset", "getAudioSeekTimeOffset", "setAudioSeekTimeOffset", "audioSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "getAudioSeekable", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "setAudioSeekable", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;)V", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "cropSizeCount", "", "getCropSizeCount", "()I", "setCropSizeCount", "(I)V", "currentPreviewImpl", "Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewImpl;", "currentPreviewMediaId", "currentPreviewPath", "", "currentType", "defaultHalfRect", "Landroid/graphics/Rect;", "fpsCounter", "Lcom/tencent/mm/plugin/vlog/model/FpsCounter;", "fpsStart", "isFullscreenMode", "", "()Z", "setFullscreenMode", "(Z)V", "isPreviewHalfScreen", "setPreviewHalfScreen", "getLayout", "()Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;", "setLayout", "(Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;)V", "lockCropMediaId", "lockCropRect", "Landroid/graphics/RectF;", "getLockCropRect", "()Landroid/graphics/RectF;", "maxVisibleRect", "multiMedia", "Lcom/tencent/mm/plugin/vlog/model/MultiMediaModel;", "multiVideoPreview", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl;", "onChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getOnChangeListener", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "setOnChangeListener", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;)V", "getOperationLayout", "()Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;", "setOperationLayout", "(Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;)V", "parent", "Landroid/view/ViewGroup;", "performance", "Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "getPerformance", "()Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "setPerformance", "(Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;)V", "previewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "previewProvider", "Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "previewVideoMaxFpsLimit", "getPreviewVideoMaxFpsLimit", "setPreviewVideoMaxFpsLimit", "sceneDescTextView", "Landroid/widget/TextView;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "value", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "style", "setStyle", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;)V", "videoSeekable", "getVideoSeekable", "videoView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "addSceneDescTv", "", "calcOriginRect", "contentRect", "viewRect", "clipRect", "checkInitVideoView", "currentPlayingTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "currentVideoComposition", "enableFullscreenMode", "enableTouchCropLayout", "enable", "flushSurface", "getCropInView", "getCropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "path", "getCropLayoutIndex", "getCurrentCropInfo", "mediaId", "(Ljava/lang/Long;)Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "getDefaultVisibilityRect", "getMaxVisibleRect", "getVideoView", "getVisibilityRect", "getVisibleRect", "hidePlayView", "isHalfRectChanged", "isLockMedia", "isPreviewingVideo", "onClick", "v", "Landroid/view/View;", "onDetach", "onPreviewFullScreen", "onPreviewHalfScreen", "onPreviewImage", "drawingView", "Lcom/tencent/mm/view/PhotoDrawingView;", "mediaPath", "isHard", "onPreviewVideo", "muteOrigin", "onUpdateVideo", "playAfterUpdate", "seekToOriginPosition", "seekTo", "pausePreview", "registerCallback", "callback", "release", "releaseVideo", "reset", "resumePreview", "seek", "startMs", "setContentMovable", "movable", "setCropLayoutTouchListener", "listener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "setLoop", "loop", "setMultiMedia", "multiMediaModel", "setMuteOrigin", "mute", "setPlayRange", "start", "end", "setVisibleRect", "rect", "showPlayView", "showVideoOrImageLabel", "stopPreview", "unregisterCallback", "updateValidArea", "showTab", "showAddImage", "fullscreen", "videoPause", "videoResume", "Companion", "PreviewCallback", "PreviewSeekCallback", "PreviewUpdateCallback", "Seekable", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "layout", "Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;", "operationLayout", "Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "audioPlayRangeOffset", "", "getAudioPlayRangeOffset", "()J", "setAudioPlayRangeOffset", "(J)V", "audioSeekTimeOffset", "getAudioSeekTimeOffset", "setAudioSeekTimeOffset", "audioSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "getAudioSeekable", "()Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "setAudioSeekable", "(Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;)V", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "cropSizeCount", "", "getCropSizeCount", "()I", "setCropSizeCount", "(I)V", "currentPreviewImpl", "Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewImpl;", "currentPreviewMediaId", "currentPreviewPath", "", "currentType", "defaultHalfRect", "Landroid/graphics/Rect;", "fpsCounter", "Lcom/tencent/mm/plugin/vlog/model/FpsCounter;", "fpsStart", "isFullscreenMode", "", "()Z", "setFullscreenMode", "(Z)V", "isPreviewHalfScreen", "setPreviewHalfScreen", "getLayout", "()Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;", "setLayout", "(Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropLayout;)V", "lockCropMediaId", "lockCropRect", "Landroid/graphics/RectF;", "getLockCropRect", "()Landroid/graphics/RectF;", "maxVisibleRect", "multiMedia", "Lcom/tencent/mm/plugin/vlog/model/MultiMediaModel;", "multiVideoPreview", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPreviewImpl;", "onChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getOnChangeListener", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "setOnChangeListener", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;)V", "getOperationLayout", "()Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;", "setOperationLayout", "(Lcom/tencent/mm/plugin/vlog/ui/widget/MultiEditCropOperationLayout;)V", "parent", "Landroid/view/ViewGroup;", "performance", "Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "getPerformance", "()Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "setPerformance", "(Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;)V", "previewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "previewProvider", "Lcom/tencent/mm/plugin/vlog/ui/plugin/PreviewProvider;", "previewVideoMaxFpsLimit", "getPreviewVideoMaxFpsLimit", "setPreviewVideoMaxFpsLimit", "sceneDescTextView", "Landroid/widget/TextView;", "value", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "style", "setStyle", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;)V", "videoSeekable", "getVideoSeekable", "videoView", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayView;", "addSceneDescTv", "", "calcOriginRect", "contentRect", "viewRect", "clipRect", "checkInitVideoView", "currentPlayingTrack", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "currentVideoComposition", "enableFullscreenMode", "enableTouchCropLayout", "enable", "flushSurface", "getCropInView", "getCropInfo", "Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "path", "getCropLayoutIndex", "getCurrentCropInfo", "mediaId", "(Ljava/lang/Long;)Lcom/tencent/mm/plugin/vlog/model/CropInfo;", "getDefaultVisibilityRect", "getMaxVisibleRect", "getVideoView", "getVisibilityRect", "getVisibleRect", "hidePlayView", "isHalfRectChanged", "isLockMedia", "isPreviewingVideo", "onClick", "v", "Landroid/view/View;", "onDetach", "onPreviewFullScreen", "onPreviewHalfScreen", "onPreviewImage", "drawingView", "Lcom/tencent/mm/view/PhotoDrawingView;", "mediaPath", "isHard", "onPreviewVideo", "muteOrigin", "onUpdateVideo", "playAfterUpdate", "seekToOriginPosition", "seekTo", "pausePreview", "registerCallback", "callback", "release", "releaseVideo", "reset", "resumePreview", "seek", "startMs", "setContentMovable", "movable", "setCropLayoutTouchListener", "listener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "setLoop", "loop", "setMultiMedia", "multiMediaModel", "setMuteOrigin", "mute", "setPlayRange", "start", "end", "setVisibleRect", "rect", "showPlayView", "showVideoOrImageLabel", "stopPreview", "unregisterCallback", "updateValidArea", "showTab", "showAddImage", "fullscreen", "videoPause", "videoResume", "Companion", "PreviewCallback", "PreviewSeekCallback", "PreviewUpdateCallback", "Seekable", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends com.tencent.mm.plugin.recordvideo.plugin.a
   implements View.OnClickListener
 {
-  public static final a NuS;
-  com.tencent.mm.plugin.recordvideo.plugin.parent.d APl;
-  private long BYV;
-  final RectF BZm;
-  private WxCropOperationLayout.j BZo;
-  private long BZs;
-  boolean MZN;
-  public ac Nlb;
-  public final RectF Nmi;
-  public com.tencent.mm.plugin.vlog.model.v NrK;
-  public CropLayout.c NuA;
-  public int NuB;
-  private TextView NuC;
-  private String NuD;
-  public Rect NuE;
-  public boolean NuF;
-  public final e NuG;
-  public e NuH;
-  public long NuI;
-  public long NuJ;
-  private final z NuK;
-  private final v NuL;
-  private y NuM;
-  public int NuN;
-  private final o NuO;
-  private long NuP;
-  public MultiEditCropLayout NuQ;
-  public MultiEditCropOperationLayout NuR;
-  private VideoCompositionPlayView Nux;
-  private final LinkedList<b> Nuy;
-  public com.tencent.mm.plugin.vlog.ui.report.a Nuz;
+  public static final d.a UhO;
+  private long HKY;
+  final RectF HLi;
+  private WxCropOperationLayout.j HLk;
+  private long HLo;
+  boolean TMw;
+  public ac TYA;
+  public final RectF TZO;
+  public v Uft;
+  public MultiEditCropLayout UhP;
+  public MultiEditCropOperationLayout UhQ;
+  private VideoCompositionPlayView UhR;
+  private final LinkedList<b> UhS;
+  public com.tencent.mm.plugin.vlog.ui.report.a UhT;
+  public CropLayout.c UhU;
+  public int UhV;
+  private TextView UhW;
+  private String UhX;
+  public Rect UhY;
+  public boolean UhZ;
+  public final e Uia;
+  public e Uib;
+  public long Uic;
+  public long Uid;
+  private final y Uie;
+  private final u Uif;
+  private x Uig;
+  public int Uih;
+  private final n Uii;
+  private long Uij;
   private final Context context;
   public final ViewGroup parent;
-  private int ttK;
+  private int wyh;
   
   static
   {
-    AppMethodBeat.i(225469);
-    NuS = new a((byte)0);
-    AppMethodBeat.o(225469);
+    AppMethodBeat.i(282625);
+    UhO = new d.a((byte)0);
+    AppMethodBeat.o(282625);
   }
   
-  public d(MultiEditCropLayout paramMultiEditCropLayout, MultiEditCropOperationLayout paramMultiEditCropOperationLayout, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd)
+  public d(MultiEditCropLayout paramMultiEditCropLayout, MultiEditCropOperationLayout paramMultiEditCropOperationLayout, final com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(225468);
-    this.NuQ = paramMultiEditCropLayout;
-    this.NuR = paramMultiEditCropOperationLayout;
-    this.APl = paramd;
-    this.context = this.NuQ.getContext();
-    paramMultiEditCropLayout = this.NuQ.getParent();
+    super(parama);
+    AppMethodBeat.i(282464);
+    this.UhP = paramMultiEditCropLayout;
+    this.UhQ = paramMultiEditCropOperationLayout;
+    this.context = this.UhP.getContext();
+    paramMultiEditCropLayout = this.UhP.getParent();
     if (paramMultiEditCropLayout == null)
     {
-      paramMultiEditCropLayout = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(225468);
+      paramMultiEditCropLayout = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(282464);
       throw paramMultiEditCropLayout;
     }
     this.parent = ((ViewGroup)paramMultiEditCropLayout);
-    this.Nmi = new RectF();
-    this.Nuy = new LinkedList();
-    this.Nuz = new com.tencent.mm.plugin.vlog.ui.report.a();
-    this.BYV = -1L;
-    this.BZm = new RectF();
-    this.NuC = new TextView(this.parent.getContext());
-    this.NuD = "";
-    this.NuE = new Rect();
-    this.BZo = WxCropOperationLayout.j.HWx;
-    this.NuG = ((e)new l(this));
-    this.NuN = -1;
-    this.NuO = new o();
-    paramMultiEditCropLayout = this.NuQ;
+    this.TZO = new RectF();
+    this.UhS = new LinkedList();
+    this.UhT = new com.tencent.mm.plugin.vlog.ui.report.a();
+    this.HKY = -1L;
+    this.HLi = new RectF();
+    this.UhW = new TextView(this.parent.getContext());
+    this.UhX = "";
+    this.UhY = new Rect();
+    this.HLk = WxCropOperationLayout.j.NTk;
+    this.Uia = ((e)new l(this, parama));
+    this.Uih = -1;
+    this.Uii = new n();
+    paramMultiEditCropLayout = this.UhP;
     paramMultiEditCropLayout.setHasBorder(false);
     paramMultiEditCropLayout.setEnableScale(true);
     paramMultiEditCropLayout.setEnableFling(true);
     paramMultiEditCropLayout.setEnableTouch(true);
     paramMultiEditCropLayout.setEnableOverScroll(false);
-    this.NuQ.setBackgroundColor(0);
-    this.NuK = ((z)new z()
+    this.UhP.setBackgroundColor(0);
+    this.Uie = ((y)new y()
     {
       public final WxCropOperationLayout getOperationLayout()
       {
-        return (WxCropOperationLayout)this.NuT.NuR;
+        return (WxCropOperationLayout)this.Uik.UhQ;
       }
       
-      public final VideoCompositionPlayView guT()
+      public final VideoCompositionPlayView hSJ()
       {
-        AppMethodBeat.i(227577);
-        d.i(this.NuT);
-        VideoCompositionPlayView localVideoCompositionPlayView = d.d(this.NuT);
-        if (localVideoCompositionPlayView == null) {
-          p.iCn();
-        }
-        AppMethodBeat.o(227577);
+        AppMethodBeat.i(282659);
+        d.i(this.Uik);
+        VideoCompositionPlayView localVideoCompositionPlayView = d.d(this.Uik);
+        s.checkNotNull(localVideoCompositionPlayView);
+        AppMethodBeat.o(282659);
         return localVideoCompositionPlayView;
       }
       
-      public final ViewGroup gve()
+      public final ViewGroup hSU()
       {
-        AppMethodBeat.i(227576);
-        ViewGroup localViewGroup = d.h(this.NuT);
-        AppMethodBeat.o(227576);
+        AppMethodBeat.i(282636);
+        ViewGroup localViewGroup = d.h(this.Uik);
+        AppMethodBeat.o(282636);
         return localViewGroup;
       }
       
-      public final CropLayout gvf()
+      public final CropLayout hSV()
       {
-        return (CropLayout)this.NuT.NuQ;
+        return (CropLayout)this.Uik.UhP;
       }
       
-      public final void gvg()
+      public final void hSW()
       {
-        AppMethodBeat.i(227579);
-        com.tencent.mm.plugin.recordvideo.plugin.parent.d.b.a(this.NuT.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSg);
-        AppMethodBeat.o(227579);
+        AppMethodBeat.i(282665);
+        a.b.a(parama, a.c.NOM);
+        AppMethodBeat.o(282665);
       }
       
-      public final TextView gvh()
+      public final TextView hSX()
       {
-        AppMethodBeat.i(227580);
-        TextView localTextView = d.j(this.NuT);
-        AppMethodBeat.o(227580);
+        AppMethodBeat.i(282669);
+        TextView localTextView = d.j(this.Uik);
+        AppMethodBeat.o(282669);
         return localTextView;
       }
     });
-    this.NuL = new v(this.NuK);
-    a((b)this.NuL);
-    this.NuR.HVW = false;
-    this.NuR.setVisibility(8);
-    this.NuR.setBlockOutsideTouch(true);
-    AppMethodBeat.o(225468);
-  }
-  
-  private final boolean NJ(long paramLong)
-  {
-    return (this.BZs == paramLong) || (this.BZs == 0L);
+    this.Uif = new u(this.Uie);
+    a((b)this.Uif);
+    this.UhQ.NSK = false;
+    this.UhQ.setVisibility(8);
+    this.UhQ.setBlockOutsideTouch(true);
+    AppMethodBeat.o(282464);
   }
   
   private static Rect a(Rect paramRect1, Rect paramRect2, Rect paramRect3)
   {
-    AppMethodBeat.i(225446);
+    AppMethodBeat.i(282515);
     float f = 1.0F * paramRect1.width() / paramRect2.width();
     int i = paramRect3.left - paramRect1.left;
     int j = paramRect3.top - paramRect1.top;
     int k = paramRect3.width();
     int m = paramRect3.height();
     paramRect1 = new Rect((int)(i / f), (int)(j / f), (int)((k + i) / f), (int)((m + j) / f));
-    AppMethodBeat.o(225446);
+    AppMethodBeat.o(282515);
     return paramRect1;
   }
   
-  private void guS()
+  private void hSI()
   {
-    this.MZN = true;
-    this.NuQ.MZN = true;
-    this.NuR.MZN = true;
-    this.NuL.MZN = true;
+    this.TMw = true;
+    this.UhP.TMw = true;
+    this.UhQ.TMw = true;
+    this.Uif.TMw = true;
   }
   
-  private final void guX()
+  private final void hSN()
   {
-    AppMethodBeat.i(225430);
-    Object localObject = com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.Nzf;
-    if ((com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.gwc()) && ((p.h(this.NuC.getParent(), this.parent) ^ true)))
+    AppMethodBeat.i(282502);
+    Object localObject = com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.UlR;
+    if ((com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.hTR()) && (!s.p(this.UhW.getParent(), this.parent)))
     {
-      this.NuC.setTextColor(-65536);
-      localObject = this.parent.getContext();
-      p.j(localObject, "parent.context");
-      int i = ((Context)localObject).getResources().getDimensionPixelSize(a.d.Edge_2A);
-      this.NuC.setTextSize(i);
+      this.UhW.setTextColor(-65536);
+      int i = this.parent.getContext().getResources().getDimensionPixelSize(a.d.Edge_2A);
+      this.UhW.setTextSize(i);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)this.Nmi.top + i);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = ((int)this.TZO.top + i);
       ((RelativeLayout.LayoutParams)localObject).rightMargin = i;
       ((RelativeLayout.LayoutParams)localObject).addRule(10);
       ((RelativeLayout.LayoutParams)localObject).addRule(21);
-      this.parent.addView((View)this.NuC, 1, (ViewGroup.LayoutParams)localObject);
+      this.parent.addView((View)this.UhW, 1, (ViewGroup.LayoutParams)localObject);
     }
-    AppMethodBeat.o(225430);
+    AppMethodBeat.o(282502);
   }
   
-  private final void gva()
+  private final void hSQ()
   {
-    AppMethodBeat.i(225449);
-    if (this.Nux == null)
+    AppMethodBeat.i(282523);
+    if (this.UhR == null)
     {
-      this.Nux = new VideoCompositionPlayView(this.context);
-      VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-      if (localVideoCompositionPlayView != null) {
-        localVideoCompositionPlayView.setPlayerCallback((a.a.a)new f(this));
+      Object localObject = this.context;
+      s.s(localObject, "context");
+      this.UhR = new VideoCompositionPlayView((Context)localObject);
+      localObject = this.UhR;
+      if (localObject != null) {
+        ((VideoCompositionPlayView)localObject).setPlayerCallback((a.a.a)new f(this));
       }
-      localVideoCompositionPlayView = this.Nux;
-      if (localVideoCompositionPlayView != null)
-      {
-        localVideoCompositionPlayView.setPlayerProfileCallback((a.a.c)new g(this));
-        AppMethodBeat.o(225449);
-        return;
+      localObject = this.UhR;
+      if (localObject != null) {
+        ((VideoCompositionPlayView)localObject).setPlayerProfileCallback((a.a.c)new g(this));
       }
     }
-    AppMethodBeat.o(225449);
+    AppMethodBeat.o(282523);
   }
   
-  public final void As(boolean paramBoolean)
+  private final boolean rx(long paramLong)
   {
-    AppMethodBeat.i(225421);
+    return (this.HLo == paramLong) || (this.HLo == 0L);
+  }
+  
+  public final void FR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(282737);
     a(this, paramBoolean, true, 0L, 12);
-    AppMethodBeat.o(225421);
+    AppMethodBeat.o(282737);
   }
   
-  public final void TL()
+  public final i a(final m paramm, String paramString)
   {
-    AppMethodBeat.i(225414);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView != null)
+    AppMethodBeat.i(282688);
+    s.u(paramm, "drawingView");
+    s.u(paramString, "mediaPath");
+    this.Uig = null;
+    Object localObject = this.Uft;
+    if (localObject == null)
     {
-      localVideoCompositionPlayView.stop();
-      AppMethodBeat.o(225414);
-      return;
-    }
-    AppMethodBeat.o(225414);
-  }
-  
-  public final com.tencent.mm.plugin.vlog.model.j a(final m paramm, String paramString)
-  {
-    AppMethodBeat.i(225412);
-    p.k(paramm, "drawingView");
-    p.k(paramString, "mediaPath");
-    this.NuM = null;
-    Object localObject = this.NrK;
-    if (localObject != null)
-    {
-      localObject = (List)((com.tencent.mm.plugin.vlog.model.v)localObject).NlZ;
-      if (localObject != null)
-      {
-        Iterator localIterator = ((Iterable)localObject).iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = localIterator.next();
-          if (p.h(((ad)localObject).path, paramString))
-          {
-            localObject = (ad)localObject;
-            label104:
-            this.NuD = paramString;
-            if (localObject == null) {
-              break label153;
-            }
-          }
-        }
+      localObject = null;
+      this.UhX = paramString;
+      if (localObject != null) {
+        break label154;
       }
     }
-    label153:
-    for (final long l = ((ad)localObject).id;; l = 0L)
+    label154:
+    for (final long l = 0L;; l = ((ad)localObject).id)
     {
       if (localObject != null) {
-        break label159;
+        break label165;
       }
-      paramm = bfJ(paramString);
-      AppMethodBeat.o(225412);
+      paramm = bfp(paramString);
+      AppMethodBeat.o(282688);
       return paramm;
-      localObject = null;
-      break;
-      localObject = null;
-      break label104;
+      localObject = (List)((v)localObject).TZF;
+      if (localObject == null)
+      {
+        localObject = null;
+        break;
+      }
+      Iterator localIterator = ((Iterable)localObject).iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = localIterator.next();
+      } while (!s.p(((ad)localObject).path, paramString));
+      for (;;)
+      {
+        localObject = (ad)localObject;
+        break;
+        localObject = null;
+      }
     }
-    label159:
-    this.BYV = l;
-    this.ttK = 1;
+    label165:
+    this.HKY = l;
+    this.wyh = 1;
     Log.i("MicroMsg.EditMultiPreviewPlugin", "onPreviewImage");
     onPause();
-    this.NuQ.HA(true);
-    if (!this.MZN) {
-      this.NuQ.setEnableScale(true);
+    this.UhP.Nw(true);
+    if (!this.TMw) {
+      this.UhP.setEnableScale(true);
     }
-    WxCropOperationLayout.a(this.NuR);
-    int i = ((ad)localObject).Nna;
-    int j = ((ad)localObject).Nnb;
-    this.NuQ.getVisibilityRect().set(this.BZm);
-    if (!this.MZN) {
-      this.NuR.getVisibilityRect().set(this.BZm);
+    WxCropOperationLayout.a((WxCropOperationLayout)this.UhQ);
+    int i = ((ad)localObject).UaC;
+    int j = ((ad)localObject).UaD;
+    this.UhP.getVisibilityRect().set(this.HLi);
+    if (!this.TMw) {
+      this.UhQ.getVisibilityRect().set(this.HLi);
     }
-    if (0L == this.BZs) {
-      this.BZs = l;
+    if (0L == this.HLo) {
+      this.HLo = l;
     }
-    if (NJ(l)) {
-      this.NuR.setStyle(this.BZo);
+    if (rx(l)) {
+      this.UhQ.setStyle(this.HLk);
     }
     for (;;)
     {
-      this.NuQ.setMaxScaleValue(((ad)localObject).Nnd.aGN);
-      this.NuQ.setMinScaleValue(((ad)localObject).Nnd.aGO);
-      boolean bool = this.NuQ.getContentRect().isEmpty();
-      this.NuQ.a((View)paramm, i, j, ((ad)localObject).Nnd.aHZ, CropLayout.e.Ylv, (kotlin.g.a.b)new h(bool));
-      if (((ad)localObject).Nnd.BZx > 0.0F)
-      {
-        paramString = paramm.getPresenter();
-        p.j(paramString, "drawingView.presenter");
-        paramString.setInitScale(1.0F / ((ad)localObject).Nnd.BZx);
+      this.UhP.setMaxScaleValue(((ad)localObject).UaF.maxScale);
+      this.UhP.setMinScaleValue(((ad)localObject).UaF.minScale);
+      boolean bool = this.UhP.getContentRect().isEmpty();
+      this.UhP.a((View)paramm, i, j, ((ad)localObject).UaF.matrix, CropLayout.e.agdt, (kotlin.g.a.b)new d.h(bool));
+      if (((ad)localObject).UaF.HLs > 0.0F) {
+        paramm.getPresenter().setInitScale(1.0F / ((ad)localObject).UaF.HLs);
       }
-      this.NuR.setOnOperationCallback((WxCropOperationLayout.i)new i(this, l, (ad)localObject));
-      this.NuQ.setOnChangeListener((CropLayout.c)new j(this, (ad)localObject, paramm));
-      this.NuQ.setClickListener((View.OnClickListener)this);
-      if (!this.MZN) {
-        this.NuR.setVisibility(0);
+      this.UhQ.setOnOperationCallback((WxCropOperationLayout.i)new i(this, l, (ad)localObject));
+      this.UhP.setOnChangeListener((CropLayout.c)new j((ad)localObject, paramm, this));
+      this.UhP.setClickListener((View.OnClickListener)this);
+      if (!this.TMw) {
+        this.UhQ.setVisibility(0);
       }
-      guX();
-      guY();
-      paramm = ((ad)localObject).Nnd;
-      AppMethodBeat.o(225412);
+      hSN();
+      hSO();
+      paramm = ((ad)localObject).UaF;
+      AppMethodBeat.o(282688);
       return paramm;
-      this.NuR.setStyle(WxCropOperationLayout.j.HWy);
+      this.UhQ.setStyle(WxCropOperationLayout.j.NTl);
     }
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(225396);
-    p.k(paramb, "callback");
-    if (!this.Nuy.contains(paramb)) {
-      this.Nuy.add(paramb);
+    AppMethodBeat.i(282662);
+    s.u(paramb, "callback");
+    if (!this.UhS.contains(paramb)) {
+      this.UhS.add(paramb);
     }
-    AppMethodBeat.o(225396);
+    AppMethodBeat.o(282662);
   }
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong)
   {
     ac localac = null;
-    AppMethodBeat.i(225425);
+    AppMethodBeat.i(282754);
     Log.i("MicroMsg.EditMultiPreviewPlugin", "onUpdateVideo, playAfterUpdate:" + paramBoolean2 + ", seekToOriginPosition:" + paramBoolean3 + ", seekTo:" + paramLong);
-    this.ttK = 2;
-    this.NuD = "";
-    gva();
-    this.BYV = -1L;
-    Object localObject1 = this.NrK;
-    if (localObject1 != null)
+    this.wyh = 2;
+    this.UhX = "";
+    hSQ();
+    this.HKY = -1L;
+    Object localObject1 = this.Uft;
+    if (localObject1 == null)
     {
-      localObject1 = ((com.tencent.mm.plugin.vlog.model.v)localObject1).Nlb;
-      this.Nlb = ((ac)localObject1);
-      localObject1 = this.Nlb;
+      localObject1 = null;
+      this.TYA = ((ac)localObject1);
+      localObject1 = this.TYA;
       if (localObject1 != null) {
         if (paramBoolean1) {
           break label202;
@@ -397,351 +383,109 @@ public final class d
     label202:
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      ((ac)localObject1).Ap(paramBoolean1);
-      localObject1 = this.Nlb;
+      ((ac)localObject1).FO(paramBoolean1);
+      localObject1 = this.TYA;
       if (localObject1 == null) {
         break label207;
       }
-      localObject2 = ((Iterable)this.Nuy).iterator();
+      localObject2 = ((Iterable)this.UhS).iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (b)((Iterator)localObject2).next();
-        if ((localObject3 instanceof d)) {
-          ((d)localObject3).a((ac)localObject1, paramLong, paramBoolean3);
+        b localb = (b)((Iterator)localObject2).next();
+        if ((localb instanceof d)) {
+          ((d)localb).a((ac)localObject1, paramLong, paramBoolean3);
         }
       }
-      localObject1 = null;
+      localObject1 = ((v)localObject1).TYA;
       break;
     }
     label207:
-    localObject1 = this.NuM;
+    localObject1 = this.Uig;
     if (localObject1 != null) {
-      ((y)localObject1).Av(false);
+      ((x)localObject1).FU(false);
     }
-    this.NuM = ((y)this.NuL);
-    localObject1 = this.NrK;
+    this.Uig = ((x)this.Uif);
+    localObject1 = this.Uft;
     if (localObject1 != null)
     {
-      localObject1 = ((com.tencent.mm.plugin.vlog.model.v)localObject1).gtj();
-      localObject2 = this.NuM;
-      if (localObject2 != null) {
-        ((y)localObject2).b((Size)localObject1);
+      localObject1 = ((v)localObject1).hQG();
+      if (localObject1 != null)
+      {
+        localObject2 = this.Uig;
+        if (localObject2 != null) {
+          ((x)localObject2).h((Size)localObject1);
+        }
       }
     }
-    this.NuL.NuH = this.NuH;
-    localObject1 = this.NuM;
+    this.Uif.Uib = this.Uib;
+    localObject1 = this.Uig;
     if (localObject1 != null) {
-      ((y)localObject1).Av(true);
+      ((x)localObject1).FU(true);
     }
-    this.NuR.setOnOperationCallback((WxCropOperationLayout.i)new k(this));
-    this.NuQ.setClickListener((View.OnClickListener)this);
-    Object localObject2 = this.NuQ;
-    Object localObject3 = this.NuM;
-    localObject1 = localac;
-    if (localObject3 != null) {
-      localObject1 = ((y)localObject3).gvF();
-    }
-    ((MultiEditCropLayout)localObject2).setOnChangeListener((CropLayout.c)localObject1);
-    localObject1 = this.Nlb;
-    if (localObject1 != null) {
-      ((ac)localObject1).akf(this.NuN);
-    }
-    localObject1 = this.NuM;
-    if (localObject1 != null)
+    this.UhQ.setOnOperationCallback((WxCropOperationLayout.i)new k(this));
+    this.UhP.setClickListener((View.OnClickListener)this);
+    Object localObject2 = this.UhP;
+    localObject1 = this.Uig;
+    if (localObject1 == null) {}
+    for (localObject1 = localac;; localObject1 = ((x)localObject1).hTu())
     {
-      localac = this.Nlb;
-      if (localac == null) {
-        p.iCn();
-      }
-      ((y)localObject1).a(localac, paramBoolean2, paramBoolean3, paramLong);
-    }
-    if (!this.MZN) {
-      this.NuR.setVisibility(0);
-    }
-    if (paramBoolean2)
-    {
-      localObject1 = this.NuH;
+      ((MultiEditCropLayout)localObject2).setOnChangeListener((CropLayout.c)localObject1);
+      localObject1 = this.TYA;
       if (localObject1 != null) {
-        ((e)localObject1).resume();
+        ((ac)localObject1).apz(this.Uih);
       }
-    }
-    guX();
-    AppMethodBeat.o(225425);
-  }
-  
-  public final void aG(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(225401);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView != null)
-    {
-      localVideoCompositionPlayView.aG(paramLong1, paramLong2);
-      AppMethodBeat.o(225401);
+      localObject1 = this.Uig;
+      if (localObject1 != null)
+      {
+        localac = this.TYA;
+        s.checkNotNull(localac);
+        ((x)localObject1).a(localac, paramBoolean2, paramBoolean3, paramLong);
+      }
+      if (!this.TMw) {
+        this.UhQ.setVisibility(0);
+      }
+      if (paramBoolean2)
+      {
+        localObject1 = this.Uib;
+        if (localObject1 != null) {
+          ((e)localObject1).resume();
+        }
+      }
+      hSN();
+      AppMethodBeat.o(282754);
       return;
     }
-    AppMethodBeat.o(225401);
   }
   
-  public final void aN(boolean paramBoolean1, boolean paramBoolean2)
+  public final void auq()
   {
-    AppMethodBeat.i(225388);
-    Object localObject1 = ar.au(this.context);
-    int j = ((Point)localObject1).x;
-    int i = ((Point)localObject1).y;
-    Object localObject2 = new Size(j, i);
-    float f1;
-    float f2;
-    float f3;
-    float f4;
-    Object localObject3;
-    Bundle localBundle;
-    if ((paramBoolean2) && (this.NrK != null))
-    {
-      localObject1 = this.NrK;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      f1 = ((com.tencent.mm.plugin.vlog.model.v)localObject1).gtg();
-      f2 = j / i;
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.NGN;
-      f3 = 1.0F / com.tencent.mm.plugin.vlog.util.a.gwO();
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.NGN;
-      f4 = 1.0F / com.tencent.mm.plugin.vlog.util.a.gwN();
-      localObject1 = com.tencent.mm.kernel.h.ag(ak.class);
-      p.j(localObject1, "MMKernel.plugin(IPluginFinder::class.java)");
-      paramBoolean1 = ((ak)localObject1).isDisablePostHalfScreen();
-      localObject1 = com.tencent.mm.kernel.h.ag(ak.class);
-      p.j(localObject1, "MMKernel.plugin(IPluginFinder::class.java)");
-      paramBoolean2 = ((ak)localObject1).isAllowEditFillingFullScreen();
-      Log.i("MicroMsg.EditMultiPreviewPlugin", "updateValidArea, isDisablePostHalfScreen:" + paramBoolean1 + ", isAllowEditFillingFullScreen:" + paramBoolean2);
-      localObject1 = new RectF();
-      this.NuR.setVisibility(8);
-      if (f1 <= f2)
-      {
-        localObject3 = this.NrK;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        ((com.tencent.mm.plugin.vlog.model.v)localObject3).a(true, (Size)localObject2);
-        f1 = j / f4;
-        f2 = (i - f1) / 2.0F;
-        ((RectF)localObject1).set(0.0F, f2, j, f1 + f2);
-        this.Nmi.set(0.0F, 0.0F, j, i);
-        this.NuR.NGc = false;
-        localObject2 = this.APl;
-        localObject3 = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSo;
-        localBundle = new Bundle();
-        if (paramBoolean1)
-        {
-          i = 3;
-          localBundle.putInt("PARAM_1_INT", i);
-          ((com.tencent.mm.plugin.recordvideo.plugin.parent.d)localObject2).a((com.tencent.mm.plugin.recordvideo.plugin.parent.d.c)localObject3, localBundle);
-          label342:
-          this.NuQ.setEnableTouch(true);
-          this.NuQ.setEnableScale(false);
-          this.NuQ.setEnableFling(false);
-          this.NuQ.setEnableScroll(false);
-          this.NuR.setLimitMaxHeight(((RectF)localObject1).height());
-          this.NuR.setLimitMinHeight(((RectF)localObject1).height());
-          this.NuR.getVisibilityRect().set((RectF)localObject1);
-          this.NuR.getMaxVisibilityRect().set(this.Nmi);
-          this.NuR.postInvalidate();
-          this.NuR.HVW = true;
-          ((RectF)localObject1).round(this.NuE);
-          this.NuE.offset(-(int)this.Nmi.left, -(int)this.Nmi.top);
-          localObject2 = this.NrK;
-          if (localObject2 == null) {
-            p.iCn();
-          }
-          ((com.tencent.mm.plugin.vlog.model.v)localObject2).g(this.Nmi);
-          CropLayout.a(this.NuQ, (RectF)localObject1);
-          guS();
-        }
-      }
+    AppMethodBeat.i(282696);
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    if (localVideoCompositionPlayView != null) {
+      localVideoCompositionPlayView.stop();
     }
-    for (;;)
-    {
-      this.NuL.i(this.Nmi);
-      localObject1 = this.NrK;
-      if (localObject1 == null) {
-        break label1411;
-      }
-      ((com.tencent.mm.plugin.vlog.model.v)localObject1).kF((int)this.Nmi.width(), (int)this.Nmi.height());
-      AppMethodBeat.o(225388);
-      return;
-      i = 1;
-      break;
-      if (f1 <= 0.01F + f3)
-      {
-        if (paramBoolean2)
-        {
-          localObject3 = this.NrK;
-          if (localObject3 == null) {
-            p.iCn();
-          }
-          ((com.tencent.mm.plugin.vlog.model.v)localObject3).a(false, (Size)localObject2);
-          label602:
-          f1 = j / f4;
-          f2 = (i - f1) / 2.0F;
-          ((RectF)localObject1).set(0.0F, f2, j, f1 + f2);
-          if (!paramBoolean2) {
-            break label736;
-          }
-          this.Nmi.set(0.0F, 0.0F, j, i);
-          label652:
-          this.NuR.NGc = false;
-          localObject2 = this.APl;
-          localObject3 = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSo;
-          localBundle = new Bundle();
-          if (!paramBoolean1) {
-            break label769;
-          }
-        }
-        label769:
-        for (i = 3;; i = 1)
-        {
-          localBundle.putInt("PARAM_1_INT", i);
-          ((com.tencent.mm.plugin.recordvideo.plugin.parent.d)localObject2).a((com.tencent.mm.plugin.recordvideo.plugin.parent.d.c)localObject3, localBundle);
-          break;
-          localObject3 = this.NrK;
-          if (localObject3 == null) {
-            p.iCn();
-          }
-          ((com.tencent.mm.plugin.vlog.model.v)localObject3).a(true, (Size)localObject2);
-          break label602;
-          label736:
-          localObject2 = this.Nmi;
-          localObject3 = this.NrK;
-          if (localObject3 == null) {
-            p.iCn();
-          }
-          ((RectF)localObject2).set(((com.tencent.mm.plugin.vlog.model.v)localObject3).gth());
-          break label652;
-        }
-      }
-      if (f1 <= f4)
-      {
-        localObject3 = this.NrK;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        ((com.tencent.mm.plugin.vlog.model.v)localObject3).a(true, (Size)localObject2);
-        f1 = j / f4;
-        f2 = (i - f1) / 2.0F;
-        ((RectF)localObject1).set(0.0F, f2, j, f1 + f2);
-        localObject2 = this.Nmi;
-        localObject3 = this.NrK;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        ((RectF)localObject2).set(((com.tencent.mm.plugin.vlog.model.v)localObject3).gth());
-        this.NuR.NGc = false;
-        localObject2 = this.APl;
-        localObject3 = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSo;
-        localBundle = new Bundle();
-        if (paramBoolean1) {}
-        for (i = 3;; i = 1)
-        {
-          localBundle.putInt("PARAM_1_INT", i);
-          ((com.tencent.mm.plugin.recordvideo.plugin.parent.d)localObject2).a((com.tencent.mm.plugin.recordvideo.plugin.parent.d.c)localObject3, localBundle);
-          break;
-        }
-      }
-      if (f1 <= 1.777778F)
-      {
-        localObject3 = this.NrK;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        ((com.tencent.mm.plugin.vlog.model.v)localObject3).a(true, (Size)localObject2);
-        localObject2 = this.NrK;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        ((RectF)localObject1).set(((com.tencent.mm.plugin.vlog.model.v)localObject2).gth());
-        localObject2 = this.Nmi;
-        localObject3 = this.NrK;
-        if (localObject3 == null) {
-          p.iCn();
-        }
-        ((RectF)localObject2).set(((com.tencent.mm.plugin.vlog.model.v)localObject3).gth());
-        localObject2 = this.APl;
-        localObject3 = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSo;
-        localBundle = new Bundle();
-        localBundle.putInt("PARAM_1_INT", 3);
-        ((com.tencent.mm.plugin.recordvideo.plugin.parent.d)localObject2).a((com.tencent.mm.plugin.recordvideo.plugin.parent.d.c)localObject3, localBundle);
-        break label342;
-      }
-      localObject3 = this.NrK;
-      if (localObject3 == null) {
-        p.iCn();
-      }
-      ((com.tencent.mm.plugin.vlog.model.v)localObject3).a(true, (Size)localObject2);
-      localObject2 = this.NrK;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      ((RectF)localObject1).set(((com.tencent.mm.plugin.vlog.model.v)localObject2).gth());
-      localObject2 = this.Nmi;
-      localObject3 = this.NrK;
-      if (localObject3 == null) {
-        p.iCn();
-      }
-      ((RectF)localObject2).set(((com.tencent.mm.plugin.vlog.model.v)localObject3).gth());
-      localObject2 = this.APl;
-      localObject3 = com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSo;
-      localBundle = new Bundle();
-      localBundle.putInt("PARAM_1_INT", 3);
-      ((com.tencent.mm.plugin.recordvideo.plugin.parent.d)localObject2).a((com.tencent.mm.plugin.recordvideo.plugin.parent.d.c)localObject3, localBundle);
-      break label342;
-      f1 = j;
-      localObject1 = com.tencent.mm.plugin.vlog.util.a.NGN;
-      f3 = com.tencent.mm.plugin.vlog.util.a.gwN() * f1;
-      f1 = j;
-      int k = com.tencent.mm.ci.a.aY(this.context, a.d.Edge_12A);
-      i = com.tencent.mm.ci.a.aY(this.context, a.d.Edge_18A);
-      if (paramBoolean1) {
-        i = com.tencent.mm.ci.a.fromDPToPix(this.context, 224) + com.tencent.mm.ci.a.aY(this.context, a.d.Edge_3A);
-      }
-      i = ar.au(this.context).y - k - i + 0 - ax.aB(this.context);
-      Log.i("MicroMsg.EditMultiPreviewPlugin", "maxVisibleHeight:" + f3 + " ,validHeight:" + i);
-      f2 = Math.min(f3, i * 1.0F);
-      this.NuR.setLimitMaxHeight(f2);
-      this.NuR.setLimitMinHeight(0.5625F * f1);
-      this.NuR.fya();
-      f1 = 0.0F;
-      if (f2 < f3) {
-        f1 = (1.0F - f2 / f3) * j / 2.0F;
-      }
-      f3 = k + (i - f2) / 2.0F;
-      this.Nmi.set(f1, f3, j - f1, f3 + f2);
-    }
-    label1411:
-    AppMethodBeat.o(225388);
+    AppMethodBeat.o(282696);
   }
   
-  public final void bXe()
+  public final i bfp(String paramString)
   {
-    AppMethodBeat.i(225419);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView != null)
-    {
-      localVideoCompositionPlayView.bXe();
-      AppMethodBeat.o(225419);
-      return;
+    AppMethodBeat.i(282784);
+    s.u(paramString, "path");
+    Object localObject = this.Uft;
+    if (localObject == null) {
+      paramString = null;
     }
-    AppMethodBeat.o(225419);
-  }
-  
-  public final com.tencent.mm.plugin.vlog.model.j bfJ(String paramString)
-  {
-    AppMethodBeat.i(225452);
-    p.k(paramString, "path");
-    Object localObject = this.NrK;
-    if (localObject != null)
+    while (paramString == null)
     {
-      localObject = (List)((com.tencent.mm.plugin.vlog.model.v)localObject).NlZ;
-      if (localObject != null)
+      paramString = new i();
+      AppMethodBeat.o(282784);
+      return paramString;
+      localObject = (List)((v)localObject).TZF;
+      if (localObject == null)
+      {
+        paramString = null;
+      }
+      else
       {
         Iterator localIterator = ((Iterable)localObject).iterator();
         do
@@ -750,401 +494,545 @@ public final class d
             break;
           }
           localObject = localIterator.next();
-        } while (!p.h(((ad)localObject).path, paramString));
+        } while (!s.p(((ad)localObject).path, paramString));
+        for (paramString = (String)localObject;; paramString = null)
+        {
+          paramString = (ad)paramString;
+          if (paramString != null) {
+            break label122;
+          }
+          paramString = null;
+          break;
+        }
+        label122:
+        paramString = paramString.UaF;
       }
     }
-    for (paramString = (String)localObject;; paramString = null)
+    AppMethodBeat.o(282784);
+    return paramString;
+  }
+  
+  public final void bk(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(282651);
+    Object localObject1 = aw.bf(this.context);
+    int j = ((Point)localObject1).x;
+    int i = ((Point)localObject1).y;
+    Object localObject2 = new Size(j, i);
+    float f1;
+    float f2;
+    float f3;
+    Object localObject3;
+    Bundle localBundle;
+    ah localah;
+    if ((paramBoolean2) && (this.Uft != null))
     {
-      paramString = (ad)paramString;
-      if (paramString != null)
+      f1 = j / i;
+      localObject1 = com.tencent.mm.plugin.vlog.util.a.UsM;
+      f2 = 1.0F / com.tencent.mm.plugin.vlog.util.a.hUL();
+      localObject1 = com.tencent.mm.plugin.vlog.util.a.UsM;
+      f3 = 1.0F / com.tencent.mm.plugin.vlog.util.a.hUK();
+      paramBoolean1 = ((cn)com.tencent.mm.kernel.h.az(cn.class)).isDisablePostHalfScreen();
+      paramBoolean2 = ((cn)com.tencent.mm.kernel.h.az(cn.class)).isAllowEditFillingFullScreen();
+      Log.i("MicroMsg.EditMultiPreviewPlugin", "updateValidArea, isDisablePostHalfScreen:" + paramBoolean1 + ", isAllowEditFillingFullScreen:" + paramBoolean2);
+      localObject1 = new RectF();
+      this.UhQ.setVisibility(8);
+      if (f1 <= f1)
       {
-        localObject = paramString.Nnd;
-        paramString = (String)localObject;
-        if (localObject != null) {}
+        localObject3 = this.Uft;
+        s.checkNotNull(localObject3);
+        ((v)localObject3).g((Size)localObject2);
+        f1 = j / f3;
+        f2 = (i - f1) / 2.0F;
+        ((RectF)localObject1).set(0.0F, f2, j, f1 + f2);
+        this.TZO.set(0.0F, 0.0F, j, i);
+        this.UhQ.Usj = false;
+        localObject2 = this.GrC;
+        localObject3 = a.c.NOU;
+        localBundle = new Bundle();
+        if (paramBoolean1)
+        {
+          i = 3;
+          localBundle.putInt("PARAM_1_INT", i);
+          localah = ah.aiuX;
+          ((com.tencent.mm.plugin.recordvideo.plugin.parent.a)localObject2).a((a.c)localObject3, localBundle);
+          label297:
+          this.UhP.setEnableTouch(true);
+          this.UhP.setEnableScale(false);
+          this.UhP.setEnableFling(false);
+          this.UhP.setEnableScroll(false);
+          this.UhQ.setLimitMaxHeight(((RectF)localObject1).height());
+          this.UhQ.setLimitMinHeight(((RectF)localObject1).height());
+          this.UhQ.getVisibilityRect().set((RectF)localObject1);
+          this.UhQ.getMaxVisibilityRect().set(this.TZO);
+          this.UhQ.postInvalidate();
+          this.UhQ.NSK = true;
+          ((RectF)localObject1).round(this.UhY);
+          this.UhY.offset(-(int)this.TZO.left, -(int)this.TZO.top);
+          localObject2 = this.Uft;
+          s.checkNotNull(localObject2);
+          ((v)localObject2).h(this.TZO);
+          CropLayout.a((CropLayout)this.UhP, (RectF)localObject1);
+          hSI();
+        }
       }
-      else
+    }
+    for (;;)
+    {
+      this.Uif.i(this.TZO);
+      localObject1 = this.Uft;
+      if (localObject1 != null) {
+        ((v)localObject1).ms((int)this.TZO.width(), (int)this.TZO.height());
+      }
+      AppMethodBeat.o(282651);
+      return;
+      i = 1;
+      break;
+      if (f1 <= 0.01F + f2)
       {
-        paramString = new com.tencent.mm.plugin.vlog.model.j();
+        if (paramBoolean2)
+        {
+          localObject3 = this.Uft;
+          s.checkNotNull(localObject3);
+          ((v)localObject3).a(false, (Size)localObject2);
+          label554:
+          f1 = j / f3;
+          f2 = (i - f1) / 2.0F;
+          ((RectF)localObject1).set(0.0F, f2, j, f1 + f2);
+          if (!paramBoolean2) {
+            break label690;
+          }
+          this.TZO.set(0.0F, 0.0F, j, i);
+          label604:
+          this.UhQ.Usj = false;
+          localObject2 = this.GrC;
+          localObject3 = a.c.NOU;
+          localBundle = new Bundle();
+          if (!paramBoolean1) {
+            break label720;
+          }
+        }
+        label690:
+        label720:
+        for (i = 3;; i = 1)
+        {
+          localBundle.putInt("PARAM_1_INT", i);
+          localah = ah.aiuX;
+          ((com.tencent.mm.plugin.recordvideo.plugin.parent.a)localObject2).a((a.c)localObject3, localBundle);
+          break;
+          localObject3 = this.Uft;
+          s.checkNotNull(localObject3);
+          ((v)localObject3).a(true, (Size)localObject2);
+          break label554;
+          localObject2 = this.TZO;
+          localObject3 = this.Uft;
+          s.checkNotNull(localObject3);
+          ((RectF)localObject2).set(((v)localObject3).hQE());
+          break label604;
+        }
       }
-      AppMethodBeat.o(225452);
-      return paramString;
+      if (f1 <= f3)
+      {
+        localObject3 = this.Uft;
+        s.checkNotNull(localObject3);
+        ((v)localObject3).a(true, (Size)localObject2);
+        f1 = j / f3;
+        f2 = (i - f1) / 2.0F;
+        ((RectF)localObject1).set(0.0F, f2, j, f1 + f2);
+        localObject2 = this.TZO;
+        localObject3 = this.Uft;
+        s.checkNotNull(localObject3);
+        ((RectF)localObject2).set(((v)localObject3).hQE());
+        this.UhQ.Usj = false;
+        localObject2 = this.GrC;
+        localObject3 = a.c.NOU;
+        localBundle = new Bundle();
+        if (paramBoolean1) {}
+        for (i = 3;; i = 1)
+        {
+          localBundle.putInt("PARAM_1_INT", i);
+          localah = ah.aiuX;
+          ((com.tencent.mm.plugin.recordvideo.plugin.parent.a)localObject2).a((a.c)localObject3, localBundle);
+          break;
+        }
+      }
+      if (f1 <= 1.777778F)
+      {
+        localObject3 = this.Uft;
+        s.checkNotNull(localObject3);
+        ((v)localObject3).a(true, (Size)localObject2);
+        localObject2 = this.Uft;
+        s.checkNotNull(localObject2);
+        ((RectF)localObject1).set(((v)localObject2).hQE());
+        localObject2 = this.TZO;
+        localObject3 = this.Uft;
+        s.checkNotNull(localObject3);
+        ((RectF)localObject2).set(((v)localObject3).hQE());
+        localObject2 = this.GrC;
+        localObject3 = a.c.NOU;
+        localBundle = new Bundle();
+        localBundle.putInt("PARAM_1_INT", 3);
+        localah = ah.aiuX;
+        ((com.tencent.mm.plugin.recordvideo.plugin.parent.a)localObject2).a((a.c)localObject3, localBundle);
+        break label297;
+      }
+      localObject3 = this.Uft;
+      s.checkNotNull(localObject3);
+      ((v)localObject3).a(true, (Size)localObject2);
+      localObject2 = this.Uft;
+      s.checkNotNull(localObject2);
+      ((RectF)localObject1).set(((v)localObject2).hQE());
+      localObject2 = this.TZO;
+      localObject3 = this.Uft;
+      s.checkNotNull(localObject3);
+      ((RectF)localObject2).set(((v)localObject3).hQE());
+      localObject2 = this.GrC;
+      localObject3 = a.c.NOU;
+      localBundle = new Bundle();
+      localBundle.putInt("PARAM_1_INT", 3);
+      localah = ah.aiuX;
+      ((com.tencent.mm.plugin.recordvideo.plugin.parent.a)localObject2).a((a.c)localObject3, localBundle);
+      break label297;
+      f1 = j;
+      localObject1 = com.tencent.mm.plugin.vlog.util.a.UsM;
+      f3 = com.tencent.mm.plugin.vlog.util.a.hUK() * f1;
+      f1 = j;
+      int k = com.tencent.mm.cd.a.br(this.context, a.d.Edge_12A);
+      i = com.tencent.mm.cd.a.br(this.context, a.d.Edge_18A);
+      if (paramBoolean1) {
+        i = com.tencent.mm.cd.a.fromDPToPix(this.context, 224) + com.tencent.mm.cd.a.br(this.context, a.d.Edge_3A);
+      }
+      i = aw.bf(this.context).y - k - i + 0 - bf.bk(this.context);
+      Log.i("MicroMsg.EditMultiPreviewPlugin", "maxVisibleHeight:" + f3 + " ,validHeight:" + i);
+      f2 = Math.min(f3, i * 1.0F);
+      this.UhQ.setLimitMaxHeight(f2);
+      this.UhQ.setLimitMinHeight(0.5625F * f1);
+      this.UhQ.gJN();
+      f1 = 0.0F;
+      if (f2 < f3) {
+        f1 = (1.0F - f2 / f3) * j / 2.0F;
+      }
+      f3 = k + (i - f2) / 2.0F;
+      this.TZO.set(f1, f3, j - f1, f3 + f2);
     }
   }
   
-  public final VideoCompositionPlayView guT()
+  public final void bs(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(225398);
-    gva();
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView == null) {
-      p.iCn();
+    AppMethodBeat.i(282671);
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    if (localVideoCompositionPlayView != null) {
+      localVideoCompositionPlayView.bs(paramLong1, paramLong2);
     }
-    AppMethodBeat.o(225398);
+    AppMethodBeat.o(282671);
+  }
+  
+  public final void cxp()
+  {
+    AppMethodBeat.i(282730);
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    if (localVideoCompositionPlayView != null) {
+      localVideoCompositionPlayView.cxp();
+    }
+    AppMethodBeat.o(282730);
+  }
+  
+  public final VideoCompositionPlayView hSJ()
+  {
+    AppMethodBeat.i(282667);
+    hSQ();
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    s.checkNotNull(localVideoCompositionPlayView);
+    AppMethodBeat.o(282667);
     return localVideoCompositionPlayView;
   }
   
-  public final void guU()
+  public final void hSK()
   {
-    AppMethodBeat.i(225415);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView != null)
-    {
+    AppMethodBeat.i(282704);
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    if (localVideoCompositionPlayView != null) {
       localVideoCompositionPlayView.pause();
-      AppMethodBeat.o(225415);
-      return;
     }
-    AppMethodBeat.o(225415);
+    AppMethodBeat.o(282704);
   }
   
-  public final void guV()
+  public final void hSL()
   {
-    AppMethodBeat.i(225416);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView != null)
-    {
+    AppMethodBeat.i(282713);
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    if (localVideoCompositionPlayView != null) {
       localVideoCompositionPlayView.setVisibility(8);
-      AppMethodBeat.o(225416);
-      return;
     }
-    AppMethodBeat.o(225416);
+    AppMethodBeat.o(282713);
   }
   
-  public final void guW()
+  public final void hSM()
   {
-    AppMethodBeat.i(225417);
-    VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-    if (localVideoCompositionPlayView != null)
-    {
+    AppMethodBeat.i(282722);
+    VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+    if (localVideoCompositionPlayView != null) {
       localVideoCompositionPlayView.setVisibility(0);
-      AppMethodBeat.o(225417);
-      return;
     }
-    AppMethodBeat.o(225417);
+    AppMethodBeat.o(282722);
   }
   
-  public final void guY()
+  public final void hSO()
   {
-    AppMethodBeat.i(225432);
-    Object localObject1 = this.NuM;
-    if (localObject1 != null)
+    AppMethodBeat.i(282763);
+    Object localObject1 = this.Uig;
+    if (localObject1 == null)
     {
-      ((y)localObject1).gvI();
-      AppMethodBeat.o(225432);
-      return;
+      localObject1 = null;
+      if (localObject1 == null)
+      {
+        localObject1 = (d)this;
+        if (((CharSequence)((d)localObject1).UhX).length() <= 0) {
+          break label99;
+        }
+      }
     }
-    localObject1 = (d)this;
-    if (((CharSequence)((d)localObject1).NuD).length() > 0) {}
+    label99:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.Nol;
-        i = com.tencent.mm.plugin.vlog.model.local.a.bfz(((d)localObject1).NuD);
-        localObject1 = ((d)localObject1).NuC;
-        localObject2 = com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.Nzf;
-        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.aks(i));
+        Object localObject2 = com.tencent.mm.plugin.vlog.model.local.a.UbD;
+        i = com.tencent.mm.plugin.vlog.model.local.a.bfg(((d)localObject1).UhX);
+        localObject1 = ((d)localObject1).UhW;
+        localObject2 = com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.UlR;
+        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.apN(i));
       }
-      AppMethodBeat.o(225432);
+      AppMethodBeat.o(282763);
       return;
+      ((x)localObject1).hTx();
+      localObject1 = ah.aiuX;
+      break;
     }
   }
   
-  public final Rect guZ()
+  public final Rect hSP()
   {
-    AppMethodBeat.i(225442);
-    Object localObject = this.NuM;
-    if (localObject != null) {}
-    for (localObject = ((y)localObject).guZ(); localObject != null; localObject = null)
+    AppMethodBeat.i(282778);
+    Object localObject = this.Uig;
+    if (localObject == null) {}
+    for (localObject = null; localObject != null; localObject = ((x)localObject).hSP())
     {
-      AppMethodBeat.o(225442);
+      AppMethodBeat.o(282778);
       return localObject;
     }
-    localObject = this.NuQ.getContentRect();
-    RectF localRectF = this.NuQ.getVisibilityRect();
+    localObject = this.UhP.getContentRect();
+    RectF localRectF = this.UhP.getVisibilityRect();
     Rect localRect = new Rect();
     localRectF.round(localRect);
-    localObject = a((Rect)localObject, this.NuQ.getContentOriginalRect(), localRect);
-    AppMethodBeat.o(225442);
+    localObject = a((Rect)localObject, this.UhP.getContentOriginalRect(), localRect);
+    AppMethodBeat.o(282778);
     return localObject;
   }
   
-  public final void gvb()
+  public final void hSR()
   {
-    AppMethodBeat.i(225456);
-    if (this.Nux != null)
+    AppMethodBeat.i(282808);
+    if (this.UhR != null)
     {
-      VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
+      VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
       if (localVideoCompositionPlayView != null) {
         localVideoCompositionPlayView.resume();
       }
     }
-    this.NuO.reset();
-    this.NuP = 0L;
-    AppMethodBeat.o(225456);
+    this.Uii.reset();
+    this.Uij = 0L;
+    AppMethodBeat.o(282808);
   }
   
-  public final void gvc()
+  public final void hSS()
   {
-    AppMethodBeat.i(225457);
-    if (this.Nux != null)
+    AppMethodBeat.i(282814);
+    if (this.UhR != null)
     {
-      VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
-      if (localVideoCompositionPlayView != null)
-      {
+      VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
+      if (localVideoCompositionPlayView != null) {
         localVideoCompositionPlayView.pause();
-        AppMethodBeat.o(225457);
-        return;
       }
     }
-    AppMethodBeat.o(225457);
+    AppMethodBeat.o(282814);
   }
   
-  public final void gvd()
+  public final void hST()
   {
-    AppMethodBeat.i(225463);
-    if (this.Nux != null)
+    AppMethodBeat.i(282841);
+    if (this.UhR != null)
     {
-      VideoCompositionPlayView localVideoCompositionPlayView = this.Nux;
+      VideoCompositionPlayView localVideoCompositionPlayView = this.UhR;
       if (localVideoCompositionPlayView != null) {
         localVideoCompositionPlayView.release();
       }
-      this.Nux = null;
+      this.UhR = null;
     }
-    AppMethodBeat.o(225463);
-  }
-  
-  public final void h(RectF paramRectF)
-  {
-    AppMethodBeat.i(225395);
-    p.k(paramRectF, "rect");
-    this.NuL.h(paramRectF);
-    this.BZm.set(paramRectF);
-    if (!this.MZN)
-    {
-      this.NuR.getVisibilityRect().set(paramRectF);
-      this.NuR.postInvalidate();
-      this.NuR.setVisibility(0);
-    }
-    AppMethodBeat.o(225395);
+    AppMethodBeat.o(282841);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(225435);
+    AppMethodBeat.i(282769);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    com.tencent.mm.plugin.recordvideo.plugin.parent.d.b.a(this.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HTk);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    a.b.a(this.GrC, a.c.NPQ);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(225435);
+    AppMethodBeat.o(282769);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(225461);
+    AppMethodBeat.i(282825);
     super.onDetach();
-    View localView = (View)this.Nux;
-    if (localView != null)
-    {
+    View localView = (View)this.UhR;
+    if (localView != null) {
       localView.setAlpha(0.0F);
-      AppMethodBeat.o(225461);
-      return;
     }
-    AppMethodBeat.o(225461);
+    AppMethodBeat.o(282825);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(225462);
+    AppMethodBeat.i(282836);
     super.release();
-    gvd();
-    this.Nuy.clear();
-    AppMethodBeat.o(225462);
+    hST();
+    this.UhS.clear();
+    AppMethodBeat.o(282836);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(225453);
+    AppMethodBeat.i(282791);
     super.reset();
-    this.BZs = 0L;
-    this.NuQ.HA(true);
-    AppMethodBeat.o(225453);
+    this.HLo = 0L;
+    this.UhP.Nw(true);
+    AppMethodBeat.o(282791);
   }
   
   public final void seek(long paramLong)
   {
-    AppMethodBeat.i(225454);
-    Object localObject = this.Nux;
+    AppMethodBeat.i(282798);
+    Object localObject = this.UhR;
     if (localObject != null) {
       ((VideoCompositionPlayView)localObject).seekTo(paramLong);
     }
-    localObject = com.tencent.mm.plugin.vlog.model.report.b.NoK;
+    localObject = com.tencent.mm.plugin.vlog.model.report.b.Ucm;
     com.tencent.mm.plugin.vlog.model.report.b.report(0L);
-    AppMethodBeat.o(225454);
+    AppMethodBeat.o(282798);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Companion;", "", "()V", "TAG", "", "TYPE_IMAGE", "", "TYPE_VIDEO", "plugin-vlog_release"})
-  public static final class a {}
+  public final void setVisibleRect(RectF paramRectF)
+  {
+    AppMethodBeat.i(282658);
+    s.u(paramRectF, "rect");
+    this.Uif.setVisibleRect(paramRectF);
+    this.HLi.set(paramRectF);
+    if (!this.TMw)
+    {
+      this.UhQ.getVisibilityRect().set(paramRectF);
+      this.UhQ.postInvalidate();
+      this.UhQ.setVisibility(0);
+    }
+    AppMethodBeat.o(282658);
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "onFinish", "", "onProgress", "timeMs", "", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "onFinish", "", "onProgress", "timeMs", "", "onStart", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface c
     extends d.b
   {
-    public abstract void LX(long paramLong);
-    
     public abstract void a(d.e parame);
+    
+    public abstract void qU(long paramLong);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "onUpdate", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "seekTo", "", "seekToOriginPosition", "", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewCallback;", "onUpdate", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "seekTo", "", "seekToOriginPosition", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface d
     extends d.b
   {
     public abstract void a(ac paramac, long paramLong, boolean paramBoolean);
     
-    @l(iBK={1, 1, 16})
+    @Metadata(k=3, mv={1, 5, 1}, xi=48)
     public static final class a {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "", "pause", "", "resume", "seek", "timeMs", "", "host", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "", "pause", "", "resume", "seek", "timeMs", "", "host", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface e
   {
-    public abstract void Sw(long paramLong);
-    
     public abstract void pause();
     
     public abstract void resume();
+    
+    public abstract void wK(long paramLong);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$checkInitVideoView$1", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerFrameCallback;", "onFrame", "", "onPlayCompleted", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$checkInitVideoView$1", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerFrameCallback;", "onFrame", "", "onPlayCompleted", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class f
     implements a.a.b
   {
-    public final void Np(long paramLong)
-    {
-      AppMethodBeat.i(228273);
-      Log.d("MicroMsg.EditMultiPreviewPlugin", "onPlayProgress timeMs:".concat(String.valueOf(paramLong)));
-      Iterator localIterator = ((Iterable)d.c(this.NuT)).iterator();
-      while (localIterator.hasNext())
-      {
-        d.b localb = (d.b)localIterator.next();
-        if ((localb instanceof d.c)) {
-          ((d.c)localb).LX(paramLong);
-        }
-      }
-      AppMethodBeat.o(228273);
-    }
+    f(d paramd) {}
     
-    public final void egA()
+    public final void fiA()
     {
-      AppMethodBeat.i(228266);
-      Object localObject = ((Iterable)d.c(this.NuT)).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        d.b localb = (d.b)((Iterator)localObject).next();
-        if ((localb instanceof d.c)) {
-          ((d.c)localb).a(this.NuT.NuG);
-        }
-      }
-      localObject = d.d(this.NuT);
-      long l;
-      if (localObject != null)
-      {
-        l = ((VideoCompositionPlayView)localObject).getPosition();
-        localObject = this.NuT.NuH;
-        if (localObject != null)
-        {
-          ((d.e)localObject).Sw(l + this.NuT.NuI);
-          AppMethodBeat.o(228266);
-        }
-      }
-      else
-      {
-        localObject = d.e(this.NuT);
-        if (localObject != null) {}
-        for (l = ((ac)localObject).NmT.getPlayStart();; l = 0L)
-        {
-          l = 0L - l / 1000L;
-          break;
-        }
-      }
-      AppMethodBeat.o(228266);
-    }
-    
-    public final void egB() {}
-    
-    public final void egC()
-    {
-      AppMethodBeat.i(228270);
-      Iterator localIterator = ((Iterable)d.c(this.NuT)).iterator();
-      while (localIterator.hasNext()) {
-        localIterator.next();
-      }
-      AppMethodBeat.o(228270);
-    }
-    
-    public final void egD()
-    {
-      AppMethodBeat.i(228278);
-      Object localObject = d.d(this.NuT);
+      AppMethodBeat.i(282315);
+      Object localObject = d.d(this.Uik);
       if (localObject == null)
       {
-        localObject = new kotlin.t("null cannot be cast to non-null type android.view.View");
-        AppMethodBeat.o(228278);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.View");
+        AppMethodBeat.o(282315);
         throw ((Throwable)localObject);
       }
       ((View)localObject).setAlpha(1.0F);
-      com.tencent.mm.plugin.recordvideo.plugin.parent.d.b.a(this.NuT.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSl);
-      AppMethodBeat.o(228278);
+      a.b.a(this.Uik.GrC, a.c.NOR);
+      AppMethodBeat.o(282315);
     }
     
-    public final void egE() {}
+    public final void fiB() {}
     
-    public final void egF()
+    public final void fiC()
     {
-      AppMethodBeat.i(228280);
-      Object localObject = d.d(this.NuT);
-      if (localObject != null)
+      int i = 1;
+      AppMethodBeat.i(282330);
+      Object localObject = d.d(this.Uik);
+      if ((localObject != null) && (((VideoCompositionPlayView)localObject).isPlaying() == true)) {}
+      while (i == 0)
       {
-        if (((VideoCompositionPlayView)localObject).isPlaying() != true) {
-          AppMethodBeat.o(228280);
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(228280);
+        AppMethodBeat.o(282330);
         return;
+        i = 0;
       }
-      if (d.f(this.NuT) == 0L) {
-        d.b(this.NuT, Util.currentTicks());
+      if (d.f(this.Uik) == 0L) {
+        d.b(this.Uik, Util.currentTicks());
       }
-      localObject = d.g(this.NuT);
-      int i;
-      if (((o)localObject).maN == 0L)
+      localObject = d.g(this.Uik);
+      if (((n)localObject).oTE == 0L)
       {
-        ((o)localObject).maN = Util.currentTicks();
-        if (Util.ticksToNow(d.f(this.NuT)) >= 1000L)
+        ((n)localObject).oTE = Util.currentTicks();
+        if (Util.ticksToNow(d.f(this.Uik)) >= 1000L)
         {
-          Log.d("MicroMsg.EditMultiPreviewPlugin", "onFrame: fps " + d.g(this.NuT).getFps());
-          localObject = com.tencent.mm.plugin.vlog.model.report.b.NoK;
-          i = d.g(this.NuT).getFps();
+          Log.d("MicroMsg.EditMultiPreviewPlugin", s.X("onFrame: fps ", Integer.valueOf(d.g(this.Uik).getFps())));
+          localObject = com.tencent.mm.plugin.vlog.model.report.b.Ucm;
+          i = d.g(this.Uik).getFps();
           if (i <= 60) {
-            break label194;
+            break label192;
           }
           com.tencent.mm.plugin.vlog.model.report.b.report(21L);
         }
       }
       for (;;)
       {
-        d.b(this.NuT, 0L);
-        d.g(this.NuT).reset();
-        AppMethodBeat.o(228280);
+        d.b(this.Uik, 0L);
+        d.g(this.Uik).reset();
+        AppMethodBeat.o(282330);
         return;
-        ((o)localObject).frames += 1;
+        ((n)localObject).frames += 1;
         break;
-        label194:
+        label192:
         if (i > 40) {
           com.tencent.mm.plugin.vlog.model.report.b.report(22L);
         } else if (i > 30) {
@@ -1158,114 +1046,177 @@ public final class d
         }
       }
     }
+    
+    public final void fix()
+    {
+      AppMethodBeat.i(282282);
+      Object localObject2 = (Iterable)d.c(this.Uik);
+      Object localObject1 = this.Uik;
+      localObject2 = ((Iterable)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        d.b localb = (d.b)((Iterator)localObject2).next();
+        if ((localb instanceof d.c)) {
+          ((d.c)localb).a(((d)localObject1).Uia);
+        }
+      }
+      localObject1 = d.d(this.Uik);
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        if (localObject1 != null) {
+          break label173;
+        }
+        localObject1 = d.e(this.Uik);
+        if (localObject1 != null) {
+          break label162;
+        }
+        l = 0L;
+      }
+      label110:
+      for (long l = 0L - l / 1000L;; l = ((Long)localObject1).longValue())
+      {
+        localObject1 = this.Uik.Uib;
+        if (localObject1 != null) {
+          ((d.e)localObject1).wK(l + this.Uik.Uic);
+        }
+        AppMethodBeat.o(282282);
+        return;
+        localObject1 = Long.valueOf(((VideoCompositionPlayView)localObject1).getPosition());
+        break;
+        l = ((ac)localObject1).Uaw.getPlayStart();
+        break label110;
+      }
+    }
+    
+    public final void fiy() {}
+    
+    public final void fiz()
+    {
+      AppMethodBeat.i(282300);
+      Iterator localIterator = ((Iterable)d.c(this.Uik)).iterator();
+      while (localIterator.hasNext()) {
+        localIterator.next();
+      }
+      AppMethodBeat.o(282300);
+    }
+    
+    public final void qT(long paramLong)
+    {
+      AppMethodBeat.i(282307);
+      Log.d("MicroMsg.EditMultiPreviewPlugin", s.X("onPlayProgress timeMs:", Long.valueOf(paramLong)));
+      Iterator localIterator = ((Iterable)d.c(this.Uik)).iterator();
+      while (localIterator.hasNext())
+      {
+        d.b localb = (d.b)localIterator.next();
+        if ((localb instanceof d.c)) {
+          ((d.c)localb).qU(paramLong);
+        }
+      }
+      AppMethodBeat.o(282307);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$checkInitVideoView$2", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "onSeek", "", "cost", "", "onUpdateComposition", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$checkInitVideoView$2", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "onSeek", "", "cost", "", "onUpdateComposition", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class g
     implements a.a.c
   {
-    public final void OM(long paramLong)
+    g(d paramd) {}
+    
+    public final void sK(long paramLong)
     {
-      AppMethodBeat.i(235447);
-      Log.d("MicroMsg.EditMultiPreviewPlugin", "onSeek: ".concat(String.valueOf(paramLong)));
-      Object localObject = this.NuT.Nuz;
-      if (((com.tencent.mm.plugin.vlog.ui.report.a)localObject).NCh.size() < ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).NCg) {
-        ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).NCh.add(Long.valueOf(paramLong));
+      AppMethodBeat.i(282279);
+      Log.d("MicroMsg.EditMultiPreviewPlugin", s.X("onSeek: ", Long.valueOf(paramLong)));
+      Object localObject = this.Uik.UhT;
+      if (((com.tencent.mm.plugin.vlog.ui.report.a)localObject).UoN.size() < ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).UoM) {
+        ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).UoN.add(Long.valueOf(paramLong));
       }
-      localObject = com.tencent.mm.plugin.vlog.model.report.b.NoK;
+      localObject = com.tencent.mm.plugin.vlog.model.report.b.Ucm;
       com.tencent.mm.plugin.vlog.model.report.b.report(1L);
-      com.tencent.mm.plugin.report.service.h.IzE.p(1468L, 2L, paramLong);
+      com.tencent.mm.plugin.report.service.h.OAn.p(1468L, 2L, paramLong);
       if (paramLong <= 30L)
       {
         com.tencent.mm.plugin.vlog.model.report.b.report(4L);
-        AppMethodBeat.o(235447);
+        AppMethodBeat.o(282279);
         return;
       }
       if (paramLong <= 100L)
       {
         com.tencent.mm.plugin.vlog.model.report.b.report(5L);
-        AppMethodBeat.o(235447);
+        AppMethodBeat.o(282279);
         return;
       }
       if (paramLong <= 500L)
       {
         com.tencent.mm.plugin.vlog.model.report.b.report(6L);
-        AppMethodBeat.o(235447);
+        AppMethodBeat.o(282279);
         return;
       }
       if (paramLong <= 1000L)
       {
         com.tencent.mm.plugin.vlog.model.report.b.report(7L);
-        AppMethodBeat.o(235447);
+        AppMethodBeat.o(282279);
         return;
       }
       com.tencent.mm.plugin.vlog.model.report.b.report(8L);
-      AppMethodBeat.o(235447);
+      AppMethodBeat.o(282279);
     }
     
-    public final void Sz(long paramLong)
+    public final void wN(long paramLong)
     {
-      AppMethodBeat.i(235445);
-      Log.d("MicroMsg.EditMultiPreviewPlugin", "onUpdateComposition: ".concat(String.valueOf(paramLong)));
-      Object localObject = this.NuT.Nuz;
-      if (((com.tencent.mm.plugin.vlog.ui.report.a)localObject).NCi.size() < ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).NCg) {
-        ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).NCi.add(Long.valueOf(paramLong));
+      AppMethodBeat.i(282267);
+      Log.d("MicroMsg.EditMultiPreviewPlugin", s.X("onUpdateComposition: ", Long.valueOf(paramLong)));
+      Object localObject = this.Uik.UhT;
+      if (((com.tencent.mm.plugin.vlog.ui.report.a)localObject).UoO.size() < ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).UoM) {
+        ((com.tencent.mm.plugin.vlog.ui.report.a)localObject).UoO.add(Long.valueOf(paramLong));
       }
-      localObject = com.tencent.mm.plugin.vlog.model.report.b.NoK;
+      localObject = com.tencent.mm.plugin.vlog.model.report.b.Ucm;
       com.tencent.mm.plugin.vlog.model.report.b.report(11L);
-      com.tencent.mm.plugin.report.service.h.IzE.p(1468L, 12L, paramLong);
-      AppMethodBeat.o(235445);
+      com.tencent.mm.plugin.report.service.h.OAn.p(1468L, 12L, paramLong);
+      AppMethodBeat.o(282267);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.b<Matrix, Boolean>
-  {
-    h(boolean paramBoolean)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$onPreviewImage$2", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "blockChanged", "", "onBlockDownClick", "", "isTopBlock", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$onPreviewImage$2", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "blockChanged", "", "onBlockDownClick", "", "isTopBlock", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class i
     implements WxCropOperationLayout.i
   {
-    private boolean NuV = true;
+    private boolean Uim = true;
     
-    i(long paramLong, ad paramad) {}
+    i(d paramd, long paramLong, ad paramad) {}
     
-    public final void e(RectF paramRectF)
+    public final void f(RectF paramRectF)
     {
-      AppMethodBeat.i(223958);
-      p.k(paramRectF, "rectF");
-      if (d.a(this.NuT, l)) {
-        this.NuT.BZm.set(paramRectF);
+      AppMethodBeat.i(282286);
+      s.u(paramRectF, "rectF");
+      if (d.a(this.Uik, l)) {
+        this.Uik.HLi.set(paramRectF);
       }
-      Object localObject1 = d.a(this.NuT);
+      Object localObject1 = d.a(this.Uik);
       if (localObject1 != null)
       {
-        localObject1 = (List)((com.tencent.mm.plugin.vlog.model.v)localObject1).NlZ;
+        localObject1 = (List)((v)localObject1).TZF;
         if (localObject1 != null)
         {
-          localObject1 = ((Iterable)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
+          Object localObject2 = (Iterable)localObject1;
+          localObject1 = this.UbX;
+          d locald = this.Uik;
+          localObject2 = ((Iterable)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            Object localObject2 = (ad)((Iterator)localObject1).next();
-            com.tencent.mm.plugin.vlog.model.j localj = ((ad)localObject2).Nnd;
-            paramRectF.round(localj.kXj);
-            if ((!p.h(this.Not, localObject2)) && (!this.NuT.MZN))
+            Object localObject3 = (ad)((Iterator)localObject2).next();
+            i locali = ((ad)localObject3).UaF;
+            paramRectF.round(locali.Gl);
+            if ((!s.p(localObject1, localObject3)) && (!locald.TMw))
             {
-              int i = localj.kXj.bottom - localj.vcr.bottom;
-              int j = localj.kXj.top - localj.vcr.top;
+              int i = locali.Gl.bottom - locali.yok.bottom;
+              int j = locali.Gl.top - locali.yok.top;
               if ((i > 0) || (j < 0))
               {
-                localObject2 = new Matrix();
-                RectF localRectF = new RectF(localj.vcr);
+                localObject3 = new Matrix();
+                RectF localRectF = new RectF(locali.yok);
                 float f1 = paramRectF.height() / localRectF.height();
-                label234:
+                label246:
                 float f2;
                 if (f1 < 1.0F) {
                   if (j < 0)
@@ -1278,14 +1229,14 @@ public final class d
                 }
                 for (;;)
                 {
-                  ((Matrix)localObject2).postTranslate(0.0F, f2);
-                  ((Matrix)localObject2).postScale(f1, f1, paramRectF.centerX(), paramRectF.centerY());
-                  ((Matrix)localObject2).mapRect(localRectF);
-                  localRectF.round(localj.vcr);
-                  localj.aHZ.postConcat((Matrix)localObject2);
+                  ((Matrix)localObject3).postTranslate(0.0F, f2);
+                  ((Matrix)localObject3).postScale(f1, f1, paramRectF.centerX(), paramRectF.centerY());
+                  ((Matrix)localObject3).mapRect(localRectF);
+                  localRectF.round(locali.yok);
+                  locali.matrix.postConcat((Matrix)localObject3);
                   break;
                   f1 = i;
-                  break label234;
+                  break label246;
                   f2 = paramRectF.centerY() - localRectF.centerY();
                 }
               }
@@ -1293,176 +1244,165 @@ public final class d
           }
         }
       }
-      this.NuT.NuQ.b(paramRectF, false);
-      paramRectF = this.NuT.NuA;
+      this.Uik.UhP.b(paramRectF, false);
+      paramRectF = this.Uik.UhU;
       if (paramRectF != null) {
         paramRectF.onChange();
       }
-      if (!this.NuV)
+      if (!this.Uim)
       {
-        paramRectF = this.NuT;
-        paramRectF.NuB += 1;
+        paramRectF = this.Uik;
+        paramRectF.UhV += 1;
       }
-      this.NuV = true;
-      AppMethodBeat.o(223958);
+      this.Uim = true;
+      AppMethodBeat.o(282286);
     }
     
-    public final void rU(boolean paramBoolean)
+    public final void vS(boolean paramBoolean)
     {
-      this.NuV = false;
+      this.Uim = false;
     }
     
-    public final void rV(boolean paramBoolean) {}
+    public final void vT(boolean paramBoolean)
+    {
+      AppMethodBeat.i(282301);
+      s.u(this, "this");
+      AppMethodBeat.o(282301);
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$onPreviewImage$3", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeStartEndListener;", "startScale", "", "onChange", "", "onChangeEnd", "onChangeStart", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$onPreviewImage$3", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeStartEndListener;", "startScale", "", "onChange", "", "onChangeEnd", "onChangeStart", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class j
     implements CropLayout.d
   {
-    private float INY = 1.0F;
+    private float OVa = 1.0F;
     
-    j(ad paramad, m paramm) {}
+    j(ad paramad, m paramm, d paramd) {}
     
-    public final void gvi()
+    public final void hSY()
     {
-      AppMethodBeat.i(244409);
-      this.INY = com.tencent.mm.plugin.vlog.model.t.e(this.Not.Nnd.aHZ);
-      AppMethodBeat.o(244409);
+      AppMethodBeat.i(282314);
+      this.OVa = t.g(this.UbX.UaF.matrix);
+      AppMethodBeat.o(282314);
     }
     
-    public final void gvj()
+    public final void hSZ()
     {
-      AppMethodBeat.i(244410);
-      Object localObject = this.Not;
-      if (this.INY != com.tencent.mm.plugin.vlog.model.t.e(((ad)localObject).Nnd.aHZ))
+      AppMethodBeat.i(282323);
+      Object localObject = this.UbX;
+      if (this.OVa == t.g(((ad)localObject).UaF.matrix)) {}
+      for (int i = 1; i == 0; i = 0)
       {
-        localObject = ((ad)localObject).Nnf;
+        localObject = ((ad)localObject).UaH;
         ((MediaEditReportInfo.EditItem)localObject).scaleCount += 1;
-        AppMethodBeat.o(244410);
+        AppMethodBeat.o(282323);
         return;
       }
-      localObject = ((ad)localObject).Nnf;
+      localObject = ((ad)localObject).UaH;
       ((MediaEditReportInfo.EditItem)localObject).dragCount += 1;
-      AppMethodBeat.o(244410);
+      AppMethodBeat.o(282323);
     }
     
     public final void onChange()
     {
-      AppMethodBeat.i(244408);
-      if (this.Not.Nnd.getScale() > 0.0F)
-      {
-        com.tencent.mm.ca.b localb = paramm.getPresenter();
-        p.j(localb, "drawingView.presenter");
-        localb.setInitScale(1.0F / this.Not.Nnd.getScale());
+      AppMethodBeat.i(282308);
+      if (this.UbX.UaF.getScale() > 0.0F) {
+        paramm.getPresenter().setInitScale(1.0F / this.UbX.UaF.getScale());
       }
-      if (!this.NuT.MZN) {
-        this.Not.Nnd.vcr.set(this.NuT.NuQ.getContentRect());
+      if (!jdField_this.TMw) {
+        this.UbX.UaF.yok.set(jdField_this.UhP.getContentRect());
       }
-      AppMethodBeat.o(244408);
+      AppMethodBeat.o(282308);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$onUpdateVideo$3", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "blockChanged", "", "onBlockDownClick", "", "isTopBlock", "onBlockTouchUp", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$onUpdateVideo$3", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "blockChanged", "", "onBlockDownClick", "", "isTopBlock", "onBlockTouchUp", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class k
     implements WxCropOperationLayout.i
   {
-    private boolean NuV = true;
+    private boolean Uim = true;
     
-    public final void e(RectF paramRectF)
+    k(d paramd) {}
+    
+    public final void f(RectF paramRectF)
     {
-      AppMethodBeat.i(246028);
-      p.k(paramRectF, "rectF");
-      Object localObject = d.b(this.NuT);
-      if (localObject != null)
-      {
-        localObject = ((y)localObject).gvG();
-        if (localObject != null) {
-          ((WxCropOperationLayout.i)localObject).e(paramRectF);
-        }
+      AppMethodBeat.i(282509);
+      s.u(paramRectF, "rectF");
+      x localx = d.b(this.Uik);
+      if (localx != null) {
+        localx.hTv().f(paramRectF);
       }
-      paramRectF = this.NuT.NuA;
+      paramRectF = this.Uik.UhU;
       if (paramRectF != null) {
         paramRectF.onChange();
       }
-      if (!this.NuV)
+      if (!this.Uim)
       {
-        paramRectF = this.NuT;
-        paramRectF.NuB += 1;
+        paramRectF = this.Uik;
+        paramRectF.UhV += 1;
       }
-      this.NuV = true;
-      AppMethodBeat.o(246028);
+      this.Uim = true;
+      AppMethodBeat.o(282509);
     }
     
-    public final void rU(boolean paramBoolean)
+    public final void vS(boolean paramBoolean)
     {
-      AppMethodBeat.i(246029);
-      Object localObject = d.b(this.NuT);
-      if (localObject != null)
-      {
-        localObject = ((y)localObject).gvG();
-        if (localObject != null) {
-          ((WxCropOperationLayout.i)localObject).rU(paramBoolean);
-        }
+      AppMethodBeat.i(282519);
+      x localx = d.b(this.Uik);
+      if (localx != null) {
+        localx.hTv().vS(paramBoolean);
       }
-      this.NuV = false;
-      AppMethodBeat.o(246029);
+      this.Uim = false;
+      AppMethodBeat.o(282519);
     }
     
-    public final void rV(boolean paramBoolean)
+    public final void vT(boolean paramBoolean)
     {
-      AppMethodBeat.i(246030);
-      Object localObject = d.b(this.NuT);
-      if (localObject != null)
-      {
-        localObject = ((y)localObject).gvG();
-        if (localObject != null)
-        {
-          ((WxCropOperationLayout.i)localObject).rV(paramBoolean);
-          AppMethodBeat.o(246030);
-          return;
-        }
+      AppMethodBeat.i(282529);
+      x localx = d.b(this.Uik);
+      if (localx != null) {
+        localx.hTv().vT(paramBoolean);
       }
-      AppMethodBeat.o(246030);
+      AppMethodBeat.o(282529);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$videoSeekable$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "pause", "", "resume", "seek", "timeMs", "", "host", "", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$videoSeekable$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "pause", "", "resume", "seek", "timeMs", "", "host", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class l
     implements d.e
   {
-    public final void Sw(long paramLong)
-    {
-      AppMethodBeat.i(234419);
-      Object localObject = com.tencent.mm.plugin.vlog.model.report.b.NoK;
-      com.tencent.mm.plugin.vlog.model.report.b.report(0L);
-      localObject = d.d(this.NuT);
-      if (localObject != null)
-      {
-        ((VideoCompositionPlayView)localObject).seekTo(paramLong);
-        AppMethodBeat.o(234419);
-        return;
-      }
-      AppMethodBeat.o(234419);
-    }
+    l(d paramd, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama) {}
     
     public final void pause()
     {
-      AppMethodBeat.i(234421);
-      com.tencent.mm.plugin.recordvideo.plugin.parent.d.b.a(this.NuT.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSf);
-      AppMethodBeat.o(234421);
+      AppMethodBeat.i(282522);
+      a.b.a(parama, a.c.NOL);
+      AppMethodBeat.o(282522);
     }
     
     public final void resume()
     {
-      AppMethodBeat.i(234422);
-      com.tencent.mm.plugin.recordvideo.plugin.parent.d.b.a(this.NuT.APl, com.tencent.mm.plugin.recordvideo.plugin.parent.d.c.HSg);
-      AppMethodBeat.o(234422);
+      AppMethodBeat.i(282531);
+      a.b.a(parama, a.c.NOM);
+      AppMethodBeat.o(282531);
+    }
+    
+    public final void wK(long paramLong)
+    {
+      AppMethodBeat.i(282512);
+      Object localObject = com.tencent.mm.plugin.vlog.model.report.b.Ucm;
+      com.tencent.mm.plugin.vlog.model.report.b.report(0L);
+      localObject = d.d(this.Uik);
+      if (localObject != null) {
+        ((VideoCompositionPlayView)localObject).seekTo(paramLong);
+      }
+      AppMethodBeat.o(282512);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.d
  * JD-Core Version:    0.7.0.1
  */

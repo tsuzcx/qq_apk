@@ -15,7 +15,7 @@ final class IPCallShareCouponCardUI$9
     AppMethodBeat.i(25911);
     try
     {
-      this.DYe.finish();
+      this.JPm.finish();
       AppMethodBeat.o(25911);
       return;
     }

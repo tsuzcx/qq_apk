@@ -12,35 +12,35 @@ public final class e
   extends AbstractCursor
   implements d
 {
-  private d VJS;
-  public d[] VJT;
+  private d adnW;
+  public d[] adnX;
   private DataSetObserver mObserver;
   
   public e(d[] paramArrayOfd)
   {
     AppMethodBeat.i(133446);
     this.mObserver = new e.1(this);
-    this.VJT = paramArrayOfd;
-    this.VJS = paramArrayOfd[0];
-    while (i < this.VJT.length)
+    this.adnX = paramArrayOfd;
+    this.adnW = paramArrayOfd[0];
+    while (i < this.adnX.length)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].registerDataSetObserver(this.mObserver);
+      if (this.adnX[i] != null) {
+        this.adnX[i].registerDataSetObserver(this.mObserver);
       }
       i += 1;
     }
     AppMethodBeat.o(133446);
   }
   
-  public final void EV(boolean paramBoolean)
+  public final void KF(boolean paramBoolean)
   {
     AppMethodBeat.i(133466);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].EV(paramBoolean);
+      if (this.adnX[i] != null) {
+        this.adnX[i].KF(paramBoolean);
       }
       i += 1;
     }
@@ -50,12 +50,12 @@ public final class e
   public final void a(f.a parama)
   {
     AppMethodBeat.i(133465);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].a(parama);
+      if (this.adnX[i] != null) {
+        this.adnX[i].a(parama);
       }
       i += 1;
     }
@@ -65,16 +65,16 @@ public final class e
   public final boolean a(Object paramObject, a parama)
   {
     AppMethodBeat.i(133469);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.VJT[i] != null)
+      if (this.adnX[i] != null)
       {
         bool2 = bool1;
-        if (this.VJT[i].a(paramObject, parama)) {
+        if (this.adnX[i].a(paramObject, parama)) {
           bool2 = true;
         }
       }
@@ -84,19 +84,19 @@ public final class e
     return bool1;
   }
   
-  public final boolean asV(int paramInt)
+  public final boolean azm(int paramInt)
   {
     AppMethodBeat.i(133471);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.VJT[i] != null)
+      if (this.adnX[i] != null)
       {
         bool2 = bool1;
-        if (!this.VJT[i].asV(paramInt)) {
+        if (!this.adnX[i].azm(paramInt)) {
           bool2 = false;
         }
       }
@@ -107,19 +107,19 @@ public final class e
     return bool1;
   }
   
-  public final a asW(int paramInt)
+  public final a azn(int paramInt)
   {
     AppMethodBeat.i(133468);
-    int k = this.VJT.length;
+    int k = this.adnX.length;
     int j = 0;
     int i = paramInt;
     paramInt = j;
     while (paramInt < k)
     {
-      j = this.VJT[paramInt].getCount();
+      j = this.adnX[paramInt].getCount();
       if (i < j)
       {
-        a locala = this.VJT[paramInt].asW(i);
+        a locala = this.adnX[paramInt].azn(i);
         AppMethodBeat.o(133468);
         return locala;
       }
@@ -130,30 +130,15 @@ public final class e
     return null;
   }
   
-  public final void asX(int paramInt)
-  {
-    AppMethodBeat.i(133474);
-    int j = this.VJT.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (this.VJT[i] != null) {
-        this.VJT[i].asX(paramInt);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(133474);
-  }
-  
   public final void close()
   {
     AppMethodBeat.i(133459);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].close();
+      if (this.adnX[i] != null) {
+        this.adnX[i].close();
       }
       i += 1;
     }
@@ -166,12 +151,12 @@ public final class e
   public final void deactivate()
   {
     AppMethodBeat.i(133458);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].deactivate();
+      if (this.adnX[i] != null) {
+        this.adnX[i].deactivate();
       }
       i += 1;
     }
@@ -179,19 +164,34 @@ public final class e
     AppMethodBeat.o(133458);
   }
   
-  public final boolean eh(Object paramObject)
+  public final void fi(int paramInt)
+  {
+    AppMethodBeat.i(133474);
+    int j = this.adnX.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (this.adnX[i] != null) {
+        this.adnX[i].fi(paramInt);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(133474);
+  }
+  
+  public final boolean gF(Object paramObject)
   {
     AppMethodBeat.i(133472);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     boolean bool2;
     for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       bool2 = bool1;
-      if (this.VJT[i] != null)
+      if (this.adnX[i] != null)
       {
         bool2 = bool1;
-        if (this.VJT[i].eh(paramObject)) {
+        if (this.adnX[i].gF(paramObject)) {
           bool2 = true;
         }
       }
@@ -201,10 +201,10 @@ public final class e
     return bool1;
   }
   
-  public final a ei(Object paramObject)
+  public final a gG(Object paramObject)
   {
     AppMethodBeat.i(133473);
-    paramObject = this.VJS.ei(paramObject);
+    paramObject = this.adnW.gG(paramObject);
     AppMethodBeat.o(133473);
     return paramObject;
   }
@@ -212,7 +212,7 @@ public final class e
   public final byte[] getBlob(int paramInt)
   {
     AppMethodBeat.i(133456);
-    byte[] arrayOfByte = this.VJS.getBlob(paramInt);
+    byte[] arrayOfByte = this.adnW.getBlob(paramInt);
     AppMethodBeat.o(133456);
     return arrayOfByte;
   }
@@ -220,9 +220,9 @@ public final class e
   public final String[] getColumnNames()
   {
     AppMethodBeat.i(133457);
-    if (this.VJS != null)
+    if (this.adnW != null)
     {
-      String[] arrayOfString = this.VJS.getColumnNames();
+      String[] arrayOfString = this.adnW.getColumnNames();
       AppMethodBeat.o(133457);
       return arrayOfString;
     }
@@ -233,14 +233,14 @@ public final class e
   public final int getCount()
   {
     AppMethodBeat.i(133447);
-    int m = this.VJT.length;
+    int m = this.adnX.length;
     int i = 0;
     int k;
     for (int j = 0; i < m; j = k)
     {
       k = j;
-      if (this.VJT[i] != null) {
-        k = j + this.VJT[i].getCount();
+      if (this.adnX[i] != null) {
+        k = j + this.adnX[i].getCount();
       }
       i += 1;
     }
@@ -251,7 +251,7 @@ public final class e
   public final double getDouble(int paramInt)
   {
     AppMethodBeat.i(133454);
-    double d = this.VJS.getDouble(paramInt);
+    double d = this.adnW.getDouble(paramInt);
     AppMethodBeat.o(133454);
     return d;
   }
@@ -259,7 +259,7 @@ public final class e
   public final float getFloat(int paramInt)
   {
     AppMethodBeat.i(133453);
-    float f = this.VJS.getFloat(paramInt);
+    float f = this.adnW.getFloat(paramInt);
     AppMethodBeat.o(133453);
     return f;
   }
@@ -267,7 +267,7 @@ public final class e
   public final int getInt(int paramInt)
   {
     AppMethodBeat.i(133451);
-    paramInt = this.VJS.getInt(paramInt);
+    paramInt = this.adnW.getInt(paramInt);
     AppMethodBeat.o(133451);
     return paramInt;
   }
@@ -275,7 +275,7 @@ public final class e
   public final long getLong(int paramInt)
   {
     AppMethodBeat.i(133452);
-    long l = this.VJS.getLong(paramInt);
+    long l = this.adnW.getLong(paramInt);
     AppMethodBeat.o(133452);
     return l;
   }
@@ -283,7 +283,7 @@ public final class e
   public final short getShort(int paramInt)
   {
     AppMethodBeat.i(133450);
-    short s = this.VJS.getShort(paramInt);
+    short s = this.adnW.getShort(paramInt);
     AppMethodBeat.o(133450);
     return s;
   }
@@ -291,20 +291,28 @@ public final class e
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(133449);
-    String str = this.VJS.getString(paramInt);
+    String str = this.adnW.getString(paramInt);
     AppMethodBeat.o(133449);
     return str;
   }
   
-  public final SparseArray<Object>[] hBN()
+  public final boolean isNull(int paramInt)
+  {
+    AppMethodBeat.i(133455);
+    boolean bool = this.adnW.isNull(paramInt);
+    AppMethodBeat.o(133455);
+    return bool;
+  }
+  
+  public final SparseArray<Object>[] jdT()
   {
     AppMethodBeat.i(133470);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     SparseArray[] arrayOfSparseArray = new SparseArray[j];
     int i = 0;
     if (i < j)
     {
-      Object localObject = this.VJT[i].hBN();
+      Object localObject = this.adnX[i].jdT();
       if (localObject != null) {}
       for (localObject = localObject[0];; localObject = null)
       {
@@ -317,24 +325,24 @@ public final class e
     return arrayOfSparseArray;
   }
   
-  public final HashMap hBO()
+  public final HashMap jdU()
   {
     return null;
   }
   
-  public final boolean hBP()
+  public final boolean jdV()
   {
     AppMethodBeat.i(133467);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     boolean bool1 = true;
     int i = 0;
     while (i < j)
     {
       boolean bool2 = bool1;
-      if (this.VJT[i] != null)
+      if (this.adnX[i] != null)
       {
         bool2 = bool1;
-        if (!this.VJT[i].hBP()) {
+        if (!this.adnX[i].jdV()) {
           bool2 = false;
         }
       }
@@ -345,19 +353,11 @@ public final class e
     return bool1;
   }
   
-  public final boolean isNull(int paramInt)
-  {
-    AppMethodBeat.i(133455);
-    boolean bool = this.VJS.isNull(paramInt);
-    AppMethodBeat.o(133455);
-    return bool;
-  }
-  
   public final boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(133448);
-    this.VJS = null;
-    int k = this.VJT.length;
+    this.adnW = null;
+    int k = this.adnX.length;
     paramInt1 = 0;
     int j;
     for (int i = 0;; i = j)
@@ -365,23 +365,23 @@ public final class e
       if (paramInt1 < k)
       {
         j = i;
-        if (this.VJT[paramInt1] == null) {
+        if (this.adnX[paramInt1] == null) {
           break label110;
         }
-        if (paramInt2 < this.VJT[paramInt1].getCount() + i) {
-          this.VJS = this.VJT[paramInt1];
+        if (paramInt2 < this.adnX[paramInt1].getCount() + i) {
+          this.adnW = this.adnX[paramInt1];
         }
       }
       else
       {
-        if (this.VJS == null) {
+        if (this.adnW == null) {
           break;
         }
-        boolean bool = this.VJS.moveToPosition(paramInt2 - i);
+        boolean bool = this.adnW.moveToPosition(paramInt2 - i);
         AppMethodBeat.o(133448);
         return bool;
       }
-      j = i + this.VJT[paramInt1].getCount();
+      j = i + this.adnX[paramInt1].getCount();
       label110:
       paramInt1 += 1;
     }
@@ -392,12 +392,12 @@ public final class e
   public final void registerContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133460);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].registerContentObserver(paramContentObserver);
+      if (this.adnX[i] != null) {
+        this.adnX[i].registerContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -407,12 +407,12 @@ public final class e
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133462);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].registerDataSetObserver(paramDataSetObserver);
+      if (this.adnX[i] != null) {
+        this.adnX[i].registerDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -422,11 +422,11 @@ public final class e
   public final boolean requery()
   {
     AppMethodBeat.i(133464);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if ((this.VJT[i] != null) && (!this.VJT[i].requery()))
+      if ((this.adnX[i] != null) && (!this.adnX[i].requery()))
       {
         AppMethodBeat.o(133464);
         return false;
@@ -440,12 +440,12 @@ public final class e
   public final void unregisterContentObserver(ContentObserver paramContentObserver)
   {
     AppMethodBeat.i(133461);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].unregisterContentObserver(paramContentObserver);
+      if (this.adnX[i] != null) {
+        this.adnX[i].unregisterContentObserver(paramContentObserver);
       }
       i += 1;
     }
@@ -455,12 +455,12 @@ public final class e
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(133463);
-    int j = this.VJT.length;
+    int j = this.adnX.length;
     int i = 0;
     while (i < j)
     {
-      if (this.VJT[i] != null) {
-        this.VJT[i].unregisterDataSetObserver(paramDataSetObserver);
+      if (this.adnX[i] != null) {
+        this.adnX[i].unregisterDataSetObserver(paramDataSetObserver);
       }
       i += 1;
     }
@@ -469,7 +469,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.e
  * JD-Core Version:    0.7.0.1
  */

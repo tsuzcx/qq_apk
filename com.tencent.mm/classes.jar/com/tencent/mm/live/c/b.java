@@ -1,411 +1,84 @@
 package com.tencent.mm.live.c;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ar;
+import com.tencent.mm.storage.aj;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/ILiveStatus;", "", "getLiveRole", "", "isLiving", "", "registerPlugin", "", "plugin", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "LiveStatus", "plugin-logic_release"})
-public abstract interface b
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/report/LiveKvStatReportHelper;", "", "()V", "Companion", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class b
 {
-  public static final b.a kyL = b.a.kyM;
+  public static final a nkK;
   
-  public abstract int getLiveRole();
-  
-  public abstract boolean isLiving();
-  
-  public abstract void registerPlugin(a parama);
-  
-  public abstract void statusChange(c paramc, Bundle paramBundle);
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "", "(Ljava/lang/String;I)V", "UNKNOWN", "START_LIVE_VERIFY", "LIVE_VERIFY_SUCCESS", "START_FACE_VERIFY", "LIVE_FACE_VERIFY_NEED_BIND_BANKCARD", "BEFORE_LIVE", "READY", "START_LIVE", "CLOSE_LIVE", "QUIT_LIVE", "SWITCH_CAMERA", "SHARE_LIVE", "LIVE_START_MIC_CGI", "LIVE_START_MIC_SDK", "LIVE_START_MIC_OTHER", "LIVE_START_MIC_PERMISSION_CLSOE", "LIVE_STOP_MIC", "LIVE_STOP_MIC_CGI", "LIVE_STOP_MIC_OTHER", "SHOW_MEMBERS_LIST", "HIDE_MEMBERS_LIST", "MINI_WINDOW", "MAXI_WINDOW", "MINI_WINDOW_PERMISSION", "MINI_WINDOW_REFUSE", "MINI_WINDOW_CANCEL", "LIVE_HAS_FINISHED", "LIVE_CHANGE_FINISHED", "DEBUG_ENTER", "RENDERING", "HIDE_SHARE_LIST", "POST_LIKE", "POST_MSG", "CLICK_FOLLOW", "REWARD", "SHOW_FOLLOW", "EXPOSE_LIVE", "ENTERING_COMMENT", "LIVE_STATUS_KICK_MEMBER", "LIVE_STATUS_EXPOSE_MEMBER", "LIVE_STATUS_SWITCH_VIDEO_MIC", "LIVE_STATUS_SWITCH_AUDIO_MIC", "LIVE_STATUS_VIDEO_MIC", "LIVE_STATUS_CLOSE_MEMBER_PROFILE", "LIVE_STATUS_OPEN_MEMBER_PROFILE", "LIVE_STATUS_VISITOR_KICKED", "LIVE_STATUS_VISITOR_PRIVATE_PERMISSION", "LIVE_STATUS_RECONNECT", "LIVE_STATUS_DISCONNECT", "LIVE_STATUS_CONNECT_SUCC", "LIVE_STATUS_ANCHOR_EXCEPTION", "LIVE_START_LIVE_FAILED", "LIVE_START_LIVE_SUCCESS", "LIVE_READY_CANCEL_COUNTER", "LIVE_STATUS_ANCHOR_RECOVERY", "LIVE_STATUS_EXCEPTION", "LIVE_STATUS_JOIN_LIVE", "LIVE_STATUS_CREATE_LIVE", "LIVE_STATUS_FIRST_I_FRAME", "VISITOR_NOT_BIND_MOBILE", "LIVE_HAPPEN_VOIP_EVENT", "LIVE_ORIENTATION_CHANGE", "LIVE_STATUS_COMMENT_LAYOUT_UPDATE", "LIVE_STATUS_RESOLUTION", "LIVE_MIRROR_ACTION_EVENT", "LIVE_EVENT_SHOW_GIFT_PANEL", "LIVE_EVENT_HIDE_GIFT_PANEL", "LIVE_EVENT_SHOW_FULL_SCREEN_GIFT", "LIVE_EVENT_HIDE_FULL_SCREEN_GIFT", "LIVE_EVENT_GIFT_UPDATE_WECOIN", "LIVE_EVENT_GIFT_SHOW_SEND_BTN", "LIVE_EVENT_GIFT_HIDE_SEND_BTN", "LIVE_EVENT_ANCHOR_STATUS_EXCEPTION", "LIVE_EVENT_ANCHOR_STATUS_RECOVERY", "FINDER_LIVE_MEMBERS_LOADING", "FINDER_LIVE_MEMBERS_AUTO_REFRESH", "FINDER_LIVE_SHOPPING_LIST_SHOW", "FINDER_LIVE_SHOPPING_LIST_HIDE", "FINDER_LIVE_SHOPPING_PROMOTING", "FINDER_LIVE_SHOPPING_REFRESH", "FINDER_LIVE_ANCHOR_MUSIC_SHOW", "FINDER_LIVE_ANCHOR_MUSIC_HIDE", "FINDER_LIVE_ANCHOR_MUSIC_PLAY", "FINDER_LIVE_ANCHOR_SEARCH_MUSIC_SHOW", "FINDER_LIVE_ANCHOR_SEARCH_MUSIC_HIDE", "FINDER_LIVE_COMMENT_MOVE", "FINDER_LIVE_FACE_VERIFY", "FINDER_LIVE_FORCE_QUIT", "FINDER_LIVE_UPDATE_LIVE_MSG", "FINDER_LIVE_UPDATE_GAME_TEAM_CONDITION_MSG", "FINDER_LIVE_AUTO_INPUT_COMMENT", "FINDER_LIVE_COMMENT_REAL_NAME", "FINDER_LIVE_COMMENT_BACKOFF", "FINDER_LIVE_CLEAR_SCREEN", "FINDER_LIVE_IDLE", "FINDER_LIVE_MORE_ACTION_SHOW", "FINDER_LIVE_MORE_ACTION_HIDE", "FINDER_LIVE_STATISTC_EVENT", "FINDER_LIVE_TOP_COMMENNT", "FINDER_LIVE_SHOW_CAMERA_OPT_SHEET", "FINDER_LIVE_HIDE_CAMERA_OPT_SHEET", "FINDER_LIVE_CREATE_ERROR_PAGE", "FINDER_LIVE_CREATE_LOTTERY_SUCCESS", "FINDER_LIVE_CANCEL_LOTTERY_SUCCESS", "FINDER_LIVE_LOTTERY_BUBBLE_SHOW", "FINDER_LIVE_LOTTERY_BUBBLE_HIDE", "FINDER_LIVE_LOTTERY_CARD_SHOW", "FINDER_LIVE_LOTTERY_CARD_HIDE", "FINDER_LIVE_LOTTERY_UPDATE", "FINDER_LIVE_LOTTERY_UPDATE_COUNTDOWN", "FINDER_LIVE_LIKE_SHAKE", "FINDER_LIVE_SHOW_ALERT_DIALOG", "FINDER_LIVE_POST_HL_LIKE", "FINDER_LIVE_LINK_MIC_VISITOR_REQUEST", "FINDER_LIVE_LINK_MIC_SHOW_APPLY_LIST", "FINDER_LIVE_LINK_MIC_HIDE_APPLY_LIST", "FINDER_LIVE_LINK_MIC_ANCHOR_ACCEPT", "FINDER_LIVE_LINK_MIC_HANGUP_LINK", "FINDER_LIVE_LINK_MIC_ADD_BOTTOM_BAR", "FINDER_LIVE_LINK_MIC_REMOVE_BOTTOM_BAR", "FINDER_LIVE_LINK_MIC_ANCHOR_SETTING", "FINDER_LIVE_LINK_MIC_SHOW_APPLY_LICENSE", "FINDER_LIVE_LINK_MIC_HIDE_APPLY_LICENSE", "FINDER_LIVE_LINK_MIC_CHECKED", "FINDER_LIVE_LINK_MIC_APPLY_PK", "FINDER_LIVE_LINK_MIC_ACCEPT_PK", "FINDER_LIVE_SHOW_EXPLAIN_WECOIN_HOT", "FINDER_LIVE_HIDE_EXPLAIN_WECOIN_HOT", "FINDER_LIVE_RECEIVE_LUCKY_MONEY", "FINDER_LIVE_SHOW_BOTTOM_TIP_PANEL", "FINDER_LIVE_JOIN_LIVE_SUCCESS", "FINDER_LIVE_CAST_SCREEN_SHOW", "FINDER_LIVE_CAST_SCREEN_HIDE", "FINDER_LIVE_MODE_SWITCH", "FINDER_LIVE_MODE_SWITCH_COUNT_DOWN", "FINDER_LIVE_SHOW_MUSIC_PANEL", "FINDER_LIVE_RESTORE_POST_UI", "FINDER_LIVE_MUTE_MIC", "FINDER_LIVE_ANCHOR_PAUSE", "FINDER_LIVE_ANCHOR_PAUSE_RECOVERY", "FINDER_LIVE_ANCHOR_PAUSE_RECOVERY_SHOW", "FINDER_LIVE_BATTLE_PANEL", "FINDER_LIVE_BATTLE_RECEIVE_APPLY", "FINDER_LIVE_BATTLE_START", "FINDER_LIVE_BATTLE_END", "FINDER_LIVE_BATTLE_CLOSE", "FINDER_LIVE_LIKE_SWITCH", "FINDER_LIVE_LINK_MIC_APPLY_BATTLE", "FINDER_LIVE_LINK_MIC_ACCEPT_BATTLE", "FINDER_LIVE_LINK_MIC_CANCEL_BATTLE", "FINGER_LIVE_NOTIFY_POST_MSG_RESULT", "FINDER_LIVE_SHOW_GAME_JOIN_GUIDE", "FINDER_LIVE_HIDE_GAME_JOIN_GUIDE", "FINDER_LIVE_SHOW_FOLLOW_GUIDE", "FINDER_LIVE_CLOSE_LIVE_FROM_FOLLOW_GUIDE", "FINDER_LIVE_ANCHOR_VERIFICATION_START", "FINDER_LIVE_ANCHOR_VERIFICATION_END", "FINDER_LIVE_ANCHOR_VERIFICATION_RECOVERY", "FESTIVAL_FINDER_LIVE_ENTER_POST_WISH", "FESTIVAL_FINDER_LIVE_SHOW_POST_PANEL", "FESTIVAL_FINDER_LIVE_RESTORE_INITIAL", "FESTIVAL_FINDER_LIVE_SHOW_WISH_CARD", "FESTIVAL_FINDER_LIVE_SET_STATE", "FESTIVAL_FINDER_LIVE_POST_WISH_PROCESS_FINISH", "FESTIVAL_FINDER_LIVE_POST_WISH_PANEL_CANCEL", "FESTIVAL_FINDER_LIVE_POST_WISH_POSTED_AFTER_ACTION", "FESTIVAL_FINDER_LIVE_POST_WISH_POSTED_AFTER_ACTION_FINISH", "FESTIVAL_FINDER_LIVE_CANVAS_VIEWPORT_READY", "FESTIVAL_FINDER_LIVE_CANVAS_DATA_READY", "FESTIVAL_FINDER_LIVE_SHOW_MY_NEW_WISH_NORTH_STAR", "FESTIVAL_FINDER_LIVE_SHOW_MY_NEW_WISH_AVATAR", "FESTIVAL_FINDER_LIVE_INSERT_MY_NEW_WISH_IN_DANMAKU", "FESTIVAL_FINDER_LIVE_CANVAS_TRANSFORM_EVENT_FOR_MY_NEW_WISH", "FESTIVAL_FINDER_LIVE_MY_WISH_DELETED", "FESTIVAL_FINDER_LIVE_CANVAS_CLICK_EVENT", "FESTIVAL_FINDER_LIVE_MINI_WINDOW", "FESTIVAL_FINDER_LIVE_POST_WISH_NEED_REAL_NAME", "FESTIVAL_FINDER_LIVE_CHECK_SHOW_FU_BAG", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_FORCE_CANCEL", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_USER_MANUAL_START", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_USER_MANUAL_EXIT", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_TOUCH_START", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_TOUCH_END", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_DISAPPEAR_START", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_DISAPPEAR_END", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_SEND_TO_FRIEND", "FESTIVAL_FINDER_LIVE_FAIRY_WAND_SHARE_SNS", "FESTIVAL_FINDER_LIVE_ON_FU_BAG_VISIBILITY_CHANGED", "FESTIVAL_FINDER_LIVE_ON_WISH_BUTTON_LAYOUT_CHANGED", "plugin-logic_release"})
-  public static enum c
+  static
   {
-    static
+    AppMethodBeat.i(245965);
+    nkK = new a((byte)0);
+    AppMethodBeat.o(245965);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/live/report/LiveKvStatReportHelper$Companion;", "", "()V", "GROUP_CHATTING_ROLE_MANAGER", "", "GROUP_CHATTING_ROLE_NORMAL", "GROUP_CHATTING_ROLE_OWNER", "LIVE_COMPLAINT_SENCE_LIVE", "LIVE_COMPLAINT_SENCE_OTHER", "LIVE_ENTRANCE_SCENE_OTHER", "LIVE_ENTRANCE_SCENE_TOOLBAR", "LIVE_NOTIFICATION_SCENE_APPMSG", "LIVE_NOTIFICATION_SCENE_NAV_TIP", "LIVE_NOTIFICATION_SCENE_OTHER", "LIVE_ROLE_ANCHOR", "LIVE_ROLE_VISITOR", "REPORT_CAMERA_STATUS_BACK", "REPORT_CAMERA_STATUS_FRONT", "REPORT_CAMERA_STATUS_OTHER", "REPORT_SCREEN_ORIENTATION_LANDSCAPE", "REPORT_SCREEN_ORIENTATION_OTHER", "REPORT_SCREEN_ORIENTATION_PORTRAIT", "TAG", "", "getGroupChattingMemberCount", "roomId", "getGroupChattingRole", "userName", "getLiveRole", "anchorName", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static int GB(String paramString)
     {
-      AppMethodBeat.i(193515);
-      c localc1 = new c("UNKNOWN", 0);
-      kyN = localc1;
-      c localc2 = new c("START_LIVE_VERIFY", 1);
-      kyO = localc2;
-      c localc3 = new c("LIVE_VERIFY_SUCCESS", 2);
-      kyP = localc3;
-      c localc4 = new c("START_FACE_VERIFY", 3);
-      kyQ = localc4;
-      c localc5 = new c("LIVE_FACE_VERIFY_NEED_BIND_BANKCARD", 4);
-      kyR = localc5;
-      c localc6 = new c("BEFORE_LIVE", 5);
-      kyS = localc6;
-      c localc7 = new c("READY", 6);
-      kyT = localc7;
-      c localc8 = new c("START_LIVE", 7);
-      kyU = localc8;
-      c localc9 = new c("CLOSE_LIVE", 8);
-      kyV = localc9;
-      c localc10 = new c("QUIT_LIVE", 9);
-      kyW = localc10;
-      c localc11 = new c("SWITCH_CAMERA", 10);
-      kyX = localc11;
-      c localc12 = new c("SHARE_LIVE", 11);
-      kyY = localc12;
-      c localc13 = new c("LIVE_START_MIC_CGI", 12);
-      kyZ = localc13;
-      c localc14 = new c("LIVE_START_MIC_SDK", 13);
-      kza = localc14;
-      c localc15 = new c("LIVE_START_MIC_OTHER", 14);
-      kzb = localc15;
-      c localc16 = new c("LIVE_START_MIC_PERMISSION_CLSOE", 15);
-      kzc = localc16;
-      c localc17 = new c("LIVE_STOP_MIC", 16);
-      kzd = localc17;
-      c localc18 = new c("LIVE_STOP_MIC_CGI", 17);
-      kze = localc18;
-      c localc19 = new c("LIVE_STOP_MIC_OTHER", 18);
-      kzf = localc19;
-      c localc20 = new c("SHOW_MEMBERS_LIST", 19);
-      kzg = localc20;
-      c localc21 = new c("HIDE_MEMBERS_LIST", 20);
-      kzh = localc21;
-      c localc22 = new c("MINI_WINDOW", 21);
-      kzi = localc22;
-      c localc23 = new c("MAXI_WINDOW", 22);
-      kzj = localc23;
-      c localc24 = new c("MINI_WINDOW_PERMISSION", 23);
-      kzk = localc24;
-      c localc25 = new c("MINI_WINDOW_REFUSE", 24);
-      kzl = localc25;
-      c localc26 = new c("MINI_WINDOW_CANCEL", 25);
-      kzm = localc26;
-      c localc27 = new c("LIVE_HAS_FINISHED", 26);
-      kzn = localc27;
-      c localc28 = new c("LIVE_CHANGE_FINISHED", 27);
-      kzo = localc28;
-      c localc29 = new c("DEBUG_ENTER", 28);
-      kzp = localc29;
-      c localc30 = new c("RENDERING", 29);
-      kzq = localc30;
-      c localc31 = new c("HIDE_SHARE_LIST", 30);
-      kzr = localc31;
-      c localc32 = new c("POST_LIKE", 31);
-      kzs = localc32;
-      c localc33 = new c("POST_MSG", 32);
-      kzt = localc33;
-      c localc34 = new c("CLICK_FOLLOW", 33);
-      kzu = localc34;
-      c localc35 = new c("REWARD", 34);
-      kzv = localc35;
-      c localc36 = new c("SHOW_FOLLOW", 35);
-      kzw = localc36;
-      c localc37 = new c("EXPOSE_LIVE", 36);
-      kzx = localc37;
-      c localc38 = new c("ENTERING_COMMENT", 37);
-      kzy = localc38;
-      c localc39 = new c("LIVE_STATUS_KICK_MEMBER", 38);
-      kzz = localc39;
-      c localc40 = new c("LIVE_STATUS_EXPOSE_MEMBER", 39);
-      kzA = localc40;
-      c localc41 = new c("LIVE_STATUS_SWITCH_VIDEO_MIC", 40);
-      kzB = localc41;
-      c localc42 = new c("LIVE_STATUS_SWITCH_AUDIO_MIC", 41);
-      kzC = localc42;
-      c localc43 = new c("LIVE_STATUS_VIDEO_MIC", 42);
-      kzD = localc43;
-      c localc44 = new c("LIVE_STATUS_CLOSE_MEMBER_PROFILE", 43);
-      kzE = localc44;
-      c localc45 = new c("LIVE_STATUS_OPEN_MEMBER_PROFILE", 44);
-      kzF = localc45;
-      c localc46 = new c("LIVE_STATUS_VISITOR_KICKED", 45);
-      kzG = localc46;
-      c localc47 = new c("LIVE_STATUS_VISITOR_PRIVATE_PERMISSION", 46);
-      kzH = localc47;
-      c localc48 = new c("LIVE_STATUS_RECONNECT", 47);
-      kzI = localc48;
-      c localc49 = new c("LIVE_STATUS_DISCONNECT", 48);
-      kzJ = localc49;
-      c localc50 = new c("LIVE_STATUS_CONNECT_SUCC", 49);
-      kzK = localc50;
-      c localc51 = new c("LIVE_STATUS_ANCHOR_EXCEPTION", 50);
-      kzL = localc51;
-      c localc52 = new c("LIVE_START_LIVE_FAILED", 51);
-      kzM = localc52;
-      c localc53 = new c("LIVE_START_LIVE_SUCCESS", 52);
-      kzN = localc53;
-      c localc54 = new c("LIVE_READY_CANCEL_COUNTER", 53);
-      kzO = localc54;
-      c localc55 = new c("LIVE_STATUS_ANCHOR_RECOVERY", 54);
-      kzP = localc55;
-      c localc56 = new c("LIVE_STATUS_EXCEPTION", 55);
-      kzQ = localc56;
-      c localc57 = new c("LIVE_STATUS_JOIN_LIVE", 56);
-      kzR = localc57;
-      c localc58 = new c("LIVE_STATUS_CREATE_LIVE", 57);
-      kzS = localc58;
-      c localc59 = new c("LIVE_STATUS_FIRST_I_FRAME", 58);
-      kzT = localc59;
-      c localc60 = new c("VISITOR_NOT_BIND_MOBILE", 59);
-      kzU = localc60;
-      c localc61 = new c("LIVE_HAPPEN_VOIP_EVENT", 60);
-      kzV = localc61;
-      c localc62 = new c("LIVE_ORIENTATION_CHANGE", 61);
-      kzW = localc62;
-      c localc63 = new c("LIVE_STATUS_COMMENT_LAYOUT_UPDATE", 62);
-      kzX = localc63;
-      c localc64 = new c("LIVE_STATUS_RESOLUTION", 63);
-      kzY = localc64;
-      c localc65 = new c("LIVE_MIRROR_ACTION_EVENT", 64);
-      kzZ = localc65;
-      c localc66 = new c("LIVE_EVENT_SHOW_GIFT_PANEL", 65);
-      kAa = localc66;
-      c localc67 = new c("LIVE_EVENT_HIDE_GIFT_PANEL", 66);
-      kAb = localc67;
-      c localc68 = new c("LIVE_EVENT_SHOW_FULL_SCREEN_GIFT", 67);
-      kAc = localc68;
-      c localc69 = new c("LIVE_EVENT_HIDE_FULL_SCREEN_GIFT", 68);
-      kAd = localc69;
-      c localc70 = new c("LIVE_EVENT_GIFT_UPDATE_WECOIN", 69);
-      kAe = localc70;
-      c localc71 = new c("LIVE_EVENT_GIFT_SHOW_SEND_BTN", 70);
-      kAf = localc71;
-      c localc72 = new c("LIVE_EVENT_GIFT_HIDE_SEND_BTN", 71);
-      kAg = localc72;
-      c localc73 = new c("LIVE_EVENT_ANCHOR_STATUS_EXCEPTION", 72);
-      kAh = localc73;
-      c localc74 = new c("LIVE_EVENT_ANCHOR_STATUS_RECOVERY", 73);
-      kAi = localc74;
-      c localc75 = new c("FINDER_LIVE_MEMBERS_LOADING", 74);
-      kAj = localc75;
-      c localc76 = new c("FINDER_LIVE_MEMBERS_AUTO_REFRESH", 75);
-      kAk = localc76;
-      c localc77 = new c("FINDER_LIVE_SHOPPING_LIST_SHOW", 76);
-      kAl = localc77;
-      c localc78 = new c("FINDER_LIVE_SHOPPING_LIST_HIDE", 77);
-      kAm = localc78;
-      c localc79 = new c("FINDER_LIVE_SHOPPING_PROMOTING", 78);
-      kAn = localc79;
-      c localc80 = new c("FINDER_LIVE_SHOPPING_REFRESH", 79);
-      kAo = localc80;
-      c localc81 = new c("FINDER_LIVE_ANCHOR_MUSIC_SHOW", 80);
-      kAp = localc81;
-      c localc82 = new c("FINDER_LIVE_ANCHOR_MUSIC_HIDE", 81);
-      kAq = localc82;
-      c localc83 = new c("FINDER_LIVE_ANCHOR_MUSIC_PLAY", 82);
-      kAr = localc83;
-      c localc84 = new c("FINDER_LIVE_ANCHOR_SEARCH_MUSIC_SHOW", 83);
-      kAs = localc84;
-      c localc85 = new c("FINDER_LIVE_ANCHOR_SEARCH_MUSIC_HIDE", 84);
-      kAt = localc85;
-      c localc86 = new c("FINDER_LIVE_COMMENT_MOVE", 85);
-      kAu = localc86;
-      c localc87 = new c("FINDER_LIVE_FACE_VERIFY", 86);
-      kAv = localc87;
-      c localc88 = new c("FINDER_LIVE_FORCE_QUIT", 87);
-      kAw = localc88;
-      c localc89 = new c("FINDER_LIVE_UPDATE_LIVE_MSG", 88);
-      kAx = localc89;
-      c localc90 = new c("FINDER_LIVE_UPDATE_GAME_TEAM_CONDITION_MSG", 89);
-      kAy = localc90;
-      c localc91 = new c("FINDER_LIVE_AUTO_INPUT_COMMENT", 90);
-      kAz = localc91;
-      c localc92 = new c("FINDER_LIVE_COMMENT_REAL_NAME", 91);
-      kAA = localc92;
-      c localc93 = new c("FINDER_LIVE_COMMENT_BACKOFF", 92);
-      kAB = localc93;
-      c localc94 = new c("FINDER_LIVE_CLEAR_SCREEN", 93);
-      kAC = localc94;
-      c localc95 = new c("FINDER_LIVE_IDLE", 94);
-      kAD = localc95;
-      c localc96 = new c("FINDER_LIVE_MORE_ACTION_SHOW", 95);
-      kAE = localc96;
-      c localc97 = new c("FINDER_LIVE_MORE_ACTION_HIDE", 96);
-      kAF = localc97;
-      c localc98 = new c("FINDER_LIVE_STATISTC_EVENT", 97);
-      kAG = localc98;
-      c localc99 = new c("FINDER_LIVE_TOP_COMMENNT", 98);
-      kAH = localc99;
-      c localc100 = new c("FINDER_LIVE_SHOW_CAMERA_OPT_SHEET", 99);
-      kAI = localc100;
-      c localc101 = new c("FINDER_LIVE_HIDE_CAMERA_OPT_SHEET", 100);
-      kAJ = localc101;
-      c localc102 = new c("FINDER_LIVE_CREATE_ERROR_PAGE", 101);
-      kAK = localc102;
-      c localc103 = new c("FINDER_LIVE_CREATE_LOTTERY_SUCCESS", 102);
-      kAL = localc103;
-      c localc104 = new c("FINDER_LIVE_CANCEL_LOTTERY_SUCCESS", 103);
-      kAM = localc104;
-      c localc105 = new c("FINDER_LIVE_LOTTERY_BUBBLE_SHOW", 104);
-      kAN = localc105;
-      c localc106 = new c("FINDER_LIVE_LOTTERY_BUBBLE_HIDE", 105);
-      kAO = localc106;
-      c localc107 = new c("FINDER_LIVE_LOTTERY_CARD_SHOW", 106);
-      kAP = localc107;
-      c localc108 = new c("FINDER_LIVE_LOTTERY_CARD_HIDE", 107);
-      kAQ = localc108;
-      c localc109 = new c("FINDER_LIVE_LOTTERY_UPDATE", 108);
-      kAR = localc109;
-      c localc110 = new c("FINDER_LIVE_LOTTERY_UPDATE_COUNTDOWN", 109);
-      kAS = localc110;
-      c localc111 = new c("FINDER_LIVE_LIKE_SHAKE", 110);
-      kAT = localc111;
-      c localc112 = new c("FINDER_LIVE_SHOW_ALERT_DIALOG", 111);
-      kAU = localc112;
-      c localc113 = new c("FINDER_LIVE_POST_HL_LIKE", 112);
-      kAV = localc113;
-      c localc114 = new c("FINDER_LIVE_LINK_MIC_VISITOR_REQUEST", 113);
-      kAW = localc114;
-      c localc115 = new c("FINDER_LIVE_LINK_MIC_SHOW_APPLY_LIST", 114);
-      kAX = localc115;
-      c localc116 = new c("FINDER_LIVE_LINK_MIC_HIDE_APPLY_LIST", 115);
-      kAY = localc116;
-      c localc117 = new c("FINDER_LIVE_LINK_MIC_ANCHOR_ACCEPT", 116);
-      kAZ = localc117;
-      c localc118 = new c("FINDER_LIVE_LINK_MIC_HANGUP_LINK", 117);
-      kBa = localc118;
-      c localc119 = new c("FINDER_LIVE_LINK_MIC_ADD_BOTTOM_BAR", 118);
-      kBb = localc119;
-      c localc120 = new c("FINDER_LIVE_LINK_MIC_REMOVE_BOTTOM_BAR", 119);
-      kBc = localc120;
-      c localc121 = new c("FINDER_LIVE_LINK_MIC_ANCHOR_SETTING", 120);
-      kBd = localc121;
-      c localc122 = new c("FINDER_LIVE_LINK_MIC_SHOW_APPLY_LICENSE", 121);
-      kBe = localc122;
-      c localc123 = new c("FINDER_LIVE_LINK_MIC_HIDE_APPLY_LICENSE", 122);
-      kBf = localc123;
-      c localc124 = new c("FINDER_LIVE_LINK_MIC_CHECKED", 123);
-      kBg = localc124;
-      c localc125 = new c("FINDER_LIVE_LINK_MIC_APPLY_PK", 124);
-      kBh = localc125;
-      c localc126 = new c("FINDER_LIVE_LINK_MIC_ACCEPT_PK", 125);
-      kBi = localc126;
-      c localc127 = new c("FINDER_LIVE_SHOW_EXPLAIN_WECOIN_HOT", 126);
-      kBj = localc127;
-      c localc128 = new c("FINDER_LIVE_HIDE_EXPLAIN_WECOIN_HOT", 127);
-      kBk = localc128;
-      c localc129 = new c("FINDER_LIVE_RECEIVE_LUCKY_MONEY", 128);
-      kBl = localc129;
-      c localc130 = new c("FINDER_LIVE_SHOW_BOTTOM_TIP_PANEL", 129);
-      kBm = localc130;
-      c localc131 = new c("FINDER_LIVE_JOIN_LIVE_SUCCESS", 130);
-      kBn = localc131;
-      c localc132 = new c("FINDER_LIVE_CAST_SCREEN_SHOW", 131);
-      kBo = localc132;
-      c localc133 = new c("FINDER_LIVE_CAST_SCREEN_HIDE", 132);
-      kBp = localc133;
-      c localc134 = new c("FINDER_LIVE_MODE_SWITCH", 133);
-      kBq = localc134;
-      c localc135 = new c("FINDER_LIVE_MODE_SWITCH_COUNT_DOWN", 134);
-      kBr = localc135;
-      c localc136 = new c("FINDER_LIVE_SHOW_MUSIC_PANEL", 135);
-      kBs = localc136;
-      c localc137 = new c("FINDER_LIVE_RESTORE_POST_UI", 136);
-      kBt = localc137;
-      c localc138 = new c("FINDER_LIVE_MUTE_MIC", 137);
-      kBu = localc138;
-      c localc139 = new c("FINDER_LIVE_ANCHOR_PAUSE", 138);
-      kBv = localc139;
-      c localc140 = new c("FINDER_LIVE_ANCHOR_PAUSE_RECOVERY", 139);
-      kBw = localc140;
-      c localc141 = new c("FINDER_LIVE_ANCHOR_PAUSE_RECOVERY_SHOW", 140);
-      kBx = localc141;
-      c localc142 = new c("FINDER_LIVE_BATTLE_PANEL", 141);
-      kBy = localc142;
-      c localc143 = new c("FINDER_LIVE_BATTLE_RECEIVE_APPLY", 142);
-      kBz = localc143;
-      c localc144 = new c("FINDER_LIVE_BATTLE_START", 143);
-      kBA = localc144;
-      c localc145 = new c("FINDER_LIVE_BATTLE_END", 144);
-      kBB = localc145;
-      c localc146 = new c("FINDER_LIVE_BATTLE_CLOSE", 145);
-      kBC = localc146;
-      c localc147 = new c("FINDER_LIVE_LIKE_SWITCH", 146);
-      kBD = localc147;
-      c localc148 = new c("FINDER_LIVE_LINK_MIC_APPLY_BATTLE", 147);
-      kBE = localc148;
-      c localc149 = new c("FINDER_LIVE_LINK_MIC_ACCEPT_BATTLE", 148);
-      kBF = localc149;
-      c localc150 = new c("FINDER_LIVE_LINK_MIC_CANCEL_BATTLE", 149);
-      kBG = localc150;
-      c localc151 = new c("FINGER_LIVE_NOTIFY_POST_MSG_RESULT", 150);
-      kBH = localc151;
-      c localc152 = new c("FINDER_LIVE_SHOW_GAME_JOIN_GUIDE", 151);
-      kBI = localc152;
-      c localc153 = new c("FINDER_LIVE_HIDE_GAME_JOIN_GUIDE", 152);
-      kBJ = localc153;
-      c localc154 = new c("FINDER_LIVE_SHOW_FOLLOW_GUIDE", 153);
-      kBK = localc154;
-      c localc155 = new c("FINDER_LIVE_CLOSE_LIVE_FROM_FOLLOW_GUIDE", 154);
-      kBL = localc155;
-      c localc156 = new c("FINDER_LIVE_ANCHOR_VERIFICATION_START", 155);
-      kBM = localc156;
-      c localc157 = new c("FINDER_LIVE_ANCHOR_VERIFICATION_END", 156);
-      kBN = localc157;
-      c localc158 = new c("FINDER_LIVE_ANCHOR_VERIFICATION_RECOVERY", 157);
-      kBO = localc158;
-      c localc159 = new c("FESTIVAL_FINDER_LIVE_ENTER_POST_WISH", 158);
-      kBP = localc159;
-      c localc160 = new c("FESTIVAL_FINDER_LIVE_SHOW_POST_PANEL", 159);
-      kBQ = localc160;
-      c localc161 = new c("FESTIVAL_FINDER_LIVE_RESTORE_INITIAL", 160);
-      kBR = localc161;
-      c localc162 = new c("FESTIVAL_FINDER_LIVE_SHOW_WISH_CARD", 161);
-      kBS = localc162;
-      c localc163 = new c("FESTIVAL_FINDER_LIVE_SET_STATE", 162);
-      kBT = localc163;
-      c localc164 = new c("FESTIVAL_FINDER_LIVE_POST_WISH_PROCESS_FINISH", 163);
-      kBU = localc164;
-      c localc165 = new c("FESTIVAL_FINDER_LIVE_POST_WISH_PANEL_CANCEL", 164);
-      kBV = localc165;
-      c localc166 = new c("FESTIVAL_FINDER_LIVE_POST_WISH_POSTED_AFTER_ACTION", 165);
-      kBW = localc166;
-      c localc167 = new c("FESTIVAL_FINDER_LIVE_POST_WISH_POSTED_AFTER_ACTION_FINISH", 166);
-      kBX = localc167;
-      c localc168 = new c("FESTIVAL_FINDER_LIVE_CANVAS_VIEWPORT_READY", 167);
-      kBY = localc168;
-      c localc169 = new c("FESTIVAL_FINDER_LIVE_CANVAS_DATA_READY", 168);
-      kBZ = localc169;
-      c localc170 = new c("FESTIVAL_FINDER_LIVE_SHOW_MY_NEW_WISH_NORTH_STAR", 169);
-      kCa = localc170;
-      c localc171 = new c("FESTIVAL_FINDER_LIVE_SHOW_MY_NEW_WISH_AVATAR", 170);
-      kCb = localc171;
-      c localc172 = new c("FESTIVAL_FINDER_LIVE_INSERT_MY_NEW_WISH_IN_DANMAKU", 171);
-      kCc = localc172;
-      c localc173 = new c("FESTIVAL_FINDER_LIVE_CANVAS_TRANSFORM_EVENT_FOR_MY_NEW_WISH", 172);
-      kCd = localc173;
-      c localc174 = new c("FESTIVAL_FINDER_LIVE_MY_WISH_DELETED", 173);
-      kCe = localc174;
-      c localc175 = new c("FESTIVAL_FINDER_LIVE_CANVAS_CLICK_EVENT", 174);
-      kCf = localc175;
-      c localc176 = new c("FESTIVAL_FINDER_LIVE_MINI_WINDOW", 175);
-      kCg = localc176;
-      c localc177 = new c("FESTIVAL_FINDER_LIVE_POST_WISH_NEED_REAL_NAME", 176);
-      kCh = localc177;
-      c localc178 = new c("FESTIVAL_FINDER_LIVE_CHECK_SHOW_FU_BAG", 177);
-      kCi = localc178;
-      c localc179 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_FORCE_CANCEL", 178);
-      kCj = localc179;
-      c localc180 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_USER_MANUAL_START", 179);
-      kCk = localc180;
-      c localc181 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_USER_MANUAL_EXIT", 180);
-      kCl = localc181;
-      c localc182 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_TOUCH_START", 181);
-      kCm = localc182;
-      c localc183 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_TOUCH_END", 182);
-      kCn = localc183;
-      c localc184 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_DISAPPEAR_START", 183);
-      kCo = localc184;
-      c localc185 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_DISAPPEAR_END", 184);
-      kCp = localc185;
-      c localc186 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_SEND_TO_FRIEND", 185);
-      kCq = localc186;
-      c localc187 = new c("FESTIVAL_FINDER_LIVE_FAIRY_WAND_SHARE_SNS", 186);
-      kCr = localc187;
-      c localc188 = new c("FESTIVAL_FINDER_LIVE_ON_FU_BAG_VISIBILITY_CHANGED", 187);
-      kCs = localc188;
-      c localc189 = new c("FESTIVAL_FINDER_LIVE_ON_WISH_BUTTON_LAYOUT_CHANGED", 188);
-      kCt = localc189;
-      kCu = new c[] { localc1, localc2, localc3, localc4, localc5, localc6, localc7, localc8, localc9, localc10, localc11, localc12, localc13, localc14, localc15, localc16, localc17, localc18, localc19, localc20, localc21, localc22, localc23, localc24, localc25, localc26, localc27, localc28, localc29, localc30, localc31, localc32, localc33, localc34, localc35, localc36, localc37, localc38, localc39, localc40, localc41, localc42, localc43, localc44, localc45, localc46, localc47, localc48, localc49, localc50, localc51, localc52, localc53, localc54, localc55, localc56, localc57, localc58, localc59, localc60, localc61, localc62, localc63, localc64, localc65, localc66, localc67, localc68, localc69, localc70, localc71, localc72, localc73, localc74, localc75, localc76, localc77, localc78, localc79, localc80, localc81, localc82, localc83, localc84, localc85, localc86, localc87, localc88, localc89, localc90, localc91, localc92, localc93, localc94, localc95, localc96, localc97, localc98, localc99, localc100, localc101, localc102, localc103, localc104, localc105, localc106, localc107, localc108, localc109, localc110, localc111, localc112, localc113, localc114, localc115, localc116, localc117, localc118, localc119, localc120, localc121, localc122, localc123, localc124, localc125, localc126, localc127, localc128, localc129, localc130, localc131, localc132, localc133, localc134, localc135, localc136, localc137, localc138, localc139, localc140, localc141, localc142, localc143, localc144, localc145, localc146, localc147, localc148, localc149, localc150, localc151, localc152, localc153, localc154, localc155, localc156, localc157, localc158, localc159, localc160, localc161, localc162, localc163, localc164, localc165, localc166, localc167, localc168, localc169, localc170, localc171, localc172, localc173, localc174, localc175, localc176, localc177, localc178, localc179, localc180, localc181, localc182, localc183, localc184, localc185, localc186, localc187, localc188, localc189 };
-      AppMethodBeat.o(193515);
+      AppMethodBeat.i(245976);
+      s.u(paramString, "roomId");
+      paramString = ((com.tencent.mm.plugin.chatroom.a.b)h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK().Ju(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(245976);
+        return 0;
+      }
+      paramString = paramString.bHw();
+      if (paramString == null)
+      {
+        AppMethodBeat.o(245976);
+        return 0;
+      }
+      int i = paramString.size();
+      AppMethodBeat.o(245976);
+      return i;
     }
     
-    private c() {}
+    public static int aJ(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(245969);
+      s.u(paramString1, "userName");
+      s.u(paramString2, "roomId");
+      paramString2 = ((com.tencent.mm.plugin.chatroom.a.b)h.ax(com.tencent.mm.plugin.chatroom.a.b.class)).bzK().Ju(paramString2);
+      if ((paramString2 != null) && (paramString2.bvK(paramString1) == true)) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(245969);
+        return 2;
+      }
+      if ((paramString2 != null) && (paramString2.Jf(paramString1) == true)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(245969);
+        return 1;
+      }
+      AppMethodBeat.o(245969);
+      return 3;
+    }
+    
+    public static int aK(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(245973);
+      s.u(paramString1, "userName");
+      s.u(paramString2, "anchorName");
+      if (s.p(paramString1, paramString2))
+      {
+        AppMethodBeat.o(245973);
+        return 1;
+      }
+      AppMethodBeat.o(245973);
+      return 2;
+    }
   }
 }
 

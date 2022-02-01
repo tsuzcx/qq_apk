@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aq.c;
-import com.tencent.mm.i.d;
+import com.tencent.mm.g.d;
+import com.tencent.mm.modelcdntran.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -16,20 +16,20 @@ import org.json.JSONObject;
 public abstract class WebViewJSSDKFileItem
   implements Parcelable
 {
-  public a SuJ;
+  public a akjx;
   public String appId;
-  public String fCM;
   public String fileName;
+  public String hHB;
   public int height;
-  public Bundle mab = new Bundle();
   public String mediaId;
   public int mediaType;
-  public String nVa;
-  public String nVb;
-  public boolean nVd;
-  public boolean nVe = true;
-  public boolean nVf = true;
-  public String oLR;
+  public Bundle oSS = new Bundle();
+  public String qUK;
+  public String qUL;
+  public boolean qUN;
+  public boolean qUO = true;
+  public boolean qUP = true;
+  public String rPM;
   public int size;
   public int width;
   
@@ -38,29 +38,36 @@ public abstract class WebViewJSSDKFileItem
   protected WebViewJSSDKFileItem(Parcel paramParcel)
   {
     this.appId = paramParcel.readString();
-    this.fCM = paramParcel.readString();
-    this.oLR = paramParcel.readString();
-    this.nVa = paramParcel.readString();
+    this.hHB = paramParcel.readString();
+    this.rPM = paramParcel.readString();
+    this.qUK = paramParcel.readString();
     this.mediaType = paramParcel.readInt();
     this.size = paramParcel.readInt();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
-    this.mab = paramParcel.readBundle();
+    this.oSS = paramParcel.readBundle();
   }
   
-  public static WebViewJSSDKFileItem X(int paramInt, String paramString1, String paramString2)
+  private static String aO(Bundle paramBundle)
   {
-    WebViewJSSDKUpFileItem localWebViewJSSDKUpFileItem = new WebViewJSSDKUpFileItem();
-    localWebViewJSSDKUpFileItem.fileType = paramInt;
-    localWebViewJSSDKUpFileItem.POG = paramString1;
-    localWebViewJSSDKUpFileItem.nVa = paramString2;
-    localWebViewJSSDKUpFileItem.gVL();
-    localWebViewJSSDKUpFileItem.mediaId = c.a("jsupfile", Util.nowMilliSecond(), localWebViewJSSDKUpFileItem.fCM, localWebViewJSSDKUpFileItem.fCM);
-    Log.d("MicroMsg.WebViewJSSDKFileItem", "fileType=%d, origFilePath=%s, localId=%s", new Object[] { Integer.valueOf(paramInt), paramString2, localWebViewJSSDKUpFileItem.fCM });
-    return localWebViewJSSDKUpFileItem;
+    if (paramBundle == null) {
+      return "";
+    }
+    localJSONObject = new JSONObject();
+    try
+    {
+      Iterator localIterator = paramBundle.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localJSONObject.put(str, paramBundle.get(str));
+      }
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramBundle) {}
   }
   
-  private static Bundle aVN(String paramString)
+  private static Bundle aSV(String paramString)
   {
     localBundle = new Bundle();
     if ((paramString == null) || (paramString.isEmpty())) {
@@ -101,148 +108,141 @@ public abstract class WebViewJSSDKFileItem
     catch (JSONException paramString) {}
   }
   
-  private static String aq(Bundle paramBundle)
+  public static WebViewJSSDKFileItem an(int paramInt, String paramString1, String paramString2)
   {
-    if (paramBundle == null) {
-      return "";
-    }
-    localJSONObject = new JSONObject();
-    try
-    {
-      Iterator localIterator = paramBundle.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localJSONObject.put(str, paramBundle.get(str));
-      }
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramBundle) {}
+    WebViewJSSDKUpFileItem localWebViewJSSDKUpFileItem = new WebViewJSSDKUpFileItem();
+    localWebViewJSSDKUpFileItem.fileType = paramInt;
+    localWebViewJSSDKUpFileItem.WET = paramString1;
+    localWebViewJSSDKUpFileItem.qUK = paramString2;
+    localWebViewJSSDKUpFileItem.kLS();
+    localWebViewJSSDKUpFileItem.mediaId = h.a("jsupfile", Util.nowMilliSecond(), localWebViewJSSDKUpFileItem.hHB, localWebViewJSSDKUpFileItem.hHB);
+    Log.d("MicroMsg.WebViewJSSDKFileItem", "fileType=%d, origFilePath=%s, localId=%s", new Object[] { Integer.valueOf(paramInt), paramString2, localWebViewJSSDKUpFileItem.hHB });
+    return localWebViewJSSDKUpFileItem;
   }
   
-  public static WebViewJSSDKFileItem bIH(String paramString)
+  public static WebViewJSSDKFileItem bLB(String paramString)
   {
     WebViewJSSDKImageItem localWebViewJSSDKImageItem = new WebViewJSSDKImageItem();
-    localWebViewJSSDKImageItem.nVa = paramString;
-    localWebViewJSSDKImageItem.gVL();
-    localWebViewJSSDKImageItem.mediaId = c.a("jsupimg", Util.nowMilliSecond(), localWebViewJSSDKImageItem.fCM, localWebViewJSSDKImageItem.fCM);
+    localWebViewJSSDKImageItem.qUK = paramString;
+    localWebViewJSSDKImageItem.kLS();
+    localWebViewJSSDKImageItem.mediaId = h.a("jsupimg", Util.nowMilliSecond(), localWebViewJSSDKImageItem.hHB, localWebViewJSSDKImageItem.hHB);
     return localWebViewJSSDKImageItem;
   }
   
-  public static WebViewJSSDKFileItem bII(String paramString)
+  public static WebViewJSSDKFileItem bLC(String paramString)
   {
     WebViewJSSDKVoiceItem localWebViewJSSDKVoiceItem = new WebViewJSSDKVoiceItem();
     localWebViewJSSDKVoiceItem.fileName = paramString;
-    localWebViewJSSDKVoiceItem.gVL();
-    localWebViewJSSDKVoiceItem.mediaId = c.a("jsupvoice", Util.nowMilliSecond(), localWebViewJSSDKVoiceItem.fCM, localWebViewJSSDKVoiceItem.fCM);
+    localWebViewJSSDKVoiceItem.kLS();
+    localWebViewJSSDKVoiceItem.mediaId = h.a("jsupvoice", Util.nowMilliSecond(), localWebViewJSSDKVoiceItem.hHB, localWebViewJSSDKVoiceItem.hHB);
     return localWebViewJSSDKVoiceItem;
   }
   
-  public static WebViewJSSDKVideoItem bIJ(String paramString)
+  public static WebViewJSSDKVideoItem bLD(String paramString)
   {
     WebViewJSSDKVideoItem localWebViewJSSDKVideoItem = new WebViewJSSDKVideoItem();
-    localWebViewJSSDKVideoItem.nVa = paramString;
-    localWebViewJSSDKVideoItem.gVL();
-    localWebViewJSSDKVideoItem.mediaId = c.a("jsvideofile", Util.nowMilliSecond(), localWebViewJSSDKVideoItem.fCM, localWebViewJSSDKVideoItem.fCM);
-    Log.d("MicroMsg.WebViewJSSDKFileItem", "filepath = %s, localid = %s, mediaid = %s", new Object[] { paramString, localWebViewJSSDKVideoItem.fCM, localWebViewJSSDKVideoItem.mediaId });
+    localWebViewJSSDKVideoItem.qUK = paramString;
+    localWebViewJSSDKVideoItem.kLS();
+    localWebViewJSSDKVideoItem.mediaId = h.a("jsvideofile", Util.nowMilliSecond(), localWebViewJSSDKVideoItem.hHB, localWebViewJSSDKVideoItem.hHB);
+    Log.d("MicroMsg.WebViewJSSDKFileItem", "filepath = %s, localid = %s, mediaid = %s", new Object[] { paramString, localWebViewJSSDKVideoItem.hHB, localWebViewJSSDKVideoItem.mediaId });
     return localWebViewJSSDKVideoItem;
   }
   
-  public static WebViewJSSDKFileItem oF(String paramString1, String paramString2)
+  public static WebViewJSSDKFileItem rW(String paramString1, String paramString2)
   {
     WebViewJSSDKImageItem localWebViewJSSDKImageItem = new WebViewJSSDKImageItem();
-    localWebViewJSSDKImageItem.nVa = paramString1;
-    localWebViewJSSDKImageItem.oLR = paramString2;
-    localWebViewJSSDKImageItem.gVL();
-    localWebViewJSSDKImageItem.mediaId = c.a("jsupimg", Util.nowMilliSecond(), localWebViewJSSDKImageItem.fCM, localWebViewJSSDKImageItem.fCM);
+    localWebViewJSSDKImageItem.qUK = paramString1;
+    localWebViewJSSDKImageItem.rPM = paramString2;
+    localWebViewJSSDKImageItem.kLS();
+    localWebViewJSSDKImageItem.mediaId = h.a("jsupimg", Util.nowMilliSecond(), localWebViewJSSDKImageItem.hHB, localWebViewJSSDKImageItem.hHB);
     return localWebViewJSSDKImageItem;
   }
   
-  protected void cm(JSONObject paramJSONObject)
+  protected void cT(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
       return;
     }
     this.appId = paramJSONObject.optString("appId");
-    this.fCM = paramJSONObject.optString("localId");
-    this.oLR = paramJSONObject.optString("thumbFilePath");
-    this.nVa = paramJSONObject.optString("origFilePath");
-    this.nVb = paramJSONObject.optString("serverId");
+    this.hHB = paramJSONObject.optString("localId");
+    this.rPM = paramJSONObject.optString("thumbFilePath");
+    this.qUK = paramJSONObject.optString("origFilePath");
+    this.qUL = paramJSONObject.optString("serverId");
     this.mediaId = paramJSONObject.optString("mediaId");
     this.fileName = paramJSONObject.optString("fileName");
     this.mediaType = paramJSONObject.optInt("mediaType");
     this.size = paramJSONObject.optInt("size");
     this.width = paramJSONObject.optInt("width");
     this.height = paramJSONObject.optInt("height");
-    this.SuJ = a.bkG(paramJSONObject.optString("cdnInfo"));
-    this.nVd = paramJSONObject.optBoolean("upload");
-    this.nVe = paramJSONObject.optBoolean("needCompress", true);
-    this.nVf = paramJSONObject.optBoolean("needUploadCDNInfo", true);
-    this.mab = aVN(paramJSONObject.optString("extra"));
+    this.akjx = a.bkr(paramJSONObject.optString("cdnInfo"));
+    this.qUN = paramJSONObject.optBoolean("upload");
+    this.qUO = paramJSONObject.optBoolean("needCompress", true);
+    this.qUP = paramJSONObject.optBoolean("needUploadCDNInfo", true);
+    this.oSS = aSV(paramJSONObject.optString("extra"));
   }
   
   public void d(d paramd)
   {
-    if (this.SuJ == null) {
-      this.SuJ = new a();
+    if (this.akjx == null) {
+      this.akjx = new a();
     }
     if (paramd == null)
     {
       Log.e("MicroMsg.WebViewJSSDKFileItem", "sceneResult info is null");
       return;
     }
-    this.SuJ.field_aesKey = paramd.field_aesKey;
-    this.SuJ.field_fileId = paramd.field_fileId;
-    this.SuJ.field_fileUrl = paramd.field_fileUrl;
-    this.SuJ.field_fileLength = ((int)paramd.field_fileLength);
+    this.akjx.field_aesKey = paramd.field_aesKey;
+    this.akjx.field_fileId = paramd.field_fileId;
+    this.akjx.field_fileUrl = paramd.field_fileUrl;
+    this.akjx.field_fileLength = ((int)paramd.field_fileLength);
   }
   
-  protected JSONObject gVK()
+  public abstract String getFileType();
+  
+  protected JSONObject kLR()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("appId", this.appId);
-      localJSONObject.put("localId", this.fCM);
-      localJSONObject.put("thumbFilePath", this.oLR);
-      localJSONObject.put("origFilePath", this.nVa);
-      localJSONObject.put("serverId", this.nVb);
+      localJSONObject.put("localId", this.hHB);
+      localJSONObject.put("thumbFilePath", this.rPM);
+      localJSONObject.put("origFilePath", this.qUK);
+      localJSONObject.put("serverId", this.qUL);
       localJSONObject.put("mediaId", this.mediaId);
       localJSONObject.put("fileName", this.fileName);
       localJSONObject.put("mediaType", this.mediaType);
       localJSONObject.put("size", this.size);
       localJSONObject.put("width", this.width);
       localJSONObject.put("height", this.height);
-      if (this.SuJ != null) {
-        localJSONObject.put("cdnInfo", this.SuJ.toJson());
+      if (this.akjx != null) {
+        localJSONObject.put("cdnInfo", this.akjx.toJson());
       }
-      localJSONObject.put("upload", this.nVd);
-      localJSONObject.put("needCompress", this.nVe);
-      localJSONObject.put("needUploadCDNInfo", this.nVf);
-      localJSONObject.put("extra", aq(this.mab));
+      localJSONObject.put("upload", this.qUN);
+      localJSONObject.put("needCompress", this.qUO);
+      localJSONObject.put("needUploadCDNInfo", this.qUP);
+      localJSONObject.put("extra", aO(this.oSS));
       return localJSONObject;
     }
     catch (JSONException localJSONException) {}
     return localJSONObject;
   }
   
-  public abstract WebViewJSSDKFileItem gVL();
+  public abstract WebViewJSSDKFileItem kLS();
   
-  public abstract String gVM();
-  
-  public abstract String getFileType();
+  public abstract String kLT();
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.fCM);
-    paramParcel.writeString(this.oLR);
-    paramParcel.writeString(this.nVa);
+    paramParcel.writeString(this.hHB);
+    paramParcel.writeString(this.rPM);
+    paramParcel.writeString(this.qUK);
     paramParcel.writeInt(this.mediaType);
     paramParcel.writeInt(this.size);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
-    paramParcel.writeBundle(this.mab);
+    paramParcel.writeBundle(this.oSS);
   }
   
   public static final class a
@@ -252,7 +252,7 @@ public abstract class WebViewJSSDKFileItem
     public int field_fileLength;
     public String field_fileUrl;
     
-    public static a bkG(String paramString)
+    public static a bkr(String paramString)
     {
       AppMethodBeat.i(182694);
       a locala = new a();

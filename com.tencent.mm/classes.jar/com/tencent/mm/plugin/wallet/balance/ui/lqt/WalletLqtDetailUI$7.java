@@ -16,17 +16,17 @@ final class WalletLqtDetailUI$7
   {
     AppMethodBeat.i(68793);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    WalletLqtDetailUI.e(this.OpW);
-    h.IzE.a(17084, new Object[] { Integer.valueOf(3) });
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    WalletLqtDetailUI.e(this.VeZ);
+    h.OAn.b(17084, new Object[] { Integer.valueOf(3) });
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtDetailUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(68793);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,45 @@
 package com.tencent.mm.wallet_core.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.MMPreference;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.f;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.f;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.e;
 
 @com.tencent.mm.ui.base.a(3)
 public abstract class WalletPreferenceUI
   extends MMPreference
   implements f
 {
-  private com.tencent.mm.wallet_core.d.g mNetController = null;
-  private i mNetSceneMgr = null;
-  private d mProcess = null;
+  private g mNetController = null;
+  private com.tencent.mm.wallet_core.c.i mNetSceneMgr = null;
+  private e mProcess = null;
   
-  public abstract boolean f(int paramInt1, int paramInt2, String paramString, q paramq);
+  public abstract boolean d(int paramInt1, int paramInt2, String paramString, p paramp);
   
-  public final com.tencent.mm.wallet_core.d.g getNetController()
+  public final g getNetController()
   {
     if (this.mNetController == null)
     {
       if (this.mProcess == null) {
-        this.mProcess = com.tencent.mm.wallet_core.a.bF(this);
+        this.mProcess = com.tencent.mm.wallet_core.a.cm(this);
       }
       this.mNetController = this.mProcess.a(this, this.mNetSceneMgr);
     }
     return this.mNetController;
   }
   
-  public final i ijz()
+  public final com.tencent.mm.wallet_core.c.i jPx()
   {
     if (this.mNetSceneMgr == null) {
-      this.mNetSceneMgr = new i(this, this);
+      this.mNetSceneMgr = new com.tencent.mm.wallet_core.c.i(this, this);
     }
     return this.mNetSceneMgr;
   }
@@ -50,11 +49,11 @@ public abstract class WalletPreferenceUI
     fixStatusbar(true);
     super.onCreate(paramBundle);
     setStatusColor();
-    this.mNetSceneMgr = new i(this, this);
+    this.mNetSceneMgr = new com.tencent.mm.wallet_core.c.i(this, this);
     this.mNetSceneMgr.addSceneEndListener(385);
     this.mNetSceneMgr.addSceneEndListener(1518);
     if (getLayoutId() > 0) {
-      g.iju();
+      i.jPs();
     }
   }
   
@@ -66,15 +65,15 @@ public abstract class WalletPreferenceUI
     super.onDestroy();
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp, boolean paramBoolean)
   {
-    if ((!f(paramInt1, paramInt2, paramString, paramq)) && (paramInt2 != 0))
+    if ((!d(paramInt1, paramInt2, paramString, paramp)) && (paramInt2 != 0))
     {
-      paramq = paramString;
+      paramp = paramString;
       if (Util.isNullOrNil(paramString)) {
-        paramq = getString(a.i.wallet_data_err);
+        paramp = getString(a.i.wallet_data_err);
       }
-      h.a(this, paramq, null, false, new DialogInterface.OnClickListener()
+      k.a(this, paramp, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -99,7 +98,7 @@ public abstract class WalletPreferenceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.WalletPreferenceUI
  * JD-Core Version:    0.7.0.1
  */

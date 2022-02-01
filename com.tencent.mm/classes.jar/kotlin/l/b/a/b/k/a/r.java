@@ -1,40 +1,43 @@
 package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
-import kotlin.l.b.a.b.b.b;
-import kotlin.l.b.a.b.b.e;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.e.a.p;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.al;
 
 public abstract interface r
 {
-  public static final r abnK = new r()
+  public abstract ad a(a.p paramp, String paramString, al paramal1, al paramal2);
+  
+  public static final class a
+    implements r
   {
-    public final void a(e paramAnonymouse, List<String> paramAnonymousList)
+    public static final a ajmv;
+    
+    static
     {
-      AppMethodBeat.i(60314);
-      if (paramAnonymouse == null) {
-        aDG(0);
-      }
-      AppMethodBeat.o(60314);
+      AppMethodBeat.i(60318);
+      ajmv = new a();
+      AppMethodBeat.o(60318);
     }
     
-    public final void h(b paramAnonymousb)
+    public final ad a(a.p paramp, String paramString, al paramal1, al paramal2)
     {
-      AppMethodBeat.i(60315);
-      if (paramAnonymousb == null) {
-        aDG(2);
-      }
-      AppMethodBeat.o(60315);
+      AppMethodBeat.i(60317);
+      s.u(paramp, "proto");
+      s.u(paramString, "flexibleId");
+      s.u(paramal1, "lowerBound");
+      s.u(paramal2, "upperBound");
+      paramp = new IllegalArgumentException("This method should not be used.");
+      AppMethodBeat.o(60317);
+      throw paramp;
     }
-  };
-  
-  public abstract void a(e parame, List<String> paramList);
-  
-  public abstract void h(b paramb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.r
  * JD-Core Version:    0.7.0.1
  */

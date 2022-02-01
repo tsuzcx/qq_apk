@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.fingerprint.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.fingerprint.b.d;
-import com.tencent.mm.plugin.fingerprint.d.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fingerprint.c.a;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public class FingerPrintEntranceUI
@@ -29,16 +28,16 @@ public class FingerPrintEntranceUI
     super.onCreate(paramBundle);
     Log.i("MicroMsg.FingerPrintEntranceUI", "onCreate");
     int i;
-    if (d.eoJ())
+    if (com.tencent.mm.plugin.fingerprint.mgr.c.ftM())
     {
       Log.i("MicroMsg.FingerPrintEntranceUI", "will call showSetFingerPrintGuide()");
       Log.i("MicroMsg.FingerPrintEntranceUI", "hy: has standard action starting to fingerprint setting");
       paramBundle = getResources().getString(a.i.strong_guide_set_fingerprint_text);
       Resources localResources = getResources();
-      if (((a)com.tencent.mm.kernel.h.ae(a.class)).eov())
+      if (((a)h.ax(a.class)).fty())
       {
         i = a.i.btn_guide_reg_system_fingerprint;
-        com.tencent.mm.ui.base.h.a(this, paramBundle, "", localResources.getString(i), getString(a.i.app_cancel), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        k.a(this, paramBundle, "", localResources.getString(i), getString(a.i.app_cancel), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -57,7 +56,7 @@ public class FingerPrintEntranceUI
             AppMethodBeat.o(64551);
           }
         });
-        d.eoF();
+        com.tencent.mm.plugin.fingerprint.mgr.c.ftI();
         i = j;
       }
     }
@@ -72,16 +71,16 @@ public class FingerPrintEntranceUI
       return;
       i = a.i.app_ok;
       break;
-      if (!d.eoE())
+      if (!com.tencent.mm.plugin.fingerprint.mgr.c.ftH())
       {
         Log.i("MicroMsg.FingerPrintEntranceUI", "will showOpenFingerPrintPayGuide()");
-        com.tencent.mm.ui.base.h.a(this, getResources().getString(a.i.strong_guide_open_fingerprint_pay_text), "", getResources().getString(a.i.btn_guide_open_fingerprint), getString(a.i.app_cancel), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        k.a(this, getResources().getString(a.i.strong_guide_open_fingerprint_pay_text), "", getResources().getString(a.i.btn_guide_open_fingerprint), getString(a.i.app_cancel), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(64552);
             Log.i("MicroMsg.FingerPrintEntranceUI", "user click the button to open fingerprint pay");
-            c.ad(FingerPrintEntranceUI.this, "wallet", ".pwd.ui.WalletPasswordSettingUI");
+            com.tencent.mm.br.c.ai(FingerPrintEntranceUI.this, "wallet", ".pwd.ui.WalletPasswordSettingUI");
             FingerPrintEntranceUI.this.finish();
             AppMethodBeat.o(64552);
           }
@@ -94,7 +93,7 @@ public class FingerPrintEntranceUI
             AppMethodBeat.o(64553);
           }
         });
-        d.eoD();
+        com.tencent.mm.plugin.fingerprint.mgr.c.ftG();
         i = j;
       }
       else
@@ -111,7 +110,7 @@ public class FingerPrintEntranceUI
     AppMethodBeat.o(64555);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -124,7 +123,7 @@ public class FingerPrintEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.ui.FingerPrintEntranceUI
  * JD-Core Version:    0.7.0.1
  */

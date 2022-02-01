@@ -1,87 +1,87 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$w
   extends e
 {
-  public int RCR = 0;
-  public int Vh = 0;
-  public int ZeV = 0;
-  public int Zgk = 0;
-  public int Zgl = 0;
+  public int Yzt = 0;
+  public int ahdy = 0;
+  public int aheM = 0;
+  public int aheN = 0;
+  public int bUl = 0;
   public int ret = 0;
   public String userName = "";
   
   public a$w()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (!this.userName.equals("")) {
-      i = j + b.g(2, this.userName);
-    }
-    j = i;
-    if (this.Vh != 0) {
-      j = i + b.bM(3, this.Vh);
-    }
-    i = j;
-    if (this.Zgk != 0) {
-      i = j + b.bN(4, this.Zgk);
-    }
-    j = i;
-    if (this.ret != 0) {
-      j = i + b.bM(5, this.ret);
-    }
-    i = j;
-    if (this.Zgl != 0) {
-      i = j + b.bM(6, this.Zgl);
-    }
-    j = i;
-    if (this.ZeV != 0) {
-      j = i + b.bN(7, this.ZeV);
-    }
-    i = j;
-    if (this.RCR != 0) {
-      i = j + b.bN(8, this.RCR);
-    }
-    return i;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
     if (!this.userName.equals("")) {
-      paramb.f(2, this.userName);
+      paramb.g(2, this.userName);
     }
-    if (this.Vh != 0) {
-      paramb.bJ(3, this.Vh);
+    if (this.bUl != 0) {
+      paramb.cF(3, this.bUl);
     }
-    if (this.Zgk != 0) {
-      paramb.bK(4, this.Zgk);
+    if (this.aheM != 0) {
+      paramb.cG(4, this.aheM);
     }
     if (this.ret != 0) {
-      paramb.bJ(5, this.ret);
+      paramb.cF(5, this.ret);
     }
-    if (this.Zgl != 0) {
-      paramb.bJ(6, this.Zgl);
+    if (this.aheN != 0) {
+      paramb.cF(6, this.aheN);
     }
-    if (this.ZeV != 0) {
-      paramb.bK(7, this.ZeV);
+    if (this.ahdy != 0) {
+      paramb.cG(7, this.ahdy);
     }
-    if (this.RCR != 0) {
-      paramb.bK(8, this.RCR);
+    if (this.Yzt != 0) {
+      paramb.cG(8, this.Yzt);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (!this.userName.equals("")) {
+      i = j + b.h(2, this.userName);
+    }
+    j = i;
+    if (this.bUl != 0) {
+      j = i + b.cJ(3, this.bUl);
+    }
+    i = j;
+    if (this.aheM != 0) {
+      i = j + b.cK(4, this.aheM);
+    }
+    j = i;
+    if (this.ret != 0) {
+      j = i + b.cJ(5, this.ret);
+    }
+    i = j;
+    if (this.aheN != 0) {
+      i = j + b.cJ(6, this.aheN);
+    }
+    j = i;
+    if (this.ahdy != 0) {
+      j = i + b.cK(7, this.ahdy);
+    }
+    i = j;
+    if (this.Yzt != 0) {
+      i = j + b.cK(8, this.Yzt);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.w
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.matrix.trace.g.b;
+import com.tencent.matrix.trace.f.c;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.plugin.music.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -15,33 +15,33 @@ import java.util.regex.Pattern;
 
 public class e
 {
-  private boolean FRq;
-  public ArrayList<a> FRr;
-  private LinkedList<Long> FRs;
-  private String FRt;
-  private String FRu;
-  private String FRv;
-  private boolean FRw;
+  private LinkedList<Long> Fas;
+  private boolean LMl;
+  public ArrayList<a> LMm;
+  private String LMn;
+  private String LMo;
+  private String LMp;
+  private boolean LMq;
   private String album;
   private long offset;
-  private String ozs;
+  private String rDl;
   private String title;
-  private int wzx;
+  private int zVI;
   
   private e()
   {
     AppMethodBeat.i(63007);
-    this.FRq = false;
-    this.FRs = new LinkedList();
-    this.FRr = new ArrayList();
-    this.wzx = 0;
-    this.FRw = false;
+    this.LMl = false;
+    this.Fas = new LinkedList();
+    this.LMm = new ArrayList();
+    this.zVI = 0;
+    this.LMq = false;
     AppMethodBeat.o(63007);
   }
   
   public static e a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(259935);
+    AppMethodBeat.i(271137);
     e locale = new e();
     long l = Util.currentTicks();
     if (!Util.isNullOrNil(paramString1)) {
@@ -49,8 +49,8 @@ public class e
       {
         Log.w("MicroMsg.Music.LyricObj", "parserLrc: but lrc or lrcMgr is null");
         Log.d("MicroMsg.Music.LyricObj", "getLrcMgr beg: src lrc = %s", new Object[] { paramString1 });
-        Log.d("MicroMsg.Music.LyricObj", "parse finish: sentence size [%d], result:", new Object[] { Integer.valueOf(locale.FRr.size()) });
-        locale.FRq = true;
+        Log.d("MicroMsg.Music.LyricObj", "parse finish: sentence size [%d], result:", new Object[] { Integer.valueOf(locale.LMm.size()) });
+        locale.LMl = true;
         if (paramBoolean3)
         {
           if (!Util.isNullOrNil(paramString3)) {
@@ -71,7 +71,7 @@ public class e
     for (;;)
     {
       Log.d("MicroMsg.Music.LyricObj", "getLrcMgr finish: use %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-      AppMethodBeat.o(259935);
+      AppMethodBeat.o(271137);
       return locale;
       paramString4 = paramString1.replaceAll("\n", " ").replaceAll("\r", " ");
       Matcher localMatcher1 = Pattern.compile("(\\[((\\d{2}:\\d{2}(\\.\\d{2}){0,1}\\])|(al:|ar:|by:|offset:|re:|ti:|ve:))[^\\[]*)").matcher(paramString4);
@@ -86,31 +86,31 @@ public class e
         }
         else if (str.startsWith("[ti:"))
         {
-          locale.title = ji(str, "[ti:");
+          locale.title = kx(str, "[ti:");
         }
         else if (str.startsWith("[ar:"))
         {
-          locale.ozs = ji(str, "[ar:");
+          locale.rDl = kx(str, "[ar:");
         }
         else if (str.startsWith("[al:"))
         {
-          locale.album = ji(str, "[al:");
+          locale.album = kx(str, "[al:");
         }
         else if (str.startsWith("[by:"))
         {
-          locale.FRt = ji(str, "[by:");
+          locale.LMn = kx(str, "[by:");
         }
         else if (str.startsWith("[offset:"))
         {
-          locale.offset = Util.getLong(ji(str, "[offset:"), 0L);
+          locale.offset = Util.getLong(kx(str, "[offset:"), 0L);
         }
         else if (str.startsWith("[re:"))
         {
-          locale.FRu = ji(str, "[re:");
+          locale.LMo = kx(str, "[re:");
         }
         else if (str.startsWith("[ve:"))
         {
-          locale.FRv = ji(str, "[ve:");
+          locale.LMp = kx(str, "[ve:");
         }
         else
         {
@@ -123,7 +123,7 @@ public class e
             if (localMatcher2.find())
             {
               if (localMatcher2.groupCount() > 0) {
-                locala.timestamp = aSe(localMatcher2.group(1));
+                locala.timestamp = aOW(localMatcher2.group(1));
               }
               paramString4 = localPattern.split(str);
               if ((paramString4 != null) && (paramString4.length > 0))
@@ -142,30 +142,30 @@ public class e
               }
               for (;;)
               {
-                if (i < locale.FRs.size())
+                if (i < locale.Fas.size())
                 {
                   paramString4 = new a();
-                  paramString4.timestamp = ((Long)locale.FRs.get(i)).longValue();
+                  paramString4.timestamp = ((Long)locale.Fas.get(i)).longValue();
                   paramString4.content = locala.content;
-                  paramString4.FRx = true;
+                  paramString4.LMr = true;
                   i += 1;
                   continue;
-                  locale.FRs.add(Long.valueOf(locala.timestamp));
+                  locale.Fas.add(Long.valueOf(locala.timestamp));
                   break;
                 }
               }
-              locale.FRs.clear();
+              locale.Fas.clear();
               if (!locala.isEmpty()) {
-                i = locale.FRr.size() - 1;
+                i = locale.LMm.size() - 1;
               }
             }
           }
           for (;;)
           {
-            if ((i >= 0) && (((a)locale.FRr.get(i)).timestamp != locala.timestamp))
+            if ((i >= 0) && (((a)locale.LMm.get(i)).timestamp != locala.timestamp))
             {
-              if (((a)locale.FRr.get(i)).timestamp < locala.timestamp) {
-                locale.FRr.add(i + 1, locala);
+              if (((a)locale.LMm.get(i)).timestamp < locala.timestamp) {
+                locale.LMm.add(i + 1, locala);
               }
             }
             else
@@ -173,7 +173,7 @@ public class e
               if (i >= 0) {
                 break label433;
               }
-              locale.FRr.add(0, locala);
+              locale.LMm.add(0, locala);
               break label433;
               break;
             }
@@ -185,19 +185,19 @@ public class e
       if (locale.offset != 0L)
       {
         i = 0;
-        while (i < locale.FRr.size())
+        while (i < locale.LMm.size())
         {
-          paramString4 = (a)locale.FRr.get(i);
+          paramString4 = (a)locale.LMm.get(i);
           paramString4.timestamp += locale.offset;
           i += 1;
         }
         locale.offset = 0L;
       }
       int i = 0;
-      while (i < locale.FRr.size() - 1)
+      while (i < locale.LMm.size() - 1)
       {
-        paramString4 = (a)locale.FRr.get(i);
-        if ((paramString4.FRx) && (paramString4.content.equals(((a)locale.FRr.get(i + 1)).content))) {
+        paramString4 = (a)locale.LMm.get(i);
+        if ((paramString4.LMr) && (paramString4.content.equals(((a)locale.LMm.get(i + 1)).content))) {
           paramString4.content = " ";
         }
         i += 1;
@@ -211,9 +211,9 @@ public class e
       for (;;)
       {
         if (((a)localObject).content != null) {
-          locale.FRr.add(localObject);
+          locale.LMm.add(localObject);
         }
-        locale.FRq = false;
+        locale.LMl = false;
         break;
         if (!paramBoolean1) {
           ((a)localObject).content = MMApplicationContext.getContext().getString(a.h.no_licence_lyric_wording);
@@ -224,43 +224,43 @@ public class e
       label1015:
       paramString4 = new a();
       paramString4.timestamp = 0L;
-      paramString4.content = MMApplicationContext.getContext().getString(a.h.user_share_music, new Object[] { aa.PJ(paramString3) });
-      if (locale.FRr.isEmpty())
+      paramString4.content = MMApplicationContext.getContext().getString(a.h.user_share_music, new Object[] { aa.getDisplayName(paramString3) });
+      if (locale.LMm.isEmpty())
       {
-        locale.FRr.add(paramString4);
+        locale.LMm.add(paramString4);
         break label102;
       }
-      if (locale.FRr.size() == 1)
+      if (locale.LMm.size() == 1)
       {
-        locale.FRr.add(0, paramString4);
-        ((a)locale.FRr.get(1)).timestamp = 5000L;
+        locale.LMm.add(0, paramString4);
+        ((a)locale.LMm.get(1)).timestamp = 5000L;
         break label102;
       }
-      locale.FRr.add(0, paramString4);
-      ((a)locale.FRr.get(1)).timestamp = (3L * (((a)locale.FRr.get(2)).timestamp >> 2));
+      locale.LMm.add(0, paramString4);
+      ((a)locale.LMm.get(1)).timestamp = (3L * (((a)locale.LMm.get(2)).timestamp >> 2));
       break label102;
       label1174:
       paramString1 = new a();
       paramString1.timestamp = 0L;
       paramString1.content = paramString2;
-      if (locale.FRr.isEmpty())
+      if (locale.LMm.isEmpty())
       {
-        locale.FRr.add(paramString1);
+        locale.LMm.add(paramString1);
       }
-      else if (locale.FRr.size() == 1)
+      else if (locale.LMm.size() == 1)
       {
-        locale.FRr.add(0, paramString1);
-        ((a)locale.FRr.get(1)).timestamp = 5000L;
+        locale.LMm.add(0, paramString1);
+        ((a)locale.LMm.get(1)).timestamp = 5000L;
       }
       else
       {
-        locale.FRr.add(0, paramString1);
-        ((a)locale.FRr.get(1)).timestamp = (3L * (((a)locale.FRr.get(2)).timestamp >> 2));
+        locale.LMm.add(0, paramString1);
+        ((a)locale.LMm.get(1)).timestamp = (3L * (((a)locale.LMm.get(2)).timestamp >> 2));
       }
     }
   }
   
-  private static long aSe(String paramString)
+  private static long aOW(String paramString)
   {
     AppMethodBeat.i(63005);
     for (;;)
@@ -268,15 +268,15 @@ public class e
       try
       {
         paramString = paramString.split(":");
-        int k = m.df(paramString[0]);
+        int k = m.ew(paramString[0]);
         if (paramString.length <= 1) {
           break label145;
         }
         paramString = paramString[1].split("\\.");
-        j = m.df(paramString[0]);
+        j = m.ew(paramString[0]);
         if (paramString.length > 1)
         {
-          i = m.df(paramString[1]);
+          i = m.ew(paramString[1]);
           long l1 = k;
           long l2 = j * 1000;
           long l3 = i * 10;
@@ -299,7 +299,7 @@ public class e
     }
   }
   
-  private static String ji(String paramString1, String paramString2)
+  private static String kx(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63004);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -318,47 +318,60 @@ public class e
     return str;
   }
   
-  public final int OF(long paramLong)
+  public final a adz(int paramInt)
   {
-    AppMethodBeat.i(259945);
-    if (this.FRr.isEmpty())
+    AppMethodBeat.i(63006);
+    if ((paramInt < 0) || (paramInt >= this.LMm.size()))
+    {
+      AppMethodBeat.o(63006);
+      return null;
+    }
+    a locala = (a)this.LMm.get(paramInt);
+    AppMethodBeat.o(63006);
+    return locala;
+  }
+  
+  public final int sC(long paramLong)
+  {
+    AppMethodBeat.i(271176);
+    if (this.LMm.isEmpty())
     {
       Log.w("MicroMsg.Music.LyricObj", "getCurIndex: but sentence list is empty");
-      AppMethodBeat.o(259945);
+      AppMethodBeat.o(271176);
       return -1;
     }
     int j;
     int i;
-    if (((a)this.FRr.get(this.wzx)).timestamp <= paramLong)
+    if (((a)this.LMm.get(this.zVI)).timestamp <= paramLong)
     {
-      j = this.FRr.size() - 1;
-      i = this.wzx;
+      j = this.LMm.size() - 1;
+      i = this.zVI;
       while (i < j)
       {
-        if ((((a)this.FRr.get(i)).timestamp <= paramLong) && (paramLong < ((a)this.FRr.get(i + 1)).timestamp))
+        if ((((a)this.LMm.get(i)).timestamp <= paramLong) && (paramLong < ((a)this.LMm.get(i + 1)).timestamp))
         {
-          this.wzx = i;
-          i = this.wzx;
-          AppMethodBeat.o(259945);
+          this.zVI = i;
+          i = this.zVI;
+          AppMethodBeat.o(271176);
           return i;
         }
         i += 1;
       }
     }
-    for (this.wzx = j;; this.wzx = 0)
+    for (this.zVI = j;; this.zVI = 0)
     {
-      Log.d("MicroMsg.Music.LyricObj", "curIndex %d", new Object[] { Integer.valueOf(this.wzx) });
-      i = this.wzx;
-      AppMethodBeat.o(259945);
+      Log.d("MicroMsg.Music.LyricObj", "curIndex %d", new Object[] { Integer.valueOf(this.zVI) });
+      i = this.zVI;
+      AppMethodBeat.o(271176);
       return i;
-      i = this.wzx;
+      i = this.zVI;
       while (i > 0)
       {
-        if ((((a)this.FRr.get(i)).timestamp >= paramLong) && (paramLong > ((a)this.FRr.get(i - 1)).timestamp))
+        if ((((a)this.LMm.get(i)).timestamp >= paramLong) && (paramLong > ((a)this.LMm.get(i - 1)).timestamp))
         {
-          this.wzx = (i - 1);
-          i = this.wzx;
-          AppMethodBeat.o(259945);
+          this.zVI = (i - 1);
+          i = this.zVI;
+          AppMethodBeat.o(271176);
           return i;
         }
         i -= 1;
@@ -366,38 +379,17 @@ public class e
     }
   }
   
-  public final a Zm(int paramInt)
-  {
-    AppMethodBeat.i(63006);
-    if ((paramInt < 0) || (paramInt >= this.FRr.size()))
-    {
-      AppMethodBeat.o(63006);
-      return null;
-    }
-    a locala = (a)this.FRr.get(paramInt);
-    AppMethodBeat.o(63006);
-    return locala;
-  }
-  
-  public final int feO()
-  {
-    AppMethodBeat.i(259943);
-    int i = this.FRr.size();
-    AppMethodBeat.o(259943);
-    return i;
-  }
-  
   public static final class a
   {
-    public boolean FRx;
+    public boolean LMr;
     public String content;
     public long timestamp;
     
     public final boolean isEmpty()
     {
-      AppMethodBeat.i(260304);
-      boolean bool = b.fK(this.content.trim());
-      AppMethodBeat.o(260304);
+      AppMethodBeat.i(271104);
+      boolean bool = c.hm(this.content.trim());
+      AppMethodBeat.o(271104);
       return bool;
     }
     
@@ -412,7 +404,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e
  * JD-Core Version:    0.7.0.1
  */

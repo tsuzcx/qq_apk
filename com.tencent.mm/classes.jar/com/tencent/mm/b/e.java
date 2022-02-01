@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,21 +9,21 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static final boolean a(q paramq)
+  public static final boolean a(u paramu)
   {
     int i = 0;
-    if (!paramq.ifE()) {}
+    if (!paramu.jKS()) {}
     do
     {
       do
       {
         return false;
-      } while (!paramq.isDirectory());
-      paramq = paramq.ifJ();
-    } while (paramq == null);
-    while (i < paramq.length)
+      } while (!paramu.isDirectory());
+      paramu = paramu.jKX();
+    } while (paramu == null);
+    while (i < paramu.length)
     {
-      paramq[i].cFq();
+      paramu[i].diJ();
       i += 1;
     }
     return true;
@@ -66,8 +66,8 @@ public final class e
     while (i <= 0)
     {
       String str = paramVarArgs[0];
-      q localq = new q(str);
-      if ((!localq.ifE()) && ((!localq.ifL()) || (!localq.isDirectory()))) {
+      u localu = new u(str);
+      if ((!localu.jKS()) && ((!localu.jKY()) || (!localu.isDirectory()))) {
         Log.e("MicroMsg.FileOperation", "batchMkDirs mkdir error. %s", new Object[] { str });
       }
       i += 1;

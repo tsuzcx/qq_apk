@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.base.model;
 
 public final class a
 {
-  public int sff = 0;
-  public int sfg = 0;
-  public int sfh = 0;
+  public int vqS = 0;
+  public int vqT = 0;
+  public int vqU = 0;
 }
 
 

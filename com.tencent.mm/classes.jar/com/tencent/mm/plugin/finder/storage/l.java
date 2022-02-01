@@ -1,139 +1,120 @@
 package com.tencent.mm.plugin.finder.storage;
 
+import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.b;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.asr;
+import com.tencent.mm.ad.f;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.a.v;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;)V", "continueFlag", "getContinueFlag", "()Ljava/lang/Object;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "setInfo", "innerList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "objectList", "", "getObjectList", "()Ljava/util/List;", "showLeft", "", "getShowLeft", "()Z", "setShowLeft", "(Z)V", "wording", "", "getWording", "()Ljava/lang/String;", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "", "jsonStr", "", "(Ljava/lang/String;)V", "configList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "getConfigList", "()Ljava/util/List;", "Companion", "Config", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
 {
-  public boolean Alc;
-  private final List<BaseFinderFeed> Ald;
-  public asr Ale;
+  private static boolean FKB;
+  public static final a FKz;
+  private static final String TAG;
+  final List<l.b> FKA;
   
-  public final List<BaseFinderFeed> dYB()
+  static
   {
-    AppMethodBeat.i(259431);
-    Object localObject1 = this.Ale;
-    Object localObject2;
-    if ((localObject1 != null) && (Util.isNullOrNil(this.Ald)) && (!Util.isNullOrNil((List)((asr)localObject1).wHI)))
+    AppMethodBeat.i(166965);
+    FKz = new a((byte)0);
+    TAG = "Finder.FinderFakeVideoConfig";
+    AppMethodBeat.o(166965);
+  }
+  
+  public l(String paramString)
+  {
+    AppMethodBeat.i(166964);
+    this.FKA = ((List)new ArrayList());
+    try
     {
-      localObject1 = ((asr)localObject1).wHI;
-      Object localObject3;
-      Object localObject4;
-      if (localObject1 != null)
+      paramString = new i(paramString).Fr("configs");
+      if (paramString != null)
       {
-        localObject1 = (Iterable)localObject1;
-        localObject2 = (Collection)new ArrayList();
-        localObject3 = ((Iterable)localObject1).iterator();
-        label131:
-        label134:
-        while (((Iterator)localObject3).hasNext())
+        int k = paramString.length();
+        if (k > 0)
         {
-          localObject4 = ((Iterator)localObject3).next();
-          localObject1 = (FinderObject)localObject4;
-          if (localObject1 != null)
+          int j;
+          do
           {
-            localObject1 = ((FinderObject)localObject1).objectDesc;
-            label104:
-            if (localObject1 == null) {
-              break label131;
+            j = i + 1;
+            Object localObject = paramString.su(i);
+            if (localObject != null)
+            {
+              String str1 = ((i)localObject).optString("brands");
+              String str2 = ((i)localObject).optString("models");
+              i = ((i)localObject).optInt("maxSize", 0);
+              if (i > 0)
+              {
+                localObject = this.FKA;
+                s.s(str1, "brands");
+                s.s(str2, "models");
+                ((List)localObject).add(new l.b(str1, str2, i));
+              }
             }
-          }
-          for (int i = 1;; i = 0)
-          {
-            if (i == 0) {
-              break label134;
-            }
-            ((Collection)localObject2).add(localObject4);
-            break;
-            localObject1 = null;
-            break label104;
-          }
+            i = j;
+          } while (j < k);
         }
-        localObject1 = (List)localObject2;
-      }
-      while (localObject1 != null)
-      {
-        localObject2 = (Iterable)localObject1;
-        localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-        localObject2 = ((Iterable)localObject2).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (FinderObject)((Iterator)localObject2).next();
-            localObject4 = FinderItem.Companion;
-            p.j(localObject3, "feed");
-            localObject3 = FinderItem.a.b((FinderObject)localObject3, 1);
-            ((Collection)localObject1).add(((b)h.ae(b.class)).a((FinderItem)localObject3));
-            continue;
-            localObject1 = null;
-            break;
-          }
-        }
-        localObject1 = (List)localObject1;
-        localObject2 = this.Ald;
-        if (localObject1 == null) {
-          break label288;
-        }
+        return;
       }
     }
-    label288:
-    for (localObject1 = (Collection)localObject1;; localObject1 = (Collection)v.aaAd)
+    finally
     {
-      ((List)localObject2).addAll((Collection)localObject1);
-      localObject1 = this.Ald;
-      AppMethodBeat.o(259431);
-      return localObject1;
-      localObject1 = null;
-      break;
+      AppMethodBeat.o(166964);
     }
   }
   
-  public final String getWording()
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugEnable", "", "getDebugEnable", "()Z", "setDebugEnable", "(Z)V", "getConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "hitConfig", "videoSize", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    AppMethodBeat.i(259429);
-    Object localObject = this.Ale;
-    String str;
-    if (localObject != null)
+    public static boolean Tq(int paramInt)
     {
-      str = ((asr)localObject).wording;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
-      localObject = h.aHG();
-      p.j(localObject, "MMKernel.storage()");
-      str = ((f)localObject).aHp().a(ar.a.Vzz, "");
-      localObject = str;
-      if (str == null) {
-        localObject = "";
+      AppMethodBeat.i(166959);
+      String str1 = Build.BRAND;
+      s.s(str1, "BRAND");
+      str1 = str1.toLowerCase();
+      s.s(str1, "(this as java.lang.String).toLowerCase()");
+      String str2 = q.aPo();
+      s.s(str2, "getModel()");
+      str2 = str2.toLowerCase();
+      s.s(str2, "(this as java.lang.String).toLowerCase()");
+      Object localObject1 = d.FAy;
+      localObject1 = d.eRp();
+      s.s(localObject1, "FinderConfig.FAKE_VIDEO_CONFIG_JSON");
+      Object localObject2 = ((Iterable)new l((String)localObject1).FKA).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = (l.b)((Iterator)localObject2).next();
+        if (((n.a((CharSequence)((l.b)localObject1).FKC, (CharSequence)str1, false)) || (n.a((CharSequence)((l.b)localObject1).FKD, (CharSequence)str2, false)) || (Util.isNullOrNil(((l.b)localObject1).FKC))) && (paramInt > ((l.b)localObject1).maxSize) && (((l.b)localObject1).maxSize > 0))
+        {
+          localObject2 = l.FKz;
+          Log.i(l.access$getTAG$cp(), "hitConfig brand:" + str1 + ", model:" + str2 + ", videoSize:" + paramInt + "; config brands:" + ((l.b)localObject1).FKC + ", models:" + ((l.b)localObject1).FKD + ", maxSize:" + ((l.b)localObject1).maxSize);
+          AppMethodBeat.o(166959);
+          return true;
+        }
       }
+      if (Log.getLogLevel() <= 1)
+      {
+        boolean bool = l.eZg();
+        AppMethodBeat.o(166959);
+        return bool;
+      }
+      AppMethodBeat.o(166959);
+      return false;
     }
-    p.j(localObject, "info?.wording ?: (MMKern…G_STRING_SYNC, \"\") ?: \"\")");
-    AppMethodBeat.o(259429);
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.l
  * JD-Core Version:    0.7.0.1
  */

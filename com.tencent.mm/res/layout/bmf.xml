@@ -1,11 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/ffu" style="@style/om">
-        <LinearLayout style="@style/lz">
-            <EditText android:id="@id/fz7" android:hint="@string/g0j" style="@style/nn" />
-            <View style="@style/p7" />
-            <TextView android:gravity="left" android:text="@string/g0k" style="@style/no" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<FrameLayout android:id="@id/f7i" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

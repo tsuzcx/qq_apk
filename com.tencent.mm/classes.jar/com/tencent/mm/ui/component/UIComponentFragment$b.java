@@ -1,22 +1,22 @@
 package com.tencent.mm.ui.component;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.b;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "it", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class UIComponentFragment$b
-  extends q
+  extends u
   implements b<Object, Boolean>
 {
-  public static final b XoM;
+  public static final b aeZS;
   
   static
   {
-    AppMethodBeat.i(231523);
-    XoM = new b();
-    AppMethodBeat.o(231523);
+    AppMethodBeat.i(250303);
+    aeZS = new b();
+    AppMethodBeat.o(250303);
   }
   
   UIComponentFragment$b()

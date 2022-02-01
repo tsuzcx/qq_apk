@@ -26,10 +26,10 @@ public class ProcessLifecycleOwnerInitializer
   
   public boolean onCreate()
   {
-    AppMethodBeat.i(191225);
-    i.init(getContext());
-    u.init(getContext());
-    AppMethodBeat.o(191225);
+    AppMethodBeat.i(194314);
+    n.init(getContext());
+    aa.init(getContext());
+    AppMethodBeat.o(194314);
     return true;
   }
   
@@ -45,7 +45,7 @@ public class ProcessLifecycleOwnerInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.lifecycle.ProcessLifecycleOwnerInitializer
  * JD-Core Version:    0.7.0.1
  */

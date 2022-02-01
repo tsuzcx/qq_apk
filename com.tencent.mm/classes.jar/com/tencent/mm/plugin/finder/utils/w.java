@@ -1,428 +1,282 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import android.net.Uri.Builder;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.view.FinderBottomCustomDialogHelper;
-import com.tencent.mm.plugin.finder.view.FinderBottomCustomDialogHelper.Companion;
-import com.tencent.mm.plugin.findersdk.d.a.a.b;
-import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.ble;
+import com.tencent.mm.am.b.a;
+import com.tencent.mm.plugin.finder.cgi.av;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.protocal.protobuf.byt;
+import com.tencent.mm.protocal.protobuf.byw;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.threadpool.h;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.r;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderPostPreCheckHelper;", "", "()V", "BINDER_PHONE_SCENE_CREATE_ACCDOUNT", "", "getBINDER_PHONE_SCENE_CREATE_ACCDOUNT", "()I", "BINDER_PHONE_SCENE_POST", "getBINDER_PHONE_SCENE_POST", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkHasBindPhone", "", "context", "Landroid/content/Context;", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "formScene", "onGoBindPhoneListener", "Lkotlin/Function0;", "", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;Ljava/lang/Integer;Lkotlin/jvm/functions/Function0;)Z", "goToBindPhoneUI", "preCheck", "Landroid/app/Activity;", "resp", "onGoVertifyPage", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderLiveMpLinkVerifier;", "", "()V", "ERROR_CODE_OK", "", "getERROR_CODE_OK", "()I", "ERROR_CODE_OUT_OF_TIME", "getERROR_CODE_OUT_OF_TIME", "ERROR_CODE_PARSE_FAILED", "getERROR_CODE_PARSE_FAILED", "ERROR_CODE_SVR_RESULT_INVALID", "getERROR_CODE_SVR_RESULT_INVALID", "ERROR_CODE_URL_INVALID", "getERROR_CODE_URL_INVALID", "TAG", "", "pattern", "Ljava/util/regex/Pattern;", "getPattern", "()Ljava/util/regex/Pattern;", "setPattern", "(Ljava/util/regex/Pattern;)V", "pattern2", "getPattern2", "setPattern2", "match", "p", "html", "verify", "", "type", "link", "onResult", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "errCode", "errMsg", "url", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsArticleItem;", "articleItem", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class w
 {
-  private static final int ADX = 1;
-  private static final int ADY = 2;
-  public static final w ADZ;
-  private static final String TAG = "FinderPostPreCheckHelper";
+  private static final int ABu = 0;
+  private static final int ABv;
+  private static final int ABw;
+  private static final int ABx;
+  private static final int ABy;
+  public static final w GgV;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(271467);
-    ADZ = new w();
-    TAG = "FinderPostPreCheckHelper";
-    ADX = 1;
-    ADY = 2;
-    AppMethodBeat.o(271467);
+    AppMethodBeat.i(333748);
+    GgV = new w();
+    TAG = "Finder.FinderLiveMpLinkVerifier";
+    ABv = -100;
+    ABw = -200;
+    ABx = -300;
+    ABy = -400;
+    AppMethodBeat.o(333748);
   }
   
-  public static boolean a(Activity paramActivity, ble paramble, final kotlin.g.a.a<x> parama)
+  private static final ah a(r paramr, String paramString, b.a parama)
   {
-    boolean bool2 = false;
-    AppMethodBeat.i(271463);
-    p.k(paramActivity, "context");
-    p.k(paramble, "resp");
-    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dXN().aSr()).intValue() == 1)
-    {
-      Log.i(TAG, "ignore all pre check");
-      AppMethodBeat.o(271463);
-      return true;
-    }
-    localObject = h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    int i = ((f)localObject).aHp().getInt(ar.a.VyF, 0);
-    localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-    boolean bool1;
-    switch (((Number)com.tencent.mm.plugin.finder.storage.d.dXP().aSr()).intValue())
-    {
-    default: 
-      if (!com.tencent.mm.ae.d.dr(i, 1))
-      {
-        bool1 = true;
-        boolean bool3 = edp();
-        localObject = aj.AGc;
-        boolean bool4 = aj.eeu();
-        localObject = paramble.SDj;
-        if (localObject == null) {
-          break label335;
-        }
-        localObject = ((FinderContact)localObject).authInfo;
-        if (localObject == null) {
-          break label335;
-        }
-        localObject = Integer.valueOf(((FinderAuthInfo)localObject).authIconType);
-        label183:
-        Log.i(TAG, "[preCheck] hasRealName:" + bool1 + " , hasBindPhone:" + bool3 + " isForeignUser:" + bool4 + ", authType:" + localObject);
-        if (bool1) {
-          break label350;
-        }
-        if (localObject != null) {
-          break label341;
-        }
-        label246:
-        if (localObject != null) {
-          break label370;
-        }
-        label251:
-        if (localObject != null) {
-          break label474;
-        }
-        label256:
-        bool1 = a((Context)paramActivity, paramble, Integer.valueOf(ADY), parama);
-      }
-      break;
-    }
-    for (;;)
-    {
-      Log.i(TAG, "[preCheck] result:".concat(String.valueOf(bool1)));
-      AppMethodBeat.o(271463);
-      return bool1;
-      if (!com.tencent.mm.ae.d.dr(i, 1))
-      {
-        bool1 = true;
-        break;
-      }
-      bool1 = false;
-      break;
-      bool1 = true;
-      break;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break;
-      label335:
-      localObject = null;
-      break label183;
-      label341:
-      if (((Integer)localObject).intValue() != 2) {
-        break label246;
-      }
-      label350:
-      bool1 = a((Context)paramActivity, paramble, Integer.valueOf(ADY), parama);
-      continue;
-      label370:
-      if (((Integer)localObject).intValue() != 1) {
-        break label251;
-      }
-      paramble = new f.a((Context)paramActivity);
-      paramble.aR((CharSequence)paramActivity.getString(b.j.finder_post_real_name_dialog_title));
-      paramble.bBl(paramActivity.getString(b.j.finder_post_real_name_dialog_content)).HL(true);
-      paramble.bBp(paramActivity.getString(b.j.finder_post_real_name_dialog_positive));
-      paramble.bBq(paramActivity.getString(b.j.finder_create_account_bindphone_dialog_negative_btn));
-      paramble.b((f.c)new d(paramActivity, parama));
-      paramble.show();
-      bool1 = bool2;
-      continue;
-      label474:
-      if (((Integer)localObject).intValue() != 0) {
-        break label256;
-      }
-      paramble = new f.a((Context)paramActivity);
-      paramble.aR((CharSequence)paramActivity.getString(b.j.finder_post_real_name_dialog_title_v2)).bBl(paramActivity.getString(b.j.finder_post_real_name_dialog_content_v2)).br(paramActivity.getString(b.j.finder_post_real_name_dialog_positive), paramActivity.getString(b.j.finder_post_real_name_dialog_positive_enterprise), paramActivity.getString(b.j.finder_create_account_bindphone_dialog_negative_btn));
-      paramble.a((DialogInterface.OnClickListener)new e(paramActivity, parama), (DialogInterface.OnClickListener)new f(paramActivity, parama), (DialogInterface.OnClickListener)g.AEd).show();
-      bool1 = bool2;
-    }
-  }
-  
-  private static boolean a(final Context paramContext, ble paramble, Integer paramInteger, kotlin.g.a.a<x> parama)
-  {
-    AppMethodBeat.i(271464);
-    p.k(paramContext, "context");
-    p.k(paramble, "prepareResp");
+    Object localObject2 = null;
+    AppMethodBeat.i(333723);
+    s.u(paramr, "$onResult");
+    s.u(paramString, "$link");
     Object localObject1;
-    String str;
-    Object localObject2;
-    if (edp())
-    {
-      paramble = aj.AGc;
-      if (aj.eeu())
+    label64:
+    int i;
+    if ((parama.errType == 0) && (parama.errCode == 0)) {
+      if (parama == null)
       {
-        paramble = h.aHG();
-        p.j(paramble, "MMKernel.storage()");
-        boolean bool = paramble.aHp().getBoolean(ar.a.Vzs, true);
-        if (bool)
-        {
-          paramble = FinderBottomCustomDialogHelper.Companion;
-          paramInteger = paramContext.getString(b.j.finder_create_account_dialog_title);
-          parama = paramContext.getString(b.j.finder_create_account_dialog_foreign_content);
-          p.j(parama, "context.getString(R.stri…t_dialog_foreign_content)");
-          localObject1 = paramContext.getString(b.j.finder_create_account_dialog_foreign_prositive_btn);
-          str = paramContext.getString(b.j.finder_create_account_bindphone_dialog_negative_btn);
-          localObject2 = Boolean.FALSE;
-          FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog$default(paramble, paramContext, null, 0, paramInteger, parama, (String)localObject1, str, null, (DialogInterface.OnClickListener)w.a.AEa, (Boolean)localObject2, null, null, 3206, null);
+        localObject1 = null;
+        if (localObject1 == null) {
+          break label325;
         }
-        Log.i(TAG, "[checkHasBindPhone] show argee save phone");
-        if (!bool)
+        localObject1 = aw.Gjk;
+        if (aw.bgV())
         {
-          AppMethodBeat.o(271464);
-          return true;
+          if (parama != null) {
+            break label198;
+          }
+          localObject1 = null;
+          localObject1 = (CharSequence)localObject1;
+          if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+            break label246;
+          }
+          i = 1;
+          label88:
+          if (i != 0) {
+            aa.makeText(MMApplicationContext.getContext(), (CharSequence)"img is empty", 0).show();
+          }
         }
-        AppMethodBeat.o(271464);
-        return false;
+        String str = TAG;
+        if (parama != null) {
+          break label251;
+        }
+        localObject1 = null;
+        label119:
+        Log.i(str, s.X("imgUrl: ", localObject1));
+        i = ABu;
+        if (parama != null) {
+          break label299;
+        }
+        parama = localObject2;
+        label142:
+        paramr.a(Integer.valueOf(i), "", paramString, parama);
       }
-      AppMethodBeat.o(271464);
-      return true;
-    }
-    int i = ADX;
-    if (paramInteger == null)
-    {
-      i = ADY;
-      if (paramInteger != null) {
-        break label350;
-      }
-      label198:
-      paramble = "";
-      label202:
-      p.j(paramble, "when (formScene) {\n     … else -> \"\"\n            }");
-      i = ADX;
-      if (paramInteger != null) {
-        break label370;
-      }
-      label218:
-      i = ADY;
-      if (paramInteger != null) {
-        break label390;
-      }
-      label227:
-      paramInteger = "";
-      label231:
-      p.j(paramInteger, "when (formScene) {\n     … else -> \"\"\n            }");
-      localObject1 = aj.AGc;
-      if (!aj.eeu()) {
-        break label410;
-      }
-      paramInteger = new f.a(paramContext);
-      paramInteger.bBl(paramble).HL(true);
-      paramInteger.bBp(paramContext.getString(b.j.finder_create_account_bindphone_dialog_positive_btn));
-      paramInteger.bBq(paramContext.getString(b.j.finder_create_account_bindphone_dialog_negative_btn));
-      paramInteger.b((f.c)new b(parama, paramContext));
-      paramInteger.show();
-      Log.i(TAG, "[checkHasBindPhone] isUserWxForeign true");
     }
     for (;;)
     {
-      AppMethodBeat.o(271464);
-      return false;
-      if (paramInteger.intValue() != i) {
+      paramr = ah.aiuX;
+      AppMethodBeat.o(333723);
+      return paramr;
+      localObject1 = (byw)parama.ott;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
         break;
       }
-      paramble = paramContext.getString(b.j.finder_create_account_need_bind_phone_tips);
-      break label202;
-      label350:
-      if (paramInteger.intValue() != i) {
-        break label198;
-      }
-      paramble = paramContext.getString(b.j.finder_create_account_need_bind_phone_tips_post);
-      break label202;
-      label370:
-      if (paramInteger.intValue() != i) {
-        break label218;
-      }
-      paramInteger = paramContext.getString(b.j.finder_create_account_dialog_title);
-      break label231;
-      label390:
-      if (paramInteger.intValue() != i) {
-        break label227;
-      }
-      paramInteger = paramContext.getString(b.j.finder_create_account_dialog_title_post);
-      break label231;
-      label410:
-      localObject1 = FinderBottomCustomDialogHelper.Companion;
-      str = paramContext.getString(b.j.finder_create_account_bindphone_dialog_positive_btn);
-      localObject2 = paramContext.getString(b.j.finder_create_account_bindphone_dialog_negative_btn);
-      Boolean localBoolean = Boolean.FALSE;
-      FinderBottomCustomDialogHelper.Companion.showConfirmTextDialog$default((FinderBottomCustomDialogHelper.Companion)localObject1, paramContext, null, 0, paramInteger, paramble, str, (String)localObject2, null, (DialogInterface.OnClickListener)new c(parama, paramContext), localBoolean, null, null, 3206, null);
-      Log.i(TAG, "[checkHasBindPhone] isUserWxForeign false");
-    }
-  }
-  
-  private static boolean edp()
-  {
-    AppMethodBeat.i(271466);
-    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-    boolean bool;
-    switch (((Number)com.tencent.mm.plugin.finder.storage.d.dXO().aSr()).intValue())
-    {
-    default: 
-      localObject = aj.AGc;
-      bool = aj.eew();
-      AppMethodBeat.o(271466);
-      return bool;
-    case 0: 
-      localObject = aj.AGc;
-      bool = aj.eew();
-      AppMethodBeat.o(271466);
-      return bool;
-    case 1: 
-      AppMethodBeat.o(271466);
-      return true;
-    }
-    AppMethodBeat.o(271466);
-    return false;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
-  static final class b
-    implements f.c
-  {
-    b(kotlin.g.a.a parama, Context paramContext) {}
-    
-    public final void g(boolean paramBoolean, String paramString)
-    {
-      AppMethodBeat.i(278288);
-      paramString = this.AEb;
-      if (paramString != null) {
-        paramString.invoke();
-      }
-      paramString = w.ADZ;
-      w.fS(paramContext);
-      AppMethodBeat.o(278288);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  static final class c
-    implements DialogInterface.OnClickListener
-  {
-    c(kotlin.g.a.a parama, Context paramContext) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(285639);
-      paramDialogInterface = this.AEb;
-      if (paramDialogInterface != null) {
-        paramDialogInterface.invoke();
-      }
-      paramDialogInterface = w.ADZ;
-      w.fS(paramContext);
-      AppMethodBeat.o(285639);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
-  static final class d
-    implements f.c
-  {
-    d(Activity paramActivity, kotlin.g.a.a parama) {}
-    
-    public final void g(boolean paramBoolean, String paramString)
-    {
-      AppMethodBeat.i(285746);
-      paramString = a.ACH;
-      a.as(this.$context);
-      paramString = parama;
-      if (paramString != null)
+      localObject1 = ((byw)localObject1).aahT;
+      break;
+      label198:
+      localObject1 = (byw)parama.ott;
+      if (localObject1 == null)
       {
-        paramString.invoke();
-        AppMethodBeat.o(285746);
-        return;
+        localObject1 = null;
+        break label64;
       }
-      AppMethodBeat.o(285746);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
-  static final class e
-    implements DialogInterface.OnClickListener
-  {
-    e(Activity paramActivity, kotlin.g.a.a parama) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(270588);
-      paramDialogInterface = a.ACH;
-      a.as(this.$context);
-      paramDialogInterface = parama;
-      if (paramDialogInterface != null)
+      localObject1 = ((byw)localObject1).aahT;
+      if (localObject1 == null)
       {
-        paramDialogInterface.invoke();
-        AppMethodBeat.o(270588);
-        return;
+        localObject1 = null;
+        break label64;
       }
-      AppMethodBeat.o(270588);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
-  static final class f
-    implements DialogInterface.OnClickListener
-  {
-    f(Activity paramActivity, kotlin.g.a.a parama) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(264352);
-      paramDialogInterface = Uri.parse("pages/index/index.html").buildUpon();
-      p.j(paramDialogInterface, "Uri.parse(\"pages/index/index.html\").buildUpon()");
-      paramDialogInterface.appendQueryParameter("showdetail", "true");
-      paramDialogInterface.appendQueryParameter("to_auth_company", "true");
-      String str = paramDialogInterface.build().toString() + "&username=" + z.bdh();
-      paramDialogInterface = a.ACH;
-      Context localContext = (Context)this.$context;
-      paramDialogInterface = str;
-      if (str == null) {
-        paramDialogInterface = "";
-      }
-      a.C(localContext, "gh_4ee148a6ecaa@app", paramDialogInterface);
-      paramDialogInterface = parama;
-      if (paramDialogInterface != null)
+      localObject1 = ((byt)localObject1).aahQ;
+      break label64;
+      label246:
+      i = 0;
+      break label88;
+      label251:
+      localObject1 = (byw)parama.ott;
+      if (localObject1 == null)
       {
-        paramDialogInterface.invoke();
-        AppMethodBeat.o(264352);
-        return;
+        localObject1 = null;
+        break label119;
       }
-      AppMethodBeat.o(264352);
+      localObject1 = ((byw)localObject1).aahT;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break label119;
+      }
+      localObject1 = ((byt)localObject1).aahQ;
+      break label119;
+      label299:
+      localObject1 = (byw)parama.ott;
+      parama = localObject2;
+      if (localObject1 == null) {
+        break label142;
+      }
+      parama = ((byw)localObject1).aahT;
+      break label142;
+      label325:
+      paramr.a(Integer.valueOf(ABy), "", "", null);
+      continue;
+      paramr.a(Integer.valueOf(parama.errCode), parama.errMsg, "", null);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialogInterface", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "i", "", "onClick"})
-  static final class g
-    implements DialogInterface.OnClickListener
+  public static void a(int paramInt, String paramString, r<? super Integer, ? super String, ? super String, ? super byt, ah> paramr)
   {
-    public static final g AEd;
-    
-    static
+    AppMethodBeat.i(370230);
+    s.u(paramString, "link");
+    s.u(paramr, "onResult");
+    h.ahAA.bm(new w..ExternalSyntheticLambda1(paramString, paramInt, paramr));
+    AppMethodBeat.o(370230);
+  }
+  
+  private static final void a(String paramString, int paramInt, r paramr)
+  {
+    AppMethodBeat.i(370231);
+    s.u(paramString, "$link");
+    s.u(paramr, "$onResult");
+    Log.i(TAG, s.X("verify ", paramString));
+    Object localObject2;
+    Object localObject1;
+    Object localObject3;
+    try
     {
-      AppMethodBeat.i(291530);
-      AEd = new g();
-      AppMethodBeat.o(291530);
+      localObject2 = com.tencent.mm.k.i.aRC().getValue("FinderExtendedReadingPrefix");
+      localObject1 = localObject2;
+      if (Util.isNullOrNil((String)localObject2)) {
+        localObject1 = "https://" + WeChatHosts.domainString(p.h.host_mp_weixin_qq_com) + ';';
+      }
+      s.s(localObject1, "prefixs");
+      localObject2 = (Iterable)n.a((CharSequence)n.bq((CharSequence)localObject1).toString(), new char[] { ';' }, 0, 6);
+      localObject1 = (Collection)new ArrayList();
+      localObject2 = ((Iterable)localObject2).iterator();
     }
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+    catch (MalformedURLException paramString)
+    {
+      for (;;)
+      {
+        String str;
+        Log.printErrStackTrace(TAG, (Throwable)paramString, "MalformedURLException", new Object[0]);
+        paramr.a(Integer.valueOf(ABv), "", "", null);
+        AppMethodBeat.o(370231);
+        return;
+        if (Util.isNullOrNil(n.bq((CharSequence)str).toString())) {
+          break;
+        }
+        i = 1;
+        if (i != 0) {
+          ((Collection)localObject1).add(localObject3);
+        }
+      }
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace(TAG, (Throwable)paramString, "IOException", new Object[0]);
+        paramr.a(Integer.valueOf(ABx), null, "", null);
+        AppMethodBeat.o(370231);
+        return;
+        i = 0;
+      }
+      localObject1 = ((Iterable)localObject1).iterator();
+      i = 0;
+      if (!((Iterator)localObject1).hasNext()) {
+        break label455;
+      }
+      localObject2 = (String)((Iterator)localObject1).next();
+      localObject3 = paramString.toLowerCase();
+      s.s(localObject3, "(this as java.lang.String).toLowerCase()");
+      if (localObject2 != null) {
+        break label430;
+      }
+      paramString = new NullPointerException("null cannot be cast to non-null type kotlin.CharSequence");
+      AppMethodBeat.o(370231);
+      throw paramString;
+    }
+    finally
+    {
+      Log.printErrStackTrace(TAG, paramString, "Throwable", new Object[0]);
+      paramr.a(Integer.valueOf(ABx), "", "", null);
+      AppMethodBeat.o(370231);
+      return;
+    }
+    if (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = ((Iterator)localObject2).next();
+      str = (String)localObject3;
+      if (str == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(370231);
+        throw paramString;
+      }
+    }
+    int i;
+    for (;;)
+    {
+      label430:
+      if (n.U((String)localObject3, n.bq((CharSequence)localObject2).toString(), false)) {
+        i = 1;
+      }
+    }
+    label455:
+    if (i != 0)
+    {
+      localObject1 = av.AAI;
+      new av(paramInt, paramString, av.dVq()).bFJ().g(new w..ExternalSyntheticLambda0(paramr, paramString));
+      AppMethodBeat.o(370231);
+      return;
+    }
+    Log.i(TAG, "scheme or host not valid");
+    paramr.a(Integer.valueOf(ABv), "", "", null);
+    AppMethodBeat.o(370231);
+  }
+  
+  public static int dVx()
+  {
+    return ABu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.w
  * JD-Core Version:    0.7.0.1
  */

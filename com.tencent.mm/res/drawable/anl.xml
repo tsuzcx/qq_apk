@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/toolbar_icon_dark_share_pressed" />
-    <item android:state_enabled="false" android:drawable="@raw/toolbar_icon_dark_share_disable" />
-    <item android:drawable="@raw/toolbar_icon_dark_share_normal" />
-</selector>
+    <item>
+        <rotate android:drawable="@raw/spinner_white_76_outer_holo" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+    </item>
+</layer-list>

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.model;
 
+import com.tencent.mm.plugin.card.sharecard.model.o;
 import com.tencent.mm.storagebase.h.b;
 
 final class am$9
@@ -7,7 +8,7 @@ final class am$9
 {
   public final String[] getSQLs()
   {
-    return al.SQL_CREATE;
+    return o.SQL_CREATE;
   }
 }
 

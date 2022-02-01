@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 public abstract interface y$a
 {
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
+  public abstract void onDialogClick(boolean paramBoolean, String paramString, int paramInt);
 }
 
 

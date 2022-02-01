@@ -25,50 +25,48 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.aaq;
-import com.tencent.mm.f.a.fv;
-import com.tencent.mm.f.a.se;
-import com.tencent.mm.f.a.yx;
-import com.tencent.mm.f.b.a.iw;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.aaq;
+import com.tencent.mm.autogen.a.acn;
+import com.tencent.mm.autogen.a.gg;
+import com.tencent.mm.autogen.a.tu;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.mmdata.rpt.lg;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.aq;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.az.a;
 import com.tencent.mm.model.az.b;
 import com.tencent.mm.model.az.b.a;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
-import com.tencent.mm.network.ag;
-import com.tencent.mm.plugin.account.friend.a.at;
-import com.tencent.mm.plugin.account.friend.a.au;
-import com.tencent.mm.plugin.account.friend.a.g;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.network.ah;
+import com.tencent.mm.plugin.account.friend.model.ap;
+import com.tencent.mm.plugin.account.friend.model.aq;
+import com.tencent.mm.plugin.account.friend.model.e;
+import com.tencent.mm.plugin.account.friend.model.l;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.model.v;
 import com.tencent.mm.pluginsdk.ui.applet.a.b;
-import com.tencent.mm.pluginsdk.ui.tools.n;
-import com.tencent.mm.protocal.protobuf.dgv;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.protocal.protobuf.dzc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorageEvent;
 import com.tencent.mm.sdk.storage.MStorageEventData;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bx;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.f.d;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.f.e;
+import com.tencent.mm.ui.widget.a.f;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -78,63 +76,63 @@ public class NormalUserFooterPreference
   extends Preference
   implements MStorage.IOnStorageChange
 {
-  String BLy;
-  boolean GWK;
-  boolean GXw;
-  int GYZ;
-  long GZN;
-  int GZr;
-  boolean HaS;
-  String HaT;
-  boolean HaU;
-  boolean HaV;
-  boolean HaW;
-  boolean HaX;
-  a HaY;
-  private View HaZ;
-  private Button Hba;
-  private Button Hbb;
-  private Button Hbc;
-  private View Hbd;
-  private Button Hbe;
-  private TextView Hbf;
-  private View Hbg;
-  private Button Hbh;
-  private Button Hbi;
-  private Button Hbj;
-  private Button Hbk;
-  private Button Hbl;
-  private Button Hbm;
-  private TextView Hbn;
-  boolean Hbo;
-  public boolean Hbp;
-  com.tencent.mm.storage.as contact;
-  public ProgressDialog iXX;
-  MMActivity iXq;
-  private Button jLo;
-  protected MStorageEvent<e, String> lAD;
-  int mXL;
-  String she;
-  private boolean vkO;
+  boolean MUD;
+  boolean MVt;
+  long MXS;
+  int MXc;
+  int MXu;
+  boolean MYZ;
+  String MZa;
+  boolean MZb;
+  boolean MZc;
+  boolean MZd;
+  boolean MZe;
+  a MZf;
+  private View MZg;
+  private Button MZh;
+  private Button MZi;
+  private Button MZj;
+  private View MZk;
+  private Button MZl;
+  private TextView MZm;
+  private View MZn;
+  private Button MZo;
+  private Button MZp;
+  private Button MZq;
+  private Button MZr;
+  private Button MZs;
+  private Button MZt;
+  private TextView MZu;
+  boolean MZv;
+  public boolean MZw;
+  au contact;
+  public ProgressDialog lzP;
+  MMActivity lzt;
+  private Button mkz;
+  protected MStorageEvent<e, String> ose;
+  String pPi;
+  int pUt;
+  String vsZ;
+  private boolean yxr;
   
   public NormalUserFooterPreference(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(27352);
-    this.GWK = false;
-    this.GZN = 0L;
-    this.HaT = "";
-    this.BLy = "";
-    this.HaU = false;
-    this.HaW = false;
-    this.HaX = false;
-    this.Hbo = false;
-    this.GYZ = 0;
-    this.iXX = null;
-    this.Hbp = false;
-    this.she = null;
-    this.lAD = new MStorageEvent() {};
-    this.iXq = ((MMActivity)paramContext);
+    this.MUD = false;
+    this.MXS = 0L;
+    this.MZa = "";
+    this.pPi = "";
+    this.MZb = false;
+    this.MZd = false;
+    this.MZe = false;
+    this.MZv = false;
+    this.MXc = 0;
+    this.lzP = null;
+    this.MZw = false;
+    this.vsZ = null;
+    this.ose = new MStorageEvent() {};
+    this.lzt = ((MMActivity)paramContext);
     init();
     AppMethodBeat.o(27352);
   }
@@ -143,20 +141,20 @@ public class NormalUserFooterPreference
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27353);
-    this.GWK = false;
-    this.GZN = 0L;
-    this.HaT = "";
-    this.BLy = "";
-    this.HaU = false;
-    this.HaW = false;
-    this.HaX = false;
-    this.Hbo = false;
-    this.GYZ = 0;
-    this.iXX = null;
-    this.Hbp = false;
-    this.she = null;
-    this.lAD = new MStorageEvent() {};
-    this.iXq = ((MMActivity)paramContext);
+    this.MUD = false;
+    this.MXS = 0L;
+    this.MZa = "";
+    this.pPi = "";
+    this.MZb = false;
+    this.MZd = false;
+    this.MZe = false;
+    this.MZv = false;
+    this.MXc = 0;
+    this.lzP = null;
+    this.MZw = false;
+    this.vsZ = null;
+    this.ose = new MStorageEvent() {};
+    this.lzt = ((MMActivity)paramContext);
     init();
     AppMethodBeat.o(27353);
   }
@@ -165,127 +163,127 @@ public class NormalUserFooterPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27354);
-    this.GWK = false;
-    this.GZN = 0L;
-    this.HaT = "";
-    this.BLy = "";
-    this.HaU = false;
-    this.HaW = false;
-    this.HaX = false;
-    this.Hbo = false;
-    this.GYZ = 0;
-    this.iXX = null;
-    this.Hbp = false;
-    this.she = null;
-    this.lAD = new MStorageEvent() {};
-    this.iXq = ((MMActivity)paramContext);
+    this.MUD = false;
+    this.MXS = 0L;
+    this.MZa = "";
+    this.pPi = "";
+    this.MZb = false;
+    this.MZd = false;
+    this.MZe = false;
+    this.MZv = false;
+    this.MXc = 0;
+    this.lzP = null;
+    this.MZw = false;
+    this.vsZ = null;
+    this.ose = new MStorageEvent() {};
+    this.lzt = ((MMActivity)paramContext);
     init();
     AppMethodBeat.o(27354);
   }
   
   private void init()
   {
-    this.vkO = false;
-    this.HaY = null;
+    this.yxr = false;
+    this.MZf = null;
   }
   
-  public final boolean cQX()
+  public final boolean dvq()
   {
     AppMethodBeat.i(27359);
-    if (this.HaY != null) {
-      this.HaY.onDetach();
+    if (this.MZf != null) {
+      this.MZf.onDetach();
     }
-    this.lAD.removeAll();
-    if (this.iXX != null)
+    this.ose.removeAll();
+    if (this.lzP != null)
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
     AppMethodBeat.o(27359);
     return true;
   }
   
-  public final boolean fqx()
+  public final boolean gBS()
   {
     AppMethodBeat.i(27358);
-    if ((this.Hbo) && (com.tencent.mm.contact.d.rk(this.contact.field_type)))
+    if ((this.MZv) && (com.tencent.mm.contact.d.rs(this.contact.field_type)))
     {
-      this.Hbm.setVisibility(0);
+      this.MZt.setVisibility(0);
       AppMethodBeat.o(27358);
       return true;
     }
-    this.Hbm.setVisibility(8);
+    this.MZt.setVisibility(8);
     AppMethodBeat.o(27358);
     return false;
   }
   
-  public final void fqy()
+  public final void gBT()
   {
     AppMethodBeat.i(27361);
-    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.iXq, "android.permission.RECORD_AUDIO", 82, "", "");
-    Log.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.iXq });
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.lzt, "android.permission.RECORD_AUDIO", 82, "");
+    Log.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.lzt });
     if (!bool)
     {
       AppMethodBeat.o(27361);
       return;
     }
-    aaq localaaq = new aaq();
-    localaaq.fZM.fDn = 5;
-    localaaq.fZM.talker = this.contact.field_username;
-    localaaq.fZM.context = this.iXq;
-    localaaq.fZM.fZI = 4;
-    EventCenter.instance.publish(localaaq);
+    acn localacn = new acn();
+    localacn.ifU.hId = 5;
+    localacn.ifU.talker = this.contact.field_username;
+    localacn.ifU.context = this.lzt;
+    localacn.ifU.ifQ = 4;
+    localacn.publish();
     AppMethodBeat.o(27361);
   }
   
-  public final void fqz()
+  public final void gBU()
   {
     AppMethodBeat.i(27362);
-    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.iXq, "android.permission.CAMERA", 19, "", "");
-    Log.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.iXq });
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.lzt, "android.permission.CAMERA", 19, "");
+    Log.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.lzt });
     if (!bool)
     {
       AppMethodBeat.o(27362);
       return;
     }
-    bool = com.tencent.mm.pluginsdk.permission.b.a(this.iXq, "android.permission.RECORD_AUDIO", 19, "", "");
-    Log.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.iXq });
+    bool = com.tencent.mm.pluginsdk.permission.b.a(this.lzt, "android.permission.RECORD_AUDIO", 19, "");
+    Log.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), this.lzt });
     if (!bool)
     {
       AppMethodBeat.o(27362);
       return;
     }
-    aaq localaaq = new aaq();
-    localaaq.fZM.fDn = 5;
-    localaaq.fZM.talker = this.contact.field_username;
-    localaaq.fZM.context = this.iXq;
-    localaaq.fZM.fZI = 2;
-    EventCenter.instance.publish(localaaq);
+    acn localacn = new acn();
+    localacn.ifU.hId = 5;
+    localacn.ifU.talker = this.contact.field_username;
+    localacn.ifU.context = this.lzt;
+    localacn.ifU.ifQ = 2;
+    localacn.publish();
     AppMethodBeat.o(27362);
   }
   
   final void initView()
   {
     AppMethodBeat.i(27355);
-    if ((!this.vkO) || (this.contact == null))
+    if ((!this.yxr) || (this.contact == null))
     {
-      Log.w("MicroMsg.NormalUserFooterPreference", "iniView : bindView = " + this.vkO + " contact = " + this.contact);
-      if (this.HaY != null) {
+      Log.w("MicroMsg.NormalUserFooterPreference", "iniView : bindView = " + this.yxr + " contact = " + this.contact);
+      if (this.MZf != null) {
         try
         {
-          this.HaY.fqC();
+          this.MZf.gBX();
           AppMethodBeat.o(27355);
           return;
         }
-        catch (Throwable localThrowable) {}
+        finally {}
       }
       AppMethodBeat.o(27355);
       return;
     }
-    if (this.HaY != null) {
-      this.HaY.bbp();
+    if (this.MZf != null) {
+      this.MZf.bwk();
     }
-    fqx();
+    gBS();
     AppMethodBeat.o(27355);
   }
   
@@ -293,27 +291,27 @@ public class NormalUserFooterPreference
   {
     AppMethodBeat.i(27356);
     Log.d("MicroMsg.NormalUserFooterPreference", "on bindView " + paramView.toString());
-    this.HaZ = paramView.findViewById(R.h.dBo);
-    this.Hba = ((Button)paramView.findViewById(R.h.contact_info_verify_accept));
-    this.Hbb = ((Button)paramView.findViewById(R.h.contact_info_delete_contact));
-    this.Hbe = ((Button)paramView.findViewById(R.h.dBI));
-    this.Hbf = ((TextView)paramView.findViewById(R.h.dBM));
-    this.Hbd = paramView.findViewById(R.h.dBJ);
-    this.Hbc = ((Button)paramView.findViewById(R.h.dBH));
-    this.Hbj = ((Button)paramView.findViewById(R.h.dAK));
-    this.Hbg = paramView.findViewById(R.h.dBw);
-    this.Hbh = ((Button)paramView.findViewById(R.h.dBv));
-    this.Hbi = ((Button)paramView.findViewById(R.h.dBx));
-    this.jLo = ((Button)paramView.findViewById(R.h.dBy));
-    this.Hbm = ((Button)paramView.findViewById(R.h.dBl));
-    this.Hbk = ((Button)paramView.findViewById(R.h.dBK));
-    this.Hbl = ((Button)paramView.findViewById(R.h.dAS));
-    this.Hbn = ((TextView)paramView.findViewById(R.h.dBm));
-    this.vkO = true;
+    this.MZg = paramView.findViewById(R.h.fCC);
+    this.MZh = ((Button)paramView.findViewById(R.h.contact_info_verify_accept));
+    this.MZi = ((Button)paramView.findViewById(R.h.contact_info_delete_contact));
+    this.MZl = ((Button)paramView.findViewById(R.h.fCW));
+    this.MZm = ((TextView)paramView.findViewById(R.h.fDa));
+    this.MZk = paramView.findViewById(R.h.fCX);
+    this.MZj = ((Button)paramView.findViewById(R.h.fCV));
+    this.MZq = ((Button)paramView.findViewById(R.h.fBK));
+    this.MZn = paramView.findViewById(R.h.fCK);
+    this.MZo = ((Button)paramView.findViewById(R.h.fCJ));
+    this.MZp = ((Button)paramView.findViewById(R.h.fCL));
+    this.mkz = ((Button)paramView.findViewById(R.h.fCM));
+    this.MZt = ((Button)paramView.findViewById(R.h.fCz));
+    this.MZr = ((Button)paramView.findViewById(R.h.fCY));
+    this.MZs = ((Button)paramView.findViewById(R.h.fCh));
+    this.MZu = ((TextView)paramView.findViewById(R.h.fCA));
+    this.yxr = true;
     initView();
     super.onBindView(paramView);
-    if ((this.iXq.getIntent().getBooleanExtra("Accept_NewFriend_FromOutside", false) == true) && (this.Hba != null)) {
-      this.Hba.performClick();
+    if ((this.lzt.getIntent().getBooleanExtra("Accept_NewFriend_FromOutside", false) == true) && (this.MZh != null)) {
+      this.MZh.performClick();
     }
     AppMethodBeat.o(27356);
   }
@@ -328,14 +326,14 @@ public class NormalUserFooterPreference
     }
     if ((this.contact != null) && ((paramString.equals(this.contact.field_username)) || (paramString.equals(this.contact.field_encryptUsername))))
     {
-      bh.beI();
-      this.contact = com.tencent.mm.model.c.bbL().RG(this.contact.field_username);
+      bh.bCz();
+      this.contact = com.tencent.mm.model.c.bzA().JE(this.contact.field_username);
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(27291);
-          NormalUserFooterPreference.this.fqx();
+          NormalUserFooterPreference.this.gBS();
           AppMethodBeat.o(27291);
         }
       });
@@ -344,39 +342,39 @@ public class NormalUserFooterPreference
   }
   
   abstract class a
-    implements i, com.tencent.mm.pluginsdk.i.a.a
+    implements com.tencent.mm.am.h, com.tencent.mm.pluginsdk.i.a.a
   {
-    private e GWo = null;
+    private f MTX = null;
     private boolean isDeleteCancel = false;
     
     public a() {}
     
-    private void afm(String paramString)
+    private void XN(String paramString)
     {
-      NormalUserFooterPreference.a(NormalUserFooterPreference.this).axl();
-      if (com.tencent.mm.storage.as.bvK(paramString))
+      NormalUserFooterPreference.a(NormalUserFooterPreference.this).aRL();
+      if (au.bwO(paramString))
       {
-        ((u)com.tencent.mm.kernel.h.ae(u.class)).Lz(paramString);
-        az.a.ltq.Rs(paramString);
+        ((u)com.tencent.mm.kernel.h.ax(u.class)).Eg(paramString);
+        az.a.okP.Jr(paramString);
         return;
       }
-      ((com.tencent.mm.pluginsdk.i.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.i.a.class)).afm(paramString);
+      ((com.tencent.mm.pluginsdk.i.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.i.a.class)).XN(paramString);
     }
     
-    private void fqD()
+    private void gBY()
     {
-      this.GWo = new e(NormalUserFooterPreference.b(NormalUserFooterPreference.this), 1, false);
-      this.GWo.ODT = new q.f()
+      this.MTX = new f(NormalUserFooterPreference.b(NormalUserFooterPreference.this), 1, false);
+      this.MTX.Vtg = new u.g()
       {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymouso)
+        public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymouss)
         {
           AppMethodBeat.i(27299);
-          paramAnonymouso.aW(2, R.l.app_field_voip, R.k.sharemore_videovoip);
-          paramAnonymouso.aW(1, R.l.app_field_voipaudio, R.k.sharemore_voipvoice);
+          paramAnonymouss.bx(2, R.l.app_field_voip, R.k.sharemore_videovoip);
+          paramAnonymouss.bx(1, R.l.app_field_voipaudio, R.k.sharemore_voipvoice);
           AppMethodBeat.o(27299);
         }
       };
-      this.GWo.ODU = new q.g()
+      this.MTX.GAC = new u.i()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -388,120 +386,17 @@ public class NormalUserFooterPreference
           {
             AppMethodBeat.o(27300);
             return;
-            NormalUserFooterPreference.this.fqy();
+            NormalUserFooterPreference.this.gBT();
             AppMethodBeat.o(27300);
             return;
-            NormalUserFooterPreference.this.fqz();
+            NormalUserFooterPreference.this.gBU();
           }
         }
       };
-      this.GWo.eik();
+      this.MTX.dDn();
     }
     
-    public final void a(String paramString, int paramInt, dgv paramdgv)
-    {
-      Object localObject2 = null;
-      Object localObject1 = null;
-      if (paramInt == 0)
-      {
-        if (!paramString.equals(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
-        {
-          Log.w("MicroMsg.NormalUserFooterPreference", "not current contact %s,%s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, paramString });
-          return;
-        }
-        switch (NormalUserFooterPreference.l(NormalUserFooterPreference.this))
-        {
-        default: 
-          if (NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 9)
-          {
-            Log.i("MicroMsg.NormalUserFooterPreference", "add scene unkown, check the contact getsource: " + NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource());
-            switch (NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource())
-            {
-            }
-          }
-          break;
-        }
-        for (;;)
-        {
-          if (NormalUserFooterPreference.o(NormalUserFooterPreference.this) != 0) {
-            break label501;
-          }
-          paramString = new Intent();
-          paramString.addFlags(67108864);
-          com.tencent.mm.plugin.profile.b.mIG.n(paramString, NormalUserFooterPreference.this.mContext);
-          return;
-          paramdgv = com.tencent.mm.plugin.account.b.getQQListStg().aaM(paramString);
-          if (paramdgv == null) {
-            break;
-          }
-          paramdgv.mXn = 1;
-          com.tencent.mm.plugin.account.b.getQQListStg().a(paramdgv.mXm, paramdgv);
-          break;
-          paramdgv = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(paramString);
-          if ((paramdgv != null) && (!Util.isNullOrNil(paramdgv.mVx)))
-          {
-            paramdgv.status = 1;
-            com.tencent.mm.plugin.account.b.getAddrUploadStg().a(paramdgv.getMd5(), paramdgv);
-          }
-          com.tencent.mm.platformtools.t.P(NormalUserFooterPreference.this.mContext, paramString);
-          break;
-          com.tencent.mm.platformtools.t.P(NormalUserFooterPreference.this.mContext, paramString);
-          break;
-          paramdgv = com.tencent.mm.plugin.account.b.getFacebookFrdStg();
-          Object localObject3 = "select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend   where facebookfriend.username = \"" + paramString + "\"";
-          localObject3 = paramdgv.lvy.rawQuery((String)localObject3, null, 2);
-          if (localObject3 == null) {
-            paramdgv = localObject1;
-          }
-          while (paramdgv != null)
-          {
-            paramdgv.status = 100;
-            com.tencent.mm.plugin.account.b.getFacebookFrdStg().a(paramdgv);
-            break;
-            paramdgv = localObject2;
-            if (((Cursor)localObject3).moveToFirst())
-            {
-              paramdgv = new g();
-              paramdgv.convertFrom((Cursor)localObject3);
-            }
-            ((Cursor)localObject3).close();
-          }
-          com.tencent.mm.plugin.account.b.getGoogleFriendStorage().aZ(paramString, 2);
-          break;
-          Log.i("MicroMsg.NormalUserFooterPreference", "delete the system contact info added by wechat");
-          com.tencent.mm.platformtools.t.P(NormalUserFooterPreference.this.mContext, paramString);
-        }
-        label501:
-        NormalUserFooterPreference.b(NormalUserFooterPreference.this).setResult(-1, NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().putExtra("_delete_ok_", true));
-        ((Activity)NormalUserFooterPreference.this.mContext).finish();
-        return;
-      }
-      if (!Util.isNullOrNil(paramdgv.lpy))
-      {
-        com.tencent.mm.ui.base.h.c(NormalUserFooterPreference.b(NormalUserFooterPreference.this), paramdgv.lpy, paramdgv.fwr, true);
-        return;
-      }
-      com.tencent.mm.ui.base.h.c(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_delete_failed), "", true);
-    }
-    
-    final void aUJ(String paramString)
-    {
-      if (Util.isNullOrNil(paramString))
-      {
-        Log.w("MicroMsg.NormalUserFooterPreference", "mod stranger remark, username is null");
-        return;
-      }
-      paramString = new Intent();
-      paramString.putExtra("Contact_Scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
-      paramString.putExtra("Contact_mode_name_type", 0);
-      paramString.putExtra("Contact_ModStrangerRemark", true);
-      paramString.putExtra("Contact_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
-      paramString.putExtra("Contact_Nick", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_nickname);
-      paramString.putExtra("Contact_RemarkName", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_conRemark);
-      com.tencent.mm.plugin.profile.b.mIG.l(paramString, NormalUserFooterPreference.this.mContext);
-    }
-    
-    protected final void an(final boolean paramBoolean1, final boolean paramBoolean2)
+    protected final void aG(final boolean paramBoolean1, final boolean paramBoolean2)
     {
       if ((paramBoolean1) && (paramBoolean2)) {
         return;
@@ -511,8 +406,8 @@ public class NormalUserFooterPreference
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(27307);
-          paramAnonymousMenuItem = new e(NormalUserFooterPreference.b(NormalUserFooterPreference.this), 1, false);
-          paramAnonymousMenuItem.ODU = new q.g()
+          paramAnonymousMenuItem = new f(NormalUserFooterPreference.b(NormalUserFooterPreference.this), 1, false);
+          paramAnonymousMenuItem.GAC = new u.i()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
@@ -533,10 +428,10 @@ public class NormalUserFooterPreference
               }
               paramAnonymous2MenuItem = NormalUserFooterPreference.this.mContext;
               Context localContext = NormalUserFooterPreference.this.mContext;
-              if (com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {}
-              for (paramAnonymous2Int = R.l.eyM;; paramAnonymous2Int = R.l.eyL)
+              if (au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {}
+              for (paramAnonymous2Int = R.l.gBE;; paramAnonymous2Int = R.l.gBD)
               {
-                com.tencent.mm.ui.base.h.a(paramAnonymous2MenuItem, localContext.getString(paramAnonymous2Int), NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_movein_blacklist), new DialogInterface.OnClickListener()
+                k.a(paramAnonymous2MenuItem, localContext.getString(paramAnonymous2Int), NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_movein_blacklist), new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                   {
@@ -549,61 +444,78 @@ public class NormalUserFooterPreference
               }
             }
           };
-          paramAnonymousMenuItem.ODT = new q.f()
+          paramAnonymousMenuItem.Vtg = new u.g()
           {
-            public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymous2o)
+            public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
             {
               AppMethodBeat.i(27306);
-              if (!NormalUserFooterPreference.a.10.this.Hbu)
+              if (!NormalUserFooterPreference.a.10.this.MZB)
               {
-                if (!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
+                if (!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
                   break label99;
                 }
-                paramAnonymous2o.aW(1, R.l.eAq, R.k.bottomsheet_icon_remarks);
+                paramAnonymous2s.bx(1, R.l.gDi, R.k.bottomsheet_icon_remarks);
               }
-              while (!NormalUserFooterPreference.a.10.this.Hbv) {
-                if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayc())
+              while (!NormalUserFooterPreference.a.10.this.MZC) {
+                if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSF())
                 {
-                  paramAnonymous2o.aW(8, R.l.contact_info_moveout_blacklist, R.k.bottomsheet_icon_blacklist);
+                  paramAnonymous2s.bx(8, R.l.contact_info_moveout_blacklist, R.k.bottomsheet_icon_blacklist);
                   AppMethodBeat.o(27306);
                   return;
                   label99:
-                  paramAnonymous2o.aW(1, R.l.eyI, R.k.bottomsheet_icon_remarks);
+                  paramAnonymous2s.bx(1, R.l.gBA, R.k.bottomsheet_icon_remarks);
                 }
-                else if (!ab.Qk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+                else if (!au.bxa(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
                 {
-                  paramAnonymous2o.aW(5, R.l.contact_info_movein_blacklist, R.k.bottomsheet_icon_blacklist);
+                  paramAnonymous2s.bx(5, R.l.contact_info_movein_blacklist, R.k.bottomsheet_icon_blacklist);
                 }
               }
               AppMethodBeat.o(27306);
             }
           };
-          paramAnonymousMenuItem.eik();
+          paramAnonymousMenuItem.dDn();
           AppMethodBeat.o(27307);
           return true;
         }
       });
     }
     
-    protected void bbp()
+    final void aRR(String paramString)
     {
-      fqA();
-      fqC();
+      if (Util.isNullOrNil(paramString))
+      {
+        Log.w("MicroMsg.NormalUserFooterPreference", "mod stranger remark, username is null");
+        return;
+      }
+      paramString = new Intent();
+      paramString.putExtra("Contact_Scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
+      paramString.putExtra("Contact_mode_name_type", 0);
+      paramString.putExtra("Contact_ModStrangerRemark", true);
+      paramString.putExtra("Contact_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+      paramString.putExtra("Contact_Nick", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_nickname);
+      paramString.putExtra("Contact_RemarkName", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_conRemark);
+      com.tencent.mm.plugin.profile.b.pFn.l(paramString, NormalUserFooterPreference.this.mContext);
+    }
+    
+    protected void bwk()
+    {
+      gBV();
+      gBX();
       NormalUserFooterPreference.f(NormalUserFooterPreference.this).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27308);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           Log.i("MicroMsg.NormalUserFooterPreference", "sendButton onClick %s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
           if (NormalUserFooterPreference.e(NormalUserFooterPreference.this)) {
             NormalUserFooterPreference.a.f(NormalUserFooterPreference.a.this);
           }
           for (;;)
           {
-            com.tencent.mm.plugin.profile.d.a(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent(), 4, 1, NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+            com.tencent.mm.plugin.profile.d.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent(), 4, 1, NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(27308);
             return;
@@ -617,13 +529,13 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27309);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("sns_permission_userName", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
           paramAnonymousView.putExtra("sns_permission_anim", true);
           paramAnonymousView.putExtra("sns_permission_block_scene", 4);
-          com.tencent.mm.by.c.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this), "sns", ".ui.SnsPermissionUI", paramAnonymousView);
+          com.tencent.mm.br.c.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this), "sns", ".ui.SnsPermissionUI", paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27309);
         }
@@ -634,10 +546,10 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27310);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           NormalUserFooterPreference.a.h(NormalUserFooterPreference.a.this);
-          com.tencent.mm.plugin.profile.d.a(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent(), 5, 1, NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+          com.tencent.mm.plugin.profile.d.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent(), 5, 1, NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27310);
         }
@@ -648,8 +560,8 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27311);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           NormalUserFooterPreference.a.d(NormalUserFooterPreference.a.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27311);
@@ -661,8 +573,8 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27312);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           NormalUserFooterPreference.a.d(NormalUserFooterPreference.a.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27312);
@@ -674,27 +586,27 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27313);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           NormalUserFooterPreference.a.d(NormalUserFooterPreference.a.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$BaseHandler$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27313);
         }
       });
-      ((com.tencent.mm.pluginsdk.i.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.i.a.class)).a(this);
+      ((com.tencent.mm.pluginsdk.i.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.i.a.class)).a(this);
     }
     
-    protected abstract void fqA();
+    protected abstract void gBV();
     
-    protected final void fqB()
+    protected final void gBW()
     {
       NormalUserFooterPreference.b(NormalUserFooterPreference.this).addIconOptionMenu(0, R.k.icons_outlined_more, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(27296);
-          paramAnonymousMenuItem = new e(NormalUserFooterPreference.b(NormalUserFooterPreference.this), 1, false);
-          paramAnonymousMenuItem.ODU = new q.g()
+          paramAnonymousMenuItem = new f(NormalUserFooterPreference.b(NormalUserFooterPreference.this), 1, false);
+          paramAnonymousMenuItem.GAC = new u.i()
           {
             public final void onMMMenuItemSelected(final MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
@@ -707,61 +619,61 @@ public class NormalUserFooterPreference
               {
                 AppMethodBeat.o(27294);
                 return;
-                if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayh())
+                if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSK())
                 {
-                  ab.E(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
-                  com.tencent.mm.ui.base.h.cO(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.eAk));
+                  ab.F(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
+                  k.cZ(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.gDa));
                 }
                 for (;;)
                 {
                   paramAnonymous2MenuItem = NormalUserFooterPreference.this;
-                  bh.beI();
-                  NormalUserFooterPreference.a(paramAnonymous2MenuItem, com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
+                  bh.bCz();
+                  NormalUserFooterPreference.a(paramAnonymous2MenuItem, com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
                   AppMethodBeat.o(27294);
                   return;
-                  ab.D(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
-                  com.tencent.mm.ui.base.h.cO(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.eyx));
+                  ab.E(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
+                  k.cZ(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.gBp));
                 }
                 paramAnonymous2MenuItem = new Intent();
                 paramAnonymous2MenuItem.putExtra("sns_permission_userName", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
                 paramAnonymous2MenuItem.putExtra("sns_permission_anim", true);
                 paramAnonymous2MenuItem.putExtra("sns_permission_block_scene", 1);
-                com.tencent.mm.by.c.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this), "sns", ".ui.SnsPermissionUI", paramAnonymous2MenuItem);
+                com.tencent.mm.br.c.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this), "sns", ".ui.SnsPermissionUI", paramAnonymous2MenuItem);
                 AppMethodBeat.o(27294);
                 return;
                 NormalUserFooterPreference.a.a(NormalUserFooterPreference.a.this);
                 AppMethodBeat.o(27294);
                 return;
-                NormalUserFooterPreference.this.lAD.event("hide_btn");
-                NormalUserFooterPreference.this.lAD.doNotify();
+                NormalUserFooterPreference.this.ose.event("hide_btn");
+                NormalUserFooterPreference.this.ose.doNotify();
                 NormalUserFooterPreference.a locala = NormalUserFooterPreference.a.this;
-                paramAnonymous2MenuItem = locala.Hbq;
-                bh.beI();
-                NormalUserFooterPreference.a(paramAnonymous2MenuItem, com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(locala.Hbq).field_username));
-                if (!com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(locala.Hbq).field_type))
+                paramAnonymous2MenuItem = locala.MZx;
+                bh.bCz();
+                NormalUserFooterPreference.a(paramAnonymous2MenuItem, com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(locala.MZx).field_username));
+                if (!com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(locala.MZx).field_type))
                 {
-                  locala.aUJ(NormalUserFooterPreference.a(locala.Hbq).field_username);
+                  locala.aRR(NormalUserFooterPreference.a(locala.MZx).field_username);
                   AppMethodBeat.o(27294);
                   return;
                 }
                 Intent localIntent = new Intent();
-                localIntent.putExtra("Contact_Scene", NormalUserFooterPreference.l(locala.Hbq));
-                localIntent.putExtra("Contact_User", NormalUserFooterPreference.a(locala.Hbq).field_username);
-                localIntent.putExtra("Contact_RoomNickname", NormalUserFooterPreference.b(locala.Hbq).getIntent().getStringExtra("Contact_RoomNickname"));
-                localIntent.putExtra("contact_phone_number_list", NormalUserFooterPreference.a(locala.Hbq).hDw);
+                localIntent.putExtra("Contact_Scene", NormalUserFooterPreference.l(locala.MZx));
+                localIntent.putExtra("Contact_User", NormalUserFooterPreference.a(locala.MZx).field_username);
+                localIntent.putExtra("Contact_RoomNickname", NormalUserFooterPreference.b(locala.MZx).getIntent().getStringExtra("Contact_RoomNickname"));
+                localIntent.putExtra("contact_phone_number_list", NormalUserFooterPreference.a(locala.MZx).kar);
                 Object localObject2 = "";
                 Object localObject1 = localObject2;
                 String str;
-                if (!NormalUserFooterPreference.a(locala.Hbq).ayo())
+                if (!NormalUserFooterPreference.a(locala.MZx).aSR())
                 {
-                  localObject1 = NormalUserFooterPreference.b(locala.Hbq).getIntent().getStringExtra("Contact_Mobile_MD5");
-                  str = NormalUserFooterPreference.b(locala.Hbq).getIntent().getStringExtra("Contact_full_Mobile_MD5");
+                  localObject1 = NormalUserFooterPreference.b(locala.MZx).getIntent().getStringExtra("Contact_Mobile_MD5");
+                  str = NormalUserFooterPreference.b(locala.MZx).getIntent().getStringExtra("Contact_full_Mobile_MD5");
                   if ((!Util.isNullOrNil((String)localObject1)) || (!Util.isNullOrNil(str))) {
                     break label724;
                   }
                   paramAnonymous2MenuItem = localObject3;
-                  if (!Util.isNullOrNil(NormalUserFooterPreference.a(locala.Hbq).field_username)) {
-                    paramAnonymous2MenuItem = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(NormalUserFooterPreference.a(locala.Hbq).field_username);
+                  if (!Util.isNullOrNil(NormalUserFooterPreference.a(locala.MZx).field_username)) {
+                    paramAnonymous2MenuItem = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(NormalUserFooterPreference.a(locala.MZx).field_username);
                   }
                 }
                 for (;;)
@@ -771,11 +683,11 @@ public class NormalUserFooterPreference
                   {
                     localObject1 = localObject2;
                     if (!Util.isNullOrNil(paramAnonymous2MenuItem.getMd5())) {
-                      localObject1 = Util.nullAsNil(paramAnonymous2MenuItem.bxY()).replace(" ", "");
+                      localObject1 = Util.nullAsNil(paramAnonymous2MenuItem.bWN()).replace(" ", "");
                     }
                   }
                   localIntent.putExtra("contact_phone_number_by_md5", (String)localObject1);
-                  com.tencent.mm.plugin.profile.b.mIG.k(localIntent, locala.Hbq.mContext);
+                  com.tencent.mm.plugin.profile.b.pFn.k(localIntent, locala.MZx.mContext);
                   AppMethodBeat.o(27294);
                   return;
                   label724:
@@ -786,19 +698,19 @@ public class NormalUserFooterPreference
                   }
                   else
                   {
-                    localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA((String)localObject1);
+                    localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU((String)localObject1);
                     if (localObject1 != null)
                     {
                       paramAnonymous2MenuItem = (MenuItem)localObject1;
-                      if (!Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).getMd5())) {}
+                      if (!Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.model.a)localObject1).getMd5())) {}
                     }
                     else
                     {
-                      paramAnonymous2MenuItem = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA(str);
+                      paramAnonymous2MenuItem = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU(str);
                     }
                   }
                 }
-                if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayc())
+                if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSF())
                 {
                   NormalUserFooterPreference.a.b(NormalUserFooterPreference.a.this);
                   AppMethodBeat.o(27294);
@@ -808,14 +720,14 @@ public class NormalUserFooterPreference
                 paramAnonymous2MenuItem.setPadding(0, 0, 0, 0);
                 localObject1 = (TextView)paramAnonymous2MenuItem.findViewById(R.h.mm_alert_dialog_info);
                 ((TextView)localObject1).setPadding(0, 0, 0, 0);
-                if (com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+                if (au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
                 {
-                  paramAnonymous2Int = R.l.eyM;
+                  paramAnonymous2Int = R.l.gBE;
                   ((TextView)localObject1).setText(paramAnonymous2Int);
                   localObject1 = (CheckBox)paramAnonymous2MenuItem.findViewById(R.h.mm_alert_dialog_cb);
                   ((CheckBox)localObject1).setChecked(false);
                   localObject2 = (TextView)paramAnonymous2MenuItem.findViewById(R.h.mm_alert_dialog_cb_txt);
-                  ((TextView)localObject2).setText(R.l.eyN);
+                  ((TextView)localObject2).setText(R.l.gBF);
                   if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource() != 18) {
                     break label1061;
                   }
@@ -824,7 +736,7 @@ public class NormalUserFooterPreference
                 }
                 for (;;)
                 {
-                  com.tencent.mm.ui.base.h.a(NormalUserFooterPreference.this.mContext, true, NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_movein_blacklist), paramAnonymous2MenuItem, NormalUserFooterPreference.this.mContext.getString(R.l.app_ok), NormalUserFooterPreference.this.mContext.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+                  k.a(NormalUserFooterPreference.this.mContext, true, NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_movein_blacklist), paramAnonymous2MenuItem, NormalUserFooterPreference.this.mContext.getString(R.l.app_ok), NormalUserFooterPreference.this.mContext.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
                   {
                     public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                     {
@@ -833,7 +745,7 @@ public class NormalUserFooterPreference
                       if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource() == 18)
                       {
                         NormalUserFooterPreference.a(NormalUserFooterPreference.this, 9);
-                        if (this.GWL.isChecked()) {
+                        if (this.MUE.isChecked()) {
                           NormalUserFooterPreference.a.d(NormalUserFooterPreference.a.this);
                         }
                       }
@@ -842,7 +754,7 @@ public class NormalUserFooterPreference
                   }, null);
                   AppMethodBeat.o(27294);
                   return;
-                  paramAnonymous2Int = R.l.eyL;
+                  paramAnonymous2Int = R.l.gBD;
                   break;
                   label1061:
                   ((CheckBox)localObject1).setVisibility(8);
@@ -852,14 +764,14 @@ public class NormalUserFooterPreference
                 ((View)localObject1).setPadding(0, 0, 0, 0);
                 localObject2 = (TextView)((View)localObject1).findViewById(R.h.mm_alert_dialog_info);
                 ((TextView)localObject2).setPadding(0, 0, 0, 0);
-                if (ab.Qj(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+                if (ab.IQ(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
                 {
-                  paramAnonymous2MenuItem = NormalUserFooterPreference.this.mContext.getString(R.l.eAY, new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).ays() });
+                  paramAnonymous2MenuItem = NormalUserFooterPreference.this.mContext.getString(R.l.gEa, new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSV() });
                   ((TextView)localObject2).setText(paramAnonymous2MenuItem);
                   paramAnonymous2MenuItem = (CheckBox)((View)localObject1).findViewById(R.h.mm_alert_dialog_cb);
                   paramAnonymous2MenuItem.setChecked(false);
                   localObject2 = (TextView)((View)localObject1).findViewById(R.h.mm_alert_dialog_cb_txt);
-                  ((TextView)localObject2).setText(R.l.eyN);
+                  ((TextView)localObject2).setText(R.l.gBF);
                   if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource() != 18) {
                     break label1408;
                   }
@@ -868,12 +780,12 @@ public class NormalUserFooterPreference
                 }
                 for (;;)
                 {
-                  com.tencent.mm.ui.base.h.a(NormalUserFooterPreference.this.mContext, true, NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_delete_contact), (View)localObject1, NormalUserFooterPreference.this.mContext.getString(R.l.app_delete), NormalUserFooterPreference.this.mContext.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+                  k.a(NormalUserFooterPreference.this.mContext, true, NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_delete_contact), (View)localObject1, NormalUserFooterPreference.this.mContext.getString(R.l.app_delete), NormalUserFooterPreference.this.mContext.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
                   {
                     public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                     {
                       AppMethodBeat.i(27293);
-                      NormalUserFooterPreference.a.this.fqE();
+                      NormalUserFooterPreference.a.this.gBZ();
                       if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource() == 18)
                       {
                         NormalUserFooterPreference.a(NormalUserFooterPreference.this, 9);
@@ -886,7 +798,7 @@ public class NormalUserFooterPreference
                   }, null, R.e.alert_btn_color_warn);
                   AppMethodBeat.o(27294);
                   return;
-                  paramAnonymous2MenuItem = NormalUserFooterPreference.this.mContext.getString(R.l.eAW, new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).ays() });
+                  paramAnonymous2MenuItem = NormalUserFooterPreference.this.mContext.getString(R.l.gDX, new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSV() });
                   break;
                   label1408:
                   paramAnonymous2MenuItem.setVisibility(8);
@@ -899,27 +811,27 @@ public class NormalUserFooterPreference
               }
             }
           };
-          paramAnonymousMenuItem.ODT = new q.f()
+          paramAnonymousMenuItem.Vtg = new u.g()
           {
-            public final void onCreateMMMenu(com.tencent.mm.ui.base.o paramAnonymous2o)
+            public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
             {
               AppMethodBeat.i(27295);
-              com.tencent.mm.plugin.profile.d.a(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent(), 7, 1, NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
-              if (com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+              com.tencent.mm.plugin.profile.d.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent(), 7, 1, NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+              if (au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
               {
-                paramAnonymous2o.aW(1, R.l.eAq, R.k.bottomsheet_icon_remarks);
-                if (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayh()) {
+                paramAnonymous2s.bx(1, R.l.gDi, R.k.bottomsheet_icon_remarks);
+                if (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSK()) {
                   break label302;
                 }
-                str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getResources().getString(R.l.eAj);
+                str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getResources().getString(R.l.gCZ);
                 label120:
-                paramAnonymous2o.b(2, str, R.k.bottomsheet_icon_star);
-                if (!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
-                  paramAnonymous2o.aW(3, R.l.contact_info_op_sns_permission, R.k.bottomsheet_icon_moment);
+                paramAnonymous2s.a(2, str, R.k.bottomsheet_icon_star);
+                if (!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
+                  paramAnonymous2s.bx(3, R.l.contact_info_op_sns_permission, R.k.bottomsheet_icon_moment);
                 }
-                paramAnonymous2o.aW(4, R.l.ezh, R.k.bottomsheet_icon_transmit);
-                paramAnonymous2o.aW(9, R.l.biz_report_text, R.k.bottomsheet_icon_complain);
-                if (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayc()) {
+                paramAnonymous2s.bx(4, R.l.gBW, R.k.bottomsheet_icon_transmit);
+                paramAnonymous2s.bx(9, R.l.biz_report_text, R.k.bottomsheet_icon_complain);
+                if (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSF()) {
                   break label328;
                 }
               }
@@ -927,28 +839,28 @@ public class NormalUserFooterPreference
               label328:
               for (String str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_moveout_blacklist);; str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_movein_blacklist))
               {
-                paramAnonymous2o.b(5, str, R.k.bottomsheet_icon_blacklist);
+                paramAnonymous2s.a(5, str, R.k.bottomsheet_icon_blacklist);
                 if (!NormalUserFooterPreference.c(NormalUserFooterPreference.this)) {
-                  paramAnonymous2o.aW(6, R.l.bind_mcontact_del_btn_text, R.k.bottomsheet_icon_del);
+                  paramAnonymous2s.bx(6, R.l.bind_mcontact_del_btn_text, R.k.bottomsheet_icon_del);
                 }
-                paramAnonymous2o.aW(7, R.l.exQ, R.k.bottomsheet_icon_desktop);
+                paramAnonymous2s.bx(7, R.l.gAF, R.k.bottomsheet_icon_desktop);
                 AppMethodBeat.o(27295);
                 return;
-                paramAnonymous2o.aW(1, R.l.eyI, R.k.bottomsheet_icon_remarks);
+                paramAnonymous2s.bx(1, R.l.gBA, R.k.bottomsheet_icon_remarks);
                 break;
-                str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getResources().getString(R.l.eyw);
+                str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getResources().getString(R.l.gBo);
                 break label120;
               }
             }
           };
-          paramAnonymousMenuItem.eik();
+          paramAnonymousMenuItem.dDn();
           AppMethodBeat.o(27296);
           return true;
         }
       });
     }
     
-    protected void fqC()
+    protected void gBX()
     {
       if (NormalUserFooterPreference.d(NormalUserFooterPreference.this)) {
         NormalUserFooterPreference.b(NormalUserFooterPreference.this).showOptionMenu(false);
@@ -958,60 +870,60 @@ public class NormalUserFooterPreference
         do
         {
           return;
-        } while (z.bcZ().equals(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
-        if (!com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) {
+        } while (z.bAM().equals(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
+        if (!com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) {
           break;
         }
-      } while (ab.QO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
-      fqB();
+      } while (au.bws(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
+      gBW();
       return;
-      an(false, false);
+      aG(false, false);
     }
     
-    protected final void fqE()
+    protected final void gBZ()
     {
-      com.tencent.mm.plugin.report.service.h.IzE.a(14553, new Object[] { Integer.valueOf(2), Integer.valueOf(2), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
+      com.tencent.mm.plugin.report.service.h.OAn.b(14553, new Object[] { Integer.valueOf(2), Integer.valueOf(2), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
       final String str = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username;
-      if (ab.Qj(str))
+      if (ab.IQ(str))
       {
-        NormalUserFooterPreference.a(NormalUserFooterPreference.this).axl();
-        bh.beI();
-        com.tencent.mm.model.c.bbK().d(new com.tencent.mm.bd.d(str));
-        bh.beI();
-        com.tencent.mm.model.c.bbL().bwp(str);
-        bh.beI();
-        com.tencent.mm.model.c.bbV().RC(str);
+        NormalUserFooterPreference.a(NormalUserFooterPreference.this).aRL();
+        bh.bCz();
+        com.tencent.mm.model.c.bzz().d(new com.tencent.mm.ay.d(str));
+        bh.bCz();
+        com.tencent.mm.model.c.bzA().bxC(str);
+        bh.bCz();
+        com.tencent.mm.model.c.bzK().JA(str);
         return;
       }
       this.isDeleteCancel = false;
       Object localObject = NormalUserFooterPreference.this.mContext;
       NormalUserFooterPreference.this.mContext.getString(R.l.app_tip);
-      final s locals = com.tencent.mm.ui.base.h.a((Context)localObject, NormalUserFooterPreference.this.mContext.getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
+      final w localw = k.a((Context)localObject, NormalUserFooterPreference.this.mContext.getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(289006);
+          AppMethodBeat.i(305614);
           NormalUserFooterPreference.a.a(NormalUserFooterPreference.a.this, true);
-          AppMethodBeat.o(289006);
+          AppMethodBeat.o(305614);
         }
       });
       if (!this.isDeleteCancel) {}
-      for (localObject = com.tencent.mm.pluginsdk.wallet.d.bsh(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);; localObject = null)
+      for (localObject = com.tencent.mm.pluginsdk.wallet.d.brY(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);; localObject = null)
       {
         if (!Util.isNullOrNil((String)localObject))
         {
-          locals.dismiss();
-          com.tencent.mm.ui.base.h.a(NormalUserFooterPreference.this.mContext, false, NormalUserFooterPreference.this.mContext.getString(R.l.eVz, new Object[] { localObject }), null, NormalUserFooterPreference.this.mContext.getString(R.l.goto_conversation), NormalUserFooterPreference.this.mContext.getString(R.l.eBb), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          localw.dismiss();
+          k.a(NormalUserFooterPreference.this.mContext, false, NormalUserFooterPreference.this.mContext.getString(R.l.gYF, new Object[] { localObject }), null, NormalUserFooterPreference.this.mContext.getString(R.l.goto_conversation), NormalUserFooterPreference.this.mContext.getString(R.l.gEd), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(27301);
-              com.tencent.mm.plugin.report.service.h.IzE.a(14553, new Object[] { Integer.valueOf(2), Integer.valueOf(4), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
+              com.tencent.mm.plugin.report.service.h.OAn.b(14553, new Object[] { Integer.valueOf(2), Integer.valueOf(4), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
               NormalUserFooterPreference.a.a(NormalUserFooterPreference.a.this, true);
               paramAnonymousDialogInterface = new Intent();
               paramAnonymousDialogInterface.putExtra("Chat_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
               paramAnonymousDialogInterface.addFlags(67108864);
-              com.tencent.mm.by.c.f(NormalUserFooterPreference.this.mContext, ".ui.chatting.ChattingUI", paramAnonymousDialogInterface);
+              com.tencent.mm.br.c.g(NormalUserFooterPreference.this.mContext, ".ui.chatting.ChattingUI", paramAnonymousDialogInterface);
               AppMethodBeat.o(27301);
             }
           }, new DialogInterface.OnClickListener()
@@ -1019,8 +931,8 @@ public class NormalUserFooterPreference
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(27302);
-              com.tencent.mm.plugin.report.service.h.IzE.a(14553, new Object[] { Integer.valueOf(2), Integer.valueOf(3), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
-              locals.show();
+              com.tencent.mm.plugin.report.service.h.OAn.b(14553, new Object[] { Integer.valueOf(2), Integer.valueOf(3), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
+              localw.show();
               NormalUserFooterPreference.a.a(NormalUserFooterPreference.a.this, false);
               NormalUserFooterPreference.a.b(NormalUserFooterPreference.a.this, str);
               AppMethodBeat.o(27302);
@@ -1028,19 +940,102 @@ public class NormalUserFooterPreference
           }, -1, R.e.alert_btn_color_warn);
           return;
         }
-        afm(str);
+        XN(str);
         return;
       }
     }
     
-    protected void onDetach()
+    public void onDeleteContact(String paramString, int paramInt, dzc paramdzc)
     {
-      ((com.tencent.mm.pluginsdk.i.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.i.a.class)).b(this);
+      Object localObject2 = null;
+      Object localObject1 = null;
+      if (paramInt == 0)
+      {
+        if (!paramString.equals(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+        {
+          Log.w("MicroMsg.NormalUserFooterPreference", "not current contact %s,%s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, paramString });
+          return;
+        }
+        switch (NormalUserFooterPreference.l(NormalUserFooterPreference.this))
+        {
+        case 10: 
+        default: 
+          if (NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 9)
+          {
+            Log.i("MicroMsg.NormalUserFooterPreference", "add scene unkown, check the contact getsource: " + NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource());
+            switch (NormalUserFooterPreference.a(NormalUserFooterPreference.this).getSource())
+            {
+            }
+          }
+          break;
+        }
+        for (;;)
+        {
+          if (NormalUserFooterPreference.o(NormalUserFooterPreference.this) != 0) {
+            break label458;
+          }
+          paramString = new Intent();
+          paramString.addFlags(67108864);
+          com.tencent.mm.plugin.profile.b.pFn.n(paramString, NormalUserFooterPreference.this.mContext);
+          return;
+          paramString = com.tencent.mm.plugin.account.b.getQQListStg().Tf(paramString);
+          if (paramString == null) {
+            break;
+          }
+          paramString.pTV = 1;
+          com.tencent.mm.plugin.account.b.getQQListStg().a(paramString.pTU, paramString);
+          break;
+          paramString = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(paramString);
+          if ((paramString == null) || (Util.isNullOrNil(paramString.pSe))) {
+            break;
+          }
+          paramString.status = 1;
+          com.tencent.mm.plugin.account.b.getAddrUploadStg().a(paramString.getMd5(), paramString);
+          break;
+          paramdzc = com.tencent.mm.plugin.account.b.getFacebookFrdStg();
+          paramString = "select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend   where facebookfriend.username = \"" + paramString + "\"";
+          paramdzc = paramdzc.omV.rawQuery(paramString, null, 2);
+          if (paramdzc == null) {
+            paramString = localObject1;
+          }
+          while (paramString != null)
+          {
+            paramString.status = 100;
+            com.tencent.mm.plugin.account.b.getFacebookFrdStg().a(paramString);
+            break;
+            paramString = localObject2;
+            if (paramdzc.moveToFirst())
+            {
+              paramString = new com.tencent.mm.plugin.account.friend.model.d();
+              paramString.convertFrom(paramdzc);
+            }
+            paramdzc.close();
+          }
+          com.tencent.mm.plugin.account.b.getGoogleFriendStorage().bp(paramString, 2);
+          break;
+          Log.i("MicroMsg.NormalUserFooterPreference", "delete the system contact info added by wechat");
+        }
+        label458:
+        NormalUserFooterPreference.b(NormalUserFooterPreference.this).setResult(-1, NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().putExtra("_delete_ok_", true));
+        ((Activity)NormalUserFooterPreference.this.mContext).finish();
+        return;
+      }
+      if (!Util.isNullOrNil(paramdzc.nUB))
+      {
+        k.c(NormalUserFooterPreference.b(NormalUserFooterPreference.this), paramdzc.nUB, paramdzc.hAP, true);
+        return;
+      }
+      k.c(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_delete_failed), "", true);
     }
     
-    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    protected void onDetach()
     {
-      Log.i("MicroMsg.NormalUserFooterPreference", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramq.getType());
+      ((com.tencent.mm.pluginsdk.i.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.i.a.class)).b(this);
+    }
+    
+    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+    {
+      Log.i("MicroMsg.NormalUserFooterPreference", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramp.getType());
     }
   }
   
@@ -1052,11 +1047,11 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void fqA()
+    protected final void gBV()
     {
       AppMethodBeat.i(27317);
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
-      if ((!com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) || ((com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) && (com.tencent.mm.storage.as.PY(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))))
+      if ((!com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) || ((com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) && (au.bwS(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))))
       {
         NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(0);
         NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(8);
@@ -1080,16 +1075,16 @@ public class NormalUserFooterPreference
           {
             AppMethodBeat.i(27315);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NearByFriendHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            if ((NormalUserFooterPreference.c(NormalUserFooterPreference.this)) && (com.tencent.mm.bw.a.hft()))
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NearByFriendHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            if ((NormalUserFooterPreference.c(NormalUserFooterPreference.this)) && (com.tencent.mm.bp.a.iGn()))
             {
               paramAnonymousView = new Intent();
               paramAnonymousView.putExtra("Chat_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_encryptUsername);
               paramAnonymousView.putExtra("lbs_mode", true);
               paramAnonymousView.putExtra("lbs_ticket", NormalUserFooterPreference.C(NormalUserFooterPreference.this));
               paramAnonymousView.putExtra("add_scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
-              com.tencent.mm.plugin.profile.b.mIG.d(paramAnonymousView, NormalUserFooterPreference.b(NormalUserFooterPreference.this));
+              com.tencent.mm.plugin.profile.b.pFn.d(paramAnonymousView, NormalUserFooterPreference.b(NormalUserFooterPreference.this));
             }
             for (;;)
             {
@@ -1099,8 +1094,8 @@ public class NormalUserFooterPreference
               paramAnonymousView = new Intent();
               paramAnonymousView.putExtra("Contact_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
               paramAnonymousView.putExtra("Contact_Scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
-              paramAnonymousView.putExtra(f.d.VRW, NormalUserFooterPreference.a(NormalUserFooterPreference.this).hDx);
-              com.tencent.mm.plugin.profile.b.mIG.a(paramAnonymousView, NormalUserFooterPreference.this.mContext);
+              paramAnonymousView.putExtra(f.e.adwe, NormalUserFooterPreference.a(NormalUserFooterPreference.this).kas);
+              com.tencent.mm.plugin.profile.b.pFn.a(paramAnonymousView, NormalUserFooterPreference.this.mContext);
             }
           }
         });
@@ -1108,14 +1103,14 @@ public class NormalUserFooterPreference
         return;
         NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(0);
-        if ((NormalUserFooterPreference.this.fqx()) || (NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(z.bcZ()))) {
+        if ((NormalUserFooterPreference.this.gBS()) || (NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(z.bAM()))) {
           break;
         }
         NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(0);
       }
     }
     
-    protected final void fqC()
+    protected final void gBX()
     {
       AppMethodBeat.i(27316);
       if (NormalUserFooterPreference.a(NormalUserFooterPreference.this) == null)
@@ -1124,19 +1119,19 @@ public class NormalUserFooterPreference
         AppMethodBeat.o(27316);
         return;
       }
-      if ((!com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) || ((com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) && (com.tencent.mm.storage.as.PY(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))))
+      if ((!com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) || ((com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) && (au.bwS(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))))
       {
-        if (com.tencent.mm.storage.as.PY(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+        if (au.bwS(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
         {
-          an(true, true);
+          aG(true, true);
           AppMethodBeat.o(27316);
           return;
         }
-        an(false, true);
+        aG(false, true);
         AppMethodBeat.o(27316);
         return;
       }
-      fqB();
+      gBW();
       AppMethodBeat.o(27316);
     }
   }
@@ -1149,7 +1144,7 @@ public class NormalUserFooterPreference
       super();
     }
     
-    private void fqG()
+    private void gAN()
     {
       AppMethodBeat.i(27327);
       Object localObject2 = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("Contact_Mobile_MD5");
@@ -1158,11 +1153,11 @@ public class NormalUserFooterPreference
       localObject1 = Util.nullAsNil((String)localObject1);
       if ((!str.equals("")) || (!((String)localObject1).equals("")))
       {
-        localObject2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA(str);
+        localObject2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU(str);
         if (localObject2 != null) {
           break label113;
         }
-        localObject2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA((String)localObject1);
+        localObject2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().SU((String)localObject1);
       }
       for (;;)
       {
@@ -1171,7 +1166,7 @@ public class NormalUserFooterPreference
           AppMethodBeat.o(27327);
           return;
         }
-        com.tencent.mm.plugin.account.b.getAddrUploadStg().a((String)localObject1, (com.tencent.mm.plugin.account.friend.a.a)localObject2);
+        com.tencent.mm.plugin.account.b.getAddrUploadStg().a((String)localObject1, (com.tencent.mm.plugin.account.friend.model.a)localObject2);
         AppMethodBeat.o(27327);
         return;
         label113:
@@ -1179,18 +1174,18 @@ public class NormalUserFooterPreference
       }
     }
     
-    protected final void bbp()
+    protected final void bwk()
     {
       AppMethodBeat.i(27323);
-      super.bbp();
+      super.bwk();
       AppMethodBeat.o(27323);
     }
     
-    protected void fqA()
+    protected void gBV()
     {
       AppMethodBeat.i(27325);
       boolean bool;
-      if (!ab.QX(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+      if (!ab.IV(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
       {
         bool = true;
         Assert.assertTrue(bool);
@@ -1199,20 +1194,8 @@ public class NormalUserFooterPreference
         if (!NormalUserFooterPreference.d(NormalUserFooterPreference.this)) {
           break label194;
         }
-        NormalUserFooterPreference.D(NormalUserFooterPreference.this).setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(27318);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NormalHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            NormalUserFooterPreference.c.this.fqE();
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NormalHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(27318);
-          }
-        });
-        if (!com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) {
+        NormalUserFooterPreference.D(NormalUserFooterPreference.this).setOnClickListener(new NormalUserFooterPreference.c.1(this));
+        if (!com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)) {
           break label179;
         }
         NormalUserFooterPreference.D(NormalUserFooterPreference.this).setVisibility(0);
@@ -1238,35 +1221,35 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27319);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NormalHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NormalHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
           if (NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent() != null)
           {
             paramAnonymousView = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("key_ww_add_session_id");
             if (!Util.isNullOrNil(paramAnonymousView))
             {
-              localObject = new iw();
-              ((iw)localObject).zS(paramAnonymousView);
-              ((iw)localObject).gzc = 0L;
-              ((iw)localObject).gKq = 1L;
-              ((iw)localObject).bpa();
+              localObject = new lg();
+              ((lg)localObject).ud(paramAnonymousView);
+              ((lg)localObject).isX = 0L;
+              ((lg)localObject).iZG = 1L;
+              ((lg)localObject).bMH();
             }
           }
-          NormalUserFooterPreference.c.this.fqF();
+          NormalUserFooterPreference.c.this.gCa();
           if (NormalUserFooterPreference.E(NormalUserFooterPreference.this) != 0) {
-            com.tencent.mm.plugin.report.service.h.IzE.a(11263, new Object[] { Integer.valueOf(NormalUserFooterPreference.E(NormalUserFooterPreference.this)), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
+            com.tencent.mm.plugin.report.service.h.OAn.b(11263, new Object[] { Integer.valueOf(NormalUserFooterPreference.E(NormalUserFooterPreference.this)), NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username });
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$NormalHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27319);
         }
       });
-      if (!com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type))
+      if (!com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type))
       {
         NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(0);
         NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.g(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(8);
-        if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayc())
+        if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSF())
         {
           NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(0);
           AppMethodBeat.o(27325);
@@ -1276,13 +1259,13 @@ public class NormalUserFooterPreference
       {
         NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(0);
-        if ((!NormalUserFooterPreference.this.fqx()) && (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(z.bcZ())) && (!ab.QX(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!ab.QO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!ab.Qk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))) {
+        if ((!NormalUserFooterPreference.this.gBS()) && (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(z.bAM())) && (!ab.IV(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!au.bws(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!au.bxa(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))) {
           NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(0);
         }
         for (;;)
         {
-          bh.beI();
-          if (!com.tencent.mm.model.c.bbL().bwm(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
+          bh.bCz();
+          if (!com.tencent.mm.model.c.bzA().bxz(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
             break;
           }
           NormalUserFooterPreference.k(NormalUserFooterPreference.this).setVisibility(0);
@@ -1295,17 +1278,17 @@ public class NormalUserFooterPreference
       AppMethodBeat.o(27325);
     }
     
-    protected final void fqF()
+    protected final void gCa()
     {
       AppMethodBeat.i(27326);
-      if ((int)NormalUserFooterPreference.a(NormalUserFooterPreference.this).jxt == 0)
+      if ((int)NormalUserFooterPreference.a(NormalUserFooterPreference.this).maN == 0)
       {
-        bh.beI();
-        if (com.tencent.mm.model.c.bbL().aw(NormalUserFooterPreference.a(NormalUserFooterPreference.this)) != -1)
+        bh.bCz();
+        if (com.tencent.mm.model.c.bzA().aC(NormalUserFooterPreference.a(NormalUserFooterPreference.this)) != -1)
         {
           localObject = NormalUserFooterPreference.this;
-          bh.beI();
-          NormalUserFooterPreference.a((NormalUserFooterPreference)localObject, com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
+          bh.bCz();
+          NormalUserFooterPreference.a((NormalUserFooterPreference)localObject, com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
         }
       }
       if ((NormalUserFooterPreference.F(NormalUserFooterPreference.this)) || (NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 12))
@@ -1313,17 +1296,17 @@ public class NormalUserFooterPreference
         Log.d("MicroMsg.NormalUserFooterPreference", "qqNum " + NormalUserFooterPreference.G(NormalUserFooterPreference.this) + " qqReamrk " + NormalUserFooterPreference.H(NormalUserFooterPreference.this));
         if ((NormalUserFooterPreference.G(NormalUserFooterPreference.this) != 0L) && (NormalUserFooterPreference.H(NormalUserFooterPreference.this) != null) && (!NormalUserFooterPreference.H(NormalUserFooterPreference.this).equals("")))
         {
-          localObject = com.tencent.mm.plugin.account.b.getQQListStg().Hd(NormalUserFooterPreference.G(NormalUserFooterPreference.this));
+          localObject = com.tencent.mm.plugin.account.b.getQQListStg().jt(NormalUserFooterPreference.G(NormalUserFooterPreference.this));
           if (localObject != null) {
             break label452;
           }
-          localObject = new com.tencent.mm.plugin.account.friend.a.as();
-          ((com.tencent.mm.plugin.account.friend.a.as)localObject).nickname = "";
-          ((com.tencent.mm.plugin.account.friend.a.as)localObject).mXm = NormalUserFooterPreference.G(NormalUserFooterPreference.this);
-          ((com.tencent.mm.plugin.account.friend.a.as)localObject).mXu = NormalUserFooterPreference.H(NormalUserFooterPreference.this);
-          ((com.tencent.mm.plugin.account.friend.a.as)localObject).username = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username;
-          ((com.tencent.mm.plugin.account.friend.a.as)localObject).byL();
-          com.tencent.mm.plugin.account.b.getQQListStg().a((com.tencent.mm.plugin.account.friend.a.as)localObject);
+          localObject = new ap();
+          ((ap)localObject).nickname = "";
+          ((ap)localObject).pTU = NormalUserFooterPreference.G(NormalUserFooterPreference.this);
+          ((ap)localObject).pUc = NormalUserFooterPreference.H(NormalUserFooterPreference.this);
+          ((ap)localObject).username = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username;
+          ((ap)localObject).bXz();
+          com.tencent.mm.plugin.account.b.getQQListStg().a((ap)localObject);
         }
       }
       final com.tencent.mm.pluginsdk.ui.applet.a locala;
@@ -1331,16 +1314,16 @@ public class NormalUserFooterPreference
       final String str;
       for (;;)
       {
-        fqG();
+        gAN();
         locala = new com.tencent.mm.pluginsdk.ui.applet.a(NormalUserFooterPreference.this.mContext, new com.tencent.mm.pluginsdk.ui.applet.a.a()
         {
-          public final void a(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, String paramAnonymousString1, String paramAnonymousString2)
+          public final void canAddContact(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, String paramAnonymousString1, String paramAnonymousString2)
           {
             AppMethodBeat.i(27320);
             if (paramAnonymousBoolean1)
             {
-              NormalUserFooterPreference.this.lAD.event("hide_btn");
-              NormalUserFooterPreference.this.lAD.doNotify();
+              NormalUserFooterPreference.this.ose.event("hide_btn");
+              NormalUserFooterPreference.this.ose.doNotify();
               NormalUserFooterPreference.v(NormalUserFooterPreference.this);
               NormalUserFooterPreference.c.a(NormalUserFooterPreference.c.this, paramAnonymousString1);
             }
@@ -1353,12 +1336,12 @@ public class NormalUserFooterPreference
               return;
               if (paramAnonymousBoolean2)
               {
-                com.tencent.mm.bl.d.bqc().hx(paramAnonymousString1, 2);
-                au.bb(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_encryptUsername, 1);
-                paramAnonymousString1 = new se();
-                paramAnonymousString1.fRL.username = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_encryptUsername;
-                paramAnonymousString1.fRL.type = 1;
-                EventCenter.instance.publish(paramAnonymousString1);
+                com.tencent.mm.modelverify.d.bNI().fP(paramAnonymousString1, 2);
+                com.tencent.mm.plugin.account.friend.model.ar.br(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_encryptUsername, 1);
+                paramAnonymousString1 = new tu();
+                paramAnonymousString1.hXJ.username = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_encryptUsername;
+                paramAnonymousString1.hXJ.type = 1;
+                paramAnonymousString1.publish();
               }
               else
               {
@@ -1371,17 +1354,17 @@ public class NormalUserFooterPreference
         localLinkedList.add(Integer.valueOf(NormalUserFooterPreference.l(NormalUserFooterPreference.this)));
         localObject = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("source_from_user_name");
         str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("source_from_nick_name");
-        locala.np((String)localObject, str);
-        locala.ReH = new a.b()
+        locala.pk((String)localObject, str);
+        locala.YaM = new a.b()
         {
-          public final boolean m(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2)
+          public final boolean n(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2)
           {
-            AppMethodBeat.i(292156);
+            AppMethodBeat.i(305577);
             String str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("room_name");
-            int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWD, 2);
-            int j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWG, 5000);
+            int i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpi, 2);
+            int j = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpl, 5000);
             SayHiWithSnsPermissionUI localSayHiWithSnsPermissionUI = SayHiWithSnsPermissionUI.class;
-            if ((!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (i == 1)) {
+            if ((!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (i == 1)) {
               paramAnonymousString2 = SayHiWithSnsPermissionUI2.class;
             }
             for (;;)
@@ -1395,24 +1378,24 @@ public class NormalUserFooterPreference
               }
               paramAnonymousString2.putExtra("Contact_Scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
               paramAnonymousString2.putExtra("room_name", str);
-              paramAnonymousString2.putExtra("source_from_user_name", this.GWD);
+              paramAnonymousString2.putExtra("source_from_user_name", this.MUd);
               paramAnonymousString2.putExtra("source_from_nick_name", str);
               paramAnonymousString2.putExtra("sayhi_with_sns_perm_send_verify", true);
               paramAnonymousString2.putExtra("sayhi_with_sns_perm_add_remark", true);
               paramAnonymousString2.putExtra("sayhi_with_sns_perm_set_label", false);
-              paramAnonymousString2.putExtra(f.d.VRW, paramAnonymousString1);
+              paramAnonymousString2.putExtra(f.e.adwe, paramAnonymousString1);
               paramAnonymousString2.putExtra("sayhi_verify_add_errcode", paramAnonymousInt);
               NormalUserFooterPreference.b(NormalUserFooterPreference.this).startActivityForResult(paramAnonymousString2, 0);
-              AppMethodBeat.o(292156);
+              AppMethodBeat.o(305577);
               return true;
               paramAnonymousString2 = localSayHiWithSnsPermissionUI;
-              if (!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+              if (!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
               {
                 paramAnonymousString2 = localSayHiWithSnsPermissionUI;
                 if (i == 2)
                 {
                   paramAnonymousString2 = localSayHiWithSnsPermissionUI;
-                  if (ab.bef() >= j) {
+                  if (ab.bBW() >= j) {
                     paramAnonymousString2 = SayHiWithSnsPermissionUI3.class;
                   }
                 }
@@ -1421,67 +1404,67 @@ public class NormalUserFooterPreference
           }
         };
         str = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("room_name");
-        localObject = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra(f.d.VRW);
+        localObject = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra(f.e.adwe);
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           break;
         }
         Log.i("MicroMsg.NormalUserFooterPreference", "add contact case 1:%s", new Object[] { localObject });
-        locala.bqY((String)localObject);
+        locala.bqM((String)localObject);
         locala.d(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, "", localLinkedList);
         AppMethodBeat.o(27326);
         return;
         label452:
-        ((com.tencent.mm.plugin.account.friend.a.as)localObject).mXm = NormalUserFooterPreference.G(NormalUserFooterPreference.this);
-        ((com.tencent.mm.plugin.account.friend.a.as)localObject).mXu = NormalUserFooterPreference.H(NormalUserFooterPreference.this);
-        ((com.tencent.mm.plugin.account.friend.a.as)localObject).username = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username;
-        ((com.tencent.mm.plugin.account.friend.a.as)localObject).byL();
-        com.tencent.mm.plugin.account.b.getQQListStg().a(NormalUserFooterPreference.G(NormalUserFooterPreference.this), (com.tencent.mm.plugin.account.friend.a.as)localObject);
+        ((ap)localObject).pTU = NormalUserFooterPreference.G(NormalUserFooterPreference.this);
+        ((ap)localObject).pUc = NormalUserFooterPreference.H(NormalUserFooterPreference.this);
+        ((ap)localObject).username = NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username;
+        ((ap)localObject).bXz();
+        com.tencent.mm.plugin.account.b.getQQListStg().a(NormalUserFooterPreference.G(NormalUserFooterPreference.this), (ap)localObject);
         continue;
         if ((NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 58) || (NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 59) || (NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 60)) {
-          com.tencent.mm.plugin.account.b.getGoogleFriendStorage().aZ(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, 1);
+          com.tencent.mm.plugin.account.b.getGoogleFriendStorage().bp(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, 1);
         }
       }
       if (TextUtils.isEmpty(str))
       {
-        Log.i("MicroMsg.NormalUserFooterPreference", "add contact case 2, %s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).hDx });
-        locala.bqY(NormalUserFooterPreference.a(NormalUserFooterPreference.this).hDx);
+        Log.i("MicroMsg.NormalUserFooterPreference", "add contact case 2, %s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).kas });
+        locala.bqM(NormalUserFooterPreference.a(NormalUserFooterPreference.this).kas);
         locala.i(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, localLinkedList);
         AppMethodBeat.o(27326);
         return;
       }
-      if (!TextUtils.isEmpty(locala.BLy))
+      if (!TextUtils.isEmpty(locala.pPi))
       {
-        Log.i("MicroMsg.NormalUserFooterPreference", "add contact case 3, %s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).hDx });
-        locala.bqY(NormalUserFooterPreference.a(NormalUserFooterPreference.this).hDx);
+        Log.i("MicroMsg.NormalUserFooterPreference", "add contact case 3, %s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).kas });
+        locala.bqM(NormalUserFooterPreference.a(NormalUserFooterPreference.this).kas);
         locala.d(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, str, localLinkedList);
         AppMethodBeat.o(27326);
         return;
       }
-      bh.beI();
-      Object localObject = com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+      bh.bCz();
+      Object localObject = com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
       if (localObject != null) {}
-      for (localObject = Util.nullAs(((ax)localObject).hDx, "");; localObject = "")
+      for (localObject = Util.nullAs(((az)localObject).kas, "");; localObject = "")
       {
         Log.i("MicroMsg.NormalUserFooterPreference", "dkverify footer add:%s chat:%s ticket:%s", new Object[] { NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, str, localObject });
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           break;
         }
-        locala.bqY((String)localObject);
+        locala.bqM((String)localObject);
         locala.d(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, str, localLinkedList);
         AppMethodBeat.o(27326);
         return;
       }
-      az.a.ltq.a(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, str, new az.b.a()
+      az.a.okP.a(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, str, new az.b.a()
       {
-        public final void s(String paramAnonymousString, boolean paramAnonymousBoolean)
+        public final void getContactCallBack(String paramAnonymousString, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(27322);
-          bh.beI();
-          paramAnonymousString = com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+          bh.bCz();
+          paramAnonymousString = com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
           if (paramAnonymousString != null) {}
-          for (paramAnonymousString = Util.nullAs(paramAnonymousString.hDx, "");; paramAnonymousString = "")
+          for (paramAnonymousString = Util.nullAs(paramAnonymousString.kas, "");; paramAnonymousString = "")
           {
-            locala.bqY(paramAnonymousString);
+            locala.bqM(paramAnonymousString);
             locala.d(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, str, localLinkedList);
             AppMethodBeat.o(27322);
             return;
@@ -1507,10 +1490,10 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void fqA()
+    protected final void gBV()
     {
       AppMethodBeat.i(27329);
-      Assert.assertTrue(ab.Qy(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
+      Assert.assertTrue(au.bwc(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
@@ -1522,7 +1505,7 @@ public class NormalUserFooterPreference
       AppMethodBeat.o(27329);
     }
     
-    protected final void fqC() {}
+    protected final void gBX() {}
   }
   
   public static abstract interface e {}
@@ -1535,7 +1518,7 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void fqA()
+    protected final void gBV()
     {
       AppMethodBeat.i(27332);
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
@@ -1552,14 +1535,14 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.i(27330);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$QrcodeHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          com.tencent.mm.plugin.normsg.a.d.GxJ.ay(1, 1, 5);
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$QrcodeHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          com.tencent.mm.plugin.normsg.a.d.MtP.aW(1, 1, 5);
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("Contact_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
           paramAnonymousView.putExtra("Contact_Scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
-          paramAnonymousView.putExtra(f.d.VRW, NormalUserFooterPreference.a(NormalUserFooterPreference.this).hDx);
-          com.tencent.mm.plugin.profile.b.mIG.a(paramAnonymousView, NormalUserFooterPreference.this.mContext);
+          paramAnonymousView.putExtra(f.e.adwe, NormalUserFooterPreference.a(NormalUserFooterPreference.this).kas);
+          com.tencent.mm.plugin.profile.b.pFn.a(paramAnonymousView, NormalUserFooterPreference.this.mContext);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$QrcodeHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27330);
         }
@@ -1567,16 +1550,16 @@ public class NormalUserFooterPreference
       AppMethodBeat.o(27332);
     }
     
-    protected final void fqC()
+    protected final void gBX()
     {
       AppMethodBeat.i(27331);
-      if ((NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) && (com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)))
+      if ((NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) && (com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)))
       {
-        fqB();
+        gBW();
         AppMethodBeat.o(27331);
         return;
       }
-      an(false, true);
+      aG(false, true);
       AppMethodBeat.o(27331);
     }
   }
@@ -1589,15 +1572,15 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void fqA()
+    protected final void gBV()
     {
       boolean bool2 = true;
       AppMethodBeat.i(27333);
-      if (!z.PD(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+      if (!z.Iy(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
       {
         bool1 = true;
         Assert.assertTrue(bool1);
-        if (ab.QX(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
+        if (ab.IV(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {
           break label148;
         }
       }
@@ -1607,7 +1590,7 @@ public class NormalUserFooterPreference
         Assert.assertTrue(bool1);
         NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
-        NormalUserFooterPreference.f(NormalUserFooterPreference.this).setText(R.l.ezm);
+        NormalUserFooterPreference.f(NormalUserFooterPreference.this).setText(R.l.gCb);
         NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(0);
         NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
@@ -1619,7 +1602,7 @@ public class NormalUserFooterPreference
       }
     }
     
-    public final void fqC() {}
+    public final void gBX() {}
   }
   
   final class h
@@ -1630,17 +1613,17 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void fqA()
+    protected final void gBV()
     {
       AppMethodBeat.i(27334);
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(0);
-      if ((!NormalUserFooterPreference.this.fqx()) && (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(z.bcZ())) && (!ab.QX(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!ab.QO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))) {
+      if ((!NormalUserFooterPreference.this.gBS()) && (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(z.bAM())) && (!ab.IV(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!au.bws(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))) {
         NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(0);
       }
       for (;;)
       {
-        NormalUserFooterPreference.f(NormalUserFooterPreference.this).setText(R.l.ezi);
+        NormalUserFooterPreference.f(NormalUserFooterPreference.this).setText(R.l.gBX);
         NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
         NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(8);
@@ -1650,91 +1633,91 @@ public class NormalUserFooterPreference
       }
     }
     
-    protected final void fqC() {}
+    protected final void gBX() {}
   }
   
   class i
     extends NormalUserFooterPreference.c
   {
-    private ProgressDialog iXX;
+    private ProgressDialog lzP;
     
     public i()
     {
       super();
     }
     
-    private void axk()
+    private void aRK()
     {
       AppMethodBeat.i(27341);
       NormalUserFooterPreference localNormalUserFooterPreference = NormalUserFooterPreference.this;
-      bh.beI();
-      com.tencent.mm.storage.as localas2 = com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
-      if (localas2 != null)
+      bh.bCz();
+      au localau2 = com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+      if (localau2 != null)
       {
-        localas1 = localas2;
-        if ((int)localas2.jxt != 0) {}
+        localau1 = localau2;
+        if ((int)localau2.maN != 0) {}
       }
       else
       {
-        localas1 = NormalUserFooterPreference.a(NormalUserFooterPreference.this);
-        bh.beI();
-        if (com.tencent.mm.model.c.bbL().au(localas1)) {
+        localau1 = NormalUserFooterPreference.a(NormalUserFooterPreference.this);
+        bh.bCz();
+        if (com.tencent.mm.model.c.bzA().aA(localau1)) {
           break label131;
         }
-        Log.e("MicroMsg.NormalUserFooterPreference", "insert contact failed, username = " + localas1.field_username);
+        Log.e("MicroMsg.NormalUserFooterPreference", "insert contact failed, username = " + localau1.field_username);
       }
-      for (com.tencent.mm.storage.as localas1 = null;; localas1 = com.tencent.mm.model.c.bbL().RG(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+      for (au localau1 = null;; localau1 = com.tencent.mm.model.c.bzA().JE(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
       {
-        NormalUserFooterPreference.a(localNormalUserFooterPreference, localas1);
+        NormalUserFooterPreference.a(localNormalUserFooterPreference, localau1);
         if (NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) {
-          ab.H(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
+          ab.I(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
         }
         AppMethodBeat.o(27341);
         return;
         label131:
-        bh.beI();
+        bh.bCz();
       }
     }
     
     private void onStop()
     {
       AppMethodBeat.i(27339);
-      bh.aGY().b(30, this);
-      bh.aGY().b(667, this);
-      bh.aGY().b(853, this);
+      bh.aZW().b(30, this);
+      bh.aZW().b(667, this);
+      bh.aZW().b(853, this);
       AppMethodBeat.o(27339);
     }
     
-    protected void fqA()
+    protected void gBV()
     {
       AppMethodBeat.i(27338);
       onDetach();
       onStop();
-      bh.aGY().a(30, this);
-      bh.aGY().a(667, this);
-      bh.aGY().a(853, this);
-      super.fqA();
+      bh.aZW().a(30, this);
+      bh.aZW().a(667, this);
+      bh.aZW().a(853, this);
+      super.gBV();
       AppMethodBeat.o(27338);
     }
     
-    protected void fqH()
+    protected void gCb()
     {
       AppMethodBeat.i(27342);
       if (NormalUserFooterPreference.u(NormalUserFooterPreference.this) != null) {
         NormalUserFooterPreference.u(NormalUserFooterPreference.this).onDetach();
       }
       NormalUserFooterPreference.a(NormalUserFooterPreference.this, new NormalUserFooterPreference.c(NormalUserFooterPreference.this));
-      NormalUserFooterPreference.u(NormalUserFooterPreference.this).bbp();
+      NormalUserFooterPreference.u(NormalUserFooterPreference.this).bwk();
       AppMethodBeat.o(27342);
     }
     
     protected void onDetach()
     {
       AppMethodBeat.i(27340);
-      if (this.iXX != null)
+      if (this.lzP != null)
       {
-        this.iXX.dismiss();
-        this.iXX = null;
+        this.lzP.dismiss();
+        this.lzP = null;
       }
       if (NormalUserFooterPreference.r(NormalUserFooterPreference.this) != null) {
         NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
@@ -1761,21 +1744,21 @@ public class NormalUserFooterPreference
       AppMethodBeat.o(27340);
     }
     
-    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
     {
       int j = 0;
       AppMethodBeat.i(27343);
       Log.d("MicroMsg.NormalUserFooterPreference", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
-      if ((paramq.getType() != 30) && (paramq.getType() != 667) && (paramq.getType() != 853))
+      if ((paramp.getType() != 30) && (paramp.getType() != 667) && (paramp.getType() != 853))
       {
         AppMethodBeat.o(27343);
         return;
       }
       onStop();
-      if (this.iXX != null)
+      if (this.lzP != null)
       {
-        this.iXX.dismiss();
-        this.iXX = null;
+        this.lzP.dismiss();
+        this.lzP = null;
       }
       if (!Util.isTopActivity(NormalUserFooterPreference.this.mContext))
       {
@@ -1784,55 +1767,55 @@ public class NormalUserFooterPreference
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramq.getType() == 30)
+        if (paramp.getType() == 30)
         {
-          paramInt1 = ((com.tencent.mm.pluginsdk.model.t)paramq).fDn;
+          paramInt1 = ((v)paramp).hId;
           Log.d("MicroMsg.NormalUserFooterPreference", "VerifyBaseHandler onSceneEnd, opCode = ".concat(String.valueOf(paramInt1)));
           if ((paramInt1 == 1) || (paramInt1 == 3))
           {
-            paramString = ((com.tencent.mm.pluginsdk.model.t)paramq).QVu;
+            paramString = ((v)paramp).XRr;
             if ((paramString != null) && (paramString.contains(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)))
             {
               NormalUserFooterPreference.v(NormalUserFooterPreference.this);
-              axk();
-              fqH();
+              aRK();
+              gCb();
               paramString = paramString.iterator();
               while (paramString.hasNext()) {
-                com.tencent.mm.pluginsdk.ui.preference.b.cX((String)paramString.next(), NormalUserFooterPreference.l(NormalUserFooterPreference.this));
+                com.tencent.mm.pluginsdk.ui.preference.b.dz((String)paramString.next(), NormalUserFooterPreference.l(NormalUserFooterPreference.this));
               }
-              bh.getNotification().aqY();
+              bh.getNotification().aKV();
             }
           }
           AppMethodBeat.o(27343);
           return;
         }
-        if ((paramq.getType() == 667) || (paramq.getType() == 853))
+        if ((paramp.getType() == 667) || (paramp.getType() == 853))
         {
           NormalUserFooterPreference.v(NormalUserFooterPreference.this);
-          axk();
-          fqH();
-          com.tencent.mm.pluginsdk.ui.preference.b.cX(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, NormalUserFooterPreference.l(NormalUserFooterPreference.this));
-          bh.getNotification().aqY();
+          aRK();
+          gCb();
+          com.tencent.mm.pluginsdk.ui.preference.b.dz(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, NormalUserFooterPreference.l(NormalUserFooterPreference.this));
+          bh.getNotification().aKV();
           AppMethodBeat.o(27343);
           return;
         }
       }
       if ((paramInt1 == 4) && (paramInt2 == -302)) {
-        if (paramq.getType() != 30) {
+        if (paramp.getType() != 30) {
           break label885;
         }
       }
       label885:
-      for (paramInt1 = ((com.tencent.mm.pluginsdk.model.t)paramq).fDn;; paramInt1 = 0)
+      for (paramInt1 = ((v)paramp).hId;; paramInt1 = 0)
       {
         Log.w("MicroMsg.NormalUserFooterPreference", "VerifyBaseHandler onSceneEnd, verify relation out of date, opCode = %d", new Object[] { Integer.valueOf(paramInt1) });
-        if ((paramInt1 == 3) || (paramq.getType() == 853)) {
-          com.tencent.mm.ui.base.h.c(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_verify_outofdate_msg), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_tip), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_add), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+        if ((paramInt1 == 3) || (paramp.getType() == 853)) {
+          k.b(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_verify_outofdate_msg), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_tip), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_add), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.app_cancel), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(27337);
-              NormalUserFooterPreference.i.this.fqF();
+              NormalUserFooterPreference.i.this.gCa();
               AppMethodBeat.o(27337);
             }
           }, null);
@@ -1855,18 +1838,18 @@ public class NormalUserFooterPreference
         {
           AppMethodBeat.o(27343);
           return;
-          if (bh.aGY().bii())
+          if (bh.aZW().bFR())
           {
-            bh.aGY().getNetworkServerIp();
+            bh.aZW().getNetworkServerIp();
             new StringBuilder().append(paramInt2);
             i = 1;
           }
           else
           {
             i = j;
-            if (ag.dj(NormalUserFooterPreference.this.mContext))
+            if (ah.eb(NormalUserFooterPreference.this.mContext))
             {
-              n.jF(NormalUserFooterPreference.this.mContext);
+              com.tencent.mm.pluginsdk.ui.tools.m.lE(NormalUserFooterPreference.this.mContext);
               i = 1;
               continue;
               Toast.makeText(NormalUserFooterPreference.this.mContext, NormalUserFooterPreference.this.mContext.getString(R.l.fmt_iap_err, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt2) }), 3000).show();
@@ -1874,7 +1857,7 @@ public class NormalUserFooterPreference
               continue;
               if ((paramInt2 == -100) || (paramInt2 == -2023))
               {
-                com.tencent.mm.ui.base.h.a(NormalUserFooterPreference.this.mContext, bh.aGs(), com.tencent.mm.ci.a.ba(NormalUserFooterPreference.this.mContext, R.l.app_tip), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+                k.a(NormalUserFooterPreference.this.mContext, bh.aZu(), com.tencent.mm.cd.a.bt(NormalUserFooterPreference.this.mContext, R.l.app_tip), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
                 {
                   public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                   {
@@ -1882,7 +1865,7 @@ public class NormalUserFooterPreference
                     NormalUserFooterPreference.i.a(NormalUserFooterPreference.i.this);
                     paramAnonymousDialogInterface = new Intent();
                     paramAnonymousDialogInterface.putExtra("Intro_Switch", true).addFlags(67108864);
-                    com.tencent.mm.plugin.profile.b.mIG.n(paramAnonymousDialogInterface, NormalUserFooterPreference.this.mContext);
+                    com.tencent.mm.plugin.profile.b.pFn.n(paramAnonymousDialogInterface, NormalUserFooterPreference.this.mContext);
                     AppMethodBeat.o(27335);
                   }
                 }, new DialogInterface.OnCancelListener()
@@ -1893,7 +1876,7 @@ public class NormalUserFooterPreference
                     NormalUserFooterPreference.i.a(NormalUserFooterPreference.i.this);
                     paramAnonymousDialogInterface = new Intent();
                     paramAnonymousDialogInterface.putExtra("Intro_Switch", true).addFlags(67108864);
-                    com.tencent.mm.plugin.profile.b.mIG.n(paramAnonymousDialogInterface, NormalUserFooterPreference.this.mContext);
+                    com.tencent.mm.plugin.profile.b.pFn.n(paramAnonymousDialogInterface, NormalUserFooterPreference.this.mContext);
                     AppMethodBeat.o(27336);
                   }
                 });
@@ -1902,25 +1885,25 @@ public class NormalUserFooterPreference
               else
               {
                 if ((paramInt1 == 4) && (paramInt2 == -34)) {
-                  paramq = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.fmessage_request_too_offen);
+                  paramp = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.fmessage_request_too_offen);
                 }
                 for (;;)
                 {
-                  Toast.makeText(NormalUserFooterPreference.b(NormalUserFooterPreference.this), paramq, 1).show();
+                  Toast.makeText(NormalUserFooterPreference.b(NormalUserFooterPreference.this), paramp, 1).show();
                   i = j;
                   break;
                   if ((paramInt1 == 4) && (paramInt2 == -94))
                   {
-                    paramq = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.fmessage_user_not_support);
+                    paramp = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.fmessage_user_not_support);
                   }
                   else if (paramInt1 == 4)
                   {
-                    paramq = paramString;
+                    paramp = paramString;
                     if (!Util.isNullOrNil(paramString)) {}
                   }
                   else
                   {
-                    paramq = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.sendrequest_send_fail);
+                    paramp = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.sendrequest_send_fail);
                   }
                 }
               }
@@ -1941,10 +1924,10 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void fqA()
+    protected final void gBV()
     {
       AppMethodBeat.i(27348);
-      super.fqA();
+      super.gBV();
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(0);
       NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(8);
@@ -1955,7 +1938,7 @@ public class NormalUserFooterPreference
       NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.i(NormalUserFooterPreference.this).setVisibility(0);
       NormalUserFooterPreference.w(NormalUserFooterPreference.this).setVisibility(0);
-      if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayc())
+      if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSF())
       {
         NormalUserFooterPreference.x(NormalUserFooterPreference.this).setText(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_moveout_blacklist));
         NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(0);
@@ -1968,13 +1951,13 @@ public class NormalUserFooterPreference
           {
             AppMethodBeat.i(27344);
             Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$VertifyCardHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$VertifyCardHandler$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
             NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().removeExtra("Accept_NewFriend_FromOutside");
-            int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWD, 2);
-            int j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWG, 5000);
+            int i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpi, 2);
+            int j = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zpl, 5000);
             localObject = SayHiWithSnsPermissionUI.class;
-            if ((!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (i == 1)) {
+            if ((!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (i == 1)) {
               paramAnonymousView = SayHiWithSnsPermissionUI2.class;
             }
             for (;;)
@@ -1997,13 +1980,13 @@ public class NormalUserFooterPreference
               AppMethodBeat.o(27344);
               return;
               paramAnonymousView = (View)localObject;
-              if (!com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+              if (!au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
               {
                 paramAnonymousView = (View)localObject;
                 if (i == 2)
                 {
                   paramAnonymousView = (View)localObject;
-                  if (ab.bef() >= j) {
+                  if (ab.bBW() >= j) {
                     paramAnonymousView = SayHiWithSnsPermissionUI3.class;
                   }
                 }
@@ -2017,30 +2000,30 @@ public class NormalUserFooterPreference
           {
             AppMethodBeat.i(27346);
             Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$VertifyCardHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-            if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).ayc())
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$VertifyCardHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+            if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).aSF())
             {
-              ab.A(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
-              NormalUserFooterPreference.a(NormalUserFooterPreference.this).axn();
-              NormalUserFooterPreference.j.this.fqA();
+              ab.B(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
+              NormalUserFooterPreference.a(NormalUserFooterPreference.this).aRN();
+              NormalUserFooterPreference.j.this.gBV();
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/NormalUserFooterPreference$VertifyCardHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(27346);
               return;
             }
             paramAnonymousView = NormalUserFooterPreference.this.mContext;
             localObject = NormalUserFooterPreference.this.mContext;
-            if (com.tencent.mm.storage.as.bvK(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {}
-            for (int i = R.l.eyM;; i = R.l.eyL)
+            if (au.bwO(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) {}
+            for (int i = R.l.gBE;; i = R.l.gBD)
             {
-              com.tencent.mm.ui.base.h.a(paramAnonymousView, ((Context)localObject).getString(i), NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_movein_blacklist), new DialogInterface.OnClickListener()
+              k.a(paramAnonymousView, ((Context)localObject).getString(i), NormalUserFooterPreference.this.mContext.getString(R.l.contact_info_movein_blacklist), new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
                   AppMethodBeat.i(27345);
-                  ab.z(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
-                  NormalUserFooterPreference.a(NormalUserFooterPreference.this).axm();
-                  NormalUserFooterPreference.j.this.fqA();
+                  ab.A(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
+                  NormalUserFooterPreference.a(NormalUserFooterPreference.this).aRM();
+                  NormalUserFooterPreference.j.this.gBV();
                   AppMethodBeat.o(27345);
                 }
               }, null);
@@ -2054,23 +2037,23 @@ public class NormalUserFooterPreference
       }
     }
     
-    protected final void fqC()
+    protected final void gBX()
     {
       AppMethodBeat.i(27347);
-      if ((NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) && (com.tencent.mm.contact.d.rk(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)))
+      if ((NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) && (com.tencent.mm.contact.d.rs(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)))
       {
-        fqB();
+        gBW();
         AppMethodBeat.o(27347);
         return;
       }
-      an(false, true);
+      aG(false, true);
       AppMethodBeat.o(27347);
     }
     
-    protected final void fqH()
+    protected final void gCb()
     {
       AppMethodBeat.i(27350);
-      super.fqH();
+      super.gCb();
       AppMethodBeat.o(27350);
     }
     
@@ -2081,10 +2064,10 @@ public class NormalUserFooterPreference
       AppMethodBeat.o(27349);
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
     {
       AppMethodBeat.i(27351);
-      super.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
+      super.onSceneEnd(paramInt1, paramInt2, paramString, paramp);
       AppMethodBeat.o(27351);
     }
   }

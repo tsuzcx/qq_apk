@@ -6,11 +6,11 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.protocal.protobuf.fnm;
-import com.tencent.mm.protocal.protobuf.fnn;
-import com.tencent.mm.protocal.protobuf.fnr;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.eqb;
+import com.tencent.mm.protocal.protobuf.gkj;
+import com.tencent.mm.protocal.protobuf.gkk;
+import com.tencent.mm.protocal.protobuf.gkq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -19,55 +19,88 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandIDKeyBatchReportNew;", "Lcom/tencent/mm/plugin/appbrand/report/WxaCgiIDKeyBatchReportProtocol;", "()V", "BATCH_RECORD_COUNT_MAX", "", "BATCH_REPORT_INTERVAL_MS", "", "CGI_URL", "", "TAG", "batchReportBufferQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/WxaAppRecord;", "batchReportTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "timerGuard", "", "reportNow", "", "reason", "stopTimer", "startTimer", "", "appId", "runtimeEnterScene", "writeIDKeyData", "data", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandIDKeyBatchReportNew;", "Lcom/tencent/mm/plugin/appbrand/report/WxaCgiIDKeyBatchReportProtocol;", "()V", "BATCH_RECORD_COUNT_MAX", "", "BATCH_REPORT_INTERVAL_MS", "", "CGI_URL", "", "TAG", "batchReportBufferQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/WxaAppRecord;", "batchReportTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "timerGuard", "", "reportNow", "", "reason", "stopTimer", "startTimer", "", "appId", "runtimeEnterScene", "writeIDKeyData", "data", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements y
+  implements z
 {
-  private static final String qIJ = "/cgi-bin/mmbiz-bin/wxausrevent/wxaappidkeybatchreport";
-  private static final int qIK = 50;
-  private static final long qIL;
-  private static final LinkedList<fnr> qIM;
-  private static MTimerHandler qIN;
-  private static final Object qIO;
-  public static final d qIP;
+  public static final d tNo;
+  private static final String tNp;
+  private static final int tNq;
+  private static final long tNr;
+  private static final LinkedList<gkq> tNs;
+  private static MTimerHandler tNt;
+  private static final Object tNu;
   
   static
   {
-    AppMethodBeat.i(277626);
-    qIP = new d();
-    qIJ = "/cgi-bin/mmbiz-bin/wxausrevent/wxaappidkeybatchreport";
-    qIK = 50;
-    qIL = TimeUnit.SECONDS.toMillis(30L);
-    qIM = new LinkedList();
-    qIO = new Object();
-    AppMethodBeat.o(277626);
+    AppMethodBeat.i(321406);
+    tNo = new d();
+    tNp = "/cgi-bin/mmbiz-bin/wxausrevent/wxaappidkeybatchreport";
+    tNq = 50;
+    tNr = TimeUnit.SECONDS.toMillis(30L);
+    tNs = new LinkedList();
+    tNu = new Object();
+    AppMethodBeat.o(321406);
   }
   
-  public static boolean aD(String paramString, boolean paramBoolean)
+  private static final void a(String paramString, LinkedList paramLinkedList, gkk paramgkk)
   {
-    AppMethodBeat.i(277625);
-    p.k(paramString, "reason");
-    if (paramBoolean) {
-      synchronized (qIO)
+    AppMethodBeat.i(321399);
+    s.u(paramString, "$reason");
+    s.u(paramLinkedList, "$reportList");
+    Log.i("Luggage.AppBrandIDKeyBatchReportNew", "reportNow, reason=" + paramString + ", reportList.size=" + paramLinkedList.size() + ", cgi back ok");
+    paramLinkedList.clear();
+    AppMethodBeat.o(321399);
+  }
+  
+  private static final void a(String arg0, LinkedList paramLinkedList, Object paramObject)
+  {
+    AppMethodBeat.i(321403);
+    s.u(???, "$reason");
+    s.u(paramLinkedList, "$reportList");
+    StringBuilder localStringBuilder = new StringBuilder("reportNow, reason=").append(???).append(", reportList.size=").append(paramLinkedList.size()).append(", cgi error ");
+    if (paramObject == null) {
+      ??? = null;
+    }
+    for (;;)
+    {
+      Log.e("Luggage.AppBrandIDKeyBatchReportNew", ???);
+      synchronized (tNs)
       {
-        ??? = qIN;
+        tNs.addAll((Collection)paramLinkedList);
+        paramLinkedList.clear();
+        AppMethodBeat.o(321403);
+        return;
+        ??? = paramObject.toString();
+      }
+    }
+  }
+  
+  public static boolean aP(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(321395);
+    s.u(paramString, "reason");
+    if (paramBoolean) {
+      synchronized (tNu)
+      {
+        ??? = tNt;
         if (??? != null) {
           ((MTimerHandler)???).stopTimer();
         }
-        qIN = null;
-        ??? = x.aazN;
+        tNt = null;
+        ??? = ah.aiuX;
       }
     }
     for (;;)
     {
-      synchronized (qIM)
+      synchronized (tNs)
       {
-        ??? = new LinkedList((Collection)qIM);
-        qIM.clear();
+        ??? = new LinkedList((Collection)tNs);
+        tNs.clear();
         Log.i("Luggage.AppBrandIDKeyBatchReportNew", "reportNow, reason=" + paramString + ", reportList.size=" + ((LinkedList)???).size());
         if (((Collection)???).isEmpty())
         {
@@ -75,132 +108,96 @@ public final class d
           if (i == 0) {
             break;
           }
-          AppMethodBeat.o(277625);
+          AppMethodBeat.o(321395);
           return false;
           paramString = finally;
-          AppMethodBeat.o(277625);
+          AppMethodBeat.o(321395);
           throw paramString;
         }
       }
       int i = 0;
     }
-    ??? = new fnm();
-    dwx localdwx = new dwx();
-    localdwx.rWh = Build.MANUFACTURER;
-    localdwx.UcF = 2;
-    localdwx.jUb = com.tencent.mm.protocal.d.RAx;
-    localdwx.jUc = com.tencent.mm.protocal.d.RAw;
-    Object localObject3 = MMApplicationContext.getResources();
-    p.j(localObject3, "MMApplicationContext.getResources()");
-    localdwx.Jwa = ((Resources)localObject3).getDisplayMetrics().widthPixels;
-    localObject3 = MMApplicationContext.getResources();
-    p.j(localObject3, "MMApplicationContext.getResources()");
-    localdwx.UcG = ((Resources)localObject3).getDisplayMetrics().heightPixels;
-    localdwx.jUd = com.tencent.mm.protocal.d.RAz;
-    localdwx.jUe = com.tencent.mm.protocal.d.RAA;
-    localObject3 = MMApplicationContext.getResources();
-    p.j(localObject3, "MMApplicationContext.getResources()");
-    localObject3 = ((Resources)localObject3).getConfiguration().locale;
-    p.j(localObject3, "MMApplicationContext.get…es().configuration.locale");
-    localdwx.sST = ((Locale)localObject3).getLanguage();
-    ((fnm)???).ULT = localdwx;
-    ((fnm)???).ULS.addAll((Collection)???);
-    ((com.tencent.mm.plugin.appbrand.networking.c)e.K(com.tencent.mm.plugin.appbrand.networking.c.class)).a(qIJ, (a)???, fnn.class).a((com.tencent.mm.vending.g.d.b)new a(paramString, (LinkedList)???)).a((com.tencent.mm.vending.g.d.a)new b(paramString, (LinkedList)???));
-    AppMethodBeat.o(277625);
+    ??? = new gkj();
+    eqb localeqb = new eqb();
+    localeqb.vhx = Build.MANUFACTURER;
+    localeqb.abtZ = 2;
+    localeqb.mut = com.tencent.mm.protocal.d.Yxb;
+    localeqb.muu = com.tencent.mm.protocal.d.Yxa;
+    localeqb.PJy = MMApplicationContext.getResources().getDisplayMetrics().widthPixels;
+    localeqb.abua = MMApplicationContext.getResources().getDisplayMetrics().heightPixels;
+    localeqb.muv = com.tencent.mm.protocal.d.Yxd;
+    localeqb.muw = com.tencent.mm.protocal.d.Yxe;
+    localeqb.vYj = MMApplicationContext.getResources().getConfiguration().locale.getLanguage();
+    ((gkj)???).acgn = localeqb;
+    ((gkj)???).acgm.addAll((Collection)???);
+    ((com.tencent.mm.plugin.appbrand.networking.c)e.T(com.tencent.mm.plugin.appbrand.networking.c.class)).a(tNp, (a)???, gkk.class).a(new d..ExternalSyntheticLambda1(paramString, (LinkedList)???)).a(new d..ExternalSyntheticLambda0(paramString, (LinkedList)???));
+    AppMethodBeat.o(321395);
     return true;
   }
   
-  public final void a(fnr arg1)
+  public final void a(gkq arg1)
   {
-    AppMethodBeat.i(277624);
-    Log.i("Luggage.AppBrandIDKeyBatchReportNew", "writeIDKeyData type:" + ???.rWu);
-    synchronized (qIM)
+    int i = 1;
+    AppMethodBeat.i(321422);
+    Log.i("Luggage.AppBrandIDKeyBatchReportNew", s.X("writeIDKeyData type:", Integer.valueOf(???.vhJ)));
+    synchronized (tNs)
     {
-      qIM.addLast(???);
-      int i = qIM.size();
-      if (i >= qIK)
+      tNs.addLast(???);
+      int j = tNs.size();
+      if (j >= tNq)
       {
-        aD("writeIDKeyData", true);
-        AppMethodBeat.o(277624);
+        aP("writeIDKeyData", true);
+        AppMethodBeat.o(321422);
         return;
       }
     }
-    synchronized (qIO)
+    for (;;)
     {
-      if (qIN != null)
+      synchronized (tNu)
       {
-        ??? = qIN;
-        if ((??? == null) || (((MTimerHandler)???).stopped() != true)) {}
-      }
-      else
-      {
-        ??? = new MTimerHandler("Luggage.AppBrandIDKeyBatchReportNew", (MTimerHandler.CallBack)new c(), true);
-        long l = qIL;
-        ((MTimerHandler)???).startTimer(l, l);
-        qIN = (MTimerHandler)???;
-      }
-      ??? = x.aazN;
-      AppMethodBeat.o(277624);
-      return;
-    }
-  }
-  
-  public final void cD(String paramString, int paramInt) {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/WxaAppIDKeyBatchReportResponse;", "kotlin.jvm.PlatformType", "onTerminate"})
-  static final class a<T>
-    implements com.tencent.mm.vending.g.d.b<fnn>
-  {
-    a(String paramString, LinkedList paramLinkedList) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
-  static final class b<T>
-    implements com.tencent.mm.vending.g.d.a<Object>
-  {
-    b(String paramString, LinkedList paramLinkedList) {}
-    
-    public final void cm(Object arg1)
-    {
-      AppMethodBeat.i(278134);
-      Object localObject1 = new StringBuilder("reportNow, reason=").append(this.qIQ).append(", reportList.size=").append(this.qIR.size()).append(", cgi error ");
-      if (??? != null) {
-        ??? = ???.toString();
-      }
-      for (;;)
-      {
-        Log.e("Luggage.AppBrandIDKeyBatchReportNew", ???);
-        ??? = d.qIP;
-        synchronized (d.chv())
+        if (tNt != null)
         {
-          localObject1 = d.qIP;
-          d.chv().addAll((Collection)this.qIR);
-          this.qIR.clear();
-          AppMethodBeat.o(278134);
-          return;
-          ??? = null;
+          ??? = tNt;
+          if ((??? != null) && (((MTimerHandler)???).stopped() == true)) {
+            break label192;
+          }
         }
+        else
+        {
+          ??? = new MTimerHandler("Luggage.AppBrandIDKeyBatchReportNew", (MTimerHandler.CallBack)new a(), true);
+          long l = tNr;
+          ((MTimerHandler)???).startTimer(l, l);
+          tNt = (MTimerHandler)???;
+          ??? = ah.aiuX;
+          AppMethodBeat.o(321422);
+          return;
+        }
+        i = 0;
       }
+      label192:
+      if (i == 0) {}
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/report/AppBrandIDKeyBatchReportNew$startTimer$1$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-appbrand-integration_release"})
-  public static final class c
+  public final void dd(String paramString, int paramInt) {}
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/report/AppBrandIDKeyBatchReportNew$startTimer$1$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
     implements MTimerHandler.CallBack
   {
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(266968);
-      d locald = d.qIP;
-      boolean bool = d.aD("onTimerExpired", false);
-      AppMethodBeat.o(266968);
+      AppMethodBeat.i(321351);
+      d locald = d.tNo;
+      boolean bool = d.aP("onTimerExpired", false);
+      AppMethodBeat.o(321351);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.d
  * JD-Core Version:    0.7.0.1
  */

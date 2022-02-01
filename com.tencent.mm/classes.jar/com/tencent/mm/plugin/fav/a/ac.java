@@ -1,31 +1,30 @@
 package com.tencent.mm.plugin.fav.a;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.pluginsdk.ui.applet.y.a;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract interface ac
-  extends a
+  extends IStorage
 {
-  public abstract int a(k.b paramb, WXMediaMessage paramWXMediaMessage, String paramString);
+  public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(j.info, "FavSearchInfo") };
   
-  public abstract int a(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3);
+  public abstract boolean a(j paramj);
   
-  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent, int paramInt3, int paramInt4);
+  public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract void a(Context paramContext, String paramString, g paramg, int paramInt, boolean paramBoolean, y.a parama);
+  public abstract boolean auk(String paramString);
   
-  public abstract int aAe(String paramString);
+  public abstract ArrayList<Long> b(List<String> paramList1, List<String> paramList2, List<Integer> paramList);
   
-  public abstract void c(Activity paramActivity, String paramString1, String paramString2);
+  public abstract void mM(long paramLong);
+  
+  public abstract j mN(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.ac
  * JD-Core Version:    0.7.0.1
  */

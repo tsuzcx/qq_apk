@@ -1,81 +1,77 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.storage.v;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderFullThumbImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderImageLoadData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "uniqueValue", "getMatrix", "Landroid/graphics/Matrix;", "width", "", "height", "getThumbUrl", "getThumbUrlToken", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderLivePag;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "id", "name", "isPreviewPag", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class o
-  extends r
+  implements r
 {
-  private final String ztf;
+  private final boolean ExH;
+  private final String id;
+  private final String name;
+  private final String url;
   
-  private o(csg paramcsg, u paramu, String paramString)
+  public o(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super(paramcsg, paramu, paramString, null, 8);
-    AppMethodBeat.i(290197);
-    this.ztf = ("finder_image_" + paramu.detail + '_' + MD5Util.getMD5String(Util.nullAs(aJi(), "")));
-    AppMethodBeat.o(290197);
+    AppMethodBeat.i(331761);
+    this.url = paramString1;
+    this.id = paramString2;
+    this.name = paramString3;
+    this.ExH = paramBoolean;
+    AppMethodBeat.o(331761);
   }
   
-  public final Matrix F(float paramFloat1, float paramFloat2)
+  public final String aUt()
   {
-    return null;
+    AppMethodBeat.i(331804);
+    String str = this.id + '_' + eCd();
+    AppMethodBeat.o(331804);
+    return str;
   }
   
-  public final String aBv()
+  public final v eCd()
   {
-    return this.ztf;
-  }
-  
-  public final String aJi()
-  {
-    AppMethodBeat.i(290194);
-    Object localObject = (CharSequence)dJd().TzX;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      localObject = dJd().TzX;
-      if (localObject == null) {
-        p.iCn();
-      }
-      p.j(localObject, "mediaObj.fullThumbUrl!!");
-      AppMethodBeat.o(290194);
-      return localObject;
+    if (this.ExH) {
+      return v.FLD;
     }
-    localObject = super.aJi();
-    AppMethodBeat.o(290194);
-    return localObject;
+    return v.FLC;
   }
   
-  public final String dJa()
+  public final String eCe()
   {
-    AppMethodBeat.i(290195);
-    Object localObject = (CharSequence)dJd().TzY;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      localObject = dJd().TzY;
-      if (localObject == null) {
-        p.iCn();
-      }
-      p.j(localObject, "mediaObj.fullThumbUrlToken!!");
-      AppMethodBeat.o(290195);
-      return localObject;
-    }
-    localObject = super.dJa();
-    AppMethodBeat.o(290195);
-    return localObject;
+    return "";
+  }
+  
+  public final String eCf()
+  {
+    return "";
+  }
+  
+  public final String eCg()
+  {
+    return "";
+  }
+  
+  public final String eCi()
+  {
+    return this.url;
+  }
+  
+  public final String getPath()
+  {
+    return "";
+  }
+  
+  public final String getUrl()
+  {
+    return this.url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.modelmulti.o.c;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.modelmulti.t.c;
+import com.tencent.mm.storage.cc;
 
 public abstract interface aa
   extends a
 {
-  public abstract void a(o.c paramc);
+  public abstract void a(t.c paramc);
   
   public abstract void a(j paramj);
   
   public abstract void a(q paramq);
   
-  public abstract String af(ca paramca);
+  public abstract String ak(cc paramcc);
   
-  public abstract q bnj();
+  public abstract q bKU();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.aa
  * JD-Core Version:    0.7.0.1
  */

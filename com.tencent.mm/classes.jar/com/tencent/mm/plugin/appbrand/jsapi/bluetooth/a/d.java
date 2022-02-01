@@ -1,10 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 
-import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.h;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,57 +17,56 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@TargetApi(18)
 public final class d
   extends com.tencent.mm.plugin.appbrand.jsapi.c
 {
   private static final int CTRL_INDEX = 183;
   private static final String NAME = "getBLEDeviceCharacteristics";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144498);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(151);
+    h.rG(151);
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "getBLEDeviceCharacteristics data is null");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10013));
-      parame.j(paramInt, m("fail:invalid data", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(153, 154);
+      paramf.callback(paramInt, a("fail:invalid data", a.e.rVz, paramJSONObject));
+      h.fr(153, 154);
       AppMethodBeat.o(144498);
       return;
     }
-    Log.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "appId:%s getBLEDeviceCharacteristics data %s", new Object[] { parame.getAppId(), paramJSONObject.toString() });
-    Object localObject = a.ahq(parame.getAppId());
+    Log.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "appId:%s getBLEDeviceCharacteristics data %s", new Object[] { paramf.getAppId(), paramJSONObject.toString() });
+    Object localObject = a.aan(paramf.getAppId());
     if (localObject == null)
     {
       Log.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
-      parame.j(paramInt, m("fail:not init", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(153, 156);
+      paramf.callback(paramInt, a(a.c.rUE, paramJSONObject));
+      h.fr(153, 156);
       AppMethodBeat.o(144498);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bRm())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.cru())
     {
       Log.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      parame.j(paramInt, m("fail:not available", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(153, 158);
+      paramf.callback(paramInt, a("fail:not available", a.c.rUF, paramJSONObject));
+      h.fr(153, 158);
       AppMethodBeat.o(144498);
       return;
     }
-    localObject = ((b)localObject).dw(paramJSONObject.optString("deviceId"), paramJSONObject.optString("serviceId"));
+    localObject = ((b)localObject).dP(paramJSONObject.optString("deviceId"), paramJSONObject.optString("serviceId"));
     paramJSONObject = new HashMap();
     if ((localObject == null) || (((List)localObject).size() <= 0))
     {
       Log.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "not found characteristic");
       paramJSONObject.put("errCode", Integer.valueOf(10005));
-      parame.j(paramInt, m("fail:no characteristic", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ex(153, 159);
+      paramf.callback(paramInt, a("fail:no characteristic", a.c.rVh, paramJSONObject));
+      h.fr(153, 159);
       AppMethodBeat.o(144498);
       return;
     }
@@ -78,43 +80,45 @@ public final class d
     {
       try
       {
-        if (localc.jsonObject == null)
+        if (localc.rNs == null)
         {
-          localc.jsonObject = new JSONObject();
-          localc.jsonObject.put("uuid", localc.uuid);
+          localc.rNs = new JSONObject();
+          localc.rNs.put("uuid", localc.uuid);
+          localc.rNs.put("handle", localc.rNr);
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("read", localc.oJz);
-          if (localc.oJA) {
-            break label658;
+          localJSONObject.put("read", localc.rNn);
+          if (localc.rNo) {
+            break label685;
           }
-          if (!localc.oJB) {
-            break label536;
+          if (!localc.rNp) {
+            break label588;
           }
-          break label658;
+          break label685;
           localJSONObject.put("write", bool);
-          localJSONObject.put("notify", localc.ltl);
-          localJSONObject.put("indicate", localc.oJC);
-          localc.jsonObject.put("properties", localJSONObject);
+          localJSONObject.put("notify", localc.okL);
+          localJSONObject.put("indicate", localc.rNq);
+          localJSONObject.put("writeNoResponse", localc.rNp);
+          localJSONObject.put("writeDefault", localc.rNo);
+          localc.rNs.put("properties", localJSONObject);
         }
-        paramJSONObject.put(localc.jsonObject);
+        paramJSONObject.put(localc.rNs);
       }
       catch (JSONException localJSONException)
       {
         Log.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "JSONException %s", new Object[] { localJSONException.getMessage() });
       }
       break;
-      label536:
+      label588:
       boolean bool = false;
       continue;
       localObject = new JSONObject();
       try
       {
-        ((JSONObject)localObject).put("errMsg", getName() + ":ok");
         ((JSONObject)localObject).put("characteristics", paramJSONObject);
         ((JSONObject)localObject).put("errCode", 0);
         Log.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "retJson %s", new Object[] { ((JSONObject)localObject).toString() });
-        parame.j(paramInt, ((JSONObject)localObject).toString());
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.rE(152);
+        paramf.callback(paramInt, a(null, a.e.rVt, (JSONObject)localObject));
+        h.rG(152);
         AppMethodBeat.o(144498);
         return;
       }
@@ -125,14 +129,14 @@ public final class d
           Log.printErrStackTrace("MicroMsg.JsApiGetBLEDeviceCharacteristics", paramJSONObject, "", new Object[0]);
         }
       }
-      label658:
+      label685:
       bool = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.d
  * JD-Core Version:    0.7.0.1
  */

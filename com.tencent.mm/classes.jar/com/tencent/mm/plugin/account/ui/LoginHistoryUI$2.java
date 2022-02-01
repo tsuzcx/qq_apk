@@ -1,36 +1,27 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.widget.a.f;
 
 final class LoginHistoryUI$2
-  implements q.g
+  implements View.OnClickListener
 {
-  LoginHistoryUI$2(LoginHistoryUI paramLoginHistoryUI) {}
+  LoginHistoryUI$2(LoginHistoryUI paramLoginHistoryUI, f paramf) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(128089);
-    switch (paramMenuItem.getItemId())
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(128089);
-      return;
-      LoginHistoryUI.d(this.nek);
-      AppMethodBeat.o(128089);
-      return;
-      LoginHistoryUI.e(this.nek);
-      AppMethodBeat.o(128089);
-      return;
-      LoginHistoryUI.f(this.nek);
-      AppMethodBeat.o(128089);
-      return;
-      LoginHistoryUI.W(this.nek, this.nek.getString(r.j.wechat_help_center_url) + LocaleUtil.getApplicationLanguage());
-    }
+    AppMethodBeat.i(304935);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/ui/LoginHistoryUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.qbb.hideVKB();
+    this.pZC.dDn();
+    a.a(this, "com/tencent/mm/plugin/account/ui/LoginHistoryUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(304935);
   }
 }
 

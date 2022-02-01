@@ -5,11 +5,11 @@ import com.tencent.wecall.talkroom.model.f;
 
 public final class b
 {
-  private static int Ziv = 2;
-  private static boolean Ziw = false;
+  private static int ahgW = 2;
+  private static boolean ahgX = false;
   public static int level = 0;
   
-  private static String P(Object[] paramArrayOfObject)
+  private static String T(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
       return "";
@@ -39,57 +39,57 @@ public final class b
     return localStringBuffer.toString();
   }
   
-  private static void ae(int paramInt, String paramString1, String paramString2)
+  private static void ah(int paramInt, String paramString1, String paramString2)
   {
-    e locale = f.ivc();
+    e locale = f.kex();
     if (locale != null) {
-      locale.K(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
+      locale.O(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
     }
   }
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    if ((!Ziw) || (Ziv > 1)) {}
+    if ((!ahgX) || (ahgW > 1)) {}
     while (paramString == null) {
       return;
     }
-    ae(1, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
+    ah(1, paramString, " ".concat(String.valueOf(T(paramVarArgs))));
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    if ((!Ziw) || (Ziv > 4)) {
+    if ((!ahgX) || (ahgW > 4)) {
       return;
     }
-    ae(4, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
+    ah(4, paramString, " ".concat(String.valueOf(T(paramVarArgs))));
   }
   
   public static void i(String paramString, Object... paramVarArgs)
   {
-    if ((!Ziw) || (Ziv > 2)) {
+    if ((!ahgX) || (ahgW > 2)) {
       return;
     }
-    ae(2, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
+    ah(2, paramString, " ".concat(String.valueOf(T(paramVarArgs))));
   }
   
-  public static void ikY()
+  public static void jRp()
   {
-    Ziv = 0;
-    Ziw = true;
+    ahgW = 0;
+    ahgX = true;
   }
   
   public static void w(String paramString, Object... paramVarArgs)
   {
-    if ((!Ziw) || (Ziv > 3)) {}
+    if ((!ahgX) || (ahgW > 3)) {}
     while (paramString == null) {
       return;
     }
-    ae(3, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
+    ah(3, paramString, " ".concat(String.valueOf(T(paramVarArgs))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.pb.common.c.b
  * JD-Core Version:    0.7.0.1
  */

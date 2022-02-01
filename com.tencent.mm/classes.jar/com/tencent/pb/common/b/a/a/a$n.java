@@ -1,69 +1,128 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
-import com.google.b.a.g;
+import com.google.d.a.b;
+import com.google.d.a.e;
+import com.google.d.a.g;
 import java.util.Arrays;
 
 public final class a$n
   extends e
 {
-  public int NOc = 0;
-  public long NOd = 0L;
-  public int Zfn = 0;
-  public byte[] Zfo = g.ccX;
-  public a.be[] Zfp = a.be.ikX();
-  public a.at[] Zfq = a.at.ikS();
-  public int Zfr = 0;
-  public int Zfs = 0;
+  public int UAZ = 0;
+  public long UBa = 0L;
+  public int ahdQ = 0;
+  public byte[] ahdR = g.dXB;
+  public a.be[] ahdS = a.be.jRo();
+  public a.at[] ahdT = a.at.jRj();
+  public int ahdU = 0;
+  public int ahdV = 0;
   public String groupId = "";
-  public int mfT = 0;
-  public int tQm = -1;
+  public int oYP = 0;
+  public int wTC = -1;
   
   public a$n()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public final int JG()
+  public final void a(b paramb)
+  {
+    int j = 0;
+    if (!this.groupId.equals("")) {
+      paramb.g(1, this.groupId);
+    }
+    if (this.UAZ != 0) {
+      paramb.cF(2, this.UAZ);
+    }
+    if (this.UBa != 0L) {
+      paramb.t(3, this.UBa);
+    }
+    if (this.wTC != -1) {
+      paramb.cF(4, this.wTC);
+    }
+    if (this.ahdQ != 0) {
+      paramb.cF(5, this.ahdQ);
+    }
+    if (!Arrays.equals(this.ahdR, g.dXB)) {
+      paramb.b(6, this.ahdR);
+    }
+    int i;
+    Object localObject;
+    if ((this.ahdS != null) && (this.ahdS.length > 0))
+    {
+      i = 0;
+      while (i < this.ahdS.length)
+      {
+        localObject = this.ahdS[i];
+        if (localObject != null) {
+          paramb.a(7, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if ((this.ahdT != null) && (this.ahdT.length > 0))
+    {
+      i = j;
+      while (i < this.ahdT.length)
+      {
+        localObject = this.ahdT[i];
+        if (localObject != null) {
+          paramb.a(8, (e)localObject);
+        }
+        i += 1;
+      }
+    }
+    if (this.ahdU != 0) {
+      paramb.cF(9, this.ahdU);
+    }
+    if (this.ahdV != 0) {
+      paramb.cF(10, this.ahdV);
+    }
+    if (this.oYP != 0) {
+      paramb.cF(11, this.oYP);
+    }
+    super.a(paramb);
+  }
+  
+  public final int akc()
   {
     int m = 0;
-    int j = super.JG();
+    int j = super.akc();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.g(1, this.groupId);
+      i = j + b.h(1, this.groupId);
     }
     j = i;
-    if (this.NOc != 0) {
-      j = i + b.bM(2, this.NOc);
+    if (this.UAZ != 0) {
+      j = i + b.cJ(2, this.UAZ);
     }
     i = j;
-    if (this.NOd != 0L) {
-      i = j + b.p(3, this.NOd);
+    if (this.UBa != 0L) {
+      i = j + b.q(3, this.UBa);
     }
     j = i;
-    if (this.tQm != -1) {
-      j = i + b.bM(4, this.tQm);
+    if (this.wTC != -1) {
+      j = i + b.cJ(4, this.wTC);
     }
     int k = j;
-    if (this.Zfn != 0) {
-      k = j + b.bM(5, this.Zfn);
+    if (this.ahdQ != 0) {
+      k = j + b.cJ(5, this.ahdQ);
     }
     i = k;
-    if (!Arrays.equals(this.Zfo, g.ccX)) {
-      i = k + b.c(6, this.Zfo);
+    if (!Arrays.equals(this.ahdR, g.dXB)) {
+      i = k + b.c(6, this.ahdR);
     }
     j = i;
     Object localObject;
-    if (this.Zfp != null)
+    if (this.ahdS != null)
     {
       j = i;
-      if (this.Zfp.length > 0)
+      if (this.ahdS.length > 0)
       {
         j = 0;
-        while (j < this.Zfp.length)
+        while (j < this.ahdS.length)
         {
-          localObject = this.Zfp[j];
+          localObject = this.ahdS[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(7, (e)localObject);
@@ -75,19 +134,19 @@ public final class a$n
       }
     }
     i = j;
-    if (this.Zfq != null)
+    if (this.ahdT != null)
     {
       i = j;
-      if (this.Zfq.length > 0)
+      if (this.ahdT.length > 0)
       {
         k = m;
         for (;;)
         {
           i = j;
-          if (k >= this.Zfq.length) {
+          if (k >= this.ahdT.length) {
             break;
           }
-          localObject = this.Zfq[k];
+          localObject = this.ahdT[k];
           i = j;
           if (localObject != null) {
             i = j + b.b(8, (e)localObject);
@@ -98,82 +157,23 @@ public final class a$n
       }
     }
     j = i;
-    if (this.Zfr != 0) {
-      j = i + b.bM(9, this.Zfr);
+    if (this.ahdU != 0) {
+      j = i + b.cJ(9, this.ahdU);
     }
     i = j;
-    if (this.Zfs != 0) {
-      i = j + b.bM(10, this.Zfs);
+    if (this.ahdV != 0) {
+      i = j + b.cJ(10, this.ahdV);
     }
     j = i;
-    if (this.mfT != 0) {
-      j = i + b.bM(11, this.mfT);
+    if (this.oYP != 0) {
+      j = i + b.cJ(11, this.oYP);
     }
     return j;
-  }
-  
-  public final void a(b paramb)
-  {
-    int j = 0;
-    if (!this.groupId.equals("")) {
-      paramb.f(1, this.groupId);
-    }
-    if (this.NOc != 0) {
-      paramb.bJ(2, this.NOc);
-    }
-    if (this.NOd != 0L) {
-      paramb.r(3, this.NOd);
-    }
-    if (this.tQm != -1) {
-      paramb.bJ(4, this.tQm);
-    }
-    if (this.Zfn != 0) {
-      paramb.bJ(5, this.Zfn);
-    }
-    if (!Arrays.equals(this.Zfo, g.ccX)) {
-      paramb.b(6, this.Zfo);
-    }
-    int i;
-    Object localObject;
-    if ((this.Zfp != null) && (this.Zfp.length > 0))
-    {
-      i = 0;
-      while (i < this.Zfp.length)
-      {
-        localObject = this.Zfp[i];
-        if (localObject != null) {
-          paramb.a(7, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if ((this.Zfq != null) && (this.Zfq.length > 0))
-    {
-      i = j;
-      while (i < this.Zfq.length)
-      {
-        localObject = this.Zfq[i];
-        if (localObject != null) {
-          paramb.a(8, (e)localObject);
-        }
-        i += 1;
-      }
-    }
-    if (this.Zfr != 0) {
-      paramb.bJ(9, this.Zfr);
-    }
-    if (this.Zfs != 0) {
-      paramb.bJ(10, this.Zfs);
-    }
-    if (this.mfT != 0) {
-      paramb.bJ(11, this.mfT);
-    }
-    super.a(paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.n
  * JD-Core Version:    0.7.0.1
  */

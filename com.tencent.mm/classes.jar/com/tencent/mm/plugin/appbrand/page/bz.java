@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.Context;
-import android.view.View;
-
 public abstract interface bz
 {
-  public abstract <WIDGET extends View> WIDGET d(Context paramContext, Class<WIDGET> paramClass);
+  public abstract void a(a parama);
+  
+  public abstract void b(a parama);
+  
+  public static abstract interface a
+  {
+    public abstract void fM(int paramInt1, int paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bz
  * JD-Core Version:    0.7.0.1
  */

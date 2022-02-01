@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.a;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.b;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.q;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.service.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(174844);
-    com.tencent.mm.plugin.appbrand.permission.c.amg("exitVoIPChat");
+    com.tencent.mm.plugin.appbrand.permission.c.afo("exitVoIPChat");
     AppMethodBeat.o(174844);
   }
   
@@ -25,10 +25,10 @@ public final class a
   {
     AppMethodBeat.i(46670);
     Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceExitVoIPChat", "hy: invoke JsApiCloudVoiceExitVoIPChat");
-    ib(false);
+    ja(false);
     paramJSONObject = paramc.getAppId();
     final long l = Util.currentTicks();
-    q.tRM.a(new b() {}, q.a.tTx);
+    q.wVc.a(new b() {}, q.a.wWO);
     AppMethodBeat.o(46670);
   }
 }

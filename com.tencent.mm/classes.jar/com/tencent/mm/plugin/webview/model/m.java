@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bps;
-import com.tencent.mm.protocal.protobuf.bpt;
+import com.tencent.mm.protocal.protobuf.cej;
+import com.tencent.mm.protocal.protobuf.cek;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends q
+  extends p
   implements com.tencent.mm.network.m
 {
-  private i callback;
-  public final d jTk;
+  private h callback;
+  public final c mtC;
   
   public m(String paramString1, String paramString2)
   {
     AppMethodBeat.i(78876);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bps();
-    ((d.a)localObject).lBV = new bpt();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
-    ((d.a)localObject).funcId = 1097;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.jTk = ((d.a)localObject).bgN();
-    localObject = (bps)d.b.b(this.jTk.lBR);
-    ((bps)localObject).appid = paramString1;
-    ((bps)localObject).signature = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cej();
+    ((c.a)localObject).otF = new cek();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
+    ((c.a)localObject).funcId = 1097;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (cej)c.b.b(this.mtC.otB);
+    ((cej)localObject).appid = paramString1;
+    ((cej)localObject).signature = paramString2;
     AppMethodBeat.o(78876);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(78877);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(78877);
     return i;
   }

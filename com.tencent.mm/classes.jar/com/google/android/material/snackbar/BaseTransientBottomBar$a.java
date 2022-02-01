@@ -7,16 +7,16 @@ public final class BaseTransientBottomBar$a
 {
   public BaseTransientBottomBar$a(SwipeDismissBehavior<?> paramSwipeDismissBehavior)
   {
-    AppMethodBeat.i(239202);
-    paramSwipeDismissBehavior.bwg = SwipeDismissBehavior.P(0.1F);
-    paramSwipeDismissBehavior.bwh = SwipeDismissBehavior.P(0.6F);
-    paramSwipeDismissBehavior.bwe = 0;
-    AppMethodBeat.o(239202);
+    AppMethodBeat.i(209764);
+    paramSwipeDismissBehavior.dpj = SwipeDismissBehavior.aQ(0.1F);
+    paramSwipeDismissBehavior.dpk = SwipeDismissBehavior.aQ(0.6F);
+    paramSwipeDismissBehavior.dph = 0;
+    AppMethodBeat.o(209764);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.a
  * JD-Core Version:    0.7.0.1
  */

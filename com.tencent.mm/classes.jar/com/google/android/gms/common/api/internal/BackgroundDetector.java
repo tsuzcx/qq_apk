@@ -1,6 +1,5 @@
 package com.google.android.gms.common.api.internal;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -9,23 +8,18 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.concurrent.GuardedBy;
 
-@KeepForSdk
 public final class BackgroundDetector
   implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2
 {
   private static final BackgroundDetector zzem;
   private final AtomicBoolean zzen;
   private final AtomicBoolean zzeo;
-  @GuardedBy("sInstance")
   private final ArrayList<BackgroundStateChangeListener> zzep;
-  @GuardedBy("sInstance")
   private boolean zzeq;
   
   static
@@ -35,7 +29,6 @@ public final class BackgroundDetector
     AppMethodBeat.o(4491);
   }
   
-  @KeepForSdk
   private BackgroundDetector()
   {
     AppMethodBeat.i(4482);
@@ -46,13 +39,11 @@ public final class BackgroundDetector
     AppMethodBeat.o(4482);
   }
   
-  @KeepForSdk
   public static BackgroundDetector getInstance()
   {
     return zzem;
   }
   
-  @KeepForSdk
   public static void initialize(Application paramApplication)
   {
     AppMethodBeat.i(4483);
@@ -87,7 +78,6 @@ public final class BackgroundDetector
     AppMethodBeat.o(4490);
   }
   
-  @KeepForSdk
   public final void addListener(BackgroundStateChangeListener paramBackgroundStateChangeListener)
   {
     AppMethodBeat.i(4486);
@@ -99,7 +89,6 @@ public final class BackgroundDetector
     }
   }
   
-  @KeepForSdk
   public final boolean isInBackground()
   {
     AppMethodBeat.i(4485);
@@ -155,8 +144,6 @@ public final class BackgroundDetector
     AppMethodBeat.o(4489);
   }
   
-  @TargetApi(16)
-  @KeepForSdk
   public final boolean readCurrentStateIfPossible(boolean paramBoolean)
   {
     AppMethodBeat.i(4484);
@@ -179,16 +166,14 @@ public final class BackgroundDetector
     return paramBoolean;
   }
   
-  @KeepForSdk
   public static abstract interface BackgroundStateChangeListener
   {
-    @KeepForSdk
     public abstract void onBackgroundStateChanged(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.BackgroundDetector
  * JD-Core Version:    0.7.0.1
  */

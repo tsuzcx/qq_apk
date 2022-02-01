@@ -1,122 +1,117 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cot
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int TwF;
-  public String jUb;
-  public String jUc;
-  public String jUd;
-  public String jUe;
-  public String jUf;
+  public cos aavH;
+  public cor aavI;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(116336);
+    AppMethodBeat.i(259550);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jUb != null) {
-        paramVarArgs.f(1, this.jUb);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aavH != null)
+      {
+        paramVarArgs.qD(1, this.aavH.computeSize());
+        this.aavH.writeFields(paramVarArgs);
       }
-      if (this.jUc != null) {
-        paramVarArgs.f(2, this.jUc);
+      paramVarArgs.bS(2, this.scene);
+      if (this.aavI != null)
+      {
+        paramVarArgs.qD(3, this.aavI.computeSize());
+        this.aavI.writeFields(paramVarArgs);
       }
-      if (this.jUd != null) {
-        paramVarArgs.f(3, this.jUd);
-      }
-      if (this.jUe != null) {
-        paramVarArgs.f(4, this.jUe);
-      }
-      if (this.jUf != null) {
-        paramVarArgs.f(5, this.jUf);
-      }
-      paramVarArgs.aY(6, this.TwF);
-      AppMethodBeat.o(116336);
+      AppMethodBeat.o(259550);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jUb == null) {
-        break label502;
+      if (this.aavH == null) {
+        break label462;
       }
     }
-    label502:
-    for (int i = g.a.a.b.b.a.g(1, this.jUb) + 0;; i = 0)
+    label462:
+    for (paramInt = i.a.a.a.qC(1, this.aavH.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.scene);
       paramInt = i;
-      if (this.jUc != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.jUc);
+      if (this.aavI != null) {
+        paramInt = i + i.a.a.a.qC(3, this.aavI.computeSize());
       }
-      i = paramInt;
-      if (this.jUd != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.jUd);
-      }
-      paramInt = i;
-      if (this.jUe != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.jUe);
-      }
-      i = paramInt;
-      if (this.jUf != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.jUf);
-      }
-      paramInt = g.a.a.b.b.a.bM(6, this.TwF);
-      AppMethodBeat.o(116336);
-      return i + paramInt;
+      AppMethodBeat.o(259550);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(116336);
+        AppMethodBeat.o(259550);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         cot localcot = (cot)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(116336);
+          AppMethodBeat.o(259550);
           return -1;
         case 1: 
-          localcot.jUb = locala.abFh.readString();
-          AppMethodBeat.o(116336);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new cos();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((cos)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcot.aavH = ((cos)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(259550);
           return 0;
         case 2: 
-          localcot.jUc = locala.abFh.readString();
-          AppMethodBeat.o(116336);
-          return 0;
-        case 3: 
-          localcot.jUd = locala.abFh.readString();
-          AppMethodBeat.o(116336);
-          return 0;
-        case 4: 
-          localcot.jUe = locala.abFh.readString();
-          AppMethodBeat.o(116336);
-          return 0;
-        case 5: 
-          localcot.jUf = locala.abFh.readString();
-          AppMethodBeat.o(116336);
+          localcot.scene = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(259550);
           return 0;
         }
-        localcot.TwF = locala.abFh.AK();
-        AppMethodBeat.o(116336);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new cor();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((cor)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcot.aavI = ((cor)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(259550);
         return 0;
       }
-      AppMethodBeat.o(116336);
+      AppMethodBeat.o(259550);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cot
  * JD-Core Version:    0.7.0.1
  */

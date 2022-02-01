@@ -1,27 +1,126 @@
 package com.tencent.mm.ui.chatting;
 
-import android.os.Bundle;
-import com.tencent.mm.ui.chatting.view.MMChattingListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.modelimage.h;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.pluginsdk.model.app.as;
+import com.tencent.mm.pluginsdk.model.app.c;
+import com.tencent.mm.pluginsdk.model.app.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.vfs.y;
 
-public abstract interface af
+public final class af
 {
-  public abstract void avo(int paramInt);
+  public static String c(cc paramcc, k.b paramb)
+  {
+    AppMethodBeat.i(34824);
+    String str2 = "";
+    String str1 = str2;
+    if (paramb != null)
+    {
+      str1 = str2;
+      if (!Util.isNullOrNil(paramb.hzM))
+      {
+        paramb = as.cWJ().bpI(paramb.hzM);
+        str1 = str2;
+        if (paramb != null)
+        {
+          str1 = str2;
+          if (paramb.efT())
+          {
+            str1 = str2;
+            if (y.ZC(paramb.field_fileFullPath)) {
+              str1 = paramb.field_fileFullPath;
+            }
+          }
+        }
+      }
+    }
+    if (!Util.isNullOrNil(str1))
+    {
+      Log.d("MicroMsg.HistoryExportUtil", "get hd appmsg image path ok, %s", new Object[] { str1 });
+      AppMethodBeat.o(34824);
+      return str1;
+    }
+    if (paramcc != null) {
+      str1 = r.bKa().X(paramcc.field_imgPath, true);
+    }
+    Log.d("MicroMsg.HistoryExportUtil", "try get thumb appmsg image path finish, %s", new Object[] { str1 });
+    AppMethodBeat.o(34824);
+    return str1;
+  }
   
-  public abstract void bp(Bundle paramBundle);
+  public static String cy(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(253776);
+    paramString = r.bKa().H(paramString, paramLong);
+    if (paramString != null)
+    {
+      paramString = g(paramString);
+      if (paramString != null)
+      {
+        AppMethodBeat.o(253776);
+        return paramString;
+      }
+    }
+    AppMethodBeat.o(253776);
+    return null;
+  }
   
-  public abstract void bq(Bundle paramBundle);
+  public static String cz(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(253781);
+    paramString = r.bKa().G(paramString, paramLong);
+    if (paramString != null)
+    {
+      paramString = g(paramString);
+      if (paramString != null)
+      {
+        AppMethodBeat.o(253781);
+        return paramString;
+      }
+    }
+    AppMethodBeat.o(253781);
+    return null;
+  }
   
-  public abstract void hNi();
-  
-  public abstract void hNj();
-  
-  public abstract void hNk();
-  
-  public abstract void hNl();
-  
-  public abstract MMChattingListView hNn();
-  
-  public abstract void setIsBottomShowAll(boolean paramBoolean);
+  private static String g(h paramh)
+  {
+    AppMethodBeat.i(34823);
+    if (paramh != null)
+    {
+      if (paramh.bJE())
+      {
+        str = paramh.oGr;
+        if ((str != null) && (y.ZC(str)))
+        {
+          AppMethodBeat.o(34823);
+          return str;
+        }
+      }
+      String str = paramh.oGr;
+      str = r.bKa().v(str, null, null);
+      if ((str != null) && (y.ZC(str)))
+      {
+        AppMethodBeat.o(34823);
+        return str;
+      }
+      paramh = paramh.oGt;
+      paramh = r.bKa().v(paramh, null, null);
+      if ((paramh != null) && (y.ZC(paramh)))
+      {
+        AppMethodBeat.o(34823);
+        return paramh;
+      }
+    }
+    AppMethodBeat.o(34823);
+    return null;
+  }
 }
 
 

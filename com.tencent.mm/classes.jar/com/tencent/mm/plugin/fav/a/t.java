@@ -10,7 +10,7 @@ public abstract interface t
   
   public abstract void bS(byte[] paramArrayOfByte);
   
-  public abstract byte[] djT();
+  public abstract byte[] dQD();
 }
 
 

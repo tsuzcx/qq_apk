@@ -6,22 +6,22 @@ import java.util.List;
 
 public final class e
 {
-  boolean Gyd;
-  final List<Integer> Gye;
-  final List<Integer> Gyf;
+  boolean Mul;
+  final List<Integer> Mum;
+  final List<Integer> Mun;
   
   public e()
   {
-    AppMethodBeat.i(257588);
-    this.Gyd = false;
-    this.Gye = new ArrayList();
-    this.Gyf = new ArrayList();
-    AppMethodBeat.o(257588);
+    AppMethodBeat.i(261895);
+    this.Mul = false;
+    this.Mum = new ArrayList();
+    this.Mun = new ArrayList();
+    AppMethodBeat.o(261895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.a.e
  * JD-Core Version:    0.7.0.1
  */

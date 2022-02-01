@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ak;
-import com.tencent.mm.protocal.protobuf.djt;
+import com.tencent.mm.plugin.wallet_core.model.ai;
+import com.tencent.mm.protocal.protobuf.ecd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class j
-  extends MAutoStorage<ak>
+  extends MAutoStorage<ai>
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -17,38 +17,38 @@ public final class j
   static
   {
     AppMethodBeat.i(70626);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ak.info, "WalletRegionGreyAreaList") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ai.info, "WalletRegionGreyAreaList") };
     AppMethodBeat.o(70626);
   }
   
   public j(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, ak.info, "WalletRegionGreyAreaList", null);
+    super(paramISQLiteDatabase, ai.info, "WalletRegionGreyAreaList", null);
     this.db = paramISQLiteDatabase;
   }
   
-  public final void a(int paramInt, djt paramdjt)
+  public final void a(int paramInt, ecd paramecd)
   {
     AppMethodBeat.i(70624);
-    ak localak = new ak();
-    localak.field_wallet_region = paramInt;
+    ai localai = new ai();
+    localai.field_wallet_region = paramInt;
     try
     {
-      localak.field_wallet_grey_item_buf = paramdjt.toByteArray();
-      super.replace(localak);
+      localai.field_wallet_grey_item_buf = paramecd.toByteArray();
+      super.replace(localai);
       AppMethodBeat.o(70624);
       return;
     }
-    catch (Exception paramdjt)
+    catch (Exception paramecd)
     {
       for (;;)
       {
-        Log.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + paramdjt.getMessage());
+        Log.e("MicroMsg.WalletRegionGreyItemStg", "setWalletRegionGreyItem error " + paramecd.getMessage());
       }
     }
   }
   
-  public final ak amB(int paramInt)
+  public final ai asq(int paramInt)
   {
     AppMethodBeat.i(70625);
     Object localObject = "select * from WalletRegionGreyAreaList where wallet_region = ".concat(String.valueOf(paramInt));
@@ -56,15 +56,15 @@ public final class j
     Log.i("MicroMsg.WalletRegionGreyItemStg", "getWalletRegionGreyItem ".concat(String.valueOf(localObject)));
     if (localCursor == null)
     {
-      localObject = new ak();
+      localObject = new ai();
       AppMethodBeat.o(70625);
       return localObject;
     }
-    localObject = new ak();
+    localObject = new ai();
     if (localCursor.moveToNext())
     {
-      localObject = new ak();
-      ((ak)localObject).convertFrom(localCursor);
+      localObject = new ai();
+      ((ai)localObject).convertFrom(localCursor);
     }
     Log.i("MicroMsg.WalletRegionGreyItemStg", "get grey item ");
     localCursor.close();
@@ -74,7 +74,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.j
  * JD-Core Version:    0.7.0.1
  */

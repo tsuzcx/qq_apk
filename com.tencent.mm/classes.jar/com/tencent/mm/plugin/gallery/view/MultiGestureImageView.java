@@ -18,56 +18,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.f;
+import com.tencent.mm.ui.base.g;
 import java.lang.ref.WeakReference;
 
 public class MultiGestureImageView
   extends LinearLayout
 {
-  private b CfA;
-  private MultiTouchImageView Cfg;
-  private long Cfh;
-  private long Cfi;
-  private float Cfj;
-  private float Cfk;
-  private long Cfl;
-  private boolean Cfm;
-  private OverScroller Cfn;
-  private GestureDetector Cfo;
-  private RectF Cfp;
-  private a Cfq;
-  private float Cfr;
-  private boolean Cfs;
-  private boolean Cft;
-  private boolean Cfu;
-  private boolean Cfv;
-  private j Cfw;
-  private j Cfx;
-  private j Cfy;
-  private d Cfz;
-  private int amg;
-  private int amh;
+  private boolean HRA;
+  private boolean HRB;
+  private boolean HRC;
+  private j HRD;
+  private j HRE;
+  private j HRF;
+  private d HRG;
+  private b HRH;
+  private MultiTouchImageView HRn;
+  private long HRo;
+  private long HRp;
+  private float HRq;
+  private float HRr;
+  private long HRs;
+  private boolean HRt;
+  private OverScroller HRu;
+  private GestureDetector HRv;
+  private RectF HRw;
+  private a HRx;
+  private float HRy;
+  private boolean HRz;
+  private int caG;
+  private int caH;
   private int count;
-  private float eYT;
-  private int pEj;
-  private int pEk;
+  private float hct;
+  private int pvg;
+  private int sJv;
   
   public MultiGestureImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(111768);
     this.count = 0;
-    this.Cfh = 0L;
-    this.Cfi = 0L;
-    this.Cfj = 0.0F;
-    this.Cfk = 0.0F;
-    this.Cfl = 0L;
-    this.Cfm = false;
-    this.Cfp = new RectF();
-    this.Cfs = false;
-    this.Cft = false;
-    this.Cfu = false;
-    this.Cfv = false;
+    this.HRo = 0L;
+    this.HRp = 0L;
+    this.HRq = 0.0F;
+    this.HRr = 0.0F;
+    this.HRs = 0L;
+    this.HRt = false;
+    this.HRw = new RectF();
+    this.HRz = false;
+    this.HRA = false;
+    this.HRB = false;
+    this.HRC = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(111768);
   }
@@ -77,48 +77,48 @@ public class MultiGestureImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(111769);
     this.count = 0;
-    this.Cfh = 0L;
-    this.Cfi = 0L;
-    this.Cfj = 0.0F;
-    this.Cfk = 0.0F;
-    this.Cfl = 0L;
-    this.Cfm = false;
-    this.Cfp = new RectF();
-    this.Cfs = false;
-    this.Cft = false;
-    this.Cfu = false;
-    this.Cfv = false;
+    this.HRo = 0L;
+    this.HRp = 0L;
+    this.HRq = 0.0F;
+    this.HRr = 0.0F;
+    this.HRs = 0L;
+    this.HRt = false;
+    this.HRw = new RectF();
+    this.HRz = false;
+    this.HRA = false;
+    this.HRB = false;
+    this.HRC = false;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(111769);
   }
   
-  private void eve()
+  private void fBX()
   {
     AppMethodBeat.i(111774);
-    this.Cfw.removeMessages(1);
+    this.HRD.removeMessages(1);
     AppMethodBeat.o(111774);
   }
   
-  private void evf()
+  private void fBY()
   {
     AppMethodBeat.i(111775);
-    eve();
-    this.Cfw.p(1, 15L, 15L);
+    fBX();
+    this.HRD.o(1, 15L, 15L);
     AppMethodBeat.o(111775);
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(111770);
-    this.Cfg = new MultiTouchImageView(paramContext, paramAttributeSet);
-    this.Cfo = new GestureDetector(paramContext, new MultiGestureImageView.c(this, (byte)0));
-    this.Cfn = new OverScroller(paramContext, new DecelerateInterpolator(2.0F));
+    this.HRn = new MultiTouchImageView(paramContext, paramAttributeSet);
+    this.HRv = new GestureDetector(paramContext, new MultiGestureImageView.c(this, (byte)0));
+    this.HRu = new OverScroller(paramContext, new DecelerateInterpolator(2.0F));
     paramContext = new LinearLayout.LayoutParams(-1, -1);
-    this.Cfg.setLayoutParams(paramContext);
-    addView(this.Cfg);
-    this.Cfw = new j(new WeakReference(this));
-    this.Cfx = new j(new WeakReference(this));
-    this.Cfy = new j(new WeakReference(this));
+    this.HRn.setLayoutParams(paramContext);
+    addView(this.HRn);
+    this.HRD = new j(new WeakReference(this));
+    this.HRE = new j(new WeakReference(this));
+    this.HRF = new j(new WeakReference(this));
     AppMethodBeat.o(111770);
   }
   
@@ -126,7 +126,7 @@ public class MultiGestureImageView
   {
     int m = 0;
     AppMethodBeat.i(111773);
-    if (this.Cfg == null)
+    if (this.HRn == null)
     {
       AppMethodBeat.o(111773);
       return;
@@ -135,17 +135,17 @@ public class MultiGestureImageView
     float f5;
     int j;
     int k;
-    if (this.Cfn.computeScrollOffset())
+    if (this.HRu.computeScrollOffset())
     {
-      i = this.Cfn.getCurrX() - this.amg;
-      int n = this.Cfn.getCurrY() - this.amh;
-      this.amg = this.Cfn.getCurrX();
-      this.amh = this.Cfn.getCurrY();
-      float f3 = this.Cfg.getScale();
-      f4 = this.Cfg.getImageWidth();
-      float f1 = f3 * this.Cfg.getImageHeight();
+      i = this.HRu.getCurrX() - this.caG;
+      int n = this.HRu.getCurrY() - this.caH;
+      this.caG = this.HRu.getCurrX();
+      this.caH = this.HRu.getCurrY();
+      float f3 = this.HRn.getScale();
+      f4 = this.HRn.getImageWidth();
+      float f1 = f3 * this.HRn.getImageHeight();
       float[] arrayOfFloat = new float[9];
-      this.Cfg.getImageMatrix().getValues(arrayOfFloat);
+      this.HRn.getImageMatrix().getValues(arrayOfFloat);
       float f2 = arrayOfFloat[2];
       f3 = f4 * f3 + f2;
       f4 = arrayOfFloat[5];
@@ -154,39 +154,39 @@ public class MultiGestureImageView
       if (i < 0)
       {
         j = i;
-        if (i < this.Cfp.right - Math.round(f3)) {
-          j = (int)(this.Cfp.right - Math.round(f3));
+        if (i < this.HRw.right - Math.round(f3)) {
+          j = (int)(this.HRw.right - Math.round(f3));
         }
       }
       i = j;
       if (j > 0)
       {
         i = j;
-        if (j > this.Cfp.left - Math.round(f2)) {
-          i = (int)(this.Cfp.left - Math.round(f2));
+        if (j > this.HRw.left - Math.round(f2)) {
+          i = (int)(this.HRw.left - Math.round(f2));
         }
       }
       k = n;
       if (n < 0)
       {
         k = n;
-        if (n < this.Cfp.bottom - Math.round(f5)) {
-          k = (int)(this.Cfp.bottom - Math.round(f5));
+        if (n < this.HRw.bottom - Math.round(f5)) {
+          k = (int)(this.HRw.bottom - Math.round(f5));
         }
       }
       j = k;
       if (k > 0)
       {
         j = k;
-        if (k > this.Cfp.top - Math.round(f4)) {
-          j = (int)(this.Cfp.top - Math.round(f4));
+        if (k > this.HRw.top - Math.round(f4)) {
+          j = (int)(this.HRw.top - Math.round(f4));
         }
       }
-      if ((Math.round(f2) < this.Cfp.left) && (Math.round(f3) > this.Cfp.right)) {
+      if ((Math.round(f2) < this.HRw.left) && (Math.round(f3) > this.HRw.right)) {
         break label424;
       }
       k = 0;
-      if (f1 >= this.pEk) {
+      if (f1 >= this.pvg) {
         break label472;
       }
     }
@@ -194,14 +194,14 @@ public class MultiGestureImageView
     label472:
     for (int i = m;; i = j)
     {
-      this.Cfg.az(k, i);
+      this.HRn.be(k, i);
       postInvalidate();
       AppMethodBeat.o(111773);
       return;
-      if (Math.round(f4) < this.Cfp.top)
+      if (Math.round(f4) < this.HRw.top)
       {
         k = i;
-        if (Math.round(f5) > this.Cfp.bottom) {
+        if (Math.round(f5) > this.HRw.bottom) {
           break;
         }
       }
@@ -214,7 +214,7 @@ public class MultiGestureImageView
   public int getImageHeight()
   {
     AppMethodBeat.i(111779);
-    int i = this.Cfg.getImageHeight();
+    int i = this.HRn.getImageHeight();
     AppMethodBeat.o(111779);
     return i;
   }
@@ -222,7 +222,7 @@ public class MultiGestureImageView
   public int getImageWidth()
   {
     AppMethodBeat.i(111777);
-    int i = this.Cfg.getImageWidth();
+    int i = this.HRn.getImageWidth();
     AppMethodBeat.o(111777);
     return i;
   }
@@ -231,114 +231,114 @@ public class MultiGestureImageView
   {
     AppMethodBeat.i(111771);
     super.onMeasure(paramInt1, paramInt2);
-    this.pEj = View.MeasureSpec.getSize(paramInt1);
-    this.pEk = View.MeasureSpec.getSize(paramInt2);
-    this.Cfp.set(0.0F, 0.0F, this.pEj, this.pEk);
-    Log.v("MicroMsg.MultiGestureImageView", "MMGestureGallery width:" + this.pEj + " height:" + this.pEk);
+    this.sJv = View.MeasureSpec.getSize(paramInt1);
+    this.pvg = View.MeasureSpec.getSize(paramInt2);
+    this.HRw.set(0.0F, 0.0F, this.sJv, this.pvg);
+    Log.v("MicroMsg.MultiGestureImageView", "MMGestureGallery width:" + this.sJv + " height:" + this.pvg);
     AppMethodBeat.o(111771);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(111772);
-    Object localObject = this.Cfo;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/plugin/gallery/view/MultiGestureImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/gallery/view/MultiGestureImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    Object localObject = this.HRv;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/gallery/view/MultiGestureImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.sb(0)), "com/tencent/mm/plugin/gallery/view/MultiGestureImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     float f1;
     float f2;
     float f3;
     if (paramMotionEvent.getAction() == 0)
     {
-      this.Cfn.forceFinished(true);
-      this.Cfy.removeMessages(2);
-      this.Cfy.p(2, 500L, 0L);
-      this.Cfg.hJz();
+      this.HRu.forceFinished(true);
+      this.HRF.removeMessages(2);
+      this.HRF.o(2, 500L, 0L);
+      this.HRn.jmc();
       this.count += 1;
       if (this.count == 1)
       {
-        this.Cfh = System.currentTimeMillis();
-        this.Cfj = f.j(paramMotionEvent, 0);
-        this.Cfk = f.k(paramMotionEvent, 0);
+        this.HRo = System.currentTimeMillis();
+        this.HRq = g.k(paramMotionEvent, 0);
+        this.HRr = g.l(paramMotionEvent, 0);
       }
     }
     else
     {
       if ((paramMotionEvent.getAction() == 6) || (paramMotionEvent.getAction() == 262))
       {
-        this.Cfy.removeMessages(2);
-        this.eYT = 0.0F;
-        this.Cfr = this.Cfg.getScale();
-        this.Cfm = true;
+        this.HRF.removeMessages(2);
+        this.hct = 0.0F;
+        this.HRy = this.HRn.getScale();
+        this.HRt = true;
         float f4;
-        if (this.Cfr < this.Cfg.getScaleRate())
+        if (this.HRy < this.HRn.getScaleRate())
         {
-          f1 = f.j(paramMotionEvent, 0);
-          f2 = f.j(paramMotionEvent, 1);
-          f3 = f.k(paramMotionEvent, 0);
-          f4 = f.k(paramMotionEvent, 1);
-          this.Cfg.ay(f1 - f2 + f.j(paramMotionEvent, 1), f3 - f4 + f.k(paramMotionEvent, 1));
+          f1 = g.k(paramMotionEvent, 0);
+          f2 = g.k(paramMotionEvent, 1);
+          f3 = g.l(paramMotionEvent, 0);
+          f4 = g.l(paramMotionEvent, 1);
+          this.HRn.bd(f1 - f2 + g.k(paramMotionEvent, 1), f3 - f4 + g.l(paramMotionEvent, 1));
         }
-        if (this.Cfr > this.Cfg.getDoubleTabScale())
+        if (this.HRy > this.HRn.getDoubleTabScale())
         {
-          f1 = f.j(paramMotionEvent, 0);
-          f2 = f.j(paramMotionEvent, 1);
-          f3 = f.k(paramMotionEvent, 0);
-          f4 = f.k(paramMotionEvent, 1);
-          this.Cfg.A(f1 - f2 + f.j(paramMotionEvent, 1), f3 - f4 + f.k(paramMotionEvent, 1));
+          f1 = g.k(paramMotionEvent, 0);
+          f2 = g.k(paramMotionEvent, 1);
+          f3 = g.l(paramMotionEvent, 0);
+          f4 = g.l(paramMotionEvent, 1);
+          this.HRn.ag(f1 - f2 + g.k(paramMotionEvent, 1), f3 - f4 + g.l(paramMotionEvent, 1));
         }
       }
       if (paramMotionEvent.getAction() == 1)
       {
-        this.Cfy.removeMessages(2);
-        if (((!this.Cfu) && (!this.Cfv)) || ((!this.Cfs) && (!this.Cft))) {
+        this.HRF.removeMessages(2);
+        if (((!this.HRB) && (!this.HRC)) || ((!this.HRz) && (!this.HRA))) {
           break label855;
         }
-        this.Cfq = new f(this.Cfg);
-        evf();
-        this.Cfu = false;
-        this.Cfv = false;
-        this.Cfs = false;
-        this.Cft = false;
+        this.HRx = new f(this.HRn);
+        fBY();
+        this.HRB = false;
+        this.HRC = false;
+        this.HRz = false;
+        this.HRA = false;
         label445:
-        this.eYT = 0.0F;
-        this.Cfr = this.Cfg.getScale();
+        this.hct = 0.0F;
+        this.HRy = this.HRn.getScale();
         if (this.count == 1)
         {
-          this.Cfi = System.currentTimeMillis();
-          if (this.Cfi - this.Cfh >= 350L) {
+          this.HRp = System.currentTimeMillis();
+          if (this.HRp - this.HRo >= 350L) {
             break label986;
           }
-          if ((Math.abs(this.Cfj - f.j(paramMotionEvent, 0)) < 10.0F) && (Math.abs(this.Cfk - f.k(paramMotionEvent, 0)) < 10.0F))
+          if ((Math.abs(this.HRq - g.k(paramMotionEvent, 0)) < 10.0F) && (Math.abs(this.HRr - g.l(paramMotionEvent, 0)) < 10.0F))
           {
-            localObject = this.Cfx;
-            ((j)localObject).fXP = false;
-            ((j)localObject).p(0, 350L, 0L);
+            localObject = this.HRE;
+            ((j)localObject).idP = false;
+            ((j)localObject).o(0, 350L, 0L);
           }
         }
       }
       label554:
       if ((paramMotionEvent.getAction() == 5) || (paramMotionEvent.getAction() == 261))
       {
-        this.eYT = 0.0F;
-        this.Cfr = this.Cfg.getScale();
-        this.Cfm = true;
+        this.hct = 0.0F;
+        this.HRy = this.HRn.getScale();
+        this.HRt = true;
       }
       if (paramMotionEvent.getAction() == 2)
       {
-        if (f.ar(paramMotionEvent) != 2) {
+        if (g.au(paramMotionEvent) != 2) {
           break label1057;
         }
-        this.Cfy.removeMessages(2);
-        this.Cfm = true;
+        this.HRF.removeMessages(2);
+        this.HRt = true;
         this.count = 0;
-        f1 = f.j(paramMotionEvent, 0) - f.j(paramMotionEvent, 1);
-        f2 = f.k(paramMotionEvent, 0) - f.k(paramMotionEvent, 1);
+        f1 = g.k(paramMotionEvent, 0) - g.k(paramMotionEvent, 1);
+        f2 = g.l(paramMotionEvent, 0) - g.l(paramMotionEvent, 1);
         f3 = (float)Math.sqrt(f1 * f1 + f2 * f2);
-        if (this.eYT != 0.0F) {
+        if (this.hct != 0.0F) {
           break label1003;
         }
-        this.eYT = f3;
+        this.hct = f3;
       }
     }
     for (;;)
@@ -348,20 +348,20 @@ public class MultiGestureImageView
       if (this.count != 2) {
         break;
       }
-      this.Cfl = System.currentTimeMillis();
-      if (this.Cfl - this.Cfi < 350L)
+      this.HRs = System.currentTimeMillis();
+      if (this.HRs - this.HRp < 350L)
       {
-        if ((Math.abs(this.Cfj - f.j(paramMotionEvent, 0)) < 35.0F) && (Math.abs(this.Cfk - f.k(paramMotionEvent, 0)) < 35.0F))
+        if ((Math.abs(this.HRq - g.k(paramMotionEvent, 0)) < 35.0F) && (Math.abs(this.HRr - g.l(paramMotionEvent, 0)) < 35.0F))
         {
           this.count = 0;
           Log.d("MicroMsg.MultiGestureImageView", "double click!");
-          if (this.Cfg.getScale() <= this.Cfg.getScaleRate())
+          if (this.HRn.getScale() <= this.HRn.getScaleRate())
           {
-            this.Cfg.A(f.j(paramMotionEvent, 0), f.k(paramMotionEvent, 0));
+            this.HRn.ag(g.k(paramMotionEvent, 0), g.l(paramMotionEvent, 0));
             break;
           }
-          this.Cfg.ay(f.j(paramMotionEvent, 0), f.k(paramMotionEvent, 0));
-          this.Cfg.hJy();
+          this.HRn.bd(g.k(paramMotionEvent, 0), g.l(paramMotionEvent, 0));
+          this.HRn.jmb();
           break;
         }
         this.count = 1;
@@ -370,46 +370,46 @@ public class MultiGestureImageView
       this.count = 1;
       break;
       label855:
-      if (this.Cfu)
+      if (this.HRB)
       {
-        this.Cfu = false;
-        this.Cfq = new g(this.Cfg);
-        evf();
+        this.HRB = false;
+        this.HRx = new g(this.HRn);
+        fBY();
       }
-      if (this.Cfv)
+      if (this.HRC)
       {
-        this.Cfv = false;
-        this.Cfq = new h(this.Cfg);
-        evf();
+        this.HRC = false;
+        this.HRx = new h(this.HRn);
+        fBY();
       }
-      if (this.Cfs)
+      if (this.HRz)
       {
-        this.Cfs = false;
-        this.Cfq = new i(this.Cfg);
-        evf();
+        this.HRz = false;
+        this.HRx = new i(this.HRn);
+        fBY();
       }
-      if (!this.Cft) {
+      if (!this.HRA) {
         break label445;
       }
-      this.Cft = false;
-      this.Cfq = new e(this.Cfg);
-      evf();
+      this.HRA = false;
+      this.HRx = new e(this.HRn);
+      fBY();
       break label445;
       label986:
       this.count = 0;
       Log.d("MicroMsg.MultiGestureImageView", "single long click over!");
       break label554;
       label1003:
-      f3 /= this.eYT;
-      if (this.Cfm)
+      f3 /= this.hct;
+      if (this.HRt)
       {
-        this.Cfg.s(f3 * this.Cfr, f1 + f.j(paramMotionEvent, 1), f2 + f.k(paramMotionEvent, 1));
-        this.Cfg.hJy();
+        this.HRn.x(f3 * this.HRy, f1 + g.k(paramMotionEvent, 1), f2 + g.l(paramMotionEvent, 1));
+        this.HRn.jmb();
         continue;
         label1057:
-        if ((Math.abs(this.Cfj - f.j(paramMotionEvent, 0)) > 10.0F) || (Math.abs(this.Cfk - f.k(paramMotionEvent, 0)) > 10.0F))
+        if ((Math.abs(this.HRq - g.k(paramMotionEvent, 0)) > 10.0F) || (Math.abs(this.HRr - g.l(paramMotionEvent, 0)) > 10.0F))
         {
-          this.Cfy.removeMessages(2);
+          this.HRF.removeMessages(2);
           this.count = 0;
           computeScroll();
         }
@@ -420,51 +420,51 @@ public class MultiGestureImageView
   public void setEnableHorLongBmpMode(boolean paramBoolean)
   {
     AppMethodBeat.i(111776);
-    this.Cfg.setEnableHorLongBmpMode(paramBoolean);
+    this.HRn.setEnableHorLongBmpMode(paramBoolean);
     AppMethodBeat.o(111776);
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(111781);
-    this.Cfg.setImageBitmap(paramBitmap);
-    this.Cfg.hJx();
+    this.HRn.setImageBitmap(paramBitmap);
+    this.HRn.jma();
     AppMethodBeat.o(111781);
   }
   
   public void setImageHeight(int paramInt)
   {
     AppMethodBeat.i(111780);
-    this.Cfg.setImageHeight(paramInt);
+    this.HRn.setImageHeight(paramInt);
     AppMethodBeat.o(111780);
   }
   
   public void setImageWidth(int paramInt)
   {
     AppMethodBeat.i(111778);
-    this.Cfg.setImageWidth(paramInt);
+    this.HRn.setImageWidth(paramInt);
     AppMethodBeat.o(111778);
   }
   
   public void setLongClickOverListener(b paramb)
   {
-    this.CfA = paramb;
+    this.HRH = paramb;
   }
   
   public void setSingleClickOverListener(d paramd)
   {
-    this.Cfz = paramd;
+    this.HRG = paramd;
   }
   
   abstract class a
   {
-    protected boolean eYG = false;
+    protected boolean hcg = false;
     
     public a() {}
     
-    public final boolean evg()
+    public final boolean efT()
     {
-      return this.eYG;
+      return this.hcg;
     }
     
     public abstract void play();
@@ -477,15 +477,15 @@ public class MultiGestureImageView
   final class e
     extends MultiGestureImageView.a
   {
-    float[] CfC;
-    MultiTouchImageView oQr;
+    float[] HRJ;
+    MultiTouchImageView rUf;
     
     public e(MultiTouchImageView paramMultiTouchImageView)
     {
       super();
       AppMethodBeat.i(111750);
-      this.CfC = new float[9];
-      this.oQr = paramMultiTouchImageView;
+      this.HRJ = new float[9];
+      this.rUf = paramMultiTouchImageView;
       AppMethodBeat.o(111750);
     }
     
@@ -497,25 +497,25 @@ public class MultiGestureImageView
         public final void run()
         {
           AppMethodBeat.i(111749);
-          MultiGestureImageView.e.this.oQr.getImageMatrix().getValues(MultiGestureImageView.e.this.CfC);
-          float f1 = MultiGestureImageView.e.this.oQr.getScale();
-          float f2 = MultiGestureImageView.e.this.oQr.getImageHeight() * f1;
-          float f3 = MultiGestureImageView.e.this.CfC[5];
+          MultiGestureImageView.e.this.rUf.getImageMatrix().getValues(MultiGestureImageView.e.this.HRJ);
+          float f1 = MultiGestureImageView.e.this.rUf.getScale();
+          float f2 = MultiGestureImageView.e.this.rUf.getImageHeight() * f1;
+          float f3 = MultiGestureImageView.e.this.HRJ[5];
           f1 = MultiGestureImageView.i(MultiGestureImageView.this);
           if (f2 < MultiGestureImageView.i(MultiGestureImageView.this)) {
             f1 = MultiGestureImageView.i(MultiGestureImageView.this) / 2.0F + f2 / 2.0F;
           }
           f1 -= f3 + f2;
           if (f1 <= 0.0F) {
-            MultiGestureImageView.e.this.eYG = true;
+            MultiGestureImageView.e.this.hcg = true;
           }
           for (;;)
           {
-            MultiGestureImageView.e.this.oQr.az(0.0F, f1);
+            MultiGestureImageView.e.this.rUf.be(0.0F, f1);
             AppMethodBeat.o(111749);
             return;
             if (Math.abs(f1) <= 5.0F) {
-              MultiGestureImageView.e.this.eYG = true;
+              MultiGestureImageView.e.this.hcg = true;
             } else {
               f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
             }
@@ -529,15 +529,15 @@ public class MultiGestureImageView
   final class f
     extends MultiGestureImageView.a
   {
-    float[] CfC;
-    MultiTouchImageView oQr;
+    float[] HRJ;
+    MultiTouchImageView rUf;
     
     public f(MultiTouchImageView paramMultiTouchImageView)
     {
       super();
       AppMethodBeat.i(111753);
-      this.CfC = new float[9];
-      this.oQr = paramMultiTouchImageView;
+      this.HRJ = new float[9];
+      this.rUf = paramMultiTouchImageView;
       AppMethodBeat.o(111753);
     }
     
@@ -549,14 +549,14 @@ public class MultiGestureImageView
         public final void run()
         {
           AppMethodBeat.i(111752);
-          MultiGestureImageView.f.this.oQr.getImageMatrix().getValues(MultiGestureImageView.f.this.CfC);
-          float f5 = MultiGestureImageView.f.this.oQr.getScale() * MultiGestureImageView.f.this.oQr.getImageWidth();
-          float f1 = MultiGestureImageView.f.this.oQr.getScale();
-          float f8 = MultiGestureImageView.f.this.oQr.getImageHeight() * f1;
-          float f7 = MultiGestureImageView.f.this.CfC[2];
-          float f10 = MultiGestureImageView.f.this.CfC[5];
-          float f6 = MultiGestureImageView.f.this.CfC[2];
-          float f9 = MultiGestureImageView.f.this.CfC[5];
+          MultiGestureImageView.f.this.rUf.getImageMatrix().getValues(MultiGestureImageView.f.this.HRJ);
+          float f5 = MultiGestureImageView.f.this.rUf.getScale() * MultiGestureImageView.f.this.rUf.getImageWidth();
+          float f1 = MultiGestureImageView.f.this.rUf.getScale();
+          float f8 = MultiGestureImageView.f.this.rUf.getImageHeight() * f1;
+          float f7 = MultiGestureImageView.f.this.HRJ[2];
+          float f10 = MultiGestureImageView.f.this.HRJ[5];
+          float f6 = MultiGestureImageView.f.this.HRJ[2];
+          float f9 = MultiGestureImageView.f.this.HRJ[5];
           float f2 = 0.0F;
           f1 = MultiGestureImageView.i(MultiGestureImageView.this);
           float f3 = 0.0F;
@@ -593,11 +593,11 @@ public class MultiGestureImageView
                 {
                   label306:
                   if ((Math.abs(f2) <= 5.0F) && (Math.abs(f1) <= 5.0F)) {
-                    MultiGestureImageView.f.this.eYG = true;
+                    MultiGestureImageView.f.this.hcg = true;
                   }
                   for (;;)
                   {
-                    MultiGestureImageView.f.this.oQr.az(f2, f1);
+                    MultiGestureImageView.f.this.rUf.be(f2, f1);
                     AppMethodBeat.o(111752);
                     return;
                     if (f1 <= 0.0F) {
@@ -638,15 +638,15 @@ public class MultiGestureImageView
   final class g
     extends MultiGestureImageView.a
   {
-    float[] CfC;
-    MultiTouchImageView oQr;
+    float[] HRJ;
+    MultiTouchImageView rUf;
     
     public g(MultiTouchImageView paramMultiTouchImageView)
     {
       super();
       AppMethodBeat.i(111756);
-      this.CfC = new float[9];
-      this.oQr = paramMultiTouchImageView;
+      this.HRJ = new float[9];
+      this.rUf = paramMultiTouchImageView;
       AppMethodBeat.o(111756);
     }
     
@@ -658,23 +658,23 @@ public class MultiGestureImageView
         public final void run()
         {
           AppMethodBeat.i(111755);
-          MultiGestureImageView.g.this.oQr.getImageMatrix().getValues(MultiGestureImageView.g.this.CfC);
-          float f2 = MultiGestureImageView.g.this.CfC[2];
-          float f1 = MultiGestureImageView.g.this.oQr.getScale() * MultiGestureImageView.g.this.oQr.getImageWidth();
+          MultiGestureImageView.g.this.rUf.getImageMatrix().getValues(MultiGestureImageView.g.this.HRJ);
+          float f2 = MultiGestureImageView.g.this.HRJ[2];
+          float f1 = MultiGestureImageView.g.this.rUf.getScale() * MultiGestureImageView.g.this.rUf.getImageWidth();
           if (f1 < MultiGestureImageView.g(MultiGestureImageView.this)) {}
           for (f1 = MultiGestureImageView.g(MultiGestureImageView.this) / 2.0F - f1 / 2.0F;; f1 = 0.0F)
           {
             f1 -= f2;
             if (f1 >= 0.0F) {
-              MultiGestureImageView.g.this.eYG = true;
+              MultiGestureImageView.g.this.hcg = true;
             }
             for (;;)
             {
-              MultiGestureImageView.g.this.oQr.az(f1, 0.0F);
+              MultiGestureImageView.g.this.rUf.be(f1, 0.0F);
               AppMethodBeat.o(111755);
               return;
               if (Math.abs(f1) <= 5.0F) {
-                MultiGestureImageView.g.this.eYG = true;
+                MultiGestureImageView.g.this.hcg = true;
               } else {
                 f1 = -(float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
               }
@@ -689,15 +689,15 @@ public class MultiGestureImageView
   final class h
     extends MultiGestureImageView.a
   {
-    float[] CfC;
-    MultiTouchImageView oQr;
+    float[] HRJ;
+    MultiTouchImageView rUf;
     
     public h(MultiTouchImageView paramMultiTouchImageView)
     {
       super();
       AppMethodBeat.i(111759);
-      this.CfC = new float[9];
-      this.oQr = paramMultiTouchImageView;
+      this.HRJ = new float[9];
+      this.rUf = paramMultiTouchImageView;
       AppMethodBeat.o(111759);
     }
     
@@ -709,25 +709,25 @@ public class MultiGestureImageView
         public final void run()
         {
           AppMethodBeat.i(111758);
-          MultiGestureImageView.h.this.oQr.getImageMatrix().getValues(MultiGestureImageView.h.this.CfC);
-          float f1 = MultiGestureImageView.h.this.oQr.getScale();
-          float f2 = MultiGestureImageView.h.this.oQr.getImageWidth() * f1;
-          float f3 = MultiGestureImageView.h.this.CfC[2];
+          MultiGestureImageView.h.this.rUf.getImageMatrix().getValues(MultiGestureImageView.h.this.HRJ);
+          float f1 = MultiGestureImageView.h.this.rUf.getScale();
+          float f2 = MultiGestureImageView.h.this.rUf.getImageWidth() * f1;
+          float f3 = MultiGestureImageView.h.this.HRJ[2];
           f1 = MultiGestureImageView.g(MultiGestureImageView.this);
           if (f2 < MultiGestureImageView.g(MultiGestureImageView.this)) {
             f1 = MultiGestureImageView.g(MultiGestureImageView.this) / 2.0F + f2 / 2.0F;
           }
           f1 -= f3 + f2;
           if (f1 <= 0.0F) {
-            MultiGestureImageView.h.this.eYG = true;
+            MultiGestureImageView.h.this.hcg = true;
           }
           for (;;)
           {
-            MultiGestureImageView.h.this.oQr.az(f1, 0.0F);
+            MultiGestureImageView.h.this.rUf.be(f1, 0.0F);
             AppMethodBeat.o(111758);
             return;
             if (Math.abs(f1) <= 5.0F) {
-              MultiGestureImageView.h.this.eYG = true;
+              MultiGestureImageView.h.this.hcg = true;
             } else {
               f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
             }
@@ -741,15 +741,15 @@ public class MultiGestureImageView
   final class i
     extends MultiGestureImageView.a
   {
-    float[] CfC;
-    MultiTouchImageView oQr;
+    float[] HRJ;
+    MultiTouchImageView rUf;
     
     public i(MultiTouchImageView paramMultiTouchImageView)
     {
       super();
       AppMethodBeat.i(111762);
-      this.CfC = new float[9];
-      this.oQr = paramMultiTouchImageView;
+      this.HRJ = new float[9];
+      this.rUf = paramMultiTouchImageView;
       AppMethodBeat.o(111762);
     }
     
@@ -761,23 +761,23 @@ public class MultiGestureImageView
         public final void run()
         {
           AppMethodBeat.i(111761);
-          MultiGestureImageView.i.this.oQr.getImageMatrix().getValues(MultiGestureImageView.i.this.CfC);
-          float f2 = MultiGestureImageView.i.this.CfC[5];
-          float f1 = MultiGestureImageView.i.this.oQr.getScale() * MultiGestureImageView.i.this.oQr.getImageHeight();
+          MultiGestureImageView.i.this.rUf.getImageMatrix().getValues(MultiGestureImageView.i.this.HRJ);
+          float f2 = MultiGestureImageView.i.this.HRJ[5];
+          float f1 = MultiGestureImageView.i.this.rUf.getScale() * MultiGestureImageView.i.this.rUf.getImageHeight();
           if (f1 < MultiGestureImageView.i(MultiGestureImageView.this)) {}
           for (f1 = MultiGestureImageView.i(MultiGestureImageView.this) / 2.0F - f1 / 2.0F;; f1 = 0.0F)
           {
             f1 -= f2;
             if (f1 >= 0.0F) {
-              MultiGestureImageView.i.this.eYG = true;
+              MultiGestureImageView.i.this.hcg = true;
             }
             for (;;)
             {
-              MultiGestureImageView.i.this.oQr.az(0.0F, f1);
+              MultiGestureImageView.i.this.rUf.be(0.0F, f1);
               AppMethodBeat.o(111761);
               return;
               if (Math.abs(f1) <= 5.0F) {
-                MultiGestureImageView.i.this.eYG = true;
+                MultiGestureImageView.i.this.hcg = true;
               } else {
                 f1 = -(float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
               }
@@ -792,14 +792,14 @@ public class MultiGestureImageView
   public final class j
     extends MMHandler
   {
-    private long CfI;
-    WeakReference<MultiGestureImageView> aFW;
-    boolean fXP;
+    private long HRP;
+    boolean idP;
+    WeakReference<MultiGestureImageView> viewRef;
     
     public j()
     {
       Object localObject;
-      this.aFW = localObject;
+      this.viewRef = localObject;
     }
     
     public final void handleMessage(Message paramMessage)
@@ -807,14 +807,14 @@ public class MultiGestureImageView
       AppMethodBeat.i(111766);
       super.handleMessage(paramMessage);
       removeMessages(paramMessage.what);
-      if (this.aFW != null)
+      if (this.viewRef != null)
       {
-        final MultiGestureImageView localMultiGestureImageView = (MultiGestureImageView)this.aFW.get();
+        final MultiGestureImageView localMultiGestureImageView = (MultiGestureImageView)this.viewRef.get();
         if (localMultiGestureImageView != null)
         {
           if (paramMessage.what == 0)
           {
-            if ((MultiGestureImageView.a(localMultiGestureImageView) == 1) || (this.fXP))
+            if ((MultiGestureImageView.a(localMultiGestureImageView) == 1) || (this.idP))
             {
               Log.d("MicroMsg.MultiGestureImageView", "single click over!");
               if (MultiGestureImageView.b(localMultiGestureImageView) != null) {
@@ -835,10 +835,10 @@ public class MultiGestureImageView
           }
           if (paramMessage.what == 1)
           {
-            if ((MultiGestureImageView.d(MultiGestureImageView.this) != null) && (!MultiGestureImageView.d(MultiGestureImageView.this).evg()))
+            if ((MultiGestureImageView.d(MultiGestureImageView.this) != null) && (!MultiGestureImageView.d(MultiGestureImageView.this).efT()))
             {
               MultiGestureImageView.d(MultiGestureImageView.this).play();
-              sendEmptyMessageDelayed(paramMessage.what, this.CfI);
+              sendEmptyMessageDelayed(paramMessage.what, this.HRP);
               AppMethodBeat.o(111766);
               return;
             }
@@ -863,10 +863,10 @@ public class MultiGestureImageView
       AppMethodBeat.o(111766);
     }
     
-    public final void p(int paramInt, long paramLong1, long paramLong2)
+    public final void o(int paramInt, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(111767);
-      this.CfI = paramLong2;
+      this.HRP = paramLong2;
       sendEmptyMessageDelayed(paramInt, paramLong1);
       AppMethodBeat.o(111767);
     }
@@ -874,7 +874,7 @@ public class MultiGestureImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.view.MultiGestureImageView
  * JD-Core Version:    0.7.0.1
  */

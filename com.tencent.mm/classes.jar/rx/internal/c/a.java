@@ -18,21 +18,21 @@ public final class a
   extends rx.g
   implements j
 {
-  private static final TimeUnit abOU;
-  static final c abOV;
-  static final a abOW;
-  final ThreadFactory Zvl;
-  final AtomicReference<a> abOX;
+  private static final TimeUnit akbM;
+  static final c akbN;
+  static final a akbO;
+  final ThreadFactory ahAf;
+  final AtomicReference<a> akbP;
   
   static
   {
     AppMethodBeat.i(90324);
-    abOU = TimeUnit.SECONDS;
-    Object localObject = new c(rx.internal.util.g.abQM);
-    abOV = (c)localObject;
-    ((c)localObject).iVJ();
+    akbM = TimeUnit.SECONDS;
+    Object localObject = new c(rx.internal.util.g.akdE);
+    akbN = (c)localObject;
+    ((c)localObject).kKh();
     localObject = new a(null, 0L, null);
-    abOW = (a)localObject;
+    akbO = (a)localObject;
     ((a)localObject).shutdown();
     AppMethodBeat.o(90324);
   }
@@ -40,8 +40,8 @@ public final class a
   public a(ThreadFactory paramThreadFactory)
   {
     AppMethodBeat.i(90320);
-    this.Zvl = paramThreadFactory;
-    this.abOX = new AtomicReference(abOW);
+    this.ahAf = paramThreadFactory;
+    this.akbP = new AtomicReference(akbO);
     start();
     AppMethodBeat.o(90320);
   }
@@ -49,7 +49,7 @@ public final class a
   public final g.a createWorker()
   {
     AppMethodBeat.i(90323);
-    b localb = new b((a)this.abOX.get());
+    b localb = new b((a)this.akbP.get());
     AppMethodBeat.o(90323);
     return localb;
   }
@@ -60,13 +60,13 @@ public final class a
     a locala;
     do
     {
-      locala = (a)this.abOX.get();
-      if (locala == abOW)
+      locala = (a)this.akbP.get();
+      if (locala == akbO)
       {
         AppMethodBeat.o(90322);
         return;
       }
-    } while (!this.abOX.compareAndSet(locala, abOW));
+    } while (!this.akbP.compareAndSet(locala, akbO));
     locala.shutdown();
     AppMethodBeat.o(90322);
   }
@@ -74,8 +74,8 @@ public final class a
   public final void start()
   {
     AppMethodBeat.i(90321);
-    a locala = new a(this.Zvl, 60L, abOU);
-    if (!this.abOX.compareAndSet(abOW, locala)) {
+    a locala = new a(this.ahAf, 60L, akbM);
+    if (!this.akbP.compareAndSet(akbO, locala)) {
       locala.shutdown();
     }
     AppMethodBeat.o(90321);
@@ -83,23 +83,23 @@ public final class a
   
   static final class a
   {
-    private final ThreadFactory Zvl;
-    final long Zvn;
-    final ConcurrentLinkedQueue<a.c> abOY;
-    final b abOZ;
-    private final ScheduledExecutorService abPa;
-    private final Future<?> abPb;
+    private final ThreadFactory ahAf;
+    final long ahAh;
+    final ConcurrentLinkedQueue<a.c> akbQ;
+    final b akbR;
+    private final ScheduledExecutorService akbS;
+    private final Future<?> akbT;
     
     a(ThreadFactory paramThreadFactory, long paramLong, TimeUnit paramTimeUnit)
     {
       AppMethodBeat.i(90312);
-      this.Zvl = paramThreadFactory;
+      this.ahAf = paramThreadFactory;
       if (paramTimeUnit != null)
       {
         paramLong = paramTimeUnit.toNanos(paramLong);
-        this.Zvn = paramLong;
-        this.abOY = new ConcurrentLinkedQueue();
-        this.abOZ = new b();
+        this.ahAh = paramLong;
+        this.akbQ = new ConcurrentLinkedQueue();
+        this.akbR = new b();
         if (paramTimeUnit == null) {
           break label126;
         }
@@ -111,29 +111,29 @@ public final class a
           {
             AppMethodBeat.i(90311);
             a.a locala = a.a.this;
-            if (!locala.abOY.isEmpty())
+            if (!locala.akbQ.isEmpty())
             {
               long l = System.nanoTime();
-              Iterator localIterator = locala.abOY.iterator();
+              Iterator localIterator = locala.akbQ.iterator();
               while (localIterator.hasNext())
               {
                 a.c localc = (a.c)localIterator.next();
-                if (localc.abPj > l) {
+                if (localc.akcb > l) {
                   break;
                 }
-                if (locala.abOY.remove(localc)) {
-                  locala.abOZ.e(localc);
+                if (locala.akbQ.remove(localc)) {
+                  locala.akbR.e(localc);
                 }
               }
             }
             AppMethodBeat.o(90311);
           }
-        }, this.Zvn, this.Zvn, TimeUnit.NANOSECONDS);
+        }, this.ahAh, this.ahAh, TimeUnit.NANOSECONDS);
       }
       for (;;)
       {
-        this.abPa = paramThreadFactory;
-        this.abPb = paramTimeUnit;
+        this.akbS = paramThreadFactory;
+        this.akbT = paramTimeUnit;
         AppMethodBeat.o(90312);
         return;
         paramLong = 0L;
@@ -144,26 +144,26 @@ public final class a
       }
     }
     
-    final a.c iVT()
+    final a.c kKr()
     {
       AppMethodBeat.i(90313);
-      if (this.abOZ.abQP)
+      if (this.akbR.akdH)
       {
-        localc = a.abOV;
+        localc = a.akbN;
         AppMethodBeat.o(90313);
         return localc;
       }
-      while (!this.abOY.isEmpty())
+      while (!this.akbQ.isEmpty())
       {
-        localc = (a.c)this.abOY.poll();
+        localc = (a.c)this.akbQ.poll();
         if (localc != null)
         {
           AppMethodBeat.o(90313);
           return localc;
         }
       }
-      a.c localc = new a.c(this.Zvl);
-      this.abOZ.b(localc);
+      a.c localc = new a.c(this.ahAf);
+      this.akbR.b(localc);
       AppMethodBeat.o(90313);
       return localc;
     }
@@ -173,17 +173,17 @@ public final class a
       AppMethodBeat.i(90314);
       try
       {
-        if (this.abPb != null) {
-          this.abPb.cancel(true);
+        if (this.akbT != null) {
+          this.akbT.cancel(true);
         }
-        if (this.abPa != null) {
-          this.abPa.shutdownNow();
+        if (this.akbS != null) {
+          this.akbS.shutdownNow();
         }
         return;
       }
       finally
       {
-        this.abOZ.iVJ();
+        this.akbR.kKh();
         AppMethodBeat.o(90314);
       }
     }
@@ -192,18 +192,18 @@ public final class a
   static final class b
     extends g.a
   {
-    final b abPe;
-    private final a.a abPf;
-    private final a.c abPg;
-    final AtomicBoolean abPh;
+    final b akbW;
+    private final a.a akbX;
+    private final a.c akbY;
+    final AtomicBoolean akbZ;
     
     b(a.a parama)
     {
       AppMethodBeat.i(90316);
-      this.abPe = new b();
-      this.abPf = parama;
-      this.abPh = new AtomicBoolean();
-      this.abPg = parama.iVT();
+      this.akbW = new b();
+      this.akbX = parama;
+      this.akbZ = new AtomicBoolean();
+      this.akbY = parama.kKr();
       AppMethodBeat.o(90316);
     }
     
@@ -218,18 +218,18 @@ public final class a
     public final rx.j a(final rx.b.a parama, long paramLong, TimeUnit paramTimeUnit)
     {
       AppMethodBeat.i(90319);
-      if (this.abPe.abQP)
+      if (this.akbW.akdH)
       {
-        parama = d.iWx();
+        parama = d.kKY();
         AppMethodBeat.o(90319);
         return parama;
       }
-      parama = this.abPg.b(new rx.b.a()
+      parama = this.akbY.b(new rx.b.a()
       {
         public final void call()
         {
           AppMethodBeat.i(90315);
-          if (a.b.this.abPe.abQP)
+          if (a.b.this.akbW.akdH)
           {
             AppMethodBeat.o(90315);
             return;
@@ -238,37 +238,37 @@ public final class a
           AppMethodBeat.o(90315);
         }
       }, paramLong, paramTimeUnit);
-      this.abPe.b(parama);
-      paramTimeUnit = this.abPe;
-      parama.abPR.b(new i.b(parama, paramTimeUnit));
+      this.akbW.b(parama);
+      paramTimeUnit = this.akbW;
+      parama.akcJ.b(new i.b(parama, paramTimeUnit));
       AppMethodBeat.o(90319);
       return parama;
     }
     
-    public final void iVJ()
+    public final void kKh()
     {
       AppMethodBeat.i(90317);
-      if (this.abPh.compareAndSet(false, true))
+      if (this.akbZ.compareAndSet(false, true))
       {
-        a.a locala = this.abPf;
-        a.c localc = this.abPg;
-        localc.abPj = (System.nanoTime() + locala.Zvn);
-        locala.abOY.offer(localc);
+        a.a locala = this.akbX;
+        a.c localc = this.akbY;
+        localc.akcb = (System.nanoTime() + locala.ahAh);
+        locala.akbQ.offer(localc);
       }
-      this.abPe.iVJ();
+      this.akbW.kKh();
       AppMethodBeat.o(90317);
     }
     
-    public final boolean iVK()
+    public final boolean kKi()
     {
-      return this.abPe.abQP;
+      return this.akbW.akdH;
     }
   }
   
   static final class c
     extends h
   {
-    long abPj = 0L;
+    long akcb = 0L;
     
     c(ThreadFactory paramThreadFactory)
     {
@@ -278,7 +278,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.internal.c.a
  * JD-Core Version:    0.7.0.1
  */

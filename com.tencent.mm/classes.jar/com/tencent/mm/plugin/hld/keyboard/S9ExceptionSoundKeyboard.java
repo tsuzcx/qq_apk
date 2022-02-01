@@ -12,30 +12,32 @@ import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.b.e;
 import com.tencent.mm.plugin.hld.b.e.a;
 import com.tencent.mm.plugin.hld.f.i;
-import com.tencent.mm.plugin.hld.model.k;
+import com.tencent.mm.plugin.hld.f.l;
+import com.tencent.mm.plugin.hld.model.g;
 import com.tencent.mm.plugin.hld.view.ImeCheckBox;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/S9ExceptionSoundKeyboard;", "Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/hld/view/IImeCheckBoxCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "chooseSound", "", "chooseVibrate", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "Lkotlin/Lazy;", "mBackBtn", "Landroid/widget/RelativeLayout;", "getMBackBtn", "()Landroid/widget/RelativeLayout;", "mBackBtn$delegate", "mSoundBtn", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "getMSoundBtn", "()Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "mSoundBtn$delegate", "getKeyboardType", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "onCheck", "", "v", "Landroid/view/View;", "checked", "onClick", "onCreate", "onResume", "listener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/S9ExceptionSoundKeyboard;", "Lcom/tencent/mm/plugin/hld/keyboard/ImeKeyboard;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/hld/view/IImeCheckBoxCallback;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "chooseSound", "", "chooseVibrate", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "Lkotlin/Lazy;", "mBackBtn", "Landroid/widget/RelativeLayout;", "getMBackBtn", "()Landroid/widget/RelativeLayout;", "mBackBtn$delegate", "mSoundBtn", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "getMSoundBtn", "()Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "mSoundBtn$delegate", "getKeyboardType", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "onCheck", "", "v", "Landroid/view/View;", "checked", "onClick", "onCreate", "onResume", "listener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class S9ExceptionSoundKeyboard
   extends ImeKeyboard
   implements View.OnClickListener, com.tencent.mm.plugin.hld.view.b
 {
-  public static final a Dzy;
-  private final f DyD;
-  private final f Dzq;
-  private boolean Dzw;
-  private boolean Dzx;
-  private final f zdF;
+  public static final S9ExceptionSoundKeyboard.a Jsy;
+  private final j CAI;
+  private final j JrI;
+  private boolean JsA;
+  private final j Jst;
+  private boolean Jsz;
   
   static
   {
-    AppMethodBeat.i(211814);
-    Dzy = new a((byte)0);
-    AppMethodBeat.o(211814);
+    AppMethodBeat.i(312940);
+    Jsy = new S9ExceptionSoundKeyboard.a((byte)0);
+    AppMethodBeat.o(312940);
   }
   
   public S9ExceptionSoundKeyboard(Context paramContext, AttributeSet paramAttributeSet)
@@ -51,68 +53,74 @@ public final class S9ExceptionSoundKeyboard
   private S9ExceptionSoundKeyboard(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(211813);
-    this.zdF = kotlin.g.ar((kotlin.g.a.a)new c(this));
-    this.DyD = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    this.Dzq = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.Dzw = true;
-    this.Dzx = true;
-    AppMethodBeat.o(211813);
+    AppMethodBeat.i(312934);
+    this.CAI = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.JrI = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.Jst = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.Jsz = true;
+    this.JsA = true;
+    AppMethodBeat.o(312934);
   }
   
   private final Button getFinishBt()
   {
-    AppMethodBeat.i(211803);
-    Button localButton = (Button)this.Dzq.getValue();
-    AppMethodBeat.o(211803);
-    return localButton;
+    AppMethodBeat.i(312916);
+    Object localObject = this.Jst.getValue();
+    s.s(localObject, "<get-finishBt>(...)");
+    localObject = (Button)localObject;
+    AppMethodBeat.o(312916);
+    return localObject;
   }
   
   private final RelativeLayout getMBackBtn()
   {
-    AppMethodBeat.i(211800);
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.zdF.getValue();
-    AppMethodBeat.o(211800);
-    return localRelativeLayout;
+    AppMethodBeat.i(312905);
+    Object localObject = this.CAI.getValue();
+    s.s(localObject, "<get-mBackBtn>(...)");
+    localObject = (RelativeLayout)localObject;
+    AppMethodBeat.o(312905);
+    return localObject;
   }
   
   private final ImeCheckBox getMSoundBtn()
   {
-    AppMethodBeat.i(211801);
-    ImeCheckBox localImeCheckBox = (ImeCheckBox)this.DyD.getValue();
-    AppMethodBeat.o(211801);
-    return localImeCheckBox;
+    AppMethodBeat.i(312912);
+    Object localObject = this.JrI.getValue();
+    s.s(localObject, "<get-mSoundBtn>(...)");
+    localObject = (ImeCheckBox)localObject;
+    AppMethodBeat.o(312912);
+    return localObject;
   }
   
   public final void b(com.tencent.mm.plugin.hld.a.c paramc)
   {
-    AppMethodBeat.i(211807);
+    AppMethodBeat.i(312956);
     super.b(paramc);
-    paramc = k.DDb;
-    k.ap(0, 2, 2);
-    AppMethodBeat.o(211807);
+    paramc = com.tencent.mm.plugin.hld.model.k.JvH;
+    com.tencent.mm.plugin.hld.model.k.aL(0, 2, 2);
+    AppMethodBeat.o(312956);
   }
   
   public final c getKeyboardType()
   {
-    return c.Dyt;
+    return c.Jrx;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(211810);
+    AppMethodBeat.i(312967);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/keyboard/S9ExceptionSoundKeyboard", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/keyboard/S9ExceptionSoundKeyboard", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.getId());
+      paramView = null;
       i = a.f.back_btn;
       if (paramView != null) {
         break label85;
       }
-      label54:
+      label48:
       i = a.f.finish_bt;
       if (paramView != null) {
         break label133;
@@ -123,44 +131,44 @@ public final class S9ExceptionSoundKeyboard
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/keyboard/S9ExceptionSoundKeyboard", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(211810);
+        AppMethodBeat.o(312967);
         return;
-        paramView = null;
+        paramView = Integer.valueOf(paramView.getId());
         break;
         if (paramView.intValue() != i) {
-          break label54;
+          break label48;
         }
-        paramView = com.tencent.mm.plugin.hld.model.g.DCm;
-        if (com.tencent.mm.plugin.hld.model.g.eEm() != c.Dys.ordinal())
+        paramView = g.JuL;
+        if (g.fMo() != c.Jrw.ordinal())
         {
-          paramView.a(c.Dys);
+          paramView.a(c.Jrw);
         }
         else
         {
-          localObject = i.DHq;
-          paramView.Ux(i.eEm());
+          localObject = i.JyA;
+          paramView.Yu(i.fMo());
         }
       }
     }
     label133:
-    paramView = k.DDb;
-    if (this.Dzw)
+    paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+    if (this.Jsz)
     {
       i = 4;
       label154:
-      k.ap(i, 2, 2);
-      paramView = com.tencent.mm.plugin.hld.f.l.DHK;
-      com.tencent.mm.plugin.hld.f.l.eHr();
-      com.tencent.mm.plugin.hld.model.g.DCm.eDW();
-      paramView = k.DDb;
-      k.UB(7);
-      paramView = e.Dvq;
-      if (!getMSoundBtn().getSwitchBtn().isCheck()) {
+      com.tencent.mm.plugin.hld.model.k.aL(i, 2, 2);
+      paramView = l.JyV;
+      l.fPa();
+      g.JuL.fLY();
+      paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.Yy(7);
+      paramView = e.JoK;
+      if (!getMSoundBtn().getSwitchBtn().afTT) {
         break label219;
       }
     }
     label219:
-    for (paramView = com.tencent.mm.plugin.hld.model.b.DBo;; paramView = com.tencent.mm.plugin.hld.model.b.DBp)
+    for (paramView = com.tencent.mm.plugin.hld.model.b.Jun;; paramView = com.tencent.mm.plugin.hld.model.b.Juo)
     {
       e.a.a(paramView, 0L, null, 6);
       break;
@@ -171,47 +179,44 @@ public final class S9ExceptionSoundKeyboard
   
   public final void onCreate()
   {
-    AppMethodBeat.i(211805);
+    AppMethodBeat.i(312947);
     super.onCreate();
-    Object localObject = i.DHq;
-    this.Dzw = i.eGD();
-    localObject = i.DHq;
-    this.Dzx = i.eGE();
+    Object localObject = i.JyA;
+    this.Jsz = i.fOp();
+    localObject = i.JyA;
+    this.JsA = i.fOq();
     localObject = getMSoundBtn();
     String str = getContext().getString(a.j.ime_setting_sound_switch);
-    p.j(str, "context.getString(R.stri…ime_setting_sound_switch)");
+    s.s(str, "context.getString(R.stri…ime_setting_sound_switch)");
     ((ImeCheckBox)localObject).setTitle(str);
-    getMSoundBtn().setChecked(this.Dzw);
+    getMSoundBtn().setChecked(this.Jsz);
     getMSoundBtn().setIImeSeekCallback((com.tencent.mm.plugin.hld.view.b)this);
     getMBackBtn().setOnClickListener((View.OnClickListener)this);
     getFinishBt().setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(211805);
+    AppMethodBeat.o(312947);
   }
   
-  public final void t(View paramView, boolean paramBoolean)
+  public final void z(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(211811);
-    p.k(paramView, "v");
+    AppMethodBeat.i(312976);
+    s.u(paramView, "v");
     if ((paramView instanceof ImeCheckBox))
     {
-      i locali = i.DHq;
-      i.fj(paramView);
+      i locali = i.JyA;
+      i.hV(paramView);
       if (((ImeCheckBox)paramView).getId() == a.f.sound_bt)
       {
-        this.Dzw = paramBoolean;
-        paramView = i.DHq;
-        i.te(paramBoolean);
+        this.Jsz = paramBoolean;
+        paramView = i.JyA;
+        i.xp(paramBoolean);
       }
     }
-    AppMethodBeat.o(211811);
+    AppMethodBeat.o(312976);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/S9ExceptionSoundKeyboard$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<Button>
   {
     b(S9ExceptionSoundKeyboard paramS9ExceptionSoundKeyboard)
@@ -220,9 +225,9 @@ public final class S9ExceptionSoundKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/RelativeLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<RelativeLayout>
   {
     c(S9ExceptionSoundKeyboard paramS9ExceptionSoundKeyboard)
@@ -231,9 +236,9 @@ public final class S9ExceptionSoundKeyboard
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/hld/view/ImeCheckBox;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<ImeCheckBox>
   {
     d(S9ExceptionSoundKeyboard paramS9ExceptionSoundKeyboard)

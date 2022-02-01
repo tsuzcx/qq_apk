@@ -7,47 +7,47 @@ public abstract class i
   extends f
   implements d
 {
-  private long aNc;
-  private d bjM;
+  private long cGY;
+  private d ddG;
+  
+  public final int TD()
+  {
+    return this.ddG.TD();
+  }
   
   public final void a(long paramLong1, d paramd, long paramLong2)
   {
     this.timeUs = paramLong1;
-    this.bjM = paramd;
+    this.ddG = paramd;
     paramLong1 = paramLong2;
     if (paramLong2 == 9223372036854775807L) {
       paramLong1 = this.timeUs;
     }
-    this.aNc = paramLong1;
+    this.cGY = paramLong1;
   }
   
-  public final int al(long paramLong)
+  public final List<a> cA(long paramLong)
   {
-    return this.bjM.al(paramLong - this.aNc);
-  }
-  
-  public final List<a> am(long paramLong)
-  {
-    return this.bjM.am(paramLong - this.aNc);
+    return this.ddG.cA(paramLong - this.cGY);
   }
   
   public final void clear()
   {
     super.clear();
-    this.bjM = null;
+    this.ddG = null;
   }
   
-  public final long eX(int paramInt)
+  public final int cz(long paramLong)
   {
-    return this.bjM.eX(paramInt) + this.aNc;
+    return this.ddG.cz(paramLong - this.cGY);
+  }
+  
+  public final long in(int paramInt)
+  {
+    return this.ddG.in(paramInt) + this.cGY;
   }
   
   public abstract void release();
-  
-  public final int ua()
-  {
-    return this.bjM.ua();
-  }
 }
 
 

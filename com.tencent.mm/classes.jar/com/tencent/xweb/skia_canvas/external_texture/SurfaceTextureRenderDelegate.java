@@ -5,6 +5,7 @@ import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.os.SystemClock;
+import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -36,8 +37,8 @@ public class SurfaceTextureRenderDelegate
   private EGLDisplay eglDisplay;
   private EGLSurface fakeEglSurface;
   private volatile boolean frameAvailable;
-  private List<SurfaceTextureRender> mDownStreamSurfaceTextureRenderList;
-  private List<SurfaceTexture> mPendingRemoveSurfaceTextureList;
+  private List<SurfaceRender> mDownStreamSurfaceRenderList;
+  private List<Surface> mPendingRemoveSurfaceList;
   private List<Runnable> mReleaseRunnableList;
   private volatile boolean mShouldRun;
   private SurfaceTexture mUpstreamSurfaceTexture;
@@ -64,20 +65,20 @@ public class SurfaceTextureRenderDelegate
     this.mUpstreamSurfaceTexture = paramSurfaceTexture;
     this.mUpstreamSurfaceTexture.setOnFrameAvailableListener(this);
     this.mReleaseRunnableList = new ArrayList();
-    this.mDownStreamSurfaceTextureRenderList = new ArrayList();
-    this.mPendingRemoveSurfaceTextureList = new ArrayList();
+    this.mDownStreamSurfaceRenderList = new ArrayList();
+    this.mPendingRemoveSurfaceList = new ArrayList();
     this.mShouldRun = true;
     this.mWorkThread = new Thread(this);
     this.mWorkThread.start();
     AppMethodBeat.o(4336);
   }
   
-  public SurfaceTextureRenderDelegate(SurfaceTexture paramSurfaceTexture1, SurfaceTexture paramSurfaceTexture2)
+  public SurfaceTextureRenderDelegate(SurfaceTexture paramSurfaceTexture, Surface paramSurface)
   {
-    this(paramSurfaceTexture1);
-    AppMethodBeat.i(4337);
-    addDownStreamSurfaceTexture(paramSurfaceTexture2);
-    AppMethodBeat.o(4337);
+    this(paramSurfaceTexture);
+    AppMethodBeat.i(213934);
+    addDownStreamSurface(paramSurface);
+    AppMethodBeat.o(213934);
   }
   
   private EGLConfig chooseEglConfig()
@@ -122,9 +123,9 @@ public class SurfaceTextureRenderDelegate
     ((EGL10)localObject1).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, EGL10.EGL_NO_CONTEXT);
     try
     {
-      localObject1 = this.mDownStreamSurfaceTextureRenderList.iterator();
+      localObject1 = this.mDownStreamSurfaceRenderList.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((SurfaceTextureRender)((Iterator)localObject1).next()).deinitGL();
+        ((SurfaceRender)((Iterator)localObject1).next()).deinitGL();
       }
     }
     finally
@@ -250,16 +251,16 @@ public class SurfaceTextureRenderDelegate
     AppMethodBeat.o(4346);
   }
   
-  private void transferToDownStream(List<SurfaceTextureRender> paramList)
+  private void transferToDownStream(List<SurfaceRender> paramList)
   {
     AppMethodBeat.i(4342);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      SurfaceTextureRender localSurfaceTextureRender = (SurfaceTextureRender)paramList.next();
-      localSurfaceTextureRender.init(this.egl, this.eglContext, this.eglDisplay, this.eglConfig);
-      localSurfaceTextureRender.makeCurrent();
-      localSurfaceTextureRender.adjustViewPort();
+      SurfaceRender localSurfaceRender = (SurfaceRender)paramList.next();
+      localSurfaceRender.init(this.egl, this.eglContext, this.eglDisplay, this.eglConfig);
+      localSurfaceRender.makeCurrent();
+      localSurfaceRender.adjustViewPort();
       GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
       GLES20.glClear(16384);
       GLES20.glUseProgram(this.shaderProgram);
@@ -279,25 +280,25 @@ public class SurfaceTextureRenderDelegate
       GLES20.glDrawElements(4, drawOrder.length, 5123, this.drawListBuffer);
       GLES20.glDisableVertexAttribArray(k);
       GLES20.glDisableVertexAttribArray(j);
-      localSurfaceTextureRender.swapBuffer();
+      localSurfaceRender.swapBuffer();
     }
     AppMethodBeat.o(4342);
   }
   
-  public void addDownStreamSurfaceTexture(SurfaceTexture paramSurfaceTexture)
+  public void addDownStreamSurface(Surface paramSurface)
   {
     try
     {
-      AppMethodBeat.i(4339);
-      this.mDownStreamSurfaceTextureRenderList.add(new SurfaceTextureRender(paramSurfaceTexture));
-      new StringBuilder("mDownStreamSurfaceTextureRenderList size is ").append(this.mDownStreamSurfaceTextureRenderList.size());
-      AppMethodBeat.o(4339);
+      AppMethodBeat.i(214068);
+      this.mDownStreamSurfaceRenderList.add(new SurfaceRender(paramSurface));
+      new StringBuilder("mDownStreamSurfaceRenderList size is ").append(this.mDownStreamSurfaceRenderList.size());
+      AppMethodBeat.o(214068);
       return;
     }
     finally
     {
-      paramSurfaceTexture = finally;
-      throw paramSurfaceTexture;
+      paramSurface = finally;
+      throw paramSurface;
     }
   }
   
@@ -332,8 +333,8 @@ public class SurfaceTextureRenderDelegate
     try
     {
       AppMethodBeat.i(4341);
-      int i = this.mDownStreamSurfaceTextureRenderList.size();
-      int j = this.mPendingRemoveSurfaceTextureList.size();
+      int i = this.mDownStreamSurfaceRenderList.size();
+      int j = this.mPendingRemoveSurfaceList.size();
       AppMethodBeat.o(4341);
       return i - j;
     }
@@ -358,19 +359,19 @@ public class SurfaceTextureRenderDelegate
     }
   }
   
-  public void removeDownStreamSurfaceTexture(SurfaceTexture paramSurfaceTexture)
+  public void removeDownStreamSurface(Surface paramSurface)
   {
     try
     {
-      AppMethodBeat.i(4340);
-      this.mPendingRemoveSurfaceTextureList.add(paramSurfaceTexture);
-      AppMethodBeat.o(4340);
+      AppMethodBeat.i(214076);
+      this.mPendingRemoveSurfaceList.add(paramSurface);
+      AppMethodBeat.o(214076);
       return;
     }
     finally
     {
-      paramSurfaceTexture = finally;
-      throw paramSurfaceTexture;
+      paramSurface = finally;
+      throw paramSurface;
     }
   }
   
@@ -385,28 +386,28 @@ public class SurfaceTextureRenderDelegate
       try
       {
         ArrayList localArrayList1 = new ArrayList();
-        Iterator localIterator2 = this.mDownStreamSurfaceTextureRenderList.iterator();
+        Iterator localIterator2 = this.mDownStreamSurfaceRenderList.iterator();
         while (localIterator2.hasNext())
         {
-          SurfaceTextureRender localSurfaceTextureRender = (SurfaceTextureRender)localIterator2.next();
-          SurfaceTexture localSurfaceTexture = localSurfaceTextureRender.getSurface();
-          if (this.mPendingRemoveSurfaceTextureList.contains(localSurfaceTexture)) {
-            localArrayList1.add(localSurfaceTextureRender);
+          SurfaceRender localSurfaceRender = (SurfaceRender)localIterator2.next();
+          Surface localSurface = localSurfaceRender.getSurface();
+          if (this.mPendingRemoveSurfaceList.contains(localSurface)) {
+            localArrayList1.add(localSurfaceRender);
           }
         }
-        this.mDownStreamSurfaceTextureRenderList.removeAll(localCollection);
+        this.mDownStreamSurfaceRenderList.removeAll(localCollection);
       }
       finally
       {
         AppMethodBeat.o(4343);
       }
-      this.mPendingRemoveSurfaceTextureList.clear();
+      this.mPendingRemoveSurfaceList.clear();
       if (this.frameAvailable)
       {
         this.mUpstreamSurfaceTexture.updateTexImage();
         this.mUpstreamSurfaceTexture.getTransformMatrix(this.videoTextureTransform);
         this.frameAvailable = false;
-        ArrayList localArrayList2 = new ArrayList(this.mDownStreamSurfaceTextureRenderList);
+        ArrayList localArrayList2 = new ArrayList(this.mDownStreamSurfaceRenderList);
         transferToDownStream(localArrayList2);
       }
       for (;;)
@@ -437,7 +438,7 @@ public class SurfaceTextureRenderDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.external_texture.SurfaceTextureRenderDelegate
  * JD-Core Version:    0.7.0.1
  */

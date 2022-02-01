@@ -8,50 +8,40 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class p
   implements f
 {
-  public int FbU;
-  private int FbV;
-  private int FbW;
-  private int FbX;
-  private int FbY;
+  public int KXD;
+  private int KXE;
+  private int KXF;
+  private int KXG;
+  private int KXH;
   public volatile int frameCount;
-  private boolean lhV;
-  public boolean lhW;
-  private int targetHeight;
-  private int targetWidth;
+  private boolean nME;
+  public boolean nMF;
+  private int nxO;
+  private int nxP;
   private long tick;
-  private long urt;
+  private long xxO;
   
   public p(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
   {
     AppMethodBeat.i(89576);
-    this.FbU = -1;
+    this.KXD = -1;
     this.frameCount = 0;
-    this.urt = 0L;
+    this.xxO = 0L;
     this.tick = 0L;
-    this.FbV = -1;
-    this.FbW = -1;
-    this.FbX = -1;
-    this.FbY = -1;
-    this.lhV = paramBoolean1;
-    this.FbV = paramInt1;
-    this.targetWidth = paramInt2;
-    this.targetHeight = paramInt3;
-    this.lhW = paramBoolean2;
-    Log.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.FbV), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.KXE = -1;
+    this.KXF = -1;
+    this.KXG = -1;
+    this.KXH = -1;
+    this.nME = paramBoolean1;
+    this.KXE = paramInt1;
+    this.nxO = paramInt2;
+    this.nxP = paramInt3;
+    this.nMF = paramBoolean2;
+    Log.i("MicroMsg.MMSightX264YUVRecorder", "create MMSightX264YUVRecorder, needRotateEachFrame: %s, initRotate: %s, targetWidth: %s, targetHeight: %s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(this.KXE), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(89576);
   }
   
-  public final void P(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(89581);
-    Log.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.FbW = paramInt1;
-    this.FbX = paramInt2;
-    this.FbY = paramInt3;
-    AppMethodBeat.o(89581);
-  }
-  
-  public final int Xc(int paramInt)
+  public final int abe(int paramInt)
   {
     AppMethodBeat.i(89577);
     if (paramInt < 0)
@@ -60,11 +50,11 @@ public class p
       AppMethodBeat.o(89577);
       return -1;
     }
-    this.FbU = paramInt;
+    this.KXD = paramInt;
     try
     {
       this.frameCount = 0;
-      this.urt = 0L;
+      this.xxO = 0L;
       AppMethodBeat.o(89577);
       return 0;
     }
@@ -74,17 +64,27 @@ public class p
     }
   }
   
-  public final long aUC()
+  public final void ae(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(89581);
+    Log.i("MicroMsg.MMSightX264YUVRecorder", "resume, newRotate: %s, frameWidth: %s, frameHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.KXF = paramInt1;
+    this.KXG = paramInt2;
+    this.KXH = paramInt3;
+    AppMethodBeat.o(89581);
+  }
+  
+  public final long bpj()
   {
     AppMethodBeat.i(89580);
-    if (0L == this.urt)
+    if (0L == this.xxO)
     {
       Log.w("MicroMsg.MMSightX264YUVRecorder", "do not start record");
       AppMethodBeat.o(89580);
       return 0L;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.urt;
+    long l2 = this.xxO;
     AppMethodBeat.o(89580);
     return l1 - l2;
   }
@@ -92,12 +92,12 @@ public class p
   public final void clear()
   {
     AppMethodBeat.i(89582);
-    SightVideoJNI.releaseBigSightDataBufferLock(this.FbU);
-    this.FbU = -1;
+    SightVideoJNI.releaseBigSightDataBufferLock(this.KXD);
+    this.KXD = -1;
     try
     {
       this.frameCount = 0;
-      this.urt = 0L;
+      this.xxO = 0L;
       AppMethodBeat.o(89582);
       return;
     }
@@ -107,11 +107,11 @@ public class p
     }
   }
   
-  public final void f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public final void h(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89579);
     this.tick = Util.currentTicks();
-    if (this.FbU < 0)
+    if (this.KXD < 0)
     {
       Log.e("MicroMsg.MMSightX264YUVRecorder", "write data error, yuv buffer id error");
       AppMethodBeat.o(89579);
@@ -131,40 +131,40 @@ public class p
       try
       {
         this.frameCount += 1;
-        m = this.FbV;
-        bool1 = this.lhV;
+        m = this.KXE;
+        bool1 = this.nME;
         if (bool1) {
           break label348;
         }
-        if ((this.FbW == -1) || (this.FbW == this.FbV)) {
+        if ((this.KXF == -1) || (this.KXF == this.KXE)) {
           break label342;
         }
         bool1 = true;
-        i = this.FbW;
-        if (this.FbV <= 180)
+        i = this.KXF;
+        if (this.KXE <= 180)
         {
-          i -= this.FbV;
+          i -= this.KXE;
           m = Math.max(0, i);
           if (m < 360) {
             break label518;
           }
           i = 0;
           m = i;
-          SightVideoJNI.setRotateForBufId(this.FbU, m);
+          SightVideoJNI.setRotateForBufId(this.KXD, m);
           if (!bool1) {
             break label383;
           }
           if ((m != 0) && (m != 180)) {
             break label374;
           }
-          i = this.targetWidth;
+          i = this.nxO;
           if (!bool1) {
             break label423;
           }
           if ((m != 0) && (m != 180)) {
             break label414;
           }
-          j = this.targetHeight;
+          j = this.nxP;
           if (!bool1) {
             break label461;
           }
@@ -183,10 +183,10 @@ public class p
             break label512;
           }
           bool2 = false;
-          if (this.lhW) {
+          if (this.nMF) {
             SightVideoJNI.mirrorCameraData(paramArrayOfByte, k, paramInt2, true);
           }
-          SightVideoJNI.writeYuvDataForMMSight(this.FbU, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
+          SightVideoJNI.writeYuvDataForMMSight(this.KXD, paramArrayOfByte, paramInt1, i, j, bool1, bool2, k, paramInt2);
           Log.d("MicroMsg.MMSightX264YUVRecorder", "write data use %dms", new Object[] { Long.valueOf(Util.ticksToNow(this.tick)) });
           AppMethodBeat.o(89579);
           return;
@@ -196,7 +196,7 @@ public class p
       {
         AppMethodBeat.o(89579);
       }
-      i += 360 - this.FbV;
+      i += 360 - this.KXE;
       continue;
       label342:
       boolean bool1 = false;
@@ -204,35 +204,35 @@ public class p
       label348:
       label487:
       label490:
-      if (this.FbW == -1)
+      if (this.KXF == -1)
       {
-        i = this.FbV;
+        i = this.KXE;
       }
       else
       {
-        i = this.FbW;
+        i = this.KXF;
         continue;
         label374:
-        i = this.targetHeight;
+        i = this.nxP;
         continue;
         label383:
         if ((m == 0) || (m == 180))
         {
-          i = this.targetHeight;
+          i = this.nxP;
         }
         else
         {
-          i = this.targetWidth;
+          i = this.nxO;
           continue;
-          j = this.targetWidth;
+          j = this.nxO;
           continue;
           if ((m == 0) || (m == 180))
           {
-            j = this.targetWidth;
+            j = this.nxO;
           }
           else
           {
-            j = this.targetHeight;
+            j = this.nxP;
             continue;
             k = paramInt3;
             continue;
@@ -263,8 +263,8 @@ public class p
   public final void start()
   {
     AppMethodBeat.i(89578);
-    if (0L == this.urt) {
-      this.urt = System.currentTimeMillis();
+    if (0L == this.xxO) {
+      this.xxO = System.currentTimeMillis();
     }
     AppMethodBeat.o(89578);
   }
@@ -274,7 +274,7 @@ public class p
     try
     {
       this.frameCount = 0;
-      this.urt = 0L;
+      this.xxO = 0L;
       return;
     }
     finally {}

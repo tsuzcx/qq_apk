@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class s
   extends m
 {
-  public String OIe;
-  public String OIf;
-  public BindCardOrder OIg;
+  public String VxR;
+  public String VxS;
+  public BindCardOrder VxT;
   public String resultMsg;
   
   public s(BindCardOrder paramBindCardOrder, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69928);
-    this.OIg = paramBindCardOrder;
+    this.VxT = paramBindCardOrder;
     paramBindCardOrder = new HashMap();
     paramBindCardOrder.put("activity_id", paramString1);
     paramBindCardOrder.put("award_id", paramString2);
@@ -54,16 +54,16 @@ public final class s
     AppMethodBeat.i(69929);
     if ((paramJSONObject != null) && (paramInt == 0))
     {
-      this.OIe = paramJSONObject.optString("result_code");
+      this.VxR = paramJSONObject.optString("result_code");
       this.resultMsg = paramJSONObject.optString("result_msg");
-      this.OIf = paramJSONObject.optString("alert_wording");
+      this.VxS = paramJSONObject.optString("alert_wording");
     }
     AppMethodBeat.o(69929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.s
  * JD-Core Version:    0.7.0.1
  */

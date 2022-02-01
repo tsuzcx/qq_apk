@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.teenmode.ui;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -14,25 +12,27 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.b.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.teenmode.a.a;
 import com.tencent.mm.plugin.teenmode.a.d;
 import com.tencent.mm.plugin.teenmode.a.e;
 import com.tencent.mm.plugin.teenmode.a.g;
-import com.tencent.mm.pluginsdk.ui.span.o;
+import com.tencent.mm.plugin.teenmode.b.i;
+import com.tencent.mm.pluginsdk.ui.span.s;
+import com.tencent.mm.protocal.protobuf.abs;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 
 public class SettingsTeenModeIntro
   extends MMActivity
 {
-  private TextView MtA;
-  private CheckBox Mtz;
-  private Button wzY;
+  private CheckBox Psx;
+  private TextView Psy;
+  private Button zWj;
   
   public int getForceOrientation()
   {
@@ -41,101 +41,91 @@ public class SettingsTeenModeIntro
   
   public int getLayoutId()
   {
-    return a.e.MsD;
+    return a.e.SWn;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(259441);
+    AppMethodBeat.i(279055);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.a.white));
-    this.wzY = ((Button)findViewById(a.d.Msr));
-    this.wzY.setEnabled(false);
-    this.wzY.setOnClickListener(new View.OnClickListener()
+    this.zWj = ((Button)findViewById(a.d.SVX));
+    this.zWj.setEnabled(false);
+    this.zWj.setOnClickListener(new View.OnClickListener()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void onClick(final View paramAnonymousView)
       {
-        AppMethodBeat.i(259290);
+        AppMethodBeat.i(279116);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeIntro$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("key_scenen", 3);
-        c.b(SettingsTeenModeIntro.this, "teenmode", ".ui.TeenModeVerifyPwdUI", paramAnonymousView);
-        h.ZvG.p(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(259469);
-            SettingsTeenModeIntro.this.finish();
-            AppMethodBeat.o(259469);
-          }
-        }, 200L);
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeIntro$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        paramAnonymousView = k.a(SettingsTeenModeIntro.this.getContext(), SettingsTeenModeIntro.this.getString(a.g.loading_tips_1), false, null);
+        new com.tencent.mm.plugin.teenmode.b.f().bFJ().a(SettingsTeenModeIntro.this).b(new com.tencent.mm.vending.c.a() {});
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeIntro$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(259290);
+        AppMethodBeat.o(279116);
       }
     });
-    this.Mtz = ((CheckBox)findViewById(a.d.Msj));
-    Util.expandViewTouchArea(this.Mtz, 250, 250, 250, 250);
-    this.Mtz.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.Psx = ((CheckBox)findViewById(a.d.law_detail_cb));
+    Util.expandViewTouchArea(this.Psx, 250, 250, 250, 250);
+    this.Psx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(259452);
+        AppMethodBeat.i(279117);
         if (paramAnonymousBoolean)
         {
           SettingsTeenModeIntro.a(SettingsTeenModeIntro.this).setEnabled(true);
-          AppMethodBeat.o(259452);
+          AppMethodBeat.o(279117);
           return;
         }
         SettingsTeenModeIntro.a(SettingsTeenModeIntro.this).setEnabled(false);
-        AppMethodBeat.o(259452);
+        AppMethodBeat.o(279117);
       }
     });
-    Object localObject = getString(a.g.MsY);
-    String str = getString(a.g.MsZ);
+    Object localObject = getString(a.g.SXu);
+    String str = getString(a.g.SXv);
     int i = ((String)localObject).lastIndexOf(str);
     if (i < 0)
     {
-      AppMethodBeat.o(259441);
+      AppMethodBeat.o(279055);
       return;
     }
     int j = str.length();
     localObject = new SpannableStringBuilder((CharSequence)localObject);
-    ((SpannableStringBuilder)localObject).setSpan(new com.tencent.mm.plugin.teenmode.b.a()
+    ((SpannableStringBuilder)localObject).setSpan(new i()
     {
-      public final void eKQ()
+      public final void fSP()
       {
-        AppMethodBeat.i(259554);
+        AppMethodBeat.i(279132);
         SettingsTeenModeIntro.b(SettingsTeenModeIntro.this);
-        AppMethodBeat.o(259554);
+        AppMethodBeat.o(279132);
       }
     }, i, j + i, 18);
-    this.MtA = ((TextView)findViewById(a.d.Msk));
-    this.MtA.setOnTouchListener(new o(this));
-    this.MtA.setClickable(true);
-    this.MtA.setText((CharSequence)localObject);
+    this.Psy = ((TextView)findViewById(a.d.law_detail_tv));
+    this.Psy.setOnTouchListener(new s(this));
+    this.Psy.setClickable(true);
+    this.Psy.setText((CharSequence)localObject);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(259430);
+        AppMethodBeat.i(279120);
         SettingsTeenModeIntro.this.onBackPressed();
-        AppMethodBeat.o(259430);
+        AppMethodBeat.o(279120);
         return true;
       }
     });
-    AppMethodBeat.o(259441);
+    AppMethodBeat.o(279055);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(259438);
+    AppMethodBeat.i(279041);
     super.onCreate(paramBundle);
     setMMTitle("");
     initView();
-    AppMethodBeat.o(259438);
+    AppMethodBeat.o(279041);
   }
   
   public void onPointerCaptureChanged(boolean paramBoolean) {}
@@ -148,7 +138,7 @@ public class SettingsTeenModeIntro
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.ui.SettingsTeenModeIntro
  * JD-Core Version:    0.7.0.1
  */

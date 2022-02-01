@@ -7,11 +7,15 @@ public abstract interface a
 {
   public abstract void a(Intent paramIntent, BaseSmallView paramBaseSmallView);
   
-  public abstract boolean eIT();
+  public abstract boolean fQS();
+  
+  public abstract void fQT();
+  
+  public abstract void fQU();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.a
  * JD-Core Version:    0.7.0.1
  */

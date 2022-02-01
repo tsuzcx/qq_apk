@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.taskbar;
 
 public final class d$c
 {
-  public static final int Mmj = 2131235367;
-  public static final int Mmk = 2131235368;
-  public static final int Mml = 2131235369;
-  public static final int Mmm = 2131235370;
-  public static final int Mmn = 2131235371;
-  public static final int Mmo = 2131235372;
+  public static final int SPA = 2131234553;
+  public static final int SPB = 2131234554;
+  public static final int SPC = 2131234555;
+  public static final int SPD = 2131234556;
+  public static final int SPE = 2131234557;
+  public static final int SPz = 2131234552;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.d.c
  * JD-Core Version:    0.7.0.1
  */

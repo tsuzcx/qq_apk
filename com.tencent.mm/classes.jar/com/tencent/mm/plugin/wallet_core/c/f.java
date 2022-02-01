@@ -1,60 +1,59 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.ue;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.vu;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.protocal.protobuf.bqk;
-import com.tencent.mm.protocal.protobuf.bql;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.cfb;
+import com.tencent.mm.protocal.protobuf.cfc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.LinkedList;
 
 public final class f
-  extends q
+  extends p
   implements m
 {
-  public LinkedList<String> OHM;
-  private i callback;
-  private d rr;
+  public LinkedList<String> Vxy;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
   public f(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(69897);
     Log.i("MicroMsg.NetSceneGetBankcardLogo", "NetSceneGetBankcardLogo call");
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bqk();
-    ((d.a)localObject).lBV = new bql();
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/bankresource";
-    ((d.a)localObject).funcId = getType();
-    this.rr = ((d.a)localObject).bgN();
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cfb();
+    ((c.a)localObject).otF = new cfc();
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/bankresource";
+    ((c.a)localObject).funcId = getType();
+    this.rr = ((c.a)localObject).bEF();
     this.rr.setIsUserCmd(true);
-    localObject = (bqk)d.b.b(this.rr.lBR);
-    ((bqk)localObject).TbA = paramLinkedList;
-    ((bqk)localObject).Sdp = k.gJe();
-    if (!e.hod()) {
-      ((bqk)localObject).Sjh = e.hoe();
+    localObject = (cfb)c.b.b(this.rr.otB);
+    ((cfb)localObject).aaoM = paramLinkedList;
+    ((cfb)localObject).Zbi = k.iis();
+    if (!e.iOV()) {
+      ((cfb)localObject).Zhn = e.iOW();
     }
-    com.tencent.mm.wallet_core.ui.g.azK(42);
+    i.aGA(42);
     AppMethodBeat.o(69897);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(69898);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69898);
     return i;
@@ -71,17 +70,17 @@ public final class f
     Log.i("MicroMsg.NetSceneGetBankcardLogo", "NetSceneGetBankcardLogo onGYNetEnd,errType=" + paramInt2 + "errCode=" + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bql)d.c.b(((d)params).lBS);
-      Log.i("MicroMsg.NetSceneGetBankcardLogo", "respone %s", new Object[] { params.TbB });
-      this.OHM = params.OHM;
-      paramArrayOfByte = this.OHM;
+      params = (cfc)c.c.b(((c)params).otC);
+      Log.i("MicroMsg.NetSceneGetBankcardLogo", "respone %s", new Object[] { params.aaoN });
+      this.Vxy = params.Vxy;
+      paramArrayOfByte = this.Vxy;
       if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0))
       {
         Log.d("MicroMsg.NetSceneGetBankcardLogo", "empty bank logo list");
-        h.aHH();
-        h.aHG().aHp().set(ar.a.Vlo, Util.nullAs(params.TbB, ""));
-        h.aHH();
-        h.aHG().aHp().set(ar.a.Vlp, Long.valueOf(System.currentTimeMillis() / 1000L));
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acMI, Util.nullAs(params.aaoN, ""));
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acMJ, Long.valueOf(System.currentTimeMillis() / 1000L));
       }
     }
     for (;;)
@@ -89,11 +88,11 @@ public final class f
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(69899);
       return;
-      ue localue = new ue();
-      localue.fTu.fTw = paramArrayOfByte;
-      EventCenter.instance.publish(localue);
+      vu localvu = new vu();
+      localvu.hZs.hZu = paramArrayOfByte;
+      localvu.publish();
       break;
-      com.tencent.mm.wallet_core.ui.g.azK(43);
+      i.aGA(43);
     }
   }
 }

@@ -7,14 +7,14 @@ import com.tencent.mm.sdk.platformtools.WeChatPermissions;
 
 public final class a
 {
-  public static final String CfL;
-  public static final String CfM;
+  public static final String HRS;
+  public static final String HRT;
   
   static
   {
     AppMethodBeat.i(40810);
-    CfL = WeChatPermissions.PERMISSION_MM_MESSAGE();
-    CfM = c.c(c.a.Czw) + "message/";
+    HRS = WeChatPermissions.PERMISSION_MM_MESSAGE();
+    HRT = c.c(c.a.Itm) + "message/";
     AppMethodBeat.o(40810);
   }
 }

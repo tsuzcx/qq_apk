@@ -2,44 +2,44 @@ package com.tencent.mm.picker.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.picker.d.c;
+import com.tencent.mm.picker.d.d;
 import com.tencent.mm.picker.f.b;
 
 public final class a
 {
-  private com.tencent.mm.picker.c.a mBU;
+  private com.tencent.mm.picker.c.a pyC;
   
-  public a(Context paramContext, c paramc)
+  public a(Context paramContext, d paramd)
   {
     AppMethodBeat.i(175328);
-    this.mBU = new com.tencent.mm.picker.c.a(1);
-    this.mBU.context = paramContext;
-    this.mBU.mBW = paramc;
+    this.pyC = new com.tencent.mm.picker.c.a(1);
+    this.pyC.context = paramContext;
+    this.pyC.pyE = paramd;
     AppMethodBeat.o(175328);
   }
   
   public final void a(b paramb)
   {
     AppMethodBeat.i(175329);
-    paramb.a(this.mBU);
+    paramb.a(this.pyC);
     AppMethodBeat.o(175329);
   }
   
-  public final a xO(int paramInt)
+  public final a xT(int paramInt)
   {
-    this.mBU.mBx = paramInt;
+    this.pyC.pyf = paramInt;
     return this;
   }
   
-  public final a xP(int paramInt)
+  public final a xU(int paramInt)
   {
-    this.mBU.option = paramInt;
+    this.pyC.option = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.picker.b.a
  * JD-Core Version:    0.7.0.1
  */

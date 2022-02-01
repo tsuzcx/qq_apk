@@ -1,7 +1,5 @@
 package com.tencent.kinda.framework.widget.base;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.e;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.kinda.framework.R.id;
 import com.tencent.kinda.framework.widget.tools.ActivityController;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -27,10 +25,10 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.a.d;
+import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import com.tenpay.android.wechat.TenpaySecureEditText.EditState;
@@ -41,7 +39,7 @@ import java.util.ListIterator;
 public abstract class BaseFrActivity
   extends MMActivity
 {
-  public static final int HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 270);
+  public static final int HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 270);
   public static final String TAG = "MicroMsg.BaseFrActivity";
   private final int PWD_INPUT_VIEW_AND_KEYBOARD_GAP_PX = 26;
   private boolean isDestroyByThisFinish = false;
@@ -186,7 +184,7 @@ public abstract class BaseFrActivity
       {
         public void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(262846);
+          AppMethodBeat.i(226627);
           paramView.setVisibility(8);
           if (this.val$tempTenpayKBStateListener != null) {
             this.val$tempTenpayKBStateListener.onVisibleStateChange(false);
@@ -194,7 +192,7 @@ public abstract class BaseFrActivity
           if (this.val$tempTenpayKBStateCallBackListener != null) {
             this.val$tempTenpayKBStateCallBackListener.onCallBackKinda(false, paramView.getHeight());
           }
-          AppMethodBeat.o(262846);
+          AppMethodBeat.o(226627);
         }
         
         public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
@@ -262,8 +260,8 @@ public abstract class BaseFrActivity
       int[] arrayOfInt = new int[2];
       paramView2.getLocationInWindow(arrayOfInt);
       int i = arrayOfInt[1] + paramView2.getHeight();
-      int j = com.tencent.mm.ci.a.ks(getContext());
-      paramInt = j - i - com.tencent.mm.ci.a.fromDPToPix(getContext(), paramInt);
+      int j = com.tencent.mm.cd.a.mt(getContext());
+      paramInt = j - i - com.tencent.mm.cd.a.fromDPToPix(getContext(), paramInt);
       com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.BaseFrActivity", "scrollToFormEditPosAfterShowTenPay, editText locationY: %s, height: %s, diff: %s, hardcodeKeyboardHeight: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt), Integer.valueOf(HARDCODE_TENPAY_KEYBOARD_HEIGHT) });
       if ((paramInt > 0) && (paramInt < HARDCODE_TENPAY_KEYBOARD_HEIGHT))
       {
@@ -273,9 +271,9 @@ public abstract class BaseFrActivity
         {
           public void run()
           {
-            AppMethodBeat.i(264807);
+            AppMethodBeat.i(226619);
             paramView1.scrollBy(0, paramInt);
-            AppMethodBeat.o(264807);
+            AppMethodBeat.o(226619);
           }
         });
       }
@@ -287,13 +285,11 @@ public abstract class BaseFrActivity
     setEditFocusListener(paramView, paramInt, paramBoolean, true);
   }
   
-  @TargetApi(14)
   public void setEditFocusListener(View paramView, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     setEditFocusListener(paramView, paramInt, paramBoolean1, paramBoolean2, null, false);
   }
   
-  @TargetApi(14)
   public void setEditFocusListener(final View paramView, final int paramInt, final boolean paramBoolean1, final boolean paramBoolean2, final MMFragment paramMMFragment, boolean paramBoolean3)
   {
     final MyKeyboardWindow localMyKeyboardWindow = getKeyboard(paramMMFragment);
@@ -319,7 +315,7 @@ public abstract class BaseFrActivity
         if (localObject == null) {
           break label195;
         }
-        g.setNoSystemInputOnEditText((EditText)localObject);
+        i.setNoSystemInputOnEditText((EditText)localObject);
         paramMMFragment = new WeakReference(paramMMFragment);
         ((EditText)localObject).setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
@@ -349,10 +345,10 @@ public abstract class BaseFrActivity
                   if (((BaseFrActivity.1.this.val$parent instanceof WalletFormView)) && (Build.VERSION.SDK_INT >= 14))
                   {
                     localObject = (WalletFormView)BaseFrActivity.1.this.val$parent;
-                    if (((z.bdq()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!z.bdq()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
-                      break label331;
+                    if (((z.bBi()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!z.bBi()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
+                      break label339;
                     }
-                    localObject = d.hJh();
+                    localObject = new c();
                     BaseFrActivity.1.this.val$mKeyboard.setSecureAccessibility((View.AccessibilityDelegate)localObject);
                     BaseFrActivity.1.this.val$hintTv.setAccessibilityDelegate((View.AccessibilityDelegate)localObject);
                   }
@@ -360,7 +356,7 @@ public abstract class BaseFrActivity
                   {
                     if (((BaseFrActivity.1.this.val$parent instanceof EditHintPasswdView)) && (Build.VERSION.SDK_INT >= 14))
                     {
-                      localObject = d.hJh();
+                      localObject = new c();
                       BaseFrActivity.1.this.val$mKeyboard.setSecureAccessibility((View.AccessibilityDelegate)localObject);
                       BaseFrActivity.1.this.val$hintTv.setAccessibilityDelegate((View.AccessibilityDelegate)localObject);
                     }
@@ -369,7 +365,7 @@ public abstract class BaseFrActivity
                     ((InputMethodManager)BaseFrActivity.this.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
                     AppMethodBeat.o(18756);
                     return;
-                    label331:
+                    label339:
                     BaseFrActivity.1.this.val$mKeyboard.resetSecureAccessibility();
                     BaseFrActivity.1.this.val$hintTv.setAccessibilityDelegate(null);
                   }
@@ -452,8 +448,8 @@ public abstract class BaseFrActivity
           {
             AppMethodBeat.i(18759);
             b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/BaseFrActivity$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/BaseFrActivity$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             if ((!localView1.isShown()) && (!paramBoolean1))
             {
               BaseFrActivity.this.showTenpayKB(localView1, paramMMFragment);
@@ -480,8 +476,8 @@ public abstract class BaseFrActivity
           {
             AppMethodBeat.i(18760);
             b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/BaseFrActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/BaseFrActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
             BaseFrActivity.this.hideTenpayKB(localView1, paramMMFragment);
             if (BaseFrActivity.this.m_scrollViewBecouseOfKeyBoard != null)
             {
@@ -529,7 +525,7 @@ public abstract class BaseFrActivity
       {
         public void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(264244);
+          AppMethodBeat.i(226622);
           com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.BaseFrActivity", "keyboard anim end");
           if (paramWeakReference != null) {
             paramWeakReference.onVisibleStateChange(true);
@@ -537,17 +533,17 @@ public abstract class BaseFrActivity
           if (localIWalletTenpayKBStateCallBackListener != null) {
             localIWalletTenpayKBStateCallBackListener.onCallBackKinda(true, paramView.getHeight());
           }
-          AppMethodBeat.o(264244);
+          AppMethodBeat.o(226622);
         }
         
         public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
         public void onAnimationStart(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(264243);
+          AppMethodBeat.i(226620);
           com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.BaseFrActivity", "keyboard anim start");
           paramView.setVisibility(0);
-          AppMethodBeat.o(264243);
+          AppMethodBeat.o(226620);
         }
       });
       paramView.startAnimation(localAnimation);
@@ -561,7 +557,15 @@ public abstract class BaseFrActivity
         this.mTenpayKBStateListener.onVisibleStateChange(true);
       }
     } while (this.mTenpayKBStateCallBackListener == null);
-    this.mTenpayKBStateCallBackListener.onCallBackKinda(true, paramView.getHeight());
+    paramView.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(226623);
+        BaseFrActivity.this.mTenpayKBStateCallBackListener.onCallBackKinda(true, paramView.getHeight());
+        AppMethodBeat.o(226623);
+      }
+    });
   }
   
   public void showVKB()
@@ -589,7 +593,7 @@ public abstract class BaseFrActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.BaseFrActivity
  * JD-Core Version:    0.7.0.1
  */

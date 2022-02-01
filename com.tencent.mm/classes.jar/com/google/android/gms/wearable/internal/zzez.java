@@ -4,13 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.net.Uri;
-import androidx.core.f.g;
+import androidx.core.f.f;
 import com.google.android.gms.common.api.GoogleApi.Settings;
 import com.google.android.gms.common.api.internal.ListenerHolder;
 import com.google.android.gms.common.api.internal.ListenerHolders;
 import com.google.android.gms.common.internal.PendingResultUtil;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.MessageClient;
@@ -20,7 +19,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class zzez
   extends MessageClient
 {
-  @VisibleForTesting
   private final MessageApi zzei;
   
   public zzez(Activity paramActivity, GoogleApi.Settings paramSettings)
@@ -59,7 +57,7 @@ public final class zzez
   public final Task<Void> addListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener, Uri paramUri, int paramInt)
   {
     AppMethodBeat.i(101284);
-    g.checkNotNull(paramUri, "uri must not be null");
+    f.checkNotNull(paramUri, "uri must not be null");
     if ((paramInt == 0) || (paramInt == 1)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -88,7 +86,7 @@ public final class zzez
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzez
  * JD-Core Version:    0.7.0.1
  */

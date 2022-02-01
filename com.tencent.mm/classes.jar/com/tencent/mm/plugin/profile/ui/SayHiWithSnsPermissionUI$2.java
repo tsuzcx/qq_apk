@@ -1,37 +1,30 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class SayHiWithSnsPermissionUI$2
-  implements f.c
+  implements View.OnClickListener
 {
   SayHiWithSnsPermissionUI$2(SayHiWithSnsPermissionUI paramSayHiWithSnsPermissionUI) {}
   
-  public final void g(boolean paramBoolean, String paramString)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(288072);
-    this.HcH.hideVKB();
-    if (!paramBoolean)
-    {
-      paramString = "https://" + WeChatHosts.domainString(R.l.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/newreadtemplate?t=contact/faq1&wechat_real_lang=" + LocaleUtil.getCurrentLanguage(this.HcH);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramString);
-      localIntent.putExtra("showShare", false);
-      localIntent.putExtra("show_bottom", false);
-      c.b(this.HcH.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
-    }
-    AppMethodBeat.o(288072);
+    AppMethodBeat.i(305678);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    SayHiWithSnsPermissionUI.t(this.NaS);
+    a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(305678);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI.2
  * JD-Core Version:    0.7.0.1
  */

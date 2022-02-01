@@ -2,11 +2,10 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.sf;
+import com.tencent.mm.autogen.a.tv;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
@@ -69,25 +68,25 @@ public final class h
       }
       i = 3;
       break label91;
-      WatchDogPushReceiver.bpG();
+      WatchDogPushReceiver.bNm();
       continue;
-      paramContext = new sf();
-      paramContext.fRM.action = 1;
-      EventCenter.instance.publish(paramContext);
+      paramContext = new tv();
+      paramContext.hXK.action = 1;
+      paramContext.publish();
       continue;
-      paramContext = new sf();
-      paramContext.fRM.action = 3;
-      EventCenter.instance.publish(paramContext);
+      paramContext = new tv();
+      paramContext.hXK.action = 3;
+      paramContext.publish();
       continue;
-      paramContext = new sf();
-      paramContext.fRM.action = 2;
-      EventCenter.instance.publish(paramContext);
+      paramContext = new tv();
+      paramContext.hXK.action = 2;
+      paramContext.publish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.console.a.h
  * JD-Core Version:    0.7.0.1
  */

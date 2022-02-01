@@ -17,9 +17,9 @@ final class BindQQUI$5
   {
     AppMethodBeat.i(109973);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/bind/ui/BindQQUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    MMWizardActivity.aH(this.mTl, new Intent(this.mTl, VerifyQQUI.class));
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/BindQQUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    MMWizardActivity.aQ(this.pPS, new Intent(this.pPS, VerifyQQUI.class));
     a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindQQUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109973);
   }

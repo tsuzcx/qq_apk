@@ -1,59 +1,42 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import com.tencent.luggage.bridge.k;
+import android.content.Context;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.plugin.webview.f.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.n;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public abstract class bs<T extends g>
-  extends br<T>
+public class bs
+  extends bw<g>
 {
-  public final void a(b<T>.a paramb)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(b<g>.a paramb)
   {
-    JSONObject localJSONObject = paramb.crh.cqn;
-    String str = ((g)paramb.crg).getUrl();
-    Object localObject1 = ((g)paramb.crg).gUA();
-    if (localObject1 != null) {}
-    label160:
-    Object localObject2;
-    for (localObject1 = ((c)localObject1).bld(str);; localObject2 = null)
+    AppMethodBeat.i(78637);
+    Log.i("MicroMsg.JsApiShowOptionMenu", "invoke");
+    n localn = ((g)paramb.eiY).iuf();
+    if (localn == null)
     {
-      if (Util.isNullOrNil((String)localObject1)) {
-        localObject1 = str;
-      }
-      for (;;)
-      {
-        GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.LZ(((g)paramb.crg).cDu());
-        if (localGameWebPerformanceInfo != null) {
-          localGameWebPerformanceInfo.jTz = 1;
-        }
-        try
-        {
-          localJSONObject.put("currentUrl", str);
-          localJSONObject.put("shareUrl", localObject1);
-          if (((g)paramb.crg).PPO != null) {
-            localJSONObject.put("preVerifyAppId", ((g)paramb.crg).PPO.getAppId());
-          }
-          if (getClass().getName().equals(bb.class.getName()))
-          {
-            localJSONObject.put("sendAppMessageScene", bb.gVg());
-            bb.gVh();
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          break label160;
-        }
-        super.a(paramb);
-        return;
-      }
+      Log.i("MicroMsg.JsApiShowOptionMenu", "actionBar is null");
+      AppMethodBeat.o(78637);
+      return;
     }
+    localn.iuF();
+    paramb.a("", null);
+    AppMethodBeat.o(78637);
+  }
+  
+  public final int dgI()
+  {
+    return 0;
+  }
+  
+  public final String name()
+  {
+    return "showOptionMenu";
   }
 }
 

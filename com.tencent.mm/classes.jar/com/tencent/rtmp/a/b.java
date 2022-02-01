@@ -4,11 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Rect;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.InputStream;
@@ -175,7 +175,7 @@ public class b
     b();
     if ((this.b != null) && (this.c != null))
     {
-      if (Build.VERSION.SDK_INT < 18) {
+      if (TXCBuild.VersionInt() < 18) {
         break label57;
       }
       this.b.quitSafely();
@@ -744,7 +744,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.a.b
  * JD-Core Version:    0.7.0.1
  */

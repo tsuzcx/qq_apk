@@ -1,11 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.webview;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -17,337 +14,202 @@ import android.view.ViewGroup.LayoutParams;
 import android.webkit.DownloadListener;
 import android.webkit.URLUtil;
 import android.widget.FrameLayout;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.au.e;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ba.e;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.game.e.b.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
-import com.tencent.mm.plugin.appbrand.jsapi.h.b;
-import com.tencent.mm.plugin.appbrand.jsapi.h.c;
-import com.tencent.mm.plugin.appbrand.jsapi.h.d;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
 import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.plugin.appbrand.page.y;
 import com.tencent.mm.plugin.appbrand.platform.window.d.a;
 import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.appbrand.report.model.p;
-import com.tencent.mm.plugin.appbrand.report.model.q;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.report.model.t;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
+import com.tencent.mm.plugin.appbrand.widget.input.u;
 import com.tencent.mm.plugin.appbrand.widget.input.u.c;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMFalseProgressBar;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebResourceRequest;
-import com.tencent.xweb.aa;
-import com.tencent.xweb.ac;
+import com.tencent.xweb.af;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 import org.json.JSONObject;
 
-@SuppressLint({"ViewConstructor"})
 public final class a
   extends FrameLayout
   implements g, g.c
 {
-  private int Go;
-  private com.tencent.mm.plugin.appbrand.widget.input.u cKH;
-  private final u.c cKO;
-  private MMFalseProgressBar lwZ;
-  private MMWebView lxa;
+  private int bms;
+  private u eEs;
+  private final u.c eEz;
   private String mAppId;
   private boolean mDestroyed;
-  private ah oxm;
-  private d pFS;
-  private com.tencent.mm.plugin.appbrand.page.a.f pFT;
-  private final g.a pFU;
-  private volatile String pFV;
-  private boolean pFW;
-  private boolean pFX;
-  private boolean pFY;
-  private a pFZ;
-  private final Set<g.c.a> pGa;
-  private final g.b pGb;
-  private ac pGc;
-  private com.tencent.xweb.x5.export.external.extension.proxy.a pGd;
+  private MMFalseProgressBar ooy;
+  private MMWebView ooz;
+  private ah rAL;
+  private d sLa;
+  private com.tencent.mm.plugin.appbrand.page.a.f sLb;
+  private final g.a sLd;
+  private volatile String sLe;
+  private boolean sLf;
+  private boolean sLg;
+  private boolean sLh;
+  private a sLi;
+  private final Set<g.c.a> sLj;
+  private final g.b sLk;
+  private af sLl;
+  private com.tencent.xweb.x5.export.external.extension.proxy.a sLm;
   
-  @SuppressLint({"SetJavaScriptEnabled"})
   a(Context paramContext, AppBrandRuntime paramAppBrandRuntime, ah paramah)
   {
     super(new MutableContextWrapper(paramContext));
     AppMethodBeat.i(46990);
-    this.Go = 0;
-    this.pFV = "";
-    this.pFW = true;
-    this.pFX = false;
-    this.cKH = null;
-    this.cKO = new u.c()
+    this.bms = 0;
+    this.sLe = "";
+    this.sLf = true;
+    this.sLg = false;
+    this.eEs = null;
+    this.eEz = new u.c()
     {
-      private int cpD = 0;
+      private int ehr = 0;
       
-      public final void ca(boolean paramAnonymousBoolean)
+      public final void cK(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(46965);
-        a.a(a.this).v(paramAnonymousBoolean, this.cpD);
+        a.a(a.this).t(paramAnonymousBoolean, this.ehr);
         AppMethodBeat.o(46965);
       }
       
       public final int getHeight()
       {
-        return this.cpD;
+        return this.ehr;
       }
       
-      public final void iF(int paramAnonymousInt)
+      public final void mo(int paramAnonymousInt)
       {
-        this.cpD = paramAnonymousInt;
+        this.ehr = paramAnonymousInt;
       }
     };
-    this.pGa = new androidx.b.b();
+    this.sLj = new androidx.b.b();
     this.mDestroyed = false;
-    this.pGb = new g.b()
+    this.sLk = new g.b()
     {
-      public final void Bi(int paramAnonymousInt)
+      public final void M(ArrayList<IDKey> paramAnonymousArrayList)
       {
-        AppMethodBeat.i(272276);
-        com.tencent.mm.plugin.report.service.h.IzE.el(1097, paramAnonymousInt);
+        AppMethodBeat.i(327448);
+        com.tencent.mm.plugin.report.service.h.OAn.b(paramAnonymousArrayList, false);
         try
         {
-          t localt = a.c(a.this).getRuntime();
-          j.b(a.this.getAppId(), localt.bDy().appVersion, localt.ntz.cBI, 1097, paramAnonymousInt);
-          AppMethodBeat.o(272276);
-          return;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          AppMethodBeat.o(272276);
-        }
-      }
-      
-      public final void I(ArrayList<IDKey> paramAnonymousArrayList)
-      {
-        AppMethodBeat.i(272277);
-        com.tencent.mm.plugin.report.service.h.IzE.b(paramAnonymousArrayList, false);
-        try
-        {
-          t localt = a.c(a.this).getRuntime();
+          com.tencent.mm.plugin.appbrand.w localw = a.c(a.this).getRuntime();
           paramAnonymousArrayList = paramAnonymousArrayList.iterator();
           while (paramAnonymousArrayList.hasNext())
           {
             IDKey localIDKey = (IDKey)paramAnonymousArrayList.next();
             long l1 = localIDKey.GetID();
             long l2 = localIDKey.GetKey();
-            j.a(a.this.getAppId(), localt.bDy().appVersion, localt.ntz.cBI, l1, l2, 1L);
+            j.a(a.this.getAppId(), localw.getInitConfig().appVersion, localw.qsh.eul, l1, l2, 1L);
           }
-          AppMethodBeat.o(272277);
+          AppMethodBeat.o(327448);
         }
         catch (NullPointerException paramAnonymousArrayList)
         {
-          AppMethodBeat.o(272277);
+          AppMethodBeat.o(327448);
           return;
         }
       }
-    };
-    this.pGc = new ac()
-    {
-      public final void computeScroll(View paramAnonymousView)
-      {
-        AppMethodBeat.i(283201);
-        a.b(a.this).hZQ();
-        AppMethodBeat.o(283201);
-      }
       
-      public final boolean dispatchTouchEvent(MotionEvent paramAnonymousMotionEvent, View paramAnonymousView)
+      public final void zJ(int paramAnonymousInt)
       {
-        AppMethodBeat.i(283207);
-        boolean bool = a.b(a.this).av(paramAnonymousMotionEvent);
-        AppMethodBeat.o(283207);
-        return bool;
-      }
-      
-      public final boolean onInterceptTouchEvent(MotionEvent paramAnonymousMotionEvent, View paramAnonymousView)
-      {
-        AppMethodBeat.i(283209);
-        boolean bool = a.b(a.this).aw(paramAnonymousMotionEvent);
-        AppMethodBeat.o(283209);
-        return bool;
-      }
-      
-      @TargetApi(9)
-      public final void onOverScrolled(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, View paramAnonymousView)
-      {
-        AppMethodBeat.i(283203);
-        a.b(a.this).g(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousBoolean1, paramAnonymousBoolean2);
-        AppMethodBeat.o(283203);
-      }
-      
-      public final void onScrollChanged(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, View paramAnonymousView)
-      {
-        AppMethodBeat.i(283205);
-        a.b(a.this).W(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
-        AppMethodBeat.o(283205);
-      }
-      
-      public final boolean onTouchEvent(MotionEvent paramAnonymousMotionEvent, View paramAnonymousView)
-      {
-        AppMethodBeat.i(283198);
-        boolean bool = a.b(a.this).au(paramAnonymousMotionEvent);
-        AppMethodBeat.o(283198);
-        return bool;
-      }
-      
-      public final boolean overScrollBy(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8, boolean paramAnonymousBoolean, View paramAnonymousView)
-      {
-        AppMethodBeat.i(283200);
-        paramAnonymousBoolean = a.b(a.this).b(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousInt5, paramAnonymousInt6, paramAnonymousInt7, paramAnonymousInt8, paramAnonymousBoolean);
-        AppMethodBeat.o(283200);
-        return paramAnonymousBoolean;
-      }
-    };
-    this.pGd = new com.tencent.xweb.x5.export.external.extension.proxy.a()
-    {
-      public final void computeScroll(View paramAnonymousView)
-      {
-        AppMethodBeat.i(270916);
-        a.i(a.this).computeScroll(paramAnonymousView);
-        AppMethodBeat.o(270916);
-      }
-      
-      public final boolean dispatchTouchEvent(MotionEvent paramAnonymousMotionEvent, View paramAnonymousView)
-      {
-        AppMethodBeat.i(270911);
-        boolean bool = a.i(a.this).dispatchTouchEvent(paramAnonymousMotionEvent, paramAnonymousView);
-        AppMethodBeat.o(270911);
-        return bool;
-      }
-      
-      public final void invalidate() {}
-      
-      public final boolean onInterceptTouchEvent(MotionEvent paramAnonymousMotionEvent, View paramAnonymousView)
-      {
-        AppMethodBeat.i(270909);
-        boolean bool = a.i(a.this).onInterceptTouchEvent(paramAnonymousMotionEvent, paramAnonymousView);
-        AppMethodBeat.o(270909);
-        return bool;
-      }
-      
-      public final Object onMiscCallBack(String paramAnonymousString, Bundle paramAnonymousBundle)
-      {
-        AppMethodBeat.i(270917);
-        if ((Util.isNullOrNil(paramAnonymousString)) || (paramAnonymousBundle == null))
+        AppMethodBeat.i(327442);
+        com.tencent.mm.plugin.report.service.h.OAn.kJ(1097, paramAnonymousInt);
+        try
         {
-          AppMethodBeat.o(270917);
-          return null;
+          com.tencent.mm.plugin.appbrand.w localw = a.c(a.this).getRuntime();
+          j.b(a.this.getAppId(), localw.getInitConfig().appVersion, localw.qsh.eul, 1097, paramAnonymousInt);
+          AppMethodBeat.o(327442);
+          return;
         }
-        Log.i("MicroMsg.AppBrandHTMLWebView", "method = %s", new Object[] { paramAnonymousString });
-        if ("onJavascriptCloseWindow".equals(paramAnonymousString))
+        catch (NullPointerException localNullPointerException)
         {
-          paramAnonymousString = Boolean.TRUE;
-          AppMethodBeat.o(270917);
-          return paramAnonymousString;
+          AppMethodBeat.o(327442);
         }
-        AppMethodBeat.o(270917);
-        return null;
-      }
-      
-      public final void onOverScrolled(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2, View paramAnonymousView)
-      {
-        AppMethodBeat.i(270915);
-        a.i(a.this).onOverScrolled(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousBoolean1, paramAnonymousBoolean2, paramAnonymousView);
-        AppMethodBeat.o(270915);
-      }
-      
-      public final void onScrollChanged(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, View paramAnonymousView)
-      {
-        AppMethodBeat.i(270914);
-        a.i(a.this).onScrollChanged(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousView);
-        AppMethodBeat.o(270914);
-      }
-      
-      public final boolean onTouchEvent(MotionEvent paramAnonymousMotionEvent, View paramAnonymousView)
-      {
-        AppMethodBeat.i(270908);
-        boolean bool = a.i(a.this).onTouchEvent(paramAnonymousMotionEvent, paramAnonymousView);
-        AppMethodBeat.o(270908);
-        return bool;
-      }
-      
-      public final boolean overScrollBy(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8, boolean paramAnonymousBoolean, View paramAnonymousView)
-      {
-        AppMethodBeat.i(270912);
-        paramAnonymousBoolean = a.i(a.this).overScrollBy(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousInt5, paramAnonymousInt6, paramAnonymousInt7, paramAnonymousInt8, paramAnonymousBoolean, paramAnonymousView);
-        AppMethodBeat.o(270912);
-        return paramAnonymousBoolean;
       }
     };
+    this.sLl = new a.8(this);
+    this.sLm = new a.9(this);
     Log.i("MicroMsg.AppBrandHTMLWebView", "<init> start hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
     this.mAppId = paramAppBrandRuntime.mAppId;
-    this.pFS = new d();
-    this.pFS.i(paramah);
-    this.oxm = paramah;
-    this.lxa = MMWebViewWithJsApi.a.jd(new MutableContextWrapper(paramContext));
-    this.lxa.setBackgroundColor(0);
-    this.lxa.getSettings().iwC();
-    this.lxa.getSettings().setJavaScriptEnabled(true);
-    this.lxa.getSettings().setMediaPlaybackRequiresUserGesture(false);
-    this.lxa.getSettings().iwE();
-    paramah = this.lxa.getSettings().getUserAgentString();
+    this.sLa = new d();
+    this.sLa.h(paramah);
+    this.rAL = paramah;
+    this.ooz = MMWebViewWithJsApi.a.ld(new MutableContextWrapper(paramContext));
+    this.ooz.setBackgroundColor(0);
+    this.ooz.getSettings().kfS();
+    this.ooz.getSettings().setJavaScriptEnabled(true);
+    this.ooz.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    this.ooz.getSettings().kfU();
+    String str = this.mAppId;
+    paramah = this.ooz.getSettings().getUserAgentString();
     paramAppBrandRuntime = paramah;
-    if (!ab.bsa(paramah)) {
-      paramAppBrandRuntime = ab.cC(getContext(), paramah);
+    if (!aa.brR(paramah)) {
+      paramAppBrandRuntime = aa.cN(getContext(), paramah);
     }
-    paramAppBrandRuntime = paramAppBrandRuntime + " miniProgram";
-    this.lxa.getSettings().setUserAgentString(paramAppBrandRuntime);
-    this.lxa.getView().setHorizontalScrollBarEnabled(false);
-    this.lxa.getView().setVerticalScrollBarEnabled(false);
-    this.lxa.getSettings().setBuiltInZoomControls(true);
-    this.lxa.getSettings().setUseWideViewPort(true);
-    this.lxa.getSettings().setLoadWithOverviewMode(true);
-    this.lxa.getSettings().iwx();
-    this.lxa.getSettings().iww();
-    this.lxa.getSettings().setGeolocationEnabled(true);
-    this.lxa.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    this.lxa.getSettings().iwA();
-    this.lxa.getSettings().setAppCachePath(getContext().getDir("webviewcache", 0).getAbsolutePath());
-    this.lxa.getSettings().iwz();
-    this.lxa.getSettings().iwB();
-    this.lxa.getSettings().setDatabasePath(com.tencent.mm.loader.j.b.aSC() + "databases/");
-    this.lxa.getSettings().iwF();
-    this.lxa.setWebViewCallbackClient(this.pGc);
-    if (this.lxa.getIsX5Kernel()) {
-      this.lxa.setWebViewClientExtension(this.pGd);
+    paramAppBrandRuntime = paramAppBrandRuntime + String.format(" miniProgram/%s", new Object[] { str });
+    this.ooz.getSettings().setUserAgentString(paramAppBrandRuntime);
+    this.ooz.getView().setHorizontalScrollBarEnabled(false);
+    this.ooz.getView().setVerticalScrollBarEnabled(false);
+    this.ooz.getSettings().setBuiltInZoomControls(true);
+    this.ooz.getSettings().setUseWideViewPort(true);
+    this.ooz.getSettings().setLoadWithOverviewMode(true);
+    this.ooz.getSettings().kfN();
+    this.ooz.getSettings().kfM();
+    this.ooz.getSettings().setGeolocationEnabled(true);
+    this.ooz.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    this.ooz.getSettings().kfQ();
+    this.ooz.getSettings().setAppCachePath(getContext().getDir("webviewcache", 0).getAbsolutePath());
+    this.ooz.getSettings().kfP();
+    this.ooz.getSettings().kfR();
+    this.ooz.getSettings().setDatabasePath(com.tencent.mm.loader.i.b.bmq() + "databases/");
+    this.ooz.getSettings().kfV();
+    this.ooz.setWebViewCallbackClient(this.sLl);
+    if (this.ooz.getIsX5Kernel()) {
+      this.ooz.setWebViewClientExtension(this.sLm);
     }
-    this.lxa.getSettings().setUsingForAppBrand(2);
-    this.lxa.setDownloadListener(new DownloadListener()
+    this.ooz.getSettings().setUsingForAppBrand(2);
+    this.ooz.setDownloadListener(new DownloadListener()
     {
       public final void onDownloadStart(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, long paramAnonymousLong)
       {
         AppMethodBeat.i(46966);
-        Log.i("MicroMsg.AppBrandHTMLWebView", "onDownloadStart page[%s], downloadUrl[%s], userAgent[%s], contentDisposition[%s], mime[%s], contentLength[%d], allowDownloadByExpt[%b]", new Object[] { a.c(a.this).oxe, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousString4, Long.valueOf(paramAnonymousLong), Boolean.FALSE });
-        a.d(a.this).Bi(0);
+        Log.i("MicroMsg.AppBrandHTMLWebView", "onDownloadStart page[%s], downloadUrl[%s], userAgent[%s], contentDisposition[%s], mime[%s], contentLength[%d], allowDownloadByExpt[%b]", new Object[] { a.c(a.this).cgR(), paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousString4, Long.valueOf(paramAnonymousLong), Boolean.FALSE });
+        a.d(a.this).zJ(0);
         AppMethodBeat.o(46966);
       }
     });
     Log.i("MicroMsg.AppBrandHTMLWebView", "<init> end WebView construct hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
-    addView(this.lxa, new ViewGroup.LayoutParams(-1, -1));
-    this.lwZ = new MMFalseProgressBar(paramContext);
-    this.lwZ.setProgressDrawable(com.tencent.mm.ci.a.m(paramContext, au.e.mm_webview_progress_horizontal));
-    addView(this.lwZ, new ViewGroup.LayoutParams(-1, com.tencent.mm.ci.a.fromDPToPix(paramContext, 3)));
-    this.lwZ.start();
-    this.pFU = new h(this);
-    this.oxm.a(new h.c()
+    addView(this.ooz, new ViewGroup.LayoutParams(-1, -1));
+    this.ooy = new MMFalseProgressBar(paramContext);
+    this.ooy.setProgressDrawable(com.tencent.mm.cd.a.m(paramContext, ba.e.mm_webview_progress_horizontal));
+    addView(this.ooy, new ViewGroup.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(paramContext, 3)));
+    this.ooy.start();
+    this.sLd = new h(this);
+    this.rAL.a(new i.c()
     {
       public final void onDestroy()
       {
@@ -356,111 +218,84 @@ public final class a
         AppMethodBeat.o(46967);
       }
     });
-    getExitReporter().qMp = true;
-    paramContext = c.pGg;
+    getExitReporter().tQZ = true;
+    paramContext = c.sLo;
     c.a(this);
-    paramContext = this.lxa.setVideoJsCallback(new f()
+    paramContext = this.ooz.setVideoJsCallback(new f()
     {
-      public final boolean Bh(int paramAnonymousInt)
+      public final boolean Bu(int paramAnonymousInt)
       {
-        AppMethodBeat.i(280444);
+        AppMethodBeat.i(327454);
         if (a.c(a.this) == null) {}
         for (com.tencent.mm.plugin.appbrand.platform.window.d locald = null; locald != null; locald = a.c(a.this).getFullscreenImpl())
         {
-          locald.yS(d.a.CC(paramAnonymousInt));
-          AppMethodBeat.o(280444);
+          locald.zb(d.a.CT(paramAnonymousInt));
+          AppMethodBeat.o(327454);
           return true;
         }
         Log.w("MicroMsg.AppBrandHTMLWebView", "onSetRequestedOrientation hash[%d] NULL fullscreenImpl", new Object[] { Integer.valueOf(a.this.hashCode()) });
-        AppMethodBeat.o(280444);
+        AppMethodBeat.o(327454);
         return false;
       }
     });
-    if ((paramContext != null) && (paramContext.iwi())) {}
+    if ((paramContext != null) && (paramContext.kfw())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.pFY = bool;
-      Log.i("MicroMsg.AppBrandHTMLWebView", "<init> end total construct hash[%d], supportOrientationControl[%b]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.pFY) });
+      this.sLh = bool;
+      Log.i("MicroMsg.AppBrandHTMLWebView", "<init> end total construct hash[%d], supportOrientationControl[%b]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.sLh) });
       AppMethodBeat.o(46990);
       return;
     }
   }
   
-  private void ajx(String paramString)
+  private void acy(String paramString)
   {
     AppMethodBeat.i(47006);
-    if (this.pFT != null) {
-      this.pFT.setPullDownText(paramString);
+    if (this.sLb != null) {
+      this.sLb.setPullDownText(paramString);
     }
     AppMethodBeat.o(47006);
   }
   
-  private void bXv()
+  private void cxH()
   {
     AppMethodBeat.i(47003);
-    this.lxa.evaluateJavascript("window.__wxjs_environment = \"miniprogram\";", null);
+    this.ooz.evaluateJavascript("window.__wxjs_environment = \"miniprogram\";", null);
     AppMethodBeat.o(47003);
   }
   
-  private p getExitReporter()
+  private com.tencent.mm.plugin.appbrand.report.model.s getExitReporter()
   {
-    AppMethodBeat.i(284507);
-    p localp = this.oxm.getRuntime().bDz().getReporter().caS();
-    AppMethodBeat.o(284507);
-    return localp;
+    AppMethodBeat.i(327472);
+    com.tencent.mm.plugin.appbrand.report.model.s locals = this.rAL.getRuntime().ccN().getReporter().cBm();
+    AppMethodBeat.o(327472);
+    return locals;
   }
   
-  public final void A(String paramString1, int paramInt, String paramString2)
+  public final void C(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(47001);
-    new g.f().i(this.oxm).o("htmlId", Integer.valueOf(this.Go)).o("errorCode", Integer.valueOf(paramInt)).o("description", paramString2).o("src", paramString1).bPO();
+    new g.f().h(this.rAL).w("htmlId", Integer.valueOf(this.bms)).w("errorCode", Integer.valueOf(paramInt)).w("description", paramString2).w("src", paramString1).cpV();
     AppMethodBeat.o(47001);
-  }
-  
-  public final void PE()
-  {
-    AppMethodBeat.i(284501);
-    this.lxa.getView().scrollTo(this.lxa.getWebScrollX(), 0);
-    AppMethodBeat.o(284501);
-  }
-  
-  public final boolean Qv()
-  {
-    return this.oxm instanceof com.tencent.mm.plugin.appbrand.game.f.d;
   }
   
   public final void a(g.c.a parama)
   {
-    AppMethodBeat.i(284493);
-    if (!this.mDestroyed) {
-      this.pGa.add(parama);
+    AppMethodBeat.i(327517);
+    if ((parama != null) && (!this.mDestroyed)) {
+      this.sLj.add(parama);
     }
-    AppMethodBeat.o(284493);
+    AppMethodBeat.o(327517);
   }
   
   public final void a(String paramString, WebResourceRequest paramWebResourceRequest)
   {
     AppMethodBeat.i(180294);
-    this.oxm.getRuntime().bDz().getReporter().caT().a(this.oxm, paramString, paramWebResourceRequest);
+    this.rAL.getRuntime().ccN().getReporter().cBn().a(this.rAL, paramString, paramWebResourceRequest);
     AppMethodBeat.o(180294);
   }
   
-  public final void aD(Context paramContext)
-  {
-    AppMethodBeat.i(284500);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(284500);
-      return;
-    }
-    if ((getContext() instanceof MutableContextWrapper)) {
-      ((MutableContextWrapper)getContext()).setBaseContext(paramContext);
-    }
-    this.lxa.aD(paramContext);
-    AppMethodBeat.o(284500);
-  }
-  
-  public final void ajv(String paramString)
+  public final void acw(String paramString)
   {
     AppMethodBeat.i(46998);
     if ((TextUtils.isEmpty(paramString)) || (URLUtil.isValidUrl(paramString)))
@@ -468,91 +303,118 @@ public final class a
       AppMethodBeat.o(46998);
       return;
     }
-    this.oxm.agC(paramString);
+    this.rAL.Zy(paramString);
     AppMethodBeat.o(46998);
   }
   
-  public final void ajw(String paramString)
+  public final void acx(String paramString)
   {
-    AppMethodBeat.i(284506);
+    AppMethodBeat.i(327656);
     if (this.mDestroyed)
     {
       Log.i("MicroMsg.AppBrandHTMLWebView", "onPageCommitVisible url[%s] hash[%d] destroyed[%b]", new Object[] { paramString, Integer.valueOf(hashCode()), Boolean.valueOf(this.mDestroyed) });
-      AppMethodBeat.o(284506);
+      AppMethodBeat.o(327656);
       return;
     }
-    bXv();
-    AppMethodBeat.o(284506);
+    cxH();
+    AppMethodBeat.o(327656);
   }
   
-  public final void al(JSONObject paramJSONObject)
+  public final void apO()
+  {
+    AppMethodBeat.i(327592);
+    this.ooz.getView().scrollTo(this.ooz.getWebScrollX(), 0);
+    AppMethodBeat.o(327592);
+  }
+  
+  public final boolean aqJ()
+  {
+    return this.rAL instanceof com.tencent.mm.plugin.appbrand.game.f.d;
+  }
+  
+  public final void av(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(46997);
-    this.pFS.a(this.oxm.getRuntime().bDA(), this.oxm.getComponentId()).agT(paramJSONObject.toString()).bPO();
+    this.sLa.a(this.rAL.getRuntime().ccO(), this.rAL.getComponentId()).ZQ(paramJSONObject.toString()).cpV();
     AppMethodBeat.o(46997);
   }
   
-  public final void bXq()
+  public final void bm(Context paramContext)
+  {
+    AppMethodBeat.i(327584);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(327584);
+      return;
+    }
+    if ((getContext() instanceof MutableContextWrapper)) {
+      ((MutableContextWrapper)getContext()).setBaseContext(paramContext);
+    }
+    this.ooz.bm(paramContext);
+    AppMethodBeat.o(327584);
+  }
+  
+  public final void cxC()
   {
     AppMethodBeat.i(46988);
     Log.i("MicroMsg.AppBrandHTMLWebView", "restoreRendering hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
-    this.lxa.onShow();
+    this.ooz.onShow();
     AppMethodBeat.o(46988);
   }
   
-  public final void bXr()
+  public final void cxD()
   {
     AppMethodBeat.i(46989);
     Log.i("MicroMsg.AppBrandHTMLWebView", "pauseRendering hash[%d]", new Object[] { Integer.valueOf(hashCode()) });
-    this.lxa.onHide();
+    this.ooz.onHide();
     AppMethodBeat.o(46989);
   }
   
-  public final boolean bXs()
+  public final boolean cxE()
   {
-    return !this.pFY;
+    return !this.sLh;
   }
   
-  public final boolean bXt()
+  public final boolean cxF()
   {
-    AppMethodBeat.i(284503);
+    AppMethodBeat.i(327641);
     if (this.mDestroyed)
     {
-      AppMethodBeat.o(284503);
+      AppMethodBeat.o(327641);
       return false;
     }
     if (getWebView().canGoBack())
     {
-      getExitReporter().a(this.oxm, true);
+      getExitReporter().a(this.rAL, true);
       getWebView().goBack();
-      this.pFX = true;
-      AppMethodBeat.o(284503);
+      this.sLg = true;
+      AppMethodBeat.o(327641);
       return true;
     }
-    getExitReporter().a(this.oxm, false);
-    AppMethodBeat.o(284503);
+    getExitReporter().a(this.rAL, false);
+    AppMethodBeat.o(327641);
     return false;
   }
   
-  public final void bXu()
+  public final void cxG()
   {
     AppMethodBeat.i(47002);
-    this.oxm.getRuntime().bDz().alA("scene_other");
+    this.rAL.getRuntime().ccN().aeD("scene_other");
     AppMethodBeat.o(47002);
   }
   
-  public final boolean bXw()
+  public final boolean cxI()
   {
     AppMethodBeat.i(47008);
     try
     {
-      if (this.oxm.getRuntime().bDx().cwS)
+      if (this.rAL.getRuntime().ccM().eoX)
       {
-        bool = this.oxm.getRuntime().bDx().cxj;
+        bool = this.rAL.getRuntime().ccM().epB;
         AppMethodBeat.o(47008);
         return bool;
       }
-      boolean bool = this.oxm.getRuntime().bDx().cxh;
+      boolean bool = this.rAL.getRuntime().ccM().epz;
       AppMethodBeat.o(47008);
       return bool;
     }
@@ -578,7 +440,7 @@ public final class a
           a.b(a.this).stopLoading();
           a.b(a.this).destroy();
           a.f(a.this).clear();
-          c localc = c.pGg;
+          c localc = c.sLo;
           c.b(a.this);
           a.g(a.this);
         }
@@ -609,84 +471,84 @@ public final class a
     for (;;)
     {
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      if ((!bool) && (this.pFT != null)) {
-        this.pFT.requestDisallowInterceptTouchEvent(false);
+      if ((!bool) && (this.sLb != null)) {
+        this.sLb.requestDisallowInterceptTouchEvent(false);
       }
       AppMethodBeat.o(46992);
       return bool;
-      if (this.pFT != null)
+      if (this.sLb != null)
       {
-        this.pFT.requestDisallowInterceptTouchEvent(true);
+        this.sLb.requestDisallowInterceptTouchEvent(true);
         continue;
-        if (this.pFT != null) {
-          this.pFT.requestDisallowInterceptTouchEvent(false);
+        if (this.sLb != null) {
+          this.sLb.requestDisallowInterceptTouchEvent(false);
         }
       }
     }
   }
   
-  public final void dv(String paramString)
+  public final void eG(String paramString)
   {
-    AppMethodBeat.i(284505);
-    Log.i("MicroMsg.AppBrandHTMLWebView", "onPageStarted url[%s] hash[%d] destroyed[%b] attached[%b]", new Object[] { paramString, Integer.valueOf(hashCode()), Boolean.valueOf(this.mDestroyed), Boolean.valueOf(w.al(this)) });
+    AppMethodBeat.i(327648);
+    Log.i("MicroMsg.AppBrandHTMLWebView", "onPageStarted url[%s] hash[%d] destroyed[%b] attached[%b]", new Object[] { paramString, Integer.valueOf(hashCode()), Boolean.valueOf(this.mDestroyed), Boolean.valueOf(z.ay(this)) });
     if (this.mDestroyed)
     {
-      AppMethodBeat.o(284505);
+      AppMethodBeat.o(327648);
       return;
     }
-    bXv();
-    this.lwZ.start();
-    new g.e().i(this.oxm).o("src", paramString).o("htmlId", Integer.valueOf(this.Go)).bPO();
-    AppMethodBeat.o(284505);
+    cxH();
+    this.ooy.start();
+    new g.e().h(this.rAL).w("src", paramString).w("htmlId", Integer.valueOf(this.bms)).cpV();
+    AppMethodBeat.o(327648);
   }
   
-  public final void dw(String paramString)
+  public final void eH(String paramString)
   {
     AppMethodBeat.i(47000);
-    Log.i("MicroMsg.AppBrandHTMLWebView", "onPageFinished url[%s] hash[%d] destroyed[%b] attached[%b]", new Object[] { paramString, Integer.valueOf(hashCode()), Boolean.valueOf(this.mDestroyed), Boolean.valueOf(w.al(this)) });
+    Log.i("MicroMsg.AppBrandHTMLWebView", "onPageFinished url[%s] hash[%d] destroyed[%b] attached[%b]", new Object[] { paramString, Integer.valueOf(hashCode()), Boolean.valueOf(this.mDestroyed), Boolean.valueOf(z.ay(this)) });
     if (this.mDestroyed)
     {
       AppMethodBeat.o(47000);
       return;
     }
-    bXv();
-    this.lwZ.finish();
-    if ((!this.pFW) && (!this.pFX)) {
-      getExitReporter().a(this.oxm, this.pFV, paramString);
+    cxH();
+    this.ooy.finish();
+    if ((!this.sLf) && (!this.sLg)) {
+      getExitReporter().a(this.rAL, this.sLe, paramString);
     }
-    this.pFW = false;
-    this.pFX = false;
-    this.pFV = paramString;
+    this.sLf = false;
+    this.sLg = false;
+    this.sLe = paramString;
     if (!Util.isNullOrNil(paramString))
     {
       String str = Uri.parse(paramString).getHost();
       if (!Util.isNullOrNil(str)) {
-        ajx(getContext().getString(au.i.webview_logo_url, new Object[] { str }));
+        acy(getContext().getString(ba.i.webview_logo_url, new Object[] { str }));
       }
     }
     for (;;)
     {
-      new g.d().i(this.oxm).o("src", paramString).o("htmlId", Integer.valueOf(this.Go)).bPO();
+      new g.d().h(this.rAL).w("src", paramString).w("htmlId", Integer.valueOf(this.bms)).cpV();
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(283024);
-          new com.tencent.mm.plugin.appbrand.game.e.b.b().a(a.c(a.this).bDA(), b.a.onU, a.h(a.this));
-          AppMethodBeat.o(283024);
+          AppMethodBeat.i(327457);
+          new com.tencent.mm.plugin.appbrand.game.e.b.b().a(a.c(a.this).ccO(), b.a.rrD, a.h(a.this));
+          AppMethodBeat.o(327457);
         }
       }, 1000L);
       AppMethodBeat.o(47000);
       return;
-      ajx("");
+      acy("");
     }
   }
   
   public final Context getAndroidContext()
   {
-    AppMethodBeat.i(284497);
+    AppMethodBeat.i(327546);
     Context localContext = getContext();
-    AppMethodBeat.o(284497);
+    AppMethodBeat.o(327546);
     return localContext;
   }
   
@@ -703,30 +565,30 @@ public final class a
   public final int getBinderID()
   {
     AppMethodBeat.i(174921);
-    int i = this.pFU.getBinderID();
+    int i = this.sLd.getBinderID();
     AppMethodBeat.o(174921);
     return i;
   }
   
   public final g.a getController()
   {
-    return this.pFU;
+    return this.sLd;
   }
   
   public final String getCurrentUrl()
   {
-    AppMethodBeat.i(284509);
+    AppMethodBeat.i(327661);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      str = this.lxa.getUrl();
+      str = this.ooz.getUrl();
       if (!TextUtils.isEmpty(str))
       {
-        AppMethodBeat.o(284509);
+        AppMethodBeat.o(327661);
         return str;
       }
     }
-    String str = this.pFV;
-    AppMethodBeat.o(284509);
+    String str = this.sLe;
+    AppMethodBeat.o(327661);
     return str;
   }
   
@@ -738,40 +600,40 @@ public final class a
       AppMethodBeat.o(47007);
       return new String[0];
     }
-    String[] arrayOfString = b.c(this.oxm);
+    String[] arrayOfString = b.c(this.rAL);
     AppMethodBeat.o(47007);
     return arrayOfString;
   }
   
-  public final ad getPageView()
+  public final com.tencent.mm.plugin.appbrand.page.ad getPageView()
   {
-    return this.oxm;
+    return this.rAL;
   }
   
   public final g.b getReporter()
   {
-    return this.pGb;
+    return this.sLk;
   }
   
   public final MMWebView getWebView()
   {
-    return this.lxa;
+    return this.ooz;
   }
   
   protected final void onAttachedToWindow()
   {
     AppMethodBeat.i(46994);
     super.onAttachedToWindow();
-    this.cKH = n.dr(this);
-    if (this.cKH != null) {
-      this.cKH.a(this.cKO);
+    this.eEs = n.ef(this);
+    if (this.eEs != null) {
+      this.eEs.a(this.eEz);
     }
-    this.pFT = ((com.tencent.mm.plugin.appbrand.page.a.f)this.oxm.R(com.tencent.mm.plugin.appbrand.page.a.f.class));
-    this.pFZ = new a((byte)0);
-    a locala = this.pFZ;
-    locala.pGe.oxm.a(locala);
-    locala.pGe.oxm.a(locala);
-    this.pFZ.onForeground();
+    this.sLb = ((com.tencent.mm.plugin.appbrand.page.a.f)this.rAL.aa(com.tencent.mm.plugin.appbrand.page.a.f.class));
+    this.sLi = new a((byte)0);
+    a locala = this.sLi;
+    locala.sLn.rAL.a(locala);
+    locala.sLn.rAL.a(locala);
+    this.sLi.onForeground();
     AppMethodBeat.o(46994);
   }
   
@@ -779,19 +641,19 @@ public final class a
   {
     AppMethodBeat.i(46995);
     super.onDetachedFromWindow();
-    if (!this.oxm.isRunning()) {
+    if (!this.rAL.isRunning()) {
       destroy();
     }
-    if (this.cKH != null) {
-      this.cKH.b(this.cKO);
+    if (this.eEs != null) {
+      this.eEs.b(this.eEz);
     }
-    if (this.pFZ != null)
+    if (this.sLi != null)
     {
-      this.pFZ.onBackground();
-      a locala = this.pFZ;
-      locala.pGe.oxm.b(locala);
-      locala.pGe.oxm.b(locala);
-      this.pFZ = null;
+      this.sLi.onBackground();
+      a locala = this.sLi;
+      locala.sLn.rAL.b(locala);
+      locala.sLn.rAL.b(locala);
+      this.sLi = null;
     }
     AppMethodBeat.o(46995);
   }
@@ -841,14 +703,14 @@ public final class a
   
   public final void setAndroidViewId(int paramInt)
   {
-    AppMethodBeat.i(284498);
+    AppMethodBeat.i(327555);
     getAndroidView().setId(paramInt);
-    AppMethodBeat.o(284498);
+    AppMethodBeat.o(327555);
   }
   
   public final void setCoverViewId(int paramInt)
   {
-    this.Go = paramInt;
+    this.bms = paramInt;
   }
   
   public final void setVisibility(int paramInt)
@@ -857,16 +719,16 @@ public final class a
     if (paramInt != getVisibility())
     {
       super.setVisibility(paramInt);
-      Iterator localIterator = this.pGa.iterator();
+      Iterator localIterator = this.sLj.iterator();
       while (localIterator.hasNext()) {
-        ((g.c.a)localIterator.next()).bXz();
+        ((g.c.a)localIterator.next()).onVisibilityChanged(paramInt);
       }
     }
     AppMethodBeat.o(46987);
   }
   
   final class a
-    implements h.b, h.d
+    implements i.b, i.d
   {
     private a() {}
     
@@ -889,7 +751,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.webview.a
  * JD-Core Version:    0.7.0.1
  */

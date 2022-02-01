@@ -5,24 +5,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class n
 {
-  final w.b aLG;
-  final w.a aLH;
-  int aLK;
-  w aLO;
+  final w.b cFD;
+  final w.a cFE;
+  int cFH;
+  w cFL;
   
   public n()
   {
     AppMethodBeat.i(92380);
-    this.aLH = new w.a();
-    this.aLG = new w.b();
+    this.cFE = new w.a();
+    this.cFD = new w.b();
     AppMethodBeat.o(92380);
   }
   
   private boolean a(k.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(92388);
-    int i = this.aLO.a(paramb.bfZ, this.aLH, false).aMI;
-    if ((!this.aLO.a(i, this.aLG).aNY) && (this.aLO.b(paramb.bfZ, this.aLH, this.aLG, this.aLK)) && (paramBoolean))
+    int i = this.cFL.a(paramb.cZS, this.cFE, false).cGF;
+    if ((!this.cFL.a(i, this.cFD).cHU) && (this.cFL.b(paramb.cZS, this.cFE, this.cFD, this.cFH)) && (paramBoolean))
     {
       AppMethodBeat.o(92388);
       return true;
@@ -34,7 +34,7 @@ final class n
   private boolean b(k.b paramb, long paramLong)
   {
     AppMethodBeat.i(92387);
-    int i = this.aLO.a(paramb.bfZ, this.aLH, false).rx();
+    int i = this.cFL.a(paramb.cZS, this.cFE, false).QY();
     if (i == 0)
     {
       AppMethodBeat.o(92387);
@@ -42,7 +42,7 @@ final class n
     }
     int j = i - 1;
     boolean bool = paramb.isAd();
-    if (this.aLH.aNP[j] != -9223372036854775808L)
+    if (this.cFE.cHL[j] != -9223372036854775808L)
     {
       if ((!bool) && (paramLong == -9223372036854775808L))
       {
@@ -52,14 +52,14 @@ final class n
       AppMethodBeat.o(92387);
       return false;
     }
-    int k = this.aLH.aNQ[j];
+    int k = this.cFE.cHM[j];
     if (k == -1)
     {
       AppMethodBeat.o(92387);
       return false;
     }
-    if ((bool) && (paramb.bga == j) && (paramb.bgb == k - 1)) {}
-    for (i = 1; (i != 0) || ((!bool) && (this.aLH.aNS[j] == k)); i = 0)
+    if ((bool) && (paramb.cZT == j) && (paramb.cZU == k - 1)) {}
+    for (i = 1; (i != 0) || ((!bool) && (this.cFE.cHO[j] == k)); i = 0)
     {
       AppMethodBeat.o(92387);
       return true;
@@ -71,7 +71,7 @@ final class n
   public final a a(a parama, int paramInt)
   {
     AppMethodBeat.i(92382);
-    parama = a(parama, parama.aNi.eQ(paramInt));
+    parama = a(parama, parama.cHe.ig(paramInt));
     AppMethodBeat.o(92382);
     return parama;
   }
@@ -79,22 +79,22 @@ final class n
   final a a(a parama, k.b paramb)
   {
     AppMethodBeat.i(92383);
-    long l3 = parama.aME;
-    long l2 = parama.aNj;
+    long l3 = parama.cGB;
+    long l2 = parama.cHf;
     boolean bool1 = b(paramb, l2);
     boolean bool2 = a(paramb, bool1);
-    this.aLO.a(paramb.bfZ, this.aLH, false);
+    this.cFL.a(paramb.cZS, this.cFE, false);
     long l1;
     if (paramb.isAd()) {
-      l1 = this.aLH.bh(paramb.bga, paramb.bgb);
+      l1 = this.cFE.cc(paramb.cZT, paramb.cZU);
     }
     for (;;)
     {
-      parama = new a(paramb, l3, l2, parama.aMF, l1, bool1, bool2, (byte)0);
+      parama = new a(paramb, l3, l2, parama.cGC, l1, bool1, bool2, (byte)0);
       AppMethodBeat.o(92383);
       return parama;
       if (l2 == -9223372036854775808L) {
-        l1 = this.aLH.aNk;
+        l1 = this.cFE.cHg;
       } else {
         l1 = l2;
       }
@@ -104,23 +104,23 @@ final class n
   final a a(k.b paramb, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92384);
-    this.aLO.a(paramb.bfZ, this.aLH, false);
+    this.cFL.a(paramb.cZS, this.cFE, false);
     if (paramb.isAd())
     {
-      if (!this.aLH.bg(paramb.bga, paramb.bgb))
+      if (!this.cFE.cb(paramb.cZT, paramb.cZU))
       {
         AppMethodBeat.o(92384);
         return null;
       }
-      paramb = b(paramb.bfZ, paramb.bga, paramb.bgb, paramLong1);
+      paramb = b(paramb.cZS, paramb.cZT, paramb.cZU, paramLong1);
       AppMethodBeat.o(92384);
       return paramb;
     }
-    int i = this.aLH.I(paramLong2);
+    int i = this.cFE.bW(paramLong2);
     if (i == -1) {}
-    for (paramLong1 = -9223372036854775808L;; paramLong1 = this.aLH.aNP[i])
+    for (paramLong1 = -9223372036854775808L;; paramLong1 = this.cFE.cHL[i])
     {
-      paramb = c(paramb.bfZ, paramLong2, paramLong1);
+      paramb = c(paramb.cZS, paramLong2, paramLong1);
       AppMethodBeat.o(92384);
       return paramb;
     }
@@ -132,9 +132,9 @@ final class n
     Object localObject = new k.b(paramInt1, paramInt2, paramInt3);
     boolean bool1 = b((k.b)localObject, -9223372036854775808L);
     boolean bool2 = a((k.b)localObject, bool1);
-    long l2 = this.aLO.a(((k.b)localObject).bfZ, this.aLH, false).bh(((k.b)localObject).bga, ((k.b)localObject).bgb);
-    if (paramInt3 == this.aLH.aNS[paramInt2]) {}
-    for (long l1 = this.aLH.aNU;; l1 = 0L)
+    long l2 = this.cFL.a(((k.b)localObject).cZS, this.cFE, false).cc(((k.b)localObject).cZT, ((k.b)localObject).cZU);
+    if (paramInt3 == this.cFE.cHO[paramInt2]) {}
+    for (long l1 = this.cFE.cHQ;; l1 = 0L)
     {
       localObject = new a((k.b)localObject, l1, -9223372036854775808L, paramLong, l2, bool1, bool2, (byte)0);
       AppMethodBeat.o(92385);
@@ -148,9 +148,9 @@ final class n
     Object localObject = new k.b(paramInt);
     boolean bool1 = b((k.b)localObject, paramLong2);
     boolean bool2 = a((k.b)localObject, bool1);
-    this.aLO.a(((k.b)localObject).bfZ, this.aLH, false);
+    this.cFL.a(((k.b)localObject).cZS, this.cFE, false);
     if (paramLong2 == -9223372036854775808L) {}
-    for (long l = this.aLH.aNk;; l = paramLong2)
+    for (long l = this.cFE.cHg;; l = paramLong2)
     {
       localObject = new a((k.b)localObject, paramLong1, paramLong2, -9223372036854775807L, l, bool1, bool2, (byte)0);
       AppMethodBeat.o(92386);
@@ -161,44 +161,44 @@ final class n
   public final k.b g(int paramInt, long paramLong)
   {
     AppMethodBeat.i(92381);
-    this.aLO.a(paramInt, this.aLH, false);
-    int i = this.aLH.H(paramLong);
+    this.cFL.a(paramInt, this.cFE, false);
+    int i = this.cFE.bV(paramLong);
     if (i == -1)
     {
       localb = new k.b(paramInt);
       AppMethodBeat.o(92381);
       return localb;
     }
-    k.b localb = new k.b(paramInt, i, this.aLH.aNS[i]);
+    k.b localb = new k.b(paramInt, i, this.cFE.cHO[i]);
     AppMethodBeat.o(92381);
     return localb;
   }
   
   public static final class a
   {
-    public final long aME;
-    public final long aMF;
-    public final k.b aNi;
-    public final long aNj;
-    public final long aNk;
-    public final boolean aNl;
-    public final boolean aNm;
+    public final long cGB;
+    public final long cGC;
+    public final k.b cHe;
+    public final long cHf;
+    public final long cHg;
+    public final boolean cHh;
+    public final boolean cHi;
     
     a(k.b paramb, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2)
     {
-      this.aNi = paramb;
-      this.aME = paramLong1;
-      this.aNj = paramLong2;
-      this.aMF = paramLong3;
-      this.aNk = paramLong4;
-      this.aNl = paramBoolean1;
-      this.aNm = paramBoolean2;
+      this.cHe = paramb;
+      this.cGB = paramLong1;
+      this.cHf = paramLong2;
+      this.cGC = paramLong3;
+      this.cHg = paramLong4;
+      this.cHh = paramBoolean1;
+      this.cHi = paramBoolean2;
     }
     
-    public final a rr()
+    public final a QT()
     {
       AppMethodBeat.i(92379);
-      a locala = new a(this.aNi.eQ(-1), this.aME, this.aNj, this.aMF, this.aNk, this.aNl, this.aNm);
+      a locala = new a(this.cHe.ig(-1), this.cGB, this.cHf, this.cGC, this.cHg, this.cHh, this.cHi);
       AppMethodBeat.o(92379);
       return locala;
     }
@@ -206,7 +206,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.n
  * JD-Core Version:    0.7.0.1
  */

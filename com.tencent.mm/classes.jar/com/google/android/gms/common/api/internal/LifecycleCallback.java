@@ -3,25 +3,19 @@ package com.google.android.gms.common.api.internal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Keep;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-@KeepForSdk
 public class LifecycleCallback
 {
-  @KeepForSdk
   protected final LifecycleFragment mLifecycleFragment;
   
-  @KeepForSdk
   protected LifecycleCallback(LifecycleFragment paramLifecycleFragment)
   {
     this.mLifecycleFragment = paramLifecycleFragment;
   }
   
-  @Keep
   private static LifecycleFragment getChimeraLifecycleFragmentImpl(LifecycleActivity paramLifecycleActivity)
   {
     AppMethodBeat.i(4504);
@@ -30,7 +24,6 @@ public class LifecycleCallback
     throw paramLifecycleActivity;
   }
   
-  @KeepForSdk
   public static LifecycleFragment getFragment(Activity paramActivity)
   {
     AppMethodBeat.i(4505);
@@ -39,7 +32,6 @@ public class LifecycleCallback
     return paramActivity;
   }
   
-  @KeepForSdk
   protected static LifecycleFragment getFragment(LifecycleActivity paramLifecycleActivity)
   {
     AppMethodBeat.i(4503);
@@ -82,12 +74,11 @@ public class LifecycleCallback
   
   public void onStart() {}
   
-  @KeepForSdk
   public void onStop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.LifecycleCallback
  * JD-Core Version:    0.7.0.1
  */

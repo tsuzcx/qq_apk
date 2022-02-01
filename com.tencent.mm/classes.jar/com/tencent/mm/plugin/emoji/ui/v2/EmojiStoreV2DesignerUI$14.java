@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class EmojiStoreV2DesignerUI$14
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
   EmojiStoreV2DesignerUI$14(EmojiStoreV2DesignerUI paramEmojiStoreV2DesignerUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(109155);
-    Log.d("MicroMsg.emoji.EmojiStoreV2DesignerUI", "on shard click.");
-    EmojiStoreV2DesignerUI.j(this.uNO);
-    AppMethodBeat.o(109155);
-    return true;
+    AppMethodBeat.i(270805);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2DesignerUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    EmojiStoreV2DesignerUI.j(this.xWy);
+    a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2DesignerUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(270805);
   }
 }
 

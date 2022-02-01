@@ -6,7 +6,7 @@ import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.as;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.messenger.foundation.a.u;
 
 public class PluginContact
@@ -15,11 +15,11 @@ public class PluginContact
 {
   public void execute(g paramg)
   {
-    AppMethodBeat.i(188756);
-    h.aHH();
+    AppMethodBeat.i(233790);
+    h.baF();
     h.b(u.class, new com.tencent.mm.contact.a.c());
-    ab.a((as)h.ae(u.class));
-    AppMethodBeat.o(188756);
+    ab.a((at)h.ax(u.class));
+    AppMethodBeat.o(233790);
   }
   
   public void onAccountInitialized(f.c paramc) {}

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public final class a
 {
-  public static <E> List<E> N(E... paramVarArgs)
+  public static <E> List<E> R(E... paramVarArgs)
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
@@ -19,7 +19,7 @@ public final class a
     return localArrayList;
   }
   
-  public static <E> Map<E, E> O(E... paramVarArgs)
+  public static <E> Map<E, E> S(E... paramVarArgs)
   {
     if (paramVarArgs.length % 2 != 0) {
       throw new IllegalArgumentException("length of map is " + paramVarArgs.length);

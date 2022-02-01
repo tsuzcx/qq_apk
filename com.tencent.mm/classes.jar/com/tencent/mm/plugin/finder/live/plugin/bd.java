@@ -1,1720 +1,1495 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.animation.FloatEvaluator;
-import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
-import android.animation.TypeEvaluator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Rect;
+import android.graphics.Paint;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewParent;
-import android.view.animation.DecelerateInterpolator;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.b;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.live.util.p.a;
-import com.tencent.mm.plugin.finder.live.util.p.b;
-import com.tencent.mm.plugin.finder.live.util.p.c;
-import com.tencent.mm.plugin.finder.live.view.FinderLiveGiftTextView;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.f;
-import com.tencent.mm.protocal.protobuf.axu;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.live.view.LiveBottomSheetPanel;
+import com.tencent.mm.plugin.f.a;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.model.ap;
+import com.tencent.mm.plugin.finder.live.model.g;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.live.report.j;
+import com.tencent.mm.plugin.finder.live.report.q;
+import com.tencent.mm.plugin.finder.live.report.q.aw;
+import com.tencent.mm.plugin.finder.live.report.q.bm;
+import com.tencent.mm.plugin.finder.live.report.q.c;
+import com.tencent.mm.plugin.finder.live.report.q.cc;
+import com.tencent.mm.plugin.finder.live.view.adapter.w;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.o;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.FinderItem.a;
+import com.tencent.mm.plugin.findersdk.a.bn;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.aux;
+import com.tencent.mm.protocal.protobuf.azv;
+import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.protocal.protobuf.bim;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.blq;
+import com.tencent.mm.protocal.protobuf.bpp;
+import com.tencent.mm.protocal.protobuf.cxk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.bf;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashMap<Ljava.lang.String;Landroid.graphics.Rect;>;
 import java.util.LinkedList;
+import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.blq;>;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.a.ae;
-import kotlin.a.j;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import org.libpag.PAGView;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.am;
+import kotlin.g.b.u;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftAddingObserver;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "iGiftQueue", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue;", "outerSpaceParent", "isVisitor", "", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue;Landroid/view/ViewGroup;Z)V", "NICK_NAME_LENGTH", "", "bulletInAnimatorMap", "", "Landroid/animation/ObjectAnimator;", "bulletInfoMap", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletShowingInfo;", "bulletOutAnimatorMap", "comboIdBackToLiveMap", "", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$ComboIdBackToLiveInfo;", "comboIdList", "Ljava/util/LinkedList;", "containerFake", "Landroid/widget/RelativeLayout;", "containerOne", "containerThree", "containerTwo", "initialMapSize", "outerSpaceMap", "Ljava/util/concurrent/ConcurrentHashMap;", "preciousGiftBulletOutHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "timer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "adjustContainerLocation", "", "container", "rect", "Landroid/graphics/Rect;", "micUser", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUser;", "adjustGiftfromUserMargin", "fromUserTv", "Landroid/widget/TextView;", "haveSImageSpan", "calculatePreciousGiftRemainingTime", "", "entry", "", "canClearScreen", "checkIfNeedPreserveShowingPreciousGift", "info", "checkIfOuterSpacePreciousGiftForceReplace", "checkIfPreciousGiftTimeOver", "checkIfSelfPreciousGiftForceReplace", "checkInfoFromComboIdBackToLiveMap", "comboId", "checkStatusWhenMaximizeWindow", "cloneToFakeContainer", "createBulletInAnimator", "target", "isOuterSpace", "createBulletOutAnimator", "disableContainer", "enableContainer", "enoughSpaceForGiftText", "bulletShowingInfo", "nickname", "userLevelSpan", "Landroid/text/style/ImageSpan;", "enoughSpaceForRelaunch", "findCurrentShowingPreciousGift", "getDisplayNickName", "", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "textView", "getOuterSpaceContainer", "parent", "launchBulletInAnimation", "space", "giftShowInfo", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftShowInfo;", "matchBackupGiftType", "mount", "onGiftAdding", "giftType", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftType;", "onMicUserChanged", "micUserMap", "Ljava/util/LinkedHashMap;", "Lkotlin/collections/LinkedHashMap;", "isPkAnchor", "pollNextGiftShowInfo", "registerOuterSpace", "targetUserName", "direction", "outSpaceWidth", "relaunchBulletInAnimation", "replaceBullet", "originSpace", "showFullScreenPreciousGift", "isForceReplace", "textViewShowLines", "width", "takePlaceWidth", "targetTv", "msg", "tryToAdjustGiftName", "sameValue", "unMount", "unregisterOuterSpace", "updateBulletShowingInfo", "updatePreciousGiftTotalShowingTime", "giftId", "diffCnt", "BulletFadeInEvaluator", "BulletShowingInfo", "BulletViewHolder", "ComboIdBackToLiveInfo", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "DEFAULT_PANEL_HEIGHT", "", "getDEFAULT_PANEL_HEIGHT", "()I", "setDEFAULT_PANEL_HEIGHT", "(I)V", "DEFAULT_TITLE_GROUP_HEIGHT", "getDEFAULT_TITLE_GROUP_HEIGHT", "setDEFAULT_TITLE_GROUP_HEIGHT", "PORTRAIT_ACTION_GOTO_PROFILE", "", "getPORTRAIT_ACTION_GOTO_PROFILE", "()Ljava/lang/String;", "PORTRAIT_ACTION_KEY_FINDER_USERNAME", "getPORTRAIT_ACTION_KEY_FINDER_USERNAME", "SHEET_MORE_ACTION_BAN_COMMENT", "SHEET_MORE_ACTION_BLACK_LIST", "SHEET_MORE_ACTION_GOTO_PROFILE", "SHEET_MORE_ACTION_RECOVER_COMMENT", "SHEET_MORE_ACTION_REPORT", "SHEET_REMOVE", "TAG", "backGroup", "Landroid/view/View;", "blankArea", "contentGroup", "Lcom/tencent/mm/live/view/LiveBottomSheetPanel;", "curSelectedContact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "diffRewardMember", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRecentRewardOnlineMember;", "Lkotlin/collections/ArrayList;", "emptyActionTip", "Landroid/widget/TextView;", "emptyGroup", "emptyTip", "helpIcon", "kickMemberBottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "loadingBar", "Landroid/widget/ProgressBar;", "membersAdapter", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveMemberLinearAdapter;", "moreActionBottomSheet", "moreActionItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "recyclerRoot", "Landroid/widget/RelativeLayout;", "retryTip", "singleRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "singleTitleTv", "stickViewContainer", "subTitleLine", "titleGroup", "titleTipTv", "visibilityTipTv", "adjustPanelLayout", "", "titleGroupHeight", "applyState", "liveState", "uiState", "extraMsg", "Landroid/os/Bundle;", "buildConfirmDialog", "title", "item", "titleColor", "itemColor", "click", "Lkotlin/Function0;", "remote", "Ljava/util/LinkedList;", "doCommentAction", "enableComment", "", "goToFinderProfile", "finderUsername", "hideMembersList", "initListener", "initTitleGroupHeight", "isAnchorOrAssistant", "kickMember", "mount", "onBackPress", "onGetLiveOnlineMemberFail", "onGetLiveOnlineMemberSuccess", "autoRefresh", "onPortraitDelayAction", "extraData", "", "delayMs", "", "prepareMenuItems", "menuItem", "Lcom/tencent/mm/ui/base/MMMenu;", "roleType", "showMembersListContent", "showMembersListLoading", "showMoreActionSheet", "showProfileSheet", "username", "showTitle", "totalCnt", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "unMount", "uninitListener", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bd
-  extends d
-  implements p.a
+  extends b
 {
-  private static final int yrd;
-  private static final int yre;
-  private static final float yrf;
-  private static final float yrg;
-  private static final float yrh;
-  private static final float yri;
-  private static final int yrj;
-  private static final int yrk;
-  private static final int yrl;
-  private static final boolean yrm;
-  public static final e yrn;
-  private final com.tencent.mm.live.c.b kCL;
-  private final MTimerHandler timer;
-  private final int yqN;
-  private final RelativeLayout yqO;
-  private final RelativeLayout yqP;
-  private final RelativeLayout yqQ;
-  private final RelativeLayout yqR;
-  private final int yqS;
-  private final Map<ViewGroup, b> yqT;
-  private final Map<ViewGroup, ObjectAnimator> yqU;
-  private final Map<ViewGroup, ObjectAnimator> yqV;
-  private final Map<String, d> yqW;
-  private final LinkedList<String> yqX;
-  private final ConcurrentHashMap<String, ViewGroup> yqY;
-  private final MMHandler yqZ;
-  private final com.tencent.mm.plugin.finder.live.util.p yra;
-  private final ViewGroup yrb;
-  private final boolean yrc;
+  private int CwP;
+  private final String DeM;
+  private final String DeN;
+  private final int DeO;
+  private final int DeP;
+  private final int DeQ;
+  private final int DeR;
+  private final int DeS;
+  private int DeT;
+  private final View DeU;
+  private final TextView DeV;
+  final View DeW;
+  private final RelativeLayout DeX;
+  private final View DeY;
+  private final TextView DeZ;
+  private final TextView Dfa;
+  private final View Dfb;
+  private final View Dfc;
+  private final w Dfd;
+  private bgh Dfe;
+  private com.tencent.mm.ui.widget.a.f Dff;
+  private com.tencent.mm.ui.widget.a.f Dfg;
+  private ArrayList<blq> Dfh;
+  private u.i Dfi;
+  final String TAG;
+  private final com.tencent.mm.live.b.b nfT;
+  private final int niO;
+  private final View niW;
+  private final LiveBottomSheetPanel niX;
+  private final TextView njf;
+  final TextView njg;
+  private final TextView njh;
+  final RecyclerView nji;
+  final ProgressBar njj;
+  final View njm;
   
-  static
+  public bd(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb)
   {
-    AppMethodBeat.i(265828);
-    yrn = new e((byte)0);
-    Object localObject = com.tencent.c.a.a.a.a.a.Zlt;
-    yrd = ((Number)com.tencent.c.a.a.a.a.a.ilQ().aSr()).intValue() * 1000;
-    yre = 500 / (yrd + 500);
-    yrf = MMApplicationContext.getResources().getDimension(b.d.Edge_2A);
-    float f = MMApplicationContext.getResources().getDimension(b.d.Edge_5A);
-    yrg = f;
-    yrh = f;
-    yri = MMApplicationContext.getResources().getDimension(b.d.Edge_5A);
-    yrj = MMApplicationContext.getResources().getDimensionPixelOffset(b.d.Edge_1_5_A);
-    yrk = com.tencent.mm.view.d.e(MMApplicationContext.getContext(), 3.0F);
-    yrl = (int)MMApplicationContext.getResources().getDimension(b.d.Edge_23A);
-    localObject = com.tencent.c.a.a.a.a.a.Zlt;
-    if (((Number)com.tencent.c.a.a.a.a.a.ilq().aSr()).intValue() == 0)
+    super(paramViewGroup, paramb);
+    AppMethodBeat.i(355156);
+    this.nfT = paramb;
+    this.TAG = "Finder.FinderLiveMemberListPlugin";
+    this.DeM = "PORTRAIT_ACTION_GOTO_PROFILE_MEMBERLIST";
+    this.DeN = "PORTRAIT_ACTION_KEY_FINDER_USERNAME";
+    this.niO = 1;
+    this.DeO = 10;
+    this.DeP = 11;
+    this.DeQ = 12;
+    this.DeR = 13;
+    this.DeS = 14;
+    float f = bf.bf(MMApplicationContext.getContext()).y;
+    paramb = com.tencent.d.a.a.a.a.a.ahiX;
+    this.CwP = ((int)(f * (com.tencent.d.a.a.a.a.a.jTt() / 100.0F)));
+    paramb = paramViewGroup.findViewById(p.e.BNQ);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…bers_list_icon_btn_group)");
+    this.DeU = paramb;
+    paramb = paramViewGroup.findViewById(p.e.BNW);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…ve_members_list_title_tv)");
+    this.njf = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNS);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…e_members_list_retry_tip)");
+    this.njg = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNN);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…e_members_list_empty_tip)");
+    this.njh = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNM);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…rs_list_empty_action_tip)");
+    this.DeV = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNO);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…ers_list_empty_tip_group)");
+    this.DeW = paramb;
+    paramb = paramViewGroup.findViewById(p.e.BNL);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…embers_list_content_view)");
+    this.nji = ((RecyclerView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNJ);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…embers_list_content_area)");
+    this.niX = ((LiveBottomSheetPanel)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNK);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…mbers_list_content_group)");
+    this.DeX = ((RelativeLayout)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNR);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…ive_members_list_loading)");
+    this.njj = ((ProgressBar)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNI);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…_members_list_blank_area)");
+    this.niW = paramb;
+    paramb = paramViewGroup.findViewById(p.e.BNP);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…e_members_list_help_icon)");
+    this.DeY = paramb;
+    paramb = paramViewGroup.findViewById(p.e.BNV);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…embers_list_title_tip_tv)");
+    this.DeZ = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNX);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…s_list_visibility_tip_tv)");
+    this.Dfa = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(p.e.BNG);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…e_member_stick_container)");
+    this.Dfb = paramb;
+    paramb = paramViewGroup.findViewById(p.e.BNT);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…mbers_list_subtitle_line)");
+    this.Dfc = paramb;
+    this.Dfd = new w(this.nji, this.Dfb, (e)business(e.class));
+    paramb = paramViewGroup.findViewById(p.e.BNU);
+    kotlin.g.b.s.s(paramb, "root.findViewById(R.id.f…members_list_title_group)");
+    this.njm = paramb;
+    this.Dfh = new ArrayList();
+    this.Dfi = new bd..ExternalSyntheticLambda6(this, paramViewGroup);
+    paramb = this.njm.getLayoutParams();
+    if (paramb == null) {}
+    int j;
+    for (int i = 0;; i = paramb.height)
     {
-      localObject = ah.yhC;
-      if (ah.dzB() == null) {}
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      yrm = bool;
-      AppMethodBeat.o(265828);
-      return;
-    }
-  }
-  
-  public bd(ViewGroup paramViewGroup1, com.tencent.mm.live.c.b paramb, com.tencent.mm.plugin.finder.live.util.p paramp, ViewGroup paramViewGroup2, boolean paramBoolean)
-  {
-    super(paramViewGroup1, paramb);
-    AppMethodBeat.i(265827);
-    this.kCL = paramb;
-    this.yra = paramp;
-    this.yrb = paramViewGroup2;
-    this.yrc = paramBoolean;
-    paramb = com.tencent.c.a.a.a.a.a.Zlt;
-    this.yqN = ((Number)com.tencent.c.a.a.a.a.a.ilR().aSr()).intValue();
-    this.yqX = new LinkedList();
-    this.yqY = new ConcurrentHashMap();
-    this.timer = new MTimerHandler("FinderLiveGiftQueuePlugin::Timer", (MTimerHandler.CallBack)new p(this), false);
-    paramb = paramViewGroup1.findViewById(b.f.finder_live_gift_queue_bullet_one);
-    kotlin.g.b.p.j(paramb, "root.findViewById(R.id.f…ve_gift_queue_bullet_one)");
-    this.yqO = ((RelativeLayout)paramb);
-    paramb = paramViewGroup1.findViewById(b.f.finder_live_gift_queue_bullet_two);
-    kotlin.g.b.p.j(paramb, "root.findViewById(R.id.f…ve_gift_queue_bullet_two)");
-    this.yqP = ((RelativeLayout)paramb);
-    paramb = paramViewGroup1.findViewById(b.f.finder_live_gift_queue_bullet_three);
-    kotlin.g.b.p.j(paramb, "root.findViewById(R.id.f…_gift_queue_bullet_three)");
-    this.yqQ = ((RelativeLayout)paramb);
-    paramViewGroup1 = LayoutInflater.from(paramViewGroup1.getContext()).inflate(b.g.finder_live_gift_bullut_ui, paramViewGroup1, false);
-    if (paramViewGroup1 == null)
-    {
-      paramViewGroup1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout");
-      AppMethodBeat.o(265827);
-      throw paramViewGroup1;
-    }
-    this.yqR = ((RelativeLayout)paramViewGroup1);
-    paramViewGroup1 = Collections.synchronizedMap((Map)new LinkedHashMap(3));
-    kotlin.g.b.p.j(paramViewGroup1, "Collections.synchronizedMap(LinkedHashMap(3))");
-    this.yqT = paramViewGroup1;
-    this.yqT.put(this.yqO, new b((ViewGroup)this.yqO, 0, this.yrc, false, false, 0, 56));
-    this.yqT.put(this.yqP, new b((ViewGroup)this.yqP, 1, this.yrc, false, false, 0, 56));
-    this.yqT.put(this.yqQ, new b((ViewGroup)this.yqQ, 2, this.yrc, true, false, 0, 48));
-    paramViewGroup1 = this.yqT;
-    paramb = this.yqR;
-    paramp = new b((ViewGroup)this.yqR, 1000, this.yrc, false, false, 0, 56);
-    paramp.yrF = true;
-    paramp.yrs.getAndSet(true);
-    paramp.aCo("");
-    paramViewGroup1.put(paramb, paramp);
-    this.yqS = this.yqT.size();
-    this.yqU = ((Map)new ConcurrentHashMap(3));
-    this.yqU.put(this.yqO, e((ViewGroup)this.yqO, false));
-    this.yqU.put(this.yqP, e((ViewGroup)this.yqP, false));
-    this.yqU.put(this.yqQ, e((ViewGroup)this.yqQ, false));
-    this.yqV = ((Map)new ConcurrentHashMap(3));
-    this.yqV.put(this.yqO, u((ViewGroup)this.yqO));
-    this.yqV.put(this.yqP, u((ViewGroup)this.yqP));
-    this.yqV.put(this.yqQ, u((ViewGroup)this.yqQ));
-    paramViewGroup1 = Collections.synchronizedMap((Map)new LinkedHashMap());
-    kotlin.g.b.p.j(paramViewGroup1, "Collections.synchronizedMap(LinkedHashMap())");
-    this.yqW = paramViewGroup1;
-    paramViewGroup1 = ((Iterable)this.yqT.values()).iterator();
-    while (paramViewGroup1.hasNext())
-    {
-      paramb = (b)paramViewGroup1.next();
-      paramp = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.q((TextView)paramb.yry.yrQ);
-    }
-    this.yqZ = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new MMHandler.Callback()
-    {
-      public final boolean handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(283696);
-        Object localObject = paramAnonymousMessage.obj;
-        paramAnonymousMessage = localObject;
-        if (!(localObject instanceof ViewGroup)) {
-          paramAnonymousMessage = null;
-        }
-        paramAnonymousMessage = (ViewGroup)paramAnonymousMessage;
-        paramAnonymousMessage = (ObjectAnimator)bd.e(this.yro).get(paramAnonymousMessage);
-        if ((paramAnonymousMessage != null) && (!paramAnonymousMessage.isRunning())) {
-          paramAnonymousMessage.start();
-        }
-        AppMethodBeat.o(283696);
-        return true;
+      this.DeT = i;
+      if (this.DeT <= 0) {
+        this.DeT = MMApplicationContext.getContext().getResources().getDimensionPixelOffset(p.c.Edge_8A);
       }
-    });
-    this.yqZ.setLogging(false);
-    if (yrm)
-    {
-      paramViewGroup1 = this.yqO;
-      if (paramViewGroup1 != null) {
-        paramViewGroup1.setVisibility(8);
+      Log.i(this.TAG, kotlin.g.b.s.X("initTitleGroupHeight:", Integer.valueOf(this.DeT)));
+      paramb = this.nji;
+      paramViewGroup.getContext();
+      paramb.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+      this.nji.setAdapter((RecyclerView.a)this.Dfd);
+      i = this.DeT;
+      j = bf.bk(this.mJe.getContext());
+      if (isLandscape()) {
+        break label868;
       }
-      paramViewGroup1 = this.yqP;
-      if (paramViewGroup1 != null) {
-        paramViewGroup1.setVisibility(8);
-      }
-      paramViewGroup1 = this.yqQ;
-      if (paramViewGroup1 != null) {
-        paramViewGroup1.setVisibility(8);
-      }
-    }
-    Log.i("Finder.FinderLiveGiftQueuePlugin", "ENABLE_TEST:" + yrm);
-    AppMethodBeat.o(265827);
-  }
-  
-  private static int a(int paramInt1, int paramInt2, TextView paramTextView, String paramString)
-  {
-    int j = 0;
-    AppMethodBeat.i(265802);
-    int k = paramTextView.getPaddingLeft();
-    int m = paramTextView.getPaddingRight();
-    ViewParent localViewParent = paramTextView.getParent();
-    Object localObject = localViewParent;
-    if (!(localViewParent instanceof ViewGroup)) {
-      localObject = null;
-    }
-    localObject = (ViewGroup)localObject;
-    if (localObject != null) {}
-    for (int i = ((ViewGroup)localObject).getPaddingLeft();; i = 0)
-    {
-      localViewParent = paramTextView.getParent();
-      localObject = localViewParent;
-      if (!(localViewParent instanceof ViewGroup)) {
-        localObject = null;
-      }
-      localObject = (ViewGroup)localObject;
-      if (localObject != null) {
-        j = ((ViewGroup)localObject).getPaddingRight();
-      }
-      paramInt1 = paramInt1 - paramInt2 - k - m - i - j - 6;
-      if (paramInt1 <= 0) {
+      this.niX.setTranslationY(bf.bf(this.mJe.getContext()).y);
+      this.niX.getLayoutParams().height = this.CwP;
+      paramViewGroup = this.DeX.getLayoutParams();
+      if (paramViewGroup != null) {
         break;
       }
-      paramInt1 = new StaticLayout((CharSequence)paramString, paramTextView.getPaint(), paramInt1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 1.0F, true).getLineCount();
-      AppMethodBeat.o(265802);
-      return paramInt1;
-    }
-    AppMethodBeat.o(265802);
-    return 2147483647;
-  }
-  
-  private final ViewGroup a(Rect paramRect, ViewGroup paramViewGroup, com.tencent.mm.plugin.finder.live.viewmodel.data.h paramh)
-  {
-    AppMethodBeat.i(265823);
-    Object localObject = LayoutInflater.from(paramViewGroup.getContext()).inflate(b.g.finder_live_gift_bullut_ui, paramViewGroup, false);
-    if (localObject == null)
-    {
-      paramRect = new t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(265823);
-      throw paramRect;
-    }
-    localObject = (ViewGroup)localObject;
-    paramViewGroup.addView((View)localObject);
-    a((ViewGroup)localObject, paramRect, paramh);
-    ((ViewGroup)localObject).setVisibility(8);
-    AppMethodBeat.o(265823);
-    return localObject;
-  }
-  
-  private final void a(ViewGroup paramViewGroup, Rect paramRect, com.tencent.mm.plugin.finder.live.viewmodel.data.h paramh)
-  {
-    AppMethodBeat.i(265824);
-    if (paramViewGroup == null)
-    {
-      AppMethodBeat.o(265824);
-      return;
-    }
-    Object localObject = paramViewGroup.getLayoutParams();
-    if (localObject == null)
-    {
-      paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(265824);
+      paramViewGroup = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(355156);
       throw paramViewGroup;
     }
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localObject;
-    localMarginLayoutParams.topMargin = ((int)(paramRect.bottom - yrh));
-    String str;
-    if ((paramh == null) || (paramh.ktS != 2)) {
-      if ((paramh != null) && (paramh.ktS == 1))
-      {
-        str = paramh.ktR;
-        localObject = getBuContext();
-        if (localObject == null) {
-          break label216;
-        }
-        localObject = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((com.tencent.mm.plugin.finder.live.model.context.a)localObject).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
-        if (localObject == null) {
-          break label216;
-        }
-      }
-    }
-    label216:
-    for (localObject = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)localObject).dGU();; localObject = null)
+    paramViewGroup = (ViewGroup.MarginLayoutParams)paramViewGroup;
+    paramViewGroup.bottomMargin += j;
+    this.DeX.getLayoutParams().height = (this.CwP - i - j);
+    for (this.nji.getLayoutParams().height = (this.CwP - i - j);; this.nji.getLayoutParams().height = (bf.bf(this.mJe.getContext()).y - i))
     {
-      if (!Util.isEqual(str, (String)localObject))
-      {
-        if ((paramh == null) || (paramh.zeF != true)) {}
+      paramViewGroup = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      if ((com.tencent.mm.plugin.finder.live.utils.a.a((e)business(e.class))) && (!eqc())) {
+        this.njh.setText(this.njh.getContext().getText(p.h.CkR));
       }
-      else {
-        localMarginLayoutParams.topMargin -= (int)yri;
-      }
-      int i = paramRect.left;
-      paramViewGroup = paramViewGroup.getContext();
-      kotlin.g.b.p.j(paramViewGroup, "container.context");
-      localMarginLayoutParams.setMarginStart(i + (int)paramViewGroup.getResources().getDimension(b.d.Edge_A));
-      AppMethodBeat.o(265824);
+      aw.a((Paint)this.njf.getPaint(), 0.8F);
+      AppMethodBeat.o(355156);
       return;
+      label868:
+      this.niX.getLayoutParams().width = bf.bf(this.mJe.getContext()).y;
+      this.niX.setTranslationX(bf.bf(this.mJe.getContext()).x);
+      this.DeX.getLayoutParams().height = (bf.bf(this.mJe.getContext()).y - i);
     }
   }
   
-  private final void a(final ViewGroup paramViewGroup, final p.b paramb)
+  private final void Pb(int paramInt)
   {
-    AppMethodBeat.i(265797);
-    if ((paramViewGroup == null) || (paramb == null))
-    {
-      AppMethodBeat.o(265797);
-      return;
-    }
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new n(this, paramViewGroup, paramb));
-    AppMethodBeat.o(265797);
-  }
-  
-  private final void a(b paramb)
-  {
-    AppMethodBeat.i(265825);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(265825);
-      return;
-    }
-    if ((paramb.yrq.get()) && (paramb.yrs.get()) && (!paramb.yrF)) {
-      b(paramb);
-    }
-    AppMethodBeat.o(265825);
-  }
-  
-  private final void a(p.b paramb)
-  {
-    Object localObject3 = null;
-    AppMethodBeat.i(265805);
+    AppMethodBeat.i(355175);
     Object localObject1;
-    Object localObject4;
     Object localObject2;
-    if (paramb != null)
-    {
-      localObject1 = paramb.yQC;
-      if (localObject1 != null)
+    Object localObject3;
+    long l;
+    label253:
+    int i;
+    if (((eqc()) && (((e)((e)business(e.class)).business(e.class)).Edv)) || (((e)((e)business(e.class)).business(e.class)).Edw)) {
+      label409:
+      if (((e)((e)business(e.class)).business(e.class)).eyr())
       {
-        localObject1 = ((axu)localObject1).SKd;
-        localObject4 = new StringBuilder("showFullScreenPreciousGift giftId:").append((String)localObject1).append(" targetUsername:");
-        if (paramb == null) {
-          break label205;
+        this.DeZ.setVisibility(8);
+        this.DeY.setVisibility(0);
+        localObject1 = am.aixg;
+        localObject1 = this.mJe.getContext().getString(p.h.finder_live_members_total_tip);
+        kotlin.g.b.s.s(localObject1, "root.context.getString(R…r_live_members_total_tip)");
+        localObject2 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+        localObject1 = String.format((String)localObject1, Arrays.copyOf(new Object[] { com.tencent.mm.plugin.finder.live.utils.a.jp(((e)business(e.class)).EcL) }, 1));
+        kotlin.g.b.s.s(localObject1, "java.lang.String.format(format, *args)");
+        localObject2 = am.aixg;
+        localObject2 = this.mJe.getContext().getString(p.h.CtR);
+        kotlin.g.b.s.s(localObject2, "root.context.getString(R…ive_wecoin_amount_in_hot)");
+        localObject3 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+        localObject3 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+        localObject3 = com.tencent.mm.plugin.finder.live.utils.a.a(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class)).liveInfo);
+        if (localObject3 != null) {
+          break label536;
         }
-        localObject2 = paramb.yrD;
-        label58:
-        localObject4 = ((StringBuilder)localObject4).append((String)localObject2).append(" curPkUser:");
-        localObject2 = ((f)business(f.class)).zhl;
-        if (localObject2 == null) {
-          break label210;
-        }
-        localObject2 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject2).username;
-        label95:
-        Log.i("Finder.FinderLiveGiftQueuePlugin", (String)localObject2);
-        if (paramb == null) {
-          break label215;
-        }
-      }
-    }
-    label205:
-    label210:
-    label215:
-    for (paramb = paramb.yrD;; paramb = null)
-    {
-      localObject4 = ((f)business(f.class)).zhl;
-      localObject2 = localObject3;
-      if (localObject4 != null) {
-        localObject2 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject4).username;
-      }
-      if (!Util.isEqual(paramb, (String)localObject2))
-      {
-        paramb = new Bundle();
-        paramb.putString("PARAM_LIVE_GIFT_INFO", (String)localObject1);
-        paramb.putBoolean("PARAM_LIVE_GIFT_IS_FORCE_REPLACE", true);
-        this.kCL.statusChange(b.c.kAc, paramb);
-      }
-      AppMethodBeat.o(265805);
-      return;
-      localObject1 = null;
-      break;
-      localObject2 = null;
-      break label58;
-      localObject2 = null;
-      break label95;
-    }
-  }
-  
-  private static void a(String paramString, b paramb, int paramInt)
-  {
-    AppMethodBeat.i(265809);
-    Object localObject = com.tencent.c.a.a.a.a.a.Zlt;
-    long l2 = ((Number)com.tencent.c.a.a.a.a.a.ilU().aSr()).longValue();
-    localObject = com.tencent.mm.plugin.finder.live.model.m.yfw;
-    localObject = (Long)com.tencent.mm.plugin.finder.live.model.m.dyv().get(paramString);
-    if (localObject != null) {}
-    for (long l1 = ((Long)localObject).longValue() / 1000L;; l1 = l2)
-    {
-      long l3 = l1;
-      if (0L == l1)
-      {
-        localObject = new StringBuilder("updatePreciousGiftTotalShowingTime: giftFullPagDurationMap value = ");
-        com.tencent.mm.plugin.finder.live.model.m localm = com.tencent.mm.plugin.finder.live.model.m.yfw;
-        Log.i("Finder.FinderLiveGiftQueuePlugin", (Long)com.tencent.mm.plugin.finder.live.model.m.dyv().get(paramString));
-        l3 = l2;
-      }
-      paramb.yrA += ((float)l3 * 0.9F * paramInt);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "updatePreciousGiftTotalShowingTime: giftId=" + paramString + ',' + " durationMs=" + l3 + ", totalShowingTime=" + paramb.yrA);
-      AppMethodBeat.o(265809);
-      return;
-    }
-  }
-  
-  private final void b(final ViewGroup paramViewGroup, final p.b paramb)
-  {
-    AppMethodBeat.i(265798);
-    if ((paramViewGroup == null) || (paramb == null))
-    {
-      AppMethodBeat.o(265798);
-      return;
-    }
-    Log.i("Finder.FinderLiveGiftQueuePlugin", "replaceBullet, originSpace BulletShowingInfo=" + (b)this.yqT.get(paramViewGroup) + ", giftShowInfo=" + paramb);
-    final aa.f localf = new aa.f();
-    localf.aaBC = paramViewGroup;
-    Object localObject2 = paramb.yrD;
-    Object localObject1 = (b)this.yqT.get(paramViewGroup);
-    if (localObject1 != null) {
-      localObject1 = ((b)localObject1).yrD;
-    }
-    while (!((String)localObject2).equals(localObject1))
-    {
-      localObject2 = this.yqT;
-      localObject1 = new LinkedHashMap();
-      localObject2 = ((Map)localObject2).entrySet().iterator();
-      for (;;)
-      {
-        if (((Iterator)localObject2).hasNext())
+        l = 0L;
+        localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { com.tencent.mm.plugin.finder.live.utils.a.jp(l) }, 1));
+        kotlin.g.b.s.s(localObject2, "java.lang.String.format(format, *args)");
+        this.njf.setText((CharSequence)((String)localObject1 + " · " + (String)localObject2));
+        label319:
+        if (eqc())
         {
-          localObject3 = (Map.Entry)((Iterator)localObject2).next();
-          if (((b)((Map.Entry)localObject3).getValue()).yrD.equals(paramb.yrD))
-          {
-            ((LinkedHashMap)localObject1).put(((Map.Entry)localObject3).getKey(), ((Map.Entry)localObject3).getValue());
-            continue;
-            localObject1 = null;
-            break;
+          if ((((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eis == 0) || (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eis == 524288)) {
+            break label712;
           }
+          this.Dfa.setText((CharSequence)MMApplicationContext.getContext().getResources().getString(p.h.Ctw));
+          this.Dfa.setVisibility(0);
+          i = this.DeT;
+          paramInt = i;
+          if (this.Dfa.getVisibility() == 0)
+          {
+            paramInt = i;
+            if (this.DeZ.getVisibility() == 0) {
+              paramInt = this.DeT + MMApplicationContext.getContext().getResources().getDimensionPixelOffset(p.c.Edge_2A);
+            }
+          }
+          if ((this.DeZ.getVisibility() != 0) || (this.Dfa.getVisibility() != 0)) {
+            break label724;
+          }
+          this.Dfc.setVisibility(0);
         }
       }
-      localObject2 = (Map)localObject1;
-      localObject1 = (Collection)new ArrayList(((Map)localObject2).size());
-      localObject2 = ((Map)localObject2).entrySet().iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((Collection)localObject1).add((ViewGroup)((Map.Entry)((Iterator)localObject2).next()).getKey());
-      }
-      localObject1 = (List)localObject1;
-      if (((List)localObject1).isEmpty())
-      {
-        AppMethodBeat.o(265798);
-        return;
-      }
-      localf.aaBC = ((ViewGroup)((List)localObject1).get(0));
     }
-    if ((kotlin.g.b.p.h((ViewGroup)localf.aaBC, paramViewGroup) ^ true))
+    for (;;)
     {
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "replaceBullet, targetSpace BulletShowingInfo=" + (b)this.yqT.get((ViewGroup)localf.aaBC));
-      localObject1 = (b)this.yqT.get(paramViewGroup);
-      if (localObject1 != null) {
-        ((b)localObject1).reset();
-      }
+      this.njm.getLayoutParams().height = paramInt;
+      AppMethodBeat.o(355175);
+      return;
+      this.DeZ.setText((CharSequence)this.mJe.getContext().getString(p.h.CkL));
+      this.DeZ.setVisibility(0);
+      break;
+      label536:
+      l = ((Long)localObject3).longValue();
+      break label253;
+      this.DeZ.setVisibility(8);
+      this.DeY.setVisibility(8);
+      localObject1 = this.mJe.getContext().getResources();
+      i = p.h.finder_live_members_total_tip;
+      localObject2 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      localObject1 = ((Resources)localObject1).getString(i, new Object[] { com.tencent.mm.plugin.finder.live.utils.a.jp(paramInt) });
+      kotlin.g.b.s.s(localObject1, "root.context.resources.g…umber(totalCnt.toLong()))");
+      localObject2 = this.mJe.getContext().getResources();
+      paramInt = p.h.Cnq;
+      localObject3 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      localObject2 = ((Resources)localObject2).getString(paramInt, new Object[] { com.tencent.mm.plugin.finder.live.utils.a.jp(((o)business(o.class)).EhT) });
+      kotlin.g.b.s.s(localObject2, "root.context.resources.g…ineMemberCount.toLong()))");
+      this.njf.setText((CharSequence)((String)localObject1 + " · " + (String)localObject2));
+      break label319;
+      label712:
+      this.Dfa.setVisibility(8);
+      break label409;
+      label724:
+      this.Dfc.setVisibility(8);
     }
-    localObject1 = (b)this.yqT.get((ViewGroup)localf.aaBC);
-    if (localObject1 != null) {
-      ((b)localObject1).reset();
-    }
-    localObject1 = (b)this.yqT.get((ViewGroup)localf.aaBC);
-    if (localObject1 != null)
-    {
-      localObject1 = ((b)localObject1).yrq;
-      if (localObject1 != null) {
-        ((AtomicBoolean)localObject1).getAndSet(true);
-      }
-    }
-    localObject1 = (b)this.yqT.get((ViewGroup)localf.aaBC);
-    if (localObject1 != null)
-    {
-      localObject1 = ((b)localObject1).yrs;
-      if (localObject1 != null) {
-        ((AtomicBoolean)localObject1).getAndSet(paramb.yQE);
-      }
-    }
-    Object localObject3 = (b)this.yqT.get((ViewGroup)localf.aaBC);
-    if (localObject3 != null)
-    {
-      localObject2 = paramb.yru;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "";
-      }
-      ((b)localObject3).aCn((String)localObject1);
-    }
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new o(this, localf, paramViewGroup, paramb));
-    AppMethodBeat.o(265798);
   }
   
-  private static void b(TextView paramTextView, boolean paramBoolean)
+  private static final void a(int paramInt1, bd parambd, int paramInt2, com.tencent.mm.ui.base.s params)
   {
-    AppMethodBeat.i(265799);
-    ViewGroup.LayoutParams localLayoutParams = paramTextView.getLayoutParams();
-    paramTextView = localLayoutParams;
-    if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      paramTextView = null;
-    }
-    paramTextView = (ViewGroup.MarginLayoutParams)paramTextView;
-    if (paramTextView != null)
+    AppMethodBeat.i(355305);
+    kotlin.g.b.s.u(parambd, "this$0");
+    params.clear();
+    if (paramInt1 == 0)
     {
-      if (paramBoolean) {}
-      for (int i = yrk;; i = yrj)
-      {
-        paramTextView.leftMargin = i;
-        AppMethodBeat.o(265799);
-        return;
-      }
-    }
-    AppMethodBeat.o(265799);
-  }
-  
-  private final void b(b paramb)
-  {
-    AppMethodBeat.i(265826);
-    if (!paramb.yrs.get())
-    {
-      AppMethodBeat.o(265826);
+      params.c(parambd.niO, (CharSequence)parambd.mJe.getContext().getResources().getString(paramInt2));
+      AppMethodBeat.o(355305);
       return;
     }
-    Log.i("Finder.FinderLiveGiftQueuePlugin", "cloneToFakeContainer: origin info = ".concat(String.valueOf(paramb)));
-    Object localObject = (b)this.yqT.get(this.yqR);
-    if (localObject != null)
+    params.a(parambd.niO, parambd.mJe.getContext().getResources().getColor(paramInt1), (CharSequence)parambd.mJe.getContext().getResources().getString(paramInt2));
+    AppMethodBeat.o(355305);
+  }
+  
+  private static final void a(bd parambd, int paramInt, com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(355242);
+    kotlin.g.b.s.u(parambd, "this$0");
+    params.clear();
+    kotlin.g.b.s.s(params, "it");
+    if (paramInt == 3) {
+      params.c(parambd.DeS, (CharSequence)parambd.mJe.getContext().getResources().getString(p.h.CtE));
+    }
+    params.c(parambd.DeR, (CharSequence)parambd.mJe.getContext().getResources().getString(p.h.finder_live_more_action_report));
+    AppMethodBeat.o(355242);
+  }
+  
+  private static final void a(bd parambd, Bundle paramBundle, Object paramObject, long paramLong)
+  {
+    AppMethodBeat.i(355353);
+    kotlin.g.b.s.u(parambd, "this$0");
+    if (!parambd.isFinished())
     {
-      ((b)localObject).yrA = paramb.yrA;
-      ((b)localObject).yrB = paramb.yrB;
-      ((b)localObject).yrq.getAndSet(true);
-      if (this.timer.stopped())
+      paramBundle = aj.CGT;
+      paramBundle = aj.getFinderLiveAssistant();
+      if (paramBundle != null)
       {
-        localObject = j.z((Iterable)this.yqT.entrySet()).iterator();
+        paramBundle.m(paramObject, parambd.DeN);
+        AppMethodBeat.o(355353);
+      }
+    }
+    else
+    {
+      Log.i(parambd.TAG, "goToFinderProfileImpl delayMs:" + paramLong + ",isFinished!");
+    }
+    AppMethodBeat.o(355353);
+  }
+  
+  private static final void a(bd parambd, View paramView)
+  {
+    AppMethodBeat.i(355259);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parambd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parambd, "this$0");
+    parambd.niX.hide();
+    if (parambd.nfT.getLiveRole() == 1) {
+      j.Dob.a(q.c.Drz, String.valueOf(q.bm.DBx.action));
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(355259);
+  }
+  
+  private static final void a(bd parambd, ViewGroup paramViewGroup, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(355229);
+    kotlin.g.b.s.u(parambd, "this$0");
+    kotlin.g.b.s.u(paramViewGroup, "$root");
+    if (paramMenuItem == null)
+    {
+      paramMenuItem = null;
+      paramInt = parambd.DeO;
+      if (paramMenuItem != null) {
+        break label104;
+      }
+      label35:
+      paramInt = parambd.DeP;
+      if (paramMenuItem != null) {
+        break label275;
+      }
+      label44:
+      paramInt = parambd.DeQ;
+      if (paramMenuItem != null) {
+        break label446;
+      }
+      label53:
+      paramInt = parambd.DeR;
+      if (paramMenuItem != null) {
+        break label727;
+      }
+      label62:
+      paramInt = parambd.DeS;
+      if (paramMenuItem != null) {
+        break label985;
+      }
+    }
+    label104:
+    while (paramMenuItem.intValue() != paramInt)
+    {
+      parambd = parambd.Dff;
+      if (parambd != null) {
+        parambd.cyW();
+      }
+      do
+      {
         do
         {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
+          do
+          {
+            do
+            {
+              AppMethodBeat.o(355229);
+              return;
+              paramMenuItem = Integer.valueOf(paramMenuItem.getItemId());
+              break;
+              if (paramMenuItem.intValue() != paramInt) {
+                break label35;
+              }
+              parambd.rs(false);
+              paramViewGroup = parambd.Dff;
+              if (paramViewGroup != null) {
+                paramViewGroup.cyW();
+              }
+            } while (parambd.nfT.getLiveRole() != 1);
+            paramViewGroup = j.Dob;
+            paramViewGroup = j.Doc.Dqq;
+            paramViewGroup.DGf += 1L;
+            paramMenuItem = new JSONObject();
+            paramInt = q.aw.DzZ.action;
+            parambd = parambd.Dfe;
+            if (parambd == null) {
+              parambd = "";
+            }
+            for (;;)
+            {
+              paramMenuItem.put(String.valueOf(paramInt), parambd);
+              parambd = q.c.Drk;
+              paramViewGroup = j.Dob;
+              if (j.Doc.Dqt) {
+                parambd = q.c.Drm;
+              }
+              j.Dob.a(parambd, paramMenuItem.toString());
+              AppMethodBeat.o(355229);
+              return;
+              parambd = parambd.contact;
+              if (parambd == null)
+              {
+                parambd = "";
+              }
+              else
+              {
+                paramViewGroup = parambd.username;
+                parambd = paramViewGroup;
+                if (paramViewGroup == null) {
+                  parambd = "";
+                }
+              }
+            }
+            if (paramMenuItem.intValue() != paramInt) {
+              break label44;
+            }
+            parambd.rs(true);
+            paramViewGroup = parambd.Dff;
+            if (paramViewGroup != null) {
+              paramViewGroup.cyW();
+            }
+          } while (parambd.nfT.getLiveRole() != 1);
+          paramViewGroup = j.Dob;
+          paramViewGroup = j.Doc.Dqq;
+          paramViewGroup.DGg += 1L;
+          paramMenuItem = new JSONObject();
+          paramInt = q.aw.DAa.action;
+          parambd = parambd.Dfe;
+          if (parambd == null) {
+            parambd = "";
           }
-          paramb = ((Iterator)localObject).next();
-        } while (!kotlin.g.b.p.h((ViewGroup)((Map.Entry)paramb).getKey(), this.yqR));
+          for (;;)
+          {
+            paramMenuItem.put(String.valueOf(paramInt), parambd);
+            parambd = q.c.Drk;
+            paramViewGroup = j.Dob;
+            if (j.Doc.Dqt) {
+              parambd = q.c.Drm;
+            }
+            j.Dob.a(parambd, paramMenuItem.toString());
+            AppMethodBeat.o(355229);
+            return;
+            parambd = parambd.contact;
+            if (parambd == null)
+            {
+              parambd = "";
+            }
+            else
+            {
+              paramViewGroup = parambd.username;
+              parambd = paramViewGroup;
+              if (paramViewGroup == null) {
+                parambd = "";
+              }
+            }
+          }
+          if (paramMenuItem.intValue() != paramInt) {
+            break label53;
+          }
+          paramInt = p.h.Crh;
+          int i = p.h.Crg;
+          int j = p.b.live_title_host_close_btn_color;
+          paramViewGroup = (kotlin.g.a.a)new g(parambd);
+          if (parambd.Dfg == null)
+          {
+            parambd.Dfg = new com.tencent.mm.ui.widget.a.f(parambd.mJe.getContext(), 1, true);
+            paramMenuItem = parambd.Dfg;
+            if (paramMenuItem != null) {
+              paramMenuItem.NyV = true;
+            }
+            paramMenuItem = View.inflate(parambd.mJe.getContext(), p.f.live_bottom_sheet_title_view, null);
+            ((TextView)paramMenuItem.findViewById(p.e.live_bottom_sheet_title_tv)).setText((CharSequence)parambd.mJe.getContext().getString(paramInt));
+            localObject = parambd.Dfg;
+            if (localObject != null) {
+              ((com.tencent.mm.ui.widget.a.f)localObject).af(paramMenuItem, false);
+            }
+            paramMenuItem = parambd.Dfg;
+            if (paramMenuItem != null) {
+              paramMenuItem.aeLi = bd..ExternalSyntheticLambda10.INSTANCE;
+            }
+          }
+          paramMenuItem = parambd.Dfg;
+          if (paramMenuItem != null) {
+            paramMenuItem.NE(true);
+          }
+          paramMenuItem = parambd.Dfg;
+          if (paramMenuItem != null) {
+            paramMenuItem.setFooterView(null);
+          }
+          paramMenuItem = parambd.Dfg;
+          if (paramMenuItem != null) {
+            paramMenuItem.Vtg = new bd..ExternalSyntheticLambda4(j, parambd, i);
+          }
+          paramMenuItem = parambd.Dfg;
+          if (paramMenuItem != null) {
+            paramMenuItem.GAC = new bd..ExternalSyntheticLambda7(parambd, paramViewGroup);
+          }
+          paramViewGroup = parambd.Dfg;
+          if (paramViewGroup != null) {
+            paramViewGroup.aeLi = new bd..ExternalSyntheticLambda8(parambd);
+          }
+          paramViewGroup = parambd.Dfg;
+          if (paramViewGroup != null) {
+            paramViewGroup.dDn();
+          }
+          parambd = parambd.Dff;
+        } while (parambd == null);
+        parambd.cyW();
+        AppMethodBeat.o(355229);
+        return;
+        if (paramMenuItem.intValue() != paramInt) {
+          break label62;
+        }
+        paramMenuItem = parambd.Dfe;
+        if (paramMenuItem != null)
+        {
+          paramMenuItem = paramMenuItem.contact;
+          if (paramMenuItem != null)
+          {
+            paramMenuItem = paramMenuItem.username;
+            if (paramMenuItem != null)
+            {
+              localObject = aj.CGT;
+              localObject = aj.getFinderLiveAssistant();
+              if (localObject != null)
+              {
+                paramViewGroup = paramViewGroup.getContext();
+                kotlin.g.b.s.s(paramViewGroup, "root.context");
+                ((ap)localObject).a(paramViewGroup, ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)((e)parambd.business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class)).liveInfo.liveId, paramMenuItem, Long.valueOf(0L));
+              }
+            }
+          }
+        }
+        paramViewGroup = parambd.Dff;
+        if (paramViewGroup != null) {
+          paramViewGroup.cyW();
+        }
+      } while (parambd.nfT.getLiveRole() != 1);
+      paramViewGroup = j.Dob;
+      paramViewGroup = j.Doc.Dqq;
+      paramViewGroup.DGc += 1L;
+      paramMenuItem = new JSONObject();
+      paramInt = q.aw.DAb.action;
+      parambd = parambd.Dfe;
+      if (parambd == null) {
+        parambd = "";
       }
       for (;;)
       {
-        h((Map.Entry)paramb);
-        AppMethodBeat.o(265826);
+        paramMenuItem.put(String.valueOf(paramInt), parambd);
+        parambd = q.c.Drk;
+        paramViewGroup = j.Dob;
+        if (j.Doc.Dqt) {
+          parambd = q.c.Drm;
+        }
+        j.Dob.a(parambd, paramMenuItem.toString());
+        AppMethodBeat.o(355229);
         return;
-        paramb = null;
-      }
-    }
-    AppMethodBeat.o(265826);
-  }
-  
-  private final void dBH()
-  {
-    int i;
-    Object localObject4;
-    Object localObject5;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(265796);
-        Object localObject1 = dBI();
-        if (localObject1 != null)
+        parambd = parambd.contact;
+        if (parambd == null)
         {
-          i = 1;
-          if ((i != 0) && (localObject1 != null) && (!((b)((Map.Entry)localObject1).getValue()).yrt)) {
-            break label143;
-          }
-          localObject4 = this.yqT;
-          localObject1 = new LinkedHashMap();
-          localObject4 = ((Map)localObject4).entrySet().iterator();
-          if (!((Iterator)localObject4).hasNext()) {
-            break;
-          }
-          localObject5 = (Map.Entry)((Iterator)localObject4).next();
-          if (!((b)((Map.Entry)localObject5).getValue()).yrE.get()) {
-            continue;
-          }
-          ((LinkedHashMap)localObject1).put(((Map.Entry)localObject5).getKey(), ((Map.Entry)localObject5).getValue());
-          continue;
-        }
-        i = 0;
-      }
-      finally {}
-      continue;
-      label143:
-      localObject4 = this.yra.dEu();
-      if ((localObject4 != null) && (((p.c)localObject4).compareTo((Enum)p.c.yQI) < 0)) {
-        b((ViewGroup)localObject2.getKey(), this.yra.dEv());
-      }
-    }
-    Iterator localIterator = ((Map)localObject2).entrySet().iterator();
-    label320:
-    boolean bool;
-    label332:
-    Object localObject3;
-    label456:
-    label476:
-    label504:
-    Object localObject6;
-    b localb;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        localObject4 = (Map.Entry)localIterator.next();
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "pollNextGiftShowInfo: index = " + ((b)((Map.Entry)localObject4).getValue()).index + " \n current bulletInfo = " + this.yqT + " \n current gift queue size: " + this.yra.size());
-        if (!this.yra.hasNext())
-        {
-          AppMethodBeat.o(265796);
-          return;
-        }
-        if (dBI() == null) {
-          break label1129;
-        }
-        bool = true;
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "pollNextGiftShowInfo: isPreciousGiftShowing = ".concat(String.valueOf(bool)));
-        if ((this.yqY.containsValue(((Map.Entry)localObject4).getKey())) && (!bool))
-        {
-          if ((localObject4 == null) || (!((b)((Map.Entry)localObject4).getValue()).yrq.get()) || (((b)((Map.Entry)localObject4).getValue()).yrt) || (((b)((Map.Entry)localObject4).getValue()).yrs.get()))
-          {
-            localObject5 = new StringBuilder("checkIfOuterSpacePreciousGiftForceReplace: entry fail, ");
-            if (localObject4 == null) {
-              break label1134;
-            }
-            localObject3 = (b)((Map.Entry)localObject4).getValue();
-            Log.i("Finder.FinderLiveGiftQueuePlugin", localObject3);
-            i = 0;
-            break label1122;
-          }
+          parambd = "";
         }
         else
         {
-          localObject5 = this.yqT;
-          localObject3 = new LinkedHashMap();
-          localObject5 = ((Map)localObject5).entrySet().iterator();
-        }
-        while (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = (Map.Entry)((Iterator)localObject5).next();
-          localb = (b)((Map.Entry)localObject6).getValue();
-          if ((!localb.yrE.get()) || (!localb.yrq.get())) {
-            break label1139;
-          }
-          i = 1;
-          label562:
-          if (i == 0) {
-            break label1142;
-          }
-          ((LinkedHashMap)localObject3).put(((Map.Entry)localObject6).getKey(), ((Map.Entry)localObject6).getValue());
-          continue;
-          localObject3 = this.yra.aCN(((b)((Map.Entry)localObject4).getValue()).yrD);
-          if (localObject3 == null)
-          {
-            i = 0;
-            break label1122;
-          }
-          if (!((p.b)localObject3).yQE)
-          {
-            i = 0;
-            break label1122;
-          }
-          b((ViewGroup)((Map.Entry)localObject4).getKey(), (p.b)localObject3);
-          this.yra.c((p.b)localObject3);
-          i = 1;
-          break label1122;
-        }
-        localObject3 = ((Map)localObject3).entrySet().iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject5 = (Map.Entry)((Iterator)localObject3).next();
-          localObject6 = this.yra.aCP(((b)((Map.Entry)localObject5).getValue()).yru);
-          if (localObject6 != null) {
-            a((ViewGroup)((Map.Entry)localObject5).getKey(), (p.b)localObject6);
-          }
-        }
-        if (!((b)((Map.Entry)localObject4).getValue()).yrq.get()) {
-          if (bool)
-          {
-            localObject3 = this.yra.aCM(((b)((Map.Entry)localObject4).getValue()).yrD);
-            label792:
-            if (localObject3 == null) {
-              break label900;
-            }
-            Log.i("Finder.FinderLiveGiftQueuePlugin", "pollNextGiftShowInfo: giftShowInfo = ".concat(String.valueOf(localObject3)));
-            if (((b)((Map.Entry)localObject4).getValue()).yrz)
-            {
-              if (bool) {
-                continue;
-              }
-              if (localObject3 != null) {
-                break label902;
-              }
-              bool = false;
-              break label1144;
-            }
+          paramViewGroup = parambd.username;
+          parambd = paramViewGroup;
+          if (paramViewGroup == null) {
+            parambd = "";
           }
         }
       }
     }
-    for (;;)
+    label275:
+    label446:
+    label727:
+    label985:
+    paramViewGroup = parambd.Dfe;
+    if (paramViewGroup == null)
     {
-      localObject6 = (ViewGroup)((Map.Entry)localObject4).getKey();
-      if ((localObject6 == null) || (localObject3 == null)) {}
-      for (;;)
+      paramViewGroup = null;
+      paramMenuItem = (CharSequence)paramViewGroup;
+      if ((paramMenuItem != null) && (paramMenuItem.length() != 0)) {
+        break label1071;
+      }
+    }
+    label1071:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0) {
+        break label1076;
+      }
+      Log.i(parambd.TAG, kotlin.g.b.s.X("goToFinderProfile finderUsername:", paramViewGroup));
+      AppMethodBeat.o(355229);
+      return;
+      paramViewGroup = paramViewGroup.contact;
+      if (paramViewGroup == null)
       {
-        this.yra.c((p.b)localObject3);
-        break;
-        localObject3 = this.yra.aCN(((b)((Map.Entry)localObject4).getValue()).yrD);
-        break label792;
-        label900:
-        break;
-        label902:
-        bool = ((p.b)localObject3).yQE;
-        break label1144;
-        localObject4 = (b)this.yqT.get(localObject6);
-        if (localObject4 != null)
-        {
-          localObject4 = ((b)localObject4).yrq;
-          if ((localObject4 != null) && (true == ((AtomicBoolean)localObject4).get()))
-          {
-            a((ViewGroup)localObject6, (p.b)localObject3);
-            continue;
-          }
-        }
-        localObject4 = (b)this.yqT.get(localObject6);
-        if (localObject4 != null)
-        {
-          localObject4 = ((b)localObject4).yrq;
-          if (localObject4 != null) {
-            ((AtomicBoolean)localObject4).getAndSet(true);
-          }
-        }
-        localObject4 = (b)this.yqT.get(localObject6);
-        if (localObject4 != null)
-        {
-          localObject4 = ((b)localObject4).yrs;
-          if (localObject4 != null) {
-            ((AtomicBoolean)localObject4).getAndSet(((p.b)localObject3).yQE);
-          }
-        }
-        localb = (b)this.yqT.get(localObject6);
-        if (localb != null)
-        {
-          localObject5 = ((p.b)localObject3).yru;
-          localObject4 = localObject5;
-          if (localObject5 == null) {
-            localObject4 = "";
-          }
-          localb.aCn((String)localObject4);
-        }
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new l(this, (ViewGroup)localObject6, (p.b)localObject3));
-      }
-      AppMethodBeat.o(265796);
-      break label320;
-      label1122:
-      if (i != 0) {
+        paramViewGroup = null;
         break;
       }
-      break label476;
-      label1129:
-      bool = false;
-      break label332;
-      label1134:
-      localObject3 = null;
-      break label456;
-      label1139:
-      i = 0;
-      break label562;
-      label1142:
-      break label504;
-      label1144:
-      if (!bool) {
-        break;
-      }
-    }
-  }
-  
-  private final Map.Entry<ViewGroup, b> dBI()
-  {
-    AppMethodBeat.i(265810);
-    Object localObject = kotlin.m.i.c(kotlin.m.i.a(ae.cD(this.yqT), (kotlin.g.a.b)k.yrY));
-    if (!((Collection)localObject).isEmpty()) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      localObject = (Map.Entry)((List)localObject).get(0);
-      AppMethodBeat.o(265810);
-      return localObject;
-    }
-    AppMethodBeat.o(265810);
-    return null;
-  }
-  
-  private final ObjectAnimator e(final ViewGroup paramViewGroup, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(265793);
-    ObjectAnimator localObjectAnimator;
-    if (paramBoolean)
-    {
-      localObjectAnimator = ObjectAnimator.ofFloat(paramViewGroup, "alpha", new float[] { 0.0F, 1.0F });
-      kotlin.g.b.p.j(localObjectAnimator, "bulletInAnim");
-      localObjectAnimator.setDuration(yrd + 500);
-      if (!paramBoolean) {
-        break label131;
-      }
-      localObjectAnimator.setEvaluator((TypeEvaluator)new a(yrd, (kotlin.g.a.m)new g(this, paramViewGroup)));
-    }
-    for (;;)
-    {
-      localObjectAnimator.addListener((Animator.AnimatorListener)new i(this, paramViewGroup, paramBoolean));
-      AppMethodBeat.o(265793);
-      return localObjectAnimator;
-      localObjectAnimator = ObjectAnimator.ofFloat(paramViewGroup, "translationX", new float[] { -500.0F, 0.0F });
+      paramViewGroup = paramViewGroup.username;
       break;
-      label131:
-      localObjectAnimator.setInterpolator((TimeInterpolator)new DecelerateInterpolator());
-      localObjectAnimator.setEvaluator((TypeEvaluator)new c(yrd, (kotlin.g.a.m)new h(this, paramViewGroup)));
+    }
+    label1076:
+    if (parambd.nfT.getLiveRole() == 0) {
+      com.tencent.mm.plugin.finder.live.report.k.Doi.a(q.cc.DEG, "", 0);
+    }
+    boolean bool = parambd.isLandscape();
+    Log.i(parambd.TAG, kotlin.g.b.s.X("goToFinderProfile isLandscape:", Boolean.valueOf(bool)));
+    if (bool)
+    {
+      paramMenuItem = new Bundle();
+      paramMenuItem.putString(parambd.DeN, paramViewGroup);
+      b.a((b)parambd, parambd.DeM, paramMenuItem, 0, 4);
+      AppMethodBeat.o(355229);
+      return;
+    }
+    paramMenuItem = g.CEN;
+    paramMenuItem = parambd.mJe.getContext();
+    Object localObject = parambd.getBuContext();
+    com.tencent.mm.ui.component.k localk = com.tencent.mm.ui.component.k.aeZF;
+    parambd = parambd.mJe.getContext();
+    kotlin.g.b.s.s(parambd, "root.context");
+    g.a(paramMenuItem, (com.tencent.mm.plugin.finder.live.model.context.a)localObject, false, paramViewGroup, ((bn)com.tencent.mm.ui.component.k.nq(parambd).cq(bn.class)).fou());
+    AppMethodBeat.o(355229);
+  }
+  
+  private static final void a(bd parambd, kotlin.g.a.a parama, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(355319);
+    kotlin.g.b.s.u(parambd, "this$0");
+    kotlin.g.b.s.u(parama, "$click");
+    kotlin.g.b.s.u(paramMenuItem, "menuItem");
+    if (paramMenuItem.getItemId() == parambd.niO)
+    {
+      parama.invoke();
+      parama = parambd.Dfg;
+      if (parama != null) {
+        parama.cyW();
+      }
+      if (parambd.nfT.getLiveRole() == 1)
+      {
+        parama = j.Dob;
+        parama = j.Doc.Dqq;
+        parama.DGh += 1L;
+        paramMenuItem = new JSONObject();
+        paramInt = q.aw.DAc.action;
+        parambd = parambd.Dfe;
+        if (parambd == null) {
+          parambd = "";
+        }
+        for (;;)
+        {
+          paramMenuItem.put(String.valueOf(paramInt), parambd);
+          parambd = q.c.Drk;
+          parama = j.Dob;
+          if (j.Doc.Dqt) {
+            parambd = q.c.Drm;
+          }
+          j.Dob.a(parambd, paramMenuItem.toString());
+          AppMethodBeat.o(355319);
+          return;
+          parambd = parambd.contact;
+          if (parambd == null)
+          {
+            parambd = "";
+          }
+          else
+          {
+            parama = parambd.username;
+            parambd = parama;
+            if (parama == null) {
+              parambd = "";
+            }
+          }
+        }
+      }
+    }
+    else
+    {
+      parambd = parambd.Dfg;
+      if (parambd != null) {
+        parambd.cyW();
+      }
+    }
+    AppMethodBeat.o(355319);
+  }
+  
+  private final ArrayList<blq> ar(LinkedList<blq> paramLinkedList)
+  {
+    AppMethodBeat.i(355193);
+    ArrayList localArrayList = new ArrayList();
+    paramLinkedList = ((Iterable)paramLinkedList).iterator();
+    Object localObject2;
+    Object localObject1;
+    while (paramLinkedList.hasNext())
+    {
+      localObject2 = (blq)paramLinkedList.next();
+      localObject1 = new blq();
+      ((blq)localObject1).parseFrom(((blq)localObject2).toByteArray());
+      localObject2 = ah.aiuX;
+      localArrayList.add(localObject1);
+    }
+    int i;
+    Iterator localIterator1;
+    if (!((Collection)((e)business(e.class)).EeD).isEmpty())
+    {
+      i = 1;
+      if (i != 0) {
+        localIterator1 = ((Iterable)((e)business(e.class)).EeD).iterator();
+      }
+    }
+    else
+    {
+      for (;;)
+      {
+        if (!localIterator1.hasNext()) {
+          break label568;
+        }
+        blq localblq = (blq)localIterator1.next();
+        Iterator localIterator2 = ((Iterable)localArrayList).iterator();
+        label168:
+        label204:
+        label221:
+        label233:
+        Object localObject3;
+        label268:
+        cxk localcxk1;
+        if (localIterator2.hasNext())
+        {
+          localObject2 = localIterator2.next();
+          paramLinkedList = ((blq)localObject2).Ddj;
+          if (paramLinkedList == null)
+          {
+            paramLinkedList = "";
+            localObject1 = localblq.Ddj;
+            if (localObject1 != null) {
+              break label464;
+            }
+            localObject1 = "";
+            if (!kotlin.g.b.s.p(paramLinkedList, localObject1)) {
+              break label506;
+            }
+            paramLinkedList = (LinkedList<blq>)localObject2;
+            localObject3 = (blq)paramLinkedList;
+            if (localObject3 == null) {
+              continue;
+            }
+            paramLinkedList = ((blq)localObject3).nUC;
+            kotlin.g.b.s.s(paramLinkedList, "it.items");
+            localIterator2 = ((Iterable)paramLinkedList).iterator();
+            do
+            {
+              if (!localIterator2.hasNext()) {
+                break;
+              }
+              localcxk1 = (cxk)localIterator2.next();
+              paramLinkedList = localblq.nUC;
+            } while (paramLinkedList == null);
+            Iterator localIterator3 = ((Iterable)paramLinkedList).iterator();
+            label311:
+            if (!localIterator3.hasNext()) {
+              break label536;
+            }
+            localObject2 = localIterator3.next();
+            cxk localcxk2 = (cxk)localObject2;
+            paramLinkedList = localcxk2.ZOR;
+            if (paramLinkedList != null) {
+              break label513;
+            }
+            paramLinkedList = null;
+            label349:
+            localObject1 = localcxk1.ZOR;
+            if (localObject1 != null) {
+              break label521;
+            }
+            localObject1 = null;
+            label364:
+            if ((!kotlin.g.b.s.p(paramLinkedList, localObject1)) || (localcxk1.ZnA < localcxk2.ZnA)) {
+              break label531;
+            }
+            i = 1;
+            label388:
+            if (i == 0) {
+              break label534;
+            }
+          }
+        }
+        label513:
+        label521:
+        label531:
+        label534:
+        label536:
+        for (paramLinkedList = (LinkedList<blq>)localObject2;; paramLinkedList = null)
+        {
+          paramLinkedList = (cxk)paramLinkedList;
+          if (paramLinkedList == null) {
+            break label268;
+          }
+          localcxk1.ZnA -= paramLinkedList.ZnA;
+          break label268;
+          i = 0;
+          break;
+          paramLinkedList = paramLinkedList.contact;
+          if (paramLinkedList == null)
+          {
+            paramLinkedList = "";
+            break label204;
+          }
+          localObject1 = paramLinkedList.username;
+          paramLinkedList = (LinkedList<blq>)localObject1;
+          if (localObject1 != null) {
+            break label204;
+          }
+          paramLinkedList = "";
+          break label204;
+          label464:
+          localObject1 = ((bgh)localObject1).contact;
+          if (localObject1 == null)
+          {
+            localObject1 = "";
+            break label221;
+          }
+          localObject3 = ((FinderContact)localObject1).username;
+          localObject1 = localObject3;
+          if (localObject3 != null) {
+            break label221;
+          }
+          localObject1 = "";
+          break label221;
+          label506:
+          break label168;
+          paramLinkedList = null;
+          break label233;
+          paramLinkedList = paramLinkedList.ZOC;
+          break label349;
+          localObject1 = ((bim)localObject1).ZOC;
+          break label364;
+          i = 0;
+          break label388;
+          break label311;
+        }
+        paramLinkedList = ((blq)localObject3).nUC;
+        kotlin.g.b.s.s(paramLinkedList, "it.items");
+        d.a(paramLinkedList, (kotlin.g.a.b)bd.a.Dfj);
+      }
+      label568:
+      d.a(localArrayList, (kotlin.g.a.b)bd.b.Dfk);
+    }
+    if (localArrayList.size() > 0)
+    {
+      paramLinkedList = com.tencent.d.a.a.a.a.a.ahiX;
+      switch (((Number)com.tencent.d.a.a.a.a.a.jTZ().bmg()).intValue())
+      {
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(355193);
+      return localArrayList;
+      i = 0;
+      int j;
+      do
+      {
+        j = i + 1;
+        localArrayList.add(localArrayList.get(0));
+        i = j;
+      } while (j <= 1);
+      continue;
+      i = 0;
+      do
+      {
+        j = i + 1;
+        localArrayList.add(localArrayList.get(0));
+        i = j;
+      } while (j <= 12);
+      continue;
+      i = 0;
+      do
+      {
+        j = i + 1;
+        localArrayList.add(localArrayList.get(0));
+        i = j;
+      } while (j <= 38);
     }
   }
   
-  private final boolean h(Map.Entry<? extends ViewGroup, b> paramEntry)
+  private static final void b(bd parambd)
   {
-    AppMethodBeat.i(265811);
-    Object localObject = paramEntry;
-    if (paramEntry == null) {
-      localObject = dBI();
+    AppMethodBeat.i(355250);
+    kotlin.g.b.s.u(parambd, "this$0");
+    parambd.Dff = null;
+    AppMethodBeat.o(355250);
+  }
+  
+  private static final void b(bd parambd, View paramView)
+  {
+    AppMethodBeat.i(355266);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parambd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parambd, "this$0");
+    parambd.niX.hide();
+    if (parambd.nfT.getLiveRole() == 1) {
+      j.Dob.a(q.c.Drz, String.valueOf(q.bm.DBx.action));
     }
-    if (localObject != null)
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(355266);
+  }
+  
+  private static final void c(bd parambd)
+  {
+    AppMethodBeat.i(355329);
+    kotlin.g.b.s.u(parambd, "this$0");
+    parambd.Dfg = null;
+    AppMethodBeat.o(355329);
+  }
+  
+  private static final void c(bd parambd, View paramView)
+  {
+    AppMethodBeat.i(355277);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(parambd);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    kotlin.g.b.s.u(parambd, "this$0");
+    paramView = ((e)((e)parambd.business(e.class)).business(e.class)).Eco;
+    if (paramView != null)
     {
-      long l = ((b)((Map.Entry)localObject).getValue()).yrA - (cm.bfE() - ((b)((Map.Entry)localObject).getValue()).yrB);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "checkIfPreciousGiftTimeOver: remainingTime=" + l + ", entry=" + localObject);
-      if (l > 100L)
+      ((e)((e)parambd.business(e.class)).business(e.class)).EcI = false;
+      localObject1 = com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.f.class);
+      kotlin.g.b.s.s(localObject1, "service(IActivityRouter::class.java)");
+      localObject1 = (com.tencent.mm.plugin.f)localObject1;
+      parambd = parambd.mJe.getContext();
+      if (parambd == null)
       {
-        this.timer.startTimer(l);
-        AppMethodBeat.o(265811);
-        return true;
+        parambd = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+        AppMethodBeat.o(355277);
+        throw parambd;
       }
-      b.b.a(this.kCL, b.c.kAd);
-      ((b)((Map.Entry)localObject).getValue()).yrA = 0L;
-      ((b)((Map.Entry)localObject).getValue()).yrB = 0L;
-      if (((b)((Map.Entry)localObject).getValue()).yrF)
-      {
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "checkIfPreciousGiftTimeOver: fake container");
-        ((b)((Map.Entry)localObject).getValue()).yrq.getAndSet(false);
-        dBH();
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(265811);
-        return false;
-        paramEntry = this.yqZ.obtainMessage();
-        paramEntry.obj = ((Map.Entry)localObject).getKey();
-        this.yqZ.sendMessageDelayed(paramEntry, 2000L);
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "checkIfPreciousGiftTimeOver: handler msg.obj = " + paramEntry.obj);
+      parambd = (AppCompatActivity)parambd;
+      localObject2 = FinderItem.Companion;
+      f.a.a((com.tencent.mm.plugin.f)localObject1, parambd, FinderItem.a.e(paramView, 16384), null, 0, null, 28);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(355277);
+  }
+  
+  private static final void d(bd parambd)
+  {
+    AppMethodBeat.i(355336);
+    kotlin.g.b.s.u(parambd, "this$0");
+    parambd.niX.show();
+    AppMethodBeat.o(355336);
+  }
+  
+  private static final void d(bd parambd, View paramView)
+  {
+    AppMethodBeat.i(355292);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parambd);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(parambd, "this$0");
+    localObject = new Intent();
+    if (parambd.nfT.getLiveRole() == 1)
+    {
+      j.Dob.a(q.c.Drz, String.valueOf(q.bm.DBw.action));
+      paramView = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      if (!com.tencent.mm.plugin.finder.live.utils.a.a((e)parambd.business(e.class))) {
+        break label224;
       }
     }
-    AppMethodBeat.o(265811);
+    label224:
+    for (paramView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=support/we-coin/protocol/index#/base-protocol/v2";; paramView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=support/we-coin/protocol/index")
+    {
+      ((Intent)localObject).putExtra("rawUrl", paramView);
+      paramView = aj.CGT;
+      paramView = aj.getFinderLiveAssistant();
+      if (paramView != null)
+      {
+        parambd = parambd.mJe.getContext();
+        kotlin.g.b.s.s(parambd, "root.context");
+        paramView.a(parambd, (Intent)localObject, null);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(355292);
+      return;
+      if (parambd.nfT.getLiveRole() != 0) {
+        break;
+      }
+      com.tencent.mm.plugin.finder.live.report.k.Doi.a(q.cc.DED, "", 0);
+      break;
+    }
+  }
+  
+  private static final void e(bd parambd)
+  {
+    AppMethodBeat.i(355344);
+    kotlin.g.b.s.u(parambd, "this$0");
+    parambd.niX.show();
+    AppMethodBeat.o(355344);
+  }
+  
+  private static final void eqZ() {}
+  
+  private final boolean eqc()
+  {
+    AppMethodBeat.i(355201);
+    com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    if ((com.tencent.mm.plugin.finder.live.utils.a.bUx()) || (((e)business(e.class)).DUe))
+    {
+      AppMethodBeat.o(355201);
+      return true;
+    }
+    AppMethodBeat.o(355201);
     return false;
   }
   
-  private final ObjectAnimator u(final ViewGroup paramViewGroup)
+  private static final void f(bd parambd)
   {
-    AppMethodBeat.i(265795);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramViewGroup, "alpha", new float[] { 1.0F, 0.0F });
-    kotlin.g.b.p.j(localObjectAnimator, "bulletOutAnim");
-    localObjectAnimator.setDuration(500L);
-    localObjectAnimator.addListener((Animator.AnimatorListener)new j(this, paramViewGroup));
-    AppMethodBeat.o(265795);
-    return localObjectAnimator;
+    AppMethodBeat.i(355362);
+    kotlin.g.b.s.u(parambd, "this$0");
+    ((com.tencent.d.a.a.a.b)com.tencent.mm.kernel.h.az(com.tencent.d.a.a.a.b.class)).getFinderLiveLastRewardInfoStorage().e(String.valueOf(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)((e)parambd.business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class)).liveInfo.liveId), ((e)parambd.business(e.class)).EeD);
+    AppMethodBeat.o(355362);
   }
   
-  private final void v(ViewGroup paramViewGroup)
+  private final void rs(boolean paramBoolean)
   {
-    AppMethodBeat.i(265819);
-    b localb = (b)this.yqT.get(paramViewGroup);
-    if (localb != null)
+    Object localObject2 = null;
+    AppMethodBeat.i(355162);
+    Object localObject3 = this.TAG;
+    Object localObject1 = this.Dfe;
+    if (localObject1 == null)
     {
-      localb.reset();
-      localb.yrE.getAndSet(false);
-    }
-    paramViewGroup.setVisibility(8);
-    AppMethodBeat.o(265819);
-  }
-  
-  private final void w(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(265820);
-    if (!this.yqT.containsKey(paramViewGroup))
-    {
-      AppMethodBeat.o(265820);
-      return;
-    }
-    a((b)this.yqT.get(paramViewGroup));
-    Log.i("Finder.FinderLiveGiftQueuePlugin", "unregisterOuterSpace: info:" + (b)this.yqT.get(paramViewGroup));
-    this.yqT.remove(paramViewGroup);
-    this.yqU.remove(paramViewGroup);
-    this.yqV.remove(paramViewGroup);
-    this.yrb.removeView((View)paramViewGroup);
-    if (this.yqT.size() == this.yqS)
-    {
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "unregisterOuterSpace: enable origin three container");
-      x((ViewGroup)this.yqO);
-      x((ViewGroup)this.yqP);
-      x((ViewGroup)this.yqQ);
-      this.yrb.setVisibility(8);
-    }
-    AppMethodBeat.o(265820);
-  }
-  
-  private final void x(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(265821);
-    paramViewGroup = (b)this.yqT.get(paramViewGroup);
-    if (paramViewGroup != null)
-    {
-      paramViewGroup.yrE.getAndSet(true);
-      AppMethodBeat.o(265821);
-      return;
-    }
-    AppMethodBeat.o(265821);
-  }
-  
-  public final void a(p.c paramc)
-  {
-    AppMethodBeat.i(265815);
-    kotlin.g.b.p.k(paramc, "giftType");
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new m(this));
-    dBH();
-    AppMethodBeat.o(265815);
-  }
-  
-  public final void a(LinkedHashMap<String, Rect> paramLinkedHashMap, boolean paramBoolean)
-  {
-    AppMethodBeat.i(265822);
-    kotlin.g.b.p.k(paramLinkedHashMap, "micUserMap");
-    Object localObject3 = ((f)business(f.class)).zhm;
-    Object localObject2 = ((f)business(f.class)).zhl;
-    Log.i("Finder.FinderLiveGiftQueuePlugin", "onAudienceMicUserChanged: linkMicList size:" + ((List)localObject3).size() + " pkMicUser:" + localObject2);
-    Object localObject4;
-    Object localObject1;
-    Object localObject5;
-    if (paramBoolean)
-    {
-      if (localObject2 == null)
+      localObject1 = null;
+      Log.i((String)localObject3, kotlin.g.b.s.X("kickMember:", localObject1));
+      localObject1 = aj.CGT;
+      localObject3 = aj.getFinderLiveAssistant();
+      if (localObject3 != null)
       {
-        paramLinkedHashMap = ((Map)this.yqY).entrySet().iterator();
-        while (paramLinkedHashMap.hasNext()) {
-          w((ViewGroup)((Map.Entry)paramLinkedHashMap.next()).getValue());
+        localObject1 = this.Dfe;
+        if (localObject1 != null) {
+          break label111;
         }
-        this.yqY.clear();
-        AppMethodBeat.o(265822);
-        return;
-      }
-      this.yrb.setVisibility(0);
-      localObject3 = ((Map)this.yqY).entrySet().iterator();
-      label279:
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (ViewGroup)((Map.Entry)((Iterator)localObject3).next()).getValue();
-        localObject1 = (b)this.yqT.get(localObject4);
-        localObject5 = (CharSequence)((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject2).username;
-        if (localObject1 != null) {}
-        for (localObject1 = ((b)localObject1).yrD;; localObject1 = null)
-        {
-          if (TextUtils.equals((CharSequence)localObject5, (CharSequence)localObject1)) {
-            break label279;
-          }
-          w((ViewGroup)localObject4);
-          ((Iterator)localObject3).remove();
-          break;
-        }
-      }
-      localObject1 = ((Map)paramLinkedHashMap).entrySet().iterator();
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (Map.Entry)((Iterator)localObject1).next();
-        if (kotlin.g.b.p.h((String)((Map.Entry)localObject3).getKey(), ((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject2).ktR)) {}
-        for (paramLinkedHashMap = (LinkedHashMap<String, Rect>)localObject2;; paramLinkedHashMap = null)
-        {
-          if (!this.yqY.containsKey(((Map.Entry)localObject3).getKey())) {
-            break label429;
-          }
-          Log.i("Finder.FinderLiveGiftQueuePlugin", "onAudienceMicUserChanged: adjustContainerLocation, sdkUserId = " + (String)((Map.Entry)localObject3).getKey());
-          a((ViewGroup)this.yqY.get(((Map.Entry)localObject3).getKey()), (Rect)((Map.Entry)localObject3).getValue(), paramLinkedHashMap);
-          break;
-        }
-        label429:
-        localObject4 = a((Rect)((Map.Entry)localObject3).getValue(), this.yrb, paramLinkedHashMap);
-        if (paramLinkedHashMap != null)
-        {
-          paramLinkedHashMap = paramLinkedHashMap.username;
-          if (paramLinkedHashMap != null) {
-            break label1212;
-          }
-        }
-        paramLinkedHashMap = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).kig;
+        localObject1 = localObject2;
       }
     }
-    label805:
-    label1209:
-    label1212:
     for (;;)
     {
-      a(this, (ViewGroup)localObject4, paramLinkedHashMap, ((Rect)((Map.Entry)localObject3).getValue()).width());
-      ((Map)this.yqY).put(((Map.Entry)localObject3).getKey(), localObject4);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "onAudienceMicUserChanged: outerSpaceMap add new entry, key = " + (String)((Map.Entry)localObject3).getKey() + ", value = " + localObject4 + ", outSpaceWidth:" + ((Rect)((Map.Entry)localObject3).getValue()).width());
-      break;
-      AppMethodBeat.o(265822);
+      ((ap)localObject3).a((String)localObject1, paramBoolean, (m)new c(this));
+      AppMethodBeat.o(355162);
       return;
-      if (((List)localObject3).isEmpty())
+      localObject1 = ((bgh)localObject1).contact;
+      if (localObject1 == null)
       {
-        paramLinkedHashMap = ((Map)this.yqY).entrySet().iterator();
-        while (paramLinkedHashMap.hasNext()) {
-          w((ViewGroup)((Map.Entry)paramLinkedHashMap.next()).getValue());
-        }
-        this.yqY.clear();
-        AppMethodBeat.o(265822);
-        return;
-      }
-      this.yrb.setVisibility(0);
-      localObject4 = ((Map)this.yqY).entrySet().iterator();
-      label843:
-      label848:
-      while (((Iterator)localObject4).hasNext())
-      {
-        localObject5 = (ViewGroup)((Map.Entry)((Iterator)localObject4).next()).getValue();
-        b localb = (b)this.yqT.get(localObject5);
-        kotlin.g.b.p.j(localObject3, "linkMicList");
-        Iterator localIterator = ((Iterable)localObject3).iterator();
-        label762:
-        if (localIterator.hasNext())
-        {
-          localObject2 = localIterator.next();
-          CharSequence localCharSequence = (CharSequence)((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject2).username;
-          if (localb != null)
-          {
-            localObject1 = localb.yrD;
-            if (!TextUtils.equals(localCharSequence, (CharSequence)localObject1)) {
-              break label843;
-            }
-          }
-        }
-        for (localObject1 = localObject2;; localObject1 = null)
-        {
-          if (localObject1 != null) {
-            break label848;
-          }
-          w((ViewGroup)localObject5);
-          ((Iterator)localObject4).remove();
-          break;
-          localObject1 = null;
-          break label805;
-          break label762;
-        }
-      }
-      localObject1 = ((Map)paramLinkedHashMap).entrySet().iterator();
-      if (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        kotlin.g.b.p.j(localObject3, "linkMicList");
-        localObject4 = ((Iterable)localObject3).iterator();
-        do
-        {
-          if (!((Iterator)localObject4).hasNext()) {
-            break;
-          }
-          paramLinkedHashMap = ((Iterator)localObject4).next();
-          localObject5 = (com.tencent.mm.plugin.finder.live.viewmodel.data.h)paramLinkedHashMap;
-        } while (!((String)((Map.Entry)localObject2).getKey()).equals(((com.tencent.mm.plugin.finder.live.viewmodel.data.h)localObject5).ktR));
-        for (;;)
-        {
-          paramLinkedHashMap = (com.tencent.mm.plugin.finder.live.viewmodel.data.h)paramLinkedHashMap;
-          if (!this.yqY.containsKey(((Map.Entry)localObject2).getKey())) {
-            break label1044;
-          }
-          Log.i("Finder.FinderLiveGiftQueuePlugin", "onAudienceMicUserChanged: adjustContainerLocation, sdkUserId = " + (String)((Map.Entry)localObject2).getKey());
-          a((ViewGroup)this.yqY.get(((Map.Entry)localObject2).getKey()), (Rect)((Map.Entry)localObject2).getValue(), paramLinkedHashMap);
-          break;
-          paramLinkedHashMap = null;
-        }
-        localObject4 = a((Rect)((Map.Entry)localObject2).getValue(), this.yrb, paramLinkedHashMap);
-        if (paramLinkedHashMap != null)
-        {
-          paramLinkedHashMap = paramLinkedHashMap.username;
-          if (paramLinkedHashMap != null) {
-            break label1209;
-          }
-        }
-        paramLinkedHashMap = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).kig;
-      }
-      for (;;)
-      {
-        a(this, (ViewGroup)localObject4, paramLinkedHashMap, ((Rect)((Map.Entry)localObject2).getValue()).width());
-        ((Map)this.yqY).put(((Map.Entry)localObject2).getKey(), localObject4);
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "onAudienceMicUserChanged: outerSpaceMap add new entry, key = " + (String)((Map.Entry)localObject2).getKey() + ", value = " + localObject4 + ", outSpaceWidth:" + ((Rect)((Map.Entry)localObject2).getValue()).width());
+        localObject1 = null;
         break;
-        AppMethodBeat.o(265822);
-        return;
+      }
+      localObject1 = ((FinderContact)localObject1).username;
+      break;
+      label111:
+      FinderContact localFinderContact = ((bgh)localObject1).contact;
+      localObject1 = localObject2;
+      if (localFinderContact != null) {
+        localObject1 = localFinderContact.username;
       }
     }
   }
   
-  public final boolean dAo()
+  public final void a(Bundle paramBundle, Object paramObject, long paramLong)
   {
-    return true;
+    AppMethodBeat.i(355593);
+    Object localObject;
+    if (paramBundle == null) {
+      localObject = "";
+    }
+    for (;;)
+    {
+      if (kotlin.g.b.s.p(localObject, this.DeM)) {
+        d.a(paramLong, new bd..ExternalSyntheticLambda14(this, paramBundle, paramObject, paramLong));
+      }
+      AppMethodBeat.o(355593);
+      return;
+      String str = paramBundle.getString("ACTION_POST_PORTRAIT", "");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+    }
   }
   
-  public final void dBJ()
+  public final void applyState(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    AppMethodBeat.i(265816);
-    if (this.yra.hasNext())
+    AppMethodBeat.i(355569);
+    if (d.ee(paramInt2, 16))
     {
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new f(this));
-      dBH();
+      if (this.mJe.getVisibility() != 0)
+      {
+        tO(0);
+        if (paramBundle == null) {}
+        for (boolean bool = false; bool; bool = paramBundle.getBoolean("PARAM_FINDER_LIVE_MEMBER_SKIP_LOADING"))
+        {
+          this.niX.post(new bd..ExternalSyntheticLambda12(this));
+          this.Dfd.evP();
+          AppMethodBeat.o(355569);
+          return;
+        }
+        this.njj.setVisibility(0);
+        this.njg.setVisibility(8);
+        this.DeW.setVisibility(8);
+        this.njm.setVisibility(8);
+        this.nji.setVisibility(8);
+        this.Dfd.evP();
+        this.niX.post(new bd..ExternalSyntheticLambda11(this));
+        eqc();
+        paramBundle = aj.CGT;
+        paramBundle = aj.getFinderLiveAssistant();
+        if (paramBundle != null) {
+          paramBundle.d((kotlin.g.a.r)new j(this));
+        }
+        AppMethodBeat.o(355569);
+      }
     }
-    AppMethodBeat.o(265816);
+    else {
+      tO(8);
+    }
+    AppMethodBeat.o(355569);
   }
   
   public final void mount()
   {
-    AppMethodBeat.i(265813);
+    AppMethodBeat.i(355624);
     super.mount();
-    this.yra.a((p.a)this);
-    AppMethodBeat.o(265813);
+    this.DeU.setOnClickListener(new bd..ExternalSyntheticLambda3(this));
+    this.niW.setOnClickListener(new bd..ExternalSyntheticLambda2(this));
+    this.DeV.setOnClickListener(new bd..ExternalSyntheticLambda1(this));
+    this.DeY.setOnClickListener(new bd..ExternalSyntheticLambda0(this));
+    this.niX.setOnVisibilityListener((kotlin.g.a.b)new d(this));
+    this.Dfd.nod = ((kotlin.g.a.b)new e(this));
+    AppMethodBeat.o(355624);
+  }
+  
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(355554);
+    if (this.mJe.getVisibility() == 0)
+    {
+      this.niX.hide();
+      if (this.nfT.getLiveRole() == 1) {
+        j.Dob.a(q.c.Drz, String.valueOf(q.bm.DBx.action));
+      }
+      AppMethodBeat.o(355554);
+      return true;
+    }
+    boolean bool = super.onBackPress();
+    AppMethodBeat.o(355554);
+    return bool;
+  }
+  
+  public final void rt(boolean paramBoolean)
+  {
+    AppMethodBeat.i(355615);
+    Object localObject1 = ((o)business(o.class)).EhQ;
+    Object localObject2 = ((o)business(o.class)).EhS;
+    int k = ((o)business(o.class)).EhT;
+    business(o.class);
+    Object localObject3 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    long l;
+    int i;
+    if ((com.tencent.mm.plugin.finder.live.utils.a.a((e)business(e.class))) && (eqc()) && (!((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eiv))
+    {
+      localObject3 = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class);
+      if (localObject3 == null)
+      {
+        l = 0L;
+        if (l <= 0L) {
+          break label299;
+        }
+        i = 1;
+        label141:
+        localObject3 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+        if ((!com.tencent.mm.plugin.finder.live.utils.a.a((e)business(e.class))) || (eqc()) || (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eiv)) {
+          break label362;
+        }
+        localObject4 = (Iterable)localObject1;
+        localObject3 = (Collection)new ArrayList();
+        localObject4 = ((Iterable)localObject4).iterator();
+      }
+    }
+    label222:
+    Object localObject5;
+    label299:
+    label307:
+    for (;;)
+    {
+      if (!((Iterator)localObject4).hasNext()) {
+        break label309;
+      }
+      localObject5 = ((Iterator)localObject4).next();
+      if (((bgh)localObject5).ZPR > 0) {}
+      for (int j = 1;; j = 0)
+      {
+        if (j == 0) {
+          break label307;
+        }
+        ((Collection)localObject3).add(localObject5);
+        break label222;
+        localObject3 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)localObject3).liveInfo;
+        if (localObject3 == null)
+        {
+          l = 0L;
+          break;
+        }
+        l = ((bip)localObject3).ZKy;
+        break;
+        i = 0;
+        break label141;
+      }
+    }
+    label309:
+    boolean bool = ((List)localObject3).isEmpty();
+    for (;;)
+    {
+      localObject3 = ((e)business(e.class)).EeE;
+      if ((!bool) || (!paramBoolean)) {
+        break;
+      }
+      Log.i(this.TAG, "onGetLiveOnlineMemberSuccess autoRefresh but onlineMembers Is Empty!");
+      AppMethodBeat.o(355615);
+      return;
+      label362:
+      localObject3 = (Collection)localObject1;
+      if ((localObject3 == null) || (((Collection)localObject3).isEmpty())) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+    }
+    if (bool)
+    {
+      this.DeW.setVisibility(0);
+      this.njj.setVisibility(8);
+      this.njm.setVisibility(0);
+      localObject3 = this.nji;
+      if (i != 0)
+      {
+        localObject4 = this.Dfd;
+        localObject5 = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class);
+        if (localObject5 == null) {
+          l = 0L;
+        }
+        for (;;)
+        {
+          ((w)localObject4).DRU = l;
+          this.Dfd.a(this.Dfh, (List)localObject1, ((o)business(o.class)).EhR, (List)localObject2, k, true);
+          this.Dfd.DRW = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eiv;
+          this.Dfd.bZE.notifyChanged();
+          localObject4 = this.DeW.getLayoutParams();
+          if (localObject4 != null) {
+            break;
+          }
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+          AppMethodBeat.o(355615);
+          throw ((Throwable)localObject1);
+          localObject5 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)localObject5).liveInfo;
+          if (localObject5 == null) {
+            l = 0L;
+          } else {
+            l = ((bip)localObject5).ZKy;
+          }
+        }
+        localObject4 = (FrameLayout.LayoutParams)localObject4;
+        ((FrameLayout.LayoutParams)localObject4).topMargin += this.DeW.getContext().getResources().getDimensionPixelOffset(p.c.Edge_5A);
+      }
+      for (i = 0;; i = 8)
+      {
+        ((RecyclerView)localObject3).setVisibility(i);
+        this.njg.setVisibility(8);
+        if ((!eqc()) || ((((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eis != 0) && (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eis != 524288)))
+        {
+          this.DeV.setVisibility(8);
+          this.njh.setText(this.njh.getContext().getText(p.h.Cnp));
+        }
+        Pb(((e)((e)business(e.class)).business(e.class)).EcL);
+        localObject3 = this.TAG;
+        localObject1 = new StringBuilder("onGetLiveOnlineByRoomSuccess onlineCnt:").append(((ArrayList)localObject1).size()).append(" offlineCnt:").append(((ArrayList)localObject2).size()).append(",amount count:");
+        localObject2 = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+        Log.i((String)localObject3, com.tencent.mm.plugin.finder.live.utils.a.a(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class)).liveInfo));
+        AppMethodBeat.o(355615);
+        return;
+      }
+    }
+    this.DeW.setVisibility(8);
+    this.njj.setVisibility(8);
+    this.njm.setVisibility(0);
+    this.nji.setVisibility(0);
+    this.njg.setVisibility(8);
+    Pb(((e)((e)business(e.class)).business(e.class)).EcL);
+    if (eqc())
+    {
+      paramBoolean = ((e)((e)business(e.class)).business(e.class)).Edv;
+      this.Dfd.continueFlag = ((e)((e)business(e.class)).business(e.class)).EdW;
+      this.Dfd.DRV = ((e)((e)business(e.class)).business(e.class)).EdX;
+      this.Dfh = ar((LinkedList)localObject3);
+      if ((eqc()) && (this.Dfh.isEmpty()))
+      {
+        this.DeZ.setVisibility(0);
+        this.DeZ.setText((CharSequence)this.mJe.getContext().getResources().getString(p.h.CrW));
+      }
+      if ((this.DeZ.getVisibility() != 0) || (this.Dfa.getVisibility() != 0)) {
+        break label1235;
+      }
+      this.Dfc.setVisibility(0);
+    }
+    for (;;)
+    {
+      localObject3 = ((Iterable)((e)business(e.class)).EeE).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (blq)((Iterator)localObject3).next();
+        d.a(((e)business(e.class)).EeD, (kotlin.g.a.b)new h((blq)localObject4));
+        ((e)business(e.class)).EeD.add(localObject4);
+      }
+      paramBoolean = ((e)((e)business(e.class)).business(e.class)).Edw;
+      break;
+      label1235:
+      this.Dfc.setVisibility(8);
+    }
+    com.tencent.threadpool.h.ahAA.bn(new bd..ExternalSyntheticLambda13(this));
+    localObject3 = this.Dfd;
+    Object localObject4 = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.f.class);
+    if (localObject4 == null) {
+      l = 0L;
+    }
+    for (;;)
+    {
+      ((w)localObject3).DRU = l;
+      this.Dfd.a(this.Dfh, (List)localObject1, ((o)business(o.class)).EhR, (List)localObject2, k, paramBoolean);
+      this.Dfd.DRW = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.r)((e)business(e.class)).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.r.class)).Eiv;
+      this.Dfd.bZE.notifyChanged();
+      this.nji.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new i(this));
+      break;
+      localObject4 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.f)localObject4).liveInfo;
+      if (localObject4 == null) {
+        l = 0L;
+      } else {
+        l = ((bip)localObject4).ZKy;
+      }
+    }
+  }
+  
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    AppMethodBeat.i(355580);
+    kotlin.g.b.s.u(paramc, "status");
+    AppMethodBeat.o(355580);
   }
   
   public final void unMount()
   {
-    AppMethodBeat.i(265814);
+    AppMethodBeat.i(355633);
     super.unMount();
-    this.timer.stopTimer();
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new q(this));
-    this.yra.b((p.a)this);
-    AppMethodBeat.o(265814);
+    this.DeU.setOnClickListener(null);
+    this.niW.setOnClickListener(null);
+    this.DeV.setOnClickListener(null);
+    this.DeY.setOnClickListener(null);
+    this.niX.setOnVisibilityListener(null);
+    this.Dfd.nod = null;
+    AppMethodBeat.o(355633);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletFadeInEvaluator;", "Landroid/animation/FloatEvaluator;", "fadeDuration", "", "stayDuration", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "fraction", "", "flying", "", "(IILkotlin/jvm/functions/Function2;)V", "getCallback", "()Lkotlin/jvm/functions/Function2;", "setCallback", "(Lkotlin/jvm/functions/Function2;)V", "fadeFraction", "evaluate", "startValue", "", "endValue", "(FLjava/lang/Number;Ljava/lang/Number;)Ljava/lang/Float;", "plugin-finder_release"})
-  static final class a
-    extends FloatEvaluator
-  {
-    private kotlin.g.a.m<? super Float, ? super Boolean, x> jHk;
-    private final float yrp;
-    
-    public a(int paramInt, kotlin.g.a.m<? super Float, ? super Boolean, x> paramm)
-    {
-      AppMethodBeat.i(278011);
-      this.jHk = paramm;
-      this.yrp = (500.0F / (paramInt + 500));
-      AppMethodBeat.o(278011);
-    }
-    
-    public final Float evaluate(float paramFloat, Number paramNumber1, Number paramNumber2)
-    {
-      AppMethodBeat.i(278009);
-      if (paramFloat < this.yrp)
-      {
-        kotlin.g.a.m localm = this.jHk;
-        if (localm != null) {
-          localm.invoke(Float.valueOf(paramFloat), Boolean.TRUE);
-        }
-        if ((paramNumber1 == null) || (paramNumber2 == null))
-        {
-          AppMethodBeat.o(278009);
-          return Float.valueOf(0.0F);
-        }
-        paramFloat = paramNumber1.floatValue() + (paramNumber2.floatValue() - paramNumber1.floatValue()) * paramFloat / this.yrp;
-        AppMethodBeat.o(278009);
-        return Float.valueOf(paramFloat);
-      }
-      paramNumber1 = this.jHk;
-      if (paramNumber1 != null) {
-        paramNumber1.invoke(Float.valueOf(paramFloat), Boolean.FALSE);
-      }
-      if (!(paramNumber2 instanceof Float)) {}
-      for (paramNumber1 = null;; paramNumber1 = paramNumber2)
-      {
-        paramNumber1 = (Float)paramNumber1;
-        if (paramNumber1 != null)
-        {
-          paramFloat = paramNumber1.floatValue();
-          break;
-        }
-        paramFloat = 1.0F;
-        break;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletShowingInfo;", "", "container", "Landroid/view/ViewGroup;", "index", "", "isVisitor", "", "backup", "isOuterSpace", "outSpaceWidth", "(Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin;Landroid/view/ViewGroup;IZZZI)V", "value", "bulletFlying", "getBulletFlying", "()Z", "setBulletFlying", "(Z)V", "cntQueue", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "getCntQueue", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "setCntQueue", "(Ljava/util/concurrent/ConcurrentLinkedDeque;)V", "cntTransferAnimatorSet", "Landroid/animation/AnimatorSet;", "getCntTransferAnimatorSet", "()Landroid/animation/AnimatorSet;", "setCntTransferAnimatorSet", "(Landroid/animation/AnimatorSet;)V", "cntTransferAniming", "getCntTransferAniming", "setCntTransferAniming", "comboId", "", "getComboId", "()Ljava/lang/String;", "setComboId", "(Ljava/lang/String;)V", "comboSumCount", "getComboSumCount", "()I", "setComboSumCount", "(I)V", "enabled", "Ljava/util/concurrent/atomic/AtomicBoolean;", "getEnabled", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setEnabled", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "giftId", "getGiftId", "setGiftId", "getIndex", "isBackup", "setBackup", "isBulletInAnimationEnd", "setBulletInAnimationEnd", "isFakeContainer", "setFakeContainer", "isPreciousGift", "setPreciousGift", "isSelfSend", "setSelfSend", "isShowing", "setShowing", "lastCountOnBackToLive", "getLastCountOnBackToLive", "setLastCountOnBackToLive", "startShowingTime", "", "getStartShowingTime", "()J", "setStartShowingTime", "(J)V", "targetUserName", "getTargetUserName", "setTargetUserName", "totalShowingTime", "getTotalShowingTime", "setTotalShowingTime", "viewHolder", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletViewHolder;", "getViewHolder", "()Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletViewHolder;", "reset", "", "saveBackToLiveInfo", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$ComboIdBackToLiveInfo;", "destinationCnt", "localSend", "startTransferCnt", "prefix", "toString", "plugin-finder_release"})
-  final class b
-  {
-    final int index;
-    volatile long yrA;
-    volatile long yrB;
-    volatile String yrC;
-    volatile String yrD;
-    AtomicBoolean yrE;
-    boolean yrF;
-    AnimatorSet yrG;
-    private volatile boolean yrH;
-    volatile boolean yrI;
-    AtomicBoolean yrq;
-    volatile boolean yrr;
-    AtomicBoolean yrs;
-    volatile boolean yrt;
-    volatile String yru;
-    volatile int yrv;
-    private ConcurrentLinkedDeque<Integer> yrw;
-    volatile int yrx;
-    final bd.c yry;
-    boolean yrz;
-    
-    private b(final int paramInt1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt2)
-    {
-      AppMethodBeat.i(287148);
-      this.index = paramBoolean1;
-      this.yrq = new AtomicBoolean(false);
-      this.yrs = new AtomicBoolean(false);
-      this.yru = "";
-      this.yrw = new ConcurrentLinkedDeque();
-      int i;
-      this.yry = new bd.c(paramInt1, paramBoolean2, paramInt2, i);
-      this.yrz = paramBoolean3;
-      this.yrC = "";
-      this.yrD = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)bd.this.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).kig;
-      this.yrE = new AtomicBoolean(true);
-      this.yrG = new AnimatorSet();
-      this$1 = ObjectAnimator.ofFloat(this.yry.yrQ, "scaleX", new float[] { 0.0F, 1.1F }).setDuration(125L);
-      kotlin.g.b.p.j(bd.this, "ObjectAnimator.ofFloat(v…f, 1.1f).setDuration(125)");
-      paramInt1 = ObjectAnimator.ofFloat(this.yry.yrQ, "scaleY", new float[] { 0.0F, 1.1F }).setDuration(125L);
-      kotlin.g.b.p.j(paramInt1, "ObjectAnimator.ofFloat(v…f, 1.1f).setDuration(125)");
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.yry.yrQ, "scaleX", new float[] { 1.1F, 1.0F }).setDuration(83L);
-      kotlin.g.b.p.j(localObjectAnimator1, "ObjectAnimator.ofFloat(v…1f, 1.0f).setDuration(83)");
-      localObjectAnimator1.setStartDelay(125L);
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.yry.yrQ, "scaleY", new float[] { 1.1F, 1.0F }).setDuration(83L);
-      kotlin.g.b.p.j(localObjectAnimator2, "ObjectAnimator.ofFloat(v…1f, 1.0f).setDuration(83)");
-      localObjectAnimator2.setStartDelay(125L);
-      final ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.yry.yrQ, "alpha", new float[] { 0.0F, 1.0F }).setDuration(208L);
-      kotlin.g.b.p.j(localObjectAnimator3, "ObjectAnimator.ofFloat(v…f, 1.0f).setDuration(208)");
-      this.yry.yrQ.setPivotX(0.0F);
-      this.yry.yrQ.setPivotY(this.yry.yrQ.getMeasuredHeight());
-      this.yrG.playTogether(new Animator[] { (Animator)bd.this, (Animator)paramInt1, (Animator)localObjectAnimator1, (Animator)localObjectAnimator2, (Animator)localObjectAnimator3 });
-      this.yrG.addListener((Animator.AnimatorListener)new Animator.AnimatorListener()
-      {
-        public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(290056);
-          this.yrJ.pf(false);
-          Object localObject = localObjectAnimator3.getTarget();
-          paramAnonymousAnimator = localObject;
-          if (!(localObject instanceof View)) {
-            paramAnonymousAnimator = null;
-          }
-          paramAnonymousAnimator = (View)paramAnonymousAnimator;
-          if (paramAnonymousAnimator != null) {
-            paramAnonymousAnimator.setAlpha(1.0F);
-          }
-          localObject = this.yrL.getTarget();
-          paramAnonymousAnimator = localObject;
-          if (!(localObject instanceof View)) {
-            paramAnonymousAnimator = null;
-          }
-          paramAnonymousAnimator = (View)paramAnonymousAnimator;
-          if (paramAnonymousAnimator != null) {
-            paramAnonymousAnimator.setScaleX(1.0F);
-          }
-          localObject = paramInt1.getTarget();
-          paramAnonymousAnimator = localObject;
-          if (!(localObject instanceof View)) {
-            paramAnonymousAnimator = null;
-          }
-          paramAnonymousAnimator = (View)paramAnonymousAnimator;
-          if (paramAnonymousAnimator != null)
-          {
-            paramAnonymousAnimator.setScaleY(1.0F);
-            AppMethodBeat.o(290056);
-            return;
-          }
-          AppMethodBeat.o(290056);
-        }
-        
-        public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationStart(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(290055);
-          this.yrJ.pf(true);
-          AppMethodBeat.o(290055);
-        }
-      });
-      AppMethodBeat.o(287148);
-    }
-    
-    private void aCp(String paramString)
-    {
-      AppMethodBeat.i(287144);
-      kotlin.g.b.p.k(paramString, "prefix");
-      boolean bool1 = this.yrw.isEmpty();
-      if ((bool1) || (this.yrH) || (this.yrI))
-      {
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "startTransferCnt(" + paramString + ") cntQueueEmpty:" + bool1 + ",cntTransferAniming:" + this.yrH + ",bulletFlying:" + this.yrI);
-        AppMethodBeat.o(287144);
-        return;
-      }
-      Integer localInteger = (Integer)this.yrw.pollFirst();
-      if (localInteger != null) {}
-      for (int i = localInteger.intValue();; i = this.yrv)
-      {
-        boolean bool2 = kotlin.g.b.p.h(this.yry.yrQ.getText(), "x".concat(String.valueOf(i)));
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "startTransferCnt(" + paramString + ") number:" + i + ", sameValue:" + bool2 + ", cntQueueEmpty:" + bool1 + ",cntTransferAniming:" + this.yrH + ",bulletFlying:" + this.yrI);
-        this.yry.yrQ.setText((CharSequence)"x".concat(String.valueOf(i)));
-        this.yry.yrQ.setTag(Integer.valueOf(i));
-        this.yry.yrQ.setPivotX(0.0F);
-        this.yry.yrQ.setPivotY(this.yry.yrQ.getMeasuredHeight());
-        this.yrG.start();
-        bd.a(bool2, this);
-        AppMethodBeat.o(287144);
-        return;
-      }
-    }
-    
-    private final bd.d dBM()
-    {
-      AppMethodBeat.i(287146);
-      bd.d locald = new bd.d();
-      locald.yrs.getAndSet(this.yrs.get());
-      locald.fCB = this.yrt;
-      locald.yrv = this.yrv;
-      locald.mcV = cm.bfE();
-      locald.aCq(this.yrC);
-      AppMethodBeat.o(287146);
-      return locald;
-    }
-    
-    public final void aCn(String paramString)
-    {
-      AppMethodBeat.i(287139);
-      kotlin.g.b.p.k(paramString, "<set-?>");
-      this.yru = paramString;
-      AppMethodBeat.o(287139);
-    }
-    
-    public final void aCo(String paramString)
-    {
-      AppMethodBeat.i(287140);
-      kotlin.g.b.p.k(paramString, "<set-?>");
-      this.yrD = paramString;
-      AppMethodBeat.o(287140);
-    }
-    
-    public final void ak(int paramInt, boolean paramBoolean)
-    {
-      AppMethodBeat.i(287143);
-      Object localObject2 = this.yry.yrQ.getTag();
-      Object localObject1 = localObject2;
-      if (!(localObject2 instanceof Integer)) {
-        localObject1 = null;
-      }
-      localObject1 = (Integer)localObject1;
-      int i;
-      boolean bool;
-      if (localObject1 != null)
-      {
-        i = ((Integer)localObject1).intValue();
-        if (i > 0) {
-          break label117;
-        }
-        bool = true;
-        i = 1;
-      }
-      for (;;)
-      {
-        if (paramInt > i) {
-          break label123;
-        }
-        this.yry.yrQ.setText((CharSequence)"x".concat(String.valueOf(i)));
-        this.yry.yrQ.setTag(Integer.valueOf(i));
-        AppMethodBeat.o(287143);
-        return;
-        i = this.yrx;
-        break;
-        label117:
-        bool = false;
-      }
-      label123:
-      localObject1 = new StringBuilder("localSend:" + paramBoolean + ",startCnt:" + i + ",lastCountOnBackToLive:" + this.yrx + ",firstGift:" + bool + ';');
-      this.yrw.clear();
-      int j;
-      if (!paramBoolean)
-      {
-        j = kotlin.k.i.ov(1, (int)Math.ceil((paramInt - i) / 5.0D));
-        if (bool) {
-          break label328;
-        }
-        i += j;
-      }
-      label328:
-      for (;;)
-      {
-        if (i < paramInt)
-        {
-          this.yrw.offer(Integer.valueOf(i));
-          ((StringBuilder)localObject1).append(i + ',');
-          i += j;
-        }
-        else
-        {
-          this.yrw.offer(Integer.valueOf(paramInt));
-          ((StringBuilder)localObject1).append(paramInt);
-          Log.i("Finder.FinderLiveGiftQueuePlugin", "setCntQueue ".concat(String.valueOf(localObject1)));
-          aCp("setCntQueue");
-          AppMethodBeat.o(287143);
-          return;
-        }
-      }
-    }
-    
-    public final void pf(boolean paramBoolean)
-    {
-      AppMethodBeat.i(287141);
-      if (paramBoolean != this.yrH) {
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "cntTransferAniming origin value:" + this.yrH + ",value:" + paramBoolean);
-      }
-      this.yrH = paramBoolean;
-      if (!this.yrH) {
-        aCp("cntTransferAnim end");
-      }
-      AppMethodBeat.o(287141);
-    }
-    
-    public final void pg(boolean paramBoolean)
-    {
-      AppMethodBeat.i(287142);
-      int j = 0;
-      int i = j;
-      if (paramBoolean != this.yrI)
-      {
-        Log.i("Finder.FinderLiveGiftQueuePlugin", "bulletFlying origin value:" + this.yrI + ",value:" + paramBoolean);
-        i = j;
-        if (!paramBoolean) {
-          i = 1;
-        }
-      }
-      this.yrI = paramBoolean;
-      if (i != 0) {
-        aCp("bulletFlying Stop");
-      }
-      AppMethodBeat.o(287142);
-    }
-    
-    public final void reset()
-    {
-      AppMethodBeat.i(287145);
-      bd.b(bd.this).put(this.yru, dBM());
-      com.tencent.mm.ae.d.c("giftQueueMapClear", (kotlin.g.a.a)new a(this));
-      final Integer localInteger = (Integer)this.yrw.peekLast();
-      if (localInteger != null) {
-        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this, localInteger));
-      }
-      this.yrq.getAndSet(false);
-      this.yrr = false;
-      this.yrs.getAndSet(false);
-      this.yrt = false;
-      this.yru = "";
-      this.yrv = 0;
-      this.yrx = 0;
-      this.yrw.clear();
-      this.yrA = 0L;
-      this.yrB = 0L;
-      this.yrC = "";
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new c(this));
-      pf(false);
-      pg(false);
-      this.yry.yrQ.setTag(null);
-      AppMethodBeat.o(287145);
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(287147);
-      String str = "\n" + new StringBuilder("index = ").append(this.index).toString() + ", " + new StringBuilder("giftId = ").append(this.yrC).toString() + ", " + new StringBuilder("isShowing = ").append(this.yrq).toString() + ", " + new StringBuilder("isPreciousGift = ").append(this.yrs).toString() + ", " + new StringBuilder("isAnimationEnd = ").append(this.yrr).toString() + ", " + new StringBuilder("comboId = ").append(this.yru).toString() + ", " + new StringBuilder("comboSumCount = ").append(this.yrv).toString() + ", " + new StringBuilder("lastCountOnBackToLive = ").append(this.yrx).toString() + ", " + new StringBuilder("totalShowingTime = ").append(this.yrA).toString() + ", " + new StringBuilder("cntTransferAniming = ").append(this.yrH).toString() + ", " + new StringBuilder("bulletFlying = ").append(this.yrI).toString() + ", " + new StringBuilder("targetUserName = ").append(this.yrD).toString() + ", " + new StringBuilder("enabled = ").append(this.yrE).toString() + "\n";
-      kotlin.g.b.p.j(str, "StringBuilder().append(\"…              .toString()");
-      AppMethodBeat.o(287147);
-      return str;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      a(bd.b paramb)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class b
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      b(bd.b paramb, Integer paramInteger)
-      {
-        super();
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class c
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      c(bd.b paramb)
-      {
-        super();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletViewHolder;", "", "container", "Landroid/view/ViewGroup;", "isVisitor", "", "isOuterSpace", "outSpaceWidth", "", "(Landroid/view/ViewGroup;ZZI)V", "bgView", "Landroid/view/View;", "getBgView", "()Landroid/view/View;", "cntTv", "Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftTextView;", "getCntTv", "()Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftTextView;", "fromUserTv", "Landroid/widget/TextView;", "getFromUserTv", "()Landroid/widget/TextView;", "giftNameTv", "getGiftNameTv", "()Z", "getOutSpaceWidth", "()I", "pagView", "Lorg/libpag/PAGView;", "getPagView", "()Lorg/libpag/PAGView;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "success", "", "enable"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
+    extends u
+    implements m<Boolean, Boolean, ah>
   {
-    final View cCj;
-    final PAGView ybU;
-    final TextView yrO;
-    final TextView yrP;
-    final FinderLiveGiftTextView yrQ;
-    final boolean yrR;
-    final int yrS;
-    
-    public c(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+    c(bd parambd)
     {
-      AppMethodBeat.i(287277);
-      this.yrR = paramBoolean2;
-      this.yrS = paramInt;
-      Object localObject = paramViewGroup.findViewById(b.f.finder_live_gift_bullut_desc_from_user);
-      kotlin.g.b.p.j(localObject, "container.findViewById(R…ft_bullut_desc_from_user)");
-      this.yrO = ((TextView)localObject);
-      localObject = paramViewGroup.findViewById(b.f.finder_live_gift_bullut_desc_gift_name);
-      kotlin.g.b.p.j(localObject, "container.findViewById(R…ft_bullut_desc_gift_name)");
-      this.yrP = ((TextView)localObject);
-      localObject = paramViewGroup.findViewById(b.f.finder_live_gift_bullut_pag);
-      kotlin.g.b.p.j(localObject, "container.findViewById(R…der_live_gift_bullut_pag)");
-      this.ybU = ((PAGView)localObject);
-      localObject = paramViewGroup.findViewById(b.f.finder_live_gift_bullut_cnt_tv);
-      kotlin.g.b.p.j(localObject, "container.findViewById(R…_live_gift_bullut_cnt_tv)");
-      this.yrQ = ((FinderLiveGiftTextView)localObject);
-      localObject = paramViewGroup.findViewById(b.f.bg_view);
-      kotlin.g.b.p.j(localObject, "container.findViewById(R.id.bg_view)");
-      this.cCj = ((View)localObject);
-      if (this.yrR)
-      {
-        this.yrO.setTextSize(1, 12.0F);
-        this.yrP.setTextSize(1, 12.0F);
-        localObject = this.ybU.getLayoutParams();
-        Context localContext = paramViewGroup.getContext();
-        kotlin.g.b.p.j(localContext, "container.context");
-        ((ViewGroup.LayoutParams)localObject).width = ((int)localContext.getResources().getDimension(b.d.Edge_5A));
-        localObject = this.ybU.getLayoutParams();
-        localContext = paramViewGroup.getContext();
-        kotlin.g.b.p.j(localContext, "container.context");
-        ((ViewGroup.LayoutParams)localObject).height = ((int)localContext.getResources().getDimension(b.d.Edge_5A));
-        this.yrQ.setTextSize(1, 17.0F);
-        localObject = paramViewGroup.getLayoutParams();
-        localContext = paramViewGroup.getContext();
-        kotlin.g.b.p.j(localContext, "container.context");
-        ((ViewGroup.LayoutParams)localObject).height = ((int)localContext.getResources().getDimension(b.d.Edge_5A));
-        localObject = paramViewGroup.findViewById(b.f.bg_view);
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).getLayoutParams();
-          if (localObject != null) {
-            ((ViewGroup.LayoutParams)localObject).width = bd.dBK();
-          }
-        }
-        localObject = paramViewGroup.findViewById(b.f.bg_view);
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).getLayoutParams();
-          if (localObject != null)
-          {
-            paramViewGroup = paramViewGroup.getContext();
-            kotlin.g.b.p.j(paramViewGroup, "container.context");
-            ((ViewGroup.LayoutParams)localObject).height = ((int)paramViewGroup.getResources().getDimension(b.d.Edge_3A));
-            AppMethodBeat.o(287277);
-            return;
-          }
-        }
-        AppMethodBeat.o(287277);
-        return;
-      }
-      if (paramBoolean1)
-      {
-        this.yrO.setTextSize(1, 15.0F);
-        this.yrP.setTextSize(1, 15.0F);
-        localObject = paramViewGroup.findViewById(b.f.bg_view);
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).getLayoutParams();
-          if (localObject != null)
-          {
-            paramViewGroup = paramViewGroup.getContext();
-            kotlin.g.b.p.j(paramViewGroup, "container.context");
-            ((ViewGroup.LayoutParams)localObject).height = ((int)paramViewGroup.getResources().getDimension(b.d.Edge_3A));
-          }
-        }
-      }
-      for (;;)
-      {
-        this.yrQ.setTextSize(1, 22.0F);
-        AppMethodBeat.o(287277);
-        return;
-        this.yrO.setTextSize(1, 17.0F);
-        this.yrP.setTextSize(1, 17.0F);
-        localObject = paramViewGroup.findViewById(b.f.bg_view);
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).getLayoutParams();
-          if (localObject != null)
-          {
-            paramViewGroup = paramViewGroup.getContext();
-            kotlin.g.b.p.j(paramViewGroup, "container.context");
-            ((ViewGroup.LayoutParams)localObject).height = ((int)paramViewGroup.getResources().getDimension(b.d.Edge_4A));
-          }
-        }
-      }
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$ComboIdBackToLiveInfo;", "", "()V", "comboSumCount", "", "getComboSumCount", "()I", "setComboSumCount", "(I)V", "giftId", "", "getGiftId", "()Ljava/lang/String;", "setGiftId", "(Ljava/lang/String;)V", "isPreciousGift", "Ljava/util/concurrent/atomic/AtomicBoolean;", "()Ljava/util/concurrent/atomic/AtomicBoolean;", "setPreciousGift", "(Ljava/util/concurrent/atomic/AtomicBoolean;)V", "isSelf", "", "()Z", "setSelf", "(Z)V", "quitTime", "", "getQuitTime", "()J", "setQuitTime", "(J)V", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "isShow", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
+    extends u
+    implements kotlin.g.a.b<Boolean, ah>
   {
-    volatile boolean fCB;
-    long mcV;
-    private volatile String yrC;
-    AtomicBoolean yrs;
-    volatile int yrv;
-    
-    public d()
+    d(bd parambd)
     {
-      AppMethodBeat.i(292243);
-      this.yrs = new AtomicBoolean(false);
-      this.yrC = "";
-      AppMethodBeat.o(292243);
-    }
-    
-    public final void aCq(String paramString)
-    {
-      AppMethodBeat.i(292242);
-      kotlin.g.b.p.k(paramString, "<set-?>");
-      this.yrC = paramString;
-      AppMethodBeat.o(292242);
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$Companion;", "", "()V", "ANIMATION_DURATION", "", "ANIMATION_STAY_START_TIME", "", "BULLET_FLY_DISTANCE", "", "BULLET_UI_HEIGHT", "D_2A", "D_5A", "ENABLE_TEST", "", "FLY_FRACTION", "GIFT_FROM_USER_LEFT_MARGIN", "GIFT_FROM_USER_WITH_SPAN_LEFT_MARGIN", "LINK_MIC_USER_MARGIN_BOTTOM", "OUTER_SPACE_NICK_NAME_MAX_LENGTH", "OUTSPACE_GIFT_BG_WIDTH", "PRECIOUS_GIFT_BULLET_OUT_DELAY", "PRECIOUS_GIFT_REMAINING_TIME_THRESHHOLD", "STAY_DURATION", "TAG", "", "plugin-finder_release"})
-  public static final class e {}
+  @Metadata(d1={""}, d2={"<anonymous>", "", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.b<bgh, ah>
+  {
+    e(bd parambd)
+    {
+      super();
+    }
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "req", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements m<bpp, aux, ah>
   {
     f(bd parambd)
     {
@@ -1722,264 +1497,49 @@ public final class bd
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "fraction", "", "flying", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements kotlin.g.a.m<Float, Boolean, x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    g(bd parambd, ViewGroup paramViewGroup)
+    g(bd parambd)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "fraction", "", "flying", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "local", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRecentRewardOnlineMember;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.m<Float, Boolean, x>
+    extends u
+    implements kotlin.g.a.b<blq, Boolean>
   {
-    h(bd parambd, ViewGroup paramViewGroup)
+    h(blq paramblq)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$createBulletInAnimator$3", "Landroid/animation/Animator$AnimatorListener;", "isCanceling", "", "()Z", "setCanceling", "(Z)V", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveMemberListPlugin$onGetLiveOnlineMemberSuccess$3", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class i
-    implements Animator.AnimatorListener
+    implements ViewTreeObserver.OnGlobalLayoutListener
   {
-    private boolean yrU;
+    i(bd parambd) {}
     
-    i(ViewGroup paramViewGroup, boolean paramBoolean) {}
-    
-    public final void onAnimationCancel(Animator paramAnimator)
+    public final void onGlobalLayout()
     {
-      AppMethodBeat.i(283691);
-      this.yrU = true;
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "BulletInAnimator onAnimationCancel: isCancel=" + this.yrU + ", bulletShowInfo:" + (bd.b)bd.d(this.yro).get(paramViewGroup));
-      AppMethodBeat.o(283691);
-    }
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(283690);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "BulletInAnimator onAnimationEnd: isCancel=" + this.yrU + ", bulletShowInfo: " + (bd.b)bd.d(this.yro).get(paramViewGroup));
-      if (this.yrU)
-      {
-        this.yrU = false;
-        AppMethodBeat.o(283690);
-        return;
-      }
-      paramAnimator = (bd.b)bd.d(this.yro).get(paramViewGroup);
-      if (paramAnimator != null) {
-        paramAnimator.yrr = true;
-      }
-      paramAnimator = (bd.b)bd.d(this.yro).get(paramViewGroup);
-      if (paramAnimator != null)
-      {
-        paramAnimator = paramAnimator.yrs;
-        if ((paramAnimator != null) && (true == paramAnimator.get()))
-        {
-          Iterator localIterator = j.z((Iterable)bd.d(this.yro).entrySet()).iterator();
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            paramAnimator = localIterator.next();
-          } while (!kotlin.g.b.p.h((ViewGroup)((Map.Entry)paramAnimator).getKey(), paramViewGroup));
-          for (;;)
-          {
-            paramAnimator = (Map.Entry)paramAnimator;
-            bd.a(this.yro, paramAnimator);
-            AppMethodBeat.o(283690);
-            return;
-            paramAnimator = null;
-          }
-        }
-      }
-      paramAnimator = (ObjectAnimator)bd.e(this.yro).get(paramViewGroup);
-      if (paramAnimator != null)
-      {
-        paramAnimator.start();
-        AppMethodBeat.o(283690);
-        return;
-      }
-      AppMethodBeat.o(283690);
-    }
-    
-    public final void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public final void onAnimationStart(Animator paramAnimator)
-    {
-      AppMethodBeat.i(283692);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "BulletInAnimator onAnimationStart: " + (bd.b)bd.d(this.yro).get(paramViewGroup));
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-      AppMethodBeat.o(283692);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      a(bd.i parami)
-      {
-        super();
-      }
+      AppMethodBeat.i(353416);
+      bd.k(this.Dfl).getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      bd.k(this.Dfl).scrollBy(0, 1);
+      AppMethodBeat.o(353416);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$createBulletOutAnimator$1", "Landroid/animation/Animator$AnimatorListener;", "isCanceling", "", "()Z", "setCanceling", "(Z)V", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-  public static final class j
-    implements Animator.AnimatorListener
+  @Metadata(d1={""}, d2={"<anonymous>", "", "errCode", "", "errType", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveOnlineMemberResp;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
+    implements kotlin.g.a.r<Integer, Integer, String, azv, ah>
   {
-    private boolean yrU;
-    
-    j(ViewGroup paramViewGroup) {}
-    
-    public final void onAnimationCancel(Animator paramAnimator)
-    {
-      AppMethodBeat.i(265159);
-      this.yrU = true;
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "BulletOutAnimator onAnimationCancel: isCancel=" + this.yrU + ", bulletShowInfo:" + (bd.b)bd.d(this.yro).get(paramViewGroup));
-      AppMethodBeat.o(265159);
-    }
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(265158);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "BulletOutAnimator onAnimationEnd: isCancel=" + this.yrU + ", bulletShowInfo: " + (bd.b)bd.d(this.yro).get(paramViewGroup));
-      if (this.yrU)
-      {
-        this.yrU = false;
-        AppMethodBeat.o(265158);
-        return;
-      }
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-      paramAnimator = (bd.b)bd.d(this.yro).get(paramViewGroup);
-      if (paramAnimator != null) {
-        paramAnimator.reset();
-      }
-      bd.f(this.yro);
-      AppMethodBeat.o(265158);
-    }
-    
-    public final void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public final void onAnimationStart(Animator paramAnimator)
-    {
-      AppMethodBeat.i(265161);
-      Log.i("Finder.FinderLiveGiftQueuePlugin", "BulletOutAnimator onAnimationStart: " + (bd.b)bd.d(this.yro).get(paramViewGroup));
-      AppMethodBeat.o(265161);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      a(bd.j paramj)
-      {
-        super();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "Landroid/view/ViewGroup;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$BulletShowingInfo;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin;", "invoke"})
-  static final class k
-    extends q
-    implements kotlin.g.a.b<Map.Entry<? extends ViewGroup, ? extends bd.b>, Boolean>
-  {
-    public static final k yrY;
-    
-    static
-    {
-      AppMethodBeat.i(285409);
-      yrY = new k();
-      AppMethodBeat.o(285409);
-    }
-    
-    k()
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class l
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    l(bd parambd, ViewGroup paramViewGroup, p.b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class m
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    m(bd parambd)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class n
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    n(bd parambd, ViewGroup paramViewGroup, p.b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class o
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    o(bd parambd, aa.f paramf, ViewGroup paramViewGroup, p.b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/plugin/FinderLiveGiftQueuePlugin$timer$1", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "onTimerExpired", "", "plugin-finder_release"})
-  public static final class p
-    implements MTimerHandler.CallBack
-  {
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(245733);
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-      AppMethodBeat.o(245733);
-      return false;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-    static final class a
-      extends q
-      implements kotlin.g.a.a<x>
-    {
-      a(bd.p paramp)
-      {
-        super();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class q
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    q(bd parambd)
+    j(bd parambd)
     {
       super();
     }

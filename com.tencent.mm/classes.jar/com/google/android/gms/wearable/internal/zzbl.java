@@ -6,12 +6,10 @@ import com.google.android.gms.wearable.ChannelIOException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.annotation.Nullable;
 
 public final class zzbl
   extends OutputStream
 {
-  @Nullable
   private volatile zzav zzcw;
   private final OutputStream zzcy;
   
@@ -129,7 +127,7 @@ public final class zzbl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbl
  * JD-Core Version:    0.7.0.1
  */

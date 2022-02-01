@@ -8,32 +8,32 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g tyw;
+  private g wCT;
   
   public h(g paramg)
   {
-    this.tyw = paramg;
+    this.wCT = paramg;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113478);
-    this.tyw.notifyDataSetChanged();
+    this.wCT.notifyDataSetChanged();
     AppMethodBeat.o(113478);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113479);
-    if (this.tyw != null)
+    if (this.wCT != null)
     {
-      g localg = this.tyw;
-      localg.ttl.release();
-      localg.ttl = null;
-      localg.tup.clear();
+      g localg = this.wCT;
+      localg.wxI.release();
+      localg.wxI = null;
+      localg.wyM.clear();
       localg.mContext = null;
-      localg.tyu = null;
-      this.tyw = null;
+      localg.wCR = null;
+      this.wCT = null;
     }
     AppMethodBeat.o(113479);
   }
@@ -41,15 +41,15 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113480);
-    if (this.tyw != null) {
-      this.tyw.notifyDataSetChanged();
+    if (this.wCT != null) {
+      this.wCT.notifyDataSetChanged();
     }
     AppMethodBeat.o(113480);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.h
  * JD-Core Version:    0.7.0.1
  */

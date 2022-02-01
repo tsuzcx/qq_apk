@@ -1,50 +1,75 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.o;
-import com.tencent.mm.protocal.j.c;
-import com.tencent.mm.protocal.j.d;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.messenger.b.a;
+import com.tencent.mm.plugin.messenger.b.a.a;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class d
-  extends o
+  implements q
 {
-  private static int lYT = 3941;
-  private final l.e lDr;
-  private final l.d req;
-  
-  public d()
+  public final int bLN()
   {
-    AppMethodBeat.i(134153);
-    this.req = new j.c();
-    this.lDr = new j.d();
-    AppMethodBeat.o(134153);
+    AppMethodBeat.i(236708);
+    int i = a.gaM();
+    AppMethodBeat.o(236708);
+    return i;
   }
   
-  public final l.d getReqObjImp()
+  public final List<Integer> bLO()
   {
-    return this.req;
+    AppMethodBeat.i(236712);
+    ArrayList localArrayList = new ArrayList();
+    if (a.gaM() == 9)
+    {
+      Iterator localIterator = a.gaL().iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(Integer.valueOf(((a.a)localIterator.next()).qvo));
+      }
+    }
+    localArrayList.add(Integer.valueOf(a.gaM()));
+    AppMethodBeat.o(236712);
+    return localArrayList;
   }
   
-  public final l.e getRespObj()
+  public final int bLP()
   {
-    return this.lDr;
+    AppMethodBeat.i(236716);
+    int i = a.bLP();
+    AppMethodBeat.o(236716);
+    return i;
   }
   
-  public final int getType()
+  public final boolean bLQ()
   {
-    return lYT;
+    AppMethodBeat.i(236723);
+    bh.bCz();
+    boolean bool = c.bzw();
+    AppMethodBeat.o(236723);
+    return bool;
   }
   
-  public final String getUri()
+  public final String bLR()
   {
-    return "/cgi-bin/micromsg-bin/disasterauth";
+    AppMethodBeat.i(236725);
+    if ((a.gaK() != null) && (a.gaK().KPZ != null))
+    {
+      String str = a.gaK().KPZ;
+      AppMethodBeat.o(236725);
+      return str;
+    }
+    AppMethodBeat.o(236725);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.d
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ final class m$c
   public m$c(int paramInt)
   {
     this(2, 2, TimeUnit.MILLISECONDS, new PriorityBlockingQueue());
-    AppMethodBeat.i(228362);
-    AppMethodBeat.o(228362);
+    AppMethodBeat.i(328400);
+    AppMethodBeat.o(328400);
   }
   
   private m$c(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue)
@@ -23,11 +23,11 @@ final class m$c
     super(paramInt1, paramInt2, 0L, paramTimeUnit, paramBlockingQueue);
   }
   
-  public final void j(Runnable paramRunnable, long paramLong)
+  public final void k(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(228363);
+    AppMethodBeat.i(328413);
     super.execute(new m.a(paramRunnable, paramLong));
-    AppMethodBeat.o(228363);
+    AppMethodBeat.o(328413);
   }
   
   protected final <T> RunnableFuture<T> newTaskFor(Runnable paramRunnable, T paramT)

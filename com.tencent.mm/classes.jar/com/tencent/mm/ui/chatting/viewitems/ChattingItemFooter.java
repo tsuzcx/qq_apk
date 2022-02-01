@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.g;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ao.k;
-import com.tencent.mm.ao.w;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.s;
+import com.tencent.mm.an.k;
+import com.tencent.mm.an.w;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.bh;
@@ -22,11 +22,11 @@ public class ChattingItemFooter
   extends LinearLayout
   implements View.OnClickListener
 {
-  private static final int[] XjS = { R.g.dmO, R.g.dmO, R.g.dmQ, R.g.dmP };
-  private static final int[] XjT = { R.g.dox, R.g.doy, R.g.doA, R.g.doz };
+  private static final int[] aeUk = { R.g.fna, R.g.fna, R.g.fnc, R.g.fnb };
+  private static final int[] aeUl = { R.g.foU, R.g.foV, R.g.foX, R.g.foW };
   private Context mContext;
   private LayoutInflater mInflater;
-  private String pRV;
+  private String sWX;
   
   public ChattingItemFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,8 +40,8 @@ public class ChattingItemFooter
   private void c(k paramk)
   {
     AppMethodBeat.i(37300);
-    paramk = new w(this.pRV, paramk.getInfo());
-    bh.aGY().a(paramk, 0);
+    paramk = new w(this.sWX, paramk.getInfo());
+    bh.aZW().a(paramk, 0);
     AppMethodBeat.o(37300);
   }
   
@@ -49,8 +49,8 @@ public class ChattingItemFooter
   {
     AppMethodBeat.i(37301);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemFooter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemFooter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     paramView = paramView.getTag();
     if (!(paramView instanceof k))
     {
@@ -68,16 +68,16 @@ public class ChattingItemFooter
       AppMethodBeat.o(37301);
       return;
       Log.d("ChattingItemFooter", "get latest message");
-      paramView.state = k.lEF;
+      paramView.state = k.owm;
       c(paramView);
       continue;
       Log.d("ChattingItemFooter", "start webview url");
-      paramView.state = k.lEF;
+      paramView.state = k.owm;
       c(paramView);
       localObject = new Intent();
       ((Intent)localObject).putExtra("rawUrl", paramView.value);
       ((Intent)localObject).putExtra("showShare", false);
-      ((Intent)localObject).putExtra("geta8key_username", this.pRV);
+      ((Intent)localObject).putExtra("geta8key_username", this.sWX);
       ((Intent)localObject).putExtra("key_enable_teen_mode_check", true);
       c.b(this.mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
     }

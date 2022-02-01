@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="no"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/hee" style="@style/iu">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/dtx" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/e3" />
-        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ior" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dy" android:text="{tip}" style="@style/mp" />
+    <LinearLayout android:orientation="vertical" android:id="@id/aeb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/xo" android:gravity="center" android:id="@id/adn" android:paddingLeft="@dimen/i6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aoo" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/xo" android:gravity="center" android:id="@id/ado" android:paddingLeft="@dimen/i6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aop" android:includeFontPadding="false" />
+        </FrameLayout>
+        <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/ad5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/bv" />
     </LinearLayout>
-</RelativeLayout>
+    <ViewStub android:id="@id/acw" android:layout="@layout/j4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

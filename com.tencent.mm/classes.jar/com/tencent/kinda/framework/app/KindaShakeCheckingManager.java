@@ -5,8 +5,8 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.IShakeCheckingManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.m.d;
-import com.tencent.mm.pluginsdk.m.d.a;
+import com.tencent.mm.pluginsdk.l.d;
+import com.tencent.mm.pluginsdk.l.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.PlaySound;
@@ -127,7 +127,7 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18513);
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.cPS();
+      this.shakeSensor.cuD();
       this.shakeSensor = null;
     }
     this.isInvokeCallback = false;
@@ -138,7 +138,7 @@ public class KindaShakeCheckingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaShakeCheckingManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,118 @@
 package com.tencent.mm.msgsubscription.voice;
 
+import android.content.Context;
+import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.c;
-import com.tencent.mm.f.a.z;
-import com.tencent.mm.f.a.z.a;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.ac;
 import com.tencent.mm.plugin.music.b.h;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/voice/MsgSubscriptionVoicePlayHelperMM;", "", "()V", "GUARD", "", "audioIdMapToID", "", "", "", "mAudioPlayerEventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/AudioPlayerEvent;", "urlsToPlay", "Ljava/util/LinkedHashMap;", "Lkotlin/collections/LinkedHashMap;", "innerPlay", "", "url", "id", "play", "stop", "wxbiz-msgsubscription-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/msgsubscription/voice/MsgSubscriptionVoicePlayHelperMM;", "", "()V", "GUARD", "", "audioIdMapToID", "", "", "", "audioManager", "Landroid/media/AudioManager;", "mAudioPlayerEventListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/AudioPlayerEvent;", "urlsToPlay", "Ljava/util/LinkedHashMap;", "Lkotlin/collections/LinkedHashMap;", "volumeToRestore", "", "adjustVolume", "", "innerPlay", "url", "id", "play", "restoreVolume", "stop", "wxbiz-msgsubscription-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final LinkedHashMap<Long, String> mtH;
-  private static final Map<String, Long> mtI;
-  private static final byte[] mtJ;
-  private static final IListener<z> mtK;
-  public static final b mtL;
+  private static final AudioManager audioManager;
+  public static final b pmZ;
+  private static final LinkedHashMap<Long, String> pna;
+  private static final Map<String, Long> pnb;
+  private static final byte[] pnc;
+  private static int pnd;
+  private static final IListener<ac> pne;
   
   static
   {
-    AppMethodBeat.i(263534);
-    mtL = new b();
-    mtH = new LinkedHashMap();
-    mtI = (Map)new LinkedHashMap();
-    mtJ = new byte[0];
-    mtK = (IListener)new a();
-    EventCenter.instance.add(mtK);
-    AppMethodBeat.o(263534);
+    AppMethodBeat.i(236549);
+    pmZ = new b();
+    pna = new LinkedHashMap();
+    pnb = (Map)new LinkedHashMap();
+    pnc = new byte[0];
+    pnd = -1;
+    Object localObject = MMApplicationContext.getContext().getSystemService("audio");
+    if (localObject == null)
+    {
+      localObject = new NullPointerException("null cannot be cast to non-null type android.media.AudioManager");
+      AppMethodBeat.o(236549);
+      throw ((Throwable)localObject);
+    }
+    audioManager = (AudioManager)localObject;
+    localObject = (IListener)new MsgSubscriptionVoicePlayHelperMM.mAudioPlayerEventListener.1(f.hfK);
+    pne = (IListener)localObject;
+    ((IListener)localObject).alive();
+    AppMethodBeat.o(236549);
   }
   
-  public static void G(String paramString, long paramLong)
+  public static void K(String paramString, long paramLong)
   {
-    AppMethodBeat.i(263529);
-    p.k(paramString, "url");
-    synchronized (mtJ)
+    AppMethodBeat.i(236485);
+    s.u(paramString, "url");
+    synchronized (pnc)
     {
       Log.i("MicroMsg.MsgSubscriptionVoicePlayer", "[play] id[" + paramLong + "]  url[" + paramString + ']');
-      if (mtH.isEmpty())
+      if (pna.isEmpty())
       {
-        ((Map)mtH).put(Long.valueOf(paramLong), paramString);
-        H(paramString, paramLong);
-        paramString = x.aazN;
-        AppMethodBeat.o(263529);
+        ((Map)pna).put(Long.valueOf(paramLong), paramString);
+        L(paramString, paramLong);
+        paramString = ah.aiuX;
+        AppMethodBeat.o(236485);
         return;
       }
-      ((Map)mtH).put(Long.valueOf(paramLong), paramString);
+      ((Map)pna).put(Long.valueOf(paramLong), paramString);
     }
   }
   
-  public static void GY(long paramLong)
+  private static void L(String paramString, long paramLong)
   {
-    AppMethodBeat.i(263531);
+    AppMethodBeat.i(236499);
+    Log.i("MicroMsg.MsgSubscriptionVoicePlayer", "[innerPlay] id[" + paramLong + "]  url[" + paramString + ']');
+    com.tencent.mm.al.b localb = new com.tencent.mm.al.b();
+    String str = c.bo(s.X("", Integer.valueOf(pmZ.hashCode())), h.glT());
+    Object localObject = pnb;
+    s.s(str, "it");
+    ((Map)localObject).put(str, Long.valueOf(paramLong));
+    localObject = ah.aiuX;
+    localb.hqQ = str;
+    localb.hsg = paramString;
+    localb.orj = true;
+    bQu();
+    c.l(localb);
+    AppMethodBeat.o(236499);
+  }
+  
+  private static void bQu()
+  {
+    AppMethodBeat.i(236507);
+    int i = audioManager.getStreamMaxVolume(3);
+    int j = audioManager.getStreamVolume(3);
+    if (j * 1.0F / i < 0.4D)
+    {
+      if (pnd == -1) {
+        pnd = j;
+      }
+      audioManager.setStreamVolume(3, (int)(i * 0.4D), 5);
+    }
+    AppMethodBeat.o(236507);
+  }
+  
+  public static void jj(long paramLong)
+  {
+    AppMethodBeat.i(236492);
     for (;;)
     {
-      synchronized (mtJ)
+      synchronized (pnc)
       {
-        mtH.remove(Long.valueOf(paramLong));
-        Object localObject1 = mtI.entrySet().iterator();
+        pna.remove(Long.valueOf(paramLong));
+        Object localObject1 = pnb.entrySet().iterator();
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject4 = (Map.Entry)((Iterator)localObject1).next();
@@ -76,18 +122,18 @@ public final class b
           localObject1 = (String)((Map.Entry)localObject4).getKey();
           localObject4 = (CharSequence)localObject1;
           if (localObject4 == null) {
-            break label159;
+            break label162;
           }
           if (((CharSequence)localObject4).length() == 0)
           {
-            break label159;
+            break label162;
             if (i == 0)
             {
-              c.Tm((String)localObject1);
-              c.Tn((String)localObject1);
+              c.Lo((String)localObject1);
+              c.Lp((String)localObject1);
             }
-            localObject1 = x.aazN;
-            AppMethodBeat.o(263531);
+            localObject1 = ah.aiuX;
+            AppMethodBeat.o(236492);
             return;
           }
           i = 0;
@@ -95,87 +141,14 @@ public final class b
       }
       Object localObject3 = null;
       continue;
-      label159:
+      label162:
       int i = 1;
-    }
-  }
-  
-  private static void H(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(263533);
-    Log.i("MicroMsg.MsgSubscriptionVoicePlayer", "[innerPlay] id[" + paramLong + "]  url[" + paramString + ']');
-    com.tencent.mm.al.b localb = new com.tencent.mm.al.b();
-    String str = c.be(mtL.hashCode(), h.fcQ());
-    Map localMap = mtI;
-    p.j(str, "it");
-    localMap.put(str, Long.valueOf(paramLong));
-    localb.fmF = str;
-    localb.fnV = paramString;
-    localb.lzI = true;
-    c.l(localb);
-    AppMethodBeat.o(263533);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/msgsubscription/voice/MsgSubscriptionVoicePlayHelperMM$mAudioPlayerEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/AudioPlayerEvent;", "callback", "", "event", "wxbiz-msgsubscription-sdk_release"})
-  public static final class a
-    extends IListener<z>
-  {
-    private static boolean m(z paramz)
-    {
-      AppMethodBeat.i(263593);
-      if (paramz == null)
-      {
-        AppMethodBeat.o(263593);
-        return false;
-      }
-      switch (paramz.fvC.action)
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(263593);
-        return false;
-        ??? = b.mtL;
-        synchronized (b.bsN())
-        {
-          Object localObject2 = b.mtL;
-          localObject2 = (Long)b.bsO().get(paramz.fvC.fmF);
-          c.Tn(paramz.fvC.fmF);
-          if (localObject2 != null)
-          {
-            b localb = b.mtL;
-            b.bsP().remove(localObject2);
-          }
-          Log.i("MicroMsg.MsgSubscriptionVoicePlayer", "[player event] action[" + paramz.fvC.action + "]  id[" + localObject2 + ']');
-          paramz = b.mtL;
-          if (b.bsP().entrySet().size() > 0)
-          {
-            paramz = new StringBuilder("[player event] play next audio, waiting to play size[");
-            localObject2 = b.mtL;
-            Log.i("MicroMsg.MsgSubscriptionVoicePlayer", b.bsP().size() + ']');
-            paramz = b.mtL;
-            paramz = b.bsP().entrySet();
-            p.j(paramz, "urlsToPlay.entries");
-            paramz = j.e((Iterable)paramz);
-            p.j(paramz, "urlsToPlay.entries.first()");
-            paramz = (Map.Entry)paramz;
-            localObject2 = b.mtL;
-            localObject2 = paramz.getValue();
-            p.j(localObject2, "first.value");
-            localObject2 = (String)localObject2;
-            paramz = paramz.getKey();
-            p.j(paramz, "first.key");
-            b.I((String)localObject2, ((Number)paramz).longValue());
-          }
-          paramz = x.aazN;
-        }
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.voice.b
  * JD-Core Version:    0.7.0.1
  */

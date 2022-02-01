@@ -4,59 +4,59 @@ import android.content.Context;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cl.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.smiley.o;
 
 public class c
 {
-  WebViewSmileyPanel.a QzA;
-  int QzB;
-  int QzC;
-  boolean Qzx = false;
-  private b Qzz;
-  Context uEJ;
+  boolean Xsr = false;
+  private b Xst;
+  WebViewSmileyPanel.a Xsu;
+  int Xsv;
+  int Xsw;
+  Context xNl;
   
-  public static int[] hcp()
+  public static int[] cSk()
   {
-    AppMethodBeat.i(237628);
+    AppMethodBeat.i(298071);
     Display localDisplay = ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay();
     int i = localDisplay.getWidth();
     int j = localDisplay.getHeight();
-    AppMethodBeat.o(237628);
+    AppMethodBeat.o(298071);
     return new int[] { i, j };
   }
   
-  protected static f hcq()
+  protected static o iCQ()
   {
-    AppMethodBeat.i(237633);
-    f localf = f.htQ();
-    AppMethodBeat.o(237633);
-    return localf;
+    AppMethodBeat.i(298073);
+    o localo = o.iVl();
+    AppMethodBeat.o(298073);
+    return localo;
   }
   
-  public final a hco()
+  public final a iCP()
   {
     AppMethodBeat.i(82355);
-    if (this.Qzz == null)
+    if (this.Xst == null)
     {
-      this.Qzz = new b();
-      this.Qzz.uEJ = this.uEJ;
-      this.Qzz.setPanelManager(this);
+      this.Xst = new b();
+      this.Xst.xNl = this.xNl;
+      this.Xst.setPanelManager(this);
     }
-    b localb = this.Qzz;
+    b localb = this.Xst;
     AppMethodBeat.o(82355);
     return localb;
   }
   
   public final void onDestroy()
   {
-    this.Qzz = null;
-    this.uEJ = null;
+    this.Xst = null;
+    this.xNl = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.c
  * JD-Core Version:    0.7.0.1
  */

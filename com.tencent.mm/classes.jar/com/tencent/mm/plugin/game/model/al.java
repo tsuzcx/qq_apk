@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bng;
-import com.tencent.mm.protocal.protobuf.bnh;
+import com.tencent.mm.protocal.protobuf.cbd;
+import com.tencent.mm.protocal.protobuf.cbe;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class al
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public String fwe;
-  public final d jTk;
+  private h callback;
+  public String hAB;
+  public final c mtC;
   
   public al(String paramString1, String paramString2, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(41595);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bng();
-    ((d.a)localObject).lBV = new bnh();
-    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/gamecentersearchrecommend";
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cbd();
+    ((c.a)localObject).otF = new cbe();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/gamecentersearchrecommend";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
     if (paramString2 == null) {}
-    for (this.fwe = "";; this.fwe = paramString2.trim())
+    for (this.hAB = "";; this.hAB = paramString2.trim())
     {
-      this.jTk = ((d.a)localObject).bgN();
-      localObject = (bng)d.b.b(this.jTk.lBR);
-      ((bng)localObject).CPt = paramString1;
-      ((bng)localObject).SYn = paramString2;
-      ((bng)localObject).SYo = paramLinkedList;
+      this.mtC = ((c.a)localObject).bEF();
+      localObject = (cbd)c.b.b(this.mtC.otB);
+      ((cbd)localObject).IJD = paramString1;
+      ((cbd)localObject).aakp = paramString2;
+      ((cbd)localObject).aakq = paramLinkedList;
       AppMethodBeat.o(41595);
       return;
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(41596);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(41596);
     return i;
   }
@@ -69,7 +69,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.al
  * JD-Core Version:    0.7.0.1
  */

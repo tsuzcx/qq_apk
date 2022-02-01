@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 
 public final class j
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String CNo;
+  public String IHt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(149408);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.CNo == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IHt == null)
       {
         paramVarArgs = new b("Not all required fields were included: AppStoreUrl");
         AppMethodBeat.o(149408);
         throw paramVarArgs;
       }
-      if (this.CNo != null) {
-        paramVarArgs.f(1, this.CNo);
+      if (this.IHt != null) {
+        paramVarArgs.g(1, this.IHt);
       }
       AppMethodBeat.o(149408);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CNo == null) {
-        break label261;
+      if (this.IHt == null) {
+        break label257;
       }
     }
-    label261:
-    for (paramInt = g.a.a.b.b.a.g(1, this.CNo) + 0;; paramInt = 0)
+    label257:
+    for (paramInt = i.a.a.b.b.a.h(1, this.IHt) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(149408);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.CNo == null)
+        if (this.IHt == null)
         {
           paramVarArgs = new b("Not all required fields were included: AppStoreUrl");
           AppMethodBeat.o(149408);
@@ -55,7 +55,7 @@ public final class j
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         j localj = (j)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -63,7 +63,7 @@ public final class j
           AppMethodBeat.o(149408);
           return -1;
         }
-        localj.CNo = locala.abFh.readString();
+        localj.IHt = locala.ajGk.readString();
         AppMethodBeat.o(149408);
         return 0;
       }
@@ -74,7 +74,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.j
  * JD-Core Version:    0.7.0.1
  */

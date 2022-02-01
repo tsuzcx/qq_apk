@@ -1,67 +1,58 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.h.e;
-import com.tencent.mm.plugin.webview.h.e.a;
+import com.tencent.mm.plugin.webview.jsapi.c.a;
+import com.tencent.mm.plugin.webview.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.i;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiLog;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
   extends a
 {
-  private static final int IIl = 331;
-  public static final t QvA;
-  private static final String TAG = "MicroMsg.JsApiRequest";
-  private static final String fXz = "request";
+  private static final int OOk = 0;
+  private static final String TAG;
+  public static final t Xnq;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(175687);
-    QvA = new t();
-    TAG = "MicroMsg.JsApiRequest";
-    IIl = 331;
-    fXz = "request";
-    AppMethodBeat.o(175687);
+    AppMethodBeat.i(175684);
+    Xnq = new t();
+    TAG = "MicroMsg.JsApiLog";
+    idA = "log";
+    AppMethodBeat.o(175684);
   }
   
-  public final boolean a(f paramf, n paramn)
+  private static final void cL(p paramp)
   {
-    AppMethodBeat.i(266656);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    boolean bool = e.a(paramn, (e.a)new a(paramf));
-    AppMethodBeat.o(266656);
-    return bool;
+    AppMethodBeat.i(297725);
+    s.u(paramp, "$msg");
+    Log.i(TAG, "jslog : %s", new Object[] { (String)paramp.params.get("msg") });
+    AppMethodBeat.o(297725);
   }
   
-  public final String fCm()
+  public final boolean a(com.tencent.mm.plugin.webview.jsapi.h paramh, p paramp)
   {
-    return fXz;
+    AppMethodBeat.i(297749);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    com.tencent.threadpool.h.ahAA.bm(new t..ExternalSyntheticLambda0(paramp));
+    AppMethodBeat.o(297749);
+    return true;
   }
   
-  public final int fCn()
+  public final String gPX()
   {
-    return IIl;
+    return idA;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "kotlin.jvm.PlatformType", "ret", "", "retValue", "", "", "", "callback"})
-  static final class a
-    implements e.a
+  public final int gPZ()
   {
-    a(f paramf) {}
-    
-    public final void a(n paramn, String paramString, Map<String, Object> paramMap)
-    {
-      AppMethodBeat.i(227611);
-      this.IIg.PNo.h(paramn.POu, paramString, paramMap);
-      AppMethodBeat.o(227611);
-    }
+    return OOk;
   }
 }
 

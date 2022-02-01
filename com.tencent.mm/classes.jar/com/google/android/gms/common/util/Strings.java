@@ -7,7 +7,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@VisibleForTesting
 public class Strings
 {
   private static final Pattern zzaak;
@@ -129,7 +128,7 @@ public class Strings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.util.Strings
  * JD-Core Version:    0.7.0.1
  */

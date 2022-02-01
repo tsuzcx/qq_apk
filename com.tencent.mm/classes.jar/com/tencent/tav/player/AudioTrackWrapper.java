@@ -13,40 +13,40 @@ public class AudioTrackWrapper
   
   public AudioTrackWrapper(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192512);
+    AppMethodBeat.i(215930);
     try
     {
       init(paramInt1, paramInt2);
-      AppMethodBeat.o(192512);
+      AppMethodBeat.o(215930);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(192512);
+      AppMethodBeat.o(215930);
     }
   }
   
   public AudioTrackWrapper(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(192508);
+    AppMethodBeat.i(215920);
     try
     {
       init(paramMediaFormat.getInteger("sample-rate"), paramMediaFormat.getInteger("channel-count"));
-      AppMethodBeat.o(192508);
+      AppMethodBeat.o(215920);
       return;
     }
     catch (Exception paramMediaFormat)
     {
-      AppMethodBeat.o(192508);
+      AppMethodBeat.o(215920);
     }
   }
   
   private void init(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192523);
+    AppMethodBeat.i(215943);
     if (paramInt1 <= 0)
     {
-      AppMethodBeat.o(192523);
+      AppMethodBeat.o(215943);
       return;
     }
     AudioTrackConfig localAudioTrackConfig = new AudioTrackConfig(paramInt1, paramInt2);
@@ -57,7 +57,7 @@ public class AudioTrackWrapper
       if (this.mAudioTrack != null) {
         this.mAudioTrack.play();
       }
-      AppMethodBeat.o(192523);
+      AppMethodBeat.o(215943);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -76,10 +76,10 @@ public class AudioTrackWrapper
   
   public void flush()
   {
-    AppMethodBeat.i(192517);
+    AppMethodBeat.i(215984);
     if (!allow())
     {
-      AppMethodBeat.o(192517);
+      AppMethodBeat.o(215984);
       return;
     }
     try
@@ -87,82 +87,82 @@ public class AudioTrackWrapper
       if (this.mAudioTrack != null) {
         this.mAudioTrack.flush();
       }
-      AppMethodBeat.o(192517);
+      AppMethodBeat.o(215984);
       return;
     }
     catch (Exception localException)
     {
       Logger.e("AudioTrackWrapper", "flush: ", localException);
-      AppMethodBeat.o(192517);
+      AppMethodBeat.o(215984);
     }
   }
   
   public void parse()
   {
-    AppMethodBeat.i(192514);
+    AppMethodBeat.i(215970);
     if (!allow())
     {
-      AppMethodBeat.o(192514);
+      AppMethodBeat.o(215970);
       return;
     }
     if ((this.mAudioTrack != null) && (this.mAudioTrack.getPlayState() == 3)) {
       this.mAudioTrack.pause();
     }
-    AppMethodBeat.o(192514);
+    AppMethodBeat.o(215970);
   }
   
   public void release()
   {
-    AppMethodBeat.i(192519);
+    AppMethodBeat.i(215994);
     if (!allow())
     {
-      AppMethodBeat.o(192519);
+      AppMethodBeat.o(215994);
       return;
     }
     stop();
     this.mAudioTrack.release();
     Logger.d("AudioTrackWrapper", "release:--> ".concat(String.valueOf(this)));
-    AppMethodBeat.o(192519);
+    AppMethodBeat.o(215994);
   }
   
   public void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(192525);
+    AppMethodBeat.i(216001);
     if (!allow())
     {
-      AppMethodBeat.o(192525);
+      AppMethodBeat.o(216001);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
       this.mAudioTrack.setVolume(paramFloat);
-      AppMethodBeat.o(192525);
+      AppMethodBeat.o(216001);
       return;
     }
     this.mAudioTrack.setStereoVolume(paramFloat, paramFloat);
-    AppMethodBeat.o(192525);
+    AppMethodBeat.o(216001);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(192513);
+    AppMethodBeat.i(215963);
     if (!allow())
     {
-      AppMethodBeat.o(192513);
+      AppMethodBeat.o(215963);
       return;
     }
     if ((this.mAudioTrack.getState() == 3) || (this.mAudioTrack.getState() == 2)) {
       this.mAudioTrack.stop();
     }
-    AppMethodBeat.o(192513);
+    AppMethodBeat.o(215963);
   }
   
   public void writeData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192515);
+    AppMethodBeat.i(215977);
     if (!allow())
     {
-      AppMethodBeat.o(192515);
+      AppMethodBeat.o(215977);
       return;
     }
     if (this.mAudioTrack != null) {
@@ -172,12 +172,12 @@ public class AudioTrackWrapper
         if (this.mAudioTrack.getPlayState() != 3) {
           this.mAudioTrack.play();
         }
-        AppMethodBeat.o(192515);
+        AppMethodBeat.o(215977);
         return;
       }
       catch (Exception paramArrayOfByte) {}
     }
-    AppMethodBeat.o(192515);
+    AppMethodBeat.o(215977);
   }
   
   static class AudioTrackConfig
@@ -191,14 +191,14 @@ public class AudioTrackWrapper
     
     public AudioTrackConfig(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(192499);
+      AppMethodBeat.i(215872);
       this.streamType = 3;
       this.channelConfig = 12;
       this.audioFormat = 2;
       this.mode = 1;
       this.sampleRateInHz = getSampleRateInHz(paramInt1, paramInt2);
       this.bufferSizeInBytes = 8192;
-      AppMethodBeat.o(192499);
+      AppMethodBeat.o(215872);
     }
     
     private int getSampleRateInHz(int paramInt1, int paramInt2)
@@ -212,9 +212,9 @@ public class AudioTrackWrapper
     
     public String toString()
     {
-      AppMethodBeat.i(192504);
+      AppMethodBeat.i(215882);
       String str = "AudioTrackConfig{streamType=" + this.streamType + ", sampleRateInHz=" + this.sampleRateInHz + ", channelConfig=" + this.channelConfig + ", audioFormat=" + this.audioFormat + ", bufferSizeInBytes=" + this.bufferSizeInBytes + ", mode=" + this.mode + '}';
-      AppMethodBeat.o(192504);
+      AppMethodBeat.o(215882);
       return str;
     }
   }

@@ -1,123 +1,125 @@
 package com.tencent.mm.plugin.finder.extension;
 
-import com.tencent.c.a.a.a.d.a.e;
-import com.tencent.c.a.a.a.d.f;
+import com.tencent.d.a.a.a.d.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.g;
-import com.tencent.mm.an.g.b;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.protocal.protobuf.atj;
-import com.tencent.mm.protocal.protobuf.dcz;
-import com.tencent.mm.protocal.protobuf.rq;
+import com.tencent.mm.am.f;
+import com.tencent.mm.am.f.b;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.axx;
+import com.tencent.mm.protocal.protobuf.duu;
+import com.tencent.mm.protocal.protobuf.tb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/FinderLiveNotifyFuncMsgExtension;", "Lcom/tencent/mm/modelbase/IFunctionMessageExtension;", "()V", "oldCanRevokeCount", "", "getOldCanRevokeCount", "()I", "setOldCanRevokeCount", "(I)V", "reqClientAiInfo", "", "getReqClientAiInfo", "()Ljava/lang/String;", "setReqClientAiInfo", "(Ljava/lang/String;)V", "reqFunctionMsgId", "getReqFunctionMsgId", "setReqFunctionMsgId", "reqFunctionMsgIdOnLiveClose", "getReqFunctionMsgIdOnLiveClose", "setReqFunctionMsgIdOnLiveClose", "beforeAddMsg", "", "getAddMsgType", "getBusinessId", "", "onBuildFetchParams", "params", "Lcom/tencent/mm/modelbase/IFunctionMessageExtension$FetchAddMsgParams;", "onPreAddMessage", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgReturn;", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "onPreDelMessage", "deleteMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$DeleteMsgInfo;", "requestFinderLiveNotify", "json", "requestOnLiveClose", "funcMsgId", "resetClientReq", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/FinderLiveNotifyFuncMsgExtension;", "Lcom/tencent/mm/modelbase/IFunctionMessageExtension;", "()V", "oldCanRevokeCount", "", "getOldCanRevokeCount", "()I", "setOldCanRevokeCount", "(I)V", "reqClientAiInfo", "", "getReqClientAiInfo", "()Ljava/lang/String;", "setReqClientAiInfo", "(Ljava/lang/String;)V", "reqFunctionMsgId", "getReqFunctionMsgId", "setReqFunctionMsgId", "reqFunctionMsgIdOnLiveClose", "getReqFunctionMsgIdOnLiveClose", "setReqFunctionMsgIdOnLiveClose", "beforeAddMsg", "", "getAddMsgType", "getBusinessId", "", "onBuildFetchParams", "params", "Lcom/tencent/mm/modelbase/IFunctionMessageExtension$FetchAddMsgParams;", "onPreAddMessage", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgReturn;", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "onPreDelMessage", "deleteMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$DeleteMsgInfo;", "requestFinderLiveNotify", "json", "requestOnLiveClose", "funcMsgId", "resetClientReq", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements g
+  implements f
 {
-  public static final a xrR;
-  public String xrN;
-  public String xrO;
-  public String xrP;
-  private volatile int xrQ;
+  public static final a.a AOX;
+  public String AOY;
+  public String AOZ;
+  public String APa;
+  private volatile int APb;
   
   static
   {
-    AppMethodBeat.i(275405);
-    xrR = new a((byte)0);
-    AppMethodBeat.o(275405);
+    AppMethodBeat.i(366639);
+    AOX = new a.a((byte)0);
+    AppMethodBeat.o(366639);
   }
   
-  public final void a(g.b paramb)
+  public final void a(f.b paramb)
   {
-    AppMethodBeat.i(275403);
-    rq localrq = paramb.lCa;
-    if (localrq != null)
+    AppMethodBeat.i(366667);
+    tb localtb = paramb.otK;
+    if (localtb != null)
     {
-      atj localatj = new atj();
-      localatj.scene = 0;
-      Object localObject = ao.xcj;
-      localatj.RLM = ao.dnO();
-      this.xrQ = 0;
-      if (p.h(this.xrN, paramb.lCb))
+      axx localaxx = new axx();
+      localaxx.scene = 0;
+      Object localObject1 = bi.ABn;
+      localaxx.YIY = bi.dVu();
+      this.APb = 0;
+      if (s.p(this.AOY, paramb.otL))
       {
-        localatj.SGm = this.xrP;
-        localatj.scene = 1;
-        this.xrP = "";
-        this.xrN = "";
+        localaxx.ZIW = this.APa;
+        localaxx.scene = 1;
+        this.APa = "";
+        this.AOY = "";
       }
-      if (p.h(this.xrO, paramb.lCb))
+      if (s.p(this.AOZ, paramb.otL))
       {
-        localatj.scene = 2;
-        this.xrO = "";
+        localaxx.scene = 2;
+        this.AOZ = "";
       }
-      Log.i("Finder.FinderLiveNotifyFuncMsgExtension", "onBuildFetchParams scene[" + localatj.scene + ']');
-      localObject = ((com.tencent.c.a.a.a.b)com.tencent.mm.kernel.h.ag(com.tencent.c.a.a.a.b.class)).getFinderLiveNotifyExposureInfoStorage().dDR();
+      Log.i("Finder.FinderLiveNotifyFuncMsgExtension", "onBuildFetchParams scene[" + localaxx.scene + ']');
+      localObject1 = ((com.tencent.d.a.a.a.b)com.tencent.mm.kernel.h.az(com.tencent.d.a.a.a.b.class)).getFinderLiveNotifyExposureInfoStorage().eub();
       paramb = new LinkedList();
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        e locale = (e)((Iterator)localObject).next();
-        if ((locale.field_exposureStatus == 0) && (locale.field_liveStatus == 0)) {
-          this.xrQ += 1;
+        Object localObject2 = (g)((Iterator)localObject1).next();
+        if ((((g)localObject2).field_exposureStatus == 0) && (((g)localObject2).field_liveStatus == 0)) {
+          this.APb += 1;
         }
-        dcz localdcz = new dcz();
-        localdcz.TKL = locale.field_insertTime;
-        localdcz.SQm = locale.field_tipsId;
-        localdcz.TKN = locale.field_exposureStatus;
-        localdcz.liveStatus = locale.field_liveStatus;
-        localdcz.klE = Util.safeParseLong(locale.field_liveId);
-        localdcz.TKM = locale.field_ctrlInfoType;
-        localdcz.TKO = locale.field_bypInfo;
-        paramb.add(localdcz);
+        duu localduu = new duu();
+        localduu.abaF = ((g)localObject2).field_insertTime;
+        localduu.ZYN = ((g)localObject2).field_tipsId;
+        localduu.abaH = ((g)localObject2).field_exposureStatus;
+        localduu.liveStatus = ((g)localObject2).field_liveStatus;
+        localduu.mMJ = Util.safeParseLong(((g)localObject2).field_liveId);
+        localduu.abaG = ((g)localObject2).field_ctrlInfoType;
+        localduu.abaI = ((g)localObject2).field_bypInfo;
+        localduu.object_id = Util.safeParseLong(((g)localObject2).field_feedId);
+        localObject2 = ah.aiuX;
+        paramb.add(localduu);
       }
-      localatj.jmy = paramb;
-      if (localatj.jmy.size() > 100)
+      localObject1 = ah.aiuX;
+      localaxx.lPK = paramb;
+      if (localaxx.lPK.size() > 100)
       {
-        paramb = localatj.jmy;
-        p.j(paramb, "this.list");
-        localatj.jmy = new LinkedList((Collection)j.c((Iterable)paramb, 100));
+        paramb = localaxx.lPK;
+        s.s(paramb, "this.list");
+        localaxx.lPK = new LinkedList((Collection)p.c((Iterable)paramb, 100));
       }
-      localrq.Sax = new com.tencent.mm.cd.b(localatj.toByteArray());
-      AppMethodBeat.o(275403);
-      return;
+      paramb = ah.aiuX;
+      localtb.YYw = new com.tencent.mm.bx.b(localaxx.toByteArray());
     }
-    AppMethodBeat.o(275403);
+    AppMethodBeat.o(366667);
   }
   
-  public final int aAq()
+  public final int aTl()
   {
     return -1;
   }
   
-  public final long aAr()
+  public final long aTm()
   {
     return 70001L;
   }
   
-  public final void aAs()
+  public final void aTn()
   {
-    AppMethodBeat.i(275400);
+    AppMethodBeat.i(366646);
     int i;
-    if (this.xrQ > 0)
+    if (this.APb > 0)
     {
-      Object localObject = ((com.tencent.c.a.a.a.b)com.tencent.mm.kernel.h.ag(com.tencent.c.a.a.a.b.class)).getFinderLiveNotifyExposureInfoStorage().dDR();
+      Object localObject = ((com.tencent.d.a.a.a.b)com.tencent.mm.kernel.h.az(com.tencent.d.a.a.a.b.class)).getFinderLiveNotifyExposureInfoStorage().eub();
       i = 0;
       localObject = ((Iterable)localObject).iterator();
       if (((Iterator)localObject).hasNext())
       {
-        e locale = (e)((Iterator)localObject).next();
-        if ((locale.field_exposureStatus != 0) || (locale.field_liveStatus != 0)) {
+        g localg = (g)((Iterator)localObject).next();
+        if ((localg.field_exposureStatus != 0) || (localg.field_liveStatus != 0)) {
           break label110;
         }
         i += 1;
@@ -127,27 +129,24 @@ public final class a
     for (;;)
     {
       break;
-      if (this.xrQ > i) {
-        com.tencent.mm.plugin.report.service.h.IzE.p(1552L, 89L, 1L);
+      if (this.APb > i) {
+        com.tencent.mm.plugin.report.service.h.OAn.p(1552L, 89L, 1L);
       }
-      AppMethodBeat.o(275400);
+      AppMethodBeat.o(366646);
       return;
     }
   }
   
-  public final h.b b(h.a parama)
+  public final g.b b(g.a parama)
   {
     return null;
   }
   
-  public final void b(h.c paramc) {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/FinderLiveNotifyFuncMsgExtension$Companion;", "", "()V", "FUNC_MSGID_PREFIX", "", "Finder_Get_live_tips_CGI", "Finder_Get_live_tips_report_ID", "", "Finder_Get_live_tips_report_IDKey", "MMFinderFuncMsgScene_ByPass", "MMFinderFuncMsgScene_Client", "MMFinderFuncMsgScene_RevokePull", "TAG", "plugin-finder_release"})
-  public static final class a {}
+  public final void b(g.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.a
  * JD-Core Version:    0.7.0.1
  */

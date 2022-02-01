@@ -13,7 +13,7 @@ import java.util.Locale;
 
 public final class b
 {
-  protected final int dcU;
+  protected final int fbw;
   protected final Context mContext;
   
   public b(Context paramContext)
@@ -24,10 +24,10 @@ public final class b
   private b(Context paramContext, byte paramByte)
   {
     this.mContext = paramContext;
-    this.dcU = 5;
+    this.fbw = 5;
   }
   
-  public final File XI()
+  public final File azo()
   {
     Object localObject;
     File localFile;
@@ -61,7 +61,7 @@ public final class b
         if (arrayOfFile != null)
         {
           localObject = localFile;
-          if (arrayOfFile.length > this.dcU)
+          if (arrayOfFile.length > this.fbw)
           {
             int j = arrayOfFile.length;
             int i = 0;
@@ -86,7 +86,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.c.b
  * JD-Core Version:    0.7.0.1
  */

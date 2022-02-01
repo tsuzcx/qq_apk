@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.wallet.wecoin.model;
 
-import com.tencent.mm.protocal.protobuf.dof;
-import com.tencent.mm.protocal.protobuf.fls;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.egw;
+import com.tencent.mm.protocal.protobuf.gij;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeInterceptWinInfo;", "", "resp", "Lcom/tencent/mm/protocal/protobuf/PrepareWecoinRechargeResponse;", "priceInfo", "Lcom/tencent/mm/protocal/protobuf/WecoinPriceInfo;", "(Lcom/tencent/mm/protocal/protobuf/PrepareWecoinRechargeResponse;Lcom/tencent/mm/protocal/protobuf/WecoinPriceInfo;)V", "getPriceInfo", "()Lcom/tencent/mm/protocal/protobuf/WecoinPriceInfo;", "getResp", "()Lcom/tencent/mm/protocal/protobuf/PrepareWecoinRechargeResponse;", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeInterceptWinInfo;", "", "resp", "Lcom/tencent/mm/protocal/protobuf/PrepareWecoinRechargeResponse;", "priceInfo", "Lcom/tencent/mm/protocal/protobuf/WecoinPriceInfo;", "(Lcom/tencent/mm/protocal/protobuf/PrepareWecoinRechargeResponse;Lcom/tencent/mm/protocal/protobuf/WecoinPriceInfo;)V", "getPriceInfo", "()Lcom/tencent/mm/protocal/protobuf/WecoinPriceInfo;", "getResp", "()Lcom/tencent/mm/protocal/protobuf/PrepareWecoinRechargeResponse;", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public final dof OED;
-  public final fls OEE;
+  public final egw Vuk;
+  public final gij Vul;
   
-  public d(dof paramdof, fls paramfls)
+  public d(egw paramegw, gij paramgij)
   {
-    this.OED = paramdof;
-    this.OEE = paramfls;
+    this.Vuk = paramegw;
+    this.Vul = paramgij;
   }
 }
 

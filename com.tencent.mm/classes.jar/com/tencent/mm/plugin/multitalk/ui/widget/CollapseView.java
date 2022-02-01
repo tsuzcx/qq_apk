@@ -27,91 +27,91 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.multitalk.a.e;
 import com.tencent.mm.plugin.multitalk.a.f;
 import com.tencent.mm.plugin.multitalk.a.g;
-import com.tencent.mm.plugin.multitalk.model.ad;
+import com.tencent.mm.plugin.multitalk.model.ac;
+import com.tencent.mm.plugin.multitalk.model.o;
 import com.tencent.mm.plugin.multitalk.model.p;
-import com.tencent.mm.plugin.multitalk.model.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bb;
 
 public class CollapseView
   extends LinearLayout
 {
-  ImageView BOy;
-  public TextView DZt;
-  private RelativeLayout FwT;
-  private RelativeLayout FwU;
-  RelativeLayout FwV;
-  public ImageView FwW;
-  private View FwX;
-  private View FwY;
-  private float FwZ;
-  private String Fxa;
-  ImageButton Fxb;
-  private boolean Fxc;
-  private boolean Fxd;
-  private boolean Fxe;
-  private float Fxf;
-  private boolean Fxg;
+  ImageView HAo;
+  public TextView JQB;
+  private RelativeLayout Ltd;
+  private RelativeLayout Lte;
+  RelativeLayout Ltf;
+  public ImageView Ltg;
+  private View Lth;
+  private View Lti;
+  private float Ltj;
+  private String Ltk;
+  ImageButton Ltl;
+  private boolean Ltm;
+  private boolean Ltn;
+  private boolean Lto;
+  private float Ltp;
+  private boolean Ltq;
   long duration;
-  private float fll;
+  private float hpy;
   private Context mContext;
-  private boolean tFX;
+  private boolean wJw;
   
   public CollapseView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(178913);
     this.duration = 200L;
-    this.FwZ = 0.7F;
-    this.tFX = false;
-    this.Fxc = false;
-    this.Fxd = false;
-    this.Fxe = false;
-    this.Fxf = 0.0F;
-    this.Fxg = true;
+    this.Ltj = 0.7F;
+    this.wJw = false;
+    this.Ltm = false;
+    this.Ltn = false;
+    this.Lto = false;
+    this.Ltp = 0.0F;
+    this.Ltq = true;
     this.mContext = paramContext;
     LayoutInflater.from(this.mContext).inflate(a.f.multitalk_general_control, this);
-    this.DZt = ((TextView)findViewById(a.e.voip_net_status_hint));
-    this.FwW = ((ImageView)findViewById(a.e.link_arrow));
-    this.FwW.setImageDrawable(au.o(MMApplicationContext.getContext(), a.g.icons_filled_arrow, -1));
-    this.FwV = ((RelativeLayout)findViewById(a.e.contentRelativeLayout));
-    this.FwU = ((RelativeLayout)findViewById(a.e.hangup_icon_layout));
-    this.BOy = ((ImageView)findViewById(a.e.more_arrow));
-    this.BOy.setBackground(au.o(paramContext, a.g.icons_filled_arrow, -1));
-    this.FwT = ((RelativeLayout)findViewById(a.e.more_click));
-    paramContext = this.FwT;
-    int i = f.FxS;
+    this.JQB = ((TextView)findViewById(a.e.voip_net_status_hint));
+    this.Ltg = ((ImageView)findViewById(a.e.link_arrow));
+    this.Ltg.setImageDrawable(bb.m(MMApplicationContext.getContext(), a.g.icons_filled_arrow, -1));
+    this.Ltf = ((RelativeLayout)findViewById(a.e.contentRelativeLayout));
+    this.Lte = ((RelativeLayout)findViewById(a.e.hangup_icon_layout));
+    this.HAo = ((ImageView)findViewById(a.e.more_arrow));
+    this.HAo.setBackground(bb.m(paramContext, a.g.icons_filled_arrow, -1));
+    this.Ltd = ((RelativeLayout)findViewById(a.e.more_click));
+    paramContext = this.Ltd;
+    int i = f.Lue;
     paramAttributeSet = (View)paramContext.getParent();
     paramAttributeSet.post(new CollapseView.2(paramContext, i, paramAttributeSet));
-    this.FwT.setOnClickListener(new View.OnClickListener()
+    this.Ltd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(178905);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitalk/ui/widget/CollapseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitalk/ui/widget/CollapseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (CollapseView.a(CollapseView.this))
         {
-          if (ad.eYc().eXq().eVP()) {
-            p.FrN += 1;
+          if (ac.ggS().ggg().geG()) {
+            o.Loa += 1;
           }
           CollapseView.a(CollapseView.this, false);
-          CollapseView.this.eYv();
+          CollapseView.this.ghq();
           CollapseView.b(CollapseView.this);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/CollapseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(178905);
       }
     });
-    this.BOy.setRotation(270.0F);
-    this.FwV.setVisibility(4);
+    this.HAo.setRotation(270.0F);
+    this.Ltf.setVisibility(4);
     AppMethodBeat.o(178913);
   }
   
-  private void C(MotionEvent paramMotionEvent)
+  private void ai(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(178915);
     switch (paramMotionEvent.getAction())
@@ -130,95 +130,149 @@ public class CollapseView
             {
               AppMethodBeat.o(178915);
               return;
-            } while (this.Fxc);
-            this.fll = paramMotionEvent.getRawY();
+            } while (this.Ltm);
+            this.hpy = paramMotionEvent.getRawY();
             AppMethodBeat.o(178915);
             return;
-            f = paramMotionEvent.getRawY() - this.fll;
-          } while ((!this.Fxc) && (Math.abs(f) < 5.0F));
-          this.fll = paramMotionEvent.getRawY();
+            f = paramMotionEvent.getRawY() - this.hpy;
+          } while ((!this.Ltm) && (Math.abs(f) < 5.0F));
+          this.hpy = paramMotionEvent.getRawY();
         } while (Math.abs(f) <= 1.0F);
-        x(this.FwV, -f);
-        ft(this.Fxb);
-        eYw();
+        y(this.Ltf, -f);
+        jdMethod_if(this.Ltl);
+        ghr();
         if (f > 0.0F)
         {
-          this.Fxc = true;
-          this.Fxe = true;
-          this.Fxd = false;
+          this.Ltm = true;
+          this.Lto = true;
+          this.Ltn = false;
           AppMethodBeat.o(178915);
           return;
         }
       } while (f >= 0.0F);
-      this.Fxc = true;
-      this.Fxd = true;
-      this.Fxe = false;
+      this.Ltm = true;
+      this.Ltn = true;
+      this.Lto = false;
       AppMethodBeat.o(178915);
       return;
     }
-    if ((this.Fxf > this.FwZ) && (this.Fxf < 1.0F)) {
-      this.Fxd = true;
+    if ((this.Ltp > this.Ltj) && (this.Ltp < 1.0F)) {
+      this.Ltn = true;
     }
     label401:
     for (;;)
     {
       boolean bool = false;
       label211:
-      this.Fxe = bool;
+      this.Lto = bool;
       label216:
-      if ((this.Fxd) && (this.Fxc))
+      if ((this.Ltn) && (this.Ltm))
       {
-        this.Fxd = false;
-        this.tFX = true;
-        x(this.FwV, 9999.0F);
-        ft(this.Fxb);
-        eYw();
+        this.Ltn = false;
+        this.wJw = true;
+        y(this.Ltf, 9999.0F);
+        jdMethod_if(this.Ltl);
+        ghr();
       }
       for (;;)
       {
-        this.Fxc = false;
+        this.Ltm = false;
         break;
-        if ((this.Fxf < 1.0F - this.FwZ) && (this.Fxf > 0.0F))
+        if ((this.Ltp < 1.0F - this.Ltj) && (this.Ltp > 0.0F))
         {
-          this.Fxd = false;
+          this.Ltn = false;
           bool = true;
           break label211;
         }
-        if ((this.Fxf == 0.0F) || (this.Fxf == 1.0F)) {
+        if ((this.Ltp == 0.0F) || (this.Ltp == 1.0F)) {
           break label216;
         }
-        if (!this.Fxd) {}
+        if (!this.Ltn) {}
         for (bool = true;; bool = false)
         {
-          this.Fxd = bool;
-          if (this.Fxe) {
+          this.Ltn = bool;
+          if (this.Lto) {
             break label401;
           }
           bool = true;
           break;
         }
-        if ((this.Fxe) && (this.Fxc))
+        if ((this.Lto) && (this.Ltm))
         {
-          this.Fxe = false;
-          this.tFX = false;
-          x(this.FwV, -9999.0F);
-          ft(this.Fxb);
-          eYw();
+          this.Lto = false;
+          this.wJw = false;
+          y(this.Ltf, -9999.0F);
+          jdMethod_if(this.Ltl);
+          ghr();
         }
       }
     }
   }
   
-  private void eYu()
+  private void expand(final View paramView)
   {
-    AppMethodBeat.i(197266);
-    if (this.Fxb != null)
+    AppMethodBeat.i(285995);
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(aw.bf(this.mContext).x, 1073741824), View.MeasureSpec.makeMeasureSpec(1073741823, -2147483648));
+    final int i = paramView.getMeasuredHeight();
+    paramView.setVisibility(0);
+    if (this.Lth != null) {
+      this.Lth.setVisibility(4);
+    }
+    Animation local6 = new Animation()
     {
-      if ((this.Fxb.getTag() == null) || (this.Fxb.getTag().equals(Boolean.TRUE)))
+      protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
-        this.Fxb.setTag(Boolean.FALSE);
-        final ImageButton localImageButton = this.Fxb;
-        int i = f.FxW;
+        float f = 1.0F;
+        AppMethodBeat.i(178911);
+        if (paramAnonymousFloat == 1.0F)
+        {
+          CollapseView.i(CollapseView.this).setVisibility(0);
+          paramView.getLayoutParams().height = i;
+          CollapseView.b(CollapseView.this, true);
+          paramView.requestLayout();
+          AppMethodBeat.o(178911);
+          return;
+        }
+        if (paramAnonymousFloat >= CollapseView.j(CollapseView.this))
+        {
+          CollapseView.i(CollapseView.this).setVisibility(0);
+          paramAnonymousTransformation = CollapseView.i(CollapseView.this);
+          if ((paramAnonymousFloat - CollapseView.j(CollapseView.this) + 0.1F) * 2.5D < 1.0D) {
+            break label179;
+          }
+        }
+        for (;;)
+        {
+          paramAnonymousTransformation.setAlpha(f);
+          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.Lud * paramAnonymousFloat));
+          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = ((int)(f.LtV * paramAnonymousFloat));
+          paramView.getLayoutParams().height = ((int)(i * paramAnonymousFloat));
+          break;
+          label179:
+          f = (paramAnonymousFloat - CollapseView.j(CollapseView.this) + 0.1F) * 2.5F;
+        }
+      }
+      
+      public final boolean willChangeBounds()
+      {
+        return true;
+      }
+    };
+    local6.setDuration(this.duration);
+    paramView.startAnimation(local6);
+    AppMethodBeat.o(285995);
+  }
+  
+  private void ghp()
+  {
+    AppMethodBeat.i(285986);
+    if (this.Ltl != null)
+    {
+      if ((this.Ltl.getTag() == null) || (this.Ltl.getTag().equals(Boolean.TRUE)))
+      {
+        this.Ltl.setTag(Boolean.FALSE);
+        final ImageButton localImageButton = this.Ltl;
+        int i = f.Lui;
         localImageButton.measure(i, i);
         Animation local4 = new Animation()
         {
@@ -254,18 +308,18 @@ public class CollapseView
             label141:
             label157:
             label173:
-            for (int i = f.FxP;; i = f.FxO + (int)((f.FxP - f.FxO) * paramAnonymousFloat))
+            for (int i = f.Lub;; i = f.Lua + (int)((f.Lub - f.Lua) * paramAnonymousFloat))
             {
               paramAnonymousTransformation.bottomMargin = i;
-              ((RelativeLayout.LayoutParams)localImageButton.getLayoutParams()).topMargin = ((int)(f.FxO * (1.0F - paramAnonymousFloat)));
+              ((RelativeLayout.LayoutParams)localImageButton.getLayoutParams()).topMargin = ((int)(f.Lua * (1.0F - paramAnonymousFloat)));
               localImageButton.requestLayout();
               AppMethodBeat.o(178909);
               return;
               bool = false;
               break;
-              i = f.FxS + (int)(this.EzS * paramAnonymousFloat);
+              i = f.Lue + (int)(this.KsF * paramAnonymousFloat);
               break label47;
-              i = f.FxS + (int)(this.EzS * paramAnonymousFloat);
+              i = f.Lue + (int)(this.KsF * paramAnonymousFloat);
               break label69;
             }
           }
@@ -277,98 +331,44 @@ public class CollapseView
         };
         local4.setDuration(this.duration);
         localImageButton.startAnimation(local4);
-        AppMethodBeat.o(197266);
+        AppMethodBeat.o(285986);
         return;
       }
-      this.Fxb.setTag(Boolean.TRUE);
-      fr(this.Fxb);
+      this.Ltl.setTag(Boolean.TRUE);
+      ie(this.Ltl);
     }
-    AppMethodBeat.o(197266);
+    AppMethodBeat.o(285986);
   }
   
-  private void eYw()
+  private void ghr()
   {
     AppMethodBeat.i(178918);
-    int i = (int)(270.0F + this.Fxf * 180.0F);
-    this.BOy.setRotation(i);
-    ImageView localImageView = this.BOy;
-    if (this.Fxf == 0.0F) {}
+    int i = (int)(270.0F + this.Ltp * 180.0F);
+    this.HAo.setRotation(i);
+    ImageView localImageView = this.HAo;
+    if (this.Ltp == 0.0F) {}
     for (boolean bool = true;; bool = false)
     {
       localImageView.setTag(Boolean.valueOf(bool));
-      this.BOy.requestLayout();
+      this.HAo.requestLayout();
       AppMethodBeat.o(178918);
       return;
     }
   }
   
-  private void fs(final View paramView)
-  {
-    AppMethodBeat.i(197287);
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(ar.au(this.mContext).x, 1073741824), View.MeasureSpec.makeMeasureSpec(1073741823, -2147483648));
-    final int i = paramView.getMeasuredHeight();
-    paramView.setVisibility(0);
-    if (this.FwX != null) {
-      this.FwX.setVisibility(4);
-    }
-    Animation local6 = new Animation()
-    {
-      protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
-      {
-        float f = 1.0F;
-        AppMethodBeat.i(178911);
-        if (paramAnonymousFloat == 1.0F)
-        {
-          CollapseView.i(CollapseView.this).setVisibility(0);
-          paramView.getLayoutParams().height = i;
-          CollapseView.b(CollapseView.this, true);
-          paramView.requestLayout();
-          AppMethodBeat.o(178911);
-          return;
-        }
-        if (paramAnonymousFloat >= CollapseView.j(CollapseView.this))
-        {
-          CollapseView.i(CollapseView.this).setVisibility(0);
-          paramAnonymousTransformation = CollapseView.i(CollapseView.this);
-          if ((paramAnonymousFloat - CollapseView.j(CollapseView.this) + 0.1F) * 2.5D < 1.0D) {
-            break label179;
-          }
-        }
-        for (;;)
-        {
-          paramAnonymousTransformation.setAlpha(f);
-          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.FxR * paramAnonymousFloat));
-          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = ((int)(f.FxJ * paramAnonymousFloat));
-          paramView.getLayoutParams().height = ((int)(i * paramAnonymousFloat));
-          break;
-          label179:
-          f = (paramAnonymousFloat - CollapseView.j(CollapseView.this) + 0.1F) * 2.5F;
-        }
-      }
-      
-      public final boolean willChangeBounds()
-      {
-        return true;
-      }
-    };
-    local6.setDuration(this.duration);
-    paramView.startAnimation(local6);
-    AppMethodBeat.o(197287);
-  }
-  
-  private void ft(View paramView)
+  private void jdMethod_if(View paramView)
   {
     AppMethodBeat.i(178920);
-    int i = f.FxW;
-    int j = f.FxS;
-    i = f.FxS + (int)((i - j) * this.Fxf);
+    int i = f.Lui;
+    int j = f.Lue;
+    i = f.Lue + (int)((i - j) * this.Ltp);
     paramView.getLayoutParams().height = i;
     paramView.getLayoutParams().width = i;
-    ((RelativeLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = (f.FxO + (int)((f.FxP - f.FxO) * this.Fxf));
-    ((RelativeLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.FxO * (1.0F - this.Fxf)));
+    ((RelativeLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = (f.Lua + (int)((f.Lub - f.Lua) * this.Ltp));
+    ((RelativeLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.Lua * (1.0F - this.Ltp)));
     paramView.requestLayout();
-    paramView = this.Fxb;
-    if (i != f.FxW) {}
+    paramView = this.Ltl;
+    if (i != f.Lui) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setTag(Boolean.valueOf(bool));
@@ -377,36 +377,36 @@ public class CollapseView
     }
   }
   
-  private void x(View paramView, float paramFloat)
+  private void y(View paramView, float paramFloat)
   {
     AppMethodBeat.i(178919);
     paramView.setVisibility(0);
-    if (this.FwX != null) {
-      this.FwX.setVisibility(4);
+    if (this.Lth != null) {
+      this.Lth.setVisibility(4);
     }
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(ar.au(this.mContext).x, 1073741824), View.MeasureSpec.makeMeasureSpec(1073741823, -2147483648));
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(aw.bf(this.mContext).x, 1073741824), View.MeasureSpec.makeMeasureSpec(1073741823, -2147483648));
     int i = paramView.getMeasuredHeight();
     float f = paramView.getLayoutParams().height + paramFloat;
     View localView;
     if (f >= i)
     {
       paramFloat = i;
-      this.Fxf = (paramFloat / i);
-      if (this.Fxf >= this.FwZ)
+      this.Ltp = (paramFloat / i);
+      if (this.Ltp >= this.Ltj)
       {
-        this.FwX.setVisibility(0);
-        localView = this.FwX;
-        if ((this.Fxf - this.FwZ + 0.1D) * 2.5D < 1.0D) {
+        this.Lth.setVisibility(0);
+        localView = this.Lth;
+        if ((this.Ltp - this.Ltj + 0.1D) * 2.5D < 1.0D) {
           break label229;
         }
       }
     }
     label229:
-    for (f = 1.0F;; f = (this.Fxf - this.FwZ + 0.1F) * 2.5F)
+    for (f = 1.0F;; f = (this.Ltp - this.Ltj + 0.1F) * 2.5F)
     {
       localView.setAlpha(f);
-      ((LinearLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(this.Fxf * f.FxR));
-      ((LinearLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = ((int)(this.Fxf * f.FxJ));
+      ((LinearLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(this.Ltp * f.Lud));
+      ((LinearLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = ((int)(this.Ltp * f.LtV));
       paramView.getLayoutParams().height = ((int)paramFloat);
       paramView.requestLayout();
       AppMethodBeat.o(178919);
@@ -421,20 +421,11 @@ public class CollapseView
     }
   }
   
-  public final void XG(int paramInt)
-  {
-    AppMethodBeat.i(197321);
-    if (this.Fxb != null) {
-      this.Fxb.setRotation(360 - paramInt);
-    }
-    AppMethodBeat.o(197321);
-  }
-  
-  public final void aq(View paramView, int paramInt)
+  public final void aI(View paramView, int paramInt)
   {
     AppMethodBeat.i(178916);
     Log.i("MicroMsg.CollapseView", "setContent animate:%s, controlView:%s, height:%s", new Object[] { Boolean.TRUE, paramView, Integer.valueOf(paramInt) });
-    if (this.FwX != null)
+    if (this.Lth != null)
     {
       Log.i("MicroMsg.CollapseView", "setContent already have content layout");
       AppMethodBeat.o(178916);
@@ -443,12 +434,14 @@ public class CollapseView
     if (paramView.getParent() != null) {
       ((ViewGroup)paramView.getParent()).removeView(paramView);
     }
-    this.FwX = paramView;
-    this.FwV.addView(this.FwX);
-    this.FwV.setVisibility(0);
-    this.FwV.setVisibility(0);
+    this.Lth = paramView;
+    paramView = new LinearLayout.LayoutParams(-1, -2);
+    paramView.gravity = 17;
+    this.Ltf.addView(this.Lth, paramView);
+    this.Ltf.setVisibility(0);
+    this.Ltf.setVisibility(0);
     setAlpha(0.0F);
-    this.FwT.setAlpha(0.0F);
+    this.Ltd.setAlpha(0.0F);
     animate().alpha(1.0F).setDuration(500L).setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -467,10 +460,10 @@ public class CollapseView
             CollapseView.f(CollapseView.this).setAlpha(0.0F);
             CollapseView.f(CollapseView.this).animate().alpha(1.0F).setDuration(CollapseView.g(CollapseView.this)).start();
             CollapseView.b(CollapseView.this);
-            if ((CollapseView.h(CollapseView.this) != null) && (!ad.eYc().Fsb))
+            if ((CollapseView.h(CollapseView.this) != null) && (!ac.ggS().Loo))
             {
-              p.p(1, CollapseView.h(CollapseView.this), 2);
-              ad.eYc().Fsb = true;
+              o.t(1, CollapseView.h(CollapseView.this), 2);
+              ac.ggS().Loo = true;
             }
             AppMethodBeat.o(178907);
           }
@@ -485,52 +478,61 @@ public class CollapseView
     AppMethodBeat.o(178916);
   }
   
-  public final void dGn()
+  public final void abQ(int paramInt)
   {
-    AppMethodBeat.i(197267);
-    if ((this.Fxb.getTag() == null) || (this.Fxb.getTag().equals(Boolean.TRUE))) {
-      eYu();
+    AppMethodBeat.i(286154);
+    if (this.Ltl != null) {
+      this.Ltl.setRotation(360 - paramInt);
     }
-    if ((this.BOy.getTag() == null) || (this.BOy.getTag().equals(Boolean.TRUE))) {
-      eYv();
-    }
-    AppMethodBeat.o(197267);
+    AppMethodBeat.o(286154);
   }
   
-  public final void eYv()
+  public final void exz()
   {
-    AppMethodBeat.i(197275);
+    AppMethodBeat.i(286123);
+    if ((this.Ltl.getTag() == null) || (this.Ltl.getTag().equals(Boolean.TRUE))) {
+      ghp();
+    }
+    if ((this.HAo.getTag() == null) || (this.HAo.getTag().equals(Boolean.TRUE))) {
+      ghq();
+    }
+    AppMethodBeat.o(286123);
+  }
+  
+  public final void ghq()
+  {
+    AppMethodBeat.i(286131);
     int i;
-    if ((this.BOy.getTag() == null) || (this.BOy.getTag().equals(Boolean.TRUE)))
+    if ((this.HAo.getTag() == null) || (this.HAo.getTag().equals(Boolean.TRUE)))
     {
-      this.BOy.setTag(Boolean.FALSE);
+      this.HAo.setTag(Boolean.FALSE);
       i = 90;
-      fs(this.FwV);
-      if (this.Fxa != null) {
-        p.p(2, this.Fxa, 1);
+      expand(this.Ltf);
+      if (this.Ltk != null) {
+        o.t(2, this.Ltk, 1);
       }
-      p.uG(true);
+      o.yV(true);
     }
     for (;;)
     {
-      this.BOy.animate().setDuration(this.duration).rotation(i);
-      AppMethodBeat.o(197275);
+      this.HAo.animate().setDuration(this.duration).rotation(i);
+      AppMethodBeat.o(286131);
       return;
       i = 270;
-      this.BOy.setTag(Boolean.TRUE);
-      fu(this.FwV);
-      if (this.Fxa != null) {
-        p.p(2, this.Fxa, 2);
+      this.HAo.setTag(Boolean.TRUE);
+      ig(this.Ltf);
+      if (this.Ltk != null) {
+        o.t(2, this.Ltk, 2);
       }
-      p.uG(false);
+      o.yV(false);
     }
   }
   
-  public final void fq(View paramView)
+  public final void id(View paramView)
   {
     AppMethodBeat.i(178917);
     Log.i("MicroMsg.CollapseView", "setCollapseContent, animate:%s, collapseView:%s", new Object[] { Boolean.TRUE, paramView });
-    if (this.FwY != null)
+    if (this.Lti != null)
     {
       Log.i("MicroMsg.CollapseView", "setCollapseContent already has collapseView");
       AppMethodBeat.o(178917);
@@ -539,20 +541,20 @@ public class CollapseView
     if ((ViewGroup)paramView.getParent() != null) {
       ((ViewGroup)paramView.getParent()).removeView(paramView);
     }
-    this.FwY = paramView;
-    this.FwU.addView(paramView);
-    this.Fxb = ((ImageButton)paramView.findViewById(a.e.talking_hangup_btn));
-    paramView = (RelativeLayout.LayoutParams)this.Fxb.getLayoutParams();
-    paramView.width = f.FxW;
-    paramView.height = f.FxW;
-    paramView.bottomMargin = f.FxP;
-    this.Fxb.setLayoutParams(paramView);
+    this.Lti = paramView;
+    this.Lte.addView(paramView);
+    this.Ltl = ((ImageButton)paramView.findViewById(a.e.talking_hangup_btn));
+    paramView = (RelativeLayout.LayoutParams)this.Ltl.getLayoutParams();
+    paramView.width = f.Lui;
+    paramView.height = f.Lui;
+    paramView.bottomMargin = f.Lub;
+    this.Ltl.setLayoutParams(paramView);
     AppMethodBeat.o(178917);
   }
   
-  public final void fr(final View paramView)
+  public final void ie(final View paramView)
   {
-    AppMethodBeat.i(197264);
+    AppMethodBeat.i(286115);
     Animation local5 = new Animation()
     {
       protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
@@ -563,7 +565,7 @@ public class CollapseView
         for (boolean bool = true;; bool = false)
         {
           CollapseView.a(paramAnonymousTransformation, bool);
-          if (paramView.getLayoutParams().height != f.FxS) {
+          if (paramView.getLayoutParams().height != f.Lue) {
             break;
           }
           AppMethodBeat.o(178910);
@@ -571,12 +573,12 @@ public class CollapseView
         }
         if (paramAnonymousFloat != 1.0F)
         {
-          paramView.getLayoutParams().height = (f.FxW - (int)(this.Fxk * paramAnonymousFloat));
-          paramView.getLayoutParams().width = (f.FxW - (int)(this.Fxk * paramAnonymousFloat));
+          paramView.getLayoutParams().height = (f.Lui - (int)(this.Ltu * paramAnonymousFloat));
+          paramView.getLayoutParams().width = (f.Lui - (int)(this.Ltu * paramAnonymousFloat));
           paramAnonymousTransformation = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-          int i = f.FxP;
-          paramAnonymousTransformation.bottomMargin = (i - (int)((i - f.FxO) * paramAnonymousFloat));
-          ((RelativeLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.FxO * paramAnonymousFloat));
+          int i = f.Lub;
+          paramAnonymousTransformation.bottomMargin = (i - (int)((i - f.Lua) * paramAnonymousFloat));
+          ((RelativeLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.Lua * paramAnonymousFloat));
           paramView.requestLayout();
         }
         AppMethodBeat.o(178910);
@@ -589,16 +591,16 @@ public class CollapseView
     };
     local5.setDuration(this.duration);
     paramView.startAnimation(local5);
-    AppMethodBeat.o(197264);
+    AppMethodBeat.o(286115);
   }
   
-  final void fu(final View paramView)
+  final void ig(final View paramView)
   {
     AppMethodBeat.i(178921);
-    paramView.measure(View.MeasureSpec.makeMeasureSpec(ar.au(this.mContext).x, 1073741824), View.MeasureSpec.makeMeasureSpec(1073741823, -2147483648));
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(aw.bf(this.mContext).x, 1073741824), View.MeasureSpec.makeMeasureSpec(1073741823, -2147483648));
     final int i = paramView.getMeasuredHeight();
-    if (this.FwX != null) {
-      this.FwX.setVisibility(0);
+    if (this.Lth != null) {
+      this.Lth.setVisibility(0);
     }
     Animation local7 = new Animation()
     {
@@ -625,8 +627,8 @@ public class CollapseView
         for (;;)
         {
           CollapseView.i(CollapseView.this).setAlpha(f);
-          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.FxR * paramAnonymousFloat));
-          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = ((int)(f.FxJ * paramAnonymousFloat));
+          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).topMargin = ((int)(f.Lud * paramAnonymousFloat));
+          ((LinearLayout.LayoutParams)paramView.getLayoutParams()).bottomMargin = ((int)(f.LtV * paramAnonymousFloat));
           paramView.getLayoutParams().height = (i - (int)(i * paramAnonymousFloat));
           break;
           label177:
@@ -647,7 +649,7 @@ public class CollapseView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(178914);
-    C(paramMotionEvent);
+    ai(paramMotionEvent);
     AppMethodBeat.o(178914);
     return false;
   }
@@ -656,37 +658,37 @@ public class CollapseView
   {
     AppMethodBeat.i(178922);
     Log.d("MicroMsg.CollapseView", "event: " + paramMotionEvent.getAction());
-    C(paramMotionEvent);
+    ai(paramMotionEvent);
     AppMethodBeat.o(178922);
     return true;
   }
   
   public void setLinkToAutoMobileListener(final a parama)
   {
-    AppMethodBeat.i(197324);
+    AppMethodBeat.i(286157);
     if (findViewById(a.e.net_tip_layout) != null) {
       findViewById(a.e.net_tip_layout).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(202638);
+          AppMethodBeat.i(285452);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitalk/ui/widget/CollapseView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitalk/ui/widget/CollapseView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if (CollapseView.this.findViewById(a.e.net_tip_layout) != null) {
             parama.onClick();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/ui/widget/CollapseView$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(202638);
+          AppMethodBeat.o(285452);
         }
       });
     }
-    AppMethodBeat.o(197324);
+    AppMethodBeat.o(286157);
   }
   
   public void setRoomKey(String paramString)
   {
-    this.Fxa = paramString;
+    this.Ltk = paramString;
   }
   
   static abstract interface a
@@ -696,7 +698,7 @@ public class CollapseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.CollapseView
  * JD-Core Version:    0.7.0.1
  */

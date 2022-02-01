@@ -16,7 +16,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class AppBrandBackgroundFetchDataTokenStorageIPC
   implements l
 {
-  public final AppBrandBackgroundFetchDataTokenParcel aek(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel WN(String paramString)
   {
     AppMethodBeat.i(44752);
     paramString = (AppBrandBackgroundFetchDataTokenParcel)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class);
@@ -24,7 +24,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
     return paramString;
   }
   
-  public final boolean cW(String paramString1, String paramString2)
+  public final boolean dn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44753);
     paramString1 = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new WxappParams(paramString1, paramString2), b.class);
@@ -95,7 +95,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
       }
       try
       {
-        paramIPCString = ((l)h.ae(l.class)).aek(paramIPCString.value);
+        paramIPCString = ((l)h.ax(l.class)).WN(paramIPCString.value);
         AppMethodBeat.o(44744);
         return paramIPCString;
       }
@@ -123,7 +123,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
       }
       try
       {
-        paramWxappParams = new IPCBoolean(((l)h.ae(l.class)).cW(paramWxappParams.username, paramWxappParams.token));
+        paramWxappParams = new IPCBoolean(((l)h.ax(l.class)).dn(paramWxappParams.username, paramWxappParams.token));
         AppMethodBeat.o(44746);
         return paramWxappParams;
       }

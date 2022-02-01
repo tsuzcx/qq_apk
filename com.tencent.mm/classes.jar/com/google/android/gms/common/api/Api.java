@@ -8,13 +8,11 @@ import android.os.IInterface;
 import android.os.Looper;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.Feature;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.internal.BaseGmsClient.ConnectionProgressReportCallbacks;
 import com.google.android.gms.common.internal.BaseGmsClient.SignOutCallbacks;
 import com.google.android.gms.common.internal.ClientSettings;
 import com.google.android.gms.common.internal.IAccountAccessor;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -80,16 +78,14 @@ public final class Api<O extends ApiOptions>
     }
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   public static abstract class AbstractClientBuilder<T extends Api.Client, O>
     extends Api.BaseClientBuilder<T, O>
   {
-    @KeepForSdk
     public abstract T buildClient(Context paramContext, Looper paramLooper, ClientSettings paramClientSettings, O paramO, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener);
   }
   
-  @KeepForSdk
+  public static abstract interface AnyClient {}
+  
   public static class AnyClientKey<C extends Api.AnyClient> {}
   
   public static abstract interface ApiOptions
@@ -119,18 +115,12 @@ public final class Api<O extends ApiOptions>
     {}
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   public static class BaseClientBuilder<T extends Api.AnyClient, O>
   {
-    @KeepForSdk
     public static final int API_PRIORITY_GAMES = 1;
-    @KeepForSdk
     public static final int API_PRIORITY_OTHER = 2147483647;
-    @KeepForSdk
     public static final int API_PRIORITY_PLUS = 2;
     
-    @KeepForSdk
     public List<Scope> getImpliedScopes(O paramO)
     {
       AppMethodBeat.i(10969);
@@ -139,14 +129,12 @@ public final class Api<O extends ApiOptions>
       return paramO;
     }
     
-    @KeepForSdk
     public int getPriority()
     {
       return 2147483647;
     }
   }
   
-  @KeepForSdk
   public static abstract interface Client
     extends Api.AnyClient
   {
@@ -181,8 +169,6 @@ public final class Api<O extends ApiOptions>
     public abstract boolean requiresSignIn();
   }
   
-  @KeepForSdk
-  @VisibleForTesting
   public static final class ClientKey<C extends Api.Client>
     extends Api.AnyClientKey<C>
   {}
@@ -199,19 +185,17 @@ public final class Api<O extends ApiOptions>
     public abstract void setState(int paramInt, T paramT);
   }
   
-  @VisibleForTesting
   public static class zza<T extends Api.SimpleClient, O>
     extends Api.BaseClientBuilder<T, O>
   {}
   
-  @VisibleForTesting
   public static final class zzb<C extends Api.SimpleClient>
     extends Api.AnyClientKey<C>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.Api
  * JD-Core Version:    0.7.0.1
  */

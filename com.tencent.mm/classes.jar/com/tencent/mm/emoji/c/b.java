@@ -1,82 +1,37 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.enq;
+import com.tencent.mm.protocal.protobuf.enr;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/report/ChatEmojiBtnClickReport;", "", "()V", "TAG", "", "btnClicked", "", "lastShow", "panelOpenTime", "", "recordBtnClick", "", "recordClose", "recordOpen", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/model/CgiEmojiRecommend;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "(Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
+  extends com.tencent.mm.am.b<enr>
 {
-  private static final String TAG = "MicroMsg.ChatEmojiBtnClickReport";
-  private static long jNk;
-  private static boolean jNl;
-  private static boolean jNm;
-  public static final b jNn;
+  private final enq mhA;
   
-  static
+  public b(enq paramenq)
   {
-    AppMethodBeat.i(105725);
-    jNn = new b();
-    TAG = "MicroMsg.ChatEmojiBtnClickReport";
-    AppMethodBeat.o(105725);
-  }
-  
-  public static void aCY()
-  {
-    jNl = true;
-  }
-  
-  public static void aCZ()
-  {
-    int i = 3;
-    AppMethodBeat.i(105723);
-    jNk = System.currentTimeMillis();
-    Log.i(TAG, "recordOpen: " + jNk + ", " + jNm);
-    if (!jNm)
-    {
-      Object localObject = com.tencent.mm.plugin.report.service.h.IzE;
-      if (jNl) {
-        i = 1;
-      }
-      ((com.tencent.mm.plugin.report.service.h)localObject).a(17302, new Object[] { Integer.valueOf(i), Integer.valueOf(0), Long.valueOf(jNk) });
-      c.aDb().Fn(jNk);
-      h.aDe().Fn(jNk);
-      localObject = g.jNx;
-      g.Fn(jNk);
-    }
-    jNm = true;
-    jNl = false;
-    AppMethodBeat.o(105723);
-  }
-  
-  public static void aDa()
-  {
-    int i = 2;
-    AppMethodBeat.i(105724);
-    long l = System.currentTimeMillis() - jNk;
-    Log.i(TAG, "recordClose: " + l + ", " + jNk + ", " + jNm);
-    com.tencent.mm.plugin.report.service.h localh;
-    if (jNm)
-    {
-      localh = com.tencent.mm.plugin.report.service.h.IzE;
-      if (!jNl) {
-        break label110;
-      }
-    }
-    for (;;)
-    {
-      localh.a(17302, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-      jNm = false;
-      AppMethodBeat.o(105724);
-      return;
-      label110:
-      i = 4;
-    }
+    AppMethodBeat.i(242652);
+    this.mhA = paramenq;
+    paramenq = new enr();
+    c.a locala = new c.a();
+    locala.otE = ((a)this.mhA);
+    locala.otF = ((a)paramenq);
+    locala.uri = "/cgi-bin/micromsg-bin/mmrecommendpanelemoji";
+    locala.funcId = 3793;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    c(locala.bEF());
+    AppMethodBeat.o(242652);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.c.b
  * JD-Core Version:    0.7.0.1
  */

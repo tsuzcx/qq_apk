@@ -1,6 +1,5 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
-import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -238,7 +237,6 @@ public class CacheDataSource
     //   67	81	84	finally
   }
   
-  @SuppressLint({"DefaultLocale"})
   private void scheduleRestart(final long paramLong1, long paramLong2)
   {
     try
@@ -257,10 +255,10 @@ public class CacheDataSource
       {
         public void run()
         {
-          AppMethodBeat.i(247543);
+          AppMethodBeat.i(212365);
           Logger.i("CacheDataSource", "[scheduleRestart] restart loading from position: " + paramLong1);
           CacheDataSource.access$200(CacheDataSource.this, paramLong1);
-          AppMethodBeat.o(247543);
+          AppMethodBeat.o(212365);
         }
       };
       this.restartHandler.schedule(this.pendingTask, paramLong2);
@@ -491,6 +489,7 @@ public class CacheDataSource
   {
     AppMethodBeat.i(76551);
     int i = -1;
+    boolean bool;
     try
     {
       if (!this.opened)
@@ -498,102 +497,107 @@ public class CacheDataSource
         Logger.e("CacheDataSource", "[readAt] not opened!");
         this.cachedDataTracker.abandonLock();
         paramArrayOfByte = new IOException("[readAt] not opened!");
+        AppMethodBeat.o(76551);
         throw paramArrayOfByte;
       }
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      Logger.e("CacheDataSource", "[readAt] error occurred: ".concat(String.valueOf(paramLong)), paramArrayOfByte);
-      throw paramArrayOfByte;
-    }
     finally
     {
-      AppMethodBeat.o(76551);
+      try
+      {
+        Logger.e("CacheDataSource", "[readAt] error occurred: ".concat(String.valueOf(paramLong)), paramArrayOfByte);
+        AppMethodBeat.o(76551);
+        throw paramArrayOfByte;
+      }
+      finally
+      {
+        AppMethodBeat.o(76551);
+      }
+      if (paramLong < 0L)
+      {
+        Logger.e("CacheDataSource", "[readAt] invalid position: ".concat(String.valueOf(paramLong)));
+        paramArrayOfByte = new IOException("invalid position: ".concat(String.valueOf(paramLong)));
+        AppMethodBeat.o(76551);
+        throw paramArrayOfByte;
+      }
+      this.cachedDataTracker.setFileTotalSize(getSize());
+      bool = isCached(paramLong, paramInt2);
+      if (paramLong != this.nextContinuousPosition) {
+        break label339;
+      }
     }
-    if (paramLong < 0L)
-    {
-      Logger.e("CacheDataSource", "[readAt] invalid position: ".concat(String.valueOf(paramLong)));
-      paramArrayOfByte = new IOException("invalid position: ".concat(String.valueOf(paramLong)));
-      AppMethodBeat.o(76551);
-      throw paramArrayOfByte;
+    onReadContinuity(paramLong);
+    if (this.listener != null) {
+      this.listener.onBytesTransferring(paramLong, paramInt2);
     }
-    this.cachedDataTracker.setFileTotalSize(getSize());
-    boolean bool = isCached(paramLong, paramInt2);
-    if (paramLong == this.nextContinuousPosition)
-    {
-      onReadContinuity(paramLong);
-      if (this.listener != null) {
-        this.listener.onBytesTransferring(paramLong, paramInt2);
-      }
-      if (bool) {
-        i = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
-      }
-      if (i >= 0) {
-        break label555;
-      }
-      if (this.loader.isLoading()) {
-        break label349;
-      }
-      paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
-      Logger.e("CacheDataSource", "[readAt] load not started: " + paramLong + ", size: " + paramInt2 + ", read: " + paramInt1);
-      if (paramInt1 <= 0) {
-        break label493;
-      }
-      this.nextContinuousPosition = (paramInt1 + paramLong);
-      bool = false;
+    if (bool) {
+      i = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
     }
-    for (;;)
+    if (i < 0)
     {
+      if (!this.loader.isLoading())
+      {
+        paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+        Logger.e("CacheDataSource", "[readAt] load not started: " + paramLong + ", size: " + paramInt2 + ", read: " + paramInt1);
+        if (paramInt1 <= 0) {
+          break label493;
+        }
+        this.nextContinuousPosition = (paramInt1 + paramLong);
+        bool = false;
+      }
       for (;;)
       {
-        label302:
-        if (this.listener != null)
+        for (;;)
         {
-          if (!bool) {
-            break label539;
-          }
-          this.listener.onBytesTransferError(paramLong, paramInt2, paramInt1);
-        }
-        label330:
-        AppMethodBeat.o(76551);
-        return paramInt1;
-        onReadDiscontinuity(paramLong, bool);
-        break;
-        label349:
-        Logger.w("CacheDataSource", "[readAt] load has started, lock util data has been downloaded : " + paramLong + ", size: " + paramInt2 + ", read: " + i);
-        if (this.listener != null) {
-          this.listener.onBufferStarted(paramLong);
-        }
-        try
-        {
-          this.cachedDataTracker.lock(paramLong, paramInt2, getBufferTimeout(paramLong, paramInt2), new DataRangeTracker.LockJudgerCallback()
+          label302:
+          if (this.listener != null)
           {
-            public boolean isToAbandonLock()
-            {
-              AppMethodBeat.i(247530);
-              boolean bool = CacheDataSource.this.isToReleaseLock;
-              AppMethodBeat.o(247530);
-              return bool;
+            if (!bool) {
+              break label539;
             }
-          });
-          if (this.listener != null) {
-            this.listener.onBufferEnded();
+            this.listener.onBytesTransferError(paramLong, paramInt2, paramInt1);
           }
-          paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
-        }
-        catch (InterruptedException paramArrayOfByte)
-        {
-          paramArrayOfByte = new IOException("interrupted!", paramArrayOfByte);
+          label330:
           AppMethodBeat.o(76551);
-          throw paramArrayOfByte;
+          return paramInt1;
+          label339:
+          onReadDiscontinuity(paramLong, bool);
+          break;
+          Logger.w("CacheDataSource", "[readAt] load has started, lock util data has been downloaded : " + paramLong + ", size: " + paramInt2 + ", read: " + i);
+          if (this.listener != null) {
+            this.listener.onBufferStarted(paramLong);
+          }
+          try
+          {
+            this.cachedDataTracker.lock(paramLong, paramInt2, getBufferTimeout(paramLong, paramInt2), new DataRangeTracker.LockJudgerCallback()
+            {
+              public boolean isToAbandonLock()
+              {
+                AppMethodBeat.i(212363);
+                boolean bool = CacheDataSource.this.isToReleaseLock;
+                AppMethodBeat.o(212363);
+                return bool;
+              }
+            });
+            if (this.listener != null) {
+              this.listener.onBufferEnded();
+            }
+            paramInt1 = this.cacheSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+          }
+          catch (InterruptedException paramArrayOfByte)
+          {
+            paramArrayOfByte = new IOException("interrupted!", paramArrayOfByte);
+            AppMethodBeat.o(76551);
+            throw paramArrayOfByte;
+          }
         }
+        label493:
+        if (paramInt1 >= 0) {
+          break label562;
+        }
+        bool = true;
+        Logger.e("CacheDataSource", "[readAt]: read error! read < 0， read = ".concat(String.valueOf(paramInt1)));
       }
-      label493:
-      if (paramInt1 >= 0) {
-        break label562;
-      }
-      bool = true;
-      Logger.e("CacheDataSource", "[readAt]: read error! read < 0， read = ".concat(String.valueOf(paramInt1)));
     }
     for (;;)
     {
@@ -602,7 +606,6 @@ public class CacheDataSource
       label539:
       this.listener.onBytesTransferred(paramLong, paramInt1);
       break label330;
-      label555:
       paramInt1 = i;
       break;
       label562:
@@ -616,10 +619,10 @@ public class CacheDataSource
   
   public void releaseLock()
   {
-    AppMethodBeat.i(247801);
+    AppMethodBeat.i(212369);
     Logger.i("CacheDataSource", "[releaseLock]");
     this.isToReleaseLock = true;
-    AppMethodBeat.o(247801);
+    AppMethodBeat.o(212369);
   }
   
   public void setListener(Listener paramListener)
@@ -629,11 +632,11 @@ public class CacheDataSource
   
   protected boolean waitForFirstPiece(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(247802);
+    AppMethodBeat.i(212370);
     this.isWaitingForFirstPiece = true;
     boolean bool = this.cachedDataTracker.lock(0L, paramInt, paramLong, null);
     this.isWaitingForFirstPiece = false;
-    AppMethodBeat.o(247802);
+    AppMethodBeat.o(212370);
     return bool;
   }
   
@@ -689,44 +692,72 @@ public class CacheDataSource
       return paramFile;
     }
     
-    public static CacheDataSource createFromUriLoader(UriLoader paramUriLoader)
+    /* Error */
+    public static CacheDataSource createFromUriLoader(UriLoader paramUriLoader, final String paramString)
     {
-      AppMethodBeat.i(76499);
-      try
-      {
-        final File localFile = File.createTempFile("mediaHttpCommonPlayer", "tmp");
-        ensureFile(localFile);
-        paramUriLoader = createDefaultLoaderFactory(localFile, paramUriLoader);
-        paramUriLoader = new CacheDataSource(new FileDataSource(localFile.getAbsolutePath())
-        {
-          public final void close()
-          {
-            AppMethodBeat.i(76492);
-            try
-            {
-              super.close();
-              label9:
-              if (!localFile.delete()) {
-                Logger.w("CacheDataSource", "failed to delete buffer file: " + localFile);
-              }
-              AppMethodBeat.o(76492);
-              return;
-            }
-            catch (IOException localIOException)
-            {
-              break label9;
-            }
-          }
-        }, paramUriLoader);
-        AppMethodBeat.o(76499);
-        return paramUriLoader;
-      }
-      catch (IOException paramUriLoader)
-      {
-        paramUriLoader = new DataSourceException(-8, "failed to ensure buffer file!", paramUriLoader);
-        AppMethodBeat.o(76499);
-        throw paramUriLoader;
-      }
+      // Byte code:
+      //   0: ldc 66
+      //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_1
+      //   6: ifnull +64 -> 70
+      //   9: aload_1
+      //   10: invokevirtual 72	java/lang/String:isEmpty	()Z
+      //   13: ifne +57 -> 70
+      //   16: ldc 74
+      //   18: ldc 76
+      //   20: new 40	java/io/File
+      //   23: dup
+      //   24: aload_1
+      //   25: invokespecial 77	java/io/File:<init>	(Ljava/lang/String;)V
+      //   28: invokestatic 81	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
+      //   31: astore_1
+      //   32: aload_1
+      //   33: invokestatic 85	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory:ensureFile	(Ljava/io/File;)V
+      //   36: aload_1
+      //   37: aload_0
+      //   38: invokestatic 87	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory:createDefaultLoaderFactory	(Ljava/io/File;Lcom/tencent/qqmusic/mediaplayer/upstream/UriLoader;)Lcom/tencent/qqmusic/mediaplayer/upstream/Loader$Factory;
+      //   41: astore_0
+      //   42: new 6	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource
+      //   45: dup
+      //   46: new 9	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory$1
+      //   49: dup
+      //   50: aload_1
+      //   51: invokevirtual 44	java/io/File:getAbsolutePath	()Ljava/lang/String;
+      //   54: aload_1
+      //   55: invokespecial 90	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource$Factory$1:<init>	(Ljava/lang/String;Ljava/io/File;)V
+      //   58: aload_0
+      //   59: invokespecial 50	com/tencent/qqmusic/mediaplayer/upstream/CacheDataSource:<init>	(Lcom/tencent/qqmusic/mediaplayer/upstream/IDataSource;Lcom/tencent/qqmusic/mediaplayer/upstream/Loader$Factory;)V
+      //   62: astore_0
+      //   63: ldc 66
+      //   65: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   68: aload_0
+      //   69: areturn
+      //   70: ldc 74
+      //   72: ldc 76
+      //   74: invokestatic 93	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+      //   77: astore_1
+      //   78: goto -46 -> 32
+      //   81: astore_0
+      //   82: new 95	com/tencent/qqmusic/mediaplayer/upstream/DataSourceException
+      //   85: dup
+      //   86: bipush 248
+      //   88: ldc 97
+      //   90: aload_0
+      //   91: invokespecial 100	com/tencent/qqmusic/mediaplayer/upstream/DataSourceException:<init>	(ILjava/lang/String;Ljava/lang/Throwable;)V
+      //   94: astore_0
+      //   95: ldc 66
+      //   97: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   100: aload_0
+      //   101: athrow
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	102	0	paramUriLoader	UriLoader
+      //   0	102	1	paramString	String
+      // Exception table:
+      //   from	to	target	type
+      //   9	32	81	java/io/IOException
+      //   32	36	81	java/io/IOException
+      //   70	78	81	java/io/IOException
     }
     
     public static CacheDataSource createFromUriLoader(File paramFile, UriLoader paramUriLoader)
@@ -901,7 +932,7 @@ public class CacheDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.CacheDataSource
  * JD-Core Version:    0.7.0.1
  */

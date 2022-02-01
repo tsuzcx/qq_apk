@@ -1,6 +1,5 @@
 package com.tencent.mm.model;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -11,26 +10,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ad
 {
-  private static volatile ad lsQ;
-  private Map<String, c> lsR;
+  private static volatile ad okq;
+  private Map<String, c> okr;
   
   private ad()
   {
     AppMethodBeat.i(125111);
-    this.lsR = new a((byte)0);
+    this.okr = new a((byte)0);
     AppMethodBeat.o(125111);
   }
   
-  private c Rm(String paramString)
+  private c Jl(String paramString)
   {
     AppMethodBeat.i(125112);
     c localc = new c();
-    this.lsR.put(paramString, localc);
+    this.okr.put(paramString, localc);
     AppMethodBeat.o(125112);
     return localc;
   }
   
-  public static String Rp(String paramString)
+  public static String Jo(String paramString)
   {
     AppMethodBeat.i(125116);
     paramString = "SessionId@" + paramString + "#" + System.nanoTime();
@@ -38,16 +37,16 @@ public class ad
     return paramString;
   }
   
-  public static ad beh()
+  public static ad bCb()
   {
     AppMethodBeat.i(125110);
-    if (lsQ == null) {}
+    if (okq == null) {}
     try
     {
-      if (lsQ == null) {
-        lsQ = new ad();
+      if (okq == null) {
+        okq = new ad();
       }
-      ad localad = lsQ;
+      ad localad = okq;
       AppMethodBeat.o(125110);
       return localad;
     }
@@ -57,10 +56,38 @@ public class ad
     }
   }
   
-  public final b I(String paramString, boolean paramBoolean)
+  public final ad.b Jm(String paramString)
+  {
+    AppMethodBeat.i(125113);
+    paramString = (c)this.okr.get(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.okt;
+      AppMethodBeat.o(125113);
+      return paramString;
+    }
+    AppMethodBeat.o(125113);
+    return null;
+  }
+  
+  public final ad.b Jn(String paramString)
+  {
+    AppMethodBeat.i(125115);
+    paramString = (c)this.okr.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.okt;
+      AppMethodBeat.o(125115);
+      return paramString;
+    }
+    AppMethodBeat.o(125115);
+    return null;
+  }
+  
+  public final ad.b M(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(125114);
-    c localc2 = (c)this.lsR.get(paramString);
+    c localc2 = (c)this.okr.get(paramString);
     c localc1 = localc2;
     if (localc2 == null)
     {
@@ -69,39 +96,11 @@ public class ad
         AppMethodBeat.o(125114);
         return null;
       }
-      localc1 = Rm(paramString);
+      localc1 = Jl(paramString);
     }
-    paramString = localc1.lsT;
+    paramString = localc1.okt;
     AppMethodBeat.o(125114);
     return paramString;
-  }
-  
-  public final b Rn(String paramString)
-  {
-    AppMethodBeat.i(125113);
-    paramString = (c)this.lsR.get(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.lsT;
-      AppMethodBeat.o(125113);
-      return paramString;
-    }
-    AppMethodBeat.o(125113);
-    return null;
-  }
-  
-  public final b Ro(String paramString)
-  {
-    AppMethodBeat.i(125115);
-    paramString = (c)this.lsR.remove(paramString);
-    if (paramString != null)
-    {
-      paramString = paramString.lsT;
-      AppMethodBeat.o(125115);
-      return paramString;
-    }
-    AppMethodBeat.o(125115);
-    return null;
   }
   
   public String toString()
@@ -109,8 +108,8 @@ public class ad
     AppMethodBeat.i(125117);
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.lsR.size());
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.lsR.entrySet());
+    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.okr.size());
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.okr.entrySet());
     Iterator localIterator = localLinkedHashSet.iterator();
     while (localIterator.hasNext())
     {
@@ -121,8 +120,8 @@ public class ad
         if (localc != null)
         {
           ((StringBuilder)localObject).append("\nDataStore id : ").append((String)localEntry.getKey());
-          ((StringBuilder)localObject).append(", CT : ").append(localc.lsU).append("ms");
-          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.lsU) / 1000L).append("s");
+          ((StringBuilder)localObject).append(", CT : ").append(localc.oku).append("ms");
+          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.oku) / 1000L).append("s");
         }
       }
     }
@@ -194,197 +193,23 @@ public class ad
     }
   }
   
-  public static class b
-  {
-    private Map<String, Object> lsS;
-    
-    public b()
-    {
-      AppMethodBeat.i(125094);
-      this.lsS = new ad.a((byte)0);
-      AppMethodBeat.o(125094);
-    }
-    
-    public final b J(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(125099);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.lsS.put(paramString, Boolean.valueOf(paramBoolean));
-      }
-      AppMethodBeat.o(125099);
-      return this;
-    }
-    
-    public final long Mh(String paramString)
-    {
-      AppMethodBeat.i(125103);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.lsS.get(paramString);
-        if (!(paramString instanceof Long)) {}
-      }
-      for (long l = ((Long)paramString).longValue();; l = 0L)
-      {
-        AppMethodBeat.o(125103);
-        return l;
-      }
-    }
-    
-    public final boolean Rq(String paramString)
-    {
-      AppMethodBeat.i(125101);
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.lsS.get(paramString);
-        if (!(paramString instanceof Boolean)) {}
-      }
-      for (boolean bool = ((Boolean)paramString).booleanValue();; bool = false)
-      {
-        AppMethodBeat.o(125101);
-        return bool;
-      }
-    }
-    
-    public final b aO(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(125100);
-      if (!TextUtils.isEmpty(paramString1)) {
-        this.lsS.put(paramString1, paramString2);
-      }
-      AppMethodBeat.o(125100);
-      return this;
-    }
-    
-    public final boolean containsKey(String paramString)
-    {
-      AppMethodBeat.i(125096);
-      boolean bool = this.lsS.containsKey(paramString);
-      AppMethodBeat.o(125096);
-      return bool;
-    }
-    
-    public final Object get(String paramString)
-    {
-      AppMethodBeat.i(125102);
-      paramString = this.lsS.get(paramString);
-      AppMethodBeat.o(125102);
-      return paramString;
-    }
-    
-    public final <T> T get(String paramString, T paramT)
-    {
-      AppMethodBeat.i(125107);
-      paramString = get(paramString);
-      if (paramString != null)
-      {
-        AppMethodBeat.o(125107);
-        return paramString;
-      }
-      AppMethodBeat.o(125107);
-      return paramT;
-    }
-    
-    public final boolean getBoolean(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(125105);
-      boolean bool = paramBoolean;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.lsS.get(paramString);
-        bool = paramBoolean;
-        if ((paramString instanceof Boolean)) {
-          bool = ((Boolean)paramString).booleanValue();
-        }
-      }
-      AppMethodBeat.o(125105);
-      return bool;
-    }
-    
-    public final int getInt(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(125104);
-      int i = paramInt;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = this.lsS.get(paramString);
-        i = paramInt;
-        if ((paramString instanceof Integer)) {
-          i = ((Integer)paramString).intValue();
-        }
-      }
-      AppMethodBeat.o(125104);
-      return i;
-    }
-    
-    public final Set<String> getKeySet()
-    {
-      AppMethodBeat.i(125095);
-      Set localSet = this.lsS.keySet();
-      AppMethodBeat.o(125095);
-      return localSet;
-    }
-    
-    public final String getString(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(125106);
-      String str = paramString2;
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        paramString1 = this.lsS.get(paramString1);
-        str = paramString2;
-        if ((paramString1 instanceof String)) {
-          str = (String)paramString1;
-        }
-      }
-      AppMethodBeat.o(125106);
-      return str;
-    }
-    
-    public final b k(String paramString, Object paramObject)
-    {
-      AppMethodBeat.i(125097);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.lsS.put(paramString, paramObject);
-      }
-      AppMethodBeat.o(125097);
-      return this;
-    }
-    
-    public final void recycle()
-    {
-      AppMethodBeat.i(125108);
-      this.lsS.clear();
-      AppMethodBeat.o(125108);
-    }
-    
-    public final b v(String paramString, long paramLong)
-    {
-      AppMethodBeat.i(125098);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.lsS.put(paramString, Long.valueOf(paramLong));
-      }
-      AppMethodBeat.o(125098);
-      return this;
-    }
-  }
-  
   static final class c
   {
-    ad.b lsT;
-    long lsU;
+    ad.b okt;
+    long oku;
     
     c()
     {
       AppMethodBeat.i(125109);
-      this.lsT = new ad.b();
-      this.lsU = System.currentTimeMillis();
+      this.okt = new ad.b();
+      this.oku = System.currentTimeMillis();
       AppMethodBeat.o(125109);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ad
  * JD-Core Version:    0.7.0.1
  */

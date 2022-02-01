@@ -6,37 +6,39 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.handoff.model.HandOff;
 import com.tencent.mm.plugin.handoff.model.HandOffFile;
+import com.tencent.mm.pluginsdk.ui.tools.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import org.json.JSONObject;
 
 public class QbCallBackBroadcast
   extends BroadcastReceiver
 {
-  private static Runnable XTR;
+  private static Runnable afKf;
   
   static
   {
     AppMethodBeat.i(39123);
-    XTR = new Runnable()
+    afKf = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(39121);
-        if (com.tencent.mm.pluginsdk.ui.tools.h.hny() != null)
+        if (com.tencent.mm.pluginsdk.ui.tools.f.iOq() != null)
         {
           Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "foregroundRunnable, onEnterPage");
-          com.tencent.mm.pluginsdk.ui.tools.h.hny().bNV();
-          com.tencent.mm.pluginsdk.ui.tools.h.hny().lb(true);
-          com.tencent.mm.pluginsdk.ui.tools.h.hny().cvH();
+          com.tencent.mm.pluginsdk.ui.tools.f.iOq().coi();
+          com.tencent.mm.pluginsdk.ui.tools.f.iOq().mo(true);
+          com.tencent.mm.pluginsdk.ui.tools.f.iOq().mj(true);
           AppMethodBeat.o(39121);
           return;
         }
@@ -56,8 +58,8 @@ public class QbCallBackBroadcast
       AppMethodBeat.o(39122);
       return;
     }
-    com.tencent.mm.kernel.h.aHH();
-    if (!com.tencent.mm.kernel.h.aHE().aGM())
+    com.tencent.mm.kernel.h.baF();
+    if (!com.tencent.mm.kernel.h.baC().aZN())
     {
       Log.w("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "account not init.");
       AppMethodBeat.o(39122);
@@ -126,8 +128,8 @@ public class QbCallBackBroadcast
         continue;
         i += 1;
       }
-      i = com.tencent.mm.kernel.h.aHG().aHp().getInt(ar.a.VxB, 0);
-      j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vOE, 0);
+      i = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acZo, 0);
+      j = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zhg, 0);
       if (!Util.isEqual(j, 1)) {
         break label561;
       }
@@ -137,16 +139,16 @@ public class QbCallBackBroadcast
       }
       AppMethodBeat.o(39122);
       return;
-      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VxB, Integer.valueOf(i + 1));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.acZo, Integer.valueOf(i + 1));
       if (!paramIntent.hasExtra("change_file")) {
-        break label1597;
+        break label1599;
       }
     }
     Log.d("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() type:%s filePath:%s fileExt:%s sence:%s", new Object[] { paramContext, localObject1, localObject2, Integer.valueOf(i) });
     localObject3 = paramContext;
     paramContext = (Context)localObject1;
     localObject1 = str1;
-    str1 = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vxz, "");
+    str1 = (String)com.tencent.mm.kernel.h.baE().ban().get(at.a.acZm, "");
     k = 0;
     j = k;
     if (!Util.isNullOrNil(str1))
@@ -176,7 +178,7 @@ public class QbCallBackBroadcast
       for (i = paramIntent.getIntExtra("menuId", -1);; i = -1)
       {
         if (Util.isEqual(i, 11)) {}
-        while (!com.tencent.mm.ui.chatting.g.a.isFileExist((String)localObject1))
+        while (!com.tencent.mm.ui.chatting.floatball.a.isFileExist((String)localObject1))
         {
           Log.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath(%s) not exitst", new Object[] { localObject1 });
           AppMethodBeat.o(39122);
@@ -192,12 +194,12 @@ public class QbCallBackBroadcast
             if (paramIntent.hasExtra("exposeMenuId")) {}
             for (paramIntent = paramIntent.getStringExtra("exposeMenuId");; paramIntent = "0")
             {
-              com.tencent.mm.pluginsdk.ui.tools.h localh;
+              com.tencent.mm.pluginsdk.ui.tools.f localf;
               if (Util.isEqual(localException, "qb"))
               {
-                localh = com.tencent.mm.pluginsdk.ui.tools.h.hny();
-                localObject5 = com.tencent.mm.pluginsdk.ui.tools.i.hnB();
-                Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "id:%s hasCurrentBall:%s activityStatus:%s  curFilePath:%s readState:%s, menuIdStr:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).faQ()), str1, localObject1, localObject4, paramIntent });
+                localf = com.tencent.mm.pluginsdk.ui.tools.f.iOq();
+                localObject5 = g.iOt();
+                Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "id:%s hasCurrentBall:%s activityStatus:%s  curFilePath:%s readState:%s, menuIdStr:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(((g)localObject5).gjV()), str1, localObject1, localObject4, paramIntent });
                 switch (i)
                 {
                 }
@@ -205,48 +207,48 @@ public class QbCallBackBroadcast
                 {
                   AppMethodBeat.o(39122);
                   return;
-                  if (Util.isEqual((String)localObject1, ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).mFilePath))
+                  if (Util.isEqual((String)localObject1, ((g)localObject5).mFilePath))
                   {
-                    if (!((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).faQ())
+                    if (!((g)localObject5).gjV())
                     {
-                      ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).iW(true);
+                      ((g)localObject5).ke(true);
                       AppMethodBeat.o(39122);
                       return;
                     }
                     Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall() == true", new Object[] { paramContext });
                     AppMethodBeat.o(39122);
                     return;
-                    if (Util.isEqual((String)localObject1, ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).mFilePath))
+                    if (Util.isEqual((String)localObject1, ((g)localObject5).mFilePath))
                     {
-                      ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).iW(true);
-                      Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall:%b", new Object[] { paramContext, Boolean.valueOf(((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).faQ()) });
+                      ((g)localObject5).ke(true);
+                      Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() filePath:%s hasCurrentBall:%b", new Object[] { paramContext, Boolean.valueOf(((g)localObject5).gjV()) });
                       AppMethodBeat.o(39122);
                       return;
-                      paramContext = HandOffFile.fromMultiTask(((com.tencent.mm.plugin.multitask.b.a)localObject5).FHd);
+                      paramContext = HandOffFile.fromMultiTask(((com.tencent.mm.plugin.multitask.b.a)localObject5).LCE);
                       if (paramContext != null)
                       {
                         paramContext.setHandOffType(1);
                         paramContext.setKey(HandOff.generateKey(1, 1));
-                        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).f(paramContext);
+                        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).f(paramContext);
                         AppMethodBeat.o(39122);
                         return;
-                        if (Util.isEqual((String)localObject1, ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).mFilePath))
+                        if (Util.isEqual((String)localObject1, ((g)localObject5).mFilePath))
                         {
                           if (Util.isEqual(str1, "0"))
                           {
                             Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "QBonBackground");
-                            MMHandlerThread.removeRunnable(XTR);
-                            localh.aOj();
-                            ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).aOj();
-                            com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VDR, "");
-                            localh.hnz();
-                            localh.lb(false);
-                            if (!AppForegroundDelegate.fby.cQt) {
-                              localh.cvI();
+                            MMHandlerThread.removeRunnable(afKf);
+                            localf.bhW();
+                            ((g)localObject5).bhW();
+                            com.tencent.mm.kernel.h.baE().ban().set(at.a.adgS, "");
+                            localf.iOr();
+                            localf.mo(false);
+                            if (!AppForegroundDelegate.heY.eLx) {
+                              localf.mi(true);
                             }
-                            paramContext = HandOffFile.fromMultiTask(((com.tencent.mm.plugin.multitask.b.a)localObject5).FHd);
+                            paramContext = HandOffFile.fromMultiTask(((com.tencent.mm.plugin.multitask.b.a)localObject5).LCE);
                             if (paramContext != null) {
-                              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).i(paramContext);
+                              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).i(paramContext);
                             }
                             AppMethodBeat.o(39122);
                             return;
@@ -254,21 +256,21 @@ public class QbCallBackBroadcast
                           if (Util.isEqual(str1, "1"))
                           {
                             Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "QBonForeground");
-                            MMHandlerThread.postToMainThread(XTR);
-                            paramContext = HandOffFile.fromMultiTask(((com.tencent.mm.plugin.multitask.b.a)localObject5).FHd);
+                            MMHandlerThread.postToMainThread(afKf);
+                            paramContext = HandOffFile.fromMultiTask(((com.tencent.mm.plugin.multitask.b.a)localObject5).LCE);
                             if (paramContext != null)
                             {
                               paramContext.setHandOffType(1);
                               paramContext.setKey(HandOff.generateKey(1, 1));
-                              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).h(paramContext);
+                              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.handoff.a.a.class)).h(paramContext);
                             }
                             AppMethodBeat.o(39122);
                             return;
-                            if (!Util.isEqual((String)localObject1, ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).mFilePath))
+                            if (!Util.isEqual((String)localObject1, ((g)localObject5).mFilePath))
                             {
-                              ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).M((String)localObject1, com.tencent.mm.pluginsdk.ui.tools.i.asq((String)localObject1), ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).tOb);
-                              localh.onDestroy();
-                              localh.M((String)localObject1, com.tencent.mm.pluginsdk.ui.tools.i.asq((String)localObject1), localh.tOb);
+                              ((g)localObject5).T((String)localObject1, g.alV((String)localObject1), ((g)localObject5).wRr);
+                              localf.onDestroy();
+                              localf.T((String)localObject1, g.alV((String)localObject1), localf.wRr);
                               AppMethodBeat.o(39122);
                               return;
                               Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "readState:%s", new Object[] { localObject4 });
@@ -276,25 +278,25 @@ public class QbCallBackBroadcast
                               {
                                 if (((String)localObject4).equals("0"))
                                 {
-                                  ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).dJO();
+                                  ((g)localObject5).eCK();
                                   Log.i("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "setStart");
                                 }
                                 if (((String)localObject4).equals("1"))
                                 {
-                                  ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).VX = true;
+                                  ((g)localObject5).bCD = true;
                                   Log.i("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "setEnded mEnded:%b", new Object[] { Boolean.TRUE });
-                                  ((com.tencent.mm.pluginsdk.ui.tools.i)localObject5).faW();
+                                  ((g)localObject5).gkb();
                                   AppMethodBeat.o(39122);
                                   return;
                                   try
                                   {
                                     i = Integer.parseInt(paramIntent);
                                     if (-1 != i) {
-                                      break label1464;
+                                      break label1465;
                                     }
-                                    paramContext = MaterialModel.eQ((String)localObject1, localObject2);
+                                    paramContext = MaterialModel.fh((String)localObject1, localObject2);
                                     Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "reportBottomSheetShown, materialModel: ".concat(String.valueOf(paramContext)));
-                                    paramIntent = (com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.i.class);
+                                    paramIntent = (j)com.tencent.mm.kernel.h.ax(j.class);
                                     if (paramIntent != null) {
                                       break;
                                     }
@@ -315,7 +317,7 @@ public class QbCallBackBroadcast
                     }
                   }
                 }
-                localObject1 = com.tencent.mm.plugin.appbrand.openmaterial.model.b.qns;
+                localObject1 = com.tencent.mm.plugin.appbrand.openmaterial.model.b.trZ;
                 if (!paramIntent.a((com.tencent.mm.plugin.appbrand.openmaterial.model.b)localObject1, paramContext, paramIntent.a((com.tencent.mm.plugin.appbrand.openmaterial.model.b)localObject1, paramIntent.b(paramContext)))) {
                   Log.w("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "reportBottomSheetShown, saveOpenMaterialReporter fail");
                 }
@@ -323,21 +325,21 @@ public class QbCallBackBroadcast
                 return;
                 if (5 == i)
                 {
-                  paramContext = MaterialModel.eQ((String)localObject1, localObject2);
+                  paramContext = MaterialModel.fh((String)localObject1, localObject2);
                   Log.i("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "reportOpenMaterialEntranceExposure, materialModel: ".concat(String.valueOf(paramContext)));
-                  paramIntent = (com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.i.class);
+                  paramIntent = (j)com.tencent.mm.kernel.h.ax(j.class);
                   if (paramIntent == null)
                   {
                     Log.w("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "reportOpenMaterialEntranceExposure, openMaterialService is null");
                     AppMethodBeat.o(39122);
                     return;
                   }
-                  paramIntent.a(com.tencent.mm.plugin.appbrand.openmaterial.model.b.qns, paramContext, paramIntent.b(paramContext)).ccU();
+                  paramIntent.a(com.tencent.mm.plugin.appbrand.openmaterial.model.b.trZ, paramContext, paramIntent.b(paramContext), false).cDs();
                 }
                 AppMethodBeat.o(39122);
                 return;
               }
-              Log.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() unknow source(type:%s)", new Object[] { localh });
+              Log.e("MicroMsg.FilesFloatBall.QbCallBackBroadcast", "onReceive() unknow source(type:%s)", new Object[] { localf });
               AppMethodBeat.o(39122);
               return;
             }
@@ -349,7 +351,7 @@ public class QbCallBackBroadcast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.QbCallBackBroadcast
  * JD-Core Version:    0.7.0.1
  */

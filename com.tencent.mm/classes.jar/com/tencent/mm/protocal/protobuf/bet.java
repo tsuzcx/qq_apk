@@ -3,76 +3,51 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bet
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long SPH;
-  public int fSo;
-  public String objectNonceId;
-  public int scene;
+  public int ZPc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169013);
+    AppMethodBeat.i(258599);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.SPH);
-      paramVarArgs.aY(2, this.scene);
-      paramVarArgs.aY(3, this.fSo);
-      if (this.objectNonceId != null) {
-        paramVarArgs.f(4, this.objectNonceId);
-      }
-      AppMethodBeat.o(169013);
+      ((i.a.a.c.a)paramVarArgs[0]).bS(1, this.ZPc);
+      AppMethodBeat.o(258599);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.p(1, this.SPH) + 0 + g.a.a.b.b.a.bM(2, this.scene) + g.a.a.b.b.a.bM(3, this.fSo);
-      paramInt = i;
-      if (this.objectNonceId != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.objectNonceId);
-      }
-      AppMethodBeat.o(169013);
-      return paramInt;
+      paramInt = i.a.a.b.b.a.cJ(1, this.ZPc);
+      AppMethodBeat.o(258599);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(169013);
+      AppMethodBeat.o(258599);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       bet localbet = (bet)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(169013);
+        AppMethodBeat.o(258599);
         return -1;
-      case 1: 
-        localbet.SPH = locala.abFh.AN();
-        AppMethodBeat.o(169013);
-        return 0;
-      case 2: 
-        localbet.scene = locala.abFh.AK();
-        AppMethodBeat.o(169013);
-        return 0;
-      case 3: 
-        localbet.fSo = locala.abFh.AK();
-        AppMethodBeat.o(169013);
-        return 0;
       }
-      localbet.objectNonceId = locala.abFh.readString();
-      AppMethodBeat.o(169013);
+      localbet.ZPc = locala.ajGk.aar();
+      AppMethodBeat.o(258599);
       return 0;
     }
-    AppMethodBeat.o(169013);
+    AppMethodBeat.o(258599);
     return -1;
   }
 }

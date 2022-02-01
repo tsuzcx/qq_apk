@@ -1,299 +1,208 @@
 package kotlin.l.b.a.b.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
-import kotlin.a.e;
 
 public final class c
 {
-  private static final f abfG;
-  private static final Pattern abfH;
-  private static final kotlin.g.a.b<String, f> abfI;
-  public final String abfJ;
-  private transient b abfK;
-  private transient c abfL;
-  private transient f abfM;
+  public static final c ajew;
+  public final d ajex;
+  private transient c ajey;
   
   static
   {
-    AppMethodBeat.i(59315);
-    abfG = f.bHd("<root>");
-    abfH = Pattern.compile("\\.");
-    abfI = new kotlin.g.a.b() {};
-    AppMethodBeat.o(59315);
+    AppMethodBeat.i(59295);
+    ajew = new c("");
+    AppMethodBeat.o(59295);
   }
   
-  private c(String paramString)
+  public c(String paramString)
   {
-    AppMethodBeat.i(59299);
-    this.abfJ = paramString;
-    AppMethodBeat.o(59299);
+    AppMethodBeat.i(59280);
+    this.ajex = new d(paramString, this);
+    AppMethodBeat.o(59280);
   }
   
-  c(String paramString, b paramb)
+  public c(d paramd)
   {
-    AppMethodBeat.i(59298);
-    this.abfJ = paramString;
-    this.abfK = paramb;
-    AppMethodBeat.o(59298);
+    AppMethodBeat.i(59281);
+    this.ajex = paramd;
+    AppMethodBeat.o(59281);
   }
   
-  private c(String paramString, c paramc, f paramf)
+  private c(d paramd, c paramc)
   {
-    AppMethodBeat.i(59300);
-    this.abfJ = paramString;
-    this.abfL = paramc;
-    this.abfM = paramf;
-    AppMethodBeat.o(59300);
+    AppMethodBeat.i(59282);
+    this.ajex = paramd;
+    this.ajey = paramc;
+    AppMethodBeat.o(59282);
   }
   
-  private void compute()
+  public static c s(f paramf)
   {
-    AppMethodBeat.i(59301);
-    int i = this.abfJ.lastIndexOf('.');
-    if (i >= 0)
-    {
-      this.abfM = f.bHe(this.abfJ.substring(i + 1));
-      this.abfL = new c(this.abfJ.substring(0, i));
-      AppMethodBeat.o(59301);
-      return;
-    }
-    this.abfM = f.bHe(this.abfJ);
-    this.abfL = b.abfD.iNy();
-    AppMethodBeat.o(59301);
-  }
-  
-  public static c t(f paramf)
-  {
-    AppMethodBeat.i(59311);
+    AppMethodBeat.i(59291);
     if (paramf == null) {
-      aDG(16);
+      aKu(13);
     }
-    paramf = new c(paramf.qu(), b.abfD.iNy(), paramf);
-    AppMethodBeat.o(59311);
+    paramf = new c(d.u(paramf));
+    AppMethodBeat.o(59291);
     return paramf;
+  }
+  
+  public final String PF()
+  {
+    AppMethodBeat.i(59283);
+    String str = this.ajex.PF();
+    if (str == null) {
+      aKu(4);
+    }
+    AppMethodBeat.o(59283);
+    return str;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(59313);
+    AppMethodBeat.i(59293);
     if (this == paramObject)
     {
-      AppMethodBeat.o(59313);
+      AppMethodBeat.o(59293);
       return true;
     }
     if (!(paramObject instanceof c))
     {
-      AppMethodBeat.o(59313);
+      AppMethodBeat.o(59293);
       return false;
     }
     paramObject = (c)paramObject;
-    if (!this.abfJ.equals(paramObject.abfJ))
+    if (!this.ajex.equals(paramObject.ajex))
     {
-      AppMethodBeat.o(59313);
+      AppMethodBeat.o(59293);
       return false;
     }
-    AppMethodBeat.o(59313);
+    AppMethodBeat.o(59293);
     return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(59314);
-    int i = this.abfJ.hashCode();
-    AppMethodBeat.o(59314);
+    AppMethodBeat.i(59294);
+    int i = this.ajex.hashCode();
+    AppMethodBeat.o(59294);
     return i;
   }
   
-  public final f iNA()
+  public final boolean isRoot()
   {
-    AppMethodBeat.i(59307);
-    if (this.abfM != null)
-    {
-      localObject = this.abfM;
-      if (localObject == null) {
-        aDG(10);
-      }
-      AppMethodBeat.o(59307);
-      return localObject;
-    }
-    if (this.abfJ.isEmpty())
-    {
-      localObject = new IllegalStateException("root");
-      AppMethodBeat.o(59307);
-      throw ((Throwable)localObject);
-    }
-    compute();
-    Object localObject = this.abfM;
-    if (localObject == null) {
-      aDG(11);
-    }
-    AppMethodBeat.o(59307);
-    return localObject;
-  }
-  
-  public final f iNB()
-  {
-    AppMethodBeat.i(59308);
-    if (this.abfJ.isEmpty())
-    {
-      localf = abfG;
-      if (localf == null) {
-        aDG(12);
-      }
-      AppMethodBeat.o(59308);
-      return localf;
-    }
-    f localf = iNA();
-    if (localf == null) {
-      aDG(13);
-    }
-    AppMethodBeat.o(59308);
-    return localf;
-  }
-  
-  public final boolean iNC()
-  {
-    AppMethodBeat.i(59303);
-    if ((this.abfK != null) || (qu().indexOf('<') < 0))
-    {
-      AppMethodBeat.o(59303);
-      return true;
-    }
-    AppMethodBeat.o(59303);
-    return false;
-  }
-  
-  public final b iND()
-  {
-    AppMethodBeat.i(59304);
-    if (this.abfK != null)
-    {
-      localb = this.abfK;
-      if (localb == null) {
-        aDG(5);
-      }
-      AppMethodBeat.o(59304);
-      return localb;
-    }
-    this.abfK = new b(this);
-    b localb = this.abfK;
-    if (localb == null) {
-      aDG(6);
-    }
-    AppMethodBeat.o(59304);
-    return localb;
-  }
-  
-  public final c iNE()
-  {
-    AppMethodBeat.i(59305);
-    if (this.abfL != null)
-    {
-      localObject = this.abfL;
-      if (localObject == null) {
-        aDG(7);
-      }
-      AppMethodBeat.o(59305);
-      return localObject;
-    }
-    if (this.abfJ.isEmpty())
-    {
-      localObject = new IllegalStateException("root");
-      AppMethodBeat.o(59305);
-      throw ((Throwable)localObject);
-    }
-    compute();
-    Object localObject = this.abfL;
-    if (localObject == null) {
-      aDG(8);
-    }
-    AppMethodBeat.o(59305);
-    return localObject;
-  }
-  
-  public final List<f> iNF()
-  {
-    AppMethodBeat.i(59309);
-    if (this.abfJ.isEmpty()) {}
-    for (List localList = Collections.emptyList();; localList = e.a(abfH.split(this.abfJ), abfI))
-    {
-      if (localList == null) {
-        aDG(14);
-      }
-      AppMethodBeat.o(59309);
-      return localList;
-    }
-  }
-  
-  public final boolean q(f paramf)
-  {
-    AppMethodBeat.i(59310);
-    if (paramf == null) {
-      aDG(15);
-    }
-    if (this.abfJ.isEmpty())
-    {
-      AppMethodBeat.o(59310);
-      return false;
-    }
-    int j = this.abfJ.indexOf('.');
-    String str = this.abfJ;
-    paramf = paramf.qu();
-    int i = j;
-    if (j == -1) {
-      i = this.abfJ.length();
-    }
-    boolean bool = str.regionMatches(0, paramf, 0, i);
-    AppMethodBeat.o(59310);
+    AppMethodBeat.i(369488);
+    boolean bool = this.ajex.ajeC.isEmpty();
+    AppMethodBeat.o(369488);
     return bool;
   }
   
-  public final String qu()
+  public final d kxR()
   {
-    AppMethodBeat.i(59302);
-    String str = this.abfJ;
-    if (str == null) {
-      aDG(4);
+    AppMethodBeat.i(59284);
+    d locald = this.ajex;
+    if (locald == null) {
+      aKu(5);
     }
-    AppMethodBeat.o(59302);
-    return str;
+    AppMethodBeat.o(59284);
+    return locald;
   }
   
-  public final c s(f paramf)
+  public final c kxS()
   {
-    AppMethodBeat.i(59306);
-    if (paramf == null) {
-      aDG(9);
-    }
-    if (this.abfJ.isEmpty()) {}
-    for (String str = paramf.qu();; str = this.abfJ + "." + paramf.qu())
+    AppMethodBeat.i(59286);
+    if (this.ajey != null)
     {
-      paramf = new c(str, this, paramf);
-      AppMethodBeat.o(59306);
-      return paramf;
+      localObject = this.ajey;
+      if (localObject == null) {
+        aKu(6);
+      }
+      AppMethodBeat.o(59286);
+      return localObject;
     }
+    if (isRoot())
+    {
+      localObject = new IllegalStateException("root");
+      AppMethodBeat.o(59286);
+      throw ((Throwable)localObject);
+    }
+    this.ajey = new c(this.ajex.kxY());
+    Object localObject = this.ajey;
+    if (localObject == null) {
+      aKu(7);
+    }
+    AppMethodBeat.o(59286);
+    return localObject;
+  }
+  
+  public final f kxT()
+  {
+    AppMethodBeat.i(59288);
+    f localf = this.ajex.kxT();
+    if (localf == null) {
+      aKu(9);
+    }
+    AppMethodBeat.o(59288);
+    return localf;
+  }
+  
+  public final f kxU()
+  {
+    AppMethodBeat.i(59289);
+    f localf = this.ajex.kxU();
+    if (localf == null) {
+      aKu(10);
+    }
+    AppMethodBeat.o(59289);
+    return localf;
+  }
+  
+  public final List<f> kxV()
+  {
+    AppMethodBeat.i(191396);
+    List localList = this.ajex.kxV();
+    if (localList == null) {
+      aKu(11);
+    }
+    AppMethodBeat.o(191396);
+    return localList;
+  }
+  
+  public final c q(f paramf)
+  {
+    AppMethodBeat.i(59287);
+    if (paramf == null) {
+      aKu(8);
+    }
+    paramf = new c(this.ajex.t(paramf), this);
+    AppMethodBeat.o(59287);
+    return paramf;
+  }
+  
+  public final boolean r(f paramf)
+  {
+    AppMethodBeat.i(59290);
+    if (paramf == null) {
+      aKu(12);
+    }
+    boolean bool = this.ajex.r(paramf);
+    AppMethodBeat.o(59290);
+    return bool;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(59312);
-    if (this.abfJ.isEmpty()) {}
-    for (String str = abfG.qu();; str = this.abfJ)
-    {
-      if (str == null) {
-        aDG(17);
-      }
-      AppMethodBeat.o(59312);
-      return str;
-    }
+    AppMethodBeat.i(59292);
+    String str = this.ajex.toString();
+    AppMethodBeat.o(59292);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.f.c
  * JD-Core Version:    0.7.0.1
  */

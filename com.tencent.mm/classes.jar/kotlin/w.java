@@ -1,8 +1,8 @@
 package kotlin;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/UninitializedPropertyAccessException;", "Ljava/lang/RuntimeException;", "Lkotlin/RuntimeException;", "()V", "message", "", "(Ljava/lang/String;)V", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "(Ljava/lang/Throwable;)V", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/TypeCastException;", "Ljava/lang/ClassCastException;", "Lkotlin/ClassCastException;", "()V", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class w
-  extends RuntimeException
+  extends ClassCastException
 {
   public w() {}
   
@@ -13,7 +13,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.w
  * JD-Core Version:    0.7.0.1
  */

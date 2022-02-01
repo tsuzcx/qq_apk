@@ -1,98 +1,98 @@
 package com.tencent.xweb;
 
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.net.http.SslError;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.internal.e;
+import android.webkit.WebSettings.LayoutAlgorithm;
+import android.webkit.WebSettings.RenderPriority;
+import java.util.Map;
 
-public class ad
+public abstract class ad
 {
-  public e aaaF;
+  @Deprecated
+  public abstract void a(WebSettings.RenderPriority paramRenderPriority);
   
-  public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    return null;
-  }
+  public abstract void enableCustomizedLongPressTimeout(int paramInt);
   
-  public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
-  {
-    return null;
-  }
+  public abstract boolean getBlockNetworkImage();
   
-  public void a(WebView paramWebView, float paramFloat1, float paramFloat2) {}
+  public abstract int getForceDarkBehavior();
+  
+  public abstract int getForceDarkMode();
+  
+  public abstract int getTextZoom();
+  
+  public abstract String getUserAgentString();
+  
+  public abstract void kfK();
+  
+  public abstract void kfL();
+  
+  public abstract void kfM();
   
   @Deprecated
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
+  public abstract void kfN();
   
-  public void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse) {}
+  public abstract void kfO();
   
-  public void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, z paramz) {}
+  public abstract void kfP();
   
-  public void a(WebView paramWebView, j paramj, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(196877);
-    paramj.cancel();
-    AppMethodBeat.o(196877);
-  }
+  @Deprecated
+  public abstract void kfQ();
   
-  public void a(WebView paramWebView, r paramr, SslError paramSslError)
-  {
-    AppMethodBeat.i(156921);
-    if (paramr != null) {
-      paramr.cancel();
-    }
-    AppMethodBeat.o(156921);
-  }
+  public abstract void kfR();
   
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    return false;
-  }
+  public abstract void kfS();
   
-  public void b(WebView paramWebView, String paramString) {}
+  public abstract void kfT();
   
-  public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(156919);
-    if (this.aaaF == null)
-    {
-      AppMethodBeat.o(156919);
-      return;
-    }
-    this.aaaF.y(paramString, paramBitmap);
-    AppMethodBeat.o(156919);
-  }
+  public abstract void kfU();
   
-  public void b(WebView paramWebView, String paramString, boolean paramBoolean) {}
+  public abstract void kfV();
   
-  public boolean b(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public abstract void setAppBrandInfo(Map<String, String> paramMap);
   
-  public WebResourceResponse c(WebView paramWebView, String paramString)
-  {
-    return null;
-  }
+  public abstract void setAppCachePath(String paramString);
   
-  public void e(WebView paramWebView, String paramString) {}
+  public abstract void setAudioPlaybackRequiresUserGesture(boolean paramBoolean);
   
-  public boolean e(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    AppMethodBeat.i(156920);
-    if ((paramWebResourceRequest == null) || (paramWebResourceRequest.getUrl() == null))
-    {
-      AppMethodBeat.o(156920);
-      return false;
-    }
-    boolean bool = a(paramWebView, paramWebResourceRequest.getUrl().toString());
-    AppMethodBeat.o(156920);
-    return bool;
-  }
+  public abstract void setBlockNetworkImage(boolean paramBoolean);
   
-  public void i(WebView paramWebView, String paramString) {}
+  public abstract void setBuiltInZoomControls(boolean paramBoolean);
+  
+  @Deprecated
+  public abstract void setDatabasePath(String paramString);
+  
+  public abstract void setDefaultTextEncodingName(String paramString);
+  
+  public abstract void setForceDarkBehavior(int paramInt);
+  
+  public abstract void setForceDarkMode(int paramInt);
+  
+  public abstract void setGeolocationEnabled(boolean paramBoolean);
+  
+  public abstract void setJavaScriptCanOpenWindowsAutomatically(boolean paramBoolean);
+  
+  public abstract void setJavaScriptEnabled(boolean paramBoolean);
+  
+  public abstract void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm);
+  
+  public abstract void setLoadWithOverviewMode(boolean paramBoolean);
+  
+  public abstract void setLoadsImagesAutomatically(boolean paramBoolean);
+  
+  public abstract void setMediaPlaybackRequiresUserGesture(boolean paramBoolean);
+  
+  public abstract void setPluginsEnabled(boolean paramBoolean);
+  
+  public abstract void setSupportZoom(boolean paramBoolean);
+  
+  public abstract void setTextZoom(int paramInt);
+  
+  public abstract void setUseWideViewPort(boolean paramBoolean);
+  
+  public abstract void setUserAgentString(String paramString);
+  
+  public abstract void setUsingForAppBrand(int paramInt);
+  
+  public abstract void setVideoPlaybackRequiresUserGesture(boolean paramBoolean);
 }
 
 

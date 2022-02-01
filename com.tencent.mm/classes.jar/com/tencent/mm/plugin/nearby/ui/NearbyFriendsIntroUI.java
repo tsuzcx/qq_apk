@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.nearby.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -14,76 +13,78 @@ import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.model.ca;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.plugin.nearby.b.c;
 import com.tencent.mm.plugin.nearby.b.d;
 import com.tencent.mm.plugin.nearby.b.g;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.base.k;
 
 public class NearbyFriendsIntroUI
   extends MMActivity
 {
-  private CheckBox GsT;
-  private d GsV = null;
-  private Button kEt;
-  private View mrQ;
+  private CheckBox MoT;
+  private com.tencent.mm.ui.widget.a.e MoV = null;
+  private Button nhC;
+  private View plv;
   
   public int getLayoutId()
   {
-    return b.d.nearby_friend_intro;
+    return b.d.Mog;
   }
   
   public void initView()
   {
     AppMethodBeat.i(89837);
-    this.mrQ = View.inflate(this, b.d.lbs_open_dialog_view, null);
-    this.GsT = ((CheckBox)this.mrQ.findViewById(b.c.lbs_open_dialog_cb));
-    this.GsT.setChecked(false);
-    this.kEt = ((Button)findViewById(b.c.nearby_friend_intro_start_btn));
-    this.kEt.setOnClickListener(new View.OnClickListener()
+    this.plv = View.inflate(this, b.d.gli, null);
+    this.MoT = ((CheckBox)this.plv.findViewById(b.c.fMB));
+    this.MoT.setChecked(false);
+    this.nhC = ((Button)findViewById(b.c.Moc));
+    this.nhC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(89834);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (NearbyFriendsIntroUI.a(NearbyFriendsIntroUI.this) == null) {
-          NearbyFriendsIntroUI.a(NearbyFriendsIntroUI.this, com.tencent.mm.ui.base.h.a(NearbyFriendsIntroUI.this.getContext(), NearbyFriendsIntroUI.this.getString(b.g.app_tip), NearbyFriendsIntroUI.b(NearbyFriendsIntroUI.this), new DialogInterface.OnClickListener()
+          NearbyFriendsIntroUI.a(NearbyFriendsIntroUI.this, k.a(NearbyFriendsIntroUI.this.getContext(), NearbyFriendsIntroUI.this.getString(b.g.app_tip), NearbyFriendsIntroUI.b(NearbyFriendsIntroUI.this), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(89833);
-              com.tencent.mm.kernel.h.aHG().aHp().i(4103, Boolean.TRUE);
-              paramAnonymous2DialogInterface = com.tencent.mm.kernel.h.aHG().aHp();
+              h.baE().ban().B(4103, Boolean.TRUE);
+              paramAnonymous2DialogInterface = h.baE().ban();
               boolean bool;
               Object localObject;
               if (!NearbyFriendsIntroUI.c(NearbyFriendsIntroUI.this).isChecked())
               {
                 bool = true;
-                paramAnonymous2DialogInterface.i(4104, Boolean.valueOf(bool));
-                paramAnonymous2DialogInterface = ca.bfo();
+                paramAnonymous2DialogInterface.B(4104, Boolean.valueOf(bool));
+                paramAnonymous2DialogInterface = cb.bDf();
                 if (paramAnonymous2DialogInterface != null) {
-                  break label175;
+                  break label191;
                 }
                 paramAnonymous2DialogInterface = NearbyFriendsIntroUI.this;
                 localObject = new Intent(NearbyFriendsIntroUI.this, NearbyPersonalInfoUI.class);
-                localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-                com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2DialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymous2DialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+                localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+                com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2DialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymous2DialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
                 com.tencent.mm.hellhoundlib.a.a.c(paramAnonymous2DialogInterface, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               }
               for (;;)
               {
+                ((com.tencent.d.a.b.a.e)h.az(com.tencent.d.a.b.a.e.class)).nearbyReport(14L);
                 NearbyFriendsIntroUI.this.finish();
                 AppMethodBeat.o(89833);
                 return;
                 bool = false;
                 break;
-                label175:
+                label191:
                 localObject = Util.nullAsNil(paramAnonymous2DialogInterface.getProvince());
                 Util.nullAsNil(paramAnonymous2DialogInterface.getCity());
                 paramAnonymous2Int = Util.nullAs(Integer.valueOf(paramAnonymous2DialogInterface.sex), 0);
@@ -91,18 +92,18 @@ public class NearbyFriendsIntroUI
                 {
                   paramAnonymous2DialogInterface = NearbyFriendsIntroUI.this;
                   localObject = new Intent(NearbyFriendsIntroUI.this, NearbyPersonalInfoUI.class);
-                  localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-                  com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2DialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  paramAnonymous2DialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+                  localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+                  com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2DialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  paramAnonymous2DialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
                   com.tencent.mm.hellhoundlib.a.a.c(paramAnonymous2DialogInterface, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 }
                 else
                 {
                   paramAnonymous2DialogInterface = NearbyFriendsIntroUI.this;
                   localObject = new Intent(NearbyFriendsIntroUI.this, NearbyFriendsUI.class);
-                  localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-                  com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2DialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  paramAnonymous2DialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+                  localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+                  com.tencent.mm.hellhoundlib.a.a.b(paramAnonymous2DialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  paramAnonymous2DialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
                   com.tencent.mm.hellhoundlib.a.a.c(paramAnonymous2DialogInterface, "com/tencent/mm/plugin/nearby/ui/NearbyFriendsIntroUI$1$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 }
               }
@@ -118,6 +119,7 @@ public class NearbyFriendsIntroUI
         }
       }
     });
+    ((com.tencent.d.a.b.a.e)h.az(com.tencent.d.a.b.a.e.class)).nearbyReport(13L);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -149,7 +151,7 @@ public class NearbyFriendsIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyFriendsIntroUI
  * JD-Core Version:    0.7.0.1
  */

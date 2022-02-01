@@ -13,16 +13,16 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public class j
 {
-  private XmlPullParser aEX;
+  private XmlPullParser cAJ;
   
   private j()
   {
     AppMethodBeat.i(159015);
-    this.aEX = Xml.newPullParser();
+    this.cAJ = Xml.newPullParser();
     AppMethodBeat.o(159015);
   }
   
-  private HashMap<String, a> B(InputStream paramInputStream)
+  private HashMap<String, a> O(InputStream paramInputStream)
   {
     AppMethodBeat.i(159018);
     localHashMap = new HashMap();
@@ -30,17 +30,17 @@ public class j
     {
       try
       {
-        this.aEX.setInput(paramInputStream, "utf-8");
-        this.aEX.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", true);
-        i = this.aEX.getEventType();
+        this.cAJ.setInput(paramInputStream, "utf-8");
+        this.cAJ.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", true);
+        i = this.cAJ.getEventType();
         if (i == 1) {
           continue;
         }
-        paramInputStream = this.aEX.getName();
+        paramInputStream = this.cAJ.getName();
         if (paramInputStream != null) {
           continue;
         }
-        i = this.aEX.next();
+        i = this.cAJ.next();
         continue;
       }
       catch (XmlPullParserException paramInputStream)
@@ -54,7 +54,7 @@ public class j
         if (i != 4) {
           continue;
         }
-        String str1 = this.aEX.getText().trim();
+        String str1 = this.cAJ.getText().trim();
         locala.value = str1;
         localHashMap.put(paramInputStream, locala);
         new StringBuilder("name=").append(paramInputStream).append(", value=").append(str1);
@@ -73,22 +73,22 @@ public class j
       {
         continue;
       }
-      i = this.aEX.next();
+      i = this.cAJ.next();
       continue;
       locala = new a();
-      j = this.aEX.getAttributeCount();
+      j = this.cAJ.getAttributeCount();
       i = 0;
       if (i < j)
       {
-        str1 = this.aEX.getAttributeName(i);
-        str2 = this.aEX.getAttributeValue(i);
-        locala.ofX.put(str1, str2);
+        str1 = this.cAJ.getAttributeName(i);
+        str2 = this.cAJ.getAttributeValue(i);
+        locala.rjB.put(str1, str2);
         new StringBuilder("attrName=").append(str1).append(", attrVal=").append(str2);
         i += 1;
       }
       else
       {
-        i = this.aEX.next();
+        i = this.cAJ.next();
         if (i != 2) {
           continue;
         }
@@ -97,7 +97,7 @@ public class j
     }
   }
   
-  public static b afS(String paramString)
+  public static b YO(String paramString)
   {
     int j = 1;
     AppMethodBeat.i(159017);
@@ -145,7 +145,7 @@ public class j
     }
   }
   
-  public static j bNa()
+  public static j cnp()
   {
     AppMethodBeat.i(159016);
     j localj = new j();
@@ -154,7 +154,7 @@ public class j
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.appbrand.g.b.b C(InputStream paramInputStream)
+  public final com.tencent.mm.plugin.appbrand.g.b.b P(InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 174
@@ -162,12 +162,12 @@ public class j
     //   5: ldc 2
     //   7: monitorenter
     //   8: aload_0
-    //   9: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   9: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   12: aload_1
     //   13: ldc 41
     //   15: invokeinterface 47 3 0
     //   20: aload_0
-    //   21: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   21: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   24: invokeinterface 57 1 0
     //   29: istore_2
     //   30: new 176	com/tencent/mm/plugin/appbrand/g/b/b
@@ -185,14 +185,14 @@ public class j
     //   50: tableswitch	default:+22 -> 72, 2:+39->89, 3:+476->526
     //   73: astore_1
     //   74: aload_0
-    //   75: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   75: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   78: invokeinterface 64 1 0
     //   83: istore_2
     //   84: aload_1
     //   85: astore_3
     //   86: goto -45 -> 41
     //   89: aload_0
-    //   90: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   90: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   93: invokeinterface 61 1 0
     //   98: astore 5
     //   100: ldc 179
@@ -200,7 +200,7 @@ public class j
     //   104: invokevirtual 182	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   107: ifeq +53 -> 160
     //   110: aload_0
-    //   111: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   111: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   114: invokeinterface 185 1 0
     //   119: astore 5
     //   121: aload_3
@@ -211,7 +211,7 @@ public class j
     //   131: aload 4
     //   133: aload 5
     //   135: invokestatic 196	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   138: putfield 200	com/tencent/mm/plugin/appbrand/g/b/b:oey	I
+    //   138: putfield 200	com/tencent/mm/plugin/appbrand/g/b/b:rid	I
     //   141: aload_3
     //   142: astore_1
     //   143: goto -69 -> 74
@@ -229,7 +229,7 @@ public class j
     //   164: invokevirtual 182	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   167: ifeq +39 -> 206
     //   170: aload_0
-    //   171: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   171: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   174: invokeinterface 185 1 0
     //   179: astore 5
     //   181: aload_3
@@ -240,7 +240,7 @@ public class j
     //   191: aload 4
     //   193: aload 5
     //   195: invokestatic 196	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   198: putfield 205	com/tencent/mm/plugin/appbrand/g/b/b:oez	I
+    //   198: putfield 205	com/tencent/mm/plugin/appbrand/g/b/b:rie	I
     //   201: aload_3
     //   202: astore_1
     //   203: goto -129 -> 74
@@ -250,9 +250,9 @@ public class j
     //   213: ifeq +33 -> 246
     //   216: aload 4
     //   218: aload_0
-    //   219: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   219: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   222: invokeinterface 185 1 0
-    //   227: putfield 210	com/tencent/mm/plugin/appbrand/g/b/b:fzF	Ljava/lang/String;
+    //   227: putfield 210	com/tencent/mm/plugin/appbrand/g/b/b:hEr	Ljava/lang/String;
     //   230: aload_3
     //   231: astore_1
     //   232: goto -158 -> 74
@@ -269,9 +269,9 @@ public class j
     //   253: ifeq +22 -> 275
     //   256: aload 4
     //   258: aload_0
-    //   259: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   259: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   262: invokeinterface 185 1 0
-    //   267: putfield 215	com/tencent/mm/plugin/appbrand/g/b/b:oeA	Ljava/lang/String;
+    //   267: putfield 215	com/tencent/mm/plugin/appbrand/g/b/b:rif	Ljava/lang/String;
     //   270: aload_3
     //   271: astore_1
     //   272: goto -198 -> 74
@@ -281,9 +281,9 @@ public class j
     //   282: ifeq +22 -> 304
     //   285: aload 4
     //   287: aload_0
-    //   288: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   288: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   291: invokeinterface 185 1 0
-    //   296: putfield 220	com/tencent/mm/plugin/appbrand/g/b/b:oeD	Ljava/lang/String;
+    //   296: putfield 220	com/tencent/mm/plugin/appbrand/g/b/b:rii	Ljava/lang/String;
     //   299: aload_3
     //   300: astore_1
     //   301: goto -227 -> 74
@@ -293,9 +293,9 @@ public class j
     //   311: ifeq +22 -> 333
     //   314: aload 4
     //   316: aload_0
-    //   317: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   317: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   320: invokeinterface 185 1 0
-    //   325: putfield 225	com/tencent/mm/plugin/appbrand/g/b/b:oeB	Ljava/lang/String;
+    //   325: putfield 225	com/tencent/mm/plugin/appbrand/g/b/b:rig	Ljava/lang/String;
     //   328: aload_3
     //   329: astore_1
     //   330: goto -256 -> 74
@@ -318,9 +318,9 @@ public class j
     //   367: ifnull -293 -> 74
     //   370: aload_3
     //   371: aload_0
-    //   372: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   372: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   375: invokeinterface 185 1 0
-    //   380: putfield 235	com/tencent/mm/plugin/appbrand/g/b/f:lqE	Ljava/lang/String;
+    //   380: putfield 235	com/tencent/mm/plugin/appbrand/g/b/f:nVK	Ljava/lang/String;
     //   383: aload_3
     //   384: astore_1
     //   385: goto -311 -> 74
@@ -334,9 +334,9 @@ public class j
     //   401: ifnull -327 -> 74
     //   404: aload_3
     //   405: aload_0
-    //   406: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   406: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   409: invokeinterface 185 1 0
-    //   414: putfield 240	com/tencent/mm/plugin/appbrand/g/b/f:oeZ	Ljava/lang/String;
+    //   414: putfield 240	com/tencent/mm/plugin/appbrand/g/b/f:riE	Ljava/lang/String;
     //   417: aload_3
     //   418: astore_1
     //   419: goto -345 -> 74
@@ -350,9 +350,9 @@ public class j
     //   435: ifnull -361 -> 74
     //   438: aload_3
     //   439: aload_0
-    //   440: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   440: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   443: invokeinterface 185 1 0
-    //   448: putfield 245	com/tencent/mm/plugin/appbrand/g/b/f:ofb	Ljava/lang/String;
+    //   448: putfield 245	com/tencent/mm/plugin/appbrand/g/b/f:riG	Ljava/lang/String;
     //   451: aload_3
     //   452: astore_1
     //   453: goto -379 -> 74
@@ -366,9 +366,9 @@ public class j
     //   469: ifnull -395 -> 74
     //   472: aload_3
     //   473: aload_0
-    //   474: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   474: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   477: invokeinterface 185 1 0
-    //   482: putfield 250	com/tencent/mm/plugin/appbrand/g/b/f:ofc	Ljava/lang/String;
+    //   482: putfield 250	com/tencent/mm/plugin/appbrand/g/b/f:riH	Ljava/lang/String;
     //   485: aload_3
     //   486: astore_1
     //   487: goto -413 -> 74
@@ -384,9 +384,9 @@ public class j
     //   505: ifnull -431 -> 74
     //   508: aload_3
     //   509: aload_0
-    //   510: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   510: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   513: invokeinterface 185 1 0
-    //   518: putfield 255	com/tencent/mm/plugin/appbrand/g/b/f:ofa	Ljava/lang/String;
+    //   518: putfield 255	com/tencent/mm/plugin/appbrand/g/b/f:riF	Ljava/lang/String;
     //   521: aload_3
     //   522: astore_1
     //   523: goto -449 -> 74
@@ -394,7 +394,7 @@ public class j
     //   527: astore_1
     //   528: ldc 227
     //   530: aload_0
-    //   531: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:aEX	Lorg/xmlpull/v1/XmlPullParser;
+    //   531: getfield 25	com/tencent/mm/plugin/appbrand/g/c/j:cAJ	Lorg/xmlpull/v1/XmlPullParser;
     //   534: invokeinterface 61 1 0
     //   539: invokevirtual 182	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   542: ifeq -468 -> 74
@@ -403,7 +403,7 @@ public class j
     //   547: aload_3
     //   548: ifnull -474 -> 74
     //   551: aload 4
-    //   553: getfield 259	com/tencent/mm/plugin/appbrand/g/b/b:oeE	Ljava/util/ArrayList;
+    //   553: getfield 259	com/tencent/mm/plugin/appbrand/g/b/b:rij	Ljava/util/ArrayList;
     //   556: aload_3
     //   557: invokevirtual 265	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   560: pop
@@ -504,17 +504,17 @@ public class j
     //   551	561	578	java/io/IOException
   }
   
-  public final HashMap<String, a> afT(String paramString)
+  public final HashMap<String, a> YP(String paramString)
   {
     AppMethodBeat.i(159020);
-    paramString = B(new ByteArrayInputStream(paramString.getBytes()));
+    paramString = O(new ByteArrayInputStream(paramString.getBytes()));
     AppMethodBeat.o(159020);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.j
  * JD-Core Version:    0.7.0.1
  */

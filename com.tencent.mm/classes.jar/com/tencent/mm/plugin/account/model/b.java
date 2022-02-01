@@ -1,14 +1,6 @@
 package com.tencent.mm.plugin.account.model;
 
-import android.content.Context;
-
-public final class b
-{
-  public static abstract interface a
-  {
-    public abstract int dA(Context paramContext);
-  }
-}
+public final class b {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

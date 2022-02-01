@@ -7,91 +7,91 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
 
 public final class a
 {
   Context mContext;
-  protected s tipDialog = null;
+  protected w tipDialog = null;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  protected final void aT(final Runnable paramRunnable)
-  {
-    AppMethodBeat.i(267332);
-    Context localContext = this.mContext;
-    this.mContext.getResources().getString(R.l.app_tip);
-    this.tipDialog = h.a(localContext, this.mContext.getResources().getString(R.l.eng), false, new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(291988);
-        if (paramRunnable != null) {
-          paramRunnable.run();
-        }
-        AppMethodBeat.o(291988);
-      }
-    });
-    AppMethodBeat.o(267332);
-  }
-  
   protected final void b(Runnable paramRunnable1, final Runnable paramRunnable2)
   {
-    AppMethodBeat.i(267333);
+    AppMethodBeat.i(253304);
     paramRunnable1.run();
     paramRunnable1 = this.mContext;
     this.mContext.getResources().getString(R.l.app_tip);
-    this.tipDialog = h.a(paramRunnable1, this.mContext.getResources().getString(R.l.enk), false, new DialogInterface.OnCancelListener()
+    this.tipDialog = k.a(paramRunnable1, this.mContext.getResources().getString(R.l.gql), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(286631);
+        AppMethodBeat.i(253325);
         if (paramRunnable2 != null) {
           paramRunnable2.run();
         }
-        AppMethodBeat.o(286631);
+        AppMethodBeat.o(253325);
       }
     });
-    AppMethodBeat.o(267333);
+    AppMethodBeat.o(253304);
+  }
+  
+  protected final void bc(final Runnable paramRunnable)
+  {
+    AppMethodBeat.i(253298);
+    Context localContext = this.mContext;
+    this.mContext.getResources().getString(R.l.app_tip);
+    this.tipDialog = k.a(localContext, this.mContext.getResources().getString(R.l.gqh), false, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(253323);
+        if (paramRunnable != null) {
+          paramRunnable.run();
+        }
+        AppMethodBeat.o(253323);
+      }
+    });
+    AppMethodBeat.o(253298);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(267330);
+    AppMethodBeat.i(253294);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    AppMethodBeat.o(267330);
+    AppMethodBeat.o(253294);
   }
   
-  protected final void hVL()
+  protected final void jzH()
   {
-    AppMethodBeat.i(267334);
+    AppMethodBeat.i(253310);
     Context localContext = this.mContext;
     this.mContext.getResources().getString(R.l.app_tip);
-    this.tipDialog = h.a(localContext, this.mContext.getResources().getString(R.l.eng), false, new DialogInterface.OnCancelListener()
+    this.tipDialog = k.a(localContext, this.mContext.getResources().getString(R.l.gqh), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    AppMethodBeat.o(267334);
+    AppMethodBeat.o(253310);
   }
   
-  protected final void hVM()
+  protected final void jzI()
   {
-    AppMethodBeat.i(267336);
+    AppMethodBeat.i(253313);
     Context localContext = this.mContext;
     this.mContext.getResources().getString(R.l.app_tip);
-    this.tipDialog = h.a(localContext, this.mContext.getResources().getString(R.l.enk), false, new DialogInterface.OnCancelListener()
+    this.tipDialog = k.a(localContext, this.mContext.getResources().getString(R.l.gql), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    AppMethodBeat.o(267336);
+    AppMethodBeat.o(253313);
   }
 }
 

@@ -1,94 +1,91 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.os.Debug.MemoryInfo;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ex;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.storage.data.k;
-import com.tencent.mm.plugin.finder.storage.data.k.a;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderSnsPostReporter;", "", "()V", "SCENE_ENTRANCE_CLICK", "", "SCENE_ENTRANCE_EXPOSE", "SCENE_NO_ACCOUNT_EXIT", "SCENE_NO_ACCOUNT_OK", "SCENE_NO_POST_EXIT", "SCENE_NO_POST_OK", "SCENE_SELECT_EXIT", "SCENE_SELECT_FEED", "SCENE_SNS_POST_CANCEL", "SCENE_SNS_POST_SUCCESS", "reportSessionID", "", "getReportSessionID", "()Ljava/lang/String;", "setReportSessionID", "(Ljava/lang/String;)V", "report20747", "", "sessionID", "scene", "wording", "haveFinderAccount", "", "havePostFinder", "feedId", "", "shootEntranceEndType", "entranceExposeMaxTimes", "entranceExposedTimes", "snsId", "timeStamp", "exposeType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FinderPerformanceUtils;", "", "()V", "genMemoryInfoStr", "", "memoryInfo", "Lcom/tencent/mm/plugin/finder/report/FinderPerformanceUtils$MemoryInfo;", "getMemoryInfo", "getMemoryInfoAsync", "", "memoryInfoCallback", "Lcom/tencent/mm/plugin/finder/report/FinderPerformanceUtils$MemoryInfoCallback;", "MemoryInfo", "MemoryInfoCallback", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class u
 {
-  private static String zXL;
-  public static final u zXM;
+  public static final u FrJ;
   
   static
   {
-    AppMethodBeat.i(282141);
-    zXM = new u();
-    AppMethodBeat.o(282141);
+    AppMethodBeat.i(331447);
+    FrJ = new u();
+    AppMethodBeat.o(331447);
   }
   
-  public static void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3, int paramInt5)
+  public static void a(b paramb)
   {
-    AppMethodBeat.i(282140);
-    p.k(paramString1, "sessionID");
-    p.k(paramString2, "wording");
-    if (paramInt1 == 2) {
-      zXL = paramString1;
-    }
-    ex localex = new ex();
-    localex.to(paramString1);
-    localex.ms(paramInt1);
-    localex.mt(paramLong3);
-    localex.mu(paramInt2);
-    paramString1 = n.zWF;
-    localex.tq(n.Mp(paramLong2));
-    paramString1 = n.zWF;
-    localex.tp(n.Mp(paramLong1));
-    paramString1 = z.bdh();
-    localex.mx(paramInt3);
-    localex.my(paramInt4);
-    if (Util.isNullOrNil(paramString1))
-    {
-      paramLong1 = 0L;
-      localex.mv(paramLong1);
-      if (localex.akh() != 1L) {
-        break label243;
-      }
-      k.a locala = k.Anu;
-      p.j(paramString1, "username");
-      if (((Collection)locala.ed(paramString1, 1)).isEmpty()) {
-        break label238;
-      }
-      paramInt1 = 1;
-      label177:
-      if (paramInt1 == 0) {
-        break label243;
-      }
-    }
-    label238:
-    label243:
-    for (paramLong1 = 1L;; paramLong1 = 0L)
-    {
-      localex.mw(paramLong1);
-      localex.tr(paramString2);
-      localex.mz(paramInt5);
-      localex.bpa();
-      paramString1 = n.zWF;
-      n.a((a)localex);
-      AppMethodBeat.o(282140);
-      return;
-      paramLong1 = 1L;
-      break;
-      paramInt1 = 0;
-      break label177;
-    }
+    AppMethodBeat.i(331433);
+    h.ahAA.bm(new u..ExternalSyntheticLambda0(paramb));
+    AppMethodBeat.o(331433);
   }
   
-  public static String dQb()
+  public static String b(a parama)
   {
-    return zXL;
+    AppMethodBeat.i(331437);
+    s.u(parama, "memoryInfo");
+    StringBuilder localStringBuilder = new StringBuilder("");
+    localStringBuilder.append(s.X("TotalPss:", Integer.valueOf(parama.FrK))).append(" | ");
+    localStringBuilder.append(s.X("DalvikPss:", Integer.valueOf(parama.FrL))).append(" | ");
+    localStringBuilder.append(s.X("NativePss:", Integer.valueOf(parama.FrM))).append("\n");
+    parama = localStringBuilder.toString();
+    s.s(parama, "memoryInfoStr.toString()");
+    AppMethodBeat.o(331437);
+    return parama;
+  }
+  
+  private static final void b(b paramb)
+  {
+    AppMethodBeat.i(331442);
+    a locala = new a();
+    Object localObject = MMApplicationContext.getContext().getSystemService("activity");
+    if (localObject == null)
+    {
+      paramb = new NullPointerException("null cannot be cast to non-null type android.app.ActivityManager");
+      AppMethodBeat.o(331442);
+      throw paramb;
+    }
+    localObject = ((ActivityManager)localObject).getProcessMemoryInfo(new int[] { Process.myPid() });
+    if ((localObject != null) && (localObject.length == 1))
+    {
+      localObject = localObject[0];
+      locala.FrK = ((Debug.MemoryInfo)localObject).getTotalPss();
+      locala.FrL = ((Debug.MemoryInfo)localObject).dalvikPss;
+      locala.FrM = ((Debug.MemoryInfo)localObject).nativePss;
+    }
+    if (paramb != null) {
+      paramb.a(locala);
+    }
+    AppMethodBeat.o(331442);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FinderPerformanceUtils$MemoryInfo;", "", "()V", "dalvikPss", "", "getDalvikPss", "()I", "setDalvikPss", "(I)V", "nativePss", "getNativePss", "setNativePss", "totalPss", "getTotalPss", "setTotalPss", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    int FrK;
+    int FrL;
+    int FrM;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/report/FinderPerformanceUtils$MemoryInfoCallback;", "", "callback", "", "memoryInfo", "Lcom/tencent/mm/plugin/finder/report/FinderPerformanceUtils$MemoryInfo;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface b
+  {
+    public abstract void a(u.a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.u
  * JD-Core Version:    0.7.0.1
  */

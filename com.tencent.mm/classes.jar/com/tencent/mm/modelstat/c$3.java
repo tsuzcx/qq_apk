@@ -21,11 +21,11 @@ final class c$3
     Log.d("MicroMsg.ClickFlowStatReceiver", "onReceive op:%d ui:%s hash:0x%x time:%d, elapsed time:%d", new Object[] { Integer.valueOf(j), str, Integer.valueOf(i), Long.valueOf(Util.milliSecondsToNow(l1)), Long.valueOf(l2) });
     if (2147483632 == j)
     {
-      c.a(this.mcO);
+      c.a(this.oVJ);
       AppMethodBeat.o(151010);
       return;
     }
-    c.a(this.mcO, j, str, i, l1, l2);
+    c.a(this.oVJ, j, str, i, l1, l2);
     AppMethodBeat.o(151010);
   }
 }

@@ -16,17 +16,17 @@ public final class b
     AppMethodBeat.o(158790);
   }
   
-  public final boolean bp(Object paramObject)
+  public final boolean cJ(Object paramObject)
   {
     return paramObject instanceof com.tencent.mm.ipcinvoker.d.a;
   }
   
-  public final Object d(Parcel paramParcel)
+  public final Object f(Parcel paramParcel)
   {
     AppMethodBeat.i(158791);
     Object localObject = paramParcel.readString();
     paramParcel = paramParcel.readBundle();
-    localObject = (com.tencent.mm.ipcinvoker.d.a)r.c((String)localObject, com.tencent.mm.ipcinvoker.d.a.class);
+    localObject = (com.tencent.mm.ipcinvoker.d.a)r.g((String)localObject, com.tencent.mm.ipcinvoker.d.a.class);
     if (localObject != null)
     {
       ((com.tencent.mm.ipcinvoker.d.a)localObject).fromBundle(paramParcel);

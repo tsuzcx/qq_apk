@@ -7,12 +7,25 @@ import java.lang.reflect.Proxy;
 
 public final class g
 {
-  private static volatile boolean kcZ = false;
+  private static volatile boolean mDi = false;
   
-  private static <T> T a(Class<T> paramClass, int paramInt)
+  public static <T> T aC(Class<T> paramClass)
+  {
+    AppMethodBeat.i(158301);
+    if (!mDi)
+    {
+      AppMethodBeat.o(158301);
+      return null;
+    }
+    paramClass = b(paramClass, 0);
+    AppMethodBeat.o(158301);
+    return paramClass;
+  }
+  
+  private static <T> T b(Class<T> paramClass, int paramInt)
   {
     AppMethodBeat.i(158302);
-    if (!kcZ)
+    if (!mDi)
     {
       AppMethodBeat.o(158302);
       return null;
@@ -37,7 +50,7 @@ public final class g
       AppMethodBeat.o(158302);
       return localObject;
     }
-    catch (Throwable paramClass)
+    finally
     {
       l.printErrStackTrace("MMSkeleton.DummyMode", paramClass, "", new Object[0]);
       AppMethodBeat.o(158302);
@@ -45,20 +58,12 @@ public final class g
     return null;
   }
   
-  public static <T> T aj(Class<T> paramClass)
+  public static void bay()
   {
-    AppMethodBeat.i(158301);
-    if (!kcZ)
-    {
-      AppMethodBeat.o(158301);
-      return null;
-    }
-    paramClass = a(paramClass, 0);
-    AppMethodBeat.o(158301);
-    return paramClass;
+    mDi = true;
   }
   
-  public static boolean bx(Object paramObject)
+  public static boolean cR(Object paramObject)
   {
     return (paramObject instanceof b);
   }
@@ -121,7 +126,7 @@ public final class g
       }
       if (paramObject.isInterface())
       {
-        paramObject = g.b(paramObject, this.level + 1);
+        paramObject = g.c(paramObject, this.level + 1);
         AppMethodBeat.o(158300);
         return paramObject;
       }
@@ -134,7 +139,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.kernel.g
  * JD-Core Version:    0.7.0.1
  */

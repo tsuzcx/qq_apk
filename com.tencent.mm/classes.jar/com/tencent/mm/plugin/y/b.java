@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.y;
 
-import com.tencent.mm.protocal.protobuf.cee;
+import com.tencent.mm.protocal.protobuf.cug;
 
 public abstract interface b
 {
-  public abstract int eUU();
+  public abstract int gdG();
   
-  public abstract String[] eUV();
+  public abstract String[] gdH();
   
-  public abstract cee eUW();
+  public abstract cug gdI();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.y.b
  * JD-Core Version:    0.7.0.1
  */

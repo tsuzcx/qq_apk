@@ -1,81 +1,120 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.text.TextUtils;
-import androidx.core.app.a.a;
+import android.content.Context;
+import com.tencent.luggage.m.a.g;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.b;
+import com.tencent.mm.plugin.appbrand.config.b.e;
+import com.tencent.mm.plugin.appbrand.config.n;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 public final class r
 {
-  private static final h<String, a.a> qzQ;
+  private static final List<String> tEO;
   
   static
   {
-    AppMethodBeat.i(140777);
-    qzQ = new h();
-    AppMethodBeat.o(140777);
+    AppMethodBeat.i(147668);
+    tEO = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
+    AppMethodBeat.o(147668);
   }
   
-  public static void a(String paramString, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static String a(String paramString, AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(140776);
-    if ((paramString == null) || (paramString.length() == 0))
+    AppMethodBeat.i(147667);
+    int i = -1;
+    switch (paramString.hashCode())
     {
-      Log.e("Luggage.RequestPermissionRegistry", "removeCallback fail, invalid id");
-      AppMethodBeat.o(140776);
-      return;
     }
-    paramString = qzQ.cN(paramString);
-    if (paramString != null)
+    for (;;)
     {
-      paramString = paramString.iterator();
-      while (paramString.hasNext()) {
-        ((a.a)paramString.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+      switch (i)
+      {
+      default: 
+        paramString = paramAppBrandRuntime.getAppConfig().Xl(paramString);
+        if (paramString != null) {
+          break label100;
+        }
+        AppMethodBeat.o(147667);
+        return null;
+        if (paramString.equals("scope.camera")) {
+          i = 0;
+        }
+        break;
       }
     }
-    AppMethodBeat.o(140776);
+    paramString = paramAppBrandRuntime.mContext.getString(a.g.appbrand_camera_permission_authorize_desc);
+    AppMethodBeat.o(147667);
+    return paramString;
+    label100:
+    paramString = paramString.desc;
+    AppMethodBeat.o(147667);
+    return paramString;
   }
   
-  public static void a(String paramString, a.a parama)
+  public static boolean a(String paramString, n paramn)
   {
-    AppMethodBeat.i(209418);
-    if ((TextUtils.isEmpty(paramString)) || (parama == null))
+    int j = 0;
+    AppMethodBeat.i(147666);
+    if (!tEO.contains(paramString))
     {
-      Log.e("Luggage.RequestPermissionRegistry", "addCallback fail, invalid arguments");
-      AppMethodBeat.o(209418);
-      return;
+      if (!(paramn instanceof AppBrandSysConfigLU))
+      {
+        AppMethodBeat.o(147666);
+        return false;
+      }
+      String[] arrayOfString = ((AppBrandSysConfigLU)paramn).eqf.qXp;
+      if (arrayOfString == null)
+      {
+        AppMethodBeat.o(147666);
+        return false;
+      }
+      int k = arrayOfString.length;
+      i = 0;
+      if (i >= k) {
+        break label179;
+      }
+      if (!Objects.equals(arrayOfString[i], paramString)) {}
     }
-    qzQ.k(paramString, parama);
-    AppMethodBeat.o(209418);
-  }
-  
-  public static void amk(String paramString)
-  {
-    AppMethodBeat.i(140775);
-    if (TextUtils.isEmpty(paramString))
+    label179:
+    for (int i = 1;; i = 0)
     {
-      Log.e("Luggage.RequestPermissionRegistry", "removeCallbacks fail, invalid arguments");
-      AppMethodBeat.o(140775);
-      return;
+      if (i == 0)
+      {
+        AppMethodBeat.o(147666);
+        return false;
+        i += 1;
+        break;
+      }
+      switch (paramString.hashCode())
+      {
+      }
+      label124:
+      for (i = -1;; i = j) {
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(147666);
+          return true;
+          if (!paramString.equals("scope.userLocation")) {
+            break label124;
+          }
+        }
+      }
+      boolean bool = paramn.qYU;
+      AppMethodBeat.o(147666);
+      return bool;
     }
-    qzQ.cO(paramString);
-    AppMethodBeat.o(140775);
-  }
-  
-  @Deprecated
-  public static void b(String paramString, a.a parama)
-  {
-    AppMethodBeat.i(209420);
-    a(paramString, parama);
-    AppMethodBeat.o(209420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,90 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class bmx
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public fhs SXN;
-  public LinkedList<bmw> SXO;
+  public b ZKL;
+  public b ZKM;
+  public LinkedList<Long> ZVD;
   
   public bmx()
   {
-    AppMethodBeat.i(250066);
-    this.SXO = new LinkedList();
-    AppMethodBeat.o(250066);
+    AppMethodBeat.i(258903);
+    this.ZVD = new LinkedList();
+    AppMethodBeat.o(258903);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(250068);
+    AppMethodBeat.i(258906);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SXN != null)
-      {
-        paramVarArgs.oE(1, this.SXN.computeSize());
-        this.SXN.writeFields(paramVarArgs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 3, this.ZVD);
+      if (this.ZKL != null) {
+        paramVarArgs.d(2, this.ZKL);
       }
-      paramVarArgs.e(2, 8, this.SXO);
-      AppMethodBeat.o(250068);
+      if (this.ZKM != null) {
+        paramVarArgs.d(3, this.ZKM);
+      }
+      AppMethodBeat.o(258906);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.SXN == null) {
-        break label406;
-      }
-    }
-    label406:
-    for (paramInt = g.a.a.a.oD(1, this.SXN.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.a.c(2, 8, this.SXO);
-      AppMethodBeat.o(250068);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.SXO.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(250068);
-        return 0;
+      int i = i.a.a.a.c(1, 3, this.ZVD) + 0;
+      paramInt = i;
+      if (this.ZKL != null) {
+        paramInt = i + i.a.a.b.b.a.c(2, this.ZKL);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        bmx localbmx = (bmx)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(250068);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new fhs();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((fhs)localObject2).parseFrom((byte[])localObject1);
-            }
-            localbmx.SXN = ((fhs)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(250068);
-          return 0;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new bmw();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((bmw)localObject2).parseFrom((byte[])localObject1);
-          }
-          localbmx.SXO.add(localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(250068);
-        return 0;
+      i = paramInt;
+      if (this.ZKM != null) {
+        i = paramInt + i.a.a.b.b.a.c(3, this.ZKM);
       }
-      AppMethodBeat.o(250068);
-      return -1;
+      AppMethodBeat.o(258906);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.ZVD.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(258906);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      bmx localbmx = (bmx)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(258906);
+        return -1;
+      case 1: 
+        localbmx.ZVD.add(Long.valueOf(locala.ajGk.aaw()));
+        AppMethodBeat.o(258906);
+        return 0;
+      case 2: 
+        localbmx.ZKL = locala.ajGk.kFX();
+        AppMethodBeat.o(258906);
+        return 0;
+      }
+      localbmx.ZKM = locala.ajGk.kFX();
+      AppMethodBeat.o(258906);
+      return 0;
+    }
+    AppMethodBeat.o(258906);
+    return -1;
   }
 }
 

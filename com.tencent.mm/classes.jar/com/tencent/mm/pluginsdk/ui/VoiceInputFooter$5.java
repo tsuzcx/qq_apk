@@ -11,13 +11,13 @@ final class VoiceInputFooter$5
 {
   VoiceInputFooter$5(VoiceInputFooter paramVoiceInputFooter) {}
   
-  public final void aDN() {}
+  public final void aWL() {}
   
-  public final void aDO()
+  public final void aWM()
   {
     AppMethodBeat.i(31259);
-    VoiceInputFooter.e(this.Ree).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
-    VoiceInputFooter.e(this.Ree).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+    VoiceInputFooter.e(this.Yaj).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
+    VoiceInputFooter.e(this.Yaj).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
     AppMethodBeat.o(31259);
   }
   
@@ -26,7 +26,7 @@ final class VoiceInputFooter$5
     AppMethodBeat.i(31260);
     try
     {
-      VoiceInputFooter.e(this.Ree).bBa(paramString);
+      VoiceInputFooter.e(this.Yaj).bDt(paramString);
       AppMethodBeat.o(31260);
       return;
     }
@@ -37,11 +37,11 @@ final class VoiceInputFooter$5
     }
   }
   
-  public final void eE(boolean paramBoolean) {}
+  public final void fp(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.VoiceInputFooter.5
  * JD-Core Version:    0.7.0.1
  */

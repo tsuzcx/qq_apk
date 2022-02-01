@@ -12,12 +12,12 @@ import java.util.HashMap;
 public final class f
   implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.game.api.f
 {
-  private s Cgm;
-  private w Cgn;
-  private com.tencent.mm.plugin.game.model.a.g Cgo;
-  private com.tencent.mm.plugin.game.media.g Cgp;
-  private com.tencent.mm.plugin.game.media.d Cgq;
-  private com.tencent.mm.plugin.game.b.d Cgr;
+  private com.tencent.mm.plugin.game.b.d HSA;
+  private s HSv;
+  private w HSw;
+  private com.tencent.mm.plugin.game.model.silent_download.g HSx;
+  private com.tencent.mm.plugin.game.media.g HSy;
+  private com.tencent.mm.plugin.game.media.d HSz;
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
@@ -42,7 +42,7 @@ public final class f
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.plugin.game.model.a.g.SQL_CREATE;
+        return com.tencent.mm.plugin.game.model.silent_download.g.SQL_CREATE;
       }
     });
     localHashMap.put(Integer.valueOf("GAME_HAOWAN_EDITION".hashCode()), new h.b()
@@ -63,10 +63,10 @@ public final class f
     {
       public final String[] getSQLs()
       {
-        AppMethodBeat.i(205722);
-        Object localObject = com.tencent.mm.plugin.game.b.d.CzN;
-        localObject = com.tencent.mm.plugin.game.b.d.dqy();
-        AppMethodBeat.o(205722);
+        AppMethodBeat.i(275312);
+        Object localObject = com.tencent.mm.plugin.game.b.d.Ity;
+        localObject = com.tencent.mm.plugin.game.b.d.dZh();
+        AppMethodBeat.o(275312);
         return localObject;
       }
     });
@@ -74,87 +74,87 @@ public final class f
     return localHashMap;
   }
   
-  public final s evo()
+  public final s fCh()
   {
     AppMethodBeat.i(40848);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.Cgm == null)
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.HSv == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.Cgm = new s(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.HSv = new s(com.tencent.mm.kernel.h.baE().mCN);
     }
-    s locals = this.Cgm;
+    s locals = this.HSv;
     AppMethodBeat.o(40848);
     return locals;
   }
   
-  public final w evp()
+  public final w fCi()
   {
     AppMethodBeat.i(40849);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.Cgn == null)
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.HSw == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.Cgn = new w(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.HSw = new w(com.tencent.mm.kernel.h.baE().mCN);
     }
-    w localw = this.Cgn;
+    w localw = this.HSw;
     AppMethodBeat.o(40849);
     return localw;
   }
   
-  public final com.tencent.mm.plugin.game.model.a.g evq()
+  public final com.tencent.mm.plugin.game.model.silent_download.g fCj()
   {
     AppMethodBeat.i(40850);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.Cgo == null)
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.HSx == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.Cgo = new com.tencent.mm.plugin.game.model.a.g(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.HSx = new com.tencent.mm.plugin.game.model.silent_download.g(com.tencent.mm.kernel.h.baE().mCN);
     }
-    com.tencent.mm.plugin.game.model.a.g localg = this.Cgo;
+    com.tencent.mm.plugin.game.model.silent_download.g localg = this.HSx;
     AppMethodBeat.o(40850);
     return localg;
   }
   
-  public final com.tencent.mm.plugin.game.media.g evr()
+  public final com.tencent.mm.plugin.game.media.g fCk()
   {
     AppMethodBeat.i(40851);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.Cgp == null)
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.HSy == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.Cgp = new com.tencent.mm.plugin.game.media.g(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.HSy = new com.tencent.mm.plugin.game.media.g(com.tencent.mm.kernel.h.baE().mCN);
     }
-    com.tencent.mm.plugin.game.media.g localg = this.Cgp;
+    com.tencent.mm.plugin.game.media.g localg = this.HSy;
     AppMethodBeat.o(40851);
     return localg;
   }
   
-  public final com.tencent.mm.plugin.game.media.d evs()
+  public final com.tencent.mm.plugin.game.media.d fCl()
   {
     AppMethodBeat.i(40852);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.Cgq == null)
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.HSz == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.Cgq = new com.tencent.mm.plugin.game.media.d(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.HSz = new com.tencent.mm.plugin.game.media.d(com.tencent.mm.kernel.h.baE().mCN);
     }
-    com.tencent.mm.plugin.game.media.d locald = this.Cgq;
+    com.tencent.mm.plugin.game.media.d locald = this.HSz;
     AppMethodBeat.o(40852);
     return locald;
   }
   
-  public final com.tencent.mm.plugin.game.b.d evt()
+  public final com.tencent.mm.plugin.game.b.d fCm()
   {
-    AppMethodBeat.i(197823);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.Cgr == null)
+    AppMethodBeat.i(275304);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.HSA == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.Cgr = new com.tencent.mm.plugin.game.b.d(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.HSA = new com.tencent.mm.plugin.game.b.d(com.tencent.mm.kernel.h.baE().mCN);
     }
-    com.tencent.mm.plugin.game.b.d locald = this.Cgr;
-    AppMethodBeat.o(197823);
+    com.tencent.mm.plugin.game.b.d locald = this.HSA;
+    AppMethodBeat.o(275304);
     return locald;
   }
   
@@ -164,17 +164,17 @@ public final class f
   {
     AppMethodBeat.i(40846);
     Log.i("MicroMsg.GameStorage", "GameStorage onDataBaseOpened");
-    this.Cgm = new s(paramh1);
-    this.Cgo = new com.tencent.mm.plugin.game.model.a.g(paramh1);
-    this.Cgp = new com.tencent.mm.plugin.game.media.g(paramh1);
-    this.Cgq = new com.tencent.mm.plugin.game.media.d(paramh1);
-    this.Cgr = new com.tencent.mm.plugin.game.b.d(paramh1);
+    this.HSv = new s(paramh1);
+    this.HSx = new com.tencent.mm.plugin.game.model.silent_download.g(paramh1);
+    this.HSy = new com.tencent.mm.plugin.game.media.g(paramh1);
+    this.HSz = new com.tencent.mm.plugin.game.media.d(paramh1);
+    this.HSA = new com.tencent.mm.plugin.game.b.d(paramh1);
     AppMethodBeat.o(40846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.f
  * JD-Core Version:    0.7.0.1
  */

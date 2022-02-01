@@ -9,20 +9,13 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
 public abstract class n
   implements c
 {
-  final ConcurrentHashMap<String, Class<? extends b>> crF = new ConcurrentHashMap();
-  public a crG;
-  
-  public final a Os()
-  {
-    if (this.crG == null) {
-      return a.csc;
-    }
-    return this.crG;
-  }
+  final ConcurrentHashMap<String, Class<? extends b>> ejx = new ConcurrentHashMap();
+  public a ejy;
   
   public final void a(final d paramd)
   {
@@ -30,20 +23,20 @@ public abstract class n
     {
       public final void a(com.tencent.luggage.d.a.b paramAnonymousb)
       {
-        AppMethodBeat.i(208792);
+        AppMethodBeat.i(219940);
         if (paramd == null)
         {
           Log.e("Luggage.LuggageRuntime", "Null Event, Ignore");
-          AppMethodBeat.o(208792);
+          AppMethodBeat.o(219940);
           return;
         }
-        if (paramAnonymousb == com.tencent.luggage.d.a.b.csf) {
-          n.this.getBridge().b(paramd.name(), paramd.NU());
+        if (paramAnonymousb == com.tencent.luggage.d.a.b.eka) {
+          n.this.getBridge().b(paramd.name(), paramd.aoe());
         }
-        AppMethodBeat.o(208792);
+        AppMethodBeat.o(219940);
       }
     };
-    a locala = Os();
+    a locala = aoA();
     paramd.name();
     locala.a(local3);
   }
@@ -63,18 +56,18 @@ public abstract class n
     {
       try
       {
-        localb.crf = ((c)localObject);
-        this.crF.put(localb.name(), paramClass);
+        localb.eiX = ((c)localObject);
+        this.ejx.put(localb.name(), paramClass);
         getBridge().a(localb.name(), new l()
         {
           public final void a(k paramAnonymousk)
           {
-            AppMethodBeat.i(208471);
+            AppMethodBeat.i(219941);
             n localn = n.this;
             b localb = localb;
             paramAnonymousk = new n.2(localn, localb, paramAnonymousk);
-            localn.Os().a(localb.name(), paramAnonymousk);
-            AppMethodBeat.o(208471);
+            localn.aoA().a(localb.name(), paramAnonymousk);
+            AppMethodBeat.o(219941);
           }
         });
         return;
@@ -95,6 +88,30 @@ public abstract class n
     while (paramList.hasNext()) {
       a((Class)paramList.next(), paramc);
     }
+  }
+  
+  public final a aoA()
+  {
+    if (this.ejy == null) {
+      return a.ejX;
+    }
+    return this.ejy;
+  }
+  
+  public final void b(final String paramString, final JSONObject paramJSONObject)
+  {
+    paramString = new com.tencent.luggage.d.a.c()
+    {
+      public final void a(com.tencent.luggage.d.a.b paramAnonymousb)
+      {
+        AppMethodBeat.i(219939);
+        if (paramAnonymousb == com.tencent.luggage.d.a.b.eka) {
+          n.this.getBridge().b(paramString, paramJSONObject);
+        }
+        AppMethodBeat.o(219939);
+      }
+    };
+    aoA().a(paramString);
   }
   
   public void destroy() {}

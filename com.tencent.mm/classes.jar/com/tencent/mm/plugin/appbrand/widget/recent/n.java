@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.r;
-import androidx.recyclerview.widget.p;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -20,63 +20,63 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class n
   extends RecyclerView.l
 {
-  int CL;
-  private int alG;
+  int biT;
+  private int cag;
   Context mContext;
   private int mLastState;
   RecyclerView.r mSmoothScroller;
-  private float pEE;
-  int rFA;
-  private b rFB;
-  private boolean rFC;
-  LinearLayoutManager rFD;
-  private boolean rFE;
-  private int rFF;
-  a rFG;
-  private boolean rFH;
-  private boolean rFI;
-  private boolean rFJ;
-  BaseAppBrandRecentView rFv;
-  private int rFw;
-  private int rFx;
-  RecyclerView.r rFy;
-  int rFz;
+  private float sJP;
+  BaseAppBrandRecentView uQH;
+  private int uQI;
+  private int uQJ;
+  RecyclerView.r uQK;
+  int uQL;
+  int uQM;
+  private b uQN;
+  private boolean uQO;
+  LinearLayoutManager uQP;
+  private boolean uQQ;
+  private int uQR;
+  a uQS;
+  private boolean uQT;
+  private boolean uQU;
+  private boolean uQV;
   
   public n(int paramInt)
   {
-    AppMethodBeat.i(275299);
-    this.rFx = 0;
-    this.rFz = 0;
-    this.pEE = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
-    this.rFB = null;
-    this.alG = -1;
-    this.rFC = false;
-    this.rFE = false;
-    this.rFF = 0;
-    this.rFG = null;
+    AppMethodBeat.i(324014);
+    this.uQJ = 0;
+    this.uQL = 0;
+    this.sJP = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
+    this.uQN = null;
+    this.cag = -1;
+    this.uQO = false;
+    this.uQQ = false;
+    this.uQR = 0;
+    this.uQS = null;
     this.mLastState = 0;
-    this.rFH = false;
-    this.rFI = false;
-    this.rFJ = false;
-    this.rFF = paramInt;
-    AppMethodBeat.o(275299);
+    this.uQT = false;
+    this.uQU = false;
+    this.uQV = false;
+    this.uQR = paramInt;
+    AppMethodBeat.o(324014);
   }
   
-  private int El(int paramInt)
+  private int EL(int paramInt)
   {
     if (paramInt == 0) {
       return 0;
     }
-    return this.rFA * paramInt + this.rFF;
+    return this.uQM * paramInt + this.uQR;
   }
   
-  private int Em(int paramInt)
+  private int EM(int paramInt)
   {
-    if (this.rFF != 0)
+    if (this.uQR != 0)
     {
-      int j = paramInt / this.rFA;
+      int j = paramInt / this.uQM;
       int i = j;
-      if (paramInt % this.rFA == 0)
+      if (paramInt % this.uQM == 0)
       {
         i = j;
         if (paramInt != 0) {
@@ -85,56 +85,78 @@ public final class n
       }
       return i;
     }
-    return paramInt / this.rFA;
+    return paramInt / this.uQM;
   }
   
-  private static int En(int paramInt)
+  private static int EN(int paramInt)
   {
-    AppMethodBeat.i(275309);
+    int i = 0;
+    AppMethodBeat.i(324072);
     if (paramInt == 0)
     {
-      AppMethodBeat.o(275309);
+      AppMethodBeat.o(324072);
       return 0;
     }
-    int i = d.getCompletelyCountPerPage();
-    d.cqh();
-    AppMethodBeat.o(275309);
-    return i * paramInt + 1;
+    int j = d.getCompletelyCountPerPage();
+    if (d.cSN()) {
+      i = 1;
+    }
+    AppMethodBeat.o(324072);
+    return i + j * paramInt;
   }
   
-  private void cqj()
+  private void a(int paramInt, b paramb, boolean paramBoolean)
   {
-    this.rFC = false;
-    this.rFE = false;
-    this.rFB = null;
-    this.alG = -1;
+    AppMethodBeat.i(324051);
+    this.uQN = paramb;
+    this.uQO = true;
+    int i = EM(paramInt);
+    this.cag = EN(i);
+    this.uQL = EM(this.uQP.Jv());
+    Log.i("ViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.uQL), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.cag) });
+    if ((i == this.uQL) && (!paramBoolean))
+    {
+      cSR();
+      AppMethodBeat.o(324051);
+      return;
+    }
+    am(this.cag, true);
+    AppMethodBeat.o(324051);
   }
   
-  private void cqk()
+  private void cSQ()
   {
-    AppMethodBeat.i(275305);
-    if (this.rFC)
+    this.uQO = false;
+    this.uQQ = false;
+    this.uQN = null;
+    this.cag = -1;
+  }
+  
+  private void cSR()
+  {
+    AppMethodBeat.i(324031);
+    if (this.uQO)
     {
       Log.i("ViewPagerHelper", "alvinluo onScrollAnimationEnd");
-      cqj();
+      cSQ();
     }
-    AppMethodBeat.o(275305);
+    AppMethodBeat.o(324031);
   }
   
-  final int Ek(int paramInt)
+  final int EK(int paramInt)
   {
-    AppMethodBeat.i(275306);
-    int i = this.rFz;
-    float f = this.rFv.getWidth();
-    int k = this.rFz;
-    Log.d("ViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.rFw), Integer.valueOf(paramInt - this.rFw), Float.valueOf(f), Float.valueOf(this.pEE), Integer.valueOf(this.rFz) });
-    if (paramInt - this.rFw >= f / 2.0F)
+    AppMethodBeat.i(324127);
+    int i = this.uQL;
+    float f = this.uQH.getWidth();
+    int k = this.uQL;
+    Log.d("ViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.uQI), Integer.valueOf(paramInt - this.uQI), Float.valueOf(f), Float.valueOf(this.sJP), Integer.valueOf(this.uQL) });
+    if (paramInt - this.uQI >= f / 2.0F)
     {
-      i = Em(this.rFD.kL());
-      int m = this.rFv.getAdapter().getItemCount();
-      int j = m / this.rFA;
+      i = EM(this.uQP.Jw());
+      int m = this.uQH.getAdapter().getItemCount();
+      int j = m / this.uQM;
       paramInt = j;
-      if (m % this.rFA != 0) {
+      if (m % this.uQM != 0) {
         paramInt = j + 1;
       }
       i = Math.max(Math.min(i, paramInt - 1), -1);
@@ -145,21 +167,21 @@ public final class n
     }
     for (;;)
     {
-      Log.i("ViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(En(paramInt)) });
-      paramInt = El(paramInt);
-      AppMethodBeat.o(275306);
+      Log.i("ViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(EN(paramInt)) });
+      paramInt = EL(paramInt);
+      AppMethodBeat.o(324127);
       return paramInt;
-      if ((paramInt - this.rFw >= 0) && (paramInt - this.rFw < this.pEE))
+      if ((paramInt - this.uQI >= 0) && (paramInt - this.uQI < this.sJP))
       {
-        Log.i("ViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(El(i)) });
-        paramInt = El(i);
-        AppMethodBeat.o(275306);
+        Log.i("ViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(EL(i)) });
+        paramInt = EL(i);
+        AppMethodBeat.o(324127);
         return paramInt;
       }
-      if (paramInt - this.rFw > -f / 2.0F) {
+      if (paramInt - this.uQI > -f / 2.0F) {
         break;
       }
-      i = Em(this.rFD.kJ());
+      i = EM(this.uQP.Ju());
       break;
       label328:
       paramInt = i;
@@ -169,101 +191,116 @@ public final class n
     }
   }
   
-  final void W(int paramInt, boolean paramBoolean)
+  final void am(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(275307);
-    if ((this.rFv != null) && ((this.rFI) || (paramBoolean)))
+    AppMethodBeat.i(324132);
+    if ((this.uQH != null) && ((this.uQU) || (paramBoolean)))
     {
-      this.rFy.alG = paramInt;
-      this.rFJ = true;
-      this.rFv.getLayoutManager().startSmoothScroll(this.rFy);
+      this.uQK.cag = paramInt;
+      this.uQV = true;
+      this.uQH.getLayoutManager().startSmoothScroll(this.uQK);
     }
-    AppMethodBeat.o(275307);
+    AppMethodBeat.o(324132);
   }
   
   public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(275304);
+    AppMethodBeat.i(324116);
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt);
-    a.c("com/tencent/mm/plugin/appbrand/widget/recent/ViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt);
+    a.c("com/tencent/mm/plugin/appbrand/widget/recent/ViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
     super.onScrollStateChanged(paramRecyclerView, paramInt);
     Log.i("ViewPagerHelper", "alvinluo onScrollStateChanged newState: %d", new Object[] { Integer.valueOf(paramInt) });
     int i;
     if ((paramInt == 0) && (this.mLastState != 2))
     {
-      i = Ek(this.CL);
-      if ((this.rFv != null) && (this.rFI))
+      i = EK(this.biT);
+      if ((this.uQH != null) && (this.uQU))
       {
-        this.mSmoothScroller.alG = i;
-        this.rFJ = true;
-        this.rFv.getLayoutManager().startSmoothScroll(this.mSmoothScroller);
+        this.mSmoothScroller.cag = i;
+        this.uQV = true;
+        this.uQH.getLayoutManager().startSmoothScroll(this.mSmoothScroller);
       }
-      this.rFH = true;
+      this.uQT = true;
     }
     for (;;)
     {
       this.mLastState = paramInt;
       a.a(this, "com/tencent/mm/plugin/appbrand/widget/recent/ViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(275304);
+      AppMethodBeat.o(324116);
       return;
-      if ((!this.rFH) && (paramInt == 2))
+      if ((!this.uQT) && (paramInt == 2))
       {
-        this.rFH = true;
+        this.uQT = true;
       }
       else if (paramInt == 0)
       {
-        this.rFw = this.CL;
-        this.rFH = false;
-        i = this.rFz;
-        int j = this.rFD.kJ();
+        this.uQI = this.biT;
+        this.uQT = false;
+        i = this.uQL;
+        int j = this.uQP.Ju();
         Log.i("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos: %d", new Object[] { Integer.valueOf(j) });
         if (j != -1)
         {
-          this.rFz = (j / this.rFA);
-          Log.i("ViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.rFz), Integer.valueOf(j) });
-          if ((i != this.rFz) && (this.rFG != null)) {}
+          this.uQL = (j / this.uQM);
+          Log.i("ViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.uQL), Integer.valueOf(j) });
+          if ((i != this.uQL) && (this.uQS != null)) {}
           label291:
-          this.rFI = false;
-          this.rFx = 0;
-          if (!this.rFE) {
-            break label483;
+          this.uQU = false;
+          this.uQJ = 0;
+          if (!this.uQQ) {
+            break label531;
           }
           Log.d("ViewPagerHelper", "alvinluo scrollMore");
-          d.cqh();
-          this.rFE = false;
-          this.rFB = this.rFB;
-          this.rFC = true;
-          i = Em(0);
-          this.alG = En(i);
-          this.rFz = Em(this.rFD.kK());
-          Log.i("ViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.rFz), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(this.alG) });
-          W(this.alG, true);
-          cqk();
+          if (!d.cSN()) {
+            break label398;
+          }
+          this.uQQ = false;
+          a(0, this.uQN, true);
+          cSR();
         }
         for (;;)
         {
-          if (!this.rFJ) {
-            break label488;
+          if (!this.uQV) {
+            break label536;
           }
           Log.i("ViewPagerHelper", "alvinluo scrollBy x: -1, y: 0");
-          this.rFJ = false;
-          this.rFv.scrollBy(-1, 0);
+          this.uQV = false;
+          this.uQH.scrollBy(-1, 0);
           break;
-          Log.e("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.rFz) });
+          Log.e("ViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.uQL) });
           break label291;
-          label483:
-          cqk();
+          label398:
+          this.uQH.getAdapter().by(this.uQH.getDataCount(), 5);
+          paramRecyclerView = this.uQN;
+          this.uQQ = false;
+          int k = this.uQH.getDataCount();
+          j = k / this.uQM;
+          i = j;
+          if (k % this.uQM == 0) {
+            i = j + 1;
+          }
+          int m = i + 1;
+          j = this.uQM * m;
+          i = j;
+          if (j <= 0) {
+            i = 0;
+          }
+          Log.i("ViewPagerHelper", "alvinluo smoothScrollToLastPage allCount: %d, lastPage: %d, targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
+          a(i, paramRecyclerView, false);
+          continue;
+          label531:
+          cSR();
         }
       }
       else
       {
-        label488:
+        label536:
         if (paramInt == 1)
         {
           Log.i("ViewPagerHelper", "SCROLL_STATE_DRAGGING");
-          this.rFI = true;
+          this.uQU = true;
         }
       }
     }
@@ -271,17 +308,17 @@ public final class n
   
   public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(275302);
+    AppMethodBeat.i(324102);
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt1);
-    localb.sg(paramInt2);
-    a.c("com/tencent/mm/plugin/appbrand/widget/recent/ViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt1);
+    localb.sc(paramInt2);
+    a.c("com/tencent/mm/plugin/appbrand/widget/recent/ViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    this.rFx += paramInt1;
-    this.CL += paramInt1;
+    this.uQJ += paramInt1;
+    this.biT += paramInt1;
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/recent/ViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-    AppMethodBeat.o(275302);
+    AppMethodBeat.o(324102);
   }
   
   public static abstract interface a {}
@@ -290,7 +327,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recent.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
 package com.tencent.mm.plugin.expt.b;
 
-import android.content.Context;
-import android.content.Intent;
+import java.util.List;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void awb(String paramString);
-  
-  public abstract void dbq();
-  
-  public abstract void q(Context paramContext, Intent paramIntent);
+  public abstract List<String> hd(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.a
  * JD-Core Version:    0.7.0.1
  */

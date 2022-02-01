@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.ay.a.a.c;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.plugin.shake.b.f;
-import com.tencent.mm.plugin.shake.b.g;
-import com.tencent.mm.plugin.shake.b.m;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.shake.model.f;
+import com.tencent.mm.plugin.shake.model.g;
+import com.tencent.mm.plugin.shake.model.m;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
@@ -27,23 +27,23 @@ public final class e
     if (!Util.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).fullPath = m.Wl(paramString);
-      ((c.a)localObject).lRD = true;
-      ((c.a)localObject).kOl = true;
-      ((c.a)localObject).kPz = paramBoolean;
+      ((c.a)localObject).fullPath = m.Ol(paramString);
+      ((c.a)localObject).oKp = true;
+      ((c.a)localObject).nqa = true;
+      ((c.a)localObject).nrc = paramBoolean;
       if (paramInt != 0) {
-        ((c.a)localObject).lRS = paramInt;
+        ((c.a)localObject).oKE = paramInt;
       }
-      localObject = ((c.a)localObject).bmL();
-      q.bml().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).bKx();
+      r.bKe().a(paramString, paramImageView, (c)localObject);
     }
     AppMethodBeat.o(28577);
   }
   
-  public static String fIl()
+  public static String gYf()
   {
     AppMethodBeat.i(28578);
-    Object localObject2 = m.fHp().fHg();
+    Object localObject2 = m.gXe().gWU();
     Object localObject1 = new StringBuilder();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())

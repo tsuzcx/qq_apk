@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a74" android:paddingTop="@dimen/hv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/a75" android:showDividers="middle"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:profile="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b9r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/ba7" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/kyq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/bak" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/hs3" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bfk" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/dav" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bgz" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/brq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bag" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/ecg" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/dy5" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/jmt" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bft" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/dkl" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bfn" />
-    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/gmh" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bfr" />
-    <View android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fml" android:layout_width="fill_parent" android:layout_height="53.0dip" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="1.0dip">
+        <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bke" android:background="@drawable/agl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_marginEnd="@dimen/k" />
+        <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/fh2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMTextView android:textSize="17.0dip" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fh4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="240.0dip" android:text="打火机" android:singleLine="true" />
+                <TextView android:textSize="@dimen/ce" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fh3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:text="（0）" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/bkd" android:layout_width="@dimen/as3" android:layout_height="@dimen/as0" android:layout_marginLeft="@dimen/as1" android:layout_marginRight="@dimen/as2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </LinearLayout>
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" />
 </LinearLayout>

@@ -12,12 +12,12 @@ public class FavorPayInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FavorPayInfo> CREATOR;
-  public String OPI;
-  public int OPJ;
-  public String OPK;
-  public String OPL;
-  public String OPM;
-  public List<String> OPN;
+  public String VFC;
+  public int VFD;
+  public String VFE;
+  public String VFF;
+  public String VFG;
+  public List<String> VFH;
   
   static
   {
@@ -29,20 +29,20 @@ public class FavorPayInfo
   public FavorPayInfo()
   {
     AppMethodBeat.i(70276);
-    this.OPN = new LinkedList();
+    this.VFH = new LinkedList();
     AppMethodBeat.o(70276);
   }
   
   public FavorPayInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70277);
-    this.OPN = new LinkedList();
-    this.OPI = paramParcel.readString();
-    this.OPJ = paramParcel.readInt();
-    this.OPK = paramParcel.readString();
-    this.OPL = paramParcel.readString();
-    this.OPM = paramParcel.readString();
-    this.OPN = paramParcel.createStringArrayList();
+    this.VFH = new LinkedList();
+    this.VFC = paramParcel.readString();
+    this.VFD = paramParcel.readInt();
+    this.VFE = paramParcel.readString();
+    this.VFF = paramParcel.readString();
+    this.VFG = paramParcel.readString();
+    this.VFH = paramParcel.createStringArrayList();
     AppMethodBeat.o(70277);
   }
   
@@ -54,11 +54,11 @@ public class FavorPayInfo
   public String toString()
   {
     AppMethodBeat.i(70279);
-    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.OPI, Integer.valueOf(this.OPJ), this.OPK, this.OPL, this.OPM }));
-    if (this.OPN != null)
+    Object localObject = new StringBuffer(String.format("FavorPayInfo %s isNeedBankPay %s needBankType %s defaultFavorCompId %s changeBankcardTips %s", new Object[] { this.VFC, Integer.valueOf(this.VFD), this.VFE, this.VFF, this.VFG }));
+    if (this.VFH != null)
     {
       ((StringBuffer)localObject).append("bind_serial_list :");
-      Iterator localIterator = this.OPN.iterator();
+      Iterator localIterator = this.VFH.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -73,18 +73,18 @@ public class FavorPayInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70278);
-    paramParcel.writeString(this.OPI);
-    paramParcel.writeInt(this.OPJ);
-    paramParcel.writeString(this.OPK);
-    paramParcel.writeString(this.OPL);
-    paramParcel.writeString(this.OPM);
-    paramParcel.writeStringList(this.OPN);
+    paramParcel.writeString(this.VFC);
+    paramParcel.writeInt(this.VFD);
+    paramParcel.writeString(this.VFE);
+    paramParcel.writeString(this.VFF);
+    paramParcel.writeString(this.VFG);
+    paramParcel.writeStringList(this.VFH);
     AppMethodBeat.o(70278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.FavorPayInfo
  * JD-Core Version:    0.7.0.1
  */

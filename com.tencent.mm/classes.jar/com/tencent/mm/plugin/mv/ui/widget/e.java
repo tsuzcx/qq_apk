@@ -12,30 +12,30 @@ import com.tencent.mm.hellhoundlib.b.b;
 
 public final class e
 {
-  private final a GrU;
-  private float GrV;
-  private float GrW;
-  private boolean GrX;
-  private boolean GrY;
-  private float GrZ;
-  private float Gsa;
-  private float Gsb;
-  private float Gsc;
-  private float Gsd;
-  private float Gse;
-  private float Gsf;
-  private long Gsg;
-  private long Gsh;
-  private boolean Gsi;
-  private int Gsj;
-  private int Gsk;
-  float Gsl;
-  float Gsm;
-  int Gsn;
-  private boolean Gso;
+  private final a MlW;
+  private float MlX;
+  private float MlY;
+  private boolean MlZ;
+  private boolean Mma;
+  float Mmb;
+  float Mmc;
+  private float Mmd;
+  private float Mme;
+  private float Mmf;
+  private float Mmg;
+  private float Mmh;
+  private long Mmi;
+  private long Mmj;
+  private boolean Mmk;
+  int Mml;
+  private int Mmm;
+  float Mmn;
+  float Mmo;
+  int Mmp;
+  boolean Mmq;
   private final Context mContext;
   private final Handler mHandler;
-  private GestureDetector pCU;
+  private GestureDetector mQj;
   
   public e(Context paramContext, a parama)
   {
@@ -44,134 +44,100 @@ public final class e
   
   private e(Context paramContext, a parama, byte paramByte)
   {
-    AppMethodBeat.i(229140);
-    this.Gsn = 0;
+    AppMethodBeat.i(286664);
+    this.Mmp = 0;
     this.mContext = paramContext;
-    this.GrU = parama;
+    this.MlW = parama;
     parama = ViewConfiguration.get(paramContext);
-    this.Gsj = (parama.getScaledTouchSlop() * 2);
-    this.Gsk = (parama.getScaledTouchSlop() * 4);
+    this.Mml = (parama.getScaledTouchSlop() * 2);
+    this.Mmm = (parama.getScaledTouchSlop() * 4);
     this.mHandler = null;
     paramByte = paramContext.getApplicationInfo().targetSdkVersion;
     if (paramByte > 18)
     {
-      this.GrX = true;
-      if ((this.GrX) && (this.pCU == null))
+      this.MlZ = true;
+      if ((this.MlZ) && (this.mQj == null))
       {
         paramContext = new GestureDetector.SimpleOnGestureListener()
         {
           public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(233245);
+            AppMethodBeat.i(286681);
             b localb = new b();
-            localb.bn(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+            localb.cH(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
             boolean bool = super.onContextClick(paramAnonymousMotionEvent);
             com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(233245);
+            AppMethodBeat.o(286681);
             return bool;
           }
           
           public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(233237);
+            AppMethodBeat.i(286659);
             b localb = new b();
-            localb.bn(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-            e.this.Gsl = paramAnonymousMotionEvent.getX();
-            e.this.Gsm = paramAnonymousMotionEvent.getY();
-            e.this.Gsn = 1;
+            localb.cH(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
+            e.this.Mmn = paramAnonymousMotionEvent.getX();
+            e.this.Mmo = paramAnonymousMotionEvent.getY();
+            e.this.Mmp = 1;
             com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(233237);
+            AppMethodBeat.o(286659);
             return true;
           }
           
           public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(233243);
+            AppMethodBeat.i(286675);
             b localb = new b();
-            localb.bn(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+            localb.cH(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
             super.onLongPress(paramAnonymousMotionEvent);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-            AppMethodBeat.o(233243);
+            AppMethodBeat.o(286675);
           }
           
           public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(233240);
+            AppMethodBeat.i(286666);
             b localb = new b();
-            localb.bn(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+            localb.cH(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
             boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
             com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-            AppMethodBeat.o(233240);
+            AppMethodBeat.o(286666);
             return bool;
           }
         };
-        this.pCU = new GestureDetector(this.mContext, paramContext, this.mHandler);
+        this.mQj = new GestureDetector(this.mContext, paramContext, this.mHandler);
       }
     }
     if (paramByte > 22) {
-      this.GrY = true;
+      this.Mma = true;
     }
-    AppMethodBeat.o(229140);
+    AppMethodBeat.o(286664);
   }
   
-  private boolean fip()
+  final boolean gss()
   {
-    return this.Gsn != 0;
-  }
-  
-  public final float fiq()
-  {
-    AppMethodBeat.i(229150);
-    float f;
-    if (fip())
-    {
-      if (((this.Gso) && (this.GrZ < this.Gsa)) || ((!this.Gso) && (this.GrZ > this.Gsa))) {}
-      for (int i = 1;; i = 0)
-      {
-        f = Math.abs(1.0F - this.GrZ / this.Gsa) * 0.5F;
-        if (this.Gsa > this.Gsj) {
-          break;
-        }
-        AppMethodBeat.o(229150);
-        return 1.0F;
-      }
-      if (i != 0)
-      {
-        AppMethodBeat.o(229150);
-        return 1.0F + f;
-      }
-      AppMethodBeat.o(229150);
-      return 1.0F - f;
-    }
-    if (this.Gsa > 0.0F)
-    {
-      f = this.GrZ / this.Gsa;
-      AppMethodBeat.o(229150);
-      return f;
-    }
-    AppMethodBeat.o(229150);
-    return 1.0F;
+    return this.Mmp != 0;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(229146);
-    this.Gsg = paramMotionEvent.getEventTime();
+    AppMethodBeat.i(286685);
+    this.Mmi = paramMotionEvent.getEventTime();
     int i1 = paramMotionEvent.getActionMasked();
-    if (this.GrX)
+    if (this.MlZ)
     {
-      GestureDetector localGestureDetector = this.pCU;
-      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      GestureDetector localGestureDetector = this.mQj;
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aYi(), "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sb(0)), "com/tencent/mm/plugin/mv/ui/widget/ScaleGestureDetector", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
     int n = paramMotionEvent.getPointerCount();
     int j;
-    if (this.Gsn == 2)
+    if (this.Mmp == 2)
     {
       i = 1;
       if ((i1 != 1) && (i1 != 3) && (i == 0)) {
@@ -182,14 +148,14 @@ public final class e
       if ((i1 != 0) && (j == 0)) {
         break label232;
       }
-      if (!this.Gsi) {
+      if (!this.Mmk) {
         break label202;
       }
-      this.GrU.b(this);
-      this.Gsi = false;
-      this.Gsb = 0.0F;
+      this.MlW.b(this);
+      this.Mmk = false;
+      this.Mmd = 0.0F;
     }
-    for (this.Gsn = 0;; this.Gsn = 0)
+    for (this.Mmp = 0;; this.Mmp = 0)
     {
       label196:
       label202:
@@ -198,19 +164,19 @@ public final class e
         if (j == 0) {
           break label232;
         }
-        AppMethodBeat.o(229146);
+        AppMethodBeat.o(286685);
         return true;
         i = 0;
         break;
         j = 0;
         break label136;
-      } while ((!fip()) || (j == 0));
-      this.Gsi = false;
-      this.Gsb = 0.0F;
+      } while ((!gss()) || (j == 0));
+      this.Mmk = false;
+      this.Mmd = 0.0F;
     }
     label232:
-    if ((!this.Gsi) && (this.GrY)) {
-      fip();
+    if ((!this.Mmk) && (this.Mma)) {
+      gss();
     }
     int k;
     label287:
@@ -235,15 +201,15 @@ public final class e
       }
       k = n - 1;
       label313:
-      if (!fip()) {
+      if (!gss()) {
         break label457;
       }
-      f2 = this.Gsl;
-      f1 = this.Gsm;
+      f2 = this.Mmn;
+      f1 = this.Mmo;
       if (paramMotionEvent.getY() >= f1) {
         break label449;
       }
-      this.Gso = true;
+      this.Mmq = true;
     }
     float f3;
     for (;;)
@@ -276,7 +242,7 @@ public final class e
       k = n;
       break label313;
       label449:
-      this.Gso = false;
+      this.Mmq = false;
       continue;
       label457:
       m = 0;
@@ -301,60 +267,64 @@ public final class e
     float f5 = 2.0F * f4;
     float f4 = 2.0F * f3;
     boolean bool;
-    if (fip())
+    if (gss())
     {
       f3 = f4;
-      bool = this.Gsi;
-      this.GrV = f2;
-      this.GrW = f1;
-      if ((!fip()) && (this.Gsi) && ((f3 < this.Gsk) || (i != 0)))
+      bool = this.Mmk;
+      this.MlX = f2;
+      this.MlY = f1;
+      if ((!gss()) && (this.Mmk) && ((f3 < this.Mmm) || (i != 0)))
       {
-        this.GrU.b(this);
-        this.Gsi = false;
-        this.Gsb = f3;
+        this.MlW.b(this);
+        this.Mmk = false;
+        this.Mmd = f3;
       }
       if (i != 0)
       {
-        this.Gsc = f5;
-        this.Gse = f5;
-        this.Gsd = f4;
-        this.Gsf = f4;
-        this.GrZ = f3;
-        this.Gsa = f3;
-        this.Gsb = f3;
+        this.Mme = f5;
+        this.Mmg = f5;
+        this.Mmf = f4;
+        this.Mmh = f4;
+        this.Mmb = f3;
+        this.Mmc = f3;
+        this.Mmd = f3;
       }
-      if (!fip()) {
-        break label890;
+      if (!gss()) {
+        break label899;
       }
     }
-    label890:
-    for (int i = this.Gsj;; i = this.Gsk)
+    label899:
+    for (int i = this.Mml;; i = this.Mmm)
     {
-      if ((!this.Gsi) && (f3 >= i) && ((bool) || (Math.abs(f3 - this.Gsb) > this.Gsj)))
+      if ((!this.Mmk) && (f3 >= i) && ((bool) || (Math.abs(f3 - this.Mmd) > this.Mml)))
       {
-        this.Gsc = f5;
-        this.Gse = f5;
-        this.Gsd = f4;
-        this.Gsf = f4;
-        this.GrZ = f3;
-        this.Gsa = f3;
-        this.Gsh = this.Gsg;
-        this.Gsi = this.GrU.a(this);
+        this.Mme = f5;
+        this.Mmg = f5;
+        this.Mmf = f4;
+        this.Mmh = f4;
+        this.Mmb = f3;
+        this.Mmc = f3;
+        this.Mmj = this.Mmi;
+        this.Mmk = this.MlW.a(this);
       }
       if (i1 == 2)
       {
-        this.Gsc = f5;
-        this.Gsd = f4;
-        this.GrZ = f3;
-        if (this.Gsi) {
-          this.GrU.c(this);
+        this.Mme = f5;
+        this.Mmf = f4;
+        this.Mmb = f3;
+        bool = true;
+        if (this.Mmk) {
+          bool = this.MlW.c(this);
         }
-        this.Gse = this.Gsc;
-        this.Gsf = this.Gsd;
-        this.Gsa = this.GrZ;
-        this.Gsh = this.Gsg;
+        if (bool)
+        {
+          this.Mmg = this.Mme;
+          this.Mmh = this.Mmf;
+          this.Mmc = this.Mmb;
+          this.Mmj = this.Mmi;
+        }
       }
-      AppMethodBeat.o(229146);
+      AppMethodBeat.o(286685);
       return true;
       f3 = (float)Math.hypot(f5, f4);
       break;

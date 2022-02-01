@@ -1,20 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.widget.input.ah;
-import java.lang.ref.WeakReference;
-
 public final class e
-  extends c<ad>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static final int CTRL_INDEX = 119;
-  private static final String NAME = "removeTextArea";
+  public static final int CTRL_INDEX = 1034;
+  public static final String NAME = "minimizeGameLive";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.e
  * JD-Core Version:    0.7.0.1
  */

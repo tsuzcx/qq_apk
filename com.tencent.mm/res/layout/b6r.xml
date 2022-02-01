@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/azq" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/g" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/frm" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/hrk" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij">
-        <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/dwr" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/i5g" android:background="@null" android:layout_width="@dimen/k3" android:layout_height="@dimen/k3" android:src="@drawable/btb" android:scaleType="centerInside" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <FrameLayout android:id="@id/dy2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/k5" android:layout_weight="1.0">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/gl7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:progressDrawable="@drawable/apm" android:minHeight="@dimen/aj8" style="?android:progressBarStyleHorizontal" />
-        <TextView android:textSize="@dimen/hc" android:layout_gravity="center_vertical" android:id="@id/dy9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h13" />
-    </FrameLayout>
-    <ImageButton android:id="@id/aib" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a_5" />
-</LinearLayout>
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/al6" android:gravity="center" android:id="@id/frl" android:background="@drawable/acv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gab" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" />
+</RelativeLayout>

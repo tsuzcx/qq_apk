@@ -27,7 +27,6 @@ import com.google.android.gms.common.internal.GmsClientEventManager.GmsClientEve
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.service.Common;
 import com.google.android.gms.common.internal.service.CommonApi;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.signin.SignInClient;
 import com.google.android.gms.signin.SignInOptions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -47,7 +46,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzav
   extends GoogleApiClient
@@ -62,7 +60,6 @@ public final class zzav
   private final Lock zzga;
   private final ClientSettings zzgf;
   private final Map<Api<?>, Boolean> zzgi;
-  @VisibleForTesting
   final Queue<BaseImplementation.ApiMethodImpl<?, ?>> zzgo;
   private final GmsClientEventManager zzie;
   private zzbp zzif;
@@ -70,7 +67,6 @@ public final class zzav
   private long zzih;
   private long zzii;
   private final zzba zzij;
-  @VisibleForTesting
   private GooglePlayServicesUpdatedReceiver zzik;
   final Map<Api.AnyClientKey<?>, Api.Client> zzil;
   Set<Scope> zzim;
@@ -186,7 +182,6 @@ public final class zzav
     AppMethodBeat.o(11272);
   }
   
-  @GuardedBy("mLock")
   private final void zzax()
   {
     AppMethodBeat.i(11277);
@@ -831,16 +826,16 @@ public final class zzav
   
   public final void stopAutoManage(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(257054);
+    AppMethodBeat.i(210382);
     paramFragmentActivity = new LifecycleActivity(paramFragmentActivity);
     if (this.zzde >= 0)
     {
       zzi.zza(paramFragmentActivity).zzc(this.zzde);
-      AppMethodBeat.o(257054);
+      AppMethodBeat.o(210382);
       return;
     }
     paramFragmentActivity = new IllegalStateException("Called stopAutoManage but automatic lifecycle management is not enabled.");
-    AppMethodBeat.o(257054);
+    AppMethodBeat.o(210382);
     throw paramFragmentActivity;
   }
   
@@ -877,7 +872,6 @@ public final class zzav
     }
   }
   
-  @GuardedBy("mLock")
   final boolean zzaz()
   {
     AppMethodBeat.i(11280);
@@ -898,7 +892,6 @@ public final class zzav
     return true;
   }
   
-  @GuardedBy("mLock")
   public final void zzb(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(11289);
@@ -920,7 +913,6 @@ public final class zzav
     AppMethodBeat.o(11289);
   }
   
-  @GuardedBy("mLock")
   public final void zzb(Bundle paramBundle)
   {
     AppMethodBeat.i(11287);
@@ -996,7 +988,6 @@ public final class zzav
     return localObject;
   }
   
-  @GuardedBy("mLock")
   public final void zzc(ConnectionResult paramConnectionResult)
   {
     AppMethodBeat.i(11288);
@@ -1013,7 +1004,7 @@ public final class zzav
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzav
  * JD-Core Version:    0.7.0.1
  */

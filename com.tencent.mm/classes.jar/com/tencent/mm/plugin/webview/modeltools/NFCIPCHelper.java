@@ -5,47 +5,45 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.k;
-import com.tencent.mm.f.a.k.a;
+import com.tencent.mm.autogen.a.m.a;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class NFCIPCHelper
 {
-  public static void b(k paramk)
+  public static void b(com.tencent.mm.autogen.a.m paramm)
   {
-    AppMethodBeat.i(234002);
-    Log.i("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult actionCode: %d", new Object[] { Integer.valueOf(paramk.fuF.actionCode) });
+    AppMethodBeat.i(295820);
+    Log.i("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult actionCode: %d", new Object[] { Integer.valueOf(paramm.hyZ.actionCode) });
     try
     {
-      NFCEventTransfer localNFCEventTransfer = new NFCEventTransfer(paramk);
+      NFCEventTransfer localNFCEventTransfer = new NFCEventTransfer(paramm);
       localNFCEventTransfer = (NFCEventTransfer)XIPCInvoker.a(ToolsProcessIPCService.PROCESS_NAME, localNFCEventTransfer, a.class);
-      if ((localNFCEventTransfer != null) && (localNFCEventTransfer.fuK != null))
+      if ((localNFCEventTransfer != null) && (localNFCEventTransfer.hze != null))
       {
-        paramk.fuG.fuK = localNFCEventTransfer.fuK;
-        AppMethodBeat.o(234002);
+        paramm.hza.hze = localNFCEventTransfer.hze;
+        AppMethodBeat.o(295820);
         return;
       }
-      gWm();
-      AppMethodBeat.o(234002);
+      ivS();
+      AppMethodBeat.o(295820);
       return;
     }
-    catch (Exception paramk)
+    catch (Exception paramm)
     {
-      Log.printErrStackTrace("MicroMsg.NFCIPCHelper", paramk, "alvinluo nfcInvokeAsResult exception", new Object[0]);
-      gWm();
-      AppMethodBeat.o(234002);
+      Log.printErrStackTrace("MicroMsg.NFCIPCHelper", paramm, "alvinluo nfcInvokeAsResult exception", new Object[0]);
+      ivS();
+      AppMethodBeat.o(295820);
     }
   }
   
-  private static void gWm()
+  private static void ivS()
   {
     AppMethodBeat.i(79142);
     Log.e("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult error");
-    h.IzE.el(968, 0);
+    h.OAn.kJ(968, 0);
     AppMethodBeat.o(79142);
   }
   
@@ -54,10 +52,10 @@ public final class NFCIPCHelper
   {
     public static final Parcelable.Creator<NFCEventTransfer> CREATOR;
     public int actionCode;
-    public String fuH;
-    public boolean fuI;
-    public boolean fuJ;
-    public Bundle fuK;
+    public String hzb;
+    public boolean hzc;
+    public boolean hzd;
+    public Bundle hze;
     
     static
     {
@@ -70,11 +68,11 @@ public final class NFCIPCHelper
     {
       AppMethodBeat.i(79138);
       this.actionCode = paramParcel.readInt();
-      this.fuH = paramParcel.readString();
+      this.hzb = paramParcel.readString();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.fuI = bool1;
+        this.hzc = bool1;
         if (paramParcel.readByte() == 0) {
           break label81;
         }
@@ -82,8 +80,8 @@ public final class NFCIPCHelper
       label81:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.fuJ = bool1;
-        this.fuK = paramParcel.readBundle(getClass().getClassLoader());
+        this.hzd = bool1;
+        this.hze = paramParcel.readBundle(getClass().getClassLoader());
         AppMethodBeat.o(79138);
         return;
         bool1 = false;
@@ -91,12 +89,12 @@ public final class NFCIPCHelper
       }
     }
     
-    public NFCEventTransfer(k paramk)
+    public NFCEventTransfer(com.tencent.mm.autogen.a.m paramm)
     {
-      this.actionCode = paramk.fuF.actionCode;
-      this.fuH = paramk.fuF.fuH;
-      this.fuI = paramk.fuF.fuI;
-      this.fuJ = paramk.fuF.fuJ;
+      this.actionCode = paramm.hyZ.actionCode;
+      this.hzb = paramm.hyZ.hzb;
+      this.hzc = paramm.hyZ.hzc;
+      this.hzd = paramm.hyZ.hzd;
     }
     
     public int describeContents()
@@ -109,12 +107,12 @@ public final class NFCIPCHelper
       byte b2 = 1;
       AppMethodBeat.i(79139);
       paramParcel.writeInt(this.actionCode);
-      paramParcel.writeString(this.fuH);
-      if (this.fuI)
+      paramParcel.writeString(this.hzb);
+      if (this.hzc)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.fuJ) {
+        if (!this.hzd) {
           break label72;
         }
       }
@@ -122,7 +120,7 @@ public final class NFCIPCHelper
       for (byte b1 = b2;; b1 = 0)
       {
         paramParcel.writeByte(b1);
-        paramParcel.writeBundle(this.fuK);
+        paramParcel.writeBundle(this.hze);
         AppMethodBeat.o(79139);
         return;
         b1 = 0;
@@ -132,7 +130,7 @@ public final class NFCIPCHelper
   }
   
   static class a
-    implements m<NFCIPCHelper.NFCEventTransfer, NFCIPCHelper.NFCEventTransfer>
+    implements com.tencent.mm.ipcinvoker.m<NFCIPCHelper.NFCEventTransfer, NFCIPCHelper.NFCEventTransfer>
   {}
 }
 

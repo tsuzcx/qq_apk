@@ -1,19 +1,32 @@
 package com.tencent.mm.plugin.music.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.j;
+import com.tencent.mm.aw.j;
 import com.tencent.mm.plugin.music.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
+  public static void B(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(137167);
+    if (gmX())
+    {
+      ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).B(paramString, paramArrayOfByte);
+      AppMethodBeat.o(137167);
+      return;
+    }
+    Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    AppMethodBeat.o(137167);
+  }
+  
   public static void a(String paramString, a parama)
   {
     AppMethodBeat.i(137170);
-    if (fdV())
+    if (gmX())
     {
-      ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).a(paramString, parama);
+      ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).a(paramString, parama);
       AppMethodBeat.o(137170);
       return;
     }
@@ -21,26 +34,12 @@ public final class e
     AppMethodBeat.o(137170);
   }
   
-  public static j aRG(String paramString)
-  {
-    AppMethodBeat.i(137166);
-    if (fdV())
-    {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).aRG(paramString);
-      AppMethodBeat.o(137166);
-      return paramString;
-    }
-    Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
-    AppMethodBeat.o(137166);
-    return null;
-  }
-  
-  public static a aRK(String paramString)
+  public static a aOC(String paramString)
   {
     AppMethodBeat.i(137169);
-    if (fdV())
+    if (gmX())
     {
-      paramString = ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).aRK(paramString);
+      paramString = ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).aOC(paramString);
       AppMethodBeat.o(137169);
       return paramString;
     }
@@ -50,33 +49,26 @@ public final class e
     return paramString;
   }
   
-  public static boolean fdV()
+  public static j aOy(String paramString)
   {
-    AppMethodBeat.i(137164);
-    if (com.tencent.mm.plugin.music.f.c.b.bm(c.class) != null)
+    AppMethodBeat.i(137166);
+    if (gmX())
     {
-      AppMethodBeat.o(137164);
-      return true;
+      paramString = ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).aOy(paramString);
+      AppMethodBeat.o(137166);
+      return paramString;
     }
-    AppMethodBeat.o(137164);
-    return false;
-  }
-  
-  public static void ft(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(137168);
-    if (fdV()) {
-      ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).ft(paramString, paramInt);
-    }
-    AppMethodBeat.o(137168);
+    Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+    AppMethodBeat.o(137166);
+    return null;
   }
   
   public static String getAccPath()
   {
     AppMethodBeat.i(137165);
-    if (fdV())
+    if (gmX())
     {
-      str = ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).getAccPath();
+      str = ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).getAccPath();
       if (!Util.isNullOrNil(str))
       {
         AppMethodBeat.o(137165);
@@ -84,22 +76,30 @@ public final class e
       }
     }
     Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
-    String str = com.tencent.mm.loader.j.b.aSL();
+    String str = com.tencent.mm.loader.i.b.bmz();
     AppMethodBeat.o(137165);
     return str;
   }
   
-  public static void x(String paramString, byte[] paramArrayOfByte)
+  public static void gm(String paramString, int paramInt)
   {
-    AppMethodBeat.i(137167);
-    if (fdV())
-    {
-      ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).x(paramString, paramArrayOfByte);
-      AppMethodBeat.o(137167);
-      return;
+    AppMethodBeat.i(137168);
+    if (gmX()) {
+      ((c)com.tencent.mm.plugin.music.e.c.b.bU(c.class)).gm(paramString, paramInt);
     }
-    Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
-    AppMethodBeat.o(137167);
+    AppMethodBeat.o(137168);
+  }
+  
+  public static boolean gmX()
+  {
+    AppMethodBeat.i(137164);
+    if (com.tencent.mm.plugin.music.e.c.b.bU(c.class) != null)
+    {
+      AppMethodBeat.o(137164);
+      return true;
+    }
+    AppMethodBeat.o(137164);
+    return false;
   }
 }
 

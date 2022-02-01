@@ -1,6 +1,5 @@
 package com.tencent.liteav.trtc.impl;
 
-import android.annotation.SuppressLint;
 import android.opengl.GLES20;
 import com.tencent.liteav.basic.a.a;
 import com.tencent.liteav.basic.log.TXCLog;
@@ -36,7 +35,7 @@ public class TRTCVideoPreprocessListenerAdapter
   
   public TRTCVideoPreprocessListenerAdapter()
   {
-    AppMethodBeat.i(228297);
+    AppMethodBeat.i(230721);
     this.mLastFrameSize = new e(0, 0);
     this.mYUVInputFrame = new TRTCCloudDef.TRTCVideoFrame();
     this.mYUVOutputFrame = new TRTCCloudDef.TRTCVideoFrame();
@@ -45,12 +44,12 @@ public class TRTCVideoPreprocessListenerAdapter
     this.mDelayQueue = new a();
     this.mHasNotifiedGLContextCreated = false;
     this.mFrameBufferId = -1;
-    AppMethodBeat.o(228297);
+    AppMethodBeat.o(230721);
   }
   
   private void convertTextureToYUV(int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame)
   {
-    AppMethodBeat.i(228332);
+    AppMethodBeat.i(230751);
     int i = paramTRTCVideoFrame.width;
     int j = paramTRTCVideoFrame.height;
     Object localObject = getRGBAToYUVFilter(paramTRTCVideoFrame.pixelFormat, i, j);
@@ -70,7 +69,7 @@ public class TRTCVideoPreprocessListenerAdapter
     for (;;)
     {
       TXCOpenGlUtils.d(this.mFrameBufferId);
-      AppMethodBeat.o(228332);
+      AppMethodBeat.o(230751);
       return;
       if (paramTRTCVideoFrame.pixelFormat != 4) {
         break;
@@ -84,10 +83,10 @@ public class TRTCVideoPreprocessListenerAdapter
   
   private void convertYUVToTexture(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame, int paramInt)
   {
-    AppMethodBeat.i(228326);
+    AppMethodBeat.i(230744);
     if ((paramTRTCVideoFrame.data == null) && (paramTRTCVideoFrame.buffer == null))
     {
-      AppMethodBeat.o(228326);
+      AppMethodBeat.o(230744);
       return;
     }
     int i = paramTRTCVideoFrame.width;
@@ -103,7 +102,7 @@ public class TRTCVideoPreprocessListenerAdapter
       GLES20.glBindFramebuffer(36160, this.mFrameBufferId);
       localk.a(-1, this.mFrameBufferId, paramInt);
       TXCOpenGlUtils.d(this.mFrameBufferId);
-      AppMethodBeat.o(228326);
+      AppMethodBeat.o(230744);
       return;
       if (paramTRTCVideoFrame.bufferType == 1) {
         localk.a(paramTRTCVideoFrame.buffer);
@@ -113,7 +112,7 @@ public class TRTCVideoPreprocessListenerAdapter
   
   private o getRGBAToYUVFilter(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(228334);
+    AppMethodBeat.i(230757);
     if (this.mRGBAToYUVFilter == null) {
       if (paramInt1 != 1) {
         break label79;
@@ -129,7 +128,7 @@ public class TRTCVideoPreprocessListenerAdapter
       }
       this.mRGBAToYUVFilter.a(paramInt2, paramInt3);
       o localo = this.mRGBAToYUVFilter;
-      AppMethodBeat.o(228334);
+      AppMethodBeat.o(230757);
       return localo;
     }
   }
@@ -137,7 +136,7 @@ public class TRTCVideoPreprocessListenerAdapter
   private k getYUVToRGBAFilter(int paramInt1, int paramInt2, int paramInt3)
   {
     int i = 1;
-    AppMethodBeat.i(228336);
+    AppMethodBeat.i(230763);
     if (this.mYUVToRGBAFilter == null) {
       if (paramInt1 != 1) {
         break label75;
@@ -152,15 +151,14 @@ public class TRTCVideoPreprocessListenerAdapter
       }
       this.mYUVToRGBAFilter.a(paramInt2, paramInt3);
       k localk = this.mYUVToRGBAFilter;
-      AppMethodBeat.o(228336);
+      AppMethodBeat.o(230763);
       return localk;
     }
   }
   
-  @SuppressLint({"NewApi"})
   private static void initVideoFrame(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(228308);
+    AppMethodBeat.i(230731);
     paramTRTCVideoFrame.width = paramInt1;
     paramTRTCVideoFrame.height = paramInt2;
     paramTRTCVideoFrame.pixelFormat = paramInt3;
@@ -172,11 +170,11 @@ public class TRTCVideoPreprocessListenerAdapter
       if ((localObject instanceof android.opengl.EGLContext))
       {
         paramTRTCVideoFrame.texture.eglContext14 = ((android.opengl.EGLContext)localObject);
-        AppMethodBeat.o(228308);
+        AppMethodBeat.o(230731);
         return;
       }
       paramTRTCVideoFrame.texture.eglContext10 = ((javax.microedition.khronos.egl.EGLContext)localObject);
-      AppMethodBeat.o(228308);
+      AppMethodBeat.o(230731);
       return;
     }
     if ((paramInt3 == 1) || (paramInt3 == 4))
@@ -184,41 +182,41 @@ public class TRTCVideoPreprocessListenerAdapter
       if ((paramInt4 == 2) && (paramTRTCVideoFrame.data == null))
       {
         paramTRTCVideoFrame.data = new byte[paramInt1 * paramInt2 * 3 / 2];
-        AppMethodBeat.o(228308);
+        AppMethodBeat.o(230731);
         return;
       }
       if ((paramInt4 == 1) && (paramTRTCVideoFrame.buffer == null)) {
         paramTRTCVideoFrame.buffer = ByteBuffer.allocateDirect(paramInt1 * paramInt2 * 3 / 2);
       }
     }
-    AppMethodBeat.o(228308);
+    AppMethodBeat.o(230731);
   }
   
   private void notifyGLContextCreated()
   {
-    AppMethodBeat.i(228341);
+    AppMethodBeat.i(230764);
     if ((this.mListener != null) && (!this.mHasNotifiedGLContextCreated))
     {
       this.mListener.onGLContextCreated();
       this.mHasNotifiedGLContextCreated = true;
     }
-    AppMethodBeat.o(228341);
+    AppMethodBeat.o(230764);
   }
   
   private void notifyGLContextDestroy()
   {
-    AppMethodBeat.i(228344);
+    AppMethodBeat.i(230766);
     if ((this.mListener != null) && (this.mHasNotifiedGLContextCreated))
     {
       this.mListener.onGLContextDestory();
       this.mHasNotifiedGLContextCreated = false;
     }
-    AppMethodBeat.o(228344);
+    AppMethodBeat.o(230766);
   }
   
   private void releaseOpenGLResources()
   {
-    AppMethodBeat.i(228346);
+    AppMethodBeat.i(230768);
     if (this.mRGBAToYUVFilter != null)
     {
       this.mRGBAToYUVFilter.d();
@@ -231,18 +229,18 @@ public class TRTCVideoPreprocessListenerAdapter
     }
     TXCOpenGlUtils.b(this.mFrameBufferId);
     this.mFrameBufferId = -1;
-    AppMethodBeat.o(228346);
+    AppMethodBeat.o(230768);
   }
   
   private void setListenerInternal(int paramInt1, int paramInt2, TRTCCloudListener.TRTCVideoFrameListener paramTRTCVideoFrameListener)
   {
-    AppMethodBeat.i(228302);
+    AppMethodBeat.i(230726);
     notifyGLContextDestroy();
     this.mPixelFormat = paramInt1;
     this.mBufferType = paramInt2;
     this.mListener = paramTRTCVideoFrameListener;
     notifyGLContextCreated();
-    AppMethodBeat.o(228302);
+    AppMethodBeat.o(230726);
   }
   
   private void shadowCopyVideoFrame(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame1, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame2)
@@ -260,28 +258,28 @@ public class TRTCVideoPreprocessListenerAdapter
   
   public void onGLContextCreated()
   {
-    AppMethodBeat.i(228304);
+    AppMethodBeat.i(230779);
     this.mDelayQueue.a();
     notifyGLContextCreated();
-    AppMethodBeat.o(228304);
+    AppMethodBeat.o(230779);
   }
   
   public void onGLContextReadyToDestory()
   {
-    AppMethodBeat.i(228338);
+    AppMethodBeat.i(230801);
     this.mDelayQueue.a();
     notifyGLContextDestroy();
     releaseOpenGLResources();
-    AppMethodBeat.o(228338);
+    AppMethodBeat.o(230801);
   }
   
   public int onProcessVideoFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(228321);
+    AppMethodBeat.i(230789);
     this.mDelayQueue.a();
     if (this.mListener == null)
     {
-      AppMethodBeat.o(228321);
+      AppMethodBeat.o(230789);
       return paramInt1;
     }
     if ((this.mLastFrameSize.a != paramInt2) || (this.mLastFrameSize.b != paramInt3))
@@ -302,7 +300,7 @@ public class TRTCVideoPreprocessListenerAdapter
       this.mYUVOutputFrame.texture.textureId = paramInt4;
       this.mListener.onProcessVideoFrame(this.mYUVInputFrame, this.mYUVOutputFrame);
       paramInt1 = this.mYUVOutputFrame.texture.textureId;
-      AppMethodBeat.o(228321);
+      AppMethodBeat.o(230789);
       return paramInt1;
     }
     if (this.mFrameBufferId == -1) {
@@ -313,28 +311,28 @@ public class TRTCVideoPreprocessListenerAdapter
     shadowCopyVideoFrame(this.mYUVOutputFrame, this.mShadowOutputFrame);
     this.mListener.onProcessVideoFrame(this.mShadowInputFrame, this.mShadowOutputFrame);
     convertYUVToTexture(this.mShadowOutputFrame, paramInt4);
-    AppMethodBeat.o(228321);
+    AppMethodBeat.o(230789);
     return paramInt4;
   }
   
   public void setListener(final int paramInt1, final int paramInt2, final TRTCCloudListener.TRTCVideoFrameListener paramTRTCVideoFrameListener)
   {
-    AppMethodBeat.i(228299);
+    AppMethodBeat.i(230772);
     this.mDelayQueue.a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(223450);
+        AppMethodBeat.i(230838);
         TRTCVideoPreprocessListenerAdapter.access$000(TRTCVideoPreprocessListenerAdapter.this, paramInt1, paramInt2, paramTRTCVideoFrameListener);
-        AppMethodBeat.o(223450);
+        AppMethodBeat.o(230838);
       }
     });
-    AppMethodBeat.o(228299);
+    AppMethodBeat.o(230772);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCVideoPreprocessListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

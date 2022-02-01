@@ -1,10 +1,7 @@
 package com.google.android.gms.common;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.CheckReturnValue;
-import javax.annotation.Nullable;
 
-@CheckReturnValue
 class zzg
 {
   private static final zzg zzbk;
@@ -19,7 +16,7 @@ class zzg
     AppMethodBeat.o(5361);
   }
   
-  zzg(boolean paramBoolean, @Nullable String paramString, @Nullable Throwable paramThrowable)
+  zzg(boolean paramBoolean, String paramString, Throwable paramThrowable)
   {
     this.zzbl = paramBoolean;
     this.zzbm = paramString;
@@ -55,7 +52,6 @@ class zzg
     return zzbk;
   }
   
-  @Nullable
   String getErrorMessage()
   {
     return this.zzbm;
@@ -100,7 +96,7 @@ class zzg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.zzg
  * JD-Core Version:    0.7.0.1
  */

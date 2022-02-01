@@ -1,13 +1,30 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
-import android.net.Uri;
-import com.tencent.mm.plugin.appbrand.jsapi.video.f;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IContentTypeInferer;", "", "infer", "", "videoCacheService", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/IVideoCacheService;", "uri", "Landroid/net/Uri;", "luggage-commons-jsapi-video-ext_release"})
-public abstract interface d
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/FallbackContainerFormatInferer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IContainerFormatInferer;", "()V", "isHls", "", "src", "", "luggage-commons-jsapi-video-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class d
 {
-  public abstract int a(f paramf, Uri paramUri);
+  public static final d sEK;
+  
+  static
+  {
+    AppMethodBeat.i(328660);
+    sEK = new d();
+    AppMethodBeat.o(328660);
+  }
+  
+  public static boolean acp(String paramString)
+  {
+    AppMethodBeat.i(328655);
+    s.u(paramString, "src");
+    b localb = b.sEI;
+    boolean bool = b.aco(paramString);
+    AppMethodBeat.o(328655);
+    return bool;
+  }
 }
 
 

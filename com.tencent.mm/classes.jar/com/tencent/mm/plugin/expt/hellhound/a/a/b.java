@@ -1,26 +1,19 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.a.b.a.o;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/FragmentFeedStatistics;", "", "()V", "mFollowMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "mFriendMonitor", "mMachineMonitor", "free", "", "start", "activity", "Landroidx/fragment/app/FragmentActivity;", "fragment", "Landroidx/fragment/app/Fragment;", "timestamp", "", "fragmentEventId", "", "stop", "Companion", "plugin-expt_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellResponseDao;", "", "()V", "Companion", "plugin-expt_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final a whD;
-  public o whA;
-  public o whB;
-  public o whC;
+  public static final b.a zLM;
   
   static
   {
-    AppMethodBeat.i(257506);
-    whD = new a((byte)0);
-    AppMethodBeat.o(257506);
+    AppMethodBeat.i(299896);
+    zLM = new b.a((byte)0);
+    AppMethodBeat.o(299896);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/FragmentFeedStatistics$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
-  public static final class a {}
 }
 
 

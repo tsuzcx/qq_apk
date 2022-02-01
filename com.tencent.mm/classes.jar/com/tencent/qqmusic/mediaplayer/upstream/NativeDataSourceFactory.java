@@ -42,7 +42,7 @@ public class NativeDataSourceFactory
             AppMethodBeat.o(114298);
             return l;
           }
-          catch (Throwable localThrowable)
+          finally
           {
             Logger.e("NativeDataSourceFactory", "[getNativeInstance] failed to create native data source!", localThrowable);
             AppMethodBeat.o(114298);
@@ -84,7 +84,7 @@ public class NativeDataSourceFactory
             }
             Logger.w("NativeDataSourceFactory", "[getNativeInstance] so not loaded properly!");
           }
-          catch (Throwable localThrowable)
+          finally
           {
             Logger.e("NativeDataSourceFactory", "[getNativeInstance] failed to create native data source!", localThrowable);
             AppMethodBeat.o(114306);
@@ -103,7 +103,7 @@ public class NativeDataSourceFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.NativeDataSourceFactory
  * JD-Core Version:    0.7.0.1
  */

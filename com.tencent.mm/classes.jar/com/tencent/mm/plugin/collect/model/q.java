@@ -1,70 +1,130 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.egk;
-import com.tencent.mm.protocal.protobuf.egl;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.tenpay.model.m;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class q
-  extends com.tencent.mm.an.q
-  implements m
+  extends m
 {
-  private i callback;
-  private d kwO;
-  private egk tVC;
+  private int limit;
+  public boolean ooe;
+  public boolean vBn;
+  public int wYX;
+  public int wYY;
+  public int wYZ;
+  public long wYy;
+  public int wZa;
+  public String wZb;
+  public List<g> wZc;
   
-  public q(String paramString)
+  public q(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(63838);
-    d.a locala = new d.a();
-    locala.lBU = new egk();
-    locala.lBV = new egl();
-    locala.funcId = 304;
-    locala.uri = "/cgi-bin/micromsg-bin/setpushsound";
-    locala.lBW = 0;
-    locala.respCmdId = 0;
-    this.kwO = locala.bgN();
-    this.tVC = ((egk)d.b.b(this.kwO.lBR));
-    this.tVC.rWu = 3;
-    this.tVC.Ujf = paramString;
-    Log.i("MicroMsg.NetSceneSetPushSound", "type: %d, sound: %s", new Object[] { Integer.valueOf(3), paramString });
-    AppMethodBeat.o(63838);
+    AppMethodBeat.i(63843);
+    this.ooe = false;
+    this.vBn = false;
+    this.wZc = new ArrayList();
+    this.limit = paramInt2;
+    this.wYY = 0;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("type", String.valueOf(paramInt1));
+    localHashMap.put("from_timestamp", String.valueOf(paramLong));
+    localHashMap.put("direction_flag", "0");
+    localHashMap.put("num", String.valueOf(paramInt2));
+    localHashMap.put("choose_flag", String.valueOf(paramInt3));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(63843);
   }
   
-  public final int doScene(g paramg, i parami)
+  public q(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(63839);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
-    AppMethodBeat.o(63839);
-    return i;
+    AppMethodBeat.i(63844);
+    this.ooe = false;
+    this.vBn = false;
+    this.wZc = new ArrayList();
+    this.vBn = true;
+    this.limit = paramInt3;
+    this.wYY = paramInt2;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("type", String.valueOf(paramInt1));
+    localHashMap.put("from_timestamp", String.valueOf(paramLong));
+    localHashMap.put("direction_flag", String.valueOf(paramInt2));
+    localHashMap.put("num", String.valueOf(paramInt3));
+    localHashMap.put("choose_flag", String.valueOf(paramInt4));
+    localHashMap.put("try_num", String.valueOf(paramInt5));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(63844);
   }
   
-  public final int getType()
+  public final int getFuncId()
   {
-    return 304;
+    return 1993;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final int getTenpayCgicmd()
   {
-    AppMethodBeat.i(63840);
-    Log.i("MicroMsg.NetSceneSetPushSound", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    return 0;
+  }
+  
+  public final String getUri()
+  {
+    return "/cgi-bin/mmpay-bin/f2frcvrcdhissta";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(63845);
+    Log.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.wYX = paramJSONObject.optInt("choose_flag", 0);
+    this.wYy = paramJSONObject.optLong("from_timestamp", -1L);
+    this.wYZ = paramJSONObject.optInt("finish_flag", 0);
+    this.wZa = paramJSONObject.optInt("try_num", 0);
+    this.wZb = paramJSONObject.optString("retmsg", "");
+    paramString = paramJSONObject.optJSONArray("records");
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      Log.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
+      if (this.wYZ == 1)
+      {
+        Log.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
+        this.ooe = true;
+      }
+      AppMethodBeat.o(63845);
+      return;
     }
-    AppMethodBeat.o(63840);
+    paramInt = 0;
+    while (paramInt < paramString.length()) {
+      try
+      {
+        paramJSONObject = paramString.getJSONObject(paramInt);
+        g localg = new g();
+        localg.type = paramJSONObject.optInt("type", 0);
+        localg.wYy = paramJSONObject.optLong("from_timestamp", 0L);
+        localg.wYz = paramJSONObject.optInt("total_num", 0);
+        localg.hHX = paramJSONObject.optInt("total_amt", 0);
+        this.wZc.add(localg);
+        paramInt += 1;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.q
  * JD-Core Version:    0.7.0.1
  */

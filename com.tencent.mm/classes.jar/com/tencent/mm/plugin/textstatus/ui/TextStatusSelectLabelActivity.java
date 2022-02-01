@@ -1,50 +1,59 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.textstatus.b.e;
-import com.tencent.mm.plugin.textstatus.b.f;
-import com.tencent.mm.plugin.textstatus.b.h;
+import com.tencent.mm.plugin.textstatus.a.e;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.plugin.textstatus.a.h;
 import com.tencent.mm.ui.MMActivity;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSelectLabelActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "rgVisibleGroup", "Landroid/widget/RadioGroup;", "getRgVisibleGroup", "()Landroid/widget/RadioGroup;", "setRgVisibleGroup", "(Landroid/widget/RadioGroup;)V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSelectLabelActivity;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "rgVisibleGroup", "Landroid/widget/RadioGroup;", "getRgVisibleGroup", "()Landroid/widget/RadioGroup;", "setRgVisibleGroup", "(Landroid/widget/RadioGroup;)V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusSelectLabelActivity
   extends MMActivity
 {
-  public static final a MOf;
-  private RadioGroup MOe;
+  public static final TextStatusSelectLabelActivity.a TAo;
+  private RadioGroup TAp;
   
   static
   {
-    AppMethodBeat.i(234511);
-    MOf = new a((byte)0);
-    AppMethodBeat.o(234511);
+    AppMethodBeat.i(291216);
+    TAo = new TextStatusSelectLabelActivity.a((byte)0);
+    AppMethodBeat.o(291216);
   }
+  
+  private static final void a(TextStatusSelectLabelActivity paramTextStatusSelectLabelActivity, RadioGroup paramRadioGroup, int paramInt)
+  {
+    AppMethodBeat.i(291211);
+    s.u(paramTextStatusSelectLabelActivity, "this$0");
+    paramRadioGroup = new Intent();
+    paramRadioGroup.putExtra("SELECT_VISIBILITY", paramInt);
+    paramTextStatusSelectLabelActivity.setResult(-1, paramRadioGroup);
+    paramTextStatusSelectLabelActivity.finish();
+    AppMethodBeat.o(291211);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.f.Myf;
+    return a.f.TfJ;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(234510);
+    AppMethodBeat.i(291233);
     super.onCreate(paramBundle);
-    setMMTitle(b.h.Mzj);
-    this.MOe = ((RadioGroup)findViewById(b.e.Mwz));
-    paramBundle = this.MOe;
-    if (paramBundle != null)
-    {
-      paramBundle.setOnCheckedChangeListener((RadioGroup.OnCheckedChangeListener)new b(this));
-      AppMethodBeat.o(234510);
-      return;
+    setMMTitle(a.h.Thj);
+    this.TAp = ((RadioGroup)findViewById(a.e.TdP));
+    paramBundle = this.TAp;
+    if (paramBundle != null) {
+      paramBundle.setOnCheckedChangeListener(new TextStatusSelectLabelActivity..ExternalSyntheticLambda0(this));
     }
-    AppMethodBeat.o(234510);
+    AppMethodBeat.o(291233);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -52,30 +61,10 @@ public final class TextStatusSelectLabelActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusSelectLabelActivity$Companion;", "", "()V", "startForResult", "", "context", "Landroid/app/Activity;", "plugin-textstatus_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "group", "Landroid/widget/RadioGroup;", "kotlin.jvm.PlatformType", "checkedId", "", "onCheckedChanged"})
-  static final class b
-    implements RadioGroup.OnCheckedChangeListener
-  {
-    b(TextStatusSelectLabelActivity paramTextStatusSelectLabelActivity) {}
-    
-    public final void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
-    {
-      AppMethodBeat.i(235262);
-      paramRadioGroup = new Intent();
-      paramRadioGroup.putExtra("SELECT_VISIBILITY", paramInt);
-      this.MOg.setResult(-1, paramRadioGroup);
-      this.MOg.finish();
-      AppMethodBeat.o(235262);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.TextStatusSelectLabelActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -4,88 +4,86 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cox
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int rVx;
-  public LinkedList<cow> rVy;
-  
-  public cox()
-  {
-    AppMethodBeat.i(43101);
-    this.rVy = new LinkedList();
-    AppMethodBeat.o(43101);
-  }
+  public aq aavP;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43102);
+    AppMethodBeat.i(32256);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.rVx);
-      paramVarArgs.e(2, 8, this.rVy);
-      AppMethodBeat.o(43102);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.scene);
+      if (this.aavP != null)
+      {
+        paramVarArgs.qD(2, this.aavP.computeSize());
+        this.aavP.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(32256);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bM(1, this.rVx);
-      i = g.a.a.a.c(2, 8, this.rVy);
-      AppMethodBeat.o(43102);
-      return paramInt + 0 + i;
+      i = i.a.a.b.b.a.cJ(1, this.scene) + 0;
+      paramInt = i;
+      if (this.aavP != null) {
+        paramInt = i + i.a.a.a.qC(2, this.aavP.computeSize());
+      }
+      AppMethodBeat.o(32256);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.rVy.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(43102);
+      AppMethodBeat.o(32256);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       cox localcox = (cox)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(43102);
+        AppMethodBeat.o(32256);
         return -1;
       case 1: 
-        localcox.rVx = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(43102);
+        localcox.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(32256);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         localObject = (byte[])paramVarArgs.get(paramInt);
-        cow localcow = new cow();
+        aq localaq = new aq();
         if ((localObject != null) && (localObject.length > 0)) {
-          localcow.parseFrom((byte[])localObject);
+          localaq.parseFrom((byte[])localObject);
         }
-        localcox.rVy.add(localcow);
+        localcox.aavP = localaq;
         paramInt += 1;
       }
-      AppMethodBeat.o(43102);
+      AppMethodBeat.o(32256);
       return 0;
     }
-    AppMethodBeat.o(43102);
+    AppMethodBeat.o(32256);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cox
  * JD-Core Version:    0.7.0.1
  */

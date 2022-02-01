@@ -1,41 +1,70 @@
 package com.tencent.mm.plugin.offline.a;
 
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.coc;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.wallet_core.model.w;
 import org.json.JSONObject;
 
 public final class c
-  extends m
+  extends w
 {
-  public c(String paramString, int paramInt1, int paramInt2)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(66284);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("req_key", paramString);
-    localHashMap.put("pay_scene", String.valueOf(paramInt1));
-    localHashMap.put("pay_channel", String.valueOf(paramInt2));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(66284);
+    AppMethodBeat.i(66279);
+    AppMethodBeat.o(66279);
+    throw null;
   }
   
-  public final int getTenpayCgicmd()
+  public final int getType()
   {
-    return 1385;
+    return 606;
   }
   
-  public final String getUri()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    return "/cgi-bin/mmpay-bin/tenpay/offlinecancelpay";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(66285);
-    Log.i("NetSceneOfflineCancelPay", "onGYNetEnd errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    AppMethodBeat.o(66285);
+    AppMethodBeat.i(66280);
+    if (paramInt2 != 0)
+    {
+      AppMethodBeat.o(66280);
+      throw null;
+    }
+    paramString = (coc)c.c.b(((com.tencent.mm.am.c)params).otC);
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      try
+      {
+        if (!TextUtils.isEmpty(paramString.aavo))
+        {
+          paramString = new JSONObject(paramString.aavo);
+          paramString.optInt("InitValue");
+          paramString.optInt("FastChangedLimit");
+          paramString.optString("guide_tips");
+          AppMethodBeat.o(66280);
+          throw null;
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("MicroMsg.NetSceneGetOffLineInfo", paramString, "", new Object[0]);
+        MMApplicationContext.getContext().getString(a.i.wallet_data_err);
+      }
+    }
+    while (TextUtils.isEmpty(paramString.aavp))
+    {
+      AppMethodBeat.o(66280);
+      throw null;
+    }
+    new JSONObject(paramString.aavp);
+    AppMethodBeat.o(66280);
+    throw null;
   }
 }
 

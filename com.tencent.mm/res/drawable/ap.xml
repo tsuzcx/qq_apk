@@ -1,25 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/b82" />
-    <item android:id="@android:id/secondaryProgress">
-        <scale android:scaleWidth="100%">
-            <selector>
-                <item android:state_enabled="false">
-                    <color android:color="@android:color/transparent" />
-                </item>
-                <item android:drawable="@drawable/b81" />
-            </selector>
-        </scale>
-    </item>
-    <item android:id="@android:id/progress">
-        <scale android:scaleWidth="100%">
-            <selector>
-                <item android:state_enabled="false">
-                    <color android:color="@android:color/transparent" />
-                </item>
-                <item android:drawable="@drawable/b81" />
-            </selector>
-        </scale>
-    </item>
-</layer-list>
+    <item android:state_enabled="false" android:drawable="@drawable/bik" />
+    <item android:state_pressed="true" android:drawable="@drawable/bim" />
+    <item android:state_focused="true" android:state_pressed="false" android:drawable="@drawable/bil" />
+    <item android:drawable="@drawable/bij" />
+</selector>

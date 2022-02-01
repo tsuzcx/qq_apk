@@ -28,18 +28,18 @@ public class APPluginInstallerAndUpdater
   
   static
   {
-    AppMethodBeat.i(252800);
+    AppMethodBeat.i(217624);
     sInstallPathMap = new ConcurrentHashMap();
     sPackageInfoMap = new ConcurrentHashMap();
-    AppMethodBeat.o(252800);
+    AppMethodBeat.o(217624);
   }
   
   public static File getInstallPath(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(252782);
+    AppMethodBeat.i(217552);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(252782);
+      AppMethodBeat.o(217552);
       return null;
     }
     File localFile = (File)sInstallPathMap.get(paramString);
@@ -48,7 +48,7 @@ public class APPluginInstallerAndUpdater
       paramContext = APPluginConfig.getPluginPath(paramContext);
       if (paramContext == null)
       {
-        AppMethodBeat.o(252782);
+        AppMethodBeat.o(217552);
         return null;
       }
       paramContext = paramContext.listFiles();
@@ -59,19 +59,19 @@ public class APPluginInstallerAndUpdater
         if (localObject.getName().startsWith(paramString))
         {
           sInstallPathMap.put(paramString, localObject);
-          AppMethodBeat.o(252782);
+          AppMethodBeat.o(217552);
           return localObject;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(252782);
+    AppMethodBeat.o(217552);
     return localFile;
   }
   
   public static String getInstallPathString(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(252771);
+    AppMethodBeat.i(217504);
     str = "";
     try
     {
@@ -88,7 +88,7 @@ public class APPluginInstallerAndUpdater
         paramContext = str;
       }
     }
-    AppMethodBeat.o(252771);
+    AppMethodBeat.o(217504);
     return paramContext;
   }
   
@@ -272,7 +272,7 @@ public class APPluginInstallerAndUpdater
   
   public static int installFromLocal(Context paramContext)
   {
-    AppMethodBeat.i(252768);
+    AppMethodBeat.i(217498);
     APLog.d("APPluginInstallerAndUpdater", "Calling into installFromLocal " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     APPluginUtils.deleteBKPlugin(paramContext);
     APPluginUtils.copyDirect(paramContext, APPluginConfig.getPluginUpdatePath(paramContext), APPluginConfig.getPluginBackUpPath(paramContext));
@@ -292,7 +292,7 @@ public class APPluginInstallerAndUpdater
           i = j;
         }
         APLog.i("APPluginUtils", "installFromLocal state:".concat(String.valueOf(i)));
-        AppMethodBeat.o(252768);
+        AppMethodBeat.o(217498);
         return i;
       }
     }
@@ -1097,7 +1097,7 @@ public class APPluginInstallerAndUpdater
   
   public static int installPlugin(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(252784);
+    AppMethodBeat.i(217564);
     j = 0;
     int i = 0;
     APLog.d("APPluginInstallerAndUpdater", "installPlugin from = ".concat(String.valueOf(paramInt)));
@@ -1126,9 +1126,9 @@ public class APPluginInstallerAndUpdater
       }
       finally
       {
-        AppMethodBeat.o(252784);
+        AppMethodBeat.o(217564);
       }
-      AppMethodBeat.o(252784);
+      AppMethodBeat.o(217564);
       return paramInt;
       if (paramInt == 2) {
         i = installFromData(paramContext);
@@ -1137,112 +1137,133 @@ public class APPluginInstallerAndUpdater
   }
   
   /* Error */
-  public static int isNeedUpdateFromAssets(Context paramContext)
+  public static int isNeedUpdateFromAssets(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 368
+    //   0: ldc_w 369
     //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc 99
-    //   8: astore_3
-    //   9: aload_0
-    //   10: ldc_w 370
-    //   13: invokestatic 101	com/tencent/midas/plugin/APPluginInstallerAndUpdater:getInstallPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   16: invokevirtual 104	java/io/File:getCanonicalPath	()Ljava/lang/String;
-    //   19: astore 4
-    //   21: aload 4
-    //   23: astore_3
-    //   24: aload_3
-    //   25: invokestatic 60	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   28: ifne +133 -> 161
-    //   31: aload_0
-    //   32: aload_3
-    //   33: invokestatic 374	com/tencent/midas/plugin/APPluginUtils:getPackageInfo	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;
-    //   36: getfield 379	android/content/pm/PackageInfo:versionCode	I
-    //   39: istore_1
-    //   40: aload_0
-    //   41: invokestatic 382	com/tencent/midas/plugin/APPluginUtils:getAssetsVersionCode	(Landroid/content/Context;)I
-    //   44: istore_2
-    //   45: ldc 143
-    //   47: new 160	java/lang/StringBuilder
-    //   50: dup
-    //   51: ldc_w 384
-    //   54: invokespecial 165	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   57: iload_1
-    //   58: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   61: ldc_w 386
-    //   64: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: iload_2
-    //   68: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 158	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   77: iload_2
-    //   78: iload_1
-    //   79: if_icmple +19 -> 98
-    //   82: ldc_w 368
-    //   85: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   88: iconst_1
-    //   89: ireturn
-    //   90: astore_3
-    //   91: iconst_0
-    //   92: istore_1
-    //   93: iconst_0
-    //   94: istore_2
-    //   95: goto -50 -> 45
+    //   8: astore 4
+    //   10: aload_0
+    //   11: ldc_w 371
+    //   14: invokestatic 101	com/tencent/midas/plugin/APPluginInstallerAndUpdater:getInstallPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
+    //   17: invokevirtual 104	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   20: astore 5
+    //   22: aload 5
+    //   24: astore 4
+    //   26: aload 4
+    //   28: invokestatic 60	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   31: ifne +181 -> 212
+    //   34: aload_0
+    //   35: aload 4
+    //   37: invokestatic 375	com/tencent/midas/plugin/APPluginUtils:getPackageInfo	(Landroid/content/Context;Ljava/lang/String;)Landroid/content/pm/PackageInfo;
+    //   40: getfield 380	android/content/pm/PackageInfo:versionCode	I
+    //   43: istore_2
+    //   44: aload_0
+    //   45: invokestatic 383	com/tencent/midas/plugin/APPluginUtils:getAssetsVersionCode	(Landroid/content/Context;)I
+    //   48: istore_3
+    //   49: ldc 143
+    //   51: new 160	java/lang/StringBuilder
+    //   54: dup
+    //   55: ldc_w 385
+    //   58: invokespecial 165	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   61: iload_2
+    //   62: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   65: ldc_w 387
+    //   68: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: iload_3
+    //   72: invokevirtual 221	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 158	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   81: ldc_w 389
+    //   84: aload_1
+    //   85: invokevirtual 393	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   88: ifne +38 -> 126
+    //   91: ldc_w 394
+    //   94: iload_3
+    //   95: if_icmpeq +31 -> 126
     //   98: aload_0
-    //   99: invokestatic 141	com/tencent/midas/plugin/APPluginUtils:getDataZipFile	(Landroid/content/Context;)Ljava/io/File;
-    //   102: astore_3
-    //   103: aload_3
-    //   104: ifnull +40 -> 144
-    //   107: aload_0
-    //   108: aload_3
-    //   109: invokevirtual 322	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   112: invokestatic 390	com/tencent/midas/plugin/APPluginUtils:getZipVersionCodeWtihFileName	(Landroid/content/Context;Ljava/lang/String;)I
-    //   115: istore_2
-    //   116: ldc 143
-    //   118: ldc_w 392
-    //   121: iload_2
-    //   122: invokestatic 234	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   125: invokevirtual 153	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   128: invokestatic 158	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   131: iload_2
-    //   132: iload_1
-    //   133: if_icmple +11 -> 144
-    //   136: ldc_w 368
-    //   139: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   142: iconst_2
-    //   143: ireturn
-    //   144: ldc_w 368
-    //   147: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   150: iconst_0
-    //   151: ireturn
-    //   152: astore_3
-    //   153: goto -60 -> 93
-    //   156: astore 4
-    //   158: goto -134 -> 24
-    //   161: iconst_0
-    //   162: istore_1
-    //   163: goto -123 -> 40
+    //   99: ifnull +27 -> 126
+    //   102: aload_0
+    //   103: instanceof 396
+    //   106: ifeq +20 -> 126
+    //   109: aload_0
+    //   110: checkcast 396	android/app/Activity
+    //   113: astore_1
+    //   114: aload_1
+    //   115: new 398	com/tencent/midas/plugin/APPluginInstallerAndUpdater$1
+    //   118: dup
+    //   119: aload_1
+    //   120: invokespecial 401	com/tencent/midas/plugin/APPluginInstallerAndUpdater$1:<init>	(Landroid/app/Activity;)V
+    //   123: invokevirtual 405	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   126: iload_3
+    //   127: iload_2
+    //   128: if_icmple +20 -> 148
+    //   131: ldc_w 369
+    //   134: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: iconst_1
+    //   138: ireturn
+    //   139: astore 4
+    //   141: iconst_0
+    //   142: istore_2
+    //   143: iconst_0
+    //   144: istore_3
+    //   145: goto -96 -> 49
+    //   148: aload_0
+    //   149: invokestatic 141	com/tencent/midas/plugin/APPluginUtils:getDataZipFile	(Landroid/content/Context;)Ljava/io/File;
+    //   152: astore_1
+    //   153: aload_1
+    //   154: ifnull +40 -> 194
+    //   157: aload_0
+    //   158: aload_1
+    //   159: invokevirtual 322	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   162: invokestatic 408	com/tencent/midas/plugin/APPluginUtils:getZipVersionCodeWtihFileName	(Landroid/content/Context;Ljava/lang/String;)I
+    //   165: istore_3
+    //   166: ldc 143
+    //   168: ldc_w 410
+    //   171: iload_3
+    //   172: invokestatic 234	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   175: invokevirtual 153	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   178: invokestatic 158	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   181: iload_3
+    //   182: iload_2
+    //   183: if_icmple +11 -> 194
+    //   186: ldc_w 369
+    //   189: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   192: iconst_2
+    //   193: ireturn
+    //   194: ldc_w 369
+    //   197: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   200: iconst_0
+    //   201: ireturn
+    //   202: astore 4
+    //   204: goto -61 -> 143
+    //   207: astore 5
+    //   209: goto -183 -> 26
+    //   212: iconst_0
+    //   213: istore_2
+    //   214: goto -170 -> 44
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	166	0	paramContext	Context
-    //   39	124	1	i	int
-    //   44	90	2	j	int
-    //   8	25	3	localObject	Object
-    //   90	1	3	localException1	Exception
-    //   102	7	3	localFile	File
-    //   152	1	3	localException2	Exception
-    //   19	3	4	str	String
-    //   156	1	4	localException3	Exception
+    //   0	217	0	paramContext	Context
+    //   0	217	1	paramString	String
+    //   43	171	2	i	int
+    //   48	136	3	j	int
+    //   8	28	4	localObject	Object
+    //   139	1	4	localException1	Exception
+    //   202	1	4	localException2	Exception
+    //   20	3	5	str	String
+    //   207	1	5	localException3	Exception
     // Exception table:
     //   from	to	target	type
-    //   24	40	90	java/lang/Exception
-    //   40	45	152	java/lang/Exception
-    //   9	21	156	java/lang/Exception
+    //   26	44	139	java/lang/Exception
+    //   44	49	202	java/lang/Exception
+    //   10	22	207	java/lang/Exception
   }
   
   public static boolean isNeedUpdateFromLocal(Context paramContext)
   {
-    AppMethodBeat.i(252780);
+    AppMethodBeat.i(217544);
     APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal");
     File localFile = APPluginConfig.getPluginUpdatePath(paramContext);
     for (;;)
@@ -1257,7 +1278,7 @@ public class APPluginInstallerAndUpdater
         if (!((File)localObject2).exists())
         {
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, sign file not exist, return false!");
-          AppMethodBeat.o(252780);
+          AppMethodBeat.o(217544);
           return false;
         }
         APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, sign file exist!");
@@ -1267,13 +1288,13 @@ public class APPluginInstallerAndUpdater
         if (localObject2 == null)
         {
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, cannot get local file list, return false!");
-          AppMethodBeat.o(252780);
+          AppMethodBeat.o(217544);
           return false;
         }
         if (localObject2.length == 0)
         {
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, empty local file list, return false!");
-          AppMethodBeat.o(252780);
+          AppMethodBeat.o(217544);
           return false;
         }
         i = 0;
@@ -1298,7 +1319,7 @@ public class APPluginInstallerAndUpdater
             if (!bool)
             {
               APPluginUtils.clearDirContent(localFile);
-              AppMethodBeat.o(252780);
+              AppMethodBeat.o(217544);
               return false;
             }
             ((HashMap)localObject1).remove(str1.split("\\_")[0]);
@@ -1308,7 +1329,7 @@ public class APPluginInstallerAndUpdater
       catch (Exception paramContext)
       {
         APLog.e("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, got exception = ".concat(String.valueOf(paramContext)));
-        AppMethodBeat.o(252780);
+        AppMethodBeat.o(217544);
         return false;
       }
       if (((HashMap)localObject1).size() > 0)
@@ -1324,7 +1345,7 @@ public class APPluginInstallerAndUpdater
           {
             APLog.e("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, iterating sigMap left, current = " + ((APSignIniItem)localObject2).fullName + " missing in midasplugins!");
             APPluginUtils.clearDirContent(localFile);
-            AppMethodBeat.o(252780);
+            AppMethodBeat.o(217544);
             return false;
           }
           APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, iterating sigMap left, current = " + ((APSignIniItem)localObject2).fullName + " exist in midasplugins!");
@@ -1334,12 +1355,12 @@ public class APPluginInstallerAndUpdater
       if (j == 0)
       {
         APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, hasMidasCoreFile == false!");
-        AppMethodBeat.o(252780);
+        AppMethodBeat.o(217544);
         return false;
       }
       APLog.d("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, hasMidasCoreFile == true!");
       APLog.e("APPluginInstallerAndUpdater", "isNeedUpdateFromLocal, return true!");
-      AppMethodBeat.o(252780);
+      AppMethodBeat.o(217544);
       return true;
       i += 1;
     }
@@ -1347,7 +1368,7 @@ public class APPluginInstallerAndUpdater
   
   public static void unInstallPlugin(Context paramContext)
   {
-    AppMethodBeat.i(252798);
+    AppMethodBeat.i(217619);
     APLog.d("APPluginInstallerAndUpdater", "unInstallPlugin " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     APPluginUtils.deletePlugin(paramContext);
     APPluginUtils.deleteDex(paramContext);
@@ -1356,12 +1377,12 @@ public class APPluginInstallerAndUpdater
     sPackageInfoMap.clear();
     APPluginStatic.release();
     APPluginConfig.libExtend += 1;
-    AppMethodBeat.o(252798);
+    AppMethodBeat.o(217619);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginInstallerAndUpdater
  * JD-Core Version:    0.7.0.1
  */

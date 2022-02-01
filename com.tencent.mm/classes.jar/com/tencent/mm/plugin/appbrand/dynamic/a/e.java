@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.modelappbrand.n.a;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.appcache.k.a;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetInitializer;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.b;
 import com.tencent.mm.plugin.appbrand.dynamic.ui.WxaWidgetDebugUI;
@@ -15,7 +15,7 @@ import com.tencent.mm.sdk.crash.CrashReportFactory;
 public final class e
   implements n
 {
-  boolean ohx;
+  boolean rkZ;
   
   public final boolean a(String paramString, n.a parama)
   {
@@ -33,12 +33,12 @@ public final class e
     return bool;
   }
   
-  public final boolean bgX()
+  public final boolean bEO()
   {
-    return this.ohx;
+    return this.rkZ;
   }
   
-  public final boolean bgY()
+  public final boolean bEP()
   {
     AppMethodBeat.i(121248);
     boolean bool = CrashReportFactory.hasDebuger();
@@ -46,10 +46,10 @@ public final class e
     return bool;
   }
   
-  public final void cS(Context paramContext)
+  public final void dN(Context paramContext)
   {
     AppMethodBeat.i(121244);
-    com.tencent.mm.plugin.appbrand.wxawidget.console.e.eG(paramContext);
+    com.tencent.mm.plugin.appbrand.wxawidget.console.e.fB(paramContext);
     AppMethodBeat.o(121244);
   }
   
@@ -57,32 +57,32 @@ public final class e
   {
     AppMethodBeat.i(121243);
     Intent localIntent = new Intent(paramContext, WxaWidgetDebugUI.class);
-    String str = WxaWidgetInitializer.dj(paramBundle.getString("app_id"), paramBundle.getString("msg_id"));
+    String str = WxaWidgetInitializer.dC(paramBundle.getString("app_id"), paramBundle.getString("msg_id"));
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("id", str);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramBundle.aFh(), "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramBundle.sf(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramBundle.aYi(), "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramBundle.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/appbrand/dynamic/api/WxaWidgetDebugger", "openDebugUI", "(Landroid/content/Context;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(121243);
   }
   
-  public final void ge(boolean paramBoolean)
+  public final void gV(boolean paramBoolean)
   {
-    this.ohx = paramBoolean;
+    this.rkZ = paramBoolean;
   }
   
-  public final boolean vB(int paramInt)
+  public final boolean vK(int paramInt)
   {
     AppMethodBeat.i(121245);
-    boolean bool = j.a.vB(paramInt);
+    boolean bool = k.a.vK(paramInt);
     AppMethodBeat.o(121245);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.e
  * JD-Core Version:    0.7.0.1
  */

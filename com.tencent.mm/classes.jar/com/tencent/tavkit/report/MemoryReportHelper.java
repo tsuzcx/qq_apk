@@ -22,14 +22,14 @@ public class MemoryReportHelper
   
   private MemoryReportHelper()
   {
-    AppMethodBeat.i(212912);
+    AppMethodBeat.i(218649);
     this.consumerHashMap = new HashMap();
-    AppMethodBeat.o(212912);
+    AppMethodBeat.o(218649);
   }
   
   public static String appendKeys(Collection<String> paramCollection)
   {
-    AppMethodBeat.i(212909);
+    AppMethodBeat.i(218642);
     StringBuilder localStringBuilder = new StringBuilder();
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
@@ -41,13 +41,13 @@ public class MemoryReportHelper
       localStringBuilder.append(str);
     }
     paramCollection = localStringBuilder.toString();
-    AppMethodBeat.o(212909);
+    AppMethodBeat.o(218642);
     return paramCollection;
   }
   
   public static String appendReportKey(Collection<?> paramCollection)
   {
-    AppMethodBeat.i(212906);
+    AppMethodBeat.i(218637);
     ArrayList localArrayList = new ArrayList();
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
@@ -58,42 +58,42 @@ public class MemoryReportHelper
       }
     }
     paramCollection = appendKeys(localArrayList);
-    AppMethodBeat.o(212906);
+    AppMethodBeat.o(218637);
     return paramCollection;
   }
   
   public static MemoryReportHelper getInstance()
   {
-    AppMethodBeat.i(212902);
+    AppMethodBeat.i(218619);
     MemoryReportHelper localMemoryReportHelper = Instance.INSTANCE;
-    AppMethodBeat.o(212902);
+    AppMethodBeat.o(218619);
     return localMemoryReportHelper;
   }
   
   public static boolean isInIntervalTime()
   {
-    AppMethodBeat.i(212905);
+    AppMethodBeat.i(218625);
     long l = System.currentTimeMillis();
     if (l - lastTickTime < 1000L)
     {
-      AppMethodBeat.o(212905);
+      AppMethodBeat.o(218625);
       return true;
     }
     lastTickTime = l;
-    AppMethodBeat.o(212905);
+    AppMethodBeat.o(218625);
     return false;
   }
   
   public void clear()
   {
-    AppMethodBeat.i(212926);
+    AppMethodBeat.i(218676);
     this.consumerHashMap.clear();
-    AppMethodBeat.o(212926);
+    AppMethodBeat.o(218676);
   }
   
   public Map<String, Long> getAvgMBValues()
   {
-    AppMethodBeat.i(212928);
+    AppMethodBeat.i(218685);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = this.consumerHashMap.values().iterator();
     while (localIterator.hasNext())
@@ -103,13 +103,13 @@ public class MemoryReportHelper
         localHashMap.put(localConsumer.key, Long.valueOf(Consumer.access$300(localConsumer)));
       }
     }
-    AppMethodBeat.o(212928);
+    AppMethodBeat.o(218685);
     return localHashMap;
   }
   
   public Map<String, Long> getMaxMBValues()
   {
-    AppMethodBeat.i(212930);
+    AppMethodBeat.i(218693);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = this.consumerHashMap.values().iterator();
     while (localIterator.hasNext())
@@ -119,17 +119,17 @@ public class MemoryReportHelper
         localHashMap.put(localConsumer.key, Long.valueOf(localConsumer.getMaxM()));
       }
     }
-    AppMethodBeat.o(212930);
+    AppMethodBeat.o(218693);
     return localHashMap;
   }
   
   public int getPidMemorySize(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(212923);
+    AppMethodBeat.i(218673);
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getProcessMemoryInfo(new int[] { paramInt });
     paramContext[0].getTotalSharedDirty();
     paramInt = paramContext[0].getTotalPss();
-    AppMethodBeat.o(212923);
+    AppMethodBeat.o(218673);
     return paramInt;
   }
   
@@ -140,19 +140,19 @@ public class MemoryReportHelper
   
   public void tick(String paramString)
   {
-    AppMethodBeat.i(212917);
+    AppMethodBeat.i(218659);
     if (this.context == null)
     {
-      AppMethodBeat.o(212917);
+      AppMethodBeat.o(218659);
       return;
     }
     tick(paramString, getPidMemorySize(Process.myPid(), this.context) / 1024);
-    AppMethodBeat.o(212917);
+    AppMethodBeat.o(218659);
   }
   
   public void tick(String paramString, long paramLong)
   {
-    AppMethodBeat.i(212919);
+    AppMethodBeat.i(218665);
     Consumer localConsumer2 = (Consumer)this.consumerHashMap.get(paramString);
     Consumer localConsumer1 = localConsumer2;
     if (localConsumer2 == null)
@@ -162,7 +162,7 @@ public class MemoryReportHelper
     }
     Consumer.access$200(localConsumer1, paramLong);
     new StringBuilder("tick() called with: key = [").append(paramString).append("], MB = [").append(paramLong).append("]");
-    AppMethodBeat.o(212919);
+    AppMethodBeat.o(218665);
   }
   
   static class Consumer
@@ -206,9 +206,9 @@ public class MemoryReportHelper
     
     static
     {
-      AppMethodBeat.i(212880);
+      AppMethodBeat.i(218635);
       INSTANCE = new MemoryReportHelper(null);
-      AppMethodBeat.o(212880);
+      AppMethodBeat.o(218635);
     }
   }
 }

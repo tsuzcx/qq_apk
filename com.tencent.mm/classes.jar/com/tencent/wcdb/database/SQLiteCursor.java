@@ -200,20 +200,20 @@ public class SQLiteCursor
   
   public boolean moveToPosition(int paramInt)
   {
-    AppMethodBeat.i(187833);
+    AppMethodBeat.i(212334);
     if (!super.moveToPosition(paramInt))
     {
-      AppMethodBeat.o(187833);
+      AppMethodBeat.o(212334);
       return false;
     }
     int i = getCount();
     if (paramInt >= i)
     {
       this.mPos = i;
-      AppMethodBeat.o(187833);
+      AppMethodBeat.o(212334);
       return false;
     }
-    AppMethodBeat.o(187833);
+    AppMethodBeat.o(212334);
     return true;
   }
   
@@ -342,7 +342,7 @@ public class SQLiteCursor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteCursor
  * JD-Core Version:    0.7.0.1
  */

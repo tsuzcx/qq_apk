@@ -1,85 +1,152 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.b.hj;
+import com.tencent.mm.plugin.sns.cover.a.b;
 import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.vfs.y;
+import java.io.IOException;
 
 public final class q
+  extends hj
+  implements b
 {
-  public byte[] KAa;
-  private long KzU;
-  public int KzV;
-  public String KzW;
-  private int KzX;
-  private long KzY;
-  public String KzZ;
-  long createTime;
-  public int localid;
-  private int mVu;
-  public int offset;
-  public int type;
-  private String userName;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public String QYG = "";
+  public String QYH;
   
-  public final void convertFrom(Cursor paramCursor)
+  static
   {
-    AppMethodBeat.i(97596);
-    this.localid = paramCursor.getInt(0);
-    long l = paramCursor.getLong(1);
-    this.KzU = l;
-    this.KzZ = t.Qu(l);
-    this.type = paramCursor.getInt(2);
-    this.createTime = paramCursor.getLong(3);
-    this.userName = paramCursor.getString(4);
-    this.KzV = paramCursor.getInt(5);
-    this.offset = paramCursor.getInt(6);
-    this.mVu = paramCursor.getInt(7);
-    this.KzW = paramCursor.getString(8);
-    this.KzX = paramCursor.getInt(9);
-    this.KzY = paramCursor.getLong(10);
-    this.KzZ = paramCursor.getString(11);
-    this.KAa = paramCursor.getBlob(12);
-    AppMethodBeat.o(97596);
+    AppMethodBeat.i(306562);
+    info = hj.aJm();
+    AppMethodBeat.o(306562);
   }
   
-  public final ContentValues fST()
+  public final String bud()
   {
-    AppMethodBeat.i(97595);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("seqId", Long.valueOf(this.KzU));
-    localContentValues.put("type", Integer.valueOf(this.type));
-    localContentValues.put("createTime", Long.valueOf(this.createTime));
-    localContentValues.put("userName", this.userName);
-    localContentValues.put("totallen", Integer.valueOf(this.KzV));
-    localContentValues.put("offset", Integer.valueOf(this.offset));
-    localContentValues.put("local_flag", Integer.valueOf(this.mVu));
-    localContentValues.put("tmp_path", this.KzW);
-    localContentValues.put("nums", Integer.valueOf(this.KzX));
-    localContentValues.put("try_times", Long.valueOf(this.KzY));
-    localContentValues.put("StrId", this.KzZ);
-    localContentValues.put("upload_buf", this.KAa);
-    AppMethodBeat.o(97595);
-    return localContentValues;
+    AppMethodBeat.i(306570);
+    if (y.ZC(this.field_localThumb))
+    {
+      str = this.field_localThumb;
+      AppMethodBeat.o(306570);
+      return str;
+    }
+    String str = this.field_thumbUrl;
+    AppMethodBeat.o(306570);
+    return str;
   }
   
-  public final void fSU()
+  public final String gUr()
   {
-    this.mVu |= 0x4;
+    AppMethodBeat.i(306565);
+    if ((this.field_type == 1) || (this.field_type == 6) || (this.field_type == 0))
+    {
+      if (y.ZC(this.field_localImage))
+      {
+        str = this.field_localImage;
+        AppMethodBeat.o(306565);
+        return str;
+      }
+      if (!TextUtils.isEmpty(this.field_imageBgUrl))
+      {
+        str = this.field_imageBgUrl;
+        AppMethodBeat.o(306565);
+        return str;
+      }
+    }
+    String str = bud();
+    AppMethodBeat.o(306565);
+    return str;
   }
   
-  public final void fSV()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    this.mVu &= 0xFFFFFFFB;
+    return info;
   }
   
-  public final String fSW()
+  public final FinderObject getFinderObject()
   {
-    return this.KzW;
+    AppMethodBeat.i(306572);
+    FinderObject localFinderObject = new FinderObject();
+    if (this.field_finderObject != null) {}
+    try
+    {
+      localFinderObject.parseFrom(this.field_finderObject);
+      AppMethodBeat.o(306572);
+      return localFinderObject;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.SnsCover", localIOException, "FinderObject parseFrom error", new Object[0]);
+      }
+    }
+  }
+  
+  public final String getUserName()
+  {
+    return this.field_userName;
+  }
+  
+  public final String getVideoPath()
+  {
+    AppMethodBeat.i(306569);
+    if (y.ZC(this.field_localVideo))
+    {
+      str = this.field_localVideo;
+      AppMethodBeat.o(306569);
+      return str;
+    }
+    String str = this.field_videoBgUrl;
+    AppMethodBeat.o(306569);
+    return str;
+  }
+  
+  public final Long hen()
+  {
+    AppMethodBeat.i(306581);
+    long l = this.field_finderCheckTime;
+    AppMethodBeat.o(306581);
+    return Long.valueOf(l);
+  }
+  
+  public final Long heo()
+  {
+    AppMethodBeat.i(369893);
+    long l = this.field_snsBgId;
+    AppMethodBeat.o(369893);
+    return Long.valueOf(l);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(306590);
+    Object localObject = new FinderObject();
+    if (this.field_finderObject != null) {}
+    try
+    {
+      ((FinderObject)localObject).parseFrom(this.field_finderObject);
+      localObject = "SnsCover{field_userName='" + this.field_userName + '\'' + ", field_type=" + this.field_type + ", field_snsBgId=" + t.uA(this.field_snsBgId) + ", field_thumbUrl='" + this.field_thumbUrl + '\'' + ", field_imageBgUrl='" + this.field_imageBgUrl + '\'' + ", field_videoBgUrl='" + this.field_videoBgUrl + '\'' + ", field_localThumb='" + this.field_localThumb + '\'' + ", field_localImage='" + this.field_localImage + '\'' + ", field_localVideo='" + this.field_localVideo + '\'' + ", field_finderObject=" + t.uA(((FinderObject)localObject).id) + ", field_finderCheckTime=" + this.field_finderCheckTime + ", field_success=" + this.field_success + ", systemRowid=" + this.systemRowid + ", reportExtraInfo=" + this.QYG + '}';
+      AppMethodBeat.o(306590);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.SnsCover", localIOException, "FinderObject parseFrom error", new Object[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.q
  * JD-Core Version:    0.7.0.1
  */

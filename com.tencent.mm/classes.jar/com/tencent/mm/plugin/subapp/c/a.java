@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.q.b;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bzu;
-import com.tencent.mm.protocal.protobuf.bzv;
-import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.cpd;
+import com.tencent.mm.protocal.protobuf.cpe;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private int MdF;
-  private i callback;
+  private int SEV;
+  private h callback;
   private RandomAccessFile file;
   private String filePath;
-  private int lAW;
+  private int osy;
   String url;
   
   public a(String paramString)
   {
     this.url = paramString;
-    this.MdF = 0;
-    this.lAW = 0;
+    this.SEV = 0;
+    this.osy = 0;
     this.filePath = null;
     this.file = null;
   }
@@ -51,7 +51,7 @@ public final class a
         AppMethodBeat.o(28918);
         return false;
       }
-      this.filePath = com.tencent.mm.pluginsdk.l.a.a.bqG(paramString);
+      this.filePath = com.tencent.mm.pluginsdk.k.a.a.bqv(paramString);
       if (this.filePath == null)
       {
         Log.e("MicroMsg.NetSceneGetPSMImg", "writeFile getPath From url failed:[" + paramString + "]");
@@ -61,7 +61,7 @@ public final class a
     }
     try
     {
-      this.file = u.dO(this.filePath, true);
+      this.file = y.eA(this.filePath, true);
       return false;
     }
     catch (Exception paramString)
@@ -85,23 +85,23 @@ public final class a
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(28915);
-    this.callback = parami;
-    parami = new d.a();
-    parami.lBU = new bzu();
-    parami.lBV = new bzv();
-    parami.uri = "/cgi-bin/micromsg-bin/getpsmimg";
-    parami.funcId = 141;
-    parami.lBW = 29;
-    parami.respCmdId = 1000000029;
-    parami = parami.bgN();
-    bzu localbzu = (bzu)d.b.b(parami.lBR);
-    localbzu.URL = this.url;
-    localbzu.Sat = this.MdF;
-    Log.v("MicroMsg.NetSceneGetPSMImg", "doscene url:[" + this.url + "] + offset:" + this.MdF + " totallen:" + this.lAW);
-    int i = dispatch(paramg, parami, this);
+    this.callback = paramh;
+    paramh = new c.a();
+    paramh.otE = new cpd();
+    paramh.otF = new cpe();
+    paramh.uri = "/cgi-bin/micromsg-bin/getpsmimg";
+    paramh.funcId = 141;
+    paramh.otG = 29;
+    paramh.respCmdId = 1000000029;
+    paramh = paramh.bEF();
+    cpd localcpd = (cpd)c.b.b(paramh.otB);
+    localcpd.URL = this.url;
+    localcpd.YYs = this.SEV;
+    Log.v("MicroMsg.NetSceneGetPSMImg", "doscene url:[" + this.url + "] + offset:" + this.SEV + " totallen:" + this.osy);
+    int i = dispatch(paramg, paramh, this);
     AppMethodBeat.o(28915);
     return i;
   }
@@ -121,22 +121,22 @@ public final class a
       AppMethodBeat.o(28917);
       return;
     }
-    params = (bzv)d.c.b(((d)params).lBS);
-    Log.d("MicroMsg.NetSceneGetPSMImg", "onGYNetEnd url:[" + this.url + "] + offset:" + this.MdF + " Resp[ totallen:" + params.Tix + " bufSize:" + params.Hnc.Ufv + " ]");
-    if (params.Tix > 0) {
-      this.lAW = params.Tix;
+    params = (cpe)c.c.b(((c)params).otC);
+    Log.d("MicroMsg.NetSceneGetPSMImg", "onGYNetEnd url:[" + this.url + "] + offset:" + this.SEV + " Resp[ totallen:" + params.aavV + " bufSize:" + params.NkQ.abwJ + " ]");
+    if (params.aavV > 0) {
+      this.osy = params.aavV;
     }
-    if (!c(this.url, params.Hnc.Tkb.UH, this.MdF))
+    if (!c(this.url, params.NkQ.aaxD.Op, this.SEV))
     {
       this.callback.onSceneEnd(3, -1, paramString, this);
       AppMethodBeat.o(28917);
       return;
     }
-    paramInt1 = this.MdF;
-    this.MdF = (params.Hnc.Ufv + paramInt1);
-    if (this.lAW <= this.MdF)
+    paramInt1 = this.SEV;
+    this.SEV = (params.NkQ.abwJ + paramInt1);
+    if (this.osy <= this.SEV)
     {
-      Log.d("MicroMsg.NetSceneGetPSMImg", "down url:[" + this.url + "] final size: " + this.lAW);
+      Log.d("MicroMsg.NetSceneGetPSMImg", "down url:[" + this.url + "] final size: " + this.osy);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(28917);
       return;
@@ -152,10 +152,10 @@ public final class a
     return 10;
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(28916);
-    params = ((bzu)d.b.b(((d)params).lBR)).URL;
+    params = ((cpd)c.b.b(((c)params).otB)).URL;
     int i;
     if (params == null) {
       i = 0;
@@ -163,7 +163,7 @@ public final class a
     while (i == 0)
     {
       Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : url invalid:" + this.url);
-      params = q.b.lCy;
+      params = p.b.oui;
       AppMethodBeat.o(28916);
       return params;
       if (params.indexOf("weixin://") != 0) {
@@ -172,31 +172,31 @@ public final class a
         i = 1;
       }
     }
-    if ((this.MdF < 0) || (this.lAW < 0))
+    if ((this.SEV < 0) || (this.osy < 0))
     {
-      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.MdF + " total:" + this.lAW);
-      params = q.b.lCy;
+      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.SEV + " total:" + this.osy);
+      params = p.b.oui;
       AppMethodBeat.o(28916);
       return params;
     }
-    if (this.MdF == 0)
+    if (this.SEV == 0)
     {
-      if (this.lAW != 0)
+      if (this.osy != 0)
       {
-        Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.MdF + " total:" + this.lAW);
-        params = q.b.lCy;
+        Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.SEV + " total:" + this.osy);
+        params = p.b.oui;
         AppMethodBeat.o(28916);
         return params;
       }
     }
-    else if (this.MdF >= this.lAW)
+    else if (this.SEV >= this.osy)
     {
-      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.MdF + " total:" + this.lAW);
-      params = q.b.lCy;
+      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.SEV + " total:" + this.osy);
+      params = p.b.oui;
       AppMethodBeat.o(28916);
       return params;
     }
-    params = q.b.lCx;
+    params = p.b.ouh;
     AppMethodBeat.o(28916);
     return params;
   }

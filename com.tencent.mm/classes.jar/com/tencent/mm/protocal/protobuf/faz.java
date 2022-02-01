@@ -1,125 +1,185 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class faz
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public int UAQ;
-  public vi UAR;
-  public vi UAS;
-  public int UAT;
+  public gol NkQ;
+  public int YHj;
+  public float ZaH;
+  public int ZkT;
+  public int aawO;
+  public int aawP;
+  public int abAV;
+  public float abAW;
+  public float abAX;
+  public int oOu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117940);
+    AppMethodBeat.i(32444);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.UAQ);
-      if (this.UAR != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.NkQ == null)
       {
-        paramVarArgs.oE(4, this.UAR.computeSize());
-        this.UAR.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: Data");
+        AppMethodBeat.o(32444);
+        throw paramVarArgs;
       }
-      if (this.UAS != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(5, this.UAS.computeSize());
-        this.UAS.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(6, this.UAT);
-      AppMethodBeat.o(117940);
+      if (this.NkQ != null)
+      {
+        paramVarArgs.qD(2, this.NkQ.computeSize());
+        this.NkQ.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bS(3, this.abAV);
+      paramVarArgs.bS(4, this.oOu);
+      paramVarArgs.l(5, this.abAW);
+      paramVarArgs.bS(6, this.ZkT);
+      paramVarArgs.bS(7, this.YHj);
+      paramVarArgs.l(8, this.abAX);
+      paramVarArgs.l(9, this.ZaH);
+      paramVarArgs.bS(10, this.aawO);
+      paramVarArgs.bS(11, this.aawP);
+      AppMethodBeat.o(32444);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
-    {
-      i = g.a.a.b.b.a.bM(1, this.UAQ) + 0;
-      paramInt = i;
-      if (this.UAR != null) {
-        paramInt = i + g.a.a.a.oD(4, this.UAR.computeSize());
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label912;
       }
-      i = paramInt;
-      if (this.UAS != null) {
-        i = paramInt + g.a.a.a.oD(5, this.UAS.computeSize());
-      }
-      paramInt = g.a.a.b.b.a.bM(6, this.UAT);
-      AppMethodBeat.o(117940);
-      return i + paramInt;
     }
-    if (paramInt == 2)
+    label912:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      int i = paramInt;
+      if (this.NkQ != null) {
+        i = paramInt + i.a.a.a.qC(2, this.NkQ.computeSize());
       }
-      AppMethodBeat.o(117940);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      faz localfaz = (faz)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      vi localvi;
-      switch (paramInt)
+      paramInt = i.a.a.b.b.a.cJ(3, this.abAV);
+      int j = i.a.a.b.b.a.cJ(4, this.oOu);
+      int k = i.a.a.b.b.a.ko(5);
+      int m = i.a.a.b.b.a.cJ(6, this.ZkT);
+      int n = i.a.a.b.b.a.cJ(7, this.YHj);
+      int i1 = i.a.a.b.b.a.ko(8);
+      int i2 = i.a.a.b.b.a.ko(9);
+      int i3 = i.a.a.b.b.a.cJ(10, this.aawO);
+      int i4 = i.a.a.b.b.a.cJ(11, this.aawP);
+      AppMethodBeat.o(32444);
+      return i + paramInt + j + (k + 4) + m + n + (i1 + 4) + (i2 + 4) + i3 + i4;
+      if (paramInt == 2)
       {
-      case 2: 
-      case 3: 
-      default: 
-        AppMethodBeat.o(117940);
-        return -1;
-      case 1: 
-        localfaz.UAQ = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(117940);
-        return 0;
-      case 4: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          localvi = new vi();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localvi.parseFrom((byte[])localObject);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
           }
-          localfaz.UAR = localvi;
-          paramInt += 1;
         }
-        AppMethodBeat.o(117940);
-        return 0;
-      case 5: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
+        if (this.NkQ == null)
         {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          localvi = new vi();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localvi.parseFrom((byte[])localObject);
-          }
-          localfaz.UAS = localvi;
-          paramInt += 1;
+          paramVarArgs = new b("Not all required fields were included: Data");
+          AppMethodBeat.o(32444);
+          throw paramVarArgs;
         }
-        AppMethodBeat.o(117940);
+        AppMethodBeat.o(32444);
         return 0;
       }
-      localfaz.UAT = ((g.a.a.a.a)localObject).abFh.AK();
-      AppMethodBeat.o(117940);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        faz localfaz = (faz)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32444);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localfaz.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32444);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new gol();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((gol)localObject2).dg((byte[])localObject1);
+            }
+            localfaz.NkQ = ((gol)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32444);
+          return 0;
+        case 3: 
+          localfaz.abAV = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(32444);
+          return 0;
+        case 4: 
+          localfaz.oOu = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(32444);
+          return 0;
+        case 5: 
+          localfaz.abAW = Float.intBitsToFloat(((i.a.a.a.a)localObject1).ajGk.aax());
+          AppMethodBeat.o(32444);
+          return 0;
+        case 6: 
+          localfaz.ZkT = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(32444);
+          return 0;
+        case 7: 
+          localfaz.YHj = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(32444);
+          return 0;
+        case 8: 
+          localfaz.abAX = Float.intBitsToFloat(((i.a.a.a.a)localObject1).ajGk.aax());
+          AppMethodBeat.o(32444);
+          return 0;
+        case 9: 
+          localfaz.ZaH = Float.intBitsToFloat(((i.a.a.a.a)localObject1).ajGk.aax());
+          AppMethodBeat.o(32444);
+          return 0;
+        case 10: 
+          localfaz.aawO = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(32444);
+          return 0;
+        }
+        localfaz.aawP = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(32444);
+        return 0;
+      }
+      AppMethodBeat.o(32444);
+      return -1;
     }
-    AppMethodBeat.o(117940);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.faz
  * JD-Core Version:    0.7.0.1
  */

@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.game.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.autogen.chatroom.ChatroomUserData;
-import com.tencent.mm.plugin.game.chatroom.e.a;
+import com.tencent.mm.plugin.game.chatroom.f.a;
 import java.io.IOException;
 
 public final class c
 {
-  public static boolean aIO(String paramString)
+  public static boolean aFp(String paramString)
   {
-    AppMethodBeat.i(210711);
+    AppMethodBeat.i(275615);
     if (paramString != null)
     {
       boolean bool = paramString.endsWith("@gamelifechatroom");
-      AppMethodBeat.o(210711);
+      AppMethodBeat.o(275615);
       return bool;
     }
-    AppMethodBeat.o(210711);
+    AppMethodBeat.o(275615);
     return false;
   }
   
   public static a b(ChatroomUserData paramChatroomUserData)
   {
-    AppMethodBeat.i(210712);
+    AppMethodBeat.i(275623);
     a locala = new a();
     if (paramChatroomUserData == null)
     {
-      AppMethodBeat.o(210712);
+      AppMethodBeat.o(275623);
       return locala;
     }
     locala.field_userName = paramChatroomUserData.username;
@@ -49,7 +49,7 @@ public final class c
     {
       locala.field_rawPbData = paramChatroomUserData.toByteArray();
       label160:
-      AppMethodBeat.o(210712);
+      AppMethodBeat.o(275623);
       return locala;
     }
     catch (IOException paramChatroomUserData)
@@ -60,7 +60,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,26 @@
 package com.tencent.mm.plugin.hld.keyboard;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "", "(Ljava/lang/String;I)V", "S1ChineseT9", "S2ChineseQwerty", "S3EnglishQwerty", "S4Number", "S5Symbols", "S6AlternativeWords", "S7Emoji", "S8ExceptionSetting", "S9ExceptionSound", "S10Setting", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "", "(Ljava/lang/String;I)V", "S1ChineseT9", "S2ChineseQwerty", "S3EnglishQwerty", "S4Number", "S5Symbols", "S6AlternativeWords", "S7Emoji", "S8ExceptionSetting", "S9ExceptionSound", "S10Setting", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum c
 {
   static
   {
-    AppMethodBeat.i(210466);
-    c localc1 = new c("S1ChineseT9", 0);
-    Dyl = localc1;
-    c localc2 = new c("S2ChineseQwerty", 1);
-    Dym = localc2;
-    c localc3 = new c("S3EnglishQwerty", 2);
-    Dyn = localc3;
-    c localc4 = new c("S4Number", 3);
-    Dyo = localc4;
-    c localc5 = new c("S5Symbols", 4);
-    Dyp = localc5;
-    c localc6 = new c("S6AlternativeWords", 5);
-    Dyq = localc6;
-    c localc7 = new c("S7Emoji", 6);
-    Dyr = localc7;
-    c localc8 = new c("S8ExceptionSetting", 7);
-    Dys = localc8;
-    c localc9 = new c("S9ExceptionSound", 8);
-    Dyt = localc9;
-    c localc10 = new c("S10Setting", 9);
-    Dyu = localc10;
-    Dyv = new c[] { localc1, localc2, localc3, localc4, localc5, localc6, localc7, localc8, localc9, localc10 };
-    AppMethodBeat.o(210466);
+    AppMethodBeat.i(312930);
+    Jrp = new c("S1ChineseT9", 0);
+    Jrq = new c("S2ChineseQwerty", 1);
+    Jrr = new c("S3EnglishQwerty", 2);
+    Jrs = new c("S4Number", 3);
+    Jrt = new c("S5Symbols", 4);
+    Jru = new c("S6AlternativeWords", 5);
+    Jrv = new c("S7Emoji", 6);
+    Jrw = new c("S8ExceptionSetting", 7);
+    Jrx = new c("S9ExceptionSound", 8);
+    Jry = new c("S10Setting", 9);
+    Jrz = new c[] { Jrp, Jrq, Jrr, Jrs, Jrt, Jru, Jrv, Jrw, Jrx, Jry };
+    AppMethodBeat.o(312930);
   }
   
   private c() {}

@@ -10,7 +10,6 @@ import androidx.b.a;
 import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.internal.BaseImplementation.ApiMethodImpl;
 import com.google.android.gms.common.api.internal.LifecycleActivity;
 import com.google.android.gms.common.api.internal.ListenerHolder;
@@ -22,7 +21,6 @@ import com.google.android.gms.common.api.internal.zzp;
 import com.google.android.gms.common.internal.ClientSettings;
 import com.google.android.gms.common.internal.ClientSettings.OptionalApiSettings;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.signin.SignIn;
 import com.google.android.gms.signin.SignInClient;
 import com.google.android.gms.signin.SignInOptions;
@@ -38,16 +36,12 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.concurrent.GuardedBy;
 
-@KeepForSdk
 public abstract class GoogleApiClient
 {
-  @KeepForSdk
   public static final String DEFAULT_ACCOUNT = "<<default account>>";
   public static final int SIGN_IN_MODE_OPTIONAL = 2;
   public static final int SIGN_IN_MODE_REQUIRED = 1;
-  @GuardedBy("sAllClients")
   private static final Set<GoogleApiClient> zzcu = Collections.newSetFromMap(new WeakHashMap());
   
   public static void dumpAll(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
@@ -68,7 +62,6 @@ public abstract class GoogleApiClient
     }
   }
   
-  @KeepForSdk
   public static Set<GoogleApiClient> getAllClients()
   {
     synchronized (zzcu)
@@ -95,19 +88,16 @@ public abstract class GoogleApiClient
   
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  @KeepForSdk
   public <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public <C extends Api.Client> C getClient(Api.AnyClientKey<C> paramAnyClientKey)
   {
     throw new UnsupportedOperationException();
@@ -115,19 +105,16 @@ public abstract class GoogleApiClient
   
   public abstract ConnectionResult getConnectionResult(Api<?> paramApi);
   
-  @KeepForSdk
   public Context getContext()
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public Looper getLooper()
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public boolean hasApi(Api<?> paramApi)
   {
     throw new UnsupportedOperationException();
@@ -143,13 +130,11 @@ public abstract class GoogleApiClient
   
   public abstract boolean isConnectionFailedListenerRegistered(OnConnectionFailedListener paramOnConnectionFailedListener);
   
-  @KeepForSdk
   public boolean maybeSignIn(SignInConnectionListener paramSignInConnectionListener)
   {
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public void maybeSignOut()
   {
     throw new UnsupportedOperationException();
@@ -161,7 +146,6 @@ public abstract class GoogleApiClient
   
   public abstract void registerConnectionFailedListener(OnConnectionFailedListener paramOnConnectionFailedListener);
   
-  @KeepForSdk
   public <L> ListenerHolder<L> registerListener(L paramL)
   {
     throw new UnsupportedOperationException();
@@ -183,7 +167,6 @@ public abstract class GoogleApiClient
     throw new UnsupportedOperationException();
   }
   
-  @KeepForSdk
   public static final class Builder
   {
     private final Context mContext;
@@ -206,7 +189,6 @@ public abstract class GoogleApiClient
     private boolean zzdk;
     private Account zzs;
     
-    @KeepForSdk
     public Builder(Context paramContext)
     {
       AppMethodBeat.i(11026);
@@ -227,7 +209,6 @@ public abstract class GoogleApiClient
       AppMethodBeat.o(11026);
     }
     
-    @KeepForSdk
     public Builder(Context paramContext, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
       this(paramContext);
@@ -327,7 +308,6 @@ public abstract class GoogleApiClient
       return this;
     }
     
-    @KeepForSdk
     public final Builder addScopeNames(String[] paramArrayOfString)
     {
       AppMethodBeat.i(11033);
@@ -452,8 +432,6 @@ public abstract class GoogleApiClient
       }
     }
     
-    @KeepForSdk
-    @VisibleForTesting
     public final ClientSettings buildClientSettings()
     {
       AppMethodBeat.i(11042);
@@ -468,7 +446,7 @@ public abstract class GoogleApiClient
     
     public final Builder enableAutoManage(FragmentActivity paramFragmentActivity, int paramInt, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
-      AppMethodBeat.i(256052);
+      AppMethodBeat.i(210379);
       paramFragmentActivity = new LifecycleActivity(paramFragmentActivity);
       if (paramInt >= 0) {}
       for (boolean bool = true;; bool = false)
@@ -477,16 +455,16 @@ public abstract class GoogleApiClient
         this.zzde = paramInt;
         this.zzdf = paramOnConnectionFailedListener;
         this.zzdd = paramFragmentActivity;
-        AppMethodBeat.o(256052);
+        AppMethodBeat.o(210379);
         return this;
       }
     }
     
     public final Builder enableAutoManage(FragmentActivity paramFragmentActivity, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
     {
-      AppMethodBeat.i(256054);
+      AppMethodBeat.i(210380);
       paramFragmentActivity = enableAutoManage(paramFragmentActivity, 0, paramOnConnectionFailedListener);
-      AppMethodBeat.o(256054);
+      AppMethodBeat.o(210380);
       return paramFragmentActivity;
     }
     
@@ -552,7 +530,7 @@ public abstract class GoogleApiClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.GoogleApiClient
  * JD-Core Version:    0.7.0.1
  */

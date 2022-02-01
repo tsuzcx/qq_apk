@@ -11,100 +11,182 @@ import android.view.ViewPropertyAnimator;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.tools.h;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoInputLayout;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hasNavigationBar", "", "isShowKeyboard", "()Z", "setShowKeyboard", "(Z)V", "listenKeyBoardChange", "getListenKeyBoardChange", "setListenKeyBoardChange", "nestedAnimButton", "Landroid/view/View;", "getNestedAnimButton", "()Landroid/view/View;", "setNestedAnimButton", "(Landroid/view/View;)V", "nestedAnimVideoView", "getNestedAnimVideoView", "setNestedAnimVideoView", "onKeyboardChange", "Lkotlin/Function2;", "", "getOnKeyboardChange", "()Lkotlin/jvm/functions/Function2;", "setOnKeyboardChange", "(Lkotlin/jvm/functions/Function2;)V", "animViews", "height", "onKeyboardHeightChanged", "isResized", "reset", "restoreViews", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoInputLayout;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hasNavigationBar", "", "isShowKeyboard", "()Z", "setShowKeyboard", "(Z)V", "listenKeyBoardChange", "getListenKeyBoardChange", "setListenKeyBoardChange", "nestedAnimButton", "Landroid/view/View;", "getNestedAnimButton", "()Landroid/view/View;", "setNestedAnimButton", "(Landroid/view/View;)V", "nestedAnimVideoView", "getNestedAnimVideoView", "setNestedAnimVideoView", "onKeyboardChange", "Lkotlin/Function2;", "", "getOnKeyboardChange", "()Lkotlin/jvm/functions/Function2;", "setOnKeyboardChange", "(Lkotlin/jvm/functions/Function2;)V", "animViews", "height", "onKeyboardHeightChanged", "isResized", "reset", "restoreViews", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MegaVideoInputLayout
   extends LinearLayout
   implements h
 {
-  public static final a zyz;
-  private boolean zyt;
-  private final boolean zyu;
-  public boolean zyv;
-  public View zyw;
-  public View zyx;
-  public m<? super Boolean, ? super Integer, x> zyy;
+  public static final a EBl;
+  private boolean EBm;
+  private final boolean EBn;
+  private boolean EBo;
+  private View EBp;
+  private View EBq;
+  private m<? super Boolean, ? super Integer, ah> EBr;
   
   static
   {
-    AppMethodBeat.i(274210);
-    zyz = new a((byte)0);
-    AppMethodBeat.o(274210);
+    AppMethodBeat.i(341988);
+    EBl = new a((byte)0);
+    AppMethodBeat.o(341988);
   }
   
   public MegaVideoInputLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(274208);
-    this.zyu = ax.av(getContext());
-    AppMethodBeat.o(274208);
+    AppMethodBeat.i(341975);
+    this.EBn = bf.bg(getContext());
+    AppMethodBeat.o(341975);
   }
   
   public MegaVideoInputLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(274209);
-    this.zyu = ax.av(getContext());
-    AppMethodBeat.o(274209);
+    AppMethodBeat.i(341983);
+    this.EBn = bf.bg(getContext());
+    AppMethodBeat.o(341983);
   }
   
-  public final void A(int paramInt, boolean paramBoolean)
+  public final void eCW()
+  {
+    AppMethodBeat.i(342056);
+    Log.i("MegaVideoInputLayout", "restoreViews: return to original");
+    Object localObject = this.EBp;
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).animate();
+      if (localObject != null)
+      {
+        localObject = ((ViewPropertyAnimator)localObject).setDuration(180L);
+        if (localObject != null)
+        {
+          localObject = ((ViewPropertyAnimator)localObject).translationY(0.0F);
+          if (localObject != null)
+          {
+            localObject = ((ViewPropertyAnimator)localObject).scaleX(1.0F);
+            if (localObject != null)
+            {
+              localObject = ((ViewPropertyAnimator)localObject).scaleY(1.0F);
+              if (localObject != null) {
+                ((ViewPropertyAnimator)localObject).start();
+              }
+            }
+          }
+        }
+      }
+    }
+    localObject = this.EBq;
+    int i;
+    if (localObject != null)
+    {
+      if (Float.compare(((View)localObject).getTranslationY(), 0.0F) == 0) {
+        break label147;
+      }
+      i = 1;
+      if (i == 0) {
+        break label152;
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        localObject = ((View)localObject).animate();
+        if (localObject != null)
+        {
+          localObject = ((ViewPropertyAnimator)localObject).setDuration(180L);
+          if (localObject != null)
+          {
+            localObject = ((ViewPropertyAnimator)localObject).translationY(0.0F);
+            if (localObject != null) {
+              ((ViewPropertyAnimator)localObject).start();
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(342056);
+      return;
+      label147:
+      i = 0;
+      break;
+      label152:
+      localObject = null;
+    }
+  }
+  
+  public final boolean getListenKeyBoardChange()
+  {
+    return this.EBo;
+  }
+  
+  public final View getNestedAnimButton()
+  {
+    return this.EBq;
+  }
+  
+  public final View getNestedAnimVideoView()
+  {
+    return this.EBp;
+  }
+  
+  public final m<Boolean, Integer, ah> getOnKeyboardChange()
+  {
+    return this.EBr;
+  }
+  
+  public final void onKeyboardHeightChanged(int paramInt, boolean paramBoolean)
   {
     int k = 1;
-    AppMethodBeat.i(274206);
-    if (!this.zyv)
+    AppMethodBeat.i(342048);
+    if (!this.EBo)
     {
-      Log.i("MegaVideoInputLayout", "onKeyboardHeightChanged: listenKeyBoardChange = " + this.zyv);
-      AppMethodBeat.o(274206);
+      Log.i("MegaVideoInputLayout", s.X("onKeyboardHeightChanged: listenKeyBoardChange = ", Boolean.valueOf(this.EBo)));
+      AppMethodBeat.o(342048);
       return;
     }
     int i;
-    label73:
-    Object localObject1;
+    label66:
     boolean bool;
-    label115:
-    Object localObject2;
+    label86:
+    Object localObject1;
     int j;
-    label191:
-    label203:
+    label162:
+    label174:
     float f;
     if (paramInt > 0)
     {
       paramBoolean = true;
       if (paramBoolean)
       {
-        if (!this.zyu) {
-          break label526;
+        if (!this.EBn) {
+          break label501;
         }
-        i = ax.aB(getContext()) + paramInt;
-        localObject1 = getContext();
-        p.j(localObject1, "context");
-        localObject1 = ((Context)localObject1).getResources();
-        p.j(localObject1, "context.resources");
-        if (((Resources)localObject1).getConfiguration().orientation != 2) {
-          break label532;
+        i = bf.bk(getContext()) + paramInt;
+        if (getContext().getResources().getConfiguration().orientation != 2) {
+          break label507;
         }
         bool = true;
         Log.i("MegaVideoInputLayout", "animViews: footer isLand = " + bool + ", translateY = " + i);
         if (!bool)
         {
-          localObject1 = this.zyw;
+          localObject1 = this.EBp;
           if (localObject1 != null)
           {
-            localObject2 = ar.au(getContext());
+            Object localObject2 = aw.bf(getContext());
             if ((((Point)localObject2).x == 0) || (((Point)localObject2).y == 0)) {
-              break label538;
+              break label513;
             }
             j = 1;
             if (j == 0) {
-              break label544;
+              break label519;
             }
             j = ((Point)localObject2).y;
             j -= i;
@@ -140,16 +222,16 @@ public final class MegaVideoInputLayout
                 }
               }
             }
-            localObject1 = this.zyx;
+            localObject1 = getNestedAnimButton();
             if (localObject1 != null)
             {
               if (((View)localObject1).getVisibility() != 0) {
-                break label584;
+                break label537;
               }
               i = k;
-              label370:
+              label341:
               if (i == 0) {
-                break label590;
+                break label543;
               }
             }
           }
@@ -175,156 +257,68 @@ public final class MegaVideoInputLayout
       }
       Log.i("MegaVideoInputLayout", "animViews: video view translateY = " + j + ", scale = " + f);
       Log.i("MegaVideoInputLayout", "onKeyboardHeightChanged: isShow = " + paramBoolean + ", height = " + paramInt);
-      localObject1 = this.zyy;
-      if (localObject1 == null) {
-        break label596;
+      localObject1 = this.EBr;
+      if (localObject1 != null) {
+        ((m)localObject1).invoke(Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt));
       }
-      ((m)localObject1).invoke(Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt));
-      AppMethodBeat.o(274206);
+      AppMethodBeat.o(342048);
       return;
       paramBoolean = false;
       break;
-      label526:
+      label501:
       i = paramInt;
-      break label73;
-      label532:
+      break label66;
+      label507:
       bool = false;
-      break label115;
-      label538:
+      break label86;
+      label513:
       j = 0;
-      break label191;
-      label544:
-      localObject2 = getContext();
-      p.j(localObject2, "context");
-      localObject2 = ((Context)localObject2).getResources();
-      p.j(localObject2, "context.resources");
-      j = ((Resources)localObject2).getDisplayMetrics().heightPixels;
-      break label203;
-      label584:
+      break label162;
+      label519:
+      j = getContext().getResources().getDisplayMetrics().heightPixels;
+      break label174;
+      label537:
       i = 0;
-      break label370;
-      label590:
+      break label341;
+      label543:
       localObject1 = null;
     }
-    label596:
-    AppMethodBeat.o(274206);
   }
   
-  public final void dKj()
+  public final void reset()
   {
-    AppMethodBeat.i(274207);
-    Log.i("MegaVideoInputLayout", "restoreViews: return to original");
-    Object localObject = this.zyw;
-    if (localObject != null)
-    {
-      localObject = ((View)localObject).animate();
-      if (localObject != null)
-      {
-        localObject = ((ViewPropertyAnimator)localObject).setDuration(180L);
-        if (localObject != null)
-        {
-          localObject = ((ViewPropertyAnimator)localObject).translationY(0.0F);
-          if (localObject != null)
-          {
-            localObject = ((ViewPropertyAnimator)localObject).scaleX(1.0F);
-            if (localObject != null)
-            {
-              localObject = ((ViewPropertyAnimator)localObject).scaleY(1.0F);
-              if (localObject != null) {
-                ((ViewPropertyAnimator)localObject).start();
-              }
-            }
-          }
-        }
-      }
-    }
-    localObject = this.zyx;
-    if (localObject != null)
-    {
-      int i;
-      if (Float.compare(((View)localObject).getTranslationY(), 0.0F) != 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label155;
-        }
-      }
-      for (;;)
-      {
-        if (localObject == null) {
-          break label160;
-        }
-        localObject = ((View)localObject).animate();
-        if (localObject == null) {
-          break label160;
-        }
-        localObject = ((ViewPropertyAnimator)localObject).setDuration(180L);
-        if (localObject == null) {
-          break label160;
-        }
-        localObject = ((ViewPropertyAnimator)localObject).translationY(0.0F);
-        if (localObject == null) {
-          break label160;
-        }
-        ((ViewPropertyAnimator)localObject).start();
-        AppMethodBeat.o(274207);
-        return;
-        i = 0;
-        break;
-        label155:
-        localObject = null;
-      }
-    }
-    label160:
-    AppMethodBeat.o(274207);
-  }
-  
-  public final boolean getListenKeyBoardChange()
-  {
-    return this.zyv;
-  }
-  
-  public final View getNestedAnimButton()
-  {
-    return this.zyx;
-  }
-  
-  public final View getNestedAnimVideoView()
-  {
-    return this.zyw;
-  }
-  
-  public final m<Boolean, Integer, x> getOnKeyboardChange()
-  {
-    return this.zyy;
+    this.EBp = null;
+    this.EBq = null;
+    this.EBo = false;
+    this.EBr = null;
   }
   
   public final void setListenKeyBoardChange(boolean paramBoolean)
   {
-    this.zyv = paramBoolean;
+    this.EBo = paramBoolean;
   }
   
   public final void setNestedAnimButton(View paramView)
   {
-    this.zyx = paramView;
+    this.EBq = paramView;
   }
   
   public final void setNestedAnimVideoView(View paramView)
   {
-    this.zyw = paramView;
+    this.EBp = paramView;
   }
   
-  public final void setOnKeyboardChange(m<? super Boolean, ? super Integer, x> paramm)
+  public final void setOnKeyboardChange(m<? super Boolean, ? super Integer, ah> paramm)
   {
-    this.zyy = paramm;
+    this.EBr = paramm;
   }
   
   public final void setShowKeyboard(boolean paramBoolean)
   {
-    this.zyt = paramBoolean;
+    this.EBm = paramBoolean;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoInputLayout$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/MegaVideoInputLayout$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

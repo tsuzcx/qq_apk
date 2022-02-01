@@ -7,13 +7,13 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.k;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ck.a.k;
+import com.tencent.mm.ui.bd;
 
 public class MMAutoAdjustTextView
   extends TextView
 {
-  private Paint auY;
+  private Paint cjv;
   private float scale;
   private float textSize;
   
@@ -35,7 +35,7 @@ public class MMAutoAdjustTextView
     AppMethodBeat.o(159843);
   }
   
-  private void ayY(int paramInt)
+  private void aFD(int paramInt)
   {
     AppMethodBeat.i(159846);
     if (paramInt <= 0)
@@ -49,7 +49,7 @@ public class MMAutoAdjustTextView
       if (getMeasuredWidth() <= paramInt) {
         break;
       }
-      this.textSize -= aw.getDensity(getContext());
+      this.textSize -= bd.getDensity(getContext());
       setTextSize(0, this.textSize * this.scale);
     }
     AppMethodBeat.o(159846);
@@ -68,9 +68,9 @@ public class MMAutoAdjustTextView
   {
     AppMethodBeat.i(159844);
     this.textSize = getTextSize();
-    this.scale = aw.ez(getContext());
-    this.auY = new Paint();
-    this.auY.set(getPaint());
+    this.scale = bd.getScaleSize(getContext());
+    this.cjv = new Paint();
+    this.cjv.set(getPaint());
     AppMethodBeat.o(159844);
   }
   
@@ -81,7 +81,7 @@ public class MMAutoAdjustTextView
     if (paramInt1 != paramInt3)
     {
       getText().toString();
-      ayY(paramInt1);
+      aFD(paramInt1);
     }
     AppMethodBeat.o(159848);
   }
@@ -91,13 +91,13 @@ public class MMAutoAdjustTextView
     AppMethodBeat.i(159847);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
     paramCharSequence.toString();
-    ayY(getWidth());
+    aFD(getWidth());
     AppMethodBeat.o(159847);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView
  * JD-Core Version:    0.7.0.1
  */

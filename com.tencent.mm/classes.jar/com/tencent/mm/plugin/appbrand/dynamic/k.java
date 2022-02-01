@@ -7,13 +7,39 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class k
 {
-  private static final Map<String, WxaWidgetContext> ogU;
+  private static final Map<String, WxaWidgetContext> rky;
   
   static
   {
     AppMethodBeat.i(121197);
-    ogU = new ConcurrentHashMap();
+    rky = new ConcurrentHashMap();
     AppMethodBeat.o(121197);
+  }
+  
+  public static WxaWidgetContext Zc(String paramString)
+  {
+    AppMethodBeat.i(121195);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(121195);
+      return null;
+    }
+    paramString = (WxaWidgetContext)rky.get(paramString);
+    AppMethodBeat.o(121195);
+    return paramString;
+  }
+  
+  public static WxaWidgetContext Zd(String paramString)
+  {
+    AppMethodBeat.i(121196);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(121196);
+      return null;
+    }
+    paramString = (WxaWidgetContext)rky.remove(paramString);
+    AppMethodBeat.o(121196);
+    return paramString;
   }
   
   public static boolean a(String paramString, WxaWidgetContext paramWxaWidgetContext)
@@ -24,35 +50,9 @@ public final class k
       AppMethodBeat.o(121194);
       return false;
     }
-    ogU.put(paramString, paramWxaWidgetContext);
+    rky.put(paramString, paramWxaWidgetContext);
     AppMethodBeat.o(121194);
     return true;
-  }
-  
-  public static WxaWidgetContext agg(String paramString)
-  {
-    AppMethodBeat.i(121195);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(121195);
-      return null;
-    }
-    paramString = (WxaWidgetContext)ogU.get(paramString);
-    AppMethodBeat.o(121195);
-    return paramString;
-  }
-  
-  public static WxaWidgetContext agh(String paramString)
-  {
-    AppMethodBeat.i(121196);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(121196);
-      return null;
-    }
-    paramString = (WxaWidgetContext)ogU.remove(paramString);
-    AppMethodBeat.o(121196);
-    return paramString;
   }
 }
 

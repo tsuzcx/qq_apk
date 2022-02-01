@@ -1,6 +1,5 @@
 package com.tencent.kinda.framework.widget.base;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
@@ -15,6 +14,8 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.kinda.framework.R.color;
 import com.tencent.kinda.framework.R.id;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.accessibility.type.ViewType;
+import com.tencent.mm.wallet_core.c;
 
 public class KindaButtonImpl
   extends FrameLayout
@@ -55,6 +56,8 @@ public class KindaButtonImpl
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     this.mKButtonImageView.setLayoutParams(localLayoutParams);
     this.mKButtonImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.mKButtonImageView.setFocusable(false);
+    this.mKButtonImageView.setImportantForAccessibility(2);
     addView(this.mKButtonImageView);
     this.mKButtonTextView = new KindaTextViewImpl(paramContext);
     this.mKButtonTextView.setKindaButton(this);
@@ -62,6 +65,11 @@ public class KindaButtonImpl
     this.mKButtonTextView.setLayoutParams(paramContext);
     this.mKButtonTextView.setBackgroundResource(R.color.transparent);
     this.mKButtonTextView.setGravity(17);
+    this.mKButtonTextView.setFocusable(false);
+    this.mKButtonTextView.setImportantForAccessibility(2);
+    paramContext = new c();
+    paramContext.setViewType(ViewType.Button);
+    setAccessibilityDelegate(paramContext);
     addView(this.mKButtonTextView);
     super.setId(R.id.kinda_button_impl_wrapper);
     AppMethodBeat.o(18859);
@@ -132,7 +140,6 @@ public class KindaButtonImpl
     AppMethodBeat.o(18869);
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(18868);
@@ -158,7 +165,7 @@ public class KindaButtonImpl
   public void setContentDescription(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(18871);
-    this.mKButtonTextView.setContentDescription(paramCharSequence);
+    super.setContentDescription(paramCharSequence);
     AppMethodBeat.o(18871);
   }
   
@@ -185,6 +192,7 @@ public class KindaButtonImpl
   {
     AppMethodBeat.i(18861);
     this.mKButtonTextView.setText(paramString);
+    setContentDescription(paramString);
     AppMethodBeat.o(18861);
   }
   
@@ -215,7 +223,7 @@ public class KindaButtonImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaButtonImpl
  * JD-Core Version:    0.7.0.1
  */

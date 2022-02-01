@@ -5,8 +5,10 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ae.e;
+import com.tencent.mm.plugin.appbrand.af.i;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.e;
 import com.tencent.mm.plugin.appbrand.jsapi.base.b;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import org.json.JSONObject;
 
 public final class a
@@ -15,7 +17,7 @@ public final class a
   public static final int CTRL_INDEX = 509;
   public static final String NAME = "insertPositioningContainer";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137506);
     int i = paramJSONObject.getInt("containerId");
@@ -23,33 +25,33 @@ public final class a
     return i;
   }
   
-  public final View a(com.tencent.mm.plugin.appbrand.jsapi.g paramg, JSONObject paramJSONObject)
+  public final View a(h paramh, JSONObject paramJSONObject)
   {
     int i = 0;
     AppMethodBeat.i(137505);
-    AppBrandNativeContainerView localAppBrandNativeContainerView = new AppBrandNativeContainerView(paramg.getContext());
+    AppBrandNativeContainerView localAppBrandNativeContainerView = new AppBrandNativeContainerView(paramh.getContext());
     localAppBrandNativeContainerView.setBackgroundColor(0);
     boolean bool1 = paramJSONObject.optBoolean("visible", true);
     boolean bool2 = paramJSONObject.optBoolean("canFullScreenByChild", false);
-    int j = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "contentOffsetLeft", 0);
-    int k = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "contentOffsetTop", 0);
+    int j = i.a(paramJSONObject, "contentOffsetLeft", 0);
+    int k = i.a(paramJSONObject, "contentOffsetTop", 0);
     localAppBrandNativeContainerView.setX(-j);
     localAppBrandNativeContainerView.setY(-k);
-    paramg = new WrapperNativeContainerView(paramg.getContext(), localAppBrandNativeContainerView);
+    paramh = new WrapperNativeContainerView(paramh.getContext(), localAppBrandNativeContainerView);
     if (bool1) {}
     for (;;)
     {
-      paramg.setVisibility(i);
-      paramg.setDuplicateParentStateEnabled(true);
+      paramh.setVisibility(i);
+      paramh.setDuplicateParentStateEnabled(true);
       localAppBrandNativeContainerView.setDuplicateParentStateEnabled(true);
       localAppBrandNativeContainerView.setFullscreenWithChild(bool2);
       AppMethodBeat.o(137505);
-      return paramg;
+      return paramh;
       i = 4;
     }
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137507);
     paramView.setOnTouchListener(new View.OnTouchListener()
@@ -69,7 +71,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.a
  * JD-Core Version:    0.7.0.1
  */

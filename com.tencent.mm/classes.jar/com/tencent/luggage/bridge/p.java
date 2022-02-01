@@ -2,9 +2,9 @@ package com.tencent.luggage.bridge;
 
 public abstract interface p
 {
-  public abstract void NR();
+  public abstract String ez(String paramString);
   
-  public abstract String dm(String paramString);
+  public abstract void onReady();
 }
 
 

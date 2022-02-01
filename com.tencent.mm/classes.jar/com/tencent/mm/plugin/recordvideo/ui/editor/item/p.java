@@ -3,175 +3,171 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dhs;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.fbn;
-import com.tencent.mm.protocal.protobuf.jc;
+import com.tencent.mm.protocal.protobuf.eac;
+import com.tencent.mm.protocal.protobuf.fxy;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.jy;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PagStickerItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "pagPath", "", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/String;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;)V", "centerX", "", "getCenterX", "()F", "setCenterX", "(F)V", "centerY", "getCenterY", "setCenterY", "drawingRect", "Landroid/graphics/RectF;", "getDrawingRect", "()Landroid/graphics/RectF;", "effectId", "", "getEffectId", "()J", "setEffectId", "(J)V", "height", "", "getHeight", "()I", "setHeight", "(I)V", "getPagPath", "()Ljava/lang/String;", "rotate", "getRotate", "setRotate", "scale", "getScale", "setScale", "text", "getText", "setText", "(Ljava/lang/String;)V", "ttsInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "width", "getWidth", "setWidth", "bringToFront", "", "delete", "getTTSInfo", "isValid", "", "setTTSInfo", "path", "durationMs", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "updateMatrix", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PagStickerItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "pagPath", "", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/String;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;)V", "centerX", "", "getCenterX", "()F", "setCenterX", "(F)V", "centerY", "getCenterY", "setCenterY", "drawingRect", "Landroid/graphics/RectF;", "getDrawingRect", "()Landroid/graphics/RectF;", "effectId", "", "getEffectId", "()J", "setEffectId", "(J)V", "height", "", "getHeight", "()I", "setHeight", "(I)V", "getPagPath", "()Ljava/lang/String;", "rotate", "getRotate", "setRotate", "scale", "getScale", "setScale", "text", "getText", "setText", "(Ljava/lang/String;)V", "ttsInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "width", "getWidth", "setWidth", "bringToFront", "", "delete", "getTTSInfo", "isValid", "", "setTTSInfo", "path", "durationMs", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "updateMatrix", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class p
   extends a
   implements j
 {
-  public final String GaM;
-  public long IcQ;
-  public final RectF IcR;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b IcS;
-  public k IcT;
-  public float aGt;
-  public float aGu;
+  public final String LWN;
+  public long NZm;
+  public final RectF NZn;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b NZo;
+  public k NZp;
+  public float aBi;
+  public float centerX;
+  public float centerY;
   public int height;
-  public float oYk;
   public float scale;
   public String text;
   public int width;
   
-  public p(jc paramjc)
+  public p(jy paramjy)
   {
-    super(d.IbN);
-    AppMethodBeat.i(222675);
+    super(d.NYk);
+    AppMethodBeat.i(280277);
     this.text = "";
     this.width = 160;
     this.height = 160;
     this.scale = 1.0F;
-    this.IcR = new RectF();
-    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    Object localObject1 = (com.tencent.mm.cd.a)new dhs();
-    paramjc = paramjc.ROY;
-    kotlin.g.b.p.j(paramjc, "proto.itemData");
-    paramjc = paramjc.Tkb.UH;
+    this.NZn = new RectF();
+    this.NZo = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    Object localObject1 = "";
+    Object localObject2 = (com.tencent.mm.bx.a)new eac();
+    paramjy = paramjy.YMl.aaxD.Op;
     try
     {
-      ((com.tencent.mm.cd.a)localObject1).parseFrom(paramjc);
-      paramjc = (jc)localObject1;
+      ((com.tencent.mm.bx.a)localObject2).parseFrom(paramjy);
+      paramjy = (jy)localObject2;
     }
-    catch (Exception paramjc)
+    catch (Exception paramjy)
     {
       for (;;)
       {
-        Object localObject2;
-        fbn localfbn;
-        Log.printDebugStack("safeParser", "", new Object[] { paramjc });
-        paramjc = null;
-        continue;
-        paramjc = "";
+        fxy localfxy;
+        Log.printDebugStack("safeParser", "", new Object[] { paramjy });
+        paramjy = null;
       }
     }
-    localObject1 = (dhs)paramjc;
-    if (localObject1 != null)
+    localObject2 = (eac)paramjy;
+    paramjy = (jy)localObject1;
+    if (localObject2 != null)
     {
-      paramjc = ((dhs)localObject1).GaM;
-      kotlin.g.b.p.j(paramjc, "it.pagPath");
-      localObject2 = ((dhs)localObject1).text;
-      kotlin.g.b.p.j(localObject2, "it.text");
-      this.text = ((String)localObject2);
-      localObject2 = this.aHZ;
-      localfbn = ((dhs)localObject1).Sdr;
-      kotlin.g.b.p.j(localfbn, "it.matrix");
-      ((Matrix)localObject2).setValues(a(localfbn));
-      g(this.aHZ);
-      a(((dhs)localObject1).IcZ);
-      this.GaM = paramjc;
-      AppMethodBeat.o(222675);
-      return;
+      paramjy = ((eac)localObject2).LWN;
+      s.s(paramjy, "it.pagPath");
+      localObject1 = ((eac)localObject2).text;
+      s.s(localObject1, "it.text");
+      setText((String)localObject1);
+      localObject1 = this.matrix;
+      localfxy = ((eac)localObject2).Zbl;
+      s.s(localfxy, "it.matrix");
+      ((Matrix)localObject1).setValues(a(localfxy));
+      i(this.matrix);
+      a(((eac)localObject2).NZv);
     }
+    this.LWN = paramjy;
+    AppMethodBeat.o(280277);
   }
   
   private p(String paramString, Matrix paramMatrix)
   {
-    super(d.IbN);
-    AppMethodBeat.i(222666);
+    super(d.NYk);
+    AppMethodBeat.i(280262);
     this.text = "";
     this.width = 160;
     this.height = 160;
     this.scale = 1.0F;
-    this.IcR = new RectF();
-    this.IcS = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    this.GaM = paramString;
-    this.aHZ.set(paramMatrix);
-    AppMethodBeat.o(222666);
+    this.NZn = new RectF();
+    this.NZo = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
+    this.LWN = paramString;
+    this.matrix.set(paramMatrix);
+    AppMethodBeat.o(280262);
   }
   
-  public final void bj(String paramString, long paramLong)
+  public final void bv(String paramString, long paramLong)
   {
-    AppMethodBeat.i(222662);
-    kotlin.g.b.p.k(paramString, "path");
-    this.IcS.setPath(paramString);
-    this.IcS.durationMs = paramLong;
-    AppMethodBeat.o(222662);
+    AppMethodBeat.i(280306);
+    s.u(paramString, "path");
+    this.NZo.setPath(paramString);
+    this.NZo.durationMs = paramLong;
+    AppMethodBeat.o(280306);
   }
   
-  public final com.tencent.mm.cd.a fyG()
+  public final boolean gKA()
   {
-    AppMethodBeat.i(222661);
-    Object localObject = new dhs();
-    ((dhs)localObject).GaM = this.GaM;
-    ((dhs)localObject).text = this.text;
-    ((dhs)localObject).Sdr = f(this.aHZ);
-    ((dhs)localObject).IcZ = fyE();
-    localObject = (com.tencent.mm.cd.a)localObject;
-    AppMethodBeat.o(222661);
-    return localObject;
-  }
-  
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b fyN()
-  {
-    return this.IcS;
-  }
-  
-  public final boolean fyO()
-  {
-    AppMethodBeat.i(222677);
+    AppMethodBeat.i(280320);
     boolean bool = j.a.a(this);
-    AppMethodBeat.o(222677);
+    AppMethodBeat.o(280320);
     return bool;
   }
   
-  public final void g(Matrix paramMatrix)
+  public final long gKE()
   {
-    AppMethodBeat.i(222659);
-    kotlin.g.b.p.k(paramMatrix, "matrix");
+    return this.NZm;
+  }
+  
+  public final com.tencent.mm.bx.a gKs()
+  {
+    AppMethodBeat.i(280300);
+    Object localObject = new eac();
+    ((eac)localObject).LWN = this.LWN;
+    ((eac)localObject).text = this.text;
+    ((eac)localObject).Zbl = h(this.matrix);
+    ((eac)localObject).NZv = gKq();
+    localObject = (com.tencent.mm.bx.a)localObject;
+    AppMethodBeat.o(280300);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b gKz()
+  {
+    return this.NZo;
+  }
+  
+  public final void i(Matrix paramMatrix)
+  {
+    AppMethodBeat.i(280290);
+    s.u(paramMatrix, "matrix");
     float f1 = this.width / 2.0F;
     float f2 = this.height / 2.0F;
     float[] arrayOfFloat = new float[2];
-    float[] tmp37_35 = arrayOfFloat;
-    tmp37_35[0] = 0.0F;
-    float[] tmp41_37 = tmp37_35;
-    tmp41_37[1] = 0.0F;
-    tmp41_37;
-    paramMatrix.mapPoints(arrayOfFloat, new float[] { tmp37_35, tmp41_37 });
-    this.aGt = arrayOfFloat[0];
-    this.aGu = (arrayOfFloat[1] - this.IcR.top);
+    arrayOfFloat[0] = 0.0F;
+    arrayOfFloat[1] = 0.0F;
+    paramMatrix.mapPoints(arrayOfFloat, new float[] { f1, f2 });
+    this.centerX = arrayOfFloat[0];
+    this.centerY = (arrayOfFloat[1] - this.NZn.top);
     arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     double d1 = arrayOfFloat[0];
     double d2 = arrayOfFloat[3];
     double d3 = arrayOfFloat[4];
     this.scale = ((float)Math.sqrt(d1 * d1 + d2 * d2));
-    this.oYk = ((float)Math.atan2(d2, d3));
-    paramMatrix = this.IcT;
-    if (paramMatrix != null)
-    {
-      paramMatrix.r(this.aGt, this.aGu, this.scale, this.oYk);
-      AppMethodBeat.o(222659);
-      return;
+    this.aBi = ((float)Math.atan2(d2, d3));
+    paramMatrix = this.NZp;
+    if (paramMatrix != null) {
+      paramMatrix.v(this.centerX, this.centerY, this.scale, this.aBi);
     }
-    AppMethodBeat.o(222659);
+    AppMethodBeat.o(280290);
   }
   
   public final void setText(String paramString)
   {
-    AppMethodBeat.i(222653);
-    kotlin.g.b.p.k(paramString, "<set-?>");
+    AppMethodBeat.i(280285);
+    s.u(paramString, "<set-?>");
     this.text = paramString;
-    AppMethodBeat.o(222653);
+    AppMethodBeat.o(280285);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.p
  * JD-Core Version:    0.7.0.1
  */

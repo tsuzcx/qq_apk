@@ -9,106 +9,168 @@ public class XEffectConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<XEffectConfig> CREATOR;
-  public int QPA;
-  public int QPB;
-  public int QPC;
-  public int QPD;
-  public int QPE;
-  public int QPF;
-  public int QPq;
-  public boolean QPr;
-  public boolean QPs;
-  public int QPt;
-  public int QPu;
-  public int QPv;
-  public int QPw;
-  public int QPx;
-  public int QPy;
-  public int QPz;
-  public String jXW;
-  public int yCP;
+  public int DpI;
+  public int XKA;
+  public int XKB;
+  public int XKC;
+  public int XKD;
+  public int XKE;
+  public int XKF;
+  public int XKG;
+  public int XKH;
+  public int XKI;
+  public int XKJ;
+  public int XKK;
+  public int XKL;
+  public int XKM;
+  public int XKN;
+  public int XKO;
+  public int XKp;
+  public boolean XKq;
+  public boolean XKr;
+  public int XKs;
+  public int XKt;
+  public int XKu;
+  public int XKv;
+  public int XKw;
+  public int XKx;
+  public int XKy;
+  public int XKz;
+  public String mxQ;
   
   static
   {
-    AppMethodBeat.i(256778);
+    AppMethodBeat.i(261663);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(256778);
+    AppMethodBeat.o(261663);
   }
   
   public XEffectConfig()
   {
-    this.QPq = -1;
-    this.QPr = false;
-    this.QPs = false;
-    this.QPt = -1;
-    this.QPu = -1;
-    this.QPv = -1;
-    this.QPw = -1;
-    this.QPx = -1;
-    this.yCP = -1;
-    this.QPy = -1;
-    this.QPz = -1;
-    this.QPA = -1;
-    this.QPB = -1;
-    this.QPC = -1;
-    this.QPD = -1;
-    this.QPE = -1;
-    this.QPF = -1;
+    this.XKp = -1;
+    this.XKq = false;
+    this.XKr = false;
+    this.XKs = -1;
+    this.XKt = -1;
+    this.XKu = -1;
+    this.XKv = -1;
+    this.XKw = -1;
+    this.DpI = -1;
+    this.XKx = -1;
+    this.XKy = -1;
+    this.XKz = -1;
+    this.XKA = -1;
+    this.XKB = -1;
+    this.XKC = -1;
+    this.XKD = -1;
+    this.XKE = -1;
+    this.XKF = -1;
+    this.XKG = -1;
+    this.XKH = -1;
+    this.XKI = -1;
+    this.XKJ = -1;
+    this.XKK = -1;
+    this.XKL = -1;
+    this.XKM = -1;
+    this.XKN = -1;
+    this.XKO = -1;
   }
   
   protected XEffectConfig(Parcel paramParcel)
   {
-    AppMethodBeat.i(256774);
-    this.QPq = -1;
-    this.QPr = false;
-    this.QPs = false;
-    this.QPt = -1;
-    this.QPu = -1;
-    this.QPv = -1;
-    this.QPw = -1;
-    this.QPx = -1;
-    this.yCP = -1;
-    this.QPy = -1;
-    this.QPz = -1;
-    this.QPA = -1;
-    this.QPB = -1;
-    this.QPC = -1;
-    this.QPD = -1;
-    this.QPE = -1;
-    this.QPF = -1;
-    this.QPq = paramParcel.readInt();
+    AppMethodBeat.i(261659);
+    this.XKp = -1;
+    this.XKq = false;
+    this.XKr = false;
+    this.XKs = -1;
+    this.XKt = -1;
+    this.XKu = -1;
+    this.XKv = -1;
+    this.XKw = -1;
+    this.DpI = -1;
+    this.XKx = -1;
+    this.XKy = -1;
+    this.XKz = -1;
+    this.XKA = -1;
+    this.XKB = -1;
+    this.XKC = -1;
+    this.XKD = -1;
+    this.XKE = -1;
+    this.XKF = -1;
+    this.XKG = -1;
+    this.XKH = -1;
+    this.XKI = -1;
+    this.XKJ = -1;
+    this.XKK = -1;
+    this.XKL = -1;
+    this.XKM = -1;
+    this.XKN = -1;
+    this.XKO = -1;
+    this.XKp = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.QPr = bool1;
+      this.XKq = bool1;
       if (paramParcel.readByte() == 0) {
-        break label263;
+        break label377;
       }
     }
-    label263:
+    label377:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.QPs = bool1;
-      this.QPt = paramParcel.readInt();
-      this.QPu = paramParcel.readInt();
-      this.QPv = paramParcel.readInt();
-      this.QPw = paramParcel.readInt();
-      this.QPx = paramParcel.readInt();
-      this.yCP = paramParcel.readInt();
-      this.QPy = paramParcel.readInt();
-      this.QPz = paramParcel.readInt();
-      this.QPA = paramParcel.readInt();
-      this.QPB = paramParcel.readInt();
-      this.QPC = paramParcel.readInt();
-      this.QPD = paramParcel.readInt();
-      this.QPE = paramParcel.readInt();
-      this.QPF = paramParcel.readInt();
-      this.jXW = paramParcel.readString();
-      AppMethodBeat.o(256774);
+      this.XKr = bool1;
+      this.XKs = paramParcel.readInt();
+      this.XKt = paramParcel.readInt();
+      this.XKu = paramParcel.readInt();
+      this.XKv = paramParcel.readInt();
+      this.XKw = paramParcel.readInt();
+      this.DpI = paramParcel.readInt();
+      this.XKx = paramParcel.readInt();
+      this.XKy = paramParcel.readInt();
+      this.XKz = paramParcel.readInt();
+      this.XKA = paramParcel.readInt();
+      this.XKB = paramParcel.readInt();
+      this.XKC = paramParcel.readInt();
+      this.XKD = paramParcel.readInt();
+      this.XKE = paramParcel.readInt();
+      this.XKF = paramParcel.readInt();
+      this.XKG = paramParcel.readInt();
+      this.XKH = paramParcel.readInt();
+      this.XKI = paramParcel.readInt();
+      this.XKJ = paramParcel.readInt();
+      this.XKK = paramParcel.readInt();
+      this.XKL = paramParcel.readInt();
+      this.XKM = paramParcel.readInt();
+      this.mxQ = paramParcel.readString();
+      AppMethodBeat.o(261659);
       return;
       bool1 = false;
       break;
     }
+  }
+  
+  public final void avl(int paramInt)
+  {
+    if (paramInt <= 0)
+    {
+      this.XKH = 0;
+      this.XKI = (-paramInt);
+      return;
+    }
+    this.XKI = 0;
+    this.XKH = paramInt;
+  }
+  
+  public final void avm(int paramInt)
+  {
+    if (paramInt <= 0)
+    {
+      this.XKG = 0;
+      this.XKF = (-paramInt);
+      return;
+    }
+    this.XKF = 0;
+    this.XKG = paramInt;
   }
   
   public int describeContents()
@@ -119,36 +181,44 @@ public class XEffectConfig
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(256776);
-    paramParcel.writeInt(this.QPq);
-    if (this.QPr)
+    AppMethodBeat.i(261668);
+    paramParcel.writeInt(this.XKp);
+    if (this.XKq)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.QPs) {
-        break label176;
+      if (!this.XKr) {
+        break label240;
       }
     }
-    label176:
+    label240:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.QPt);
-      paramParcel.writeInt(this.QPu);
-      paramParcel.writeInt(this.QPv);
-      paramParcel.writeInt(this.QPw);
-      paramParcel.writeInt(this.QPx);
-      paramParcel.writeInt(this.yCP);
-      paramParcel.writeInt(this.QPy);
-      paramParcel.writeInt(this.QPz);
-      paramParcel.writeInt(this.QPA);
-      paramParcel.writeInt(this.QPB);
-      paramParcel.writeInt(this.QPC);
-      paramParcel.writeInt(this.QPD);
-      paramParcel.writeInt(this.QPE);
-      paramParcel.writeInt(this.QPF);
-      paramParcel.writeString(this.jXW);
-      AppMethodBeat.o(256776);
+      paramParcel.writeInt(this.XKs);
+      paramParcel.writeInt(this.XKt);
+      paramParcel.writeInt(this.XKu);
+      paramParcel.writeInt(this.XKv);
+      paramParcel.writeInt(this.XKw);
+      paramParcel.writeInt(this.DpI);
+      paramParcel.writeInt(this.XKx);
+      paramParcel.writeInt(this.XKy);
+      paramParcel.writeInt(this.XKz);
+      paramParcel.writeInt(this.XKA);
+      paramParcel.writeInt(this.XKB);
+      paramParcel.writeInt(this.XKC);
+      paramParcel.writeInt(this.XKD);
+      paramParcel.writeInt(this.XKE);
+      paramParcel.writeInt(this.XKF);
+      paramParcel.writeInt(this.XKG);
+      paramParcel.writeInt(this.XKH);
+      paramParcel.writeInt(this.XKI);
+      paramParcel.writeInt(this.XKJ);
+      paramParcel.writeInt(this.XKK);
+      paramParcel.writeInt(this.XKL);
+      paramParcel.writeInt(this.XKM);
+      paramParcel.writeString(this.mxQ);
+      AppMethodBeat.o(261668);
       return;
       paramInt = 0;
       break;
@@ -157,7 +227,7 @@ public class XEffectConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.xlabeffect.XEffectConfig
  * JD-Core Version:    0.7.0.1
  */

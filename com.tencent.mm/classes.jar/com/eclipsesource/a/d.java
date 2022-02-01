@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
   extends h
 {
-  private final String aJg;
+  private final String cBR;
   
   d(String paramString)
   {
@@ -16,14 +16,38 @@ final class d
       AppMethodBeat.o(74710);
       throw paramString;
     }
-    this.aJg = paramString;
+    this.cBR = paramString;
     AppMethodBeat.o(74710);
+  }
+  
+  public final int Pe()
+  {
+    AppMethodBeat.i(74712);
+    int i = Integer.parseInt(this.cBR, 10);
+    AppMethodBeat.o(74712);
+    return i;
+  }
+  
+  public final long Pf()
+  {
+    AppMethodBeat.i(74713);
+    long l = Long.parseLong(this.cBR, 10);
+    AppMethodBeat.o(74713);
+    return l;
+  }
+  
+  public final double Pg()
+  {
+    AppMethodBeat.i(74714);
+    double d = Double.parseDouble(this.cBR);
+    AppMethodBeat.o(74714);
+    return d;
   }
   
   final void a(i parami)
   {
     AppMethodBeat.i(74711);
-    parami.bj(this.aJg);
+    parami.cw(this.cBR);
     AppMethodBeat.o(74711);
   }
   
@@ -46,7 +70,7 @@ final class d
       return false;
     }
     paramObject = (d)paramObject;
-    boolean bool = this.aJg.equals(paramObject.aJg);
+    boolean bool = this.cBR.equals(paramObject.cBR);
     AppMethodBeat.o(74716);
     return bool;
   }
@@ -54,7 +78,7 @@ final class d
   public final int hashCode()
   {
     AppMethodBeat.i(74715);
-    int i = this.aJg.hashCode();
+    int i = this.cBR.hashCode();
     AppMethodBeat.o(74715);
     return i;
   }
@@ -64,38 +88,14 @@ final class d
     return true;
   }
   
-  public final int pT()
-  {
-    AppMethodBeat.i(74712);
-    int i = Integer.parseInt(this.aJg, 10);
-    AppMethodBeat.o(74712);
-    return i;
-  }
-  
-  public final long pU()
-  {
-    AppMethodBeat.i(74713);
-    long l = Long.parseLong(this.aJg, 10);
-    AppMethodBeat.o(74713);
-    return l;
-  }
-  
-  public final double pV()
-  {
-    AppMethodBeat.i(74714);
-    double d = Double.parseDouble(this.aJg);
-    AppMethodBeat.o(74714);
-    return d;
-  }
-  
   public final String toString()
   {
-    return this.aJg;
+    return this.cBR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.eclipsesource.a.d
  * JD-Core Version:    0.7.0.1
  */

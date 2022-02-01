@@ -1,95 +1,63 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.api.g;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.gamelife.a.a;
+import com.tencent.mm.plugin.gamelife.a.b.c;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import org.json.JSONArray;
-import org.json.JSONException;
+import java.util.Map;
 import org.json.JSONObject;
 
 public class u
-  extends bs<i>
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(final b<i>.a paramb)
+  public final void a(Context paramContext, String paramString, final bv.a parama)
   {
-    AppMethodBeat.i(83078);
-    String str1 = paramb.crh.cqn.optString("videoUrl");
-    String str2 = paramb.crh.cqn.optString("thumbUrl");
-    String str3 = paramb.crh.cqn.optString("appId");
-    int i = paramb.crh.cqn.optInt("sourceSceneId");
-    if (Util.isNullOrNil(str1))
+    AppMethodBeat.i(277147);
+    Log.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "invokeInMM");
+    paramContext = c.ZL(paramString);
+    if (paramContext == null)
     {
-      paramb.a("invalid_videoUrl", null);
-      AppMethodBeat.o(83078);
+      parama.j("invalid_params", null);
+      AppMethodBeat.o(277147);
       return;
     }
-    ((g)com.tencent.mm.kernel.h.ae(g.class)).a(((i)paramb.crg).mContext, str1, str2, str3, 510, i);
-    ((MMActivity)((i)paramb.crg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    paramContext = paramContext.optString("userName");
+    Log.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "userName:[%s]", new Object[] { paramContext });
+    if (Util.isNullOrNil(paramContext))
     {
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      parama.j("null_data", null);
+      AppMethodBeat.o(277147);
+      return;
+    }
+    ((com.tencent.mm.plugin.gamelife.a.b)h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramContext, new b.c()
+    {
+      public final void onDone(Map<String, a> paramAnonymousMap)
       {
-        AppMethodBeat.i(83077);
-        if (paramAnonymousInt1 == 510)
-        {
-          if (paramAnonymousInt2 != -1) {
-            break label176;
-          }
-          switch (paramAnonymousIntent.getIntExtra("webview_callback_err", 0))
-          {
-          }
-        }
-        for (;;)
-        {
-          ((MMActivity)((i)paramb.crg).mContext).mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(83077);
-          return;
-          JSONObject localJSONObject = new JSONObject();
-          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_video_info");
-          try
-          {
-            localJSONObject.put("videoInfo", new JSONArray(paramAnonymousIntent).getJSONObject(0));
-            paramb.a("", localJSONObject);
-          }
-          catch (JSONException paramAnonymousIntent)
-          {
-            for (;;)
-            {
-              Log.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
-            }
-          }
-          paramb.a("cancel", null);
-          continue;
-          paramb.a("download_err", null);
-          continue;
-          label176:
-          paramb.a("cancel", null);
-        }
+        AppMethodBeat.i(277123);
+        parama.j(null, null);
+        AppMethodBeat.o(277123);
       }
     });
-    AppMethodBeat.o(83078);
+    AppMethodBeat.o(277147);
   }
   
-  public final int cDj()
+  public final void b(com.tencent.luggage.d.b<GameWebPage>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "launchGameVideoEditor";
+    return "initGameLifeContact";
   }
 }
 

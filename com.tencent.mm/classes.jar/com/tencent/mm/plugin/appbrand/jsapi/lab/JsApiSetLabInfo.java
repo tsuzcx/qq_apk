@@ -6,12 +6,9 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
@@ -22,13 +19,13 @@ public final class JsApiSetLabInfo
   public static final int CTRL_INDEX = 558;
   public static final String NAME = "setLabInfo";
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46372);
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.JsApiSetLabInfo", "fail:data is null");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46372);
       return;
     }
@@ -36,12 +33,12 @@ public final class JsApiSetLabInfo
     if ((Util.isNullOrNil(str)) || (!paramJSONObject.has("enabled")))
     {
       Log.e("MicroMsg.JsApiSetLabInfo", "fail:labId is null or no enabled");
-      parame.j(paramInt, h("fail:invalid data", null));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(46372);
       return;
     }
     boolean bool = paramJSONObject.optBoolean("enabled");
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCSetLabInfoRequest(str, bool), a.class, new f() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCSetLabInfoRequest(str, bool), a.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(46372);
   }
   
@@ -105,7 +102,7 @@ public final class JsApiSetLabInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.lab.JsApiSetLabInfo
  * JD-Core Version:    0.7.0.1
  */

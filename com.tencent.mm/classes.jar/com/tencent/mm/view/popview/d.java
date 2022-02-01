@@ -5,17 +5,16 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.ak;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.emoji.c.b.ak;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends a
 {
-  private View YRA;
-  private AbstractPopView YRX;
+  private AbstractPopView agNB;
+  private View agNg;
   private final Context context;
   private final WindowManager windowManager;
   
@@ -26,7 +25,7 @@ public final class d
     paramContext = this.context.getSystemService("window");
     if (paramContext == null)
     {
-      paramContext = new t("null cannot be cast to non-null type android.view.WindowManager");
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.view.WindowManager");
       AppMethodBeat.o(184008);
       throw paramContext;
     }
@@ -34,70 +33,67 @@ public final class d
     AppMethodBeat.o(184008);
   }
   
-  private final void e(View paramView, Object paramObject)
+  private final void d(View paramView, Object paramObject)
   {
     AppMethodBeat.i(184006);
     if (((paramObject instanceof ak)) && (paramView.isEnabled()))
     {
       Object localObject;
-      if (this.YRX == null)
+      if (this.agNB == null)
       {
-        this.YRX = c.b(this.context, paramObject);
+        this.agNB = c.c(this.context, paramObject);
         WindowManager localWindowManager = this.windowManager;
-        View localView = (View)this.YRX;
-        localObject = this.YRX;
-        if (localObject != null)
+        View localView = (View)this.agNB;
+        localObject = this.agNB;
+        if (localObject == null)
         {
-          localObject = ((AbstractPopView)localObject).getWindowLayoutParams();
+          localObject = null;
           localWindowManager.addView(localView, (ViewGroup.LayoutParams)localObject);
         }
       }
       else
       {
-        localObject = this.YRX;
+        localObject = this.agNB;
         if (localObject != null) {
           ((AbstractPopView)localObject).setVisibility(0);
         }
-        c.a(this.YRX, paramObject);
-        paramObject = this.YRX;
+        c.a(this.agNB, paramObject);
+        paramObject = this.agNB;
         if (paramObject != null) {
-          paramObject.jd(paramView);
+          paramObject.mB(paramView);
         }
         paramObject = this.windowManager;
-        localObject = (View)this.YRX;
-        paramView = this.YRX;
-        if (paramView == null) {
-          break label165;
+        localObject = (View)this.agNB;
+        paramView = this.agNB;
+        if (paramView != null) {
+          break label162;
         }
       }
-      label165:
-      for (paramView = paramView.getWindowLayoutParams();; paramView = null)
+      label162:
+      for (paramView = null;; paramView = paramView.getWindowLayoutParams())
       {
         paramObject.updateViewLayout((View)localObject, (ViewGroup.LayoutParams)paramView);
         AppMethodBeat.o(184006);
         return;
-        localObject = null;
+        localObject = ((AbstractPopView)localObject).getWindowLayoutParams();
         break;
       }
     }
-    paramView = this.YRX;
-    if (paramView != null)
-    {
+    paramView = this.agNB;
+    if (paramView != null) {
       paramView.setVisibility(8);
-      AppMethodBeat.o(184006);
-      return;
     }
     AppMethodBeat.o(184006);
   }
   
-  public final boolean c(View paramView, Object paramObject)
+  public final boolean b(View paramView, Object paramObject)
   {
     AppMethodBeat.i(184004);
-    p.k(paramView, "anchor");
+    s.u(paramView, "anchor");
     if (((paramObject instanceof ak)) && (paramView.isEnabled()))
     {
-      this.YRA = paramView;
-      e(paramView, paramObject);
+      this.agNg = paramView;
+      d(paramView, paramObject);
       AppMethodBeat.o(184004);
       return true;
     }
@@ -105,29 +101,29 @@ public final class d
     return false;
   }
   
-  public final void d(View paramView, Object paramObject)
+  public final void c(View paramView, Object paramObject)
   {
     AppMethodBeat.i(184005);
-    p.k(paramView, "anchor");
-    if (p.h(this.YRA, paramView))
+    s.u(paramView, "anchor");
+    if (s.p(this.agNg, paramView))
     {
       AppMethodBeat.o(184005);
       return;
     }
-    this.YRA = paramView;
-    e(paramView, paramObject);
+    this.agNg = paramView;
+    d(paramView, paramObject);
     AppMethodBeat.o(184005);
   }
   
-  public final void fRF()
+  public final void hjF()
   {
     AppMethodBeat.i(184007);
-    this.YRA = null;
-    AbstractPopView localAbstractPopView = this.YRX;
+    this.agNg = null;
+    AbstractPopView localAbstractPopView = this.agNB;
     if (localAbstractPopView != null) {
       this.windowManager.removeView((View)localAbstractPopView);
     }
-    this.YRX = null;
+    this.agNB = null;
     AppMethodBeat.o(184007);
   }
 }

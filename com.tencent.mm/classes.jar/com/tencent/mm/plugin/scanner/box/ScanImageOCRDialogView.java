@@ -10,86 +10,79 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.l.d;
 import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
-import com.tencent.mm.ui.ar;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.aw;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanImageOCRDialogView;", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "getCloseButton", "Landroid/view/View;", "root", "getCloseLayoutHeight", "getLayoutId", "onCreateView", "", "view", "Companion", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/box/ScanImageOCRDialogView;", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "getCloseButton", "Landroid/view/View;", "root", "getCloseLayoutHeight", "getLayoutId", "onCreateView", "", "view", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ScanImageOCRDialogView
   extends BaseBoxDialogView
 {
-  public static final a IHT;
+  public static final ScanImageOCRDialogView.a ONT;
   
   static
   {
-    AppMethodBeat.i(222623);
-    IHT = new a((byte)0);
-    AppMethodBeat.o(222623);
+    AppMethodBeat.i(313731);
+    ONT = new ScanImageOCRDialogView.a((byte)0);
+    AppMethodBeat.o(313731);
   }
   
   public ScanImageOCRDialogView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(222619);
-    AppMethodBeat.o(222619);
+    AppMethodBeat.i(313717);
+    AppMethodBeat.o(313717);
   }
   
   public ScanImageOCRDialogView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(222620);
-    AppMethodBeat.o(222620);
+    AppMethodBeat.i(313721);
+    AppMethodBeat.o(313721);
   }
   
   public ScanImageOCRDialogView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(222622);
-    AppMethodBeat.o(222622);
+    AppMethodBeat.i(313725);
+    AppMethodBeat.o(313725);
   }
   
-  public final View eW(View paramView)
+  public final View jdMethod_do(View paramView)
   {
-    AppMethodBeat.i(222614);
-    p.k(paramView, "root");
+    AppMethodBeat.i(313744);
+    s.u(paramView, "root");
     paramView = paramView.findViewById(l.f.close_img);
-    p.j(paramView, "root.findViewById(R.id.close_img)");
-    AppMethodBeat.o(222614);
+    s.s(paramView, "root.findViewById(R.id.close_img)");
+    AppMethodBeat.o(313744);
     return paramView;
-  }
-  
-  public final void fU(View paramView)
-  {
-    AppMethodBeat.i(222613);
-    p.k(paramView, "view");
-    super.fU(paramView);
-    paramView = (TextView)paramView.findViewById(l.f.dialog_title);
-    p.j(paramView, "dialogTitle");
-    ar.a((Paint)paramView.getPaint(), 0.8F);
-    AppMethodBeat.o(222613);
   }
   
   public final int getCloseLayoutHeight()
   {
-    AppMethodBeat.i(222615);
-    Context localContext = getContext();
-    p.j(localContext, "context");
-    int i = localContext.getResources().getDimensionPixelSize(l.d.ICb);
-    AppMethodBeat.o(222615);
+    AppMethodBeat.i(313749);
+    int i = getContext().getResources().getDimensionPixelSize(l.d.OId);
+    AppMethodBeat.o(313749);
     return i;
   }
   
   public final int getLayoutId()
   {
-    return l.g.IDX;
+    return l.g.OKa;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanImageOCRDialogView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
-  public static final class a {}
+  public final void iV(View paramView)
+  {
+    AppMethodBeat.i(313735);
+    s.u(paramView, "view");
+    super.iV(paramView);
+    aw.a((Paint)((TextView)paramView.findViewById(l.f.dialog_title)).getPaint(), 0.8F);
+    AppMethodBeat.o(313735);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.ScanImageOCRDialogView
  * JD-Core Version:    0.7.0.1
  */

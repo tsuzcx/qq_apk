@@ -1,37 +1,34 @@
 package kotlin.g.b;
 
-import kotlin.l.a;
-import kotlin.l.j;
-import kotlin.l.j.a;
-import kotlin.l.r.a;
+import java.io.Serializable;
+import kotlin.Metadata;
 
-public abstract class u
-  extends s
-  implements j
+@Metadata(d1={""}, d2={"Lkotlin/jvm/internal/Lambda;", "R", "Lkotlin/jvm/internal/FunctionBase;", "Ljava/io/Serializable;", "arity", "", "(I)V", "getArity", "()I", "toString", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract class u<R>
+  implements Serializable, o<R>
 {
-  protected final a iBX()
+  private final int arity;
+  
+  public u(int paramInt)
   {
-    return ab.a(this);
+    this.arity = paramInt;
   }
   
-  public final r.a iCp()
+  public int getArity()
   {
-    return ((j)iCr()).iCp();
+    return this.arity;
   }
   
-  public final j.a iCq()
+  public String toString()
   {
-    return ((j)iCr()).iCq();
-  }
-  
-  public Object invoke(Object paramObject)
-  {
-    return get(paramObject);
+    String str = ai.a(this);
+    s.s(str, "Reflection.renderLambdaToString(this)");
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.g.b.u
  * JD-Core Version:    0.7.0.1
  */

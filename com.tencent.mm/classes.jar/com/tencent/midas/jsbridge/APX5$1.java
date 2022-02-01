@@ -11,7 +11,7 @@ final class APX5$1
   
   public final void run()
   {
-    AppMethodBeat.i(253169);
+    AppMethodBeat.i(217018);
     try
     {
       Method localMethod = Class.forName("com.tencent.smtt.sdk.QbSdk").getMethod("initX5Environment", new Class[] { Context.class, Class.forName("com.tencent.smtt.sdk.QbSdk$PreInitCallback") });
@@ -20,12 +20,12 @@ final class APX5$1
         localMethod.setAccessible(true);
         localMethod.invoke(null, new Object[] { this.val$context.getApplicationContext(), null });
       }
-      AppMethodBeat.o(253169);
+      AppMethodBeat.o(217018);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(253169);
+      AppMethodBeat.o(217018);
     }
   }
 }

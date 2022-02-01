@@ -1,34 +1,27 @@
 package kotlinx.a.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.List;
-import kotlin.l;
-import kotlinx.a.h;
-import kotlinx.a.n;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/internal/ArrayListSerializer;", "E", "Lkotlinx/serialization/internal/ListLikeSerializer;", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "element", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "builder", "builderSize", "", "checkCapacity", "", "size", "collectionIterator", "", "collectionSize", "insert", "index", "(Ljava/util/ArrayList;ILjava/lang/Object;)V", "toBuilder", "toResult", "kotlinx-serialization-runtime"})
-public final class e<E>
-  extends ai<E, List<? extends E>, ArrayList<E>>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lkotlinx/serialization/descriptors/SerialDescriptor;", "", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/descriptors/SerialKind;", "getKind", "()Lkotlinx/serialization/descriptors/SerialKind;", "serialName", "", "getSerialName", "()Ljava/lang/String;", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "name", "getElementName", "isElementOptional", "kotlinx-serialization-runtime"}, k=1, mv={1, 4, 0})
+public abstract interface e
 {
-  private final n abAF;
+  public abstract e aMJ(int paramInt);
   
-  public e(h<E> paramh)
-  {
-    super(paramh, (byte)0);
-    AppMethodBeat.i(254845);
-    this.abAF = ((n)new d(paramh.gPe()));
-    AppMethodBeat.o(254845);
-  }
+  public abstract String aMK(int paramInt);
   
-  public final n gPe()
-  {
-    return this.abAF;
-  }
+  public abstract int bJN(String paramString);
+  
+  public abstract String kFa();
+  
+  public abstract int kFb();
+  
+  public abstract boolean kFc();
+  
+  public abstract i kFd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlinx.a.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="setting_remark" android:layout="@layout/b8j" android:title="" />
-    <Preference android:key="setting_permission" android:layout="@layout/b8j" android:title="" />
-    <PreferenceSmallCategory />
-    <Preference android:key="setting_send_card" android:layout="@layout/b8j" android:title="" />
-    <Preference android:key="setting_shortcut" android:layout="@layout/b8j" android:title="@string/b9p" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="setting_star" android:layout="@layout/b8j" android:persistent="false" android:title="@string/baz" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="setting_blacklist" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bd6" />
-    <Preference android:key="setting_report" android:layout="@layout/b8j" android:title="@string/ahk" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/adp" android:key="setting_delete" android:layout="@layout/bik" android:title_color="@color/Red" />
-    <PreferenceCategory />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

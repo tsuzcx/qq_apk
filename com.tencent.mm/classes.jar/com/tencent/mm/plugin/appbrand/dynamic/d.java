@@ -8,26 +8,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class d
 {
-  private static volatile d ogH;
-  Map<String, c> ogI;
+  private static volatile d rkl;
+  Map<String, c> rkm;
   
   private d()
   {
     AppMethodBeat.i(121156);
-    this.ogI = new ConcurrentHashMap();
+    this.rkm = new ConcurrentHashMap();
     AppMethodBeat.o(121156);
   }
   
-  public static d bNd()
+  public static d cns()
   {
     AppMethodBeat.i(121157);
-    if (ogH == null) {}
+    if (rkl == null) {}
     try
     {
-      if (ogH == null) {
-        ogH = new d();
+      if (rkl == null) {
+        rkl = new d();
       }
-      d locald = ogH;
+      d locald = rkl;
       AppMethodBeat.o(121157);
       return locald;
     }
@@ -37,7 +37,7 @@ public class d
     }
   }
   
-  public final c afW(String paramString)
+  public final c YS(String paramString)
   {
     AppMethodBeat.i(121158);
     if (Util.isNullOrNil(paramString))
@@ -46,14 +46,14 @@ public class d
       AppMethodBeat.o(121158);
       return null;
     }
-    paramString = (c)this.ogI.get(paramString);
+    paramString = (c)this.rkm.get(paramString);
     AppMethodBeat.o(121158);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d
  * JD-Core Version:    0.7.0.1
  */

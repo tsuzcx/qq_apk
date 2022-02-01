@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.performance.diagnostic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.fw;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.gh;
 import com.tencent.mm.plugin.performance.a.a;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -9,31 +10,31 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class d
 {
-  private static final String GLV;
-  private static final IListener<fw> GLW;
-  private static final MultiProcessMMKV cQO;
+  private static final String MIR;
+  private static final IListener<gh> MIS;
+  private static final MultiProcessMMKV eMf;
   
   static
   {
-    AppMethodBeat.i(200603);
-    cQO = MultiProcessMMKV.getMMKV("diagnostic_storage");
+    AppMethodBeat.i(300901);
+    eMf = MultiProcessMMKV.getMMKV("diagnostic_storage");
     StringBuilder localStringBuilder = new StringBuilder();
-    a locala = a.GLp;
-    GLV = a.fnm() + ".$token";
-    GLW = new IListener() {};
-    AppMethodBeat.o(200603);
+    a locala = a.MIk;
+    MIR = a.gxZ() + ".$token";
+    MIS = new DiagnosticPush.1(f.hfK);
+    AppMethodBeat.o(300901);
   }
   
   public static void alive()
   {
-    AppMethodBeat.i(200601);
+    AppMethodBeat.i(300885);
     if (!MMApplicationContext.isMainProcess())
     {
-      AppMethodBeat.o(200601);
+      AppMethodBeat.o(300885);
       return;
     }
-    GLW.alive();
-    AppMethodBeat.o(200601);
+    MIS.alive();
+    AppMethodBeat.o(300885);
   }
 }
 

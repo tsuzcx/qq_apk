@@ -1,132 +1,65 @@
 package com.tencent.mm.plugin.finder.live.component;
 
-import android.content.Intent;
-import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.live.viewmodel.component.f;
-import com.tencent.mm.plugin.finder.model.an;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.presenter.contract.FinderLiveSubTagConstract.Presenter;
-import com.tencent.mm.plugin.finder.presenter.contract.FinderLiveSubTagConstract.ViewCallback;
-import com.tencent.mm.protocal.protobuf.bda;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.m;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveSubTagUIC;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/component/FinderLiveTagBaseUIC;", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "presenter", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveSubTagConstract$Presenter;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveSubTagConstract$Presenter;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveSubTagConstract$Presenter;)V", "convertTagData", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "tagInfo", "", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/component/LotteryViewHolder;", "()V", "dataList", "", "Lcom/tencent/mm/plugin/finder/live/component/LotteryCreateItem;", "getDataList", "()Ljava/util/List;", "setDataList", "(Ljava/util/List;)V", "onItemClickListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "item", "", "pos", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "getItemCount", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ac
-  extends f
+  extends RecyclerView.a<av>
 {
-  public static final a ycG;
-  public FinderLiveSubTagConstract.Presenter ycF;
+  public static final ac.a CyY;
+  private static final String TAG;
+  m<? super at, ? super Integer, ah> CyZ;
+  List<at> dataList;
   
   static
   {
-    AppMethodBeat.i(227425);
-    ycG = new a((byte)0);
-    AppMethodBeat.o(227425);
+    AppMethodBeat.i(353041);
+    CyY = new ac.a((byte)0);
+    TAG = "FinderLiveLotteryCreateAdapter";
+    AppMethodBeat.o(353041);
   }
   
-  public ac(Fragment paramFragment)
+  private static final void a(ac paramac, at paramat, int paramInt, View paramView)
   {
-    super(paramFragment);
-    AppMethodBeat.i(227422);
-    AppMethodBeat.o(227422);
-  }
-  
-  private static ArrayList<bu> em(List<? extends bda> paramList)
-  {
-    AppMethodBeat.i(227415);
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = ((Iterable)paramList).iterator();
-      while (paramList.hasNext()) {
-        localArrayList.add(new an((bda)paramList.next()));
-      }
+    AppMethodBeat.i(353036);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramac);
+    localb.cH(paramat);
+    localb.sc(paramInt);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramac, "this$0");
+    paramac = paramac.CyZ;
+    if (paramac != null) {
+      paramac.invoke(paramat, Integer.valueOf(paramInt));
     }
-    AppMethodBeat.o(227415);
-    return localArrayList;
+    a.a(new Object(), "com/tencent/mm/plugin/finder/live/component/FinderLiveLotteryCreateAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(353036);
   }
   
-  public final int getLayoutId()
+  public final int getItemCount()
   {
-    return b.g.finder_live_sub_tag_ui;
-  }
-  
-  public final void onCreate(Bundle paramBundle)
-  {
-    FinderLiveSubTagConstract.Presenter localPresenter = null;
-    AppMethodBeat.i(227418);
-    super.onCreate(paramBundle);
-    dxg();
-    boolean bool = getIntent().getBooleanExtra("KEY_HAS_NEXT_ACTION", false);
-    paramBundle = (a)new bda();
-    Object localObject = getIntent().getByteArrayExtra("KEY_TAG_INFO");
-    try
+    AppMethodBeat.i(353055);
+    List localList = this.dataList;
+    if (localList == null)
     {
-      paramBundle.parseFrom((byte[])localObject);
-      localObject = (bda)paramBundle;
-      paramBundle = localPresenter;
-      if (localObject != null) {
-        paramBundle = ((bda)localObject).SOj;
-      }
-      this.ycF = new FinderLiveSubTagConstract.Presenter((bda)localObject, em((List)paramBundle), bool);
-      paramBundle = getActivity();
-      if (paramBundle == null)
-      {
-        paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(227418);
-        throw paramBundle;
-      }
+      AppMethodBeat.o(353055);
+      return 0;
     }
-    catch (Exception paramBundle)
-    {
-      for (;;)
-      {
-        Log.printDebugStack("safeParser", "", new Object[] { paramBundle });
-        paramBundle = null;
-      }
-      paramBundle = (MMActivity)paramBundle;
-      localPresenter = this.ycF;
-      if (localPresenter == null) {
-        p.bGy("presenter");
-      }
-      paramBundle = new FinderLiveSubTagConstract.ViewCallback(paramBundle, localPresenter);
-      localPresenter = this.ycF;
-      if (localPresenter == null) {
-        p.bGy("presenter");
-      }
-      localPresenter.a(paramBundle);
-      AppMethodBeat.o(227418);
-    }
+    int i = localList.size();
+    AppMethodBeat.o(353055);
+    return i;
   }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(227420);
-    super.onDestroy();
-    if (((ac)this).ycF != null)
-    {
-      FinderLiveSubTagConstract.Presenter localPresenter = this.ycF;
-      if (localPresenter == null) {
-        p.bGy("presenter");
-      }
-      localPresenter.onDetach();
-    }
-    AppMethodBeat.o(227420);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveSubTagUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

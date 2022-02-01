@@ -1,146 +1,182 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.matrix.d.b;
+import com.tencent.matrix.d.c;
+import com.tencent.matrix.report.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.matrix.traffic.TrafficPlugin;
+import com.tencent.matrix.traffic.a;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TimerTask;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public final class d
-  extends e
 {
-  private TimerTask Nfn = null;
-  public final String TAG = "MicroMsg.NsmTrafficStatsInspector";
-  private com.tencent.e.i.d<?> mkC = null;
-  private boolean started;
+  private static boolean Hjt = false;
+  private static TrafficPlugin TRX;
+  private static a fiG;
   
-  public final void gsi()
+  /* Error */
+  public static void a(android.app.Application paramApplication, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(123899);
-    if (this.started)
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 34
+    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 36
+    //   10: new 38	java/lang/StringBuilder
+    //   13: dup
+    //   14: ldc 40
+    //   16: invokespecial 44	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   19: getstatic 31	com/tencent/mm/plugin/trafficmonitor/d:Hjt	Z
+    //   22: invokevirtual 48	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: getstatic 31	com/tencent/mm/plugin/trafficmonitor/d:Hjt	Z
+    //   34: ifeq +12 -> 46
+    //   37: ldc 34
+    //   39: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: return
+    //   46: iconst_1
+    //   47: putstatic 31	com/tencent/mm/plugin/trafficmonitor/d:Hjt	Z
+    //   50: new 59	com/tencent/matrix/traffic/a
+    //   53: dup
+    //   54: invokespecial 61	com/tencent/matrix/traffic/a:<init>	()V
+    //   57: astore 5
+    //   59: aload 5
+    //   61: putstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   64: aload 5
+    //   66: iconst_1
+    //   67: putfield 66	com/tencent/matrix/traffic/a:fiA	Z
+    //   70: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   73: iload_1
+    //   74: putfield 69	com/tencent/matrix/traffic/a:fiB	Z
+    //   77: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   80: iload_2
+    //   81: putfield 72	com/tencent/matrix/traffic/a:fiC	Z
+    //   84: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   87: iload_3
+    //   88: putfield 75	com/tencent/matrix/traffic/a:fiD	Z
+    //   91: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   94: iload 4
+    //   96: putfield 78	com/tencent/matrix/traffic/a:fiE	Z
+    //   99: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   102: ldc 80
+    //   104: invokevirtual 83	com/tencent/matrix/traffic/a:ho	(Ljava/lang/String;)V
+    //   107: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   110: ldc 85
+    //   112: invokevirtual 83	com/tencent/matrix/traffic/a:ho	(Ljava/lang/String;)V
+    //   115: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   118: ldc 87
+    //   120: invokevirtual 83	com/tencent/matrix/traffic/a:ho	(Ljava/lang/String;)V
+    //   123: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   126: ldc 89
+    //   128: invokevirtual 83	com/tencent/matrix/traffic/a:ho	(Ljava/lang/String;)V
+    //   131: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   134: ldc 91
+    //   136: invokevirtual 83	com/tencent/matrix/traffic/a:ho	(Ljava/lang/String;)V
+    //   139: new 93	com/tencent/matrix/traffic/TrafficPlugin
+    //   142: dup
+    //   143: getstatic 63	com/tencent/mm/plugin/trafficmonitor/d:fiG	Lcom/tencent/matrix/traffic/a;
+    //   146: invokespecial 96	com/tencent/matrix/traffic/TrafficPlugin:<init>	(Lcom/tencent/matrix/traffic/a;)V
+    //   149: astore 5
+    //   151: aload 5
+    //   153: putstatic 98	com/tencent/mm/plugin/trafficmonitor/d:TRX	Lcom/tencent/matrix/traffic/TrafficPlugin;
+    //   156: aload 5
+    //   158: aload_0
+    //   159: new 6	com/tencent/mm/plugin/trafficmonitor/d$1
+    //   162: dup
+    //   163: invokespecial 99	com/tencent/mm/plugin/trafficmonitor/d$1:<init>	()V
+    //   166: invokevirtual 103	com/tencent/matrix/traffic/TrafficPlugin:init	(Landroid/app/Application;Lcom/tencent/matrix/d/c;)V
+    //   169: getstatic 98	com/tencent/mm/plugin/trafficmonitor/d:TRX	Lcom/tencent/matrix/traffic/TrafficPlugin;
+    //   172: invokevirtual 106	com/tencent/matrix/traffic/TrafficPlugin:start	()V
+    //   175: ldc 36
+    //   177: ldc 108
+    //   179: invokestatic 57	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: getstatic 114	com/tencent/threadpool/h:ahAA	Lcom/tencent/threadpool/i;
+    //   185: getstatic 120	com/tencent/mm/plugin/trafficmonitor/d$$ExternalSyntheticLambda0:INSTANCE	Lcom/tencent/mm/plugin/trafficmonitor/d$$ExternalSyntheticLambda0;
+    //   188: lconst_0
+    //   189: ldc2_w 121
+    //   192: invokeinterface 128 6 0
+    //   197: pop
+    //   198: ldc 34
+    //   200: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   203: goto -161 -> 42
+    //   206: astore_0
+    //   207: ldc 2
+    //   209: monitorexit
+    //   210: aload_0
+    //   211: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	212	0	paramApplication	android.app.Application
+    //   0	212	1	paramBoolean1	boolean
+    //   0	212	2	paramBoolean2	boolean
+    //   0	212	3	paramBoolean3	boolean
+    //   0	212	4	paramBoolean4	boolean
+    //   57	100	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	42	206	finally
+    //   46	203	206	finally
+  }
+  
+  private static void apk(int paramInt)
+  {
+    AppMethodBeat.i(260739);
+    Log.i("MatrixTrafficCollector", "dumpTraffic = ".concat(String.valueOf(paramInt)));
+    Object localObject2 = TrafficPlugin.nz(paramInt);
+    Object localObject1 = "";
+    long l1 = 0L;
+    Object localObject3 = ((HashMap)localObject2).entrySet().iterator();
+    Object localObject4;
+    long l2;
+    if (((Iterator)localObject3).hasNext())
     {
-      AppMethodBeat.o(123899);
-      return;
-    }
-    this.currentIndex = 0;
-    c.init(this.id);
-    c.fs(this.id);
-    c.update(this.id);
-    this.Nfn = new TimerTask()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(123898);
-        c.update(d.this.id);
-        int i = d.this.type;
-        long l5 = System.currentTimeMillis();
-        Object localObject = MultiProcessMMKV.getSingleMMKV("trafficmonitor");
-        long l6 = ((MultiProcessMMKV)localObject).decodeLong("trafficmonitor_" + d.this.interval, 0L);
-        ((MultiProcessMMKV)localObject).encode("trafficmonitor_" + d.this.interval, l5);
-        long l2;
-        long l1;
-        long l3;
-        if (i == 0)
-        {
-          l2 = c.ajS(d.this.id) + c.ajR(d.this.id);
-          l1 = l2;
-          long l4 = 0L;
-          l3 = l2;
-          l2 = l4;
-        }
-        for (;;)
-        {
-          localObject = new ArrayList();
-          i = TrafficClickFlowReceiver.a(d.this.currentIndex, l5 - d.this.interval, (List)localObject);
-          if (i != -1) {
-            break label282;
-          }
-          AppMethodBeat.o(123898);
-          return;
-          if (i == 1)
-          {
-            l2 = c.ajQ(d.this.id) + c.ajP(d.this.id);
-            l1 = l2;
-            l3 = 0L;
-          }
-          else
-          {
-            if (i != 2) {
-              break;
-            }
-            l3 = c.ajS(d.this.id) + c.ajR(d.this.id);
-            l2 = c.ajQ(d.this.id) + c.ajP(d.this.id);
-            l1 = l2 + l3;
-          }
-        }
-        AppMethodBeat.o(123898);
-        return;
-        label282:
-        d.this.currentIndex = i;
-        if (d.Si(l6))
-        {
-          Log.i("MicroMsg.NsmTrafficStatsInspector", "isDownloadAndNormal");
-          d.this.gsk();
-          AppMethodBeat.o(123898);
-          return;
-        }
-        Log.i("MicroMsg.NsmTrafficStatsInspector", "wxTotalTraffic : %d , interval : %d", new Object[] { Long.valueOf(l1), Long.valueOf(d.this.interval) });
-        String str;
-        int j;
-        if (d.this.NfA.a((List)localObject, l1, d.this.interval, l5 - l6))
-        {
-          Double localDouble = Double.valueOf(d.this.NfA.NfG);
-          str = String.valueOf(localDouble);
-          j = (int)Math.round(localDouble.doubleValue());
-          i = 0;
-          if ((j <= 3) || (j > 4)) {
-            break label554;
-          }
-          i = 60;
-        }
-        for (;;)
-        {
-          Log.i("MicroMsg.NsmTrafficStatsInspector", "Traffic Execced ExceedIndex : %s", new Object[] { str });
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(877L, i, 1L, true);
-          com.tencent.mm.plugin.report.f.Iyx.a(15856, new Object[] { Long.valueOf(d.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(d.this.NfA.NfF), str, Integer.valueOf(j) });
-          d.this.gsk();
-          AppMethodBeat.o(123898);
-          return;
-          label554:
-          if ((j > 4) && (j <= 5)) {
-            i = 61;
-          } else if ((j > 5) && (j <= 6)) {
-            i = 62;
-          } else if ((j > 6) && (j <= 7)) {
-            i = 63;
-          } else if (j > 7) {
-            i = 64;
-          }
-        }
+      localObject4 = (Map.Entry)((Iterator)localObject3).next();
+      localObject2 = (String)((Map.Entry)localObject4).getKey();
+      l2 = Long.parseLong((String)((Map.Entry)localObject4).getValue());
+      if (l2 <= l1) {
+        break label330;
       }
-    };
-    try
-    {
-      this.mkC = h.ZvG.b(this.Nfn, 0L, this.interval);
-      this.started = true;
-      AppMethodBeat.o(123899);
-      return;
+      l1 = l2;
+      localObject1 = localObject2;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+    label330:
+    for (;;)
     {
-      for (;;)
+      Log.i("MatrixTrafficCollector", "getTraffic, type = %d, threadName = %s, traffic = %d", new Object[] { Integer.valueOf(paramInt), localObject2, Long.valueOf(l2) });
+      break;
+      localObject2 = "";
+      localObject4 = TrafficPlugin.aAh().entrySet().iterator();
+      while (((Iterator)localObject4).hasNext())
       {
-        Log.e("MicroMsg.NsmTrafficStatsInspector", "timer.schedule got an IllegalArgumentException, %s", new Object[] { localIllegalArgumentException.getMessage() });
+        localObject3 = (Map.Entry)((Iterator)localObject4).next();
+        String str = (String)((Map.Entry)localObject3).getKey();
+        localObject3 = (String)((Map.Entry)localObject3).getValue();
+        if (str.equals(localObject1)) {
+          localObject2 = localObject3;
+        }
+        Log.i("MatrixTrafficCollector", "getTraffic, type = %d, threadName = %s, traffic = %s", new Object[] { Integer.valueOf(paramInt), str, localObject3 });
       }
+      Log.i("MatrixTrafficCollector", "evilThreadName = %s, traffic = %d, evilStackTrace = %s, type = %d", new Object[] { localObject1, Long.valueOf(l1), localObject2, Integer.valueOf(paramInt) });
+      f.Ozc.b(24883, new Object[] { MMApplicationContext.getProcessName(), localObject1, Long.valueOf(l1), localObject2, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(260739);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.d
  * JD-Core Version:    0.7.0.1
  */

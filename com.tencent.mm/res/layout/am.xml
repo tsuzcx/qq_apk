@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/d5" android:paddingLeft="8.0dip" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="16.0dip" android:contentDescription="@string/bb" android:paddingStart="8.0dip" android:layout_marginEnd="16.0dip" app:srcCompat="?ad" style="?ac"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<ImageView android:layout_gravity="center_vertical" android:id="@id/f1c" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="-8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerInside"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

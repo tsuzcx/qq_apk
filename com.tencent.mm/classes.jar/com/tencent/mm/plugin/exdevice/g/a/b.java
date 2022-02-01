@@ -6,13 +6,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 
 public final class b
 {
-  public static String avy(String paramString)
+  public static String apy(String paramString)
   {
     AppMethodBeat.i(23501);
     if ((Util.isNullOrNil(paramString)) || ("#".equals(paramString)))
@@ -21,17 +22,17 @@ public final class b
       return "";
     }
     Object localObject = MD5Util.getMD5String(paramString);
-    localObject = new q(d.cZL(), (String)localObject);
-    if (((q)localObject).ifE())
+    localObject = new u(d.dGe(), (String)localObject);
+    if (((u)localObject).jKS())
     {
-      paramString = ((q)localObject).bOF();
+      paramString = ah.v(((u)localObject).jKT());
       AppMethodBeat.o(23501);
       return paramString;
     }
     try
     {
-      ((q)localObject).ifM();
-      bh.aHJ().postToWorker(new a(paramString, (q)localObject));
+      ((u)localObject).jKZ();
+      bh.baH().postToWorker(new a(paramString, (u)localObject));
       AppMethodBeat.o(23501);
       return "";
     }
@@ -48,12 +49,12 @@ public final class b
     implements Runnable
   {
     private String url;
-    private q vhO;
+    private u ytP;
     
-    a(String paramString, q paramq)
+    a(String paramString, u paramu)
     {
       this.url = paramString;
-      this.vhO = paramq;
+      this.ytP = paramu;
     }
     
     public final void run()
@@ -61,7 +62,7 @@ public final class b
       AppMethodBeat.i(23499);
       byte[] arrayOfByte = Util.httpGet(this.url);
       if (arrayOfByte != null) {
-        u.H(this.vhO.getPath(), arrayOfByte);
+        y.f(ah.v(this.ytP.mUri), arrayOfByte, arrayOfByte.length);
       }
       AppMethodBeat.o(23499);
     }
@@ -77,7 +78,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.model.e;
+import com.tencent.mm.plugin.xlabeffect.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sticker.f;
@@ -15,78 +17,81 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixRenderer;", "Landroid/opengl/GLSurfaceView$Renderer;", "enableAlpha", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "(ZLcom/tencent/mm/sticker/StickerPack;)V", "TAG", "", "blendAttributePosition", "", "blendAttributeTextureCoord", "blendBitmapTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "blendEnableAlpha", "blendProgramId", "blendUniformCornerRadius", "blendUniformEmojiTexture", "blendUniformExternalVideoTexture", "blendUniformHasEmojiTexture", "blendUniformMatrix", "blendUniformNormalVideoTexture", "blendUniformSize", "blendUniformUseNormalVideoTexture", "cubeBuffer", "Ljava/nio/FloatBuffer;", "currentBlendBitmap", "Landroid/graphics/Bitmap;", "detectFaceFbo", "detectFaceTexture", "firstFrame", "inputTextureHeight", "inputTextureWidth", "isInit", "matrix", "", "removeBackground", "renderContent", "Ljava/nio/ByteBuffer;", "kotlin.jvm.PlatformType", "sizeBuffer", "textureCoordBuffer", "toTextureAttributePosition", "toTextureAttributeTextureCoord", "toTextureProgramId", "toTextureSize", "toTextureUniformExternalTexture", "videoDecodeSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "videoDecodeTexture", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "xLabEffectOutputTexture", "drawBlendContent", "", "useNormalVideoTexture", "videoTexture", "drawWithStickerAndRemoveBackground", "getEmojiMixContent", "", "getVideoDecodeSurfaceTexture", "init", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "onSurfaceChanged", "width", "height", "onSurfaceCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "release", "setBlendFrame", "blendBitmap", "setRemoveBackground", "remove", "simpleDrawVideoContent", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureMixRenderer;", "Landroid/opengl/GLSurfaceView$Renderer;", "enableAlpha", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "(ZLcom/tencent/mm/sticker/StickerPack;)V", "TAG", "", "blendAttributePosition", "", "blendAttributeTextureCoord", "blendBitmapTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "blendEnableAlpha", "blendProgramId", "blendUniformCornerRadius", "blendUniformEmojiTexture", "blendUniformExternalVideoTexture", "blendUniformHasEmojiTexture", "blendUniformMatrix", "blendUniformNormalVideoTexture", "blendUniformSize", "blendUniformUseNormalVideoTexture", "cubeBuffer", "Ljava/nio/FloatBuffer;", "currentBlendBitmap", "Landroid/graphics/Bitmap;", "detectFaceFbo", "detectFaceTexture", "firstFrame", "inputTextureHeight", "inputTextureWidth", "isInit", "matrix", "", "removeBackground", "renderContent", "Ljava/nio/ByteBuffer;", "kotlin.jvm.PlatformType", "sizeBuffer", "textureCoordBuffer", "toTextureAttributePosition", "toTextureAttributeTextureCoord", "toTextureProgramId", "toTextureSize", "toTextureUniformExternalTexture", "videoDecodeSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "videoDecodeTexture", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "xLabEffectOutputTexture", "drawBlendContent", "", "useNormalVideoTexture", "videoTexture", "drawWithStickerAndRemoveBackground", "getEmojiMixContent", "", "getVideoDecodeSurfaceTexture", "init", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "onSurfaceChanged", "width", "height", "onSurfaceCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "release", "setBlendFrame", "blendBitmap", "setRemoveBackground", "remove", "simpleDrawVideoContent", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements GLSurfaceView.Renderer
 {
   final String TAG;
   boolean isInit;
-  com.tencent.mm.plugin.xlabeffect.e jUF;
-  public int kYS;
-  public int kYT;
-  public Bitmap kYU;
-  int kYZ;
-  int kZa;
-  int kZb;
-  int kZd;
-  int kZe;
-  int kZf;
-  int kZg;
-  int kZh;
-  int kZi;
-  private final FloatBuffer kZn;
-  final FloatBuffer ksb;
-  boolean uVV;
-  final f uVs;
-  private final boolean vbI;
-  com.tencent.mm.media.g.d vbM;
-  SurfaceTexture vbN;
-  com.tencent.mm.media.g.d vbO;
-  int vbP;
-  int vbQ;
-  int vbR;
-  int vbS;
-  int vbT;
-  int vbU;
-  int vbV;
-  final int vbW;
-  int vbX;
-  com.tencent.mm.media.g.d vbY;
-  com.tencent.mm.media.g.d vbZ;
-  final FloatBuffer vca;
-  private final float[] vcb;
-  private boolean vcc;
-  public ByteBuffer vcd;
+  final FloatBuffer mVV;
+  k muW;
+  public int nDY;
+  public int nDZ;
+  public Bitmap nEa;
+  int nEf;
+  int nEg;
+  int nEh;
+  int nEj;
+  int nEk;
+  int nEl;
+  int nEm;
+  int nEn;
+  int nEo;
+  private final FloatBuffer nEt;
+  final f yhU;
+  boolean yis;
+  com.tencent.mm.media.g.d ynF;
+  SurfaceTexture ynG;
+  com.tencent.mm.media.g.d ynH;
+  int ynI;
+  int ynJ;
+  int ynK;
+  int ynL;
+  int ynM;
+  int ynN;
+  int ynO;
+  final int ynP;
+  int ynQ;
+  com.tencent.mm.media.g.d ynR;
+  com.tencent.mm.media.g.d ynS;
+  final FloatBuffer ynT;
+  private final float[] ynU;
+  private boolean ynV;
+  public ByteBuffer ynW;
+  private final boolean yns;
   
   public d(boolean paramBoolean, f paramf)
   {
     AppMethodBeat.i(852);
-    this.vbI = paramBoolean;
-    this.uVs = paramf;
+    this.yns = paramBoolean;
+    this.yhU = paramf;
     this.TAG = "MicroMsg.EmojiCaptureMixRenderer";
-    this.vbW = 640;
-    paramf = ByteBuffer.allocateDirect(b.laj.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    p.j(paramf, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.ksb = paramf;
-    paramf = ByteBuffer.allocateDirect(b.lak.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    p.j(paramf, "ByteBuffer.allocateDirec…eOrder()).asFloatBuffer()");
-    this.vca = paramf;
-    this.kZn = ByteBuffer.allocateDirect(8).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.vcb = new float[16];
-    this.vcc = true;
-    this.vcd = ByteBuffer.allocate(this.kYS * this.kYT * 4);
+    this.ynP = 640;
+    paramf = ByteBuffer.allocateDirect(b.nFt.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    s.s(paramf, "allocateDirect(EmojiCapt…eOrder()).asFloatBuffer()");
+    this.mVV = paramf;
+    paramf = ByteBuffer.allocateDirect(b.nFu.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    s.s(paramf, "allocateDirect(EmojiCapt…eOrder()).asFloatBuffer()");
+    this.ynT = paramf;
+    this.nEt = ByteBuffer.allocateDirect(8).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.ynU = new float[16];
+    this.ynV = true;
+    this.ynW = ByteBuffer.allocate(this.nDY * this.nDZ * 4);
     AppMethodBeat.o(852);
   }
   
-  public final SurfaceTexture cYG()
+  public final SurfaceTexture dEX()
   {
     AppMethodBeat.i(851);
-    SurfaceTexture localSurfaceTexture = this.vbN;
-    if (localSurfaceTexture == null) {
-      p.bGy("videoDecodeSurfaceTexture");
+    SurfaceTexture localSurfaceTexture = this.ynG;
+    if (localSurfaceTexture == null)
+    {
+      s.bIx("videoDecodeSurfaceTexture");
+      AppMethodBeat.o(851);
+      return null;
     }
     AppMethodBeat.o(851);
     return localSurfaceTexture;
@@ -97,213 +102,215 @@ public final class d
     AppMethodBeat.i(848);
     for (;;)
     {
+      Object localObject;
       try
       {
         long l = Util.currentTicks();
-        paramGL10 = b.vbw;
-        b.a.aVB();
-        paramGL10 = this.vbN;
-        if (paramGL10 == null) {
-          p.bGy("videoDecodeSurfaceTexture");
+        paramGL10 = b.ynr;
+        b.a.bqi();
+        localObject = this.ynG;
+        paramGL10 = (GL10)localObject;
+        if (localObject == null)
+        {
+          s.bIx("videoDecodeSurfaceTexture");
+          paramGL10 = null;
         }
         paramGL10.updateTexImage();
-        if ((this.vbY == null) || (this.vbZ == null))
+        if ((this.ynR == null) || (this.ynS == null))
         {
           Log.i(this.TAG, "draw frame used " + Util.ticksToNow(l) + "ms");
           AppMethodBeat.o(848);
           return;
         }
-        paramGL10 = b.vbw;
-        j = this.vbX;
-        paramGL10 = this.vbY;
-        if (paramGL10 != null)
+        paramGL10 = b.ynr;
+        j = this.ynQ;
+        paramGL10 = this.ynR;
+        if (paramGL10 == null)
         {
-          i = paramGL10.kVj;
-          int k = this.vbW;
-          int m = this.vbW;
+          i = 0;
+          int k = this.ynP;
+          int m = this.ynP;
           GLES20.glBindFramebuffer(36160, j);
           GLES20.glBindTexture(3553, i);
           GLES20.glTexImage2D(3553, 0, 6408, k, m, 0, 6408, 5121, null);
           GLES20.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
           GLES20.glBindTexture(3553, 0);
-          GLES20.glViewport(0, 0, this.vbW, this.vbW);
-          paramGL10 = this.vbM;
+          GLES20.glViewport(0, 0, this.ynP, this.ynP);
+          paramGL10 = this.ynF;
           if (paramGL10 != null)
           {
-            GLES20.glUseProgram(this.vbS);
+            GLES20.glUseProgram(this.ynL);
             GLES20.glActiveTexture(33984);
-            GLES20.glBindTexture(36197, paramGL10.kVj);
+            GLES20.glBindTexture(36197, paramGL10.nAF);
             GLES20.glTexParameterf(36197, 10241, 9729.0F);
             GLES20.glTexParameterf(36197, 10240, 9729.0F);
             GLES20.glTexParameterf(36197, 10242, 33071.0F);
             GLES20.glTexParameterf(36197, 10243, 33071.0F);
-            GLES20.glUniform1i(this.vbV, 0);
-            this.ksb.position(0);
-            GLES20.glVertexAttribPointer(this.vbT, 2, 5126, false, 0, (Buffer)this.ksb);
-            GLES20.glEnableVertexAttribArray(this.vbT);
-            this.vca.position(0);
-            this.vca.put(b.lal);
-            this.vca.position(0);
-            GLES20.glVertexAttribPointer(this.vbU, 2, 5126, false, 0, (Buffer)this.vca);
-            GLES20.glEnableVertexAttribArray(this.vbU);
+            GLES20.glUniform1i(this.ynO, 0);
+            this.mVV.position(0);
+            GLES20.glVertexAttribPointer(this.ynM, 2, 5126, false, 0, (Buffer)this.mVV);
+            GLES20.glEnableVertexAttribArray(this.ynM);
+            this.ynT.position(0);
+            this.ynT.put(b.nFv);
+            this.ynT.position(0);
+            GLES20.glVertexAttribPointer(this.ynN, 2, 5126, false, 0, (Buffer)this.ynT);
+            GLES20.glEnableVertexAttribArray(this.ynN);
             GLES20.glDrawArrays(5, 0, 4);
-            GLES20.glDisableVertexAttribArray(this.vbT);
-            GLES20.glDisableVertexAttribArray(this.vbU);
+            GLES20.glDisableVertexAttribArray(this.ynM);
+            GLES20.glDisableVertexAttribArray(this.ynN);
             GLES20.glBindTexture(3553, 0);
             GLES20.glBindTexture(36197, 0);
             GLES20.glFinish();
           }
           GLES20.glBindFramebuffer(36160, 0);
           GLES20.glFinish();
-          paramGL10 = b.vbw;
-          b.a.aVB();
-          GLES20.glViewport(0, 0, this.vbW, this.vbW);
-          paramGL10 = this.jUF;
+          paramGL10 = b.ynr;
+          b.a.bqi();
+          GLES20.glViewport(0, 0, this.ynP, this.ynP);
+          paramGL10 = this.muW;
           if (paramGL10 != null)
           {
-            localObject = this.vbY;
-            if (localObject == null) {
-              break label1141;
+            localObject = this.ynR;
+            if (localObject != null) {
+              break label1129;
             }
-            i = ((com.tencent.mm.media.g.d)localObject).kVj;
-            com.tencent.mm.plugin.xlabeffect.e.a(paramGL10, i);
+            i = 0;
+            k.a(paramGL10, i);
           }
-          if (this.vcc)
+          if (this.ynV)
           {
-            this.vcc = false;
-            paramGL10 = this.jUF;
+            this.ynV = false;
+            paramGL10 = this.muW;
             if (paramGL10 != null)
             {
-              localObject = this.vbY;
-              if (localObject == null) {
-                break label1146;
+              localObject = this.ynR;
+              if (localObject != null) {
+                break label1138;
               }
-              i = ((com.tencent.mm.media.g.d)localObject).kVj;
-              com.tencent.mm.plugin.xlabeffect.e.a(paramGL10, i);
+              i = 0;
+              k.a(paramGL10, i);
             }
           }
-          paramGL10 = this.vbZ;
+          paramGL10 = this.ynS;
           if (paramGL10 != null) {
-            com.tencent.mm.media.g.d.a(paramGL10, this.vbW, this.vbW, 0, null, 0, 0, 60);
+            com.tencent.mm.media.g.d.a(paramGL10, this.ynP, this.ynP, 0, null, 0, 0, 60);
           }
-          paramGL10 = this.jUF;
+          paramGL10 = this.muW;
           if (paramGL10 != null)
           {
-            localObject = this.vbY;
-            if (localObject == null) {
-              break label1151;
+            localObject = this.ynR;
+            if (localObject != null) {
+              break label1147;
             }
-            i = ((com.tencent.mm.media.g.d)localObject).kVj;
-            localObject = this.vbZ;
-            if (localObject == null) {
+            i = 0;
+            localObject = this.ynS;
+            if (localObject != null) {
               break label1156;
             }
-            j = ((com.tencent.mm.media.g.d)localObject).kVj;
-            com.tencent.mm.plugin.xlabeffect.e.a(paramGL10, i, j, false, 60);
+            j = 0;
+            k.a(paramGL10, i, j, false, 60);
           }
-          paramGL10 = this.vbZ;
+          paramGL10 = this.ynS;
           GLES20.glFinish();
-          Object localObject = b.vbw;
-          b.a.aVB();
-          GLES20.glViewport(0, 0, this.kYS, this.kYT);
+          localObject = b.ynr;
+          b.a.bqi();
+          GLES20.glViewport(0, 0, this.nDY, this.nDZ);
           if (paramGL10 == null) {
             continue;
           }
-          GLES20.glViewport(0, 0, this.kYS, this.kYT);
-          GLES20.glUseProgram(this.kYZ);
+          GLES20.glViewport(0, 0, this.nDY, this.nDZ);
+          GLES20.glUseProgram(this.nEf);
           GLES20.glActiveTexture(33984);
-          GLES20.glBindTexture(3553, paramGL10.kVj);
+          GLES20.glBindTexture(3553, paramGL10.nAF);
           GLES20.glTexParameterf(3553, 10241, 9729.0F);
           GLES20.glTexParameterf(3553, 10240, 9729.0F);
           GLES20.glTexParameterf(3553, 10242, 33071.0F);
           GLES20.glTexParameterf(3553, 10243, 33071.0F);
-          GLES20.glUniform1i(this.kZe, 0);
-          GLES20.glUniform1i(this.kZd, 2);
-          GLES20.glUniform1i(this.kZh, 1);
-          j = this.vbR;
-          if (!this.vbI) {
-            break label1161;
+          GLES20.glUniform1i(this.nEk, 0);
+          GLES20.glUniform1i(this.nEj, 2);
+          GLES20.glUniform1i(this.nEn, 1);
+          j = this.ynK;
+          if (!this.yns) {
+            break label1187;
           }
           i = 1;
           GLES20.glUniform1i(j, i);
-          if (this.kYU == null) {
-            break label1166;
+          if (this.nEa == null) {
+            break label1165;
           }
           GLES20.glActiveTexture(33985);
-          paramGL10 = this.vbO;
+          paramGL10 = this.ynH;
           if (paramGL10 != null)
           {
-            localObject = this.kYU;
-            if (localObject == null) {
-              p.iCn();
-            }
+            localObject = this.nEa;
+            s.checkNotNull(localObject);
             com.tencent.mm.media.g.d.a(paramGL10, (Bitmap)localObject);
           }
-          GLES20.glUniform1i(this.kZf, 1);
-          this.ksb.position(0);
-          GLES20.glVertexAttribPointer(this.kZa, 2, 5126, false, 0, (Buffer)this.ksb);
-          GLES20.glEnableVertexAttribArray(this.kZa);
-          this.vca.position(0);
-          this.vca.put(b.lak);
-          this.vca.position(0);
-          GLES20.glVertexAttribPointer(this.kZb, 2, 5126, false, 0, (Buffer)this.vca);
-          GLES20.glEnableVertexAttribArray(this.kZb);
-          this.kZn.put(this.kYS);
-          this.kZn.put(this.kYT);
-          this.kZn.position(0);
-          GLES20.glUniform2fv(this.vbP, 1, this.kZn);
-          i = this.vbQ;
-          paramGL10 = com.tencent.mm.plugin.emojicapture.model.d.uUg;
-          GLES20.glUniform1f(i, Math.max(this.kYS, this.kYT) * 0.0666667F);
-          Matrix.setIdentityM(this.vcb, 0);
-          Matrix.scaleM(this.vcb, 0, 1.0F, -1.0F, 1.0F);
-          GLES20.glUniformMatrix4fv(this.kZi, 1, false, this.vcb, 0);
-          if (this.kYU == null) {
-            break label1177;
+          GLES20.glUniform1i(this.nEl, 1);
+          this.mVV.position(0);
+          GLES20.glVertexAttribPointer(this.nEg, 2, 5126, false, 0, (Buffer)this.mVV);
+          GLES20.glEnableVertexAttribArray(this.nEg);
+          this.ynT.position(0);
+          this.ynT.put(b.nFu);
+          this.ynT.position(0);
+          GLES20.glVertexAttribPointer(this.nEh, 2, 5126, false, 0, (Buffer)this.ynT);
+          GLES20.glEnableVertexAttribArray(this.nEh);
+          this.nEt.put(this.nDY);
+          this.nEt.put(this.nDZ);
+          this.nEt.position(0);
+          GLES20.glUniform2fv(this.ynI, 1, this.nEt);
+          i = this.ynJ;
+          paramGL10 = com.tencent.mm.plugin.emojicapture.model.d.ygM;
+          GLES20.glUniform1f(i, Math.max(this.nDY, this.nDZ) * 0.0666667F);
+          Matrix.setIdentityM(this.ynU, 0);
+          Matrix.scaleM(this.ynU, 0, 1.0F, -1.0F, 1.0F);
+          GLES20.glUniformMatrix4fv(this.nEo, 1, false, this.ynU, 0);
+          if (this.nEa == null) {
+            break label1176;
           }
-          GLES20.glUniform1i(this.kZg, 1);
+          GLES20.glUniform1i(this.nEm, 1);
           GLES20.glDrawArrays(5, 0, 4);
-          GLES20.glDisableVertexAttribArray(this.kZa);
-          GLES20.glDisableVertexAttribArray(this.kZb);
+          GLES20.glDisableVertexAttribArray(this.nEg);
+          GLES20.glDisableVertexAttribArray(this.nEh);
           GLES20.glBindTexture(3553, 0);
           GLES20.glBindTexture(36197, 0);
           GLES20.glFinish();
-          this.vcd.position(0);
-          GLES20.glReadPixels(0, 0, this.kYS, this.kYS, 6408, 5121, (Buffer)this.vcd);
+          this.ynW.position(0);
+          GLES20.glReadPixels(0, 0, this.nDY, this.nDY, 6408, 5121, (Buffer)this.ynW);
           GLES20.glUseProgram(0);
           continue;
         }
-        i = 0;
+        i = paramGL10.nAF;
       }
       catch (Exception paramGL10)
       {
         Log.printErrStackTrace(this.TAG, (Throwable)paramGL10, "EmojiCaptureMixRenderer draw frame failed", new Object[0]);
-        paramGL10 = com.tencent.mm.plugin.emojicapture.model.e.uUh;
-        com.tencent.mm.plugin.emojicapture.model.e.cXJ();
+        paramGL10 = e.ygT;
+        e.dDZ();
         AppMethodBeat.o(848);
         return;
       }
       continue;
-      label1141:
-      int i = 0;
+      label1129:
+      int i = ((com.tencent.mm.media.g.d)localObject).nAF;
       continue;
-      label1146:
-      i = 0;
+      label1138:
+      i = ((com.tencent.mm.media.g.d)localObject).nAF;
       continue;
-      label1151:
-      i = 0;
+      label1147:
+      i = ((com.tencent.mm.media.g.d)localObject).nAF;
       continue;
       label1156:
-      int j = 0;
+      int j = ((com.tencent.mm.media.g.d)localObject).nAF;
       continue;
-      label1161:
+      label1165:
+      GLES20.glUniform1i(this.nEl, 1);
+      continue;
+      label1176:
+      GLES20.glUniform1i(this.nEm, 0);
+      continue;
+      label1187:
       i = 0;
-      continue;
-      label1166:
-      GLES20.glUniform1i(this.kZf, 1);
-      continue;
-      label1177:
-      GLES20.glUniform1i(this.kZg, 0);
     }
   }
   
@@ -311,9 +318,9 @@ public final class d
   {
     AppMethodBeat.i(849);
     Log.i(this.TAG, "onSurfaceChanged, width:" + paramInt1 + ", height:" + paramInt2);
-    this.kYS = paramInt1;
-    this.kYT = paramInt2;
-    this.vcd = ByteBuffer.allocate(this.kYS * this.kYT * 4);
+    this.nDY = paramInt1;
+    this.nDZ = paramInt2;
+    this.ynW = ByteBuffer.allocate(this.nDY * this.nDZ * 4);
     AppMethodBeat.o(849);
   }
   
@@ -328,7 +335,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

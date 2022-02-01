@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  private int aZj;
-  public int aZk;
-  public int aZl;
+  private int cTe;
+  public int cTf;
+  public int cTg;
   public byte[] data;
   
   public l() {}
@@ -21,107 +21,39 @@ public final class l
   public l(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.aZj = paramInt;
+    this.cTe = paramInt;
   }
   
-  private void ve()
+  private void UD()
   {
     AppMethodBeat.i(93158);
-    int i = this.aZl + 1;
-    this.aZl = i;
+    int i = this.cTg + 1;
+    this.cTg = i;
     if (i == 8)
     {
-      this.aZl = 0;
-      this.aZk += 1;
+      this.cTg = 0;
+      this.cTf += 1;
     }
-    sE();
+    Sh();
     AppMethodBeat.o(93158);
   }
   
-  public final int eA(int paramInt)
-  {
-    AppMethodBeat.i(93161);
-    if (paramInt == 0)
-    {
-      AppMethodBeat.o(93161);
-      return 0;
-    }
-    this.aZl += paramInt;
-    int i = 0;
-    while (this.aZl > 8)
-    {
-      this.aZl -= 8;
-      byte[] arrayOfByte = this.data;
-      j = this.aZk;
-      this.aZk = (j + 1);
-      i |= (arrayOfByte[j] & 0xFF) << this.aZl;
-    }
-    int j = this.data[this.aZk];
-    int k = this.aZl;
-    if (this.aZl == 8)
-    {
-      this.aZl = 0;
-      this.aZk += 1;
-    }
-    sE();
-    AppMethodBeat.o(93161);
-    return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
-  }
-  
-  public final void eB(int paramInt)
-  {
-    AppMethodBeat.i(93159);
-    int i = paramInt / 8;
-    this.aZk += i;
-    this.aZl = (paramInt - i * 8 + this.aZl);
-    if (this.aZl > 7)
-    {
-      this.aZk += 1;
-      this.aZl -= 8;
-    }
-    sE();
-    AppMethodBeat.o(93159);
-  }
-  
-  public final void n(byte[] paramArrayOfByte, int paramInt)
-  {
-    this.data = paramArrayOfByte;
-    this.aZk = 0;
-    this.aZl = 0;
-    this.aZj = paramInt;
-  }
-  
-  public final void p(byte[] paramArrayOfByte, int paramInt)
-  {
-    AppMethodBeat.i(93163);
-    if (this.aZl == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkState(bool);
-      System.arraycopy(this.data, this.aZk, paramArrayOfByte, 0, paramInt);
-      this.aZk += paramInt;
-      sE();
-      AppMethodBeat.o(93163);
-      return;
-    }
-  }
-  
-  public final boolean sD()
+  public final boolean Sg()
   {
     AppMethodBeat.i(93160);
-    if ((this.data[this.aZk] & 128 >> this.aZl) != 0) {}
+    if ((this.data[this.cTf] & 128 >> this.cTg) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ve();
+      UD();
       AppMethodBeat.o(93160);
       return bool;
     }
   }
   
-  public final void sE()
+  public final void Sh()
   {
     AppMethodBeat.i(93164);
-    if ((this.aZk >= 0) && ((this.aZk < this.aZj) || ((this.aZk == this.aZj) && (this.aZl == 0)))) {}
+    if ((this.cTf >= 0) && ((this.cTf < this.cTe) || ((this.cTf == this.cTe) && (this.cTg == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
@@ -130,45 +62,113 @@ public final class l
     }
   }
   
-  public final void setPosition(int paramInt)
+  public final int UB()
   {
-    AppMethodBeat.i(93157);
-    this.aZk = (paramInt / 8);
-    this.aZl = (paramInt - this.aZk * 8);
-    sE();
-    AppMethodBeat.o(93157);
+    return (this.cTe - this.cTf) * 8 - this.cTg;
   }
   
-  public final int vc()
-  {
-    return (this.aZj - this.aZk) * 8 - this.aZl;
-  }
-  
-  public final int vd()
+  public final int UC()
   {
     AppMethodBeat.i(93156);
-    if (this.aZl == 0) {}
+    if (this.cTg == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      int i = this.aZk;
+      int i = this.cTf;
       AppMethodBeat.o(93156);
       return i;
     }
   }
   
-  public final void vf()
+  public final void UE()
   {
     AppMethodBeat.i(93162);
-    if (this.aZl == 0)
+    if (this.cTg == 0)
     {
       AppMethodBeat.o(93162);
       return;
     }
-    this.aZl = 0;
-    this.aZk += 1;
-    sE();
+    this.cTg = 0;
+    this.cTf += 1;
+    Sh();
     AppMethodBeat.o(93162);
+  }
+  
+  public final int hQ(int paramInt)
+  {
+    AppMethodBeat.i(93161);
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(93161);
+      return 0;
+    }
+    this.cTg += paramInt;
+    int i = 0;
+    while (this.cTg > 8)
+    {
+      this.cTg -= 8;
+      byte[] arrayOfByte = this.data;
+      j = this.cTf;
+      this.cTf = (j + 1);
+      i |= (arrayOfByte[j] & 0xFF) << this.cTg;
+    }
+    int j = this.data[this.cTf];
+    int k = this.cTg;
+    if (this.cTg == 8)
+    {
+      this.cTg = 0;
+      this.cTf += 1;
+    }
+    Sh();
+    AppMethodBeat.o(93161);
+    return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
+  }
+  
+  public final void hR(int paramInt)
+  {
+    AppMethodBeat.i(93159);
+    int i = paramInt / 8;
+    this.cTf += i;
+    this.cTg = (paramInt - i * 8 + this.cTg);
+    if (this.cTg > 7)
+    {
+      this.cTf += 1;
+      this.cTg -= 8;
+    }
+    Sh();
+    AppMethodBeat.o(93159);
+  }
+  
+  public final void n(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.data = paramArrayOfByte;
+    this.cTf = 0;
+    this.cTg = 0;
+    this.cTe = paramInt;
+  }
+  
+  public final void p(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(93163);
+    if (this.cTg == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a.checkState(bool);
+      System.arraycopy(this.data, this.cTf, paramArrayOfByte, 0, paramInt);
+      this.cTf += paramInt;
+      Sh();
+      AppMethodBeat.o(93163);
+      return;
+    }
+  }
+  
+  public final void setPosition(int paramInt)
+  {
+    AppMethodBeat.i(93157);
+    this.cTf = (paramInt / 8);
+    this.cTg = (paramInt - this.cTf * 8);
+    Sh();
+    AppMethodBeat.o(93157);
   }
 }
 

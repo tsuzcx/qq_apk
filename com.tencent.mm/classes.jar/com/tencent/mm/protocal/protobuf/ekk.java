@@ -4,94 +4,86 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ekk
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public dma Umg;
-  public int Umh;
-  public int Umi;
-  public int Umj;
+  public int limit;
+  public int offset;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(198001);
+    AppMethodBeat.i(72568);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Umg != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.Umg.computeSize());
-        this.Umg.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.Umh);
-      paramVarArgs.aY(3, this.Umi);
-      paramVarArgs.aY(4, this.Umj);
-      AppMethodBeat.o(198001);
+      paramVarArgs.bS(2, this.limit);
+      paramVarArgs.bS(3, this.offset);
+      AppMethodBeat.o(72568);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Umg == null) {
-        break label424;
+      if (this.BaseRequest == null) {
+        break label376;
       }
     }
-    label424:
-    for (paramInt = g.a.a.a.oD(1, this.Umg.computeSize()) + 0;; paramInt = 0)
+    label376:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.Umh);
-      int j = g.a.a.b.b.a.bM(3, this.Umi);
-      int k = g.a.a.b.b.a.bM(4, this.Umj);
-      AppMethodBeat.o(198001);
-      return paramInt + i + j + k;
+      int i = i.a.a.b.b.a.cJ(2, this.limit);
+      int j = i.a.a.b.b.a.cJ(3, this.offset);
+      AppMethodBeat.o(72568);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(198001);
+        AppMethodBeat.o(72568);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ekk localekk = (ekk)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(198001);
+          AppMethodBeat.o(72568);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            dma localdma = new dma();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localdma.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localekk.Umg = localdma;
+            localekk.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(198001);
+          AppMethodBeat.o(72568);
           return 0;
         case 2: 
-          localekk.Umh = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(198001);
-          return 0;
-        case 3: 
-          localekk.Umi = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(198001);
+          localekk.limit = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72568);
           return 0;
         }
-        localekk.Umj = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(198001);
+        localekk.offset = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(72568);
         return 0;
       }
-      AppMethodBeat.o(198001);
+      AppMethodBeat.o(72568);
       return -1;
     }
   }

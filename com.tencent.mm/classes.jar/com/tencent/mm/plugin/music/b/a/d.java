@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.music.b.a;
 
-import com.tencent.mm.plugin.music.f.c.a;
+import com.tencent.mm.plugin.music.e.c.a;
 
 public abstract interface d
   extends a
 {
-  public abstract void YS(int paramInt);
-  
-  public abstract void YT(int paramInt);
-  
-  public abstract void YU(int paramInt);
-  
-  public abstract void YV(int paramInt);
-  
-  public abstract void YW(int paramInt);
+  public abstract void C(String paramString1, String paramString2, boolean paramBoolean);
   
   public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3);
   
   public abstract void a(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean, String paramString3, long paramLong4, long paramLong5, long paramLong6);
   
-  public abstract void c(String paramString, long paramLong1, long paramLong2, long paramLong3);
+  public abstract void adf(int paramInt);
   
-  public abstract void fdB();
+  public abstract void adg(int paramInt);
   
-  public abstract void it(int paramInt1, int paramInt2);
+  public abstract void adh(int paramInt);
   
-  public abstract void jd(String paramString1, String paramString2);
+  public abstract void adi(int paramInt);
   
-  public abstract void x(String paramString1, String paramString2, boolean paramBoolean);
+  public abstract void adj(int paramInt);
+  
+  public abstract void d(String paramString, long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void gmE();
+  
+  public abstract void jX(int paramInt1, int paramInt2);
+  
+  public abstract void ks(String paramString1, String paramString2);
 }
 
 

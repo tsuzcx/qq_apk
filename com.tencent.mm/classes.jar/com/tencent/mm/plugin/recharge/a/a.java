@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,20 +23,20 @@ import org.json.JSONException;
 public class a
   implements be
 {
-  private List<com.tencent.mm.plugin.recharge.model.a> HyY = null;
+  private List<com.tencent.mm.plugin.recharge.model.a> NwD = null;
   
-  public static a ftQ()
+  public static a gFE()
   {
     AppMethodBeat.i(67084);
-    a locala = (a)y.as(a.class);
+    a locala = (a)y.aL(a.class);
     AppMethodBeat.o(67084);
     return locala;
   }
   
-  public static com.tencent.mm.plugin.recharge.model.a ftS()
+  public static com.tencent.mm.plugin.recharge.model.a gFG()
   {
     AppMethodBeat.i(67088);
-    Object localObject = (String)h.aHG().aHp().b(6, null);
+    Object localObject = (String)h.baE().ban().d(6, null);
     if (!Util.isNullOrNil((String)localObject))
     {
       localObject = new com.tencent.mm.plugin.recharge.model.a((String)localObject, MMApplicationContext.getContext().getString(a.i.wallet_recharge_me), 3);
@@ -50,14 +50,14 @@ public class a
   public final boolean a(com.tencent.mm.plugin.recharge.model.a parama)
   {
     AppMethodBeat.i(67085);
-    if ((parama != null) && (PhoneNumberUtils.isGlobalPhoneNumber(parama.Hzb)))
+    if ((parama != null) && (PhoneNumberUtils.isGlobalPhoneNumber(parama.NwG)))
     {
-      List localList = ftR();
+      List localList = gFF();
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.recharge.model.a locala = (com.tencent.mm.plugin.recharge.model.a)localIterator.next();
-        if (parama.Hzb.equals(locala.Hzb))
+        if (parama.NwG.equals(locala.NwG))
         {
           if (Util.isNullOrNil(parama.name)) {
             parama.name = locala.name;
@@ -66,7 +66,7 @@ public class a
         }
       }
       localList.add(0, parama);
-      gE(localList);
+      jE(localList);
       AppMethodBeat.o(67085);
       return true;
     }
@@ -76,21 +76,21 @@ public class a
   
   public void clearPluginData(int paramInt) {}
   
-  public final List<com.tencent.mm.plugin.recharge.model.a> ftR()
+  public final List<com.tencent.mm.plugin.recharge.model.a> gFF()
   {
     AppMethodBeat.i(67087);
-    if (this.HyY != null)
+    if (this.NwD != null)
     {
-      localObject = this.HyY;
+      localObject = this.NwD;
       AppMethodBeat.o(67087);
       return localObject;
     }
-    this.HyY = new LinkedList();
-    localObject = (String)h.aHG().aHp().b(270337, null);
+    this.NwD = new LinkedList();
+    localObject = (String)h.baE().ban().d(270337, null);
     if (Util.isNullOrNil((String)localObject))
     {
       Log.i("MicroMsg.SubCoreRecharge", "empty history");
-      localObject = this.HyY;
+      localObject = this.NwD;
       AppMethodBeat.o(67087);
       return localObject;
     }
@@ -100,9 +100,9 @@ public class a
       int i = 0;
       while (i < Math.min(localJSONArray.length(), 100))
       {
-        com.tencent.mm.plugin.recharge.model.a locala = com.tencent.mm.plugin.recharge.model.a.bq(localJSONArray.getJSONObject(i));
+        com.tencent.mm.plugin.recharge.model.a locala = com.tencent.mm.plugin.recharge.model.a.bH(localJSONArray.getJSONObject(i));
         if (locala != null) {
-          this.HyY.add(locala);
+          this.NwD.add(locala);
         }
         i += 1;
       }
@@ -120,35 +120,40 @@ public class a
         {
           arrayOfString = localObject[i].split("=");
           if (arrayOfString.length == 2) {
-            this.HyY.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], arrayOfString[1], 2));
+            this.NwD.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], arrayOfString[1], 2));
           }
           for (;;)
           {
             i += 1;
             break;
             if (arrayOfString.length == 1) {
-              this.HyY.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], "", 2));
+              this.NwD.add(new com.tencent.mm.plugin.recharge.model.a(arrayOfString[0], "", 2));
             }
           }
         }
       }
-      Log.i("MicroMsg.SubCoreRecharge", "getMobileHistory : " + this.HyY.size());
-      localObject = this.HyY;
+      Log.i("MicroMsg.SubCoreRecharge", "getMobileHistory : " + this.NwD.size());
+      localObject = this.NwD;
       AppMethodBeat.o(67087);
     }
   }
   
-  public final void gE(List<com.tencent.mm.plugin.recharge.model.a> paramList)
+  public HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return null;
+  }
+  
+  public final void jE(List<com.tencent.mm.plugin.recharge.model.a> paramList)
   {
     AppMethodBeat.i(67086);
-    this.HyY = paramList;
+    this.NwD = paramList;
     if ((paramList == null) || (paramList.size() == 0)) {
-      this.HyY = new LinkedList();
+      this.NwD = new LinkedList();
     }
     for (;;)
     {
       paramList = new JSONArray();
-      Iterator localIterator = this.HyY.iterator();
+      Iterator localIterator = this.NwD.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.recharge.model.a locala = (com.tencent.mm.plugin.recharge.model.a)localIterator.next();
@@ -166,14 +171,9 @@ public class a
       }
     }
     Log.d("MicroMsg.SubCoreRecharge", "setMobileHistory : " + paramList.toString());
-    h.aHG().aHp().i(270337, paramList.toString());
-    h.aHG().aHp().hxT();
+    h.baE().ban().B(270337, paramList.toString());
+    h.baE().ban().iZy();
     AppMethodBeat.o(67086);
-  }
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
-  {
-    return null;
   }
   
   public void onAccountPostReset(boolean paramBoolean) {}
@@ -184,7 +184,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.a.a
  * JD-Core Version:    0.7.0.1
  */

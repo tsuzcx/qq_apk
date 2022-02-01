@@ -21,24 +21,24 @@ public class AppBarLayoutBehavior
   extends AppBarLayout.Behavior
   implements View.OnTouchListener
 {
-  private AppBarLayout BWB;
-  private boolean BXg;
-  private int BXh;
-  private boolean BXi;
-  private boolean BXj;
-  private boolean BXk;
-  private Rect byG;
-  private View qnL;
+  private AppBarLayout HJa;
+  private boolean HJt;
+  private int HJu;
+  private boolean HJv;
+  private boolean HJw;
+  private boolean HJx;
+  private Rect rect;
+  private View tss;
   
   public AppBarLayoutBehavior()
   {
     AppMethodBeat.i(164777);
-    this.BXg = false;
-    this.BXh = ((int)MMApplicationContext.getContext().getResources().getDimension(b.c.Edge_6A));
-    this.byG = new Rect();
-    this.BXi = true;
-    this.BXj = false;
-    this.BXk = false;
+    this.HJt = false;
+    this.HJu = ((int)MMApplicationContext.getContext().getResources().getDimension(b.c.Edge_6A));
+    this.rect = new Rect();
+    this.HJv = true;
+    this.HJw = false;
+    this.HJx = false;
     init();
     AppMethodBeat.o(164777);
   }
@@ -47,12 +47,12 @@ public class AppBarLayoutBehavior
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164778);
-    this.BXg = false;
-    this.BXh = ((int)MMApplicationContext.getContext().getResources().getDimension(b.c.Edge_6A));
-    this.byG = new Rect();
-    this.BXi = true;
-    this.BXj = false;
-    this.BXk = false;
+    this.HJt = false;
+    this.HJu = ((int)MMApplicationContext.getContext().getResources().getDimension(b.c.Edge_6A));
+    this.rect = new Rect();
+    this.HJv = true;
+    this.HJw = false;
+    this.HJx = false;
     init();
     AppMethodBeat.o(164778);
   }
@@ -62,15 +62,15 @@ public class AppBarLayoutBehavior
     AppMethodBeat.i(164779);
     a(new AppBarLayout.Behavior.a()
     {
-      public final boolean vX()
+      public final boolean Vw()
       {
-        AppMethodBeat.i(243958);
+        AppMethodBeat.i(289322);
         if ((AppBarLayoutBehavior.a(AppBarLayoutBehavior.this)) || (AppBarLayoutBehavior.b(AppBarLayoutBehavior.this)))
         {
-          AppMethodBeat.o(243958);
+          AppMethodBeat.o(289322);
           return true;
         }
-        AppMethodBeat.o(243958);
+        AppMethodBeat.o(289322);
         return false;
       }
     });
@@ -79,30 +79,30 @@ public class AppBarLayoutBehavior
   
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(242656);
-    if ((paramInt5 == 1) && (this.BXj))
+    AppMethodBeat.i(289344);
+    if ((paramInt5 == 1) && (this.HJw))
     {
-      AppMethodBeat.o(242656);
+      AppMethodBeat.o(289344);
       return;
     }
-    if (this.BXg) {
+    if (this.HJt) {
       super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
-    AppMethodBeat.o(242656);
+    AppMethodBeat.o(289344);
   }
   
   public final void a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    AppMethodBeat.i(242655);
-    if ((paramInt3 == 1) && (this.BXj))
+    AppMethodBeat.i(289341);
+    if ((paramInt3 == 1) && (this.HJw))
     {
-      AppMethodBeat.o(242655);
+      AppMethodBeat.o(289341);
       return;
     }
-    if (this.BXg)
+    if (this.HJt)
     {
       super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-      if (this.BXi)
+      if (this.HJv)
       {
         if (paramArrayOfInt[1] == 0) {
           super.a(paramCoordinatorLayout, paramAppBarLayout, paramView, 0, 0, 0, paramInt2, paramInt3);
@@ -110,27 +110,27 @@ public class AppBarLayoutBehavior
         paramArrayOfInt[1] = paramInt2;
       }
     }
-    AppMethodBeat.o(242655);
+    AppMethodBeat.o(289341);
   }
   
   public final boolean a(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(242653);
+    AppMethodBeat.i(289338);
     super.a(paramCoordinatorLayout, paramAppBarLayout, paramView1, paramView2, paramInt1, paramInt2);
-    AppMethodBeat.o(242653);
+    AppMethodBeat.o(289338);
     return true;
   }
   
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, AppBarLayout paramAppBarLayout, int paramInt)
   {
-    AppMethodBeat.i(242652);
-    this.BWB = paramAppBarLayout;
-    this.qnL = paramAppBarLayout.findViewById(b.e.folder_select_layout);
+    AppMethodBeat.i(289333);
+    this.HJa = paramAppBarLayout;
+    this.tss = paramAppBarLayout.findViewById(b.e.folder_select_layout);
     if ((paramCoordinatorLayout instanceof TouchCoordinatorLayout)) {
       ((TouchCoordinatorLayout)paramCoordinatorLayout).setTouchListener(this);
     }
     boolean bool = super.b(paramCoordinatorLayout, paramAppBarLayout, paramInt);
-    AppMethodBeat.o(242652);
+    AppMethodBeat.o(289333);
     return bool;
   }
   
@@ -139,15 +139,15 @@ public class AppBarLayoutBehavior
     AppMethodBeat.i(164784);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.BXg = false;
-      this.BXk = false;
-      if (Math.abs(vY()) > 0) {
+      this.HJt = false;
+      this.HJx = false;
+      if (Math.abs(Vx()) > 0) {
         break label228;
       }
       bool = true;
-      this.BXi = bool;
-      int i = vY();
-      if (this.BWB.getTotalScrollRange() != Math.abs(i)) {
+      this.HJv = bool;
+      int i = Vx();
+      if (this.HJa.getTotalScrollRange() != Math.abs(i)) {
         break label234;
       }
     }
@@ -155,27 +155,27 @@ public class AppBarLayoutBehavior
     label234:
     for (boolean bool = true;; bool = false)
     {
-      this.BXj = bool;
-      new StringBuilder("isFromSnapOfBottom=").append(this.BXi).append(" isFromSnapOfTop=").append(this.BXj);
-      if (this.BXi)
+      this.HJw = bool;
+      new StringBuilder("isFromSnapOfBottom=").append(this.HJv).append(" isFromSnapOfTop=").append(this.HJw);
+      if (this.HJv)
       {
-        this.qnL.getGlobalVisibleRect(this.byG);
-        if (this.byG.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()))
+        this.tss.getGlobalVisibleRect(this.rect);
+        if (this.rect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()))
         {
-          this.BXg = true;
-          this.BXk = true;
+          this.HJt = true;
+          this.HJx = true;
         }
       }
-      if (this.BXj) {
-        this.BXg = true;
+      if (this.HJw) {
+        this.HJt = true;
       }
-      if (!this.BXg)
+      if (!this.HJt)
       {
-        this.BWB.getGlobalVisibleRect(this.byG);
-        paramView = this.byG;
-        paramView.bottom -= this.BXh;
-        if (this.byG.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
-          this.BXg = true;
+        this.HJa.getGlobalVisibleRect(this.rect);
+        paramView = this.rect;
+        paramView.bottom -= this.HJu;
+        if (this.rect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) {
+          this.HJt = true;
         }
       }
       AppMethodBeat.o(164784);
@@ -187,7 +187,7 @@ public class AppBarLayoutBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.behavior.AppBarLayoutBehavior
  * JD-Core Version:    0.7.0.1
  */

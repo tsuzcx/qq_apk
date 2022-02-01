@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/asy" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/iwl" android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/l" android:textColor="@color/bu" android:gravity="center" android:id="@id/bw3" android:background="@android:color/transparent" android:paddingLeft="@dimen/a0u" android:paddingRight="@dimen/a0u" android:layout_width="wrap_content" android:layout_height="@dimen/b8" android:text="@string/fm3" />
-    <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <Button android:textSize="@dimen/l" android:textColor="@color/afp" android:gravity="center" android:id="@id/bw6" android:background="@android:color/transparent" android:paddingLeft="@dimen/a0u" android:paddingRight="@dimen/a0u" android:layout_width="wrap_content" android:layout_height="@dimen/b8" android:text="@string/fm4" />
-</LinearLayout>
+    <RelativeLayout android:background="@drawable/aim" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.base.WxImageView android:id="@id/gt7" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_margin="8.0dip" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/df" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" android:layout_toStartOf="@id/gz_" android:layout_toEndOf="@id/gt7">
+            <TextView android:textSize="15.0dip" android:textColor="@color/al6" android:id="@id/gr2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/h1e" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/cw" android:id="@id/gr1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/gqq" />
+        </LinearLayout>
+        <com.tencent.mm.ui.base.WxImageView android:id="@id/gz_" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</RelativeLayout>

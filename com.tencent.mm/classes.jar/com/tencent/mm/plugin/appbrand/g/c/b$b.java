@@ -7,21 +7,21 @@ import rx.d;
 public final class b$b
   extends b<com.tencent.mm.plugin.appbrand.g.c.b.e>
 {
-  private a ofk;
-  private com.tencent.mm.plugin.appbrand.g.a.e ofl;
+  private a riO;
+  private com.tencent.mm.plugin.appbrand.g.a.e riP;
   
   public b$b(com.tencent.mm.plugin.appbrand.g.a.e parame)
   {
     AppMethodBeat.i(158952);
-    this.ofl = parame;
-    this.ofk = a.bMP();
+    this.riP = parame;
+    this.riO = a.cne();
     AppMethodBeat.o(158952);
   }
   
-  public final d<com.tencent.mm.plugin.appbrand.g.c.b.e> bMQ()
+  public final d<com.tencent.mm.plugin.appbrand.g.c.b.e> cnf()
   {
     AppMethodBeat.i(158953);
-    d locald = d.a(new a.3(this.ofk, this.ofl)).a(this.ogf);
+    d locald = d.a(new a.3(this.riO, this.riP)).a(this.rjJ);
     AppMethodBeat.o(158953);
     return locald;
   }

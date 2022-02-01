@@ -13,14 +13,14 @@ final class SettingsTeenModeMainBizAcct$2
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(259663);
+    AppMethodBeat.i(279002);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainBizAcct$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    SettingsTeenModeMainBizAcct.a(this.Mud, 0);
-    SettingsTeenModeMainBizAcct.a(this.Mud);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainBizAcct$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    SettingsTeenModeMainBizAcct.a(this.TaU, 0);
+    SettingsTeenModeMainBizAcct.a(this.TaU);
     a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainBizAcct$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(259663);
+    AppMethodBeat.o(279002);
   }
 }
 

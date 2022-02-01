@@ -10,12 +10,12 @@ final class ExdeviceProfileUI$6
 {
   ExdeviceProfileUI$6(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final boolean cOK()
+  public final boolean dsp()
   {
     AppMethodBeat.i(24100);
-    if (ExdeviceProfileUI.u(this.vpc).getFirstVisiblePosition() == 0)
+    if (ExdeviceProfileUI.u(this.yBy).getFirstVisiblePosition() == 0)
     {
-      View localView = ExdeviceProfileUI.u(this.vpc).getChildAt(ExdeviceProfileUI.u(this.vpc).getFirstVisiblePosition());
+      View localView = ExdeviceProfileUI.u(this.yBy).getChildAt(ExdeviceProfileUI.u(this.yBy).getFirstVisiblePosition());
       if ((localView != null) && (localView.getTop() >= 0))
       {
         AppMethodBeat.o(24100);
@@ -28,7 +28,7 @@ final class ExdeviceProfileUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.6
  * JD-Core Version:    0.7.0.1
  */

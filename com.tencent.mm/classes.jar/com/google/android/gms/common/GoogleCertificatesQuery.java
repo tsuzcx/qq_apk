@@ -8,25 +8,15 @@ import com.google.android.gms.common.internal.ICertData;
 import com.google.android.gms.common.internal.ICertData.Stub;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
 import com.google.android.gms.dynamic.ObjectWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
-@SafeParcelable.Class(creator="GoogleCertificatesQueryCreator")
 public class GoogleCertificatesQuery
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<GoogleCertificatesQuery> CREATOR;
-  @SafeParcelable.Field(getter="getCallingPackage", id=1)
   private final String zzbh;
-  @Nullable
-  @SafeParcelable.Field(getter="getCallingCertificateBinder", id=2, type="android.os.IBinder")
   private final GoogleCertificates.CertData zzbi;
-  @SafeParcelable.Field(getter="getAllowTestKeys", id=3)
   private final boolean zzbj;
   
   static
@@ -36,8 +26,7 @@ public class GoogleCertificatesQuery
     AppMethodBeat.o(4411);
   }
   
-  @SafeParcelable.Constructor
-  GoogleCertificatesQuery(@SafeParcelable.Param(id=1) String paramString, @SafeParcelable.Param(id=2) @Nullable IBinder paramIBinder, @SafeParcelable.Param(id=3) boolean paramBoolean)
+  GoogleCertificatesQuery(String paramString, IBinder paramIBinder, boolean paramBoolean)
   {
     AppMethodBeat.i(4407);
     this.zzbh = paramString;
@@ -46,15 +35,14 @@ public class GoogleCertificatesQuery
     AppMethodBeat.o(4407);
   }
   
-  GoogleCertificatesQuery(String paramString, @Nullable GoogleCertificates.CertData paramCertData, boolean paramBoolean)
+  GoogleCertificatesQuery(String paramString, GoogleCertificates.CertData paramCertData, boolean paramBoolean)
   {
     this.zzbh = paramString;
     this.zzbi = paramCertData;
     this.zzbj = paramBoolean;
   }
   
-  @Nullable
-  private static GoogleCertificates.CertData zza(@Nullable IBinder paramIBinder)
+  private static GoogleCertificates.CertData zza(IBinder paramIBinder)
   {
     AppMethodBeat.i(4410);
     if (paramIBinder == null)
@@ -95,7 +83,6 @@ public class GoogleCertificatesQuery
     return this.zzbj;
   }
   
-  @Nullable
   public IBinder getCallingCertificateBinder()
   {
     AppMethodBeat.i(4408);
@@ -114,7 +101,6 @@ public class GoogleCertificatesQuery
     return this.zzbh;
   }
   
-  @Nullable
   public GoogleCertificates.CertData getCertificate()
   {
     return this.zzbi;
@@ -133,7 +119,7 @@ public class GoogleCertificatesQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.GoogleCertificatesQuery
  * JD-Core Version:    0.7.0.1
  */

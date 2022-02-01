@@ -18,249 +18,134 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final int bzW = 0;
-  public final Paint bAa;
-  private c.d bAb;
-  public Drawable bAc;
-  private boolean bAd;
-  private boolean bAe;
-  private final a bzX;
-  private final Path bzY;
-  private final Paint bzZ;
+  public static final int dsX = 0;
+  private final a dsY;
+  private final Path dsZ;
+  private final Paint dta;
+  public final Paint dtb;
+  private c.d dtc;
+  public Drawable dtd;
+  private boolean dte;
+  private boolean dtf;
   private final View view;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      bzW = 2;
+      dsX = 2;
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      bzW = 1;
+      dsX = 1;
       return;
     }
   }
   
   public b(a parama)
   {
-    AppMethodBeat.i(236610);
-    this.bzX = parama;
+    AppMethodBeat.i(209085);
+    this.dsY = parama;
     this.view = ((View)parama);
     this.view.setWillNotDraw(false);
-    this.bzY = new Path();
-    this.bzZ = new Paint(7);
-    this.bAa = new Paint(1);
-    this.bAa.setColor(0);
-    AppMethodBeat.o(236610);
+    this.dsZ = new Path();
+    this.dta = new Paint(7);
+    this.dtb = new Paint(1);
+    this.dtb.setColor(0);
+    AppMethodBeat.o(209085);
   }
   
-  private float a(c.d paramd)
+  private void Wo()
   {
-    AppMethodBeat.i(236623);
-    float f = a.i(paramd.aGt, paramd.aGu, this.view.getWidth(), this.view.getHeight());
-    AppMethodBeat.o(236623);
-    return f;
-  }
-  
-  private void c(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(236626);
-    if (wS())
+    AppMethodBeat.i(209103);
+    if (dsX == 1)
     {
-      Rect localRect = this.bAc.getBounds();
-      float f1 = this.bAb.aGt - localRect.width() / 2.0F;
-      float f2 = this.bAb.aGu - localRect.height() / 2.0F;
-      paramCanvas.translate(f1, f2);
-      this.bAc.draw(paramCanvas);
-      paramCanvas.translate(-f1, -f2);
-    }
-    AppMethodBeat.o(236626);
-  }
-  
-  private void wP()
-  {
-    AppMethodBeat.i(236622);
-    if (bzW == 1)
-    {
-      this.bzY.rewind();
-      if (this.bAb != null) {
-        this.bzY.addCircle(this.bAb.aGt, this.bAb.aGu, this.bAb.radius, Path.Direction.CW);
+      this.dsZ.rewind();
+      if (this.dtc != null) {
+        this.dsZ.addCircle(this.dtc.centerX, this.dtc.centerY, this.dtc.radius, Path.Direction.CW);
       }
     }
     this.view.invalidate();
-    AppMethodBeat.o(236622);
+    AppMethodBeat.o(209103);
   }
   
-  private boolean wQ()
+  private boolean Wp()
   {
-    AppMethodBeat.i(236628);
+    AppMethodBeat.i(209138);
     int i;
-    if ((this.bAb == null) || (this.bAb.isInvalid())) {
+    if ((this.dtc == null) || (this.dtc.isInvalid())) {
       i = 1;
     }
-    while (bzW == 0) {
-      if ((i == 0) && (this.bAe))
+    while (dsX == 0) {
+      if ((i == 0) && (this.dtf))
       {
-        AppMethodBeat.o(236628);
+        AppMethodBeat.o(209138);
         return true;
         i = 0;
       }
       else
       {
-        AppMethodBeat.o(236628);
+        AppMethodBeat.o(209138);
         return false;
       }
     }
     if (i == 0)
     {
-      AppMethodBeat.o(236628);
+      AppMethodBeat.o(209138);
       return true;
     }
-    AppMethodBeat.o(236628);
+    AppMethodBeat.o(209138);
     return false;
   }
   
-  private boolean wR()
+  private boolean Wq()
   {
-    AppMethodBeat.i(236631);
-    if ((!this.bAd) && (Color.alpha(this.bAa.getColor()) != 0))
+    AppMethodBeat.i(209149);
+    if ((!this.dte) && (Color.alpha(this.dtb.getColor()) != 0))
     {
-      AppMethodBeat.o(236631);
+      AppMethodBeat.o(209149);
       return true;
     }
-    AppMethodBeat.o(236631);
+    AppMethodBeat.o(209149);
     return false;
   }
   
-  private boolean wS()
+  private boolean Wr()
   {
-    return (!this.bAd) && (this.bAc != null) && (this.bAb != null);
+    return (!this.dte) && (this.dtd != null) && (this.dtc != null);
   }
   
-  public final void draw(Canvas paramCanvas)
+  private float a(c.d paramd)
   {
-    AppMethodBeat.i(236624);
-    if (wQ()) {
-      switch (bzW)
-      {
-      default: 
-        paramCanvas = new IllegalStateException("Unsupported strategy " + bzW);
-        AppMethodBeat.o(236624);
-        throw paramCanvas;
-      case 2: 
-        this.bzX.b(paramCanvas);
-        if (wR()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.bAa);
-        }
-        break;
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(209118);
+    float f = a.l(paramd.centerX, paramd.centerY, this.view.getWidth(), this.view.getHeight());
+    AppMethodBeat.o(209118);
+    return f;
+  }
+  
+  private void f(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(209128);
+    if (Wr())
     {
-      c(paramCanvas);
-      AppMethodBeat.o(236624);
-      return;
-      int i = paramCanvas.save();
-      paramCanvas.clipPath(this.bzY);
-      this.bzX.b(paramCanvas);
-      if (wR()) {
-        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.bAa);
-      }
-      paramCanvas.restoreToCount(i);
-      continue;
-      paramCanvas.drawCircle(this.bAb.aGt, this.bAb.aGu, this.bAb.radius, this.bzZ);
-      if (wR())
-      {
-        paramCanvas.drawCircle(this.bAb.aGt, this.bAb.aGu, this.bAb.radius, this.bAa);
-        continue;
-        this.bzX.b(paramCanvas);
-        if (wR()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.bAa);
-        }
-      }
+      Rect localRect = this.dtd.getBounds();
+      float f1 = this.dtc.centerX - localRect.width() / 2.0F;
+      float f2 = this.dtc.centerY - localRect.height() / 2.0F;
+      paramCanvas.translate(f1, f2);
+      this.dtd.draw(paramCanvas);
+      paramCanvas.translate(-f1, -f2);
     }
+    AppMethodBeat.o(209128);
   }
   
-  public final c.d getRevealInfo()
+  public final void Wl()
   {
-    AppMethodBeat.i(236617);
-    if (this.bAb == null)
+    AppMethodBeat.i(209178);
+    if (dsX == 0)
     {
-      AppMethodBeat.o(236617);
-      return null;
-    }
-    c.d locald = new c.d(this.bAb);
-    if (locald.isInvalid()) {
-      locald.radius = a(locald);
-    }
-    AppMethodBeat.o(236617);
-    return locald;
-  }
-  
-  public final boolean isOpaque()
-  {
-    AppMethodBeat.i(236627);
-    if ((this.bzX.wO()) && (!wQ()))
-    {
-      AppMethodBeat.o(236627);
-      return true;
-    }
-    AppMethodBeat.o(236627);
-    return false;
-  }
-  
-  public final void setCircularRevealOverlayDrawable(Drawable paramDrawable)
-  {
-    AppMethodBeat.i(236621);
-    this.bAc = paramDrawable;
-    this.view.invalidate();
-    AppMethodBeat.o(236621);
-  }
-  
-  public final void setCircularRevealScrimColor(int paramInt)
-  {
-    AppMethodBeat.i(236618);
-    this.bAa.setColor(paramInt);
-    this.view.invalidate();
-    AppMethodBeat.o(236618);
-  }
-  
-  public final void setRevealInfo(c.d paramd)
-  {
-    AppMethodBeat.i(236615);
-    if (paramd == null) {
-      this.bAb = null;
-    }
-    label79:
-    for (;;)
-    {
-      wP();
-      AppMethodBeat.o(236615);
-      return;
-      if (this.bAb == null) {
-        this.bAb = new c.d(paramd);
-      }
-      for (;;)
-      {
-        if (!a.s(paramd.radius, a(paramd))) {
-          break label79;
-        }
-        this.bAb.radius = 3.4028235E+38F;
-        break;
-        this.bAb.b(paramd);
-      }
-    }
-  }
-  
-  public final void wM()
-  {
-    AppMethodBeat.i(236611);
-    if (bzW == 0)
-    {
-      this.bAd = true;
-      this.bAe = false;
+      this.dte = true;
+      this.dtf = false;
       this.view.buildDrawingCache();
       Object localObject2 = this.view.getDrawingCache();
       Object localObject1 = localObject2;
@@ -280,39 +165,154 @@ public final class b
       }
       if (localObject1 != null)
       {
-        localObject2 = this.bzZ;
+        localObject2 = this.dta;
         Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
         ((Paint)localObject2).setShader(new BitmapShader((Bitmap)localObject1, localTileMode, localTileMode));
       }
-      this.bAd = false;
-      this.bAe = true;
+      this.dte = false;
+      this.dtf = true;
     }
-    AppMethodBeat.o(236611);
+    AppMethodBeat.o(209178);
   }
   
-  public final void wN()
+  public final void Wm()
   {
-    AppMethodBeat.i(236613);
-    if (bzW == 0)
+    AppMethodBeat.i(209185);
+    if (dsX == 0)
     {
-      this.bAe = false;
+      this.dtf = false;
       this.view.destroyDrawingCache();
-      this.bzZ.setShader(null);
+      this.dta.setShader(null);
       this.view.invalidate();
     }
-    AppMethodBeat.o(236613);
+    AppMethodBeat.o(209185);
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(209251);
+    if (Wp()) {
+      switch (dsX)
+      {
+      default: 
+        paramCanvas = new IllegalStateException("Unsupported strategy " + dsX);
+        AppMethodBeat.o(209251);
+        throw paramCanvas;
+      case 2: 
+        this.dsY.e(paramCanvas);
+        if (Wq()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.dtb);
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      f(paramCanvas);
+      AppMethodBeat.o(209251);
+      return;
+      int i = paramCanvas.save();
+      paramCanvas.clipPath(this.dsZ);
+      this.dsY.e(paramCanvas);
+      if (Wq()) {
+        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.dtb);
+      }
+      paramCanvas.restoreToCount(i);
+      continue;
+      paramCanvas.drawCircle(this.dtc.centerX, this.dtc.centerY, this.dtc.radius, this.dta);
+      if (Wq())
+      {
+        paramCanvas.drawCircle(this.dtc.centerX, this.dtc.centerY, this.dtc.radius, this.dtb);
+        continue;
+        this.dsY.e(paramCanvas);
+        if (Wq()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.dtb);
+        }
+      }
+    }
+  }
+  
+  public final c.d getRevealInfo()
+  {
+    AppMethodBeat.i(209211);
+    if (this.dtc == null)
+    {
+      AppMethodBeat.o(209211);
+      return null;
+    }
+    c.d locald = new c.d(this.dtc);
+    if (locald.isInvalid()) {
+      locald.radius = a(locald);
+    }
+    AppMethodBeat.o(209211);
+    return locald;
+  }
+  
+  public final boolean isOpaque()
+  {
+    AppMethodBeat.i(209259);
+    if ((this.dsY.Wn()) && (!Wp()))
+    {
+      AppMethodBeat.o(209259);
+      return true;
+    }
+    AppMethodBeat.o(209259);
+    return false;
+  }
+  
+  public final void setCircularRevealOverlayDrawable(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(209239);
+    this.dtd = paramDrawable;
+    this.view.invalidate();
+    AppMethodBeat.o(209239);
+  }
+  
+  public final void setCircularRevealScrimColor(int paramInt)
+  {
+    AppMethodBeat.i(209225);
+    this.dtb.setColor(paramInt);
+    this.view.invalidate();
+    AppMethodBeat.o(209225);
+  }
+  
+  public final void setRevealInfo(c.d paramd)
+  {
+    AppMethodBeat.i(209197);
+    if (paramd == null) {
+      this.dtc = null;
+    }
+    label82:
+    for (;;)
+    {
+      Wo();
+      AppMethodBeat.o(209197);
+      return;
+      if (this.dtc == null) {
+        this.dtc = new c.d(paramd);
+      }
+      for (;;)
+      {
+        if (!a.Y(paramd.radius, a(paramd))) {
+          break label82;
+        }
+        this.dtc.radius = 3.4028235E+38F;
+        break;
+        this.dtc.b(paramd);
+      }
+    }
   }
   
   public static abstract interface a
   {
-    public abstract void b(Canvas paramCanvas);
+    public abstract boolean Wn();
     
-    public abstract boolean wO();
+    public abstract void e(Canvas paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.circularreveal.b
  * JD-Core Version:    0.7.0.1
  */

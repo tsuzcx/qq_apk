@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @interface MMHandler$Specially {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMHandler.Specially
  * JD-Core Version:    0.7.0.1
  */

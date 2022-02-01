@@ -7,13 +7,13 @@ import java.util.concurrent.LinkedBlockingDeque;
 final class k
 {
   public volatile boolean enable;
-  public final BlockingDeque<String> fiu;
+  public final BlockingDeque<String> hmG;
   
   k()
   {
     AppMethodBeat.i(185102);
     this.enable = false;
-    this.fiu = new LinkedBlockingDeque();
+    this.hmG = new LinkedBlockingDeque();
     AppMethodBeat.o(185102);
   }
 }

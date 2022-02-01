@@ -1,40 +1,31 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import android.app.Activity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.plugin.websearch.api.as;
 import com.tencent.mm.plugin.webview.c.i;
 
 public class FTSWebViewUI
   extends FTSBaseWebViewUI
 {
-  private void har()
+  private void iAC()
   {
     AppMethodBeat.i(80714);
     if (getScene() == 21) {
-      ar.anp(19);
+      as.atf(19);
     }
     AppMethodBeat.o(80714);
   }
   
-  public final void cjK()
+  public final void cKX()
   {
     AppMethodBeat.i(80708);
-    super.cjK();
-    ar.ann(getScene());
+    super.cKX();
+    as.dD(getScene(), this.sessionId);
     if (getScene() == 21) {
-      ar.anp(17);
+      as.atf(17);
     }
     AppMethodBeat.o(80708);
-  }
-  
-  public final void gZc()
-  {
-    AppMethodBeat.i(80715);
-    har();
-    super.gZc();
-    AppMethodBeat.o(80715);
   }
   
   protected final String getHint()
@@ -45,11 +36,19 @@ public class FTSWebViewUI
     return str;
   }
   
+  public final void izc()
+  {
+    AppMethodBeat.i(80715);
+    iAC();
+    super.izc();
+    AppMethodBeat.o(80715);
+  }
+  
   public void onBackPressed()
   {
     AppMethodBeat.i(80712);
     super.onBackPressed();
-    har();
+    iAC();
     AppMethodBeat.o(80712);
   }
   
@@ -65,10 +64,10 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80711);
     super.onDestroy();
-    ar.gQZ();
-    ar.gRa();
+    as.iql();
+    as.iqm();
     if (getScene() == 21) {
-      ar.anp(18);
+      as.atf(18);
     }
     AppMethodBeat.o(80711);
   }
@@ -77,7 +76,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80710);
     super.onPause();
-    ar.gQY();
+    as.iqk();
     AppMethodBeat.o(80710);
   }
   
@@ -85,7 +84,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80709);
     super.onResume();
-    ar.gQX();
+    as.iqj();
     AppMethodBeat.o(80709);
   }
   

@@ -1,61 +1,64 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static int oIA;
-  public static boolean oIE;
-  private static volatile a oIr;
-  public static boolean oIu;
-  public static boolean oIv;
-  public static boolean oIx;
-  public static boolean oIz;
-  public boolean aGM;
+  private static volatile a rMa;
+  public static boolean rMd;
+  public static boolean rMe;
+  public static boolean rMg;
+  public static boolean rMi;
+  public static int rMj;
+  public static boolean rMn;
+  private static volatile boolean rMq;
+  public boolean debug;
   public int interval;
-  public String oIB;
-  public int oIC;
-  public boolean oID;
-  public boolean oIF;
-  public boolean oIG;
-  public boolean oIs;
-  public long oIt;
-  public boolean oIw;
-  public boolean oIy;
+  public boolean rMb;
+  public long rMc;
+  public boolean rMf;
+  public boolean rMh;
+  public String rMk;
+  public int rMl;
+  public boolean rMm;
+  public boolean rMo;
+  public boolean rMp;
   
   static
   {
     AppMethodBeat.i(144530);
-    oIr = null;
-    oIu = false;
-    oIv = true;
-    oIx = true;
-    oIz = false;
-    oIA = 5;
-    oIE = true;
+    rMa = null;
+    rMd = false;
+    rMe = true;
+    rMg = true;
+    rMi = false;
+    rMj = 5;
+    rMn = true;
+    rMq = true;
     AppMethodBeat.o(144530);
   }
   
   public a(a parama)
   {
     this.interval = parama.interval;
-    this.oIs = parama.oIs;
-    this.oIt = parama.oIt;
-    this.aGM = parama.aGM;
-    this.oIw = parama.oIw;
-    this.oIy = parama.oIy;
-    this.oIB = parama.oIB;
-    this.oIC = parama.oIC;
-    this.oID = parama.oID;
-    this.oIF = parama.oIF;
-    this.oIG = parama.oIG;
+    this.rMb = parama.rMb;
+    this.rMc = parama.rMc;
+    this.debug = parama.debug;
+    this.rMf = parama.rMf;
+    this.rMh = parama.rMh;
+    this.rMk = parama.rMk;
+    this.rMl = parama.rMl;
+    this.rMm = parama.rMm;
+    this.rMo = parama.rMo;
+    this.rMp = parama.rMp;
   }
   
   public static void a(a parama)
   {
     try
     {
-      oIr = parama;
+      rMa = parama;
       return;
     }
     finally
@@ -65,44 +68,78 @@ public final class a
     }
   }
   
-  public static a bQQ()
+  public static a cqY()
   {
     try
     {
-      AppMethodBeat.i(200043);
-      if (oIr == null) {
-        oIr = new a().bQR();
+      AppMethodBeat.i(329685);
+      if (rMa == null) {
+        rMa = new a().cra();
       }
-      a locala = oIr;
-      AppMethodBeat.o(200043);
+      a locala = rMa;
+      AppMethodBeat.o(329685);
       return locala;
     }
     finally {}
   }
   
+  public static boolean cqZ()
+  {
+    AppMethodBeat.i(329690);
+    Log.i("MicroMsg.Ble.BleConfig", "isDefaultRefreshCache, defaultRefreshCache: " + rMq);
+    boolean bool = rMq;
+    AppMethodBeat.o(329690);
+    return bool;
+  }
+  
+  public static void jg(boolean paramBoolean)
+  {
+    AppMethodBeat.i(329688);
+    Log.i("MicroMsg.Ble.BleConfig", "setDefaultRefreshCache, defaultRefreshCache: ".concat(String.valueOf(paramBoolean)));
+    rMq = paramBoolean;
+    AppMethodBeat.o(329688);
+  }
+  
   public final String toString()
   {
     AppMethodBeat.i(144529);
-    String str = "BleConfig{interval=" + this.interval + ", allowDuplicatesKey=" + this.oIs + ", actionTimeOutTime=" + this.oIt + ", debug=" + this.aGM + ", mainThread=" + this.oIw + ", serial=" + this.oIy + ", mode='" + this.oIB + '\'' + ", actionDelayTime=" + this.oIC + ", parseScanRecordManual=" + this.oIF + ", scanWorkaround=" + this.oIG + '}';
+    String str = "BleConfig{interval=" + this.interval + ", allowDuplicatesKey=" + this.rMb + ", actionTimeOutTime=" + this.rMc + ", debug=" + this.debug + ", mainThread=" + this.rMf + ", serial=" + this.rMh + ", mode='" + this.rMk + '\'' + ", actionDelayTime=" + this.rMl + ", parseScanRecordManual=" + this.rMo + ", scanWorkaround=" + this.rMp + '}';
     AppMethodBeat.o(144529);
     return str;
   }
   
   public static final class a
   {
-    public boolean aGM = a.oIu;
-    public int interval = 0;
-    public String oIB = "medium";
-    public int oIC = 10;
-    public boolean oID = true;
-    public boolean oIF = true;
-    public boolean oIG = true;
-    public boolean oIs = false;
-    long oIt = 20000L;
-    public boolean oIw = a.oIv;
-    public boolean oIy = a.oIx;
+    public boolean debug;
+    public int interval;
+    public boolean rMb;
+    long rMc;
+    public boolean rMf;
+    public boolean rMh;
+    public String rMk;
+    public int rMl;
+    public boolean rMm;
+    public boolean rMo;
+    public boolean rMp;
     
-    public final a bQR()
+    public a()
+    {
+      AppMethodBeat.i(329686);
+      this.interval = 0;
+      this.rMb = false;
+      this.rMc = 20000L;
+      this.debug = a.rMd;
+      this.rMf = a.rMe;
+      this.rMh = a.rMg;
+      this.rMk = "medium";
+      this.rMl = 10;
+      this.rMm = a.cqZ();
+      this.rMo = true;
+      this.rMp = true;
+      AppMethodBeat.o(329686);
+    }
+    
+    public final a cra()
     {
       AppMethodBeat.i(144528);
       a locala = new a(this);
@@ -113,7 +150,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a
  * JD-Core Version:    0.7.0.1
  */

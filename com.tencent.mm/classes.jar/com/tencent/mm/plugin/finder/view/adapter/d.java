@@ -6,54 +6,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.Fragment.SavedState;
-import androidx.fragment.app.e;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import androidx.viewpager.widget.a;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/adapter/StatePagerAdapterCp;", "Landroidx/viewpager/widget/PagerAdapter;", "fm", "Landroidx/fragment/app/FragmentManager;", "(Landroidx/fragment/app/FragmentManager;)V", "getFm", "()Landroidx/fragment/app/FragmentManager;", "mCurTransaction", "Landroidx/fragment/app/FragmentTransaction;", "getMCurTransaction", "()Landroidx/fragment/app/FragmentTransaction;", "setMCurTransaction", "(Landroidx/fragment/app/FragmentTransaction;)V", "mCurrentPrimaryItem", "Landroidx/fragment/app/Fragment;", "mFragmentManager", "mFragments", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getMFragments", "()Ljava/util/ArrayList;", "mSavedState", "Landroidx/fragment/app/Fragment$SavedState;", "getMSavedState", "destroyItem", "", "container", "Landroid/view/ViewGroup;", "position", "", "object", "", "finishUpdate", "getItem", "index", "instantiateItem", "isViewFromObject", "", "view", "Landroid/view/View;", "restoreState", "state", "Landroid/os/Parcelable;", "loader", "Ljava/lang/ClassLoader;", "saveState", "setPrimaryItem", "startUpdate", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/adapter/StatePagerAdapterCp;", "Landroidx/viewpager/widget/PagerAdapter;", "fm", "Landroidx/fragment/app/FragmentManager;", "(Landroidx/fragment/app/FragmentManager;)V", "getFm", "()Landroidx/fragment/app/FragmentManager;", "mCurTransaction", "Landroidx/fragment/app/FragmentTransaction;", "getMCurTransaction", "()Landroidx/fragment/app/FragmentTransaction;", "setMCurTransaction", "(Landroidx/fragment/app/FragmentTransaction;)V", "mCurrentPrimaryItem", "Landroidx/fragment/app/Fragment;", "mFragmentManager", "mFragments", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getMFragments", "()Ljava/util/ArrayList;", "mSavedState", "Landroidx/fragment/app/Fragment$SavedState;", "getMSavedState", "destroyItem", "", "container", "Landroid/view/ViewGroup;", "position", "", "object", "", "finishUpdate", "getItem", "index", "instantiateItem", "isViewFromObject", "", "view", "Landroid/view/View;", "restoreState", "state", "Landroid/os/Parcelable;", "loader", "Ljava/lang/ClassLoader;", "saveState", "setPrimaryItem", "startUpdate", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class d
   extends a
 {
-  private final e Bdx;
-  private i mCurTransaction;
+  private final FragmentManager GGi;
+  private r mCurTransaction;
   private Fragment mCurrentPrimaryItem;
-  private e mFragmentManager;
+  private FragmentManager mFragmentManager;
   private final ArrayList<Fragment> mFragments;
   private final ArrayList<Fragment.SavedState> mSavedState;
   
-  public d(e parame)
+  public d(FragmentManager paramFragmentManager)
   {
-    this.Bdx = parame;
+    this.GGi = paramFragmentManager;
     this.mSavedState = new ArrayList();
     this.mFragments = new ArrayList();
-    this.mFragmentManager = this.Bdx;
+    this.mFragmentManager = this.GGi;
   }
   
-  public final void b(i parami)
+  public final void b(r paramr)
   {
-    this.mCurTransaction = parami;
+    this.mCurTransaction = paramr;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    p.k(paramViewGroup, "container");
-    p.k(paramObject, "object");
+    s.u(paramViewGroup, "container");
+    s.u(paramObject, "object");
     paramObject = (Fragment)paramObject;
     if (this.mCurTransaction == null)
     {
       paramViewGroup = this.mFragmentManager;
-      if (paramViewGroup == null) {
-        p.iCn();
-      }
+      s.checkNotNull(paramViewGroup);
       this.mCurTransaction = paramViewGroup.beginTransaction();
     }
     while (this.mSavedState.size() <= paramInt) {
@@ -63,62 +59,56 @@ public abstract class d
     if (paramObject.isAdded())
     {
       paramViewGroup = this.mFragmentManager;
-      if (paramViewGroup == null) {
-        p.iCn();
-      }
+      s.checkNotNull(paramViewGroup);
     }
     for (paramViewGroup = paramViewGroup.saveFragmentInstanceState(paramObject);; paramViewGroup = null)
     {
       localArrayList.set(paramInt, paramViewGroup);
       this.mFragments.set(paramInt, null);
       paramViewGroup = this.mCurTransaction;
-      if (paramViewGroup == null) {
-        p.iCn();
-      }
+      s.checkNotNull(paramViewGroup);
       paramViewGroup.a(paramObject);
       return;
     }
   }
   
-  public final i ejv()
+  public void finishUpdate(ViewGroup paramViewGroup)
+  {
+    s.u(paramViewGroup, "container");
+    if (this.mCurTransaction != null)
+    {
+      paramViewGroup = this.mCurTransaction;
+      s.checkNotNull(paramViewGroup);
+      paramViewGroup.FZ();
+      this.mCurTransaction = null;
+    }
+  }
+  
+  public final FragmentManager flI()
+  {
+    return this.GGi;
+  }
+  
+  public final r flJ()
   {
     return this.mCurTransaction;
   }
   
-  public final ArrayList<Fragment.SavedState> ejw()
+  public final ArrayList<Fragment.SavedState> flK()
   {
     return this.mSavedState;
   }
   
-  public final ArrayList<Fragment> ejx()
+  public final ArrayList<Fragment> flL()
   {
     return this.mFragments;
-  }
-  
-  public final e ejy()
-  {
-    return this.Bdx;
-  }
-  
-  public void finishUpdate(ViewGroup paramViewGroup)
-  {
-    p.k(paramViewGroup, "container");
-    if (this.mCurTransaction != null)
-    {
-      paramViewGroup = this.mCurTransaction;
-      if (paramViewGroup == null) {
-        p.iCn();
-      }
-      paramViewGroup.ir();
-      this.mCurTransaction = null;
-    }
   }
   
   public abstract Fragment getItem(int paramInt);
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    p.k(paramViewGroup, "container");
+    s.u(paramViewGroup, "container");
     if (this.mFragments.size() > paramInt)
     {
       localObject1 = (Fragment)this.mFragments.get(paramInt);
@@ -129,10 +119,8 @@ public abstract class d
     if (this.mCurTransaction == null)
     {
       localObject1 = this.mFragmentManager;
-      if (localObject1 == null) {
-        p.iCn();
-      }
-      this.mCurTransaction = ((e)localObject1).beginTransaction();
+      s.checkNotNull(localObject1);
+      this.mCurTransaction = ((FragmentManager)localObject1).beginTransaction();
     }
     Object localObject1 = getItem(paramInt);
     if (this.mSavedState.size() > paramInt)
@@ -149,30 +137,30 @@ public abstract class d
     ((Fragment)localObject1).setUserVisibleHint(false);
     this.mFragments.set(paramInt, localObject1);
     Object localObject2 = this.mCurTransaction;
-    if (localObject2 == null) {
-      p.iCn();
-    }
-    ((i)localObject2).a(paramViewGroup.getId(), (Fragment)localObject1);
+    s.checkNotNull(localObject2);
+    ((r)localObject2).a(paramViewGroup.getId(), (Fragment)localObject1);
     paramViewGroup = new StringBuilder("instantiateItem: title:");
     if (localObject1 == null) {
-      throw new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment");
+      throw new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment");
     }
-    Log.i("Finder.DynamicAdapter", ((FinderHomeTabFragment)localObject1).title + " tabType:" + ((FinderHomeTabFragment)localObject1).fEH);
+    paramViewGroup = paramViewGroup.append(((FinderHomeTabFragment)localObject1).title).append(" tabType:");
+    if (localObject1 == null) {
+      throw new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment");
+    }
+    Log.i("Finder.DynamicAdapter", ((FinderHomeTabFragment)localObject1).hJx);
     return localObject1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    p.k(paramView, "view");
-    p.k(paramObject, "object");
+    s.u(paramView, "view");
+    s.u(paramObject, "object");
     return ((Fragment)paramObject).getView() == paramView;
   }
   
   public void restoreState(Parcelable paramParcelable, ClassLoader paramClassLoader)
   {
-    int i;
-    Object localObject1;
-    Object localObject2;
+    int k;
     if (paramParcelable != null)
     {
       paramParcelable = (Bundle)paramParcelable;
@@ -182,57 +170,56 @@ public abstract class d
       this.mFragments.clear();
       if (paramClassLoader != null)
       {
-        int j = paramClassLoader.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject1 = this.mSavedState;
-          localObject2 = paramClassLoader[i];
-          if (localObject2 == null) {
-            throw new t("null cannot be cast to non-null type androidx.fragment.app.Fragment.SavedState");
-          }
-          ((ArrayList)localObject1).add((Fragment.SavedState)localObject2);
-          i += 1;
-        }
+        k = paramClassLoader.length - 1;
+        if (k < 0) {}
       }
-      paramClassLoader = paramParcelable.keySet();
-      p.j(paramClassLoader, "bundle.keySet()");
-      paramClassLoader = ((Iterable)paramClassLoader).iterator();
     }
-    for (;;)
+    int j;
+    for (int i = 0;; i = j)
     {
-      if (!paramClassLoader.hasNext()) {
-        return;
+      j = i + 1;
+      Object localObject1 = this.mSavedState;
+      Object localObject2 = paramClassLoader[i];
+      if (localObject2 == null) {
+        throw new NullPointerException("null cannot be cast to non-null type androidx.fragment.app.Fragment.SavedState");
       }
-      localObject1 = paramClassLoader.next();
-      if (localObject1 == null) {
-        throw new t("null cannot be cast to non-null type kotlin.String");
-      }
-      localObject1 = (String)localObject1;
-      if (n.M((String)localObject1, "f", false))
+      ((ArrayList)localObject1).add((Fragment.SavedState)localObject2);
+      if (j > k)
       {
-        if (localObject1 == null) {
-          throw new t("null cannot be cast to non-null type java.lang.String");
-        }
-        localObject2 = ((String)localObject1).substring(1);
-        p.j(localObject2, "(this as java.lang.String).substring(startIndex)");
-        i = Integer.parseInt((String)localObject2);
-        localObject2 = this.mFragmentManager;
-        if (localObject2 == null) {
-          p.iCn();
-        }
-        localObject2 = ((e)localObject2).getFragment(paramParcelable, (String)localObject1);
-        if (localObject2 != null)
+        paramClassLoader = paramParcelable.keySet();
+        s.s(paramClassLoader, "bundle.keySet()");
+        paramClassLoader = ((Iterable)paramClassLoader).iterator();
+        for (;;)
         {
-          while (this.mFragments.size() <= i) {
-            this.mFragments.add(null);
+          if (!paramClassLoader.hasNext()) {
+            return;
           }
-          ((Fragment)localObject2).setMenuVisibility(false);
-          this.mFragments.set(i, localObject2);
-        }
-        else
-        {
-          Log.w("FragmentStatePagerAdapt", "Bad fragment at key ".concat(String.valueOf(localObject1)));
+          localObject1 = paramClassLoader.next();
+          if (localObject1 == null) {
+            throw new NullPointerException("null cannot be cast to non-null type kotlin.String");
+          }
+          localObject1 = (String)localObject1;
+          if (n.U((String)localObject1, "f", false))
+          {
+            localObject2 = ((String)localObject1).substring(1);
+            s.s(localObject2, "(this as java.lang.String).substring(startIndex)");
+            i = Integer.parseInt((String)localObject2);
+            localObject2 = this.mFragmentManager;
+            s.checkNotNull(localObject2);
+            localObject2 = ((FragmentManager)localObject2).getFragment(paramParcelable, (String)localObject1);
+            if (localObject2 != null)
+            {
+              while (this.mFragments.size() <= i) {
+                this.mFragments.add(null);
+              }
+              ((Fragment)localObject2).setMenuVisibility(false);
+              this.mFragments.set(i, localObject2);
+            }
+            else
+            {
+              Log.w("FragmentStatePagerAdapt", s.X("Bad fragment at key ", localObject1));
+            }
+          }
         }
       }
     }
@@ -240,66 +227,60 @@ public abstract class d
   
   public Parcelable saveState()
   {
-    Object localObject2;
-    Object localObject1;
+    Object localObject1 = null;
     if (this.mSavedState.size() > 0)
     {
-      localObject2 = new Bundle();
-      localObject1 = new Fragment.SavedState[this.mSavedState.size()];
-      this.mSavedState.toArray((Object[])localObject1);
-      ((Bundle)localObject2).putParcelableArray("states", (Parcelable[])localObject1);
+      localObject1 = new Bundle();
+      localObject2 = new Fragment.SavedState[this.mSavedState.size()];
+      this.mSavedState.toArray((Object[])localObject2);
+      ((Bundle)localObject1).putParcelableArray("states", (Parcelable[])localObject2);
     }
+    int i = 0;
+    int k = this.mFragments.size() - 1;
+    Object localObject2 = localObject1;
+    if (k >= 0) {}
     for (;;)
     {
-      int i = 0;
-      int j = ((Collection)this.mFragments).size();
-      while (i < j)
+      int j = i + 1;
+      Fragment localFragment = (Fragment)this.mFragments.get(i);
+      localObject2 = localObject1;
+      if (localFragment != null)
       {
-        Fragment localFragment = (Fragment)this.mFragments.get(i);
-        localObject1 = localObject2;
-        if (localFragment != null)
-        {
-          localObject1 = localObject2;
-          if (localFragment.isAdded())
-          {
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new Bundle();
-            }
-            localObject2 = "f".concat(String.valueOf(i));
-            e locale = this.mFragmentManager;
-            if (locale == null) {
-              p.iCn();
-            }
-            locale.putFragment((Bundle)localObject1, (String)localObject2, localFragment);
-          }
-        }
-        i += 1;
         localObject2 = localObject1;
+        if (localFragment.isAdded())
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new Bundle();
+          }
+          localObject1 = s.X("f", Integer.valueOf(i));
+          FragmentManager localFragmentManager = this.mFragmentManager;
+          s.checkNotNull(localFragmentManager);
+          localFragmentManager.putFragment((Bundle)localObject2, (String)localObject1, localFragment);
+        }
       }
-      return (Parcelable)localObject2;
-      localObject2 = null;
+      if (j > k) {
+        return (Parcelable)localObject2;
+      }
+      i = j;
+      localObject1 = localObject2;
     }
   }
   
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    p.k(paramViewGroup, "container");
-    p.k(paramObject, "object");
+    s.u(paramViewGroup, "container");
+    s.u(paramObject, "object");
     paramViewGroup = (Fragment)paramObject;
     if (paramViewGroup != this.mCurrentPrimaryItem)
     {
       if (this.mCurrentPrimaryItem != null)
       {
         paramObject = this.mCurrentPrimaryItem;
-        if (paramObject == null) {
-          p.iCn();
-        }
+        s.checkNotNull(paramObject);
         paramObject.setMenuVisibility(false);
         paramObject = this.mCurrentPrimaryItem;
-        if (paramObject == null) {
-          p.iCn();
-        }
+        s.checkNotNull(paramObject);
         paramObject.setUserVisibleHint(false);
       }
       paramViewGroup.setMenuVisibility(true);
@@ -310,7 +291,7 @@ public abstract class d
   
   public void startUpdate(ViewGroup paramViewGroup)
   {
-    p.k(paramViewGroup, "container");
+    s.u(paramViewGroup, "container");
     if (paramViewGroup.getId() != -1) {}
     for (int i = 1; i == 0; i = 0) {
       throw ((Throwable)new IllegalStateException(("ViewPager with adapter " + this + " requires a view id").toString()));
@@ -319,7 +300,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.adapter.d
  * JD-Core Version:    0.7.0.1
  */

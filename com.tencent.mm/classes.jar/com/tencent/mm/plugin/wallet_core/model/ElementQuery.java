@@ -14,170 +14,170 @@ public class ElementQuery
   implements Parcelable
 {
   public static final Parcelable.Creator<ElementQuery> CREATOR;
-  public static String OPb;
-  public String DNV;
-  public String GGC;
-  public int OIp;
-  public String OMV;
-  public boolean OPA;
-  public String OPB;
-  private List<Integer> OPC;
-  public boolean OPD;
-  public String OPE;
-  public int OPF;
-  public ArrayList<CreTypeRuleInfo> OPG;
-  public boolean OPH;
-  public String OPc;
-  public boolean OPd;
-  public boolean OPe;
-  public boolean OPf;
-  public boolean OPg;
-  public String OPh;
-  public String OPi;
-  public boolean OPj;
-  public int OPk;
-  public int OPl;
-  public String OPm;
-  public String OPn;
-  public String OPo;
-  public String OPp;
-  public String OPq;
-  public String OPr;
-  public boolean OPs;
-  public boolean OPt;
-  public boolean OPu;
-  public boolean OPv;
-  public boolean OPw;
-  public boolean OPx;
-  public boolean OPy;
-  public boolean OPz;
-  public JSONObject eZg;
-  public String fvP;
+  public static String VEV;
+  public String JFk;
+  public String MDt;
+  public String VCG;
+  public String VEW;
+  public boolean VEX;
+  public boolean VEY;
+  public boolean VEZ;
+  public ArrayList<CreTypeRuleInfo> VFA;
+  public boolean VFB;
+  public boolean VFa;
+  public String VFb;
+  public String VFc;
+  public boolean VFd;
+  public int VFe;
+  public int VFf;
+  public String VFg;
+  public String VFh;
+  public String VFi;
+  public String VFj;
+  public String VFk;
+  public String VFl;
+  public boolean VFm;
+  public boolean VFn;
+  public boolean VFo;
+  public boolean VFp;
+  public boolean VFq;
+  public boolean VFr;
+  public boolean VFs;
+  public boolean VFt;
+  public boolean VFu;
+  public String VFv;
+  private List<Integer> VFw;
+  public boolean VFx;
+  public String VFy;
+  public int VFz;
+  public int Vyb;
+  public String hAk;
+  public JSONObject hcG;
   
   static
   {
     AppMethodBeat.i(70274);
-    OPb = "bind_serial";
+    VEV = "bind_serial";
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70274);
   }
   
   public ElementQuery()
   {
-    this.OPC = null;
-    this.OPH = false;
+    this.VFw = null;
+    this.VFB = false;
   }
   
   public ElementQuery(Parcel paramParcel)
   {
     AppMethodBeat.i(70272);
-    this.OPC = null;
-    this.OPH = false;
-    this.GGC = paramParcel.readString();
-    this.DNV = paramParcel.readString();
-    this.OPc = paramParcel.readString();
+    this.VFw = null;
+    this.VFB = false;
+    this.MDt = paramParcel.readString();
+    this.JFk = paramParcel.readString();
+    this.VEW = paramParcel.readString();
     if (1 == paramParcel.readInt())
     {
       bool1 = true;
-      this.OPd = bool1;
+      this.VEX = bool1;
       if (1 != paramParcel.readInt()) {
         break label437;
       }
       bool1 = true;
       label70:
-      this.OPe = bool1;
+      this.VEY = bool1;
       if (1 != paramParcel.readInt()) {
         break label442;
       }
       bool1 = true;
       label85:
-      this.OPf = bool1;
+      this.VEZ = bool1;
       if (1 != paramParcel.readInt()) {
         break label447;
       }
       bool1 = true;
       label100:
-      this.OPg = bool1;
-      this.OPi = paramParcel.readString();
-      this.GGC = paramParcel.readString();
+      this.VFa = bool1;
+      this.VFc = paramParcel.readString();
+      this.MDt = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label452;
       }
       bool1 = true;
       label131:
-      this.OPj = bool1;
-      this.OPk = paramParcel.readInt();
-      this.OPl = paramParcel.readInt();
-      this.fvP = paramParcel.readString();
-      this.OPm = paramParcel.readString();
-      this.OPn = paramParcel.readString();
-      this.OPo = paramParcel.readString();
-      this.OPr = paramParcel.readString();
-      this.OPq = paramParcel.readString();
-      this.OPp = paramParcel.readString();
+      this.VFd = bool1;
+      this.VFe = paramParcel.readInt();
+      this.VFf = paramParcel.readInt();
+      this.hAk = paramParcel.readString();
+      this.VFg = paramParcel.readString();
+      this.VFh = paramParcel.readString();
+      this.VFi = paramParcel.readString();
+      this.VFl = paramParcel.readString();
+      this.VFk = paramParcel.readString();
+      this.VFj = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label457;
       }
       bool1 = true;
       label218:
-      this.OPs = bool1;
+      this.VFm = bool1;
       if (1 != paramParcel.readInt()) {
         break label462;
       }
       bool1 = true;
       label233:
-      this.OPt = bool1;
+      this.VFn = bool1;
       if (1 != paramParcel.readInt()) {
         break label467;
       }
       bool1 = true;
       label248:
-      this.OPu = bool1;
+      this.VFo = bool1;
       if (1 != paramParcel.readInt()) {
         break label472;
       }
       bool1 = true;
       label263:
-      this.OPv = bool1;
+      this.VFp = bool1;
       if (1 != paramParcel.readInt()) {
         break label477;
       }
       bool1 = true;
       label278:
-      this.OPw = bool1;
+      this.VFq = bool1;
       if (1 != paramParcel.readInt()) {
         break label482;
       }
       bool1 = true;
       label293:
-      this.OPx = bool1;
+      this.VFr = bool1;
       if (1 != paramParcel.readInt()) {
         break label487;
       }
       bool1 = true;
       label308:
-      this.OPz = bool1;
+      this.VFt = bool1;
       if (1 != paramParcel.readInt()) {
         break label492;
       }
       bool1 = true;
       label323:
-      this.OPy = bool1;
+      this.VFs = bool1;
       if (1 != paramParcel.readInt()) {
         break label497;
       }
       bool1 = true;
       label338:
-      this.OPA = bool1;
-      this.OIp = paramParcel.readInt();
-      this.OPB = paramParcel.readString();
+      this.VFu = bool1;
+      this.Vyb = paramParcel.readInt();
+      this.VFv = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label502;
       }
       bool1 = true;
       label369:
-      this.OPH = bool1;
-      this.OMV = paramParcel.readString();
+      this.VFB = bool1;
+      this.VCG = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label507;
       }
@@ -199,10 +199,10 @@ public class ElementQuery
     label507:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.OPD = bool1;
-      this.OPE = paramParcel.readString();
-      this.OPF = paramParcel.readInt();
-      this.OPG = paramParcel.readArrayList(CreTypeRuleInfo.class.getClassLoader());
+      this.VFx = bool1;
+      this.VFy = paramParcel.readString();
+      this.VFz = paramParcel.readInt();
+      this.VFA = paramParcel.readArrayList(CreTypeRuleInfo.class.getClassLoader());
       AppMethodBeat.o(70272);
       return;
       bool1 = false;
@@ -238,7 +238,7 @@ public class ElementQuery
     }
   }
   
-  public static ArrayList<CreTypeRuleInfo> bR(JSONObject paramJSONObject)
+  public static ArrayList<CreTypeRuleInfo> cm(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70271);
     ArrayList localArrayList = new ArrayList();
@@ -251,7 +251,7 @@ public class ElementQuery
         int i = 0;
         while (i < j)
         {
-          CreTypeRuleInfo localCreTypeRuleInfo = CreTypeRuleInfo.bP(paramJSONObject.optJSONObject(i));
+          CreTypeRuleInfo localCreTypeRuleInfo = CreTypeRuleInfo.ck(paramJSONObject.optJSONObject(i));
           if (localCreTypeRuleInfo != null) {
             localArrayList.add(localCreTypeRuleInfo);
           }
@@ -268,41 +268,41 @@ public class ElementQuery
     return 0;
   }
   
-  public final boolean gIJ()
+  public final boolean ihX()
   {
-    return 2 == this.OPl;
+    return 2 == this.VFf;
   }
   
-  public final boolean gIX()
+  public final boolean iil()
   {
-    return 1 == this.OPl;
+    return 1 == this.VFf;
   }
   
-  public final List<Integer> gIY()
+  public final List<Integer> iim()
   {
     AppMethodBeat.i(70270);
     Object localObject;
-    if (this.OPC != null)
+    if (this.VFw != null)
     {
-      localObject = this.OPC;
+      localObject = this.VFw;
       AppMethodBeat.o(70270);
       return localObject;
     }
-    if (!Util.isNullOrNil(this.OPB))
+    if (!Util.isNullOrNil(this.VFv))
     {
-      this.OPC = new ArrayList();
-      localObject = this.OPB.split("\\|");
+      this.VFw = new ArrayList();
+      localObject = this.VFv.split("\\|");
       int j = localObject.length;
       int i = 0;
       while (i < j)
       {
         int k = Util.getInt(localObject[i], 0);
         if (k > 0) {
-          this.OPC.add(Integer.valueOf(k));
+          this.VFw.add(Integer.valueOf(k));
         }
         i += 1;
       }
-      localObject = this.OPC;
+      localObject = this.VFw;
       AppMethodBeat.o(70270);
       return localObject;
     }
@@ -313,7 +313,7 @@ public class ElementQuery
   public final boolean isError()
   {
     AppMethodBeat.i(70269);
-    boolean bool = "0".equals(Util.nullAs(this.OPn, "").trim());
+    boolean bool = "0".equals(Util.nullAs(this.VFh, "").trim());
     AppMethodBeat.o(70269);
     return bool;
   }
@@ -322,112 +322,112 @@ public class ElementQuery
   {
     int i = 1;
     AppMethodBeat.i(70273);
-    paramParcel.writeString(Util.nullAs(this.GGC, ""));
-    paramParcel.writeString(Util.nullAs(this.DNV, ""));
-    paramParcel.writeString(Util.nullAs(this.OPc, ""));
-    if (this.OPd)
+    paramParcel.writeString(Util.nullAs(this.MDt, ""));
+    paramParcel.writeString(Util.nullAs(this.JFk, ""));
+    paramParcel.writeString(Util.nullAs(this.VEW, ""));
+    if (this.VEX)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.OPe) {
+      if (!this.VEY) {
         break label464;
       }
       paramInt = 1;
       label70:
       paramParcel.writeInt(paramInt);
-      if (!this.OPf) {
+      if (!this.VEZ) {
         break label469;
       }
       paramInt = 1;
       label84:
       paramParcel.writeInt(paramInt);
-      if (!this.OPg) {
+      if (!this.VFa) {
         break label474;
       }
       paramInt = 1;
       label98:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(Util.nullAs(this.OPi, ""));
-      paramParcel.writeString(Util.nullAs(this.GGC, ""));
-      if (!this.OPj) {
+      paramParcel.writeString(Util.nullAs(this.VFc, ""));
+      paramParcel.writeString(Util.nullAs(this.MDt, ""));
+      if (!this.VFd) {
         break label479;
       }
       paramInt = 1;
       label138:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.OPk);
-      paramParcel.writeInt(this.OPl);
-      paramParcel.writeString(Util.nullAs(this.fvP, ""));
-      paramParcel.writeString(Util.nullAs(this.OPm, ""));
-      paramParcel.writeString(Util.nullAs(this.OPn, ""));
-      paramParcel.writeString(Util.nullAs(this.OPo, ""));
-      paramParcel.writeString(Util.nullAs(this.OPr, ""));
-      paramParcel.writeString(Util.nullAs(this.OPq, ""));
-      paramParcel.writeString(Util.nullAs(this.OPp, ""));
-      if (!this.OPs) {
+      paramParcel.writeInt(this.VFe);
+      paramParcel.writeInt(this.VFf);
+      paramParcel.writeString(Util.nullAs(this.hAk, ""));
+      paramParcel.writeString(Util.nullAs(this.VFg, ""));
+      paramParcel.writeString(Util.nullAs(this.VFh, ""));
+      paramParcel.writeString(Util.nullAs(this.VFi, ""));
+      paramParcel.writeString(Util.nullAs(this.VFl, ""));
+      paramParcel.writeString(Util.nullAs(this.VFk, ""));
+      paramParcel.writeString(Util.nullAs(this.VFj, ""));
+      if (!this.VFm) {
         break label484;
       }
       paramInt = 1;
       label259:
       paramParcel.writeInt(paramInt);
-      if (!this.OPt) {
+      if (!this.VFn) {
         break label489;
       }
       paramInt = 1;
       label273:
       paramParcel.writeInt(paramInt);
-      if (!this.OPu) {
+      if (!this.VFo) {
         break label494;
       }
       paramInt = 1;
       label287:
       paramParcel.writeInt(paramInt);
-      if (!this.OPv) {
+      if (!this.VFp) {
         break label499;
       }
       paramInt = 1;
       label301:
       paramParcel.writeInt(paramInt);
-      if (!this.OPw) {
+      if (!this.VFq) {
         break label504;
       }
       paramInt = 1;
       label315:
       paramParcel.writeInt(paramInt);
-      if (!this.OPx) {
+      if (!this.VFr) {
         break label509;
       }
       paramInt = 1;
       label329:
       paramParcel.writeInt(paramInt);
-      if (!this.OPz) {
+      if (!this.VFt) {
         break label514;
       }
       paramInt = 1;
       label343:
       paramParcel.writeInt(paramInt);
-      if (!this.OPy) {
+      if (!this.VFs) {
         break label519;
       }
       paramInt = 1;
       label357:
       paramParcel.writeInt(paramInt);
-      if (!this.OPA) {
+      if (!this.VFu) {
         break label524;
       }
       paramInt = 1;
       label371:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.OIp);
-      paramParcel.writeString(this.OPB);
-      if (!this.OPH) {
+      paramParcel.writeInt(this.Vyb);
+      paramParcel.writeString(this.VFv);
+      if (!this.VFB) {
         break label529;
       }
       paramInt = 1;
       label401:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.OMV);
-      if (!this.OPD) {
+      paramParcel.writeString(this.VCG);
+      if (!this.VFx) {
         break label534;
       }
     }
@@ -439,9 +439,9 @@ public class ElementQuery
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.OPE);
-      paramParcel.writeInt(this.OPF);
-      paramParcel.writeList(this.OPG);
+      paramParcel.writeString(this.VFy);
+      paramParcel.writeInt(this.VFz);
+      paramParcel.writeList(this.VFA);
       AppMethodBeat.o(70273);
       return;
       paramInt = 0;
@@ -489,7 +489,7 @@ public class ElementQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ElementQuery
  * JD-Core Version:    0.7.0.1
  */

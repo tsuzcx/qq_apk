@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.clean.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -13,12 +12,12 @@ import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.clean.ui.fileindexui.CleanNewUI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.model.app.q;
+import com.tencent.mm.pluginsdk.model.app.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,48 +26,48 @@ import org.json.JSONObject;
 public class CleanUI
   extends MMActivity
 {
-  private static final String tOw;
-  private String tOA = "11206657";
-  private JSONObject tOB;
-  private long tOx;
-  private String tOy = "com.tencent.qqpimsecure";
-  private String tOz = "00B1208638DE0FCD3E920886D658DAF6";
+  private static final String wRM;
+  private long wRN;
+  private String wRO = "com.tencent.qqpimsecure";
+  private String wRP = "00B1208638DE0FCD3E920886D658DAF6";
+  private String wRQ = "11206657";
+  private JSONObject wRR;
   
   static
   {
-    AppMethodBeat.i(289616);
-    tOw = "https://" + WeChatHosts.domainString(R.l.host_weixin_qq_com) + "/cgi-bin/readtemplate?t=w_safe&qqpimenter=shoushen";
-    AppMethodBeat.o(289616);
+    AppMethodBeat.i(271850);
+    wRM = "https://" + WeChatHosts.domainString(R.l.host_weixin_qq_com) + "/cgi-bin/readtemplate?t=w_safe&qqpimenter=shoushen";
+    AppMethodBeat.o(271850);
   }
   
-  private boolean cNl()
+  private boolean dqR()
   {
     AppMethodBeat.i(22841);
-    cNm();
-    if (!q.u(getContext(), this.tOy))
+    dqS();
+    if (!u.y(getContext(), this.wRO))
     {
       AppMethodBeat.o(22841);
       return false;
     }
-    Object localObject = q.cv(this, this.tOy);
+    Object localObject = u.cG(this, this.wRO);
     if ((localObject != null) && (localObject[0] != null))
     {
       localObject = g.getMessageDigest(localObject[0].toByteArray());
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase(this.tOz))) {
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase(this.wRP))) {
         try
         {
-          localObject = getPackageManager().getLaunchIntentForPackage(this.tOy);
+          localObject = getPackageManager().getLaunchIntentForPackage(this.wRO);
           if (localObject != null)
           {
             Bundle localBundle = new Bundle();
-            q.l(localBundle, this.tOA);
+            u.l(localBundle, this.wRQ);
             ((Intent)localObject).putExtras(localBundle);
             ((Intent)localObject).addFlags(268435456);
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-            com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/clean/ui/CleanUI", "jumpToQQMgrApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/clean/ui/CleanUI", "jumpToQQMgrApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
             com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/clean/ui/CleanUI", "jumpToQQMgrApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            h.IzE.idkeyStat(282L, 6L, 1L, false);
+            h.OAn.idkeyStat(282L, 6L, 1L, false);
             AppMethodBeat.o(22841);
             return true;
           }
@@ -85,11 +84,11 @@ public class CleanUI
     return false;
   }
   
-  private boolean cNm()
+  private boolean dqS()
   {
     AppMethodBeat.i(22842);
-    bh.beI();
-    String str = (String)c.aHp().get(ar.a.Vky, "");
+    bh.bCz();
+    String str = (String)c.ban().get(at.a.acLS, "");
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(22842);
@@ -97,13 +96,13 @@ public class CleanUI
     }
     try
     {
-      this.tOB = new JSONObject(str);
-      this.tOy = this.tOB.getString("packageName");
-      this.tOB.get("md5");
-      this.tOA = this.tOB.getString("launcherID");
-      this.tOz = this.tOB.getString("signature");
-      this.tOB.get("url");
-      this.tOx = this.tOB.getLong("size");
+      this.wRR = new JSONObject(str);
+      this.wRO = this.wRR.getString("packageName");
+      this.wRR.get("md5");
+      this.wRQ = this.wRR.getString("launcherID");
+      this.wRP = this.wRR.getString("signature");
+      this.wRR.get("url");
+      this.wRN = this.wRR.getLong("size");
       AppMethodBeat.o(22842);
       return true;
     }
@@ -117,23 +116,23 @@ public class CleanUI
   
   public int getLayoutId()
   {
-    return R.i.eeP;
+    return R.i.ghH;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22840);
     super.onCreate(paramBundle);
-    if ((getIntent().getBooleanExtra("had_detected_no_sdcard_space", false)) && (cNl()))
+    if ((getIntent().getBooleanExtra("had_detected_no_sdcard_space", false)) && (dqR()))
     {
       finish();
       AppMethodBeat.o(22840);
       return;
     }
     paramBundle = new Intent(this, CleanNewUI.class);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bm(paramBundle);
-    com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aFh(), "com/tencent/mm/plugin/clean/ui/CleanUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramBundle.sf(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(paramBundle);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aYi(), "com/tencent/mm/plugin/clean/ui/CleanUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramBundle.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/clean/ui/CleanUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(22840);

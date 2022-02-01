@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,338 +11,317 @@ import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.ac;
-import com.tencent.mm.plugin.finder.storage.aj;
-import com.tencent.mm.plugin.finder.storage.aj.a;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.convert.a;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.storage.ae;
+import com.tencent.mm.plugin.finder.storage.af;
+import com.tencent.mm.plugin.finder.storage.ar;
+import com.tencent.mm.plugin.finder.storage.ar.a;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.u.i;
 import com.tencent.mm.ui.search.FTSEditTextView;
-import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.FTSEditTextView.c;
-import com.tencent.mm.ui.search.a.b;
-import com.tencent.mm.ui.search.a.c;
+import com.tencent.mm.ui.search.FTSEditTextView.d;
+import com.tencent.mm.ui.search.FTSSearchView;
+import com.tencent.mm.ui.search.FTSSearchView.b;
+import com.tencent.mm.ui.search.FTSSearchView.c;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.h.c;
-import com.tencent.mm.view.recyclerview.h.d;
+import com.tencent.mm.view.recyclerview.g;
 import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.i.c;
+import com.tencent.mm.view.recyclerview.i.d;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "()V", "DEL_MENU_ID", "", "getDEL_MENU_ID", "()I", "TAG", "", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/FinderContactConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "getConfig", "()Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "setConfig", "(Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;)V", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getData", "()Ljava/util/ArrayList;", "fillType", "getFillType", "()Ljava/lang/String;", "setFillType", "(Ljava/lang/String;)V", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "getLayoutId", "initData", "", "initSearchView", "initView", "onClickBackBtn", "view", "Landroid/view/View;", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "", "onSearchKeyDown", "onTagClick", "index", "tag", "startSearch", "query", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "()V", "DEL_MENU_ID", "", "getDEL_MENU_ID", "()I", "TAG", "", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/FinderContactConvertData;", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "setAdapter", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;)V", "config", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "getConfig", "()Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "setConfig", "(Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;)V", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getData", "()Ljava/util/ArrayList;", "fillType", "getFillType", "()Ljava/lang/String;", "setFillType", "(Ljava/lang/String;)V", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "getLayoutId", "initData", "", "initSearchView", "initView", "onClickBackBtn", "view", "Landroid/view/View;", "onClickCancelBtn", "onClickClearTextBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "", "onSearchKeyDown", "onTagClick", "index", "tag", "startSearch", "query", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderBlockListSearchUI
   extends MMFinderUI
-  implements FTSEditTextView.b, a.b
+  implements FTSEditTextView.c, FTSSearchView.b
 {
-  private static final String Aor = "BLOCK_LIST_SEARCH_TYPE";
-  public static final a Aos;
-  private String Aoq;
+  public static final a FOH;
+  private static final String FOJ;
+  private WxRecyclerAdapter<com.tencent.mm.plugin.finder.model.p> ALE;
+  private FTSSearchView Bny;
+  ar ECo;
+  final int EXA;
+  private String FOI;
   private final String TAG;
-  private HashMap _$_findViewCache;
   final ArrayList<com.tencent.mm.plugin.finder.model.p> data;
-  private com.tencent.mm.ui.search.a xNC;
-  private WxRecyclerAdapter<com.tencent.mm.plugin.finder.model.p> xnR;
-  aj zAg;
-  final int zMI;
   
   static
   {
-    AppMethodBeat.i(289428);
-    Aos = new a((byte)0);
-    Aor = "BLOCK_LIST_SEARCH_TYPE";
-    AppMethodBeat.o(289428);
+    AppMethodBeat.i(346793);
+    FOH = new a((byte)0);
+    FOJ = "BLOCK_LIST_SEARCH_TYPE";
+    AppMethodBeat.o(346793);
   }
   
   public FinderBlockListSearchUI()
   {
-    AppMethodBeat.i(289427);
+    AppMethodBeat.i(346772);
     this.TAG = "Finder.FinderBlockListSearchUI";
     this.data = new ArrayList();
-    this.Aoq = "";
-    AppMethodBeat.o(289427);
+    this.FOI = "";
+    AppMethodBeat.o(346772);
   }
   
-  private final void aEi(String paramString)
+  private final void awg(String paramString)
   {
-    AppMethodBeat.i(289424);
-    Object localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class);
-    kotlin.g.b.p.j(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.n)localObject).bbL().d(null, paramString, this.Aoq, "", null);
-    localObject = new LinkedList();
+    AppMethodBeat.i(346781);
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().d(null, paramString, this.FOI, "", null);
+    Object localObject1 = new LinkedList();
     while (paramString.moveToNext())
     {
-      as localas = new as();
-      localas.convertFrom(paramString);
+      Object localObject2 = new au();
+      ((au)localObject2).convertFrom(paramString);
       FinderContact localFinderContact = new FinderContact();
-      localFinderContact.username = localas.getUsername();
-      ((LinkedList)localObject).add(localFinderContact);
+      localFinderContact.username = ((az)localObject2).field_username;
+      localObject2 = ah.aiuX;
+      ((LinkedList)localObject1).add(localFinderContact);
     }
-    localObject = (Iterable)localObject;
-    paramString = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-    localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramString.add(new com.tencent.mm.plugin.finder.model.p((FinderContact)((Iterator)localObject).next()));
+    localObject1 = (Iterable)localObject1;
+    paramString = (Collection)new ArrayList(kotlin.a.p.a((Iterable)localObject1, 10));
+    localObject1 = ((Iterable)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      paramString.add(new com.tencent.mm.plugin.finder.model.p((FinderContact)((Iterator)localObject1).next()));
     }
     paramString = (List)paramString;
     this.data.clear();
     this.data.addAll((Collection)paramString);
-    paramString = this.xnR;
+    paramString = this.ALE;
     if (paramString != null) {
-      paramString.notifyDataSetChanged();
+      paramString.bZE.notifyChanged();
     }
-    paramString = (WxRecyclerView)_$_findCachedViewById(b.f.finder_block_list_search);
-    kotlin.g.b.p.j(paramString, "finder_block_list_search");
-    paramString.setVisibility(0);
-    AppMethodBeat.o(289424);
+    ((WxRecyclerView)findViewById(e.e.finder_block_list_search)).setVisibility(0);
+    AppMethodBeat.o(346781);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(289431);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(289431);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
+  public final boolean aWU()
   {
-    AppMethodBeat.i(289430);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(289430);
-    return localView1;
-  }
-  
-  public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.c paramc)
-  {
-    AppMethodBeat.i(289425);
-    if (paramString1 != null)
-    {
-      if (paramString1 == null)
-      {
-        paramString1 = new t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(289425);
-        throw paramString1;
-      }
-      paramString2 = kotlin.n.n.bb((CharSequence)paramString1).toString();
-      paramString1 = paramString2;
-      if (paramString2 != null) {}
-    }
-    else
-    {
-      paramString1 = "";
-    }
-    if (Util.isNullOrNil(paramString1)) {
-      aEi("");
-    }
-    AppMethodBeat.o(289425);
-  }
-  
-  public final boolean aDV()
-  {
-    AppMethodBeat.i(289423);
+    AppMethodBeat.i(346843);
     hideVKB();
-    Object localObject = this.xNC;
-    if (localObject == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    localObject = ((com.tencent.mm.ui.search.a)localObject).getFtsEditText();
-    kotlin.g.b.p.j(localObject, "searchView.ftsEditText");
-    localObject = ((FTSEditTextView)localObject).getTotalQuery();
-    if (localObject != null)
+    Object localObject2 = this.Bny;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(289423);
-        throw ((Throwable)localObject);
-      }
-      String str = kotlin.n.n.bb((CharSequence)localObject).toString();
-      localObject = str;
-      if (str != null) {}
+      s.bIx("searchView");
+      localObject1 = null;
     }
-    else
-    {
-      localObject = "";
+    localObject1 = ((FTSSearchView)localObject1).getFtsEditText().getTotalQuery();
+    if (localObject1 == null) {
+      localObject1 = "";
     }
-    if (Util.isNullOrNil((String)localObject))
+    while (Util.isNullOrNil((String)localObject1))
     {
-      AppMethodBeat.o(289423);
+      AppMethodBeat.o(346843);
       return true;
+      localObject2 = kotlin.n.n.bq((CharSequence)localObject1).toString();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
     }
-    aEi((String)localObject);
-    AppMethodBeat.o(289423);
+    awg((String)localObject1);
+    AppMethodBeat.o(346843);
     return false;
   }
   
-  public final void dvg() {}
+  public final void eeU() {}
   
-  public final void eF(boolean paramBoolean) {}
+  public final void fq(boolean paramBoolean) {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_block_list_search;
+    return e.f.finder_block_list_search;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(289420);
-    Object localObject = (WxRecyclerView)_$_findCachedViewById(b.f.finder_block_list_search);
-    kotlin.g.b.p.j(localObject, "finder_block_list_search");
+    AppMethodBeat.i(346823);
+    Object localObject = (WxRecyclerView)findViewById(e.e.finder_block_list_search);
     getContext();
     ((WxRecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
-    this.xnR = new WxRecyclerAdapter((f)new b(), this.data, true);
-    localObject = (WxRecyclerView)_$_findCachedViewById(b.f.finder_block_list_search);
-    kotlin.g.b.p.j(localObject, "finder_block_list_search");
-    ((WxRecyclerView)localObject).setAdapter((RecyclerView.a)this.xnR);
-    localObject = this.xnR;
+    this.ALE = new WxRecyclerAdapter((g)new b(), this.data, true);
+    ((WxRecyclerView)findViewById(e.e.finder_block_list_search)).setAdapter((RecyclerView.a)this.ALE);
+    localObject = this.ALE;
     if (localObject != null) {
-      ((com.tencent.mm.view.recyclerview.h)localObject).YSm = ((h.d)new c(this));
+      ((i)localObject).agOd = ((i.d)new c(this));
     }
-    localObject = this.xnR;
-    if (localObject != null)
-    {
-      ((com.tencent.mm.view.recyclerview.h)localObject).YSn = ((h.c)new d(this));
-      AppMethodBeat.o(289420);
-      return;
+    localObject = this.ALE;
+    if (localObject != null) {
+      ((i)localObject).agOe = ((i.c)new d(this));
     }
-    AppMethodBeat.o(289420);
+    AppMethodBeat.o(346823);
   }
   
   public final void onClickBackBtn(View paramView)
   {
-    AppMethodBeat.i(289422);
+    AppMethodBeat.i(346836);
     hideVKB();
     finish();
-    AppMethodBeat.o(289422);
+    AppMethodBeat.o(346836);
   }
   
   public final void onClickCancelBtn(View paramView)
   {
-    AppMethodBeat.i(289421);
+    AppMethodBeat.i(346826);
     hideVKB();
     finish();
-    AppMethodBeat.o(289421);
+    AppMethodBeat.o(346826);
   }
   
   public final void onClickClearTextBtn(View paramView)
   {
-    AppMethodBeat.i(289426);
-    paramView = this.xNC;
-    if (paramView == null) {
-      kotlin.g.b.p.bGy("searchView");
+    AppMethodBeat.i(346861);
+    FTSSearchView localFTSSearchView = this.Bny;
+    paramView = localFTSSearchView;
+    if (localFTSSearchView == null)
+    {
+      s.bIx("searchView");
+      paramView = null;
     }
-    paramView.getFtsEditText().aDU();
+    paramView.getFtsEditText().aWT();
     showVKB();
-    AppMethodBeat.o(289426);
+    AppMethodBeat.o(346861);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(289419);
+    AppMethodBeat.i(346815);
     super.onCreate(paramBundle);
-    this.xNC = new com.tencent.mm.ui.search.a((Context)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.setSearchViewListener((a.b)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setHint(getString(b.j.app_search));
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.b)this);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().setCanDeleteTag(false);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().hXB();
-    paramBundle = getSupportActionBar();
-    if (paramBundle == null) {
-      kotlin.g.b.p.iCn();
-    }
-    kotlin.g.b.p.j(paramBundle, "supportActionBar!!");
-    com.tencent.mm.ui.search.a locala = this.xNC;
-    if (locala == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.setCustomView((View)locala);
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().aDU();
-    paramBundle = this.xNC;
-    if (paramBundle == null) {
-      kotlin.g.b.p.bGy("searchView");
-    }
-    paramBundle.getFtsEditText().aDT();
-    initView();
-    paramBundle = getIntent().getStringExtra(Aor);
-    kotlin.g.b.p.j(paramBundle, "intent.getStringExtra(BLOCK_LIST_SEARCH_TYPE)");
-    this.Aoq = paramBundle;
-    paramBundle = this.Aoq;
-    switch (paramBundle.hashCode())
+    this.Bny = new FTSSearchView((Context)this);
+    paramBundle = this.Bny;
+    if (paramBundle == null)
     {
-    default: 
+      s.bIx("searchView");
       paramBundle = null;
+      paramBundle.setSearchViewListener((FTSSearchView.b)this);
+      FTSSearchView localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().setHint(getString(e.h.app_search));
+      localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.c)this);
+      localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().setCanDeleteTag(false);
+      localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().jBL();
+      ActionBar localActionBar = getSupportActionBar();
+      s.checkNotNull(localActionBar);
+      localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      localActionBar.setCustomView((View)paramBundle);
+      localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().aWT();
+      localFTSSearchView = this.Bny;
+      paramBundle = localFTSSearchView;
+      if (localFTSSearchView == null)
+      {
+        s.bIx("searchView");
+        paramBundle = null;
+      }
+      paramBundle.getFtsEditText().aWS();
+      initView();
+      paramBundle = getIntent().getStringExtra(FOJ);
+      s.checkNotNull(paramBundle);
+      s.s(paramBundle, "intent.getStringExtra(BLOCK_LIST_SEARCH_TYPE)!!");
+      this.FOI = paramBundle;
+      paramBundle = this.FOI;
+      if (!s.p(paramBundle, "@finder.block.my.liked.android")) {
+        break label333;
+      }
+      paramBundle = (ar)new af();
     }
     for (;;)
     {
-      this.zAg = paramBundle;
-      aEi("");
-      AppMethodBeat.o(289419);
+      this.ECo = paramBundle;
+      awg("");
+      AppMethodBeat.o(346815);
       return;
-      if (!paramBundle.equals("@finder.block.my.liked.android")) {
-        break;
+      break;
+      label333:
+      if (s.p(paramBundle, "@finder.block.his.liked.android")) {
+        paramBundle = (ar)new ae();
+      } else {
+        paramBundle = null;
       }
-      paramBundle = (aj)new ac();
-      continue;
-      if (!paramBundle.equals("@finder.block.his.liked.android")) {
-        break;
+    }
+  }
+  
+  public final void onEditTextChange(String paramString1, String paramString2, List<FTSSearchView.c> paramList, FTSEditTextView.d paramd)
+  {
+    AppMethodBeat.i(346849);
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (Util.isNullOrNil(paramString1)) {
+        awg("");
       }
-      paramBundle = (aj)new ab();
+      AppMethodBeat.o(346849);
+      return;
+      paramString2 = kotlin.n.n.bq((CharSequence)paramString1).toString();
+      paramString1 = paramString2;
+      if (paramString2 == null) {
+        paramString1 = "";
+      }
     }
   }
   
@@ -353,96 +331,99 @@ public final class FinderBlockListSearchUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$Companion;", "", "()V", "BLOCK_LIST_SEARCH_TYPE", "", "getBLOCK_LIST_SEARCH_TYPE", "()Ljava/lang/String;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$Companion;", "", "()V", "BLOCK_LIST_SEARCH_TYPE", "", "getBLOCK_LIST_SEARCH_TYPE", "()Ljava/lang/String;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements f
+    implements g
   {
-    public final e<?> yx(int paramInt)
+    public final com.tencent.mm.view.recyclerview.f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(272213);
+      AppMethodBeat.i(346419);
       if (paramInt == com.tencent.mm.plugin.finder.model.p.class.getName().hashCode())
       {
-        e locale = (e)new com.tencent.mm.plugin.finder.convert.a();
-        AppMethodBeat.o(272213);
-        return locale;
+        localObject = (com.tencent.mm.view.recyclerview.f)new a();
+        AppMethodBeat.o(346419);
+        return localObject;
       }
-      kotlin.g.b.p.iCn();
-      AppMethodBeat.o(272213);
-      return null;
+      s.checkNotNull(null);
+      Object localObject = new kotlin.f();
+      AppMethodBeat.o(346419);
+      throw ((Throwable)localObject);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemLongClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemLongClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemLongClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemLongClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
-    implements h.d<i>
+    implements i.d<j>
   {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2$onItemLongClick$1", "Landroid/view/View$OnCreateContextMenuListener;", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-finder_release"})
+    c(FinderBlockListSearchUI paramFinderBlockListSearchUI) {}
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2$onItemLongClick$1", "Landroid/view/View$OnCreateContextMenuListener;", "onCreateContextMenu", "", "menu", "Landroid/view/ContextMenu;", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements View.OnCreateContextMenuListener
     {
+      a(FinderBlockListSearchUI paramFinderBlockListSearchUI) {}
+      
       public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
       {
-        AppMethodBeat.i(266761);
-        if (paramContextMenu != null)
-        {
-          paramContextMenu.add(0, this.Aou.Aot.zMI, 0, b.j.finder_mod_block_poster_del);
-          AppMethodBeat.o(266761);
-          return;
+        AppMethodBeat.i(347263);
+        if (paramContextMenu != null) {
+          paramContextMenu.add(0, this.FOK.EXA, 0, e.h.finder_mod_block_poster_del);
         }
-        AppMethodBeat.o(266761);
+        AppMethodBeat.o(347263);
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2$onItemLongClick$2", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "onMMMenuItemSelected", "", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-finder_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2$onItemLongClick$2", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "onMMMenuItemSelected", "", "menuItem", "Landroid/view/MenuItem;", "index", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class b
-      implements q.g
+      implements u.i
     {
-      b(int paramInt, RecyclerView.a parama) {}
+      b(int paramInt, FinderBlockListSearchUI paramFinderBlockListSearchUI, RecyclerView.a<j> parama) {}
       
       public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
       {
-        AppMethodBeat.i(287681);
-        if ((this.zMM >= 0) && (this.zMM < this.Aou.Aot.data.size()))
+        AppMethodBeat.i(347252);
+        if ((this.EXC >= 0) && (this.EXC < this.FOK.data.size()))
         {
-          paramMenuItem = this.Aou.Aot.zAg;
-          if (paramMenuItem != null)
-          {
-            paramMenuItem.a(((com.tencent.mm.plugin.finder.model.p)this.Aou.Aot.data.get(this.zMM)).contact, (aj.a)new a(this));
-            AppMethodBeat.o(287681);
-            return;
+          paramMenuItem = this.FOK.ECo;
+          if (paramMenuItem != null) {
+            paramMenuItem.a(((com.tencent.mm.plugin.finder.model.p)this.FOK.data.get(this.EXC)).contact, (ar.a)new a(this.FOK, this.EXC, this.AYm));
           }
         }
-        AppMethodBeat.o(287681);
+        AppMethodBeat.o(347252);
       }
       
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2$onItemLongClick$2$onMMMenuItemSelected$1", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "onDel", "", "success", "", "plugin-finder_release"})
+      @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$2$onItemLongClick$2$onMMMenuItemSelected$1", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "onDel", "", "success", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
       public static final class a
-        implements aj.a
+        implements ar.a
       {
-        public final void pX(boolean paramBoolean)
+        a(FinderBlockListSearchUI paramFinderBlockListSearchUI, int paramInt, RecyclerView.a<j> parama) {}
+        
+        public final void tb(boolean paramBoolean)
         {
-          AppMethodBeat.i(288821);
+          AppMethodBeat.i(346837);
           if (paramBoolean)
           {
-            this.Aov.Aou.Aot.data.remove(this.Aov.zMM);
-            this.Aov.xAF.cN(((com.tencent.mm.view.recyclerview.h)this.Aov.xAF).YSk.size() + this.Aov.zMM);
-            AppMethodBeat.o(288821);
+            this.FOK.data.remove(this.EXC);
+            this.AYm.fX(((i)this.AYm).agOb.size() + this.EXC);
+            AppMethodBeat.o(346837);
             return;
           }
-          w.makeText((Context)this.Aov.Aou.Aot.getContext(), (CharSequence)"failed", 0).show();
-          AppMethodBeat.o(288821);
+          aa.makeText((Context)this.FOK.getContext(), (CharSequence)"failed", 0).show();
+          AppMethodBeat.o(346837);
         }
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlockListSearchUI$initView$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
-    implements h.c<i>
-  {}
+    implements i.c<j>
+  {
+    d(FinderBlockListSearchUI paramFinderBlockListSearchUI) {}
+  }
 }
 
 

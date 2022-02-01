@@ -2,22 +2,17 @@ package com.tencent.mm.model;
 
 public abstract interface az$b
 {
-  public abstract void Rr(String paramString);
+  public abstract void Jq(String paramString);
   
-  public abstract void Rs(String paramString);
+  public abstract void Jr(String paramString);
   
-  public abstract void a(String paramString1, String paramString2, a parama);
+  public abstract void a(String paramString1, String paramString2, az.b.a parama);
   
-  public abstract void aP(String paramString1, String paramString2);
+  public abstract void aZ(String paramString1, String paramString2);
   
-  public abstract void bej();
+  public abstract void bCc();
   
-  public abstract void h(String paramString1, int paramInt, String paramString2);
-  
-  public static abstract interface a
-  {
-    public abstract void s(String paramString, boolean paramBoolean);
-  }
+  public abstract void j(String paramString1, int paramInt, String paramString2);
 }
 
 

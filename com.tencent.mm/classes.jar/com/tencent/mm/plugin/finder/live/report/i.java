@@ -1,52 +1,85 @@
 package com.tencent.mm.plugin.finder.live.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.ah;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.buy;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/report/HellLiveItem;", "", "feed", "Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "pos", "", "feedId", "", "actionType", "Lcom/tencent/mm/plugin/finder/live/report/LiveReportConfig$ExploreType;", "commentscene", "liveStatus", "", "nickName", "(Lcom/tencent/mm/plugin/finder/model/FinderFollowData;ILjava/lang/String;Lcom/tencent/mm/plugin/finder/live/report/LiveReportConfig$ExploreType;Ljava/lang/String;ZLjava/lang/String;)V", "getActionType", "()Lcom/tencent/mm/plugin/finder/live/report/LiveReportConfig$ExploreType;", "getCommentscene", "()Ljava/lang/String;", "getFeed", "()Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "getFeedId", "getLiveStatus", "()Z", "getNickName", "getPos", "()I", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/report/HellLiveMixSearchItem;", "", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "pos", "", "feedId", "", "actionType", "Lcom/tencent/mm/plugin/finder/live/report/LiveReportConfig$ExploreType;", "commentscene", "liveStatus", "", "nickName", "(Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;ILjava/lang/String;Lcom/tencent/mm/plugin/finder/live/report/LiveReportConfig$ExploreType;Ljava/lang/String;ZLjava/lang/String;)V", "getActionType", "()Lcom/tencent/mm/plugin/finder/live/report/LiveReportConfig$ExploreType;", "getCommentscene", "()Ljava/lang/String;", "getContact", "()Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "getFeedId", "getLiveStatus", "()Z", "getNickName", "getPos", "()I", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "other", "hashCode", "toString", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
+  final q.w DnM;
+  final String DnN;
+  final boolean DnZ;
+  final buy Doa;
   final String feedId;
   final String nickName;
   final int pos;
-  final s.t yAO;
-  final String yAP;
-  final ah yBb;
-  final boolean yBc;
   
-  public i(ah paramah, int paramInt, String paramString1, s.t paramt, String paramString2, boolean paramBoolean, String paramString3)
+  public i(buy parambuy, int paramInt, String paramString1, q.w paramw, String paramString2, boolean paramBoolean, String paramString3)
   {
-    AppMethodBeat.i(273545);
-    this.yBb = paramah;
+    AppMethodBeat.i(351782);
+    this.Doa = parambuy;
     this.pos = paramInt;
     this.feedId = paramString1;
-    this.yAO = paramt;
-    this.yAP = paramString2;
-    this.yBc = paramBoolean;
+    this.DnM = paramw;
+    this.DnN = paramString2;
+    this.DnZ = paramBoolean;
     this.nickName = paramString3;
-    AppMethodBeat.o(273545);
+    AppMethodBeat.o(351782);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(273549);
-    if (this != paramObject)
+    AppMethodBeat.i(351806);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof i))
-      {
-        paramObject = (i)paramObject;
-        if ((!p.h(this.yBb, paramObject.yBb)) || (this.pos != paramObject.pos) || (!p.h(this.feedId, paramObject.feedId)) || (!p.h(this.yAO, paramObject.yAO)) || (!p.h(this.yAP, paramObject.yAP)) || (this.yBc != paramObject.yBc) || (!p.h(this.nickName, paramObject.nickName))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(273549);
+      AppMethodBeat.o(351806);
       return true;
     }
-    AppMethodBeat.o(273549);
-    return false;
+    if (!(paramObject instanceof i))
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    paramObject = (i)paramObject;
+    if (!s.p(this.Doa, paramObject.Doa))
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    if (this.pos != paramObject.pos)
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    if (!s.p(this.feedId, paramObject.feedId))
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    if (this.DnM != paramObject.DnM)
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    if (!s.p(this.DnN, paramObject.DnN))
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    if (this.DnZ != paramObject.DnZ)
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    if (!s.p(this.nickName, paramObject.nickName))
+    {
+      AppMethodBeat.o(351806);
+      return false;
+    }
+    AppMethodBeat.o(351806);
+    return true;
   }
   
   public final int hashCode()
@@ -56,15 +89,15 @@ public final class i
   
   public final String toString()
   {
-    AppMethodBeat.i(273547);
-    String str = "HellLiveItem(feed=" + this.yBb + ", pos=" + this.pos + ", feedId=" + this.feedId + ", actionType=" + this.yAO + ", commentscene=" + this.yAP + ", liveStatus=" + this.yBc + ", nickName=" + this.nickName + ")";
-    AppMethodBeat.o(273547);
+    AppMethodBeat.i(351788);
+    String str = "HellLiveMixSearchItem(contact=" + this.Doa + ", pos=" + this.pos + ", feedId=" + this.feedId + ", actionType=" + this.DnM + ", commentscene=" + this.DnN + ", liveStatus=" + this.DnZ + ", nickName=" + this.nickName + ')';
+    AppMethodBeat.o(351788);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.report.i
  * JD-Core Version:    0.7.0.1
  */

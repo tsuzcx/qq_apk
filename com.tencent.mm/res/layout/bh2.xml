@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a74" android:baselineAligned="false" style="@style/rj"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <ListView android:id="@id/h4" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/np" />
-        <include layout="@layout/c1d" />
-    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/aks" android:layout_gravity="center_horizontal" android:id="@id/leo" android:layout_width="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/gv1" style="@style/n_" />
+        <TextView android:textSize="16.0dip" android:layout_gravity="center_horizontal" android:id="@id/len" android:layout_width="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/gv0" style="@style/n_" />
+        <TextView android:textSize="28.0dip" android:textStyle="bold" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/lel" android:layout_width="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="10.0dip" style="@style/q1" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="4.0dip">
+            <ProgressBar android:id="@id/lep" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/o1" />
+            <View android:layout_gravity="bottom" android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <ListView android:orientation="vertical" android:id="@id/lem" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

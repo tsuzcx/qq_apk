@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -19,7 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.b.a;
+import com.tencent.mm.au.b.a;
 import com.tencent.mm.modelsimple.BindWordingContent;
 import com.tencent.mm.plugin.account.bind.a.d;
 import com.tencent.mm.plugin.account.bind.a.e;
@@ -36,25 +35,25 @@ public class BindMobileUI
   extends MMWizardActivity
 {
   private String countryCode = null;
-  private String fLC;
-  private TextView jMg;
-  private String lSz = null;
-  private BindWordingContent mSN;
-  private int mSO;
-  private Button mSU;
-  private TextView mSV;
-  private TextView mSW;
-  private CheckBox mSX;
-  private CheckBox mSY;
-  private LinearLayout mSZ;
-  private i mSa;
-  private EditText mSr;
-  private LinearLayout mSs;
-  private TextView mSu;
-  private TextView mSv;
-  private String mSw = null;
-  private ImageView mTa;
-  private boolean mTb;
+  private String hRk;
+  private TextView mll;
+  private String oLl = null;
+  private i pOH;
+  private EditText pOW;
+  private LinearLayout pOX;
+  private TextView pOZ;
+  private Button pPB;
+  private TextView pPC;
+  private TextView pPD;
+  private CheckBox pPE;
+  private CheckBox pPF;
+  private LinearLayout pPG;
+  private ImageView pPH;
+  private boolean pPI;
+  private TextView pPa;
+  private String pPb = null;
+  private BindWordingContent pPu;
+  private int pPv;
   
   public int getLayoutId()
   {
@@ -64,59 +63,59 @@ public class BindMobileUI
   public void initView()
   {
     AppMethodBeat.i(109946);
-    this.mSr = ((EditText)findViewById(a.e.bind_mcontact_mobile));
-    this.mSs = ((LinearLayout)findViewById(a.e.country_code_ll));
-    this.mSu = ((TextView)findViewById(a.e.country_name));
-    this.mSv = ((TextView)findViewById(a.e.country_code));
-    this.jMg = ((TextView)findViewById(a.e.bind_mcontact_title_tv));
-    this.mSU = ((Button)findViewById(a.e.bind_m_contact_bind_mobile));
-    this.mSV = ((TextView)findViewById(a.e.bind_mcontact_skip_bind));
-    this.jMg.setText(getString(a.i.bind_mcontact_security_bander_hint));
-    this.mSW = ((TextView)findViewById(a.e.bind_m_contact_bind_mobile_hint));
-    this.mSZ = ((LinearLayout)findViewById(a.e.bind_mcontact_sync_contact_cb_ll));
-    this.mSY = ((CheckBox)findViewById(a.e.bind_mcontact_agree_cb_recom_friend));
-    this.mSX = ((CheckBox)findViewById(a.e.bind_mcontact_agree_cb));
-    this.mTa = ((ImageView)findViewById(a.e.bind_mcontact_icon));
-    if (this.mSN != null)
+    this.pOW = ((EditText)findViewById(a.e.bind_mcontact_mobile));
+    this.pOX = ((LinearLayout)findViewById(a.e.country_code_ll));
+    this.pOZ = ((TextView)findViewById(a.e.country_name));
+    this.pPa = ((TextView)findViewById(a.e.country_code));
+    this.mll = ((TextView)findViewById(a.e.bind_mcontact_title_tv));
+    this.pPB = ((Button)findViewById(a.e.bind_m_contact_bind_mobile));
+    this.pPC = ((TextView)findViewById(a.e.bind_mcontact_skip_bind));
+    this.mll.setText(getString(a.i.bind_mcontact_security_bander_hint));
+    this.pPD = ((TextView)findViewById(a.e.bind_m_contact_bind_mobile_hint));
+    this.pPG = ((LinearLayout)findViewById(a.e.bind_mcontact_sync_contact_cb_ll));
+    this.pPF = ((CheckBox)findViewById(a.e.bind_mcontact_agree_cb_recom_friend));
+    this.pPE = ((CheckBox)findViewById(a.e.bind_mcontact_agree_cb));
+    this.pPH = ((ImageView)findViewById(a.e.bind_mcontact_icon));
+    if (this.pPu != null)
     {
-      if ((this.mSN.title != null) && (this.mSN.title.length() > 0)) {
-        this.jMg.setText(this.mSN.title);
+      if ((this.pPu.title != null) && (this.pPu.title.length() > 0)) {
+        this.mll.setText(this.pPu.title);
       }
-      if ((this.mSN.content != null) && (this.mSN.content.length() > 0)) {
-        this.mSW.setText(this.mSN.content);
+      if ((this.pPu.content != null) && (this.pPu.content.length() > 0)) {
+        this.pPD.setText(this.pPu.content);
       }
     }
-    switch (this.mSN.type.intValue())
+    switch (this.pPu.type.intValue())
     {
     default: 
-      switch (this.mSO)
+      switch (this.pPv)
       {
       default: 
         label332:
-        if ((Util.isNullOrNil(this.lSz)) && (Util.isNullOrNil(this.countryCode))) {}
+        if ((Util.isNullOrNil(this.oLl)) && (Util.isNullOrNil(this.countryCode))) {}
         break;
       }
       break;
     }
     for (;;)
     {
-      if ((this.lSz != null) && (!this.lSz.equals(""))) {
-        this.mSu.setText(this.lSz);
+      if ((this.oLl != null) && (!this.oLl.equals(""))) {
+        this.pOZ.setText(this.oLl);
       }
       if ((this.countryCode != null) && (!this.countryCode.equals(""))) {
-        this.mSv.setText("+" + this.countryCode);
+        this.pPa.setText("+" + this.countryCode);
       }
-      if ((this.mSw != null) && (!this.mSw.equals(""))) {
-        this.mSr.setText(this.mSw);
+      if ((this.pPb != null) && (!this.pPb.equals(""))) {
+        this.pOW.setText(this.pPb);
       }
-      this.mSU.setOnClickListener(new View.OnClickListener()
+      this.pPB.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109937);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if ((BindMobileUI.a(BindMobileUI.this).getText().toString() == null) || (BindMobileUI.a(BindMobileUI.this).getText().toString().length() == 0))
           {
             Toast.makeText(BindMobileUI.this, BindMobileUI.this.getString(a.i.bind_mcontact_err_format), 0).show();
@@ -131,33 +130,33 @@ public class BindMobileUI
           AppMethodBeat.o(109937);
         }
       });
-      this.mSV.setOnClickListener(new View.OnClickListener()
+      this.pPC.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109938);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           BindMobileUI.d(BindMobileUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109938);
         }
       });
-      if (this.mTb)
+      if (this.pPI)
       {
         setMMTitle(a.i.bind_mcontact_bind_for_chatroom_title);
-        this.mTa.setVisibility(8);
-        this.jMg.setText(a.i.bind_mcontact_for_chatroom_title);
-        this.mSZ.setVisibility(8);
-        this.mSY.setVisibility(8);
-        this.mSY.setChecked(false);
-        this.mSX.setVisibility(0);
-        this.mSX.setChecked(false);
-        this.mSW.setVisibility(8);
-        this.mSW.setText(getString(a.i.bind_mcontact_bind_mobile_warnning_hint));
-        this.mSV.setVisibility(8);
-        this.mSU.setText(a.i.bind_mcontact_bind_for_chatroom_title);
+        this.pPH.setVisibility(8);
+        this.mll.setText(a.i.bind_mcontact_for_chatroom_title);
+        this.pPG.setVisibility(8);
+        this.pPF.setVisibility(8);
+        this.pPF.setChecked(false);
+        this.pPE.setVisibility(0);
+        this.pPE.setChecked(false);
+        this.pPD.setVisibility(8);
+        this.pPD.setText(getString(a.i.bind_mcontact_bind_mobile_warnning_hint));
+        this.pPC.setVisibility(8);
+        this.pPB.setText(a.i.bind_mcontact_bind_for_chatroom_title);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -169,53 +168,53 @@ public class BindMobileUI
           }
         });
       }
-      this.mSs.setOnClickListener(new View.OnClickListener()
+      this.pOX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109940);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("country_name", BindMobileUI.f(BindMobileUI.this));
           paramAnonymousView.putExtra("couttry_code", BindMobileUI.g(BindMobileUI.this));
-          com.tencent.mm.plugin.account.sdk.a.mIG.b(paramAnonymousView, BindMobileUI.this);
+          com.tencent.mm.plugin.account.sdk.a.pFn.b(paramAnonymousView, BindMobileUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109940);
         }
       });
-      this.mSs.setOnClickListener(new View.OnClickListener()
+      this.pOX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109941);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("country_name", BindMobileUI.f(BindMobileUI.this));
           paramAnonymousView.putExtra("couttry_code", BindMobileUI.g(BindMobileUI.this));
-          com.tencent.mm.plugin.account.sdk.a.mIG.b(paramAnonymousView, BindMobileUI.this);
+          com.tencent.mm.plugin.account.sdk.a.pFn.b(paramAnonymousView, BindMobileUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobileUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109941);
         }
       });
       AppMethodBeat.o(109946);
       return;
-      this.mTa.setImageResource(a.d.bind_mcontact_protect);
+      this.pPH.setImageResource(a.d.bind_mcontact_protect);
       break;
-      this.mTa.setImageResource(a.d.bind_mcontact_warning);
+      this.pPH.setImageResource(a.d.bind_mcontact_warning);
       break;
-      this.mTa.setImageResource(a.d.bind_mcontact_reco_friends);
+      this.pPH.setImageResource(a.d.bind_mcontact_reco_friends);
       break;
-      this.mSZ.setVisibility(0);
-      this.mSY.setVisibility(0);
-      this.mSW.setVisibility(8);
+      this.pPG.setVisibility(0);
+      this.pPF.setVisibility(0);
+      this.pPD.setVisibility(8);
       break label332;
-      this.mSZ.setVisibility(8);
-      this.mSY.setVisibility(8);
-      this.mSW.setVisibility(0);
+      this.pPG.setVisibility(8);
+      this.pPF.setVisibility(8);
+      this.pPD.setVisibility(0);
       break label332;
       Object localObject = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
       Log.d("MicroMsg.BindMContactUI", "tm.getSimCountryIso()".concat(String.valueOf(localObject)));
@@ -225,15 +224,15 @@ public class BindMobileUI
       }
       else
       {
-        localObject = com.tencent.mm.az.b.bw((String)localObject, getString(a.i.country_code));
+        localObject = com.tencent.mm.au.b.bH((String)localObject, getString(a.i.country_code));
         if (localObject == null)
         {
           Log.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
         }
         else
         {
-          this.lSz = ((b.a)localObject).lSz;
-          this.countryCode = ((b.a)localObject).lSy;
+          this.oLl = ((b.a)localObject).oLl;
+          this.countryCode = ((b.a)localObject).oLk;
         }
       }
     }
@@ -250,13 +249,13 @@ public class BindMobileUI
     {
       AppMethodBeat.o(109947);
       return;
-      this.lSz = Util.nullAs(paramIntent.getStringExtra("country_name"), "");
+      this.oLl = Util.nullAs(paramIntent.getStringExtra("country_name"), "");
       this.countryCode = Util.nullAs(paramIntent.getStringExtra("couttry_code"), "");
-      if (!this.lSz.equals("")) {
-        this.mSu.setText(this.lSz);
+      if (!this.oLl.equals("")) {
+        this.pOZ.setText(this.oLl);
       }
       if (!this.countryCode.equals("")) {
-        this.mSv.setText("+" + this.countryCode);
+        this.pPa.setText("+" + this.countryCode);
       }
     }
   }
@@ -266,12 +265,12 @@ public class BindMobileUI
     AppMethodBeat.i(109943);
     super.onCreate(paramBundle);
     setMMTitle(a.i.bind_mcontact_security_title);
-    this.lSz = Util.nullAs(getIntent().getStringExtra("country_name"), "");
+    this.oLl = Util.nullAs(getIntent().getStringExtra("country_name"), "");
     this.countryCode = Util.nullAs(getIntent().getStringExtra("couttry_code"), "");
-    this.mSw = Util.nullAs(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
-    this.mSN = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
-    this.mSO = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
-    this.mTb = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
+    this.pPb = Util.nullAs(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
+    this.pPu = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
+    this.pPv = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
+    this.pPI = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
     initView();
     AppMethodBeat.o(109943);
   }
@@ -280,8 +279,8 @@ public class BindMobileUI
   {
     AppMethodBeat.i(109944);
     super.onDestroy();
-    if (this.mSa != null) {
-      this.mSa.recycle();
+    if (this.pOH != null) {
+      this.pOH.recycle();
     }
     AppMethodBeat.o(109944);
   }
@@ -291,7 +290,7 @@ public class BindMobileUI
     AppMethodBeat.i(109945);
     if (paramInt == 4)
     {
-      atX(1);
+      aAp(1);
       AppMethodBeat.o(109945);
       return true;
     }
@@ -308,7 +307,7 @@ public class BindMobileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMobileUI
  * JD-Core Version:    0.7.0.1
  */

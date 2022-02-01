@@ -11,16 +11,16 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 
 public class SnsNotifyBanner
   extends RelativeLayout
 {
-  private TextView KVa;
-  private ImageView KVb;
-  int KVc;
-  private a KVd;
+  private TextView RuY;
+  private ImageView RuZ;
+  int Rva;
+  private a Rvb;
   private View mContentView;
   private LayoutInflater mInflater;
   
@@ -28,7 +28,7 @@ public class SnsNotifyBanner
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98934);
-    this.KVc = 0;
+    this.Rva = 0;
     init();
     AppMethodBeat.o(98934);
   }
@@ -37,7 +37,7 @@ public class SnsNotifyBanner
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98933);
-    this.KVc = 0;
+    this.Rva = 0;
     init();
     AppMethodBeat.o(98933);
   }
@@ -46,17 +46,17 @@ public class SnsNotifyBanner
   {
     AppMethodBeat.i(98935);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.mContentView = this.mInflater.inflate(i.g.sns_notify_banner, this, true);
-    this.KVa = ((TextView)this.mContentView.findViewById(i.f.sns_banner_notify_tv));
-    this.KVb = ((ImageView)this.mContentView.findViewById(i.f.sns_banner_notify_close_iv));
-    this.KVb.setOnClickListener(new View.OnClickListener()
+    this.mContentView = this.mInflater.inflate(b.g.sns_notify_banner, this, true);
+    this.RuY = ((TextView)this.mContentView.findViewById(b.f.sns_banner_notify_tv));
+    this.RuZ = ((ImageView)this.mContentView.findViewById(b.f.sns_banner_notify_close_iv));
+    this.RuZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98931);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         SnsNotifyBanner.this.setVisibility(8);
         a.a(this, "com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(98931);
@@ -68,24 +68,24 @@ public class SnsNotifyBanner
   public void setOnClickNotify(a parama)
   {
     AppMethodBeat.i(98936);
-    this.KVd = parama;
-    this.KVa.setOnClickListener(new View.OnClickListener()
+    this.Rvb = parama;
+    this.RuY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98932);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (SnsNotifyBanner.a(SnsNotifyBanner.this) == null)
         {
           a.a(this, "com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(98932);
           return;
         }
-        if (SnsNotifyBanner.this.KVc > 0)
+        if (SnsNotifyBanner.this.Rva > 0)
         {
-          SnsNotifyBanner.this.KVc = 0;
+          SnsNotifyBanner.this.Rva = 0;
           SnsNotifyBanner.a(SnsNotifyBanner.this);
         }
         for (;;)
@@ -105,7 +105,7 @@ public class SnsNotifyBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsNotifyBanner
  * JD-Core Version:    0.7.0.1
  */

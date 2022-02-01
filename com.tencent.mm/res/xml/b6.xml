@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.HeadImgNewPreference android:key="settings_avatar" android:layout="@layout/b8j" android:title="@string/ci3" />
-    <Preference android:key="settings_nickname" android:layout="@layout/b8j" android:title="@string/d30" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:title="@string/hm3" />
+    <com.tencent.mm.plugin.label.ui.widget.InputClearablePreference android:key="contact_label_name" android:layout="@layout/bf8" />
+    <PreferenceTitleCategory android:title="@string/hm2" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_label_contact_list" />
+    <PreferenceTitleCategory android:key="contact_label_empty_category" android:title=" " />
     <PreferenceSmallCategory />
-    <Preference android:key="settings_sex" android:layout="@layout/b8j" android:title="@string/gts" />
-    <Preference android:key="settings_district" android:layout="@layout/b8j" android:title="@string/cli" />
+    <Preference android:key="contact_label_delete" android:layout="@layout/b93" android:title="@string/g1s" />
     <PreferenceSmallCategory />
-    <Preference android:key="settings_signature" android:layout="@layout/b8j" android:title="@string/d_0" />
 </PreferenceScreen>

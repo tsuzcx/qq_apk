@@ -95,7 +95,7 @@ public class TBSOneStandaloneService
       AppMethodBeat.o(53721);
       return paramInt1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       break label88;
     }
@@ -173,7 +173,7 @@ public class TBSOneStandaloneService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tbs.one.optional.TBSOneStandaloneService
  * JD-Core Version:    0.7.0.1
  */

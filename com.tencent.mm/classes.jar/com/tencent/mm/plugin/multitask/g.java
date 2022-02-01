@@ -1,123 +1,121 @@
 package com.tencent.mm.plugin.multitask;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.modelimage.loader.a.c;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Arrays;
 import java.util.Locale;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/MultiTaskKeyUtil;", "", "()V", "TAG", "", "generateMultiImageCacheKey", "path", "imageLoaderOptions", "Lcom/tencent/mm/modelimage/loader/cfg/ImageLoaderOptions;", "generateMultiTaskKeyForAppBrand", "appId", "versionType", "", "generateMultiTaskKeyForAppBrandLocation", "generateMultiTaskKeyForAppBrandVOIP", "generateMultiTaskKeyForFiles", "filePath", "generateMultiTaskKeyForGameDownload", "generateMultiTaskKeyForHome", "generateMultiTaskKeyForLive", "generateMultiTaskKeyForMinusScreen", "generateMultiTaskKeyForMoreWebPage", "rawUrl", "generateMultiTaskKeyForMusic", "songName", "singer", "album", "generateMultiTaskKeyForSnapShotMinusScreen", "generateMultiTaskKeyForTopStoryHorizontal", "generateMultiTaskKeyForTopStoryVertical", "generateMultiTaskKeyForVOIP", "generateMultiTaskKeyForWebPage", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/MultiTaskKeyUtil;", "", "()V", "TAG", "", "generateMultiImageCacheKey", "path", "imageLoaderOptions", "Lcom/tencent/mm/modelimage/loader/cfg/ImageLoaderOptions;", "generateMultiTaskKeyForAppBrand", "appId", "versionType", "", "generateMultiTaskKeyForAppBrandLocation", "generateMultiTaskKeyForAppBrandVOIP", "generateMultiTaskKeyForFiles", "filePath", "generateMultiTaskKeyForGameDownload", "generateMultiTaskKeyForHome", "generateMultiTaskKeyForLive", "generateMultiTaskKeyForMinusScreen", "generateMultiTaskKeyForMoreWebPage", "rawUrl", "generateMultiTaskKeyForMusic", "songName", "singer", "album", "generateMultiTaskKeyForSnapShotMinusScreen", "generateMultiTaskKeyForTopStoryHorizontal", "generateMultiTaskKeyForTopStoryVertical", "generateMultiTaskKeyForVOIP", "generateMultiTaskKeyForWebPage", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  public static final g FEX;
+  public static final g LBa;
   
   static
   {
-    AppMethodBeat.i(247884);
-    FEX = new g();
-    AppMethodBeat.o(247884);
+    AppMethodBeat.i(303789);
+    LBa = new g();
+    AppMethodBeat.o(303789);
   }
   
-  public static final String aQU(String paramString)
+  public static final String aI(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(247874);
-    af localaf = af.aaBG;
-    paramString = String.format("%s", Arrays.copyOf(new Object[] { paramString }, 1));
-    p.j(paramString, "java.lang.String.format(format, *args)");
-    paramString = MD5Util.getMD5String(paramString);
-    p.j(paramString, "MD5Util.getMD5String(String.format(\"%s\", rawUrl))");
-    AppMethodBeat.o(247874);
-    return paramString;
-  }
-  
-  public static final String aQV(String paramString)
-  {
-    AppMethodBeat.i(247875);
-    af localaf = af.aaBG;
-    paramString = String.format("%s#%s", Arrays.copyOf(new Object[] { Long.valueOf(System.currentTimeMillis()), paramString }, 2));
-    p.j(paramString, "java.lang.String.format(format, *args)");
-    paramString = MD5Util.getMD5String(paramString);
-    p.j(paramString, "MD5Util.getMD5String(Str…entTimeMillis(), rawUrl))");
-    AppMethodBeat.o(247875);
-    return paramString;
-  }
-  
-  public static final String aQW(String paramString)
-  {
-    AppMethodBeat.i(247879);
-    af localaf = af.aaBG;
-    paramString = String.format("%s", Arrays.copyOf(new Object[] { paramString }, 1));
-    p.j(paramString, "java.lang.String.format(format, *args)");
-    paramString = MD5Util.getMD5String(paramString);
-    p.j(paramString, "MD5Util.getMD5String(Str…g.format(\"%s\", filePath))");
-    AppMethodBeat.o(247879);
-    return paramString;
-  }
-  
-  public static final String au(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(247873);
-    af localaf = af.aaBG;
+    AppMethodBeat.i(303712);
+    am localam = am.aixg;
     paramString1 = String.format("%s_%s_%s", Arrays.copyOf(new Object[] { paramString1, paramString2, paramString3 }, 3));
-    p.j(paramString1, "java.lang.String.format(format, *args)");
+    s.s(paramString1, "java.lang.String.format(format, *args)");
     paramString1 = MD5Util.getMD5String(paramString1);
-    p.j(paramString1, "MD5Util.getMD5String(Str…songName, singer, album))");
-    AppMethodBeat.o(247873);
+    s.s(paramString1, "getMD5String(String.form…songName, singer, album))");
+    AppMethodBeat.o(303712);
     return paramString1;
+  }
+  
+  public static final String aNM(String paramString)
+  {
+    AppMethodBeat.i(303718);
+    am localam = am.aixg;
+    paramString = String.format("%s", Arrays.copyOf(new Object[] { paramString }, 1));
+    s.s(paramString, "java.lang.String.format(format, *args)");
+    paramString = MD5Util.getMD5String(paramString);
+    s.s(paramString, "getMD5String(String.format(\"%s\", rawUrl))");
+    AppMethodBeat.o(303718);
+    return paramString;
+  }
+  
+  public static final String aNN(String paramString)
+  {
+    AppMethodBeat.i(303728);
+    am localam = am.aixg;
+    paramString = String.format("%s#%s", Arrays.copyOf(new Object[] { Long.valueOf(System.currentTimeMillis()), paramString }, 2));
+    s.s(paramString, "java.lang.String.format(format, *args)");
+    paramString = MD5Util.getMD5String(paramString);
+    s.s(paramString, "getMD5String(String.form…entTimeMillis(), rawUrl))");
+    AppMethodBeat.o(303728);
+    return paramString;
+  }
+  
+  public static final String aNO(String paramString)
+  {
+    AppMethodBeat.i(303748);
+    am localam = am.aixg;
+    paramString = String.format("%s", Arrays.copyOf(new Object[] { paramString }, 1));
+    s.s(paramString, "java.lang.String.format(format, *args)");
+    paramString = MD5Util.getMD5String(paramString);
+    s.s(paramString, "getMD5String(String.format(\"%s\", filePath))");
+    AppMethodBeat.o(303748);
+    return paramString;
   }
   
   public static String e(String paramString, c paramc)
   {
-    AppMethodBeat.i(247882);
-    p.k(paramString, "path");
-    p.k(paramc, "imageLoaderOptions");
+    AppMethodBeat.i(303775);
+    s.u(paramString, "path");
+    s.u(paramc, "imageLoaderOptions");
     String str = paramString;
-    if (paramc.bmC()) {
-      str = paramString + "round" + paramc.bmD();
+    if (paramc.nrc) {
+      str = paramString + "round" + paramc.oKI;
     }
     paramString = str;
-    if (!Util.isNullOrNil(paramc.bmE())) {
-      paramString = str + paramc.bmE();
+    if (!Util.isNullOrNil(paramc.oKG)) {
+      paramString = s.X(str, paramc.oKG);
     }
-    paramString = paramString + "size" + paramc.bmA() + paramc.bmB();
-    AppMethodBeat.o(247882);
+    paramString = paramString + "size" + paramc.npU + paramc.npV;
+    AppMethodBeat.o(303775);
     return paramString;
   }
   
-  public static String fam()
+  public static final String gj(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(303736);
+    am localam = am.aixg;
+    paramString = String.format(Locale.US, "%s#%d", Arrays.copyOf(new Object[] { paramString, Integer.valueOf(paramInt) }, 2));
+    s.s(paramString, "java.lang.String.format(locale, format, *args)");
+    AppMethodBeat.o(303736);
+    return paramString;
+  }
+  
+  public static String gjr()
   {
     return "MultiTaskForMinusScreen";
   }
   
-  public static String fan()
+  public static String gjs()
   {
     return "MultiTaskForSnapshotMinusScreen";
   }
   
-  public static String fao()
+  public static String gjt()
   {
     return "Home";
-  }
-  
-  public static final String fq(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(247877);
-    Object localObject = af.aaBG;
-    localObject = Locale.US;
-    p.j(localObject, "Locale.US");
-    paramString = String.format((Locale)localObject, "%s#%d", Arrays.copyOf(new Object[] { paramString, Integer.valueOf(paramInt) }, 2));
-    p.j(paramString, "java.lang.String.format(locale, format, *args)");
-    AppMethodBeat.o(247877);
-    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.g
  * JD-Core Version:    0.7.0.1
  */

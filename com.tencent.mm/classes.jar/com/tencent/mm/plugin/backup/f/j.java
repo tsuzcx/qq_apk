@@ -16,11 +16,11 @@ public final class j
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       localByteArrayOutputStream.write(paramArrayOfByte1);
-      localByteArrayOutputStream.write(o.jO(paramInt1));
+      localByteArrayOutputStream.write(o.nE(paramInt1));
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort1 >> 8 & 0xFF), (byte)(paramShort1 & 0xFF) });
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort2 >> 8 & 0xFF), (byte)(paramShort2 & 0xFF) });
-      localByteArrayOutputStream.write(o.jO(paramInt2));
-      localByteArrayOutputStream.write(o.jO(0));
+      localByteArrayOutputStream.write(o.nE(paramInt2));
+      localByteArrayOutputStream.write(o.nE(0));
       localByteArrayOutputStream.write(paramArrayOfByte2);
       paramArrayOfByte1 = new CRC32();
       paramArrayOfByte1.update(localByteArrayOutputStream.toByteArray());
@@ -57,7 +57,7 @@ public final class j
     //   31: astore 5
     //   33: aload 6
     //   35: iload_1
-    //   36: invokestatic 30	com/tencent/mm/b/o:jO	(I)[B
+    //   36: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   39: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
     //   42: aload 6
     //   44: astore 5
@@ -112,13 +112,13 @@ public final class j
     //   119: arraylength
     //   120: bipush 20
     //   122: iadd
-    //   123: invokestatic 30	com/tencent/mm/b/o:jO	(I)[B
+    //   123: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   126: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
     //   129: aload 6
     //   131: astore 5
     //   133: aload 6
     //   135: iconst_0
-    //   136: invokestatic 30	com/tencent/mm/b/o:jO	(I)[B
+    //   136: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   139: invokevirtual 24	java/io/ByteArrayOutputStream:write	([B)V
     //   142: aload 6
     //   144: astore 5
@@ -151,7 +151,7 @@ public final class j
     //   200: aload_0
     //   201: invokevirtual 44	java/util/zip/CRC32:getValue	()J
     //   204: l2i
-    //   205: invokestatic 30	com/tencent/mm/b/o:jO	(I)[B
+    //   205: invokestatic 30	com/tencent/mm/b/o:nE	(I)[B
     //   208: iconst_0
     //   209: aload_3
     //   210: getfield 72	com/tencent/mm/pointers/PByteArray:value	[B
@@ -168,7 +168,7 @@ public final class j
     //   236: aload 6
     //   238: astore 5
     //   240: aload_0
-    //   241: invokestatic 89	com/tencent/mm/plugin/backup/b/d:csd	()[B
+    //   241: invokestatic 89	com/tencent/mm/plugin/backup/b/d:cUN	()[B
     //   244: invokestatic 95	com/tencent/mm/b/l:e	([B[B)[B
     //   247: astore 7
     //   249: goto -138 -> 111
@@ -290,7 +290,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.j
  * JD-Core Version:    0.7.0.1
  */

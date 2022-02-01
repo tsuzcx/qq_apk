@@ -18,7 +18,7 @@ import java.util.List;
 public class DetectCodeView
   extends View
 {
-  private List<DetectCode> Zrs;
+  private List<DetectCode> ahwg;
   private Paint paint;
   
   public DetectCodeView(Context paramContext)
@@ -49,9 +49,9 @@ public class DetectCodeView
   {
     AppMethodBeat.i(3571);
     super.onDraw(paramCanvas);
-    if ((this.Zrs != null) && (!this.Zrs.isEmpty()))
+    if ((this.ahwg != null) && (!this.ahwg.isEmpty()))
     {
-      Iterator localIterator = this.Zrs.iterator();
+      Iterator localIterator = this.ahwg.iterator();
       while (localIterator.hasNext())
       {
         DetectCode localDetectCode = (DetectCode)localIterator.next();
@@ -66,7 +66,7 @@ public class DetectCodeView
   public void setDetectedCodes(List<DetectCode> paramList)
   {
     AppMethodBeat.i(3570);
-    this.Zrs = paramList;
+    this.ahwg = paramList;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.paint.reset();

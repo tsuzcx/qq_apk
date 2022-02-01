@@ -1,6 +1,5 @@
 package com.google.android.gms.common.config;
 
-import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,7 +12,6 @@ import android.os.StrictMode.ThreadPolicy;
 import android.os.UserManager;
 import android.util.Log;
 import com.google.android.gms.common.util.PlatformVersion;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.internal.stable.zzi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
@@ -21,7 +19,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import javax.annotation.concurrent.GuardedBy;
 
 public abstract class GservicesValue<T>
 {
@@ -30,7 +27,6 @@ public abstract class GservicesValue<T>
   private static int zzmv = 0;
   private static Context zzmw;
   private static String zzmx = "com.google.android.providers.gsf.permission.READ_GSERVICES";
-  @GuardedBy("sLock")
   private static HashSet<String> zzmy;
   protected final T mDefaultValue;
   protected final String mKey;
@@ -43,19 +39,16 @@ public abstract class GservicesValue<T>
   }
   
   @Deprecated
-  @VisibleForTesting
   public static void forceInit(Context paramContext)
   {
     forceInit(paramContext, new HashSet());
   }
   
-  @VisibleForTesting
   public static void forceInit(Context paramContext, HashSet<String> paramHashSet)
   {
     zza(paramContext, new zzd(paramContext.getContentResolver()), paramHashSet);
   }
   
-  @TargetApi(24)
   public static SharedPreferences getDirectBootCache(Context paramContext)
   {
     return paramContext.getApplicationContext().createDeviceProtectedStorageContext().getSharedPreferences("gservices-direboot-cache", 0);
@@ -102,20 +95,17 @@ public abstract class GservicesValue<T>
   }
   
   @Deprecated
-  @VisibleForTesting
   public static void initForTests()
   {
     zza(null, new zzb(null), new HashSet());
   }
   
-  @VisibleForTesting
   public static void initForTests(Context paramContext, HashSet<String> paramHashSet)
   {
     zza(paramContext, new zzb(null), paramHashSet);
   }
   
   @Deprecated
-  @VisibleForTesting
   public static void initForTests(String paramString, Object paramObject)
   {
     HashMap localHashMap = new HashMap(1);
@@ -124,7 +114,6 @@ public abstract class GservicesValue<T>
   }
   
   @Deprecated
-  @VisibleForTesting
   public static void initForTests(Map<String, ?> paramMap)
   {
     synchronized (sLock)
@@ -152,7 +141,6 @@ public abstract class GservicesValue<T>
     return new zzg(paramString1, paramString2);
   }
   
-  @VisibleForTesting
   public static void resetAllOverrides()
   {
     synchronized (sLock)
@@ -199,7 +187,6 @@ public abstract class GservicesValue<T>
     return new zza(paramString, Boolean.valueOf(paramBoolean));
   }
   
-  @TargetApi(24)
   private static void zza(Context paramContext, zza paramzza, HashSet<String> paramHashSet)
   {
     synchronized (sLock)
@@ -239,7 +226,6 @@ public abstract class GservicesValue<T>
     }
   }
   
-  @TargetApi(24)
   private static boolean zzd(Context paramContext)
   {
     if (!PlatformVersion.isAtLeastN()) {
@@ -322,7 +308,6 @@ public abstract class GservicesValue<T>
     return this.mKey;
   }
   
-  @VisibleForTesting
   public void override(T arg1)
   {
     this.zzmz = ???;
@@ -335,7 +320,6 @@ public abstract class GservicesValue<T>
     }
   }
   
-  @VisibleForTesting
   public void resetOverride()
   {
     this.zzmz = null;
@@ -343,7 +327,6 @@ public abstract class GservicesValue<T>
   
   protected abstract T retrieve(String paramString);
   
-  @TargetApi(24)
   protected T retrieveFromDirectBootCache(Context paramContext, String paramString, T paramT)
   {
     throw new UnsupportedOperationException("The Gservices classes used does not support direct-boot");
@@ -582,7 +565,7 @@ public abstract class GservicesValue<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.config.GservicesValue
  * JD-Core Version:    0.7.0.1
  */

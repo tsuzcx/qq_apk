@@ -8,14 +8,14 @@ final class j$1
 {
   j$1(j paramj, HashMap paramHashMap)
   {
-    AppMethodBeat.i(205960);
-    put("size", this.oQb);
-    AppMethodBeat.o(205960);
+    AppMethodBeat.i(327307);
+    put("size", this.rTP);
+    AppMethodBeat.o(327307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.j.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,6 @@
 package com.tencent.mm.msgsubscription;
 
-public final class a
-{
-  public static final class a
-  {
-    public static final int dialog_divider_line_color = 2131100290;
-  }
-}
+public final class a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

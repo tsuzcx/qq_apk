@@ -30,11 +30,11 @@ public final class IPCRequest
     this.head = ((IPCHead)paramJceInputStream.read(cache_head, 0, true));
     if (cache_body == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = new byte[1];
       cache_body = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      arrayOfByte[0] = 0;
     }
-    this.body = ((byte[])paramJceInputStream.read(cache_body, 1, false));
+    this.body = paramJceInputStream.read(cache_body, 1, false);
     AppMethodBeat.o(102245);
   }
   
@@ -50,7 +50,7 @@ public final class IPCRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCRequest
  * JD-Core Version:    0.7.0.1
  */

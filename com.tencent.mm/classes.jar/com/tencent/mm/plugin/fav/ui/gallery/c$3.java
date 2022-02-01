@@ -17,18 +17,18 @@ final class c$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(230984);
+    AppMethodBeat.i(274495);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/fav/ui/gallery/FavMediaHistoryGallery$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.wQF.dlP();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/fav/ui/gallery/FavMediaHistoryGallery$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.Ani.dSF();
     a.a(this, "com/tencent/mm/plugin/fav/ui/gallery/FavMediaHistoryGallery$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(230984);
+    AppMethodBeat.o(274495);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.c.3
  * JD-Core Version:    0.7.0.1
  */

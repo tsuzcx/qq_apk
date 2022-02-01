@@ -13,7 +13,7 @@ public class AVResampleFactory
   
   public AVResampleFactory()
   {
-    AppMethodBeat.i(192074);
+    AppMethodBeat.i(216415);
     this.tavResampleEnable = false;
     try
     {
@@ -21,13 +21,13 @@ public class AVResampleFactory
         bool = true;
       }
       this.tavResampleEnable = bool;
-      AppMethodBeat.o(192074);
+      AppMethodBeat.o(216415);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       Logger.w("AVResampleFactory", "newAVResample: ".concat(String.valueOf(localClassNotFoundException)));
-      AppMethodBeat.o(192074);
+      AppMethodBeat.o(216415);
     }
   }
   
@@ -35,12 +35,12 @@ public class AVResampleFactory
   {
     try
     {
-      AppMethodBeat.i(192071);
+      AppMethodBeat.i(216403);
       if (instance == null) {
         instance = new AVResampleFactory();
       }
       AVResampleFactory localAVResampleFactory = instance;
-      AppMethodBeat.o(192071);
+      AppMethodBeat.o(216403);
       return localAVResampleFactory;
     }
     finally {}
@@ -67,14 +67,14 @@ public class AVResampleFactory
   
   public IAVResample newAVResample(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(192076);
+    AppMethodBeat.i(216449);
     if (this.tavResampleEnable)
     {
       TAVResample localTAVResample = new TAVResample(paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(192076);
+      AppMethodBeat.o(216449);
       return localTAVResample;
     }
-    AppMethodBeat.o(192076);
+    AppMethodBeat.o(216449);
     return null;
   }
 }

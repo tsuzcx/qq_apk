@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 class ViewOffsetBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  private a bvQ;
-  private int bvR = 0;
-  private int bvS = 0;
+  private a doT;
+  private int doU = 0;
+  private int doV = 0;
   
   public ViewOffsetBehavior() {}
   
@@ -21,66 +21,66 @@ class ViewOffsetBehavior<V extends View>
     super(paramContext, paramAttributeSet);
   }
   
+  public int Vx()
+  {
+    if (this.doT != null) {
+      return this.doT.doY;
+    }
+    return 0;
+  }
+  
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
-    AppMethodBeat.i(234792);
+    AppMethodBeat.i(210027);
     c(paramCoordinatorLayout, paramV, paramInt);
-    if (this.bvQ == null) {
-      this.bvQ = new a(paramV);
+    if (this.doT == null) {
+      this.doT = new a(paramV);
     }
-    this.bvQ.wf();
-    if (this.bvR != 0)
+    this.doT.VE();
+    if (this.doU != 0)
     {
-      this.bvQ.fT(this.bvR);
-      this.bvR = 0;
+      this.doT.ji(this.doU);
+      this.doU = 0;
     }
-    if (this.bvS != 0)
+    if (this.doV != 0)
     {
-      paramCoordinatorLayout = this.bvQ;
-      paramInt = this.bvS;
-      if (paramCoordinatorLayout.bvW != paramInt)
+      paramCoordinatorLayout = this.doT;
+      paramInt = this.doV;
+      if (paramCoordinatorLayout.doZ != paramInt)
       {
-        paramCoordinatorLayout.bvW = paramInt;
-        paramCoordinatorLayout.wg();
+        paramCoordinatorLayout.doZ = paramInt;
+        paramCoordinatorLayout.VF();
       }
-      this.bvS = 0;
+      this.doV = 0;
     }
-    AppMethodBeat.o(234792);
+    AppMethodBeat.o(210027);
     return true;
   }
   
   protected void c(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
-    AppMethodBeat.i(234793);
+    AppMethodBeat.i(210037);
     paramCoordinatorLayout.h(paramV, paramInt);
-    AppMethodBeat.o(234793);
+    AppMethodBeat.o(210037);
   }
   
-  public boolean fT(int paramInt)
+  public boolean ji(int paramInt)
   {
-    AppMethodBeat.i(234795);
-    if (this.bvQ != null)
+    AppMethodBeat.i(210049);
+    if (this.doT != null)
     {
-      boolean bool = this.bvQ.fT(paramInt);
-      AppMethodBeat.o(234795);
+      boolean bool = this.doT.ji(paramInt);
+      AppMethodBeat.o(210049);
       return bool;
     }
-    this.bvR = paramInt;
-    AppMethodBeat.o(234795);
+    this.doU = paramInt;
+    AppMethodBeat.o(210049);
     return false;
-  }
-  
-  public int vY()
-  {
-    if (this.bvQ != null) {
-      return this.bvQ.bvV;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.appbar.ViewOffsetBehavior
  * JD-Core Version:    0.7.0.1
  */

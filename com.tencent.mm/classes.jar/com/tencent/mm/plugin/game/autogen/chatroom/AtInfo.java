@@ -4,60 +4,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class AtInfo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public LinkedList<Long> seq_list;
   
   public AtInfo()
   {
-    AppMethodBeat.i(194934);
+    AppMethodBeat.i(275460);
     this.seq_list = new LinkedList();
-    AppMethodBeat.o(194934);
+    AppMethodBeat.o(275460);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194943);
+    AppMethodBeat.i(275466);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 3, this.seq_list);
-      AppMethodBeat.o(194943);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 3, this.seq_list);
+      AppMethodBeat.o(275466);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 3, this.seq_list);
-      AppMethodBeat.o(194943);
+      paramInt = i.a.a.a.c(1, 3, this.seq_list);
+      AppMethodBeat.o(275466);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
       this.seq_list.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(194943);
+      AppMethodBeat.o(275466);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       AtInfo localAtInfo = (AtInfo)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(194943);
+        AppMethodBeat.o(275466);
         return -1;
       }
-      localAtInfo.seq_list.add(Long.valueOf(locala.abFh.AN()));
-      AppMethodBeat.o(194943);
+      localAtInfo.seq_list.add(Long.valueOf(locala.ajGk.aaw()));
+      AppMethodBeat.o(275466);
       return 0;
     }
-    AppMethodBeat.o(194943);
+    AppMethodBeat.o(275466);
     return -1;
   }
 }

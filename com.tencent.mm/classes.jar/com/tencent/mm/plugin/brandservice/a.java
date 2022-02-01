@@ -1,152 +1,188 @@
 package com.tencent.mm.plugin.brandservice;
 
 import android.content.Context;
+import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 import android.widget.Toast;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webcanvas.m;
-import com.tencent.mm.protocal.protobuf.err;
-import com.tencent.mm.protocal.protobuf.eru;
-import com.tencent.mm.protocal.protobuf.oc;
+import com.tencent.mm.an.af;
+import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g;
+import com.tencent.mm.protocal.protobuf.fmz;
+import com.tencent.mm.protocal.protobuf.fnc;
+import com.tencent.mm.protocal.protobuf.pi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.ac.b;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.q;
+import com.tencent.mm.storage.r;
 import com.tencent.mm.storage.w;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
 import java.util.LinkedList;
-import kotlin.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/BizProcessorCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/BizProcessorCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  private static final String TAG = "MicroMsg.BizProcessorCommand";
-  private static final String sor = "//biz";
-  public static final a sos;
-  private final f lrB;
+  private static final String TAG;
+  public static final a vAp;
+  private static final String vAq;
+  private static boolean vAr;
+  private final j exj;
   
   static
   {
     AppMethodBeat.i(6447);
-    sos = new a((byte)0);
-    sor = "//biz";
+    vAp = new a((byte)0);
+    vAq = "//biz";
     TAG = "MicroMsg.BizProcessorCommand";
+    vAr = true;
     AppMethodBeat.o(6447);
   }
   
   public a()
   {
-    AppMethodBeat.i(257314);
-    this.lrB = kotlin.g.ar((kotlin.g.a.a)b.sou);
-    AppMethodBeat.o(257314);
+    AppMethodBeat.i(301499);
+    this.exj = kotlin.k.cm((kotlin.g.a.a)b.vAs);
+    AppMethodBeat.o(301499);
   }
   
-  private MultiProcessMMKV bcJ()
+  private static final void aix(String paramString)
   {
-    AppMethodBeat.i(257310);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)this.lrB.getValue();
-    AppMethodBeat.o(257310);
+    AppMethodBeat.i(301514);
+    s.u(paramString, "$appid");
+    if (com.tencent.mm.pluginsdk.model.app.h.dV(paramString, true) != null) {
+      MMHandlerThread.postToMainThread(a..ExternalSyntheticLambda1.INSTANCE);
+    }
+    AppMethodBeat.o(301514);
+  }
+  
+  private MultiProcessMMKV atj()
+  {
+    AppMethodBeat.i(301503);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)this.exj.getValue();
+    AppMethodBeat.o(301503);
     return localMultiProcessMMKV;
+  }
+  
+  private static final void dbo()
+  {
+    AppMethodBeat.i(301507);
+    com.tencent.mm.ui.base.k.cZ(MMApplicationContext.getContext(), "Get appInfo success!");
+    AppMethodBeat.o(301507);
+  }
+  
+  private static final void dbp()
+  {
+    AppMethodBeat.i(301517);
+    y.ew(com.tencent.mm.plugin.image.d.fQD(), true);
+    AppMethodBeat.o(301517);
   }
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    boolean bool = false;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
     AppMethodBeat.i(6446);
-    if ((paramArrayOfString != null) && (p.h(sor, paramArrayOfString[0])))
+    if ((paramArrayOfString != null) && (s.p(vAq, paramArrayOfString[0])))
     {
-      if ((p.h("openrectimeline", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("openrectimeline", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineOpenStatus", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().apply();
+        atj().encode("BizTimeLineOpenStatus", Util.getInt(paramArrayOfString[2], -1));
+        atj().apply();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("recFeed", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("recFeed", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineRecFeedStatus", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().apply();
+        atj().encode("BizTimeLineRecFeedStatus", Util.getInt(paramArrayOfString[2], -1));
+        atj().apply();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("finderLive", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("finderLive", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineFinderLiveStatus", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().apply();
+        atj().encode("BizTimeLineFinderLiveStatus", Util.getInt(paramArrayOfString[2], -1));
+        atj().apply();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("biztlbold", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("biztlbold", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineTitleBold", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().apply();
+        atj().encode("BizTimeLineTitleBold", Util.getInt(paramArrayOfString[2], -1));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("showbottomnav", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("showbottomnav", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         MultiProcessMMKV.getMMKV("WebViewUIShowBottom").encode("WebViewUIShowBottomNav", Util.getInt(paramArrayOfString[2], -1));
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adautotest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("adautotest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineAdOpen", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().encode("BizTimeLineAdTestMode", Util.getInt(paramArrayOfString[3], -1));
-        bcJ().encode("BizAdInsertPos", Util.getInt(paramArrayOfString[4], -1));
+        atj().encode("BizTimeLineAdOpen", Util.getInt(paramArrayOfString[2], -1));
+        atj().encode("BizTimeLineAdTestMode", Util.getInt(paramArrayOfString[3], -1));
+        atj().encode("BizAdInsertPos", Util.getInt(paramArrayOfString[4], -1));
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("deleteolddata", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("autoreboot", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineDeleteOldData", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().apply();
-        AppMethodBeat.o(6446);
-        return true;
-      }
-      if ((p.h("addRecCard", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
-      {
-        paramContext = Base64.decode(paramArrayOfString[2], 2);
-        p.j(paramContext, "Base64.decode(args[2], Base64.NO_WRAP)");
-        paramContext = new String(paramContext, kotlin.n.d.UTF_8);
-        paramArrayOfString = MultiProcessMMKV.getSingleMMKV("brandService");
-        paramString = new StringBuilder("BizLatestRecommendCardInfo");
-        p.j(com.tencent.mm.kernel.h.aHE(), "MMKernel.account()");
-        paramString = com.tencent.mm.kernel.b.aGq();
-        if (paramArrayOfString == null) {
-          p.iCn();
+        if (Util.getInt(paramArrayOfString[2], -1) == 1) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          vAr = bool1;
+          AppMethodBeat.o(6446);
+          return true;
         }
-        paramArrayOfString.encode(paramString, paramContext);
+      }
+      if ((s.p("deleteolddata", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        atj().encode("BizTimeLineDeleteOldData", Util.getInt(paramArrayOfString[2], -1));
+        atj().apply();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("addPayAlbum", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("addRecCard", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = Base64.decode(paramArrayOfString[2], 2);
-        p.j(paramContext, "Base64.decode(args[2], Base64.NO_WRAP)");
+        s.s(paramContext, "decode(args[2], Base64.NO_WRAP)");
+        ad.bvD(new String(paramContext, kotlin.n.d.UTF_8));
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if ((s.p("addPayAlbum", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        paramContext = Base64.decode(paramArrayOfString[2], 2);
+        s.s(paramContext, "decode(args[2], Base64.NO_WRAP)");
         paramString = new String(paramContext, kotlin.n.d.UTF_8);
         int i = n.a((CharSequence)paramString, "<sysmsg", 0, false, 6);
         if (i != -1)
         {
           paramContext = paramString.substring(i);
-          p.j(paramContext, "(this as java.lang.String).substring(startIndex)");
+          s.s(paramContext, "(this as java.lang.String).substring(startIndex)");
           paramArrayOfString = XmlParser.parseXml(paramContext, "sysmsg", null);
           paramContext = paramArrayOfString;
           if (paramArrayOfString == null)
           {
-            Log.e(sor, "XmlParser values is null, msgContent %s", new Object[] { paramString });
+            Log.e(vAq, "XmlParser values is null, msgContent %s", new Object[] { paramString });
             AppMethodBeat.o(6446);
             return true;
           }
@@ -155,23 +191,23 @@ public final class a
         {
           paramContext = null;
         }
-        paramArrayOfString = com.tencent.mm.plugin.biz.b.b.shr;
-        com.tencent.mm.plugin.biz.b.b.g(paramContext, paramString);
+        paramArrayOfString = com.tencent.mm.plugin.biz.b.b.vto;
+        com.tencent.mm.plugin.biz.b.b.i(paramContext, paramString);
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("paySuccess", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("paySuccess", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = Base64.decode(paramArrayOfString[2], 2);
-        p.j(paramContext, "Base64.decode(args[2], Base64.NO_WRAP)");
+        s.s(paramContext, "decode(args[2], Base64.NO_WRAP)");
         paramContext = XmlParser.parseXml(new String(paramContext, kotlin.n.d.UTF_8), "sysmsg", null);
-        paramArrayOfString = com.tencent.mm.plugin.brandservice.b.b.svR;
-        p.j(paramContext, "values");
-        paramArrayOfString.U(paramContext);
+        paramArrayOfString = com.tencent.mm.plugin.brandservice.model.b.vBC;
+        s.s(paramContext, "values");
+        paramArrayOfString.ab(paramContext);
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("profileCrash", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("profileCrash", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = MultiProcessMMKV.getSingleMMKV("ProfileCrashCheck");
         paramContext.encode("testCrash", Util.getInt(paramArrayOfString[2], 1));
@@ -179,7 +215,7 @@ public final class a
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("updateAppInfo", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("updateAppInfo", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = paramArrayOfString[2];
         if (Util.isNullOrNil(paramContext))
@@ -187,61 +223,61 @@ public final class a
           AppMethodBeat.o(6446);
           return true;
         }
-        com.tencent.e.h.ZvG.d((Runnable)new c(paramContext), "GetAppInfoASyncThread");
+        com.tencent.threadpool.h.ahAA.g(new a..ExternalSyntheticLambda0(paramContext), "GetAppInfoASyncThread");
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("resortbizmsgcheck", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("resortbizmsgcheck", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineReSortMsgCheck", Util.getInt(paramArrayOfString[2], 1));
-        bcJ().apply();
+        atj().encode("BizTimeLineReSortMsgCheck", Util.getInt(paramArrayOfString[2], 1));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("recycleCardCheck", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("recycleCardCheck", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineRecycleCardCheck", Util.getInt(paramArrayOfString[2], 1));
-        bcJ().apply();
+        atj().encode("BizTimeLineRecycleCardCheck", Util.getInt(paramArrayOfString[2], 1));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("updateCard", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("updateCard", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineUpdateCard", Util.getInt(paramArrayOfString[2], 1));
-        bcJ().apply();
+        atj().encode("BizTimeLineUpdateCard", Util.getInt(paramArrayOfString[2], 1));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("showdigest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("showdigest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineShowDigest", Util.getInt(paramArrayOfString[2], -1));
-        bcJ().apply();
+        atj().encode("BizTimeLineShowDigest", Util.getInt(paramArrayOfString[2], -1));
+        atj().apply();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("oftenread", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
-      {
-        if (Util.getInt(paramArrayOfString[2], -1) == 0) {}
-        for (bool = true;; bool = false)
-        {
-          com.tencent.mm.plugin.biz.b.c.ln(bool);
-          AppMethodBeat.o(6446);
-          return true;
-        }
-      }
-      if ((p.h("videochannel", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("oftenread", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         if (Util.getInt(paramArrayOfString[2], -1) == 0) {
-          bool = true;
+          bool1 = true;
         }
-        com.tencent.mm.plugin.biz.b.c.lo(bool);
+        com.tencent.mm.plugin.biz.b.c.mF(bool1);
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("sl", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("videochannel", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        bool1 = bool2;
+        if (Util.getInt(paramArrayOfString[2], -1) == 0) {
+          bool1 = true;
+        }
+        com.tencent.mm.plugin.biz.b.c.mG(bool1);
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if ((s.p("sl", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = MultiProcessMMKV.getMMKV("bizCommand");
         paramContext.encode("sameLayerOpen", Util.getInt(paramArrayOfString[2], -1));
@@ -250,23 +286,35 @@ public final class a
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("resortbizmsgtest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("resortbizmsgtest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        paramContext = w.VdC;
-        w.asn(Util.getInt(paramArrayOfString[2], -1));
+        paramContext = w.acEV;
+        w.ayy(Util.getInt(paramArrayOfString[2], -1));
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adtest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("adtest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineAdTestMode", Util.getInt(paramArrayOfString[2], 0));
-        bcJ().apply();
+        atj().encode("BizTimeLineAdTestMode", Util.getInt(paramArrayOfString[2], 0));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adtestext", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("forbidDeleteCanvasFromJS", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        paramContext = atj();
+        bool1 = bool3;
+        if (Util.getInt(paramArrayOfString[2], 0) == 1) {
+          bool1 = true;
+        }
+        paramContext.encode("forbidDeleteCanvasFromJS", bool1);
+        atj().apply();
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if ((s.p("adtestext", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = MultiProcessMMKV.getSingleMMKV("brandService");
         paramContext.encode("BizTimeLineAdTestExtInfo", paramArrayOfString[2]);
@@ -275,44 +323,78 @@ public final class a
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adtestaction", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("adtestaction", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        ((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).n("wxa06c02b5c00ff39b", null, "adTestExtAction", "data:" + paramArrayOfString[2]);
+        ((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).m("wxa06c02b5c00ff39b", null, "adTestExtAction", s.X("data:", paramArrayOfString[2]));
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("ad", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("ad", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineAdOpen", Util.getInt(paramArrayOfString[2], 0));
-        bcJ().apply();
+        atj().encode("BizTimeLineAdOpen", Util.getInt(paramArrayOfString[2], 0));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adprefetch", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("adprefetch", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineAdPrefetcherOpen", Util.getInt(paramArrayOfString[2], 0));
-        bcJ().apply();
+        atj().encode("BizTimeLineAdPrefetcherOpen", Util.getInt(paramArrayOfString[2], 0));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adInsertPos", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("adInsertPos", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizAdInsertPos", Util.getInt(paramArrayOfString[2], 3));
-        bcJ().apply();
+        atj().encode("BizAdInsertPos", Util.getInt(paramArrayOfString[2], 3));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("clearpkg", paramArrayOfString[1]))
+      if (s.p("clearad", paramArrayOfString[1]))
       {
-        paramContext = m.PuL;
-        m.CF(true);
+        paramContext = r.acDM;
+        r.iXi().encode(r.bvh("biz_ad_card_data"), "");
+        paramContext = af.bHl();
+        paramArrayOfString = String.format("DELETE FROM %s WHERE type = %d", new Object[] { "BizTimeLineInfo", Integer.valueOf(637534257) });
+        Log.d("MicroMsg.BizTimeLineInfoStorage", "deleteExposedAdMsgByType ret:%b, sql=%s", new Object[] { Boolean.valueOf(paramContext.omV.execSQL("BizTimeLineInfo", paramArrayOfString)), paramArrayOfString });
+        paramArrayOfString = new ac.a();
+        paramArrayOfString.acFX = ac.b.acGa;
+        paramContext.a(paramArrayOfString);
+        r.acDS = null;
+        r.acEi = true;
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("adpreview", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if (s.p("setAdInsertType", paramArrayOfString[1]))
+      {
+        paramContext = r.acDM;
+        r.setAdInsertType(Util.getInt(paramArrayOfString[2], 0));
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if (s.p("clearadexposetime", paramArrayOfString[1]))
+      {
+        MultiProcessMMKV.getSingleMMKV("biz_timeline_ad").encode("BizLastExposeAdTime", 0L);
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if (s.p("clearadexposecount", paramArrayOfString[1]))
+      {
+        af.bHm().bSr();
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if (s.p("clearpkg", paramArrayOfString[1]))
+      {
+        paramContext = com.tencent.mm.plugin.webcanvas.k.WkZ;
+        com.tencent.mm.plugin.webcanvas.k.Ik(true);
+        AppMethodBeat.o(6446);
+        return true;
+      }
+      if ((s.p("adpreview", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
         paramContext = MultiProcessMMKV.getMMKV("WebCanvasStorage");
         paramContext.encode("BizTimeLineAdPkgPreviewMode", Util.getInt(paramArrayOfString[2], 0));
@@ -321,190 +403,155 @@ public final class a
         AppMethodBeat.o(6446);
         return true;
       }
-      if ((p.h("test", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      if ((s.p("test", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
       {
-        bcJ().encode("BizTimeLineTestMode", Util.getInt(paramArrayOfString[2], 0));
-        bcJ().apply();
+        atj().encode("BizTimeLineTestMode", Util.getInt(paramArrayOfString[2], 0));
+        atj().apply();
         a.onSuccess();
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("checkfinderreddot", paramArrayOfString[1]))
+      if (s.p("checkfinderreddot", paramArrayOfString[1]))
       {
-        a.cyz();
+        a.dbt();
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("addfinderreddot", paramArrayOfString[1]))
+      if (s.p("addfinderreddot", paramArrayOfString[1]))
       {
-        a.cyy();
+        a.dbs();
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("videofetchdebug", paramArrayOfString[1]))
+      if (s.p("videofetchdebug", paramArrayOfString[1]))
       {
-        com.tencent.mm.plugin.biz.b.c.cxP();
-        Log.i(TAG, "mpManifestPath=" + com.tencent.mm.plugin.biz.b.c.cxN());
+        com.tencent.mm.plugin.biz.b.c.daG();
+        Log.i(TAG, s.X("mpManifestPath=", com.tencent.mm.plugin.biz.b.c.daE()));
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("clearsubscribemsg", paramArrayOfString[1]))
+      if (s.p("clearsubscribemsg", paramArrayOfString[1]))
       {
-        com.tencent.mm.msgsubscription.d.c.mqn.bsx();
+        com.tencent.mm.msgsubscription.d.c.pjX.bQd();
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("clearimg", paramArrayOfString[1]))
+      if (s.p("clearimg", paramArrayOfString[1]))
       {
-        com.tencent.e.h.ZvG.be((Runnable)d.sox);
+        com.tencent.threadpool.h.ahAA.bm(a..ExternalSyntheticLambda2.INSTANCE);
         AppMethodBeat.o(6446);
         return true;
       }
-      if (p.h("timel", paramArrayOfString[1]))
+      if (s.p("timel", paramArrayOfString[1]))
       {
-        af.asz(Integer.parseInt(paramArrayOfString[2]));
+        com.tencent.mm.storage.ah.ayO(Integer.parseInt(paramArrayOfString[2]));
         AppMethodBeat.o(6446);
         return true;
+      }
+      if ((s.p("gamejs", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        if (s.p(paramArrayOfString[2], "null")) {
+          atj().remove("GameCenterJsPath").apply();
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(6446);
+          return true;
+          atj().encode("GameCenterJsPath", paramArrayOfString[2]);
+          atj().apply();
+        }
       }
     }
     AppMethodBeat.o(6446);
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/BizProcessorCommand$Companion;", "", "()V", "COMMAND_BIZ", "", "TAG", "addFinderRedDot", "", "checkFinderRedDot", "getAdTestInfo", "init", "onSuccess", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/BizProcessorCommand$Companion;", "", "()V", "COMMAND_BIZ", "", "TAG", "autoReboot", "", "addFinderRedDot", "", "checkFinderRedDot", "getAdTestInfo", "getDebugGameCenterJsPath", "init", "onSuccess", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static void cyy()
+    public static void dbs()
     {
-      AppMethodBeat.i(265035);
-      Object localObject1 = com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g.cBq().UtH;
-      if (localObject1 != null)
+      AppMethodBeat.i(301466);
+      Object localObject1 = g.deD().abNc;
+      if (localObject1 == null) {}
+      for (localObject1 = null; localObject1 == null; localObject1 = (fnc)((LinkedList)localObject1).getFirst())
       {
-        localObject1 = (eru)((LinkedList)localObject1).getFirst();
-        if (localObject1 != null) {}
-      }
-      else
-      {
-        AppMethodBeat.o(265035);
+        AppMethodBeat.o(301466);
         return;
       }
-      String str = "export/xxx" + System.currentTimeMillis();
-      Object localObject2 = com.tencent.mm.pluginsdk.model.b.QTJ;
-      localObject2 = new oc();
-      ((oc)localObject2).RKL = ((eru)localObject1).RKL;
-      ((oc)localObject2).RVp = str;
-      ((oc)localObject2).tmL = 20;
-      com.tencent.mm.pluginsdk.model.b.a((oc)localObject2);
-      localObject2 = com.tencent.mm.pluginsdk.model.b.QTJ;
-      com.tencent.mm.pluginsdk.model.b.nk(((eru)localObject1).RKL, str);
+      String str = s.X("export/xxx", Long.valueOf(System.currentTimeMillis()));
+      Object localObject2 = com.tencent.mm.pluginsdk.model.c.XPt;
+      localObject2 = new pi();
+      ((pi)localObject2).YIf = ((fnc)localObject1).YIf;
+      ((pi)localObject2).YSM = str;
+      ((pi)localObject2).wrl = 20;
+      kotlin.ah localah = kotlin.ah.aiuX;
+      com.tencent.mm.pluginsdk.model.c.a((pi)localObject2);
+      localObject2 = com.tencent.mm.pluginsdk.model.c.XPt;
+      com.tencent.mm.pluginsdk.model.c.pf(((fnc)localObject1).YIf, str);
       Toast.makeText(MMApplicationContext.getContext(), (CharSequence)"Success!", 1).show();
-      ab.hxj();
-      AppMethodBeat.o(265035);
+      ad.iYO();
+      AppMethodBeat.o(301466);
     }
     
-    public static void cyz()
+    public static void dbt()
     {
-      AppMethodBeat.i(265038);
-      Object localObject = com.tencent.mm.pluginsdk.model.b.QTJ;
-      com.tencent.mm.pluginsdk.model.b.hgh();
-      localObject = com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g.cBq();
+      AppMethodBeat.i(301472);
+      Object localObject = com.tencent.mm.pluginsdk.model.c.XPt;
+      com.tencent.mm.pluginsdk.model.c.iHf();
+      localObject = g.deD();
       if (localObject != null)
       {
-        localObject = ((err)localObject).UtH;
+        localObject = ((fmz)localObject).abNc;
         if (localObject != null)
         {
-          com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
-          com.tencent.mm.pluginsdk.model.b.cd((LinkedList)localObject);
+          com.tencent.mm.pluginsdk.model.c localc = com.tencent.mm.pluginsdk.model.c.XPt;
+          com.tencent.mm.pluginsdk.model.c.cp((LinkedList)localObject);
         }
       }
       Toast.makeText(MMApplicationContext.getContext(), (CharSequence)"Success!", 1).show();
-      AppMethodBeat.o(265038);
+      AppMethodBeat.o(301472);
+    }
+    
+    private static final void dbu()
+    {
+      AppMethodBeat.i(301475);
+      ((com.tencent.mm.plugin.brandservice.api.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.b.class)).ase();
+      AppMethodBeat.o(301475);
     }
     
     public static void onSuccess()
     {
-      AppMethodBeat.i(265032);
+      AppMethodBeat.i(301461);
+      if (!a.dbr())
+      {
+        Log.w(a.access$getTAG$cp(), "should not autoReboot now.");
+        AppMethodBeat.o(301461);
+        return;
+      }
       Toast.makeText(MMApplicationContext.getContext(), (CharSequence)"Success! WeChat will kill self in 1 second...", 1).show();
-      com.tencent.e.h.ZvG.n((Runnable)a.sot, 1000L);
-      AppMethodBeat.o(265032);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      public static final a sot;
-      
-      static
-      {
-        AppMethodBeat.i(266446);
-        sot = new a();
-        AppMethodBeat.o(266446);
-      }
-      
-      public final void run()
-      {
-        AppMethodBeat.i(266444);
-        ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.b.class)).RP();
-        AppMethodBeat.o(266444);
-      }
+      com.tencent.threadpool.h.ahAA.o(a.a..ExternalSyntheticLambda0.INSTANCE, 1000L);
+      AppMethodBeat.o(301461);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<MultiProcessMMKV>
   {
-    public static final b sou;
+    public static final b vAs;
     
     static
     {
-      AppMethodBeat.i(264056);
-      sou = new b();
-      AppMethodBeat.o(264056);
+      AppMethodBeat.i(301462);
+      vAs = new b();
+      AppMethodBeat.o(301462);
     }
     
     b()
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(6443);
-      if (com.tencent.mm.pluginsdk.model.app.h.dl(this.sov, true) != null) {
-        MMHandlerThread.postToMainThread((Runnable)1.sow);
-      }
-      AppMethodBeat.o(6443);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    public static final d sox;
-    
-    static
-    {
-      AppMethodBeat.i(6445);
-      sox = new d();
-      AppMethodBeat.o(6445);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(6444);
-      u.deleteDir(com.tencent.mm.plugin.image.d.eIC());
-      AppMethodBeat.o(6444);
     }
   }
 }

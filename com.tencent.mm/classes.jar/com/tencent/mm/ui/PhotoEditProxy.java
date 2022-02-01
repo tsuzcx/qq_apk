@@ -1,24 +1,23 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.w;
-import com.tencent.mm.ay.i;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.a.dd;
-import com.tencent.mm.f.a.dd.b;
+import com.tencent.mm.api.x;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.autogen.a.dn.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.modelmulti.o;
-import com.tencent.mm.modelmulti.o.b;
-import com.tencent.mm.modelmulti.o.d;
-import com.tencent.mm.modelmulti.o.e;
-import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.modelmulti.t;
+import com.tencent.mm.modelmulti.t.b;
+import com.tencent.mm.modelmulti.t.d;
+import com.tencent.mm.modelmulti.t.e;
+import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.messenger.a.g;
 import com.tencent.mm.remoteservice.a;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public class PhotoEditProxy
   extends a
@@ -40,12 +39,12 @@ public class PhotoEditProxy
   public int doFavInMM(String paramString)
   {
     AppMethodBeat.i(103246);
-    dd localdd = new dd();
-    ((ae)h.ae(ae.class)).a(localdd, 2, paramString);
-    localdd.fyI.fyP = 44;
-    EventCenter.instance.publish(localdd);
+    dn localdn = new dn();
+    ((af)h.ax(af.class)).a(localdn, 2, paramString);
+    localdn.hDr.hDy = 44;
+    localdn.publish();
     Log.i("MicroMsg.PhotoEditProxy", "[doFavInMM] path:%s", new Object[] { paramString });
-    int i = localdd.fyJ.ret;
+    int i = localdn.hDs.ret;
     AppMethodBeat.o(103246);
     return i;
   }
@@ -62,7 +61,7 @@ public class PhotoEditProxy
   public String getFullPathInMM(String paramString)
   {
     AppMethodBeat.i(103247);
-    paramString = q.bmh().getFullPath(paramString);
+    paramString = r.bKa().getFullPath(paramString);
     AppMethodBeat.o(103247);
     return paramString;
   }
@@ -79,7 +78,7 @@ public class PhotoEditProxy
   public String getSelfUsernameInMM()
   {
     AppMethodBeat.i(103244);
-    String str = z.bcZ();
+    String str = z.bAM();
     AppMethodBeat.o(103244);
     return str;
   }
@@ -96,7 +95,7 @@ public class PhotoEditProxy
   public boolean isAutoSavePhotoInMM()
   {
     AppMethodBeat.i(103245);
-    boolean bool = h.aHG().aHp().getBoolean(ar.a.VnW, true);
+    boolean bool = h.baE().ban().getBoolean(at.a.acPr, true);
     AppMethodBeat.o(103245);
     return bool;
   }
@@ -112,7 +111,7 @@ public class PhotoEditProxy
   public void recordImageInMM(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
     AppMethodBeat.i(103248);
-    ((w)h.ae(w.class)).recordImage(paramString1, paramString2, paramLong, paramString3, paramString4);
+    ((x)h.ax(x.class)).recordImage(paramString1, paramString2, paramLong, paramString3, paramString4);
     AppMethodBeat.o(103248);
   }
   
@@ -127,7 +126,7 @@ public class PhotoEditProxy
   public void recordVideoInMM(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(103249);
-    ((w)h.ae(w.class)).recordVideo(paramString1, paramString2, paramString3, paramString4);
+    ((x)h.ax(x.class)).recordVideo(paramString1, paramString2, paramString3, paramString4);
     AppMethodBeat.o(103249);
   }
   
@@ -142,26 +141,26 @@ public class PhotoEditProxy
   public void sendImageInMM(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(103243);
-    paramString3 = o.a(o.d.lUk).wb(4);
-    paramString3.fLi = z.bcZ();
+    paramString3 = t.a(t.d.oNd).wg(4);
+    paramString3.hQQ = z.bAM();
     paramString3.toUser = paramString4;
-    paramString3.lPO = paramString2;
-    paramString3.lNK = 0;
-    paramString3.lUr = null;
-    paramString3.fJu = 0;
-    paramString3.lNS = "";
+    paramString3.oIx = paramString2;
+    paramString3.oGu = 0;
+    paramString3.oNk = null;
+    paramString3.hOX = 0;
+    paramString3.oGC = "";
     paramString3.thumbPath = "";
-    paramString3.lUu = true;
-    paramString3.lUt = ai.b.chat_img_template;
-    paramString3.lUq = 11;
-    paramString3.bnl().aEv();
-    g.eRW().iQ(paramString1, paramString4);
+    paramString3.oNn = true;
+    paramString3.oNm = am.c.chat_img_template;
+    paramString3.oNj = 11;
+    paramString3.bKW().aXz();
+    g.gaI().ke(paramString1, paramString4);
     AppMethodBeat.o(103243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.PhotoEditProxy
  * JD-Core Version:    0.7.0.1
  */

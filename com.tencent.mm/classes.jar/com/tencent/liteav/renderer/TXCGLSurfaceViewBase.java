@@ -104,7 +104,15 @@ public class TXCGLSurfaceViewBase
     if ((!this.b) && (this.c) && (this.g != null))
     {
       TXCLog.w("TXCGLSurfaceViewBase", "background capture destroy surface when not enable background run");
-      this.g.a(new TXCGLSurfaceViewBase.2(this));
+      this.g.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(16781);
+          TXCGLSurfaceViewBase.this.b();
+          AppMethodBeat.o(16781);
+        }
+      });
       this.g.g();
     }
     AppMethodBeat.o(16882);
@@ -203,7 +211,15 @@ public class TXCGLSurfaceViewBase
     if ((this.b) && (this.g != null))
     {
       TXCLog.w("TXCGLSurfaceViewBase", "background capture destroy surface when onDetachedFromWindow");
-      this.g.a(new TXCGLSurfaceViewBase.3(this));
+      this.g.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(16754);
+          TXCGLSurfaceViewBase.this.b();
+          AppMethodBeat.o(16754);
+        }
+      });
       this.g.g();
     }
     if (this.g != null) {
@@ -321,7 +337,15 @@ public class TXCGLSurfaceViewBase
     setRunInBackground(true);
     if (!this.b)
     {
-      this.g.a(new TXCGLSurfaceViewBase.1(this));
+      this.g.a(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(16751);
+          TXCGLSurfaceViewBase.this.b();
+          AppMethodBeat.o(16751);
+        }
+      });
       this.g.g();
     }
     AppMethodBeat.o(16880);
@@ -1999,6 +2023,64 @@ public class TXCGLSurfaceViewBase
     public abstract GL a(GL paramGL);
   }
   
+  static class l
+    extends Writer
+  {
+    private StringBuilder a;
+    
+    l()
+    {
+      AppMethodBeat.i(16842);
+      this.a = new StringBuilder();
+      AppMethodBeat.o(16842);
+    }
+    
+    private void a()
+    {
+      AppMethodBeat.i(16846);
+      if (this.a.length() > 0)
+      {
+        TXCLog.v("TXCGLSurfaceViewBase", this.a.toString());
+        this.a.delete(0, this.a.length());
+      }
+      AppMethodBeat.o(16846);
+    }
+    
+    public void close()
+    {
+      AppMethodBeat.i(16843);
+      a();
+      AppMethodBeat.o(16843);
+    }
+    
+    public void flush()
+    {
+      AppMethodBeat.i(16844);
+      a();
+      AppMethodBeat.o(16844);
+    }
+    
+    public void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(16845);
+      int i = 0;
+      if (i < paramInt2)
+      {
+        char c = paramArrayOfChar[(paramInt1 + i)];
+        if (c == '\n') {
+          a();
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.a.append(c);
+        }
+      }
+      AppMethodBeat.o(16845);
+    }
+  }
+  
   class m
     extends TXCGLSurfaceViewBase.b
   {
@@ -2007,7 +2089,7 @@ public class TXCGLSurfaceViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCGLSurfaceViewBase
  * JD-Core Version:    0.7.0.1
  */

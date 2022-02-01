@@ -1,12 +1,12 @@
 package com.tencent.mm.model;
 
 import android.database.Cursor;
+import android.database.MergeCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,91 +14,118 @@ import java.util.List;
 public final class cc
 {
   private ISQLiteDatabase db;
-  private bw lvG;
+  private bx onc;
   
-  public cc(ISQLiteDatabase paramISQLiteDatabase, bw parambw)
+  public cc(ISQLiteDatabase paramISQLiteDatabase, bx parambx)
   {
     this.db = paramISQLiteDatabase;
-    this.lvG = parambw;
+    this.onc = parambx;
   }
   
-  private String RY(String paramString)
+  private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
   {
-    AppMethodBeat.i(20392);
-    Object localObject1 = new ArrayList();
-    String str = "select username from rcontact where (username like '%" + paramString + "%' or nickname like '%" + paramString + "%' or alias like '%" + paramString + "%' or pyInitial like '%" + paramString + "%' or quanPin like '%" + paramString + "%' or conRemark like '%" + paramString + "%' )and username not like '%@%' and type & " + d.axY() + "=0 ";
-    Object localObject2 = this.db.rawQuery(str, null, 2);
-    Log.v("Micro.SimpleSearchConversationModel", "contactsql %s", new Object[] { str });
-    while (((Cursor)localObject2).moveToNext())
+    AppMethodBeat.i(20390);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(" and (username in (");
+    localStringBuffer.append("select chatroomname from chatroom where ");
+    if ((paramArrayList2 != null) && (paramArrayList2.size() != 0))
     {
-      str = ((Cursor)localObject2).getString(((Cursor)localObject2).getColumnIndex("username"));
-      if (!str.endsWith("@chatroom")) {
-        ((ArrayList)localObject1).add(str);
-      }
-    }
-    ((Cursor)localObject2).close();
-    if (((ArrayList)localObject1).size() != 0)
-    {
-      localObject2 = new StringBuffer();
-      ((StringBuffer)localObject2).append(" ( rconversation.username in ( select chatroomname from " + "chatroom where ");
-      ((StringBuffer)localObject2).append("memberlist like '%" + paramString + "%'");
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      paramArrayList2 = paramArrayList2.iterator();
+      while (paramArrayList2.hasNext())
       {
-        str = (String)((Iterator)localObject1).next();
-        ((StringBuffer)localObject2).append(" or memberlist like '%" + str + "%'");
+        String str = (String)paramArrayList2.next();
+        localStringBuffer.append("chatroomname != '" + str + "' and ");
       }
-      ((StringBuffer)localObject2).append("))");
     }
-    for (localObject1 = "" + ((StringBuffer)localObject2).toString() + " or ";; localObject1 = "")
+    localStringBuffer.append("(memberlist like '%" + paramString + "%'");
+    paramString = paramArrayList1.iterator();
+    while (paramString.hasNext())
     {
-      paramString = " and ( rconversation.username like '%" + paramString + "%' or " + (String)localObject1 + "rconversation.content like '%" + paramString + "%' or rcontact.nickname like '%" + paramString + "%' or rcontact.alias like '%" + paramString + "%' or rcontact.pyInitial like '%" + paramString + "%' or rcontact.quanPin like '%" + paramString + "%' or rcontact.conRemark like '%" + paramString + "%'  ) ";
-      AppMethodBeat.o(20392);
-      return paramString;
+      paramArrayList1 = (String)paramString.next();
+      localStringBuffer.append(" or memberlist like '%" + paramArrayList1 + "%'");
     }
+    if ((paramArrayList3 != null) && (paramArrayList3.size() != 0))
+    {
+      paramString = paramArrayList3.iterator();
+      while (paramString.hasNext())
+      {
+        paramArrayList1 = (String)paramString.next();
+        localStringBuffer.append(" or chatroomname = '" + paramArrayList1 + "'");
+      }
+    }
+    localStringBuffer.append(")))");
+    paramString = localStringBuffer.toString();
+    AppMethodBeat.o(20390);
+    return paramString;
   }
   
-  public final Cursor a(String paramString1, List<String> paramList, String paramString2)
+  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
   {
-    AppMethodBeat.i(20391);
-    String str2 = " ";
-    String str1 = str2;
-    if (paramString2 != null)
-    {
-      str1 = str2;
-      if (paramString2.length() > 0) {
-        str1 = " and rconversation.username = rcontact." + "username ";
-      }
+    AppMethodBeat.i(20386);
+    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
+    AppMethodBeat.o(20386);
+    return paramString1;
+  }
+  
+  public final Cursor a(String paramString1, String paramString2, List<String> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(20385);
+    paramString1 = a(paramString1, paramString2, paramList, paramBoolean, 1, null);
+    AppMethodBeat.o(20385);
+    return paramString1;
+  }
+  
+  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, boolean paramBoolean, int paramInt, List<String> paramList2)
+  {
+    AppMethodBeat.i(20388);
+    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact ";
+    if (paramInt == 2) {
+      localObject = "select 2, *,rowid from rcontact ";
     }
-    str2 = "select 1,unReadCount, status, " + "isSend, conversationTime, rconversation.username, " + "content, rconversation.msgType, rconversation." + "flag, rcontact.nickname from rconversation," + "rcontact" + " " + " where rconversation.username = rcontact.username" + str1 + Util.nullAsNil(paramString1);
-    str1 = "";
-    paramString1 = str1;
-    if (paramList != null)
+    paramString2 = (String)localObject + this.onc.i(paramString2, null, paramList1) + this.onc.bxD(paramString1) + this.onc.bGD();
+    Log.v("Micro.SimpleSearchConversationModel", paramString2);
+    paramString2 = this.db.rawQuery(paramString2, null);
+    ArrayList localArrayList;
+    if (paramBoolean)
     {
-      paramString1 = str1;
-      if (paramList.size() > 0)
+      localObject = new ArrayList();
+      localArrayList = new ArrayList();
+      while (paramString2.moveToNext())
       {
-        paramList = paramList.iterator();
-        for (paramString1 = ""; paramList.hasNext(); paramString1 = paramString1 + " and rconversation.username != '" + str1 + "'") {
-          str1 = (String)paramList.next();
+        String str = paramString2.getString(paramString2.getColumnIndex("username"));
+        if (!au.bwE(str)) {
+          ((ArrayList)localObject).add(str);
+        } else {
+          localArrayList.add(str);
         }
       }
-    }
-    paramList = str2 + paramString1;
-    paramString1 = paramList;
-    if (paramString2 != null)
-    {
-      paramString1 = paramList;
-      if (paramString2.length() > 0) {
-        paramString1 = paramList + RY(paramString2);
+      if ((paramList2 != null) && (paramList2.size() != 0)) {
+        ((ArrayList)localObject).addAll(paramList2);
       }
+      if (((ArrayList)localObject).size() == 0) {}
     }
-    paramString1 = paramString1 + " order by ";
-    paramString1 = paramString1 + "rconversation.username like '%@chatroom' asc, ";
-    paramString1 = paramString1 + "flag desc, conversationTime desc";
-    Log.v("Micro.SimpleSearchConversationModel", "convsql %s", new Object[] { paramString1 });
-    paramString1 = this.db.rawQuery(paramString1, null);
-    AppMethodBeat.o(20391);
+    for (paramString1 = new MergeCursor(new Cursor[] { paramString2, a(paramString1, (ArrayList)localObject, localArrayList, null, paramList1) });; paramString1 = paramString2)
+    {
+      AppMethodBeat.o(20388);
+      return paramString1;
+    }
+  }
+  
+  public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
+  {
+    AppMethodBeat.i(20389);
+    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + this.onc.i("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.onc.bGD();
+    Log.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
+    paramString = this.db.rawQuery(paramString, null);
+    AppMethodBeat.o(20389);
+    return paramString;
+  }
+  
+  public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
+  {
+    AppMethodBeat.i(20387);
+    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
+    AppMethodBeat.o(20387);
     return paramString1;
   }
 }

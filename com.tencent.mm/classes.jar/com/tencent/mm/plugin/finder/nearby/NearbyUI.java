@@ -1,120 +1,100 @@
 package com.tencent.mm.plugin.finder.nearby;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.c.a.a;
-import com.tencent.mm.plugin.finder.model.au;
-import com.tencent.mm.plugin.finder.nearby.report.d;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.core.core.f.a.a;
+import com.tencent.mm.plugin.finder.model.ay;
+import com.tencent.mm.plugin.finder.nearby.report.g;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.findersdk.a.ap;
+import com.tencent.mm.plugin.findersdk.a.by;
 import com.tencent.mm.ui.component.UIComponent;
-import java.util.HashMap;
+import com.tencent.mm.ui.component.l;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.ai;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/NearbyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "finish", "", "getReportTag", "", "getReportType", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "Companion", "plugin-finder-nearby_release"})
+@com.tencent.mm.ui.widget.pulldown.c(0)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/NearbyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "finish", "", "getReportTag", "", "getReportType", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "Companion", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NearbyUI
   extends MMFinderUI
 {
-  public static final a zCQ;
-  private HashMap _$_findViewCache;
+  public static final a EFB;
   
   static
   {
-    AppMethodBeat.i(201012);
-    zCQ = new a((byte)0);
-    AppMethodBeat.o(201012);
+    AppMethodBeat.i(339791);
+    EFB = new a((byte)0);
+    AppMethodBeat.o(339791);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(201017);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(201017);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(201015);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(201015);
-    return localView1;
-  }
-  
-  public final int duR()
+  public final int edC()
   {
     return 3;
   }
   
-  public final String dvl()
+  public final String efe()
   {
     return "NearbyUI";
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(201005);
-    com.tencent.mm.plugin.finder.nearby.report.e locale = com.tencent.mm.plugin.finder.nearby.report.e.zJs;
-    com.tencent.mm.plugin.finder.nearby.report.e.dMB();
+    AppMethodBeat.i(339813);
+    g localg = g.ERj;
+    g.eGO();
     super.finish();
-    AppMethodBeat.o(201005);
+    AppMethodBeat.o(339813);
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(201001);
-    Set localSet = ak.setOf(new Class[] { e.class, c.class, b.class });
-    AppMethodBeat.o(201001);
+    AppMethodBeat.i(339798);
+    Set localSet = ar.setOf(new Class[] { e.class, c.class, b.class, l.a(ai.cz(by.class)), com.tencent.mm.plugin.finder.nearby.accessibility.a.class, l.a(ai.cz(ap.class)) });
+    AppMethodBeat.o(339798);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(201003);
+    AppMethodBeat.i(339807);
     super.onCreate(paramBundle);
-    paramBundle = au.zBf;
-    au.startTimer();
-    AppMethodBeat.o(201003);
+    paramBundle = com.tencent.mm.plugin.finder.nearby.report.b.EQs;
+    com.tencent.mm.plugin.finder.nearby.report.b.eGI();
+    paramBundle = ay.EDk;
+    ay.startTimer();
+    AppMethodBeat.o(339807);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(201007);
+    AppMethodBeat.i(339821);
     super.onDestroy();
-    Object localObject = au.zBf;
-    au.stopTimer();
-    localObject = d.zJm;
-    d.clear();
-    if (!com.tencent.mm.q.a.q(null, false))
+    Object localObject = ay.EDk;
+    ay.stopTimer();
+    localObject = com.tencent.mm.plugin.finder.nearby.report.e.EQU;
+    com.tencent.mm.plugin.finder.nearby.report.e.clear();
+    if (!com.tencent.mm.n.a.q(null, false))
     {
-      localObject = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.T(true, true);
-      localObject = com.tencent.mm.live.core.core.c.a.kqk;
+      localObject = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      com.tencent.mm.plugin.finder.live.utils.a.ad(true, true);
+      localObject = com.tencent.mm.live.core.core.f.a.mUf;
       a.a.clear();
     }
-    AppMethodBeat.o(201007);
+    ((com.tencent.d.a.a.a.b)h.az(com.tencent.d.a.a.a.b.class)).cancelCirculationFillingActivityIconOfSourceType(1);
+    AppMethodBeat.o(339821);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(201002);
+    AppMethodBeat.i(339803);
     super.onNewIntent(paramIntent);
-    AppMethodBeat.o(201002);
+    AppMethodBeat.o(339803);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -123,7 +103,7 @@ public final class NearbyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/NearbyUI$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/NearbyUI$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

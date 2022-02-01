@@ -1,35 +1,30 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hf;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.pluginsdk.permission.b;
 
 final class NoteEditorUI$34
-  extends IListener<hf>
+  implements DialogInterface.OnClickListener
 {
   NoteEditorUI$34(NoteEditorUI paramNoteEditorUI)
   {
     AppMethodBeat.i(179747);
-    this.__eventId = hf.class.getName().hashCode();
     AppMethodBeat.o(179747);
   }
   
-  private boolean hea()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(179748);
-    Log.i("MicroMsg.Note.NoteEditorUI", "FavNoteSaveEvent, isFinish:%s", new Object[] { Boolean.valueOf(NoteEditorUI.am(this.QJv)) });
-    this.QJv.goBack();
-    if (!NoteEditorUI.am(this.QJv)) {
-      this.QJv.finish();
-    }
-    AppMethodBeat.o(179748);
-    return true;
+    AppMethodBeat.i(275234);
+    paramDialogInterface.dismiss();
+    b.lx(this.XCU.getContext());
+    AppMethodBeat.o(275234);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI.34
  * JD-Core Version:    0.7.0.1
  */

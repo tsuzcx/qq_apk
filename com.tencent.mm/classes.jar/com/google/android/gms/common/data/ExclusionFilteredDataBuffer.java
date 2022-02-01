@@ -1,13 +1,11 @@
 package com.google.android.gms.common.data;
 
 import android.text.TextUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-@VisibleForTesting
 public final class ExclusionFilteredDataBuffer<T>
   extends FilteredDataBuffer<T>
   implements DataBufferObserver.Observable, ExclusionFilterable
@@ -359,7 +357,7 @@ public final class ExclusionFilteredDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.ExclusionFilteredDataBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -3,216 +3,206 @@ package com.tencent.mm.plugin.finder.nearby.live.square.operation;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.extension.reddot.m;
+import com.tencent.mm.plugin.finder.extension.reddot.q;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
 import com.tencent.mm.plugin.finder.nearby.f.d;
 import com.tencent.mm.plugin.finder.nearby.live.square.NearbyLiveSquareFragment;
 import com.tencent.mm.plugin.finder.nearby.live.square.page.NearbyLiveSquareTabFragment;
-import com.tencent.mm.plugin.finder.nearby.report.e;
+import com.tencent.mm.plugin.finder.nearby.report.g;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment;", "Lcom/tencent/mm/plugin/finder/nearby/live/square/NearbyLiveSquareFragment;", "()V", "clickTabIdFromOut", "", "getClickTabIdFromOut", "()Ljava/lang/String;", "setClickTabIdFromOut", "(Ljava/lang/String;)V", "commentSceneFromOut", "", "getCommentSceneFromOut", "()I", "setCommentSceneFromOut", "(I)V", "isFirstOnResume", "", "lastClickActionBarTime", "", "getClickTabId", "getCommentScene", "getReportType", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment;", "Lcom/tencent/mm/plugin/finder/nearby/live/square/NearbyLiveSquareFragment;", "()V", "clickTabIdFromOut", "", "getClickTabIdFromOut", "()Ljava/lang/String;", "setClickTabIdFromOut", "(Ljava/lang/String;)V", "commentSceneFromOut", "", "getCommentSceneFromOut", "()I", "setCommentSceneFromOut", "(I)V", "isFirstOnResume", "", "lastClickActionBarTime", "", "getClickTabId", "getCommentScene", "getReportType", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "onDestroy", "onPause", "onResume", "onViewCreated", "view", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveOperationFragment
   extends NearbyLiveSquareFragment
 {
-  private HashMap _$_findViewCache;
-  private boolean zEs = true;
-  private String zGA = "9001";
-  private long zGr;
-  private int zGz = 9500001;
+  private long ELN;
+  private int ELS = 9500001;
+  private String ELT = "9001";
+  private boolean isFirstOnResume = true;
   
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderLiveOperationFragment paramFinderLiveOperationFragment, View paramView)
   {
-    AppMethodBeat.i(201602);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    AppMethodBeat.i(341155);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveOperationFragment);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveOperationFragment, "this$0");
+    paramFinderLiveOperationFragment.eEp();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(341155);
+  }
+  
+  private static final void b(FinderLiveOperationFragment paramFinderLiveOperationFragment, View paramView)
+  {
+    AppMethodBeat.i(341162);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveOperationFragment);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveOperationFragment, "this$0");
+    long l = System.currentTimeMillis();
+    if (l - paramFinderLiveOperationFragment.ELN < 300L) {
+      paramFinderLiveOperationFragment.eEr();
     }
-    AppMethodBeat.o(201602);
+    paramFinderLiveOperationFragment.ELN = l;
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(341162);
   }
   
-  public final String dLv()
+  public final String eEt()
   {
-    return this.zGA;
+    return this.ELT;
   }
   
-  public final int duR()
+  public final int edC()
   {
     return 3;
   }
   
   public final int getCommentScene()
   {
-    return this.zGz;
+    return this.ELS;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(201573);
+    AppMethodBeat.i(341184);
     super.onCreate(paramBundle);
     paramBundle = getArguments();
-    if (paramBundle != null) {}
-    for (int i = paramBundle.getInt("key_comment_scene", this.zGz);; i = this.zGz)
+    int i;
+    if (paramBundle == null)
     {
-      this.zGz = i;
+      paramBundle = null;
+      if (paramBundle != null) {
+        break label92;
+      }
+      i = this.ELS;
+      label30:
+      this.ELS = i;
       paramBundle = getArguments();
-      if (paramBundle != null)
-      {
-        String str = paramBundle.getString("key_click_tab_id");
-        paramBundle = str;
-        if (str != null) {}
+      if (paramBundle != null) {
+        break label100;
       }
-      else
-      {
-        paramBundle = this.zGA;
+    }
+    label92:
+    label100:
+    for (paramBundle = null;; paramBundle = paramBundle.getString("key_click_tab_id"))
+    {
+      Object localObject = paramBundle;
+      if (paramBundle == null) {
+        localObject = this.ELT;
       }
-      this.zGA = paramBundle;
-      AppMethodBeat.o(201573);
+      this.ELT = ((String)localObject);
+      paramBundle = q.ASF;
+      q.eaZ();
+      AppMethodBeat.o(341184);
       return;
+      paramBundle = Integer.valueOf(paramBundle.getInt("key_from_comment_scene", this.ELS));
+      break;
+      i = paramBundle.intValue();
+      break label30;
     }
   }
   
   public final View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AppMethodBeat.i(201587);
-    p.k(paramLayoutInflater, "inflater");
+    AppMethodBeat.i(341223);
+    s.u(paramLayoutInflater, "inflater");
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if ((getActivity() instanceof MMFinderUI))
     {
       paramViewGroup = getActivity();
       if (paramViewGroup == null)
       {
-        paramLayoutInflater = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.MMFinderUI");
-        AppMethodBeat.o(201587);
+        paramLayoutInflater = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.MMFinderUI");
+        AppMethodBeat.o(341223);
         throw paramLayoutInflater;
       }
-      paramViewGroup = (ConstraintLayout)((FragmentActivity)paramViewGroup).findViewById(f.d.zCX);
+      paramViewGroup = (ConstraintLayout)((MMFinderUI)paramViewGroup).findViewById(f.d.EFR);
       if (paramViewGroup != null) {
-        paramViewGroup.setOnClickListener((View.OnClickListener)new a(this));
+        paramViewGroup.setOnClickListener(new FinderLiveOperationFragment..ExternalSyntheticLambda0(this));
       }
       paramViewGroup = getActivity();
       if (paramViewGroup == null)
       {
-        paramLayoutInflater = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.MMFinderUI");
-        AppMethodBeat.o(201587);
+        paramLayoutInflater = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.MMFinderUI");
+        AppMethodBeat.o(341223);
         throw paramLayoutInflater;
       }
-      paramViewGroup = (TextView)((FragmentActivity)paramViewGroup).findViewById(f.d.nearby_menu_live);
+      paramViewGroup = (TextView)((MMFinderUI)paramViewGroup).findViewById(f.d.nearby_menu_live);
       if (paramViewGroup != null) {
         paramViewGroup.setTextSize(1, 15.0F);
       }
       paramViewGroup = getActivity();
       if (paramViewGroup == null)
       {
-        paramLayoutInflater = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.MMFinderUI");
-        AppMethodBeat.o(201587);
+        paramLayoutInflater = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.ui.MMFinderUI");
+        AppMethodBeat.o(341223);
         throw paramLayoutInflater;
       }
-      paramViewGroup = (TextView)((FragmentActivity)paramViewGroup).findViewById(f.d.zCY);
+      paramViewGroup = (TextView)((MMFinderUI)paramViewGroup).findViewById(f.d.EFS);
       if (paramViewGroup != null) {
-        paramViewGroup.setOnClickListener((View.OnClickListener)new b(this));
+        paramViewGroup.setOnClickListener(new FinderLiveOperationFragment..ExternalSyntheticLambda1(this));
       }
     }
-    AppMethodBeat.o(201587);
+    AppMethodBeat.o(341223);
     return paramLayoutInflater;
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(201594);
+    AppMethodBeat.i(341248);
     super.onDestroy();
-    m localm = m.xuU;
-    m.dse();
-    AppMethodBeat.o(201594);
+    q localq = q.ASF;
+    q.eaY();
+    AppMethodBeat.o(341248);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(201593);
+    AppMethodBeat.i(341242);
     super.onPause();
     if (getActivity() != null)
     {
-      NearbyLiveSquareTabFragment localNearbyLiveSquareTabFragment = ((com.tencent.mm.plugin.finder.nearby.live.square.b)component(com.tencent.mm.plugin.finder.nearby.live.square.b.class)).dMe();
-      com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-      com.tencent.mm.plugin.finder.nearby.live.report.a.c((AbsNearByFragment)localNearbyLiveSquareTabFragment);
+      NearbyLiveSquareTabFragment localNearbyLiveSquareTabFragment = ((com.tencent.mm.plugin.finder.nearby.live.square.b)component(com.tencent.mm.plugin.finder.nearby.live.square.b.class)).eFC();
+      com.tencent.mm.plugin.finder.nearby.live.report.a.ELu.c((AbsNearByFragment)localNearbyLiveSquareTabFragment);
     }
-    AppMethodBeat.o(201593);
+    AppMethodBeat.o(341242);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(201590);
+    AppMethodBeat.i(341233);
     super.onResume();
-    Log.i("NearbyLiveSquareFragment", "onResume() isFirstOnResume:" + this.zEs);
-    Object localObject = e.zJs;
-    e.dMA();
-    if ((!this.zEs) && (getActivity() != null))
+    Log.i("NearbyLiveSquareFragment", s.X("onResume() isFirstOnResume:", Boolean.valueOf(this.isFirstOnResume)));
+    Object localObject = g.ERj;
+    g.eGN();
+    if ((!this.isFirstOnResume) && (getActivity() != null))
     {
-      localObject = ((com.tencent.mm.plugin.finder.nearby.live.square.b)component(com.tencent.mm.plugin.finder.nearby.live.square.b.class)).dMe();
-      com.tencent.mm.plugin.finder.nearby.live.report.a locala = com.tencent.mm.plugin.finder.nearby.live.report.a.zGc;
-      com.tencent.mm.plugin.finder.nearby.live.report.a.b((AbsNearByFragment)localObject);
+      localObject = ((com.tencent.mm.plugin.finder.nearby.live.square.b)component(com.tencent.mm.plugin.finder.nearby.live.square.b.class)).eFC();
+      com.tencent.mm.plugin.finder.nearby.live.report.a.ELu.b((AbsNearByFragment)localObject);
     }
-    this.zEs = false;
-    AppMethodBeat.o(201590);
+    this.isFirstOnResume = false;
+    AppMethodBeat.o(341233);
   }
   
   public final void onViewCreated(View paramView, Bundle paramBundle)
   {
-    AppMethodBeat.i(201575);
-    p.k(paramView, "view");
+    AppMethodBeat.i(341189);
+    s.u(paramView, "view");
     super.onViewCreated(paramView, paramBundle);
     super.onUserVisibleFocused();
-    AppMethodBeat.o(201575);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(FinderLiveOperationFragment paramFinderLiveOperationFragment) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(200394);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment$onCreateView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.zGB.dLs();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment$onCreateView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(200394);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(FinderLiveOperationFragment paramFinderLiveOperationFragment) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(200741);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment$onCreateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      long l = System.currentTimeMillis();
-      if (l - FinderLiveOperationFragment.a(this.zGB) < 300L) {
-        this.zGB.dLu();
-      }
-      FinderLiveOperationFragment.a(this.zGB, l);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/nearby/live/square/operation/FinderLiveOperationFragment$onCreateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(200741);
-    }
+    AppMethodBeat.o(341189);
   }
 }
 

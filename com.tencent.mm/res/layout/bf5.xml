@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/azq" android:paddingLeft="10.0dip" style="@style/nr"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-        <ImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ftu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:src="@drawable/bja" />
-        <TextView android:textColor="@color/ag2" android:gravity="center_vertical" android:id="@id/fuf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:shadowColor="@color/fm" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" android:drawablePadding="3.0dip" style="@style/mi" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h7i" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <TextView android:textColor="@color/ag2" android:layout_gravity="center_vertical" android:id="@id/fue" android:maxWidth="100.0dip" style="@style/mk" />
-    </LinearLayout>
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/j_" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/FG_1" android:gravity="center" android:id="@android:id/title" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/g" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lk" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center" android:id="@id/j9" android:paddingLeft="@dimen/m2" android:paddingTop="@dimen/k" android:paddingRight="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_qrcode" android:contentDescription="@string/ike" app:iconColor="@color/FG_1" />
+</LinearLayout>

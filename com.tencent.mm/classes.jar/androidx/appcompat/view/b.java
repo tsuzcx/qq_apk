@@ -7,7 +7,7 @@ import android.view.View;
 
 public abstract class b
 {
-  boolean jL;
+  boolean kH;
   Object mTag;
   
   public abstract void finish();
@@ -41,7 +41,7 @@ public abstract class b
   
   public void setTitleOptionalHint(boolean paramBoolean)
   {
-    this.jL = paramBoolean;
+    this.kH = paramBoolean;
   }
   
   public static abstract interface a
@@ -57,7 +57,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.b
  * JD-Core Version:    0.7.0.1
  */

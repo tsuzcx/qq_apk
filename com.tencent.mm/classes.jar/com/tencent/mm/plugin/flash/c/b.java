@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.flash.c;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.bg;
-import com.tencent.mm.f.b.a.bh;
-import com.tencent.mm.f.b.a.bi;
-import com.tencent.mm.f.b.a.bj;
+import com.tencent.mm.autogen.mmdata.rpt.cc;
+import com.tencent.mm.autogen.mmdata.rpt.cd;
+import com.tencent.mm.autogen.mmdata.rpt.ce;
+import com.tencent.mm.autogen.mmdata.rpt.cf;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,53 +16,135 @@ import org.json.JSONObject;
 
 public final class b
 {
-  private static bi BBQ = null;
-  private static long BBR = 0L;
-  private static bj BBS = null;
-  private static bg BBT = null;
-  private static JSONArray BBU;
-  private static JSONArray BBV;
-  private static String BBW = "";
+  private static cc HjA = null;
+  private static JSONArray HjB;
+  private static JSONArray HjC;
+  private static String HjD = "";
+  private static ce Hjx = null;
+  private static long Hjy = 0L;
+  private static cf Hjz = null;
   
-  public static void B(int paramInt1, int paramInt2, String paramString)
+  private static boolean A(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(192819);
-    bh localbh = new bh();
-    localbh.gmf = 1;
-    localbh.gmg = paramInt1;
-    localbh.ggm = paramInt2;
-    localbh.jJ(paramString);
-    localbh.bpa();
-    AppMethodBeat.o(192819);
+    AppMethodBeat.i(264890);
+    if (paramJSONArray.toString().length() <= 1000)
+    {
+      AppMethodBeat.o(264890);
+      return true;
+    }
+    AppMethodBeat.o(264890);
+    return false;
   }
   
-  public static void Ss(int paramInt)
+  public static void F(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(192753);
-    bi localbi = epM();
-    localbi.gmi = paramInt;
-    if (BBV != null) {
-      localbi.jL(BBV.toString().replace(',', ';'));
+    AppMethodBeat.i(264897);
+    cd localcd = new cd();
+    localcd.ivj = 1;
+    localcd.ivk = paramInt1;
+    localcd.inj = paramInt2;
+    localcd.lr(paramString);
+    localcd.bMH();
+    AppMethodBeat.o(264897);
+  }
+  
+  /* Error */
+  public static void F(String paramString, Object paramObject)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 86
+    //   5: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 88	com/tencent/mm/plugin/flash/c/b:HjC	Lorg/json/JSONArray;
+    //   11: ifnonnull +13 -> 24
+    //   14: new 43	org/json/JSONArray
+    //   17: dup
+    //   18: invokespecial 89	org/json/JSONArray:<init>	()V
+    //   21: putstatic 88	com/tencent/mm/plugin/flash/c/b:HjC	Lorg/json/JSONArray;
+    //   24: ldc 91
+    //   26: ldc 93
+    //   28: iconst_2
+    //   29: anewarray 4	java/lang/Object
+    //   32: dup
+    //   33: iconst_0
+    //   34: aload_0
+    //   35: aastore
+    //   36: dup
+    //   37: iconst_1
+    //   38: aload_1
+    //   39: aastore
+    //   40: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   43: getstatic 88	com/tencent/mm/plugin/flash/c/b:HjC	Lorg/json/JSONArray;
+    //   46: invokestatic 100	com/tencent/mm/plugin/flash/c/b:A	(Lorg/json/JSONArray;)Z
+    //   49: ifeq +26 -> 75
+    //   52: new 102	org/json/JSONObject
+    //   55: dup
+    //   56: invokespecial 103	org/json/JSONObject:<init>	()V
+    //   59: astore_2
+    //   60: aload_2
+    //   61: aload_0
+    //   62: aload_1
+    //   63: invokevirtual 107	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   66: pop
+    //   67: getstatic 88	com/tencent/mm/plugin/flash/c/b:HjC	Lorg/json/JSONArray;
+    //   70: aload_2
+    //   71: invokevirtual 110	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   74: pop
+    //   75: ldc 86
+    //   77: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: ldc 2
+    //   82: monitorexit
+    //   83: return
+    //   84: astore_0
+    //   85: goto -18 -> 67
+    //   88: astore_0
+    //   89: ldc 2
+    //   91: monitorexit
+    //   92: aload_0
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	paramString	String
+    //   0	94	1	paramObject	Object
+    //   59	12	2	localJSONObject	JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   60	67	84	org/json/JSONException
+    //   3	24	88	finally
+    //   24	60	88	finally
+    //   60	67	88	finally
+    //   67	75	88	finally
+    //   75	80	88	finally
+  }
+  
+  public static void VL(int paramInt)
+  {
+    AppMethodBeat.i(264820);
+    ce localce = fuO();
+    localce.ivm = paramInt;
+    if (HjC != null) {
+      localce.lt(HjC.toString().replace(',', ';'));
     }
-    if (BBU != null) {
-      localbi.jO(BBU.toString().replace(',', ';'));
+    if (HjB != null) {
+      localce.lw(HjB.toString().replace(',', ';'));
     }
-    localbi.jK(BBW);
-    if (!TextUtils.isEmpty(BBW)) {}
+    localce.ls(HjD);
+    if (!TextUtils.isEmpty(HjD)) {}
     try
     {
-      String[] arrayOfString = BBW.split("-");
+      String[] arrayOfString = HjD.split("-");
       if (arrayOfString.length > 0) {
-        localbi.gmk = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);
+        localce.ivo = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);
       }
       label108:
-      BBR = BBQ.gmv;
-      localbi.bpa();
-      BBQ = null;
-      BBW = "";
-      BBV = null;
-      BBU = null;
-      AppMethodBeat.o(192753);
+      Hjy = Hjx.ivz;
+      localce.bMH();
+      Hjx = null;
+      HjD = "";
+      HjC = null;
+      HjB = null;
+      AppMethodBeat.o(264820);
       return;
     }
     catch (Exception localException)
@@ -71,28 +153,28 @@ public final class b
     }
   }
   
-  public static void St(int paramInt)
+  public static void VM(int paramInt)
   {
-    AppMethodBeat.i(192763);
-    bj localbj = epN();
-    localbj.gmi = paramInt;
-    if (BBV != null) {
-      localbj.jQ(BBV.toString().replace(',', ';'));
+    AppMethodBeat.i(264847);
+    cf localcf = fuP();
+    localcf.ivm = paramInt;
+    if (HjC != null) {
+      localcf.ly(HjC.toString().replace(',', ';'));
     }
-    localbj.jP(BBW);
-    if (!TextUtils.isEmpty(BBW)) {}
+    localcf.lx(HjD);
+    if (!TextUtils.isEmpty(HjD)) {}
     try
     {
-      String[] arrayOfString = BBW.split("-");
+      String[] arrayOfString = HjD.split("-");
       if (arrayOfString.length > 0) {
-        localbj.gmk = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);
+        localcf.ivo = Integer.parseInt(arrayOfString[(arrayOfString.length - 1)]);
       }
       label84:
-      localbj.bpa();
-      BBS = null;
-      BBW = "";
-      BBV = null;
-      AppMethodBeat.o(192763);
+      localcf.bMH();
+      Hjz = null;
+      HjD = "";
+      HjC = null;
+      AppMethodBeat.o(264847);
       return;
     }
     catch (Exception localException)
@@ -101,271 +183,189 @@ public final class b
     }
   }
   
-  public static void Su(int paramInt)
+  public static void VN(int paramInt)
   {
-    AppMethodBeat.i(192813);
-    if (TextUtils.isEmpty(BBW))
+    AppMethodBeat.i(264894);
+    if (TextUtils.isEmpty(HjD))
     {
-      BBW += String.valueOf(paramInt);
-      AppMethodBeat.o(192813);
+      HjD += String.valueOf(paramInt);
+      AppMethodBeat.o(264894);
       return;
     }
-    BBW = BBW + "-" + paramInt;
-    AppMethodBeat.o(192813);
+    HjD = HjD + "-" + paramInt;
+    AppMethodBeat.o(264894);
   }
   
-  public static void aHh(String paramString)
+  public static void aDA(String paramString)
   {
-    AppMethodBeat.i(192747);
-    epM().gmD = System.currentTimeMillis();
+    AppMethodBeat.i(264877);
+    F(paramString, Integer.valueOf(0));
+    AppMethodBeat.o(264877);
+  }
+  
+  public static void aDB(String paramString)
+  {
+    AppMethodBeat.i(264886);
+    if ((HjC != null) && (HjC.toString().contains(paramString)))
+    {
+      AppMethodBeat.o(264886);
+      return;
+    }
+    aDA(paramString);
+    AppMethodBeat.o(264886);
+  }
+  
+  public static void aDz(String paramString)
+  {
+    AppMethodBeat.i(264807);
+    fuO().ivH = System.currentTimeMillis();
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      Ss(localJSONObject.optInt("err_code", localJSONObject.optInt("errorcode", 0)));
-      AppMethodBeat.o(192747);
+      VL(localJSONObject.optInt("err_code", localJSONObject.optInt("errorcode", 0)));
+      AppMethodBeat.o(264807);
       return;
     }
     catch (JSONException localJSONException)
     {
       Log.printErrStackTrace("MicroMsg.FaceFlashManagerError", localJSONException, "parse face fail result error.%s", new Object[] { paramString });
-      AppMethodBeat.o(192747);
+      AppMethodBeat.o(264807);
     }
   }
   
-  public static void aHi(String paramString)
+  public static void aS(Intent paramIntent)
   {
-    AppMethodBeat.i(192793);
-    s(paramString, Integer.valueOf(0));
-    AppMethodBeat.o(192793);
-  }
-  
-  public static void aHj(String paramString)
-  {
-    AppMethodBeat.i(192806);
-    if ((BBV != null) && (BBV.toString().contains(paramString)))
-    {
-      AppMethodBeat.o(192806);
-      return;
-    }
-    aHi(paramString);
-    AppMethodBeat.o(192806);
-  }
-  
-  public static void az(Intent paramIntent)
-  {
-    AppMethodBeat.i(192775);
+    AppMethodBeat.i(264858);
     if (paramIntent != null)
     {
-      epO().glT = System.currentTimeMillis();
-      bg localbg = epO();
-      localbg.glU = localbg.z("functionName", paramIntent.getStringExtra("key_function_name"), true);
+      fuQ().iuX = System.currentTimeMillis();
+      cc localcc = fuQ();
+      localcc.iuY = localcc.F("functionName", paramIntent.getStringExtra("key_function_name"), true);
       int i = paramIntent.getIntExtra("key_business_type", -1);
-      epO().glW = i;
-      localbg = epO();
-      localbg.gfg = localbg.z("appId", paramIntent.getStringExtra("appId"), true);
-      epO().glZ = 1L;
-      epO().gma = paramIntent.getLongExtra("confirm_page_timestamp", -1L);
-      epO().gmb = System.currentTimeMillis();
-      epO().gme = paramIntent.getIntExtra("check_alive_type", -1);
+      fuQ().iva = i;
+      localcc = fuQ();
+      localcc.ilF = localcc.F("appId", paramIntent.getStringExtra("appId"), true);
+      fuQ().ivd = 1L;
+      fuQ().ive = paramIntent.getLongExtra("confirm_page_timestamp", -1L);
+      fuQ().ivf = System.currentTimeMillis();
+      fuQ().ivi = paramIntent.getIntExtra("check_alive_type", -1);
     }
-    AppMethodBeat.o(192775);
+    AppMethodBeat.o(264858);
   }
   
-  public static void bs(int paramInt, String paramString)
+  public static void bW(int paramInt, String paramString)
   {
-    AppMethodBeat.i(192826);
-    bh localbh = new bh();
-    localbh.gmf = 2;
-    localbh.gmg = 0;
-    localbh.ggm = paramInt;
-    localbh.jJ(paramString);
-    localbh.bpa();
-    AppMethodBeat.o(192826);
+    AppMethodBeat.i(264900);
+    cd localcd = new cd();
+    localcd.ivj = 2;
+    localcd.ivk = 0;
+    localcd.inj = paramInt;
+    localcd.lr(paramString);
+    localcd.bMH();
+    AppMethodBeat.o(264900);
   }
   
-  public static bi epM()
+  public static void fh(String paramString, int paramInt)
   {
-    AppMethodBeat.i(192741);
-    bi localbi;
-    if (BBQ == null)
+    AppMethodBeat.i(264840);
+    try
     {
-      localbi = new bi();
-      BBQ = localbi;
-      localbi.gmv = BBR;
-      if (!ar.hIE()) {
+      VM(new JSONObject(paramString).optInt("errorcode", paramInt));
+      AppMethodBeat.o(264840);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.printErrStackTrace("MicroMsg.FaceFlashManagerError", localJSONException, "parse face fail result error.%s", new Object[] { paramString });
+      AppMethodBeat.o(264840);
+    }
+  }
+  
+  public static ce fuO()
+  {
+    AppMethodBeat.i(264793);
+    ce localce;
+    if (Hjx == null)
+    {
+      localce = new ce();
+      Hjx = localce;
+      localce.ivz = Hjy;
+      if (!aw.jkP()) {
         break label58;
       }
     }
     label58:
     for (int i = 2;; i = 1)
     {
-      BBQ.gmI = i;
-      localbi = BBQ;
-      AppMethodBeat.o(192741);
-      return localbi;
+      Hjx.ivL = i;
+      localce = Hjx;
+      AppMethodBeat.o(264793);
+      return localce;
     }
   }
   
-  public static bj epN()
+  public static cf fuP()
   {
-    AppMethodBeat.i(192755);
-    if (BBS == null) {
-      BBS = new bj();
+    AppMethodBeat.i(264831);
+    if (Hjz == null) {
+      Hjz = new cf();
     }
-    bj localbj = BBS;
-    AppMethodBeat.o(192755);
-    return localbj;
+    cf localcf = Hjz;
+    AppMethodBeat.o(264831);
+    return localcf;
   }
   
-  public static bg epO()
+  public static cc fuQ()
   {
-    AppMethodBeat.i(192766);
-    if (BBT == null) {
-      BBT = new bg();
+    AppMethodBeat.i(264851);
+    if (HjA == null) {
+      HjA = new cc();
     }
-    bg localbg = BBT;
-    AppMethodBeat.o(192766);
-    return localbg;
+    cc localcc = HjA;
+    AppMethodBeat.o(264851);
+    return localcc;
   }
   
-  public static void es(String paramString, int paramInt)
+  public static void q(HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(192758);
-    try
-    {
-      St(new JSONObject(paramString).optInt("errorcode", paramInt));
-      AppMethodBeat.o(192758);
-      return;
+    AppMethodBeat.i(264871);
+    if (HjB == null) {
+      HjB = new JSONArray();
     }
-    catch (JSONException localJSONException)
-    {
-      Log.printErrStackTrace("MicroMsg.FaceFlashManagerError", localJSONException, "parse face fail result error.%s", new Object[] { paramString });
-      AppMethodBeat.o(192758);
-    }
-  }
-  
-  public static void n(HashMap<String, Object> paramHashMap)
-  {
-    AppMethodBeat.i(192790);
-    if (BBU == null) {
-      BBU = new JSONArray();
-    }
-    if ((x(BBU)) && (paramHashMap != null) && (paramHashMap.size() > 0))
+    if ((A(HjB)) && (paramHashMap != null) && (paramHashMap.size() > 0))
     {
       paramHashMap = new JSONObject(paramHashMap);
       Log.i("MicroMsg.FaceFlashManagerReport", "updateFaceSdkState:%s", new Object[] { paramHashMap });
-      if (BBU.length() >= 5)
+      if (HjB.length() >= 5)
       {
-        BBU.remove(0);
-        BBU.put(paramHashMap);
+        HjB.remove(0);
+        HjB.put(paramHashMap);
       }
     }
-    AppMethodBeat.o(192790);
+    AppMethodBeat.o(264871);
   }
   
-  public static void rL(boolean paramBoolean)
+  public static void vC(boolean paramBoolean)
   {
-    AppMethodBeat.i(192782);
+    AppMethodBeat.i(264865);
     Log.i("MicroMsg.FaceFlashManagerReport", "doReport14560 success:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    bg localbg = epO();
+    cc localcc = fuQ();
     if (paramBoolean) {}
     for (long l = 1L;; l = 0L)
     {
-      localbg.glX = l;
-      epO().glY = (System.currentTimeMillis() - epO().glT);
-      epO().gmd = System.currentTimeMillis();
-      epO().bpa();
-      BBT = null;
-      AppMethodBeat.o(192782);
+      localcc.ivb = l;
+      fuQ().ivc = (System.currentTimeMillis() - fuQ().iuX);
+      fuQ().ivh = System.currentTimeMillis();
+      fuQ().bMH();
+      HjA = null;
+      AppMethodBeat.o(264865);
       return;
     }
-  }
-  
-  /* Error */
-  public static void s(String paramString, Object paramObject)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc_w 364
-    //   6: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 82	com/tencent/mm/plugin/flash/c/b:BBV	Lorg/json/JSONArray;
-    //   12: ifnonnull +13 -> 25
-    //   15: new 84	org/json/JSONArray
-    //   18: dup
-    //   19: invokespecial 310	org/json/JSONArray:<init>	()V
-    //   22: putstatic 82	com/tencent/mm/plugin/flash/c/b:BBV	Lorg/json/JSONArray;
-    //   25: ldc_w 325
-    //   28: ldc_w 366
-    //   31: iconst_2
-    //   32: anewarray 4	java/lang/Object
-    //   35: dup
-    //   36: iconst_0
-    //   37: aload_0
-    //   38: aastore
-    //   39: dup
-    //   40: iconst_1
-    //   41: aload_1
-    //   42: aastore
-    //   43: invokestatic 330	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   46: getstatic 82	com/tencent/mm/plugin/flash/c/b:BBV	Lorg/json/JSONArray;
-    //   49: invokestatic 314	com/tencent/mm/plugin/flash/c/b:x	(Lorg/json/JSONArray;)Z
-    //   52: ifeq +26 -> 78
-    //   55: new 182	org/json/JSONObject
-    //   58: dup
-    //   59: invokespecial 367	org/json/JSONObject:<init>	()V
-    //   62: astore_2
-    //   63: aload_2
-    //   64: aload_0
-    //   65: aload_1
-    //   66: invokevirtual 370	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   69: pop
-    //   70: getstatic 82	com/tencent/mm/plugin/flash/c/b:BBV	Lorg/json/JSONArray;
-    //   73: aload_2
-    //   74: invokevirtual 341	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
-    //   77: pop
-    //   78: ldc_w 364
-    //   81: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   84: ldc 2
-    //   86: monitorexit
-    //   87: return
-    //   88: astore_0
-    //   89: goto -19 -> 70
-    //   92: astore_0
-    //   93: ldc 2
-    //   95: monitorexit
-    //   96: aload_0
-    //   97: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	98	0	paramString	String
-    //   0	98	1	paramObject	Object
-    //   62	12	2	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   63	70	88	org/json/JSONException
-    //   3	25	92	finally
-    //   25	63	92	finally
-    //   63	70	92	finally
-    //   70	78	92	finally
-    //   78	84	92	finally
-  }
-  
-  private static boolean x(JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(192808);
-    if (paramJSONArray.toString().length() <= 1000)
-    {
-      AppMethodBeat.o(192808);
-      return true;
-    }
-    AppMethodBeat.o(192808);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.c.b
  * JD-Core Version:    0.7.0.1
  */

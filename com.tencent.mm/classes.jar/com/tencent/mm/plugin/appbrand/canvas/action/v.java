@@ -16,8 +16,8 @@ public final class v
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, int paramInt)
   {
     AppMethodBeat.i(144935);
-    paramd.nTw.aG(paramInt / 255.0F);
-    paramd.nTx.aG(paramInt / 255.0F);
+    paramd.qTi.bE(paramInt / 255.0F);
+    paramd.qTj.bE(paramInt / 255.0F);
     AppMethodBeat.o(144935);
     return true;
   }
@@ -54,7 +54,7 @@ public final class v
     return false;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144933);
     SetGlobalAlphaActionArg localSetGlobalAlphaActionArg = new SetGlobalAlphaActionArg();
@@ -69,7 +69,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.v
  * JD-Core Version:    0.7.0.1
  */

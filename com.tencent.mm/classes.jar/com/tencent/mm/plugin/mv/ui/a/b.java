@@ -3,47 +3,50 @@ package com.tencent.mm.plugin.mv.ui.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mv.model.f;
 import com.tencent.mm.view.recyclerview.a;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/convert/MvConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "mv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "(Lcom/tencent/mm/plugin/mv/model/MusicMv;)V", "getMv", "()Lcom/tencent/mm/plugin/mv/model/MusicMv;", "setMv", "getItemId", "", "getItemType", "", "hasMv", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/convert/MvConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "mv", "Lcom/tencent/mm/plugin/mv/model/MusicMv;", "(Lcom/tencent/mm/plugin/mv/model/MusicMv;)V", "getMv", "()Lcom/tencent/mm/plugin/mv/model/MusicMv;", "setMv", "getItemId", "", "getItemType", "", "hasMv", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements a
 {
-  public f GfI;
+  public f MaX;
   
   public b(f paramf)
   {
-    AppMethodBeat.i(225992);
-    this.GfI = paramf;
-    AppMethodBeat.o(225992);
+    AppMethodBeat.i(288167);
+    this.MaX = paramf;
+    AppMethodBeat.o(288167);
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return 0;
-  }
-  
-  public final long mf()
-  {
-    AppMethodBeat.i(225988);
-    Long localLong2 = this.GfI.Gbi;
-    Long localLong1 = localLong2;
-    if (localLong2 == null) {
-      localLong1 = this.GfI.Gbl;
-    }
-    if (localLong1 != null)
+    AppMethodBeat.i(288171);
+    Long localLong = this.MaX.LXg;
+    if (localLong == null)
     {
-      long l = localLong1.longValue();
-      AppMethodBeat.o(225988);
+      localLong = this.MaX.LXj;
+      if (localLong == null)
+      {
+        AppMethodBeat.o(288171);
+        return 0L;
+      }
+      l = localLong.longValue();
+      AppMethodBeat.o(288171);
       return l;
     }
-    AppMethodBeat.o(225988);
-    return 0L;
+    long l = localLong.longValue();
+    AppMethodBeat.o(288171);
+    return l;
+  }
+  
+  public final int bZB()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

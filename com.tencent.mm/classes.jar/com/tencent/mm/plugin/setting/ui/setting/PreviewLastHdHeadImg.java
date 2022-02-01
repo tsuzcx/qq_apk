@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -29,23 +28,23 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.mm.vfs.y;
 
 public class PreviewLastHdHeadImg
   extends MMActivity
   implements View.OnClickListener
 {
-  private Bitmap JeX;
-  private TextView JeY;
-  private ImageView fDJ;
-  private String fKH;
+  private Bitmap Ppu;
+  private TextView Ppv;
+  private ImageView hIz;
+  private String hQn;
   private String username;
   
-  private static boolean e(Bitmap paramBitmap, String paramString)
+  private static boolean h(Bitmap paramBitmap, String paramString)
   {
     AppMethodBeat.i(73943);
     if ((paramString != null) && (!paramString.equals(""))) {
@@ -76,31 +75,31 @@ public class PreviewLastHdHeadImg
     setMMTitle(b.i.settings_last_avatar);
     setActionbarColor(getResources().getColor(b.c.transparent));
     setNavigationbarColor(getResources().getColor(b.c.BW_0));
-    this.username = z.bcZ();
-    this.fKH = getIntent().getStringExtra("last_avatar_path");
-    this.fDJ = ((ImageView)findViewById(b.f.head_img));
-    this.JeX = BitmapUtil.getBitmapNative(this.fKH);
-    this.JeY = ((TextView)findViewById(b.f.use_this_head_img_tv));
-    this.fDJ.setImageBitmap(this.JeX);
-    this.JeY.setOnClickListener(this);
+    this.username = z.bAM();
+    this.hQn = getIntent().getStringExtra("last_avatar_path");
+    this.hIz = ((ImageView)findViewById(b.f.head_img));
+    this.Ppu = BitmapUtil.getBitmapNative(this.hQn);
+    this.Ppv = ((TextView)findViewById(b.f.use_this_head_img_tv));
+    this.hIz.setImageBitmap(this.Ppu);
+    this.Ppv.setOnClickListener(this);
     addIconOptionMenu(0, b.h.icons_outlined_more, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(73939);
-        paramAnonymousMenuItem = new e(PreviewLastHdHeadImg.this, 1, false);
-        paramAnonymousMenuItem.ODT = new q.f()
+        paramAnonymousMenuItem = new f(PreviewLastHdHeadImg.this, 1, false);
+        paramAnonymousMenuItem.Vtg = new u.g()
         {
-          public final void onCreateMMMenu(o paramAnonymous2o)
+          public final void onCreateMMMenu(s paramAnonymous2s)
           {
             AppMethodBeat.i(73937);
             if (PreviewLastHdHeadImg.a(PreviewLastHdHeadImg.this) != null) {
-              paramAnonymous2o.mn(0, b.i.get_hd_head_img_save_alert);
+              paramAnonymous2s.oh(0, b.i.get_hd_head_img_save_alert);
             }
             AppMethodBeat.o(73937);
           }
         };
-        paramAnonymousMenuItem.ODU = new q.g()
+        paramAnonymousMenuItem.GAC = new u.i()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -109,7 +108,7 @@ public class PreviewLastHdHeadImg
             AppMethodBeat.o(73938);
           }
         };
-        paramAnonymousMenuItem.eik();
+        paramAnonymousMenuItem.dDn();
         AppMethodBeat.o(73939);
         return true;
       }
@@ -131,10 +130,10 @@ public class PreviewLastHdHeadImg
   {
     AppMethodBeat.i(73944);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/setting/ui/setting/PreviewLastHdHeadImg", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/setting/ui/setting/PreviewLastHdHeadImg", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     paramView = getIntent().getStringExtra("CropImage_OutputPath");
-    if ((paramView != null) && (e(this.JeX, paramView)))
+    if ((paramView != null) && (h(this.Ppu, paramView)))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("CropImage_OutputPath", paramView);
@@ -168,7 +167,7 @@ public class PreviewLastHdHeadImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PreviewLastHdHeadImg
  * JD-Core Version:    0.7.0.1
  */

@@ -4,304 +4,293 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.c.a;
-import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.appbrand.appusage.j.a;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class JsApiGetRecentUsageList
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<e>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
   public static final int CTRL_INDEX = 853;
   public static final String NAME = "getRecentUsageList";
-  public static final Companion pmB;
+  public static final JsApiGetRecentUsageList.Companion srv;
   
   static
   {
-    AppMethodBeat.i(280300);
-    pmB = new Companion((byte)0);
-    AppMethodBeat.o(280300);
+    AppMethodBeat.i(327393);
+    srv = new JsApiGetRecentUsageList.Companion((byte)0);
+    AppMethodBeat.o(327393);
   }
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  private static final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, int paramInt, Companion.Result paramResult)
   {
-    AppMethodBeat.i(280299);
-    if (parame == null)
+    AppMethodBeat.i(327388);
+    Object localObject = a.srA;
+    kotlin.g.b.s.s(paramResult, "ret");
+    kotlin.g.b.s.u(paramf, "component");
+    kotlin.g.b.s.u(paramResult, "recentUsageInfo");
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("requestId", paramInt);
+    ((JSONObject)localObject).put("recentUsageInfo", new JSONArray(paramResult.data));
+    ((JSONObject)localObject).put("errorCode", paramResult.errorCode);
+    String str = ((JSONObject)localObject).put("errorMsg", paramResult.errorMsg).toString();
+    kotlin.g.b.s.s(str, "with(JSONObject()) {\n   …\n            }.toString()");
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {}
+    for (localObject = "data=" + str + '\n';; localObject = "******")
     {
-      AppMethodBeat.o(280299);
+      Log.i("MicroMsg.JsApiOnGetRecentUsageListResultEvent", (String)localObject + "errorCode=" + paramResult.errorCode + "\nerrorMsg=" + paramResult.errorMsg);
+      new a((byte)0).h(paramf).ZQ(str).cpV();
+      AppMethodBeat.o(327388);
+      return;
+    }
+  }
+  
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(327405);
+    if (paramf == null)
+    {
+      AppMethodBeat.o(327405);
       return;
     }
     if (paramJSONObject == null)
     {
-      AppMethodBeat.o(280299);
+      AppMethodBeat.o(327405);
       return;
     }
-    Log.i("MicroMsg.JsApiGetRecentUsageList", "data=".concat(String.valueOf(paramJSONObject)));
+    Log.i("MicroMsg.JsApiGetRecentUsageList", kotlin.g.b.s.X("data=", paramJSONObject));
     int i = paramJSONObject.optInt("count", 2147483647);
     if (i < 0)
     {
-      parame.j(paramInt, agS("fail:illegal count"));
-      AppMethodBeat.o(280299);
+      paramf.callback(paramInt, ZP("fail:illegal count"));
+      AppMethodBeat.o(327405);
       return;
     }
-    final int j = paramJSONObject.optInt("requestId", 2147483647);
+    int j = paramJSONObject.optInt("requestId", 2147483647);
     if (j == 2147483647)
     {
-      parame.j(paramInt, agS("fail:illegal requestId"));
-      AppMethodBeat.o(280299);
+      paramf.callback(paramInt, ZP("fail:illegal requestId"));
+      AppMethodBeat.o(327405);
       return;
     }
     long l = paramJSONObject.optLong("lastUpdateTime", 9223372036854775807L);
     if (l < 0L)
     {
-      parame.j(paramInt, agS("fail:illegal lastUpdateTime"));
-      AppMethodBeat.o(280299);
+      paramf.callback(paramInt, ZP("fail:illegal lastUpdateTime"));
+      AppMethodBeat.o(327405);
       return;
     }
-    parame.j(paramInt, agS("ok"));
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new JsApiGetRecentUsageList.Companion.Parameter(i, l, j), JsApiGetRecentUsageList.Companion.a.class, (f)new a(parame, j));
-    AppMethodBeat.o(280299);
+    paramf.callback(paramInt, ZP("ok"));
+    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)new JsApiGetRecentUsageList.Companion.Parameter(i, l, j), Companion.a.class, new JsApiGetRecentUsageList..ExternalSyntheticLambda0(paramf, j));
+    AppMethodBeat.o(327405);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "UPDATE_TIME_FOR_FIRST_PAGE", "", "Parameter", "Result", "Task", "plugin-appbrand-integration_release"})
-  public static final class Companion
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "data", "", "errorCode", "", "errorMsg", "(Ljava/lang/String;ILjava/lang/String;)V", "getData", "()Ljava/lang/String;", "getErrorCode", "()I", "getErrorMsg", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "flags", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class Companion$Result
+    implements Parcelable
   {
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Parameter;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "count", "", "lastUpdateTime", "", "requestId", "(IJI)V", "getCount", "()I", "getLastUpdateTime", "()J", "getRequestId", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
-    public static final class Parameter
-      implements Parcelable
+    public static final Parcelable.Creator<Result> CREATOR;
+    public static final JsApiGetRecentUsageList.Companion.Result.a srw;
+    final String data;
+    final int errorCode;
+    final String errorMsg;
+    
+    static
     {
-      public static final a CREATOR;
-      final int count;
-      final long lastUpdateTime;
-      final int requestId;
-      
-      static
-      {
-        AppMethodBeat.i(278528);
-        CREATOR = new a((byte)0);
-        AppMethodBeat.o(278528);
-      }
-      
-      public Parameter(int paramInt1, long paramLong, int paramInt2)
-      {
-        this.count = paramInt1;
-        this.lastUpdateTime = paramLong;
-        this.requestId = paramInt2;
-      }
-      
-      public Parameter(Parcel paramParcel)
-      {
-        this(paramParcel.readInt(), paramParcel.readLong(), paramParcel.readInt());
-        AppMethodBeat.i(278526);
-        AppMethodBeat.o(278526);
-      }
-      
-      public final int describeContents()
-      {
-        return 0;
-      }
-      
-      public final boolean equals(Object paramObject)
-      {
-        if (this != paramObject)
-        {
-          if ((paramObject instanceof Parameter))
-          {
-            paramObject = (Parameter)paramObject;
-            if ((this.count != paramObject.count) || (this.lastUpdateTime != paramObject.lastUpdateTime) || (this.requestId != paramObject.requestId)) {}
-          }
-        }
-        else {
-          return true;
-        }
-        return false;
-      }
-      
-      public final int hashCode()
-      {
-        int i = this.count;
-        long l = this.lastUpdateTime;
-        return (i * 31 + (int)(l ^ l >>> 32)) * 31 + this.requestId;
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(278530);
-        String str = "Parameter(count=" + this.count + ", lastUpdateTime=" + this.lastUpdateTime + ", requestId=" + this.requestId + ")";
-        AppMethodBeat.o(278530);
-        return str;
-      }
-      
-      public final void writeToParcel(Parcel paramParcel, int paramInt)
-      {
-        AppMethodBeat.i(278523);
-        p.k(paramParcel, "parcel");
-        paramParcel.writeInt(this.count);
-        paramParcel.writeLong(this.lastUpdateTime);
-        paramParcel.writeInt(this.requestId);
-        AppMethodBeat.o(278523);
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Parameter$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Parameter;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Parameter;", "plugin-appbrand-integration_release"})
-      public static final class a
-        implements Parcelable.Creator<JsApiGetRecentUsageList.Companion.Parameter>
-      {}
+      AppMethodBeat.i(327396);
+      srw = new JsApiGetRecentUsageList.Companion.Result.a((byte)0);
+      CREATOR = (Parcelable.Creator)new b();
+      AppMethodBeat.o(327396);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "data", "", "errorCode", "", "errorMsg", "(Ljava/lang/String;ILjava/lang/String;)V", "getData", "()Ljava/lang/String;", "getErrorCode", "()I", "getErrorMsg", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "flags", "Companion", "plugin-appbrand-integration_release"})
-    public static final class Result
-      implements Parcelable
+    public Companion$Result(Parcel paramParcel)
     {
-      public static final Parcelable.Creator<Result> CREATOR;
-      public static final a pmC;
-      final String data;
-      final int errorCode;
-      final String errorMsg;
-      
-      static
-      {
-        AppMethodBeat.i(242784);
-        pmC = new a((byte)0);
-        CREATOR = (Parcelable.Creator)new b();
-        AppMethodBeat.o(242784);
-      }
-      
-      public Result(Parcel paramParcel)
-      {
-        this(str, i, paramParcel);
-        AppMethodBeat.i(242783);
-        AppMethodBeat.o(242783);
-      }
-      
-      public Result(String paramString1, int paramInt, String paramString2)
-      {
-        AppMethodBeat.i(242781);
-        this.data = paramString1;
-        this.errorCode = paramInt;
-        this.errorMsg = paramString2;
-        AppMethodBeat.o(242781);
-      }
-      
-      public final int describeContents()
-      {
-        return 0;
-      }
-      
-      public final boolean equals(Object paramObject)
-      {
-        AppMethodBeat.i(242788);
-        if (this != paramObject)
-        {
-          if ((paramObject instanceof Result))
-          {
-            paramObject = (Result)paramObject;
-            if ((!p.h(this.data, paramObject.data)) || (this.errorCode != paramObject.errorCode) || (!p.h(this.errorMsg, paramObject.errorMsg))) {}
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(242788);
-          return true;
-        }
-        AppMethodBeat.o(242788);
-        return false;
-      }
-      
-      public final int hashCode()
-      {
-        int j = 0;
-        AppMethodBeat.i(242786);
-        String str = this.data;
-        if (str != null) {}
-        for (int i = str.hashCode();; i = 0)
-        {
-          int k = this.errorCode;
-          str = this.errorMsg;
-          if (str != null) {
-            j = str.hashCode();
-          }
-          AppMethodBeat.o(242786);
-          return (i * 31 + k) * 31 + j;
-        }
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(242785);
-        String str = "Result(data=" + this.data + ", errorCode=" + this.errorCode + ", errorMsg=" + this.errorMsg + ")";
-        AppMethodBeat.o(242785);
-        return str;
-      }
-      
-      public final void writeToParcel(Parcel paramParcel, int paramInt)
-      {
-        AppMethodBeat.i(242780);
-        p.k(paramParcel, "parcel");
-        paramParcel.writeString(this.data);
-        paramParcel.writeInt(this.errorCode);
-        paramParcel.writeString(this.errorMsg);
-        AppMethodBeat.o(242780);
-      }
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "ERR_CODE_CGI_FAILED", "", "ERR_CODE_SUCCESS", "plugin-appbrand-integration_release"})
-      public static final class a {}
-      
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "plugin-appbrand-integration_release"})
-      public static final class b
-        implements Parcelable.Creator<JsApiGetRecentUsageList.Companion.Result>
-      {}
+      this(str, i, paramParcel);
+      AppMethodBeat.i(327392);
+      AppMethodBeat.o(327392);
     }
     
-    @a
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Task;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeCallbackOnceTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Parameter;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "toJsonObject", "Lorg/json/JSONObject;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandRecentTaskInfo;", "plugin-appbrand-integration_release"})
-    public static final class a
-      implements com.tencent.mm.ipcinvoker.c<JsApiGetRecentUsageList.Companion.Parameter, JsApiGetRecentUsageList.Companion.Result>
+    public Companion$Result(String paramString1, int paramInt, String paramString2)
     {
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "lastUpdateTime", "", "invoke"})
-      static final class a
-        extends q
-        implements b<Long, x>
+      AppMethodBeat.i(327381);
+      this.data = paramString1;
+      this.errorCode = paramInt;
+      this.errorMsg = paramString2;
+      AppMethodBeat.o(327381);
+    }
+    
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(327415);
+      if (this == paramObject)
       {
-        a(JsApiGetRecentUsageList.Companion.a parama, JsApiGetRecentUsageList.Companion.Parameter paramParameter, f paramf)
-        {
-          super();
-        }
+        AppMethodBeat.o(327415);
+        return true;
+      }
+      if (!(paramObject instanceof Result))
+      {
+        AppMethodBeat.o(327415);
+        return false;
+      }
+      paramObject = (Result)paramObject;
+      if (!kotlin.g.b.s.p(this.data, paramObject.data))
+      {
+        AppMethodBeat.o(327415);
+        return false;
+      }
+      if (this.errorCode != paramObject.errorCode)
+      {
+        AppMethodBeat.o(327415);
+        return false;
+      }
+      if (!kotlin.g.b.s.p(this.errorMsg, paramObject.errorMsg))
+      {
+        AppMethodBeat.o(327415);
+        return false;
+      }
+      AppMethodBeat.o(327415);
+      return true;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(327412);
+      int i = this.data.hashCode();
+      int j = this.errorCode;
+      int k = this.errorMsg.hashCode();
+      AppMethodBeat.o(327412);
+      return (i * 31 + j) * 31 + k;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(327409);
+      String str = "Result(data=" + this.data + ", errorCode=" + this.errorCode + ", errorMsg=" + this.errorMsg + ')';
+      AppMethodBeat.o(327409);
+      return str;
+    }
+    
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(327400);
+      kotlin.g.b.s.u(paramParcel, "parcel");
+      paramParcel.writeString(this.data);
+      paramParcel.writeInt(this.errorCode);
+      paramParcel.writeString(this.errorMsg);
+      AppMethodBeat.o(327400);
+    }
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class b
+      implements Parcelable.Creator<JsApiGetRecentUsageList.Companion.Result>
+    {}
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class Companion$Result$b
+    implements Parcelable.Creator<JsApiGetRecentUsageList.Companion.Result>
+  {}
+  
+  @com.tencent.mm.ipcinvoker.c.a
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Task;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeCallbackOnceTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Parameter;", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "toJsonObject", "Lorg/json/JSONObject;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandRecentTaskInfo;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class Companion$a
+    implements com.tencent.mm.ipcinvoker.c<JsApiGetRecentUsageList.Companion.Parameter, JsApiGetRecentUsageList.Companion.Result>
+  {
+    @Metadata(d1={""}, d2={"<no name provided>", "", "lastUpdateTime", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends u
+      implements b<Long, ah>
+    {
+      a(JsApiGetRecentUsageList.Companion.Parameter paramParameter, com.tencent.mm.ipcinvoker.f<JsApiGetRecentUsageList.Companion.Result> paramf, JsApiGetRecentUsageList.Companion.a parama)
+      {
+        super();
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<no name provided>", "", "firstPage", "", "lastUpdateTime", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class b
+      extends u
+      implements m<Boolean, Long, ah>
+    {
+      b(JsApiGetRecentUsageList.Companion.Parameter paramParameter, b<? super Long, ah> paramb, com.tencent.mm.ipcinvoker.f<JsApiGetRecentUsageList.Companion.Result> paramf)
+      {
+        super();
       }
       
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "firstPage", "", "lastUpdateTime", "", "invoke"})
-      static final class b
-        extends q
-        implements m<Boolean, Long, x>
+      private static final void a(b paramb, long paramLong, com.tencent.mm.ipcinvoker.f paramf, boolean paramBoolean, String paramString)
       {
-        b(JsApiGetRecentUsageList.Companion.Parameter paramParameter, b paramb, f paramf)
+        AppMethodBeat.i(327411);
+        kotlin.g.b.s.u(paramb, "$requestDb");
+        Log.i("MicroMsg.JsApiGetRecentUsageList", "fetchNextPageFromServer  success=" + paramBoolean + " errorMsg=" + paramString);
+        if (paramBoolean)
         {
-          super();
+          paramb.invoke(Long.valueOf(paramLong));
+          AppMethodBeat.o(327411);
+          return;
         }
+        kotlin.g.b.s.s(paramString, "errorMsg");
+        paramf.onCallback(new JsApiGetRecentUsageList.Companion.Result("", -1000, paramString));
+        AppMethodBeat.o(327411);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "ret", "Lcom/tencent/mm/plugin/appbrand/jsapi/rencentusage/JsApiGetRecentUsageList$Companion$Result;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class a<T>
-    implements f<ResultType>
+  @Metadata(d1={""}, d2={"<no name provided>", "", "lastUpdateTime", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class Companion$a$a
+    extends u
+    implements b<Long, ah>
   {
-    a(e parame, int paramInt) {}
+    Companion$a$a(JsApiGetRecentUsageList.Companion.Parameter paramParameter, com.tencent.mm.ipcinvoker.f<JsApiGetRecentUsageList.Companion.Result> paramf, JsApiGetRecentUsageList.Companion.a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<no name provided>", "", "firstPage", "", "lastUpdateTime", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class Companion$a$b
+    extends u
+    implements m<Boolean, Long, ah>
+  {
+    Companion$a$b(JsApiGetRecentUsageList.Companion.Parameter paramParameter, b<? super Long, ah> paramb, com.tencent.mm.ipcinvoker.f<JsApiGetRecentUsageList.Companion.Result> paramf)
+    {
+      super();
+    }
+    
+    private static final void a(b paramb, long paramLong, com.tencent.mm.ipcinvoker.f paramf, boolean paramBoolean, String paramString)
+    {
+      AppMethodBeat.i(327411);
+      kotlin.g.b.s.u(paramb, "$requestDb");
+      Log.i("MicroMsg.JsApiGetRecentUsageList", "fetchNextPageFromServer  success=" + paramBoolean + " errorMsg=" + paramString);
+      if (paramBoolean)
+      {
+        paramb.invoke(Long.valueOf(paramLong));
+        AppMethodBeat.o(327411);
+        return;
+      }
+      kotlin.g.b.s.s(paramString, "errorMsg");
+      paramf.onCallback(new JsApiGetRecentUsageList.Companion.Result("", -1000, paramString));
+      AppMethodBeat.o(327411);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.rencentusage.JsApiGetRecentUsageList
  * JD-Core Version:    0.7.0.1
  */

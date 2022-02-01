@@ -11,41 +11,41 @@ public abstract interface r
 {
   public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(c.info, "FavCdnInfo") };
   
-  public abstract List<c> Kh(long paramLong);
-  
-  public abstract List<c> Ki(long paramLong);
-  
-  public abstract void Kj(long paramLong);
-  
-  public abstract boolean Kk(long paramLong);
+  public abstract int J(long paramLong, int paramInt);
   
   public abstract void a(q paramq);
   
   public abstract boolean a(c paramc, String... paramVarArgs);
   
-  public abstract c aAb(String paramString);
+  public abstract c aui(String paramString);
   
   public abstract void b(q paramq);
   
   public abstract boolean b(c paramc, String... paramVarArgs);
   
-  public abstract LinkedList<c> djQ();
+  public abstract LinkedList<c> dQA();
   
-  public abstract Cursor djR();
+  public abstract Cursor dQB();
   
-  public abstract Cursor djS();
+  public abstract Cursor dQC();
   
   public abstract boolean f(c paramc);
+  
+  public abstract List<c> mF(long paramLong);
+  
+  public abstract List<c> mG(long paramLong);
+  
+  public abstract void mH(long paramLong);
+  
+  public abstract boolean mI(long paramLong);
   
   public abstract void startAll();
   
   public abstract void y(g paramg);
-  
-  public abstract int z(long paramLong, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.r
  * JD-Core Version:    0.7.0.1
  */

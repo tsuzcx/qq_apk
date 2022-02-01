@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.protocal.protobuf.jh;
-import g.a.a.b;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.protocal.protobuf.kd;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public class GetGameCenterGlobalSettingResponse
-  extends dyy
+  extends esc
 {
   public a A8Key;
   public String AppStoreGoodsId;
   public i AppStorePreload;
-  public l AutoRunTaskSetting;
-  public s CommJsLib;
-  public y DownloadIntercept;
-  public aj GameCenterTabSetting;
-  public ak GameCommunityInfo;
-  public ao GameDetailSetting;
-  public aw GameIndexSetting;
-  public bc GameLifeSetting;
-  public bi GeneralJumpInfo;
+  public m AutoRunTaskSetting;
+  public t CommJsLib;
+  public z DownloadIntercept;
+  public ak GameCenterTabSetting;
+  public al GameCommunityInfo;
+  public ap GameDetailSetting;
+  public ax GameIndexSetting;
+  public bd GameLifeSetting;
+  public bj GeneralJumpInfo;
   public boolean ShowEntrance;
-  public dw StatusBarStyle;
-  public en WebViewControl;
-  public eo WepkgControl;
-  public z downloaderApp;
+  public ea StatusBarStyle;
+  public es WebViewControl;
+  public et WepkgControl;
+  public aa downloaderApp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(149416);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseResponse == null)
       {
         paramVarArgs = new b("Not all required fields were included: BaseResponse");
@@ -41,86 +41,86 @@ public class GetGameCenterGlobalSettingResponse
       }
       if (this.BaseResponse != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.co(2, this.ShowEntrance);
+      paramVarArgs.di(2, this.ShowEntrance);
       if (this.GameIndexSetting != null)
       {
-        paramVarArgs.oE(3, this.GameIndexSetting.computeSize());
+        paramVarArgs.qD(3, this.GameIndexSetting.computeSize());
         this.GameIndexSetting.writeFields(paramVarArgs);
       }
       if (this.AppStoreGoodsId != null) {
-        paramVarArgs.f(4, this.AppStoreGoodsId);
+        paramVarArgs.g(4, this.AppStoreGoodsId);
       }
       if (this.GameDetailSetting != null)
       {
-        paramVarArgs.oE(6, this.GameDetailSetting.computeSize());
+        paramVarArgs.qD(6, this.GameDetailSetting.computeSize());
         this.GameDetailSetting.writeFields(paramVarArgs);
       }
       if (this.AppStorePreload != null)
       {
-        paramVarArgs.oE(7, this.AppStorePreload.computeSize());
+        paramVarArgs.qD(7, this.AppStorePreload.computeSize());
         this.AppStorePreload.writeFields(paramVarArgs);
       }
       if (this.StatusBarStyle != null)
       {
-        paramVarArgs.oE(8, this.StatusBarStyle.computeSize());
+        paramVarArgs.qD(8, this.StatusBarStyle.computeSize());
         this.StatusBarStyle.writeFields(paramVarArgs);
       }
       if (this.CommJsLib != null)
       {
-        paramVarArgs.oE(11, this.CommJsLib.computeSize());
+        paramVarArgs.qD(11, this.CommJsLib.computeSize());
         this.CommJsLib.writeFields(paramVarArgs);
       }
       if (this.WepkgControl != null)
       {
-        paramVarArgs.oE(12, this.WepkgControl.computeSize());
+        paramVarArgs.qD(12, this.WepkgControl.computeSize());
         this.WepkgControl.writeFields(paramVarArgs);
       }
       if (this.downloaderApp != null)
       {
-        paramVarArgs.oE(13, this.downloaderApp.computeSize());
+        paramVarArgs.qD(13, this.downloaderApp.computeSize());
         this.downloaderApp.writeFields(paramVarArgs);
       }
       if (this.WebViewControl != null)
       {
-        paramVarArgs.oE(14, this.WebViewControl.computeSize());
+        paramVarArgs.qD(14, this.WebViewControl.computeSize());
         this.WebViewControl.writeFields(paramVarArgs);
       }
       if (this.DownloadIntercept != null)
       {
-        paramVarArgs.oE(15, this.DownloadIntercept.computeSize());
+        paramVarArgs.qD(15, this.DownloadIntercept.computeSize());
         this.DownloadIntercept.writeFields(paramVarArgs);
       }
       if (this.A8Key != null)
       {
-        paramVarArgs.oE(16, this.A8Key.computeSize());
+        paramVarArgs.qD(16, this.A8Key.computeSize());
         this.A8Key.writeFields(paramVarArgs);
       }
       if (this.AutoRunTaskSetting != null)
       {
-        paramVarArgs.oE(17, this.AutoRunTaskSetting.computeSize());
+        paramVarArgs.qD(17, this.AutoRunTaskSetting.computeSize());
         this.AutoRunTaskSetting.writeFields(paramVarArgs);
       }
       if (this.GameCenterTabSetting != null)
       {
-        paramVarArgs.oE(18, this.GameCenterTabSetting.computeSize());
+        paramVarArgs.qD(18, this.GameCenterTabSetting.computeSize());
         this.GameCenterTabSetting.writeFields(paramVarArgs);
       }
       if (this.GameLifeSetting != null)
       {
-        paramVarArgs.oE(19, this.GameLifeSetting.computeSize());
+        paramVarArgs.qD(19, this.GameLifeSetting.computeSize());
         this.GameLifeSetting.writeFields(paramVarArgs);
       }
       if (this.GeneralJumpInfo != null)
       {
-        paramVarArgs.oE(20, this.GeneralJumpInfo.computeSize());
+        paramVarArgs.qD(20, this.GeneralJumpInfo.computeSize());
         this.GeneralJumpInfo.writeFields(paramVarArgs);
       }
       if (this.GameCommunityInfo != null)
       {
-        paramVarArgs.oE(21, this.GameCommunityInfo.computeSize());
+        paramVarArgs.qD(21, this.GameCommunityInfo.computeSize());
         this.GameCommunityInfo.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(149416);
@@ -128,85 +128,85 @@ public class GetGameCenterGlobalSettingResponse
     }
     if (paramInt == 1) {
       if (this.BaseResponse == null) {
-        break label2458;
+        break label2454;
       }
     }
-    label2458:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label2454:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + (g.a.a.b.b.a.gL(2) + 1);
+      int i = paramInt + (i.a.a.b.b.a.ko(2) + 1);
       paramInt = i;
       if (this.GameIndexSetting != null) {
-        paramInt = i + g.a.a.a.oD(3, this.GameIndexSetting.computeSize());
+        paramInt = i + i.a.a.a.qC(3, this.GameIndexSetting.computeSize());
       }
       i = paramInt;
       if (this.AppStoreGoodsId != null) {
-        i = paramInt + g.a.a.b.b.a.g(4, this.AppStoreGoodsId);
+        i = paramInt + i.a.a.b.b.a.h(4, this.AppStoreGoodsId);
       }
       paramInt = i;
       if (this.GameDetailSetting != null) {
-        paramInt = i + g.a.a.a.oD(6, this.GameDetailSetting.computeSize());
+        paramInt = i + i.a.a.a.qC(6, this.GameDetailSetting.computeSize());
       }
       i = paramInt;
       if (this.AppStorePreload != null) {
-        i = paramInt + g.a.a.a.oD(7, this.AppStorePreload.computeSize());
+        i = paramInt + i.a.a.a.qC(7, this.AppStorePreload.computeSize());
       }
       paramInt = i;
       if (this.StatusBarStyle != null) {
-        paramInt = i + g.a.a.a.oD(8, this.StatusBarStyle.computeSize());
+        paramInt = i + i.a.a.a.qC(8, this.StatusBarStyle.computeSize());
       }
       i = paramInt;
       if (this.CommJsLib != null) {
-        i = paramInt + g.a.a.a.oD(11, this.CommJsLib.computeSize());
+        i = paramInt + i.a.a.a.qC(11, this.CommJsLib.computeSize());
       }
       paramInt = i;
       if (this.WepkgControl != null) {
-        paramInt = i + g.a.a.a.oD(12, this.WepkgControl.computeSize());
+        paramInt = i + i.a.a.a.qC(12, this.WepkgControl.computeSize());
       }
       i = paramInt;
       if (this.downloaderApp != null) {
-        i = paramInt + g.a.a.a.oD(13, this.downloaderApp.computeSize());
+        i = paramInt + i.a.a.a.qC(13, this.downloaderApp.computeSize());
       }
       paramInt = i;
       if (this.WebViewControl != null) {
-        paramInt = i + g.a.a.a.oD(14, this.WebViewControl.computeSize());
+        paramInt = i + i.a.a.a.qC(14, this.WebViewControl.computeSize());
       }
       i = paramInt;
       if (this.DownloadIntercept != null) {
-        i = paramInt + g.a.a.a.oD(15, this.DownloadIntercept.computeSize());
+        i = paramInt + i.a.a.a.qC(15, this.DownloadIntercept.computeSize());
       }
       paramInt = i;
       if (this.A8Key != null) {
-        paramInt = i + g.a.a.a.oD(16, this.A8Key.computeSize());
+        paramInt = i + i.a.a.a.qC(16, this.A8Key.computeSize());
       }
       i = paramInt;
       if (this.AutoRunTaskSetting != null) {
-        i = paramInt + g.a.a.a.oD(17, this.AutoRunTaskSetting.computeSize());
+        i = paramInt + i.a.a.a.qC(17, this.AutoRunTaskSetting.computeSize());
       }
       paramInt = i;
       if (this.GameCenterTabSetting != null) {
-        paramInt = i + g.a.a.a.oD(18, this.GameCenterTabSetting.computeSize());
+        paramInt = i + i.a.a.a.qC(18, this.GameCenterTabSetting.computeSize());
       }
       i = paramInt;
       if (this.GameLifeSetting != null) {
-        i = paramInt + g.a.a.a.oD(19, this.GameLifeSetting.computeSize());
+        i = paramInt + i.a.a.a.qC(19, this.GameLifeSetting.computeSize());
       }
       paramInt = i;
       if (this.GeneralJumpInfo != null) {
-        paramInt = i + g.a.a.a.oD(20, this.GeneralJumpInfo.computeSize());
+        paramInt = i + i.a.a.a.qC(20, this.GeneralJumpInfo.computeSize());
       }
       i = paramInt;
       if (this.GameCommunityInfo != null) {
-        i = paramInt + g.a.a.a.oD(21, this.GameCommunityInfo.computeSize());
+        i = paramInt + i.a.a.a.qC(21, this.GameCommunityInfo.computeSize());
       }
       AppMethodBeat.o(149416);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         if (this.BaseResponse == null)
@@ -220,7 +220,7 @@ public class GetGameCenterGlobalSettingResponse
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         GetGameCenterGlobalSettingResponse localGetGameCenterGlobalSettingResponse = (GetGameCenterGlobalSettingResponse)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
@@ -233,63 +233,63 @@ public class GetGameCenterGlobalSettingResponse
           AppMethodBeat.o(149416);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
+            localObject2 = new kd();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
+              ((kd)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.BaseResponse = ((jh)localObject2);
+            localGetGameCenterGlobalSettingResponse.BaseResponse = ((kd)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 2: 
-          localGetGameCenterGlobalSettingResponse.ShowEntrance = ((g.a.a.a.a)localObject1).abFh.AB();
+          localGetGameCenterGlobalSettingResponse.ShowEntrance = ((i.a.a.a.a)localObject1).ajGk.aai();
           AppMethodBeat.o(149416);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new aw();
+            localObject2 = new ax();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((aw)localObject2).parseFrom((byte[])localObject1);
+              ((ax)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.GameIndexSetting = ((aw)localObject2);
+            localGetGameCenterGlobalSettingResponse.GameIndexSetting = ((ax)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 4: 
-          localGetGameCenterGlobalSettingResponse.AppStoreGoodsId = ((g.a.a.a.a)localObject1).abFh.readString();
+          localGetGameCenterGlobalSettingResponse.AppStoreGoodsId = ((i.a.a.a.a)localObject1).ajGk.readString();
           AppMethodBeat.o(149416);
           return 0;
         case 6: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new ao();
+            localObject2 = new ap();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((ao)localObject2).parseFrom((byte[])localObject1);
+              ((ap)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.GameDetailSetting = ((ao)localObject2);
+            localGetGameCenterGlobalSettingResponse.GameDetailSetting = ((ap)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 7: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -305,55 +305,87 @@ public class GetGameCenterGlobalSettingResponse
           AppMethodBeat.o(149416);
           return 0;
         case 8: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new dw();
+            localObject2 = new ea();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((dw)localObject2).parseFrom((byte[])localObject1);
+              ((ea)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.StatusBarStyle = ((dw)localObject2);
+            localGetGameCenterGlobalSettingResponse.StatusBarStyle = ((ea)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 11: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new s();
+            localObject2 = new t();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((s)localObject2).parseFrom((byte[])localObject1);
+              ((t)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.CommJsLib = ((s)localObject2);
+            localGetGameCenterGlobalSettingResponse.CommJsLib = ((t)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 12: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new eo();
+            localObject2 = new et();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((eo)localObject2).parseFrom((byte[])localObject1);
+              ((et)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.WepkgControl = ((eo)localObject2);
+            localGetGameCenterGlobalSettingResponse.WepkgControl = ((et)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 13: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new aa();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((aa)localObject2).parseFrom((byte[])localObject1);
+            }
+            localGetGameCenterGlobalSettingResponse.downloaderApp = ((aa)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(149416);
+          return 0;
+        case 14: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new es();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((es)localObject2).parseFrom((byte[])localObject1);
+            }
+            localGetGameCenterGlobalSettingResponse.WebViewControl = ((es)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(149416);
+          return 0;
+        case 15: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -363,45 +395,13 @@ public class GetGameCenterGlobalSettingResponse
             if ((localObject1 != null) && (localObject1.length > 0)) {
               ((z)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.downloaderApp = ((z)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(149416);
-          return 0;
-        case 14: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new en();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((en)localObject2).parseFrom((byte[])localObject1);
-            }
-            localGetGameCenterGlobalSettingResponse.WebViewControl = ((en)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(149416);
-          return 0;
-        case 15: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new y();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((y)localObject2).parseFrom((byte[])localObject1);
-            }
-            localGetGameCenterGlobalSettingResponse.DownloadIntercept = ((y)localObject2);
+            localGetGameCenterGlobalSettingResponse.DownloadIntercept = ((z)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 16: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -417,81 +417,81 @@ public class GetGameCenterGlobalSettingResponse
           AppMethodBeat.o(149416);
           return 0;
         case 17: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new l();
+            localObject2 = new m();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((l)localObject2).parseFrom((byte[])localObject1);
+              ((m)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.AutoRunTaskSetting = ((l)localObject2);
+            localGetGameCenterGlobalSettingResponse.AutoRunTaskSetting = ((m)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 18: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new aj();
+            localObject2 = new ak();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((aj)localObject2).parseFrom((byte[])localObject1);
+              ((ak)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.GameCenterTabSetting = ((aj)localObject2);
+            localGetGameCenterGlobalSettingResponse.GameCenterTabSetting = ((ak)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 19: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new bc();
+            localObject2 = new bd();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((bc)localObject2).parseFrom((byte[])localObject1);
+              ((bd)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.GameLifeSetting = ((bc)localObject2);
+            localGetGameCenterGlobalSettingResponse.GameLifeSetting = ((bd)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         case 20: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new bi();
+            localObject2 = new bj();
             if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((bi)localObject2).parseFrom((byte[])localObject1);
+              ((bj)localObject2).parseFrom((byte[])localObject1);
             }
-            localGetGameCenterGlobalSettingResponse.GeneralJumpInfo = ((bi)localObject2);
+            localGetGameCenterGlobalSettingResponse.GeneralJumpInfo = ((bj)localObject2);
             paramInt += 1;
           }
           AppMethodBeat.o(149416);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new ak();
+          localObject2 = new al();
           if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((ak)localObject2).parseFrom((byte[])localObject1);
+            ((al)localObject2).parseFrom((byte[])localObject1);
           }
-          localGetGameCenterGlobalSettingResponse.GameCommunityInfo = ((ak)localObject2);
+          localGetGameCenterGlobalSettingResponse.GameCommunityInfo = ((al)localObject2);
           paramInt += 1;
         }
         AppMethodBeat.o(149416);

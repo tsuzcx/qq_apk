@@ -16,9 +16,9 @@ final class ChatFooter$10
   {
     AppMethodBeat.i(31503);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    ChatFooter.q(this.RmK);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ChatFooter.s(this.YiY);
     Log.i("MicroMsg.ChatFooter", "close ime guide");
     a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(31503);

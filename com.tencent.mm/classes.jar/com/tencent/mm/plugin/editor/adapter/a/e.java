@@ -14,26 +14,26 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 public final class e
   extends d
 {
-  private View uqN;
+  private View xxk;
   
   public e(View paramView, j paramj)
   {
     super(paramView, paramj);
     AppMethodBeat.i(181653);
-    this.uqw.setVisibility(8);
-    this.fDJ.setVisibility(8);
-    this.ndX.setVisibility(8);
-    this.uqw.setOnClickListener(null);
-    this.uqB.setOnClickListener(new View.OnClickListener()
+    this.xwT.setVisibility(8);
+    this.hIz.setVisibility(8);
+    this.pZr.setVisibility(8);
+    this.xwT.setOnClickListener(null);
+    this.xwY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(181652);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorSplitItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        e.this.uqv.cSk();
-        e.this.uqv.requestFocus();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/itemholder/EditorSplitItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        e.this.xwS.dwC();
+        e.this.xwS.requestFocus();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/itemholder/EditorSplitItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(181652);
       }
@@ -50,23 +50,23 @@ public final class e
       AppMethodBeat.o(181654);
       return;
     }
-    parama = (RelativeLayout.LayoutParams)this.uqC.getLayoutParams();
+    parama = (RelativeLayout.LayoutParams)this.xwZ.getLayoutParams();
     parama.bottomMargin = 0;
     parama.topMargin = 0;
-    this.uqC.setLayoutParams(parama);
-    this.uqB.setVisibility(0);
-    this.uqN = this.amk.findViewById(d.e.dQe);
+    this.xwZ.setLayoutParams(parama);
+    this.xwY.setVisibility(0);
+    this.xxk = this.caK.findViewById(d.e.fSj);
     AppMethodBeat.o(181654);
   }
   
-  public final int cRD()
+  public final int dvW()
   {
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.e
  * JD-Core Version:    0.7.0.1
  */

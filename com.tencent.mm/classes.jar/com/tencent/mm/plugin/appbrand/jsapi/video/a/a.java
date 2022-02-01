@@ -9,73 +9,73 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  private b fmh;
-  private b.a lrd;
-  private boolean lrf;
+  private b hqw;
   private Context mAppContext;
-  a pvw;
+  private b.a oiE;
+  private boolean oiG;
+  a sAC;
   
   public a()
   {
-    AppMethodBeat.i(227144);
-    this.lrf = false;
+    AppMethodBeat.i(328228);
+    this.oiG = false;
     this.mAppContext = MMApplicationContext.getContext();
-    AppMethodBeat.o(227144);
+    AppMethodBeat.o(328228);
   }
   
-  private boolean avy()
+  private boolean bAh()
   {
-    AppMethodBeat.i(227150);
-    if (this.fmh == null)
-    {
-      AppMethodBeat.o(227150);
-      return false;
-    }
-    if (this.lrf)
-    {
-      AppMethodBeat.o(227150);
-      return false;
-    }
-    this.fmh.avy();
-    this.lrf = true;
-    boolean bool = this.lrf;
-    AppMethodBeat.o(227150);
-    return bool;
-  }
-  
-  private boolean bct()
-  {
-    AppMethodBeat.i(227153);
+    AppMethodBeat.i(328237);
     b localb = new b((byte)0);
-    if (this.fmh == null) {
-      this.fmh = new b(this.mAppContext);
+    if (this.hqw == null) {
+      this.hqw = new b(this.mAppContext);
     }
-    if (this.lrd != localb) {
-      this.lrd = localb;
+    if (this.oiE != localb) {
+      this.oiE = localb;
     }
-    this.fmh.a(this.lrd);
-    boolean bool = avy();
-    AppMethodBeat.o(227153);
+    this.hqw.a(this.oiE);
+    boolean bool = requestFocus();
+    AppMethodBeat.o(328237);
     return bool;
   }
   
-  public final boolean bVr()
+  private boolean requestFocus()
   {
-    AppMethodBeat.i(227148);
-    this.pvw = null;
-    boolean bool = bct();
-    AppMethodBeat.o(227148);
-    return bool;
-  }
-  
-  public final boolean bVs()
-  {
-    AppMethodBeat.i(227155);
-    if (this.fmh != null) {}
-    for (boolean bool = this.fmh.avz();; bool = false)
+    AppMethodBeat.i(328233);
+    if (this.hqw == null)
     {
-      this.lrf = false;
-      AppMethodBeat.o(227155);
+      AppMethodBeat.o(328233);
+      return false;
+    }
+    if (this.oiG)
+    {
+      AppMethodBeat.o(328233);
+      return false;
+    }
+    this.hqw.requestFocus();
+    this.oiG = true;
+    boolean bool = this.oiG;
+    AppMethodBeat.o(328233);
+    return bool;
+  }
+  
+  public final boolean cvF()
+  {
+    AppMethodBeat.i(328244);
+    this.sAC = null;
+    boolean bool = bAh();
+    AppMethodBeat.o(328244);
+    return bool;
+  }
+  
+  public final boolean cvG()
+  {
+    AppMethodBeat.i(328251);
+    if (this.hqw != null) {}
+    for (boolean bool = this.hqw.aPS();; bool = false)
+    {
+      this.oiG = false;
+      AppMethodBeat.o(328251);
       return bool;
     }
   }
@@ -87,9 +87,9 @@ public final class a
   {
     private b() {}
     
-    public final void kp(int paramInt)
+    public final void onChange(int paramInt)
     {
-      AppMethodBeat.i(229360);
+      AppMethodBeat.i(328257);
       switch (paramInt)
       {
       case 0: 
@@ -104,29 +104,29 @@ public final class a
           {
             do
             {
-              AppMethodBeat.o(229360);
+              AppMethodBeat.o(328257);
               return;
               Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_GAIN");
-            } while (a.this.pvw == null);
-            AppMethodBeat.o(229360);
+            } while (a.this.sAC == null);
+            AppMethodBeat.o(328257);
             return;
             Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS");
-          } while (a.this.pvw == null);
-          AppMethodBeat.o(229360);
+          } while (a.this.sAC == null);
+          AppMethodBeat.o(328257);
           return;
           Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT");
-        } while (a.this.pvw == null);
-        AppMethodBeat.o(229360);
+        } while (a.this.sAC == null);
+        AppMethodBeat.o(328257);
         return;
         Log.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
-      } while (a.this.pvw == null);
-      AppMethodBeat.o(229360);
+      } while (a.this.sAC == null);
+      AppMethodBeat.o(328257);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.a.a
  * JD-Core Version:    0.7.0.1
  */

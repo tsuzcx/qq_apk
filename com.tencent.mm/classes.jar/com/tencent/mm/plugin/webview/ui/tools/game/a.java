@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static boolean Czo;
-  public static a Qne;
+  public static boolean Itd;
+  public static a Xfs;
   
   public static final class a
     extends BroadcastReceiver
@@ -23,12 +23,12 @@ public final class a
       }
       if ("android.intent.action.BATTERY_OKAY".equals(paramIntent.getAction()))
       {
-        a.Czo = false;
+        a.Itd = false;
         AppMethodBeat.o(80804);
         return;
       }
       if ("android.intent.action.BATTERY_LOW".equals(paramIntent.getAction())) {
-        a.Czo = true;
+        a.Itd = true;
       }
       AppMethodBeat.o(80804);
     }

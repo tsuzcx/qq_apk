@@ -37,14 +37,14 @@ public class MAlarmHandler
   
   public MAlarmHandler(CallBack paramCallBack, boolean paramBoolean)
   {
-    AppMethodBeat.i(190428);
+    AppMethodBeat.i(243605);
     this.ts = 0L;
     this.interval = 0L;
     Assert.assertTrue("bumper not initialized", initilized);
     this.callback = paramCallBack;
     this.loop = paramBoolean;
     this.myTimerID = incTimerID();
-    AppMethodBeat.o(190428);
+    AppMethodBeat.o(243605);
   }
   
   public static long fire()
@@ -174,7 +174,7 @@ public class MAlarmHandler
   
   public void startTimer(long paramLong)
   {
-    AppMethodBeat.i(190446);
+    AppMethodBeat.i(243637);
     withNewStart = true;
     this.interval = paramLong;
     this.ts = Util.currentTicks();
@@ -186,7 +186,7 @@ public class MAlarmHandler
       Log.v("MicroMsg.MAlarmHandler", "prepare bumper");
       bumper.prepare();
     }
-    AppMethodBeat.o(190446);
+    AppMethodBeat.o(243637);
   }
   
   public void stopTimer()
@@ -198,13 +198,13 @@ public class MAlarmHandler
   
   public boolean stopped()
   {
-    AppMethodBeat.i(190451);
+    AppMethodBeat.i(243653);
     if (!maps.containsKey(Integer.valueOf(this.myTimerID)))
     {
-      AppMethodBeat.o(190451);
+      AppMethodBeat.o(243653);
       return true;
     }
-    AppMethodBeat.o(190451);
+    AppMethodBeat.o(243653);
     return false;
   }
   
@@ -222,7 +222,7 @@ public class MAlarmHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MAlarmHandler
  * JD-Core Version:    0.7.0.1
  */

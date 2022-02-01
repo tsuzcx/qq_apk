@@ -1,131 +1,88 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.game.luggage.j.f;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.ad.d;
+import com.tencent.mm.ad.f;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class ak
-  extends br<com.tencent.luggage.d.a>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/luggage/jsapi/JsApiRecordOperateUserData;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi;", "Lcom/tencent/luggage/container/LuggageComponent;", "()V", "getEnv", "", "invokeInMM", "", "context", "Landroid/content/Context;", "dataStr", "", "jsApiCallback", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi$JsApiCallback;", "invokeInOwn", "ctx", "Lcom/tencent/luggage/container/LuggageJsApi$InvokeContext;", "Lcom/tencent/luggage/container/LuggageJsApi;", "kotlin.jvm.PlatformType", "name", "Companion", "luggage-game_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class ak
+  extends bv<a>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public static final a Ivb;
   
-  public final void b(final com.tencent.luggage.d.b<com.tencent.luggage.d.a>.a paramb)
+  static
   {
-    AppMethodBeat.i(83092);
-    Log.i("MicroMsg.JsApiSetGameData", "invokeInOwn");
-    Object localObject2 = paramb.crh.cqn;
-    if (localObject2 == null)
-    {
-      Log.e("MicroMsg.JsApiSetGameData", "data is null");
-      paramb.a("null_data", null);
-      AppMethodBeat.o(83092);
-      return;
-    }
-    com.tencent.luggage.d.a locala = (com.tencent.luggage.d.a)paramb.crg;
-    if ((locala instanceof i))
-    {
-      str1 = ((i)locala).PPO.getAppId();
-      localObject1 = str1;
-      if (!Util.isNullOrNil(str1)) {
-        break label153;
-      }
-      localObject1 = Uri.parse(Util.nullAsNil(((i)locala).cDu()));
-      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals(WeChatHosts.domainString(j.f.host_game_weixin_qq_com))))
-      {
-        Log.i("MicroMsg.JsApiSetGameData", "appId is null");
-        paramb.a("appid_null", null);
-        AppMethodBeat.o(83092);
-        return;
-      }
-    }
-    Object localObject1 = "wx62d9035fd4fd2059";
-    label153:
-    String str1 = ((JSONObject)localObject2).optString("key");
-    final String str2 = ((JSONObject)localObject2).optString("value");
-    String str3 = ((JSONObject)localObject2).optString("weight", "1");
-    String str4 = ((JSONObject)localObject2).optString("expireTime");
-    boolean bool1 = ((JSONObject)localObject2).optBoolean("autoClean", true);
-    boolean bool2 = ((JSONObject)localObject2).optBoolean("pageCache", false);
-    if ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)) || (str1.length() > 80))
-    {
-      Log.i("MicroMsg.JsApiSetGameData", "key or value is invalid");
-      paramb.a("null_key", null);
-      AppMethodBeat.o(83092);
-      return;
-    }
-    localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("appId", (String)localObject1);
-    ((Bundle)localObject2).putString("key", str1);
-    ((Bundle)localObject2).putString("weight", str3);
-    ((Bundle)localObject2).putString("expireTime", str4);
-    ((Bundle)localObject2).putBoolean("autoClean", bool1);
-    com.tencent.mm.plugin.webview.b.b.gTg();
-    long l = com.tencent.mm.plugin.webview.b.b.mn(str1, str2);
-    ((Bundle)localObject2).putLong("storeSize", l);
-    if ((l <= 204800L) && (!bool2)) {
-      ((Bundle)localObject2).putString("value", str2);
-    }
-    if (bool2) {
-      if ((locala instanceof i))
-      {
-        if (((com.tencent.mm.game.report.a.b)h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vuQ, 0) == 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          bool2 = ((i)locala).ewW().QLf;
-          Log.i("MicroMsg.JsApiSetGameData", "isOpenPageCache:%b, allowSetPageCache:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          if (bool1) {
-            break;
-          }
-          paramb.a("close_page_cache", null);
-          AppMethodBeat.o(83092);
-          return;
-        }
-        if (!bool2)
-        {
-          paramb.a("ban_set_page_cache", null);
-          AppMethodBeat.o(83092);
-        }
-      }
-      else
-      {
-        paramb.a("ban_set_page_cache", null);
-      }
-    }
-    j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localObject2, a.class, new com.tencent.mm.ipcinvoker.f() {});
-    AppMethodBeat.o(83092);
+    AppMethodBeat.i(277172);
+    Ivb = new a((byte)0);
+    AppMethodBeat.o(277172);
   }
   
-  public final int cDj()
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    return 0;
+    AppMethodBeat.i(277183);
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.c.ZL(paramString);
+    if (paramContext == null)
+    {
+      s.checkNotNull(parama);
+      parama.j("fail", null);
+      AppMethodBeat.o(277183);
+      return;
+    }
+    Log.i("MicroMsg.JsApiRecordOperateUserData", s.X("data: ", paramContext));
+    paramContext = paramContext.optString("datalist");
+    if (paramContext != null) {
+      com.tencent.luggage.sdk.h.c.a((JSONArray)new f(paramContext), (kotlin.g.a.b)b.Ivc);
+    }
+    s.checkNotNull(parama);
+    parama.j(null, null);
+    AppMethodBeat.o(277183);
+  }
+  
+  public final void b(com.tencent.luggage.d.b<a>.a paramb) {}
+  
+  public final int dgI()
+  {
+    return 1;
   }
   
   public final String name()
   {
-    return "setGameData";
+    return "recordOperateUserData";
   }
   
-  @com.tencent.mm.ipcinvoker.c.a
-  static class a
-    implements d<Bundle, Bundle>
-  {}
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/luggage/jsapi/JsApiRecordOperateUserData$Companion;", "", "()V", "TAG", "", "luggage-game_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/json/InnerJSONObjectImpl;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<d, ah>
+  {
+    public static final b Ivc;
+    
+    static
+    {
+      AppMethodBeat.i(277148);
+      Ivc = new b();
+      AppMethodBeat.o(277148);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
 }
 
 

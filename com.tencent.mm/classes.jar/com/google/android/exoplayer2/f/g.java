@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface g
 {
-  public static final g bjL = new g()
+  public static final g ddF = new g()
   {
     public final boolean g(Format paramAnonymousFormat)
     {
       AppMethodBeat.i(92822);
-      paramAnonymousFormat = paramAnonymousFormat.aMQ;
+      paramAnonymousFormat = paramAnonymousFormat.cGN;
       if (("text/vtt".equals(paramAnonymousFormat)) || ("text/x-ssa".equals(paramAnonymousFormat)) || ("application/ttml+xml".equals(paramAnonymousFormat)) || ("application/x-mp4-vtt".equals(paramAnonymousFormat)) || ("application/x-subrip".equals(paramAnonymousFormat)) || ("application/x-quicktime-tx3g".equals(paramAnonymousFormat)) || ("application/cea-608".equals(paramAnonymousFormat)) || ("application/x-mp4-cea-608".equals(paramAnonymousFormat)) || ("application/cea-708".equals(paramAnonymousFormat)) || ("application/dvbsubs".equals(paramAnonymousFormat)))
       {
         AppMethodBeat.o(92822);
@@ -25,7 +25,7 @@ public abstract interface g
     public final e k(Format paramAnonymousFormat)
     {
       AppMethodBeat.i(92823);
-      String str = paramAnonymousFormat.aMQ;
+      String str = paramAnonymousFormat.cGN;
       int i = -1;
       switch (str.hashCode())
       {
@@ -92,7 +92,7 @@ public abstract interface g
       paramAnonymousFormat = new com.google.android.exoplayer2.f.g.g();
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
-      paramAnonymousFormat = new com.google.android.exoplayer2.f.c.a(paramAnonymousFormat.aMS);
+      paramAnonymousFormat = new com.google.android.exoplayer2.f.c.a(paramAnonymousFormat.cGP);
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
       paramAnonymousFormat = new b();
@@ -104,16 +104,16 @@ public abstract interface g
       paramAnonymousFormat = new com.google.android.exoplayer2.f.d.a();
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
-      paramAnonymousFormat = new com.google.android.exoplayer2.f.f.a(paramAnonymousFormat.aMS);
+      paramAnonymousFormat = new com.google.android.exoplayer2.f.f.a(paramAnonymousFormat.cGP);
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
-      paramAnonymousFormat = new com.google.android.exoplayer2.f.a.a(paramAnonymousFormat.aMQ, paramAnonymousFormat.aNe);
+      paramAnonymousFormat = new com.google.android.exoplayer2.f.a.a(paramAnonymousFormat.cGN, paramAnonymousFormat.cHa);
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
-      paramAnonymousFormat = new c(paramAnonymousFormat.aNe);
+      paramAnonymousFormat = new c(paramAnonymousFormat.cHa);
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
-      paramAnonymousFormat = new com.google.android.exoplayer2.f.b.a(paramAnonymousFormat.aMS);
+      paramAnonymousFormat = new com.google.android.exoplayer2.f.b.a(paramAnonymousFormat.cGP);
       AppMethodBeat.o(92823);
       return paramAnonymousFormat;
     }

@@ -1,8 +1,8 @@
 package com.tencent.mm.videocomposition;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15})
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 15})
 public final class k {}
 
 

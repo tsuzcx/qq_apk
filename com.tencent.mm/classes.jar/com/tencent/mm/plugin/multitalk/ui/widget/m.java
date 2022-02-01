@@ -23,59 +23,56 @@ import com.tencent.mm.plugin.multitalk.a.e;
 import com.tencent.mm.plugin.multitalk.a.f;
 import com.tencent.mm.plugin.multitalk.a.g;
 import com.tencent.mm.plugin.multitalk.a.h;
-import com.tencent.mm.plugin.multitalk.model.ad;
+import com.tencent.mm.plugin.multitalk.model.ac;
 import com.tencent.mm.plugin.multitalk.model.f;
-import com.tencent.mm.plugin.multitalk.model.q;
+import com.tencent.mm.plugin.multitalk.model.p;
 import com.tencent.mm.plugin.voip.b.f;
 import com.tencent.mm.plugin.voip.b.g;
-import com.tencent.mm.plugin.voip.ui.e;
+import com.tencent.mm.plugin.voip.ui.k;
 import com.tencent.mm.plugin.voip.widget.BaseSmallView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import java.util.HashMap;
 import java.util.HashSet;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView;", "Lcom/tencent/mm/plugin/voip/widget/BaseSmallView;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mStatusView", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniStatusLayout;", "mVideoView", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVideoView;", "mVoiceView", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView;", "mWakeLock", "Landroid/os/PowerManager$WakeLock;", "Landroid/os/PowerManager;", "radius", "", "changeRendererSpeaker", "", "userName", "", "checkIfReceivingVideo", "", "drawAvatar", "drawBitmap", "bm", "Landroid/graphics/Bitmap;", "angle", "", "mirror", "getAvatarIv", "Landroid/widget/ImageView;", "getLastRenderSwitchTick", "", "()Ljava/lang/Long;", "getRendererSpeaker", "getUsername", "initShowMode", "isVideo", "onHangupHappened", "onResumeIconAndTipShow", "refreshLayoutCauseDockChanged", "isDockerLeft", "refreshMiniView", "refreshRenderTick", "setVoicePlayDevice", "device", "showSelfCameraStatus", "show", "showSelfMuteStatus", "showSpeakerAvatar", "switchToVideo", "switchToVoice", "uninit", "updateText", "text", "updateTime", "Companion", "plugin-multitalk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView;", "Lcom/tencent/mm/plugin/voip/widget/BaseSmallView;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mStatusView", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniStatusLayout;", "mVideoView", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVideoView;", "mVoiceView", "Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView;", "mWakeLock", "Landroid/os/PowerManager$WakeLock;", "Landroid/os/PowerManager;", "radius", "", "changeRendererSpeaker", "", "userName", "", "checkIfReceivingVideo", "", "drawAvatar", "drawBitmap", "bm", "Landroid/graphics/Bitmap;", "angle", "", "mirror", "getAvatarIv", "Landroid/widget/ImageView;", "getLastRenderSwitchTick", "", "()Ljava/lang/Long;", "getRendererSpeaker", "getStateContentDesc", "getUsername", "initShowMode", "isVideo", "onHangupHappened", "onResumeIconAndTipShow", "refreshLayoutCauseDockChanged", "isDockerLeft", "refreshMiniView", "refreshRenderTick", "setVoicePlayDevice", "device", "showSelfCameraStatus", "show", "showSelfMuteStatus", "showSpeakerAvatar", "switchToVideo", "switchToVoice", "uninit", "updateText", "text", "updateTime", "Companion", "plugin-multitalk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
   extends BaseSmallView
   implements f
 {
-  public static final m.a Fzn;
-  j Fzk;
-  i Fzl;
-  private h Fzm;
-  private HashMap _$_findViewCache;
-  private PowerManager.WakeLock kqO;
+  public static final m.a Lvr;
+  j Lvs;
+  i Lvt;
+  private h Lvu;
+  private PowerManager.WakeLock mUJ;
   private final float radius;
   
   static
   {
-    AppMethodBeat.i(206399);
-    Fzn = new m.a((byte)0);
-    AppMethodBeat.o(206399);
+    AppMethodBeat.i(285456);
+    Lvr = new m.a((byte)0);
+    AppMethodBeat.o(285456);
   }
   
   public m(Context paramContext)
   {
     super(paramContext, null);
-    AppMethodBeat.i(206398);
-    this.radius = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 12);
+    AppMethodBeat.i(285449);
+    this.radius = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 12);
     Object localObject = MMApplicationContext.getContext().getSystemService("power");
     if (localObject == null)
     {
-      paramContext = new t("null cannot be cast to non-null type android.os.PowerManager");
-      AppMethodBeat.o(206398);
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.os.PowerManager");
+      AppMethodBeat.o(285449);
       throw paramContext;
     }
-    this.kqO = ((PowerManager)localObject).newWakeLock(536870922, "MicroMsg.MultiTalkSmallView");
-    localObject = this.kqO;
+    this.mUJ = ((PowerManager)localObject).newWakeLock(536870922, "MicroMsg.MultiTalkSmallView");
+    localObject = this.mUJ;
     if (localObject != null)
     {
       com.tencent.mm.hellhoundlib.a.a.b(localObject, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView", "<init>", "(Landroid/content/Context;)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
@@ -84,381 +81,237 @@ public final class m
     }
     LayoutInflater.from(paramContext).inflate(a.f.multitalk_mini_widget_view, (ViewGroup)this);
     setClipToOutline(true);
-    setOutlineProvider((ViewOutlineProvider)new e(this.radius));
-    paramContext = _$_findCachedViewById(a.e.multitalk_voice);
-    p.j(paramContext, "multitalk_voice");
-    paramContext.setClipToOutline(true);
-    paramContext = _$_findCachedViewById(a.e.multitalk_voice);
-    p.j(paramContext, "multitalk_voice");
-    paramContext.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
-    paramContext = _$_findCachedViewById(a.e.multitalk_video);
-    p.j(paramContext, "multitalk_video");
-    paramContext.setClipToOutline(true);
-    paramContext = _$_findCachedViewById(a.e.multitalk_video);
-    p.j(paramContext, "multitalk_video");
-    paramContext.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
-    paramContext = _$_findCachedViewById(a.e.multitalk_voice);
-    p.j(paramContext, "multitalk_voice");
-    this.Fzk = new j(paramContext);
-    paramContext = _$_findCachedViewById(a.e.multitalk_video);
-    p.j(paramContext, "multitalk_video");
-    this.Fzl = new i(paramContext);
-    paramContext = _$_findCachedViewById(a.e.multitalk_minio_small_status_layout);
-    p.j(paramContext, "multitalk_minio_small_status_layout");
-    this.Fzm = new h(paramContext);
-    AppMethodBeat.o(206398);
+    setOutlineProvider((ViewOutlineProvider)new k(this.radius));
+    findViewById(a.e.multitalk_voice).setClipToOutline(true);
+    findViewById(a.e.multitalk_voice).setOutlineProvider((ViewOutlineProvider)new k(this.radius));
+    findViewById(a.e.multitalk_video).setClipToOutline(true);
+    findViewById(a.e.multitalk_video).setOutlineProvider((ViewOutlineProvider)new k(this.radius));
+    paramContext = findViewById(a.e.multitalk_voice);
+    s.s(paramContext, "multitalk_voice");
+    this.Lvs = new j(paramContext);
+    paramContext = findViewById(a.e.multitalk_video);
+    s.s(paramContext, "multitalk_video");
+    this.Lvt = new i(paramContext);
+    paramContext = findViewById(a.e.multitalk_minio_small_status_layout);
+    s.s(paramContext, "multitalk_minio_small_status_layout");
+    this.Lvu = new h(paramContext);
+    AppMethodBeat.o(285449);
   }
   
-  private View _$_findCachedViewById(int paramInt)
+  private final String getStateContentDesc()
   {
-    AppMethodBeat.i(206400);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    Object localObject2 = null;
+    AppMethodBeat.i(285453);
+    Object localObject1 = this.Lvu;
+    int i;
+    label40:
+    String str;
+    if ((localObject1 != null) && (!((h)localObject1).LuL))
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      i = 1;
+      if (i == 0) {
+        break label113;
+      }
+      localObject1 = getContext();
+      if (localObject1 != null) {
+        break label102;
+      }
+      localObject1 = null;
+      str = s.X("", localObject1);
+      localObject1 = this.Lvu;
+      if ((localObject1 == null) || (((h)localObject1).LuK != true)) {
+        break label138;
+      }
+      i = 1;
+      label68:
+      if (i == 0) {
+        break label154;
+      }
+      localObject1 = getContext();
+      if (localObject1 != null) {
+        break label143;
+      }
+      localObject1 = localObject2;
     }
-    AppMethodBeat.o(206400);
-    return localView1;
+    for (;;)
+    {
+      localObject1 = s.X(str, localObject1);
+      AppMethodBeat.o(285453);
+      return localObject1;
+      i = 0;
+      break;
+      label102:
+      localObject1 = ((Context)localObject1).getString(a.h.voip_multi_voice_icon_open);
+      break label40;
+      label113:
+      localObject1 = getContext();
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        break label40;
+      }
+      localObject1 = ((Context)localObject1).getString(a.h.voip_multi_voice_icon_close);
+      break label40;
+      label138:
+      i = 0;
+      break label68;
+      label143:
+      localObject1 = ((Context)localObject1).getString(a.h.voip_multi_video_icon_open);
+      continue;
+      label154:
+      Context localContext = getContext();
+      localObject1 = localObject2;
+      if (localContext != null) {
+        localObject1 = localContext.getString(a.h.voip_multi_video_icon_close);
+      }
+    }
   }
   
   public final void a(String paramString, Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(206383);
-    p.k(paramString, "userName");
-    p.k(paramBitmap, "bm");
-    Object localObject1 = this.Fzl;
-    if (localObject1 != null) {}
-    for (localObject1 = ((i)localObject1).FyI; localObject1 != null; localObject1 = null)
+    AppMethodBeat.i(285486);
+    s.u(paramString, "userName");
+    s.u(paramBitmap, "bm");
+    Object localObject1 = this.Lvt;
+    if (localObject1 == null)
     {
-      i locali = this.Fzl;
-      localObject1 = localObject2;
-      if (locali != null) {
-        localObject1 = locali.FyI;
-      }
-      if (!p.h(paramString, localObject1)) {
-        break;
-      }
-      localObject1 = this.Fzl;
-      if (localObject1 == null) {
-        break;
-      }
-      ((i)localObject1).b(paramString, paramBitmap, paramInt2, paramInt1);
-      AppMethodBeat.o(206383);
-      return;
-    }
-    AppMethodBeat.o(206383);
-  }
-  
-  public final void aQM(String paramString)
-  {
-    AppMethodBeat.i(206384);
-    super.aQM(paramString);
-    Object localObject1 = this.Fzk;
-    if (localObject1 != null)
-    {
-      Object localObject2 = ((j)localObject1).timeTv;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setTextSize(1, 12.0F);
-      }
-      localObject2 = ((j)localObject1).timeTv;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setText((CharSequence)paramString);
-      }
-      localObject2 = ((j)localObject1).oFW;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject1 = ((j)localObject1).context;
-      if (localObject1 != null) {}
-      for (localObject1 = ((Context)localObject1).getString(b.g.chatting_voip_voice);; localObject1 = null)
-      {
-        ((View)localObject2).setContentDescription((CharSequence)(String.valueOf(localObject1) + "," + paramString));
-        AppMethodBeat.o(206384);
-        return;
-      }
-    }
-    AppMethodBeat.o(206384);
-  }
-  
-  public final void aQN(String paramString)
-  {
-    AppMethodBeat.i(206390);
-    super.aQN(paramString);
-    Object localObject1 = this.Fzk;
-    if (localObject1 != null)
-    {
-      Object localObject2 = ((j)localObject1).timeTv;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setTextSize(1, 14.0F);
-      }
-      localObject2 = ((j)localObject1).timeTv;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setText((CharSequence)paramString);
-      }
-      localObject2 = ((j)localObject1).oFW;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localObject1 = ((j)localObject1).context;
-      if (localObject1 != null) {}
-      for (localObject1 = ((Context)localObject1).getString(b.g.chatting_voip_voice);; localObject1 = null)
-      {
-        ((View)localObject2).setContentDescription((CharSequence)(String.valueOf(localObject1) + "," + paramString));
-        AppMethodBeat.o(206390);
-        return;
-      }
-    }
-    AppMethodBeat.o(206390);
-  }
-  
-  public final void aQO(String paramString)
-  {
-    AppMethodBeat.i(206392);
-    p.k(paramString, "userName");
-    Object localObject = ad.eYc();
-    p.j(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-    if (!((q)localObject).eXf().contains(paramString))
-    {
-      localObject = this.Fzl;
-      if (localObject != null)
-      {
-        ((i)localObject).aQJ(paramString);
-        AppMethodBeat.o(206392);
-        return;
-      }
-    }
-    AppMethodBeat.o(206392);
-  }
-  
-  public final void aQP(String paramString)
-  {
-    AppMethodBeat.i(206394);
-    Object localObject = getLastRenderSwitchTick();
-    if (localObject != null) {}
-    for (long l = ((Long)localObject).longValue();; l = 0L)
-    {
-      Log.printInfoStack("MicroMsg.MultiTalkSmallView", "changeRendererSpeaker %s", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-      localObject = this.Fzl;
-      if (localObject == null) {
-        break;
-      }
-      ((i)localObject).aQG(paramString);
-      AppMethodBeat.o(206394);
-      return;
-    }
-    AppMethodBeat.o(206394);
-  }
-  
-  public final void dDz()
-  {
-    AppMethodBeat.i(206378);
-    Object localObject = this.Fzk;
-    if (localObject != null)
-    {
-      localObject = ((j)localObject).eYy();
-      if (localObject != null) {
-        break label134;
-      }
-    }
-    label134:
-    while (((Integer)localObject).intValue() != 4)
-    {
-      localObject = this.Fzk;
-      if (localObject != null)
-      {
-        ((j)localObject).oFW.setAlpha(1.0F);
-        ((j)localObject).oFW.setVisibility(0);
-        ((j)localObject).oFW.clearAnimation();
-        ((j)localObject).oFW.animate().alpha(0.0F).setDuration(300L).setListener((Animator.AnimatorListener)new j.a((j)localObject)).start();
-      }
-      localObject = this.Fzl;
-      if (localObject != null) {
-        ((i)localObject).XH(0);
-      }
-      localObject = this.Fzl;
-      if (localObject == null) {
-        break label142;
-      }
-      ((i)localObject).aQJ(getRendererSpeaker());
-      AppMethodBeat.o(206378);
-      return;
-      localObject = null;
-      break;
-    }
-    label142:
-    AppMethodBeat.o(206378);
-  }
-  
-  public final void eWn() {}
-  
-  public final boolean eYB()
-  {
-    AppMethodBeat.i(206385);
-    super.eYB();
-    Object localObject1 = this.Fzk;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = ((j)localObject1).timeTv;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setVisibility(8);
-      }
-      localObject2 = ((j)localObject1).FyV;
-      if (localObject2 != null) {
-        ((WeImageView)localObject2).setBackground(au.o(((j)localObject1).context, a.g.icons_filled_call_end, Color.parseColor("#FA5151")));
-      }
-      localObject2 = ((j)localObject1).FyV;
-      if (localObject2 != null) {
-        ((WeImageView)localObject2).setIconColor(Color.parseColor("#FA5151"));
-      }
-      localObject2 = ((j)localObject1).mrN;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setVisibility(0);
-      }
-      localObject2 = ((j)localObject1).mrN;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setTextColor(Color.parseColor("#FA5151"));
-      }
-      localObject2 = ((j)localObject1).mrN;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setText(a.h.voip_miniwindow_end_wording);
-      }
-      ((j)localObject1).oFW.clearAnimation();
-    }
-    localObject1 = this.Fzl;
-    if (localObject1 != null)
-    {
-      localObject2 = ((i)localObject1).FyA;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setVisibility(8);
-      }
-      localObject2 = ((i)localObject1).FyE;
-      if (localObject2 != null) {
-        ((View)localObject2).setVisibility(0);
-      }
-      localObject2 = ((i)localObject1).FyF;
-      if (localObject2 != null) {
-        ((ImageView)localObject2).setImageDrawable(au.o(((i)localObject1).context, a.g.icons_filled_call_end, Color.parseColor("#FFFFFF")));
-      }
-      localObject2 = ((i)localObject1).FyG;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setVisibility(0);
-      }
-      localObject2 = ((i)localObject1).FyC;
-      if (localObject2 != null) {
-        ((ImageView)localObject2).clearAnimation();
-      }
-      localObject1 = ((i)localObject1).FyG;
-      if (localObject1 != null) {
-        ((TextView)localObject1).setText(a.h.voip_miniwindow_end_wording);
-      }
-    }
-    AppMethodBeat.o(206385);
-    return true;
-  }
-  
-  public final void eYC()
-  {
-    AppMethodBeat.i(206387);
-    Object localObject1 = this.Fzl;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = ((i)localObject1).FyA;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setVisibility(0);
-      }
-      localObject1 = ((i)localObject1).FyE;
-      if (localObject1 != null) {
-        ((View)localObject1).setVisibility(8);
-      }
-    }
-    localObject1 = this.Fzk;
-    if (localObject1 != null)
-    {
-      localObject2 = ((j)localObject1).FyV;
-      if (localObject2 != null) {
-        ((WeImageView)localObject2).setBackground(au.o(((j)localObject1).context, a.g.icons_filled_call, Color.parseColor("#07C160")));
-      }
-      localObject2 = ((j)localObject1).FyV;
-      if (localObject2 != null) {
-        ((WeImageView)localObject2).setIconColor(Color.parseColor("#07C160"));
-      }
-      localObject2 = ((j)localObject1).mrN;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setVisibility(8);
-      }
-      localObject2 = ((j)localObject1).mrN;
-      if (localObject2 != null) {
-        ((TextView)localObject2).setTextColor(Color.parseColor("#07C160"));
-      }
-      localObject1 = ((j)localObject1).timeTv;
+      localObject1 = null;
       if (localObject1 != null)
       {
-        ((TextView)localObject1).setVisibility(0);
-        AppMethodBeat.o(206387);
-        return;
+        localObject1 = this.Lvt;
+        if (localObject1 != null) {
+          break label105;
+        }
       }
-      AppMethodBeat.o(206387);
-      return;
     }
-    AppMethodBeat.o(206387);
+    label105:
+    for (localObject1 = localObject2;; localObject1 = ((i)localObject1).LuU)
+    {
+      if (s.p(paramString, localObject1))
+      {
+        localObject1 = this.Lvt;
+        if (localObject1 != null) {
+          ((i)localObject1).b(paramString, paramBitmap, paramInt2, paramInt1);
+        }
+      }
+      AppMethodBeat.o(285486);
+      return;
+      localObject1 = ((i)localObject1).LuU;
+      break;
+    }
   }
   
-  public final void eYD()
+  public final void aNF(String paramString)
   {
-    AppMethodBeat.i(206388);
-    super.eYD();
-    Object localObject1 = this.Fzk;
-    if (localObject1 != null)
+    Object localObject1 = null;
+    AppMethodBeat.i(285533);
+    super.aNF(paramString);
+    Object localObject2 = this.Lvs;
+    if (localObject2 != null)
     {
-      Object localObject2 = ((j)localObject1).cCj;
-      Context localContext;
-      int j;
-      Object localObject3;
-      if (localObject2 != null)
-      {
-        localContext = ((j)localObject1).context;
-        j = a.d.voip_mini_voice_rectangle;
-        localObject3 = ((j)localObject1).context;
-        if (localObject3 == null) {
-          break label137;
-        }
-        localObject3 = ((Context)localObject3).getResources();
-        if (localObject3 == null) {
-          break label137;
-        }
+      TextView localTextView = ((j)localObject2).timeTv;
+      if (localTextView != null) {
+        localTextView.setTextSize(1, 14.0F);
       }
-      label137:
-      for (int i = ((Resources)localObject3).getColor(a.b.multitalk_mini_view_color);; i = -1)
-      {
-        ((View)localObject2).setBackground(au.o(localContext, j, i));
-        localObject2 = ((j)localObject1).context;
-        if (localObject2 == null) {
-          break label149;
-        }
-        localObject2 = ((Context)localObject2).getResources();
-        if (localObject2 == null) {
-          break label149;
-        }
-        i = ((Resources)localObject2).getColor(a.b.FG_1);
-        localObject1 = ((j)localObject1).timeTv;
-        if (localObject1 == null) {
-          break;
-        }
-        ((TextView)localObject1).setTextColor(i);
-        AppMethodBeat.o(206388);
-        return;
+      localObject2 = ((j)localObject2).timeTv;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setText((CharSequence)paramString);
       }
-      AppMethodBeat.o(206388);
+    }
+    localObject2 = findViewById(a.e.multitalk_video);
+    paramString = getContext();
+    if (paramString == null)
+    {
+      paramString = null;
+      ((View)localObject2).setContentDescription((CharSequence)s.X(paramString, getStateContentDesc()));
+      localObject2 = findViewById(a.e.multitalk_voice);
+      paramString = getContext();
+      if (paramString != null) {
+        break label145;
+      }
+    }
+    label145:
+    for (paramString = localObject1;; paramString = paramString.getString(a.h.talkback_video_talk_multi_talking_no_time))
+    {
+      ((View)localObject2).setContentDescription((CharSequence)s.X(paramString, getStateContentDesc()));
+      AppMethodBeat.o(285533);
       return;
-      label149:
-      AppMethodBeat.o(206388);
+      paramString = paramString.getString(a.h.talkback_video_talk_multi_talking_no_time);
+      break;
+    }
+  }
+  
+  public final void aNG(String paramString)
+  {
+    AppMethodBeat.i(285540);
+    s.u(paramString, "userName");
+    if (!ac.ggS().Loj.contains(paramString))
+    {
+      i locali = this.Lvt;
+      if (locali != null) {
+        locali.aNC(paramString);
+      }
+    }
+    AppMethodBeat.o(285540);
+  }
+  
+  public final void aNH(String paramString)
+  {
+    AppMethodBeat.i(285553);
+    Object localObject = getLastRenderSwitchTick();
+    if (localObject == null) {}
+    for (long l = 0L;; l = ((Long)localObject).longValue())
+    {
+      Log.printInfoStack("MicroMsg.MultiTalkSmallView", "changeRendererSpeaker %s", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+      localObject = this.Lvt;
+      if (localObject != null) {
+        ((i)localObject).aNz(paramString);
+      }
+      AppMethodBeat.o(285553);
       return;
     }
-    AppMethodBeat.o(206388);
+  }
+  
+  public final void etJ()
+  {
+    AppMethodBeat.i(285470);
+    Object localObject = this.Lvs;
+    if (localObject != null)
+    {
+      localObject = ((j)localObject).ght();
+      if (localObject != null) {
+        break label135;
+      }
+    }
+    for (int i = 0;; i = 1)
+    {
+      if (i == 0)
+      {
+        localObject = this.Lvs;
+        if (localObject != null)
+        {
+          ((j)localObject).rootView.setAlpha(1.0F);
+          ((j)localObject).rootView.setVisibility(0);
+          ((j)localObject).rootView.clearAnimation();
+          ((j)localObject).rootView.animate().alpha(0.0F).setDuration(300L).setListener((Animator.AnimatorListener)new j.a((j)localObject)).start();
+        }
+        localObject = this.Lvt;
+        if (localObject != null) {
+          ((i)localObject).abR(0);
+        }
+        localObject = this.Lvt;
+        if (localObject != null) {
+          ((i)localObject).aNC(getRendererSpeaker());
+        }
+      }
+      AppMethodBeat.o(285470);
+      return;
+      label135:
+      if (((Integer)localObject).intValue() != 4) {
+        break;
+      }
+    }
   }
   
   public final ImageView getAvatarIv()
@@ -468,65 +321,227 @@ public final class m
   
   public final Long getLastRenderSwitchTick()
   {
-    i locali = this.Fzl;
-    if (locali != null) {
-      return locali.FyK;
+    i locali = this.Lvt;
+    if (locali == null) {
+      return null;
     }
-    return null;
+    return locali.LuW;
   }
   
   public final String getRendererSpeaker()
   {
-    Object localObject = this.Fzl;
-    if (localObject != null)
-    {
-      String str = ((i)localObject).FyI;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
+    Object localObject = this.Lvt;
+    if (localObject == null) {
       localObject = "";
     }
-    return localObject;
+    String str;
+    do
+    {
+      return localObject;
+      str = ((i)localObject).LuU;
+      localObject = str;
+    } while (str != null);
+    return "";
   }
   
   public final String getUsername()
   {
-    Object localObject = this.Fzl;
-    if (localObject != null)
-    {
-      String str = ((i)localObject).FyI;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
+    Object localObject = this.Lvt;
+    if (localObject == null) {
       localObject = "";
     }
-    return localObject;
+    String str;
+    do
+    {
+      return localObject;
+      str = ((i)localObject).LuU;
+      localObject = str;
+    } while (str != null);
+    return "";
+  }
+  
+  public final void gfe() {}
+  
+  public final boolean ghw()
+  {
+    AppMethodBeat.i(285506);
+    super.ghw();
+    Object localObject1 = this.Lvs;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = ((j)localObject1).timeTv;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(8);
+      }
+      localObject2 = ((j)localObject1).Lvd;
+      if (localObject2 != null) {
+        ((WeImageView)localObject2).setBackground(bb.m(((j)localObject1).context, a.g.icons_filled_call_end, Color.parseColor("#FA5151")));
+      }
+      localObject2 = ((j)localObject1).Lvd;
+      if (localObject2 != null) {
+        ((WeImageView)localObject2).setIconColor(Color.parseColor("#FA5151"));
+      }
+      localObject2 = ((j)localObject1).pls;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(0);
+      }
+      localObject2 = ((j)localObject1).pls;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setTextColor(Color.parseColor("#FA5151"));
+      }
+      localObject2 = ((j)localObject1).pls;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setText(a.h.voip_miniwindow_end_wording);
+      }
+      ((j)localObject1).rootView.clearAnimation();
+    }
+    localObject1 = this.Lvt;
+    if (localObject1 != null)
+    {
+      localObject2 = ((i)localObject1).LuN;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(8);
+      }
+      localObject2 = ((i)localObject1).ucy;
+      if (localObject2 != null) {
+        ((View)localObject2).setVisibility(0);
+      }
+      localObject2 = ((i)localObject1).LuR;
+      if (localObject2 != null) {
+        ((ImageView)localObject2).setImageDrawable(bb.m(((i)localObject1).context, a.g.icons_filled_call_end, Color.parseColor("#FFFFFF")));
+      }
+      localObject2 = ((i)localObject1).LuS;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(0);
+      }
+      localObject2 = ((i)localObject1).LuP;
+      if (localObject2 != null) {
+        ((ImageView)localObject2).clearAnimation();
+      }
+      localObject1 = ((i)localObject1).LuS;
+      if (localObject1 != null) {
+        ((TextView)localObject1).setText(a.h.voip_miniwindow_end_wording);
+      }
+    }
+    findViewById(a.e.multitalk_video).setContentDescription((CharSequence)"");
+    findViewById(a.e.multitalk_voice).setContentDescription((CharSequence)"");
+    AppMethodBeat.o(285506);
+    return true;
+  }
+  
+  public final void ghx()
+  {
+    AppMethodBeat.i(285523);
+    Object localObject1 = this.Lvt;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = ((i)localObject1).LuN;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(0);
+      }
+      localObject1 = ((i)localObject1).ucy;
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(8);
+      }
+    }
+    localObject1 = this.Lvs;
+    if (localObject1 != null)
+    {
+      localObject2 = ((j)localObject1).Lvd;
+      if (localObject2 != null) {
+        ((WeImageView)localObject2).setBackground(bb.m(((j)localObject1).context, a.g.icons_filled_call, Color.parseColor("#07C160")));
+      }
+      localObject2 = ((j)localObject1).Lvd;
+      if (localObject2 != null) {
+        ((WeImageView)localObject2).setIconColor(Color.parseColor("#07C160"));
+      }
+      localObject2 = ((j)localObject1).pls;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setVisibility(8);
+      }
+      localObject2 = ((j)localObject1).pls;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setTextColor(Color.parseColor("#07C160"));
+      }
+      localObject1 = ((j)localObject1).timeTv;
+      if (localObject1 != null) {
+        ((TextView)localObject1).setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(285523);
+  }
+  
+  public final void ghy()
+  {
+    int i = -1;
+    AppMethodBeat.i(285529);
+    super.ghy();
+    Object localObject1 = this.Lvs;
+    Object localObject2;
+    Context localContext;
+    int j;
+    Object localObject3;
+    if (localObject1 != null)
+    {
+      localObject2 = ((j)localObject1).AhP;
+      if (localObject2 != null)
+      {
+        localContext = ((j)localObject1).context;
+        j = a.d.voip_mini_voice_rectangle;
+        localObject3 = ((j)localObject1).context;
+        if (localObject3 != null) {
+          break label118;
+        }
+      }
+    }
+    for (;;)
+    {
+      ((View)localObject2).setBackground(bb.m(localContext, j, i));
+      localObject2 = ((j)localObject1).context;
+      if (localObject2 != null)
+      {
+        localObject2 = ((Context)localObject2).getResources();
+        if (localObject2 != null)
+        {
+          i = ((Resources)localObject2).getColor(a.b.FG_1);
+          localObject1 = ((j)localObject1).timeTv;
+          if (localObject1 != null) {
+            ((TextView)localObject1).setTextColor(i);
+          }
+        }
+      }
+      AppMethodBeat.o(285529);
+      return;
+      label118:
+      localObject3 = ((Context)localObject3).getResources();
+      if (localObject3 != null) {
+        i = ((Resources)localObject3).getColor(a.b.multitalk_mini_view_color);
+      }
+    }
   }
   
   public final void setVoicePlayDevice(int paramInt)
   {
-    AppMethodBeat.i(206386);
+    AppMethodBeat.i(285516);
     Object localObject1;
     Object localObject2;
-    if (this.NKw != paramInt)
+    if (this.Uxg != paramInt)
     {
-      this.NKw = paramInt;
-      localObject1 = this.Fzl;
+      this.Uxg = paramInt;
+      localObject1 = this.Lvt;
       if (localObject1 != null)
       {
-        localObject1 = ((i)localObject1).FyA;
+        localObject1 = ((i)localObject1).LuN;
         if (localObject1 != null) {
           ((TextView)localObject1).setVisibility(8);
         }
       }
-      localObject1 = this.Fzl;
+      localObject1 = this.Lvt;
       if (localObject1 != null)
       {
-        localObject2 = ((i)localObject1).FyE;
+        localObject2 = ((i)localObject1).ucy;
         if (localObject2 != null) {
           ((View)localObject2).setVisibility(0);
         }
@@ -534,10 +549,10 @@ public final class m
       switch (paramInt)
       {
       default: 
-        localObject1 = this.Fzk;
+        localObject1 = this.Lvs;
         if (localObject1 != null)
         {
-          localObject2 = ((j)localObject1).mrN;
+          localObject2 = ((j)localObject1).pls;
           if (localObject2 != null) {
             ((TextView)localObject2).setVisibility(0);
           }
@@ -555,96 +570,88 @@ public final class m
         ((TextView)localObject1).setVisibility(8);
       }
       super.setVoicePlayDevice(paramInt);
-      AppMethodBeat.o(206386);
+      AppMethodBeat.o(285516);
       return;
-      localObject2 = ((i)localObject1).FyF;
+      localObject2 = ((i)localObject1).LuR;
       if (localObject2 != null) {
-        ((ImageView)localObject2).setImageDrawable(au.o(((i)localObject1).context, b.f.icons_filled_bluetooth, Color.parseColor("#FFFFFF")));
+        ((ImageView)localObject2).setImageDrawable(bb.m(((i)localObject1).context, b.f.icons_filled_bluetooth, Color.parseColor("#FFFFFF")));
       }
-      localObject1 = ((i)localObject1).FyG;
-      if (localObject1 == null) {
-        p.iCn();
-      }
+      localObject1 = ((i)localObject1).LuS;
+      s.checkNotNull(localObject1);
       ((TextView)localObject1).setText(b.g.voip_mini_bluetooth);
       break;
-      localObject2 = ((i)localObject1).FyF;
+      localObject2 = ((i)localObject1).LuR;
       if (localObject2 != null) {
-        ((ImageView)localObject2).setImageDrawable(au.o(((i)localObject1).context, b.f.icons_filled_volume_up, Color.parseColor("#FFFFFF")));
+        ((ImageView)localObject2).setImageDrawable(bb.m(((i)localObject1).context, b.f.icons_filled_volume_up, Color.parseColor("#FFFFFF")));
       }
-      localObject1 = ((i)localObject1).FyG;
-      if (localObject1 == null) {
-        p.iCn();
-      }
+      localObject1 = ((i)localObject1).LuS;
+      s.checkNotNull(localObject1);
       ((TextView)localObject1).setText(b.g.voip_mini_mike);
       break;
-      localObject2 = ((i)localObject1).FyF;
+      localObject2 = ((i)localObject1).LuR;
       if (localObject2 != null) {
-        ((ImageView)localObject2).setImageDrawable(au.o(((i)localObject1).context, b.f.icons_filled_ear, Color.parseColor("#FFFFFF")));
+        ((ImageView)localObject2).setImageDrawable(bb.m(((i)localObject1).context, b.f.icons_filled_ear, Color.parseColor("#FFFFFF")));
       }
-      localObject1 = ((i)localObject1).FyG;
-      if (localObject1 == null) {
-        p.iCn();
-      }
+      localObject1 = ((i)localObject1).LuS;
+      s.checkNotNull(localObject1);
       ((TextView)localObject1).setText(b.g.voip_mini_earpiece);
       break;
-      localObject2 = ((i)localObject1).FyF;
+      localObject2 = ((i)localObject1).LuR;
       if (localObject2 != null) {
-        ((ImageView)localObject2).setImageDrawable(au.o(((i)localObject1).context, b.f.icons_filled_headset, Color.parseColor("#FFFFFF")));
+        ((ImageView)localObject2).setImageDrawable(bb.m(((i)localObject1).context, b.f.icons_filled_headset, Color.parseColor("#FFFFFF")));
       }
-      localObject1 = ((i)localObject1).FyG;
-      if (localObject1 == null) {
-        p.iCn();
-      }
+      localObject1 = ((i)localObject1).LuS;
+      s.checkNotNull(localObject1);
       ((TextView)localObject1).setText(b.g.voip_mini_headset);
       break;
-      localObject2 = ((j)localObject1).FyV;
+      localObject2 = ((j)localObject1).Lvd;
       if (localObject2 != null) {
-        ((WeImageView)localObject2).setBackground(au.o(((j)localObject1).context, a.g.icons_filled_bluetooth, Color.parseColor("#07C160")));
+        ((WeImageView)localObject2).setBackground(bb.m(((j)localObject1).context, a.g.icons_filled_bluetooth, Color.parseColor("#07C160")));
       }
-      localObject2 = ((j)localObject1).FyV;
+      localObject2 = ((j)localObject1).Lvd;
       if (localObject2 != null) {
         ((WeImageView)localObject2).setIconColor(Color.parseColor("#07C160"));
       }
-      localObject2 = ((j)localObject1).mrN;
+      localObject2 = ((j)localObject1).pls;
       if (localObject2 != null)
       {
         ((TextView)localObject2).setText(a.h.voip_mini_bluetooth);
         continue;
-        localObject2 = ((j)localObject1).FyV;
+        localObject2 = ((j)localObject1).Lvd;
         if (localObject2 != null) {
-          ((WeImageView)localObject2).setBackground(au.o(((j)localObject1).context, a.g.icons_filled_volume_up, Color.parseColor("#07C160")));
+          ((WeImageView)localObject2).setBackground(bb.m(((j)localObject1).context, a.g.icons_filled_volume_up, Color.parseColor("#07C160")));
         }
-        localObject2 = ((j)localObject1).FyV;
+        localObject2 = ((j)localObject1).Lvd;
         if (localObject2 != null) {
           ((WeImageView)localObject2).setIconColor(Color.parseColor("#07C160"));
         }
-        localObject2 = ((j)localObject1).mrN;
+        localObject2 = ((j)localObject1).pls;
         if (localObject2 != null)
         {
           ((TextView)localObject2).setText(a.h.voip_mini_mike);
           continue;
-          localObject2 = ((j)localObject1).FyV;
+          localObject2 = ((j)localObject1).Lvd;
           if (localObject2 != null) {
-            ((WeImageView)localObject2).setBackground(au.o(((j)localObject1).context, a.g.icons_filled_ear, Color.parseColor("#07C160")));
+            ((WeImageView)localObject2).setBackground(bb.m(((j)localObject1).context, a.g.icons_filled_ear, Color.parseColor("#07C160")));
           }
-          localObject2 = ((j)localObject1).FyV;
+          localObject2 = ((j)localObject1).Lvd;
           if (localObject2 != null) {
             ((WeImageView)localObject2).setIconColor(Color.parseColor("#07C160"));
           }
-          localObject2 = ((j)localObject1).mrN;
+          localObject2 = ((j)localObject1).pls;
           if (localObject2 != null)
           {
             ((TextView)localObject2).setText(a.h.voip_mini_earpiece);
             continue;
-            localObject2 = ((j)localObject1).FyV;
+            localObject2 = ((j)localObject1).Lvd;
             if (localObject2 != null) {
-              ((WeImageView)localObject2).setBackground(au.o(((j)localObject1).context, a.g.icons_filled_headset, Color.parseColor("#07C160")));
+              ((WeImageView)localObject2).setBackground(bb.m(((j)localObject1).context, a.g.icons_filled_headset, Color.parseColor("#07C160")));
             }
-            localObject2 = ((j)localObject1).FyV;
+            localObject2 = ((j)localObject1).Lvd;
             if (localObject2 != null) {
               ((WeImageView)localObject2).setIconColor(Color.parseColor("#07C160"));
             }
-            localObject2 = ((j)localObject1).mrN;
+            localObject2 = ((j)localObject1).pls;
             if (localObject2 != null) {
               ((TextView)localObject2).setText(a.h.voip_mini_headset);
             }
@@ -654,64 +661,132 @@ public final class m
     }
   }
   
-  public final void uV(boolean paramBoolean)
+  public final void uninit()
   {
-    AppMethodBeat.i(206374);
+    AppMethodBeat.i(285461);
+    super.uninit();
+    Object localObject = this.Lvt;
+    if (localObject != null)
+    {
+      localObject = ((i)localObject).LuP;
+      if (localObject != null) {
+        ((ImageView)localObject).clearAnimation();
+      }
+    }
+    localObject = this.Lvs;
+    if (localObject != null) {
+      ((j)localObject).rootView.clearAnimation();
+    }
+    if (this.mUJ != null)
+    {
+      localObject = this.mUJ;
+      s.checkNotNull(localObject);
+      if (((PowerManager.WakeLock)localObject).isHeld())
+      {
+        Log.i("MicroMsg.MultiTalkSmallView", "release waklock");
+        localObject = this.mUJ;
+        if (localObject != null)
+        {
+          com.tencent.mm.hellhoundlib.a.a.b(localObject, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView", "uninit", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+          ((PowerManager.WakeLock)localObject).release();
+          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView", "uninit", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+        }
+      }
+    }
+    AppMethodBeat.o(285461);
+  }
+  
+  public final void updateText(String paramString)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(285501);
+    super.updateText(paramString);
+    Object localObject2 = this.Lvs;
+    if (localObject2 != null)
+    {
+      TextView localTextView = ((j)localObject2).timeTv;
+      if (localTextView != null) {
+        localTextView.setTextSize(1, 12.0F);
+      }
+      localObject2 = ((j)localObject2).timeTv;
+      if (localObject2 != null) {
+        ((TextView)localObject2).setText((CharSequence)paramString);
+      }
+    }
+    localObject2 = findViewById(a.e.multitalk_video);
+    paramString = getContext();
+    if (paramString == null)
+    {
+      paramString = null;
+      ((View)localObject2).setContentDescription((CharSequence)s.X(paramString, getStateContentDesc()));
+      localObject2 = findViewById(a.e.multitalk_voice);
+      paramString = getContext();
+      if (paramString != null) {
+        break label145;
+      }
+    }
+    label145:
+    for (paramString = localObject1;; paramString = paramString.getString(a.h.talkback_video_talk_multi_waiting))
+    {
+      ((View)localObject2).setContentDescription((CharSequence)s.X(paramString, getStateContentDesc()));
+      AppMethodBeat.o(285501);
+      return;
+      paramString = paramString.getString(a.h.talkback_video_talk_multi_waiting);
+      break;
+    }
+  }
+  
+  public final void zj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(285463);
     if (paramBoolean)
     {
-      Object localObject = this.Fzk;
+      Object localObject = this.Lvs;
       if (localObject != null)
       {
         Integer localInteger = Integer.valueOf(4);
         if (localInteger != null)
         {
-          ((j)localObject).oFW.setVisibility(localInteger.intValue());
-          ((j)localObject).FyW = localInteger;
+          ((j)localObject).rootView.setVisibility(localInteger.intValue());
+          ((j)localObject).Lve = localInteger;
         }
       }
-      localObject = this.Fzl;
-      if (localObject != null)
-      {
-        ((i)localObject).XH(0);
-        AppMethodBeat.o(206374);
-        return;
+      localObject = this.Lvt;
+      if (localObject != null) {
+        ((i)localObject).abR(0);
       }
     }
-    AppMethodBeat.o(206374);
+    AppMethodBeat.o(285463);
   }
   
-  public final void uW(boolean paramBoolean)
+  public final void zk(boolean paramBoolean)
   {
-    AppMethodBeat.i(206381);
-    h localh = this.Fzm;
+    AppMethodBeat.i(285475);
+    h localh = this.Lvu;
     if (localh != null)
     {
-      localh.Fyy = paramBoolean;
-      localh.ak(localh.Fyz, localh.Fyy);
-      AppMethodBeat.o(206381);
-      return;
+      localh.LuK = paramBoolean;
+      localh.aD(localh.LuL, localh.LuK);
     }
-    AppMethodBeat.o(206381);
+    AppMethodBeat.o(285475);
   }
   
-  public final void uX(boolean paramBoolean)
+  public final void zl(boolean paramBoolean)
   {
-    AppMethodBeat.i(206382);
-    h localh = this.Fzm;
+    AppMethodBeat.i(285481);
+    h localh = this.Lvu;
     if (localh != null)
     {
-      localh.Fyz = paramBoolean;
-      localh.ak(localh.Fyz, localh.Fyy);
-      AppMethodBeat.o(206382);
-      return;
+      localh.LuL = paramBoolean;
+      localh.aD(localh.LuL, localh.LuK);
     }
-    AppMethodBeat.o(206382);
+    AppMethodBeat.o(285481);
   }
   
-  public final void uY(boolean paramBoolean)
+  public final void zm(boolean paramBoolean)
   {
-    AppMethodBeat.i(206396);
-    Object localObject2 = this.Fzk;
+    AppMethodBeat.i(285563);
+    Object localObject2 = this.Lvs;
     Object localObject1;
     if (localObject2 != null)
     {
@@ -719,44 +794,44 @@ public final class m
       if ((localObject1 != null) && (((View)localObject1).getLayoutParams() != null))
       {
         localObject1 = ((j)localObject2).contentView;
-        if (localObject1 != null) {}
-        for (localObject1 = ((View)localObject1).getLayoutParams(); localObject1 == null; localObject1 = null)
+        if (localObject1 == null) {}
+        for (localObject1 = null; localObject1 == null; localObject1 = ((View)localObject1).getLayoutParams())
         {
-          localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(206396);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+          AppMethodBeat.o(285563);
           throw ((Throwable)localObject1);
         }
         localObject1 = (RelativeLayout.LayoutParams)localObject1;
         if (!paramBoolean) {
-          break label187;
+          break label184;
         }
-        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(aw.fromDPToPix(((j)localObject2).context, 24));
-        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(aw.fromDPToPix(((j)localObject2).context, 8));
+        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(bd.fromDPToPix(((j)localObject2).context, 24));
+        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(bd.fromDPToPix(((j)localObject2).context, 8));
         localObject2 = ((j)localObject2).contentView;
         if (localObject2 != null) {
           ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
         }
       }
     }
-    localObject2 = this.Fzl;
+    localObject2 = this.Lvt;
     if (localObject2 != null)
     {
       localObject1 = ((i)localObject2).contentView;
       if ((localObject1 != null) && (((View)localObject1).getLayoutParams() != null))
       {
         localObject1 = ((i)localObject2).contentView;
-        if (localObject1 != null) {}
-        for (localObject1 = ((View)localObject1).getLayoutParams();; localObject1 = null)
+        if (localObject1 == null) {}
+        for (localObject1 = null;; localObject1 = ((View)localObject1).getLayoutParams())
         {
           if (localObject1 != null) {
             break label221;
           }
-          localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-          AppMethodBeat.o(206396);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+          AppMethodBeat.o(285563);
           throw ((Throwable)localObject1);
-          label187:
-          ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(aw.fromDPToPix(((j)localObject2).context, 24));
-          ((RelativeLayout.LayoutParams)localObject1).setMarginStart(aw.fromDPToPix(((j)localObject2).context, 8));
+          label184:
+          ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(bd.fromDPToPix(((j)localObject2).context, 24));
+          ((RelativeLayout.LayoutParams)localObject1).setMarginStart(bd.fromDPToPix(((j)localObject2).context, 8));
           break;
         }
         label221:
@@ -764,8 +839,8 @@ public final class m
         if (!paramBoolean) {
           break label313;
         }
-        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(aw.fromDPToPix(((i)localObject2).context, 24));
-        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(aw.fromDPToPix(((i)localObject2).context, 8));
+        ((RelativeLayout.LayoutParams)localObject1).setMarginStart(bd.fromDPToPix(((i)localObject2).context, 24));
+        ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(bd.fromDPToPix(((i)localObject2).context, 8));
       }
     }
     for (;;)
@@ -774,20 +849,20 @@ public final class m
       if (localObject2 != null) {
         ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
-      localObject1 = this.Fzm;
+      localObject1 = this.Lvu;
       if (localObject1 == null) {
-        break label396;
+        break label374;
       }
-      localObject2 = ((h)localObject1).oFW.getLayoutParams();
+      localObject2 = ((h)localObject1).rootView.getLayoutParams();
       if (localObject2 != null) {
         break;
       }
-      localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-      AppMethodBeat.o(206396);
+      localObject1 = new NullPointerException("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+      AppMethodBeat.o(285563);
       throw ((Throwable)localObject1);
       label313:
-      ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(aw.fromDPToPix(((i)localObject2).context, 24));
-      ((RelativeLayout.LayoutParams)localObject1).setMarginStart(aw.fromDPToPix(((i)localObject2).context, 8));
+      ((RelativeLayout.LayoutParams)localObject1).setMarginEnd(bd.fromDPToPix(((i)localObject2).context, 24));
+      ((RelativeLayout.LayoutParams)localObject1).setMarginStart(bd.fromDPToPix(((i)localObject2).context, 8));
     }
     localObject2 = (RelativeLayout.LayoutParams)localObject2;
     if (paramBoolean)
@@ -797,58 +872,18 @@ public final class m
     }
     for (;;)
     {
-      ((h)localObject1).oFW.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      AppMethodBeat.o(206396);
+      ((h)localObject1).rootView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      label374:
+      AppMethodBeat.o(285563);
       return;
       ((RelativeLayout.LayoutParams)localObject2).removeRule(20);
       ((RelativeLayout.LayoutParams)localObject2).addRule(21);
     }
-    label396:
-    AppMethodBeat.o(206396);
-  }
-  
-  public final void uninit()
-  {
-    AppMethodBeat.i(206373);
-    super.uninit();
-    Object localObject = this.Fzl;
-    if (localObject != null)
-    {
-      localObject = ((i)localObject).FyC;
-      if (localObject != null) {
-        ((ImageView)localObject).clearAnimation();
-      }
-    }
-    localObject = this.Fzk;
-    if (localObject != null) {
-      ((j)localObject).oFW.clearAnimation();
-    }
-    if (this.kqO != null)
-    {
-      localObject = this.kqO;
-      if (localObject == null) {
-        p.iCn();
-      }
-      if (((PowerManager.WakeLock)localObject).isHeld())
-      {
-        Log.i("MicroMsg.MultiTalkSmallView", "release waklock");
-        localObject = this.kqO;
-        if (localObject != null)
-        {
-          com.tencent.mm.hellhoundlib.a.a.b(localObject, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView", "uninit", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
-          ((PowerManager.WakeLock)localObject).release();
-          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallView", "uninit", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
-          AppMethodBeat.o(206373);
-          return;
-        }
-      }
-    }
-    AppMethodBeat.o(206373);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.m
  * JD-Core Version:    0.7.0.1
  */

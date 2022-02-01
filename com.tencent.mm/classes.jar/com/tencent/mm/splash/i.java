@@ -1,6 +1,5 @@
 package com.tencent.mm.splash;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.app.Instrumentation;
@@ -15,7 +14,7 @@ import android.os.Message;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -28,45 +27,44 @@ import java.util.Set;
 
 public class i
 {
-  private static Class<? extends Activity> UZA;
-  private static o UZB;
-  private static HashSet<String> UZC;
-  private static boolean UZD;
-  @SuppressLint({"HandlerLeak"})
-  private static Handler UZE;
-  public static final ArrayList<j> UZl;
-  public static final ArrayList<Message> UZm;
-  static String UZn;
-  static e UZo;
-  static b UZp;
-  static f UZq;
-  static Set<SplashActivity> UZr;
-  private static boolean UZs;
-  private static volatile boolean UZt;
-  private static boolean UZu;
-  private static p UZv;
-  private static boolean UZw;
-  static c UZx;
-  private static Class<? extends SplashActivity> UZy;
-  private static Set<String> UZz;
-  static d fdI;
-  static Application jxU;
+  public static final ArrayList<j> acAD;
+  public static final ArrayList<Message> acAE;
+  static String acAF;
+  static e acAG;
+  static b acAH;
+  static f acAI;
+  static Set<SplashActivity> acAJ;
+  private static boolean acAK;
+  private static volatile boolean acAL;
+  private static boolean acAM;
+  private static p acAN;
+  private static boolean acAO;
+  static c acAP;
+  private static Class<? extends SplashActivity> acAQ;
+  private static Set<String> acAR;
+  private static Class<? extends Activity> acAS;
+  private static o acAT;
+  private static HashSet<String> acAU;
+  private static boolean acAV;
+  private static Handler acAW;
+  static Application fgz;
+  static d hhy;
   
   static
   {
     AppMethodBeat.i(40652);
-    UZl = new ArrayList();
-    UZm = new ArrayList();
-    UZr = new HashSet();
-    UZs = false;
-    UZt = false;
-    UZu = false;
-    UZw = false;
-    UZz = new HashSet();
-    UZB = new o();
-    UZC = new HashSet();
-    UZD = false;
-    UZE = new Handler(Looper.getMainLooper())
+    acAD = new ArrayList();
+    acAE = new ArrayList();
+    acAJ = new HashSet();
+    acAK = false;
+    acAL = false;
+    acAM = false;
+    acAO = false;
+    acAR = new HashSet();
+    acAT = new o();
+    acAU = new HashSet();
+    acAV = false;
+    acAW = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -78,14 +76,30 @@ public class i
           AppMethodBeat.o(40626);
           return;
         }
-        a.kA(i.jxU);
+        a.mA(i.fgz);
         a.a(new a.a()
         {
-          public final void hue()
+          public final void hfu()
+          {
+            AppMethodBeat.i(40624);
+            i.g("WxSplash.Splash", "dexopt service return failed. kill self.", new Object[0]);
+            i.gyU();
+            AppMethodBeat.o(40624);
+          }
+          
+          public final void iVH()
           {
             AppMethodBeat.i(40623);
             i.access$200();
             AppMethodBeat.o(40623);
+          }
+          
+          public final void iVI()
+          {
+            AppMethodBeat.i(40625);
+            i.g("WxSplash.Splash", "dexopt service return timeout. kill self.", new Object[0]);
+            i.gyU();
+            AppMethodBeat.o(40625);
           }
         });
         AppMethodBeat.o(40626);
@@ -97,60 +111,60 @@ public class i
   static void a(SplashActivity paramSplashActivity)
   {
     AppMethodBeat.i(40631);
-    UZr.add(paramSplashActivity);
+    acAJ.add(paramSplashActivity);
     AppMethodBeat.o(40631);
   }
   
   public static void a(b paramb)
   {
-    UZp = paramb;
+    acAH = paramb;
   }
   
   public static void a(c paramc)
   {
-    UZx = paramc;
+    acAP = paramc;
   }
   
   public static void a(d paramd)
   {
-    fdI = paramd;
+    hhy = paramd;
   }
   
   public static void a(e parame)
   {
-    UZo = parame;
+    acAG = parame;
   }
   
   public static void a(f paramf)
   {
-    UZq = paramf;
+    acAI = paramf;
   }
   
   public static void a(j paramj)
   {
     AppMethodBeat.i(40644);
-    if (!gR(paramj.UZM))
+    if (!ir(paramj.acBe))
     {
       paramj.recreate();
-      g("WxSplash.Splash", "do recreate for %s", new Object[] { paramj.UZM });
+      g("WxSplash.Splash", "do recreate for %s", new Object[] { paramj.acBe });
       AppMethodBeat.o(40644);
       return;
     }
     paramj.finish();
-    g("WxSplash.Splash", "eat activity, %s", new Object[] { paramj.UZM });
+    g("WxSplash.Splash", "eat activity, %s", new Object[] { paramj.acBe });
     AppMethodBeat.o(40644);
   }
   
   public static void a(p paramp)
   {
-    UZv = paramp;
+    acAN = paramp;
   }
   
   public static void a(Throwable paramThrowable, String paramString)
   {
     AppMethodBeat.i(40647);
-    if (UZx != null) {
-      UZx.a(paramThrowable, paramString);
+    if (acAP != null) {
+      acAP.a(paramThrowable, paramString);
     }
     AppMethodBeat.o(40647);
   }
@@ -158,100 +172,82 @@ public class i
   static void b(SplashActivity paramSplashActivity)
   {
     AppMethodBeat.i(40632);
-    UZr.remove(paramSplashActivity);
+    acAJ.remove(paramSplashActivity);
     AppMethodBeat.o(40632);
   }
   
-  public static String bg(Activity paramActivity)
+  public static String bL(Activity paramActivity)
   {
     if ((paramActivity instanceof j)) {
-      return ((j)paramActivity).UZM;
+      return ((j)paramActivity).acBe;
     }
     return "";
   }
   
-  public static void buB(String paramString)
+  public static void buH(String paramString)
   {
     AppMethodBeat.i(40633);
-    UZC.add(paramString);
+    acAU.add(paramString);
     AppMethodBeat.o(40633);
   }
   
-  public static void buC(String paramString)
+  public static void buI(String paramString)
   {
-    UZn = paramString;
+    acAF = paramString;
   }
   
-  public static boolean buD(String paramString)
+  public static boolean buJ(String paramString)
   {
-    AppMethodBeat.i(208863);
-    boolean bool = UZz.contains(paramString);
+    AppMethodBeat.i(233940);
+    boolean bool = acAR.contains(paramString);
     g("WxSplash.Splash", "ignore activity %s ?, %s", new Object[] { paramString, Boolean.valueOf(bool) });
-    AppMethodBeat.o(208863);
+    AppMethodBeat.o(233940);
     return bool;
   }
   
-  public static void bw(Class<? extends SplashActivity> paramClass)
+  public static void cg(Class<? extends SplashActivity> paramClass)
   {
-    UZy = paramClass;
+    acAQ = paramClass;
   }
   
-  public static void bx(Class<? extends Activity> paramClass)
+  public static void ch(Class<? extends Activity> paramClass)
   {
-    UZA = paramClass;
-  }
-  
-  public static void fnZ()
-  {
-    AppMethodBeat.i(40637);
-    com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
-    Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/splash/Splash", "killSelf", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)locala.sf(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/splash/Splash", "killSelf", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    AppMethodBeat.o(40637);
+    acAS = paramClass;
   }
   
   public static void g(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(40646);
-    if (UZx != null) {
-      UZx.g(paramString1, paramString2, paramVarArgs);
+    if (acAP != null) {
+      acAP.g(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(40646);
   }
   
-  private static boolean gR(String paramString)
+  public static void gyU()
   {
-    AppMethodBeat.i(40643);
-    if (fdI != null)
-    {
-      boolean bool = fdI.gR(paramString);
-      AppMethodBeat.o(40643);
-      return bool;
-    }
-    AppMethodBeat.o(40643);
-    return false;
+    AppMethodBeat.i(40637);
+    com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/splash/Splash", "killSelf", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.sb(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/splash/Splash", "killSelf", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    AppMethodBeat.o(40637);
   }
   
-  public static Class<?> hug()
-  {
-    return j.class;
-  }
-  
-  public static void huh()
+  public static void iVK()
   {
     boolean bool = true;
     AppMethodBeat.i(40636);
-    if (UZu) {
+    if (acAM) {
       try
       {
-        Handler.Callback localCallback = (Handler.Callback)m.Vaf.get(m.nBO);
-        if (localCallback == m.Vae) {}
+        Handler.Callback localCallback = (Handler.Callback)m.acBz.get(m.qBf);
+        if (localCallback == m.acBy) {}
         for (;;)
         {
           g("WxSplash.Splash", "double check, callback %s %s", new Object[] { Boolean.valueOf(bool), localCallback });
-          localObject = m.Vae;
+          localObject = m.acBy;
           if (localCallback != localObject) {
             break;
           }
@@ -260,12 +256,12 @@ public class i
           bool = false;
         }
         g("WxSplash.Splash", "double check found problem!", new Object[0]);
-        Object localObject = m.Vaf;
-        m.Vae.Gza = localCallback;
+        Object localObject = m.acBz;
+        m.acBy.Mvi = localCallback;
         ((Field)localObject).setAccessible(true);
-        ((Field)localObject).set(m.nBO, m.Vae);
-        UZB.idkey(675L, 31L, 1L);
-        m.nBO.sendEmptyMessage(987654321);
+        ((Field)localObject).set(m.qBf, m.acBy);
+        acAT.idkey(675L, 31L, 1L);
+        m.qBf.sendEmptyMessage(987654321);
         AppMethodBeat.o(40636);
         return;
       }
@@ -277,84 +273,89 @@ public class i
     AppMethodBeat.o(40636);
   }
   
-  public static boolean hui()
+  public static boolean iVL()
   {
     return true;
   }
   
-  public static boolean huj()
+  public static boolean iVM()
   {
-    return UZs;
+    return acAK;
   }
   
-  public static boolean huk()
+  public static boolean iVN()
   {
-    return UZt;
+    return acAL;
   }
   
-  public static void hul()
+  public static void iVO()
   {
+    int i = 0;
     AppMethodBeat.i(40638);
-    if (!g.acB)
+    if (!g.bKk)
     {
-      a.hub();
-      UZE.sendEmptyMessage(0);
+      boolean bool = a.iVC();
+      Handler localHandler = acAW;
+      if (bool) {
+        i = 1;
+      }
+      localHandler.sendEmptyMessage(i);
       AppMethodBeat.o(40638);
       return;
     }
-    UZE.sendEmptyMessage(0);
+    acAW.sendEmptyMessage(0);
     AppMethodBeat.o(40638);
   }
   
-  private static void hum()
+  private static void iVP()
   {
     AppMethodBeat.i(40640);
-    g("WxSplash.Splash", "Gonna replay %s pending message(s).", new Object[] { Integer.valueOf(UZm.size()) });
-    Iterator localIterator = UZm.iterator();
+    g("WxSplash.Splash", "Gonna replay %s pending message(s).", new Object[] { Integer.valueOf(acAE.size()) });
+    Iterator localIterator = acAE.iterator();
     while (localIterator.hasNext()) {
-      p((Message)localIterator.next());
+      x((Message)localIterator.next());
     }
-    UZm.clear();
+    acAE.clear();
     AppMethodBeat.o(40640);
   }
   
-  private static void hun()
+  private static void iVQ()
   {
     AppMethodBeat.i(40641);
     g("WxSplash.Splash", "splash done, do finally things. ", new Object[0]);
-    UZs = false;
-    int i = UZr.size();
-    Object localObject1 = UZr.iterator();
+    acAK = false;
+    int i = acAJ.size();
+    Object localObject1 = acAJ.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       SplashActivity localSplashActivity = (SplashActivity)((Iterator)localObject1).next();
       g("WxSplash.Splash", "iterate splash activity %s.", new Object[] { localSplashActivity });
-      localSplashActivity.hut();
+      localSplashActivity.iVW();
     }
     if (i == 0)
     {
       g("WxSplash.Splash", "no splash activity found, so we terminate hacked activities manually.", new Object[0]);
-      localObject1 = UZl.iterator();
+      localObject1 = acAD.iterator();
       while (((Iterator)localObject1).hasNext()) {
         a((j)((Iterator)localObject1).next());
       }
     }
-    g("WxSplash.Splash", "resend all %s pending message. ", new Object[] { Integer.valueOf(UZm.size()) });
-    if (!UZt) {
-      hum();
+    g("WxSplash.Splash", "resend all %s pending message. ", new Object[] { Integer.valueOf(acAE.size()) });
+    if (!acAL) {
+      iVP();
     }
-    UZv = null;
+    acAN = null;
     g("WxSplash.Splash", "we need splash no more.", new Object[0]);
     long l;
     try
     {
-      UZw = false;
-      localObject1 = UZB;
+      acAO = false;
+      localObject1 = acAT;
       if (((o)localObject1).mStartTimestamp <= 0L) {
         break label278;
       }
       l = System.currentTimeMillis() - ((o)localObject1).mStartTimestamp;
-      if (g.acB)
+      if (g.bKk)
       {
         ((o)localObject1).idkey(676L, 1L, 1L);
         ((o)localObject1).idkey(676L, 3L, l);
@@ -373,41 +374,41 @@ public class i
   }
   
   /* Error */
-  private static void huo()
+  private static void iVR()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 476
-    //   6: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 479	com/tencent/mm/splash/a:huc	()V
+    //   3: ldc_w 465
+    //   6: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 468	com/tencent/mm/splash/a:iVD	()V
     //   12: ldc 2
     //   14: monitorenter
-    //   15: getstatic 92	com/tencent/mm/splash/i:UZw	Z
+    //   15: getstatic 89	com/tencent/mm/splash/i:acAO	Z
     //   18: ifeq +16 -> 34
     //   21: ldc 2
     //   23: monitorexit
-    //   24: ldc_w 476
-    //   27: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: ldc_w 465
+    //   27: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: ldc 2
     //   32: monitorexit
     //   33: return
     //   34: iconst_1
-    //   35: putstatic 92	com/tencent/mm/splash/i:UZw	Z
+    //   35: putstatic 89	com/tencent/mm/splash/i:acAO	Z
     //   38: ldc 2
     //   40: monitorexit
-    //   41: getstatic 90	com/tencent/mm/splash/i:UZu	Z
+    //   41: getstatic 87	com/tencent/mm/splash/i:acAM	Z
     //   44: ifne +51 -> 95
-    //   47: ldc 161
-    //   49: ldc_w 481
+    //   47: ldc 156
+    //   49: ldc_w 470
     //   52: iconst_0
     //   53: anewarray 4	java/lang/Object
-    //   56: invokestatic 167	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   59: getstatic 175	com/tencent/mm/splash/i:UZv	Lcom/tencent/mm/splash/p;
+    //   56: invokestatic 162	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: getstatic 170	com/tencent/mm/splash/i:acAN	Lcom/tencent/mm/splash/p;
     //   62: ifnonnull +257 -> 319
-    //   65: invokestatic 265	com/tencent/mm/splash/i:hun	()V
-    //   68: ldc_w 476
-    //   71: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: invokestatic 262	com/tencent/mm/splash/i:iVQ	()V
+    //   68: ldc_w 465
+    //   71: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   74: goto -44 -> 30
     //   77: astore_0
     //   78: ldc 2
@@ -417,83 +418,83 @@ public class i
     //   83: astore_0
     //   84: ldc 2
     //   86: monitorexit
-    //   87: ldc_w 476
-    //   90: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: ldc_w 465
+    //   90: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: aload_0
     //   94: athrow
-    //   95: getstatic 401	com/tencent/mm/splash/g:acB	Z
+    //   95: getstatic 392	com/tencent/mm/splash/g:bKk	Z
     //   98: ifeq +42 -> 140
-    //   101: ldc 161
-    //   103: ldc_w 483
+    //   101: ldc 156
+    //   103: ldc_w 472
     //   106: iconst_0
     //   107: anewarray 4	java/lang/Object
-    //   110: invokestatic 167	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   110: invokestatic 162	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   113: goto -54 -> 59
     //   116: astore_0
-    //   117: getstatic 99	com/tencent/mm/splash/i:UZB	Lcom/tencent/mm/splash/o;
-    //   120: ldc2_w 377
-    //   123: ldc2_w 484
+    //   117: getstatic 96	com/tencent/mm/splash/i:acAT	Lcom/tencent/mm/splash/o;
+    //   120: ldc2_w 368
+    //   123: ldc2_w 473
     //   126: lconst_1
-    //   127: invokevirtual 384	com/tencent/mm/splash/o:idkey	(JJJ)V
+    //   127: invokevirtual 375	com/tencent/mm/splash/o:idkey	(JJJ)V
     //   130: aload_0
-    //   131: ldc_w 487
-    //   134: invokestatic 248	com/tencent/mm/splash/i:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   131: ldc_w 476
+    //   134: invokestatic 245	com/tencent/mm/splash/i:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
     //   137: goto -78 -> 59
-    //   140: getstatic 491	com/tencent/mm/splash/m:Vac	Ljava/util/List;
+    //   140: getstatic 480	com/tencent/mm/splash/m:acBw	Ljava/util/List;
     //   143: ifnull -84 -> 59
-    //   146: getstatic 491	com/tencent/mm/splash/m:Vac	Ljava/util/List;
-    //   149: invokeinterface 494 1 0
+    //   146: getstatic 480	com/tencent/mm/splash/m:acBw	Ljava/util/List;
+    //   149: invokeinterface 483 1 0
     //   154: ifeq -95 -> 59
-    //   157: getstatic 99	com/tencent/mm/splash/i:UZB	Lcom/tencent/mm/splash/o;
-    //   160: ldc2_w 377
-    //   163: ldc2_w 495
+    //   157: getstatic 96	com/tencent/mm/splash/i:acAT	Lcom/tencent/mm/splash/o;
+    //   160: ldc2_w 368
+    //   163: ldc2_w 484
     //   166: lconst_1
-    //   167: invokevirtual 384	com/tencent/mm/splash/o:idkey	(JJJ)V
-    //   170: getstatic 198	com/tencent/mm/splash/m:feV	Ljava/lang/Object;
+    //   167: invokevirtual 375	com/tencent/mm/splash/o:idkey	(JJJ)V
+    //   170: getstatic 195	com/tencent/mm/splash/m:hjc	Ljava/lang/Object;
     //   173: astore_2
     //   174: aload_2
-    //   175: invokevirtual 210	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   178: ldc_w 498
-    //   181: invokevirtual 218	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   175: invokevirtual 207	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   178: ldc_w 487
+    //   181: invokevirtual 215	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   184: astore_0
     //   185: aload_0
     //   186: iconst_1
-    //   187: invokevirtual 224	java/lang/reflect/Field:setAccessible	(Z)V
+    //   187: invokevirtual 221	java/lang/reflect/Field:setAccessible	(Z)V
     //   190: aload_0
     //   191: aload_2
-    //   192: invokevirtual 228	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   192: invokevirtual 225	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   195: astore_1
     //   196: aload_1
-    //   197: checkcast 500	android/app/Application
-    //   200: putstatic 503	com/tencent/mm/splash/m:Vab	Landroid/app/Application;
+    //   197: checkcast 489	android/app/Application
+    //   200: putstatic 492	com/tencent/mm/splash/m:acBv	Landroid/app/Application;
     //   203: aload_1
     //   204: astore_0
     //   205: aload_1
     //   206: ifnonnull +19 -> 225
-    //   209: ldc 161
-    //   211: ldc_w 505
+    //   209: ldc 156
+    //   211: ldc_w 494
     //   214: iconst_0
     //   215: anewarray 4	java/lang/Object
-    //   218: invokestatic 167	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   221: getstatic 188	com/tencent/mm/splash/i:jxU	Landroid/app/Application;
+    //   218: invokestatic 162	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   221: getstatic 185	com/tencent/mm/splash/i:fgz	Landroid/app/Application;
     //   224: astore_0
-    //   225: ldc_w 507
-    //   228: invokestatic 511	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   225: ldc_w 496
+    //   228: invokestatic 500	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   231: pop
-    //   232: ldc_w 513
-    //   235: invokestatic 511	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   232: ldc_w 502
+    //   235: invokestatic 500	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   238: pop
-    //   239: ldc 161
-    //   241: ldc_w 515
+    //   239: ldc 156
+    //   241: ldc_w 504
     //   244: iconst_0
     //   245: anewarray 4	java/lang/Object
-    //   248: invokestatic 167	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   251: ldc 161
-    //   253: ldc_w 517
+    //   248: invokestatic 162	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   251: ldc 156
+    //   253: ldc_w 506
     //   256: iconst_0
     //   257: anewarray 4	java/lang/Object
-    //   260: invokestatic 167	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   263: getstatic 521	com/tencent/mm/splash/m:Vad	Ljava/lang/reflect/Method;
+    //   260: invokestatic 162	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   263: getstatic 510	com/tencent/mm/splash/m:acBx	Ljava/lang/reflect/Method;
     //   266: aload_2
     //   267: iconst_2
     //   268: anewarray 4	java/lang/Object
@@ -503,30 +504,30 @@ public class i
     //   274: aastore
     //   275: dup
     //   276: iconst_1
-    //   277: getstatic 491	com/tencent/mm/splash/m:Vac	Ljava/util/List;
+    //   277: getstatic 480	com/tencent/mm/splash/m:acBw	Ljava/util/List;
     //   280: aastore
-    //   281: invokevirtual 527	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   281: invokevirtual 516	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   284: pop
-    //   285: ldc 161
-    //   287: ldc_w 529
+    //   285: ldc 156
+    //   287: ldc_w 518
     //   290: iconst_0
     //   291: anewarray 4	java/lang/Object
-    //   294: invokestatic 167	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   297: getstatic 491	com/tencent/mm/splash/m:Vac	Ljava/util/List;
-    //   300: invokeinterface 530 1 0
+    //   294: invokestatic 162	com/tencent/mm/splash/i:g	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   297: getstatic 480	com/tencent/mm/splash/m:acBw	Ljava/util/List;
+    //   300: invokeinterface 519 1 0
     //   305: goto -246 -> 59
     //   308: astore_1
     //   309: aload_1
-    //   310: ldc_w 532
-    //   313: invokestatic 248	com/tencent/mm/splash/i:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   310: ldc_w 521
+    //   313: invokestatic 245	com/tencent/mm/splash/i:a	(Ljava/lang/Throwable;Ljava/lang/String;)V
     //   316: goto -65 -> 251
-    //   319: getstatic 175	com/tencent/mm/splash/i:UZv	Lcom/tencent/mm/splash/p;
+    //   319: getstatic 170	com/tencent/mm/splash/i:acAN	Lcom/tencent/mm/splash/p;
     //   322: new 14	com/tencent/mm/splash/i$4
     //   325: dup
-    //   326: invokespecial 533	com/tencent/mm/splash/i$4:<init>	()V
-    //   329: invokeinterface 539 2 0
-    //   334: ldc_w 476
-    //   337: invokestatic 117	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   326: invokespecial 522	com/tencent/mm/splash/i$4:<init>	()V
+    //   329: invokeinterface 528 2 0
+    //   334: ldc_w 465
+    //   337: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   340: goto -310 -> 30
     // Local variable table:
     //   start	length	slot	name	signature
@@ -548,7 +549,6 @@ public class i
     //   117	137	77	finally
     //   140	203	77	finally
     //   209	225	77	finally
-    //   225	251	77	finally
     //   251	305	77	finally
     //   309	316	77	finally
     //   319	340	77	finally
@@ -558,23 +558,35 @@ public class i
     //   95	113	116	java/lang/Exception
     //   140	203	116	java/lang/Exception
     //   209	225	116	java/lang/Exception
-    //   225	251	116	java/lang/Exception
     //   251	305	116	java/lang/Exception
     //   309	316	116	java/lang/Exception
-    //   225	251	308	java/lang/Throwable
+    //   225	251	308	finally
   }
   
-  public static Class<? extends Activity> hup()
+  public static Class<? extends Activity> iVS()
   {
-    return UZy;
+    return acAQ;
   }
   
-  public static o huq()
+  public static o iVT()
   {
-    return UZB;
+    return acAT;
   }
   
-  public static void kB(Context paramContext)
+  private static boolean ir(String paramString)
+  {
+    AppMethodBeat.i(40643);
+    if (hhy != null)
+    {
+      boolean bool = hhy.ir(paramString);
+      AppMethodBeat.o(40643);
+      return bool;
+    }
+    AppMethodBeat.o(40643);
+    return false;
+  }
+  
+  public static void mE(Context paramContext)
   {
     int i = 1;
     AppMethodBeat.i(40634);
@@ -583,7 +595,7 @@ public class i
       try
       {
         localObject = Util.getTopActivity(paramContext);
-        if ((localObject != null) && (((ComponentName)localObject).getPackageName().equals(paramContext.getPackageName())) && (UZn != null) && (((ComponentName)localObject).getClassName().equals(UZn)))
+        if ((localObject != null) && (((ComponentName)localObject).getPackageName().equals(paramContext.getPackageName())) && (acAF != null) && (((ComponentName)localObject).getClassName().equals(acAF)))
         {
           g("WxSplash.Splash", "it is LauncherUI", new Object[0]);
           if (i == 0)
@@ -600,7 +612,7 @@ public class i
           g("WxSplash.Splash", "it is dual open", new Object[0]);
           continue;
         }
-        UZB.idkey(675L, 36L, 1L);
+        acAT.idkey(675L, 36L, 1L);
       }
       catch (IOException paramContext)
       {
@@ -608,22 +620,22 @@ public class i
         AppMethodBeat.o(40634);
         return;
       }
-      Object localObject = a.hua();
-      q localq = new q((String)localObject);
-      if (!localq.ifE()) {
-        localq.ifL();
+      Object localObject = a.iVB();
+      u localu = new u((String)localObject);
+      if (!localu.jKS()) {
+        localu.jKY();
       }
-      localObject = new q((String)localObject + "/main-process-blocking");
-      if (((q)localObject).ifE()) {
-        ((q)localObject).cFq();
+      localObject = new u((String)localObject + "/main-process-blocking");
+      if (((u)localObject).jKS()) {
+        ((u)localObject).diJ();
       }
-      if (((q)localObject).ifM())
+      if (((u)localObject).jKZ())
       {
-        localObject = new Intent(paramContext, UZA);
+        localObject = new Intent(paramContext, acAS);
         ((Intent)localObject).addFlags(268435456);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/splash/Splash", "startFigLeafActivityIfNeed", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/splash/Splash", "startFigLeafActivityIfNeed", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/splash/Splash", "startFigLeafActivityIfNeed", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(40634);
@@ -633,7 +645,7 @@ public class i
     }
   }
   
-  private static Object kC(Context paramContext)
+  private static Object mF(Context paramContext)
   {
     AppMethodBeat.i(40645);
     Object localObject = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread", new Class[0]);
@@ -654,20 +666,13 @@ public class i
     return paramContext;
   }
   
-  public static void p(Message paramMessage)
-  {
-    AppMethodBeat.i(40639);
-    m.nBO.sendMessage(paramMessage);
-    AppMethodBeat.o(40639);
-  }
-  
-  public static boolean r(Application paramApplication)
+  public static boolean q(Application paramApplication)
   {
     boolean bool;
     try
     {
       AppMethodBeat.i(40635);
-      if (!UZu) {
+      if (!acAM) {
         break label40;
       }
       g("WxSplash.Splash", "Splash has hacked before.", new Object[0]);
@@ -690,7 +695,7 @@ public class i
             g("WxSplash.Splash", "getDefault %s", new Object[] { localObject1 });
             if (localObject1.getClass().getCanonicalName().startsWith("com.morgoo.droidplugin"))
             {
-              UZB.idkey(675L, 33L, 1L);
+              acAT.idkey(675L, 33L, 1L);
               g("WxSplash.Splash", "found using droidplugin", new Object[0]);
             }
             if (Proxy.isProxyClass(localObject1.getClass())) {
@@ -705,7 +710,7 @@ public class i
         }
         try
         {
-          localObject1 = kC(paramApplication);
+          localObject1 = mF(paramApplication);
           localObject4 = localObject1.getClass().getDeclaredField("mInstrumentation");
           ((Field)localObject4).setAccessible(true);
           localObject3 = (Instrumentation)((Field)localObject4).get(localObject1);
@@ -735,8 +740,8 @@ public class i
     }
     return bool;
     long l = System.currentTimeMillis();
-    jxU = paramApplication;
-    UZB.idkey(675L, 4L, 1L);
+    fgz = paramApplication;
+    acAT.idkey(675L, 4L, 1L);
     Object localObject3;
     for (;;)
     {
@@ -755,16 +760,16 @@ public class i
     Object localObject2;
     if (Object.class != localObject3.getClass().getSuperclass())
     {
-      UZB.idkey(675L, 7L, 1L);
+      acAT.idkey(675L, 7L, 1L);
       g("WxSplash.Splash", "Instrumentation original's super class is not Object, maybe hacked by others. orig: %s, super: %s.", new Object[] { localObject3.getClass(), localObject3.getClass().getSuperclass() });
       paramApplication = localObject3.getClass().getCanonicalName();
       localObject2 = new RuntimeException("invalid environment for hack, " + localObject3.getClass());
       if (paramApplication.startsWith(new String[] { "com.excelliance", "com.lbe", "com.beike", "com.lody", "com.doubleagent", "com.svm", "com.morgoo" }[0]))
       {
-        UZB.idkey(675L, 30L, 1L);
+        acAT.idkey(675L, 30L, 1L);
         g("WxSplash.Splash", "invalid environment for hack, dual open.", new Object[0]);
       }
-      UZB.idkey(675L, 0L, 1L);
+      acAT.idkey(675L, 0L, 1L);
       AppMethodBeat.o(40635);
       throw ((Throwable)localObject2);
     }
@@ -773,7 +778,7 @@ public class i
     }
     for (;;)
     {
-      m.feV = localObject2;
+      m.hjc = localObject2;
       localObject3 = localObject2.getClass().getDeclaredField("mH");
       ((Field)localObject3).setAccessible(true);
       localObject3 = (Handler)((Field)localObject3).get(localObject2);
@@ -785,75 +790,75 @@ public class i
       throw paramApplication;
       g("WxSplash.Splash", "instrumentation is splash hacked, why? failed before?", new Object[0]);
     }
-    m.nBO = (Handler)localObject3;
+    m.qBf = (Handler)localObject3;
     Object localObject4 = Handler.class.getDeclaredField("mCallback");
     ((Field)localObject4).setAccessible(true);
     Object localObject5 = (Handler.Callback)((Field)localObject4).get(localObject3);
-    m.Vaf = (Field)localObject4;
+    m.acBz = (Field)localObject4;
     if (localObject5 != null)
     {
       g("WxSplash.Splash", "Handler.Callback original is not null, maybe hacked by others. orig: %s", new Object[] { localObject5 });
-      UZB.idkey(675L, 8L, 1L);
+      acAT.idkey(675L, 8L, 1L);
     }
     if ((localObject5 == null) || (!(localObject5 instanceof k)))
     {
       paramApplication = new k(paramApplication, (Handler.Callback)localObject5);
       ((Field)localObject4).setAccessible(true);
       ((Field)localObject4).set(localObject3, paramApplication);
-      m.Vae = paramApplication;
+      m.acBy = paramApplication;
       label795:
       paramApplication = new Handler();
-      k.aN(new Runnable()
+      k.aV(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(40621);
-          i.Yy();
-          this.UZF.removeCallbacksAndMessages(null);
+          i.aAs();
+          i.this.removeCallbacksAndMessages(null);
           i.g("WxSplash.Splash", "verify mH callback hack, result ok.", new Object[0]);
           AppMethodBeat.o(40621);
         }
       });
-      m.nBO.sendEmptyMessage(987654321);
+      m.qBf.sendEmptyMessage(987654321);
       paramApplication.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(40622);
-          if (!i.UZD)
+          if (!i.acAV)
           {
             i.g("WxSplash.Splash", "verify mH callback hack, result failed!.", new Object[0]);
-            i.huq().idkey(675L, 32L, 1L);
+            i.iVT().idkey(675L, 32L, 1L);
             i.access$100();
           }
           AppMethodBeat.o(40622);
         }
       }, 2000L);
-      if ((UZC.size() <= 0) && (g.acB)) {
+      if ((acAU.size() <= 0) && (g.bKk)) {
         break label1090;
       }
       paramApplication = localObject2.getClass().getDeclaredMethod("installContentProviders", new Class[] { Context.class, List.class });
       paramApplication.setAccessible(true);
-      m.Vad = paramApplication;
+      m.acBx = paramApplication;
       paramApplication = localObject2.getClass().getDeclaredField("mBoundApplication");
       paramApplication.setAccessible(true);
       paramApplication = paramApplication.get(localObject2);
-      m.Vaa = paramApplication;
+      m.acBu = paramApplication;
       localObject2 = paramApplication.getClass().getDeclaredField("restrictedBackupMode");
       ((Field)localObject2).setAccessible(true);
-      if (!g.acB) {
+      if (!g.bKk) {
         ((Field)localObject2).set(paramApplication, Boolean.TRUE);
       }
       localObject2 = paramApplication.getClass().getDeclaredField("providers");
       ((Field)localObject2).setAccessible(true);
-      m.Vac = (List)((Field)localObject2).get(paramApplication);
-      localObject2 = UZC.iterator();
+      m.acBw = (List)((Field)localObject2).get(paramApplication);
+      localObject2 = acAU.iterator();
       label990:
       if (!((Iterator)localObject2).hasNext()) {
         break label1090;
       }
       localObject3 = (String)((Iterator)localObject2).next();
-      localObject4 = m.Vac.iterator();
+      localObject4 = m.acBw.iterator();
       do
       {
         if (!((Iterator)localObject4).hasNext()) {
@@ -864,13 +869,13 @@ public class i
     }
     for (;;)
     {
-      m.Vac.remove(paramApplication);
+      m.acBw.remove(paramApplication);
       break label990;
       g("WxSplash.Splash", "callback is splash hacked, why? failed before?", new Object[0]);
       break label795;
       label1090:
-      UZu = true;
-      UZs = true;
+      acAM = true;
+      acAK = true;
       g("WxSplash.Splash", "splash hack success.", new Object[0]);
       g("WxSplash.Splash", "we need splash. time spent %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       bool = true;
@@ -879,10 +884,17 @@ public class i
       paramApplication = null;
     }
   }
+  
+  public static void x(Message paramMessage)
+  {
+    AppMethodBeat.i(40639);
+    m.qBf.sendMessage(paramMessage);
+    AppMethodBeat.o(40639);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.i
  * JD-Core Version:    0.7.0.1
  */

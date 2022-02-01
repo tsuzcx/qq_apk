@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.downloader.model;
 
-import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.plugin.downloader.f.a;
 
 public abstract interface n
 {
-  public abstract int Iw(long paramLong);
-  
-  public abstract FileDownloadTaskInfo Ix(long paramLong);
-  
-  public abstract boolean Iy(long paramLong);
-  
-  public abstract boolean Iz(long paramLong);
-  
   public abstract long a(a parama);
   
   public abstract long a(g paramg);
+  
+  public abstract int kR(long paramLong);
+  
+  public abstract FileDownloadTaskInfo kS(long paramLong);
+  
+  public abstract boolean kT(long paramLong);
+  
+  public abstract boolean kU(long paramLong);
 }
 
 

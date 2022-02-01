@@ -5,19 +5,20 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.wallet_core.b.a.b;
 import com.tencent.mm.plugin.wallet_core.c.ae;
 import com.tencent.mm.plugin.wallet_core.c.z;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
-import com.tencent.mm.plugin.wallet_core.utils.j;
+import com.tencent.mm.plugin.wallet_core.utils.m;
+import com.tencent.mm.plugin.wxcredit.a.h;
 import com.tencent.mm.plugin.wxcredit.ui.WalletBindDepositUI;
 import com.tencent.mm.plugin.wxcredit.ui.WalletCheckIdentityUI;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditOpenResultUI;
@@ -26,13 +27,12 @@ import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.ui.base.k;
 
 public class e
-  extends d
+  extends com.tencent.mm.wallet_core.e
 {
-  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public final com.tencent.mm.wallet_core.c.g a(MMActivity paramMMActivity, com.tencent.mm.wallet_core.c.i parami)
   {
     AppMethodBeat.i(72287);
     if ((paramMMActivity instanceof WalletCheckPwdUI))
@@ -43,20 +43,20 @@ public class e
     }
     if ((paramMMActivity instanceof WalletCheckIdentityUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.c.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(72269);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wxcredit.a.a))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wxcredit.a.a))
             {
-              paramAnonymousString = (com.tencent.mm.plugin.wxcredit.a.a)paramAnonymousq;
+              paramAnonymousString = (com.tencent.mm.plugin.wxcredit.a.a)paramAnonymousp;
               e.h(e.this).putString("KEY_SESSION_KEY", paramAnonymousString.token);
-              e.i(e.this).putString("key_mobile", paramAnonymousString.fLC);
-              e.j(e.this).putBoolean("key_need_bind_deposit", paramAnonymousString.gam);
-              e.k(e.this).putBoolean("key_is_bank_user", paramAnonymousString.QNW);
+              e.i(e.this).putString("key_mobile", paramAnonymousString.hRk);
+              e.j(e.this).putBoolean("key_need_bind_deposit", paramAnonymousString.igv);
+              e.k(e.this).putBoolean("key_is_bank_user", paramAnonymousString.XHu);
             }
             e.this.a(this.activity, 0, e.l(e.this));
             AppMethodBeat.o(72269);
@@ -66,14 +66,14 @@ public class e
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72270);
           String str = (String)paramAnonymousVarArgs[0];
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[1];
           e.m(e.this).putString("key_name", str);
           e.n(e.this).putString("key_indentity", paramAnonymousVarArgs);
-          this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.a(str, paramAnonymousVarArgs, e.o(e.this).getString("KEY_SESSION_KEY"), e.p(e.this).getString("key_bank_type")), true, 1);
+          this.agTR.a(new com.tencent.mm.plugin.wxcredit.a.a(str, paramAnonymousVarArgs, e.o(e.this).getString("KEY_SESSION_KEY"), e.p(e.this).getString("key_bank_type")), true, 1);
           AppMethodBeat.o(72270);
           return true;
         }
@@ -83,16 +83,16 @@ public class e
     }
     if ((paramMMActivity instanceof WalletVerifyCodeUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.c.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(72271);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wxcredit.a.g))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wxcredit.a.g))
             {
-              paramAnonymousString = ((com.tencent.mm.plugin.wxcredit.a.g)paramAnonymousq).fOX;
+              paramAnonymousString = ((com.tencent.mm.plugin.wxcredit.a.g)paramAnonymousp).hUQ;
               if (!Util.isNullOrNil(paramAnonymousString)) {
                 e.q(e.this).putString("key_bank_username", paramAnonymousString);
               }
@@ -100,17 +100,17 @@ public class e
               AppMethodBeat.o(72271);
               return true;
             }
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wxcredit.a.h))
+            if ((paramAnonymousp instanceof h))
             {
               e.this.a(this.activity, 0, e.s(e.this));
               AppMethodBeat.o(72271);
               return true;
             }
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.c.w))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.c.w))
             {
-              if (u.gJo().gJQ())
+              if (u.iiC().ijf())
               {
-                this.YVX.a(new ae(), true, 1);
+                this.agTR.a(new ae(), true, 1);
                 AppMethodBeat.o(72271);
                 return true;
               }
@@ -118,11 +118,11 @@ public class e
               AppMethodBeat.o(72271);
               return true;
             }
-            if ((paramAnonymousq instanceof ae))
+            if ((paramAnonymousp instanceof ae))
             {
-              paramAnonymousString = u.gJo().gKv();
+              paramAnonymousString = u.iiC().ijN();
               paramAnonymousString = new com.tencent.mm.plugin.wxcredit.a.g(e.u(e.this).getString("key_verify_code"), e.v(e.this).getString("KEY_SESSION_KEY"), e.w(e.this).getString("key_pwd1"), paramAnonymousString, e.x(e.this).getString("key_bank_type"));
-              this.YVX.a(paramAnonymousString, true, 1);
+              this.agTR.a(paramAnonymousString, true, 1);
               AppMethodBeat.o(72271);
               return true;
             }
@@ -133,35 +133,35 @@ public class e
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72272);
           String str = (String)paramAnonymousVarArgs[0];
           e.y(e.this).putString("key_verify_code", str);
-          if (u.gJo().gJQ()) {
+          if (u.iiC().ijf()) {
             if ((e.z(e.this).getBoolean("key_need_bind_deposit", true)) && (!e.A(e.this).getBoolean("key_is_bank_user")))
             {
               paramAnonymousVarArgs = (com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[1];
               paramAnonymousVarArgs.flag = "2";
-              this.YVX.a(new com.tencent.mm.plugin.wallet_core.c.w(paramAnonymousVarArgs), true, 1);
+              this.agTR.a(new com.tencent.mm.plugin.wallet_core.c.w(paramAnonymousVarArgs), true, 1);
             }
           }
           for (;;)
           {
             AppMethodBeat.o(72272);
             return true;
-            this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.g(str, e.B(e.this).getString("KEY_SESSION_KEY"), e.C(e.this).getString("key_pwd1"), e.D(e.this).getString("key_bind_serial"), e.E(e.this).getString("key_bank_type")), true, 1);
+            this.agTR.a(new com.tencent.mm.plugin.wxcredit.a.g(str, e.B(e.this).getString("KEY_SESSION_KEY"), e.C(e.this).getString("key_pwd1"), e.D(e.this).getString("key_bind_serial"), e.E(e.this).getString("key_bank_type")), true, 1);
             continue;
             if (e.F(e.this).getBoolean("key_is_bank_user", false))
             {
               e.G(e.this).putString("key_verify_code", str);
-              this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.h(str, e.H(e.this).getString("KEY_SESSION_KEY"), e.I(e.this).getString("key_pwd1"), e.J(e.this).getString("key_bind_serial"), e.K(e.this).getString("key_bank_type")), true, 1);
+              this.agTR.a(new h(str, e.H(e.this).getString("KEY_SESSION_KEY"), e.I(e.this).getString("key_pwd1"), e.J(e.this).getString("key_bind_serial"), e.K(e.this).getString("key_bank_type")), true, 1);
             }
             else
             {
               paramAnonymousVarArgs = (com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[1];
               paramAnonymousVarArgs.flag = "1";
-              this.YVX.a(new com.tencent.mm.plugin.wallet_core.c.w(paramAnonymousVarArgs), true, 1);
+              this.agTR.a(new com.tencent.mm.plugin.wallet_core.c.w(paramAnonymousVarArgs), true, 1);
             }
           }
         }
@@ -171,25 +171,25 @@ public class e
     }
     if ((paramMMActivity instanceof WalletBindDepositUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.c.g(paramMMActivity, parami)
       {
-        private Authen OxB;
+        private Authen VmM;
         
-        public final boolean B(Object... paramAnonymousVarArgs)
+        public final boolean E(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72278);
-          this.YVX.a(new z("", (String)paramAnonymousVarArgs[0], (PayInfo)e.Z(e.this).getParcelable("key_pay_info")), true, 1);
+          this.agTR.a(new z("", (String)paramAnonymousVarArgs[0], (PayInfo)e.Z(e.this).getParcelable("key_pay_info")), true, 1);
           AppMethodBeat.o(72278);
           return true;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(72276);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousq instanceof com.tencent.mm.plugin.wallet_core.b.a.a)))
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && ((paramAnonymousp instanceof com.tencent.mm.plugin.wallet_core.b.a.a)))
           {
-            paramAnonymousString = (com.tencent.mm.plugin.wallet_core.b.a.a)paramAnonymousq;
-            if (paramAnonymousString.OHH == null)
+            paramAnonymousString = (com.tencent.mm.plugin.wallet_core.b.a.a)paramAnonymousp;
+            if (paramAnonymousString.Vxt == null)
             {
               Log.d("MicroMsg.OpenWXCreditProcess", "reqKey  " + paramAnonymousString.mReqKey);
               e.P(e.this).putString("kreq_token", paramAnonymousString.getToken());
@@ -200,14 +200,14 @@ public class e
               AppMethodBeat.o(72276);
               return true;
               Log.i("MicroMsg.OpenWXCreditProcess", "NetSceneTenpayBindBankcard show juveniles dialog");
-              com.tencent.mm.ui.base.h.c(this.activity, paramAnonymousString.OHH.wording, "", paramAnonymousString.OHH.OTg, paramAnonymousString.OHH.OTf, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              k.b(this.activity, paramAnonymousString.Vxt.wording, "", paramAnonymousString.Vxt.VJn, paramAnonymousString.Vxt.VJm, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
                   AppMethodBeat.i(72274);
                   Log.i("MicroMsg.OpenWXCreditProcess", "NetSceneTenpayBindBankcard dialog lOk");
                   e.4.b(e.4.this).a(new com.tencent.mm.plugin.wallet_core.b.a.a(e.4.a(e.4.this), "1", ""), true, 1);
-                  v.Bv(1);
+                  v.BI(1);
                   AppMethodBeat.o(72274);
                 }
               }, new DialogInterface.OnClickListener()
@@ -216,7 +216,7 @@ public class e
                 {
                   AppMethodBeat.i(72275);
                   Log.i("MicroMsg.OpenWXCreditProcess", "NetSceneTenpayBindBankcard dialog lCancel");
-                  v.Bv(0);
+                  v.BI(0);
                   AppMethodBeat.o(72275);
                 }
               });
@@ -226,32 +226,32 @@ public class e
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72277);
-          j.gMO();
-          this.OxB = new Authen();
-          this.OxB.OMS = ((String)paramAnonymousVarArgs[0]);
-          this.OxB.fvP = ((String)paramAnonymousVarArgs[1]);
-          this.OxB.OIl = ((String)paramAnonymousVarArgs[2]);
+          m.imd();
+          this.VmM = new Authen();
+          this.VmM.VCD = ((String)paramAnonymousVarArgs[0]);
+          this.VmM.hAk = ((String)paramAnonymousVarArgs[1]);
+          this.VmM.VxX = ((String)paramAnonymousVarArgs[2]);
           e.R(e.this).putString("key_bank_phone", (String)paramAnonymousVarArgs[3]);
-          paramAnonymousVarArgs = this.OxB;
-          if (u.gJo().gJQ()) {}
+          paramAnonymousVarArgs = this.VmM;
+          if (u.iiC().ijf()) {}
           for (int i = 2;; i = 1)
           {
-            paramAnonymousVarArgs.cUP = i;
-            this.OxB.OMR = 1;
-            this.OxB.HzF = ((PayInfo)e.S(e.this).getParcelable("key_pay_info"));
-            this.OxB.OMP = e.T(e.this).getString("key_pwd1");
+            paramAnonymousVarArgs.eQp = i;
+            this.VmM.VCC = 1;
+            this.VmM.Nxi = ((PayInfo)e.S(e.this).getParcelable("key_pay_info"));
+            this.VmM.VCA = e.T(e.this).getString("key_pwd1");
             if (!e.U(e.this).getBoolean("key_has_indentity_info", false))
             {
-              this.OxB.OMa = e.V(e.this).getString("key_name");
-              this.OxB.OMQ = e.W(e.this).getString("key_indentity");
+              this.VmM.VBL = e.V(e.this).getString("key_name");
+              this.VmM.VCB = e.W(e.this).getString("key_indentity");
             }
-            paramAnonymousVarArgs = com.tencent.mm.wallet_core.ui.g.bCq(this.OxB.OIl);
+            paramAnonymousVarArgs = com.tencent.mm.wallet_core.ui.i.bEO(this.VmM.VxX);
             e.X(e.this).putString("key_mobile", paramAnonymousVarArgs);
             e.Y(e.this).putBoolean("key_is_oversea", false);
-            this.YVX.a(new com.tencent.mm.plugin.wallet_core.b.a.a(this.OxB, "", ""), true, 1);
+            this.agTR.a(new com.tencent.mm.plugin.wallet_core.b.a.a(this.VmM, "", ""), true, 1);
             AppMethodBeat.o(72277);
             return true;
           }
@@ -262,29 +262,29 @@ public class e
     }
     if ((paramMMActivity instanceof WalletPwdConfirmUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.c.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(72279);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if ((paramAnonymousq instanceof b))
+            if ((paramAnonymousp instanceof b))
             {
-              this.YVX.a(new ae(), true, 1);
+              this.agTR.a(new ae(), true, 1);
               AppMethodBeat.o(72279);
               return true;
             }
-            if ((paramAnonymousq instanceof ae))
+            if ((paramAnonymousp instanceof ae))
             {
-              paramAnonymousString = new com.tencent.mm.plugin.wxcredit.a.g(e.aa(e.this).getString("key_verify_code"), e.ab(e.this).getString("KEY_SESSION_KEY"), e.ac(e.this).getString("key_pwd1"), u.gJo().gKv(), e.ad(e.this).getString("key_bank_type"));
-              this.YVX.a(paramAnonymousString, true, 1);
+              paramAnonymousString = new com.tencent.mm.plugin.wxcredit.a.g(e.aa(e.this).getString("key_verify_code"), e.ab(e.this).getString("KEY_SESSION_KEY"), e.ac(e.this).getString("key_pwd1"), u.iiC().ijN(), e.ad(e.this).getString("key_bank_type"));
+              this.agTR.a(paramAnonymousString, true, 1);
               AppMethodBeat.o(72279);
               return true;
             }
-            if ((paramAnonymousq instanceof com.tencent.mm.plugin.wxcredit.a.g))
+            if ((paramAnonymousp instanceof com.tencent.mm.plugin.wxcredit.a.g))
             {
-              paramAnonymousString = ((com.tencent.mm.plugin.wxcredit.a.g)paramAnonymousq).fOX;
+              paramAnonymousString = ((com.tencent.mm.plugin.wxcredit.a.g)paramAnonymousp).hUQ;
               if (!Util.isNullOrNil(paramAnonymousString)) {
                 e.ae(e.this).putString("key_bank_username", paramAnonymousString);
               }
@@ -297,17 +297,17 @@ public class e
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72280);
           if (!e.ag(e.this).getBoolean("key_is_bank_user", false)) {
-            this.YVX.a(new b((com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[0]), true, 1);
+            this.agTR.a(new b((com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[0]), true, 1);
           }
           for (;;)
           {
             AppMethodBeat.o(72280);
             return true;
-            this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.g(e.ah(e.this).getString("key_verify_code"), e.ai(e.this).getString("KEY_SESSION_KEY"), e.aj(e.this).getString("key_pwd1"), u.gJo().gKv(), e.ak(e.this).getString("key_bank_type")), true, 1);
+            this.agTR.a(new com.tencent.mm.plugin.wxcredit.a.g(e.ah(e.this).getString("key_verify_code"), e.ai(e.this).getString("KEY_SESSION_KEY"), e.aj(e.this).getString("key_pwd1"), u.iiC().ijN(), e.ak(e.this).getString("key_bank_type")), true, 1);
           }
         }
       };
@@ -316,9 +316,9 @@ public class e
     }
     if ((paramMMActivity instanceof WalletWXCreditOpenResultUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new com.tencent.mm.wallet_core.c.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(72281);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -331,12 +331,12 @@ public class e
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72282);
           e.am(e.this).putBoolean("key_is_follow_bank_username", ((Boolean)paramAnonymousVarArgs[0]).booleanValue());
           e.an(e.this);
-          this.YVX.a(new ae(), true, 1);
+          this.agTR.a(new ae(), true, 1);
           AppMethodBeat.o(72282);
           return true;
         }
@@ -348,17 +348,17 @@ public class e
     return null;
   }
   
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final com.tencent.mm.wallet_core.e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72283);
-    if (u.gJo().gJV()) {
+    if (u.iiC().ijl()) {
       Log.e("MicroMsg.OpenWXCreditProcess", "unknow wallet reg status!");
     }
     for (;;)
     {
       AppMethodBeat.o(72283);
       return this;
-      if (u.gJo().gJQ()) {
+      if (u.iiC().ijf()) {
         b(paramActivity, WalletCheckPwdUI.class, paramBundle);
       } else {
         b(paramActivity, WalletWXCreditOpenUI.class, paramBundle);
@@ -377,7 +377,7 @@ public class e
     }
     if ((paramActivity instanceof WalletCheckPwdUI))
     {
-      Q(paramActivity);
+      Z(paramActivity);
       b(paramActivity, WalletWXCreditOpenUI.class, paramBundle);
       AppMethodBeat.o(72284);
       return;
@@ -408,7 +408,7 @@ public class e
     }
     if ((paramActivity instanceof WalletVerifyCodeUI))
     {
-      if (u.gJo().gJQ())
+      if (u.iiC().ijf())
       {
         b(paramActivity, WalletWXCreditOpenResultUI.class, paramBundle);
         AppMethodBeat.o(72284);
@@ -439,7 +439,7 @@ public class e
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72286);
-    h(paramActivity, "wallet", ".bind.ui.WalletBankcardManageUI");
+    g(paramActivity, "wallet", ".bind.ui.WalletBankcardManageUI");
     AppMethodBeat.o(72286);
   }
   
@@ -448,21 +448,21 @@ public class e
     return false;
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "WXCreditOpenProcess";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72285);
-    Q(paramActivity);
+    Z(paramActivity);
     AppMethodBeat.o(72285);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.e
  * JD-Core Version:    0.7.0.1
  */

@@ -30,23 +30,23 @@ import android.widget.ThemedSpinnerAdapter;
 import androidx.appcompat.a.a;
 import androidx.appcompat.a.a.a;
 import androidx.appcompat.view.menu.s;
-import androidx.core.g.u;
-import androidx.core.g.w;
+import androidx.core.g.x;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppCompatSpinner
   extends Spinner
-  implements u
+  implements x
 {
-  private static final int[] rf = { 16843505 };
-  private r lf;
+  private static final int[] sd = { 16843505 };
   private final d mBackgroundTintHelper;
   final Rect mTempRect;
-  private final Context nE;
-  private SpinnerAdapter rg;
-  private final boolean rh;
-  b ri;
-  int rj;
+  private r mb;
+  private final Context oD;
+  private SpinnerAdapter se;
+  private final boolean sf;
+  b sg;
+  int sh;
   
   public AppCompatSpinner(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -95,7 +95,7 @@ public class AppCompatSpinner
     //   47: aload 8
     //   49: getstatic 96	androidx/appcompat/a$j:Spinner_popupTheme	I
     //   52: iconst_0
-    //   53: invokevirtual 100	androidx/appcompat/widget/ac:r	(II)I
+    //   53: invokevirtual 100	androidx/appcompat/widget/ac:w	(II)I
     //   56: istore 5
     //   58: iload 5
     //   60: ifeq +281 -> 341
@@ -107,13 +107,13 @@ public class AppCompatSpinner
     //   73: astore 7
     //   75: aload_0
     //   76: aload 7
-    //   78: putfield 107	androidx/appcompat/widget/AppCompatSpinner:nE	Landroid/content/Context;
+    //   78: putfield 107	androidx/appcompat/widget/AppCompatSpinner:oD	Landroid/content/Context;
     //   81: aload_0
-    //   82: getfield 107	androidx/appcompat/widget/AppCompatSpinner:nE	Landroid/content/Context;
+    //   82: getfield 107	androidx/appcompat/widget/AppCompatSpinner:oD	Landroid/content/Context;
     //   85: ifnull +161 -> 246
     //   88: aload_1
     //   89: aload_2
-    //   90: getstatic 43	androidx/appcompat/widget/AppCompatSpinner:rf	[I
+    //   90: getstatic 43	androidx/appcompat/widget/AppCompatSpinner:sd	[I
     //   93: iload_3
     //   94: iconst_0
     //   95: invokevirtual 113	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
@@ -144,13 +144,13 @@ public class AppCompatSpinner
     //   149: dup
     //   150: aload_0
     //   151: aload_0
-    //   152: getfield 107	androidx/appcompat/widget/AppCompatSpinner:nE	Landroid/content/Context;
+    //   152: getfield 107	androidx/appcompat/widget/AppCompatSpinner:oD	Landroid/content/Context;
     //   155: aload_2
     //   156: iload_3
     //   157: invokespecial 128	androidx/appcompat/widget/AppCompatSpinner$b:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;Landroid/content/Context;Landroid/util/AttributeSet;I)V
     //   160: astore 7
     //   162: aload_0
-    //   163: getfield 107	androidx/appcompat/widget/AppCompatSpinner:nE	Landroid/content/Context;
+    //   163: getfield 107	androidx/appcompat/widget/AppCompatSpinner:oD	Landroid/content/Context;
     //   166: aload_2
     //   167: getstatic 81	androidx/appcompat/a$j:Spinner	[I
     //   170: iload_3
@@ -161,8 +161,8 @@ public class AppCompatSpinner
     //   178: aload 9
     //   180: getstatic 131	androidx/appcompat/a$j:Spinner_android_dropDownWidth	I
     //   183: bipush 254
-    //   185: invokevirtual 134	androidx/appcompat/widget/ac:q	(II)I
-    //   188: putfield 136	androidx/appcompat/widget/AppCompatSpinner:rj	I
+    //   185: invokevirtual 134	androidx/appcompat/widget/ac:v	(II)I
+    //   188: putfield 136	androidx/appcompat/widget/AppCompatSpinner:sh	I
     //   191: aload 7
     //   193: aload 9
     //   195: getstatic 139	androidx/appcompat/a$j:Spinner_android_popupBackground	I
@@ -172,13 +172,13 @@ public class AppCompatSpinner
     //   206: aload 8
     //   208: getstatic 150	androidx/appcompat/a$j:Spinner_android_prompt	I
     //   211: invokevirtual 154	androidx/appcompat/widget/ac:getString	(I)Ljava/lang/String;
-    //   214: putfield 158	androidx/appcompat/widget/AppCompatSpinner$b:ro	Ljava/lang/CharSequence;
+    //   214: putfield 158	androidx/appcompat/widget/AppCompatSpinner$b:sm	Ljava/lang/CharSequence;
     //   217: aload 9
-    //   219: getfield 162	androidx/appcompat/widget/ac:wA	Landroid/content/res/TypedArray;
+    //   219: getfield 162	androidx/appcompat/widget/ac:xv	Landroid/content/res/TypedArray;
     //   222: invokevirtual 125	android/content/res/TypedArray:recycle	()V
     //   225: aload_0
     //   226: aload 7
-    //   228: putfield 164	androidx/appcompat/widget/AppCompatSpinner:ri	Landroidx/appcompat/widget/AppCompatSpinner$b;
+    //   228: putfield 164	androidx/appcompat/widget/AppCompatSpinner:sg	Landroidx/appcompat/widget/AppCompatSpinner$b;
     //   231: aload_0
     //   232: new 8	androidx/appcompat/widget/AppCompatSpinner$1
     //   235: dup
@@ -186,11 +186,11 @@ public class AppCompatSpinner
     //   237: aload_0
     //   238: aload 7
     //   240: invokespecial 167	androidx/appcompat/widget/AppCompatSpinner$1:<init>	(Landroidx/appcompat/widget/AppCompatSpinner;Landroid/view/View;Landroidx/appcompat/widget/AppCompatSpinner$b;)V
-    //   243: putfield 169	androidx/appcompat/widget/AppCompatSpinner:lf	Landroidx/appcompat/widget/r;
+    //   243: putfield 169	androidx/appcompat/widget/AppCompatSpinner:mb	Landroidx/appcompat/widget/r;
     //   246: getstatic 172	androidx/appcompat/a$j:Spinner_android_entries	I
     //   249: istore 4
     //   251: aload 8
-    //   253: getfield 162	androidx/appcompat/widget/ac:wA	Landroid/content/res/TypedArray;
+    //   253: getfield 162	androidx/appcompat/widget/ac:xv	Landroid/content/res/TypedArray;
     //   256: iload 4
     //   258: invokevirtual 176	android/content/res/TypedArray:getTextArray	(I)[Ljava/lang/CharSequence;
     //   261: astore 7
@@ -210,21 +210,21 @@ public class AppCompatSpinner
     //   289: aload_1
     //   290: invokevirtual 194	androidx/appcompat/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
     //   293: aload 8
-    //   295: getfield 162	androidx/appcompat/widget/ac:wA	Landroid/content/res/TypedArray;
+    //   295: getfield 162	androidx/appcompat/widget/ac:xv	Landroid/content/res/TypedArray;
     //   298: invokevirtual 125	android/content/res/TypedArray:recycle	()V
     //   301: aload_0
     //   302: iconst_1
-    //   303: putfield 196	androidx/appcompat/widget/AppCompatSpinner:rh	Z
+    //   303: putfield 196	androidx/appcompat/widget/AppCompatSpinner:sf	Z
     //   306: aload_0
-    //   307: getfield 198	androidx/appcompat/widget/AppCompatSpinner:rg	Landroid/widget/SpinnerAdapter;
+    //   307: getfield 198	androidx/appcompat/widget/AppCompatSpinner:se	Landroid/widget/SpinnerAdapter;
     //   310: ifnull +16 -> 326
     //   313: aload_0
     //   314: aload_0
-    //   315: getfield 198	androidx/appcompat/widget/AppCompatSpinner:rg	Landroid/widget/SpinnerAdapter;
+    //   315: getfield 198	androidx/appcompat/widget/AppCompatSpinner:se	Landroid/widget/SpinnerAdapter;
     //   318: invokevirtual 194	androidx/appcompat/widget/AppCompatSpinner:setAdapter	(Landroid/widget/SpinnerAdapter;)V
     //   321: aload_0
     //   322: aconst_null
-    //   323: putfield 198	androidx/appcompat/widget/AppCompatSpinner:rg	Landroid/widget/SpinnerAdapter;
+    //   323: putfield 198	androidx/appcompat/widget/AppCompatSpinner:se	Landroid/widget/SpinnerAdapter;
     //   326: aload_0
     //   327: getfield 93	androidx/appcompat/widget/AppCompatSpinner:mBackgroundTintHelper	Landroidx/appcompat/widget/d;
     //   330: aload_2
@@ -296,10 +296,10 @@ public class AppCompatSpinner
   
   final int a(SpinnerAdapter paramSpinnerAdapter, Drawable paramDrawable)
   {
-    AppMethodBeat.i(241048);
+    AppMethodBeat.i(199620);
     if (paramSpinnerAdapter == null)
     {
-      AppMethodBeat.o(241048);
+      AppMethodBeat.o(199620);
       return 0;
     }
     int n = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 0);
@@ -337,7 +337,7 @@ public class AppCompatSpinner
       }
       for (;;)
       {
-        AppMethodBeat.o(241048);
+        AppMethodBeat.o(199620);
         return i;
       }
     }
@@ -345,357 +345,357 @@ public class AppCompatSpinner
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(241047);
+    AppMethodBeat.i(199606);
     super.drawableStateChanged();
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dm();
+      this.mBackgroundTintHelper.el();
     }
-    AppMethodBeat.o(241047);
+    AppMethodBeat.o(199606);
   }
   
   public int getDropDownHorizontalOffset()
   {
-    AppMethodBeat.i(241023);
+    AppMethodBeat.i(199435);
     int i;
-    if (this.ri != null)
+    if (this.sg != null)
     {
-      i = this.ri.ta;
-      AppMethodBeat.o(241023);
+      i = this.sg.tZ;
+      AppMethodBeat.o(199435);
       return i;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
       i = super.getDropDownHorizontalOffset();
-      AppMethodBeat.o(241023);
+      AppMethodBeat.o(199435);
       return i;
     }
-    AppMethodBeat.o(241023);
+    AppMethodBeat.o(199435);
     return 0;
   }
   
   public int getDropDownVerticalOffset()
   {
-    AppMethodBeat.i(241017);
+    AppMethodBeat.i(199419);
     int i;
-    if (this.ri != null)
+    if (this.sg != null)
     {
-      i = this.ri.dL();
-      AppMethodBeat.o(241017);
+      i = this.sg.eL();
+      AppMethodBeat.o(199419);
       return i;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
       i = super.getDropDownVerticalOffset();
-      AppMethodBeat.o(241017);
+      AppMethodBeat.o(199419);
       return i;
     }
-    AppMethodBeat.o(241017);
+    AppMethodBeat.o(199419);
     return 0;
   }
   
   public int getDropDownWidth()
   {
-    AppMethodBeat.i(241025);
+    AppMethodBeat.i(199455);
     int i;
-    if (this.ri != null)
+    if (this.sg != null)
     {
-      i = this.rj;
-      AppMethodBeat.o(241025);
+      i = this.sh;
+      AppMethodBeat.o(199455);
       return i;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
       i = super.getDropDownWidth();
-      AppMethodBeat.o(241025);
+      AppMethodBeat.o(199455);
       return i;
     }
-    AppMethodBeat.o(241025);
+    AppMethodBeat.o(199455);
     return 0;
   }
   
   public Drawable getPopupBackground()
   {
-    AppMethodBeat.i(241012);
+    AppMethodBeat.i(199403);
     Drawable localDrawable;
-    if (this.ri != null)
+    if (this.sg != null)
     {
-      localDrawable = this.ri.ty.getBackground();
-      AppMethodBeat.o(241012);
+      localDrawable = this.sg.ux.getBackground();
+      AppMethodBeat.o(199403);
       return localDrawable;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
       localDrawable = super.getPopupBackground();
-      AppMethodBeat.o(241012);
+      AppMethodBeat.o(199403);
       return localDrawable;
     }
-    AppMethodBeat.o(241012);
+    AppMethodBeat.o(199403);
     return null;
   }
   
   public Context getPopupContext()
   {
-    AppMethodBeat.i(241008);
+    AppMethodBeat.i(199378);
     Context localContext;
-    if (this.ri != null)
+    if (this.sg != null)
     {
-      localContext = this.nE;
-      AppMethodBeat.o(241008);
+      localContext = this.oD;
+      AppMethodBeat.o(199378);
       return localContext;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
       localContext = super.getPopupContext();
-      AppMethodBeat.o(241008);
+      AppMethodBeat.o(199378);
       return localContext;
     }
-    AppMethodBeat.o(241008);
+    AppMethodBeat.o(199378);
     return null;
   }
   
   public CharSequence getPrompt()
   {
-    AppMethodBeat.i(241035);
-    if (this.ri != null)
+    AppMethodBeat.i(199532);
+    if (this.sg != null)
     {
-      localCharSequence = this.ri.ro;
-      AppMethodBeat.o(241035);
+      localCharSequence = this.sg.sm;
+      AppMethodBeat.o(199532);
       return localCharSequence;
     }
     CharSequence localCharSequence = super.getPrompt();
-    AppMethodBeat.o(241035);
+    AppMethodBeat.o(199532);
     return localCharSequence;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    AppMethodBeat.i(241044);
+    AppMethodBeat.i(199574);
     if (this.mBackgroundTintHelper != null)
     {
       ColorStateList localColorStateList = this.mBackgroundTintHelper.getSupportBackgroundTintList();
-      AppMethodBeat.o(241044);
+      AppMethodBeat.o(199574);
       return localColorStateList;
     }
-    AppMethodBeat.o(241044);
+    AppMethodBeat.o(199574);
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    AppMethodBeat.i(241046);
+    AppMethodBeat.i(199594);
     if (this.mBackgroundTintHelper != null)
     {
       PorterDuff.Mode localMode = this.mBackgroundTintHelper.getSupportBackgroundTintMode();
-      AppMethodBeat.o(241046);
+      AppMethodBeat.o(199594);
       return localMode;
     }
-    AppMethodBeat.o(241046);
+    AppMethodBeat.o(199594);
     return null;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(241028);
+    AppMethodBeat.i(199479);
     super.onDetachedFromWindow();
-    if ((this.ri != null) && (this.ri.ty.isShowing())) {
-      this.ri.dismiss();
+    if ((this.sg != null) && (this.sg.ux.isShowing())) {
+      this.sg.dismiss();
     }
-    AppMethodBeat.o(241028);
+    AppMethodBeat.o(199479);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241030);
+    AppMethodBeat.i(199500);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.ri != null) && (View.MeasureSpec.getMode(paramInt1) == -2147483648)) {
+    if ((this.sg != null) && (View.MeasureSpec.getMode(paramInt1) == -2147483648)) {
       setMeasuredDimension(Math.min(Math.max(getMeasuredWidth(), a(getAdapter(), getBackground())), View.MeasureSpec.getSize(paramInt1)), getMeasuredHeight());
     }
-    AppMethodBeat.o(241030);
+    AppMethodBeat.o(199500);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241029);
-    if ((this.lf != null) && (this.lf.onTouch(this, paramMotionEvent)))
+    AppMethodBeat.i(199488);
+    if ((this.mb != null) && (this.mb.onTouch(this, paramMotionEvent)))
     {
-      AppMethodBeat.o(241029);
+      AppMethodBeat.o(199488);
       return true;
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(241029);
+    AppMethodBeat.o(199488);
     return bool;
   }
   
   public boolean performClick()
   {
-    AppMethodBeat.i(241032);
-    if (this.ri != null)
+    AppMethodBeat.i(199509);
+    if (this.sg != null)
     {
-      if (!this.ri.ty.isShowing()) {
-        this.ri.show();
+      if (!this.sg.ux.isShowing()) {
+        this.sg.show();
       }
-      AppMethodBeat.o(241032);
+      AppMethodBeat.o(199509);
       return true;
     }
     boolean bool = super.performClick();
-    AppMethodBeat.o(241032);
+    AppMethodBeat.o(199509);
     return bool;
   }
   
   public void setAdapter(SpinnerAdapter paramSpinnerAdapter)
   {
-    AppMethodBeat.i(241027);
-    if (!this.rh)
+    AppMethodBeat.i(199467);
+    if (!this.sf)
     {
-      this.rg = paramSpinnerAdapter;
-      AppMethodBeat.o(241027);
+      this.se = paramSpinnerAdapter;
+      AppMethodBeat.o(199467);
       return;
     }
     super.setAdapter(paramSpinnerAdapter);
-    if (this.ri != null) {
-      if (this.nE != null) {
+    if (this.sg != null) {
+      if (this.oD != null) {
         break label75;
       }
     }
     label75:
-    for (Context localContext = getContext();; localContext = this.nE)
+    for (Context localContext = getContext();; localContext = this.oD)
     {
-      this.ri.setAdapter(new a(paramSpinnerAdapter, localContext.getTheme()));
-      AppMethodBeat.o(241027);
+      this.sg.setAdapter(new a(paramSpinnerAdapter, localContext.getTheme()));
+      AppMethodBeat.o(199467);
       return;
     }
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241039);
+    AppMethodBeat.i(199550);
     super.setBackgroundDrawable(paramDrawable);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dl();
+      this.mBackgroundTintHelper.ek();
     }
-    AppMethodBeat.o(241039);
+    AppMethodBeat.o(199550);
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(241037);
+    AppMethodBeat.i(199541);
     super.setBackgroundResource(paramInt);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.ar(paramInt);
+      this.mBackgroundTintHelper.ap(paramInt);
     }
-    AppMethodBeat.o(241037);
+    AppMethodBeat.o(199541);
   }
   
   public void setDropDownHorizontalOffset(int paramInt)
   {
-    AppMethodBeat.i(241021);
-    if (this.ri != null)
+    AppMethodBeat.i(199426);
+    if (this.sg != null)
     {
-      this.ri.ta = paramInt;
-      AppMethodBeat.o(241021);
+      this.sg.tZ = paramInt;
+      AppMethodBeat.o(199426);
       return;
     }
     if (Build.VERSION.SDK_INT >= 16) {
       super.setDropDownHorizontalOffset(paramInt);
     }
-    AppMethodBeat.o(241021);
+    AppMethodBeat.o(199426);
   }
   
   public void setDropDownVerticalOffset(int paramInt)
   {
-    AppMethodBeat.i(241016);
-    if (this.ri != null)
+    AppMethodBeat.i(199412);
+    if (this.sg != null)
     {
-      this.ri.ah(paramInt);
-      AppMethodBeat.o(241016);
+      this.sg.ad(paramInt);
+      AppMethodBeat.o(199412);
       return;
     }
     if (Build.VERSION.SDK_INT >= 16) {
       super.setDropDownVerticalOffset(paramInt);
     }
-    AppMethodBeat.o(241016);
+    AppMethodBeat.o(199412);
   }
   
   public void setDropDownWidth(int paramInt)
   {
-    AppMethodBeat.i(241024);
-    if (this.ri != null)
+    AppMethodBeat.i(199445);
+    if (this.sg != null)
     {
-      this.rj = paramInt;
-      AppMethodBeat.o(241024);
+      this.sh = paramInt;
+      AppMethodBeat.o(199445);
       return;
     }
     if (Build.VERSION.SDK_INT >= 16) {
       super.setDropDownWidth(paramInt);
     }
-    AppMethodBeat.o(241024);
+    AppMethodBeat.o(199445);
   }
   
   public void setPopupBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241010);
-    if (this.ri != null)
+    AppMethodBeat.i(199387);
+    if (this.sg != null)
     {
-      this.ri.setBackgroundDrawable(paramDrawable);
-      AppMethodBeat.o(241010);
+      this.sg.setBackgroundDrawable(paramDrawable);
+      AppMethodBeat.o(199387);
       return;
     }
     if (Build.VERSION.SDK_INT >= 16) {
       super.setPopupBackgroundDrawable(paramDrawable);
     }
-    AppMethodBeat.o(241010);
+    AppMethodBeat.o(199387);
   }
   
   public void setPopupBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(241011);
+    AppMethodBeat.i(199395);
     setPopupBackgroundDrawable(a.m(getPopupContext(), paramInt));
-    AppMethodBeat.o(241011);
+    AppMethodBeat.o(199395);
   }
   
   public void setPrompt(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(241033);
-    if (this.ri != null)
+    AppMethodBeat.i(199520);
+    if (this.sg != null)
     {
-      this.ri.ro = paramCharSequence;
-      AppMethodBeat.o(241033);
+      this.sg.sm = paramCharSequence;
+      AppMethodBeat.o(199520);
       return;
     }
     super.setPrompt(paramCharSequence);
-    AppMethodBeat.o(241033);
+    AppMethodBeat.o(199520);
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(241040);
+    AppMethodBeat.i(199561);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
     }
-    AppMethodBeat.o(241040);
+    AppMethodBeat.o(199561);
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(241045);
+    AppMethodBeat.i(199584);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
     }
-    AppMethodBeat.o(241045);
+    AppMethodBeat.o(199584);
   }
   
   static final class a
     implements ListAdapter, SpinnerAdapter
   {
-    private SpinnerAdapter rm;
-    private ListAdapter rn;
+    private SpinnerAdapter sk;
+    private ListAdapter sl;
     
     public a(SpinnerAdapter paramSpinnerAdapter, Resources.Theme paramTheme)
     {
-      AppMethodBeat.i(240958);
-      this.rm = paramSpinnerAdapter;
+      AppMethodBeat.i(200125);
+      this.sk = paramSpinnerAdapter;
       if ((paramSpinnerAdapter instanceof ListAdapter)) {
-        this.rn = ((ListAdapter)paramSpinnerAdapter);
+        this.sl = ((ListAdapter)paramSpinnerAdapter);
       }
       if ((paramTheme != null) && (Build.VERSION.SDK_INT >= 23) && ((paramSpinnerAdapter instanceof ThemedSpinnerAdapter)))
       {
@@ -704,72 +704,72 @@ public class AppCompatSpinner
           paramSpinnerAdapter.setDropDownViewTheme(paramTheme);
         }
       }
-      AppMethodBeat.o(240958);
+      AppMethodBeat.o(200125);
     }
     
     public final boolean areAllItemsEnabled()
     {
-      AppMethodBeat.i(240972);
-      ListAdapter localListAdapter = this.rn;
+      AppMethodBeat.i(200197);
+      ListAdapter localListAdapter = this.sl;
       if (localListAdapter != null)
       {
         boolean bool = localListAdapter.areAllItemsEnabled();
-        AppMethodBeat.o(240972);
+        AppMethodBeat.o(200197);
         return bool;
       }
-      AppMethodBeat.o(240972);
+      AppMethodBeat.o(200197);
       return true;
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(240959);
-      if (this.rm == null)
+      AppMethodBeat.i(200132);
+      if (this.sk == null)
       {
-        AppMethodBeat.o(240959);
+        AppMethodBeat.o(200132);
         return 0;
       }
-      int i = this.rm.getCount();
-      AppMethodBeat.o(240959);
+      int i = this.sk.getCount();
+      AppMethodBeat.o(200132);
       return i;
     }
     
     public final View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(240963);
-      if (this.rm == null)
+      AppMethodBeat.i(200167);
+      if (this.sk == null)
       {
-        AppMethodBeat.o(240963);
+        AppMethodBeat.o(200167);
         return null;
       }
-      paramView = this.rm.getDropDownView(paramInt, paramView, paramViewGroup);
-      AppMethodBeat.o(240963);
+      paramView = this.sk.getDropDownView(paramInt, paramView, paramViewGroup);
+      AppMethodBeat.o(200167);
       return paramView;
     }
     
     public final Object getItem(int paramInt)
     {
-      AppMethodBeat.i(240960);
-      if (this.rm == null)
+      AppMethodBeat.i(200140);
+      if (this.sk == null)
       {
-        AppMethodBeat.o(240960);
+        AppMethodBeat.o(200140);
         return null;
       }
-      Object localObject = this.rm.getItem(paramInt);
-      AppMethodBeat.o(240960);
+      Object localObject = this.sk.getItem(paramInt);
+      AppMethodBeat.o(200140);
       return localObject;
     }
     
     public final long getItemId(int paramInt)
     {
-      AppMethodBeat.i(240961);
-      if (this.rm == null)
+      AppMethodBeat.i(200146);
+      if (this.sk == null)
       {
-        AppMethodBeat.o(240961);
+        AppMethodBeat.o(200146);
         return -1L;
       }
-      long l = this.rm.getItemId(paramInt);
-      AppMethodBeat.o(240961);
+      long l = this.sk.getItemId(paramInt);
+      AppMethodBeat.o(200146);
       return l;
     }
     
@@ -780,9 +780,9 @@ public class AppCompatSpinner
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(240962);
+      AppMethodBeat.i(200159);
       paramView = getDropDownView(paramInt, paramView, paramViewGroup);
-      AppMethodBeat.o(240962);
+      AppMethodBeat.o(200159);
       return paramView;
     }
     
@@ -793,96 +793,96 @@ public class AppCompatSpinner
     
     public final boolean hasStableIds()
     {
-      AppMethodBeat.i(240965);
-      if ((this.rm != null) && (this.rm.hasStableIds()))
+      AppMethodBeat.i(200175);
+      if ((this.sk != null) && (this.sk.hasStableIds()))
       {
-        AppMethodBeat.o(240965);
+        AppMethodBeat.o(200175);
         return true;
       }
-      AppMethodBeat.o(240965);
+      AppMethodBeat.o(200175);
       return false;
     }
     
     public final boolean isEmpty()
     {
-      AppMethodBeat.i(240976);
+      AppMethodBeat.i(200218);
       if (getCount() == 0)
       {
-        AppMethodBeat.o(240976);
+        AppMethodBeat.o(200218);
         return true;
       }
-      AppMethodBeat.o(240976);
+      AppMethodBeat.o(200218);
       return false;
     }
     
     public final boolean isEnabled(int paramInt)
     {
-      AppMethodBeat.i(240973);
-      ListAdapter localListAdapter = this.rn;
+      AppMethodBeat.i(200201);
+      ListAdapter localListAdapter = this.sl;
       if (localListAdapter != null)
       {
         boolean bool = localListAdapter.isEnabled(paramInt);
-        AppMethodBeat.o(240973);
+        AppMethodBeat.o(200201);
         return bool;
       }
-      AppMethodBeat.o(240973);
+      AppMethodBeat.o(200201);
       return true;
     }
     
     public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
     {
-      AppMethodBeat.i(240967);
-      if (this.rm != null) {
-        this.rm.registerDataSetObserver(paramDataSetObserver);
+      AppMethodBeat.i(200186);
+      if (this.sk != null) {
+        this.sk.registerDataSetObserver(paramDataSetObserver);
       }
-      AppMethodBeat.o(240967);
+      AppMethodBeat.o(200186);
     }
     
     public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
     {
-      AppMethodBeat.i(240969);
-      if (this.rm != null) {
-        this.rm.unregisterDataSetObserver(paramDataSetObserver);
+      AppMethodBeat.i(200192);
+      if (this.sk != null) {
+        this.sk.unregisterDataSetObserver(paramDataSetObserver);
       }
-      AppMethodBeat.o(240969);
+      AppMethodBeat.o(200192);
     }
   }
   
   final class b
     extends ListPopupWindow
   {
-    ListAdapter eP;
-    CharSequence ro;
-    final Rect rp;
+    ListAdapter fR;
+    CharSequence sm;
+    final Rect sn;
     
     public b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
     {
       super(paramAttributeSet, paramInt);
-      AppMethodBeat.i(240993);
-      this.rp = new Rect();
-      this.tl = AppCompatSpinner.this;
-      P(true);
-      dK();
-      this.tp = new AdapterView.OnItemClickListener()
+      AppMethodBeat.i(200147);
+      this.sn = new Rect();
+      this.ul = AppCompatSpinner.this;
+      eK();
+      eJ();
+      this.un = new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(240981);
+          AppMethodBeat.i(199459);
           AppCompatSpinner.this.setSelection(paramAnonymousInt);
           if (AppCompatSpinner.this.getOnItemClickListener() != null) {
-            AppCompatSpinner.this.performItemClick(paramAnonymousView, paramAnonymousInt, AppCompatSpinner.b.this.eP.getItemId(paramAnonymousInt));
+            AppCompatSpinner.this.performItemClick(paramAnonymousView, paramAnonymousInt, AppCompatSpinner.b.this.fR.getItemId(paramAnonymousInt));
           }
           AppCompatSpinner.b.this.dismiss();
-          AppMethodBeat.o(240981);
+          AppMethodBeat.o(199459);
         }
       };
-      AppMethodBeat.o(240993);
+      AppMethodBeat.o(200147);
     }
     
-    final void dt()
+    final void es()
     {
-      AppMethodBeat.i(240995);
-      Object localObject = this.ty.getBackground();
+      AppMethodBeat.i(200178);
+      Object localObject = this.ux.getBackground();
       int i;
       int m;
       int n;
@@ -897,10 +897,10 @@ public class AppCompatSpinner
           m = AppCompatSpinner.this.getPaddingLeft();
           n = AppCompatSpinner.this.getPaddingRight();
           i1 = AppCompatSpinner.this.getWidth();
-          if (AppCompatSpinner.this.rj != -2) {
+          if (AppCompatSpinner.this.sh != -2) {
             break label256;
           }
-          j = AppCompatSpinner.this.a((SpinnerAdapter)this.eP, this.ty.getBackground());
+          j = AppCompatSpinner.this.a((SpinnerAdapter)this.fR, this.ux.getBackground());
           int k = AppCompatSpinner.this.getContext().getResources().getDisplayMetrics().widthPixels - AppCompatSpinner.this.mTempRect.left - AppCompatSpinner.this.mTempRect.right;
           if (j <= k) {
             break label304;
@@ -915,12 +915,12 @@ public class AppCompatSpinner
         setContentWidth(Math.max(j, i1 - m - n));
         label176:
         if (ai.s(AppCompatSpinner.this)) {
-          i = i1 - n - this.rj + i;
+          i = i1 - n - getWidth() + i;
         }
         for (;;)
         {
-          this.ta = i;
-          AppMethodBeat.o(240995);
+          this.tZ = i;
+          AppMethodBeat.o(200178);
           return;
           i = -AppCompatSpinner.this.mTempRect.left;
           break;
@@ -929,12 +929,12 @@ public class AppCompatSpinner
           ((Rect)localObject).left = 0;
           i = 0;
           break;
-          if (AppCompatSpinner.this.rj == -1)
+          if (AppCompatSpinner.this.sh == -1)
           {
             setContentWidth(i1 - m - n);
             break label176;
           }
-          setContentWidth(AppCompatSpinner.this.rj);
+          setContentWidth(AppCompatSpinner.this.sh);
           break label176;
           i += m;
         }
@@ -943,22 +943,22 @@ public class AppCompatSpinner
     
     public final void setAdapter(ListAdapter paramListAdapter)
     {
-      AppMethodBeat.i(240994);
+      AppMethodBeat.i(200166);
       super.setAdapter(paramListAdapter);
-      this.eP = paramListAdapter;
-      AppMethodBeat.o(240994);
+      this.fR = paramListAdapter;
+      AppMethodBeat.o(200166);
     }
     
     public final void show()
     {
-      AppMethodBeat.i(240997);
+      AppMethodBeat.i(200190);
       boolean bool = isShowing();
-      dt();
-      dN();
+      es();
+      eN();
       super.show();
-      this.sY.setChoiceMode(1);
+      this.tX.setChoiceMode(1);
       int i = AppCompatSpinner.this.getSelectedItemPosition();
-      Object localObject = this.sY;
+      Object localObject = this.tX;
       if ((isShowing()) && (localObject != null))
       {
         ((p)localObject).setListSelectionHidden(false);
@@ -969,7 +969,7 @@ public class AppCompatSpinner
       }
       if (bool)
       {
-        AppMethodBeat.o(240997);
+        AppMethodBeat.o(200190);
         return;
       }
       localObject = AppCompatSpinner.this.getViewTreeObserver();
@@ -979,19 +979,19 @@ public class AppCompatSpinner
         {
           public final void onGlobalLayout()
           {
-            AppMethodBeat.i(240986);
+            AppMethodBeat.i(199434);
             AppCompatSpinner.b localb = AppCompatSpinner.b.this;
             AppCompatSpinner localAppCompatSpinner = AppCompatSpinner.this;
-            if ((w.al(localAppCompatSpinner)) && (localAppCompatSpinner.getGlobalVisibleRect(localb.rp))) {}
+            if ((z.ay(localAppCompatSpinner)) && (localAppCompatSpinner.getGlobalVisibleRect(localb.sn))) {}
             for (int i = 1; i == 0; i = 0)
             {
               AppCompatSpinner.b.this.dismiss();
-              AppMethodBeat.o(240986);
+              AppMethodBeat.o(199434);
               return;
             }
-            AppCompatSpinner.b.this.dt();
+            AppCompatSpinner.b.this.es();
             AppCompatSpinner.b.a(AppCompatSpinner.b.this);
-            AppMethodBeat.o(240986);
+            AppMethodBeat.o(199434);
           }
         };
         ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(local2);
@@ -999,22 +999,22 @@ public class AppCompatSpinner
         {
           public final void onDismiss()
           {
-            AppMethodBeat.i(240991);
+            AppMethodBeat.i(199451);
             ViewTreeObserver localViewTreeObserver = AppCompatSpinner.this.getViewTreeObserver();
             if (localViewTreeObserver != null) {
               localViewTreeObserver.removeGlobalOnLayoutListener(local2);
             }
-            AppMethodBeat.o(240991);
+            AppMethodBeat.o(199451);
           }
         });
       }
-      AppMethodBeat.o(240997);
+      AppMethodBeat.o(200190);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.AppCompatSpinner
  * JD-Core Version:    0.7.0.1
  */

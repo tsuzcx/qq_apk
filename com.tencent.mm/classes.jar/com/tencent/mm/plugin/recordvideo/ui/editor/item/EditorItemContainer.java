@@ -24,58 +24,60 @@ import com.tencent.mm.plugin.recordvideo.b.h;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorFrameView;
-import com.tencent.mm.plugin.recordvideo.ui.editor.view.c.a;
-import com.tencent.mm.protocal.protobuf.ctg;
-import com.tencent.mm.protocal.protobuf.duy;
+import com.tencent.mm.plugin.recordvideo.ui.editor.c.c;
+import com.tencent.mm.plugin.recordvideo.ui.editor.view.d;
+import com.tencent.mm.plugin.recordvideo.ui.editor.view.d.a;
+import com.tencent.mm.protocal.protobuf.dki;
+import com.tencent.mm.protocal.protobuf.enw;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.widget.InsectRelativeLayout;
 import com.tencent.mm.ui.widget.cropview.CropLayout.b;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer;", "Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bottomFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameView;", "clearActive", "Ljava/lang/Runnable;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "currActiveItem", "Landroid/view/View;", "deleteStateListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "showDelete", "", "getDeleteStateListener", "()Lkotlin/jvm/functions/Function1;", "setDeleteStateListener", "(Lkotlin/jvm/functions/Function1;)V", "deleteView", "Landroid/widget/TextView;", "deleteViewGroup", "Landroid/view/ViewGroup;", "deleteViewIcon", "Landroid/widget/ImageView;", "deletingItem", "displayArea", "Landroid/graphics/Rect;", "getDisplayArea", "()Landroid/graphics/Rect;", "enableTouch", "forceStaticImage", "heightPercent", "", "itemChangeListener", "itemView", "getItemChangeListener", "setItemChangeListener", "itemLayout", "itemStateResolve", "com/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$itemStateResolve$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$itemStateResolve$1;", "leftFrame", "locationClickListener", "Landroid/view/View$OnClickListener;", "locationView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;", "getLocationView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;", "setLocationView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;)V", "lyricsClickListener", "lyricsView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItemView;", "getLyricsView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItemView;", "setLyricsView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItemView;)V", "rightFrame", "safeType", "textClickListener", "tipClickListener", "tipItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;", "getTipItemView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;", "setTipItemView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;)V", "topFrame", "activeDeleteView", "active", "addEmojiItem", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "addLocationItem", "sl", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "addLyricsItem", "lyricsItemInfos", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "addTextItem", "item", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "addTipItem", "text", "", "textColor", "textBgColor", "bringItemsToFront", "checkAddLocationItem", "checkLyricsItem", "checkTipItem", "deleteCheck", "event", "Landroid/view/MotionEvent;", "dispatchTouchEvent", "ev", "enableGif", "enable", "frameCheck", "getAllItemViews", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "getItemLayout", "getLocationItemHeight", "initConfig", "initHeightSafeArea", "safeHeight", "safeFrameHeight", "initWidthSafeArea", "safeWidth", "safeFrameWidth", "insectBottom", "bottom", "onScale", "scaleFactor", "focusX", "focusY", "onScroll", "distanceX", "distanceY", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "pause", "removeLocationView", "callback", "Lkotlin/Function0;", "removeLyricsView", "removeTextItem", "textItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItemView;", "removeTipItem", "replaceLocationView", "replaceLyricsItem", "requestEditing", "editing", "reset", "resume", "setEnableTouch", "setOnLocationClick", "setOnLyricsClick", "setOnTextClick", "setOnTipClick", "setSafeType", "type", "showBottomFrame", "isShow", "showLeftFrame", "showRightFrame", "showTopFrame", "skipDeleteCheck", "skipFrameCheck", "skipRequestEditing", "toggleDeleteView", "show", "updateValidArea", "validRect", "Companion", "ItemStateResolve", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer;", "Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bottomFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameView;", "clearActive", "Ljava/lang/Runnable;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "currActiveItem", "Landroid/view/View;", "deleteStateListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "showDelete", "", "getDeleteStateListener", "()Lkotlin/jvm/functions/Function1;", "setDeleteStateListener", "(Lkotlin/jvm/functions/Function1;)V", "deleteView", "Landroid/widget/TextView;", "deleteViewGroup", "Landroid/view/ViewGroup;", "deleteViewIcon", "Landroid/widget/ImageView;", "deletingItem", "displayArea", "Landroid/graphics/Rect;", "getDisplayArea", "()Landroid/graphics/Rect;", "enableTouch", "forceStaticImage", "heightPercent", "", "itemChangeListener", "itemView", "getItemChangeListener", "setItemChangeListener", "itemLayout", "itemStateResolve", "com/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$itemStateResolve$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$itemStateResolve$1;", "leftFrame", "locationClickListener", "Landroid/view/View$OnClickListener;", "locationView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;", "getLocationView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;", "setLocationView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;)V", "lyricsClickListener", "lyricsView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItemView;", "getLyricsView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItemView;", "setLyricsView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItemView;)V", "rightFrame", "safeType", "textClickListener", "tipClickListener", "tipItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;", "getTipItemView", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;", "setTipItemView", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TipItemView;)V", "topFrame", "activeDeleteView", "active", "addEmojiItem", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "addLocationItem", "sl", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "addLyricsItem", "lyricsItemInfos", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "addTextItem", "item", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "addTipItem", "text", "", "textColor", "textBgColor", "bringItemsToFront", "checkAddLocationItem", "checkLyricsItem", "checkTipItem", "deleteCheck", "event", "Landroid/view/MotionEvent;", "dispatchTouchEvent", "ev", "enableGif", "enable", "frameCheck", "getAllItemViews", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "getItemLayout", "getLocationItemHeight", "getTextContents", "", "initConfig", "initHeightSafeArea", "safeHeight", "safeFrameHeight", "initWidthSafeArea", "safeWidth", "safeFrameWidth", "insectBottom", "bottom", "onScale", "scaleFactor", "focusX", "focusY", "onScroll", "distanceX", "distanceY", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "pause", "removeLocationView", "callback", "Lkotlin/Function0;", "removeLyricsView", "removeTextItem", "textItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItemView;", "removeTipItem", "replaceLocationView", "replaceLyricsItem", "requestEditing", "editing", "reset", "resume", "setEnableTouch", "setOnLocationClick", "setOnLyricsClick", "setOnTextClick", "setOnTipClick", "setSafeType", "type", "showBottomFrame", "isShow", "showLeftFrame", "showRightFrame", "showTopFrame", "skipDeleteCheck", "skipFrameCheck", "skipRequestEditing", "toggleDeleteView", "show", "updateValidArea", "validRect", "Companion", "ItemStateResolve", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EditorItemContainer
   extends InsectRelativeLayout
   implements CropLayout.b
 {
-  public static final a Icl;
-  public RecordConfigProvider ALV;
-  public final Rect IbP;
-  private ImageView IbQ;
-  private ViewGroup IbR;
-  public EditorFrameView IbS;
-  public EditorFrameView IbT;
-  public EditorFrameView IbU;
-  public EditorFrameView IbV;
-  public boolean IbW;
-  private View IbX;
-  private b<? super Boolean, x> IbY;
-  private b<? super View, x> IbZ;
-  private View Ica;
-  public q Icb;
-  public n Icc;
-  public t Icd;
-  private View.OnClickListener Ice;
-  public View.OnClickListener Icf;
-  public View.OnClickListener Icg;
-  private View.OnClickListener Ich;
-  private int Ici;
-  private boolean Icj;
-  public final d Ick;
+  public static final EditorItemContainer.a NYm;
+  public n NYA;
+  public t NYB;
+  private View.OnClickListener NYC;
+  public View.OnClickListener NYD;
+  public View.OnClickListener NYE;
+  private View.OnClickListener NYF;
+  private int NYG;
+  private boolean NYH;
+  public final c NYI;
+  public final Rect NYn;
+  private ImageView NYo;
+  private ViewGroup NYp;
+  public EditorFrameView NYq;
+  public EditorFrameView NYr;
+  public EditorFrameView NYs;
+  public EditorFrameView NYt;
+  public boolean NYu;
+  private View NYv;
+  private b<? super Boolean, ah> NYw;
+  private b<? super View, ah> NYx;
+  private View NYy;
+  public q NYz;
   public float heightPercent;
-  private TextView vaq;
-  public final ViewGroup var;
-  public Runnable vax;
+  public RecordConfigProvider oaV;
+  private TextView ymr;
+  public final ViewGroup yms;
+  public Runnable ymy;
   
   static
   {
     AppMethodBeat.i(76114);
-    Icl = new a((byte)0);
+    NYm = new EditorItemContainer.a((byte)0);
     AppMethodBeat.o(76114);
   }
   
@@ -90,198 +92,229 @@ public final class EditorItemContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(76112);
-    this.IbP = new Rect();
-    this.vax = ((Runnable)new c(this));
+    this.NYn = new Rect();
+    this.ymy = new EditorItemContainer..ExternalSyntheticLambda0(this);
     this.heightPercent = 0.5F;
-    this.Icj = true;
+    this.NYH = true;
     View.inflate(paramContext, b.f.story_capture_editor_item_container, (ViewGroup)this);
     paramContext = findViewById(b.e.editor_item_layout);
-    p.j(paramContext, "findViewById(R.id.editor_item_layout)");
-    this.var = ((ViewGroup)paramContext);
+    kotlin.g.b.s.s(paramContext, "findViewById(R.id.editor_item_layout)");
+    this.yms = ((ViewGroup)paramContext);
     paramContext = findViewById(b.e.editor_delete_view);
-    p.j(paramContext, "findViewById(R.id.editor_delete_view)");
-    this.vaq = ((TextView)paramContext);
+    kotlin.g.b.s.s(paramContext, "findViewById(R.id.editor_delete_view)");
+    this.ymr = ((TextView)paramContext);
     paramContext = findViewById(b.e.editor_delete_view_icon);
-    p.j(paramContext, "findViewById(R.id.editor_delete_view_icon)");
-    this.IbQ = ((ImageView)paramContext);
+    kotlin.g.b.s.s(paramContext, "findViewById(R.id.editor_delete_view_icon)");
+    this.NYo = ((ImageView)paramContext);
     paramContext = findViewById(b.e.editor_delete_view_group);
-    p.j(paramContext, "findViewById(R.id.editor_delete_view_group)");
-    this.IbR = ((ViewGroup)paramContext);
-    paramContext = e.HGz;
-    paramContext = e.fuV();
-    paramAttributeSet = getResources();
-    p.j(paramAttributeSet, "resources");
-    paramInt = paramAttributeSet.getDisplayMetrics().widthPixels;
-    paramAttributeSet = getResources();
-    p.j(paramAttributeSet, "resources");
-    paramContext.set(0, 0, paramInt, paramAttributeSet.getDisplayMetrics().heightPixels);
-    this.Ick = new d(this);
+    kotlin.g.b.s.s(paramContext, "findViewById(R.id.editor_delete_view_group)");
+    this.NYp = ((ViewGroup)paramContext);
+    paramContext = e.NDU;
+    e.gGL().set(0, 0, getResources().getDisplayMetrics().widthPixels, getResources().getDisplayMetrics().heightPixels);
+    this.NYI = new c(this);
     AppMethodBeat.o(76112);
   }
   
-  private final void mY(boolean paramBoolean)
+  private final void BA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(76109);
+    EditorFrameView localEditorFrameView = this.NYs;
+    if (localEditorFrameView != null) {
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (int i = 0;; i = 4)
+    {
+      localEditorFrameView.setVisibility(i);
+      AppMethodBeat.o(76109);
+      return;
+    }
+  }
+  
+  private final void BB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(76110);
+    EditorFrameView localEditorFrameView = this.NYt;
+    if (localEditorFrameView != null) {
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (int i = 0;; i = 4)
+    {
+      localEditorFrameView.setVisibility(i);
+      AppMethodBeat.o(76110);
+      return;
+    }
+  }
+  
+  private final void By(boolean paramBoolean)
+  {
+    AppMethodBeat.i(76107);
+    EditorFrameView localEditorFrameView = this.NYq;
+    if (localEditorFrameView != null) {
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (int i = 0;; i = 4)
+    {
+      localEditorFrameView.setVisibility(i);
+      AppMethodBeat.o(76107);
+      return;
+    }
+  }
+  
+  private final void Bz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(76108);
+    EditorFrameView localEditorFrameView = this.NYr;
+    if (localEditorFrameView != null) {
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (int i = 0;; i = 4)
+    {
+      localEditorFrameView.setVisibility(i);
+      AppMethodBeat.o(76108);
+      return;
+    }
+  }
+  
+  private static final void a(EditorItemContainer paramEditorItemContainer)
+  {
+    AppMethodBeat.i(280328);
+    kotlin.g.b.s.u(paramEditorItemContainer, "this$0");
+    if (paramEditorItemContainer.NYy != null)
+    {
+      View localView = paramEditorItemContainer.NYy;
+      kotlin.g.b.s.checkNotNull(localView);
+      paramEditorItemContainer.B(localView, false);
+    }
+    AppMethodBeat.o(280328);
+  }
+  
+  private final void ox(boolean paramBoolean)
   {
     AppMethodBeat.i(76104);
-    this.IbR.setActivated(paramBoolean);
+    this.NYp.setActivated(paramBoolean);
     if (paramBoolean)
     {
-      this.vaq.setText(b.h.editor_item_release_to_delete);
-      this.IbQ.setImageDrawable(au.o(getContext(), b.g.icons_filled_delete_on, -1));
+      this.ymr.setText(b.h.editor_item_release_to_delete);
+      this.NYo.setImageDrawable(bb.m(getContext(), b.g.icons_filled_delete_on, -1));
       AppMethodBeat.o(76104);
       return;
     }
-    this.vaq.setText(b.h.editor_item_drag_to_delete);
-    this.IbQ.setImageDrawable(au.o(getContext(), b.g.icons_filled_delete, -1));
+    this.ymr.setText(b.h.editor_item_drag_to_delete);
+    this.NYo.setImageDrawable(bb.m(getContext(), b.g.icons_filled_delete, -1));
     AppMethodBeat.o(76104);
   }
   
-  private final void wW(boolean paramBoolean)
+  public final void B(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(76107);
-    EditorFrameView localEditorFrameView = this.IbS;
-    if (localEditorFrameView != null)
-    {
-      if (paramBoolean) {}
-      for (int i = 0;; i = 4)
+    AppMethodBeat.i(76103);
+    kotlin.g.b.s.u(paramView, "itemView");
+    if (paramBoolean) {
+      if (!kotlin.g.b.s.p(paramView, this.NYy))
       {
-        localEditorFrameView.setVisibility(i);
-        AppMethodBeat.o(76107);
-        return;
+        View localView = this.NYy;
+        if (localView != null) {
+          localView.setActivated(false);
+        }
+        this.NYy = paramView;
       }
     }
-    AppMethodBeat.o(76107);
-  }
-  
-  private final void wX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(76108);
-    EditorFrameView localEditorFrameView = this.IbT;
-    if (localEditorFrameView != null)
+    for (;;)
     {
-      if (paramBoolean) {}
-      for (int i = 0;; i = 4)
-      {
-        localEditorFrameView.setVisibility(i);
-        AppMethodBeat.o(76108);
-        return;
+      paramView.setActivated(paramBoolean);
+      AppMethodBeat.o(76103);
+      return;
+      if (kotlin.g.b.s.p(paramView, this.NYy)) {
+        this.NYy = null;
       }
     }
-    AppMethodBeat.o(76108);
   }
   
-  private final void wY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(76109);
-    EditorFrameView localEditorFrameView = this.IbU;
-    if (localEditorFrameView != null)
-    {
-      if (paramBoolean) {}
-      for (int i = 0;; i = 4)
-      {
-        localEditorFrameView.setVisibility(i);
-        AppMethodBeat.o(76109);
-        return;
-      }
-    }
-    AppMethodBeat.o(76109);
-  }
-  
-  private final void wZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(76110);
-    EditorFrameView localEditorFrameView = this.IbV;
-    if (localEditorFrameView != null)
-    {
-      if (paramBoolean) {}
-      for (int i = 0;; i = 4)
-      {
-        localEditorFrameView.setVisibility(i);
-        AppMethodBeat.o(76110);
-        return;
-      }
-    }
-    AppMethodBeat.o(76110);
-  }
-  
-  public final boolean Kc(int paramInt)
+  public final boolean La(int paramInt)
   {
     AppMethodBeat.i(76092);
-    Object localObject = this.IbR.getLayoutParams();
+    Object localObject = this.NYp.getLayoutParams();
     if (localObject == null)
     {
-      localObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       AppMethodBeat.o(76092);
       throw ((Throwable)localObject);
     }
     localObject = (ViewGroup.MarginLayoutParams)localObject;
-    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(getContext(), 32) + paramInt);
-    this.IbR.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (com.tencent.mm.cd.a.fromDPToPix(getContext(), 32) + paramInt);
+    this.NYp.setLayoutParams((ViewGroup.LayoutParams)localObject);
     AppMethodBeat.o(76092);
     return true;
   }
   
-  public final void a(duy paramduy)
+  public final void a(enw paramenw)
   {
     AppMethodBeat.i(76096);
-    p.k(paramduy, "sl");
+    kotlin.g.b.s.u(paramenw, "sl");
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     Object localObject1 = getContext();
-    p.j(localObject1, "context");
-    this.Icb = new q((Context)localObject1);
-    localObject1 = this.Icb;
+    kotlin.g.b.s.s(localObject1, "context");
+    this.NYz = new q((Context)localObject1);
+    localObject1 = this.NYz;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = e.HGz;
-      localObject2 = e.fuV();
-      e locale = e.HGz;
-      ((q)localObject1).b((Rect)localObject2, e.fuX());
+      localObject2 = e.NDU;
+      localObject2 = e.gGL();
+      e locale = e.NDU;
+      ((q)localObject1).b((Rect)localObject2, e.gGN());
     }
-    localObject1 = this.Icb;
+    localObject1 = this.NYz;
     if (localObject1 != null)
     {
-      localObject2 = e.HGz;
-      ((q)localObject1).setValidArea(e.fuW());
+      localObject2 = e.NDU;
+      ((q)localObject1).setValidArea(e.gGM());
     }
-    localObject1 = this.Icb;
+    localObject1 = this.NYz;
     if (localObject1 != null) {
-      ((q)localObject1).a(this.IbP, this.heightPercent);
+      ((q)localObject1).a(this.NYn, this.heightPercent);
     }
-    localObject1 = this.Icb;
+    localObject1 = this.NYz;
     if (localObject1 != null) {
-      ((q)localObject1).setLocation(paramduy);
+      ((q)localObject1).setLocation(paramenw);
     }
-    paramduy = this.Icb;
-    if (paramduy != null) {
-      paramduy.setStateResolve((b)this.Ick);
+    paramenw = this.NYz;
+    if (paramenw != null) {
+      paramenw.setStateResolve((b)this.NYI);
     }
-    paramduy = this.Icb;
-    if (paramduy != null) {
-      paramduy.setOnClickListener(this.Ice);
+    paramenw = this.NYz;
+    if (paramenw != null) {
+      paramenw.setOnClickListener(this.NYC);
     }
-    this.var.addView((View)this.Icb, (ViewGroup.LayoutParams)localLayoutParams);
-    paramduy = this.Icb;
-    if (paramduy == null) {
-      p.iCn();
-    }
-    v((View)paramduy, false);
-    removeCallbacks(this.vax);
-    postDelayed(this.vax, 1500L);
+    this.yms.addView((View)this.NYz, (ViewGroup.LayoutParams)localLayoutParams);
+    paramenw = this.NYz;
+    kotlin.g.b.s.checkNotNull(paramenw);
+    B((View)paramenw, false);
+    removeCallbacks(this.ymy);
+    postDelayed(this.ymy, 1500L);
     AppMethodBeat.o(76096);
   }
   
-  public final void ae(kotlin.g.a.a<x> parama)
+  public final void bL(kotlin.g.a.a<ah> parama)
   {
     AppMethodBeat.i(76097);
-    if (this.Icb != null) {
-      this.var.removeView((View)this.Icb);
+    if (this.NYz != null) {
+      this.yms.removeView((View)this.NYz);
     }
-    this.Icb = null;
-    if (parama != null)
-    {
+    this.NYz = null;
+    if (parama != null) {
       parama.invoke();
-      AppMethodBeat.o(76097);
-      return;
     }
     AppMethodBeat.o(76097);
   }
@@ -289,7 +322,7 @@ public final class EditorItemContainer
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(76111);
-    if (!this.Icj)
+    if (!this.NYH)
     {
       AppMethodBeat.o(76111);
       return true;
@@ -299,101 +332,58 @@ public final class EditorItemContainer
     return bool;
   }
   
-  public final void fyH()
+  public final void gKt()
   {
     AppMethodBeat.i(76089);
     Object localObject;
-    if (this.Icd != null)
+    if (this.NYB != null)
     {
-      localObject = this.Icd;
+      localObject = this.NYB;
       if (localObject != null) {
         ((t)localObject).bringToFront();
       }
     }
-    if (this.Icb != null)
+    if (this.NYz != null)
     {
-      localObject = this.Icb;
+      localObject = this.NYz;
       if (localObject != null) {
         ((q)localObject).bringToFront();
       }
     }
-    if (this.Icc != null)
+    if (this.NYA != null)
     {
-      localObject = this.Icc;
-      if (localObject != null)
-      {
+      localObject = this.NYA;
+      if (localObject != null) {
         ((n)localObject).bringToFront();
-        AppMethodBeat.o(76089);
-        return;
       }
     }
     AppMethodBeat.o(76089);
   }
   
-  public final void fyI()
+  public final void gKu()
   {
     AppMethodBeat.i(76093);
-    if (this.Icd != null)
+    if (this.NYB != null)
     {
-      this.var.removeView((View)this.Icd);
-      this.Icd = null;
+      this.yms.removeView((View)this.NYB);
+      this.NYB = null;
     }
     AppMethodBeat.o(76093);
   }
   
-  public final void fyJ()
+  public final void gKv()
   {
     AppMethodBeat.i(76095);
-    if (this.Icc != null) {
-      this.var.removeView((View)this.Icc);
+    if (this.NYA != null) {
+      this.yms.removeView((View)this.NYA);
     }
-    this.Icc = null;
+    this.NYA = null;
     AppMethodBeat.o(76095);
   }
   
-  public final boolean fyK()
+  public final boolean gKw()
   {
-    return this.Icb != null;
-  }
-  
-  public final void gR(List<? extends ctg> paramList)
-  {
-    AppMethodBeat.i(76094);
-    p.k(paramList, "lyricsItemInfos");
-    this.Icc = new n(getContext());
-    Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
-    this.var.addView((View)this.Icc, (ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.Icc;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = e.HGz;
-      localObject2 = e.fuV();
-      e locale = e.HGz;
-      ((n)localObject1).b((Rect)localObject2, e.fuX());
-    }
-    localObject1 = this.Icc;
-    if (localObject1 != null)
-    {
-      localObject2 = e.HGz;
-      ((n)localObject1).setValidArea(e.fuW());
-    }
-    localObject1 = this.Icc;
-    if (localObject1 != null) {
-      c.a.a((com.tencent.mm.plugin.recordvideo.ui.editor.view.c)localObject1, this.IbP);
-    }
-    localObject1 = this.Icc;
-    if (localObject1 != null) {
-      ((n)localObject1).setStateResolve((b)this.Ick);
-    }
-    localObject1 = this.Icc;
-    if (localObject1 != null)
-    {
-      ((n)localObject1).gS(paramList);
-      AppMethodBeat.o(76094);
-      return;
-    }
-    AppMethodBeat.o(76094);
+    return this.NYz != null;
   }
   
   public final List<h> getAllItemViews()
@@ -401,93 +391,190 @@ public final class EditorItemContainer
     AppMethodBeat.i(76102);
     List localList = (List)new ArrayList();
     int i = 0;
-    int j = this.var.getChildCount();
-    while (i < j)
+    int k = this.yms.getChildCount();
+    if (k > 0) {}
+    for (;;)
     {
-      View localView = this.var.getChildAt(i);
+      int j = i + 1;
+      View localView = this.yms.getChildAt(i);
       if ((localView instanceof h)) {
         localList.add(localView);
       }
-      i += 1;
+      if (j >= k)
+      {
+        AppMethodBeat.o(76102);
+        return localList;
+      }
+      i = j;
     }
-    AppMethodBeat.o(76102);
-    return localList;
   }
   
-  public final b<Boolean, x> getDeleteStateListener()
+  public final b<Boolean, ah> getDeleteStateListener()
   {
-    return this.IbY;
+    return this.NYw;
   }
   
   public final Rect getDisplayArea()
   {
-    return this.IbP;
+    return this.NYn;
   }
   
-  public final b<View, x> getItemChangeListener()
+  public final b<View, ah> getItemChangeListener()
   {
-    return this.IbZ;
+    return this.NYx;
   }
   
   public final ViewGroup getItemLayout()
   {
-    return this.var;
+    return this.yms;
   }
   
   public final int getLocationItemHeight()
   {
     AppMethodBeat.i(76106);
-    Object localObject = this.Icb;
-    if (localObject != null)
+    Object localObject = this.NYz;
+    if (localObject == null)
     {
-      localObject = ((q)localObject).getBitmap();
-      if (localObject != null)
-      {
-        int i = ((Bitmap)localObject).getHeight();
-        AppMethodBeat.o(76106);
-        return i;
-      }
+      AppMethodBeat.o(76106);
+      return 0;
     }
+    localObject = ((q)localObject).getBitmap();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(76106);
+      return 0;
+    }
+    int i = ((Bitmap)localObject).getHeight();
     AppMethodBeat.o(76106);
-    return 0;
+    return i;
   }
   
   public final q getLocationView()
   {
-    return this.Icb;
+    return this.NYz;
   }
   
   public final n getLyricsView()
   {
-    return this.Icc;
+    return this.NYA;
+  }
+  
+  public final String getTextContents()
+  {
+    AppMethodBeat.i(280585);
+    int j = this.yms.getChildCount();
+    int i;
+    Object localObject1;
+    Object localObject2;
+    if (j >= 0)
+    {
+      i = 0;
+      localObject1 = "";
+      if ((this.yms.getChildAt(i) instanceof s))
+      {
+        localObject2 = this.yms.getChildAt(i);
+        if (localObject2 == null)
+        {
+          localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.ui.editor.item.TextItemView");
+          AppMethodBeat.o(280585);
+          throw ((Throwable)localObject1);
+        }
+        localObject2 = String.valueOf(((s)localObject2).getText());
+        if (!Util.isNullOrNil((String)localObject2)) {
+          if (kotlin.g.b.s.p(localObject1, ""))
+          {
+            localObject1 = localObject2;
+            label106:
+            if (i != j) {
+              break label150;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(280585);
+      return localObject1;
+      localObject1 = (String)localObject1 + '#' + (String)localObject2;
+      break label106;
+      break label106;
+      label150:
+      i += 1;
+      break;
+      localObject1 = "";
+    }
   }
   
   public final t getTipItemView()
   {
-    return this.Icd;
+    return this.NYB;
+  }
+  
+  public final void jR(List<? extends dki> paramList)
+  {
+    AppMethodBeat.i(76094);
+    kotlin.g.b.s.u(paramList, "lyricsItemInfos");
+    this.NYA = new n(getContext());
+    Object localObject1 = new RelativeLayout.LayoutParams(-1, -1);
+    this.yms.addView((View)this.NYA, (ViewGroup.LayoutParams)localObject1);
+    localObject1 = this.NYA;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = e.NDU;
+      localObject2 = e.gGL();
+      e locale = e.NDU;
+      ((n)localObject1).b((Rect)localObject2, e.gGN());
+    }
+    localObject1 = this.NYA;
+    if (localObject1 != null)
+    {
+      localObject2 = e.NDU;
+      ((n)localObject1).setValidArea(e.gGM());
+    }
+    localObject1 = this.NYA;
+    if (localObject1 != null) {
+      d.a.a((d)localObject1, this.NYn);
+    }
+    localObject1 = this.NYA;
+    if (localObject1 != null) {
+      ((n)localObject1).setStateResolve((b)this.NYI);
+    }
+    localObject1 = this.NYA;
+    if (localObject1 != null) {
+      ((n)localObject1).jS(paramList);
+    }
+    AppMethodBeat.o(76094);
   }
   
   public final void onScroll(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(220542);
-    int j = this.var.getChildCount();
+    AppMethodBeat.i(280574);
     int i = 0;
-    while (i < j)
+    int k = this.yms.getChildCount();
+    if (k > 0) {}
+    for (;;)
     {
-      View localView = this.var.getChildAt(i);
+      int j = i + 1;
+      View localView = this.yms.getChildAt(i);
       if ((localView instanceof f))
       {
-        ((f)localView).getTouchTracker().aHZ.postTranslate(paramFloat1, paramFloat2);
+        ((f)localView).getTouchTracker().matrix.postTranslate(paramFloat1, paramFloat2);
         localView.invalidate();
       }
       if ((localView instanceof s))
       {
-        ((s)localView).getTouchTracker().aHZ.postTranslate(paramFloat1, paramFloat2);
+        ((s)localView).getTouchTracker().matrix.postTranslate(paramFloat1, paramFloat2);
         localView.invalidate();
       }
-      i += 1;
+      if (j >= k)
+      {
+        AppMethodBeat.o(280574);
+        return;
+      }
+      i = j;
     }
-    AppMethodBeat.o(220542);
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -495,128 +582,128 @@ public final class EditorItemContainer
     AppMethodBeat.i(76090);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     Log.i("MicroMsg.EditorItemContainer", "onSizeChanged, w:" + paramInt1 + ", h:" + paramInt2);
-    this.IbP.set(0, 0, paramInt1, paramInt2);
+    this.NYn.set(0, 0, paramInt1, paramInt2);
     AppMethodBeat.o(76090);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(76091);
-    p.k(paramMotionEvent, "event");
-    if ((paramMotionEvent.getActionMasked() == 0) && (this.Ica != null))
+    kotlin.g.b.s.u(paramMotionEvent, "event");
+    if ((paramMotionEvent.getActionMasked() == 0) && (this.NYy != null))
     {
-      View localView = this.Ica;
-      if (localView == null) {
-        p.iCn();
-      }
-      v(localView, false);
+      View localView = this.NYy;
+      kotlin.g.b.s.checkNotNull(localView);
+      B(localView, false);
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(76091);
     return bool;
   }
   
-  public final void p(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    AppMethodBeat.i(220545);
-    int j = this.var.getChildCount();
-    int i = 0;
-    if (i < j)
-    {
-      View localView = this.var.getChildAt(i);
-      if ((localView instanceof f))
-      {
-        ((f)localView).getTouchTracker().aHZ.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
-        localView.invalidate();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((localView instanceof s))
-        {
-          ((s)localView).getTouchTracker().aHZ.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
-          localView.invalidate();
-        }
-      }
-    }
-    AppMethodBeat.o(220545);
-  }
-  
   public final void reset()
   {
     AppMethodBeat.i(76105);
-    this.Icb = null;
-    this.Icd = null;
-    this.Icc = null;
-    this.var.removeAllViews();
+    this.NYz = null;
+    this.NYB = null;
+    this.NYA = null;
+    this.yms.removeAllViews();
     AppMethodBeat.o(76105);
   }
   
-  public final void setDeleteStateListener(b<? super Boolean, x> paramb)
+  public final void s(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.IbY = paramb;
+    AppMethodBeat.i(280580);
+    int i = 0;
+    int k = this.yms.getChildCount();
+    if (k > 0) {}
+    for (;;)
+    {
+      int j = i + 1;
+      View localView = this.yms.getChildAt(i);
+      if ((localView instanceof f))
+      {
+        ((f)localView).getTouchTracker().matrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
+        localView.invalidate();
+      }
+      while (j >= k)
+      {
+        AppMethodBeat.o(280580);
+        return;
+        if ((localView instanceof s))
+        {
+          ((s)localView).getTouchTracker().matrix.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
+          localView.invalidate();
+        }
+      }
+      i = j;
+    }
+  }
+  
+  public final void setDeleteStateListener(b<? super Boolean, ah> paramb)
+  {
+    this.NYw = paramb;
   }
   
   public final void setEnableTouch(boolean paramBoolean)
   {
-    this.Icj = paramBoolean;
+    this.NYH = paramBoolean;
   }
   
-  public final void setItemChangeListener(b<? super View, x> paramb)
+  public final void setItemChangeListener(b<? super View, ah> paramb)
   {
-    this.IbZ = paramb;
+    this.NYx = paramb;
   }
   
   public final void setLocationView(q paramq)
   {
-    this.Icb = paramq;
+    this.NYz = paramq;
   }
   
   public final void setLyricsView(n paramn)
   {
-    this.Icc = paramn;
+    this.NYA = paramn;
   }
   
   public final void setOnLocationClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(76098);
-    p.k(paramOnClickListener, "locationClickListener");
-    this.Ice = paramOnClickListener;
+    kotlin.g.b.s.u(paramOnClickListener, "locationClickListener");
+    this.NYC = paramOnClickListener;
     AppMethodBeat.o(76098);
   }
   
   public final void setOnLyricsClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(76101);
-    p.k(paramOnClickListener, "lyricsClickListener");
-    this.Ich = paramOnClickListener;
+    kotlin.g.b.s.u(paramOnClickListener, "lyricsClickListener");
+    this.NYF = paramOnClickListener;
     AppMethodBeat.o(76101);
   }
   
   public final void setOnTextClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(76099);
-    p.k(paramOnClickListener, "textClickListener");
-    this.Icf = paramOnClickListener;
+    kotlin.g.b.s.u(paramOnClickListener, "textClickListener");
+    this.NYD = paramOnClickListener;
     AppMethodBeat.o(76099);
   }
   
   public final void setOnTipClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(76100);
-    p.k(paramOnClickListener, "tipClickListener");
-    this.Icg = paramOnClickListener;
+    kotlin.g.b.s.u(paramOnClickListener, "tipClickListener");
+    this.NYE = paramOnClickListener;
     AppMethodBeat.o(76100);
   }
   
   public final void setSafeType(int paramInt)
   {
-    this.Ici = paramInt;
-    if (this.Ici == 0) {
+    this.NYG = paramInt;
+    if (this.NYG == 0) {
       this.heightPercent = 0.7F;
     }
-    while (this.Ici != 1) {
+    while (this.NYG != 1) {
       return;
     }
     this.heightPercent = 0.5F;
@@ -624,76 +711,58 @@ public final class EditorItemContainer
   
   public final void setTipItemView(t paramt)
   {
-    this.Icd = paramt;
+    this.NYB = paramt;
   }
   
-  public final void v(View paramView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(76103);
-    p.k(paramView, "itemView");
-    if (paramBoolean) {
-      if ((p.h(paramView, this.Ica) ^ true))
-      {
-        View localView = this.Ica;
-        if (localView != null) {
-          localView.setActivated(false);
-        }
-        this.Ica = paramView;
-      }
-    }
-    for (;;)
-    {
-      paramView.setActivated(paramBoolean);
-      AppMethodBeat.o(76103);
-      return;
-      if (p.h(paramView, this.Ica)) {
-        this.Ica = null;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$Companion;", "", "()V", "ClearActiveDelay", "", "DEFAULT", "", "JUMP_BACK", "SAFE_LINE", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "", "handleItemTouch", "", "itemView", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-recordvideo_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "", "handleItemTouch", "", "itemView", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
-    public abstract void e(View paramView, MotionEvent paramMotionEvent);
+    public abstract void l(View paramView, MotionEvent paramMotionEvent);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$itemStateResolve$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "handleItemTouch", "", "itemView", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements EditorItemContainer.b
   {
     c(EditorItemContainer paramEditorItemContainer) {}
     
-    public final void run()
+    private static final void c(EditorItemContainer paramEditorItemContainer, View paramView)
     {
-      AppMethodBeat.i(76085);
-      if (EditorItemContainer.a(this.Icm) != null)
-      {
-        EditorItemContainer localEditorItemContainer = this.Icm;
-        View localView = EditorItemContainer.a(this.Icm);
-        if (localView == null) {
-          p.iCn();
-        }
-        localEditorItemContainer.v(localView, false);
+      AppMethodBeat.i(280259);
+      kotlin.g.b.s.u(paramEditorItemContainer, "this$0");
+      kotlin.g.b.s.u(paramView, "$itemView");
+      EditorItemContainer.k(paramEditorItemContainer).removeView(EditorItemContainer.e(paramEditorItemContainer));
+      b localb = paramEditorItemContainer.getItemChangeListener();
+      if (localb != null) {
+        localb.invoke(EditorItemContainer.e(paramEditorItemContainer));
       }
-      AppMethodBeat.o(76085);
+      EditorItemContainer.l(paramEditorItemContainer);
+      EditorItemContainer.m(paramEditorItemContainer);
+      if ((paramView instanceof q))
+      {
+        paramEditorItemContainer.setLocationView(null);
+        AppMethodBeat.o(280259);
+        return;
+      }
+      if ((paramView instanceof n))
+      {
+        paramEditorItemContainer.setLyricsView(null);
+        AppMethodBeat.o(280259);
+        return;
+      }
+      if ((paramView instanceof t)) {
+        paramEditorItemContainer.setTipItemView(null);
+      }
+      AppMethodBeat.o(280259);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$itemStateResolve$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "handleItemTouch", "", "itemView", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-recordvideo_release"})
-  public static final class d
-    implements EditorItemContainer.b
-  {
-    public final void e(final View paramView, MotionEvent paramMotionEvent)
+    
+    public final void l(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(76087);
-      p.k(paramView, "itemView");
-      p.k(paramMotionEvent, "event");
-      if (EditorItemContainer.c(this.Icm)) {
-        EditorItemContainer.d(this.Icm);
+      kotlin.g.b.s.u(paramView, "itemView");
+      kotlin.g.b.s.u(paramMotionEvent, "event");
+      if (EditorItemContainer.b(this.NYJ)) {
+        EditorItemContainer.c(this.NYJ);
       }
       switch (paramMotionEvent.getActionMasked())
       {
@@ -704,81 +773,46 @@ public final class EditorItemContainer
         {
           AppMethodBeat.o(76087);
           return;
-          this.Icm.removeCallbacks(EditorItemContainer.e(this.Icm));
-          if (EditorItemContainer.fP(paramView))
+          this.NYJ.removeCallbacks(EditorItemContainer.d(this.NYJ));
+          if (EditorItemContainer.iK(paramView))
           {
-            this.Icm.v(paramView, false);
+            this.NYJ.B(paramView, false);
             AppMethodBeat.o(76087);
             return;
           }
-          this.Icm.v(paramView, true);
+          this.NYJ.B(paramView, true);
           AppMethodBeat.o(76087);
           return;
-          if (!EditorItemContainer.a(this.Icm, paramView)) {
-            EditorItemContainer.b(this.Icm, paramView);
+          if (!EditorItemContainer.a(this.NYJ, paramView)) {
+            EditorItemContainer.b(this.NYJ, paramView);
           }
-        } while (EditorItemContainer.fQ(paramView));
-        EditorItemContainer.a(this.Icm, paramView, paramMotionEvent);
-        EditorItemContainer.a(this.Icm, true);
+        } while (EditorItemContainer.iL(paramView));
+        EditorItemContainer.a(this.NYJ, paramView, paramMotionEvent);
+        EditorItemContainer.a(this.NYJ, true);
         AppMethodBeat.o(76087);
         return;
       }
-      if (EditorItemContainer.f(this.Icm) != null) {
-        this.Icm.post((Runnable)new a(this, paramView));
+      if (EditorItemContainer.e(this.NYJ) != null) {
+        this.NYJ.post(new EditorItemContainer.c..ExternalSyntheticLambda0(this.NYJ, paramView));
       }
       for (;;)
       {
-        EditorItemContainer.a(this.Icm, false);
-        EditorItemContainer.i(this.Icm);
-        EditorItemContainer.j(this.Icm);
-        EditorItemContainer.k(this.Icm);
-        EditorItemContainer.l(this.Icm);
+        EditorItemContainer.a(this.NYJ, false);
+        EditorItemContainer.g(this.NYJ);
+        EditorItemContainer.h(this.NYJ);
+        EditorItemContainer.i(this.NYJ);
+        EditorItemContainer.j(this.NYJ);
         break;
-        if (EditorItemContainer.a(this.Icm) != null) {
-          this.Icm.postDelayed(EditorItemContainer.e(this.Icm), 1500L);
+        if (EditorItemContainer.f(this.NYJ) != null) {
+          this.NYJ.postDelayed(EditorItemContainer.d(this.NYJ), 1500L);
         }
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(EditorItemContainer.d paramd, View paramView) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(76086);
-        EditorItemContainer.h(this.Icn.Icm).removeView(EditorItemContainer.f(this.Icn.Icm));
-        b localb = this.Icn.Icm.getItemChangeListener();
-        if (localb != null) {
-          localb.invoke(EditorItemContainer.f(this.Icn.Icm));
-        }
-        EditorItemContainer.g(this.Icn.Icm);
-        EditorItemContainer.b(this.Icn.Icm);
-        if ((paramView instanceof q))
-        {
-          this.Icn.Icm.setLocationView(null);
-          AppMethodBeat.o(76086);
-          return;
-        }
-        if ((paramView instanceof n))
-        {
-          this.Icn.Icm.setLyricsView(null);
-          AppMethodBeat.o(76086);
-          return;
-        }
-        if ((paramView instanceof t)) {
-          this.Icn.Icm.setTipItemView(null);
-        }
-        AppMethodBeat.o(76086);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer
  * JD-Core Version:    0.7.0.1
  */

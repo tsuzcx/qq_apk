@@ -1,15 +1,10 @@
 package com.tencent.mm.model;
 
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface ao
-{
-  public abstract void a(ap paramap);
-  
-  public abstract void aqm();
-  
-  public abstract void aqn();
-  
-  public abstract void b(ap paramap);
-}
+  extends a
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

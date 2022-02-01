@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.a.e;
-import com.tencent.mm.ao.g;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.m.a;
-import com.tencent.mm.m.a.a;
-import com.tencent.mm.model.bs;
+import com.tencent.mm.an.a.e;
+import com.tencent.mm.an.g;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.j.a;
+import com.tencent.mm.j.a.a;
+import com.tencent.mm.model.bt;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.protocal.protobuf.don;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public final class o
   implements j, q
 {
-  public final void a(cxi paramcxi, ca paramca)
+  public final void a(don paramdon, cc paramcc)
   {
     AppMethodBeat.i(22375);
-    if (g.KI(paramca.field_talker))
+    if (g.Dn(paramcc.field_talker))
     {
-      paramcxi.RII = paramca.hxy;
-      if (Util.isNullOrNil(paramcxi.RII))
+      paramdon.YFJ = paramcc.jUr;
+      if (Util.isNullOrNil(paramdon.YFJ))
       {
-        paramcxi.RII = a.a.atD().o(paramca);
+        paramdon.YFJ = a.a.aOb().o(paramcc);
         AppMethodBeat.o(22375);
       }
     }
     else
     {
-      paramcxi.RII = paramca.hxy;
+      paramdon.YFJ = paramcc.jUr;
     }
     AppMethodBeat.o(22375);
   }
   
-  public final String af(ca paramca)
+  public final String ak(cc paramcc)
   {
     AppMethodBeat.i(22376);
-    if (g.KI(paramca.field_talker))
+    if (g.Dn(paramcc.field_talker))
     {
-      paramca = e.apc();
+      paramcc = e.bCQ();
       AppMethodBeat.o(22376);
-      return paramca;
+      return paramcc;
     }
-    paramca = bs.beZ();
+    paramcc = bt.ab(paramcc);
     AppMethodBeat.o(22376);
-    return paramca;
+    return paramcc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.o
  * JD-Core Version:    0.7.0.1
  */

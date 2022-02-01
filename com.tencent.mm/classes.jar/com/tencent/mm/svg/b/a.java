@@ -5,10 +5,10 @@ import java.lang.reflect.Field;
 
 public final class a<T>
 {
-  public Field bKF;
-  private String jva;
-  private boolean jvb;
-  private String jvc;
+  public Field dEn;
+  private String lYr;
+  private boolean lYs;
+  private String lYt;
   public Object obj;
   
   public a(Object paramObject, String paramString)
@@ -21,16 +21,16 @@ public final class a<T>
       throw paramObject;
     }
     this.obj = paramObject;
-    this.jva = paramString;
-    this.jvc = null;
+    this.lYr = paramString;
+    this.lYt = null;
     AppMethodBeat.o(148753);
   }
   
-  public final boolean avs()
+  public final boolean aPM()
   {
     AppMethodBeat.i(148756);
     prepare();
-    if (this.bKF != null)
+    if (this.dEn != null)
     {
       AppMethodBeat.o(148756);
       return true;
@@ -44,7 +44,7 @@ public final class a<T>
     AppMethodBeat.i(148755);
     prepare();
     Object localObject;
-    if (this.bKF == null)
+    if (this.dEn == null)
     {
       localObject = new NoSuchFieldException();
       AppMethodBeat.o(148755);
@@ -52,7 +52,7 @@ public final class a<T>
     }
     try
     {
-      localObject = this.bKF.get(this.obj);
+      localObject = this.dEn.get(this.obj);
       AppMethodBeat.o(148755);
       return localObject;
     }
@@ -67,19 +67,19 @@ public final class a<T>
   public final void prepare()
   {
     AppMethodBeat.i(148754);
-    if (this.jvb)
+    if (this.lYs)
     {
       AppMethodBeat.o(148754);
       return;
     }
-    this.jvb = true;
+    this.lYs = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
-        Field localField1 = localClass.getDeclaredField(this.jva);
+        Field localField1 = localClass.getDeclaredField(this.lYr);
         localField1.setAccessible(true);
-        this.bKF = localField1;
+        this.dEn = localField1;
         return;
       }
       catch (Exception localException1)
@@ -88,7 +88,7 @@ public final class a<T>
         {
           try
           {
-            if ((this.jvc != null) && (!this.jvc.equals("")))
+            if ((this.lYt != null) && (!this.lYt.equals("")))
             {
               Field[] arrayOfField = localClass.getDeclaredFields();
               int j = arrayOfField.length;
@@ -96,11 +96,11 @@ public final class a<T>
               if (i < j)
               {
                 Field localField2 = arrayOfField[i];
-                if (!localField2.getType().getName().equals(this.jvc)) {
+                if (!localField2.getType().getName().equals(this.lYt)) {
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.bKF = localField2;
+                this.dEn = localField2;
               }
             }
           }

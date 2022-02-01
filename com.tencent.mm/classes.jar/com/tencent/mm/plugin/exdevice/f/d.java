@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.exdevice.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String vhs;
+  public String ytu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23488);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.vhs != null) {
-        paramVarArgs.f(1, this.vhs);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ytu != null) {
+        paramVarArgs.g(1, this.ytu);
       }
       AppMethodBeat.o(23488);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.vhs == null) {
-        break label220;
+      if (this.ytu == null) {
+        break label216;
       }
     }
-    label220:
-    for (paramInt = g.a.a.b.b.a.g(1, this.vhs) + 0;; paramInt = 0)
+    label216:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ytu) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(23488);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(23488);
@@ -42,7 +42,7 @@ public final class d
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         d locald = (d)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -50,7 +50,7 @@ public final class d
           AppMethodBeat.o(23488);
           return -1;
         }
-        locald.vhs = locala.abFh.readString();
+        locald.ytu = locala.ajGk.readString();
         AppMethodBeat.o(23488);
         return 0;
       }

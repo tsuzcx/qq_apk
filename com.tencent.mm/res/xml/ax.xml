@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="facebook_auth_tip" android:layout="@layout/b_7" android:title="@string/c79" />
-    <PreferenceCategory android:key="facebook_auth_cat" />
-    <Preference android:key="facebook_auth_bind_btn" android:layout="@layout/a6l" android:title="@string/c73" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_allow_recommend_video" android:title="@string/d0p" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_allow_recommend_live" android:title="@string/d0n" />
 </PreferenceScreen>

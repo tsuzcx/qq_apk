@@ -24,7 +24,7 @@ public final class h
     this.db = paramISQLiteDatabase;
   }
   
-  public final int cHo()
+  public final int dkF()
   {
     int i = 0;
     AppMethodBeat.i(112778);
@@ -42,7 +42,7 @@ public final class h
     return i;
   }
   
-  public final boolean cHp()
+  public final boolean dkG()
   {
     AppMethodBeat.i(112779);
     boolean bool = this.db.execSQL("CardMsgInfo", " update CardMsgInfo set read_state = 0  where read_state = 1");
@@ -60,7 +60,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.h
  * JD-Core Version:    0.7.0.1
  */

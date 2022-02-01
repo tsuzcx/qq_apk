@@ -1,6 +1,5 @@
 package com.tencent.wcdb.database;
 
-import android.annotation.SuppressLint;
 import android.os.Process;
 import android.util.Pair;
 import android.util.Printer;
@@ -2439,7 +2438,6 @@ public final class SQLiteConnection
     return paramString;
   }
   
-  @SuppressLint({"SimpleDateFormat"})
   static final class Operation
   {
     private static final SimpleDateFormat sDateFormat;
@@ -3074,7 +3072,7 @@ public final class SQLiteConnection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteConnection
  * JD-Core Version:    0.7.0.1
  */

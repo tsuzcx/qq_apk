@@ -1,46 +1,24 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
 {
-  private static boolean QSk = false;
-  public boolean QSj = false;
-  public String mTag = "";
-  
-  public t(String paramString)
+  public static double f(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    this.mTag = paramString;
-  }
-  
-  public static void hfP()
-  {
-    QSk = true;
-  }
-  
-  public final boolean gz(String paramString)
-  {
-    AppMethodBeat.i(141158);
-    if (QSk)
-    {
-      Log.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
-      AppMethodBeat.o(141158);
-      return false;
-    }
-    if (this.QSj)
-    {
-      Log.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
-      AppMethodBeat.o(141158);
-      return true;
-    }
-    AppMethodBeat.o(141158);
-    return false;
+    AppMethodBeat.i(151617);
+    paramDouble1 = 3.141592653589793D * paramDouble1 / 180.0D;
+    paramDouble3 = 3.141592653589793D * paramDouble3 / 180.0D;
+    paramDouble2 = (paramDouble2 - paramDouble4) * 3.141592653589793D / 180.0D;
+    paramDouble4 = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    paramDouble1 = Math.round(Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin(paramDouble2 / 2.0D), 2.0D) + paramDouble4)) * 2.0D * 6378137.0D * 10000.0D) / 10000L;
+    AppMethodBeat.o(151617);
+    return paramDouble1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.t
  * JD-Core Version:    0.7.0.1
  */

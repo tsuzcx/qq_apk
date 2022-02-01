@@ -7,26 +7,26 @@ import com.tencent.thumbplayer.utils.g;
 public final class d
   extends b
 {
-  private int ZBc;
-  private int[] ZBd;
+  private int ahGf;
+  private int[] ahGg;
   
   public d(a parama)
   {
     super(parama);
-    AppMethodBeat.i(219673);
-    this.ZBc = 0;
-    this.ZBd = parama.ZBd;
-    if ((this.ZBd == null) || (this.ZBd.length == 0)) {
-      this.ZBd = new int[1];
+    AppMethodBeat.i(228500);
+    this.ahGf = 0;
+    this.ahGg = parama.ahGg;
+    if ((this.ahGg == null) || (this.ahGg.length == 0)) {
+      this.ahGg = new int[1];
     }
-    AppMethodBeat.o(219673);
+    AppMethodBeat.o(228500);
   }
   
   public final int a(com.tencent.thumbplayer.a.b paramb)
   {
-    AppMethodBeat.i(219676);
-    if (this.ZBd.length > this.ZBc) {}
-    for (int i = this.ZBd[this.ZBc];; i = 0)
+    AppMethodBeat.i(228507);
+    if (this.ahGg.length > this.ahGf) {}
+    for (int i = this.ahGg[this.ahGf];; i = 0)
     {
       int j;
       if (i != 2)
@@ -42,25 +42,25 @@ public final class d
         }
       }
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForOpen, playerType:".concat(String.valueOf(j)));
-      AppMethodBeat.o(219676);
+      AppMethodBeat.o(228507);
       return j;
     }
   }
   
   public final int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1)
   {
-    AppMethodBeat.i(219677);
-    if (paramb1.ZBh == 0)
+    AppMethodBeat.i(228514);
+    if (paramb1.ahGk == 0)
     {
       i = a(paramb);
-      AppMethodBeat.o(219677);
+      AppMethodBeat.o(228514);
       return i;
     }
-    if (this.ZBd.length - 1 > this.ZBc)
+    if (this.ahGg.length - 1 > this.ahGf)
     {
-      paramb1 = this.ZBd;
-      i = this.ZBc + 1;
-      this.ZBc = i;
+      paramb1 = this.ahGg;
+      i = this.ahGf + 1;
+      this.ahGf = i;
     }
     for (int i = paramb1[i];; i = 0)
     {
@@ -78,31 +78,31 @@ public final class d
         }
       }
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForRetry, playerType:".concat(String.valueOf(j)));
-      AppMethodBeat.o(219677);
+      AppMethodBeat.o(228514);
       return j;
     }
   }
   
-  public final int[] iqE()
+  public final int[] jZZ()
   {
-    AppMethodBeat.i(219678);
+    AppMethodBeat.i(228523);
     int[] arrayOfInt = new int[1];
     arrayOfInt[0] = -1;
-    if (this.ZBc >= this.ZBd.length)
+    if (this.ahGf >= this.ahGg.length)
     {
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForDec error, decType:" + arrayOfInt[0]);
-      AppMethodBeat.o(219678);
+      AppMethodBeat.o(228523);
       return arrayOfInt;
     }
-    if ((this.ZBd[this.ZBc] == 1) || (this.ZBd[this.ZBc] == 2)) {
+    if ((this.ahGg[this.ahGf] == 1) || (this.ahGg[this.ahGf] == 2)) {
       arrayOfInt[0] = 102;
     }
     for (;;)
     {
       g.i("TPThumbPlayer[TPExtStrategy.java]", "strategyForDec, decType:" + arrayOfInt[0]);
-      AppMethodBeat.o(219678);
+      AppMethodBeat.o(228523);
       return arrayOfInt;
-      if (this.ZBd[this.ZBc] == 3) {
+      if (this.ahGg[this.ahGf] == 3) {
         arrayOfInt[0] = 101;
       }
     }
@@ -110,7 +110,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b.d
  * JD-Core Version:    0.7.0.1
  */

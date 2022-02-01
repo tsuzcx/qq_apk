@@ -1,241 +1,277 @@
 package com.tencent.mm.plugin.finder.nearby.video;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
 import com.tencent.mm.plugin.finder.nearby.f.e;
-import com.tencent.mm.plugin.finder.report.j;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.viewmodel.a;
 import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.be;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.ui.component.k;
+import com.tencent.mm.ui.component.k.b;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMFragmentActivity;", "(Lcom/tencent/mm/ui/MMFragmentActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "autoFlingFlag", "", "getAutoFlingFlag", "()Z", "setAutoFlingFlag", "(Z)V", "hasPermissionWhenPause", "locationVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM;", "presenter", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoPresenter;", "viewCallback", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoViewCallback;", "getLayoutId", "", "onActionbarClick", "", "onActionbarDoubleClick", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinished", "onPause", "onPermissionOk", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onUserVisibleFocused", "onUserVisibleUnFocused", "Companion", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMFragmentActivity;", "(Lcom/tencent/mm/ui/MMFragmentActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "autoFlingFlag", "", "getAutoFlingFlag", "()Z", "setAutoFlingFlag", "(Z)V", "hasPermissionWhenPause", "locationVM", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM;", "presenter", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoPresenter;", "viewCallback", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoViewCallback;", "getLayoutId", "", "onActionbarClick", "", "onActionbarDoubleClick", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinished", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onResume", "onUserVisibleFocused", "onUserVisibleUnFocused", "Companion", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends UIComponent
 {
-  public static final a zJS;
-  private final a xSM;
-  NearbyVideoPresenter zJO;
-  private e zJP;
-  private boolean zJQ;
-  private boolean zJR;
+  public static final a ERN;
+  private final com.tencent.mm.plugin.finder.viewmodel.b Bsp;
+  NearbyVideoPresenter ERO;
+  private e ERP;
+  private boolean ERQ;
+  private boolean ERR;
   
   static
   {
-    AppMethodBeat.i(201934);
-    zJS = new a((byte)0);
-    AppMethodBeat.o(201934);
+    AppMethodBeat.i(340144);
+    ERN = new a((byte)0);
+    AppMethodBeat.o(340144);
   }
   
   public d(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(201932);
-    paramFragment = g.Xox;
-    paramFragment = g.bD(PluginFinder.class).i(a.class);
-    p.j(paramFragment, "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    this.xSM = ((a)paramFragment);
-    this.zJQ = true;
-    this.zJR = true;
-    AppMethodBeat.o(201932);
+    AppMethodBeat.i(340137);
+    paramFragment = k.aeZF;
+    paramFragment = k.cn(PluginFinder.class).q(com.tencent.mm.plugin.finder.viewmodel.b.class);
+    kotlin.g.b.s.s(paramFragment, "UICProvider.of(PluginFin…alLocationVM::class.java)");
+    this.Bsp = ((com.tencent.mm.plugin.finder.viewmodel.b)paramFragment);
+    this.ERQ = true;
+    this.ERR = true;
+    AppMethodBeat.o(340137);
   }
   
   public d(MMFragmentActivity paramMMFragmentActivity)
   {
     super((AppCompatActivity)paramMMFragmentActivity);
-    AppMethodBeat.i(201927);
-    paramMMFragmentActivity = g.Xox;
-    paramMMFragmentActivity = g.bD(PluginFinder.class).i(a.class);
-    p.j(paramMMFragmentActivity, "UICProvider.of(PluginFin…alLocationVM::class.java)");
-    this.xSM = ((a)paramMMFragmentActivity);
-    this.zJQ = true;
-    this.zJR = true;
-    AppMethodBeat.o(201927);
-  }
-  
-  private final void dME()
-  {
-    AppMethodBeat.i(201922);
-    if (this.zJR)
-    {
-      this.zJR = false;
-      Object localObject = this.zJO;
-      if (localObject != null) {
-        ((NearbyVideoPresenter)localObject).autoFlingToRefresh(100L, false);
-      }
-      localObject = n.zWF;
-      n.al((Context)getActivity(), 5);
-    }
-    AppMethodBeat.o(201922);
+    AppMethodBeat.i(340124);
+    paramMMFragmentActivity = k.aeZF;
+    paramMMFragmentActivity = k.cn(PluginFinder.class).q(com.tencent.mm.plugin.finder.viewmodel.b.class);
+    kotlin.g.b.s.s(paramMMFragmentActivity, "UICProvider.of(PluginFin…alLocationVM::class.java)");
+    this.Bsp = ((com.tencent.mm.plugin.finder.viewmodel.b)paramMMFragmentActivity);
+    this.ERQ = true;
+    this.ERR = true;
+    AppMethodBeat.o(340124);
   }
   
   public final int getLayoutId()
   {
-    return f.e.zDo;
+    return f.e.EHh;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(201912);
-    if ((paramInt1 == 501) && (paramInt2 == -1) && (paramIntent != null))
+    AppMethodBeat.i(340217);
+    switch (paramInt1)
     {
-      NearbyVideoPresenter localNearbyVideoPresenter = this.zJO;
-      if (localNearbyVideoPresenter != null)
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(340217);
+      return;
+      if ((paramInt2 == -1) && (paramIntent != null))
       {
-        localNearbyVideoPresenter.refreshRV(paramIntent);
-        AppMethodBeat.o(201912);
-        return;
+        Object localObject = this.ERO;
+        if (localObject != null)
+        {
+          ((NearbyVideoPresenter)localObject).refreshRV(paramIntent);
+          AppMethodBeat.o(340217);
+          return;
+          if (paramInt2 == -1)
+          {
+            paramIntent = this.ERP;
+            if (paramIntent != null)
+            {
+              paramInt1 = paramIntent.ERV;
+              if (paramInt1 != -1)
+              {
+                localObject = this.ERO;
+                if (localObject != null)
+                {
+                  localObject = ((NearbyVideoPresenter)localObject).getFeedLoader();
+                  if (localObject != null)
+                  {
+                    localObject = ((NearbyVideoFeedLoader)localObject).getDataListJustForAdapter();
+                    if (localObject != null) {
+                      ((DataBuffer)localObject).remove(paramInt1);
+                    }
+                  }
+                }
+                paramIntent = paramIntent.getRecyclerView().getAdapter();
+                if (paramIntent != null) {
+                  paramIntent.fX(paramInt1);
+                }
+              }
+            }
+          }
+        }
       }
     }
-    AppMethodBeat.o(201912);
+  }
+  
+  public final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(340225);
+    kotlin.g.b.s.u(paramConfiguration, "newConfig");
+    super.onConfigurationChanged(paramConfiguration);
+    if (aw.ato())
+    {
+      paramConfiguration = this.ERP;
+      if (paramConfiguration != null)
+      {
+        paramConfiguration = paramConfiguration.getRecyclerView();
+        if (paramConfiguration != null)
+        {
+          paramConfiguration = paramConfiguration.getAdapter();
+          if (paramConfiguration != null) {
+            paramConfiguration.bZE.notifyChanged();
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(340225);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(201895);
+    AppMethodBeat.i(340162);
     super.onCreate(paramBundle);
-    paramBundle = getActivity();
-    if (paramBundle == null)
+    paramBundle = getFragment();
+    if (paramBundle == null) {}
+    MMActivity localMMActivity;
+    Fragment localFragment;
+    for (paramBundle = null;; paramBundle = ((as)k.y(paramBundle).q(as.class)).fou())
     {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(201895);
+      localObject = paramBundle;
+      if (paramBundle == null)
+      {
+        paramBundle = k.aeZF;
+        localObject = ((as)k.d(getActivity()).q(as.class)).fou();
+      }
+      paramBundle = new NearbyVideoPresenter((MMActivity)getActivity());
+      this.ERO = paramBundle;
+      localMMActivity = (MMActivity)getActivity();
+      localFragment = getFragment();
+      if (localFragment != null) {
+        break;
+      }
+      paramBundle = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment");
+      AppMethodBeat.o(340162);
       throw paramBundle;
+      localObject = k.aeZF;
     }
-    paramBundle = new NearbyVideoPresenter((MMActivity)paramBundle);
-    this.zJO = paramBundle;
-    Object localObject = getActivity();
-    if (localObject == null)
-    {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(201895);
-      throw paramBundle;
-    }
-    localObject = (MMActivity)localObject;
-    Fragment localFragment = getFragment();
-    if (localFragment == null)
-    {
-      paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment");
-      AppMethodBeat.o(201895);
-      throw paramBundle;
-    }
-    localObject = new e((MMActivity)localObject, (AbsNearByFragment)localFragment, (a.a)paramBundle, getRootView());
+    Object localObject = new e((bui)localObject, localMMActivity, (AbsNearByFragment)localFragment, (a.a)paramBundle, getRootView());
     paramBundle.onAttach((a.b)localObject);
-    this.zJP = ((e)localObject);
-    AppMethodBeat.o(201895);
+    paramBundle = ah.aiuX;
+    this.ERP = ((e)localObject);
+    AppMethodBeat.o(340162);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(201910);
+    AppMethodBeat.i(340208);
     super.onDestroy();
-    NearbyVideoPresenter localNearbyVideoPresenter = this.zJO;
+    NearbyVideoPresenter localNearbyVideoPresenter = this.ERO;
     if (localNearbyVideoPresenter != null) {
       localNearbyVideoPresenter.onDetach();
     }
-    j.a(j.zVy);
-    AppMethodBeat.o(201910);
+    com.tencent.mm.plugin.finder.report.s.a(com.tencent.mm.plugin.finder.report.s.Fqv);
+    AppMethodBeat.o(340208);
   }
   
   public final void onFinished()
   {
-    AppMethodBeat.i(201907);
+    AppMethodBeat.i(340201);
     super.onFinished();
-    NearbyVideoPresenter localNearbyVideoPresenter = this.zJO;
-    if (localNearbyVideoPresenter != null)
-    {
+    NearbyVideoPresenter localNearbyVideoPresenter = this.ERO;
+    if (localNearbyVideoPresenter != null) {
       localNearbyVideoPresenter.onFinishing();
-      AppMethodBeat.o(201907);
-      return;
     }
-    AppMethodBeat.o(201907);
+    AppMethodBeat.o(340201);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(201897);
+    AppMethodBeat.i(340174);
     super.onPause();
     Log.i("Finder.TimelineLbsUIC", "onPause");
-    this.zJQ = a.ejZ();
-    AppMethodBeat.o(201897);
+    NearbyVideoPresenter localNearbyVideoPresenter = this.ERO;
+    if (localNearbyVideoPresenter != null) {
+      localNearbyVideoPresenter.onPause();
+    }
+    this.ERQ = this.Bsp.dUi();
+    AppMethodBeat.o(340174);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(201917);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    if (paramInt == 79)
-    {
-      if (paramArrayOfInt[0] == 0)
-      {
-        dME();
-        AppMethodBeat.o(201917);
-        return;
-      }
-      paramArrayOfString = n.zWF;
-      n.al((Context)getActivity(), 3);
+    AppMethodBeat.i(340220);
+    kotlin.g.b.s.u(paramArrayOfString, "permissions");
+    kotlin.g.b.s.u(paramArrayOfInt, "grantResults");
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    NearbyVideoPresenter localNearbyVideoPresenter = this.ERO;
+    if (localNearbyVideoPresenter != null) {
+      localNearbyVideoPresenter.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
-    AppMethodBeat.o(201917);
+    AppMethodBeat.o(340220);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(201896);
+    AppMethodBeat.i(340169);
     super.onResume();
     Log.i("Finder.TimelineLbsUIC", "onResume");
-    if ((!this.zJQ) && (a.ejZ())) {
-      dME();
+    NearbyVideoPresenter localNearbyVideoPresenter = this.ERO;
+    if (localNearbyVideoPresenter != null) {
+      localNearbyVideoPresenter.onResume();
     }
-    AppMethodBeat.o(201896);
+    AppMethodBeat.o(340169);
   }
   
   public final void onUserVisibleFocused()
   {
-    AppMethodBeat.i(201903);
+    AppMethodBeat.i(340182);
     Log.i("Finder.TimelineLbsUIC", "onUserVisibleFocused");
     super.onUserVisibleFocused();
-    Object localObject = g.Xox;
-    ((as)g.bD(PluginFinder.class).i(as.class)).Q((kotlin.g.a.b)d.b.zJT);
-    localObject = g.Xox;
-    g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.b.class);
-    localObject = this.zJO;
+    Object localObject = k.aeZF;
+    ((be)k.cn(PluginFinder.class).q(be.class)).aw((kotlin.g.a.b)d.b.ERS);
+    localObject = this.ERO;
     if (localObject != null) {
       ((NearbyVideoPresenter)localObject).onUserVisibleFocused();
     }
-    this.xSM.cKK();
-    AppMethodBeat.o(201903);
+    this.Bsp.pH(false);
+    AppMethodBeat.o(340182);
   }
   
   public final void onUserVisibleUnFocused()
   {
-    AppMethodBeat.i(201905);
+    AppMethodBeat.i(340193);
     Log.i("Finder.TimelineLbsUIC", "onUserVisibleUnFocused");
     super.onUserVisibleUnFocused();
-    NearbyVideoPresenter localNearbyVideoPresenter = this.zJO;
-    if (localNearbyVideoPresenter != null)
-    {
+    NearbyVideoPresenter localNearbyVideoPresenter = this.ERO;
+    if (localNearbyVideoPresenter != null) {
       localNearbyVideoPresenter.onUserVisibleUnFocused();
-      AppMethodBeat.o(201905);
-      return;
     }
-    AppMethodBeat.o(201905);
+    AppMethodBeat.o(340193);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoUIC$Companion;", "", "()V", "REQUEST_STREAM_CODE", "", "TAG", "", "plugin-finder-nearby_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoUIC$Companion;", "", "()V", "REQUEST_STREAM_CODE", "", "TAG", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

@@ -23,7 +23,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.vendor.MIUI;
-import com.tencent.mm.ui.h.c.b;
+import com.tencent.mm.ui.anim.content.b.a;
 import com.tencent.mm.ui.widget.cedit.api.c;
 import com.tencent.mm.ui.widget.cedit.api.c.a;
 import com.tencent.mm.ui.widget.edittext.PasterEditText;
@@ -31,18 +31,17 @@ import com.tencent.mm.ui.widget.edittext.a;
 import com.tencent.mm.ui.widget.edittext.a.a;
 import com.tencent.mm.ui.widget.edittext.a.e;
 import java.util.List;
-import java.util.Set;
 
 public class MMEditText
   extends PasterEditText
   implements c
 {
-  private InputConnection Ybl;
-  private boolean Ybm = false;
-  private a Ybn;
-  private MMEditText.d Ybo;
-  private a Ybp;
-  int utI = 0;
+  private InputConnection afTd;
+  private boolean afTe = false;
+  private a afTf;
+  private MMEditText.d afTg;
+  private a afTh;
+  int xAf = 0;
   
   public MMEditText(Context paramContext)
   {
@@ -59,89 +58,83 @@ public class MMEditText
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static boolean hZv()
+  public static boolean jEE()
   {
-    AppMethodBeat.i(207177);
-    if ((MIUI.ifMIUI()) && (d.qV(28)))
+    AppMethodBeat.i(251601);
+    if ((MIUI.ifMIUI()) && (d.rb(28)))
     {
-      AppMethodBeat.o(207177);
+      AppMethodBeat.o(251601);
       return true;
     }
-    AppMethodBeat.o(207177);
+    AppMethodBeat.o(251601);
     return false;
   }
   
-  public final void Hm(boolean paramBoolean)
+  public final void Ni(boolean paramBoolean)
   {
-    AppMethodBeat.i(207185);
-    if (this.Ybp != null)
+    AppMethodBeat.i(251699);
+    if (this.afTh != null)
     {
       if (!paramBoolean)
       {
-        this.Ybp.pause();
-        AppMethodBeat.o(207185);
+        this.afTh.pause();
+        AppMethodBeat.o(251699);
         return;
       }
-      this.Ybp.resume();
+      this.afTh.resume();
     }
-    AppMethodBeat.o(207185);
+    AppMethodBeat.o(251699);
   }
   
   public final void a(final c.a parama)
   {
-    AppMethodBeat.i(207178);
+    AppMethodBeat.i(251669);
     if (parama == null)
     {
-      AppMethodBeat.o(207178);
+      AppMethodBeat.o(251669);
       return;
     }
     setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        AppMethodBeat.i(188838);
+        AppMethodBeat.i(251701);
         if ((paramAnonymousTextView instanceof c))
         {
-          boolean bool = parama.rQ(paramAnonymousInt);
-          AppMethodBeat.o(188838);
+          boolean bool = parama.rR(paramAnonymousInt);
+          AppMethodBeat.o(251701);
           return bool;
         }
-        AppMethodBeat.o(188838);
+        AppMethodBeat.o(251701);
         return false;
       }
     });
-    AppMethodBeat.o(207178);
+    AppMethodBeat.o(251669);
   }
   
   public final void a(List<String> paramList1, List<String> paramList2, String paramString, a.e parame)
   {
-    AppMethodBeat.i(207183);
-    a.a locala = new a.a(this);
-    if (paramList1 != null) {
-      locala.Yom.addAll(paramList1);
-    }
-    if (paramList2 != null) {
-      locala.Ygq.addAll(paramList2);
-    }
-    locala.EJk = paramString;
-    this.Ybp = locala.icJ();
-    this.Ybp.YkA = parame;
-    AppMethodBeat.o(207183);
+    AppMethodBeat.i(251687);
+    paramList1 = new a.a(this).oq(paramList1).or(paramList2);
+    paramList1.KCR = paramString;
+    this.afTh = paramList1.jHV();
+    this.afTh.agcz = parame;
+    AppMethodBeat.o(251687);
   }
   
-  public final void bBa(String paramString)
+  public void bDt(String paramString)
   {
     AppMethodBeat.i(143355);
     getContext();
-    int m = b.dv(getText().toString(), getSelectionStart());
+    int m = com.tencent.mm.ui.i.c.b.dW(getText().toString(), getSelectionStart());
     getContext();
-    int i = b.dv(getText().toString(), getSelectionEnd());
+    int i = com.tencent.mm.ui.i.c.b.dW(getText().toString(), getSelectionEnd());
     Object localObject = new StringBuffer(getText());
     localObject = ((StringBuffer)localObject).substring(0, m) + paramString + ((StringBuffer)localObject).substring(i, ((StringBuffer)localObject).length());
     i = -1;
     int k = i;
     int j;
-    if (d.qV(21))
+    if (d.rb(21))
     {
       InputFilter[] arrayOfInputFilter = getFilters();
       k = i;
@@ -172,18 +165,18 @@ public class MMEditText
         AppMethodBeat.o(143355);
         return;
       }
-      setText(b.c(getContext(), (CharSequence)localObject, getTextSize()));
+      setText(com.tencent.mm.ui.i.c.b.c(getContext(), (CharSequence)localObject, getTextSize()));
       setSelection(i);
       AppMethodBeat.o(143355);
       return;
     }
   }
   
-  public void bqQ(String paramString)
+  public void bqF(String paramString)
   {
     AppMethodBeat.i(143360);
     int i = getSelectionStart();
-    setText(b.c(getContext(), paramString, getTextSize()));
+    setText(com.tencent.mm.ui.i.c.b.c(getContext(), paramString, getTextSize()));
     int j = getText().length() - paramString.length();
     if (j > 0)
     {
@@ -198,103 +191,114 @@ public class MMEditText
     AppMethodBeat.o(143360);
   }
   
+  public final void cRR()
+  {
+    AppMethodBeat.i(251693);
+    if (this.afTh != null) {
+      this.afTh.cRR();
+    }
+    AppMethodBeat.o(251693);
+  }
+  
   public final void destroy()
   {
-    AppMethodBeat.i(207182);
-    if (this.Ybp != null) {
-      this.Ybp.destroy();
+    AppMethodBeat.i(251681);
+    if (this.afTh != null) {
+      this.afTh.destroy();
     }
-    AppMethodBeat.o(207182);
+    AppMethodBeat.o(251681);
   }
   
   public InputConnection getInputConnection()
   {
-    return this.Ybl;
+    return this.afTd;
   }
   
-  public boolean getSimilarPasteChange()
+  public com.tencent.mm.ui.anim.content.b getSizeAnimController()
   {
-    return false;
+    AppMethodBeat.i(251696);
+    Object localObject = com.tencent.mm.ui.anim.content.b.adMs;
+    localObject = b.a.jlA();
+    AppMethodBeat.o(251696);
+    return localObject;
   }
   
-  public final void hZA() {}
-  
-  public final boolean hZB()
+  public final void jED()
   {
-    AppMethodBeat.i(207196);
-    boolean bool = requestFocus();
-    AppMethodBeat.o(207196);
-    return bool;
-  }
-  
-  public final Context hZC()
-  {
-    AppMethodBeat.i(207197);
-    Context localContext = getContext();
-    AppMethodBeat.o(207197);
-    return localContext;
-  }
-  
-  public final int hZD()
-  {
-    AppMethodBeat.i(207198);
-    int i = getWidth();
-    AppMethodBeat.o(207198);
-    return i;
-  }
-  
-  public final void hZu()
-  {
-    AppMethodBeat.i(207171);
+    AppMethodBeat.i(251623);
     if (getInputConnection() != null)
     {
       getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
       getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
-      AppMethodBeat.o(207171);
+      AppMethodBeat.o(251623);
       return;
     }
     dispatchKeyEvent(new KeyEvent(0, 67));
     dispatchKeyEvent(new KeyEvent(1, 67));
-    AppMethodBeat.o(207171);
+    AppMethodBeat.o(251623);
   }
   
-  public final void hZw()
+  public final void jEF()
   {
-    AppMethodBeat.i(207184);
-    if (this.Ybp != null) {
-      this.Ybp.cpo();
+    AppMethodBeat.i(251690);
+    if (this.afTh != null) {
+      this.afTh.cRR();
     }
-    AppMethodBeat.o(207184);
+    AppMethodBeat.o(251690);
   }
   
-  public final View hZx()
+  public final View jEG()
   {
     return this;
   }
   
-  public final boolean hZy()
+  public final boolean jEH()
   {
     return false;
   }
   
-  public final ViewParent hZz()
+  public final ViewParent jEI()
   {
-    AppMethodBeat.i(207189);
+    AppMethodBeat.i(251705);
     ViewParent localViewParent = getParent();
-    AppMethodBeat.o(207189);
+    AppMethodBeat.o(251705);
     return localViewParent;
+  }
+  
+  public final boolean jEJ()
+  {
+    AppMethodBeat.i(251715);
+    boolean bool = requestFocus();
+    AppMethodBeat.o(251715);
+    return bool;
+  }
+  
+  public final Context jEK()
+  {
+    AppMethodBeat.i(251716);
+    Context localContext = getContext();
+    AppMethodBeat.o(251716);
+    return localContext;
+  }
+  
+  public final int jEL()
+  {
+    AppMethodBeat.i(251718);
+    int i = getWidth();
+    AppMethodBeat.o(251718);
+    return i;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
     AppMethodBeat.i(143354);
-    this.Ybl = super.onCreateInputConnection(paramEditorInfo);
-    if ((this.Ybl != null) && (this.Ybm))
+    this.afTd = super.onCreateInputConnection(paramEditorInfo);
+    if ((this.afTd != null) && (this.afTe))
     {
       paramEditorInfo.imeOptions &= 0xBFFFFFFF;
       paramEditorInfo.inputType &= 0xFFFDFFFF;
     }
-    paramEditorInfo = this.Ybl;
+    paramEditorInfo = this.afTd;
     AppMethodBeat.o(143354);
     return paramEditorInfo;
   }
@@ -302,12 +306,12 @@ public class MMEditText
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143361);
-    if (this.Ybn == null) {}
+    if (this.afTf == null) {}
     KeyEvent.DispatcherState localDispatcherState;
     for (boolean bool = true;; bool = false)
     {
       Log.v("MicroMsg.MMEditText", "on onKeyPreIme, listener null ? %B keycode:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) });
-      if ((this.Ybn == null) || (paramInt != 4)) {
+      if ((this.afTf == null) || (paramInt != 4)) {
         break label206;
       }
       if ((paramKeyEvent.getAction() != 0) || (paramKeyEvent.getRepeatCount() != 0)) {
@@ -331,7 +335,7 @@ public class MMEditText
       if ((paramKeyEvent.isTracking()) && (!paramKeyEvent.isCanceled()))
       {
         Log.v("MicroMsg.MMEditText", "on onKeyPreIme action up is tracking");
-        this.Ybn.onBack();
+        this.afTf.onBack();
         paramKeyEvent = (InputMethodManager)getContext().getSystemService("input_method");
         if (paramKeyEvent != null) {
           paramKeyEvent.hideSoftInputFromWindow(getWindowToken(), 0);
@@ -341,7 +345,7 @@ public class MMEditText
       }
     }
     label206:
-    if ((this.Ybo != null) && (this.Ybo.aqF(paramInt)))
+    if ((this.afTg != null) && (this.afTg.awK(paramInt)))
     {
       AppMethodBeat.o(143361);
       return true;
@@ -353,97 +357,97 @@ public class MMEditText
   
   public final void onPause()
   {
-    AppMethodBeat.i(207181);
-    if (this.Ybp != null) {
-      this.Ybp.cpo();
+    AppMethodBeat.i(251677);
+    if (this.afTh != null) {
+      this.afTh.cRR();
     }
-    AppMethodBeat.o(207181);
+    AppMethodBeat.o(251677);
   }
   
   /* Error */
   public boolean onTextContextMenuItem(int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 377
+    //   0: ldc_w 384
     //   3: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: iload_1
-    //   8: invokespecial 379	com/tencent/mm/ui/widget/edittext/PasterEditText:onTextContextMenuItem	(I)Z
+    //   8: invokespecial 386	com/tencent/mm/ui/widget/edittext/PasterEditText:onTextContextMenuItem	(I)Z
     //   11: istore_2
     //   12: iload_1
-    //   13: ldc_w 380
+    //   13: ldc_w 387
     //   16: if_icmpne +21 -> 37
     //   19: aload_0
     //   20: iconst_0
-    //   21: putfield 37	com/tencent/mm/ui/widget/MMEditText:utI	I
+    //   21: putfield 37	com/tencent/mm/ui/widget/MMEditText:xAf	I
     //   24: aload_0
-    //   25: invokevirtual 135	com/tencent/mm/ui/widget/MMEditText:getText	()Landroid/text/Editable;
-    //   28: invokevirtual 141	java/lang/Object:toString	()Ljava/lang/String;
+    //   25: invokevirtual 129	com/tencent/mm/ui/widget/MMEditText:getText	()Landroid/text/Editable;
+    //   28: invokevirtual 135	java/lang/Object:toString	()Ljava/lang/String;
     //   31: astore_3
     //   32: aload_0
     //   33: aload_3
-    //   34: invokevirtual 382	com/tencent/mm/ui/widget/MMEditText:bqQ	(Ljava/lang/String;)V
-    //   37: ldc_w 377
+    //   34: invokevirtual 389	com/tencent/mm/ui/widget/MMEditText:bqF	(Ljava/lang/String;)V
+    //   37: ldc_w 384
     //   40: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: iload_2
     //   44: ireturn
     //   45: astore_3
-    //   46: ldc 189
-    //   48: ldc_w 384
+    //   46: ldc 183
+    //   48: ldc_w 391
     //   51: iconst_1
-    //   52: anewarray 137	java/lang/Object
+    //   52: anewarray 131	java/lang/Object
     //   55: dup
     //   56: iconst_0
     //   57: aload_3
     //   58: aastore
-    //   59: invokestatic 387	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: invokestatic 394	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   62: iconst_0
     //   63: istore_2
     //   64: goto -52 -> 12
     //   67: astore_3
-    //   68: ldc 189
-    //   70: ldc_w 389
+    //   68: ldc 183
+    //   70: ldc_w 396
     //   73: iconst_1
-    //   74: anewarray 137	java/lang/Object
+    //   74: anewarray 131	java/lang/Object
     //   77: dup
     //   78: iconst_0
     //   79: aload_3
     //   80: aastore
-    //   81: invokestatic 387	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   84: ldc_w 377
+    //   81: invokestatic 394	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   84: ldc_w 384
     //   87: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   90: iconst_0
     //   91: ireturn
     //   92: astore 4
-    //   94: ldc 189
-    //   96: ldc_w 391
+    //   94: ldc 183
+    //   96: ldc_w 398
     //   99: iconst_1
-    //   100: anewarray 137	java/lang/Object
+    //   100: anewarray 131	java/lang/Object
     //   103: dup
     //   104: iconst_0
     //   105: aload_0
-    //   106: getfield 37	com/tencent/mm/ui/widget/MMEditText:utI	I
-    //   109: invokestatic 197	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   106: getfield 37	com/tencent/mm/ui/widget/MMEditText:xAf	I
+    //   109: invokestatic 191	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   112: aastore
-    //   113: invokestatic 387	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   113: invokestatic 394	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   116: aload_0
-    //   117: getfield 37	com/tencent/mm/ui/widget/MMEditText:utI	I
+    //   117: getfield 37	com/tencent/mm/ui/widget/MMEditText:xAf	I
     //   120: iconst_3
     //   121: if_icmpge +30 -> 151
     //   124: aload_0
     //   125: aload_0
-    //   126: getfield 37	com/tencent/mm/ui/widget/MMEditText:utI	I
+    //   126: getfield 37	com/tencent/mm/ui/widget/MMEditText:xAf	I
     //   129: iconst_1
     //   130: iadd
-    //   131: putfield 37	com/tencent/mm/ui/widget/MMEditText:utI	I
+    //   131: putfield 37	com/tencent/mm/ui/widget/MMEditText:xAf	I
     //   134: aload_0
-    //   135: ldc_w 393
+    //   135: ldc_w 400
     //   138: aload_3
-    //   139: invokestatic 396	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   142: invokevirtual 400	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   145: invokevirtual 382	com/tencent/mm/ui/widget/MMEditText:bqQ	(Ljava/lang/String;)V
+    //   139: invokestatic 403	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   142: invokevirtual 407	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: invokevirtual 389	com/tencent/mm/ui/widget/MMEditText:bqF	(Ljava/lang/String;)V
     //   148: goto -111 -> 37
-    //   151: ldc_w 377
+    //   151: ldc_w 384
     //   154: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   157: aload 4
     //   159: athrow
@@ -465,16 +469,15 @@ public class MMEditText
   
   public boolean performLongClick()
   {
-    AppMethodBeat.i(207200);
+    AppMethodBeat.i(251719);
     try
     {
       boolean bool = super.performLongClick();
-      AppMethodBeat.o(207200);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(207200);
+      AppMethodBeat.o(251719);
     }
     return false;
   }
@@ -500,69 +503,69 @@ public class MMEditText
   
   public void setBackListener(a parama)
   {
-    this.Ybn = parama;
+    this.afTf = parama;
   }
   
   public void setEnableSendBtn(boolean paramBoolean)
   {
-    this.Ybm = paramBoolean;
+    this.afTe = paramBoolean;
   }
   
   public void setKeyCodeEnterListener(MMEditText.d paramd)
   {
-    this.Ybo = paramd;
+    this.afTg = paramd;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(207190);
-    if ((this.Ybp != null) && (paramOnClickListener != null) && (!paramOnClickListener.getClass().getName().contains("SelectableEditTextHelper")))
+    AppMethodBeat.i(251707);
+    if ((this.afTh != null) && (paramOnClickListener != null) && (!paramOnClickListener.getClass().getName().contains("SelectableEditTextHelper")))
     {
-      this.Ybp.YnV = paramOnClickListener;
-      AppMethodBeat.o(207190);
+      this.afTh.aggh = paramOnClickListener;
+      AppMethodBeat.o(251707);
       return;
     }
     super.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(207190);
+    AppMethodBeat.o(251707);
   }
   
   public void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    AppMethodBeat.i(207191);
-    if ((this.Ybp != null) && (paramOnFocusChangeListener != null) && (!paramOnFocusChangeListener.getClass().getName().contains("SelectableEditTextHelper")))
+    AppMethodBeat.i(251710);
+    if ((this.afTh != null) && (paramOnFocusChangeListener != null) && (!paramOnFocusChangeListener.getClass().getName().contains("SelectableEditTextHelper")))
     {
-      this.Ybp.YnU = paramOnFocusChangeListener;
-      AppMethodBeat.o(207191);
+      this.afTh.aggg = paramOnFocusChangeListener;
+      AppMethodBeat.o(251710);
       return;
     }
     super.setOnFocusChangeListener(paramOnFocusChangeListener);
-    AppMethodBeat.o(207191);
+    AppMethodBeat.o(251710);
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    AppMethodBeat.i(207193);
-    if ((this.Ybp != null) && (paramOnLongClickListener != null) && (!paramOnLongClickListener.getClass().getName().contains("SelectableEditTextHelper")))
+    AppMethodBeat.i(251714);
+    if ((this.afTh != null) && (paramOnLongClickListener != null) && (!paramOnLongClickListener.getClass().getName().contains("SelectableEditTextHelper")))
     {
-      this.Ybp.YnS = paramOnLongClickListener;
-      AppMethodBeat.o(207193);
+      this.afTh.agge = paramOnLongClickListener;
+      AppMethodBeat.o(251714);
       return;
     }
     super.setOnLongClickListener(paramOnLongClickListener);
-    AppMethodBeat.o(207193);
+    AppMethodBeat.o(251714);
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    AppMethodBeat.i(207192);
-    if ((this.Ybp != null) && (paramOnTouchListener != null) && (!paramOnTouchListener.getClass().getName().contains("SelectableEditTextHelper")))
+    AppMethodBeat.i(251713);
+    if ((this.afTh != null) && (paramOnTouchListener != null) && (!paramOnTouchListener.getClass().getName().contains("SelectableEditTextHelper")))
     {
-      this.Ybp.YnT = paramOnTouchListener;
-      AppMethodBeat.o(207192);
+      this.afTh.aggf = paramOnTouchListener;
+      AppMethodBeat.o(251713);
       return;
     }
     super.setOnTouchListener(paramOnTouchListener);
-    AppMethodBeat.o(207192);
+    AppMethodBeat.o(251713);
   }
   
   public void setPasterLen(int paramInt) {}
@@ -597,7 +600,7 @@ public class MMEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMEditText
  * JD-Core Version:    0.7.0.1
  */

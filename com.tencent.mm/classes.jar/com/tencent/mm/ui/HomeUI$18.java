@@ -1,61 +1,40 @@
 package com.tencent.mm.ui;
 
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.p;
-import com.tencent.mm.ay.p.c;
-import com.tencent.mm.booter.o;
-import com.tencent.mm.booter.y;
-import com.tencent.mm.booter.y.1;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.br.c;
+import com.tencent.mm.n.a;
+import com.tencent.mm.plugin.report.service.h;
 
 final class HomeUI$18
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
   HomeUI$18(HomeUI paramHomeUI) {}
   
-  public final boolean queueIdle()
+  public final void run()
   {
-    AppMethodBeat.i(265886);
-    bh.beI();
-    if (Util.nullAsNil((Integer)c.aHp().b(15, null)) == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(33198);
+    if (((a.p(HomeUI.c(this.adBf), true)) && (!a.dl(HomeUI.c(this.adBf)))) || (a.u(HomeUI.c(this.adBf), true)))
     {
-      Log.e("MicroMsg.LauncherUI.HomeUI", "not init finish , do not post sync task");
-      AppMethodBeat.o(265886);
-      return false;
+      AppMethodBeat.o(33198);
+      return;
     }
-    Object localObject = bg.ltv.aD("login_user_name", "");
-    if ((bh.beJ()) || (!((String)localObject).equals(""))) {
-      bh.aGY().a(new bv(new HomeUI.18.1(this), "launch normal"), 0);
-    }
-    ThreadPool.post(new y.1(new y(HomeUI.c(this.VWJ))), "StartupReport_report");
-    o.aqS();
-    HomeUI.hGT();
-    h.ZvG.be(new HomeUI.18.2(this));
-    localObject = p.blV().lQc;
-    Log.i("MicroMsg.SendImgSpeeder", "POOL_AUTO_FILL_SIZE is 0");
-    ((p.c)localObject).blZ();
-    Looper.myQueue().removeIdleHandler(this.VWJ.sJE);
-    AppMethodBeat.o(265886);
-    return false;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("BaseScanUI_select_scan_mode", 1);
+    localIntent.putExtra("GetFriendQRCodeUI.INTENT_FROM_ACTIVITY", 0);
+    localIntent.putExtra("key_enable_multi_code", true);
+    localIntent.putExtra("key_scan_goods_enable_dynamic_wording", true);
+    localIntent.putExtra("key_enable_scan_code_product_merge", true);
+    localIntent.putExtra("key_scan_entry_scene", 5);
+    localIntent.setFlags(65536);
+    h.OAn.b(11409, new Object[0]);
+    c.b(HomeUI.c(this.adBf), "scanner", ".ui.BaseScanUI", localIntent);
+    AppMethodBeat.o(33198);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.18
  * JD-Core Version:    0.7.0.1
  */

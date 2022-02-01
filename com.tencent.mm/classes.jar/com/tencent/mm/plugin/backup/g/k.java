@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.backup.i.m;
 import com.tencent.mm.plugin.backup.i.n;
 import com.tencent.mm.plugin.backup.i.o;
@@ -10,46 +10,46 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class k
   extends b
 {
-  private n rSl;
-  public o rSm;
+  private n vdB;
+  public o vdC;
   
   public k(String paramString)
   {
     AppMethodBeat.i(21738);
-    this.rSl = new n();
-    this.rSm = new o();
+    this.vdB = new n();
+    this.vdC = new o();
     Log.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
-    this.rSl.ID = paramString;
+    this.vdB.vgy = paramString;
     AppMethodBeat.o(21738);
   }
   
-  public final void EN(int paramInt)
+  public final void Fo(int paramInt)
   {
     AppMethodBeat.i(21739);
     Log.i("MicroMsg.BackupStartScene", "onSceneEnd.");
-    if (this.rSm.rVU != 0)
+    if (this.vdC.vhk != 0)
     {
-      r(4, this.rSm.rVU, "BackupStartScene onSceneEnd failed");
+      u(4, this.vdC.vhk, "BackupStartScene onSceneEnd failed");
       AppMethodBeat.o(21739);
       return;
     }
-    r(0, this.rSm.rVU, "BackupStartScene onSceneEnd success");
+    u(0, this.vdC.vhk, "BackupStartScene onSceneEnd success");
     AppMethodBeat.o(21739);
   }
   
   public final void a(long paramLong, m paramm, int paramInt)
   {
-    this.rSl.rVM = 0L;
-    this.rSl.rVN = paramLong;
-    this.rSl.rVO = 0L;
-    this.rSl.rVP = paramm;
-    this.rSl.rVQ = 0L;
-    this.rSl.rVR = paramInt;
+    this.vdB.vhc = 0L;
+    this.vdB.vhd = paramLong;
+    this.vdB.vhe = 0L;
+    this.vdB.vhf = paramm;
+    this.vdB.vhg = 0L;
+    this.vdB.vhh = paramInt;
   }
   
-  public final a ctD()
+  public final a cWn()
   {
-    return this.rSl;
+    return this.vdB;
   }
   
   public final int getType()

@@ -1,24 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi.y;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<v>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "Lcom/tencent/luggage/base/ICustomize;", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-commons_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface a
+  extends b
 {
-  public static final int CTRL_INDEX = 1003;
-  public static final String NAME = "showSalesDrivingMenu";
+  public abstract c C(f paramf);
   
-  public a()
-  {
-    AppMethodBeat.i(267965);
-    com.tencent.mm.plugin.appbrand.permission.c.amg("showSalesDrivingMenu");
-    AppMethodBeat.o(267965);
-  }
+  public abstract String D(f paramf);
+  
+  public abstract c a(JSONObject paramJSONObject, f paramf);
+  
+  public abstract c abv(String paramString);
+  
+  public abstract String at(JSONObject paramJSONObject);
+  
+  public abstract c cuq();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.y.a
  * JD-Core Version:    0.7.0.1
  */

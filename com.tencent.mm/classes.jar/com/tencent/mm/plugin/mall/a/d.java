@@ -6,22 +6,22 @@ import org.json.JSONObject;
 
 public final class d
 {
-  public int EOA;
-  public String EOB;
-  public String EOz;
+  public String KIY;
+  public int KIZ;
+  public String KJa;
   
   public d(String paramString)
   {
     AppMethodBeat.i(65990);
-    this.EOz = "";
-    this.EOA = 0;
-    this.EOB = "";
+    this.KIY = "";
+    this.KIZ = 0;
+    this.KJa = "";
     try
     {
       paramString = new JSONObject(paramString);
-      this.EOz = paramString.optString("eu_protocol_url");
-      this.EOA = paramString.optInt("0");
-      this.EOB = paramString.optString("wxpay_protocol_url");
+      this.KIY = paramString.optString("eu_protocol_url");
+      this.KIZ = paramString.optInt("0");
+      this.KJa = paramString.optString("wxpay_protocol_url");
       AppMethodBeat.o(65990);
       return;
     }

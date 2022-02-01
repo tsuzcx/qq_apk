@@ -5,7 +5,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.luggage.a.e;
 import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.d;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public class JsApiClearStorageTask
@@ -13,7 +13,7 @@ public class JsApiClearStorageTask
 {
   public static final Parcelable.Creator<JsApiClearStorageTask> CREATOR;
   public String appId;
-  public int prw;
+  public int svX;
   
   static
   {
@@ -27,28 +27,28 @@ public class JsApiClearStorageTask
   public JsApiClearStorageTask(Parcel paramParcel)
   {
     AppMethodBeat.i(147235);
-    f(paramParcel);
+    h(paramParcel);
     AppMethodBeat.o(147235);
   }
   
-  public final void RW()
+  public final void asn()
   {
     AppMethodBeat.i(147236);
-    if (e.K(a.class) == null) {}
-    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).QF())
+    if (e.T(a.class) == null) {}
+    for (g localg = null; localg == null; localg = ((a)e.T(a.class)).aqR())
     {
       AppMethodBeat.o(147236);
       return;
     }
-    locald.aa(this.prw, this.appId);
+    localg.ai(this.svX, this.appId);
     AppMethodBeat.o(147236);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
     AppMethodBeat.i(147237);
     this.appId = paramParcel.readString();
-    this.prw = paramParcel.readInt();
+    this.svX = paramParcel.readInt();
     AppMethodBeat.o(147237);
   }
   
@@ -56,13 +56,13 @@ public class JsApiClearStorageTask
   {
     AppMethodBeat.i(147238);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.prw);
+    paramParcel.writeInt(this.svX);
     AppMethodBeat.o(147238);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiClearStorageTask
  * JD-Core Version:    0.7.0.1
  */

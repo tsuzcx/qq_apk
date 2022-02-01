@@ -13,16 +13,16 @@ import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 public final class a$a
   implements m<IPCString, IPCVoid>
 {
-  private static IPCVoid c(IPCString paramIPCString)
+  private static IPCVoid g(IPCString paramIPCString)
   {
     AppMethodBeat.i(63066);
     try
     {
       Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc deletePieceMusicInfo Task, musicId:%s", new Object[] { paramIPCString });
       paramIPCString = paramIPCString.value;
-      d locald = o.feX();
+      d locald = o.goe();
       Log.i("MicroMsg.Music.PieceMusicInfoStorage", "deletePieceMusicInfo raw=%d musicId=%s", new Object[] { Integer.valueOf(locald.db.delete("PieceMusicInfo", "musicId=?", new String[] { paramIPCString })), paramIPCString });
-      locald.FSN.remove(paramIPCString);
+      locald.LNJ.remove(paramIPCString);
       paramIPCString = new IPCVoid();
       AppMethodBeat.o(63066);
       return paramIPCString;
@@ -38,7 +38,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

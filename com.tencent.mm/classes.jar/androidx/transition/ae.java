@@ -7,48 +7,48 @@ import java.lang.reflect.Method;
 
 final class ae
 {
-  private static Method asR;
-  private static boolean asS;
+  private static Method chA;
+  private static boolean chB;
   
-  static void c(ViewGroup paramViewGroup, boolean paramBoolean)
+  private static void Mc()
   {
-    AppMethodBeat.i(193148);
-    nz();
-    if (asR != null) {
-      try
-      {
-        asR.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(193148);
-        return;
-      }
-      catch (IllegalAccessException paramViewGroup)
-      {
-        AppMethodBeat.o(193148);
-        return;
-      }
-      catch (InvocationTargetException paramViewGroup) {}
-    }
-    AppMethodBeat.o(193148);
-  }
-  
-  private static void nz()
-  {
-    AppMethodBeat.i(193153);
-    if (!asS) {}
+    AppMethodBeat.i(201637);
+    if (!chB) {}
     try
     {
       Method localMethod = ViewGroup.class.getDeclaredMethod("suppressLayout", new Class[] { Boolean.TYPE });
-      asR = localMethod;
+      chA = localMethod;
       localMethod.setAccessible(true);
       label38:
-      asS = true;
-      AppMethodBeat.o(193153);
+      chB = true;
+      AppMethodBeat.o(201637);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
       break label38;
     }
+  }
+  
+  static void c(ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    AppMethodBeat.i(201625);
+    Mc();
+    if (chA != null) {
+      try
+      {
+        chA.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(201625);
+        return;
+      }
+      catch (IllegalAccessException paramViewGroup)
+      {
+        AppMethodBeat.o(201625);
+        return;
+      }
+      catch (InvocationTargetException paramViewGroup) {}
+    }
+    AppMethodBeat.o(201625);
   }
 }
 

@@ -5,20 +5,18 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.util.Property;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -35,6 +33,7 @@ import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.candidate.ImeCandidateView;
 import com.tencent.mm.plugin.hld.f.e;
 import com.tencent.mm.plugin.hld.f.k.a;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.keyboard.Keyboard;
 import com.tencent.mm.plugin.hld.keyboard.S10SettingKeyboard;
 import com.tencent.mm.plugin.hld.keyboard.S8ExceptionSettingKeyboard;
@@ -42,439 +41,540 @@ import com.tencent.mm.plugin.hld.keyboard.selfdraw.S2ChineseQwertyKeyboard;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.k.b.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.d;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeKeyboardSwitch;", "", "()V", "TAG", "", "animator_move_to_below", "Landroid/animation/ObjectAnimator;", "animator_move_to_up", "mActiveMaskBt", "Landroid/widget/Button;", "mActiveMaskDescTv", "Landroid/widget/TextView;", "mActiveMaskLl", "Landroid/widget/RelativeLayout;", "mActiveMaskTitleTv", "mCandidateView", "Lcom/tencent/mm/plugin/hld/candidate/ImeCandidateView;", "mContext", "Landroid/content/Context;", "mCurrentFirstLevelKeyboard", "", "Ljava/lang/Integer;", "mFirstInitializeStart", "", "mHasKeySendAction", "mIKeyboardActionListener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "mIfShieldCandidateView", "mImeKeyboardViewMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/hld/keyboard/Keyboard;", "Lkotlin/collections/HashMap;", "mInputBelowView", "Landroid/widget/FrameLayout;", "mInputCenterContainer", "mInputCenterView", "Landroid/view/View;", "mInputContainer", "mInputEmojiView", "mInputLeftView", "mInputLeftView2", "mInputUpView", "mKeyboardStatus", "mKeyboardTask", "Ljava/util/LinkedList;", "mSecondInitializeStart", "getMSecondInitializeStart", "()Z", "setMSecondInitializeStart", "(Z)V", "mSettingBt", "mUpdateDictMaskView", "mUpdateDictMaskViewstub", "Landroid/view/ViewStub;", "addKeyboardTask", "", "keyboard", "(Ljava/lang/Integer;)V", "backLastKeyboard", "firstInitKeyboard", "context", "ordinal", "getBelowAnimator", "beforeCallback", "Lkotlin/Function0;", "afterCallback", "getCurrentFirstLevelKeyboard", "getCurrentKeyboard", "getCurrentKeyboardOrdinal", "getCurrentKeyboardStatus", "getCurrentReportKbType", "getImeCandidateView", "getInputContainer", "getLastKeyboardOrdinal", "getNewKeyboard", "getResId", "getUpAnimator", "getmIfShieldCandidateView", "goExceptionSettingKeyboard", "goImeEmojiKeyboard", "goSettingKeyboard", "back", "handleActiveMaskBtClick", "hasKeySendAction", "init", "listener", "initInputView", "initKeyBoard", "firstInit", "initKeyboardImp", "resource", "initKeyboardRealImpl", "initSwitch", "isCurrentKeyboard", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "isFirstLevelEnglishKeyboard", "isS3EnglishQwertyKeyboard", "isUpperMode", "leftSlideInputLeftKeyboard", "onEngineInitializeSuccess", "onResumeKeyboard", "onSelectCandidate", "text", "id", "", "suffix", "onUpdateSelection", "oldSelStart", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "preInitKeyBoard", "first", "serialTag", "preInitKeyboards", "removeKeyboardTask", "reset", "resetToFirstLevelKeyboard", "rightSlideInputLeftKeyboard", "secondInitKeyboard", "secondInitSwitch", "setVisibleActiveMaskLl", "visible", "setVisibleUpdateDictMaskView", "showActiveKeyboard", "switchKeyboard", "keyboardOrdinal", "switchToChineseKeyboard", "transparentUpKeyboardBg", "currentKeyboardOrdinal", "transparent", "updateActionKey", "updateCurrentKeyboard", "updateEmojiKeyboard", "updateInputBelowKeyboard", "updateInputKeyboard", "hasLeftSlideAnimation", "hasRightSlideAnimation", "hasUpAnimation", "hasBelowAnimation", "updateUpKeyboard", "updateInputUpKeyboard", "updateKeyboardStatus", "hasStrikeContent", "hasClipboardContent", "updateUpperMod", "viewSaveToImage", "plugin-hld_release"})
-@SuppressLint({"StaticFieldLeak"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeKeyboardSwitch;", "", "()V", "TAG", "", "animator_move_to_below", "Landroid/animation/ObjectAnimator;", "animator_move_to_up", "mActiveMaskBt", "Landroid/widget/Button;", "mActiveMaskDescTv", "Landroid/widget/TextView;", "mActiveMaskLl", "Landroid/widget/RelativeLayout;", "mActiveMaskTitleTv", "mCandidateView", "Lcom/tencent/mm/plugin/hld/candidate/ImeCandidateView;", "mContext", "Landroid/content/Context;", "mCurrentFirstLevelKeyboard", "", "Ljava/lang/Integer;", "mFirstInitializeStart", "", "mHasKeySendAction", "mIKeyboardActionListener", "Lcom/tencent/mm/plugin/hld/api/IKeyboardActionListener;", "mIfShieldCandidateView", "mImeKeyboardViewMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/hld/keyboard/Keyboard;", "Lkotlin/collections/HashMap;", "mInputBelowView", "Landroid/widget/FrameLayout;", "mInputCenterContainer", "mInputCenterView", "Landroid/view/View;", "mInputContainer", "mInputEmojiView", "mInputLeftView", "mInputLeftView2", "mInputUpView", "mKeyboardStatus", "mKeyboardTask", "Ljava/util/LinkedList;", "mSecondInitializeStart", "getMSecondInitializeStart", "()Z", "setMSecondInitializeStart", "(Z)V", "mSettingBt", "mUpdateDictMaskView", "mUpdateDictMaskViewstub", "Landroid/view/ViewStub;", "addKeyboardTask", "", "keyboard", "(Ljava/lang/Integer;)V", "backLastKeyboard", "firstInitKeyboard", "context", "ordinal", "getBelowAnimator", "beforeCallback", "Lkotlin/Function0;", "afterCallback", "getCurrentFirstLevelKeyboard", "getCurrentKeyboard", "getCurrentKeyboardOrdinal", "getCurrentKeyboardStatus", "getCurrentReportKbType", "getImeCandidateView", "getInputContainer", "getLastKeyboardOrdinal", "getNewKeyboard", "getResId", "getUpAnimator", "getmIfShieldCandidateView", "goExceptionSettingKeyboard", "goImeEmojiKeyboard", "goSettingKeyboard", "back", "handleActiveMaskBtClick", "hasKeySendAction", "init", "listener", "initInputView", "initKeyBoard", "firstInit", "initKeyboardImp", "resource", "initKeyboardRealImpl", "initSwitch", "isCurrentKeyboard", "Lcom/tencent/mm/plugin/hld/keyboard/KeyboardType;", "isFirstLevelEnglishKeyboard", "isS3EnglishQwertyKeyboard", "isUpperMode", "leftSlideInputLeftKeyboard", "onEngineInitializeSuccess", "onResumeKeyboard", "onSelectCandidate", "text", "id", "", "suffix", "onUpdateSelection", "oldSelStart", "oldSelEnd", "newSelStart", "newSelEnd", "candidatesStart", "candidatesEnd", "preInitKeyBoard", "first", "serialTag", "preInitKeyboards", "removeKeyboardTask", "reset", "resetToFirstLevelKeyboard", "rightSlideInputLeftKeyboard", "secondInitKeyboard", "secondInitSwitch", "setVisibleActiveMaskLl", "visible", "setVisibleUpdateDictMaskView", "showActiveKeyboard", "switchKeyboard", "keyboardOrdinal", "switchToChineseKeyboard", "transparentUpKeyboardBg", "currentKeyboardOrdinal", "transparent", "updateActionKey", "updateCurrentKeyboard", "updateEmojiKeyboard", "updateInputBelowKeyboard", "updateInputKeyboard", "hasLeftSlideAnimation", "hasRightSlideAnimation", "hasUpAnimation", "hasBelowAnimation", "updateUpKeyboard", "updateInputUpKeyboard", "updateKeyboardStatus", "hasStrikeContent", "hasClipboardContent", "updateUpperMod", "viewSaveToImage", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  private static HashMap<Integer, Keyboard> DBM;
-  private static LinkedList<Integer> DBN;
-  private static int DBO;
-  private static View DBP;
-  private static ImeCandidateView DBQ;
-  private static RelativeLayout DBR;
-  private static FrameLayout DBS;
-  private static View DBT;
-  private static FrameLayout DBU;
-  private static FrameLayout DBV;
-  private static FrameLayout DBW;
-  private static FrameLayout DBX;
-  private static RelativeLayout DBY;
-  private static TextView DBZ;
-  private static TextView DCa;
-  private static Button DCb;
-  private static ViewStub DCc;
-  static View DCd;
-  private static Button DCe;
-  private static ObjectAnimator DCf;
-  private static ObjectAnimator DCg;
-  private static boolean DCh;
-  private static boolean DCi;
-  private static boolean DCj;
-  private static Integer DCk;
-  private static boolean DCl;
-  public static final g DCm;
-  private static com.tencent.mm.plugin.hld.a.c Dup;
+  private static com.tencent.mm.plugin.hld.a.c JnO;
+  public static final g JuL;
+  private static HashMap<Integer, Keyboard> JuM;
+  private static LinkedList<Integer> JuN;
+  private static int JuO;
+  private static View JuP;
+  private static ImeCandidateView JuQ;
+  private static RelativeLayout JuR;
+  private static FrameLayout JuS;
+  private static View JuT;
+  private static FrameLayout JuU;
+  private static FrameLayout JuV;
+  private static FrameLayout JuW;
+  private static FrameLayout JuX;
+  private static RelativeLayout JuY;
+  private static TextView JuZ;
+  private static TextView Jva;
+  private static Button Jvb;
+  private static ViewStub Jvc;
+  static View Jvd;
+  private static Button Jve;
+  private static ObjectAnimator Jvf;
+  private static ObjectAnimator Jvg;
+  private static boolean Jvh;
+  private static boolean Jvi;
+  private static boolean Jvj;
+  private static Integer Jvk;
+  private static boolean Jvl;
   private static Context mContext;
   
   static
   {
-    AppMethodBeat.i(211340);
-    DCm = new g();
-    DBN = new LinkedList();
-    DBO = 1;
-    AppMethodBeat.o(211340);
+    AppMethodBeat.i(312396);
+    JuL = new g();
+    JuN = new LinkedList();
+    JuO = 1;
+    AppMethodBeat.o(312396);
   }
   
-  private static void UA(final int paramInt)
+  private static int Yt(int paramInt)
   {
-    AppMethodBeat.i(211338);
-    Object localObject1 = DBM;
-    if (localObject1 != null)
+    AppMethodBeat.i(312026);
+    e locale = e.Jym;
+    if (e.fOa())
     {
-      localObject1 = (Keyboard)((HashMap)localObject1).get(Integer.valueOf(paramInt));
-      if (localObject1 != null)
-      {
-        Object localObject2 = com.tencent.mm.plugin.hld.f.k.DHH;
-        final boolean bool = com.tencent.mm.plugin.hld.f.k.isLandscape();
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.DHH;
-        if (!u.agG(((com.tencent.mm.plugin.hld.f.l)localObject2).aG(paramInt, com.tencent.mm.plugin.hld.f.k.isLandscape())))
-        {
-          if (localObject1 == null)
-          {
-            localObject1 = new t("null cannot be cast to non-null type android.view.View");
-            AppMethodBeat.o(211338);
-            throw ((Throwable)localObject1);
-          }
-          ((View)localObject1).post((Runnable)new r((Keyboard)localObject1, bool, paramInt));
-        }
-        AppMethodBeat.o(211338);
-        return;
-      }
-      AppMethodBeat.o(211338);
-      return;
-    }
-    AppMethodBeat.o(211338);
-  }
-  
-  private static int Uw(int paramInt)
-  {
-    AppMethodBeat.i(211293);
-    e locale = e.DGW;
-    if (e.eGo())
-    {
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal())
       {
         paramInt = a.h.ime_keyboard_s1_chinese_t9_selfdraw;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal())
+      if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal())
       {
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal())
         {
           paramInt = a.h.ime_keyboard_s3_english_qwerty_selfdraw;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal())
         {
           paramInt = a.h.ime_keyboard_s4_number_selfdraw;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyp.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrt.ordinal())
         {
           paramInt = a.h.ime_keyboard_s5_symbol;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal())
         {
           paramInt = a.h.ime_keyboard_s6_alternative_words;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyr.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrv.ordinal())
         {
           paramInt = a.h.ime_keyboard_s7_emoji;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal())
         {
           paramInt = a.h.ime_keyboard_s8_ime_setting;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyt.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrx.ordinal())
         {
           paramInt = a.h.ime_keyboard_s9_sound_vibrate;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
-        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyu.ordinal())
+        if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jry.ordinal())
         {
           paramInt = a.h.ime_keyboard_s10_setting;
-          AppMethodBeat.o(211293);
+          AppMethodBeat.o(312026);
           return paramInt;
         }
       }
       paramInt = a.h.ime_keyboard_s2_chinese_qwerty_selfdraw;
-      AppMethodBeat.o(211293);
+      AppMethodBeat.o(312026);
       return paramInt;
     }
-    if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal())
+    if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal())
     {
       paramInt = a.h.ime_keyboard_s1_chinese_t9;
-      AppMethodBeat.o(211293);
+      AppMethodBeat.o(312026);
       return paramInt;
     }
-    if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal())
+    if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal())
     {
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal())
       {
         paramInt = a.h.ime_keyboard_s3_english_qwerty;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal())
       {
         paramInt = a.h.ime_keyboard_s4_number;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyp.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrt.ordinal())
       {
         paramInt = a.h.ime_keyboard_s5_symbol;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal())
       {
         paramInt = a.h.ime_keyboard_s6_alternative_words;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyr.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrv.ordinal())
       {
         paramInt = a.h.ime_keyboard_s7_emoji;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal())
       {
         paramInt = a.h.ime_keyboard_s8_ime_setting;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyt.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jrx.ordinal())
       {
         paramInt = a.h.ime_keyboard_s9_sound_vibrate;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
-      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Dyu.ordinal())
+      if (paramInt == com.tencent.mm.plugin.hld.keyboard.c.Jry.ordinal())
       {
         paramInt = a.h.ime_keyboard_s10_setting;
-        AppMethodBeat.o(211293);
+        AppMethodBeat.o(312026);
         return paramInt;
       }
     }
     paramInt = a.h.ime_keyboard_s2_chinease_qwerty;
-    AppMethodBeat.o(211293);
+    AppMethodBeat.o(312026);
     return paramInt;
   }
   
-  private static void Uy(int paramInt)
+  private static void Yv(int paramInt)
   {
-    View localView = null;
-    AppMethodBeat.i(211333);
-    try
+    View localView2 = null;
+    AppMethodBeat.i(312247);
+    for (;;)
     {
-      Object localObject1 = DCc;
-      if (localObject1 != null) {}
-      for (localObject1 = ((ViewStub)localObject1).inflate();; localObject1 = null)
+      try
       {
-        if (localObject1 != null) {
-          localView = ((View)localObject1).findViewById(a.f.update_dict_ll);
+        localObject1 = Jvc;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break label120;
+          Jvd = (View)localObject1;
+          localObject1 = Jvd;
+          if (localObject1 != null) {
+            ((View)localObject1).setVisibility(paramInt);
+          }
+          AppMethodBeat.o(312247);
         }
-        DCd = localView;
-        localObject1 = DCd;
-        if (localObject1 == null) {
-          break;
+        else
+        {
+          localObject1 = ((ViewStub)localObject1).inflate();
         }
-        ((View)localObject1).setVisibility(paramInt);
-        AppMethodBeat.o(211333);
-        return;
       }
-      AppMethodBeat.o(211333);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2 = DCc;
-      if (localObject2 != null) {
+      catch (Exception localException)
+      {
+        Object localObject1;
+        Object localObject2 = Jvc;
+        if (localObject2 == null) {
+          continue;
+        }
         ((ViewStub)localObject2).setVisibility(0);
-      }
-      localObject2 = DCd;
-      if (localObject2 != null)
-      {
+        localObject2 = Jvd;
+        if (localObject2 == null) {
+          continue;
+        }
         ((View)localObject2).setVisibility(paramInt);
-        AppMethodBeat.o(211333);
+        AppMethodBeat.o(312247);
         return;
       }
-      AppMethodBeat.o(211333);
-      return;
-    }
-    finally
-    {
-      localView = DCd;
-      if (localView != null) {
-        localView.setVisibility(paramInt);
+      finally
+      {
+        localView2 = Jvd;
+        if (localView2 == null) {
+          continue;
+        }
+        localView2.setVisibility(paramInt);
+        AppMethodBeat.o(312247);
       }
-      AppMethodBeat.o(211333);
+      localObject1 = ((View)localObject1).findViewById(a.f.update_dict_ll);
+      continue;
+      label120:
+      if (localObject3 == null) {
+        View localView1 = localView2;
+      }
     }
   }
   
-  private static void Uz(int paramInt)
+  private static void Yw(int paramInt)
   {
-    AppMethodBeat.i(211336);
+    AppMethodBeat.i(312257);
     Object localObject;
+    int i;
     if (paramInt == 0)
     {
-      localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-      if (com.tencent.mm.plugin.hld.f.i.biq()) {
-        break label147;
+      localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+      if (com.tencent.mm.plugin.hld.f.i.bGa()) {
+        break label158;
       }
-      localObject = (d)com.tencent.mm.kernel.h.ae(d.class);
+      localObject = (d)com.tencent.mm.kernel.h.ax(d.class);
       if (localObject == null) {
-        break label147;
+        break label153;
       }
-      localObject = ((d)localObject).eCD();
-      if ((localObject == null) || (((com.tencent.mm.plugin.hld.a.b)localObject).eCu() != true)) {
-        break label147;
+      localObject = ((d)localObject).fKG();
+      if ((localObject == null) || (((com.tencent.mm.plugin.hld.a.b)localObject).fKx() != true)) {
+        break label153;
       }
-      localObject = DBZ;
+      i = 1;
+      if (i == 0) {
+        break label158;
+      }
+      localObject = JuZ;
       if (localObject != null) {
         ((TextView)localObject).setText((CharSequence)MMApplicationContext.getContext().getString(a.j.ime_keyboard_active_title_exchange));
       }
-      localObject = DCa;
+      localObject = Jva;
       if (localObject != null) {
         ((TextView)localObject).setText((CharSequence)MMApplicationContext.getContext().getString(a.j.ime_keyboard_active_desc_exchange));
       }
-      localObject = DCb;
+      localObject = Jvb;
       if (localObject != null) {
         ((Button)localObject).setText((CharSequence)MMApplicationContext.getContext().getString(a.j.ime_keyboard_active_setting_exchange));
       }
     }
     for (;;)
     {
-      localObject = DBY;
-      if (localObject == null) {
-        break;
+      localObject = JuY;
+      if (localObject != null) {
+        ((RelativeLayout)localObject).setVisibility(paramInt);
       }
-      ((RelativeLayout)localObject).setVisibility(paramInt);
-      AppMethodBeat.o(211336);
+      AppMethodBeat.o(312257);
       return;
-      label147:
-      localObject = DBZ;
+      label153:
+      i = 0;
+      break;
+      label158:
+      localObject = JuZ;
       if (localObject != null) {
         ((TextView)localObject).setText((CharSequence)MMApplicationContext.getContext().getString(a.j.ime_keyboard_active_title));
       }
-      localObject = DCa;
+      localObject = Jva;
       if (localObject != null) {
         ((TextView)localObject).setText((CharSequence)MMApplicationContext.getContext().getString(a.j.ime_keyboard_active_desc));
       }
-      localObject = DCb;
+      localObject = Jvb;
       if (localObject != null) {
         ((Button)localObject).setText((CharSequence)MMApplicationContext.getContext().getString(a.j.ime_keyboard_active_setting));
       }
     }
-    AppMethodBeat.o(211336);
   }
   
-  private static void a(final Context paramContext, final int paramInt1, int paramInt2, boolean paramBoolean)
+  private static void Yx(int paramInt)
   {
-    boolean bool3 = false;
-    boolean bool2 = true;
-    AppMethodBeat.i(211295);
-    Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp start " + paramInt1 + ' ' + paramInt2 + ' ' + paramBoolean);
-    long l = System.currentTimeMillis();
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.DHH;
-    localObject = ((com.tencent.mm.plugin.hld.f.l)localObject).aG(paramInt1, com.tencent.mm.plugin.hld.f.k.isLandscape());
-    boolean bool1;
-    if (paramBoolean)
+    AppMethodBeat.i(312264);
+    Object localObject1 = JuM;
+    if (localObject1 != null)
     {
-      localk = com.tencent.mm.plugin.hld.f.k.DHH;
-      if ((!com.tencent.mm.plugin.hld.f.k.isLandscape()) && (u.agG((String)localObject)))
+      localObject1 = (Keyboard)((HashMap)localObject1).get(Integer.valueOf(paramInt));
+      if (localObject1 != null)
       {
-        localObject = e.DGW;
-        if (!e.eGo())
-        {
-          bool1 = true;
-          paramBoolean = bool3;
-          if (!bool1) {
-            break label272;
-          }
-          localObject = com.tencent.mm.ui.k.b.XIY;
-          localObject = b.a.axo(paramInt2);
-          if ((localObject == null) || (((com.tencent.mm.ui.k.b)localObject).hXg() != true)) {
-            break label267;
-          }
-          paramBoolean = true;
-          label151:
-          if (paramBoolean) {
-            break label272;
-          }
-          com.tencent.e.h.ZvG.be((Runnable)new g(paramInt2, paramContext, paramInt1));
+        Object localObject2 = com.tencent.mm.plugin.hld.f.k.JyF;
+        boolean bool = com.tencent.mm.plugin.hld.f.k.isLandscape();
+        localObject2 = l.JyV;
+        com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+        if (!y.ZC(((l)localObject2).bg(paramInt, com.tencent.mm.plugin.hld.f.k.isLandscape()))) {
+          ((Keyboard)localObject1).post(new g..ExternalSyntheticLambda6((Keyboard)localObject1, paramInt, bool));
         }
       }
     }
-    for (;;)
+    AppMethodBeat.o(312264);
+  }
+  
+  private static final void a(int paramInt1, Context paramContext, int paramInt2)
+  {
+    AppMethodBeat.i(312314);
+    s.u(paramContext, "$context");
+    long l = System.currentTimeMillis();
+    ah.f localf = new ah.f();
+    Object localObject = com.tencent.mm.ui.k.b.afwA;
+    localObject = b.a.aDY(paramInt1);
+    if (localObject == null)
     {
-      Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp " + paramInt1 + ' ' + (System.currentTimeMillis() - l) + ' ' + ar.isDarkMode() + ' ' + bool2 + ' ' + bool1 + ' ' + paramBoolean);
-      AppMethodBeat.o(211295);
+      localObject = null;
+      localf.aqH = localObject;
+      if (localf.aqH != null) {
+        break label161;
+      }
+      localf.aqH = af.mU(paramContext).inflate(paramInt1, null, false);
+    }
+    label161:
+    for (boolean bool = false;; bool = true)
+    {
+      Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp load " + paramInt2 + ' ' + (System.currentTimeMillis() - l) + ' ' + bool);
+      com.tencent.threadpool.h.ahAA.bk(new g..ExternalSyntheticLambda7(localf, paramInt2, paramContext));
+      AppMethodBeat.o(312314);
       return;
-      bool1 = false;
+      localObject = ((com.tencent.mm.ui.k.b)localObject).jBE();
       break;
-      label267:
-      paramBoolean = false;
-      break label151;
-      label272:
-      bool2 = h(paramContext, paramInt1, paramInt2);
+    }
+  }
+  
+  private static void a(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    boolean bool1 = false;
+    boolean bool4 = false;
+    boolean bool3 = true;
+    AppMethodBeat.i(312042);
+    Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp start " + paramInt1 + ' ' + paramInt2 + ' ' + paramBoolean);
+    long l = System.currentTimeMillis();
+    Object localObject = l.JyV;
+    com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+    localObject = ((l)localObject).bg(paramInt1, com.tencent.mm.plugin.hld.f.k.isLandscape());
+    boolean bool2;
+    if (paramBoolean)
+    {
+      localk = com.tencent.mm.plugin.hld.f.k.JyF;
+      if ((!com.tencent.mm.plugin.hld.f.k.isLandscape()) && (y.ZC((String)localObject)))
+      {
+        localObject = e.Jym;
+        if (!e.fOa())
+        {
+          bool2 = true;
+          if (!bool2) {
+            break label277;
+          }
+          localObject = com.tencent.mm.ui.k.b.afwA;
+          localObject = b.a.aDY(paramInt2);
+          paramBoolean = bool4;
+          if (localObject != null)
+          {
+            paramBoolean = bool4;
+            if (((com.tencent.mm.ui.k.b)localObject).jBD() == true) {
+              paramBoolean = true;
+            }
+          }
+          bool1 = paramBoolean;
+          if (paramBoolean) {
+            break label277;
+          }
+          com.tencent.threadpool.h.ahAA.bm(new g..ExternalSyntheticLambda4(paramInt2, paramContext, paramInt1));
+        }
+      }
+    }
+    for (bool1 = bool3;; bool1 = bool3)
+    {
+      Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp " + paramInt1 + ' ' + (System.currentTimeMillis() - l) + ' ' + aw.isDarkMode() + ' ' + bool1 + ' ' + bool2 + ' ' + paramBoolean);
+      AppMethodBeat.o(312042);
+      return;
+      bool2 = false;
+      break;
+      label277:
+      bool3 = k(paramContext, paramInt1, paramInt2);
+      paramBoolean = bool1;
     }
   }
   
   private static void a(Context paramContext, int paramInt, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(211289);
-    if ((!paramBoolean) && (paramInt == eEm()))
+    AppMethodBeat.i(312012);
+    if ((!paramBoolean) && (paramInt == fMo()))
     {
-      AppMethodBeat.o(211289);
+      AppMethodBeat.o(312012);
       return;
     }
-    int i = Uw(paramInt);
+    int i = Yt(paramInt);
     Log.d("WxIme.ImeKeyboardSwitch", "preInitKeyBoard " + paramInt + ' ' + i);
-    new com.tencent.mm.ui.k.b(paramContext).jdMethod_do(i, paramString);
-    AppMethodBeat.o(211289);
+    new com.tencent.mm.ui.k.b(paramContext).eh(i, paramString);
+    AppMethodBeat.o(312012);
   }
   
   public static void a(Context paramContext, com.tencent.mm.plugin.hld.a.c paramc)
   {
-    AppMethodBeat.i(211271);
-    p.k(paramContext, "context");
-    p.k(paramc, "listener");
+    AppMethodBeat.i(311928);
+    s.u(paramContext, "context");
+    s.u(paramc, "listener");
     long l = System.currentTimeMillis();
     mContext = paramContext;
-    Dup = paramc;
-    paramContext = com.tencent.mm.plugin.hld.f.i.DHq;
-    paramContext = Integer.valueOf(com.tencent.mm.plugin.hld.f.i.eEm());
-    DCk = paramContext;
-    p(paramContext);
-    Log.i("WxIme.ImeKeyboardSwitch", "init " + (System.currentTimeMillis() - l));
-    AppMethodBeat.o(211271);
+    JnO = paramc;
+    paramContext = com.tencent.mm.plugin.hld.f.i.JyA;
+    paramContext = Integer.valueOf(com.tencent.mm.plugin.hld.f.i.fMo());
+    Jvk = paramContext;
+    w(paramContext);
+    Log.i("WxIme.ImeKeyboardSwitch", s.X("init ", Long.valueOf(System.currentTimeMillis() - l)));
+    AppMethodBeat.o(311928);
   }
   
-  private final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, kotlin.g.a.a<x> parama1, kotlin.g.a.a<x> parama2)
+  private static final void a(Keyboard paramKeyboard, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(211306);
+    AppMethodBeat.i(312344);
+    s.u(paramKeyboard, "$keyboard");
+    if (paramKeyboard.getKeyboardType().ordinal() <= com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal())
+    {
+      com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+      com.tencent.mm.plugin.hld.f.k.a((View)paramKeyboard, paramInt, paramBoolean, (k.a)new g.k(paramInt));
+    }
+    AppMethodBeat.o(312344);
+  }
+  
+  private static final void a(ah.f paramf, int paramInt, Context paramContext)
+  {
+    AppMethodBeat.i(312303);
+    s.u(paramf, "$keyboardView");
+    s.u(paramContext, "$context");
+    long l = System.currentTimeMillis();
+    paramf = (View)paramf.aqH;
+    Object localObject;
+    if (paramf == null)
+    {
+      paramf = null;
+      localObject = JuM;
+      if (localObject != null)
+      {
+        localObject = (Map)localObject;
+        if (paramf != null) {
+          break label210;
+        }
+      }
+    }
+    label210:
+    for (paramContext = (Keyboard)new S2ChineseQwertyKeyboard(paramContext);; paramContext = paramf)
+    {
+      ((Map)localObject).put(Integer.valueOf(paramInt), paramContext);
+      if (paramf != null) {
+        paramf.onCreate();
+      }
+      Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp push to cache " + paramInt + ' ' + (System.currentTimeMillis() - l) + ' ' + fMo());
+      if ((paramf != null) && (fMo() == paramInt))
+      {
+        paramf.b(JnO);
+        paramContext = JuU;
+        if (paramContext != null) {
+          paramContext.addView((View)paramf);
+        }
+        Log.i("WxIme.ImeKeyboardSwitch", s.X("initKeyboardImp refresh ", Integer.valueOf(paramInt)));
+      }
+      AppMethodBeat.o(312303);
+      return;
+      paramf = (Keyboard)paramf.findViewById(a.f.root);
+      break;
+    }
+  }
+  
+  private static final void a(ah.f paramf, ah.d paramd)
+  {
+    AppMethodBeat.i(312320);
+    s.u(paramf, "$actionStr");
+    s.u(paramd, "$actionMode");
+    Keyboard localKeyboard = fMr();
+    if (localKeyboard != null) {
+      localKeyboard.fG((String)paramf.aqH, paramd.aixb);
+    }
+    AppMethodBeat.o(312320);
+  }
+  
+  private final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, kotlin.g.a.a<ah> parama1, kotlin.g.a.a<ah> parama2)
+  {
+    AppMethodBeat.i(312083);
     if (paramBoolean1)
     {
       b(parama1, parama2);
-      AppMethodBeat.o(211306);
+      AppMethodBeat.o(312083);
       return;
     }
     Object localObject;
     if (paramBoolean2)
     {
       c(parama1, parama2);
-      if (eEm() < com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal())
+      if (fMo() < com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal())
       {
         if (!paramBoolean4) {
           break label177;
         }
-        eEe();
+        fMg();
         if (!paramBoolean2) {
           break label149;
         }
-        localObject = DBU;
+        localObject = JuU;
         if (localObject != null) {
           ((FrameLayout)localObject).setVisibility(8);
         }
@@ -488,21 +588,21 @@ public final class g
     }
     for (;;)
     {
-      eEi();
-      AppMethodBeat.o(211306);
+      fMk();
+      AppMethodBeat.o(312083);
       return;
-      localObject = DBW;
+      localObject = JuW;
       if (localObject != null) {
         ((FrameLayout)localObject).setVisibility(8);
       }
-      localObject = DBX;
+      localObject = JuX;
       if (localObject == null) {
         break;
       }
       ((FrameLayout)localObject).setVisibility(8);
       break;
       label149:
-      localObject = DCg;
+      localObject = Jvg;
       if (localObject != null) {
         ((ObjectAnimator)localObject).cancel();
       }
@@ -511,11 +611,11 @@ public final class g
       label177:
       if (paramBoolean6)
       {
-        localObject = DBV;
+        localObject = JuV;
         if (localObject != null) {
           ((FrameLayout)localObject).setVisibility(0);
         }
-        eEf();
+        fMh();
         if (parama1 != null) {
           parama1.invoke();
         }
@@ -525,22 +625,22 @@ public final class g
       }
       else
       {
-        localObject = DBV;
+        localObject = JuV;
         if (localObject != null) {
           ((FrameLayout)localObject).setVisibility(8);
         }
         if (paramBoolean5)
         {
-          eEd();
+          fMf();
           if (paramBoolean2)
           {
             if (paramBoolean3)
             {
-              localObject = DBU;
+              localObject = JuU;
               if (localObject != null) {
                 ((FrameLayout)localObject).setVisibility(0);
               }
-              localObject = DBU;
+              localObject = JuU;
               if (localObject != null) {
                 ((FrameLayout)localObject).setTranslationY(0.0F);
               }
@@ -554,7 +654,7 @@ public final class g
           }
           else if (paramBoolean3)
           {
-            localObject = DCf;
+            localObject = Jvf;
             if (localObject != null) {
               ((ObjectAnimator)localObject).cancel();
             }
@@ -572,7 +672,7 @@ public final class g
         }
         else
         {
-          eEe();
+          fMg();
           if (parama1 != null) {
             parama1.invoke();
           }
@@ -584,18 +684,37 @@ public final class g
     }
   }
   
-  public static void af(boolean paramBoolean1, boolean paramBoolean2)
+  private final void aI(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(211316);
+    AppMethodBeat.i(311992);
+    if (paramInt == fMo()) {
+      f(paramContext, paramInt, true);
+    }
+    AppMethodBeat.o(311992);
+  }
+  
+  private static void aJ(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(311999);
+    HashMap localHashMap = JuM;
+    if ((localHashMap != null) && (localHashMap.get(Integer.valueOf(paramInt)) == null)) {
+      f(paramContext, paramInt, false);
+    }
+    AppMethodBeat.o(311999);
+  }
+  
+  public static void ax(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(312151);
     int i;
     if (paramBoolean1) {
       i = 2;
     }
     for (;;)
     {
-      DBO = i;
-      eEi();
-      AppMethodBeat.o(211316);
+      JuO = i;
+      fMk();
+      AppMethodBeat.o(312151);
       return;
       if (paramBoolean2)
       {
@@ -603,8 +722,8 @@ public final class g
       }
       else
       {
-        com.tencent.mm.plugin.hld.f.l locall = com.tencent.mm.plugin.hld.f.l.DHK;
-        if (com.tencent.mm.plugin.hld.f.l.eGY()) {
+        l locall = l.JyV;
+        if (l.fOH()) {
           i = 1;
         } else {
           i = 3;
@@ -613,654 +732,785 @@ public final class g
     }
   }
   
-  private final void av(Context paramContext, int paramInt)
+  private static void b(kotlin.g.a.a<ah> parama1, final kotlin.g.a.a<ah> parama2)
   {
-    AppMethodBeat.i(211285);
-    if (paramInt == eEm()) {
-      f(paramContext, paramInt, true);
-    }
-    AppMethodBeat.o(211285);
-  }
-  
-  private static void b(final kotlin.g.a.a<x> parama1, final kotlin.g.a.a<x> parama2)
-  {
-    AppMethodBeat.i(211310);
-    Object localObject = eEp();
-    if (localObject != null)
-    {
-      if (((localObject instanceof S8ExceptionSettingKeyboard)) || ((localObject instanceof S10SettingKeyboard))) {}
-      for (FrameLayout localFrameLayout = DBW;; localFrameLayout = DBX)
-      {
-        if (localFrameLayout != null) {
-          localFrameLayout.removeAllViews();
-        }
-        if (localFrameLayout != null) {
-          localFrameLayout.addView((View)localObject);
-        }
-        localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject = MMApplicationContext.getContext();
-        p.j(localObject, "MMApplicationContext.getContext()");
-        int i = com.tencent.mm.plugin.hld.f.k.getScreenWidth((Context)localObject);
-        localObject = ObjectAnimator.ofFloat(localFrameLayout, View.TRANSLATION_X, new float[] { i, 0.0F });
-        p.j(localObject, "leftSlideAnimator");
-        ((ObjectAnimator)localObject).setDuration(300L);
-        ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
-        ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new h(localFrameLayout, parama1, parama2));
-        ((ObjectAnimator)localObject).start();
-        AppMethodBeat.o(211310);
-        return;
+    AppMethodBeat.i(312117);
+    Object localObject = fMr();
+    if (localObject != null) {
+      if ((!(localObject instanceof S8ExceptionSettingKeyboard)) && (!(localObject instanceof S10SettingKeyboard))) {
+        break label156;
       }
     }
-    AppMethodBeat.o(211310);
+    label156:
+    for (final FrameLayout localFrameLayout = JuW;; localFrameLayout = JuX)
+    {
+      if (localFrameLayout != null) {
+        localFrameLayout.removeAllViews();
+      }
+      if (localFrameLayout != null) {
+        localFrameLayout.addView((View)localObject);
+      }
+      localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+      localObject = MMApplicationContext.getContext();
+      s.s(localObject, "getContext()");
+      int i = com.tencent.mm.plugin.hld.f.k.getScreenWidth((Context)localObject);
+      localObject = ObjectAnimator.ofFloat(localFrameLayout, View.TRANSLATION_X, new float[] { i, 0.0F });
+      ((ObjectAnimator)localObject).setDuration(300L);
+      ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
+      ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new c(parama1, localFrameLayout, parama2));
+      ((ObjectAnimator)localObject).start();
+      AppMethodBeat.o(312117);
+      return;
+    }
   }
   
   public static boolean b(com.tencent.mm.plugin.hld.keyboard.c paramc)
   {
-    AppMethodBeat.i(211312);
-    p.k(paramc, "keyboard");
-    if (paramc.ordinal() == eEm())
+    AppMethodBeat.i(312130);
+    s.u(paramc, "keyboard");
+    if (paramc.ordinal() == fMo())
     {
-      AppMethodBeat.o(211312);
+      AppMethodBeat.o(312130);
       return true;
     }
-    AppMethodBeat.o(211312);
+    AppMethodBeat.o(312130);
     return false;
   }
   
-  private static void c(final kotlin.g.a.a<x> parama1, final kotlin.g.a.a<x> parama2)
+  private static void c(kotlin.g.a.a<ah> parama1, final kotlin.g.a.a<ah> parama2)
   {
-    AppMethodBeat.i(211311);
-    Object localObject1 = eEp();
-    if (localObject1 != null)
-    {
-      if ((localObject1 instanceof S8ExceptionSettingKeyboard)) {}
-      for (localObject1 = DBX;; localObject1 = DBW)
-      {
-        Object localObject2 = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject2 = MMApplicationContext.getContext();
-        p.j(localObject2, "MMApplicationContext.getContext()");
-        int i = com.tencent.mm.plugin.hld.f.k.getScreenWidth((Context)localObject2);
-        localObject2 = ObjectAnimator.ofFloat(localObject1, View.TRANSLATION_X, new float[] { 0.0F, i });
-        p.j(localObject2, "rightSlideAnimator");
-        ((ObjectAnimator)localObject2).setDuration(300L);
-        ((ObjectAnimator)localObject2).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
-        ((ObjectAnimator)localObject2).addListener((Animator.AnimatorListener)new k((FrameLayout)localObject1, parama1, parama2));
-        ((ObjectAnimator)localObject2).start();
-        AppMethodBeat.o(211311);
-        return;
+    AppMethodBeat.i(312123);
+    Object localObject1 = fMr();
+    if (localObject1 != null) {
+      if (!(localObject1 instanceof S8ExceptionSettingKeyboard)) {
+        break label124;
       }
     }
-    AppMethodBeat.o(211311);
+    label124:
+    for (localObject1 = JuX;; localObject1 = JuW)
+    {
+      Object localObject2 = com.tencent.mm.plugin.hld.f.k.JyF;
+      localObject2 = MMApplicationContext.getContext();
+      s.s(localObject2, "getContext()");
+      int i = com.tencent.mm.plugin.hld.f.k.getScreenWidth((Context)localObject2);
+      localObject2 = ObjectAnimator.ofFloat(localObject1, View.TRANSLATION_X, new float[] { 0.0F, i });
+      ((ObjectAnimator)localObject2).setDuration(300L);
+      ((ObjectAnimator)localObject2).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
+      ((ObjectAnimator)localObject2).addListener((Animator.AnimatorListener)new f(parama1, (FrameLayout)localObject1, parama2));
+      ((ObjectAnimator)localObject2).start();
+      AppMethodBeat.o(312123);
+      return;
+    }
   }
   
-  private static ObjectAnimator d(kotlin.g.a.a<x> parama1, final kotlin.g.a.a<x> parama2)
+  private static ObjectAnimator d(kotlin.g.a.a<ah> parama1, final kotlin.g.a.a<ah> parama2)
   {
-    AppMethodBeat.i(211325);
-    if (DCg == null)
+    AppMethodBeat.i(312210);
+    if (Jvg == null)
     {
-      localObject = DBU;
+      localObject = JuU;
       Property localProperty = View.TRANSLATION_Y;
-      com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.DHH;
-      localObject = ObjectAnimator.ofFloat(localObject, localProperty, new float[] { com.tencent.mm.plugin.hld.f.k.gW(mContext), 0.0F });
-      DCg = (ObjectAnimator)localObject;
+      com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+      localObject = ObjectAnimator.ofFloat(localObject, localProperty, new float[] { com.tencent.mm.plugin.hld.f.k.ir(mContext), 0.0F });
+      Jvg = (ObjectAnimator)localObject;
       if (localObject != null) {
         ((ObjectAnimator)localObject).setDuration(300L);
       }
-      localObject = DCg;
+      localObject = Jvg;
       if (localObject != null) {
         ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
       }
-      localObject = DCg;
+      localObject = Jvg;
       if (localObject != null) {
-        ((ObjectAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)c.DCq);
+        ((ObjectAnimator)localObject).addUpdateListener(g..ExternalSyntheticLambda0.INSTANCE);
       }
     }
-    Object localObject = DCg;
+    Object localObject = Jvg;
     if (localObject != null) {
       ((ObjectAnimator)localObject).removeAllListeners();
     }
-    localObject = DCg;
-    if (localObject != null) {
-      ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new d(parama1, parama2));
-    }
-    parama1 = DCg;
-    if (parama1 == null)
-    {
-      parama1 = new t("null cannot be cast to non-null type android.animation.ObjectAnimator");
-      AppMethodBeat.o(211325);
-      throw parama1;
-    }
-    AppMethodBeat.o(211325);
-    return parama1;
-  }
-  
-  private static ObjectAnimator e(kotlin.g.a.a<x> parama1, final kotlin.g.a.a<x> parama2)
-  {
-    AppMethodBeat.i(211327);
-    if (DCf == null)
-    {
-      localObject = DBU;
-      Property localProperty = View.TRANSLATION_Y;
-      com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.DHH;
-      localObject = ObjectAnimator.ofFloat(localObject, localProperty, new float[] { 0.0F, com.tencent.mm.plugin.hld.f.k.gW(mContext) });
-      DCf = (ObjectAnimator)localObject;
-      if (localObject != null) {
-        ((ObjectAnimator)localObject).setDuration(300L);
-      }
-      localObject = DCf;
-      if (localObject != null) {
-        ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
-      }
-      localObject = DCf;
-      if (localObject != null) {
-        ((ObjectAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)a.DCn);
-      }
-    }
-    Object localObject = DCf;
-    if (localObject != null) {
-      ((ObjectAnimator)localObject).removeAllListeners();
-    }
-    localObject = DCf;
+    localObject = Jvg;
     if (localObject != null) {
       ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new b(parama1, parama2));
     }
-    parama1 = DCf;
+    parama1 = Jvg;
     if (parama1 == null)
     {
-      parama1 = new t("null cannot be cast to non-null type android.animation.ObjectAnimator");
-      AppMethodBeat.o(211327);
+      parama1 = new NullPointerException("null cannot be cast to non-null type android.animation.ObjectAnimator");
+      AppMethodBeat.o(312210);
       throw parama1;
     }
-    AppMethodBeat.o(211327);
+    AppMethodBeat.o(312210);
     return parama1;
   }
   
-  public static boolean eDV()
+  private static ObjectAnimator e(kotlin.g.a.a<ah> parama1, final kotlin.g.a.a<ah> parama2)
   {
-    return DCl;
+    AppMethodBeat.i(312219);
+    if (Jvf == null)
+    {
+      localObject = JuU;
+      Property localProperty = View.TRANSLATION_Y;
+      com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+      localObject = ObjectAnimator.ofFloat(localObject, localProperty, new float[] { 0.0F, com.tencent.mm.plugin.hld.f.k.ir(mContext) });
+      Jvf = (ObjectAnimator)localObject;
+      if (localObject != null) {
+        ((ObjectAnimator)localObject).setDuration(300L);
+      }
+      localObject = Jvf;
+      if (localObject != null) {
+        ((ObjectAnimator)localObject).setInterpolator((TimeInterpolator)new AccelerateDecelerateInterpolator());
+      }
+      localObject = Jvf;
+      if (localObject != null) {
+        ((ObjectAnimator)localObject).addUpdateListener(g..ExternalSyntheticLambda1.INSTANCE);
+      }
+    }
+    Object localObject = Jvf;
+    if (localObject != null) {
+      ((ObjectAnimator)localObject).removeAllListeners();
+    }
+    localObject = Jvf;
+    if (localObject != null) {
+      ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new a(parama1, parama2));
+    }
+    parama1 = Jvf;
+    if (parama1 == null)
+    {
+      parama1 = new NullPointerException("null cannot be cast to non-null type android.animation.ObjectAnimator");
+      AppMethodBeat.o(312219);
+      throw parama1;
+    }
+    AppMethodBeat.o(312219);
+    return parama1;
   }
   
-  private static int eDX()
+  private static final void f(ValueAnimator paramValueAnimator)
   {
-    AppMethodBeat.i(211273);
-    eEm();
-    Object localObject = DBW;
+    AppMethodBeat.i(312328);
+    if (paramValueAnimator == null)
+    {
+      paramValueAnimator = null;
+      if (!(paramValueAnimator instanceof Float)) {
+        break label71;
+      }
+      paramValueAnimator = (Float)paramValueAnimator;
+      label24:
+      if (paramValueAnimator != null) {
+        break label76;
+      }
+    }
+    label71:
+    label76:
+    for (float f = 0.0F;; f = paramValueAnimator.floatValue())
+    {
+      paramValueAnimator = JuT;
+      if (paramValueAnimator != null)
+      {
+        com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+        paramValueAnimator.setAlpha(1.0F - f / com.tencent.mm.plugin.hld.f.k.ir(mContext));
+      }
+      AppMethodBeat.o(312328);
+      return;
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      break;
+      paramValueAnimator = null;
+      break label24;
+    }
+  }
+  
+  private static void f(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(312006);
+    int j = 1;
+    HashMap localHashMap = JuM;
+    int i = j;
+    if (localHashMap != null)
+    {
+      i = j;
+      if (localHashMap.get(Integer.valueOf(paramInt)) != null) {
+        i = 0;
+      }
+    }
+    if (i != 0) {
+      a(paramContext, paramInt, Yt(paramInt), paramBoolean);
+    }
+    AppMethodBeat.o(312006);
+  }
+  
+  public static boolean fLX()
+  {
+    return Jvl;
+  }
+  
+  private static int fLZ()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(311948);
+    fMo();
+    Object localObject = JuW;
     if (localObject != null) {
       ((FrameLayout)localObject).setVisibility(8);
     }
-    localObject = DBX;
+    localObject = JuX;
     if (localObject != null) {
       ((FrameLayout)localObject).setVisibility(8);
     }
-    localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-    int i = com.tencent.mm.plugin.hld.f.i.eEm();
-    localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-    localObject = com.tencent.mm.plugin.hld.f.k.eGO();
+    localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+    int k = com.tencent.mm.plugin.hld.f.i.fMo();
+    localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+    localObject = com.tencent.mm.plugin.hld.f.k.fOx();
+    label75:
+    int i;
+    label77:
+    label83:
+    label89:
+    label95:
+    label101:
+    label107:
+    label113:
+    label119:
+    int j;
     if (localObject == null)
     {
       if (localObject != null) {
-        break label190;
+        break label213;
       }
-      if (localObject != null) {
-        break label202;
+      i = 0;
+      if (i == 0) {
+        break label228;
       }
-      label66:
-      if (localObject != null) {
-        break label214;
+      i = 1;
+      if (i == 0) {
+        break label253;
       }
-      label70:
-      if (localObject != null) {
-        break label225;
+      i = 1;
+      if (i == 0) {
+        break label277;
       }
-      label74:
-      if (localObject != null) {
-        break label238;
+      i = 1;
+      if (i == 0) {
+        break label303;
       }
-      label78:
-      if (localObject != null) {
-        break label250;
+      i = 1;
+      if (i == 0) {
+        break label328;
       }
-      label82:
-      if (localObject != null) {
-        break label263;
+      i = 1;
+      if (i == 0) {
+        break label354;
       }
-      label86:
-      if (localObject != null) {
-        break label274;
+      i = 1;
+      if (i == 0) {
+        break label378;
       }
-      label90:
-      if (localObject != null) {
-        break label287;
+      i = 1;
+      if (i == 0) {
+        break label404;
       }
-      label94:
+      i = com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal();
+      localObject = com.tencent.mm.plugin.hld.f.k.JyF;
+      localObject = com.tencent.mm.plugin.hld.f.k.fOx();
       if (localObject != null) {
-        break label307;
+        break label623;
       }
+      label145:
       if (localObject != null) {
-        break label320;
+        break label638;
       }
-      label102:
-      if (localObject != null) {
-        break label332;
+      label150:
+      j = 0;
+      label152:
+      if (j == 0) {
+        break label654;
       }
-      label106:
-      if (localObject != null) {
-        break label345;
+      j = 1;
+      label158:
+      if (j == 0) {
+        break label680;
       }
-      label110:
-      if (localObject != null) {
-        break label358;
-      }
-      label114:
-      if (localObject != null) {
-        break label371;
-      }
-      label118:
-      localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-      localObject = com.tencent.mm.plugin.hld.f.k.eGO();
-      if (localObject != null) {
-        break label384;
+      j = 1;
+      label164:
+      if (j == 0) {
+        break label706;
       }
     }
-    label138:
-    label142:
-    boolean bool;
-    label144:
-    label190:
-    label202:
-    label214:
-    label225:
-    label238:
-    label250:
-    while (((Integer)localObject).intValue() != 18)
+    for (;;)
     {
-      if (localObject != null) {
-        break label398;
-      }
-      if (localObject != null) {
-        break label411;
-      }
-      if (localObject != null) {
-        break label424;
-      }
-      bool = false;
-      DCj = bool;
+      Jvj = bool;
       if (bool)
       {
-        localObject = DBQ;
+        localObject = JuQ;
         if (localObject != null) {
           ImeCandidateView.a((ImeCandidateView)localObject);
         }
       }
-      AppMethodBeat.o(211273);
+      AppMethodBeat.o(311948);
       return i;
       if (((Integer)localObject).intValue() != 4) {
         break;
       }
-      for (;;)
-      {
-        i = com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal();
-        break label118;
-        if (((Integer)localObject).intValue() != 20)
-        {
-          break;
-          if (((Integer)localObject).intValue() != 36)
-          {
-            break label66;
-            if (((Integer)localObject).intValue() != 2)
-            {
-              break label70;
-              if (((Integer)localObject).intValue() != 8194)
-              {
-                break label74;
-                if (((Integer)localObject).intValue() != 18)
-                {
-                  break label78;
-                  if (((Integer)localObject).intValue() != 4098)
-                  {
-                    break label82;
-                    if (((Integer)localObject).intValue() != 3)
-                    {
-                      break label86;
-                      if (((Integer)localObject).intValue() != 161) {
-                        break label90;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+      i = 1;
+      break label77;
+      label213:
+      if (((Integer)localObject).intValue() != 20) {
+        break label75;
       }
-      if (((Integer)localObject).intValue() != 16384) {
-        break label94;
-      }
-      for (;;)
+      i = 1;
+      break label77;
+      label228:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 36)
       {
-        i = com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal();
-        break label118;
-        if (((Integer)localObject).intValue() != 8192)
-        {
-          break;
-          if (((Integer)localObject).intValue() != 33)
-          {
-            break label102;
-            if (((Integer)localObject).intValue() != 129)
-            {
-              break label106;
-              if (((Integer)localObject).intValue() != 145)
-              {
-                break label110;
-                if (((Integer)localObject).intValue() != 209)
-                {
-                  break label114;
-                  if (((Integer)localObject).intValue() != 225) {
-                    break label118;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      label263:
-      label274:
-      label287:
-      label307:
-      label320:
-      label332:
-      label345:
-      label358:
-      label371:
-      bool = true;
-      label384:
-      break label144;
-      label398:
-      if (((Integer)localObject).intValue() != 129)
-      {
+        i = 0;
         break;
-        label411:
-        if (((Integer)localObject).intValue() != 145)
-        {
-          break label138;
-          label424:
-          if (((Integer)localObject).intValue() != 225) {
-            break label142;
-          }
-        }
       }
+      i = 1;
+      break label83;
+      label253:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 2)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label89;
+      label277:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 8194)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label95;
+      label303:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 18)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label101;
+      label328:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 4098)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label107;
+      label354:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 3)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label113;
+      label378:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 161)
+      {
+        i = 0;
+        break;
+      }
+      i = 1;
+      break label119;
+      label404:
+      if (localObject == null)
+      {
+        label409:
+        if (localObject != null) {
+          break label478;
+        }
+        label414:
+        i = 0;
+        label416:
+        if (i == 0) {
+          break label494;
+        }
+        i = 1;
+        label422:
+        if (i == 0) {
+          break label519;
+        }
+        i = 1;
+        label428:
+        if (i == 0) {
+          break label545;
+        }
+        i = 1;
+        label434:
+        if (i == 0) {
+          break label571;
+        }
+        i = 1;
+        label440:
+        if (i == 0) {
+          break label597;
+        }
+        j = 1;
+      }
+      for (;;)
+      {
+        i = k;
+        if (j == 0) {
+          break;
+        }
+        i = com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal();
+        break;
+        if (((Integer)localObject).intValue() != 16384) {
+          break label409;
+        }
+        i = 1;
+        break label416;
+        label478:
+        if (((Integer)localObject).intValue() != 8192) {
+          break label414;
+        }
+        i = 1;
+        break label416;
+        label494:
+        if (localObject == null) {}
+        while (((Integer)localObject).intValue() != 33)
+        {
+          i = 0;
+          break;
+        }
+        i = 1;
+        break label422;
+        label519:
+        if (localObject == null) {}
+        while (((Integer)localObject).intValue() != 129)
+        {
+          i = 0;
+          break;
+        }
+        i = 1;
+        break label428;
+        label545:
+        if (localObject == null) {}
+        while (((Integer)localObject).intValue() != 145)
+        {
+          i = 0;
+          break;
+        }
+        i = 1;
+        break label434;
+        label571:
+        if (localObject == null) {}
+        while (((Integer)localObject).intValue() != 209)
+        {
+          i = 0;
+          break;
+        }
+        i = 1;
+        break label440;
+        label597:
+        if (localObject == null) {}
+        while (((Integer)localObject).intValue() != 225)
+        {
+          j = 0;
+          break;
+        }
+        j = 1;
+      }
+      label623:
+      if (((Integer)localObject).intValue() != 18) {
+        break label145;
+      }
+      j = 1;
+      break label152;
+      label638:
+      if (((Integer)localObject).intValue() != 129) {
+        break label150;
+      }
+      j = 1;
+      break label152;
+      label654:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 145)
+      {
+        j = 0;
+        break;
+      }
+      j = 1;
+      break label158;
+      label680:
+      if (localObject == null) {}
+      while (((Integer)localObject).intValue() != 225)
+      {
+        j = 0;
+        break;
+      }
+      j = 1;
+      break label164;
+      label706:
+      bool = false;
     }
   }
   
-  private final void eDZ()
+  private final void fMb()
   {
     boolean bool = false;
     Object localObject2 = null;
-    AppMethodBeat.i(211282);
+    AppMethodBeat.i(311976);
     long l1 = System.currentTimeMillis();
-    Object localObject1 = com.tencent.mm.ui.k.b.XIY;
-    localObject1 = b.a.axo(a.h.ime_input_view);
-    if (localObject1 != null)
+    Object localObject1 = com.tencent.mm.ui.k.b.afwA;
+    localObject1 = b.a.aDY(a.h.ime_input_view);
+    if (localObject1 == null)
     {
-      localObject1 = ((com.tencent.mm.ui.k.b)localObject1).hXh();
-      DBP = (View)localObject1;
-      if (DBP != null) {
-        break label665;
+      localObject1 = null;
+      JuP = (View)localObject1;
+      if (JuP != null) {
+        break label662;
       }
-      DBP = ad.kS(mContext).inflate(a.h.ime_input_view, null, false);
+      JuP = af.mU(mContext).inflate(a.h.ime_input_view, null, false);
     }
     for (;;)
     {
-      localObject1 = DBP;
-      label91:
+      localObject1 = JuP;
+      label77:
       long l2;
-      if (localObject1 != null)
+      if (localObject1 == null)
       {
-        localObject1 = (ImeCandidateView)((View)localObject1).findViewById(a.f.candidate_container);
-        DBQ = (ImeCandidateView)localObject1;
+        localObject1 = null;
+        JuQ = (ImeCandidateView)localObject1;
         if (localObject1 != null) {
-          ((ImeCandidateView)localObject1).a(Dup);
+          ((ImeCandidateView)localObject1).a(JnO);
         }
         l2 = System.currentTimeMillis();
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label593;
-        }
-        localObject1 = (RelativeLayout)((View)localObject1).findViewById(a.f.input_center_container);
-        label137:
-        DBR = (RelativeLayout)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label599;
-        }
-        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_below_view);
-        label165:
-        DBS = (FrameLayout)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label605;
-        }
-        localObject1 = ((View)localObject1).findViewById(a.f.input_center_view);
-        label190:
-        DBT = (View)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label611;
-        }
-        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_up_view);
-        label218:
-        DBU = (FrameLayout)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label617;
-        }
-        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_view);
-        label246:
-        DBV = (FrameLayout)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label623;
-        }
-        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_left_view);
-        label274:
-        DBW = (FrameLayout)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label629;
-        }
-        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_left_view2);
-        label302:
-        DBX = (FrameLayout)localObject1;
-        localObject1 = DBU;
+        localObject1 = JuP;
         if (localObject1 != null) {
-          ((FrameLayout)localObject1).setOnTouchListener((View.OnTouchListener)e.DCr);
+          break label457;
         }
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label635;
+        localObject1 = null;
+        label113:
+        JuR = (RelativeLayout)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label473;
         }
-        localObject1 = (RelativeLayout)((View)localObject1).findViewById(a.f.active_ll);
-        label351:
-        DBY = (RelativeLayout)localObject1;
-        if (localObject1 == null) {
-          break label641;
+        localObject1 = null;
+        label131:
+        JuS = (FrameLayout)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label489;
         }
-        localObject1 = (TextView)((RelativeLayout)localObject1).findViewById(a.f.title_tv);
-        label374:
-        DBZ = (TextView)localObject1;
-        localObject1 = DBY;
-        if (localObject1 == null) {
-          break label647;
+        localObject1 = null;
+        label149:
+        JuT = (View)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label502;
         }
-        localObject1 = (TextView)((RelativeLayout)localObject1).findViewById(a.f.desc_tv);
-        label402:
-        DCa = (TextView)localObject1;
-        localObject1 = DBY;
-        if (localObject1 == null) {
-          break label653;
+        localObject1 = null;
+        label167:
+        JuU = (FrameLayout)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label518;
         }
-        localObject1 = (Button)((RelativeLayout)localObject1).findViewById(a.f.setting_bt);
-        label430:
-        DCb = (Button)localObject1;
-        localObject1 = DBP;
-        if (localObject1 == null) {
-          break label659;
+        localObject1 = null;
+        label185:
+        JuV = (FrameLayout)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label534;
+        }
+        localObject1 = null;
+        label203:
+        JuW = (FrameLayout)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label550;
+        }
+        localObject1 = null;
+        label221:
+        JuX = (FrameLayout)localObject1;
+        localObject1 = JuU;
+        if (localObject1 != null) {
+          ((FrameLayout)localObject1).setOnTouchListener(g..ExternalSyntheticLambda3.INSTANCE);
+        }
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label566;
+        }
+        localObject1 = null;
+        label257:
+        JuY = (RelativeLayout)localObject1;
+        if (localObject1 != null) {
+          break label582;
+        }
+        localObject1 = null;
+        label270:
+        JuZ = (TextView)localObject1;
+        localObject1 = JuY;
+        if (localObject1 != null) {
+          break label598;
+        }
+        localObject1 = null;
+        label288:
+        Jva = (TextView)localObject1;
+        localObject1 = JuY;
+        if (localObject1 != null) {
+          break label614;
+        }
+        localObject1 = null;
+        label306:
+        Jvb = (Button)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label630;
+        }
+        localObject1 = null;
+        label324:
+        Jvc = (ViewStub)localObject1;
+        localObject1 = JuP;
+        if (localObject1 != null) {
+          break label646;
         }
       }
-      label641:
-      label647:
-      label653:
-      label659:
-      for (localObject1 = (ViewStub)((View)localObject1).findViewById(a.f.update_dict_viewstub);; localObject1 = null)
+      label646:
+      for (localObject1 = localObject2;; localObject1 = (Button)((View)localObject1).findViewById(a.f.setting_bt))
       {
-        DCc = (ViewStub)localObject1;
-        View localView = DBP;
-        localObject1 = localObject2;
-        if (localView != null) {
-          localObject1 = (Button)localView.findViewById(a.f.setting_bt);
-        }
-        DCe = (Button)localObject1;
+        Jve = (Button)localObject1;
         if (localObject1 != null) {
-          ((Button)localObject1).setOnClickListener((View.OnClickListener)f.DCs);
+          ((Button)localObject1).setOnClickListener(g..ExternalSyntheticLambda2.INSTANCE);
         }
         long l3 = System.currentTimeMillis();
-        eEd();
+        fMf();
         Log.i("WxIme.ImeKeyboardSwitch", "initInputView async:" + bool + " startTime:" + l1 + " secondStage:" + l2 + " thirdStage:" + l3);
-        AppMethodBeat.o(211282);
+        AppMethodBeat.o(311976);
         return;
-        localObject1 = null;
+        localObject1 = ((com.tencent.mm.ui.k.b)localObject1).jBE();
         break;
-        localObject1 = null;
-        break label91;
-        label593:
-        localObject1 = null;
-        break label137;
-        label599:
-        localObject1 = null;
-        break label165;
-        label605:
-        localObject1 = null;
-        break label190;
-        label611:
-        localObject1 = null;
-        break label218;
-        label617:
-        localObject1 = null;
-        break label246;
-        label623:
-        localObject1 = null;
-        break label274;
-        label629:
-        localObject1 = null;
-        break label302;
-        label635:
-        localObject1 = null;
-        break label351;
-        localObject1 = null;
-        break label374;
-        localObject1 = null;
-        break label402;
-        localObject1 = null;
-        break label430;
+        localObject1 = (ImeCandidateView)((View)localObject1).findViewById(a.f.candidate_container);
+        break label77;
+        label457:
+        localObject1 = (RelativeLayout)((View)localObject1).findViewById(a.f.input_center_container);
+        break label113;
+        label473:
+        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_below_view);
+        break label131;
+        label489:
+        localObject1 = ((View)localObject1).findViewById(a.f.input_center_view);
+        break label149;
+        label502:
+        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_up_view);
+        break label167;
+        label518:
+        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_view);
+        break label185;
+        label534:
+        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_left_view);
+        break label203;
+        label550:
+        localObject1 = (FrameLayout)((View)localObject1).findViewById(a.f.input_left_view2);
+        break label221;
+        label566:
+        localObject1 = (RelativeLayout)((View)localObject1).findViewById(a.f.active_ll);
+        break label257;
+        label582:
+        localObject1 = (TextView)((RelativeLayout)localObject1).findViewById(a.f.title_tv);
+        break label270;
+        label598:
+        localObject1 = (TextView)((RelativeLayout)localObject1).findViewById(a.f.desc_tv);
+        break label288;
+        label614:
+        localObject1 = (Button)((RelativeLayout)localObject1).findViewById(a.f.setting_bt);
+        break label306;
+        label630:
+        localObject1 = (ViewStub)((View)localObject1).findViewById(a.f.update_dict_viewstub);
+        break label324;
       }
-      label665:
+      label662:
       bool = true;
     }
   }
   
-  public static View eEa()
+  public static View fMc()
   {
-    AppMethodBeat.i(211284);
-    View localView2 = DBP;
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = new View(MMApplicationContext.getContext());
+    AppMethodBeat.i(311986);
+    View localView = JuP;
+    if (localView == null)
+    {
+      localView = new View(MMApplicationContext.getContext());
+      AppMethodBeat.o(311986);
+      return localView;
     }
-    AppMethodBeat.o(211284);
-    return localView1;
+    AppMethodBeat.o(311986);
+    return localView;
   }
   
-  public static void eEb()
+  public static void fMd()
   {
-    AppMethodBeat.i(211298);
-    Object localObject = eEp();
+    AppMethodBeat.i(312055);
+    Object localObject = fMr();
     if (localObject != null) {
-      ((Keyboard)localObject).b(Dup);
+      ((Keyboard)localObject).b(JnO);
     }
-    localObject = DBQ;
-    if (localObject != null)
-    {
-      ((ImeCandidateView)localObject).getStrikeTv().setTextSize(0, com.tencent.mm.ci.a.aZ(((ImeCandidateView)localObject).getContext(), a.d.keyboard_strike_text_size));
-      AppMethodBeat.o(211298);
-      return;
+    localObject = JuQ;
+    if (localObject != null) {
+      ((ImeCandidateView)localObject).getStrikeTv().setTextSize(0, com.tencent.mm.cd.a.bs(((ImeCandidateView)localObject).getContext(), a.d.keyboard_strike_text_size));
     }
-    AppMethodBeat.o(211298);
+    AppMethodBeat.o(312055);
   }
   
-  private static void eEc()
+  private static void fMe()
   {
-    AppMethodBeat.i(211305);
-    Object localObject = eEp();
+    AppMethodBeat.i(312067);
+    Object localObject = fMr();
     if (localObject != null)
     {
-      FrameLayout localFrameLayout = DBW;
+      FrameLayout localFrameLayout = JuW;
       if (localFrameLayout != null) {
         localFrameLayout.removeAllViews();
       }
-      ((Keyboard)localObject).b(Dup);
-      localFrameLayout = DBW;
+      ((Keyboard)localObject).b(JnO);
+      localFrameLayout = JuW;
       if (localFrameLayout != null) {
         localFrameLayout.addView((View)localObject);
       }
-      localObject = DBW;
-      if (localObject != null)
-      {
+      localObject = JuW;
+      if (localObject != null) {
         ((FrameLayout)localObject).setVisibility(0);
-        AppMethodBeat.o(211305);
-        return;
       }
-      AppMethodBeat.o(211305);
-      return;
     }
-    AppMethodBeat.o(211305);
+    AppMethodBeat.o(312067);
   }
   
-  private static void eEd()
+  private static void fMf()
   {
-    AppMethodBeat.i(211307);
-    Object localObject1 = DBU;
+    AppMethodBeat.i(312093);
+    Object localObject1 = JuU;
     if (localObject1 != null) {
       ((FrameLayout)localObject1).removeAllViews();
     }
-    localObject1 = eEp();
+    localObject1 = fMr();
     Object localObject2;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      localObject2 = DBU;
-      if (localObject2 == null) {
-        break label196;
-      }
-      ((FrameLayout)localObject2).addView((View)localObject1);
-      localObject1 = x.aazN;
-      if (localObject1 != null) {}
-    }
-    else
-    {
-      localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      int i = eEm();
-      localObject2 = com.tencent.mm.plugin.hld.f.k.DHH;
-      localObject1 = ((com.tencent.mm.plugin.hld.f.l)localObject1).aG(i, com.tencent.mm.plugin.hld.f.k.isLandscape());
-      localObject2 = com.tencent.mm.plugin.hld.f.k.DHH;
-      if ((com.tencent.mm.plugin.hld.f.k.isLandscape()) || (!u.agG((String)localObject1))) {
-        break label201;
+      localObject1 = null;
+      if (localObject1 == null)
+      {
+        localObject1 = l.JyV;
+        int i = fMo();
+        localObject2 = com.tencent.mm.plugin.hld.f.k.JyF;
+        localObject1 = ((l)localObject1).bg(i, com.tencent.mm.plugin.hld.f.k.isLandscape());
+        localObject2 = com.tencent.mm.plugin.hld.f.k.JyF;
+        if ((com.tencent.mm.plugin.hld.f.k.isLandscape()) || (!y.ZC((String)localObject1))) {
+          break label202;
+        }
       }
     }
-    label196:
-    label201:
+    label202:
     for (boolean bool = true;; bool = false)
     {
       if (bool)
@@ -1275,396 +1525,529 @@ public final class g
         ((ImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
         ((ImageView)localObject1).setImageBitmap(localBitmap);
         ((ImageView)localObject1).setAlpha(1.0F);
-        localObject2 = DBU;
+        localObject2 = JuU;
         if (localObject2 != null) {
           ((FrameLayout)localObject2).addView((View)localObject1, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
         }
       }
-      Log.i("WxIme.ImeKeyboardSwitch", "updateInputUpKeyboard ".concat(String.valueOf(bool)));
-      localObject1 = x.aazN;
-      AppMethodBeat.o(211307);
+      Log.i("WxIme.ImeKeyboardSwitch", s.X("updateInputUpKeyboard ", Boolean.valueOf(bool)));
+      AppMethodBeat.o(312093);
       return;
-      localObject1 = null;
+      localObject2 = JuU;
+      if (localObject2 == null)
+      {
+        localObject1 = null;
+        break;
+      }
+      ((FrameLayout)localObject2).addView((View)localObject1);
+      localObject1 = ah.aiuX;
       break;
     }
   }
   
-  private static void eEe()
+  private static void fMg()
   {
-    AppMethodBeat.i(211308);
-    Object localObject = DBS;
+    AppMethodBeat.i(312102);
+    Object localObject = JuS;
     if (localObject != null) {
       ((FrameLayout)localObject).removeAllViews();
     }
-    localObject = eEp();
+    localObject = fMr();
     if (localObject != null)
     {
-      FrameLayout localFrameLayout = DBS;
-      if (localFrameLayout != null)
-      {
+      FrameLayout localFrameLayout = JuS;
+      if (localFrameLayout != null) {
         localFrameLayout.addView((View)localObject);
-        AppMethodBeat.o(211308);
-        return;
       }
-      AppMethodBeat.o(211308);
-      return;
     }
-    AppMethodBeat.o(211308);
+    AppMethodBeat.o(312102);
   }
   
-  private static void eEf()
+  private static void fMh()
   {
-    AppMethodBeat.i(211309);
-    Object localObject = DBV;
+    AppMethodBeat.i(312109);
+    Object localObject = JuV;
     if (localObject != null) {
       ((FrameLayout)localObject).removeAllViews();
     }
-    localObject = eEp();
+    localObject = fMr();
     if (localObject != null)
     {
-      FrameLayout localFrameLayout = DBV;
-      if (localFrameLayout != null)
-      {
+      FrameLayout localFrameLayout = JuV;
+      if (localFrameLayout != null) {
         localFrameLayout.addView((View)localObject);
-        AppMethodBeat.o(211309);
-        return;
       }
-      AppMethodBeat.o(211309);
-      return;
     }
-    AppMethodBeat.o(211309);
+    AppMethodBeat.o(312109);
   }
   
-  public static int eEg()
+  public static int fMi()
   {
-    AppMethodBeat.i(211313);
-    Object localObject = DCk;
-    if (localObject != null)
+    AppMethodBeat.i(312136);
+    Object localObject = Jvk;
+    if (localObject == null)
     {
-      i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(211313);
+      localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+      i = com.tencent.mm.plugin.hld.f.i.fMo();
+      AppMethodBeat.o(312136);
       return i;
     }
-    localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-    int i = com.tencent.mm.plugin.hld.f.i.eEm();
-    AppMethodBeat.o(211313);
+    int i = ((Integer)localObject).intValue();
+    AppMethodBeat.o(312136);
     return i;
   }
   
-  public static boolean eEh()
+  public static boolean fMj()
   {
-    AppMethodBeat.i(211315);
-    if (eEg() == com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal())
+    AppMethodBeat.i(312144);
+    if (fMi() == com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal())
     {
-      AppMethodBeat.o(211315);
+      AppMethodBeat.o(312144);
       return true;
     }
-    AppMethodBeat.o(211315);
+    AppMethodBeat.o(312144);
     return false;
   }
   
-  public static void eEi()
+  public static void fMk()
   {
-    AppMethodBeat.i(211318);
-    DCh = false;
-    aa.f localf = new aa.f();
+    AppMethodBeat.i(312167);
+    Jvh = false;
+    ah.f localf = new ah.f();
     Object localObject = mContext;
-    String str;
-    if (localObject != null)
+    ah.d locald;
+    if (localObject == null)
     {
-      localObject = ((Context)localObject).getResources();
-      if (localObject != null)
-      {
-        str = ((Resources)localObject).getString(a.j.newline);
-        localObject = str;
-        if (str != null) {
-          break label53;
-        }
+      localObject = "";
+      localf.aqH = localObject;
+      locald = new ah.d();
+      locald.aixb = 2;
+      if (((fMo() > com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal()) && (fMo() != com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal())) || (JuO != 2)) {
+        break label198;
       }
-    }
-    localObject = "";
-    label53:
-    localf.aaBC = localObject;
-    final aa.d locald = new aa.d();
-    locald.aaBA = 2;
-    if (((eEm() <= com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal()) || (eEm() == com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal())) && (DBO == 2))
-    {
       localObject = mContext;
-      if (localObject != null)
-      {
-        localObject = ((Context)localObject).getResources();
-        if (localObject != null)
-        {
-          str = ((Resources)localObject).getString(a.j.confirm);
-          localObject = str;
-          if (str != null) {
-            break label139;
-          }
-        }
+      if (localObject != null) {
+        break label161;
       }
       localObject = "";
-      label139:
-      localf.aaBC = localObject;
+      label93:
+      localf.aqH = localObject;
+    }
+    String str;
+    label161:
+    label198:
+    int i;
+    for (;;)
+    {
+      com.tencent.threadpool.h.ahAA.bk(new g..ExternalSyntheticLambda8(localf, locald));
+      AppMethodBeat.o(312167);
+      return;
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
+      {
+        localObject = "";
+        break;
+      }
+      str = ((Resources)localObject).getString(a.j.newline);
+      localObject = str;
+      if (str != null) {
+        break;
+      }
+      localObject = "";
+      break;
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
+      {
+        localObject = "";
+        break label93;
+      }
+      str = ((Resources)localObject).getString(a.j.confirm);
+      localObject = str;
+      if (str != null) {
+        break label93;
+      }
+      localObject = "";
+      break label93;
+      localObject = (d)com.tencent.mm.kernel.h.ax(d.class);
+      if (localObject != null) {
+        break label285;
+      }
+      i = 1;
+      label214:
+      switch (i & 0xFF)
+      {
+      }
+    }
+    locald.aixb = 3;
+    localObject = mContext;
+    if (localObject == null) {
+      localObject = "";
     }
     for (;;)
     {
-      com.tencent.e.h.ZvG.bc((Runnable)new o(localf, locald));
-      AppMethodBeat.o(211318);
-      return;
-      localObject = (d)com.tencent.mm.kernel.h.ae(d.class);
-      if (localObject != null)
+      localf.aqH = localObject;
+      break;
+      label285:
+      localObject = ((d)localObject).fKG();
+      if (localObject == null)
       {
-        localObject = ((d)localObject).eCD();
-        if (localObject == null) {}
+        i = 1;
+        break label214;
       }
-      for (int i = ((com.tencent.mm.plugin.hld.a.b)localObject).eCp();; i = 1) {
-        switch (i & 0xFF)
-        {
-        case 6: 
-        default: 
-          break;
-        case 2: 
-          locald.aaBA = 3;
-          localObject = mContext;
-          if (localObject != null)
-          {
-            localObject = ((Context)localObject).getResources();
-            if (localObject != null)
-            {
-              str = ((Resources)localObject).getString(a.j.key_action_go);
-              localObject = str;
-              if (str != null) {
-                break label292;
-              }
-            }
-          }
-          localObject = "";
-          label292:
-          localf.aaBC = localObject;
-          break;
-        }
-      }
-      locald.aaBA = 3;
-      localObject = mContext;
-      if (localObject != null)
+      i = ((com.tencent.mm.plugin.hld.a.b)localObject).fKt();
+      break label214;
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
       {
-        localObject = ((Context)localObject).getResources();
-        if (localObject != null)
-        {
-          str = ((Resources)localObject).getString(a.j.key_action_search);
-          localObject = str;
-          if (str != null) {
-            break label346;
-          }
-        }
-      }
-      localObject = "";
-      label346:
-      localf.aaBC = localObject;
-      continue;
-      localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-      if (com.tencent.mm.plugin.hld.f.l.eGY()) {}
-      for (locald.aaBA = 1;; locald.aaBA = 3)
-      {
-        localObject = mContext;
-        if (localObject != null)
-        {
-          localObject = ((Context)localObject).getResources();
-          if (localObject != null)
-          {
-            str = ((Resources)localObject).getString(a.j.key_action_send);
-            localObject = str;
-            if (str != null) {
-              break label405;
-            }
-          }
-        }
         localObject = "";
-        label405:
-        localf.aaBC = localObject;
-        DCh = true;
-        break;
       }
-      locald.aaBA = 3;
-      localObject = mContext;
-      if (localObject != null)
+      else
       {
-        localObject = ((Context)localObject).getResources();
-        if (localObject != null)
-        {
-          str = ((Resources)localObject).getString(a.j.key_action_next);
-          localObject = str;
-          if (str != null) {
-            break label467;
-          }
+        str = ((Resources)localObject).getString(a.j.key_action_go);
+        localObject = str;
+        if (str == null) {
+          localObject = "";
         }
       }
+    }
+    locald.aixb = 3;
+    localObject = mContext;
+    if (localObject == null) {
       localObject = "";
-      label467:
-      localf.aaBC = localObject;
-      continue;
-      locald.aaBA = 3;
-      localObject = mContext;
-      if (localObject != null)
+    }
+    for (;;)
+    {
+      localf.aqH = localObject;
+      break;
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
       {
-        localObject = ((Context)localObject).getResources();
-        if (localObject != null)
-        {
-          str = ((Resources)localObject).getString(a.j.key_action_previous);
-          localObject = str;
-          if (str != null) {
-            break label516;
-          }
+        localObject = "";
+      }
+      else
+      {
+        str = ((Resources)localObject).getString(a.j.key_action_search);
+        localObject = str;
+        if (str == null) {
+          localObject = "";
         }
       }
+    }
+    localObject = l.JyV;
+    if (l.fOH())
+    {
+      locald.aixb = 1;
+      label427:
+      localObject = mContext;
+      if (localObject != null) {
+        break label460;
+      }
       localObject = "";
-      label516:
-      localf.aaBC = localObject;
     }
-  }
-  
-  public static int eEj()
-  {
-    return DBO;
-  }
-  
-  public static boolean eEk()
-  {
-    AppMethodBeat.i(211322);
-    Keyboard localKeyboard = eEp();
-    if (localKeyboard != null)
+    for (;;)
     {
-      boolean bool = localKeyboard.eDJ();
-      AppMethodBeat.o(211322);
-      return bool;
-    }
-    AppMethodBeat.o(211322);
-    return false;
-  }
-  
-  public static ImeCandidateView eEl()
-  {
-    return DBQ;
-  }
-  
-  public static int eEm()
-  {
-    AppMethodBeat.i(211324);
-    try
-    {
-      Object localObject1 = DBN.getLast();
-      p.j(localObject1, "mKeyboardTask.last");
-      localObject1 = (Integer)localObject1;
-      int i = ((Integer)localObject1).intValue();
-      AppMethodBeat.o(211324);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      localf.aqH = localObject;
+      Jvh = true;
+      break;
+      locald.aixb = 3;
+      break label427;
+      label460:
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
       {
-        Object localObject2 = com.tencent.mm.plugin.hld.f.i.DHq;
-        localObject2 = Integer.valueOf(com.tencent.mm.plugin.hld.f.i.eEm());
+        localObject = "";
+      }
+      else
+      {
+        str = ((Resources)localObject).getString(a.j.key_action_send);
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
+      }
+    }
+    locald.aixb = 3;
+    localObject = mContext;
+    if (localObject == null) {
+      localObject = "";
+    }
+    for (;;)
+    {
+      localf.aqH = localObject;
+      break;
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
+      {
+        localObject = "";
+      }
+      else
+      {
+        str = ((Resources)localObject).getString(a.j.key_action_next);
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
+      }
+    }
+    locald.aixb = 3;
+    localObject = mContext;
+    if (localObject == null) {
+      localObject = "";
+    }
+    for (;;)
+    {
+      localf.aqH = localObject;
+      break;
+      localObject = ((Context)localObject).getResources();
+      if (localObject == null)
+      {
+        localObject = "";
+      }
+      else
+      {
+        str = ((Resources)localObject).getString(a.j.key_action_previous);
+        localObject = str;
+        if (str == null) {
+          localObject = "";
+        }
       }
     }
   }
   
-  public static boolean eEn()
+  public static int fMl()
   {
-    return DCj;
+    return JuO;
   }
   
-  public static int eEo()
+  public static boolean fMm()
   {
-    AppMethodBeat.i(211331);
+    AppMethodBeat.i(312180);
+    Keyboard localKeyboard = fMr();
+    if (localKeyboard == null)
+    {
+      AppMethodBeat.o(312180);
+      return false;
+    }
+    boolean bool = localKeyboard.fLL();
+    AppMethodBeat.o(312180);
+    return bool;
+  }
+  
+  public static ImeCandidateView fMn()
+  {
+    return JuQ;
+  }
+  
+  public static int fMo()
+  {
+    AppMethodBeat.i(312199);
     try
     {
-      i = Math.max(DBN.size() - 2, 0);
-      Object localObject = DBN.get(i);
-      p.j(localObject, "mKeyboardTask[index]");
+      Object localObject = JuN.getLast();
+      s.s(localObject, "{\n            mKeyboardTask.last\n        }");
       i = ((Number)localObject).intValue();
-      AppMethodBeat.o(211331);
+      AppMethodBeat.o(312199);
       return i;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.DHq;
-        int i = com.tencent.mm.plugin.hld.f.i.eEm();
+        com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.JyA;
+        int i = com.tencent.mm.plugin.hld.f.i.fMo();
       }
     }
   }
   
-  public static Keyboard eEp()
+  public static boolean fMp()
   {
-    AppMethodBeat.i(211332);
-    Object localObject = DBM;
-    if (localObject != null)
-    {
-      localObject = (Keyboard)((HashMap)localObject).get(Integer.valueOf(eEm()));
-      AppMethodBeat.o(211332);
-      return localObject;
-    }
-    AppMethodBeat.o(211332);
-    return null;
+    return Jvj;
   }
   
-  private static void f(Context paramContext, int paramInt, boolean paramBoolean)
+  public static int fMq()
   {
-    AppMethodBeat.i(211288);
-    int j = 1;
-    HashMap localHashMap = DBM;
-    int i = j;
-    if (localHashMap != null)
+    AppMethodBeat.i(312236);
+    try
     {
-      i = j;
-      if (localHashMap.get(Integer.valueOf(paramInt)) != null) {
-        i = 0;
+      i = Math.max(JuN.size() - 2, 0);
+      Object localObject = JuN.get(i);
+      s.s(localObject, "{\n            val index …oardTask[index]\n        }");
+      i = ((Number)localObject).intValue();
+      AppMethodBeat.o(312236);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.JyA;
+        int i = com.tencent.mm.plugin.hld.f.i.fMo();
       }
     }
-    if (i != 0) {
-      a(paramContext, paramInt, Uw(paramInt), paramBoolean);
-    }
-    AppMethodBeat.o(211288);
   }
   
-  public static void gP(Context paramContext)
+  public static Keyboard fMr()
   {
-    AppMethodBeat.i(211280);
-    p.k(paramContext, "context");
-    if (DCl)
+    AppMethodBeat.i(312242);
+    Object localObject = JuM;
+    if (localObject == null)
     {
-      AppMethodBeat.o(211280);
+      AppMethodBeat.o(312242);
+      return null;
+    }
+    localObject = (Keyboard)((HashMap)localObject).get(Integer.valueOf(fMo()));
+    AppMethodBeat.o(312242);
+    return localObject;
+  }
+  
+  private static final void g(ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(312335);
+    if (paramValueAnimator == null)
+    {
+      paramValueAnimator = null;
+      if (!(paramValueAnimator instanceof Float)) {
+        break label71;
+      }
+      paramValueAnimator = (Float)paramValueAnimator;
+      label24:
+      if (paramValueAnimator != null) {
+        break label76;
+      }
+    }
+    label71:
+    label76:
+    for (float f = 0.0F;; f = paramValueAnimator.floatValue())
+    {
+      paramValueAnimator = JuT;
+      if (paramValueAnimator != null)
+      {
+        com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+        paramValueAnimator.setAlpha(1.0F - f / com.tencent.mm.plugin.hld.f.k.ir(mContext));
+      }
+      AppMethodBeat.o(312335);
+      return;
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      break;
+      paramValueAnimator = null;
+      break label24;
+    }
+  }
+  
+  private static final void hQ(View paramView)
+  {
+    AppMethodBeat.i(312289);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    paramView = com.tencent.mm.plugin.hld.f.i.JyA;
+    int i;
+    if (!com.tencent.mm.plugin.hld.f.i.bGa())
+    {
+      paramView = (d)com.tencent.mm.kernel.h.ax(d.class);
+      if (paramView != null)
+      {
+        paramView = paramView.fKG();
+        if ((paramView != null) && (paramView.fKx() == true))
+        {
+          i = 1;
+          if (i == 0) {
+            break label167;
+          }
+          paramView = MMApplicationContext.getContext().getSystemService("input_method");
+          if (!(paramView instanceof InputMethodManager)) {
+            break label162;
+          }
+          paramView = (InputMethodManager)paramView;
+          label120:
+          if (paramView != null) {
+            paramView.showInputMethodPicker();
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(312289);
+      return;
+      i = 0;
+      break;
+      label162:
+      paramView = null;
+      break label120;
+      label167:
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.HldContactUI");
+      ((Intent)localObject).addFlags(268435456);
+      paramView = MMApplicationContext.getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch", "handleActiveMaskBtClick", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch", "handleActiveMaskBtClick", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView = k.JvH;
+      k.jp(14, 7);
+    }
+  }
+  
+  private static final boolean i(View paramView, MotionEvent paramMotionEvent)
+  {
+    return true;
+  }
+  
+  public static void ij(Context paramContext)
+  {
+    AppMethodBeat.i(311958);
+    s.u(paramContext, "context");
+    if (Jvl)
+    {
+      AppMethodBeat.o(311958);
       return;
     }
-    DCl = true;
-    com.tencent.e.h.ZvG.bc((Runnable)new l(paramContext));
-    AppMethodBeat.o(211280);
+    Jvl = true;
+    com.tencent.threadpool.h.ahAA.bk(new g..ExternalSyntheticLambda5(paramContext));
+    AppMethodBeat.o(311958);
   }
   
-  private static boolean h(Context paramContext, int paramInt1, int paramInt2)
+  private static final void ik(Context paramContext)
   {
-    AppMethodBeat.i(211296);
+    AppMethodBeat.i(312271);
+    s.u(paramContext, "$context");
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrt.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrx.ordinal());
+    aJ(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jry.ordinal());
+    AppMethodBeat.o(312271);
+  }
+  
+  private static boolean k(Context paramContext, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(312050);
     boolean bool = true;
-    Object localObject1 = com.tencent.mm.ui.k.b.XIY;
-    localObject1 = b.a.axo(paramInt2);
+    Object localObject1 = com.tencent.mm.ui.k.b.afwA;
+    localObject1 = b.a.aDY(paramInt2);
     Object localObject2;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      localObject1 = ((com.tencent.mm.ui.k.b)localObject1).hXh();
+      localObject1 = null;
       localObject2 = localObject1;
       if (localObject1 == null)
       {
-        localObject2 = ad.kS(paramContext).inflate(paramInt2, null, false);
+        localObject2 = af.mU(paramContext).inflate(paramInt2, null, false);
         bool = false;
       }
-      if (localObject2 == null) {
-        break label143;
+      if (localObject2 != null) {
+        break label133;
       }
-      localObject1 = (Keyboard)((View)localObject2).findViewById(a.f.root);
-      label72:
-      localObject2 = DBM;
+      localObject1 = null;
+      label58:
+      localObject2 = JuM;
       if (localObject2 != null)
       {
         localObject2 = (Map)localObject2;
@@ -1673,7 +2056,7 @@ public final class g
         }
       }
     }
-    label143:
+    label133:
     label149:
     for (paramContext = (Keyboard)new S2ChineseQwertyKeyboard(paramContext);; paramContext = (Context)localObject1)
     {
@@ -1681,449 +2064,396 @@ public final class g
       if (localObject1 != null) {
         ((Keyboard)localObject1).onCreate();
       }
-      AppMethodBeat.o(211296);
+      AppMethodBeat.o(312050);
       return bool;
-      localObject1 = null;
+      localObject1 = ((com.tencent.mm.ui.k.b)localObject1).jBE();
       break;
-      localObject1 = null;
-      break label72;
+      localObject1 = (Keyboard)((View)localObject2).findViewById(a.f.root);
+      break label58;
     }
-  }
-  
-  private static void p(Integer paramInteger)
-  {
-    AppMethodBeat.i(211329);
-    if (paramInteger != null)
-    {
-      ((Number)paramInteger).intValue();
-      if (paramInteger.intValue() <= com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal())
-      {
-        if ((p.h(DCk, paramInteger) ^ true))
-        {
-          DCk = paramInteger;
-          n.DEn.eEO();
-        }
-        DBN.clear();
-      }
-      if (DBN.contains(paramInteger))
-      {
-        int i = DBN.indexOf(paramInteger);
-        while ((i + 1 < DBN.size()) && (i >= 0)) {
-          DBN.removeLast();
-        }
-      }
-      DBN.add(paramInteger);
-      AppMethodBeat.o(211329);
-      return;
-    }
-    AppMethodBeat.o(211329);
   }
   
   public static void reset()
   {
-    DCi = false;
-    DCl = false;
+    Jvi = false;
+    Jvl = false;
   }
   
-  public final void Ux(final int paramInt)
+  private static void w(Integer paramInteger)
   {
-    AppMethodBeat.i(211304);
-    if (DBM != null)
+    AppMethodBeat.i(312228);
+    if (paramInteger != null)
     {
-      localObject1 = DBM;
-      if (localObject1 == null) {
-        p.iCn();
+      ((Number)paramInteger).intValue();
+      if (paramInteger.intValue() <= com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal())
+      {
+        if (!s.p(Jvk, paramInteger))
+        {
+          Jvk = paramInteger;
+          n.JvW.fMR();
+        }
+        JuN.clear();
       }
+      if (JuN.contains(paramInteger))
+      {
+        int i = JuN.indexOf(paramInteger);
+        while ((i + 1 < JuN.size()) && (i >= 0)) {
+          JuN.removeLast();
+        }
+      }
+      JuN.add(paramInteger);
+    }
+    AppMethodBeat.o(312228);
+  }
+  
+  public final void Yu(final int paramInt)
+  {
+    AppMethodBeat.i(312558);
+    if (JuM != null)
+    {
+      localObject1 = JuM;
+      s.checkNotNull(localObject1);
       if (((HashMap)localObject1).get(Integer.valueOf(paramInt)) == null)
       {
         Log.e("WxIme.ImeKeyboardSwitch", "switchKeyboard " + paramInt + " is null..");
-        AppMethodBeat.o(211304);
+        AppMethodBeat.o(312558);
         return;
       }
     }
-    final int i = eEm();
-    Object localObject1 = DCk;
+    final int i = fMo();
+    Object localObject1 = Jvk;
     if (paramInt == i)
     {
       Log.i("WxIme.ImeKeyboardSwitch", "switchKeyboard equal(" + i + ')');
-      AppMethodBeat.o(211304);
+      AppMethodBeat.o(312558);
       return;
     }
-    Object localObject2 = f.DBL;
-    f.eDS();
-    localObject2 = new aa.a();
+    Object localObject2 = f.JuH;
+    f.fLV();
+    localObject2 = new ah.a();
     boolean bool1;
-    final aa.a locala;
-    label188:
-    label206:
+    final ah.a locala;
+    label185:
+    label203:
     boolean bool2;
-    label219:
+    label216:
     boolean bool3;
-    if ((paramInt >= com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal()) && (paramInt > i))
+    if ((paramInt >= com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal()) && (paramInt > i))
     {
       bool1 = true;
-      ((aa.a)localObject2).aaBx = bool1;
-      locala = new aa.a();
-      if ((i < com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal()) || (paramInt >= i)) {
-        break label446;
+      ((ah.a)localObject2).aiwY = bool1;
+      locala = new ah.a();
+      if ((i < com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal()) || (paramInt >= i)) {
+        break label443;
       }
       bool1 = true;
-      locala.aaBx = bool1;
-      if (i != com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal()) {
-        break label451;
+      locala.aiwY = bool1;
+      if (i != com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal()) {
+        break label448;
       }
       bool1 = true;
-      if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal()) {
-        break label456;
+      if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal()) {
+        break label453;
       }
       bool2 = true;
-      if (paramInt >= com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal()) {
-        break label462;
+      if (paramInt >= com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal()) {
+        break label459;
       }
       bool3 = true;
-      label232:
-      if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Dyr.ordinal()) {
-        break label468;
+      label229:
+      if (paramInt != com.tencent.mm.plugin.hld.keyboard.c.Jrv.ordinal()) {
+        break label465;
       }
     }
-    label446:
-    label451:
-    label456:
-    label462:
-    label468:
+    label443:
+    label448:
+    label453:
+    label459:
+    label465:
     for (boolean bool4 = true;; bool4 = false)
     {
-      p(Integer.valueOf(paramInt));
-      if (paramInt <= com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal())
+      w(Integer.valueOf(paramInt));
+      if (paramInt <= com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal())
       {
-        com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.DHq;
-        com.tencent.mm.plugin.hld.f.i.UJ(eEm());
+        com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.JyA;
+        com.tencent.mm.plugin.hld.f.i.YH(fMo());
       }
-      Log.i("WxIme.ImeKeyboardSwitch", "switchKeyboard " + i + " to:" + paramInt + ' ' + ((aa.a)localObject2).aaBx + ' ' + locala.aaBx + ' ' + bool1 + ' ' + bool2 + ' ' + bool3 + ' ' + bool4 + ' ' + localObject1);
-      a(((aa.a)localObject2).aaBx, locala.aaBx, bool1, bool2, bool3, bool4, (kotlin.g.a.a)new m((aa.a)localObject2, locala, paramInt, i), (kotlin.g.a.a)new n(i, paramInt, (aa.a)localObject2, locala));
-      AppMethodBeat.o(211304);
+      Log.i("WxIme.ImeKeyboardSwitch", "switchKeyboard " + i + " to:" + paramInt + ' ' + ((ah.a)localObject2).aiwY + ' ' + locala.aiwY + ' ' + bool1 + ' ' + bool2 + ' ' + bool3 + ' ' + bool4 + ' ' + localObject1);
+      a(((ah.a)localObject2).aiwY, locala.aiwY, bool1, bool2, bool3, bool4, (kotlin.g.a.a)new g((ah.a)localObject2, locala, paramInt, i), (kotlin.g.a.a)new h(i, paramInt, (ah.a)localObject2, locala));
+      AppMethodBeat.o(312558);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label188;
+      break label185;
       bool1 = false;
-      break label206;
+      break label203;
       bool2 = false;
-      break label219;
+      break label216;
       bool3 = false;
-      break label232;
+      break label229;
     }
   }
   
   public final void a(com.tencent.mm.plugin.hld.keyboard.c paramc)
   {
-    AppMethodBeat.i(211302);
-    p.k(paramc, "keyboard");
-    Ux(paramc.ordinal());
-    AppMethodBeat.o(211302);
+    AppMethodBeat.i(312544);
+    s.u(paramc, "keyboard");
+    Yu(paramc.ordinal());
+    AppMethodBeat.o(312544);
   }
   
-  public final void eDW()
+  public final void fLY()
   {
-    AppMethodBeat.i(211272);
+    AppMethodBeat.i(312505);
     Context localContext = MMApplicationContext.getContext();
-    int j = eEm();
-    Object localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-    boolean bool1 = com.tencent.mm.plugin.hld.f.l.eCE();
+    int j = fMo();
+    Object localObject1 = l.JyV;
+    boolean bool1 = l.fKH();
     localObject1 = new StringBuilder("updateCurrentKeyboard isSafetyMode:").append(bool1).append(" isLogin:");
-    Object localObject2 = com.tencent.mm.plugin.hld.f.i.DHq;
-    Log.i("WxIme.ImeKeyboardSwitch", com.tencent.mm.plugin.hld.f.i.biq());
+    Object localObject2 = com.tencent.mm.plugin.hld.f.i.JyA;
+    Log.i("WxIme.ImeKeyboardSwitch", com.tencent.mm.plugin.hld.f.i.bGa());
     int i;
     if (bool1)
     {
-      Uz(8);
-      Uy(8);
-      i = eDX();
+      Yw(8);
+      Yv(8);
+      i = fLZ();
       if (i != j)
       {
-        p(Integer.valueOf(i));
-        p.j(localContext, "context");
+        w(Integer.valueOf(i));
+        s.s(localContext, "context");
         f(localContext, i, false);
-        if (i != com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal()) {
-          break label474;
+        if (i != com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal()) {
+          break label490;
         }
-        eEc();
+        fMe();
       }
     }
     for (;;)
     {
       Log.i("WxIme.ImeKeyboardSwitch", "updateCurrentKeyboard " + i + ' ' + j);
-      AppMethodBeat.o(211272);
+      AppMethodBeat.o(312505);
       return;
-      localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      bool1 = com.tencent.mm.plugin.hld.f.l.eHk();
-      localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      boolean bool2 = com.tencent.mm.plugin.hld.f.l.eHn();
-      localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      boolean bool3 = com.tencent.mm.plugin.hld.f.l.eHq();
-      localObject1 = e.DGW;
-      localObject1 = (d)com.tencent.mm.kernel.h.ae(d.class);
-      if (localObject1 != null)
+      localObject1 = l.JyV;
+      bool1 = l.fOT();
+      localObject1 = l.JyV;
+      boolean bool2 = l.fOW();
+      localObject1 = l.JyV;
+      boolean bool3 = l.fOZ();
+      localObject1 = e.Jym;
+      boolean bool4 = e.fOc();
+      localObject1 = (d)com.tencent.mm.kernel.h.ax(d.class);
+      if (localObject1 == null)
       {
-        localObject1 = Boolean.valueOf(((d)localObject1).eCC());
-        label227:
-        localObject2 = com.tencent.mm.plugin.hld.f.i.DHq;
-        if (!com.tencent.mm.plugin.hld.f.i.biq()) {
-          break label406;
+        localObject1 = null;
+        label223:
+        localObject2 = com.tencent.mm.plugin.hld.f.i.JyA;
+        if (!com.tencent.mm.plugin.hld.f.i.bGa()) {
+          break label419;
         }
         if ((bool1) && (bool2)) {
-          break label357;
+          break label367;
         }
-        Uy(8);
-        Uz(0);
-        localObject2 = k.DDb;
-        k.hL(11, 7);
+        Yv(8);
+        Yw(0);
+        localObject2 = k.JvH;
+        k.jp(11, 7);
         i = 1;
-        label270:
+        label266:
         if ((i != 0) || (bool3)) {
-          break label399;
+          break label412;
         }
       }
-      label399:
-      for (i = com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal();; i = eDX())
+      label412:
+      for (i = com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal();; i = fLZ())
       {
-        Log.i("WxIme.ImeKeyboardSwitch", "updateCurrentKeyboard first:" + bool1 + " second:" + bool2 + " fifth:" + bool3 + " finishFirstFetch:" + localObject1 + " cloudConfig:true");
+        Log.i("WxIme.ImeKeyboardSwitch", "updateCurrentKeyboard first:" + bool1 + " second:" + bool2 + " fifth:" + bool3 + " finishFirstFetch:" + localObject1 + " cloudConfig:" + bool4);
         break;
-        localObject1 = null;
-        break label227;
-        label357:
-        if ((p.h(localObject1, Boolean.TRUE) ^ true))
+        localObject1 = Boolean.valueOf(((d)localObject1).fKF());
+        break label223;
+        label367:
+        if ((bool4) && (!s.p(localObject1, Boolean.TRUE)))
         {
-          Uy(0);
-          Uz(8);
+          Yv(0);
+          Yw(8);
           i = 1;
-          break label270;
+          break label266;
         }
-        Uz(8);
-        Uy(8);
+        Yw(8);
+        Yv(8);
         i = 0;
-        break label270;
+        break label266;
       }
-      label406:
+      label419:
       if ((!bool1) || (!bool2) || (!bool3))
       {
-        Uy(8);
-        Uz(0);
+        Yv(8);
+        Yw(0);
       }
       for (;;)
       {
-        i = eDX();
+        i = fLZ();
         break;
-        if ((p.h(localObject1, Boolean.TRUE) ^ true))
+        if ((bool4) && (!s.p(localObject1, Boolean.TRUE)))
         {
-          Uy(0);
-          Uz(8);
+          Yv(0);
+          Yw(8);
         }
         else
         {
-          Uz(8);
-          Uy(8);
+          Yw(8);
+          Yv(8);
         }
       }
-      label474:
-      a(false, false, false, false, true, false, (kotlin.g.a.a)p.DCJ, (kotlin.g.a.a)q.DCK);
+      label490:
+      a(false, false, false, false, true, false, (kotlin.g.a.a)i.Jvw, (kotlin.g.a.a)g.j.Jvx);
     }
   }
   
-  public final void eDY()
+  public final void fMa()
   {
-    AppMethodBeat.i(211274);
-    Object localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-    int i = com.tencent.mm.plugin.hld.f.i.eEm();
-    Log.i("WxIme.ImeKeyboardSwitch", "resetToFirstLevelKeyboard ".concat(String.valueOf(i)));
-    localObject = eEp();
-    if (localObject != null) {
-      ((Keyboard)localObject).onReset();
+    View localView = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(312514);
+    Object localObject2 = com.tencent.mm.plugin.hld.f.i.JyA;
+    int i = com.tencent.mm.plugin.hld.f.i.fMo();
+    Log.i("WxIme.ImeKeyboardSwitch", s.X("resetToFirstLevelKeyboard ", Integer.valueOf(i)));
+    localObject2 = fMr();
+    if (localObject2 != null) {
+      ((Keyboard)localObject2).onReset();
     }
-    if (eEm() == i)
+    if (fMo() == i)
     {
-      UA(eEm());
-      localObject = DBT;
-      if (localObject != null)
-      {
-        ((View)localObject).setAlpha(1.0F);
-        ((View)localObject).setVisibility(0);
-      }
+      Yx(fMo());
+      localView = JuT;
+      if (localView == null) {}
       for (;;)
       {
-        localObject = DBU;
-        if (localObject != null) {
-          ((FrameLayout)localObject).setVisibility(0);
+        if (localObject1 == null) {
+          Log.e("WxIme.ImeKeyboardSwitch", "resetToFirstLevelKeyboard mInputCenterView is null");
         }
-        localObject = DBU;
-        if (localObject != null) {
-          ((FrameLayout)localObject).setTranslationY(0.0F);
+        localObject1 = JuU;
+        if (localObject1 != null) {
+          ((FrameLayout)localObject1).setVisibility(0);
+        }
+        localObject1 = JuU;
+        if (localObject1 != null) {
+          ((FrameLayout)localObject1).setTranslationY(0.0F);
         }
         Log.i("WxIme.ImeKeyboardSwitch", "resetToFirstLevelKeyboard reset keyboard");
-        AppMethodBeat.o(211274);
+        AppMethodBeat.o(312514);
         return;
-        Log.e("WxIme.ImeKeyboardSwitch", "resetToFirstLevelKeyboard mInputCenterView is null");
+        localView.setAlpha(1.0F);
+        localView.setVisibility(0);
+        localObject1 = ah.aiuX;
       }
     }
-    p(Integer.valueOf(i));
-    if (eEp() == null)
+    w(Integer.valueOf(i));
+    if (fMr() == null)
     {
-      localObject = mContext;
-      if (localObject == null) {
-        break label189;
+      localObject1 = mContext;
+      if (localObject1 != null) {
+        break label234;
       }
-      f((Context)localObject, eEm(), false);
     }
-    for (;;)
+    for (localObject1 = localView;; localObject1 = ah.aiuX)
     {
-      DBO = 1;
-      a(false, false, true, false, true, false, (kotlin.g.a.a)i.DCA, (kotlin.g.a.a)j.DCB);
-      AppMethodBeat.o(211274);
+      if (localObject1 == null) {
+        Log.e("WxIme.ImeKeyboardSwitch", "resetToFirstLevelKeyboard current:" + fMo() + ", mContext is null");
+      }
+      JuO = 1;
+      a(false, false, true, false, true, false, (kotlin.g.a.a)g.d.Jvp, (kotlin.g.a.a)g.e.Jvq);
+      AppMethodBeat.o(312514);
       return;
-      label189:
-      Log.e("WxIme.ImeKeyboardSwitch", "resetToFirstLevelKeyboard current:" + eEm() + ", mContext is null");
+      label234:
+      f((Context)localObject1, fMo(), false);
     }
   }
   
-  public final void gN(Context paramContext)
+  public final void ih(Context paramContext)
   {
-    AppMethodBeat.i(211276);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(312524);
+    s.u(paramContext, "context");
     Log.i("WxIme.ImeKeyboardSwitch", "preInitKeyboards");
-    a(paramContext, eEm(), true, "WxIme.ImeKeyboardSwitch");
-    new com.tencent.mm.ui.k.b(paramContext).jdMethod_do(a.h.ime_input_view, null);
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyp.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyt.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyu.ordinal(), false, "WxIme.ImeKeyboardSwitch");
-    AppMethodBeat.o(211276);
+    a(paramContext, fMo(), true, "WxIme.ImeKeyboardSwitch");
+    new com.tencent.mm.ui.k.b(paramContext).eh(a.h.ime_input_view, null);
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrt.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrx.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    a(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jry.ordinal(), false, "WxIme.ImeKeyboardSwitch");
+    AppMethodBeat.o(312524);
   }
   
-  public final void gO(Context paramContext)
+  public final void ii(Context paramContext)
   {
-    AppMethodBeat.i(211278);
-    p.k(paramContext, "context");
-    if (DCi)
+    AppMethodBeat.i(312534);
+    s.u(paramContext, "context");
+    if (Jvi)
     {
-      AppMethodBeat.o(211278);
+      AppMethodBeat.o(312534);
       return;
     }
-    DCi = true;
-    DBM = new HashMap();
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyp.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyt.ordinal());
-    av(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Dyu.ordinal());
-    eDZ();
-    AppMethodBeat.o(211278);
+    Jvi = true;
+    JuM = new HashMap();
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrt.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jru.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrw.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jrx.ordinal());
+    aI(paramContext, com.tencent.mm.plugin.hld.keyboard.c.Jry.ordinal());
+    fMb();
+    AppMethodBeat.o(312534);
   }
   
-  public final void sQ(boolean paramBoolean)
+  public final void wW(boolean paramBoolean)
   {
-    AppMethodBeat.i(211323);
+    AppMethodBeat.i(312564);
     if (paramBoolean)
     {
-      localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-      Ux(com.tencent.mm.plugin.hld.f.i.eEm());
-      AppMethodBeat.o(211323);
+      localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+      Yu(com.tencent.mm.plugin.hld.f.i.fMo());
+      AppMethodBeat.o(312564);
       return;
     }
-    Object localObject = k.DDb;
-    k.ap(0, 1, 0);
-    a(com.tencent.mm.plugin.hld.keyboard.c.Dyu);
-    AppMethodBeat.o(211323);
+    Object localObject = k.JvH;
+    k.aL(0, 1, 0);
+    a(com.tencent.mm.plugin.hld.keyboard.c.Jry);
+    AppMethodBeat.o(312564);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class a
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    public static final a DCn;
-    
-    static
-    {
-      AppMethodBeat.i(209822);
-      DCn = new a();
-      AppMethodBeat.o(209822);
-    }
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(209820);
-      Object localObject;
-      if (paramValueAnimator != null)
-      {
-        paramValueAnimator = paramValueAnimator.getAnimatedValue();
-        localObject = paramValueAnimator;
-        if (!(paramValueAnimator instanceof Float)) {
-          localObject = null;
-        }
-        paramValueAnimator = (Float)localObject;
-        if (paramValueAnimator == null) {
-          break label84;
-        }
-      }
-      label84:
-      for (float f = paramValueAnimator.floatValue();; f = 0.0F)
-      {
-        paramValueAnimator = g.DCm;
-        paramValueAnimator = g.eEv();
-        if (paramValueAnimator == null) {
-          break label89;
-        }
-        localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject = g.DCm;
-        paramValueAnimator.setAlpha(1.0F - f / com.tencent.mm.plugin.hld.f.k.gW(g.eEw()));
-        AppMethodBeat.o(209820);
-        return;
-        paramValueAnimator = null;
-        break;
-      }
-      label89:
-      AppMethodBeat.o(209820);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$getBelowAnimator$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"})
-  public static final class b
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$getBelowAnimator$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
     implements Animator.AnimatorListener
   {
-    b(kotlin.g.a.a parama1, kotlin.g.a.a parama2) {}
+    a(kotlin.g.a.a<ah> parama1, kotlin.g.a.a<ah> parama2) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(215752);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311824);
+      s.u(paramAnimator, "animation");
       Log.w("WxIme.ImeKeyboardSwitch", "animator_move_to_below onAnimationCancel");
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEu();
-      if (paramAnimator != null)
-      {
+      paramAnimator = g.fMv();
+      if (paramAnimator != null) {
         paramAnimator.setVisibility(8);
-        AppMethodBeat.o(215752);
-        return;
       }
-      AppMethodBeat.o(215752);
+      AppMethodBeat.o(311824);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(215750);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311817);
+      s.u(paramAnimator, "animation");
       Log.w("WxIme.ImeKeyboardSwitch", "animator_move_to_below onAnimationEnd");
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEu();
+      paramAnimator = g.fMv();
       if (paramAnimator != null) {
         paramAnimator.setVisibility(8);
       }
@@ -2131,619 +2461,261 @@ public final class g
       if (paramAnimator != null) {
         paramAnimator.invoke();
       }
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEv();
-      if (paramAnimator != null)
+      paramAnimator = g.fMw();
+      if (paramAnimator == null) {}
+      for (paramAnimator = null;; paramAnimator = ah.aiuX)
       {
+        if (paramAnimator == null) {
+          Log.e("WxIme.ImeKeyboardSwitch", "getBelowAnimator mInputCenterView is null");
+        }
+        AppMethodBeat.o(311817);
+        return;
         paramAnimator.setAlpha(0.0F);
         paramAnimator.setVisibility(8);
-        Object localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject = g.DCm;
-        paramAnimator.setTranslationY(com.tencent.mm.plugin.hld.f.k.gW(g.eEw()));
-        AppMethodBeat.o(215750);
-        return;
+        com.tencent.mm.plugin.hld.f.k localk = com.tencent.mm.plugin.hld.f.k.JyF;
+        paramAnimator.setTranslationY(com.tencent.mm.plugin.hld.f.k.ir(g.fMx()));
       }
-      Log.e("WxIme.ImeKeyboardSwitch", "getBelowAnimator mInputCenterView is null");
-      AppMethodBeat.o(215750);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator)
     {
-      AppMethodBeat.i(215753);
-      p.k(paramAnimator, "animation");
-      AppMethodBeat.o(215753);
+      AppMethodBeat.i(311830);
+      s.u(paramAnimator, "animation");
+      AppMethodBeat.o(311830);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(215748);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311810);
+      s.u(paramAnimator, "animation");
       Log.w("WxIme.ImeKeyboardSwitch", "animator_move_to_below onAnimationStart");
-      paramAnimator = this.DCo;
+      paramAnimator = this.Jvm;
       if (paramAnimator != null) {
         paramAnimator.invoke();
       }
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEu();
+      paramAnimator = g.fMv();
       if (paramAnimator != null) {
         paramAnimator.setVisibility(0);
       }
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEv();
-      if (paramAnimator != null)
+      paramAnimator = g.fMw();
+      if (paramAnimator == null) {}
+      for (paramAnimator = null;; paramAnimator = ah.aiuX)
       {
+        if (paramAnimator == null) {
+          Log.e("WxIme.ImeKeyboardSwitch", "getBelowAnimator mInputCenterView is null");
+        }
+        AppMethodBeat.o(311810);
+        return;
         paramAnimator.setVisibility(0);
-        AppMethodBeat.o(215748);
-        return;
       }
-      Log.e("WxIme.ImeKeyboardSwitch", "getBelowAnimator mInputCenterView is null");
-      AppMethodBeat.o(215748);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class c
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    public static final c DCq;
-    
-    static
-    {
-      AppMethodBeat.i(215955);
-      DCq = new c();
-      AppMethodBeat.o(215955);
-    }
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(215953);
-      Object localObject;
-      if (paramValueAnimator != null)
-      {
-        paramValueAnimator = paramValueAnimator.getAnimatedValue();
-        localObject = paramValueAnimator;
-        if (!(paramValueAnimator instanceof Float)) {
-          localObject = null;
-        }
-        paramValueAnimator = (Float)localObject;
-        if (paramValueAnimator == null) {
-          break label84;
-        }
-      }
-      label84:
-      for (float f = paramValueAnimator.floatValue();; f = 0.0F)
-      {
-        paramValueAnimator = g.DCm;
-        paramValueAnimator = g.eEv();
-        if (paramValueAnimator == null) {
-          break label89;
-        }
-        localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject = g.DCm;
-        paramValueAnimator.setAlpha(1.0F - f / com.tencent.mm.plugin.hld.f.k.gW(g.eEw()));
-        AppMethodBeat.o(215953);
-        return;
-        paramValueAnimator = null;
-        break;
-      }
-      label89:
-      AppMethodBeat.o(215953);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$getUpAnimator$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"})
-  public static final class d
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$getUpAnimator$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     implements Animator.AnimatorListener
   {
-    d(kotlin.g.a.a parama1, kotlin.g.a.a parama2) {}
+    b(kotlin.g.a.a<ah> parama1, kotlin.g.a.a<ah> parama2) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(217141);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311833);
+      s.u(paramAnimator, "animation");
       Log.w("WxIme.ImeKeyboardSwitch", "animator_move_to_up onAnimationCancel");
-      AppMethodBeat.o(217141);
+      AppMethodBeat.o(311833);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(217140);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311827);
+      s.u(paramAnimator, "animation");
       Log.i("WxIme.ImeKeyboardSwitch", "animator_move_to_up onAnimationEnd");
       paramAnimator = parama2;
       if (paramAnimator != null) {
         paramAnimator.invoke();
       }
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEv();
-      if (paramAnimator != null)
+      paramAnimator = g.fMw();
+      if (paramAnimator == null) {}
+      for (paramAnimator = null;; paramAnimator = ah.aiuX)
       {
+        if (paramAnimator == null) {
+          Log.e("WxIme.ImeKeyboardSwitch", "getUpAnimator mInputCenterView is null");
+        }
+        AppMethodBeat.o(311827);
+        return;
         paramAnimator.setAlpha(1.0F);
         paramAnimator.setVisibility(8);
         paramAnimator.setTranslationY(0.0F);
-        AppMethodBeat.o(217140);
-        return;
       }
-      Log.e("WxIme.ImeKeyboardSwitch", "getUpAnimator mInputCenterView is null");
-      AppMethodBeat.o(217140);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator)
     {
-      AppMethodBeat.i(217143);
-      p.k(paramAnimator, "animation");
-      AppMethodBeat.o(217143);
+      AppMethodBeat.i(311840);
+      s.u(paramAnimator, "animation");
+      AppMethodBeat.o(311840);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(217139);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311818);
+      s.u(paramAnimator, "animation");
       Log.i("WxIme.ImeKeyboardSwitch", "animator_move_to_up onAnimationStart");
-      paramAnimator = this.DCo;
+      paramAnimator = this.Jvm;
       if (paramAnimator != null) {
         paramAnimator.invoke();
       }
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEu();
+      paramAnimator = g.fMv();
       if (paramAnimator != null) {
         paramAnimator.setVisibility(0);
       }
-      paramAnimator = g.DCm;
-      paramAnimator = g.eEv();
-      if (paramAnimator != null)
+      paramAnimator = g.fMw();
+      if (paramAnimator == null) {}
+      for (paramAnimator = null;; paramAnimator = ah.aiuX)
       {
-        paramAnimator.setVisibility(0);
-        AppMethodBeat.o(217139);
-        return;
-      }
-      Log.e("WxIme.ImeKeyboardSwitch", "getUpAnimator mInputCenterView is null");
-      AppMethodBeat.o(217139);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class e
-    implements View.OnTouchListener
-  {
-    public static final e DCr;
-    
-    static
-    {
-      AppMethodBeat.i(211971);
-      DCr = new e();
-      AppMethodBeat.o(211971);
-    }
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
-    implements View.OnClickListener
-  {
-    public static final f DCs;
-    
-    static
-    {
-      AppMethodBeat.i(211111);
-      DCs = new f();
-      AppMethodBeat.o(211111);
-    }
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(211110);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$initInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = g.DCm;
-      g.eEs();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$initInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(211110);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(int paramInt1, Context paramContext, int paramInt2) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(214068);
-      long l = System.currentTimeMillis();
-      final aa.f localf = new aa.f();
-      Object localObject = com.tencent.mm.ui.k.b.XIY;
-      localObject = b.a.axo(this.DCt);
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.ui.k.b)localObject).hXh();
-        localf.aaBC = localObject;
-        if ((View)localf.aaBC != null) {
-          break label165;
+        if (paramAnimator == null) {
+          Log.e("WxIme.ImeKeyboardSwitch", "getUpAnimator mInputCenterView is null");
         }
-        localf.aaBC = ad.kS(paramContext).inflate(this.DCt, null, false);
-      }
-      label165:
-      for (boolean bool = false;; bool = true)
-      {
-        Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp load " + paramInt1 + ' ' + (System.currentTimeMillis() - l) + ' ' + bool);
-        com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(210960);
-            long l = System.currentTimeMillis();
-            Object localObject1 = (View)localf.aaBC;
-            Object localObject3;
-            int i;
-            if (localObject1 != null)
-            {
-              localObject1 = (Keyboard)((View)localObject1).findViewById(a.f.root);
-              localObject2 = g.DCm;
-              localObject2 = g.eEt();
-              if (localObject2 != null)
-              {
-                localObject3 = (Map)localObject2;
-                i = this.DCv.DCu;
-                if (localObject1 != null) {
-                  break label283;
-                }
-              }
-            }
-            label283:
-            for (Object localObject2 = (Keyboard)new S2ChineseQwertyKeyboard(this.DCv.$context);; localObject2 = localObject1)
-            {
-              ((Map)localObject3).put(Integer.valueOf(i), localObject2);
-              if (localObject1 != null) {
-                ((Keyboard)localObject1).onCreate();
-              }
-              localObject2 = new StringBuilder("initKeyboardImp push to cache ").append(this.DCv.DCu).append(' ').append(System.currentTimeMillis() - l).append(' ');
-              localObject3 = g.DCm;
-              Log.i("WxIme.ImeKeyboardSwitch", g.eEm());
-              if (localObject1 != null)
-              {
-                localObject2 = g.DCm;
-                if (g.eEm() == this.DCv.DCu)
-                {
-                  localObject2 = g.DCm;
-                  ((Keyboard)localObject1).b(g.eEr());
-                  localObject2 = g.DCm;
-                  localObject2 = g.eEu();
-                  if (localObject2 != null) {
-                    ((FrameLayout)localObject2).addView((View)localObject1);
-                  }
-                  Log.i("WxIme.ImeKeyboardSwitch", "initKeyboardImp refresh " + this.DCv.DCu);
-                }
-                AppMethodBeat.o(210960);
-                return;
-                localObject1 = null;
-                break;
-              }
-              AppMethodBeat.o(210960);
-              return;
-            }
-          }
-        });
-        AppMethodBeat.o(214068);
+        AppMethodBeat.o(311818);
         return;
-        localObject = null;
-        break;
+        paramAnimator.setVisibility(0);
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$leftSlideInputLeftKeyboard$1$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"})
-  public static final class h
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$leftSlideInputLeftKeyboard$1$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
     implements Animator.AnimatorListener
   {
-    h(FrameLayout paramFrameLayout, kotlin.g.a.a parama1, kotlin.g.a.a parama2) {}
+    c(kotlin.g.a.a<ah> parama1, FrameLayout paramFrameLayout, kotlin.g.a.a<ah> parama2) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(210159);
-      p.k(paramAnimator, "animation");
-      AppMethodBeat.o(210159);
+      AppMethodBeat.i(311831);
+      s.u(paramAnimator, "animation");
+      AppMethodBeat.o(311831);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(210158);
-      p.k(paramAnimator, "animation");
+      AppMethodBeat.i(311823);
+      s.u(paramAnimator, "animation");
       paramAnimator = parama2;
-      if (paramAnimator != null)
-      {
+      if (paramAnimator != null) {
         paramAnimator.invoke();
-        AppMethodBeat.o(210158);
-        return;
       }
-      AppMethodBeat.o(210158);
+      AppMethodBeat.o(311823);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator)
     {
-      AppMethodBeat.i(210160);
-      p.k(paramAnimator, "animation");
-      AppMethodBeat.o(210160);
+      AppMethodBeat.i(311839);
+      s.u(paramAnimator, "animation");
+      AppMethodBeat.o(311839);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(210155);
-      p.k(paramAnimator, "animation");
-      paramAnimator = parama1;
+      AppMethodBeat.i(311816);
+      s.u(paramAnimator, "animation");
+      paramAnimator = this.Jvm;
       if (paramAnimator != null) {
         paramAnimator.invoke();
       }
-      paramAnimator = this.DCx;
-      if (paramAnimator != null)
-      {
+      paramAnimator = localFrameLayout;
+      if (paramAnimator != null) {
         paramAnimator.setVisibility(0);
-        AppMethodBeat.o(210155);
-        return;
       }
-      AppMethodBeat.o(210155);
+      AppMethodBeat.o(311816);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class i
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$rightSlideInputLeftKeyboard$1$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements Animator.AnimatorListener
   {
-    public static final i DCA;
+    f(kotlin.g.a.a<ah> parama1, FrameLayout paramFrameLayout, kotlin.g.a.a<ah> parama2) {}
+    
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      AppMethodBeat.i(311841);
+      s.u(paramAnimator, "animation");
+      AppMethodBeat.o(311841);
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(311834);
+      s.u(paramAnimator, "animation");
+      paramAnimator = this.Jvr;
+      if (paramAnimator != null) {
+        paramAnimator.setVisibility(8);
+      }
+      paramAnimator = parama2;
+      if (paramAnimator != null) {
+        paramAnimator.invoke();
+      }
+      AppMethodBeat.o(311834);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator)
+    {
+      AppMethodBeat.i(311848);
+      s.u(paramAnimator, "animation");
+      AppMethodBeat.o(311848);
+    }
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(311826);
+      s.u(paramAnimator, "animation");
+      paramAnimator = this.Jvm;
+      if (paramAnimator != null) {
+        paramAnimator.invoke();
+      }
+      AppMethodBeat.o(311826);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    g(ah.a parama1, ah.a parama2, int paramInt1, int paramInt2)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    h(int paramInt1, int paramInt2, ah.a parama1, ah.a parama2)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    public static final i Jvw;
     
     static
     {
-      AppMethodBeat.i(214386);
-      DCA = new i();
-      AppMethodBeat.o(214386);
+      AppMethodBeat.i(311819);
+      Jvw = new i();
+      AppMethodBeat.o(311819);
     }
     
     i()
     {
       super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class j
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    public static final j DCB;
-    
-    static
-    {
-      AppMethodBeat.i(210447);
-      DCB = new j();
-      AppMethodBeat.o(210447);
-    }
-    
-    j()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$rightSlideInputLeftKeyboard$1$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-hld_release"})
-  public static final class k
-    implements Animator.AnimatorListener
-  {
-    k(FrameLayout paramFrameLayout, kotlin.g.a.a parama1, kotlin.g.a.a parama2) {}
-    
-    public final void onAnimationCancel(Animator paramAnimator)
-    {
-      AppMethodBeat.i(213478);
-      p.k(paramAnimator, "animation");
-      AppMethodBeat.o(213478);
-    }
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(213477);
-      p.k(paramAnimator, "animation");
-      paramAnimator = this.DCC;
-      if (paramAnimator != null) {
-        paramAnimator.setVisibility(8);
-      }
-      paramAnimator = parama2;
-      if (paramAnimator != null)
-      {
-        paramAnimator.invoke();
-        AppMethodBeat.o(213477);
-        return;
-      }
-      AppMethodBeat.o(213477);
-    }
-    
-    public final void onAnimationRepeat(Animator paramAnimator)
-    {
-      AppMethodBeat.i(213479);
-      p.k(paramAnimator, "animation");
-      AppMethodBeat.o(213479);
-    }
-    
-    public final void onAnimationStart(Animator paramAnimator)
-    {
-      AppMethodBeat.i(213476);
-      p.k(paramAnimator, "animation");
-      paramAnimator = parama1;
-      if (paramAnimator != null)
-      {
-        paramAnimator.invoke();
-        AppMethodBeat.o(213476);
-        return;
-      }
-      AppMethodBeat.o(213476);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class l
-    implements Runnable
-  {
-    l(Context paramContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216606);
-      g localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyp.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyq.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dys.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyt.ordinal());
-      localg = g.DCm;
-      g.aw(this.$context, com.tencent.mm.plugin.hld.keyboard.c.Dyu.ordinal());
-      AppMethodBeat.o(216606);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class m
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    m(aa.a parama1, aa.a parama2, int paramInt1, int paramInt2)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class n
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    n(int paramInt1, int paramInt2, aa.a parama1, aa.a parama2)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class o
-    implements Runnable
-  {
-    o(aa.f paramf, aa.d paramd) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(210806);
-      Object localObject = g.DCm;
-      localObject = g.eEq();
-      if (localObject != null)
-      {
-        ((Keyboard)localObject).eO((String)this.DCH.aaBC, locald.aaBA);
-        AppMethodBeat.o(210806);
-        return;
-      }
-      AppMethodBeat.o(210806);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class p
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    public static final p DCJ;
-    
-    static
-    {
-      AppMethodBeat.i(209805);
-      DCJ = new p();
-      AppMethodBeat.o(209805);
-    }
-    
-    p()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class q
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    public static final q DCK;
-    
-    static
-    {
-      AppMethodBeat.i(215676);
-      DCK = new q();
-      AppMethodBeat.o(215676);
-    }
-    
-    q()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$viewSaveToImage$1$1$1", "com/tencent/mm/plugin/hld/model/ImeKeyboardSwitch$$special$$inlined$let$lambda$1"})
-  static final class r
-    implements Runnable
-  {
-    r(Keyboard paramKeyboard, boolean paramBoolean, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213931);
-      if (this.DCL.getKeyboardType().ordinal() <= com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal())
-      {
-        Object localObject = com.tencent.mm.plugin.hld.f.k.DHH;
-        localObject = this.DCL;
-        p.j(localObject, "keyboard");
-        com.tencent.mm.plugin.hld.f.k.a((View)localObject, paramInt, bool, (k.a)new k.a()
-        {
-          public final void dL(String paramAnonymousString)
-          {
-            AppMethodBeat.i(210020);
-            Log.i("WxIme.ImeKeyboardSwitch", "onFailure " + this.DCO.DCN + ' ' + paramAnonymousString);
-            AppMethodBeat.o(210020);
-          }
-          
-          public final void onFinish()
-          {
-            AppMethodBeat.i(210021);
-            Log.i("WxIme.ImeKeyboardSwitch", "onFinish " + this.DCO.DCN);
-            AppMethodBeat.o(210021);
-          }
-          
-          public final void onStart()
-          {
-            AppMethodBeat.i(210018);
-            Log.i("WxIme.ImeKeyboardSwitch", "onStart " + this.DCO.DCN);
-            AppMethodBeat.o(210018);
-          }
-          
-          public final void onSucceed(String paramAnonymousString)
-          {
-            AppMethodBeat.i(210019);
-            Log.i("WxIme.ImeKeyboardSwitch", "onSucceed " + this.DCO.DCN + ' ' + paramAnonymousString);
-            AppMethodBeat.o(210019);
-          }
-        });
-      }
-      AppMethodBeat.o(213931);
     }
   }
 }

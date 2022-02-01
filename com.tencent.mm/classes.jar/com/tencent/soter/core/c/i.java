@@ -2,7 +2,10 @@ package com.tencent.soter.core.c;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
@@ -12,25 +15,25 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public String Lwz;
-  long Zst;
-  private String Zsu;
-  public String Zsv;
-  private ArrayList<String> Zsw;
+  public String RZY;
+  long ahxh;
+  private String ahxi;
+  public String ahxj;
+  private ArrayList<String> ahxk;
   public String signature;
   public int uid;
   
   public i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88673);
-    this.Zst = -1L;
+    this.ahxh = -1L;
     this.uid = -1;
-    this.Lwz = "";
-    this.Zsu = "";
-    this.Zsv = "";
-    this.Zsw = null;
+    this.RZY = "";
+    this.ahxi = "";
+    this.ahxj = "";
+    this.ahxk = null;
     this.signature = "";
-    this.Zsv = paramString1;
+    this.ahxj = paramString1;
     for (;;)
     {
       try
@@ -44,20 +47,20 @@ public final class i
           d.e("Soter.SoterPubKeyModel", "certificates train not enough", new Object[0]);
         }
         d.i("Soter.SoterPubKeyModel", "certs size: [%d]", new Object[] { Integer.valueOf(localJSONArray.length()) });
-        this.Zsw = new ArrayList();
+        this.ahxk = new ArrayList();
         int i = 0;
         if (i < localJSONArray.length())
         {
           String str = localJSONArray.getString(i);
-          this.Zsw.add(str);
+          this.ahxk.add(str);
           i += 1;
           continue;
         }
-        b((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(((String)this.Zsw.get(0)).getBytes())));
-        paramString1.put("cpu_id", this.Lwz);
+        b((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(((String)this.ahxk.get(0)).getBytes())));
+        paramString1.put("cpu_id", this.RZY);
         paramString1.put("uid", this.uid);
-        paramString1.put("counter", this.Zst);
-        this.Zsv = paramString1.toString();
+        paramString1.put("counter", this.ahxh);
+        this.ahxj = paramString1.toString();
       }
       catch (Exception paramString1)
       {
@@ -67,22 +70,22 @@ public final class i
       this.signature = paramString2;
       AppMethodBeat.o(88673);
       return;
-      this.Zst = paramString1.optLong("counter");
+      this.ahxh = paramString1.optLong("counter");
       this.uid = paramString1.optInt("uid");
-      this.Lwz = paramString1.optString("cpu_id");
-      this.Zsu = paramString1.optString("pub_key");
+      this.RZY = paramString1.optString("cpu_id");
+      this.ahxi = paramString1.optString("pub_key");
     }
   }
   
   public i(Certificate[] paramArrayOfCertificate)
   {
     AppMethodBeat.i(88674);
-    this.Zst = -1L;
+    this.ahxh = -1L;
     this.uid = -1;
-    this.Lwz = "";
-    this.Zsu = "";
-    this.Zsv = "";
-    this.Zsw = null;
+    this.RZY = "";
+    this.ahxi = "";
+    this.ahxj = "";
+    this.ahxk = null;
     this.signature = "";
     if (paramArrayOfCertificate != null) {}
     try
@@ -94,21 +97,29 @@ public final class i
       {
         Certificate localCertificate = paramArrayOfCertificate[i];
         Base64.encodeToString(localCertificate.getEncoded(), 2);
-        String str = a.a(localCertificate);
+        Object localObject = new StringWriter();
+        BufferedWriter localBufferedWriter = new BufferedWriter((Writer)localObject);
+        localBufferedWriter.write("-----BEGIN " + "CERTIFICATE" + "-----");
+        localBufferedWriter.write("\n");
+        a.a(localBufferedWriter, Base64.encode(localCertificate.getEncoded(), 2));
+        localBufferedWriter.write("-----END " + "CERTIFICATE" + "-----");
+        localBufferedWriter.write("\n");
+        localBufferedWriter.close();
+        localObject = ((StringWriter)localObject).toString();
         if (i == 0) {
           b((X509Certificate)localCertificate);
         }
-        localJSONArray.put(str);
-        localArrayList.add(str);
+        localJSONArray.put(localObject);
+        localArrayList.add(localObject);
         i += 1;
       }
-      this.Zsw = localArrayList;
+      this.ahxk = localArrayList;
       paramArrayOfCertificate = new JSONObject();
       paramArrayOfCertificate.put("certs", localJSONArray);
-      paramArrayOfCertificate.put("cpu_id", this.Lwz);
+      paramArrayOfCertificate.put("cpu_id", this.RZY);
       paramArrayOfCertificate.put("uid", this.uid);
-      paramArrayOfCertificate.put("counter", this.Zst);
-      this.Zsv = paramArrayOfCertificate.toString();
+      paramArrayOfCertificate.put("counter", this.ahxh);
+      this.ahxj = paramArrayOfCertificate.toString();
       AppMethodBeat.o(88674);
       return;
     }
@@ -130,7 +141,7 @@ public final class i
     }
     catch (Exception paramX509Certificate)
     {
-      d.e("Soter.SoterPubKeyModel", "soter: loadDeviceInfo from attestationCert failed" + paramX509Certificate.getStackTrace(), new Object[0]);
+      d.a("Soter.SoterPubKeyModel", paramX509Certificate, "soter: loadDeviceInfo from attestationCert failed");
       AppMethodBeat.o(88675);
     }
   }
@@ -138,14 +149,14 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(88672);
-    String str = "SoterPubKeyModel{counter=" + this.Zst + ", uid=" + this.uid + ", cpu_id='" + this.Lwz + '\'' + ", pub_key_in_x509='" + this.Zsu + '\'' + ", rawJson='" + this.Zsv + '\'' + ", signature='" + this.signature + '\'' + '}';
+    String str = "SoterPubKeyModel{counter=" + this.ahxh + ", uid=" + this.uid + ", cpu_id='" + this.RZY + '\'' + ", pub_key_in_x509='" + this.ahxi + '\'' + ", rawJson='" + this.ahxj + '\'' + ", signature='" + this.signature + '\'' + '}';
     AppMethodBeat.o(88672);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.soter.core.c.i
  * JD-Core Version:    0.7.0.1
  */

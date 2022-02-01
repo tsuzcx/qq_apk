@@ -7,25 +7,25 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.wallet_core.e.a.a
+  extends com.tencent.mm.wallet_core.d.a.a
 {
-  public String PlK;
-  public String PlL;
-  public String PlM;
-  public String PlN;
-  public String PlO;
-  public String Pla;
-  public String fLj;
+  public String WcW;
+  public String WcX;
+  public String WcY;
+  public String WcZ;
+  public String Wcz;
+  public String Wda;
+  public String hQR;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72009);
-    this.PlK = paramString1;
-    this.PlL = paramString2;
-    this.Pla = paramString3;
-    this.PlN = paramString4;
-    this.PlM = paramString4;
-    this.PlO = paramString6;
+    this.WcW = paramString1;
+    this.WcX = paramString2;
+    this.Wcz = paramString3;
+    this.WcZ = paramString4;
+    this.WcY = paramString4;
+    this.Wda = paramString6;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", String.valueOf(paramString2));
@@ -37,7 +37,7 @@ public final class a
     AppMethodBeat.o(72009);
   }
   
-  public final int gIA()
+  public final int ihO()
   {
     return 5;
   }
@@ -46,7 +46,7 @@ public final class a
   {
     AppMethodBeat.i(72010);
     Log.d("MicroMsg.NetScenePayUCreateUser", "hy: get NetScenePayUCreateUser info. errCode: %d, errMsg:%s, json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
-    this.fLj = paramJSONObject.optString("payu_reference");
+    this.hQR = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72010);
   }
 }

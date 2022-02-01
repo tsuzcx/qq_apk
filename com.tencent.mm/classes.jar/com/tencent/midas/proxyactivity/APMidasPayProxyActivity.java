@@ -1,6 +1,5 @@
 package com.tencent.midas.proxyactivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,17 +11,17 @@ public class APMidasPayProxyActivity
 {
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(253539);
+    AppMethodBeat.i(216998);
     APLog.i("APMidasPayProxyActivity", "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(253539);
+    AppMethodBeat.o(216998);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(253538);
+    AppMethodBeat.i(216987);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(253538);
+    AppMethodBeat.o(216987);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -33,7 +32,7 @@ public class APMidasPayProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.proxyactivity.APMidasPayProxyActivity
  * JD-Core Version:    0.7.0.1
  */

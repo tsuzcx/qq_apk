@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.Activity;
 import com.google.android.search.verification.client.SearchActionVerificationClientActivity;
 import com.google.android.search.verification.client.SearchActionVerificationClientService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -10,18 +9,18 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class VoiceActionActivity
   extends SearchActionVerificationClientActivity
 {
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  public final Class<? extends SearchActionVerificationClientService> yj()
+  public final Class<? extends SearchActionVerificationClientService> XO()
   {
     AppMethodBeat.i(128793);
     Log.d("MicroMsg.VoiceActionActivity", "getServiceClass");
     AppMethodBeat.o(128793);
     return VoiceActionService.class;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

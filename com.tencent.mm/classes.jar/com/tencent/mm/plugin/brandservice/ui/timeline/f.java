@@ -1,112 +1,236 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.u;
-import com.tencent.mm.an.t;
+import com.tencent.mm.an.af;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.message.p;
+import com.tencent.mm.message.u;
+import com.tencent.mm.plugin.brandservice.model.l;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
-import com.tencent.mm.protocal.protobuf.amf;
-import com.tencent.mm.protocal.protobuf.cmo;
-import com.tencent.mm.protocal.protobuf.due;
-import com.tencent.mm.protocal.protobuf.dug;
-import com.tencent.mm.protocal.protobuf.dur;
-import com.tencent.mm.protocal.protobuf.duu;
-import com.tencent.mm.protocal.protobuf.eqb;
-import com.tencent.mm.protocal.protobuf.eqc;
-import com.tencent.mm.protocal.protobuf.eqd;
-import com.tencent.mm.protocal.protobuf.eqg;
-import com.tencent.mm.protocal.protobuf.fbh;
-import com.tencent.mm.protocal.protobuf.mh;
-import com.tencent.mm.protocal.protobuf.pe;
-import com.tencent.mm.protocal.protobuf.pf;
+import com.tencent.mm.plugin.findersdk.a.br;
+import com.tencent.mm.plugin.webcanvas.j;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
+import com.tencent.mm.protocal.protobuf.apx;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.protocal.protobuf.enc;
+import com.tencent.mm.protocal.protobuf.ene;
+import com.tencent.mm.protocal.protobuf.enp;
+import com.tencent.mm.protocal.protobuf.ens;
+import com.tencent.mm.protocal.protobuf.fle;
+import com.tencent.mm.protocal.protobuf.flf;
+import com.tencent.mm.protocal.protobuf.flg;
+import com.tencent.mm.protocal.protobuf.flj;
+import com.tencent.mm.protocal.protobuf.fxo;
+import com.tencent.mm.protocal.protobuf.nk;
+import com.tencent.mm.protocal.protobuf.qn;
+import com.tencent.mm.protocal.protobuf.qo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.SemiXml;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.aa.6;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ac;
 import com.tencent.mm.storage.ag;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.r;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.y;
 import com.tencent.mm.storage.z;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
-import kotlin.o;
 
 public final class f
 {
-  public List<z> dataList;
-  public int fwM;
-  public long sBA;
-  public com.tencent.mm.plugin.brandservice.ui.timeline.a.b sBB;
-  public c<String, f.b> sBC;
-  public HashMap<String, Boolean> sBD;
-  a sBE;
-  public int sBx;
-  public int sBy;
-  public long sBz;
+  public List<ab> dataList;
+  public int hBm;
+  public int vGW;
+  public int vGX;
+  public long vGY;
+  public long vGZ;
+  public long vHa;
+  public long vHb;
+  public int vHc;
+  public int vHd;
+  public int vHe;
+  public String vHf;
+  public com.tencent.mm.plugin.brandservice.ui.timeline.a.b vHg;
+  public c<String, f.b> vHh;
+  public HashMap<String, Boolean> vHi;
+  a vHj;
   
-  public f(int paramInt, long paramLong)
+  public f(int paramInt, long paramLong, Intent paramIntent)
   {
-    AppMethodBeat.i(265895);
-    this.sBA = 0L;
+    AppMethodBeat.i(301844);
+    this.vGZ = 0L;
+    this.vHa = 0L;
+    this.vHb = 0L;
+    this.vHc = 0;
+    this.vHd = 0;
+    this.vHe = 0;
+    this.vHf = "";
     this.dataList = null;
-    this.sBC = new c();
-    this.sBD = new HashMap();
-    this.fwM = paramInt;
-    this.sBz = paramLong;
-    com.tencent.mm.storage.v localv = com.tencent.mm.storage.v.Vdz;
-    this.sBA = com.tencent.mm.storage.v.hwk();
-    AppMethodBeat.o(265895);
+    this.vHh = new c();
+    this.vHi = new HashMap();
+    this.hBm = paramInt;
+    this.vGY = paramLong;
+    com.tencent.mm.storage.v localv = com.tencent.mm.storage.v.acEJ;
+    this.vGZ = com.tencent.mm.storage.v.iXL();
+    localv = com.tencent.mm.storage.v.acEJ;
+    this.vHa = com.tencent.mm.storage.v.iXT();
+    localv = com.tencent.mm.storage.v.acEJ;
+    this.vHb = com.tencent.mm.storage.v.iXM();
+    this.vHc = paramIntent.getIntExtra("Main_UnreadCount", 0);
+    this.vHd = paramIntent.getIntExtra("Main_BizFinderLiveRedDotType", 0);
+    this.vHe = paramIntent.getIntExtra("Main_BizExposeMsgType", 0);
+    this.vHf = paramIntent.getStringExtra("Main_FromUserName");
+    AppMethodBeat.o(301844);
   }
   
-  private void a(f.b paramb, int paramInt, z paramz)
+  private static f.b a(ab paramab, int paramInt, f.b paramb)
   {
-    int i = 0;
-    AppMethodBeat.i(265897);
-    paramb.RWt = System.currentTimeMillis();
-    paramb.RVT = ((int)(paramb.RWt / 1000L));
-    paramb.pos = paramInt;
-    paramb.ilo = paramz.field_bizClientMsgId;
-    paramb.RVL = 1;
-    paramb.RVS = 0;
-    paramb.RVU = ((int)(paramz.field_createTime / 1000L));
-    if (paramz.hwz())
+    AppMethodBeat.i(301864);
+    Object localObject1 = "";
+    if (paramInt == 0) {}
+    Object localObject3;
+    Object localObject4;
+    for (Object localObject2 = "";; localObject2 = String.valueOf(paramInt))
     {
-      paramInt = 3;
-      paramb.RVW = paramInt;
-      if (!this.sBD.containsKey(paramz.getId())) {
-        break label167;
+      localObject3 = Boolean.FALSE;
+      if ((!paramab.iYf()) || (paramab.iYp() == null) || (paramab.iYp().abLM == null) || (paramab.iYp().abLM.YSB == null)) {
+        break label331;
+      }
+      localObject4 = paramab.iYp().abLM.YSB;
+      paramab = (ab)localObject1;
+      if (((LinkedList)localObject4).size() <= paramInt) {
+        break label374;
+      }
+      paramab = (ab)localObject1;
+      if (((qo)((LinkedList)localObject4).get(paramInt)).YVI == null) {
+        break label374;
+      }
+      paramab = (ab)localObject1;
+      if (((qo)((LinkedList)localObject4).get(paramInt)).YVI.size() <= paramInt) {
+        break label374;
+      }
+      paramab = (ab)localObject1;
+      if (((qo)((LinkedList)localObject4).get(paramInt)).YVI.get(paramInt) == null) {
+        break label374;
+      }
+      localObject4 = (qn)((qo)((LinkedList)localObject4).get(paramInt)).YVI.get(paramInt);
+      localObject1 = ((qn)localObject4).YVG;
+      if (!Util.isNullOrNil((String)localObject1)) {
+        break;
+      }
+      AppMethodBeat.o(301864);
+      return paramb;
+    }
+    if (((qn)localObject4).YVG.startsWith("<finder_feed>"))
+    {
+      paramab = "";
+      localObject2 = localObject3;
+      if (((Boolean)localObject2).booleanValue())
+      {
+        localObject1 = SemiXml.decode((String)localObject1);
+        label223:
+        if (localObject1 != null)
+        {
+          paramab = ((br)com.tencent.mm.kernel.h.ax(br.class)).y(paramab, (Map)localObject1);
+          if ((paramab != null) && (paramab.objectId != null))
+          {
+            paramb.YUa = paramab.objectId;
+            paramb.YHv = 17;
+          }
+        }
+        AppMethodBeat.o(301864);
+        return paramb;
       }
     }
-    label167:
+    else
+    {
+      paramab = (ab)localObject1;
+      if (!((qn)localObject4).YVG.startsWith("~SEMI_XML~")) {
+        break label374;
+      }
+      localObject3 = Boolean.TRUE;
+      localObject2 = ".sysmsg.BizAccountRecommend.BizAccount" + (String)localObject2 + ".AppMsg";
+    }
+    for (;;)
+    {
+      paramab = (ab)localObject2;
+      localObject2 = localObject3;
+      break;
+      label331:
+      localObject1 = Boolean.TRUE;
+      localObject3 = paramab.field_content;
+      paramab = ".msg.appmsg.mmreader.category.item".concat(String.valueOf(localObject2));
+      localObject2 = localObject1;
+      localObject1 = localObject3;
+      break;
+      localObject1 = XmlParser.parseXml((String)localObject1, "finder_feed", null);
+      break label223;
+      label374:
+      localObject2 = "";
+      localObject1 = paramab;
+    }
+  }
+  
+  private static void a(f.b paramb, int paramInt)
+  {
+    AppMethodBeat.i(301854);
+    int i = (int)(System.currentTimeMillis() / 1000L);
+    if (i - paramb.YTx > 1) {
+      paramb.YTp += 1;
+    }
+    paramb.pos = paramInt;
+    paramb.YTx = i;
+    AppMethodBeat.o(301854);
+  }
+  
+  private void a(f.b paramb, int paramInt, ab paramab)
+  {
+    int i = 0;
+    AppMethodBeat.i(301850);
+    paramb.YTX = System.currentTimeMillis();
+    paramb.YTx = ((int)(paramb.YTX / 1000L));
+    paramb.pos = paramInt;
+    paramb.kLn = paramab.field_bizClientMsgId;
+    paramb.YTp = 1;
+    paramb.YTw = 0;
+    paramb.YTy = ((int)(paramab.field_createTime / 1000L));
+    if (paramab.iYd())
+    {
+      paramInt = 3;
+      paramb.YTA = paramInt;
+      if (!this.vHi.containsKey(paramab.getId())) {
+        break label169;
+      }
+    }
+    label169:
     for (paramInt = i;; paramInt = 1)
     {
-      paramb.RWc = paramInt;
-      paramb.RWj = paramz.field_rankSessionId;
-      paramb.weight = ((int)paramz.hww());
-      AppMethodBeat.o(265897);
+      paramb.YTG = paramInt;
+      paramb.YTN = paramab.field_rankSessionId;
+      paramb.weight = ((int)paramab.iYb());
+      AppMethodBeat.o(301850);
       return;
-      if (paramz.hwv() == com.tencent.mm.ao.af.bjB().hxb())
+      if (paramab.iYa() == af.bHl().iYD())
       {
         paramInt = 0;
         break;
       }
-      if (System.currentTimeMillis() - paramz.field_createTime <= 86400000L)
+      if (System.currentTimeMillis() - paramab.field_createTime <= 86400000L)
       {
         paramInt = 1;
         break;
@@ -119,128 +243,162 @@ public final class f
   private static void a(f.b paramb, String paramString)
   {
     AppMethodBeat.i(5936);
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(paramString);
-    if ((paramString != null) && (paramString.ayn()))
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(paramString);
+    if ((paramString != null) && (paramString.aSQ()))
     {
-      paramb.RVR = 1;
-      paramb.RVV = 1;
+      paramb.YTv = 1;
+      paramb.YTz = 1;
       AppMethodBeat.o(5936);
       return;
     }
-    paramb.RVR = 0;
-    paramb.RVV = 0;
+    paramb.YTv = 0;
+    paramb.YTz = 0;
     AppMethodBeat.o(5936);
   }
   
-  public static void a(eqg parameqg)
+  public static void a(flj paramflj)
   {
-    AppMethodBeat.i(265905);
-    if (parameqg.UsF != null) {
-      com.tencent.mm.plugin.report.service.h.IzE.a(21064, new Object[] { Long.valueOf(System.currentTimeMillis()), parameqg.UsF.RVi, Long.valueOf(parameqg.Uaw), Integer.valueOf(3), Integer.valueOf(2), Integer.valueOf(parameqg.style), parameqg.UsF.RVm });
+    AppMethodBeat.i(301902);
+    if (paramflj.abLM != null) {
+      com.tencent.mm.plugin.report.service.h.OAn.b(21064, new Object[] { Long.valueOf(System.currentTimeMillis()), paramflj.abLM.YSF, Long.valueOf(paramflj.abry), Integer.valueOf(3), Integer.valueOf(2), Integer.valueOf(paramflj.style), paramflj.abLM.YSJ });
     }
-    AppMethodBeat.o(265905);
+    AppMethodBeat.o(301902);
   }
   
-  private void a(z paramz, int paramInt1, int paramInt2, int paramInt3)
+  private void a(ab paramab, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(5939);
-    com.tencent.mm.plugin.brandservice.b.am(new f.4(this, paramz, paramInt1, paramInt2, paramInt3));
+    com.tencent.mm.plugin.brandservice.b.au(new f.4(this, paramab, paramInt1, paramInt2, paramInt3));
     AppMethodBeat.o(5939);
   }
   
-  private void d(z paramz, int paramInt)
+  private void a(final ab paramab, final f.b paramb)
   {
-    AppMethodBeat.i(265900);
-    eqg localeqg = paramz.hwL();
-    Object localObject2;
+    AppMethodBeat.i(301908);
+    com.tencent.mm.plugin.brandservice.b.au(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(5930);
+        LinkedList localLinkedList = new LinkedList();
+        localLinkedList.add(paramb);
+        if (!Util.isNullOrNil(paramb.vHw))
+        {
+          f.b localb = paramb;
+          MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.vXs;
+          localb.YTU = MPVideoPreviewMgr.ajW(paramb.vHw);
+          localb = paramb;
+          localMPVideoPreviewMgr = MPVideoPreviewMgr.vXs;
+          localb.YTV = MPVideoPreviewMgr.ajX(paramb.vHw);
+        }
+        Log.i("MicroMsg.BizTimeLineReport", "reportOnClick %s.", new Object[] { paramab.getId() });
+        com.tencent.mm.kernel.h.baD().mCm.a(new l(localLinkedList, f.this.vGW, f.this.vGX, f.this.hBm, f.this.vGY, 1, 1, f.this.vGZ), 0);
+        AppMethodBeat.o(5930);
+      }
+    });
+    AppMethodBeat.o(301908);
+  }
+  
+  private void b(ab paramab, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(301883);
+    Object localObject1 = new y();
+    ((y)localObject1).field_msgId = paramab.field_msgId;
+    ((y)localObject1).field_exposeType = y.acEY;
+    ((y)localObject1).field_exposeTime = System.currentTimeMillis();
+    af.bHn().a((y)localObject1);
+    flj localflj = paramab.iYp();
+    Object localObject3;
     int j;
     int i;
-    Object localObject3;
-    Object localObject1;
     Object localObject4;
-    if ((localeqg != null) && ((localeqg.style == 101) || (localeqg.style == 102) || (localeqg.style == 103)))
+    Object localObject2;
+    if ((localflj != null) && ((localflj.style == 101) || (localflj.style == 102) || (localflj.style == 103)))
     {
-      localObject2 = localeqg.UsF;
-      if ((localObject2 == null) || (Util.isNullOrNil(((amf)localObject2).RVd)))
+      localObject3 = localflj.abLM;
+      if ((localObject3 == null) || (Util.isNullOrNil(((apx)localObject3).YSB)))
       {
-        AppMethodBeat.o(265900);
+        AppMethodBeat.o(301883);
         return;
       }
       j = 0;
       i = 0;
-      if (j < ((amf)localObject2).RVd.size())
+      if (j < ((apx)localObject3).YSB.size())
       {
-        if (((pf)((amf)localObject2).RVd.get(j)).RIs != 0) {
-          break label1641;
+        if (((qo)((apx)localObject3).YSB.get(j)).YFu != 0) {
+          break label1669;
         }
-        localObject3 = (pe)((pf)((amf)localObject2).RVd.get(j)).RXM.get(0);
-        localObject1 = (f.b)this.sBC.get(paramz.getId() + "_" + j);
+        localObject4 = (qn)((qo)((apx)localObject3).YSB.get(j)).YVI.get(0);
+        localObject1 = (f.b)this.vHh.get(paramab.getId() + "_" + j);
         if (localObject1 == null)
         {
-          localObject4 = new f.b();
-          this.sBC.put(paramz.getId() + "_" + j, localObject4);
-          ((f.b)localObject4).RVH = ((pf)((amf)localObject2).RVd.get(j)).UserName;
-          if ((localObject3 != null) && ((((pe)localObject3).RIs & 0x1) == 0))
+          localObject1 = new f.b();
+          this.vHh.put(paramab.getId() + "_" + j, localObject1);
+          ((f.b)localObject1).ADE = ((qo)((apx)localObject3).YSB.get(j)).UserName;
+          if ((localObject4 != null) && ((((qn)localObject4).YFu & 0x1) == 0))
           {
-            localObject1 = ((pe)localObject3).RTk;
-            if (Util.isNullOrNil((String)localObject1)) {}
+            localObject2 = ((qn)localObject4).YQK;
+            if (Util.isNullOrNil((String)localObject2)) {}
           }
         }
       }
     }
-    label1641:
+    label1669:
     for (;;)
     {
       try
       {
-        localObject1 = Uri.parse((String)localObject1);
-        int k = Util.getInt(((Uri)localObject1).getQueryParameter("idx"), 0);
-        long l1 = Util.getLong(((Uri)localObject1).getQueryParameter("mid"), 0L);
-        ((f.b)localObject4).lnn = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject1).getQueryParameter("__biz"), 2)), 0L));
-        ((f.b)localObject4).RVK.add(Integer.valueOf(k));
-        ((f.b)localObject4).fxU = l1;
-        ((f.b)localObject4).RVY = l1;
-        ((f.b)localObject4).RWl = ((pe)localObject3).RXJ;
-        ((f.b)localObject4).RWm = ((pe)localObject3).RXK;
-        a((f.b)localObject4, paramInt, paramz);
+        localObject2 = Uri.parse((String)localObject2);
+        int k = Util.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
+        long l1 = Util.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
+        ((f.b)localObject1).nSr = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject2).getQueryParameter("__biz"), 2)), 0L));
+        ((f.b)localObject1).YTo.add(Integer.valueOf(k));
+        ((f.b)localObject1).hCz = l1;
+        ((f.b)localObject1).YTC = l1;
+        ((f.b)localObject1).YTP = ((qn)localObject4).YVE;
+        ((f.b)localObject1).YTQ = ((qn)localObject4).YVF;
+        a((f.b)localObject1, paramInt1, paramab);
         k = 3;
-        if (localeqg.style == 103) {
+        if (localflj.style == 103) {
           k = 7;
         }
-        ((f.b)localObject4).qJt = k;
-        if (((pe)localObject3).CPq != null) {
-          ((f.b)localObject4).RWh = ab.aXb(((pe)localObject3).CPq);
+        ((f.b)localObject1).tNW = k;
+        if (((qn)localObject4).IJA != null) {
+          ((f.b)localObject1).YTL = aa.aUC(((qn)localObject4).IJA);
         }
-        if (localeqg != null) {
-          ((f.b)localObject4).RWg = localeqg.Uaw;
+        if (localflj != null) {
+          ((f.b)localObject1).YTK = localflj.abry;
         }
-        ((f.b)localObject4).RVZ = j;
-        if (localObject3 != null) {
-          ((f.b)localObject4).RKb = ((pe)localObject3).lpx;
+        ((f.b)localObject1).YTD = j;
+        if (localObject4 != null) {
+          ((f.b)localObject1).YHv = ((qn)localObject4).nUA;
         }
-        if (paramz.Vei != null)
+        localObject2 = a(paramab, j, (f.b)localObject1);
+        if (paramab.acFD != null)
         {
-          k = paramz.Vei.style;
-          ((f.b)localObject4).style = k;
-          if (paramz.Vei == null) {
+          k = paramab.acFD.style;
+          ((f.b)localObject2).style = k;
+          if (paramab.acFD == null) {
             continue;
           }
-          localObject1 = paramz.Vei.event;
-          ((f.b)localObject4).event = ((String)localObject1);
-          if ((paramz.Vei != null) && (paramz.Vei.UsF != null))
+          localObject1 = paramab.acFD.event;
+          ((f.b)localObject2).event = ((String)localObject1);
+          if ((paramab.acFD != null) && (paramab.acFD.abLM != null))
           {
-            ((f.b)localObject4).fUL = paramz.Vei.UsF.RVi;
-            ((f.b)localObject4).RWk = paramz.Vei.UsF.RVm;
+            ((f.b)localObject2).iaI = paramab.acFD.abLM.YSF;
+            ((f.b)localObject2).YTO = paramab.acFD.abLM.YSJ;
           }
-          if ((localeqg.style == 102) || (localeqg.style == 103))
+          if ((localflj.style == 102) || (localflj.style == 103))
           {
-            ((f.b)localObject4).RWp = localeqg.UsF.SwI;
-            ((f.b)localObject4).RWo = localeqg.UsF.SwH;
+            ((f.b)localObject2).YTT = localflj.abLM.Zxr;
+            ((f.b)localObject2).YTS = localflj.abLM.Zxq;
           }
-          ((f.b)localObject4).tpe = localeqg.UsF.SwE;
-          ((f.b)localObject4).RWv = ((pe)localObject3).RTv;
-          if ((i == 0) && (localeqg.UsF != null)) {
-            com.tencent.mm.plugin.report.service.h.IzE.a(21064, new Object[] { Long.valueOf(System.currentTimeMillis()), localeqg.UsF.RVi, Long.valueOf(localeqg.Uaw), Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(localeqg.style), localeqg.UsF.RVm });
+          ((f.b)localObject2).wtD = localflj.abLM.Zxn;
+          ((f.b)localObject2).YTZ = ((qn)localObject4).YQV;
+          localObject1 = localObject2;
+          ((f.b)localObject1).YUb |= paramInt2;
+          if ((i == 0) && (localflj.abLM != null)) {
+            com.tencent.mm.plugin.report.service.h.OAn.b(21064, new Object[] { Long.valueOf(System.currentTimeMillis()), localflj.abLM.YSF, Long.valueOf(localflj.abry), Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(localflj.style), localflj.abLM.YSJ });
           }
           i = 1;
           j += 1;
@@ -250,76 +408,73 @@ public final class f
         continue;
         localObject1 = "";
         continue;
-        ((f.b)localObject1).RVL += 1;
-        ((f.b)localObject1).pos = paramInt;
-        ((f.b)localObject1).RVT = ((int)(System.currentTimeMillis() / 1000L));
+        a((f.b)localObject1, paramInt1);
         continue;
-        AppMethodBeat.o(265900);
+        AppMethodBeat.o(301883);
         return;
-        if ((localeqg != null) && (localeqg.style == 1001) && (localeqg.UsH != null))
+        if ((localflj != null) && (localflj.style == 1001) && (localflj.abLO != null))
         {
-          if (paramz.hwB())
+          if (paramab.iYf())
           {
-            localObject1 = (f.b)this.sBC.get(paramz.getId() + "_0");
+            localObject1 = (f.b)this.vHh.get(paramab.getId() + "_0");
             if (localObject1 == null)
             {
               localObject1 = new f.b();
-              this.sBC.put(paramz.getId() + "_0", localObject1);
-              ((f.b)localObject1).zaX = localeqg.fMh;
-              a((f.b)localObject1, paramInt, paramz);
-              ((f.b)localObject1).qJt = 5;
-              if (localeqg != null) {
-                ((f.b)localObject1).RWg = localeqg.Uaw;
+              this.vHh.put(paramab.getId() + "_0", localObject1);
+              ((f.b)localObject1).DVu = localflj.hRR;
+              a((f.b)localObject1, paramInt1, paramab);
+              ((f.b)localObject1).tNW = 5;
+              if (localflj != null) {
+                ((f.b)localObject1).YTK = localflj.abry;
               }
               ((f.b)localObject1).style = 1001;
-              localObject1 = com.tencent.mm.plugin.webcanvas.l.PuB;
-              com.tencent.mm.plugin.webcanvas.l.Tt(74L);
-              localObject2 = com.tencent.mm.plugin.report.service.h.IzE;
+              localObject2 = j.WkY;
+              j.xC(74L);
+              ((f.b)localObject1).YUb |= paramInt2;
+              localObject2 = com.tencent.mm.plugin.report.service.h.OAn;
               l1 = System.currentTimeMillis();
-              localObject3 = localeqg.UsH.cardId;
-              long l2 = localeqg.Uaw;
-              paramInt = localeqg.style;
-              if (localeqg.UsF == null) {
+              localObject3 = localflj.abLO.cardId;
+              long l2 = localflj.abry;
+              paramInt1 = localflj.style;
+              if (localflj.abLM == null) {
                 continue;
               }
-              localObject1 = localeqg.UsF.RVm;
-              ((com.tencent.mm.plugin.report.service.h)localObject2).a(21064, new Object[] { Long.valueOf(l1), localObject3, Long.valueOf(l2), Integer.valueOf(5), Integer.valueOf(1), Integer.valueOf(paramInt), localObject1 });
-              Log.i("MicroMsg.BizTimeLineReport", "onExposeRecCanvasMsg %d", new Object[] { Long.valueOf(paramz.field_msgId) });
+              localObject1 = localflj.abLM.YSJ;
+              ((com.tencent.mm.plugin.report.service.h)localObject2).b(21064, new Object[] { Long.valueOf(l1), localObject3, Long.valueOf(l2), Integer.valueOf(5), Integer.valueOf(1), Integer.valueOf(paramInt1), localObject1 });
+              Log.i("MicroMsg.BizTimeLineReport", "onExposeRecCanvasMsg %d", new Object[] { Long.valueOf(paramab.field_msgId) });
             }
           }
           else
           {
-            AppMethodBeat.o(265900);
+            AppMethodBeat.o(301883);
             return;
           }
-          ((f.b)localObject1).RVL += 1;
-          ((f.b)localObject1).pos = paramInt;
-          ((f.b)localObject1).RVT = ((int)(System.currentTimeMillis() / 1000L));
+          a((f.b)localObject1, paramInt1);
           continue;
           localObject1 = "";
           continue;
         }
-        localObject1 = paramz.hwK();
-        if ((localObject1 == null) || (((eqb)localObject1).RXM == null) || (((eqb)localObject1).RXM.size() <= 0))
+        localObject2 = paramab.iYo();
+        if ((localObject2 == null) || (((fle)localObject2).YVI == null) || (((fle)localObject2).YVI.size() <= 0))
         {
           Log.w("MicroMsg.BizTimeLineReport", "recCard is null");
-          AppMethodBeat.o(265900);
+          AppMethodBeat.o(301883);
           return;
         }
-        k = ((eqb)localObject1).RXM.size();
+        k = ((fle)localObject2).YVI.size();
         i = 0;
         if (i < k)
         {
-          localObject2 = (eqc)((eqb)localObject1).RXM.get(i);
-          localObject3 = (f.b)this.sBC.get(paramz.getId() + "_" + i);
-          if (localObject3 == null)
+          localObject3 = (flf)((fle)localObject2).YVI.get(i);
+          localObject1 = (f.b)this.vHh.get(paramab.getId() + "_" + i);
+          if (localObject1 == null)
           {
-            localObject3 = new f.b();
-            this.sBC.put(paramz.getId() + "_" + i, localObject3);
-            ((f.b)localObject3).RVH = paramz.field_talker;
-            if ((localObject2 != null) && ((((eqc)localObject2).RIs & 0x1) == 0))
+            localObject1 = new f.b();
+            this.vHh.put(paramab.getId() + "_" + i, localObject1);
+            ((f.b)localObject1).ADE = paramab.field_talker;
+            if ((localObject3 != null) && ((((flf)localObject3).YFu & 0x1) == 0))
             {
-              localObject4 = ((eqc)((eqb)localObject1).RXM.get(i)).RTk;
+              localObject4 = ((flf)((fle)localObject2).YVI.get(i)).YQK;
               if (Util.isNullOrNil((String)localObject4)) {}
             }
           }
@@ -329,38 +484,37 @@ public final class f
           localObject4 = Uri.parse((String)localObject4);
           j = Util.getInt(((Uri)localObject4).getQueryParameter("idx"), 0);
           l1 = Util.getLong(((Uri)localObject4).getQueryParameter("mid"), 0L);
-          ((f.b)localObject3).lnn = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject4).getQueryParameter("__biz"), 2)), 0L));
-          ((f.b)localObject3).RVK.add(Integer.valueOf(j));
-          ((f.b)localObject3).fxU = l1;
-          ((f.b)localObject3).RVY = l1;
-          if (localObject2 != null) {
-            ((f.b)localObject3).RKb = ((eqc)localObject2).lpx;
+          ((f.b)localObject1).nSr = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject4).getQueryParameter("__biz"), 2)), 0L));
+          ((f.b)localObject1).YTo.add(Integer.valueOf(j));
+          ((f.b)localObject1).hCz = l1;
+          ((f.b)localObject1).YTC = l1;
+          if (localObject3 != null) {
+            ((f.b)localObject1).YHv = ((flf)localObject3).nUA;
           }
-          a((f.b)localObject3, paramInt, paramz);
-          ((f.b)localObject3).qJt = 1;
-          if (((eqb)localObject1).Usy != null) {
-            ((f.b)localObject3).RWh = ab.aXb(((eqb)localObject1).Usy.UsA);
+          a((f.b)localObject1, paramInt1, paramab);
+          ((f.b)localObject1).tNW = 1;
+          if (((fle)localObject2).abLF != null) {
+            ((f.b)localObject1).YTL = aa.aUC(((fle)localObject2).abLF.abLH);
           }
-          if (localeqg != null) {
-            ((f.b)localObject3).RWg = localeqg.Uaw;
+          if (localflj != null) {
+            ((f.b)localObject1).YTK = localflj.abry;
           }
-          ((f.b)localObject3).RVZ = i;
-          if (paramz.Vei != null)
+          ((f.b)localObject1).YTD = i;
+          if (paramab.acFD != null)
           {
-            j = paramz.Vei.style;
-            ((f.b)localObject3).style = j;
-            ((f.b)localObject3).tpe = ((eqb)localObject1).SwE;
+            j = paramab.acFD.style;
+            ((f.b)localObject1).style = j;
+            ((f.b)localObject1).wtD = ((fle)localObject2).Zxn;
+            ((f.b)localObject1).YUb |= paramInt2;
             i += 1;
           }
           else
           {
             j = 0;
             continue;
-            ((f.b)localObject3).RVL += 1;
-            ((f.b)localObject3).pos = paramInt;
-            ((f.b)localObject3).RVT = ((int)(System.currentTimeMillis() / 1000L));
+            a((f.b)localObject1, paramInt1);
             continue;
-            AppMethodBeat.o(265900);
+            AppMethodBeat.o(301883);
             return;
           }
         }
@@ -370,219 +524,430 @@ public final class f
     }
   }
   
-  private void e(z paramz, int paramInt)
+  private void c(ab paramab, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(265903);
-    if ((!paramz.hwz()) || (paramz.Ven == null) || (Util.isNullOrNil(paramz.Ven.UaA)))
+    AppMethodBeat.i(301898);
+    if ((!paramab.iYd()) || (paramab.acFJ == null) || (Util.isNullOrNil(paramab.acFJ.abrC)))
     {
-      AppMethodBeat.o(265903);
+      AppMethodBeat.o(301898);
       return;
     }
-    dug localdug = paramz.Ven;
-    int j = localdug.UaA.size();
+    ene localene = paramab.acFJ;
+    int j = localene.abrC.size();
     int i = 0;
     for (;;)
     {
-      Object localObject1;
+      enp localenp;
+      Object localObject;
       f.b localb;
-      Object localObject2;
       if (i < j)
       {
-        localObject1 = (dur)localdug.UaA.get(i);
-        localb = (f.b)this.sBC.get(paramz.getId() + "_" + i);
-        if (localb == null)
+        localenp = (enp)localene.abrC.get(i);
+        localObject = (f.b)this.vHh.get(paramab.getId() + "_" + i);
+        if (localObject == null)
         {
           localb = new f.b();
-          this.sBC.put(paramz.getId() + "_" + i, localb);
-          a(localb, paramInt, paramz);
+          this.vHh.put(paramab.getId() + "_" + i, localb);
+          a(localb, paramInt1, paramab);
           if (i == 0) {
-            localb.zaX = localdug.RXO;
+            localb.DVu = localene.YVK;
           }
-          localb.qJt = com.tencent.mm.storage.af.L(paramz);
-          localb.RWu = paramz.Vee;
-          localb.style = localdug.RVf;
-          localb.RWm = ((dur)localObject1).RXK;
-          localb.RKb = ((dur)localObject1).UaX.lpx;
-          localb.RVZ = i;
-          localb.RVH = ((dur)localObject1).UaW.UserName;
-          localb.fUL = localdug.RVi;
-          localObject2 = ((dur)localObject1).UaX.RTk;
-          if (Util.isNullOrNil((String)localObject2)) {}
+          localb.tNW = ah.K(paramab);
+          localb.YTY = paramab.acFz;
+          localb.style = localene.bcb;
+          localb.YTQ = localenp.YVF;
+          localb.YHv = localenp.abse.nUA;
+          localb.YTD = i;
+          localb.ADE = localenp.absd.UserName;
+          localb.iaI = localene.YSF;
+          localObject = localenp.abse.YQK;
+          if (Util.isNullOrNil((String)localObject)) {}
         }
       }
       try
       {
-        localObject2 = Uri.parse((String)localObject2);
-        int k = Util.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
-        long l = Util.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
-        localb.lnn = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject2).getQueryParameter("__biz"), 2)), 0L));
-        localb.RVK.add(Integer.valueOf(k));
-        localb.fxU = l;
-        localb.RVY = l;
-        label380:
-        if (localdug.RVf == 2002)
+        localObject = Uri.parse((String)localObject);
+        int k = Util.getInt(((Uri)localObject).getQueryParameter("idx"), 0);
+        long l = Util.getLong(((Uri)localObject).getQueryParameter("mid"), 0L);
+        localb.nSr = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject).getQueryParameter("__biz"), 2)), 0L));
+        localb.YTo.add(Integer.valueOf(k));
+        localb.hCz = l;
+        localb.YTC = l;
+        label387:
+        if (localene.bcb == 2002)
         {
-          localb.RWp = localdug.SwI;
-          localb.RWo = localdug.SwH;
-          if (localdug.RVf != 2002) {
-            break label549;
+          localb.YTT = localene.Zxr;
+          localb.YTS = localene.Zxq;
+          label418:
+          if (localene.bcb != 2002) {
+            break label574;
           }
-          localb.RWh = ab.aXb(localdug.UaC);
-          if (((dur)localObject1).UaX.Tua != null) {
-            localb.RWv = ((dur)localObject1).UaX.Tua.RTv;
+          localb.YTL = aa.aUC(localene.abrE);
+          label442:
+          if (localenp.abse.aaID != null) {
+            localb.YTZ = localenp.abse.aaID.YQV;
           }
-          localb.RWe = com.tencent.mm.plugin.brandservice.ui.timeline.a.a.c((dur)localObject1);
-          if (localdug.RVf != 2002) {
-            break label627;
+          localb.YTI = com.tencent.mm.plugin.brandservice.ui.timeline.a.a.c(localenp);
+          if (localene.bcb != 2002) {
+            break label653;
           }
-          localObject1 = localdug.UaD;
-          if (localObject1 != null) {
-            localb.tpe = ab.aXb(((duu)localObject1).wording);
+          localObject = localene.abrF;
+          label497:
+          if (localObject != null) {
+            localb.wtD = aa.aUC(((ens)localObject).wording);
           }
-          localObject1 = com.tencent.mm.plugin.webcanvas.l.PuB;
-          com.tencent.mm.plugin.webcanvas.l.Tt(74L);
+          localObject = j.WkY;
+          j.xC(74L);
+          localObject = localb;
         }
         for (;;)
         {
-          label411:
-          label435:
-          label490:
+          ((f.b)localObject).YUb |= paramInt2;
           i += 1;
           break;
-          localb.RWp = ((dur)localObject1).SwI;
-          localb.RWo = ((dur)localObject1).SwH;
-          break label411;
-          label549:
-          if (localdug.RVf != 2001) {
-            break label435;
+          localb.YTT = localenp.Zxr;
+          localb.YTS = localenp.Zxq;
+          break label418;
+          label574:
+          if (localene.bcb != 2001) {
+            break label442;
           }
-          localb.RWh = ab.aXb(((dur)localObject1).UaC);
-          if ((((dur)localObject1).UaX.lpx != 5) || (i != 0) || (!com.tencent.mm.plugin.brandservice.ui.timeline.a.a.a(localdug)) || (((dur)localObject1).UaX.Tua == null)) {
-            break label435;
+          localb.YTL = aa.aUC(localenp.abrE);
+          if ((localenp.abse.nUA != 5) || (i != 0) || (!com.tencent.mm.plugin.brandservice.ui.timeline.a.a.a(localene)) || (localenp.abse.aaID == null)) {
+            break label442;
           }
-          localb.sBR = ((dur)localObject1).UaX.Tua.RTv;
-          break label435;
-          label627:
-          localObject1 = ((dur)localObject1).UaD;
-          break label490;
-          localb.RVL += 1;
-          localb.pos = paramInt;
-          localb.RVT = ((int)(System.currentTimeMillis() / 1000L));
+          localb.vHw = localenp.abse.aaID.YQV;
+          break label442;
+          label653:
+          localObject = localenp.abrF;
+          break label497;
+          a((f.b)localObject, paramInt1);
         }
-        AppMethodBeat.o(265903);
+        AppMethodBeat.o(301898);
         return;
       }
       catch (Exception localException)
       {
-        break label380;
+        break label387;
       }
     }
   }
   
-  private static int f(z paramz)
+  private static int h(ab paramab)
   {
-    AppMethodBeat.i(265910);
-    if (paramz.hwH())
+    AppMethodBeat.i(301915);
+    if (paramab.iYl())
     {
-      AppMethodBeat.o(265910);
+      AppMethodBeat.o(301915);
       return 1;
     }
-    if (paramz.hwG())
+    if (paramab.iYk())
     {
-      AppMethodBeat.o(265910);
+      AppMethodBeat.o(301915);
       return 2;
     }
-    if (paramz.hwF())
+    if (paramab.iYj())
     {
-      AppMethodBeat.o(265910);
+      AppMethodBeat.o(301915);
       return 3;
     }
-    AppMethodBeat.o(265910);
+    AppMethodBeat.o(301915);
     return -1;
   }
   
-  public final void GM(int paramInt)
+  public final void Hm(int paramInt)
   {
     AppMethodBeat.i(5940);
     a("", 0L, 0, paramInt, -1);
     AppMethodBeat.o(5940);
   }
   
-  public final void a(com.tencent.mm.plugin.brandservice.ui.timeline.a.b paramb)
+  public final void a(ab paramab, int paramInt1, int paramInt2)
   {
-    this.sBB = paramb;
-  }
-  
-  public final void a(final z paramz, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(265907);
-    if (paramz == null)
+    AppMethodBeat.i(301946);
+    if (paramab == null)
     {
-      AppMethodBeat.o(265907);
+      AppMethodBeat.o(301946);
       return;
     }
-    Object localObject2 = (f.b)this.sBC.get(paramz.getId() + "_" + paramInt1);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = localObject2;
-      if (this.sBB != null)
+    Log.v("MicroMsg.BizTimeLineReport", "onExpose msgId=%s, pos=%d, isValidExposed=%d", new Object[] { paramab.getId(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Object localObject1;
+    int j;
+    f.b localb;
+    if (paramab.iYe()) {
+      if (paramab.iYe())
       {
-        c(paramz, paramInt1);
-        this.sBB.cBa();
-        localObject1 = (f.b)this.sBC.get(paramz.getId() + "_" + paramInt1);
-      }
-    }
-    if (localObject1 != null)
-    {
-      ((f.b)localObject1).RWd = 1;
-      Log.d("MicroMsg.BizTimeLineReport", "onClick %d", new Object[] { Integer.valueOf(paramInt1) });
-      com.tencent.mm.plugin.brandservice.b.am(new Runnable()
-      {
-        public final void run()
+        localObject1 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.biz.a.a.class)).c(paramab.field_msgId, paramab.field_content);
+        if ((localObject1 == null) || (Util.isNullOrNil(((u)localObject1).nUC)))
         {
-          AppMethodBeat.i(5930);
-          LinkedList localLinkedList = new LinkedList();
-          localLinkedList.add(this.sBF);
-          if (!Util.isNullOrNil(this.sBF.sBR))
-          {
-            f.b localb = this.sBF;
-            MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
-            localb.RWq = MPVideoPreviewMgr.aqx(this.sBF.sBR);
-            localb = this.sBF;
-            localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
-            localb.RWr = MPVideoPreviewMgr.aqy(this.sBF.sBR);
-          }
-          Log.i("MicroMsg.BizTimeLineReport", "reportOnClick %s.", new Object[] { paramz.getId() });
-          com.tencent.mm.kernel.h.aHF().kcd.a(new com.tencent.mm.plugin.brandservice.b.l(localLinkedList, f.this.sBx, f.this.sBy, f.this.fwM, f.this.sBz, 1, 1, f.this.sBA), 0);
-          AppMethodBeat.o(5930);
+          AppMethodBeat.o(301946);
+          return;
         }
-      });
-      localObject1 = g.sBS;
-      localObject1 = this.dataList;
-      localObject2 = this.sBC;
-      kotlin.g.b.p.k(paramz, "info");
-      kotlin.g.b.p.k(localObject2, "sessionItemCache");
-      ad localad = ad.Vfe;
-      if ((!ad.hxt()) || ((g.bcJ().decodeInt("ReSortBizMsgFlag", 0) & 0x3) == 0)) {
-        break label316;
+        try
+        {
+          i = ((u)localObject1).nUC.size();
+          if ((i <= 2) || (paramab.field_isExpand)) {
+            break label1453;
+          }
+          i = 2;
+        }
+        catch (UnsupportedOperationException paramab)
+        {
+          for (;;)
+          {
+            int i;
+            com.tencent.mm.message.v localv;
+            Object localObject2;
+            Log.w("MicroMsg.BizTimeLineReport", "exposeLog exp %s", new Object[] { paramab.getMessage() });
+            AppMethodBeat.o(301946);
+            return;
+            localb.YTq = 0;
+          }
+        }
+        catch (Exception paramab)
+        {
+          Log.w("MicroMsg.BizTimeLineReport", "exposeLog exp %s", new Object[] { paramab.getMessage() });
+        }
+        if (j >= i) {
+          break label894;
+        }
+        localv = (com.tencent.mm.message.v)((u)localObject1).nUC.get(j);
+        if (localv == null) {
+          break label1459;
+        }
+        localb = (f.b)this.vHh.get(paramab.getId() + "_" + j);
+        if (localb != null) {
+          break label825;
+        }
+        localb = new f.b();
+        this.vHh.put(paramab.getId() + "_" + j, localb);
+        localb.ADE = paramab.field_talker;
+        a(localb, paramInt1, paramab);
+        localb.YTr = 0;
+        localb.YTt = 0;
+        localb.YTu = 0;
+        localb.YSj = 0;
+        localb.msg_type = localv.type;
+        if (!Util.isNullOrNil(localv.url))
+        {
+          localObject2 = ((com.tencent.mm.plugin.brandservice.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.brandservice.api.c.class)).aiz(localv.url);
+          if (localObject2 != null)
+          {
+            k = 0;
+            if (((p)localObject2).nUx != null) {
+              k = ((p)localObject2).nUx.nUr;
+            }
+            localb.YTB = ("1_" + k + ";");
+            localb.YTW = ((p)localObject2).nUy;
+          }
+        }
+        localb.YTD = j;
+        if (!paramab.field_isExpand) {
+          break label1468;
+        }
+        k = 1;
+        label425:
+        localb.YTE = k;
+        if ((j != 0) || (!paramab.acFv)) {
+          break label1474;
+        }
+        k = 1;
+        label447:
+        localb.YTI = k;
+        if (!paramab.acFw) {
+          break label1480;
+        }
       }
     }
-    label316:
-    for (int i = 1;; i = 0)
+    label819:
+    label825:
+    label1468:
+    label1474:
+    label1480:
+    for (int k = 1;; k = 0)
     {
-      if ((i != 0) && (localObject1 != null))
+      localb.YTJ = k;
+      localb.YTM = localv.nQp;
+      localb.YHv = localv.type;
+      localb.YTN = paramab.field_rankSessionId;
+      localb = a(paramab, j, localb);
+      a(localb, paramab.field_talker);
+      if (!Util.isNullOrNil(localv.url))
       {
-        i = ((List)localObject1).indexOf(paramz);
-        if (i >= 0) {
-          com.tencent.e.h.ZvG.bc((Runnable)new g.b(paramz, i, (List)localObject1, (c)localObject2, paramInt1));
+        localObject2 = Uri.parse(localv.url);
+        k = Util.getInt(((Uri)localObject2).getQueryParameter("idx"), 0);
+        long l = Util.getLong(((Uri)localObject2).getQueryParameter("mid"), 0L);
+        localb.nSr = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject2).getQueryParameter("__biz"), 2)), 0L));
+        localb.YTo.add(Integer.valueOf(k));
+        localb.hCz = l;
+        localb.YTC = l;
+      }
+      if (paramab.field_isExpand)
+      {
+        localb.YTq = 2;
+        localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(paramab.field_talker);
+        if ((localObject2 == null) || (d.rs(((az)localObject2).field_type))) {
+          break label819;
         }
       }
-      if ((!paramz.hwB()) && (!paramz.hwz())) {
-        a(paramz, paramInt1, 11, paramInt2);
+      for (k = 2;; k = 0)
+      {
+        localb.tNW = k;
+        if (localv.type == 5) {
+          localb.vHw = localv.vid;
+        }
+        localb.YTZ = localv.vid;
+        localb.YUb |= paramInt2;
+        break label1459;
+        if (((u)localObject1).nUC.size() > 2)
+        {
+          localb.YTq = 1;
+          break;
+        }
+        AppMethodBeat.o(301946);
+        return;
       }
-      AppMethodBeat.o(265907);
+      if ((j == 0) && (paramab.acFv))
+      {
+        k = 1;
+        label840:
+        localb.YTI = k;
+        if (!paramab.acFw) {
+          break label888;
+        }
+      }
+      label888:
+      for (k = 1;; k = 0)
+      {
+        localb.YTJ = k;
+        a(localb, paramInt1);
+        a(localb, paramab.field_talker);
+        break;
+        k = 0;
+        break label840;
+      }
+      label894:
+      AppMethodBeat.o(301946);
       return;
+      if (paramab.iYf())
+      {
+        b(paramab, paramInt1, paramInt2);
+        AppMethodBeat.o(301946);
+        return;
+      }
+      if (paramab.iYg())
+      {
+        if (paramab.iYg())
+        {
+          localb = (f.b)this.vHh.get(paramab.getId());
+          if (localb != null) {
+            break label1117;
+          }
+          localb = new f.b();
+          this.vHh.put(paramab.getId(), localb);
+          localb.ADE = paramab.field_talker;
+          a(localb, paramInt1, paramab);
+          localb.msg_type = h(paramab);
+          a(localb, paramab.field_talker);
+          localb.tNW = ah.K(paramab);
+          localObject1 = paramab.iYs();
+          localb.aid = ((String)localObject1);
+          localb.traceid = paramab.getTraceId();
+          paramab = com.tencent.mm.storage.r.acDM;
+          if (!com.tencent.mm.storage.r.bvm((String)localObject1)) {
+            break label1112;
+          }
+          paramInt1 = 1;
+          localb.YTR = paramInt1;
+        }
+        for (paramab = localb;; paramab = localb)
+        {
+          paramab.YUb |= paramInt2;
+          AppMethodBeat.o(301946);
+          return;
+          label1112:
+          paramInt1 = 0;
+          break;
+          label1117:
+          a(localb, paramInt1);
+          a(localb, paramab.field_talker);
+        }
+      }
+      if (paramab.iYd())
+      {
+        c(paramab, paramInt1, paramInt2);
+        AppMethodBeat.o(301946);
+        return;
+      }
+      localb = (f.b)this.vHh.get(paramab.getId());
+      if (localb == null)
+      {
+        localb = new f.b();
+        this.vHh.put(paramab.getId(), localb);
+        localb.ADE = paramab.field_talker;
+        localb.hCz = 0L;
+        a(localb, paramInt1, paramab);
+        localb.YTr = 0;
+        localb.YTt = 0;
+        localb.YTu = 0;
+        localb.YSj = 0;
+        localb.msg_type = h(paramab);
+        a(localb, paramab.field_talker);
+        if (paramab.acFv)
+        {
+          paramInt1 = 1;
+          localb.YTI = paramInt1;
+          if (!paramab.acFw) {
+            break label1382;
+          }
+          paramInt1 = 1;
+          localb.YTJ = paramInt1;
+          paramab = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(paramab.field_talker);
+          if ((paramab == null) || (d.rs(paramab.field_type))) {
+            break label1387;
+          }
+        }
+        label1382:
+        label1387:
+        for (paramInt1 = 3;; paramInt1 = 0)
+        {
+          localb.tNW = paramInt1;
+          paramab = localb;
+          paramab.YUb |= paramInt2;
+          AppMethodBeat.o(301946);
+          return;
+          paramInt1 = 0;
+          break;
+          paramInt1 = 0;
+          break label1305;
+        }
+      }
+      a(localb, paramInt1);
+      a(localb, paramab.field_talker);
+      if (paramab.acFv)
+      {
+        paramInt1 = 1;
+        localb.YTI = paramInt1;
+        if (!paramab.acFw) {
+          break label1448;
+        }
+      }
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        localb.YTJ = paramInt1;
+        paramab = localb;
+        break;
+        paramInt1 = 0;
+        break label1416;
+      }
+      j = 0;
+      break;
+      j += 1;
+      break;
+      k = 0;
+      break label425;
+      k = 0;
+      break label447;
     }
   }
   
@@ -595,7 +960,7 @@ public final class f
   
   public final void a(String paramString, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean, int paramInt4)
   {
-    AppMethodBeat.i(265915);
+    AppMethodBeat.i(301996);
     int i = paramInt3;
     if (paramInt3 <= 0) {
       i = (int)(System.currentTimeMillis() / 1000L);
@@ -603,96 +968,54 @@ public final class f
     if (paramBoolean) {}
     for (paramInt3 = 1;; paramInt3 = 0)
     {
-      as localas = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(paramString);
+      au localau = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(paramString);
       int j = paramInt3;
       if (!paramBoolean)
       {
         j = paramInt3;
-        if (localas != null)
+        if (localau != null)
         {
           j = paramInt3;
-          if (!d.rk(localas.field_type)) {
+          if (!d.rs(localau.field_type)) {
             j = 3;
           }
         }
       }
-      com.tencent.mm.plugin.report.service.h.IzE.a(15721, new Object[] { paramString, Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(this.fwM), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), "", Integer.valueOf(j), Integer.valueOf(paramInt4) });
-      AppMethodBeat.o(265915);
+      com.tencent.mm.plugin.report.service.h.OAn.b(15721, new Object[] { paramString, Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(this.hBm), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), "", Integer.valueOf(j), Integer.valueOf(paramInt4) });
+      AppMethodBeat.o(301996);
       return;
     }
   }
   
   public final void a(String paramString1, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString2, int paramInt3, String paramString3, String paramString4, String paramString5, int paramInt4, int paramInt5, String paramString6)
   {
-    AppMethodBeat.i(265917);
+    AppMethodBeat.i(302005);
     int j = (int)(System.currentTimeMillis() / 1000L);
     int i = 3;
     if (paramInt5 == 103) {
       i = 7;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(15721, new Object[] { paramString1, Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(this.fwM), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), paramString2, Integer.valueOf(i), Integer.valueOf(paramInt3), paramString3, paramString4, paramString5, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString6 });
-    AppMethodBeat.o(265917);
+    com.tencent.mm.plugin.report.service.h.OAn.b(15721, new Object[] { paramString1, Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(this.hBm), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), paramString2, Integer.valueOf(i), Integer.valueOf(paramInt3), paramString3, paramString4, paramString5, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString6 });
+    AppMethodBeat.o(302005);
   }
   
   public final void a(String paramString1, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt3, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(265919);
+    AppMethodBeat.i(302012);
     int j = (int)(System.currentTimeMillis() / 1000L);
     int i = 3;
     if (paramInt3 == 103) {
       i = 7;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(15721, new Object[] { paramString1, Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(this.fwM), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), paramString2, Integer.valueOf(i), Integer.valueOf(0), paramString3, paramString4, paramString5, Integer.valueOf(0), Integer.valueOf(paramInt3), paramString6, paramString7, paramString8 });
-    AppMethodBeat.o(265919);
+    com.tencent.mm.plugin.report.service.h.OAn.b(15721, new Object[] { paramString1, Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(this.hBm), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), paramString2, Integer.valueOf(i), Integer.valueOf(0), paramString3, paramString4, paramString5, Integer.valueOf(0), Integer.valueOf(paramInt3), paramString6, paramString7, paramString8 });
+    AppMethodBeat.o(302012);
   }
   
-  public final void a(String paramString1, long paramLong, int paramInt1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3)
-  {
-    AppMethodBeat.i(265918);
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    com.tencent.mm.plugin.report.service.h.IzE.a(15721, new Object[] { paramString1, Long.valueOf(paramLong), Integer.valueOf(16), Integer.valueOf(i), Integer.valueOf(this.fwM), Integer.valueOf(paramInt1), Long.valueOf(0L), paramString2, Integer.valueOf(paramInt3), Integer.valueOf(0), "", "", paramString3, Integer.valueOf(0), Integer.valueOf(paramInt2), paramString4 });
-    AppMethodBeat.o(265918);
-  }
-  
-  public final void b(z paramz, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(265909);
-    if ((!paramz.hwz()) && (!paramz.hwB()))
-    {
-      AppMethodBeat.o(265909);
-      return;
-    }
-    f.b localb = (f.b)this.sBC.get(paramz.getId() + "_" + paramInt1);
-    if (localb == null)
-    {
-      Log.i("MicroMsg.BizTimeLineReport", "onClickTag fail sessionItem is null");
-      AppMethodBeat.o(265909);
-      return;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(localb);
-    if (!Util.isNullOrNil(localb.sBR))
-    {
-      MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
-      localb.RWq = MPVideoPreviewMgr.aqx(localb.sBR);
-      localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
-      localb.RWr = MPVideoPreviewMgr.aqy(localb.sBR);
-    }
-    Log.i("MicroMsg.BizTimeLineReport", "reportOnClick %s.", new Object[] { paramz.getId() });
-    if (24 == paramInt2) {}
-    for (paramInt1 = 2;; paramInt1 = 3)
-    {
-      com.tencent.mm.kernel.h.aHF().kcd.a(new com.tencent.mm.plugin.brandservice.b.l(localLinkedList, this.sBx, this.sBy, this.fwM, this.sBz, 1, paramInt1, this.sBA), 0);
-      AppMethodBeat.o(265909);
-      return;
-    }
-  }
-  
-  public final void b(z paramz, boolean paramBoolean)
+  public final void b(ab paramab, boolean paramBoolean)
   {
     AppMethodBeat.i(5937);
-    paramz = (f.b)this.sBC.get(paramz.getId());
-    if (paramz == null)
+    paramab = (f.b)this.vHh.get(paramab.getId());
+    if (paramab == null)
     {
       AppMethodBeat.o(5937);
       return;
@@ -700,401 +1023,159 @@ public final class f
     if (paramBoolean) {}
     for (int i = 1;; i = 2)
     {
-      paramz.RUK = i;
+      paramab.YSj = i;
       AppMethodBeat.o(5937);
       return;
     }
   }
   
-  public final void c(z paramz, int paramInt)
+  public final void c(ab paramab, int paramInt)
   {
-    AppMethodBeat.i(5935);
-    if (paramz == null)
-    {
-      AppMethodBeat.o(5935);
-      return;
-    }
-    Object localObject1;
-    int j;
-    Object localObject2;
-    f.b localb;
-    if (paramz.hwA()) {
-      if (paramz.hwA())
-      {
-        localObject1 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(paramz.field_msgId, paramz.field_content);
-        if ((localObject1 == null) || (Util.isNullOrNil(((u)localObject1).lpz)))
-        {
-          AppMethodBeat.o(5935);
-          return;
-        }
-        try
-        {
-          i = ((u)localObject1).lpz.size();
-          if ((i <= 2) || (paramz.field_isExpand)) {
-            break label1440;
-          }
-          i = 2;
-        }
-        catch (UnsupportedOperationException paramz)
-        {
-          for (;;)
-          {
-            int i;
-            Object localObject3;
-            Log.w("MicroMsg.BizTimeLineReport", "exposeLog exp %s", new Object[] { paramz.getMessage() });
-            AppMethodBeat.o(5935);
-            return;
-            localb.RVM = 0;
-          }
-        }
-        catch (Exception paramz)
-        {
-          Log.w("MicroMsg.BizTimeLineReport", "exposeLog exp %s", new Object[] { paramz.getMessage() });
-        }
-        if (j >= i) {
-          break label858;
-        }
-        localObject2 = (com.tencent.mm.aj.v)((u)localObject1).lpz.get(j);
-        if (localObject2 == null) {
-          break label1446;
-        }
-        localb = (f.b)this.sBC.get(paramz.getId() + "_" + j);
-        if (localb != null) {
-          break label764;
-        }
-        localb = new f.b();
-        this.sBC.put(paramz.getId() + "_" + j, localb);
-        localb.RVH = paramz.field_talker;
-        a(localb, paramInt, paramz);
-        localb.RVN = 0;
-        localb.RVP = 0;
-        localb.RVQ = 0;
-        localb.RUK = 0;
-        localb.msg_type = ((com.tencent.mm.aj.v)localObject2).type;
-        if (!Util.isNullOrNil(((com.tencent.mm.aj.v)localObject2).url))
-        {
-          localObject3 = ((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).apc(((com.tencent.mm.aj.v)localObject2).url);
-          if (localObject3 != null)
-          {
-            k = 0;
-            if (((com.tencent.mm.aj.p)localObject3).lpu != null) {
-              k = ((com.tencent.mm.aj.p)localObject3).lpu.lpo;
-            }
-            localb.RVX = ("1_" + k + ";");
-            localb.RWs = ((com.tencent.mm.aj.p)localObject3).lpv;
-          }
-        }
-        localb.RVZ = j;
-        if (!paramz.field_isExpand) {
-          break label1455;
-        }
-        k = 1;
-        label387:
-        localb.RWa = k;
-        if ((j != 0) || (!paramz.Veb)) {
-          break label1461;
-        }
-        k = 1;
-        label409:
-        localb.RWe = k;
-        if (!paramz.Vec) {
-          break label1467;
-        }
-      }
-    }
-    label1280:
-    label1435:
-    label1440:
-    label1446:
-    label1455:
-    label1461:
-    label1467:
-    for (int k = 1;; k = 0)
-    {
-      localb.RWf = k;
-      localb.RWi = ((com.tencent.mm.aj.v)localObject2).lls;
-      localb.RKb = ((com.tencent.mm.aj.v)localObject2).type;
-      localb.RWj = paramz.field_rankSessionId;
-      a(localb, paramz.field_talker);
-      if (!Util.isNullOrNil(((com.tencent.mm.aj.v)localObject2).url))
-      {
-        localObject3 = Uri.parse(((com.tencent.mm.aj.v)localObject2).url);
-        k = Util.getInt(((Uri)localObject3).getQueryParameter("idx"), 0);
-        long l = Util.getLong(((Uri)localObject3).getQueryParameter("mid"), 0L);
-        localb.lnn = ((int)Util.getLong(new String(Base64.decode(((Uri)localObject3).getQueryParameter("__biz"), 2)), 0L));
-        localb.RVK.add(Integer.valueOf(k));
-        localb.fxU = l;
-        localb.RVY = l;
-      }
-      if (paramz.field_isExpand)
-      {
-        localb.RVM = 2;
-        localObject3 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(paramz.field_talker);
-        if ((localObject3 == null) || (d.rk(((ax)localObject3).field_type))) {
-          break label758;
-        }
-      }
-      label758:
-      for (k = 2;; k = 0)
-      {
-        localb.qJt = k;
-        if (((com.tencent.mm.aj.v)localObject2).type == 5) {
-          localb.sBR = ((com.tencent.mm.aj.v)localObject2).vid;
-        }
-        localb.RWv = ((com.tencent.mm.aj.v)localObject2).vid;
-        break label1446;
-        if (((u)localObject1).lpz.size() > 2)
-        {
-          localb.RVM = 1;
-          break;
-        }
-        AppMethodBeat.o(5935);
-        return;
-      }
-      label764:
-      if ((j == 0) && (paramz.Veb))
-      {
-        k = 1;
-        localb.RWe = k;
-        if (!paramz.Vec) {
-          break label852;
-        }
-      }
-      label852:
-      for (k = 1;; k = 0)
-      {
-        localb.RWf = k;
-        localb.RVL += 1;
-        localb.pos = paramInt;
-        localb.RVT = ((int)(System.currentTimeMillis() / 1000L));
-        a(localb, paramz.field_talker);
-        break label1446;
-        k = 0;
-        break;
-      }
-      label858:
-      AppMethodBeat.o(5935);
-      return;
-      if (paramz.hwB())
-      {
-        d(paramz, paramInt);
-        AppMethodBeat.o(5935);
-        return;
-      }
-      if (paramz.hwC())
-      {
-        if (paramz.hwC())
-        {
-          localObject1 = (f.b)this.sBC.get(paramz.getId());
-          if (localObject1 == null)
-          {
-            localObject1 = new f.b();
-            this.sBC.put(paramz.getId(), localObject1);
-            ((f.b)localObject1).RVH = paramz.field_talker;
-            a((f.b)localObject1, paramInt, paramz);
-            ((f.b)localObject1).msg_type = f(paramz);
-            a((f.b)localObject1, paramz.field_talker);
-            ((f.b)localObject1).qJt = com.tencent.mm.storage.af.L(paramz);
-            localObject2 = paramz.hwO();
-            ((f.b)localObject1).aid = ((String)localObject2);
-            ((f.b)localObject1).traceid = paramz.getTraceId();
-            paramz = r.VcW;
-            if (r.bve((String)localObject2)) {}
-            for (paramInt = 1;; paramInt = 0)
-            {
-              ((f.b)localObject1).RWn = paramInt;
-              AppMethodBeat.o(5935);
-              return;
-            }
-          }
-          ((f.b)localObject1).RVL += 1;
-          ((f.b)localObject1).pos = paramInt;
-          ((f.b)localObject1).RVT = ((int)(System.currentTimeMillis() / 1000L));
-          a((f.b)localObject1, paramz.field_talker);
-        }
-        AppMethodBeat.o(5935);
-        return;
-      }
-      if (paramz.hwz())
-      {
-        e(paramz, paramInt);
-        AppMethodBeat.o(5935);
-        return;
-      }
-      localObject1 = (f.b)this.sBC.get(paramz.getId());
-      if (localObject1 == null)
-      {
-        localObject1 = new f.b();
-        this.sBC.put(paramz.getId(), localObject1);
-        ((f.b)localObject1).RVH = paramz.field_talker;
-        ((f.b)localObject1).fxU = 0L;
-        a((f.b)localObject1, paramInt, paramz);
-        ((f.b)localObject1).RVN = 0;
-        ((f.b)localObject1).RVP = 0;
-        ((f.b)localObject1).RVQ = 0;
-        ((f.b)localObject1).RUK = 0;
-        ((f.b)localObject1).msg_type = f(paramz);
-        a((f.b)localObject1, paramz.field_talker);
-        if (paramz.Veb)
-        {
-          paramInt = 1;
-          ((f.b)localObject1).RWe = paramInt;
-          if (!paramz.Vec) {
-            break label1343;
-          }
-          paramInt = 1;
-          ((f.b)localObject1).RWf = paramInt;
-          paramz = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(paramz.field_talker);
-          if ((paramz == null) || (d.rk(paramz.field_type))) {
-            break label1348;
-          }
-        }
-        label1343:
-        label1348:
-        for (paramInt = 3;; paramInt = 0)
-        {
-          ((f.b)localObject1).qJt = paramInt;
-          AppMethodBeat.o(5935);
-          return;
-          paramInt = 0;
-          break;
-          paramInt = 0;
-          break label1280;
-        }
-      }
-      ((f.b)localObject1).RVL += 1;
-      ((f.b)localObject1).pos = paramInt;
-      ((f.b)localObject1).RVT = ((int)(System.currentTimeMillis() / 1000L));
-      a((f.b)localObject1, paramz.field_talker);
-      if (paramz.Veb)
-      {
-        paramInt = 1;
-        ((f.b)localObject1).RWe = paramInt;
-        if (!paramz.Vec) {
-          break label1435;
-        }
-      }
-      for (paramInt = 1;; paramInt = 0)
-      {
-        ((f.b)localObject1).RWf = paramInt;
-        AppMethodBeat.o(5935);
-        return;
-        paramInt = 0;
-        break;
-      }
-      j = 0;
-      break;
-      j += 1;
-      break;
-      k = 0;
-      break label387;
-      k = 0;
-      break label409;
-    }
+    AppMethodBeat.i(301966);
+    d(paramab, paramInt, (int)(System.currentTimeMillis() / 1000L));
+    AppMethodBeat.o(301966);
   }
   
-  public final void cAf()
-  {
-    AppMethodBeat.i(265913);
-    GM(5);
-    AppMethodBeat.o(265913);
-  }
-  
-  public final void e(z paramz)
-  {
-    AppMethodBeat.i(265896);
-    if (paramz.field_isRead == 1)
-    {
-      AppMethodBeat.o(265896);
-      return;
-    }
-    this.sBD.put(paramz.getId(), Boolean.TRUE);
-    aa localaa = com.tencent.mm.ao.af.bjB();
-    if (paramz.field_isRead != 1) {
-      com.tencent.e.h.ZvG.d(new aa.6(localaa, paramz), "updateUnReadStatus");
-    }
-    AppMethodBeat.o(265896);
-  }
-  
-  public final void f(z paramz, int paramInt)
-  {
-    AppMethodBeat.i(265908);
-    a(paramz, paramInt, (int)(System.currentTimeMillis() / 1000L));
-    AppMethodBeat.o(265908);
-  }
-  
-  public final void f(String paramString1, long paramLong, String paramString2)
-  {
-    AppMethodBeat.i(265916);
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    com.tencent.mm.plugin.report.service.h.IzE.a(15721, new Object[] { paramString1, Long.valueOf(0L), Integer.valueOf(17), Integer.valueOf(i), Integer.valueOf(this.fwM), Integer.valueOf(0), Long.valueOf(paramLong), paramString2, Integer.valueOf(1), Integer.valueOf(0) });
-    AppMethodBeat.o(265916);
-  }
-  
-  public final void g(z paramz)
-  {
-    AppMethodBeat.i(265911);
-    g(paramz, 1);
-    AppMethodBeat.o(265911);
-  }
-  
-  public final void g(z paramz, int paramInt)
+  public final void d(ab paramab, int paramInt)
   {
     AppMethodBeat.i(5938);
-    a(paramz, 0, paramInt, -1);
+    a(paramab, 0, paramInt, -1);
     AppMethodBeat.o(5938);
   }
   
-  public final void h(z paramz)
+  public final void d(ab paramab, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(265912);
-    g(paramz, 9);
-    AppMethodBeat.o(265912);
+    AppMethodBeat.i(301961);
+    if (paramab == null)
+    {
+      AppMethodBeat.o(301961);
+      return;
+    }
+    f.b localb = (f.b)this.vHh.get(paramab.getId() + "_" + paramInt1);
+    Object localObject = localb;
+    if (localb == null)
+    {
+      localObject = localb;
+      if (this.vHg != null)
+      {
+        a(paramab, paramInt1, 1);
+        this.vHg.def();
+        localObject = (f.b)this.vHh.get(paramab.getId() + "_" + paramInt1);
+      }
+    }
+    if (localObject != null)
+    {
+      ((f.b)localObject).YTH = 1;
+      ((f.b)localObject).YUb = 1;
+      Log.d("MicroMsg.BizTimeLineReport", "onClick %d", new Object[] { Integer.valueOf(paramInt1) });
+      a(paramab, (f.b)localObject);
+      localObject = g.vHx;
+      g.a(paramab, this.dataList, this.vHh, paramInt1);
+    }
+    if ((!paramab.iYf()) && (!paramab.iYd())) {
+      a(paramab, paramInt1, 11, paramInt2);
+    }
+    AppMethodBeat.o(301961);
   }
   
-  public final void l(int paramInt1, String paramString, int paramInt2)
+  public final void e(ab paramab, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(265920);
-    if (this.sBE == null) {
-      this.sBE = new a((byte)0);
+    AppMethodBeat.i(301971);
+    if ((!paramab.iYd()) && (!paramab.iYf()))
+    {
+      AppMethodBeat.o(301971);
+      return;
+    }
+    f.b localb = (f.b)this.vHh.get(paramab.getId() + "_" + paramInt1);
+    if (localb == null)
+    {
+      Log.i("MicroMsg.BizTimeLineReport", "onClickTag fail sessionItem is null");
+      AppMethodBeat.o(301971);
+      return;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.add(localb);
+    if (!Util.isNullOrNil(localb.vHw))
+    {
+      MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.vXs;
+      localb.YTU = MPVideoPreviewMgr.ajW(localb.vHw);
+      localMPVideoPreviewMgr = MPVideoPreviewMgr.vXs;
+      localb.YTV = MPVideoPreviewMgr.ajX(localb.vHw);
+    }
+    Log.i("MicroMsg.BizTimeLineReport", "reportOnClick %s.", new Object[] { paramab.getId() });
+    if (24 == paramInt2) {}
+    for (paramInt1 = 2;; paramInt1 = 3)
+    {
+      com.tencent.mm.kernel.h.baD().mCm.a(new l(localLinkedList, this.vGW, this.vGX, this.hBm, this.vGY, 1, paramInt1, this.vGZ), 0);
+      AppMethodBeat.o(301971);
+      return;
+    }
+  }
+  
+  public final void g(ab paramab)
+  {
+    AppMethodBeat.i(301953);
+    if (paramab.field_isRead == 1)
+    {
+      AppMethodBeat.o(301953);
+      return;
+    }
+    this.vHi.put(paramab.getId(), Boolean.TRUE);
+    if (paramab.iYg())
+    {
+      com.tencent.mm.storage.r localr = com.tencent.mm.storage.r.acDM;
+      if (com.tencent.mm.storage.r.iXr()) {}
+    }
+    else
+    {
+      af.bHl().G(paramab);
+    }
+    AppMethodBeat.o(301953);
+  }
+  
+  public final void n(int paramInt1, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(302020);
+    if (this.vHj == null) {
+      this.vHj = new a((byte)0);
     }
     if (paramInt2 == 0)
     {
-      localObject = this.sBE;
-      ((a)localObject).sBN += 1;
-      this.sBE.sBQ = 0;
+      localObject = this.vHj;
+      ((a)localObject).vHs += 1;
+      this.vHj.vHv = 0;
     }
-    if (this.sBE.sBO == 0) {
-      this.sBE.sBO = ((int)(System.currentTimeMillis() / 1000L));
+    if (this.vHj.vHt == 0) {
+      this.vHj.vHt = ((int)(System.currentTimeMillis() / 1000L));
     }
-    Object localObject = this.sBE;
+    Object localObject = this.vHj;
     int i = paramInt1;
     if (paramInt1 == 0) {
-      i = this.sBE.msgType;
+      i = this.vHj.msgType;
     }
     ((a)localObject).msgType = i;
-    this.sBE.fwM = this.fwM;
-    a locala = this.sBE;
+    this.vHj.hBm = this.hBm;
+    a locala = this.vHj;
     localObject = paramString;
     if ("".equals(paramString)) {
-      localObject = this.sBE.fOX;
+      localObject = this.vHj.hUQ;
     }
-    locala.fOX = ((String)localObject);
-    if (this.sBE.sBP != 1) {
-      this.sBE.sBP = paramInt2;
+    locala.hUQ = ((String)localObject);
+    if (this.vHj.vHu != 1) {
+      this.vHj.vHu = paramInt2;
     }
-    AppMethodBeat.o(265920);
+    AppMethodBeat.o(302020);
   }
   
   static final class a
   {
-    String fOX;
-    int fwM;
+    int hBm;
+    String hUQ;
     int msgType;
-    int sBN;
-    int sBO;
-    int sBP;
-    int sBQ = -1;
+    int vHs;
+    int vHt;
+    int vHu;
+    int vHv = -1;
   }
   
   public final class c<K, V>
@@ -1104,29 +1185,29 @@ public final class f
     
     public final V put(K paramK, V paramV)
     {
-      AppMethodBeat.i(266161);
-      com.tencent.mm.plugin.brandservice.ui.timeline.a.b localb = f.this.sBB;
+      AppMethodBeat.i(301925);
+      com.tencent.mm.plugin.brandservice.ui.timeline.a.b localb = f.this.vHg;
       String str = (String)paramK;
       f.b localb1 = (f.b)paramV;
-      kotlin.g.b.p.k(str, "key");
-      kotlin.g.b.p.k(localb1, "item");
+      kotlin.g.b.s.u(str, "key");
+      kotlin.g.b.s.u(localb1, "item");
       try
       {
-        localb.sIz.put(str, localb1);
+        localb.vOc.put(str, localb1);
         paramK = super.put(paramK, paramV);
-        AppMethodBeat.o(266161);
+        AppMethodBeat.o(301925);
         return paramK;
       }
       finally
       {
-        AppMethodBeat.o(266161);
+        AppMethodBeat.o(301925);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_gravity="bottom" android:id="@id/d68" android:background="@drawable/aul" android:clickable="true" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginBottom="16.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d6_" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="12.0dip" android:textColor="#ffececec" android:ellipsize="end" android:id="@id/d6b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="this is a float_desc_txt" android:maxLines="3" android:includeFontPadding="false" android:shadowColor="@color/BW_0_Alpha_0_5" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" android:layout_weight="1.0" />
-        <FrameLayout android:id="@id/d6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="24.0dip" android:layout_weight="0.0" />
+<androidx.core.widget.NestedScrollView android:orientation="vertical" android:background="@color/c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/br4" android:background="@color/c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/a7b" android:id="@id/gof" android:layout_width="wrap_content" android:layout_marginTop="@dimen/d_" android:text="@string/i9n" android:layout_centerHorizontal="true" android:lineSpacingMultiplier="1.6" style="@style/st" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/a7b" android:gravity="center_horizontal" android:id="@id/god" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d0" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/d0" android:text="@string/i9l" />
+        <ImageView android:id="@id/foc" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/d6" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" style="@style/i7" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/ecm" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="true" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
+        <ImageView android:id="@id/fod" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" style="@style/i7" />
+        <ImageView android:layout_width="1.0dip" android:layout_height="0.0dip" android:minHeight="@dimen/df" android:layout_weight="1.0" />
+        <Button android:ellipsize="end" android:id="@id/car" android:layout_marginBottom="@dimen/bz" android:text="@string/xd" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oh" />
     </LinearLayout>
-</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+</androidx.core.widget.NestedScrollView>

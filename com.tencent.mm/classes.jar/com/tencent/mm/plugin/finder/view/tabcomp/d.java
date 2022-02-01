@@ -1,64 +1,153 @@
 package com.tencent.mm.plugin.finder.view.tabcomp;
 
 import android.view.View;
-import android.view.Window;
-import androidx.viewpager.widget.ViewPager;
-import com.google.android.material.tabs.TabLayout;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.view.HardTouchableLayout;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabContainer;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "()V", "finderTabLayout", "Lcom/google/android/material/tabs/TabLayout;", "getFinderTabLayout", "()Lcom/google/android/material/tabs/TabLayout;", "setFinderTabLayout", "(Lcom/google/android/material/tabs/TabLayout;)V", "fragmentViewPager", "Landroidx/viewpager/widget/ViewPager;", "getFragmentViewPager", "()Landroidx/viewpager/widget/ViewPager;", "setFragmentViewPager", "(Landroidx/viewpager/widget/ViewPager;)V", "layoutContainer", "Lcom/tencent/mm/view/HardTouchableLayout;", "getLayoutContainer", "()Lcom/tencent/mm/view/HardTouchableLayout;", "setLayoutContainer", "(Lcom/tencent/mm/view/HardTouchableLayout;)V", "tabBackBtn", "Landroid/view/View;", "getTabBackBtn", "()Landroid/view/View;", "setTabBackBtn", "(Landroid/view/View;)V", "getBackBtn", "getLayoutId", "", "getTabLayout", "getTabLayoutContainer", "getViewPager", "onLayoutInflated", "", "window", "Landroid/view/Window;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderAlignTab;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTab;", "title", "", "(Ljava/lang/String;)V", "titleId", "", "(I)V", "tabView", "Landroid/view/View;", "getTabView", "()Landroid/view/View;", "setTabView", "(Landroid/view/View;)V", "getAlignView", "getUnderLineEndView", "getUnderLinePadding", "", "getUnderLinePosInTabLayout", "Lkotlin/Pair;", "getUnderLineStartView", "onTabInflated", "", "view", "Landroid/view/ViewGroup;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class d
-  implements g
+  extends i
 {
-  private TabLayout BfM;
-  private HardTouchableLayout BfN;
-  private ViewPager BfO;
-  private View BfU;
+  private View GJe;
   
-  public final void c(Window paramWindow)
+  public d(int paramInt)
   {
-    AppMethodBeat.i(242711);
-    p.k(paramWindow, "window");
-    this.BfU = paramWindow.findViewById(b.f.backBtn);
-    this.BfM = ((TabLayout)paramWindow.findViewById(b.f.tabLayout));
-    this.BfO = ((ViewPager)paramWindow.findViewById(b.f.viewPager));
-    this.BfN = ((HardTouchableLayout)paramWindow.findViewById(b.f.tabLayoutContainer));
-    AppMethodBeat.o(242711);
+    super(paramInt);
   }
   
-  public final TabLayout ejU()
+  public void H(ViewGroup paramViewGroup)
   {
-    return this.BfM;
+    AppMethodBeat.i(345555);
+    super.H(paramViewGroup);
+    I(paramViewGroup);
+    AppMethodBeat.o(345555);
   }
   
-  public final HardTouchableLayout ejV()
+  public final void I(ViewGroup paramViewGroup)
   {
-    return this.BfN;
+    AppMethodBeat.i(345560);
+    if (paramViewGroup != null)
+    {
+      ViewParent localViewParent = paramViewGroup.getParent();
+      if (localViewParent == null)
+      {
+        paramViewGroup = new NullPointerException("null cannot be cast to non-null type android.view.View");
+        AppMethodBeat.o(345560);
+        throw paramViewGroup;
+      }
+      this.GJe = ((View)localViewParent);
+      paramViewGroup.setTag(this);
+    }
+    AppMethodBeat.o(345560);
   }
   
-  public final ViewPager ejW()
+  public View fmp()
   {
-    return this.BfO;
+    AppMethodBeat.i(345542);
+    View localView = (View)getTitleTv();
+    AppMethodBeat.o(345542);
+    return localView;
   }
   
-  public View getBackBtn()
+  public View fmq()
   {
-    return this.BfU;
+    AppMethodBeat.i(345546);
+    View localView = (View)getTitleTv();
+    AppMethodBeat.o(345546);
+    return localView;
   }
   
-  public int getLayoutId()
+  public View fmr()
   {
-    return b.g.finder_wx_msg_tab_common_ui;
+    return null;
+  }
+  
+  public final r<Integer, Integer> fms()
+  {
+    AppMethodBeat.i(345554);
+    Object localObject = this.GJe;
+    if (localObject != null)
+    {
+      int[] arrayOfInt1 = new int[2];
+      arrayOfInt1[0] = 0;
+      arrayOfInt1[1] = 0;
+      ((View)localObject).getLocationOnScreen(arrayOfInt1);
+      int[] arrayOfInt2 = new int[2];
+      arrayOfInt2[0] = 0;
+      arrayOfInt2[1] = 0;
+      int[] arrayOfInt3 = new int[2];
+      arrayOfInt3[0] = 0;
+      arrayOfInt3[1] = 0;
+      View localView1 = fmp();
+      View localView2 = fmq();
+      if (localView1 != null) {
+        localView1.getLocationOnScreen(arrayOfInt2);
+      }
+      if (localView2 != null) {
+        localView2.getLocationOnScreen(arrayOfInt3);
+      }
+      int k;
+      int j;
+      if (arrayOfInt2[0] < arrayOfInt1[0])
+      {
+        i = arrayOfInt1[0];
+        k = arrayOfInt3[0];
+        if (localView2 != null) {
+          break label281;
+        }
+        j = 0;
+        label132:
+        k = j + k;
+        j = k;
+        if (k > arrayOfInt1[0] + ((View)localObject).getWidth()) {
+          j = arrayOfInt1[0] + ((View)localObject).getWidth();
+        }
+        arrayOfInt2 = new int[2];
+        arrayOfInt2[0] = 0;
+        arrayOfInt2[1] = 0;
+        if (j - i <= 0) {
+          break label290;
+        }
+        j -= i;
+        label188:
+        int m = j - arrayOfInt2[0] - arrayOfInt2[1];
+        k = i;
+        if (m > 0)
+        {
+          k = i + arrayOfInt2[0];
+          j = m;
+        }
+        k = ((View)localObject).getLeft() + (k - arrayOfInt1[0]);
+        if (k + j <= ((View)localObject).getRight()) {
+          break label295;
+        }
+      }
+      label281:
+      label290:
+      label295:
+      for (int i = ((View)localObject).getRight();; i = k + j)
+      {
+        localObject = new r(Integer.valueOf(k), Integer.valueOf(i));
+        AppMethodBeat.o(345554);
+        return localObject;
+        i = arrayOfInt2[0];
+        break;
+        j = localView2.getWidth();
+        break label132;
+        j = 0;
+        break label188;
+      }
+    }
+    AppMethodBeat.o(345554);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.tabcomp.d
  * JD-Core Version:    0.7.0.1
  */

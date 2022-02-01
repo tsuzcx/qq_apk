@@ -9,37 +9,37 @@ public class GetOnLineInfoInfoResult
   implements Parcelable
 {
   public static final Parcelable.Creator<GetOnLineInfoInfoResult> CREATOR;
-  public int lZJ;
-  public int lZO;
-  public boolean nwq;
+  public int qvo;
+  public int qvp;
+  public boolean qvq;
   
   static
   {
-    AppMethodBeat.i(190750);
+    AppMethodBeat.i(323318);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(190750);
+    AppMethodBeat.o(323318);
   }
   
   public GetOnLineInfoInfoResult()
   {
-    this.lZJ = -1;
-    this.lZO = 0;
-    this.nwq = false;
+    this.qvo = -1;
+    this.qvp = 0;
+    this.qvq = false;
   }
   
   protected GetOnLineInfoInfoResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(190747);
-    this.lZJ = -1;
-    this.lZO = 0;
-    this.nwq = false;
-    this.lZJ = paramParcel.readInt();
-    this.lZO = paramParcel.readInt();
+    AppMethodBeat.i(323317);
+    this.qvo = -1;
+    this.qvp = 0;
+    this.qvq = false;
+    this.qvo = paramParcel.readInt();
+    this.qvp = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.nwq = bool;
-    AppMethodBeat.o(190747);
+    this.qvq = bool;
+    AppMethodBeat.o(323317);
   }
   
   public int describeContents()
@@ -49,29 +49,29 @@ public class GetOnLineInfoInfoResult
   
   public String toString()
   {
-    AppMethodBeat.i(190749);
-    String str = "GetOnLineInfoInfoResult{iconType=" + this.lZJ + ", clientVersion=" + this.lZO + ", isWXOnline=" + this.nwq + '}';
-    AppMethodBeat.o(190749);
+    AppMethodBeat.i(323332);
+    String str = "GetOnLineInfoInfoResult{iconType=" + this.qvo + ", clientVersion=" + this.qvp + ", isWXOnline=" + this.qvq + '}';
+    AppMethodBeat.o(323332);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(190744);
-    paramParcel.writeInt(this.lZJ);
-    paramParcel.writeInt(this.lZO);
-    if (this.nwq) {}
+    AppMethodBeat.i(323324);
+    paramParcel.writeInt(this.qvo);
+    paramParcel.writeInt(this.qvp);
+    if (this.qvq) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      AppMethodBeat.o(190744);
+      AppMethodBeat.o(323324);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.GetOnLineInfoInfoResult
  * JD-Core Version:    0.7.0.1
  */

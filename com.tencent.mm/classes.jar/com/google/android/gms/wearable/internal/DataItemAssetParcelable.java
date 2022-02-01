@@ -2,30 +2,19 @@ package com.google.android.gms.wearable.internal;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.annotation.KeepName;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.google.android.gms.wearable.DataItemAsset;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepName
-@SafeParcelable.Class(creator="DataItemAssetParcelableCreator")
-@SafeParcelable.Reserved({1})
 public class DataItemAssetParcelable
   extends AbstractSafeParcelable
   implements ReflectedParcelable, DataItemAsset
 {
   public static final Parcelable.Creator<DataItemAssetParcelable> CREATOR;
-  @SafeParcelable.Field(getter="getId", id=2)
   private final String zzdm;
-  @SafeParcelable.Field(getter="getDataItemKey", id=3)
   private final String zzdn;
   
   static
@@ -43,8 +32,7 @@ public class DataItemAssetParcelable
     AppMethodBeat.o(100922);
   }
   
-  @SafeParcelable.Constructor
-  DataItemAssetParcelable(@SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) String paramString2)
+  DataItemAssetParcelable(String paramString1, String paramString2)
   {
     this.zzdm = paramString1;
     this.zzdn = paramString2;
@@ -100,7 +88,7 @@ public class DataItemAssetParcelable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.DataItemAssetParcelable
  * JD-Core Version:    0.7.0.1
  */

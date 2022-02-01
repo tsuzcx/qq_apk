@@ -3,23 +3,24 @@ package com.tencent.mm.ipcinvoker.wx_extension.service;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ipcinvoker/wx_extension/service/LiteAppIPCService;", "Lcom/tencent/mm/ipcinvoker/BaseIPCService;", "()V", "getProcessName", "", "Companion", "lib-ipcinvoker-wx-extension_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ipcinvoker/wx_extension/service/LiteAppIPCService;", "Lcom/tencent/mm/ipcinvoker/BaseIPCService;", "()V", "getProcessName", "", "Companion", "lib-ipcinvoker-wx-extension_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class LiteAppIPCService
   extends BaseIPCService
 {
   private static final String PROCESS_NAME;
   private static String TAG;
-  public static final a jZH;
+  public static final a mzL;
   
   static
   {
-    AppMethodBeat.i(205216);
-    jZH = new a((byte)0);
+    AppMethodBeat.i(235724);
+    mzL = new a((byte)0);
     TAG = "MicroMsg.LiteAppIPCService";
-    PROCESS_NAME = MMApplicationContext.getPackageName() + ":lite";
-    AppMethodBeat.o(205216);
+    PROCESS_NAME = s.X(MMApplicationContext.getPackageName(), ":lite");
+    AppMethodBeat.o(235724);
   }
   
   public final String getProcessName()
@@ -27,7 +28,7 @@ public final class LiteAppIPCService
     return PROCESS_NAME;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ipcinvoker/wx_extension/service/LiteAppIPCService$Companion;", "", "()V", "PROCESS_NAME", "", "getPROCESS_NAME", "()Ljava/lang/String;", "TAG", "getTAG", "setTAG", "(Ljava/lang/String;)V", "invokeAsyncToLiteApp", "", "T", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "InputType", "ResultType", "Landroid/os/Parcelable;", "data", "taskClass", "Ljava/lang/Class;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "(Landroid/os/Parcelable;Ljava/lang/Class;Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;)Z", "invokeSyncToLiteApp", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "(Landroid/os/Parcelable;Ljava/lang/Class;)Landroid/os/Parcelable;", "lib-ipcinvoker-wx-extension_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ipcinvoker/wx_extension/service/LiteAppIPCService$Companion;", "", "()V", "PROCESS_NAME", "", "getPROCESS_NAME", "()Ljava/lang/String;", "TAG", "getTAG", "setTAG", "(Ljava/lang/String;)V", "invokeAsyncToLiteApp", "", "T", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "InputType", "ResultType", "Landroid/os/Parcelable;", "data", "taskClass", "Ljava/lang/Class;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "(Landroid/os/Parcelable;Ljava/lang/Class;Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;)Z", "invokeSyncToLiteApp", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "(Landroid/os/Parcelable;Ljava/lang/Class;)Landroid/os/Parcelable;", "lib-ipcinvoker-wx-extension_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

@@ -3,86 +3,71 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String appId;
-  public int cBU;
-  public int cwR;
-  public String username;
+  public int YGE;
+  public int YGF;
+  public String YGG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(205523);
+    AppMethodBeat.i(258925);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.appId != null) {
-        paramVarArgs.f(1, this.appId);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.YGE);
+      paramVarArgs.bS(2, this.YGF);
+      if (this.YGG != null) {
+        paramVarArgs.g(3, this.YGG);
       }
-      if (this.username != null) {
-        paramVarArgs.f(2, this.username);
-      }
-      paramVarArgs.aY(3, this.cBU);
-      paramVarArgs.aY(4, this.cwR);
-      AppMethodBeat.o(205523);
+      AppMethodBeat.o(258925);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.appId == null) {
-        break label366;
-      }
-    }
-    label366:
-    for (paramInt = g.a.a.b.b.a.g(1, this.appId) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.username != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.username);
+      int i = i.a.a.b.b.a.cJ(1, this.YGE) + 0 + i.a.a.b.b.a.cJ(2, this.YGF);
+      paramInt = i;
+      if (this.YGG != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.YGG);
       }
-      paramInt = g.a.a.b.b.a.bM(3, this.cBU);
-      int j = g.a.a.b.b.a.bM(4, this.cwR);
-      AppMethodBeat.o(205523);
-      return i + paramInt + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(205523);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        eo localeo = (eo)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(205523);
-          return -1;
-        case 1: 
-          localeo.appId = locala.abFh.readString();
-          AppMethodBeat.o(205523);
-          return 0;
-        case 2: 
-          localeo.username = locala.abFh.readString();
-          AppMethodBeat.o(205523);
-          return 0;
-        case 3: 
-          localeo.cBU = locala.abFh.AK();
-          AppMethodBeat.o(205523);
-          return 0;
-        }
-        localeo.cwR = locala.abFh.AK();
-        AppMethodBeat.o(205523);
-        return 0;
-      }
-      AppMethodBeat.o(205523);
-      return -1;
+      AppMethodBeat.o(258925);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(258925);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      eo localeo = (eo)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(258925);
+        return -1;
+      case 1: 
+        localeo.YGE = locala.ajGk.aar();
+        AppMethodBeat.o(258925);
+        return 0;
+      case 2: 
+        localeo.YGF = locala.ajGk.aar();
+        AppMethodBeat.o(258925);
+        return 0;
+      }
+      localeo.YGG = locala.ajGk.readString();
+      AppMethodBeat.o(258925);
+      return 0;
+    }
+    AppMethodBeat.o(258925);
+    return -1;
   }
 }
 

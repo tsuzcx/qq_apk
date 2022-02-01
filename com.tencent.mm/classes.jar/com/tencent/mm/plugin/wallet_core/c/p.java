@@ -1,64 +1,63 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.alg;
-import com.tencent.mm.protocal.protobuf.alh;
+import com.tencent.mm.protocal.protobuf.aor;
+import com.tencent.mm.protocal.protobuf.aos;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class p
-  extends q
+  extends com.tencent.mm.am.p
   implements m
 {
-  private boolean OHV;
-  private alg OIa;
-  public alh OIb;
-  private i callback;
-  private d kwO;
+  private boolean VxI;
+  private aor VxN;
+  public aos VxO;
+  private h callback;
+  private c nao;
   
   public p(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(69920);
-    this.OHV = paramBoolean;
-    d.a locala = new d.a();
-    locala.lBU = new alg();
-    locala.lBV = new alh();
+    this.VxI = paramBoolean;
+    c.a locala = new c.a();
+    locala.otE = new aor();
+    locala.otF = new aos();
     if (paramBoolean) {
       locala.funcId = 2529;
     }
     for (locala.uri = "/cgi-bin/mmpay-bin/mktf2fmodifyexposure";; locala.uri = "/cgi-bin/mmpay-bin/mktmodifyexposure")
     {
-      locala.lBW = 0;
+      locala.otG = 0;
       locala.respCmdId = 0;
-      this.kwO = locala.bgN();
-      this.OIa = ((alg)d.b.b(this.kwO.lBR));
-      this.OIa.SvJ = paramString;
+      this.nao = locala.bEF();
+      this.VxN = ((aor)c.b.b(this.nao.otB));
+      this.VxN.ZvS = paramString;
       AppMethodBeat.o(69920);
       return;
       locala.funcId = 2888;
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(69921);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
     AppMethodBeat.o(69921);
     return i;
   }
   
   public final int getType()
   {
-    if (this.OHV) {
+    if (this.VxI) {
       return 2529;
     }
     return 2888;
@@ -68,7 +67,7 @@ public final class p
   {
     AppMethodBeat.i(69922);
     Log.i("MicroMsg.NetSceneMktModifyExposure", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.OIb = ((alh)d.c.b(((d)params).lBS));
+    this.VxO = ((aos)c.c.b(((c)params).otC));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

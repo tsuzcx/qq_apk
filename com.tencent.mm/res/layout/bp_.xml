@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.applet.SecurityImage android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/m1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/lz">
-        <LinearLayout android:gravity="bottom" android:padding="5.0dip" style="@style/nl">
-            <FrameLayout android:background="#ff000000" android:padding="1.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip">
-                <ImageView android:id="@id/w8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="150.0dip" android:maxHeight="80.0dip" android:minWidth="130.0dip" android:minHeight="53.0dip" />
-                <ProgressBar android:layout_gravity="center" android:id="@id/gyo" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
-            </FrameLayout>
-            <View style="@style/p7" />
-            <Button android:id="@id/w6" android:minHeight="40.0dip" android:text="@string/a3y" android:singleLine="true" style="@style/l5" />
+    <LinearLayout android:gravity="center|left" android:id="@id/br7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/m1" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/bqz" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ig">
+                <TextView android:gravity="left" android:id="@id/bpk" android:layout_width="@dimen/f9" android:layout_height="0.0dip" android:text="@string/box" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/kad" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bpn" android:background="@raw/profile_star_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                    <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bpl" android:background="@raw/circle_notreceive" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/df" />
+                    <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bpm" android:background="@raw/circle_notvisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/df" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-        <View style="@style/p7" />
-        <EditText android:textColor="@color/a2x" android:id="@id/w7" android:hint="@string/a3z" style="@style/nn" />
     </LinearLayout>
-</com.tencent.mm.ui.applet.SecurityImage>
+</LinearLayout>

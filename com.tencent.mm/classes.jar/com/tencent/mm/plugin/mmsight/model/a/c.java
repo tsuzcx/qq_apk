@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 public abstract interface c
 {
-  public abstract int J(int paramInt, String paramString);
+  public abstract int L(int paramInt, String paramString);
   
   public abstract int a(a parama);
   
@@ -10,26 +10,26 @@ public abstract interface c
   
   public abstract void clear();
   
-  public abstract void eTD();
+  public abstract void gcw();
   
-  public abstract com.tencent.mm.audio.b.c.a eTE();
+  public abstract com.tencent.mm.audio.b.c.a gcx();
   
   public abstract void pause();
   
   public abstract void resume();
   
-  public abstract void uf(boolean paramBoolean);
-  
   public abstract void uu(int paramInt);
+  
+  public abstract void yt(boolean paramBoolean);
   
   public static abstract interface a
   {
-    public abstract void aZS();
+    public abstract void buO();
   }
   
   public static abstract interface b
   {
-    public abstract void aZQ();
+    public abstract void buN();
   }
 }
 

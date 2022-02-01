@@ -1,30 +1,18 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import android.widget.Toast;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 
-public class l
-  implements j
+public abstract interface l
+  extends b
 {
-  protected final AppBrandRuntime nxs;
+  public abstract boolean a(e parame);
   
-  public l(AppBrandRuntime paramAppBrandRuntime)
-  {
-    this.nxs = paramAppBrandRuntime;
-  }
-  
-  public void amj(String paramString)
-  {
-    AppMethodBeat.i(147661);
-    Toast.makeText(AndroidContextUtil.castActivityOrNull(this.nxs.mContext), String.format("jsapi banned %s", new Object[] { paramString }), 0).show();
-    AppMethodBeat.o(147661);
-  }
+  public abstract boolean aZ(Class<? extends e> paramClass);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.l
  * JD-Core Version:    0.7.0.1
  */

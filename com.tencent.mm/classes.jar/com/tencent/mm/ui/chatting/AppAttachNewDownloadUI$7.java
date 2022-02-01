@@ -12,22 +12,22 @@ final class AppAttachNewDownloadUI$7
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(198784);
+    AppMethodBeat.i(253663);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(198784);
+      AppMethodBeat.o(253663);
       return false;
-      AppAttachNewDownloadUI.a(this.Wxg, (int)paramMotionEvent.getRawX());
-      AppAttachNewDownloadUI.b(this.Wxg, (int)paramMotionEvent.getRawY());
+      AppAttachNewDownloadUI.a(this.aeey, (int)paramMotionEvent.getRawX());
+      AppAttachNewDownloadUI.b(this.aeey, (int)paramMotionEvent.getRawY());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachNewDownloadUI.7
  * JD-Core Version:    0.7.0.1
  */

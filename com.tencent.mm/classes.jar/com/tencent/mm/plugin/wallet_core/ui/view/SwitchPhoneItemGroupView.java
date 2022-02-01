@@ -17,30 +17,30 @@ import java.util.List;
 public class SwitchPhoneItemGroupView
   extends LinearLayout
 {
-  List<SwitchPhoneItemView> Pfn;
-  private a Pfo;
-  private View.OnClickListener Pfp;
+  List<SwitchPhoneItemView> VWb;
+  private a VWc;
+  private View.OnClickListener VWd;
   
   public SwitchPhoneItemGroupView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71485);
-    this.Pfn = new ArrayList();
-    this.Pfp = new View.OnClickListener()
+    this.VWb = new ArrayList();
+    this.VWd = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71484);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        localObject = SwitchPhoneItemGroupView.this.Pfn.iterator();
+        ((b)localObject).cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        localObject = SwitchPhoneItemGroupView.this.VWb.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((SwitchPhoneItemView)((Iterator)localObject).next()).Pft.setImageResource(a.h.radio_off);
+          ((SwitchPhoneItemView)((Iterator)localObject).next()).VWh.setImageResource(a.h.radio_off);
         }
-        ((SwitchPhoneItemView)paramAnonymousView).Pft.setImageResource(a.h.radio_on);
+        ((SwitchPhoneItemView)paramAnonymousView).VWh.setImageResource(a.h.radio_on);
         if (SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this) != null) {
-          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).hk(paramAnonymousView);
+          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).ky(paramAnonymousView);
         }
         a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71484);
@@ -53,22 +53,22 @@ public class SwitchPhoneItemGroupView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71486);
-    this.Pfn = new ArrayList();
-    this.Pfp = new View.OnClickListener()
+    this.VWb = new ArrayList();
+    this.VWd = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71484);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        localObject = SwitchPhoneItemGroupView.this.Pfn.iterator();
+        ((b)localObject).cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+        localObject = SwitchPhoneItemGroupView.this.VWb.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((SwitchPhoneItemView)((Iterator)localObject).next()).Pft.setImageResource(a.h.radio_off);
+          ((SwitchPhoneItemView)((Iterator)localObject).next()).VWh.setImageResource(a.h.radio_off);
         }
-        ((SwitchPhoneItemView)paramAnonymousView).Pft.setImageResource(a.h.radio_on);
+        ((SwitchPhoneItemView)paramAnonymousView).VWh.setImageResource(a.h.radio_on);
         if (SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this) != null) {
-          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).hk(paramAnonymousView);
+          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).ky(paramAnonymousView);
         }
         a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71484);
@@ -81,24 +81,24 @@ public class SwitchPhoneItemGroupView
   {
     AppMethodBeat.i(71487);
     addView(paramSwitchPhoneItemView, paramInt);
-    this.Pfn.add(paramSwitchPhoneItemView);
-    paramSwitchPhoneItemView.setOnClickListener(this.Pfp);
+    this.VWb.add(paramSwitchPhoneItemView);
+    paramSwitchPhoneItemView.setOnClickListener(this.VWd);
     AppMethodBeat.o(71487);
   }
   
   public void setOnItemSelectListener(a parama)
   {
-    this.Pfo = parama;
+    this.VWc = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void hk(View paramView);
+    public abstract void ky(View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView
  * JD-Core Version:    0.7.0.1
  */

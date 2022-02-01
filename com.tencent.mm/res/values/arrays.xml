@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="a">
-        <item>@string/zt</item>
+        <item>@string/a40</item>
     </string-array>
     <string-array name="b">
-        <item>@string/evs</item>
+        <item>@string/gn3</item>
     </string-array>
     <string-array name="c">
-        <item>@string/evr</item>
+        <item>@string/gn2</item>
     </string-array>
     <string-array name="d">
-        <item>@string/giv</item>
-        <item>@string/giw</item>
+        <item>@string/ik6</item>
+        <item>@string/ik7</item>
     </string-array>
     <string-array name="e">
         <item>0</item>
@@ -28,8 +28,8 @@
         <item>正在完成恢复</item>
     </string-array>
     <string-array name="g">
-        <item>@string/ay5</item>
-        <item>@string/ay4</item>
+        <item>@string/b7j</item>
+        <item>@string/b7i</item>
     </string-array>
     <string-array name="h">
         <item></item>
@@ -740,12 +740,12 @@
         <item>com.tencent.xin.emoticon.tuzkig</item>
     </string-array>
     <string-array name="m">
-        <item>@string/dv6</item>
+        <item>@string/feo</item>
     </string-array>
     <string-array name="n">
-        <item>@string/tt</item>
-        <item>@string/tf</item>
-        <item>@string/t_</item>
+        <item>@string/xd</item>
+        <item>@string/x0</item>
+        <item>@string/ws</item>
     </string-array>
     <string-array name="o">
         <item>0</item>
@@ -758,95 +758,95 @@
         <item>support</item>
     </string-array>
     <string-array name="q">
-        <item>@string/w8</item>
-        <item>@string/a0a</item>
-        <item>@string/a0c</item>
-        <item>@string/a0b</item>
-        <item>@string/tz</item>
-        <item>@string/w2</item>
-        <item>@string/wq</item>
-        <item>@string/u6</item>
-        <item>@string/w7</item>
-        <item>@string/w5</item>
-        <item>@string/w6</item>
-        <item>@string/y6</item>
-        <item>@string/yk</item>
-        <item>@string/za</item>
+        <item>@string/zy</item>
+        <item>@string/a4h</item>
+        <item>@string/a4j</item>
+        <item>@string/a4i</item>
+        <item>@string/xj</item>
+        <item>@string/zr</item>
+        <item>@string/a0h</item>
+        <item>@string/xq</item>
+        <item>@string/zx</item>
         <item>@string/zu</item>
-        <item>@string/hd</item>
-        <item>@string/ze</item>
-        <item>@string/td</item>
-        <item>@string/vm</item>
-        <item>@string/ww</item>
-        <item>@string/wb</item>
+        <item>@string/zv</item>
+        <item>@string/a23</item>
+        <item>@string/a2l</item>
+        <item>@string/a3f</item>
+        <item>@string/a41</item>
+        <item>@string/k3</item>
+        <item>@string/a3k</item>
+        <item>@string/wx</item>
+        <item>@string/za</item>
+        <item>@string/a0s</item>
+        <item>@string/a02</item>
     </string-array>
     <string-array name="r">
-        <item>@string/w8</item>
-        <item>@string/a0a</item>
-        <item>@string/a0c</item>
-        <item>@string/a0b</item>
-        <item>@string/tz</item>
+        <item>@string/zy</item>
+        <item>@string/a4h</item>
+        <item>@string/a4j</item>
+        <item>@string/a4i</item>
+        <item>@string/xj</item>
     </string-array>
     <string-array name="s">
-        <item>@string/fug</item>
-        <item>@string/fuh</item>
-        <item>@string/fua</item>
+        <item>@string/hsd</item>
+        <item>@string/hse</item>
+        <item>@string/hs8</item>
     </string-array>
     <string-array name="t">
-        <item>@string/evx</item>
-        <item>@string/ie2</item>
-        <item>@string/ie4</item>
-        <item>@string/ie0</item>
+        <item>@string/gn8</item>
+        <item>@string/kuc</item>
+        <item>@string/kue</item>
+        <item>@string/kua</item>
     </string-array>
     <string-array name="u">
-        <item>@string/evx</item>
-        <item>@string/ie3</item>
-        <item>@string/ie0</item>
+        <item>@string/gn8</item>
+        <item>@string/kud</item>
+        <item>@string/kua</item>
     </string-array>
     <string-array name="v">
-        <item>@string/evx</item>
-        <item>@string/ie2</item>
-        <item>@string/ie4</item>
-        <item>@string/ie0</item>
+        <item>@string/gn8</item>
+        <item>@string/kuc</item>
+        <item>@string/kue</item>
+        <item>@string/kua</item>
     </string-array>
     <string-array name="w">
-        <item>@string/evx</item>
-        <item>@string/ie0</item>
+        <item>@string/gn8</item>
+        <item>@string/kua</item>
     </string-array>
     <string-array name="x">
-        <item>@string/evx</item>
-        <item>@string/ie2</item>
-        <item>@string/ie4</item>
-        <item>@string/ie0</item>
-        <item>@string/ie5</item>
+        <item>@string/gn8</item>
+        <item>@string/kuc</item>
+        <item>@string/kue</item>
+        <item>@string/kua</item>
+        <item>@string/kuf</item>
     </string-array>
     <string-array name="y">
-        <item>@string/evx</item>
-        <item>@string/ie2</item>
-        <item>@string/ie4</item>
-        <item>@string/ie0</item>
-        <item>@string/ie5</item>
+        <item>@string/gn8</item>
+        <item>@string/kuc</item>
+        <item>@string/kue</item>
+        <item>@string/kua</item>
+        <item>@string/kuf</item>
     </string-array>
     <string-array name="z">
-        <item>@string/evx</item>
-        <item>@string/ie2</item>
-        <item>@string/ie4</item>
-        <item>@string/ie0</item>
-        <item>@string/ie5</item>
+        <item>@string/gn8</item>
+        <item>@string/kuc</item>
+        <item>@string/kue</item>
+        <item>@string/kua</item>
+        <item>@string/kuf</item>
     </string-array>
     <string-array name="a0">
-        <item>@string/g5j</item>
-        <item>@string/gau</item>
-        <item>@string/fn9</item>
+        <item>@string/i4h</item>
+        <item>@string/iat</item>
+        <item>@string/hk5</item>
     </string-array>
     <string-array name="a1">
-        <item>@string/g5j</item>
-        <item>@string/gau</item>
+        <item>@string/i4h</item>
+        <item>@string/iat</item>
     </string-array>
     <string-array name="a2">
-        <item>@string/fpi</item>
-        <item>@string/fpj</item>
-        <item>@string/fn9</item>
+        <item>@string/hn5</item>
+        <item>@string/hn6</item>
+        <item>@string/hk5</item>
     </string-array>
     <string-array name="a3">
         <item>/::)</item>
@@ -995,23 +995,23 @@
         <item>0xd83c 0xdf81</item>
     </string-array>
     <string-array name="a6">
-        <item>@string/gxp</item>
-        <item>@string/h9u</item>
-        <item>@string/f9d</item>
-        <item>@string/fn9</item>
+        <item>@string/j3b</item>
+        <item>@string/jgf</item>
+        <item>@string/h3m</item>
+        <item>@string/hk5</item>
     </string-array>
     <string-array name="a7">
         <item>Log</item>
-        <item>@string/fcr</item>
+        <item>@string/h8t</item>
     </string-array>
     <string-array name="a8">
-        <item>@string/b1j</item>
-        <item>@string/b1b</item>
-        <item>@string/b1d</item>
+        <item>@string/bah</item>
+        <item>@string/ba_</item>
+        <item>@string/bab</item>
     </string-array>
     <string-array name="a9">
-        <item>@string/b1a</item>
-        <item>@string/b1i</item>
+        <item>@string/ba9</item>
+        <item>@string/bag</item>
     </string-array>
     <string-array name="a_">
         <item>XFilesOfficeReader</item>
@@ -1022,13 +1022,13 @@
         <item>FullScreenVideo</item>
     </string-array>
     <string-array name="aa">
-        <item>@string/baf</item>
-        <item>@string/bff</item>
-        <item>@string/bf2</item>
+        <item>@string/blt</item>
+        <item>@string/bqu</item>
+        <item>@string/bqg</item>
     </string-array>
     <string-array name="ab">
-        <item>@string/baf</item>
-        <item>@string/bff</item>
+        <item>@string/blt</item>
+        <item>@string/bqu</item>
     </string-array>
     <string-array name="ac">
         <item>000000</item>
@@ -1041,16 +1041,16 @@
         <item>A4A4A4</item>
     </string-array>
     <string-array name="ad">
-        <item>@string/g_e</item>
-        <item>@string/g_f</item>
-        <item>@string/g_g</item>
-        <item>@string/g_h</item>
-        <item>@string/g_i</item>
-        <item>@string/g_j</item>
-        <item>@string/g_k</item>
-        <item>@string/g_l</item>
-        <item>@string/g_m</item>
-        <item>@string/g_n</item>
+        <item>@string/i_d</item>
+        <item>@string/i_e</item>
+        <item>@string/i_f</item>
+        <item>@string/i_g</item>
+        <item>@string/i_h</item>
+        <item>@string/i_i</item>
+        <item>@string/i_j</item>
+        <item>@string/i_k</item>
+        <item>@string/i_l</item>
+        <item>@string/i_m</item>
     </string-array>
     <integer-array name="ae">
         <item>10</item>
@@ -1065,28 +1065,28 @@
         <item>36</item>
     </integer-array>
     <string-array name="af">
-        <item>@string/b27</item>
-        <item>@string/b28</item>
-        <item>@string/b29</item>
-        <item>@string/b2_</item>
+        <item>@string/bbb</item>
+        <item>@string/bbc</item>
+        <item>@string/bbd</item>
+        <item>@string/bbe</item>
     </string-array>
     <string-array name="ag">
-        <item>@string/gxi</item>
-        <item>@string/gxh</item>
+        <item>@string/j35</item>
+        <item>@string/j34</item>
     </string-array>
     <string-array name="ah">
         <item>male</item>
         <item>female</item>
     </string-array>
     <string-array name="ai">
-        <item>@string/gxp</item>
-        <item>@string/gxn</item>
-        <item>@string/gxm</item>
+        <item>@string/j3b</item>
+        <item>@string/j3_</item>
+        <item>@string/j39</item>
     </string-array>
     <string-array name="aj">
-        <item>@string/gxo</item>
-        <item>@string/gxq</item>
-        <item>@string/gxr</item>
+        <item>@string/j3a</item>
+        <item>@string/j3c</item>
+        <item>@string/j3d</item>
     </string-array>
     <string-array name="ak">
         <item>/::)</item>
@@ -1737,52 +1737,52 @@
         <item>WeChat Verification code</item>
     </string-array>
     <string-array name="ar">
-        <item>@string/hop</item>
-        <item>@string/hox</item>
-        <item>@string/hoy</item>
-        <item>@string/hov</item>
-        <item>@string/hoi</item>
-        <item>@string/hos</item>
-        <item>@string/hou</item>
+        <item>@string/k2v</item>
+        <item>@string/k33</item>
+        <item>@string/k34</item>
+        <item>@string/k31</item>
+        <item>@string/k2o</item>
+        <item>@string/k2y</item>
+        <item>@string/k30</item>
     </string-array>
     <string-array name="as">
-        <item>@string/hoj</item>
-        <item>@string/hoh</item>
-        <item>@string/hon</item>
-        <item>@string/hoe</item>
-        <item>@string/hoo</item>
-        <item>@string/hol</item>
-        <item>@string/hok</item>
-        <item>@string/hof</item>
-        <item>@string/hot</item>
-        <item>@string/hor</item>
-        <item>@string/hoq</item>
-        <item>@string/hog</item>
+        <item>@string/k2p</item>
+        <item>@string/k2n</item>
+        <item>@string/k2t</item>
+        <item>@string/k2k</item>
+        <item>@string/k2u</item>
+        <item>@string/k2r</item>
+        <item>@string/k2q</item>
+        <item>@string/k2l</item>
+        <item>@string/k2z</item>
+        <item>@string/k2x</item>
+        <item>@string/k2w</item>
+        <item>@string/k2m</item>
     </string-array>
     <string-array name="at">
-        <item>@string/hy5</item>
+        <item>@string/kbt</item>
         <item></item>
-        <item>@string/hy4</item>
+        <item>@string/kbs</item>
         <item></item>
-        <item>@string/hy3</item>
+        <item>@string/kbr</item>
     </string-array>
     <string-array name="au">
-        <item>@string/tt</item>
-        <item>@string/tf</item>
-        <item>@string/t_</item>
+        <item>@string/xd</item>
+        <item>@string/x0</item>
+        <item>@string/ws</item>
     </string-array>
     <string-array name="av">
-        <item>@string/i7q</item>
+        <item>@string/kmo</item>
     </string-array>
     <string-array name="aw">
-        <item>@string/ivx</item>
-        <item>@string/iuv</item>
+        <item>@string/lbq</item>
+        <item>@string/lam</item>
     </string-array>
     <string-array name="ax">
-        <item>@string/ioz</item>
+        <item>@string/l5l</item>
     </string-array>
     <string-array name="ay">
-        <item>@string/zt</item>
+        <item>@string/a40</item>
     </string-array>
     <integer-array name="az">
         <item>1</item>
@@ -1791,14 +1791,14 @@
         <item>2</item>
     </integer-array>
     <string-array name="b0">
-        <item>@string/ixb</item>
-        <item>@string/ixa</item>
-        <item>@string/ixd</item>
-        <item>@string/ixc</item>
+        <item>@string/ld7</item>
+        <item>@string/ld6</item>
+        <item>@string/ld9</item>
+        <item>@string/ld8</item>
     </string-array>
     <string-array name="b1">
-        <item>@string/gxi</item>
-        <item>@string/gxh</item>
+        <item>@string/j35</item>
+        <item>@string/j34</item>
     </string-array>
     <string-array name="b2">
         <item>tools</item>

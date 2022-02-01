@@ -32,8 +32,9 @@ public class SystemClassLoaderAdder
   
   private static boolean checkDexInstall(ClassLoader paramClassLoader)
   {
-    boolean bool = ((Boolean)ShareReflectUtil.findField(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramClassLoader), "isPatch").get(null)).booleanValue();
-    ShareTinkerLog.w("Tinker.ClassLoaderAdder", "checkDexInstall result:".concat(String.valueOf(bool)), new Object[0]);
+    paramClassLoader = Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramClassLoader);
+    boolean bool = ((Boolean)ShareReflectUtil.findField(paramClassLoader, "isPatch").get(null)).booleanValue();
+    ShareTinkerLog.i("Tinker.ClassLoaderAdder", "checkDexInstall result: %s, checker_classloader: %s", new Object[] { Boolean.valueOf(bool), paramClassLoader.getClassLoader() });
     return bool;
   }
   
@@ -296,7 +297,7 @@ public class SystemClassLoaderAdder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.SystemClassLoaderAdder
  * JD-Core Version:    0.7.0.1
  */

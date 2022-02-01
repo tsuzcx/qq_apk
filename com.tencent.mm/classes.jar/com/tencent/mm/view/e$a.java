@@ -3,16 +3,16 @@ package com.tencent.mm.view;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView.v;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/ExposeElves$OnRecyclerViewChildExposedListener;", "", "()V", "getExposedId", "", "holder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "ignoreFlingExposed", "", "onChildExposeChanged", "", "parent", "Landroid/view/View;", "exposedHolders", "", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/ExposeElves$OnRecyclerViewChildExposedListener;", "", "()V", "canStartExpose", "", "holder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getExposedId", "", "ignoreFlingExposed", "onChildExposeChanged", "", "parent", "Landroid/view/View;", "exposedHolders", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class e$a
 {
-  public long af(RecyclerView.v paramv)
+  public long aa(RecyclerView.v paramv)
   {
-    if (paramv != null)
+    if (paramv == null)
     {
-      paramv = paramv.amk;
+      paramv = null;
       if (paramv == null) {
         break label26;
       }
@@ -21,14 +21,19 @@ public abstract class e$a
     for (int i = paramv.hashCode();; i = 0)
     {
       return i;
-      paramv = null;
+      paramv = paramv.caK;
       break;
     }
   }
   
+  public boolean ab(RecyclerView.v paramv)
+  {
+    return true;
+  }
+  
   public abstract void b(View paramView, List<? extends RecyclerView.v> paramList);
   
-  public abstract boolean dpC();
+  public abstract boolean dXG();
 }
 
 

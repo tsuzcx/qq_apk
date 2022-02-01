@@ -11,15 +11,15 @@ public final class d
 {
   public static b a(Resources paramResources, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(250887);
+    AppMethodBeat.i(196157);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramResources = new c(paramResources, paramBitmap);
-      AppMethodBeat.o(250887);
+      AppMethodBeat.o(196157);
       return paramResources;
     }
     paramResources = new a(paramResources, paramBitmap);
-    AppMethodBeat.o(250887);
+    AppMethodBeat.o(196157);
     return paramResources;
   }
   
@@ -33,15 +33,15 @@ public final class d
     
     final void a(int paramInt1, int paramInt2, int paramInt3, Rect paramRect1, Rect paramRect2)
     {
-      AppMethodBeat.i(250870);
+      AppMethodBeat.i(196212);
       e.a(paramInt1, paramInt2, paramInt3, paramRect1, paramRect2, 0);
-      AppMethodBeat.o(250870);
+      AppMethodBeat.o(196212);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     androidx.core.graphics.drawable.d
  * JD-Core Version:    0.7.0.1
  */

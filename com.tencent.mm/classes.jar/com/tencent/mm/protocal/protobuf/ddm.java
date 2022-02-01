@@ -1,79 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ddm
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String appId;
-  public String path;
+  public String UserName;
+  public String oOI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208891);
+    AppMethodBeat.i(82436);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.appId != null) {
-        paramVarArgs.f(1, this.appId);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.path != null) {
-        paramVarArgs.f(2, this.path);
+      if (this.UserName != null) {
+        paramVarArgs.g(2, this.UserName);
       }
-      AppMethodBeat.o(208891);
+      if (this.oOI != null) {
+        paramVarArgs.g(3, this.oOI);
+      }
+      AppMethodBeat.o(82436);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.appId == null) {
-        break label274;
+      if (this.BaseRequest == null) {
+        break label404;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.appId) + 0;; paramInt = 0)
+    label404:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.path != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.path);
+      paramInt = i;
+      if (this.UserName != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.UserName);
       }
-      AppMethodBeat.o(208891);
+      i = paramInt;
+      if (this.oOI != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.oOI);
+      }
+      AppMethodBeat.o(82436);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(208891);
+        AppMethodBeat.o(82436);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ddm localddm = (ddm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(208891);
+          AppMethodBeat.o(82436);
           return -1;
         case 1: 
-          localddm.appId = locala.abFh.readString();
-          AppMethodBeat.o(208891);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localddm.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(82436);
+          return 0;
+        case 2: 
+          localddm.UserName = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82436);
           return 0;
         }
-        localddm.path = locala.abFh.readString();
-        AppMethodBeat.o(208891);
+        localddm.oOI = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(82436);
         return 0;
       }
-      AppMethodBeat.o(208891);
+      AppMethodBeat.o(82436);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ddm
  * JD-Core Version:    0.7.0.1
  */

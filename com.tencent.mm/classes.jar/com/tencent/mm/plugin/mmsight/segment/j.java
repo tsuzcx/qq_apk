@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import android.annotation.TargetApi;
 import android.graphics.ImageFormat;
 import android.media.Image;
 import android.media.Image.Plane;
@@ -15,7 +14,6 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 
-@TargetApi(21)
 public final class j
   extends i
 {
@@ -39,7 +37,7 @@ public final class j
     paramImage = paramImage.getPlanes();
     int k = i3 * i4 * ImageFormat.getBitsPerPixel(j) / 8;
     Log.i(TAG, "planes len %d, datalen: %s width %d height %d format %d", new Object[] { Integer.valueOf(paramImage.length), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(j) });
-    byte[] arrayOfByte1 = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(k));
+    byte[] arrayOfByte1 = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(k));
     k = 0;
     while (k < paramImage.length)
     {
@@ -60,7 +58,7 @@ public final class j
       for (int n = i4;; n = i4 / 2)
       {
         Log.v(TAG, "row planes rowStride %d w %d h %d pixelStride %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i6) });
-        arrayOfByte2 = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(i5));
+        arrayOfByte2 = com.tencent.mm.plugin.mmsight.model.a.j.KXq.m(Integer.valueOf(i5));
         i1 = 0;
         for (;;)
         {
@@ -102,23 +100,28 @@ public final class j
         localByteBuffer.get(arrayOfByte2, 0, i5);
       }
       label384:
-      com.tencent.mm.plugin.mmsight.model.a.j.FbH.as(arrayOfByte2);
+      com.tencent.mm.plugin.mmsight.model.a.j.KXq.as(arrayOfByte2);
       k += 1;
     }
     AppMethodBeat.o(107679);
     return arrayOfByte1;
   }
   
-  protected final boolean aUv()
+  public final int bON()
+  {
+    return 2;
+  }
+  
+  protected final boolean boW()
   {
     AppMethodBeat.i(107678);
-    if (this.kSN == null)
+    if (this.nyz == null)
     {
       Log.e(TAG, "drainDecoder, decoder is null");
       AppMethodBeat.o(107678);
       return true;
     }
-    int i = this.kSN.a(this.bufferInfo, 60000L);
+    int i = this.nyz.dequeueOutputBuffer(this.bufferInfo, 60000L);
     Log.i(TAG, "outputBufferIndex-->".concat(String.valueOf(i)));
     if (i == -1)
     {
@@ -132,7 +135,7 @@ public final class j
     }
     for (;;)
     {
-      int j = this.kSN.a(this.bufferInfo, 60000L);
+      int j = this.nyz.dequeueOutputBuffer(this.bufferInfo, 60000L);
       i = j;
       if (j >= 0) {
         break;
@@ -140,8 +143,8 @@ public final class j
       break label70;
       if (i == -2)
       {
-        this.miU = this.kSN.avi();
-        Log.i(TAG, "decoder output format changed: " + this.miU);
+        this.pcr = this.nyz.getOutputFormat();
+        Log.i(TAG, "decoder output format changed: " + this.pcr);
       }
       else if (i < 0)
       {
@@ -151,7 +154,7 @@ public final class j
       {
         Log.v(TAG, "perform decoding");
         long l = Util.currentTicks();
-        byte[] arrayOfByte = b(this.kSN.qQ(i));
+        byte[] arrayOfByte = b(this.nyz.getOutputImage(i));
         Log.v(TAG, "perform decoding costImage %s", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
         if (arrayOfByte == null) {
           break label70;
@@ -164,7 +167,7 @@ public final class j
           }
           for (;;)
           {
-            this.kSN.releaseOutputBuffer(i, false);
+            this.nyz.releaseOutputBuffer(i, false);
             l = this.bufferInfo.presentationTimeUs;
             if ((this.endTimeMs == 1L) || (l < this.endTimeMs * 1000L)) {
               break;
@@ -173,9 +176,9 @@ public final class j
             AppMethodBeat.o(107678);
             return true;
             Log.i(TAG, "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d", new Object[] { arrayOfByte, localBufferInfo, Integer.valueOf(localBufferInfo.size) });
-            this.miU = this.kSN.avi();
-            if (this.Fdr != null) {
-              this.Fdr.bZ(arrayOfByte);
+            this.pcr = this.nyz.getOutputFormat();
+            if (this.KZa != null) {
+              this.KZa.cb(arrayOfByte);
             }
           }
           if ((this.bufferInfo.flags & 0x4) != 0)
@@ -183,9 +186,9 @@ public final class j
             Log.i(TAG, "receive end of stream");
             try
             {
-              this.kSN.stop();
-              this.kSN.release();
-              this.kSN = null;
+              this.nyz.stop();
+              this.nyz.release();
+              this.nyz = null;
               AppMethodBeat.o(107678);
               return true;
             }
@@ -200,14 +203,9 @@ public final class j
           AppMethodBeat.o(107678);
           return false;
         }
-        this.kSN.releaseOutputBuffer(i, false);
+        this.nyz.releaseOutputBuffer(i, false);
       }
     }
-  }
-  
-  public final int brh()
-  {
-    return 2;
   }
   
   protected final boolean isRecognizedFormat(int paramInt)

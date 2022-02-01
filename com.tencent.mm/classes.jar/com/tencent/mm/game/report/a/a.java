@@ -2,14 +2,15 @@ package com.tencent.mm.game.report.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.net.URLEncoder;
 
 public final class a
   implements b
 {
-  private static String Mc(String paramString)
+  private static String EL(String paramString)
   {
     AppMethodBeat.i(108270);
     try
@@ -25,35 +26,35 @@ public final class a
     return paramString;
   }
   
-  public final int a(b.a parama, int paramInt)
+  public final int a(c.a parama, int paramInt)
   {
     AppMethodBeat.i(108268);
-    paramInt = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(parama, paramInt);
-    com.tencent.mm.game.report.api.a.jTp.a(2, parama.name(), String.valueOf(paramInt), 0L);
+    paramInt = ((c)h.ax(c.class)).a(parama, paramInt);
+    com.tencent.mm.game.report.api.a.mtH.a(2, parama.name(), String.valueOf(paramInt), 0L);
     Log.i("MicroMsg.GameExptManager", "key: %s, result: %d", new Object[] { parama.name(), Integer.valueOf(paramInt) });
     AppMethodBeat.o(108268);
     return paramInt;
   }
   
-  public final String a(b.a parama, String paramString)
+  public final String a(c.a parama, String paramString)
   {
     AppMethodBeat.i(108267);
-    String str = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(parama, paramString);
+    String str = ((c)h.ax(c.class)).a(parama, paramString);
     if (!str.equals(paramString)) {
-      com.tencent.mm.game.report.api.a.jTp.a(2, parama.name(), Mc(str), 0L);
+      com.tencent.mm.game.report.api.a.mtH.a(2, parama.name(), EL(str), 0L);
     }
     Log.i("MicroMsg.GameExptManager", "key: %s, result: %s", new Object[] { parama.name(), str });
     AppMethodBeat.o(108267);
     return str;
   }
   
-  public final boolean a(b.a parama, boolean paramBoolean)
+  public final boolean a(c.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(199302);
-    paramBoolean = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(parama, paramBoolean);
-    com.tencent.mm.game.report.api.a.jTp.a(2, parama.name(), String.valueOf(paramBoolean), 0L);
+    AppMethodBeat.i(240733);
+    paramBoolean = ((c)h.ax(c.class)).a(parama, paramBoolean);
+    com.tencent.mm.game.report.api.a.mtH.a(2, parama.name(), String.valueOf(paramBoolean), 0L);
     Log.i("MicroMsg.GameExptManager", "key: %s, result: %b", new Object[] { parama.name(), Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(199302);
+    AppMethodBeat.o(240733);
     return paramBoolean;
   }
 }

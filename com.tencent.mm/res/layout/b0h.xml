@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:minHeight="@dimen/bx"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/b1b" />
-    <include layout="@layout/b1i" />
-    <include layout="@layout/b11" />
-    <include layout="@layout/b1c" />
-    <include layout="@layout/b0j" />
-    <include layout="@layout/b12" />
-    <include android:id="@id/efs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="58.0dip" android:layout_alignParentBottom="true" android:layout_marginStart="16.0dip" android:layout_alignParentStart="true" layout="@layout/b0i" />
-    <include android:id="@id/ef1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" layout="@layout/b05" />
-    <include android:id="@id/ek2" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="44.0dip" android:layout_marginEnd="@dimen/ce" android:layout_toStartOf="@id/ef1" layout="@layout/b1a" />
-    <include android:id="@id/emn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="@dimen/ct" android:layout_toStartOf="@id/ek2" android:layout_alignParentStart="true" layout="@layout/b1p" />
-    <include android:id="@id/egr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_below="@id/emn" android:layout_marginStart="@dimen/c5" layout="@layout/b0p" />
-    <include android:id="@id/eju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_below="@id/egr" android:layout_marginStart="@dimen/cb" layout="@layout/b1_" />
-    <include android:id="@id/elh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="44.0dip" android:layout_alignParentBottom="true" android:layout_marginEnd="18.0dip" android:layout_alignParentEnd="true" layout="@layout/b0x" />
-    <include android:id="@id/egg" android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_marginBottom="8.0dip" android:layout_above="@id/efs" android:layout_marginStart="16.0dip" android:layout_marginEnd="82.0dip" android:layout_alignParentStart="true" layout="@layout/b0o" />
-    <include layout="@layout/b19" />
-    <include layout="@layout/b1k" />
-    <include layout="@layout/b15" />
-    <include layout="@layout/b0r" />
-    <include layout="@layout/b04" />
-    <include layout="@layout/b1s" />
-    <include layout="@layout/b0t" />
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/ivn" android:background="@drawable/anh" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/g2x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:layout_marginTop="@dimen/cv">
+        <View android:background="@color/BW_100_Alpha_0_2" android:layout_width="@dimen/cv" android:layout_height="1.0px" android:layout_marginRight="@dimen/df" android:layout_toLeftOf="@id/ayq" android:layout_centerVertical="true" />
+        <View android:background="@color/BW_100_Alpha_0_2" android:layout_width="@dimen/cv" android:layout_height="1.0px" android:layout_marginLeft="@dimen/df" android:layout_toRightOf="@id/ayq" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center" android:id="@id/ayq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eav" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

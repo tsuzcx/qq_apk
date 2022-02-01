@@ -10,8 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.ae;
-import com.tencent.mm.plugin.luckymoney.model.ag;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.plugin.luckymoney.model.ah;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.d;
 import com.tencent.mm.plugin.wxpay.a.e;
@@ -19,60 +19,45 @@ import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class j
   extends BaseAdapter
 {
-  View.OnClickListener ENS;
-  b ENT;
-  private List<ae> Eud;
-  String Eue;
-  boolean Euf;
-  int Eug;
+  View.OnClickListener KIr;
+  b KIs;
+  private List<af> KmK;
+  String KmL;
+  boolean KmM;
+  int KmN;
   private Context mContext;
   private LayoutInflater mInflater;
   
   public j(Context paramContext)
   {
     AppMethodBeat.i(65925);
-    this.Eud = new LinkedList();
-    this.Eug = 1;
-    this.ENT = null;
+    this.KmK = new LinkedList();
+    this.KmN = 1;
+    this.KIs = null;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(65925);
   }
   
-  private ae Wo(int paramInt)
+  private af aak(int paramInt)
   {
     AppMethodBeat.i(65928);
-    ae localae = (ae)this.Eud.get(paramInt);
+    af localaf = (af)this.KmK.get(paramInt);
     AppMethodBeat.o(65928);
-    return localae;
-  }
-  
-  public final void fS(List<ae> paramList)
-  {
-    AppMethodBeat.i(65926);
-    if (paramList == null) {
-      new LinkedList();
-    }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      AppMethodBeat.o(65926);
-      return;
-      this.Eud = paramList;
-    }
+    return localaf;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(65927);
-    int i = this.Eud.size();
+    int i = this.KmK.size();
     AppMethodBeat.o(65927);
     return i;
   }
@@ -89,67 +74,82 @@ public final class j
     {
       paramView = this.mInflater.inflate(a.g.lucky_money_record_item, paramViewGroup, false);
       paramViewGroup = new c();
-      paramViewGroup.nBk = paramView.findViewById(a.f.root);
-      paramViewGroup.tXu = ((ImageView)paramView.findViewById(a.f.lucky_money_record_avatar));
-      paramViewGroup.vsF = ((TextView)paramView.findViewById(a.f.lucky_money_record_nickname));
-      paramViewGroup.Eui = ((TextView)paramView.findViewById(a.f.lucky_money_record_time));
-      paramViewGroup.Euj = ((TextView)paramView.findViewById(a.f.lucky_money_record_amount));
-      paramViewGroup.Euk = ((TextView)paramView.findViewById(a.f.lucky_money_record_answer));
-      paramViewGroup.Eul = ((TextView)paramView.findViewById(a.f.lucky_money_record_wish_btn));
-      paramViewGroup.Eum = ((ImageView)paramView.findViewById(a.f.lucky_money_record_best_luck_icon));
-      paramViewGroup.Eun = ((TextView)paramView.findViewById(a.f.lucky_money_record_game_tips));
-      if (this.ENT != null) {
-        this.ENT.a(paramViewGroup, this.mContext);
+      paramViewGroup.qAv = paramView.findViewById(a.f.root);
+      paramViewGroup.xaN = ((ImageView)paramView.findViewById(a.f.lucky_money_record_avatar));
+      paramViewGroup.yEQ = ((TextView)paramView.findViewById(a.f.lucky_money_record_nickname));
+      paramViewGroup.KmP = ((TextView)paramView.findViewById(a.f.lucky_money_record_time));
+      paramViewGroup.KmQ = ((TextView)paramView.findViewById(a.f.lucky_money_record_amount));
+      paramViewGroup.KmR = ((TextView)paramView.findViewById(a.f.lucky_money_record_answer));
+      paramViewGroup.KmS = ((TextView)paramView.findViewById(a.f.lucky_money_record_wish_btn));
+      paramViewGroup.KmT = ((ImageView)paramView.findViewById(a.f.lucky_money_record_best_luck_icon));
+      paramViewGroup.KmU = ((TextView)paramView.findViewById(a.f.lucky_money_record_game_tips));
+      if (this.KIs != null) {
+        this.KIs.a(paramViewGroup, this.mContext);
       }
       paramView.setTag(paramViewGroup);
     }
-    ae localae;
+    af localaf;
     for (;;)
     {
-      localae = Wo(paramInt);
-      ag.a(paramViewGroup.tXu, localae.EAH, localae.userName);
-      if ((!Util.nullAsNil(localae.Ezh).equals(this.Eue)) || (!this.Euf)) {
+      localaf = aak(paramInt);
+      ah.a(paramViewGroup.xaN, localaf.KtD, localaf.userName);
+      if ((!Util.nullAsNil(localaf.KrU).equals(this.KmL)) || (!this.KmM)) {
         break;
       }
-      paramViewGroup.Eul.setOnClickListener(this.ENS);
-      paramViewGroup.Eul.setVisibility(0);
-      paramViewGroup.Euk.setVisibility(8);
-      paramViewGroup.Eui.setVisibility(8);
-      ag.a(this.mContext, paramViewGroup.vsF, localae.EAG);
-      String str = this.mContext.getString(a.i.lucky_money_receive_amount, new Object[] { g.formatMoney2f(localae.EAr / 100.0D) });
-      paramViewGroup.Euj.setText(str);
-      if (!Util.isNullOrNil(localae.EAJ)) {
+      paramViewGroup.KmS.setOnClickListener(this.KIr);
+      paramViewGroup.KmS.setVisibility(0);
+      paramViewGroup.KmR.setVisibility(8);
+      paramViewGroup.KmP.setVisibility(8);
+      ah.a(this.mContext, paramViewGroup.yEQ, localaf.KtC);
+      String str = this.mContext.getString(a.i.lucky_money_receive_amount, new Object[] { i.formatMoney2f(localaf.Kth / 100.0D) });
+      paramViewGroup.KmQ.setText(str);
+      if (!Util.isNullOrNil(localaf.KtF)) {
         break label464;
       }
-      paramViewGroup.Eum.setVisibility(8);
-      paramViewGroup.Eun.setVisibility(8);
+      paramViewGroup.KmT.setVisibility(8);
+      paramViewGroup.KmU.setVisibility(8);
       AppMethodBeat.o(65929);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
     }
-    if (Util.isNullOrNil(localae.EAI)) {
-      paramViewGroup.Euk.setVisibility(8);
+    if (Util.isNullOrNil(localaf.KtE)) {
+      paramViewGroup.KmR.setVisibility(8);
     }
     for (;;)
     {
-      paramViewGroup.Eui.setText(ag.q(this.mContext, Util.getLong(localae.EAs, 0L) * 1000L));
-      paramViewGroup.Eui.setVisibility(0);
-      paramViewGroup.Eul.setVisibility(8);
+      paramViewGroup.KmP.setText(ah.s(this.mContext, Util.getLong(localaf.Kti, 0L) * 1000L));
+      paramViewGroup.KmP.setVisibility(0);
+      paramViewGroup.KmS.setVisibility(8);
       break;
-      ag.a(this.mContext, paramViewGroup.Euk, localae.EAI);
-      paramViewGroup.Euk.setVisibility(0);
+      ah.a(this.mContext, paramViewGroup.KmR, localaf.KtE);
+      paramViewGroup.KmR.setVisibility(0);
     }
     label464:
-    paramViewGroup.Eun.setText(localae.EAJ);
-    if (this.Eug == 2) {
-      paramViewGroup.Eum.setImageResource(a.e.lucky_money_first_share_icon);
+    paramViewGroup.KmU.setText(localaf.KtF);
+    if (this.KmN == 2) {
+      paramViewGroup.KmT.setImageResource(a.e.lucky_money_first_share_icon);
     }
     for (;;)
     {
-      paramViewGroup.Eum.setVisibility(0);
-      paramViewGroup.Eun.setVisibility(0);
+      paramViewGroup.KmT.setVisibility(0);
+      paramViewGroup.KmU.setVisibility(0);
       break;
-      paramViewGroup.Eum.setImageResource(a.e.lucky_money_best_luck_icon);
+      paramViewGroup.KmT.setImageResource(a.e.lucky_money_best_luck_icon);
+    }
+  }
+  
+  public final void iQ(List<af> paramList)
+  {
+    AppMethodBeat.i(65926);
+    if (paramList == null) {
+      new LinkedList();
+    }
+    for (;;)
+    {
+      notifyDataSetChanged();
+      AppMethodBeat.o(65926);
+      return;
+      this.KmK = paramList;
     }
   }
   
@@ -164,13 +164,13 @@ public final class j
       int i = paramContext.getResources().getColor(a.c.lucky_money_goldstyle_busi_detail_primary_text_color);
       int j = paramContext.getResources().getColor(a.c.lucky_money_goldstyle_busi_detail_sub_text_color);
       int k = paramContext.getResources().getColor(a.c.lucky_money_goldstyle_text_red_color);
-      paramc.nBk.setBackgroundResource(a.c.transparent);
-      paramc.nBk.setPadding(0, paramContext.getResources().getDimensionPixelOffset(a.d.MiddlePadding), 0, paramContext.getResources().getDimensionPixelOffset(a.d.MiddlePadding));
-      paramc.vsF.setTextColor(i);
-      paramc.Eui.setTextColor(j);
-      paramc.Euj.setTextColor(i);
-      paramc.Euk.setTextColor(i);
-      paramc.Eul.setTextColor(k);
+      paramc.qAv.setBackgroundResource(a.c.transparent);
+      paramc.qAv.setPadding(0, paramContext.getResources().getDimensionPixelOffset(a.d.MiddlePadding), 0, paramContext.getResources().getDimensionPixelOffset(a.d.MiddlePadding));
+      paramc.yEQ.setTextColor(i);
+      paramc.KmP.setTextColor(j);
+      paramc.KmQ.setTextColor(i);
+      paramc.KmR.setTextColor(i);
+      paramc.KmS.setTextColor(k);
       AppMethodBeat.o(65924);
     }
   }
@@ -182,22 +182,22 @@ public final class j
   
   final class c
   {
-    TextView Eui;
-    TextView Euj;
-    TextView Euk;
-    TextView Eul;
-    ImageView Eum;
-    TextView Eun;
-    View nBk;
-    ImageView tXu;
-    TextView vsF;
+    TextView KmP;
+    TextView KmQ;
+    TextView KmR;
+    TextView KmS;
+    ImageView KmT;
+    TextView KmU;
+    View qAv;
+    ImageView xaN;
+    TextView yEQ;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.j
  * JD-Core Version:    0.7.0.1
  */

@@ -12,37 +12,37 @@ import com.tencent.mm.plugin.editor.model.a.a;
 import com.tencent.mm.plugin.editor.model.a.h;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class b
   extends d
 {
   private int thumbWidth;
-  private ImageView uqq;
+  private ImageView xwN;
   
   public b(View paramView, j paramj)
   {
     super(paramView, paramj);
     AppMethodBeat.i(181644);
     this.thumbWidth = 0;
-    this.fDJ.setVisibility(0);
-    this.ndX.setVisibility(8);
-    this.uqw.setVisibility(8);
-    this.fDJ.setTag(this);
-    this.fDJ.setOnClickListener(this.uqL);
-    this.uqq = ((ImageView)paramView.findViewById(d.e.image_mask));
-    this.uqq.setVisibility(8);
-    this.thumbWidth = (j.mScreenWidth - (int)j.bd(20.0F));
+    this.hIz.setVisibility(0);
+    this.pZr.setVisibility(8);
+    this.xwT.setVisibility(8);
+    this.hIz.setTag(this);
+    this.hIz.setOnClickListener(this.xxi);
+    this.xwN = ((ImageView)paramView.findViewById(d.e.image_mask));
+    this.xwN.setVisibility(8);
+    this.thumbWidth = (j.mScreenWidth - (int)j.cg(20.0F));
     AppMethodBeat.o(181644);
   }
   
   public final void a(a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181645);
-    Object localObject1 = ((h)parama).fNU;
-    Object localObject2 = ((h)parama).urR;
-    if (!u.agG((String)localObject1)) {
-      if (u.agG((String)localObject2)) {
+    Object localObject1 = ((h)parama).hTM;
+    Object localObject2 = ((h)parama).xym;
+    if (!y.ZC((String)localObject1)) {
+      if (y.ZC((String)localObject2)) {
         localObject1 = localObject2;
       }
     }
@@ -52,20 +52,20 @@ public final class b
       {
         localObject1 = null;
         label54:
-        this.fDJ.setImageBitmap(null);
-        localObject2 = this.fDJ.getLayoutParams();
+        this.hIz.setImageBitmap(null);
+        localObject2 = this.hIz.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject2).width = -1;
         ((ViewGroup.LayoutParams)localObject2).height = -1;
-        this.fDJ.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        this.hIz.setLayoutParams((ViewGroup.LayoutParams)localObject2);
         if (localObject1 == null) {
           break label150;
         }
-        this.fDJ.setImageBitmap((Bitmap)localObject1);
+        this.hIz.setImageBitmap((Bitmap)localObject1);
         label106:
-        if (!parama.urN) {
+        if (!parama.xyi) {
           break label209;
         }
-        this.uqq.setVisibility(0);
+        this.xwN.setVisibility(0);
       }
       for (;;)
       {
@@ -74,30 +74,30 @@ public final class b
         return;
         localObject1 = null;
         break;
-        localObject1 = com.tencent.mm.plugin.editor.b.atB((String)localObject1);
+        localObject1 = com.tencent.mm.plugin.editor.b.anq((String)localObject1);
         break label54;
         label150:
-        this.fDJ.setImageBitmap(null);
-        localObject1 = this.fDJ.getLayoutParams();
+        this.hIz.setImageBitmap(null);
+        localObject1 = this.hIz.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject1).width = this.thumbWidth;
         ((ViewGroup.LayoutParams)localObject1).height = this.thumbWidth;
-        this.fDJ.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.fDJ.setBackgroundColor(Color.parseColor("#f6f6f6"));
+        this.hIz.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.hIz.setBackgroundColor(Color.parseColor("#f6f6f6"));
         break label106;
         label209:
-        this.uqq.setVisibility(8);
+        this.xwN.setVisibility(8);
       }
     }
   }
   
-  public final int cRD()
+  public final int dvW()
   {
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.b
  * JD-Core Version:    0.7.0.1
  */

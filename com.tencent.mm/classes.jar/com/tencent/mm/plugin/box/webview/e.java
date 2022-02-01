@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.box.webview;
 
 public abstract interface e
 {
-  public abstract void fq(String paramString1, String paramString2);
+  public abstract void fH(String paramString1, String paramString2);
 }
 
 

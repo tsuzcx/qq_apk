@@ -9,1029 +9,1091 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitask.animation.c.a.c.a;
+import com.tencent.mm.plugin.multitask.animation.c.a.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.k;
-import kotlin.t;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS;", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;", "()V", "enableSwipeback", "", "getEnableSwipeback", "()Z", "setEnableSwipeback", "(Z)V", "isExitAnimating", "setExitAnimating", "mDragHelper", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper;", "getMDragHelper", "()Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper;", "setMDragHelper", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper;)V", "mListener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "getMListener", "()Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "setMListener", "(Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;)V", "multiTaskHelper", "Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;", "getMultiTaskHelper", "()Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;", "setMultiTaskHelper", "(Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;)V", "pageAdapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "getPageAdapter", "()Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "setPageAdapter", "(Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "swipeBackFlag", "", "getSwipeBackFlag", "()J", "setSwipeBackFlag", "(J)V", "swipeView", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/TransformSwipeBackToMultiTaskView;", "getSwipeView", "()Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/TransformSwipeBackToMultiTaskView;", "setSwipeView", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/TransformSwipeBackToMultiTaskView;)V", "doPrepareTransform", "", "way", "", "exitAnim", "init", "initMaskView", "enterAnim", "listener", "onCreate", "refreshPosition", "resetView", "startSwipeAnim", "Companion", "ViewDragCallback", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS;", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/BaseMultiTaskSwipeBackAnimWrapper;", "()V", "enableSwipeback", "", "getEnableSwipeback", "()Z", "setEnableSwipeback", "(Z)V", "isExitAnimating", "setExitAnimating", "mDragHelper", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper;", "getMDragHelper", "()Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper;", "setMDragHelper", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper;)V", "mListener", "Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "getMListener", "()Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;", "setMListener", "(Lcom/tencent/mm/plugin/multitask/listener/OnMultiTaskFBTransformationListener;)V", "multiTaskHelper", "Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;", "getMultiTaskHelper", "()Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;", "setMultiTaskHelper", "(Lcom/tencent/mm/plugin/multitask/helper/IMultiTaskHelper;)V", "pageAdapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "getPageAdapter", "()Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "setPageAdapter", "(Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "swipeBackFlag", "", "getSwipeBackFlag", "()J", "setSwipeBackFlag", "(J)V", "swipeView", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/TransformSwipeBackToMultiTaskView;", "getSwipeView", "()Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/TransformSwipeBackToMultiTaskView;", "setSwipeView", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/TransformSwipeBackToMultiTaskView;)V", "doPrepareTransform", "", "way", "", "exitAnim", "init", "initMaskView", "enterAnim", "listener", "onCreate", "refreshPosition", "resetView", "startSwipeAnim", "Companion", "ViewDragCallback", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends com.tencent.mm.plugin.multitask.animation.c.a.a
 {
-  public static final a.a FGX;
-  boolean FGA;
-  protected com.tencent.mm.plugin.multitask.a.a FGb;
-  private com.tencent.mm.plugin.multitask.b.b FGu;
-  com.tencent.mm.plugin.multitask.animation.c.a.b FGv;
-  com.tencent.mm.plugin.multitask.animation.c.a.c FGw;
-  com.tencent.mm.plugin.multitask.c.c FGx;
-  long FGy = -1L;
-  boolean FGz = true;
+  public static final a.a LCB;
+  protected com.tencent.mm.plugin.multitask.a.a LBU;
+  private com.tencent.mm.plugin.multitask.b.b LCn;
+  com.tencent.mm.plugin.multitask.animation.c.a.b LCo;
+  com.tencent.mm.plugin.multitask.animation.c.a.c LCp;
+  com.tencent.mm.plugin.multitask.c.c LCq;
+  long LCr = -1L;
+  boolean LCs = true;
+  private boolean LCt;
   
   static
   {
-    AppMethodBeat.i(247976);
-    FGX = new a.a((byte)0);
-    AppMethodBeat.o(247976);
+    AppMethodBeat.i(304290);
+    LCB = new a.a((byte)0);
+    AppMethodBeat.o(304290);
   }
   
-  private final void XZ(int paramInt)
+  private static final void a(int paramInt1, int paramInt2, float paramFloat1, Rect paramRect, a parama, int paramInt3, int paramInt4, float paramFloat2)
   {
-    Object localObject4 = null;
-    Object localObject3 = null;
-    AppMethodBeat.i(247970);
-    Object localObject1 = this.FGu;
-    if (localObject1 != null)
+    AppMethodBeat.i(304236);
+    s.u(paramRect, "$potision");
+    s.u(parama, "this$0");
+    float f1 = paramInt1;
+    float f2 = (paramInt2 * paramFloat1 - paramRect.height()) / 2.0F * paramFloat2 * (1.0F / paramFloat1);
+    float f3 = paramInt2;
+    paramRect = parama.LCp;
+    if (paramRect != null) {
+      paramRect.setMaskAlpha((int)(255.0F * paramFloat2));
+    }
+    paramRect = parama.LCp;
+    if (paramRect != null) {
+      paramRect.t(0.0F, f2, f1, f3 - f2);
+    }
+    paramRect = com.tencent.mm.plugin.multitask.animation.c.a.c.LCk;
+    paramFloat1 = com.tencent.mm.plugin.multitask.animation.c.a.c.gjG() * paramFloat2 / paramFloat1;
+    paramRect = parama.LCp;
+    if (paramRect != null) {
+      paramRect.a(paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1);
+    }
+    paramRect = parama.LCp;
+    if (paramRect != null) {
+      paramRect.setPivotX(paramInt3);
+    }
+    paramRect = parama.LCp;
+    if (paramRect != null) {
+      paramRect.setPivotY(paramInt4);
+    }
+    paramRect = parama.LCp;
+    if (paramRect != null) {
+      paramRect.postInvalidate();
+    }
+    AppMethodBeat.o(304236);
+  }
+  
+  private static final void a(a parama, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(304212);
+    s.u(parama, "this$0");
+    Object localObject1 = parama.LCo;
+    if (localObject1 == null) {
+      localObject1 = null;
+    }
+    while (localObject1 != null)
     {
-      localObject1 = ((com.tencent.mm.plugin.multitask.b.b)localObject1).Ya(paramInt);
-      if (Util.isNullOrNil((String)localObject1)) {
-        break label138;
+      com.tencent.mm.plugin.multitask.c.c localc = parama.LCq;
+      Log.i("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "initMaskView, exitAnim:%b, enterAnim:%b, way:%d", new Object[] { Boolean.valueOf(paramBoolean), Boolean.FALSE, Integer.valueOf(paramInt) });
+      if (parama.gjH().getMaskView() == null)
+      {
+        Log.w("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "doMaskAnimation, page mask view is null");
+        if (localc != null) {
+          localc.aco(paramInt);
+        }
+        AppMethodBeat.o(304212);
+        return;
+        localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject1).LCj;
+      }
+      else
+      {
+        if (parama.gjH().getContentView() == null)
+        {
+          Log.w("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "doMaskAnimation, page content view is null");
+          if (localc != null) {
+            localc.aco(paramInt);
+          }
+          AppMethodBeat.o(304212);
+          return;
+        }
+        if (parama.gjH().cXB() == null)
+        {
+          Log.w("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "doMaskAnimation, page root view is null");
+          if (localc != null) {
+            localc.aco(paramInt);
+          }
+          AppMethodBeat.o(304212);
+          return;
+        }
+        if (parama.LCt)
+        {
+          Log.w("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "isExitAnimating now!");
+          AppMethodBeat.o(304212);
+          return;
+        }
+        Bitmap localBitmap = parama.gjH().getBitmap();
+        if ((localBitmap == null) || (localBitmap.isRecycled()) || (localBitmap.getWidth() == 0) || (localBitmap.getHeight() == 0))
+        {
+          Log.w("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "doMaskAnimation, page get bitmap is null");
+          if (localc != null) {
+            localc.aco(paramInt);
+          }
+          AppMethodBeat.o(304212);
+          return;
+        }
+        if (parama.LCp != null)
+        {
+          localObject1 = parama.LCp;
+          if (localObject1 != null) {
+            break label697;
+          }
+          localObject1 = null;
+          if (localObject1 != null) {}
+        }
+        else
+        {
+          parama.LCp = new com.tencent.mm.plugin.multitask.animation.c.a.c((Context)parama.gjH().getActivity(), localBitmap);
+          localObject1 = parama.LCp;
+          if (localObject1 != null) {
+            ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+          }
+          localObject1 = parama.gjH().cXB();
+          if (localObject1 != null) {
+            ((ViewGroup)localObject1).addView((View)parama.LCp, ((ViewGroup)localObject1).getChildCount());
+          }
+        }
+        parama.acm(paramInt);
+        localObject1 = parama.gjH().getContentView();
+        if (localObject1 != null) {
+          ((View)localObject1).setVisibility(8);
+        }
+        if (paramBoolean)
+        {
+          parama.LCt = true;
+          int i = (int)(localBitmap.getWidth() * 1.25F);
+          int j = (int)(localBitmap.getHeight() * 1.25F);
+          Rect localRect = new Rect(0, 0, i, j);
+          localObject1 = parama.LCo;
+          if (localObject1 == null) {}
+          for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject1).LCj)
+          {
+            Object localObject2 = localObject1;
+            if (localObject1 == null) {
+              localObject2 = new Rect();
+            }
+            int k = ((Rect)localObject2).left + ((Rect)localObject2).width() / 2;
+            int m = ((Rect)localObject2).top + ((Rect)localObject2).height() / 2;
+            float f1 = ((Rect)localObject2).width() / i;
+            float f2 = k - (localRect.left + localRect.width() / 2);
+            int n = localRect.top;
+            float f3 = m - (localRect.height() / 2 + n);
+            com.tencent.mm.ui.anim.a.a.kY((View)parama.LCp).dS(f2 * f1).dT(f3 * f1).dU(f1).dV(f1).a(new a..ExternalSyntheticLambda0(i, j, f1, (Rect)localObject2, parama, k, m)).d((Interpolator)new AccelerateInterpolator()).aY(new a..ExternalSyntheticLambda3(parama, localc, localBitmap, paramInt)).aX(new a..ExternalSyntheticLambda2(parama, localc, localBitmap, paramInt)).zE(250L).start();
+            AppMethodBeat.o(304212);
+            return;
+            label697:
+            localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getParent();
+            break;
+          }
+        }
+        if (localc != null)
+        {
+          localObject1 = parama.LCp;
+          if (localObject1 != null) {
+            break label757;
+          }
+        }
+        label757:
+        for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getContentBitmap())
+        {
+          localc.a((Bitmap)localObject1, true, paramInt);
+          parama.gjI();
+          AppMethodBeat.o(304212);
+          return;
+        }
       }
     }
-    for (;;)
+    if (parama.LCq != null)
     {
-      if (localObject1 != null)
+      parama = parama.LCq;
+      if (parama != null) {
+        parama.aco(paramInt);
+      }
+    }
+    AppMethodBeat.o(304212);
+  }
+  
+  private static final void a(a parama, com.tencent.mm.plugin.multitask.c.c paramc, Bitmap paramBitmap, int paramInt)
+  {
+    AppMethodBeat.i(304251);
+    s.u(parama, "this$0");
+    parama.gjI();
+    if (paramc != null) {
+      paramc.a(paramBitmap, false, paramInt);
+    }
+    AppMethodBeat.o(304251);
+  }
+  
+  private static final void a(com.tencent.mm.plugin.multitask.c.c paramc, Bitmap paramBitmap, int paramInt, a parama)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(304261);
+    s.u(paramBitmap, "$snapBlt");
+    s.u(parama, "this$0");
+    if (paramc != null) {
+      paramc.g(paramBitmap, paramInt);
+    }
+    if (parama.LCp != null)
+    {
+      paramc = parama.LCp;
+      if (paramc == null)
       {
+        paramc = null;
+        if (paramc == null) {
+          break label121;
+        }
+        paramc = parama.LCp;
+        if (paramc != null) {
+          break label99;
+        }
+      }
+      label99:
+      for (paramc = localObject;; paramc = paramc.getParent())
+      {
+        if (paramc != null) {
+          break label107;
+        }
+        paramc = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(304261);
+        throw paramc;
+        paramc = paramc.getParent();
+        break;
+      }
+      label107:
+      ((ViewGroup)paramc).removeView((View)parama.LCp);
+    }
+    label121:
+    AppMethodBeat.o(304261);
+  }
+  
+  private final void acm(int paramInt)
+  {
+    Integer localInteger = null;
+    Object localObject3 = null;
+    AppMethodBeat.i(304170);
+    Object localObject1 = this.LCn;
+    if (localObject1 == null) {}
+    for (localObject1 = null; !Util.isNullOrNil((String)localObject1); localObject2 = localException.acn(paramInt))
+    {
+      if (localObject1 != null) {
         try
         {
           localObject1 = (CharSequence)localObject1;
-          localObject1 = ((Collection)new k(",").u((CharSequence)localObject1, 0)).toArray(new String[0]);
+          localObject1 = ((Collection)new k(",").o((CharSequence)localObject1, 0)).toArray(new String[0]);
           if (localObject1 != null) {
-            break label197;
+            break label209;
           }
-          localObject1 = new t("null cannot be cast to non-null type kotlin.Array<T>");
-          AppMethodBeat.o(247970);
+          localObject1 = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+          AppMethodBeat.o(304170);
           throw ((Throwable)localObject1);
         }
         catch (Exception localException)
         {
           Log.e("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "refreshPosition, get pos failed, %s", new Object[] { localException.getMessage() });
-          AppMethodBeat.o(247970);
-          return;
-        }
-        Object localObject2 = null;
-        break;
-        label138:
-        if (paramInt == 4)
-        {
-          localObject4 = this.FGu;
-          localObject2 = localObject3;
-          if (localObject4 != null) {
-            localObject2 = ((com.tencent.mm.plugin.multitask.b.b)localObject4).faK();
-          }
-        }
-        else
-        {
-          localObject3 = this.FGu;
-          localObject2 = localObject4;
-          if (localObject3 != null) {
-            localObject2 = ((com.tencent.mm.plugin.multitask.b.b)localObject3).getPosition();
-          }
-          continue;
-          label197:
-          localObject3 = (String[])localObject2;
-          if ((localObject3 != null) && (localObject3.length == 4))
-          {
-            localObject2 = this.FGv;
-            if (localObject2 != null)
-            {
-              localObject4 = Integer.valueOf(localObject3[0]);
-              p.j(localObject4, "Integer.valueOf(posVec[0])");
-              paramInt = ((Integer)localObject4).intValue();
-              localObject4 = Integer.valueOf(localObject3[1]);
-              p.j(localObject4, "Integer.valueOf(posVec[1])");
-              int i = ((Integer)localObject4).intValue();
-              localObject4 = Integer.valueOf(localObject3[2]);
-              p.j(localObject4, "Integer.valueOf(posVec[2])");
-              int j = ((Integer)localObject4).intValue();
-              localObject3 = Integer.valueOf(localObject3[3]);
-              p.j(localObject3, "Integer.valueOf(posVec[3])");
-              ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject2).t(new Rect(paramInt, i, j, ((Integer)localObject3).intValue()));
-              AppMethodBeat.o(247970);
-              return;
-            }
-          }
-          AppMethodBeat.o(247970);
-          return;
         }
       }
-    }
-    AppMethodBeat.o(247970);
-  }
-  
-  private final void aO(final int paramInt, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(247967);
-    Object localObject = this.FGb;
-    if (localObject == null) {
-      p.bGy("pageAdapter");
-    }
-    if (((com.tencent.mm.plugin.multitask.a.a)localObject).bOd())
-    {
-      localObject = this.FGb;
-      if (localObject == null) {
-        p.bGy("pageAdapter");
-      }
-      if (((com.tencent.mm.plugin.multitask.a.a)localObject).cbM())
-      {
-        localObject = this.FGb;
-        if (localObject == null) {
-          p.bGy("pageAdapter");
-        }
-        ((com.tencent.mm.plugin.multitask.a.a)localObject).a(null);
-      }
-      MMHandlerThread.postToMainThread((Runnable)new c(this, paramInt, paramBoolean));
-      AppMethodBeat.o(247967);
+      AppMethodBeat.o(304170);
       return;
     }
-    if (this.FGx != null)
+    if (paramInt == 4)
     {
-      localObject = this.FGx;
-      if (localObject != null)
-      {
-        ((com.tencent.mm.plugin.multitask.c.c)localObject).Yb(paramInt);
-        AppMethodBeat.o(247967);
-        return;
+      localObject2 = this.LCn;
+      if (localObject2 == null) {}
+      for (localObject2 = localObject3;; localObject2 = ((com.tencent.mm.plugin.multitask.b.b)localObject2).gjP()) {
+        break;
       }
     }
-    AppMethodBeat.o(247967);
+    Object localObject2 = this.LCn;
+    if (localObject2 == null) {}
+    for (localObject2 = localInteger;; localObject2 = ((com.tencent.mm.plugin.multitask.b.b)localObject2).getPosition()) {
+      break;
+    }
+    label209:
+    localObject3 = (String[])localObject2;
+    if ((localObject3 != null) && (localObject3.length == 4))
+    {
+      localObject2 = this.LCo;
+      if (localObject2 != null)
+      {
+        localInteger = Integer.valueOf(localObject3[0]);
+        s.s(localInteger, "valueOf(posVec[0])");
+        paramInt = ((Number)localInteger).intValue();
+        localInteger = Integer.valueOf(localObject3[1]);
+        s.s(localInteger, "valueOf(posVec[1])");
+        int i = ((Number)localInteger).intValue();
+        localInteger = Integer.valueOf(localObject3[2]);
+        s.s(localInteger, "valueOf(posVec[2])");
+        int j = ((Number)localInteger).intValue();
+        localObject3 = Integer.valueOf(localObject3[3]);
+        s.s(localObject3, "valueOf(posVec[3])");
+        ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject2).z(new Rect(paramInt, i, j, ((Number)localObject3).intValue()));
+      }
+    }
+    AppMethodBeat.o(304170);
   }
   
-  private final void faD()
+  private static final void b(a parama, com.tencent.mm.plugin.multitask.c.c paramc, Bitmap paramBitmap, int paramInt)
   {
-    AppMethodBeat.i(247973);
-    com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.FGw;
+    AppMethodBeat.i(304270);
+    s.u(parama, "this$0");
+    s.u(paramBitmap, "$snapBlt");
+    parama.LCt = false;
+    MMHandlerThread.postToMainThread(new a..ExternalSyntheticLambda4(paramc, paramBitmap, paramInt, parama));
+    AppMethodBeat.o(304270);
+  }
+  
+  private final void bp(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(304146);
+    if (gjH().cor())
+    {
+      if (gjH().cCf()) {
+        gjH().a(null);
+      }
+      MMHandlerThread.postToMainThread(new a..ExternalSyntheticLambda1(this, paramInt, paramBoolean));
+      AppMethodBeat.o(304146);
+      return;
+    }
+    if (this.LCq != null)
+    {
+      com.tencent.mm.plugin.multitask.c.c localc = this.LCq;
+      if (localc != null) {
+        localc.aco(paramInt);
+      }
+    }
+    AppMethodBeat.o(304146);
+  }
+  
+  private final void gjI()
+  {
+    AppMethodBeat.i(304183);
+    com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.LCp;
     if (localc != null) {
       localc.setTranslationX(0.0F);
     }
-    localc = this.FGw;
+    localc = this.LCp;
     if (localc != null) {
       localc.setTranslationY(0.0F);
     }
-    localc = this.FGw;
+    localc = this.LCp;
     if (localc != null) {
       localc.setScaleX(1.0F);
     }
-    localc = this.FGw;
-    if (localc != null)
-    {
+    localc = this.LCp;
+    if (localc != null) {
       localc.setScaleY(1.0F);
-      AppMethodBeat.o(247973);
-      return;
     }
-    AppMethodBeat.o(247973);
-  }
-  
-  public final void XW(int paramInt)
-  {
-    AppMethodBeat.i(247964);
-    aO(paramInt, true);
-    AppMethodBeat.o(247964);
+    AppMethodBeat.o(304183);
   }
   
   public final void a(com.tencent.mm.plugin.multitask.a.a parama, final com.tencent.mm.plugin.multitask.b.b paramb, com.tencent.mm.plugin.multitask.c.c paramc)
   {
-    AppMethodBeat.i(247962);
-    p.k(parama, "pageAdapter");
-    p.k(paramb, "multiTaskHelper");
-    this.FGb = parama;
-    this.FGu = paramb;
-    this.FGx = paramc;
-    parama = this.FGb;
-    if (parama == null) {
-      p.bGy("pageAdapter");
-    }
+    AppMethodBeat.i(304372);
+    s.u(parama, "pageAdapter");
+    s.u(paramb, "multiTaskHelper");
+    s.u(parama, "<set-?>");
+    this.LBU = parama;
+    this.LCn = paramb;
+    this.LCq = paramc;
+    parama = gjH();
     if (parama != null) {
-      parama.a((com.tencent.mm.plugin.multitask.a.a.a)new g(this, paramb));
+      parama.a((com.tencent.mm.plugin.multitask.a.a.a)new c(this, paramb));
     }
-    parama = this.FGb;
-    if (parama == null) {
-      p.bGy("pageAdapter");
-    }
-    parama = AnimationUtils.loadInterpolator((Context)parama.getActivity(), com.tencent.mm.ah.a.a.mm_decelerate_interpolator);
-    paramb = this.FGb;
-    if (paramb == null) {
-      p.bGy("pageAdapter");
-    }
-    paramb = paramb.cuR();
+    parama = AnimationUtils.loadInterpolator((Context)gjH().getActivity(), com.tencent.mm.ah.a.a.mm_decelerate_interpolator);
+    paramb = gjH().cXB();
     if (paramb != null)
     {
-      paramc = com.tencent.mm.plugin.multitask.animation.c.a.b.FGp;
-      paramc = (com.tencent.mm.plugin.multitask.animation.c.a.b.a)new b();
-      p.j(parama, "interpolator");
-      this.FGv = com.tencent.mm.plugin.multitask.animation.c.a.b.b.a(paramb, paramc, parama);
+      paramc = com.tencent.mm.plugin.multitask.animation.c.a.b.LCd;
+      paramc = (b.a)new b();
+      s.s(parama, "interpolator");
+      this.LCo = com.tencent.mm.plugin.multitask.animation.c.a.b.b.a(paramb, paramc, parama);
     }
-    parama = this.FGv;
+    parama = this.LCo;
     if (parama != null) {
-      parama.Rt = 1;
+      parama.bxK = 1;
     }
-    parama = this.FGb;
-    if (parama == null) {
-      p.bGy("pageAdapter");
-    }
-    parama = parama.getActivity();
-    if (parama != null)
+    parama = gjH().getActivity();
+    if (parama == null)
     {
-      parama = parama.getResources();
-      if (parama != null)
-      {
-        parama = parama.getDisplayMetrics();
-        if (parama == null) {}
-      }
-    }
-    for (float f = parama.density;; f = com.tencent.mm.ci.a.getDensity((Context)parama.getActivity()))
-    {
-      parama = this.FGv;
+      parama = null;
       if (parama != null) {
-        parama.FGk = (100.0F * f);
+        break label270;
       }
-      parama = this.FGv;
-      if (parama == null) {
+    }
+    label270:
+    for (float f = com.tencent.mm.cd.a.getDensity((Context)gjH().getActivity());; f = parama.floatValue())
+    {
+      parama = this.LCo;
+      if (parama != null) {
+        parama.LCf = (100.0F * f);
+      }
+      parama = this.LCo;
+      if (parama != null) {
+        parama.uDV = (f * 300.0F);
+      }
+      AppMethodBeat.o(304372);
+      return;
+      parama = parama.getResources();
+      if (parama == null)
+      {
+        parama = null;
         break;
       }
-      parama.rti = (f * 300.0F);
-      AppMethodBeat.o(247962);
-      return;
-      parama = this.FGb;
-      if (parama == null) {
-        p.bGy("pageAdapter");
+      parama = parama.getDisplayMetrics();
+      if (parama == null)
+      {
+        parama = null;
+        break;
       }
+      parama = Float.valueOf(parama.density);
+      break;
     }
-    AppMethodBeat.o(247962);
   }
   
-  protected final com.tencent.mm.plugin.multitask.a.a faC()
+  public final void acj(int paramInt)
   {
-    AppMethodBeat.i(247960);
-    com.tencent.mm.plugin.multitask.a.a locala = this.FGb;
-    if (locala == null) {
-      p.bGy("pageAdapter");
-    }
-    AppMethodBeat.o(247960);
-    return locala;
+    AppMethodBeat.i(304384);
+    bp(paramInt, true);
+    AppMethodBeat.o(304384);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS$ViewDragCallback;", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper$Callback;", "Lcom/tencent/mm/ui/base/ActivityUtil$IConvertActivityTranslucentCallback;", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS;)V", "CONSTANT_X_VELOCITY", "", "getCONSTANT_X_VELOCITY", "()I", "isFinish", "", "()Z", "setFinish", "(Z)V", "mStartTransX", "getMStartTransX", "setMStartTransX", "(I)V", "mStartTransY", "getMStartTransY", "setMStartTransY", "mStartViewPosition", "Landroid/graphics/Rect;", "getMStartViewPosition", "()Landroid/graphics/Rect;", "setMStartViewPosition", "(Landroid/graphics/Rect;)V", "autoHide", "firstValue", "", "clampViewPositionHorizontal", "child", "Landroid/view/View;", "left", "dx", "getViewHorizontalDragRange", "onComplete", "", "drawComplete", "onViewCaptured", "capturedChild", "activePointerId", "onViewDragStateChanged", "state", "onViewPositionChanged", "changedView", "top", "dy", "onViewReleased", "releasedChild", "xvel", "yvel", "onViewTouchPositionChanged", "touchX", "touchY", "adx", "ady", "tryCaptureView", "view", "i", "plugin-multitask_release"})
+  protected final com.tencent.mm.plugin.multitask.a.a gjH()
+  {
+    AppMethodBeat.i(304347);
+    com.tencent.mm.plugin.multitask.a.a locala = this.LBU;
+    if (locala != null)
+    {
+      AppMethodBeat.o(304347);
+      return locala;
+    }
+    s.bIx("pageAdapter");
+    AppMethodBeat.o(304347);
+    return null;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS$ViewDragCallback;", "Lcom/tencent/mm/plugin/multitask/animation/swipeback/base/MultiTaskSwipeDragHelper$Callback;", "Lcom/tencent/mm/ui/base/ActivityUtil$IConvertActivityTranslucentCallback;", "(Lcom/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS;)V", "CONSTANT_X_VELOCITY", "", "getCONSTANT_X_VELOCITY", "()I", "isFinish", "", "()Z", "setFinish", "(Z)V", "mStartTransX", "getMStartTransX", "setMStartTransX", "(I)V", "mStartTransY", "getMStartTransY", "setMStartTransY", "mStartViewPosition", "Landroid/graphics/Rect;", "getMStartViewPosition", "()Landroid/graphics/Rect;", "setMStartViewPosition", "(Landroid/graphics/Rect;)V", "autoHide", "firstValue", "", "clampViewPositionHorizontal", "child", "Landroid/view/View;", "left", "dx", "getViewHorizontalDragRange", "onComplete", "", "drawComplete", "onViewCaptured", "capturedChild", "activePointerId", "onViewDragStateChanged", "state", "onViewPositionChanged", "changedView", "top", "dy", "onViewReleased", "releasedChild", "xvel", "yvel", "onViewTouchPositionChanged", "touchX", "touchY", "adx", "ady", "tryCaptureView", "view", "i", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   final class b
-    extends com.tencent.mm.plugin.multitask.animation.c.a.b.a
+    extends b.a
     implements com.tencent.mm.ui.base.b.b
   {
-    private int FGC = -1;
-    private int FGD = -1;
-    private Rect FGF;
-    private final int FGG = 400;
-    private boolean lwF;
+    private int LCu;
+    private int LCv;
+    private Rect LCx;
+    private final int LCy;
+    private boolean ooe;
     
-    private final boolean bA(final float paramFloat)
+    public b()
     {
-      AppMethodBeat.i(248161);
-      final com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.FGY.FGw;
-      Object localObject1 = this.FGY.FGw;
-      if (localObject1 != null) {}
-      for (localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getContentBitmap(); (localc != null) && (localObject1 != null); localObject1 = null)
+      AppMethodBeat.i(304103);
+      this.LCu = -1;
+      this.LCv = -1;
+      this.LCy = 400;
+      AppMethodBeat.o(304103);
+    }
+    
+    private static final void a(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, Rect paramRect, com.tencent.mm.plugin.multitask.animation.c.a.c paramc, int paramInt3, int paramInt4, float paramFloat3)
+    {
+      AppMethodBeat.i(304120);
+      s.u(paramRect, "$potision");
+      s.u(paramc, "$view");
+      paramFloat1 = (1.0F - paramFloat1) * paramFloat3 + paramFloat1;
+      paramFloat3 = paramInt1;
+      float f1 = (paramInt2 * paramFloat2 - paramRect.height()) / 2.0F * paramFloat1 * (1.0F / paramFloat2);
+      float f2 = paramInt2;
+      paramc.setPivotX(paramInt3);
+      paramc.setPivotY(paramInt4);
+      paramc.setMaskAlpha((int)(255.0F * paramFloat1));
+      paramc.t(0.0F, f1, paramFloat3, f2 - f1);
+      paramRect = com.tencent.mm.plugin.multitask.animation.c.a.c.LCk;
+      paramFloat1 = paramFloat1 * com.tencent.mm.plugin.multitask.animation.c.a.c.gjG() / paramFloat2;
+      paramc.a(paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1, paramFloat1);
+      paramc.postInvalidate();
+      AppMethodBeat.o(304120);
+    }
+    
+    private static final void a(a parama, Bitmap paramBitmap)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(304129);
+      s.u(parama, "this$0");
+      s.u(paramBitmap, "$bitmap");
+      com.tencent.mm.plugin.multitask.c.c localc = parama.LCq;
+      if (localc != null) {
+        localc.g(paramBitmap, 3);
+      }
+      if (parama.LCp != null)
       {
-        int i = (int)(((Bitmap)localObject1).getWidth() * 1.25F);
-        final int j = (int)(((Bitmap)localObject1).getHeight() * 1.25F);
-        Rect localRect2 = new Rect(0, 0, i, j);
-        Object localObject2 = this.FGY.FGv;
-        if (localObject2 != null)
+        paramBitmap = parama.LCp;
+        if (paramBitmap == null)
         {
-          Rect localRect1 = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject2).FGo;
-          localObject2 = localRect1;
-          if (localRect1 != null) {}
+          paramBitmap = null;
+          if (paramBitmap == null) {
+            break label120;
+          }
+          paramBitmap = parama.LCp;
+          if (paramBitmap != null) {
+            break label98;
+          }
         }
-        else
+        label98:
+        for (paramBitmap = localObject;; paramBitmap = paramBitmap.getParent())
         {
+          if (paramBitmap != null) {
+            break label106;
+          }
+          parama = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(304129);
+          throw parama;
+          paramBitmap = paramBitmap.getParent();
+          break;
+        }
+        label106:
+        ((ViewGroup)paramBitmap).removeView((View)parama.LCp);
+      }
+      label120:
+      AppMethodBeat.o(304129);
+    }
+    
+    private static final void b(a parama)
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(304142);
+      s.u(parama, "this$0");
+      if (parama.LCp != null)
+      {
+        Object localObject1 = parama.LCp;
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          if (localObject1 == null) {
+            break label97;
+          }
+          localObject1 = parama.LCp;
+          if (localObject1 != null) {
+            break label75;
+          }
+        }
+        label75:
+        for (localObject1 = localObject2;; localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getParent())
+        {
+          if (localObject1 != null) {
+            break label83;
+          }
+          parama = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(304142);
+          throw parama;
+          localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getParent();
+          break;
+        }
+        label83:
+        ((ViewGroup)localObject1).removeView((View)parama.LCp);
+      }
+      label97:
+      AppMethodBeat.o(304142);
+    }
+    
+    private static final void b(a parama, Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(304135);
+      s.u(parama, "this$0");
+      s.u(paramBitmap, "$bitmap");
+      MMHandlerThread.postToMainThread(new a.b..ExternalSyntheticLambda4(parama, paramBitmap));
+      AppMethodBeat.o(304135);
+    }
+    
+    private static final void c(a parama)
+    {
+      AppMethodBeat.i(304153);
+      s.u(parama, "this$0");
+      com.tencent.mm.plugin.multitask.c.c localc = parama.LCq;
+      if (localc != null)
+      {
+        localObject = parama.LCp;
+        if (localObject == null)
+        {
+          localObject = null;
+          localc.g((Bitmap)localObject, 3);
+        }
+      }
+      else
+      {
+        if (parama.LCp == null) {
+          break label131;
+        }
+        localObject = parama.LCp;
+        if (localObject != null) {
+          break label101;
+        }
+        localObject = null;
+        label57:
+        if (localObject == null) {
+          break label131;
+        }
+        localObject = parama.LCp;
+        if (localObject != null) {
+          break label109;
+        }
+      }
+      label101:
+      label109:
+      for (Object localObject = null;; localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getParent())
+      {
+        if (localObject != null) {
+          break label117;
+        }
+        parama = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(304153);
+        throw parama;
+        localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getContentBitmap();
+        break;
+        localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getParent();
+        break label57;
+      }
+      label117:
+      ((ViewGroup)localObject).removeView((View)parama.LCp);
+      label131:
+      AppMethodBeat.o(304153);
+    }
+    
+    private final boolean cF(float paramFloat)
+    {
+      AppMethodBeat.i(304115);
+      com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.LCC.LCp;
+      Object localObject1 = this.LCC.LCp;
+      Bitmap localBitmap;
+      a locala;
+      int i;
+      int j;
+      Rect localRect;
+      if (localObject1 == null)
+      {
+        localBitmap = null;
+        locala = this.LCC;
+        if ((localc == null) || (localBitmap == null)) {
+          break label317;
+        }
+        i = (int)(localBitmap.getWidth() * 1.25F);
+        j = (int)(localBitmap.getHeight() * 1.25F);
+        localRect = new Rect(0, 0, i, j);
+        localObject1 = locala.LCo;
+        if (localObject1 != null) {
+          break label307;
+        }
+      }
+      label307:
+      for (localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject1).LCj)
+      {
+        Object localObject2 = localObject1;
+        if (localObject1 == null) {
           localObject2 = new Rect();
         }
-        final int k = ((Rect)localObject2).left;
-        k = ((Rect)localObject2).width() / 2 + k;
-        final int m = ((Rect)localObject2).top;
-        m = ((Rect)localObject2).height() / 2 + m;
-        final float f1 = ((Rect)localObject2).width() / i;
-        float f2 = k - (localRect2.left + localRect2.width() / 2);
-        int n = localRect2.top;
-        float f3 = m - (localRect2.height() / 2 + n);
-        com.tencent.mm.ui.c.a.a.hF((View)localc).a((com.tencent.mm.ui.c.a.b.a)new a(i, j, f1, (Rect)localObject2, localc, k, m, this, paramFloat)).aP((Runnable)new b((Bitmap)localObject1, this, paramFloat)).cH(f1).cI(f1).cF(f2 * f1).cG(f3 * f1).c((Interpolator)new AccelerateInterpolator()).Vw(250L).start();
-        AppMethodBeat.o(248161);
+        int k = ((Rect)localObject2).left + ((Rect)localObject2).width() / 2;
+        int m = ((Rect)localObject2).top + ((Rect)localObject2).height() / 2;
+        float f1 = ((Rect)localObject2).width() / i;
+        float f2 = k - (localRect.left + localRect.width() / 2);
+        int n = localRect.top;
+        float f3 = m - (localRect.height() / 2 + n);
+        com.tencent.mm.ui.anim.a.a.kY((View)localc).a(new a.b..ExternalSyntheticLambda0(paramFloat, i, j, f1, (Rect)localObject2, localc, k, m)).aX(new a.b..ExternalSyntheticLambda3(locala, localBitmap)).dU(f1).dV(f1).dS(f2 * f1).dT(f3 * f1).d((Interpolator)new AccelerateInterpolator()).zE(250L).start();
+        AppMethodBeat.o(304115);
         return true;
+        localBitmap = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getContentBitmap();
+        break;
       }
-      AppMethodBeat.o(248161);
+      label317:
+      AppMethodBeat.o(304115);
       return false;
     }
     
-    public final void G(int paramInt)
+    public final void F(int paramInt)
     {
-      AppMethodBeat.i(248164);
-      Log.d("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onViewDragStateChanged, state:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(248164);
-    }
-    
-    public final int XY(int paramInt)
-    {
-      return 0;
+      AppMethodBeat.i(304224);
+      Log.d("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", s.X("onViewDragStateChanged, state:", Integer.valueOf(paramInt)));
+      AppMethodBeat.o(304224);
     }
     
     public final void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(248169);
-      if (this.FGY.FGw != null)
+      AppMethodBeat.i(304253);
+      if (this.LCC.LCp != null)
       {
-        localObject = this.FGY.FGw;
-        if ((localObject == null) || (((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getWidth() != 0))
+        localObject1 = this.LCC.LCp;
+        if ((localObject1 == null) || (((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getWidth() != 0)) {
+          break label75;
+        }
+        paramInt3 = 1;
+        if (paramInt3 == 0)
         {
-          localObject = this.FGY.FGv;
-          if (localObject == null) {
-            break label69;
+          localObject1 = this.LCC.LCo;
+          if (localObject1 != null) {
+            break label81;
           }
         }
       }
-      label69:
-      for (Object localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject).FGo; localObject == null; localObject = null)
+      label75:
+      label81:
+      for (Object localObject1 = null;; localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject1).LCj)
       {
-        AppMethodBeat.o(248169);
+        if (localObject1 != null) {
+          break label91;
+        }
+        AppMethodBeat.o(304253);
         return;
+        paramInt3 = 0;
+        break;
       }
-      localObject = this.FGY.FGw;
-      label117:
+      label91:
+      localObject1 = this.LCC.LCp;
+      label125:
       int i;
-      label179:
-      label207:
+      label182:
+      label205:
       float f2;
-      Rect localRect;
+      label239:
+      Object localObject2;
       int k;
       int m;
-      label315:
-      label336:
+      label309:
+      label330:
       float f3;
-      label357:
-      label380:
+      label351:
+      label370:
       float f5;
-      if (localObject != null)
+      if (localObject1 == null)
       {
-        paramInt3 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getWidth();
-        localObject = this.FGY.FGw;
-        if (localObject == null) {
-          break label553;
+        paramInt3 = 0;
+        localObject1 = this.LCC.LCp;
+        if (localObject1 != null) {
+          break label536;
         }
-        paramInt4 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getHeight();
-        if (this.FGF == null) {
-          this.FGF = com.tencent.mm.plugin.multitask.f.c.fA((View)this.FGY.FGw);
+        paramInt4 = 0;
+        if (this.LCx == null) {
+          this.LCx = com.tencent.mm.plugin.multitask.f.c.in((View)this.LCC.LCp);
         }
-        if ((this.FGC == -1) && (this.FGD == -1))
+        if ((this.LCu == -1) && (this.LCv == -1))
         {
-          localObject = this.FGY.FGw;
-          if (localObject == null) {
-            break label559;
+          localObject1 = this.LCC.LCp;
+          if (localObject1 != null) {
+            break label546;
           }
-          i = (int)((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getTranslationX();
-          this.FGC = i;
-          localObject = this.FGY.FGw;
-          if (localObject == null) {
-            break label565;
+          i = 0;
+          this.LCu = i;
+          localObject1 = this.LCC.LCp;
+          if (localObject1 != null) {
+            break label557;
           }
-          i = (int)((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getTranslationY();
-          this.FGD = i;
+          i = 0;
+          this.LCv = i;
         }
         f2 = paramFloat1 / paramInt3 / 3.0F;
-        localObject = this.FGY.FGv;
-        if (localObject != null)
-        {
-          localRect = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject).FGo;
-          localObject = localRect;
-          if (localRect != null) {}
+        localObject1 = this.LCC.LCo;
+        if (localObject1 != null) {
+          break label568;
         }
-        else
-        {
-          localObject = new Rect();
+        localObject1 = null;
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = new Rect();
         }
-        f4 = ((Rect)localObject).width() / paramInt3;
-        k = ((Rect)localObject).left + ((Rect)localObject).width() / 2;
-        m = ((Rect)localObject).top + ((Rect)localObject).height() / 2;
+        f4 = ((Rect)localObject2).width() / paramInt3;
+        k = ((Rect)localObject2).left + ((Rect)localObject2).width() / 2;
+        m = ((Rect)localObject2).top + ((Rect)localObject2).height() / 2;
         if (f2 <= 1.0F) {
-          break label571;
+          break label578;
         }
         f1 = 1.0F;
         f2 = 1.0F - f1 * (1.0F - f4);
         if (f2 <= 1.0F) {
-          break label588;
+          break label595;
         }
         f2 = 1.0F;
         f3 = (1.0F - f2) / (1.0F - f4);
         if (f3 <= 1.0F) {
-          break label591;
+          break label598;
         }
         f1 = 1.0F;
         f3 = k;
-        localRect = this.FGF;
-        if (localRect == null) {
-          break label608;
+        localObject1 = this.LCx;
+        if (localObject1 != null) {
+          break label615;
         }
-        i = localRect.left;
-        localRect = this.FGF;
-        if (localRect == null) {
-          break label614;
+        i = 0;
+        localObject1 = this.LCx;
+        if (localObject1 != null) {
+          break label625;
         }
-        j = localRect.width();
-        label398:
+        j = 0;
+        label384:
         f7 = i + j / 2;
         f5 = m;
-        localRect = this.FGF;
-        if (localRect == null) {
-          break label620;
+        localObject1 = this.LCx;
+        if (localObject1 != null) {
+          break label635;
         }
-        i = localRect.top;
-        label431:
-        localRect = this.FGF;
-        if (localRect == null) {
-          break label626;
+        i = 0;
+        label413:
+        localObject1 = this.LCx;
+        if (localObject1 != null) {
+          break label645;
         }
       }
-      label553:
-      label559:
-      label565:
-      label571:
-      label588:
-      label591:
-      label608:
-      label614:
-      label620:
-      label626:
-      for (int j = localRect.height();; j = 0)
+      label645:
+      for (int j = 0;; j = ((Rect)localObject1).height())
       {
         f6 = i + j / 2;
-        f3 = this.FGC + (f3 - f7) * f4 * f1;
-        f5 = this.FGD + (f5 - f6) * f4 * f1;
-        if ((f1 < 0.16F) || (this.lwF)) {
-          break label632;
+        f3 = this.LCu + (f3 - f7) * f4 * f1;
+        f5 = this.LCv + (f5 - f6) * f4 * f1;
+        if ((f1 < 0.16F) || (this.ooe)) {
+          break label655;
         }
-        this.lwF = true;
-        if (!bA(f1)) {
-          MMHandlerThread.postToMainThread((Runnable)new d(this));
+        this.ooe = true;
+        if (!cF(f1)) {
+          MMHandlerThread.postToMainThread(new a.b..ExternalSyntheticLambda1(this.LCC));
         }
-        AppMethodBeat.o(248169);
+        AppMethodBeat.o(304253);
         return;
-        paramInt3 = 0;
+        paramInt3 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getWidth();
         break;
-        paramInt4 = 0;
-        break label117;
-        i = 0;
-        break label179;
-        i = 0;
-        break label207;
+        label536:
+        paramInt4 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getHeight();
+        break label125;
+        label546:
+        i = (int)((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getTranslationX();
+        break label182;
+        label557:
+        i = (int)((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getTranslationY();
+        break label205;
+        label568:
+        localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject1).LCj;
+        break label239;
+        label578:
         f1 = f2;
         if (f2 >= 0.0F) {
-          break label315;
+          break label309;
         }
         f1 = 0.0F;
-        break label315;
-        break label336;
+        break label309;
+        label595:
+        break label330;
+        label598:
         f1 = f3;
         if (f3 >= 0.0F) {
-          break label357;
+          break label351;
         }
         f1 = 0.0F;
-        break label357;
-        i = 0;
-        break label380;
-        j = 0;
-        break label398;
-        i = 0;
-        break label431;
+        break label351;
+        label615:
+        i = ((Rect)localObject1).left;
+        break label370;
+        label625:
+        j = ((Rect)localObject1).width();
+        break label384;
+        label635:
+        i = ((Rect)localObject1).top;
+        break label413;
       }
-      label632:
+      label655:
       float f6 = paramInt3;
-      float f4 = (paramInt4 * f4 - ((Rect)localObject).height()) / 2.0F * f1 * (1.0F / f4);
+      float f4 = (paramInt4 * f4 - ((Rect)localObject2).height()) / 2.0F * f1 * (1.0F / f4);
       float f7 = paramInt4;
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setMaskAlpha((int)(255.0F * f1));
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setMaskAlpha((int)(255.0F * f1));
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).p(0.0F, f4, f6, f7 - f4);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).t(0.0F, f4, f6, f7 - f4);
       }
-      localObject = com.tencent.mm.plugin.multitask.animation.c.a.c.FGt;
-      float f1 = com.tencent.mm.plugin.multitask.animation.c.a.c.faB() * f1 / f2;
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).a(f1, f1, f1, f1, f1, f1, f1, f1);
+      localObject1 = com.tencent.mm.plugin.multitask.animation.c.a.c.LCk;
+      float f1 = com.tencent.mm.plugin.multitask.animation.c.a.c.gjG() * f1 / f2;
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).a(f1, f1, f1, f1, f1, f1, f1, f1);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setPivotX(k);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setPivotX(k);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setPivotY(m);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setPivotY(m);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setTranslationX(f3);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setTranslationX(f3);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setTranslationY(f5);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setTranslationY(f5);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setScaleX(f2);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setScaleX(f2);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setScaleY(f2);
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).setScaleY(f2);
       }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).postInvalidate();
+      localObject1 = this.LCC.LCp;
+      if (localObject1 != null) {
+        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).postInvalidate();
       }
       Log.d("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "touchX: %f, touchY: %f, dx: %d, dy: %d, transX: %f, transY: %f, scale: %f ", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(f3), Float.valueOf(f5), Float.valueOf(f2) });
-      AppMethodBeat.o(248169);
+      AppMethodBeat.o(304253);
     }
     
-    public final int aEe()
+    public final int aXi()
     {
       return 1;
     }
     
-    public final boolean b(View paramView, int paramInt)
+    public final int acl(int paramInt)
     {
-      AppMethodBeat.i(248159);
-      paramView = this.FGY.FGv;
-      if (paramView != null)
-      {
-        boolean bool = paramView.XX(paramInt);
-        AppMethodBeat.o(248159);
-        return bool;
-      }
-      AppMethodBeat.o(248159);
-      return false;
-    }
-    
-    public final void c(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-    {
-      AppMethodBeat.i(248162);
-      if (this.lwF)
-      {
-        AppMethodBeat.o(248162);
-        return;
-      }
-      if ((Math.abs(paramFloat1) > this.FGG) && (bA(0.0F)))
-      {
-        this.lwF = true;
-        Log.i("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onViewReleased, auto add multitask!");
-        AppMethodBeat.o(248162);
-        return;
-      }
-      MMHandlerThread.postToMainThread((Runnable)new c(this));
-      this.FGY.FGy = -1L;
-      paramView = this.FGY.faC().getContentView();
-      if (paramView != null)
-      {
-        paramView.setVisibility(0);
-        AppMethodBeat.o(248162);
-        return;
-      }
-      AppMethodBeat.o(248162);
-    }
-    
-    public final void eG(boolean paramBoolean)
-    {
-      AppMethodBeat.i(248165);
-      Log.d("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onComplete");
-      AppMethodBeat.o(248165);
-    }
-    
-    public final void faA()
-    {
-      AppMethodBeat.i(248166);
-      Log.i("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onViewCaptured");
-      a.a(this.FGY);
-      this.FGC = -1;
-      this.FGD = -1;
-      this.lwF = false;
-      AppMethodBeat.o(248166);
-    }
-    
-    public final void l(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "onUpdate", "com/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS$ViewDragCallback$autoHide$1$1"})
-    static final class a
-      implements com.tencent.mm.ui.c.a.b.a
-    {
-      a(int paramInt1, int paramInt2, float paramFloat1, Rect paramRect, com.tencent.mm.plugin.multitask.animation.c.a.c paramc, int paramInt3, int paramInt4, a.b paramb, float paramFloat2) {}
-      
-      public final void bB(float paramFloat)
-      {
-        AppMethodBeat.i(247987);
-        paramFloat = paramFloat + (1.0F - paramFloat) * paramFloat;
-        float f1 = this.cLp;
-        float f2 = (j * f1 - this.FGJ.height()) / 2.0F * paramFloat * (1.0F / f1);
-        float f3 = j;
-        localc.setPivotX(k);
-        localc.setPivotY(m);
-        localc.setMaskAlpha((int)(255.0F * paramFloat));
-        localc.p(0.0F, f2, f1, f3 - f2);
-        c.a locala = com.tencent.mm.plugin.multitask.animation.c.a.c.FGt;
-        paramFloat = paramFloat * com.tencent.mm.plugin.multitask.animation.c.a.c.faB() / f1;
-        localc.a(paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat);
-        localc.postInvalidate();
-        AppMethodBeat.o(247987);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS$ViewDragCallback$autoHide$1$2"})
-    static final class b
-      implements Runnable
-    {
-      b(Bitmap paramBitmap, a.b paramb, float paramFloat) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(248769);
-        MMHandlerThread.postToMainThread((Runnable)new Runnable()
-        {
-          public final void run()
-          {
-            Object localObject2 = null;
-            AppMethodBeat.i(248669);
-            Object localObject1 = this.FHa.FGZ.FGY.FGx;
-            if (localObject1 != null) {
-              ((com.tencent.mm.plugin.multitask.c.c)localObject1).h(this.FHa.cLr, 3);
-            }
-            if (this.FHa.FGZ.FGY.FGw != null)
-            {
-              localObject1 = this.FHa.FGZ.FGY.FGw;
-              if (localObject1 != null) {
-                localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getParent();
-              }
-              while (localObject1 != null)
-              {
-                com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.FHa.FGZ.FGY.FGw;
-                localObject1 = localObject2;
-                if (localc != null) {
-                  localObject1 = localc.getParent();
-                }
-                if (localObject1 == null)
-                {
-                  localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-                  AppMethodBeat.o(248669);
-                  throw ((Throwable)localObject1);
-                  localObject1 = null;
-                }
-                else
-                {
-                  ((ViewGroup)localObject1).removeView((View)this.FHa.FGZ.FGY.FGw);
-                }
-              }
-            }
-            AppMethodBeat.o(248669);
-          }
-        });
-        AppMethodBeat.o(248769);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class c
-      implements Runnable
-    {
-      c(a.b paramb) {}
-      
-      public final void run()
-      {
-        Object localObject2 = null;
-        AppMethodBeat.i(247989);
-        if (this.FGZ.FGY.FGw != null)
-        {
-          Object localObject1 = this.FGZ.FGY.FGw;
-          if (localObject1 != null) {
-            localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getParent();
-          }
-          while (localObject1 != null)
-          {
-            com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.FGZ.FGY.FGw;
-            localObject1 = localObject2;
-            if (localc != null) {
-              localObject1 = localc.getParent();
-            }
-            if (localObject1 == null)
-            {
-              localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-              AppMethodBeat.o(247989);
-              throw ((Throwable)localObject1);
-              localObject1 = null;
-            }
-            else
-            {
-              ((ViewGroup)localObject1).removeView((View)this.FGZ.FGY.FGw);
-            }
-          }
-        }
-        AppMethodBeat.o(247989);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class d
-      implements Runnable
-    {
-      d(a.b paramb) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(249183);
-        com.tencent.mm.plugin.multitask.c.c localc = this.FGZ.FGY.FGx;
-        if (localc != null)
-        {
-          localObject = this.FGZ.FGY.FGw;
-          if (localObject != null)
-          {
-            localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getContentBitmap();
-            localc.h((Bitmap)localObject, 3);
-          }
-        }
-        else
-        {
-          if (this.FGZ.FGY.FGw == null) {
-            break label161;
-          }
-          localObject = this.FGZ.FGY.FGw;
-          if (localObject == null) {
-            break label131;
-          }
-          localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getParent();
-          label81:
-          if (localObject == null) {
-            break label161;
-          }
-          localObject = this.FGZ.FGY.FGw;
-          if (localObject == null) {
-            break label136;
-          }
-        }
-        label131:
-        label136:
-        for (Object localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).getParent();; localObject = null)
-        {
-          if (localObject != null) {
-            break label141;
-          }
-          localObject = new t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(249183);
-          throw ((Throwable)localObject);
-          localObject = null;
-          break;
-          localObject = null;
-          break label81;
-        }
-        label141:
-        ((ViewGroup)localObject).removeView((View)this.FGZ.FGY.FGw);
-        label161:
-        AppMethodBeat.o(249183);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(a parama, int paramInt, boolean paramBoolean) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(247696);
-      Object localObject = this.FGY.FGv;
-      if (localObject != null) {}
-      for (localObject = ((com.tencent.mm.plugin.multitask.animation.c.a.b)localObject).FGo; localObject != null; localObject = null)
-      {
-        a.a(this.FGY, paramInt, paramBoolean, this.FGY.FGx);
-        AppMethodBeat.o(247696);
-        return;
-      }
-      if (this.FGY.FGx != null)
-      {
-        localObject = this.FGY.FGx;
-        if (localObject != null)
-        {
-          ((com.tencent.mm.plugin.multitask.c.c)localObject).Yb(paramInt);
-          AppMethodBeat.o(247696);
-          return;
-        }
-      }
-      AppMethodBeat.o(247696);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "value", "", "onUpdate"})
-  static final class d
-    implements com.tencent.mm.ui.c.a.b.a
-  {
-    d(a parama, int paramInt1, int paramInt2, float paramFloat, Rect paramRect, int paramInt3, int paramInt4) {}
-    
-    public final void bB(float paramFloat)
-    {
-      AppMethodBeat.i(248578);
-      float f1 = this.cLp;
-      float f2 = (this.cLq * this.BdK - this.FGJ.height()) / 2.0F * paramFloat * (1.0F / this.BdK);
-      float f3 = this.cLq;
-      Object localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setMaskAlpha((int)(255.0F * paramFloat));
-      }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).p(0.0F, f2, f1, f3 - f2);
-      }
-      localObject = com.tencent.mm.plugin.multitask.animation.c.a.c.FGt;
-      paramFloat = com.tencent.mm.plugin.multitask.animation.c.a.c.faB() * paramFloat / this.BdK;
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).a(paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat);
-      }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setPivotX(this.FGM);
-      }
-      localObject = this.FGY.FGw;
-      if (localObject != null) {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).setPivotY(this.FGN);
-      }
-      localObject = this.FGY.FGw;
-      if (localObject != null)
-      {
-        ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject).postInvalidate();
-        AppMethodBeat.o(248578);
-        return;
-      }
-      AppMethodBeat.o(248578);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(a parama, com.tencent.mm.plugin.multitask.c.c paramc, Bitmap paramBitmap, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(248799);
-      a.b(this.FGY);
-      com.tencent.mm.plugin.multitask.c.c localc = this.FFN;
-      if (localc != null)
-      {
-        localc.a(this.FGU, false, this.FGS);
-        AppMethodBeat.o(248799);
-        return;
-      }
-      AppMethodBeat.o(248799);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
-  {
-    f(a parama, com.tencent.mm.plugin.multitask.c.c paramc, Bitmap paramBitmap, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(247738);
-      this.FGY.FGA = false;
-      MMHandlerThread.postToMainThread((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          Object localObject2 = null;
-          AppMethodBeat.i(247594);
-          Object localObject1 = this.FHc.FFN;
-          if (localObject1 != null) {
-            ((com.tencent.mm.plugin.multitask.c.c)localObject1).h(this.FHc.FFS, this.FHc.FGS);
-          }
-          if (this.FHc.FGY.FGw != null)
-          {
-            localObject1 = this.FHc.FGY.FGw;
-            if (localObject1 != null) {
-              localObject1 = ((com.tencent.mm.plugin.multitask.animation.c.a.c)localObject1).getParent();
-            }
-            while (localObject1 != null)
-            {
-              com.tencent.mm.plugin.multitask.animation.c.a.c localc = this.FHc.FGY.FGw;
-              localObject1 = localObject2;
-              if (localc != null) {
-                localObject1 = localc.getParent();
-              }
-              if (localObject1 == null)
-              {
-                localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-                AppMethodBeat.o(247594);
-                throw ((Throwable)localObject1);
-                localObject1 = null;
-              }
-              else
-              {
-                ((ViewGroup)localObject1).removeView((View)this.FHc.FGY.FGw);
-              }
-            }
-          }
-          AppMethodBeat.o(247594);
-        }
-      });
-      AppMethodBeat.o(247738);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS$onCreate$1", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter$IMultiTaskSwipeBackListener;", "canInterceptTouchEvent", "", "enableSwipeBack", "getSwipeBackTouchState", "", "onDispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onEdgeDragStarted", "edgeFlags", "pointerId", "onPositionChange", "scrollPercent", "", "onSwipeReleased", "willSwipeBack", "shouldInterceptTouchEvent", "ev", "plugin-multitask_release"})
-  public static final class g
-    implements com.tencent.mm.plugin.multitask.a.a.a
-  {
-    g(com.tencent.mm.plugin.multitask.b.b paramb) {}
-    
-    public final void XV(int paramInt) {}
-    
-    public final void by(float paramFloat) {}
-    
-    public final boolean fat()
-    {
-      AppMethodBeat.i(249176);
-      boolean bool = paramb.faM();
-      AppMethodBeat.o(249176);
-      return bool;
-    }
-    
-    public final int fau()
-    {
-      com.tencent.mm.plugin.multitask.animation.c.a.b localb = this.FGY.FGv;
-      if (localb != null) {
-        return localb.FGj;
-      }
       return 0;
     }
     
-    public final boolean fav()
+    public final boolean b(View paramView, int paramInt)
     {
-      AppMethodBeat.i(249182);
-      a locala;
-      if (this.FGY.FGy == -1L)
+      AppMethodBeat.i(304192);
+      paramView = this.LCC.LCo;
+      if (paramView == null)
       {
-        locala = this.FGY;
+        AppMethodBeat.o(304192);
+        return false;
+      }
+      boolean bool = paramView.ack(paramInt);
+      AppMethodBeat.o(304192);
+      return bool;
+    }
+    
+    public final void d(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+    {
+      AppMethodBeat.i(304210);
+      if (this.ooe)
+      {
+        AppMethodBeat.o(304210);
+        return;
+      }
+      if ((Math.abs(paramFloat1) > this.LCy) && (cF(0.0F)))
+      {
+        this.ooe = true;
+        Log.i("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onViewReleased, auto add multitask!");
+        AppMethodBeat.o(304210);
+        return;
+      }
+      MMHandlerThread.postToMainThread(new a.b..ExternalSyntheticLambda2(this.LCC));
+      this.LCC.LCr = -1L;
+      paramView = this.LCC.gjH().getContentView();
+      if (paramView != null) {
+        paramView.setVisibility(0);
+      }
+      AppMethodBeat.o(304210);
+    }
+    
+    public final void gjF()
+    {
+      AppMethodBeat.i(304234);
+      Log.i("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onViewCaptured");
+      a.a(this.LCC);
+      this.LCu = -1;
+      this.LCv = -1;
+      this.ooe = false;
+      AppMethodBeat.o(304234);
+    }
+    
+    public final void m(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+    
+    public final void onComplete(boolean paramBoolean)
+    {
+      AppMethodBeat.i(304230);
+      Log.d("MicroMsg.MultiTaskSwipeBackAndEnterAnimWrapperSS", "onComplete");
+      AppMethodBeat.o(304230);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/animation/swipeback/singlescene/MultiTaskSwipeBackAnimWrapperSS$onCreate$1", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter$IMultiTaskSwipeBackListener;", "canInterceptTouchEvent", "", "enableSwipeBack", "getSwipeBackTouchState", "", "onDispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onEdgeDragStarted", "edgeFlags", "pointerId", "onPositionChange", "scrollPercent", "", "onSwipeReleased", "willSwipeBack", "shouldInterceptTouchEvent", "ev", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements com.tencent.mm.plugin.multitask.a.a.a
+  {
+    c(a parama, com.tencent.mm.plugin.multitask.b.b paramb) {}
+    
+    public final void aci(int paramInt) {}
+    
+    public final void cC(float paramFloat) {}
+    
+    public final boolean gjA()
+    {
+      AppMethodBeat.i(304145);
+      a locala;
+      if (this.LCC.LCr == -1L)
+      {
+        locala = this.LCC;
         localObject = paramb;
-        if (localObject == null) {
-          break label74;
+        if (localObject != null) {
+          break label66;
         }
       }
-      label74:
-      for (Object localObject = Boolean.valueOf(((com.tencent.mm.plugin.multitask.b.b)localObject).faQ());; localObject = null)
+      label66:
+      for (Object localObject = null;; localObject = Boolean.valueOf(((com.tencent.mm.plugin.multitask.b.b)localObject).gjV()))
       {
-        locala.FGz = ((Boolean)localObject).booleanValue();
-        this.FGY.FGy = 0L;
-        boolean bool = this.FGY.FGz;
-        AppMethodBeat.o(249182);
+        locala.LCs = ((Boolean)localObject).booleanValue();
+        this.LCC.LCr = 0L;
+        boolean bool = this.LCC.LCs;
+        AppMethodBeat.o(304145);
         return bool;
       }
+    }
+    
+    public final boolean gjy()
+    {
+      AppMethodBeat.i(304122);
+      boolean bool = paramb.gjR();
+      AppMethodBeat.o(304122);
+      return bool;
+    }
+    
+    public final int gjz()
+    {
+      com.tencent.mm.plugin.multitask.animation.c.a.b localb = this.LCC.LCo;
+      if (localb == null) {
+        return 0;
+      }
+      return localb.LCe;
     }
     
     public final boolean i(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(249180);
-      p.k(paramMotionEvent, "ev");
-      com.tencent.mm.plugin.multitask.animation.c.a.b localb = this.FGY.FGv;
-      if (localb != null)
+      AppMethodBeat.i(304128);
+      s.u(paramMotionEvent, "ev");
+      com.tencent.mm.plugin.multitask.animation.c.a.b localb = this.LCC.LCo;
+      if (localb == null)
       {
-        boolean bool = localb.i(paramMotionEvent);
-        AppMethodBeat.o(249180);
-        return bool;
+        AppMethodBeat.o(304128);
+        return false;
       }
-      AppMethodBeat.o(249180);
-      return false;
+      boolean bool = localb.i(paramMotionEvent);
+      AppMethodBeat.o(304128);
+      return bool;
     }
     
     public final void n(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(249174);
-      p.k(paramMotionEvent, "event");
-      com.tencent.mm.plugin.multitask.animation.c.a.b localb = this.FGY.FGv;
-      if (localb != null)
-      {
+      AppMethodBeat.i(304113);
+      s.u(paramMotionEvent, "event");
+      com.tencent.mm.plugin.multitask.animation.c.a.b localb = this.LCC.LCo;
+      if (localb != null) {
         localb.j(paramMotionEvent);
-        AppMethodBeat.o(249174);
-        return;
       }
-      AppMethodBeat.o(249174);
+      AppMethodBeat.o(304113);
     }
     
-    public final int vm(boolean paramBoolean)
+    public final int zE(boolean paramBoolean)
     {
       return 0;
     }
@@ -1039,7 +1101,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.animation.c.c.a
  * JD-Core Version:    0.7.0.1
  */

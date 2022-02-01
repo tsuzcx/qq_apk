@@ -1,15 +1,13 @@
 package com.tencent.mm.plugin.u;
 
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import android.os.Message;
 import android.os.SystemClock;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.MediaCodecProxyUtils.b;
 import com.tencent.mm.compatible.deviceinfo.aa;
+import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -18,12 +16,12 @@ import java.nio.ByteBuffer;
 public final class l
   extends i
 {
-  boolean EXN = false;
-  private boolean EXO = false;
-  boolean EXP = false;
-  long EXQ = -1L;
-  private long frB = 0L;
-  float pvh = 1.0F;
+  private boolean KTA = false;
+  boolean KTB = false;
+  long KTC = -1L;
+  boolean KTz = false;
+  private long hvL = 0L;
+  public float sAn = 1.0F;
   Surface surface;
   private int videoHeight;
   private int videoWidth;
@@ -31,6 +29,38 @@ public final class l
   public l(h paramh, MMHandler paramMMHandler)
   {
     super(paramh, paramMMHandler);
+  }
+  
+  private void gbP()
+  {
+    AppMethodBeat.i(133956);
+    try
+    {
+      if (this.nyz != null) {
+        this.nyz.setOutputSurface(this.surface);
+      }
+      AppMethodBeat.o(133956);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.VideoTrackDataSource", localException, "%s change surface23 error [%s]", new Object[] { info(), localException.toString() });
+      gbQ();
+      AppMethodBeat.o(133956);
+    }
+  }
+  
+  private void gbQ()
+  {
+    AppMethodBeat.i(133957);
+    Log.i("MicroMsg.VideoTrackDataSource", "%s change surface below 23", new Object[] { info() });
+    if (this.nyz != null)
+    {
+      releaseDecoder();
+      aR(this.KSM.KSD, -1L);
+      gbJ();
+    }
+    AppMethodBeat.o(133957);
   }
   
   final boolean a(long paramLong1, long paramLong2, aa paramaa, ByteBuffer paramByteBuffer, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
@@ -43,7 +73,7 @@ public final class l
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.VideoTrackDataSource", "%s start to process output buffer state %d time[%d, %d] index %d, pts:%s, keyframe:%s, flags:%s", new Object[] { paramByteBuffer, Integer.valueOf(i), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt), Long.valueOf(l1), Boolean.valueOf(bool), Integer.valueOf(paramBufferInfo.flags) });
-      if (!e.WN(this.state)) {
+      if (!e.aaP(this.state)) {
         break;
       }
       Log.i("MicroMsg.VideoTrackDataSource", "%s video track flush surface", new Object[] { info() });
@@ -52,7 +82,7 @@ public final class l
       AppMethodBeat.o(133954);
       return true;
     }
-    if (e.WM(this.state))
+    if (e.aaO(this.state))
     {
       paramLong2 = paramBufferInfo.presentationTimeUs / 1000L;
       l1 = paramLong1 - paramLong2;
@@ -65,12 +95,12 @@ public final class l
         }
         Log.i("MicroMsg.VideoTrackDataSource", "%s precision seek done to surface", new Object[] { info() });
         paramaa.releaseOutputBuffer(paramInt, true);
-        if (this.EXO)
+        if (this.KTA)
         {
           setState(7);
-          this.EXO = false;
+          this.KTA = false;
         }
-        this.EXO = true;
+        this.KTA = true;
       }
       for (;;)
       {
@@ -82,7 +112,7 @@ public final class l
         paramaa.releaseOutputBuffer(paramInt, false);
       }
     }
-    if (!e.WO(this.state))
+    if (!e.aaQ(this.state))
     {
       Log.i("MicroMsg.VideoTrackDataSource", "%s it no need process buffer now state %d", new Object[] { info(), Integer.valueOf(this.state) });
       AppMethodBeat.o(133954);
@@ -91,35 +121,35 @@ public final class l
     l1 = paramBufferInfo.presentationTimeUs / 1000L;
     long l2 = SystemClock.elapsedRealtime();
     long l3 = l2 - paramLong2;
-    long l4 = ((float)l1 / this.pvh - (float)paramLong1 - (float)l3);
+    long l4 = ((float)l1 / this.sAn - (float)paramLong1 - (float)l3);
     Log.d("MicroMsg.VideoTrackDataSource", "%s earlyMs[%d] time[%d, %d, %d] sample[%d %d]", new Object[] { info(), Long.valueOf(l4), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(paramLong2), Long.valueOf(paramLong1), Long.valueOf(l1) });
     if (l4 < -30L)
     {
       Log.d("MicroMsg.VideoTrackDataSource", "%s finish to process but it too late to show video frame. throw now", new Object[] { info() });
       paramaa.releaseOutputBuffer(paramInt, false);
-      this.EXa.EWU = 0L;
+      this.KSM.KSG = 0L;
       AppMethodBeat.o(133954);
       return true;
     }
     if (l4 < 30L)
     {
-      this.EXa.EWR = paramBufferInfo.presentationTimeUs;
+      this.KSM.KSD = paramBufferInfo.presentationTimeUs;
       if (l4 <= 11L) {}
     }
     try
     {
       Thread.sleep(l4 - 10L);
       label562:
-      if (!e.WO(this.state))
+      if (!e.aaQ(this.state))
       {
         Log.i("MicroMsg.VideoTrackDataSource", "%s it no need process buffer now state %d", new Object[] { info(), Integer.valueOf(this.state) });
         AppMethodBeat.o(133954);
         return false;
       }
-      if ((Math.abs(l1 - this.frB) > 1000L) || (this.frB <= 0L))
+      if ((Math.abs(l1 - this.hvL) > 1000L) || (this.hvL <= 0L))
       {
         Log.i("MicroMsg.VideoTrackDataSource", "%s finish to process index[%d] time[%d] to surface", new Object[] { info(), Integer.valueOf(paramInt), Long.valueOf(l1) });
-        this.frB = l1;
+        this.hvL = l1;
       }
       paramaa.releaseOutputBuffer(paramInt, true);
       AppMethodBeat.o(133954);
@@ -145,25 +175,25 @@ public final class l
     if (this.surface == null) {
       Log.w("MicroMsg.VideoTrackDataSource", "%s decoder configure surface but surface is null.", new Object[] { info() });
     }
-    for (this.EXN = false;; this.EXN = true)
+    for (this.KTz = false;; this.KTz = true)
     {
       Log.i("MicroMsg.VideoTrackDataSource", "%s handleDecoderBeforeStart", new Object[] { info() });
       Log.i("MicroMsg.VideoTrackDataSource", "%s before prepare init decoder, surface valid: %s", new Object[] { info(), Boolean.valueOf(this.surface.isValid()) });
-      paramaa.a(eSS(), this.surface, 0);
-      this.frB = 0L;
+      paramaa.a(gbK(), this.surface, 0);
+      this.hvL = 0L;
       AppMethodBeat.o(133955);
       return false;
     }
   }
   
-  protected final boolean aA(int paramInt, long paramLong)
+  protected final boolean aH(int paramInt, long paramLong)
   {
     AppMethodBeat.i(133959);
-    Log.d("MicroMsg.VideoTrackDataSource", "%s reset extractor flag[%d] needReset[%b]", new Object[] { info(), Integer.valueOf(paramInt), Boolean.valueOf(this.EXa.uXX) });
-    if ((this.EXa.uXX) && (paramInt == 1) && (this.EXQ != paramLong))
+    Log.d("MicroMsg.VideoTrackDataSource", "%s reset extractor flag[%d] needReset[%b]", new Object[] { info(), Integer.valueOf(paramInt), Boolean.valueOf(this.KSM.ykl) });
+    if ((this.KSM.ykl) && (paramInt == 1) && (this.KTC != paramLong))
     {
-      boolean bool = ai(paramLong, -1L);
-      this.EXQ = paramLong;
+      boolean bool = aR(paramLong, -1L);
+      this.KTC = paramLong;
       AppMethodBeat.o(133959);
       return bool;
     }
@@ -191,7 +221,7 @@ public final class l
       if (i != 0) {
         paramInt = 0;
       }
-      this.EXb.obtainMessage(4, this.videoWidth, this.videoHeight, Integer.valueOf(paramInt)).sendToTarget();
+      this.KSN.obtainMessage(4, this.videoWidth, this.videoHeight, Integer.valueOf(paramInt)).sendToTarget();
       Log.i("MicroMsg.VideoTrackDataSource", "%s video size[%d, %d] degrees[%d]", new Object[] { info(), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(paramInt) });
       AppMethodBeat.o(133958);
       return;
@@ -200,54 +230,24 @@ public final class l
     }
   }
   
-  @TargetApi(23)
-  final void eSW()
+  protected final g gbL()
   {
-    AppMethodBeat.i(133956);
-    try
-    {
-      if (this.kSN != null)
-      {
-        aa localaa = this.kSN;
-        Surface localSurface = this.surface;
-        try
-        {
-          MediaCodecProxyUtils.b.qS(81);
-          localaa.jtS.setOutputSurface(localSurface);
-          MediaCodecProxyUtils.b.qS(82);
-          AppMethodBeat.o(133956);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          Log.printErrStackTrace("MicroMsg.MediaCodecProxy", localException2, "MediaCodecProxy setOutputSurface", new Object[0]);
-          aa.a(34, localException2, localaa.jtT);
-          AppMethodBeat.o(133956);
-          throw localException2;
-        }
-      }
-      AppMethodBeat.o(133956);
-    }
-    catch (Exception localException1)
-    {
-      Log.printErrStackTrace("MicroMsg.VideoTrackDataSource", localException1, "%s change surface23 error [%s]", new Object[] { info(), localException1.toString() });
-      eSX();
-      AppMethodBeat.o(133956);
-      return;
-    }
+    return null;
   }
   
-  final void eSX()
+  public final void r(Surface paramSurface)
   {
-    AppMethodBeat.i(133957);
-    Log.i("MicroMsg.VideoTrackDataSource", "%s change surface below 23", new Object[] { info() });
-    if (this.kSN != null)
+    AppMethodBeat.i(260385);
+    Log.i("MicroMsg.VideoTrackDataSource", "%s set out put surface", new Object[] { info() });
+    this.surface = paramSurface;
+    if (d.rb(23))
     {
-      releaseDecoder();
-      ai(this.EXa.EWR, -1L);
-      eSQ();
+      gbP();
+      AppMethodBeat.o(260385);
+      return;
     }
-    AppMethodBeat.o(133957);
+    gbQ();
+    AppMethodBeat.o(260385);
   }
   
   final String type()
@@ -257,7 +257,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.u.l
  * JD-Core Version:    0.7.0.1
  */

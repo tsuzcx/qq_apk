@@ -8,7 +8,7 @@ public abstract interface WXHardCoderJNI$GetParametersCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.hardcoder.WXHardCoderJNI.GetParametersCallback
  * JD-Core Version:    0.7.0.1
  */

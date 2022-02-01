@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.b;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.view.ActionMode;
 import android.view.ActionMode.Callback;
@@ -16,8 +15,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class a
 {
-  private MenuInflater fX;
-  b gb = null;
+  private MenuInflater gS;
+  b gW = null;
   public ActionBar mActionBar;
   final Activity mActivity;
   
@@ -28,18 +27,17 @@ public abstract class a
   
   private b startSupportActionMode(b.a parama)
   {
-    if (this.gb != null) {
-      this.gb.finish();
+    if (this.gW != null) {
+      this.gW.finish();
     }
     parama = new a(parama);
     ActionBar localActionBar = getSupportActionBar();
     if (localActionBar != null) {
-      this.gb = localActionBar.a(parama);
+      this.gW = localActionBar.a(parama);
     }
-    return this.gb;
+    return this.gW;
   }
   
-  @TargetApi(11)
   public final ActionMode b(ActionMode.Callback paramCallback)
   {
     paramCallback = new f.a(this.mActivity, paramCallback);
@@ -53,7 +51,7 @@ public abstract class a
   public final MenuInflater getMenuInflater()
   {
     ActionBar localActionBar;
-    if (this.fX == null)
+    if (this.gS == null)
     {
       localActionBar = getSupportActionBar();
       if (localActionBar == null) {
@@ -61,67 +59,67 @@ public abstract class a
       }
     }
     label36:
-    for (this.fX = new g(localActionBar.aD());; this.fX = new g(this.mActivity)) {
-      return this.fX;
+    for (this.gS = new g(localActionBar.bw());; this.gS = new g(this.mActivity)) {
+      return this.gS;
     }
   }
   
   final ActionBar getSupportActionBar()
   {
     if (this.mActionBar == null) {
-      this.mActionBar = hJi();
+      this.mActionBar = jlx();
     }
     return this.mActionBar;
   }
   
-  abstract ActionBar hJi();
+  abstract ActionBar jlx();
   
   final class a
     implements b.a
   {
-    private b.a gI;
+    private b.a hD;
     
     public a(b.a parama)
     {
-      this.gI = parama;
+      this.hD = parama;
     }
     
     public final void a(b paramb)
     {
-      AppMethodBeat.i(196006);
-      this.gI.a(paramb);
-      a.this.gb = null;
-      AppMethodBeat.o(196006);
+      AppMethodBeat.i(250063);
+      this.hD.a(paramb);
+      a.this.gW = null;
+      AppMethodBeat.o(250063);
     }
     
     public final boolean a(b paramb, Menu paramMenu)
     {
-      AppMethodBeat.i(195999);
-      boolean bool = this.gI.a(paramb, paramMenu);
-      AppMethodBeat.o(195999);
+      AppMethodBeat.i(250043);
+      boolean bool = this.hD.a(paramb, paramMenu);
+      AppMethodBeat.o(250043);
       return bool;
     }
     
     public final boolean a(b paramb, MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(196003);
-      boolean bool = this.gI.a(paramb, paramMenuItem);
-      AppMethodBeat.o(196003);
+      AppMethodBeat.i(250055);
+      boolean bool = this.hD.a(paramb, paramMenuItem);
+      AppMethodBeat.o(250055);
       return bool;
     }
     
     public final boolean b(b paramb, Menu paramMenu)
     {
-      AppMethodBeat.i(196000);
-      boolean bool = this.gI.b(paramb, paramMenu);
-      AppMethodBeat.o(196000);
+      AppMethodBeat.i(250049);
+      boolean bool = this.hD.b(paramb, paramMenu);
+      AppMethodBeat.o(250049);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

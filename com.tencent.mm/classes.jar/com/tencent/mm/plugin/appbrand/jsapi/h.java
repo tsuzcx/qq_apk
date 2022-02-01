@@ -1,52 +1,57 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.page.by;
+
 public abstract interface h
+  extends f, i
 {
-  public abstract void a(b paramb);
+  public abstract boolean cdZ();
   
-  public abstract void a(c paramc);
+  public abstract View getContentView();
   
-  public abstract void a(d paramd);
+  public abstract a getCustomViewContainer();
   
-  public abstract void b(b paramb);
-  
-  public abstract void b(c paramc);
-  
-  public abstract void b(d paramd);
+  public abstract a ic(boolean paramBoolean);
   
   public static abstract interface a
   {
-    public abstract boolean onBackPressed();
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void onBackground();
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void onDestroy();
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void onForeground();
-  }
-  
-  public static abstract interface e
-  {
-    public abstract void QX();
-  }
-  
-  public static abstract interface f
-  {
-    public abstract void NR();
+    public abstract ad.b Aj(int paramInt);
+    
+    public abstract boolean Ak(int paramInt);
+    
+    public abstract int Al(int paramInt);
+    
+    public abstract boolean Am(int paramInt);
+    
+    public abstract boolean An(int paramInt);
+    
+    public abstract boolean Ao(int paramInt);
+    
+    public abstract boolean Ap(int paramInt);
+    
+    public abstract int Aq(int paramInt);
+    
+    public abstract boolean a(int paramInt1, by paramby, int paramInt2);
+    
+    public abstract boolean a(int paramInt1, float[] paramArrayOfFloat, int paramInt2, Boolean paramBoolean1, Boolean paramBoolean2);
+    
+    public abstract boolean a(View paramView, int paramInt1, int paramInt2, float[] paramArrayOfFloat, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+    
+    public abstract ad.b ac(int paramInt, boolean paramBoolean);
+    
+    public abstract ViewGroup cpL();
+    
+    public abstract View dU(int paramInt);
+    
+    public abstract View getRootView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.h
  * JD-Core Version:    0.7.0.1
  */

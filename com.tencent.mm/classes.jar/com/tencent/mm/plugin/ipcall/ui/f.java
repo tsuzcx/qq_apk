@@ -17,32 +17,32 @@ import java.util.List;
 public final class f
   extends BaseAdapter
 {
-  private IPCallCountryCodeSelectUI DUS;
-  int[] DUT;
-  boolean DUU;
-  boolean DUV;
-  private List<a> iZZ;
+  private IPCallCountryCodeSelectUI JMb;
+  int[] JMc;
+  boolean JMd;
+  boolean JMe;
+  private List<a> dTG;
   private List<a> list;
-  private String mUI;
+  private String pRp;
   
   public f(IPCallCountryCodeSelectUI paramIPCallCountryCodeSelectUI, List<a> paramList)
   {
     AppMethodBeat.i(25715);
-    this.iZZ = new ArrayList();
-    this.DUU = false;
-    this.DUV = false;
-    this.DUS = paramIPCallCountryCodeSelectUI;
+    this.dTG = new ArrayList();
+    this.JMd = false;
+    this.JMe = false;
+    this.JMb = paramIPCallCountryCodeSelectUI;
     this.list = paramList;
-    eKi();
-    eKj();
+    fSi();
+    fSj();
     AppMethodBeat.o(25715);
   }
   
-  private static String Vq(int paramInt)
+  private static String Zl(int paramInt)
   {
     AppMethodBeat.i(25722);
     char c = (char)paramInt;
-    String[] arrayOfString = IPCallCountryCodeScrollbar.DUY;
+    String[] arrayOfString = IPCallCountryCodeScrollbar.JMh;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -58,63 +58,63 @@ public final class f
     return "#";
   }
   
-  private void eKi()
+  private void fSi()
   {
     AppMethodBeat.i(25716);
-    int i = 0;
     int j = this.list.size();
+    int i = 0;
     while (i < j)
     {
-      this.iZZ.add(this.list.get(i));
+      this.dTG.add((a)this.list.get(i));
       i += 1;
     }
-    this.DUS.DUL.setVisibility(8);
+    this.JMb.JLU.setVisibility(8);
     AppMethodBeat.o(25716);
   }
   
-  private void eKj()
+  private void fSj()
   {
     AppMethodBeat.i(25717);
-    this.DUT = new int[this.list.size()];
+    this.JMc = new int[this.list.size()];
     int j = this.list.size();
     int i = 0;
     while (i < j)
     {
-      this.DUT[i] = ((a)this.list.get(i)).eKa();
+      this.JMc[i] = ((a)this.list.get(i)).fSa();
       i += 1;
     }
     AppMethodBeat.o(25717);
   }
   
-  public final void aas(String paramString)
+  public final void SM(String paramString)
   {
     AppMethodBeat.i(25720);
     if (paramString != null)
     {
-      this.mUI = paramString.trim();
+      this.pRp = paramString.trim();
       this.list.clear();
-      int j = this.iZZ.size();
+      int j = this.dTG.size();
       int i = 0;
       while (i < j)
       {
-        if ((((a)this.iZZ.get(i)).lSz.toUpperCase().contains(this.mUI.toUpperCase())) || (((a)this.iZZ.get(i)).lSA.toUpperCase().contains(this.mUI.toUpperCase())) || (((a)this.iZZ.get(i)).countryCode.contains(this.mUI))) {
-          this.list.add(this.iZZ.get(i));
+        if ((((a)this.dTG.get(i)).oLl.toUpperCase().contains(this.pRp.toUpperCase())) || (((a)this.dTG.get(i)).oLm.toUpperCase().contains(this.pRp.toUpperCase())) || (((a)this.dTG.get(i)).countryCode.contains(this.pRp))) {
+          this.list.add((a)this.dTG.get(i));
         }
         i += 1;
       }
-      eKj();
+      fSj();
       if (this.list.size() != 0) {
-        break label199;
+        break label202;
       }
-      this.DUS.DUL.setVisibility(0);
+      this.JMb.JLU.setVisibility(0);
     }
     for (;;)
     {
       super.notifyDataSetChanged();
       AppMethodBeat.o(25720);
       return;
-      label199:
-      this.DUS.DUL.setVisibility(8);
+      label202:
+      this.JMb.JLU.setVisibility(8);
     }
   }
   
@@ -146,38 +146,38 @@ public final class f
     int i;
     if (paramView == null)
     {
-      paramView = View.inflate(this.DUS, R.i.ehN, null);
+      paramView = View.inflate(this.JMb, R.i.gkI, null);
       paramViewGroup = new a();
-      paramViewGroup.DUW = ((TextView)paramView.findViewById(R.h.dCx));
-      paramViewGroup.jbe = ((TextView)paramView.findViewById(R.h.dCB));
-      paramViewGroup.DUX = ((TextView)paramView.findViewById(R.h.dCE));
+      paramViewGroup.JMf = ((TextView)paramView.findViewById(R.h.contactitem_catalog));
+      paramViewGroup.lDe = ((TextView)paramView.findViewById(R.h.fDq));
+      paramViewGroup.JMg = ((TextView)paramView.findViewById(R.h.fDt));
       paramView.setTag(paramViewGroup);
       if (paramInt <= 0) {
         break label240;
       }
-      i = this.DUT[(paramInt - 1)];
+      i = this.JMc[(paramInt - 1)];
       label101:
       if (paramInt != 0) {
         break label265;
       }
-      paramViewGroup.DUW.setVisibility(0);
-      if (!this.DUV) {
+      paramViewGroup.JMf.setVisibility(0);
+      if (!this.JMe) {
         break label246;
       }
-      paramViewGroup.DUW.setText(R.l.eOX);
+      paramViewGroup.JMf.setText(R.l.gRy);
       label130:
-      if (Util.isNullOrNil(this.mUI)) {
+      if (Util.isNullOrNil(this.pRp)) {
         break label319;
       }
-      Spannable localSpannable = com.tencent.mm.plugin.fts.a.f.b(((a)localObject).lSz, this.mUI);
-      paramViewGroup.jbe.setText(localSpannable);
-      localObject = com.tencent.mm.plugin.fts.a.f.b(" (+" + ((a)localObject).countryCode + ")", this.mUI);
-      paramViewGroup.DUX.setText((CharSequence)localObject);
+      Spannable localSpannable = com.tencent.mm.plugin.fts.a.f.b(((a)localObject).oLl, this.pRp);
+      paramViewGroup.lDe.setText(localSpannable);
+      localObject = com.tencent.mm.plugin.fts.a.f.b(" (+" + ((a)localObject).countryCode + ")", this.pRp);
+      paramViewGroup.JMg.setText((CharSequence)localObject);
       label206:
-      if (!this.DUU) {
+      if (!this.JMd) {
         break label366;
       }
-      paramViewGroup.DUX.setVisibility(0);
+      paramViewGroup.JMg.setVisibility(0);
     }
     for (;;)
     {
@@ -189,36 +189,36 @@ public final class f
       i = -1;
       break label101;
       label246:
-      paramViewGroup.DUW.setText(Vq(this.DUT[paramInt]));
+      paramViewGroup.JMf.setText(Zl(this.JMc[paramInt]));
       break label130;
       label265:
-      if ((paramInt > 0) && (this.DUT[paramInt] != i))
+      if ((paramInt > 0) && (this.JMc[paramInt] != i))
       {
-        paramViewGroup.DUW.setVisibility(0);
-        paramViewGroup.DUW.setText(Vq(this.DUT[paramInt]));
+        paramViewGroup.JMf.setVisibility(0);
+        paramViewGroup.JMf.setText(Zl(this.JMc[paramInt]));
         break label130;
       }
-      paramViewGroup.DUW.setVisibility(8);
+      paramViewGroup.JMf.setVisibility(8);
       break label130;
       label319:
-      paramViewGroup.jbe.setText(((a)localObject).lSz);
-      paramViewGroup.DUX.setText(" (+" + ((a)localObject).countryCode + ")");
+      paramViewGroup.lDe.setText(((a)localObject).oLl);
+      paramViewGroup.JMg.setText(" (+" + ((a)localObject).countryCode + ")");
       break label206;
       label366:
-      paramViewGroup.DUX.setVisibility(4);
+      paramViewGroup.JMg.setVisibility(4);
     }
   }
   
   static final class a
   {
-    TextView DUW;
-    TextView DUX;
-    TextView jbe;
+    TextView JMf;
+    TextView JMg;
+    TextView lDe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.f
  * JD-Core Version:    0.7.0.1
  */

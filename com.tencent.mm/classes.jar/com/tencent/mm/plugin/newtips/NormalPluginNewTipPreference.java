@@ -9,20 +9,20 @@ import com.tencent.mm.plugin.newtips.a.a;
 import com.tencent.mm.plugin.newtips.a.g;
 import com.tencent.mm.plugin.newtips.a.k;
 import com.tencent.mm.plugin.preference.PluginPreference;
-import com.tencent.mm.protocal.protobuf.erx;
+import com.tencent.mm.protocal.protobuf.fng;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.tools.w;
+import com.tencent.mm.ui.tools.v;
 import java.lang.ref.WeakReference;
 
 public final class NormalPluginNewTipPreference
   extends PluginPreference
   implements a
 {
-  private WeakReference<f> GvI = null;
+  private WeakReference<f> MrH = null;
   private Context context;
-  protected View jac;
+  protected View lBX;
   private String path;
   
   public NormalPluginNewTipPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -38,63 +38,63 @@ public final class NormalPluginNewTipPreference
   
   private void notifyDataSetChanged()
   {
-    AppMethodBeat.i(186664);
-    if (this.GvI != null)
+    AppMethodBeat.i(266261);
+    if (this.MrH != null)
     {
-      f localf = (f)this.GvI.get();
+      f localf = (f)this.MrH.get();
       if (localf != null) {
         localf.notifyDataSetChanged();
       }
     }
-    AppMethodBeat.o(186664);
+    AppMethodBeat.o(266261);
   }
   
   public final void a(k paramk, boolean paramBoolean)
   {
-    AppMethodBeat.i(186645);
+    AppMethodBeat.i(266271);
     g.a(this, paramk, paramBoolean);
-    AppMethodBeat.o(186645);
+    AppMethodBeat.o(266271);
   }
   
-  public final boolean a(boolean paramBoolean, erx paramerx)
+  public final boolean a(boolean paramBoolean, fng paramfng)
   {
     return false;
   }
   
-  public final boolean b(boolean paramBoolean, erx paramerx)
+  public final boolean b(boolean paramBoolean, fng paramfng)
   {
     return false;
   }
   
-  public final boolean c(boolean paramBoolean, erx paramerx)
+  public final boolean c(boolean paramBoolean, fng paramfng)
   {
     return false;
   }
   
-  public final boolean d(boolean paramBoolean, erx paramerx)
+  public final boolean d(boolean paramBoolean, fng paramfng)
   {
-    AppMethodBeat.i(186663);
+    AppMethodBeat.i(266293);
     Log.d("MicroMsg.NewTips.NormalPluginNewTipPreference", "showCounter() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      abe(0);
-      String str = paramerx.num;
-      if (paramerx.num > 99) {
-        str = this.context.getString(b.e.tab_msg_tip_over);
+      afx(0);
+      String str = paramfng.num;
+      if (paramfng.num > 99) {
+        str = this.context.getString(b.f.tab_msg_tip_over);
       }
-      fC(str, w.bj(this.mContext, paramerx.num));
+      gv(str, v.bC(this.mContext, paramfng.num));
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(186663);
+      AppMethodBeat.o(266293);
       return true;
-      this.GRJ = false;
-      abe(8);
+      this.MPn = false;
+      afx(8);
     }
   }
   
-  public final boolean eQW()
+  public final boolean fZD()
   {
     return false;
   }
@@ -106,68 +106,68 @@ public final class NormalPluginNewTipPreference
   
   public final View getRoot()
   {
-    AppMethodBeat.i(186640);
-    if (this.jac == null) {
-      this.jac = new View(this.context);
+    AppMethodBeat.i(266270);
+    if (this.lBX == null) {
+      this.lBX = new View(this.context);
     }
-    View localView = this.jac;
-    AppMethodBeat.o(186640);
+    View localView = this.lBX;
+    AppMethodBeat.o(266270);
     return localView;
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(186631);
+    AppMethodBeat.i(266263);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    if (this.jac == null) {
-      this.jac = paramViewGroup;
+    if (this.lBX == null) {
+      this.lBX = paramViewGroup;
     }
-    AppMethodBeat.o(186631);
+    AppMethodBeat.o(266263);
     return paramViewGroup;
   }
   
-  public final boolean tX(boolean paramBoolean)
+  public final boolean ym(boolean paramBoolean)
   {
-    AppMethodBeat.i(186648);
+    AppMethodBeat.i(266274);
     paramBoolean = g.a(paramBoolean, this);
-    AppMethodBeat.o(186648);
+    AppMethodBeat.o(266274);
     return paramBoolean;
   }
   
-  public final boolean tY(boolean paramBoolean)
+  public final boolean yn(boolean paramBoolean)
   {
-    AppMethodBeat.i(186651);
+    AppMethodBeat.i(266278);
     Log.d("MicroMsg.NewTips.NormalPluginNewTipPreference", "showRedPoint() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      this.GRJ = true;
+      this.MPn = true;
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(186651);
+      AppMethodBeat.o(266278);
       return true;
-      this.GRJ = false;
-      abe(8);
+      this.MPn = false;
+      afx(8);
     }
   }
   
-  public final boolean tZ(boolean paramBoolean)
+  public final boolean yo(boolean paramBoolean)
   {
-    AppMethodBeat.i(186652);
+    AppMethodBeat.i(266285);
     Log.d("MicroMsg.NewTips.NormalPluginNewTipPreference", "showNew() show:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.GRJ = false;
-      abe(0);
-      fC(this.context.getString(b.e.app_new), b.b.new_tips_bg);
+      this.MPn = false;
+      afx(0);
+      gv(this.context.getString(b.f.app_new), b.b.new_tips_bg);
     }
     for (;;)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(186652);
+      AppMethodBeat.o(266285);
       return true;
-      this.GRJ = false;
-      abe(8);
+      this.MPn = false;
+      afx(8);
     }
   }
 }

@@ -11,16 +11,16 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class MMEditText$c
   implements TextWatcher
 {
-  private TextView Ybs;
-  public MMEditText.b Ybt = null;
+  private boolean EAm = false;
+  private TextView afTk;
+  public MMEditText.b afTl = null;
   private final int limit;
-  private EditText qDO;
-  private boolean zxt = false;
+  private EditText tID;
   
   public MMEditText$c(EditText paramEditText, TextView paramTextView, int paramInt)
   {
-    this.qDO = paramEditText;
-    this.Ybs = paramTextView;
+    this.tID = paramEditText;
+    this.afTk = paramTextView;
     this.limit = paramInt;
   }
   
@@ -56,20 +56,20 @@ public final class MMEditText$c
     {
       try
       {
-        this.qDO.setText(paramEditable);
-        if (this.zxt) {
+        this.tID.setText(paramEditable);
+        if (this.EAm) {
           continue;
         }
-        i = this.qDO.getText().toString().length();
-        this.qDO.setSelection(i);
-        this.zxt = false;
+        i = this.tID.getText().toString().length();
+        this.tID.setSelection(i);
+        this.EAm = false;
       }
       catch (Exception localException)
       {
-        this.zxt = true;
+        this.EAm = true;
         Log.e("MicroMsg.MMEditText", "error ".concat(String.valueOf(localException.getMessage())));
-        this.qDO.setText(paramEditable);
-        this.qDO.setSelection(0);
+        this.tID.setText(paramEditable);
+        this.tID.setSelection(0);
         continue;
         continue;
       }
@@ -78,12 +78,12 @@ public final class MMEditText$c
         continue;
       }
       i = m;
-      if (this.Ybs != null) {
-        this.Ybs.setText(i / 2);
+      if (this.afTk != null) {
+        this.afTk.setText(i / 2);
       }
       AppMethodBeat.o(143352);
       return;
-      this.qDO.setSelection(0);
+      this.tID.setSelection(0);
     }
   }
   
@@ -92,15 +92,15 @@ public final class MMEditText$c
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(143353);
-    if (this.Ybt != null) {
-      this.Ybt.bzd();
+    if (this.afTl != null) {
+      this.afTl.bXT();
     }
     AppMethodBeat.o(143353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMEditText.c
  * JD-Core Version:    0.7.0.1
  */

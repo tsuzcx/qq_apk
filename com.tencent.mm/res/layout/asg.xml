@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/hex" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/np" />
-    <ListView android:id="@id/hev" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/np" />
-    <RelativeLayout android:id="@id/jai" android:background="#f7ffffff" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/heu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a61" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/fzz" android:background="#f7ffffff" android:paddingTop="@dimen/hy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dsb" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/eb2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:paddingLeft="@dimen/br" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gw" style="@style/nb" />
+    <LinearLayout android:background="@drawable/arl" android:paddingLeft="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ebe" android:background="@drawable/b7q" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="@dimen/az">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/eax" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax">
+                <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/eay" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/m2">
+                <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/eaz" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/m2">
+                <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/eb0" android:visibility="gone" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginLeft="@dimen/m2">
+                <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <TextView android:id="@id/ebc" android:visibility="visible" style="@style/zh" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

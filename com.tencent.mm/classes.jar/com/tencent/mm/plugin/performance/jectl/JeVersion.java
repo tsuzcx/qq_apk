@@ -5,13 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.e.i;
+import androidx.lifecycle.q;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.qq;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.se;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.crash.ICrashReporter.ICrashReportExtraMessageGetter;
 import com.tencent.mm.sdk.event.IListener;
@@ -20,45 +21,46 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.threadpool.i;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public final class JeVersion
 {
-  private static MultiProcessMMKV GOk;
-  private static final long GOl;
-  private static final IListener<qq> GOm;
+  private static final long MLA;
+  private static final IListener<se> MLB;
+  private static MultiProcessMMKV MLz;
   
   static
   {
-    AppMethodBeat.i(200783);
-    GOk = MultiProcessMMKV.getMMKV("diagnostic_storage");
-    GOl = TimeUnit.DAYS.toMillis(1L);
-    GOm = new IListener()
+    AppMethodBeat.i(300852);
+    MLz = MultiProcessMMKV.getMMKV("diagnostic_storage");
+    MLA = TimeUnit.DAYS.toMillis(1L);
+    MLB = new IListener(f.hfK)
     {
-      private long GOn;
+      private long MLC;
       
-      private boolean bnS()
+      private boolean bLF()
       {
-        AppMethodBeat.i(201352);
+        AppMethodBeat.i(300798);
         long l1 = System.currentTimeMillis();
-        long l2 = l1 - this.GOn;
+        long l2 = l1 - this.MLC;
         Log.i("MicroMsg.JeVersion", "currentMillis - mLastReportTimeMillis = %s", new Object[] { Long.valueOf(l2) });
-        if (l2 < JeVersion.GOl)
+        if (l2 < JeVersion.MLA)
         {
           Log.i("MicroMsg.JeVersion", "not report");
-          AppMethodBeat.o(201352);
+          AppMethodBeat.o(300798);
           return false;
         }
-        this.GOn = l1;
-        JeVersion.aFH().encode("JV_KEY_LAST_REPORT_TIME_MILLIS_LONG", this.GOn);
+        this.MLC = l1;
+        JeVersion.aYH().encode("JV_KEY_LAST_REPORT_TIME_MILLIS_LONG", this.MLC);
         try
         {
-          JeVersion.foi();
-          AppMethodBeat.o(201352);
+          JeVersion.gzd();
+          AppMethodBeat.o(300798);
           return false;
         }
-        catch (Throwable localThrowable)
+        finally
         {
           for (;;)
           {
@@ -67,12 +69,12 @@ public final class JeVersion
         }
       }
     };
-    AppMethodBeat.o(200783);
+    AppMethodBeat.o(300852);
   }
   
-  private static void aUu(String paramString)
+  private static void aRC(String paramString)
   {
-    AppMethodBeat.i(200778);
+    AppMethodBeat.i(300839);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new IDKey(1446, 20, 1));
     int i;
@@ -83,9 +85,9 @@ public final class JeVersion
     {
       Log.i("MicroMsg.JeVersion", "je version = %s", new Object[] { paramString });
       localArrayList.add(new IDKey(1446, i, 1));
-      com.tencent.mm.plugin.report.service.h.IzE.b(localArrayList, false);
+      com.tencent.mm.plugin.report.service.h.OAn.b(localArrayList, false);
       Log.i("MicroMsg.JeVersion", "report done");
-      AppMethodBeat.o(200778);
+      AppMethodBeat.o(300839);
       return;
       if (paramString.startsWith("5.0.1")) {
         i = 22;
@@ -109,93 +111,93 @@ public final class JeVersion
     }
   }
   
-  public static void fof()
+  public static void gza()
   {
-    AppMethodBeat.i(200768);
+    AppMethodBeat.i(300807);
     if (BuildInfo.IS_ARM64)
     {
       Log.i("MicroMsg.JeVersion", "it's none of arm64's business");
-      AppMethodBeat.o(200768);
+      AppMethodBeat.o(300807);
       return;
     }
-    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()) || (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vXR, true))) {}
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()) || (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zqG, true))) {}
     for (int i = 1; i == 0; i = 0)
     {
       Log.i("MicroMsg.JeVersion", "not enabled");
-      AppMethodBeat.o(200768);
+      AppMethodBeat.o(300807);
       return;
     }
-    GOm.alive();
+    MLB.alive();
     CrashReportFactory.addCrashReportExtraMessageGetter(new ICrashReporter.ICrashReportExtraMessageGetter()
     {
       public final String getCrashReportExtraMessage()
       {
-        AppMethodBeat.i(200737);
-        String str = JeVersion.fog();
+        AppMethodBeat.i(300802);
+        String str = JeVersion.gzb();
         if (TextUtils.isEmpty(str))
         {
-          AppMethodBeat.o(200737);
+          AppMethodBeat.o(300802);
           return "";
         }
         str = "jemalloc:".concat(String.valueOf(str));
-        AppMethodBeat.o(200737);
+        AppMethodBeat.o(300802);
         return str;
       }
     });
-    AppMethodBeat.o(200768);
+    AppMethodBeat.o(300807);
   }
   
-  public static String fog()
+  public static String gzb()
   {
-    AppMethodBeat.i(200769);
-    String str = GOk.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
-    AppMethodBeat.o(200769);
+    AppMethodBeat.i(300814);
+    String str = MLz.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
+    AppMethodBeat.o(300814);
     return str;
   }
   
-  public static boolean foh()
+  public static boolean gzc()
   {
-    AppMethodBeat.i(200772);
-    String str = fog();
+    AppMethodBeat.i(300824);
+    String str = gzb();
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(200772);
+      AppMethodBeat.o(300824);
       return false;
     }
     boolean bool = str.startsWith("5.");
-    AppMethodBeat.o(200772);
+    AppMethodBeat.o(300824);
     return bool;
   }
   
-  public static void foi()
+  public static void gzd()
   {
-    AppMethodBeat.i(200774);
-    String str = GOk.decodeString("JV_KEY_LAST_FINGERPRINT_STRING", "");
+    AppMethodBeat.i(300833);
+    String str = MLz.decodeString("JV_KEY_LAST_FINGERPRINT_STRING", "");
     if (Build.FINGERPRINT.equalsIgnoreCase(str))
     {
-      str = GOk.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
+      str = MLz.decodeString("JV_KEY_LAST_JE_VERSION_STRING", "");
       if (TextUtils.isEmpty(str))
       {
         Log.i("MicroMsg.JeVersion", "lastVersion is empty");
-        foj();
-        AppMethodBeat.o(200774);
+        gze();
+        AppMethodBeat.o(300833);
         return;
       }
-      aUu(str);
-      AppMethodBeat.o(200774);
+      aRC(str);
+      AppMethodBeat.o(300833);
       return;
     }
     Log.i("MicroMsg.JeVersion", "finger print changed");
-    foj();
-    AppMethodBeat.o(200774);
+    gze();
+    AppMethodBeat.o(300833);
   }
   
-  private static void foj()
+  private static void gze()
   {
-    AppMethodBeat.i(200780);
+    AppMethodBeat.i(300846);
     Log.i("MicroMsg.JeVersion", "reportJeVersionHard");
     MMApplicationContext.getContext().startService(new Intent(MMApplicationContext.getContext(), JeService.class));
-    AppMethodBeat.o(200780);
+    AppMethodBeat.o(300846);
   }
   
   public static class JeService
@@ -208,36 +210,49 @@ public final class JeVersion
     
     public void onDestroy()
     {
-      AppMethodBeat.i(200866);
+      AppMethodBeat.i(300811);
       super.onDestroy();
       Log.d("MicroMsg.JeVersion", "onDestroy");
-      com.tencent.e.h.ZvG.o(new JeVersion.JeService.3(this), 60000L);
-      AppMethodBeat.o(200866);
+      com.tencent.threadpool.h.ahAA.p(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(300815);
+          Log.i("MicroMsg.JeVersion", "onDestroy: kill self");
+          com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+          Object localObject = new Object();
+          com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/performance/jectl/JeVersion$JeService$3", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+          Process.killProcess(((Integer)locala.sb(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/performance/jectl/JeVersion$JeService$3", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+          AppMethodBeat.o(300815);
+        }
+      }, 60000L);
+      AppMethodBeat.o(300811);
     }
     
     public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(200864);
-      com.tencent.e.h.ZvG.be(new Runnable()
+      AppMethodBeat.i(300808);
+      com.tencent.threadpool.h.ahAA.bm(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(200567);
+          AppMethodBeat.i(300804);
           JeVersion.JeService.a(JeVersion.JeService.this);
           JeVersion.access$300();
           JeVersion.JeService.this.stopSelf();
-          AppMethodBeat.o(200567);
+          AppMethodBeat.o(300804);
         }
       });
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
-      AppMethodBeat.o(200864);
+      AppMethodBeat.o(300808);
       return paramInt1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.jectl.JeVersion
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/ecp" android:focusable="false" android:focusableInTouchMode="false" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/ecq" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <include layout="@layout/qi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <TextView android:id="@id/b9_" android:visibility="gone" style="@style/h7" />
+        <com.tencent.mm.ui.widget.MMTextView android:id="@id/b4b" android:background="@drawable/lu" android:paddingLeft="20.0dip" android:paddingRight="15.0dip" android:maxWidth="225.0dip" android:minHeight="@dimen/ad" style="@style/hc" />
+    </LinearLayout>
 </LinearLayout>

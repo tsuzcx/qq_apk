@@ -5,15 +5,13 @@ import java.io.Serializable;
 public final class g
   implements Serializable
 {
-  public long aFL;
   public byte[] data;
   public long timestamp;
   
-  public g(long paramLong1, byte[] paramArrayOfByte, long paramLong2)
+  public g(byte[] paramArrayOfByte, long paramLong)
   {
-    this.aFL = paramLong1;
     this.data = paramArrayOfByte;
-    this.timestamp = paramLong2;
+    this.timestamp = paramLong;
   }
 }
 

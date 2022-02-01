@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
@@ -15,7 +14,6 @@ public class NoDrawingCacheLinearLayout
     super(paramContext, paramAttributeSet);
   }
   
-  @SuppressLint({"NewApi"})
   public NoDrawingCacheLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);

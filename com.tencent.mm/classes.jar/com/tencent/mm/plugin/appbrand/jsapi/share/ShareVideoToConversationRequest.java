@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoPath", "", "thumbPath", "(Ljava/lang/String;Ljava/lang/String;)V", "getThumbPath", "()Ljava/lang/String;", "getVideoPath", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationTask;", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "videoPath", "", "thumbPath", "(Ljava/lang/String;Ljava/lang/String;)V", "getThumbPath", "()Ljava/lang/String;", "getVideoPath", "describeContents", "", "getTaskClass", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationTask;", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class ShareVideoToConversationRequest
   extends AppBrandProxyUIProcessTask.ProcessRequest
 {
@@ -17,29 +17,24 @@ final class ShareVideoToConversationRequest
   
   static
   {
-    AppMethodBeat.i(280099);
+    AppMethodBeat.i(326431);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(280099);
+    AppMethodBeat.o(326431);
   }
   
   public ShareVideoToConversationRequest(Parcel paramParcel)
   {
     this(str1, paramParcel.readString());
-    AppMethodBeat.i(280098);
-    AppMethodBeat.o(280098);
+    AppMethodBeat.i(326426);
+    AppMethodBeat.o(326426);
   }
   
   public ShareVideoToConversationRequest(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(280097);
+    AppMethodBeat.i(326419);
     this.videoPath = paramString1;
     this.thumbPath = paramString2;
-    AppMethodBeat.o(280097);
-  }
-  
-  public final Class<ae> bOe()
-  {
-    return ae.class;
+    AppMethodBeat.o(326419);
   }
   
   public final int describeContents()
@@ -47,16 +42,21 @@ final class ShareVideoToConversationRequest
     return 0;
   }
   
-  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  public final Class<ac> getTaskClass()
   {
-    AppMethodBeat.i(280095);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeString(this.videoPath);
-    paramParcel.writeString(this.thumbPath);
-    AppMethodBeat.o(280095);
+    return ac.class;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest;", "plugin-appbrand-integration_release"})
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(326443);
+    s.u(paramParcel, "parcel");
+    paramParcel.writeString(this.videoPath);
+    paramParcel.writeString(this.thumbPath);
+    AppMethodBeat.o(326443);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<ShareVideoToConversationRequest>
   {}

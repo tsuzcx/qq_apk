@@ -6,20 +6,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
-  extends m
+  extends n
 {
-  public boolean KkA;
-  private boolean KkB = true;
-  private boolean KkC = false;
-  public com.tencent.mm.plugin.sns.ad.landingpage.helper.d.a KkD;
-  private volatile boolean KkE = false;
-  public boolean KkF;
-  private BroadcastReceiver receiver = new BroadcastReceiver()
+  public boolean QIH;
+  private boolean QII = true;
+  private boolean QIJ = false;
+  public com.tencent.mm.plugin.sns.ad.landingpage.helper.c.a QIK;
+  private volatile boolean QIL = false;
+  public boolean QIM;
+  private BroadcastReceiver bJm = new BroadcastReceiver()
   {
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
@@ -33,24 +33,22 @@ public abstract class a
       {
         if ("com.tencent.mm.adlanding.close_exposure_voice".equals(paramAnonymousIntent.getAction()))
         {
-          if (a.this.KqB.KmB.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
+          if (a.this.QOV.QKG.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
             break label98;
           }
           paramAnonymousContext = a.this;
-          if (paramAnonymousContext.KkF) {
-            paramAnonymousContext.fKr();
+          if (paramAnonymousContext.QIM) {
+            paramAnonymousContext.haw();
           }
-          AppMethodBeat.o(96313);
-          return;
         }
       }
-      catch (Throwable paramAnonymousContext)
+      finally
       {
         AppMethodBeat.o(96313);
         return;
       }
       if ("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME".equals(paramAnonymousIntent.getAction())) {
-        a.this.aX(paramAnonymousIntent);
+        a.this.bx(paramAnonymousIntent);
       }
       label98:
       AppMethodBeat.o(96313);
@@ -62,18 +60,23 @@ public abstract class a
     super(paramContext, paramaa, paramViewGroup);
     try
     {
-      this.KkD = com.tencent.mm.plugin.sns.ad.landingpage.helper.d.a.fKN();
-      paramContext = androidx.h.a.a.V(this.context);
+      this.QIK = com.tencent.mm.plugin.sns.ad.landingpage.helper.c.a.hbd();
+      paramContext = androidx.i.a.a.al(this.context);
       paramaa = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
       paramaa.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
-      paramContext.a(this.receiver, paramaa);
-      Log.v("AbsVideoPlayComp", "register receiver " + this.receiver);
+      paramContext.a(this.bJm, paramaa);
+      Log.v("AbsVideoPlayComp", "register receiver " + this.bJm);
       return;
     }
-    catch (Throwable paramContext) {}
+    finally {}
   }
   
-  protected final void aX(Intent paramIntent)
+  public void Gs()
+  {
+    super.Gs();
+  }
+  
+  protected final void bx(Intent paramIntent)
   {
     int i;
     if (paramIntent != null)
@@ -82,9 +85,9 @@ public abstract class a
       if (i != 1) {
         break label34;
       }
-      this.KkC = true;
+      this.QIJ = true;
       if (isPlaying()) {
-        dmf();
+        dSW();
       }
     }
     label34:
@@ -94,75 +97,72 @@ public abstract class a
       {
         return;
       } while (i != 2);
-      this.KkC = false;
+      this.QIJ = false;
     } while (isPlaying());
-    dmg();
+    dSX();
   }
   
-  protected void dmf() {}
+  protected void dSW() {}
   
-  protected void dmg() {}
+  protected void dSX() {}
   
-  public void fKk()
+  public void hao()
   {
-    super.fKk();
-    this.KkF = true;
+    super.hao();
+    this.QIM = true;
   }
   
-  public void fKl()
+  public void hap()
   {
-    super.fKl();
-    this.KkF = false;
+    super.hap();
+    this.QIM = false;
   }
   
-  public void fKm()
+  public void haq()
   {
-    super.fKm();
-    if (this.KkB)
+    super.haq();
+    if (this.QII)
     {
-      this.KkB = false;
-      if (!fRp().Knq) {
-        fKr();
+      this.QII = false;
+      if (!hjn().QLv) {
+        haw();
       }
     }
     else
     {
       return;
     }
-    fKs();
+    hax();
   }
   
-  public void fKo()
+  public void has()
   {
-    super.fKo();
-    androidx.h.a.a.V(this.context).unregisterReceiver(this.receiver);
-    this.KkF = true;
-    Log.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
+    super.has();
+    androidx.i.a.a.al(this.context).unregisterReceiver(this.bJm);
+    this.QIM = true;
+    Log.v("AbsVideoPlayComp", "unregister receiver " + this.bJm);
   }
   
-  public void fKp()
+  public void hav() {}
+  
+  public void haw()
   {
-    super.fKp();
+    this.QIH = false;
   }
   
-  public void fKr()
+  public void hax()
   {
-    this.KkA = false;
+    this.QIH = true;
   }
   
-  public void fKs()
-  {
-    this.KkA = true;
-  }
-  
-  public final void fQC()
+  public final void hiA()
   {
     Intent localIntent = new Intent("com.tencent.mm.adlanding.close_exposure_voice");
-    localIntent.putExtra("para_id", this.KqB.KmB);
-    androidx.h.a.a.V(this.context).c(localIntent);
+    localIntent.putExtra("para_id", this.QOV.QKG);
+    androidx.i.a.a.al(this.context).d(localIntent);
   }
   
-  public final int fQD()
+  public final int hiB()
   {
     if (this.context != null) {
       return this.context.hashCode();
@@ -174,7 +174,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a
  * JD-Core Version:    0.7.0.1
  */

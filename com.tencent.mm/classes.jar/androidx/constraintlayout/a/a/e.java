@@ -6,42 +6,66 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  int BA;
-  public h BB;
-  public m Bs;
-  final f Bt;
-  final c Bu;
-  public e Bv;
-  public int Bw;
-  int Bx;
-  e.b By;
-  private e.a Bz;
+  public m bhA;
+  final f bhB;
+  final c bhC;
+  public e bhD;
+  public int bhE;
+  int bhF;
+  e.b bhG;
+  private e.a bhH;
+  int bhI;
+  public h bhJ;
   
   public e(f paramf, c paramc)
   {
-    AppMethodBeat.i(229607);
-    this.Bs = new m(this);
-    this.Bw = 0;
-    this.Bx = -1;
-    this.By = e.b.BH;
-    this.Bz = e.a.BD;
-    this.BA = 0;
-    this.Bt = paramf;
-    this.Bu = paramc;
-    AppMethodBeat.o(229607);
+    AppMethodBeat.i(193999);
+    this.bhA = new m(this);
+    this.bhE = 0;
+    this.bhF = -1;
+    this.bhG = e.b.bhO;
+    this.bhH = e.a.bhL;
+    this.bhI = 0;
+    this.bhB = paramf;
+    this.bhC = paramc;
+    AppMethodBeat.o(193999);
+  }
+  
+  public final void CD()
+  {
+    AppMethodBeat.i(194009);
+    if (this.bhJ == null)
+    {
+      this.bhJ = new h(h.a.bhc);
+      AppMethodBeat.o(194009);
+      return;
+    }
+    this.bhJ.reset();
+    AppMethodBeat.o(194009);
+  }
+  
+  public final int CE()
+  {
+    if (this.bhB.bje == 8) {
+      return 0;
+    }
+    if ((this.bhF >= 0) && (this.bhD != null) && (this.bhD.bhB.bje == 8)) {
+      return this.bhF;
+    }
+    return this.bhE;
   }
   
   public final boolean a(e parame, int paramInt1, int paramInt2, e.b paramb, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(229610);
+    AppMethodBeat.i(194033);
     if (parame == null)
     {
-      this.Bv = null;
-      this.Bw = 0;
-      this.Bx = -1;
-      this.By = e.b.BH;
-      this.BA = 2;
-      AppMethodBeat.o(229610);
+      this.bhD = null;
+      this.bhE = 0;
+      this.bhF = -1;
+      this.bhG = e.b.bhO;
+      this.bhI = 2;
+      AppMethodBeat.o(194033);
       return true;
     }
     if (!paramBoolean)
@@ -52,12 +76,12 @@ public final class e
       }
       while (i == 0)
       {
-        AppMethodBeat.o(229610);
+        AppMethodBeat.o(194033);
         return false;
-        c localc = parame.Bu;
-        if (localc == this.Bu)
+        c localc = parame.bhC;
+        if (localc == this.bhC)
         {
-          if ((this.Bu == c.BQ) && ((!parame.Bt.fI()) || (!this.Bt.fI()))) {
+          if ((this.bhC == c.bhX) && ((!parame.bhB.CR()) || (!this.bhB.CR()))) {
             i = 0;
           } else {
             i = 1;
@@ -66,14 +90,14 @@ public final class e
         else
         {
           int j;
-          switch (1.BC[this.Bu.ordinal()])
+          switch (1.bhK[this.bhC.ordinal()])
           {
           default: 
-            parame = new AssertionError(this.Bu.name());
-            AppMethodBeat.o(229610);
+            parame = new AssertionError(this.bhC.name());
+            AppMethodBeat.o(194033);
             throw parame;
           case 1: 
-            if ((localc != c.BQ) && (localc != c.BS) && (localc != c.BT)) {
+            if ((localc != c.bhX) && (localc != c.bhZ) && (localc != c.bia)) {
               i = 1;
             } else {
               i = 0;
@@ -81,14 +105,14 @@ public final class e
             break;
           case 2: 
           case 3: 
-            if ((localc == c.BM) || (localc == c.BO)) {}
+            if ((localc == c.bhT) || (localc == c.bhV)) {}
             for (j = 1;; j = 0)
             {
               i = j;
-              if (!(parame.Bt instanceof i)) {
+              if (!(parame.bhB instanceof i)) {
                 break;
               }
-              if ((j == 0) && (localc != c.BS)) {
+              if ((j == 0) && (localc != c.bhZ)) {
                 break label300;
               }
               i = 1;
@@ -98,14 +122,14 @@ public final class e
             break;
           case 4: 
           case 5: 
-            if ((localc == c.BN) || (localc == c.BP)) {}
+            if ((localc == c.bhU) || (localc == c.bhW)) {}
             for (j = 1;; j = 0)
             {
               i = j;
-              if (!(parame.Bt instanceof i)) {
+              if (!(parame.bhB instanceof i)) {
                 break;
               }
-              if ((j == 0) && (localc != c.BT)) {
+              if ((j == 0) && (localc != c.bia)) {
                 break label364;
               }
               i = 1;
@@ -124,65 +148,41 @@ public final class e
         }
       }
     }
-    this.Bv = parame;
+    this.bhD = parame;
     if (paramInt1 > 0) {}
-    for (this.Bw = paramInt1;; this.Bw = 0)
+    for (this.bhE = paramInt1;; this.bhE = 0)
     {
-      this.Bx = paramInt2;
-      this.By = paramb;
-      this.BA = paramInt3;
-      AppMethodBeat.o(229610);
+      this.bhF = paramInt2;
+      this.bhG = paramb;
+      this.bhI = paramInt3;
+      AppMethodBeat.o(194033);
       return true;
     }
   }
   
-  public final void fu()
-  {
-    AppMethodBeat.i(229608);
-    if (this.BB == null)
-    {
-      this.BB = new h(h.a.AU);
-      AppMethodBeat.o(229608);
-      return;
-    }
-    this.BB.reset();
-    AppMethodBeat.o(229608);
-  }
-  
-  public final int fv()
-  {
-    if (this.Bt.CX == 8) {
-      return 0;
-    }
-    if ((this.Bx >= 0) && (this.Bv != null) && (this.Bv.Bt.CX == 8)) {
-      return this.Bx;
-    }
-    return this.Bw;
-  }
-  
   public final boolean isConnected()
   {
-    return this.Bv != null;
+    return this.bhD != null;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(229609);
-    this.Bv = null;
-    this.Bw = 0;
-    this.Bx = -1;
-    this.By = e.b.BI;
-    this.BA = 0;
-    this.Bz = e.a.BD;
-    this.Bs.reset();
-    AppMethodBeat.o(229609);
+    AppMethodBeat.i(194022);
+    this.bhD = null;
+    this.bhE = 0;
+    this.bhF = -1;
+    this.bhG = e.b.bhP;
+    this.bhI = 0;
+    this.bhH = e.a.bhL;
+    this.bhA.reset();
+    AppMethodBeat.o(194022);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(229612);
-    String str = this.Bt.CY + ":" + this.Bu.toString();
-    AppMethodBeat.o(229612);
+    AppMethodBeat.i(194050);
+    String str = this.bhB.bjf + ":" + this.bhC.toString();
+    AppMethodBeat.o(194050);
     return str;
   }
   
@@ -190,18 +190,18 @@ public final class e
   {
     static
     {
-      AppMethodBeat.i(229105);
-      BL = new c("NONE", 0);
-      BM = new c("LEFT", 1);
-      BN = new c("TOP", 2);
-      BO = new c("RIGHT", 3);
-      BP = new c("BOTTOM", 4);
-      BQ = new c("BASELINE", 5);
-      BR = new c("CENTER", 6);
-      BS = new c("CENTER_X", 7);
-      BT = new c("CENTER_Y", 8);
-      BU = new c[] { BL, BM, BN, BO, BP, BQ, BR, BS, BT };
-      AppMethodBeat.o(229105);
+      AppMethodBeat.i(194153);
+      bhS = new c("NONE", 0);
+      bhT = new c("LEFT", 1);
+      bhU = new c("TOP", 2);
+      bhV = new c("RIGHT", 3);
+      bhW = new c("BOTTOM", 4);
+      bhX = new c("BASELINE", 5);
+      bhY = new c("CENTER", 6);
+      bhZ = new c("CENTER_X", 7);
+      bia = new c("CENTER_Y", 8);
+      bib = new c[] { bhS, bhT, bhU, bhV, bhW, bhX, bhY, bhZ, bia };
+      AppMethodBeat.o(194153);
     }
     
     private c() {}
@@ -209,7 +209,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.e
  * JD-Core Version:    0.7.0.1
  */

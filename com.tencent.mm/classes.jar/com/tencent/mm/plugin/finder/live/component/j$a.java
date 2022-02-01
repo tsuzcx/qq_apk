@@ -1,22 +1,39 @@
 package com.tencent.mm.plugin.finder.live.component;
 
-import com.tencent.mm.plugin.appbrand.g.b.c;
+import com.tencent.mm.plugin.finder.live.model.at;
 import com.tencent.mm.plugin.finder.presenter.base.a;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$ViewCallback;", "breakDevice", "", "cleanUp", "prepare", "search", "selectDevice", "mrDevice", "Lcom/tencent/mm/plugin/appbrand/dlna/device/MRDevice;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveAnchorMusicLoadMoreInterface;", "deleteMusic", "", "musicItem", "Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "pos", "", "hide", "hideEditView", "pauseMusic", "playComplete", "playError", "songId", "playMusic", "forcePlay", "", "playStart", "resumeMusic", "setMusicVolume", "progress", "showMusicView", "showSearchView", "stopMusic", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface j$a
-  extends a<j.b>
+  extends k, a<j.b>
 {
-  public abstract void bYL();
+  public abstract void OA(int paramInt);
   
-  public abstract void chi();
+  public abstract void OB(int paramInt);
   
-  public abstract void dxn();
+  public abstract void a(at paramat, int paramInt);
   
-  public abstract void h(c paramc);
+  public abstract void a(at paramat, int paramInt, boolean paramBoolean);
   
-  public abstract void prepare();
+  public abstract void b(at paramat, int paramInt);
+  
+  public abstract void bLi();
+  
+  public abstract void ehC();
+  
+  public abstract void ehD();
+  
+  public abstract void ehE();
+  
+  public abstract void ehF();
+  
+  public abstract void hide();
+  
+  public abstract void playStart();
+  
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 

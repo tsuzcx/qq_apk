@@ -1,251 +1,188 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ca;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.pluginsdk.ui.chat.c;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.cc;
 
-public final class bz
+public class bz
+  extends c
 {
-  private static final List<c> XmV;
+  public Bundle OMx;
+  public long WMB;
+  public int WMC;
+  public String acdC;
+  public boolean aeXN;
+  public boolean aeXO;
+  public boolean aeXP;
+  public String aeXQ;
+  public boolean aeXR;
+  public Bundle aeXS;
+  public ab aeXT;
+  public int aeXU = -1;
+  public String aeXV;
+  public String aeXW;
+  public String aeXX;
+  public String aeXY;
+  public int aeXZ;
+  public int aeYa;
+  public boolean aedO;
+  public String businessId;
+  public String chatroomName;
+  public String desc;
+  public String designerName;
+  public String designerRediretctUrl;
+  public int designerUIN;
+  public String extId;
+  public String finderUsername;
+  public k.b hWV;
+  public String iaa;
+  public String iab;
+  public String iconUrl;
+  public String ihx;
+  public int iiA = 0;
+  public String kLg;
+  public String nTr;
+  public int olT = 0;
+  public int opType;
+  public int pageType;
+  public String pageUrl;
+  public int position;
+  public String productId;
+  public String secondUrl;
+  public String thumbUrl;
+  public int tid;
+  public String title;
+  public String userName;
   
-  static
+  public bz() {}
+  
+  public bz(cc paramcc, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(37561);
-    ArrayList localArrayList = new ArrayList();
-    XmV = localArrayList;
-    localArrayList.add(new bi.b());
-    XmV.add(new bi.a());
-    XmV.add(new o.c());
-    XmV.add(new o.b());
-    XmV.add(new e.e());
-    XmV.add(new e.d());
-    XmV.add(new z.c());
-    XmV.add(new z.b());
-    XmV.add(new aj.c());
-    XmV.add(new aj.b());
-    XmV.add(new y.c());
-    XmV.add(new y.b());
-    XmV.add(new ad.c());
-    XmV.add(new ad.b());
-    XmV.add(new m.d());
-    XmV.add(new m.c());
-    XmV.add(new ae.b());
-    XmV.add(new ae.a());
-    XmV.add(new bf());
-    XmV.add(new az.b());
-    XmV.add(new at.b());
-    XmV.add(new at.a());
-    XmV.add(new bk.a());
-    XmV.add(new bk.b());
-    XmV.add(new bb.a());
-    XmV.add(new ap.c());
-    XmV.add(new ap.b());
-    XmV.add(new au.a());
-    XmV.add(new bj.b());
-    XmV.add(new bj.a());
-    XmV.add(new ba.b());
-    XmV.add(new ba.a());
-    XmV.add(new bo.f());
-    XmV.add(new bo.c());
-    XmV.add(new bo.g());
-    XmV.add(new an.j());
-    XmV.add(new bo.d());
-    XmV.add(new bo.e());
-    XmV.add(new bn());
-    XmV.add(new bl());
-    XmV.add(new bm());
-    XmV.add(new bd.a());
-    XmV.add(new bd.b());
-    XmV.add(new bp.c());
-    XmV.add(new bp.b());
-    XmV.add(new ar());
-    XmV.add(new av());
-    XmV.add(new d());
-    XmV.add(new ab.b());
-    XmV.add(new ab.c());
-    XmV.add(new aw());
-    XmV.add(new ax());
-    XmV.add(new ay());
-    XmV.add(new ah.c());
-    XmV.add(new ah.b());
-    XmV.add(new f.c());
-    XmV.add(new f.b());
-    XmV.add(new k.c());
-    XmV.add(new k.b());
-    XmV.add(new i.c());
-    XmV.add(new i.b());
-    XmV.add(new j.c());
-    XmV.add(new j.b());
-    XmV.add(new al.b());
-    XmV.add(new al.a());
-    XmV.add(new am.b());
-    XmV.add(new am.a());
-    XmV.add(new ak.b());
-    XmV.add(new ak.a());
-    XmV.add(new aa.c());
-    XmV.add(new aa.b());
-    XmV.add(new az.a());
-    XmV.add(new g.c());
-    XmV.add(new g.b());
-    XmV.add(new h.c());
-    XmV.add(new h.b());
-    XmV.add(new l.c());
-    XmV.add(new af());
-    XmV.add(new s.b());
-    XmV.add(new s.c());
-    XmV.add(new ac.b());
-    XmV.add(new ac.c());
-    XmV.add(new w.b());
-    XmV.add(new w.c());
-    XmV.add(new p.b());
-    XmV.add(new p.c());
-    XmV.add(new q.b());
-    XmV.add(new q.c());
-    XmV.add(new r.b());
-    XmV.add(new r.c());
-    XmV.add(new u.b());
-    XmV.add(new u.c());
-    XmV.add(new ChatingItemAppMsgFinderLiveFeed.a());
-    XmV.add(new ChatingItemAppMsgFinderLiveFeed.b());
-    XmV.add(new ai.a());
-    XmV.add(new ai.b());
-    XmV.add(new x.b());
-    XmV.add(new x.c());
-    XmV.add(new ag());
-    XmV.add(new t.a());
-    XmV.add(new t.b());
-    XmV.add(new v.b());
-    XmV.add(new v.c());
-    XmV.add(new n.a());
-    XmV.add(new n.b());
-    XmV.add(new bi.b()
-    {
-      public final boolean bZ(int paramAnonymousInt, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(37556);
-        Log.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
-        AppMethodBeat.o(37556);
-        return paramAnonymousBoolean;
-      }
-    });
-    XmV.add(new bi.a()
-    {
-      public final boolean bZ(int paramAnonymousInt, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(37557);
-        Log.w("MicroMsg.Chatting.ItemFactory", "unfound msgType:%d, isSender:%b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
-        if (!paramAnonymousBoolean)
-        {
-          AppMethodBeat.o(37557);
-          return true;
-        }
-        AppMethodBeat.o(37557);
-        return false;
-      }
-    });
-    AppMethodBeat.o(37561);
+    this.hTm = paramcc;
+    this.aedO = false;
+    this.position = paramInt1;
+    this.userName = paramString1;
+    this.aeXN = false;
+    this.title = paramString2;
+    this.iaa = paramString3;
+    this.iab = paramString4;
+    this.acdC = paramString5;
+    this.designerUIN = paramInt2;
+    this.designerName = paramString6;
+    this.designerRediretctUrl = paramString7;
+    this.kLg = paramString8;
   }
   
-  public static c dk(ca paramca)
+  public bz(cc paramcc, String paramString)
   {
-    AppMethodBeat.i(37558);
-    int i = dm(paramca);
-    Iterator localIterator = XmV.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      if (paramca.field_isSend == 1) {}
-      for (boolean bool = true; localc.bZ(i, bool); bool = false) {
-        try
-        {
-          localc = (c)localc.getClass().newInstance();
-          AppMethodBeat.o(37558);
-          return localc;
-        }
-        catch (Exception localException)
-        {
-          Log.printErrStackTrace("MicroMsg.Chatting.ItemFactory", localException, "", new Object[0]);
-        }
-      }
-    }
-    paramca = new bi.a();
-    AppMethodBeat.o(37558);
-    return paramca;
+    this(paramString);
+    this.hTm = paramcc;
   }
   
-  public static int dl(ca paramca)
+  public bz(cc paramcc, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(37560);
-    if (paramca.getType() == 49)
-    {
-      i = m.g(com.tencent.mm.aj.k.b.OQ(paramca.field_content));
-      Log.d("MicroMsg.Chatting.ItemFactory", "maybe honeypay need change type: %s", new Object[] { Integer.valueOf(i) });
-      if ((i != 49) && (i != 1090519089))
-      {
-        paramca.setType(i);
-        bh.beI();
-        com.tencent.mm.model.c.bbO().a(paramca.field_msgId, paramca);
-      }
-    }
-    int j = dm(paramca);
-    int i = 0;
-    while (i < XmV.size())
-    {
-      c localc = (c)XmV.get(i);
-      if (paramca.field_isSend == 1) {}
-      for (boolean bool = true; localc.bZ(j, bool); bool = false)
-      {
-        AppMethodBeat.o(37560);
-        return i;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(37560);
-    return 0;
+    this.hTm = paramcc;
+    this.userName = paramString1;
+    this.hTm = paramcc;
+    this.pageUrl = paramString2;
   }
   
-  private static int dm(ca paramca)
+  private bz(cc paramcc, boolean paramBoolean, int paramInt, String paramString)
   {
-    AppMethodBeat.i(280168);
-    int j = paramca.getType();
-    int i = j;
-    com.tencent.mm.aj.k.b localb;
-    if (paramca.getType() == 49)
-    {
-      localb = com.tencent.mm.aj.k.b.OQ(paramca.field_content);
-      i = j;
-      if (localb != null) {
-        switch (localb.type)
-        {
-        }
-      }
-    }
-    for (i = j;; i = 1090519089)
-    {
-      AppMethodBeat.o(280168);
-      return i;
-      Log.i("MicroMsg.Chatting.ItemFactory", "createItem %s %s %s", new Object[] { Long.valueOf(paramca.field_msgId), Integer.valueOf(j), Integer.valueOf(localb.type) });
-    }
+    this(paramcc, paramBoolean, paramInt, paramString, false, null, null, null);
   }
   
-  public static int hTY()
+  private bz(cc paramcc, boolean paramBoolean, int paramInt, String paramString, byte paramByte)
   {
-    AppMethodBeat.i(37559);
-    int i = XmV.size();
-    AppMethodBeat.o(37559);
-    return i + 2;
+    this(paramcc, paramBoolean, paramInt, paramString);
+  }
+  
+  public bz(cc paramcc, boolean paramBoolean, int paramInt, String paramString, char paramChar)
+  {
+    this(paramcc, paramBoolean, paramInt, paramString, (byte)0);
+  }
+  
+  public bz(cc paramcc, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    this(paramcc, paramBoolean, paramInt, paramString1, (byte)0);
+    this.chatroomName = paramString2;
+  }
+  
+  public bz(cc paramcc, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4)
+  {
+    this(paramcc, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, null);
+  }
+  
+  public bz(cc paramcc, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this(paramcc, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, paramString5, null, null, false, false);
+  }
+  
+  public bz(cc paramcc, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    this.hTm = paramcc;
+    this.aedO = paramBoolean1;
+    this.position = paramInt;
+    this.userName = paramString1;
+    this.aeXN = paramBoolean2;
+    this.title = paramString2;
+    this.iaa = paramString3;
+    this.iab = paramString4;
+    this.acdC = paramString5;
+    this.productId = paramString6;
+    this.kLg = paramString7;
+    this.aeXO = paramBoolean3;
+    this.aeXP = paramBoolean4;
+  }
+  
+  private bz(String paramString)
+  {
+    this.userName = paramString;
+  }
+  
+  public bz(String paramString1, String paramString2)
+  {
+    this.userName = paramString1;
+    this.chatroomName = paramString2;
+  }
+  
+  public static bz a(k.b paramb, cc paramcc)
+  {
+    AppMethodBeat.i(37554);
+    bz localbz = new bz();
+    localbz.hWV = paramb;
+    localbz.hTm = paramcc;
+    AppMethodBeat.o(37554);
+    return localbz;
+  }
+  
+  public static bz b(cc paramcc, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(37555);
+    bz localbz = new bz();
+    localbz.hTm = paramcc;
+    localbz.aedO = paramBoolean;
+    localbz.position = paramInt;
+    localbz.aeXR = false;
+    AppMethodBeat.o(37555);
+    return localbz;
+  }
+  
+  public static bz bBE(String paramString)
+  {
+    AppMethodBeat.i(37553);
+    bz localbz = new bz();
+    localbz.kLg = paramString;
+    AppMethodBeat.o(37553);
+    return localbz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bz
  * JD-Core Version:    0.7.0.1
  */

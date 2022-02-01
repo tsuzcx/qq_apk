@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="^_^" />
-</PreferenceScreen>
+<host-apdu-service android:description="@string/a0t" android:requireDeviceUnlock="true" android:apduServiceBanner="@drawable/icon"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <aid-group android:description="@string/a0t" android:category="payment">
+        <aid-filter android:name="F123456789" />
+    </aid-group>
+</host-apdu-service>

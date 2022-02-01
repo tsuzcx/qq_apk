@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.hld.keyboard.S7EmojiKeyboard android:orientation="vertical" android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto" xmlns:emoji="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:background="@color/aia" android:layout_width="fill_parent" android:layout_height="@dimen/aup">
-        <RelativeLayout android:orientation="horizontal" android:id="@id/k4y" android:layout_width="fill_parent" android:layout_height="@dimen/aw0" android:layout_marginTop="@dimen/aw1" android:paddingStart="@dimen/ct">
-            <RelativeLayout android:id="@id/k4z" android:background="@drawable/cy0" android:layout_width="60.0dip" android:layout_height="@dimen/arn" android:layout_marginBottom="2.0dip" android:layout_alignParentBottom="true">
-                <TextView android:textSize="@dimen/ata" android:textStyle="bold" android:textColor="@color/fo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jiu" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/as9" />
-            </RelativeLayout>
-            <RelativeLayout android:id="@id/k6t" android:background="@drawable/cy0" android:layout_width="60.0dip" android:layout_height="@dimen/arn" android:layout_marginBottom="2.0dip" android:layout_toRightOf="@id/k4z" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/ct">
-                <TextView android:textSize="@dimen/ata" android:textStyle="bold" android:textColor="@color/fo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jiv" android:layout_centerInParent="true" android:lineSpacingExtra="@dimen/as9" />
-            </RelativeLayout>
-            <LinearLayout android:gravity="center" android:id="@id/k6u" android:layout_width="@dimen/cn" android:layout_height="@dimen/aw0" android:layout_toLeftOf="@id/k8l">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k4u" android:layout_width="@dimen/arp" android:layout_height="@dimen/arp" android:src="@raw/icons_outlined_keyboard" emoji:iconColor="@color/ahs" />
-            </LinearLayout>
-            <RelativeLayout android:id="@id/k8l" android:layout_width="@dimen/aw4" android:layout_height="@dimen/aw0" android:layout_alignParentEnd="true">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kao" android:layout_width="@dimen/aw6" android:layout_height="@dimen/aw5" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" android:rotation="270.0" android:layout_marginEnd="18.0dip" android:layout_alignParentEnd="true" emoji:iconColor="@color/ahs" />
-            </RelativeLayout>
-        </RelativeLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/k4q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/k4y">
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/cj">
-                <com.tencent.mm.plugin.hld.emoji.ImeEmojiSubTypeScrollView android:id="@id/juo" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" android:paddingEnd="@dimen/ci" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/ci" emoji:emoji_type="@integer/w" />
-                <com.tencent.mm.plugin.hld.emoji.ImeEmojiSubTypeScrollView android:id="@id/k6r" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/ci" emoji:emoji_type="@integer/x" />
-                <RelativeLayout android:background="@drawable/cx0" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_marginEnd="@dimen/ci" android:layout_alignParentEnd="true" />
-            </RelativeLayout>
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:id="@id/k6q" android:background="@color/wz" style="@style/hx" />
-                <com.tencent.mm.plugin.hld.emoji.ImeEmojiContentScrollView android:id="@id/jul" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-                <com.tencent.mm.plugin.hld.emoji.ImeKaoEmojiContentScrollView android:id="@id/k6p" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-                <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/k4v" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/kaf" android:background="@drawable/cv9" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:layout_marginBottom="@dimen/c5" android:layout_marginEnd="@dimen/ct" emoji:functionCode="@integer/ah" emoji:icon_color="@color/ah3" emoji:icon_height="16.0dip" emoji:icon_src="@raw/icons_outlined_delemoji" emoji:icon_width="23.0dip" emoji:keyType="@integer/ap" emoji:layout_constraintBottom_toBottomOf="g8m" emoji:layout_constraintEnd_toStartOf="@id/kag" emoji:layout_goneMarginEnd="@dimen/c5" style="@style/a9b" />
-                    <com.tencent.mm.plugin.hld.view.ImeKeyButton android:id="@id/kag" android:background="@drawable/cy1" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:layout_marginEnd="@dimen/c5" emoji:functionCode="@integer/ac" emoji:keyType="@integer/ap" emoji:key_text_color_state_list="@color/ahn" emoji:key_text_size="@dimen/at6" emoji:layout_constraintBottom_toBottomOf="@id/kaf" emoji:layout_constraintEnd_toEndOf="g8m" emoji:layout_constraintTop_toTopOf="@id/kaf" emoji:text="@string/jkn" style="@style/a9c" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </RelativeLayout>
-        </LinearLayout>
-    </RelativeLayout>
-</com.tencent.mm.plugin.hld.keyboard.S7EmojiKeyboard>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/aw4" android:paddingRight="@dimen/m2" android:layout_width="fill_parent" android:layout_height="54.0dip" android:minHeight="@dimen/j5"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g" android:layout_weight="1.0">
+        <TextView android:textAppearance="@style/nx" android:textColor="@color/a7b" android:ellipsize="marquee" android:id="@id/ko8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/jad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/j6" android:layout_marginRight="@dimen/j6" />
+</LinearLayout>

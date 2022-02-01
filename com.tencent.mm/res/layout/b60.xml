@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/g5p" android:background="@drawable/ah5" android:padding="@dimen/k5" android:visibility="visible" android:layout_height="100.0dip" android:layout_margin="0.0dip" style="@style/rb"
+<RelativeLayout android:orientation="vertical" android:layout_width="148.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/g60" android:background="@raw/mall_order_detail_frame" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:src="@raw/mall_order_trade_state_icon" />
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/zj" android:ellipsize="end" android:id="@id/g5r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/zh" android:ellipsize="end" android:id="@id/g5q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxLines="1" />
-    </LinearLayout>
-    <Button android:textSize="@dimen/hc" android:textColor="@color/ag2" android:id="@id/g5l" android:background="@drawable/k7" android:visibility="gone" android:layout_width="69.0dip" android:layout_height="33.299988dip" android:layout_marginLeft="10.0dip" android:text="@string/ew3" />
-</LinearLayout>
+    <ImageView android:id="@id/a8w" android:layout_width="68.0dip" android:layout_height="68.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/a8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:shadowColor="#28000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="2.0" android:layout_below="@id/a8w" android:layout_centerInParent="true" />
+</RelativeLayout>

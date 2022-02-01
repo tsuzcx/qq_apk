@@ -1,70 +1,112 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI01;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI02;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI03;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI04;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI1;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI2;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI3;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI4;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandLaunchMMSingleTaskUIHelper;", "", "()V", "TAG", "", "allAppBrandProcessUiClass", "", "Ljava/lang/Class;", "Landroid/app/Activity;", "provideExtrasForSmoothBack", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static boolean oqE;
+  public static final b ruw;
+  private static final List<Class<? extends Activity>> rux;
   
   static
   {
-    AppMethodBeat.i(140616);
-    oqE = false;
-    AppMethodBeat.o(140616);
+    AppMethodBeat.i(319395);
+    ruw = new b();
+    rux = p.listOf(new Class[] { AppBrandUI.class, AppBrandUI1.class, AppBrandUI2.class, AppBrandUI3.class, AppBrandUI4.class, AppBrandUI.class, AppBrandUI01.class, AppBrandUI02.class, AppBrandUI03.class, AppBrandUI04.class });
+    AppMethodBeat.o(319395);
   }
   
-  public static void bPe()
+  public static final Intent eD(Context paramContext)
   {
-    AppMethodBeat.i(140604);
-    if (!MMHandlerThread.isMainThread())
+    AppMethodBeat.i(319390);
+    s.u(paramContext, "context");
+    try
     {
-      h.ZvG.bc(new Runnable()
+      paramContext = (ActivityManager)a.a(paramContext, ActivityManager.class);
+      if (paramContext == null) {
+        paramContext = null;
+      }
+      while (paramContext == null)
       {
-        public final void run()
+        AppMethodBeat.o(319390);
+        return null;
+        paramContext = paramContext.getRunningTasks(1);
+        if (paramContext == null)
         {
-          AppMethodBeat.i(208892);
-          b.bPe();
-          AppMethodBeat.o(208892);
+          paramContext = null;
         }
-      });
-      AppMethodBeat.o(140604);
-      return;
+        else
+        {
+          paramContext = (ActivityManager.RunningTaskInfo)paramContext.get(0);
+          if (paramContext == null) {
+            paramContext = null;
+          } else {
+            paramContext = paramContext.baseActivity;
+          }
+        }
+      }
+      Iterator localIterator = ((Iterable)rux).iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = localIterator.next();
+      } while (!s.p(((Class)localObject).getName(), paramContext.getClassName()));
     }
-    Log.v("MicroMsg.AppBrandMainProcessService", "tryBind: ");
-    if (!oqE)
+    catch (Exception paramContext)
     {
-      j.b(MMApplicationContext.getMainProcessName(), new a((byte)0));
-      oqE = true;
+      for (;;)
+      {
+        Object localObject;
+        boolean bool;
+        Log.w("MicroMsg.AppBrand.AppBrandLaunchMMSingleTaskUIHelper", s.X("provideExtrasForSmoothBack fail since ", paramContext));
+        paramContext = null;
+        continue;
+        if (localObject != null) {
+          bool = true;
+        }
+      }
     }
-    k.Mq(MMApplicationContext.getMainProcessName());
-    AppMethodBeat.o(140604);
-  }
-  
-  public static boolean isLive()
-  {
-    AppMethodBeat.i(209084);
-    boolean bool = j.Mp(MMApplicationContext.getMainProcessName());
-    AppMethodBeat.o(209084);
-    return bool;
-  }
-  
-  static final class a
-    implements p
-  {
-    public final void aFw()
+    Log.i("MicroMsg.AppBrand.AppBrandLaunchMMSingleTaskUIHelper", "provideExtrasForSmoothBack, curStackBaseUI: " + paramContext + ", curInAppBrandStack: " + bool);
+    if (bool)
     {
-      AppMethodBeat.i(208499);
-      Log.i("MicroMsg.AppBrandMainProcessService", "onDisconnect: [%s] disconnected, reconnect immediately", new Object[] { MMApplicationContext.getMainProcessName() });
-      b.bPe();
-      AppMethodBeat.o(208499);
+      Log.i("MicroMsg.AppBrand.AppBrandLaunchMMSingleTaskUIHelper", "provideExtrasForSmoothBack, provide");
+      paramContext = new Intent();
+      paramContext.addFlags(268468224);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(319390);
+      return paramContext;
+      localObject = null;
+      break label231;
+      bool = false;
+      break;
+      Log.i("MicroMsg.AppBrand.AppBrandLaunchMMSingleTaskUIHelper", "provideExtrasForSmoothBack, not need");
+      paramContext = null;
     }
   }
 }

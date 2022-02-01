@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.pluginsdk.ui.chat.AppGrid android:gravity="center" android:layout_gravity="center" android:id="@id/se" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/aij" android:cacheColorHint="#00000000" android:overScrollMode="never"
+<com.tencent.mm.ui.ListViewInScrollView android:layout_gravity="center" android:id="@id/vr" android:background="@null" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@drawable/c2" android:cacheColorHint="@null" android:dividerHeight="@dimen/bq" android:minWidth="@dimen/it" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android" />

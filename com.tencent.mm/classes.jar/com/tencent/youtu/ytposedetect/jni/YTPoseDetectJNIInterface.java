@@ -10,6 +10,8 @@ public class YTPoseDetectJNIInterface
 {
   private static IYtLoggerListener loggerListener;
   
+  public static native String Checksum(byte[] paramArrayOfByte);
+  
   public static native boolean canReflect();
   
   public static native void configNativeLog(boolean paramBoolean);
@@ -28,9 +30,13 @@ public class YTPoseDetectJNIInterface
   
   public static native byte[] getBestImage(int paramInt);
   
+  public static native String getConfigData(byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3);
+  
   public static native byte[] getEyeImage(int paramInt);
   
   public static native byte[][] getFrameList();
+  
+  public static native String getLiveSelectDataChecksum(String paramString1, String paramString2);
   
   public static native byte[] getMouthImage(int paramInt);
   
@@ -42,20 +48,20 @@ public class YTPoseDetectJNIInterface
   
   public static void nativeLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(217528);
+    AppMethodBeat.i(218143);
     if (loggerListener != null) {
       loggerListener.log("[YTPoseDetectJNIInterface.nativeLog]", paramString);
     }
-    AppMethodBeat.o(217528);
+    AppMethodBeat.o(218143);
   }
   
   public static void nativeLog(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217526);
+    AppMethodBeat.i(218137);
     if (loggerListener != null) {
       loggerListener.log(paramString1, paramString2);
     }
-    AppMethodBeat.o(217526);
+    AppMethodBeat.o(218137);
   }
   
   public static native int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt5);
@@ -63,6 +69,8 @@ public class YTPoseDetectJNIInterface
   public static native void releaseAll();
   
   public static native void resetDetect();
+  
+  public static native void setColorData(String paramString1, String paramString2, String paramString3);
   
   public static void setLoggerListener(IYtLoggerListener paramIYtLoggerListener)
   {
@@ -80,7 +88,7 @@ public class YTPoseDetectJNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface
  * JD-Core Version:    0.7.0.1
  */

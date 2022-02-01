@@ -12,27 +12,27 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class r
 {
-  private static ConcurrentHashMap<Integer, p> crW;
+  private static ConcurrentHashMap<Integer, p> ejQ;
   
   static
   {
     AppMethodBeat.i(140441);
-    crW = new ConcurrentHashMap();
+    ejQ = new ConcurrentHashMap();
     AppMethodBeat.o(140441);
   }
   
   public static p a(Context paramContext, Integer paramInteger)
   {
     AppMethodBeat.i(140439);
-    if ((paramInteger == null) || (!crW.containsKey(paramInteger)))
+    if ((paramInteger == null) || (!ejQ.containsKey(paramInteger)))
     {
       AppMethodBeat.o(140439);
       return null;
     }
-    paramInteger = (p)crW.remove(paramInteger);
+    paramInteger = (p)ejQ.remove(paramInteger);
     paramInteger.setContext(paramContext);
-    paramInteger.Ov();
-    Log.i(r.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(crW.size()) });
+    paramInteger.aoD();
+    Log.i(r.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(ejQ.size()) });
     AppMethodBeat.o(140439);
     return paramInteger;
   }
@@ -41,33 +41,33 @@ public class r
   {
     AppMethodBeat.i(140438);
     paramp.setContext(paramContext);
-    paramContext = paramp.crF.keySet().iterator();
+    paramContext = paramp.ejx.keySet().iterator();
     while (paramContext.hasNext())
     {
       o localo = paramp.getBridge();
       String str = (String)paramContext.next();
-      localo.cqQ.remove(str);
+      localo.eiJ.remove(str);
     }
-    paramp.crF.clear();
-    paramp.crO = null;
-    paramp.crG = null;
-    paramp.crQ = true;
-    crW.put(Integer.valueOf(paramp.hashCode()), paramp);
-    Log.i(r.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(crW.size()) });
+    paramp.ejx.clear();
+    paramp.ejI = null;
+    paramp.ejy = null;
+    paramp.ejK = true;
+    ejQ.put(Integer.valueOf(paramp.hashCode()), paramp);
+    Log.i(r.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(ejQ.size()) });
     int i = paramp.hashCode();
     AppMethodBeat.o(140438);
     return Integer.valueOf(i);
   }
   
-  public static Integer b(Context paramContext, Class<? extends a> paramClass)
+  public static Integer c(Context paramContext, Class<? extends a> paramClass)
   {
     AppMethodBeat.i(140437);
     paramContext = new p(paramContext, paramClass);
     if (!TextUtils.isEmpty(null)) {
       paramContext.loadUrl(null);
     }
-    crW.put(Integer.valueOf(paramContext.hashCode()), paramContext);
-    Log.i(r.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(crW.size()) });
+    ejQ.put(Integer.valueOf(paramContext.hashCode()), paramContext);
+    Log.i(r.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(ejQ.size()) });
     int i = paramContext.hashCode();
     AppMethodBeat.o(140437);
     return Integer.valueOf(i);
@@ -76,13 +76,13 @@ public class r
   public static p d(Integer paramInteger)
   {
     AppMethodBeat.i(140440);
-    if ((paramInteger == null) || (!crW.containsKey(paramInteger)))
+    if ((paramInteger == null) || (!ejQ.containsKey(paramInteger)))
     {
       AppMethodBeat.o(140440);
       return null;
     }
-    paramInteger = (p)crW.remove(paramInteger);
-    paramInteger.Ov();
+    paramInteger = (p)ejQ.remove(paramInteger);
+    paramInteger.aoD();
     AppMethodBeat.o(140440);
     return paramInteger;
   }

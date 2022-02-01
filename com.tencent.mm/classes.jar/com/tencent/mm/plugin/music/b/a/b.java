@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public final class b
 {
-  public static int YR(int paramInt)
+  public static int ade(int paramInt)
   {
     AppMethodBeat.i(62940);
     Log.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
@@ -64,7 +64,7 @@ public final class b
     return 110;
   }
   
-  static void e(ArrayList<IDKey> paramArrayList)
+  static void h(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(62941);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -81,7 +81,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.a.b
  * JD-Core Version:    0.7.0.1
  */

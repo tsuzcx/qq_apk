@@ -2,8 +2,8 @@ package kotlin.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.t;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.x;
 
 public abstract class l
   implements b
@@ -20,10 +20,9 @@ public abstract class l
     return this.description;
   }
   
-  public final String i(t paramt)
+  public final String i(x paramx)
   {
-    p.k(paramt, "functionDescriptor");
-    return b.a.a(this, paramt);
+    return b.a.a(this, paramx);
   }
   
   public static final class a
@@ -33,11 +32,11 @@ public abstract class l
     
     public a(int paramInt) {}
     
-    public final boolean h(t paramt)
+    public final boolean h(x paramx)
     {
       AppMethodBeat.i(61329);
-      p.k(paramt, "functionDescriptor");
-      if (paramt.iEJ().size() >= this.n)
+      s.u(paramx, "functionDescriptor");
+      if (paramx.kod().size() >= this.n)
       {
         AppMethodBeat.o(61329);
         return true;
@@ -55,16 +54,16 @@ public abstract class l
     public b()
     {
       super((byte)0);
-      AppMethodBeat.i(270680);
+      AppMethodBeat.i(191507);
       this.n = 2;
-      AppMethodBeat.o(270680);
+      AppMethodBeat.o(191507);
     }
     
-    public final boolean h(t paramt)
+    public final boolean h(x paramx)
     {
       AppMethodBeat.i(61331);
-      p.k(paramt, "functionDescriptor");
-      if (paramt.iEJ().size() == this.n)
+      s.u(paramx, "functionDescriptor");
+      if (paramx.kod().size() == this.n)
       {
         AppMethodBeat.o(61331);
         return true;
@@ -77,12 +76,12 @@ public abstract class l
   public static final class c
     extends l
   {
-    public static final c abtS;
+    public static final c ajtn;
     
     static
     {
       AppMethodBeat.i(61333);
-      abtS = new c();
+      ajtn = new c();
       AppMethodBeat.o(61333);
     }
     
@@ -91,11 +90,11 @@ public abstract class l
       super((byte)0);
     }
     
-    public final boolean h(t paramt)
+    public final boolean h(x paramx)
     {
       AppMethodBeat.i(61332);
-      p.k(paramt, "functionDescriptor");
-      boolean bool = paramt.iEJ().isEmpty();
+      s.u(paramx, "functionDescriptor");
+      boolean bool = paramx.kod().isEmpty();
       AppMethodBeat.o(61332);
       return bool;
     }
@@ -104,12 +103,12 @@ public abstract class l
   public static final class d
     extends l
   {
-    public static final d abtT;
+    public static final d ajto;
     
     static
     {
       AppMethodBeat.i(61335);
-      abtT = new d();
+      ajto = new d();
       AppMethodBeat.o(61335);
     }
     
@@ -118,11 +117,11 @@ public abstract class l
       super((byte)0);
     }
     
-    public final boolean h(t paramt)
+    public final boolean h(x paramx)
     {
       AppMethodBeat.i(61334);
-      p.k(paramt, "functionDescriptor");
-      if (paramt.iEJ().size() == 1)
+      s.u(paramx, "functionDescriptor");
+      if (paramx.kod().size() == 1)
       {
         AppMethodBeat.o(61334);
         return true;
@@ -134,7 +133,7 @@ public abstract class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.n.l
  * JD-Core Version:    0.7.0.1
  */

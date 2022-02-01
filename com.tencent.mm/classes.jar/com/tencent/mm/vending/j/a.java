@@ -4,15 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  private Object[] YBh;
+  private Object[] agvE;
   
-  public static <$1, $2> c<$1, $2> J($1 param$1, $2 param$2)
+  public static <$1, $2> c<$1, $2> U($1 param$1, $2 param$2)
   {
     AppMethodBeat.i(74900);
     c localc = new c();
-    localc.YBh = new Object[] { param$1, param$2 };
+    localc.agvE = new Object[] { param$1, param$2 };
     param$1 = (c)localc;
     AppMethodBeat.o(74900);
+    return param$1;
+  }
+  
+  public static <$1, $2, $3, $4, $5, $6, $7> h<$1, $2, $3, $4, $5, $6, $7> b($1 param$1, $2 param$2, $3 param$3, $4 param$4, $5 param$5, $6 param$6, $7 param$7)
+  {
+    AppMethodBeat.i(235637);
+    h localh = new h();
+    localh.agvE = new Object[] { param$1, param$2, param$3, param$4, param$5, param$6, param$7 };
+    param$1 = (h)localh;
+    AppMethodBeat.o(235637);
     return param$1;
   }
   
@@ -20,7 +30,7 @@ public class a
   {
     AppMethodBeat.i(74902);
     e locale = new e();
-    locale.YBh = new Object[] { param$1, param$2, param$3, param$4 };
+    locale.agvE = new Object[] { param$1, param$2, param$3, param$4 };
     param$1 = (e)locale;
     AppMethodBeat.o(74902);
     return param$1;
@@ -28,64 +38,54 @@ public class a
   
   public static <$1, $2, $3, $4, $5> f<$1, $2, $3, $4, $5> c($1 param$1, $2 param$2, $3 param$3, $4 param$4, $5 param$5)
   {
-    AppMethodBeat.i(247740);
+    AppMethodBeat.i(235636);
     f localf = new f();
-    localf.YBh = new Object[] { param$1, param$2, param$3, param$4, param$5 };
+    localf.agvE = new Object[] { param$1, param$2, param$3, param$4, param$5 };
     param$1 = (f)localf;
-    AppMethodBeat.o(247740);
+    AppMethodBeat.o(235636);
     return param$1;
   }
   
-  public static <$1, $2, $3, $4, $5, $6, $7> h<$1, $2, $3, $4, $5, $6, $7> c($1 param$1, $2 param$2, $3 param$3, $4 param$4, $5 param$5, $6 param$6, $7 param$7)
-  {
-    AppMethodBeat.i(247742);
-    h localh = new h();
-    localh.YBh = new Object[] { param$1, param$2, param$3, param$4, param$5, param$6, param$7 };
-    param$1 = (h)localh;
-    AppMethodBeat.o(247742);
-    return param$1;
-  }
-  
-  public static <$1> b<$1> ev($1 param$1)
-  {
-    AppMethodBeat.i(74899);
-    b localb = new b();
-    localb.YBh = new Object[] { param$1 };
-    param$1 = (b)localb;
-    AppMethodBeat.o(74899);
-    return param$1;
-  }
-  
-  public static <$1, $2, $3> d<$1, $2, $3> h($1 param$1, $2 param$2, $3 param$3)
+  public static <$1, $2, $3> d<$1, $2, $3> g($1 param$1, $2 param$2, $3 param$3)
   {
     AppMethodBeat.i(74901);
     d locald = new d();
-    locald.YBh = new Object[] { param$1, param$2, param$3 };
+    locald.agvE = new Object[] { param$1, param$2, param$3 };
     param$1 = (d)locald;
     AppMethodBeat.o(74901);
     return param$1;
   }
   
-  final <T> T J(Object... paramVarArgs)
+  public static <$1> b<$1> gT($1 param$1)
   {
-    this.YBh = paramVarArgs;
+    AppMethodBeat.i(74899);
+    b localb = new b();
+    localb.agvE = new Object[] { param$1 };
+    param$1 = (b)localb;
+    AppMethodBeat.o(74899);
+    return param$1;
+  }
+  
+  final <T> T N(Object... paramVarArgs)
+  {
+    this.agvE = paramVarArgs;
     return this;
   }
   
   public final <T> T get(int paramInt)
   {
-    if (this.YBh.length <= paramInt) {
+    if (this.agvE.length <= paramInt) {
       return null;
     }
-    return this.YBh[paramInt];
+    return this.agvE[paramInt];
   }
   
   public final int size()
   {
-    if (this.YBh == null) {
+    if (this.agvE == null) {
       return 0;
     }
-    return this.YBh.length;
+    return this.agvE.length;
   }
   
   public String toString()
@@ -93,7 +93,7 @@ public class a
     AppMethodBeat.i(74903);
     Object localObject1 = new StringBuilder();
     int j = 1;
-    Object[] arrayOfObject = this.YBh;
+    Object[] arrayOfObject = this.agvE;
     int k = arrayOfObject.length;
     int i = 0;
     if (i < k)
@@ -117,7 +117,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.vending.j.a
  * JD-Core Version:    0.7.0.1
  */

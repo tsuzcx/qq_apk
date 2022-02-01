@@ -1,20 +1,15 @@
 package com.tencent.mm.view;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/IViewActionCallback;", "Lcom/tencent/mm/view/IPreViewDataCallback;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/IPreViewDataCallback;", "", "onPreFinishLoadMore", "", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface j
-  extends i
 {
-  public abstract void onChanged();
+  public abstract void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramd);
   
-  public abstract void onItemRangeChanged(int paramInt1, int paramInt2);
+  public abstract void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramd);
   
-  public abstract void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void onItemRangeInserted(int paramInt1, int paramInt2);
-  
-  public abstract void onItemRangeRemoved(int paramInt1, int paramInt2);
+  public abstract void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramd);
 }
 
 

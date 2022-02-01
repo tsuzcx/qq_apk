@@ -7,47 +7,11 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class x
   implements m
 {
-  private h vjH;
+  private h yvF;
   
   public x(h paramh)
   {
-    this.vjH = paramh;
-  }
-  
-  public final boolean Js(long paramLong)
-  {
-    AppMethodBeat.i(23705);
-    u.dak().Jp(paramLong);
-    try
-    {
-      boolean bool = this.vjH.Js(paramLong);
-      AppMethodBeat.o(23705);
-      return bool;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.e("MicroMsg.exdevice.RDeviceTaskDispatcher", "stopChannel failed!!! %s", new Object[] { localRemoteException.getMessage() });
-      Log.printErrStackTrace("MicroMsg.exdevice.RDeviceTaskDispatcher", localRemoteException, "", new Object[0]);
-      AppMethodBeat.o(23705);
-    }
-    return false;
-  }
-  
-  public final boolean Jv(long paramLong)
-  {
-    AppMethodBeat.i(23714);
-    try
-    {
-      boolean bool = this.vjH.Jv(paramLong);
-      AppMethodBeat.o(23714);
-      return bool;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      Log.printErrStackTrace("MicroMsg.exdevice.RDeviceTaskDispatcher", localRemoteException, "", new Object[0]);
-      AppMethodBeat.o(23714);
-    }
-    return false;
+    this.yvF = paramh;
   }
   
   public final long a(p paramp)
@@ -55,7 +19,7 @@ public final class x
     AppMethodBeat.i(23706);
     try
     {
-      long l = this.vjH.a(paramp);
+      long l = this.yvF.a(paramp);
       AppMethodBeat.o(23706);
       return l;
     }
@@ -71,10 +35,10 @@ public final class x
   public final boolean a(long paramLong, int paramInt, k paramk)
   {
     AppMethodBeat.i(23704);
-    u.dak().Jp(paramLong);
+    u.dGD().lF(paramLong);
     try
     {
-      boolean bool = this.vjH.a(paramLong, paramInt, paramk);
+      boolean bool = this.yvF.a(paramLong, paramInt, paramk);
       AppMethodBeat.o(23704);
       return bool;
     }
@@ -92,7 +56,7 @@ public final class x
     AppMethodBeat.i(23713);
     try
     {
-      boolean bool = this.vjH.b(paramLong, 0, paramk);
+      boolean bool = this.yvF.b(paramLong, 0, paramk);
       AppMethodBeat.o(23713);
       return bool;
     }
@@ -109,7 +73,7 @@ public final class x
     AppMethodBeat.i(23707);
     try
     {
-      boolean bool = this.vjH.a(parami);
+      boolean bool = this.yvF.a(parami);
       AppMethodBeat.o(23707);
       return bool;
     }
@@ -127,7 +91,7 @@ public final class x
     AppMethodBeat.i(23711);
     try
     {
-      boolean bool = this.vjH.d(0, paramj);
+      boolean bool = this.yvF.d(0, paramj);
       AppMethodBeat.o(23711);
       return bool;
     }
@@ -144,7 +108,7 @@ public final class x
     AppMethodBeat.i(23715);
     try
     {
-      boolean bool = this.vjH.a(params);
+      boolean bool = this.yvF.a(params);
       AppMethodBeat.o(23715);
       return bool;
     }
@@ -162,7 +126,7 @@ public final class x
     Log.i("MicroMsg.exdevice.RDeviceTaskDispatcher", "ranging, uuid = %s, op = %s", new Object[] { paramString, String.valueOf(paramBoolean) });
     try
     {
-      paramBoolean = this.vjH.a(paramString, paramBoolean, paramq);
+      paramBoolean = this.yvF.a(paramString, paramBoolean, paramq);
       AppMethodBeat.o(23709);
       return paramBoolean;
     }
@@ -180,7 +144,7 @@ public final class x
     AppMethodBeat.i(23701);
     try
     {
-      boolean bool = this.vjH.b(paramInt, paramj);
+      boolean bool = this.yvF.b(paramInt, paramj);
       AppMethodBeat.o(23701);
       return bool;
     }
@@ -198,7 +162,7 @@ public final class x
     AppMethodBeat.i(23716);
     try
     {
-      boolean bool = this.vjH.b(paramLong, paramArrayOfByte, paramt);
+      boolean bool = this.yvF.b(paramLong, paramArrayOfByte, paramt);
       AppMethodBeat.o(23716);
       return bool;
     }
@@ -215,7 +179,7 @@ public final class x
     AppMethodBeat.i(23712);
     try
     {
-      boolean bool = this.vjH.e(0, paramj);
+      boolean bool = this.yvF.e(0, paramj);
       AppMethodBeat.o(23712);
       return bool;
     }
@@ -232,7 +196,7 @@ public final class x
     AppMethodBeat.i(23710);
     try
     {
-      this.vjH.a(paramn);
+      this.yvF.a(paramn);
       AppMethodBeat.o(23710);
       return true;
     }
@@ -250,7 +214,7 @@ public final class x
     AppMethodBeat.i(23702);
     try
     {
-      boolean bool = this.vjH.c(paramInt, paramj);
+      boolean bool = this.yvF.c(paramInt, paramj);
       AppMethodBeat.o(23702);
       return bool;
     }
@@ -263,12 +227,12 @@ public final class x
     return false;
   }
   
-  public final long[] cZN()
+  public final long[] dGg()
   {
     AppMethodBeat.i(23703);
     try
     {
-      long[] arrayOfLong = this.vjH.cZN();
+      long[] arrayOfLong = this.yvF.dGg();
       AppMethodBeat.o(23703);
       return arrayOfLong;
     }
@@ -281,13 +245,49 @@ public final class x
     return null;
   }
   
+  public final boolean lI(long paramLong)
+  {
+    AppMethodBeat.i(23705);
+    u.dGD().lF(paramLong);
+    try
+    {
+      boolean bool = this.yvF.lI(paramLong);
+      AppMethodBeat.o(23705);
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      Log.e("MicroMsg.exdevice.RDeviceTaskDispatcher", "stopChannel failed!!! %s", new Object[] { localRemoteException.getMessage() });
+      Log.printErrStackTrace("MicroMsg.exdevice.RDeviceTaskDispatcher", localRemoteException, "", new Object[0]);
+      AppMethodBeat.o(23705);
+    }
+    return false;
+  }
+  
+  public final boolean lL(long paramLong)
+  {
+    AppMethodBeat.i(23714);
+    try
+    {
+      boolean bool = this.yvF.lL(paramLong);
+      AppMethodBeat.o(23714);
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      Log.printErrStackTrace("MicroMsg.exdevice.RDeviceTaskDispatcher", localRemoteException, "", new Object[0]);
+      AppMethodBeat.o(23714);
+    }
+    return false;
+  }
+  
   public final void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23708);
     Log.i("MicroMsg.exdevice.RDeviceTaskDispatcher", "------setChannelSessionKey------ deviceId = %d", new Object[] { Long.valueOf(paramLong) });
     try
     {
-      this.vjH.setChannelSessionKey(paramLong, paramArrayOfByte);
+      this.yvF.setChannelSessionKey(paramLong, paramArrayOfByte);
       AppMethodBeat.o(23708);
       return;
     }
@@ -300,7 +300,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.x
  * JD-Core Version:    0.7.0.1
  */

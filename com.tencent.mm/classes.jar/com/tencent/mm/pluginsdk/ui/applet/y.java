@@ -4,7 +4,7 @@ public abstract interface y
 {
   public static abstract interface b
   {
-    public abstract void tD(boolean paramBoolean);
+    public abstract void onDialogClick(boolean paramBoolean);
   }
 }
 

@@ -7,140 +7,137 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.finder.live.model.aj;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
+import com.tencent.mm.plugin.finder.utils.aw;
+import com.tencent.mm.plugin.findersdk.a.cn;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.ax;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.ui.bf;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.libpag.PAGFile;
 import org.libpag.PAGView;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorMusicGuidePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "MUSIC_GUIDE_ANIMATION_FILE", "", "getMUSIC_GUIDE_ANIMATION_FILE", "()Ljava/lang/String;", "TAG", "enableMusic", "", "getEnableMusic", "()Z", "setEnableMusic", "(Z)V", "guideAnim", "Lorg/libpag/PAGView;", "getGuideAnim", "()Lorg/libpag/PAGView;", "setGuideAnim", "(Lorg/libpag/PAGView;)V", "guideTv", "Landroid/widget/TextView;", "getGuideTv", "()Landroid/widget/TextView;", "setGuideTv", "(Landroid/widget/TextView;)V", "haveShowGuide", "getHaveShowGuide", "setHaveShowGuide", "isPagEnable", "checkVisible", "", "enableVolumeGuide", "hideGuideView", "initGuideView", "showGuideView", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAnchorMusicGuidePlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "MUSIC_GUIDE_ANIMATION_FILE", "", "getMUSIC_GUIDE_ANIMATION_FILE", "()Ljava/lang/String;", "TAG", "enableMusic", "", "getEnableMusic", "()Z", "setEnableMusic", "(Z)V", "guideAnim", "Lorg/libpag/PAGView;", "getGuideAnim", "()Lorg/libpag/PAGView;", "setGuideAnim", "(Lorg/libpag/PAGView;)V", "guideTv", "Landroid/widget/TextView;", "getGuideTv", "()Landroid/widget/TextView;", "setGuideTv", "(Landroid/widget/TextView;)V", "haveShowGuide", "getHaveShowGuide", "setHaveShowGuide", "isPagEnable", "kotlin.jvm.PlatformType", "()Ljava/lang/Boolean;", "Ljava/lang/Boolean;", "checkVisible", "", "enableVolumeGuide", "hideGuideView", "initGuideView", "showGuideView", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends d
+  extends b
 {
+  private final String CWi;
+  PAGView CWj;
+  TextView CWk;
+  private boolean CWl;
+  private boolean CWm;
+  final Boolean CyU;
   final String TAG;
-  private final com.tencent.mm.live.c.b kCL;
-  final boolean yaB;
-  private final String ynp;
-  PAGView ynq;
-  TextView ynr;
-  private boolean yns;
-  private boolean ynt;
+  private final com.tencent.mm.live.b.b nfT;
   
-  public t(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  public t(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(290126);
-    this.kCL = paramb;
+    AppMethodBeat.i(353795);
+    this.nfT = paramb;
     this.TAG = "Finder.LiveAnchorGuidePlugin";
-    this.ynp = "finder_live_anchor_music_guide.pag";
-    paramb = h.ag(PluginFinder.class);
-    p.j(paramb, "MMKernel.plugin(PluginFinder::class.java)");
-    this.yaB = ((PluginFinder)paramb).isPagEnable();
-    paramb = h.aHG();
-    p.j(paramb, "MMKernel.storage()");
-    paramb = paramb.aHp().get(ar.a.VyZ, Boolean.FALSE);
+    this.CWi = "finder_live_anchor_music_guide.pag";
+    this.CyU = ((cn)h.az(cn.class)).isPagEnable();
+    paramb = h.baE().ban().get(at.a.adaV, Boolean.FALSE);
     if (paramb == null)
     {
-      paramViewGroup = new kotlin.t("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(290126);
+      paramViewGroup = new NullPointerException("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(353795);
       throw paramViewGroup;
     }
-    this.yns = ((Boolean)paramb).booleanValue();
-    paramb = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-    this.ynt = com.tencent.mm.plugin.finder.live.utils.a.dEG();
-    if (this.ynt) {
-      paramViewGroup.post((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(269766);
-          Object localObject = this.kCW.getLayoutParams();
-          if (localObject == null)
-          {
-            localObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-            AppMethodBeat.o(269766);
-            throw ((Throwable)localObject);
-          }
-          localObject = (ViewGroup.MarginLayoutParams)localObject;
-          ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += ax.aB(this.kCW.getContext());
-          AppMethodBeat.o(269766);
-        }
-      });
+    this.CWl = ((Boolean)paramb).booleanValue();
+    paramb = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+    this.CWm = com.tencent.mm.plugin.finder.live.utils.a.euF();
+    if (this.CWm) {
+      paramViewGroup.post(new t..ExternalSyntheticLambda0(paramViewGroup));
     }
-    AppMethodBeat.o(290126);
+    AppMethodBeat.o(353795);
   }
   
-  public final void dAH()
+  private static final void x(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(290125);
-    Object localObject = ah.yhC;
-    localObject = ah.dzB();
-    if (localObject != null)
+    AppMethodBeat.i(353801);
+    s.u(paramViewGroup, "$root");
+    Object localObject = paramViewGroup.getLayoutParams();
+    if (localObject == null)
     {
-      localObject = Boolean.valueOf(((com.tencent.mm.live.core.core.trtc.a)localObject).knH);
-      boolean bool = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).dGY();
-      Log.i(this.TAG, "enableVolumeGuide isPlayingBgMusic:" + localObject + ", enableMusic:" + this.ynt + ", liveStatus:" + ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zfv + ", checkVisible haveShowGuide:" + this.yns + ", isPagEnable:" + this.yaB + ", isMicLinking:" + bool);
-      if ((this.yns) || (!this.ynt) || (!p.h(localObject, Boolean.TRUE)) || (!((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted()) || (bool)) {
-        break label398;
+      paramViewGroup = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+      AppMethodBeat.o(353801);
+      throw paramViewGroup;
+    }
+    localObject = (ViewGroup.MarginLayoutParams)localObject;
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin += bf.bk(paramViewGroup.getContext());
+    AppMethodBeat.o(353801);
+  }
+  
+  public final void eoD()
+  {
+    AppMethodBeat.i(353818);
+    Object localObject = aj.CGT;
+    localObject = aj.elM();
+    if (localObject == null)
+    {
+      localObject = null;
+      boolean bool = ((e)business(e.class)).eyK();
+      Log.i(this.TAG, "enableVolumeGuide isPlayingBgMusic:" + localObject + ", enableMusic:" + this.CWm + ", liveStatus:" + ((e)business(e.class)).EcT + ", checkVisible haveShowGuide:" + this.CWl + ", isPagEnable:" + this.CyU + ", isMicLinking:" + bool);
+      if ((this.CWl) || (!this.CWm) || (!s.p(localObject, Boolean.TRUE)) || (!((e)business(e.class)).isLiveStarted()) || (bool)) {
+        break label390;
       }
     }
-    label398:
+    label390:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        if ((!this.yns) && (this.yaB))
+        if (!this.CWl)
         {
-          Log.i(this.TAG, "showGuideView");
-          localObject = h.aHG();
-          p.j(localObject, "MMKernel.storage()");
-          ((f)localObject).aHp().set(ar.a.VyZ, Boolean.TRUE);
-          this.yns = true;
-          localObject = aj.AGc;
-          aj.aFQ("FinderLiveAnchorGuidePlugin");
-          if (this.ynq == null)
+          localObject = this.CyU;
+          s.s(localObject, "isPagEnable");
+          if (((Boolean)localObject).booleanValue())
           {
-            this.ynq = ((PAGView)this.kiF.findViewById(b.f.music_guide_anim));
-            localObject = this.ynq;
-            if (localObject != null)
+            Log.i(this.TAG, "showGuideView");
+            h.baE().ban().set(at.a.adaV, Boolean.TRUE);
+            this.CWl = true;
+            localObject = aw.Gjk;
+            aw.aBW("FinderLiveAnchorGuidePlugin");
+            if (this.CWj == null)
             {
-              Context localContext = this.kiF.getContext();
-              p.j(localContext, "root.context");
-              ((PAGView)localObject).setFile(PAGFile.Load(localContext.getAssets(), this.ynp));
+              this.CWj = ((PAGView)this.mJe.findViewById(p.e.BYq));
+              localObject = this.CWj;
+              if (localObject != null) {
+                ((PAGView)localObject).setFile(PAGFile.Load(this.mJe.getContext().getAssets(), this.CWi));
+              }
+              localObject = this.CWj;
+              if (localObject != null) {
+                ((PAGView)localObject).setRepeatCount(0);
+              }
             }
-            localObject = this.ynq;
+            if (this.CWk == null) {
+              this.CWk = ((TextView)this.mJe.findViewById(p.e.BYr));
+            }
+            localObject = this.CWj;
             if (localObject != null) {
-              ((PAGView)localObject).setRepeatCount(0);
+              ((PAGView)localObject).play();
             }
-          }
-          if (this.ynr == null) {
-            this.ynr = ((TextView)this.kiF.findViewById(b.f.music_guide_tv));
-          }
-          localObject = this.ynq;
-          if (localObject != null) {
-            ((PAGView)localObject).play();
-          }
-          localObject = this.ynq;
-          if (localObject != null) {
-            ((PAGView)localObject).setVisibility(0);
-          }
-          localObject = this.ynr;
-          if (localObject != null) {
-            ((TextView)localObject).setVisibility(0);
+            localObject = this.CWj;
+            if (localObject != null) {
+              ((PAGView)localObject).setVisibility(0);
+            }
+            localObject = this.CWk;
+            if (localObject != null) {
+              ((TextView)localObject).setVisibility(0);
+            }
           }
         }
-        tU(0);
+        tO(0);
       }
-      AppMethodBeat.o(290125);
+      AppMethodBeat.o(353818);
       return;
-      localObject = null;
+      localObject = Boolean.valueOf(((com.tencent.mm.live.core.core.trtc.a)localObject).mRI);
       break;
     }
   }

@@ -1,249 +1,176 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.nn;
-import com.tencent.mm.f.a.nn.b;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import java.util.List;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.ftr;
+import com.tencent.mm.protocal.protobuf.fts;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.y;
 
 public final class a
+  extends p
+  implements m
 {
-  public static final void a(f paramf)
+  private int audioFormat;
+  private h callback;
+  private String filemd5;
+  String filename;
+  private String oUw;
+  private int oUx;
+  private int oUy;
+  private int oUz;
+  MTimerHandler orP;
+  private c rr;
+  private int sampleRate;
+  
+  public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(136995);
-    MMHandlerThread.postToMainThread(new Runnable()
+    AppMethodBeat.i(148371);
+    this.oUw = null;
+    this.filemd5 = null;
+    this.filename = null;
+    this.sampleRate = 0;
+    this.oUx = 0;
+    this.audioFormat = 0;
+    this.oUy = 0;
+    this.oUz = 5;
+    this.orP = new MTimerHandler(new MTimerHandler.CallBack()
     {
-      public final void run()
+      public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(136988);
-        nn localnn = new nn();
-        localnn.fLT.action = 6;
-        localnn.fLT.fLV = this.lVl;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136988);
+        AppMethodBeat.i(148370);
+        long l = y.bEl(a.a(a.this));
+        Log.d("MicroMsg.NetSceneUploadMedia", f.aPX() + " onTimerExpired: file:" + a.a(a.this) + " nowlen:" + l + " oldoff:" + a.b(a.this));
+        if (a.this.doScene(a.c(a.this), a.d(a.this)) == -1) {
+          a.d(a.this).onSceneEnd(3, -1, "doScene failed", a.this);
+        }
+        AppMethodBeat.o(148370);
+        return false;
       }
-    });
-    AppMethodBeat.o(136995);
+    }, true);
+    this.oUw = Util.nowMilliSecond();
+    this.filename = paramString;
+    this.oUz = paramInt1;
+    this.sampleRate = paramInt2;
+    this.oUx = paramInt3;
+    this.audioFormat = paramInt4;
+    paramInt1 = (int)y.bEl(this.filename);
+    this.filemd5 = com.tencent.mm.b.g.getMessageDigest(y.bi(this.filename, 0, paramInt1));
+    AppMethodBeat.o(148371);
   }
   
-  public static void b(f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
-    AppMethodBeat.i(257263);
-    nn localnn = new nn();
-    localnn.fLT.action = 16;
-    localnn.fLT.fLV = paramf;
-    EventCenter.instance.publish(localnn);
-    AppMethodBeat.o(257263);
-  }
-  
-  public static f bnA()
-  {
-    AppMethodBeat.i(136999);
-    Object localObject = new nn();
-    ((nn)localObject).fLT.action = -2;
-    EventCenter.instance.publish((IEvent)localObject);
-    localObject = ((nn)localObject).fLU.fLV;
-    AppMethodBeat.o(136999);
-    return localObject;
-  }
-  
-  public static c bnB()
-  {
-    AppMethodBeat.i(137003);
-    Object localObject = new nn();
-    ((nn)localObject).fLT.action = 8;
-    EventCenter.instance.publish((IEvent)localObject);
-    localObject = ((nn)localObject).fLU.fLZ;
-    AppMethodBeat.o(137003);
-    return localObject;
-  }
-  
-  public static final void bnt()
-  {
-    AppMethodBeat.i(136991);
-    MMHandlerThread.postToMainThread(new Runnable()
+    int i = 3960;
+    AppMethodBeat.i(148372);
+    this.callback = paramh;
+    int k = (int)y.bEl(this.filename);
+    Log.d("MicroMsg.NetSceneUploadMedia", f.aPX() + " read file:" + this.filename + " filelen:" + k + " oldoff:" + this.oUy + "this.filemd5 " + this.filemd5);
+    if (k <= 0)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(136981);
-        nn localnn = new nn();
-        localnn.fLT.action = 1;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136981);
-      }
-    });
-    AppMethodBeat.o(136991);
-  }
-  
-  public static final void bnu()
-  {
-    AppMethodBeat.i(136992);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136983);
-        nn localnn = new nn();
-        localnn.fLT.action = 2;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136983);
-      }
-    });
-    AppMethodBeat.o(136992);
-  }
-  
-  public static final void bnv()
-  {
-    AppMethodBeat.i(136993);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136984);
-        nn localnn = new nn();
-        localnn.fLT.action = -1;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136984);
-      }
-    });
-    AppMethodBeat.o(136993);
-  }
-  
-  public static final void bnw()
-  {
-    AppMethodBeat.i(136994);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136987);
-        nn localnn = new nn();
-        localnn.fLT.action = 11;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136987);
-      }
-    });
-    AppMethodBeat.o(136994);
-  }
-  
-  public static boolean bnx()
-  {
-    AppMethodBeat.i(136996);
-    nn localnn = new nn();
-    localnn.fLT.action = -3;
-    EventCenter.instance.publish(localnn);
-    boolean bool = localnn.fLU.result;
-    AppMethodBeat.o(136996);
-    return bool;
-  }
-  
-  public static boolean bny()
-  {
-    AppMethodBeat.i(136997);
-    nn localnn = new nn();
-    localnn.fLT.action = 10;
-    EventCenter.instance.publish(localnn);
-    boolean bool = localnn.fLU.result;
-    AppMethodBeat.o(136997);
-    return bool;
-  }
-  
-  public static boolean bnz()
-  {
-    AppMethodBeat.i(136998);
-    nn localnn = new nn();
-    localnn.fLT.action = 9;
-    EventCenter.instance.publish(localnn);
-    boolean bool = localnn.fLU.result;
-    AppMethodBeat.o(136998);
-    return bool;
-  }
-  
-  public static void c(f paramf)
-  {
-    AppMethodBeat.i(137000);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136989);
-        nn localnn = new nn();
-        localnn.fLT.action = 0;
-        localnn.fLT.fLV = this.lVh;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136989);
-      }
-    });
-    AppMethodBeat.o(137000);
-  }
-  
-  public static void d(f paramf)
-  {
-    AppMethodBeat.i(137001);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136982);
-        nn localnn = new nn();
-        localnn.fLT.action = 3;
-        localnn.fLT.fLV = this.lVh;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136982);
-      }
-    });
-    AppMethodBeat.o(137001);
-  }
-  
-  public static boolean e(f paramf)
-  {
-    if (paramf == null) {
-      return false;
+      Log.e("MicroMsg.NetSceneUploadMedia", "read failed :" + this.filename);
+      AppMethodBeat.o(148372);
+      return -1;
     }
-    switch (paramf.lVr)
+    int j = k - this.oUy;
+    if (j > 3960) {}
+    for (;;)
     {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public static void f(List<f> paramList, final int paramInt)
-  {
-    AppMethodBeat.i(182547);
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
+      Log.i("MicroMsg.NetSceneUploadMedia", f.aPX() + " read file:" + this.filename + " filelen:" + k + " oldoff:" + this.oUy + "  canReadLen " + i);
+      paramh = y.bi(this.filename, this.oUy, i);
+      if (paramh == null)
       {
-        AppMethodBeat.i(136990);
-        nn localnn = new nn();
-        localnn.fLT.action = 4;
-        localnn.fLT.fEp = this.lVm;
-        localnn.fLT.fLW = paramInt;
-        EventCenter.instance.publish(localnn);
-        AppMethodBeat.o(136990);
+        Log.e("MicroMsg.NetSceneUploadMedia", "read data error");
+        AppMethodBeat.o(148372);
+        return -1;
       }
-    });
-    AppMethodBeat.o(182547);
+      Object localObject = new c.a();
+      ((c.a)localObject).otE = new ftr();
+      ((c.a)localObject).otF = new fts();
+      ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/mmuploadmedia";
+      ((c.a)localObject).funcId = 240;
+      ((c.a)localObject).otG = 111;
+      ((c.a)localObject).respCmdId = 1000000111;
+      this.rr = ((c.a)localObject).bEF();
+      localObject = (ftr)c.b.b(this.rr.otB);
+      ((ftr)localObject).abRM = new etl().btH(this.oUw);
+      ((ftr)localObject).NkQ = new gol().df(paramh);
+      ((ftr)localObject).NkP = paramh.length;
+      ((ftr)localObject).abRN = new etl().btH(this.filemd5);
+      ((ftr)localObject).NkN = k;
+      ((ftr)localObject).NkO = this.oUy;
+      ((ftr)localObject).Idt = this.oUz;
+      ((ftr)localObject).abRO = 1;
+      ((ftr)localObject).abRP = this.sampleRate;
+      ((ftr)localObject).abRQ = this.oUx;
+      ((ftr)localObject).abRR = this.audioFormat;
+      i = dispatch(paramg, this.rr, this);
+      AppMethodBeat.o(148372);
+      return i;
+      i = j;
+    }
   }
   
-  public static boolean wG(int paramInt)
+  public final int getType()
   {
-    AppMethodBeat.i(137002);
-    nn localnn = new nn();
-    localnn.fLT.action = 7;
-    localnn.fLT.position = paramInt;
-    EventCenter.instance.publish(localnn);
-    boolean bool = localnn.fLU.result;
-    AppMethodBeat.o(137002);
-    return bool;
+    return 240;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(148373);
+    updateDispatchId(paramInt1);
+    Log.d("MicroMsg.NetSceneUploadMedia", f.aPX() + " onGYNetEnd file:" + this.filename + " errtype:" + paramInt2 + " errCode:" + paramInt3);
+    paramArrayOfByte = (ftr)c.b.b(((c)params).otB);
+    params = ((fts)c.c.b(((c)params).otC)).oOL;
+    Log.i("MicroMsg.NetSceneUploadMedia", "fileName:%s, md5:%s, totalLen:%d, dataLen:%d, startPos:%d", new Object[] { this.filename, params, Integer.valueOf(paramArrayOfByte.NkN), Integer.valueOf(paramArrayOfByte.NkP), Integer.valueOf(paramArrayOfByte.NkO) });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      Log.e("MicroMsg.NetSceneUploadMedia", f.aPX() + " onGYNetEnd file:" + this.filename + " errType:" + paramInt2 + " errCode:" + paramInt3);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(148373);
+      return;
+    }
+    if ((paramArrayOfByte.NkN <= paramArrayOfByte.NkP + paramArrayOfByte.NkO) && (params != null) && (!params.equals("0")))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(148373);
+      return;
+    }
+    paramInt1 = paramArrayOfByte.NkO;
+    this.oUy = (paramArrayOfByte.NkQ.abwJ + paramInt1);
+    Log.d("MicroMsg.NetSceneUploadMedia", "onGYNetEnd file:" + this.filename + " delay:500");
+    this.orP.startTimer(500L);
+    AppMethodBeat.o(148373);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 60;
+  }
+  
+  public final p.b securityVerificationChecked(s params)
+  {
+    return p.b.ouh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.bb.a
  * JD-Core Version:    0.7.0.1
  */

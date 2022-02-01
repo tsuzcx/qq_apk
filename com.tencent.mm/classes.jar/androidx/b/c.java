@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  static final int[] zF = new int[0];
-  static final long[] zG = new long[0];
-  static final Object[] zH = new Object[0];
+  static final int[] RS = new int[0];
+  static final long[] RT = new long[0];
+  static final Object[] RU = new Object[0];
   
-  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     int i = paramInt1 - 1;
     paramInt1 = 0;
@@ -33,7 +33,7 @@ public final class c
     return i;
   }
   
-  public static int a(long[] paramArrayOfLong, int paramInt, long paramLong)
+  static int a(long[] paramArrayOfLong, int paramInt, long paramLong)
   {
     int i = paramInt - 1;
     paramInt = 0;
@@ -59,15 +59,15 @@ public final class c
     return i;
   }
   
-  public static int aI(int paramInt)
+  public static int bh(int paramInt)
   {
-    AppMethodBeat.i(210214);
-    paramInt = aJ(paramInt * 8) / 8;
-    AppMethodBeat.o(210214);
+    AppMethodBeat.i(194519);
+    paramInt = bi(paramInt * 8) / 8;
+    AppMethodBeat.o(194519);
     return paramInt;
   }
   
-  private static int aJ(int paramInt)
+  private static int bi(int paramInt)
   {
     int i = 4;
     for (;;)
@@ -88,27 +88,27 @@ public final class c
   
   public static boolean equal(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(210215);
+    AppMethodBeat.i(194531);
     if ((paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2))))
     {
-      AppMethodBeat.o(210215);
+      AppMethodBeat.o(194531);
       return true;
     }
-    AppMethodBeat.o(210215);
+    AppMethodBeat.o(194531);
     return false;
   }
   
   public static int idealIntArraySize(int paramInt)
   {
-    AppMethodBeat.i(210213);
-    paramInt = aJ(paramInt * 4) / 4;
-    AppMethodBeat.o(210213);
+    AppMethodBeat.i(194514);
+    paramInt = bi(paramInt * 4) / 4;
+    AppMethodBeat.o(194514);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.b.c
  * JD-Core Version:    0.7.0.1
  */

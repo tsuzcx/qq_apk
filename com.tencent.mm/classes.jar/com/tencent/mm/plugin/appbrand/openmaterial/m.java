@@ -1,122 +1,83 @@
 package com.tencent.mm.plugin.appbrand.openmaterial;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ContextMenu.ContextMenuInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.c;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.au.h;
-import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.widget.a.e;
-import java.util.Collection;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/ListBottomSheetEnhanceLogic;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/BottomSheetEnhanceLogic;", "openMaterialScene", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;", "context", "Landroid/content/Context;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "openMaterialBottomSheet", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "(Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;Landroid/content/Context;Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;)V", "buildMoreOpenWaysView", "Landroid/view/View;", "enhance", "", "type", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController$EnhanceType;", "Companion", "plugin-appbrand-integration_release"})
-public final class m
-  extends c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/openmaterial/RawFunctionName2Show;", "Landroid/view/ContextMenu$ContextMenuInfo;", "line1", "", "line2", "needEllipsize", "", "(Ljava/lang/String;Ljava/lang/String;Z)V", "functionName2Show", "getFunctionName2Show", "()Ljava/lang/String;", "getLine1", "getLine2", "getNeedEllipsize", "()Z", "component1", "component2", "component3", "copy", "equals", "other", "", "hashCode", "", "toString", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class m
+  implements ContextMenu.ContextMenuInfo
 {
-  public static final a qmR;
+  final String trB;
+  final String trC;
+  final boolean trD;
+  final String trE;
   
-  static
+  public m(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(273483);
-    qmR = new a((byte)0);
-    AppMethodBeat.o(273483);
-  }
-  
-  public m(com.tencent.mm.plugin.appbrand.openmaterial.model.b paramb, Context paramContext, e parame, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, h paramh, l paraml)
-  {
-    super(paramb, paramContext, parame, paramAppBrandOpenMaterialCollection, paramh, paraml);
-    AppMethodBeat.i(273482);
-    AppMethodBeat.o(273482);
-  }
-  
-  public final void a(j.a parama)
-  {
-    AppMethodBeat.i(273481);
-    p.k(parama, "type");
-    Log.d("MicroMsg.AppBrand.ListBottomSheetEnhanceLogic", "enhance, type: ".concat(String.valueOf(parama)));
-    parama = ccN().qni;
-    p.j(parama, "openMaterialCollection.a…dOpenMaterialDetailModels");
-    if (!((Collection)parama).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(323509);
+    this.trB = paramString1;
+    this.trC = paramString2;
+    this.trD = paramBoolean;
+    if (this.trC == null) {}
+    for (paramString1 = this.trB;; paramString1 = this.trB + '\n' + this.trC)
     {
-      if (i != 0)
-      {
-        parama = this.kCR;
-        View localView = LayoutInflater.from(getContext()).inflate(au.g.app_brand_bottom_sheet_footer_more_open_ways, null);
-        i = getContext().getResources().getColor(au.c.normal_text_color);
-        Object localObject = (ImageView)localView.findViewById(au.f.more_open_ways_iv);
-        if (localObject != null) {
-          ((ImageView)localObject).setImageDrawable(au.o(getContext(), au.h.icons_filled_mini_program, i));
-        }
-        localObject = (TextView)localView.findViewById(au.f.more_open_ways_tv);
-        if (localObject != null) {
-          ((TextView)localObject).setTextColor(i);
-        }
-        localView.setOnClickListener((View.OnClickListener)new b(this));
-        p.j(localView, "moreOpenWaysView");
-        parama.setFooterView(localView);
-        this.qml.ccU();
-        if (this.kCR.isShowing()) {
-          d.a(this.kCR, getContext());
-        }
-      }
-      AppMethodBeat.o(273481);
+      this.trE = paramString1;
+      AppMethodBeat.o(323509);
       return;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/ListBottomSheetEnhanceLogic$Companion;", "", "()V", "canEnhance", "", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "plugin-appbrand-integration_release"})
-  public static final class a
+  public final boolean equals(Object paramObject)
   {
-    public static boolean b(AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection)
+    AppMethodBeat.i(323528);
+    if (this == paramObject)
     {
-      AppMethodBeat.i(274777);
-      p.k(paramAppBrandOpenMaterialCollection, "openMaterialCollection");
-      paramAppBrandOpenMaterialCollection = paramAppBrandOpenMaterialCollection.qni;
-      p.j(paramAppBrandOpenMaterialCollection, "openMaterialCollection.a…dOpenMaterialDetailModels");
-      if (!((Collection)paramAppBrandOpenMaterialCollection).isEmpty())
-      {
-        AppMethodBeat.o(274777);
-        return true;
-      }
-      AppMethodBeat.o(274777);
+      AppMethodBeat.o(323528);
+      return true;
+    }
+    if (!(paramObject instanceof m))
+    {
+      AppMethodBeat.o(323528);
       return false;
     }
+    paramObject = (m)paramObject;
+    if (!s.p(this.trB, paramObject.trB))
+    {
+      AppMethodBeat.o(323528);
+      return false;
+    }
+    if (!s.p(this.trC, paramObject.trC))
+    {
+      AppMethodBeat.o(323528);
+      return false;
+    }
+    if (this.trD != paramObject.trD)
+    {
+      AppMethodBeat.o(323528);
+      return false;
+    }
+    AppMethodBeat.o(323528);
+    return true;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
+  public final int hashCode()
   {
-    b(m paramm) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(273704);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/openmaterial/ListBottomSheetEnhanceLogic$buildMoreOpenWaysView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      Log.i("MicroMsg.AppBrand.ListBottomSheetEnhanceLogic", "buildMoreOpenWaysView#onClick");
-      this.qmS.kCR.bYF();
-      this.qmS.ccM().show();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/openmaterial/ListBottomSheetEnhanceLogic$buildMoreOpenWaysView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(273704);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(323514);
+    String str = "RawFunctionName2Show(line1=" + this.trB + ", line2=" + this.trC + ", needEllipsize=" + this.trD + ')';
+    AppMethodBeat.o(323514);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.m
  * JD-Core Version:    0.7.0.1
  */

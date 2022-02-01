@@ -1,25 +1,25 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"NO_DECISION", "", "NO_DECISION$annotations", "()V", "RETRY_ATOMIC", "RETRY_ATOMIC$annotations", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"NO_DECISION", "", "getNO_DECISION$annotations", "()V", "RETRY_ATOMIC", "getRETRY_ATOMIC$annotations", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  private static final Object abyQ;
-  public static final Object abyR;
+  public static final Object ajAf;
+  public static final Object ajAg;
   
   static
   {
     AppMethodBeat.i(118089);
-    abyQ = new v("NO_DECISION");
-    abyR = new v("RETRY_ATOMIC");
+    ajAf = new ac("NO_DECISION");
+    ajAg = new ac("RETRY_ATOMIC");
     AppMethodBeat.o(118089);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.b
  * JD-Core Version:    0.7.0.1
  */

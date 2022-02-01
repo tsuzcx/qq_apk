@@ -1,38 +1,37 @@
 package com.tencent.mm.plugin.recordvideo.model.audio;
 
 import android.content.Context;
-import android.net.Uri;
-import com.google.android.exoplayer2.c.c;
-import com.google.android.exoplayer2.h.g.a;
-import com.google.android.exoplayer2.h.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.thumbplayer.f.d.a;
+import com.tencent.mm.plugin.thumbplayer.e.b.b;
+import com.tencent.mm.plugin.thumbplayer.e.d;
+import com.tencent.mm.plugin.thumbplayer.e.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.vending.e.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager;", "", "()V", "TAG", "", "audioTaskMap", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioDownloadTask;", "", "cacheAudio", "", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "filePath", "cacheAudioWithLifcycle", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "cancelCache", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager;", "", "()V", "TAG", "", "audioTaskMap", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioDownloadTask;", "", "cacheAudio", "", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "filePath", "mediaInfo", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "cacheAudioAsync", "(Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "cacheAudioWithLifcycle", "lifecycleKeeper", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "cancelCache", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
 {
-  private static final k HMw;
-  public static final a HMx;
-  private final Map<Integer, b> HMv;
+  public static final k.a NJr;
+  private static final k NJt;
+  private final Map<Integer, b> NJs;
   private final String TAG;
   
   static
   {
     AppMethodBeat.i(75446);
-    HMx = new a((byte)0);
-    HMw = new k();
+    NJr = new k.a((byte)0);
+    NJt = new k();
     AppMethodBeat.o(75446);
   }
   
@@ -40,101 +39,87 @@ public final class k
   {
     AppMethodBeat.i(75445);
     this.TAG = "MicroMsg.StoryAudioManager";
-    this.HMv = Collections.synchronizedMap((Map)new HashMap());
+    this.NJs = Collections.synchronizedMap((Map)new HashMap());
     AppMethodBeat.o(75445);
   }
   
-  private void a(com.tencent.mm.vending.e.b<a> paramb, final AudioCacheInfo paramAudioCacheInfo, final m<? super Boolean, ? super String, x> paramm)
+  private void a(com.tencent.mm.vending.e.b<a> paramb, final AudioCacheInfo paramAudioCacheInfo, final m<? super Boolean, ? super String, ah> paramm)
   {
     AppMethodBeat.i(75443);
-    kotlin.g.b.p.k(paramAudioCacheInfo, "info");
-    Log.i(this.TAG, "cache audio " + paramAudioCacheInfo.HLC);
+    s.u(paramAudioCacheInfo, "info");
+    Log.i(this.TAG, s.X("cache audio ", Integer.valueOf(paramAudioCacheInfo.NID)));
+    int i;
     if (((CharSequence)paramAudioCacheInfo.decodeKey).length() == 0) {
       i = 1;
     }
+    Object localObject;
     while (i != 0)
     {
-      localObject = (b)this.HMv.get(Integer.valueOf(paramAudioCacheInfo.HLC));
+      localObject = (b)this.NJs.get(Integer.valueOf(paramAudioCacheInfo.NID));
       if (localObject == null)
       {
-        if (!u.agG(paramAudioCacheInfo.cachePath))
+        if (!y.ZC(paramAudioCacheInfo.cachePath))
         {
           paramb = new b(paramb, paramAudioCacheInfo);
-          paramb.h((m)new b(this, paramm, paramAudioCacheInfo));
+          paramb.r((m)new d(this, paramm, paramAudioCacheInfo));
           paramb.start();
-          paramm = this.HMv;
-          kotlin.g.b.p.j(paramm, "audioTaskMap");
-          paramm.put(Integer.valueOf(paramAudioCacheInfo.HLC), paramb);
+          paramm = this.NJs;
+          s.s(paramm, "audioTaskMap");
+          paramm.put(Integer.valueOf(paramAudioCacheInfo.NID), paramb);
           AppMethodBeat.o(75443);
           return;
           i = 0;
         }
         else
         {
-          Log.i(this.TAG, "cacheAudio is exist " + paramAudioCacheInfo.cachePath);
-          if (paramm != null)
-          {
-            paramm.invoke(Boolean.TRUE, paramAudioCacheInfo.cachePath);
-            AppMethodBeat.o(75443);
-            return;
+          Log.i(this.TAG, s.X("cacheAudio is exist ", paramAudioCacheInfo.cachePath));
+          if (paramm == null) {
+            break label352;
           }
+          paramm.invoke(Boolean.TRUE, paramAudioCacheInfo.cachePath);
           AppMethodBeat.o(75443);
         }
       }
       else
       {
-        ((b)localObject).h(paramm);
+        ((b)localObject).r(paramm);
         AppMethodBeat.o(75443);
         return;
       }
     }
-    if ((u.agG(paramAudioCacheInfo.cachePath)) && (u.bBQ(paramAudioCacheInfo.cachePath) > 0L) && (paramAudioCacheInfo.aGs))
+    if ((y.ZC(paramAudioCacheInfo.cachePath)) && (y.bEl(paramAudioCacheInfo.cachePath) > 0L) && (paramAudioCacheInfo.cached))
     {
       Log.i(this.TAG, "info is cached, directly invoke callback success");
       if (paramm != null)
       {
         paramm.invoke(Boolean.TRUE, paramAudioCacheInfo.cachePath);
         AppMethodBeat.o(75443);
-        return;
       }
-      AppMethodBeat.o(75443);
-      return;
     }
-    Log.i(this.TAG, "info is not cached, start download");
-    paramb = paramAudioCacheInfo.musicUrl;
-    if (paramb == null) {
-      kotlin.g.b.p.iCn();
+    else
+    {
+      Log.i(this.TAG, "info is not cached, start download");
+      paramb = paramAudioCacheInfo.musicUrl;
+      s.checkNotNull(paramb);
+      i = paramAudioCacheInfo.NID;
+      localObject = paramAudioCacheInfo.cachePath;
+      s.checkNotNull(localObject);
+      paramb = new com.tencent.mm.plugin.thumbplayer.a.b(String.valueOf(i), (String)localObject, paramb, 0, 0);
+      paramb.decodeKey = paramAudioCacheInfo.decodeKey;
+      if (paramAudioCacheInfo.NIJ) {
+        paramb.videoFlag = "A0";
+      }
+      a(paramb, paramm);
     }
-    int i = paramAudioCacheInfo.HLC;
-    Object localObject = paramAudioCacheInfo.cachePath;
-    if (localObject == null) {
-      kotlin.g.b.p.iCn();
-    }
-    paramb = new com.tencent.mm.plugin.thumbplayer.e.d(String.valueOf(i), (String)localObject, paramb, 0, 0);
-    paramb.decodeKey = paramAudioCacheInfo.decodeKey;
-    if (paramAudioCacheInfo.HLJ) {
-      paramb.videoFlag = "A0";
-    }
-    localObject = com.tencent.mm.plugin.thumbplayer.f.d.MTv;
-    localObject = MMApplicationContext.getContext();
-    kotlin.g.b.p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = d.a.iA((Context)localObject);
-    ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).setMute(true);
-    ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).ALj = true;
-    ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).setMediaInfo(paramb);
-    paramb = ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).MSQ;
-    if (paramb != null) {
-      paramb.MTi = ((m)new c(this, (com.tencent.mm.plugin.thumbplayer.f.b)localObject, paramm, paramAudioCacheInfo));
-    }
-    ((com.tencent.mm.plugin.thumbplayer.f.b)localObject).gos();
+    label352:
     AppMethodBeat.o(75443);
   }
   
-  public final void a(Context paramContext, AudioCacheInfo paramAudioCacheInfo, m<? super Boolean, ? super String, x> paramm)
+  public final void a(Context paramContext, AudioCacheInfo paramAudioCacheInfo, m<? super Boolean, ? super String, ah> paramm)
   {
     AppMethodBeat.i(75441);
-    kotlin.g.b.p.k(paramContext, "context");
-    kotlin.g.b.p.k(paramAudioCacheInfo, "info");
+    s.u(paramContext, "context");
+    s.u(paramAudioCacheInfo, "info");
     Log.i(this.TAG, "cacheAudio: " + paramContext + ", false");
     if ((paramContext instanceof MMFragmentActivity))
     {
@@ -142,17 +127,36 @@ public final class k
       AppMethodBeat.o(75441);
       return;
     }
-    Log.w(this.TAG, "context is not LifeCycle: ".concat(String.valueOf(paramContext)));
+    Log.w(this.TAG, s.X("context is not LifeCycle: ", paramContext));
     a(null, paramAudioCacheInfo, paramm);
     AppMethodBeat.o(75441);
   }
   
-  public final void a(AudioCacheInfo paramAudioCacheInfo, m<? super Boolean, ? super String, x> paramm)
+  public final void a(AudioCacheInfo paramAudioCacheInfo, m<? super Boolean, ? super String, ah> paramm)
   {
     AppMethodBeat.i(75440);
-    kotlin.g.b.p.k(paramAudioCacheInfo, "info");
+    s.u(paramAudioCacheInfo, "info");
     a(null, paramAudioCacheInfo, paramm);
     AppMethodBeat.o(75440);
+  }
+  
+  public final void a(final com.tencent.mm.plugin.thumbplayer.a.b paramb, final m<? super Boolean, ? super String, ah> paramm)
+  {
+    AppMethodBeat.i(279651);
+    s.u(paramb, "mediaInfo");
+    Object localObject = d.TFK;
+    localObject = MMApplicationContext.getContext();
+    s.s(localObject, "getContext()");
+    localObject = d.a.ks((Context)localObject);
+    ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).setMute(true);
+    ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).Flr = true;
+    ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).setMediaInfo(paramb);
+    b.b localb = ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).TFd;
+    if (localb != null) {
+      localb.TFy = ((m)new b(this, (com.tencent.mm.plugin.thumbplayer.e.b)localObject, paramm, paramb));
+    }
+    ((com.tencent.mm.plugin.thumbplayer.e.b)localObject).hLh();
+    AppMethodBeat.o(279651);
   }
   
   public final void c(AudioCacheInfo paramAudioCacheInfo)
@@ -160,54 +164,31 @@ public final class k
     AppMethodBeat.i(75444);
     if (paramAudioCacheInfo != null)
     {
-      paramAudioCacheInfo = (b)this.HMv.remove(Integer.valueOf(paramAudioCacheInfo.HLC));
-      if (paramAudioCacheInfo != null)
-      {
+      paramAudioCacheInfo = (b)this.NJs.remove(Integer.valueOf(paramAudioCacheInfo.NID));
+      if (paramAudioCacheInfo != null) {
         paramAudioCacheInfo.cancel();
-        AppMethodBeat.o(75444);
-        return;
       }
     }
     AppMethodBeat.o(75444);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager$Companion;", "", "()V", "instance", "Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager;", "getInstance", "()Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager;", "createSource", "Lcom/google/android/exoplayer2/source/MediaSource;", "cacheInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "userAgent", "", "plugin-recordvideo_release"})
-  public static final class a
-  {
-    public static com.google.android.exoplayer2.source.k a(AudioCacheInfo paramAudioCacheInfo, String paramString)
-    {
-      AppMethodBeat.i(75438);
-      kotlin.g.b.p.k(paramAudioCacheInfo, "cacheInfo");
-      kotlin.g.b.p.k(paramString, "userAgent");
-      if (paramAudioCacheInfo.aGs)
-      {
-        paramAudioCacheInfo = (com.google.android.exoplayer2.source.k)new com.google.android.exoplayer2.source.h(Uri.parse(u.n(paramAudioCacheInfo.cachePath, false)), (g.a)new r(), (com.google.android.exoplayer2.c.h)new c(), null, null);
-        AppMethodBeat.o(75438);
-        return paramAudioCacheInfo;
-      }
-      paramAudioCacheInfo = (com.google.android.exoplayer2.source.k)new com.google.android.exoplayer2.source.h(Uri.parse(paramAudioCacheInfo.musicUrl), (g.a)new com.google.android.exoplayer2.h.p(paramString), (com.google.android.exoplayer2.c.h)new c(), null, null);
-      AppMethodBeat.o(75438);
-      return paramAudioCacheInfo;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "filePath", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "ret", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements m<Boolean, String, x>
+    extends u
+    implements m<String, Integer, ah>
   {
-    b(k paramk, m paramm, AudioCacheInfo paramAudioCacheInfo)
+    b(k paramk, com.tencent.mm.plugin.thumbplayer.e.b paramb, m<? super Boolean, ? super String, ah> paramm, com.tencent.mm.plugin.thumbplayer.a.b paramb1)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "ret", "", "invoke"})
-  static final class c
-    extends q
-    implements m<String, Integer, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "success", "", "filePath", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements m<Boolean, String, ah>
   {
-    c(k paramk, com.tencent.mm.plugin.thumbplayer.f.b paramb, m paramm, AudioCacheInfo paramAudioCacheInfo)
+    d(k paramk, m<? super Boolean, ? super String, ah> paramm, AudioCacheInfo paramAudioCacheInfo)
     {
       super();
     }

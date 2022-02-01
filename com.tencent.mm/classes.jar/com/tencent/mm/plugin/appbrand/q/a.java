@@ -1,116 +1,77 @@
 package com.tencent.mm.plugin.appbrand.q;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI;
-import com.tencent.mm.plugin.ball.f.b;
-import com.tencent.mm.plugin.multitask.b.c;
-import com.tencent.mm.protocal.protobuf.apf;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.io.IOException;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
 
-public final class a
-  extends c
+public abstract interface a
 {
-  private String mFilePath;
-  private apf qhY;
-  private AppBrandTaskProxyUI qhZ;
-  private String qia;
+  public abstract void a(String paramString, b paramb);
   
-  public a(com.tencent.mm.plugin.multitask.a.a parama)
+  public abstract void a(String paramString, b paramb, a parama, boolean paramBoolean);
+  
+  public abstract String adN(String paramString);
+  
+  public abstract boolean cBX();
+  
+  public static abstract interface a
   {
-    super(parama);
-    AppMethodBeat.i(273009);
-    this.qhY = new apf();
-    this.qhZ = null;
-    this.mFilePath = "";
-    this.qia = "";
-    AppMethodBeat.o(273009);
+    public abstract void b(WxaPkgLoadProgress paramWxaPkgLoadProgress);
   }
   
-  public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, AppBrandTaskProxyUI paramAppBrandTaskProxyUI)
+  public static abstract interface b
   {
-    AppMethodBeat.i(273011);
-    Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
-    this.mFilePath = paramString1;
-    this.qia = paramString2;
-    this.qhZ = paramAppBrandTaskProxyUI;
-    super.I(4, b.aoC(paramString1));
-    this.qhY.SCl = false;
-    this.qhY.filePath = paramString1;
-    this.qhY.jmx = paramString2;
-    this.qhY.appId = paramString3;
-    this.qhY.processName = paramString4;
-    this.qhY.orn = paramBoolean;
-    this.qhY.tNG = 0;
-    try
+    public abstract void onLoadResult(a.d paramd);
+  }
+  
+  public static class c
+    implements a
+  {
+    public void a(String paramString, a.b paramb)
     {
-      this.FHd.field_data = this.qhY.toByteArray();
-      faR();
-      AppMethodBeat.o(273011);
-      return;
-    }
-    catch (IOException paramString1)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.AppBrandFilesMultiTaskHelper", "handleMultiTaskInfoClicked", new Object[] { paramString1 });
+      AppMethodBeat.i(176556);
+      if (paramb != null) {
+        paramb.onLoadResult(a.d.tma);
       }
+      AppMethodBeat.o(176556);
     }
-  }
-  
-  public final void akK(String paramString)
-  {
-    AppMethodBeat.i(273012);
-    Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "update processName: %s", new Object[] { paramString });
-    if (this.qhY != null) {
-      this.qhY.processName = paramString;
-    }
-    try
+    
+    public final void a(String paramString, a.b paramb, a.a parama, boolean paramBoolean)
     {
-      this.FHd.field_data = this.qhY.toByteArray();
-      faR();
-      AppMethodBeat.o(273012);
-      return;
+      AppMethodBeat.i(321590);
+      a(paramString, paramb);
+      AppMethodBeat.o(321590);
     }
-    catch (IOException paramString)
+    
+    public final String adN(String paramString)
     {
-      for (;;)
-      {
-        Log.e("MicroMsg.AppBrandFilesMultiTaskHelper", "updateAppid", new Object[] { paramString });
-      }
+      return "__APP__";
     }
-  }
-  
-  public final boolean cbG()
-  {
-    return true;
-  }
-  
-  public final boolean cbH()
-  {
-    return true;
-  }
-  
-  public final boolean cbI()
-  {
-    return false;
-  }
-  
-  public final void iV(boolean paramBoolean)
-  {
-    AppMethodBeat.i(273010);
-    if (paramBoolean)
+    
+    public final boolean cBX()
     {
-      Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "onMenuFloatBallSelected, enter float ball");
-      b(null, true);
-      this.qhZ.b(null);
+      return false;
     }
-    AppMethodBeat.o(273010);
+  }
+  
+  public static enum d
+  {
+    static
+    {
+      AppMethodBeat.i(134931);
+      tma = new d("OK", 0);
+      tmb = new d("FAIL", 1);
+      tmc = new d("CANCEL", 2);
+      tmd = new d("MODULE_NOT_FOUND", 3);
+      tme = new d[] { tma, tmb, tmc, tmd };
+      AppMethodBeat.o(134931);
+    }
+    
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.a
  * JD-Core Version:    0.7.0.1
  */

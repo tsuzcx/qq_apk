@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.card.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.CardBaseUI;
-import com.tencent.mm.plugin.card.d.d.a;
+import com.tencent.mm.plugin.card.c.d.a;
 import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.plugin.card.model.r;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 public class CardInvalidCardUI
   extends CardBaseUI
 {
-  public final void cFJ()
+  public final void djb()
   {
     AppMethodBeat.i(113467);
-    setMMTitle(a.g.tkD);
+    setMMTitle(a.g.wpb);
     addTextOptionMenu(0, getString(a.g.card_clear), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -33,7 +32,7 @@ public class CardInvalidCardUI
         return true;
       }
     });
-    if (this.tmr.getCount() > 0)
+    if (this.wqR.getCount() > 0)
     {
       enableOptionMenu(true);
       AppMethodBeat.o(113467);
@@ -43,14 +42,14 @@ public class CardInvalidCardUI
     AppMethodBeat.o(113467);
   }
   
-  public final n.a cFK()
+  public final n.a djc()
   {
-    return n.a.tpS;
+    return n.a.wur;
   }
   
   public int getLayoutId()
   {
-    return a.e.tiI;
+    return a.e.wnf;
   }
   
   public void initView()
@@ -68,24 +67,24 @@ public class CardInvalidCardUI
     AppMethodBeat.o(113465);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(113468);
-    super.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof r)))
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramp);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramp instanceof r)))
     {
-      if (!this.tmv) {
+      if (!this.wqV) {
         break label63;
       }
-      h.cO(this, getResources().getString(a.g.tjO));
+      k.cZ(this, getResources().getString(a.g.wol));
     }
     for (;;)
     {
-      this.tmv = false;
+      this.wqV = false;
       AppMethodBeat.o(113468);
       return;
       label63:
-      h.cO(this, getResources().getString(a.g.tjZ));
+      k.cZ(this, getResources().getString(a.g.wox));
     }
   }
   
@@ -97,7 +96,7 @@ public class CardInvalidCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardInvalidCardUI
  * JD-Core Version:    0.7.0.1
  */

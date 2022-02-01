@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h3m" android:background="@color/afz" android:paddingLeft="@dimen/hv" android:paddingRight="@dimen/hv" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h3x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
-        <ImageView android:id="@id/h3q" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginEnd="@dimen/ct" />
-        <com.tencent.mm.ui.widget.EllipsizeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="20.0dip">
-            <TextView android:textSize="@dimen/h_" android:textStyle="bold" android:textColor="@color/fr" android:ellipsize="end" android:id="@id/h3s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerVertical="true" android:layout_marginEnd="10.0dip" />
-            <TextView android:textSize="@dimen/h_" android:textColor="@color/a2x" android:id="@id/h3k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a2j" android:maxLines="1" android:layout_centerVertical="true" />
-        </com.tencent.mm.ui.widget.EllipsizeLayout>
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <include layout="@layout/a86" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/f0">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/cv9" android:contentDescription="@string/k1" style="@style/jd" />
+                    <ImageView android:layout_gravity="center" android:id="@id/cvd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_y" android:contentDescription="@string/k1" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ew">
+                    <TextView android:id="@id/cwv" android:text="{title}" style="@style/jk" />
+                    <TextView android:id="@id/cuu" android:visibility="gone" android:layout_marginTop="@dimen/f6" android:text="{desc}" style="@style/jh" />
+                    <TextView android:id="@id/cw8" android:visibility="gone" android:layout_marginTop="@dimen/f6" android:text="{source}" style="@style/jh" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/h3o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a35" android:maxLines="2" />
-    <FrameLayout android:orientation="vertical" android:id="@id/h3n" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/cb">
-        <ImageView android:layout_gravity="top" android:layout_width="fill_parent" style="@style/hx" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/gau" android:layout_width="fill_parent" android:layout_height="@dimen/cn">
-            <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:id="@id/gas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="15.0dip" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/uj" android:id="@id/gat" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/a34" android:layout_weight="1.0" android:layout_marginEnd="@dimen/cb" />
-        </LinearLayout>
-        <ImageView android:layout_gravity="bottom" android:layout_width="fill_parent" style="@style/hx" />
-    </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ah3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ss" android:layout_marginBottom="@dimen/sr">
-            <Button android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/h3l" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/a37" android:layout_weight="1.0" style="@style/p3" />
-            <View android:layout_width="18.0dip" android:layout_height="fill_parent" />
-            <Button android:textSize="@dimen/l" android:id="@id/h3t" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/a36" android:layout_weight="1.0" style="@style/ov" />
-        </LinearLayout>
-        <Button android:layout_gravity="center_horizontal" android:id="@id/ah4" android:visibility="gone" android:layout_marginTop="@dimen/ss" android:layout_marginBottom="@dimen/sr" android:text="@string/w1" style="@style/p3" />
-    </FrameLayout>
 </LinearLayout>

@@ -1,34 +1,21 @@
 package kotlin.g.b;
 
-import java.io.Serializable;
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/Lambda;", "R", "Lkotlin/jvm/internal/FunctionBase;", "Ljava/io/Serializable;", "arity", "", "(I)V", "getArity", "()I", "toString", "", "kotlin-stdlib"})
-public abstract class q<R>
-  implements Serializable, m<R>
+public class q
+  extends p
 {
-  private final int arity;
-  
-  public q(int paramInt)
+  public q(int paramInt1, Class paramClass, String paramString1, String paramString2, int paramInt2)
   {
-    this.arity = paramInt;
+    super(paramInt1, aiwK, paramClass, paramString1, paramString2, paramInt2);
   }
   
-  public int getArity()
+  public q(int paramInt, Object paramObject, Class paramClass, String paramString1, String paramString2)
   {
-    return this.arity;
-  }
-  
-  public String toString()
-  {
-    String str = ab.a(this);
-    p.j(str, "Reflection.renderLambdaToString(this)");
-    return str;
+    super(paramInt, paramObject, paramClass, paramString1, paramString2, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.g.b.q
  * JD-Core Version:    0.7.0.1
  */

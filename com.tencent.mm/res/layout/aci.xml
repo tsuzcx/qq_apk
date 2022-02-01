@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="@dimen/bu" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.finder.feed.FinderGridRcLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/hfw" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
-        <TextView android:textSize="@dimen/k6" android:textColor="@color/fm" android:ellipsize="end" android:id="@id/hg3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="{nickname}" android:maxLines="1" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hfv" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/bt" />
-    </LinearLayout>
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/cyr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/az" android:id="@id/cyy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:layout_marginBottom="@dimen/df" app:layout_constraintBottom_toBottomOf="@id/cyr" app:layout_constraintLeft_toLeftOf="@id/cyr" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bwt" />
+</com.tencent.mm.plugin.finder.feed.FinderGridRcLayout>

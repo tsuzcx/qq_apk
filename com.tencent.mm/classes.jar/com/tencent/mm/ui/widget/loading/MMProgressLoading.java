@@ -11,8 +11,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.c;
-import com.tencent.mm.cr.a.k;
+import com.tencent.mm.ck.a.c;
+import com.tencent.mm.ck.a.k;
 
 public class MMProgressLoading
   extends View
@@ -26,22 +26,22 @@ public class MMProgressLoading
   public MMProgressLoading(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(250151);
+    AppMethodBeat.i(251527);
     b(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.o(250151);
+    AppMethodBeat.o(251527);
   }
   
   public MMProgressLoading(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(250153);
+    AppMethodBeat.i(251531);
     b(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.o(250153);
+    AppMethodBeat.o(251531);
   }
   
   private void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(250155);
+    AppMethodBeat.i(251536);
     this.paint = new Paint();
     if (paramAttributeSet != null)
     {
@@ -52,7 +52,7 @@ public class MMProgressLoading
       this.startAngle = paramContext.getInt(a.k.ProgressLoading_loadStartAngle, -90);
       paramContext.recycle();
     }
-    AppMethodBeat.o(250155);
+    AppMethodBeat.o(251536);
   }
   
   public int getProgress()
@@ -62,7 +62,7 @@ public class MMProgressLoading
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(250156);
+    AppMethodBeat.i(251540);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
     int j = (int)(getWidth() / 2 * 0.175D);
@@ -86,21 +86,21 @@ public class MMProgressLoading
     RectF localRectF = new RectF(i - k, i - k, i + k, i + k);
     i = this.progress * 360 / this.max;
     paramCanvas.drawArc(localRectF, this.startAngle, i, false, this.paint);
-    AppMethodBeat.o(250156);
+    AppMethodBeat.o(251540);
   }
   
   public void setProgress(int paramInt)
   {
-    AppMethodBeat.i(250159);
+    AppMethodBeat.i(251546);
     this.progress = Math.max(0, paramInt);
     this.progress = Math.min(paramInt, this.max);
     invalidate();
-    AppMethodBeat.o(250159);
+    AppMethodBeat.o(251546);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.loading.MMProgressLoading
  * JD-Core Version:    0.7.0.1
  */

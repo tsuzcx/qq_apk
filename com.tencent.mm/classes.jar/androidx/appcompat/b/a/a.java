@@ -13,8 +13,8 @@ import android.util.StateSet;
 import androidx.appcompat.a.j;
 import androidx.b.h;
 import androidx.core.content.a.g;
-import androidx.k.a.a.c;
-import androidx.k.a.a.i;
+import androidx.l.a.a.c;
+import androidx.l.a.a.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -23,17 +23,17 @@ public class a
   extends d
 {
   private static final String LOGTAG;
-  private b iB;
-  private f iC;
-  private int iD;
-  private int iE;
-  private boolean iF;
+  private boolean jA;
+  private b jw;
+  private f jx;
+  private int jy;
+  private int jz;
   
   static
   {
-    AppMethodBeat.i(238724);
+    AppMethodBeat.i(199352);
     LOGTAG = a.class.getSimpleName();
-    AppMethodBeat.o(238724);
+    AppMethodBeat.o(199352);
   }
   
   public a()
@@ -44,48 +44,48 @@ public class a
   a(b paramb, Resources paramResources)
   {
     super((byte)0);
-    AppMethodBeat.i(238667);
-    this.iD = -1;
-    this.iE = -1;
+    AppMethodBeat.i(199306);
+    this.jy = -1;
+    this.jz = -1;
     a(new b(paramb, this, paramResources));
     onStateChange(getState());
     jumpToCurrentState();
-    AppMethodBeat.o(238667);
+    AppMethodBeat.o(199306);
   }
   
   public static a a(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(238669);
+    AppMethodBeat.i(199320);
     Object localObject = paramXmlPullParser.getName();
     if (!((String)localObject).equals("animated-selector"))
     {
       paramContext = new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": invalid animated-selector tag " + (String)localObject);
-      AppMethodBeat.o(238669);
+      AppMethodBeat.o(199320);
       throw paramContext;
     }
     localObject = new a();
     TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.j.AnimatedStateListDrawableCompat);
     ((a)localObject).setVisible(localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_visible, true), true);
-    b localb = ((a)localObject).iB;
+    b localb = ((a)localObject).jw;
     if (Build.VERSION.SDK_INT >= 21) {
       localb.mChangingConfigurations |= localTypedArray.getChangingConfigurations();
     }
-    localb.jj = localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_variablePadding, localb.jj);
-    localb.jm = localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_constantSize, localb.jm);
-    localb.jz = localTypedArray.getInt(a.j.AnimatedStateListDrawableCompat_android_enterFadeDuration, localb.jz);
-    localb.jA = localTypedArray.getInt(a.j.AnimatedStateListDrawableCompat_android_exitFadeDuration, localb.jA);
-    ((a)localObject).setDither(localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_dither, localb.jy));
+    localb.ke = localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_variablePadding, localb.ke);
+    localb.kh = localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_constantSize, localb.kh);
+    localb.ku = localTypedArray.getInt(a.j.AnimatedStateListDrawableCompat_android_enterFadeDuration, localb.ku);
+    localb.kv = localTypedArray.getInt(a.j.AnimatedStateListDrawableCompat_android_exitFadeDuration, localb.kv);
+    ((a)localObject).setDither(localTypedArray.getBoolean(a.j.AnimatedStateListDrawableCompat_android_dither, localb.kt));
     ((a)localObject).e(paramResources);
     localTypedArray.recycle();
     ((a)localObject).b(paramContext, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
     ((a)localObject).onStateChange(((a)localObject).getState());
-    AppMethodBeat.o(238669);
+    AppMethodBeat.o(199320);
     return localObject;
   }
   
   private void b(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(238677);
+    AppMethodBeat.i(199332);
     int m = paramXmlPullParser.getDepth() + 1;
     for (;;)
     {
@@ -145,7 +145,7 @@ public class a
             if (i != 2)
             {
               paramContext = new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <item> tag requires a 'drawable' attribute or child tag defining a drawable");
-              AppMethodBeat.o(238677);
+              AppMethodBeat.o(199332);
               throw paramContext;
             }
             if (!paramXmlPullParser.getName().equals("vector")) {
@@ -156,7 +156,7 @@ public class a
           while (localObject1 == null)
           {
             paramContext = new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <item> tag requires a 'drawable' attribute or child tag defining a drawable");
-            AppMethodBeat.o(238677);
+            AppMethodBeat.o(199332);
             throw paramContext;
             label406:
             if (Build.VERSION.SDK_INT >= 21) {
@@ -165,10 +165,10 @@ public class a
               localObject1 = Drawable.createFromXmlInner(paramResources, paramXmlPullParser, paramAttributeSet);
             }
           }
-          localObject2 = this.iB;
-          i = ((d.a)localObject2).b((Drawable)localObject1);
-          ((d.a)localObject2).jJ[i] = arrayOfInt;
-          ((b)localObject2).iI.put(i, Integer.valueOf(n));
+          localObject2 = this.jw;
+          i = ((d.a)localObject2).c((Drawable)localObject1);
+          ((d.a)localObject2).kF[i] = arrayOfInt;
+          ((b)localObject2).jD.put(i, Integer.valueOf(n));
         }
         else if (paramXmlPullParser.getName().equals("transition"))
         {
@@ -176,20 +176,12 @@ public class a
         }
       }
     }
-    AppMethodBeat.o(238677);
-  }
-  
-  private b bo()
-  {
-    AppMethodBeat.i(238680);
-    b localb = new b(this.iB, this, null);
-    AppMethodBeat.o(238680);
-    return localb;
+    AppMethodBeat.o(199332);
   }
   
   private int c(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(238678);
+    AppMethodBeat.i(199340);
     Object localObject = g.a(paramResources, paramTheme, paramAttributeSet, a.j.AnimatedStateListDrawableTransition);
     int i = ((TypedArray)localObject).getResourceId(a.j.AnimatedStateListDrawableTransition_android_fromId, -1);
     int j = ((TypedArray)localObject).getResourceId(a.j.AnimatedStateListDrawableTransition_android_toId, -1);
@@ -210,7 +202,7 @@ public class a
       if (k != 2)
       {
         paramContext = new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <transition> tag requires a 'drawable' attribute or child tag defining a drawable");
-        AppMethodBeat.o(238678);
+        AppMethodBeat.o(199340);
         throw paramContext;
       }
       if (!paramXmlPullParser.getName().equals("animated-vector")) {
@@ -221,7 +213,7 @@ public class a
     while (localObject == null)
     {
       paramContext = new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <transition> tag requires a 'drawable' attribute or child tag defining a drawable");
-      AppMethodBeat.o(238678);
+      AppMethodBeat.o(199340);
       throw paramContext;
       label227:
       if (Build.VERSION.SDK_INT >= 21) {
@@ -233,22 +225,30 @@ public class a
     if ((i == -1) || (j == -1))
     {
       paramContext = new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <transition> tag requires 'fromId' & 'toId' attributes");
-      AppMethodBeat.o(238678);
+      AppMethodBeat.o(199340);
       throw paramContext;
     }
-    i = this.iB.a(i, j, (Drawable)localObject, bool);
-    AppMethodBeat.o(238678);
+    i = this.jw.a(i, j, (Drawable)localObject, bool);
+    AppMethodBeat.o(199340);
     return i;
+  }
+  
+  private b ch()
+  {
+    AppMethodBeat.i(199346);
+    b localb = new b(this.jw, this, null);
+    AppMethodBeat.o(199346);
+    return localb;
   }
   
   protected final void a(b.b paramb)
   {
-    AppMethodBeat.i(238683);
+    AppMethodBeat.i(199409);
     super.a(paramb);
     if ((paramb instanceof b)) {
-      this.iB = ((b)paramb);
+      this.jw = ((b)paramb);
     }
-    AppMethodBeat.o(238683);
+    AppMethodBeat.o(199409);
   }
   
   public boolean isStateful()
@@ -258,45 +258,45 @@ public class a
   
   public void jumpToCurrentState()
   {
-    AppMethodBeat.i(238672);
+    AppMethodBeat.i(199373);
     super.jumpToCurrentState();
-    if (this.iC != null)
+    if (this.jx != null)
     {
-      this.iC.stop();
-      this.iC = null;
-      Z(this.iD);
-      this.iD = -1;
-      this.iE = -1;
+      this.jx.stop();
+      this.jx = null;
+      X(this.jy);
+      this.jy = -1;
+      this.jz = -1;
     }
-    AppMethodBeat.o(238672);
+    AppMethodBeat.o(199373);
   }
   
   public Drawable mutate()
   {
-    AppMethodBeat.i(238679);
-    if ((!this.iF) && (super.mutate() == this))
+    AppMethodBeat.i(199401);
+    if ((!this.jA) && (super.mutate() == this))
     {
-      this.iB.br();
-      this.iF = true;
+      this.jw.ck();
+      this.jA = true;
     }
-    AppMethodBeat.o(238679);
+    AppMethodBeat.o(199401);
     return this;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(238674);
-    int j = this.iB.b(paramArrayOfInt);
+    AppMethodBeat.i(199392);
+    int j = this.jw.e(paramArrayOfInt);
     Object localObject;
     int i;
     if (j != getCurrentIndex())
     {
-      localObject = this.iC;
+      localObject = this.jx;
       if (localObject != null) {
-        if (j == this.iD)
+        if (j == this.jy)
         {
           i = 1;
-          if ((i == 0) && (!Z(j))) {
+          if ((i == 0) && (!X(j))) {
             break label465;
           }
         }
@@ -312,28 +312,28 @@ public class a
       if (localObject != null) {
         bool2 = bool1 | ((Drawable)localObject).setState(paramArrayOfInt);
       }
-      AppMethodBeat.o(238674);
+      AppMethodBeat.o(199392);
       return bool2;
-      if ((j == this.iE) && (((f)localObject).bs()))
+      if ((j == this.jz) && (((f)localObject).cl()))
       {
-        ((f)localObject).bt();
-        this.iD = this.iE;
-        this.iE = j;
+        ((f)localObject).cm();
+        this.jy = this.jz;
+        this.jz = j;
         i = 1;
         break;
       }
-      i = this.iD;
+      i = this.jy;
       ((f)localObject).stop();
       int k;
       int m;
       for (;;)
       {
-        this.iC = null;
-        this.iE = -1;
-        this.iD = -1;
-        localObject = this.iB;
-        k = ((b)localObject).Y(i);
-        m = ((b)localObject).Y(j);
+        this.jx = null;
+        this.jz = -1;
+        this.jy = -1;
+        localObject = this.jw;
+        k = ((b)localObject).W(i);
+        m = ((b)localObject).W(j);
         if ((m != 0) && (k != 0)) {
           break label203;
         }
@@ -341,25 +341,25 @@ public class a
         break;
         i = getCurrentIndex();
       }
-      long l = b.g(k, m);
-      int n = (int)((Long)((b)localObject).iH.get(l, Long.valueOf(-1L))).longValue();
+      long l = b.l(k, m);
+      int n = (int)((Long)((b)localObject).jC.get(l, Long.valueOf(-1L))).longValue();
       if (n < 0)
       {
         i = 0;
         break;
       }
-      l = b.g(k, m);
+      l = b.l(k, m);
       Drawable localDrawable;
-      if ((((Long)((b)localObject).iH.get(l, Long.valueOf(-1L))).longValue() & 0x0) != 0L)
+      if ((((Long)((b)localObject).jC.get(l, Long.valueOf(-1L))).longValue() & 0x0) != 0L)
       {
         bool1 = true;
-        Z(n);
+        X(n);
         localDrawable = getCurrent();
         if (!(localDrawable instanceof AnimationDrawable)) {
           break label410;
         }
-        l = b.g(k, m);
-        if ((((Long)((b)localObject).iH.get(l, Long.valueOf(-1L))).longValue() & 0x0) == 0L) {
+        l = b.l(k, m);
+        if ((((Long)((b)localObject).jC.get(l, Long.valueOf(-1L))).longValue() & 0x0) == 0L) {
           break label404;
         }
         bool2 = true;
@@ -369,9 +369,9 @@ public class a
       for (;;)
       {
         ((f)localObject).start();
-        this.iC = ((f)localObject);
-        this.iE = i;
-        this.iD = j;
+        this.jx = ((f)localObject);
+        this.jz = i;
+        this.jy = j;
         i = 1;
         break;
         bool1 = false;
@@ -397,18 +397,18 @@ public class a
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(238670);
+    AppMethodBeat.i(199361);
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    if ((this.iC != null) && ((bool) || (paramBoolean2)))
+    if ((this.jx != null) && ((bool) || (paramBoolean2)))
     {
       if (!paramBoolean1) {
         break label47;
       }
-      this.iC.start();
+      this.jx.start();
     }
     for (;;)
     {
-      AppMethodBeat.o(238670);
+      AppMethodBeat.o(199361);
       return bool;
       label47:
       jumpToCurrentState();
@@ -418,97 +418,97 @@ public class a
   static final class b
     extends d.a
   {
-    androidx.b.d<Long> iH;
-    h<Integer> iI;
+    androidx.b.d<Long> jC;
+    h<Integer> jD;
     
     b(b paramb, a parama, Resources paramResources)
     {
       super(parama, paramResources);
-      AppMethodBeat.i(238635);
+      AppMethodBeat.i(199272);
       if (paramb != null)
       {
-        this.iH = paramb.iH;
-        this.iI = paramb.iI;
-        AppMethodBeat.o(238635);
+        this.jC = paramb.jC;
+        this.jD = paramb.jD;
+        AppMethodBeat.o(199272);
         return;
       }
-      this.iH = new androidx.b.d();
-      this.iI = new h();
-      AppMethodBeat.o(238635);
+      this.jC = new androidx.b.d();
+      this.jD = new h();
+      AppMethodBeat.o(199272);
     }
     
-    static long g(int paramInt1, int paramInt2)
+    static long l(int paramInt1, int paramInt2)
     {
       return paramInt1 << 32 | paramInt2;
     }
     
-    final int Y(int paramInt)
+    final int W(int paramInt)
     {
-      AppMethodBeat.i(238642);
+      AppMethodBeat.i(199298);
       if (paramInt < 0)
       {
-        AppMethodBeat.o(238642);
+        AppMethodBeat.o(199298);
         return 0;
       }
-      paramInt = ((Integer)this.iI.b(paramInt, Integer.valueOf(0))).intValue();
-      AppMethodBeat.o(238642);
+      paramInt = ((Integer)this.jD.d(paramInt, Integer.valueOf(0))).intValue();
+      AppMethodBeat.o(199298);
       return paramInt;
     }
     
     final int a(int paramInt1, int paramInt2, Drawable paramDrawable, boolean paramBoolean)
     {
-      AppMethodBeat.i(238638);
-      int i = super.b(paramDrawable);
-      long l2 = g(paramInt1, paramInt2);
+      AppMethodBeat.i(199288);
+      int i = super.c(paramDrawable);
+      long l2 = l(paramInt1, paramInt2);
       long l1 = 0L;
       if (paramBoolean) {
         l1 = 8589934592L;
       }
-      this.iH.b(l2, Long.valueOf(i | l1));
+      this.jC.b(l2, Long.valueOf(i | l1));
       if (paramBoolean)
       {
-        l2 = g(paramInt2, paramInt1);
-        this.iH.b(l2, Long.valueOf(l1 | i | 0x0));
+        l2 = l(paramInt2, paramInt1);
+        this.jC.b(l2, Long.valueOf(l1 | i | 0x0));
       }
-      AppMethodBeat.o(238638);
+      AppMethodBeat.o(199288);
       return i;
     }
     
-    final int b(int[] paramArrayOfInt)
+    final void ck()
     {
-      AppMethodBeat.i(238639);
-      int i = super.c(paramArrayOfInt);
+      AppMethodBeat.i(199284);
+      this.jC = this.jC.ll();
+      this.jD = this.jD.lo();
+      AppMethodBeat.o(199284);
+    }
+    
+    final int e(int[] paramArrayOfInt)
+    {
+      AppMethodBeat.i(199292);
+      int i = super.f(paramArrayOfInt);
       if (i >= 0)
       {
-        AppMethodBeat.o(238639);
+        AppMethodBeat.o(199292);
         return i;
       }
-      i = super.c(StateSet.WILD_CARD);
-      AppMethodBeat.o(238639);
+      i = super.f(StateSet.WILD_CARD);
+      AppMethodBeat.o(199292);
       return i;
-    }
-    
-    final void br()
-    {
-      AppMethodBeat.i(238636);
-      this.iH = this.iH.fe();
-      this.iI = this.iI.fg();
-      AppMethodBeat.o(238636);
     }
     
     public final Drawable newDrawable()
     {
-      AppMethodBeat.i(238643);
+      AppMethodBeat.i(199304);
       a locala = new a(this, null);
-      AppMethodBeat.o(238643);
+      AppMethodBeat.o(199304);
       return locala;
     }
     
     public final Drawable newDrawable(Resources paramResources)
     {
-      AppMethodBeat.i(238644);
+      AppMethodBeat.i(199312);
       paramResources = new a(this, paramResources);
-      AppMethodBeat.o(238644);
+      AppMethodBeat.o(199312);
       return paramResources;
     }
   }
@@ -516,37 +516,37 @@ public class a
   static final class c
     extends a.f
   {
-    private final c iJ;
+    private final c jE;
     
     c(c paramc)
     {
       super();
-      this.iJ = paramc;
+      this.jE = paramc;
     }
     
     public final void start()
     {
-      AppMethodBeat.i(238648);
-      this.iJ.start();
-      AppMethodBeat.o(238648);
+      AppMethodBeat.i(199271);
+      this.jE.start();
+      AppMethodBeat.o(199271);
     }
     
     public final void stop()
     {
-      AppMethodBeat.i(238649);
-      this.iJ.stop();
-      AppMethodBeat.o(238649);
+      AppMethodBeat.i(199278);
+      this.jE.stop();
+      AppMethodBeat.o(199278);
     }
   }
   
   static abstract class f
   {
-    public boolean bs()
+    public boolean cl()
     {
       return false;
     }
     
-    public void bt() {}
+    public void cm() {}
     
     public abstract void start();
     
@@ -555,7 +555,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.b.a.a
  * JD-Core Version:    0.7.0.1
  */

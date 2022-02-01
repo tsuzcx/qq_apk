@@ -1,29 +1,30 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.protocal.protobuf.equ;
+import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.protocal.protobuf.fly;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public final class d
-  implements h
+  implements com.tencent.mm.am.g
 {
-  private static int bdY(String paramString)
+  private static int bdg(String paramString)
   {
     int j = 0;
     AppMethodBeat.i(29457);
@@ -45,33 +46,33 @@ public final class d
     }
   }
   
-  private static String fM(List<equ> paramList)
+  private static String iK(List<fly> paramList)
   {
     AppMethodBeat.i(29458);
-    List localList = b.gin().eMr();
+    List localList = b.hCo().fUJ();
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     label187:
     for (;;)
     {
-      equ localequ;
+      fly localfly;
       if (paramList.hasNext())
       {
-        localequ = (equ)paramList.next();
+        localfly = (fly)paramList.next();
         Iterator localIterator = localList.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((equ)localIterator.next()).UserName.equals(localequ.UserName));
+        } while (!((fly)localIterator.next()).UserName.equals(localfly.UserName));
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label187;
         }
-        localLinkedList.add(localequ.UserName);
+        localLinkedList.add(localfly.UserName);
         break;
         if (localLinkedList.isEmpty())
         {
@@ -82,7 +83,7 @@ public final class d
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(com.tencent.mm.model.z.bcZ()))
+          if (!paramList.equals(z.bAM()))
           {
             AppMethodBeat.o(29458);
             return paramList;
@@ -95,33 +96,33 @@ public final class d
     }
   }
   
-  private static String fN(List<equ> paramList)
+  private static String iL(List<fly> paramList)
   {
     AppMethodBeat.i(29459);
-    Object localObject = b.gin().eMr();
+    Object localObject = b.hCo().fUJ();
     LinkedList localLinkedList = new LinkedList();
     localObject = ((List)localObject).iterator();
     label187:
     for (;;)
     {
-      equ localequ;
+      fly localfly;
       if (((Iterator)localObject).hasNext())
       {
-        localequ = (equ)((Iterator)localObject).next();
+        localfly = (fly)((Iterator)localObject).next();
         Iterator localIterator = paramList.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((equ)localIterator.next()).UserName.equals(localequ.UserName));
+        } while (!((fly)localIterator.next()).UserName.equals(localfly.UserName));
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label187;
         }
-        localLinkedList.add(localequ.UserName);
+        localLinkedList.add(localfly.UserName);
         break;
         if (localLinkedList.isEmpty())
         {
@@ -132,7 +133,7 @@ public final class d
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(com.tencent.mm.model.z.bcZ()))
+          if (!paramList.equals(z.bAM()))
           {
             AppMethodBeat.o(29459);
             return paramList;
@@ -145,39 +146,39 @@ public final class d
     }
   }
   
-  public final h.b b(h.a parama)
+  public final g.b b(g.a parama)
   {
     int k = 1;
     AppMethodBeat.i(29456);
-    Object localObject2 = parama.jQG;
+    Object localObject2 = parama.mpN;
     if (localObject2 == null)
     {
       Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(29456);
       return null;
     }
-    if (((db)localObject2).COi != 56)
+    if (((dl)localObject2).IIs != 56)
     {
-      Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(((db)localObject2).COi) });
+      Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(((dl)localObject2).IIs) });
       AppMethodBeat.o(29456);
       return null;
     }
-    Object localObject1 = com.tencent.mm.platformtools.z.a(((db)localObject2).RID);
-    parama = com.tencent.mm.platformtools.z.a(((db)localObject2).RIE);
-    bh.beI();
-    if (((String)c.aHp().b(2, null)).equals(localObject1)) {
+    Object localObject1 = w.a(((dl)localObject2).YFE);
+    parama = w.a(((dl)localObject2).YFF);
+    bh.bCz();
+    if (((String)c.ban().d(2, null)).equals(localObject1)) {
       localObject1 = parama;
     }
     for (;;)
     {
-      bh.beI();
-      parama = c.bbL().RG((String)localObject1);
-      if ((parama == null) || ((int)parama.jxt == 0))
+      bh.bCz();
+      parama = c.bzA().JE((String)localObject1);
+      if ((parama == null) || ((int)parama.maN == 0))
       {
-        bh.beI();
-        c.bbL().av(new as((String)localObject1));
+        bh.bCz();
+        c.bzA().aB(new au((String)localObject1));
       }
-      parama = com.tencent.mm.platformtools.z.a(((db)localObject2).RIF);
+      parama = w.a(((dl)localObject2).YFG);
       Log.d("MicroMsg.TalkRoomExtension", "talkroom xml:".concat(String.valueOf(parama)));
       localObject2 = XmlParser.parseXml(parama, "talkroominfo", null);
       if (localObject2 != null) {}
@@ -185,13 +186,13 @@ public final class d
       {
         try
         {
-          if (bdY((String)((Map)localObject2).get(".talkroominfo.tracksysmsgtype")) != 0) {
+          if (bdg((String)((Map)localObject2).get(".talkroominfo.tracksysmsgtype")) != 0) {
             break label529;
           }
-          bdY((String)((Map)localObject2).get(".talkroominfo.sysmsgtype"));
+          bdg((String)((Map)localObject2).get(".talkroominfo.sysmsgtype"));
           i = 1;
           LinkedList localLinkedList = new LinkedList();
-          bdY((String)((Map)localObject2).get(".talkroominfo.membersize"));
+          bdg((String)((Map)localObject2).get(".talkroominfo.membersize"));
           int j = 0;
           Object localObject3 = new StringBuilder(".talkroominfo.memberlist.member");
           if (j == 0)
@@ -201,10 +202,10 @@ public final class d
             parama = (String)((Map)localObject2).get((String)localObject3 + ".username");
             if (!Util.isNullOrNil(parama))
             {
-              int m = bdY((String)((Map)localObject2).get((String)localObject3 + ".memberid"));
-              localObject3 = new equ();
-              ((equ)localObject3).UserName = parama;
-              ((equ)localObject3).Uth = m;
+              int m = bdg((String)((Map)localObject2).get((String)localObject3 + ".memberid"));
+              localObject3 = new fly();
+              ((fly)localObject3).UserName = parama;
+              ((fly)localObject3).abMo = m;
               localLinkedList.add(localObject3);
               j += 1;
             }
@@ -214,15 +215,15 @@ public final class d
             parama = Integer.valueOf(j);
             continue;
           }
-          if (!((String)localObject1).equals(b.gin().Mkw)) {
+          if (!((String)localObject1).equals(b.hCo().SNR)) {
             break label521;
           }
-          localObject2 = fM(localLinkedList);
+          localObject2 = iK(localLinkedList);
           if (!Util.isNullOrNil((String)localObject2)) {
             break label516;
           }
-          parama = fN(localLinkedList);
-          localObject3 = b.gio();
+          parama = iL(localLinkedList);
+          localObject3 = b.hCp();
           j = k;
           if (i != 0) {
             j = 0;
@@ -251,11 +252,11 @@ public final class d
     }
   }
   
-  public final void b(h.c paramc) {}
+  public final void b(g.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,55 @@
 package com.tencent.mm.plugin.finder.live.widget;
 
-import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.MMRoundCornerImageView;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.blk;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;", "(Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView;Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;)V", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$FinderLiveQuestActivityTaskData;", "Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveTaskBannerView$ITaskData;", "data", "Lcom/tencent/mm/protocal/protobuf/FinderLiveQuestActivity;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveQuestActivity;)V", "getData", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveQuestActivity;", "getActivityId", "", "getH5Url", "getIconUrl", "getRemainClickTimes", "", "getSwitchInterval", "", "getWording", "setRemainClickTimes", "", "value", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveTaskBannerView$a
-  extends RecyclerView.v
+  implements FinderLiveTaskBannerView.c
 {
-  public FinderLiveTaskBannerView$a(MMRoundCornerImageView paramMMRoundCornerImageView)
+  final blk EuI;
+  
+  public FinderLiveTaskBannerView$a(blk paramblk)
   {
-    super((View)localObject);
-    AppMethodBeat.i(273367);
-    AppMethodBeat.o(273367);
+    AppMethodBeat.i(362078);
+    this.EuI = paramblk;
+    AppMethodBeat.o(362078);
+  }
+  
+  public final void Ql(int paramInt)
+  {
+    this.EuI.ZUB = paramInt;
+  }
+  
+  public final int eBD()
+  {
+    return this.EuI.ZUB;
+  }
+  
+  public final String eBE()
+  {
+    return this.EuI.Vyi;
+  }
+  
+  public final long eBF()
+  {
+    return this.EuI.ZUC * 1000L;
+  }
+  
+  public final String getH5Url()
+  {
+    return this.EuI.Kru;
+  }
+  
+  public final String getIconUrl()
+  {
+    return this.EuI.icon_url;
+  }
+  
+  public final String getWording()
+  {
+    return this.EuI.wording;
   }
 }
 

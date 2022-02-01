@@ -13,10 +13,10 @@ public final class a
   
   public static boolean huaweihasCutOut(Context paramContext)
   {
-    AppMethodBeat.i(259084);
+    AppMethodBeat.i(235309);
     if (paramContext == null)
     {
-      AppMethodBeat.o(259084);
+      AppMethodBeat.o(235309);
       return false;
     }
     try
@@ -24,7 +24,7 @@ public final class a
       paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
       boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
       b.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(259084);
+      AppMethodBeat.o(235309);
       return bool;
     }
     catch (ClassNotFoundException paramContext)
@@ -50,7 +50,7 @@ public final class a
     finally
     {
       b.d("MicroMsg.Vendor.Huawei", "huawei hasCutOut: %s", new Object[] { Boolean.FALSE });
-      AppMethodBeat.o(259084);
+      AppMethodBeat.o(235309);
     }
     return false;
   }

@@ -10,36 +10,36 @@ import java.util.LinkedList;
 
 public final class e
 {
-  private static LinkedList<String> Czh;
-  private static final String Czi;
-  private static final String Czj;
-  private static final String jUU;
+  private static LinkedList<String> IsT;
+  private static final String IsU;
+  private static final String IsV;
+  private static final String mvi;
   
   static
   {
     AppMethodBeat.i(149404);
-    Czh = new LinkedList();
-    Czi = MMApplicationContext.getPackageName();
-    jUU = MMApplicationContext.getPackageName() + ":tools";
-    Czj = MMApplicationContext.getPackageName() + ":toolsmp";
-    Czh.add(jUU);
-    Czh.add(Czj);
+    IsT = new LinkedList();
+    IsU = MMApplicationContext.getPackageName();
+    mvi = MMApplicationContext.getPackageName() + ":tools";
+    IsV = MMApplicationContext.getPackageName() + ":toolsmp";
+    IsT.add(mvi);
+    IsT.add(IsV);
     AppMethodBeat.o(149404);
   }
   
-  public static void aIZ(String paramString)
+  public static void aFK(String paramString)
   {
     AppMethodBeat.i(149402);
-    if ((paramString.equals(Czi)) || (Czh.contains(paramString))) {
-      a.ewa();
+    if ((paramString.equals(IsU)) || (IsT.contains(paramString))) {
+      a.fDQ();
     }
     AppMethodBeat.o(149402);
   }
   
-  public static void ewn()
+  public static void fEc()
   {
     AppMethodBeat.i(149403);
-    Iterator localIterator = Czh.iterator();
+    Iterator localIterator = IsT.iterator();
     while (localIterator.hasNext()) {
       j.a((String)localIterator.next(), null, a.class, null);
     }
@@ -53,7 +53,7 @@ public final class e
     public void invoke(Object paramObject, f paramf)
     {
       AppMethodBeat.i(149401);
-      a.ewa();
+      a.fDQ();
       AppMethodBeat.o(149401);
     }
   }

@@ -15,6 +15,11 @@ public abstract interface f
   public static abstract interface a
     extends q.a
   {}
+  
+  public static abstract interface b
+  {
+    public abstract void u(int paramInt, Object paramObject);
+  }
 }
 
 

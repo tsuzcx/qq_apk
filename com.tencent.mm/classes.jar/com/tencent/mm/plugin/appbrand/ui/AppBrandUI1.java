@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -29,7 +28,7 @@ public class AppBrandUI1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandUI1
  * JD-Core Version:    0.7.0.1
  */

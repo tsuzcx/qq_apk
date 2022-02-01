@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 public abstract interface e
 {
-  public abstract boolean ug(boolean paramBoolean);
+  public abstract boolean yu(boolean paramBoolean);
 }
 
 

@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -20,24 +21,24 @@ public class LuckyMoneyAutoScrollView
   extends RelativeLayout
   implements LuckyMoneyAutoScrollItem.b
 {
-  private RelativeLayout EGd;
-  private RelativeLayout EGe;
-  private RelativeLayout EGf;
-  LuckyMoneyAutoScrollItem EGg;
-  LuckyMoneyAutoScrollItem EGh;
-  LuckyMoneyAutoScrollItem EGi;
-  private RelativeLayout EGj;
-  private RelativeLayout EGk;
-  private RelativeLayout EGl;
-  ImageView EGm;
-  ImageView EGn;
-  ImageView EGo;
-  private String EGp;
-  private String EGq;
-  private String EGr;
-  private a EGs;
+  private String KzA;
+  private a KzB;
+  private RelativeLayout Kzm;
+  private RelativeLayout Kzn;
+  private RelativeLayout Kzo;
+  private LuckyMoneyAutoScrollItem Kzp;
+  private LuckyMoneyAutoScrollItem Kzq;
+  private LuckyMoneyAutoScrollItem Kzr;
+  private RelativeLayout Kzs;
+  private RelativeLayout Kzt;
+  private RelativeLayout Kzu;
+  private ImageView Kzv;
+  private ImageView Kzw;
+  private ImageView Kzx;
+  private String Kzy;
+  private String Kzz;
   private View contentView;
-  boolean hasCallBack;
+  private boolean hasCallBack;
   private Context mContext;
   
   public LuckyMoneyAutoScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -49,35 +50,35 @@ public class LuckyMoneyAutoScrollView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65434);
-    this.EGp = "0";
-    this.EGq = "0";
-    this.EGr = "0";
+    this.Kzy = "0";
+    this.Kzz = "0";
+    this.KzA = "0";
     this.hasCallBack = false;
     this.mContext = paramContext;
     paramContext = LayoutInflater.from(this.mContext).inflate(a.g.lucky_money_auto_scroll_view, this);
     this.contentView = paramContext;
-    this.EGg = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(a.f.amount_1));
-    this.EGh = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(a.f.amount_2));
-    this.EGi = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(a.f.amount_3));
-    w.p(this.EGg, 2);
-    w.p(this.EGh, 2);
-    w.p(this.EGi, 2);
-    this.EGj = ((RelativeLayout)paramContext.findViewById(a.f.amount_mask_1));
-    this.EGk = ((RelativeLayout)paramContext.findViewById(a.f.amount_mask_2));
-    this.EGl = ((RelativeLayout)paramContext.findViewById(a.f.amount_mask_3));
-    this.EGm = ((ImageView)paramContext.findViewById(a.f.text_number));
-    this.EGn = ((ImageView)paramContext.findViewById(a.f.text_number2));
-    this.EGo = ((ImageView)paramContext.findViewById(a.f.text_number3));
-    this.EGd = ((RelativeLayout)paramContext.findViewById(a.f.item_layout_1));
-    this.EGe = ((RelativeLayout)paramContext.findViewById(a.f.item_layout_2));
-    this.EGf = ((RelativeLayout)paramContext.findViewById(a.f.item_layout_3));
+    this.Kzp = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(a.f.amount_1));
+    this.Kzq = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(a.f.amount_2));
+    this.Kzr = ((LuckyMoneyAutoScrollItem)paramContext.findViewById(a.f.amount_3));
+    z.p(this.Kzp, 2);
+    z.p(this.Kzq, 2);
+    z.p(this.Kzr, 2);
+    this.Kzs = ((RelativeLayout)paramContext.findViewById(a.f.amount_mask_1));
+    this.Kzt = ((RelativeLayout)paramContext.findViewById(a.f.amount_mask_2));
+    this.Kzu = ((RelativeLayout)paramContext.findViewById(a.f.amount_mask_3));
+    this.Kzv = ((ImageView)paramContext.findViewById(a.f.text_number));
+    this.Kzw = ((ImageView)paramContext.findViewById(a.f.text_number2));
+    this.Kzx = ((ImageView)paramContext.findViewById(a.f.text_number3));
+    this.Kzm = ((RelativeLayout)paramContext.findViewById(a.f.item_layout_1));
+    this.Kzn = ((RelativeLayout)paramContext.findViewById(a.f.item_layout_2));
+    this.Kzo = ((RelativeLayout)paramContext.findViewById(a.f.item_layout_3));
     AppMethodBeat.o(65434);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(65436);
-    this.EGs = parama;
+    this.KzB = parama;
     MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
@@ -86,16 +87,16 @@ public class LuckyMoneyAutoScrollView
         LuckyMoneyAutoScrollView.a(LuckyMoneyAutoScrollView.this).setVisibility(0);
         LuckyMoneyAutoScrollView.b(LuckyMoneyAutoScrollView.this).setVisibility(0);
         LuckyMoneyAutoScrollView.c(LuckyMoneyAutoScrollView.this).setVisibility(0);
-        LuckyMoneyAutoScrollView.d(LuckyMoneyAutoScrollView.this).ePw();
-        LuckyMoneyAutoScrollView.e(LuckyMoneyAutoScrollView.this).ePw();
-        LuckyMoneyAutoScrollView.f(LuckyMoneyAutoScrollView.this).ePw();
+        LuckyMoneyAutoScrollView.d(LuckyMoneyAutoScrollView.this).fYa();
+        LuckyMoneyAutoScrollView.e(LuckyMoneyAutoScrollView.this).fYa();
+        LuckyMoneyAutoScrollView.f(LuckyMoneyAutoScrollView.this).fYa();
         AppMethodBeat.o(65432);
       }
     });
     AppMethodBeat.o(65436);
   }
   
-  public final void ePx()
+  public final void fYb()
   {
     AppMethodBeat.i(65438);
     if (!this.hasCallBack)
@@ -116,7 +117,7 @@ public class LuckyMoneyAutoScrollView
           LuckyMoneyAutoScrollView.h(LuckyMoneyAutoScrollView.this).setVisibility(0);
           LuckyMoneyAutoScrollView.i(LuckyMoneyAutoScrollView.this).setVisibility(0);
           if (LuckyMoneyAutoScrollView.j(LuckyMoneyAutoScrollView.this) != null) {
-            LuckyMoneyAutoScrollView.j(LuckyMoneyAutoScrollView.this).ePz();
+            LuckyMoneyAutoScrollView.j(LuckyMoneyAutoScrollView.this).fYe();
           }
           AppMethodBeat.o(65433);
         }
@@ -125,19 +126,32 @@ public class LuckyMoneyAutoScrollView
     AppMethodBeat.o(65438);
   }
   
-  public final void ePy()
+  public final void fYc()
   {
     AppMethodBeat.i(65437);
-    this.EGg.setVisibility(8);
-    this.EGh.setVisibility(8);
-    this.EGi.setVisibility(8);
-    this.EGm.setVisibility(0);
-    this.EGn.setVisibility(0);
-    this.EGo.setVisibility(0);
+    this.Kzp.setVisibility(8);
+    this.Kzq.setVisibility(8);
+    this.Kzr.setVisibility(8);
+    this.Kzv.setVisibility(0);
+    this.Kzw.setVisibility(0);
+    this.Kzx.setVisibility(0);
     AppMethodBeat.o(65437);
   }
   
-  public final void ia(int paramInt1, int paramInt2)
+  public final void fYd()
+  {
+    AppMethodBeat.i(284401);
+    this.hasCallBack = false;
+    this.Kzp.setVisibility(0);
+    this.Kzq.setVisibility(0);
+    this.Kzr.setVisibility(0);
+    this.Kzv.setVisibility(4);
+    this.Kzw.setVisibility(4);
+    this.Kzx.setVisibility(4);
+    AppMethodBeat.o(284401);
+  }
+  
+  public final void jF(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(65439);
     if ((paramInt1 > 0) && (paramInt2 > 0))
@@ -146,22 +160,22 @@ public class LuckyMoneyAutoScrollView
       localLayoutParams.height = paramInt2;
       this.contentView.setLayoutParams(localLayoutParams);
       this.contentView.invalidate();
-      localLayoutParams = (LinearLayout.LayoutParams)this.EGd.getLayoutParams();
+      localLayoutParams = (LinearLayout.LayoutParams)this.Kzm.getLayoutParams();
       localLayoutParams.height = paramInt2;
       localLayoutParams.width = paramInt1;
-      this.EGd.setLayoutParams(localLayoutParams);
-      this.EGd.invalidate();
-      localLayoutParams = (LinearLayout.LayoutParams)this.EGe.getLayoutParams();
+      this.Kzm.setLayoutParams(localLayoutParams);
+      this.Kzm.invalidate();
+      localLayoutParams = (LinearLayout.LayoutParams)this.Kzn.getLayoutParams();
       localLayoutParams.height = paramInt2;
       localLayoutParams.width = paramInt1;
-      this.EGe.setLayoutParams(localLayoutParams);
-      this.EGe.invalidate();
-      localLayoutParams = (LinearLayout.LayoutParams)this.EGf.getLayoutParams();
+      this.Kzn.setLayoutParams(localLayoutParams);
+      this.Kzn.invalidate();
+      localLayoutParams = (LinearLayout.LayoutParams)this.Kzo.getLayoutParams();
       localLayoutParams.height = paramInt2;
       localLayoutParams.width = paramInt1;
-      localLayoutParams.leftMargin = 0;
-      this.EGf.setLayoutParams(localLayoutParams);
-      this.EGf.invalidate();
+      localLayoutParams.leftMargin = a.fromDPToPix(getContext(), 3);
+      this.Kzo.setLayoutParams(localLayoutParams);
+      this.Kzo.invalidate();
     }
     AppMethodBeat.o(65439);
   }
@@ -170,33 +184,33 @@ public class LuckyMoneyAutoScrollView
   {
     AppMethodBeat.i(65435);
     Log.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: setting text: %s", new Object[] { paramString });
-    this.EGp = paramString.substring(0, 1);
-    this.EGq = paramString.substring(2, 3);
-    this.EGr = paramString.substring(3, 4);
-    this.EGg.setFinalNumber(Util.getInt(this.EGp, 0));
-    this.EGh.setFinalNumber(Util.getInt(this.EGq, 0));
-    this.EGi.setFinalNumber(Util.getInt(this.EGr, 0));
-    this.EGm.setImageResource(((Integer)LuckyMoneyAutoScrollItem.EFX.get(Util.getInt(this.EGp, 0))).intValue());
-    this.EGn.setImageResource(((Integer)LuckyMoneyAutoScrollItem.EFX.get(Util.getInt(this.EGq, 0))).intValue());
-    this.EGo.setImageResource(((Integer)LuckyMoneyAutoScrollItem.EFX.get(Util.getInt(this.EGr, 0))).intValue());
-    this.EGm.setVisibility(4);
-    this.EGn.setVisibility(4);
-    this.EGo.setVisibility(4);
-    this.EGg.setOnScrollEndListener(this);
-    this.EGh.setOnScrollEndListener(this);
-    this.EGi.setOnScrollEndListener(this);
-    Log.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: first: %s, second :%s, third: %s", new Object[] { this.EGp, this.EGq, this.EGr });
+    this.Kzy = paramString.substring(0, 1);
+    this.Kzz = paramString.substring(2, 3);
+    this.KzA = paramString.substring(3, 4);
+    this.Kzp.setFinalNumber(Util.getInt(this.Kzy, 0));
+    this.Kzq.setFinalNumber(Util.getInt(this.Kzz, 0));
+    this.Kzr.setFinalNumber(Util.getInt(this.KzA, 0));
+    this.Kzv.setImageResource(((Integer)LuckyMoneyAutoScrollItem.Kzg.get(Util.getInt(this.Kzy, 0))).intValue());
+    this.Kzw.setImageResource(((Integer)LuckyMoneyAutoScrollItem.Kzg.get(Util.getInt(this.Kzz, 0))).intValue());
+    this.Kzx.setImageResource(((Integer)LuckyMoneyAutoScrollItem.Kzg.get(Util.getInt(this.KzA, 0))).intValue());
+    this.Kzv.setVisibility(4);
+    this.Kzw.setVisibility(4);
+    this.Kzx.setVisibility(4);
+    this.Kzp.setOnScrollEndListener(this);
+    this.Kzq.setOnScrollEndListener(this);
+    this.Kzr.setOnScrollEndListener(this);
+    Log.i("MicroMsg.LuckyMoneyAutoScrollView", "hy: first: %s, second :%s, third: %s", new Object[] { this.Kzy, this.Kzz, this.KzA });
     AppMethodBeat.o(65435);
   }
   
   public static abstract interface a
   {
-    public abstract void ePz();
+    public abstract void fYe();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollView
  * JD-Core Version:    0.7.0.1
  */

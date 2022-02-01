@@ -1,50 +1,48 @@
 package com.tencent.mm.plugin.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.h;
+import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.k;
-import com.tencent.mm.plugin.fts.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 
 public final class b
-  extends a
+  extends c
   implements Runnable
 {
-  private j BFk;
-  private WeakReference<l> BFl;
+  private com.tencent.mm.plugin.fts.a.a.l HpM;
+  private WeakReference<com.tencent.mm.plugin.fts.a.l> HpN;
   private int errorCode;
   
-  public b(j paramj)
+  public b(com.tencent.mm.plugin.fts.a.a.l paraml)
   {
-    AppMethodBeat.i(255039);
+    AppMethodBeat.i(265399);
     this.errorCode = -2;
-    this.BFk = paramj;
-    this.BFl = new WeakReference(paramj.BIU);
-    this.BFk.BIU = null;
-    AppMethodBeat.o(255039);
+    this.HpM = paraml;
+    this.HpN = new WeakReference(paraml.HtC);
+    this.HpM.HtC = null;
+    AppMethodBeat.o(265399);
   }
   
-  public final boolean aEv()
+  public final boolean aXz()
   {
     AppMethodBeat.i(52501);
-    final k localk;
+    final m localm;
     if ((this.errorCode == -2) || (this.errorCode == -3))
     {
-      localk = new k(this.BFk);
-      localk.BIV = this;
-      localk.resultCode = this.errorCode;
-      localk.BIW = new LinkedList();
-      localk.BHY = h.bJ(this.BFk.query, false);
-      if (this.BFk.handler != null) {
+      localm = new m(this.HpM);
+      localm.HtE = this;
+      localm.resultCode = this.errorCode;
+      localm.HtF = new LinkedList();
+      localm.FWt = j.cc(this.HpM.query, false);
+      if (this.HpM.handler != null) {
         break label113;
       }
-      l locall = (l)this.BFl.get();
+      com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)this.HpN.get();
       if (locall != null) {
-        locall.b(localk);
+        locall.b(localm);
       }
     }
     for (;;)
@@ -52,14 +50,14 @@ public final class b
       AppMethodBeat.o(52501);
       return true;
       label113:
-      this.BFk.handler.post(new Runnable()
+      this.HpM.handler.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(52499);
-          l locall = (l)b.a(b.this).get();
+          com.tencent.mm.plugin.fts.a.l locall = (com.tencent.mm.plugin.fts.a.l)b.a(b.this).get();
           if (locall != null) {
-            locall.b(localk);
+            locall.b(localm);
           }
           AppMethodBeat.o(52499);
         }
@@ -87,7 +85,7 @@ public final class b
     AppMethodBeat.i(52502);
     try
     {
-      aEv();
+      aXz();
       AppMethodBeat.o(52502);
       return;
     }
@@ -99,7 +97,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b
  * JD-Core Version:    0.7.0.1
  */

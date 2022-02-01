@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.teenmode.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
@@ -13,14 +15,15 @@ final class SettingsTeenModeMainFinder$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(259541);
+    AppMethodBeat.i(279125);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainFinder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    SettingsTeenModeMainFinder.a(this.Mue, 2);
-    SettingsTeenModeMainFinder.a(this.Mue);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainFinder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = new Intent();
+    paramView.putExtra("from_teen_mode_setting_page", true);
+    c.b(this.TaV, "finder", ".ui.FinderFollowListUI", paramView);
     a.a(this, "com/tencent/mm/plugin/teenmode/ui/SettingsTeenModeMainFinder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(259541);
+    AppMethodBeat.o(279125);
   }
 }
 

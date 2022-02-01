@@ -8,20 +8,20 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ContentFrameLayout
   extends FrameLayout
 {
-  private TypedValue rV;
-  private TypedValue rW;
-  private TypedValue rX;
-  private TypedValue rY;
-  private TypedValue rZ;
-  private TypedValue sa;
-  private final Rect sc;
-  private a sd;
+  private TypedValue sU;
+  private TypedValue sV;
+  private TypedValue sW;
+  private TypedValue sX;
+  private TypedValue sY;
+  private TypedValue sZ;
+  private final Rect ta;
+  private a tb;
   
   public ContentFrameLayout(Context paramContext)
   {
@@ -36,115 +36,115 @@ public class ContentFrameLayout
   public ContentFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(241198);
-    this.sc = new Rect();
-    AppMethodBeat.o(241198);
+    AppMethodBeat.i(199449);
+    this.ta = new Rect();
+    AppMethodBeat.o(199449);
   }
   
-  public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(241205);
-    this.sc.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (w.ah(this)) {
+    AppMethodBeat.i(199492);
+    this.ta.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (z.au(this)) {
       requestLayout();
     }
-    AppMethodBeat.o(241205);
+    AppMethodBeat.o(199492);
   }
   
-  public final void b(Rect paramRect)
+  public final void f(Rect paramRect)
   {
-    AppMethodBeat.i(241202);
+    AppMethodBeat.i(199464);
     fitSystemWindows(paramRect);
-    AppMethodBeat.o(241202);
+    AppMethodBeat.o(199464);
   }
   
   public TypedValue getFixedHeightMajor()
   {
-    AppMethodBeat.i(241218);
-    if (this.rZ == null) {
-      this.rZ = new TypedValue();
+    AppMethodBeat.i(199605);
+    if (this.sY == null) {
+      this.sY = new TypedValue();
     }
-    TypedValue localTypedValue = this.rZ;
-    AppMethodBeat.o(241218);
+    TypedValue localTypedValue = this.sY;
+    AppMethodBeat.o(199605);
     return localTypedValue;
   }
   
   public TypedValue getFixedHeightMinor()
   {
-    AppMethodBeat.i(241223);
-    if (this.sa == null) {
-      this.sa = new TypedValue();
+    AppMethodBeat.i(199619);
+    if (this.sZ == null) {
+      this.sZ = new TypedValue();
     }
-    TypedValue localTypedValue = this.sa;
-    AppMethodBeat.o(241223);
+    TypedValue localTypedValue = this.sZ;
+    AppMethodBeat.o(199619);
     return localTypedValue;
   }
   
   public TypedValue getFixedWidthMajor()
   {
-    AppMethodBeat.i(241214);
-    if (this.rX == null) {
-      this.rX = new TypedValue();
+    AppMethodBeat.i(199573);
+    if (this.sW == null) {
+      this.sW = new TypedValue();
     }
-    TypedValue localTypedValue = this.rX;
-    AppMethodBeat.o(241214);
+    TypedValue localTypedValue = this.sW;
+    AppMethodBeat.o(199573);
     return localTypedValue;
   }
   
   public TypedValue getFixedWidthMinor()
   {
-    AppMethodBeat.i(241215);
-    if (this.rY == null) {
-      this.rY = new TypedValue();
+    AppMethodBeat.i(199587);
+    if (this.sX == null) {
+      this.sX = new TypedValue();
     }
-    TypedValue localTypedValue = this.rY;
-    AppMethodBeat.o(241215);
+    TypedValue localTypedValue = this.sX;
+    AppMethodBeat.o(199587);
     return localTypedValue;
   }
   
   public TypedValue getMinWidthMajor()
   {
-    AppMethodBeat.i(241211);
-    if (this.rV == null) {
-      this.rV = new TypedValue();
+    AppMethodBeat.i(199544);
+    if (this.sU == null) {
+      this.sU = new TypedValue();
     }
-    TypedValue localTypedValue = this.rV;
-    AppMethodBeat.o(241211);
+    TypedValue localTypedValue = this.sU;
+    AppMethodBeat.o(199544);
     return localTypedValue;
   }
   
   public TypedValue getMinWidthMinor()
   {
-    AppMethodBeat.i(241213);
-    if (this.rW == null) {
-      this.rW = new TypedValue();
+    AppMethodBeat.i(199559);
+    if (this.sV == null) {
+      this.sV = new TypedValue();
     }
-    TypedValue localTypedValue = this.rW;
-    AppMethodBeat.o(241213);
+    TypedValue localTypedValue = this.sV;
+    AppMethodBeat.o(199559);
     return localTypedValue;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(241226);
+    AppMethodBeat.i(199639);
     super.onAttachedToWindow();
-    AppMethodBeat.o(241226);
+    AppMethodBeat.o(199639);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(241229);
+    AppMethodBeat.i(199654);
     super.onDetachedFromWindow();
-    if (this.sd != null) {
-      this.sd.onDetachedFromWindow();
+    if (this.tb != null) {
+      this.tb.onDetachedFromWindow();
     }
-    AppMethodBeat.o(241229);
+    AppMethodBeat.o(199654);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int n = 0;
-    AppMethodBeat.i(241208);
+    AppMethodBeat.i(199527);
     DisplayMetrics localDisplayMetrics = getContext().getResources().getDisplayMetrics();
     int j;
     int i1;
@@ -163,7 +163,7 @@ public class ContentFrameLayout
       if (j == 0) {
         break label363;
       }
-      localTypedValue = this.rY;
+      localTypedValue = this.sX;
       if ((localTypedValue == null) || (localTypedValue.type == 0)) {
         break label505;
       }
@@ -179,7 +179,7 @@ public class ContentFrameLayout
       int k;
       if (i > 0)
       {
-        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.sc.left + this.sc.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
+        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.ta.left + this.ta.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
         k = 1;
       }
       for (;;)
@@ -190,7 +190,7 @@ public class ContentFrameLayout
           if (j == 0) {
             break label404;
           }
-          localTypedValue = this.rZ;
+          localTypedValue = this.sY;
           label155:
           i = paramInt2;
           if (localTypedValue != null)
@@ -210,7 +210,7 @@ public class ContentFrameLayout
           label190:
           i = paramInt2;
           if (paramInt1 > 0) {
-            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.sc.top + this.sc.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
+            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.ta.top + this.ta.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
           }
           super.onMeasure(m, i);
           i2 = getMeasuredWidth();
@@ -218,7 +218,7 @@ public class ContentFrameLayout
           if ((k == 0) && (i1 == -2147483648)) {
             if (j != 0)
             {
-              localTypedValue = this.rW;
+              localTypedValue = this.sV;
               label271:
               if ((localTypedValue == null) || (localTypedValue.type == 0)) {
                 break label486;
@@ -234,7 +234,7 @@ public class ContentFrameLayout
             label302:
             paramInt2 = paramInt1;
             if (paramInt1 > 0) {
-              paramInt2 = paramInt1 - (this.sc.left + this.sc.right);
+              paramInt2 = paramInt1 - (this.ta.left + this.ta.right);
             }
             if (i2 < paramInt2) {
               paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
@@ -244,12 +244,12 @@ public class ContentFrameLayout
               if (paramInt2 != 0) {
                 super.onMeasure(paramInt1, i);
               }
-              AppMethodBeat.o(241208);
+              AppMethodBeat.o(199527);
               return;
               j = 0;
               break;
               label363:
-              localTypedValue = this.rX;
+              localTypedValue = this.sW;
               break label66;
               label372:
               if (localTypedValue.type != 6) {
@@ -258,7 +258,7 @@ public class ContentFrameLayout
               i = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
               break label97;
               label404:
-              localTypedValue = this.sa;
+              localTypedValue = this.sZ;
               break label155;
               label413:
               if (localTypedValue.type != 6) {
@@ -266,7 +266,7 @@ public class ContentFrameLayout
               }
               paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.heightPixels, localDisplayMetrics.heightPixels);
               break label190;
-              localTypedValue = this.rV;
+              localTypedValue = this.sU;
               break label271;
               label454:
               if (localTypedValue.type != 6) {
@@ -294,7 +294,7 @@ public class ContentFrameLayout
   
   public void setAttachListener(a parama)
   {
-    this.sd = parama;
+    this.tb = parama;
   }
   
   public static abstract interface a
@@ -304,7 +304,7 @@ public class ContentFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.ContentFrameLayout
  * JD-Core Version:    0.7.0.1
  */

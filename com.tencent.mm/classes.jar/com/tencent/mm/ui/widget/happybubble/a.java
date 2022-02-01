@@ -7,10 +7,10 @@ public enum a
   static
   {
     AppMethodBeat.i(143524);
-    Yow = new a("AROUND", 0);
-    Yox = new a("UP_AND_DOWN", 1);
-    Yoy = new a("LEFT_AND_RIGHT", 2);
-    Yoz = new a[] { Yow, Yox, Yoy };
+    aggJ = new a("AROUND", 0);
+    aggK = new a("UP_AND_DOWN", 1);
+    aggL = new a("LEFT_AND_RIGHT", 2);
+    aggM = new a[] { aggJ, aggK, aggL };
     AppMethodBeat.o(143524);
   }
   
@@ -18,7 +18,7 @@ public enum a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.a
  * JD-Core Version:    0.7.0.1
  */

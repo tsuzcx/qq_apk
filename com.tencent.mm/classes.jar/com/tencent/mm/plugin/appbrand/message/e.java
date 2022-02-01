@@ -9,7 +9,7 @@ import java.util.Map;
 public final class e
   implements e.a
 {
-  public final String f(Map<String, String> paramMap, String paramString)
+  public final String h(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(47715);
     if ((paramMap == null) || (paramMap.isEmpty()))

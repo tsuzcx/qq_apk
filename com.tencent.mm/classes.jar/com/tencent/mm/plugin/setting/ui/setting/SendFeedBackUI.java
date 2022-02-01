@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -14,27 +13,29 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.br.c;
 import com.tencent.mm.compatible.deviceinfo.n;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.setting.b.f;
 import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.plugin.setting.b.i;
-import com.tencent.mm.plugin.setting.model.m;
+import com.tencent.mm.plugin.setting.model.o;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.storage.co;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 
 public class SendFeedBackUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private TextView Jfl = null;
-  private ProgressDialog iXX = null;
-  private EditText qDO;
+  private TextView PpM = null;
+  private ProgressDialog lzP = null;
+  private EditText tID;
   
   public int getLayoutId()
   {
@@ -45,20 +46,20 @@ public class SendFeedBackUI
   {
     AppMethodBeat.i(73989);
     setMMTitle(b.i.settings_feedbackui_title);
-    this.qDO = ((EditText)findViewById(b.f.content));
+    this.tID = ((EditText)findViewById(b.f.content));
     String str = getIntent().getStringExtra("intentKeyFrom");
     if ((str != null) && (str.equals("fromEnjoyAppDialog")))
     {
-      this.Jfl = ((TextView)findViewById(b.f.view_question_text_view));
-      this.Jfl.setVisibility(0);
-      this.Jfl.setOnClickListener(new View.OnClickListener()
+      this.PpM = ((TextView)findViewById(b.f.view_question_text_view));
+      this.PpM.setVisibility(0);
+      this.PpM.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(73982);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/setting/ui/setting/SendFeedBackUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SendFeedBackUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("showShare", false);
           paramAnonymousView.putExtra("rawUrl", SendFeedBackUI.this.getString(b.i.wechat_faq_url));
@@ -90,23 +91,23 @@ public class SendFeedBackUI
           if (paramAnonymousMenuItem.startsWith("//traceroute"))
           {
             SendFeedBackUI.a(SendFeedBackUI.this).setText("");
-            c.ad(SendFeedBackUI.this.getContext(), "traceroute", ".ui.NetworkDiagnoseIntroUI");
+            c.ai(SendFeedBackUI.this.getContext(), "traceroute", ".ui.NetworkDiagnoseIntroUI");
             AppMethodBeat.o(73985);
             return false;
           }
-          paramAnonymousMenuItem = new m(com.tencent.mm.compatible.deviceinfo.q.auR(), paramAnonymousMenuItem + " key " + cl.hAM() + " local key " + cl.hAL() + "NetType:" + NetStatusUtil.getNetTypeString(SendFeedBackUI.this.getApplicationContext()) + " hasNeon: " + n.aux() + " isArmv6: " + n.auz() + " isArmv7: " + n.auy());
-          com.tencent.mm.kernel.h.aGY().a(153, SendFeedBackUI.this);
-          com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem, 0);
+          paramAnonymousMenuItem = new o(q.aPl(), paramAnonymousMenuItem + " key " + co.jcP() + " local key " + co.jcO() + "NetType:" + NetStatusUtil.getNetTypeString(SendFeedBackUI.this.getApplicationContext()) + " hasNeon: " + n.aOQ() + " isArmv6: " + n.aOS() + " isArmv7: " + n.aOR());
+          com.tencent.mm.kernel.h.aZW().a(153, SendFeedBackUI.this);
+          com.tencent.mm.kernel.h.aZW().a(paramAnonymousMenuItem, 0);
           SendFeedBackUI.this.hideVKB();
           SendFeedBackUI localSendFeedBackUI1 = SendFeedBackUI.this;
           SendFeedBackUI localSendFeedBackUI2 = SendFeedBackUI.this;
           SendFeedBackUI.this.getString(b.i.app_tip);
-          SendFeedBackUI.a(localSendFeedBackUI1, com.tencent.mm.ui.base.h.a(localSendFeedBackUI2, SendFeedBackUI.this.getString(b.i.app_sending), true, new DialogInterface.OnCancelListener()
+          SendFeedBackUI.a(localSendFeedBackUI1, k.a(localSendFeedBackUI2, SendFeedBackUI.this.getString(b.i.app_sending), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(73984);
-              com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem);
+              com.tencent.mm.kernel.h.aZW().a(paramAnonymousMenuItem);
               AppMethodBeat.o(73984);
             }
           }));
@@ -129,22 +130,22 @@ public class SendFeedBackUI
   public void onDestroy()
   {
     AppMethodBeat.i(73988);
-    com.tencent.mm.kernel.h.aGY().b(153, this);
+    com.tencent.mm.kernel.h.aZW().b(153, this);
     super.onDestroy();
     AppMethodBeat.o(73988);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(73990);
-    if (this.iXX != null)
+    if (this.lzP != null)
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.ui.base.h.d(this, getString(b.i.settings_feedbackui_succ), getString(b.i.app_tip), new DialogInterface.OnClickListener()
+      k.d(this, getString(b.i.settings_feedbackui_succ), getString(b.i.app_tip), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -156,7 +157,7 @@ public class SendFeedBackUI
       AppMethodBeat.o(73990);
       return;
     }
-    com.tencent.mm.ui.base.h.d(this, getString(b.i.settings_feedbackui_err), getString(b.i.app_tip), new DialogInterface.OnClickListener()
+    k.d(this, getString(b.i.settings_feedbackui_err), getString(b.i.app_tip), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });

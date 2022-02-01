@@ -9,23 +9,23 @@ public abstract interface d
   
   public abstract void b(Object paramObject, Intent paramIntent);
   
-  public abstract void bg(Object paramObject);
-  
-  public abstract void bh(Object paramObject);
-  
-  public abstract void bi(Object paramObject);
-  
-  public abstract void bj(Object paramObject);
-  
-  public abstract void bk(Object paramObject);
-  
-  public abstract void bl(Object paramObject);
-  
   public abstract void c(Object paramObject, Intent paramIntent);
   
-  public abstract void d(Object paramObject, boolean paramBoolean);
+  public abstract void cA(Object paramObject);
   
-  public abstract void w(Activity paramActivity);
+  public abstract void cB(Object paramObject);
+  
+  public abstract void cC(Object paramObject);
+  
+  public abstract void cD(Object paramObject);
+  
+  public abstract void cE(Object paramObject);
+  
+  public abstract void cF(Object paramObject);
+  
+  public abstract void e(Object paramObject, boolean paramBoolean);
+  
+  public abstract void y(Activity paramActivity);
 }
 
 

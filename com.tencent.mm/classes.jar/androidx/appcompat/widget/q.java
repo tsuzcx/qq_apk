@@ -8,12 +8,12 @@ public abstract interface q
   
   public static abstract interface a
   {
-    public abstract void a(Rect paramRect);
+    public abstract void e(Rect paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.q
  * JD-Core Version:    0.7.0.1
  */

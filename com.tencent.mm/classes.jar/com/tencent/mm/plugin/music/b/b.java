@@ -2,90 +2,90 @@ package com.tencent.mm.plugin.music.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.d;
-import com.tencent.mm.f.a.y;
-import com.tencent.mm.f.a.y.a;
+import com.tencent.mm.autogen.a.ab;
+import com.tencent.mm.autogen.a.ab.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static boolean a(y paramy)
+  public static boolean a(ab paramab)
   {
     boolean bool = true;
     AppMethodBeat.i(137010);
-    if (paramy.fvx.action != 6) {
-      Log.d("MicroMsg.Audio.AudioActionListener", "callback, action:%d", new Object[] { Integer.valueOf(paramy.fvx.action) });
+    if (paramab.hzS.action != 6) {
+      Log.d("MicroMsg.Audio.AudioActionListener", "callback, action:%d", new Object[] { Integer.valueOf(paramab.hzS.action) });
     }
-    switch (paramy.fvx.action)
+    switch (paramab.hzS.action)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(137010);
       return bool;
-      Object localObject = i.fcS().be(paramy.fvx.appId, paramy.fvx.fmF);
-      paramy.fvx.fmF = ((String)localObject);
+      Object localObject = i.glV().bo(paramab.hzS.appId, paramab.hzS.hqQ);
+      paramab.hzS.hqQ = ((String)localObject);
       continue;
-      bool = i.fcS().l(paramy.fvx.fvz);
-      paramy.fvy.result = bool;
+      bool = i.glV().l(paramab.hzS.hzU);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().b(paramy.fvx.fmF, paramy.fvx.fvz);
-      paramy.fvy.result = bool;
+      bool = i.glV().b(paramab.hzS.hqQ, paramab.hzS.hzU);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().aRj(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().aOb(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().Tm(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().Lo(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().aRk(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().aOc(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().Tn(paramy.fvx.fmF);
-      paramy.fvy.result = true;
+      bool = i.glV().Lp(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().fr(paramy.fvx.fmF, paramy.fvx.currentTime);
-      paramy.fvy.result = bool;
+      bool = i.glV().gk(paramab.hzS.hqQ, paramab.hzS.currentTime);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().aRl(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().aOd(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().To(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().Lq(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().hV(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().jw(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().aRm(paramy.fvx.fmF);
-      paramy.fvy.result = bool;
+      bool = i.glV().aOe(paramab.hzS.hqQ);
+      paramab.hzT.result = bool;
       continue;
-      localObject = i.fcS().aRn(paramy.fvx.fmF);
-      paramy.fvy.fvB = ((d)localObject);
+      localObject = i.glV().aOf(paramab.hzS.hqQ);
+      paramab.hzT.hzW = ((d)localObject);
       continue;
-      int i = i.fcS().aRo(paramy.fvx.appId);
-      paramy.fvy.count = i;
+      int i = i.glV().aOg(paramab.hzS.appId);
+      paramab.hzT.count = i;
       continue;
-      i.fcS().aRq(paramy.fvx.appId);
+      i.glV().aOi(paramab.hzS.appId);
       continue;
-      i.fcS().aRr(paramy.fvx.appId);
+      i.glV().aOj(paramab.hzS.appId);
       continue;
-      i.fcS().aRy(paramy.fvx.processName);
+      i.glV().aOq(paramab.hzS.processName);
       continue;
-      localObject = i.fcS().Tp(paramy.fvx.fmF);
-      paramy.fvx.fvz = ((com.tencent.mm.al.b)localObject);
+      localObject = i.glV().Lr(paramab.hzS.hqQ);
+      paramab.hzS.hzU = ((com.tencent.mm.al.b)localObject);
       continue;
-      bool = i.fcS().m(paramy.fvx.fvz);
-      paramy.fvy.result = bool;
+      bool = i.glV().m(paramab.hzS.hzU);
+      paramab.hzT.result = bool;
       continue;
-      bool = i.fcS().a(paramy.fvx.fvA);
-      paramy.fvy.result = true;
+      bool = i.glV().a(paramab.hzS.hzV);
+      paramab.hzT.result = bool;
       continue;
-      paramy.fvy.fvA = i.fcS().fvA;
+      paramab.hzT.hzV = i.glV().hzV;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.b
  * JD-Core Version:    0.7.0.1
  */

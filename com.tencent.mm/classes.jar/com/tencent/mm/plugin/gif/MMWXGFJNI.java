@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMWXGFJNI
@@ -72,7 +72,7 @@ public class MMWXGFJNI
   
   public static native boolean nativeIsWXGF(byte[] paramArrayOfByte, int paramInt);
   
-  private static native int nativePic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3);
+  private static native int nativePic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
   private static native int nativePic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -88,41 +88,41 @@ public class MMWXGFJNI
   
   public static native byte[] nativeWxamToGif(byte[] paramArrayOfByte);
   
-  public static int pic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static int pic2Wxam(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(224050);
-    paramInt1 = nativePic2Wxam(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, ((b)h.ae(b.class)).a(b.a.vQS, 0));
-    AppMethodBeat.o(224050);
+    AppMethodBeat.i(260499);
+    paramInt1 = nativePic2Wxam(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, ((c)h.ax(c.class)).a(c.a.zjB, 0), paramInt3, paramInt4);
+    AppMethodBeat.o(260499);
     return paramInt1;
   }
   
   public static int pic2WxamWithWH(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(224056);
+    AppMethodBeat.i(260509);
     paramInt1 = nativePic2WxamWithWH(q.n(paramString1, false), q.n(paramString2, true), paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(224056);
+    AppMethodBeat.o(260509);
     return paramInt1;
   }
   
   public static int pic2WxamWithWH(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(224058);
+    AppMethodBeat.i(260514);
     paramInt1 = nativePic2WxamWithWH(q.n(paramString, true), paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
-    AppMethodBeat.o(224058);
+    AppMethodBeat.o(260514);
     return paramInt1;
   }
   
   public static int wxam2Pic(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(224052);
+    AppMethodBeat.i(260503);
     int i = nativeWxam2Pic(q.n(paramString1, false), q.n(paramString2, true));
-    AppMethodBeat.o(224052);
+    AppMethodBeat.o(260503);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMWXGFJNI
  * JD-Core Version:    0.7.0.1
  */

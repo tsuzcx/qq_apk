@@ -1,42 +1,60 @@
 package com.tencent.mm.plugin.appbrand.af;
 
-import com.tencent.mm.plugin.appbrand.af.d.d.a;
-import com.tencent.mm.plugin.appbrand.af.e.i;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public abstract class b
-  implements d
+public final class b
 {
-  private boolean rkA;
-  
-  public final void a(a parama, com.tencent.mm.plugin.appbrand.af.d.d paramd)
+  public static String fr(String paramString1, String paramString2)
   {
-    paramd = new com.tencent.mm.plugin.appbrand.af.d.e(paramd);
-    paramd.a(d.a.rlA);
-    parama.b(paramd);
+    AppMethodBeat.i(318722);
+    try
+    {
+      paramString1 = MMApplicationContext.getContext().getPackageManager().getApplicationInfo(MMApplicationContext.getContext().getPackageName(), 128).metaData.getString(paramString1, paramString2);
+      AppMethodBeat.o(318722);
+      return paramString1;
+    }
+    catch (PackageManager.NameNotFoundException paramString1)
+    {
+      Log.printDebugStack("Luggage.AndroidPackageUtil", "", new Object[] { paramString1 });
+      AppMethodBeat.o(318722);
+    }
+    return paramString2;
   }
   
-  public void b(com.tencent.mm.plugin.appbrand.af.e.a parama) {}
-  
-  public void c(com.tencent.mm.plugin.appbrand.af.d.d paramd) {}
-  
-  public final i cms()
+  public static PackageInfo getPackageInfo(Context paramContext, String paramString)
   {
-    return new com.tencent.mm.plugin.appbrand.af.e.e();
-  }
-  
-  public final boolean cmt()
-  {
-    return this.rkA;
-  }
-  
-  public final void setTcpNoDelay(boolean paramBoolean)
-  {
-    this.rkA = paramBoolean;
+    AppMethodBeat.i(140800);
+    if (paramString == null)
+    {
+      Log.e("Luggage.AndroidPackageUtil", "getPackageInfo fail, packageName is null");
+      AppMethodBeat.o(140800);
+      return null;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      AppMethodBeat.o(140800);
+      return paramContext;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      Log.w("Luggage.AndroidPackageUtil", paramContext.getMessage());
+      AppMethodBeat.o(140800);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.af.b
  * JD-Core Version:    0.7.0.1
  */

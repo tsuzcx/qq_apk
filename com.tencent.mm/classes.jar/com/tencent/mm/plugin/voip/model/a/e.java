@@ -1,65 +1,35 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.voip.c;
-import com.tencent.mm.plugin.voip.model.u;
-import com.tencent.mm.plugin.voip.model.v;
-import com.tencent.mm.protocal.protobuf.fed;
-import com.tencent.mm.protocal.protobuf.fee;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.protocal.protobuf.gap;
+import com.tencent.mm.protocal.protobuf.gaq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends n<fed, fee>
+  extends n<gap, gaq>
 {
   public e(int paramInt, long paramLong, String paramString)
   {
     AppMethodBeat.i(115230);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new fed();
-    ((d.a)localObject).lBV = new fee();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipgetroominfo";
-    ((d.a)localObject).funcId = 303;
-    ((d.a)localObject).lBW = 119;
-    ((d.a)localObject).respCmdId = 1000000119;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (fed)d.b.b(this.rr.lBR);
-    ((fed)localObject).Svu = paramInt;
-    ((fed)localObject).Svv = paramLong;
-    ((fed)localObject).UDO = paramString;
-    ((fed)localObject).rWu = 1;
-    ((fed)localObject).UCJ = System.currentTimeMillis();
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new gap();
+    ((c.a)localObject).otF = new gaq();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/voipgetroominfo";
+    ((c.a)localObject).funcId = 303;
+    ((c.a)localObject).otG = 119;
+    ((c.a)localObject).respCmdId = 1000000119;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (gap)c.b.b(this.rr.otB);
+    ((gap)localObject).Zvz = paramInt;
+    ((gap)localObject).ZvA = paramLong;
+    ((gap)localObject).abXZ = paramString;
+    ((gap)localObject).vhJ = 1;
+    ((gap)localObject).abWT = System.currentTimeMillis();
     AppMethodBeat.o(115230);
-  }
-  
-  public final i gAU()
-  {
-    AppMethodBeat.i(115232);
-    i local1 = new i()
-    {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-      {
-        AppMethodBeat.i(115229);
-        com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip.GetRoomInfo", "Voip onSceneEnd type:" + paramAnonymousq.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousq != null))
-        {
-          paramAnonymousString = (fee)e.this.gAY();
-          if ((paramAnonymousString.BaseResponse.CqV == 0) && (!c.gxs().NPf.gAK()))
-          {
-            Log.i("MicroMsg.Voip.GetRoomInfo", "doTaskCallin in NetSceneVoipGetRoomInfo, roomid:%d, roomkey:%s, time:%d", new Object[] { Integer.valueOf(paramAnonymousString.Svu), Long.valueOf(paramAnonymousString.Svv), Integer.valueOf(paramAnonymousString.CreateTime) });
-            c.gxs().c(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(115229);
-      }
-    };
-    AppMethodBeat.o(115232);
-    return local1;
   }
   
   public final int getType()
@@ -67,14 +37,22 @@ public final class e
     return 303;
   }
   
-  public final void kQ(int paramInt1, int paramInt2)
+  public final h hYT()
+  {
+    AppMethodBeat.i(115232);
+    e.1 local1 = new e.1(this);
+    AppMethodBeat.o(115232);
+    return local1;
+  }
+  
+  public final void mD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115231);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      fee localfee = (fee)gAY();
-      if (localfee != null) {
-        Log.i("MicroMsg.Voip.GetRoomInfo", "roomId:%d, roomKey:%s, memberCount:%d, inviteType:%d", new Object[] { Integer.valueOf(localfee.Svu), Long.valueOf(localfee.Svv), Integer.valueOf(localfee.iWB), Integer.valueOf(localfee.UDF) });
+      gaq localgaq = (gaq)hYX();
+      if (localgaq != null) {
+        Log.i("MicroMsg.Voip.GetRoomInfo", "roomId:%d, roomKey:%s, memberCount:%d, inviteType:%d", new Object[] { Integer.valueOf(localgaq.Zvz), Long.valueOf(localgaq.ZvA), Integer.valueOf(localgaq.lyF), Integer.valueOf(localgaq.abXQ) });
       }
       AppMethodBeat.o(115231);
       return;

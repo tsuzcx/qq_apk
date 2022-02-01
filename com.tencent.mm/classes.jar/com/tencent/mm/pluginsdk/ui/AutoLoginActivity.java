@@ -1,10 +1,9 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
@@ -16,32 +15,37 @@ import com.tencent.mm.ui.base.a;
 public abstract class AutoLoginActivity
   extends MMActivity
 {
-  private void aqb(int paramInt)
+  private void awf(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       Log.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
-      a(a.RbF, getIntent());
+      a(a.XXM, getIntent());
       return;
     case -1: 
-      a(a.RbE, getIntent());
+      a(a.XXL, getIntent());
       return;
     case 0: 
-      fje();
+      gtu();
       return;
     }
-    a(a.RbG, getIntent());
+    a(a.XXN, getIntent());
   }
-  
-  protected abstract boolean Z(Intent paramIntent);
   
   protected abstract void a(a parama, Intent paramIntent);
   
-  protected boolean fje()
+  protected abstract boolean ad(Intent paramIntent);
+  
+  public int getLayoutId()
   {
-    h.aHE();
-    if ((!b.aGL()) || (b.aGE()))
+    return -1;
+  }
+  
+  protected boolean gtu()
+  {
+    h.baC();
+    if ((!b.aZM()) || (b.aZG()))
     {
       Log.w("MicroMsg.AutoLoginActivity", "not login");
       Intent localIntent1 = new Intent(this, getClass());
@@ -57,11 +61,6 @@ public abstract class AutoLoginActivity
     return false;
   }
   
-  public int getLayoutId()
-  {
-    return -1;
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
@@ -73,28 +72,33 @@ public abstract class AutoLoginActivity
       finish();
       return;
     }
-    c.hok();
+    if (c.iPe())
+    {
+      Log.i("MicroMsg.AutoLoginActivity", "lite version do not support open api");
+      finish();
+      return;
+    }
     Log.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
     int i = IntentUtil.getIntExtra(paramBundle, "wizard_activity_result_code", -2);
     Log.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
     if (i != -2)
     {
-      aqb(i);
+      awf(i);
       return;
     }
-    if (!Z(paramBundle))
+    if (!ad(paramBundle))
     {
       Log.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
       finish();
       return;
     }
-    if (fje())
+    if (gtu())
     {
       finish();
       Log.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
       return;
     }
-    a(a.RbE, paramBundle);
+    a(a.XXL, paramBundle);
   }
   
   public void onDestroy()
@@ -111,7 +115,7 @@ public abstract class AutoLoginActivity
     setIntent(paramIntent);
     int i = IntentUtil.getIntExtra(paramIntent, "wizard_activity_result_code", 0);
     Log.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
-    aqb(i);
+    awf(i);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -125,10 +129,10 @@ public abstract class AutoLoginActivity
     static
     {
       AppMethodBeat.i(155389);
-      RbE = new a("LOGIN_OK", 0);
-      RbF = new a("LOGIN_FAIL", 1);
-      RbG = new a("LOGIN_CANCEL", 2);
-      RbH = new a[] { RbE, RbF, RbG };
+      XXL = new a("LOGIN_OK", 0);
+      XXM = new a("LOGIN_FAIL", 1);
+      XXN = new a("LOGIN_CANCEL", 2);
+      XXO = new a[] { XXL, XXM, XXN };
       AppMethodBeat.o(155389);
     }
     

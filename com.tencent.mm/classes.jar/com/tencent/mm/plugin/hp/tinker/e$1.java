@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.hp.tinker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.tinker.lib.f.a;
+import com.tencent.tinker.lib.f.b;
 
 final class e$1
-  implements a
+  implements b
 {
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194993);
+    AppMethodBeat.i(261845);
     Log.d(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(194993);
+    AppMethodBeat.o(261845);
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
@@ -37,9 +37,9 @@ final class e$1
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194990);
+    AppMethodBeat.i(261841);
     Log.v(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(194990);
+    AppMethodBeat.o(261841);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)

@@ -6,7 +6,7 @@ import com.tencent.pb.common.c.b;
 
 public final class i
 {
-  public static boolean bEt(String paramString)
+  public static boolean bGS(String paramString)
   {
     AppMethodBeat.i(62717);
     if (TextUtils.isEmpty(paramString))
@@ -19,12 +19,12 @@ public final class i
     return bool;
   }
   
-  public static int ivi()
+  public static int keE()
   {
     AppMethodBeat.i(62718);
     try
     {
-      int i = a.iut().DVO;
+      int i = a.kdP().JMX;
       AppMethodBeat.o(62718);
       return i;
     }
@@ -36,12 +36,12 @@ public final class i
     return 0;
   }
   
-  public static long ivj()
+  public static long keF()
   {
     AppMethodBeat.i(62719);
     try
     {
-      long l = a.iut().NXM;
+      long l = a.kdP().UGt;
       AppMethodBeat.o(62719);
       return l;
     }
@@ -55,7 +55,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.i
  * JD-Core Version:    0.7.0.1
  */

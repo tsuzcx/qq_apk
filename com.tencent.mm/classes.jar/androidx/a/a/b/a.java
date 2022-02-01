@@ -6,58 +6,58 @@ import java.util.HashMap;
 public final class a<K, V>
   extends b<K, V>
 {
-  public HashMap<K, b.c<K, V>> yd;
+  public HashMap<K, b.c<K, V>> yY;
   
   public a()
   {
-    AppMethodBeat.i(186199);
-    this.yd = new HashMap();
-    AppMethodBeat.o(186199);
+    AppMethodBeat.i(201100);
+    this.yY = new HashMap();
+    AppMethodBeat.o(201100);
   }
   
   public final boolean contains(K paramK)
   {
-    AppMethodBeat.i(186205);
-    boolean bool = this.yd.containsKey(paramK);
-    AppMethodBeat.o(186205);
+    AppMethodBeat.i(201138);
+    boolean bool = this.yY.containsKey(paramK);
+    AppMethodBeat.o(201138);
     return bool;
-  }
-  
-  protected final b.c<K, V> n(K paramK)
-  {
-    AppMethodBeat.i(186200);
-    paramK = (b.c)this.yd.get(paramK);
-    AppMethodBeat.o(186200);
-    return paramK;
   }
   
   public final V putIfAbsent(K paramK, V paramV)
   {
-    AppMethodBeat.i(186202);
-    b.c localc = n(paramK);
+    AppMethodBeat.i(201117);
+    b.c localc = q(paramK);
     if (localc != null)
     {
       paramK = localc.mValue;
-      AppMethodBeat.o(186202);
+      AppMethodBeat.o(201117);
       return paramK;
     }
-    this.yd.put(paramK, a(paramK, paramV));
-    AppMethodBeat.o(186202);
+    this.yY.put(paramK, c(paramK, paramV));
+    AppMethodBeat.o(201117);
     return null;
+  }
+  
+  protected final b.c<K, V> q(K paramK)
+  {
+    AppMethodBeat.i(201107);
+    paramK = (b.c)this.yY.get(paramK);
+    AppMethodBeat.o(201107);
+    return paramK;
   }
   
   public final V remove(K paramK)
   {
-    AppMethodBeat.i(186204);
+    AppMethodBeat.i(201129);
     Object localObject = super.remove(paramK);
-    this.yd.remove(paramK);
-    AppMethodBeat.o(186204);
+    this.yY.remove(paramK);
+    AppMethodBeat.o(201129);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

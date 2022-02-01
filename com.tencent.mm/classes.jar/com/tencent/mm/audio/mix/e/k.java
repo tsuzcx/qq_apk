@@ -7,26 +7,26 @@ public final class k
 {
   private float A;
   private float B;
-  private float fpH;
-  private float fpI;
-  private float fpJ;
-  private int fpK;
-  private int fpL;
+  private float htQ;
+  private float htR;
+  private float htS;
+  private int htT;
+  private int htU;
   
   public k()
   {
     AppMethodBeat.i(136878);
-    this.fpH = 128.0F;
-    this.fpI = 128.0F;
-    this.fpJ = 128.0F;
-    this.fpK = 44100;
-    this.fpL = ((int)(0.02F * this.fpK * 2.0F * 16.0F / 8.0F));
-    this.A = (this.fpK / this.fpL);
+    this.htQ = 128.0F;
+    this.htR = 128.0F;
+    this.htS = 128.0F;
+    this.htT = 44100;
+    this.htU = ((int)(0.02F * this.htT * 2.0F * 16.0F / 8.0F));
+    this.A = (this.htT / this.htU);
     this.B = 1.0F;
     AppMethodBeat.o(136878);
   }
   
-  protected final byte[] K(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] aa(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136879);
     int j = 0;
@@ -36,33 +36,33 @@ public final class k
       int k = 0;
       if (k < paramInt1)
       {
-        i += this.fpv[k][j];
-        if (i > this.fpA) {
-          this.fpH *= 32768.0F / i;
+        i += this.htE[k][j];
+        if (i > this.htJ) {
+          this.htQ *= 32768.0F / i;
         }
         for (;;)
         {
           k += 1;
           break;
-          if (i < this.fpB) {
-            this.fpH *= 32768.0F / i;
+          if (i < this.htK) {
+            this.htQ *= 32768.0F / i;
           }
         }
       }
-      if (this.fpH >= this.fpI) {}
-      for (this.fpH = ((this.A * (this.fpI + 1.0F) + this.B * this.fpH) / (this.A + this.B));; this.fpH = ((this.fpI + this.fpH) / 2.0F))
+      if (this.htQ >= this.htR) {}
+      for (this.htQ = ((this.A * (this.htR + 1.0F) + this.B * this.htQ) / (this.A + this.B));; this.htQ = ((this.htR + this.htQ) / 2.0F))
       {
-        this.fpI = this.fpH;
+        this.htR = this.htQ;
         k = i;
-        if ((int)(this.fpH * 128.0F) >> 7 != 128) {
-          k = (int)(this.fpJ * this.fpH / 128.0F * i) / 128;
+        if ((int)(this.htQ * 128.0F) >> 7 != 128) {
+          k = (int)(this.htS * this.htQ / 128.0F * i) / 128;
         }
-        this.fpy[j] = kx(k);
+        this.htH[j] = oe(k);
         j += 1;
         break;
       }
     }
-    byte[] arrayOfByte = cB(paramInt3, paramInt2);
+    byte[] arrayOfByte = dr(paramInt3, paramInt2);
     AppMethodBeat.o(136879);
     return arrayOfByte;
   }

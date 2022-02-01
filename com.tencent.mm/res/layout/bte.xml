@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="@dimen/ct"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/bh8" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/jq" android:layout_width="72.0dip" android:layout_height="72.0dip" app:roundHeight="1.0dip" app:roundWidth="1.0dip" />
-        <View android:background="@drawable/a8e" android:layout_width="wrap_content" android:layout_height="23.0dip" android:layout_alignBottom="@id/jq" android:layout_alignStart="@id/jq" android:layout_alignEnd="@id/jq" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/BW_100_Alpha_0_6" android:ellipsize="end" android:id="@id/j3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="666" android:singleLine="true" android:layout_alignBottom="@id/jq" android:layout_marginEnd="4.0dip" android:layout_alignEnd="@id/jq" />
-    </RelativeLayout>
-    <TextView android:textSize="14.0dip" android:textColor="@color/am" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/kh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="12.0dip" android:maxWidth="72.0dip" android:text="人物" android:singleLine="true" />
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:layout_gravity="center_horizontal" android:id="@id/k0z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="开始搜索" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/cjw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="结束搜索" style="@style/oh" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/k1r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" />
 </LinearLayout>

@@ -2,15 +2,15 @@ package com.tencent.matrix.resource.d.a;
 
 public final class a
 {
-  public final int ddx;
-  public final b ddy;
-  public final Object ddz;
+  public final b fbZ;
+  public final Object fca;
+  public final int typeId;
   
   public a(int paramInt, b paramb, Object paramObject)
   {
-    this.ddx = paramInt;
-    this.ddy = paramb;
-    this.ddz = paramObject;
+    this.typeId = paramInt;
+    this.fbZ = paramb;
+    this.fca = paramObject;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,24 +23,24 @@ public final class a
         return false;
       }
       paramObject = (a)paramObject;
-      if (this.ddx != paramObject.ddx) {
+      if (this.typeId != paramObject.typeId) {
         return false;
       }
-      if (!this.ddy.equals(paramObject.ddy)) {
+      if (!this.fbZ.equals(paramObject.fbZ)) {
         return false;
       }
-    } while (((this.ddz == null) || (this.ddz.equals(paramObject.ddz))) && ((paramObject.ddz == null) || (paramObject.ddz.equals(this.ddz))));
+    } while (((this.fca == null) || (this.fca.equals(paramObject.fca))) && ((paramObject.fca == null) || (paramObject.fca.equals(this.fca))));
     return false;
   }
   
   public final int hashCode()
   {
-    return (this.ddy.hashCode() << 31) + this.ddx;
+    return (this.fbZ.hashCode() << 31) + this.typeId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.matrix.resource.d.a.a
  * JD-Core Version:    0.7.0.1
  */

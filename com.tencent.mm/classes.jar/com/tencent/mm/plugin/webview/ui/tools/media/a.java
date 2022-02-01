@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.webview.ui.tools.media;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "OP_SNS", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SCENE_SNS", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_JSAPI_SHARE", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "SHOW_MENU_FROM_SHARE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "OP_SNS", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SCENE_SNS", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_JSAPI_SHARE", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "SHOW_MENU_FROM_SHARE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a Qtn;
-  private static final String TAG = "MicroMsg.KV18589Report";
+  private static final String TAG;
+  public static final a XlE;
   
   static
   {
     AppMethodBeat.i(82580);
-    Qtn = new a();
+    XlE = new a();
     TAG = "MicroMsg.KV18589Report";
     AppMethodBeat.o(82580);
   }
   
-  public static void aR(int paramInt1, int paramInt2, int paramInt3)
+  public static void bs(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82579);
     h localh;
@@ -26,7 +26,7 @@ public final class a
     {
     case 3: 
     default: 
-      localh = h.IzE;
+      localh = h.OAn;
       switch (paramInt2)
       {
       case 4: 
@@ -37,10 +37,10 @@ public final class a
     }
     for (;;)
     {
-      localh.a(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
+      localh.b(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
       AppMethodBeat.o(82579);
       return;
-      localh = h.IzE;
+      localh = h.OAn;
       switch (paramInt2)
       {
       case 4: 
@@ -49,7 +49,7 @@ public final class a
       }
       for (;;)
       {
-        localh.a(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
+        localh.b(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
         AppMethodBeat.o(82579);
         return;
         paramInt1 = 11;
@@ -60,7 +60,7 @@ public final class a
         continue;
         paramInt1 = 19;
       }
-      localh = h.IzE;
+      localh = h.OAn;
       switch (paramInt2)
       {
       case 2: 
@@ -69,14 +69,14 @@ public final class a
       }
       for (;;)
       {
-        localh.a(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
+        localh.b(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
         AppMethodBeat.o(82579);
         return;
         paramInt1 = 12;
         continue;
         paramInt1 = 4;
       }
-      localh = h.IzE;
+      localh = h.OAn;
       switch (paramInt2)
       {
       case 4: 
@@ -85,7 +85,7 @@ public final class a
       }
       for (;;)
       {
-        localh.a(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
+        localh.b(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
         AppMethodBeat.o(82579);
         return;
         paramInt1 = 22;
@@ -106,17 +106,17 @@ public final class a
     }
   }
   
-  public static void lL(int paramInt1, int paramInt2)
+  public static void nv(int paramInt1, int paramInt2)
   {
     int i = 2;
     AppMethodBeat.i(82578);
-    h localh = h.IzE;
+    h localh = h.OAn;
     switch (paramInt1)
     {
     }
     for (i = 6;; i = 10)
     {
-      localh.a(18589, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
+      localh.b(18589, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(82578);
       return;
     }

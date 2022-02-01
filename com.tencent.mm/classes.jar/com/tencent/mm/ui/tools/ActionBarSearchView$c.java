@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(142996);
-    XNh = new c("CLEAR", 0);
-    XNi = new c("VOICE_SEARCH", 1);
-    XNj = new c[] { XNh, XNi };
+    afDv = new c("CLEAR", 0);
+    afDw = new c("VOICE_SEARCH", 1);
+    afDx = new c[] { afDv, afDw };
     AppMethodBeat.o(142996);
   }
   

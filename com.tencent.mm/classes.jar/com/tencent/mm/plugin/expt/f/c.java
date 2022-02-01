@@ -1,237 +1,225 @@
 package com.tencent.mm.plugin.expt.f;
 
-import android.os.Build;
-import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.b.a.bc;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.expt.h.b;
-import com.tencent.mm.protocal.protobuf.aho;
-import com.tencent.mm.protocal.protobuf.alk;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.bup;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.expt.e.d;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public final class c
-  extends q
-  implements m
 {
-  private i callback;
-  private int lMY = 0;
+  private static String TAG;
+  private static c zNr;
+  private static HashSet<String> zNs;
   
-  public c(int paramInt)
+  static
   {
-    this.lMY = paramInt;
-  }
-  
-  private static void Lj(int paramInt)
-  {
-    AppMethodBeat.i(251910);
-    int i = (int)Util.nowSecond();
-    if (i > paramInt)
-    {
-      h.aHG().aHp().set(ar.a.VuS, Integer.valueOf(i));
-      AppMethodBeat.o(251910);
-      return;
-    }
-    h.aHG().aHp().set(ar.a.VuS, Integer.valueOf(paramInt));
-    AppMethodBeat.o(251910);
-  }
-  
-  private static LinkedList<alk> dgk()
-  {
-    AppMethodBeat.i(251909);
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject = b.dgG().dgK();
-    if (((List)localObject).size() > 0)
-    {
-      StringBuffer localStringBuffer = new StringBuffer();
-      bc localbc = new bc();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        com.tencent.mm.plugin.expt.h.a locala = (com.tencent.mm.plugin.expt.h.a)((Iterator)localObject).next();
-        if (locala != null)
-        {
-          alk localalk = new alk();
-          localalk.SvO = locala.wrb;
-          localalk.SvP = locala.ka;
-          localalk.SvQ = locala.wrc;
-          localalk.SvT = locala.wrg;
-          localbc.glH = localalk.SvO;
-          localbc.glI = localalk.SvQ;
-          localbc.giX = 1;
-          localbc.fBl();
-          localLinkedList.add(localalk);
-          localStringBuffer.append("expt:").append(locala.wrb).append(",seq:").append(locala.wrc).append(";");
-        }
-      }
-      Log.i("MicroMsg.NetSceneGetExptApp", "local list[%s]", new Object[] { localStringBuffer });
-    }
-    AppMethodBeat.o(251909);
-    return localLinkedList;
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(251901);
-    this.callback = parami;
+    AppMethodBeat.i(122460);
+    TAG = "MicroMsg.ExptMMKV";
     long l = Util.currentTicks();
-    try
+    zNs = new HashSet();
+    c.a[] arrayOfa = c.a.values();
+    int j = arrayOfa.length;
+    int i = 0;
+    while (i < j)
     {
-      parami = new d.a();
-      parami.lBU = new buo();
-      parami.lBV = new bup();
-      parami.uri = "/cgi-bin/mmfddataappsvr/getexptappconfig";
-      parami.funcId = 1110;
-      parami.lBW = 0;
-      parami.respCmdId = 0;
-      parami = parami.bgN();
-      buo localbuo = (buo)d.b.b(parami.lBR);
-      localbuo.CPw = this.lMY;
-      localbuo.TeG = ((Integer)h.aHG().aHp().get(ar.a.VuS, Integer.valueOf(0))).intValue();
-      Object localObject = new aho();
-      ((aho)localObject).oeB = Build.MANUFACTURER;
-      ((aho)localObject).model = Build.MODEL;
-      ((aho)localObject).Ssk = Build.VERSION.SDK_INT;
-      ((aho)localObject).Ssl = Build.CPU_ABI;
-      Log.i("MicroMsg.NetSceneGetExptApp", "create Device type manufacturer[%s] model[%s] os_api[%s] cpu[%s]", new Object[] { ((aho)localObject).oeB, ((aho)localObject).model, ((aho)localObject).Ssk, ((aho)localObject).Ssl });
-      localbuo.TeH = ((aho)localObject);
-      localbuo.TeK = ((String)h.aHG().aHp().get(ar.a.VuT, ""));
-      int j;
-      int k;
-      int m;
-      int n;
-      if (this.lMY == 3)
-      {
-        i = 0;
-        localbuo.TeJ = i;
-        if (h.aHG().aHp().getInt(ar.a.VuU, 0) == 1) {
-          localbuo.TeJ = 0;
-        }
-        localObject = dgk();
-        j = ((Integer)h.aHG().aHp().get(ar.a.VuV, Integer.valueOf(1))).intValue();
-        if ((j == 1) || (localbuo.TeJ == 0)) {
-          localbuo.TeI = ((LinkedList)localObject);
-        }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(863L, 155L, 1L, false);
-        k = localbuo.CPw;
-        m = localbuo.TeG;
-        n = localbuo.TeJ;
-        localObject = localbuo.TeK;
-        if (localbuo.TeI == null) {
-          break label486;
-        }
-      }
-      label486:
-      for (int i = localbuo.TeI.size();; i = 0)
-      {
-        Log.i("MicroMsg.NetSceneGetExptApp", "get expt app scene[%d] lastGetSvrSec[%d] IsIncrement[%d] GlobalSequence[%s] nextReqNeedLocalList[%d] localExptList[%d] cost[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), localObject, Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
-        i = dispatch(paramg, parami, this);
-        AppMethodBeat.o(251901);
-        return i;
-        i = 1;
-        break;
-      }
-      return -1;
+      c.a locala = arrayOfa[i];
+      zNs.add(locala.name());
+      i += 1;
     }
-    catch (Exception paramg)
-    {
-      Log.printErrStackTrace("MicroMsg.NetSceneGetExptApp", paramg, "", new Object[0]);
-      AppMethodBeat.o(251901);
-    }
+    Log.i(TAG, "get mulit expt enum cost time [%d]", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+    AppMethodBeat.o(122460);
   }
   
-  public final int getType()
+  public static MultiProcessMMKV atj()
   {
-    return 1110;
+    AppMethodBeat.i(122454);
+    MultiProcessMMKV localMultiProcessMMKV = d.dNI().atj();
+    AppMethodBeat.o(122454);
+    return localMultiProcessMMKV;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public static String c(c.a parama, String paramString)
   {
-    AppMethodBeat.i(251905);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      params = (bup)d.c.b(((d)params).lBS);
-      if (params == null)
-      {
-        paramInt1 = 0;
-        if (paramInt1 == 0) {
-          break label373;
-        }
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(863L, 156L, 1L, false);
-      }
+    AppMethodBeat.i(299430);
+    parama = d.dNI().a(parama.name(), paramString, false, true);
+    AppMethodBeat.o(299430);
+    return parama;
+  }
+  
+  public static c dNK()
+  {
+    AppMethodBeat.i(122453);
+    if (zNr == null) {
+      zNr = new c();
     }
-    for (;;)
+    c localc = zNr;
+    AppMethodBeat.o(122453);
+    return localc;
+  }
+  
+  public static String hx(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(299436);
+    paramString1 = d.dNI().a(paramString1, paramString2, false, true);
+    AppMethodBeat.o(299436);
+    return paramString1;
+  }
+  
+  private String info()
+  {
+    AppMethodBeat.i(122459);
+    String str = hashCode();
+    AppMethodBeat.o(122459);
+    return str;
+  }
+  
+  public final boolean dNL()
+  {
+    AppMethodBeat.i(122458);
+    if (MMApplicationContext.isMMProcess())
     {
-      a.dgf();
-      a.nD(false);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(251905);
-      return;
-      if (params.BaseResponse.CqV != 0)
+      AppMethodBeat.o(122458);
+      return true;
+    }
+    Log.printInfoStack(TAG, "%s only mm process can write expt info", new Object[] { info() });
+    AppMethodBeat.o(122458);
+    return false;
+  }
+  
+  public final boolean fA(List<com.tencent.mm.plugin.expt.e.c> paramList)
+  {
+    AppMethodBeat.i(184400);
+    if (!dNL())
+    {
+      AppMethodBeat.o(184400);
+      return false;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      Log.w(TAG, "%s replace expt but item is null!", new Object[] { info() });
+      AppMethodBeat.o(184400);
+      return false;
+    }
+    long l = Util.currentTicks();
+    MultiProcessMMKV localMultiProcessMMKV = d.dNI().atj();
+    if (localMultiProcessMMKV == null)
+    {
+      Log.w(TAG, "%s replace expt but mmkv is null!", new Object[] { info() });
+      AppMethodBeat.o(184400);
+      return false;
+    }
+    Iterator localIterator = paramList.iterator();
+    int i = 0;
+    int j = 0;
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.plugin.expt.e.c localc = (com.tencent.mm.plugin.expt.e.c)localIterator.next();
+      if (localc != null)
       {
-        paramInt1 = 0;
-        break;
-      }
-      paramArrayOfByte = new ArrayList();
-      if ((params.TeO != null) && (params.TeO.size() > 0))
-      {
-        localObject = params.TeO.iterator();
+        Object localObject = localc.dNo();
+        if (localObject == null) {
+          break label333;
+        }
+        localObject = ((HashMap)localObject).keySet().iterator();
+        int k = 0;
         while (((Iterator)localObject).hasNext())
         {
-          alk localalk = (alk)((Iterator)localObject).next();
-          com.tencent.mm.plugin.expt.h.a locala = new com.tencent.mm.plugin.expt.h.a();
-          locala.abx(localalk.SvR);
-          paramArrayOfByte.add(locala);
+          localMultiProcessMMKV.putInt((String)((Iterator)localObject).next(), localc.field_exptId);
+          k = 1;
+          j += 1;
         }
+        if (k == 0) {
+          break label330;
+        }
+        localMultiProcessMMKV.putString(localc.field_exptId, localc.field_exptContent);
+        i += 1;
       }
-      a.dgf();
-      a.b(params.RIs, params.TeN, paramArrayOfByte);
-      Lj(params.TeL);
-      int i = params.TeM;
-      h.aHG().aHp().set(ar.a.VuR, Integer.valueOf(i));
-      int j = params.TeP;
-      h.aHG().aHp().set(ar.a.VuV, Integer.valueOf(j));
-      Object localObject = params.TeK;
-      h.aHG().aHp().set(ar.a.VuT, localObject);
-      int k = paramArrayOfByte.size();
-      if (params.TeN != null) {}
-      for (paramInt1 = params.TeN.size();; paramInt1 = 0)
+    }
+    label330:
+    label333:
+    for (;;)
+    {
+      break;
+      boolean bool = localMultiProcessMMKV.commit();
+      Log.i(TAG, "%s replace expt param[%d] [%d %d] cost[%d] flag[%b]", new Object[] { info(), Integer.valueOf(paramList.size()), Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)), Boolean.valueOf(bool) });
+      AppMethodBeat.o(184400);
+      return bool;
+    }
+  }
+  
+  public final void fB(List<Integer> paramList)
+  {
+    AppMethodBeat.i(122457);
+    if (!dNL())
+    {
+      AppMethodBeat.o(122457);
+      return;
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      AppMethodBeat.o(122457);
+      return;
+    }
+    long l = Util.currentTicks();
+    MultiProcessMMKV localMultiProcessMMKV = d.dNI().atj();
+    if (localMultiProcessMMKV == null)
+    {
+      AppMethodBeat.o(122457);
+      return;
+    }
+    HashSet localHashSet = new HashSet();
+    Iterator localIterator = paramList.iterator();
+    int i = 0;
+    int j;
+    if (localIterator.hasNext())
+    {
+      j = ((Integer)localIterator.next()).intValue();
+      if (!localMultiProcessMMKV.contains(String.valueOf(j))) {
+        break label299;
+      }
+      localMultiProcessMMKV.remove(String.valueOf(j));
+      localHashSet.add(Integer.valueOf(j));
+      i += 1;
+    }
+    label296:
+    label299:
+    for (;;)
+    {
+      break;
+      localIterator = zNs.iterator();
+      j = 0;
+      if (localIterator.hasNext())
       {
-        Log.i("MicroMsg.NetSceneGetExptApp", "updateExpt interval[%d] nextReqNeedLocalList[%d] globalSeq[%s] updateList[%d] deleteList[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(k), Integer.valueOf(paramInt1) });
-        paramInt1 = 1;
-        break;
+        String str = (String)localIterator.next();
+        int k = localMultiProcessMMKV.getInt(str, 0);
+        if ((k <= 0) || (!localHashSet.contains(Integer.valueOf(k)))) {
+          break label296;
+        }
+        localMultiProcessMMKV.remove(str);
+        j += 1;
       }
-      label373:
-      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(863L, 157L, 1L, false);
-      continue;
-      Log.w("MicroMsg.NetSceneGetExptApp", "get expt error");
-      Lj((int)Util.nowSecond());
-      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(863L, 157L, 1L, false);
+      for (;;)
+      {
+        break;
+        boolean bool = localMultiProcessMMKV.commit();
+        Log.i(TAG, "%s delete expt params[%d] delete [%d %d] cost[%d] flag [%b]", new Object[] { info(), Integer.valueOf(paramList.size()), Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(Util.ticksToNow(l)), Boolean.valueOf(bool) });
+        AppMethodBeat.o(122457);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,58 @@
 package com.tencent.mm.plugin.appbrand.jsapi.channels;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import com.tencent.mm.plugin.findersdk.a.ag.a;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.protocal.protobuf.blq;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/OpenChannelsRewardedVideoAdTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
-final class k
-  extends AppBrandProxyUIProcessTask
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsUserProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCommon;", "()V", "action", "", "getAction", "()Ljava/lang/String;", "preProcessExtInfo", "", "extInfoJsonObj", "Lorg/json/JSONObject;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class k
+  extends d
 {
-  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  private static final int CTRL_INDEX = 969;
+  private static final String NAME = "openChannelsUserProfile";
+  public static final a rRO;
+  
+  static
   {
-    AppMethodBeat.i(273767);
-    if (!(paramProcessRequest instanceof OpenChannelsRewardedVideoAdRequest))
-    {
-      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsRewardedVideoAd", "handleRequest#OpenChannelsRewardedVideoAdTask, request is not OpenChannelsRewardedVideoAdRequest");
-      AppMethodBeat.o(273767);
-      return;
-    }
-    ak localak = (ak)h.ag(ak.class);
-    if (localak != null)
-    {
-      localak.enterFinderUIFromMiniApp((Context)bPf(), ((OpenChannelsRewardedVideoAdRequest)paramProcessRequest).oOe, (ag.a)new a(this), (ag.a)new b(this));
-      AppMethodBeat.o(273767);
-      return;
-    }
-    AppMethodBeat.o(273767);
+    AppMethodBeat.i(327862);
+    rRO = new a((byte)0);
+    AppMethodBeat.o(327862);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "rawOpenResult", "", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class a<T>
-    implements ag.a<Object>
+  public final boolean ai(JSONObject paramJSONObject)
   {
-    a(k paramk) {}
-    
-    public final void aH(Object paramObject)
+    AppMethodBeat.i(327872);
+    s.u(paramJSONObject, "extInfoJsonObj");
+    try
     {
-      AppMethodBeat.i(282485);
-      if (!(paramObject instanceof blq)) {
-        paramObject = null;
-      }
+      paramJSONObject.put("commentScene", 15);
+      bool = true;
+    }
+    catch (Exception paramJSONObject)
+    {
       for (;;)
       {
-        paramObject = (blq)paramObject;
-        if (paramObject != null) {}
-        for (int i = 0;; i = -1)
-        {
-          Log.i("MicroMsg.AppBrand.JsApiOpenChannelsRewardedVideoAd", "succCallback#handleRequest#OpenChannelsRewardedVideoAdTask, errCode: ".concat(String.valueOf(i)));
-          k.a(this.oOg, (AppBrandProxyUIProcessTask.ProcessResult)new OpenChannelsRewardedVideoAdResult(i, paramObject));
-          AppMethodBeat.o(282485);
-          return;
-        }
+        Log.w("MicroMsg.AppBrand.JsApiOpenChannelsUserProfile", s.X("preProcessExtInfo, fail since ", paramJSONObject));
+        boolean bool = false;
       }
     }
+    AppMethodBeat.o(327872);
+    return bool;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errCode", "", "kotlin.jvm.PlatformType", "onCallback", "(Ljava/lang/Integer;)V"})
-  static final class b<T>
-    implements ag.a<Integer>
+  public final String getAction()
   {
-    b(k paramk) {}
+    return "openFinderProfile";
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsUserProfile$Companion;", "", "()V", "ACTION", "", "CTRL_INDEX", "", "NAME", "PARAM_KEY_COMMENT_SCENE", "PARAM_VALUE_COMMENT_SCENE", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.channels.k
  * JD-Core Version:    0.7.0.1
  */

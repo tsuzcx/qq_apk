@@ -4,7 +4,6 @@ import android.media.MediaFormat;
 import com.tencent.liteav.basic.module.a;
 import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.structs.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONArray;
 
@@ -26,28 +25,27 @@ public class d
   protected int mOutputWidth = 0;
   protected int mRotation = 0;
   protected int mStreamType = 2;
-  protected c mThreadPriority = c.b;
   private long mVideoGOPEncode = 0L;
   
   protected void callDelegate(int paramInt)
   {
-    AppMethodBeat.i(229301);
+    AppMethodBeat.i(229560);
     callDelegate(new TXSNALPacket(), paramInt);
-    AppMethodBeat.o(229301);
+    AppMethodBeat.o(229560);
   }
   
   protected void callDelegate(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(229310);
+    AppMethodBeat.i(229568);
     if (this.mListener != null) {
       this.mListener.a(paramMediaFormat);
     }
-    AppMethodBeat.o(229310);
+    AppMethodBeat.o(229568);
   }
   
   protected void callDelegate(TXSNALPacket paramTXSNALPacket, int paramInt)
   {
-    AppMethodBeat.i(229307);
+    AppMethodBeat.i(229566);
     e locale = this.mListener;
     if (locale != null)
     {
@@ -61,7 +59,7 @@ public class d
           setStatusValue(4006, Long.valueOf(this.mVideoGOPEncode));
         }
         this.mVideoGOPEncode = 1L;
-        AppMethodBeat.o(229307);
+        AppMethodBeat.o(229566);
         return;
       }
       this.mVideoGOPEncode += 1L;
@@ -69,7 +67,7 @@ public class d
         setStatusValue(4006, Long.valueOf(this.mVideoGOPEncode));
       }
     }
-    AppMethodBeat.o(229307);
+    AppMethodBeat.o(229566);
   }
   
   public void enableNearestRPS(int paramInt) {}
@@ -106,11 +104,11 @@ public class d
   
   protected void onEncodeFinished(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(229312);
+    AppMethodBeat.i(229571);
     if (this.mListener != null) {
       this.mListener.a(paramInt, paramLong1, paramLong2);
     }
-    AppMethodBeat.o(229312);
+    AppMethodBeat.o(229571);
   }
   
   public long pushVideoFrame(int paramInt1, int paramInt2, int paramInt3, long paramLong)
@@ -152,11 +150,6 @@ public class d
     this.mRotation = paramInt;
   }
   
-  public void setThreadPriority(c paramc)
-  {
-    this.mThreadPriority = paramc;
-  }
-  
   public void setXMirror(boolean paramBoolean)
   {
     this.mEnableXMirror = paramBoolean;
@@ -185,7 +178,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.d
  * JD-Core Version:    0.7.0.1
  */

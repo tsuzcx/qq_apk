@@ -11,33 +11,33 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c;
-import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.websearch.a.d;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
 import com.tencent.mm.plugin.websearch.a.e;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.plugin.websearch.a.f;
+import com.tencent.mm.ui.af;
 
 public class BtnSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c PCP;
-  private TextView PDr;
-  private View PDs;
-  private View PDt;
-  private a.a PDu;
+  private TextView WtW;
+  private View WtX;
+  private View WtY;
+  private a.a WtZ;
+  private c Wtu;
   private Context context;
-  private ImageView rgE;
+  private ImageView uoE;
   
   public BtnSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116733);
     c.a locala = new c.a();
-    locala.lRD = true;
-    locala.lRC = true;
-    this.PCP = locala.bmL();
+    locala.oKp = true;
+    locala.oKo = true;
+    this.Wtu = locala.bKx();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116733);
@@ -48,9 +48,9 @@ public class BtnSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116734);
     paramAttributeSet = new c.a();
-    paramAttributeSet.lRD = true;
-    paramAttributeSet.lRC = true;
-    this.PCP = paramAttributeSet.bmL();
+    paramAttributeSet.oKp = true;
+    paramAttributeSet.oKo = true;
+    this.Wtu = paramAttributeSet.bKx();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116734);
@@ -59,22 +59,22 @@ public class BtnSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116735);
-    ViewGroup localViewGroup = (ViewGroup)ad.kS(this.context).inflate(a.e.widget_footer_switch, this);
-    this.PDt = localViewGroup.findViewById(a.d.footer_debug);
-    this.PDs = localViewGroup.findViewById(a.d.footer_switch);
-    this.PDr = ((TextView)localViewGroup.findViewById(a.d.footer_title));
-    this.rgE = ((ImageView)localViewGroup.findViewById(a.d.footer_icon));
-    this.PDt.setVisibility(8);
-    this.PDs.setOnClickListener(new View.OnClickListener()
+    ViewGroup localViewGroup = (ViewGroup)af.mU(this.context).inflate(a.f.widget_footer_switch, this);
+    this.WtY = localViewGroup.findViewById(a.e.footer_debug);
+    this.WtX = localViewGroup.findViewById(a.e.footer_switch);
+    this.WtW = ((TextView)localViewGroup.findViewById(a.e.footer_title));
+    this.uoE = ((ImageView)localViewGroup.findViewById(a.e.footer_icon));
+    this.WtY.setVisibility(8);
+    this.WtX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116732);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (BtnSwitchFooter.a(BtnSwitchFooter.this) != null) {
-          BtnSwitchFooter.a(BtnSwitchFooter.this).gRU();
+          BtnSwitchFooter.a(BtnSwitchFooter.this).irl();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116732);
@@ -86,16 +86,16 @@ public class BtnSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116740);
-    this.PDu = parama;
+    this.WtZ = parama;
     if (parama != null)
     {
       if (parama.getItemCount() > 1)
       {
-        this.PDs.setVisibility(0);
+        this.WtX.setVisibility(0);
         AppMethodBeat.o(116740);
         return;
       }
-      this.PDs.setVisibility(8);
+      this.WtX.setVisibility(8);
     }
     AppMethodBeat.o(116740);
   }
@@ -105,39 +105,39 @@ public class BtnSwitchFooter
     AppMethodBeat.i(116739);
     if (TextUtils.isEmpty(paramString))
     {
-      this.rgE.setVisibility(8);
+      this.uoE.setVisibility(8);
       AppMethodBeat.o(116739);
       return;
     }
-    this.rgE.setVisibility(0);
-    com.tencent.mm.ay.a.a.bms().a(paramString, this.rgE, this.PCP);
+    this.uoE.setVisibility(0);
+    com.tencent.mm.modelimage.loader.a.bKl().a(paramString, this.uoE, this.Wtu);
     AppMethodBeat.o(116739);
   }
   
   public void setSwitchClickLsn(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116736);
-    this.PDs.setOnClickListener(paramOnClickListener);
+    this.WtX.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116736);
   }
   
   public void setSwitchVisible(int paramInt)
   {
     AppMethodBeat.i(116737);
-    this.PDs.setVisibility(paramInt);
+    this.WtX.setVisibility(paramInt);
     AppMethodBeat.o(116737);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116738);
-    this.PDr.setText(paramString);
+    this.WtW.setText(paramString);
     AppMethodBeat.o(116738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.BtnSwitchFooter
  * JD-Core Version:    0.7.0.1
  */

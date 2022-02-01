@@ -89,7 +89,7 @@ public class a
   
   private String a(int paramInt)
   {
-    AppMethodBeat.i(219782);
+    AppMethodBeat.i(229476);
     String str;
     switch (paramInt)
     {
@@ -99,7 +99,7 @@ public class a
     for (;;)
     {
       this.i.sendMessage(Message.obtain(this.i, 2, 1, 0, str));
-      AppMethodBeat.o(219782);
+      AppMethodBeat.o(229476);
       return str;
       str = "Video encoding failed";
       continue;
@@ -327,7 +327,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.a.a
  * JD-Core Version:    0.7.0.1
  */

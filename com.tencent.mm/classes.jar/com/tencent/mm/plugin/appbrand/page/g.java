@@ -1,81 +1,62 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.task.n;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandUILoadingSplash;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.d;
-import com.tencent.mm.plugin.appbrand.widget.tabbar.AppBrandTabBarItem;
-import com.tencent.mm.plugin.appbrand.widget.tabbar.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
+import com.tencent.mm.plugin.appbrand.ui.ab;
+import com.tencent.mm.plugin.appbrand.ui.ac;
+import com.tencent.mm.plugin.appbrand.ui.o;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetPreLoader;", "", "()V", "TAG", "", "preloadedWidgetFactory", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC;", "obtainInstance", "type", "warmUpAndTryPreload", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"obtainPersistentContextWrapper", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandRuntimePersistentContextWrapper;", "Landroid/content/Context;", "obtainScreenAdaptiveContext", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIScreenAdaptiveContextThemeWrapper;", "plugin-appbrand-integration_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  private static final ConcurrentHashMap<n, e> qpq;
-  public static final g qpr;
-  
-  static
+  public static final ab fa(Context paramContext)
   {
-    AppMethodBeat.i(268828);
-    qpr = new g();
-    qpq = new ConcurrentHashMap();
-    AppMethodBeat.o(268828);
-  }
-  
-  public static void a(n paramn)
-  {
-    AppMethodBeat.i(268826);
-    p.k(paramn, "type");
-    Log.i("MicroMsg.AppBrandDecorWidgetPreLoader", "warmUpAndTryPreload type=".concat(String.valueOf(paramn)));
-    e locale;
-    if (qpq.get(paramn) == null)
+    AppMethodBeat.i(50911);
+    s.u(paramContext, "<this>");
+    if ((paramContext instanceof ab))
     {
-      locale = new e();
-      locale.aC(b.class);
-      locale.aC(d.class);
-      switch (h.$EnumSwitchMapping$0[paramn.ordinal()])
-      {
-      }
+      paramContext = (ab)paramContext;
+      AppMethodBeat.o(50911);
+      return paramContext;
+    }
+    if ((paramContext instanceof AppBrandUI)) {
+      paramContext = ((AppBrandUI)paramContext).cLq();
     }
     for (;;)
     {
-      ((Map)qpq).put(paramn, locale);
-      AppMethodBeat.o(268826);
-      return;
-      locale.aC(a.class);
-      locale.aC(AppBrandUILoadingSplash.class);
-      int i = 0;
-      while (i <= 4)
-      {
-        locale.aC(AppBrandTabBarItem.class);
-        i += 1;
+      s.s(paramContext, "{\n        if (this is Ap….THEME())\n        }\n    }");
+      AppMethodBeat.o(50911);
+      return paramContext;
+      if ((paramContext instanceof o)) {
+        paramContext = ((o)paramContext).cLq();
+      } else {
+        paramContext = new ab(paramContext, ac.cLF());
       }
     }
   }
   
-  public static e b(n paramn)
+  static final o fb(Context paramContext)
   {
-    AppMethodBeat.i(268827);
-    p.k(paramn, "type");
-    e locale2 = (e)qpq.get(paramn);
-    e locale1 = locale2;
-    if (locale2 == null)
+    AppMethodBeat.i(50912);
+    if ((paramContext instanceof o))
     {
-      Log.i("MicroMsg.AppBrandDecorWidgetPreLoader", "obtainInstance: no preloaded, create it [%s]", new Object[] { paramn.name() });
-      locale1 = new e();
+      paramContext = o.fj(((o)paramContext).getBaseContext());
+      s.s(paramContext, "{\n        AppBrandRuntim…I(this.baseContext)\n    }");
+      AppMethodBeat.o(50912);
+      return paramContext;
     }
-    AppMethodBeat.o(268827);
-    return locale1;
+    paramContext = o.fj(paramContext);
+    s.s(paramContext, "{\n        AppBrandRuntim…forAppBrandUI(this)\n    }");
+    AppMethodBeat.o(50912);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.g
  * JD-Core Version:    0.7.0.1
  */

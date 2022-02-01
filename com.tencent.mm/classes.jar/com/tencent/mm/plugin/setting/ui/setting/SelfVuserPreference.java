@@ -17,7 +17,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class SelfVuserPreference
   extends Preference
 {
-  private String Jfk;
+  private String PpL;
   Drawable drawable;
   String text;
   
@@ -43,8 +43,8 @@ public class SelfVuserPreference
     {
       localImageView.setImageDrawable(this.drawable);
       Log.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
-      if (!Util.isNullOrNil(this.Jfk)) {
-        localImageView.setContentDescription(this.Jfk);
+      if (!Util.isNullOrNil(this.PpL)) {
+        localImageView.setContentDescription(this.PpL);
       }
     }
     paramView = (TextView)paramView.findViewById(b.f.text_tv);
@@ -69,7 +69,7 @@ public class SelfVuserPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelfVuserPreference
  * JD-Core Version:    0.7.0.1
  */

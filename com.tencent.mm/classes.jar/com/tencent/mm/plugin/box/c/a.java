@@ -12,7 +12,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.box.e.a;
 import com.tencent.mm.plugin.box.e.b;
@@ -20,7 +20,7 @@ import com.tencent.mm.plugin.box.e.c;
 import com.tencent.mm.plugin.box.webview.BoxWebView;
 import com.tencent.mm.plugin.box.webview.c;
 import com.tencent.mm.plugin.box.webview.d;
-import com.tencent.mm.protocal.protobuf.qm;
+import com.tencent.mm.protocal.protobuf.rx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -28,31 +28,31 @@ public final class a
   extends androidx.appcompat.app.e
   implements b
 {
-  private qm sog;
-  private FrameLayout soh;
-  private d soi;
-  private BoxWebView soj;
-  private com.tencent.mm.plugin.box.webview.b sok;
+  private rx vAe;
+  private FrameLayout vAf;
+  private d vAg;
+  private BoxWebView vAh;
+  private com.tencent.mm.plugin.box.webview.b vAi;
   
-  public a(Context paramContext, qm paramqm)
+  public a(Context paramContext, rx paramrx)
   {
     super(paramContext, e.c.BoxDialog);
-    this.sog = paramqm;
+    this.vAe = paramrx;
   }
   
-  public final BoxWebView cyu()
+  public final BoxWebView dbl()
   {
-    return this.soj;
+    return this.vAh;
   }
   
-  public final com.tencent.mm.plugin.box.webview.e cyv()
+  public final com.tencent.mm.plugin.box.webview.e dbm()
   {
-    return this.sok;
+    return this.vAi;
   }
   
-  public final d cyw()
+  public final d dbn()
   {
-    return this.soi;
+    return this.vAg;
   }
   
   public final Context getActivityContext()
@@ -82,17 +82,17 @@ public final class a
       }
     });
     setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-    this.soh = ((FrameLayout)paramBundle.findViewById(e.a.webview_container));
-    this.sok = new com.tencent.mm.plugin.box.webview.b(this);
-    this.soj = new BoxWebView(MMApplicationContext.getContext());
-    this.soi = new d(this);
+    this.vAf = ((FrameLayout)paramBundle.findViewById(e.a.webview_container));
+    this.vAi = new com.tencent.mm.plugin.box.webview.b(this);
+    this.vAh = new BoxWebView(MMApplicationContext.getContext());
+    this.vAg = new d(this);
     paramBundle = new com.tencent.mm.plugin.box.webview.a();
-    c localc = new c(this.sog, this.sok);
-    this.soj.a(paramBundle, localc);
-    this.soj.addJavascriptInterface(this.soi, "boxJSApi");
-    Log.i("MicroMsg.Box.BoxHomeUI", "start to load url %s", new Object[] { this.sog.Url });
-    this.soj.loadUrl(this.sog.Url);
-    this.soh.addView(this.soj);
+    c localc = new c(this.vAe, this.vAi);
+    this.vAh.a(paramBundle, localc);
+    this.vAh.addJavascriptInterface(this.vAg, "boxJSApi");
+    Log.i("MicroMsg.Box.BoxHomeUI", "start to load url %s", new Object[] { this.vAe.Url });
+    this.vAh.loadUrl(this.vAe.Url);
+    this.vAf.addView(this.vAh);
     setCancelable(true);
     setOnDismissListener(new DialogInterface.OnDismissListener()
     {
@@ -103,10 +103,10 @@ public final class a
         if (a.a(a.this) != null)
         {
           paramAnonymousDialogInterface = a.a(a.this);
-          if (paramAnonymousDialogInterface.son != null) {
-            h.aGY().a(paramAnonymousDialogInterface.son);
+          if (paramAnonymousDialogInterface.vAl != null) {
+            h.aZW().a(paramAnonymousDialogInterface.vAl);
           }
-          h.aGY().b(1869, paramAnonymousDialogInterface);
+          h.aZW().b(1869, paramAnonymousDialogInterface);
         }
         if (a.b(a.this) != null)
         {
@@ -118,7 +118,7 @@ public final class a
       }
     });
     getWindow().setWindowAnimations(e.c.BottomToTopSlowAnimation);
-    com.tencent.mm.plugin.box.a.a.rE(1);
+    com.tencent.mm.plugin.box.a.a.rG(1);
     AppMethodBeat.o(76333);
   }
 }

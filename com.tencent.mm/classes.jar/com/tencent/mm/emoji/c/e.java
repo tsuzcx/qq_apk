@@ -1,69 +1,48 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.az;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.cpr;
+import com.tencent.mm.protocal.protobuf.cps;
+import com.tencent.mm.protocal.protobuf.gol;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/report/EmojiPopupReport;", "", "()V", "ActionAddInDetail", "", "ActionDelete", "ActionDeleteConfirm", "ActionLongClick", "ActionTop", "ActionViewDetail", "SceneCapture", "SceneCustom", "SceneSearch", "SceneSimilar", "SceneStore", "TAG", "", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "report", "", "action", "setSceneFromType", "type", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/model/CgiGetPersonalDesigner;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetPersonalDesignerResponse;", "designerUin", "", "reqBuff", "", "(I[B)V", "getDesignerUin", "()I", "getReqBuff", "()[B", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
+  extends b<cps>
 {
-  private static final String TAG = "MicroMsg.EmojiPopupReport";
-  private static final az jNu;
-  public static final e jNv;
+  private final int mhB;
+  private final byte[] mhC;
   
-  static
+  public e(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(183966);
-    jNv = new e();
-    TAG = "MicroMsg.EmojiPopupReport";
-    jNu = new az();
-    AppMethodBeat.o(183966);
-  }
-  
-  public static az aDd()
-  {
-    return jNu;
-  }
-  
-  public static void rE(int paramInt)
-  {
-    AppMethodBeat.i(183964);
-    jNu.ln(paramInt);
-    jNu.bpa();
-    AppMethodBeat.o(183964);
-  }
-  
-  public static void rL(int paramInt)
-  {
-    int j = 1;
-    AppMethodBeat.i(183965);
-    az localaz = jNu;
-    int i = j;
-    switch (paramInt)
+    AppMethodBeat.i(183955);
+    this.mhB = paramInt;
+    this.mhC = paramArrayOfByte;
+    paramArrayOfByte = new cpr();
+    cps localcps = new cps();
+    paramArrayOfByte.ZtX = this.mhB;
+    if (this.mhC == null) {}
+    for (paramArrayOfByte.YGU = new gol();; paramArrayOfByte.YGU = w.aN(this.mhC))
     {
-    default: 
-      Log.e(TAG, "type scene mismatch");
-      i = j;
-    }
-    for (;;)
-    {
-      localaz.lo(i);
-      AppMethodBeat.o(183965);
+      paramArrayOfByte.IJG = 0;
+      c.a locala = new c.a();
+      locala.otE = ((a)paramArrayOfByte);
+      locala.otF = ((a)localcps);
+      locala.uri = "/cgi-bin/micromsg-bin/mmgetpersonaldesigner";
+      locala.funcId = 720;
+      c(locala.bEF());
+      AppMethodBeat.o(183955);
       return;
-      i = 2;
-      continue;
-      i = 4;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,10 @@ public class SendTdiAuth
     
     public final void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(255248);
+      AppMethodBeat.i(242968);
       super.fromBundle(paramBundle);
       this.tdiAuthBuffer = paramBundle.getByteArray("_wxapi_sendauth_resp_tdi_buffer");
-      AppMethodBeat.o(255248);
+      AppMethodBeat.o(242968);
     }
     
     public final int getType()
@@ -37,10 +37,10 @@ public class SendTdiAuth
     
     public final void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(255250);
+      AppMethodBeat.i(242972);
       super.toBundle(paramBundle);
       paramBundle.putByteArray("_wxapi_sendauth_resp_tdi_buffer", this.tdiAuthBuffer);
-      AppMethodBeat.o(255250);
+      AppMethodBeat.o(242972);
     }
   }
 }

@@ -7,9 +7,9 @@ public enum q
   static
   {
     AppMethodBeat.i(181960);
-    uvH = new q("EXACT", 0);
-    uvI = new q("SPAN_FLAGS", 1);
-    uvJ = new q[] { uvH, uvI };
+    xCg = new q("EXACT", 0);
+    xCh = new q("SPAN_FLAGS", 1);
+    xCi = new q[] { xCg, xCh };
     AppMethodBeat.o(181960);
   }
   

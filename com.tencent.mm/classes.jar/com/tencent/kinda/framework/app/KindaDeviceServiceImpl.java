@@ -8,23 +8,23 @@ import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KDeviceService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.soter.d.d;
-import com.tencent.mm.plugin.soter.d.e;
+import com.tencent.mm.plugin.soter.model.b;
+import com.tencent.mm.plugin.soter.model.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.widget.a.f.a;
+import com.tencent.mm.ui.widget.a.g.a;
 
 public class KindaDeviceServiceImpl
   implements KDeviceService
 {
   private static final String TAG = "KindaDeviceServiceImpl";
   private byte _hellAccFlag_;
-  private com.tencent.mm.plugin.fingerprint.d.a mgr;
+  private com.tencent.mm.plugin.fingerprint.c.a mgr;
   
   public KindaDeviceServiceImpl()
   {
     AppMethodBeat.i(18416);
-    this.mgr = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.d.a.class));
+    this.mgr = ((com.tencent.mm.plugin.fingerprint.c.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.fingerprint.c.a.class));
     AppMethodBeat.o(18416);
   }
   
@@ -38,16 +38,16 @@ public class KindaDeviceServiceImpl
     try
     {
       Context localContext1 = MMApplicationContext.getContext();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(localContext1, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localContext1.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localContext1, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localContext1.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(localContext1, "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(18424);
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.p(1589L, 5L, 1L);
+      com.tencent.mm.plugin.report.service.h.OAn.p(1589L, 5L, 1L);
       Log.printErrStackTrace("KindaDeviceServiceImpl", localActivityNotFoundException, "invokePhoneCall: The device may not have a phone App installed! ", new Object[0]);
       Context localContext2 = KindaContext.get();
       if (localContext2 == null)
@@ -56,11 +56,11 @@ public class KindaDeviceServiceImpl
         AppMethodBeat.o(18424);
         return;
       }
-      localObject = new f.a(localContext2);
-      ((f.a)localObject).bBl(localContext2.getString(R.string.wallet_card_unable_call, new Object[] { paramString }));
-      ((f.a)localObject).Qlf = true;
-      ((f.a)localObject).ayp(R.string.wallet_dialog_confirm);
-      ((f.a)localObject).show();
+      localObject = new g.a(localContext2);
+      ((g.a)localObject).bDE(localContext2.getString(R.string.wallet_card_unable_call, new Object[] { paramString }));
+      ((g.a)localObject).Xdm = true;
+      ((g.a)localObject).aEX(R.string.wallet_dialog_confirm);
+      ((g.a)localObject).show();
       AppMethodBeat.o(18424);
     }
   }
@@ -74,8 +74,8 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18417);
       return false;
     }
-    boolean bool1 = this.mgr.eot();
-    boolean bool2 = this.mgr.eoB();
+    boolean bool1 = this.mgr.ftw();
+    boolean bool2 = this.mgr.ftE();
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceOpenBiometricVerification, isDeviceHasFingerPrint: " + bool1 + ", isDeviceHasFaceID: " + bool2);
     if ((bool1) || (bool2))
     {
@@ -95,7 +95,7 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18419);
       return false;
     }
-    boolean bool = this.mgr.eoA();
+    boolean bool = this.mgr.ftD();
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(bool)));
     AppMethodBeat.o(18419);
     return bool;
@@ -110,7 +110,7 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18418);
       return false;
     }
-    boolean bool = this.mgr.eos();
+    boolean bool = this.mgr.ftv();
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFP, return".concat(String.valueOf(bool)));
     AppMethodBeat.o(18418);
     return bool;
@@ -125,15 +125,16 @@ public class KindaDeviceServiceImpl
       AppMethodBeat.o(18420);
       return false;
     }
-    Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isRoot, return: false");
+    boolean bool = this.mgr.isRoot();
+    Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isRoot, return: ".concat(String.valueOf(bool)));
     AppMethodBeat.o(18420);
-    return false;
+    return bool;
   }
   
   public String soterCpuId()
   {
     AppMethodBeat.i(18421);
-    String str = d.gai().Lwz;
+    String str = b.htz().RZY;
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.soterCpuId, return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18421);
     return str;
@@ -142,7 +143,7 @@ public class KindaDeviceServiceImpl
   public String soterUid()
   {
     AppMethodBeat.i(18422);
-    String str = d.gai().ktM;
+    String str = b.htz().mXG;
     Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18422);
     return str;
@@ -152,10 +153,10 @@ public class KindaDeviceServiceImpl
   {
     AppMethodBeat.i(18423);
     if (paramInt == 0) {
-      if (this.mgr.eos())
+      if (this.mgr.ftv())
       {
-        this.mgr.rD(paramBoolean);
-        this.mgr.rE(false);
+        this.mgr.vu(paramBoolean);
+        this.mgr.vv(false);
       }
     }
     for (;;)
@@ -163,20 +164,20 @@ public class KindaDeviceServiceImpl
       Log.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.updateBiometricVerificationState, soterOpenType: " + paramInt + ", biometricVerificationState: " + paramBoolean);
       AppMethodBeat.o(18423);
       return;
-      if (this.mgr.eoA())
+      if (this.mgr.ftD())
       {
-        this.mgr.rE(paramBoolean);
-        this.mgr.rD(false);
+        this.mgr.vv(paramBoolean);
+        this.mgr.vu(false);
         continue;
-        if ((paramInt == 1) && (this.mgr.eos()))
+        if ((paramInt == 1) && (this.mgr.ftv()))
         {
-          this.mgr.rD(paramBoolean);
-          this.mgr.rE(false);
+          this.mgr.vu(paramBoolean);
+          this.mgr.vv(false);
         }
-        else if ((paramInt == 2) && (this.mgr.eoA()))
+        else if ((paramInt == 2) && (this.mgr.ftD()))
         {
-          this.mgr.rE(paramBoolean);
-          this.mgr.rD(false);
+          this.mgr.vv(paramBoolean);
+          this.mgr.vu(false);
         }
       }
     }
@@ -189,7 +190,7 @@ public class KindaDeviceServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaDeviceServiceImpl
  * JD-Core Version:    0.7.0.1
  */

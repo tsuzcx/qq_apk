@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.y;
-import com.tencent.mm.plugin.ab.a.a.a;
+import com.tencent.mm.autogen.b.z;
+import com.tencent.mm.plugin.openapi.a.a.a;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
@@ -37,7 +37,7 @@ public final class d
     return false;
   }
   
-  public static void bs(LinkedList<? extends g> paramLinkedList)
+  public static void bz(LinkedList<? extends g> paramLinkedList)
   {
     AppMethodBeat.i(42529);
     if (paramLinkedList == null)
@@ -69,7 +69,7 @@ public final class d
       return;
     }
     String str1 = paramg.field_appId;
-    g localg = h.o(str1, true, false);
+    g localg = h.s(str1, true, false);
     if (localg == null)
     {
       localg = new g();
@@ -84,23 +84,23 @@ public final class d
         localg.field_appName = paramg.field_appName;
         localg.field_appType = paramg.field_appType;
         localg.field_packageName = paramg.field_packageName;
-        localg.HZ(paramg.hrD);
-        localg.Ic(paramg.hrI);
-        localg.pm(paramg.hrM);
-        localg.Id(paramg.hrJ);
-        localg.Ii(paramg.hrP);
-        localg.Ij(paramg.hrQ);
-        localg.Ig(paramg.hrN);
-        localg.Ih(paramg.hrO);
-        localg.pn(paramg.hrS);
-        if (!Util.isNullOrNil(paramg.hrG)) {
-          localg.Ia(paramg.hrG);
+        localg.AE(paramg.jOq);
+        localg.AH(paramg.jOv);
+        localg.pl(paramg.jOz);
+        localg.AI(paramg.jOw);
+        localg.AN(paramg.jOC);
+        localg.AO(paramg.jOD);
+        localg.AL(paramg.jOA);
+        localg.AM(paramg.jOB);
+        localg.pm(paramg.jOF);
+        if (!Util.isNullOrNil(paramg.jOt)) {
+          localg.AF(paramg.jOt);
         }
         if (!bool2) {
           break label308;
         }
-        bool1 = com.tencent.mm.plugin.ab.a.fmz().r(localg);
-        a.a.fmG().aTV(str1);
+        bool1 = com.tencent.mm.plugin.openapi.a.gxn().r(localg);
+        a.a.gxu().aRb(str1);
       }
       for (;;)
       {
@@ -118,23 +118,23 @@ public final class d
         if (localg.field_appVersion < paramg.field_appVersion)
         {
           Log.i("MicroMsg.GameDataUtil", "oldVersion = %s, newVersion = %s", new Object[] { Integer.valueOf(localg.field_appVersion), Integer.valueOf(paramg.field_appVersion) });
-          bool1 = com.tencent.mm.plugin.ab.a.fmz().a(localg, new String[0]);
-          a.a.fmG().aTV(str1);
+          bool1 = com.tencent.mm.plugin.openapi.a.gxn().a(localg, new String[0]);
+          a.a.gxu().aRb(str1);
         }
         else if (a(localg, paramg))
         {
           Log.i("MicroMsg.GameDataUtil", "oldIcon = %s, newIcon = %s", new Object[] { localg.field_appIconUrl, paramg.field_appIconUrl });
           localg.field_appIconUrl = paramg.field_appIconUrl;
-          bool1 = com.tencent.mm.plugin.ab.a.fmz().a(localg, new String[0]);
-          com.tencent.mm.plugin.ab.a.fmx().hm(str1, 1);
-          com.tencent.mm.plugin.ab.a.fmx().hm(str1, 2);
-          com.tencent.mm.plugin.ab.a.fmx().hm(str1, 3);
-          com.tencent.mm.plugin.ab.a.fmx().hm(str1, 4);
-          com.tencent.mm.plugin.ab.a.fmx().hm(str1, 5);
+          bool1 = com.tencent.mm.plugin.openapi.a.gxn().a(localg, new String[0]);
+          com.tencent.mm.plugin.openapi.a.gxl().ir(str1, 1);
+          com.tencent.mm.plugin.openapi.a.gxl().ir(str1, 2);
+          com.tencent.mm.plugin.openapi.a.gxl().ir(str1, 3);
+          com.tencent.mm.plugin.openapi.a.gxl().ir(str1, 4);
+          com.tencent.mm.plugin.openapi.a.gxl().ir(str1, 5);
         }
         else
         {
-          bool1 = com.tencent.mm.plugin.ab.a.fmz().a(localg, new String[0]);
+          bool1 = com.tencent.mm.plugin.openapi.a.gxn().a(localg, new String[0]);
         }
       }
     }
@@ -142,7 +142,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.d
  * JD-Core Version:    0.7.0.1
  */

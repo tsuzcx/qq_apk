@@ -1,147 +1,130 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.Result;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.d.b.a.e;
-import kotlin.d.d;
-import kotlin.d.f;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.internal.u;
-import kotlinx.coroutines.internal.z;
+import kotlin.ah;
+import kotlin.d.a.a;
+import kotlin.d.a.b;
+import kotlin.d.d<*>;
+import kotlin.d.e;
+import kotlin.d.f.c;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"MODE_ATOMIC_DEFAULT", "", "MODE_ATOMIC_DEFAULT$annotations", "()V", "MODE_CANCELLABLE", "MODE_CANCELLABLE$annotations", "MODE_UNDISPATCHED", "MODE_UNDISPATCHED$annotations", "isCancellableMode", "", "(I)Z", "isDispatchedMode", "dispatch", "", "T", "Lkotlinx/coroutines/DispatchedTask;", "mode", "resume", "delegate", "Lkotlin/coroutines/Continuation;", "useMode", "resumeUnconfined", "resumeWithStackTrace", "exception", "", "runUnconfinedEventLoop", "eventLoop", "Lkotlinx/coroutines/EventLoop;", "block", "Lkotlin/Function0;", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"delay", "Lkotlinx/coroutines/Delay;", "Lkotlin/coroutines/CoroutineContext;", "getDelay", "(Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/Delay;", "awaitCancellation", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "", "timeMillis", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "duration", "Lkotlin/time/Duration;", "delay-VtjQ1oo", "toDelayMillis", "toDelayMillis-LRDsOJo", "(J)J", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class bb
 {
-  private static final void a(ba<?> paramba)
+  public static final Object ax(kotlin.d.d<?> paramd)
   {
-    AppMethodBeat.i(204786);
-    Object localObject = cv.abxO;
-    localObject = cv.iRX();
-    if (((bi)localObject).iRw())
+    AppMethodBeat.i(188828);
+    Object localObject1;
+    if ((paramd instanceof a))
     {
-      ((bi)localObject).b(paramba);
-      AppMethodBeat.o(204786);
-      return;
-    }
-    ((bi)localObject).JE(true);
-    try
-    {
-      a(paramba, paramba.iQU(), 2);
-      boolean bool;
-      do
-      {
-        bool = ((bi)localObject).iRv();
-      } while (bool);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      paramba.c(localThrowable, null);
-      return;
-    }
-    finally
-    {
-      ((bi)localObject).JF(true);
-      AppMethodBeat.o(204786);
-    }
-  }
-  
-  public static final <T> void a(ba<? super T> paramba, int paramInt)
-  {
-    AppMethodBeat.i(204783);
-    Object localObject = paramba.iQU();
-    if ((aFP(paramInt)) && ((localObject instanceof ax)) && (aFO(paramInt) == aFO(paramba.abwT)))
-    {
-      af localaf = ((ax)localObject).abwP;
-      localObject = ((d)localObject).getContext();
-      if (localaf.iRd())
-      {
-        localaf.a((f)localObject, (Runnable)paramba);
-        AppMethodBeat.o(204783);
-        return;
-      }
-      a(paramba);
-      AppMethodBeat.o(204783);
-      return;
-    }
-    a(paramba, (d)localObject, paramInt);
-    AppMethodBeat.o(204783);
-  }
-  
-  private static <T> void a(ba<? super T> paramba, d<? super T> paramd, int paramInt)
-  {
-    AppMethodBeat.i(204785);
-    Object localObject2 = paramba.iQO();
-    Object localObject1 = ba.gc(localObject2);
-    if (localObject1 != null) {
-      if ((!ap.iRh()) || (!(paramd instanceof e)))
-      {
-        label34:
-        if (localObject1 == null) {
-          break label123;
-        }
-        paramba = Result.Companion;
+      localObject1 = (a)paramd;
+      if ((((a)localObject1).label & 0x80000000) != 0) {
+        ((a)localObject1).label += -2147483648;
       }
     }
-    for (paramba = Result.constructor-impl(ResultKt.createFailure((Throwable)localObject1));; paramba = Result.constructor-impl(paramba.fZ(localObject2))) {
-      switch (paramInt)
+    for (paramd = (kotlin.d.d<?>)localObject1;; paramd = new a(paramd))
+    {
+      localObject2 = paramd.result;
+      localObject1 = a.aiwj;
+      switch (paramd.label)
       {
       default: 
-        paramba = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-        AppMethodBeat.o(204785);
-        throw paramba;
-        localObject1 = u.a((Throwable)localObject1, (e)paramd);
-        break label34;
-        localObject1 = null;
-        break label34;
-        label123:
-        localObject1 = Result.Companion;
+        paramd = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(188828);
+        throw paramd;
       }
     }
-    paramd.resumeWith(paramba);
-    AppMethodBeat.o(204785);
-    return;
-    ay.a(paramd, paramba);
-    AppMethodBeat.o(204785);
-    return;
-    if (paramd == null)
-    {
-      paramba = new t("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<T>");
-      AppMethodBeat.o(204785);
-      throw paramba;
+    ResultKt.throwOnFailure(localObject2);
+    paramd.label = 1;
+    Object localObject2 = new q(b.au((kotlin.d.d)paramd), 1);
+    ((q)localObject2).kBA();
+    localObject2 = ((q)localObject2).getResult();
+    if (localObject2 == a.aiwj) {
+      s.u((kotlin.d.d)paramd, "frame");
     }
-    localObject2 = (ax)paramd;
-    paramd = ((ax)localObject2).getContext();
-    localObject1 = z.a(paramd, ((ax)localObject2).abwN);
-    try
+    if (localObject2 == localObject1)
     {
-      ((ax)localObject2).abwQ.resumeWith(paramba);
-      paramba = x.aazN;
-      return;
+      AppMethodBeat.o(188828);
+      return localObject1;
+      ResultKt.throwOnFailure(localObject2);
     }
-    finally
-    {
-      z.b(paramd, localObject1);
-      AppMethodBeat.o(204785);
-    }
+    paramd = new kotlin.f();
+    AppMethodBeat.o(188828);
+    throw paramd;
   }
   
-  public static final boolean aFO(int paramInt)
+  public static final Object e(long paramLong, kotlin.d.d<? super ah> paramd)
   {
-    return paramInt == 1;
+    AppMethodBeat.i(118246);
+    if (paramLong <= 0L)
+    {
+      paramd = ah.aiuX;
+      AppMethodBeat.o(118246);
+      return paramd;
+    }
+    Object localObject = new q(b.au(paramd), 1);
+    ((q)localObject).kBA();
+    p localp = (p)localObject;
+    if (paramLong < 9223372036854775807L) {
+      e(localp.getContext()).a(paramLong, localp);
+    }
+    localObject = ((q)localObject).getResult();
+    if (localObject == a.aiwj) {
+      s.u(paramd, "frame");
+    }
+    if (localObject == a.aiwj)
+    {
+      AppMethodBeat.o(118246);
+      return localObject;
+    }
+    paramd = ah.aiuX;
+    AppMethodBeat.o(118246);
+    return paramd;
   }
   
-  private static boolean aFP(int paramInt)
+  public static final ba e(kotlin.d.f paramf)
   {
-    return (paramInt == 0) || (paramInt == 1);
+    AppMethodBeat.i(118247);
+    paramf = paramf.get((f.c)e.aiwc);
+    if ((paramf instanceof ba)) {}
+    for (paramf = (ba)paramf; paramf == null; paramf = null)
+    {
+      paramf = ax.kCf();
+      AppMethodBeat.o(118247);
+      return paramf;
+    }
+    AppMethodBeat.o(118247);
+    return paramf;
+  }
+  
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends kotlin.d.b.a.d
+  {
+    int label;
+    
+    a(kotlin.d.d<? super a> paramd)
+    {
+      super();
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(188894);
+      this.result = paramObject;
+      this.label |= 0x80000000;
+      paramObject = bb.ax((kotlin.d.d)this);
+      AppMethodBeat.o(188894);
+      return paramObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bb
  * JD-Core Version:    0.7.0.1
  */

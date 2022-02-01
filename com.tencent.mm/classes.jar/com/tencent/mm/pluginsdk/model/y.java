@@ -1,149 +1,127 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.n.d;
+import com.tencent.mm.b.g;
+import com.tencent.mm.bl.a.a.a;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.platformtools.p;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.platformtools.p.b;
+import com.tencent.mm.plugin.image.d;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class y
+  implements p
 {
-  private static volatile y QVM = null;
-  
-  public static x C(int paramInt, Bundle paramBundle)
+  public static String bpF(String paramString)
   {
-    AppMethodBeat.i(109474);
-    switch (paramInt)
+    AppMethodBeat.i(116445);
+    if (h.baC().aZN())
     {
-    default: 
-      paramBundle = new v();
-      AppMethodBeat.o(109474);
-      return paramBundle;
-    case 2: 
-      paramBundle = new f(paramBundle);
-      AppMethodBeat.o(109474);
-      return paramBundle;
+      String str = d.fQD();
+      StringBuilder localStringBuilder = new StringBuilder();
+      h.baC();
+      paramString = String.format("%s%s", new Object[] { str, g.getMessageDigest((b.aZs() + paramString).getBytes()) });
+      AppMethodBeat.o(116445);
+      return paramString;
     }
-    paramBundle = new ac();
-    AppMethodBeat.o(109474);
-    return paramBundle;
+    AppMethodBeat.o(116445);
+    return "";
   }
   
-  public static int apD(int paramInt)
+  public final Bitmap a(Bitmap paramBitmap, p.a parama, String paramString)
   {
-    AppMethodBeat.i(109475);
-    switch (paramInt)
+    AppMethodBeat.i(116449);
+    if (p.a.pAS == parama)
     {
-    default: 
-      AppMethodBeat.o(109475);
-      return 5;
-    case 0: 
-      paramInt = Util.getInt(com.tencent.mm.n.h.axd().ao("QQBroswer", "RecommendCount"), 5);
-      AppMethodBeat.o(109475);
-      return paramInt;
+      AppMethodBeat.o(116449);
+      throw null;
     }
-    AppMethodBeat.o(109475);
-    return 2147483647;
+    AppMethodBeat.o(116449);
+    return paramBitmap;
   }
   
-  public static void apE(int paramInt)
+  public final void a(p.a parama)
   {
-    AppMethodBeat.i(109476);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(109476);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(0) });
-      AppMethodBeat.o(109476);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(0) });
+    if (parama == p.a.pAS) {
+      throw null;
     }
   }
   
-  public static void apF(int paramInt)
+  public final p.b bTB()
   {
-    AppMethodBeat.i(109477);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(109477);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(1) });
-      AppMethodBeat.o(109477);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(1) });
-    }
+    return null;
   }
   
-  public static void apG(int paramInt)
+  public final String bTC()
   {
-    AppMethodBeat.i(109478);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(109478);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(3) });
-      AppMethodBeat.o(109478);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(3) });
-    }
+    AppMethodBeat.i(116446);
+    AppMethodBeat.o(116446);
+    throw null;
   }
   
-  public static void apH(int paramInt)
+  public final String bTD()
   {
-    AppMethodBeat.i(109479);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(109479);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(10998, new Object[] { Integer.valueOf(2) });
-      AppMethodBeat.o(109479);
-      return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(11091, new Object[] { Integer.valueOf(2) });
-    }
+    AppMethodBeat.i(116447);
+    AppMethodBeat.o(116447);
+    throw null;
   }
   
-  public static y hhf()
+  public final String bTE()
   {
-    AppMethodBeat.i(109473);
-    if (QVM == null) {}
-    try
-    {
-      if (QVM == null) {
-        QVM = new y();
-      }
-      y localy = QVM;
-      AppMethodBeat.o(109473);
-      return localy;
-    }
-    finally
-    {
-      AppMethodBeat.o(109473);
-    }
+    throw null;
   }
   
-  public static final class a
+  public final boolean bTF()
   {
-    public int QVN;
-    public int QVO;
-    public String QVP;
-    public int QVQ;
-    public String QVR;
+    return false;
+  }
+  
+  public final boolean bTG()
+  {
+    throw null;
+  }
+  
+  public final Bitmap bTH()
+  {
+    AppMethodBeat.i(116453);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), a.a.nosdcard_chatting_bg);
+    AppMethodBeat.o(116453);
+    return localBitmap;
+  }
+  
+  public final void bTI()
+  {
+    AppMethodBeat.i(116450);
+    Util.nowMilliSecond();
+    AppMethodBeat.o(116450);
+    throw null;
+  }
+  
+  public final void bTJ()
+  {
+    AppMethodBeat.i(244774);
+    Util.nowMilliSecond();
+    AppMethodBeat.o(244774);
+    throw null;
+  }
+  
+  public final String getCacheKey()
+  {
+    AppMethodBeat.i(116448);
+    new StringBuilder();
+    AppMethodBeat.o(116448);
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.y
  * JD-Core Version:    0.7.0.1
  */

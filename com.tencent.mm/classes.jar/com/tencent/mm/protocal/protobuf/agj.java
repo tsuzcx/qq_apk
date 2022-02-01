@@ -1,102 +1,155 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class agj
-  extends dyy
+  extends erp
 {
-  public int tqa;
+  public String ZpC;
+  public String ZpD;
+  public String ZpE;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113987);
+    AppMethodBeat.i(124479);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZpC == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(113987);
+        paramVarArgs = new b("Not all required fields were included: corp_id");
+        AppMethodBeat.o(124479);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.ZpD == null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: qychat_type");
+        AppMethodBeat.o(124479);
+        throw paramVarArgs;
       }
-      paramVarArgs.aY(2, this.tqa);
-      AppMethodBeat.o(113987);
+      if (this.ZpE == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: qychat_id");
+        AppMethodBeat.o(124479);
+        throw paramVarArgs;
+      }
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.ZpC != null) {
+        paramVarArgs.g(2, this.ZpC);
+      }
+      if (this.ZpD != null) {
+        paramVarArgs.g(3, this.ZpD);
+      }
+      if (this.ZpE != null) {
+        paramVarArgs.g(4, this.ZpE);
+      }
+      AppMethodBeat.o(124479);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label380;
+      if (this.BaseRequest == null) {
+        break label608;
       }
     }
-    label380:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label608:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.tqa);
-      AppMethodBeat.o(113987);
-      return paramInt + i;
+      paramInt = i;
+      if (this.ZpC != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.ZpC);
+      }
+      i = paramInt;
+      if (this.ZpD != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZpD);
+      }
+      paramInt = i;
+      if (this.ZpE != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.ZpE);
+      }
+      AppMethodBeat.o(124479);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.ZpC == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(113987);
+          paramVarArgs = new b("Not all required fields were included: corp_id");
+          AppMethodBeat.o(124479);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(113987);
+        if (this.ZpD == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: qychat_type");
+          AppMethodBeat.o(124479);
+          throw paramVarArgs;
+        }
+        if (this.ZpE == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: qychat_id");
+          AppMethodBeat.o(124479);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124479);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         agj localagj = (agj)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(113987);
+          AppMethodBeat.o(124479);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localagj.BaseResponse = localjh;
+            localagj.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(113987);
+          AppMethodBeat.o(124479);
+          return 0;
+        case 2: 
+          localagj.ZpC = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(124479);
+          return 0;
+        case 3: 
+          localagj.ZpD = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(124479);
           return 0;
         }
-        localagj.tqa = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(113987);
+        localagj.ZpE = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(124479);
         return 0;
       }
-      AppMethodBeat.o(113987);
+      AppMethodBeat.o(124479);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.agj
  * JD-Core Version:    0.7.0.1
  */

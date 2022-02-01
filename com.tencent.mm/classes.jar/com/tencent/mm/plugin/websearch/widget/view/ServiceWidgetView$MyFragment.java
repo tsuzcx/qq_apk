@@ -8,10 +8,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.qw;
+import com.tencent.mm.autogen.mmdata.rpt.ur;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.websearch.a.d;
 import com.tencent.mm.plugin.websearch.a.e;
+import com.tencent.mm.plugin.websearch.a.f;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.plugin.websearch.api.WidgetData.Info;
 import com.tencent.mm.plugin.websearch.api.d;
@@ -27,12 +27,12 @@ import java.util.Map;
 public class ServiceWidgetView$MyFragment
   extends Fragment
 {
-  b PCT;
+  b Wty;
   
   public ServiceWidgetView$MyFragment()
   {
     AppMethodBeat.i(116676);
-    this.PCT = new b();
+    this.Wty = new b();
     AppMethodBeat.o(116676);
   }
   
@@ -40,47 +40,47 @@ public class ServiceWidgetView$MyFragment
   {
     AppMethodBeat.i(116677);
     Log.i("ServiceWidgetView", "onCreateView %s", new Object[] { toString() });
-    paramLayoutInflater = this.PCT;
+    paramLayoutInflater = this.Wty;
     paramLayoutInflater.parent = paramViewGroup;
-    if (paramLayoutInflater.PCW == null)
+    if (paramLayoutInflater.WtB == null)
     {
       if (paramLayoutInflater.view == null)
       {
-        paramLayoutInflater.view = LayoutInflater.from(paramLayoutInflater.activity.getContext()).inflate(a.e.service_widget_view, paramLayoutInflater.parent, false);
-        paramLayoutInflater.PCV = ((LinearLayout)paramLayoutInflater.view.findViewById(a.d.container));
-        paramLayoutInflater.yOC = paramLayoutInflater.view.findViewById(a.d.footer_content);
-        paramLayoutInflater.PCU = paramLayoutInflater.view.findViewById(a.d.reload_ll);
-        paramLayoutInflater.PDb = ((LinearLayout)paramLayoutInflater.view.findViewById(a.d.switch_footer_container));
-        paramLayoutInflater.PDc = ((MoreFooter)paramLayoutInflater.view.findViewById(a.d.more_footer));
-        paramLayoutInflater.IhI = ((TextView)paramLayoutInflater.view.findViewById(a.d.header_tv));
-        paramLayoutInflater.PCZ = paramLayoutInflater.view.findViewById(a.d.widget_bottom_padding);
-        paramLayoutInflater.PDk = paramLayoutInflater.view.findViewById(a.d.loading_container);
-        paramLayoutInflater.PDj = ((ThreeDotsLoadingView)paramLayoutInflater.view.findViewById(a.d.loading_view));
-        paramLayoutInflater.PDl = paramLayoutInflater.view.findViewById(a.d.fail_again_container);
-        paramLayoutInflater.PCU.setVisibility(8);
-        paramLayoutInflater.PCV.setVisibility(8);
-        paramLayoutInflater.PCU.setVisibility(8);
-        paramLayoutInflater.PCV.setVisibility(8);
-        paramLayoutInflater.PDk.setVisibility(0);
-        paramLayoutInflater.PDj.hZX();
-        if (paramLayoutInflater.PCW != null) {
-          paramLayoutInflater.PCW.biK(paramLayoutInflater.PCX);
+        paramLayoutInflater.view = LayoutInflater.from(paramLayoutInflater.activity.getContext()).inflate(a.f.service_widget_view, paramLayoutInflater.parent, false);
+        paramLayoutInflater.WtA = ((LinearLayout)paramLayoutInflater.view.findViewById(a.e.container));
+        paramLayoutInflater.ESX = paramLayoutInflater.view.findViewById(a.e.footer_content);
+        paramLayoutInflater.Wtz = paramLayoutInflater.view.findViewById(a.e.reload_ll);
+        paramLayoutInflater.WtG = ((LinearLayout)paramLayoutInflater.view.findViewById(a.e.switch_footer_container));
+        paramLayoutInflater.WtH = ((MoreFooter)paramLayoutInflater.view.findViewById(a.e.more_footer));
+        paramLayoutInflater.DGu = ((TextView)paramLayoutInflater.view.findViewById(a.e.header_tv));
+        paramLayoutInflater.WtE = paramLayoutInflater.view.findViewById(a.e.widget_bottom_padding);
+        paramLayoutInflater.WtP = paramLayoutInflater.view.findViewById(a.e.loading_container);
+        paramLayoutInflater.WtO = ((ThreeDotsLoadingView)paramLayoutInflater.view.findViewById(a.e.loading_view));
+        paramLayoutInflater.WtQ = paramLayoutInflater.view.findViewById(a.e.fail_again_container);
+        paramLayoutInflater.Wtz.setVisibility(8);
+        paramLayoutInflater.WtA.setVisibility(8);
+        paramLayoutInflater.Wtz.setVisibility(8);
+        paramLayoutInflater.WtA.setVisibility(8);
+        paramLayoutInflater.WtP.setVisibility(0);
+        paramLayoutInflater.WtO.jFe();
+        if (paramLayoutInflater.WtB != null) {
+          paramLayoutInflater.WtB.bis(paramLayoutInflater.WtC);
         }
-        paramLayoutInflater.view.findViewById(a.d.reload_fail_btn).setOnClickListener(new b.4(paramLayoutInflater));
-        paramLayoutInflater.view.findViewById(a.d.reload_btn).setOnClickListener(new b.5(paramLayoutInflater));
-        paramLayoutInflater.PCV.setOnTouchListener(new b.6(paramLayoutInflater));
-        paramLayoutInflater.PCV.setOnClickListener(new b.7(paramLayoutInflater));
-        paramLayoutInflater.PDc.setOnClickLsn(paramLayoutInflater.PDn);
-        paramLayoutInflater.IhI.setOnLongClickListener(new b.8(paramLayoutInflater));
+        paramLayoutInflater.view.findViewById(a.e.reload_fail_btn).setOnClickListener(new b.4(paramLayoutInflater));
+        paramLayoutInflater.view.findViewById(a.e.reload_btn).setOnClickListener(new b.5(paramLayoutInflater));
+        paramLayoutInflater.WtA.setOnTouchListener(new b.6(paramLayoutInflater));
+        paramLayoutInflater.WtA.setOnClickListener(new b.7(paramLayoutInflater));
+        paramLayoutInflater.WtH.setOnClickLsn(paramLayoutInflater.WtS);
+        paramLayoutInflater.DGu.setOnLongClickListener(new b.8(paramLayoutInflater));
       }
-      paramLayoutInflater.PCW = ((f)h.ae(f.class)).a(paramLayoutInflater.parent.getContext(), new b.3(paramLayoutInflater));
-      paramLayoutInflater.PCW.gQs();
+      paramLayoutInflater.WtB = ((f)h.ax(f.class)).a(paramLayoutInflater.parent.getContext(), new b.3(paramLayoutInflater));
+      paramLayoutInflater.WtB.ipJ();
     }
     paramLayoutInflater.updateView();
     if (paramLayoutInflater.isSelected) {
-      paramLayoutInflater.gRP();
+      paramLayoutInflater.irg();
     }
-    paramLayoutInflater = this.PCT.view;
+    paramLayoutInflater = this.Wty.view;
     AppMethodBeat.o(116677);
     return paramLayoutInflater;
   }
@@ -89,15 +89,15 @@ public class ServiceWidgetView$MyFragment
   {
     AppMethodBeat.i(116680);
     super.onDestroy();
-    if ((this.PCT != null) && (this.PCT.PDh != null))
+    if ((this.Wty != null) && (this.Wty.WtM != null))
     {
-      b localb = this.PCT;
-      if (localb.PCW != null)
+      b localb = this.Wty;
+      if (localb.WtB != null)
       {
-        localb.PCW.biK(localb.PCX);
-        localb.PCW.onDestroy();
-        localb.PDh = null;
-        localb.PCX = null;
+        localb.WtB.bis(localb.WtC);
+        localb.WtB.onDestroy();
+        localb.WtM = null;
+        localb.WtC = null;
         localb.activity = null;
       }
     }
@@ -108,15 +108,15 @@ public class ServiceWidgetView$MyFragment
   {
     AppMethodBeat.i(116679);
     super.onPause();
-    if ((this.PCT != null) && (this.PCT.PDh != null))
+    if ((this.Wty != null) && (this.Wty.WtM != null))
     {
-      b localb = this.PCT;
+      b localb = this.Wty;
       if (localb.isSelected)
       {
-        if (localb.PCW != null) {
-          localb.PCW.onPause();
+        if (localb.WtB != null) {
+          localb.WtB.onPause();
         }
-        localb.CIn = false;
+        localb.ICx = false;
         Log.v("WidgetView", "%s paused", new Object[] { localb.toString() });
       }
     }
@@ -129,19 +129,19 @@ public class ServiceWidgetView$MyFragment
     super.onResume();
     b localb;
     boolean bool;
-    if ((this.PCT != null) && (this.PCT.PDh != null))
+    if ((this.Wty != null) && (this.Wty.WtM != null))
     {
-      localb = this.PCT;
+      localb = this.Wty;
       if (localb.isSelected)
       {
-        localb.PCW.onResume();
+        localb.WtB.onResume();
         if (localb.view != null)
         {
-          bool = localb.CIn;
+          bool = localb.ICx;
           if (localb.view.getVisibility() == 0) {
             break label102;
           }
-          localb.CIn = false;
+          localb.ICx = false;
         }
       }
     }
@@ -154,38 +154,38 @@ public class ServiceWidgetView$MyFragment
       return;
       Object localObject1 = new int[2];
       localb.view.getLocationOnScreen((int[])localObject1);
-      if ((localb.PDg != null) && (localb.PDg.gQt())) {}
-      for (localb.CIn = true;; localb.CIn = false)
+      if ((localb.WtL != null) && (localb.WtL.ipK())) {}
+      for (localb.ICx = true;; localb.ICx = false)
       {
-        if ((bool == localb.CIn) || (!localb.CIn)) {
+        if ((bool == localb.ICx) || (!localb.ICx)) {
           break label637;
         }
         Log.i("WidgetView", "exposure");
-        localObject1 = String.format("262144:%s:%d:%s;", new Object[] { localb.PDh.PzY.BHW, Long.valueOf(System.currentTimeMillis() / 1000L), localb.PDh.PzY.PAe });
-        String str1 = localb.PDh.PzY.serviceType + ";";
-        String str2 = "262144:" + localb.PDh.PzY.serviceType + ";";
+        localObject1 = String.format("262144:%s:%d:%s;", new Object[] { localb.WtM.Wqn.HsD, Long.valueOf(System.currentTimeMillis() / 1000L), localb.WtM.Wqn.Wqt });
+        String str1 = localb.WtM.Wqn.serviceType + ";";
+        String str2 = "262144:" + localb.WtM.Wqn.serviceType + ";";
         Object localObject2 = new HashMap();
         ((Map)localObject2).put("isexpose", "1");
         ((Map)localObject2).put("content", localObject1);
-        ((Map)localObject2).put("searchid", localb.PDh.PzY.jQi);
+        ((Map)localObject2).put("searchid", localb.WtM.Wqn.mpa);
         ((Map)localObject2).put("scene", "47");
-        ((Map)localObject2).put("query", localb.PDh.query);
-        ((Map)localObject2).put("sessionid", localb.PDh.fQb);
+        ((Map)localObject2).put("query", localb.WtM.query);
+        ((Map)localObject2).put("sessionid", localb.WtM.hVW);
         ((Map)localObject2).put("resulttype", str2);
         ((Map)localObject2).put("resultsubtypelist", str1);
         ((Map)localObject2).put("ishomepage", "1");
-        ((Map)localObject2).put("height", localb.PCV.getHeight() + ";");
+        ((Map)localObject2).put("height", localb.WtA.getHeight() + ";");
         ((Map)localObject2).put("requestid", System.currentTimeMillis());
-        b.bc((Map)localObject2);
-        localObject2 = new qw();
-        ((qw)localObject2).gZZ = ((qw)localObject2).z("content", (String)localObject1, true);
-        ((qw)localObject2).gym = ((qw)localObject2).z("query", localb.PDh.query, true);
-        ((qw)localObject2).hlO = ((qw)localObject2).z("resultsubtypelist", str1, true);
-        ((qw)localObject2).hlN = ((qw)localObject2).z("resulttype", str2, true);
-        ((qw)localObject2).hlH = ((qw)localObject2).z("searchid", localb.PDh.PzY.jQi, true);
-        ((qw)localObject2).ggA = ((qw)localObject2).z("sessionid", localb.PDh.fQb, true);
-        ((qw)localObject2).gmT = 47L;
-        ((qw)localObject2).bpa();
+        b.bu((Map)localObject2);
+        localObject2 = new ur();
+        ((ur)localObject2).jvJ = ((ur)localObject2).F("content", (String)localObject1, true);
+        ((ur)localObject2).iKB = ((ur)localObject2).F("query", localb.WtM.query, true);
+        ((ur)localObject2).jHO = ((ur)localObject2).F("resultsubtypelist", str1, true);
+        ((ur)localObject2).jHN = ((ur)localObject2).F("resulttype", str2, true);
+        ((ur)localObject2).jHI = ((ur)localObject2).F("searchid", localb.WtM.Wqn.mpa, true);
+        ((ur)localObject2).inx = ((ur)localObject2).F("sessionid", localb.WtM.hVW, true);
+        ((ur)localObject2).iuA = 47L;
+        ((ur)localObject2).bMH();
         break;
       }
     }
@@ -193,7 +193,7 @@ public class ServiceWidgetView$MyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.ServiceWidgetView.MyFragment
  * JD-Core Version:    0.7.0.1
  */

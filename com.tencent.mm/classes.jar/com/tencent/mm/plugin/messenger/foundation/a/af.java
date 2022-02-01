@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.messenger.foundation.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cw.c;
+import com.tencent.mm.cp.a.a;
+import com.tencent.mm.cp.c;
 
 public final class af
 {
-  private static SparseArray<af.a> EVD;
-  private static c<ae> EVE;
+  private static SparseArray<a> KRd;
+  private static c<ae> KRe;
   
   static
   {
     AppMethodBeat.i(43074);
-    EVD = new SparseArray();
+    KRd = new SparseArray();
     AppMethodBeat.o(43074);
   }
   
-  public static <T extends a> void a(int paramInt, ac<T> paramac)
+  public static <T extends com.tencent.mm.bx.a> void a(int paramInt, ac<T> paramac)
   {
     try
     {
       AppMethodBeat.i(43070);
-      af.a locala2 = (af.a)EVD.get(paramInt);
-      af.a locala1 = locala2;
+      a locala2 = (a)KRd.get(paramInt);
+      a locala1 = locala2;
       if (locala2 == null)
       {
-        locala1 = new af.a((byte)0);
-        EVD.put(paramInt, locala1);
+        locala1 = new a((byte)0);
+        KRd.put(paramInt, locala1);
       }
       locala1.add(paramac);
       AppMethodBeat.o(43070);
@@ -41,12 +41,12 @@ public final class af
     try
     {
       AppMethodBeat.i(43071);
-      af.a locala = (af.a)EVD.get(5);
+      a locala = (a)KRd.get(5);
       if (locala != null)
       {
         locala.remove(paramac);
         if (locala.size() == 0) {
-          EVD.remove(5);
+          KRd.remove(5);
         }
       }
       AppMethodBeat.o(43071);
@@ -55,12 +55,12 @@ public final class af
     finally {}
   }
   
-  public static <T extends a> void b(int paramInt, T paramT)
+  public static <T extends com.tencent.mm.bx.a> void b(int paramInt, T paramT)
   {
     try
     {
       AppMethodBeat.i(43073);
-      af.a locala = (af.a)EVD.get(paramInt);
+      a locala = (a)KRd.get(paramInt);
       if (locala != null) {
         locala.b(paramT);
       }
@@ -72,20 +72,20 @@ public final class af
   
   public static final void b(c<ae> paramc)
   {
-    EVE = paramc;
+    KRe = paramc;
   }
   
-  public static final c<ae> eSf()
+  public static final c<ae> gba()
   {
-    return EVE;
+    return KRe;
   }
   
-  public static <T extends a> void k(T paramT)
+  public static <T extends com.tencent.mm.bx.a> void k(T paramT)
   {
     try
     {
       AppMethodBeat.i(43072);
-      af.a locala = (af.a)EVD.get(5);
+      a locala = (a)KRd.get(5);
       if (locala != null) {
         locala.a(paramT);
       }
@@ -93,6 +93,25 @@ public final class af
       return;
     }
     finally {}
+  }
+  
+  static final class a<T extends com.tencent.mm.bx.a>
+    extends com.tencent.mm.cp.a<ac<T>>
+    implements ac<T>
+  {
+    public final void a(final T paramT)
+    {
+      AppMethodBeat.i(43068);
+      a(new a.a() {});
+      AppMethodBeat.o(43068);
+    }
+    
+    public final void b(final T paramT)
+    {
+      AppMethodBeat.i(43069);
+      a(new a.a() {});
+      AppMethodBeat.o(43069);
+    }
   }
 }
 

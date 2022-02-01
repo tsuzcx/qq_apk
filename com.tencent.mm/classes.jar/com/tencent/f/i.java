@@ -6,20 +6,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  private static i ZQH;
+  private static i ahVe;
   private Context mAppContext;
   private boolean mStarted;
   
-  private static i itw()
+  private static i kcO()
   {
     AppMethodBeat.i(62809);
-    if (ZQH == null) {}
+    if (ahVe == null) {}
     try
     {
-      if (ZQH == null) {
-        ZQH = new i();
+      if (ahVe == null) {
+        ahVe = new i();
       }
-      i locali = ZQH;
+      i locali = ahVe;
       AppMethodBeat.o(62809);
       return locali;
     }
@@ -29,10 +29,10 @@ public final class i
     }
   }
   
-  public static void mo(Context paramContext)
+  public static void oE(Context paramContext)
   {
     AppMethodBeat.i(62810);
-    i locali = itw();
+    i locali = kcO();
     if (!locali.mStarted)
     {
       locali.mAppContext = paramContext;
@@ -46,7 +46,7 @@ public final class i
         AppMethodBeat.o(62810);
         return;
       }
-      catch (Throwable paramContext)
+      finally
       {
         com.tencent.pb.common.c.b.w("service", new Object[] { paramContext });
       }
@@ -56,7 +56,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.f.i
  * JD-Core Version:    0.7.0.1
  */

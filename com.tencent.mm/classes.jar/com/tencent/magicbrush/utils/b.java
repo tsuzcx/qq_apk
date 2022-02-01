@@ -10,9 +10,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static float cQj = -1.0F;
+  private static float eLo = -1.0F;
   
-  private static int A(Context paramContext, int paramInt)
+  private static int D(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(140068);
     paramInt = (int)Math.ceil(paramInt / getDensity(paramContext));
@@ -20,7 +20,7 @@ public final class b
     return paramInt;
   }
   
-  public static Point aS(Context paramContext)
+  public static Point bC(Context paramContext)
   {
     AppMethodBeat.i(140069);
     WindowManager localWindowManager = (WindowManager)paramContext.getSystemService("window");
@@ -32,8 +32,8 @@ public final class b
     }
     for (;;)
     {
-      localPoint.x = A(paramContext, localPoint.x);
-      localPoint.y = A(paramContext, localPoint.y);
+      localPoint.x = D(paramContext, localPoint.x);
+      localPoint.y = D(paramContext, localPoint.y);
       AppMethodBeat.o(140069);
       return localPoint;
       localPoint.x = paramContext.getResources().getDisplayMetrics().widthPixels;
@@ -44,10 +44,10 @@ public final class b
   public static float getDensity(Context paramContext)
   {
     AppMethodBeat.i(140067);
-    if (cQj < 0.0F) {
-      cQj = paramContext.getResources().getDisplayMetrics().density;
+    if (eLo < 0.0F) {
+      eLo = paramContext.getResources().getDisplayMetrics().density;
     }
-    float f = cQj;
+    float f = eLo;
     AppMethodBeat.o(140067);
     return f;
   }

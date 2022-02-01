@@ -13,23 +13,23 @@ import com.tencent.mm.plugin.ball.ui.c;
 import com.tencent.mm.plugin.ball.view.FloatIndicatorView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.aa;
 
 public class e
   extends FloatBallHelper
 {
-  public f rZC;
-  protected com.tencent.mm.plugin.ball.d.e rZD;
-  protected com.tencent.mm.plugin.ball.ui.e rZE;
-  protected com.tencent.mm.plugin.ball.ui.b rZF;
-  protected a rZG;
+  public f vkT;
+  protected com.tencent.mm.plugin.ball.d.e vkU;
+  protected com.tencent.mm.plugin.ball.ui.e vkV;
+  protected com.tencent.mm.plugin.ball.ui.b vkW;
+  protected a vkX;
   
   public e(f paramf)
   {
-    this.rZC = paramf;
+    this.vkT = paramf;
   }
   
-  protected static int Fj(int paramInt)
+  protected static int FK(int paramInt)
   {
     int i = 6;
     if (paramInt == 1) {
@@ -45,23 +45,23 @@ public class e
     return 5;
   }
   
-  private void cwi()
+  private void cYS()
   {
     AppMethodBeat.i(106254);
-    if (this.rZF != null) {
-      this.rZF.stop();
+    if (this.vkW != null) {
+      this.vkW.stop();
     }
-    if (aOg())
+    if (bhU())
     {
-      this.rZE = new com.tencent.mm.plugin.ball.ui.e(this.rZC, this.rZD);
-      this.rZE.start();
+      this.vkV = new com.tencent.mm.plugin.ball.ui.e(this.vkT, this.vkU);
+      this.vkV.start();
     }
     AppMethodBeat.o(106254);
   }
   
-  public void D(boolean paramBoolean, final int paramInt)
+  public void B(boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(189289);
+    AppMethodBeat.i(288443);
     if (paramBoolean)
     {
       Log.i("MicroMsg.PageFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
@@ -69,76 +69,76 @@ public class e
       {
         public final void proceed()
         {
-          AppMethodBeat.i(187611);
-          if (!e.this.cvB())
+          AppMethodBeat.i(288384);
+          if (!e.this.cYm())
           {
-            FloatBallProxyUI.a(e.this.rZC.getActivity(), 1, e.this.rYE, e.this.bOb(), e.this.rYH);
-            AppMethodBeat.o(187611);
+            FloatBallProxyUI.a(e.this.vkT.getActivity(), 1, e.this.vjV, e.this.cYg(), e.this.vjY);
+            AppMethodBeat.o(288384);
             return;
           }
-          if (e.this.rYG != null)
+          if (e.this.vjX != null)
           {
-            e.this.cvL().kqY = paramInt;
-            e.this.cvG();
-            Point localPoint = e.this.rYG.getBallPosition();
+            e.this.cYv().mUT = paramInt;
+            e.this.cYr();
+            Point localPoint = e.this.vjX.getBallPosition();
             if (localPoint != null) {
-              c.a(e.this.rZC, localPoint, e.this.rZG);
+              c.a(e.this.vkT, localPoint, e.this.vkX);
             }
           }
-          AppMethodBeat.o(187611);
+          AppMethodBeat.o(288384);
         }
       });
-      AppMethodBeat.o(189289);
+      AppMethodBeat.o(288443);
       return;
     }
     Log.i("MicroMsg.PageFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
-    BallInfo localBallInfo = cvy();
+    BallInfo localBallInfo = cYj();
     if (localBallInfo == null)
     {
-      AppMethodBeat.o(189289);
+      AppMethodBeat.o(288443);
       return;
     }
     if (localBallInfo.state != 0)
     {
-      le(true);
-      AppMethodBeat.o(189289);
+      mr(true);
+      AppMethodBeat.o(288443);
       return;
     }
-    cvL().opType = 8;
-    cvG();
-    cvE();
-    cwi();
-    if (this.rZC.getActivity() != null) {
-      w.cR(this.rZC.getActivity(), this.rZC.getActivity().getString(a.h.alert_remove_float_ball));
+    cYv().opType = 8;
+    cYr();
+    cYp();
+    cYS();
+    if (this.vkT.getActivity() != null) {
+      aa.db(this.vkT.getActivity(), this.vkT.getActivity().getString(a.h.alert_remove_float_ball));
     }
-    AppMethodBeat.o(189289);
+    AppMethodBeat.o(288443);
   }
   
-  protected final void Fh(int paramInt)
+  protected final void FI(int paramInt)
   {
     AppMethodBeat.i(106252);
-    super.Fh(paramInt);
-    if ((this.rZE != null) && (this.rZE.sav != null)) {
-      this.rZE.sav.Gf(paramInt);
+    super.FI(paramInt);
+    if ((this.vkV != null) && (this.vkV.vlM != null)) {
+      this.vkV.vlM.GE(paramInt);
     }
     AppMethodBeat.o(106252);
   }
   
-  public void I(int paramInt, String paramString)
+  public void J(int paramInt, String paramString)
   {
     AppMethodBeat.i(106244);
-    super.I(paramInt, paramString);
-    this.rZD = new com.tencent.mm.plugin.ball.d.e() {};
-    this.rZG = new a()
+    super.J(paramInt, paramString);
+    this.vkU = new com.tencent.mm.plugin.ball.d.e() {};
+    this.vkX = new a()
     {
-      public final void aEa()
+      public final void aXe()
       {
         AppMethodBeat.i(106240);
         Log.i("MicroMsg.PageFloatBallHelper", "transform to float ball animation cancel");
-        if (e.this.rYG != null) {
-          e.this.rYG.setEnableClick(true);
+        if (e.this.vjX != null) {
+          e.this.vjX.setEnableClick(true);
         }
-        e.this.rZC.hS(true);
+        e.this.vkT.iR(true);
         e.a(e.this);
         AppMethodBeat.o(106240);
       }
@@ -147,34 +147,34 @@ public class e
       {
         AppMethodBeat.i(106239);
         Log.i("MicroMsg.PageFloatBallHelper", "transform to float ball animation end");
-        if (e.this.rYG != null) {
-          e.this.rYG.setEnableClick(true);
+        if (e.this.vjX != null) {
+          e.this.vjX.setEnableClick(true);
         }
-        e.this.rZC.hS(false);
+        e.this.vkT.iR(false);
         e.a(e.this);
         AppMethodBeat.o(106239);
       }
     };
-    if (aOg())
+    if (bhU())
     {
-      paramString = cvy();
-      if ((paramString != null) && (!paramString.rYr))
+      paramString = cYj();
+      if ((paramString != null) && (!paramString.vjH))
       {
-        this.rZF = new com.tencent.mm.plugin.ball.ui.b(this.rZC, this.rZD);
-        paramString = this.rZF;
+        this.vkW = new com.tencent.mm.plugin.ball.ui.b(this.vkT, this.vkU);
+        paramString = this.vkW;
         Log.i("MicroMsg.FloatBallFadeInController", "start FloatBallFadeInController");
-        if (paramString.rZC.aOg()) {
-          paramString.rZC.a(new b.1(paramString));
+        if (paramString.vkT.bhU()) {
+          paramString.vkT.a(new b.1(paramString));
         }
         AppMethodBeat.o(106244);
         return;
       }
-      this.rZE = new com.tencent.mm.plugin.ball.ui.e(this.rZC, this.rZD);
-      this.rZE.start();
-      paramInt = cvC();
+      this.vkV = new com.tencent.mm.plugin.ball.ui.e(this.vkT, this.vkU);
+      this.vkV.start();
+      paramInt = cYn();
       Log.i("MicroMsg.PageFloatBallHelper", "onCreate, activeCount:%s", new Object[] { Integer.valueOf(paramInt) });
-      if (this.rZE.sav != null) {
-        this.rZE.sav.Gf(paramInt);
+      if (this.vkV.vlM != null) {
+        this.vkV.vlM.GE(paramInt);
       }
       AppMethodBeat.o(106244);
       return;
@@ -185,44 +185,44 @@ public class e
   
   protected void a(a parama)
   {
-    AppMethodBeat.i(189290);
+    AppMethodBeat.i(288446);
     parama.proceed();
-    AppMethodBeat.o(189290);
+    AppMethodBeat.o(288446);
   }
   
-  public void aOf()
+  public void bhT()
   {
     AppMethodBeat.i(106248);
-    super.aOf();
+    super.bhT();
     AppMethodBeat.o(106248);
   }
   
-  protected void aOi()
+  protected void bhV()
   {
     AppMethodBeat.i(106251);
-    super.aOi();
+    super.bhV();
     AppMethodBeat.o(106251);
   }
   
-  public void aOj()
+  public void bhW()
   {
     AppMethodBeat.i(106249);
-    super.aOj();
+    super.bhW();
     AppMethodBeat.o(106249);
   }
   
-  public void bNV()
+  public void coi()
   {
     AppMethodBeat.i(106247);
-    super.bNV();
+    super.coi();
     AppMethodBeat.o(106247);
   }
   
-  protected void bNW()
+  protected void coj()
   {
     AppMethodBeat.i(106250);
-    super.bNW();
-    cwi();
+    super.coj();
+    cYS();
     AppMethodBeat.o(106250);
   }
   
@@ -230,32 +230,32 @@ public class e
   {
     AppMethodBeat.i(106246);
     super.onDestroy();
-    if (this.rZE != null)
+    if (this.vkV != null)
     {
-      com.tencent.mm.plugin.ball.ui.e locale = this.rZE;
+      com.tencent.mm.plugin.ball.ui.e locale = this.vkV;
       Log.i("MicroMsg.FloatIndicatorController", "stop FloatIndicatorController");
       MMHandlerThread.postToMainThread(new com.tencent.mm.plugin.ball.ui.e.3(locale));
-      locale.rZC.a(null);
+      locale.vkT.a(null);
     }
     AppMethodBeat.o(106246);
   }
   
-  public boolean zH(int paramInt)
+  public boolean zX(int paramInt)
   {
     AppMethodBeat.i(106245);
-    if ((cvD()) && (this.rYG != null))
+    if ((cYo()) && (this.vjX != null))
     {
       Log.i("MicroMsg.PageFloatBallHelper", "onClose, resume this ball");
-      cvL().opType = Fj(paramInt);
-      cvG();
-      Point localPoint = this.rYG.getBallPosition();
-      c.a(this.rZC, localPoint, new a()
+      cYv().opType = FK(paramInt);
+      cYr();
+      Point localPoint = this.vjX.getBallPosition();
+      c.a(this.vkT, localPoint, new a()
       {
-        public final void aEa()
+        public final void aXe()
         {
           AppMethodBeat.i(106237);
           Log.i("MicroMsg.PageFloatBallHelper", "onClose, transform to float ball animation cancel");
-          e.this.rZC.hS(true);
+          e.this.vkT.iR(true);
           AppMethodBeat.o(106237);
         }
         
@@ -263,7 +263,7 @@ public class e
         {
           AppMethodBeat.i(106236);
           Log.i("MicroMsg.PageFloatBallHelper", "onClose, transform to float ball animation end");
-          e.this.rZC.hS(false);
+          e.this.vkT.iR(false);
           AppMethodBeat.o(106236);
         }
       });
@@ -281,7 +281,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.service.e
  * JD-Core Version:    0.7.0.1
  */

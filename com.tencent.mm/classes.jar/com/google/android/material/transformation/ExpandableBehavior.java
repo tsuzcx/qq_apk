@@ -7,7 +7,7 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.google.android.material.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
@@ -24,7 +24,7 @@ public abstract class ExpandableBehavior
     super(paramContext, paramAttributeSet);
   }
   
-  private boolean bm(boolean paramBoolean)
+  private boolean bT(boolean paramBoolean)
   {
     boolean bool = false;
     if (paramBoolean) {
@@ -50,9 +50,9 @@ public abstract class ExpandableBehavior
   
   public final boolean a(final CoordinatorLayout paramCoordinatorLayout, final View paramView, final int paramInt)
   {
-    if (!w.ah(paramView))
+    if (!z.au(paramView))
     {
-      List localList = paramCoordinatorLayout.x(paramView);
+      List localList = paramCoordinatorLayout.G(paramView);
       int i = localList.size();
       paramInt = 0;
       if (paramInt >= i) {
@@ -64,8 +64,8 @@ public abstract class ExpandableBehavior
       }
       paramCoordinatorLayout = (b)localView;
       label61:
-      if ((paramCoordinatorLayout != null) && (bm(paramCoordinatorLayout.wT()))) {
-        if (!paramCoordinatorLayout.wT()) {
+      if ((paramCoordinatorLayout != null) && (bT(paramCoordinatorLayout.Ws()))) {
+        if (!paramCoordinatorLayout.Ws()) {
           break label131;
         }
       }
@@ -79,12 +79,12 @@ public abstract class ExpandableBehavior
       {
         public final boolean onPreDraw()
         {
-          AppMethodBeat.i(240640);
+          AppMethodBeat.i(209996);
           paramView.getViewTreeObserver().removeOnPreDrawListener(this);
           if (ExpandableBehavior.a(ExpandableBehavior.this) == paramInt) {
-            ExpandableBehavior.this.a((View)paramCoordinatorLayout, paramView, paramCoordinatorLayout.wT(), false);
+            ExpandableBehavior.this.a((View)paramCoordinatorLayout, paramView, paramCoordinatorLayout.Ws(), false);
           }
-          AppMethodBeat.o(240640);
+          AppMethodBeat.o(209996);
           return false;
         }
       });
@@ -103,13 +103,13 @@ public abstract class ExpandableBehavior
   public final boolean b(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
   {
     paramCoordinatorLayout = (b)paramView2;
-    if (bm(paramCoordinatorLayout.wT()))
+    if (bT(paramCoordinatorLayout.Ws()))
     {
-      if (paramCoordinatorLayout.wT()) {}
+      if (paramCoordinatorLayout.Ws()) {}
       for (int i = 1;; i = 2)
       {
         this.currentState = i;
-        return a((View)paramCoordinatorLayout, paramView1, paramCoordinatorLayout.wT(), true);
+        return a((View)paramCoordinatorLayout, paramView1, paramCoordinatorLayout.Ws(), true);
       }
     }
     return false;
@@ -117,7 +117,7 @@ public abstract class ExpandableBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.transformation.ExpandableBehavior
  * JD-Core Version:    0.7.0.1
  */

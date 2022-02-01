@@ -9,7 +9,7 @@ import com.tencent.mm.ui.widget.InputPanelFrameLayout;
 public class TransVoicePanelLayout
   extends InputPanelFrameLayout
 {
-  a NjG;
+  a TWB;
   
   public TransVoicePanelLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,30 +21,30 @@ public class TransVoicePanelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void h(boolean paramBoolean, int paramInt)
+  public void onInputPanelChange(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(102632);
-    super.h(paramBoolean, paramInt);
+    super.onInputPanelChange(paramBoolean, paramInt);
     Log.d("TransVoicePanelLayout", "isKeyboardShow: %s, keyboardHeight: %d.", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (this.NjG != null) {
-      this.NjG.h(paramBoolean, paramInt);
+    if (this.TWB != null) {
+      this.TWB.onInputPanelChange(paramBoolean, paramInt);
     }
     AppMethodBeat.o(102632);
   }
   
   void setOnInputPanelChange(a parama)
   {
-    this.NjG = parama;
+    this.TWB = parama;
   }
   
   static abstract interface a
   {
-    public abstract void h(boolean paramBoolean, int paramInt);
+    public abstract void onInputPanelChange(boolean paramBoolean, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.TransVoicePanelLayout
  * JD-Core Version:    0.7.0.1
  */

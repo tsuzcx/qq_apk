@@ -17,12 +17,12 @@ public final class d
     AppMethodBeat.o(146414);
   }
   
-  public final boolean bp(Object paramObject)
+  public final boolean cJ(Object paramObject)
   {
     return paramObject instanceof Parcel;
   }
   
-  public final Object d(Parcel paramParcel)
+  public final Object f(Parcel paramParcel)
   {
     AppMethodBeat.i(146415);
     Parcel localParcel = Parcel.obtain();

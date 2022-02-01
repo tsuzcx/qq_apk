@@ -6,27 +6,29 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.b;
+import com.tencent.mm.ui.base.k;
 
 public abstract class c
   extends SecurityImage.b
 {
-  SecurityImage mUP = null;
-  q nbK = null;
+  SecurityImage pRw = null;
+  p pYR = null;
   
-  public abstract q a(q paramq, String paramString);
+  public abstract p a(p paramp, String paramString);
   
-  public final void bxQ()
+  public final void bWF()
   {
-    com.tencent.mm.kernel.h.aGY().a(a(this.nbK, ""), 0);
+    h.aZW().a(a(this.pYR, ""), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.c
  * JD-Core Version:    0.7.0.1
  */

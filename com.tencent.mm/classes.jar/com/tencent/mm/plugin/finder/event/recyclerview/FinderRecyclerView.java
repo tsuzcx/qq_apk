@@ -9,166 +9,172 @@ import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "currentItem", "hasInit", "", "outListener", "Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$OnPageChangeCallback;", "pageChangeCallback", "scrollEventAdapter", "Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderScrollEventAdapter;", "getScrollState", "init", "", "layoutManager", "Landroidx/recyclerview/widget/LinearLayoutManager;", "needNotify", "oldIndex", "currentIndex", "setPageChangeListener", "Companion", "OnPageChangeCallback", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "currentItem", "hasInit", "", "outListener", "Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$OnPageChangeCallback;", "pageChangeCallback", "scrollEventAdapter", "Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderScrollEventAdapter;", "getScrollEventAdapter", "()Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderScrollEventAdapter;", "setScrollEventAdapter", "(Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderScrollEventAdapter;)V", "getScrollState", "init", "", "layoutManager", "Landroidx/recyclerview/widget/LinearLayoutManager;", "needNotify", "oldIndex", "currentIndex", "setPageChangeListener", "Companion", "OnPageChangeCallback", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class FinderRecyclerView
   extends WxRecyclerView
 {
-  public static final a xrz;
+  public static final FinderRecyclerView.a AOF;
+  private b AOG;
+  private int AOH;
+  public b AOI;
+  private final b AOJ;
   private boolean hasInit;
-  private b xrv;
-  private int xrw;
-  private a xrx;
-  private final b xry;
   
   static
   {
-    AppMethodBeat.i(258477);
-    xrz = new a((byte)0);
-    AppMethodBeat.o(258477);
+    AppMethodBeat.i(330418);
+    AOF = new FinderRecyclerView.a((byte)0);
+    AppMethodBeat.o(330418);
   }
   
   public FinderRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(258474);
-    this.xrw = -1;
-    this.xry = ((b)new c(this));
-    AppMethodBeat.o(258474);
+    AppMethodBeat.i(330393);
+    this.AOH = -1;
+    this.AOJ = ((b)new c(this));
+    AppMethodBeat.o(330393);
   }
   
   public FinderRecyclerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(258476);
-    this.xrw = -1;
-    this.xry = ((b)new c(this));
-    AppMethodBeat.o(258476);
+    AppMethodBeat.i(330396);
+    this.AOH = -1;
+    this.AOJ = ((b)new c(this));
+    AppMethodBeat.o(330396);
   }
   
   public final void a(LinearLayoutManager paramLinearLayoutManager)
   {
-    AppMethodBeat.i(258472);
+    AppMethodBeat.i(330451);
     if (paramLinearLayoutManager == null)
     {
       Log.e("FinderRecyclerView", "init: params null");
-      AppMethodBeat.o(258472);
+      AppMethodBeat.o(330451);
+      return;
+    }
+    if (this.AOI != null)
+    {
+      Log.w("FinderRecyclerView", "init: scrollEventAdapter has init");
+      AppMethodBeat.o(330451);
       return;
     }
     setLayoutManager((RecyclerView.LayoutManager)paramLinearLayoutManager);
-    this.xrx = new a((RecyclerView)this);
-    paramLinearLayoutManager = this.xrx;
-    if (paramLinearLayoutManager == null) {
-      p.bGy("scrollEventAdapter");
-    }
-    paramLinearLayoutManager.xrB = this.xry;
-    paramLinearLayoutManager = this.xrx;
-    if (paramLinearLayoutManager == null) {
-      p.bGy("scrollEventAdapter");
-    }
-    a((RecyclerView.l)paramLinearLayoutManager);
+    setScrollEventAdapter(new b((RecyclerView)this));
+    getScrollEventAdapter().AOM = this.AOJ;
+    a((RecyclerView.l)getScrollEventAdapter());
     this.hasInit = true;
-    AppMethodBeat.o(258472);
+    AppMethodBeat.o(330451);
+  }
+  
+  public final b getScrollEventAdapter()
+  {
+    AppMethodBeat.i(330432);
+    b localb = this.AOI;
+    if (localb != null)
+    {
+      AppMethodBeat.o(330432);
+      return localb;
+    }
+    s.bIx("scrollEventAdapter");
+    AppMethodBeat.o(330432);
+    return null;
   }
   
   public int getScrollState()
   {
-    AppMethodBeat.i(258473);
+    AppMethodBeat.i(330460);
     if (this.hasInit)
     {
-      a locala = this.xrx;
-      if (locala == null) {
-        p.bGy("scrollEventAdapter");
-      }
-      i = locala.mScrollState;
-      AppMethodBeat.o(258473);
+      i = getScrollEventAdapter().mScrollState;
+      AppMethodBeat.o(330460);
       return i;
     }
     int i = super.getScrollState();
-    AppMethodBeat.o(258473);
+    AppMethodBeat.o(330460);
     return i;
   }
   
   public final void setPageChangeListener(b paramb)
   {
-    this.xrv = paramb;
+    this.AOG = paramb;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$Companion;", "", "()V", "POSITION_FIRST", "", "POSITION_UNKNOWN", "TAG", "", "plugin-finder-base_release"})
-  public static final class a {}
+  public final void setScrollEventAdapter(b paramb)
+  {
+    AppMethodBeat.i(330442);
+    s.u(paramb, "<set-?>");
+    this.AOI = paramb;
+    AppMethodBeat.o(330442);
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$OnPageChangeCallback;", "", "onPageScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$OnPageChangeCallback;", "", "onPageScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void a(RecyclerView paramRecyclerView, int paramInt1, float paramFloat, int paramInt2);
     
-    public abstract void h(RecyclerView paramRecyclerView, int paramInt);
+    public abstract void j(RecyclerView paramRecyclerView, int paramInt);
     
-    public abstract void i(RecyclerView paramRecyclerView, int paramInt);
+    public abstract void k(RecyclerView paramRecyclerView, int paramInt);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$pageChangeCallback$1", "Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$OnPageChangeCallback;", "onPageScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$pageChangeCallback$1", "Lcom/tencent/mm/plugin/finder/event/recyclerview/FinderRecyclerView$OnPageChangeCallback;", "onPageScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements FinderRecyclerView.b
   {
+    c(FinderRecyclerView paramFinderRecyclerView) {}
+    
     public final void a(RecyclerView paramRecyclerView, int paramInt1, float paramFloat, int paramInt2)
     {
-      AppMethodBeat.i(259092);
-      p.k(paramRecyclerView, "recyclerView");
-      FinderRecyclerView.b localb = FinderRecyclerView.a(this.xrA);
-      if (localb != null)
-      {
+      AppMethodBeat.i(330376);
+      s.u(paramRecyclerView, "recyclerView");
+      FinderRecyclerView.b localb = FinderRecyclerView.a(this.AOK);
+      if (localb != null) {
         localb.a(paramRecyclerView, paramInt1, paramFloat, paramInt2);
-        AppMethodBeat.o(259092);
-        return;
       }
-      AppMethodBeat.o(259092);
+      AppMethodBeat.o(330376);
     }
     
-    public final void h(RecyclerView paramRecyclerView, int paramInt)
+    public final void j(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(259093);
-      p.k(paramRecyclerView, "recyclerView");
-      boolean bool = FinderRecyclerView.gz(FinderRecyclerView.b(this.xrA), paramInt);
-      Log.i("FinderRecyclerView", "onPageSelected position:" + paramInt + ", currentItem:" + FinderRecyclerView.b(this.xrA) + ", needNotify:" + bool);
-      if (FinderRecyclerView.b(this.xrA) != paramInt)
+      AppMethodBeat.i(330388);
+      s.u(paramRecyclerView, "recyclerView");
+      boolean bool = FinderRecyclerView.hr(FinderRecyclerView.b(this.AOK), paramInt);
+      Log.i("FinderRecyclerView", "onPageSelected position:" + paramInt + ", currentItem:" + FinderRecyclerView.b(this.AOK) + ", needNotify:" + bool);
+      if (FinderRecyclerView.b(this.AOK) != paramInt)
       {
-        FinderRecyclerView.a(this.xrA, paramInt);
-        if ((FinderRecyclerView.a(this.xrA) != null) && (bool))
+        FinderRecyclerView.a(this.AOK, paramInt);
+        if ((FinderRecyclerView.a(this.AOK) != null) && (bool))
         {
-          FinderRecyclerView.b localb = FinderRecyclerView.a(this.xrA);
-          if (localb != null)
-          {
-            localb.h(paramRecyclerView, paramInt);
-            AppMethodBeat.o(259093);
-            return;
+          FinderRecyclerView.b localb = FinderRecyclerView.a(this.AOK);
+          if (localb != null) {
+            localb.j(paramRecyclerView, paramInt);
           }
         }
       }
-      AppMethodBeat.o(259093);
+      AppMethodBeat.o(330388);
     }
     
-    public final void i(RecyclerView paramRecyclerView, int paramInt)
+    public final void k(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(259094);
-      p.k(paramRecyclerView, "recyclerView");
-      Log.i("FinderRecyclerView", "onPageScrollStateChanged state = ".concat(String.valueOf(paramInt)));
-      FinderRecyclerView.b localb = FinderRecyclerView.a(this.xrA);
-      if (localb != null)
-      {
-        localb.i(paramRecyclerView, paramInt);
-        AppMethodBeat.o(259094);
-        return;
+      AppMethodBeat.i(330394);
+      s.u(paramRecyclerView, "recyclerView");
+      Log.i("FinderRecyclerView", s.X("onPageScrollStateChanged state = ", Integer.valueOf(paramInt)));
+      FinderRecyclerView.b localb = FinderRecyclerView.a(this.AOK);
+      if (localb != null) {
+        localb.k(paramRecyclerView, paramInt);
       }
-      AppMethodBeat.o(259094);
+      AppMethodBeat.o(330394);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.event.recyclerview.FinderRecyclerView
  * JD-Core Version:    0.7.0.1
  */

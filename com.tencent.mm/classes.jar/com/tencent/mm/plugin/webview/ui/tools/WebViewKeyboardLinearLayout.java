@@ -6,19 +6,19 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.KeyboardLinearLayout;
 
 public class WebViewKeyboardLinearLayout
   extends KeyboardLinearLayout
 {
-  boolean Qdk;
-  private int Qdl;
-  private int Qdm;
-  private int Qdn;
-  private int Qdo = -1;
+  protected boolean WUW;
+  private int WUX;
+  private int WUY;
+  private int WUZ;
+  private int WVa = -1;
   private boolean mHasInit = false;
   private int mHeight;
   
@@ -34,38 +34,31 @@ public class WebViewKeyboardLinearLayout
   
   private int getHideKeyHeightRate()
   {
-    AppMethodBeat.i(267722);
+    AppMethodBeat.i(296357);
     int i;
-    if (this.Qdo < 0)
+    if (this.WVa < 0)
     {
-      i = ((b)h.ae(b.class)).a(b.a.vzO, 10);
+      i = ((c)h.ax(c.class)).a(c.a.yNw, 10);
       if (i <= 0) {
         break label73;
       }
     }
     for (;;)
     {
-      this.Qdo = i;
-      Log.i("MicroMsg.WebViewKeyboardLinearLayout", "hide rate:%d", new Object[] { Integer.valueOf(this.Qdo) });
-      i = this.Qdo;
-      AppMethodBeat.o(267722);
+      this.WVa = i;
+      Log.i("MicroMsg.WebViewKeyboardLinearLayout", "hide rate:%d", new Object[] { Integer.valueOf(this.WVa) });
+      i = this.WVa;
+      AppMethodBeat.o(296357);
       return i;
       label73:
       i = 10;
     }
   }
   
-  public final void SG(int paramInt)
+  public final void aup(int paramInt)
   {
-    AppMethodBeat.i(293245);
-    super.SG(paramInt);
-    AppMethodBeat.o(293245);
-  }
-  
-  public final void aow(int paramInt)
-  {
-    AppMethodBeat.i(292654);
-    Log.d("MicroMsg.WebViewKeyboardLinearLayout", "onLayout : b: " + paramInt + " mHasInit: " + this.mHasInit + " mHasKeyboard: " + this.Qdk);
+    AppMethodBeat.i(296375);
+    Log.d("MicroMsg.WebViewKeyboardLinearLayout", "onLayout : b: " + paramInt + " mHasInit: " + this.mHasInit + " mHasKeyboard: " + this.WUW);
     Rect localRect = new Rect();
     getWindowVisibleDisplayFrame(localRect);
     int i = getRootView().getHeight();
@@ -74,45 +67,47 @@ public class WebViewKeyboardLinearLayout
       this.mHasInit = true;
       this.mHeight = paramInt;
       Log.i("MicroMsg.WebViewKeyboardLinearLayout", "init height:%d", new Object[] { Integer.valueOf(this.mHeight) });
-      super.SG(-1);
-      this.Qdn = (i - localRect.bottom);
+      super.onKeyBoardStateChange(-1);
+      this.WUZ = (i - localRect.bottom);
     }
     Log.d("MicroMsg.WebViewKeyboardLinearLayout", "onLayout, current rect = %s", new Object[] { localRect.toString() });
     i = localRect.height();
     this.mHeight = i;
-    Log.d("MicroMsg.WebViewKeyboardLinearLayout", "onLayout, usableHeightNow = %d, previousUsableHeight = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.Qdl) });
-    if (this.Qdl != i)
+    Log.d("MicroMsg.WebViewKeyboardLinearLayout", "onLayout, usableHeightNow = %d, previousUsableHeight = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.WUX) });
+    if (this.WUX != i)
     {
-      int j = getRootView().getHeight() - this.Qdn - localRect.top;
+      int j = getRootView().getHeight() - this.WUZ - localRect.top;
       int k = j - i;
       if (k <= j / getHideKeyHeightRate()) {
         break label301;
       }
-      this.Qdk = true;
-      this.Qdm = k;
-      super.SG(-3);
-      Log.w("MicroMsg.WebViewKeyboardLinearLayout", "onLayout, show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt + " mKBHeight: " + this.Qdm);
+      this.WUW = true;
+      this.WUY = k;
+      super.onKeyBoardStateChange(-3);
+      Log.w("MicroMsg.WebViewKeyboardLinearLayout", "onLayout, show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt + " mKBHeight: " + this.WUY);
     }
     for (;;)
     {
-      this.Qdl = i;
-      AppMethodBeat.o(292654);
+      this.WUX = i;
+      AppMethodBeat.o(296375);
       return;
       label301:
-      this.Qdk = false;
-      super.SG(-2);
+      this.WUW = false;
+      super.onKeyBoardStateChange(-2);
       Log.w("MicroMsg.WebViewKeyboardLinearLayout", "onLayout, hide keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
     }
   }
   
-  public final boolean gXJ()
-  {
-    return this.Qdk;
-  }
-  
   public final int getKeyBoardHeight()
   {
-    return this.Qdm;
+    return this.WUY;
+  }
+  
+  public final void onKeyBoardStateChange(int paramInt)
+  {
+    AppMethodBeat.i(369833);
+    super.onKeyBoardStateChange(paramInt);
+    AppMethodBeat.o(369833);
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -131,7 +126,7 @@ public class WebViewKeyboardLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout
  * JD-Core Version:    0.7.0.1
  */

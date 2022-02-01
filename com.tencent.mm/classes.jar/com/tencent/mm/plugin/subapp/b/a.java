@@ -1,45 +1,43 @@
 package com.tencent.mm.plugin.subapp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.model.az.a;
 import com.tencent.mm.model.az.c;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.c;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cfb;
-import com.tencent.mm.protocal.protobuf.cfc;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.ezp;
+import com.tencent.mm.protocal.protobuf.cve;
+import com.tencent.mm.protocal.protobuf.cvf;
+import com.tencent.mm.protocal.protobuf.fvt;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import java.util.LinkedList;
 
 public final class a
-  extends q
+  extends p
   implements m
 {
-  private int MdD;
-  private i callback;
-  private MTimerHandler lAo;
-  private final d rr;
+  private int SET;
+  private h callback;
+  private MTimerHandler orP;
+  private final com.tencent.mm.am.c rr;
   
   public a()
   {
     AppMethodBeat.i(28900);
-    this.MdD = 0;
-    this.lAo = new MTimerHandler(new MTimerHandler.CallBack()
+    this.SET = 0;
+    this.orP = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -49,15 +47,15 @@ public final class a
           AppMethodBeat.o(28899);
           return false;
         }
-        cfc localcfc = (cfc)d.c.b(a.b(a.this).lBS);
+        cvf localcvf = (cvf)c.c.b(a.b(a.this).otC);
         try
         {
-          ezp localezp = (ezp)localcfc.TmI.get(a.a(a.this));
-          if ((localezp != null) && (localezp.UzS != null) && (localezp.UzS.Tkb != null) && (localezp.UzR != null) && (localezp.UzR.Tkb != null))
+          fvt localfvt = (fvt)localcvf.aaAP.get(a.a(a.this));
+          if ((localfvt != null) && (localfvt.abTV != null) && (localfvt.abTV.aaxD != null) && (localfvt.abTU != null) && (localfvt.abTU.aaxD != null))
           {
-            Log.d("MicroMsg.NetSceneGetVUserInfo", "onGYNetEnd ver:" + localcfc.rWt + " idx:" + a.a(a.this) + " id:" + Integer.toHexString(localezp.ffF) + " size:" + localezp.UzR.Ufv + " hdsize:" + localezp.UzS.Ufv);
-            a.b(localezp.ffF, true, localezp.UzS.Tkb.toByteArray());
-            a.b(localezp.ffF, false, localezp.UzR.Tkb.toByteArray());
+            Log.d("MicroMsg.NetSceneGetVUserInfo", "onGYNetEnd ver:" + localcvf.crz + " idx:" + a.a(a.this) + " id:" + Integer.toHexString(localfvt.hjP) + " size:" + localfvt.abTU.abwJ + " hdsize:" + localfvt.abTV.abwJ);
+            a.b(localfvt.hjP, true, localfvt.abTV.aaxD.toByteArray());
+            a.b(localfvt.hjP, false, localfvt.abTU.aaxD.toByteArray());
           }
           a.c(a.this);
           AppMethodBeat.o(28899);
@@ -73,25 +71,25 @@ public final class a
         }
       }
     }, true);
-    bh.beI();
-    int j = Util.nullAsNil((Integer)c.aHp().b(66052, null));
-    if (az.a.ltt.uU(j))
+    bh.bCz();
+    int j = Util.nullAsNil((Integer)com.tencent.mm.model.c.ban().d(66052, null));
+    if (az.a.okR.vf(j))
     {
-      bh.beI();
-      i = Util.nullAsNil((Integer)c.aHp().b(66053, null));
+      bh.bCz();
+      i = Util.nullAsNil((Integer)com.tencent.mm.model.c.ban().d(66053, null));
     }
     Object localObject = new StringBuilder("init: allfileid:").append(Integer.toBinaryString(j)).append(" inver:");
-    bh.beI();
-    Log.d("MicroMsg.NetSceneGetVUserInfo", Util.nullAsNil((Integer)c.aHp().b(66053, null)) + " reqver:" + i);
-    localObject = new d.a();
-    ((d.a)localObject).lBU = new cfb();
-    ((d.a)localObject).lBV = new cfc();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getvuserinfo";
-    ((d.a)localObject).funcId = 167;
-    ((d.a)localObject).lBW = 60;
-    ((d.a)localObject).respCmdId = 1000000060;
-    this.rr = ((d.a)localObject).bgN();
-    ((cfb)d.b.b(this.rr.lBR)).rWt = i;
+    bh.bCz();
+    Log.d("MicroMsg.NetSceneGetVUserInfo", Util.nullAsNil((Integer)com.tencent.mm.model.c.ban().d(66053, null)) + " reqver:" + i);
+    localObject = new c.a();
+    ((c.a)localObject).otE = new cve();
+    ((c.a)localObject).otF = new cvf();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getvuserinfo";
+    ((c.a)localObject).funcId = 167;
+    ((c.a)localObject).otG = 60;
+    ((c.a)localObject).respCmdId = 1000000060;
+    this.rr = ((c.a)localObject).bEF();
+    ((cve)c.b.b(this.rr.otB)).crz = i;
     AppMethodBeat.o(28900);
   }
   
@@ -105,92 +103,93 @@ public final class a
     //   7: astore 4
     //   9: aconst_null
     //   10: astore_3
-    //   11: getstatic 71	com/tencent/mm/model/az$a:ltt	Lcom/tencent/mm/model/az$c;
+    //   11: getstatic 71	com/tencent/mm/model/az$a:okR	Lcom/tencent/mm/model/az$c;
     //   14: iload_0
     //   15: iload_1
     //   16: invokeinterface 177 3 0
-    //   21: invokestatic 183	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
-    //   24: astore 5
-    //   26: aload 5
-    //   28: astore_3
-    //   29: aload 5
-    //   31: astore 4
-    //   33: aload 5
-    //   35: aload_2
-    //   36: invokevirtual 189	java/io/OutputStream:write	([B)V
-    //   39: aload 5
-    //   41: astore_3
-    //   42: aload 5
-    //   44: astore 4
-    //   46: aload 5
-    //   48: invokevirtual 192	java/io/OutputStream:close	()V
-    //   51: aload 5
-    //   53: ifnull +8 -> 61
-    //   56: aload 5
-    //   58: invokevirtual 192	java/io/OutputStream:close	()V
-    //   61: sipush 28903
-    //   64: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   67: iconst_1
-    //   68: ireturn
-    //   69: astore_2
-    //   70: aload_3
-    //   71: astore 4
-    //   73: ldc 97
-    //   75: aload_2
-    //   76: ldc 194
-    //   78: iconst_0
-    //   79: anewarray 196	java/lang/Object
-    //   82: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   85: aload_3
-    //   86: ifnull +7 -> 93
-    //   89: aload_3
-    //   90: invokevirtual 192	java/io/OutputStream:close	()V
-    //   93: sipush 28903
-    //   96: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   99: iconst_0
-    //   100: ireturn
-    //   101: astore_2
-    //   102: aload 4
-    //   104: ifnull +8 -> 112
-    //   107: aload 4
-    //   109: invokevirtual 192	java/io/OutputStream:close	()V
-    //   112: sipush 28903
-    //   115: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   118: aload_2
-    //   119: athrow
-    //   120: astore_2
-    //   121: goto -60 -> 61
-    //   124: astore_2
-    //   125: goto -32 -> 93
-    //   128: astore_3
-    //   129: goto -17 -> 112
+    //   21: iconst_0
+    //   22: invokestatic 183	com/tencent/mm/vfs/y:ev	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   25: astore 5
+    //   27: aload 5
+    //   29: astore_3
+    //   30: aload 5
+    //   32: astore 4
+    //   34: aload 5
+    //   36: aload_2
+    //   37: invokevirtual 189	java/io/OutputStream:write	([B)V
+    //   40: aload 5
+    //   42: astore_3
+    //   43: aload 5
+    //   45: astore 4
+    //   47: aload 5
+    //   49: invokevirtual 192	java/io/OutputStream:close	()V
+    //   52: aload 5
+    //   54: ifnull +8 -> 62
+    //   57: aload 5
+    //   59: invokevirtual 192	java/io/OutputStream:close	()V
+    //   62: sipush 28903
+    //   65: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: iconst_1
+    //   69: ireturn
+    //   70: astore_2
+    //   71: aload_3
+    //   72: astore 4
+    //   74: ldc 97
+    //   76: aload_2
+    //   77: ldc 194
+    //   79: iconst_0
+    //   80: anewarray 196	java/lang/Object
+    //   83: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   86: aload_3
+    //   87: ifnull +7 -> 94
+    //   90: aload_3
+    //   91: invokevirtual 192	java/io/OutputStream:close	()V
+    //   94: sipush 28903
+    //   97: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: iconst_0
+    //   101: ireturn
+    //   102: astore_2
+    //   103: aload 4
+    //   105: ifnull +8 -> 113
+    //   108: aload 4
+    //   110: invokevirtual 192	java/io/OutputStream:close	()V
+    //   113: sipush 28903
+    //   116: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   119: aload_2
+    //   120: athrow
+    //   121: astore_2
+    //   122: goto -60 -> 62
+    //   125: astore_2
+    //   126: goto -32 -> 94
+    //   129: astore_3
+    //   130: goto -17 -> 113
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	paramInt	int
-    //   0	132	1	paramBoolean	boolean
-    //   0	132	2	paramArrayOfByte	byte[]
-    //   10	80	3	localObject1	Object
-    //   128	1	3	localException	Exception
-    //   7	101	4	localObject2	Object
-    //   24	33	5	localOutputStream	java.io.OutputStream
+    //   0	133	0	paramInt	int
+    //   0	133	1	paramBoolean	boolean
+    //   0	133	2	paramArrayOfByte	byte[]
+    //   10	81	3	localObject1	Object
+    //   129	1	3	localException	Exception
+    //   7	102	4	localObject2	Object
+    //   25	33	5	localOutputStream	java.io.OutputStream
     // Exception table:
     //   from	to	target	type
-    //   11	26	69	java/lang/Exception
-    //   33	39	69	java/lang/Exception
-    //   46	51	69	java/lang/Exception
-    //   11	26	101	finally
-    //   33	39	101	finally
-    //   46	51	101	finally
-    //   73	85	101	finally
-    //   56	61	120	java/lang/Exception
-    //   89	93	124	java/lang/Exception
-    //   107	112	128	java/lang/Exception
+    //   11	27	70	java/lang/Exception
+    //   34	40	70	java/lang/Exception
+    //   47	52	70	java/lang/Exception
+    //   11	27	102	finally
+    //   34	40	102	finally
+    //   47	52	102	finally
+    //   74	86	102	finally
+    //   57	62	121	java/lang/Exception
+    //   90	94	125	java/lang/Exception
+    //   108	113	129	java/lang/Exception
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(28901);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(28901);
     return i;
@@ -211,13 +210,13 @@ public final class a
       AppMethodBeat.o(28902);
       return;
     }
-    params = (cfc)d.c.b(((d)params).lBS);
-    paramArrayOfByte = new StringBuilder("onGYNetEnd new version:").append(params.rWt).append(" old version:");
-    bh.beI();
-    Log.d("MicroMsg.NetSceneGetVUserInfo", Util.nullAsNil((Integer)c.aHp().b(66053, null)) + " Count:" + params.TmI.size());
-    bh.beI();
-    c.aHp().i(66053, Integer.valueOf(params.rWt));
-    if (params.TmI.size() <= 0)
+    params = (cvf)c.c.b(((com.tencent.mm.am.c)params).otC);
+    paramArrayOfByte = new StringBuilder("onGYNetEnd new version:").append(params.crz).append(" old version:");
+    bh.bCz();
+    Log.d("MicroMsg.NetSceneGetVUserInfo", Util.nullAsNil((Integer)com.tencent.mm.model.c.ban().d(66053, null)) + " Count:" + params.aaAP.size());
+    bh.bCz();
+    com.tencent.mm.model.c.ban().B(66053, Integer.valueOf(params.crz));
+    if (params.aaAP.size() <= 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(28902);
@@ -225,23 +224,23 @@ public final class a
     }
     int i = 0;
     paramInt1 = 0;
-    while (i < params.TmI.size())
+    while (i < params.aaAP.size())
     {
-      int j = ((ezp)params.TmI.get(i)).ffF;
+      int j = ((fvt)params.aaAP.get(i)).hjP;
       i += 1;
       paramInt1 |= j;
     }
-    bh.beI();
-    c.aHp().i(66052, Integer.valueOf(paramInt1));
+    bh.bCz();
+    com.tencent.mm.model.c.ban().B(66052, Integer.valueOf(paramInt1));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.MdD = (params.TmI.size() - 1);
-    this.lAo.startTimer(50L);
+    this.SET = (params.aaAP.size() - 1);
+    this.orP.startTimer(50L);
     AppMethodBeat.o(28902);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.b.a
  * JD-Core Version:    0.7.0.1
  */

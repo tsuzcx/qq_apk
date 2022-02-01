@@ -17,233 +17,261 @@ import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/gallery/view/SearchImageBubbleView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "anchorViewPosition", "Landroid/graphics/Point;", "anchorViewSize", "bubbleMinWidth", "bubbleTextView", "Landroid/widget/TextView;", "bubbleTriangle", "Landroid/view/View;", "bubbleTriangleWidth", "bubbleViewContainer", "Landroid/view/ViewGroup;", "bubbleViewContainerRightMargin", "bubbleWidth", "mAnchor", "pendingShow", "", "viewWidth", "hide", "", "init", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setAnchorView", "anchorView", "setAnchorViewPosition", "x", "y", "setAnchorViewSize", "width", "height", "setBubbleClickListener", "onClickListener", "Landroid/view/View$OnClickListener;", "setBubbleText", "text", "", "setViewWidth", "show", "showByPosition", "showIfNeed", "Companion", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/gallery/view/SearchImageBubbleView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "anchorViewPosition", "Landroid/graphics/Point;", "anchorViewSize", "bubbleMinWidth", "bubbleTextView", "Landroid/widget/TextView;", "bubbleTriangle", "Landroid/view/View;", "bubbleTriangleWidth", "bubbleViewContainer", "Landroid/view/ViewGroup;", "bubbleViewContainerRightMargin", "bubbleWidth", "mAnchor", "pendingShow", "", "viewWidth", "hide", "", "init", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setAnchorView", "anchorView", "setAnchorViewPosition", "x", "y", "setAnchorViewSize", "width", "height", "setBubbleClickListener", "onClickListener", "Landroid/view/View$OnClickListener;", "setBubbleText", "text", "", "setViewWidth", "show", "showByPosition", "showIfNeed", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SearchImageBubbleView
   extends LinearLayout
 {
-  public static final SearchImageBubbleView.a WYh;
-  private boolean Brn;
-  private ViewGroup WXY;
-  private TextView WXZ;
-  private View WYa;
-  private Point WYb;
-  private Point WYc;
-  private int WYd;
-  private int WYe;
-  private int WYf;
-  private int WYg;
-  private int jBZ;
-  private View xB;
+  public static final SearchImageBubbleView.a aeHy;
+  private boolean GXN;
+  private TextView aeHA;
+  private View aeHB;
+  private Point aeHC;
+  private Point aeHD;
+  private int aeHE;
+  private int aeHF;
+  private int aeHG;
+  private int aeHH;
+  private ViewGroup aeHz;
+  private int mbM;
+  private View yw;
   
   static
   {
-    AppMethodBeat.i(271023);
-    WYh = new SearchImageBubbleView.a((byte)0);
-    AppMethodBeat.o(271023);
+    AppMethodBeat.i(254717);
+    aeHy = new SearchImageBubbleView.a((byte)0);
+    AppMethodBeat.o(254717);
   }
   
   public SearchImageBubbleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(271021);
-    AppMethodBeat.o(271021);
+    AppMethodBeat.i(254700);
+    AppMethodBeat.o(254700);
   }
   
   public SearchImageBubbleView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(271022);
-    this.Brn = true;
-    this.WYb = new Point(0, 0);
-    this.WYc = new Point(0, 0);
-    paramContext = LayoutInflater.from(paramContext).inflate(R.i.ehD, (ViewGroup)this, true);
-    paramAttributeSet = paramContext.findViewById(R.h.dTn);
-    p.j(paramAttributeSet, "view.findViewById(R.id.s…h_image_bubble_container)");
-    this.WXY = ((ViewGroup)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(R.h.dTo);
-    p.j(paramAttributeSet, "view.findViewById(R.id.search_image_bubble_tips)");
-    this.WXZ = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(R.h.duI);
-    p.j(paramContext, "view.findViewById(R.id.bubble_triangle)");
-    this.WYa = paramContext;
-    this.WYf = getResources().getDimensionPixelSize(R.f.dlo);
-    this.WYe = getResources().getDimensionPixelSize(R.f.dln);
-    AppMethodBeat.o(271022);
+    AppMethodBeat.i(254706);
+    this.GXN = true;
+    this.aeHC = new Point(0, 0);
+    this.aeHD = new Point(0, 0);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.i.gky, (ViewGroup)this, true);
+    paramAttributeSet = paramContext.findViewById(R.h.fVv);
+    s.s(paramAttributeSet, "view.findViewById(R.id.s…h_image_bubble_container)");
+    this.aeHz = ((ViewGroup)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(R.h.fVw);
+    s.s(paramAttributeSet, "view.findViewById(R.id.search_image_bubble_tips)");
+    this.aeHA = ((TextView)paramAttributeSet);
+    paramContext = paramContext.findViewById(R.h.fva);
+    s.s(paramContext, "view.findViewById(R.id.bubble_triangle)");
+    this.aeHB = paramContext;
+    this.aeHG = getResources().getDimensionPixelSize(R.f.flE);
+    this.aeHF = getResources().getDimensionPixelSize(R.f.flD);
+    AppMethodBeat.o(254706);
   }
   
-  private final void hTi()
+  private final void jwJ()
   {
-    AppMethodBeat.i(271020);
+    Object localObject2 = null;
+    AppMethodBeat.i(254712);
     setVisibility(0);
-    aa.d locald = new aa.d();
-    Object localObject = getLayoutParams();
-    if ((localObject != null) && ((localObject instanceof ViewGroup.MarginLayoutParams))) {
-      this.WYg = ((ViewGroup.MarginLayoutParams)localObject).rightMargin;
+    Object localObject1 = getLayoutParams();
+    if ((localObject1 != null) && ((localObject1 instanceof ViewGroup.MarginLayoutParams))) {
+      this.aeHH = ((ViewGroup.MarginLayoutParams)localObject1).rightMargin;
     }
-    Log.v("MicroMsg.SearchImageBubbleView", "alvinluo showByPosition anchorViewPosition: %s, anchorViewSize: %s, bubbleWidth: %d, viewWidth: %d, bubbleRightMargin: %d", new Object[] { this.WYc, this.WYb, Integer.valueOf(this.WYd), Integer.valueOf(this.jBZ), Integer.valueOf(this.WYg) });
-    localObject = this.WXZ;
-    if (localObject == null) {
-      p.bGy("bubbleTextView");
+    Log.v("MicroMsg.SearchImageBubbleView", "alvinluo showByPosition anchorViewPosition: %s, anchorViewSize: %s, bubbleWidth: %d, viewWidth: %d, bubbleRightMargin: %d", new Object[] { this.aeHD, this.aeHC, Integer.valueOf(this.aeHE), Integer.valueOf(this.mbM), Integer.valueOf(this.aeHH) });
+    TextView localTextView = this.aeHA;
+    localObject1 = localTextView;
+    if (localTextView == null)
+    {
+      s.bIx("bubbleTextView");
+      localObject1 = null;
     }
-    localObject = ((TextView)localObject).getLayoutParams();
+    localObject1 = ((TextView)localObject1).getLayoutParams();
     int i;
-    if ((localObject != null) && ((localObject instanceof ViewGroup.MarginLayoutParams)))
+    if ((localObject1 != null) && ((localObject1 instanceof ViewGroup.MarginLayoutParams)))
     {
-      i = this.WYc.x + this.WYb.x / 2;
-      if ((this.WYd <= this.WYe) || (this.WYd + i - this.WYe / 2 <= this.jBZ - this.WYg)) {
-        break label342;
+      i = this.aeHD.x + this.aeHC.x / 2;
+      if ((this.aeHE <= this.aeHF) || (this.aeHE + i - this.aeHF / 2 <= this.mbM - this.aeHH)) {
+        break label347;
       }
-      locald.aaBA = (this.jBZ - this.WYd - this.WYg);
+      i = this.mbM;
+      int j = this.aeHE;
+      int k = this.aeHH;
+      i = (int)Math.max(this.mbM / 3.0F, i - j - k);
+      if (((ViewGroup.MarginLayoutParams)localObject1).leftMargin != i) {
+        ((ViewGroup.MarginLayoutParams)localObject1).leftMargin = i;
+      }
     }
-    label342:
-    for (locald.aaBA = ((int)Math.max(this.jBZ / 3.0F, locald.aaBA));; locald.aaBA = (i - this.WYd / 2))
+    localObject1 = this.aeHB;
+    if (localObject1 == null)
     {
-      if (((ViewGroup.MarginLayoutParams)localObject).leftMargin != locald.aaBA) {
-        ((ViewGroup.MarginLayoutParams)localObject).leftMargin = locald.aaBA;
-      }
-      localObject = this.WYa;
-      if (localObject == null) {
-        p.bGy("bubbleTriangle");
-      }
-      localObject = ((View)localObject).getLayoutParams();
-      if (localObject == null) {
-        break;
-      }
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
+      s.bIx("bubbleTriangle");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      localObject1 = ((View)localObject1).getLayoutParams();
+      if ((localObject1 != null) && ((localObject1 instanceof ViewGroup.MarginLayoutParams)))
       {
-        locald.aaBA = Math.max(0, this.WYc.x + this.WYb.x / 2 - this.WYf / 2);
-        if (((ViewGroup.MarginLayoutParams)localObject).leftMargin != locald.aaBA) {
-          ((ViewGroup.MarginLayoutParams)localObject).leftMargin = locald.aaBA;
+        i = Math.max(0, this.aeHD.x + this.aeHC.x / 2 - this.aeHG / 2);
+        if (((ViewGroup.MarginLayoutParams)localObject1).leftMargin != i) {
+          ((ViewGroup.MarginLayoutParams)localObject1).leftMargin = i;
         }
       }
-      AppMethodBeat.o(271020);
+      AppMethodBeat.o(254712);
       return;
+      label347:
+      i -= this.aeHE / 2;
+      break;
     }
-    AppMethodBeat.o(271020);
   }
   
-  public final void awA(int paramInt)
+  public final void aDj(int paramInt)
   {
-    this.WYc.x = paramInt;
-    this.WYc.y = 0;
-  }
-  
-  public final void mB(int paramInt1, int paramInt2)
-  {
-    this.WYb.x = paramInt1;
-    this.WYb.y = paramInt2;
+    this.aeHD.x = paramInt;
+    this.aeHD.y = 0;
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(271018);
+    Object localObject2 = null;
+    AppMethodBeat.i(254746);
     super.onMeasure(paramInt1, paramInt2);
-    if (this.xB != null)
+    Object localObject1;
+    if (this.yw != null)
     {
-      Object localObject1 = this.WYc;
-      Object localObject2 = this.xB;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      ((Point)localObject1).x = ((int)((View)localObject2).getX());
-      localObject1 = this.WYc;
-      localObject2 = this.xB;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      ((Point)localObject1).y = ((int)((View)localObject2).getY());
-      localObject1 = this.WYc;
-      localObject2 = this.WXZ;
-      if (localObject2 == null) {
-        p.bGy("bubbleTextView");
-      }
-      Log.v("MicroMsg.SearchImageBubbleView", "alvinluo onMeasure anchorViewPos: %s, %d, %d", new Object[] { localObject1, Integer.valueOf(((TextView)localObject2).getMeasuredWidth()), Integer.valueOf(getMeasuredWidth()) });
-      if (this.WYc.x > 0)
+      localObject1 = this.aeHD;
+      Object localObject3 = this.yw;
+      s.checkNotNull(localObject3);
+      ((Point)localObject1).x = ((int)((View)localObject3).getX());
+      localObject1 = this.aeHD;
+      localObject3 = this.yw;
+      s.checkNotNull(localObject3);
+      ((Point)localObject1).y = ((int)((View)localObject3).getY());
+      Point localPoint = this.aeHD;
+      localObject3 = this.aeHA;
+      localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        localObject1 = this.WXZ;
-        if (localObject1 == null) {
-          p.bGy("bubbleTextView");
+        s.bIx("bubbleTextView");
+        localObject1 = null;
+      }
+      Log.v("MicroMsg.SearchImageBubbleView", "alvinluo onMeasure anchorViewPos: %s, %d, %d", new Object[] { localPoint, Integer.valueOf(((TextView)localObject1).getMeasuredWidth()), Integer.valueOf(getMeasuredWidth()) });
+      if (this.aeHD.x > 0)
+      {
+        localObject1 = this.aeHA;
+        if (localObject1 != null) {
+          break label232;
         }
-        if ((((TextView)localObject1).getMeasuredWidth() >= 0) && (getMeasuredWidth() > 0))
-        {
-          this.jBZ = getMeasuredWidth();
-          Log.v("MicroMsg.SearchImageBubbleView", "alvinluo showIfNeed pendingShow: %b", new Object[] { Boolean.valueOf(this.Brn) });
-          if (this.Brn)
-          {
-            this.Brn = false;
-            hTi();
-          }
-        }
+        s.bIx("bubbleTextView");
+        localObject1 = localObject2;
       }
     }
-    AppMethodBeat.o(271018);
+    label232:
+    for (;;)
+    {
+      if ((((TextView)localObject1).getMeasuredWidth() >= 0) && (getMeasuredWidth() > 0))
+      {
+        this.mbM = getMeasuredWidth();
+        Log.v("MicroMsg.SearchImageBubbleView", "alvinluo showIfNeed pendingShow: %b", new Object[] { Boolean.valueOf(this.GXN) });
+        if (this.GXN)
+        {
+          this.GXN = false;
+          jwJ();
+        }
+      }
+      AppMethodBeat.o(254746);
+      return;
+    }
+  }
+  
+  public final void ov(int paramInt1, int paramInt2)
+  {
+    this.aeHC.x = paramInt1;
+    this.aeHC.y = paramInt2;
   }
   
   public final void setAnchorView(View paramView)
   {
-    this.xB = paramView;
+    this.yw = paramView;
   }
   
   public final void setBubbleClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(271017);
-    TextView localTextView = this.WXZ;
-    if (localTextView == null) {
-      p.bGy("bubbleTextView");
+    AppMethodBeat.i(254741);
+    TextView localTextView2 = this.aeHA;
+    TextView localTextView1 = localTextView2;
+    if (localTextView2 == null)
+    {
+      s.bIx("bubbleTextView");
+      localTextView1 = null;
     }
-    localTextView.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(271017);
+    localTextView1.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(254741);
   }
   
   public final void setBubbleText(String paramString)
   {
-    AppMethodBeat.i(271016);
-    p.k(paramString, "text");
-    TextView localTextView = this.WXZ;
-    if (localTextView == null) {
-      p.bGy("bubbleTextView");
+    AppMethodBeat.i(254733);
+    s.u(paramString, "text");
+    TextView localTextView2 = this.aeHA;
+    TextView localTextView1 = localTextView2;
+    if (localTextView2 == null)
+    {
+      s.bIx("bubbleTextView");
+      localTextView1 = null;
     }
-    localTextView.setText((CharSequence)paramString);
-    AppMethodBeat.o(271016);
+    localTextView1.setText((CharSequence)paramString);
+    AppMethodBeat.o(254733);
   }
   
   public final void setViewWidth(int paramInt)
   {
-    this.jBZ = paramInt;
+    this.mbM = paramInt;
   }
   
   public final void show()
   {
-    AppMethodBeat.i(271019);
-    TextView localTextView = this.WXZ;
-    if (localTextView == null) {
-      p.bGy("bubbleTextView");
-    }
-    localTextView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    localTextView = this.WXZ;
-    if (localTextView == null) {
-      p.bGy("bubbleTextView");
-    }
-    this.WYd = localTextView.getMeasuredWidth();
-    Log.v("MicroMsg.SearchImageBubbleView", "alvinluo showBubbleView bubbleWidth: %d", new Object[] { Integer.valueOf(this.WYd) });
-    if (this.WYc.x > 0)
+    Object localObject2 = null;
+    AppMethodBeat.i(254748);
+    TextView localTextView = this.aeHA;
+    Object localObject1 = localTextView;
+    if (localTextView == null)
     {
-      hTi();
-      AppMethodBeat.o(271019);
+      s.bIx("bubbleTextView");
+      localObject1 = null;
+    }
+    ((TextView)localObject1).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+    localObject1 = this.aeHA;
+    if (localObject1 == null)
+    {
+      s.bIx("bubbleTextView");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      this.aeHE = ((TextView)localObject1).getMeasuredWidth();
+      Log.v("MicroMsg.SearchImageBubbleView", "alvinluo showBubbleView bubbleWidth: %d", new Object[] { Integer.valueOf(this.aeHE) });
+      if (this.aeHD.x <= 0) {
+        break;
+      }
+      jwJ();
+      AppMethodBeat.o(254748);
       return;
     }
     setVisibility(4);
-    this.Brn = true;
-    AppMethodBeat.o(271019);
+    this.GXN = true;
+    AppMethodBeat.o(254748);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.view.SearchImageBubbleView
  * JD-Core Version:    0.7.0.1
  */

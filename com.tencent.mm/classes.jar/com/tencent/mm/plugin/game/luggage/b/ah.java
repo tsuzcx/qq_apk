@@ -1,96 +1,72 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
-import com.tencent.mm.plugin.webview.ui.tools.game.e;
-import com.tencent.mm.plugin.webview.ui.tools.game.e.b;
-import com.tencent.mm.plugin.webview.ui.tools.game.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.game.api.d;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ah
-  extends bs<i>
+  extends bw<GameWebPage>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(b<i>.a paramb)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(83089);
-    Object localObject1 = new TreeMap(new Comparator() {});
-    Object localObject3 = paramb.crh.cqn;
-    Object localObject2 = ((JSONObject)localObject3).optString("type");
-    boolean bool = "1".equals(((JSONObject)localObject3).optString("isReportNow"));
-    localObject3 = ((JSONObject)localObject3).optJSONObject("data");
-    if (localObject3 == null)
+    AppMethodBeat.i(83085);
+    Log.i("MicroMsg.JsApiPublishHaowanEdition", "invokeInMM");
+    paramContext = c.ZL(paramString);
+    if (paramContext == null)
     {
-      Log.i("MicroMsg.JsApiReportGameWeb", "data is null or not json");
-      paramb.a("data_is_null", null);
-      AppMethodBeat.o(83089);
+      parama.j("invalid_data", null);
+      AppMethodBeat.o(83085);
       return;
     }
-    Integer localInteger;
-    if ("1".equals(localObject2))
+    paramString = paramContext.optString("postId");
+    boolean bool = paramContext.optBoolean("compressImg", true);
+    if (!Util.isNullOrNil(paramString)) {
+      paramContext = ((d)h.ax(d.class)).aFn(paramString);
+    }
+    for (;;)
     {
-      Log.i("MicroMsg.JsApiReportGameWeb", "report web performance, url:%s", new Object[] { ((i)paramb.crg).cDu() });
-      ((Map)localObject1).put(Integer.valueOf(e.b.QnU), Boolean.valueOf(bool));
-      localObject2 = g.cn((JSONObject)localObject3);
-      localObject3 = ((Map)localObject2).keySet().iterator();
-      while (((Iterator)localObject3).hasNext())
+      paramString = new JSONObject();
+      try
       {
-        localInteger = (Integer)((Iterator)localObject3).next();
-        if (!((Map)localObject1).containsKey(localInteger)) {
-          ((Map)localObject1).put(localInteger, ((Map)localObject2).get(localInteger));
-        }
+        paramString.put("postId", paramContext);
+        label88:
+        parama.j(null, paramString);
+        AppMethodBeat.o(83085);
+        return;
+        paramString = paramContext.optJSONArray("localIds");
+        int i = paramContext.optInt("from");
+        int j = paramContext.optInt("postType");
+        String str = paramContext.optString("extra");
+        int k = paramContext.optInt("sourceSceneId");
+        paramContext = ((d)h.ax(d.class)).a(i, j, paramString, str, bool, k);
       }
-      g.S(((i)paramb.crg).ewX(), (Map)localObject1);
-      paramb.a("", null);
-      AppMethodBeat.o(83089);
-      return;
-    }
-    if ("2".equals(localObject2))
-    {
-      ((Map)localObject1).putAll(((i)paramb.crg).ewY());
-      localObject2 = g.cn((JSONObject)localObject3);
-      localObject3 = ((Map)localObject2).keySet().iterator();
-      while (((Iterator)localObject3).hasNext())
+      catch (JSONException paramContext)
       {
-        localInteger = (Integer)((Iterator)localObject3).next();
-        if (!((Map)localObject1).containsKey(localInteger)) {
-          ((Map)localObject1).put(localInteger, ((Map)localObject2).get(localInteger));
-        }
+        break label88;
       }
-      localObject1 = e.bW((Map)localObject1);
-      Log.i("MicroMsg.JsApiReportGameWeb", "report web runtime. isReportNow:%b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), localObject1 });
-      h.IzE.b(16145, (String)localObject1, bool, false);
-      paramb.a("", null);
-      AppMethodBeat.o(83089);
-      return;
     }
-    Log.i("MicroMsg.JsApiReportGameWeb", "type is error. type:%s", new Object[] { localObject2 });
-    paramb.a("type_not_right", null);
-    AppMethodBeat.o(83089);
   }
   
-  public final int cDj()
+  public final void b(b<GameWebPage>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "reportGameWeb";
+    return "publishHaowanEdition";
   }
 }
 

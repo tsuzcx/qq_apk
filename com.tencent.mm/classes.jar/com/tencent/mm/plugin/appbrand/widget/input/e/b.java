@@ -4,45 +4,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public final int rzY;
+  public final int uLp;
   
   static
   {
     AppMethodBeat.i(131524);
-    rzS = new b("DONE", 0, 6);
-    rzT = new b("SEARCH", 1, 3);
-    rzU = new b("NEXT", 2, 5);
-    rzV = new b("GO", 3, 2);
-    rzW = new b("SEND", 4, 4);
-    rzX = new b("RETURN", 5, 0);
-    rzZ = new b[] { rzS, rzT, rzU, rzV, rzW, rzX };
+    uLj = new b("DONE", 0, 6);
+    uLk = new b("SEARCH", 1, 3);
+    uLl = new b("NEXT", 2, 5);
+    uLm = new b("GO", 3, 2);
+    uLn = new b("SEND", 4, 4);
+    uLo = new b("RETURN", 5, 0);
+    uLq = new b[] { uLj, uLk, uLl, uLm, uLn, uLo };
     AppMethodBeat.o(131524);
   }
   
   private b(int paramInt)
   {
-    this.rzY = paramInt;
+    this.uLp = paramInt;
   }
   
-  public static b anD(String paramString)
+  public static b ahb(String paramString)
   {
     AppMethodBeat.i(131523);
-    paramString = (b)d.h(paramString, b.class);
+    paramString = (b)d.l(paramString, b.class);
     AppMethodBeat.o(131523);
     return paramString;
   }
   
-  public static b kv(boolean paramBoolean)
+  public static b lH(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return rzX;
+      return uLo;
     }
-    return rzS;
+    return uLj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.e.b
  * JD-Core Version:    0.7.0.1
  */

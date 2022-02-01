@@ -1,81 +1,145 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class aay
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public long Snl;
-  public String Snm;
-  public int Snn;
-  public long Sno;
+  public String YZH;
+  public int Zjp;
+  public String fileid;
+  public String md5;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(208465);
+    AppMethodBeat.i(9588);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.Snl);
-      if (this.Snm != null) {
-        paramVarArgs.f(2, this.Snm);
-      }
-      paramVarArgs.aY(3, this.Snn);
-      paramVarArgs.bm(4, this.Sno);
-      AppMethodBeat.o(208465);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.p(1, this.Snl) + 0;
-      paramInt = i;
-      if (this.Snm != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.Snm);
-      }
-      i = g.a.a.b.b.a.bM(3, this.Snn);
-      int j = g.a.a.b.b.a.p(4, this.Sno);
-      AppMethodBeat.o(208465);
-      return paramInt + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(208465);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      aay localaay = (aay)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.fileid == null)
       {
-      default: 
-        AppMethodBeat.o(208465);
-        return -1;
-      case 1: 
-        localaay.Snl = locala.abFh.AN();
-        AppMethodBeat.o(208465);
-        return 0;
-      case 2: 
-        localaay.Snm = locala.abFh.readString();
-        AppMethodBeat.o(208465);
-        return 0;
-      case 3: 
-        localaay.Snn = locala.abFh.AK();
-        AppMethodBeat.o(208465);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: fileid");
+        AppMethodBeat.o(9588);
+        throw paramVarArgs;
       }
-      localaay.Sno = locala.abFh.AN();
-      AppMethodBeat.o(208465);
+      if (this.md5 == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: md5");
+        AppMethodBeat.o(9588);
+        throw paramVarArgs;
+      }
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.fileid != null) {
+        paramVarArgs.g(2, this.fileid);
+      }
+      if (this.md5 != null) {
+        paramVarArgs.g(3, this.md5);
+      }
+      if (this.YZH != null) {
+        paramVarArgs.g(4, this.YZH);
+      }
+      paramVarArgs.bS(5, this.Zjp);
+      AppMethodBeat.o(9588);
       return 0;
     }
-    AppMethodBeat.o(208465);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label619;
+      }
+    }
+    label619:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.fileid != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.fileid);
+      }
+      i = paramInt;
+      if (this.md5 != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.md5);
+      }
+      paramInt = i;
+      if (this.YZH != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.YZH);
+      }
+      i = i.a.a.b.b.a.cJ(5, this.Zjp);
+      AppMethodBeat.o(9588);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.fileid == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: fileid");
+          AppMethodBeat.o(9588);
+          throw paramVarArgs;
+        }
+        if (this.md5 == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: md5");
+          AppMethodBeat.o(9588);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(9588);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        aay localaay = (aay)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(9588);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localaay.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(9588);
+          return 0;
+        case 2: 
+          localaay.fileid = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(9588);
+          return 0;
+        case 3: 
+          localaay.md5 = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(9588);
+          return 0;
+        case 4: 
+          localaay.YZH = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(9588);
+          return 0;
+        }
+        localaay.Zjp = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(9588);
+        return 0;
+      }
+      AppMethodBeat.o(9588);
+      return -1;
+    }
   }
 }
 

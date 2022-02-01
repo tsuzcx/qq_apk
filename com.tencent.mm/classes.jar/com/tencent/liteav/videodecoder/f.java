@@ -1,6 +1,5 @@
 package com.tencent.liteav.videodecoder;
 
-import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
@@ -10,7 +9,6 @@ import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -40,14 +38,14 @@ public class f
   private long o;
   private int p;
   private JSONArray q;
-  private g r;
+  private h r;
   private d s;
   private boolean t;
   private WeakReference<com.tencent.liteav.basic.c.b> u;
   
   public f()
   {
-    AppMethodBeat.i(230315);
+    AppMethodBeat.i(229907);
     this.a = new MediaCodec.BufferInfo();
     this.b = null;
     this.c = "video/avc";
@@ -67,7 +65,7 @@ public class f
     this.q = null;
     this.s = new d();
     this.t = false;
-    AppMethodBeat.o(230315);
+    AppMethodBeat.o(229907);
   }
   
   /* Error */
@@ -212,7 +210,7 @@ public class f
     //   279: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   282: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   285: invokestatic 191	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   288: getstatic 208	android/os/Build$VERSION:SDK_INT	I
+    //   288: invokestatic 208	com/tencent/liteav/basic/util/TXCBuild:VersionInt	()I
     //   291: bipush 21
     //   293: if_icmplt +212 -> 505
     //   296: aload_0
@@ -372,7 +370,7 @@ public class f
   
   private void a()
   {
-    AppMethodBeat.i(230338);
+    AppMethodBeat.i(229930);
     final MediaCodec localMediaCodec = this.b;
     this.b = null;
     if (localMediaCodec != null) {
@@ -380,7 +378,7 @@ public class f
       {
         public void run()
         {
-          AppMethodBeat.i(230744);
+          AppMethodBeat.i(229912);
           TXCLog.i("MediaCodecDecoder", "release decoder:" + localMediaCodec.hashCode() + " in thread:" + Thread.currentThread().getId());
           for (;;)
           {
@@ -410,7 +408,7 @@ public class f
               localMediaCodec.release();
               TXCLog.i("MediaCodecDecoder", "decode: release decoder sucess");
               TXCLog.i("MediaCodecDecoder", "release decoder:" + localMediaCodec.hashCode() + " finish.");
-              AppMethodBeat.o(230744);
+              AppMethodBeat.o(229912);
               return;
             }
             catch (Exception localException1)
@@ -422,7 +420,7 @@ public class f
           {
             localMediaCodec.release();
             TXCLog.i("MediaCodecDecoder", "decode: release decoder sucess");
-            AppMethodBeat.o(230744);
+            AppMethodBeat.o(229912);
             throw localObject;
           }
           catch (Exception localException4)
@@ -439,12 +437,12 @@ public class f
     this.f = 0L;
     this.h = true;
     this.i = false;
-    AppMethodBeat.o(230338);
+    AppMethodBeat.o(229930);
   }
   
   private void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
-    AppMethodBeat.i(230345);
+    AppMethodBeat.i(229953);
     MediaCodec localMediaCodec = this.b;
     if (localMediaCodec != null) {}
     try
@@ -462,7 +460,7 @@ public class f
           this.r.onDecodeFrame(null, this.d, this.e, paramLong1, paramLong2, paramInt2);
         }
         d();
-        AppMethodBeat.o(230345);
+        AppMethodBeat.o(229953);
         return;
         localException1 = localException1;
         TXCLog.e("MediaCodecDecoder", "decode: releaseOutputBuffer exception!!", localException1);
@@ -477,94 +475,9 @@ public class f
     }
   }
   
-  private void a(TXSNALPacket paramTXSNALPacket)
-  {
-    int i2 = 0;
-    AppMethodBeat.i(230355);
-    if (!this.t)
-    {
-      AppMethodBeat.o(230355);
-      return;
-    }
-    int i3;
-    int i1;
-    if (paramTXSNALPacket.nalType == 0)
-    {
-      i3 = -1;
-      i1 = i3;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (i2 < paramTXSNALPacket.nalData.length)
-        {
-          if ((paramTXSNALPacket.nalData[i2] == 0) && (paramTXSNALPacket.nalData[(i2 + 1)] == 0) && (paramTXSNALPacket.nalData[(i2 + 2)] == 0) && (paramTXSNALPacket.nalData[(i2 + 3)] == 1) && ((paramTXSNALPacket.nalData[(i2 + 4)] & 0x1F) == 7)) {
-            i1 = i2 + 4;
-          }
-        }
-        else
-        {
-          if (i1 >= 0)
-          {
-            int i4 = paramTXSNALPacket.nalData.length - i1;
-            i2 = i1;
-            i3 = i4;
-            if (i2 < paramTXSNALPacket.nalData.length)
-            {
-              if ((paramTXSNALPacket.nalData[i2] == 0) && (paramTXSNALPacket.nalData[(i2 + 1)] == 0) && (paramTXSNALPacket.nalData[(i2 + 2)] == 1)) {
-                break label422;
-              }
-              if ((paramTXSNALPacket.nalData[i2] != 0) || (paramTXSNALPacket.nalData[(i2 + 1)] != 0) || (paramTXSNALPacket.nalData[(i2 + 2)] != 0) || (paramTXSNALPacket.nalData[(i2 + 3)] != 1)) {
-                continue;
-              }
-              break label422;
-            }
-            byte[] arrayOfByte1 = new byte[i3];
-            System.arraycopy(paramTXSNALPacket.nalData, i1, arrayOfByte1, 0, i3);
-            arrayOfByte1 = this.s.a(arrayOfByte1);
-            if (arrayOfByte1 != null)
-            {
-              byte[] arrayOfByte2 = new byte[paramTXSNALPacket.nalData.length + arrayOfByte1.length - i3];
-              if (i1 > 0) {
-                System.arraycopy(paramTXSNALPacket.nalData, 0, arrayOfByte2, 0, i1);
-              }
-              System.arraycopy(arrayOfByte1, 0, arrayOfByte2, i1, arrayOfByte1.length);
-              System.arraycopy(paramTXSNALPacket.nalData, i1 + i3, arrayOfByte2, arrayOfByte1.length + i1, paramTXSNALPacket.nalData.length - i3 - i1);
-              paramTXSNALPacket.nalData = arrayOfByte2;
-            }
-          }
-          AppMethodBeat.o(230355);
-          return;
-        }
-        if ((paramTXSNALPacket.nalData[i2] == 0) && (paramTXSNALPacket.nalData[(i2 + 1)] == 0) && (paramTXSNALPacket.nalData[(i2 + 2)] == 0))
-        {
-          i1 = paramTXSNALPacket.nalData[(i2 + 3)];
-          if ((i1 & 0x1F) == 7)
-          {
-            i1 = i2 + 3;
-            continue;
-          }
-        }
-        i2 = i2 + 1 + 1;
-        break;
-        i2 += 1;
-        continue;
-        AppMethodBeat.o(230355);
-      }
-      catch (Exception paramTXSNALPacket)
-      {
-        TXCLog.e("MediaCodecDecoder", "modify dec buffer error ", paramTXSNALPacket);
-      }
-      return;
-      label422:
-      i3 = i2 - i1;
-    }
-  }
-  
   private void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(230353);
+    AppMethodBeat.i(229985);
     if (this.j != paramBoolean)
     {
       StringBuilder localStringBuilder = new StringBuilder("[Video][Decoder] nal data format changed, from:");
@@ -586,7 +499,7 @@ public class f
         }
         a();
         e();
-        AppMethodBeat.o(230353);
+        AppMethodBeat.o(229985);
         return;
         str = "h264";
         break;
@@ -598,18 +511,17 @@ public class f
         this.r.onDecoderChange(this.c, this.j);
       }
     }
-    AppMethodBeat.o(230353);
+    AppMethodBeat.o(229985);
   }
   
-  @TargetApi(16)
   private void b()
   {
-    AppMethodBeat.i(230344);
+    AppMethodBeat.i(229947);
     localMediaCodec = this.b;
     if (localMediaCodec == null)
     {
       TXCLog.e("MediaCodecDecoder", "null decoder");
-      AppMethodBeat.o(230344);
+      AppMethodBeat.o(229947);
       return;
     }
     localObject = (TXSNALPacket)this.m.get(0);
@@ -617,7 +529,7 @@ public class f
     {
       TXCLog.e("MediaCodecDecoder", "decode: empty buffer");
       this.m.remove(0);
-      AppMethodBeat.o(230344);
+      AppMethodBeat.o(229947);
       return;
     }
     l1 = TXCTimeUtil.getTimeTick();
@@ -630,7 +542,7 @@ public class f
       if ((arrayOfByteBuffer == null) || (arrayOfByteBuffer.length == 0))
       {
         TXCLog.e("MediaCodecDecoder", "decode: getInputBuffers failed");
-        AppMethodBeat.o(230344);
+        AppMethodBeat.o(229947);
         return;
       }
     }
@@ -696,7 +608,7 @@ public class f
               this.n.clear();
               this.o = l2;
               this.p = ((int)(3L * l1));
-              AppMethodBeat.o(230344);
+              AppMethodBeat.o(229947);
               return;
             }
             catch (InterruptedException localInterruptedException)
@@ -743,9 +655,94 @@ public class f
     }
   }
   
+  private void b(TXSNALPacket paramTXSNALPacket)
+  {
+    int i2 = 0;
+    AppMethodBeat.i(229994);
+    if (!this.t)
+    {
+      AppMethodBeat.o(229994);
+      return;
+    }
+    int i3;
+    int i1;
+    if (paramTXSNALPacket.nalType == 0)
+    {
+      i3 = -1;
+      i1 = i3;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (i2 < paramTXSNALPacket.nalData.length)
+        {
+          if ((paramTXSNALPacket.nalData[i2] == 0) && (paramTXSNALPacket.nalData[(i2 + 1)] == 0) && (paramTXSNALPacket.nalData[(i2 + 2)] == 0) && (paramTXSNALPacket.nalData[(i2 + 3)] == 1) && ((paramTXSNALPacket.nalData[(i2 + 4)] & 0x1F) == 7)) {
+            i1 = i2 + 4;
+          }
+        }
+        else
+        {
+          if (i1 >= 0)
+          {
+            int i4 = paramTXSNALPacket.nalData.length - i1;
+            i2 = i1;
+            i3 = i4;
+            if (i2 < paramTXSNALPacket.nalData.length)
+            {
+              if ((paramTXSNALPacket.nalData[i2] == 0) && (paramTXSNALPacket.nalData[(i2 + 1)] == 0) && (paramTXSNALPacket.nalData[(i2 + 2)] == 1)) {
+                break label422;
+              }
+              if ((paramTXSNALPacket.nalData[i2] != 0) || (paramTXSNALPacket.nalData[(i2 + 1)] != 0) || (paramTXSNALPacket.nalData[(i2 + 2)] != 0) || (paramTXSNALPacket.nalData[(i2 + 3)] != 1)) {
+                continue;
+              }
+              break label422;
+            }
+            byte[] arrayOfByte1 = new byte[i3];
+            System.arraycopy(paramTXSNALPacket.nalData, i1, arrayOfByte1, 0, i3);
+            arrayOfByte1 = this.s.a(arrayOfByte1);
+            if (arrayOfByte1 != null)
+            {
+              byte[] arrayOfByte2 = new byte[paramTXSNALPacket.nalData.length + arrayOfByte1.length - i3];
+              if (i1 > 0) {
+                System.arraycopy(paramTXSNALPacket.nalData, 0, arrayOfByte2, 0, i1);
+              }
+              System.arraycopy(arrayOfByte1, 0, arrayOfByte2, i1, arrayOfByte1.length);
+              System.arraycopy(paramTXSNALPacket.nalData, i1 + i3, arrayOfByte2, arrayOfByte1.length + i1, paramTXSNALPacket.nalData.length - i3 - i1);
+              paramTXSNALPacket.nalData = arrayOfByte2;
+            }
+          }
+          AppMethodBeat.o(229994);
+          return;
+        }
+        if ((paramTXSNALPacket.nalData[i2] == 0) && (paramTXSNALPacket.nalData[(i2 + 1)] == 0) && (paramTXSNALPacket.nalData[(i2 + 2)] == 0))
+        {
+          i1 = paramTXSNALPacket.nalData[(i2 + 3)];
+          if ((i1 & 0x1F) == 7)
+          {
+            i1 = i2 + 3;
+            continue;
+          }
+        }
+        i2 = i2 + 1 + 1;
+        break;
+        i2 += 1;
+        continue;
+        AppMethodBeat.o(229994);
+      }
+      catch (Exception paramTXSNALPacket)
+      {
+        TXCLog.e("MediaCodecDecoder", "modify dec buffer error ", paramTXSNALPacket);
+      }
+      return;
+      label422:
+      i3 = i2 - i1;
+    }
+  }
+  
   private void c()
   {
-    AppMethodBeat.i(230348);
+    AppMethodBeat.i(229964);
     MediaCodec localMediaCodec = this.b;
     Object localObject3 = null;
     Object localObject1 = localObject3;
@@ -756,7 +753,7 @@ public class f
       if (localObject1 == null)
       {
         TXCLog.e("MediaCodecDecoder", "get decoder's format failed.");
-        AppMethodBeat.o(230348);
+        AppMethodBeat.o(229964);
         return;
       }
     }
@@ -790,7 +787,7 @@ public class f
             this.r.onVideoSizeChange(this.d, this.e);
           }
           TXCLog.i("MediaCodecDecoder", "decode: video size change to w:" + i3 + ",h:" + i1);
-          AppMethodBeat.o(230348);
+          AppMethodBeat.o(229964);
           return;
         }
         catch (Exception localException2)
@@ -808,13 +805,13 @@ public class f
           this.r.onVideoSizeChange(this.d, this.e);
         }
       }
-      AppMethodBeat.o(230348);
+      AppMethodBeat.o(229964);
     }
   }
   
   private void d()
   {
-    AppMethodBeat.i(230350);
+    AppMethodBeat.i(229970);
     if (this.f == 0L) {
       TXCLog.w("MediaCodecDecoder", "decode first frame sucess");
     }
@@ -828,13 +825,13 @@ public class f
       this.g = l1;
     }
     this.f = l1;
-    AppMethodBeat.o(230350);
+    AppMethodBeat.o(229970);
   }
   
   private void e()
   {
     int i2 = 1;
-    AppMethodBeat.i(230351);
+    AppMethodBeat.i(229978);
     int i1;
     if (!this.i)
     {
@@ -843,7 +840,7 @@ public class f
       if (!this.j) {
         break label176;
       }
-      h.a(this.u, -2304, "h265 Decoding failed");
+      com.tencent.liteav.basic.util.h.a(this.u, -2304, "h265 Decoding failed");
       Locale localLocale = Locale.getDefault();
       String str = TXCCommonUtil.getDeviceInfo();
       if (!e.b(1920, 1080, 20)) {
@@ -861,7 +858,7 @@ public class f
       if (this.r != null) {
         this.r.onDecodeFailed(-1);
       }
-      AppMethodBeat.o(230351);
+      AppMethodBeat.o(229978);
       return;
       label166:
       i1 = 0;
@@ -870,22 +867,22 @@ public class f
       i2 = 0;
       break label104;
       label176:
-      h.a(this.u, 2106, "Failed to enable hardware decoding，use software decoding.");
+      com.tencent.liteav.basic.util.h.a(this.u, 2106, "Failed to enable hardware decoding，use software decoding.");
     }
   }
   
   private void f()
   {
-    AppMethodBeat.i(230352);
+    AppMethodBeat.i(229982);
     if (this.l >= 40)
     {
       e();
       this.l = 0;
-      AppMethodBeat.o(230352);
+      AppMethodBeat.o(229982);
       return;
     }
     this.l += 1;
-    AppMethodBeat.o(230352);
+    AppMethodBeat.o(229982);
   }
   
   public int GetDecodeCost()
@@ -895,19 +892,24 @@ public class f
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230335);
+    AppMethodBeat.i(230045);
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
       this.d = paramInt1;
       this.e = paramInt2;
       TXCLog.w("MediaCodecDecoder", "decode: init with video size: " + this.d + ", " + this.e);
     }
-    AppMethodBeat.o(230335);
+    AppMethodBeat.o(230045);
   }
   
   public void a(JSONArray paramJSONArray)
   {
     this.q = paramJSONArray;
+  }
+  
+  protected boolean a(TXSNALPacket paramTXSNALPacket)
+  {
+    return (paramTXSNALPacket != null) && (paramTXSNALPacket.codecId == 1);
   }
   
   public int config(Surface paramSurface)
@@ -921,17 +923,14 @@ public class f
   
   public void decode(TXSNALPacket paramTXSNALPacket)
   {
-    boolean bool = true;
-    AppMethodBeat.i(230326);
-    if (paramTXSNALPacket.codecId == 1) {}
+    AppMethodBeat.i(230016);
+    a(a(paramTXSNALPacket));
+    if (paramTXSNALPacket.codecId == 0) {
+      b(paramTXSNALPacket);
+    }
+    this.m.add(paramTXSNALPacket);
     for (;;)
     {
-      a(bool);
-      if (paramTXSNALPacket.codecId == 0) {
-        a(paramTXSNALPacket);
-      }
-      this.m.add(paramTXSNALPacket);
-      label42:
       int i1;
       if (!this.m.isEmpty()) {
         i1 = this.m.size();
@@ -940,11 +939,10 @@ public class f
       {
         b();
         if (i1 != this.m.size()) {
-          break label42;
+          continue;
         }
-        AppMethodBeat.o(230326);
+        AppMethodBeat.o(230016);
         return;
-        bool = false;
       }
       catch (Exception paramTXSNALPacket)
       {
@@ -958,15 +956,15 @@ public class f
   
   public void enableLimitDecCache(boolean paramBoolean)
   {
-    AppMethodBeat.i(230333);
+    AppMethodBeat.i(230039);
     this.t = paramBoolean;
     TXCLog.i("MediaCodecDecoder", "decode: enable limit dec cache: ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(230333);
+    AppMethodBeat.o(230039);
   }
   
-  public void setListener(g paramg)
+  public void setListener(h paramh)
   {
-    this.r = paramg;
+    this.r = paramh;
   }
   
   public void setNotifyListener(WeakReference<com.tencent.liteav.basic.c.b> paramWeakReference)
@@ -976,22 +974,22 @@ public class f
   
   public int start(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(230329);
+    AppMethodBeat.i(230021);
     int i1 = a(paramByteBuffer1, paramByteBuffer2, paramBoolean2);
-    AppMethodBeat.o(230329);
+    AppMethodBeat.o(230021);
     return i1;
   }
   
   public void stop()
   {
-    AppMethodBeat.i(230330);
+    AppMethodBeat.i(230025);
     a();
-    AppMethodBeat.o(230330);
+    AppMethodBeat.o(230025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.f
  * JD-Core Version:    0.7.0.1
  */

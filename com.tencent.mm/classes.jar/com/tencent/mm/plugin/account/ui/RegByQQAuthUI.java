@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
@@ -11,12 +10,11 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.model.bg;
-import com.tencent.mm.modelsimple.v;
+import com.tencent.mm.modelsimple.w;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
@@ -24,18 +22,19 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
+import com.tencent.mm.ui.base.k;
 
 public class RegByQQAuthUI
   extends MMActivity
-  implements i
+  implements com.tencent.mm.am.h
 {
   private String account;
-  private String fAo;
-  private String fPU;
-  private ProgressDialog iXX = null;
-  private String mUQ;
-  private EditText niV = null;
-  private int niW;
+  private String hFb;
+  private String hVP;
+  private ProgressDialog lzP = null;
+  private String pRx;
+  private EditText qgi = null;
+  private int qgj;
   
   public int getLayoutId()
   {
@@ -45,15 +44,15 @@ public class RegByQQAuthUI
   public void initView()
   {
     AppMethodBeat.i(128666);
-    this.niW = getIntent().getIntExtra("RegByQQ_BindUin", 0);
-    this.mUQ = getIntent().getStringExtra("RegByQQ_RawPsw");
+    this.qgj = getIntent().getIntExtra("RegByQQ_BindUin", 0);
+    this.pRx = getIntent().getStringExtra("RegByQQ_RawPsw");
     this.account = getIntent().getStringExtra("RegByQQ_Account");
-    this.fAo = getIntent().getStringExtra("RegByQQ_Ticket");
-    this.fPU = getIntent().getStringExtra("RegByQQ_Nick");
-    Log.v("MicroMsg.RegByQQAuthUI", "values : bindUin:" + this.niW + "  pass:" + this.mUQ + "  ticket:" + this.fAo);
-    this.niV = ((EditText)findViewById(r.f.nick_et));
-    if ((this.fPU != null) && (!this.fPU.equals(""))) {
-      this.niV.setText(this.fPU);
+    this.hFb = getIntent().getStringExtra("RegByQQ_Ticket");
+    this.hVP = getIntent().getStringExtra("RegByQQ_Nick");
+    Log.v("MicroMsg.RegByQQAuthUI", "values : bindUin:" + this.qgj + "  pass:" + this.pRx + "  ticket:" + this.hFb);
+    this.qgi = ((EditText)findViewById(r.f.nick_et));
+    if ((this.hVP != null) && (!this.hVP.equals(""))) {
+      this.qgi.setText(this.hVP);
     }
     setMMTitle(r.j.regbyqq_auth_title);
     addTextOptionMenu(0, getString(r.j.app_nextstep), new MenuItem.OnMenuItemClickListener()
@@ -64,21 +63,21 @@ public class RegByQQAuthUI
         RegByQQAuthUI.a(RegByQQAuthUI.this, RegByQQAuthUI.a(RegByQQAuthUI.this).getText().toString().trim());
         if (RegByQQAuthUI.b(RegByQQAuthUI.this).equals(""))
         {
-          com.tencent.mm.ui.base.h.p(RegByQQAuthUI.this, r.j.verify_account_null_tip, r.j.app_err_reg_title);
+          k.s(RegByQQAuthUI.this, r.j.verify_account_null_tip, r.j.app_err_reg_title);
           AppMethodBeat.o(128660);
           return true;
         }
-        paramAnonymousMenuItem = new v("", RegByQQAuthUI.c(RegByQQAuthUI.this), RegByQQAuthUI.b(RegByQQAuthUI.this), RegByQQAuthUI.d(RegByQQAuthUI.this), "", "", RegByQQAuthUI.e(RegByQQAuthUI.this), 2);
-        com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem, 0);
+        paramAnonymousMenuItem = new w("", RegByQQAuthUI.c(RegByQQAuthUI.this), RegByQQAuthUI.b(RegByQQAuthUI.this), RegByQQAuthUI.d(RegByQQAuthUI.this), "", "", RegByQQAuthUI.e(RegByQQAuthUI.this));
+        com.tencent.mm.kernel.h.aZW().a(paramAnonymousMenuItem, 0);
         RegByQQAuthUI localRegByQQAuthUI1 = RegByQQAuthUI.this;
         RegByQQAuthUI localRegByQQAuthUI2 = RegByQQAuthUI.this;
         RegByQQAuthUI.this.getString(r.j.app_tip);
-        RegByQQAuthUI.a(localRegByQQAuthUI1, com.tencent.mm.ui.base.h.a(localRegByQQAuthUI2, RegByQQAuthUI.this.getString(r.j.regbyqq_reg_waiting), true, new DialogInterface.OnCancelListener()
+        RegByQQAuthUI.a(localRegByQQAuthUI1, k.a(localRegByQQAuthUI2, RegByQQAuthUI.this.getString(r.j.regbyqq_reg_waiting), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(128659);
-            com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem);
+            com.tencent.mm.kernel.h.aZW().a(paramAnonymousMenuItem);
             AppMethodBeat.o(128659);
           }
         }));
@@ -119,7 +118,7 @@ public class RegByQQAuthUI
   {
     AppMethodBeat.i(128665);
     super.onPause();
-    com.tencent.mm.kernel.h.aGY().b(126, this);
+    com.tencent.mm.kernel.h.aZW().b(126, this);
     AppMethodBeat.o(128665);
   }
   
@@ -127,18 +126,18 @@ public class RegByQQAuthUI
   {
     AppMethodBeat.i(128664);
     super.onResume();
-    com.tencent.mm.kernel.h.aGY().a(126, this);
+    com.tencent.mm.kernel.h.aZW().a(126, this);
     AppMethodBeat.o(128664);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(128667);
     Log.i("MicroMsg.RegByQQAuthUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.iXX != null)
+    if (this.lzP != null)
     {
-      this.iXX.dismiss();
-      this.iXX = null;
+      this.lzP.dismiss();
+      this.lzP = null;
     }
     if (!Util.isTopActivity(this))
     {
@@ -147,36 +146,36 @@ public class RegByQQAuthUI
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      switch (paramq.getType())
+      switch (paramp.getType())
       {
       }
       for (;;)
       {
         AppMethodBeat.o(128667);
         return;
-        b.aGG();
-        bg.ltv.aS("login_user_name", this.account);
+        b.aZI();
+        bg.okT.bc("login_user_name", this.account);
         paramString = new Intent(this, BindMContactIntroUI.class);
         paramString.putExtra("key_upload_scene", 1);
         paramString.putExtra("skip", true);
-        paramq = com.tencent.mm.plugin.account.sdk.a.mIG.bX(this);
-        paramq.addFlags(67108864);
-        paramq.putExtra("LauncherUI.enter_from_reg", true);
-        MMWizardActivity.b(this, paramString, paramq);
+        paramp = com.tencent.mm.plugin.account.sdk.a.pFn.cJ(this);
+        paramp.addFlags(67108864);
+        paramp.putExtra("LauncherUI.enter_from_reg", true);
+        MMWizardActivity.b(this, paramString, paramp);
       }
     }
-    if (paramq.getType() == 126)
+    if (paramp.getType() == 126)
     {
-      paramq = com.tencent.mm.h.a.Kb(paramString);
-      if (paramq != null)
+      paramp = com.tencent.mm.broadcast.a.CH(paramString);
+      if (paramp != null)
       {
-        paramq.a(this, null, null);
+        paramp.a(this, null, null);
         AppMethodBeat.o(128667);
         return;
       }
     }
     int i;
-    if (com.tencent.mm.plugin.account.sdk.a.mIH.a(getContext(), paramInt1, paramInt2, paramString)) {
+    if (com.tencent.mm.plugin.account.sdk.a.pFo.a(getContext(), paramInt1, paramInt2, paramString)) {
       i = 1;
     }
     while (i != 0)
@@ -190,34 +189,34 @@ public class RegByQQAuthUI
         i = 0;
         break;
       case -1: 
-        if (com.tencent.mm.kernel.h.aGY().bih() == 5)
+        if (com.tencent.mm.kernel.h.aZW().bFQ() == 5)
         {
-          com.tencent.mm.ui.base.h.p(this, r.j.net_warn_server_down_tip, r.j.net_warn_server_down);
+          k.s(this, r.j.net_warn_server_down_tip, r.j.net_warn_server_down);
           i = 1;
         }
         break;
       case -3: 
-        com.tencent.mm.ui.base.h.p(this, r.j.app_err_password, r.j.regbyqq_auth_err_title);
+        k.s(this, r.j.app_err_password, r.j.regbyqq_auth_err_title);
         i = 1;
         break;
       case -4: 
-        com.tencent.mm.ui.base.h.p(this, r.j.app_err_nouser, r.j.regbyqq_auth_err_title);
+        k.s(this, r.j.app_err_nouser, r.j.regbyqq_auth_err_title);
         i = 1;
         break;
       case -12: 
-        com.tencent.mm.ui.base.h.p(this, r.j.regbyqq_auth_err_uinexsit, r.j.regbyqq_auth_err_title);
+        k.s(this, r.j.regbyqq_auth_err_uinexsit, r.j.regbyqq_auth_err_title);
         i = 1;
         break;
       case -11: 
-        com.tencent.mm.ui.base.h.p(this, r.j.regbyqq_auth_err_nickinvalid, r.j.regbyqq_auth_err_title);
+        k.s(this, r.j.regbyqq_auth_err_nickinvalid, r.j.regbyqq_auth_err_title);
         i = 1;
         break;
       case -72: 
-        com.tencent.mm.ui.base.h.p(getContext(), r.j.regbyqq_auth_err_failed_niceqq, r.j.app_tip);
+        k.s(getContext(), r.j.regbyqq_auth_err_failed_niceqq, r.j.app_tip);
         i = 1;
         break;
       case -75: 
-        com.tencent.mm.ui.base.h.p(getContext(), r.j.alpha_version_tip_reg, r.j.app_tip);
+        k.s(getContext(), r.j.alpha_version_tip_reg, r.j.app_tip);
         i = 1;
       }
     }
@@ -233,7 +232,7 @@ public class RegByQQAuthUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByQQAuthUI
  * JD-Core Version:    0.7.0.1
  */

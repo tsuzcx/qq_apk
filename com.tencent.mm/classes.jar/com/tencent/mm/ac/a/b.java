@@ -1,58 +1,58 @@
 package com.tencent.mm.ac.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cng;
-import com.tencent.mm.protocal.protobuf.cnh;
-import com.tencent.mm.protocal.protobuf.foh;
+import com.tencent.mm.protocal.protobuf.ddy;
+import com.tencent.mm.protocal.protobuf.ddz;
+import com.tencent.mm.protocal.protobuf.glg;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  private i jQg;
-  private a<b> kaV;
-  private final d rr;
+  private h mAY;
+  private a<b> mBa;
+  public final c rr;
   
   private b(String paramString, LinkedList<String> paramLinkedList, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(150094);
     Log.i("MicroMsg.webview.NetSceneJSAuthorizeConfirm", "NetSceneJSLogin doScene appId [%s], versionType [%d], opt [%d], extScene [%d]", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cng();
-    ((d.a)localObject).lBV = new cnh();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-authorize-confirm";
-    ((d.a)localObject).funcId = 1158;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (cng)d.b.b(this.rr.lBR);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ddy();
+    ((c.a)localObject).otF = new ddz();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/js-authorize-confirm";
+    ((c.a)localObject).funcId = 1158;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ddy)c.b.b(this.rr.otB);
     if (paramInt3 > 0)
     {
-      ((cng)localObject).TuQ = new foh();
-      ((cng)localObject).TuQ.scene = paramInt3;
+      ((ddy)localObject).aaJv = new glg();
+      ((ddy)localObject).aaJv.scene = paramInt3;
     }
-    ((cng)localObject).lVG = paramString;
-    ((cng)localObject).TuN = paramLinkedList;
-    ((cng)localObject).TuP = paramInt1;
-    ((cng)localObject).TuO = paramInt2;
+    ((ddy)localObject).oOI = paramString;
+    ((ddy)localObject).aaJs = paramLinkedList;
+    ((ddy)localObject).aaJu = paramInt1;
+    ((ddy)localObject).aaJt = paramInt2;
     AppMethodBeat.o(150094);
   }
   
   public b(String paramString, LinkedList<String> paramLinkedList, int paramInt1, int paramInt2, int paramInt3, a<b> parama)
   {
     this(paramString, paramLinkedList, paramInt1, paramInt2, paramInt3);
-    this.kaV = parama;
+    this.mBa = parama;
   }
   
   public b(String paramString, LinkedList<String> paramLinkedList, int paramInt, a<b> parama)
@@ -60,32 +60,32 @@ public final class b
     this(paramString, paramLinkedList, 0, paramInt, -1, parama);
   }
   
-  public final cng aGc()
+  public final ddy aZb()
   {
-    AppMethodBeat.i(225489);
+    AppMethodBeat.i(240874);
     if (this.rr == null)
     {
-      AppMethodBeat.o(225489);
+      AppMethodBeat.o(240874);
       return null;
     }
-    cng localcng = (cng)d.b.b(this.rr.lBR);
-    AppMethodBeat.o(225489);
-    return localcng;
+    ddy localddy = (ddy)c.b.b(this.rr.otB);
+    AppMethodBeat.o(240874);
+    return localddy;
   }
   
-  public final cnh aGd()
+  public final ddz aZc()
   {
-    AppMethodBeat.i(225490);
-    cnh localcnh = (cnh)d.c.b(this.rr.lBS);
-    AppMethodBeat.o(225490);
-    return localcnh;
+    AppMethodBeat.i(240876);
+    ddz localddz = (ddz)c.c.b(this.rr.otC);
+    AppMethodBeat.o(240876);
+    return localddz;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(150096);
     Log.i("MicroMsg.webview.NetSceneJSAuthorizeConfirm", "doScene");
-    this.jQg = parami;
+    this.mAY = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(150096);
     return i;
@@ -100,18 +100,18 @@ public final class b
   {
     AppMethodBeat.i(150095);
     Log.i("MicroMsg.webview.NetSceneJSAuthorizeConfirm", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.jQg != null) {
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    if (this.mAY != null) {
+      this.mAY.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (this.kaV != null) {
-      this.kaV.a(paramInt2, paramInt3, paramString, this);
+    if (this.mBa != null) {
+      this.mBa.onNetSceneEndCallback(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(150095);
   }
   
-  public static abstract interface a<T extends q>
+  public static abstract interface a<T extends p>
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
+    public abstract void onNetSceneEndCallback(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.matrix.a.a;
 import android.content.ComponentName;
 import android.os.Process;
 import android.os.SystemClock;
+import android.text.TextUtils;
 import android.util.LongSparseArray;
 import com.tencent.matrix.a.a.a.c.b;
 import com.tencent.matrix.a.a.a.c.c;
@@ -11,177 +12,185 @@ import com.tencent.matrix.a.a.a.e;
 import com.tencent.matrix.a.a.a.e.a;
 import com.tencent.matrix.a.a.a.e.b;
 import com.tencent.matrix.a.a.a.f;
-import com.tencent.matrix.a.a.a.f.a;
-import com.tencent.matrix.a.a.a.f.b;
 import com.tencent.matrix.a.a.a.g;
 import com.tencent.matrix.a.a.a.g.a;
-import com.tencent.matrix.a.a.a.g.b;
-import com.tencent.matrix.a.a.a.g.b.a;
 import com.tencent.matrix.a.a.a.h;
 import com.tencent.matrix.a.a.a.h.a;
 import com.tencent.matrix.a.a.a.h.b;
 import com.tencent.matrix.a.a.a.i.a;
-import com.tencent.matrix.a.a.a.j.a.a;
-import com.tencent.matrix.a.a.a.j.a.c.a;
-import com.tencent.matrix.a.a.a.j.a.c.b;
-import com.tencent.matrix.a.a.a.j.a.c.c;
+import com.tencent.matrix.a.a.a.i.b;
+import com.tencent.matrix.a.a.a.j.a;
+import com.tencent.matrix.a.a.a.j.b;
+import com.tencent.matrix.a.a.a.j.b.a;
+import com.tencent.matrix.a.a.a.k;
 import com.tencent.matrix.a.a.a.k.a;
 import com.tencent.matrix.a.a.a.k.b;
-import com.tencent.matrix.a.a.a.l;
-import com.tencent.matrix.a.a.a.l.a;
-import com.tencent.matrix.a.a.a.m;
-import com.tencent.matrix.a.a.a.m.a;
-import com.tencent.matrix.a.a.a.m.b;
-import com.tencent.matrix.a.a.a.m.c.b;
-import com.tencent.matrix.a.a.a.m.d;
-import com.tencent.matrix.a.a.a.n;
+import com.tencent.matrix.a.a.a.m.a.a;
+import com.tencent.matrix.a.a.a.m.a.c.a;
+import com.tencent.matrix.a.a.a.m.a.c.b;
+import com.tencent.matrix.a.a.a.m.a.c.c;
+import com.tencent.matrix.a.a.a.m.a.d.a;
 import com.tencent.matrix.a.a.a.n.a;
 import com.tencent.matrix.a.a.a.n.b;
+import com.tencent.matrix.a.a.a.o;
+import com.tencent.matrix.a.a.a.o.a;
+import com.tencent.matrix.a.a.a.p;
+import com.tencent.matrix.a.a.a.p.a;
+import com.tencent.matrix.a.a.a.p.b;
+import com.tencent.matrix.a.a.a.p.c.b;
+import com.tencent.matrix.a.a.a.p.d;
+import com.tencent.matrix.a.a.a.q;
+import com.tencent.matrix.a.a.a.q.a;
+import com.tencent.matrix.a.a.a.q.b;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract interface b
-  extends d.a, g.a, k.b, m.a, d.d
+  extends d.a, i.a, j.a, n.b, p.a, d.c
 {
   public static class a
     implements b
   {
-    public d cTa;
-    final a cTb = new a();
-    private long cTc;
-    a cTd;
-    private final LongSparseArray<List<i.a>> cTe = new LongSparseArray();
-    protected com.tencent.matrix.a.a.a.c cTf;
-    protected com.tencent.matrix.a.a.a.d cTg;
-    protected e cTh;
-    protected f cTi;
-    protected g cTj;
-    protected h cTk;
-    protected l cTl;
-    protected m cTm;
-    protected n cTn;
-    protected c.b cTo;
-    protected e.a cTp;
-    protected f.a cTq;
-    protected f.b cTr;
-    protected g.b cTs;
-    protected h.a cTt;
-    protected l.a cTu;
-    protected m.b cTv;
-    protected n.a cTw;
-    private boolean mIsForeground;
+    @Deprecated
+    protected o eOA;
+    @Deprecated
+    protected p eOB;
+    @Deprecated
+    protected q eOC;
+    @Deprecated
+    protected g eOD;
+    @Deprecated
+    protected c.b eOE;
+    @Deprecated
+    protected e.a eOF;
+    @Deprecated
+    protected h.a eOG;
+    @Deprecated
+    protected h.b eOH;
+    @Deprecated
+    protected j.b eOI;
+    @Deprecated
+    protected k.a eOJ;
+    @Deprecated
+    protected o.a eOK;
+    @Deprecated
+    protected p.b eOL;
+    @Deprecated
+    protected q.a eOM;
+    @Deprecated
+    protected g.a eON;
+    protected d eOp;
+    protected f eOq;
+    protected long eOr;
+    @Deprecated
+    protected b eOs = new b();
+    @Deprecated
+    protected final LongSparseArray<List<Object>> eOt = new LongSparseArray();
+    @Deprecated
+    protected com.tencent.matrix.a.a.a.c eOu;
+    @Deprecated
+    protected com.tencent.matrix.a.a.a.d eOv;
+    @Deprecated
+    protected e eOw;
+    @Deprecated
+    protected h eOx;
+    @Deprecated
+    protected com.tencent.matrix.a.a.a.j eOy;
+    @Deprecated
+    protected k eOz;
+    protected boolean mIsForeground;
     
-    protected final boolean VR()
+    public a a(d paramd)
     {
-      return this.mIsForeground;
+      this.eOp = paramd;
+      this.eOq = new f(paramd);
+      this.eOq.axa();
+      return this;
     }
     
-    protected final a VS()
-    {
-      if (this.cTd != null) {
-        return this.cTd;
-      }
-      return a.VQ();
-    }
+    public void a(int paramInt, p.c.b paramb) {}
     
-    public void VT()
+    protected void a(f arg1)
     {
-      this.cTc = SystemClock.uptimeMillis();
-      this.cTf = ((com.tencent.matrix.a.a.a.c)this.cTa.Z(com.tencent.matrix.a.a.a.c.class));
-      if (this.cTf != null) {
-        this.cTo = this.cTf.cUJ.Wi();
-      }
-      this.cTg = ((com.tencent.matrix.a.a.a.d)this.cTa.Z(com.tencent.matrix.a.a.a.d.class));
-      this.cTh = ((e)this.cTa.Z(e.class));
-      if (this.cTh != null) {
-        this.cTp = this.cTh.cVl.Wp();
-      }
-      this.cTi = ((f)this.cTa.Z(f.class));
-      if (this.cTi != null)
+      ???.a(new com.tencent.matrix.a.b.d() {});
+      a locala = awD();
+      this.eOs = new b();
+      b localb = this.eOs;
+      localb.awF();
+      locala.b(???, localb);
+      localb.awG();
+      localb.aQ();
+      ???.b(j.b.class, new com.tencent.matrix.a.b.d() {});
+      b(???);
+      synchronized (this.eOt)
       {
-        this.cTr = f.Wq();
-        this.cTq = f.bi(d.getContext());
-      }
-      this.cTj = ((g)this.cTa.Z(g.class));
-      if (this.cTj != null) {
-        this.cTs = this.cTj.Wr();
-      }
-      this.cTk = ((h)this.cTa.Z(h.class));
-      if (this.cTk != null) {
-        this.cTt = this.cTk.cWa.Ws();
-      }
-      this.cTl = ((l)this.cTa.Z(l.class));
-      if (this.cTl != null) {
-        this.cTu = l.bj(d.getContext());
-      }
-      this.cTm = ((m)this.cTa.Z(m.class));
-      if (this.cTm != null) {
-        this.cTv = this.cTm.cWK.Ww();
-      }
-      this.cTn = ((n)this.cTa.Z(n.class));
-      if (this.cTn != null) {
-        this.cTw = this.cTn.cXf.Wz();
+        this.eOt.clear();
+        return;
       }
     }
     
-    public void a(int paramInt, m.c.b paramb) {}
-    
-    public void a(j.a.a<com.tencent.matrix.a.a.a.b.a> parama) {}
-    
-    public void a(j.a.c.c<? extends g.b.a> paramc)
+    public void a(m.a.a<com.tencent.matrix.a.a.a.b.a> parama)
     {
-      a locala = new a();
-      locala.VV();
-      locala.aM("| Thread WatchDog").aM("\n");
-      locala.eN("jiffies(" + paramc.list.size() + ")");
-      locala.M("desc", "(status)name(tid)\ttotal");
+      f localf = new f(this.eOp);
+      localf.a(a.dD(parama.eSi));
+      localf.a(i.b.class, parama);
+      b(localf);
+    }
+    
+    public void a(m.a.c.c<? extends j.b.a> paramc)
+    {
+      b localb = new b();
+      localb.awF();
+      localb.ci("| Thread WatchDog").ci("\n");
+      localb.gm("jiffies(" + paramc.list.size() + ")");
+      localb.P("desc", "(status)name(tid)\ttotal");
       Object localObject2 = paramc.list.iterator();
       Object localObject3;
       Object localObject4;
       Object localObject1;
       if (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (g.b.a)((Iterator)localObject2).next();
-        long l = ((Long)((j.a.c.b)localObject3).cWu).longValue();
-        localObject4 = locala.aM("|   -> (");
-        if (((g.b.a)localObject3).cVU) {}
+        localObject3 = (j.b.a)((Iterator)localObject2).next();
+        long l = ((Long)((m.a.c.b)localObject3).eSn).longValue();
+        localObject4 = localb.ci("|   -> (");
+        if (((j.b.a)localObject3).eRN) {}
         for (localObject1 = "+";; localObject1 = "~")
         {
-          ((a)localObject4).aM(localObject1).aM("/").aM(((g.b.a)localObject3).cVV).aM(")").aM(((g.b.a)localObject3).name).aM("(").aM(Integer.valueOf(((g.b.a)localObject3).tid)).aM(")\t").aM(Long.valueOf(l)).aM("\tjiffies").aM("\n");
+          ((b)localObject4).ci(localObject1).ci("/").ci(((j.b.a)localObject3).eRO).ci(")").ci(((j.b.a)localObject3).name).ci("(").ci(Integer.valueOf(((j.b.a)localObject3).tid)).ci(")\t").ci(Long.valueOf(l)).ci("\tjiffies").ci("\n");
           break;
         }
       }
-      locala.eN("stacks");
-      boolean bool2 = this.cTa.cUb.cTS;
+      localb.gm("stacks");
+      boolean bool2 = this.eOp.ePD.ePu;
       boolean bool1;
       if (bool2)
       {
         bool1 = bool2;
-        if (this.cTa.cUb.cTX.isEmpty()) {}
+        if (this.eOp.ePD.ePz.isEmpty()) {}
       }
       else
       {
         localObject1 = paramc.list.iterator();
         bool1 = bool2;
         if (!((Iterator)localObject1).hasNext()) {
-          break label689;
+          break label685;
         }
-        localObject2 = (g.b.a)((Iterator)localObject1).next();
-        localObject3 = this.cTa.cUb.cTX.iterator();
+        localObject2 = (j.b.a)((Iterator)localObject1).next();
+        localObject3 = this.eOp.ePD.ePz.iterator();
         for (;;)
         {
           if (((Iterator)localObject3).hasNext())
           {
             localObject4 = (String)((Iterator)localObject3).next();
-            if ((((String)localObject4).equalsIgnoreCase(((g.b.a)localObject2).name)) || (((g.b.a)localObject2).name.contains((CharSequence)localObject4)))
+            if ((((String)localObject4).equalsIgnoreCase(((j.b.a)localObject2).name)) || (((j.b.a)localObject2).name.contains((CharSequence)localObject4)))
             {
               bool1 = true;
-              label387:
+              label385:
               if (!bool1) {
                 break;
               }
@@ -189,9 +198,9 @@ public abstract interface b
           }
         }
       }
-      label656:
-      label671:
-      label689:
+      label652:
+      label667:
+      label685:
       for (;;)
       {
         if (bool1)
@@ -202,7 +211,7 @@ public abstract interface b
           for (;;)
           {
             if (!((Iterator)localObject1).hasNext()) {
-              break label671;
+              break label667;
             }
             localObject3 = (Map.Entry)((Iterator)localObject1).next();
             localObject2 = (Thread)((Map.Entry)localObject3).getKey();
@@ -212,326 +221,404 @@ public abstract interface b
             for (;;)
             {
               if (!localIterator.hasNext()) {
-                break label656;
+                break label652;
               }
-              String str = ((g.b.a)localIterator.next()).name;
+              String str = ((j.b.a)localIterator.next()).name;
               if ((!str.equalsIgnoreCase((String)localObject4)) && (!((String)localObject4).contains(str))) {
                 break;
               }
-              locala.aM("|   -> ").aM("(").aM(((Thread)localObject2).getState()).aM(")").aM(localObject4).aM("(").aM(Long.valueOf(((Thread)localObject2).getId())).aM(")").aM("\n");
+              localb.ci("|   -> ").ci("(").ci(((Thread)localObject2).getState()).ci(")").ci(localObject4).ci("(").ci(Long.valueOf(((Thread)localObject2).getId())).ci(")").ci("\n");
               com.tencent.matrix.a.b.b.stackTraceToString((StackTraceElement[])localObject3);
               int j = localObject3.length;
               int i = 0;
               while (i < j)
               {
                 str = localObject3[i];
-                locala.aM("|      ").aM(str).aM("\n");
+                localb.ci("|      ").ci(str).ci("\n");
                 i += 1;
               }
             }
           }
         }
-        locala.aM("|   disabled").aM("\n");
-        locala.VW();
-        locala.Y();
+        localb.ci("|   disabled").ci("\n");
+        localb.awG();
+        localb.aQ();
         return;
         break;
-        break label387;
+        break label385;
       }
     }
     
-    public void a(k.a parama) {}
+    public void a(n.a parama) {}
     
-    public void a(m.c.b paramb, long paramLong) {}
-    
-    protected void a(a arg1)
-    {
-      Object localObject1 = this.cTb;
-      ((a)localObject1).sb.delete(0, ((a)localObject1).sb.length());
-      this.cTb.VV();
-      if ((this.cTj != null) && (this.cTs != null))
-      {
-        localObject1 = this.cTj.Wr().a(this.cTs);
-        long l1 = ???.VM();
-        Iterator localIterator = ((g.b)((j.a.a)localObject1).cWo).cVQ.list.iterator();
-        while (localIterator.hasNext())
-        {
-          g.b.a locala = (g.b.a)localIterator.next();
-          if (locala.cVV.toUpperCase().contains("R"))
-          {
-            long l2 = ((Long)locala.cWu).longValue() / l1;
-            if (???.isForeground())
-            {
-              if ((l1 > 10L) && (l2 > this.cTa.cUb.cTI))
-              {
-                com.tencent.matrix.e.c.i("Matrix.battery.BatteryPrinter", "threadWatchDog fg set, name = " + ((g.b)((j.a.a)localObject1).cWo).name + ", pid = " + ((g.b)((j.a.a)localObject1).cWo).pid + ", tid = " + locala.tid, new Object[0]);
-                this.cTj.d(true, ((g.b)((j.a.a)localObject1).cWo).pid, locala.tid);
-              }
-            }
-            else if ((l1 > 10L) && (l2 > this.cTa.cUb.cTJ))
-            {
-              com.tencent.matrix.e.c.i("Matrix.battery.BatteryPrinter", "threadWatchDog bg set, name = " + ((g.b)((j.a.a)localObject1).cWo).name + ", pid = " + ((g.b)((j.a.a)localObject1).cWo).pid + ", tid = " + locala.tid, new Object[0]);
-              this.cTj.d(false, ((g.b)((j.a.a)localObject1).cWo).pid, locala.tid);
-            }
-          }
-        }
-        d((j.a.a)localObject1);
-        a((j.a.a)localObject1, ???, this.cTb);
-      }
-      b(???);
-      a("app_stats", new com.tencent.matrix.a.b.d() {});
-      this.cTb.VW();
-      this.cTb.Y();
-      synchronized (this.cTe)
-      {
-        this.cTe.clear();
-        return;
-      }
-    }
-    
-    protected final void a(String paramString, com.tencent.matrix.a.b.d<a> paramd)
-    {
-      this.cTb.eN(paramString);
-      paramd.accept(this.cTb);
-    }
+    public void a(p.c.b paramb, long paramLong) {}
     
     public void a(boolean paramBoolean, int paramInt1, int paramInt2, ComponentName paramComponentName, long paramLong) {}
     
-    protected boolean a(j.a.a<?> parama, a parama1, a parama2)
+    protected final d awB()
     {
-      if ((parama.cWo instanceof g.b))
+      return this.eOp;
+    }
+    
+    public void awC()
+    {
+      this.eOr = SystemClock.uptimeMillis();
+      this.eOq.clear();
+      this.eOq.start();
+      this.eOu = ((com.tencent.matrix.a.a.a.c)this.eOp.aj(com.tencent.matrix.a.a.a.c.class));
+      if (this.eOu != null) {
+        this.eOE = this.eOu.eQj.awR();
+      }
+      this.eOv = ((com.tencent.matrix.a.a.a.d)this.eOp.aj(com.tencent.matrix.a.a.a.d.class));
+      this.eOw = ((e)this.eOp.aj(e.class));
+      if (this.eOw != null) {
+        this.eOF = this.eOw.eQM.awX();
+      }
+      this.eOx = ((h)this.eOp.aj(h.class));
+      if (this.eOx != null)
       {
-        long l1 = Math.max(1L, parama.cWp / 60000L);
-        long l2 = ((Long)((g.b)parama.cWo).cVP.cWu).longValue() / l1;
-        parama2.aM("| ").aM("pid=").aM(Integer.valueOf(Process.myPid())).VU().VU().aM("fg=").aM(com.tencent.matrix.a.b.b.jv(parama1.VO())).VU().VU().aM("during(min)=").aM(Long.valueOf(l1)).VU().VU().aM("diff(jiffies)=").aM(((g.b)parama.cWo).cVP.cWu).VU().VU().aM("avg(jiffies/min)=").aM(Long.valueOf(l2)).sb.append("\n");
-        parama2.eN("jiffies(" + ((g.b)parama.cWo).cVQ.list.size() + ")");
-        parama2.M("desc", "(status)name(tid)\tavg/total");
-        parama2.M("inc_thread_num", String.valueOf(((g.b)parama.cWo).cVR.cWu));
-        parama2.M("cur_thread_num", String.valueOf(((g.b)parama.cWn).cVR.cWu));
-        Iterator localIterator = ((g.b)parama.cWo).cVQ.list.subList(0, Math.min(((g.b)parama.cWo).cVQ.list.size(), 8)).iterator();
-        if (localIterator.hasNext())
+        this.eOH = h.axe();
+        this.eOG = h.bS(d.getContext());
+      }
+      this.eOy = ((com.tencent.matrix.a.a.a.j)this.eOp.aj(com.tencent.matrix.a.a.a.j.class));
+      if (this.eOy != null) {
+        this.eOI = this.eOy.axh();
+      }
+      this.eOz = ((k)this.eOp.aj(k.class));
+      if (this.eOz != null) {
+        this.eOJ = this.eOz.eRU.axi();
+      }
+      this.eOA = ((o)this.eOp.aj(o.class));
+      if (this.eOA != null) {
+        this.eOK = o.bT(d.getContext());
+      }
+      this.eOB = ((p)this.eOp.aj(p.class));
+      if (this.eOB != null) {
+        this.eOL = this.eOB.eSR.axm();
+      }
+      this.eOC = ((q)this.eOp.aj(q.class));
+      if (this.eOC != null) {
+        this.eOM = this.eOC.eTm.axo();
+      }
+      this.eOD = ((g)this.eOp.aj(g.class));
+      if ((this.eOD != null) && (this.eOD.isSupported())) {
+        this.eON = this.eOD.axc();
+      }
+    }
+    
+    protected a awD()
+    {
+      new a()
+      {
+        protected final void a(f paramAnonymousf, b.a.b paramAnonymousb)
         {
-          Object localObject = (g.b.a)localIterator.next();
-          long l3 = ((Long)((j.a.c.b)localObject).cWu).longValue();
-          a locala = parama2.aM("|   -> (");
-          if (((g.b.a)localObject).cVU) {}
-          for (parama1 = "+";; parama1 = "~")
+          super.a(paramAnonymousf, paramAnonymousb);
+          paramAnonymousf.a(new com.tencent.matrix.a.b.d() {});
+        }
+        
+        protected final boolean a(m.a.a<?> paramAnonymousa, f paramAnonymousf, b.a.b paramAnonymousb)
+        {
+          if ((!super.a(paramAnonymousa, paramAnonymousf, paramAnonymousb)) && (paramAnonymousf.awY() != null)) {}
+          return false;
+        }
+      };
+    }
+    
+    protected void b(f paramf)
+    {
+      paramf.b(c.b.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(e.a.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(h.b.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(g.a.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(j.b.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(h.a.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(p.b.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(q.a.class, new com.tencent.matrix.a.b.d() {});
+      paramf.b(k.a.class, new com.tencent.matrix.a.b.d() {});
+    }
+    
+    public void dx(boolean paramBoolean)
+    {
+      this.mIsForeground = paramBoolean;
+      long l = SystemClock.uptimeMillis() - this.eOr;
+      if ((this.eOr <= 0L) || (l <= 0L))
+      {
+        com.tencent.matrix.e.c.w("Matrix.battery.BatteryPrinter", "skip invalid battery tracing, bgn = " + this.eOr + ", during = " + l, new Object[0]);
+        return;
+      }
+      this.eOq.finish();
+      a(this.eOq);
+    }
+    
+    public static class a
+    {
+      protected void a(final f paramf, final b.a.b paramb)
+      {
+        if ((paramf.awB() == null) || (paramf.awY() == null)) {}
+        do
+        {
+          return;
+          paramf.b(j.b.class, new com.tencent.matrix.a.b.d() {});
+          paramf.awY();
+          if ((paramf.am(c.b.class) != null) || (paramf.am(p.b.class) != null))
           {
-            locala.aM(parama1).aM("/").aM(((g.b.a)localObject).cVV).aM(")").aM(((g.b.a)localObject).name).aM("(").aM(Integer.valueOf(((g.b.a)localObject).tid)).aM(")\t").aM(Long.valueOf(l3 / l1)).aM("/").aM(Long.valueOf(l3)).aM("\tjiffies").aM("\n");
-            parama1 = (List)this.cTe.get(((g.b.a)localObject).tid);
-            if ((parama1 == null) || (parama1.isEmpty())) {
+            paramb.gm("awake");
+            paramf.b(c.b.class, new com.tencent.matrix.a.b.d() {});
+            paramf.b(p.b.class, new com.tencent.matrix.a.b.d() {});
+          }
+          if ((paramf.am(e.a.class) != null) || (paramf.am(q.a.class) != null) || (paramf.am(k.a.class) != null))
+          {
+            paramb.gm("scanning");
+            paramf.b(e.a.class, new com.tencent.matrix.a.b.d() {});
+            paramf.b(q.a.class, new com.tencent.matrix.a.b.d() {});
+            paramf.b(k.a.class, new com.tencent.matrix.a.b.d() {});
+          }
+        } while ((paramf.al(com.tencent.matrix.a.a.a.d.class) == null) && (paramf.am(g.a.class) == null) && (paramf.am(h.b.class) == null) && (paramf.am(h.a.class) == null));
+        paramb.gm("dev_stats");
+        paramf.b(g.a.class, new com.tencent.matrix.a.b.d() {});
+        paramf.b(h.b.class, new com.tencent.matrix.a.b.d() {});
+        paramf.b(h.a.class, new com.tencent.matrix.a.b.d() {});
+      }
+      
+      protected boolean a(final m.a.a<?> parama, f paramf, final b.a.b paramb)
+      {
+        if ((paramf.awB() == null) || (paramf.awY() == null)) {
+          return false;
+        }
+        Object localObject1 = paramf.awY();
+        Object localObject2;
+        if ((parama.eSh instanceof j.b))
+        {
+          long l1 = Math.max(1L, parama.eSi / 60000L);
+          long l2 = ((Long)((j.b)parama.eSh).eRI.eSn).longValue() / l1;
+          paramb.ci("| ").ci("pid=").ci(Integer.valueOf(Process.myPid())).awE().awE().ci("fg=").ci(com.tencent.matrix.a.b.b.mY(((a)localObject1).awy())).awE().awE().ci("during(min)=").ci(Long.valueOf(l1)).awE().awE().ci("diff(jiffies)=").ci(((j.b)parama.eSh).eRI.eSn).awE().awE().ci("avg(jiffies/min)=").ci(Long.valueOf(l2)).sb.append("\n");
+          paramb.gm("jiffies(" + ((j.b)parama.eSh).eRJ.list.size() + ")");
+          paramb.P("desc", "(status)name(tid)\tavg/total");
+          paramb.P("inc_thread_num", String.valueOf(((j.b)parama.eSh).eRK.eSn));
+          paramb.P("cur_thread_num", String.valueOf(((j.b)parama.eSg).eRK.eSn));
+          localObject1 = ((j.b)parama.eSh).eRJ.list.subList(0, Math.min(((j.b)parama.eSh).eRJ.list.size(), 8)).iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (j.b.a)((Iterator)localObject1).next();
+            long l3 = ((Long)((m.a.c.b)localObject2).eSn).longValue();
+            b.a.b localb = paramb.ci("|   -> (");
+            if (((j.b.a)localObject2).eRN) {}
+            for (paramf = "+";; paramf = "~")
+            {
+              localb.ci(paramf).ci("/").ci(((j.b.a)localObject2).eRO).ci(")").ci(((j.b.a)localObject2).name).ci("(").ci(Integer.valueOf(((j.b.a)localObject2).tid)).ci(")\t").ci(Long.valueOf(l3 / l1)).ci("/").ci(Long.valueOf(l3)).ci("\tjiffies").ci("\n");
               break;
             }
-            parama1 = parama1.subList(0, Math.min(3, parama1.size())).iterator();
-            while (parama1.hasNext())
-            {
-              localObject = (i.a)parama1.next();
-              parama2.aM("|\t\t").aM(localObject).aM("\n");
+          }
+          paramb.ci("|\t\t......\n");
+          if ((l2 > 1000L) || (!parama.isValid()))
+          {
+            paramb = paramb.ci("|  ");
+            if (l2 <= 1000L) {
+              break label567;
             }
+            paramf = " #overHeat";
+            paramf = paramb.ci(paramf);
+            if (parama.isValid()) {
+              break label574;
+            }
+          }
+          label567:
+          label574:
+          for (parama = " #invalid";; parama = "")
+          {
+            paramf.ci(parama).ci("\n");
+            return true;
+            paramf = "";
             break;
           }
         }
-        parama2.aM("|\t\t......\n");
-        if ((l2 > 1000L) || (!parama.isValid()))
+        if ((parama.eSh instanceof c.b))
         {
-          parama2 = parama2.aM("|  ");
-          if (l2 <= 1000L) {
-            break label647;
-          }
-          parama1 = " #overHeat";
-          parama1 = parama2.aM(parama1);
-          if (parama.isValid()) {
-            break label654;
-          }
-        }
-        label647:
-        label654:
-        for (parama = " #invalid";; parama = "")
-        {
-          parama1.aM(parama).aM("\n");
+          paramb.go("alarm");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc_alarm_count", String.valueOf(((c.b)parama.eSh).eQr.eSn));
+          paramb.P("inc_trace_count", String.valueOf(((c.b)parama.eSh).eQs.eSn));
+          paramb.P("inc_dupli_group", String.valueOf(((c.b)parama.eSh).eQt.eSn));
+          paramb.P("inc_dupli_count", String.valueOf(((c.b)parama.eSh).eQu.eSn));
           return true;
-          parama1 = "";
-          break;
         }
-      }
-      if ((parama.cWo instanceof c.b))
-      {
-        parama2.eP("alarm");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc_alarm_count", String.valueOf(((c.b)parama.cWo).cUR.cWu));
-        parama2.M("inc_trace_count", String.valueOf(((c.b)parama.cWo).cUS.cWu));
-        parama2.M("inc_dupli_group", String.valueOf(((c.b)parama.cWo).cUT.cWu));
-        parama2.M("inc_dupli_count", String.valueOf(((c.b)parama.cWo).cUU.cWu));
-        return true;
-      }
-      if ((parama.cWo instanceof m.b))
-      {
-        parama2.eP("wake_lock");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc_lock_count", String.valueOf(((m.b)parama.cWo).cWQ));
-        parama2.M("inc_time_total", String.valueOf(((m.b)parama.cWo).cWP));
-        parama = ((m.b)parama.cWn).cWR.list;
-        if (!parama.isEmpty())
+        if ((parama.eSh instanceof p.b))
         {
-          parama2.eP("locking");
-          parama = parama.iterator();
-          while (parama.hasNext())
+          paramb.go("wake_lock");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc_lock_count", String.valueOf(((p.b)parama.eSh).eSX));
+          paramb.P("inc_time_total", String.valueOf(((p.b)parama.eSh).eSW));
+          parama = ((p.b)parama.eSg).eSY.list;
+          if (!parama.isEmpty())
           {
-            parama1 = (j.a.c.a)parama.next();
-            if (!((m.c.b)parama1.value).isFinished()) {
-              parama2.eO(((m.c.b)parama1.value).toString());
+            paramb.go("locking");
+            parama = parama.iterator();
+            while (parama.hasNext())
+            {
+              paramf = (m.a.c.a)parama.next();
+              if (!((p.c.b)paramf.value).isFinished()) {
+                paramb.gn(((p.c.b)paramf.value).toString());
+              }
             }
           }
+          return true;
         }
-        return true;
+        if ((parama.eSh instanceof e.a))
+        {
+          paramb.go("bluetooh");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc_regs_count", String.valueOf(((e.a)parama.eSh).eQP.eSn));
+          paramb.P("inc_dics_count", String.valueOf(((e.a)parama.eSh).eQQ.eSn));
+          paramb.P("inc_scan_count", String.valueOf(((e.a)parama.eSh).eQR.eSn));
+          return true;
+        }
+        if ((parama.eSh instanceof q.a))
+        {
+          paramb.go("wifi");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc_scan_count", String.valueOf(((q.a)parama.eSh).eQR.eSn));
+          paramb.P("inc_qury_count", String.valueOf(((q.a)parama.eSh).eTp.eSn));
+          return true;
+        }
+        if ((parama.eSh instanceof k.a))
+        {
+          paramb.go("location");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc_scan_count", String.valueOf(((k.a)parama.eSh).eQR.eSn));
+          return true;
+        }
+        if ((parama.eSh instanceof h.b))
+        {
+          paramb.go("cpufreq");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc", Arrays.toString(((h.b)parama.eSh).eRr.list.toArray()));
+          paramb.P("cur", Arrays.toString(((h.b)parama.eSg).eRr.list.toArray()));
+          paramf.d(h.b.class, new com.tencent.matrix.a.b.d() {});
+          return true;
+        }
+        if ((parama.eSh instanceof g.a))
+        {
+          paramb.go("cpu_load");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          localObject1 = (g)paramf.al(g.class);
+          if (localObject1 != null) {
+            paramf.b(j.b.class, new com.tencent.matrix.a.b.d() {});
+          }
+          int i = 0;
+          while (i < ((g.a)parama.eSh).eRk.size())
+          {
+            localObject2 = (m.a.c.c)((g.a)parama.eSh).eRk.get(i);
+            paramb.P("cpu".concat(String.valueOf(i)), Arrays.toString(((m.a.c.c)localObject2).list.toArray()));
+            i += 1;
+          }
+          if (localObject1 != null)
+          {
+            paramb.go("cpu_sip");
+            localObject1 = ((g)localObject1).eRi;
+            paramb.P("inc_cpu_sip", String.format(Locale.US, "%.2f(mAh)", new Object[] { Double.valueOf(((g.a)parama.eSh).a((com.tencent.matrix.a.b.j)localObject1)) }));
+            paramb.P("cur_cpu_sip", String.format(Locale.US, "%.2f(mAh)", new Object[] { Double.valueOf(((g.a)parama.eSg).a((com.tencent.matrix.a.b.j)localObject1)) }));
+            paramf.b(j.b.class, new com.tencent.matrix.a.b.d() {});
+          }
+          return true;
+        }
+        if ((parama.eSh instanceof h.a))
+        {
+          paramb.go("batt_temp");
+          paramb.gn(parama.eSi + "(mls)\t" + parama.eSi / 60000L + "(min)");
+          paramb.P("inc", String.valueOf(((h.a)parama.eSh).eRp.eSn));
+          paramb.P("cur", String.valueOf(((h.a)parama.eSg).eRp.eSn));
+          paramf.d(h.a.class, new com.tencent.matrix.a.b.d() {});
+          return true;
+        }
+        return false;
       }
-      if ((parama.cWo instanceof e.a))
+      
+      public final void b(f paramf, final b.a.b paramb)
       {
-        parama2.eP("bluetooh");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc_regs_count", String.valueOf(((e.a)parama.cWo).cVo.cWu));
-        parama2.M("inc_dics_count", String.valueOf(((e.a)parama.cWo).cVp.cWu));
-        parama2.M("inc_scan_count", String.valueOf(((e.a)parama.cWo).cVq.cWu));
-        return true;
+        a(paramf, paramb);
+        if ((paramf.awB() == null) || (paramf.awY() == null)) {
+          return;
+        }
+        a locala = paramf.awY();
+        paramb.gm("app_stats");
+        paramb.go("stat_time");
+        paramb.P("time", locala.aww() + "(min)");
+        paramb.P("fg", String.valueOf(locala.eOd));
+        paramb.P("bg", String.valueOf(locala.eOe));
+        paramb.P("fgSrv", String.valueOf(locala.eOf));
+        paramb.P("devCharging", String.valueOf(locala.eOg));
+        paramb.P("devScreenOff", String.valueOf(locala.eOi));
+        if (!TextUtils.isEmpty(locala.eOk)) {
+          paramb.P("sceneTop1", locala.eOk + "/" + locala.eOl);
+        }
+        if (!TextUtils.isEmpty(locala.eOm)) {
+          paramb.P("sceneTop2", locala.eOm + "/" + locala.eOn);
+        }
+        paramf.a(com.tencent.matrix.a.a.a.d.class, new com.tencent.matrix.a.b.d() {});
       }
-      if ((parama.cWo instanceof n.a))
-      {
-        parama2.eP("wifi");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc_scan_count", String.valueOf(((n.a)parama.cWo).cVq.cWu));
-        parama2.M("inc_qury_count", String.valueOf(((n.a)parama.cWo).cXi.cWu));
-        return true;
-      }
-      if ((parama.cWo instanceof h.a))
-      {
-        parama2.eP("location");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc_scan_count", String.valueOf(((h.a)parama.cWo).cVq.cWu));
-        return true;
-      }
-      if ((parama.cWo instanceof f.b))
-      {
-        parama2.eP("cpufreq");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc", Arrays.toString(((f.b)parama.cWo).cVA.list.toArray()));
-        parama2.M("cur", Arrays.toString(((f.b)parama.cWn).cVA.list.toArray()));
-        return true;
-      }
-      if ((parama.cWo instanceof f.a))
-      {
-        parama2.eP("batt_temp");
-        parama2.eO(parama.cWp + "(mls)\t" + parama.cWp / 60000L + "(min)");
-        parama2.M("inc", String.valueOf(((f.a)parama.cWo).cVy.cWu));
-        parama2.M("cur", String.valueOf(((f.a)parama.cWn).cVy.cWu));
-        return true;
-      }
-      return false;
     }
     
-    protected void b(j.a.a<c.b> parama) {}
-    
-    protected void b(final a parama)
-    {
-      if (((this.cTf != null) && (this.cTo != null)) || ((this.cTm != null) && (this.cTv != null))) {
-        a("awake", new com.tencent.matrix.a.b.d() {});
-      }
-      if (((this.cTh != null) && (this.cTp != null)) || ((this.cTn != null) && (this.cTw != null)) || ((this.cTk != null) && (this.cTt != null))) {
-        a("scanning", new com.tencent.matrix.a.b.d() {});
-      }
-      if ((this.cTg != null) || ((this.cTi != null) && (this.cTr != null)) || ((this.cTi != null) && (this.cTq != null))) {
-        a("dev_stats", new com.tencent.matrix.a.b.d() {});
-      }
-    }
-    
-    protected void c(j.a.a<e.a> parama) {}
-    
-    public void cQ(boolean paramBoolean)
-    {
-      this.mIsForeground = paramBoolean;
-      long l = SystemClock.uptimeMillis() - this.cTc;
-      if ((this.cTc <= 0L) || (l <= 0L))
-      {
-        com.tencent.matrix.e.c.w("Matrix.battery.BatteryPrinter", "skip invalid battery tracing, bgn = " + this.cTc + ", during = " + l, new Object[0]);
-        return;
-      }
-      a locala = a.bl(l);
-      locala.cSZ = new AtomicBoolean(paramBoolean);
-      this.cTd = locala;
-      a(this.cTd);
-      this.cTd = null;
-    }
-    
-    protected void d(j.a.a<g.b> parama) {}
-    
-    protected void e(j.a.a<f.a> parama) {}
-    
-    protected void f(j.a.a<m.b> parama) {}
-    
-    protected void g(j.a.a<n.a> parama) {}
-    
-    protected void h(j.a.a<h.a> parama) {}
-    
-    public static final class a
+    public static final class b
     {
       final StringBuilder sb = new StringBuilder();
       
-      public final a M(String paramString1, String paramString2)
+      public final b P(String paramString1, String paramString2)
       {
         this.sb.append("|   -> ").append(paramString1).append("\t= ").append(paramString2).append("\n");
         return this;
       }
       
-      public final a VU()
-      {
-        this.sb.append("\t");
-        return this;
-      }
-      
-      public final a VV()
-      {
-        this.sb.append("****************************************** PowerTest *****************************************\n");
-        return this;
-      }
-      
-      public final a VW()
-      {
-        this.sb.append("**********************************************************************************************");
-        return this;
-      }
-      
-      public final void Y()
+      public final void aQ()
       {
         try
         {
           com.tencent.matrix.e.c.i("Matrix.battery.BatteryPrinter", "%s", new Object[] { "\t\n" + this.sb.toString() });
           return;
         }
-        catch (Throwable localThrowable)
+        finally
         {
           com.tencent.matrix.e.c.printErrStackTrace("Matrix.battery.BatteryPrinter", localThrowable, "log format error", new Object[0]);
         }
       }
       
-      public final a aM(Object paramObject)
+      public final b awE()
+      {
+        this.sb.append("\t");
+        return this;
+      }
+      
+      public final b awF()
+      {
+        this.sb.append("****************************************** PowerTest *****************************************\n");
+        return this;
+      }
+      
+      public final b awG()
+      {
+        this.sb.append("**********************************************************************************************");
+        return this;
+      }
+      
+      public final b ci(Object paramObject)
       {
         this.sb.append(paramObject);
         return this;
       }
       
-      public final a eN(String paramString)
+      public final b gm(String paramString)
       {
         this.sb.append("+ --------------------------------------------------------------------------------------------\n");
         this.sb.append("| ").append(paramString).append(" :\n");
         return this;
       }
       
-      public final a eO(String paramString)
+      public final b gn(String paramString)
       {
         this.sb.append("|   -> ").append(paramString).append("\n");
         return this;
       }
       
-      public final a eP(String paramString)
+      public final b go(String paramString)
       {
         this.sb.append("|   <").append(paramString).append(">\n");
         return this;
@@ -546,7 +633,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.b
  * JD-Core Version:    0.7.0.1
  */

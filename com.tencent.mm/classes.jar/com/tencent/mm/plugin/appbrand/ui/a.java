@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -17,161 +16,191 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ad.c;
 import com.tencent.mm.plugin.appbrand.ad.f;
-import com.tencent.mm.plugin.appbrand.ad.f.4;
 import com.tencent.mm.plugin.appbrand.ad.f.a;
+import com.tencent.mm.plugin.appbrand.ad.h;
 import com.tencent.mm.plugin.appbrand.ad.j;
-import com.tencent.mm.plugin.appbrand.launching.p;
+import com.tencent.mm.plugin.appbrand.launching.q;
 import com.tencent.mm.plugin.appbrand.platform.window.a.o;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.u;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 
-@SuppressLint({"ViewConstructor"})
 public final class a
   extends FrameLayout
-  implements p, ab, ac, ad
+  implements q, ai, aj, ak
 {
-  private t nAH;
-  private aa qSK;
-  private f qSL;
-  private j qSM;
+  private w qxC;
+  private ah tXp;
+  public f tXq;
+  private j tXr;
   
-  public a(Context paramContext, AppBrandRuntime paramAppBrandRuntime, aa paramaa, j paramj)
+  public a(Context paramContext, AppBrandRuntime paramAppBrandRuntime, ah paramah, j paramj)
   {
     super(paramContext);
-    AppMethodBeat.i(265625);
-    this.nAH = ((t)paramAppBrandRuntime);
-    this.qSK = paramaa;
-    this.qSM = paramj;
-    paramAppBrandRuntime = this.nAH;
+    AppMethodBeat.i(322100);
+    this.qxC = ((w)paramAppBrandRuntime);
+    this.tXp = paramah;
+    this.tXr = paramj;
+    paramAppBrandRuntime = this.qxC;
     Log.i("MicroMsg.AppBrandAdLoadingSplash", "initRuntimeAdViewContainer, runtime:%s", new Object[] { paramAppBrandRuntime });
-    this.qSL = new f(paramContext, paramAppBrandRuntime);
-    this.qSL.bEK();
-    this.qSL.bEL();
-    this.qSL.setForegroundStyle(false);
-    this.qSL.setCloseButtonClickListener(new View.OnClickListener()
+    this.tXq = new f(paramContext, paramAppBrandRuntime);
+    this.tXq.cdV();
+    this.tXq.cdW();
+    this.tXq.setForegroundStyle(false);
+    this.tXq.setCloseButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(276258);
+        AppMethodBeat.i(322451);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandAdLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandAdLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (a.a(a.this) != null) {
-          a.a(a.this).bER();
+          a.a(a.this).cee();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandAdLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(276258);
+        AppMethodBeat.o(322451);
       }
     });
-    this.qSL.setOnHideListener(new f.a()
+    this.tXq.setOnHideListener(new f.a()
     {
-      public final void acl(String paramAnonymousString)
+      public final void UL(String paramAnonymousString)
       {
-        AppMethodBeat.i(270903);
+        AppMethodBeat.i(322445);
         if (a.a(a.this) != null) {
-          a.a(a.this).acm(paramAnonymousString);
+          a.a(a.this).UM(paramAnonymousString);
         }
-        AppMethodBeat.o(270903);
+        AppMethodBeat.o(322445);
       }
     });
-    this.qSL.setOptionButtonClickListener(new a.3(this));
-    if (this.qSK != null) {
-      addView(this.qSK.getView(), new ViewGroup.LayoutParams(-1, -1));
+    this.tXq.setOptionButtonClickListener(new a.3(this));
+    if (this.tXp != null) {
+      addView(this.tXp.getView(), new ViewGroup.LayoutParams(-1, -1));
     }
-    if (this.qSL != null) {
-      addView(this.qSL, new ViewGroup.LayoutParams(-1, -1));
+    if (this.tXq != null) {
+      addView(this.tXq, new ViewGroup.LayoutParams(-1, -1));
     }
-    AppMethodBeat.o(265625);
+    AppMethodBeat.o(322100);
   }
   
-  public final void A(kotlin.g.a.a<kotlin.x> parama)
+  public final void B(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(265642);
-    if ((this.qSK instanceof ac)) {
-      ((ac)this.qSK).A(parama);
+    AppMethodBeat.i(322133);
+    if (this.tXq != null) {
+      this.tXq.B(paramBoolean, paramString);
     }
-    AppMethodBeat.o(265642);
+    AppMethodBeat.o(322133);
   }
   
-  public final void BU(int paramInt)
+  public final void Cj(int paramInt)
   {
-    AppMethodBeat.i(265636);
-    if (this.qSK != null) {
-      this.qSK.BU(paramInt);
+    AppMethodBeat.i(322159);
+    if (this.tXp != null) {
+      this.tXp.Cj(paramInt);
     }
-    AppMethodBeat.o(265636);
+    AppMethodBeat.o(322159);
   }
   
-  public final boolean bCB()
+  public final void as(kotlin.g.a.a<kotlin.ah> parama)
   {
-    AppMethodBeat.i(265632);
-    if ((this.qSL != null) && (indexOfChild(this.qSL) >= 0) && (this.qSL.getVisibility() == 0) && (s.abV(this.nAH.mAppId).nvY.nzX))
-    {
-      AppMethodBeat.o(265632);
-      return true;
+    AppMethodBeat.i(322151);
+    if (this.tXp != null) {
+      this.tXp.as(parama);
     }
-    AppMethodBeat.o(265632);
-    return false;
+    AppMethodBeat.o(322151);
   }
   
-  public final void cjm()
+  public final void au(kotlin.g.a.a<kotlin.ah> parama)
   {
-    AppMethodBeat.i(265629);
-    if (this.qSL != null)
-    {
-      f localf = this.qSL;
-      if (MMHandlerThread.isMainThread())
-      {
-        localf.setVisibility(8);
-        AppMethodBeat.o(265629);
-        return;
-      }
-      MMHandlerThread.postToMainThread(new f.4(localf));
+    AppMethodBeat.i(322123);
+    if (this.tXr != null) {
+      this.tXr.ced();
     }
-    AppMethodBeat.o(265629);
+    AppMethodBeat.o(322123);
   }
   
-  public final void cjn()
+  public final void av(kotlin.g.a.a<kotlin.ah> parama)
   {
-    AppMethodBeat.i(265631);
-    this.nAH.h(new Runnable()
+    AppMethodBeat.i(322171);
+    if ((this.tXp instanceof aj)) {
+      ((aj)this.tXp).av(parama);
+    }
+    AppMethodBeat.o(322171);
+  }
+  
+  public final void cKm()
+  {
+    AppMethodBeat.i(322125);
+    if (this.tXq != null) {
+      this.tXq.cdY();
+    }
+    AppMethodBeat.o(322125);
+  }
+  
+  public final void cKn()
+  {
+    AppMethodBeat.i(322136);
+    this.qxC.i(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(273311);
+        AppMethodBeat.i(322510);
         if ((a.this.getParent() instanceof ViewGroup))
         {
           Log.i("MicroMsg.AppBrandAdLoadingSplash", "remove AdLoadingSplash");
           a.this.setVisibility(8);
           ((ViewGroup)a.this.getParent()).removeView(a.this);
-          a.b(a.this).bCC();
+          a.b(a.this).cbP();
         }
-        AppMethodBeat.o(273311);
+        AppMethodBeat.o(322510);
       }
     }, 0L);
-    AppMethodBeat.o(265631);
+    AppMethodBeat.o(322136);
   }
   
-  public final void eC(String paramString1, String paramString2)
+  public final boolean cbO()
   {
-    AppMethodBeat.i(265633);
-    if (this.qSK != null) {
-      this.qSK.eC(paramString1, paramString2);
+    AppMethodBeat.i(322139);
+    if ((this.tXq != null) && (indexOfChild(this.tXq) >= 0) && (this.tXq.getVisibility() == 0) && (u.Ux(this.qxC.mAppId).quV.qza))
+    {
+      AppMethodBeat.o(322139);
+      return true;
     }
-    AppMethodBeat.o(265633);
+    AppMethodBeat.o(322139);
+    return false;
   }
   
-  public final aa getInternalLoadingSplash()
+  public final void eT(String paramString1, String paramString2)
   {
-    return this.qSK;
+    AppMethodBeat.i(322145);
+    if (this.tXp != null) {
+      this.tXp.eT(paramString1, paramString2);
+    }
+    AppMethodBeat.o(322145);
+  }
+  
+  public final ah getInternalLoadingSplash()
+  {
+    return this.tXp;
+  }
+  
+  public final int getProgress()
+  {
+    AppMethodBeat.i(322176);
+    if ((this.tXp instanceof AppBrandUILoadingSplash))
+    {
+      int i = ((AppBrandUILoadingSplash)this.tXp).getProgress();
+      AppMethodBeat.o(322176);
+      return i;
+    }
+    AppMethodBeat.o(322176);
+    return -2;
   }
   
   public final f getRuntimeAdViewContainer()
   {
-    return this.qSL;
+    return this.tXq;
   }
   
   public final View getView()
@@ -179,29 +208,23 @@ public final class a
     return this;
   }
   
-  public final void o(boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(265630);
-    if (this.qSL != null) {
-      this.qSL.o(paramBoolean, paramString);
-    }
-    AppMethodBeat.o(265630);
-  }
-  
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(265627);
+    AppMethodBeat.i(322112);
     super.onAttachedToWindow();
     for (;;)
     {
       try
       {
+        if (h.y(this.qxC)) {
+          this.tXq.cdY();
+        }
         Object localObject1 = getContext().getResources().getConfiguration();
-        if ((this.nAH.getWindowAndroid() instanceof o))
+        if ((this.qxC.getWindowAndroid() instanceof o))
         {
-          Object localObject2 = AndroidContextUtil.castActivityOrNull(((o)this.nAH.getWindowAndroid()).mContext);
+          Object localObject2 = AndroidContextUtil.castActivityOrNull(((o)this.qxC.getWindowAndroid()).mContext);
           if (((Configuration)localObject1).orientation != 2) {
-            break label171;
+            break label198;
           }
           i = 1;
           if (((i == 0) || (localObject2 == null) || (Build.VERSION.SDK_INT < 24) || (!((Activity)localObject2).isInMultiWindowMode()) || (((Activity)localObject2).getRequestedOrientation() != 1)) && (localObject2 != null))
@@ -212,74 +235,58 @@ public final class a
             {
               ((Window)localObject1).addFlags(1024);
               ((View)localObject2).setSystemUiVisibility(((View)localObject2).getSystemUiVisibility() | 0x4 | 0x100);
-              AppMethodBeat.o(265627);
+              AppMethodBeat.o(322112);
               return;
             }
-            x.a((Window)localObject1, false, false);
+            if (!this.qxC.aqJ()) {
+              ae.a((Window)localObject1, false, false);
+            }
           }
         }
-        AppMethodBeat.o(265627);
+        AppMethodBeat.o(322112);
         return;
       }
       catch (Exception localException)
       {
         Log.e("MicroMsg.AppBrandAdLoadingSplash", "onAttachedToWindow exception", new Object[] { localException });
-        AppMethodBeat.o(265627);
+        AppMethodBeat.o(322112);
         return;
       }
-      label171:
+      label198:
       int i = 0;
     }
   }
   
   public final void setCanShowHideAnimation(boolean paramBoolean)
   {
-    AppMethodBeat.i(265639);
-    if ((this.qSK instanceof ad)) {
-      ((ad)this.qSK).setCanShowHideAnimation(paramBoolean);
+    AppMethodBeat.i(322166);
+    if ((this.tXp instanceof ak)) {
+      ((ak)this.tXp).setCanShowHideAnimation(paramBoolean);
     }
-    AppMethodBeat.o(265639);
+    AppMethodBeat.o(322166);
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(265635);
-    if (this.qSK != null) {
-      this.qSK.setProgress(paramInt);
+    AppMethodBeat.i(322156);
+    if (this.tXp != null) {
+      this.tXp.setProgress(paramInt);
     }
-    AppMethodBeat.o(265635);
+    AppMethodBeat.o(322156);
   }
   
-  public final void x(kotlin.g.a.a<kotlin.x> parama)
+  public final void yU(int paramInt)
   {
-    AppMethodBeat.i(265634);
-    if (this.qSK != null) {
-      this.qSK.x(parama);
+    AppMethodBeat.i(322162);
+    if ((this.tXp instanceof q)) {
+      ((q)this.tXp).yU(paramInt);
     }
-    AppMethodBeat.o(265634);
-  }
-  
-  public final void yL(int paramInt)
-  {
-    AppMethodBeat.i(265638);
-    if ((this.qSK instanceof p)) {
-      ((p)this.qSK).yL(paramInt);
-    }
-    AppMethodBeat.o(265638);
-  }
-  
-  public final void z(kotlin.g.a.a<kotlin.x> parama)
-  {
-    AppMethodBeat.i(265628);
-    if (this.qSM != null) {
-      this.qSM.bEQ();
-    }
-    AppMethodBeat.o(265628);
+    AppMethodBeat.o(322162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.a
  * JD-Core Version:    0.7.0.1
  */

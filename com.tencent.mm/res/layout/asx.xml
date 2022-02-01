@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/atk" android:background="@drawable/a6e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginTop="@dimen/df" android:layout_marginRight="@dimen/df" android:layout_marginBottom="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/cp" android:layout_alignParentStart="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/f2i" android:padding="2.0dip" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/wechat_icon" app:iconColor="@color/uj" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/uj" android:id="@id/axl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f1_" android:layout_marginStart="2.0dip" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/ale" android:background="@drawable/od" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/cd" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cd" android:layout_alignParentEnd="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/alf" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_close" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <FrameLayout android:id="@id/brl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+</LinearLayout>

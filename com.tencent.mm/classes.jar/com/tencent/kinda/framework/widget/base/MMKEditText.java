@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,15 +40,15 @@ import com.tencent.kinda.gen.TextAlign;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import com.tenpay.android.wechat.ISecureEncrypt;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import com.tenpay.android.wechat.TenpaySecureEncrypt;
@@ -58,7 +59,10 @@ public class MMKEditText
 {
   private ClearButtonMode clearButtonMode;
   protected TenpaySecureEditText editText;
+  private float expandSize;
   private DynamicColor hintColor;
+  private String hintText;
+  private boolean iconHadShow;
   private WalletIconImageView iconImageView;
   private KeyboardType keyboardType;
   protected BaseFrActivity mBaseFrActivity;
@@ -83,7 +87,21 @@ public class MMKEditText
     this.keyboardType = KeyboardType.NORMAL;
     this.clearButtonMode = ClearButtonMode.WHILEEDITING;
     this.mBaseFrActivity = null;
+    this.iconHadShow = false;
+    this.expandSize = 24.0F;
     AppMethodBeat.o(19021);
+  }
+  
+  private void setIconVisibility(int paramInt)
+  {
+    AppMethodBeat.i(226594);
+    this.iconImageView.setVisibility(paramInt);
+    if ((!this.iconHadShow) && (paramInt == 0))
+    {
+      MMKViewUtil.setExpandSize(this.iconImageView, this.expandSize, this.expandSize);
+      this.iconHadShow = true;
+    }
+    AppMethodBeat.o(226594);
   }
   
   public void callBackKindaTextEndEditing()
@@ -101,9 +119,10 @@ public class MMKEditText
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setGravity(16);
     this.editText = new TenpaySecureEditText(paramContext);
-    this.editText.setSingleLine();
+    this.editText.setSingleLine(false);
+    this.editText.setMaxLines(2);
     this.editText.setBackground(null);
-    this.editText.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), 17.0F));
+    this.editText.setTextSize(1, 17.0F * MMKViewUtil.getScaleSize(paramContext));
     this.editText.setTag(this);
     this.editText.setCursorStyle(R.drawable.green_cursor);
     this.editText.setPadding(0, 0, 0, 0);
@@ -120,17 +139,32 @@ public class MMKEditText
       {
         AppMethodBeat.i(19015);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        MMKEditText.this.editText.setText("");
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (MMKEditText.this.iconImageView.getVisibility() == 0) {
+          MMKEditText.this.editText.setText("");
+        }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(19015);
       }
     });
-    this.iconImageView.setVisibility(8);
-    localLayoutParams = new LinearLayout.LayoutParams(aw.fromDPToPix(paramContext, 16), aw.fromDPToPix(paramContext, 16));
-    localLayoutParams.setMargins(0, 0, aw.fromDPToPix(paramContext, 4), 0);
+    setIconVisibility(8);
+    localLayoutParams = new LinearLayout.LayoutParams(bd.fromDPToPix(paramContext, 16), bd.fromDPToPix(paramContext, 16));
+    localLayoutParams.setMargins(16, 0, bd.fromDPToPix(paramContext, 4), 0);
     localLinearLayout.addView(this.iconImageView, localLayoutParams);
+    localLinearLayout.post(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(226563);
+        if (MMKEditText.this.clearButtonMode != ClearButtonMode.NEVER)
+        {
+          MMKEditText.access$200(MMKEditText.this, 4);
+          MMKEditText.this.notifyChanged();
+        }
+        AppMethodBeat.o(226563);
+      }
+    });
     if ((paramContext instanceof BaseFrActivity)) {
       this.mBaseFrActivity = ((BaseFrActivity)paramContext);
     }
@@ -138,55 +172,64 @@ public class MMKEditText
     {
       public void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(19018);
+        AppMethodBeat.i(226568);
         if ((MMKEditText.this.onTextChangedCallback != null) && (paramAnonymousEditable != null)) {
           MMKEditText.this.onTextChangedCallback.onTextChanged(paramAnonymousEditable.toString());
         }
-        AppMethodBeat.o(19018);
+        if ((paramAnonymousEditable != null) && (!TextUtils.isEmpty(paramAnonymousEditable.toString()))) {
+          MMKEditText.this.editText.setHint("");
+        }
+        for (;;)
+        {
+          MMKEditText.this.notifyChanged();
+          AppMethodBeat.o(226568);
+          return;
+          MMKEditText.this.editText.setHint(MMKEditText.this.hintText);
+        }
       }
       
       public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(19016);
+        AppMethodBeat.i(226564);
         if ((MMKEditText.this.onTextBeginChangeCallback != null) && (paramAnonymousCharSequence != null)) {
           MMKEditText.this.onTextBeginChangeCallback.onTextBeginChange(paramAnonymousCharSequence.toString());
         }
-        AppMethodBeat.o(19016);
+        AppMethodBeat.o(226564);
       }
       
       public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(19017);
+        AppMethodBeat.i(226567);
         if (MMKEditText.this.clearButtonMode == ClearButtonMode.NEVER)
         {
-          MMKEditText.this.iconImageView.setVisibility(8);
-          AppMethodBeat.o(19017);
+          MMKEditText.access$200(MMKEditText.this, 8);
+          AppMethodBeat.o(226567);
           return;
         }
         if ((paramAnonymousCharSequence != null) && (paramAnonymousCharSequence.length() > 0) && (MMKEditText.this.clearButtonMode == ClearButtonMode.WHILEEDITING))
         {
-          MMKEditText.this.iconImageView.setVisibility(0);
-          AppMethodBeat.o(19017);
+          MMKEditText.access$200(MMKEditText.this, 0);
+          AppMethodBeat.o(226567);
           return;
         }
-        MMKEditText.this.iconImageView.setVisibility(4);
-        AppMethodBeat.o(19017);
+        MMKEditText.access$200(MMKEditText.this, 4);
+        AppMethodBeat.o(226567);
       }
     });
     this.editText.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(170122);
+        AppMethodBeat.i(226566);
         if ((MMKEditText.this.clearButtonMode == ClearButtonMode.WHILEEDITING) || (MMKEditText.this.clearButtonMode == ClearButtonMode.ALWAYS) || (MMKEditText.this.clearButtonMode == ClearButtonMode.UNLESSEDITING)) {}
         for (int i = 1; (paramAnonymousBoolean) && (MMKEditText.this.editText.getText().length() > 0) && (i != 0); i = 0)
         {
-          MMKEditText.this.iconImageView.setVisibility(0);
-          AppMethodBeat.o(170122);
+          MMKEditText.access$200(MMKEditText.this, 0);
+          AppMethodBeat.o(226566);
           return;
         }
-        MMKEditText.this.iconImageView.setVisibility(4);
-        AppMethodBeat.o(170122);
+        MMKEditText.access$200(MMKEditText.this, 4);
+        AppMethodBeat.o(226566);
       }
     });
     if (ColorUtil.ifCompatKindaDarkModeDefaultColor())
@@ -198,10 +241,10 @@ public class MMKEditText
     {
       public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(184745);
+        AppMethodBeat.i(226570);
         if (MMKEditText.this.editText.isFocused())
         {
-          AppMethodBeat.o(184745);
+          AppMethodBeat.o(226570);
           return false;
         }
         if (paramAnonymousMotionEvent.getAction() == 0)
@@ -210,13 +253,13 @@ public class MMKEditText
           if (paramAnonymousView != null)
           {
             paramAnonymousView.onClick(MMKEditText.this);
-            AppMethodBeat.o(184745);
+            AppMethodBeat.o(226570);
             return true;
           }
-          AppMethodBeat.o(184745);
+          AppMethodBeat.o(226570);
           return false;
         }
-        AppMethodBeat.o(184745);
+        AppMethodBeat.o(226570);
         return false;
       }
     });
@@ -229,17 +272,17 @@ public class MMKEditText
   
   public void enableConfirmBtn(boolean paramBoolean)
   {
-    AppMethodBeat.i(265311);
+    AppMethodBeat.i(226663);
     if (this.wcPayKeyboard != null) {
-      this.wcPayKeyboard.Ih(paramBoolean);
+      this.wcPayKeyboard.Oi(paramBoolean);
     }
-    AppMethodBeat.o(265311);
+    AppMethodBeat.o(226663);
   }
   
   public String encryptWith3Des()
   {
     AppMethodBeat.i(19039);
-    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(cm.bfC() / 1000L));
+    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(cn.bDu() / 1000L));
     AppMethodBeat.o(19039);
     return str;
   }
@@ -272,6 +315,12 @@ public class MMKEditText
     if (localObject != null)
     {
       localObject = ((CharSequence)localObject).toString();
+      AppMethodBeat.o(19030);
+      return localObject;
+    }
+    if (this.hintText != null)
+    {
+      localObject = this.hintText;
       AppMethodBeat.o(19030);
       return localObject;
     }
@@ -353,7 +402,7 @@ public class MMKEditText
     this.clearButtonMode = paramClearButtonMode;
     if (paramClearButtonMode == ClearButtonMode.NEVER)
     {
-      this.iconImageView.setVisibility(8);
+      setIconVisibility(8);
       AppMethodBeat.o(19038);
       return;
     }
@@ -361,11 +410,11 @@ public class MMKEditText
     {
       if (paramClearButtonMode == ClearButtonMode.ALWAYS)
       {
-        this.iconImageView.setVisibility(0);
+        setIconVisibility(0);
         AppMethodBeat.o(19038);
         return;
       }
-      this.iconImageView.setVisibility(4);
+      setIconVisibility(4);
     }
     AppMethodBeat.o(19038);
   }
@@ -389,12 +438,12 @@ public class MMKEditText
       {
         public void run()
         {
-          AppMethodBeat.i(264247);
+          AppMethodBeat.i(226578);
           MMKEditText.this.editText.requestFocus();
           if ((MMKEditText.this.keyboardType != KeyboardType.ID) && (MMKEditText.this.keyboardType != KeyboardType.CRETAIL) && (MMKEditText.this.keyboardType != KeyboardType.DIGIT)) {
             ((InputMethodManager)MMKEditText.this.mContext.getSystemService("input_method")).showSoftInput(MMKEditText.this.editText, 0);
           }
-          AppMethodBeat.o(264247);
+          AppMethodBeat.o(226578);
         }
       }, 50L);
       AppMethodBeat.o(19036);
@@ -410,6 +459,7 @@ public class MMKEditText
   public void setHint(String paramString)
   {
     AppMethodBeat.i(19029);
+    this.hintText = paramString;
     this.editText.setHint(paramString);
     notifyChanged();
     AppMethodBeat.o(19029);
@@ -427,7 +477,7 @@ public class MMKEditText
   {
     AppMethodBeat.i(19033);
     this.keyboardType = paramKeyboardType;
-    switch (9.$SwitchMap$com$tencent$kinda$gen$KeyboardType[paramKeyboardType.ordinal()])
+    switch (10.$SwitchMap$com$tencent$kinda$gen$KeyboardType[paramKeyboardType.ordinal()])
     {
     }
     for (;;)
@@ -456,11 +506,11 @@ public class MMKEditText
         {
           public void onVisibleStateChange(boolean paramAnonymousBoolean)
           {
-            AppMethodBeat.i(184746);
+            AppMethodBeat.i(226575);
             if ((!paramAnonymousBoolean) && (MMKEditText.this.editText.isFocused())) {
               MMKEditText.this.editText.clearFocus();
             }
-            AppMethodBeat.o(184746);
+            AppMethodBeat.o(226575);
           }
         });
         AppMethodBeat.o(19033);
@@ -472,7 +522,7 @@ public class MMKEditText
         {
           public boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, android.view.KeyEvent paramAnonymousKeyEvent)
           {
-            AppMethodBeat.i(263840);
+            AppMethodBeat.i(226574);
             Log.d("MMKEditText", "on eidtor action: %s", new Object[] { paramAnonymousKeyEvent });
             if ((paramAnonymousKeyEvent.getAction() == 1) && (paramAnonymousKeyEvent.getKeyCode() == 66))
             {
@@ -483,7 +533,7 @@ public class MMKEditText
                 MMKEditText.this.mKEditTextOnEditorActionCallback.onEditorAction(paramAnonymousTextView);
               }
             }
-            AppMethodBeat.o(263840);
+            AppMethodBeat.o(226574);
             return true;
           }
         });
@@ -524,14 +574,14 @@ public class MMKEditText
   
   public void setRestrictType(EditTextRestrictType paramEditTextRestrictType)
   {
-    AppMethodBeat.i(265310);
+    AppMethodBeat.i(226659);
     this.mRestriceType = paramEditTextRestrictType;
     if (this.mRestriceType == EditTextRestrictType.MONEY) {
       this.editText.addTextChangedListener(new TextWatcher()
       {
         public void afterTextChanged(Editable paramAnonymousEditable)
         {
-          AppMethodBeat.i(262902);
+          AppMethodBeat.i(226581);
           if (paramAnonymousEditable.toString().startsWith(".")) {
             paramAnonymousEditable.insert(0, "0");
           }
@@ -541,31 +591,31 @@ public class MMKEditText
           if ((i >= 0) && (j - i > 3))
           {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, i + 3, j);
-            AppMethodBeat.o(262902);
+            AppMethodBeat.o(226581);
             return;
           }
           if (i > 12)
           {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 12, i);
-            AppMethodBeat.o(262902);
+            AppMethodBeat.o(226581);
             return;
           }
           if ((i == -1) && (j > 10))
           {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 10, j);
-            AppMethodBeat.o(262902);
+            AppMethodBeat.o(226581);
             return;
           }
           if (!MMKEditText.this.editText.isMoneyAmount())
           {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, paramAnonymousEditable.length() - 1, paramAnonymousEditable.length());
-            AppMethodBeat.o(262902);
+            AppMethodBeat.o(226581);
             return;
           }
           if ((paramAnonymousEditable.length() > 1) && (paramAnonymousEditable.startsWith("0")) && (i == -1)) {
             WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 0, 1);
           }
-          AppMethodBeat.o(262902);
+          AppMethodBeat.o(226581);
         }
         
         public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
@@ -573,7 +623,7 @@ public class MMKEditText
         public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
     }
-    AppMethodBeat.o(265310);
+    AppMethodBeat.o(226659);
   }
   
   public void setSelection(int paramInt)
@@ -599,7 +649,7 @@ public class MMKEditText
     if (paramTextAlign != null)
     {
       this.textAlign = paramTextAlign;
-      switch (9.$SwitchMap$com$tencent$kinda$gen$TextAlign[this.textAlign.ordinal()])
+      switch (10.$SwitchMap$com$tencent$kinda$gen$TextAlign[this.textAlign.ordinal()])
       {
       }
     }
@@ -637,7 +687,7 @@ public class MMKEditText
     {
       if (i != -1)
       {
-        paramString = g.azI(i);
+        paramString = i.aGy(i);
         try
         {
           this.editText.setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), paramString));
@@ -677,8 +727,12 @@ public class MMKEditText
     AppMethodBeat.i(19025);
     if (paramFloat > 0.0F)
     {
-      this.textSize = paramFloat;
-      this.editText.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), paramFloat));
+      float f = 1.0F;
+      if (getSupportDynamicSize()) {
+        f = MMKViewUtil.getScaleSize(MMApplicationContext.getContext());
+      }
+      this.textSize = (f * paramFloat);
+      this.editText.setTextSize(1, this.textSize);
       notifyChanged();
     }
     AppMethodBeat.o(19025);
@@ -688,12 +742,12 @@ public class MMKEditText
   
   public void setViewId(String paramString)
   {
-    AppMethodBeat.i(265302);
+    AppMethodBeat.i(226615);
     super.setViewId(paramString);
     if (this.iconImageView != null) {
       MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
     }
-    AppMethodBeat.o(265302);
+    AppMethodBeat.o(226615);
   }
   
   public void setVisibleClearIcon(boolean paramBoolean)
@@ -701,17 +755,17 @@ public class MMKEditText
     AppMethodBeat.i(170125);
     if ((paramBoolean) && (this.editText.getText().length() > 0))
     {
-      this.iconImageView.setVisibility(0);
+      setIconVisibility(0);
       AppMethodBeat.o(170125);
       return;
     }
-    this.iconImageView.setVisibility(4);
+    setIconVisibility(4);
     AppMethodBeat.o(170125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKEditText
  * JD-Core Version:    0.7.0.1
  */

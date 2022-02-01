@@ -4,10 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.media.music.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,18 +14,18 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public class JsApiGetMusicPlayerState
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<e>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
   public static final int CTRL_INDEX = 46;
   public static final String NAME = "getMusicPlayerState";
-  private GetMusicPlayerState ozu;
+  private GetMusicPlayerState rDn;
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(145726);
-    this.ozu = new GetMusicPlayerState(this, parame, paramInt);
-    this.ozu.mAppid = parame.getAppId();
-    this.ozu.bsM();
+    this.rDn = new GetMusicPlayerState(this, paramf, paramInt);
+    this.rDn.mAppid = paramf.getAppId();
+    this.rDn.bQt();
     AppMethodBeat.o(145726);
   }
   
@@ -35,17 +33,17 @@ public class JsApiGetMusicPlayerState
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetMusicPlayerState> CREATOR;
-    public int alM;
+    public int cam;
     public boolean error;
     public String mAppid;
     public int mPosition;
     public int mStatus;
-    public String mvQ;
-    private int okO;
-    private o ovN;
-    private e ovO;
-    public int ozv;
-    public String ozw;
+    public String ppp;
+    public int rDo;
+    public String rDp;
+    private int ror;
+    private p rzh;
+    private com.tencent.mm.plugin.appbrand.jsapi.f rzi;
     
     static
     {
@@ -58,59 +56,59 @@ public class JsApiGetMusicPlayerState
     {
       AppMethodBeat.i(145720);
       this.error = false;
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(145720);
     }
     
-    public GetMusicPlayerState(o paramo, e parame, int paramInt)
+    public GetMusicPlayerState(p paramp, com.tencent.mm.plugin.appbrand.jsapi.f paramf, int paramInt)
     {
       this.error = false;
-      this.ovN = paramo;
-      this.ovO = parame;
-      this.okO = paramInt;
+      this.rzh = paramp;
+      this.rzi = paramf;
+      this.ror = paramInt;
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(145721);
-      Object localObject = a.a.cbh().qdn;
+      Object localObject = a.a.cBB().tib;
       if ((!Util.isNullOrNil((String)localObject)) && (!((String)localObject).equals(this.mAppid)))
       {
         Log.i("MicroMsg.JsApiGetMusicPlayerState", "appid not match cannot operate");
         this.error = true;
-        this.mvQ = "appid not match cannot operate";
-        bPt();
+        this.ppp = "appid not match cannot operate";
+        cpA();
         AppMethodBeat.o(145721);
         return;
       }
-      localObject = com.tencent.mm.bb.a.bnA();
+      localObject = com.tencent.mm.aw.a.bLn();
       int j;
       int i;
       if (localObject != null)
       {
-        com.tencent.mm.bb.c localc = com.tencent.mm.bb.a.bnB();
+        com.tencent.mm.aw.c localc = com.tencent.mm.aw.a.bLo();
         if (localc == null) {
           break label232;
         }
-        j = localc.alM;
+        j = localc.cam;
         i = localc.mPosition;
         this.mStatus = localc.mStatus;
-        this.ozv = localc.lVo;
+        this.rDo = localc.oOq;
       }
       for (;;)
       {
-        this.alM = (j / 1000);
+        this.cam = (j / 1000);
         this.mPosition = (i / 1000);
-        this.ozw = ((f)localObject).lVz;
-        this.mvQ = "";
+        this.rDp = ((com.tencent.mm.aw.f)localObject).oOB;
+        this.ppp = "";
         for (this.error = false;; this.error = false)
         {
-          Log.i("MicroMsg.JsApiGetMusicPlayerState", "duration %d , position %d ,status %s , downloadpercent %d , dataurl %s", new Object[] { Integer.valueOf(this.alM), Integer.valueOf(this.mPosition), Integer.valueOf(this.mStatus), Integer.valueOf(this.ozv), this.ozw });
-          bPt();
+          Log.i("MicroMsg.JsApiGetMusicPlayerState", "duration %d , position %d ,status %s , downloadpercent %d , dataurl %s", new Object[] { Integer.valueOf(this.cam), Integer.valueOf(this.mPosition), Integer.valueOf(this.mStatus), Integer.valueOf(this.rDo), this.rDp });
+          cpA();
           AppMethodBeat.o(145721);
           return;
           this.mStatus = 2;
-          this.mvQ = "";
+          this.ppp = "";
         }
         label232:
         i = -1;
@@ -118,37 +116,37 @@ public class JsApiGetMusicPlayerState
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(145722);
       HashMap localHashMap = new HashMap();
-      localHashMap.put("duration", Integer.valueOf(this.alM));
+      localHashMap.put("duration", Integer.valueOf(this.cam));
       localHashMap.put("currentPosition", Integer.valueOf(this.mPosition));
       localHashMap.put("status", Integer.valueOf(this.mStatus));
-      localHashMap.put("downloadPercent", Integer.valueOf(this.ozv));
-      localHashMap.put("dataUrl", this.ozw);
-      e locale = this.ovO;
-      int i = this.okO;
-      o localo = this.ovN;
+      localHashMap.put("downloadPercent", Integer.valueOf(this.rDo));
+      localHashMap.put("dataUrl", this.rDp);
+      com.tencent.mm.plugin.appbrand.jsapi.f localf = this.rzi;
+      int i = this.ror;
+      p localp = this.rzh;
       StringBuilder localStringBuilder;
       if (this.error)
       {
         localStringBuilder = new StringBuilder("fail");
-        if (TextUtils.isEmpty(this.mvQ)) {
+        if (TextUtils.isEmpty(this.ppp)) {
           str = "";
         }
       }
       for (String str = str;; str = "ok")
       {
-        locale.j(i, localo.m(str, localHashMap));
+        localf.callback(i, localp.m(str, localHashMap));
         AppMethodBeat.o(145722);
         return;
-        str = ":" + this.mvQ;
+        str = ":" + this.ppp;
         break;
       }
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(145723);
       this.mAppid = paramParcel.readString();
@@ -156,12 +154,12 @@ public class JsApiGetMusicPlayerState
       for (boolean bool = true;; bool = false)
       {
         this.error = bool;
-        this.alM = paramParcel.readInt();
+        this.cam = paramParcel.readInt();
         this.mPosition = paramParcel.readInt();
         this.mStatus = paramParcel.readInt();
-        this.ozv = paramParcel.readInt();
-        this.ozw = paramParcel.readString();
-        this.mvQ = paramParcel.readString();
+        this.rDo = paramParcel.readInt();
+        this.rDp = paramParcel.readString();
+        this.ppp = paramParcel.readString();
         AppMethodBeat.o(145723);
         return;
       }
@@ -175,12 +173,12 @@ public class JsApiGetMusicPlayerState
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeInt(this.alM);
+        paramParcel.writeInt(this.cam);
         paramParcel.writeInt(this.mPosition);
         paramParcel.writeInt(this.mStatus);
-        paramParcel.writeInt(this.ozv);
-        paramParcel.writeString(this.ozw);
-        paramParcel.writeString(this.mvQ);
+        paramParcel.writeInt(this.rDo);
+        paramParcel.writeString(this.rDp);
+        paramParcel.writeString(this.ppp);
         AppMethodBeat.o(145724);
         return;
       }

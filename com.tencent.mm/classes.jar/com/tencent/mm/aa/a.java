@@ -1,7 +1,6 @@
 package com.tencent.mm.aa;
 
 import android.os.Looper;
-import android.os.Message;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
@@ -9,7 +8,7 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.at.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,76 +16,27 @@ import java.util.Iterator;
 
 public final class a
 {
-  static a jXy;
+  static a mxs;
   private MMHandler handler;
   public boolean initialized;
-  private final int jXA;
-  private final int jXB;
-  public b jXz;
-  ArrayList<WeakReference<a>> listeners;
+  ArrayList<WeakReference<a.a>> listeners;
+  public b mxt;
+  private final int mxu;
+  private final int mxv;
   
   public a()
   {
     AppMethodBeat.i(150038);
-    this.jXz = new b();
+    this.mxt = new b();
     this.listeners = new ArrayList();
     this.initialized = false;
-    this.jXA = 0;
-    this.jXB = 1;
-    this.handler = new MMHandler(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(150037);
-        if ((paramAnonymousMessage.what == 0) && ((paramAnonymousMessage.obj instanceof a.b)))
-        {
-          paramAnonymousMessage = (a.b)paramAnonymousMessage.obj;
-          if (paramAnonymousMessage.jXE != null)
-          {
-            a locala = a.this;
-            Object localObject2 = paramAnonymousMessage.jXE;
-            paramAnonymousMessage = null;
-            Iterator localIterator = locala.listeners.iterator();
-            Object localObject1;
-            while (localIterator.hasNext())
-            {
-              WeakReference localWeakReference = (WeakReference)localIterator.next();
-              if ((localWeakReference != null) && (localWeakReference.get() != null))
-              {
-                ((a.a)localWeakReference.get()).b((ar.a)localObject2);
-              }
-              else
-              {
-                localObject1 = paramAnonymousMessage;
-                if (paramAnonymousMessage == null) {
-                  localObject1 = new ArrayList();
-                }
-                ((ArrayList)localObject1).add(localWeakReference);
-                paramAnonymousMessage = (Message)localObject1;
-              }
-            }
-            if (paramAnonymousMessage != null)
-            {
-              localObject1 = paramAnonymousMessage.iterator();
-              while (((Iterator)localObject1).hasNext())
-              {
-                localObject2 = (WeakReference)((Iterator)localObject1).next();
-                locala.listeners.remove(localObject2);
-              }
-              paramAnonymousMessage.clear();
-            }
-            AppMethodBeat.o(150037);
-            return;
-          }
-          a.a(a.this, paramAnonymousMessage.jXD, paramAnonymousMessage.value);
-        }
-        AppMethodBeat.o(150037);
-      }
-    };
+    this.mxu = 0;
+    this.mxv = 1;
+    this.handler = new a.1(this, Looper.getMainLooper());
     AppMethodBeat.o(150038);
   }
   
-  private void a(ar.a parama, int paramInt, String paramString)
+  private void a(at.a parama, int paramInt, String paramString)
   {
     AppMethodBeat.i(150045);
     if (!this.initialized)
@@ -95,12 +45,12 @@ public final class a
       AppMethodBeat.o(150045);
       return;
     }
-    this.jXz.b(parama, paramInt, paramString);
-    this.handler.sendMessage(this.handler.obtainMessage(0, new b(parama, paramInt, paramString)));
+    this.mxt.b(parama, paramInt, paramString);
+    this.handler.sendMessage(this.handler.obtainMessage(0, new a.b(this, parama, paramInt, paramString)));
     AppMethodBeat.o(150045);
   }
   
-  private void f(int paramInt1, int paramInt2, String paramString)
+  private void g(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(150044);
     if (!this.initialized)
@@ -109,8 +59,8 @@ public final class a
       AppMethodBeat.o(150044);
       return;
     }
-    this.jXz.g(paramInt1, paramInt2, paramString);
-    this.handler.sendMessage(this.handler.obtainMessage(0, new b(paramInt1, paramInt2, paramString)));
+    this.mxt.h(paramInt1, paramInt2, paramString);
+    this.handler.sendMessage(this.handler.obtainMessage(0, new a.b(this, paramInt1, paramInt2, paramString)));
     AppMethodBeat.o(150044);
   }
   
@@ -127,31 +77,31 @@ public final class a
     return i;
   }
   
-  public final void C(int paramInt, boolean paramBoolean)
+  public final void Q(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(150040);
     if (!paramBoolean) {}
     for (String str = "0";; str = "1")
     {
-      f(paramInt, 1, str);
+      g(paramInt, 1, str);
       AppMethodBeat.o(150040);
       return;
     }
   }
   
-  public final void D(int paramInt, boolean paramBoolean)
+  public final void R(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(150042);
     if (!paramBoolean) {}
     for (String str = "0";; str = "1")
     {
-      f(paramInt, 2, str);
+      g(paramInt, 2, str);
       AppMethodBeat.o(150042);
       return;
     }
   }
   
-  public final void a(a parama)
+  public final void a(a.a parama)
   {
     AppMethodBeat.i(150056);
     if (!this.initialized)
@@ -164,7 +114,7 @@ public final class a
     AppMethodBeat.o(150056);
   }
   
-  public final void a(ar.a parama, boolean paramBoolean)
+  public final void a(at.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(150041);
     if (!paramBoolean) {}
@@ -176,7 +126,7 @@ public final class a
     }
   }
   
-  public final boolean a(ar.a parama)
+  public final boolean a(at.a parama)
   {
     AppMethodBeat.i(150054);
     if (!this.initialized)
@@ -185,7 +135,7 @@ public final class a
       AppMethodBeat.o(150054);
       return false;
     }
-    parama = this.jXz.f(parama);
+    parama = this.mxt.f(parama);
     if (parama == null)
     {
       AppMethodBeat.o(150054);
@@ -200,7 +150,7 @@ public final class a
     return true;
   }
   
-  public final boolean a(ar.a parama, int paramInt)
+  public final boolean a(at.a parama, int paramInt)
   {
     AppMethodBeat.i(150050);
     if (!this.initialized)
@@ -209,7 +159,7 @@ public final class a
       AppMethodBeat.o(150050);
       return false;
     }
-    b localb = this.jXz;
+    b localb = this.mxt;
     Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceKey %s, watcherId %d, type %d", new Object[] { parama, Integer.valueOf(paramInt), Integer.valueOf(2) });
     b.a locala = localb.f(parama);
     if (locala == null)
@@ -228,11 +178,11 @@ public final class a
       }
       else
       {
-        b.b localb1 = localb.sl(paramInt);
+        b.b localb1 = localb.sh(paramInt);
         if (localb1 != null)
         {
-          String str = (String)localb1.jXQ.get(parama.name());
-          if ((str != null) && (str.equals(locala.fAo)))
+          String str = (String)localb1.mxK.get(parama.name());
+          if ((str != null) && (str.equals(locala.hFb)))
           {
             parama = null;
           }
@@ -240,8 +190,8 @@ public final class a
           {
             if (str == null)
             {
-              str = localb.aFl();
-              localb1.jXQ.put(parama.name(), str);
+              str = localb.aYm();
+              localb1.mxK.put(parama.name(), str);
               localb.a(localb1);
             }
             parama = locala;
@@ -263,7 +213,7 @@ public final class a
     return true;
   }
   
-  public final boolean a(ar.a parama1, ar.a parama2)
+  public final boolean a(at.a parama1, at.a parama2)
   {
     AppMethodBeat.i(150047);
     if (!this.initialized)
@@ -272,7 +222,7 @@ public final class a
       AppMethodBeat.o(150047);
       return false;
     }
-    parama1 = this.jXz.a(parama1, parama2, 1);
+    parama1 = this.mxt.a(parama1, parama2, 1);
     if (parama1 == null)
     {
       AppMethodBeat.o(150047);
@@ -287,31 +237,31 @@ public final class a
     return true;
   }
   
-  public final boolean aFk()
+  public final boolean aYl()
   {
-    AppMethodBeat.i(219285);
+    AppMethodBeat.i(231263);
     if (!this.initialized)
     {
       Log.w("MicroMsg.NewBadge", "queryHasDotSourceValue NewBadge has not initialized");
-      AppMethodBeat.o(219285);
+      AppMethodBeat.o(231263);
       return false;
     }
-    b.a locala = this.jXz.sk(352280);
+    b.a locala = this.mxt.sg(352280);
     if (locala == null)
     {
-      AppMethodBeat.o(219285);
+      AppMethodBeat.o(231263);
       return false;
     }
     if (parseInt(locala.value) == 0)
     {
-      AppMethodBeat.o(219285);
+      AppMethodBeat.o(231263);
       return false;
     }
-    AppMethodBeat.o(219285);
+    AppMethodBeat.o(231263);
     return true;
   }
   
-  public final void b(a parama)
+  public final void b(a.a parama)
   {
     AppMethodBeat.i(150057);
     if (!this.initialized)
@@ -355,7 +305,7 @@ public final class a
     AppMethodBeat.o(150057);
   }
   
-  public final void b(ar.a parama, int paramInt)
+  public final void b(at.a parama, int paramInt)
   {
     AppMethodBeat.i(150053);
     if (!this.initialized)
@@ -364,7 +314,7 @@ public final class a
       AppMethodBeat.o(150053);
       return;
     }
-    b localb = this.jXz;
+    b localb = this.mxt;
     Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, doWatch %s, watcherKey %d", new Object[] { parama, Integer.valueOf(paramInt) });
     b.a locala = localb.f(parama);
     if (locala == null) {
@@ -375,20 +325,20 @@ public final class a
       this.handler.sendMessage(this.handler.obtainMessage(1, new c(paramInt, parama)));
       AppMethodBeat.o(150053);
       return;
-      b.b localb2 = localb.sl(paramInt);
+      b.b localb2 = localb.sh(paramInt);
       b.b localb1 = localb2;
       if (localb2 == null)
       {
         Log.e("MicroMsg.NewBadgeDecoder", "[carl] doWatch, watcher == null, do some fix");
-        localb1 = localb.sj(paramInt);
-        localb.jXJ.put(paramInt, localb1);
+        localb1 = localb.sf(paramInt);
+        localb.mxD.put(paramInt, localb1);
       }
-      localb1.jXQ.put(parama.name(), locala.fAo);
+      localb1.mxK.put(parama.name(), locala.hFb);
       localb.a(localb1);
     }
   }
   
-  public final void b(ar.a parama, boolean paramBoolean)
+  public final void b(at.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(150043);
     if (!paramBoolean) {}
@@ -400,7 +350,7 @@ public final class a
     }
   }
   
-  public final boolean b(ar.a parama1, ar.a parama2)
+  public final boolean b(at.a parama1, at.a parama2)
   {
     AppMethodBeat.i(150049);
     if (!this.initialized)
@@ -409,7 +359,7 @@ public final class a
       AppMethodBeat.o(150049);
       return false;
     }
-    parama1 = this.jXz.a(parama1, parama2, 2);
+    parama1 = this.mxt.a(parama1, parama2, 2);
     if (parama1 == null)
     {
       AppMethodBeat.o(150049);
@@ -424,7 +374,7 @@ public final class a
     return true;
   }
   
-  public final void c(ar.a parama1, ar.a parama2)
+  public final void c(at.a parama1, at.a parama2)
   {
     AppMethodBeat.i(150052);
     if (!this.initialized)
@@ -433,12 +383,12 @@ public final class a
       AppMethodBeat.o(150052);
       return;
     }
-    this.jXz.d(parama1, parama2);
+    this.mxt.d(parama1, parama2);
     this.handler.sendMessage(this.handler.obtainMessage(1, new c(parama2, parama1)));
     AppMethodBeat.o(150052);
   }
   
-  public final boolean dj(int paramInt1, int paramInt2)
+  public final boolean dV(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(150046);
     if (!this.initialized)
@@ -447,7 +397,7 @@ public final class a
       AppMethodBeat.o(150046);
       return false;
     }
-    b.a locala = this.jXz.N(paramInt1, paramInt2, 1);
+    b.a locala = this.mxt.ac(paramInt1, paramInt2, 1);
     if (locala == null)
     {
       AppMethodBeat.o(150046);
@@ -462,7 +412,7 @@ public final class a
     return true;
   }
   
-  public final boolean dk(int paramInt1, int paramInt2)
+  public final boolean dW(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(150048);
     if (!this.initialized)
@@ -471,7 +421,7 @@ public final class a
       AppMethodBeat.o(150048);
       return false;
     }
-    b.a locala = this.jXz.N(paramInt1, paramInt2, 2);
+    b.a locala = this.mxt.ac(paramInt1, paramInt2, 2);
     if (locala == null)
     {
       AppMethodBeat.o(150048);
@@ -486,7 +436,7 @@ public final class a
     return true;
   }
   
-  public final void dl(int paramInt1, int paramInt2)
+  public final void dX(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(150051);
     if (!this.initialized)
@@ -495,9 +445,9 @@ public final class a
       AppMethodBeat.o(150051);
       return;
     }
-    b localb = this.jXz;
+    b localb = this.mxt;
     Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, doWatch %d, watcherId %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    b.a locala = localb.sk(paramInt1);
+    b.a locala = localb.sg(paramInt1);
     if (locala == null) {
       Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, dataSource == null");
     }
@@ -506,15 +456,15 @@ public final class a
       this.handler.sendMessage(this.handler.obtainMessage(1, new c(paramInt2, paramInt1)));
       AppMethodBeat.o(150051);
       return;
-      b.b localb2 = localb.sl(paramInt2);
+      b.b localb2 = localb.sh(paramInt2);
       b.b localb1 = localb2;
       if (localb2 == null)
       {
         Log.e("MicroMsg.NewBadgeDecoder", "[carl] doWatch, watcher == null, do some fix");
-        localb1 = localb.sj(paramInt2);
-        localb.jXJ.put(paramInt2, localb1);
+        localb1 = localb.sf(paramInt2);
+        localb.mxD.put(paramInt2, localb1);
       }
-      localb1.jXP.put(paramInt1, locala.fAo);
+      localb1.mxJ.put(paramInt1, locala.hFb);
       localb.a(localb1);
     }
   }
@@ -523,68 +473,39 @@ public final class a
   {
     AppMethodBeat.i(150039);
     this.initialized = true;
-    this.jXz.jXM = h.aHG().aHp();
+    this.mxt.mxG = h.baE().ban();
     AppMethodBeat.o(150039);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void E(int paramInt, String paramString);
-    
-    public abstract void b(ar.a parama);
-  }
-  
-  final class b
-  {
-    int jXD;
-    ar.a jXE;
-    int type;
-    String value;
-    
-    public b(int paramInt1, int paramInt2, String paramString)
-    {
-      this.jXD = paramInt1;
-      this.type = paramInt2;
-      this.value = paramString;
-    }
-    
-    public b(ar.a parama, int paramInt, String paramString)
-    {
-      this.jXE = parama;
-      this.type = paramInt;
-      this.value = paramString;
-    }
   }
   
   final class c
   {
-    int jXD;
-    ar.a jXE;
-    int jXF;
-    ar.a jXG;
+    at.a mxA;
+    int mxx;
+    at.a mxy;
+    int mxz;
     
     public c(int paramInt1, int paramInt2)
     {
-      this.jXF = paramInt1;
-      this.jXD = paramInt2;
+      this.mxz = paramInt1;
+      this.mxx = paramInt2;
     }
     
-    public c(int paramInt, ar.a parama)
+    public c(int paramInt, at.a parama)
     {
-      this.jXF = paramInt;
-      this.jXE = parama;
+      this.mxz = paramInt;
+      this.mxy = parama;
     }
     
-    public c(ar.a parama1, ar.a parama2)
+    public c(at.a parama1, at.a parama2)
     {
-      this.jXG = parama1;
-      this.jXE = parama2;
+      this.mxA = parama1;
+      this.mxy = parama2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.aa.a
  * JD-Core Version:    0.7.0.1
  */

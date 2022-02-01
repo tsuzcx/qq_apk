@@ -1,98 +1,78 @@
 package com.tencent.mm.plugin.thumbplayer.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.d.b.a.b;
-import kotlin.d.b.a.j;
+import kotlin.ah;
+import kotlin.d.b.a.k;
 import kotlin.d.d;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.aw;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.bb;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
 final class ThumbPlayerVideoView$m
-  extends j
-  implements m<ak, d<? super x>, Object>
+  extends k
+  implements m<aq, d<? super ah>, Object>
 {
-  Object L$0;
   int label;
-  private ak p$;
   
-  ThumbPlayerVideoView$m(ThumbPlayerVideoView paramThumbPlayerVideoView, d paramd)
+  ThumbPlayerVideoView$m(ThumbPlayerVideoView paramThumbPlayerVideoView, d<? super m> paramd)
   {
     super(2, paramd);
   }
   
-  public final d<x> create(Object paramObject, d<?> paramd)
+  public final d<ah> create(Object paramObject, d<?> paramd)
   {
-    AppMethodBeat.i(191576);
-    p.k(paramd, "completion");
-    paramd = new m(this.MUS, paramd);
-    paramd.p$ = ((ak)paramObject);
-    AppMethodBeat.o(191576);
-    return paramd;
-  }
-  
-  public final Object invoke(Object paramObject1, Object paramObject2)
-  {
-    AppMethodBeat.i(191580);
-    paramObject1 = ((m)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-    AppMethodBeat.o(191580);
-    return paramObject1;
+    AppMethodBeat.i(272339);
+    paramObject = (d)new m(this.THu, paramd);
+    AppMethodBeat.o(272339);
+    return paramObject;
   }
   
   public final Object invokeSuspend(Object paramObject)
   {
-    AppMethodBeat.i(191569);
-    kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-    Object localObject;
+    AppMethodBeat.i(272332);
+    kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
     switch (this.label)
     {
     default: 
       paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-      AppMethodBeat.o(191569);
+      AppMethodBeat.o(272332);
       throw paramObject;
     case 0: 
       ResultKt.throwOnFailure(paramObject);
-      localObject = this.p$;
     }
     for (;;)
     {
-      this.L$0 = localObject;
+      paramObject = (d)this;
       this.label = 1;
-      paramObject = localObject;
-      if (aw.a(500L, this) == locala)
+      if (bb.e(500L, paramObject) == locala)
       {
-        AppMethodBeat.o(191569);
+        AppMethodBeat.o(272332);
         return locala;
-        localObject = (ak)this.L$0;
         ResultKt.throwOnFailure(paramObject);
-        paramObject = localObject;
       }
-      localObject = ThumbPlayerVideoView.a(this.MUS);
-      if (localObject == null) {
-        break;
-      }
-      long l = b.Xu(((com.tencent.mm.plugin.thumbplayer.f.a)localObject).getCurrentPositionMs()).longValue();
-      ThumbPlayerVideoView.d locald = this.MUS.getProgressListener();
-      localObject = paramObject;
-      if (locald != null)
+      paramObject = ThumbPlayerVideoView.c(this.THu);
+      if (paramObject == null) {}
+      for (paramObject = null; paramObject == null; paramObject = kotlin.d.b.a.b.BF(paramObject.getCurrentPositionMs()))
       {
-        locald.Np(l);
-        localObject = paramObject;
+        paramObject = ah.aiuX;
+        AppMethodBeat.o(272332);
+        return paramObject;
       }
+      long l = paramObject.longValue();
+      paramObject = this.THu.getProgressListener();
+      if (paramObject != null) {
+        paramObject.qT(l);
+      }
+      ThumbPlayerVideoView.a(this.THu, (kotlin.g.a.b)new ThumbPlayerVideoView.m.1(l));
     }
-    paramObject = x.aazN;
-    AppMethodBeat.o(191569);
-    return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.view.ThumbPlayerVideoView.m
  * JD-Core Version:    0.7.0.1
  */

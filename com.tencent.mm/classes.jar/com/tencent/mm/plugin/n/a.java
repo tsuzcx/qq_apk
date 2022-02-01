@@ -4,7 +4,7 @@ public final class a
 {
   public static final class a
   {
-    public static final int mm_webview_progress_horizontal = 2131234112;
+    public static final int mm_webview_progress_horizontal = 2131233519;
   }
   
   public static final class b
@@ -14,7 +14,7 @@ public final class a
   
   public static final class c
   {
-    public static final int host_weixin_qq_com = 2131762121;
+    public static final int host_weixin_qq_com = 2131763776;
   }
 }
 

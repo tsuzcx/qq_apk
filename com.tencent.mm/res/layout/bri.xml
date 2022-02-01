@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:id="@id/ivo" android:padding="@dimen/g" android:layout_width="@dimen/il" android:layout_height="@dimen/il" android:src="@drawable/bcb" />
-        <ImageView android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/ivp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/en" />
-    </FrameLayout>
-    <TextView android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/ivt" android:layout_width="@dimen/ij" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerHorizontal="true" />
-</LinearLayout>
+    <FrameLayout android:layout_gravity="top" android:id="@id/hx2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.view.TouchableLayout android:layout_gravity="top" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/fpj" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.view.RefreshLoadMoreLayout android:gravity="top" android:orientation="vertical" android:id="@id/ijr" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <androidx.recyclerview.widget.RecyclerView android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </com.tencent.mm.view.RefreshLoadMoreLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <FrameLayout android:id="@id/hx3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:layout_gravity="bottom" android:id="@id/hx1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.view.TouchableLayout>
+</merge>

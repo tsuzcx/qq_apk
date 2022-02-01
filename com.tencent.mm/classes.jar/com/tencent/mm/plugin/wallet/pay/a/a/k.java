@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import java.util.Map;
@@ -17,18 +15,18 @@ public final class k
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  protected final void aR(Map<String, String> paramMap)
+  protected final void bi(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69273);
-    paramMap.put("busi_scene", this.OxB.fvP);
+    paramMap.put("busi_scene", this.VmM.hAk);
     AppMethodBeat.o(69273);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(69274);
-    h.IzE.idkeyStat(663L, 24L, 1L, false);
-    int i = super.doScene(paramg, parami);
+    com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 24L, 1L, false);
+    int i = super.doScene(paramg, paramh);
     AppMethodBeat.o(69274);
     return i;
   }
@@ -48,14 +46,14 @@ public final class k
     AppMethodBeat.i(69275);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0) {
-      h.IzE.idkeyStat(663L, 25L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(663L, 25L, 1L, false);
     }
     AppMethodBeat.o(69275);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a.k
  * JD-Core Version:    0.7.0.1
  */

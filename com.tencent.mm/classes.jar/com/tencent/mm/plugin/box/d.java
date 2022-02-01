@@ -17,10 +17,10 @@ public abstract interface d
   
   public static class a
   {
-    public String snR;
-    public int snS;
-    public String snT;
-    public String snU;
+    public String vzP;
+    public int vzQ;
+    public String vzR;
+    public String vzS;
   }
 }
 

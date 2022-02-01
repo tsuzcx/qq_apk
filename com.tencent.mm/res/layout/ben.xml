@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cl"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/fqy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/is" android:textColor="@color/a2x" android:textColorHint="@color/uj" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fqx" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g" android:minWidth="32.0dip" android:minHeight="@dimen/hj" android:hint="@string/yn" android:singleLine="true" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a70" />
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/kpd" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/lw0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m4" />
+    <TextView android:layout_gravity="center|right" android:id="@id/kaj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m6" />
 </LinearLayout>

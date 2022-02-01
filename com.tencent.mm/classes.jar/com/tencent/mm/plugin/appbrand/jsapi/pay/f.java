@@ -2,8 +2,6 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -13,26 +11,26 @@ public final class f
   public static final int CTRL_INDEX = 680;
   public static final String NAME = "openWCPayOverseaPaymentReceive";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(46721);
     Log.i("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "invoke JsApiOpenWCPayOverseaPaymentReceive!");
-    if (parame == null)
+    if (paramf == null)
     {
       Log.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:component is null");
       AppMethodBeat.o(46721);
       return;
     }
-    paramJSONObject = parame.getContext();
+    paramJSONObject = paramf.getContext();
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.JsApiOpenWCPayOverseaPaymentReceive", "fail:context is null");
-      parame.j(paramInt, h("fail", null));
+      paramf.callback(paramInt, ZP("fail"));
       AppMethodBeat.o(46721);
       return;
     }
-    com.tencent.mm.pluginsdk.wallet.f.aV(paramJSONObject, 7);
-    parame.j(paramInt, h("ok", null));
+    com.tencent.mm.pluginsdk.wallet.f.bo(paramJSONObject, 7);
+    paramf.callback(paramInt, ZP("ok"));
     AppMethodBeat.o(46721);
   }
 }

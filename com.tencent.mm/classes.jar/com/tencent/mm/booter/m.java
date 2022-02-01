@@ -1,11 +1,9 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.i;
+import com.tencent.mm.k.f;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcSharedPreferences.DynamicConfigStorage;
@@ -15,9 +13,9 @@ public final class m
   public static void run()
   {
     AppMethodBeat.i(19897);
-    int i = h.axc().getInt("EnableFlockMultiProcSPProb", 0);
-    bh.beI();
-    int j = i.cA(c.getUin(), 101);
+    int i = com.tencent.mm.k.i.aRC().getInt("EnableFlockMultiProcSPProb", 0);
+    bh.bCz();
+    int j = com.tencent.mm.b.i.jdMethod_do(c.getUin(), 101);
     if ((CrashReportFactory.hasDebuger()) || ((i > 0) && (j >= 0) && (j <= i))) {}
     for (boolean bool = true;; bool = false)
     {

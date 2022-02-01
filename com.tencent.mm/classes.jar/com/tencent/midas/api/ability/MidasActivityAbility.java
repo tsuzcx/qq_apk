@@ -19,7 +19,7 @@ public class MidasActivityAbility
   
   public void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(253492);
+    AppMethodBeat.i(217434);
     super.fromBundle(paramBundle);
     this.payItem = paramBundle.getString("__midas_ability_activity__payItem");
     this.area = paramBundle.getString("__midas_ability_activity__area");
@@ -33,12 +33,12 @@ public class MidasActivityAbility
     if (paramBundle != null) {
       this.shareInfo = MidasActivityAbility.AbsShare.createChild(paramBundle);
     }
-    AppMethodBeat.o(253492);
+    AppMethodBeat.o(217434);
   }
   
   public Bundle toBundle()
   {
-    AppMethodBeat.i(253490);
+    AppMethodBeat.i(217426);
     Bundle localBundle = super.toBundle();
     localBundle.putString("__midas_ability_activity__payItem", this.payItem);
     localBundle.putString("__midas_ability_activity__area", this.area);
@@ -51,21 +51,21 @@ public class MidasActivityAbility
     if (this.shareInfo != null) {
       localBundle.putBundle("__midas_ability_activity__shareInfo", this.shareInfo.toBundle());
     }
-    AppMethodBeat.o(253490);
+    AppMethodBeat.o(217426);
     return localBundle;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(253493);
+    AppMethodBeat.i(217443);
     String str = super.toString() + "|payItem=" + this.payItem + "|area=" + this.area + "|platId=" + this.platId + "|partition=" + this.partition + "|roleId=" + this.roleId + "|roleName=" + this.roleName + "|action=" + this.action + "|sceneInfo=" + this.sceneInfo + "|shareInfo=" + this.shareInfo;
-    AppMethodBeat.o(253493);
+    AppMethodBeat.o(217443);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.api.ability.MidasActivityAbility
  * JD-Core Version:    0.7.0.1
  */

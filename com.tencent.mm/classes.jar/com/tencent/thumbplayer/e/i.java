@@ -16,7 +16,7 @@ public final class i
 {
   static TPDownloadParam b(String paramString, TPDownloadParamData paramTPDownloadParamData)
   {
-    AppMethodBeat.i(220581);
+    AppMethodBeat.i(227039);
     Object localObject1;
     if (paramTPDownloadParamData != null)
     {
@@ -187,9 +187,9 @@ public final class i
         ((Map)localObject1).put("dl_param_url_header", localObject2);
       }
     }
-    for (paramString = new TPDownloadParam(paramString, f.aBg(paramTPDownloadParamData.getDlType()), (Map)localObject1);; paramString = new TPDownloadParam(paramTPDownloadParamData, 0, null))
+    for (paramString = new TPDownloadParam(paramString, f.aHT(paramTPDownloadParamData.getDlType()), (Map)localObject1);; paramString = new TPDownloadParam(paramTPDownloadParamData, 0, null))
     {
-      AppMethodBeat.o(220581);
+      AppMethodBeat.o(227039);
       return paramString;
       paramTPDownloadParamData = new ArrayList(1);
       paramTPDownloadParamData.add(paramString);
@@ -198,7 +198,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.e.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.ext.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 
 public final class b
 {
-  public static int aD(ca paramca)
+  public static int aR(cc paramcc)
   {
     AppMethodBeat.i(24370);
-    if (paramca.getType() == 34)
+    if (paramcc.getType() == 34)
     {
       AppMethodBeat.o(24370);
       return 2;
     }
-    if (paramca.getType() == 1)
+    if (paramcc.getType() == 1)
     {
       AppMethodBeat.o(24370);
       return 1;

@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceSmallCategory />
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
-    <PreferenceSmallCategory />
-    <Preference android:key="room_search_chatting_content" android:layout="@layout/b8j" android:title="@string/g9f" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="room_notify_new_msg" android:title="@string/g86" />
-    <CheckBoxPreference android:key="room_placed_to_the_top" android:layout="@layout/b8j" android:title="@string/g8n" />
-    <CheckBoxPreference android:key="room_accept_message" android:layout="@layout/b8j" android:title="@string/g5v" />
-    <CheckBoxPreference android:key="force_notify" android:persistent="false" android:title="@string/dgy" />
-    <PreferenceSmallCategory android:key="seperate_line_between_force_notify_and_background" />
-    <Preference android:key="room_set_chatting_background" android:layout="@layout/b8j" android:title="@string/g9m" />
-    <PreferenceSmallCategory key="seperate_line_between_background_and_clear_history" />
-    <Preference android:key="room_clear_chatting_history" android:layout="@layout/b8j" android:title="@string/g6i" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="room_add_blacklist" android:title="@string/g5w" />
-    <Preference android:key="room_expose" android:layout="@layout/b8j" android:title="@string/g79" />
-    <PreferenceCategory />
+    <PreferenceTitleCategory android:title="@string/ir4" />
+    <CheckBoxPreference android:key="settings_find_me_by_weixin" android:title="@string/a4d" />
+    <CheckBoxPreference android:key="settings_find_me_by_mobile" android:title="@string/a0d" />
+    <CheckBoxPreference android:key="settings_find_me_by_QQ" android:title="@string/a26" />
+    <CheckBoxPreference android:key="settings_find_me_by_google" android:title="@string/zm" />
+    <Preference android:layout="@layout/bf6" android:title="@string/iyf" />
+    <PreferenceTitleCategory android:key="settings_friend_verify" android:title="@string/ir3" />
+    <CheckBoxPreference android:key="settings_add_me_by_chatroom" android:title="@string/iq3" />
+    <CheckBoxPreference android:key="settings_add_me_by_qrcode" android:title="@string/iq5" />
+    <CheckBoxPreference android:key="settings_add_me_by_namecard" android:title="@string/iq4" />
 </PreferenceScreen>

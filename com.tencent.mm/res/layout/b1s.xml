@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/en3" android:background="@color/xr" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/en2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cn" android:layout_alignParentTop="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/en1" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:src="@raw/icons_verify_back" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/en0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/en2">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/emw" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/cn" android:src="@raw/room_live_icon" android:layout_centerHorizontal="true" app:iconColor="@color/a5r" />
-        <TextView android:textSize="22.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/emz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/ek0" android:layout_below="@id/emw" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/emv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ci" android:text="@string/ek1" android:layout_below="@id/emz" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/emu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/en0">
-        <Button android:textSize="17.0dip" android:textColor="@color/xa" android:id="@id/emy" android:background="@drawable/adw" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/c2" android:text="@string/ejz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/emt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_above="@id/emy" android:layout_centerHorizontal="true">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/emx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/adk" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/ejy" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ems" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ejw" />
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+<com.tencent.mm.plugin.hld.keyboard.S6AlternativeWordsKeyboard android:orientation="vertical" android:id="@id/iwl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:background="@color/z_" android:layout_width="fill_parent" android:layout_height="@dimen/adp">
+        <com.tencent.mm.plugin.hld.alternative.ImeAlternativePyScrollView android:id="@id/j0j" android:background="@color/al" android:layout_width="0.0dip" android:layout_height="fill_parent" keybutton:imeKeyboardType="@integer/z" keybutton:layout_constraintBottom_toBottomOf="hr_" keybutton:layout_constraintEnd_toStartOf="@id/j0k" keybutton:layout_constraintHorizontal_chainStyle="k03" keybutton:layout_constraintHorizontal_weight="1.0" keybutton:layout_constraintStart_toStartOf="hr_" keybutton:layout_constraintTop_toTopOf="hr_" />
+        <ImageView android:id="@id/l4q" android:background="@color/a19" android:layout_width="@dimen/acv" android:layout_height="fill_parent" keybutton:layout_constraintBottom_toBottomOf="@id/j0j" keybutton:layout_constraintEnd_toStartOf="@id/j0k" keybutton:layout_constraintStart_toEndOf="@id/j0j" keybutton:layout_constraintTop_toTopOf="@id/j0j" style="@style/i7" />
+        <com.tencent.mm.plugin.hld.alternative.ImeAlternativeWordGridScrollView android:id="@id/j0k" android:layout_width="0.0dip" android:layout_height="fill_parent" keybutton:layout_constraintEnd_toEndOf="hr_" keybutton:layout_constraintHorizontal_weight="4.0" keybutton:layout_constraintStart_toEndOf="@id/j0j" keybutton:layout_constraintTop_toTopOf="@id/j0j" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.tencent.mm.plugin.hld.keyboard.S6AlternativeWordsKeyboard>

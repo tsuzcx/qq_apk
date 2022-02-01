@@ -3,59 +3,64 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class afe
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public boolean SrC;
-  public boolean SrD = false;
+  public int Zny;
+  public String Znz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117865);
+    AppMethodBeat.i(259964);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.co(1, this.SrC);
-      paramVarArgs.co(2, this.SrD);
-      AppMethodBeat.o(117865);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.Zny);
+      if (this.Znz != null) {
+        paramVarArgs.g(2, this.Znz);
+      }
+      AppMethodBeat.o(259964);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.gL(1);
-      int i = g.a.a.b.b.a.gL(2);
-      AppMethodBeat.o(117865);
-      return paramInt + 1 + 0 + (i + 1);
+      int i = i.a.a.b.b.a.cJ(1, this.Zny) + 0;
+      paramInt = i;
+      if (this.Znz != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.Znz);
+      }
+      AppMethodBeat.o(259964);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(117865);
+      AppMethodBeat.o(259964);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       afe localafe = (afe)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(117865);
+        AppMethodBeat.o(259964);
         return -1;
       case 1: 
-        localafe.SrC = locala.abFh.AB();
-        AppMethodBeat.o(117865);
+        localafe.Zny = locala.ajGk.aar();
+        AppMethodBeat.o(259964);
         return 0;
       }
-      localafe.SrD = locala.abFh.AB();
-      AppMethodBeat.o(117865);
+      localafe.Znz = locala.ajGk.readString();
+      AppMethodBeat.o(259964);
       return 0;
     }
-    AppMethodBeat.o(117865);
+    AppMethodBeat.o(259964);
     return -1;
   }
 }

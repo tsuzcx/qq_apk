@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.plugin.product.b.n.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.plugin.product.model.m.a;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public final class l
   extends BaseAdapter
 {
-  List<n.a> GVJ;
+  List<m.a> MTl;
   private Context mContext;
   
   public l(Context paramContext)
@@ -25,10 +25,10 @@ public final class l
     this.mContext = paramContext;
   }
   
-  private n.a abk(int paramInt)
+  private m.a afD(int paramInt)
   {
     AppMethodBeat.i(67041);
-    n.a locala = (n.a)this.GVJ.get(paramInt);
+    m.a locala = (m.a)this.MTl.get(paramInt);
     AppMethodBeat.o(67041);
     return locala;
   }
@@ -36,9 +36,9 @@ public final class l
   public final int getCount()
   {
     AppMethodBeat.i(67040);
-    if (this.GVJ != null)
+    if (this.MTl != null)
     {
-      int i = this.GVJ.size();
+      int i = this.MTl.size();
       AppMethodBeat.o(67040);
       return i;
     }
@@ -54,22 +54,22 @@ public final class l
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(67042);
-    Object localObject = abk(paramInt);
+    Object localObject = afD(paramInt);
     if ((paramView == null) || (paramView.getTag() == null))
     {
       paramViewGroup = new m();
       paramView = View.inflate(this.mContext, a.g.product_sold_out_cell, null);
       paramViewGroup.titleTv = ((TextView)paramView.findViewById(a.f.mall_product_sold_out_cell_price_iv));
-      paramViewGroup.jmf = ((ImageView)paramView.findViewById(a.f.mall_product_sold_out_cell_img_iv));
+      paramViewGroup.lPb = ((ImageView)paramView.findViewById(a.f.mall_product_sold_out_cell_img_iv));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.GVK = ((n.a)localObject);
-      paramViewGroup.titleTv.setText(((n.a)localObject).title);
-      localObject = u.a(new c(((n.a)localObject).iconUrl));
-      paramViewGroup.jmf.setImageBitmap((Bitmap)localObject);
-      u.a(paramViewGroup);
+      paramViewGroup.MTm = ((m.a)localObject);
+      paramViewGroup.titleTv.setText(((m.a)localObject).title);
+      localObject = r.a(new c(((m.a)localObject).iconUrl));
+      paramViewGroup.lPb.setImageBitmap((Bitmap)localObject);
+      r.a(paramViewGroup);
       AppMethodBeat.o(67042);
       return paramView;
       paramViewGroup = (m)paramView.getTag();
@@ -78,7 +78,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.l
  * JD-Core Version:    0.7.0.1
  */

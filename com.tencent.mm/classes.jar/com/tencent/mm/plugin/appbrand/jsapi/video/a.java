@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import com.tencent.mm.f.b.a.x.a;
+import com.tencent.mm.autogen.mmdata.rpt.z.a;
 
 public class a
 {
-  long ptY = 0L;
-  long ptZ = 0L;
-  x.a pua = x.a.ggb;
-  c pub;
+  long sze = 0L;
+  long szf = 0L;
+  z.a szg = z.a.imH;
+  c szh;
   String url = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.a
  * JD-Core Version:    0.7.0.1
  */

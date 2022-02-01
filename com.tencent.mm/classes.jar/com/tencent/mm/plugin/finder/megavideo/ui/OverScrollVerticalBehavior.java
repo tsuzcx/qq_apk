@@ -3,32 +3,32 @@ package com.tencent.mm.plugin.finder.megavideo.ui;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "Landroidx/coordinatorlayout/widget/CoordinatorLayout$Behavior;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "()V", "deltaX", "", "getDeltaX", "()I", "setDeltaX", "(I)V", "deltaY", "getDeltaY", "setDeltaY", "pullDownListener", "Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;", "getPullDownListener", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;", "setPullDownListener", "(Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;)V", "scrollThreshold", "getScrollThreshold", "setScrollThreshold", "onNestedScroll", "", "coordinatorLayout", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "child", "target", "Landroid/view/View;", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "type", "onStartNestedScroll", "", "directTargetChild", "axes", "onStopNestedScroll", "Companion", "PullDownListener", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior;", "Landroidx/coordinatorlayout/widget/CoordinatorLayout$Behavior;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "()V", "deltaX", "", "getDeltaX", "()I", "setDeltaX", "(I)V", "deltaY", "getDeltaY", "setDeltaY", "pullDownListener", "Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;", "getPullDownListener", "()Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;", "setPullDownListener", "(Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;)V", "scrollThreshold", "getScrollThreshold", "setScrollThreshold", "onNestedScroll", "", "coordinatorLayout", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "child", "target", "Landroid/view/View;", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "type", "onStartNestedScroll", "", "directTargetChild", "axes", "onStopNestedScroll", "Companion", "PullDownListener", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class OverScrollVerticalBehavior
   extends CoordinatorLayout.Behavior<WxRecyclerView>
 {
-  public static final a zyJ;
-  private int zyF;
-  private int zyG;
-  private int zyH;
-  b zyI;
+  public static final a EBx;
+  private int EBA;
+  b EBB;
+  private int EBy;
+  private int EBz;
   
   static
   {
-    AppMethodBeat.i(284188);
-    zyJ = new a((byte)0);
-    AppMethodBeat.o(284188);
+    AppMethodBeat.i(342045);
+    EBx = new a((byte)0);
+    AppMethodBeat.o(342045);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;", "", "onPullDown", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/OverScrollVerticalBehavior$PullDownListener;", "", "onPullDown", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
-    public abstract void cdo();
+    public abstract void cDL();
   }
 }
 

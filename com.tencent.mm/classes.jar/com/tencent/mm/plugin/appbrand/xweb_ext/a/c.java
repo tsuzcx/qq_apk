@@ -1,99 +1,95 @@
 package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/FlattenBlusherStickInfo;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseFlattenMakeupInfo;", "()V", "alpha", "", "getAlpha", "()F", "setAlpha", "(F)V", "faceModel", "", "getFaceModel", "()I", "setFaceModel", "(I)V", "isValid", "", "()Z", "leftBlusherPath", "", "getLeftBlusherPath", "()Ljava/lang/String;", "setLeftBlusherPath", "(Ljava/lang/String;)V", "rightBlusherPath", "getRightBlusherPath", "setRightBlusherPath", "type", "getType", "setType", "fromJson", "Lcom/tencent/mm/sticker/BaseJsonObject;", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/FlattenBlusherStickInfo;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseFlattenMakeupInfo;", "()V", "alpha", "", "getAlpha", "()F", "setAlpha", "(F)V", "blendMode", "", "getBlendMode", "()I", "setBlendMode", "(I)V", "faceModel", "getFaceModel", "setFaceModel", "isValid", "", "()Z", "path", "", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "type", "getType", "fromJson", "Lcom/tencent/mm/sticker/BaseJsonObject;", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends a
 {
-  @SuppressLint({"Range"})
   float alpha = -1.0F;
-  String cGE = "";
-  String cGG = "";
-  int cGI;
-  int type;
+  int eAs;
+  String path = "";
+  private final String type = "BlusherStick";
+  int uTR = -1;
   
-  public final com.tencent.mm.sticker.a ay(JSONObject paramJSONObject)
+  public final com.tencent.mm.sticker.a G(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(282900);
-    p.k(paramJSONObject, "jsonObj");
-    JSONObject localJSONObject = paramJSONObject.optJSONObject("params");
-    if (localJSONObject == null)
+    AppMethodBeat.i(317093);
+    s.u(paramJSONObject, "jsonObj");
+    Object localObject = paramJSONObject.optJSONObject("params");
+    if (localObject == null)
     {
       Log.w("MicroMsg.FlattenBlusherStickInfo", "fromJson, paramsJsonObj is null");
-      paramJSONObject = super.ay(paramJSONObject);
-      AppMethodBeat.o(282900);
+      paramJSONObject = super.G(paramJSONObject);
+      AppMethodBeat.o(317093);
       return paramJSONObject;
     }
-    this.alpha = ((float)localJSONObject.optDouble("alpha", -1.0D));
-    this.type = localJSONObject.optInt("blusher_type", 0);
-    String str = localJSONObject.optString("left_path", "");
-    p.j(str, "paramsJsonObj.optString(…EY_LEFT_BLUSHER_PATH, \"\")");
-    this.cGE = str;
-    str = localJSONObject.optString("right_path", "");
-    p.j(str, "paramsJsonObj.optString(…Y_RIGHT_BLUSHER_PATH, \"\")");
-    this.cGG = str;
-    this.cGI = localJSONObject.optInt("face_model", 0);
-    paramJSONObject = super.ay(paramJSONObject);
-    AppMethodBeat.o(282900);
+    this.alpha = ((float)((JSONObject)localObject).optDouble("alpha", -1.0D));
+    this.eAs = ((JSONObject)localObject).optInt("face_model", 0);
+    this.uTR = ((JSONObject)localObject).optInt("blend_mode", -1);
+    localObject = ((JSONObject)localObject).optString("path", "");
+    s.s(localObject, "paramsJsonObj.optString(JSON_KEY_PATH, \"\")");
+    this.path = ((String)localObject);
+    paramJSONObject = super.G(paramJSONObject);
+    AppMethodBeat.o(317093);
     return paramJSONObject;
+  }
+  
+  public final String getType()
+  {
+    return this.type;
   }
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(282899);
-    if (-1.0F != this.alpha)
+    AppMethodBeat.i(317081);
+    if (-1.0F == this.alpha)
     {
-      if (((CharSequence)this.cGE).length() > 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label74;
-        }
-        if (((CharSequence)this.cGG).length() <= 0) {
-          break label69;
-        }
+      i = 1;
+      if ((i != 0) || (-1 == this.uTR)) {
+        break label67;
       }
-      label69:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label74;
-        }
-        AppMethodBeat.o(282899);
-        return true;
-        i = 0;
-        break;
+      if (((CharSequence)this.path).length() <= 0) {
+        break label62;
       }
     }
-    label74:
-    AppMethodBeat.o(282899);
+    label62:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label67;
+      }
+      AppMethodBeat.o(317081);
+      return true;
+      i = 0;
+      break;
+    }
+    label67:
+    AppMethodBeat.o(317081);
     return false;
   }
   
   public final JSONObject toJson()
   {
-    AppMethodBeat.i(282901);
+    AppMethodBeat.i(317104);
     JSONObject localJSONObject1 = super.toJson();
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("alpha", Float.valueOf(this.alpha));
-    localJSONObject2.put("blusher_type", this.type);
-    localJSONObject2.put("left_path", this.cGE);
-    localJSONObject2.put("right_path", this.cGG);
-    localJSONObject2.put("face_model", this.cGI);
+    localJSONObject2.put("face_model", this.eAs);
+    localJSONObject2.put("blend_mode", this.uTR);
+    localJSONObject2.put("path", this.path);
     localJSONObject1.put("params", localJSONObject2);
-    AppMethodBeat.o(282901);
+    AppMethodBeat.o(317104);
     return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.c
  * JD-Core Version:    0.7.0.1
  */

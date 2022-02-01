@@ -5,32 +5,32 @@ import java.util.Arrays;
 
 public final class a
 {
-  private static final char[] abMf;
-  private static final int[] abMg;
+  private static final char[] ajYZ;
+  private static final int[] ajZa;
   
   static
   {
     AppMethodBeat.i(40575);
-    abMf = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+    ajYZ = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
     int[] arrayOfInt = new int[256];
-    abMg = arrayOfInt;
+    ajZa = arrayOfInt;
     Arrays.fill(arrayOfInt, -1);
-    int j = abMf.length;
+    int j = ajYZ.length;
     int i = 0;
     for (;;)
     {
       if (i >= j)
       {
-        abMg[61] = 0;
+        ajZa[61] = 0;
         AppMethodBeat.o(40575);
         return;
       }
-      abMg[abMf[i]] = i;
+      ajZa[ajYZ[i]] = i;
       i += 1;
     }
   }
   
-  public static final char[] dX(byte[] paramArrayOfByte)
+  public static final char[] eh(byte[] paramArrayOfByte)
   {
     int i1 = 0;
     if (paramArrayOfByte != null) {}
@@ -55,15 +55,15 @@ public final class a
           j = (paramArrayOfByte[(m - 1)] & 0xFF) << 2;
         }
         j |= (n & 0xFF) << 10;
-        arrayOfChar[(i5 - 4)] = abMf[(j >> 12)];
-        arrayOfChar[(i5 - 3)] = abMf[(j >>> 6 & 0x3F)];
+        arrayOfChar[(i5 - 4)] = ajYZ[(j >> 12)];
+        arrayOfChar[(i5 - 3)] = ajYZ[(j >>> 6 & 0x3F)];
         if (k != 2) {
           break label409;
         }
       }
     }
     label409:
-    for (int i = abMf[(j & 0x3F)];; i = 61)
+    for (int i = ajYZ[(j & 0x3F)];; i = 61)
     {
       arrayOfChar[(i5 - 2)] = i;
       arrayOfChar[(i5 - 1)] = '=';
@@ -75,13 +75,13 @@ public final class a
       i2 = i3 + 1;
       n = (i4 & 0xFF) << 8 | (n & 0xFF) << 16 | paramArrayOfByte[i3] & 0xFF;
       i3 = k + 1;
-      arrayOfChar[k] = abMf[(n >>> 18 & 0x3F)];
+      arrayOfChar[k] = ajYZ[(n >>> 18 & 0x3F)];
       k = i3 + 1;
-      arrayOfChar[i3] = abMf[(n >>> 12 & 0x3F)];
+      arrayOfChar[i3] = ajYZ[(n >>> 12 & 0x3F)];
       i4 = k + 1;
-      arrayOfChar[k] = abMf[(n >>> 6 & 0x3F)];
+      arrayOfChar[k] = ajYZ[(n >>> 6 & 0x3F)];
       i3 = i4 + 1;
-      arrayOfChar[i4] = abMf[(n & 0x3F)];
+      arrayOfChar[i4] = ajYZ[(n & 0x3F)];
       i4 = j + 1;
       j = i4;
       k = i3;

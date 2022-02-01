@@ -4,85 +4,78 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.ball.c.b;
 import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
 import com.tencent.mm.plugin.ball.service.e;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLivePageFloatBallHelper;", "Lcom/tencent/mm/plugin/ball/service/PageFloatBallHelper;", "pageAdapter", "Lcom/tencent/mm/plugin/ball/adapter/IFloatBallPageAdapter;", "(Lcom/tencent/mm/plugin/ball/adapter/IFloatBallPageAdapter;)V", "initReportInfo", "", "isSupportFloatBallMenu", "", "isSupportSwipeToFloatBall", "onCreate", "floatBallType", "", "floatBallKey", "", "onEnterPageWithoutFloatBall", "onExitPage", "hideFloatBall", "onReceivedFinishWhenSwitchBallEvent", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/view/FinderLivePageFloatBallHelper;", "Lcom/tencent/mm/plugin/ball/service/PageFloatBallHelper;", "pageAdapter", "Lcom/tencent/mm/plugin/ball/adapter/IFloatBallPageAdapter;", "(Lcom/tencent/mm/plugin/ball/adapter/IFloatBallPageAdapter;)V", "initReportInfo", "", "isSupportFloatBallMenu", "", "isSupportSwipeToFloatBall", "onCreate", "floatBallType", "", "floatBallKey", "", "onEnterPageWithoutFloatBall", "onExitPage", "hideFloatBall", "onReceivedFinishWhenSwitchBallEvent", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends e
 {
-  private static String yVx;
-  public static final a yVy;
+  public static final f.a DOI;
+  private static String DOJ;
   
   static
   {
-    AppMethodBeat.i(290014);
-    yVy = new a((byte)0);
-    AppMethodBeat.o(290014);
+    AppMethodBeat.i(358035);
+    DOI = new f.a((byte)0);
+    AppMethodBeat.o(358035);
   }
   
   public f(com.tencent.mm.plugin.ball.a.f paramf)
   {
     super(paramf);
-    AppMethodBeat.i(290013);
-    AppMethodBeat.o(290013);
+    AppMethodBeat.i(358016);
+    AppMethodBeat.o(358016);
   }
   
-  public final void I(int paramInt, String paramString)
+  public final void J(int paramInt, String paramString)
   {
-    AppMethodBeat.i(290009);
-    super.I(paramInt, paramString);
-    cvL().kqZ = 15;
-    cvK();
-    AppMethodBeat.o(290009);
+    AppMethodBeat.i(358060);
+    super.J(paramInt, paramString);
+    cYv().mUU = 15;
+    cYr();
+    AppMethodBeat.o(358060);
   }
   
-  public final void aOf()
+  public final void bhT()
   {
-    AppMethodBeat.i(290008);
-    ((b)h.ae(b.class)).ld(true);
-    super.aOf();
-    AppMethodBeat.o(290008);
+    AppMethodBeat.i(358043);
+    ((b)h.ax(b.class)).mq(true);
+    super.bhT();
+    AppMethodBeat.o(358043);
   }
   
-  public final boolean aOg()
-  {
-    return false;
-  }
-  
-  public final boolean aOh()
+  public final boolean bhU()
   {
     return false;
   }
   
-  public final void aOi()
+  public final void bhV()
   {
-    AppMethodBeat.i(290010);
-    super.aOi();
-    this.rZC.hS(false);
-    AppMethodBeat.o(290010);
+    AppMethodBeat.i(358066);
+    super.bhV();
+    this.vkT.iR(false);
+    AppMethodBeat.o(358066);
   }
   
-  public final void aOj()
+  public final void bhW()
   {
-    AppMethodBeat.i(290011);
-    ((b)h.ae(b.class)).ld(false);
-    this.rYE.rYs.opType = 4;
-    super.aOj();
-    AppMethodBeat.o(290011);
+    AppMethodBeat.i(358075);
+    ((b)h.ax(b.class)).mq(false);
+    this.vjV.vjI.opType = 4;
+    super.bhW();
+    AppMethodBeat.o(358075);
   }
   
-  public final void pv(boolean paramBoolean)
+  public final void rZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(290012);
-    ((b)h.ae(b.class)).ld(paramBoolean);
-    this.rYE.rYs.opType = 4;
-    super.aOj();
-    AppMethodBeat.o(290012);
+    AppMethodBeat.i(358082);
+    ((b)h.ax(b.class)).mq(paramBoolean);
+    this.vjV.vjI.opType = 4;
+    super.bhW();
+    AppMethodBeat.o(358082);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLivePageFloatBallHelper$Companion;", "", "()V", "TAG", "", "activateUIKey", "getActivateUIKey", "()Ljava/lang/String;", "setActivateUIKey", "(Ljava/lang/String;)V", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

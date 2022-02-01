@@ -6,31 +6,31 @@ import java.util.regex.Pattern;
 
 public class a
 {
-  private static final Pattern bKv;
-  private static a bKw;
-  public final FirebaseInstanceId bJD;
+  private static final Pattern dEd;
+  private static a dEe;
+  public final FirebaseInstanceId dDl;
   
   static
   {
     AppMethodBeat.i(116779);
-    bKv = Pattern.compile("[a-zA-Z0-9-_.~%]{1,900}");
+    dEd = Pattern.compile("[a-zA-Z0-9-_.~%]{1,900}");
     AppMethodBeat.o(116779);
   }
   
   private a(FirebaseInstanceId paramFirebaseInstanceId)
   {
-    this.bJD = paramFirebaseInstanceId;
+    this.dDl = paramFirebaseInstanceId;
   }
   
-  public static a yT()
+  public static a YE()
   {
     try
     {
       AppMethodBeat.i(116778);
-      if (bKw == null) {
-        bKw = new a(FirebaseInstanceId.yw());
+      if (dEe == null) {
+        dEe = new a(FirebaseInstanceId.Yh());
       }
-      a locala = bKw;
+      a locala = dEe;
       AppMethodBeat.o(116778);
       return locala;
     }
@@ -39,7 +39,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.messaging.a
  * JD-Core Version:    0.7.0.1
  */

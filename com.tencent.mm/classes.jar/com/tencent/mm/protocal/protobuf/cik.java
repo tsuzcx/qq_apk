@@ -1,103 +1,134 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cik
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public String Tpo;
-  public String Tpp;
-  public String icon;
-  public String url;
+  public gok aarb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72495);
+    AppMethodBeat.i(104788);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Tpo != null) {
-        paramVarArgs.f(1, this.Tpo);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(104788);
+        throw paramVarArgs;
       }
-      if (this.Tpp != null) {
-        paramVarArgs.f(2, this.Tpp);
+      if (this.aarb == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Designer");
+        AppMethodBeat.o(104788);
+        throw paramVarArgs;
       }
-      if (this.url != null) {
-        paramVarArgs.f(3, this.url);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.icon != null) {
-        paramVarArgs.f(4, this.icon);
+      if (this.aarb != null)
+      {
+        paramVarArgs.qD(2, this.aarb.computeSize());
+        this.aarb.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(72495);
+      AppMethodBeat.o(104788);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Tpo == null) {
-        break label394;
+      if (this.BaseResponse == null) {
+        break label514;
       }
     }
-    label394:
-    for (int i = g.a.a.b.b.a.g(1, this.Tpo) + 0;; i = 0)
+    label514:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.Tpp != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.Tpp);
+      int i = paramInt;
+      if (this.aarb != null) {
+        i = paramInt + i.a.a.a.qC(2, this.aarb.computeSize());
       }
-      i = paramInt;
-      if (this.url != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.url);
-      }
-      paramInt = i;
-      if (this.icon != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.icon);
-      }
-      AppMethodBeat.o(72495);
-      return paramInt;
+      AppMethodBeat.o(104788);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(72495);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(104788);
+          throw paramVarArgs;
+        }
+        if (this.aarb == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Designer");
+          AppMethodBeat.o(104788);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104788);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         cik localcik = (cik)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(72495);
+          AppMethodBeat.o(104788);
           return -1;
         case 1: 
-          localcik.Tpo = locala.abFh.readString();
-          AppMethodBeat.o(72495);
-          return 0;
-        case 2: 
-          localcik.Tpp = locala.abFh.readString();
-          AppMethodBeat.o(72495);
-          return 0;
-        case 3: 
-          localcik.url = locala.abFh.readString();
-          AppMethodBeat.o(72495);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kd();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kd)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcik.BaseResponse = ((kd)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104788);
           return 0;
         }
-        localcik.icon = locala.abFh.readString();
-        AppMethodBeat.o(72495);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new gok();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((gok)localObject2).parseFrom((byte[])localObject1);
+          }
+          localcik.aarb = ((gok)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(104788);
         return 0;
       }
-      AppMethodBeat.o(72495);
+      AppMethodBeat.o(104788);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cik
  * JD-Core Version:    0.7.0.1
  */

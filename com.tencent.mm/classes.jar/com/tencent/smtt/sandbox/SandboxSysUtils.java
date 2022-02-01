@@ -7,7 +7,6 @@ public class SandboxSysUtils
   private static final String TAG = "SandboxSysUtils";
   private static Boolean sLowEndDevice = null;
   
-  @CalledByNative
   public static boolean isLowEndDevice()
   {
     try

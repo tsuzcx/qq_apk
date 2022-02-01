@@ -3,7 +3,7 @@ package com.tencent.mm.wallet_core.tenpay.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.y;
+import com.tencent.mm.wallet_core.model.y;
 import java.util.HashMap;
 import org.json.JSONObject;
 

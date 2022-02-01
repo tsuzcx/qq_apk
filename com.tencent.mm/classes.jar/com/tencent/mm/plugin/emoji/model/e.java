@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.emoji.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;", "()V", "data", "getData", "()Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;", "setData", "(Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;)V", "createData", "plugin-emoji_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/AbsEmojiCustomGroupModel;", "Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;", "()V", "data", "getData", "()Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;", "setData", "(Lcom/tencent/mm/plugin/emoji/model/EmojiCaptureItemGroup;)V", "createData", "plugin-emoji_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends a<f>
 {
-  private f uEf;
+  private f xMw;
   
   public e()
   {
-    AppMethodBeat.i(257112);
-    this.uEf = new f();
-    AppMethodBeat.o(257112);
+    AppMethodBeat.i(269864);
+    this.xMw = new f();
+    AppMethodBeat.o(269864);
   }
 }
 

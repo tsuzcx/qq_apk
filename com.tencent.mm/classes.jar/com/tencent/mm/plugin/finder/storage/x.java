@@ -1,74 +1,68 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ben;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.e;
+import junit.framework.Assert;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;)V", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "getLocalPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "localType", "", "getLocalType", "()I", "wording", "", "getWording", "()Ljava/lang/String;", "isSame", "", "other", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderMessageStorage;", "Lcom/tencent/mm/storage/AbstractMessageStorage;", "storage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "(Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;)V", "recognizeTableByTalker", "", "talker", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class x
+  extends e
 {
-  public final ben Amb;
-  private final f xzz;
+  public static final x.a FLI;
   
-  public x(ben paramben)
+  static
   {
-    AppMethodBeat.i(273715);
-    this.Amb = paramben;
-    this.xzz = g.ar((a)new a(this));
-    AppMethodBeat.o(273715);
+    AppMethodBeat.i(339222);
+    FLI = new x.a((byte)0);
+    AppMethodBeat.o(339222);
   }
   
-  public final boolean a(x paramx)
+  public x(i parami)
   {
-    AppMethodBeat.i(273714);
-    p.k(paramx, "other");
-    if ((this.Amb.SPE == paramx.Amb.SPE) && (!Util.isNullOrNil(getWording())) && (p.h(getWording(), paramx.getWording())))
+    super(parami);
+    AppMethodBeat.i(339218);
+    e(getDB(), "findermessage006");
+    a(new i.b(512, "findermessage006", i.b.d(4000001L, 4500000L, 108000001L, 208000000L)));
+    AppMethodBeat.o(339218);
+  }
+  
+  public final String aAD(String paramString)
+  {
+    AppMethodBeat.i(339230);
+    int i;
+    if (paramString != null) {
+      if (((CharSequence)paramString).length() > 0)
+      {
+        i = 1;
+        if (i != 1) {
+          break label54;
+        }
+      }
+    }
+    label54:
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(273714);
-      return true;
+      Assert.assertTrue(bool);
+      if (!au.aAy(paramString)) {
+        break label59;
+      }
+      AppMethodBeat.o(339230);
+      return "findermessage006";
+      i = 0;
+      break;
     }
-    AppMethodBeat.o(273714);
-    return false;
-  }
-  
-  public final long getId()
-  {
-    AppMethodBeat.i(273713);
-    long l = ((Number)this.xzz.getValue()).longValue();
-    AppMethodBeat.o(273713);
-    return l;
-  }
-  
-  public final String getWording()
-  {
-    String str2 = this.Amb.wording;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Long>
-  {
-    a(x paramx)
-    {
-      super();
-    }
+    label59:
+    AppMethodBeat.o(339230);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.x
  * JD-Core Version:    0.7.0.1
  */

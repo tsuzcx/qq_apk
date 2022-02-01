@@ -1,11 +1,9 @@
 package com.tencent.thumbplayer.core.player;
 
 import android.view.Surface;
-import com.tencent.thumbplayer.core.common.TPMethodCalledByNative;
 
 public class TPNativePlayerUtils
 {
-  @TPMethodCalledByNative
   static boolean isTPNativePlayerSurface(Surface paramSurface)
   {
     return paramSurface instanceof TPNativePlayerSurface;
@@ -13,7 +11,7 @@ public class TPNativePlayerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerUtils
  * JD-Core Version:    0.7.0.1
  */

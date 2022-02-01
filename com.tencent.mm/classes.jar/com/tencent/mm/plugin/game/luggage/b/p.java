@@ -1,175 +1,130 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.wepkg.model.WepkgVersion;
-import com.tencent.mm.plugin.wepkg.model.g;
-import com.tencent.mm.plugin.wepkg.model.j;
-import com.tencent.mm.protocal.protobuf.ape;
-import com.tencent.mm.protocal.protobuf.fiq;
+import com.tencent.mm.plugin.game.luggage.page.GameWebPage;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bw;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class p
-  extends br<a>
+  extends bw<GameWebPage>
 {
-  private static JSONObject D(String paramString, Map<String, String> paramMap)
+  public final void a(Context paramContext, String paramString, bv.a parama)
   {
-    AppMethodBeat.i(230986);
-    Object localObject1 = j.boH(paramString);
-    if (localObject1 == null)
-    {
-      Log.i("MicroMsg.JsApiGetWepkgFileInfo", "not exist wepkg[%s]", new Object[] { paramString });
-      AppMethodBeat.o(230986);
-      return null;
-    }
-    paramString = new JSONObject();
-    JSONArray localJSONArray;
+    AppMethodBeat.i(277145);
+    paramContext = new JSONObject();
     try
     {
-      paramString.put("version", ((WepkgVersion)localObject1).version);
-      localObject1 = new q(((WepkgVersion)localObject1).pkgPath);
-      boolean bool = ((q)localObject1).ifE();
-      if (!bool)
+      paramString = com.tencent.mm.plugin.webview.luggage.c.c.ZL(paramString);
+      if ((paramString == null) || (!paramString.has("appId")))
       {
-        AppMethodBeat.o(230986);
-        return null;
+        Log.w("MicroMsg.JsApiGetLiteAppSwitch", "invalid appId");
+        paramContext.put("switch", false);
+        parama.j(null, paramContext);
+        AppMethodBeat.o(277145);
+        return;
       }
-      localObject1 = new g((q)localObject1);
-      Object localObject2 = ((g)localObject1).QMx;
-      if (localObject2 == null)
-      {
-        AppMethodBeat.o(230986);
-        return null;
+      localObject = paramString.getString("appId");
+      bool3 = ((com.tencent.mm.plugin.lite.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.lite.api.c.class)).aJT((String)localObject);
+      if (WeChatEnvironment.isCoolassistEnv()) {
+        break label453;
       }
-      if (((fiq)localObject2).UIq != null)
+      if (!bool3) {
+        break label404;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        localJSONArray = new JSONArray();
-        localObject2 = ((fiq)localObject2).UIq.iterator();
-        while (((Iterator)localObject2).hasNext())
+        Object localObject;
+        boolean bool3;
+        StringBuilder localStringBuilder;
+        int i;
+        label285:
+        label307:
+        Log.printErrStackTrace("MicroMsg.JsApiGetLiteAppSwitch", paramString, "", new Object[0]);
+        label404:
+        label416:
+        label422:
+        continue;
+        continue;
+        boolean bool2 = true;
+        continue;
+        boolean bool1 = true;
+      }
+    }
+    Log.i("MicroMsg.JsApiGetLiteAppSwitch", "isLiteAppCanOpen value: %s", new Object[] { Boolean.valueOf(bool3) });
+    if ((paramString != null) && (paramString.has("needPkg")))
+    {
+      bool2 = paramString.getBoolean("needPkg");
+      paramString = ((com.tencent.mm.plugin.lite.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.lite.api.c.class)).et((String)localObject);
+      com.tencent.mm.plugin.report.service.h.OAn.p(1293L, 80L, 1L);
+      if (bool1)
+      {
+        com.tencent.mm.plugin.report.service.h.OAn.p(1293L, 81L, 1L);
+        if (paramString == null)
         {
-          ape localape = (ape)((Iterator)localObject2).next();
-          if (paramMap.keySet().contains(localape.SCg))
+          if (((com.tencent.mm.plugin.lite.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.lite.api.c.class)).fTU() == null) {
+            ((com.tencent.mm.plugin.lite.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.lite.api.c.class)).fTS();
+          }
+          ((com.tencent.mm.plugin.lite.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.lite.api.c.class)).a((String)localObject, null);
+          if (bool2)
           {
-            String str = (String)paramMap.get(localape.SCg);
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("rid", localape.SCg);
-            localJSONObject.put("size", localape.rWo);
-            localJSONObject.put("mimeType", localape.SCi);
-            localJSONObject.put("data", ((g)localObject1).mW(localape.SCg, str));
-            localJSONArray.put(localJSONObject);
+            com.tencent.mm.plugin.report.service.h.OAn.p(1293L, 82L, 1L);
+            bool1 = false;
+            localStringBuilder = new StringBuilder();
+            localObject = localStringBuilder.append((String)localObject).append(",");
+            if (bool2)
+            {
+              i = 1;
+              localObject = ((StringBuilder)localObject).append(i).append(",");
+              if (!bool1) {
+                break label416;
+              }
+              i = 1;
+              ((StringBuilder)localObject).append(i);
+              com.tencent.mm.plugin.report.service.h.OAn.kvStat(20982, localStringBuilder.toString());
+              localStringBuilder = new StringBuilder("debug:false, coolassist:").append(WeChatEnvironment.isCoolassistEnv()).append(", enable:").append(bool3).append(",info:");
+              if (paramString != null) {
+                break label422;
+              }
+            }
+            for (bool2 = true;; bool2 = false)
+            {
+              Log.i("MicroMsg.JsApiGetLiteAppSwitch", bool2);
+              paramContext.put("switch", bool1);
+              parama.j(null, paramContext);
+              AppMethodBeat.o(277145);
+              return;
+              bool1 = false;
+              break;
+              i = 0;
+              break label285;
+              i = 0;
+              break label307;
+            }
           }
         }
       }
-      AppMethodBeat.o(230986);
-    }
-    catch (JSONException paramMap)
-    {
-      Log.e("MicroMsg.JsApiGetWepkgFileInfo", "errMsg:%s", new Object[] { paramMap.getMessage() });
-    }
-    for (;;)
-    {
-      return paramString;
-      paramString.put("fileList", localJSONArray);
     }
   }
   
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void b(b<GameWebPage>.a paramb) {}
   
-  public final void b(final b<a>.a paramb)
+  public final int dgI()
   {
-    int i = 0;
-    AppMethodBeat.i(230982);
-    Log.i("MicroMsg.JsApiGetWepkgFileInfo", "invokeInOwn");
-    Object localObject = paramb.crh.cqn;
-    if (localObject == null)
-    {
-      paramb.a("invalid_params", null);
-      AppMethodBeat.o(230982);
-      return;
-    }
-    final String str = ((JSONObject)localObject).optString("wepkgId");
-    localObject = ((JSONObject)localObject).optJSONArray("files");
-    if ((Util.isNullOrNil(str)) || (localObject == null) || (((JSONArray)localObject).length() == 0))
-    {
-      paramb.a("null_data", null);
-      AppMethodBeat.o(230982);
-      return;
-    }
-    Log.i("MicroMsg.JsApiGetWepkgFileInfo", "wepkgId:[%s] files:[%s]", new Object[] { str, ((JSONArray)localObject).toString() });
-    final HashMap localHashMap = new HashMap();
-    for (;;)
-    {
-      if (i < ((JSONArray)localObject).length()) {}
-      try
-      {
-        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-        localHashMap.put(localJSONObject.optString("rid"), localJSONObject.optString("format"));
-        label162:
-        i += 1;
-        continue;
-        h.ZvG.be(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(231120);
-            JSONObject localJSONObject2 = p.E(str, localHashMap);
-            if (localJSONObject2 == null)
-            {
-              paramb.a("fail", null);
-              AppMethodBeat.o(231120);
-              return;
-            }
-            JSONObject localJSONObject1 = new JSONObject();
-            try
-            {
-              localJSONObject1.put("data", localJSONObject2);
-              label53:
-              paramb.a("", localJSONObject1);
-              AppMethodBeat.o(231120);
-              return;
-            }
-            catch (JSONException localJSONException)
-            {
-              break label53;
-            }
-          }
-        });
-        AppMethodBeat.o(230982);
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        break label162;
-      }
-    }
-  }
-  
-  public final int cDj()
-  {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "getWepkgFileInfo";
+    return "getLiteAppSwitch";
   }
 }
 

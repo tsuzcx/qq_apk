@@ -9,20 +9,20 @@ public final class l
   {
     super(paramString1, paramString2);
     AppMethodBeat.i(158898);
-    de("SOAPACTION", "\"" + paramString2 + "#" + this.oef + "\"");
-    bMD();
+    dx("SOAPACTION", "\"" + paramString2 + "#" + this.rhL + "\"");
+    cmT();
     AppMethodBeat.o(158898);
   }
   
-  public final String bMB()
+  public final String cmR()
   {
     return "Stop";
   }
   
-  public final String bMC()
+  public final String cmS()
   {
     AppMethodBeat.i(158899);
-    String str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.oef).append(" xmlns:u=\"").append(this.oeg).append("\">\n<InstanceID>0</InstanceID>\n</u:").append(this.oef).append(">\n").toString() + "</s:Body></s:Envelope>";
+    String str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.rhL).append(" xmlns:u=\"").append(this.rhM).append("\">\n<InstanceID>0</InstanceID>\n</u:").append(this.rhL).append(">\n").toString() + "</s:Body></s:Envelope>";
     AppMethodBeat.o(158899);
     return str;
   }

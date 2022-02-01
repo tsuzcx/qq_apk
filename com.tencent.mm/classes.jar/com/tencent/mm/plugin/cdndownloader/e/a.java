@@ -6,35 +6,19 @@ import java.util.HashSet;
 public final class a<E>
   extends HashSet<E>
 {
-  private b tLF;
+  private b wOU;
   
   public a(b paramb)
   {
-    this.tLF = paramb;
+    this.wOU = paramb;
   }
   
-  private void cMA()
-  {
-    try
-    {
-      AppMethodBeat.i(120766);
-      this.tLF.clear();
-      AppMethodBeat.o(120766);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void cMy()
+  private void dqc()
   {
     try
     {
       AppMethodBeat.i(120764);
-      this.tLF.cMx();
+      this.wOU.dqb();
       AppMethodBeat.o(120764);
       return;
     }
@@ -45,13 +29,29 @@ public final class a<E>
     }
   }
   
-  private void cMz()
+  private void dqd()
   {
     try
     {
       AppMethodBeat.i(120765);
-      this.tLF.remove();
+      this.wOU.remove();
       AppMethodBeat.o(120765);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void dqe()
+  {
+    try
+    {
+      AppMethodBeat.i(120766);
+      this.wOU.clear();
+      AppMethodBeat.o(120766);
       return;
     }
     finally
@@ -67,7 +67,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120767);
       boolean bool = super.add(paramE);
-      cMy();
+      dqc();
       AppMethodBeat.o(120767);
       return bool;
     }
@@ -82,7 +82,7 @@ public final class a<E>
   {
     AppMethodBeat.i(120768);
     super.clear();
-    cMA();
+    dqe();
     AppMethodBeat.o(120768);
   }
   
@@ -92,7 +92,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120769);
       boolean bool = super.remove(paramObject);
-      cMz();
+      dqd();
       AppMethodBeat.o(120769);
       return bool;
     }

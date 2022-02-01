@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="true" android:state_pressed="true">
-        <objectAnimator android:duration="@integer/q" android:valueTo="@dimen/aeh" android:valueType="floatType" android:propertyName="translationZ" />
-    </item>
-    <item android:state_enabled="true">
-        <objectAnimator android:duration="@integer/q" android:valueTo="0" android:valueType="floatType" android:propertyName="translationZ" />
-    </item>
-    <item>
-        <objectAnimator android:duration="0" android:valueTo="0" android:valueType="floatType" android:propertyName="translationZ" />
-    </item>
-</selector>
+<objectAnimator android:interpolator="@android:anim/linear_interpolator" android:duration="150" android:valueFrom="0.0" android:valueTo="1.0" android:propertyName="alpha"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

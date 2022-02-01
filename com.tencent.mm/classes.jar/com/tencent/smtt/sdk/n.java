@@ -19,7 +19,7 @@ class n
   
   static n a(Context paramContext)
   {
-    AppMethodBeat.i(194888);
+    AppMethodBeat.i(219488);
     if (a == null) {}
     try
     {
@@ -28,12 +28,12 @@ class n
       }
       b = paramContext.getApplicationContext();
       paramContext = a;
-      AppMethodBeat.o(194888);
+      AppMethodBeat.o(219488);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(194888);
+      AppMethodBeat.o(219488);
     }
   }
   
@@ -151,50 +151,50 @@ class n
   
   File a()
   {
-    AppMethodBeat.i(194896);
+    AppMethodBeat.i(219520);
     q.a();
     File localFile = new File(q.t(b), "tbscoreinstall.txt");
     if (!localFile.exists()) {}
     try
     {
       localFile.createNewFile();
-      AppMethodBeat.o(194896);
+      AppMethodBeat.o(219520);
       return localFile;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(194896);
+      AppMethodBeat.o(219520);
     }
     return null;
   }
   
   void a(int paramInt)
   {
-    AppMethodBeat.i(194915);
+    AppMethodBeat.i(219537);
     a("dexopt_retry_num", paramInt);
-    AppMethodBeat.o(194915);
+    AppMethodBeat.o(219537);
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194890);
+    AppMethodBeat.i(219509);
     a("copy_core_ver", paramInt1);
     a("copy_status", paramInt2);
-    AppMethodBeat.o(194890);
+    AppMethodBeat.o(219509);
   }
   
   void a(String paramString)
   {
-    AppMethodBeat.i(194918);
+    AppMethodBeat.i(219547);
     a("install_apk_path", paramString);
-    AppMethodBeat.o(194918);
+    AppMethodBeat.o(219547);
   }
   
   void a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(194939);
+    AppMethodBeat.i(219585);
     a(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(194939);
+    AppMethodBeat.o(219585);
   }
   
   /* Error */
@@ -326,116 +326,116 @@ class n
   
   int b()
   {
-    AppMethodBeat.i(194910);
+    AppMethodBeat.i(219525);
     int i = c("install_core_ver");
-    AppMethodBeat.o(194910);
+    AppMethodBeat.o(219525);
     return i;
   }
   
   int b(String paramString)
   {
-    AppMethodBeat.i(194929);
+    AppMethodBeat.i(219576);
     try
     {
       Properties localProperties = e();
       if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
       {
         int i = Integer.parseInt(localProperties.getProperty(paramString));
-        AppMethodBeat.o(194929);
+        AppMethodBeat.o(219576);
         return i;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(194929);
+      AppMethodBeat.o(219576);
     }
     return -1;
   }
   
   void b(int paramInt)
   {
-    AppMethodBeat.i(194917);
+    AppMethodBeat.i(219541);
     a("unzip_retry_num", paramInt);
-    AppMethodBeat.o(194917);
+    AppMethodBeat.o(219541);
   }
   
   void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194891);
+    AppMethodBeat.i(219514);
     a("tpatch_ver", paramInt1);
     a("tpatch_status", paramInt2);
-    AppMethodBeat.o(194891);
+    AppMethodBeat.o(219514);
   }
   
   int c()
   {
-    AppMethodBeat.i(194913);
+    AppMethodBeat.i(219532);
     int i = b("install_status");
-    AppMethodBeat.o(194913);
+    AppMethodBeat.o(219532);
     return i;
   }
   
   int c(String paramString)
   {
-    AppMethodBeat.i(194942);
+    AppMethodBeat.i(219590);
     Properties localProperties = e();
     if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
     {
       int i = Integer.parseInt(localProperties.getProperty(paramString));
-      AppMethodBeat.o(194942);
+      AppMethodBeat.o(219590);
       return i;
     }
-    AppMethodBeat.o(194942);
+    AppMethodBeat.o(219590);
     return 0;
   }
   
   void c(int paramInt)
   {
-    AppMethodBeat.i(194920);
+    AppMethodBeat.i(219558);
     a("incrupdate_status", paramInt);
-    AppMethodBeat.o(194920);
+    AppMethodBeat.o(219558);
   }
   
   void c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194919);
+    AppMethodBeat.i(219551);
     a("install_core_ver", paramInt1);
     a("install_status", paramInt2);
-    AppMethodBeat.o(194919);
+    AppMethodBeat.o(219551);
   }
   
   int d()
   {
-    AppMethodBeat.i(194922);
+    AppMethodBeat.i(219564);
     int i = b("incrupdate_status");
-    AppMethodBeat.o(194922);
+    AppMethodBeat.o(219564);
     return i;
   }
   
   String d(String paramString)
   {
-    AppMethodBeat.i(194946);
+    AppMethodBeat.i(219592);
     Properties localProperties = e();
     if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
     {
       paramString = localProperties.getProperty(paramString);
-      AppMethodBeat.o(194946);
+      AppMethodBeat.o(219592);
       return paramString;
     }
-    AppMethodBeat.o(194946);
+    AppMethodBeat.o(219592);
     return null;
   }
   
   void d(int paramInt)
   {
-    AppMethodBeat.i(194924);
+    AppMethodBeat.i(219568);
     a("unlzma_status", paramInt);
-    AppMethodBeat.o(194924);
+    AppMethodBeat.o(219568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.n
  * JD-Core Version:    0.7.0.1
  */

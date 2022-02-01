@@ -23,21 +23,21 @@ public final class a$j
     {
       try
       {
-        Object localObject = paramIPCAudioParamRequest.fMd;
-        if (paramIPCAudioParamRequest.lWa == null) {
+        Object localObject = paramIPCAudioParamRequest.musicId;
+        if (paramIPCAudioParamRequest.oPd == null) {
           continue;
         }
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
-        localObject = paramIPCAudioParamRequest.fMd;
-        paramIPCAudioParamRequest = paramIPCAudioParamRequest.lWa;
-        d locald = o.feX();
+        localObject = paramIPCAudioParamRequest.musicId;
+        paramIPCAudioParamRequest = paramIPCAudioParamRequest.oPd;
+        d locald = o.goe();
         ContentValues localContentValues = new ContentValues();
         localContentValues.put("indexBitData", paramIPCAudioParamRequest);
         int i = locald.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject });
         if (i <= 0) {
           Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
         }
-        localObject = (c)locald.FSN.get(localObject);
+        localObject = (c)locald.LNJ.get(localObject);
         if (localObject != null) {
           ((c)localObject).field_indexBitData = paramIPCAudioParamRequest;
         }
@@ -56,7 +56,7 @@ public final class a$j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.j
  * JD-Core Version:    0.7.0.1
  */

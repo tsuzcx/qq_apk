@@ -1,6 +1,5 @@
 package com.tencent.luggage.game.widget.input;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Editable;
 import android.text.Editable.Factory;
@@ -19,14 +18,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.ad;
 import com.tencent.mm.plugin.appbrand.widget.input.c.b;
 
-@SuppressLint({"AppCompatCustomView"})
 public class WAGamePanelInputEditText
   extends EditText
 {
-  private final InputFilter cwA;
-  private int cwB;
-  private final Spannable.Factory cwC;
-  private final ad cwz;
+  private final InputFilter eoA;
+  private int eoB;
+  private final Spannable.Factory eoC;
+  private final ad eoz;
   
   public WAGamePanelInputEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,7 +35,7 @@ public class WAGamePanelInputEditText
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(130724);
-    this.cwA = new InputFilter()
+    this.eoA = new InputFilter()
     {
       public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
       {
@@ -57,8 +55,8 @@ public class WAGamePanelInputEditText
         }
       }
     };
-    this.cwB = 2147483647;
-    this.cwC = new Spannable.Factory()
+    this.eoB = 2147483647;
+    this.eoC = new Spannable.Factory()
     {
       public final Spannable newSpannable(CharSequence paramAnonymousCharSequence)
       {
@@ -68,7 +66,7 @@ public class WAGamePanelInputEditText
         return paramAnonymousCharSequence;
       }
     };
-    this.cwz = new ad(this);
+    this.eoz = new ad(this);
     super.setEditableFactory(new Editable.Factory()
     {
       public final Editable newEditable(CharSequence paramAnonymousCharSequence)
@@ -79,13 +77,13 @@ public class WAGamePanelInputEditText
         return paramAnonymousCharSequence;
       }
     });
-    super.setFilters(new InputFilter[] { this.cwA });
+    super.setFilters(new InputFilter[] { this.eoA });
     AppMethodBeat.o(130724);
   }
   
   public int getMaxLength()
   {
-    return this.cwB;
+    return this.eoB;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
@@ -99,7 +97,7 @@ public class WAGamePanelInputEditText
   
   public void setComposingDismissedListener(b paramb)
   {
-    this.cwz.rxv = paramb;
+    this.eoz.uIz = paramb;
   }
   
   public void setFilters(InputFilter[] paramArrayOfInputFilter)
@@ -107,7 +105,7 @@ public class WAGamePanelInputEditText
     int i = 0;
     AppMethodBeat.i(130725);
     InputFilter[] arrayOfInputFilter = paramArrayOfInputFilter;
-    if (this.cwA != null)
+    if (this.eoA != null)
     {
       arrayOfInputFilter = paramArrayOfInputFilter;
       if (paramArrayOfInputFilter == null) {
@@ -119,7 +117,7 @@ public class WAGamePanelInputEditText
         paramArrayOfInputFilter[i] = arrayOfInputFilter[i];
         i += 1;
       }
-      paramArrayOfInputFilter[i] = this.cwA;
+      paramArrayOfInputFilter[i] = this.eoA;
       arrayOfInputFilter = paramArrayOfInputFilter;
     }
     super.setFilters(arrayOfInputFilter);
@@ -128,23 +126,23 @@ public class WAGamePanelInputEditText
   
   public void setMaxLength(int paramInt)
   {
-    this.cwB = paramInt;
+    this.eoB = paramInt;
   }
   
   public void setSingleLine(boolean paramBoolean)
   {
-    AppMethodBeat.i(246886);
+    AppMethodBeat.i(220175);
     int i = getMaxHeight();
     super.setSingleLine(paramBoolean);
     if (i > 0) {
       setMaxHeight(i);
     }
-    AppMethodBeat.o(246886);
+    AppMethodBeat.o(220175);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.widget.input.WAGamePanelInputEditText
  * JD-Core Version:    0.7.0.1
  */

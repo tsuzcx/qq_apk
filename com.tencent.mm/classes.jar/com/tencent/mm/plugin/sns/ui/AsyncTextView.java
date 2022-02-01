@@ -6,32 +6,33 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.openim.a.a;
-import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.openim.api.e;
+import com.tencent.mm.plugin.sns.b.c;
 import com.tencent.mm.plugin.textstatus.a.a.b;
 import com.tencent.mm.plugin.textstatus.a.a.c;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.pluginsdk.ui.span.m;
+import com.tencent.mm.plugin.textstatus.a.f;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.pluginsdk.ui.span.q;
-import com.tencent.mm.pluginsdk.ui.span.q.a;
+import com.tencent.mm.pluginsdk.ui.span.u;
+import com.tencent.mm.pluginsdk.ui.span.u.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.bd;
 
 public class AsyncTextView
   extends TextView
   implements Runnable
 {
-  private String KBA;
-  private q.a KBB;
-  private boolean KBC;
-  private com.tencent.mm.contact.d KBD;
-  private int KBE;
-  private String KBy;
-  private boolean KBz;
+  private String Rbf;
+  private boolean Rbg;
+  private String Rbh;
+  private u.a Rbi;
+  private boolean Rbj;
+  private com.tencent.mm.contact.d Rbk;
+  private int Rbl;
   private Context context;
   private String userName;
   private int viewType;
@@ -40,8 +41,8 @@ public class AsyncTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97770);
-    this.KBD = null;
-    this.KBE = 0;
+    this.Rbk = null;
+    this.Rbl = 0;
     init(paramContext);
     AppMethodBeat.o(97770);
   }
@@ -50,8 +51,8 @@ public class AsyncTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(97769);
-    this.KBD = null;
-    this.KBE = 0;
+    this.Rbk = null;
+    this.Rbl = 0;
     init(paramContext);
     AppMethodBeat.o(97769);
   }
@@ -60,20 +61,20 @@ public class AsyncTextView
   {
     AppMethodBeat.i(97771);
     this.context = paramContext;
-    this.KBE = aw.fromDPToPix(paramContext, 14);
+    this.Rbl = bd.fromDPToPix(paramContext, 14);
     AppMethodBeat.o(97771);
   }
   
-  public final void a(String paramString1, String paramString2, q.a parama, boolean paramBoolean1, String paramString3, int paramInt, boolean paramBoolean2)
+  public final void a(String paramString1, String paramString2, u.a parama, boolean paramBoolean1, String paramString3, int paramInt, boolean paramBoolean2)
   {
     AppMethodBeat.i(97772);
     this.userName = paramString1;
-    this.KBy = paramString2;
+    this.Rbf = paramString2;
     this.viewType = paramInt;
-    this.KBz = paramBoolean1;
-    this.KBA = paramString3;
-    this.KBB = parama;
-    this.KBC = paramBoolean2;
+    this.Rbg = paramBoolean1;
+    this.Rbh = paramString3;
+    this.Rbi = parama;
+    this.Rbj = paramBoolean2;
     run();
     AppMethodBeat.o(97772);
   }
@@ -84,10 +85,9 @@ public class AsyncTextView
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(97776);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(97776);
     }
@@ -103,7 +103,7 @@ public class AsyncTextView
       AppMethodBeat.o(97775);
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.AsyncTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(97775);
@@ -116,10 +116,9 @@ public class AsyncTextView
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(97774);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(97774);
     }
@@ -131,10 +130,9 @@ public class AsyncTextView
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(97777);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(97777);
     }
@@ -148,7 +146,7 @@ public class AsyncTextView
     if ((getTag() instanceof String))
     {
       localObject1 = (String)getTag();
-      if ((!Util.isNullOrNil(new String[] { localObject1, this.userName })) && (!this.KBz) && (((String)localObject1).equals(this.userName)))
+      if ((!Util.isNullOrNil(new String[] { localObject1, this.userName })) && (!this.Rbg) && (((String)localObject1).equals(this.userName)))
       {
         AppMethodBeat.o(97773);
         return;
@@ -156,11 +154,11 @@ public class AsyncTextView
     }
     int j;
     int i;
-    if ((this.KBD != null) && (as.bvK(this.KBD.field_username)) && ("3552365301".equals(this.KBD.field_openImAppid)))
+    if ((this.Rbk != null) && (au.bwO(this.Rbk.field_username)) && ("3552365301".equals(this.Rbk.field_openImAppid)))
     {
-      j = this.KBy.length();
-      localObject1 = " @" + ((a)h.ae(a.class)).bR(this.KBD.field_openImAppid, this.KBD.field_descWordingId);
-      this.KBy += (String)localObject1;
+      j = this.Rbf.length();
+      localObject1 = " @" + ((e)h.ax(e.class)).cc(this.Rbk.field_openImAppid, this.Rbk.field_descWordingId);
+      this.Rbf += (String)localObject1;
       i = ((String)localObject1).length() + j;
     }
     for (;;)
@@ -168,17 +166,17 @@ public class AsyncTextView
       if (this.viewType == 10) {}
       for (int k = 3;; k = 2)
       {
-        localObject1 = new q(new com.tencent.mm.plugin.sns.data.d(this.KBz, this.userName, this.KBA, 1), this.KBB, k);
+        localObject1 = new u(new com.tencent.mm.plugin.sns.data.d(this.Rbg, this.userName, this.Rbh, 1), this.Rbi, k);
         Object localObject2 = getContext();
-        String str = this.KBy;
+        String str = this.Rbf;
         getTextSize();
-        localObject2 = new m(l.e((Context)localObject2, str, k));
-        ((m)localObject2).a(localObject1, this.KBy, 0);
-        if ((this.KBD != null) && (j != i) && (i > j) && (j >= 0)) {
-          ((m)localObject2).setSpan(((a)h.ae(a.class)).a(this.context, this.KBD.field_openImAppid, this.KBE, i.c.BW_0_Alpha_0_5), j, i, 33);
+        localObject2 = new q(p.e((Context)localObject2, str, k));
+        ((q)localObject2).a(localObject1, this.Rbf, 0);
+        if ((this.Rbk != null) && (j != i) && (i > j) && (j >= 0)) {
+          ((q)localObject2).setSpan(((e)h.ax(e.class)).a(this.context, this.Rbk.field_openImAppid, this.Rbl, b.c.BW_0_Alpha_0_5), j, i, 33);
         }
         setText((CharSequence)localObject2, TextView.BufferType.SPANNABLE);
-        ((com.tencent.mm.plugin.textstatus.a.d)h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).setTextWithStatus(this, this.userName, a.b.MzC, a.c.MzI);
+        ((f)h.az(f.class)).setTextWithStatus(this, this.userName, a.b.ThG, a.c.ThP);
         setTag(this.userName);
         AppMethodBeat.o(97773);
         return;
@@ -190,12 +188,12 @@ public class AsyncTextView
   
   public void setContactInfo(com.tencent.mm.contact.d paramd)
   {
-    this.KBD = paramd;
+    this.Rbk = paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncTextView
  * JD-Core Version:    0.7.0.1
  */

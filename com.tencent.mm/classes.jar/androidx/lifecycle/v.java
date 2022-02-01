@@ -1,124 +1,116 @@
 package androidx.lifecycle;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.os.Bundle;
+import androidx.a.a.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
-public final class v
-  extends Fragment
+public class v<T>
+  extends x<T>
 {
-  a aaI;
+  private b<LiveData<?>, a<?>> bHP;
   
-  private void c(h.a parama)
+  public v()
   {
-    AppMethodBeat.i(263253);
-    Object localObject = getActivity();
-    if ((localObject instanceof n))
+    AppMethodBeat.i(194350);
+    this.bHP = new b();
+    AppMethodBeat.o(194350);
+  }
+  
+  protected final void Hf()
+  {
+    AppMethodBeat.i(194372);
+    Iterator localIterator = this.bHP.iterator();
+    while (localIterator.hasNext()) {
+      ((a)((Map.Entry)localIterator.next()).getValue()).Hm();
+    }
+    AppMethodBeat.o(194372);
+  }
+  
+  protected final void Hk()
+  {
+    AppMethodBeat.i(194375);
+    Iterator localIterator = this.bHP.iterator();
+    while (localIterator.hasNext()) {
+      ((a)((Map.Entry)localIterator.next()).getValue()).Hn();
+    }
+    AppMethodBeat.o(194375);
+  }
+  
+  public <S> void a(LiveData<S> paramLiveData, y<? super S> paramy)
+  {
+    AppMethodBeat.i(194357);
+    a locala = new a(paramLiveData, paramy);
+    paramLiveData = (a)this.bHP.putIfAbsent(paramLiveData, locala);
+    if ((paramLiveData != null) && (paramLiveData.mObserver != paramy))
     {
-      ((n)localObject).jg().a(parama);
-      AppMethodBeat.o(263253);
+      paramLiveData = new IllegalArgumentException("This source was already added with the different observer");
+      AppMethodBeat.o(194357);
+      throw paramLiveData;
+    }
+    if (paramLiveData != null)
+    {
+      AppMethodBeat.o(194357);
       return;
     }
-    if ((localObject instanceof l))
-    {
-      localObject = ((l)localObject).getLifecycle();
-      if ((localObject instanceof m)) {
-        ((m)localObject).a(parama);
-      }
+    if (Hl()) {
+      locala.Hm();
     }
-    AppMethodBeat.o(263253);
+    AppMethodBeat.o(194357);
   }
   
-  public static void h(Activity paramActivity)
+  public final <S> void b(LiveData<S> paramLiveData)
   {
-    AppMethodBeat.i(263241);
-    paramActivity = paramActivity.getFragmentManager();
-    if (paramActivity.findFragmentByTag("androidx.lifecycle.LifecycleDispatcher.report_fragment_tag") == null)
-    {
-      paramActivity.beginTransaction().add(new v(), "androidx.lifecycle.LifecycleDispatcher.report_fragment_tag").commit();
-      paramActivity.executePendingTransactions();
+    AppMethodBeat.i(194367);
+    paramLiveData = (a)this.bHP.remove(paramLiveData);
+    if (paramLiveData != null) {
+      paramLiveData.Hn();
     }
-    AppMethodBeat.o(263241);
+    AppMethodBeat.o(194367);
   }
   
-  static v i(Activity paramActivity)
+  static final class a<V>
+    implements y<V>
   {
-    AppMethodBeat.i(263242);
-    paramActivity = (v)paramActivity.getFragmentManager().findFragmentByTag("androidx.lifecycle.LifecycleDispatcher.report_fragment_tag");
-    AppMethodBeat.o(263242);
-    return paramActivity;
-  }
-  
-  public final void onActivityCreated(Bundle paramBundle)
-  {
-    AppMethodBeat.i(263244);
-    super.onActivityCreated(paramBundle);
-    c(h.a.ON_CREATE);
-    AppMethodBeat.o(263244);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(263252);
-    super.onDestroy();
-    c(h.a.ON_DESTROY);
-    this.aaI = null;
-    AppMethodBeat.o(263252);
-  }
-  
-  public final void onPause()
-  {
-    AppMethodBeat.i(263247);
-    super.onPause();
-    c(h.a.ON_PAUSE);
-    AppMethodBeat.o(263247);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(263246);
-    super.onResume();
-    a locala = this.aaI;
-    if (locala != null) {
-      locala.onResume();
-    }
-    c(h.a.ON_RESUME);
-    AppMethodBeat.o(263246);
-  }
-  
-  public final void onStart()
-  {
-    AppMethodBeat.i(263245);
-    super.onStart();
-    a locala = this.aaI;
-    if (locala != null) {
-      locala.onStart();
-    }
-    c(h.a.ON_START);
-    AppMethodBeat.o(263245);
-  }
-  
-  public final void onStop()
-  {
-    AppMethodBeat.i(263250);
-    super.onStop();
-    c(h.a.ON_STOP);
-    AppMethodBeat.o(263250);
-  }
-  
-  static abstract interface a
-  {
-    public abstract void onResume();
+    final LiveData<V> bGX;
+    int bHI = -1;
+    final y<? super V> mObserver;
     
-    public abstract void onStart();
+    a(LiveData<V> paramLiveData, y<? super V> paramy)
+    {
+      this.bGX = paramLiveData;
+      this.mObserver = paramy;
+    }
+    
+    final void Hm()
+    {
+      AppMethodBeat.i(194342);
+      this.bGX.a(this);
+      AppMethodBeat.o(194342);
+    }
+    
+    final void Hn()
+    {
+      AppMethodBeat.i(194345);
+      this.bGX.b(this);
+      AppMethodBeat.o(194345);
+    }
+    
+    public final void onChanged(V paramV)
+    {
+      AppMethodBeat.i(194351);
+      if (this.bHI != this.bGX.bHI)
+      {
+        this.bHI = this.bGX.bHI;
+        this.mObserver.onChanged(paramV);
+      }
+      AppMethodBeat.o(194351);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.lifecycle.v
  * JD-Core Version:    0.7.0.1
  */

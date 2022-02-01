@@ -3,14 +3,14 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String RDi;
-  public String RDj;
-  public String RDx;
-  public String RDy;
-  public String RDz;
-  public long gbJ;
+  public String YAa;
+  public String YAb;
+  public String YAc;
+  public String YzL;
+  public String YzM;
+  public long ihV;
   public int role;
   public int state;
   public String title;
@@ -20,69 +20,69 @@ public final class n
     AppMethodBeat.i(91322);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RDi != null) {
-        paramVarArgs.f(1, this.RDi);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YzL != null) {
+        paramVarArgs.g(1, this.YzL);
       }
       if (this.title != null) {
-        paramVarArgs.f(2, this.title);
+        paramVarArgs.g(2, this.title);
       }
-      paramVarArgs.bm(3, this.gbJ);
-      if (this.RDx != null) {
-        paramVarArgs.f(5, this.RDx);
+      paramVarArgs.bv(3, this.ihV);
+      if (this.YAa != null) {
+        paramVarArgs.g(5, this.YAa);
       }
-      paramVarArgs.aY(10, this.state);
-      paramVarArgs.aY(11, this.role);
-      if (this.RDy != null) {
-        paramVarArgs.f(12, this.RDy);
+      paramVarArgs.bS(10, this.state);
+      paramVarArgs.bS(11, this.role);
+      if (this.YAb != null) {
+        paramVarArgs.g(12, this.YAb);
       }
-      if (this.RDj != null) {
-        paramVarArgs.f(13, this.RDj);
+      if (this.YzM != null) {
+        paramVarArgs.g(13, this.YzM);
       }
-      if (this.RDz != null) {
-        paramVarArgs.f(14, this.RDz);
+      if (this.YAc != null) {
+        paramVarArgs.g(14, this.YAc);
       }
       AppMethodBeat.o(91322);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RDi == null) {
-        break label674;
+      if (this.YzL == null) {
+        break label670;
       }
     }
-    label674:
-    for (paramInt = g.a.a.b.b.a.g(1, this.RDi) + 0;; paramInt = 0)
+    label670:
+    for (paramInt = i.a.a.b.b.a.h(1, this.YzL) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.title != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.title);
+        i = paramInt + i.a.a.b.b.a.h(2, this.title);
       }
-      i += g.a.a.b.b.a.p(3, this.gbJ);
+      i += i.a.a.b.b.a.q(3, this.ihV);
       paramInt = i;
-      if (this.RDx != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.RDx);
+      if (this.YAa != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.YAa);
       }
-      i = paramInt + g.a.a.b.b.a.bM(10, this.state) + g.a.a.b.b.a.bM(11, this.role);
+      i = paramInt + i.a.a.b.b.a.cJ(10, this.state) + i.a.a.b.b.a.cJ(11, this.role);
       paramInt = i;
-      if (this.RDy != null) {
-        paramInt = i + g.a.a.b.b.a.g(12, this.RDy);
+      if (this.YAb != null) {
+        paramInt = i + i.a.a.b.b.a.h(12, this.YAb);
       }
       i = paramInt;
-      if (this.RDj != null) {
-        i = paramInt + g.a.a.b.b.a.g(13, this.RDj);
+      if (this.YzM != null) {
+        i = paramInt + i.a.a.b.b.a.h(13, this.YzM);
       }
       paramInt = i;
-      if (this.RDz != null) {
-        paramInt = i + g.a.a.b.b.a.g(14, this.RDz);
+      if (this.YAc != null) {
+        paramInt = i + i.a.a.b.b.a.h(14, this.YAc);
       }
       AppMethodBeat.o(91322);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
         AppMethodBeat.o(91322);
@@ -90,7 +90,7 @@ public final class n
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         n localn = (n)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -103,39 +103,39 @@ public final class n
           AppMethodBeat.o(91322);
           return -1;
         case 1: 
-          localn.RDi = locala.abFh.readString();
+          localn.YzL = locala.ajGk.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 2: 
-          localn.title = locala.abFh.readString();
+          localn.title = locala.ajGk.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 3: 
-          localn.gbJ = locala.abFh.AN();
+          localn.ihV = locala.ajGk.aaw();
           AppMethodBeat.o(91322);
           return 0;
         case 5: 
-          localn.RDx = locala.abFh.readString();
+          localn.YAa = locala.ajGk.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 10: 
-          localn.state = locala.abFh.AK();
+          localn.state = locala.ajGk.aar();
           AppMethodBeat.o(91322);
           return 0;
         case 11: 
-          localn.role = locala.abFh.AK();
+          localn.role = locala.ajGk.aar();
           AppMethodBeat.o(91322);
           return 0;
         case 12: 
-          localn.RDy = locala.abFh.readString();
+          localn.YAb = locala.ajGk.readString();
           AppMethodBeat.o(91322);
           return 0;
         case 13: 
-          localn.RDj = locala.abFh.readString();
+          localn.YzM = locala.ajGk.readString();
           AppMethodBeat.o(91322);
           return 0;
         }
-        localn.RDz = locala.abFh.readString();
+        localn.YAc = locala.ajGk.readString();
         AppMethodBeat.o(91322);
         return 0;
       }
@@ -146,7 +146,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.n
  * JD-Core Version:    0.7.0.1
  */

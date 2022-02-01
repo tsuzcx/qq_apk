@@ -4,17 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.wallet_core.e;
 
 public class a
-  extends d
+  extends e
 {
   public final g a(MMActivity paramMMActivity, i parami)
   {
@@ -23,12 +23,12 @@ public class a
     {
       paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(64476);
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[0];
@@ -46,7 +46,7 @@ public class a
     return paramMMActivity;
   }
   
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(64477);
     Log.i("MicroMsg.FingerPrintAuthProcess", "FingerPrintAuthProcess start,forward to WalletCheckPwdUI");
@@ -61,7 +61,7 @@ public class a
     if ((paramActivity instanceof WalletCheckPwdUI))
     {
       Log.i("MicroMsg.FingerPrintAuthProcess", "forward to FingerPrintAuthUI");
-      if (this.fKb.getInt("key_open_biometric_type") == 1)
+      if (this.hPH.getInt("key_open_biometric_type") == 1)
       {
         b(paramActivity, FingerPrintAuthUI.class, paramBundle);
         AppMethodBeat.o(64478);
@@ -96,7 +96,7 @@ public class a
       AppMethodBeat.o(64480);
       return;
     }
-    bH(paramActivity);
+    co(paramActivity);
     AppMethodBeat.o(64480);
   }
   
@@ -105,12 +105,12 @@ public class a
     return false;
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "FingerprintAuth";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(64479);
     b(paramActivity, new Bundle());
@@ -119,7 +119,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.ui.a
  * JD-Core Version:    0.7.0.1
  */

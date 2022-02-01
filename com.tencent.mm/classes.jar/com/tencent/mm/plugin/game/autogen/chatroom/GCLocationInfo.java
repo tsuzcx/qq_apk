@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.game.autogen.chatroom;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GCLocationInfo
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public String ad_code;
   public String city;
@@ -13,96 +13,96 @@ public class GCLocationInfo
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195347);
+    AppMethodBeat.i(275470);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.province != null) {
-        paramVarArgs.f(1, this.province);
+        paramVarArgs.g(1, this.province);
       }
       if (this.country != null) {
-        paramVarArgs.f(2, this.country);
+        paramVarArgs.g(2, this.country);
       }
       if (this.city != null) {
-        paramVarArgs.f(3, this.city);
+        paramVarArgs.g(3, this.city);
       }
       if (this.ad_code != null) {
-        paramVarArgs.f(4, this.ad_code);
+        paramVarArgs.g(4, this.ad_code);
       }
       if (this.region != null) {
-        paramVarArgs.f(5, this.region);
+        paramVarArgs.g(5, this.region);
       }
-      AppMethodBeat.o(195347);
+      AppMethodBeat.o(275470);
       return 0;
     }
     if (paramInt == 1) {
       if (this.province == null) {
-        break label454;
+        break label450;
       }
     }
-    label454:
-    for (int i = g.a.a.b.b.a.g(1, this.province) + 0;; i = 0)
+    label450:
+    for (int i = i.a.a.b.b.a.h(1, this.province) + 0;; i = 0)
     {
       paramInt = i;
       if (this.country != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.country);
+        paramInt = i + i.a.a.b.b.a.h(2, this.country);
       }
       i = paramInt;
       if (this.city != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.city);
+        i = paramInt + i.a.a.b.b.a.h(3, this.city);
       }
       paramInt = i;
       if (this.ad_code != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.ad_code);
+        paramInt = i + i.a.a.b.b.a.h(4, this.ad_code);
       }
       i = paramInt;
       if (this.region != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.region);
+        i = paramInt + i.a.a.b.b.a.h(5, this.region);
       }
-      AppMethodBeat.o(195347);
+      AppMethodBeat.o(275470);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(195347);
+        AppMethodBeat.o(275470);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         GCLocationInfo localGCLocationInfo = (GCLocationInfo)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(195347);
+          AppMethodBeat.o(275470);
           return -1;
         case 1: 
-          localGCLocationInfo.province = locala.abFh.readString();
-          AppMethodBeat.o(195347);
+          localGCLocationInfo.province = locala.ajGk.readString();
+          AppMethodBeat.o(275470);
           return 0;
         case 2: 
-          localGCLocationInfo.country = locala.abFh.readString();
-          AppMethodBeat.o(195347);
+          localGCLocationInfo.country = locala.ajGk.readString();
+          AppMethodBeat.o(275470);
           return 0;
         case 3: 
-          localGCLocationInfo.city = locala.abFh.readString();
-          AppMethodBeat.o(195347);
+          localGCLocationInfo.city = locala.ajGk.readString();
+          AppMethodBeat.o(275470);
           return 0;
         case 4: 
-          localGCLocationInfo.ad_code = locala.abFh.readString();
-          AppMethodBeat.o(195347);
+          localGCLocationInfo.ad_code = locala.ajGk.readString();
+          AppMethodBeat.o(275470);
           return 0;
         }
-        localGCLocationInfo.region = locala.abFh.readString();
-        AppMethodBeat.o(195347);
+        localGCLocationInfo.region = locala.ajGk.readString();
+        AppMethodBeat.o(275470);
         return 0;
       }
-      AppMethodBeat.o(195347);
+      AppMethodBeat.o(275470);
       return -1;
     }
   }

@@ -1,12 +1,20 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import com.tencent.mm.protocal.protobuf.aqu;
-import kotlin.l;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.protocal.protobuf.bkk;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "T", "", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "(Ljava/lang/Object;Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;)V", "finder-sdk_release"})
-public abstract interface aj<T>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IFinderLiveAdNoticeCache;", "Lcom/tencent/mm/kernel/service/IService;", "assignRequestInterval", "", "_requestInterval", "", "getNoticeState", "", "username", "", "noticeId", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Boolean;", "save", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "update", "reserved", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface aj
+  extends a
 {
-  public abstract void a(T paramT, aqu paramaqu);
+  public abstract void Ow(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, bkk parambkk);
+  
+  public abstract Boolean hJ(String paramString1, String paramString2);
+  
+  public abstract void u(String paramString1, String paramString2, boolean paramBoolean);
 }
 
 

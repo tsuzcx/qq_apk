@@ -2,7 +2,7 @@ package com.tencent.mm.ac.c;
 
 public abstract interface e$a
 {
-  public abstract void aj(String paramString, int paramInt);
+  public abstract void as(String paramString, int paramInt);
 }
 
 

@@ -23,29 +23,29 @@ import com.tencent.mm.ah.a.m;
 public class RoundCornerImageView
   extends AppCompatImageView
 {
-  private Path Ydr;
-  private RectF Yds;
-  public int Ydt;
-  public int Ydu;
-  private Paint borderPaint;
+  private Path afVi;
+  private RectF afVj;
+  public int afVk;
+  public int afVl;
   private Paint paint;
   private int roundHeight;
   private int roundWidth;
   public int shadowColor;
   public int shadowRadius;
+  private Paint uMn;
   
   public RoundCornerImageView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(221873);
+    AppMethodBeat.i(251640);
     this.roundWidth = 8;
     this.roundHeight = 8;
     this.paint = new Paint();
-    this.Ydr = new Path();
-    this.Yds = new RectF();
+    this.afVi = new Path();
+    this.afVj = new RectF();
     this.shadowRadius = 0;
     init(paramContext, null);
-    AppMethodBeat.o(221873);
+    AppMethodBeat.o(251640);
   }
   
   public RoundCornerImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -55,8 +55,8 @@ public class RoundCornerImageView
     this.roundWidth = 8;
     this.roundHeight = 8;
     this.paint = new Paint();
-    this.Ydr = new Path();
-    this.Yds = new RectF();
+    this.afVi = new Path();
+    this.afVj = new RectF();
     this.shadowRadius = 0;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(143446);
@@ -69,8 +69,8 @@ public class RoundCornerImageView
     this.roundWidth = 8;
     this.roundHeight = 8;
     this.paint = new Paint();
-    this.Ydr = new Path();
-    this.Yds = new RectF();
+    this.afVi = new Path();
+    this.afVj = new RectF();
     this.shadowRadius = 0;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(143445);
@@ -114,37 +114,37 @@ public class RoundCornerImageView
     super.draw(localCanvas);
     this.paint.setAntiAlias(true);
     this.paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.Yds.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.Ydr.addRoundRect(this.Yds, this.roundWidth, this.roundHeight, Path.Direction.CW);
-    this.Ydr.setFillType(Path.FillType.INVERSE_WINDING);
-    localCanvas.drawPath(this.Ydr, this.paint);
-    if (this.borderPaint != null)
+    this.afVj.set(0.0F, 0.0F, getWidth(), getHeight());
+    this.afVi.addRoundRect(this.afVj, this.roundWidth, this.roundHeight, Path.Direction.CW);
+    this.afVi.setFillType(Path.FillType.INVERSE_WINDING);
+    localCanvas.drawPath(this.afVi, this.paint);
+    if (this.uMn != null)
     {
-      float f = this.borderPaint.getStrokeWidth() / 2.0F;
-      localCanvas.drawRoundRect(new RectF(f, f, getWidth() - f, getHeight() - f), this.roundWidth, this.roundHeight, this.borderPaint);
+      float f = this.uMn.getStrokeWidth() / 2.0F;
+      localCanvas.drawRoundRect(new RectF(f, f, getWidth() - f, getHeight() - f), this.roundWidth, this.roundHeight, this.uMn);
     }
     this.paint.reset();
     this.paint.setXfermode(null);
     if (this.shadowRadius > 0) {
-      this.paint.setShadowLayer(this.shadowRadius, this.Ydt, this.Ydu, this.shadowColor);
+      this.paint.setShadowLayer(this.shadowRadius, this.afVk, this.afVl, this.shadowColor);
     }
     paramCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, this.paint);
     localBitmap1.recycle();
     AppMethodBeat.o(143448);
   }
   
-  public final void mP(int paramInt1, int paramInt2)
+  public final void oI(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221882);
-    this.borderPaint = new Paint();
-    this.borderPaint.setStyle(Paint.Style.STROKE);
-    this.borderPaint.setStrokeWidth(paramInt1);
-    this.borderPaint.setAntiAlias(true);
-    this.borderPaint.setColor(paramInt2);
-    AppMethodBeat.o(221882);
+    AppMethodBeat.i(251658);
+    this.uMn = new Paint();
+    this.uMn.setStyle(Paint.Style.STROKE);
+    this.uMn.setStrokeWidth(paramInt1);
+    this.uMn.setAntiAlias(true);
+    this.uMn.setColor(paramInt2);
+    AppMethodBeat.o(251658);
   }
   
-  public final void mQ(int paramInt1, int paramInt2)
+  public final void oJ(int paramInt1, int paramInt2)
   {
     this.roundWidth = paramInt1;
     this.roundHeight = paramInt2;
@@ -152,7 +152,7 @@ public class RoundCornerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.RoundCornerImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.protocal.protobuf.ceo;
+import com.tencent.mm.protocal.protobuf.cuq;
 import com.tencent.mm.vending.c.a;
 
 public final class f

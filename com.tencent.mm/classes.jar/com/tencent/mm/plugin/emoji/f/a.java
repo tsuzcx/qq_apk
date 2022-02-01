@@ -1,149 +1,249 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.model.cl.a;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.plugin.emoji.g.d;
+import com.tencent.mm.plugin.emoji.model.s;
+import com.tencent.mm.protocal.protobuf.amn;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
-public class a
-  extends MTimerHandler
+public final class a
+  implements cl.a
 {
-  private static int uFo;
-  private static a uFp;
-  private static r uFq;
-  private static i uFr;
-  
-  static
+  private static void c(int paramInt, ArrayList<amn> paramArrayList)
   {
-    AppMethodBeat.i(108667);
-    uFo = 0;
-    uFr = new i()
+    AppMethodBeat.i(108730);
+    paramArrayList = paramArrayList.iterator();
+    if (paramArrayList.hasNext())
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      amn localamn = (amn)paramArrayList.next();
+      EmojiInfo localEmojiInfo = bl.jba().adju.bza(localamn.Md5);
+      if (localEmojiInfo == null)
       {
-        AppMethodBeat.i(108659);
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+        localEmojiInfo = new EmojiInfo();
+        d.a(localamn, localEmojiInfo);
+        if (paramInt == 1) {
+          localEmojiInfo.field_groupId = "capture";
+        }
+        for (;;)
         {
-          a.cUV().cUX();
-          AppMethodBeat.o(108659);
+          bl.jba().adju.L(localEmojiInfo);
+          break;
+          localEmojiInfo.field_catalog = EmojiInfo.aklM;
+        }
+      }
+      if (paramInt == 1) {
+        localEmojiInfo.field_groupId = "capture";
+      }
+      for (;;)
+      {
+        bl.jba().adju.M(localEmojiInfo);
+        break;
+        localEmojiInfo.field_catalog = EmojiInfo.aklM;
+      }
+    }
+    AppMethodBeat.o(108730);
+  }
+  
+  public final void a(g.a parama)
+  {
+    int i = 0;
+    AppMethodBeat.i(108729);
+    parama = parama.mpN;
+    if (parama.IIs == 10002)
+    {
+      parama = w.a(parama.YFG);
+      if (Util.isNullOrNil(parama))
+      {
+        Log.w("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "msg content is null");
+        AppMethodBeat.o(108729);
+        return;
+      }
+      Object localObject2 = XmlParser.parseXml(parama, "sysmsg", null);
+      if ((localObject2 != null) && (((Map)localObject2).size() > 0))
+      {
+        String str = (String)((Map)localObject2).get(".sysmsg.$type");
+        if (Util.isNullOrNil(str))
+        {
+          Log.w("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "empty type");
+          AppMethodBeat.o(108729);
           return;
         }
-        a.access$002(0);
-        a.cUV().startTimer(50L);
-        AppMethodBeat.o(108659);
-      }
-    };
-    AppMethodBeat.o(108667);
-  }
-  
-  private a()
-  {
-    super(new a(), true);
-    AppMethodBeat.i(108666);
-    AppMethodBeat.o(108666);
-  }
-  
-  public static final a cUV()
-  {
-    AppMethodBeat.i(108662);
-    if (uFp == null) {}
-    for (;;)
-    {
-      try
-      {
-        if (uFp == null) {
-          uFp = new a();
+        Object localObject1 = Util.encodeHexString(com.tencent.mm.bx.b.cX(q.aPg().getBytes()).axn(16).Op);
+        if (str.equalsIgnoreCase("EmojiBackup"))
+        {
+          i = Util.safeParseInt((String)((Map)localObject2).get(".sysmsg.EmojiBackup.OpCode"));
+          localObject2 = (String)((Map)localObject2).get(".sysmsg.EmojiBackup.DeviceID");
+          Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "client devicesID:%s server devicesID:%s", new Object[] { localObject1, localObject2 });
+          if ((!Util.isNullOrNil((String)localObject2)) && (((String)localObject2).equalsIgnoreCase((String)localObject1)))
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "same devices operate ignore.");
+            AppMethodBeat.o(108729);
+            return;
+          }
+          localObject1 = b.aoK(parama);
+          if (i == 1)
+          {
+            if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
+            {
+              Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "xml syn list is null.");
+              AppMethodBeat.o(108729);
+              return;
+            }
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "try to sync emoji from newxml. buckupList:%d", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+            c(0, (ArrayList)localObject1);
+            AppMethodBeat.o(108729);
+            return;
+          }
+          if (i == 2)
+          {
+            if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
+            {
+              Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "xml syn list is null.");
+              AppMethodBeat.o(108729);
+              return;
+            }
+            parama = new ArrayList();
+            if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
+            {
+              localObject1 = ((ArrayList)localObject1).iterator();
+              while (((Iterator)localObject1).hasNext())
+              {
+                localObject2 = (amn)((Iterator)localObject1).next();
+                if (localObject2 != null) {
+                  parama.add(((amn)localObject2).Md5);
+                }
+              }
+            }
+            s.getEmojiStorageMgr().adju.nf(parama);
+            h.baE().ban().set(at.a.acHU, Boolean.FALSE);
+            AppMethodBeat.o(108729);
+            return;
+          }
+          if (i == 3)
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "set batch emoji download time to 0. ");
+            h.baE().ban().set(at.a.acId, Boolean.TRUE);
+          }
+          AppMethodBeat.o(108729);
+          return;
         }
-        a locala = uFp;
-        AppMethodBeat.o(108662);
-        return locala;
+        if (str.equalsIgnoreCase("EmotionBackup"))
+        {
+          int j = Util.getInt((String)((Map)localObject2).get(".sysmsg.EmotionBackup.OpCode"), 0);
+          localObject2 = (String)((Map)localObject2).get(".sysmsg.EmotionBackup.DeviceID");
+          if ((!Util.isNullOrNil((String)localObject2)) && (((String)localObject2).equalsIgnoreCase((String)localObject1)))
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "same devices operate ignore.");
+            AppMethodBeat.o(108729);
+            return;
+          }
+          parama = b.aoL(parama);
+          if ((parama == null) || (parama.size() <= 0))
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "xml syn list is null.");
+            AppMethodBeat.o(108729);
+            return;
+          }
+          if (j == 1)
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "try to sync emoji from newxml. add buckupList:%d", new Object[] { Integer.valueOf(parama.size()) });
+            localObject1 = new ArrayList();
+            j = parama.size();
+            while (i < j)
+            {
+              ((ArrayList)localObject1).add(new com.tencent.mm.plugin.emoji.sync.a.a((String)parama.get(i)));
+              i += 1;
+            }
+            s.dAm().ab((ArrayList)localObject1);
+            s.dAm().xPe.dAN();
+            AppMethodBeat.o(108729);
+            return;
+          }
+          if (j == 2)
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "try to sync emoji from newxml. delete buckupList:%d", new Object[] { Integer.valueOf(parama.size()) });
+            s.getEmojiStorageMgr().adjv.bZ(parama);
+          }
+          AppMethodBeat.o(108729);
+          return;
+        }
+        if (str.equalsIgnoreCase("SelfieEmojiBackup"))
+        {
+          str = (String)((Map)localObject2).get(".sysmsg.SelfieEmojiBackup.DeviceID");
+          Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture client devicesID:%s server devicesID:%s", new Object[] { localObject1, str });
+          if ((!Util.isNullOrNil(str)) && (str.equalsIgnoreCase((String)localObject1)))
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "same devices operate ignore.");
+            AppMethodBeat.o(108729);
+            return;
+          }
+          i = Util.safeParseInt((String)((Map)localObject2).get(".sysmsg.SelfieEmojiBackup.OpCode"));
+          localObject1 = b.aoK(parama);
+          if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: empty list opCode %s", new Object[] { Integer.valueOf(i) });
+            AppMethodBeat.o(108729);
+            return;
+          }
+          Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: opCode %s, size %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((ArrayList)localObject1).size()) });
+          if (i == 1)
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: add capture %s", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+            c(1, (ArrayList)localObject1);
+            AppMethodBeat.o(108729);
+            return;
+          }
+          if (i == 2)
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: delete capture %s", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+            parama = new ArrayList();
+            localObject1 = ((ArrayList)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (amn)((Iterator)localObject1).next();
+              if (localObject2 != null) {
+                parama.add(((amn)localObject2).Md5);
+              }
+            }
+            s.getEmojiStorageMgr().adju.ng(parama);
+            h.baE().ban().set(at.a.acHU, Boolean.FALSE);
+            AppMethodBeat.o(108729);
+            return;
+          }
+          if (i == 3)
+          {
+            Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "back up capture: move to top %s ", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+            h.baE().ban().set(at.a.acIe, Boolean.TRUE);
+          }
+          AppMethodBeat.o(108729);
+          return;
+        }
+        Log.e("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "not emoji message type :".concat(String.valueOf(str)));
       }
-      finally
-      {
-        AppMethodBeat.o(108662);
-      }
-      uFp.stopTimer();
+      AppMethodBeat.o(108729);
+      return;
     }
+    Log.i("MicroMsg.emoji.EmojiBackupSysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(parama.IIs) });
+    AppMethodBeat.o(108729);
   }
   
-  public static void cUW()
-  {
-    AppMethodBeat.i(108663);
-    uFo = 0;
-    uFq = new r("com.tencent.xin.emoticon.tusiji", 1);
-    h.aHF().kcd.a(uFq, 0);
-    h.aHF().kcd.a(413, uFr);
-    Log.d("MicroMsg.emoji.MockTuziDownloading", "add listener");
-    AppMethodBeat.o(108663);
-  }
-  
-  public static void removeListener()
-  {
-    AppMethodBeat.i(108665);
-    if (uFq != null) {
-      h.aHF().kcd.a(uFq);
-    }
-    h.aHF().kcd.b(413, uFr);
-    Log.d("MicroMsg.emoji.MockTuziDownloading", "remove listener");
-    AppMethodBeat.o(108665);
-  }
-  
-  public final void cUX()
-  {
-    AppMethodBeat.i(108664);
-    stopTimer();
-    p.cUT().i(com.tencent.mm.plugin.emoji.i.a.cWZ(), 3, uFo, "");
-    removeListener();
-    AppMethodBeat.o(108664);
-  }
-  
-  public static final class a
-    implements MTimerHandler.CallBack
-  {
-    public a()
-    {
-      AppMethodBeat.i(108660);
-      a.access$002(0);
-      AppMethodBeat.o(108660);
-    }
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(108661);
-      if (a.uFo >= 100)
-      {
-        a.access$002(0);
-        Log.d("MicroMsg.emoji.EmojiTuziTool", "insert tuzi");
-        com.tencent.mm.storage.emotion.c localc = p.getEmojiStorageMgr().VFI;
-        EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
-        localEmojiGroupInfo.field_productID = com.tencent.mm.plugin.emoji.i.a.cWZ();
-        localEmojiGroupInfo.field_packName = "emoji_custom_all";
-        localEmojiGroupInfo.field_type = EmojiGroupInfo.YCp;
-        localEmojiGroupInfo.field_sort = 1;
-        localEmojiGroupInfo.field_idx = 0;
-        localEmojiGroupInfo.field_packType = 4;
-        localEmojiGroupInfo.field_packFlag = 1;
-        localEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
-        localc.c(localEmojiGroupInfo);
-        p.cUT().i(com.tencent.mm.plugin.emoji.i.a.cWZ(), 7, a.uFo, "");
-        a.removeListener();
-        AppMethodBeat.o(108661);
-        return false;
-      }
-      p.cUT().i(com.tencent.mm.plugin.emoji.i.a.cWZ(), 6, a.uFo, "");
-      a.access$002(a.uFo + 2);
-      AppMethodBeat.o(108661);
-      return true;
-    }
-  }
+  public final void a(g.c paramc) {}
 }
 
 

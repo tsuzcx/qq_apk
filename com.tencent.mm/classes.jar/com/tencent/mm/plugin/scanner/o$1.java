@@ -13,18 +13,18 @@ final class o$1
   public final void run()
   {
     AppMethodBeat.i(51560);
-    if (!h.aHB())
+    if (!h.baz())
     {
       AppMethodBeat.o(51560);
       return;
     }
-    if (Util.isNullOrNil(o.a(this.IGj)))
+    if (Util.isNullOrNil(o.a(this.OMr)))
     {
       Log.e("MicroMsg.scanner.SubCoreScanner", "accPath == null in onAccountPostReset");
       AppMethodBeat.o(51560);
       return;
     }
-    Util.deleteOutOfDateFile(o.a(this.IGj) + "image/scan/img", "scanbook", 604800000L);
+    Util.deleteOutOfDateFile(o.a(this.OMr) + "image/scan/img", "scanbook", 604800000L);
     AppMethodBeat.o(51560);
   }
   
@@ -38,7 +38,7 @@ final class o$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.o.1
  * JD-Core Version:    0.7.0.1
  */

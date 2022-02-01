@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/xh" />
-    <Preference android:key="contact_info_qcontact_sex" android:layout="@layout/b8j" android:title="@string/bdp" />
-    <Preference android:key="contact_info_qcontact_age" android:layout="@layout/b8j" android:title="@string/bdn" />
-    <Preference android:key="contact_info_qcontact_birthday" android:layout="@layout/b8j" android:title="@string/bdo" />
-    <Preference android:key="contact_info_qcontact_address" android:layout="@layout/b8j" android:title="@string/bdm" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bnr" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_top_story_not_disturb" android:layout="@layout/bdi" android:title="@string/bsr" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_go_to_top_story" android:layout="@layout/bdi" android:title="@string/bn0" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_top_story_install" android:layout="@layout/b2b" android:title="@string/iww" />
+    <Preference android:key="contact_info_top_story_uninstall" android:layout="@layout/b93" android:title="@string/ix1" />
+    <PreferenceCategory />
 </PreferenceScreen>

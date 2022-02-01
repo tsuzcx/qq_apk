@@ -1,38 +1,50 @@
 package com.tencent.mm.ui.base;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import androidx.appcompat.app.ActionBar;
-import com.tencent.luggage.k.f;
-import com.tencent.luggage.k.f.e;
+import com.tencent.luggage.l.e;
+import com.tencent.luggage.l.e.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.n.d;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.plugin.appbrand.widget.q.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.BaseActivity;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.bb;
 
 public class BaseLuggageActivity
   extends BaseActivity
-  implements f.e
+  implements e.e
 {
-  private static boolean byq(String paramString)
+  private final Object adOf;
+  private volatile LayoutInflater mLayoutInflater;
+  
+  public BaseLuggageActivity()
+  {
+    AppMethodBeat.i(251467);
+    this.adOf = new byte[0];
+    this.mLayoutInflater = null;
+    AppMethodBeat.o(251467);
+  }
+  
+  private static boolean bzM(String paramString)
   {
     AppMethodBeat.i(176011);
-    String str1 = Build.MODEL;
+    String str1 = q.aPo();
     String str2 = Build.DEVICE;
     if ((str1 == null) && (str2 == null))
     {
       AppMethodBeat.o(176011);
       return false;
     }
-    if ((nW(str1, paramString)) || (nW(str2, paramString)))
+    if ((pV(str1, paramString)) || (pV(str2, paramString)))
     {
       AppMethodBeat.o(176011);
       return true;
@@ -41,7 +53,22 @@ public class BaseLuggageActivity
     return false;
   }
   
-  private static boolean nW(String paramString1, String paramString2)
+  private LayoutInflater jlR()
+  {
+    AppMethodBeat.i(251471);
+    if (this.mLayoutInflater == null) {}
+    synchronized (this.adOf)
+    {
+      if (this.mLayoutInflater == null) {
+        this.mLayoutInflater = j.adPk.ex(this);
+      }
+      ??? = this.mLayoutInflater;
+      AppMethodBeat.o(251471);
+      return ???;
+    }
+  }
+  
+  private static boolean pV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(176010);
     if ((paramString1 == null) || (paramString2 == null))
@@ -56,22 +83,44 @@ public class BaseLuggageActivity
   
   public int getLayoutId()
   {
-    return n.d.app_brand_empty;
+    return q.d.app_brand_empty;
+  }
+  
+  public LayoutInflater getLayoutInflater()
+  {
+    AppMethodBeat.i(251475);
+    LayoutInflater localLayoutInflater = jlR();
+    AppMethodBeat.o(251475);
+    return localLayoutInflater;
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(230032);
+    AppMethodBeat.i(251480);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(230032);
+    AppMethodBeat.o(251480);
     return localResources;
+  }
+  
+  public Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(251474);
+    if ("layout_inflater".equals(paramString))
+    {
+      paramString = jlR();
+      AppMethodBeat.o(251474);
+      return paramString;
+    }
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(251474);
+    return paramString;
   }
   
   protected final void hideActionbarLine()
   {
     AppMethodBeat.i(131600);
     if ((Build.VERSION.SDK_INT >= 21) && (getSupportActionBar() != null)) {
-      getSupportActionBar().e(0.0F);
+      getSupportActionBar().g(0.0F);
     }
     AppMethodBeat.o(131600);
   }
@@ -80,7 +129,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131598);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    f.aI(this).onActivityResult(paramInt1, paramInt2, paramIntent);
+    e.bt(this).onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(131598);
   }
   
@@ -88,7 +137,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131599);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    f.aI(this).b(paramInt, paramArrayOfInt);
+    e.bt(this).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(131599);
   }
   
@@ -105,14 +154,14 @@ public class BaseLuggageActivity
     View localView;
     if (Build.VERSION.SDK_INT >= 26)
     {
-      if ((!byq("y83a")) && (!byq("y83")) && (!byq("v1732a")) && (!byq("v1732t"))) {
+      if ((!bzM("y83a")) && (!bzM("y83")) && (!bzM("v1732a")) && (!bzM("v1732t"))) {
         break label100;
       }
       i = 1;
       if (i == 0)
       {
         getWindow().setNavigationBarColor(paramInt);
-        boolean bool = au.auk(paramInt);
+        boolean bool = bb.aAF(paramInt);
         localView = getWindow().getDecorView();
         paramInt = localView.getSystemUiVisibility();
         if (!bool) {
@@ -143,7 +192,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(131601);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
       AppMethodBeat.o(131601);
@@ -152,7 +201,7 @@ public class BaseLuggageActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.BaseLuggageActivity
  * JD-Core Version:    0.7.0.1
  */

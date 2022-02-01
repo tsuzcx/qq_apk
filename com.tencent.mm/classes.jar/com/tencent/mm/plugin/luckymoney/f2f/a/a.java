@@ -1,49 +1,47 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ami;
-import com.tencent.mm.protocal.protobuf.amj;
+import com.tencent.mm.protocal.protobuf.aqa;
+import com.tencent.mm.protocal.protobuf.aqb;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class a
-  extends q
-  implements m
+  extends w
 {
-  private ami EvC;
-  private amj EvD;
-  private i callback;
-  private d kwO;
+  private aqa Kok;
+  private aqb Kol;
+  private h callback;
+  private c nao;
   
   public a(String paramString)
   {
     AppMethodBeat.i(65035);
-    d.a locala = new d.a();
-    locala.lBU = new ami();
-    locala.lBV = new amj();
+    c.a locala = new c.a();
+    locala.otE = new aqa();
+    locala.otF = new aqb();
     locala.funcId = getType();
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
     locala.uri = "/cgi-bin/mmpay-bin/ftfhb/ffclearwxhb";
-    this.kwO = locala.bgN();
-    this.EvC = ((ami)d.b.b(this.kwO.lBR));
-    this.EvC.ybP = paramString;
+    this.nao = locala.bEF();
+    this.Kok = ((aqa)c.b.b(this.nao.otB));
+    this.Kok.CAf = paramString;
     AppMethodBeat.o(65035);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(65037);
-    this.callback = parami;
-    int i = dispatch(paramg, this.kwO, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.nao, this);
     AppMethodBeat.o(65037);
     return i;
   }
@@ -53,15 +51,15 @@ public final class a
     return 1987;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(65036);
-    this.EvD = ((amj)d.c.b(((d)params).lBS));
-    Log.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.EvD.fwx), this.EvD.tVo });
+    AppMethodBeat.i(283849);
+    this.Kol = ((aqb)c.c.b(((c)params).otC));
+    Log.i("NetSceneF2FLuckyMoneyClear", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.Kol.hAV), this.Kol.wYI });
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, this.EvD.fwx, this.EvD.tVo, this);
+      this.callback.onSceneEnd(paramInt2, this.Kol.hAV, this.Kol.wYI, this);
     }
-    AppMethodBeat.o(65036);
+    AppMethodBeat.o(283849);
   }
 }
 

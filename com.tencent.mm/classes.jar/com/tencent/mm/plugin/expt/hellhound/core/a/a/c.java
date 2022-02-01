@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static c wfg;
-  public e wfh;
+  private static c zBg;
+  public e zBh;
   
   private c()
   {
     AppMethodBeat.i(121868);
-    this.wfh = new e();
+    this.zBh = new e();
     AppMethodBeat.o(121868);
   }
   
-  public static c dcB()
+  public static c dJd()
   {
     AppMethodBeat.i(121867);
-    if (wfg == null) {}
+    if (zBg == null) {}
     try
     {
-      if (wfg == null) {
-        wfg = new c();
+      if (zBg == null) {
+        zBg = new c();
       }
-      c localc = wfg;
+      c localc = zBg;
       AppMethodBeat.o(121867);
       return localc;
     }
@@ -33,28 +33,28 @@ public final class c
     }
   }
   
-  public final void Kz(int paramInt)
-  {
-    AppMethodBeat.i(121869);
-    a locala = new a();
-    locala.msgType = paramInt;
-    this.wfh.b(locala);
-    AppMethodBeat.o(121869);
-  }
-  
-  public final void p(int paramInt, Object paramObject)
+  public final void I(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(121870);
     a locala = new a();
     locala.msgType = paramInt;
-    locala.wfd = paramObject;
-    this.wfh.b(locala);
+    locala.zBd = paramObject;
+    this.zBh.b(locala);
     AppMethodBeat.o(121870);
+  }
+  
+  public final void Lz(int paramInt)
+  {
+    AppMethodBeat.i(121869);
+    a locala = new a();
+    locala.msgType = paramInt;
+    this.zBh.b(locala);
+    AppMethodBeat.o(121869);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.a.a.c
  * JD-Core Version:    0.7.0.1
  */

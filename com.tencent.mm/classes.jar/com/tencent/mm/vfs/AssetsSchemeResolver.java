@@ -7,18 +7,20 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vfs.a.f;
+import com.tencent.mm.vfs.a.f.a;
+import com.tencent.stubs.logger.Log;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.Arrays;
 
 public final class AssetsSchemeResolver
   extends SingletonSchemeResolver
 {
   public static final a CREATOR;
-  private final AssetsFileSystem YBj;
+  private final AssetsFileSystem agvI;
   
   static
   {
@@ -30,25 +32,25 @@ public final class AssetsSchemeResolver
   private AssetsSchemeResolver()
   {
     AppMethodBeat.i(13036);
-    this.YBj = new AssetsFileSystem(h.iWH().mContext);
+    this.agvI = new AssetsFileSystem(k.kMs().mContext);
     AppMethodBeat.o(13036);
   }
   
-  public static AssetsSchemeResolver ieW()
+  public static AssetsSchemeResolver jKb()
   {
-    return a.YBl;
+    return a.agvM;
   }
   
-  public final Pair<FileSystem.b, String> a(l paraml, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(o paramo, Uri paramUri)
   {
-    AppMethodBeat.i(235922);
-    paraml = paramUri.getPath();
-    if (paraml == null) {}
-    for (paraml = "";; paraml = ad.r(paraml, true, true))
+    AppMethodBeat.i(238406);
+    paramo = paramUri.getPath();
+    if (paramo == null) {}
+    for (paramo = "";; paramo = ah.v(paramo, true, true))
     {
-      paraml = Pair.create(this.YBj, paraml);
-      AppMethodBeat.o(235922);
-      return paraml;
+      paramo = Pair.create(this.agvI, paramo);
+      AppMethodBeat.o(238406);
+      return paramo;
     }
   }
   
@@ -57,63 +59,21 @@ public final class AssetsSchemeResolver
     implements FileSystem
   {
     public static final Parcelable.Creator<AssetsFileSystem> CREATOR = null;
-    private final AssetManager YBk;
+    private final AssetManager agvJ;
     
     AssetsFileSystem(Context paramContext)
     {
       AppMethodBeat.i(13024);
-      this.YBk = paramContext.getAssets();
+      this.agvJ = paramContext.getAssets();
       AppMethodBeat.o(13024);
     }
     
-    private void b(String paramString1, String paramString2, ArrayList<f> paramArrayList)
-    {
-      AppMethodBeat.i(13030);
-      if ((paramString2 != null) && (!paramString2.isEmpty())) {
-        if (paramString1.isEmpty()) {
-          paramString1 = paramString2;
-        }
-      }
-      for (;;)
-      {
-        String[] arrayOfString = this.YBk.list(paramString1);
-        if ((arrayOfString == null) || (arrayOfString.length == 0))
-        {
-          if (paramString2 != null)
-          {
-            paramArrayList.add(new f(this, paramString1, paramString2, 0L, 0L, 0L, false));
-            AppMethodBeat.o(13030);
-            return;
-            paramString1 = paramString1 + '/' + paramString2;
-          }
-        }
-        else
-        {
-          if (paramString2 != null) {
-            paramArrayList.add(new f(this, paramString1, paramString2, 0L, 0L, 0L, true));
-          }
-          int j = arrayOfString.length;
-          int i = 0;
-          while (i < j)
-          {
-            paramString2 = arrayOfString[i];
-            if ((paramString2 != null) && (!paramString2.isEmpty())) {
-              b(paramString1, paramString2, paramArrayList);
-            }
-            i += 1;
-          }
-        }
-        AppMethodBeat.o(13030);
-        return;
-      }
-    }
-    
-    public final InputStream Tf(String paramString)
+    public final InputStream Lh(String paramString)
     {
       AppMethodBeat.i(13026);
       try
       {
-        paramString = this.YBk.open(paramString);
+        paramString = this.agvJ.open(paramString);
         AppMethodBeat.o(13026);
         return paramString;
       }
@@ -133,34 +93,23 @@ public final class AssetsSchemeResolver
     
     protected final long b(String paramString1, FileSystem.b paramb, String paramString2, boolean paramBoolean)
     {
-      AppMethodBeat.i(235901);
+      AppMethodBeat.i(238180);
       paramString1 = new IOException("Not implemented");
-      AppMethodBeat.o(235901);
+      AppMethodBeat.o(238180);
       throw paramString1;
     }
     
     protected final boolean b(String paramString1, FileSystem.b paramb, String paramString2)
     {
-      AppMethodBeat.i(235899);
-      paramString1 = new IOException("Not implemented");
-      AppMethodBeat.o(235899);
-      throw paramString1;
+      return false;
     }
     
-    public final FileSystem.a bBA(String paramString)
-    {
-      AppMethodBeat.i(13025);
-      paramString = new FileSystem.a();
-      AppMethodBeat.o(13025);
-      return paramString;
-    }
-    
-    public final boolean bBB(String paramString)
+    public final boolean bDU(String paramString)
     {
       AppMethodBeat.i(13028);
       try
       {
-        Tf(paramString).close();
+        Lh(paramString).close();
         AppMethodBeat.o(13028);
         return true;
       }
@@ -171,119 +120,187 @@ public final class AssetsSchemeResolver
       return false;
     }
     
-    public final f bBC(String paramString)
+    public final j bDV(String paramString)
     {
-      AppMethodBeat.i(235892);
+      AppMethodBeat.i(238148);
       for (;;)
       {
         int j;
         try
         {
-          localObject = Tf(paramString);
+          localObject = Lh(paramString);
           int i = ((InputStream)localObject).available();
           ((InputStream)localObject).close();
           j = paramString.lastIndexOf('/');
           if (j < 0)
           {
             localObject = paramString;
-            paramString = new f(this, paramString, (String)localObject, i, 0L, 0L, false);
-            AppMethodBeat.o(235892);
+            paramString = new j(this, paramString, (String)localObject, i, 0L, 0L, false);
+            AppMethodBeat.o(238148);
             return paramString;
           }
         }
         catch (IOException paramString)
         {
-          AppMethodBeat.o(235892);
+          AppMethodBeat.o(238148);
           return null;
         }
         Object localObject = paramString.substring(j + 1);
       }
     }
     
-    public final boolean bBD(String paramString)
+    public final Iterable<j> bDW(final String paramString)
     {
-      return false;
-    }
-    
-    public final FileSystem.b cp(Map<String, String> paramMap)
-    {
-      return this;
-    }
-    
-    public final boolean ct(String paramString, long paramLong)
-    {
-      return false;
-    }
-    
-    public final OutputStream dI(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(13027);
-      paramString = new FileNotFoundException("Cannot open files for writing on read-only filesystems");
-      AppMethodBeat.o(13027);
-      throw paramString;
-    }
-    
-    public final Iterable<f> dJ(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(13031);
-      String str1 = paramString;
-      if (paramString.endsWith("/")) {
-        str1 = paramString.substring(0, paramString.length() - 1);
-      }
-      if (paramBoolean) {}
+      AppMethodBeat.i(238162);
+      String str = ah.v(paramString, true, false);
       try
       {
-        paramString = new ArrayList();
-        b(str1, null, paramString);
-        AppMethodBeat.o(13031);
-        return paramString;
+        String[] arrayOfString = this.agvJ.list(str);
+        if (arrayOfString == null)
+        {
+          AppMethodBeat.o(238162);
+          return null;
+        }
+        if (str.isEmpty()) {}
+        for (paramString = str;; paramString = str + '/')
+        {
+          paramString = new f(Arrays.asList(arrayOfString), new f.a()
+          {
+            /* Error */
+            private j bDZ(String paramAnonymousString)
+            {
+              // Byte code:
+              //   0: ldc 34
+              //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+              //   5: new 42	java/lang/StringBuilder
+              //   8: dup
+              //   9: invokespecial 43	java/lang/StringBuilder:<init>	()V
+              //   12: aload_0
+              //   13: getfield 25	com/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem$1:agvK	Ljava/lang/String;
+              //   16: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+              //   19: aload_1
+              //   20: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+              //   23: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
+              //   26: astore 6
+              //   28: aload_0
+              //   29: getfield 23	com/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem$1:agvL	Lcom/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem;
+              //   32: invokestatic 55	com/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem:a	(Lcom/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem;)Landroid/content/res/AssetManager;
+              //   35: aload 6
+              //   37: invokevirtual 61	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+              //   40: astore 5
+              //   42: aload 5
+              //   44: astore 4
+              //   46: aload 5
+              //   48: invokevirtual 67	java/io/InputStream:available	()I
+              //   51: i2l
+              //   52: lstore_2
+              //   53: aload 5
+              //   55: astore 4
+              //   57: new 69	com/tencent/mm/vfs/j
+              //   60: dup
+              //   61: aload_0
+              //   62: getfield 23	com/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem$1:agvL	Lcom/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem;
+              //   65: aload 6
+              //   67: aload_1
+              //   68: lload_2
+              //   69: lconst_0
+              //   70: lconst_0
+              //   71: iconst_0
+              //   72: invokespecial 72	com/tencent/mm/vfs/j:<init>	(Lcom/tencent/mm/vfs/FileSystem$b;Ljava/lang/String;Ljava/lang/String;JJJZ)V
+              //   75: astore 7
+              //   77: aload 5
+              //   79: invokestatic 78	com/tencent/mm/vfs/ah:closeQuietly	(Ljava/io/Closeable;)V
+              //   82: ldc 34
+              //   84: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+              //   87: aload 7
+              //   89: areturn
+              //   90: astore 4
+              //   92: aconst_null
+              //   93: astore 5
+              //   95: aload 5
+              //   97: astore 4
+              //   99: new 69	com/tencent/mm/vfs/j
+              //   102: dup
+              //   103: aload_0
+              //   104: getfield 23	com/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem$1:agvL	Lcom/tencent/mm/vfs/AssetsSchemeResolver$AssetsFileSystem;
+              //   107: aload 6
+              //   109: aload_1
+              //   110: lconst_0
+              //   111: lconst_0
+              //   112: lconst_0
+              //   113: iconst_1
+              //   114: invokespecial 72	com/tencent/mm/vfs/j:<init>	(Lcom/tencent/mm/vfs/FileSystem$b;Ljava/lang/String;Ljava/lang/String;JJJZ)V
+              //   117: astore_1
+              //   118: aload 5
+              //   120: invokestatic 78	com/tencent/mm/vfs/ah:closeQuietly	(Ljava/io/Closeable;)V
+              //   123: ldc 34
+              //   125: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+              //   128: aload_1
+              //   129: areturn
+              //   130: astore_1
+              //   131: aconst_null
+              //   132: astore 4
+              //   134: aload 4
+              //   136: invokestatic 78	com/tencent/mm/vfs/ah:closeQuietly	(Ljava/io/Closeable;)V
+              //   139: ldc 34
+              //   141: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+              //   144: aload_1
+              //   145: athrow
+              //   146: astore_1
+              //   147: goto -13 -> 134
+              //   150: astore 4
+              //   152: goto -57 -> 95
+              // Local variable table:
+              //   start	length	slot	name	signature
+              //   0	155	0	this	1
+              //   0	155	1	paramAnonymousString	String
+              //   52	17	2	l	long
+              //   44	12	4	localInputStream1	InputStream
+              //   90	1	4	localIOException1	IOException
+              //   97	38	4	localInputStream2	InputStream
+              //   150	1	4	localIOException2	IOException
+              //   40	79	5	localInputStream3	InputStream
+              //   26	82	6	str	String
+              //   75	13	7	localj	j
+              // Exception table:
+              //   from	to	target	type
+              //   28	42	90	java/io/IOException
+              //   28	42	130	finally
+              //   46	53	146	finally
+              //   57	77	146	finally
+              //   99	118	146	finally
+              //   46	53	150	java/io/IOException
+              //   57	77	150	java/io/IOException
+            }
+          });
+          AppMethodBeat.o(238162);
+          return paramString;
+        }
+        return null;
       }
       catch (IOException paramString)
       {
-        ArrayList localArrayList;
-        int j;
-        int i;
-        String str2;
-        String str3;
-        String[] arrayOfString;
-        AppMethodBeat.o(13031);
+        Log.e("VFS.AssetsFileSystem", paramString, "Cannot list: ".concat(String.valueOf(str)));
+        AppMethodBeat.o(238162);
       }
-      paramString = this.YBk.list(str1);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(13031);
-        return null;
-      }
-      str1 = str1 + '/';
-      localArrayList = new ArrayList(paramString.length);
-      j = paramString.length;
-      i = 0;
-      if (i < j)
-      {
-        str2 = paramString[i];
-        str3 = str1 + str2;
-        arrayOfString = this.YBk.list(str3);
-        if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
-        for (paramBoolean = true;; paramBoolean = false)
-        {
-          localArrayList.add(new f(this, str3, str2, 0L, 0L, 0L, paramBoolean));
-          i += 1;
-          break;
-        }
-      }
-      AppMethodBeat.o(13031);
-      return localArrayList;
-      return null;
     }
     
-    public final boolean dK(String paramString, boolean paramBoolean)
+    public final boolean bDX(String paramString)
     {
       return false;
     }
     
-    public final String dL(String paramString, boolean paramBoolean)
+    public final FileSystem.a bDY(String paramString)
     {
-      return null;
+      AppMethodBeat.i(13025);
+      paramString = new FileSystem.a();
+      AppMethodBeat.o(13025);
+      return paramString;
+    }
+    
+    public final boolean cF(String paramString, long paramLong)
+    {
+      return false;
     }
     
     public final int describeContents()
@@ -291,17 +308,35 @@ public final class AssetsSchemeResolver
       return 0;
     }
     
-    public final boolean ho(String paramString)
+    public final OutputStream ev(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(13027);
+      paramString = new FileNotFoundException("Cannot open files for writing on read-only filesystems");
+      AppMethodBeat.o(13027);
+      throw paramString;
+    }
+    
+    public final boolean ew(String paramString, boolean paramBoolean)
     {
       return false;
     }
     
-    public final FileSystem ieX()
+    public final String ex(String paramString, boolean paramBoolean)
+    {
+      return null;
+    }
+    
+    public final boolean iP(String paramString)
+    {
+      return false;
+    }
+    
+    public final FileSystem jKa()
     {
       return this;
     }
     
-    public final int ieY()
+    public final int jKc()
     {
       return 12;
     }
@@ -323,19 +358,19 @@ public final class AssetsSchemeResolver
   static class a
     implements Parcelable.Creator<AssetsSchemeResolver>
   {
-    static final AssetsSchemeResolver YBl;
+    static final AssetsSchemeResolver agvM;
     
     static
     {
       AppMethodBeat.i(13035);
-      YBl = new AssetsSchemeResolver((byte)0);
+      agvM = new AssetsSchemeResolver((byte)0);
       AppMethodBeat.o(13035);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.AssetsSchemeResolver
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public int Oum;
-  public String Oun;
+  public int VjA;
+  public String VjB;
   
   public a(String paramString1, String paramString2)
   {
@@ -45,8 +45,8 @@ public final class a
     {
       if (paramJSONObject != null)
       {
-        this.Oum = paramJSONObject.optInt("unbindbannerlevel", 0);
-        this.Oun = paramJSONObject.optString("unbindbannerwording");
+        this.VjA = paramJSONObject.optInt("unbindbannerlevel", 0);
+        this.VjB = paramJSONObject.optString("unbindbannerwording");
         AppMethodBeat.o(69062);
         return;
       }

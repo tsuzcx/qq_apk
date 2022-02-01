@@ -1,11 +1,7 @@
 package com.tencent.youtu.sdkkitframework.liveness;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
-import android.os.Environment;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.sdkkitframework.common.CommonUtils;
@@ -15,22 +11,14 @@ import com.tencent.youtu.sdkkitframework.framework.YtFSM;
 import com.tencent.youtu.sdkkitframework.framework.YtFSMBaseState;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitCommon.StateNameHelper.StateClassName;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContext;
+import com.tencent.youtu.ytagreflectlivecheck.jni.YTAGReflectLiveCheckJNIInterface;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ActionReflectReq;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.ReflectLiveReq;
 import com.tencent.youtu.ytagreflectlivecheck.jni.model.YTImageInfo;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.LiveStyleAndroidData;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LiveStyleRequester.SeleceData;
-import com.tencent.youtu.ytcommon.tools.wejson.WeJson;
-import com.tencent.youtu.ytfacetrack.YTFaceTrack;
-import com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,14 +54,14 @@ public class NetLivenessReqResultState
   
   static
   {
-    AppMethodBeat.i(247327);
+    AppMethodBeat.i(218352);
     TAG = NetLivenessReqResultState.class.getSimpleName();
-    AppMethodBeat.o(247327);
+    AppMethodBeat.o(218352);
   }
   
   public NetLivenessReqResultState()
   {
-    AppMethodBeat.i(247288);
+    AppMethodBeat.i(218226);
     this.needManualTrigger = false;
     this.simiThreshold = 70;
     this.requestOptions = new HashMap();
@@ -84,12 +72,12 @@ public class NetLivenessReqResultState
     this.changePointNum = 2;
     this.actRefUXMode = 0;
     this.needVideoData = true;
-    AppMethodBeat.o(247288);
+    AppMethodBeat.o(218226);
   }
   
   private void handleResponseEvent(HashMap<String, String> paramHashMap, final Exception paramException)
   {
-    AppMethodBeat.i(247298);
+    AppMethodBeat.i(218252);
     YtSDKStats.getInstance().exitState();
     if (paramException != null)
     {
@@ -105,7 +93,7 @@ public class NetLivenessReqResultState
         }
       }
       YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-      AppMethodBeat.o(247298);
+      AppMethodBeat.o(218252);
       return;
     }
     localObject = "rst_failed";
@@ -138,13 +126,13 @@ public class NetLivenessReqResultState
           n = k;
           m = i;
           if (!paramException.has("similarity_float")) {
-            break label697;
+            break label696;
           }
           n = k;
           m = i;
           j = paramException.getInt("similarity_float");
           if (j == -1) {
-            break label694;
+            break label693;
           }
         }
         catch (JSONException paramException)
@@ -180,7 +168,7 @@ public class NetLivenessReqResultState
             }
             YtSDKStats.getInstance().reportInfo("errorCode ".concat(String.valueOf(i)));
             YtFSM.getInstance().sendFSMEvent((HashMap)localObject);
-            AppMethodBeat.o(247298);
+            AppMethodBeat.o(218252);
             return;
             if (paramException.has("error_code"))
             {
@@ -188,7 +176,7 @@ public class NetLivenessReqResultState
               continue;
             }
             if (!paramException.has("errorcode")) {
-              break label709;
+              break label708;
             }
             i = paramException.getInt("errorcode");
             continue;
@@ -230,10 +218,10 @@ public class NetLivenessReqResultState
     try
     {
       if ((!paramException.has("errorcode")) && (!paramException.has("error_code"))) {
-        break label487;
+        break label486;
       }
       if (this.backendProtoType != 0) {
-        break label449;
+        break label448;
       }
       i = paramException.getInt("errorcode");
     }
@@ -242,7 +230,7 @@ public class NetLivenessReqResultState
       j = -1;
       k = -1;
       i = -1;
-      break label522;
+      break label521;
       k = -1;
       break label165;
       i = -1;
@@ -251,9 +239,9 @@ public class NetLivenessReqResultState
     if (!bool) {}
   }
   
-  private String makeActionStr(String[] paramArrayOfString)
+  public static String makeActionStr(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(247313);
+    AppMethodBeat.i(218300);
     Object localObject1 = "";
     int i = 0;
     if (i < paramArrayOfString.length)
@@ -281,13 +269,13 @@ public class NetLivenessReqResultState
         localObject1 = (String)localObject1 + "silence";
       }
     }
-    AppMethodBeat.o(247313);
+    AppMethodBeat.o(218300);
     return localObject1;
   }
   
   private void onActReflectRequest()
   {
-    AppMethodBeat.i(247319);
+    AppMethodBeat.i(218314);
     try
     {
       YtFSMBaseState localYtFSMBaseState = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
@@ -296,7 +284,8 @@ public class NetLivenessReqResultState
       this.stateData.put("best_frame", this.bestImage);
       Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE));
       ActionReflectReq localActionReflectReq = (ActionReflectReq)((YtFSMBaseState)localObject1).getStateDataBy("reflect_request_object");
-      byte[] arrayOfByte = Base64.encode((byte[])((YtFSMBaseState)localObject2).getStateDataBy("frames"), 2);
+      byte[] arrayOfByte1 = (byte[])((YtFSMBaseState)localObject2).getStateDataBy("frames");
+      byte[] arrayOfByte2 = Base64.encode(arrayOfByte1, 2);
       String str = (String)localYtFSMBaseState.getStateDataBy("control_config");
       if (str != null) {
         this.controlConfig = str;
@@ -334,11 +323,11 @@ public class NetLivenessReqResultState
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).baseInfo.businessId = "";
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).colorData = localActionReflectReq.color_data;
         if (!this.needVideoData) {
-          break label603;
+          break label642;
         }
       }
-      label603:
-      for (((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).actionVideo = new String(arrayOfByte);; ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).actionVideo = "")
+      label642:
+      for (((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).actionVideo = new String(arrayOfByte2);; ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).actionVideo = "")
       {
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).actionStr = ((String)localObject1);
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).eyeImage = new YtLivenessNetProtoHelper.ImageInfo(localActionReflectReq.eye_image.image, localActionReflectReq.eye_image.five_points, localActionReflectReq.eye_image.checksum);
@@ -349,19 +338,21 @@ public class NetLivenessReqResultState
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).reflectConfig = this.extraConfig;
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).controlConfig = this.controlConfig;
         ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).colorNum = this.changePointNum;
+        ((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2).config = YTAGReflectLiveCheckJNIInterface.ChecksumPose(arrayOfByte1.toString(), localActionReflectReq.live_image.image, (String)localObject1);
         localObject1 = YtLivenessNetProtoHelper.makeActionReflectLiveReq((YtLivenessNetProtoHelper.ActionReflectLiveReqData)localObject2);
+        YtLogger.d(TAG, "uploadString: ".concat(String.valueOf(localObject1)));
         YtFSM.getInstance().sendNetworkRequest("net_reporting", this.resultUrl, (String)localObject1, null, new YtSDKKitFramework.IYtSDKKitNetResponseParser()
         {
           public void onNetworkResponseEvent(HashMap<String, String> paramAnonymousHashMap, Exception paramAnonymousException)
           {
-            AppMethodBeat.i(247229);
+            AppMethodBeat.i(218144);
             YtLogger.i(NetLivenessReqResultState.TAG, "handle actreflect response");
             NetLivenessReqResultState.access$100(NetLivenessReqResultState.this, paramAnonymousHashMap, paramAnonymousException);
             NetLivenessReqResultState.access$200(NetLivenessReqResultState.this);
-            AppMethodBeat.o(247229);
+            AppMethodBeat.o(218144);
           }
         });
-        AppMethodBeat.o(247319);
+        AppMethodBeat.o(218314);
         return;
         localObject1 = "";
         break;
@@ -373,224 +364,99 @@ public class NetLivenessReqResultState
       YtLogger.e(TAG, "actrefl request failed" + localException.getLocalizedMessage());
       YtSDKStats.getInstance().reportInfo("actrefl request failed: " + localException.getLocalizedMessage());
       YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-      AppMethodBeat.o(247319);
-    }
-  }
-  
-  private void onActReflectRequest2()
-  {
-    AppMethodBeat.i(247323);
-    Object localObject3 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
-    this.bestImage = ((YuvImage)((YtFSMBaseState)localObject3).getStateDataBy("best_frame"));
-    this.stateData.put("best_frame", this.bestImage);
-    ArrayList localArrayList = (ArrayList)((YtFSMBaseState)localObject3).getStateDataBy("frame_list");
-    YtLogger.d(TAG, "action request 2 frame size:" + localArrayList.size());
-    Object localObject1 = (ActionReflectReq)YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE)).getStateDataBy("reflect_request_object");
-    ActionReflectReq2 localActionReflectReq2 = new ActionReflectReq2();
-    localObject3 = Base64.encode((byte[])((YtFSMBaseState)localObject3).getStateDataBy("frames"), 2);
-    Object localObject4 = new Version();
-    ((Version)localObject4).sdk_version = YtSDKKitFramework.getInstance().version();
-    ((Version)localObject4).ftrack_sdk_version = YTFaceTrack.Version;
-    ((Version)localObject4).faction_sdk_version = YTPoseDetectJNIInterface.getVersion();
-    ((Version)localObject4).freflect_sdk_version = "3.6.4.4";
-    ((ActionReflectReq)localObject1).action_video = new String((byte[])localObject3);
-    new WeJson();
-    ((ActionReflectReq)localObject1).client_version = String.format("sdk_version:%s;ftrack_sdk_version:%s;freflect_sdk_version:%s;faction_sdk_version:%s", new Object[] { ((Version)localObject4).sdk_version, ((Version)localObject4).ftrack_sdk_version, ((Version)localObject4).freflect_sdk_version, ((Version)localObject4).faction_sdk_version });
-    ((ActionReflectReq)localObject1).session_id = "12345";
-    localActionReflectReq2.live_req = ((ActionReflectReq)localObject1);
-    localActionReflectReq2.session_id = UUID.randomUUID().toString();
-    try
-    {
-      localObject3 = new FileInputStream(new File(Environment.getExternalStorageDirectory().getPath() + "/test.mp4"));
-      YtLogger.d(TAG, "encode video size:" + ((FileInputStream)localObject3).available());
-      if (((FileInputStream)localObject3).available() != 0) {
-        localObject1 = new byte[((FileInputStream)localObject3).available()];
-      }
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          ((FileInputStream)localObject3).read((byte[])localObject1);
-          ((FileInputStream)localObject3).close();
-          int i;
-          if (localObject1 == null)
-          {
-            localActionReflectReq2.video = "";
-            YtLogger.d(TAG, "encode video size:" + localActionReflectReq2.video.length());
-            localActionReflectReq2.images = new ArrayList();
-            localActionReflectReq2.five_points = new ArrayList();
-            i = 0;
-            if (i >= localArrayList.size()) {
-              continue;
-            }
-            int k = ((ActionLivenessState.BestFrame)localArrayList.get(i)).frame.getWidth();
-            j = ((ActionLivenessState.BestFrame)localArrayList.get(i)).frame.getHeight();
-            YtLogger.d(TAG, "Eye score " + ((ActionLivenessState.BestFrame)localArrayList.get(i)).eyeScore);
-            if (YtFSM.getInstance().getContext().currentRotateState < 5) {
-              continue;
-            }
-            m = k;
-            k = j;
-            localObject1 = ((ActionLivenessState.BestFrame)localArrayList.get(i)).frame.getYuvData();
-            YtLogger.d(TAG, "Rotated size:" + localObject1.length);
-            localObject1 = new YuvImage((byte[])localObject1, 17, k, m, null);
-            localObject3 = new ByteArrayOutputStream();
-            ((YuvImage)localObject1).compressToJpeg(new Rect(0, 0, ((YuvImage)localObject1).getWidth(), ((YuvImage)localObject1).getHeight()), 95, (OutputStream)localObject3);
-            localObject4 = ((ByteArrayOutputStream)localObject3).toByteArray();
-            localObject1 = Base64.encode((byte[])localObject4, 2);
-          }
-          try
-          {
-            localObject3 = BitmapFactory.decodeByteArray((byte[])localObject4, 0, ((ByteArrayOutputStream)localObject3).size());
-            localObject4 = new FileOutputStream(new File(Environment.getExternalStorageDirectory().getPath() + "/bestbmp" + i + ".jpg"));
-            ((Bitmap)localObject3).compress(Bitmap.CompressFormat.JPEG, 95, (OutputStream)localObject4);
-            ((OutputStream)localObject4).flush();
-            ((OutputStream)localObject4).close();
-            localActionReflectReq2.images.add(new String((byte[])localObject1));
-            localObject1 = new FivePoints();
-            ((FivePoints)localObject1).points = new ArrayList();
-            YtLogger.d(TAG, "f5p size:" + ((ActionLivenessState.BestFrame)localArrayList.get(i)).f5p.length / 2);
-            j = 0;
-            if (j < ((ActionLivenessState.BestFrame)localArrayList.get(i)).f5p.length / 2)
-            {
-              localObject3 = new Pointf();
-              ((Pointf)localObject3).x = ((ActionLivenessState.BestFrame)localArrayList.get(i)).f5p[(j * 2)];
-              ((Pointf)localObject3).y = ((ActionLivenessState.BestFrame)localArrayList.get(i)).f5p[(j * 2 + 1)];
-              ((FivePoints)localObject1).points.add(localObject3);
-              YtLogger.d(TAG, "f5p[" + j + "] " + ((Pointf)localObject3).x + "," + ((Pointf)localObject3).y);
-              j += 1;
-              continue;
-              localActionReflectReq2.video = new String(Base64.encode((byte[])localObject1, 2));
-              continue;
-            }
-            localActionReflectReq2.five_points.add(localObject1);
-            i += 1;
-            continue;
-            YtLogger.d(TAG, "f5p count" + localActionReflectReq2.five_points.size());
-            localObject1 = new WeJson().toJson(localActionReflectReq2);
-            YtLogger.d(TAG, "upload string size:" + ((String)localObject1).length());
-            YtFSM.getInstance().sendNetworkRequest("net_reporting", this.resultUrl, (String)localObject1, null, new YtSDKKitFramework.IYtSDKKitNetResponseParser()
-            {
-              public void onNetworkResponseEvent(HashMap<String, String> paramAnonymousHashMap, Exception paramAnonymousException)
-              {
-                AppMethodBeat.i(247235);
-                NetLivenessReqResultState.access$100(NetLivenessReqResultState.this, paramAnonymousHashMap, paramAnonymousException);
-                NetLivenessReqResultState.access$200(NetLivenessReqResultState.this);
-                AppMethodBeat.o(247235);
-              }
-            });
-            AppMethodBeat.o(247323);
-            return;
-          }
-          catch (Exception localException)
-          {
-            continue;
-          }
-          localIOException1 = localIOException1;
-          localObject2 = null;
-          continue;
-        }
-        catch (IOException localIOException2)
-        {
-          int j;
-          continue;
-          int m = j;
-          continue;
-        }
-        Object localObject2 = null;
-      }
+      AppMethodBeat.o(218314);
     }
   }
   
   private void onActionRequest()
   {
     Object localObject1 = null;
-    AppMethodBeat.i(247307);
+    AppMethodBeat.i(218279);
     for (;;)
     {
       try
       {
-        localObject2 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
-        if (localObject2 == null)
+        localYtFSMBaseState = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
+        if (localYtFSMBaseState == null)
         {
           YtSDKStats.getInstance().reportInfo("action request action state is null");
           YtLogger.e(TAG, "action request action state is null");
-          AppMethodBeat.o(247307);
+          AppMethodBeat.o(218279);
           return;
         }
-        this.bestImage = ((YuvImage)((YtFSMBaseState)localObject2).getStateDataBy("best_frame"));
+        this.bestImage = ((YuvImage)localYtFSMBaseState.getStateDataBy("best_frame"));
         localByteArrayOutputStream = new ByteArrayOutputStream();
         this.bestImage.compressToJpeg(new Rect(0, 0, this.bestImage.getWidth(), this.bestImage.getHeight()), 95, localByteArrayOutputStream);
-        localObject3 = (byte[])((YtFSMBaseState)localObject2).getStateDataBy("frames");
-        if (localObject3 != null) {
-          break label423;
+        localObject2 = (byte[])localYtFSMBaseState.getStateDataBy("frames");
+        if (localObject2 != null) {
+          break label446;
         }
         YtLogger.e(TAG, "action data is null");
       }
       catch (Exception localException)
       {
-        Object localObject2;
+        YtFSMBaseState localYtFSMBaseState;
         ByteArrayOutputStream localByteArrayOutputStream;
+        YtLivenessNetProtoHelper.ActionLiveReqData localActionLiveReqData;
         YtLogger.e(TAG, "action request failed" + localException.getLocalizedMessage());
         YtSDKStats.getInstance().reportInfo("action request failed: " + localException.getLocalizedMessage());
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-        AppMethodBeat.o(247307);
+        AppMethodBeat.o(218279);
         return;
       }
-      localObject2 = makeActionStr((String[])((YtFSMBaseState)localObject2).getStateDataBy("action_seq"));
+      Object localObject2 = makeActionStr((String[])localYtFSMBaseState.getStateDataBy("action_seq"));
       parseControlConfig();
-      Object localObject3 = new YtLivenessNetProtoHelper.ActionLiveReqData();
-      ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).baseInfo = new YtLivenessNetProtoHelper.NetBaseInfoData();
-      ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).baseInfo.appId = this.appId;
-      ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).baseInfo.sessionId = UUID.randomUUID().toString();
-      ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).bestImage = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 2));
-      ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).actionStr = ((String)localObject2);
+      localActionLiveReqData = new YtLivenessNetProtoHelper.ActionLiveReqData();
+      localActionLiveReqData.baseInfo = new YtLivenessNetProtoHelper.NetBaseInfoData();
+      localActionLiveReqData.baseInfo.appId = this.appId;
+      localActionLiveReqData.baseInfo.sessionId = UUID.randomUUID().toString();
+      localActionLiveReqData.bestImage = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 2));
+      localActionLiveReqData.actionStr = ((String)localObject2);
       if (this.needVideoData)
       {
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).actionVideo = new String((byte[])localObject1);
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).needEyeDetect = true;
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).needMouthDetect = true;
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).reflectConfig = this.extraConfig;
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).controlConfig = this.controlConfig;
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).colorNum = this.changePointNum;
-        localObject1 = YtLivenessNetProtoHelper.makeActionLiveReq((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3);
+        localActionLiveReqData.actionVideo = new String((byte[])localObject1);
+        localActionLiveReqData.needEyeDetect = true;
+        localActionLiveReqData.needMouthDetect = true;
+        localActionLiveReqData.reflectConfig = this.extraConfig;
+        localActionLiveReqData.controlConfig = this.controlConfig;
+        localActionLiveReqData.colorNum = this.changePointNum;
+        localActionLiveReqData.config = ((String)localYtFSMBaseState.getStateDataBy("config"));
+        localActionLiveReqData.reservedfield = "";
+        localObject1 = YtLivenessNetProtoHelper.makeActionLiveReq(localActionLiveReqData);
         YtFSM.getInstance().sendNetworkRequest("net_reporting", this.resultUrl, (String)localObject1, null, new YtSDKKitFramework.IYtSDKKitNetResponseParser()
         {
           public void onNetworkResponseEvent(HashMap<String, String> paramAnonymousHashMap, Exception paramAnonymousException)
           {
-            AppMethodBeat.i(247253);
+            AppMethodBeat.i(218174);
             YtLogger.i(NetLivenessReqResultState.TAG, "Handle action response");
             NetLivenessReqResultState.access$100(NetLivenessReqResultState.this, paramAnonymousHashMap, paramAnonymousException);
             NetLivenessReqResultState.access$200(NetLivenessReqResultState.this);
-            AppMethodBeat.o(247253);
+            AppMethodBeat.o(218174);
           }
         });
-        AppMethodBeat.o(247307);
+        AppMethodBeat.o(218279);
         return;
-        localObject1 = Base64.encode((byte[])localObject3, 2);
+        localObject1 = Base64.encode((byte[])localObject2, 2);
       }
       else
       {
-        ((YtLivenessNetProtoHelper.ActionLiveReqData)localObject3).actionVideo = "";
+        localActionLiveReqData.actionVideo = "";
         continue;
-        label423:
-        if (localObject3 != null) {}
+        label446:
+        if (localObject2 != null) {}
       }
     }
   }
   
   private void onCheckResponseManual()
   {
-    AppMethodBeat.i(247295);
+    AppMethodBeat.i(218234);
     if (this.needManualTrigger) {
       try
       {
         YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).handleStateAction("reset_manual_trigger", null);
         YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
-        AppMethodBeat.o(247295);
+        AppMethodBeat.o(218234);
         return;
       }
       catch (Exception localException)
@@ -600,14 +466,14 @@ public class NetLivenessReqResultState
         YtSDKStats.getInstance().reportInfo(str);
       }
     }
-    AppMethodBeat.o(247295);
+    AppMethodBeat.o(218234);
   }
   
   private void onLipReadRequest()
   {
     int i = 0;
     int j = 0;
-    AppMethodBeat.i(247299);
+    AppMethodBeat.i(218265);
     for (;;)
     {
       try
@@ -618,7 +484,7 @@ public class NetLivenessReqResultState
         {
           YtSDKStats.getInstance().reportInfo("lipread request action state is null");
           YtLogger.e(TAG, "lipread request action state is null");
-          AppMethodBeat.o(247299);
+          AppMethodBeat.o(218265);
           return;
         }
         this.bestImage = ((YuvImage)((YtFSMBaseState)localObject3).getStateDataBy("last_frame"));
@@ -691,14 +557,14 @@ public class NetLivenessReqResultState
           {
             public void onNetworkResponseEvent(HashMap<String, String> paramAnonymousHashMap, Exception paramAnonymousException)
             {
-              AppMethodBeat.i(247247);
+              AppMethodBeat.i(218169);
               YtLogger.i(NetLivenessReqResultState.TAG, "Handle lipread response");
               NetLivenessReqResultState.access$100(NetLivenessReqResultState.this, paramAnonymousHashMap, paramAnonymousException);
               NetLivenessReqResultState.access$200(NetLivenessReqResultState.this);
-              AppMethodBeat.o(247247);
+              AppMethodBeat.o(218169);
             }
           });
-          AppMethodBeat.o(247299);
+          AppMethodBeat.o(218265);
           return;
         }
         Object localObject4 = (String[])((YtFSMBaseState)localObject3).getStateDataBy("action_seq");
@@ -746,7 +612,7 @@ public class NetLivenessReqResultState
         YtLogger.e(TAG, "lipread request failed" + localException.getLocalizedMessage());
         YtSDKStats.getInstance().reportInfo("lipreading request failed: " + localException.getLocalizedMessage());
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-        AppMethodBeat.o(247299);
+        AppMethodBeat.o(218265);
         return;
       }
       continue;
@@ -769,7 +635,7 @@ public class NetLivenessReqResultState
   
   private void onReflectRequest()
   {
-    AppMethodBeat.i(247311);
+    AppMethodBeat.i(218291);
     CommonUtils.benchMarkBegin("reflect_request_s1");
     for (;;)
     {
@@ -870,17 +736,17 @@ public class NetLivenessReqResultState
           {
             public void onNetworkResponseEvent(HashMap<String, String> paramAnonymousHashMap, Exception paramAnonymousException)
             {
-              AppMethodBeat.i(247259);
+              AppMethodBeat.i(218173);
               CommonUtils.benchMarkEnd("reflect_request_s2");
               CommonUtils.benchMarkBegin("reflect_request_s3");
               YtLogger.i(NetLivenessReqResultState.TAG, "handle reflection response");
               NetLivenessReqResultState.access$100(NetLivenessReqResultState.this, paramAnonymousHashMap, paramAnonymousException);
               CommonUtils.benchMarkEnd("reflect_request_s3");
               NetLivenessReqResultState.access$200(NetLivenessReqResultState.this);
-              AppMethodBeat.o(247259);
+              AppMethodBeat.o(218173);
             }
           });
-          AppMethodBeat.o(247311);
+          AppMethodBeat.o(218291);
           return;
         }
         localObject1 = "";
@@ -894,7 +760,7 @@ public class NetLivenessReqResultState
         YtLogger.e(TAG, "reflection request failed" + localException.getLocalizedMessage());
         YtSDKStats.getInstance().reportInfo("reflection request failed: " + localException.getLocalizedMessage());
         YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-        AppMethodBeat.o(247311);
+        AppMethodBeat.o(218291);
         return;
       }
       label986:
@@ -915,7 +781,7 @@ public class NetLivenessReqResultState
   
   private void onSilentRequest()
   {
-    AppMethodBeat.i(247297);
+    AppMethodBeat.i(218241);
     this.bestImage = ((YuvImage)YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE)).getStateDataBy("best_image"));
     int i = this.bestImage.getWidth();
     int j = this.bestImage.getHeight();
@@ -932,19 +798,19 @@ public class NetLivenessReqResultState
     {
       public void onNetworkResponseEvent(HashMap<String, String> paramAnonymousHashMap, Exception paramAnonymousException)
       {
-        AppMethodBeat.i(247240);
+        AppMethodBeat.i(218175);
         YtLogger.i(NetLivenessReqResultState.TAG, "Parse silent response");
         NetLivenessReqResultState.access$100(NetLivenessReqResultState.this, paramAnonymousHashMap, paramAnonymousException);
         NetLivenessReqResultState.access$200(NetLivenessReqResultState.this);
-        AppMethodBeat.o(247240);
+        AppMethodBeat.o(218175);
       }
     });
-    AppMethodBeat.o(247297);
+    AppMethodBeat.o(218241);
   }
   
   private void parseControlConfig()
   {
-    AppMethodBeat.i(247303);
+    AppMethodBeat.i(218270);
     if (!this.controlConfig.isEmpty())
     {
       String[] arrayOfString1 = this.controlConfig.split("&");
@@ -968,35 +834,29 @@ public class NetLivenessReqResultState
         }
       }
     }
-    AppMethodBeat.o(247303);
+    AppMethodBeat.o(218270);
   }
   
   public void enter()
   {
-    AppMethodBeat.i(247293);
+    AppMethodBeat.i(218387);
     super.enter();
     YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-    switch (13.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
+    switch (12.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(247293);
+      AppMethodBeat.o(218387);
       return;
       onActionRequest();
-      AppMethodBeat.o(247293);
+      AppMethodBeat.o(218387);
       return;
       onReflectRequest();
-      AppMethodBeat.o(247293);
+      AppMethodBeat.o(218387);
       return;
-      if (this.actReflectType == 0)
-      {
-        onActReflectRequest();
-        AppMethodBeat.o(247293);
-        return;
-      }
-      onActReflectRequest2();
-      AppMethodBeat.o(247293);
+      onActReflectRequest();
+      AppMethodBeat.o(218387);
       return;
       onLipReadRequest();
     }
@@ -1006,7 +866,7 @@ public class NetLivenessReqResultState
   
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(247291);
+    AppMethodBeat.i(218364);
     super.loadStateWith(paramString, paramJSONObject);
     for (;;)
     {
@@ -1018,7 +878,7 @@ public class NetLivenessReqResultState
         {
           YtSDKStats.getInstance().reportError(3145728, "yt_param_error");
           YtLogger.e(TAG, "parse url failed");
-          AppMethodBeat.o(247291);
+          AppMethodBeat.o(218364);
           return;
         }
         if (paramJSONObject.has("secret_key")) {
@@ -1067,7 +927,7 @@ public class NetLivenessReqResultState
       catch (JSONException paramString)
       {
         YtLogger.e(TAG, "Failed to parse json:" + paramString.getLocalizedMessage());
-        AppMethodBeat.o(247291);
+        AppMethodBeat.o(218364);
         return;
       }
       continue;
@@ -1077,25 +937,14 @@ public class NetLivenessReqResultState
     if (paramJSONObject.has("backend_proto_type")) {
       this.backendProtoType = paramJSONObject.getInt("backend_proto_type");
     }
-    AppMethodBeat.o(247291);
+    AppMethodBeat.o(218364);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(247292);
+    AppMethodBeat.i(218372);
     super.unload();
-    AppMethodBeat.o(247292);
-  }
-  
-  public class ActionReflectReq2
-  {
-    public ArrayList<NetLivenessReqResultState.FivePoints> five_points;
-    public ArrayList<String> images;
-    public ActionReflectReq live_req;
-    public String session_id;
-    public String video;
-    
-    public ActionReflectReq2() {}
+    AppMethodBeat.o(218372);
   }
   
   public class FivePoints
@@ -1125,7 +974,7 @@ public class NetLivenessReqResultState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.NetLivenessReqResultState
  * JD-Core Version:    0.7.0.1
  */

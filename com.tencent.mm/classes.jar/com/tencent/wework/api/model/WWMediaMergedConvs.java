@@ -11,12 +11,12 @@ import java.util.List;
 public class WWMediaMergedConvs
   extends WWMediaMessage.WWMediaObject
 {
-  public List<WWMediaConversation> bPM;
+  public List<WWMediaConversation> dJE;
   
   public WWMediaMergedConvs()
   {
     AppMethodBeat.i(106546);
-    this.bPM = new ArrayList();
+    this.dJE = new ArrayList();
     AppMethodBeat.o(106546);
   }
   
@@ -25,7 +25,7 @@ public class WWMediaMergedConvs
     AppMethodBeat.i(106547);
     if (paramWWMediaConversation.checkArgs())
     {
-      this.bPM.add(paramWWMediaConversation);
+      this.dJE.add(paramWWMediaConversation);
       AppMethodBeat.o(106547);
       return true;
     }
@@ -33,15 +33,15 @@ public class WWMediaMergedConvs
     return false;
   }
   
-  public final void bEz(String paramString)
+  public final void bGY(String paramString)
   {
-    AppMethodBeat.i(233411);
-    super.bEz(paramString);
-    Iterator localIterator = this.bPM.iterator();
+    AppMethodBeat.i(210644);
+    super.bGY(paramString);
+    Iterator localIterator = this.dJE.iterator();
     while (localIterator.hasNext()) {
-      ((BaseMessage)localIterator.next()).bEz(paramString);
+      ((BaseMessage)localIterator.next()).bGY(paramString);
     }
-    AppMethodBeat.o(233411);
+    AppMethodBeat.o(210644);
   }
   
   public final boolean checkArgs()
@@ -52,12 +52,12 @@ public class WWMediaMergedConvs
       AppMethodBeat.o(106548);
       return false;
     }
-    if ((this.bPM == null) || (this.bPM.size() == 0))
+    if ((this.dJE == null) || (this.dJE.size() == 0))
     {
       AppMethodBeat.o(106548);
       return false;
     }
-    Iterator localIterator = this.bPM.iterator();
+    Iterator localIterator = this.dJE.iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -73,14 +73,14 @@ public class WWMediaMergedConvs
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(233408);
+    AppMethodBeat.i(210636);
     int j = paramBundle.getInt("_wwmergedconvobject_messageslen");
     int i = 0;
     if (i < j)
     {
-      BaseMessage localBaseMessage = BaseMessage.by(paramBundle.getBundle("_wwmergedconvobject_messages".concat(String.valueOf(i))));
+      BaseMessage localBaseMessage = BaseMessage.ch(paramBundle.getBundle("_wwmergedconvobject_messages".concat(String.valueOf(i))));
       if ((localBaseMessage != null) && ((localBaseMessage instanceof WWMediaConversation))) {
-        this.bPM.add((WWMediaConversation)localBaseMessage);
+        this.dJE.add((WWMediaConversation)localBaseMessage);
       }
       for (;;)
       {
@@ -95,42 +95,42 @@ public class WWMediaMergedConvs
       }
     }
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(233408);
+    AppMethodBeat.o(210636);
   }
   
   public final void setContext(Context paramContext)
   {
-    AppMethodBeat.i(233412);
+    AppMethodBeat.i(210651);
     super.setContext(paramContext);
-    Iterator localIterator = this.bPM.iterator();
+    Iterator localIterator = this.dJE.iterator();
     while (localIterator.hasNext()) {
       ((BaseMessage)localIterator.next()).setContext(paramContext);
     }
-    AppMethodBeat.o(233412);
+    AppMethodBeat.o(210651);
   }
   
   public final void toBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(106549);
-    paramBundle.putInt("_wwmergedconvobject_messageslen", this.bPM.size());
+    paramBundle.putInt("_wwmergedconvobject_messageslen", this.dJE.size());
     int i = 0;
-    while (i < this.bPM.size())
+    while (i < this.dJE.size())
     {
-      paramBundle.putBundle("_wwmergedconvobject_messages".concat(String.valueOf(i)), BaseMessage.a((BaseMessage)this.bPM.get(i)));
+      paramBundle.putBundle("_wwmergedconvobject_messages".concat(String.valueOf(i)), BaseMessage.a((BaseMessage)this.dJE.get(i)));
       i += 1;
     }
     super.toBundle(paramBundle);
     AppMethodBeat.o(106549);
   }
   
-  public final void u(Intent paramIntent, String paramString)
+  public final void w(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(233409);
-    Iterator localIterator = this.bPM.iterator();
+    AppMethodBeat.i(210639);
+    Iterator localIterator = this.dJE.iterator();
     while (localIterator.hasNext()) {
-      ((BaseMessage)localIterator.next()).u(paramIntent, paramString);
+      ((BaseMessage)localIterator.next()).w(paramIntent, paramString);
     }
-    AppMethodBeat.o(233409);
+    AppMethodBeat.o(210639);
   }
 }
 

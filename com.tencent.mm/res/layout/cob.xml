@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.RecyclerHorizontalViewPager android:id="@id/kyd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+<LinearLayout android:orientation="vertical" android:background="@drawable/b6r" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/kow" android:layout_width="fill_parent" android:layout_height="@dimen/db">
+        <FrameLayout android:id="@id/mb7" android:background="@drawable/a1i" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/mb8" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/al5" />
+        </FrameLayout>
+        <TextView android:textSize="15.0dip" android:textColor="@color/al5" android:id="@id/mbd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+        <FrameLayout android:id="@id/mbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="15.0dip" android:textColor="@color/al5" android:id="@id/mbc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </FrameLayout>
+    </RelativeLayout>
+    <FrameLayout android:id="@id/hm3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/kow" />
+</LinearLayout>

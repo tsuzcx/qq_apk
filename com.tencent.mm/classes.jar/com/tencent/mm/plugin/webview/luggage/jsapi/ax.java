@@ -1,60 +1,40 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ax
-  extends br
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  public final void b(b.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78611);
-    JSONArray localJSONArray = parama.crh.cqn.optJSONArray("idKeyDataInfo");
-    if ((localJSONArray == null) || (localJSONArray.length() == 0))
-    {
-      Log.e("MicroMsg.JsApiReportIDKey", "idkey data is null");
-      parama.a("invaild_parms", null);
-      AppMethodBeat.o(78611);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < localJSONArray.length())
-    {
-      JSONObject localJSONObject = localJSONArray.optJSONObject(i);
-      IDKey localIDKey = new IDKey();
-      localIDKey.SetID(Util.getInt(localJSONObject.optString("id"), 0));
-      localIDKey.SetKey(Util.getInt(localJSONObject.optString("key"), 0));
-      localIDKey.SetValue(Util.getInt(localJSONObject.optString("value"), 0));
-      localArrayList.add(localIDKey);
-      i += 1;
-    }
-    if (localArrayList.size() > 0) {
-      h.IzE.b(localArrayList, true);
-    }
-    parama.a("", null);
-    AppMethodBeat.o(78611);
+    AppMethodBeat.i(78599);
+    Log.i("MicroMsg.JsApiPrivateOpenWeappFunctionalPage", "invokeInOwn");
+    Object localObject = paramb.eiZ.eif;
+    String str = ((JSONObject)localObject).optString("uuid");
+    localObject = ((JSONObject)localObject).optString("req_data");
+    ((com.tencent.mm.plugin.appbrand.service.k)h.ax(com.tencent.mm.plugin.appbrand.service.k.class)).cN(str, (String)localObject);
+    paramb.a("", null);
+    ((g)paramb.eiY).WGo = true;
+    AppMethodBeat.o(78599);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "reportIDKey";
+    return "privateOpenWeappFunctionalPage";
   }
 }
 

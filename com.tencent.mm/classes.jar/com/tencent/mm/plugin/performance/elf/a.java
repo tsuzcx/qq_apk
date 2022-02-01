@@ -14,7 +14,7 @@ public final class a
     AppMethodBeat.o(124995);
   }
   
-  public static <T extends AbstractProcessChecker> T bo(Class<? extends AbstractProcessChecker> paramClass)
+  public static <T extends AbstractProcessChecker> T bY(Class<? extends AbstractProcessChecker> paramClass)
   {
     AppMethodBeat.i(124994);
     if (map.containsKey(paramClass))
@@ -44,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ public enum UnfamiliarContactDetailUI$e
   static
   {
     AppMethodBeat.i(74604);
-    Jlg = new e("OVER_ONE_MIN", 0);
-    Jlh = new e("NORMAL", 1);
-    Jli = new e[] { Jlg, Jlh };
+    PxF = new e("OVER_ONE_MIN", 0);
+    PxG = new e("NORMAL", 1);
+    PxH = new e[] { PxF, PxG };
     AppMethodBeat.o(74604);
   }
   
@@ -17,7 +17,7 @@ public enum UnfamiliarContactDetailUI$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.e
  * JD-Core Version:    0.7.0.1
  */

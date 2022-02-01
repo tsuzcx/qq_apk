@@ -1,188 +1,206 @@
 package com.tencent.mm.media.widget.camerarecordview;
 
-import android.graphics.Point;
-import android.opengl.EGLContext;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.g.d;
 import com.tencent.mm.media.j.b.f;
-import com.tencent.mm.modelcontrol.VideoTransPara;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory;", "", "()V", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "getAudioRecorder", "Lcom/tencent/mm/plugin/mmsight/model/encode/IMMSightAACRecorder;", "sampleRate", "", "bitrate", "audioChannelCount", "getCPUMediaRecorder", "Lcom/tencent/mm/media/widget/recorder/IMediaRecorder;", "recordType", "videoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "camera", "Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "getGPUMediaRecorder", "videoTransPara", "eglContext", "Landroid/opengl/EGLContext;", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "useCPUCrop", "", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camerarecordview/CameraPreviewRenderer;", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "cpuCrop", "", "(Z)V", "getCpuCrop", "()Z", "cropCameraTexture", "outputMirror", "outputTexHeight", "", "outputTexRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcExternalTexture;", "outputTexWidth", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getOutputTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "getOutputTextureSize", "Landroid/graphics/Point;", "getSurfaceTexture", "initRenderProcInGlesThread", "", "createSurfaceTexture", "prepareOutputTexture", "release", "shouldDestroySurfaceTexture", "render", "renderOutputTexture", "setOutputTextureInfo", "width", "height", "mirrorOutput", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
+  extends com.tencent.mm.media.j.c
 {
-  private static com.tencent.mm.media.j.a kWg;
-  public static final c lfa;
+  private final boolean nJC;
+  private com.tencent.mm.media.j.b.c nJD;
+  private final boolean nJE;
+  int nJF;
+  int nJG;
+  boolean nJH;
   
-  static
+  public c(boolean paramBoolean)
   {
-    AppMethodBeat.i(94272);
-    lfa = new c();
-    AppMethodBeat.o(94272);
+    super(1);
+    AppMethodBeat.i(237628);
+    this.nJC = paramBoolean;
+    com.tencent.mm.media.widget.a.c localc = com.tencent.mm.media.widget.a.c.nGn;
+    this.nJE = com.tencent.mm.media.widget.a.c.bsQ();
+    this.nJF = -1;
+    this.nJG = -1;
+    AppMethodBeat.o(237628);
   }
   
-  public static com.tencent.mm.media.widget.c.b a(int paramInt, VideoTransPara paramVideoTransPara, com.tencent.mm.media.widget.a.e parame, EGLContext paramEGLContext, com.tencent.mm.media.widget.camerarecordview.preview.e parame1, boolean paramBoolean, com.tencent.mm.media.j.a parama)
+  public final com.tencent.mm.media.j.b.a bgD()
   {
-    AppMethodBeat.i(94270);
-    p.k(paramVideoTransPara, "videoTransPara");
-    p.k(parame, "camera");
-    p.k(paramEGLContext, "eglContext");
-    p.k(parame1, "view");
-    if (paramInt == 2)
+    AppMethodBeat.i(237631);
+    if (this.nJC)
     {
-      if (parama == null)
+      locala = (com.tencent.mm.media.j.b.a)new f(this.mVd, this.mVe, this.mWn, this.mWo, bpJ(), getScaleType());
+      AppMethodBeat.o(237631);
+      return locala;
+    }
+    com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new com.tencent.mm.media.j.b.c(this.mVd, this.mVe, this.mWn, this.mWo, bpJ(), getScaleType());
+    AppMethodBeat.o(237631);
+    return locala;
+  }
+  
+  public final void bgE()
+  {
+    AppMethodBeat.i(237648);
+    super.bgE();
+    Object localObject;
+    int i;
+    if (this.nJE)
+    {
+      localObject = bpK();
+      if (localObject != null) {
+        break label193;
+      }
+      localObject = null;
+      if (localObject != null)
       {
-        kWg = (com.tencent.mm.media.j.a)new b(paramBoolean);
-        parama = kWg;
-        if ((parama != null) && (parame.aYf() != null))
+        i = ((Integer)localObject).intValue();
+        localObject = this.nJD;
+        if (localObject != null) {
+          ((com.tencent.mm.media.j.b.c)localObject).el(this.mVd, this.mVe);
+        }
+        if ((this.nJF <= 0) || (this.nJG <= 0)) {
+          break label204;
+        }
+        localObject = this.nJD;
+        if (localObject != null) {
+          ((com.tencent.mm.media.j.b.c)localObject).ek(this.nJF, this.nJG);
+        }
+        label92:
+        if (this.nDr >= 0)
         {
-          parama.dv(com.tencent.mm.media.widget.a.b.getPreviewWidth(), com.tencent.mm.media.widget.a.b.getPreviewHeight());
-          parama.tm(com.tencent.mm.media.widget.a.b.aVp());
-          parama.fj(com.tencent.mm.media.widget.a.b.isFrontCamera());
+          localObject = this.nJD;
+          if (localObject != null) {
+            ((com.tencent.mm.media.j.b.c)localObject).th(this.nDr);
+          }
         }
-        parame = kWg;
-        parame1 = parame1.getPreviewTexture();
-        if (parame1 == null) {
-          break label155;
+        localObject = this.nJD;
+        if (localObject != null) {
+          if ((!this.nvG) || (!this.nJH)) {
+            break label228;
+          }
         }
       }
-      label155:
-      for (paramInt = parame1.kVj;; paramInt = -1)
+    }
+    label193:
+    label204:
+    label228:
+    for (boolean bool = true;; bool = false)
+    {
+      ((com.tencent.mm.media.j.b.c)localObject).gr(bool);
+      localObject = this.nJD;
+      if (localObject != null) {
+        ((com.tencent.mm.media.j.b.c)localObject).gq(true);
+      }
+      localObject = this.nJD;
+      if (localObject != null) {
+        ((com.tencent.mm.media.j.b.c)localObject).nEx = i;
+      }
+      localObject = this.nJD;
+      if (localObject != null) {
+        ((com.tencent.mm.media.j.b.c)localObject).bgE();
+      }
+      AppMethodBeat.o(237648);
+      return;
+      localObject = Integer.valueOf(((d)localObject).nAF);
+      break;
+      localObject = this.nJD;
+      if (localObject == null) {
+        break label92;
+      }
+      ((com.tencent.mm.media.j.b.c)localObject).ek(this.mVd, this.mVe);
+      break label92;
+    }
+  }
+  
+  public final d bgF()
+  {
+    AppMethodBeat.i(237644);
+    if (this.nJE)
+    {
+      localObject = this.nJD;
+      if (localObject == null)
       {
-        paramVideoTransPara = (com.tencent.mm.media.widget.c.b)new com.tencent.mm.media.widget.c.c(paramVideoTransPara, parame, paramEGLContext, paramInt);
-        AppMethodBeat.o(94270);
-        return paramVideoTransPara;
-        kWg = parama;
-        break;
+        AppMethodBeat.o(237644);
+        return null;
+      }
+      localObject = ((com.tencent.mm.media.j.b.a)localObject).nDF;
+      AppMethodBeat.o(237644);
+      return localObject;
+    }
+    Object localObject = super.bgF();
+    AppMethodBeat.o(237644);
+    return localObject;
+  }
+  
+  public final d bpP()
+  {
+    AppMethodBeat.i(237639);
+    if (this.nJE)
+    {
+      localObject = this.nJD;
+      if (localObject == null)
+      {
+        AppMethodBeat.o(237639);
+        return null;
+      }
+      localObject = ((com.tencent.mm.media.j.b.a)localObject).nDF;
+      AppMethodBeat.o(237639);
+      return localObject;
+    }
+    Object localObject = super.bpP();
+    AppMethodBeat.o(237639);
+    return localObject;
+  }
+  
+  public final void gp(boolean paramBoolean)
+  {
+    AppMethodBeat.i(237636);
+    super.gp(paramBoolean);
+    Object localObject;
+    if (this.nJE)
+    {
+      this.nJD = new com.tencent.mm.media.j.b.c(this.mVd, this.mVe, this.mVd, this.mVe, 2, 2);
+      localObject = this.nJD;
+      if (localObject != null) {
+        break label74;
+      }
+      localObject = null;
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.Media.AbsSurfaceRenderer", s.X("prepareOutputTexture:", localObject));
+      AppMethodBeat.o(237636);
+      return;
+      label74:
+      localObject = ((com.tencent.mm.media.j.b.a)localObject).nDF;
+      if (localObject == null) {
+        localObject = null;
+      } else {
+        localObject = Integer.valueOf(((d)localObject).nAF);
       }
     }
-    if (parama == null) {}
-    for (kWg = (com.tencent.mm.media.j.a)new c();; kWg = parama)
-    {
-      paramEGLContext = kWg;
-      if ((paramEGLContext != null) && (parame.aYf() != null))
-      {
-        parame1 = com.tencent.mm.media.widget.a.b.aYa();
-        paramEGLContext.dv(parame1.x, parame1.y);
-        paramEGLContext.tm(com.tencent.mm.media.widget.a.b.aVp());
-        paramEGLContext.fj(com.tencent.mm.media.widget.a.b.isFrontCamera());
-      }
-      paramVideoTransPara = new com.tencent.mm.media.widget.c.d(paramVideoTransPara, kWg);
-      parame.a(paramVideoTransPara.getFrameDataCallback());
-      paramVideoTransPara = (com.tencent.mm.media.widget.c.b)paramVideoTransPara;
-      AppMethodBeat.o(94270);
-      return paramVideoTransPara;
-    }
   }
   
-  public static com.tencent.mm.media.widget.c.b a(int paramInt, VideoTransPara paramVideoTransPara, com.tencent.mm.media.widget.a.e parame, com.tencent.mm.media.j.a parama)
+  public final void release(boolean paramBoolean)
   {
-    AppMethodBeat.i(94271);
-    p.k(paramVideoTransPara, "videoPara");
-    p.k(parame, "camera");
-    if (paramInt == 2)
-    {
-      if (parama == null) {}
-      for (kWg = (com.tencent.mm.media.j.a)new a();; kWg = parama)
-      {
-        parama = kWg;
-        if ((parama != null) && (parame.aYf() != null))
-        {
-          Point localPoint = com.tencent.mm.media.widget.a.b.aYa();
-          parama.dv(localPoint.x, localPoint.y);
-          parama.tm(com.tencent.mm.media.widget.a.b.aVp());
-          parama.fj(com.tencent.mm.media.widget.a.b.isFrontCamera());
-        }
-        paramVideoTransPara = new com.tencent.mm.media.widget.c.c(paramVideoTransPara, kWg);
-        parame.a(paramVideoTransPara.getFrameDataCallback());
-        paramVideoTransPara = (com.tencent.mm.media.widget.c.b)paramVideoTransPara;
-        AppMethodBeat.o(94271);
-        return paramVideoTransPara;
-      }
+    AppMethodBeat.i(237655);
+    super.release(paramBoolean);
+    com.tencent.mm.media.j.b.c localc = this.nJD;
+    if (localc != null) {
+      localc.release();
     }
-    paramVideoTransPara = new com.tencent.mm.media.widget.c.e(paramVideoTransPara);
-    if (parame.aYf() != null) {
-      paramVideoTransPara.setMirror(com.tencent.mm.media.widget.a.b.isFrontCamera());
-    }
-    parame.a(paramVideoTransPara.getFrameDataCallback());
-    paramVideoTransPara = (com.tencent.mm.media.widget.c.b)paramVideoTransPara;
-    AppMethodBeat.o(94271);
-    return paramVideoTransPara;
-  }
-  
-  public static void aZb()
-  {
-    kWg = null;
-  }
-  
-  public static com.tencent.mm.media.j.a getRenderer()
-  {
-    return kWg;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getCPUMediaRecorder$1", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
-  public static final class a
-    extends com.tencent.mm.media.j.a
-  {
-    a()
-    {
-      super(0, 0, 0, 62);
-    }
-    
-    public final com.tencent.mm.media.j.b.a aMT()
-    {
-      AppMethodBeat.i(94267);
-      com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new f(this.krg, this.krh, this.ksu, this.ksv, aVh(), getScaleType());
-      AppMethodBeat.o(94267);
-      return locala;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getGPUMediaRecorder$1", "Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
-  public static final class b
-    extends com.tencent.mm.media.j.d
-  {
-    b(boolean paramBoolean)
-    {
-      super();
-    }
-    
-    public final com.tencent.mm.media.j.b.a aMT()
-    {
-      AppMethodBeat.i(94268);
-      if (this.lfb)
-      {
-        locala = (com.tencent.mm.media.j.b.a)new f(this.krg, this.krh, this.ksu, this.ksv, aVh(), getScaleType());
-        AppMethodBeat.o(94268);
-        return locala;
-      }
-      com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new com.tencent.mm.media.j.b.c(this.krg, this.krh, this.ksu, this.ksv, aVh(), getScaleType());
-      AppMethodBeat.o(94268);
-      return locala;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/media/widget/camerarecordview/CameraRecorderFactory$getGPUMediaRecorder$3", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "plugin-mediaeditor_release"})
-  public static final class c
-    extends com.tencent.mm.media.j.a
-  {
-    c()
-    {
-      super(0, 0, 0, 62);
-    }
-    
-    public final com.tencent.mm.media.j.b.a aMT()
-    {
-      AppMethodBeat.i(94269);
-      com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new f(this.krg, this.krh, this.ksu, this.ksv, aVh(), getScaleType());
-      AppMethodBeat.o(94269);
-      return locala;
-    }
+    AppMethodBeat.o(237655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.c
  * JD-Core Version:    0.7.0.1
  */

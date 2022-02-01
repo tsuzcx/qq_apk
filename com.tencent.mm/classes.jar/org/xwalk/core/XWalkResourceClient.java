@@ -26,6 +26,7 @@ public class XWalkResourceClient
   public static final int ERROR_UNKNOWN = -1;
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
+  private static final String TAG = "XWalkResourceClient";
   private Object bridge;
   private ArrayList<Object> constructorParams;
   private ArrayList<Object> constructorTypes;
@@ -85,6 +86,79 @@ public class XWalkResourceClient
     this.constructorParams.add(paramXWalkView);
     reflectionInit();
     AppMethodBeat.o(154841);
+  }
+  
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(154857);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(154857);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    int j = this.constructorTypes.size();
+    Object localObject1 = new Class[j + 1];
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject2 = this.constructorTypes.get(i);
+      if ((localObject2 instanceof String))
+      {
+        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
+        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
+      }
+      label133:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!(localObject2 instanceof Class)) {
+            break label133;
+          }
+          localObject1[i] = ((Class)localObject2);
+        }
+      } while ($assertionsDisabled);
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(154857);
+      throw ((Throwable)localObject1);
+    }
+    localObject1[j] = Object.class;
+    this.constructorParams.add(this);
+    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkResourceClientBridge"), (Class[])localObject1);
+    try
+    {
+      this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
+      if (this.postWrapperMethod != null) {
+        this.postWrapperMethod.invoke(new Object[0]);
+      }
+      this.onDocumentLoadedInFrameXWalkViewInternallongMethod.init(this.bridge, null, "onDocumentLoadedInFrameSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Long.TYPE });
+      this.onLoadStartedXWalkViewInternalStringMethod.init(this.bridge, null, "onLoadStartedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.onLoadFinishedXWalkViewInternalStringMethod.init(this.bridge, null, "onLoadFinishedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.onProgressChangedXWalkViewInternalintMethod.init(this.bridge, null, "onProgressChangedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE });
+      this.shouldInterceptLoadRequestXWalkViewInternalStringMethod.init(this.bridge, null, "shouldInterceptLoadRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod.init(this.bridge, null, "shouldInterceptLoadRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge") });
+      this.onReceivedLoadErrorXWalkViewInternalintStringStringMethod.init(this.bridge, null, "onReceivedLoadErrorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE, String.class, String.class });
+      this.onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod.init(this.bridge, null, "onReceivedLoadError2Super", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceErrorBridge") });
+      this.shouldOverrideUrlLoadingXWalkViewInternalStringMethod.init(this.bridge, null, "shouldOverrideUrlLoadingSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
+      this.onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod.init(this.bridge, null, "onReceivedSslErrorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, SslError.class });
+      this.onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod.init(this.bridge, null, "onReceivedClientCertRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("ClientCertRequestHandlerBridge") });
+      this.onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod.init(this.bridge, null, "onReceivedResponseHeadersSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceResponseBridge") });
+      this.doUpdateVisitedHistoryXWalkViewInternalStringbooleanMethod.init(this.bridge, null, "doUpdateVisitedHistorySuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Boolean.TYPE });
+      this.onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod.init(this.bridge, null, "onReceivedHttpAuthRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkHttpAuthHandlerBridge"), String.class, String.class });
+      this.createXWalkWebResourceResponseStringStringInputStreamMethod.init(this.bridge, null, "createXWalkWebResourceResponseSuper", new Class[] { String.class, String.class, InputStream.class });
+      this.createXWalkWebResourceResponseStringStringInputStreamintStringMapMethod.init(this.bridge, null, "createXWalkWebResourceResponseSuper", new Class[] { String.class, String.class, InputStream.class, Integer.TYPE, String.class, Map.class });
+      AppMethodBeat.o(154857);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      Log.e("XWalkResourceClient", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+      AppMethodBeat.o(154857);
+    }
   }
   
   public XWalkWebResourceResponse createXWalkWebResourceResponse(String paramString1, String paramString2, InputStream paramInputStream)
@@ -318,11 +392,11 @@ public class XWalkResourceClient
   
   public void onReceivedLoadError2(XWalkView paramXWalkView, XWalkWebResourceRequest paramXWalkWebResourceRequest, XWalkWebResourceError paramXWalkWebResourceError)
   {
-    AppMethodBeat.i(206349);
+    AppMethodBeat.i(187660);
     try
     {
       this.onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod.invoke(new Object[] { paramXWalkView.getBridge(), ((XWalkWebResourceRequestHandler)paramXWalkWebResourceRequest).getBridge(), paramXWalkWebResourceError.getBridge() });
-      AppMethodBeat.o(206349);
+      AppMethodBeat.o(187660);
       return;
     }
     catch (UnsupportedOperationException paramXWalkView)
@@ -330,11 +404,11 @@ public class XWalkResourceClient
       if (this.coreWrapper == null)
       {
         paramXWalkView = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(206349);
+        AppMethodBeat.o(187660);
         throw paramXWalkView;
       }
       XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
-      AppMethodBeat.o(206349);
+      AppMethodBeat.o(187660);
     }
   }
   
@@ -379,79 +453,6 @@ public class XWalkResourceClient
       }
       XWalkCoreWrapper.handleRuntimeError(paramXWalkView);
       AppMethodBeat.o(154850);
-    }
-  }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(154857);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(154857);
-      return;
-    }
-    int j = this.constructorTypes.size();
-    Object localObject1 = new Class[j + 1];
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject2 = this.constructorTypes.get(i);
-      if ((localObject2 instanceof String))
-      {
-        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
-        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
-      }
-      label139:
-      do
-      {
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (!(localObject2 instanceof Class)) {
-            break label139;
-          }
-          localObject1[i] = ((Class)localObject2);
-        }
-      } while ($assertionsDisabled);
-      localObject1 = new AssertionError();
-      AppMethodBeat.o(154857);
-      throw ((Throwable)localObject1);
-    }
-    localObject1[j] = Object.class;
-    this.constructorParams.add(this);
-    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkResourceClientBridge"), (Class[])localObject1);
-    try
-    {
-      this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
-      if (this.postWrapperMethod != null) {
-        this.postWrapperMethod.invoke(new Object[0]);
-      }
-      this.onDocumentLoadedInFrameXWalkViewInternallongMethod.init(this.bridge, null, "onDocumentLoadedInFrameSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Long.TYPE });
-      this.onLoadStartedXWalkViewInternalStringMethod.init(this.bridge, null, "onLoadStartedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.onLoadFinishedXWalkViewInternalStringMethod.init(this.bridge, null, "onLoadFinishedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.onProgressChangedXWalkViewInternalintMethod.init(this.bridge, null, "onProgressChangedSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE });
-      this.shouldInterceptLoadRequestXWalkViewInternalStringMethod.init(this.bridge, null, "shouldInterceptLoadRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.shouldInterceptLoadRequestXWalkViewInternalXWalkWebResourceRequestInternalMethod.init(this.bridge, null, "shouldInterceptLoadRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge") });
-      this.onReceivedLoadErrorXWalkViewInternalintStringStringMethod.init(this.bridge, null, "onReceivedLoadErrorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), Integer.TYPE, String.class, String.class });
-      this.onReceivedErrorXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceErrorInternalMethod.init(this.bridge, null, "onReceivedLoadError2Super", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceErrorBridge") });
-      this.shouldOverrideUrlLoadingXWalkViewInternalStringMethod.init(this.bridge, null, "shouldOverrideUrlLoadingSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class });
-      this.onReceivedSslErrorXWalkViewInternalValueCallbackSslErrorMethod.init(this.bridge, null, "onReceivedSslErrorSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), ValueCallback.class, SslError.class });
-      this.onReceivedClientCertRequestXWalkViewInternalClientCertRequestInternalMethod.init(this.bridge, null, "onReceivedClientCertRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("ClientCertRequestHandlerBridge") });
-      this.onReceivedResponseHeadersXWalkViewInternalXWalkWebResourceRequestInternalXWalkWebResourceResponseInternalMethod.init(this.bridge, null, "onReceivedResponseHeadersSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceRequestHandlerBridge"), this.coreWrapper.getBridgeClass("XWalkWebResourceResponseBridge") });
-      this.doUpdateVisitedHistoryXWalkViewInternalStringbooleanMethod.init(this.bridge, null, "doUpdateVisitedHistorySuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), String.class, Boolean.TYPE });
-      this.onReceivedHttpAuthRequestXWalkViewInternalXWalkHttpAuthHandlerInternalStringStringMethod.init(this.bridge, null, "onReceivedHttpAuthRequestSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkViewBridge"), this.coreWrapper.getBridgeClass("XWalkHttpAuthHandlerBridge"), String.class, String.class });
-      this.createXWalkWebResourceResponseStringStringInputStreamMethod.init(this.bridge, null, "createXWalkWebResourceResponseSuper", new Class[] { String.class, String.class, InputStream.class });
-      this.createXWalkWebResourceResponseStringStringInputStreamintStringMapMethod.init(this.bridge, null, "createXWalkWebResourceResponseSuper", new Class[] { String.class, String.class, InputStream.class, Integer.TYPE, String.class, Map.class });
-      AppMethodBeat.o(154857);
-      return;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      AppMethodBeat.o(154857);
     }
   }
   
@@ -531,7 +532,7 @@ public class XWalkResourceClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkResourceClient
  * JD-Core Version:    0.7.0.1
  */

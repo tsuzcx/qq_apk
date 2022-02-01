@@ -5,13 +5,13 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract String NE();
+  public abstract String anP();
   
-  public abstract String NF();
+  public abstract String anQ();
   
-  public abstract Map NG();
+  public abstract Map anR();
   
-  public abstract void bZ(boolean paramBoolean);
+  public abstract void cG(boolean paramBoolean);
   
   public abstract Activity getActivity();
 }

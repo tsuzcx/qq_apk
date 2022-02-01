@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/h9a" android:background="@color/BW_100" android:padding="0.5px" android:layout_width="fill_parent" android:layout_height="230.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/iwz" android:background="@color/BW_100" android:padding="0.5px" android:layout_width="fill_parent" android:layout_height="230.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/bru" style="@style/hx" />
+    <ImageView android:id="@id/c7p" style="@style/i7" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_1" android:background="@drawable/az0" android:text="1" style="@style/ut" />
-        <ImageView android:id="@id/brz" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_2" android:background="@drawable/az0" android:text="2" style="@style/ut" />
-        <ImageView android:id="@id/bs0" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_3" android:background="@drawable/az0" android:text="3" style="@style/ut" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_1" android:background="@drawable/axf" android:text="1" style="@style/uj" />
+        <ImageView android:id="@id/c7u" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_2" android:background="@drawable/axf" android:text="2" style="@style/uj" />
+        <ImageView android:id="@id/c7v" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_3" android:background="@drawable/axf" android:text="3" style="@style/uj" />
     </LinearLayout>
-    <ImageView android:id="@id/bs1" style="@style/hx" />
+    <ImageView android:id="@id/c7w" style="@style/i7" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_4" android:background="@drawable/az0" android:text="4" style="@style/ut" />
-        <ImageView android:id="@id/bs2" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_5" android:background="@drawable/az0" android:text="5" style="@style/ut" />
-        <ImageView android:id="@id/bs3" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_6" android:background="@drawable/az0" android:text="6" style="@style/ut" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_4" android:background="@drawable/axf" android:text="4" style="@style/uj" />
+        <ImageView android:id="@id/c7x" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_5" android:background="@drawable/axf" android:text="5" style="@style/uj" />
+        <ImageView android:id="@id/c7y" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_6" android:background="@drawable/axf" android:text="6" style="@style/uj" />
     </LinearLayout>
-    <ImageView android:id="@id/bs4" style="@style/hx" />
+    <ImageView android:id="@id/c7z" style="@style/i7" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_7" android:background="@drawable/az0" android:text="7" style="@style/ut" />
-        <ImageView android:id="@id/bs5" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_8" android:background="@drawable/az0" android:text="8" style="@style/ut" />
-        <ImageView android:id="@id/bs6" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_9" android:background="@drawable/az0" android:text="9" style="@style/ut" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_7" android:background="@drawable/axf" android:text="7" style="@style/uj" />
+        <ImageView android:id="@id/c80" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_8" android:background="@drawable/axf" android:text="8" style="@style/uj" />
+        <ImageView android:id="@id/c81" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_9" android:background="@drawable/axf" android:text="9" style="@style/uj" />
     </LinearLayout>
-    <ImageView android:id="@id/brv" style="@style/hx" />
+    <ImageView android:id="@id/c7q" style="@style/i7" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textSize="26.0dip" android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_x" android:background="@drawable/ayw" android:text="" style="@style/ut" />
-        <ImageView android:id="@id/brw" style="@style/zv" />
-        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_0" android:background="@drawable/az0" android:text="0" style="@style/ut" />
-        <ImageView android:id="@id/brx" style="@style/zv" />
-        <RelativeLayout android:id="@id/tenpay_keyboard_d" android:background="@drawable/ayw" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/keyboard_delete" android:layout_centerInParent="true" android:contentDescription="@string/e_v" app:iconColor="@color/FG_0" />
+        <TextView android:textSize="26.0dip" android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_x" android:background="@drawable/axa" android:text="" style="@style/uj" />
+        <ImageView android:id="@id/c7r" style="@style/zl" />
+        <TextView android:textColor="@color/a7b" android:id="@id/tenpay_keyboard_0" android:background="@drawable/axf" android:text="0" style="@style/uj" />
+        <ImageView android:id="@id/c7s" style="@style/zl" />
+        <RelativeLayout android:id="@id/tenpay_keyboard_d" android:background="@drawable/axa" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="@string/fzz">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/keyboard_delete" android:layout_centerInParent="true" app:iconColor="@color/FG_0" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a2r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cs" android:layout_height="@dimen/cs" android:src="@raw/wechat_appicon" app:iconColor="@color/FG_3" />
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/kq2" android:background="@color/a6w" style="@style/na" />
+    <TextView android:textColor="@color/a7b" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/cj1" android:paddingLeft="@dimen/if" android:paddingTop="220.0dip" android:paddingRight="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" style="@style/m3" />
 </LinearLayout>

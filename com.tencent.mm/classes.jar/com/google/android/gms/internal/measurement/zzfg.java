@@ -4,7 +4,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.measurement.AppMeasurement;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -42,7 +41,6 @@ public final class zzfg
     AppMethodBeat.o(1393);
   }
   
-  @VisibleForTesting
   private static String zza(boolean paramBoolean, Object paramObject)
   {
     AppMethodBeat.i(1400);
@@ -241,7 +239,6 @@ public final class zzfg
     }
   }
   
-  @VisibleForTesting
   protected final boolean isLoggable(int paramInt)
   {
     AppMethodBeat.i(1396);
@@ -250,7 +247,6 @@ public final class zzfg
     return bool;
   }
   
-  @VisibleForTesting
   protected final void zza(int paramInt, String paramString)
   {
     AppMethodBeat.i(1397);
@@ -362,7 +358,7 @@ public final class zzfg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfg
  * JD-Core Version:    0.7.0.1
  */

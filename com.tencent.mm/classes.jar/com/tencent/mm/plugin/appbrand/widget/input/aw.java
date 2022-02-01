@@ -1,32 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"DUMMY_TASK", "Ljava/lang/Runnable;", "luggage-wxa-app-input-ext_release"})
+@Metadata(d1={""}, d2={"DUMMY_TASK", "Ljava/lang/Runnable;", "luggage-wxa-app-input-ext_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class aw
 {
-  private static final Runnable ryI = (Runnable)a.ryJ;
+  private static final Runnable uJM = aw..ExternalSyntheticLambda0.INSTANCE;
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    public static final a ryJ;
-    
-    static
-    {
-      AppMethodBeat.i(214758);
-      ryJ = new a();
-      AppMethodBeat.o(214758);
-    }
-    
-    public final void run() {}
-  }
+  private static final void cRU() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.aw
  * JD-Core Version:    0.7.0.1
  */

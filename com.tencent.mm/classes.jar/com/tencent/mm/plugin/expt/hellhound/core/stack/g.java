@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bl;
-import com.tencent.mm.protocal.protobuf.bm;
-import com.tencent.mm.protocal.protobuf.eqy;
-import com.tencent.mm.protocal.protobuf.esj;
+import com.tencent.mm.protocal.protobuf.bt;
+import com.tencent.mm.protocal.protobuf.bu;
+import com.tencent.mm.protocal.protobuf.fme;
+import com.tencent.mm.protocal.protobuf.fns;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.b;
 import java.util.Iterator;
@@ -13,31 +13,31 @@ import java.util.LinkedList;
 
 public final class g
 {
-  public f wfy;
+  public f zBy;
   
-  public static com.tencent.mm.vending.j.c<eqy, Integer> a(bm parambm, bl parambl)
+  public static com.tencent.mm.vending.j.c<fme, Integer> a(bu parambu, bt parambt)
   {
     AppMethodBeat.i(121899);
-    if ((parambm == null) || (parambm.RGE.isEmpty()))
+    if ((parambu == null) || (parambu.YDy.isEmpty()))
     {
       AppMethodBeat.o(121899);
       return null;
     }
-    int i = parambm.RGE.size() - 1;
+    int i = parambu.YDy.size() - 1;
     while (i >= 0)
     {
-      eqy localeqy = (eqy)parambm.RGE.get(i);
-      if ((localeqy != null) && (!localeqy.Utm.isEmpty()))
+      fme localfme = (fme)parambu.YDy.get(i);
+      if ((localfme != null) && (!localfme.abMA.isEmpty()))
       {
-        int j = localeqy.Utm.size() - 1;
+        int j = localfme.abMA.size() - 1;
         while (j >= 0)
         {
-          bl localbl = (bl)localeqy.Utm.get(j);
-          if ((localbl != null) && (h.a(parambl.RGy, localbl.RGy)))
+          bt localbt = (bt)localfme.abMA.get(j);
+          if ((localbt != null) && (h.a(parambt.YDs, localbt.YDs)))
           {
-            parambm = a.J(localeqy, Integer.valueOf(i));
+            parambu = a.U(localfme, Integer.valueOf(i));
             AppMethodBeat.o(121899);
-            return parambm;
+            return parambu;
           }
           j -= 1;
         }
@@ -48,27 +48,27 @@ public final class g
     return null;
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> a(bm parambm, String paramString)
+  static com.tencent.mm.vending.j.c<Integer, Integer> a(bu parambu, String paramString)
   {
-    AppMethodBeat.i(251846);
+    AppMethodBeat.i(299993);
     if (TextUtils.isEmpty(paramString))
     {
-      parambm = a.J(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(251846);
-      return parambm;
+      parambu = a.U(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
-    if (parambm == null)
+    if (parambu == null)
     {
-      parambm = com.tencent.mm.vending.j.c.J(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(251846);
-      return parambm;
+      parambu = com.tencent.mm.vending.j.c.U(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
-    int i = parambm.RGE.size();
+    int i = parambu.YDy.size();
     if (i <= 0)
     {
-      parambm = com.tencent.mm.vending.j.c.J(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(251846);
-      return parambm;
+      parambu = com.tencent.mm.vending.j.c.U(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
     i -= 1;
     int k = -1;
@@ -76,13 +76,13 @@ public final class g
     int m;
     if (i >= 0)
     {
-      eqy localeqy = (eqy)parambm.RGE.get(i);
-      m = localeqy.Utm.size() - 1;
+      fme localfme = (fme)parambu.YDy.get(i);
+      m = localfme.abMA.size() - 1;
       label123:
       if (m < 0) {
         break label220;
       }
-      if (paramString.equals(((bl)localeqy.Utm.get(m)).RGy.activityName))
+      if (paramString.equals(((bt)localfme.abMA.get(m)).YDs.AtM))
       {
         k = m;
         j = i;
@@ -97,44 +97,44 @@ public final class g
       break label123;
       if (j == -1)
       {
-        parambm = com.tencent.mm.vending.j.c.J(Integer.valueOf(-1), Integer.valueOf(-1));
-        AppMethodBeat.o(251846);
-        return parambm;
+        parambu = com.tencent.mm.vending.j.c.U(Integer.valueOf(-1), Integer.valueOf(-1));
+        AppMethodBeat.o(299993);
+        return parambu;
       }
-      parambm = a.J(Integer.valueOf(j), Integer.valueOf(k));
-      AppMethodBeat.o(251846);
-      return parambm;
+      parambu = a.U(Integer.valueOf(j), Integer.valueOf(k));
+      AppMethodBeat.o(299993);
+      return parambu;
     }
   }
   
-  static void a(bm parambm, bl parambl, boolean paramBoolean)
+  static void a(bu parambu, bt parambt, boolean paramBoolean)
   {
     AppMethodBeat.i(121901);
-    eqy localeqy = new eqy();
-    localeqy.Utl = paramBoolean;
-    localeqy.Utm.addLast(parambl);
-    parambl = parambm;
-    if (parambm == null) {
-      parambl = new bm();
+    fme localfme = new fme();
+    localfme.abMz = paramBoolean;
+    localfme.abMA.addLast(parambt);
+    parambt = parambu;
+    if (parambu == null) {
+      parambt = new bu();
     }
-    parambl.RGE.addLast(localeqy);
+    parambt.YDy.addLast(localfme);
     AppMethodBeat.o(121901);
   }
   
-  private static void a(bm parambm, eqy parameqy)
+  private static void a(bu parambu, fme paramfme)
   {
     AppMethodBeat.i(121905);
-    if ((parameqy.Utm.isEmpty()) && (!parambm.RGE.isEmpty())) {
-      parambm.RGE.removeLast();
+    if ((paramfme.abMA.isEmpty()) && (!parambu.YDy.isEmpty())) {
+      parambu.YDy.removeLast();
     }
     AppMethodBeat.o(121905);
   }
   
-  public static bl axc(String paramString)
+  public static bt arg(String paramString)
   {
     AppMethodBeat.i(121911);
-    bm localbm = c.dcC();
-    paramString = a(localbm, paramString);
+    bu localbu = c.dJe();
+    paramString = a(localbu, paramString);
     int i = ((Integer)paramString.get(0)).intValue();
     int j = ((Integer)paramString.get(1)).intValue();
     if ((i < 0) || (j < 0))
@@ -142,41 +142,41 @@ public final class g
       AppMethodBeat.o(121911);
       return null;
     }
-    paramString = (bl)((eqy)localbm.RGE.get(i)).Utm.get(j);
+    paramString = (bt)((fme)localbu.YDy.get(i)).abMA.get(j);
     AppMethodBeat.o(121911);
     return paramString;
   }
   
-  static void b(bm parambm, bl parambl)
+  static void b(bu parambu, bt parambt)
   {
     AppMethodBeat.i(121900);
-    eqy localeqy1 = null;
-    if (!parambm.RGE.isEmpty()) {
-      localeqy1 = (eqy)parambm.RGE.getLast();
+    fme localfme1 = null;
+    if (!parambu.YDy.isEmpty()) {
+      localfme1 = (fme)parambu.YDy.getLast();
     }
-    eqy localeqy2 = localeqy1;
-    if (localeqy1 == null)
+    fme localfme2 = localfme1;
+    if (localfme1 == null)
     {
-      localeqy2 = new eqy();
-      parambm.RGE.addLast(localeqy2);
+      localfme2 = new fme();
+      parambu.YDy.addLast(localfme2);
     }
-    localeqy2.Utm.addLast(parambl);
+    localfme2.abMA.addLast(parambt);
     AppMethodBeat.o(121900);
   }
   
-  static boolean b(bm parambm)
+  static boolean b(bu parambu)
   {
     AppMethodBeat.i(121902);
-    if (parambm == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(121902);
       return false;
     }
-    eqy localeqy = null;
-    if (!parambm.RGE.isEmpty()) {
-      localeqy = (eqy)parambm.RGE.getLast();
+    fme localfme = null;
+    if (!parambu.YDy.isEmpty()) {
+      localfme = (fme)parambu.YDy.getLast();
     }
-    if ((localeqy != null) && (localeqy.Utl))
+    if ((localfme != null) && (localfme.abMz))
     {
       AppMethodBeat.o(121902);
       return true;
@@ -185,95 +185,95 @@ public final class g
     return false;
   }
   
-  static bl c(bm parambm)
+  static bt c(bu parambu)
   {
     AppMethodBeat.i(121906);
-    if (parambm == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(121906);
       return null;
     }
-    if (!parambm.RGE.isEmpty()) {}
-    for (parambm = (eqy)parambm.RGE.getLast();; parambm = null)
+    if (!parambu.YDy.isEmpty()) {}
+    for (parambu = (fme)parambu.YDy.getLast();; parambu = null)
     {
-      if (parambm == null)
+      if (parambu == null)
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      if (parambm.Utm.isEmpty())
+      if (parambu.abMA.isEmpty())
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      parambm = (bl)parambm.Utm.getLast();
+      parambu = (bt)parambu.abMA.getLast();
       AppMethodBeat.o(121906);
-      return parambm;
+      return parambu;
     }
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> c(bm parambm, bl parambl)
+  static com.tencent.mm.vending.j.c<Integer, Integer> c(bu parambu, bt parambt)
   {
     AppMethodBeat.i(121907);
-    parambm = a(parambm, parambl.RGy.activityName);
+    parambu = a(parambu, parambt.YDs.AtM);
     AppMethodBeat.o(121907);
-    return parambm;
+    return parambu;
   }
   
-  static LinkedList<eqy> d(bm parambm)
+  static LinkedList<fme> d(bu parambu)
   {
-    if (parambm == null) {
+    if (parambu == null) {
       return null;
     }
-    return parambm.RGE;
+    return parambu.YDy;
   }
   
-  public static com.tencent.mm.vending.j.c<bm, bl> dcK()
+  public static com.tencent.mm.vending.j.c<bu, bt> dJm()
   {
     AppMethodBeat.i(121909);
-    Object localObject = c.dcC();
-    localObject = a.J(localObject, e((bm)localObject));
+    Object localObject = c.dJe();
+    localObject = a.U(localObject, e((bu)localObject));
     AppMethodBeat.o(121909);
     return localObject;
   }
   
-  public static bl e(bm parambm)
+  public static bt e(bu parambu)
   {
     AppMethodBeat.i(121910);
-    if (parambm == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(121910);
       return null;
     }
-    if (!parambm.RGE.isEmpty()) {}
-    for (parambm = (eqy)parambm.RGE.getLast();; parambm = null)
+    if (!parambu.YDy.isEmpty()) {}
+    for (parambu = (fme)parambu.YDy.getLast();; parambu = null)
     {
-      if (parambm == null)
+      if (parambu == null)
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      if (parambm.Utm.isEmpty())
+      if (parambu.abMA.isEmpty())
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      parambm = (bl)parambm.Utm.getLast();
+      parambu = (bt)parambu.abMA.getLast();
       AppMethodBeat.o(121910);
-      return parambm;
+      return parambu;
     }
   }
   
-  final void a(bm parambm, int paramInt, bl parambl)
+  final void a(bu parambu, int paramInt, bt parambt)
   {
     AppMethodBeat.i(121903);
-    if (parambm == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(121903);
       return;
     }
-    eqy localeqy = (eqy)parambm.RGE.getLast();
-    int i = localeqy.Utm.size();
+    fme localfme = (fme)parambu.YDy.getLast();
+    int i = localfme.abMA.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121903);
@@ -282,27 +282,27 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      bl localbl = (bl)localeqy.Utm.remove(i);
-      if (this.wfy != null)
+      bt localbt = (bt)localfme.abMA.remove(i);
+      if (this.zBy != null)
       {
-        localbl.RGy.timestamp = parambl.RGy.timestamp;
-        this.wfy.c(localbl, parambl);
+        localbt.YDs.timestamp = parambt.YDs.timestamp;
+        this.zBy.c(localbt, parambt);
       }
       i -= 1;
     }
-    a(parambm, localeqy);
+    a(parambu, localfme);
     AppMethodBeat.o(121903);
   }
   
-  final void b(bm parambm, int paramInt, bl parambl)
+  final void b(bu parambu, int paramInt, bt parambt)
   {
     AppMethodBeat.i(121904);
-    if (parambm == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(121904);
       return;
     }
-    int i = parambm.RGE.size();
+    int i = parambu.YDy.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121904);
@@ -311,14 +311,14 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      Iterator localIterator = ((eqy)parambm.RGE.remove(i)).Utm.iterator();
+      Iterator localIterator = ((fme)parambu.YDy.remove(i)).abMA.iterator();
       while (localIterator.hasNext())
       {
-        bl localbl = (bl)localIterator.next();
-        if (this.wfy != null)
+        bt localbt = (bt)localIterator.next();
+        if (this.zBy != null)
         {
-          localbl.RGy.timestamp = parambl.RGy.timestamp;
-          this.wfy.c(localbl, parambl);
+          localbt.YDs.timestamp = parambt.YDs.timestamp;
+          this.zBy.c(localbt, parambt);
         }
       }
       i -= 1;
@@ -328,7 +328,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.stack.g
  * JD-Core Version:    0.7.0.1
  */

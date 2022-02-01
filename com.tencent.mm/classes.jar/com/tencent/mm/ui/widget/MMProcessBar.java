@@ -20,24 +20,24 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public class MMProcessBar
   extends View
 {
-  private Animation VT;
-  private float YbH;
+  private float afTA;
+  public Animation bCz;
   
   public MMProcessBar(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(193753);
-    this.YbH = 0.0F;
-    this.VT = new RotateAnimation(0.0F, 360.0F);
-    AppMethodBeat.o(193753);
+    AppMethodBeat.i(251671);
+    this.afTA = 0.0F;
+    this.bCz = new RotateAnimation(0.0F, 360.0F);
+    AppMethodBeat.o(251671);
   }
   
   public MMProcessBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164211);
-    this.YbH = 0.0F;
-    this.VT = new RotateAnimation(0.0F, 360.0F);
+    this.afTA = 0.0F;
+    this.bCz = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164211);
   }
   
@@ -45,38 +45,38 @@ public class MMProcessBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164212);
-    this.YbH = 0.0F;
-    this.VT = new RotateAnimation(0.0F, 360.0F);
+    this.afTA = 0.0F;
+    this.bCz = new RotateAnimation(0.0F, 360.0F);
     AppMethodBeat.o(164212);
   }
   
-  public final void cQ(float paramFloat)
+  public final void ed(float paramFloat)
   {
     AppMethodBeat.i(164219);
-    if ((this.VT != null) && (!this.VT.hasEnded())) {
-      this.VT.cancel();
+    if ((this.bCz != null) && (!this.bCz.hasEnded())) {
+      this.bCz.cancel();
     }
-    this.YbH += paramFloat;
-    setRotation(this.YbH * 360.0F);
+    this.afTA += paramFloat;
+    setRotation(this.afTA * 360.0F);
     AppMethodBeat.o(164219);
   }
   
-  public final void hZG()
+  public final void jEO()
   {
     AppMethodBeat.i(164217);
-    if (this.VT != null) {
-      this.VT.cancel();
+    if (this.bCz != null) {
+      this.bCz.cancel();
     }
     clearAnimation();
     AppMethodBeat.o(164217);
   }
   
-  public final void hZH()
+  public final void jEP()
   {
     AppMethodBeat.i(164218);
     if (getVisibility() == 0)
     {
-      startAnimation(this.VT);
+      startAnimation(this.bCz);
       AppMethodBeat.o(164218);
       return;
     }
@@ -84,21 +84,9 @@ public class MMProcessBar
     AppMethodBeat.o(164218);
   }
   
-  public final boolean hZI()
+  public final void oH(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193758);
-    if ((this.VT != null) && (!this.VT.hasEnded()) && (this.VT.hasStarted()))
-    {
-      AppMethodBeat.o(193758);
-      return true;
-    }
-    AppMethodBeat.o(193758);
-    return false;
-  }
-  
-  public final void mO(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(193756);
+    AppMethodBeat.i(251702);
     try
     {
       Drawable localDrawable = getResources().getDrawable(paramInt1);
@@ -107,12 +95,12 @@ public class MMProcessBar
         a.a(localDrawable, ColorStateList.valueOf(paramInt2));
       }
       setBackground(localDrawable);
-      AppMethodBeat.o(193756);
+      AppMethodBeat.o(251702);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(193756);
+      AppMethodBeat.o(251702);
     }
   }
   
@@ -120,7 +108,7 @@ public class MMProcessBar
   {
     AppMethodBeat.i(164215);
     super.onAttachedToWindow();
-    hZH();
+    jEP();
     AppMethodBeat.o(164215);
   }
   
@@ -128,7 +116,7 @@ public class MMProcessBar
   {
     AppMethodBeat.i(164214);
     super.onDetachedFromWindow();
-    hZG();
+    jEO();
     AppMethodBeat.o(164214);
   }
   
@@ -140,14 +128,14 @@ public class MMProcessBar
     {
       float f1 = getWidth() / 2.0F;
       float f2 = getHeight() / 2.0F;
-      hZG();
-      this.VT = new RotateAnimation(0.0F, 72000.0F, f1, f2);
-      this.VT.setRepeatMode(-1);
-      this.VT.setRepeatCount(-1);
-      this.VT.setDuration(70000L);
-      this.VT.setInterpolator(new LinearInterpolator());
+      jEO();
+      this.bCz = new RotateAnimation(0.0F, 72000.0F, f1, f2);
+      this.bCz.setRepeatMode(-1);
+      this.bCz.setRepeatCount(-1);
+      this.bCz.setDuration(70000L);
+      this.bCz.setInterpolator(new LinearInterpolator());
       if (getVisibility() == 0) {
-        hZH();
+        jEP();
       }
     }
     AppMethodBeat.o(164216);
@@ -156,14 +144,14 @@ public class MMProcessBar
   public void setDuration(long paramLong)
   {
     AppMethodBeat.i(164220);
-    this.VT.setDuration(paramLong);
+    this.bCz.setDuration(paramLong);
     AppMethodBeat.o(164220);
   }
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
     AppMethodBeat.i(164221);
-    this.VT.setInterpolator(paramInterpolator);
+    this.bCz.setInterpolator(paramInterpolator);
     AppMethodBeat.o(164221);
   }
   
@@ -173,17 +161,17 @@ public class MMProcessBar
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      hZH();
+      jEP();
       AppMethodBeat.o(164213);
       return;
     }
-    hZG();
+    jEO();
     AppMethodBeat.o(164213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMProcessBar
  * JD-Core Version:    0.7.0.1
  */

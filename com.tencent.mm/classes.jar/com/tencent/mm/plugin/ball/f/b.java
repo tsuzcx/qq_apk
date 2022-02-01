@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public final class b
 {
-  public static String aoB(String paramString)
+  public static String ahX(String paramString)
   {
     AppMethodBeat.i(127558);
     paramString = MD5Util.getMD5String(String.format("%s#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), paramString }));
@@ -14,7 +14,7 @@ public final class b
     return paramString;
   }
   
-  public static String aoC(String paramString)
+  public static String ahY(String paramString)
   {
     AppMethodBeat.i(127560);
     paramString = MD5Util.getMD5String(String.format("%s", new Object[] { paramString }));
@@ -22,30 +22,25 @@ public final class b
     return paramString;
   }
   
-  public static String cV(String paramString, int paramInt)
+  public static String dx(String paramString, int paramInt)
   {
-    AppMethodBeat.i(191329);
+    AppMethodBeat.i(288267);
     paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(191329);
+    AppMethodBeat.o(288267);
     return paramString;
   }
   
-  public static String cW(String paramString, int paramInt)
+  public static String dy(String paramString, int paramInt)
   {
     AppMethodBeat.i(127559);
     paramString = String.format(Locale.US, "%s#%d", new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(127559);
     return paramString;
   }
-  
-  public static String cwx()
-  {
-    return "LiveFloatBall";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.b
  * JD-Core Version:    0.7.0.1
  */

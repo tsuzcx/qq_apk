@@ -1,81 +1,52 @@
 package androidx.recyclerview.widget;
 
-import android.os.Build.VERSION;
 import android.view.View;
-import androidx.core.g.w;
-import androidx.recyclerview.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class n
-  implements m
 {
-  static final m aiJ;
+  boolean bXp = true;
+  int bXq;
+  int bXr;
+  int bXs;
+  int bXt = 0;
+  int bXu = 0;
+  boolean bXv;
+  boolean bXw;
+  int mLayoutDirection;
   
-  static
+  final View a(RecyclerView.n paramn)
   {
-    AppMethodBeat.i(261554);
-    aiJ = new n();
-    AppMethodBeat.o(261554);
+    AppMethodBeat.i(194807);
+    paramn = paramn.gc(this.bXr);
+    this.bXr += this.bXs;
+    AppMethodBeat.o(194807);
+    return paramn;
   }
   
-  public final void a(RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+  final boolean a(RecyclerView.s params)
   {
-    AppMethodBeat.i(261552);
-    float f3;
-    float f1;
-    int i;
-    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(a.b.item_touch_helper_previous_elevation) == null))
+    AppMethodBeat.i(194792);
+    if ((this.bXr >= 0) && (this.bXr < params.getItemCount()))
     {
-      f3 = w.U(paramView);
-      int j = paramRecyclerView.getChildCount();
-      f1 = 0.0F;
-      i = 0;
-      if (i < j)
-      {
-        View localView = paramRecyclerView.getChildAt(i);
-        if (localView == paramView) {
-          break label132;
-        }
-        float f2 = w.U(localView);
-        if (f2 <= f1) {
-          break label132;
-        }
-        f1 = f2;
-      }
+      AppMethodBeat.o(194792);
+      return true;
     }
-    label132:
-    for (;;)
-    {
-      i += 1;
-      break;
-      w.j(paramView, 1.0F + f1);
-      paramView.setTag(a.b.item_touch_helper_previous_elevation, Float.valueOf(f3));
-      paramView.setTranslationX(paramFloat1);
-      paramView.setTranslationY(paramFloat2);
-      AppMethodBeat.o(261552);
-      return;
-    }
+    AppMethodBeat.o(194792);
+    return false;
   }
   
-  public final void aW(View paramView)
+  public final String toString()
   {
-    AppMethodBeat.i(261553);
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      Object localObject = paramView.getTag(a.b.item_touch_helper_previous_elevation);
-      if ((localObject != null) && ((localObject instanceof Float))) {
-        w.j(paramView, ((Float)localObject).floatValue());
-      }
-      paramView.setTag(a.b.item_touch_helper_previous_elevation, null);
-    }
-    paramView.setTranslationX(0.0F);
-    paramView.setTranslationY(0.0F);
-    AppMethodBeat.o(261553);
+    AppMethodBeat.i(194823);
+    String str = "LayoutState{mAvailable=" + this.bXq + ", mCurrentPosition=" + this.bXr + ", mItemDirection=" + this.bXs + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.bXt + ", mEndLine=" + this.bXu + '}';
+    AppMethodBeat.o(194823);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.recyclerview.widget.n
  * JD-Core Version:    0.7.0.1
  */

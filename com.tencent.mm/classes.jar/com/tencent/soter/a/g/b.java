@@ -7,76 +7,111 @@ import com.tencent.soter.a.f.f;
 
 public final class b
 {
-  public com.tencent.soter.a.d.a Byu;
-  String Pra;
-  c Ztt;
-  public f Ztu;
-  public int Ztv;
-  public com.tencent.soter.a.d.b Ztw;
-  com.tencent.soter.a.a.a Ztx;
-  com.tencent.soter.a.a.b Zty;
+  public com.tencent.soter.a.d.a HfW;
+  String WhN;
+  c ahyh;
+  public f ahyi;
+  public int ahyj;
+  String ahyk;
+  String ahyl;
+  String ahym;
+  String ahyn;
+  boolean ahyo;
+  public com.tencent.soter.a.d.b ahyp;
+  com.tencent.soter.a.a.a ahyq;
+  com.tencent.soter.a.a.b ahyr;
   Context mContext;
   public int mScene;
   
   public final String toString()
   {
     AppMethodBeat.i(29);
-    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.Pra + '\'' + ", mIWrapGetChallengeStr=" + this.Ztt + ", mIWrapUploadSignature=" + this.Ztu + ", mContext=" + this.mContext + ", mBiometricType=" + this.Ztv + '}';
+    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.WhN + '\'' + ", mIWrapGetChallengeStr=" + this.ahyh + ", mIWrapUploadSignature=" + this.ahyi + ", mContext=" + this.mContext + ", mBiometricType=" + this.ahyj + '}';
     AppMethodBeat.o(29);
     return str;
   }
   
   public static final class a
   {
-    public b Ztz;
+    public b ahys;
     
     public a()
     {
       AppMethodBeat.i(28);
-      this.Ztz = new b((byte)0);
+      this.ahys = new b((byte)0);
       AppMethodBeat.o(28);
     }
     
     public final a a(com.tencent.soter.a.a.a parama)
     {
-      this.Ztz.Ztx = parama;
+      this.ahys.ahyq = parama;
       return this;
     }
     
     public final a a(com.tencent.soter.a.a.b paramb)
     {
-      this.Ztz.Zty = paramb;
+      this.ahys.ahyr = paramb;
       return this;
     }
     
-    public final a aAy(int paramInt)
+    public final a aHk(int paramInt)
     {
-      this.Ztz.mScene = paramInt;
+      this.ahys.mScene = paramInt;
       return this;
     }
     
-    public final a aAz(int paramInt)
+    public final a aHl(int paramInt)
     {
-      this.Ztz.Ztv = paramInt;
+      this.ahys.ahyj = paramInt;
       return this;
     }
     
-    public final a bDg(String paramString)
+    public final a bFL(String paramString)
     {
-      this.Ztz.Pra = paramString;
+      this.ahys.WhN = paramString;
       return this;
     }
     
-    public final a mf(Context paramContext)
+    public final a bFM(String paramString)
     {
-      this.Ztz.mContext = paramContext;
+      this.ahys.ahyk = paramString;
+      return this;
+    }
+    
+    public final a bFN(String paramString)
+    {
+      this.ahys.ahyl = paramString;
+      return this;
+    }
+    
+    public final a bFO(String paramString)
+    {
+      this.ahys.ahym = paramString;
+      return this;
+    }
+    
+    public final a bFP(String paramString)
+    {
+      this.ahys.ahyn = paramString;
+      return this;
+    }
+    
+    public final a jYz()
+    {
+      this.ahys.ahyo = true;
+      return this;
+    }
+    
+    public final a os(Context paramContext)
+    {
+      this.ahys.mContext = paramContext;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.a.g.b
  * JD-Core Version:    0.7.0.1
  */

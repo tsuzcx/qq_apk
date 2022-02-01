@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/ghe" />
-    <CheckPreference android:key="settings_half_year_not_chat" android:layout="@layout/b8j" android:title="@string/gp7" />
-    <CheckPreference android:key="settings_has_not_same_chatroom" android:layout="@layout/b8j" android:title="@string/gp_" />
-    <CheckPreference android:key="settings_half_year_not_response" android:layout="@layout/b8j" android:title="@string/gp8" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <TextButtonPreference android:key="settings_next_step" android:title="@string/gw3" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="open_sns_pay_pref" android:layout="@layout/bdi" android:title="@string/ggo" />
 </PreferenceScreen>

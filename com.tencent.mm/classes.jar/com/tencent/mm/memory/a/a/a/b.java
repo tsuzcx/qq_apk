@@ -12,81 +12,26 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class b<T, V>
 {
-  a<T, V> ljA;
-  b<T, V> ljB;
-  private ConcurrentLinkedQueue<Pair<T, f<T, V>>> ljy;
-  private a ljz;
+  private ConcurrentLinkedQueue<Pair<T, f<T, V>>> nOj;
+  private a nOk;
+  a<T, V> nOl;
+  b<T, V> nOm;
   
   public b(a parama, a<T, V> parama1, b<T, V> paramb)
   {
     AppMethodBeat.i(156510);
-    this.ljy = new ConcurrentLinkedQueue();
-    this.ljz = null;
-    this.ljz = parama;
-    this.ljA = parama1;
-    this.ljB = paramb;
+    this.nOj = new ConcurrentLinkedQueue();
+    this.nOk = null;
+    this.nOk = parama;
+    this.nOl = parama1;
+    this.nOm = paramb;
     AppMethodBeat.o(156510);
   }
   
-  final f<T, V> cc(final T paramT)
-  {
-    AppMethodBeat.i(156512);
-    Object localObject = this.ljy.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Pair localPair = (Pair)((Iterator)localObject).next();
-      if ((localPair != null) && (localPair.first != null) && (localPair.first.equals(paramT)))
-      {
-        paramT = (f)localPair.second;
-        AppMethodBeat.o(156512);
-        return paramT;
-      }
-    }
-    if (this.ljy.size() >= this.ljz.ljx)
-    {
-      localObject = (Pair)this.ljy.poll();
-      if ((localObject != null) && (((Pair)localObject).second != null)) {
-        ((f)((Pair)localObject).second).trimToSize(-1);
-      }
-    }
-    localObject = this.ljz;
-    int i = (int)(((a)localObject).ljw * ((a)localObject).ljt * 1.0D / ((a)localObject).ljx);
-    Log.i("MicroMsg.ExtraLruMap", "handlerMap %s %s", new Object[] { paramT, Integer.valueOf(i) });
-    paramT = new Pair(paramT, new h(i, new f.b()new f.c
-    {
-      public final void preRemoveCallback(T paramAnonymousT, V paramAnonymousV1, V paramAnonymousV2)
-      {
-        AppMethodBeat.i(156508);
-        if (b.this.ljA != null) {
-          b.this.ljA.w(paramT, paramAnonymousT);
-        }
-        AppMethodBeat.o(156508);
-      }
-    }, new f.c()
-    {
-      public final int r(T paramAnonymousT, V paramAnonymousV)
-      {
-        AppMethodBeat.i(156509);
-        if (b.this.ljB != null)
-        {
-          int i = b.this.ljB.d(paramT, paramAnonymousT, paramAnonymousV);
-          AppMethodBeat.o(156509);
-          return i;
-        }
-        AppMethodBeat.o(156509);
-        return 0;
-      }
-    }));
-    this.ljy.add(paramT);
-    paramT = (f)paramT.second;
-    AppMethodBeat.o(156512);
-    return paramT;
-  }
-  
-  public final boolean v(T paramT1, T paramT2)
+  public final boolean G(T paramT1, T paramT2)
   {
     AppMethodBeat.i(156511);
-    Iterator localIterator = this.ljy.iterator();
+    Iterator localIterator = this.nOj.iterator();
     Pair localPair;
     do
     {
@@ -105,19 +50,74 @@ public final class b<T, V>
     return false;
   }
   
+  final f<T, V> du(final T paramT)
+  {
+    AppMethodBeat.i(156512);
+    Object localObject = this.nOj.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Pair localPair = (Pair)((Iterator)localObject).next();
+      if ((localPair != null) && (localPair.first != null) && (localPair.first.equals(paramT)))
+      {
+        paramT = (f)localPair.second;
+        AppMethodBeat.o(156512);
+        return paramT;
+      }
+    }
+    if (this.nOj.size() >= this.nOk.nOi)
+    {
+      localObject = (Pair)this.nOj.poll();
+      if ((localObject != null) && (((Pair)localObject).second != null)) {
+        ((f)((Pair)localObject).second).trimToSize(-1);
+      }
+    }
+    localObject = this.nOk;
+    int i = (int)(((a)localObject).nOh * ((a)localObject).nOe * 1.0D / ((a)localObject).nOi);
+    Log.i("MicroMsg.ExtraLruMap", "handlerMap %s %s", new Object[] { paramT, Integer.valueOf(i) });
+    paramT = new Pair(paramT, new h(i, new f.b()new f.c
+    {
+      public final void preRemoveCallback(T paramAnonymousT, V paramAnonymousV1, V paramAnonymousV2)
+      {
+        AppMethodBeat.i(156508);
+        if (b.this.nOl != null) {
+          b.this.nOl.H(paramT, paramAnonymousT);
+        }
+        AppMethodBeat.o(156508);
+      }
+    }, new f.c()
+    {
+      public final int C(T paramAnonymousT, V paramAnonymousV)
+      {
+        AppMethodBeat.i(156509);
+        if (b.this.nOm != null)
+        {
+          int i = b.this.nOm.c(paramT, paramAnonymousT, paramAnonymousV);
+          AppMethodBeat.o(156509);
+          return i;
+        }
+        AppMethodBeat.o(156509);
+        return 0;
+      }
+    }));
+    this.nOj.add(paramT);
+    paramT = (f)paramT.second;
+    AppMethodBeat.o(156512);
+    return paramT;
+  }
+  
   public static abstract interface a<K, O>
   {
-    public abstract void w(K paramK1, K paramK2);
+    public abstract void H(K paramK1, K paramK2);
   }
   
   public static abstract interface b<K, O>
   {
-    public abstract int d(K paramK1, K paramK2, O paramO);
+    public abstract int c(K paramK1, K paramK2, O paramO);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

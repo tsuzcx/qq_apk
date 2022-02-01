@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
 {
-  public static byte[] awZ(String paramString)
+  public static byte[] ard(String paramString)
   {
     AppMethodBeat.i(121858);
     if (TextUtils.isEmpty(paramString))
@@ -19,7 +19,7 @@ public final class b
     return paramString;
   }
   
-  public static void axa(String paramString)
+  public static void are(String paramString)
   {
     AppMethodBeat.i(121859);
     if (TextUtils.isEmpty(paramString))
@@ -60,7 +60,7 @@ public final class b
     AppMethodBeat.o(121860);
   }
   
-  public static void r(String paramString, byte[] paramArrayOfByte)
+  public static void u(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121857);
     if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null))
@@ -74,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.a.b
  * JD-Core Version:    0.7.0.1
  */

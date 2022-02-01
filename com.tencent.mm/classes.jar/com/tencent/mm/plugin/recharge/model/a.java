@@ -8,12 +8,12 @@ import org.json.JSONObject;
 
 public class a
 {
-  public static final int[] HyZ = { -1, -1 };
-  public static final int[] Hza = { -2, -2 };
-  public String Hzb;
-  public int[] Hzc = HyZ;
+  public static final int[] NwE = { -1, -1 };
+  public static final int[] NwF = { -2, -2 };
+  public String NwG;
+  public int[] NwH = NwE;
+  public String mse;
   public String name;
-  public String oex;
   public int sourceType;
   
   public a(String paramString1, String paramString2, int paramInt)
@@ -23,13 +23,13 @@ public class a
   
   public a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.Hzb = paramString1;
+    this.NwG = paramString1;
     this.name = paramString2;
-    this.oex = paramString3;
+    this.mse = paramString3;
     this.sourceType = paramInt;
   }
   
-  public static a bq(JSONObject paramJSONObject)
+  public static a bH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67090);
     String str1 = paramJSONObject.optString("name");
@@ -51,9 +51,9 @@ public class a
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("record", Util.nullAs(this.Hzb, ""));
+      localJSONObject.put("record", Util.nullAs(this.NwG, ""));
       localJSONObject.put("name", Util.nullAs(this.name, ""));
-      localJSONObject.put("location", Util.nullAs(this.oex, ""));
+      localJSONObject.put("location", Util.nullAs(this.mse, ""));
       AppMethodBeat.o(67089);
       return localJSONObject;
     }
@@ -67,7 +67,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.a
  * JD-Core Version:    0.7.0.1
  */

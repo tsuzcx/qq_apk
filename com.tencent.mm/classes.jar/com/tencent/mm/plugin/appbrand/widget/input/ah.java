@@ -20,20 +20,20 @@ public abstract interface ah
   
   public static final class a
   {
-    public static ah eC(Context paramContext)
+    public static ah fy(Context paramContext)
     {
-      AppMethodBeat.i(237574);
+      AppMethodBeat.i(324399);
       for (;;)
       {
         if (paramContext == null)
         {
-          AppMethodBeat.o(237574);
+          AppMethodBeat.o(324399);
           return null;
         }
         if ((paramContext instanceof ah))
         {
           paramContext = (ah)paramContext;
-          AppMethodBeat.o(237574);
+          AppMethodBeat.o(324399);
           return paramContext;
         }
         if (!(paramContext instanceof ContextWrapper)) {
@@ -45,14 +45,14 @@ public abstract interface ah
         }
         paramContext = localContext;
       }
-      AppMethodBeat.o(237574);
+      AppMethodBeat.o(324399);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ah
  * JD-Core Version:    0.7.0.1
  */

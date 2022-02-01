@@ -15,11 +15,11 @@ final class WebView$1
   {
     AppMethodBeat.i(156799);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/xweb/WebView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-    if (this.aabg.Ybx != null)
+    localb.cH(paramView);
+    a.c("com/tencent/xweb/WebView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+    if (WebView.h(this.aifC) != null)
     {
-      boolean bool = this.aabg.Ybx.onLongClick(this.aabg);
+      boolean bool = WebView.h(this.aifC).onLongClick(this.aifC);
       a.a(bool, this, "com/tencent/xweb/WebView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(156799);
       return bool;

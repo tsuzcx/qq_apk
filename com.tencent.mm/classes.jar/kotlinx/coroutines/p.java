@@ -1,111 +1,37 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.d.d;
-import kotlin.l;
+import kotlin.g.a.b;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"getOrCreateCancellableContinuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "T", "delegate", "Lkotlin/coroutines/Continuation;", "suspendAtomicCancellableCoroutine", "block", "Lkotlin/Function1;", "Lkotlinx/coroutines/CancellableContinuation;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "holdCancellability", "", "(ZLkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "suspendAtomicCancellableCoroutineReusable", "suspendCancellableCoroutine", "disposeOnCancellation", "handle", "Lkotlinx/coroutines/DisposableHandle;", "removeOnCancellation", "node", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "kotlinx-coroutines-core"})
-public final class p
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CancellableContinuation;", "T", "Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "cancel", "cause", "", "completeResume", "", "token", "", "initCancellability", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "resume", "value", "onCancellation", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "tryResume", "idempotent", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "tryResumeWithException", "exception", "resumeUndispatched", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Ljava/lang/Object;)V", "resumeUndispatchedWithException", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface p<T>
+  extends d<T>
 {
-  public static final void a(m<?> paramm, be parambe)
-  {
-    AppMethodBeat.i(204262);
-    paramm.am((kotlin.g.a.b)new bf(parambe));
-    AppMethodBeat.o(204262);
-  }
+  public abstract Object O(Throwable paramThrowable);
   
-  public static final <T> n<T> l(d<? super T> paramd)
-  {
-    AppMethodBeat.i(204261);
-    if (!(paramd instanceof ax))
-    {
-      paramd = new n(paramd, 0);
-      AppMethodBeat.o(204261);
-      return paramd;
-    }
-    Object localObject1 = (ax)paramd;
-    Object localObject2 = ((ax)localObject1)._reusableCancellableContinuation;
-    if (localObject2 == null)
-    {
-      ((ax)localObject1)._reusableCancellableContinuation = ay.abwS;
-      localObject1 = null;
-      label52:
-      if (localObject1 == null) {
-        break label231;
-      }
-      if (!ap.iRg()) {
-        break label163;
-      }
-      if ((be)((n)localObject1)._parentHandle == ck.abxK) {
-        break label158;
-      }
-    }
-    label158:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        break label163;
-      }
-      paramd = (Throwable)new AssertionError();
-      AppMethodBeat.o(204261);
-      throw paramd;
-      if ((localObject2 instanceof n))
-      {
-        if (!ax.abwO.compareAndSet(localObject1, localObject2, ay.abwS)) {
-          break;
-        }
-        localObject1 = (n)localObject2;
-        break label52;
-      }
-      paramd = (Throwable)new IllegalStateException("Inconsistent state ".concat(String.valueOf(localObject2)).toString());
-      AppMethodBeat.o(204261);
-      throw paramd;
-    }
-    label163:
-    localObject2 = ((n)localObject1)._state;
-    if (ap.iRg())
-    {
-      if (!(localObject2 instanceof cl)) {}
-      for (i = 1; i == 0; i = 0)
-      {
-        paramd = (Throwable)new AssertionError();
-        AppMethodBeat.o(204261);
-        throw paramd;
-      }
-    }
-    if ((localObject2 instanceof z))
-    {
-      ((n)localObject1).iQS();
-      i = 0;
-      if (i == 0) {
-        break label265;
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        break label270;
-      }
-      label231:
-      paramd = new n(paramd, 0);
-      AppMethodBeat.o(204261);
-      return paramd;
-      ((n)localObject1)._decision = 0;
-      ((n)localObject1)._state = b.abvY;
-      i = 1;
-      break;
-      label265:
-      localObject1 = null;
-    }
-    label270:
-    AppMethodBeat.o(204261);
-    return localObject1;
-  }
+  public abstract boolean P(Throwable paramThrowable);
+  
+  public abstract void a(al paramal, T paramT);
+  
+  public abstract void bg(b<? super Throwable, ah> paramb);
+  
+  public abstract Object c(T paramT, b<? super Throwable, ah> paramb);
+  
+  public abstract void d(T paramT, b<? super Throwable, ah> paramb);
+  
+  public abstract boolean isActive();
+  
+  public abstract boolean isCompleted();
+  
+  public abstract Object ix(T paramT);
+  
+  public abstract void iy(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.p
  * JD-Core Version:    0.7.0.1
  */

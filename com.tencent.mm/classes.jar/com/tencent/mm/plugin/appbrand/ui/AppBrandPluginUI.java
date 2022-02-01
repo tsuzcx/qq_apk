@@ -1,28 +1,26 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
 import android.os.Bundle;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.n;
+import com.tencent.mm.autogen.a.p;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible;
-import com.tencent.mm.plugin.appbrand.ag.e;
-import com.tencent.mm.plugin.appbrand.ag.g;
-import com.tencent.mm.plugin.appbrand.ak;
-import com.tencent.mm.plugin.appbrand.aq;
-import com.tencent.mm.plugin.appbrand.au.a;
+import com.tencent.mm.plugin.appbrand.ap;
+import com.tencent.mm.plugin.appbrand.av;
+import com.tencent.mm.plugin.appbrand.ba.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
 import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig.a;
+import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.plugin.appbrand.config.z;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.plugin.appbrand.ui.wxa_container.AppBrandContainerFragmentActivity.a;
-import com.tencent.mm.plugin.appbrand.utils.d;
-import com.tencent.mm.plugin.ball.f.f;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.appbrand.weishi.h;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -33,53 +31,66 @@ import com.tencent.mm.ui.base.b;
 public class AppBrandPluginUI
   extends AppBrandUI
 {
-  public static int qVS = -1;
-  public static int qVT = -1;
-  private IListener<n> qVU;
+  public int ubA = -1;
+  public int ubB = -1;
+  private IListener<p> ubC;
   
-  private void cjN()
+  private void cLa()
   {
-    AppMethodBeat.i(246625);
-    if (cjO())
+    AppMethodBeat.i(322453);
+    if (cLb())
     {
-      x.a(getWindow(), true, false);
-      f.d(true, true, true);
+      ae.a(getWindow(), true, false);
+      com.tencent.mm.plugin.ball.f.f.d(true, true, true);
       b.a(this, null);
     }
-    AppMethodBeat.o(246625);
+    AppMethodBeat.o(322453);
   }
   
-  private boolean cjO()
+  private boolean cLb()
   {
     AppMethodBeat.i(48677);
     if (this.mRuntimeContainer == null) {}
     for (AppBrandRuntime localAppBrandRuntime = null;; localAppBrandRuntime = this.mRuntimeContainer.getActiveRuntime())
     {
-      boolean bool = g.ap(localAppBrandRuntime);
+      boolean bool = h.aD(localAppBrandRuntime);
       AppMethodBeat.o(48677);
       return bool;
     }
   }
   
-  private boolean cjP()
+  private boolean cLc()
   {
     AppMethodBeat.i(162169);
-    if (cjO())
+    if (cLb())
     {
       AppMethodBeat.o(162169);
       return false;
     }
-    if (this.mRuntimeContainer == null) {}
-    for (Object localObject = null; ((localObject instanceof t)) && (((t)localObject).bDy().nBF); localObject = this.mRuntimeContainer.getActiveRuntime())
+    Object localObject;
+    if (this.mRuntimeContainer == null) {
+      localObject = null;
+    }
+    while ((localObject instanceof w))
     {
-      AppMethodBeat.o(162169);
-      return true;
+      localObject = ((w)localObject).getInitConfig();
+      if (((AppBrandInitConfigWC)localObject).aqE() == z.raX)
+      {
+        AppMethodBeat.o(162169);
+        return true;
+        localObject = this.mRuntimeContainer.getActiveRuntime();
+      }
+      else if (((AppBrandInitConfigWC)localObject).aqE() == z.raW)
+      {
+        AppMethodBeat.o(162169);
+        return false;
+      }
     }
     try
     {
       localObject = Util.getCurrentTaskInfo(this, getTaskId());
       if ((localObject == null) || (((ActivityManager.RunningTaskInfo)localObject).baseActivity == null)) {
-        break label206;
+        break label228;
       }
       if (((ActivityManager.RunningTaskInfo)localObject).baseActivity.equals(getComponentName()))
       {
@@ -106,7 +117,7 @@ public class AppBrandPluginUI
       }
       i += 1;
     }
-    label206:
+    label228:
     if ((localException != null) && (localException.baseActivity != null)) {}
     for (String str1 = localException.baseActivity.getShortClassName();; str1 = "null")
     {
@@ -116,30 +127,52 @@ public class AppBrandPluginUI
     }
   }
   
-  protected final void am(AppBrandRuntime paramAppBrandRuntime)
+  protected final void aA(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(246638);
-    if ((paramAppBrandRuntime != null) && ((AppBrandRuntimeWCAccessible.E(paramAppBrandRuntime)) || (((AppBrandInitConfigWC)paramAppBrandRuntime.Sq()).nBE.isEnable())))
+    AppMethodBeat.i(322500);
+    if ((paramAppBrandRuntime != null) && ((AppBrandRuntimeWCAccessible.G(paramAppBrandRuntime)) || (((AppBrandInitConfigWC)paramAppBrandRuntime.asH()).qAT.isEnable())))
     {
-      paramAppBrandRuntime.he(true);
-      paramAppBrandRuntime.ntY = new aq()
-      {
-        public final void yN(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(281046);
-          if (1 == paramAnonymousInt)
-          {
-            Log.i("MicroMsg.AppBrandPluginUI", "load convertActivityToTranslucent");
-            b.a(AppBrandPluginUI.this, null);
-          }
-          AppMethodBeat.o(281046);
-        }
-      };
+      if (!((AppBrandInitConfigWC)paramAppBrandRuntime.asH()).epe) {
+        break label116;
+      }
+      paramAppBrandRuntime.hV(false);
     }
-    AppMethodBeat.o(246638);
+    for (paramAppBrandRuntime.qsI = null;; paramAppBrandRuntime.qsI = new av()
+        {
+          public final void yW(int paramAnonymousInt)
+          {
+            AppMethodBeat.i(321985);
+            if (1 == paramAnonymousInt)
+            {
+              Log.i("MicroMsg.AppBrandPluginUI", "load convertActivityToTranslucent");
+              b.a(AppBrandPluginUI.this, null);
+            }
+            AppMethodBeat.o(321985);
+          }
+        })
+    {
+      if ((paramAppBrandRuntime instanceof w))
+      {
+        paramAppBrandRuntime = ((w)paramAppBrandRuntime).getInitConfig();
+        if ((y.raT == paramAppBrandRuntime.aqG()) && (!cLc()))
+        {
+          Log.i("MicroMsg.AppBrandPluginUI", "onRuntimeLoaded, appId:%s, disableEnterAnimation && !keepOpaque, convertActivityToTranslucent", new Object[] { paramAppBrandRuntime.appId });
+          b.a(this, null);
+        }
+      }
+      AppMethodBeat.o(322500);
+      return;
+      label116:
+      paramAppBrandRuntime.hV(true);
+    }
   }
   
-  protected final void g(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  public final boolean ccf()
+  {
+    return false;
+  }
+  
+  protected final void e(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48679);
     if (m.a(this, paramAppBrandInitConfigWC, paramAppBrandStatObject))
@@ -149,103 +182,132 @@ public class AppBrandPluginUI
       AppMethodBeat.o(48679);
       return;
     }
-    AppBrandInitConfigWC localAppBrandInitConfigWC = bDy();
-    if (d.anh(paramAppBrandInitConfigWC.nYh))
+    if (y.raT == paramAppBrandInitConfigWC.aqG())
     {
       super.overridePendingTransition(0, 0);
       AppMethodBeat.o(48679);
       return;
     }
-    if (cjO())
+    AppBrandInitConfigWC localAppBrandInitConfigWC = getInitConfig();
+    if (com.tencent.mm.plugin.appbrand.utils.f.agB(paramAppBrandInitConfigWC.qYj))
     {
-      e.b(this, paramAppBrandInitConfigWC);
+      super.overridePendingTransition(0, 0);
       AppMethodBeat.o(48679);
       return;
     }
-    if (paramAppBrandInitConfigWC.nBE.isEnable())
+    if (cLb())
     {
-      if (paramAppBrandInitConfigWC.nBE.nZz == HalfScreenConfig.a.nZL)
+      com.tencent.mm.plugin.appbrand.weishi.f.c(this, paramAppBrandInitConfigWC);
+      AppMethodBeat.o(48679);
+      return;
+    }
+    if (paramAppBrandInitConfigWC.qAT.isEnable())
+    {
+      if (paramAppBrandInitConfigWC.qAT.ez(this) == HalfScreenConfig.a.rae)
       {
-        overridePendingTransition(au.a.appbrand_ui_push_open_enter, 0);
+        overridePendingTransition(ba.a.appbrand_ui_push_open_enter, 0);
         AppMethodBeat.o(48679);
         return;
       }
-      super.overridePendingTransition(this.rhW.rhY, 0);
+      super.overridePendingTransition(this.upS.upU, 0);
       AppMethodBeat.o(48679);
       return;
     }
-    if ((localAppBrandInitConfigWC != null) && (localAppBrandInitConfigWC.nYu))
+    if ((localAppBrandInitConfigWC != null) && (localAppBrandInitConfigWC.qYv))
     {
-      super.g(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+      super.e(paramAppBrandInitConfigWC, paramAppBrandStatObject);
       AppMethodBeat.o(48679);
       return;
     }
-    if ((localAppBrandInitConfigWC.nYw) && (!localAppBrandInitConfigWC.nYb))
+    if ((localAppBrandInitConfigWC.qYx) && (!localAppBrandInitConfigWC.qYd))
     {
-      super.g(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+      super.e(paramAppBrandInitConfigWC, paramAppBrandStatObject);
       AppMethodBeat.o(48679);
       return;
     }
-    super.overridePendingTransition(this.rhW.rhY, this.rhW.rhZ);
+    if (y.raQ != localAppBrandInitConfigWC.aqG())
+    {
+      t.ueR.a(this, localAppBrandInitConfigWC);
+      AppMethodBeat.o(48679);
+      return;
+    }
+    super.overridePendingTransition(this.upS.upU, this.upS.upV);
     AppMethodBeat.o(48679);
   }
   
-  public void initActivityCloseAnimation()
+  protected final void k(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(48681);
-    Object localObject = ckf();
-    if ((localObject != null) && (((HalfScreenConfig)localObject).isEnable()))
-    {
-      if ((qVS != -1) && (qVT != -1))
+    AppMethodBeat.i(322496);
+    HalfScreenConfig localHalfScreenConfig;
+    if (paramAppBrandInitConfigWC == null) {
+      localHalfScreenConfig = null;
+    }
+    while ((localHalfScreenConfig != null) && (localHalfScreenConfig.isEnable())) {
+      if ((this.ubA != -1) && (this.ubB != -1))
       {
-        overridePendingTransition(qVT, qVS);
-        qVS = -1;
-        qVT = -1;
-        AppMethodBeat.o(48681);
+        overridePendingTransition(this.ubB, this.ubA);
+        this.ubA = -1;
+        this.ubB = -1;
+        AppMethodBeat.o(322496);
+        return;
+        localHalfScreenConfig = paramAppBrandInitConfigWC.qAT;
+      }
+      else
+      {
+        if (localHalfScreenConfig.ez(this) == HalfScreenConfig.a.rae)
+        {
+          overridePendingTransition(0, ba.a.appbrand_ui_push_close_exit);
+          AppMethodBeat.o(322496);
+          return;
+        }
+        super.overridePendingTransition(0, this.upS.upX);
+        AppMethodBeat.o(322496);
         return;
       }
-      if (((HalfScreenConfig)localObject).nZz == HalfScreenConfig.a.nZL)
-      {
-        overridePendingTransition(0, au.a.appbrand_ui_push_close_exit);
-        AppMethodBeat.o(48681);
-        return;
-      }
-      super.overridePendingTransition(0, this.rhW.rib);
-      AppMethodBeat.o(48681);
-      return;
     }
-    localObject = bDy();
-    if ((localObject != null) && (((AppBrandInitConfigWC)localObject).nYu))
+    if ((paramAppBrandInitConfigWC == null) || (y.raT == paramAppBrandInitConfigWC.aqH()))
     {
-      overridePendingTransition(au.a.appbrand_ui_push_close_enter, au.a.appbrand_ui_push_close_exit);
-      AppMethodBeat.o(48681);
+      super.overridePendingTransition(0, 0);
+      AppMethodBeat.o(322496);
       return;
     }
-    if ((((AppBrandInitConfigWC)localObject).nYw) && (!((AppBrandInitConfigWC)localObject).nYb))
+    if (paramAppBrandInitConfigWC.qYv)
     {
-      overridePendingTransition(au.a.appbrand_ui_push_close_enter, au.a.appbrand_ui_push_close_exit);
-      AppMethodBeat.o(48681);
+      overridePendingTransition(ba.a.appbrand_ui_push_close_enter, ba.a.appbrand_ui_push_close_exit);
+      AppMethodBeat.o(322496);
       return;
     }
-    super.overridePendingTransition(this.rhW.ria, this.rhW.rib);
-    AppMethodBeat.o(48681);
+    if ((paramAppBrandInitConfigWC.qYx) && (!paramAppBrandInitConfigWC.qYd))
+    {
+      overridePendingTransition(ba.a.appbrand_ui_push_close_enter, ba.a.appbrand_ui_push_close_exit);
+      AppMethodBeat.o(322496);
+      return;
+    }
+    if (y.raQ != paramAppBrandInitConfigWC.aqH())
+    {
+      t.ueR.b(this, paramAppBrandInitConfigWC);
+      AppMethodBeat.o(322496);
+      return;
+    }
+    super.overridePendingTransition(this.upS.upW, this.upS.upX);
+    AppMethodBeat.o(322496);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(48674);
     super.onCreate(paramBundle);
-    this.qVU = new AppBrandPluginUI.1(this);
-    EventCenter.instance.add(this.qVU);
+    this.ubC = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.ubC.alive();
     AppMethodBeat.o(48674);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(246639);
+    AppMethodBeat.i(322501);
     super.onDestroy();
-    EventCenter.instance.removeListener(this.qVU);
-    AppMethodBeat.o(246639);
+    this.ubC.dead();
+    AppMethodBeat.o(322501);
   }
   
   public void onEnterAnimationComplete()
@@ -253,13 +315,13 @@ public class AppBrandPluginUI
     AppBrandRuntime localAppBrandRuntime = null;
     AppMethodBeat.i(48678);
     super.onEnterAnimationComplete();
-    if (cjP())
+    if (cLc())
     {
       if (this.mRuntimeContainer == null) {}
       for (;;)
       {
         if (localAppBrandRuntime != null) {
-          localAppBrandRuntime.he(false);
+          localAppBrandRuntime.hV(false);
         }
         AppMethodBeat.o(48678);
         return;
@@ -276,25 +338,25 @@ public class AppBrandPluginUI
   {
     AppMethodBeat.i(48676);
     super.onPause();
-    if (cjO()) {
-      f.d(false, true, true);
+    if (cLb()) {
+      com.tencent.mm.plugin.ball.f.f.d(false, true, true);
     }
     AppMethodBeat.o(48676);
   }
   
   public void onPostCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(246624);
+    AppMethodBeat.i(322472);
     super.onPostCreate(paramBundle);
-    cjN();
-    AppMethodBeat.o(246624);
+    cLa();
+    AppMethodBeat.o(322472);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(48675);
     super.onResume();
-    cjN();
+    cLa();
     AppMethodBeat.o(48675);
   }
   
@@ -306,7 +368,7 @@ public class AppBrandPluginUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI
  * JD-Core Version:    0.7.0.1
  */

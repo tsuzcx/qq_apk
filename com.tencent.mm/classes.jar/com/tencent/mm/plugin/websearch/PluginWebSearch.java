@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.websearch;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.bs;
-import com.tencent.mm.f.a.bu;
-import com.tencent.mm.f.a.bu.a;
-import com.tencent.mm.f.a.mo;
-import com.tencent.mm.f.a.mo.a;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.autogen.a.cb;
+import com.tencent.mm.autogen.a.cd;
+import com.tencent.mm.autogen.a.cd.a;
+import com.tencent.mm.autogen.a.nv;
+import com.tencent.mm.autogen.a.nv.a;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.kernel.f.c;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ck;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.ak;
-import com.tencent.mm.plugin.websearch.api.at;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.al;
+import com.tencent.mm.plugin.websearch.api.as;
 import com.tencent.mm.plugin.websearch.api.j;
 import com.tencent.mm.plugin.websearch.api.l;
 import com.tencent.mm.plugin.websearch.api.o;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.dmz;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -31,9 +31,11 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.ui.a.a.a;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.util.b.a;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,191 +46,213 @@ public class PluginWebSearch
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.websearch.api.c
 {
-  static final int[] Pxk;
-  private static HashMap<Integer, h.b> djv;
-  private t MVC;
-  private b Pxi;
-  private c Pxj;
+  static final int[] Wnq;
+  private static HashMap<Integer, h.b> fjr;
+  private t TIf;
+  private b Wno;
+  private c Wnp;
   private final IListener checkLanguageChangeIListener;
-  private IListener mZZ;
-  private com.tencent.mm.plugin.teenmode.a.c nCC;
-  private IListener soa;
+  private IListener pWI;
+  private com.tencent.mm.plugin.teenmode.a.g qCv;
+  private IListener vzY;
   
   static
   {
     AppMethodBeat.i(116525);
-    djv = new HashMap();
+    fjr = new HashMap();
     String str = MAutoStorage.getCreateSQLs(com.tencent.mm.plugin.websearch.widget.a.a.info, "WidgetSafeMode");
-    djv.put(Integer.valueOf("WidgetSafeMode".hashCode()), new h.b()
+    fjr.put(Integer.valueOf("WidgetSafeMode".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return this.djx;
+        return PluginWebSearch.this;
       }
     });
-    Pxk = new int[] { 64 };
+    Wnq = new int[] { 64 };
     AppMethodBeat.o(116525);
   }
   
   public PluginWebSearch()
   {
     AppMethodBeat.i(116518);
-    this.checkLanguageChangeIListener = new IListener() {};
-    this.mZZ = new IListener()
+    this.checkLanguageChangeIListener = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.pWI = new IListener(com.tencent.mm.app.f.hfK)
     {
-      private static boolean a(bu paramAnonymousbu)
+      private static boolean a(cd paramAnonymouscd)
       {
         AppMethodBeat.i(116512);
-        int k;
-        if (paramAnonymousbu != null)
+        long l;
+        if (paramAnonymouscd != null)
         {
           int i;
-          int m;
-          if ((paramAnonymousbu.fxB.fxC == 27) && (paramAnonymousbu.fxB.subType == 1))
+          com.tencent.mm.plugin.websearch.api.au localau;
+          int k;
+          if ((paramAnonymouscd.hCg.hCh == 27) && (paramAnonymouscd.hCg.subType == 1))
           {
             i = 0;
-            k = i * 30;
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 0, 1L, false);
-            m = at.biV(paramAnonymousbu.fxB.filePath);
-            if (m != 1) {
-              break label404;
+            localau = aj.asW(i);
+            l = localau.Wqf;
+            PluginWebSearch.access$100(l, 0L, 1L, false);
+            k = com.tencent.mm.plugin.websearch.api.au.biD(paramAnonymouscd.hCg.filePath);
+            if (k != 1) {
+              break label442;
             }
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 1, 1L, false);
+            PluginWebSearch.access$100(l, 1L, 1L, false);
           }
-          at localat;
+          label442:
           for (;;)
           {
-            localat = ai.anf(i);
-            if (m < localat.bkM()) {
-              break label508;
-            }
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 4, 1L, false);
-            int j = 0;
-            while (j < 3)
+            label79:
+            if (k >= localau.bIG())
             {
-              localat.biU(paramAnonymousbu.fxB.filePath);
-              if (localat.gRk()) {
-                break;
+              PluginWebSearch.access$100(l, 4L, 1L, false);
+              int j = 0;
+              for (;;)
+              {
+                if (j < 3)
+                {
+                  localau.biC(paramAnonymouscd.hCg.filePath);
+                  if (!localau.iqu())
+                  {
+                    Log.i("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(j) });
+                    j += 1;
+                    continue;
+                    if ((paramAnonymouscd.hCg.hCh == 27) && (paramAnonymouscd.hCg.subType == 2))
+                    {
+                      i = 1;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 62) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 2;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 40) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 3;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 64) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 4;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 66) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 5;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 79) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 6;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 85) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 7;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 84) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 8;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 95) && (paramAnonymouscd.hCg.subType == 1))
+                    {
+                      i = 9;
+                      break;
+                    }
+                    if ((paramAnonymouscd.hCg.hCh == 79) && (paramAnonymouscd.hCg.subType == 2))
+                    {
+                      i = 10;
+                      break;
+                    }
+                    AppMethodBeat.o(116512);
+                    return false;
+                    PluginWebSearch.access$100(l, 2L, 1L, false);
+                    break label79;
+                  }
+                }
               }
-              Log.i("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(j) });
-              j += 1;
+              if (localau.iqu())
+              {
+                PluginWebSearch.access$100(l, 6L, 1L, false);
+                Log.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final update success version %d", new Object[] { Integer.valueOf(k) });
+                if (i == 0) {
+                  aj.ipV();
+                }
+                as.atg(i);
+              }
             }
-            if ((paramAnonymousbu.fxB.fxC == 27) && (paramAnonymousbu.fxB.subType == 2))
-            {
-              i = 1;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 62) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 2;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 40) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 3;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 64) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 4;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 66) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 5;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 79) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 6;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 85) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 7;
-              break;
-            }
-            if ((paramAnonymousbu.fxB.fxC == 84) && (paramAnonymousbu.fxB.subType == 1))
-            {
-              i = 8;
-              break;
-            }
-            AppMethodBeat.o(116512);
-            return false;
-            label404:
-            com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 2, 1L, false);
           }
-          if (!localat.gRk()) {
-            break label483;
-          }
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 6, 1L, false);
-          Log.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final update success version %d", new Object[] { Integer.valueOf(m) });
-          if (i == 0) {
-            ai.gQK();
-          }
-          com.tencent.mm.plugin.websearch.api.ar.anq(i);
         }
         for (;;)
         {
           AppMethodBeat.o(116512);
           return false;
-          label483:
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 5, 1L, false);
+          PluginWebSearch.access$100(l, 5L, 1L, false);
           Log.w("MicroMsg.WebSearch.PluginWebSearch", "checkResUpdate final md5 is invalid!");
           continue;
-          label508:
-          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k + 3, 1L, false);
+          PluginWebSearch.access$100(l, 3L, 1L, false);
         }
       }
     };
-    this.soa = new IListener()
+    this.vzY = new IListener(com.tencent.mm.app.f.hfK)
     {
-      private static boolean a(mo paramAnonymousmo)
+      private static boolean a(nv paramAnonymousnv)
       {
         int i = 1;
         AppMethodBeat.i(116514);
-        if ((paramAnonymousmo.fKK.fxC == 27) && (paramAnonymousmo.fKK.subType == 1)) {
+        if ((paramAnonymousnv.hQr.hCh == 27) && (paramAnonymousnv.hQr.subType == 1)) {
           i = 0;
         }
         for (;;)
         {
-          ai.anf(i).biU(paramAnonymousmo.fKK.filePath);
+          aj.asW(i).biC(paramAnonymousnv.hQr.filePath);
           if (i == 0) {
-            ai.gQK();
+            aj.ipV();
           }
           AppMethodBeat.o(116514);
           return false;
-          if ((paramAnonymousmo.fKK.fxC != 27) || (paramAnonymousmo.fKK.subType != 2)) {
-            if ((paramAnonymousmo.fKK.fxC == 62) && (paramAnonymousmo.fKK.subType == 1))
+          if ((paramAnonymousnv.hQr.hCh != 27) || (paramAnonymousnv.hQr.subType != 2)) {
+            if ((paramAnonymousnv.hQr.hCh == 62) && (paramAnonymousnv.hQr.subType == 1))
             {
               i = 2;
             }
-            else if ((paramAnonymousmo.fKK.fxC == 40) && (paramAnonymousmo.fKK.subType == 1))
+            else if ((paramAnonymousnv.hQr.hCh == 40) && (paramAnonymousnv.hQr.subType == 1))
             {
               i = 3;
             }
-            else if ((paramAnonymousmo.fKK.fxC == 64) && (paramAnonymousmo.fKK.subType == 1))
+            else if ((paramAnonymousnv.hQr.hCh == 64) && (paramAnonymousnv.hQr.subType == 1))
             {
               i = 4;
             }
-            else if ((paramAnonymousmo.fKK.fxC == 66) && (paramAnonymousmo.fKK.subType == 1))
+            else if ((paramAnonymousnv.hQr.hCh == 66) && (paramAnonymousnv.hQr.subType == 1))
             {
               i = 5;
             }
-            else if ((paramAnonymousmo.fKK.fxC == 79) && (paramAnonymousmo.fKK.subType == 1))
+            else if ((paramAnonymousnv.hQr.hCh == 79) && (paramAnonymousnv.hQr.subType == 1))
             {
               i = 6;
             }
-            else if ((paramAnonymousmo.fKK.fxC == 85) && (paramAnonymousmo.fKK.subType == 1))
+            else if ((paramAnonymousnv.hQr.hCh == 85) && (paramAnonymousnv.hQr.subType == 1))
             {
               i = 7;
             }
+            else if ((paramAnonymousnv.hQr.hCh == 84) && (paramAnonymousnv.hQr.subType == 1))
+            {
+              i = 8;
+            }
+            else if ((paramAnonymousnv.hQr.hCh == 95) && (paramAnonymousnv.hQr.subType == 1))
+            {
+              i = 9;
+            }
             else
             {
-              if ((paramAnonymousmo.fKK.fxC != 84) || (paramAnonymousmo.fKK.subType != 1)) {
+              if ((paramAnonymousnv.hQr.hCh != 79) || (paramAnonymousnv.hQr.subType != 2)) {
                 break;
               }
-              i = 8;
+              i = 10;
             }
           }
         }
@@ -236,14 +260,14 @@ public class PluginWebSearch
         return false;
       }
     };
-    this.MVC = new PluginWebSearch.6(this);
-    this.nCC = new com.tencent.mm.plugin.teenmode.a.c()
+    this.TIf = new PluginWebSearch.6(this);
+    this.qCv = new com.tencent.mm.plugin.teenmode.a.g()
     {
       public final void onDataChanged()
       {
-        AppMethodBeat.i(256365);
-        ak.bB(20, true);
-        AppMethodBeat.o(256365);
+        AppMethodBeat.i(315031);
+        al.cj(20, true);
+        AppMethodBeat.o(315031);
       }
     };
     AppMethodBeat.o(116518);
@@ -254,18 +278,16 @@ public class PluginWebSearch
     AppMethodBeat.i(116523);
     Log.i("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate %b", new Object[] { Boolean.valueOf(paramBoolean) });
     int j = 0;
-    int k;
-    at localat;
+    com.tencent.mm.plugin.websearch.api.au localau;
     int i;
-    int m;
-    if (j < 9)
+    int k;
+    if (j < 11)
     {
-      k = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }[j];
-      localat = ai.anf(k);
-      i = localat.bkN();
-      localat.gRb();
-      m = localat.bkM();
-      if (m == 1)
+      localau = aj.asW(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }[j]);
+      i = localau.bIH();
+      localau.iqn();
+      k = localau.bIG();
+      if (k == 1)
       {
         Log.i("MicroMsg.WebSearch.PluginWebSearch", "first time init template");
         i = 1;
@@ -274,9 +296,9 @@ public class PluginWebSearch
     for (;;)
     {
       if (i != 0) {
-        localat.gRl();
+        localau.iqv();
       }
-      if (!localat.gRk())
+      if (!localau.iqu())
       {
         i = 1;
         for (;;)
@@ -284,71 +306,71 @@ public class PluginWebSearch
           if (i <= 3)
           {
             Log.i("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate invalid md5 and delete template folder retryTimes:%s", new Object[] { Integer.valueOf(i) });
-            localat.gRl();
-            if (!localat.gRk())
+            localau.iqv();
+            if (!localau.iqu())
             {
               i += 1;
               continue;
-              if (m >= i) {
-                break label268;
+              if (k >= i) {
+                break label269;
               }
-              Log.i("MicroMsg.WebSearch.PluginWebSearch", "update template currentVersion %d assetVersion %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i) });
+              Log.i("MicroMsg.WebSearch.PluginWebSearch", "update template currentVersion %d assetVersion %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
               i = 1;
               break;
             }
           }
         }
       }
-      if (!localat.gRk())
+      if (!localau.iqu())
       {
         Log.w("MicroMsg.WebSearch.PluginWebSearch", "checkWebSearchTemplate final md5 is invalid!");
-        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1181L, k * 30 + 7, 1L, false);
+        reportIdKey(localau.Wqf, 7L, 1L, false);
       }
       j += 1;
       break;
       AppMethodBeat.o(116523);
       return;
-      label268:
+      label269:
       i = 0;
     }
   }
   
-  private int getSearchImageRequestType(ca paramca, int paramInt)
+  private int getSearchImageRequestType(cc paramcc, int paramInt)
   {
-    AppMethodBeat.i(256191);
+    AppMethodBeat.i(315014);
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(256191);
+      AppMethodBeat.o(315014);
       return 0;
     case 1: 
     case 2: 
     case 3: 
     case 4: 
-      if (paramca != null)
+      if (paramcc != null)
       {
-        if (ab.Lj(paramca.field_talker))
+        if (com.tencent.mm.storage.au.bwE(paramcc.field_talker))
         {
-          AppMethodBeat.o(256191);
+          AppMethodBeat.o(315014);
           return 4;
         }
-        AppMethodBeat.o(256191);
+        AppMethodBeat.o(315014);
         return 3;
       }
       break;
     case 9: 
-      AppMethodBeat.o(256191);
+      AppMethodBeat.o(315014);
       return 9;
     case 7: 
     case 8: 
-      AppMethodBeat.o(256191);
+      AppMethodBeat.o(315014);
       return 7;
     case 5: 
     case 10: 
-      AppMethodBeat.o(256191);
+      AppMethodBeat.o(315014);
       return 5;
     case 6: 
-      AppMethodBeat.o(256191);
+      AppMethodBeat.o(315014);
       return 6;
     case 11: 
     case 12: 
@@ -356,10 +378,10 @@ public class PluginWebSearch
     case 14: 
     case 15: 
     case 16: 
-      AppMethodBeat.o(256191);
+      AppMethodBeat.o(315014);
       return 11;
     }
-    AppMethodBeat.o(256191);
+    AppMethodBeat.o(315014);
     return 0;
   }
   
@@ -383,14 +405,14 @@ public class PluginWebSearch
       public final void run()
       {
         AppMethodBeat.i(116511);
-        int[] arrayOfInt = PluginWebSearch.Pxk;
+        int[] arrayOfInt = PluginWebSearch.Wnq;
         int j = arrayOfInt.length;
         int i = 0;
         while (i < j)
         {
           int k = arrayOfInt[i];
-          com.tencent.mm.pluginsdk.k.a.a.b.hii();
-          com.tencent.mm.pluginsdk.k.a.a.b.apP(k);
+          com.tencent.mm.pluginsdk.res.downloader.checkresupdate.b.iJf();
+          com.tencent.mm.pluginsdk.res.downloader.checkresupdate.b.avS(k);
           i += 1;
         }
         AppMethodBeat.o(116511);
@@ -401,10 +423,10 @@ public class PluginWebSearch
   
   private static List<String> optListFromJSONStr(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(256185);
+    AppMethodBeat.i(315011);
     if (TextUtils.isEmpty(paramString1))
     {
-      AppMethodBeat.o(256185);
+      AppMethodBeat.o(315011);
       return null;
     }
     try
@@ -422,70 +444,73 @@ public class PluginWebSearch
           }
           i += 1;
         }
-        AppMethodBeat.o(256185);
+        AppMethodBeat.o(315011);
         return paramString2;
       }
     }
-    catch (Throwable paramString1)
+    finally
     {
       Log.e("MicroMsg.WebSearch.PluginWebSearch", "optListFromJSONStr err! %s", new Object[] { Util.stackTraceToString(paramString1) });
-      AppMethodBeat.o(256185);
+      AppMethodBeat.o(315011);
     }
     return null;
   }
   
-  public HashMap<Integer, h.b> collectDatabaseFactory()
+  private static void reportIdKey(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    return djv;
+    AppMethodBeat.i(315004);
+    if (paramLong1 > 0L) {
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
+    }
+    AppMethodBeat.o(315004);
   }
   
-  public void configure(g paramg)
+  public HashMap<Integer, h.b> collectDatabaseFactory()
+  {
+    return fjr;
+  }
+  
+  public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(116520);
     super.configure(paramg);
-    this.Pxi = new b();
-    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.websearch.api.h.class, new com.tencent.mm.kernel.c.e(this.Pxi));
+    this.Wno = new b();
+    com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.websearch.api.h.class, new com.tencent.mm.kernel.c.e(this.Wno));
     com.tencent.mm.kernel.h.a(j.class, new com.tencent.mm.kernel.c.e(new d()));
     com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.websearch.api.f.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.websearch.widget.b()));
     com.tencent.mm.kernel.h.a(l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.websearch.widget.c()));
-    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).aIE())
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).bbA())
     {
-      this.Pxj = new c();
-      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.websearch.api.i.class, new com.tencent.mm.kernel.c.e(this.Pxj));
+      this.Wnp = new c();
+      com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.websearch.api.i.class, new com.tencent.mm.kernel.c.e(this.Wnp));
     }
     AppMethodBeat.o(116520);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(256158);
-    dependsOn(com.tencent.mm.plugin.teenmode.a.a.class);
-    AppMethodBeat.o(256158);
+    AppMethodBeat.i(315050);
+    dependsOn(com.tencent.mm.plugin.teenmode.a.c.class);
+    AppMethodBeat.o(315050);
   }
   
-  public void execute(g paramg) {}
+  public void execute(com.tencent.mm.kernel.b.g paramg) {}
   
   public String getExposedWord(String paramString)
   {
-    AppMethodBeat.i(256179);
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRv, null);
-    if (TextUtils.isEmpty((CharSequence)localObject))
-    {
-      AppMethodBeat.o(256179);
-      return "";
-    }
+    AppMethodBeat.i(315086);
     try
     {
-      localObject = new JSONObject((String)localObject).optJSONObject("exposedWords");
+      Object localObject = new JSONObject(" { \"exposedWords\": { \"express\": { \"zh_CN\": \"查快递\", \"zh_HK\": \"查快遞\", \"zh_TW\": \"查快遞\", \"en\": \"express\" } } }").optJSONObject("exposedWords");
       if (localObject == null)
       {
-        AppMethodBeat.o(256179);
+        AppMethodBeat.o(315086);
         return "";
       }
       JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject(paramString);
       if (localJSONObject == null)
       {
-        AppMethodBeat.o(256179);
+        AppMethodBeat.o(315086);
         return "";
       }
       String str2 = LocaleUtil.getApplicationLanguage();
@@ -498,38 +523,38 @@ public class PluginWebSearch
           localObject = localJSONObject.optString("en");
         }
       }
-      AppMethodBeat.o(256179);
+      AppMethodBeat.o(315086);
       return localObject;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.printErrStackTrace("MicroMsg.WebSearch.PluginWebSearch", localThrowable, "getExposedWord:%s", new Object[] { paramString });
-      AppMethodBeat.o(256179);
+      AppMethodBeat.o(315086);
     }
     return "";
   }
   
   public List<String> getNeedReuseBrands()
   {
-    AppMethodBeat.i(256181);
-    List localList = optListFromJSONStr(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRu, "{\n\t\"reuseBrands\":[\"vivo\",\"samsung\"],\n\t\"reuseItems\":[\"剪贴板\",\"Clipboard\",\"剪貼板\"]\n}"), "reuseBrands");
-    AppMethodBeat.o(256181);
+    AppMethodBeat.i(315088);
+    List localList = optListFromJSONStr(((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zkc, "{\n\t\"reuseBrands\":[\"vivo\",\"samsung\"],\n\t\"reuseItems\":[\"剪贴板\",\"Clipboard\",\"剪貼板\"]\n}"), "reuseBrands");
+    AppMethodBeat.o(315088);
     return localList;
   }
   
   public List<String> getNeedReuseItems()
   {
-    AppMethodBeat.i(256182);
-    List localList = optListFromJSONStr(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRu, "{\n\t\"reuseBrands\":[\"vivo\",\"samsung\"],\n\t\"reuseItems\":[\"剪贴板\",\"Clipboard\",\"剪貼板\"]\n}"), "reuseItems");
-    AppMethodBeat.o(256182);
+    AppMethodBeat.i(315093);
+    List localList = optListFromJSONStr(((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zkc, "{\n\t\"reuseBrands\":[\"vivo\",\"samsung\"],\n\t\"reuseItems\":[\"剪贴板\",\"Clipboard\",\"剪貼板\"]\n}"), "reuseItems");
+    AppMethodBeat.o(315093);
     return localList;
   }
   
   public int getSosLimitLength()
   {
-    AppMethodBeat.i(256176);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRt, 100);
-    AppMethodBeat.o(256176);
+    AppMethodBeat.i(315084);
+    int i = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zkb, 100);
+    AppMethodBeat.o(315084);
     return i;
   }
   
@@ -542,82 +567,66 @@ public class PluginWebSearch
   
   public boolean isOpenImageSearch()
   {
-    AppMethodBeat.i(256166);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRm, 0) == 1)
+    AppMethodBeat.i(315064);
+    if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zjV, 0) == 1)
     {
-      AppMethodBeat.o(256166);
+      AppMethodBeat.o(315064);
       return true;
     }
-    AppMethodBeat.o(256166);
+    AppMethodBeat.o(315064);
     return false;
   }
   
   public boolean isOpenInlineC2CTag()
   {
-    AppMethodBeat.i(256168);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRq, 0) == 1)
-    {
-      AppMethodBeat.o(256168);
-      return true;
-    }
-    AppMethodBeat.o(256168);
-    return false;
+    return true;
   }
   
   public boolean isOpenInlineSnsTag()
   {
-    AppMethodBeat.i(256170);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRr, 0) == 1)
-    {
-      AppMethodBeat.o(256170);
-      return true;
-    }
-    AppMethodBeat.o(256170);
-    return false;
+    return true;
   }
   
   public boolean isUseSysEditText()
   {
-    AppMethodBeat.i(256173);
-    boolean bool = a.a.hJg().hJd();
+    AppMethodBeat.i(315083);
+    boolean bool = a.a.jlv().jls();
     if (bool) {
-      com.tencent.mm.ui.widget.cedit.api.b.axG(10);
+      com.tencent.mm.ui.widget.cedit.api.b.aEp(10);
     }
-    if ((((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vRs, com.tencent.mm.util.b.a.YxJ, 1) == 1) || (bool) || (com.tencent.mm.ui.ar.hIY()))
+    if ((((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zka, b.a.agqt, 1) == 1) || (bool) || (aw.jln()))
     {
-      AppMethodBeat.o(256173);
+      AppMethodBeat.o(315083);
       return true;
     }
-    AppMethodBeat.o(256173);
+    AppMethodBeat.o(315083);
     return false;
   }
   
   public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(116521);
-    this.mZZ.alive();
-    this.soa.alive();
+    this.pWI.alive();
+    this.vzY.alive();
     manualCheckRes();
     this.checkLanguageChangeIListener.alive();
     c.init();
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("mmsearch_reddot_new", this.MVC);
-    com.tencent.e.h.ZvG.d(new a(paramc.kcX), "WebSearchThread");
-    ai.Tu(5000L);
-    ai.Tv(5000L);
-    com.tencent.mm.plugin.websearch.api.ar.anq(-1);
-    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).a(this.nCC);
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().a("mmsearch_reddot_new", this.TIf);
+    com.tencent.threadpool.h.ahAA.g(new a(paramc.mDg), "WebSearchThread");
+    as.atg(-1);
+    ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).a(this.qCv);
     AppMethodBeat.o(116521);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(116522);
-    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).b(this.nCC);
-    this.mZZ.dead();
-    this.soa.dead();
+    ((com.tencent.mm.plugin.teenmode.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.teenmode.a.d.class)).b(this.qCv);
+    this.pWI.dead();
+    this.vzY.dead();
     this.checkLanguageChangeIListener.dead();
-    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("mmsearch_reddot_new", this.MVC);
-    com.tencent.mm.plugin.websearch.api.am.Pzo = null;
+    ((v)com.tencent.mm.kernel.h.az(v.class)).getSysCmdMsgExtension().b("mmsearch_reddot_new", this.TIf);
+    com.tencent.mm.plugin.websearch.api.an.Wpx = null;
     AppMethodBeat.o(116522);
   }
   
@@ -625,85 +634,86 @@ public class PluginWebSearch
   
   public void startImageSearch(o paramo)
   {
-    AppMethodBeat.i(256189);
+    AppMethodBeat.i(315102);
     Object localObject = new Intent();
-    int i = getSearchImageRequestType(paramo.fNz, paramo.fyP);
-    ((Intent)localObject).putExtra("key_source", paramo.fyP);
+    int i = getSearchImageRequestType(paramo.hTm, paramo.hDy);
+    ((Intent)localObject).putExtra("key_source", paramo.hDy);
     ((Intent)localObject).putExtra("key_scan_goods_request_type", i);
     long l;
-    switch (paramo.fyP)
+    switch (paramo.hDy)
     {
+    case 16: 
     default: 
-      l = com.tencent.mm.plugin.fts.a.d.Sw(67);
+      l = com.tencent.mm.plugin.fts.a.d.Wd(67);
       ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), "com.tencent.mm.plugin.websearch.ui.WebSearchImageLoadingUI");
-      ((Intent)localObject).putExtra("key_source", paramo.fyP);
-      ((Intent)localObject).putExtra("key_msg_id", paramo.fNz.field_msgId);
+      ((Intent)localObject).putExtra("key_source", paramo.hDy);
+      ((Intent)localObject).putExtra("key_msg_id", paramo.hTm.field_msgId);
       ((Intent)localObject).putExtra("key_session_id", l);
-      Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s", new Object[] { Long.valueOf(paramo.fNz.field_msgId), Integer.valueOf(paramo.fyP), Long.valueOf(l) });
+      Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s", new Object[] { Long.valueOf(paramo.hTm.field_msgId), Integer.valueOf(paramo.hDy), Long.valueOf(l) });
     }
     for (;;)
     {
       paramo = paramo.context;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(paramo, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/websearch/PluginWebSearch", "startImageSearch", "(Lcom/tencent/mm/plugin/websearch/api/ImageSearchContext;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramo.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramo, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/websearch/PluginWebSearch", "startImageSearch", "(Lcom/tencent/mm/plugin/websearch/api/ImageSearchContext;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramo.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramo, "com/tencent/mm/plugin/websearch/PluginWebSearch", "startImageSearch", "(Lcom/tencent/mm/plugin/websearch/api/ImageSearchContext;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(256189);
+      AppMethodBeat.o(315102);
       return;
-      l = com.tencent.mm.plugin.fts.a.d.Sw(81);
+      l = com.tencent.mm.plugin.fts.a.d.Wd(81);
       ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), "com.tencent.mm.plugin.websearch.ui.WebSearchSnsImageLoadingUI");
-      ((Intent)localObject).putExtra("key_sns_id", paramo.fLp);
-      ((Intent)localObject).putExtra("key_sns_username", paramo.PxI);
-      ((Intent)localObject).putExtra("key_sns_image_path", paramo.fAh);
+      ((Intent)localObject).putExtra("key_sns_id", paramo.hQX);
+      ((Intent)localObject).putExtra("key_sns_username", paramo.WnO);
+      ((Intent)localObject).putExtra("key_sns_image_path", paramo.hET);
       ((Intent)localObject).putExtra("key_session_id", l);
-      if (paramo.JVq != null) {}
+      if (paramo.Qsr != null) {}
       try
       {
-        ((Intent)localObject).putExtra("key_sns_media", paramo.JVq.toByteArray());
-        label397:
-        Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s %s %s", new Object[] { paramo.fLp, paramo.PxI, paramo.fAh, Integer.valueOf(paramo.fyP), Long.valueOf(l) });
+        ((Intent)localObject).putExtra("key_sns_media", paramo.Qsr.toByteArray());
+        label413:
+        Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s %s %s", new Object[] { paramo.hQX, paramo.WnO, paramo.hET, Integer.valueOf(paramo.hDy), Long.valueOf(l) });
         continue;
         ((Intent)localObject).putExtra("key_upload_image_use_cdn_opt", false);
         if (paramo.sessionId != 0L)
         {
           l = paramo.sessionId;
-          label474:
+          label490:
           ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), "com.tencent.mm.plugin.websearch.ui.WebSearchSnsImageLoadingUI");
-          ((Intent)localObject).putExtra("key_sns_image_path", paramo.fAh);
+          ((Intent)localObject).putExtra("key_sns_image_path", paramo.hET);
           ((Intent)localObject).putExtra("key_session_id", l);
-          ((Intent)localObject).putExtra("key_source", paramo.fyP);
-          if ((paramo.fyP != 15) && (paramo.fyP != 16)) {
-            break label624;
+          ((Intent)localObject).putExtra("key_source", paramo.hDy);
+          if ((paramo.hDy != 15) && (paramo.hDy != 16) && (paramo.hDy != 18) && (paramo.hDy != 19) && (paramo.hDy != 20) && (paramo.hDy != 21)) {
+            break label676;
           }
           ((Intent)localObject).putExtra("key_scene", paramo.scene);
         }
         for (;;)
         {
           ((Intent)localObject).addFlags(268435456);
-          Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s %s %s", new Object[] { paramo.fLp, paramo.PxI, paramo.fAh, Integer.valueOf(paramo.fyP), Long.valueOf(l) });
+          Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s %s %s", new Object[] { paramo.hQX, paramo.WnO, paramo.hET, Integer.valueOf(paramo.hDy), Long.valueOf(l) });
           break;
-          l = com.tencent.mm.plugin.fts.a.d.Sw(17);
-          break label474;
-          label624:
+          l = com.tencent.mm.plugin.fts.a.d.Wd(17);
+          break label490;
+          label676:
           ((Intent)localObject).putExtra("key_scene", 83);
         }
         ((Intent)localObject).putExtra("key_upload_image_use_cdn_opt", false);
         if (paramo.sessionId != 0L) {}
-        for (l = paramo.sessionId;; l = com.tencent.mm.plugin.fts.a.d.Sw(17))
+        for (l = paramo.sessionId;; l = com.tencent.mm.plugin.fts.a.d.Wd(17))
         {
           ((Intent)localObject).setClassName(MMApplicationContext.getPackageName(), "com.tencent.mm.plugin.websearch.ui.WebSearchSnsImageLoadingUI");
-          ((Intent)localObject).putExtra("key_sns_image_path", paramo.fAh);
+          ((Intent)localObject).putExtra("key_sns_image_path", paramo.hET);
           ((Intent)localObject).putExtra("key_session_id", l);
-          ((Intent)localObject).putExtra("key_source", paramo.fyP);
+          ((Intent)localObject).putExtra("key_source", paramo.hDy);
           ((Intent)localObject).putExtra("key_scene", paramo.scene);
           ((Intent)localObject).addFlags(268435456);
-          Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s %s %s", new Object[] { paramo.fLp, paramo.PxI, paramo.fAh, Integer.valueOf(paramo.fyP), Long.valueOf(l) });
+          Log.i("MicroMsg.WebSearch.PluginWebSearch", "startImageSearch %s %s %s %s %s", new Object[] { paramo.hQX, paramo.WnO, paramo.hET, Integer.valueOf(paramo.hDy), Long.valueOf(l) });
           break;
         }
       }
       catch (Exception localException)
       {
-        break label397;
+        break label413;
       }
     }
   }
@@ -711,24 +721,24 @@ public class PluginWebSearch
   final class a
     implements Runnable
   {
-    boolean Pxm;
+    boolean Wns;
     
     a(boolean paramBoolean)
     {
-      this.Pxm = paramBoolean;
+      this.Wns = paramBoolean;
     }
     
     public final void run()
     {
       AppMethodBeat.i(116517);
-      PluginWebSearch.access$100(PluginWebSearch.this, this.Pxm);
+      PluginWebSearch.access$200(PluginWebSearch.this, this.Wns);
       AppMethodBeat.o(116517);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.PluginWebSearch
  * JD-Core Version:    0.7.0.1
  */

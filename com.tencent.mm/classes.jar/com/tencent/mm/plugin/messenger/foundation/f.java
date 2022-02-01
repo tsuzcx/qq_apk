@@ -4,45 +4,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.storage.ay;
 import com.tencent.mm.storage.ba;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.cb;
-import com.tencent.mm.storage.ck;
+import com.tencent.mm.storage.bc;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.cn;
 import com.tencent.mm.storagebase.h;
 
 public final class f
   implements o
 {
-  public final i a(h paramh, bv parambv, bw parambw)
+  public final i a(h paramh, bx parambx, by paramby)
   {
     AppMethodBeat.i(116895);
-    paramh = new cb(paramh, parambv, parambw);
+    paramh = new cd(paramh, parambx, paramby);
     AppMethodBeat.o(116895);
     return paramh;
   }
   
-  public final bv e(h paramh)
+  public final bx d(h paramh)
   {
     AppMethodBeat.i(116893);
-    paramh = new ay(paramh);
+    paramh = new ba(paramh);
     AppMethodBeat.o(116893);
     return paramh;
   }
   
-  public final bw f(h paramh)
+  public final by e(h paramh)
   {
     AppMethodBeat.i(116894);
-    paramh = new ba(paramh);
+    paramh = new bc(paramh);
     AppMethodBeat.o(116894);
     return paramh;
   }
   
-  public final l g(h paramh)
+  public final l f(h paramh)
   {
     AppMethodBeat.i(116896);
-    paramh = new ck(paramh);
+    paramh = new cn(paramh);
     AppMethodBeat.o(116896);
     return paramh;
   }

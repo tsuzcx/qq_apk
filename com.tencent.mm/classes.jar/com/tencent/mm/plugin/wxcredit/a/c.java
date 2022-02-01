@@ -12,12 +12,12 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public double QNY;
+  public double XHw;
   
   public c(List<l> paramList, String paramString)
   {
     AppMethodBeat.i(72301);
-    this.QNY = 0.0D;
+    this.XHw = 0.0D;
     HashMap localHashMap = new HashMap();
     localHashMap.put("session_key", paramString);
     paramList = paramList.iterator();
@@ -26,17 +26,17 @@ public final class c
     {
       paramString = (l)paramList.next();
       localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.id);
-      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.EAI);
+      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.KtE);
       localHashMap.put("level_".concat(String.valueOf(i)), paramString.level);
-      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.QOt);
+      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.XHR);
       i += 1;
-      if ((paramString.QOv == null) || (!"Y".equals(paramString.EAI))) {
+      if ((paramString.XHT == null) || (!"Y".equals(paramString.KtE))) {
         break label324;
       }
-      localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.QOv.id);
-      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.QOv.EAI);
-      localHashMap.put("level_".concat(String.valueOf(i)), paramString.QOv.level);
-      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.QOv.QOt);
+      localHashMap.put("qt_id_".concat(String.valueOf(i)), paramString.XHT.id);
+      localHashMap.put("ans_cont_".concat(String.valueOf(i)), paramString.XHT.KtE);
+      localHashMap.put("level_".concat(String.valueOf(i)), paramString.XHT.level);
+      localHashMap.put("parent_id_".concat(String.valueOf(i)), paramString.XHT.XHR);
       i += 1;
     }
     label324:
@@ -66,7 +66,7 @@ public final class c
     }
     try
     {
-      this.QNY = (paramJSONObject.getInt("credit_amount") / 100.0D);
+      this.XHw = (paramJSONObject.getInt("credit_amount") / 100.0D);
       AppMethodBeat.o(72302);
       return;
     }
@@ -79,7 +79,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.c
  * JD-Core Version:    0.7.0.1
  */

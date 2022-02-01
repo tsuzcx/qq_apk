@@ -43,34 +43,35 @@ public class checkbox_selected
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
       c.instancePaint((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
-      localCanvas.save();
-      localObject = c.instancePaint(localPaint, paramVarArgs);
-      ((Paint)localObject).setColor(-16268960);
-      Path localPath = c.instancePath(paramVarArgs);
-      localPath.moveTo(72.0F, 36.444443F);
-      localPath.cubicTo(72.0F, 16.117332F, 55.882668F, 0.0F, 35.555557F, 0.0F);
-      localPath.cubicTo(16.117332F, 0.0F, 0.0F, 16.117332F, 0.0F, 36.444443F);
-      localPath.cubicTo(0.0F, 55.882668F, 16.117332F, 72.0F, 35.555557F, 72.0F);
-      localPath.cubicTo(55.882668F, 72.0F, 72.0F, 55.882668F, 72.0F, 36.444443F);
-      localPath.close();
-      WeChatSVGRenderC2Java.setFillType(localPath, 2);
-      localCanvas.drawPath(localPath, (Paint)localObject);
+      localObject = c.instancePath(paramVarArgs);
+      ((Path)localObject).moveTo(0.0F, 0.0F);
+      ((Path)localObject).lineTo(72.0F, 0.0F);
+      ((Path)localObject).lineTo(72.0F, 72.0F);
+      ((Path)localObject).lineTo(0.0F, 72.0F);
+      ((Path)localObject).lineTo(0.0F, 0.0F);
+      ((Path)localObject).close();
+      localCanvas.saveLayerAlpha(null, 0, 31);
       localCanvas.restore();
       localCanvas.save();
       localPaint = c.instancePaint(localPaint, paramVarArgs);
-      localPaint.setColor(-1);
+      localPaint.setColor(-16268960);
       localObject = c.instancePath(paramVarArgs);
-      ((Path)localObject).moveTo(31.091883F, 45.941124F);
+      ((Path)localObject).moveTo(35.567902F, 1.0F);
+      ((Path)localObject).cubicTo(55.330372F, 1.0F, 71.0F, 16.66963F, 71.0F, 36.432098F);
+      ((Path)localObject).cubicTo(71.0F, 55.330372F, 55.330372F, 71.0F, 35.567902F, 71.0F);
+      ((Path)localObject).cubicTo(16.66963F, 71.0F, 1.0F, 55.330372F, 1.0F, 36.432098F);
+      ((Path)localObject).cubicTo(1.0F, 16.66963F, 16.66963F, 1.0F, 35.567902F, 1.0F);
+      ((Path)localObject).close();
+      ((Path)localObject).moveTo(53.033009F, 24.0F);
+      ((Path)localObject).lineTo(31.091883F, 45.941124F);
       ((Path)localObject).lineTo(21.18198F, 36.031223F);
       ((Path)localObject).lineTo(18.0F, 39.213203F);
       ((Path)localObject).lineTo(28.970562F, 50.183765F);
       ((Path)localObject).cubicTo(30.142136F, 51.355339F, 32.04163F, 51.355339F, 33.213203F, 50.183765F);
       ((Path)localObject).lineTo(56.214989F, 27.18198F);
-      ((Path)localObject).lineTo(56.214989F, 27.18198F);
       ((Path)localObject).lineTo(53.033009F, 24.0F);
-      ((Path)localObject).lineTo(31.091883F, 45.941124F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
       c.done(paramVarArgs);
@@ -79,7 +80,7 @@ public class checkbox_selected
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.checkbox_selected
  * JD-Core Version:    0.7.0.1
  */

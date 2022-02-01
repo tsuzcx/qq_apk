@@ -1,149 +1,215 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.dd;
-import com.tencent.mm.f.a.dd.b;
-import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.autogen.a.dn;
+import com.tencent.mm.autogen.a.dn.b;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
-import com.tencent.mm.plugin.fav.a.ae;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
+import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.snackbar.a.b;
-import com.tencent.mm.ui.widget.snackbar.a.c;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
-import kotlin.x;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddFileToFavorites;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "doAddFileToFavorites", "", "activity", "Landroid/app/Activity;", "filePath", "", "fileExt", "fileName", "doFavoriteAnyProcess", "", "handleErrorTypeAnyProcess", "", "ret", "invoke", "env", "data", "Lorg/json/JSONObject;", "callbackId", "Companion", "DoFavoriteParams", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddFileToFavorites;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "doAddFileToFavorites", "", "activity", "Landroid/app/Activity;", "filePath", "", "fileExt", "fileName", "doFavoriteAnyProcess", "", "handleErrorTypeAnyProcess", "", "ret", "invoke", "env", "data", "Lorg/json/JSONObject;", "callbackId", "Companion", "DoFavoriteParams", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class JsApiAddFileToFavorites
-  extends c<e>
+  extends c<f>
 {
   private static final int CTRL_INDEX = 958;
   private static final String NAME = "addFileToFavorites";
-  public static final a osZ;
+  public static final JsApiAddFileToFavorites.a rwZ;
   
   static
   {
-    AppMethodBeat.i(277374);
-    osZ = new a((byte)0);
-    AppMethodBeat.o(277374);
+    AppMethodBeat.i(325667);
+    rwZ = new JsApiAddFileToFavorites.a((byte)0);
+    AppMethodBeat.o(325667);
   }
   
-  public final void a(final e parame, final JSONObject paramJSONObject, final int paramInt)
+  private static final IPCInteger a(DoFavoriteParams paramDoFavoriteParams)
   {
-    CharSequence localCharSequence = null;
-    AppMethodBeat.i(277373);
-    if (parame == null)
+    AppMethodBeat.i(325665);
+    try
+    {
+      String str1 = paramDoFavoriteParams.filePath;
+      String str2 = paramDoFavoriteParams.lPJ;
+      paramDoFavoriteParams = paramDoFavoriteParams.fileName;
+      dn localdn = new dn();
+      ((af)com.tencent.mm.kernel.h.ax(af.class)).a(localdn, 6, str1, dm.I(str1, str2, paramDoFavoriteParams), "");
+      localdn.publish();
+      i = localdn.hDs.ret;
+      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("doFavoriteMainProcess, ret: ", Integer.valueOf(i)));
+      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("doFavoriteMainProcess, result: ", Integer.valueOf(i)));
+      paramDoFavoriteParams = new IPCInteger(i);
+      AppMethodBeat.o(325665);
+      return paramDoFavoriteParams;
+    }
+    catch (Exception paramDoFavoriteParams)
+    {
+      for (;;)
+      {
+        Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("doFavoriteMainProcess, fail since ", paramDoFavoriteParams));
+        int i = -2147483648;
+      }
+    }
+  }
+  
+  private static final void a(JsApiAddFileToFavorites paramJsApiAddFileToFavorites, Activity paramActivity, String paramString1, String paramString2, String paramString3, f paramf, int paramInt)
+  {
+    AppMethodBeat.i(325661);
+    s.u(paramJsApiAddFileToFavorites, "this$0");
+    paramString1 = (IPCInteger)com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new DoFavoriteParams(paramString1, paramString2, paramString3), JsApiAddFileToFavorites..ExternalSyntheticLambda0.INSTANCE);
+    int i;
+    label57:
+    boolean bool;
+    if (paramString1 == null)
+    {
+      paramString1 = null;
+      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("doFavoriteAnyProcess, result: ", paramString1));
+      if (paramString1 != null) {
+        break label135;
+      }
+      i = -2147483648;
+      d.uiThread((kotlin.g.a.a)new JsApiAddFileToFavorites.b(i, paramActivity));
+      if (i != 0) {
+        break label144;
+      }
+      bool = true;
+      label81:
+      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("invoke, success: ", Boolean.valueOf(bool)));
+      if (!bool) {
+        break label150;
+      }
+    }
+    label135:
+    label144:
+    label150:
+    for (paramActivity = "ok";; paramActivity = "fail")
+    {
+      paramf.callback(paramInt, paramJsApiAddFileToFavorites.ZP(paramActivity));
+      AppMethodBeat.o(325661);
+      return;
+      paramString1 = Integer.valueOf(paramString1.value);
+      break;
+      i = paramString1.intValue();
+      break label57;
+      bool = false;
+      break label81;
+    }
+  }
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  {
+    String str = null;
+    AppMethodBeat.i(325678);
+    if (paramf == null)
     {
       Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, env is null");
-      AppMethodBeat.o(277373);
+      AppMethodBeat.o(325678);
       return;
     }
-    Object localObject2 = parame.getContext();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof Activity)) {
-      localObject1 = null;
-    }
-    final Activity localActivity = (Activity)localObject1;
-    if (localActivity == null)
+    Object localObject1 = paramf.getContext();
+    if ((localObject1 instanceof Activity)) {}
+    for (localObject1 = (Activity)localObject1; localObject1 == null; localObject1 = null)
     {
       Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, activity is null");
-      parame.j(paramInt, agS("fail:activity is null"));
-      AppMethodBeat.o(277373);
+      paramf.callback(paramInt, ZP("fail:activity is null"));
+      AppMethodBeat.o(325678);
       return;
     }
     if (paramJSONObject == null)
     {
       Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, data is null");
-      parame.j(paramInt, agS("fail:data is null"));
-      AppMethodBeat.o(277373);
+      paramf.callback(paramInt, ZP("fail:data is null"));
+      AppMethodBeat.o(325678);
       return;
     }
     Object localObject3 = paramJSONObject.optString("filePath");
-    localObject1 = (CharSequence)localObject3;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    Object localObject2 = (CharSequence)localObject3;
+    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, filePath is empty");
-      parame.j(paramInt, agS("fail:filePath is empty"));
-      AppMethodBeat.o(277373);
+      paramf.callback(paramInt, ZP("fail:filePath is empty"));
+      AppMethodBeat.o(325678);
       return;
     }
-    if (n.M((String)localObject3, "wxfile://", false))
+    s.s(localObject3, "filePath");
+    w localw;
+    if (n.U((String)localObject3, "wxfile://", false))
     {
-      localObject1 = org.apache.commons.a.c.bIf((String)localObject3);
-      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, filePath: " + (String)localObject3 + ", fileExt: " + (String)localObject1);
-      r localr = parame.getFileSystem();
-      localObject2 = localCharSequence;
-      if (localr != null)
-      {
-        localObject3 = localr.adL((String)localObject3);
-        localObject2 = localCharSequence;
-        if (localObject3 != null) {
-          localObject2 = ((com.tencent.mm.vfs.q)localObject3).bOF();
-        }
+      localObject2 = org.apache.commons.b.c.bKZ((String)localObject3);
+      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, filePath: " + localObject3 + ", fileExt: " + localObject2);
+      localw = paramf.getFileSystem();
+      if (localw != null) {
+        break label323;
       }
-      localCharSequence = (CharSequence)localObject2;
-      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-        break label343;
+      label258:
+      localObject3 = (CharSequence)str;
+      if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+        break label352;
       }
     }
-    label343:
+    label323:
+    label352:
     for (i = 1;; i = 0)
     {
       if (i == 0) {
-        break label349;
+        break label358;
       }
       Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, filePath is illegal");
-      parame.j(paramInt, agS("fail:filePath is illegal"));
-      AppMethodBeat.o(277373);
+      paramf.callback(paramInt, ZP("fail:filePath is illegal"));
+      AppMethodBeat.o(325678);
       return;
-      localObject1 = "";
+      localObject2 = "";
       break;
+      localObject3 = localw.Wm((String)localObject3);
+      if (localObject3 == null) {
+        break label258;
+      }
+      str = ah.v(((u)localObject3).jKT());
+      break label258;
     }
-    label349:
-    Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, realFilePath: ".concat(String.valueOf(localObject2)));
+    label358:
+    Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("invoke, realFilePath: ", str));
     paramJSONObject = paramJSONObject.optString("fileName");
-    Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, fileName: ".concat(String.valueOf(paramJSONObject)));
-    com.tencent.e.h.ZvG.be((Runnable)new d(this, localActivity, (String)localObject2, (String)localObject1, paramJSONObject, parame, paramInt));
-    AppMethodBeat.o(277373);
+    Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", s.X("invoke, fileName: ", paramJSONObject));
+    com.tencent.threadpool.h.ahAA.bm(new JsApiAddFileToFavorites..ExternalSyntheticLambda1(this, (Activity)localObject1, str, (String)localObject2, paramJSONObject, paramf, paramInt));
+    AppMethodBeat.o(325678);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddFileToFavorites$DoFavoriteParams;", "Landroid/os/Parcelable;", "filePath", "", "fileExt", "fileName", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getFileExt", "()Ljava/lang/String;", "getFileName", "getFilePath", "component1", "component2", "component3", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddFileToFavorites$DoFavoriteParams;", "Landroid/os/Parcelable;", "filePath", "", "fileExt", "fileName", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getFileExt", "()Ljava/lang/String;", "getFileName", "getFilePath", "component1", "component2", "component3", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class DoFavoriteParams
     implements Parcelable
   {
-    public static final Parcelable.Creator CREATOR;
+    public static final Parcelable.Creator<DoFavoriteParams> CREATOR;
     final String fileName;
     final String filePath;
-    final String jmx;
+    final String lPJ;
     
     static
     {
-      AppMethodBeat.i(274293);
-      CREATOR = new a();
-      AppMethodBeat.o(274293);
+      AppMethodBeat.i(325715);
+      CREATOR = (Parcelable.Creator)new a();
+      AppMethodBeat.o(325715);
     }
     
     public DoFavoriteParams(String paramString1, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(274287);
+      AppMethodBeat.i(325710);
       this.filePath = paramString1;
-      this.jmx = paramString2;
+      this.lPJ = paramString2;
       this.fileName = paramString3;
-      AppMethodBeat.o(274287);
+      AppMethodBeat.o(325710);
     }
     
     public final int describeContents()
@@ -153,173 +219,88 @@ public final class JsApiAddFileToFavorites
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(274291);
-      if (this != paramObject)
+      AppMethodBeat.i(325723);
+      if (this == paramObject)
       {
-        if ((paramObject instanceof DoFavoriteParams))
-        {
-          paramObject = (DoFavoriteParams)paramObject;
-          if ((!p.h(this.filePath, paramObject.filePath)) || (!p.h(this.jmx, paramObject.jmx)) || (!p.h(this.fileName, paramObject.fileName))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(274291);
+        AppMethodBeat.o(325723);
         return true;
       }
-      AppMethodBeat.o(274291);
-      return false;
+      if (!(paramObject instanceof DoFavoriteParams))
+      {
+        AppMethodBeat.o(325723);
+        return false;
+      }
+      paramObject = (DoFavoriteParams)paramObject;
+      if (!s.p(this.filePath, paramObject.filePath))
+      {
+        AppMethodBeat.o(325723);
+        return false;
+      }
+      if (!s.p(this.lPJ, paramObject.lPJ))
+      {
+        AppMethodBeat.o(325723);
+        return false;
+      }
+      if (!s.p(this.fileName, paramObject.fileName))
+      {
+        AppMethodBeat.o(325723);
+        return false;
+      }
+      AppMethodBeat.o(325723);
+      return true;
     }
     
     public final int hashCode()
     {
-      int k = 0;
-      AppMethodBeat.i(274290);
-      String str = this.filePath;
+      int j = 0;
+      AppMethodBeat.i(325719);
+      int k = this.filePath.hashCode();
       int i;
-      if (str != null)
+      if (this.lPJ == null)
       {
-        i = str.hashCode();
-        str = this.jmx;
-        if (str == null) {
-          break label80;
+        i = 0;
+        if (this.fileName != null) {
+          break label59;
         }
       }
-      label80:
-      for (int j = str.hashCode();; j = 0)
+      for (;;)
       {
-        str = this.fileName;
-        if (str != null) {
-          k = str.hashCode();
-        }
-        AppMethodBeat.o(274290);
-        return (j + i * 31) * 31 + k;
-        i = 0;
+        AppMethodBeat.o(325719);
+        return (i + k * 31) * 31 + j;
+        i = this.lPJ.hashCode();
         break;
+        label59:
+        j = this.fileName.hashCode();
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(274288);
-      String str = "DoFavoriteParams(filePath=" + this.filePath + ", fileExt=" + this.jmx + ", fileName=" + this.fileName + ")";
-      AppMethodBeat.o(274288);
+      AppMethodBeat.i(325716);
+      String str = "DoFavoriteParams(filePath=" + this.filePath + ", fileExt=" + this.lPJ + ", fileName=" + this.fileName + ')';
+      AppMethodBeat.o(325716);
       return str;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(274292);
-      p.k(paramParcel, "parcel");
+      AppMethodBeat.i(325729);
+      s.u(paramParcel, "out");
       paramParcel.writeString(this.filePath);
-      paramParcel.writeString(this.jmx);
+      paramParcel.writeString(this.lPJ);
       paramParcel.writeString(this.fileName);
-      AppMethodBeat.o(274292);
+      AppMethodBeat.o(325729);
     }
     
-    @l(iBK={1, 1, 16})
+    @Metadata(k=3, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements Parcelable.Creator
-    {
-      public final Object createFromParcel(Parcel paramParcel)
-      {
-        AppMethodBeat.i(275158);
-        p.k(paramParcel, "in");
-        paramParcel = new JsApiAddFileToFavorites.DoFavoriteParams(paramParcel.readString(), paramParcel.readString(), paramParcel.readString());
-        AppMethodBeat.o(275158);
-        return paramParcel;
-      }
-      
-      public final Object[] newArray(int paramInt)
-      {
-        return new JsApiAddFileToFavorites.DoFavoriteParams[paramInt];
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddFileToFavorites$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "PARAM_KEY_FILE_NAME", "PARAM_KEY_FILE_PATH", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiAddFileToFavorites$DoFavoriteParams;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class b<InputType, ResultType>
-    implements m<JsApiAddFileToFavorites.DoFavoriteParams, IPCInteger>
-  {
-    public static final b ota;
-    
-    static
-    {
-      AppMethodBeat.i(254224);
-      ota = new b();
-      AppMethodBeat.o(254224);
-    }
-    
-    private static IPCInteger a(JsApiAddFileToFavorites.DoFavoriteParams paramDoFavoriteParams)
-    {
-      AppMethodBeat.i(254222);
-      try
-      {
-        String str1 = paramDoFavoriteParams.filePath;
-        String str2 = paramDoFavoriteParams.jmx;
-        paramDoFavoriteParams = paramDoFavoriteParams.fileName;
-        dd localdd = new dd();
-        ((ae)com.tencent.mm.kernel.h.ae(ae.class)).a(localdd, 6, str1, dc.E(str1, str2, paramDoFavoriteParams), "");
-        EventCenter.instance.publish((IEvent)localdd);
-        i = localdd.fyJ.ret;
-        Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "doFavoriteMainProcess, ret: ".concat(String.valueOf(i)));
-        Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "doFavoriteMainProcess, result: ".concat(String.valueOf(i)));
-        paramDoFavoriteParams = new IPCInteger(i);
-        AppMethodBeat.o(254222);
-        return paramDoFavoriteParams;
-      }
-      catch (Exception paramDoFavoriteParams)
-      {
-        for (;;)
-        {
-          Log.w("MicroMsg.AppBrand.JsApiAddFileToFavorites", "doFavoriteMainProcess, fail since ".concat(String.valueOf(paramDoFavoriteParams)));
-          int i = -2147483648;
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements a<x>
-  {
-    c(int paramInt, Activity paramActivity)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(JsApiAddFileToFavorites paramJsApiAddFileToFavorites, Activity paramActivity, String paramString1, String paramString2, String paramString3, e parame, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(278590);
-      boolean bool = JsApiAddFileToFavorites.a(localActivity, this.otg, this.oth, paramJSONObject);
-      Log.i("MicroMsg.AppBrand.JsApiAddFileToFavorites", "invoke, success: ".concat(String.valueOf(bool)));
-      e locale = parame;
-      int i = paramInt;
-      JsApiAddFileToFavorites localJsApiAddFileToFavorites = this.otf;
-      if (bool) {}
-      for (String str = "ok";; str = "fail")
-      {
-        locale.j(i, localJsApiAddFileToFavorites.agS(str));
-        AppMethodBeat.o(278590);
-        return;
-      }
-    }
+      implements Parcelable.Creator<JsApiAddFileToFavorites.DoFavoriteParams>
+    {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiAddFileToFavorites
  * JD-Core Version:    0.7.0.1
  */

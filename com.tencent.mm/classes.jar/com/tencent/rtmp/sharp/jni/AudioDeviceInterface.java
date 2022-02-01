@@ -1,7 +1,5 @@
 package com.tencent.rtmp.sharp.jni;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
@@ -14,8 +12,7 @@ import android.media.AudioRecord;
 import android.media.AudioTrack;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
-import android.os.Build;
-import android.os.Build.VERSION;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileFilter;
@@ -26,7 +23,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-@TargetApi(16)
 public class AudioDeviceInterface
 {
   private static final FileFilter CPU_FILTER;
@@ -99,31 +95,7 @@ public class AudioDeviceInterface
     mDeviceList = null;
     mVivoKTVHelper = null;
     isSupportVivoKTVHelper = false;
-    CPU_FILTER = new FileFilter()
-    {
-      public final boolean accept(File paramAnonymousFile)
-      {
-        AppMethodBeat.i(13910);
-        paramAnonymousFile = paramAnonymousFile.getName();
-        if (paramAnonymousFile.startsWith("cpu"))
-        {
-          int i = 3;
-          while (i < paramAnonymousFile.length())
-          {
-            if ((paramAnonymousFile.charAt(i) < '0') || (paramAnonymousFile.charAt(i) > '9'))
-            {
-              AppMethodBeat.o(13910);
-              return false;
-            }
-            i += 1;
-          }
-          AppMethodBeat.o(13910);
-          return true;
-        }
-        AppMethodBeat.o(13910);
-        return false;
-      }
-    };
+    CPU_FILTER = new AudioDeviceInterface.4();
     AppMethodBeat.o(13863);
   }
   
@@ -185,18 +157,18 @@ public class AudioDeviceInterface
       this._tempBufPlay = new byte[1920];
       this._tempBufRec = new byte[1920];
       this._traeAudioCodecList = new TraeAudioCodecList();
-      int i = Build.VERSION.SDK_INT;
+      int i = TXCBuild.VersionInt();
       if (QLog.isColorLevel()) {
         QLog.w("AudioDeviceInterface", 2, "AudioDeviceInterface apiLevel:".concat(String.valueOf(i)));
       }
       if (QLog.isColorLevel()) {
-        QLog.w("AudioDeviceInterface", 2, " SDK_INT:" + Build.VERSION.SDK_INT);
+        QLog.w("AudioDeviceInterface", 2, " SDK_INT:" + TXCBuild.VersionInt());
       }
       if (QLog.isColorLevel()) {
-        QLog.w("AudioDeviceInterface", 2, "manufacture:" + Build.MANUFACTURER);
+        QLog.w("AudioDeviceInterface", 2, "manufacture:" + TXCBuild.Manufacturer());
       }
       if (QLog.isColorLevel()) {
-        QLog.w("AudioDeviceInterface", 2, "MODEL:" + Build.MODEL);
+        QLog.w("AudioDeviceInterface", 2, "MODEL:" + TXCBuild.Model());
       }
       AppMethodBeat.o(13814);
       return;
@@ -665,14 +637,14 @@ public class AudioDeviceInterface
   {
     // Byte code:
     //   0: sipush 13825
-    //   3: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 164	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
+    //   7: getfield 161	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
     //   10: ifne +73 -> 83
     //   13: iconst_1
     //   14: istore_2
     //   15: aload_0
-    //   16: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   16: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   19: ifnonnull +69 -> 88
     //   22: iconst_1
     //   23: istore_3
@@ -680,26 +652,26 @@ public class AudioDeviceInterface
     //   25: iload_3
     //   26: ior
     //   27: ifeq +66 -> 93
-    //   30: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   30: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   33: ifeq +42 -> 75
-    //   36: ldc 26
+    //   36: ldc 21
     //   38: iconst_2
-    //   39: new 279	java/lang/StringBuilder
+    //   39: new 277	java/lang/StringBuilder
     //   42: dup
-    //   43: ldc_w 560
-    //   46: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   43: ldc_w 555
+    //   46: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   49: aload_0
-    //   50: getfield 164	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
-    //   53: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   56: ldc_w 562
-    //   59: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: getfield 161	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
+    //   53: invokevirtual 335	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   56: ldc_w 557
+    //   59: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: aload_0
-    //   63: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   66: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   66: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   69: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   72: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   75: sipush 13825
-    //   78: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: iconst_m1
     //   82: ireturn
     //   83: iconst_0
@@ -709,139 +681,139 @@ public class AudioDeviceInterface
     //   89: istore_3
     //   90: goto -66 -> 24
     //   93: aload_0
-    //   94: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   94: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   97: astore 10
     //   99: aload 10
     //   101: ifnonnull +12 -> 113
     //   104: sipush 13825
-    //   107: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   110: bipush 254
     //   112: ireturn
     //   113: aload_0
-    //   114: getfield 158	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doPlayInit	Z
+    //   114: getfield 155	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doPlayInit	Z
     //   117: istore 7
     //   119: iload 7
     //   121: iconst_1
     //   122: if_icmpne +22 -> 144
     //   125: bipush 237
-    //   127: invokestatic 567	android/os/Process:setThreadPriority	(I)V
-    //   130: invokestatic 573	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   133: ldc_w 575
-    //   136: invokevirtual 578	java/lang/Thread:setName	(Ljava/lang/String;)V
+    //   127: invokestatic 562	android/os/Process:setThreadPriority	(I)V
+    //   130: invokestatic 568	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   133: ldc_w 570
+    //   136: invokevirtual 573	java/lang/Thread:setName	(Ljava/lang/String;)V
     //   139: aload_0
     //   140: iconst_0
-    //   141: putfield 158	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doPlayInit	Z
-    //   144: getstatic 108	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
+    //   141: putfield 155	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doPlayInit	Z
+    //   144: getstatic 103	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
     //   147: ifeq +27 -> 174
     //   150: aload_0
-    //   151: getfield 178	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_out	Ljava/io/FileOutputStream;
+    //   151: getfield 175	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_out	Ljava/io/FileOutputStream;
     //   154: astore 10
     //   156: aload 10
     //   158: ifnull +16 -> 174
     //   161: aload_0
-    //   162: getfield 178	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_out	Ljava/io/FileOutputStream;
+    //   162: getfield 175	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_out	Ljava/io/FileOutputStream;
     //   165: aload_0
-    //   166: getfield 245	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufPlay	[B
+    //   166: getfield 242	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufPlay	[B
     //   169: iconst_0
     //   170: iconst_0
-    //   171: invokevirtual 584	java/io/FileOutputStream:write	([BII)V
+    //   171: invokevirtual 579	java/io/FileOutputStream:write	([BII)V
     //   174: aload_0
-    //   175: getfield 192	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRouteChanged	Z
+    //   175: getfield 189	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRouteChanged	Z
     //   178: ifne +632 -> 810
     //   181: iconst_0
     //   182: istore_2
     //   183: aload_0
-    //   184: getfield 219	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playBuffer	Ljava/nio/ByteBuffer;
+    //   184: getfield 216	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playBuffer	Ljava/nio/ByteBuffer;
     //   187: aload_0
-    //   188: getfield 245	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufPlay	[B
-    //   191: invokevirtual 588	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+    //   188: getfield 242	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufPlay	[B
+    //   191: invokevirtual 583	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
     //   194: pop
     //   195: iload_2
     //   196: ifeq +947 -> 1143
     //   199: aload_0
-    //   200: getfield 219	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playBuffer	Ljava/nio/ByteBuffer;
-    //   203: invokevirtual 592	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   200: getfield 216	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playBuffer	Ljava/nio/ByteBuffer;
+    //   203: invokevirtual 587	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   206: pop
-    //   207: invokestatic 598	android/os/SystemClock:elapsedRealtime	()J
+    //   207: invokestatic 593	android/os/SystemClock:elapsedRealtime	()J
     //   210: lstore 8
-    //   212: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   212: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   215: ifeq +45 -> 260
-    //   218: ldc 26
+    //   218: ldc 21
     //   220: iconst_2
-    //   221: new 279	java/lang/StringBuilder
+    //   221: new 277	java/lang/StringBuilder
     //   224: dup
-    //   225: ldc_w 600
-    //   228: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   225: ldc_w 595
+    //   228: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   231: aload_0
-    //   232: getfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
-    //   235: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   238: ldc_w 602
-    //   241: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   232: getfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   235: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   238: ldc_w 597
+    //   241: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   244: aload_0
-    //   245: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   248: invokevirtual 451	android/media/AudioTrack:getStreamType	()I
-    //   251: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   245: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   248: invokevirtual 446	android/media/AudioTrack:getStreamType	()I
+    //   251: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   260: aload_0
-    //   261: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   264: invokevirtual 605	android/media/AudioTrack:getPlayState	()I
+    //   261: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   264: invokevirtual 600	android/media/AudioTrack:getPlayState	()I
     //   267: istore_2
     //   268: iload_2
     //   269: iconst_3
     //   270: if_icmpne +114 -> 384
-    //   273: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   273: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   276: ifeq +12 -> 288
-    //   279: ldc 26
+    //   279: ldc 21
     //   281: iconst_2
-    //   282: ldc_w 607
-    //   285: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   282: ldc_w 602
+    //   285: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   288: aload_0
-    //   289: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   292: invokevirtual 610	android/media/AudioTrack:stop	()V
+    //   289: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   292: invokevirtual 605	android/media/AudioTrack:stop	()V
     //   295: aload_0
-    //   296: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   299: invokevirtual 613	android/media/AudioTrack:flush	()V
-    //   302: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   296: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   299: invokevirtual 608	android/media/AudioTrack:flush	()V
+    //   302: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   305: ifeq +32 -> 337
-    //   308: ldc 26
+    //   308: ldc 21
     //   310: iconst_2
-    //   311: new 279	java/lang/StringBuilder
+    //   311: new 277	java/lang/StringBuilder
     //   314: dup
-    //   315: ldc_w 615
-    //   318: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   315: ldc_w 610
+    //   318: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   321: aload_0
-    //   322: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   325: invokevirtual 605	android/media/AudioTrack:getPlayState	()I
-    //   328: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   331: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   334: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   322: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   325: invokevirtual 600	android/media/AudioTrack:getPlayState	()I
+    //   328: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   331: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   334: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   337: aload_0
-    //   338: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   341: invokevirtual 381	android/media/AudioTrack:release	()V
-    //   344: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   338: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   341: invokevirtual 377	android/media/AudioTrack:release	()V
+    //   344: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   347: ifeq +32 -> 379
-    //   350: ldc 26
+    //   350: ldc 21
     //   352: iconst_2
-    //   353: new 279	java/lang/StringBuilder
+    //   353: new 277	java/lang/StringBuilder
     //   356: dup
-    //   357: ldc_w 617
-    //   360: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   357: ldc_w 612
+    //   360: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   363: aload_0
-    //   364: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   367: invokevirtual 605	android/media/AudioTrack:getPlayState	()I
-    //   370: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   373: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   376: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   364: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   367: invokevirtual 600	android/media/AudioTrack:getPlayState	()I
+    //   370: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   373: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   376: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   379: aload_0
     //   380: aconst_null
-    //   381: putfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   381: putfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   384: aload_0
-    //   385: getfield 136	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
+    //   385: getfield 133	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
     //   388: aload_0
-    //   389: getfield 138	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_channelOutType	I
+    //   389: getfield 135	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_channelOutType	I
     //   392: iconst_2
-    //   393: invokestatic 374	android/media/AudioTrack:getMinBufferSize	(III)I
+    //   393: invokestatic 370	android/media/AudioTrack:getMinBufferSize	(III)I
     //   396: istore 5
     //   398: iconst_4
     //   399: newarray int
@@ -867,10 +839,10 @@ public class AudioDeviceInterface
     //   422: aload 10
     //   424: iconst_0
     //   425: aload_0
-    //   426: getfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   426: getfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
     //   429: iastore
     //   430: aload_0
-    //   431: getfield 136	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
+    //   431: getfield 133	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
     //   434: bipush 20
     //   436: imul
     //   437: iconst_1
@@ -881,7 +853,7 @@ public class AudioDeviceInterface
     //   444: idiv
     //   445: istore_2
     //   446: aload_0
-    //   447: getfield 138	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_channelOutType	I
+    //   447: getfield 135	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_channelOutType	I
     //   450: bipush 12
     //   452: if_icmpne +883 -> 1335
     //   455: iload_2
@@ -893,31 +865,31 @@ public class AudioDeviceInterface
     //   463: iconst_4
     //   464: if_icmpge +536 -> 1000
     //   467: aload_0
-    //   468: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   468: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   471: ifnonnull +529 -> 1000
     //   474: aload_0
     //   475: aload 10
     //   477: iload_3
     //   478: iaload
-    //   479: putfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
-    //   482: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   479: putfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   482: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   485: ifeq +43 -> 528
-    //   488: ldc 26
+    //   488: ldc 21
     //   490: iconst_2
-    //   491: new 279	java/lang/StringBuilder
+    //   491: new 277	java/lang/StringBuilder
     //   494: dup
-    //   495: ldc_w 402
-    //   498: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   495: ldc_w 397
+    //   498: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   501: iload 5
-    //   503: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   506: ldc_w 404
-    //   509: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   503: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   506: ldc_w 399
+    //   509: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   512: aload_0
-    //   513: getfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
-    //   516: invokestatic 407	android/media/AudioTrack:getNativeOutputSampleRate	(I)I
-    //   519: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   522: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   525: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   513: getfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   516: invokestatic 402	android/media/AudioTrack:getNativeOutputSampleRate	(I)I
+    //   519: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   522: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   525: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   528: iconst_1
     //   529: istore 4
     //   531: iload 4
@@ -936,352 +908,352 @@ public class AudioDeviceInterface
     //   554: iconst_2
     //   555: if_icmplt +128 -> 683
     //   558: aload_0
-    //   559: new 370	android/media/AudioTrack
+    //   559: new 366	android/media/AudioTrack
     //   562: dup
     //   563: aload_0
-    //   564: getfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   564: getfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
     //   567: aload_0
-    //   568: getfield 136	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
+    //   568: getfield 133	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
     //   571: aload_0
-    //   572: getfield 138	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_channelOutType	I
+    //   572: getfield 135	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_channelOutType	I
     //   575: iconst_2
     //   576: iload 6
     //   578: iconst_1
-    //   579: invokespecial 410	android/media/AudioTrack:<init>	(IIIIII)V
-    //   582: putfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   585: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   579: invokespecial 405	android/media/AudioTrack:<init>	(IIIIII)V
+    //   582: putfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   585: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   588: ifeq +29 -> 617
-    //   591: ldc 26
+    //   591: ldc 21
     //   593: iconst_2
-    //   594: new 279	java/lang/StringBuilder
+    //   594: new 277	java/lang/StringBuilder
     //   597: dup
-    //   598: ldc_w 422
-    //   601: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   598: ldc_w 417
+    //   601: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   604: aload_0
-    //   605: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   608: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   611: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   614: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   605: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   608: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   611: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   614: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   617: aload_0
-    //   618: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   621: invokevirtual 413	android/media/AudioTrack:getState	()I
+    //   618: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   621: invokevirtual 408	android/media/AudioTrack:getState	()I
     //   624: iconst_1
     //   625: if_icmpeq +720 -> 1345
-    //   628: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   628: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   631: ifeq +40 -> 671
-    //   634: ldc 26
+    //   634: ldc 21
     //   636: iconst_2
-    //   637: new 279	java/lang/StringBuilder
+    //   637: new 277	java/lang/StringBuilder
     //   640: dup
-    //   641: ldc_w 415
-    //   644: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   641: ldc_w 410
+    //   644: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   647: iload 6
-    //   649: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   652: ldc_w 417
-    //   655: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   649: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   652: ldc_w 412
+    //   655: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   658: aload_0
-    //   659: getfield 136	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
-    //   662: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   665: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   668: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   659: getfield 133	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playSamplerate	I
+    //   662: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   665: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   668: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   671: aload_0
-    //   672: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   675: invokevirtual 381	android/media/AudioTrack:release	()V
+    //   672: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   675: invokevirtual 377	android/media/AudioTrack:release	()V
     //   678: aload_0
     //   679: aconst_null
-    //   680: putfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   680: putfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   683: iload 4
     //   685: iconst_1
     //   686: iadd
     //   687: istore 4
     //   689: goto -158 -> 531
     //   692: astore 10
-    //   694: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   694: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   697: ifeq -558 -> 139
-    //   700: ldc 26
+    //   700: ldc 21
     //   702: iconst_2
-    //   703: new 279	java/lang/StringBuilder
+    //   703: new 277	java/lang/StringBuilder
     //   706: dup
-    //   707: ldc_w 619
-    //   710: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   707: ldc_w 614
+    //   710: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   713: aload 10
-    //   715: invokevirtual 310	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   718: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   721: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   724: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   715: invokevirtual 306	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   718: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   721: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   724: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   727: goto -588 -> 139
     //   730: astore 10
     //   732: iconst_0
     //   733: istore_1
     //   734: iload_1
     //   735: istore_2
-    //   736: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   736: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   739: ifeq +32 -> 771
-    //   742: ldc 26
+    //   742: ldc 21
     //   744: iconst_2
-    //   745: new 279	java/lang/StringBuilder
+    //   745: new 277	java/lang/StringBuilder
     //   748: dup
-    //   749: ldc_w 553
-    //   752: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   749: ldc_w 548
+    //   752: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   755: aload 10
-    //   757: invokevirtual 310	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   760: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   763: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   766: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   757: invokevirtual 306	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   760: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   763: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   766: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   769: iload_1
     //   770: istore_2
     //   771: sipush 13825
-    //   774: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   774: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   777: iload_2
     //   778: ireturn
     //   779: astore 10
-    //   781: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   781: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   784: ifeq -610 -> 174
-    //   787: ldc 26
+    //   787: ldc 21
     //   789: iconst_2
-    //   790: ldc_w 621
-    //   793: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   790: ldc_w 616
+    //   793: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   796: goto -622 -> 174
     //   799: astore 10
     //   801: sipush 13825
-    //   804: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   804: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   807: aload 10
     //   809: athrow
     //   810: aload_0
-    //   811: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   811: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
     //   814: ifnonnull +27 -> 841
     //   817: aload_0
-    //   818: getfield 148	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_context	Landroid/content/Context;
+    //   818: getfield 145	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_context	Landroid/content/Context;
     //   821: ifnull +20 -> 841
     //   824: aload_0
     //   825: aload_0
-    //   826: getfield 148	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_context	Landroid/content/Context;
-    //   829: ldc_w 360
-    //   832: invokevirtual 366	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   835: checkcast 368	android/media/AudioManager
-    //   838: putfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   826: getfield 145	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_context	Landroid/content/Context;
+    //   829: ldc_w 356
+    //   832: invokevirtual 362	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   835: checkcast 364	android/media/AudioManager
+    //   838: putfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
     //   841: aload_0
-    //   842: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   842: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
     //   845: ifnull +55 -> 900
     //   848: aload_0
-    //   849: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
-    //   852: invokevirtual 394	android/media/AudioManager:getMode	()I
+    //   849: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   852: invokevirtual 389	android/media/AudioManager:getMode	()I
     //   855: ifne +45 -> 900
     //   858: aload_0
-    //   859: getfield 190	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_connectedDev	Ljava/lang/String;
-    //   862: ldc_w 396
-    //   865: invokevirtual 400	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   859: getfield 187	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_connectedDev	Ljava/lang/String;
+    //   862: ldc_w 391
+    //   865: invokevirtual 395	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   868: ifeq +32 -> 900
     //   871: aload_0
     //   872: iconst_3
-    //   873: putfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   873: putfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
     //   876: aload_0
-    //   877: getfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   877: getfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
     //   880: aload_0
-    //   881: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   884: invokevirtual 451	android/media/AudioTrack:getStreamType	()I
+    //   881: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   884: invokevirtual 446	android/media/AudioTrack:getStreamType	()I
     //   887: if_icmpne +21 -> 908
     //   890: iconst_0
     //   891: istore_2
     //   892: aload_0
     //   893: iconst_0
-    //   894: putfield 192	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRouteChanged	Z
+    //   894: putfield 189	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRouteChanged	Z
     //   897: goto -714 -> 183
     //   900: aload_0
     //   901: iconst_0
-    //   902: putfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   902: putfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
     //   905: goto -29 -> 876
     //   908: iconst_1
     //   909: istore_2
     //   910: goto -18 -> 892
     //   913: astore 10
-    //   915: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   915: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   918: ifeq -534 -> 384
-    //   921: ldc 26
+    //   921: ldc 21
     //   923: iconst_2
-    //   924: ldc_w 623
-    //   927: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   924: ldc_w 618
+    //   927: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   930: goto -546 -> 384
     //   933: astore 11
-    //   935: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   935: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   938: ifeq +40 -> 978
-    //   941: ldc 26
+    //   941: ldc 21
     //   943: iconst_2
-    //   944: new 279	java/lang/StringBuilder
+    //   944: new 277	java/lang/StringBuilder
     //   947: dup
-    //   948: invokespecial 420	java/lang/StringBuilder:<init>	()V
+    //   948: invokespecial 415	java/lang/StringBuilder:<init>	()V
     //   951: aload 11
-    //   953: invokevirtual 310	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   956: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   959: ldc_w 422
-    //   962: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   953: invokevirtual 306	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   956: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   959: ldc_w 417
+    //   962: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   965: aload_0
-    //   966: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   969: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   972: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   975: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   966: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   969: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   972: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   975: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   978: aload_0
-    //   979: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   979: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   982: ifnull +10 -> 992
     //   985: aload_0
-    //   986: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   989: invokevirtual 381	android/media/AudioTrack:release	()V
+    //   986: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   989: invokevirtual 377	android/media/AudioTrack:release	()V
     //   992: aload_0
     //   993: aconst_null
-    //   994: putfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   994: putfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   997: goto -314 -> 683
     //   1000: aload_0
-    //   1001: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   1001: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   1004: astore 10
     //   1006: aload 10
     //   1008: ifnull +57 -> 1065
     //   1011: aload_0
-    //   1012: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   1015: invokevirtual 626	android/media/AudioTrack:play	()V
+    //   1012: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   1015: invokevirtual 621	android/media/AudioTrack:play	()V
     //   1018: aload_0
-    //   1019: getfield 186	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_as	Lcom/tencent/rtmp/sharp/jni/TraeAudioSession;
+    //   1019: getfield 183	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_as	Lcom/tencent/rtmp/sharp/jni/TraeAudioSession;
     //   1022: aload_0
-    //   1023: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
-    //   1026: invokevirtual 394	android/media/AudioManager:getMode	()I
+    //   1023: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   1026: invokevirtual 389	android/media/AudioManager:getMode	()I
     //   1029: aload_0
-    //   1030: getfield 134	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
-    //   1033: invokevirtual 429	com/tencent/rtmp/sharp/jni/TraeAudioSession:voiceCallAudioParamChanged	(II)I
+    //   1030: getfield 131	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_streamType	I
+    //   1033: invokevirtual 424	com/tencent/rtmp/sharp/jni/TraeAudioSession:voiceCallAudioParamChanged	(II)I
     //   1036: pop
     //   1037: aload_0
-    //   1038: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   1038: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
     //   1041: astore 10
     //   1043: aload_0
-    //   1044: getfield 190	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_connectedDev	Ljava/lang/String;
-    //   1047: ldc_w 444
-    //   1050: invokevirtual 400	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1044: getfield 187	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_connectedDev	Ljava/lang/String;
+    //   1047: ldc_w 439
+    //   1050: invokevirtual 395	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1053: ifeq +59 -> 1112
     //   1056: bipush 6
     //   1058: istore_2
     //   1059: aload 10
     //   1061: iload_2
-    //   1062: invokestatic 448	com/tencent/rtmp/sharp/jni/TraeAudioManager:forceVolumeControlStream	(Landroid/media/AudioManager;I)V
+    //   1062: invokestatic 443	com/tencent/rtmp/sharp/jni/TraeAudioManager:forceVolumeControlStream	(Landroid/media/AudioManager;I)V
     //   1065: iload_1
     //   1066: istore_2
-    //   1067: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   1067: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   1070: ifeq -299 -> 771
-    //   1073: ldc 26
+    //   1073: ldc 21
     //   1075: iconst_2
-    //   1076: new 279	java/lang/StringBuilder
+    //   1076: new 277	java/lang/StringBuilder
     //   1079: dup
-    //   1080: ldc_w 628
-    //   1083: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   1086: invokestatic 598	android/os/SystemClock:elapsedRealtime	()J
+    //   1080: ldc_w 623
+    //   1083: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1086: invokestatic 593	android/os/SystemClock:elapsedRealtime	()J
     //   1089: lload 8
     //   1091: lsub
-    //   1092: invokevirtual 631	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1095: ldc_w 633
-    //   1098: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1101: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1104: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1092: invokevirtual 626	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1095: ldc_w 628
+    //   1098: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1101: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1104: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1107: iload_1
     //   1108: istore_2
     //   1109: goto -338 -> 771
     //   1112: aload_0
-    //   1113: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   1116: invokevirtual 451	android/media/AudioTrack:getStreamType	()I
+    //   1113: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   1116: invokevirtual 446	android/media/AudioTrack:getStreamType	()I
     //   1119: istore_2
     //   1120: goto -61 -> 1059
     //   1123: astore 10
-    //   1125: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   1125: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   1128: ifeq -63 -> 1065
-    //   1131: ldc 26
+    //   1131: ldc 21
     //   1133: iconst_2
-    //   1134: ldc_w 635
-    //   1137: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1134: ldc_w 630
+    //   1137: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1140: goto -75 -> 1065
     //   1143: aload_0
-    //   1144: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   1144: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   1147: aload_0
-    //   1148: getfield 245	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufPlay	[B
+    //   1148: getfield 242	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufPlay	[B
     //   1151: iconst_0
     //   1152: iload_1
-    //   1153: invokevirtual 638	android/media/AudioTrack:write	([BII)I
+    //   1153: invokevirtual 633	android/media/AudioTrack:write	([BII)I
     //   1156: istore_2
     //   1157: aload_0
-    //   1158: getfield 219	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playBuffer	Ljava/nio/ByteBuffer;
-    //   1161: invokevirtual 592	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   1158: getfield 216	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playBuffer	Ljava/nio/ByteBuffer;
+    //   1161: invokevirtual 587	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   1164: pop
     //   1165: iload_2
     //   1166: ifge +56 -> 1222
-    //   1169: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   1169: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   1172: ifeq +42 -> 1214
-    //   1175: ldc 26
+    //   1175: ldc 21
     //   1177: iconst_2
-    //   1178: new 279	java/lang/StringBuilder
+    //   1178: new 277	java/lang/StringBuilder
     //   1181: dup
-    //   1182: ldc_w 640
-    //   1185: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1182: ldc_w 635
+    //   1185: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1188: iload_2
-    //   1189: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1192: ldc_w 642
-    //   1195: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1189: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1192: ldc_w 637
+    //   1195: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1198: iload_1
-    //   1199: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1202: ldc_w 644
-    //   1205: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1208: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1211: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1199: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1202: ldc_w 639
+    //   1205: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1208: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1211: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1214: sipush 13825
-    //   1217: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1217: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1220: iconst_m1
     //   1221: ireturn
     //   1222: iload_2
     //   1223: iload_1
     //   1224: if_icmpeq +48 -> 1272
-    //   1227: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   1227: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   1230: ifeq +42 -> 1272
-    //   1233: ldc 26
+    //   1233: ldc 21
     //   1235: iconst_2
-    //   1236: new 279	java/lang/StringBuilder
+    //   1236: new 277	java/lang/StringBuilder
     //   1239: dup
-    //   1240: ldc_w 646
-    //   1243: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1240: ldc_w 641
+    //   1243: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1246: iload_2
-    //   1247: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1250: ldc_w 642
-    //   1253: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1247: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1250: ldc_w 637
+    //   1253: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1256: iload_1
-    //   1257: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1260: ldc_w 644
-    //   1263: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1266: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1269: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1257: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1260: ldc_w 639
+    //   1263: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1266: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1269: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1272: aload_0
     //   1273: aload_0
-    //   1274: getfield 168	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
+    //   1274: getfield 165	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
     //   1277: iload_2
     //   1278: iconst_1
     //   1279: ishr
     //   1280: iadd
-    //   1281: putfield 168	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
+    //   1281: putfield 165	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
     //   1284: aload_0
-    //   1285: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   1288: invokevirtual 432	android/media/AudioTrack:getPlaybackHeadPosition	()I
+    //   1285: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   1288: invokevirtual 427	android/media/AudioTrack:getPlaybackHeadPosition	()I
     //   1291: istore_1
     //   1292: iload_1
     //   1293: aload_0
-    //   1294: getfield 170	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
+    //   1294: getfield 167	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
     //   1297: if_icmpge +8 -> 1305
     //   1300: aload_0
     //   1301: iconst_0
-    //   1302: putfield 170	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
+    //   1302: putfield 167	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
     //   1305: aload_0
     //   1306: aload_0
-    //   1307: getfield 168	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
+    //   1307: getfield 165	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
     //   1310: iload_1
     //   1311: aload_0
-    //   1312: getfield 170	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
+    //   1312: getfield 167	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
     //   1315: isub
     //   1316: isub
-    //   1317: putfield 168	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
+    //   1317: putfield 165	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_bufferedPlaySamples	I
     //   1320: aload_0
     //   1321: iload_1
-    //   1322: putfield 170	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
+    //   1322: putfield 167	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_playPosition	I
     //   1325: goto -554 -> 771
     //   1328: astore 10
     //   1330: iload_2
@@ -1443,187 +1415,187 @@ public class AudioDeviceInterface
   {
     // Byte code:
     //   0: sipush 13827
-    //   3: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 162	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
+    //   7: getfield 159	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
     //   10: ifne +43 -> 53
-    //   13: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   13: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   16: ifeq +29 -> 45
-    //   19: ldc 26
+    //   19: ldc 21
     //   21: iconst_2
-    //   22: new 279	java/lang/StringBuilder
+    //   22: new 277	java/lang/StringBuilder
     //   25: dup
-    //   26: ldc_w 667
-    //   29: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   26: ldc_w 662
+    //   29: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   32: aload_0
-    //   33: getfield 162	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
-    //   36: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   33: getfield 159	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
+    //   36: invokevirtual 335	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: sipush 13827
-    //   48: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   48: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: iconst_m1
     //   52: ireturn
     //   53: aload_0
-    //   54: getfield 132	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
+    //   54: getfield 129	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
     //   57: astore 5
     //   59: aload 5
     //   61: ifnonnull +12 -> 73
     //   64: sipush 13827
-    //   67: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: bipush 254
     //   72: ireturn
     //   73: aload_0
-    //   74: getfield 160	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doRecInit	Z
+    //   74: getfield 157	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doRecInit	Z
     //   77: istore 4
     //   79: iload 4
     //   81: iconst_1
     //   82: if_icmpne +22 -> 104
     //   85: bipush 237
-    //   87: invokestatic 567	android/os/Process:setThreadPriority	(I)V
-    //   90: invokestatic 573	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   93: ldc_w 669
-    //   96: invokevirtual 578	java/lang/Thread:setName	(Ljava/lang/String;)V
+    //   87: invokestatic 562	android/os/Process:setThreadPriority	(I)V
+    //   90: invokestatic 568	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   93: ldc_w 664
+    //   96: invokevirtual 573	java/lang/Thread:setName	(Ljava/lang/String;)V
     //   99: aload_0
     //   100: iconst_0
-    //   101: putfield 160	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doRecInit	Z
+    //   101: putfield 157	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_doRecInit	Z
     //   104: aload_0
-    //   105: getfield 221	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_recBuffer	Ljava/nio/ByteBuffer;
-    //   108: invokevirtual 592	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   105: getfield 218	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_recBuffer	Ljava/nio/ByteBuffer;
+    //   108: invokevirtual 587	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   111: pop
     //   112: aload_0
-    //   113: getfield 132	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
+    //   113: getfield 129	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
     //   116: aload_0
-    //   117: getfield 247	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufRec	[B
+    //   117: getfield 244	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufRec	[B
     //   120: iconst_0
     //   121: iload_1
-    //   122: invokevirtual 672	android/media/AudioRecord:read	([BII)I
+    //   122: invokevirtual 667	android/media/AudioRecord:read	([BII)I
     //   125: istore_2
     //   126: iload_2
     //   127: ifge +143 -> 270
-    //   130: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   130: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   133: ifeq +42 -> 175
-    //   136: ldc 26
+    //   136: ldc 21
     //   138: iconst_2
-    //   139: new 279	java/lang/StringBuilder
+    //   139: new 277	java/lang/StringBuilder
     //   142: dup
-    //   143: ldc_w 674
-    //   146: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   143: ldc_w 669
+    //   146: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   149: iload_2
-    //   150: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: ldc_w 642
-    //   156: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   153: ldc_w 637
+    //   156: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: iload_1
-    //   160: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   163: ldc_w 644
-    //   166: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   160: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   163: ldc_w 639
+    //   166: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   172: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   175: sipush 13827
-    //   178: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   178: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   181: iconst_m1
     //   182: ireturn
     //   183: astore 5
-    //   185: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   185: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   188: ifeq -89 -> 99
-    //   191: ldc 26
+    //   191: ldc 21
     //   193: iconst_2
-    //   194: new 279	java/lang/StringBuilder
+    //   194: new 277	java/lang/StringBuilder
     //   197: dup
-    //   198: ldc_w 676
-    //   201: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   198: ldc_w 671
+    //   201: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   204: aload 5
-    //   206: invokevirtual 310	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   209: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   215: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   206: invokevirtual 306	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   209: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   215: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   218: goto -119 -> 99
     //   221: astore 5
     //   223: iconst_0
     //   224: istore_2
     //   225: iload_2
     //   226: istore_3
-    //   227: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   227: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   230: ifeq +32 -> 262
-    //   233: ldc 26
+    //   233: ldc 21
     //   235: iconst_2
-    //   236: new 279	java/lang/StringBuilder
+    //   236: new 277	java/lang/StringBuilder
     //   239: dup
-    //   240: ldc_w 678
-    //   243: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   240: ldc_w 673
+    //   243: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   246: aload 5
-    //   248: invokevirtual 310	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   251: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   248: invokevirtual 306	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   251: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   260: iload_2
     //   261: istore_3
     //   262: sipush 13827
-    //   265: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   265: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   268: iload_3
     //   269: ireturn
     //   270: aload_0
-    //   271: getfield 221	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_recBuffer	Ljava/nio/ByteBuffer;
+    //   271: getfield 218	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_recBuffer	Ljava/nio/ByteBuffer;
     //   274: aload_0
-    //   275: getfield 247	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufRec	[B
+    //   275: getfield 244	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufRec	[B
     //   278: iconst_0
     //   279: iload_2
-    //   280: invokevirtual 664	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   280: invokevirtual 659	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
     //   283: pop
-    //   284: getstatic 108	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
+    //   284: getstatic 103	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
     //   287: ifeq +27 -> 314
     //   290: aload_0
-    //   291: getfield 176	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_out	Ljava/io/FileOutputStream;
+    //   291: getfield 173	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_out	Ljava/io/FileOutputStream;
     //   294: astore 5
     //   296: aload 5
     //   298: ifnull +16 -> 314
     //   301: aload_0
-    //   302: getfield 176	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_out	Ljava/io/FileOutputStream;
+    //   302: getfield 173	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_out	Ljava/io/FileOutputStream;
     //   305: aload_0
-    //   306: getfield 247	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufRec	[B
+    //   306: getfield 244	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_tempBufRec	[B
     //   309: iconst_0
     //   310: iload_2
-    //   311: invokevirtual 584	java/io/FileOutputStream:write	([BII)V
+    //   311: invokevirtual 579	java/io/FileOutputStream:write	([BII)V
     //   314: iload_2
     //   315: istore_3
     //   316: iload_2
     //   317: iload_1
     //   318: if_icmpeq -56 -> 262
-    //   321: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   321: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   324: ifeq +42 -> 366
-    //   327: ldc 26
+    //   327: ldc 21
     //   329: iconst_2
-    //   330: new 279	java/lang/StringBuilder
+    //   330: new 277	java/lang/StringBuilder
     //   333: dup
-    //   334: ldc_w 680
-    //   337: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   334: ldc_w 675
+    //   337: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   340: iload_2
-    //   341: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   344: ldc_w 642
-    //   347: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   344: ldc_w 637
+    //   347: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: iload_1
-    //   351: invokevirtual 288	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   354: ldc_w 644
-    //   357: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   360: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   363: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: invokevirtual 286	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   354: ldc_w 639
+    //   357: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   360: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   363: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   366: sipush 13827
-    //   369: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   369: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   372: iconst_m1
     //   373: ireturn
     //   374: astore 5
-    //   376: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   376: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   379: ifeq -65 -> 314
-    //   382: ldc 26
+    //   382: ldc 21
     //   384: iconst_2
-    //   385: ldc_w 682
-    //   388: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   385: ldc_w 677
+    //   388: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   391: goto -77 -> 314
     //   394: astore 5
     //   396: goto -171 -> 225
     //   399: astore 5
     //   401: sipush 13827
-    //   404: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   404: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   407: aload 5
     //   409: athrow
     // Local variable table:
@@ -1796,99 +1768,99 @@ public class AudioDeviceInterface
     //   0: iconst_m1
     //   1: istore_1
     //   2: sipush 13822
-    //   5: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 164	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
+    //   9: getfield 161	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
     //   12: ifeq +26 -> 38
-    //   15: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   15: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   18: ifeq +12 -> 30
-    //   21: ldc 26
+    //   21: ldc 21
     //   23: iconst_2
-    //   24: ldc_w 707
-    //   27: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: ldc_w 702
+    //   27: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   30: sipush 13822
-    //   33: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: iconst_m1
     //   37: ireturn
     //   38: aload_0
-    //   39: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   39: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
     //   42: ifnonnull +43 -> 85
-    //   45: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   45: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   48: ifeq +29 -> 77
-    //   51: ldc 26
+    //   51: ldc 21
     //   53: iconst_2
-    //   54: new 279	java/lang/StringBuilder
+    //   54: new 277	java/lang/StringBuilder
     //   57: dup
-    //   58: ldc_w 709
-    //   61: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   58: ldc_w 704
+    //   61: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   64: aload_0
-    //   65: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   68: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   71: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   74: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   65: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   68: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   71: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   74: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   77: sipush 13822
-    //   80: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: iconst_m1
     //   84: ireturn
     //   85: aload_0
-    //   86: getfield 130	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
-    //   89: invokevirtual 626	android/media/AudioTrack:play	()V
-    //   92: getstatic 108	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
+    //   86: getfield 127	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioTrack	Landroid/media/AudioTrack;
+    //   89: invokevirtual 621	android/media/AudioTrack:play	()V
+    //   92: getstatic 103	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
     //   95: ifeq +52 -> 147
     //   98: aload_0
-    //   99: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   99: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
     //   102: ifnull +11 -> 113
     //   105: aload_0
-    //   106: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
-    //   109: invokevirtual 394	android/media/AudioManager:getMode	()I
+    //   106: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   109: invokevirtual 389	android/media/AudioManager:getMode	()I
     //   112: istore_1
     //   113: aload_0
-    //   114: new 711	java/io/File
+    //   114: new 706	java/io/File
     //   117: dup
     //   118: aload_0
-    //   119: ldc_w 713
+    //   119: ldc_w 708
     //   122: iload_1
-    //   123: invokespecial 717	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:getDumpFilePath	(Ljava/lang/String;I)Ljava/lang/String;
-    //   126: invokespecial 718	java/io/File:<init>	(Ljava/lang/String;)V
-    //   129: putfield 174	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_dump	Ljava/io/File;
+    //   123: invokespecial 712	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:getDumpFilePath	(Ljava/lang/String;I)Ljava/lang/String;
+    //   126: invokespecial 713	java/io/File:<init>	(Ljava/lang/String;)V
+    //   129: putfield 171	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_dump	Ljava/io/File;
     //   132: aload_0
-    //   133: new 580	java/io/FileOutputStream
+    //   133: new 575	java/io/FileOutputStream
     //   136: dup
     //   137: aload_0
-    //   138: getfield 174	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_dump	Ljava/io/File;
-    //   141: invokespecial 721	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   144: putfield 178	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_out	Ljava/io/FileOutputStream;
+    //   138: getfield 171	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_dump	Ljava/io/File;
+    //   141: invokespecial 716	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   144: putfield 175	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_play_out	Ljava/io/FileOutputStream;
     //   147: aload_0
     //   148: iconst_1
-    //   149: putfield 164	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
-    //   152: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   149: putfield 161	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isPlaying	Z
+    //   152: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   155: ifeq +12 -> 167
-    //   158: ldc 26
+    //   158: ldc 21
     //   160: iconst_2
-    //   161: ldc_w 723
-    //   164: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   161: ldc_w 718
+    //   164: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   167: sipush 13822
-    //   170: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   173: iconst_0
     //   174: ireturn
     //   175: astore_2
-    //   176: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   176: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   179: ifeq +12 -> 191
-    //   182: ldc 26
+    //   182: ldc 21
     //   184: iconst_2
-    //   185: ldc_w 725
-    //   188: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   185: ldc_w 720
+    //   188: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   191: sipush 13822
-    //   194: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   197: iconst_m1
     //   198: ireturn
     //   199: astore_2
-    //   200: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   200: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
     //   203: ifeq -56 -> 147
-    //   206: ldc 26
+    //   206: ldc 21
     //   208: iconst_2
-    //   209: ldc_w 727
-    //   212: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   209: ldc_w 722
+    //   212: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   215: goto -68 -> 147
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1906,126 +1878,134 @@ public class AudioDeviceInterface
   private int StartRecording()
   {
     // Byte code:
-    //   0: iconst_m1
-    //   1: istore_1
-    //   2: sipush 13821
-    //   5: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
-    //   11: ifeq +12 -> 23
-    //   14: ldc 26
-    //   16: iconst_2
-    //   17: ldc_w 730
-    //   20: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   23: aload_0
-    //   24: getfield 162	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
-    //   27: ifeq +43 -> 70
-    //   30: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
-    //   33: ifeq +29 -> 62
-    //   36: ldc 26
-    //   38: iconst_2
-    //   39: new 279	java/lang/StringBuilder
-    //   42: dup
-    //   43: ldc_w 732
-    //   46: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   49: aload_0
-    //   50: getfield 162	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
-    //   53: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   56: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   59: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   62: sipush 13821
-    //   65: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   68: iconst_m1
-    //   69: ireturn
-    //   70: aload_0
-    //   71: getfield 132	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
-    //   74: ifnonnull +43 -> 117
-    //   77: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
-    //   80: ifeq +29 -> 109
-    //   83: ldc 26
-    //   85: iconst_2
-    //   86: new 279	java/lang/StringBuilder
-    //   89: dup
-    //   90: ldc_w 734
-    //   93: invokespecial 284	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   96: aload_0
-    //   97: getfield 132	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
-    //   100: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   103: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   106: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   109: sipush 13821
-    //   112: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   115: iconst_m1
-    //   116: ireturn
-    //   117: aload_0
-    //   118: getfield 132	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
-    //   121: invokevirtual 737	android/media/AudioRecord:startRecording	()V
-    //   124: getstatic 108	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
-    //   127: ifeq +52 -> 179
-    //   130: aload_0
-    //   131: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
-    //   134: ifnull +11 -> 145
-    //   137: aload_0
-    //   138: getfield 156	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
-    //   141: invokevirtual 394	android/media/AudioManager:getMode	()I
-    //   144: istore_1
-    //   145: aload_0
-    //   146: new 711	java/io/File
-    //   149: dup
-    //   150: aload_0
-    //   151: ldc_w 739
-    //   154: iload_1
-    //   155: invokespecial 717	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:getDumpFilePath	(Ljava/lang/String;I)Ljava/lang/String;
-    //   158: invokespecial 718	java/io/File:<init>	(Ljava/lang/String;)V
-    //   161: putfield 172	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_dump	Ljava/io/File;
-    //   164: aload_0
-    //   165: new 580	java/io/FileOutputStream
-    //   168: dup
-    //   169: aload_0
-    //   170: getfield 172	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_dump	Ljava/io/File;
-    //   173: invokespecial 721	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   176: putfield 176	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_out	Ljava/io/FileOutputStream;
-    //   179: aload_0
-    //   180: iconst_1
-    //   181: putfield 162	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
-    //   184: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
-    //   187: ifeq +12 -> 199
-    //   190: ldc 26
-    //   192: iconst_2
-    //   193: ldc_w 741
-    //   196: invokestatic 277	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   199: sipush 13821
-    //   202: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   205: iconst_0
-    //   206: ireturn
-    //   207: astore_2
-    //   208: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
-    //   211: ifeq +12 -> 223
-    //   214: ldc 26
-    //   216: iconst_2
-    //   217: ldc_w 743
-    //   220: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   223: sipush 13821
-    //   226: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   229: iconst_m1
-    //   230: ireturn
-    //   231: astore_2
-    //   232: invokestatic 261	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
-    //   235: ifeq -56 -> 179
-    //   238: ldc 26
-    //   240: iconst_2
-    //   241: ldc_w 745
-    //   244: invokestatic 358	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   247: goto -68 -> 179
+    //   0: sipush 13821
+    //   3: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   9: ifeq +12 -> 21
+    //   12: ldc 21
+    //   14: iconst_2
+    //   15: ldc_w 725
+    //   18: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   21: aload_0
+    //   22: getfield 159	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
+    //   25: ifeq +43 -> 68
+    //   28: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   31: ifeq +29 -> 60
+    //   34: ldc 21
+    //   36: iconst_2
+    //   37: new 277	java/lang/StringBuilder
+    //   40: dup
+    //   41: ldc_w 727
+    //   44: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   47: aload_0
+    //   48: getfield 159	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
+    //   51: invokevirtual 335	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   60: sipush 13821
+    //   63: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: iconst_m1
+    //   67: ireturn
+    //   68: aload_0
+    //   69: getfield 129	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
+    //   72: ifnonnull +43 -> 115
+    //   75: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   78: ifeq +29 -> 107
+    //   81: ldc 21
+    //   83: iconst_2
+    //   84: new 277	java/lang/StringBuilder
+    //   87: dup
+    //   88: ldc_w 729
+    //   91: invokespecial 282	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   94: aload_0
+    //   95: getfield 129	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
+    //   98: invokevirtual 340	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   101: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: sipush 13821
+    //   110: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: iconst_m1
+    //   114: ireturn
+    //   115: aload_0
+    //   116: getfield 129	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioRecord	Landroid/media/AudioRecord;
+    //   119: ldc_w 730
+    //   122: ldc_w 731
+    //   125: ldc_w 732
+    //   128: ldc_w 733
+    //   131: ldc_w 735
+    //   134: ldc_w 736
+    //   137: invokestatic 742	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   140: pop
+    //   141: getstatic 103	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_dumpEnable	Z
+    //   144: ifeq +52 -> 196
+    //   147: aload_0
+    //   148: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   151: ifnull +97 -> 248
+    //   154: aload_0
+    //   155: getfield 153	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_audioManager	Landroid/media/AudioManager;
+    //   158: invokevirtual 389	android/media/AudioManager:getMode	()I
+    //   161: istore_1
+    //   162: aload_0
+    //   163: new 706	java/io/File
+    //   166: dup
+    //   167: aload_0
+    //   168: ldc_w 744
+    //   171: iload_1
+    //   172: invokespecial 712	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:getDumpFilePath	(Ljava/lang/String;I)Ljava/lang/String;
+    //   175: invokespecial 713	java/io/File:<init>	(Ljava/lang/String;)V
+    //   178: putfield 169	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_dump	Ljava/io/File;
+    //   181: aload_0
+    //   182: new 575	java/io/FileOutputStream
+    //   185: dup
+    //   186: aload_0
+    //   187: getfield 169	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_dump	Ljava/io/File;
+    //   190: invokespecial 716	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   193: putfield 173	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_rec_out	Ljava/io/FileOutputStream;
+    //   196: aload_0
+    //   197: iconst_1
+    //   198: putfield 159	com/tencent/rtmp/sharp/jni/AudioDeviceInterface:_isRecording	Z
+    //   201: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   204: ifeq +12 -> 216
+    //   207: ldc 21
+    //   209: iconst_2
+    //   210: ldc_w 746
+    //   213: invokestatic 275	com/tencent/rtmp/sharp/jni/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   216: sipush 13821
+    //   219: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   222: iconst_0
+    //   223: ireturn
+    //   224: astore_2
+    //   225: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   228: ifeq +12 -> 240
+    //   231: ldc 21
+    //   233: iconst_2
+    //   234: ldc_w 748
+    //   237: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   240: sipush 13821
+    //   243: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   246: iconst_m1
+    //   247: ireturn
+    //   248: iconst_m1
+    //   249: istore_1
+    //   250: goto -88 -> 162
+    //   253: astore_2
+    //   254: invokestatic 259	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+    //   257: ifeq -61 -> 196
+    //   260: ldc 21
+    //   262: iconst_2
+    //   263: ldc_w 750
+    //   266: invokestatic 354	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: goto -73 -> 196
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	250	0	this	AudioDeviceInterface
-    //   1	154	1	i	int
-    //   207	1	2	localIllegalStateException	IllegalStateException
-    //   231	1	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   0	272	0	this	AudioDeviceInterface
+    //   161	89	1	i	int
+    //   224	1	2	localIllegalStateException	IllegalStateException
+    //   253	1	2	localFileNotFoundException	java.io.FileNotFoundException
     // Exception table:
     //   from	to	target	type
-    //   117	124	207	java/lang/IllegalStateException
-    //   164	179	231	java/io/FileNotFoundException
+    //   115	141	224	java/lang/IllegalStateException
+    //   181	196	253	java/io/FileNotFoundException
   }
   
   private int StopPlayback()
@@ -2120,10 +2100,12 @@ public class AudioDeviceInterface
   
   private int getAndroidSdkVersion()
   {
-    return Build.VERSION.SDK_INT;
+    AppMethodBeat.i(218606);
+    int i = TXCBuild.VersionInt();
+    AppMethodBeat.o(218606);
+    return i;
   }
   
-  @TargetApi(16)
   private int getAudioSessionId(AudioRecord paramAudioRecord)
   {
     return 0;
@@ -2188,10 +2170,10 @@ public class AudioDeviceInterface
   {
     AppMethodBeat.i(13820);
     if (QLog.isColorLevel()) {
-      QLog.w("AudioDeviceInterface", 2, "manufacture:" + Build.MANUFACTURER);
+      QLog.w("AudioDeviceInterface", 2, "manufacture:" + TXCBuild.Manufacturer());
     }
     if (QLog.isColorLevel()) {
-      QLog.w("AudioDeviceInterface", 2, "MODEL:" + Build.MODEL);
+      QLog.w("AudioDeviceInterface", 2, "MODEL:" + TXCBuild.Model());
     }
     if (this._context == null)
     {
@@ -2204,7 +2186,7 @@ public class AudioDeviceInterface
       AppMethodBeat.o(13820);
       return null;
     }
-    paramString = localFile.getPath() + "/MF-" + Build.MANUFACTURER + "-M-" + Build.MODEL + "-as-" + TraeAudioManager.getAudioSource(this._audioSourcePolicy) + "-st-" + this._streamType + "-m-" + paramInt + "-" + paramString;
+    paramString = localFile.getPath() + "/MF-" + TXCBuild.Manufacturer() + "-M-" + TXCBuild.Model() + "-as-" + TraeAudioManager.getAudioSource(this._audioSourcePolicy) + "-st-" + this._streamType + "-m-" + paramInt + "-" + paramString;
     localFile = new File(paramString);
     if (!localFile.getParentFile().exists()) {
       localFile.getParentFile().mkdirs();
@@ -2223,10 +2205,10 @@ public class AudioDeviceInterface
   private int getLowlatencyFramesPerBuffer()
   {
     AppMethodBeat.i(13816);
-    if ((this._context == null) || (Build.VERSION.SDK_INT < 9))
+    if ((this._context == null) || (TXCBuild.VersionInt() < 9))
     {
       if (QLog.isColorLevel()) {
-        QLog.e("AudioDeviceInterface", 2, "getLowlatencySamplerate err, _context:" + this._context + " api:" + Build.VERSION.SDK_INT);
+        QLog.e("AudioDeviceInterface", 2, "getLowlatencySamplerate err, _context:" + this._context + " api:" + TXCBuild.VersionInt());
       }
       AppMethodBeat.o(13816);
       return 0;
@@ -2244,7 +2226,7 @@ public class AudioDeviceInterface
     for (String str = "Y";; str = "N")
     {
       QLog.w("AudioDeviceInterface", 2, str);
-      if (Build.VERSION.SDK_INT >= 17) {
+      if (TXCBuild.VersionInt() >= 17) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -2260,10 +2242,10 @@ public class AudioDeviceInterface
   private int getLowlatencySamplerate()
   {
     AppMethodBeat.i(13815);
-    if ((this._context == null) || (Build.VERSION.SDK_INT < 9))
+    if ((this._context == null) || (TXCBuild.VersionInt() < 9))
     {
       if (QLog.isColorLevel()) {
-        QLog.e("AudioDeviceInterface", 2, "getLowlatencySamplerate err, _context:" + this._context + " api:" + Build.VERSION.SDK_INT);
+        QLog.e("AudioDeviceInterface", 2, "getLowlatencySamplerate err, _context:" + this._context + " api:" + TXCBuild.VersionInt());
       }
       AppMethodBeat.o(13815);
       return 0;
@@ -2281,7 +2263,7 @@ public class AudioDeviceInterface
     for (String str = "Y";; str = "N")
     {
       QLog.w("AudioDeviceInterface", 2, str);
-      if (Build.VERSION.SDK_INT >= 17) {
+      if (TXCBuild.VersionInt() >= 17) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -2424,25 +2406,25 @@ public class AudioDeviceInterface
   static boolean isHardcodeOpenSles()
   {
     AppMethodBeat.i(13845);
-    if (Build.MANUFACTURER.equals("Xiaomi"))
+    if (TXCBuild.Manufacturer().equals("Xiaomi"))
     {
-      if (Build.MODEL.equals("MI 5"))
+      if (TXCBuild.Model().equals("MI 5"))
       {
         AppMethodBeat.o(13845);
         return true;
       }
-      if (Build.MODEL.equals("MI 5s"))
+      if (TXCBuild.Model().equals("MI 5s"))
       {
         AppMethodBeat.o(13845);
         return true;
       }
-      if (Build.MODEL.equals("MI 5s Plus"))
+      if (TXCBuild.Model().equals("MI 5s Plus"))
       {
         AppMethodBeat.o(13845);
         return true;
       }
     }
-    else if ((Build.MANUFACTURER.equals("samsung")) && (Build.MODEL.equals("SM-G9350")))
+    else if ((TXCBuild.Manufacturer().equals("samsung")) && (TXCBuild.Model().equals("SM-G9350")))
     {
       AppMethodBeat.o(13845);
       return true;
@@ -2457,7 +2439,7 @@ public class AudioDeviceInterface
     if (isHardcodeOpenSles())
     {
       if (QLog.isColorLevel()) {
-        QLog.w("AudioDeviceInterface", 2, "hardcode FEATURE_AUDIO_LOW_LATENCY: " + Build.MANUFACTURER + "_" + Build.MODEL);
+        QLog.w("AudioDeviceInterface", 2, "hardcode FEATURE_AUDIO_LOW_LATENCY: " + TXCBuild.Manufacturer() + "_" + TXCBuild.Model());
       }
       AppMethodBeat.o(13847);
       return 1;
@@ -3015,7 +2997,6 @@ public class AudioDeviceInterface
     return 0;
   }
   
-  @SuppressLint({"NewApi"})
   public int checkAACMediaCodecSupported(boolean paramBoolean)
   {
     AppMethodBeat.i(13861);
@@ -3025,7 +3006,7 @@ public class AudioDeviceInterface
       String[] arrayOfString1;
       boolean bool;
       int j;
-      if (Build.VERSION.SDK_INT >= 21)
+      if (TXCBuild.VersionInt() >= 21)
       {
         localObject = new MediaCodecList(1).getCodecInfos();
         k = localObject.length;
@@ -3127,7 +3108,7 @@ public class AudioDeviceInterface
   
   public int getMode()
   {
-    AppMethodBeat.i(217799);
+    AppMethodBeat.i(218734);
     j = -1;
     try
     {
@@ -3153,7 +3134,7 @@ public class AudioDeviceInterface
         }
       }
     }
-    AppMethodBeat.o(217799);
+    AppMethodBeat.o(218734);
     return i;
   }
   
@@ -3161,7 +3142,7 @@ public class AudioDeviceInterface
   {
     int i = -1;
     AppMethodBeat.i(13846);
-    if (Build.VERSION.SDK_INT <= 10)
+    if (TXCBuild.VersionInt() <= 10)
     {
       AppMethodBeat.o(13846);
       return 1;
@@ -3221,10 +3202,10 @@ public class AudioDeviceInterface
   
   public int isBackground()
   {
-    AppMethodBeat.i(217801);
+    AppMethodBeat.i(218742);
     if (this._context == null)
     {
-      AppMethodBeat.o(217801);
+      AppMethodBeat.o(218742);
       return 0;
     }
     try
@@ -3235,7 +3216,7 @@ public class AudioDeviceInterface
         if (QLog.isColorLevel()) {
           QLog.e("AudioDeviceInterface", 2, "running task is null, ams is abnormal!!!");
         }
-        AppMethodBeat.o(217801);
+        AppMethodBeat.o(218742);
         return 0;
       }
       localObject = (ActivityManager.RunningTaskInfo)((ActivityManager)localObject).getRunningTasks(1).get(0);
@@ -3244,17 +3225,17 @@ public class AudioDeviceInterface
         if (QLog.isColorLevel()) {
           QLog.e("AudioDeviceInterface", 2, "failed to get RunningTaskInfo");
         }
-        AppMethodBeat.o(217801);
+        AppMethodBeat.o(218742);
         return 0;
       }
       boolean bool = ((ActivityManager.RunningTaskInfo)localObject).topActivity.getPackageName().equals(this._context.getPackageName());
       if (!bool) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(217801);
+        AppMethodBeat.o(218742);
         return 1;
       }
-      AppMethodBeat.o(217801);
+      AppMethodBeat.o(218742);
       return 0;
     }
     catch (Exception localException)
@@ -3262,7 +3243,7 @@ public class AudioDeviceInterface
       if (QLog.isColorLevel()) {
         QLog.w("TRAE isBackground", 2, localException.getMessage());
       }
-      AppMethodBeat.o(217801);
+      AppMethodBeat.o(218742);
     }
     return 0;
   }
@@ -3288,7 +3269,7 @@ public class AudioDeviceInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDeviceInterface
  * JD-Core Version:    0.7.0.1
  */

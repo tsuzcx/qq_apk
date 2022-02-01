@@ -68,7 +68,7 @@ public class LogFileUtils
       AppMethodBeat.o(54039);
       return paramString1;
     }
-    catch (Throwable paramString1)
+    finally
     {
       new StringBuilder("encrypt exception:").append(paramString1.getMessage());
       AppMethodBeat.o(54039);
@@ -88,7 +88,7 @@ public class LogFileUtils
       AppMethodBeat.o(54041);
       return paramString1;
     }
-    catch (Throwable paramString1)
+    finally
     {
       new StringBuilder("encrypt exception:").append(paramString1.getMessage());
       AppMethodBeat.o(54041);
@@ -184,10 +184,10 @@ public class LogFileUtils
     //   161: invokevirtual 169	java/io/OutputStream:write	([B)V
     //   164: goto -61 -> 103
     //   167: astore_0
-    //   168: new 108	java/lang/StringBuilder
+    //   168: new 106	java/lang/StringBuilder
     //   171: dup
     //   172: ldc 175
-    //   174: invokespecial 113	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   174: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   177: aload_3
     //   178: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: ldc 177
@@ -207,10 +207,10 @@ public class LogFileUtils
     //   214: aload_0
     //   215: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   218: pop
-    //   219: new 108	java/lang/StringBuilder
+    //   219: new 106	java/lang/StringBuilder
     //   222: dup
     //   223: ldc 175
-    //   225: invokespecial 113	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   225: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   228: aload_3
     //   229: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: ldc 177
@@ -245,10 +245,10 @@ public class LogFileUtils
     //   296: aload_0
     //   297: athrow
     //   298: astore_0
-    //   299: new 108	java/lang/StringBuilder
+    //   299: new 106	java/lang/StringBuilder
     //   302: dup
     //   303: ldc 191
-    //   305: invokespecial 113	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   305: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   308: aload_0
     //   309: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   312: pop
@@ -256,10 +256,10 @@ public class LogFileUtils
     //   315: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   318: goto -196 -> 122
     //   321: astore_0
-    //   322: new 108	java/lang/StringBuilder
+    //   322: new 106	java/lang/StringBuilder
     //   325: dup
     //   326: ldc 191
-    //   328: invokespecial 113	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   328: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   331: aload_0
     //   332: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   335: pop
@@ -278,10 +278,10 @@ public class LogFileUtils
     //   364: aload_0
     //   365: athrow
     //   366: astore_1
-    //   367: new 108	java/lang/StringBuilder
+    //   367: new 106	java/lang/StringBuilder
     //   370: dup
     //   371: ldc 191
-    //   373: invokespecial 113	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   373: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   376: aload_1
     //   377: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   380: pop
@@ -298,37 +298,30 @@ public class LogFileUtils
     //   0	392	4	paramBoolean	boolean
     // Exception table:
     //   from	to	target	type
-    //   20	63	167	java/lang/Throwable
-    //   63	89	167	java/lang/Throwable
-    //   93	103	167	java/lang/Throwable
-    //   131	164	167	java/lang/Throwable
+    //   20	63	167	finally
+    //   63	89	167	finally
+    //   93	103	167	finally
+    //   131	164	167	finally
     //   3	14	292	finally
     //   103	107	292	finally
-    //   111	117	292	finally
     //   117	122	292	finally
     //   270	274	292	finally
-    //   278	284	292	finally
     //   284	289	292	finally
     //   299	318	292	finally
     //   322	341	292	finally
     //   345	349	292	finally
-    //   353	359	292	finally
     //   359	366	292	finally
     //   367	381	292	finally
     //   384	389	292	finally
-    //   111	117	298	java/lang/Throwable
-    //   278	284	321	java/lang/Throwable
-    //   20	63	344	finally
-    //   63	89	344	finally
-    //   93	103	344	finally
-    //   131	164	344	finally
+    //   111	117	298	finally
+    //   278	284	321	finally
     //   168	270	344	finally
-    //   353	359	366	java/lang/Throwable
+    //   353	359	366	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.utils.LogFileUtils
  * JD-Core Version:    0.7.0.1
  */

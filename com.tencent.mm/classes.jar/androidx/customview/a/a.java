@@ -2,7 +2,6 @@ package androidx.customview.a;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -10,12 +9,11 @@ import android.view.View;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityRecord;
 import androidx.b.h;
 import androidx.core.g.a.d;
 import androidx.core.g.a.e;
-import androidx.core.g.w;
+import androidx.core.g.a.f;
+import androidx.core.g.ac;
 import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
@@ -50,8 +48,8 @@ public abstract class a
     this.mHost = paramView;
     this.mManager = ((AccessibilityManager)paramView.getContext().getSystemService("accessibility"));
     paramView.setFocusable(true);
-    if (w.H(paramView) == 0) {
-      w.p(paramView, 1);
+    if (z.R(paramView) == 0) {
+      z.p(paramView, 1);
     }
   }
   
@@ -85,22 +83,19 @@ public abstract class a
   private AccessibilityEvent createEventForChild(int paramInt1, int paramInt2)
   {
     AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(paramInt2);
-    Object localObject = obtainAccessibilityNodeInfo(paramInt1);
-    localAccessibilityEvent.getText().add(((d)localObject).getText());
-    localAccessibilityEvent.setContentDescription(((d)localObject).Ov.getContentDescription());
-    localAccessibilityEvent.setScrollable(((d)localObject).Ov.isScrollable());
-    localAccessibilityEvent.setPassword(((d)localObject).Ov.isPassword());
-    localAccessibilityEvent.setEnabled(((d)localObject).Ov.isEnabled());
-    localAccessibilityEvent.setChecked(((d)localObject).Ov.isChecked());
+    d locald = obtainAccessibilityNodeInfo(paramInt1);
+    localAccessibilityEvent.getText().add(locald.getText());
+    localAccessibilityEvent.setContentDescription(locald.getContentDescription());
+    localAccessibilityEvent.setScrollable(locald.EP());
+    localAccessibilityEvent.setPassword(locald.EO());
+    localAccessibilityEvent.setEnabled(locald.isEnabled());
+    localAccessibilityEvent.setChecked(locald.isChecked());
     onPopulateEventForVirtualView(paramInt1, localAccessibilityEvent);
     if ((localAccessibilityEvent.getText().isEmpty()) && (localAccessibilityEvent.getContentDescription() == null)) {
       throw new RuntimeException("Callbacks must add text or a content description in populateEventForVirtualViewId()");
     }
-    localAccessibilityEvent.setClassName(((d)localObject).Ov.getClassName());
-    localObject = this.mHost;
-    if (Build.VERSION.SDK_INT >= 16) {
-      localAccessibilityEvent.setSource((View)localObject, paramInt1);
-    }
+    localAccessibilityEvent.setClassName(locald.ER());
+    f.a(localAccessibilityEvent, this.mHost, paramInt1);
     localAccessibilityEvent.setPackageName(this.mHost.getContext().getPackageName());
     return localAccessibilityEvent;
   }
@@ -114,121 +109,110 @@ public abstract class a
   
   private d createNodeForChild(int paramInt)
   {
-    d locald = d.hr();
-    locald.setEnabled(true);
-    locald.setFocusable(true);
-    locald.t("android.view.View");
-    locald.f(INVALID_PARENT_BOUNDS);
-    locald.h(INVALID_PARENT_BOUNDS);
-    locald.setParent(this.mHost);
-    onPopulateNodeForVirtualView(paramInt, locald);
-    if ((locald.getText() == null) && (locald.Ov.getContentDescription() == null)) {
+    d locald1 = d.EI();
+    locald1.setEnabled(true);
+    locald1.setFocusable(true);
+    locald1.v("android.view.View");
+    locald1.k(INVALID_PARENT_BOUNDS);
+    locald1.m(INVALID_PARENT_BOUNDS);
+    locald1.setParent(this.mHost);
+    onPopulateNodeForVirtualView(paramInt, locald1);
+    if ((locald1.getText() == null) && (locald1.getContentDescription() == null)) {
       throw new RuntimeException("Callbacks must add text or a content description in populateNodeForVirtualViewId()");
     }
-    locald.e(this.mTempParentRect);
+    locald1.j(this.mTempParentRect);
     if (this.mTempParentRect.equals(INVALID_PARENT_BOUNDS)) {
       throw new RuntimeException("Callbacks must set parent bounds in populateNodeForVirtualViewId()");
     }
-    int i = locald.Ov.getActions();
+    int i = locald1.EJ();
     if ((i & 0x40) != 0) {
       throw new RuntimeException("Callbacks must not add ACTION_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
     }
     if ((i & 0x80) != 0) {
       throw new RuntimeException("Callbacks must not add ACTION_CLEAR_ACCESSIBILITY_FOCUS in populateNodeForVirtualViewId()");
     }
-    locald.s(this.mHost.getContext().getPackageName());
-    Object localObject = this.mHost;
-    locald.Ox = paramInt;
-    if (Build.VERSION.SDK_INT >= 16) {
-      locald.Ov.setSource((View)localObject, paramInt);
-    }
+    locald1.u(this.mHost.getContext().getPackageName());
+    locald1.y(this.mHost, paramInt);
     boolean bool;
     if (this.mAccessibilityFocusedVirtualViewId == paramInt)
     {
-      locald.aa(true);
-      locald.bA(128);
+      locald1.aG(true);
+      locald1.eu(128);
       if (this.mKeyboardFocusedVirtualViewId != paramInt) {
-        break label427;
+        break label379;
       }
       bool = true;
-      label243:
+      label216:
       if (!bool) {
-        break label432;
+        break label384;
       }
-      locald.bA(2);
+      locald1.eu(2);
     }
+    d locald2;
     for (;;)
     {
-      locald.Y(bool);
+      locald1.aE(bool);
       this.mHost.getLocationOnScreen(this.mTempGlobalRect);
-      locald.g(this.mTempScreenRect);
+      locald1.l(this.mTempScreenRect);
       if (!this.mTempScreenRect.equals(INVALID_PARENT_BOUNDS)) {
-        break label495;
+        break label441;
       }
-      locald.e(this.mTempScreenRect);
-      if (locald.Ow == -1) {
-        break label460;
+      locald1.j(this.mTempScreenRect);
+      if (locald1.buP == -1) {
+        break label406;
       }
-      localObject = d.hr();
-      for (paramInt = locald.Ow; paramInt != -1; paramInt = ((d)localObject).Ow)
+      locald2 = d.EI();
+      for (paramInt = locald1.buP; paramInt != -1; paramInt = locald2.buP)
       {
-        View localView = this.mHost;
-        ((d)localObject).Ow = -1;
-        if (Build.VERSION.SDK_INT >= 16) {
-          ((d)localObject).Ov.setParent(localView, -1);
-        }
-        ((d)localObject).f(INVALID_PARENT_BOUNDS);
-        onPopulateNodeForVirtualView(paramInt, (d)localObject);
-        ((d)localObject).e(this.mTempParentRect);
+        locald2.A(this.mHost, -1);
+        locald2.k(INVALID_PARENT_BOUNDS);
+        onPopulateNodeForVirtualView(paramInt, locald2);
+        locald2.j(this.mTempParentRect);
         this.mTempScreenRect.offset(this.mTempParentRect.left, this.mTempParentRect.top);
       }
-      locald.aa(false);
-      locald.bA(64);
+      locald1.aG(false);
+      locald1.eu(64);
       break;
-      label427:
+      label379:
       bool = false;
-      break label243;
-      label432:
-      if (locald.Ov.isFocusable()) {
-        locald.bA(1);
+      break label216;
+      label384:
+      if (locald1.isFocusable()) {
+        locald1.eu(1);
       }
     }
-    ((d)localObject).Ov.recycle();
-    label460:
+    locald2.recycle();
+    label406:
     this.mTempScreenRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
-    label495:
+    label441:
     if (this.mHost.getLocalVisibleRect(this.mTempVisibleRect))
     {
       this.mTempVisibleRect.offset(this.mTempGlobalRect[0] - this.mHost.getScrollX(), this.mTempGlobalRect[1] - this.mHost.getScrollY());
       if (this.mTempScreenRect.intersect(this.mTempVisibleRect))
       {
-        locald.h(this.mTempScreenRect);
+        locald1.m(this.mTempScreenRect);
         if (isVisibleToUser(this.mTempScreenRect)) {
-          locald.Z(true);
+          locald1.aF(true);
         }
       }
     }
-    return locald;
+    return locald1;
   }
   
   private d createNodeForHost()
   {
-    d locald = d.aw(this.mHost);
-    w.onInitializeAccessibilityNodeInfo(this.mHost, locald);
+    d locald = d.aK(this.mHost);
+    z.onInitializeAccessibilityNodeInfo(this.mHost, locald);
     ArrayList localArrayList = new ArrayList();
     getVisibleVirtualViews(localArrayList);
-    if ((locald.Ov.getChildCount() > 0) && (localArrayList.size() > 0)) {
+    if ((locald.getChildCount() > 0) && (localArrayList.size() > 0)) {
       throw new RuntimeException("Views cannot have both real and virtual children");
     }
     int j = localArrayList.size();
     int i = 0;
     while (i < j)
     {
-      View localView = this.mHost;
-      int k = ((Integer)localArrayList.get(i)).intValue();
-      if (Build.VERSION.SDK_INT >= 16) {
-        locald.Ov.addChild(localView, k);
-      }
+      locald.z(this.mHost, ((Integer)localArrayList.get(i)).intValue());
       i += 1;
     }
     return locald;
@@ -250,7 +234,7 @@ public abstract class a
   
   private void getBoundsInParent(int paramInt, Rect paramRect)
   {
-    obtainAccessibilityNodeInfo(paramInt).e(paramRect);
+    obtainAccessibilityNodeInfo(paramInt).j(paramRect);
   }
   
   private static Rect guessPreviouslyFocusedRect(View paramView, int paramInt, Rect paramRect)
@@ -314,25 +298,25 @@ public abstract class a
     h localh = getAllNodes();
     int j = this.mKeyboardFocusedVirtualViewId;
     if (j == -2147483648) {}
-    for (d locald = null;; locald = (d)localh.b(j, null)) {
+    for (d locald = null;; locald = (d)localh.d(j, null)) {
       switch (paramInt)
       {
       default: 
         throw new IllegalArgumentException("direction must be one of {FOCUS_FORWARD, FOCUS_BACKWARD, FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT}.");
       }
     }
-    if (w.I(this.mHost) == 1) {}
+    if (z.U(this.mHost) == 1) {}
     Object localObject;
     ArrayList localArrayList;
     for (boolean bool = true;; bool = false)
     {
       paramRect = SPARSE_VALUES_ADAPTER;
       localObject = NODE_ADAPTER;
-      j = paramRect.E(localh);
+      j = paramRect.aD(localh);
       localArrayList = new ArrayList(j);
       while (i < j)
       {
-        localArrayList.add(paramRect.b(localh, i));
+        localArrayList.add(paramRect.c(localh, i));
         i += 1;
       }
     }
@@ -360,7 +344,7 @@ public abstract class a
       break;
     }
     label425:
-    for (paramInt = -2147483648;; paramInt = localh.aP(localh.r(paramRect)))
+    for (paramInt = -2147483648;; paramInt = localh.bo(localh.z(paramRect)))
     {
       return requestKeyboardFocusForVirtualView(paramInt);
       paramInt = localArrayList.lastIndexOf(locald);
@@ -418,7 +402,7 @@ public abstract class a
   
   private boolean performActionForHost(int paramInt, Bundle paramBundle)
   {
-    return w.performAccessibilityAction(this.mHost, paramInt, paramBundle);
+    return z.performAccessibilityAction(this.mHost, paramInt, paramBundle);
   }
   
   private boolean requestAccessibilityFocus(int paramInt)
@@ -569,7 +553,7 @@ public abstract class a
       {
         AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, 2048);
         androidx.core.g.a.b.a(localAccessibilityEvent, paramInt2);
-        z.a(localViewParent, this.mHost, localAccessibilityEvent);
+        ac.a(localViewParent, this.mHost, localAccessibilityEvent);
       }
     }
   }
@@ -651,7 +635,7 @@ public abstract class a
       localViewParent = this.mHost.getParent();
     } while (localViewParent == null);
     AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, paramInt2);
-    return z.a(localViewParent, this.mHost, localAccessibilityEvent);
+    return ac.a(localViewParent, this.mHost, localAccessibilityEvent);
   }
   
   public void updateHoveredVirtualView(int paramInt)
@@ -670,40 +654,40 @@ public abstract class a
   {
     a() {}
     
-    public final d bC(int paramInt)
+    public final d ex(int paramInt)
     {
-      AppMethodBeat.i(197606);
+      AppMethodBeat.i(192436);
       d locald = d.a(a.this.obtainAccessibilityNodeInfo(paramInt));
-      AppMethodBeat.o(197606);
+      AppMethodBeat.o(192436);
       return locald;
     }
     
-    public final d bD(int paramInt)
+    public final d ey(int paramInt)
     {
-      AppMethodBeat.i(197608);
+      AppMethodBeat.i(192455);
       if (paramInt == 2) {}
       for (paramInt = a.this.mAccessibilityFocusedVirtualViewId; paramInt == -2147483648; paramInt = a.this.mKeyboardFocusedVirtualViewId)
       {
-        AppMethodBeat.o(197608);
+        AppMethodBeat.o(192455);
         return null;
       }
-      d locald = bC(paramInt);
-      AppMethodBeat.o(197608);
+      d locald = ex(paramInt);
+      AppMethodBeat.o(192455);
       return locald;
     }
     
     public final boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
     {
-      AppMethodBeat.i(197607);
+      AppMethodBeat.i(192445);
       boolean bool = a.this.performAction(paramInt1, paramInt2, paramBundle);
-      AppMethodBeat.o(197607);
+      AppMethodBeat.o(192445);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.customview.a.a
  * JD-Core Version:    0.7.0.1
  */

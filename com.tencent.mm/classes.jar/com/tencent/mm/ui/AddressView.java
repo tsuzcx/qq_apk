@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -22,7 +21,7 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import androidx.core.g.a.d;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.f;
@@ -92,8 +91,8 @@ public class AddressView
     this.mergeCallback = null;
     this.AVATAR_LAYOUT_WIDTH = 0;
     this.AVATAR_WIDTH = 0;
-    this.NAME_TEXT_SIZE = com.tencent.mm.ci.a.aY(paramContext, R.f.NormalTextSize);
-    this.DESCRIPTION_TEXT_SIZE = com.tencent.mm.ci.a.aY(paramContext, R.f.SmallestTextSize);
+    this.NAME_TEXT_SIZE = com.tencent.mm.cd.a.br(paramContext, R.f.NormalTextSize);
+    this.DESCRIPTION_TEXT_SIZE = com.tencent.mm.cd.a.br(paramContext, R.f.SmallestTextSize);
     this.WEIBO_ICON_SIZE = getResources().getDimensionPixelSize(R.f.SmallIconSize);
     this.AVATAR_START_POS = 0;
     this.AVATAR_PADDING = 0;
@@ -156,11 +155,11 @@ public class AddressView
   private void installAccessibilityDelegate()
   {
     AppMethodBeat.i(32925);
-    w.a(this, new androidx.core.g.a()
+    z.a(this, new androidx.core.g.a()
     {
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, d paramAnonymousd)
       {
-        AppMethodBeat.i(282218);
+        AppMethodBeat.i(249408);
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousd);
         CharSequence localCharSequence = AddressView.this.getContentDescription();
         paramAnonymousView = localCharSequence;
@@ -168,7 +167,7 @@ public class AddressView
           paramAnonymousView = AddressView.this.nickName;
         }
         paramAnonymousd.setText(paramAnonymousView);
-        AppMethodBeat.o(282218);
+        AppMethodBeat.o(249408);
       }
       
       public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
@@ -347,7 +346,6 @@ public class AddressView
     AppMethodBeat.o(32902);
   }
   
-  @TargetApi(14)
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
     AppMethodBeat.i(32926);
@@ -361,7 +359,6 @@ public class AddressView
     AppMethodBeat.o(32926);
   }
   
-  @TargetApi(14)
   public void onPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
     AppMethodBeat.i(32924);
@@ -392,7 +389,7 @@ public class AddressView
   {
     AppMethodBeat.i(32915);
     if (this.avatarDrawable != null) {
-      ((c)this.avatarDrawable).hjv();
+      ((c)this.avatarDrawable).iKn();
     }
     AppMethodBeat.o(32915);
   }
@@ -455,7 +452,7 @@ public class AddressView
   {
     AppMethodBeat.i(32916);
     if (this.avatarDrawable != null) {
-      ((c)this.avatarDrawable).hju();
+      ((c)this.avatarDrawable).iKm();
     }
     AppMethodBeat.o(32916);
   }
@@ -524,7 +521,7 @@ public class AddressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.AddressView
  * JD-Core Version:    0.7.0.1
  */

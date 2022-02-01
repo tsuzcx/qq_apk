@@ -7,7 +7,6 @@ import com.google.android.gms.auth.api.proxy.ProxyApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.internal.zzg;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.Api.AbstractClientBuilder;
 import com.google.android.gms.common.api.Api.ApiOptions.Optional;
@@ -23,9 +22,7 @@ public final class Auth
   public static final CredentialsApi CredentialsApi;
   public static final Api<GoogleSignInOptions> GOOGLE_SIGN_IN_API;
   public static final GoogleSignInApi GoogleSignInApi;
-  @KeepForSdk
   public static final Api<zzh> PROXY_API;
-  @KeepForSdk
   public static final ProxyApi ProxyApi;
   public static final Api.ClientKey<zzax> zzaj;
   public static final Api.ClientKey<com.google.android.gms.auth.api.signin.internal.zzh> zzak;
@@ -113,7 +110,7 @@ public final class Auth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.Auth
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class e
       localJSONObject.put("type", paramb.type);
       if ((paramb.type != null) && (paramb.type.equals("1")))
       {
-        localJSONObject.put("title", paramb.DNS);
+        localJSONObject.put("title", paramb.JFh);
         localJSONObject.put("taxNumber", "");
         localJSONObject.put("companyAddress", "");
         localJSONObject.put("telephone", "");
@@ -35,26 +35,26 @@ public final class e
         AppMethodBeat.o(21057);
         return paramb;
         localJSONObject.put("title", paramb.title);
-        if (paramb.DNT == null) {
+        if (paramb.JFi == null) {
           break;
         }
-        localJSONObject.put("taxNumber", paramb.DNT);
-        if (paramb.DNZ == null) {
+        localJSONObject.put("taxNumber", paramb.JFi);
+        if (paramb.JFo == null) {
           break label268;
         }
-        localJSONObject.put("companyAddress", paramb.DNZ);
-        if (paramb.DNX == null) {
+        localJSONObject.put("companyAddress", paramb.JFo);
+        if (paramb.JFm == null) {
           break label280;
         }
-        localJSONObject.put("telephone", paramb.DNX);
-        if (paramb.DNV == null) {
+        localJSONObject.put("telephone", paramb.JFm);
+        if (paramb.JFk == null) {
           break label292;
         }
-        localJSONObject.put("bankName", paramb.DNV);
-        if (paramb.DNU == null) {
+        localJSONObject.put("bankName", paramb.JFk);
+        if (paramb.JFj == null) {
           break label304;
         }
-        localJSONObject.put("bankAccount", paramb.DNU);
+        localJSONObject.put("bankAccount", paramb.JFj);
       }
     }
     catch (JSONException paramb)
@@ -82,7 +82,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.e.e
  * JD-Core Version:    0.7.0.1
  */

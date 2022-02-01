@@ -2,27 +2,29 @@ package com.tencent.mm.plugin.finder.live.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/UplossStatisticsCache;", "", "()V", "UplossCachePair", "Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "getUplossCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "setUplossCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/CachePair;)V", "averageUplossCachePair", "Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "getAverageUplossCachePair", "()Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "setAverageUplossCachePair", "(Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;)V", "levelList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLevelList", "()Ljava/util/ArrayList;", "setLevelList", "(Ljava/util/ArrayList;)V", "getCache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "", "cache", "Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "averageCache", "Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "levelList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "(Lcom/tencent/mm/plugin/finder/live/util/CachePair;Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;Ljava/util/ArrayList;)V", "average", "getAverage", "()Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;", "setAverage", "(Lcom/tencent/mm/plugin/finder/live/util/AverageCachePair;)V", "continueFlag", "", "getContinueFlag", "()Z", "setContinueFlag", "(Z)V", "level", "getLevel", "()Ljava/util/ArrayList;", "setLevel", "(Ljava/util/ArrayList;)V", "realtime", "getRealtime", "()Lcom/tencent/mm/plugin/finder/live/util/CachePair;", "setRealtime", "(Lcom/tencent/mm/plugin/finder/live/util/CachePair;)V", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aa
 {
-  ArrayList<i> yPC;
-  i yRd;
-  e yRe;
+  boolean ABD;
+  i DJF;
+  e DJG;
+  ArrayList<i> DJH;
   
-  public aa()
+  public aa(i parami, e parame, ArrayList<i> paramArrayList)
   {
-    AppMethodBeat.i(260854);
-    this.yRd = new i("Uploss", 0, 6);
-    this.yRe = new e("AverageUploss", 14);
-    this.yPC = new ArrayList();
-    AppMethodBeat.o(260854);
+    AppMethodBeat.i(351257);
+    this.ABD = true;
+    this.DJF = parami;
+    this.DJG = parame;
+    this.DJH = paramArrayList;
+    AppMethodBeat.o(351257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.aa
  * JD-Core Version:    0.7.0.1
  */

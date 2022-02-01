@@ -1,68 +1,73 @@
 package com.tencent.mm.media.widget.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/util/CameraReportHelper$CameraInfo;", "", "id", "", "lens", "", "supportLevel", "(ILjava/lang/String;Ljava/lang/String;)V", "getId", "()I", "setId", "(I)V", "getLens", "()Ljava/lang/String;", "setLens", "(Ljava/lang/String;)V", "getSupportLevel", "setSupportLevel", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/util/CameraReportHelper$CameraInfo;", "", "id", "", "lens", "", "supportLevel", "(ILjava/lang/String;Ljava/lang/String;)V", "getId", "()I", "setId", "(I)V", "getLens", "()Ljava/lang/String;", "setLens", "(Ljava/lang/String;)V", "getSupportLevel", "setSupportLevel", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d$a
 {
   private int id;
-  private String liu;
-  private String liv;
+  private String nNc;
+  private String nNd;
   
   public d$a(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(259335);
+    AppMethodBeat.i(237492);
     this.id = paramInt;
-    this.liu = paramString1;
-    this.liv = paramString2;
-    AppMethodBeat.o(259335);
+    this.nNc = paramString1;
+    this.nNd = paramString2;
+    AppMethodBeat.o(237492);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(259338);
-    if (this != paramObject)
+    AppMethodBeat.i(237506);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((this.id != paramObject.id) || (!p.h(this.liu, paramObject.liu)) || (!p.h(this.liv, paramObject.liv))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(259338);
+      AppMethodBeat.o(237506);
       return true;
     }
-    AppMethodBeat.o(259338);
-    return false;
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(237506);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (this.id != paramObject.id)
+    {
+      AppMethodBeat.o(237506);
+      return false;
+    }
+    if (!s.p(this.nNc, paramObject.nNc))
+    {
+      AppMethodBeat.o(237506);
+      return false;
+    }
+    if (!s.p(this.nNd, paramObject.nNd))
+    {
+      AppMethodBeat.o(237506);
+      return false;
+    }
+    AppMethodBeat.o(237506);
+    return true;
   }
   
   public final int hashCode()
   {
-    int j = 0;
-    AppMethodBeat.i(259337);
-    int k = this.id;
-    String str = this.liu;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      str = this.liv;
-      if (str != null) {
-        j = str.hashCode();
-      }
-      AppMethodBeat.o(259337);
-      return (i + k * 31) * 31 + j;
-    }
+    AppMethodBeat.i(237501);
+    int i = this.id;
+    int j = this.nNc.hashCode();
+    int k = this.nNd.hashCode();
+    AppMethodBeat.o(237501);
+    return (i * 31 + j) * 31 + k;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(259336);
-    String str = "CameraInfo(id=" + this.id + ", lens=" + this.liu + ", supportLevel=" + this.liv + ")";
-    AppMethodBeat.o(259336);
+    AppMethodBeat.i(237497);
+    String str = "CameraInfo(id=" + this.id + ", lens=" + this.nNc + ", supportLevel=" + this.nNd + ')';
+    AppMethodBeat.o(237497);
     return str;
   }
 }

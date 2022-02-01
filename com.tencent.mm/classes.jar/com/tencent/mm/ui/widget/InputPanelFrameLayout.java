@@ -9,8 +9,8 @@ public class InputPanelFrameLayout
   extends FrameLayout
   implements c.a
 {
-  private c Yam;
-  private c.a Yan;
+  private c afSh;
+  private c.a afSi;
   
   public InputPanelFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,20 +21,20 @@ public class InputPanelFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143322);
-    this.Yam = new c(this, this);
+    this.afSh = new c(this, this);
     AppMethodBeat.o(143322);
   }
   
   public c getInputPanelHelper()
   {
-    return this.Yam;
+    return this.afSh;
   }
   
-  public void h(boolean paramBoolean, int paramInt)
+  public void onInputPanelChange(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(143323);
-    if (this.Yan != null) {
-      this.Yan.h(paramBoolean, paramInt);
+    if (this.afSi != null) {
+      this.afSi.onInputPanelChange(paramBoolean, paramInt);
     }
     AppMethodBeat.o(143323);
   }
@@ -42,19 +42,19 @@ public class InputPanelFrameLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143324);
-    this.Yam.axC(paramInt2);
+    this.afSh.aEm(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(143324);
   }
   
   public void setExternalListener(c.a parama)
   {
-    this.Yan = parama;
+    this.afSi = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.InputPanelFrameLayout
  * JD-Core Version:    0.7.0.1
  */

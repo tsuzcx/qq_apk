@@ -1,20 +1,52 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.storage.ca;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.v.e;
+import com.tencent.mm.ui.widget.MMTextView;
 
-public final class bj$e
-  extends by
+final class bj$e
+  extends v.e
 {
-  int viewType;
-  
-  public bj$e(ca paramca, boolean paramBoolean, int paramInt, String paramString)
+  public bj$e(com.tencent.mm.ui.chatting.d.a parama)
   {
-    super(paramca, paramBoolean, paramInt, paramString, '\000');
+    super(parama);
+  }
+  
+  public final void a(View paramView, com.tencent.mm.ui.chatting.d.a parama, cc paramcc)
+  {
+    AppMethodBeat.i(37419);
+    parama = (bz)paramView.getTag();
+    if (paramcc.jbw())
+    {
+      if (this.aeiK != null)
+      {
+        h.OAn.kvStat(10221, "1");
+        paramView = new Intent();
+        paramView.addFlags(67108864);
+        paramView.putExtra("enter_from_scene", 3);
+        c.b(this.aeiK.aezO.getContext(), "shake", ".ui.ShakeReportUI", paramView);
+      }
+      AppMethodBeat.o(37419);
+      return;
+    }
+    if ((paramcc.iYl()) && ((paramView instanceof MMTextView)))
+    {
+      paramView = (MMTextView)paramView;
+      com.tencent.mm.ui.chatting.j.a.a.jwS();
+      com.tencent.mm.ui.chatting.j.a.a.a(paramView.getText(), parama.hTm);
+    }
+    AppMethodBeat.o(37419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bj.e
  * JD-Core Version:    0.7.0.1
  */

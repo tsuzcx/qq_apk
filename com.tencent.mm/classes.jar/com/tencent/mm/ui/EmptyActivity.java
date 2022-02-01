@@ -1,13 +1,10 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Looper;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.i;
-import com.tencent.mm.f.a.rm;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.tb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.a;
 
@@ -22,40 +19,40 @@ public class EmptyActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(264226);
+    AppMethodBeat.i(249736);
     Log.d("MicroMsg.EmptyActivity", "onCreate %s", new Object[] { Integer.valueOf(hashCode()) });
     requestWindowFeature(1);
     super.onCreate(paramBundle);
-    if (ar.hIO()) {
+    updataStatusBarIcon(aw.isDarkMode());
+    if (aw.jlc()) {
       overridePendingTransition(0, 0);
     }
-    getWindow().setFlags(201327616, 201327616);
-    AppMethodBeat.o(264226);
+    AppMethodBeat.o(249736);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(264230);
+    AppMethodBeat.i(249748);
     super.onDestroy();
     Log.d("MicroMsg.EmptyActivity", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(264230);
+    AppMethodBeat.o(249748);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(264229);
+    AppMethodBeat.i(249744);
     super.onPause();
     Log.d("MicroMsg.EmptyActivity", "onPause %s", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(264229);
+    AppMethodBeat.o(249744);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(264227);
+    AppMethodBeat.i(249742);
     super.onResume();
     Log.i("MicroMsg.EmptyActivity", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
-    EventCenter.instance.asyncPublish(new rm(), Looper.getMainLooper());
-    AppMethodBeat.o(264227);
+    new tb().asyncPublish(Looper.getMainLooper());
+    AppMethodBeat.o(249742);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

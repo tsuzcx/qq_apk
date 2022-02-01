@@ -1,147 +1,146 @@
 package com.tencent.mm.modelmulti;
 
+import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.b;
-import com.tencent.mm.an.j;
-import com.tencent.mm.an.n;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.n;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.a;
+import com.tencent.mm.protocal.aa.a;
+import com.tencent.mm.protocal.aa.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Objects;
+import com.tencent.mm.storage.aq;
 
 public final class o
+  extends p
+  implements m
 {
-  private static c lUg = null;
+  private com.tencent.mm.am.h callback;
+  private WakerLock lro;
+  private final s ouH;
   
-  public static e WI(String paramString)
+  public o()
   {
-    AppMethodBeat.i(239005);
-    d locald = d.lUj;
-    e locale = new e();
-    locale.toUser = paramString;
-    locale.lUB = locald;
-    AppMethodBeat.o(239005);
-    return locale;
+    AppMethodBeat.i(132566);
+    this.lro = new WakerLock(MMApplicationContext.getContext(), "MicroMsg.NetSceneSynCheck");
+    this.lro.lock(3000L, "NetSceneSynCheck");
+    this.ouH = new a();
+    com.tencent.mm.kernel.h.baF();
+    if (com.tencent.mm.kernel.h.baE() != null)
+    {
+      com.tencent.mm.kernel.h.baF();
+      if (com.tencent.mm.kernel.h.baE().ban() != null)
+      {
+        com.tencent.mm.kernel.h.baF();
+        Object localObject = (String)com.tencent.mm.kernel.h.baE().ban().d(8195, null);
+        ((aa.a)this.ouH.getReqObj()).oMc = Util.decodeHexString((String)localObject);
+        localObject = (aa.a)this.ouH.getReqObj();
+        com.tencent.mm.kernel.h.baF();
+        com.tencent.mm.kernel.h.baC();
+        ((aa.a)localObject).setUin(com.tencent.mm.kernel.b.getUin());
+        localObject = (aa.a)this.ouH.getReqObj();
+        MMApplicationContext.getContext();
+        ((aa.a)localObject).netType = a.ibq();
+        ((aa.a)this.ouH.getReqObj()).YxZ = a.iPy();
+        Log.d("MicroMsg.MMSyncCheck", "NetSceneSynCheck");
+        AppMethodBeat.o(132566);
+        return;
+      }
+    }
+    Log.e("MicroMsg.NetSceneSynCheck", "[arthurdan.NetSceneSynCheckCrash] Notice!!! MMCore.getAccStg() is null");
+    AppMethodBeat.o(132566);
   }
   
-  public static e a(d paramd)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(239007);
-    e locale = new e();
-    locale.lUB = paramd;
-    AppMethodBeat.o(239007);
-    return locale;
+    AppMethodBeat.i(132567);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.ouH, this);
+    if ((i == -1) && (this.lro.isLocking())) {
+      this.lro.unLock();
+    }
+    AppMethodBeat.o(132567);
+    return i;
   }
   
-  static void a(c paramc)
+  public final long getReturnTimeout()
   {
-    lUg = paramc;
+    return 240000L;
+  }
+  
+  public final int getType()
+  {
+    return 39;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(132568);
+    paramArrayOfByte = (aa.b)params.getRespObj();
+    Log.i("MicroMsg.NetSceneSynCheck", "new syncCheck complete, selector=" + paramArrayOfByte.YyK);
+    if ((com.tencent.mm.kernel.h.baz()) && (!com.tencent.mm.kernel.b.aZG()))
+    {
+      params = ((aa.a)params.getReqObj()).mCq;
+      if (Util.isNullOrNil(params)) {
+        Log.e("MicroMsg.NetSceneSynCheck", "onGYNetEnd md5 is null");
+      }
+      paramArrayOfByte.mCq = params;
+      ((com.tencent.mm.plugin.zero.b.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.b.class)).bKY().a(paramArrayOfByte.YyK, 2, paramArrayOfByte.iQa());
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.lro.unLock();
+    AppMethodBeat.o(132568);
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
   }
   
   public static final class a
+    extends n
   {
-    public q fzz;
-    public long lUh;
-  }
-  
-  public static final class b<T extends q>
-  {
-    public long lUh;
-    public T lUi;
+    private final aa.a oMq;
+    private final aa.b oMr;
     
-    public final boolean aEv()
+    public a()
     {
-      AppMethodBeat.i(239472);
-      if (this.lUi == null) {
-        Log.e("SendMsgCgiFactory", "[execute] cgi is null. %s", new Object[] { Util.getStack() });
-      }
-      Objects.requireNonNull(this.lUi);
-      boolean bool = aa.lDv.aGZ().a(this.lUi, 0);
-      AppMethodBeat.o(239472);
-      return bool;
-    }
-  }
-  
-  public static abstract interface c
-  {
-    public abstract o.a a(o.e parame);
-  }
-  
-  public static enum d
-  {
-    static
-    {
-      AppMethodBeat.i(241232);
-      lUj = new d("TEXT", 0);
-      lUk = new d("IMAGE", 1);
-      lUl = new d("VIDEO", 2);
-      lUm = new d("CDN_IMAGE", 3);
-      lUn = new d("EMOJI", 4);
-      lUo = new d[] { lUj, lUk, lUl, lUm, lUn };
-      AppMethodBeat.o(241232);
+      AppMethodBeat.i(132565);
+      this.oMq = new aa.a();
+      this.oMr = new aa.b();
+      AppMethodBeat.o(132565);
     }
     
-    private d() {}
-  }
-  
-  public static class e
-  {
-    public int cUP;
-    public String content;
-    public int fJu;
-    public String fLi;
-    public int jXU;
-    public boolean jYb;
-    public int lNK;
-    public String lNS = "";
-    public String lPM;
-    public String lPO = "";
-    public int lUA;
-    public o.d lUB;
-    public Object lUp;
-    public int lUq;
-    public j lUr;
-    public n lUs;
-    public int lUt;
-    public boolean lUu;
-    public long lUv;
-    public long lUw;
-    public String lUx;
-    public int lUy;
-    public boolean lUz;
-    public float latitude;
-    public float longitude;
-    public long msgId;
-    public String thumbPath = "";
-    public String toUser;
-    public int type;
-    
-    public final <T extends q> o.b<T> bnl()
+    public final int getOptions()
     {
-      AppMethodBeat.i(241148);
-      o.b localb = new o.b();
-      if (o.bnk() != null)
-      {
-        o.a locala = o.bnk().a(this);
-        localb.lUi = locala.fzz;
-        localb.lUh = locala.lUh;
-      }
-      AppMethodBeat.o(241148);
-      return localb;
+      return 1;
     }
     
-    public e wD(int paramInt)
+    public final l.d getReqObjImp()
     {
-      this.type = paramInt;
-      return this;
+      return this.oMq;
     }
     
-    public e wb(int paramInt)
+    public final l.e getRespObj()
     {
-      this.jXU = paramInt;
-      return this;
+      return this.oMr;
+    }
+    
+    public final int getType()
+    {
+      return 39;
+    }
+    
+    public final String getUri()
+    {
+      return null;
     }
   }
 }

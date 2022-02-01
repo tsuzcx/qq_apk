@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.sns.data;
 
 public final class s
 {
-  public boolean JRA = false;
-  public int JRu = 0;
-  public int JRv;
-  public int JRw;
-  public String JRx = "";
-  public String JRy = "";
-  public String JRz = "";
+  public int Qof = 0;
+  public int Qog;
+  public int Qoh;
+  public String Qoi = "";
+  public String Qoj = "";
+  public String Qok = "";
+  public boolean Qol = false;
   public String desc = "";
-  public int fWh;
   public int fileSize = 0;
   public int height = -1;
+  public int icg;
   public String path = "";
   public String thumbPath = "";
   public int type;
@@ -22,7 +22,7 @@ public final class s
   
   public s(int paramInt1, int paramInt2)
   {
-    this.fWh = paramInt1;
+    this.icg = paramInt1;
     this.type = paramInt2;
     this.path = "";
   }
@@ -31,12 +31,12 @@ public final class s
   {
     this.path = paramString;
     this.type = paramInt;
-    this.fWh = -1;
+    this.icg = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.s
  * JD-Core Version:    0.7.0.1
  */

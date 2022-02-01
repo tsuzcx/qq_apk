@@ -39,7 +39,7 @@ public class TbsWizard
   
   public TbsWizard(Context paramContext1, Context paramContext2, String paramString1, String paramString2, String[] paramArrayOfString, String paramString3, p paramp)
   {
-    AppMethodBeat.i(190508);
+    AppMethodBeat.i(219787);
     this.a = null;
     this.b = null;
     this.c = null;
@@ -50,7 +50,7 @@ public class TbsWizard
     if ((paramContext1 == null) || ((paramContext2 == null) && (TbsShareManager.getHostCorePathAppDefined() == null)) || (TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
       paramContext1 = new Exception("TbsWizard paramter error:-1callerContext:" + paramContext1 + "hostcontext" + paramContext2 + "isEmpty" + TextUtils.isEmpty(paramString1) + "dexfileList" + paramArrayOfString);
-      AppMethodBeat.o(190508);
+      AppMethodBeat.o(219787);
       throw paramContext1;
     }
     this.a = paramContext1.getApplicationContext();
@@ -90,63 +90,91 @@ public class TbsWizard
     if (i < 0)
     {
       paramContext1 = new Exception("TbsWizard init error: " + i + "; msg: " + this.f);
-      AppMethodBeat.o(190508);
+      AppMethodBeat.o(219787);
       throw paramContext1;
     }
     TbsLog.i("TbsWizard", "construction end...");
-    AppMethodBeat.o(190508);
+    AppMethodBeat.o(219787);
   }
   
+  /* Error */
   private void a()
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(54638);
-    if (QbSdk.mSettings != null) {}
-    try
-    {
-      bool1 = TbsPVConfig.getInstance(this.a).getTbsCoreSandboxModeEnable();
-      try
-      {
-        boolean bool3 = "true".equals(String.valueOf(QbSdk.mSettings.get("use_sandbox")));
-        if (!bool3) {
-          break label106;
-        }
-        i = 1;
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          Map localMap;
-          int i = 0;
-          continue;
-          bool1 = false;
-        }
-      }
-      localMap = QbSdk.mSettings;
-      if ((bool1) && (i != 0))
-      {
-        bool1 = bool2;
-        localMap.put("use_sandbox", Boolean.valueOf(bool1));
-        TbsOneGreyInfoHelper.getCoreEntry().initSettings(QbSdk.mSettings);
-        AppMethodBeat.o(54638);
-        return;
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      for (;;)
-      {
-        bool1 = false;
-      }
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: ldc 176
+    //   4: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: getstatic 147	com/tencent/smtt/sdk/QbSdk:mSettings	Ljava/util/Map;
+    //   10: ifnull +81 -> 91
+    //   13: aload_0
+    //   14: getfield 31	com/tencent/smtt/sdk/TbsWizard:a	Landroid/content/Context;
+    //   17: invokestatic 182	com/tencent/smtt/sdk/TbsPVConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsPVConfig;
+    //   20: invokevirtual 186	com/tencent/smtt/sdk/TbsPVConfig:getTbsCoreSandboxModeEnable	()Z
+    //   23: istore_2
+    //   24: ldc 188
+    //   26: getstatic 147	com/tencent/smtt/sdk/QbSdk:mSettings	Ljava/util/Map;
+    //   29: ldc 190
+    //   31: invokeinterface 196 2 0
+    //   36: invokestatic 202	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   39: invokevirtual 206	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   42: istore 4
+    //   44: iload 4
+    //   46: ifeq +60 -> 106
+    //   49: iconst_1
+    //   50: istore_1
+    //   51: getstatic 147	com/tencent/smtt/sdk/QbSdk:mSettings	Ljava/util/Map;
+    //   54: astore 5
+    //   56: iload_2
+    //   57: ifeq +54 -> 111
+    //   60: iload_1
+    //   61: ifeq +50 -> 111
+    //   64: iload_3
+    //   65: istore_2
+    //   66: aload 5
+    //   68: ldc 190
+    //   70: iload_2
+    //   71: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   74: invokeinterface 215 3 0
+    //   79: pop
+    //   80: invokestatic 219	com/tencent/smtt/sdk/TbsOneGreyInfoHelper:getCoreEntry	()Lcom/tencent/smtt/export/external/interfaces/IX5CoreEntry;
+    //   83: getstatic 147	com/tencent/smtt/sdk/QbSdk:mSettings	Ljava/util/Map;
+    //   86: invokeinterface 225 2 0
+    //   91: ldc 176
+    //   93: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   96: return
+    //   97: astore 5
+    //   99: iconst_0
+    //   100: istore_2
+    //   101: goto -77 -> 24
+    //   104: astore 5
+    //   106: iconst_0
+    //   107: istore_1
+    //   108: goto -57 -> 51
+    //   111: iconst_0
+    //   112: istore_2
+    //   113: goto -47 -> 66
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	116	0	this	TbsWizard
+    //   50	58	1	i	int
+    //   23	90	2	bool1	boolean
+    //   1	64	3	bool2	boolean
+    //   42	3	4	bool3	boolean
+    //   54	13	5	localMap	Map
+    //   97	1	5	localObject1	Object
+    //   104	1	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   13	24	97	finally
+    //   24	44	104	finally
   }
   
   private int b(Context paramContext)
   {
     AppMethodBeat.i(54639);
-    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionCode(44052);
-    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionName("4.4.0.0052");
+    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionCode(44138);
+    TbsOneGreyInfoHelper.getCoreEntry().setSdkVersionName("4.4.1.0038");
     TbsOneGreyInfoHelper.getCoreEntry().initRuntimeEnvironment();
     AppMethodBeat.o(54639);
     return 0;
@@ -194,7 +222,7 @@ public class TbsWizard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsWizard
  * JD-Core Version:    0.7.0.1
  */

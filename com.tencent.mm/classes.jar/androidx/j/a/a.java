@@ -14,37 +14,37 @@ import java.util.PriorityQueue;
 
 final class a
 {
-  private static final Comparator<a> aeJ;
-  final int[] aeE;
-  final List<b.d> aeF;
-  final TimingLogger aeG;
-  final b.b[] aeH;
-  private final float[] aeI;
+  private static final Comparator<a> bSO;
+  final int[] bSJ;
+  final List<b.d> bSK;
+  final TimingLogger bSL;
+  final b.b[] bSM;
+  private final float[] bSN;
   final int[] mColors;
   
   static
   {
-    AppMethodBeat.i(242990);
-    aeJ = new Comparator() {};
-    AppMethodBeat.o(242990);
+    AppMethodBeat.i(192849);
+    bSO = new Comparator() {};
+    AppMethodBeat.o(192849);
   }
   
   a(int[] paramArrayOfInt, int paramInt, b.b[] paramArrayOfb)
   {
-    AppMethodBeat.i(242981);
-    this.aeI = new float[3];
-    this.aeG = null;
-    this.aeH = paramArrayOfb;
+    AppMethodBeat.i(192733);
+    this.bSN = new float[3];
+    this.bSL = null;
+    this.bSM = paramArrayOfb;
     paramArrayOfb = new int[32768];
-    this.aeE = paramArrayOfb;
+    this.bSJ = paramArrayOfb;
     int i = 0;
     int n;
     while (i < paramArrayOfInt.length)
     {
       j = paramArrayOfInt[i];
-      k = h(Color.red(j), 8, 5);
-      n = h(Color.green(j), 8, 5);
-      j = h(Color.blue(j), 8, 5) | k << 10 | n << 5;
+      k = v(Color.red(j), 8, 5);
+      n = v(Color.green(j), 8, 5);
+      j = v(Color.blue(j), 8, 5) | k << 10 | n << 5;
       paramArrayOfInt[i] = j;
       paramArrayOfb[j] += 1;
       i += 1;
@@ -54,8 +54,8 @@ final class a
     {
       if (paramArrayOfb[i] > 0)
       {
-        b.d(cg(i), this.aeI);
-        if (d(this.aeI)) {
+        b.d(fq(i), this.bSN);
+        if (m(this.bSN)) {
           paramArrayOfb[i] = 0;
         }
       }
@@ -85,71 +85,55 @@ final class a
       break;
       if (j <= paramInt)
       {
-        this.aeF = new ArrayList();
+        this.bSK = new ArrayList();
         i = paramArrayOfInt.length;
         paramInt = m;
         while (paramInt < i)
         {
           j = paramArrayOfInt[paramInt];
-          this.aeF.add(new b.d(cg(j), paramArrayOfb[j]));
+          this.bSK.add(new b.d(fq(j), paramArrayOfb[j]));
           paramInt += 1;
         }
-        AppMethodBeat.o(242981);
+        AppMethodBeat.o(192733);
         return;
       }
-      paramArrayOfInt = new PriorityQueue(paramInt, aeJ);
+      paramArrayOfInt = new PriorityQueue(paramInt, bSO);
       paramArrayOfInt.offer(new a(0, this.mColors.length - 1));
       a(paramArrayOfInt, paramInt);
-      this.aeF = a(paramArrayOfInt);
-      AppMethodBeat.o(242981);
+      this.bSK = p(paramArrayOfInt);
+      AppMethodBeat.o(192733);
       return;
     }
   }
   
-  private List<b.d> a(Collection<a> paramCollection)
-  {
-    AppMethodBeat.i(242984);
-    ArrayList localArrayList = new ArrayList(paramCollection.size());
-    paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext())
-    {
-      b.d locald = ((a)paramCollection.next()).jS();
-      if (!d(locald.jZ())) {
-        localArrayList.add(locald);
-      }
-    }
-    AppMethodBeat.o(242984);
-    return localArrayList;
-  }
-  
   private static void a(PriorityQueue<a> paramPriorityQueue, int paramInt)
   {
-    AppMethodBeat.i(242983);
+    AppMethodBeat.i(192749);
     while (paramPriorityQueue.size() < paramInt)
     {
       a locala1 = (a)paramPriorityQueue.poll();
-      if ((locala1 != null) && (locala1.jO()))
+      if ((locala1 != null) && (locala1.Iu()))
       {
-        if (!locala1.jO())
+        if (!locala1.Iu())
         {
           paramPriorityQueue = new IllegalStateException("Can not split a box with only 1 color");
-          AppMethodBeat.o(242983);
+          AppMethodBeat.o(192749);
           throw paramPriorityQueue;
         }
-        int i = locala1.jR();
-        a locala2 = new a(locala1.aeT, i + 1, locala1.aeL);
-        locala1.aeL = i;
-        locala1.jQ();
+        int i = locala1.Ix();
+        a locala2 = new a(locala1.bSY, i + 1, locala1.bSQ);
+        locala1.bSQ = i;
+        locala1.Iw();
         paramPriorityQueue.offer(locala2);
         paramPriorityQueue.offer(locala1);
       }
       else
       {
-        AppMethodBeat.o(242983);
+        AppMethodBeat.o(192749);
         return;
       }
     }
-    AppMethodBeat.o(242983);
+    AppMethodBeat.o(192749);
   }
   
   static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
@@ -176,59 +160,75 @@ final class a
     }
   }
   
-  private static int cg(int paramInt)
+  private static int fq(int paramInt)
   {
-    AppMethodBeat.i(242989);
-    paramInt = g(paramInt >> 10 & 0x1F, paramInt >> 5 & 0x1F, paramInt & 0x1F);
-    AppMethodBeat.o(242989);
+    AppMethodBeat.i(192800);
+    paramInt = u(paramInt >> 10 & 0x1F, paramInt >> 5 & 0x1F, paramInt & 0x1F);
+    AppMethodBeat.o(192800);
     return paramInt;
   }
   
-  static int ch(int paramInt)
+  static int fr(int paramInt)
   {
     return paramInt >> 10 & 0x1F;
   }
   
-  static int ci(int paramInt)
+  static int fs(int paramInt)
   {
     return paramInt >> 5 & 0x1F;
   }
   
-  static int cj(int paramInt)
+  static int ft(int paramInt)
   {
     return paramInt & 0x1F;
   }
   
-  private boolean d(float[] paramArrayOfFloat)
+  private boolean m(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(242986);
-    if ((this.aeH != null) && (this.aeH.length > 0))
+    AppMethodBeat.i(192782);
+    if ((this.bSM != null) && (this.bSM.length > 0))
     {
-      int j = this.aeH.length;
+      int j = this.bSM.length;
       int i = 0;
       while (i < j)
       {
-        if (!this.aeH[i].e(paramArrayOfFloat))
+        if (!this.bSM[i].n(paramArrayOfFloat))
         {
-          AppMethodBeat.o(242986);
+          AppMethodBeat.o(192782);
           return true;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(242986);
+    AppMethodBeat.o(192782);
     return false;
   }
   
-  static int g(int paramInt1, int paramInt2, int paramInt3)
+  private List<b.d> p(Collection<a> paramCollection)
   {
-    AppMethodBeat.i(242988);
-    paramInt1 = Color.rgb(h(paramInt1, 5, 8), h(paramInt2, 5, 8), h(paramInt3, 5, 8));
-    AppMethodBeat.o(242988);
+    AppMethodBeat.i(192761);
+    ArrayList localArrayList = new ArrayList(paramCollection.size());
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      b.d locald = ((a)paramCollection.next()).Iy();
+      if (!m(locald.IF())) {
+        localArrayList.add(locald);
+      }
+    }
+    AppMethodBeat.o(192761);
+    return localArrayList;
+  }
+  
+  static int u(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(192791);
+    paramInt1 = Color.rgb(v(paramInt1, 5, 8), v(paramInt2, 5, 8), v(paramInt3, 5, 8));
+    AppMethodBeat.o(192791);
     return paramInt1;
   }
   
-  private static int h(int paramInt1, int paramInt2, int paramInt3)
+  private static int v(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 > paramInt2) {
       paramInt1 <<= paramInt3 - paramInt2;
@@ -242,54 +242,54 @@ final class a
   
   final class a
   {
-    private int aeK;
-    int aeL;
-    private int aeM;
-    private int aeN;
-    private int aeO;
-    private int aeP;
-    private int aeQ;
-    private int aeR;
-    private int aeS;
+    private int bSP;
+    int bSQ;
+    private int bSR;
+    private int bSS;
+    private int bST;
+    private int bSU;
+    private int bSV;
+    private int bSW;
+    private int bSX;
     
     a(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(242971);
-      this.aeK = paramInt1;
-      this.aeL = paramInt2;
-      jQ();
-      AppMethodBeat.o(242971);
+      AppMethodBeat.i(192732);
+      this.bSP = paramInt1;
+      this.bSQ = paramInt2;
+      Iw();
+      AppMethodBeat.o(192732);
     }
     
-    private int jP()
+    private int Iv()
     {
-      return this.aeL + 1 - this.aeK;
+      return this.bSQ + 1 - this.bSP;
     }
     
-    final int jN()
+    final int It()
     {
-      return (this.aeO - this.aeN + 1) * (this.aeQ - this.aeP + 1) * (this.aeS - this.aeR + 1);
+      return (this.bST - this.bSS + 1) * (this.bSV - this.bSU + 1) * (this.bSX - this.bSW + 1);
     }
     
-    final boolean jO()
+    final boolean Iu()
     {
-      AppMethodBeat.i(242972);
-      if (jP() > 1)
+      AppMethodBeat.i(192763);
+      if (Iv() > 1)
       {
-        AppMethodBeat.o(242972);
+        AppMethodBeat.o(192763);
         return true;
       }
-      AppMethodBeat.o(242972);
+      AppMethodBeat.o(192763);
       return false;
     }
     
-    final void jQ()
+    final void Iw()
     {
-      AppMethodBeat.i(242974);
+      AppMethodBeat.i(192775);
       int[] arrayOfInt1 = a.this.mColors;
-      int[] arrayOfInt2 = a.this.aeE;
+      int[] arrayOfInt2 = a.this.bSJ;
       int i4 = 0;
-      int n = this.aeK;
+      int n = this.bSP;
       int i5 = -2147483648;
       int j = -2147483648;
       int m = -2147483648;
@@ -300,13 +300,13 @@ final class a
       int i8;
       int i6;
       int i2;
-      if (n <= this.aeL)
+      if (n <= this.bSQ)
       {
         i1 = arrayOfInt1[n];
         i8 = i4 + arrayOfInt2[i1];
-        int i7 = a.ch(i1);
-        i6 = a.ci(i1);
-        i4 = a.cj(i1);
+        int i7 = a.fr(i1);
+        i6 = a.fs(i1);
+        i4 = a.ft(i1);
         i1 = i5;
         if (i7 > i5) {
           i1 = i7;
@@ -343,49 +343,49 @@ final class a
           i3 = i2;
           k = i6;
           break;
-          this.aeN = i3;
-          this.aeO = i5;
-          this.aeP = i;
-          this.aeQ = j;
-          this.aeR = k;
-          this.aeS = m;
-          this.aeM = i4;
-          AppMethodBeat.o(242974);
+          this.bSS = i3;
+          this.bST = i5;
+          this.bSU = i;
+          this.bSV = j;
+          this.bSW = k;
+          this.bSX = m;
+          this.bSR = i4;
+          AppMethodBeat.o(192775);
           return;
         }
       }
     }
     
-    final int jR()
+    final int Ix()
     {
-      AppMethodBeat.i(242975);
-      int i = this.aeO - this.aeN;
-      int j = this.aeQ - this.aeP;
-      int k = this.aeS - this.aeR;
+      AppMethodBeat.i(192783);
+      int i = this.bST - this.bSS;
+      int j = this.bSV - this.bSU;
+      int k = this.bSX - this.bSW;
       int[] arrayOfInt1;
       int[] arrayOfInt2;
       if ((i >= j) && (i >= k))
       {
         i = -3;
         arrayOfInt1 = a.this.mColors;
-        arrayOfInt2 = a.this.aeE;
-        a.a(arrayOfInt1, i, this.aeK, this.aeL);
-        Arrays.sort(arrayOfInt1, this.aeK, this.aeL + 1);
-        a.a(arrayOfInt1, i, this.aeK, this.aeL);
-        k = this.aeM / 2;
-        i = this.aeK;
+        arrayOfInt2 = a.this.bSJ;
+        a.a(arrayOfInt1, i, this.bSP, this.bSQ);
+        Arrays.sort(arrayOfInt1, this.bSP, this.bSQ + 1);
+        a.a(arrayOfInt1, i, this.bSP, this.bSQ);
+        k = this.bSR / 2;
+        i = this.bSP;
         j = 0;
       }
       for (;;)
       {
-        if (i > this.aeL) {
+        if (i > this.bSQ) {
           break label192;
         }
         j += arrayOfInt2[arrayOfInt1[i]];
         if (j >= k)
         {
-          i = Math.min(this.aeL - 1, i);
-          AppMethodBeat.o(242975);
+          i = Math.min(this.bSQ - 1, i);
+          AppMethodBeat.o(192783);
           return i;
           if ((j >= i) && (j >= k))
           {
@@ -398,41 +398,41 @@ final class a
         i += 1;
       }
       label192:
-      i = this.aeK;
-      AppMethodBeat.o(242975);
+      i = this.bSP;
+      AppMethodBeat.o(192783);
       return i;
     }
     
-    final b.d jS()
+    final b.d Iy()
     {
-      AppMethodBeat.i(242976);
+      AppMethodBeat.i(192792);
       Object localObject = a.this.mColors;
-      int[] arrayOfInt = a.this.aeE;
-      int j = this.aeK;
+      int[] arrayOfInt = a.this.bSJ;
+      int j = this.bSP;
       int n = 0;
       int i = 0;
       int k = 0;
       int m = 0;
-      while (j <= this.aeL)
+      while (j <= this.bSQ)
       {
         int i2 = localObject[j];
         int i1 = arrayOfInt[i2];
         n += i1;
-        m += a.ch(i2) * i1;
-        k += a.ci(i2) * i1;
-        i2 = a.cj(i2);
+        m += a.fr(i2) * i1;
+        k += a.fs(i2) * i1;
+        i2 = a.ft(i2);
         j += 1;
         i = i2 * i1 + i;
       }
-      localObject = new b.d(a.g(Math.round(m / n), Math.round(k / n), Math.round(i / n)), n);
-      AppMethodBeat.o(242976);
+      localObject = new b.d(a.u(Math.round(m / n), Math.round(k / n), Math.round(i / n)), n);
+      AppMethodBeat.o(192792);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.j.a.a
  * JD-Core Version:    0.7.0.1
  */

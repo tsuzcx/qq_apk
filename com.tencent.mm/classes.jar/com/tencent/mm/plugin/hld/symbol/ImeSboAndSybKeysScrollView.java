@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.k;
 import androidx.recyclerview.widget.RecyclerView.v;
@@ -18,37 +19,39 @@ import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.a.f;
 import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.l;
-import com.tencent.mm.plugin.hld.f.e;
+import com.tencent.mm.plugin.hld.a.d;
 import com.tencent.mm.plugin.hld.f.i;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.plugin.hld.model.n;
 import com.tencent.mm.plugin.hld.view.ImeKeyRelativeLayout;
 import com.tencent.mm.plugin.hld.view.ImeVerticalScrollView;
-import com.tencent.mm.plugin.hld.view.i.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.view.recyclerview.k.a;
 import com.tencent.wxhld.info.Syllable;
 import java.util.ArrayList;
 import java.util.Collection;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeVerticalScrollView;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder$ISboAndSybKeysViewListener;", "Landroid/view/View$OnTouchListener;", "Landroidx/recyclerview/widget/RecyclerView$OnItemTouchListener;", "Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "hasSlide", "", "lastKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "mSyllables", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "supportMoveCursor", "symbolList", "", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getResourceId", "onClick", "", "data", "pressTime", "", "onFinishInflate", "onInterceptTouchEvent", "v", "Landroidx/recyclerview/widget/RecyclerView;", "event", "Landroid/view/MotionEvent;", "onRequestDisallowInterceptTouchEvent", "p0", "onResume", "onTouch", "Landroid/view/View;", "onTouchEvent", "p1", "reset", "updateScrollData", "notify", "updateSyllableList", "syllables", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysScrollView;", "Lcom/tencent/mm/plugin/hld/view/ImeVerticalScrollView;", "Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysViewHolder$ISboAndSybKeysViewListener;", "Landroid/view/View$OnTouchListener;", "Landroidx/recyclerview/widget/RecyclerView$OnItemTouchListener;", "Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "hasSlide", "", "lastKeyOperation", "Lcom/tencent/mm/plugin/hld/keyboard/KeyOperation;", "mSyllables", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Syllable;", "Lkotlin/collections/ArrayList;", "supportMoveCursor", "symbolList", "", "getAdapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getResourceId", "onClick", "", "data", "pressTime", "", "onFinishInflate", "onInterceptTouchEvent", "v", "Landroidx/recyclerview/widget/RecyclerView;", "event", "Landroid/view/MotionEvent;", "onRequestDisallowInterceptTouchEvent", "p0", "onResume", "onTouch", "Landroid/view/View;", "onTouchEvent", "p1", "reset", "updateScrollData", "notify", "updateSyllableList", "syllables", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ImeSboAndSybKeysScrollView
   extends ImeVerticalScrollView
   implements View.OnTouchListener, RecyclerView.k, com.tencent.mm.plugin.hld.alternative.a, c.a
 {
-  public static final a DFk;
-  private boolean DFh;
-  private final ArrayList<Object> DFi;
-  private boolean DFj;
-  private final ArrayList<Syllable> DtM;
-  private com.tencent.mm.plugin.hld.keyboard.b DyL;
+  public static final ImeSboAndSybKeysScrollView.a JwO;
+  private final ArrayList<Syllable> Jno;
+  private com.tencent.mm.plugin.hld.keyboard.b JrQ;
+  private boolean JwP;
+  private final ArrayList<Object> JwQ;
+  private boolean JwR;
   
   static
   {
-    AppMethodBeat.i(212641);
-    DFk = new a((byte)0);
-    AppMethodBeat.o(212641);
+    AppMethodBeat.i(312185);
+    JwO = new ImeSboAndSybKeysScrollView.a((byte)0);
+    AppMethodBeat.o(312185);
   }
   
   public ImeSboAndSybKeysScrollView(Context paramContext, AttributeSet paramAttributeSet)
@@ -64,72 +67,77 @@ public final class ImeSboAndSybKeysScrollView
   private ImeSboAndSybKeysScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, (byte)0);
-    AppMethodBeat.i(212638);
-    this.DFi = new ArrayList();
-    this.DtM = new ArrayList();
-    if (paramContext == null) {
-      p.iCn();
-    }
-    this.DFh = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeSboAndSybKeysScrollView, paramInt, 0).getBoolean(a.l.ImeSboAndSybKeysScrollView_imeKeySupportMoveCursor, false);
+    AppMethodBeat.i(312164);
+    this.JwQ = new ArrayList();
+    this.Jno = new ArrayList();
+    s.checkNotNull(paramContext);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.l.ImeSboAndSybKeysScrollView, paramInt, 0);
+    s.s(paramContext, "context!!.obtainStyledAt…ollView, defStyleAttr, 0)");
+    this.JwP = paramContext.getBoolean(a.l.ImeSboAndSybKeysScrollView_imeKeySupportMoveCursor, false);
     initView();
-    AppMethodBeat.o(212638);
+    AppMethodBeat.o(312164);
   }
   
-  private final ArrayList<Object> sU(boolean paramBoolean)
+  private final ArrayList<Object> wZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(212619);
-    this.DFi.clear();
-    RecyclerView.a locala = getScrollContainerRv().getAdapter();
-    Object localObject = locala;
-    if (!(locala instanceof b)) {
-      localObject = null;
-    }
-    localObject = (b)localObject;
-    if (localObject != null) {
-      ((b)localObject).reset();
-    }
-    if (this.DtM.isEmpty())
+    AppMethodBeat.i(312179);
+    this.JwQ.clear();
+    Object localObject = getScrollContainerRv().getAdapter();
+    if ((localObject instanceof b))
     {
-      localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-      if (com.tencent.mm.plugin.hld.model.g.b(com.tencent.mm.plugin.hld.keyboard.c.Dyo)) {
-        j.a((Collection)this.DFi, new String[] { "+", "-", "*", "/", "%", ":", "(", ")", "=" });
+      localObject = (b)localObject;
+      if (localObject != null) {
+        ((b)localObject).reset();
       }
+      if (!this.Jno.isEmpty()) {
+        break label247;
+      }
+      localObject = com.tencent.mm.plugin.hld.model.g.JuL;
+      if (!com.tencent.mm.plugin.hld.model.g.b(com.tencent.mm.plugin.hld.keyboard.c.Jrs)) {
+        break label165;
+      }
+      p.a((Collection)this.JwQ, new String[] { "+", "-", "*", "/", "%", ":", "(", ")", "=" });
     }
-    while (paramBoolean)
+    for (;;)
     {
-      localObject = getScrollContainerRv().getAdapter();
-      if (localObject == null)
+      if (paramBoolean)
       {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.symbol.ImeSboAndSybKeysAdapter");
-        AppMethodBeat.o(212619);
-        throw ((Throwable)localObject);
-        localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-        if (com.tencent.mm.plugin.hld.model.g.b(com.tencent.mm.plugin.hld.keyboard.c.Dyl))
+        localObject = getScrollContainerRv().getAdapter();
+        if (localObject == null)
         {
-          j.a((Collection)this.DFi, new String[] { "，", "。", "？", "！", "…", "：", "、", "~", "@" });
+          localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.symbol.ImeSboAndSybKeysAdapter");
+          AppMethodBeat.o(312179);
+          throw ((Throwable)localObject);
+          localObject = null;
+          break;
+          label165:
+          localObject = com.tencent.mm.plugin.hld.model.g.JuL;
+          if (!com.tencent.mm.plugin.hld.model.g.b(com.tencent.mm.plugin.hld.keyboard.c.Jrp)) {
+            continue;
+          }
+          p.a((Collection)this.JwQ, new String[] { "，", "。", "？", "！", "…", "：", "、", "~", "@" });
           continue;
-          this.DFi.addAll((Collection)this.DtM);
+          label247:
+          this.JwQ.addAll((Collection)this.Jno);
+          continue;
         }
-      }
-      else
-      {
         ((b)localObject).a(null);
         localObject = getScrollContainerRv().getAdapter();
         if (localObject != null) {
-          ((RecyclerView.a)localObject).notifyDataSetChanged();
+          ((RecyclerView.a)localObject).bZE.notifyChanged();
         }
       }
     }
-    localObject = this.DFi;
-    AppMethodBeat.o(212619);
+    localObject = this.JwQ;
+    AppMethodBeat.o(312179);
     return localObject;
   }
   
   public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(212628);
-    p.k(paramRecyclerView, "v");
-    p.k(paramMotionEvent, "event");
+    AppMethodBeat.i(312265);
+    s.u(paramRecyclerView, "v");
+    s.u(paramMotionEvent, "event");
     int j = paramMotionEvent.getActionMasked();
     int i = (int)paramMotionEvent.getRawX();
     int k = (int)paramMotionEvent.getRawY();
@@ -140,27 +148,27 @@ public final class ImeSboAndSybKeysScrollView
     }
     for (;;)
     {
-      AppMethodBeat.o(212628);
+      AppMethodBeat.o(312265);
       return false;
-      this.DyL = new com.tencent.mm.plugin.hld.keyboard.b(i, k, l, null, null, 0L, 120);
+      this.JrQ = new com.tencent.mm.plugin.hld.keyboard.b(i, k, l, null, null, 0L, 120);
       continue;
-      paramMotionEvent = this.DyL;
+      paramMotionEvent = this.JrQ;
       if (paramMotionEvent != null)
       {
         if (Math.abs(paramMotionEvent.y - k) > 50) {
-          this.DFj = true;
+          this.JwR = true;
         }
-        if (!this.DFj)
+        if (!this.JwR)
         {
           j = Math.abs(paramMotionEvent.x - i);
-          paramMotionEvent = com.tencent.mm.plugin.hld.f.k.DHH;
-          if (j > com.tencent.mm.plugin.hld.f.k.eGQ())
+          paramMotionEvent = com.tencent.mm.plugin.hld.f.k.JyF;
+          if (j > com.tencent.mm.plugin.hld.f.k.fOz())
           {
-            paramMotionEvent = com.tencent.mm.plugin.hld.e.c.DxP;
-            com.tencent.mm.plugin.hld.e.c.a((View)paramRecyclerView, this.DyL, i);
-            AppMethodBeat.o(212628);
+            paramMotionEvent = com.tencent.mm.plugin.hld.e.b.JqP;
+            com.tencent.mm.plugin.hld.e.b.a((View)paramRecyclerView, this.JrQ, i);
+            AppMethodBeat.o(312265);
             return true;
-            this.DFj = false;
+            this.JwR = false;
             onClick((View)paramRecyclerView);
           }
         }
@@ -168,143 +176,69 @@ public final class ImeSboAndSybKeysScrollView
     }
   }
   
-  public final void aB(ArrayList<Syllable> paramArrayList)
+  public final void aQ(ArrayList<Syllable> paramArrayList)
   {
-    AppMethodBeat.i(212616);
-    p.k(paramArrayList, "syllables");
-    this.DtM.clear();
-    this.DtM.addAll((Collection)paramArrayList);
-    sU(true);
-    AppMethodBeat.o(212616);
+    AppMethodBeat.i(312243);
+    s.u(paramArrayList, "syllables");
+    this.Jno.clear();
+    this.Jno.addAll((Collection)paramArrayList);
+    wZ(true);
+    AppMethodBeat.o(312243);
   }
   
-  public final void ao(boolean paramBoolean) {}
+  public final void aX(boolean paramBoolean) {}
   
   public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(212631);
+    AppMethodBeat.i(312274);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramRecyclerView);
-    localb.bn(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysScrollView", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aFi());
-    p.k(paramRecyclerView, "p0");
-    p.k(paramMotionEvent, "p1");
+    localb.cH(paramRecyclerView);
+    localb.cH(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysScrollView", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V", this, localb.aYj());
+    s.u(paramRecyclerView, "p0");
+    s.u(paramMotionEvent, "p1");
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysScrollView", "androidx/recyclerview/widget/RecyclerView$OnItemTouchListener", "onTouchEvent", "(Landroidx/recyclerview/widget/RecyclerView;Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(212631);
+    AppMethodBeat.o(312274);
   }
   
   public final RecyclerView.a<RecyclerView.v> getAdapter()
   {
-    AppMethodBeat.i(212595);
-    RecyclerView.a locala = (RecyclerView.a)new b(sU(false), (c.a)this);
-    AppMethodBeat.o(212595);
+    AppMethodBeat.i(312198);
+    RecyclerView.a locala = (RecyclerView.a)new b(wZ(false), (c.a)this);
+    AppMethodBeat.o(312198);
     return locala;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(212599);
+    AppMethodBeat.i(312203);
     Object localObject = getContext();
-    p.j(localObject, "context");
-    localObject = new i.a((Context)localObject);
-    com.tencent.mm.plugin.hld.view.d locald = com.tencent.mm.plugin.hld.view.d.DHY;
-    p.k(locald, "dividerType");
-    ((i.a)localObject).DJs = locald;
-    localObject = (RecyclerView.h)((i.a)localObject).US(a.c.line_color).UT(a.c.transparent).UR(a.d.ime_divider_size).eHI();
-    AppMethodBeat.o(212599);
+    s.s(localObject, "context");
+    localObject = (RecyclerView.h)new k.a((Context)localObject).a(com.tencent.mm.view.recyclerview.e.agNS).aGi(a.c.line_color).aGj(a.c.transparent).aGh(a.d.ime_divider_size).jNn();
+    AppMethodBeat.o(312203);
     return localObject;
   }
   
   public final int getResourceId()
   {
-    AppMethodBeat.i(212591);
-    e locale = e.DGW;
-    if (e.eGo())
+    AppMethodBeat.i(312192);
+    com.tencent.mm.plugin.hld.f.e locale = com.tencent.mm.plugin.hld.f.e.Jym;
+    if (com.tencent.mm.plugin.hld.f.e.fOa())
     {
       i = a.h.wxime_symbol_keys_view_selfdraw;
-      AppMethodBeat.o(212591);
+      AppMethodBeat.o(312192);
       return i;
     }
     int i = a.h.wxime_symbol_keys_view;
-    AppMethodBeat.o(212591);
+    AppMethodBeat.o(312192);
     return i;
-  }
-  
-  public final void m(Object paramObject, long paramLong)
-  {
-    AppMethodBeat.i(212613);
-    Object localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-    com.tencent.mm.plugin.hld.f.l.it("WxIme.ImeSboAndSybKeysScrollView", "onClick ".concat(String.valueOf(paramObject)));
-    int i;
-    if ((paramObject instanceof String))
-    {
-      localObject = (com.tencent.mm.plugin.hld.a.d)h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-        if (localObject != null)
-        {
-          localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).eCr();
-          if (localObject != null)
-          {
-            paramObject = new com.tencent.mm.plugin.hld.a.g((String)paramObject);
-            paramObject.Dui = paramLong;
-            ((com.tencent.mm.plugin.hld.a.c)localObject).b(paramObject);
-          }
-        }
-      }
-      paramObject = getKeyboardType();
-      i = com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal();
-      if (paramObject != null) {
-        break label219;
-      }
-      label120:
-      i = com.tencent.mm.plugin.hld.keyboard.c.Dyo.ordinal();
-      if (paramObject != null) {
-        break label235;
-      }
-      label132:
-      i = -1;
-    }
-    for (;;)
-    {
-      paramObject = com.tencent.mm.plugin.hld.model.k.DDb;
-      com.tencent.mm.plugin.hld.model.k.hO(i, 1);
-      AppMethodBeat.o(212613);
-      return;
-      if (!(paramObject instanceof Syllable)) {
-        break;
-      }
-      localObject = getScrollContainerRv().getAdapter();
-      if (localObject == null)
-      {
-        paramObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.symbol.ImeSboAndSybKeysAdapter");
-        AppMethodBeat.o(212613);
-        throw paramObject;
-      }
-      ((b)localObject).a((Syllable)paramObject);
-      localObject = n.DEn;
-      n.b((Syllable)paramObject, paramLong);
-      break;
-      label219:
-      if (paramObject.intValue() != i) {
-        break label120;
-      }
-      i = 101;
-      continue;
-      label235:
-      if (paramObject.intValue() != i) {
-        break label132;
-      }
-      i = 401;
-    }
   }
   
   public final void onFinishInflate()
   {
-    AppMethodBeat.i(212603);
+    AppMethodBeat.i(312212);
     super.onFinishInflate();
-    if (this.DFh)
+    if (this.JwP)
     {
       getScrollContainerRv().a((RecyclerView.k)this);
       localImeKeyRelativeLayout = (ImeKeyRelativeLayout)findViewById(a.f.below_button_ikb);
@@ -313,108 +247,105 @@ public final class ImeSboAndSybKeysScrollView
       }
     }
     ImeKeyRelativeLayout localImeKeyRelativeLayout = (ImeKeyRelativeLayout)findViewById(a.f.below_button_ikb);
-    if (localImeKeyRelativeLayout != null)
-    {
+    if (localImeKeyRelativeLayout != null) {
       localImeKeyRelativeLayout.setPadding(localImeKeyRelativeLayout.getKeyMarginLeft(), localImeKeyRelativeLayout.getKeyMarginTop(), localImeKeyRelativeLayout.getKeyMarginRight(), localImeKeyRelativeLayout.getKeyMarginBottom());
-      AppMethodBeat.o(212603);
-      return;
     }
-    AppMethodBeat.o(212603);
+    AppMethodBeat.o(312212);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(212606);
+    AppMethodBeat.i(312217);
     super.onResume();
-    Object localObject = com.tencent.mm.plugin.hld.model.g.DCm;
-    if (com.tencent.mm.plugin.hld.model.g.b(com.tencent.mm.plugin.hld.keyboard.c.Dyl))
+    Object localObject = com.tencent.mm.plugin.hld.model.g.JuL;
+    if (com.tencent.mm.plugin.hld.model.g.b(com.tencent.mm.plugin.hld.keyboard.c.Jrp))
     {
-      localObject = n.DEn;
+      localObject = n.JvW;
       n.a((com.tencent.mm.plugin.hld.alternative.a)this);
     }
-    sU(true);
-    AppMethodBeat.o(212606);
+    wZ(true);
+    AppMethodBeat.o(312217);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(212623);
-    Integer localInteger;
-    Object localObject;
-    label39:
+    AppMethodBeat.i(312253);
+    Object localObject1;
+    Object localObject2;
+    label30:
     int i;
-    label61:
+    label49:
     int j;
     long l;
     if ((paramView instanceof ImeKeyRelativeLayout))
     {
-      if (paramMotionEvent == null) {
+      if (paramMotionEvent != null) {
+        break label140;
+      }
+      localObject1 = null;
+      if (paramMotionEvent != null) {
         break label152;
       }
-      localInteger = Integer.valueOf(paramMotionEvent.getActionMasked());
-      if (paramMotionEvent == null) {
-        break label158;
+      localObject2 = Double.valueOf(0.0D);
+      i = (int)((Float)localObject2).floatValue();
+      if (paramMotionEvent != null) {
+        break label164;
       }
-      localObject = Float.valueOf(paramMotionEvent.getRawX());
-      i = (int)((Float)localObject).floatValue();
-      if (paramMotionEvent == null) {
-        break label167;
-      }
-      paramMotionEvent = Float.valueOf(paramMotionEvent.getRawY());
+      paramMotionEvent = Double.valueOf(0.0D);
       j = (int)((Float)paramMotionEvent).floatValue();
       l = System.currentTimeMillis();
-      Log.d("WxIme.ImeSboAndSybKeysScrollView", "onTouch action " + localInteger + ' ' + i + ' ' + j + ' ' + l);
-      if (localInteger != null) {
+      Log.d("WxIme.ImeSboAndSybKeysScrollView", "onTouch action " + localObject1 + ' ' + i + ' ' + j + ' ' + l);
+      if (localObject1 != null) {
         break label175;
       }
-      label134:
-      if (localInteger != null) {
+      label122:
+      if (localObject1 != null) {
         break label226;
       }
-      label139:
-      if (localInteger != null) {
+      label127:
+      if (localObject1 != null) {
         break label289;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(212623);
+      AppMethodBeat.o(312253);
       return false;
-      label152:
-      localInteger = null;
+      label140:
+      localObject1 = Integer.valueOf(paramMotionEvent.getActionMasked());
       break;
-      label158:
-      localObject = Double.valueOf(0.0D);
-      break label39;
-      label167:
-      paramMotionEvent = Double.valueOf(0.0D);
-      break label61;
+      label152:
+      localObject2 = Float.valueOf(paramMotionEvent.getRawX());
+      break label30;
+      label164:
+      paramMotionEvent = Float.valueOf(paramMotionEvent.getRawY());
+      break label49;
       label175:
-      if (localInteger.intValue() != 0) {
-        break label134;
+      if (((Integer)localObject1).intValue() != 0) {
+        break label122;
       }
-      paramMotionEvent = i.DHq;
+      paramMotionEvent = i.JyA;
       i.d((ImeKeyRelativeLayout)paramView);
-      this.DyL = new com.tencent.mm.plugin.hld.keyboard.b(i, j, l, null, null, 0L, 120);
+      this.JrQ = new com.tencent.mm.plugin.hld.keyboard.b(i, j, l, null, null, 0L, 120);
       ((ImeKeyRelativeLayout)paramView).setSelected(true);
       continue;
       label226:
-      if (localInteger.intValue() != 2) {
-        break label139;
+      if (((Integer)localObject1).intValue() != 2) {
+        break label127;
       }
-      paramMotionEvent = this.DyL;
+      paramMotionEvent = this.JrQ;
       if (paramMotionEvent != null)
       {
         j = Math.abs(paramMotionEvent.x - i);
-        paramMotionEvent = com.tencent.mm.plugin.hld.f.k.DHH;
-        if (j > com.tencent.mm.plugin.hld.f.k.eGQ())
+        paramMotionEvent = com.tencent.mm.plugin.hld.f.k.JyF;
+        if (j > com.tencent.mm.plugin.hld.f.k.fOz())
         {
-          paramMotionEvent = com.tencent.mm.plugin.hld.e.c.DxP;
-          com.tencent.mm.plugin.hld.e.c.a(null, paramView, this.DyL, i);
-          AppMethodBeat.o(212623);
+          paramMotionEvent = com.tencent.mm.plugin.hld.e.b.JqP;
+          com.tencent.mm.plugin.hld.e.b.a(null, paramView, this.JrQ, i);
+          AppMethodBeat.o(312253);
           return true;
           label289:
-          if (localInteger.intValue() == 1)
+          if (((Integer)localObject1).intValue() == 1)
           {
             ((ImeKeyRelativeLayout)paramView).setSelected(false);
             onClick(paramView);
@@ -426,25 +357,93 @@ public final class ImeSboAndSybKeysScrollView
   
   public final void reset()
   {
-    AppMethodBeat.i(212608);
+    AppMethodBeat.i(312227);
     super.reset();
-    Object localObject = n.DEn;
+    Object localObject = n.JvW;
     n.b((com.tencent.mm.plugin.hld.alternative.a)this);
     localObject = getScrollContainerRv().getAdapter();
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.hld.symbol.ImeSboAndSybKeysAdapter");
-      AppMethodBeat.o(212608);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.symbol.ImeSboAndSybKeysAdapter");
+      AppMethodBeat.o(312227);
       throw ((Throwable)localObject);
     }
     ((b)localObject).reset();
-    this.DFi.clear();
-    this.DtM.clear();
-    AppMethodBeat.o(212608);
+    this.JwQ.clear();
+    this.Jno.clear();
+    AppMethodBeat.o(312227);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/symbol/ImeSboAndSybKeysScrollView$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
+  public final void v(Object paramObject, long paramLong)
+  {
+    AppMethodBeat.i(312237);
+    Object localObject = l.JyV;
+    l.jC("WxIme.ImeSboAndSybKeysScrollView", s.X("onClick ", paramObject));
+    int i;
+    if ((paramObject instanceof String))
+    {
+      localObject = (d)h.ax(d.class);
+      if (localObject != null)
+      {
+        localObject = ((d)localObject).fKG();
+        if (localObject != null)
+        {
+          localObject = ((com.tencent.mm.plugin.hld.a.b)localObject).fKC();
+          if (localObject != null)
+          {
+            paramObject = new com.tencent.mm.plugin.hld.a.g((String)paramObject);
+            paramObject.JnG = paramLong;
+            ah localah = ah.aiuX;
+            ((com.tencent.mm.plugin.hld.a.c)localObject).b(paramObject);
+          }
+        }
+      }
+      paramObject = getKeyboardType();
+      i = com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal();
+      if (paramObject != null) {
+        break label220;
+      }
+      label122:
+      i = com.tencent.mm.plugin.hld.keyboard.c.Jrs.ordinal();
+      if (paramObject != null) {
+        break label236;
+      }
+      label134:
+      i = -1;
+    }
+    for (;;)
+    {
+      paramObject = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.YA(i);
+      AppMethodBeat.o(312237);
+      return;
+      if (!(paramObject instanceof Syllable)) {
+        break;
+      }
+      localObject = getScrollContainerRv().getAdapter();
+      if (localObject == null)
+      {
+        paramObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.hld.symbol.ImeSboAndSybKeysAdapter");
+        AppMethodBeat.o(312237);
+        throw paramObject;
+      }
+      ((b)localObject).a((Syllable)paramObject);
+      localObject = n.JvW;
+      n.b((Syllable)paramObject, paramLong);
+      break;
+      label220:
+      if (paramObject.intValue() != i) {
+        break label122;
+      }
+      i = 101;
+      continue;
+      label236:
+      if (paramObject.intValue() != i) {
+        break label134;
+      }
+      i = 401;
+    }
+  }
 }
 
 

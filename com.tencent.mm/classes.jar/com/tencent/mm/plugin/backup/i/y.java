@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 
 public final class y
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int rVU;
-  public int rWB;
-  public int rWC;
-  public String rWy;
-  public int rWz;
+  public String vhN;
+  public int vhO;
+  public int vhQ;
+  public int vhR;
+  public int vhk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(22130);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.rWy == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.vhN == null)
       {
         paramVarArgs = new b("Not all required fields were included: DataID");
         AppMethodBeat.o(22130);
         throw paramVarArgs;
       }
-      if (this.rWy != null) {
-        paramVarArgs.f(1, this.rWy);
+      if (this.vhN != null) {
+        paramVarArgs.g(1, this.vhN);
       }
-      paramVarArgs.aY(2, this.rWz);
-      paramVarArgs.aY(3, this.rWB);
-      paramVarArgs.aY(4, this.rWC);
-      paramVarArgs.aY(5, this.rVU);
+      paramVarArgs.bS(2, this.vhO);
+      paramVarArgs.bS(3, this.vhQ);
+      paramVarArgs.bS(4, this.vhR);
+      paramVarArgs.bS(5, this.vhk);
       AppMethodBeat.o(22130);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.rWy == null) {
-        break label457;
+      if (this.vhN == null) {
+        break label453;
       }
     }
-    label457:
-    for (paramInt = g.a.a.b.b.a.g(1, this.rWy) + 0;; paramInt = 0)
+    label453:
+    for (paramInt = i.a.a.b.b.a.h(1, this.vhN) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.rWz);
-      int j = g.a.a.b.b.a.bM(3, this.rWB);
-      int k = g.a.a.b.b.a.bM(4, this.rWC);
-      int m = g.a.a.b.b.a.bM(5, this.rVU);
+      int i = i.a.a.b.b.a.cJ(2, this.vhO);
+      int j = i.a.a.b.b.a.cJ(3, this.vhQ);
+      int k = i.a.a.b.b.a.cJ(4, this.vhR);
+      int m = i.a.a.b.b.a.cJ(5, this.vhk);
       AppMethodBeat.o(22130);
       return paramInt + i + j + k + m;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.rWy == null)
+        if (this.vhN == null)
         {
           paramVarArgs = new b("Not all required fields were included: DataID");
           AppMethodBeat.o(22130);
@@ -67,7 +67,7 @@ public final class y
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         y localy = (y)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -75,23 +75,23 @@ public final class y
           AppMethodBeat.o(22130);
           return -1;
         case 1: 
-          localy.rWy = locala.abFh.readString();
+          localy.vhN = locala.ajGk.readString();
           AppMethodBeat.o(22130);
           return 0;
         case 2: 
-          localy.rWz = locala.abFh.AK();
+          localy.vhO = locala.ajGk.aar();
           AppMethodBeat.o(22130);
           return 0;
         case 3: 
-          localy.rWB = locala.abFh.AK();
+          localy.vhQ = locala.ajGk.aar();
           AppMethodBeat.o(22130);
           return 0;
         case 4: 
-          localy.rWC = locala.abFh.AK();
+          localy.vhR = locala.ajGk.aar();
           AppMethodBeat.o(22130);
           return 0;
         }
-        localy.rVU = locala.abFh.AK();
+        localy.vhk = locala.ajGk.aar();
         AppMethodBeat.o(22130);
         return 0;
       }
@@ -102,7 +102,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.y
  * JD-Core Version:    0.7.0.1
  */

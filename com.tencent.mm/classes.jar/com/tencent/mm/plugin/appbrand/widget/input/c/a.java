@@ -8,13 +8,13 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class a
 {
-  private final MMHandler pRi;
-  public volatile c rzE;
+  private final MMHandler sVR;
+  public volatile c uKH;
   
   public a()
   {
     AppMethodBeat.i(131519);
-    this.pRi = new MMHandler(Looper.getMainLooper())
+    this.sVR = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -23,8 +23,8 @@ public final class a
         {
           String str = (String)paramAnonymousMessage.obj;
           int i = paramAnonymousMessage.arg1;
-          if (a.this.rzE != null) {
-            a.this.rzE.ci(str, i);
+          if (a.this.uKH != null) {
+            a.this.uKH.cG(str, i);
           }
         }
         AppMethodBeat.o(131518);
@@ -41,9 +41,9 @@ public final class a
       AppMethodBeat.o(131520);
       return;
     }
-    paramCharSequence = this.pRi.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
-    this.pRi.removeMessages(1000);
-    MMHandler localMMHandler = this.pRi;
+    paramCharSequence = this.sVR.obtainMessage(1000, Selection.getSelectionEnd(paramCharSequence), 0, paramCharSequence.toString());
+    this.sVR.removeMessages(1000);
+    MMHandler localMMHandler = this.sVR;
     if (paramBoolean) {}
     for (long l = 150L;; l = 0L)
     {
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.c.a
  * JD-Core Version:    0.7.0.1
  */

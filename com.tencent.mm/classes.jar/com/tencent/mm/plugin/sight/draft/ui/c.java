@@ -12,42 +12,42 @@ import java.lang.ref.WeakReference;
 
 public abstract class c
 {
-  f<String, Bitmap> Jup = new com.tencent.mm.memory.a.c(24);
-  private Bitmap Juq;
+  f<String, Bitmap> PHN = new com.tencent.mm.memory.a.c(24);
+  private Bitmap PHO;
   
-  private Bitmap fJa()
+  private Bitmap gYT()
   {
-    if (this.Juq == null) {
-      this.Juq = BitmapUtil.getBitmapNative(R.k.panel_icon_pic);
+    if (this.PHO == null) {
+      this.PHO = BitmapUtil.getBitmapNative(R.k.panel_icon_pic);
     }
-    return this.Juq;
+    return this.PHO;
   }
   
-  public final Bitmap B(String paramString1, String paramString2, boolean paramBoolean)
+  public final Bitmap H(String paramString1, String paramString2, boolean paramBoolean)
   {
     if (Util.isNullOrNil(paramString1)) {
-      localObject = fJa();
+      localObject = gYT();
     }
     Bitmap localBitmap;
     do
     {
       return localObject;
-      localBitmap = (Bitmap)this.Jup.get(paramString1);
+      localBitmap = (Bitmap)this.PHN.get(paramString1);
       localObject = localBitmap;
     } while (localBitmap != null);
     Object localObject = new a((byte)0);
     ((a)localObject).key = paramString1;
     ((a)localObject).path = paramString2;
-    ((a)localObject).Jur = paramBoolean;
-    ((a)localObject).Jus = new WeakReference(this);
+    ((a)localObject).PHP = paramBoolean;
+    ((a)localObject).PHQ = new WeakReference(this);
     if (paramBoolean) {
-      bh.aHJ().postToWorker((Runnable)localObject);
+      bh.baH().postToWorker((Runnable)localObject);
     }
     do
     {
-      return fJa();
+      return gYT();
       ((a)localObject).run();
-      paramString1 = (Bitmap)this.Jup.get(paramString1);
+      paramString1 = (Bitmap)this.PHN.get(paramString1);
     } while (paramString1 == null);
     return paramString1;
   }
@@ -57,8 +57,8 @@ public abstract class c
   static final class a
     implements Runnable
   {
-    boolean Jur;
-    WeakReference<c> Jus;
+    boolean PHP;
+    WeakReference<c> PHQ;
     String key;
     String path;
     
@@ -66,17 +66,17 @@ public abstract class c
     {
       AppMethodBeat.i(28693);
       Bitmap localBitmap = BitmapUtil.getBitmapNative(this.path);
-      Object localObject = (c)this.Jus.get();
+      Object localObject = (c)this.PHQ.get();
       if (localObject != null)
       {
         if ((!Util.isNullOrNil(this.key)) && (localBitmap != null)) {
-          ((c)localObject).Jup.put(this.key, localBitmap);
+          ((c)localObject).PHN.put(this.key, localBitmap);
         }
         localObject = new c.b((byte)0);
         ((c.b)localObject).key = this.key;
-        ((c.b)localObject).tJN = localBitmap;
-        ((c.b)localObject).Jus = this.Jus;
-        if (this.Jur) {
+        ((c.b)localObject).wNk = localBitmap;
+        ((c.b)localObject).PHQ = this.PHQ;
+        if (this.PHP) {
           MMHandlerThread.postToMainThread((Runnable)localObject);
         }
       }
@@ -87,16 +87,16 @@ public abstract class c
   static final class b
     implements Runnable
   {
-    WeakReference<c> Jus;
+    WeakReference<c> PHQ;
     String key;
-    Bitmap tJN;
+    Bitmap wNk;
     
     public final void run()
     {
       AppMethodBeat.i(28694);
-      c localc = (c)this.Jus.get();
+      c localc = (c)this.PHQ.get();
       if (localc != null) {
-        localc.s(this.key, this.tJN);
+        localc.s(this.key, this.wNk);
       }
       AppMethodBeat.o(28694);
     }
@@ -104,7 +104,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.c
  * JD-Core Version:    0.7.0.1
  */

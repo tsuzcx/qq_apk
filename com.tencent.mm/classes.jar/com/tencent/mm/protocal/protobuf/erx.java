@@ -1,101 +1,85 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import i.a.a.b;
 
 public final class erx
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<String> fmW;
-  public int num;
-  public String title;
-  public String url;
-  
-  public erx()
-  {
-    AppMethodBeat.i(186434);
-    this.fmW = new LinkedList();
-    AppMethodBeat.o(186434);
-  }
+  public int abvM;
+  public String abvN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127284);
+    AppMethodBeat.i(152669);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.num);
-      if (this.title != null) {
-        paramVarArgs.f(2, this.title);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abvN == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ResKey");
+        AppMethodBeat.o(152669);
+        throw paramVarArgs;
       }
-      if (this.url != null) {
-        paramVarArgs.f(3, this.url);
+      paramVarArgs.bS(1, this.abvM);
+      if (this.abvN != null) {
+        paramVarArgs.g(2, this.abvN);
       }
-      paramVarArgs.e(4, 1, this.fmW);
-      AppMethodBeat.o(127284);
+      AppMethodBeat.o(152669);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.num) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.abvM) + 0;
       paramInt = i;
-      if (this.title != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.title);
+      if (this.abvN != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.abvN);
       }
-      i = paramInt;
-      if (this.url != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.url);
-      }
-      paramInt = g.a.a.a.c(4, 1, this.fmW);
-      AppMethodBeat.o(127284);
-      return i + paramInt;
+      AppMethodBeat.o(152669);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.fmW.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(127284);
+      if (this.abvN == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ResKey");
+        AppMethodBeat.o(152669);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(152669);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       erx localerx = (erx)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(127284);
+        AppMethodBeat.o(152669);
         return -1;
       case 1: 
-        localerx.num = locala.abFh.AK();
-        AppMethodBeat.o(127284);
-        return 0;
-      case 2: 
-        localerx.title = locala.abFh.readString();
-        AppMethodBeat.o(127284);
-        return 0;
-      case 3: 
-        localerx.url = locala.abFh.readString();
-        AppMethodBeat.o(127284);
+        localerx.abvM = locala.ajGk.aar();
+        AppMethodBeat.o(152669);
         return 0;
       }
-      localerx.fmW.add(locala.abFh.readString());
-      AppMethodBeat.o(127284);
+      localerx.abvN = locala.ajGk.readString();
+      AppMethodBeat.o(152669);
       return 0;
     }
-    AppMethodBeat.o(127284);
+    AppMethodBeat.o(152669);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.erx
  * JD-Core Version:    0.7.0.1
  */

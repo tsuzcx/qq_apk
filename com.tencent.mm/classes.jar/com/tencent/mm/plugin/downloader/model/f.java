@@ -7,25 +7,25 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.text.TextUtils;
-import androidx.core.app.e.d;
+import androidx.core.app.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.jq;
-import com.tencent.mm.f.a.kh;
-import com.tencent.mm.f.a.kh.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.ks;
+import com.tencent.mm.autogen.a.ll;
+import com.tencent.mm.autogen.a.ll.a;
+import com.tencent.mm.b.q;
 import com.tencent.mm.model.ay;
-import com.tencent.mm.modelsimple.af;
+import com.tencent.mm.modelsimple.ag;
 import com.tencent.mm.plugin.downloader.c.d;
-import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.pluginsdk.model.app.v;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -36,118 +36,74 @@ import java.util.Set;
 
 public final class f
 {
-  private static int oyB;
-  private static Map<Long, Long> uhr;
-  private static f uhz;
-  public boolean uhA;
-  private n uhs;
-  private n uht;
-  private n uhu;
-  private com.tencent.mm.plugin.downloader.h.a uhv;
-  private b uhw;
-  private n uhx;
-  public c uhy;
+  private static int rCt;
+  private static f xnF;
+  private static Map<Long, Long> xnx;
+  private n xnA;
+  private com.tencent.mm.plugin.downloader.g.a xnB;
+  private b xnC;
+  private n xnD;
+  public c xnE;
+  public boolean xnG;
+  private n xny;
+  private n xnz;
   
   static
   {
     AppMethodBeat.i(89004);
-    uhr = new HashMap();
-    oyB = 2;
+    xnx = new HashMap();
+    rCt = 2;
     AppMethodBeat.o(89004);
   }
   
   private f()
   {
     AppMethodBeat.i(88975);
-    this.uhA = false;
-    cQg();
-    if (com.tencent.mm.kernel.h.aHE().aGM())
+    this.xnG = false;
+    duC();
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      com.tencent.mm.kernel.h.aHE();
-      if (!com.tencent.mm.kernel.b.aGE())
+      com.tencent.mm.kernel.h.baC();
+      if (!com.tencent.mm.kernel.b.aZG())
       {
-        oyB = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("FileDownloaderType"), 2);
-        Log.i("MicroMsg.FileDownloadManager", "get downloader type from dynamic config = %d", new Object[] { Integer.valueOf(oyB) });
+        rCt = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("FileDownloaderType"), 2);
+        Log.i("MicroMsg.FileDownloadManager", "get downloader type from dynamic config = %d", new Object[] { Integer.valueOf(rCt) });
       }
     }
     for (;;)
     {
-      this.uhy = new c();
+      this.xnE = new c();
       AppMethodBeat.o(88975);
       return;
       Log.i("MicroMsg.FileDownloadManager", "not login, use the default tmassist downloader");
     }
   }
   
-  static boolean IK(long paramLong)
+  public static LinkedList<FileDownloadTaskInfo> U(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(88993);
-    boolean bool = uhr.containsKey(Long.valueOf(paramLong));
-    AppMethodBeat.o(88993);
-    return bool;
-  }
-  
-  static long IL(long paramLong)
-  {
-    AppMethodBeat.i(88995);
-    Long localLong = (Long)uhr.get(Long.valueOf(paramLong));
-    if (localLong == null)
-    {
-      AppMethodBeat.o(88995);
-      return -1L;
-    }
-    paramLong = localLong.longValue();
-    AppMethodBeat.o(88995);
-    return paramLong;
-  }
-  
-  private void IM(long paramLong)
-  {
-    AppMethodBeat.i(88998);
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
-    if (locala == null)
-    {
-      this.uhA = false;
-      AppMethodBeat.o(88998);
-      return;
-    }
-    a(locala.field_appId, null);
-    AppMethodBeat.o(88998);
-  }
-  
-  static void P(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(88994);
-    uhr.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-    MMApplicationContext.getContext().getSharedPreferences("off_line_download_ids", 0).edit().putLong(String.valueOf(paramLong1), paramLong2).commit();
-    AppMethodBeat.o(88994);
-  }
-  
-  public static LinkedList<FileDownloadTaskInfo> S(LinkedList<String> paramLinkedList)
-  {
-    com.tencent.mm.plugin.downloader.g.a locala = null;
+    com.tencent.mm.plugin.downloader.f.a locala = null;
     AppMethodBeat.i(88988);
-    Object localObject2 = d.bbS();
+    Object localObject2 = d.bzH();
     Object localObject1;
     if (localObject2 == null)
     {
       localObject1 = locala;
       paramLinkedList = new LinkedList();
       if ((localObject1 == null) || (((LinkedList)localObject1).size() <= 0)) {
-        break label327;
+        break label324;
       }
       localObject1 = ((LinkedList)localObject1).iterator();
       label41:
       if (!((Iterator)localObject1).hasNext()) {
-        break label327;
+        break label324;
       }
-      locala = (com.tencent.mm.plugin.downloader.g.a)((Iterator)localObject1).next();
+      locala = (com.tencent.mm.plugin.downloader.f.a)((Iterator)localObject1).next();
       localObject2 = new FileDownloadTaskInfo();
-      if ((locala.field_status != 3) || (u.agG(locala.field_filePath))) {
-        break label316;
+      if ((locala.field_status != 3) || (y.ZC(locala.field_filePath))) {
+        break label313;
       }
     }
-    label316:
+    label313:
     for (((FileDownloadTaskInfo)localObject2).status = 0;; ((FileDownloadTaskInfo)localObject2).status = locala.field_status)
     {
       ((FileDownloadTaskInfo)localObject2).appId = locala.field_appId;
@@ -155,19 +111,19 @@ public final class f
       ((FileDownloadTaskInfo)localObject2).url = locala.field_downloadUrl;
       ((FileDownloadTaskInfo)localObject2).path = locala.field_filePath;
       ((FileDownloadTaskInfo)localObject2).md5 = locala.field_md5;
-      ((FileDownloadTaskInfo)localObject2).uih = locala.field_downloadedSize;
-      ((FileDownloadTaskInfo)localObject2).rKZ = locala.field_totalSize;
-      ((FileDownloadTaskInfo)localObject2).uii = locala.field_autoDownload;
-      ((FileDownloadTaskInfo)localObject2).fGH = locala.field_downloaderType;
-      ((FileDownloadTaskInfo)localObject2).uij = locala.field_downloadInWifi;
-      ((FileDownloadTaskInfo)localObject2).uik = locala.field_reserveInWifi;
+      ((FileDownloadTaskInfo)localObject2).xom = locala.field_downloadedSize;
+      ((FileDownloadTaskInfo)localObject2).uWn = locala.field_totalSize;
+      ((FileDownloadTaskInfo)localObject2).xon = locala.field_autoDownload;
+      ((FileDownloadTaskInfo)localObject2).hMd = locala.field_downloaderType;
+      ((FileDownloadTaskInfo)localObject2).xoo = locala.field_downloadInWifi;
+      ((FileDownloadTaskInfo)localObject2).xop = locala.field_reserveInWifi;
       paramLinkedList.add(localObject2);
       break label41;
       localObject1 = locala;
       if (Util.isNullOrNil(paramLinkedList)) {
         break;
       }
-      localObject2 = ((com.tencent.mm.plugin.downloader.g.b)localObject2).rawQuery(String.format("select * from %s where %s in %s or %s in %s", new Object[] { "FileDownloadInfo", "appId", com.tencent.mm.plugin.downloader.g.b.U(paramLinkedList), "rawAppId", com.tencent.mm.plugin.downloader.g.b.U(paramLinkedList) }), new String[0]);
+      localObject2 = ((com.tencent.mm.plugin.downloader.f.b)localObject2).rawQuery(String.format("select * from %s where %s in %s or %s in %s", new Object[] { "FileDownloadInfo", "appId", com.tencent.mm.plugin.downloader.f.b.W(paramLinkedList), "rawAppId", com.tencent.mm.plugin.downloader.f.b.W(paramLinkedList) }), new String[0]);
       localObject1 = locala;
       if (localObject2 == null) {
         break;
@@ -176,8 +132,8 @@ public final class f
       if (((Cursor)localObject2).moveToFirst()) {
         do
         {
-          localObject1 = new com.tencent.mm.plugin.downloader.g.a();
-          ((com.tencent.mm.plugin.downloader.g.a)localObject1).convertFrom((Cursor)localObject2);
+          localObject1 = new com.tencent.mm.plugin.downloader.f.a();
+          ((com.tencent.mm.plugin.downloader.f.a)localObject1).convertFrom((Cursor)localObject2);
           paramLinkedList.add(localObject1);
         } while (((Cursor)localObject2).moveToNext());
       }
@@ -189,45 +145,38 @@ public final class f
       localObject1 = paramLinkedList;
       break;
     }
-    label327:
+    label324:
     AppMethodBeat.o(88988);
     return paramLinkedList;
-  }
-  
-  public static void a(m paramm)
-  {
-    AppMethodBeat.i(292888);
-    c.a(paramm);
-    AppMethodBeat.o(292888);
   }
   
   private void a(String paramString, g paramg)
   {
     AppMethodBeat.i(88997);
-    com.tencent.mm.plugin.downloader.g.a locala;
-    if (!this.uhA)
+    com.tencent.mm.plugin.downloader.f.a locala;
+    if (!this.xnG)
     {
-      locala = d.asU(paramString);
+      locala = d.amJ(paramString);
       if ((locala != null) && (locala.field_autoDownload))
       {
-        jq localjq = new jq();
-        localjq.fGT.appid = paramString;
-        EventCenter.instance.publish(localjq);
+        ks localks = new ks();
+        localks.hMq.appid = paramString;
+        localks.publish();
         if (paramg == null) {
-          break label117;
+          break label114;
         }
-        locala.field_autoInstall = paramg.uhH;
-        locala.field_showNotification = paramg.oyA;
+        locala.field_autoInstall = paramg.xnN;
+        locala.field_showNotification = paramg.rCs;
       }
     }
-    for (locala.field_autoDownload = paramg.uhJ;; locala.field_autoDownload = false)
+    for (locala.field_autoDownload = paramg.xnP;; locala.field_autoDownload = false)
     {
       d.e(locala);
       Log.i("MicroMsg.FileDownloadManager", "remove silentDownload, appId:%s", new Object[] { paramString });
-      this.uhA = false;
+      this.xnG = false;
       AppMethodBeat.o(88997);
       return;
-      label117:
+      label114:
       locala.field_autoInstall = true;
       locala.field_showNotification = true;
     }
@@ -236,105 +185,73 @@ public final class f
   static void a(String paramString1, String paramString2, String paramString3, PendingIntent paramPendingIntent)
   {
     AppMethodBeat.i(88992);
-    e.d locald = com.tencent.mm.bx.a.cp(MMApplicationContext.getContext(), "reminder_channel_id");
+    f.d locald = com.tencent.mm.bq.a.cA(MMApplicationContext.getContext(), "reminder_channel_id");
     if (!TextUtils.isEmpty(paramString2))
     {
-      locald.k(paramString2);
-      locald.l(paramString3);
-      locald.bn(17301634);
-      locald.W(true);
+      locald.l(paramString2);
+      locald.m(paramString3);
+      locald.eb(17301634);
+      locald.aC(true);
       if (paramPendingIntent == null) {
         break label150;
       }
     }
-    for (locald.Ip = paramPendingIntent;; locald.Ip = PendingIntent.getActivity(MMApplicationContext.getContext(), 0, paramString1, 0))
+    for (locald.bor = paramPendingIntent;; locald.bor = PendingIntent.getActivity(MMApplicationContext.getContext(), 0, paramString1, 0))
     {
-      ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.notification.b.a.class)).getNotification().c(locald.gr());
+      ((com.tencent.mm.plugin.notification.b.b)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.notification.b.b.class)).getNotification().d(locald.DA());
       Log.i("MicroMsg.FileDownloadManager", "show notification");
       AppMethodBeat.o(88992);
       return;
-      paramString1 = com.tencent.mm.pluginsdk.model.app.h.o(paramString1, false, false);
+      paramString1 = com.tencent.mm.pluginsdk.model.app.h.s(paramString1, false, false);
       if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.field_appName)))
       {
-        locald.k(paramString1.field_appName);
+        locald.l(paramString1.field_appName);
         break;
       }
-      locald.k("");
+      locald.l("");
       break;
       label150:
       paramString1 = new Intent();
     }
   }
   
-  public static String atb(String paramString)
+  static void am(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(219540);
+    AppMethodBeat.i(88994);
+    xnx.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
+    MMApplicationContext.getContext().getSharedPreferences("off_line_download_ids", 0).edit().putLong(String.valueOf(paramLong1), paramLong2).commit();
+    AppMethodBeat.o(88994);
+  }
+  
+  public static String amQ(String paramString)
+  {
+    AppMethodBeat.i(267137);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(219540);
+      AppMethodBeat.o(267137);
       return "";
     }
-    String str2 = r.bqj(paramString);
+    String str2 = v.bpY(paramString);
     String str1 = str2;
     if (Util.isNullOrNil(str2)) {
-      str1 = r.bqj(com.tencent.mm.b.q.n(paramString, false));
+      str1 = v.bpY(q.n(paramString, false));
     }
-    AppMethodBeat.o(219540);
+    AppMethodBeat.o(267137);
     return str1;
   }
   
-  public static void b(m paramm)
-  {
-    AppMethodBeat.i(292889);
-    c.b(paramm);
-    AppMethodBeat.o(292889);
-  }
-  
-  public static f cPZ()
-  {
-    AppMethodBeat.i(88974);
-    if (uhz == null) {
-      uhz = new f();
-    }
-    f localf = uhz;
-    AppMethodBeat.o(88974);
-    return localf;
-  }
-  
-  private n cQb()
-  {
-    AppMethodBeat.i(88977);
-    if (this.uhu == null) {
-      this.uhu = new i(this.uhy);
-    }
-    n localn = this.uhu;
-    AppMethodBeat.o(88977);
-    return localn;
-  }
-  
-  private n cQc()
-  {
-    AppMethodBeat.i(88978);
-    if (this.uht == null) {
-      this.uht = new k(this.uhy);
-    }
-    n localn = this.uht;
-    AppMethodBeat.o(88978);
-    return localn;
-  }
-  
-  private n cQf()
+  private n duB()
   {
     AppMethodBeat.i(88981);
-    if (this.uhx == null) {
-      this.uhx = new l(this.uhy);
+    if (this.xnD == null) {
+      this.xnD = new l(this.xnE);
     }
-    n localn = this.uhx;
+    n localn = this.xnD;
     AppMethodBeat.o(88981);
     return localn;
   }
   
-  private static void cQg()
+  private static void duC()
   {
     AppMethodBeat.i(88991);
     SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("off_line_download_ids", 0);
@@ -349,7 +266,7 @@ public final class f
       AppMethodBeat.o(88991);
       return;
     }
-    uhr.clear();
+    xnx.clear();
     localObject = ((Map)localObject).entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -361,7 +278,7 @@ public final class f
           long l2 = ((Long)localEntry1.getValue()).longValue();
           long l3 = System.currentTimeMillis() - l1;
           if ((l3 - l1 > 0L) && (l3 - l1 < 86400000L)) {
-            uhr.put(Long.valueOf(l1), Long.valueOf(l2));
+            xnx.put(Long.valueOf(l1), Long.valueOf(l2));
           }
         }
         catch (Exception localException)
@@ -372,7 +289,7 @@ public final class f
       }
     }
     localSharedPreferences.edit().clear();
-    localObject = uhr.entrySet().iterator();
+    localObject = xnx.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry2 = (Map.Entry)((Iterator)localObject).next();
@@ -382,224 +299,119 @@ public final class f
     AppMethodBeat.o(88991);
   }
   
-  public final boolean IA(long paramLong)
+  public static f duv()
   {
-    AppMethodBeat.i(88999);
-    Log.i("MicroMsg.FileDownloadManager", "resumeDownloadTask, id = ".concat(String.valueOf(paramLong)));
-    if (IK(paramLong))
-    {
-      AppMethodBeat.o(88999);
-      return false;
+    AppMethodBeat.i(88974);
+    if (xnF == null) {
+      xnF = new f();
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
-    if ((locala != null) && (locala.field_downloaderType == 3))
-    {
-      bool = cQe().IA(paramLong);
-      AppMethodBeat.o(88999);
-      return bool;
+    f localf = xnF;
+    AppMethodBeat.o(88974);
+    return localf;
+  }
+  
+  private n dux()
+  {
+    AppMethodBeat.i(88977);
+    if (this.xnA == null) {
+      this.xnA = new i(this.xnE);
     }
-    boolean bool = cQd().IA(paramLong);
-    AppMethodBeat.o(88999);
+    n localn = this.xnA;
+    AppMethodBeat.o(88977);
+    return localn;
+  }
+  
+  private n duy()
+  {
+    AppMethodBeat.i(88978);
+    if (this.xnz == null) {
+      this.xnz = new k(this.xnE);
+    }
+    n localn = this.xnz;
+    AppMethodBeat.o(88978);
+    return localn;
+  }
+  
+  static boolean lf(long paramLong)
+  {
+    AppMethodBeat.i(88993);
+    boolean bool = xnx.containsKey(Long.valueOf(paramLong));
+    AppMethodBeat.o(88993);
     return bool;
   }
   
-  public final int Iw(long paramLong)
+  static long lg(long paramLong)
   {
-    AppMethodBeat.i(88984);
-    Log.i("MicroMsg.FileDownloadManager", "removeDownloadTask, id = ".concat(String.valueOf(paramLong)));
-    if (IK(paramLong))
+    AppMethodBeat.i(88995);
+    Long localLong = (Long)xnx.get(Long.valueOf(paramLong));
+    if (localLong == null)
     {
-      i = cQb().Iw(paramLong);
-      AppMethodBeat.o(88984);
-      return i;
+      AppMethodBeat.o(88995);
+      return -1L;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
-    if ((locala != null) && ((locala.field_downloadInWifi) || (locala.field_reserveInWifi)))
-    {
-      locala.field_downloadInWifi = false;
-      locala.field_reserveInWifi = false;
-      d.e(locala);
-    }
-    if ((locala != null) && (locala.field_downloaderType == 3))
-    {
-      i = cQe().Iw(paramLong);
-      AppMethodBeat.o(88984);
-      return i;
-    }
-    int i = cQa().Iw(paramLong);
-    AppMethodBeat.o(88984);
-    return i;
+    paramLong = localLong.longValue();
+    AppMethodBeat.o(88995);
+    return paramLong;
   }
   
-  public final FileDownloadTaskInfo Ix(long paramLong)
+  private void lh(long paramLong)
   {
-    AppMethodBeat.i(88985);
-    Object localObject1;
-    if (IK(paramLong))
+    AppMethodBeat.i(88998);
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    if (locala == null)
     {
-      localObject1 = cQb().Ix(paramLong);
-      AppMethodBeat.o(88985);
-      return localObject1;
+      this.xnG = false;
+      AppMethodBeat.o(88998);
+      return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
-    Object localObject2;
-    if ((locala != null) && (locala.field_status == 3) && (u.agG(locala.field_filePath)))
-    {
-      localObject1 = new FileDownloadTaskInfo();
-      ((FileDownloadTaskInfo)localObject1).id = paramLong;
-      ((FileDownloadTaskInfo)localObject1).url = locala.field_downloadUrl;
-      ((FileDownloadTaskInfo)localObject1).status = 3;
-      ((FileDownloadTaskInfo)localObject1).path = locala.field_filePath;
-      ((FileDownloadTaskInfo)localObject1).md5 = locala.field_md5;
-      ((FileDownloadTaskInfo)localObject1).uih = locala.field_downloadedSize;
-      ((FileDownloadTaskInfo)localObject1).rKZ = locala.field_totalSize;
-      ((FileDownloadTaskInfo)localObject1).uii = locala.field_autoDownload;
-      ((FileDownloadTaskInfo)localObject1).fGH = locala.field_downloaderType;
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new FileDownloadTaskInfo();
-      }
-      if ((((FileDownloadTaskInfo)localObject2).status == 3) || (((FileDownloadTaskInfo)localObject2).status == 6))
-      {
-        if (u.agG(((FileDownloadTaskInfo)localObject2).path)) {
-          break label406;
-        }
-        ((FileDownloadTaskInfo)localObject2).status = 0;
-      }
-    }
-    for (;;)
-    {
-      if (locala != null)
-      {
-        ((FileDownloadTaskInfo)localObject2).uij = locala.field_downloadInWifi;
-        ((FileDownloadTaskInfo)localObject2).appId = locala.field_appId;
-        ((FileDownloadTaskInfo)localObject2).uik = locala.field_reserveInWifi;
-      }
-      Log.i("MicroMsg.FileDownloadManager", "getDownloadTaskInfo: id: %d, url: %s, status: %d, path: %s, md5: %s, totalsize: %d, autodownload: %b, downloaderType: %d", new Object[] { Long.valueOf(((FileDownloadTaskInfo)localObject2).id), ((FileDownloadTaskInfo)localObject2).url, Integer.valueOf(((FileDownloadTaskInfo)localObject2).status), ((FileDownloadTaskInfo)localObject2).path, ((FileDownloadTaskInfo)localObject2).md5, Long.valueOf(((FileDownloadTaskInfo)localObject2).rKZ), Boolean.valueOf(((FileDownloadTaskInfo)localObject2).uii), Integer.valueOf(((FileDownloadTaskInfo)localObject2).fGH) });
-      AppMethodBeat.o(88985);
-      return localObject2;
-      if ((locala != null) && (locala.field_downloaderType == 3))
-      {
-        localObject1 = cQe().Ix(paramLong);
-        break;
-      }
-      localObject2 = cQa().Ix(paramLong);
-      localObject1 = localObject2;
-      if (locala == null) {
-        break;
-      }
-      ((FileDownloadTaskInfo)localObject2).uii = locala.field_autoDownload;
-      ((FileDownloadTaskInfo)localObject2).fGH = locala.field_downloaderType;
-      localObject1 = localObject2;
-      break;
-      label406:
-      if (((FileDownloadTaskInfo)localObject2).status == 6) {
-        ((FileDownloadTaskInfo)localObject2).status = 1;
-      }
-    }
-  }
-  
-  public final boolean Iy(long paramLong)
-  {
-    AppMethodBeat.i(88989);
-    Log.i("MicroMsg.FileDownloadManager", "pauseDownloadTask, id = ".concat(String.valueOf(paramLong)));
-    IM(paramLong);
-    if (IK(paramLong))
-    {
-      bool = cQb().Iy(paramLong);
-      AppMethodBeat.o(88989);
-      return bool;
-    }
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
-    if ((locala != null) && ((locala.field_downloadInWifi) || (locala.field_reserveInWifi)))
-    {
-      locala.field_downloadInWifi = false;
-      locala.field_reserveInWifi = false;
-      d.e(locala);
-    }
-    if ((locala != null) && (locala.field_downloaderType == 3))
-    {
-      bool = cQe().Iy(paramLong);
-      AppMethodBeat.o(88989);
-      return bool;
-    }
-    boolean bool = cQa().Iy(paramLong);
-    AppMethodBeat.o(88989);
-    return bool;
-  }
-  
-  public final boolean Iz(long paramLong)
-  {
-    AppMethodBeat.i(88990);
-    Log.i("MicroMsg.FileDownloadManager", "resumeDownloadTask, id = ".concat(String.valueOf(paramLong)));
-    IM(paramLong);
-    if (IK(paramLong))
-    {
-      bool = cQb().Iz(paramLong);
-      AppMethodBeat.o(88990);
-      return bool;
-    }
-    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
-    if ((locala != null) && (!locala.field_reserveInWifi) && (locala.field_downloadInWifi))
-    {
-      locala.field_downloadInWifi = false;
-      d.e(locala);
-    }
-    if ((locala != null) && (locala.field_downloaderType == 3))
-    {
-      bool = cQe().n(paramLong, true);
-      AppMethodBeat.o(88990);
-      return bool;
-    }
-    boolean bool = cQa().Iz(paramLong);
-    AppMethodBeat.o(88990);
-    return bool;
+    a(locala.field_appId, null);
+    AppMethodBeat.o(88998);
   }
   
   public final long a(g paramg)
   {
     AppMethodBeat.i(88982);
-    Log.i("MicroMsg.FileDownloadManager", "addDownloadTask, filetype:%d, appId = %s", new Object[] { Integer.valueOf(paramg.uhG), paramg.mAppId });
-    if (paramg.uhG == 2)
+    Log.i("MicroMsg.FileDownloadManager", "addDownloadTask, filetype:%d, appId = %s", new Object[] { Integer.valueOf(paramg.xnM), paramg.mAppId });
+    if (paramg.xnM == 2)
     {
-      l = cQf().a(paramg);
+      l = duB().a(paramg);
       AppMethodBeat.o(88982);
       return l;
     }
     a(paramg.mAppId, paramg);
-    if (com.tencent.mm.kernel.h.aHE().aGM())
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      com.tencent.mm.kernel.h.aHE();
-      if (!com.tencent.mm.kernel.b.aGE())
+      com.tencent.mm.kernel.h.baC();
+      if (!com.tencent.mm.kernel.b.aZG())
       {
         Log.i("MicroMsg.FileDownloadManager", "account ok, getDownloader");
-        l = cQa().a(paramg);
+        l = duw().a(paramg);
         AppMethodBeat.o(88982);
         return l;
       }
     }
-    long l = cQb().a(paramg);
+    long l = dux().a(paramg);
     if (l >= 0L)
     {
-      uhr.put(Long.valueOf(l), Long.valueOf(0L));
+      xnx.put(Long.valueOf(l), Long.valueOf(0L));
       MMApplicationContext.getContext().getSharedPreferences("off_line_download_ids", 0).edit().putLong(String.valueOf(l), 0L).commit();
       Log.i("MicroMsg.FileDownloadManager", "Add id: %d to offline ids", new Object[] { Long.valueOf(l) });
       AppMethodBeat.o(88982);
       return l;
     }
     Log.i("MicroMsg.FileDownloadManager", "add download task to system downloader failed, use browser to download it");
-    cQc().a(paramg);
+    duy().a(paramg);
     AppMethodBeat.o(88982);
     return l;
   }
   
-  public final FileDownloadTaskInfo asZ(String paramString)
+  public final FileDownloadTaskInfo amO(String paramString)
   {
     AppMethodBeat.i(88986);
-    paramString = d.asU(paramString);
+    paramString = d.amJ(paramString);
     if (paramString != null)
     {
-      paramString = Ix(paramString.field_downloadId);
+      paramString = kS(paramString.field_downloadId);
       AppMethodBeat.o(88986);
       return paramString;
     }
@@ -608,13 +420,13 @@ public final class f
     return paramString;
   }
   
-  public final FileDownloadTaskInfo ata(String paramString)
+  public final FileDownloadTaskInfo amP(String paramString)
   {
     AppMethodBeat.i(88987);
-    paramString = d.asX(paramString);
+    paramString = d.amM(paramString);
     if (paramString != null)
     {
-      paramString = Ix(paramString.field_downloadId);
+      paramString = kS(paramString.field_downloadId);
       AppMethodBeat.o(88987);
       return paramString;
     }
@@ -628,191 +440,371 @@ public final class f
     AppMethodBeat.i(88983);
     Log.i("MicroMsg.FileDownloadManager", "addDownloadTaskByCDNDownloader, appId = %s", new Object[] { paramg.mAppId });
     a(paramg.mAppId, paramg);
-    if (com.tencent.mm.kernel.h.aHE().aGM())
+    if (com.tencent.mm.kernel.h.baC().aZN())
     {
-      com.tencent.mm.kernel.h.aHE();
-      if (!com.tencent.mm.kernel.b.aGE())
+      com.tencent.mm.kernel.h.baC();
+      if (!com.tencent.mm.kernel.b.aZG())
       {
-        l = cQe().a(paramg);
+        l = duA().a(paramg);
         AppMethodBeat.o(88983);
         return l;
       }
     }
-    long l = cQb().a(paramg);
+    long l = dux().a(paramg);
     if (l >= 0L)
     {
-      uhr.put(Long.valueOf(l), Long.valueOf(0L));
+      xnx.put(Long.valueOf(l), Long.valueOf(0L));
       MMApplicationContext.getContext().getSharedPreferences("off_line_download_ids", 0).edit().putLong(String.valueOf(l), 0L).commit();
       Log.i("MicroMsg.FileDownloadManager", "Add id: %d to offline ids", new Object[] { Long.valueOf(l) });
       AppMethodBeat.o(88983);
       return l;
     }
     Log.i("MicroMsg.FileDownloadManager", "add download task to system downloader failed, use browser to download it");
-    cQc().a(paramg);
+    duy().a(paramg);
     AppMethodBeat.o(88983);
     return l;
   }
   
-  public final n cQa()
-  {
-    AppMethodBeat.i(88976);
-    Log.i("MicroMsg.FileDownloadManager", "mDownloaderType = " + oyB);
-    if (this.uhs != null)
-    {
-      localObject = this.uhs;
-      AppMethodBeat.o(88976);
-      return localObject;
-    }
-    Object localObject = new kh();
-    EventCenter.instance.publish((IEvent)localObject);
-    int i = ((kh)localObject).fHM.fGH;
-    Log.i("MicroMsg.FileDownloadManager", "gameDebugDownloaderType = ".concat(String.valueOf(i)));
-    if (i > 0) {
-      oyB = i;
-    }
-    if (oyB == 1) {}
-    for (this.uhs = cQb();; this.uhs = cQd())
-    {
-      localObject = this.uhs;
-      AppMethodBeat.o(88976);
-      return localObject;
-    }
-  }
-  
-  public final com.tencent.mm.plugin.downloader.h.a cQd()
-  {
-    AppMethodBeat.i(88979);
-    if (this.uhv == null) {
-      this.uhv = new com.tencent.mm.plugin.downloader.h.a(this.uhy);
-    }
-    com.tencent.mm.plugin.downloader.h.a locala = this.uhv;
-    AppMethodBeat.o(88979);
-    return locala;
-  }
-  
-  public final b cQe()
+  public final b duA()
   {
     AppMethodBeat.i(88980);
-    if (this.uhw == null) {
-      this.uhw = new b(this.uhy);
+    if (this.xnC == null) {
+      this.xnC = new b(this.xnE);
     }
-    b localb = this.uhw;
+    b localb = this.xnC;
     AppMethodBeat.o(88980);
     return localb;
   }
   
-  public final boolean h(com.tencent.mm.plugin.downloader.g.a parama)
+  public final n duw()
+  {
+    AppMethodBeat.i(88976);
+    Log.i("MicroMsg.FileDownloadManager", "mDownloaderType = " + rCt);
+    if (this.xny != null)
+    {
+      localObject = this.xny;
+      AppMethodBeat.o(88976);
+      return localObject;
+    }
+    Object localObject = new ll();
+    ((ll)localObject).publish();
+    int i = ((ll)localObject).hNm.hMd;
+    Log.i("MicroMsg.FileDownloadManager", "gameDebugDownloaderType = ".concat(String.valueOf(i)));
+    if (i > 0) {
+      rCt = i;
+    }
+    if (rCt == 1) {}
+    for (this.xny = dux();; this.xny = duz())
+    {
+      localObject = this.xny;
+      AppMethodBeat.o(88976);
+      return localObject;
+    }
+  }
+  
+  public final com.tencent.mm.plugin.downloader.g.a duz()
+  {
+    AppMethodBeat.i(88979);
+    if (this.xnB == null) {
+      this.xnB = new com.tencent.mm.plugin.downloader.g.a(this.xnE);
+    }
+    com.tencent.mm.plugin.downloader.g.a locala = this.xnB;
+    AppMethodBeat.o(88979);
+    return locala;
+  }
+  
+  public final boolean h(com.tencent.mm.plugin.downloader.f.a parama)
   {
     AppMethodBeat.i(89000);
     if ((parama != null) && (parama.field_downloaderType == 3))
     {
-      bool = cQe().n(parama.field_downloadId, true);
+      bool = duA().t(parama.field_downloadId, true);
       AppMethodBeat.o(89000);
       return bool;
     }
-    boolean bool = cQd().n(parama.field_downloadId, true);
+    boolean bool = duz().t(parama.field_downloadId, true);
     AppMethodBeat.o(89000);
     return bool;
   }
   
-  final void o(long paramLong, final boolean paramBoolean)
+  public final int kR(long paramLong)
+  {
+    AppMethodBeat.i(88984);
+    Log.i("MicroMsg.FileDownloadManager", "removeDownloadTask, id = ".concat(String.valueOf(paramLong)));
+    if (lf(paramLong))
+    {
+      i = dux().kR(paramLong);
+      AppMethodBeat.o(88984);
+      return i;
+    }
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    if ((locala != null) && ((locala.field_downloadInWifi) || (locala.field_reserveInWifi)))
+    {
+      locala.field_downloadInWifi = false;
+      locala.field_reserveInWifi = false;
+      d.e(locala);
+    }
+    if ((locala != null) && (locala.field_downloaderType == 3))
+    {
+      i = duA().kR(paramLong);
+      AppMethodBeat.o(88984);
+      return i;
+    }
+    int i = duw().kR(paramLong);
+    AppMethodBeat.o(88984);
+    return i;
+  }
+  
+  public final FileDownloadTaskInfo kS(long paramLong)
+  {
+    AppMethodBeat.i(88985);
+    Object localObject1;
+    if (lf(paramLong))
+    {
+      localObject1 = dux().kS(paramLong);
+      AppMethodBeat.o(88985);
+      return localObject1;
+    }
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    Object localObject2;
+    if ((locala != null) && (locala.field_status == 3) && (y.ZC(locala.field_filePath)))
+    {
+      localObject1 = new FileDownloadTaskInfo();
+      ((FileDownloadTaskInfo)localObject1).id = paramLong;
+      ((FileDownloadTaskInfo)localObject1).url = locala.field_downloadUrl;
+      ((FileDownloadTaskInfo)localObject1).status = 3;
+      ((FileDownloadTaskInfo)localObject1).path = locala.field_filePath;
+      ((FileDownloadTaskInfo)localObject1).md5 = locala.field_md5;
+      ((FileDownloadTaskInfo)localObject1).xom = locala.field_downloadedSize;
+      ((FileDownloadTaskInfo)localObject1).uWn = locala.field_totalSize;
+      ((FileDownloadTaskInfo)localObject1).xon = locala.field_autoDownload;
+      ((FileDownloadTaskInfo)localObject1).hMd = locala.field_downloaderType;
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = new FileDownloadTaskInfo();
+      }
+      if ((((FileDownloadTaskInfo)localObject2).status == 3) || (((FileDownloadTaskInfo)localObject2).status == 6))
+      {
+        if (y.ZC(((FileDownloadTaskInfo)localObject2).path)) {
+          break label406;
+        }
+        ((FileDownloadTaskInfo)localObject2).status = 0;
+      }
+    }
+    for (;;)
+    {
+      if (locala != null)
+      {
+        ((FileDownloadTaskInfo)localObject2).xoo = locala.field_downloadInWifi;
+        ((FileDownloadTaskInfo)localObject2).appId = locala.field_appId;
+        ((FileDownloadTaskInfo)localObject2).xop = locala.field_reserveInWifi;
+      }
+      Log.i("MicroMsg.FileDownloadManager", "getDownloadTaskInfo: id: %d, url: %s, status: %d, path: %s, md5: %s, totalsize: %d, autodownload: %b, downloaderType: %d", new Object[] { Long.valueOf(((FileDownloadTaskInfo)localObject2).id), ((FileDownloadTaskInfo)localObject2).url, Integer.valueOf(((FileDownloadTaskInfo)localObject2).status), ((FileDownloadTaskInfo)localObject2).path, ((FileDownloadTaskInfo)localObject2).md5, Long.valueOf(((FileDownloadTaskInfo)localObject2).uWn), Boolean.valueOf(((FileDownloadTaskInfo)localObject2).xon), Integer.valueOf(((FileDownloadTaskInfo)localObject2).hMd) });
+      AppMethodBeat.o(88985);
+      return localObject2;
+      if ((locala != null) && (locala.field_downloaderType == 3))
+      {
+        localObject1 = duA().kS(paramLong);
+        break;
+      }
+      localObject2 = duw().kS(paramLong);
+      localObject1 = localObject2;
+      if (locala == null) {
+        break;
+      }
+      ((FileDownloadTaskInfo)localObject2).xon = locala.field_autoDownload;
+      ((FileDownloadTaskInfo)localObject2).hMd = locala.field_downloaderType;
+      localObject1 = localObject2;
+      break;
+      label406:
+      if (((FileDownloadTaskInfo)localObject2).status == 6) {
+        ((FileDownloadTaskInfo)localObject2).status = 1;
+      }
+    }
+  }
+  
+  public final boolean kT(long paramLong)
+  {
+    AppMethodBeat.i(88989);
+    Log.i("MicroMsg.FileDownloadManager", "pauseDownloadTask, id = ".concat(String.valueOf(paramLong)));
+    lh(paramLong);
+    if (lf(paramLong))
+    {
+      bool = dux().kT(paramLong);
+      AppMethodBeat.o(88989);
+      return bool;
+    }
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    if ((locala != null) && ((locala.field_downloadInWifi) || (locala.field_reserveInWifi)))
+    {
+      locala.field_downloadInWifi = false;
+      locala.field_reserveInWifi = false;
+      d.e(locala);
+    }
+    if ((locala != null) && (locala.field_downloaderType == 3))
+    {
+      bool = duA().kT(paramLong);
+      AppMethodBeat.o(88989);
+      return bool;
+    }
+    boolean bool = duw().kT(paramLong);
+    AppMethodBeat.o(88989);
+    return bool;
+  }
+  
+  public final boolean kU(long paramLong)
+  {
+    AppMethodBeat.i(88990);
+    Log.i("MicroMsg.FileDownloadManager", "resumeDownloadTask, id = ".concat(String.valueOf(paramLong)));
+    lh(paramLong);
+    if (lf(paramLong))
+    {
+      bool = dux().kU(paramLong);
+      AppMethodBeat.o(88990);
+      return bool;
+    }
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    if ((locala != null) && (!locala.field_reserveInWifi) && (locala.field_downloadInWifi))
+    {
+      locala.field_downloadInWifi = false;
+      d.e(locala);
+    }
+    if ((locala != null) && (locala.field_downloaderType == 3))
+    {
+      bool = duA().t(paramLong, true);
+      AppMethodBeat.o(88990);
+      return bool;
+    }
+    boolean bool = duw().kU(paramLong);
+    AppMethodBeat.o(88990);
+    return bool;
+  }
+  
+  public final boolean kV(long paramLong)
+  {
+    AppMethodBeat.i(88999);
+    Log.i("MicroMsg.FileDownloadManager", "resumeDownloadTask, id = ".concat(String.valueOf(paramLong)));
+    if (lf(paramLong))
+    {
+      AppMethodBeat.o(88999);
+      return false;
+    }
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    if ((locala != null) && (locala.field_downloaderType == 3))
+    {
+      bool = duA().kV(paramLong);
+      AppMethodBeat.o(88999);
+      return bool;
+    }
+    boolean bool = duz().kV(paramLong);
+    AppMethodBeat.o(88999);
+    return bool;
+  }
+  
+  final void u(long paramLong, final boolean paramBoolean)
   {
     AppMethodBeat.i(88996);
     Log.d("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded id[%d], stack[%s]", new Object[] { Long.valueOf(paramLong), Util.getStack() });
-    MMApplicationContext.getContext();
-    if (IK(paramLong))
+    Object localObject = MMApplicationContext.getContext();
+    if (lf(paramLong))
     {
-      localObject = Ix(paramLong);
-      this.uhy.c(paramLong, ((FileDownloadTaskInfo)localObject).path, paramBoolean);
+      localObject = kS(paramLong);
+      this.xnE.c(paramLong, ((FileDownloadTaskInfo)localObject).path, paramBoolean);
       AppMethodBeat.o(88996);
       return;
     }
-    Object localObject = d.IF(paramLong);
-    if (localObject == null)
+    final com.tencent.mm.plugin.downloader.f.a locala = d.la(paramLong);
+    if (locala == null)
     {
       AppMethodBeat.o(88996);
       return;
     }
-    if (Util.isNullOrNil(((com.tencent.mm.plugin.downloader.g.a)localObject).field_packageName))
+    if (Util.isNullOrNil(locala.field_packageName))
     {
-      str = atb(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath);
+      str = amQ(locala.field_filePath);
       if (!Util.isNullOrNil(str))
       {
-        ((com.tencent.mm.plugin.downloader.g.a)localObject).field_packageName = str;
-        Log.i("MicroMsg.FileDownloadManager", "get package name from file : %s, %s", new Object[] { ((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath, str });
-        d.e((com.tencent.mm.plugin.downloader.g.a)localObject);
+        locala.field_packageName = str;
+        Log.i("MicroMsg.FileDownloadManager", "get package name from file : %s, %s", new Object[] { locala.field_filePath, str });
+        d.e(locala);
       }
     }
-    String str = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath;
+    String str = locala.field_filePath;
     final int i;
     if (Util.isNullOrNil(str)) {
       i = 0;
     }
     for (;;)
     {
-      Log.d("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded field_packageName[%s], field_filePath[%s], versionCode[%d]", new Object[] { ((com.tencent.mm.plugin.downloader.g.a)localObject).field_packageName, ((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath, Integer.valueOf(i) });
-      com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
+      Log.d("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded field_packageName[%s], field_filePath[%s], versionCode[%d]", new Object[] { locala.field_packageName, locala.field_filePath, Integer.valueOf(i) });
+      com.tencent.mm.kernel.h.baH().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(88972);
-          Object localObject = com.tencent.mm.kernel.h.aHF().kcd;
+          Object localObject = com.tencent.mm.kernel.h.baD().mCm;
           if (localObject == null)
           {
             AppMethodBeat.o(88972);
             return;
           }
-          localObject = ((t)localObject).lCD;
+          localObject = ((s)localObject).oun;
           if (localObject == null)
           {
             AppMethodBeat.o(88972);
             return;
           }
-          new af(this.uhi.field_packageName, i).doScene((com.tencent.mm.network.g)localObject, new com.tencent.mm.an.i()
+          new ag(locala.field_packageName, i).doScene((com.tencent.mm.network.g)localObject, new com.tencent.mm.am.h()
           {
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.an.q paramAnonymous2q)
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, p paramAnonymous2p)
             {
               AppMethodBeat.i(88971);
-              paramAnonymous2q.setHasCallbackToQueue(true);
+              paramAnonymous2p.setHasCallbackToQueue(true);
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 Log.w("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded get pkg sig error");
-                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(322L, 28L, 1L, false);
-                com.tencent.mm.plugin.report.service.h.IzE.a(11098, new Object[] { Integer.valueOf(4028), String.format("%s,%s,%d,%d", new Object[] { f.1.this.uhi.field_packageName, f.1.this.uhi.field_filePath, Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) }) });
-                if ((!Util.isNullOrNil(f.1.this.uhi.field_appId)) && (com.tencent.mm.pluginsdk.model.app.h.ha(f.1.this.uhi.field_appId)))
+                com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(322L, 28L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.OAn.b(11098, new Object[] { Integer.valueOf(4028), String.format("%s,%s,%d,%d", new Object[] { f.1.this.xno.field_packageName, f.1.this.xno.field_filePath, Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) }) });
+                if ((!Util.isNullOrNil(f.1.this.xno.field_appId)) && (com.tencent.mm.pluginsdk.model.app.h.iB(f.1.this.xno.field_appId)))
                 {
-                  Log.i("MicroMsg.FileDownloadManager", "onSceneEnd, fail, appId: %s", new Object[] { f.1.this.uhi.field_appId });
-                  com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 24L, 1L, false);
+                  Log.i("MicroMsg.FileDownloadManager", "onSceneEnd, fail, appId: %s", new Object[] { f.1.this.xno.field_appId });
+                  com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(710L, 24L, 1L, false);
                 }
               }
               for (;;)
               {
-                MMHandlerThread.postToMainThread(new f.2(f.this, f.1.this.uhi, f.1.this.uhn));
+                MMHandlerThread.postToMainThread(new f.2(f.this, f.1.this.xno, f.1.this.xnt));
                 AppMethodBeat.o(88971);
                 return;
-                paramAnonymous2String = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.avK()).getString(f.1.this.uhi.field_packageName, "");
+                paramAnonymous2String = MultiProcessSharedPreferences.getSharedPreferences(MMApplicationContext.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.aQe()).getString(f.1.this.xno.field_packageName, "");
                 Log.i("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded sig[%s]", new Object[] { paramAnonymous2String });
-                if ((!Util.isNullOrNil(paramAnonymous2String)) && (!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE))
-                {
-                  try
+                if ((!Util.isNullOrNil(paramAnonymous2String)) && (!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE)) {
+                  for (;;)
                   {
-                    com.tencent.mm.d.c.h(new File(u.n(f.1.this.uhi.field_filePath, true)), paramAnonymous2String);
-                    Log.i("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded writeSecurityCode done");
-                    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(322L, 25L, 1L, false);
-                    com.tencent.mm.plugin.report.service.h.IzE.a(11098, new Object[] { Integer.valueOf(4025), String.format("%s,%s,%s", new Object[] { f.1.this.uhi.field_packageName, f.1.this.uhi.field_filePath, paramAnonymous2String }) });
-                  }
-                  catch (Exception paramAnonymous2String)
-                  {
-                    Log.w("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded writeSecurityCode e: " + paramAnonymous2String.getMessage());
-                    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(322L, 27L, 1L, false);
-                    com.tencent.mm.plugin.report.service.h.IzE.a(11098, new Object[] { Integer.valueOf(4027), String.format("%s,%s,%s", new Object[] { f.1.this.uhi.field_packageName, f.1.this.uhi.field_filePath, paramAnonymous2String.getMessage() }) });
+                    try
+                    {
+                      paramAnonymous2p = f.amQ(f.1.this.xno.field_filePath);
+                      if ((!f.1.this.val$context.getPackageName().equalsIgnoreCase(paramAnonymous2p)) || (com.tencent.mm.plugin.expt.e.d.dNI().a("clicfg_appcompat_pkg_sig", "0", false, true).equals("1"))) {
+                        break label549;
+                      }
+                      Log.i("MicroMsg.FileDownloadManager", "Skip writing apkSig for v2 signing, pkg = ".concat(String.valueOf(paramAnonymous2p)));
+                      Log.i("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded writeSecurityCode done");
+                      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(322L, 25L, 1L, false);
+                      com.tencent.mm.plugin.report.service.h.OAn.b(11098, new Object[] { Integer.valueOf(4025), String.format("%s,%s,%s", new Object[] { f.1.this.xno.field_packageName, f.1.this.xno.field_filePath, paramAnonymous2String }) });
+                    }
+                    catch (Exception paramAnonymous2String)
+                    {
+                      Log.w("MicroMsg.FileDownloadManager", "summertoken onMD5CheckSucceeded writeSecurityCode e: " + paramAnonymous2String.getMessage());
+                      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(322L, 27L, 1L, false);
+                      com.tencent.mm.plugin.report.service.h.OAn.b(11098, new Object[] { Integer.valueOf(4027), String.format("%s,%s,%s", new Object[] { f.1.this.xno.field_packageName, f.1.this.xno.field_filePath, paramAnonymous2String.getMessage() }) });
+                    }
+                    break;
+                    label549:
+                    com.tencent.mm.d.c.h(new File(y.n(f.1.this.xno.field_filePath, true)), paramAnonymous2String);
                   }
                 }
-                else
-                {
-                  com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(322L, 26L, 1L, false);
-                  com.tencent.mm.plugin.report.service.h.IzE.a(11098, new Object[] { Integer.valueOf(4026), String.format("%s,%s", new Object[] { f.1.this.uhi.field_packageName, f.1.this.uhi.field_filePath }) });
-                }
+                com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(322L, 26L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.OAn.b(11098, new Object[] { Integer.valueOf(4026), String.format("%s,%s", new Object[] { f.1.this.xno.field_packageName, f.1.this.xno.field_filePath }) });
               }
             }
           });
@@ -821,10 +813,10 @@ public final class f
       });
       AppMethodBeat.o(88996);
       return;
-      int j = r.bqk(str);
+      int j = v.bpZ(str);
       i = j;
       if (j == 0) {
-        i = r.bqk(com.tencent.mm.b.q.n(str, false));
+        i = v.bpZ(q.n(str, false));
       }
     }
   }

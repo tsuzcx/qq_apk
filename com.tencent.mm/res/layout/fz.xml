@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/bk" android:textColor="@color/l4" android:gravity="center|left" android:id="@id/rk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/ly" />
-    <com.tencent.mm.plugin.appbrand.widget.sms.EditVerifyCodeView android:id="@id/rj" android:layout_width="fill_parent" android:layout_height="@dimen/anh" android:layout_marginTop="20.0dip" />
-    <TextView android:textSize="@dimen/bk" android:textColor="@color/l4" android:gravity="center|left" android:id="@id/r5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/ln" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/vn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" android:layout_marginBottom="@dimen/df">
+        <ImageView android:id="@id/vl" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:importantForAccessibility="no" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:gravity="start" android:id="@id/w5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/hr" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/l1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d6" android:text="@string/a9g" />
+    <View style="@style/i7" />
 </LinearLayout>

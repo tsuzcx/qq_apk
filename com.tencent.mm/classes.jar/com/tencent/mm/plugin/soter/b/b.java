@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.o;
+import com.tencent.mm.am.n;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class b
-  extends o
+  extends n
 {
-  c.a LvT;
-  c.b LvU;
+  c.a RZs;
+  c.b RZt;
   
   b()
   {
     AppMethodBeat.i(130804);
-    this.LvT = new c.a();
-    this.LvU = new c.b();
+    this.RZs = new c.a();
+    this.RZt = new c.b();
     AppMethodBeat.o(130804);
   }
   
@@ -26,12 +26,12 @@ final class b
   
   public final l.d getReqObjImp()
   {
-    return this.LvT;
+    return this.RZs;
   }
   
   public final l.e getRespObj()
   {
-    return this.LvU;
+    return this.RZt;
   }
   
   public final int getType()
@@ -46,7 +46,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.b
  * JD-Core Version:    0.7.0.1
  */

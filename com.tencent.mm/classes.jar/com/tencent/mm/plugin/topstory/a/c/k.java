@@ -2,77 +2,77 @@ package com.tencent.mm.plugin.topstory.a.c;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.aci;
-import com.tencent.mm.protocal.protobuf.esv;
-import com.tencent.mm.protocal.protobuf.fle;
-import com.tencent.mm.protocal.protobuf.flf;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.protocal.protobuf.aem;
+import com.tencent.mm.protocal.protobuf.foe;
+import com.tencent.mm.protocal.protobuf.ght;
+import com.tencent.mm.protocal.protobuf.ghu;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class k
-  extends q
+  extends p
   implements m
 {
-  public esv MWu;
-  private i callback;
-  private d rr;
+  public foe TIY;
+  private h callback;
+  private c rr;
   
-  public k(esv paramesv)
+  public k(foe paramfoe)
   {
     AppMethodBeat.i(91025);
-    Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "Create NetSceneTopStory Video contextId:%s searchId:%s", new Object[] { paramesv.wmL, paramesv.jQi });
-    this.MWu = paramesv;
-    Object localObject = new d.a();
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((d.a)localObject).lBU = new fle();
-    ((d.a)localObject).lBV = new flf();
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (fle)d.b.b(this.rr.lBR);
-    ((fle)localObject).Sat = paramesv.offset;
-    ((fle)localObject).Tkv = ai.anh(1);
-    ((fle)localObject).SYn = paramesv.fwe;
-    ((fle)localObject).TwK = ai.czn();
-    ((fle)localObject).CPw = paramesv.scene;
-    ((fle)localObject).Sas = paramesv.jQi;
-    ((fle)localObject).UIj.addAll(paramesv.Pye);
-    ((fle)localObject).Ute = ((int)paramesv.UuH);
-    paramesv = new aci();
-    paramesv.key = "client_system_version";
-    paramesv.SnV = Build.VERSION.SDK_INT;
-    ((fle)localObject).UIj.add(paramesv);
-    paramesv = new aci();
-    paramesv.key = "netType";
-    paramesv.SnW = ai.anV();
-    ((fle)localObject).UIj.add(paramesv);
-    paramesv = new aci();
-    paramesv.key = "client_request_time";
-    paramesv.SnW = String.valueOf(System.currentTimeMillis());
-    ((fle)localObject).UIj.add(paramesv);
-    paramesv = ((fle)localObject).UIj.iterator();
-    while (paramesv.hasNext())
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "Create NetSceneTopStory Video contextId:%s searchId:%s", new Object[] { paramfoe.zIO, paramfoe.mpa });
+    this.TIY = paramfoe;
+    Object localObject = new c.a();
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
+    ((c.a)localObject).otE = new ght();
+    ((c.a)localObject).otF = new ghu();
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ght)c.b.b(this.rr.otB);
+    ((ght)localObject).YYs = paramfoe.offset;
+    ((ght)localObject).aayc = aj.asY(1);
+    ((ght)localObject).aakp = paramfoe.hAB;
+    ((ght)localObject).aaLr = aj.dch();
+    ((ght)localObject).IJG = paramfoe.scene;
+    ((ght)localObject).YYr = paramfoe.mpa;
+    ((ght)localObject).accs.addAll(paramfoe.Wol);
+    ((ght)localObject).abMl = ((int)paramfoe.abOj);
+    paramfoe = new aem();
+    paramfoe.key = "client_system_version";
+    paramfoe.Zmx = Build.VERSION.SDK_INT;
+    ((ght)localObject).accs.add(paramfoe);
+    paramfoe = new aem();
+    paramfoe.key = "netType";
+    paramfoe.Zmy = aj.gtA();
+    ((ght)localObject).accs.add(paramfoe);
+    paramfoe = new aem();
+    paramfoe.key = "client_request_time";
+    paramfoe.Zmy = String.valueOf(System.currentTimeMillis());
+    ((ght)localObject).accs.add(paramfoe);
+    paramfoe = ((ght)localObject).accs.iterator();
+    while (paramfoe.hasNext())
     {
-      localObject = (aci)paramesv.next();
-      Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "key: %s unit_value %s text_value %s", new Object[] { ((aci)localObject).key, Long.valueOf(((aci)localObject).SnV), ((aci)localObject).SnW });
+      localObject = (aem)paramfoe.next();
+      Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "key: %s unit_value %s text_value %s", new Object[] { ((aem)localObject).key, Long.valueOf(((aem)localObject).Zmx), ((aem)localObject).Zmy });
     }
     AppMethodBeat.o(91025);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(91026);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(91026);
     return i;
@@ -83,12 +83,12 @@ public final class k
     return 1943;
   }
   
-  public final flf gpU()
+  public final ghu hMQ()
   {
-    AppMethodBeat.i(191140);
-    flf localflf = (flf)d.c.b(this.rr.lBS);
-    AppMethodBeat.o(191140);
-    return localflf;
+    AppMethodBeat.i(271671);
+    ghu localghu = (ghu)c.c.b(this.rr.otC);
+    AppMethodBeat.o(271671);
+    return localghu;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)

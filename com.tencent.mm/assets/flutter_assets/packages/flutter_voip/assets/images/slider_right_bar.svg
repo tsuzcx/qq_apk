@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="48px" viewBox="0 0 16 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 8</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="裁剪备份-2" transform="translate(-223.000000, -688.000000)">
+            <g id="编组" transform="translate(42.000000, 688.000000)">
+                <g id="编组-8" transform="translate(181.000000, 0.000000)">
+                    <path d="M0,0 L12,0 C14.209139,-4.05812251e-16 16,1.790861 16,4 L16,44 C16,46.209139 14.209139,48 12,48 L0,48 L0,48 L0,0 Z" id="矩形" fill="#FFFFFF"></path>
+                    <rect id="矩形备份-5" fill="#000000" opacity="0.100000001" x="9" y="20" width="2" height="8" rx="1"></rect>
+                    <rect id="矩形备份-6" fill="#000000" opacity="0.100000001" x="5" y="20" width="2" height="8" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

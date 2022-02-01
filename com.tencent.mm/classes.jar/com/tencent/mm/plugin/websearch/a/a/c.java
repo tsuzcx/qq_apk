@@ -1,370 +1,150 @@
 package com.tencent.mm.plugin.websearch.a.a;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
-import android.view.Window;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.oe;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.websearch.api.ar;
-import com.tencent.mm.plugin.websearch.ui.a.c;
+import com.tencent.mm.emojisearch.ui.b;
 import com.tencent.mm.plugin.websearch.ui.a.d;
-import com.tencent.mm.plugin.websearch.ui.a.f;
-import com.tencent.mm.plugin.websearch.ui.a.g;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
-import com.tencent.mm.protocal.protobuf.ccn;
-import com.tencent.mm.protocal.protobuf.ecn;
-import com.tencent.mm.protocal.protobuf.eql;
+import com.tencent.mm.plugin.websearch.webview.e;
+import com.tencent.mm.plugin.websearch.webview.e.a;
+import com.tencent.mm.plugin.websearch.webview.i;
+import com.tencent.mm.plugin.websearch.webview.j;
+import com.tencent.mm.protocal.protobuf.amr;
+import com.tencent.mm.protocal.protobuf.cry;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.search.FTSEditTextView;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.xweb.ag;
+import com.tencent.xweb.z;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "homeContext", "Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;", "listener", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;)V", "TAG", "", "dialogView", "Landroid/view/View;", "getHomeContext", "()Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;", "setHomeContext", "(Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;)V", "getListener", "()Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "mainTab", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchMainTab;", "moreTab", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchMoreTab;", "moreTabShow", "", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "initContentView", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onEndSearchShareCgi", "shareContent", "Lcom/tencent/mm/protocal/protobuf/GetSearchShareResponse;", "cropBitmap", "Landroid/graphics/Bitmap;", "query", "onSharedEnd", "onStartSearchShareCgi", "id", "share", "startMoreTab", "moreContext", "ui-websearch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/emojisearch/ui/EmojiSearchMoreTab;", "Lcom/tencent/mm/plugin/websearch/emojisearch/ui/IEmojiSearchUIComponent;", "dialog", "Lcom/tencent/mm/plugin/websearch/emojisearch/ui/EmojiSearchDialog;", "homeContext", "Lcom/tencent/mm/protocal/protobuf/EmojiSearchHomeContext;", "listener", "Lcom/tencent/mm/emojisearch/ui/IEmojiSearchDialogListener;", "dialogView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/websearch/emojisearch/ui/EmojiSearchDialog;Lcom/tencent/mm/protocal/protobuf/EmojiSearchHomeContext;Lcom/tencent/mm/emojisearch/ui/IEmojiSearchDialogListener;Landroid/view/View;)V", "TAG", "", "getDialog", "()Lcom/tencent/mm/plugin/websearch/emojisearch/ui/EmojiSearchDialog;", "emojiSearchWebData", "Lcom/tencent/mm/plugin/websearch/emojisearch/EmojiSearchWebData;", "emojiSearchWebView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "emojiSearchWebViewJSApi", "Lcom/tencent/mm/plugin/websearch/emojisearch/EmojiSearchJSApi;", "getHomeContext", "()Lcom/tencent/mm/protocal/protobuf/EmojiSearchHomeContext;", "setHomeContext", "(Lcom/tencent/mm/protocal/protobuf/EmojiSearchHomeContext;)V", "getListener", "()Lcom/tencent/mm/emojisearch/ui/IEmojiSearchDialogListener;", "moreTabView", "kotlin.jvm.PlatformType", "webviewContainer", "Landroid/widget/FrameLayout;", "exitMoreTab", "", "getActivityContext", "Landroid/content/Context;", "getDataContext", "getWebSearchData", "getWebSearchJSApi", "getWebView", "hideVKB", "onDismiss", "onEndSearchShareCgi", "shareContent", "Lcom/tencent/mm/protocal/protobuf/GetSearchShareResponse;", "query", "onSearchInputChange", "isInputChange", "", "onStartSearchShareCgi", "id", "showVKB", "startMoreTab", "moreContext", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends androidx.appcompat.app.e
+  implements d
 {
-  private boolean PAu;
-  private d PAv;
-  private e PAw;
-  eql PAx;
-  final a PAy;
   private final String TAG;
-  private s iYE;
-  private View mrQ;
+  amr WqC;
+  private final b WqD;
+  private final a WqK;
+  private com.tencent.mm.plugin.websearch.a.a WqL;
+  com.tencent.mm.plugin.websearch.a.d WqM;
+  WebSearchWebView WqN;
+  View WqO;
+  private FrameLayout vAf;
   
-  public c(Context paramContext, eql parameql, a parama)
+  public c(a parama, amr paramamr, b paramb, View paramView)
   {
-    super(paramContext, a.g.TagSearchDialog);
-    AppMethodBeat.i(198916);
-    this.PAx = parameql;
-    this.PAy = parama;
-    this.TAG = "MicroMsg.WebSearch.TagSearchDialog";
-    AppMethodBeat.o(198916);
+    AppMethodBeat.i(315057);
+    this.WqK = parama;
+    this.WqC = paramamr;
+    this.WqD = paramb;
+    this.TAG = "MicroMsg.WebSearch.EmojiSearchMoreTab";
+    this.WqO = paramView.findViewById(a.d.more_tab_view);
+    parama = paramView.findViewById(a.d.more_webview_container);
+    s.s(parama, "dialogView.findViewById(…d.more_webview_container)");
+    this.vAf = ((FrameLayout)parama);
+    this.WqL = new com.tencent.mm.plugin.websearch.a.a((d)this);
+    this.WqM = new com.tencent.mm.plugin.websearch.a.d((d)this);
+    this.WqN = new WebSearchWebView(getActivityContext());
+    parama = new i();
+    paramamr = new j(6);
+    this.WqN.a((z)parama, (ag)paramamr);
+    this.WqN.addJavascriptInterface(this.WqL, "emojiWebSearchJSApi");
+    this.vAf.addView((View)this.WqN);
+    AppMethodBeat.o(315057);
   }
   
-  public final void a(ccn paramccn, Bitmap paramBitmap, String paramString)
+  public final void a(amr paramamr)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(198909);
-    p.k(paramccn, "shareContent");
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("onSearchShare BusinessType:").append(paramccn.Tkz.CQK).append(" SubType:").append(paramccn.Tkz.TVM).append(' ').append("BrandFeed:");
-    if (paramccn.TkA != null)
-    {
-      bool1 = true;
-      localStringBuilder = localStringBuilder.append(bool1).append(" WeappFeed:");
-      if (paramccn.TkC == null) {
-        break label275;
-      }
-      bool1 = true;
-      label100:
-      localStringBuilder = localStringBuilder.append(bool1).append(" WeappProfile:");
-      if (paramccn.TkD == null) {
-        break label281;
-      }
-      bool1 = true;
-      label124:
-      localStringBuilder = localStringBuilder.append(bool1).append(' ').append("BrandProfile:");
-      if (paramccn.TkB == null) {
-        break label287;
-      }
-      bool1 = true;
-      label153:
-      localStringBuilder = localStringBuilder.append(bool1).append(" FinderFeed:");
-      if (paramccn.TkF == null) {
-        break label293;
-      }
-      bool1 = true;
-      label177:
-      localStringBuilder = localStringBuilder.append(bool1).append(" FinderProfile:");
-      if (paramccn.TkE == null) {
-        break label299;
-      }
-      bool1 = true;
-      label201:
-      localStringBuilder = localStringBuilder.append(bool1).append(' ').append("Emoticon:");
-      if (paramccn.TkG == null) {
-        break label305;
-      }
-    }
-    label275:
-    label281:
-    label287:
-    label293:
-    label299:
-    label305:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Log.i(str, bool1);
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new c.d(this, paramccn, paramBitmap, paramString));
-      AppMethodBeat.o(198909);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label100;
-      bool1 = false;
-      break label124;
-      bool1 = false;
-      break label153;
-      bool1 = false;
-      break label177;
-      bool1 = false;
-      break label201;
-    }
-  }
-  
-  public final void a(ccn paramccn, String paramString)
-  {
-    long l = 2L;
-    AppMethodBeat.i(198910);
-    p.k(paramccn, "shareContent");
-    Object localObject = this.iYE;
-    if (localObject != null) {
-      ((s)localObject).dismiss();
-    }
-    this.PAy.a(paramccn);
-    dismiss();
-    oe localoe = new oe();
-    localoe.AC(cm.bfF());
-    localoe.AB(2L);
-    localoe.aod();
-    localObject = paramString;
-    if (paramString == null) {
-      localObject = "";
-    }
-    localoe.EV((String)localObject);
-    if (ab.Lj(this.PAx.talker)) {}
+    int i = 1;
+    AppMethodBeat.i(315081);
+    s.u(paramamr, "moreContext");
+    Log.i(this.TAG, "start to load url %s", new Object[] { this.WqC.url });
+    this.WqN.loadUrl(this.WqC.url);
+    if (this.WqO.getX() == 0.0F) {}
     for (;;)
     {
-      localoe.AD(l);
-      localoe.EW(this.PAx.talker);
-      localObject = paramccn.Tkz.SessionId;
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
+      if (i != 0) {
+        this.WqO.setX(com.tencent.mm.cd.a.ms(getActivityContext()));
       }
-      localoe.EX(paramString);
-      localObject = paramccn.Tkz.Tky;
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
-      }
-      localoe.EY(paramString);
-      localObject = paramccn.Tkz.Tkx;
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
-      }
-      localoe.EZ(paramString);
-      localObject = paramccn.Tkz.Uhd;
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "";
-      }
-      localoe.Fa(paramString);
-      localoe.AF(paramccn.Tkz.TVM);
-      localoe.AE(paramccn.Tkz.CQK);
-      localoe.bpa();
-      ar.a((com.tencent.mm.plugin.report.a)localoe);
-      AppMethodBeat.o(198910);
+      this.WqO.animate().translationX(0.0F).setStartDelay(200L).setDuration(300L).start();
+      this.WqO.setVisibility(0);
+      AppMethodBeat.o(315081);
       return;
-      l = 1L;
+      i = 0;
     }
   }
   
-  public final void biY(String paramString)
+  public final void a(cry paramcry, String paramString)
   {
-    AppMethodBeat.i(198904);
-    p.k(paramString, "id");
-    if (this.iYE == null) {
-      this.iYE = s.a(getContext(), (CharSequence)getContext().getString(a.f.loading_tips), true, 0, (DialogInterface.OnCancelListener)new e(this));
-    }
-    paramString = this.iYE;
-    if (paramString != null)
-    {
-      if (!paramString.isShowing()) {
-        paramString.show();
-      }
-      AppMethodBeat.o(198904);
-      return;
-    }
-    AppMethodBeat.o(198904);
+    AppMethodBeat.i(315098);
+    s.u(paramcry, "shareContent");
+    this.WqK.a(paramcry, paramString);
+    AppMethodBeat.o(315098);
   }
   
-  public final void onBackPressed()
+  public final void biF(String paramString)
   {
-    AppMethodBeat.i(198915);
-    if (this.PAu)
-    {
-      Object localObject = this.mrQ;
-      if (localObject != null)
-      {
-        localObject = (TextView)((View)localObject).findViewById(a.c.title_tv);
-        if (localObject != null) {
-          ((TextView)localObject).setText(a.f.tag_search_title);
-        }
-      }
-      localObject = this.mrQ;
-      if (localObject != null)
-      {
-        localObject = ((View)localObject).findViewById(a.c.close_btn);
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).animate();
-          if (localObject != null)
-          {
-            localObject = ((ViewPropertyAnimator)localObject).rotation(90.0F);
-            if (localObject != null)
-            {
-              localObject = ((ViewPropertyAnimator)localObject).setDuration(200L);
-              if (localObject != null) {
-                ((ViewPropertyAnimator)localObject).start();
-              }
-            }
-          }
-        }
-      }
-      localObject = this.PAw;
-      if (localObject != null)
-      {
-        int i = com.tencent.mm.ci.a.kr(((e)localObject).getActivityContext());
-        ((e)localObject).PAM.animate().translationX(i).setDuration(300L).start();
-      }
-      this.PAu = false;
-      AppMethodBeat.o(198915);
-      return;
-    }
-    dismiss();
-    AppMethodBeat.o(198915);
+    AppMethodBeat.i(315095);
+    s.u(paramString, "id");
+    this.WqK.biF(paramString);
+    AppMethodBeat.o(315095);
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public final void cd(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(198900);
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    if (paramBundle != null) {
-      paramBundle.setLayout(-1, -1);
-    }
-    paramBundle = getWindow();
-    if (paramBundle != null) {
-      paramBundle.addFlags(67108864);
-    }
-    paramBundle = getWindow();
-    if (paramBundle != null) {
-      paramBundle.setDimAmount(0.5F);
-    }
-    paramBundle = getWindow();
-    if (paramBundle != null) {
-      paramBundle.setWindowAnimations(a.g.BottomToTopSlowAnimation);
-    }
-    paramBundle = LayoutInflater.from(getContext()).inflate(a.d.tag_search_dialog, null, false);
-    p.j(paramBundle, "LayoutInflater.from(cont…arch_dialog, null, false)");
-    setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-    paramBundle.findViewById(a.c.empty_area_view).setOnTouchListener((View.OnTouchListener)new c.a(this));
-    paramBundle.findViewById(a.c.close_btn).setOnClickListener((View.OnClickListener)new c.b(this));
-    this.PAv = new d(this, this.PAx, this.PAy, paramBundle);
-    setOnDismissListener((DialogInterface.OnDismissListener)new c(this));
-    setCancelable(true);
-    this.mrQ = paramBundle;
-    AppMethodBeat.o(198900);
+    AppMethodBeat.i(315074);
+    s.u(paramString, "query");
+    AppMethodBeat.o(315074);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-  static final class c
-    implements DialogInterface.OnDismissListener
+  public final Context getActivityContext()
   {
-    c(c paramc) {}
-    
-    public final void onDismiss(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(198320);
-      paramDialogInterface = c.a(this.PAz);
-      if (paramDialogInterface != null)
-      {
-        Log.i(paramDialogInterface.TAG, "dismiss dialog");
-        paramDialogInterface.PAx.fwe = paramDialogInterface.PAG.getInEditTextQuery();
-        paramDialogInterface.PAy.onDismiss();
-        paramDialogInterface.PAI.destroy();
-        paramDialogInterface.PAJ.removeJavascriptInterface("tagWebSearchJSApi");
-        paramDialogInterface.PAJ.destroy();
-      }
-      paramDialogInterface = c.b(this.PAz);
-      if (paramDialogInterface != null)
-      {
-        paramDialogInterface.PAI.destroy();
-        paramDialogInterface.PAJ.removeJavascriptInterface("tagWebSearchJSApi");
-        paramDialogInterface.PAJ.destroy();
-        AppMethodBeat.o(198320);
-        return;
-      }
-      AppMethodBeat.o(198320);
-    }
+    AppMethodBeat.i(315085);
+    Context localContext = this.WqK.getContext();
+    s.s(localContext, "dialog.context");
+    AppMethodBeat.o(315085);
+    return localContext;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
-  static final class e
-    implements DialogInterface.OnCancelListener
+  public final WebSearchWebView getWebView()
   {
-    e(c paramc) {}
-    
-    public final void onCancel(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(198505);
-      paramDialogInterface = c.a(this.PAz);
-      if (paramDialogInterface != null)
-      {
-        paramDialogInterface = paramDialogInterface.PAI;
-        if (paramDialogInterface != null) {
-          paramDialogInterface.gRq();
-        }
-      }
-      paramDialogInterface = c.b(this.PAz);
-      if (paramDialogInterface != null)
-      {
-        paramDialogInterface = paramDialogInterface.PAI;
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface.gRq();
-          AppMethodBeat.o(198505);
-          return;
-        }
-      }
-      AppMethodBeat.o(198505);
-    }
+    return this.WqN;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void hideVKB()
   {
-    g(c paramc, eql parameql)
-    {
-      super();
-    }
+    AppMethodBeat.i(315089);
+    d locald = (d)this;
+    s.u(locald, "this");
+    e.a.a((e)locald);
+    AppMethodBeat.o(315089);
+  }
+  
+  public final com.tencent.mm.plugin.websearch.a.d iqB()
+  {
+    return this.WqM;
+  }
+  
+  public final com.tencent.mm.plugin.websearch.a.a iqC()
+  {
+    return this.WqL;
+  }
+  
+  public final void showVKB()
+  {
+    AppMethodBeat.i(315087);
+    d locald = (d)this;
+    s.u(locald, "this");
+    e.a.b((e)locald);
+    AppMethodBeat.o(315087);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.a.a.c
  * JD-Core Version:    0.7.0.1
  */

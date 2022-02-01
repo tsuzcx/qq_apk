@@ -7,81 +7,93 @@ import junit.framework.Assert;
 
 public final class i
 {
-  private static String jYK;
-  public static b jYL;
+  private static String myF;
+  public static b myG;
   public static Context sContext;
   
+  public static boolean EW(String paramString)
+  {
+    AppMethodBeat.i(158732);
+    if ((paramString != null) && (paramString.equals(aYs())))
+    {
+      AppMethodBeat.o(158732);
+      return true;
+    }
+    AppMethodBeat.o(158732);
+    return false;
+  }
+  
   /* Error */
-  private static String I(Context paramContext, int paramInt)
+  private static String L(Context paramContext, int paramInt)
   {
     // Byte code:
-    //   0: ldc 15
-    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 38
+    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: ifnonnull +10 -> 16
-    //   9: ldc 15
-    //   11: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   9: ldc 38
+    //   11: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   14: aconst_null
     //   15: areturn
     //   16: aload_0
-    //   17: ldc 26
-    //   19: invokevirtual 32	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   22: checkcast 34	android/app/ActivityManager
+    //   17: ldc 40
+    //   19: invokevirtual 46	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   22: checkcast 48	android/app/ActivityManager
     //   25: astore_0
     //   26: aload_0
     //   27: ifnull +75 -> 102
     //   30: aload_0
-    //   31: invokevirtual 38	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   31: invokevirtual 52	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
     //   34: astore_0
     //   35: aload_0
     //   36: ifnull +66 -> 102
     //   39: aload_0
-    //   40: invokeinterface 44 1 0
+    //   40: invokeinterface 58 1 0
     //   45: ifne +57 -> 102
     //   48: aload_0
-    //   49: invokeinterface 48 1 0
+    //   49: invokeinterface 62 1 0
     //   54: astore_0
     //   55: aload_0
-    //   56: invokeinterface 53 1 0
+    //   56: invokeinterface 67 1 0
     //   61: ifeq +41 -> 102
     //   64: aload_0
-    //   65: invokeinterface 57 1 0
-    //   70: checkcast 59	android/app/ActivityManager$RunningAppProcessInfo
+    //   65: invokeinterface 71 1 0
+    //   70: checkcast 73	android/app/ActivityManager$RunningAppProcessInfo
     //   73: astore 4
     //   75: aload 4
     //   77: ifnull -22 -> 55
     //   80: aload 4
-    //   82: getfield 62	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   82: getfield 77	android/app/ActivityManager$RunningAppProcessInfo:pid	I
     //   85: iload_1
     //   86: if_icmpne -31 -> 55
     //   89: aload 4
-    //   91: getfield 65	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   91: getfield 80	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   94: astore_0
-    //   95: ldc 15
-    //   97: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   95: ldc 38
+    //   97: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   100: aload_0
     //   101: areturn
     //   102: sipush 128
     //   105: newarray byte
     //   107: astore 5
-    //   109: new 67	java/io/FileInputStream
+    //   109: new 82	java/io/FileInputStream
     //   112: dup
-    //   113: new 69	java/lang/StringBuilder
+    //   113: new 84	java/lang/StringBuilder
     //   116: dup
-    //   117: ldc 71
-    //   119: invokespecial 75	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   117: ldc 86
+    //   119: invokespecial 90	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   122: iload_1
-    //   123: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   126: ldc 81
-    //   128: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokespecial 89	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   123: invokevirtual 94	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   126: ldc 96
+    //   128: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokespecial 103	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   137: astore 4
     //   139: aload 4
     //   141: astore_0
     //   142: aload 4
     //   144: aload 5
-    //   146: invokevirtual 93	java/io/FileInputStream:read	([B)I
+    //   146: invokevirtual 107	java/io/FileInputStream:read	([B)I
     //   149: istore_3
     //   150: iload_3
     //   151: ifle +44 -> 195
@@ -90,17 +102,17 @@ public final class i
     //   156: goto +137 -> 293
     //   159: aload 4
     //   161: astore_0
-    //   162: new 95	java/lang/String
+    //   162: new 25	java/lang/String
     //   165: dup
     //   166: aload 5
     //   168: iconst_0
     //   169: iload_2
-    //   170: invokespecial 98	java/lang/String:<init>	([BII)V
+    //   170: invokespecial 110	java/lang/String:<init>	([BII)V
     //   173: astore 5
     //   175: aload 4
-    //   177: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   180: ldc 15
-    //   182: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: invokevirtual 114	java/io/FileInputStream:close	()V
+    //   180: ldc 38
+    //   182: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: aload 5
     //   187: areturn
     //   188: iload_1
@@ -109,9 +121,9 @@ public final class i
     //   191: istore_1
     //   192: goto +101 -> 293
     //   195: aload 4
-    //   197: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   200: ldc 15
-    //   202: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   197: invokevirtual 114	java/io/FileInputStream:close	()V
+    //   200: ldc 38
+    //   202: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   205: aconst_null
     //   206: areturn
     //   207: astore 5
@@ -119,20 +131,20 @@ public final class i
     //   210: astore 4
     //   212: aload 4
     //   214: astore_0
-    //   215: ldc 104
-    //   217: ldc 106
+    //   215: ldc 116
+    //   217: ldc 118
     //   219: iconst_1
     //   220: anewarray 4	java/lang/Object
     //   223: dup
     //   224: iconst_0
     //   225: aload 5
-    //   227: invokestatic 112	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   227: invokestatic 124	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   230: aastore
-    //   231: invokestatic 118	com/tencent/mm/ipcinvoker/h/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   231: invokestatic 130	com/tencent/mm/ipcinvoker/h/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   234: aload 4
     //   236: ifnull -36 -> 200
     //   239: aload 4
-    //   241: invokevirtual 102	java/io/FileInputStream:close	()V
+    //   241: invokevirtual 114	java/io/FileInputStream:close	()V
     //   244: goto -44 -> 200
     //   247: astore_0
     //   248: goto -48 -> 200
@@ -142,9 +154,9 @@ public final class i
     //   255: aload_0
     //   256: ifnull +7 -> 263
     //   259: aload_0
-    //   260: invokevirtual 102	java/io/FileInputStream:close	()V
-    //   263: ldc 15
-    //   265: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   260: invokevirtual 114	java/io/FileInputStream:close	()V
+    //   263: ldc 38
+    //   265: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   268: aload 4
     //   270: athrow
     //   271: astore_0
@@ -201,25 +213,13 @@ public final class i
     //   162	175	288	java/lang/Exception
   }
   
-  public static boolean Mo(String paramString)
-  {
-    AppMethodBeat.i(158732);
-    if ((paramString != null) && (paramString.equals(aFr())))
-    {
-      AppMethodBeat.o(158732);
-      return true;
-    }
-    AppMethodBeat.o(158732);
-    return false;
-  }
-  
-  public static String aFr()
+  public static String aYs()
   {
     AppMethodBeat.i(158733);
-    if ((jYK == null) || (jYK.length() == 0)) {
-      jYK = I(sContext, Process.myPid());
+    if ((myF == null) || (myF.length() == 0)) {
+      myF = L(sContext, Process.myPid());
     }
-    String str = jYK;
+    String str = myF;
     AppMethodBeat.o(158733);
     return str;
   }

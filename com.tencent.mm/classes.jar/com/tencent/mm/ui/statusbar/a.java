@@ -9,35 +9,35 @@ import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public final class a
 {
-  public static void X(View paramView, boolean paramBoolean)
+  public static void ad(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(133798);
-    paramView = iD(paramView);
+    paramView = lZ(paramView);
     if (paramView != null) {
-      paramView.GZ(paramBoolean);
+      paramView.MU(paramBoolean);
     }
     AppMethodBeat.o(133798);
   }
   
-  public static int bz(Activity paramActivity)
+  public static int cg(Activity paramActivity)
   {
-    AppMethodBeat.i(237569);
-    if (!c.XMC)
+    AppMethodBeat.i(249911);
+    if (!c.afCQ)
     {
-      AppMethodBeat.o(237569);
+      AppMethodBeat.o(249911);
       return 0;
     }
     if (paramActivity == null)
     {
-      AppMethodBeat.o(237569);
+      AppMethodBeat.o(249911);
       return 0;
     }
-    int i = c.bA(paramActivity).XMF;
-    AppMethodBeat.o(237569);
+    int i = c.ch(paramActivity).afCS;
+    AppMethodBeat.o(249911);
     return i;
   }
   
-  public static void f(View paramView, int paramInt, boolean paramBoolean)
+  public static void h(View paramView, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(133797);
     if (paramView == null)
@@ -45,15 +45,15 @@ public final class a
       AppMethodBeat.o(133797);
       return;
     }
-    if (!c.XMC)
+    if (!c.afCQ)
     {
       AppMethodBeat.o(133797);
       return;
     }
-    b localb = iD(paramView);
+    b localb = lZ(paramView);
     if (localb != null)
     {
-      localb.T(paramInt, paramBoolean);
+      localb.aj(paramInt, paramBoolean);
       AppMethodBeat.o(133797);
       return;
     }
@@ -61,12 +61,12 @@ public final class a
     if (paramView != null)
     {
       paramView.getWindow().setStatusBarColor(paramInt);
-      d.d(paramView.getWindow(), paramBoolean);
+      d.c(paramView.getWindow(), paramBoolean);
     }
     AppMethodBeat.o(133797);
   }
   
-  private static b iD(View paramView)
+  private static b lZ(View paramView)
   {
     AppMethodBeat.i(133796);
     if (paramView == null)

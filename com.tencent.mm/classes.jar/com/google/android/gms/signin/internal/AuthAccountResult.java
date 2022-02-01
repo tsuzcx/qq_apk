@@ -7,24 +7,15 @@ import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="AuthAccountResultCreator")
 public class AuthAccountResult
   extends AbstractSafeParcelable
   implements Result
 {
   public static final Parcelable.Creator<AuthAccountResult> CREATOR;
-  @SafeParcelable.Field(getter="getConnectionResultCode", id=2)
   private int zzadn;
-  @SafeParcelable.Field(getter="getRawAuthResolutionIntent", id=3)
   private Intent zzado;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
   
   static
@@ -39,8 +30,7 @@ public class AuthAccountResult
     this(0, null);
   }
   
-  @SafeParcelable.Constructor
-  AuthAccountResult(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) Intent paramIntent)
+  AuthAccountResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.zzal = paramInt1;
     this.zzadn = paramInt2;
@@ -83,7 +73,7 @@ public class AuthAccountResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.signin.internal.AuthAccountResult
  * JD-Core Version:    0.7.0.1
  */

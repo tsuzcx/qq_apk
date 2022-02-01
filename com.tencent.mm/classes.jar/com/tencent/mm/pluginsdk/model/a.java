@@ -1,112 +1,119 @@
 package com.tencent.mm.pluginsdk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.fnd;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import kotlin.g.b.p;
-import kotlin.k.i;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.io.IOException;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/model/BizFinderLiveChecker;", "Lcom/tencent/mm/plugin/brandservice/api/IBizFinderLiveChecker;", "scene", "", "(I)V", "getScene", "()I", "updateTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "checkBizFinderLives", "", "bizUserName", "", "startCheck", "stopCheck", "Companion", "plugin-biz_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/BizCommUtil;", "", "()V", "TAG", "", "kTimelineSettingInfo", "settingList", "", "", "getSettingList", "()[Ljava/lang/Integer;", "settingList$delegate", "Lkotlin/Lazy;", "getTimelineSettingInfo", "Lcom/tencent/mm/protocal/protobuf/TimelineSettingInfo;", "isSettingOpen", "", "bit", "setTimelineSettingInfo", "", "info", "SettingType", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements com.tencent.mm.plugin.brandservice.a.a
 {
-  public static final a QTn;
-  static final String TAG = "MicroMsg.BizFinderLiveChecker";
-  private MTimerHandler sSd;
-  final int scene;
+  public static final a XPo;
+  public static final j XPp;
   
   static
   {
-    AppMethodBeat.i(210621);
-    QTn = new a((byte)0);
-    TAG = "MicroMsg.BizFinderLiveChecker";
-    AppMethodBeat.o(210621);
+    AppMethodBeat.i(244724);
+    XPo = new a();
+    XPp = k.cm((kotlin.g.a.a)a.XPq);
+    AppMethodBeat.o(244724);
   }
   
-  public a(int paramInt)
+  public static void a(fnd paramfnd)
   {
-    this.scene = paramInt;
+    AppMethodBeat.i(244722);
+    if (paramfnd == null)
+    {
+      AppMethodBeat.o(244722);
+      return;
+    }
+    try
+    {
+      Log.i("MicroMsg.BizCommUtil", s.X("setTimelineSettingInfo bitSet = ", Integer.valueOf(paramfnd.abNk)));
+      MultiProcessMMKV.getSingleMMKV("brandService").encode("k_TimelineSettingInfo", paramfnd.toByteArray());
+      AppMethodBeat.o(244722);
+      return;
+    }
+    catch (IOException paramfnd)
+    {
+      Log.w("MicroMsg.BizCommUtil", "encode TimelineSettingInfo ex %s", new Object[] { paramfnd.getMessage() });
+      AppMethodBeat.o(244722);
+    }
   }
   
-  public final void apt(final String paramString)
+  public static fnd iGT()
   {
-    AppMethodBeat.i(210619);
-    if (paramString == null)
+    int j = 1;
+    AppMethodBeat.i(244714);
+    Object localObject1 = MultiProcessMMKV.getSingleMMKV("brandService");
+    s.s(localObject1, "getSingleMMKV(BizConstants.brandService)");
+    int i;
+    if (((MultiProcessMMKV)localObject1).containsKey("k_TimelineSettingInfo"))
     {
-      AppMethodBeat.o(210619);
-      return;
-    }
-    if (this.sSd != null)
-    {
-      AppMethodBeat.o(210619);
-      return;
-    }
-    Log.d(TAG, "startCheck");
-    Object localObject = b.QTJ;
-    localObject = b.hga();
-    b localb = b.QTJ;
-    long l = i.be(MMKVSlotManager.decodeLong$default((MMKVSlotManager)localObject, b.bpn(paramString), 0L, 2, null), 10L) * 1000L / 2L;
-    this.sSd = new MTimerHandler(paramString + "-live-UpdateTimer", (MTimerHandler.CallBack)new c(this, paramString), true);
-    paramString = this.sSd;
-    if (paramString != null)
-    {
-      paramString.startTimer(0L, l);
-      AppMethodBeat.o(210619);
-      return;
-    }
-    AppMethodBeat.o(210619);
-  }
-  
-  public final void stopCheck()
-  {
-    AppMethodBeat.i(210620);
-    if (this.sSd != null)
-    {
-      Log.d(TAG, "stopCheck");
-      MTimerHandler localMTimerHandler = this.sSd;
-      if (localMTimerHandler != null) {
-        localMTimerHandler.stopTimer();
+      localObject1 = ((MultiProcessMMKV)localObject1).decodeBytes("k_TimelineSettingInfo");
+      if (localObject1 != null) {
+        if (localObject1.length == 0)
+        {
+          i = 1;
+          if (i != 0) {
+            break label93;
+          }
+          i = j;
+          label52:
+          if (i == 0) {
+            break label114;
+          }
+        }
       }
-      this.sSd = null;
     }
-    AppMethodBeat.o(210620);
+    for (;;)
+    {
+      try
+      {
+        Object localObject3 = fnd.class.newInstance();
+        ((com.tencent.mm.bx.a)localObject3).parseFrom((byte[])localObject1);
+        localObject1 = (com.tencent.mm.bx.a)localObject3;
+        localObject1 = (fnd)localObject1;
+        AppMethodBeat.o(244714);
+        return localObject1;
+      }
+      catch (Exception localException)
+      {
+        label93:
+        Log.printErrStackTrace("MultiProcessMMKV.decodeProtoBuffer", (Throwable)localException, "decode ProtoBuffer", new Object[0]);
+      }
+      i = 0;
+      break;
+      i = 0;
+      break label52;
+      label114:
+      Object localObject2 = null;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/model/BizFinderLiveChecker$Companion;", "", "()V", "TAG", "", "plugin-biz_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bizUserName", "", "exportId", "isChange", "", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<String, String, Boolean, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements kotlin.g.a.a<Integer[]>
   {
-    b(a parama)
+    public static final a XPq;
+    
+    static
+    {
+      AppMethodBeat.i(244707);
+      XPq = new a();
+      AppMethodBeat.o(244707);
+    }
+    
+    a()
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-  static final class c
-    implements MTimerHandler.CallBack
-  {
-    c(a parama, String paramString) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(205326);
-      a locala = this.QTo;
-      String str = paramString;
-      p.k(str, "bizUserName");
-      Log.d(a.TAG, "checkBizFinderLives");
-      b localb = b.QTJ;
-      b.a(str, false, locala.scene, (kotlin.g.a.q)new a.b(locala));
-      AppMethodBeat.o(205326);
-      return true;
     }
   }
 }

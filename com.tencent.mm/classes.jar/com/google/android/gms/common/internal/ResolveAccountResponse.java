@@ -6,27 +6,16 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ResolveAccountResponseCreator")
 public class ResolveAccountResponse
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<ResolveAccountResponse> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getConnectionResult", id=3)
   private ConnectionResult zzeu;
-  @SafeParcelable.Field(getter="getSaveDefaultAccount", id=4)
   private boolean zzhs;
-  @SafeParcelable.Field(id=2)
   private IBinder zzqv;
-  @SafeParcelable.Field(getter="isFromCrossClientAuth", id=5)
   private boolean zzuv;
   
   static
@@ -43,8 +32,7 @@ public class ResolveAccountResponse
     AppMethodBeat.o(11856);
   }
   
-  @SafeParcelable.Constructor
-  ResolveAccountResponse(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) IBinder paramIBinder, @SafeParcelable.Param(id=3) ConnectionResult paramConnectionResult, @SafeParcelable.Param(id=4) boolean paramBoolean1, @SafeParcelable.Param(id=5) boolean paramBoolean2)
+  ResolveAccountResponse(int paramInt, IBinder paramIBinder, ConnectionResult paramConnectionResult, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.zzal = paramInt;
     this.zzqv = paramIBinder;
@@ -143,7 +131,7 @@ public class ResolveAccountResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ResolveAccountResponse
  * JD-Core Version:    0.7.0.1
  */

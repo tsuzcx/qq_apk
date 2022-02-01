@@ -10,9 +10,9 @@ public abstract interface b
 {
   public abstract void a(Canvas paramCanvas, TextPaint paramTextPaint, float paramFloat);
   
-  public abstract int aAb(int paramInt);
+  public abstract int aGO(int paramInt);
   
-  public abstract float azU(int paramInt);
+  public abstract float dv(int paramInt);
   
   public abstract int getEnd();
   
@@ -22,23 +22,23 @@ public abstract interface b
   
   public abstract float getWidth();
   
-  public abstract float[] ikr();
+  public abstract float[] jQJ();
   
-  public abstract RectF iks();
+  public abstract RectF jQK();
   
-  public abstract RectF ikt();
+  public abstract RectF jQL();
   
-  public abstract float iku();
+  public abstract float jQM();
   
-  public abstract boolean ikv();
+  public abstract boolean jQN();
   
-  public abstract float ikw();
+  public abstract float jQO();
   
-  public abstract float ikx();
+  public abstract float jQP();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.b
  * JD-Core Version:    0.7.0.1
  */

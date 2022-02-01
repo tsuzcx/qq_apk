@@ -17,22 +17,22 @@ public final class a
       return null;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("nationalCode", paramb.nlb);
-    localIntent.putExtra("userName", paramb.nkZ);
-    localIntent.putExtra("telNumber", paramb.nla);
-    localIntent.putExtra("addressPostalCode", paramb.nkX);
-    localIntent.putExtra("proviceFirstStageName", paramb.nkU);
-    localIntent.putExtra("addressCitySecondStageName", paramb.nkV);
-    localIntent.putExtra("addressCountiesThirdStageName", paramb.nkW);
-    localIntent.putExtra("addressCountiesFourStageName", paramb.nlc);
-    localIntent.putExtra("addressDetailInfo", paramb.nkY);
+    localIntent.putExtra("nationalCode", paramb.qik);
+    localIntent.putExtra("userName", paramb.qii);
+    localIntent.putExtra("telNumber", paramb.qij);
+    localIntent.putExtra("addressPostalCode", paramb.qig);
+    localIntent.putExtra("proviceFirstStageName", paramb.qid);
+    localIntent.putExtra("addressCitySecondStageName", paramb.qie);
+    localIntent.putExtra("addressCountiesThirdStageName", paramb.qif);
+    localIntent.putExtra("addressCountiesFourStageName", paramb.qil);
+    localIntent.putExtra("addressDetailInfo", paramb.qih);
     AppMethodBeat.o(21053);
     return localIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.address.e.a
  * JD-Core Version:    0.7.0.1
  */

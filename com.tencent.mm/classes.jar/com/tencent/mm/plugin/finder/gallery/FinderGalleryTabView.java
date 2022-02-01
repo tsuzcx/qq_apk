@@ -1,163 +1,194 @@
 package com.tencent.mm.plugin.finder.gallery;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.FrameLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.e.c;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h.c;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.i.c;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;)V", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "initView", "", "refresh", "select", "index", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "presenter", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;)V", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "initView", "", "refresh", "select", "index", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderGalleryTabView
   extends FrameLayout
 {
+  WxRecyclerView AZd;
+  c Bve;
   final String TAG;
-  c xUi;
-  WxRecyclerView xUj;
   
   public FinderGalleryTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(268763);
+    AppMethodBeat.i(334175);
     this.TAG = "Finder.FinderAlbumFilterView";
-    AppMethodBeat.o(268763);
+    AppMethodBeat.o(334175);
   }
   
   public FinderGalleryTabView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(268764);
+    AppMethodBeat.i(334180);
     this.TAG = "Finder.FinderAlbumFilterView";
-    AppMethodBeat.o(268764);
+    AppMethodBeat.o(334180);
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(268762);
-    RecyclerView.h localh = (RecyclerView.h)new FinderGalleryTabView.b();
-    AppMethodBeat.o(268762);
+    AppMethodBeat.i(334226);
+    RecyclerView.h localh = (RecyclerView.h)new b();
+    AppMethodBeat.o(334226);
     return localh;
   }
   
   public final c getPresenter()
   {
-    return this.xUi;
+    return this.Bve;
   }
   
   public final WxRecyclerView getRecyclerView()
   {
-    return this.xUj;
+    return this.AZd;
   }
   
   public final void select(int paramInt)
   {
-    AppMethodBeat.i(268761);
-    Object localObject1 = this.xUi;
+    AppMethodBeat.i(334223);
+    Object localObject1 = this.Bve;
+    Object localObject2;
+    StringBuilder localStringBuilder;
     if (localObject1 != null)
     {
-      localObject1 = ((c)localObject1).xTC;
-      if (localObject1 != null)
+      localObject1 = ((c)localObject1).Buy;
+      if ((localObject1 != null) && (((ArrayList)localObject1).size() > paramInt) && (paramInt >= 0))
       {
-        if ((((ArrayList)localObject1).size() > paramInt) && (paramInt >= 0))
-        {
-          Object localObject2 = ((Iterable)localObject1).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            ((k)((Iterator)localObject2).next()).xUg = false;
-          }
-          localObject2 = (k)kotlin.a.j.M((List)localObject1, paramInt);
-          if (localObject2 != null) {
-            ((k)localObject2).xUg = true;
-          }
-          localObject2 = this.TAG;
-          StringBuilder localStringBuilder = new StringBuilder("select ").append(paramInt).append(", title:");
-          localObject1 = (k)kotlin.a.j.M((List)localObject1, paramInt);
-          if (localObject1 != null)
-          {
-            localObject1 = ((k)localObject1).xUh;
-            if (localObject1 == null) {}
-          }
-          for (localObject1 = ((j)localObject1).xUf;; localObject1 = null)
-          {
-            Log.i((String)localObject2, (String)localObject1);
-            localObject1 = this.xUj;
-            if (localObject1 == null) {
-              break;
-            }
-            localObject1 = ((WxRecyclerView)localObject1).getAdapter();
-            if (localObject1 == null) {
-              break;
-            }
-            ((RecyclerView.a)localObject1).notifyDataSetChanged();
-            AppMethodBeat.o(268761);
-            return;
-          }
+        localObject2 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          ((k)((Iterator)localObject2).next()).Bvd = false;
         }
-        AppMethodBeat.o(268761);
-        return;
+        localObject2 = (k)p.ae((List)localObject1, paramInt);
+        if (localObject2 != null) {
+          ((k)localObject2).Bvd = true;
+        }
+        localObject2 = this.TAG;
+        localStringBuilder = new StringBuilder("select ").append(paramInt).append(", title:");
+        localObject1 = (k)p.ae((List)localObject1, paramInt);
+        if (localObject1 != null) {
+          break label178;
+        }
+        localObject1 = null;
       }
     }
-    AppMethodBeat.o(268761);
+    for (;;)
+    {
+      Log.i((String)localObject2, localObject1);
+      localObject1 = getRecyclerView();
+      if (localObject1 != null)
+      {
+        localObject1 = ((WxRecyclerView)localObject1).getAdapter();
+        if (localObject1 != null) {
+          ((RecyclerView.a)localObject1).bZE.notifyChanged();
+        }
+      }
+      AppMethodBeat.o(334223);
+      return;
+      label178:
+      localObject1 = ((k)localObject1).Bvc;
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = ((j)localObject1).Bvb;
+      }
+    }
   }
   
   public final void setPresenter(c paramc)
   {
-    this.xUi = paramc;
+    this.Bve = paramc;
   }
   
   public final void setRecyclerView(WxRecyclerView paramWxRecyclerView)
   {
-    this.xUj = paramWxRecyclerView;
+    this.AZd = paramWxRecyclerView;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/gallery/FinderGalleryTabView$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/gallery/FinderGalleryTabView$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements com.tencent.mm.view.recyclerview.f
+    implements com.tencent.mm.view.recyclerview.g
   {
-    public final e<?> yx(int paramInt)
+    a(FinderGalleryTabView paramFinderGalleryTabView) {}
+    
+    public final f<?> yF(int paramInt)
     {
       boolean bool = false;
-      AppMethodBeat.i(221953);
-      switch (paramInt)
+      AppMethodBeat.i(334245);
+      if (paramInt == 1)
       {
-      default: 
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
+        localObject = this.Bvf.getPresenter();
+        if (localObject == null) {}
+        for (;;)
         {
-          localObject = (Throwable)new RuntimeException("type invalid");
-          AppMethodBeat.o(221953);
-          throw ((Throwable)localObject);
+          localObject = (f)new i(bool);
+          AppMethodBeat.o(334245);
+          return localObject;
+          bool = ((c)localObject).Bux.egw();
         }
-        break;
-      case 1: 
-        localObject = this.xUk.getPresenter();
-        if (localObject != null) {
-          bool = ((c)localObject).xTF.dwb();
-        }
-        localObject = (e)new i(bool);
-        AppMethodBeat.o(221953);
-        return localObject;
       }
-      Log.printInfoStack(FinderGalleryTabView.a(this.xUk), "type invalid", new Object[0]);
-      Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-      AppMethodBeat.o(221953);
+      if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
+      {
+        localObject = new RuntimeException("type invalid");
+        AppMethodBeat.o(334245);
+        throw ((Throwable)localObject);
+      }
+      Log.printInfoStack(FinderGalleryTabView.a(this.Bvf), "type invalid", new Object[0]);
+      Object localObject = (f)new com.tencent.mm.plugin.finder.convert.g();
+      AppMethodBeat.o(334245);
       return localObject;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/gallery/FinderGalleryTabView$initView$1$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"})
-  public static final class c
-    implements h.c<com.tencent.mm.view.recyclerview.i>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/gallery/FinderGalleryTabView$getItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    extends RecyclerView.h
   {
-    c(WxRecyclerAdapter paramWxRecyclerAdapter, FinderGalleryTabView paramFinderGalleryTabView, ArrayList paramArrayList, c paramc) {}
+    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+    {
+      AppMethodBeat.i(334247);
+      s.u(paramRect, "outRect");
+      s.u(paramView, "view");
+      s.u(paramRecyclerView, "parent");
+      s.u(params, "state");
+      int i = (int)paramView.getContext().getResources().getDimension(e.c.Edge_0_5_A);
+      paramRect.left = i;
+      paramRect.right = i;
+      paramRect.bottom = i;
+      paramRect.top = i;
+      AppMethodBeat.o(334247);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/gallery/FinderGalleryTabView$initView$1$1", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements i.c<com.tencent.mm.view.recyclerview.j>
+  {
+    c(WxRecyclerAdapter<k> paramWxRecyclerAdapter, FinderGalleryTabView paramFinderGalleryTabView, ArrayList<k> paramArrayList, c paramc) {}
   }
 }
 

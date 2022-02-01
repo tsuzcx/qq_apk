@@ -1,164 +1,230 @@
 package com.tencent.mm.plugin.finder.live;
 
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
-import androidx.recyclerview.widget.RecyclerView.i;
-import androidx.recyclerview.widget.RecyclerView.l;
+import com.tencent.d.a.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.model.y;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.view.recyclerview.WxRecyclerView;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.cc;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import kotlin.l;
-import kotlin.r;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/FinderLiveLivePlayRecyclerViewSelector;", "Lcom/tencent/mm/plugin/finder/live/IFinderLivePlayViewSelector;", "()V", "autoPlayRunnable", "Ljava/lang/Runnable;", "dataSet", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveList;", "getDataSet", "()Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveList;", "setDataSet", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveList;)V", "recyclerView", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "getRecyclerView", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "setRecyclerView", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerView;)V", "selectResult", "Ljava/util/ArrayList;", "Lkotlin/Triple;", "", "Landroid/view/ViewGroup;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "Lkotlin/collections/ArrayList;", "selectorCallback", "Lcom/tencent/mm/plugin/finder/live/SelectorResult;", "getSelectorCallback", "()Lcom/tencent/mm/plugin/finder/live/SelectorResult;", "setSelectorCallback", "(Lcom/tencent/mm/plugin/finder/live/SelectorResult;)V", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "unSelectResult", "check", "", "checkAutoPlayDelay", "delayMs", "", "checkAutoPlayImpl", "getLiveData", "pos", "initSelector", "setBaseData", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "selectCallback", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/FinderLiveNotifyReplaceManager;", "", "()V", "INTERVAL", "", "TAG", "", "getTAG", "()Ljava/lang/String;", "hasLaunchCollectTimer", "", "newTipsIdList", "", "kotlin.jvm.PlatformType", "", "replaceableTipsIdList", "timeHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getTimeHandler", "()Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "timeHandler$delegate", "Lkotlin/Lazy;", "doReport", "", "getTipsId", "info", "Lcom/tencent/mm/storage/MsgInfo;", "replaceNotify", "newMsgInfo", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  implements p
 {
-  public static final a xVi;
-  private MMHandler knk;
-  private WxRecyclerView xUj;
-  private Runnable xVd;
-  private com.tencent.mm.plugin.finder.model.x xVe;
-  x<Integer, ViewGroup, y> xVf;
-  private ArrayList<r<Integer, ViewGroup, y>> xVg;
-  private ArrayList<r<Integer, ViewGroup, y>> xVh;
+  public static final f Bwh;
+  private static volatile boolean Bwi;
+  private static final List<String> Bwj;
+  private static final List<String> Bwk;
+  private static final j Bwl;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(268450);
-    xVi = new a((byte)0);
-    AppMethodBeat.o(268450);
+    AppMethodBeat.i(350765);
+    Bwh = new f();
+    TAG = "FinderLiveNotifyReplaceManager";
+    Bwj = Collections.synchronizedList((List)new ArrayList());
+    Bwk = Collections.synchronizedList((List)new ArrayList());
+    Bwl = k.cm((a)a.Bwm);
+    AppMethodBeat.o(350765);
   }
   
-  public f()
+  public static void aA(cc paramcc)
   {
-    AppMethodBeat.i(268449);
-    this.knk = new MMHandler(Looper.getMainLooper());
-    this.xVg = new ArrayList();
-    this.xVh = new ArrayList();
-    AppMethodBeat.o(268449);
+    AppMethodBeat.i(350736);
+    s.u(paramcc, "newMsgInfo");
+    com.tencent.threadpool.h.ahAA.bo(new f..ExternalSyntheticLambda0(paramcc));
+    AppMethodBeat.o(350736);
   }
   
-  private final void Lg(long paramLong)
+  private static String aS(cc paramcc)
   {
-    AppMethodBeat.i(268446);
-    if (this.xVd != null)
+    AppMethodBeat.i(350742);
+    paramcc = Util.nullAsNil((String)XmlParser.parseXml(paramcc.field_content, "msg", null).get(".msg.appmsg.extinfo.notifymsg.tipsinfo.tips_id"));
+    s.s(paramcc, "nullAsNil(values[\".msg.a…fymsg.tipsinfo.tips_id\"])");
+    AppMethodBeat.o(350742);
+    return paramcc;
+  }
+  
+  private static final void aT(cc paramcc)
+  {
+    AppMethodBeat.i(350750);
+    s.u(paramcc, "$newMsgInfo");
+    long l;
+    String str1;
+    int i;
+    label112:
+    label116:
+    Object localObject;
+    if (!Bwi)
     {
-      this.knk.removeCallbacks(this.xVd);
-      this.xVd = null;
-    }
-    this.xVd = ((Runnable)new b(this));
-    this.knk.postDelayed(this.xVd, paramLong);
-    AppMethodBeat.o(268446);
-  }
-  
-  public final void a(WxRecyclerView paramWxRecyclerView, bu parambu, x<Integer, ViewGroup, y> paramx)
-  {
-    AppMethodBeat.i(268444);
-    kotlin.g.b.p.k(paramWxRecyclerView, "recyclerView");
-    kotlin.g.b.p.k(parambu, "dataSet");
-    kotlin.g.b.p.k(paramx, "selectCallback");
-    this.xUj = paramWxRecyclerView;
-    if (!(parambu instanceof com.tencent.mm.plugin.finder.model.x)) {}
-    for (paramWxRecyclerView = null;; paramWxRecyclerView = parambu)
-    {
-      this.xVe = ((com.tencent.mm.plugin.finder.model.x)paramWxRecyclerView);
-      this.xVf = paramx;
-      paramWxRecyclerView = this.xUj;
-      if (paramWxRecyclerView != null) {
-        paramWxRecyclerView.a((RecyclerView.l)new f.c(this));
+      Log.i(TAG, "[replaceNotify] start collect timer");
+      Bwi = true;
+      getTimeHandler().startTimer(1000L);
+      l = ((b)com.tencent.mm.kernel.h.az(b.class)).getFinderLiveNotifyExposureInfoStorage().etZ();
+      str1 = aS(paramcc);
+      if (l == -1L) {
+        break label429;
       }
-      paramWxRecyclerView = this.xUj;
-      if (paramWxRecyclerView != null)
+      paramcc = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().sl(l);
+      if ((paramcc.field_msgId <= 0L) || (!s.p(paramcc.field_talker, "notifymessage"))) {
+        break label225;
+      }
+      i = 1;
+      if (i == 0) {
+        break label230;
+      }
+      if (paramcc != null) {
+        break label235;
+      }
+      localObject = null;
+      label123:
+      paramcc = (cc)localObject;
+      if (localObject == null) {
+        paramcc = null;
+      }
+      label133:
+      if (((CharSequence)str1).length() <= 0) {
+        break label464;
+      }
+      i = 1;
+      label148:
+      if (i == 0) {
+        break label469;
+      }
+      localObject = str1;
+      label156:
+      if (localObject != null) {
+        Bwj.add(localObject);
+      }
+      if (paramcc != null)
       {
-        paramWxRecyclerView.a((RecyclerView.i)new d(this));
-        AppMethodBeat.o(268444);
+        if (((CharSequence)paramcc).length() <= 0) {
+          break label475;
+        }
+        i = 1;
+        label190:
+        if (i == 0) {
+          break label480;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (paramcc != null) {
+        Bwk.add(paramcc);
+      }
+      AppMethodBeat.o(350750);
+      return;
+      Log.i(TAG, "[replaceNotify] collect timer already start");
+      break;
+      label225:
+      i = 0;
+      break label112;
+      label230:
+      paramcc = null;
+      break label116;
+      label235:
+      String str2 = aS(paramcc);
+      Log.i(TAG, "[replaceNotify] newTipsId = " + str1 + ",replaceTipsId = " + str2);
+      if (s.p(str1, str2))
+      {
+        Log.i(TAG, "[replaceNotify] newTipsId = oldTipsId ,return");
+        AppMethodBeat.o(350750);
         return;
       }
-      AppMethodBeat.o(268444);
-      return;
-    }
-  }
-  
-  public final void dwn()
-  {
-    AppMethodBeat.i(268443);
-    Lg(0L);
-    AppMethodBeat.o(268443);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/FinderLiveLivePlayRecyclerViewSelector$Companion;", "", "()V", "NOTIFY_BUFFERING_START_DELAY_MS", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(f paramf) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(267266);
-      f.d(this.xVj);
-      AppMethodBeat.o(267266);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/FinderLiveLivePlayRecyclerViewSelector$initSelector$2", "Landroidx/recyclerview/widget/RecyclerView$OnChildAttachStateChangeListener;", "onChildViewAttachedToWindow", "", "view", "Landroid/view/View;", "onChildViewDetachedFromWindow", "plugin-finder_release"})
-  public static final class d
-    implements RecyclerView.i
-  {
-    public final void aT(View paramView)
-    {
-      AppMethodBeat.i(288369);
-      kotlin.g.b.p.k(paramView, "view");
-      AppMethodBeat.o(288369);
-    }
-    
-    public final void aU(final View paramView)
-    {
-      AppMethodBeat.i(288368);
-      kotlin.g.b.p.k(paramView, "view");
-      f.b(this.xVj).post((Runnable)new a(this, paramView));
-      AppMethodBeat.o(288368);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(f.d paramd, View paramView) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(281571);
-        if ((paramView instanceof ViewGroup))
-        {
-          Log.i("FinderLiveLivePlayRecyclerViewSelector", "view:" + paramView + " detached!");
-          f.c(this.xVk.xVj).clear();
-          f.c(this.xVk.xVj).add(new r(Integer.valueOf(-1), paramView, null));
-          x localx = this.xVk.xVj.xVf;
-          if (localx != null)
-          {
-            localx.ei((List)f.c(this.xVk.xVj));
-            AppMethodBeat.o(281571);
-            return;
-          }
-        }
-        AppMethodBeat.o(281571);
+      i = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().sm(paramcc.field_msgId);
+      ((b)com.tencent.mm.kernel.h.az(b.class)).getFinderLiveNotifyExposureInfoStorage().oB(l);
+      localObject = str2;
+      if (i <= 0) {
+        break label123;
       }
+      paramcc = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzG().bxM("notifymessage");
+      localObject = str2;
+      if (paramcc == null) {
+        break label123;
+      }
+      localObject = str2;
+      if (paramcc.field_unReadCount <= 0) {
+        break label123;
+      }
+      paramcc.pG(paramcc.field_unReadCount - 1);
+      ((n)com.tencent.mm.kernel.h.ax(n.class)).bzG().c(paramcc, "notifymessage");
+      localObject = str2;
+      break label123;
+      label429:
+      Log.i(TAG, "[replaceNotify] newTipsId = " + str1 + " ,no replaceable msg");
+      paramcc = null;
+      break label133;
+      label464:
+      i = 0;
+      break label148;
+      label469:
+      localObject = null;
+      break label156;
+      label475:
+      i = 0;
+      break label190;
+      label480:
+      paramcc = null;
+    }
+  }
+  
+  private static MTimerHandler getTimeHandler()
+  {
+    AppMethodBeat.i(350731);
+    MTimerHandler localMTimerHandler = (MTimerHandler)Bwl.getValue();
+    AppMethodBeat.o(350731);
+    return localMTimerHandler;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements a<MTimerHandler>
+  {
+    public static final a Bwm;
+    
+    static
+    {
+      AppMethodBeat.i(350791);
+      Bwm = new a();
+      AppMethodBeat.o(350791);
+    }
+    
+    a()
+    {
+      super();
+    }
+    
+    private static final boolean egX()
+    {
+      AppMethodBeat.i(350785);
+      f localf = f.Bwh;
+      f.egW();
+      AppMethodBeat.o(350785);
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package com.tencent.mm.vfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.InputStreamReader;
+import java.io.FilterInputStream;
 
 public final class x
-  extends InputStreamReader
+  extends FilterInputStream
 {
-  public x(q paramq)
+  public x(u paramu)
   {
-    super(u.b(paramq.mUri, paramq.ify()));
-    AppMethodBeat.i(13318);
-    AppMethodBeat.o(13318);
+    super(y.b(paramu.mUri, paramu.jKM()));
+    AppMethodBeat.i(13263);
+    AppMethodBeat.o(13263);
   }
   
   public x(String paramString)
   {
-    super(u.Tf(paramString));
-    AppMethodBeat.i(13317);
-    AppMethodBeat.o(13317);
+    super(y.Lh(paramString));
+    AppMethodBeat.i(13262);
+    AppMethodBeat.o(13262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vfs.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,145 +1,135 @@
 package com.tencent.tinker.lib.e;
 
 import android.content.Context;
-import com.tencent.tinker.lib.d.c;
 import com.tencent.tinker.loader.TinkerRuntimeException;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchInfo;
+import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
 import java.io.File;
 
 public class a
 {
-  private static a ZMC;
-  public static boolean sInstalled = false;
-  public final boolean LvD;
-  public final File ZMD;
-  final com.tencent.tinker.lib.b.b ZME;
-  public final c ZMF;
-  public final com.tencent.tinker.lib.d.d ZMG;
-  public final File ZMH;
-  public final File ZMI;
-  public final boolean ZMJ;
-  public d ZMK;
-  public boolean ZML = false;
-  public final Context context;
+  private static a ahRE;
+  static boolean sInstalled = false;
+  public final File ahRF;
+  public final com.tencent.tinker.lib.b.b ahRG;
+  public final com.tencent.tinker.lib.d.c ahRH;
+  public final com.tencent.tinker.lib.d.d ahRI;
+  public final File ahRJ;
+  public final File ahRK;
+  public final boolean ahRL;
+  public d ahRM;
+  public boolean ahRN = false;
+  final Context context;
+  public final boolean rgc;
   public int tinkerFlags;
   final boolean tinkerLoadVerifyFlag;
   
-  private a(Context paramContext, int paramInt, c paramc, com.tencent.tinker.lib.d.d paramd, com.tencent.tinker.lib.b.b paramb, File paramFile1, File paramFile2, File paramFile3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private a(Context paramContext, int paramInt, com.tencent.tinker.lib.d.c paramc, com.tencent.tinker.lib.d.d paramd, com.tencent.tinker.lib.b.b paramb, File paramFile1, File paramFile2, File paramFile3, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     this.context = paramContext;
-    this.ZME = paramb;
-    this.ZMF = paramc;
-    this.ZMG = paramd;
+    this.ahRG = paramb;
+    this.ahRH = paramc;
+    this.ahRI = paramd;
     this.tinkerFlags = paramInt;
-    this.ZMD = paramFile1;
-    this.ZMH = paramFile2;
-    this.ZMI = paramFile3;
-    this.LvD = paramBoolean1;
+    this.ahRF = paramFile1;
+    this.ahRJ = paramFile2;
+    this.ahRK = paramFile3;
+    this.rgc = paramBoolean1;
     this.tinkerLoadVerifyFlag = paramBoolean3;
-    this.ZMJ = paramBoolean2;
+    this.ahRL = paramBoolean2;
   }
   
   public static void a(a parama)
   {
-    if (ZMC != null) {
+    if (ahRE != null) {
       throw new TinkerRuntimeException("Tinker instance is already set.");
     }
-    ZMC = parama;
+    ahRE = parama;
   }
   
-  private void bDG(String paramString)
+  private void bGm(String paramString)
   {
-    if ((this.ZMD == null) || (paramString == null)) {
+    if ((this.ahRF == null) || (paramString == null)) {
       return;
     }
-    SharePatchFileUtil.deleteDir(this.ZMD.getAbsolutePath() + "/" + paramString);
+    SharePatchFileUtil.deleteDir(this.ahRF.getAbsolutePath() + "/" + paramString);
   }
   
-  public static a mi(Context paramContext)
+  public static a oy(Context paramContext)
   {
     if (!sInstalled) {
       throw new TinkerRuntimeException("you must install tinker before get tinker sInstance");
     }
     try
     {
-      if (ZMC == null) {
-        ZMC = new a(paramContext).isJ();
+      if (ahRE == null) {
+        ahRE = new a(paramContext).kcg();
       }
-      return ZMC;
+      return ahRE;
     }
     finally {}
   }
   
-  public final void Y(File paramFile)
+  public final void ac(File paramFile)
   {
-    if ((this.ZMD == null) || (paramFile == null) || (!paramFile.exists())) {
+    if ((this.ahRF == null) || (paramFile == null) || (!paramFile.exists())) {
       return;
     }
-    bDG(SharePatchFileUtil.getPatchVersionDirectory(SharePatchFileUtil.getMD5(paramFile)));
+    bGm(SharePatchFileUtil.getPatchVersionDirectory(SharePatchFileUtil.getMD5(paramFile)));
   }
   
-  public final void eIk()
+  public final void fQd()
   {
-    if (this.ZMD == null) {}
+    if (this.ahRF == null) {}
     File localFile1;
     File localFile2;
     SharePatchInfo localSharePatchInfo;
     do
     {
       return;
-      localFile1 = SharePatchFileUtil.getPatchInfoFile(this.ZMD.getAbsolutePath());
+      localFile1 = SharePatchFileUtil.getPatchInfoFile(this.ahRF.getAbsolutePath());
       if (!localFile1.exists())
       {
-        ShareTinkerLog.w("Tinker.Tinker", "try to clean patch while patch info file does not exist.", new Object[0]);
+        ShareTinkerLog.printErrStackTrace("Tinker.Tinker", new Throwable(), "try to clean patch while patch info file does not exist.", new Object[0]);
         return;
       }
-      localFile2 = SharePatchFileUtil.getPatchInfoLockFile(this.ZMD.getAbsolutePath());
+      localFile2 = SharePatchFileUtil.getPatchInfoLockFile(this.ahRF.getAbsolutePath());
       localSharePatchInfo = SharePatchInfo.readAndCheckPropertyWithLock(localFile1, localFile2);
     } while (localSharePatchInfo == null);
     localSharePatchInfo.isRemoveNewVersion = true;
     SharePatchInfo.rewritePatchInfoFileWithLock(localFile1, localSharePatchInfo, localFile2);
   }
   
-  public final d isE()
+  public final boolean isMainProcess()
   {
-    return this.ZMK;
+    return this.rgc;
   }
   
-  public final boolean isF()
+  public final d kce()
   {
-    return this.ZML;
+    return this.ahRM;
   }
   
-  public final File isG()
+  public final boolean kcf()
   {
-    return this.ZMH;
-  }
-  
-  public final File isH()
-  {
-    return this.ZMI;
-  }
-  
-  public final com.tencent.tinker.lib.b.b isI()
-  {
-    return this.ZME;
+    return ShareTinkerInternals.isTinkerEnabled(this.tinkerFlags);
   }
   
   public static final class a
   {
-    private File ZMD;
-    public com.tencent.tinker.lib.b.b ZME;
-    public c ZMF;
-    public com.tencent.tinker.lib.d.d ZMG;
-    private File ZMH;
-    private File ZMI;
-    private final boolean ZMM;
-    private final boolean ZMN;
-    public Boolean ZMO;
+    private File ahRF;
+    com.tencent.tinker.lib.b.b ahRG;
+    com.tencent.tinker.lib.d.c ahRH;
+    com.tencent.tinker.lib.d.d ahRI;
+    private File ahRJ;
+    private File ahRK;
+    private final boolean ahRO;
+    private final boolean ahRP;
+    Boolean ahRQ;
     private final Context context;
-    public int status = -1;
+    int status = -1;
     
     public a(Context paramContext)
     {
@@ -147,43 +137,43 @@ public class a
         throw new TinkerRuntimeException("Context must not be null.");
       }
       this.context = paramContext;
-      this.ZMM = com.tencent.tinker.lib.f.b.isInMainProcess(paramContext);
-      this.ZMN = com.tencent.tinker.lib.f.b.mm(paramContext);
-      this.ZMD = SharePatchFileUtil.getPatchDirectory(paramContext);
-      if (this.ZMD == null)
+      this.ahRO = com.tencent.tinker.lib.f.c.isInMainProcess(paramContext);
+      this.ahRP = com.tencent.tinker.lib.f.c.oC(paramContext);
+      this.ahRF = SharePatchFileUtil.getPatchDirectory(paramContext);
+      if (this.ahRF == null)
       {
         ShareTinkerLog.e("Tinker.Tinker", "patchDirectory is null!", new Object[0]);
         return;
       }
-      this.ZMH = SharePatchFileUtil.getPatchInfoFile(this.ZMD.getAbsolutePath());
-      this.ZMI = SharePatchFileUtil.getPatchInfoLockFile(this.ZMD.getAbsolutePath());
-      ShareTinkerLog.w("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.ZMD });
+      this.ahRJ = SharePatchFileUtil.getPatchInfoFile(this.ahRF.getAbsolutePath());
+      this.ahRK = SharePatchFileUtil.getPatchInfoLockFile(this.ahRF.getAbsolutePath());
+      ShareTinkerLog.w("Tinker.Tinker", "tinker patch directory: %s", new Object[] { this.ahRF });
     }
     
-    public final a isJ()
+    public final a kcg()
     {
       if (this.status == -1) {
         this.status = 15;
       }
-      if (this.ZMF == null) {
-        this.ZMF = new com.tencent.tinker.lib.d.a(this.context);
+      if (this.ahRH == null) {
+        this.ahRH = new com.tencent.tinker.lib.d.a(this.context);
       }
-      if (this.ZMG == null) {
-        this.ZMG = new com.tencent.tinker.lib.d.b(this.context);
+      if (this.ahRI == null) {
+        this.ahRI = new com.tencent.tinker.lib.d.b(this.context);
       }
-      if (this.ZME == null) {
-        this.ZME = new com.tencent.tinker.lib.b.a(this.context);
+      if (this.ahRG == null) {
+        this.ahRG = new com.tencent.tinker.lib.b.a(this.context);
       }
-      if (this.ZMO == null) {
-        this.ZMO = Boolean.FALSE;
+      if (this.ahRQ == null) {
+        this.ahRQ = Boolean.FALSE;
       }
-      return new a(this.context, this.status, this.ZMF, this.ZMG, this.ZME, this.ZMD, this.ZMH, this.ZMI, this.ZMM, this.ZMN, this.ZMO.booleanValue(), (byte)0);
+      return new a(this.context, this.status, this.ahRH, this.ahRI, this.ahRG, this.ahRF, this.ahRJ, this.ahRK, this.ahRO, this.ahRP, this.ahRQ.booleanValue(), (byte)0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.lib.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.LiveTalkRoomTipsBar android:id="@id/em1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.hld.keyboard.selfdraw.S3EnglishQwertyKeyboard android:orientation="vertical" android:id="@id/iwl" android:background="@drawable/a_n" android:layout_width="fill_parent" android:layout_height="@dimen/adp"
   xmlns:android="http://schemas.android.com/apk/res/android" />

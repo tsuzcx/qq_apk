@@ -13,11 +13,11 @@ import com.tencent.wcdb.support.Log;
 public class MMSightCaptureTouchView
   extends RelativeLayout
 {
-  private long FfI;
-  private a FfJ;
-  private GestureDetector mBn;
-  private float nrX;
-  private int nrY;
+  private a Lbj;
+  private long nwU;
+  private float nwV;
+  private GestureDetector nwZ;
+  private int pointerCount;
   
   public MMSightCaptureTouchView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,20 +28,20 @@ public class MMSightCaptureTouchView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94512);
-    this.FfI = 0L;
-    this.nrX = -1.0F;
-    this.nrY = 0;
-    this.mBn = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    this.nwU = 0L;
+    this.nwV = -1.0F;
+    this.pointerCount = 0;
+    this.nwZ = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(249158);
+        AppMethodBeat.i(303629);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(249158);
+        AppMethodBeat.o(303629);
         return bool;
       }
       
@@ -49,13 +49,13 @@ public class MMSightCaptureTouchView
       {
         AppMethodBeat.i(94510);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         Log.i("MicroMsg.MMSightCaptureTouchView", "onDoubleTap");
         if (System.currentTimeMillis() - MMSightCaptureTouchView.b(MMSightCaptureTouchView.this) > 1000L)
         {
           if (MMSightCaptureTouchView.a(MMSightCaptureTouchView.this) != null) {
-            MMSightCaptureTouchView.a(MMSightCaptureTouchView.this).cYv();
+            MMSightCaptureTouchView.a(MMSightCaptureTouchView.this).bow();
           }
           MMSightCaptureTouchView.a(MMSightCaptureTouchView.this, System.currentTimeMillis());
         }
@@ -66,13 +66,13 @@ public class MMSightCaptureTouchView
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(249156);
+        AppMethodBeat.i(303628);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(249156);
+        AppMethodBeat.o(303628);
       }
       
       public final boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
@@ -87,27 +87,27 @@ public class MMSightCaptureTouchView
       {
         AppMethodBeat.i(94509);
         b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
         Log.i("MicroMsg.MMSightCaptureTouchView", "onSingleTapUp");
         if (MMSightCaptureTouchView.a(MMSightCaptureTouchView.this) != null) {
-          MMSightCaptureTouchView.a(MMSightCaptureTouchView.this).J(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY());
+          MMSightCaptureTouchView.a(MMSightCaptureTouchView.this).al(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY());
         }
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(94509);
         return false;
       }
     });
-    this.mBn.setIsLongpressEnabled(false);
+    this.nwZ.setIsLongpressEnabled(false);
     AppMethodBeat.o(94512);
   }
   
-  private float y(MotionEvent paramMotionEvent)
+  private float x(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(94514);
     try
     {
-      if (this.nrY >= 2)
+      if (this.pointerCount >= 2)
       {
         float f3 = paramMotionEvent.getX(0);
         float f1 = paramMotionEvent.getY(0);
@@ -130,10 +130,10 @@ public class MMSightCaptureTouchView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(94513);
-    GestureDetector localGestureDetector = this.mBn;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.nwZ;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aYi(), "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sb(0)), "com/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
@@ -149,64 +149,64 @@ public class MMSightCaptureTouchView
             AppMethodBeat.o(94513);
             return true;
             Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_DOWN");
-            this.nrX = -1.0F;
-            this.nrY += 1;
+            this.nwV = -1.0F;
+            this.pointerCount += 1;
             continue;
             Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_POINTER_DOWN");
-            this.nrY += 1;
+            this.pointerCount += 1;
             continue;
             Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_POINTER_UP");
-            this.nrY -= 1;
+            this.pointerCount -= 1;
             continue;
             Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_UP");
-            this.nrX = -1.0F;
-            this.nrY = 0;
+            this.nwV = -1.0F;
+            this.pointerCount = 0;
           }
-        } while (this.nrY < 2);
-        f = y(paramMotionEvent);
+        } while (this.pointerCount < 2);
+        f = x(paramMotionEvent);
         Log.v("MicroMsg.MMSightCaptureTouchView", "distance: %s", new Object[] { Float.valueOf(f) });
       } while (f <= 0.0F);
-      if (this.nrX <= 0.0F) {
+      if (this.nwV <= 0.0F) {
         break;
       }
-    } while (Math.abs(f - this.nrX) <= 15.0F);
-    if (f > this.nrX)
+    } while (Math.abs(f - this.nwV) <= 15.0F);
+    if (f > this.nwV)
     {
       Log.d("MicroMsg.MMSightCaptureTouchView", "zoom out");
-      if (this.FfJ != null) {
-        this.FfJ.bBF();
+      if (this.Lbj != null) {
+        this.Lbj.bof();
       }
     }
     for (;;)
     {
-      this.nrX = f;
+      this.nwV = f;
       break;
       Log.d("MicroMsg.MMSightCaptureTouchView", "zoom in");
-      if (this.FfJ != null) {
-        this.FfJ.bBG();
+      if (this.Lbj != null) {
+        this.Lbj.bog();
       }
     }
   }
   
   public void setTouchCallback(a parama)
   {
-    this.FfJ = parama;
+    this.Lbj = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void J(float paramFloat1, float paramFloat2);
+    public abstract void al(float paramFloat1, float paramFloat2);
     
-    public abstract void bBF();
+    public abstract void bof();
     
-    public abstract void bBG();
+    public abstract void bog();
     
-    public abstract void cYv();
+    public abstract void bow();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView
  * JD-Core Version:    0.7.0.1
  */

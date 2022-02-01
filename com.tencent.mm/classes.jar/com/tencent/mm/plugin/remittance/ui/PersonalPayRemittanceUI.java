@@ -5,102 +5,107 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.au;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.remittance.model.v;
-import com.tencent.mm.plugin.remittance.model.x;
+import com.tencent.mm.am.p;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.az;
+import com.tencent.mm.plugin.remittance.model.w;
 import com.tencent.mm.plugin.remittance.model.y;
+import com.tencent.mm.plugin.remittance.model.z;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.protobuf.dyk;
-import com.tencent.mm.protocal.protobuf.sx;
+import com.tencent.mm.protocal.protobuf.ero;
+import com.tencent.mm.protocal.protobuf.un;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.f.l.a;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.f.m.a;
+import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.g.a;
-import com.tencent.mm.wallet_core.c.m;
+import com.tencent.mm.ui.widget.a.g.c;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.ui.widget.a.j.a;
+import com.tencent.mm.wallet_core.model.g;
+import com.tencent.mm.wallet_core.model.m;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.ui.i;
+import com.tencent.mm.wallet_core.ui.k;
 import java.math.RoundingMode;
 
 @com.tencent.mm.ui.base.a(3)
 public class PersonalPayRemittanceUI
   extends WalletBaseUI
 {
-  private IListener<au> InK;
-  private String InS;
-  private long InT;
-  private String InU;
-  private String InV;
-  private String InW;
-  private boolean InX;
+  private String Olk;
+  private long Oll;
+  private String Olm;
+  private String Oln;
+  private String Olo;
+  private boolean Olp;
   private String app_id;
-  private String jmB;
-  private String lqp;
-  private d mpz;
-  private com.tencent.mm.ui.widget.a.g tZx;
+  private String displayName;
+  private String hMy;
+  private String nVs;
+  private e pjp;
+  private IListener<az> vrs;
+  private j xcO;
   
   public PersonalPayRemittanceUI()
   {
-    AppMethodBeat.i(276689);
-    this.InX = true;
-    this.InK = new IListener() {};
-    AppMethodBeat.o(276689);
+    AppMethodBeat.i(288975);
+    this.Olp = true;
+    this.vrs = new IListener(f.hfK) {};
+    AppMethodBeat.o(288975);
   }
   
   private void a(Enum paramEnum, String paramString)
   {
-    AppMethodBeat.i(276695);
+    AppMethodBeat.i(288982);
     Log.i("MicroMsg.PersonalPayRemittanceUI", "setActivityResultData result :%s , errmsg : %s", new Object[] { paramEnum, paramString });
     Intent localIntent = new Intent();
     localIntent.putExtra("key_result_pay_result", paramEnum);
     localIntent.putExtra("key_result_error_msg", paramString);
     setResult(-1, localIntent);
     finish();
-    AppMethodBeat.o(276695);
+    AppMethodBeat.o(288982);
   }
   
-  private void ke(String paramString1, final String paramString2)
+  private void lA(String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(276693);
+    AppMethodBeat.i(288979);
     Log.i("MicroMsg.PersonalPayRemittanceUI", "showErrorDialog,errMsg:%s", new Object[] { paramString1 });
-    f.a locala = new f.a(getContext());
-    locala.aR("");
-    paramString1 = locala.bBl(paramString1).HL(false);
-    paramString1.Qlf = true;
-    paramString1.ayp(a.i.wallet_alert_btn_i_know).b(new f.c()
+    g.a locala = new g.a(getContext());
+    locala.bf("");
+    paramString1 = locala.bDE(paramString1).NF(false);
+    paramString1.Xdm = true;
+    paramString1.aEX(a.i.wallet_alert_btn_i_know).b(new g.c()
     {
-      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
-        AppMethodBeat.i(273003);
+        AppMethodBeat.i(288995);
         Log.i("MicroMsg.PersonalPayRemittanceUI", "click error dialog");
-        PersonalPayRemittanceUI.a(PersonalPayRemittanceUI.this, f.l.a.VSu, paramString2);
-        AppMethodBeat.o(273003);
+        PersonalPayRemittanceUI.a(PersonalPayRemittanceUI.this, f.m.a.adwD, paramString2);
+        AppMethodBeat.o(288995);
       }
     }).show();
-    if (locala.mUO != null) {
-      this.mpz = locala.mUO;
+    if (locala.pRv != null) {
+      this.pjp = locala.pRv;
     }
-    if (this.tZx != null)
+    if (this.xcO != null)
     {
-      this.tZx.bYF();
-      this.tZx = null;
+      this.xcO.cyW();
+      this.xcO = null;
     }
-    AppMethodBeat.o(276693);
+    AppMethodBeat.o(288979);
   }
   
   public int getLayoutId()
@@ -110,15 +115,15 @@ public class PersonalPayRemittanceUI
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(276694);
-    a(f.l.a.VSv, "");
+    AppMethodBeat.i(289027);
+    a(f.m.a.adwE, "");
     super.onBackPressed();
-    AppMethodBeat.o(276694);
+    AppMethodBeat.o(289027);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(276690);
+    AppMethodBeat.i(289008);
     Log.i("MicroMsg.PersonalPayRemittanceUI", "onCreate（）");
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
@@ -130,247 +135,244 @@ public class PersonalPayRemittanceUI
       getSupportActionBar().hide();
     }
     this.app_id = getIntent().getStringExtra("key_app_id");
-    this.InS = getIntent().getStringExtra("out_prepay_id");
-    Log.i("MicroMsg.PersonalPayRemittanceUI", "app_id:%s，out_prepay_id：%s", new Object[] { this.app_id, this.InS });
-    if (Util.isNullOrNil(this.InS)) {
-      a(f.l.a.VSu, "out_prepay_id is empty");
+    this.Olk = getIntent().getStringExtra("out_prepay_id");
+    Log.i("MicroMsg.PersonalPayRemittanceUI", "app_id:%s，out_prepay_id：%s", new Object[] { this.app_id, this.Olk });
+    if (Util.isNullOrNil(this.Olk)) {
+      a(f.m.a.adwD, "out_prepay_id is empty");
     }
     addSceneEndListener(4912);
-    doSceneProgress(new y(this.app_id, this.InS), true);
-    AppMethodBeat.o(276690);
+    doSceneProgress(new z(this.app_id, this.Olk), true);
+    AppMethodBeat.o(289008);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(276691);
+    AppMethodBeat.i(289012);
     Log.i("MicroMsg.PersonalPayRemittanceUI", "onDestroy()");
     super.onDestroy();
-    this.InK.dead();
+    this.vrs.dead();
     removeSceneEndListener(4912);
     removeSceneEndListener(4304);
     removeSceneEndListener(5003);
     removeSceneEndListener(5047);
     removeSceneEndListener(4587);
-    AppMethodBeat.o(276691);
+    AppMethodBeat.o(289012);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(276699);
+    AppMethodBeat.i(289039);
     super.onPause();
     Log.i("MicroMsg.PersonalPayRemittanceUI", "onPause()");
-    AppMethodBeat.o(276699);
+    AppMethodBeat.o(289039);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(276698);
+    AppMethodBeat.i(289036);
     super.onResume();
     Log.i("MicroMsg.PersonalPayRemittanceUI", "onResume()");
-    AppMethodBeat.o(276698);
+    AppMethodBeat.o(289036);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(276692);
+    AppMethodBeat.i(289021);
     Log.i("MicroMsg.PersonalPayRemittanceUI", "on Scene End：errType %s , errCode：%s，errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramq instanceof y))
+    if ((paramp instanceof z))
     {
       hideProgress();
       hideLoading();
       Log.i("MicroMsg.PersonalPayRemittanceUI", "scene instanceof NetSceneC2CRequestPayment");
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (y)paramq;
-        if (paramString.Imb == null)
+        paramString = (z)paramp;
+        if (paramString.Ojs == null)
         {
-          paramString = new dyk();
-          Log.i("MicroMsg.PersonalPayRemittanceUI", "NetSceneC2CRequestPayment on SceneEnd ok，retcode:%s, retMsg：%s", new Object[] { Integer.valueOf(paramString.fwx), paramString.tVo });
-          if (paramString.fwx != 0) {
+          paramString = new ero();
+          Log.i("MicroMsg.PersonalPayRemittanceUI", "NetSceneC2CRequestPayment on SceneEnd ok，retcode:%s, retMsg：%s", new Object[] { Integer.valueOf(paramString.hAV), paramString.wYI });
+          if (paramString.hAV != 0) {
             break label539;
           }
           if (paramString != null) {
             break label163;
           }
           Log.i("MicroMsg.PersonalPayRemittanceUI", "res == null");
-          a(f.l.a.VSu, "request payment fail");
+          a(f.m.a.adwD, "request payment fail");
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(276692);
+        AppMethodBeat.o(289021);
         return true;
-        paramString = paramString.Imb;
+        paramString = paramString.Ojs;
         break;
         label163:
-        Log.i("MicroMsg.PersonalPayRemittanceUI", "showHalfDialog：res.title：%s,res.head_img：%s，res.rcvr_info：%s，res.total_amount：%s，res.ok_button_wording：%s", new Object[] { paramString.title, paramString.ShU, paramString.ShW, Long.valueOf(paramString.InT), paramString.ShX });
-        this.tZx = new com.tencent.mm.ui.widget.a.g(getContext(), 2, 3);
+        Log.i("MicroMsg.PersonalPayRemittanceUI", "showHalfDialog：res.title：%s,res.head_img：%s，res.rcvr_info：%s，res.total_amount：%s，res.ok_button_wording：%s", new Object[] { paramString.title, paramString.Zga, paramString.Zgc, Long.valueOf(paramString.Oll), paramString.Zgd });
+        this.xcO = new j(getContext(), 2, 3);
         Object localObject = View.inflate(getContext(), a.g.personal_pay_remittance_head, null);
-        ((ImageView)((View)localObject).findViewById(a.f.back_cion)).setOnClickListener(new View.OnClickListener()
+        ((ImageView)((View)localObject).findViewById(a.f.back_cion)).setOnClickListener(new k()
         {
-          public final void onClick(View paramAnonymousView)
+          public final void dr(View paramAnonymousView)
           {
-            AppMethodBeat.i(271288);
-            b localb = new b();
-            localb.bn(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/remittance/ui/PersonalPayRemittanceUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-            PersonalPayRemittanceUI.d(PersonalPayRemittanceUI.this).bYF();
-            PersonalPayRemittanceUI.e(PersonalPayRemittanceUI.this);
+            AppMethodBeat.i(288998);
+            PersonalPayRemittanceUI.e(PersonalPayRemittanceUI.this).cyW();
             PersonalPayRemittanceUI.f(PersonalPayRemittanceUI.this);
-            PersonalPayRemittanceUI.a(PersonalPayRemittanceUI.this, f.l.a.VSv, "");
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/PersonalPayRemittanceUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(271288);
+            PersonalPayRemittanceUI.g(PersonalPayRemittanceUI.this);
+            PersonalPayRemittanceUI.a(PersonalPayRemittanceUI.this, f.m.a.adwE, "");
+            AppMethodBeat.o(288998);
           }
         });
         TextView localTextView = (TextView)((View)localObject).findViewById(a.f.c2c_app_brand_title);
         localTextView.setText(paramString.title);
-        paramq = View.inflate(getContext(), a.g.personal_pay_remittance_content, null);
-        ar.a(localTextView.getPaint(), 0.8F);
-        this.tZx.setHeaderView((View)localObject);
-        localObject = (CdnImageView)paramq.findViewById(a.f.c2c_app_brand_avatar);
-        if (!Util.isNullOrNil(paramString.ShU))
+        paramp = View.inflate(getContext(), a.g.personal_pay_remittance_content, null);
+        aw.a(localTextView.getPaint(), 0.8F);
+        this.xcO.setHeaderView((View)localObject);
+        localObject = (CdnImageView)paramp.findViewById(a.f.c2c_app_brand_avatar);
+        if (!Util.isNullOrNil(paramString.Zga))
         {
           ((CdnImageView)localObject).setRoundCorner(true);
           ((CdnImageView)localObject).setRoundCornerRate(0.1F);
-          ((CdnImageView)localObject).setUrl(paramString.ShU);
-          this.lqp = paramString.ShU;
+          ((CdnImageView)localObject).setUrl(paramString.Zga);
+          this.nVs = paramString.Zga;
         }
         for (;;)
         {
-          ((TextView)paramq.findViewById(a.f.c2c_app_brand_name)).setText(paramString.ShW);
-          this.jmB = paramString.ShW;
-          localObject = (TextView)paramq.findViewById(a.f.c2c_app_brand_money);
-          this.InT = paramString.InT;
-          ((TextView)localObject).setText(getString(a.i.remittance_personal_pay_money_format) + com.tencent.mm.wallet_core.ui.g.a(new StringBuilder().append(paramString.InT).toString(), "100", 2, RoundingMode.HALF_UP));
-          this.tZx.setCustomView(paramq);
-          this.tZx.ah(paramString.ShX);
-          this.tZx.ayu(0);
-          this.tZx.YnF = new g.a()
+          ((TextView)paramp.findViewById(a.f.c2c_app_brand_name)).setText(paramString.Zgc);
+          this.displayName = paramString.Zgc;
+          localObject = (TextView)paramp.findViewById(a.f.c2c_app_brand_money);
+          this.Oll = paramString.Oll;
+          ((TextView)localObject).setText(getString(a.i.remittance_personal_pay_money_format) + i.a(new StringBuilder().append(paramString.Oll).toString(), "100", 2, RoundingMode.HALF_UP));
+          this.xcO.setCustomView(paramp);
+          this.xcO.au(paramString.Zgd);
+          this.xcO.aFe(0);
+          this.xcO.agfR = new j.a()
           {
             public final void onClick()
             {
-              AppMethodBeat.i(272005);
+              AppMethodBeat.i(288992);
               Log.i("MicroMsg.PersonalPayRemittanceUI", "click pay button");
-              PersonalPayRemittanceUI.g(PersonalPayRemittanceUI.this).alive();
-              PersonalPayRemittanceUI.h(PersonalPayRemittanceUI.this);
-              AppMethodBeat.o(272005);
+              PersonalPayRemittanceUI.h(PersonalPayRemittanceUI.this).alive();
+              PersonalPayRemittanceUI.i(PersonalPayRemittanceUI.this);
+              AppMethodBeat.o(288992);
             }
           };
-          this.tZx.eik();
+          this.xcO.dDn();
           break;
           Log.i("MicroMsg.PersonalPayRemittanceUI", "res.head_img == null");
         }
         label539:
-        ke(paramString.tVo, "request payment fail.");
+        lA(paramString.wYI, "request payment fail.");
         continue;
         Log.i("MicroMsg.PersonalPayRemittanceUI", "NetSceneF2FMinniProgramConfirm on SceneEnd faile show error dialog ");
-        ke(paramString, "request payment fail.");
+        lA(paramString, "request payment fail.");
       }
     }
-    if ((paramq instanceof x))
+    if ((paramp instanceof y))
     {
       Log.i("MicroMsg.PersonalPayRemittanceUI", "scene instanceof NetSceneC2CPlaceOrder");
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (x)paramq;
-        if (paramString.Ima == null) {}
-        for (paramString = new sx();; paramString = paramString.Ima)
+        paramString = (y)paramp;
+        if (paramString.Ojr == null) {}
+        for (paramString = new un();; paramString = paramString.Ojr)
         {
-          Log.i("MicroMsg.PersonalPayRemittanceUI", "NetSceneC2CPlaceOrder on SceneEnd ok，retcode:%s, retMsg：%s", new Object[] { Integer.valueOf(paramString.tqa), paramString.tqb });
-          if (paramString.tqa != 0) {
-            break label936;
+          Log.i("MicroMsg.PersonalPayRemittanceUI", "NetSceneC2CPlaceOrder on SceneEnd ok，retcode:%s, retMsg：%s", new Object[] { Integer.valueOf(paramString.wuz), paramString.wuA });
+          if (paramString.wuz != 0) {
+            break label944;
           }
-          if (paramString.Scd == null) {
+          if (paramString.YZV == null) {
             break;
           }
           hideProgress();
           hideLoading();
           Log.i("MicroMsg.PersonalPayRemittanceUI", "response.jump_remind != null");
-          if (this.tZx != null)
+          if (this.xcO != null)
           {
-            this.tZx.bYF();
-            this.tZx = null;
+            this.xcO.cyW();
+            this.xcO = null;
           }
-          paramq = new Intent();
-          paramq.putExtra("key_result_pay_result", f.l.a.VSu);
-          paramq.putExtra("key_result_error_msg", "intercept by jump remind");
-          setResult(-1, paramq);
-          paramString = m.a(paramString.Scd);
-          paramString.YVj = false;
-          paramString.a(this, new com.tencent.mm.wallet_core.c.g()
+          paramp = new Intent();
+          paramp.putExtra("key_result_pay_result", f.m.a.adwD);
+          paramp.putExtra("key_result_error_msg", "intercept by jump remind");
+          setResult(-1, paramp);
+          paramString = m.a(paramString.YZV);
+          paramString.agTd = false;
+          paramString.a(this, new g()
           {
-            public final void eOt()
+            public final void fWQ()
             {
-              AppMethodBeat.i(204861);
-              PersonalPayRemittanceUI.a(PersonalPayRemittanceUI.this, f.l.a.VSu, "intercept by jump remind");
-              AppMethodBeat.o(204861);
+              AppMethodBeat.i(288994);
+              PersonalPayRemittanceUI.a(PersonalPayRemittanceUI.this, f.m.a.adwD, "intercept by jump remind");
+              AppMethodBeat.o(288994);
             }
           });
-          AppMethodBeat.o(276692);
+          AppMethodBeat.o(289021);
           return true;
         }
         Log.i("MicroMsg.PersonalPayRemittanceUI", "startPay");
-        this.InU = paramString.InU;
-        this.InV = paramString.InV;
-        this.InW = paramString.InW;
-        paramq = new PayInfo();
-        paramq.fwv = paramString.fHb;
-        paramq.ImU = 1;
-        paramq.fOY = 65;
-        paramq.lfu = new Bundle();
-        paramq.lfu.putString("cashier_desc", paramString.ImI);
-        paramq.lfu.putString("personalpay_order_id", paramString.InU);
-        paramq.lfu.putString("trans_id", paramString.InV);
-        paramq.lfu.putString("placeorder_ext", paramString.InW);
-        ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startSNSPay(this, paramq);
+        this.Olm = paramString.Olm;
+        this.Oln = paramString.Oln;
+        this.Olo = paramString.Olo;
+        this.hMy = paramString.hMy;
+        paramp = new PayInfo();
+        paramp.hAT = paramString.hMy;
+        paramp.Okk = 1;
+        paramp.hUR = 65;
+        paramp.nKf = new Bundle();
+        paramp.nKf.putString("cashier_desc", paramString.OjY);
+        paramp.nKf.putString("personalpay_order_id", paramString.Olm);
+        paramp.nKf.putString("trans_id", paramString.Oln);
+        paramp.nKf.putString("placeorder_ext", paramString.Olo);
+        ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ax(com.tencent.mm.pluginsdk.wallet.a.class)).startSNSPay(this, paramp);
       }
       for (;;)
       {
-        AppMethodBeat.o(276692);
+        AppMethodBeat.o(289021);
         return true;
-        label936:
+        label944:
         hideProgress();
         hideLoading();
-        ke(paramString.tqb, "place order fail.");
+        lA(paramString.wuA, "place order fail.");
         continue;
         hideProgress();
         hideLoading();
         Log.i("MicroMsg.PersonalPayRemittanceUI", "NetSceneC2CPlaceOrder on SceneEnd faile show error dialog ");
-        ke(paramString, "place order fail.");
+        lA(paramString, "place order fail.");
       }
     }
-    if ((paramq instanceof v)) {
+    if ((paramp instanceof w)) {
       Log.i("MicroMsg.PersonalPayRemittanceUI", "scene instanceof NetScenePersonalPayCancelPay");
     }
-    AppMethodBeat.o(276692);
+    AppMethodBeat.o(289021);
     return false;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(276697);
+    AppMethodBeat.i(289030);
     AppMethodBeat.at(this, paramBoolean);
     Log.i("MicroMsg.PersonalPayRemittanceUI", "onWindowFocusChanged");
-    if ((this.InX) && (this.tZx != null) && (!this.tZx.isShowing()))
+    if ((this.Olp) && (this.xcO != null) && (!this.xcO.isShowing()))
     {
-      Log.i("MicroMsg.PersonalPayRemittanceUI", "onWindowFocusChanged：mHalfBottomDialog isShowHalfDialog %s, finish Activity", new Object[] { Boolean.valueOf(this.tZx.isShowing()) });
-      this.tZx = null;
-      a(f.l.a.VSv, "");
-      com.tencent.mm.plugin.report.service.h.IzE.a(19821, new Object[] { Integer.valueOf(3), this.app_id, Integer.valueOf(0) });
+      Log.i("MicroMsg.PersonalPayRemittanceUI", "onWindowFocusChanged：mHalfBottomDialog isShowHalfDialog %s, finish Activity", new Object[] { Boolean.valueOf(this.xcO.isShowing()) });
+      this.xcO = null;
+      a(f.m.a.adwE, "");
+      com.tencent.mm.plugin.report.service.h.OAn.b(19821, new Object[] { Integer.valueOf(3), this.app_id, Integer.valueOf(0) });
     }
-    if ((this.mpz != null) && (!this.mpz.isShowing()))
+    if ((this.pjp != null) && (!this.pjp.isShowing()))
     {
-      Log.i("MicroMsg.PersonalPayRemittanceUI", "onWindowFocusChanged isShowing:%s,finish Activity", new Object[] { Boolean.valueOf(this.mpz.isShowing()) });
-      this.mpz = null;
-      a(f.l.a.VSu, "dialog fail");
+      Log.i("MicroMsg.PersonalPayRemittanceUI", "onWindowFocusChanged isShowing:%s,finish Activity", new Object[] { Boolean.valueOf(this.pjp.isShowing()) });
+      this.pjp = null;
+      a(f.m.a.adwD, "dialog fail");
     }
     super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.o(276697);
+    AppMethodBeat.o(289030);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.PersonalPayRemittanceUI
  * JD-Core Version:    0.7.0.1
  */

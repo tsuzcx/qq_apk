@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h
 {
-  private static h hC;
-  public long hD;
-  public long hE;
+  private static h iA;
+  public long iB;
+  public long iC;
   public int state;
   
-  static h bc()
+  static h bV()
   {
-    AppMethodBeat.i(238486);
-    if (hC == null) {
-      hC = new h();
+    AppMethodBeat.i(200508);
+    if (iA == null) {
+      iA = new h();
     }
-    h localh = hC;
-    AppMethodBeat.o(238486);
+    h localh = iA;
+    AppMethodBeat.o(200508);
     return localh;
   }
   
   public final void b(long paramLong, double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(238487);
+    AppMethodBeat.i(200525);
     float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
     float f2 = 6.24006F + 0.01720197F * f1;
     double d1 = f2 + 0.03341960161924362D * Math.sin(f2) + 0.0003490659873933D * Math.sin(2.0F * f2) + 5.236000106378924E-006D * Math.sin(3.0F * f2) + 1.796593063D + 3.141592653589793D;
@@ -39,35 +39,35 @@ final class h
     if (paramDouble1 >= 1.0D)
     {
       this.state = 1;
-      this.hD = -1L;
-      this.hE = -1L;
-      AppMethodBeat.o(238487);
+      this.iB = -1L;
+      this.iC = -1L;
+      AppMethodBeat.o(200525);
       return;
     }
     if (paramDouble1 <= -1.0D)
     {
       this.state = 0;
-      this.hD = -1L;
-      this.hE = -1L;
-      AppMethodBeat.o(238487);
+      this.iB = -1L;
+      this.iC = -1L;
+      AppMethodBeat.o(200525);
       return;
     }
     f1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
-    this.hD = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
-    this.hE = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
-    if ((this.hE < paramLong) && (this.hD > paramLong))
+    this.iB = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
+    this.iC = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
+    if ((this.iC < paramLong) && (this.iB > paramLong))
     {
       this.state = 0;
-      AppMethodBeat.o(238487);
+      AppMethodBeat.o(200525);
       return;
     }
     this.state = 1;
-    AppMethodBeat.o(238487);
+    AppMethodBeat.o(200525);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.appcompat.app.h
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.Log;
 import org.xwalk.core.R.drawable;
 import org.xwalk.core.R.layout;
 
@@ -14,7 +13,7 @@ public class VideoDotPercentIndicator
   extends LinearLayout
 {
   private LayoutInflater mInflater;
-  private int pCR;
+  private int sIe;
   
   public VideoDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -46,12 +45,12 @@ public class VideoDotPercentIndicator
     if (paramInt > 1) {}
     for (;;)
     {
-      this.pCR = paramInt;
+      this.sIe = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.pCR)
+      while (paramInt < this.sIe)
       {
-        addView((ImageView)this.mInflater.inflate(R.layout.xweb_dot_percent_indicator_dot, this, false));
+        addView((ImageView)this.mInflater.inflate(R.layout.xweb_video_dot_percent_indicator_dot, this, false));
         paramInt += 1;
       }
       paramInt = 8;
@@ -61,39 +60,22 @@ public class VideoDotPercentIndicator
   
   public void setProgress(float paramFloat)
   {
-    float f1 = 1.0F;
-    float f2 = 0.0F;
     AppMethodBeat.i(153558);
-    paramFloat /= 100.0F;
-    if (paramFloat < 0.0F)
-    {
-      paramFloat = f2;
-      if (paramFloat <= 1.0F) {
-        break label129;
-      }
-      paramFloat = f1;
-    }
+    int k = (int)Math.rint(Math.min(Math.max(paramFloat / 100.0F, 0.0F), 1.0F) * this.sIe);
+    int i = 0;
     int j;
-    label129:
     for (;;)
     {
-      int k = (int)Math.rint(this.pCR * paramFloat);
-      Log.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:" + paramFloat + " dotsOnNum:" + k);
-      int i = 0;
-      for (;;)
-      {
-        j = i;
-        if (i >= k) {
-          break;
-        }
-        j = i;
-        if (i >= getChildCount()) {
-          break;
-        }
-        ((ImageView)getChildAt(i)).setImageResource(R.drawable.xweb_video_percent_indicator_dot_on_shape);
-        i += 1;
+      j = i;
+      if (i >= k) {
+        break;
       }
-      break;
+      j = i;
+      if (i >= getChildCount()) {
+        break;
+      }
+      ((ImageView)getChildAt(i)).setImageResource(R.drawable.xweb_video_percent_indicator_dot_on_shape);
+      i += 1;
     }
     while (j < getChildCount())
     {
@@ -105,7 +87,7 @@ public class VideoDotPercentIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.xweb.extension.video.VideoDotPercentIndicator
  * JD-Core Version:    0.7.0.1
  */

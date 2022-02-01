@@ -1,34 +1,35 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bjf;
+import com.tencent.mm.plugin.findersdk.a.q;
+import com.tencent.mm.protocal.protobuf.bvm;
 import java.util.Map;
 
 public final class f
   implements k
 {
-  public bjf mbj;
+  public bvm oUd;
   
   public f()
   {
-    AppMethodBeat.i(260120);
-    this.mbj = new bjf();
-    AppMethodBeat.o(260120);
+    AppMethodBeat.i(233233);
+    this.oUd = new bvm();
+    AppMethodBeat.o(233233);
   }
   
-  public final String boV()
+  public final String bMC()
   {
-    AppMethodBeat.i(260121);
-    String str = com.tencent.mm.plugin.findersdk.a.k.bf(2, com.tencent.mm.plugin.findersdk.a.k.a(this.mbj));
-    AppMethodBeat.o(260121);
+    AppMethodBeat.i(233236);
+    String str = q.bJ(2, q.a(this.oUd));
+    AppMethodBeat.o(233236);
     return str;
   }
   
   public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(260123);
-    this.mbj = com.tencent.mm.plugin.findersdk.a.k.B(paramString + ".finder.detail", paramMap);
-    AppMethodBeat.o(260123);
+    AppMethodBeat.i(233241);
+    this.oUd = q.I(paramString + ".finder.detail", paramMap);
+    AppMethodBeat.o(233241);
   }
 }
 

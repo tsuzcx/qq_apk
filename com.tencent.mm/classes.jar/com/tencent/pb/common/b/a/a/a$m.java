@@ -1,87 +1,87 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$m
   extends e
 {
-  public int NOc = 0;
-  public long NOd = 0L;
-  public int ZeW = 0;
-  public int Zfm = 0;
+  public int UAZ = 0;
+  public long UBa = 0L;
+  public int ahdP = 0;
+  public int ahdz = 0;
   public String groupId = "";
   public int netType = 0;
-  public int tQm = -1;
+  public int wTC = -1;
   
   public a$m()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (!this.groupId.equals("")) {
-      i = j + b.g(1, this.groupId);
-    }
-    j = i;
-    if (this.NOc != 0) {
-      j = i + b.bM(2, this.NOc);
-    }
-    i = j;
-    if (this.NOd != 0L) {
-      i = j + b.p(3, this.NOd);
-    }
-    j = i;
-    if (this.tQm != -1) {
-      j = i + b.bM(4, this.tQm);
-    }
-    i = j;
-    if (this.ZeW != 0) {
-      i = j + b.bN(5, this.ZeW);
-    }
-    j = i;
-    if (this.netType != 0) {
-      j = i + b.bN(6, this.netType);
-    }
-    i = j;
-    if (this.Zfm != 0) {
-      i = j + b.bM(7, this.Zfm);
-    }
-    return i;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.f(1, this.groupId);
+      paramb.g(1, this.groupId);
     }
-    if (this.NOc != 0) {
-      paramb.bJ(2, this.NOc);
+    if (this.UAZ != 0) {
+      paramb.cF(2, this.UAZ);
     }
-    if (this.NOd != 0L) {
-      paramb.r(3, this.NOd);
+    if (this.UBa != 0L) {
+      paramb.t(3, this.UBa);
     }
-    if (this.tQm != -1) {
-      paramb.bJ(4, this.tQm);
+    if (this.wTC != -1) {
+      paramb.cF(4, this.wTC);
     }
-    if (this.ZeW != 0) {
-      paramb.bK(5, this.ZeW);
+    if (this.ahdz != 0) {
+      paramb.cG(5, this.ahdz);
     }
     if (this.netType != 0) {
-      paramb.bK(6, this.netType);
+      paramb.cG(6, this.netType);
     }
-    if (this.Zfm != 0) {
-      paramb.bJ(7, this.Zfm);
+    if (this.ahdP != 0) {
+      paramb.cF(7, this.ahdP);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (!this.groupId.equals("")) {
+      i = j + b.h(1, this.groupId);
+    }
+    j = i;
+    if (this.UAZ != 0) {
+      j = i + b.cJ(2, this.UAZ);
+    }
+    i = j;
+    if (this.UBa != 0L) {
+      i = j + b.q(3, this.UBa);
+    }
+    j = i;
+    if (this.wTC != -1) {
+      j = i + b.cJ(4, this.wTC);
+    }
+    i = j;
+    if (this.ahdz != 0) {
+      i = j + b.cK(5, this.ahdz);
+    }
+    j = i;
+    if (this.netType != 0) {
+      j = i + b.cK(6, this.netType);
+    }
+    i = j;
+    if (this.ahdP != 0) {
+      i = j + b.cJ(7, this.ahdP);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.m
  * JD-Core Version:    0.7.0.1
  */

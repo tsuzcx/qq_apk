@@ -9,39 +9,39 @@ import java.util.Map;
 
 public final class c
 {
-  a kaY;
-  private com.tencent.mm.ac.d.a kaZ;
-  public d kba;
-  b kbb;
+  a mBd;
+  private com.tencent.mm.ac.d.a mBe;
+  public d mBf;
+  b mBg;
   
   public c(Context paramContext, e parame, com.tencent.mm.ac.d.a parama, b paramb)
   {
     AppMethodBeat.i(144805);
-    this.kaY = new a(paramContext, parame);
-    this.kaZ = parama;
-    this.kbb = paramb;
+    this.mBd = new a(paramContext, parame);
+    this.mBe = parama;
+    this.mBg = paramb;
     AppMethodBeat.o(144805);
   }
   
-  public final String h(String paramString1, String paramString2, final int paramInt)
+  public final String k(String paramString1, String paramString2, final int paramInt)
   {
     AppMethodBeat.i(144806);
     try
     {
-      Object localObject = this.kba;
+      Object localObject = this.mBf;
       if (Util.isNullOrNil(paramString1)) {}
-      for (localObject = null; localObject == null; localObject = (com.tencent.mm.ac.b.b)((d)localObject).kbf.get(paramString1))
+      for (localObject = null; localObject == null; localObject = (com.tencent.mm.ac.b.b)((d)localObject).mBk.get(paramString1))
       {
-        paramString2 = this.kbb.Mx(paramString1);
+        paramString2 = this.mBg.Fg(paramString1);
         AppMethodBeat.o(144806);
         return paramString2;
       }
-      paramString2 = this.kbb.a(this.kaY, this.kaZ, (com.tencent.mm.ac.b.b)localObject, paramString2, new b.a()
+      paramString2 = this.mBg.a(this.mBd, this.mBe, (com.tencent.mm.ac.b.b)localObject, paramString2, new b.a()
       {
-        public final void bt(Object paramAnonymousObject)
+        public final void cN(Object paramAnonymousObject)
         {
           AppMethodBeat.i(144803);
-          e locale = c.this.kaY.kbd;
+          e locale = c.this.mBd.mBi;
           int i = paramInt;
           if (paramAnonymousObject == null) {}
           for (paramAnonymousObject = "";; paramAnonymousObject = paramAnonymousObject.toString())
@@ -50,7 +50,7 @@ public final class c
             if (Util.isNullOrNil(paramAnonymousObject)) {
               localObject = "{}";
             }
-            locale.kbi.evaluateJavascript(String.format("typeof WeixinJSBridge !== 'undefined' && WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(i), localObject }), null);
+            locale.mBn.evaluateJavascript(String.format("typeof WeixinJSBridge !== 'undefined' && WeixinJSBridge.invokeCallbackHandler(%d, %s)", new Object[] { Integer.valueOf(i), localObject }), null);
             AppMethodBeat.o(144803);
             return;
           }
@@ -70,22 +70,22 @@ public final class c
   static final class a
     implements a
   {
-    e kbd;
-    ad.b kbe;
+    e mBi;
+    ad.b mBj;
     Context mContext;
     
     a(Context paramContext, e parame)
     {
       AppMethodBeat.i(144804);
       this.mContext = paramContext;
-      this.kbd = parame;
-      this.kbe = new ad.b();
+      this.mBi = parame;
+      this.mBj = new ad.b();
       AppMethodBeat.o(144804);
     }
     
-    public final ad.b aGj()
+    public final ad.b aZk()
     {
-      return this.kbe;
+      return this.mBj;
     }
     
     public final Context getContext()
@@ -96,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ac.c.c
  * JD-Core Version:    0.7.0.1
  */

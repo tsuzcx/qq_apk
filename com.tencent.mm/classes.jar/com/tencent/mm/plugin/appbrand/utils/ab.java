@@ -1,87 +1,89 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.concurrent.atomic.AtomicInteger;
-import kotlin.l;
+import com.tencent.mm.vending.e.a;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/OneshotCancelableCountDownAbleRunnable;", "Ljava/lang/Runnable;", "Lcom/tencent/mm/plugin/appbrand/utils/CountDownAble;", "runnable", "totalCount", "", "extraRunnable", "(Ljava/lang/Runnable;ILjava/lang/Runnable;)V", "_hasRun", "", "count", "Ljava/util/concurrent/atomic/AtomicInteger;", "getExtraRunnable", "()Ljava/lang/Runnable;", "hasRun", "getHasRun", "()Z", "isCanceled", "reach0", "getReach0", "getTotalCount", "()I", "cancel", "", "countdown", "forceReach0", "run", "luggage-wxa-app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/utils/LifeCycleWrappedRunnable;", "Ljava/lang/Runnable;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "mRegistry", "Lcom/tencent/mm/plugin/appbrand/utils/ILifeCycleRegistry;", "mRunnable", "mCreateStackTrace", "", "(Lcom/tencent/mm/plugin/appbrand/utils/ILifeCycleRegistry;Ljava/lang/Runnable;Ljava/lang/String;)V", "mDead", "Ljava/util/concurrent/atomic/AtomicBoolean;", "dead", "", "run", "Companion", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ab
-  implements Runnable
+  implements a, Runnable
 {
-  private final Runnable fKd;
-  private volatile boolean isCanceled;
-  private final int jlf;
-  private volatile boolean rjf;
-  public AtomicInteger rjg;
-  public final Runnable rjh;
+  public static final a ure;
+  private final Runnable mRunnable;
+  private final u<? super a> urf;
+  private final String urg;
+  private final AtomicBoolean urh;
   
-  public ab(Runnable paramRunnable, byte paramByte)
+  static
   {
-    this(paramRunnable);
+    AppMethodBeat.i(135611);
+    ure = new a((byte)0);
+    AppMethodBeat.o(135611);
   }
   
-  public ab(Runnable paramRunnable1, int paramInt, Runnable paramRunnable2)
+  private ab(u<? super a> paramu, Runnable paramRunnable, String paramString)
   {
-    AppMethodBeat.i(246445);
-    this.fKd = paramRunnable1;
-    this.jlf = paramInt;
-    this.rjh = paramRunnable2;
-    this.rjg = new AtomicInteger(this.jlf);
-    AppMethodBeat.o(246445);
+    AppMethodBeat.i(160940);
+    this.urf = paramu;
+    this.mRunnable = paramRunnable;
+    this.urg = paramString;
+    this.urh = new AtomicBoolean(false);
+    AppMethodBeat.o(160940);
   }
   
-  public final boolean cmk()
+  public static final ab a(u<? super a> paramu, Runnable paramRunnable)
   {
-    AppMethodBeat.i(246441);
-    if (this.rjg.get() <= 0)
-    {
-      AppMethodBeat.o(246441);
-      return true;
+    AppMethodBeat.i(160941);
+    s.u(paramu, "registry");
+    Runnable localRunnable = paramRunnable;
+    if ((paramRunnable instanceof ab)) {
+      localRunnable = ((ab)paramRunnable).mRunnable;
     }
-    AppMethodBeat.o(246441);
-    return false;
+    paramRunnable = android.util.Log.getStackTraceString(new Throwable());
+    s.s(paramRunnable, "getStackTraceString(Throwable())");
+    paramRunnable = new ab(paramu, localRunnable, paramRunnable);
+    paramu.keep((a)paramRunnable);
+    AppMethodBeat.o(160941);
+    return paramRunnable;
   }
   
-  public final void cml()
+  public final void dead()
   {
-    AppMethodBeat.i(246443);
-    Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "countdown, curCount: " + this.rjg.decrementAndGet());
-    if (cmk()) {
-      run();
-    }
-    AppMethodBeat.o(246443);
+    AppMethodBeat.i(135609);
+    this.urh.set(true);
+    AppMethodBeat.o(135609);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(246444);
-    if (this.isCanceled)
-    {
-      Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, isCanceled");
-      AppMethodBeat.o(246444);
-      return;
+    AppMethodBeat.i(135608);
+    if (!this.urh.get()) {
+      try
+      {
+        Runnable localRunnable = this.mRunnable;
+        if (localRunnable != null) {
+          localRunnable.run();
+        }
+        return;
+      }
+      finally
+      {
+        this.urf.a((a)this);
+        AppMethodBeat.o(135608);
+      }
     }
-    if (!cmk())
-    {
-      Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, reach0 is false, just return");
-      AppMethodBeat.o(246444);
-      return;
-    }
-    if (this.rjf)
-    {
-      Log.i("MicroMsg.AppBrand.OneshotCancelableCountDownAbleRunnable", "run, hasRun");
-      AppMethodBeat.o(246444);
-      return;
-    }
-    this.fKd.run();
-    this.rjf = true;
-    AppMethodBeat.o(246444);
+    com.tencent.mm.sdk.platformtools.Log.w("Luggage.WXA.LifeCycleWrappedRunnable", s.X("run() but dead, <init> stackTrace = ", this.urg));
+    AppMethodBeat.o(135608);
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/utils/LifeCycleWrappedRunnable$Companion;", "", "()V", "obtain", "Lcom/tencent/mm/plugin/appbrand/utils/LifeCycleWrappedRunnable;", "registry", "Lcom/tencent/mm/plugin/appbrand/utils/ILifeCycleRegistry;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "_runnable", "Ljava/lang/Runnable;", "luggage-wxa-app_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.ab
  * JD-Core Version:    0.7.0.1
  */

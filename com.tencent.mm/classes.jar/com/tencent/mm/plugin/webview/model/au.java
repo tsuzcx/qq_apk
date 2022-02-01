@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.c.h;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.modelimage.loader.b.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -63,14 +63,14 @@ public final class au
   {
     AppMethodBeat.i(79042);
     if (parama != null) {
-      parama.Da(paramBoolean);
+      parama.II(paramBoolean);
     }
     AppMethodBeat.o(79042);
   }
   
   public static abstract interface a
   {
-    public abstract void Da(boolean paramBoolean);
+    public abstract void II(boolean paramBoolean);
   }
 }
 

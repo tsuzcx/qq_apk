@@ -1,14 +1,15 @@
 package com.tencent.mm.ui.chatting;
 
-import android.os.Bundle;
-
-abstract interface ab
+final class ab
 {
-  public abstract void br(Bundle paramBundle);
+  String appId;
+  String displayName;
+  String iconUrl;
+  int resId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ab
  * JD-Core Version:    0.7.0.1
  */

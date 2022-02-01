@@ -9,16 +9,15 @@ import com.tencent.mm.b.g;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public class LogoImageView
   extends ImageView
 {
   MMHandler handler;
   String imagePath;
-  int targetHeight;
-  int targetWidth;
+  int nxO;
+  int nxP;
   String url;
   
   public LogoImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -41,7 +40,7 @@ public class LogoImageView
         paramAnonymousMessage = BitmapUtil.decodeByteArray(arrayOfByte);
         String str = LogoImageView.a(LogoImageView.this) + g.getMessageDigest(LogoImageView.b(LogoImageView.this).getBytes());
         Log.d("MicroMsg.LogoImageView", "filePath  %s", new Object[] { str });
-        u.f(str, arrayOfByte, arrayOfByte.length);
+        y.f(str, arrayOfByte, arrayOfByte.length);
         if ((paramAnonymousMessage != null) && (LogoImageView.c(LogoImageView.this) > 0) && (LogoImageView.d(LogoImageView.this) > 0)) {
           paramAnonymousMessage = BitmapUtil.extractThumbNail(paramAnonymousMessage, LogoImageView.d(LogoImageView.this), LogoImageView.c(LogoImageView.this), true, false);
         }
@@ -55,33 +54,10 @@ public class LogoImageView
     };
     AppMethodBeat.o(26595);
   }
-  
-  static final class a
-    implements Runnable
-  {
-    private MMHandler handler;
-    private String url;
-    
-    a(String paramString, MMHandler paramMMHandler)
-    {
-      this.url = paramString;
-      this.handler = paramMMHandler;
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(26594);
-      byte[] arrayOfByte = Util.httpGet(this.url);
-      Message localMessage = Message.obtain();
-      localMessage.obj = arrayOfByte;
-      this.handler.sendMessage(localMessage);
-      AppMethodBeat.o(26594);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.LogoImageView
  * JD-Core Version:    0.7.0.1
  */

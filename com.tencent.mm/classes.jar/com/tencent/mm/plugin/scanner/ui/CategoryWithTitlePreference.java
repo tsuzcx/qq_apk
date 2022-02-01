@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
-import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.plugin.scanner.util.s;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -21,13 +21,13 @@ import com.tencent.mm.ui.base.preference.f;
 
 public final class CategoryWithTitlePreference
   extends Preference
-  implements u.a
+  implements r.a
 {
   private Context context;
   private int iconHeight;
   private String iconUrl;
   private int iconWidth;
-  private ImageView jmf;
+  private ImageView lPb;
   private f screen;
   private String title;
   private TextView titleTv;
@@ -49,9 +49,9 @@ public final class CategoryWithTitlePreference
     this.title = "";
     this.iconWidth = 34;
     this.iconHeight = 34;
-    setLayoutResource(l.g.IEe);
+    setLayoutResource(l.g.OKh);
     this.context = paramContext;
-    u.a(this);
+    r.a(this);
     AppMethodBeat.o(51780);
   }
   
@@ -59,7 +59,7 @@ public final class CategoryWithTitlePreference
   {
     AppMethodBeat.i(51784);
     Log.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
-    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.jmf != null)) {
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.lPb != null)) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
@@ -82,11 +82,11 @@ public final class CategoryWithTitlePreference
     AppMethodBeat.i(51783);
     super.onBindView(paramView);
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    this.jmf = ((ImageView)paramView.findViewById(l.f.icon));
-    paramView = this.jmf.getLayoutParams();
+    this.lPb = ((ImageView)paramView.findViewById(l.f.icon));
+    paramView = this.lPb.getLayoutParams();
     paramView.width = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, this.iconWidth / 2);
     paramView.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, this.iconHeight / 2);
-    this.jmf.setLayoutParams(paramView);
+    this.lPb.setLayoutParams(paramView);
     if ((this.title != null) && (this.title.length() > 0) && (this.titleTv != null))
     {
       this.titleTv.setVisibility(0);
@@ -95,11 +95,11 @@ public final class CategoryWithTitlePreference
     }
     if (!Util.isNullOrNil(this.iconUrl))
     {
-      paramView = u.a(new q(this.iconUrl));
+      paramView = r.a(new s(this.iconUrl));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.jmf.setImageBitmap(paramView);
-        this.jmf.setVisibility(0);
+        this.lPb.setImageBitmap(paramView);
+        this.lPb.setVisibility(0);
       }
     }
     AppMethodBeat.o(51783);

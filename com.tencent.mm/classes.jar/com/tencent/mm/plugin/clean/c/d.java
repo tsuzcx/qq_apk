@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.clean.c;
 
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.model.be;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
@@ -16,42 +16,42 @@ import java.util.Map.Entry;
 public final class d
   implements be
 {
-  private static d tOv;
-  public long bcy;
-  public List<Map.Entry<String, Long>> pWR;
-  public LinkedList<String> sXl;
-  public long sXm;
-  public List<Runnable> sXn;
-  public long tOd;
-  public long tOe;
-  public long tOt;
-  public HashSet<String> tOu;
+  private static d wRL;
+  public long cWt;
+  public List<Map.Entry<String, Long>> tbH;
+  public long wRJ;
+  public HashSet<String> wRK;
+  public long wRt;
+  public long wRu;
+  public LinkedList<String> wbC;
+  public long wbD;
+  public List<Runnable> wbE;
   
   private d()
   {
-    AppMethodBeat.i(223810);
-    this.sXn = new ArrayList();
-    AppMethodBeat.o(223810);
+    AppMethodBeat.i(271846);
+    this.wbE = new ArrayList();
+    AppMethodBeat.o(271846);
   }
   
-  public static d cNh()
+  public static d dqN()
   {
     AppMethodBeat.i(22827);
-    if (tOv == null) {
-      tOv = new d();
+    if (wRL == null) {
+      wRL = new d();
     }
-    d locald = tOv;
+    d locald = wRL;
     AppMethodBeat.o(22827);
     return locald;
   }
   
-  public static long cNi()
+  public static long dqO()
   {
     AppMethodBeat.i(22832);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(b.aSF());
+      StatFs localStatFs = new StatFs(b.bmt());
       l = localStatFs.getBlockCount();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -73,13 +73,13 @@ public final class d
     return l;
   }
   
-  public static long cNj()
+  public static long dqP()
   {
     AppMethodBeat.i(22833);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(b.aSF());
+      StatFs localStatFs = new StatFs(b.bmt());
       l = localStatFs.getAvailableBlocks();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -100,17 +100,17 @@ public final class d
     return l;
   }
   
-  public static void cNk()
+  public static void dqQ()
   {
     AppMethodBeat.i(22834);
-    com.tencent.mm.plugin.h.a.cFg().cFi();
+    com.tencent.mm.plugin.calcwx.a.diz().diB();
     AppMethodBeat.o(22834);
   }
   
   public final void clearPluginData(int paramInt)
   {
     AppMethodBeat.i(22828);
-    a.cNf();
+    a.dqL();
     AppMethodBeat.o(22828);
   }
   
@@ -123,7 +123,7 @@ public final class d
   {
     AppMethodBeat.i(22829);
     Log.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.plugin.h.a.cFg().onAccountInitialized(null);
+    com.tencent.mm.plugin.calcwx.a.diz().onAccountInitialized(null);
     AppMethodBeat.o(22829);
   }
   
@@ -131,18 +131,18 @@ public final class d
   {
     AppMethodBeat.i(22831);
     Log.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
-    this.tOt = 0L;
-    this.bcy = 0L;
-    this.tOd = 0L;
-    this.tOe = 0L;
-    if (this.pWR != null) {
-      this.pWR.clear();
+    this.wRJ = 0L;
+    this.cWt = 0L;
+    this.wRt = 0L;
+    this.wRu = 0L;
+    if (this.tbH != null) {
+      this.tbH.clear();
     }
-    if (this.tOu != null) {
-      this.tOu.clear();
+    if (this.wRK != null) {
+      this.wRK.clear();
     }
-    a.cNf();
-    com.tencent.mm.plugin.h.a.cFg().onAccountRelease();
+    a.dqL();
+    com.tencent.mm.plugin.calcwx.a.diz().onAccountRelease();
     AppMethodBeat.o(22831);
   }
   
@@ -155,7 +155,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,35 +3,36 @@ package com.tencent.mm.wallet_core.ui.noscale;
 import android.view.View;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ce.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static int azO(int paramInt)
+  public static int aGE(int paramInt)
   {
-    AppMethodBeat.i(271422);
-    int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), paramInt);
+    AppMethodBeat.i(242204);
+    int i = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), paramInt);
     paramInt = i;
-    if (com.tencent.mm.cj.a.hrd() != 1.0F) {
-      paramInt = (int)(i / com.tencent.mm.cj.a.hrd());
+    if (c.iRs() != 1.0F) {
+      paramInt = (int)(i / c.iRs());
     }
-    AppMethodBeat.o(271422);
+    AppMethodBeat.o(242204);
     return paramInt;
   }
   
-  public static void jg(View paramView)
+  public static void mK(View paramView)
   {
-    AppMethodBeat.i(271421);
-    if (com.tencent.mm.cj.a.hrd() != 1.0F) {
+    AppMethodBeat.i(242198);
+    if (c.iRs() != 1.0F) {
       paramView.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(270848);
-          ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$view.getLayoutParams();
+          AppMethodBeat.i(242200);
+          ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)a.this.getLayoutParams();
           if (localMarginLayoutParams != null)
           {
-            float f = com.tencent.mm.cj.a.hrd();
+            float f = c.iRs();
             if (localMarginLayoutParams.height > 0) {
               localMarginLayoutParams.height = ((int)(localMarginLayoutParams.height / f));
             }
@@ -42,18 +43,18 @@ public final class a
             localMarginLayoutParams.bottomMargin = ((int)(localMarginLayoutParams.bottomMargin / f));
             localMarginLayoutParams.leftMargin = ((int)(localMarginLayoutParams.leftMargin / f));
             localMarginLayoutParams.rightMargin = ((int)(localMarginLayoutParams.rightMargin / f));
-            this.val$view.setLayoutParams(localMarginLayoutParams);
+            a.this.setLayoutParams(localMarginLayoutParams);
           }
-          AppMethodBeat.o(270848);
+          AppMethodBeat.o(242200);
         }
       });
     }
-    AppMethodBeat.o(271421);
+    AppMethodBeat.o(242198);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.noscale.a
  * JD-Core Version:    0.7.0.1
  */

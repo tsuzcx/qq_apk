@@ -1,39 +1,46 @@
 package com.tencent.mm.plugin.finder.viewmodel.notifytab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderNotifyFragment;
-import com.tencent.mm.plugin.finder.view.tabcomp.FinderTabProvider;
 import com.tencent.mm.plugin.finder.view.tabcomp.e;
-import com.tencent.mm.plugin.finder.view.tabcomp.f;
-import com.tencent.mm.plugin.finder.view.tabcomp.g;
+import com.tencent.mm.plugin.finder.view.tabcomp.l;
+import com.tencent.mm.plugin.finder.view.tabcomp.m;
+import com.tencent.mm.plugin.finder.view.tabcomp.n;
+import com.tencent.mm.plugin.finder.view.tabcomp.o;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/notifytab/FinderNotifyTabProvider;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderTabProvider;", "()V", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/notifytab/FinderNotifyTabProvider;", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderAlignTabProvider;", "()V", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends FinderTabProvider
+  extends e
 {
   public c()
   {
-    AppMethodBeat.i(269816);
-    FinderNotifyFragment localFinderNotifyFragment1 = new FinderNotifyFragment();
-    localFinderNotifyFragment1.fEH = 0;
-    FinderNotifyFragment localFinderNotifyFragment2 = new FinderNotifyFragment();
-    localFinderNotifyFragment2.fEH = 1;
-    FinderNotifyFragment localFinderNotifyFragment3 = new FinderNotifyFragment();
-    localFinderNotifyFragment3.fEH = 2;
-    setFragments((List)j.ag(new FinderNotifyFragment[] { localFinderNotifyFragment1, localFinderNotifyFragment2, localFinderNotifyFragment3 }));
-    setTabContainer((g)new b());
-    setTabs((List)j.ag(new a[] { new a(b.j.finder_notify_tab_like), new a(b.j.finder_notify_tab_comment), new a(b.j.finder_notify_tab_follow) }));
-    setTabViewAction((f)new e());
-    AppMethodBeat.o(269816);
+    AppMethodBeat.i(337372);
+    FinderNotifyFragment localFinderNotifyFragment = new FinderNotifyFragment();
+    localFinderNotifyFragment.hJx = 0;
+    Object localObject1 = ah.aiuX;
+    localObject1 = new FinderNotifyFragment();
+    ((FinderHomeTabFragment)localObject1).hJx = 1;
+    Object localObject2 = ah.aiuX;
+    localObject2 = new FinderNotifyFragment();
+    ((FinderHomeTabFragment)localObject2).hJx = 2;
+    ah localah = ah.aiuX;
+    setFragments((List)p.al(new FinderNotifyFragment[] { localFinderNotifyFragment, localObject1, localObject2 }));
+    setTabContainer((n)new b());
+    setTabs((List)p.al(new a[] { new a(e.h.finder_notify_tab_like), new a(e.h.finder_notify_tab_comment), new a(e.h.finder_notify_tab_follow) }));
+    setTabViewAction((m)new l());
+    this.GJf = ((o)new com.tencent.mm.plugin.finder.view.tabcomp.b());
+    AppMethodBeat.o(337372);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.notifytab.c
  * JD-Core Version:    0.7.0.1
  */

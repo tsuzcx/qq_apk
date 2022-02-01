@@ -36,28 +36,28 @@ public class ImageDecoder
   
   static
   {
-    AppMethodBeat.i(191006);
+    AppMethodBeat.i(216171);
     IMAGE_DECODE_SIZE = new CGSize(720.0F, 1280.0F);
-    AppMethodBeat.o(191006);
+    AppMethodBeat.o(216171);
   }
   
   public ImageDecoder()
   {
-    AppMethodBeat.i(190954);
+    AppMethodBeat.i(216103);
     this.preferRotation = 0;
     this.currentDecoderTime = CMTime.CMTimeInvalid;
     this.frameDuration = new CMTime(1L, 30);
     this.threadId = -1L;
-    AppMethodBeat.o(190954);
+    AppMethodBeat.o(216103);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(190980);
+    AppMethodBeat.i(216113);
     if ((this.threadId != -1L) && (this.threadId != Thread.currentThread().getId())) {
       Logger.e("ImageDecoder", "线程不对，注意EGL相关的泄露问题！threadId = " + this.threadId + ", Thread.currentThread() name = " + Thread.currentThread().getName(), new RuntimeException());
     }
-    AppMethodBeat.o(190980);
+    AppMethodBeat.o(216113);
   }
   
   private TextureInfo createTexture()
@@ -66,12 +66,12 @@ public class ImageDecoder
     {
       try
       {
-        AppMethodBeat.i(190997);
+        AppMethodBeat.i(216144);
         Object localObject1;
         if ((this.textureInfo != null) && (!this.textureInfo.isReleased()))
         {
           localObject1 = this.textureInfo;
-          AppMethodBeat.o(190997);
+          AppMethodBeat.o(216144);
           return localObject1;
         }
         if (this.bitmap == null)
@@ -88,20 +88,20 @@ public class ImageDecoder
           GLUtils.texImage2D(3553, 0, this.bitmap, 0);
           GLES20.glBindTexture(3553, 0);
           localObject1 = this.textureInfo;
-          AppMethodBeat.o(190997);
+          AppMethodBeat.o(216144);
           continue;
         }
         Object localObject3 = null;
       }
       finally {}
-      AppMethodBeat.o(190997);
+      AppMethodBeat.o(216144);
     }
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
   {
     int i = 1;
-    AppMethodBeat.i(190985);
+    AppMethodBeat.i(216124);
     BitmapFactory.Options localOptions1 = new BitmapFactory.Options();
     localOptions1.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions1);
@@ -111,13 +111,13 @@ public class ImageDecoder
     }
     localOptions2.inSampleSize = i;
     paramString = BitmapFactory.decodeFile(paramString, localOptions2);
-    AppMethodBeat.o(190985);
+    AppMethodBeat.o(216124);
     return paramString;
   }
   
   public static CGSize getDefaultOutputImageSize(String paramString)
   {
-    AppMethodBeat.i(190991);
+    AppMethodBeat.i(216135);
     BitmapFactory.Options localOptions1 = new BitmapFactory.Options();
     localOptions1.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions1);
@@ -130,27 +130,27 @@ public class ImageDecoder
     if (readImagePreferRotation(paramString) % 2 == 1)
     {
       paramString = new CGSize(j, i);
-      AppMethodBeat.o(190991);
+      AppMethodBeat.o(216135);
       return paramString;
     }
     paramString = new CGSize(i, j);
-    AppMethodBeat.o(190991);
+    AppMethodBeat.o(216135);
     return paramString;
   }
   
   private Matrix getImageTextureMatrix()
   {
-    AppMethodBeat.i(191000);
+    AppMethodBeat.i(216153);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F });
-    AppMethodBeat.o(191000);
+    AppMethodBeat.o(216153);
     return localMatrix;
   }
   
   private static int readImagePreferRotation(String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(191004);
+    AppMethodBeat.i(216163);
     try
     {
       int j = new ExifInterface(paramString).getAttributeInt("Orientation", 1);
@@ -164,7 +164,7 @@ public class ImageDecoder
       }
       for (;;)
       {
-        AppMethodBeat.o(191004);
+        AppMethodBeat.o(216163);
         return i;
         i = 3;
         continue;
@@ -175,7 +175,7 @@ public class ImageDecoder
     catch (IOException paramString)
     {
       Logger.e("ImageDecoder", "readImagePreferRotation", paramString);
-      AppMethodBeat.o(191004);
+      AppMethodBeat.o(216163);
     }
   }
   
@@ -217,9 +217,9 @@ public class ImageDecoder
   
   public CMTime nextFrameTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(190972);
+    AppMethodBeat.i(216268);
     paramCMTime = paramCMTime.add(this.frameDuration);
-    AppMethodBeat.o(190972);
+    AppMethodBeat.o(216268);
     return paramCMTime;
   }
   
@@ -235,9 +235,9 @@ public class ImageDecoder
   
   public CMSampleState readSample()
   {
-    AppMethodBeat.i(190971);
+    AppMethodBeat.i(216260);
     CMSampleState localCMSampleState = readSample(this.currentDecoderTime.add(this.frameDuration));
-    AppMethodBeat.o(190971);
+    AppMethodBeat.o(216260);
     return localCMSampleState;
   }
   
@@ -296,7 +296,7 @@ public class ImageDecoder
   {
     try
     {
-      AppMethodBeat.i(190983);
+      AppMethodBeat.i(216331);
       checkThread();
       if (this.textureInfo != null)
       {
@@ -308,7 +308,7 @@ public class ImageDecoder
         this.bitmap.recycle();
         this.bitmap = null;
       }
-      AppMethodBeat.o(190983);
+      AppMethodBeat.o(216331);
       return;
     }
     finally {}
@@ -320,22 +320,22 @@ public class ImageDecoder
   
   public void start(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(190958);
+    AppMethodBeat.i(216186);
     start(paramCMTimeRange, CMTime.CMTimeZero);
-    AppMethodBeat.o(190958);
+    AppMethodBeat.o(216186);
   }
   
   public void start(CMTimeRange paramCMTimeRange, CMTime paramCMTime)
   {
-    AppMethodBeat.i(190961);
+    AppMethodBeat.i(216193);
     if (paramCMTimeRange == null)
     {
       this.timeRange = new CMTimeRange(CMTime.CMTimeZero, this.frameDuration);
-      AppMethodBeat.o(190961);
+      AppMethodBeat.o(216193);
       return;
     }
     this.timeRange = new CMTimeRange(paramCMTimeRange.getStart(), paramCMTimeRange.getDuration());
-    AppMethodBeat.o(190961);
+    AppMethodBeat.o(216193);
   }
   
   public void switchFrame() {}

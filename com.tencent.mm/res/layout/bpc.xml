@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/ib" android:paddingBottom="@dimen/ib" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.patmsg.ui.AvatarPatTipImageView android:gravity="center_horizontal" android:id="@id/hgi" android:src="@drawable/bcb" style="@style/t3" />
-    <TextView android:id="@id/hgk" android:layout_marginTop="@dimen/g" style="@style/t4" />
-    <TextView android:textColor="#fffd8f44" android:id="@id/hgl" android:visibility="gone" style="@style/t4" />
+    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/j6" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="168.0dip" android:minHeight="64.0dip" style="@style/rz">
+        <ProgressBar android:id="@id/i80" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/j6" style="@style/a74" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/a7a" android:id="@id/i81" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/j6" android:maxWidth="200.0dip" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,38 +1,54 @@
 package androidx.core.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class r
 {
-  private int Nr;
-  private int Ns;
+  private int btu;
+  private int btv;
   
-  public final void F(int paramInt1, int paramInt2)
+  public final void Eg()
+  {
+    AppMethodBeat.i(195715);
+    eq(0);
+    AppMethodBeat.o(195715);
+  }
+  
+  public final void aA(int paramInt1, int paramInt2)
   {
     if (paramInt2 == 1)
     {
-      this.Ns = paramInt1;
+      this.btv = paramInt1;
       return;
     }
-    this.Nr = paramInt1;
+    this.btu = paramInt1;
   }
   
-  public final void bz(int paramInt)
+  public final void ep(int paramInt)
+  {
+    AppMethodBeat.i(195696);
+    aA(paramInt, 0);
+    AppMethodBeat.o(195696);
+  }
+  
+  public final void eq(int paramInt)
   {
     if (paramInt == 1)
     {
-      this.Ns = 0;
+      this.btv = 0;
       return;
     }
-    this.Nr = 0;
+    this.btu = 0;
   }
   
   public final int getNestedScrollAxes()
   {
-    return this.Nr | this.Ns;
+    return this.btu | this.btv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.r
  * JD-Core Version:    0.7.0.1
  */

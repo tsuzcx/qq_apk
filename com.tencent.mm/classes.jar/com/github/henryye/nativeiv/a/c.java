@@ -1,9 +1,6 @@
 package com.github.henryye.nativeiv.a;
 
-public final class c
-{
-  public static abstract interface b {}
-}
+public final class c {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

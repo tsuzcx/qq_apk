@@ -8,29 +8,26 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<com.google.android.exoplayer2.f.a> bkh;
+  private final List<com.google.android.exoplayer2.f.a> deb;
   
   public c(List<com.google.android.exoplayer2.f.a> paramList)
   {
     AppMethodBeat.i(92888);
-    this.bkh = Collections.unmodifiableList(paramList);
+    this.deb = Collections.unmodifiableList(paramList);
     AppMethodBeat.o(92888);
   }
   
-  public final int al(long paramLong)
+  public final int TD()
   {
-    if (paramLong < 0L) {
-      return 0;
-    }
-    return -1;
+    return 1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> am(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> cA(long paramLong)
   {
     AppMethodBeat.i(92890);
     if (paramLong >= 0L)
     {
-      localList = this.bkh;
+      localList = this.deb;
       AppMethodBeat.o(92890);
       return localList;
     }
@@ -39,7 +36,15 @@ final class c
     return localList;
   }
   
-  public final long eX(int paramInt)
+  public final int cz(long paramLong)
+  {
+    if (paramLong < 0L) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  public final long in(int paramInt)
   {
     AppMethodBeat.i(92889);
     if (paramInt == 0) {}
@@ -49,11 +54,6 @@ final class c
       AppMethodBeat.o(92889);
       return 0L;
     }
-  }
-  
-  public final int ua()
-  {
-    return 1;
   }
 }
 

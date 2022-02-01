@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 
 final class WalletBankcardDetailUI$1
   implements View.OnClickListener
@@ -17,9 +17,9 @@ final class WalletBankcardDetailUI$1
   {
     AppMethodBeat.i(69077);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet/bind/ui/WalletBankcardDetailUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    g.p(this.OuZ, this.OuZ.Ooj.field_repay_url, false);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet/bind/ui/WalletBankcardDetailUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    i.p(this.Vkn, this.Vkn.VcZ.field_repay_url, false);
     a.a(this, "com/tencent/mm/plugin/wallet/bind/ui/WalletBankcardDetailUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(69077);
   }

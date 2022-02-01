@@ -7,38 +7,42 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.xw;
-import com.tencent.mm.modelappbrand.a.g;
+import com.tencent.mm.autogen.a.zp;
+import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.h;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.ui.au;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.fts.a.f;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
 
 public final class d
   extends com.tencent.mm.plugin.fts.a.d.a.a
 {
-  public CharSequence jml;
-  public boolean nPD;
-  public boolean nPE;
-  public m olG;
-  public AppBrandRecentTaskInfo olH;
-  private b olI;
-  a olJ;
+  public String hzi;
+  public CharSequence lPj;
+  public int nOX;
+  public boolean qPv;
+  public com.tencent.mm.plugin.fts.a.a.o rpp;
+  public AppBrandRecentTaskInfo rpq;
+  private b rpr;
+  a rps;
+  public String userName;
   
   public d(int paramInt)
   {
     super(9, paramInt);
     AppMethodBeat.i(45027);
-    this.olI = new b();
-    this.olJ = new a();
+    this.rpr = new b();
+    this.rps = new a();
     AppMethodBeat.o(45027);
   }
   
@@ -48,14 +52,14 @@ public final class d
     boolean bool1 = false;
     AppMethodBeat.i(45028);
     super.a(paramContext, parama, paramVarArgs);
-    this.olH = i.agu(this.olG.BHS);
-    if (this.olH == null)
+    this.rpq = i.Zp(this.rpp.Hsz);
+    if (this.rpq == null)
     {
       AppMethodBeat.o(45028);
       return;
     }
     boolean bool2;
-    switch (this.olG.BHR)
+    switch (this.rpp.subtype)
     {
     default: 
       bool1 = false;
@@ -63,10 +67,10 @@ public final class d
     }
     for (;;)
     {
-      this.jml = com.tencent.mm.plugin.fts.a.f.a(com.tencent.mm.plugin.fts.a.a.e.a(this.olH.appName, this.BHY, bool1, bool2)).BIp;
-      this.fTp = this.olH.fuO;
-      this.nPD = this.olH.nPD;
-      this.nPE = this.olH.nPD;
+      this.lPj = f.a(com.tencent.mm.plugin.fts.a.a.g.a(this.rpq.appName, this.FWt, bool1, bool2)).HsX;
+      this.hZn = this.rpq.hzi;
+      this.nOX = this.rpq.nOX;
+      this.qPv = this.rpq.qPv;
       AppMethodBeat.o(45028);
       return;
       bool1 = true;
@@ -75,37 +79,42 @@ public final class d
     }
   }
   
-  public final a.b aEw()
+  public final a.b aXA()
   {
-    return this.olI;
+    return this.rpr;
   }
   
-  public final String bOm()
+  public final String coA()
   {
-    return this.olH.appName;
+    return this.hzi;
   }
   
-  public final int bOn()
+  public final String coB()
   {
-    return this.olG.BJj;
+    return this.rpq.appName;
+  }
+  
+  public final int coC()
+  {
+    return this.rpp.HtS;
   }
   
   public final String getAppId()
   {
-    return this.olH.fuO;
+    return this.rpq.hzi;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView iZG;
-    public TextView mNb;
-    public TextView olK;
-    public TextView olL;
-    public View olM;
-    public ImageView olN;
-    public ImageView olO;
+    public ImageView lBC;
+    public TextView pJJ;
+    public TextView rpt;
+    public TextView rpu;
+    public View rpv;
+    public ImageView rpw;
+    public ImageView rpx;
     
     public a()
     {
@@ -124,16 +133,16 @@ public final class d
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(45024);
-      paramContext = LayoutInflater.from(paramContext).inflate(au.g.app_brand_fts_weapp_item, paramViewGroup, false);
-      paramViewGroup = (d.a)d.this.olJ;
-      paramViewGroup.iZG = ((ImageView)paramContext.findViewById(au.f.avatar_iv));
-      paramViewGroup.mNb = ((TextView)paramContext.findViewById(au.f.title_tv));
-      paramViewGroup.contentView = paramContext.findViewById(au.f.search_item_content_layout);
-      paramViewGroup.olK = ((TextView)paramContext.findViewById(au.f.secondary_text));
-      paramViewGroup.olL = ((TextView)paramContext.findViewById(au.f.tag_text));
-      paramViewGroup.olM = paramContext.findViewById(au.f.divider);
-      paramViewGroup.olN = ((ImageView)paramContext.findViewById(au.f.trading_guarantee_flag));
-      paramViewGroup.olO = ((ImageView)paramContext.findViewById(au.f.official_flag));
+      paramContext = LayoutInflater.from(paramContext).inflate(ba.g.app_brand_fts_weapp_item, paramViewGroup, false);
+      paramViewGroup = (d.a)d.this.rps;
+      paramViewGroup.lBC = ((ImageView)paramContext.findViewById(ba.f.avatar_iv));
+      paramViewGroup.pJJ = ((TextView)paramContext.findViewById(ba.f.title_tv));
+      paramViewGroup.contentView = paramContext.findViewById(ba.f.search_item_content_layout);
+      paramViewGroup.rpt = ((TextView)paramContext.findViewById(ba.f.secondary_text));
+      paramViewGroup.rpu = ((TextView)paramContext.findViewById(ba.f.tag_text));
+      paramViewGroup.rpv = paramContext.findViewById(ba.f.divider);
+      paramViewGroup.rpw = ((ImageView)paramContext.findViewById(ba.f.trading_guarantee_flag));
+      paramViewGroup.rpx = ((ImageView)paramContext.findViewById(ba.f.official_flag));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(45024);
       return paramContext;
@@ -144,79 +153,92 @@ public final class d
       AppMethodBeat.i(45025);
       paramContext = (d)parama1;
       parama = (d.a)parama;
-      n.q(parama.olM, d.this.BJG);
-      if (paramContext.olH == null)
+      com.tencent.mm.plugin.fts.ui.o.w(parama.rpv, d.this.Hup);
+      if (paramContext.rpq == null)
       {
         parama.contentView.setVisibility(8);
         AppMethodBeat.o(45025);
         return;
       }
       parama.contentView.setVisibility(0);
-      parama.mNb.setText(d.this.jml);
-      if (d.this.uMD == -8)
+      parama.pJJ.setText(d.this.lPj);
+      if (d.this.xVf == -8)
       {
-        parama.olK.setText(au.i.search_chatroom_appbrand);
-        parama.olK.setVisibility(0);
-        parama1 = com.tencent.mm.plugin.appbrand.appcache.e.yZ(d.this.olH.cBI);
+        parama.rpt.setText(ba.i.search_chatroom_appbrand);
+        parama.rpt.setVisibility(0);
+        parama1 = com.tencent.mm.plugin.appbrand.appcache.e.zm(d.this.rpq.eul);
         if (!Util.isNullOrNil(parama1)) {
-          break label253;
+          break label267;
         }
-        parama.olL.setVisibility(8);
+        parama.rpu.setVisibility(8);
         label133:
-        if ((!d.this.nPD) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUC, 0) != 1)) {
-          break label272;
+        if ((!com.tencent.luggage.sdk.config.g.da(d.this.nOX, 4)) || (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.znj, 0) != 1)) {
+          break label286;
         }
-        parama.olN.setVisibility(0);
-        label172:
-        if ((!d.this.nPE) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXL, 0) != 1)) {
-          break label284;
+        parama.rpw.setVisibility(0);
+        au.a(parama.rpw, ba.h.app_brand_relieved_buy_icon);
+        label186:
+        if ((!d.this.qPv) || (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.zqA, 0) != 1)) {
+          break label298;
         }
-        parama.olO.setVisibility(0);
+        parama.rpx.setVisibility(0);
       }
       for (;;)
       {
-        com.tencent.mm.modelappbrand.a.b.bhh().a(parama.iZG, paramContext.olH.nPB, com.tencent.mm.modelappbrand.a.a.bhg(), g.lzF);
+        b.bEY().a(parama.lBC, paramContext.rpq.qPt, com.tencent.mm.modelappbrand.a.a.bEX(), com.tencent.mm.modelappbrand.a.g.org);
         AppMethodBeat.o(45025);
         return;
-        parama.olK.setVisibility(8);
+        parama.rpt.setVisibility(8);
         break;
-        label253:
-        parama.olL.setText(parama1);
-        parama.olL.setVisibility(0);
+        label267:
+        parama.rpu.setText(parama1);
+        parama.rpu.setVisibility(0);
         break label133;
-        label272:
-        parama.olN.setVisibility(8);
-        break label172;
-        label284:
-        parama.olO.setVisibility(8);
+        label286:
+        parama.rpw.setVisibility(8);
+        break label186;
+        label298:
+        parama.rpx.setVisibility(8);
       }
     }
     
     public final boolean a(Context paramContext, View paramView, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
     {
-      AppMethodBeat.i(282352);
+      int j = 0;
+      AppMethodBeat.i(316763);
       if (!WeChatBrands.Business.Entries.GlobalAppbrand.checkAvailable(paramView.getContext()))
       {
-        AppMethodBeat.o(282352);
+        AppMethodBeat.o(316763);
         return true;
       }
-      paramContext = (d)paramVarArgs;
-      paramView = new xw();
-      paramView.fWN.userName = paramContext.olH.fuO;
-      paramView.fWN.fWQ = paramContext.olH.cBI;
-      paramView.fWN.fWU = true;
-      paramView.fWN.scene = 1027;
-      paramView.fWN.fvd = "1";
-      EventCenter.instance.publish(paramView);
-      a(d.this.BHY.BIw, d.this.olG);
-      AppMethodBeat.o(282352);
-      return true;
+      paramView = (d)paramVarArgs;
+      paramContext = new zp();
+      d.this.userName = d.this.rpq.appName;
+      d.this.hzi = d.this.rpq.hzi;
+      paramContext.icM.userName = paramView.rpq.hzi;
+      paramContext.icM.icP = paramView.rpq.eul;
+      paramContext.icM.icT = true;
+      paramContext.icM.scene = 1027;
+      if ((com.tencent.luggage.sdk.config.g.da(d.this.nOX, 4)) && (((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.znj, 0) == 1)) {}
+      for (int i = 1;; i = 0)
+      {
+        paramView = paramContext.icM;
+        paramVarArgs = new StringBuilder("1:");
+        if (i != 0) {
+          j = 1;
+        }
+        paramView.hzx = (j + ":" + com.tencent.mm.plugin.fts.a.e.HrM + ":" + com.tencent.mm.plugin.fts.a.e.HrN + ":" + com.tencent.mm.plugin.fts.a.e.fxu());
+        paramContext.publish();
+        a(d.this.FWt.Hte, d.this.rpp);
+        AppMethodBeat.o(316763);
+        return true;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.d
  * JD-Core Version:    0.7.0.1
  */

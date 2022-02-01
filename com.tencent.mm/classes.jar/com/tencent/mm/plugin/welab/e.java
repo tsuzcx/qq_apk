@@ -8,34 +8,40 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
-  public static void C(String paramString, int paramInt, boolean paramBoolean)
+  public static void E(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(146214);
     a locala = new a();
     locala.appid = paramString;
     locala.action = paramInt;
     locala.timeStamp = System.currentTimeMillis();
-    locala.QFg = b.hcS().bnz(paramString).field_expId;
-    locala.QFh = paramBoolean;
-    a(locala);
-    AppMethodBeat.o(146214);
+    paramString = b.iDA().bnn(paramString);
+    if (paramString != null) {}
+    for (paramString = paramString.field_expId;; paramString = "")
+    {
+      locala.XyE = paramString;
+      locala.XyF = paramBoolean;
+      a(locala);
+      AppMethodBeat.o(146214);
+      return;
+    }
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(146213);
     n localn = new n();
-    localn.m("expid", parama.QFg + ",");
-    localn.m("appid", parama.appid + ",");
-    localn.m("action", parama.action + ",");
-    localn.m("timestamp", parama.timeStamp + ",");
+    localn.s("expid", parama.XyE + ",");
+    localn.s("appid", parama.appid + ",");
+    localn.s("action", parama.action + ",");
+    localn.s("timestamp", parama.timeStamp + ",");
     StringBuilder localStringBuilder = new StringBuilder();
-    if (parama.QFh) {}
+    if (parama.XyF) {}
     for (int i = 1;; i = 0)
     {
-      localn.m("hasRedPoint", i + ",");
-      Log.i("WelabReporter", "report " + localn.agI());
-      h.IzE.a(14206, new Object[] { localn });
+      localn.s("hasRedPoint", i + ",");
+      Log.i("WelabReporter", "report " + localn.aIF());
+      h.OAn.b(14206, new Object[] { localn });
       AppMethodBeat.o(146213);
       return;
     }
@@ -48,16 +54,16 @@ public final class e
     locala.appid = paramString1;
     locala.action = paramInt;
     locala.timeStamp = System.currentTimeMillis();
-    locala.QFg = paramString2;
-    locala.QFh = paramBoolean;
+    locala.XyE = paramString2;
+    locala.XyF = paramBoolean;
     a(locala);
     AppMethodBeat.o(146215);
   }
   
   public static final class a
   {
-    public String QFg;
-    public boolean QFh;
+    public String XyE;
+    public boolean XyF;
     public int action;
     public String appid;
     public long timeStamp;
@@ -65,7 +71,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.e
  * JD-Core Version:    0.7.0.1
  */

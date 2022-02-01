@@ -1,77 +1,75 @@
 package com.tencent.mm.plugin.sns.ad.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.j.b;
+import com.tencent.mm.plugin.sns.ad.j.j.b;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class a
   extends j.b
 {
-  private String JxY;
+  private String PLN;
   private String adExtInfo;
-  private String fLp;
   private String finderUsername;
+  private String hQX;
   private int result;
   private int source;
   private String uxInfo;
   
-  public final void bw(JSONObject paramJSONObject)
+  public final void bN(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(270614);
+    AppMethodBeat.i(309707);
     try
     {
-      paramJSONObject.putOpt("snsid", this.fLp);
+      paramJSONObject.putOpt("snsid", this.hQX);
       paramJSONObject.putOpt("uxinfo", this.uxInfo);
       paramJSONObject.putOpt("adExtInfo", this.adExtInfo);
-      AppMethodBeat.o(270614);
       return;
     }
-    catch (Throwable paramJSONObject)
+    finally
     {
-      AppMethodBeat.o(270614);
+      AppMethodBeat.o(309707);
     }
   }
   
-  public final void bx(JSONObject paramJSONObject)
+  public final void bO(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(270615);
+    AppMethodBeat.i(309714);
     try
     {
       paramJSONObject.putOpt("finderUsername", this.finderUsername);
-      paramJSONObject.putOpt("finderLiveNoticeId", this.JxY);
+      paramJSONObject.putOpt("finderLiveNoticeId", this.PLN);
       paramJSONObject.putOpt("result", Integer.valueOf(this.result));
       paramJSONObject.putOpt("source", Integer.valueOf(this.source));
-      AppMethodBeat.o(270615);
       return;
     }
-    catch (Throwable paramJSONObject)
+    finally
     {
-      AppMethodBeat.o(270615);
+      AppMethodBeat.o(309714);
     }
   }
   
   public final void c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(270613);
-    this.fLp = Util.nullAsNil(paramString1);
+    AppMethodBeat.i(309692);
+    this.hQX = Util.nullAsNil(paramString1);
     this.uxInfo = Util.nullAsNil(paramString2);
     this.adExtInfo = Util.nullAsNil(paramString3);
     this.finderUsername = Util.nullAsNil(paramString4);
-    this.JxY = Util.nullAsNil(paramString5);
+    this.PLN = Util.nullAsNil(paramString5);
     this.result = paramInt1;
     this.source = paramInt2;
-    AppMethodBeat.o(270613);
+    AppMethodBeat.o(309692);
   }
   
-  public final String fJK()
+  public final String gZE()
   {
     return "sns_ad_finder_live_notice_reserve";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.b.a
  * JD-Core Version:    0.7.0.1
  */

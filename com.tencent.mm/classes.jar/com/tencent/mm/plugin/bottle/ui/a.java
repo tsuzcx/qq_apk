@@ -13,51 +13,49 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.bb;
+import com.tencent.mm.autogen.b.bd;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.modelvoice.p;
-import com.tencent.mm.pluginsdk.j.f;
+import com.tencent.mm.pluginsdk.platformtools.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.bw.b;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.storage.by.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
-import com.tencent.mm.ui.v;
-import com.tencent.mm.ui.v.a;
+import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.x.a;
 
 final class a
-  extends v<az>
+  extends x<bb>
   implements MStorageEx.IOnStorageChange
 {
-  private final MMActivity iXq;
-  protected MMSlideDelView.g snh;
-  protected MMSlideDelView.c sni;
-  protected MMSlideDelView.f snj;
-  protected MMSlideDelView.d snk;
+  private final MMActivity lzt;
+  protected MMSlideDelView.g vzf;
+  protected MMSlideDelView.c vzg;
+  protected MMSlideDelView.f vzh;
+  protected MMSlideDelView.d vzi;
   
-  public a(Context paramContext, v.a parama)
+  public a(Context paramContext, x.a parama)
   {
-    super(paramContext, new az());
+    super(paramContext, new bb());
     AppMethodBeat.i(22656);
-    this.snk = MMSlideDelView.getItemStatusCallBack();
+    this.vzi = MMSlideDelView.getItemStatusCallBack();
     super.a(parama);
-    this.iXq = ((MMActivity)paramContext);
+    this.lzt = ((MMActivity)paramContext);
     AppMethodBeat.o(22656);
   }
   
-  private static int aoT(String paramString)
+  private static int aip(String paramString)
   {
     int j = 1;
     AppMethodBeat.i(22661);
@@ -82,36 +80,36 @@ final class a
     }
   }
   
-  final String Z(as paramas)
-  {
-    AppMethodBeat.i(22660);
-    paramas = com.tencent.mm.plugin.bottle.a.c.a(this.iXq, paramas);
-    AppMethodBeat.o(22660);
-    return paramas;
-  }
-  
   public final void a(MMSlideDelView.f paramf)
   {
-    this.snj = paramf;
+    this.vzh = paramf;
   }
   
-  public final void atr()
+  public final void aNy()
   {
     AppMethodBeat.i(22657);
-    bh.beI();
-    v(com.tencent.mm.model.c.bbR().hyK());
-    if (this.VZc != null) {
-      this.VZc.bxN();
+    bh.bCz();
+    w(com.tencent.mm.model.c.bzG().jaP());
+    if (this.adDx != null) {
+      this.adDx.bWC();
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(22657);
   }
   
-  public final void ats()
+  public final void aNz()
   {
     AppMethodBeat.i(22662);
-    atr();
+    aNy();
     AppMethodBeat.o(22662);
+  }
+  
+  final String ac(au paramau)
+  {
+    AppMethodBeat.i(22660);
+    paramau = com.tencent.mm.plugin.bottle.a.c.a(this.lzt, paramau);
+    AppMethodBeat.o(22660);
+    return paramau;
   }
   
   public final int getItemViewType(int paramInt)
@@ -122,7 +120,7 @@ final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(22659);
-    az localaz = (az)getItem(paramInt);
+    bb localbb = (bb)getItem(paramInt);
     Object localObject;
     label270:
     label490:
@@ -133,40 +131,40 @@ final class a
     if (paramView == null)
     {
       paramViewGroup = new a();
-      paramView = (MMSlideDelView)View.inflate(this.iXq, R.i.base_slide_del_view, null);
-      localObject = View.inflate(this.iXq, R.i.tmessage_item, null);
-      paramViewGroup.iZG = ((ImageView)((View)localObject).findViewById(R.h.avatar_iv));
-      paramViewGroup.iZH = ((TextView)((View)localObject).findViewById(R.h.nickname_tv));
-      paramViewGroup.snm = ((TextView)((View)localObject).findViewById(R.h.update_time_tv));
-      paramViewGroup.snn = ((TextView)((View)localObject).findViewById(R.h.last_msg_tv));
-      paramViewGroup.rql = ((ImageView)((View)localObject).findViewById(R.h.state_iv));
-      paramViewGroup.sno = ((TextView)((View)localObject).findViewById(R.h.tipcnt_tv));
-      paramViewGroup.snp = paramView.findViewById(R.h.slide_del_del_view);
-      paramViewGroup.snq = ((TextView)paramView.findViewById(R.h.slide_del_view_del_word));
+      paramView = (MMSlideDelView)View.inflate(this.lzt, R.i.base_slide_del_view, null);
+      localObject = View.inflate(this.lzt, R.i.tmessage_item, null);
+      paramViewGroup.lBC = ((ImageView)((View)localObject).findViewById(R.h.avatar_iv));
+      paramViewGroup.lBD = ((TextView)((View)localObject).findViewById(R.h.nickname_tv));
+      paramViewGroup.vzk = ((TextView)((View)localObject).findViewById(R.h.update_time_tv));
+      paramViewGroup.vzl = ((TextView)((View)localObject).findViewById(R.h.last_msg_tv));
+      paramViewGroup.uAw = ((ImageView)((View)localObject).findViewById(R.h.state_iv));
+      paramViewGroup.vzm = ((TextView)((View)localObject).findViewById(R.h.tipcnt_tv));
+      paramViewGroup.vzn = paramView.findViewById(R.h.slide_del_del_view);
+      paramViewGroup.vzo = ((TextView)paramView.findViewById(R.h.slide_del_view_del_word));
       paramView.setView((View)localObject);
-      paramView.setPerformItemClickListener(this.snh);
-      paramView.setGetViewPositionCallback(this.sni);
-      paramView.setItemStatusCallBack(this.snk);
+      paramView.setPerformItemClickListener(this.vzf);
+      paramView.setGetViewPositionCallback(this.vzg);
+      paramView.setItemStatusCallBack(this.vzi);
       paramView.setEnable(false);
       paramView.setTag(paramViewGroup);
-      bh.beI();
-      localObject = com.tencent.mm.model.c.bbL().RG(localaz.field_username);
-      paramViewGroup.iZH.setText(Z((as)localObject));
-      TextView localTextView = paramViewGroup.snm;
-      if (localaz.field_status != 1) {
+      bh.bCz();
+      localObject = com.tencent.mm.model.c.bzA().JE(localbb.field_username);
+      paramViewGroup.lBD.setText(ac((au)localObject));
+      TextView localTextView = paramViewGroup.vzk;
+      if (localbb.field_status != 1) {
         break label635;
       }
-      localObject = this.iXq.getString(R.l.eLv);
+      localObject = this.lzt.getString(R.l.gNp);
       localTextView.setText((CharSequence)localObject);
-      a.b.c(paramViewGroup.iZG, as.bvW(localaz.field_username));
-      bh.beI();
-      localObject = com.tencent.mm.model.c.bbR().abK().a(localaz.field_isSend, localaz.field_username, localaz.field_content, aoT(localaz.field_msgType), this.iXq);
-      paramViewGroup.snn.setText(l.b(this.iXq, (CharSequence)localObject, paramViewGroup.snn.getTextSize()));
-      paramViewGroup.snn.setTextColor(com.tencent.mm.ci.a.l(this.iXq, R.e.mm_list_textcolor_two));
-      if ((aoT(localaz.field_msgType) == 34) && (localaz.field_isSend == 0) && (!Util.isNullOrNil(localaz.field_content)) && (!new p(localaz.field_content).mhL)) {
-        paramViewGroup.snn.setTextColor(com.tencent.mm.ci.a.l(this.iXq, R.e.mm_list_textcolor_unread));
+      a.b.g(paramViewGroup.lBC, au.bxd(localbb.field_username));
+      bh.bCz();
+      localObject = com.tencent.mm.model.c.bzG().aDH().a(localbb.field_isSend, localbb.field_username, localbb.field_content, aip(localbb.field_msgType), this.lzt);
+      paramViewGroup.vzl.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this.lzt, (CharSequence)localObject, paramViewGroup.vzl.getTextSize()));
+      paramViewGroup.vzl.setTextColor(com.tencent.mm.cd.a.l(this.lzt, R.e.mm_list_textcolor_two));
+      if ((aip(localbb.field_msgType) == 34) && (localbb.field_isSend == 0) && (!Util.isNullOrNil(localbb.field_content)) && (!new com.tencent.mm.modelvoice.p(localbb.field_content).paW)) {
+        paramViewGroup.vzl.setTextColor(com.tencent.mm.cd.a.l(this.lzt, R.e.mm_list_textcolor_unread));
       }
-      switch (localaz.field_status)
+      switch (localbb.field_status)
       {
       case 3: 
       case 4: 
@@ -174,21 +172,21 @@ final class a
         paramInt = -1;
         if (paramInt != -1)
         {
-          paramViewGroup.rql.setBackgroundResource(paramInt);
-          paramViewGroup.rql.setVisibility(0);
-          paramViewGroup.snp.setTag(localaz.field_username);
-          paramViewGroup.snp.setOnClickListener(new View.OnClickListener()
+          paramViewGroup.uAw.setBackgroundResource(paramInt);
+          paramViewGroup.uAw.setVisibility(0);
+          paramViewGroup.vzn.setTag(localbb.field_username);
+          paramViewGroup.vzn.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(22655);
               b localb = new b();
-              localb.bn(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              localb.cH(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
               Log.v("MicroMsg.BottleConversationAdapter", "on delView clicked");
-              a.this.snk.eKn();
-              if (a.this.snj != null) {
-                a.this.snj.cW(paramAnonymousView.getTag());
+              a.this.vzi.fSn();
+              if (a.this.vzh != null) {
+                a.this.vzh.es(paramAnonymousView.getTag());
               }
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/bottle/ui/BottleConversationAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(22655);
@@ -198,11 +196,11 @@ final class a
           i = paramView.getPaddingTop();
           j = paramView.getPaddingRight();
           k = paramView.getPaddingLeft();
-          if (localaz.field_unReadCount <= 100) {
+          if (localbb.field_unReadCount <= 100) {
             break label689;
           }
-          paramViewGroup.sno.setText("...");
-          paramViewGroup.sno.setVisibility(0);
+          paramViewGroup.vzm.setText("...");
+          paramViewGroup.vzm.setVisibility(0);
           Log.v("MicroMsg.BottleConversationAdapter", "has unread 100");
         }
         break;
@@ -217,7 +215,7 @@ final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label635:
-      localObject = f.d(this.iXq, localaz.field_conversationTime, true);
+      localObject = f.d(this.lzt, localbb.field_conversationTime, true);
       break label270;
       paramInt = -1;
       break label490;
@@ -227,18 +225,18 @@ final class a
       break label490;
       paramInt = R.k.msg_state_failed;
       break label490;
-      paramViewGroup.rql.setVisibility(8);
+      paramViewGroup.uAw.setVisibility(8);
       break label511;
       label689:
-      if (localaz.field_unReadCount > 0)
+      if (localbb.field_unReadCount > 0)
       {
-        paramViewGroup.sno.setText(localaz.field_unReadCount);
-        paramViewGroup.sno.setVisibility(0);
+        paramViewGroup.vzm.setText(localbb.field_unReadCount);
+        paramViewGroup.vzm.setVisibility(0);
         Log.v("MicroMsg.BottleConversationAdapter", "has unread");
       }
       else
       {
-        paramViewGroup.sno.setVisibility(4);
+        paramViewGroup.vzm.setVisibility(4);
         Log.v("MicroMsg.BottleConversationAdapter", "no unread");
       }
     }
@@ -252,32 +250,32 @@ final class a
   public final void onPause()
   {
     AppMethodBeat.i(22658);
-    if (this.snk != null) {
-      this.snk.eKm();
+    if (this.vzi != null) {
+      this.vzi.fSm();
     }
     AppMethodBeat.o(22658);
   }
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.sni = paramc;
+    this.vzg = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.snh = paramg;
+    this.vzf = paramg;
   }
   
   public static final class a
   {
-    public ImageView iZG;
-    public TextView iZH;
-    public ImageView rql;
-    public TextView snm;
-    public TextView snn;
-    public TextView sno;
-    public View snp;
-    public TextView snq;
+    public ImageView lBC;
+    public TextView lBD;
+    public ImageView uAw;
+    public TextView vzk;
+    public TextView vzl;
+    public TextView vzm;
+    public View vzn;
+    public TextView vzo;
   }
 }
 

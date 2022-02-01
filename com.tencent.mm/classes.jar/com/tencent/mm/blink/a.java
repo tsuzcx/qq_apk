@@ -9,126 +9,135 @@ import java.util.ArrayList;
 
 public final class a
 {
-  private static final int[] iOA;
-  private static final int[] iOB;
-  private static final int[] iOC;
-  private static final int[] iOD;
-  private static final ArrayList<long[]> iOE;
-  private static final ArrayList<Object[]> iOF;
-  private static long iOG;
-  private static boolean iOH;
-  private static long iOI;
-  private static long iOJ;
-  private static long iOK;
-  private static long iOL;
-  private static byte iOM;
-  public static final int[] iOk;
-  public static final int[] iOl;
-  public static final int[] iOm;
-  public static final int[] iOn;
-  public static final int[] iOo;
-  public static final int[] iOp;
-  public static final int[] iOq;
-  public static final int[] iOr;
-  public static final int[] iOs;
-  public static final int[] iOt;
-  public static final int[] iOu;
-  public static final int[] iOv;
-  private static final int[] iOw;
-  private static final int[] iOx;
-  private static final int[] iOy;
-  private static final int[] iOz;
+  private static final ArrayList<long[]> lqA;
+  private static final ArrayList<Object[]> lqB;
+  private static long lqC;
+  private static boolean lqD;
+  private static long lqE;
+  private static long lqF;
+  private static long lqG;
+  private static long lqH;
+  private static byte lqI;
+  public static final int[] lqg;
+  public static final int[] lqh;
+  public static final int[] lqi;
+  public static final int[] lqj;
+  public static final int[] lqk;
+  public static final int[] lql;
+  public static final int[] lqm;
+  public static final int[] lqn;
+  public static final int[] lqo;
+  public static final int[] lqp;
+  public static final int[] lqq;
+  public static final int[] lqr;
+  private static final int[] lqs;
+  private static final int[] lqt;
+  private static final int[] lqu;
+  private static final int[] lqv;
+  private static final int[] lqw;
+  private static final int[] lqx;
+  private static final int[] lqy;
+  private static final int[] lqz;
   
   static
   {
     AppMethodBeat.i(131814);
-    iOk = new int[] { 0, 1, 2 };
-    iOl = new int[] { 3, 13, 23 };
-    iOm = new int[] { 4, 14, 24 };
-    iOn = new int[] { 5, 15, 25 };
-    iOo = new int[] { 6, 16, 26 };
-    iOp = new int[] { 7, 17, 27 };
-    iOq = new int[] { 8, 18, 28 };
-    iOr = new int[] { 9, 19, 29 };
-    iOs = new int[] { 63, 69, 75 };
-    iOt = new int[] { 64, 70, 76 };
-    iOu = new int[] { 65, 71, 77 };
-    iOv = new int[] { 66, 72, 78 };
-    iOw = new int[] { 0 };
-    iOx = new int[] { 3 };
-    iOy = new int[] { 9 };
-    iOz = new int[] { 10 };
-    iOA = new int[] { 11 };
-    iOB = new int[] { 12 };
-    iOC = new int[] { 13 };
-    iOD = new int[] { 14 };
-    iOE = new ArrayList();
-    iOF = new ArrayList();
-    iOG = 0L;
-    iOH = false;
-    iOI = 0L;
-    iOJ = 0L;
-    iOK = 0L;
-    iOL = 0L;
-    iOM = 0;
+    lqg = new int[] { 0, 1, 2 };
+    lqh = new int[] { 3, 13, 23 };
+    lqi = new int[] { 4, 14, 24 };
+    lqj = new int[] { 5, 15, 25 };
+    lqk = new int[] { 6, 16, 26 };
+    lql = new int[] { 7, 17, 27 };
+    lqm = new int[] { 8, 18, 28 };
+    lqn = new int[] { 9, 19, 29 };
+    lqo = new int[] { 63, 69, 75 };
+    lqp = new int[] { 64, 70, 76 };
+    lqq = new int[] { 65, 71, 77 };
+    lqr = new int[] { 66, 72, 78 };
+    lqs = new int[] { 0 };
+    lqt = new int[] { 3 };
+    lqu = new int[] { 9 };
+    lqv = new int[] { 10 };
+    lqw = new int[] { 11 };
+    lqx = new int[] { 12 };
+    lqy = new int[] { 13 };
+    lqz = new int[] { 14 };
+    lqA = new ArrayList();
+    lqB = new ArrayList();
+    lqC = 0L;
+    lqD = false;
+    lqE = 0L;
+    lqF = 0L;
+    lqG = 0L;
+    lqH = 0L;
+    lqI = 0;
     AppMethodBeat.o(131814);
   }
   
-  public static void EJ(long paramLong)
-  {
-    AppMethodBeat.i(131805);
-    if (System.currentTimeMillis() - paramLong > 200L)
-    {
-      qc(512);
-      iOH = false;
-    }
-    AppMethodBeat.o(131805);
-  }
-  
-  private static void EK(long paramLong)
-  {
-    AppMethodBeat.i(131811);
-    if (paramLong > 10000L) {
-      apV();
-    }
-    AppMethodBeat.o(131811);
-  }
-  
-  public static void JB(String paramString)
+  public static void Ch(String paramString)
   {
     AppMethodBeat.i(131798);
-    l.MT(paramString);
+    l.FC(paramString);
     AppMethodBeat.o(131798);
+  }
+  
+  public static void O(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(131796);
+    l.O(paramLong1, paramLong2);
+    AppMethodBeat.o(131796);
+  }
+  
+  public static void P(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(131799);
+    lqA.add(new long[] { 709L, paramLong1, paramLong2 });
+    AppMethodBeat.o(131799);
+  }
+  
+  public static void Q(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(131800);
+    lqA.add(new long[] { 783L, paramLong1, paramLong2 });
+    AppMethodBeat.o(131800);
+  }
+  
+  public static void R(long paramLong1, long paramLong2)
+  {
+    lqE = paramLong1;
+    lqF = paramLong2;
+    lqG = lqE;
+    lqH = lqF;
   }
   
   private static void a(int[] paramArrayOfInt, long paramLong)
   {
     AppMethodBeat.i(131807);
     Log.i("MicroMsg.BlinkStartup", "%s %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(paramLong) });
-    s(paramArrayOfInt[0], paramLong);
-    s(paramArrayOfInt[1], paramLong);
+    P(paramArrayOfInt[0], paramLong);
+    P(paramArrayOfInt[1], paramLong);
     AppMethodBeat.o(131807);
   }
   
-  public static void abx()
+  public static void aDs()
   {
     AppMethodBeat.i(131804);
     qc(512);
     AppMethodBeat.o(131804);
   }
   
-  public static void apV()
+  public static void aJT()
   {
-    AppMethodBeat.i(292849);
+    AppMethodBeat.i(369548);
     qc(512);
-    iOH = false;
-    AppMethodBeat.o(292849);
+    lqD = false;
+    AppMethodBeat.o(369548);
   }
   
-  public static boolean apW()
+  public static boolean aJU()
   {
     AppMethodBeat.i(131809);
-    if (!iOH)
+    if (!lqD)
     {
       AppMethodBeat.o(131809);
       return false;
@@ -138,63 +147,63 @@ public final class a
     return bool;
   }
   
-  public static void apX()
+  public static void aJV()
   {
     AppMethodBeat.i(131813);
-    long l = System.currentTimeMillis() - iOI;
-    a(iOr, l);
+    long l = System.currentTimeMillis() - lqE;
+    a(lqn, l);
     if (l <= 3000L)
     {
-      a(iOs, 1L);
-      a(iOk, 1L);
-      l = SystemClock.elapsedRealtime() - iOJ;
-      b(iOx, l);
+      a(lqo, 1L);
+      a(lqg, 1L);
+      l = SystemClock.elapsedRealtime() - lqF;
+      b(lqt, l);
       if (l > 2000L) {
         break label181;
       }
-      b(iOy, 1L);
+      b(lqu, 1L);
     }
     for (;;)
     {
-      b(iOw, 1L);
-      iOF.add(new Object[] { Integer.valueOf(15854), { Long.valueOf(l) } });
+      b(lqs, 1L);
+      lqB.add(new Object[] { Integer.valueOf(15854), { Long.valueOf(l) } });
       AppMethodBeat.o(131813);
       return;
       if ((l > 3000L) && (l <= 6000L))
       {
-        a(iOt, 1L);
+        a(lqp, 1L);
         break;
       }
       if ((l > 6000L) && (l <= 10000L))
       {
-        a(iOu, 1L);
+        a(lqq, 1L);
         break;
       }
-      a(iOv, 1L);
+      a(lqr, 1L);
       break;
       label181:
       if ((l > 2000L) && (l <= 4000L)) {
-        b(iOz, 1L);
+        b(lqv, 1L);
       } else if ((l > 4000L) && (l <= 6000L)) {
-        b(iOA, 1L);
+        b(lqw, 1L);
       } else if ((l > 6000L) && (l <= 8000L)) {
-        b(iOB, 1L);
+        b(lqx, 1L);
       } else if ((l > 8000L) && (l <= 10000L)) {
-        b(iOC, 1L);
+        b(lqy, 1L);
       } else {
-        b(iOD, 1L);
+        b(lqz, 1L);
       }
     }
   }
   
-  public static ArrayList<long[]> apY()
+  public static ArrayList<long[]> aJW()
   {
-    return iOE;
+    return lqA;
   }
   
-  public static ArrayList<Object[]> apZ()
+  public static ArrayList<Object[]> aJX()
   {
-    return iOF;
+    return lqB;
   }
   
   private static void b(int[] paramArrayOfInt, long paramLong)
@@ -202,34 +211,54 @@ public final class a
     AppMethodBeat.i(131808);
     Log.i("MicroMsg.BlinkStartup", "%s %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(paramLong) });
     long l = paramArrayOfInt[0];
-    iOE.add(new long[] { 910L, l, paramLong });
+    lqA.add(new long[] { 910L, l, paramLong });
     AppMethodBeat.o(131808);
   }
   
-  public static void gX(String paramString)
+  public static void ha(long paramLong)
+  {
+    AppMethodBeat.i(131805);
+    if (System.currentTimeMillis() - paramLong > 200L)
+    {
+      qc(512);
+      lqD = false;
+    }
+    AppMethodBeat.o(131805);
+  }
+  
+  private static void hb(long paramLong)
+  {
+    AppMethodBeat.i(131811);
+    if (paramLong > 10000L) {
+      aJT();
+    }
+    AppMethodBeat.o(131811);
+  }
+  
+  public static void iy(String paramString)
   {
     AppMethodBeat.i(131803);
     if ((qc(512)) && (MMApplicationContext.getLaunchName().equals(paramString)))
     {
-      iOH = true;
+      lqD = true;
       Log.i("MicroMsg.BlinkStartup", "report this time");
     }
     AppMethodBeat.o(131803);
   }
   
-  public static void n(String paramString, long paramLong)
+  public static void o(String paramString, long paramLong)
   {
     AppMethodBeat.i(131797);
-    l.n(paramString, paramLong);
+    l.o(paramString, paramLong);
     AppMethodBeat.o(131797);
   }
   
   private static boolean qc(int paramInt)
   {
     AppMethodBeat.i(131810);
-    if ((iOM & paramInt) == 0)
+    if ((lqI & paramInt) == 0)
     {
-      iOM = (byte)(iOM | paramInt);
+      lqI = (byte)(lqI | paramInt);
       Log.i("MicroMsg.BlinkStartup", "checkAndMark bit 0x%x", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(131810);
       return true;
@@ -241,13 +270,13 @@ public final class a
   public static void qd(int paramInt)
   {
     AppMethodBeat.i(131812);
-    if (iOK == 0L)
+    if (lqG == 0L)
     {
       Log.e("MicroMsg.BlinkStartup", "sLastPhaseTimestamp is 0");
       AppMethodBeat.o(131812);
       return;
     }
-    long l = System.currentTimeMillis() - iOK;
+    long l = System.currentTimeMillis() - lqG;
     switch (paramInt)
     {
     }
@@ -257,40 +286,40 @@ public final class a
       return;
       if (qc(1))
       {
-        a(iOl, l);
-        iOK = System.currentTimeMillis();
+        a(lqh, l);
+        lqG = System.currentTimeMillis();
         AppMethodBeat.o(131812);
         return;
         if (qc(2))
         {
-          a(iOm, l);
-          iOK = System.currentTimeMillis();
+          a(lqi, l);
+          lqG = System.currentTimeMillis();
           AppMethodBeat.o(131812);
           return;
           if (qc(4))
           {
-            a(iOn, l);
-            iOK = System.currentTimeMillis();
+            a(lqj, l);
+            lqG = System.currentTimeMillis();
             AppMethodBeat.o(131812);
             return;
             if (qc(8))
             {
-              a(iOo, l);
-              iOK = System.currentTimeMillis();
+              a(lqk, l);
+              lqG = System.currentTimeMillis();
               AppMethodBeat.o(131812);
               return;
               if (qc(16))
               {
-                EK(l);
-                a(iOp, l);
-                iOK = System.currentTimeMillis();
+                hb(l);
+                a(lql, l);
+                lqG = System.currentTimeMillis();
                 AppMethodBeat.o(131812);
                 return;
                 if (qc(32))
                 {
-                  EK(l);
-                  a(iOq, l);
-                  iOK = System.currentTimeMillis();
+                  hb(l);
+                  a(lqm, l);
+                  lqG = System.currentTimeMillis();
                 }
               }
             }
@@ -299,39 +328,10 @@ public final class a
       }
     }
   }
-  
-  public static void r(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(131796);
-    l.r(paramLong1, paramLong2);
-    AppMethodBeat.o(131796);
-  }
-  
-  public static void s(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(131799);
-    iOE.add(new long[] { 709L, paramLong1, paramLong2 });
-    AppMethodBeat.o(131799);
-  }
-  
-  public static void t(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(131800);
-    iOE.add(new long[] { 783L, paramLong1, paramLong2 });
-    AppMethodBeat.o(131800);
-  }
-  
-  public static void u(long paramLong1, long paramLong2)
-  {
-    iOI = paramLong1;
-    iOJ = paramLong2;
-    iOK = iOI;
-    iOL = iOJ;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.blink.a
  * JD-Core Version:    0.7.0.1
  */

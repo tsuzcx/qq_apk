@@ -1,11 +1,9 @@
 package com.google.android.gms.auth.api.signin.internal;
 
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class HashAccumulator
 {
-  @VisibleForTesting
   private static int zzad = 31;
   private int zzae = 1;
   
@@ -42,7 +40,7 @@ public class HashAccumulator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.HashAccumulator
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 public final class e
   implements k, k.a
 {
-  private final k aMg;
-  private final long beV;
-  private final long beW;
-  private final boolean bfb;
-  private final ArrayList<d> bfc;
-  private k.a bfd;
-  private a bfe;
+  private final k cGd;
+  private final long cYO;
+  private final long cYP;
+  private final boolean cYU;
+  private final ArrayList<d> cYV;
+  private k.a cYW;
+  private a cYX;
   
   public e(k paramk, long paramLong1, long paramLong2)
   {
@@ -31,22 +31,36 @@ public final class e
     for (boolean bool = true;; bool = false)
     {
       a.checkArgument(bool);
-      this.aMg = ((k)a.checkNotNull(paramk));
-      this.beV = paramLong1;
-      this.beW = paramLong2;
-      this.bfb = true;
-      this.bfc = new ArrayList();
+      this.cGd = ((k)a.checkNotNull(paramk));
+      this.cYO = paramLong1;
+      this.cYP = paramLong2;
+      this.cYU = true;
+      this.cYV = new ArrayList();
       AppMethodBeat.o(92633);
       return;
     }
   }
   
+  public final void SU()
+  {
+    AppMethodBeat.i(92635);
+    this.cGd.SU();
+    AppMethodBeat.o(92635);
+  }
+  
+  public final void SV()
+  {
+    AppMethodBeat.i(92638);
+    this.cGd.SV();
+    AppMethodBeat.o(92638);
+  }
+  
   public final j a(k.b paramb, com.google.android.exoplayer2.h.b paramb1)
   {
     AppMethodBeat.i(92636);
-    paramb = new d(this.aMg.a(paramb, paramb1), this.bfb);
-    this.bfc.add(paramb);
-    paramb.i(a.a(this.bfe), a.b(this.bfe));
+    paramb = new d(this.cGd.a(paramb, paramb1), this.cYU);
+    this.cYV.add(paramb);
+    paramb.E(a.a(this.cYX), a.b(this.cYX));
     AppMethodBeat.o(92636);
     return paramb;
   }
@@ -54,25 +68,25 @@ public final class e
   public final void a(f paramf, k.a parama)
   {
     AppMethodBeat.i(92634);
-    this.bfd = parama;
-    this.aMg.a(paramf, this);
+    this.cYW = parama;
+    this.cGd.a(paramf, this);
     AppMethodBeat.o(92634);
   }
   
   public final void a(w paramw, Object paramObject)
   {
     AppMethodBeat.i(92639);
-    this.bfe = new a(paramw, this.beV, this.beW);
-    this.bfd.a(this.bfe, paramObject);
-    long l2 = a.a(this.bfe);
-    if (a.b(this.bfe) == -9223372036854775807L) {}
-    for (long l1 = -9223372036854775808L;; l1 = a.b(this.bfe))
+    this.cYX = new a(paramw, this.cYO, this.cYP);
+    this.cYW.a(this.cYX, paramObject);
+    long l2 = a.a(this.cYX);
+    if (a.b(this.cYX) == -9223372036854775807L) {}
+    for (long l1 = -9223372036854775808L;; l1 = a.b(this.cYX))
     {
-      int j = this.bfc.size();
+      int j = this.cYV.size();
       int i = 0;
       while (i < j)
       {
-        ((d)this.bfc.get(i)).i(l2, l1);
+        ((d)this.cYV.get(i)).E(l2, l1);
         i += 1;
       }
     }
@@ -82,47 +96,33 @@ public final class e
   public final void b(j paramj)
   {
     AppMethodBeat.i(92637);
-    a.checkState(this.bfc.remove(paramj));
-    this.aMg.b(((d)paramj).aMs);
+    a.checkState(this.cYV.remove(paramj));
+    this.cGd.b(((d)paramj).cGp);
     AppMethodBeat.o(92637);
-  }
-  
-  public final void tr()
-  {
-    AppMethodBeat.i(92635);
-    this.aMg.tr();
-    AppMethodBeat.o(92635);
-  }
-  
-  public final void ts()
-  {
-    AppMethodBeat.i(92638);
-    this.aMg.ts();
-    AppMethodBeat.o(92638);
   }
   
   static final class a
     extends w
   {
-    private final w aLO;
-    private final long beV;
-    private final long beW;
+    private final w cFL;
+    private final long cYO;
+    private final long cYP;
     
     public a(w paramw, long paramLong1, long paramLong2)
     {
       AppMethodBeat.i(92628);
-      if (paramw.rv() == 1)
+      if (paramw.QW() == 1)
       {
         bool = true;
         a.checkArgument(bool);
-        if (paramw.rw() != 1) {
+        if (paramw.QX() != 1) {
           break label223;
         }
         bool = true;
         label36:
         a.checkArgument(bool);
         w.b localb = paramw.a(0, new w.b());
-        if (localb.aNY) {
+        if (localb.cHU) {
           break label229;
         }
         bool = true;
@@ -130,16 +130,16 @@ public final class e
         a.checkArgument(bool);
         long l = paramLong2;
         if (paramLong2 == -9223372036854775808L) {
-          l = localb.aNk;
+          l = localb.cHg;
         }
         paramLong2 = l;
-        if (localb.aNk != -9223372036854775807L)
+        if (localb.cHg != -9223372036854775807L)
         {
           paramLong2 = l;
-          if (l > localb.aNk) {
-            paramLong2 = localb.aNk;
+          if (l > localb.cHg) {
+            paramLong2 = localb.cHg;
           }
-          if ((paramLong1 != 0L) && (!localb.aNX)) {
+          if ((paramLong1 != 0L) && (!localb.cHT)) {
             break label235;
           }
           bool = true;
@@ -152,7 +152,7 @@ public final class e
           label161:
           a.checkArgument(bool);
         }
-        if (paramw.a(0, new w.a(), false).aNO != 0L) {
+        if (paramw.a(0, new w.a(), false).cHK != 0L) {
           break label247;
         }
       }
@@ -164,9 +164,9 @@ public final class e
       for (boolean bool = true;; bool = false)
       {
         a.checkArgument(bool);
-        this.aLO = paramw;
-        this.beV = paramLong1;
-        this.beW = paramLong2;
+        this.cFL = paramw;
+        this.cYO = paramLong1;
+        this.cYP = paramLong2;
         AppMethodBeat.o(92628);
         return;
         bool = false;
@@ -182,23 +182,25 @@ public final class e
       }
     }
     
-    public final int W(Object paramObject)
+    public final int QW()
     {
-      AppMethodBeat.i(92632);
-      int i = this.aLO.W(paramObject);
-      AppMethodBeat.o(92632);
-      return i;
+      return 1;
+    }
+    
+    public final int QX()
+    {
+      return 1;
     }
     
     public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
     {
       long l = -9223372036854775807L;
       AppMethodBeat.i(92631);
-      parama = this.aLO.a(0, parama, paramBoolean);
-      if (this.beW != -9223372036854775807L) {
-        l = this.beW - this.beV;
+      parama = this.cFL.a(0, parama, paramBoolean);
+      if (this.cYP != -9223372036854775807L) {
+        l = this.cYP - this.cYO;
       }
-      parama.aNk = l;
+      parama.cHg = l;
       AppMethodBeat.o(92631);
       return parama;
     }
@@ -206,30 +208,30 @@ public final class e
     public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
     {
       AppMethodBeat.i(92630);
-      paramb = this.aLO.a(0, paramb, paramBoolean, paramLong);
-      if (this.beW != -9223372036854775807L)
+      paramb = this.cFL.a(0, paramb, paramBoolean, paramLong);
+      if (this.cYP != -9223372036854775807L)
       {
-        paramLong = this.beW - this.beV;
-        paramb.aNk = paramLong;
-        if (paramb.aOb != -9223372036854775807L)
+        paramLong = this.cYP - this.cYO;
+        paramb.cHg = paramLong;
+        if (paramb.cHX != -9223372036854775807L)
         {
-          paramb.aOb = Math.max(paramb.aOb, this.beV);
-          if (this.beW != -9223372036854775807L) {
+          paramb.cHX = Math.max(paramb.cHX, this.cYO);
+          if (this.cYP != -9223372036854775807L) {
             break label176;
           }
         }
       }
       label176:
-      for (paramLong = paramb.aOb;; paramLong = Math.min(paramb.aOb, this.beW))
+      for (paramLong = paramb.cHX;; paramLong = Math.min(paramb.cHX, this.cYP))
       {
-        paramb.aOb = paramLong;
-        paramb.aOb -= this.beV;
-        paramLong = com.google.android.exoplayer2.b.y(this.beV);
-        if (paramb.aNV != -9223372036854775807L) {
-          paramb.aNV += paramLong;
+        paramb.cHX = paramLong;
+        paramb.cHX -= this.cYO;
+        paramLong = com.google.android.exoplayer2.b.bM(this.cYO);
+        if (paramb.cHR != -9223372036854775807L) {
+          paramb.cHR += paramLong;
         }
-        if (paramb.aNW != -9223372036854775807L) {
-          paramb.aNW = (paramLong + paramb.aNW);
+        if (paramb.cHS != -9223372036854775807L) {
+          paramb.cHS = (paramLong + paramb.cHS);
         }
         AppMethodBeat.o(92630);
         return paramb;
@@ -238,28 +240,26 @@ public final class e
       }
     }
     
-    public final int bf(int paramInt1, int paramInt2)
+    public final int bf(Object paramObject)
+    {
+      AppMethodBeat.i(92632);
+      int i = this.cFL.bf(paramObject);
+      AppMethodBeat.o(92632);
+      return i;
+    }
+    
+    public final int ca(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(92629);
-      paramInt1 = this.aLO.bf(paramInt1, paramInt2);
+      paramInt1 = this.cFL.ca(paramInt1, paramInt2);
       AppMethodBeat.o(92629);
       return paramInt1;
-    }
-    
-    public final int rv()
-    {
-      return 1;
-    }
-    
-    public final int rw()
-    {
-      return 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.source.e
  * JD-Core Version:    0.7.0.1
  */

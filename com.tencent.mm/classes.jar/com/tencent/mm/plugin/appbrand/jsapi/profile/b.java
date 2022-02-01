@@ -1,66 +1,103 @@
 package com.tencent.mm.plugin.appbrand.jsapi.profile;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.ipc.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenUserProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenUserProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends c<e>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<f>
 {
-  private static final int CTRL_INDEX = 559;
-  private static final String NAME = "openUserProfile";
-  public static final b.a plI;
+  private static final int CTRL_INDEX;
+  private static final String NAME;
+  public static final a sqH;
   
   static
   {
     AppMethodBeat.i(50640);
-    plI = new b.a((byte)0);
+    sqH = new a((byte)0);
     NAME = "openUserProfile";
     CTRL_INDEX = 559;
     AppMethodBeat.o(50640);
   }
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  private static final void a(f paramf, int paramInt, b paramb, String paramString1, String paramString2, ProfileResult paramProfileResult)
+  {
+    int i = 1;
+    AppMethodBeat.i(325855);
+    s.u(paramf, "$env");
+    s.u(paramb, "this$0");
+    Log.i("MicroMsg.JsApiOpenUserProfile", "onReceiveResult resultCode:%d", new Object[] { Integer.valueOf(paramProfileResult.resultCode) });
+    switch (paramProfileResult.resultCode)
+    {
+    default: 
+      paramf.callback(paramInt, paramb.ZP("fail"));
+      AppMethodBeat.o(325855);
+      return;
+    case 0: 
+      paramf.callback(paramInt, paramb.ZP("fail"));
+      AppMethodBeat.o(325855);
+      return;
+    case 1: 
+      Intent localIntent = new Intent();
+      if (!Util.isNullOrNil(paramString1)) {
+        localIntent.putExtra("key_add_contact_report_info", paramString1);
+      }
+      if ((paramProfileResult.sqJ & 0x1) != 0) {}
+      while (i == 0)
+      {
+        localIntent.putExtra("Contact_User", paramString2);
+        com.tencent.mm.br.c.b(paramf.getContext(), "profile", ".ui.ContactInfoUI", localIntent);
+        paramf.callback(paramInt, paramb.ZP("ok"));
+        AppMethodBeat.o(325855);
+        return;
+        i = 0;
+      }
+      Log.i("MicroMsg.JsApiOpenUserProfile", "onReceiveResult, fail:not user contact");
+      paramf.callback(paramInt, paramb.ZP("fail:not user contact"));
+      AppMethodBeat.o(325855);
+      return;
+    }
+    paramf.callback(paramInt, paramb.ZP("cancel"));
+    AppMethodBeat.o(325855);
+  }
+  
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(50639);
-    p.k(parame, "env");
-    p.k(paramJSONObject, "data");
+    s.u(paramf, "env");
+    s.u(paramJSONObject, "data");
     Object localObject = paramJSONObject.optString("username");
     int i = paramJSONObject.optInt("scene", 122);
-    final String str = paramJSONObject.optString("profileReportInfo");
+    String str = paramJSONObject.optString("profileReportInfo");
     if (Util.isNullOrNil((String)localObject))
     {
-      parame.j(paramInt, agS("fail:invalid data"));
+      paramf.callback(paramInt, ZP("fail:invalid data"));
       AppMethodBeat.o(50639);
       return;
     }
     paramJSONObject = new ProfileRequest();
     paramJSONObject.username = ((String)localObject);
     paramJSONObject.scene = i;
-    localObject = (AppBrandProxyUIProcessTask.b)new b(this, parame, paramInt, str, (String)localObject);
-    a.a(parame.getContext(), (AppBrandProxyUIProcessTask.ProcessRequest)paramJSONObject, (AppBrandProxyUIProcessTask.b)localObject);
+    localObject = new b..ExternalSyntheticLambda0(paramf, paramInt, this, str, (String)localObject);
+    a.a(paramf.getContext(), (AppBrandProxyUIProcessTask.ProcessRequest)paramJSONObject, (AppBrandProxyUIProcessTask.b)localObject);
     AppMethodBeat.o(50639);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
-  static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
-    implements AppBrandProxyUIProcessTask.b<ProfileResult>
-  {
-    b(b paramb, e parame, int paramInt, String paramString1, String paramString2) {}
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiOpenUserProfile$Companion;", "", "()V", "CTRL_INDEX", "", "getCTRL_INDEX$annotations", "getCTRL_INDEX", "()I", "NAME", "", "getNAME$annotations", "getNAME", "()Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.profile.b
  * JD-Core Version:    0.7.0.1
  */

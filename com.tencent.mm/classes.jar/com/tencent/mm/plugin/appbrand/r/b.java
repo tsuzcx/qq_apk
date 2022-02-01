@@ -1,89 +1,135 @@
 package com.tencent.mm.plugin.appbrand.r;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.fik;
-import com.tencent.mm.protocal.protobuf.fil;
-import com.tencent.mm.protocal.protobuf.fim;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ba.i;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.multitask.b.c;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.protocal.protobuf.fi;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.Locale;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
-  extends q
-  implements m
+  extends c
 {
-  private i jQg;
-  private d lyx;
-  private fil qie;
+  private w qxC;
   
-  public b()
+  public b(com.tencent.mm.plugin.multitask.a.a parama, w paramw)
   {
-    AppMethodBeat.i(47749);
-    d.a locala = new d.a();
-    locala.lBU = new fik();
-    locala.lBV = new fil();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearchtitle";
-    locala.funcId = getType();
-    locala.lBW = 0;
-    locala.respCmdId = 0;
-    this.lyx = locala.bgN();
-    d.b.b(this.lyx.lBR);
-    AppMethodBeat.o(47749);
+    super(parama);
+    AppMethodBeat.i(317603);
+    this.qxC = paramw;
+    Log.i("MicroMsg.AppBrandMultiTaskHelper", "create, runtime:%s", new Object[] { Integer.valueOf(paramw.hashCode()) });
+    AppMethodBeat.o(317603);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final void J(int paramInt, String paramString)
   {
-    AppMethodBeat.i(47750);
-    Log.i("MicroMsg.NetSceneGetWeAppSearchTitle", "doScene");
-    this.jQg = parami;
-    int i = dispatch(paramg, this.lyx, this);
-    AppMethodBeat.o(47750);
-    return i;
+    AppMethodBeat.i(317631);
+    super.J(paramInt, paramString);
+    AppMethodBeat.o(317631);
   }
   
-  public final int getType()
+  public final boolean af(int paramInt, boolean paramBoolean)
   {
-    return 1170;
+    AppMethodBeat.i(317613);
+    cCe();
+    paramBoolean = super.af(paramInt, paramBoolean);
+    AppMethodBeat.o(317613);
+    return paramBoolean;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final boolean cBZ()
   {
-    AppMethodBeat.i(47751);
-    Log.i("MicroMsg.NetSceneGetWeAppSearchTitle", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.qie = ((fil)d.c.b(this.lyx.lBS));
-    if (this.jQg != null) {
-      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    if (this.qie.UIk == null)
+    return false;
+  }
+  
+  public final boolean cCa()
+  {
+    AppMethodBeat.i(317634);
+    if (!this.qxC.getInitConfig().qYd)
     {
-      AppMethodBeat.o(47751);
-      return;
+      AppMethodBeat.o(317634);
+      return true;
     }
-    paramString = h.aHG().aHp();
-    paramString.set(ar.a.Vok, Locale.getDefault().getLanguage());
-    paramString.set(ar.a.Vol, this.qie.UIk.CNP);
-    paramString.set(ar.a.Voo, this.qie.UIk.UIn);
-    paramString.set(ar.a.Vop, Long.valueOf(System.currentTimeMillis()));
-    paramString.set(ar.a.Vom, this.qie.UIl.CNP);
-    paramString.set(ar.a.Von, this.qie.UIm.CNP);
-    AppMethodBeat.o(47751);
+    AppMethodBeat.o(317634);
+    return false;
+  }
+  
+  public final boolean cCb()
+  {
+    return false;
+  }
+  
+  public final boolean cCc()
+  {
+    return true;
+  }
+  
+  public final boolean cCd()
+  {
+    return true;
+  }
+  
+  public final void cCe()
+  {
+    AppMethodBeat.i(317628);
+    for (;;)
+    {
+      try
+      {
+        AppBrandInitConfigWC localAppBrandInitConfigWC = this.qxC.getInitConfig();
+        if (localAppBrandInitConfigWC != null)
+        {
+          this.LCE.gkh().aaXP = localAppBrandInitConfigWC.iconUrl;
+          this.LCE.gkh().nickname = localAppBrandInitConfigWC.hEy;
+          if (this.qxC.qsh.eul == 1)
+          {
+            this.LCE.gkh().tag = MMApplicationContext.getContext().getString(ba.i.app_brand_app_debug_type_testing);
+            fi localfi = new fi();
+            localfi.appId = localAppBrandInitConfigWC.appId;
+            localfi.username = localAppBrandInitConfigWC.username;
+            localfi.euz = localAppBrandInitConfigWC.eul;
+            localfi.appServiceType = localAppBrandInitConfigWC.appServiceType;
+            Log.i("MicroMsg.AppBrandMultiTaskHelper", "fillMultiTaskInfo username:%s,appid:%s,versionType:%d", new Object[] { localfi.username, localfi.appId, Integer.valueOf(localfi.euz) });
+            this.LCE.field_data = localfi.toByteArray();
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(317628);
+          return;
+        }
+        if (this.qxC.qsh.eul == 2) {
+          this.LCE.gkh().tag = MMApplicationContext.getContext().getString(ba.i.app_brand_app_debug_type_previewing);
+        } else {
+          this.LCE.gkh().tag = null;
+        }
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.AppBrandMultiTaskHelper", "onMenuMultiTaskSelected error, ex = " + localException.getMessage());
+        AppMethodBeat.o(317628);
+        return;
+      }
+    }
+  }
+  
+  public final void ke(boolean paramBoolean)
+  {
+    AppMethodBeat.i(317606);
+    cCe();
+    super.ke(paramBoolean);
+    AppMethodBeat.o(317606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.b
  * JD-Core Version:    0.7.0.1
  */

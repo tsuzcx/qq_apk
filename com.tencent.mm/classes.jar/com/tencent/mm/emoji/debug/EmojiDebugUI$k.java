@@ -1,24 +1,23 @@
 package com.tencent.mm.emoji.debug;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import kotlin.g.b.aa.a;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class EmojiDebugUI$k
-  implements DialogInterface.OnCancelListener
+  extends u
+  implements a<ah>
 {
-  EmojiDebugUI$k(aa.a parama) {}
-  
-  public final void onCancel(DialogInterface paramDialogInterface)
+  EmojiDebugUI$k(String paramString1, String paramString2, EmojiDebugUI paramEmojiDebugUI)
   {
-    this.jEV.aaBx = true;
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.debug.EmojiDebugUI.k
  * JD-Core Version:    0.7.0.1
  */

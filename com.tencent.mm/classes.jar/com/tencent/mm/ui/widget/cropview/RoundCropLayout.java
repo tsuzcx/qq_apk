@@ -27,30 +27,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.d;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ui.bd;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DEFAULT_CROP_WIDTH_RATIO", "", "TAG", "", "circleAreaPaint", "Landroid/graphics/Paint;", "circleLinePaint", "cropLayerColor", "cropLineColor", "cropLineWidth", "cropWidth", "cropWidthRatio", "imageBitmap", "Landroid/graphics/Bitmap;", "imageView", "Lcom/tencent/mm/ui/base/MultiTouchImageView;", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "scrollDetector", "Landroid/view/GestureDetector;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getCropBitmap", "onLayout", "changed", "", "left", "top", "right", "bottom", "setBitmap", "bitmap", "setCropLayerColor", "colorValue", "setCropLineColor", "setCropWidth", "width", "setCropWidthRatio", "ratio", "setImagePath", "filePath", "ScrollScaleListener", "SimpleTouchListener", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DEFAULT_CROP_WIDTH_RATIO", "", "TAG", "", "circleAreaPaint", "Landroid/graphics/Paint;", "circleLinePaint", "cropLayerColor", "cropLineColor", "cropLineWidth", "cropWidth", "cropWidthRatio", "imageBitmap", "Landroid/graphics/Bitmap;", "imageView", "Lcom/tencent/mm/ui/base/MultiTouchImageView;", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "scrollDetector", "Landroid/view/GestureDetector;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getCropBitmap", "onLayout", "changed", "", "left", "top", "right", "bottom", "setBitmap", "bitmap", "setCropLayerColor", "colorValue", "setCropLineColor", "setCropWidth", "width", "setCropWidthRatio", "ratio", "setImagePath", "filePath", "ScrollScaleListener", "SimpleTouchListener", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RoundCropLayout
   extends FrameLayout
 {
   private final String TAG;
-  private ScaleGestureDetector YdQ;
-  private final float YlQ;
-  private float YlR;
-  private int YlS;
-  private int YlT;
-  private int YlU;
-  private Paint YlV;
-  private Paint YlW;
-  private GestureDetector YlX;
+  private ScaleGestureDetector afVL;
+  private final float agdF;
+  private float agdG;
+  private int agdH;
+  private int agdI;
+  private int agdJ;
+  private Paint agdK;
+  private Paint agdL;
+  private GestureDetector agdM;
   private Bitmap imageBitmap;
-  private int krV;
-  private MultiTouchImageView oQr;
+  private int mVP;
+  private MultiTouchImageView rUf;
   
   public RoundCropLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -64,26 +64,26 @@ public final class RoundCropLayout
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164466);
     this.TAG = "MicroMsg.RoundCropLayout";
-    this.YlQ = 0.9F;
-    this.YlS = -1;
-    this.YlT = aw.fromDPToPix(getContext(), 1);
-    this.YlU = getResources().getColor(a.d.BW_0_Alpha_0_3);
-    this.YlV = new Paint();
-    this.YlW = new Paint();
+    this.agdF = 0.9F;
+    this.agdH = -1;
+    this.agdI = bd.fromDPToPix(getContext(), 1);
+    this.agdJ = getResources().getColor(a.d.BW_0_Alpha_0_3);
+    this.agdK = new Paint();
+    this.agdL = new Paint();
     setWillNotDraw(false);
-    this.YlV.setColor(this.YlS);
-    this.YlV.setStrokeWidth(this.YlT);
-    this.YlV.setAntiAlias(true);
-    this.YlV.setStyle(Paint.Style.STROKE);
-    this.YlW.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.oQr = new MultiTouchImageView(paramContext, null);
-    addView((View)this.oQr, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    this.agdK.setColor(this.agdH);
+    this.agdK.setStrokeWidth(this.agdI);
+    this.agdK.setAntiAlias(true);
+    this.agdK.setStyle(Paint.Style.STROKE);
+    this.agdL.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.rUf = new MultiTouchImageView(paramContext, null);
+    addView((View)this.rUf, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     paramAttributeSet = new a();
-    this.YlX = new GestureDetector(paramContext, (GestureDetector.OnGestureListener)paramAttributeSet);
-    this.YdQ = new ScaleGestureDetector(paramContext, (ScaleGestureDetector.OnScaleGestureListener)paramAttributeSet);
-    this.YdQ.setQuickScaleEnabled(true);
-    this.oQr.setOnTouchListener((View.OnTouchListener)new b());
-    setCropWidthRatio(this.YlQ);
+    this.agdM = new GestureDetector(paramContext, (GestureDetector.OnGestureListener)paramAttributeSet);
+    this.afVL = new ScaleGestureDetector(paramContext, (ScaleGestureDetector.OnScaleGestureListener)paramAttributeSet);
+    this.afVL.setQuickScaleEnabled(true);
+    this.rUf.setOnTouchListener((View.OnTouchListener)new RoundCropLayout.b(this));
+    setCropWidthRatio(this.agdF);
     AppMethodBeat.o(164466);
   }
   
@@ -94,9 +94,9 @@ public final class RoundCropLayout
     if (paramCanvas != null)
     {
       int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
-      paramCanvas.drawColor(this.YlU);
-      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.krV / 2 + this.YlT, this.YlV);
-      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.krV / 2, this.YlW);
+      paramCanvas.drawColor(this.agdJ);
+      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.mVP / 2 + this.agdI, this.agdK);
+      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.mVP / 2, this.agdL);
       paramCanvas.restoreToCount(i);
     }
     AppMethodBeat.o(164464);
@@ -108,13 +108,13 @@ public final class RoundCropLayout
     Bitmap localBitmap = this.imageBitmap;
     if (localBitmap != null)
     {
-      int i = (getWidth() - this.krV) / 2;
-      int j = (getHeight() - this.krV) / 2;
+      int i = (getWidth() - this.mVP) / 2;
+      int j = (getHeight() - this.mVP) / 2;
       Matrix localMatrix = new Matrix();
-      this.oQr.getImageMatrix().invert(localMatrix);
+      this.rUf.getImageMatrix().invert(localMatrix);
       Object localObject = new RectF();
       localMatrix.mapRect((RectF)localObject, new RectF(i, j, getWidth() - i, getHeight() - j));
-      Log.i(this.TAG, "cropArea ".concat(String.valueOf(localObject)));
+      Log.i(this.TAG, s.X("cropArea ", localObject));
       if (((RectF)localObject).left < 0.0F) {
         ((RectF)localObject).left = 0.0F;
       }
@@ -127,13 +127,11 @@ public final class RoundCropLayout
       if (((RectF)localObject).bottom > localBitmap.getHeight()) {
         ((RectF)localObject).bottom = localBitmap.getHeight();
       }
-      Log.i(this.TAG, "fix cropArea ".concat(String.valueOf(localObject)));
+      Log.i(this.TAG, s.X("fix cropArea ", localObject));
       if ((((RectF)localObject).width() > 0.0F) && (((RectF)localObject).height() > 0.0F))
       {
         localBitmap = this.imageBitmap;
-        if (localBitmap == null) {
-          p.iCn();
-        }
+        s.checkNotNull(localBitmap);
         localObject = Bitmap.createBitmap(localBitmap, (int)((RectF)localObject).left, (int)((RectF)localObject).top, (int)((RectF)localObject).width(), (int)((RectF)localObject).height());
         AppMethodBeat.o(164462);
         return localObject;
@@ -147,8 +145,8 @@ public final class RoundCropLayout
   {
     AppMethodBeat.i(164463);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.krV == 0) {
-      this.krV = ((int)(this.YlR * getWidth()));
+    if (this.mVP == 0) {
+      this.mVP = ((int)(this.agdG * getWidth()));
     }
     AppMethodBeat.o(164463);
   }
@@ -160,68 +158,72 @@ public final class RoundCropLayout
     paramBitmap = this.imageBitmap;
     if (paramBitmap != null)
     {
-      this.oQr.setImageBitmap(paramBitmap);
-      this.oQr.di(paramBitmap.getWidth(), paramBitmap.getHeight());
-      this.oQr.hJx();
-      AppMethodBeat.o(164460);
-      return;
+      this.rUf.setImageBitmap(paramBitmap);
+      this.rUf.dU(paramBitmap.getWidth(), paramBitmap.getHeight());
+      this.rUf.jma();
     }
     AppMethodBeat.o(164460);
   }
   
   public final void setCropLayerColor(int paramInt)
   {
-    this.YlU = paramInt;
+    this.agdJ = paramInt;
   }
   
   public final void setCropLineColor(int paramInt)
   {
-    this.YlS = paramInt;
+    this.agdH = paramInt;
   }
   
   public final void setCropWidth(int paramInt)
   {
-    this.krV = paramInt;
+    this.mVP = paramInt;
   }
   
   public final void setCropWidthRatio(float paramFloat)
   {
-    this.YlR = paramFloat;
+    this.agdG = paramFloat;
   }
   
-  public final void setImagePath(final String paramString)
+  public final void setImagePath(String paramString)
   {
     AppMethodBeat.i(164461);
-    kotlin.c.a.as((kotlin.g.a.a)new c(this, paramString));
+    kotlin.c.a.cn((kotlin.g.a.a)new c(paramString, this));
     AppMethodBeat.o(164461);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener;", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "onDown", "", "e", "Landroid/view/MotionEvent;", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "onScroll", "e1", "e2", "distanceX", "", "distanceY", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener;", "Landroid/view/GestureDetector$SimpleOnGestureListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "onDown", "", "e", "Landroid/view/MotionEvent;", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleBegin", "onScaleEnd", "", "onScroll", "e1", "e2", "distanceX", "", "distanceY", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   final class a
     extends GestureDetector.SimpleOnGestureListener
     implements ScaleGestureDetector.OnScaleGestureListener
   {
+    public a()
+    {
+      AppMethodBeat.i(252518);
+      AppMethodBeat.o(252518);
+    }
+    
     public final boolean onContextClick(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(193940);
+      AppMethodBeat.i(252560);
       b localb = new b();
-      localb.bn(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+      localb.cH(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
       boolean bool = super.onContextClick(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(193940);
+      AppMethodBeat.o(252560);
       return bool;
     }
     
     public final boolean onDoubleTap(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(193939);
+      AppMethodBeat.i(252556);
       b localb = new b();
-      localb.bn(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+      localb.cH(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
       boolean bool = super.onDoubleTap(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(193939);
+      AppMethodBeat.o(252556);
       return bool;
     }
     
@@ -232,13 +234,13 @@ public final class RoundCropLayout
     
     public final void onLongPress(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(193936);
+      AppMethodBeat.i(252554);
       b localb = new b();
-      localb.bn(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+      localb.cH(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aYj());
       super.onLongPress(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-      AppMethodBeat.o(193936);
+      AppMethodBeat.o(252554);
     }
     
     public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
@@ -246,8 +248,11 @@ public final class RoundCropLayout
       AppMethodBeat.i(164456);
       if (paramScaleGestureDetector != null)
       {
-        Log.d(RoundCropLayout.a(this.YlY), "onScale scaleFactor " + paramScaleGestureDetector.getScaleFactor() + " imageScale " + RoundCropLayout.d(this.YlY).getScale() + " pivot (" + paramScaleGestureDetector.getFocusX() + ", " + paramScaleGestureDetector.getFocusY() + ')');
-        RoundCropLayout.d(this.YlY).s(paramScaleGestureDetector.getScaleFactor() * RoundCropLayout.d(this.YlY).getScale(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        RoundCropLayout localRoundCropLayout = this.agdN;
+        Log.d(RoundCropLayout.a(localRoundCropLayout), "onScale scaleFactor " + paramScaleGestureDetector.getScaleFactor() + " imageScale " + RoundCropLayout.d(localRoundCropLayout).getScale() + " pivot (" + paramScaleGestureDetector.getFocusX() + ", " + paramScaleGestureDetector.getFocusY() + ')');
+        MultiTouchImageView localMultiTouchImageView = RoundCropLayout.d(localRoundCropLayout);
+        float f = paramScaleGestureDetector.getScaleFactor();
+        localMultiTouchImageView.x(RoundCropLayout.d(localRoundCropLayout).getScale() * f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
       }
       AppMethodBeat.o(164456);
       return true;
@@ -256,7 +261,7 @@ public final class RoundCropLayout
     public final boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
     {
       AppMethodBeat.i(164454);
-      Log.d(RoundCropLayout.a(this.YlY), "scale begin");
+      Log.d(RoundCropLayout.a(this.agdN), "scale begin");
       AppMethodBeat.o(164454);
       return true;
     }
@@ -264,7 +269,7 @@ public final class RoundCropLayout
     public final void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
     {
       AppMethodBeat.i(164455);
-      Log.d(RoundCropLayout.a(this.YlY), "scale end");
+      Log.d(RoundCropLayout.a(this.agdN), "scale end");
       AppMethodBeat.o(164455);
     }
     
@@ -273,8 +278,9 @@ public final class RoundCropLayout
       AppMethodBeat.i(164453);
       if (paramMotionEvent2 != null)
       {
-        Log.d(RoundCropLayout.a(this.YlY), "distanceX " + paramFloat1 + " distanceY " + paramFloat2);
-        RoundCropLayout.d(this.YlY).az(-paramFloat1, -paramFloat2);
+        paramMotionEvent1 = this.agdN;
+        Log.d(RoundCropLayout.a(paramMotionEvent1), "distanceX " + paramFloat1 + " distanceY " + paramFloat2);
+        RoundCropLayout.d(paramMotionEvent1).be(-paramFloat1, -paramFloat2);
         AppMethodBeat.o(164453);
         return true;
       }
@@ -284,94 +290,39 @@ public final class RoundCropLayout
     
     public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(193935);
+      AppMethodBeat.i(252549);
       b localb = new b();
-      localb.bn(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+      localb.cH(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aYj());
       boolean bool = super.onSingleTapUp(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/cropview/RoundCropLayout$ScrollScaleListener", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(193935);
+      AppMethodBeat.o(252549);
       return bool;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener;", "Landroid/view/View$OnTouchListener;", "(Lcom/tencent/mm/ui/widget/cropview/RoundCropLayout;)V", "isScale", "", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "libmmui_release"})
-  final class b
-    implements View.OnTouchListener
-  {
-    private boolean krF;
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(164457);
-      if (paramMotionEvent != null)
-      {
-        paramView = Integer.valueOf(paramMotionEvent.getActionMasked());
-        Log.d(RoundCropLayout.a(this.YlY), "action ".concat(String.valueOf(paramView)));
-        if (paramView != null) {
-          break label144;
-        }
-        label40:
-        if (paramView != null) {
-          break label159;
-        }
-      }
-      for (;;)
-      {
-        RoundCropLayout.b(this.YlY).onTouchEvent(paramMotionEvent);
-        if (!this.krF)
-        {
-          paramView = RoundCropLayout.c(this.YlY);
-          paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b(paramView, paramMotionEvent.aFh(), "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)paramMotionEvent.sf(0)), "com/tencent/mm/ui/widget/cropview/RoundCropLayout$SimpleTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-        }
-        AppMethodBeat.o(164457);
-        return true;
-        paramView = null;
-        break;
-        label144:
-        if (paramView.intValue() != 0) {
-          break label40;
-        }
-        this.krF = false;
-        continue;
-        label159:
-        if ((paramView.intValue() == 5) && (paramMotionEvent.getPointerCount() == 2)) {
-          this.krF = true;
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    c(RoundCropLayout paramRoundCropLayout, String paramString)
+    c(String paramString, RoundCropLayout paramRoundCropLayout)
     {
       super();
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/ui/widget/cropview/RoundCropLayout$setImagePath$1$1$1"})
-    static final class a
-      implements Runnable
+    private static final void a(RoundCropLayout paramRoundCropLayout, Bitmap paramBitmap)
     {
-      a(RoundCropLayout.c paramc, Bitmap paramBitmap) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(164458);
-        this.YlZ.YlY.setBitmap(this.FFq);
-        AppMethodBeat.o(164458);
-      }
+      AppMethodBeat.i(252522);
+      s.u(paramRoundCropLayout, "this$0");
+      paramRoundCropLayout.setBitmap(paramBitmap);
+      AppMethodBeat.o(252522);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cropview.RoundCropLayout
  * JD-Core Version:    0.7.0.1
  */

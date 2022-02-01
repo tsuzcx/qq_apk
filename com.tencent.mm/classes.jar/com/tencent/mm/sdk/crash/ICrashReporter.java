@@ -6,7 +6,7 @@ public abstract interface ICrashReporter
 {
   public abstract void addCrashReportListener(ICrashReportListener paramICrashReportListener);
   
-  public abstract void addExtraMessageGetter(ICrashReportExtraMessageGetter paramICrashReportExtraMessageGetter);
+  public abstract void addExtraMessageGetter(ICrashReporter.ICrashReportExtraMessageGetter paramICrashReportExtraMessageGetter);
   
   public abstract void init(Context paramContext, boolean paramBoolean);
   
@@ -24,11 +24,6 @@ public abstract interface ICrashReporter
   
   public abstract void setupSubReporter(ISubReporter paramISubReporter);
   
-  public static abstract interface ICrashReportExtraMessageGetter
-  {
-    public abstract String getCrashReportExtraMessage();
-  }
-  
   public static abstract interface ICrashReportListener
   {
     public abstract void onCrashDumped(String paramString);
@@ -36,7 +31,7 @@ public abstract interface ICrashReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.crash.ICrashReporter
  * JD-Core Version:    0.7.0.1
  */

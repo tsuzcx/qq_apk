@@ -1,27 +1,21 @@
 package com.tencent.mm.emoji.sync;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "", "(Ljava/lang/String;I)V", "Init", "Checking", "Syncing", "WaitWifi", "WaitLoadMore", "End", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/sync/EmojiSyncManager$SyncState;", "", "(Ljava/lang/String;I)V", "Init", "Checking", "Syncing", "WaitWifi", "WaitLoadMore", "End", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum EmojiSyncManager$b
 {
   static
   {
     AppMethodBeat.i(105739);
-    b localb1 = new b("Init", 0);
-    jOA = localb1;
-    b localb2 = new b("Checking", 1);
-    jOB = localb2;
-    b localb3 = new b("Syncing", 2);
-    jOC = localb3;
-    b localb4 = new b("WaitWifi", 3);
-    jOD = localb4;
-    b localb5 = new b("WaitLoadMore", 4);
-    jOE = localb5;
-    b localb6 = new b("End", 5);
-    jOF = localb6;
-    jOG = new b[] { localb1, localb2, localb3, localb4, localb5, localb6 };
+    mnu = new b("Init", 0);
+    mnv = new b("Checking", 1);
+    mnw = new b("Syncing", 2);
+    mnx = new b("WaitWifi", 3);
+    mny = new b("WaitLoadMore", 4);
+    mnz = new b("End", 5);
+    mnA = new b[] { mnu, mnv, mnw, mnx, mny, mnz };
     AppMethodBeat.o(105739);
   }
   

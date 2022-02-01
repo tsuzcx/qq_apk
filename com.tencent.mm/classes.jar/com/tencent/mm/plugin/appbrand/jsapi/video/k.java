@@ -8,43 +8,19 @@ import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.g;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.e;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 public final class k
 {
-  public static String GN(long paramLong)
-  {
-    AppMethodBeat.i(137850);
-    if (paramLong < 3600000L) {}
-    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
-    {
-      localObject = new SimpleDateFormat((String)localObject);
-      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
-      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
-      AppMethodBeat.o(137850);
-      return localObject;
-    }
-  }
-  
-  public static boolean aiP(String paramString)
-  {
-    AppMethodBeat.i(230065);
-    boolean bool = h.aiP(paramString);
-    AppMethodBeat.o(230065);
-    return bool;
-  }
-  
   public static void b(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(230079);
+    AppMethodBeat.i(328191);
     if (!(paramContext instanceof Activity))
     {
-      AppMethodBeat.o(230079);
+      AppMethodBeat.o(328191);
       return;
     }
     float f;
@@ -57,7 +33,7 @@ public final class k
       WindowManager.LayoutParams localLayoutParams = paramContext.getWindow().getAttributes();
       localLayoutParams.screenBrightness = f;
       paramContext.getWindow().setAttributes(localLayoutParams);
-      AppMethodBeat.o(230079);
+      AppMethodBeat.o(328191);
       return;
       f = paramFloat;
       if (paramFloat > 1.0F) {
@@ -66,9 +42,9 @@ public final class k
     }
   }
   
-  private static int bUC()
+  private static int cuR()
   {
-    AppMethodBeat.i(230072);
+    AppMethodBeat.i(328178);
     int k = 255;
     j = k;
     try
@@ -93,11 +69,35 @@ public final class k
         int i = j;
       }
     }
-    AppMethodBeat.o(230072);
+    AppMethodBeat.o(328178);
     return i;
   }
   
-  private static float dS(Context paramContext)
+  public static boolean d(g paramg)
+  {
+    AppMethodBeat.i(328156);
+    if ((paramg != null) && (1 == paramg.getPlayerType()))
+    {
+      AppMethodBeat.o(328156);
+      return true;
+    }
+    AppMethodBeat.o(328156);
+    return false;
+  }
+  
+  public static boolean e(g paramg)
+  {
+    AppMethodBeat.i(328162);
+    if ((paramg != null) && (2 == paramg.getPlayerType()))
+    {
+      AppMethodBeat.o(328162);
+      return true;
+    }
+    AppMethodBeat.o(328162);
+    return false;
+  }
+  
+  private static float eM(Context paramContext)
   {
     AppMethodBeat.i(137848);
     paramContext = paramContext.getContentResolver();
@@ -106,7 +106,7 @@ public final class k
     {
       float f2 = Settings.System.getInt(paramContext, "screen_brightness");
       f1 = f2;
-      int i = bUC();
+      int i = cuR();
       f1 = f2 / i;
     }
     catch (Settings.SettingNotFoundException paramContext)
@@ -120,7 +120,7 @@ public final class k
     return f1;
   }
   
-  public static float dT(Context paramContext)
+  public static float eN(Context paramContext)
   {
     AppMethodBeat.i(137849);
     if (!(paramContext instanceof Activity))
@@ -131,7 +131,7 @@ public final class k
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = dS(paramContext);
+      f = eM(paramContext);
       AppMethodBeat.o(137849);
       return f;
     }
@@ -140,14 +140,23 @@ public final class k
     return f;
   }
   
-  public static boolean f(e parame)
+  public static String iY(long paramLong)
   {
-    return parame instanceof g;
+    AppMethodBeat.i(137850);
+    if (paramLong < 3600000L) {}
+    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
+    {
+      localObject = new SimpleDateFormat((String)localObject);
+      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
+      AppMethodBeat.o(137850);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.k
  * JD-Core Version:    0.7.0.1
  */

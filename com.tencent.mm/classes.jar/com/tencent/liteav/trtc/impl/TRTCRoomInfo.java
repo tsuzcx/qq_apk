@@ -739,12 +739,12 @@ public class TRTCRoomInfo
   {
     static
     {
-      AppMethodBeat.i(222210);
+      AppMethodBeat.i(230857);
       UNSET = new TRTCRemoteMuteState("UNSET", 0);
       MUTE = new TRTCRemoteMuteState("MUTE", 1);
       UNMUTE = new TRTCRemoteMuteState("UNMUTE", 2);
       $VALUES = new TRTCRemoteMuteState[] { UNSET, MUTE, UNMUTE };
-      AppMethodBeat.o(222210);
+      AppMethodBeat.o(230857);
     }
     
     private TRTCRemoteMuteState() {}
@@ -787,7 +787,7 @@ public class TRTCRoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCRoomInfo
  * JD-Core Version:    0.7.0.1
  */

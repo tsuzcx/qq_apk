@@ -11,15 +11,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class o
-  extends bs<g>
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78547);
     Log.i("MicroMsg.JsApiDisableBounceScroll", "invoke");
-    JSONArray localJSONArray = paramb.crh.cqn.optJSONArray("place");
+    JSONArray localJSONArray = paramb.eiZ.eif.optJSONArray("place");
     if (localJSONArray == null)
     {
       Log.i("MicroMsg.JsApiDisableBounceScroll", "placeArray is null");
@@ -47,14 +47,14 @@ public class o
         AppMethodBeat.o(78547);
         return;
       }
-      ((g)paramb.crg).gUy();
+      ((g)paramb.eiY).iug();
       paramb.a("", null);
       AppMethodBeat.o(78547);
       return;
     }
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

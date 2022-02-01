@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/bd" android:textColor="@color/u_" android:id="@id/fe8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_marginBottom="5.0dip" android:text="{ddd}" />
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/i26" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/i2b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/i25" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/j1o" android:layout_width="fill_parent" android:layout_height="48.0dip" android:src="@drawable/c59" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/h_5" android:background="@drawable/aq8" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/i9" android:layout_marginBottom="@dimen/i_" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="@string/idf">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/j6" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/my_qr_code" app:iconColor="@color/BW_100_Alpha_0_9" />
+    </LinearLayout>
+    <ImageView android:id="@id/eez" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/h33" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/hn" android:textColor="#b3ffffff" android:id="@id/h37" android:visibility="invisible" android:text="@string/idc" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/tl" />
+    <ImageView android:id="@id/j29" android:padding="@dimen/j6" android:visibility="gone" android:layout_width="@dimen/apf" android:layout_height="@dimen/apf" android:src="@raw/scan_success_mark_dot" android:contentDescription="@string/gxt" />
+    <View android:id="@id/gp5" android:background="@color/g_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.scanner.ui.widget.ScanProductMaskDecorView android:id="@id/j22" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

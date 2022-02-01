@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/MMTipsPopupWindow$ShowDirection;", "", "(Ljava/lang/String;I)V", "ABOVE", "BELOW", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/MoreTabCardView$MoreTabState;", "", "(Ljava/lang/String;I)V", "ADD", "NORMAL", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum e$b
 {
   static
   {
-    AppMethodBeat.i(234491);
-    b localb1 = new b("ABOVE", 0);
-    MJB = localb1;
-    b localb2 = new b("BELOW", 1);
-    MJC = localb2;
-    MJD = new b[] { localb1, localb2 };
-    AppMethodBeat.o(234491);
+    AppMethodBeat.i(291831);
+    Twt = new b("ADD", 0);
+    Twu = new b("NORMAL", 1);
+    Twv = new b[] { Twt, Twu };
+    AppMethodBeat.o(291831);
   }
   
   private e$b() {}

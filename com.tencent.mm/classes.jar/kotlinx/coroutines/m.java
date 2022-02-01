@@ -1,31 +1,40 @@
 package kotlinx.coroutines;
 
-import kotlin.d.d;
-import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.Future;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CancellableContinuation;", "T", "Lkotlin/coroutines/Continuation;", "isActive", "", "()Z", "isCancelled", "isCompleted", "cancel", "cause", "", "completeResume", "", "token", "", "initCancellability", "invokeOnCancellation", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "resume", "value", "onCancellation", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "tryResume", "idempotent", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "tryResumeWithException", "exception", "resumeUndispatched", "Lkotlinx/coroutines/CoroutineDispatcher;", "(Lkotlinx/coroutines/CoroutineDispatcher;Ljava/lang/Object;)V", "resumeUndispatchedWithException", "kotlinx-coroutines-core"})
-public abstract interface m<T>
-  extends d<T>
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/CancelFutureOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "future", "Ljava/util/concurrent/Future;", "(Ljava/util/concurrent/Future;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class m
+  extends n
 {
-  public abstract boolean A(Throwable paramThrowable);
+  private final Future<?> dBj;
   
-  public abstract void a(af paramaf, T paramT);
+  public m(Future<?> paramFuture)
+  {
+    this.dBj = paramFuture;
+  }
   
-  public abstract void am(b<? super Throwable, x> paramb);
+  public final void N(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(188793);
+    if (paramThrowable != null) {
+      this.dBj.cancel(false);
+    }
+    AppMethodBeat.o(188793);
+  }
   
-  public abstract Object fV(T paramT);
-  
-  public abstract void fW(Object paramObject);
-  
-  public abstract boolean isCompleted();
-  
-  public abstract Object z(Throwable paramThrowable);
+  public final String toString()
+  {
+    AppMethodBeat.i(188801);
+    String str = "CancelFutureOnCancel[" + this.dBj + ']';
+    AppMethodBeat.o(188801);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.m
  * JD-Core Version:    0.7.0.1
  */

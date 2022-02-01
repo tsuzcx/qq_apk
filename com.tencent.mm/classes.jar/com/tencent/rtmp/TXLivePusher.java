@@ -1,6 +1,5 @@
 package com.tencent.rtmp;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.Surface;
@@ -29,9 +28,9 @@ public class TXLivePusher
   
   public void callExperimentalAPI(String paramString)
   {
-    AppMethodBeat.i(219701);
+    AppMethodBeat.i(218568);
     this.mTXTxLivePusherImpl.f(paramString);
-    AppMethodBeat.o(219701);
+    AppMethodBeat.o(218568);
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -43,9 +42,9 @@ public class TXLivePusher
   
   public TXAudioEffectManager getAudioEffectManager()
   {
-    AppMethodBeat.i(219683);
+    AppMethodBeat.i(218515);
     TXAudioEffectManagerImpl localTXAudioEffectManagerImpl = TXAudioEffectManagerImpl.getAutoCacheHolder();
-    AppMethodBeat.o(219683);
+    AppMethodBeat.o(218515);
     return localTXAudioEffectManagerImpl;
   }
   
@@ -303,7 +302,6 @@ public class TXLivePusher
   }
   
   @Deprecated
-  @TargetApi(18)
   public boolean setGreenScreenFile(String paramString)
   {
     AppMethodBeat.i(13587);
@@ -568,7 +566,7 @@ public class TXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePusher
  * JD-Core Version:    0.7.0.1
  */

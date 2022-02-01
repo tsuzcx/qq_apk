@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.taskbar.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.s;
-import com.tencent.mm.f.b.a.t;
-import com.tencent.mm.f.b.a.v;
-import com.tencent.mm.f.b.a.w;
+import com.tencent.mm.autogen.mmdata.rpt.u;
+import com.tencent.mm.autogen.mmdata.rpt.v;
+import com.tencent.mm.autogen.mmdata.rpt.x;
+import com.tencent.mm.autogen.mmdata.rpt.y;
 
 public final class a
 {
-  public long Mnt = 0L;
-  public String Mnu = "";
+  public long SQM = 0L;
+  public String SQN = "";
   
-  public static int RC(int paramInt)
+  public static int UG(int paramInt)
   {
     switch (paramInt)
     {
@@ -35,70 +35,76 @@ public final class a
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
   {
-    AppMethodBeat.i(214229);
-    s locals = new s();
-    locals.gfz = locals.z("session_id", this.Mnu, true);
-    locals.gfA = paramInt1;
-    locals.gfB = paramInt2;
-    locals.gfC = paramInt3;
-    locals.gfD = paramInt4;
-    locals.gfE = paramInt5;
-    locals.gfF = paramInt6;
-    locals.gfH = paramInt7;
-    locals.gfI = paramInt8;
-    locals.gfJ = paramInt9;
-    locals.gfK = paramInt10;
-    locals.gfL = paramInt11;
-    locals.bpa();
-    AppMethodBeat.o(214229);
+    AppMethodBeat.i(263961);
+    u localu = new u();
+    localu.imd = localu.F("session_id", this.SQN, true);
+    localu.ime = paramInt1;
+    localu.imf = paramInt2;
+    localu.imh = paramInt3;
+    localu.imi = paramInt4;
+    localu.imj = paramInt5;
+    localu.imk = paramInt6;
+    localu.imm = paramInt7;
+    localu.imn = paramInt8;
+    localu.imo = paramInt9;
+    localu.imp = paramInt10;
+    localu.imq = paramInt11;
+    localu.bMH();
+    AppMethodBeat.o(263961);
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(214232);
+    AppMethodBeat.i(263975);
+    x localx = new x();
+    localx.imd = localx.F("session_id", this.SQN, true);
+    localx.imw = localx.F("action_type", String.valueOf(paramInt1), true);
+    localx.imx = paramInt2;
+    localx.imy = paramInt3;
+    localx.imt = localx.F("content_id", paramString, true);
+    localx.imv = paramInt4;
+    localx.imq = paramInt5;
+    localx.imz = paramInt6;
+    localx.imA = paramInt7;
+    localx.bMH();
+    AppMethodBeat.o(263975);
+  }
+  
+  public final void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
+  {
+    AppMethodBeat.i(263968);
     v localv = new v();
-    localv.gfz = localv.z("session_id", this.Mnu, true);
-    localv.gfQ = localv.z("action_type", String.valueOf(paramInt1), true);
-    localv.gfR = paramInt2;
-    localv.gfS = paramInt3;
-    localv.gfO = localv.z("content_id", paramString, true);
-    localv.gfP = paramInt4;
-    localv.gfL = paramInt5;
-    localv.gfT = paramInt6;
-    localv.gfU = paramInt7;
-    localv.bpa();
-    AppMethodBeat.o(214232);
+    localv.imd = localv.F("session_id", this.SQN, true);
+    localv.imr = paramInt1;
+    localv.ims = paramInt2;
+    localv.imt = localv.F("content_id", paramString1, true);
+    localv.imq = paramInt3;
+    if (paramString2 != null) {
+      localv.imu = localv.F("icon_appid", paramString2, true);
+    }
+    localv.bMH();
+    AppMethodBeat.o(263968);
   }
   
-  public final void g(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  public final void b(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
-    AppMethodBeat.i(214230);
-    t localt = new t();
-    localt.gfz = localt.z("session_id", this.Mnu, true);
-    localt.gfM = paramInt1;
-    localt.gfN = paramInt2;
-    localt.gfO = localt.z("content_id", paramString, true);
-    localt.gfL = paramInt3;
-    localt.bpa();
-    AppMethodBeat.o(214230);
-  }
-  
-  public final void h(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    AppMethodBeat.i(214233);
-    w localw = new w();
-    localw.gfz = localw.z("session_id", this.Mnu, true);
-    localw.gfV = paramInt1;
-    localw.gfM = paramInt2;
-    localw.gfW = localw.z("conent_list", paramString, true);
-    localw.gfX = paramInt3;
-    localw.bpa();
-    AppMethodBeat.o(214233);
+    AppMethodBeat.i(263985);
+    y localy = new y();
+    localy.imd = localy.F("session_id", this.SQN, true);
+    localy.imB = paramInt1;
+    localy.imr = paramInt2;
+    localy.imC = localy.F("conent_list", paramString1, true);
+    localy.imD = paramInt3;
+    if (paramString2 != null) {
+      localy.imu = localy.F("icon_appid", paramString2, true);
+    }
+    localy.bMH();
+    AppMethodBeat.o(263985);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.a.a
  * JD-Core Version:    0.7.0.1
  */

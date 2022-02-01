@@ -14,19 +14,19 @@ final class KvInfoUI$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(256518);
+    AppMethodBeat.i(299596);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/expt/ui/KvInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    paramView = KvInfoUI.a(this.wrT).getText().toString().trim();
-    KvInfoUI.a(this.wrT, paramView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/expt/ui/KvInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    paramView = KvInfoUI.a(this.zNZ).getText().toString().trim();
+    KvInfoUI.a(this.zNZ, paramView);
     a.a(this, "com/tencent/mm/plugin/expt/ui/KvInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(256518);
+    AppMethodBeat.o(299596);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.ui.KvInfoUI.4
  * JD-Core Version:    0.7.0.1
  */

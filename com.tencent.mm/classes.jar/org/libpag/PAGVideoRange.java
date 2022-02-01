@@ -1,5 +1,6 @@
 package org.libpag;
 
+@Deprecated
 public class PAGVideoRange
 {
   public long endTime = 0L;

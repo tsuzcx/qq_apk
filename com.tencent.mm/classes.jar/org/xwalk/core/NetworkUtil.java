@@ -9,6 +9,7 @@ public class NetworkUtil
 {
   private static final int NON_NETWORK = 0;
   private static final int OTHER = 4;
+  private static final String TAG = "NetworkUtil";
   private static final int WIFI = 1;
   private static final int _3G = 2;
   private static final int _4G = 3;
@@ -62,7 +63,7 @@ public class NetworkUtil
     AppMethodBeat.i(157213);
     if (getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext()) == 0)
     {
-      XWalkEnvironment.addXWalkInitializeLog("no network");
+      Log.w("NetworkUtil", "no network");
       AppMethodBeat.o(157213);
       return false;
     }
@@ -73,19 +74,18 @@ public class NetworkUtil
   public static boolean isWifiAvailable()
   {
     AppMethodBeat.i(157214);
-    switch (getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext()))
+    if (getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext()) == 1)
     {
-    default: 
       AppMethodBeat.o(157214);
-      return false;
+      return true;
     }
     AppMethodBeat.o(157214);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

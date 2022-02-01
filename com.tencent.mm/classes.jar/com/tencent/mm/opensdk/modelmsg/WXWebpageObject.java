@@ -19,19 +19,19 @@ public class WXWebpageObject
   
   public WXWebpageObject()
   {
-    AppMethodBeat.i(255006);
+    AppMethodBeat.i(242996);
     this.isSecretMessage = false;
     this.extraInfoMap = null;
-    AppMethodBeat.o(255006);
+    AppMethodBeat.o(242996);
   }
   
   public WXWebpageObject(String paramString)
   {
-    AppMethodBeat.i(255008);
+    AppMethodBeat.i(242997);
     this.isSecretMessage = false;
     this.extraInfoMap = null;
     this.webpageUrl = paramString;
-    AppMethodBeat.o(255008);
+    AppMethodBeat.o(242997);
   }
   
   public boolean checkArgs()
@@ -50,7 +50,7 @@ public class WXWebpageObject
   
   public String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(255017);
+    AppMethodBeat.i(243014);
     HashMap localHashMap = this.extraInfoMap;
     if (localHashMap != null)
     {
@@ -61,9 +61,9 @@ public class WXWebpageObject
     }
     for (;;)
     {
-      AppMethodBeat.o(255017);
+      AppMethodBeat.o(243014);
       return paramString2;
-      AppMethodBeat.o(255017);
+      AppMethodBeat.o(243014);
       return null;
       label41:
       paramString2 = paramString1;
@@ -72,14 +72,14 @@ public class WXWebpageObject
   
   public void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(255016);
+    AppMethodBeat.i(243009);
     if (this.extraInfoMap == null) {
       this.extraInfoMap = new HashMap();
     }
     if (!b.b(paramString1)) {
       this.extraInfoMap.put(paramString1, paramString2);
     }
-    AppMethodBeat.o(255016);
+    AppMethodBeat.o(243009);
   }
   
   public void serialize(Bundle paramBundle)

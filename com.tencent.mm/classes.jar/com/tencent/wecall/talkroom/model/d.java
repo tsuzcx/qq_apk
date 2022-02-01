@@ -9,42 +9,42 @@ import com.tencent.pb.common.c.f;
 
 public final class d
 {
-  private String LbA;
-  a.ba ZVl;
-  private a.bb ZVm;
+  private String RBD;
+  a.ba ahZK;
+  private a.bb ahZL;
   
   public d(a.ba paramba)
   {
-    AppMethodBeat.i(208870);
+    AppMethodBeat.i(212279);
     a(paramba);
-    AppMethodBeat.o(208870);
+    AppMethodBeat.o(212279);
   }
   
   public d(a.ba paramba, a.bb parambb)
   {
-    AppMethodBeat.i(208872);
+    AppMethodBeat.i(212280);
     a(paramba);
     if (parambb == null)
     {
       b.w("tagorewang:TalkRoomMember", new Object[] { "set null profile" });
-      AppMethodBeat.o(208872);
+      AppMethodBeat.o(212280);
       return;
     }
-    this.ZVm = parambb;
-    AppMethodBeat.o(208872);
+    this.ahZL = parambb;
+    AppMethodBeat.o(212280);
   }
   
   public final void a(a.ba paramba)
   {
-    AppMethodBeat.i(208874);
+    AppMethodBeat.i(212282);
     if (paramba == null)
     {
       b.w("tagorewang:TalkRoomMember", new Object[] { "set null info" });
-      AppMethodBeat.o(208874);
+      AppMethodBeat.o(212282);
       return;
     }
-    this.ZVl = paramba;
-    AppMethodBeat.o(208874);
+    this.ahZK = paramba;
+    AppMethodBeat.o(212282);
   }
   
   public final boolean equals(Object paramObject)
@@ -55,7 +55,7 @@ public final class d
       AppMethodBeat.o(62597);
       return false;
     }
-    boolean bool = f.oC(iuK(), ((d)paramObject).iuK());
+    boolean bool = f.qA(kef(), ((d)paramObject).kef());
     AppMethodBeat.o(62597);
     return bool;
   }
@@ -69,7 +69,7 @@ public final class d
       int i;
       try
       {
-        Object localObject2 = this.LbA;
+        Object localObject2 = this.RBD;
         if ((localObject2 == null) || (((String)localObject2).trim().length() == 0))
         {
           AppMethodBeat.o(62595);
@@ -117,7 +117,7 @@ public final class d
       catch (Exception localException)
       {
         b.w("tagorewang:TalkRoomMember", new Object[] { "getDisplayName err: ", localException });
-        String str = this.LbA;
+        String str = this.RBD;
         AppMethodBeat.o(62595);
         return str;
       }
@@ -135,24 +135,24 @@ public final class d
   
   public final int getMemberId()
   {
-    if (this.ZVl == null) {
+    if (this.ahZK == null) {
       return -1;
     }
-    return this.ZVl.tQm;
+    return this.ahZK.wTC;
   }
   
   public final int getState()
   {
-    if (this.ZVl == null) {
+    if (this.ahZK == null) {
       return 0;
     }
-    return this.ZVl.status;
+    return this.ahZK.status;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(62598);
-    String str = iuK();
+    String str = kef();
     if (str == null)
     {
       AppMethodBeat.o(62598);
@@ -166,15 +166,15 @@ public final class d
   public final boolean isSelf()
   {
     AppMethodBeat.i(62599);
-    boolean bool = f.oC(a.ila(), iuK());
+    boolean bool = f.qA(a.jRr(), kef());
     AppMethodBeat.o(62599);
     return bool;
   }
   
-  public final String iuK()
+  public final String kef()
   {
-    if (this.ZVl != null) {
-      return this.ZVl.fEC;
+    if (this.ahZK != null) {
+      return this.ahZK.hJs;
     }
     return "";
   }
@@ -183,26 +183,26 @@ public final class d
   {
     AppMethodBeat.i(62596);
     int i = 0;
-    if (this.ZVl != null) {
-      i = this.ZVl.RCR;
+    if (this.ahZK != null) {
+      i = this.ahZK.Yzt;
     }
-    while ((this.ZVl == null) || (this.ZVm == null))
+    while ((this.ahZK == null) || (this.ahZL == null))
     {
       localObject = "invlaid TalkRoomMember which uuid is ".concat(String.valueOf(i));
       AppMethodBeat.o(62596);
       return localObject;
-      if (this.ZVm != null) {
-        i = this.ZVm.RCR;
+      if (this.ahZL != null) {
+        i = this.ahZL.Yzt;
       }
     }
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Object localObject = this.ZVl;
+    Object localObject = this.ahZK;
     StringBuilder localStringBuilder2;
     if (localObject == null)
     {
       localObject = "null";
       localStringBuilder2 = localStringBuilder1.append((String)localObject).append(" ");
-      localObject = this.ZVm;
+      localObject = this.ahZL;
       if (localObject != null) {
         break label250;
       }
@@ -217,17 +217,17 @@ public final class d
       return localObject;
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("VoiceGroupMem");
-      localStringBuilder2.append(" uuid:").append(((a.ba)localObject).RCR);
-      localStringBuilder2.append(" openClientId:").append(((a.ba)localObject).ZhO);
-      localStringBuilder2.append(" invite uuid: ").append(((a.ba)localObject).ZhK);
-      localStringBuilder2.append(" member id:").append(((a.ba)localObject).tQm);
+      localStringBuilder2.append(" uuid:").append(((a.ba)localObject).Yzt);
+      localStringBuilder2.append(" openClientId:").append(((a.ba)localObject).ahgp);
+      localStringBuilder2.append(" invite uuid: ").append(((a.ba)localObject).ahgl);
+      localStringBuilder2.append(" member id:").append(((a.ba)localObject).wTC);
       localStringBuilder2.append(" status: ").append(((a.ba)localObject).status);
-      localStringBuilder2.append(" reason: ").append(((a.ba)localObject).bnA);
+      localStringBuilder2.append(" reason: ").append(((a.ba)localObject).reason);
       localObject = localStringBuilder2.toString();
       break;
       localStringBuilder3 = new StringBuilder();
       localStringBuilder3.append("VoiceGroupUsrProfile");
-      localStringBuilder3.append(" uuid: ").append(((a.bb)localObject).RCR);
+      localStringBuilder3.append(" uuid: ").append(((a.bb)localObject).Yzt);
       localStringBuilder3.append(" user name: ").append(((a.bb)localObject).username);
       localStringBuilder3.append(" head url: ").append(((a.bb)localObject).headUrl);
     }
@@ -235,7 +235,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.d
  * JD-Core Version:    0.7.0.1
  */

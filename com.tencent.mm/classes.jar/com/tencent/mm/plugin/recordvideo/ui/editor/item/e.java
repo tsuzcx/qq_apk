@@ -3,164 +3,160 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.ajj;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.fbn;
-import com.tencent.mm.protocal.protobuf.jc;
+import com.tencent.mm.protocal.protobuf.amo;
+import com.tencent.mm.protocal.protobuf.fxy;
+import com.tencent.mm.protocal.protobuf.gol;
+import com.tencent.mm.protocal.protobuf.jy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.io.IOException;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EmojiItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "showMatrix", "Landroid/graphics/Matrix;", "editorMatrix", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/graphics/Matrix;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getShowMatrix", "()Landroid/graphics/Matrix;", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EmojiItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "showMatrix", "Landroid/graphics/Matrix;", "editorMatrix", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/graphics/Matrix;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getShowMatrix", "()Landroid/graphics/Matrix;", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends a
 {
-  public static final a Icq;
-  Matrix Icp;
-  public EmojiInfo jHh;
+  public static final e.a NYL;
+  Matrix NYM;
+  public EmojiInfo mgK;
   
   static
   {
-    AppMethodBeat.i(224879);
-    Icq = new a((byte)0);
-    AppMethodBeat.o(224879);
+    AppMethodBeat.i(280376);
+    NYL = new e.a((byte)0);
+    AppMethodBeat.o(280376);
   }
   
-  public e(jc paramjc)
+  public e(jy paramjy)
   {
-    super(d.IbH);
-    AppMethodBeat.i(224877);
-    this.Icp = new Matrix();
+    super(d.NYe);
+    AppMethodBeat.i(280368);
+    this.NYM = new Matrix();
     try
     {
-      Object localObject = (com.tencent.mm.cd.a)new ajj();
-      paramjc = paramjc.ROY;
-      p.j(paramjc, "proto.itemData");
-      paramjc = paramjc.Tkb;
-      p.j(paramjc, "proto.itemData.buffer");
-      paramjc = paramjc.UH;
+      Object localObject = (com.tencent.mm.bx.a)new amo();
+      paramjy = paramjy.YMl.aaxD.Op;
       try
       {
-        ((com.tencent.mm.cd.a)localObject).parseFrom(paramjc);
-        paramjc = (jc)localObject;
+        ((com.tencent.mm.bx.a)localObject).parseFrom(paramjy);
+        paramjy = (jy)localObject;
       }
-      catch (Exception paramjc)
+      catch (Exception paramjy)
       {
         for (;;)
         {
-          fbn localfbn;
-          Log.printDebugStack("safeParser", "", new Object[] { paramjc });
-          paramjc = null;
+          fxy localfxy;
+          Log.printDebugStack("safeParser", "", new Object[] { paramjy });
+          paramjy = null;
         }
-        AppMethodBeat.o(224877);
-        return;
       }
-      paramjc = (ajj)paramjc;
-      if (paramjc != null)
+      paramjy = (amo)paramjy;
+      if (paramjy != null)
       {
-        localObject = h.ag(com.tencent.mm.plugin.emoji.b.d.class);
-        p.j(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-        this.jHh = ((com.tencent.mm.plugin.emoji.b.d)localObject).getProvider().aue(paramjc.md5);
-        localObject = this.Icp;
-        localfbn = paramjc.StP;
-        p.j(localfbn, "it.showMatrix");
-        ((Matrix)localObject).setValues(a(localfbn));
-        localObject = this.aHZ;
-        localfbn = paramjc.StO;
-        p.j(localfbn, "it.editorMatrix");
-        ((Matrix)localObject).setValues(a(localfbn));
-        a(paramjc.IcZ);
+        this.mgK = ((com.tencent.mm.plugin.emoji.c.d)h.az(com.tencent.mm.plugin.emoji.c.d.class)).getProvider().aof(paramjy.md5);
+        localObject = this.NYM;
+        localfxy = paramjy.ZtA;
+        s.s(localfxy, "it.showMatrix");
+        ((Matrix)localObject).setValues(a(localfxy));
+        localObject = this.matrix;
+        localfxy = paramjy.Ztz;
+        s.s(localfxy, "it.editorMatrix");
+        ((Matrix)localObject).setValues(a(localfxy));
+        a(paramjy.NZv);
         com.tencent.mm.audio.mix.h.b.i("MicroMsg.EmojiItem", toString());
-        AppMethodBeat.o(224877);
+        AppMethodBeat.o(280368);
         return;
       }
-      return;
     }
-    catch (IOException paramjc)
+    catch (IOException paramjy)
     {
-      com.tencent.mm.audio.mix.h.b.printErrStackTrace("MicroMsg.EmojiItem", (Throwable)paramjc, "EmojiItem parse error", new Object[0]);
-      AppMethodBeat.o(224877);
+      com.tencent.mm.audio.mix.h.b.printErrStackTrace("MicroMsg.EmojiItem", (Throwable)paramjy, "EmojiItem parse error", new Object[0]);
+      AppMethodBeat.o(280368);
     }
   }
   
   public e(EmojiInfo paramEmojiInfo, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    super(d.IbH);
-    AppMethodBeat.i(224864);
-    this.Icp = new Matrix();
-    this.jHh = paramEmojiInfo;
-    this.Icp.set(paramMatrix1);
-    this.aHZ.set(paramMatrix2);
+    super(d.NYe);
+    AppMethodBeat.i(280356);
+    this.NYM = new Matrix();
+    this.mgK = paramEmojiInfo;
+    this.NYM.set(paramMatrix1);
+    this.matrix.set(paramMatrix2);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.EmojiItem", toString());
-    AppMethodBeat.o(224864);
+    AppMethodBeat.o(280356);
   }
   
-  public final com.tencent.mm.cd.a fyG()
+  public final com.tencent.mm.bx.a gKs()
   {
-    AppMethodBeat.i(224859);
-    ajj localajj = new ajj();
-    Object localObject = this.jHh;
-    String str;
-    if (localObject != null)
-    {
-      str = ((EmojiInfo)localObject).getMd5();
-      localObject = str;
-      if (str != null) {}
-    }
-    else
+    AppMethodBeat.i(280386);
+    amo localamo = new amo();
+    Object localObject = this.mgK;
+    if (localObject == null)
     {
       localObject = "";
+      localamo.md5 = ((String)localObject);
+      localObject = this.mgK;
+      if (localObject != null) {
+        break label106;
+      }
+      localObject = "";
     }
-    localajj.md5 = ((String)localObject);
-    localObject = this.jHh;
-    if (localObject != null)
+    for (;;)
     {
+      localamo.name = ((String)localObject);
+      localamo.Ztz = h(this.matrix);
+      localamo.ZtA = h(this.NYM);
+      localamo.NZv = gKq();
+      localObject = (com.tencent.mm.bx.a)localamo;
+      AppMethodBeat.o(280386);
+      return localObject;
+      String str = ((EmojiInfo)localObject).getMd5();
+      localObject = str;
+      if (str != null) {
+        break;
+      }
+      localObject = "";
+      break;
+      label106:
       str = ((EmojiInfo)localObject).getName();
       localObject = str;
-      if (str != null) {}
+      if (str == null) {
+        localObject = "";
+      }
     }
-    else
-    {
-      localObject = "";
-    }
-    localajj.name = ((String)localObject);
-    localajj.StO = f(this.aHZ);
-    localajj.StP = f(this.Icp);
-    localajj.IcZ = fyE();
-    localObject = (com.tencent.mm.cd.a)localajj;
-    AppMethodBeat.o(224859);
-    return localObject;
   }
   
   public final String toString()
   {
     Object localObject2 = null;
-    AppMethodBeat.i(224860);
+    AppMethodBeat.i(280392);
     StringBuilder localStringBuilder = new StringBuilder("[").append(hashCode()).append("]md5:");
-    Object localObject1 = this.jHh;
-    if (localObject1 != null) {}
-    for (localObject1 = ((EmojiInfo)localObject1).getMd5();; localObject1 = null)
+    Object localObject1 = this.mgK;
+    if (localObject1 == null)
     {
-      localStringBuilder = localStringBuilder.append((String)localObject1).append(" name:");
-      EmojiInfo localEmojiInfo = this.jHh;
-      localObject1 = localObject2;
-      if (localEmojiInfo != null) {
-        localObject1 = localEmojiInfo.getName();
+      localObject1 = null;
+      localStringBuilder = localStringBuilder.append(localObject1).append(" name:");
+      localObject1 = this.mgK;
+      if (localObject1 != null) {
+        break label87;
       }
-      localObject1 = (String)localObject1;
-      AppMethodBeat.o(224860);
+    }
+    label87:
+    for (localObject1 = localObject2;; localObject1 = ((EmojiInfo)localObject1).getName())
+    {
+      localObject1 = localObject1;
+      AppMethodBeat.o(280392);
       return localObject1;
+      localObject1 = ((EmojiInfo)localObject1).getMd5();
+      break;
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EmojiItem$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.e
  * JD-Core Version:    0.7.0.1
  */

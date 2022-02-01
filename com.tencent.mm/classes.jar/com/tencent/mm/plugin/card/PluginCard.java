@@ -7,7 +7,7 @@ import com.tencent.mm.kernel.c.e;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.af;
 
 public class PluginCard
   extends f
@@ -15,15 +15,15 @@ public class PluginCard
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(250254);
-    ab.a("card", "card", 50331648L, 7776000000L, 5);
-    AppMethodBeat.o(250254);
+    AppMethodBeat.i(293731);
+    af.b("card", "card", 50331648L, 7776000000L, 5);
+    AppMethodBeat.o(293731);
   }
   
   public void dependency()
   {
     AppMethodBeat.i(112561);
-    dependsOn(com.tencent.mm.plugin.comm.a.a.class);
+    dependsOn(com.tencent.mm.plugin.comm.a.b.class);
     dependsOn(com.tencent.mm.plugin.card.compat.a.b.class);
     AppMethodBeat.o(112561);
   }
@@ -31,8 +31,8 @@ public class PluginCard
   public void execute(g paramg)
   {
     AppMethodBeat.i(112560);
-    if (paramg.aIE()) {
-      h.a(com.tencent.mm.plugin.card.c.b.class, new e(new com.tencent.mm.plugin.card.c.a()));
+    if (paramg.bbA()) {
+      h.a(com.tencent.mm.plugin.card.b.b.class, new e(new com.tencent.mm.plugin.card.b.a()));
     }
     AppMethodBeat.o(112560);
   }
@@ -40,7 +40,7 @@ public class PluginCard
   public am getCore()
   {
     AppMethodBeat.i(112559);
-    am localam = (am)y.as(am.class);
+    am localam = (am)y.aL(am.class);
     AppMethodBeat.o(112559);
     return localam;
   }
@@ -60,7 +60,7 @@ public class PluginCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.PluginCard
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@color/c" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/be8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
-        <include layout="@layout/ug" />
-        <include layout="@layout/uf" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zc">
+        <ImageView android:id="@id/fmz" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/iv" android:layout_height="@dimen/iv" android:layout_marginRight="@dimen/k" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/m2" android:singleLine="true" style="@style/ze" />
+        <TextView android:id="@id/kiu" android:visibility="gone" android:text="@string/k67" style="@style/zh" />
+        <ImageView android:id="@id/f5c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/azm" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <include android:gravity="center|right" layout="@layout/bdp" />
     </LinearLayout>
-    <View android:id="@id/brt" android:layout_marginLeft="20.0dip" android:layout_alignParentBottom="true" style="@style/hx" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/zc">
+        <TextView android:id="@id/ka_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/zd" />
+    </LinearLayout>
+</LinearLayout>

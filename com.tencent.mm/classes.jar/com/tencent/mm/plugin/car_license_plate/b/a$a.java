@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.car_license_plate.b;
 import android.text.InputFilter;
 import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/car_license_plate/utils/CarLicensePlateUtilsKt$addInputFilterForLimitedCharRange$1", "Landroid/text/InputFilter;", "filter", "", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "plugin-car-license-plate_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/car_license_plate/utils/CarLicensePlateUtilsKt$addInputFilterForLimitedCharRange$1", "Landroid/text/InputFilter;", "filter", "", "source", "start", "", "end", "dest", "Landroid/text/Spanned;", "dstart", "dend", "plugin-car-license-plate_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a$a
   implements InputFilter
 {
@@ -15,26 +15,26 @@ public final class a$a
   public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
     paramInt2 = 0;
-    AppMethodBeat.i(186453);
+    AppMethodBeat.i(277548);
     if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {}
     for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
     {
-      AppMethodBeat.o(186453);
+      AppMethodBeat.o(277548);
       return null;
     }
-    char c;
-    do
+    paramSpanned = this.wdx;
+    paramInt1 = paramInt2;
+    while (paramInt1 < paramCharSequence.length())
     {
-      paramInt2 += 1;
-      if (paramInt2 >= paramCharSequence.length()) {
-        break;
+      if (!n.c(paramSpanned, paramCharSequence.charAt(paramInt1)))
+      {
+        paramCharSequence = (CharSequence)"";
+        AppMethodBeat.o(277548);
+        return paramCharSequence;
       }
-      c = paramCharSequence.charAt(paramInt2);
-    } while (n.c(this.sZm, c));
-    paramCharSequence = (CharSequence)"";
-    AppMethodBeat.o(186453);
-    return paramCharSequence;
-    AppMethodBeat.o(186453);
+      paramInt1 += 1;
+    }
+    AppMethodBeat.o(277548);
     return paramCharSequence;
   }
 }

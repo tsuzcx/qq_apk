@@ -2,47 +2,47 @@ package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
-import com.tencent.mm.view.recyclerview.h.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.i.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderCommentFailedNotifyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "feedId", "", "objectNonceId", "", "canRemove", "", "(JLjava/lang/String;I)V", "getCanRemove", "()I", "setCanRemove", "(I)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "compare", "obj", "getItemId", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FeedHeaderCommentFailedNotifyData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "feedId", "", "objectNonceId", "", "canRemove", "", "(JLjava/lang/String;I)V", "getCanRemove", "()I", "setCanRemove", "(I)V", "getFeedId", "()J", "getObjectNonceId", "()Ljava/lang/String;", "compare", "obj", "getItemId", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends h.b
+  extends i.b
   implements k
 {
+  public int ECj;
   public final long feedId;
   public final String objectNonceId;
-  public int zAc;
   
   private f(long paramLong, String paramString)
   {
     AppMethodBeat.i(166366);
     this.feedId = paramLong;
     this.objectNonceId = paramString;
-    this.zAc = 0;
+    this.ECj = 0;
     AppMethodBeat.o(166366);
   }
   
   public final int a(k paramk)
   {
     AppMethodBeat.i(166364);
-    p.k(paramk, "obj");
+    s.u(paramk, "obj");
     AppMethodBeat.o(166364);
     return 0;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return -4;
+    AppMethodBeat.i(166365);
+    long l = hashCode();
+    AppMethodBeat.o(166365);
+    return l;
   }
   
-  public final long mf()
+  public final int bZB()
   {
-    AppMethodBeat.i(293368);
-    long l = hashCode();
-    AppMethodBeat.o(293368);
-    return l;
+    return -4;
   }
 }
 

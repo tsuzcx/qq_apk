@@ -37,28 +37,28 @@ public class TbsOneGreyInfoHelper
   
   static TBSOneManager a(Context paramContext)
   {
-    AppMethodBeat.i(195275);
+    AppMethodBeat.i(219615);
     String str = "default";
     if (is64BitImpl()) {
       str = "default_64";
     }
     paramContext = TBSOneManager.getInstance(paramContext, str);
-    AppMethodBeat.o(195275);
+    AppMethodBeat.o(219615);
     return paramContext;
   }
   
   private static int b(Context paramContext)
   {
-    AppMethodBeat.i(195285);
+    AppMethodBeat.i(219627);
     if (g != -1)
     {
       i = g;
-      AppMethodBeat.o(195285);
+      AppMethodBeat.o(219627);
       return i;
     }
     int i = paramContext.getSharedPreferences("one_config", 0).getInt("one_enable", 0);
     g = i;
-    AppMethodBeat.o(195285);
+    AppMethodBeat.o(219627);
     return i;
   }
   
@@ -185,7 +185,7 @@ public class TbsOneGreyInfoHelper
   
   public static d getTbsFileInterface(Context paramContext)
   {
-    AppMethodBeat.i(195292);
+    AppMethodBeat.i(219640);
     if (isOneModeAvailable(paramContext))
     {
       paramContext = new d()
@@ -206,11 +206,11 @@ public class TbsOneGreyInfoHelper
           return bool;
         }
       };
-      AppMethodBeat.o(195292);
+      AppMethodBeat.o(219640);
       return paramContext;
     }
     paramContext = d;
-    AppMethodBeat.o(195292);
+    AppMethodBeat.o(219640);
     return paramContext;
   }
   
@@ -372,50 +372,39 @@ public class TbsOneGreyInfoHelper
   
   public static boolean is64BitImpl()
   {
-    AppMethodBeat.i(195295);
+    AppMethodBeat.i(219643);
     try
     {
       int i = Build.VERSION.SDK_INT;
-      if (i < 21)
-      {
-        AppMethodBeat.o(195295);
+      if (i < 21) {
         return false;
       }
       Object localObject1 = Class.forName("dalvik.system.VMRuntime");
-      if (localObject1 == null)
-      {
-        AppMethodBeat.o(195295);
+      if (localObject1 == null) {
         return false;
       }
-      Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
-      if (localObject2 == null)
-      {
-        AppMethodBeat.o(195295);
+      Object localObject3 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
+      if (localObject3 == null) {
         return false;
       }
-      localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
-      if (localObject2 == null)
-      {
-        AppMethodBeat.o(195295);
+      localObject3 = ((Method)localObject3).invoke(null, new Object[0]);
+      if (localObject3 == null) {
         return false;
       }
       localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
-      if (localObject1 == null)
-      {
-        AppMethodBeat.o(195295);
+      if (localObject1 == null) {
         return false;
       }
-      localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
+      localObject1 = ((Method)localObject1).invoke(localObject3, new Object[0]);
       if ((localObject1 instanceof Boolean))
       {
         boolean bool = ((Boolean)localObject1).booleanValue();
-        AppMethodBeat.o(195295);
         return bool;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(195295);
+      AppMethodBeat.o(219643);
     }
     return false;
   }
@@ -521,7 +510,7 @@ public class TbsOneGreyInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsOneGreyInfoHelper
  * JD-Core Version:    0.7.0.1
  */

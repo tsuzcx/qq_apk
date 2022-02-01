@@ -4,9 +4,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -20,125 +18,135 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.Display;
 import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.TextureView;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.WindowManager;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.e.i;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.uk;
-import com.tencent.mm.modelstat.n;
+import com.tencent.mm.autogen.a.wa;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
 import com.tencent.mm.plugin.scanner.api.ScanGoodsRequest;
 import com.tencent.mm.plugin.scanner.d.a.3;
+import com.tencent.mm.plugin.scanner.d.b.3;
+import com.tencent.mm.plugin.scanner.d.b.5;
+import com.tencent.mm.plugin.scanner.d.b.b;
 import com.tencent.mm.plugin.scanner.l.d;
 import com.tencent.mm.plugin.scanner.l.i;
-import com.tencent.mm.plugin.scanner.model.ScanPoint;
 import com.tencent.mm.plugin.scanner.model.ac;
 import com.tencent.mm.plugin.scanner.model.ad;
-import com.tencent.mm.plugin.scanner.model.ae;
-import com.tencent.mm.plugin.scanner.model.al;
-import com.tencent.mm.plugin.scanner.model.v;
-import com.tencent.mm.plugin.scanner.model.w;
-import com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanAnimationDotsView;
+import com.tencent.mm.plugin.scanner.model.am;
+import com.tencent.mm.plugin.scanner.model.an;
+import com.tencent.mm.plugin.scanner.model.au;
 import com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanGoodsMaskView;
 import com.tencent.mm.plugin.scanner.ui.widget.ScanCodeMaskView;
+import com.tencent.mm.plugin.scanner.ui.widget.ScanCodeProductMergeMaskView;
 import com.tencent.mm.plugin.scanner.ui.widget.ScanDebugView;
+import com.tencent.mm.plugin.scanner.ui.widget.ScanProductMaskDecorView;
+import com.tencent.mm.plugin.scanner.ui.widget.ScanProductMaskDecorView.e;
+import com.tencent.mm.plugin.scanner.ui.widget.ScanProductMaskDecorView.f;
 import com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView;
-import com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView.f;
+import com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView.d;
 import com.tencent.mm.plugin.scanner.util.ScanCameraLightDetector;
-import com.tencent.mm.plugin.scanner.util.m;
-import com.tencent.mm.plugin.scanner.util.m.b;
+import com.tencent.mm.plugin.scanner.util.j;
+import com.tencent.mm.plugin.scanner.util.o;
+import com.tencent.mm.plugin.scanner.util.o.b;
 import com.tencent.mm.plugin.scanner.util.r;
+import com.tencent.mm.plugin.scanner.util.t;
 import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
 import com.tencent.mm.plugin.scanner.view.ScanRectDecorView;
 import com.tencent.mm.plugin.scanner.view.ScanTranslationMaskView;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.qbar.QbarNative.QBarPoint;
 import com.tencent.qbar.ScanDecodeFrameData;
-import com.tencent.qbar.WxQBarPoint;
-import com.tencent.qbar.WxQBarResult;
 import com.tencent.qbar.WxQbarNative.QBarReportMsg;
-import com.tencent.qbar.c;
 import com.tencent.qbar.g;
 import com.tencent.qbar.h.c;
+import com.tencent.qbar.h.d;
 import com.tencent.scanlib.a.b.b.a;
 import com.tencent.scanlib.a.b.c.a;
 import com.tencent.scanlib.a.b.d.a;
 import com.tencent.scanlib.ui.ScanView;
-import java.util.ArrayList;
+import com.tencent.threadpool.i;
 import java.util.List;
-import kotlin.a.e;
+import kotlin.ah;
+import kotlin.g.b.s;
 
 public class ScanUIRectView
   extends ScanView
 {
-  public static final int ISX;
-  private float BpS;
-  private boolean Cfm;
-  private long IIw;
-  BaseScanMaskView ILO;
-  ScanSharedMaskView ILP;
-  private ScannerFlashSwitcher IOH;
-  private com.tencent.mm.plugin.scanner.ui.widget.b ION;
-  private boolean IOV;
-  boolean IOW;
-  private BaseScanRequest IPe;
-  private boolean IPp;
-  private ScanRectDecorView ISL;
-  ScanDebugView ISM;
-  private a ISN;
-  private String ISO;
-  com.tencent.mm.plugin.scanner.model.d ISP;
-  private boolean ISQ;
-  private boolean ISR;
-  private int ISS;
-  private int IST;
-  private boolean ISU;
-  private boolean ISV;
-  private boolean ISW;
-  private boolean ISY;
-  private boolean ISZ;
-  private boolean ITa;
-  private com.tencent.mm.plugin.scanner.util.h ITb;
-  private int ITc;
-  private long ITd;
-  private boolean ITe;
-  private boolean ITf;
-  private boolean ITg;
-  private Runnable ITh;
-  private int ITi;
-  private int ITj;
-  private h.c ITk;
-  private com.tencent.mm.plugin.scanner.d.a.a ITl;
-  private IListener<uk> ITm;
-  private b ITn;
+  public static final int PbP;
+  private boolean EPk;
+  private boolean HRt;
+  long OOu;
+  BaseScanMaskView OSO;
+  ScanSharedMaskView OSP;
+  private boolean OTn;
+  private BaseScanRequest OXF;
+  private boolean OXP;
+  private boolean OXS;
+  private boolean OXT;
+  private ScannerFlashSwitcher OXj;
+  private ScanProductMaskDecorView OXk;
+  private com.tencent.mm.plugin.scanner.ui.widget.b OXp;
+  private boolean OXw;
+  boolean OXx;
+  private ScanProductMaskDecorView.f OYd;
+  private ScanProductMaskDecorView.e OYf;
+  private ScanRectDecorView PbB;
+  ScanDebugView PbC;
+  private ScanUIRectView.a PbD;
+  private String PbE;
+  private String PbF;
+  private ScanCodeProductMergeMaskView PbG;
+  com.tencent.mm.plugin.scanner.model.h PbH;
+  private boolean PbI;
+  private boolean PbJ;
+  private int PbK;
+  private int PbL;
+  private boolean PbM;
+  private boolean PbN;
+  private boolean PbO;
+  private boolean PbQ;
+  private boolean PbR;
+  private boolean PbS;
+  private j PbT;
+  private int PbU;
+  private long PbV;
+  private boolean PbW;
+  private boolean PbX;
+  private boolean PbY;
+  private Runnable PbZ;
+  private int Pca;
+  private int Pcb;
+  h.c Pcc;
+  private com.tencent.mm.plugin.scanner.d.a.a Pcd;
+  private IListener<wa> Pce;
+  private b Pcf;
   private Activity activity;
-  private com.tencent.mm.modelgeo.b.a iQJ;
   private boolean isFirst;
-  private boolean isRetry;
-  private com.tencent.mm.modelgeo.d lEL;
   private long lastShotTime;
-  private GestureDetector mBn;
+  private com.tencent.mm.modelgeo.b.a lsF;
   private long mTimeout;
   int mode;
-  private Point wxC;
-  private boolean zHI;
+  private GestureDetector nwZ;
+  private com.tencent.mm.modelgeo.d owr;
+  private float puO;
+  private boolean vBn;
+  private Point zTI;
   
   static
   {
     AppMethodBeat.i(51980);
-    ISX = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vUq, 50);
+    PbP = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zmT, 50);
     AppMethodBeat.o(51980);
   }
   
@@ -147,30 +155,33 @@ public class ScanUIRectView
     super(paramContext);
     AppMethodBeat.i(51945);
     this.mode = 1;
-    this.IOV = true;
-    this.IOW = false;
-    this.ISQ = true;
-    this.ISR = false;
-    this.ISS = 0;
-    this.IST = 120;
-    this.Cfm = false;
-    this.wxC = null;
-    this.ISV = true;
-    this.ISW = false;
-    this.IPp = false;
-    this.ISY = false;
-    this.ISZ = false;
+    this.OXw = true;
+    this.OXx = false;
+    this.PbI = true;
+    this.PbJ = false;
+    this.PbK = 0;
+    this.PbL = 120;
+    this.HRt = false;
+    this.zTI = null;
+    this.OXT = true;
+    this.PbN = true;
+    this.PbO = false;
+    this.OXS = false;
+    this.OTn = false;
+    this.OXP = false;
+    this.PbQ = false;
+    this.PbR = false;
     this.isFirst = true;
-    this.ITa = false;
-    this.ITb = new com.tencent.mm.plugin.scanner.util.h();
-    this.ITc = 0;
-    this.ITd = 0L;
-    this.mTimeout = this.ITb.mTimeout;
-    this.ITe = false;
-    this.ITf = true;
-    this.ITg = false;
-    this.isRetry = false;
-    this.ITh = new Runnable()
+    this.PbS = false;
+    this.PbT = new j();
+    this.PbU = 0;
+    this.PbV = 0L;
+    this.mTimeout = this.PbT.mTimeout;
+    this.PbW = false;
+    this.PbX = true;
+    this.PbY = false;
+    this.vBn = false;
+    this.PbZ = new Runnable()
     {
       public final void run()
       {
@@ -179,372 +190,197 @@ public class ScanUIRectView
         {
           ScanUIRectView.c(ScanUIRectView.this);
           ScanUIRectView.d(ScanUIRectView.this);
-          ad.fDf();
+          am.gRp();
           ScanUIRectView.e(ScanUIRectView.this);
         }
         AppMethodBeat.o(51916);
       }
     };
-    this.ITi = 0;
-    this.ITj = 0;
-    this.ITk = new h.c()
+    this.Pca = 0;
+    this.Pcb = 0;
+    this.Pcc = new h.c()
     {
-      public final void a(final long paramAnonymousLong, List<com.tencent.qbar.a.a> paramAnonymousList, final List<QbarNative.QBarPoint> paramAnonymousList1, final List<WxQbarNative.QBarReportMsg> paramAnonymousList2, final Bundle paramAnonymousBundle)
+      public final void a(long paramAnonymousLong, List<com.tencent.qbar.a.a> paramAnonymousList, List<QbarNative.QBarPoint> paramAnonymousList1, List<WxQbarNative.QBarReportMsg> paramAnonymousList2, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(217802);
+        AppMethodBeat.i(314519);
         Log.d("MicroMsg.ScanUIRectView", String.format("scan code after decode %d", new Object[] { Long.valueOf(paramAnonymousLong) }));
         if ((paramAnonymousList != null) && (!paramAnonymousList.isEmpty())) {
-          ScanUIRectView.this.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(161014);
-              ArrayList localArrayList;
-              int j;
-              int i;
-              Object localObject1;
-              if ((ScanUIRectView.l(ScanUIRectView.this) == paramAnonymousLong) && (paramAnonymousLong != 0L))
-              {
-                ScanUIRectView.this.fEa();
-                localArrayList = new ArrayList();
-                if ((paramAnonymousList2 != null) && (!paramAnonymousList2.isEmpty()))
-                {
-                  Log.i("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess result size: %d", new Object[] { Integer.valueOf(paramAnonymousList2.size()) });
-                  j = 0;
-                  i = 0;
-                  if (j < paramAnonymousList2.size())
-                  {
-                    localObject1 = (com.tencent.qbar.a.a)paramAnonymousList2.get(j);
-                    localObject1 = new WxQBarResult(((com.tencent.qbar.a.a)localObject1).typeID, ((com.tencent.qbar.a.a)localObject1).typeName, ((com.tencent.qbar.a.a)localObject1).data, ((com.tencent.qbar.a.a)localObject1).rawData, ((com.tencent.qbar.a.a)localObject1).charset, ((com.tencent.qbar.a.a)localObject1).priorityLevel);
-                    Log.i("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess result index: %d, format: %d, content:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(((WxQBarResult)localObject1).typeID), ((WxQBarResult)localObject1).data });
-                    if ((paramAnonymousList1 != null) && (paramAnonymousList1.size() >= j + 1))
-                    {
-                      localObject2 = (WxQbarNative.QBarReportMsg)paramAnonymousList1.get(j);
-                      if (localObject2 != null) {
-                        ((WxQBarResult)localObject1).Zmv = ((WxQbarNative.QBarReportMsg)localObject2).qrcodeVersion;
-                      }
-                    }
-                    if ((paramAnonymousBundle == null) || (paramAnonymousBundle.size() < j + 1)) {
-                      break label426;
-                    }
-                    Object localObject2 = (QbarNative.QBarPoint)paramAnonymousBundle.get(j);
-                    if (localObject2 == null) {
-                      break label426;
-                    }
-                    ((WxQBarResult)localObject1).ZmX = new WxQBarPoint((QbarNative.QBarPoint)localObject2);
-                    i += 1;
-                  }
-                }
-              }
-              label426:
-              for (;;)
-              {
-                localArrayList.add(localObject1);
-                j += 1;
-                break;
-                localObject1 = new Bundle();
-                ((Bundle)localObject1).putParcelableArrayList("result_qbar_result_list", localArrayList);
-                ((Bundle)localObject1).putInt("result_code_point_count", i);
-                if (this.ITr != null) {
-                  ((Bundle)localObject1).putAll(this.ITr);
-                }
-                ScanUIRectView.this.dlq();
-                if (ScanUIRectView.m(ScanUIRectView.this) != null) {
-                  ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), (Bundle)localObject1);
-                }
-                AppMethodBeat.o(161014);
-                return;
-              }
-            }
-          });
+          ScanUIRectView.this.post(new ScanUIRectView.4.2(this, paramAnonymousLong, paramAnonymousList, paramAnonymousList2, paramAnonymousList1, paramAnonymousBundle));
         }
-        AppMethodBeat.o(217802);
+        AppMethodBeat.o(314519);
       }
       
-      public final void as(final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void b(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(217800);
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(161013);
-            if ((paramAnonymousLong1 == ScanUIRectView.l(ScanUIRectView.this)) && (paramAnonymousLong1 != 0L)) {
-              ScanUIRectView.this.PW(this.DNj);
-            }
-            AppMethodBeat.o(161013);
-          }
-        });
-        AppMethodBeat.o(217800);
+        AppMethodBeat.i(314520);
+        ScanUIRectView.this.post(new ScanUIRectView.4.3(this, paramAnonymousLong, paramAnonymousBundle));
+        AppMethodBeat.o(314520);
       }
       
-      public final void b(final long paramAnonymousLong, Bundle paramAnonymousBundle)
+      public final void bc(long paramAnonymousLong1, long paramAnonymousLong2)
       {
-        AppMethodBeat.i(217803);
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(161015);
-            if ((paramAnonymousLong == ScanUIRectView.l(ScanUIRectView.this)) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
-            {
-              float f = this.val$param.getFloat("param_zoom_ratio", 0.0F);
-              Log.i("MicroMsg.ScanUIRectView", "zoom to scale %f", new Object[] { Float.valueOf(f) });
-              if ((f > 0.0F) && (ScanUIRectView.n(ScanUIRectView.this)) && (ScanUIRectView.o(ScanUIRectView.this).egx()))
-              {
-                int i = (int)(((com.tencent.scanlib.a.a)ScanUIRectView.p(ScanUIRectView.this)).iov() * f);
-                ((com.tencent.scanlib.a.a)ScanUIRectView.q(ScanUIRectView.this)).aAr(i);
-                c localc = c.Zmm;
-                localc.ZmA += 1;
-                localc.ZmB *= f;
-                localc.ZmC = (System.currentTimeMillis() - localc.IMq);
-                Log.v("MicroMsg.QBarEngineReporter", "alvinluo zoom %d, zoomFactor: %s, totalZoomFactor: %s, lastZoomCostTime: %d", new Object[] { Integer.valueOf(localc.ZmA), Float.valueOf(f), Float.valueOf(localc.ZmB), Long.valueOf(localc.ZmC) });
-              }
-            }
-            AppMethodBeat.o(161015);
-          }
-        });
-        AppMethodBeat.o(217803);
-      }
-    };
-    this.ITl = new com.tencent.mm.plugin.scanner.d.a.a()
-    {
-      public final void PQ(final long paramAnonymousLong)
-      {
-        AppMethodBeat.i(221446);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo postTakeShot session: %d, delay: %d", new Object[] { Long.valueOf(paramAnonymousLong), Long.valueOf(0L) });
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(221848);
-            if ((ScanUIRectView.l(ScanUIRectView.this) == paramAnonymousLong) && (ScanUIRectView.l(ScanUIRectView.this) != 0L)) {
-              ScanUIRectView.this.PW(this.DNj);
-            }
-            AppMethodBeat.o(221848);
-          }
-        });
-        AppMethodBeat.o(221446);
+        AppMethodBeat.i(314517);
+        Log.i("MicroMsg.ScanUIRectView", "postTakeShot  session:%d  delay:%d", new Object[] { Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
+        ScanUIRectView.this.post(new ScanUIRectView.4.1(this, paramAnonymousLong1, paramAnonymousLong2));
+        AppMethodBeat.o(314517);
       }
       
-      public final void a(final long paramAnonymousLong, Bundle paramAnonymousBundle)
+      public final void cr(byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(221444);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess %d", new Object[] { Long.valueOf(paramAnonymousLong) });
-        if (paramAnonymousBundle.getBoolean("result_is_best_img", false)) {
-          ScanUIRectView.this.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(222216);
-              if ((paramAnonymousLong == ScanUIRectView.l(ScanUIRectView.this)) && (ScanUIRectView.l(ScanUIRectView.this) != 0L) && (ScanUIRectView.m(ScanUIRectView.this) != null)) {
-                ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), this.val$result);
-              }
-              AppMethodBeat.o(222216);
-            }
-          });
+        AppMethodBeat.i(314528);
+        if (!ScanUIRectView.r(ScanUIRectView.this))
+        {
+          Log.w("MicroMsg.ScanUIRectView", "enableScanCodeProductMerge false, return");
+          AppMethodBeat.o(314528);
+          return;
         }
-        AppMethodBeat.o(221444);
-      }
-      
-      public final void a(final ac paramAnonymousac)
-      {
-        AppMethodBeat.i(221447);
-        ScanUIRectView.this.post(new Runnable()
+        if (ScanUIRectView.s(ScanUIRectView.this))
         {
-          public final void run()
+          Log.w("MicroMsg.ScanUIRectView", "disableScanProductInMergeMode true, return");
+          AppMethodBeat.o(314528);
+          return;
+        }
+        com.tencent.mm.plugin.scanner.d.b localb;
+        Point localPoint;
+        int j;
+        int k;
+        try
+        {
+          if (!ScanUIRectView.t(ScanUIRectView.this).isOpen()) {
+            break label900;
+          }
+          localb = com.tencent.mm.plugin.scanner.d.b.gQw();
+          localPoint = ScanUIRectView.u(ScanUIRectView.this).jXF();
+          j = ScanUIRectView.v(ScanUIRectView.this).getCameraRotation();
+          k = ((com.tencent.mm.plugin.scanner.a.a)ScanUIRectView.w(ScanUIRectView.this)).gQf();
+          if (!localb.OPe)
           {
-            AppMethodBeat.i(217934);
-            if ((paramAnonymousac != null) && ((ScanUIRectView.r(ScanUIRectView.this) instanceof ScanGoodsMaskView)))
-            {
-              ScanGoodsMaskView localScanGoodsMaskView = (ScanGoodsMaskView)ScanUIRectView.r(ScanUIRectView.this);
-              ac localac = paramAnonymousac;
-              kotlin.g.b.p.k(localac, "pointsResult");
-              if (localScanGoodsMaskView.Jam)
-              {
-                Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots isViewDestroy");
-                AppMethodBeat.o(217934);
-                return;
-              }
-              ScanPoint[] arrayOfScanPoint = localac.points;
-              if (arrayOfScanPoint != null)
-              {
-                Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots size: %d", new Object[] { Integer.valueOf(localac.pointCount) });
-                int j = localac.pointCount;
-                int i = 0;
-                if (i < j)
-                {
-                  Object localObject2 = (ScanPoint)e.g(arrayOfScanPoint, i);
-                  label149:
-                  Float localFloat;
-                  if (localObject2 != null)
-                  {
-                    localObject1 = Integer.valueOf(((ScanPoint)localObject2).getId());
-                    if (localObject2 == null) {
-                      break label216;
-                    }
-                    localFloat = Float.valueOf(((ScanPoint)localObject2).getX());
-                    label164:
-                    if (localObject2 == null) {
-                      break label222;
-                    }
-                  }
-                  label216:
-                  label222:
-                  for (localObject2 = Float.valueOf(((ScanPoint)localObject2).getY());; localObject2 = null)
-                  {
-                    Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo getPointObjects id: %d, x: %f, y: %f", new Object[] { localObject1, localFloat, localObject2 });
-                    i += 1;
-                    break;
-                    localObject1 = null;
-                    break label149;
-                    localFloat = null;
-                    break label164;
-                  }
-                }
-                Object localObject1 = localScanGoodsMaskView.IVq;
-                if (localObject1 == null) {
-                  kotlin.g.b.p.bGy("animationDotsView");
-                }
-                ((ScanAnimationDotsView)localObject1).b(localac);
-              }
-            }
-            AppMethodBeat.o(217934);
+            Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask is not working");
+            AppMethodBeat.o(314528);
+            return;
           }
-        });
-        AppMethodBeat.o(221447);
-      }
-    };
-    this.iQJ = new com.tencent.mm.modelgeo.b.a()
-    {
-      public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
-      {
-        AppMethodBeat.i(218352);
-        Log.i("MicroMsg.ScanUIRectView", "onGetLocation %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if (!paramAnonymousBoolean)
+        }
+        catch (Exception paramAnonymousArrayOfByte)
         {
-          Log.i("MicroMsg.ScanUIRectView", "check permission not passed!");
-          if ((!ScanUIRectView.s(ScanUIRectView.this)) && (!com.tencent.mm.modelgeo.d.blr()))
+          Log.printErrStackTrace("MicroMsg.ScanUIRectView", paramAnonymousArrayOfByte, "", new Object[0]);
+          AppMethodBeat.o(314528);
+          return;
+        }
+        if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length == 0))
+        {
+          Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask previewData is empty");
+          AppMethodBeat.o(314528);
+          return;
+        }
+        Object localObject;
+        if (localb.OPd != null)
+        {
+          localObject = localb.OPd;
+          ((b.b)localObject).OPx += 1;
+        }
+        if (localb.OPh < com.tencent.mm.plugin.scanner.d.b.OOK)
+        {
+          localb.OPh += 1;
+          if (localb.OPd != null)
           {
-            ScanUIRectView.t(ScanUIRectView.this);
-            com.tencent.mm.ui.base.h.a(ScanUIRectView.this.getContext(), ScanUIRectView.this.getContext().getString(l.i.gps_disable_tip), ScanUIRectView.this.getContext().getString(l.i.app_tip), ScanUIRectView.this.getContext().getString(l.i.jump_to_settings), ScanUIRectView.this.getContext().getString(l.i.app_cancel), false, new DialogInterface.OnClickListener()
-            {
-              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-              {
-                AppMethodBeat.i(222610);
-                com.tencent.mm.modelgeo.d.cW(ScanUIRectView.this.getContext());
-                AppMethodBeat.o(222610);
-              }
-            }, null);
+            paramAnonymousArrayOfByte = localb.OPd;
+            paramAnonymousArrayOfByte.OPz += 1;
           }
-          AppMethodBeat.o(218352);
-          return true;
+          Log.v("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask skip frame, hasSkipCount:" + localb.OPh);
+          AppMethodBeat.o(314528);
+          return;
         }
-        if (ScanUIRectView.u(ScanUIRectView.this))
-        {
-          Log.i("MicroMsg.ScanUIRectView", "ignore, has get lbs!");
-          AppMethodBeat.o(218352);
-          return false;
-        }
-        ScanUIRectView.this.dlq();
-        ScanUIRectView.v(ScanUIRectView.this);
-        n.a(2012, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-        if (ScanUIRectView.m(ScanUIRectView.this) != null)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putFloat("result_lbs_latitude", paramAnonymousFloat2);
-          localBundle.putFloat("result_lbs_longitude", paramAnonymousFloat1);
-          localBundle.putInt("result_lbs_accuracy", (int)paramAnonymousDouble2);
-          localBundle.putInt("result_lbs_source", paramAnonymousInt);
-          ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), localBundle);
-        }
-        AppMethodBeat.o(218352);
-        return false;
-      }
-    };
-    this.ITm = new IListener() {};
-    this.mBn = new GestureDetector(new GestureDetector.SimpleOnGestureListener()
-    {
-      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222264);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(222264);
-        return bool;
-      }
-      
-      public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(161025);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        Log.d("MicroMsg.ScanUIRectView", "double click,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getActionIndex()), Float.valueOf(paramAnonymousMotionEvent.getX(paramAnonymousMotionEvent.getActionIndex())), Float.valueOf(paramAnonymousMotionEvent.getY(paramAnonymousMotionEvent.getActionIndex())) });
-        ((com.tencent.scanlib.a.a)ScanUIRectView.A(ScanUIRectView.this)).aAs(5);
-        ad.je(ScanUIRectView.B(ScanUIRectView.this), 3);
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(161025);
-        return true;
-      }
-      
-      public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
-      {
-        AppMethodBeat.i(161026);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo onFling velocityX: %f, velocityY: %f, canScrollSwitchTab: %b, enableScrollSwitchTab: %b, isMultiTouch: %b", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Boolean.valueOf(ScanUIRectView.C(ScanUIRectView.this)), Boolean.valueOf(ScanUIRectView.D(ScanUIRectView.this)), Boolean.valueOf(ScanUIRectView.E(ScanUIRectView.this)) });
-        if ((!ScanUIRectView.E(ScanUIRectView.this)) && (ScanUIRectView.D(ScanUIRectView.this)) && (Math.abs(paramAnonymousFloat1) > Math.abs(paramAnonymousFloat2)))
-        {
-          if ((paramAnonymousFloat1 >= -1200.0F) || (!ScanUIRectView.C(ScanUIRectView.this))) {
-            break label168;
-          }
-          if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-            ScanUIRectView.F(ScanUIRectView.this).fEC();
-          }
-          ScanUIRectView.b(ScanUIRectView.this, false);
+        localb.OPh = 0;
+        int i;
+        if (!com.tencent.mm.plugin.scanner.c.a.gQt()) {
+          i = 1;
         }
         for (;;)
         {
-          boolean bool = super.onFling(paramAnonymousMotionEvent1, paramAnonymousMotionEvent2, paramAnonymousFloat1, paramAnonymousFloat2);
-          AppMethodBeat.o(161026);
-          return bool;
-          label168:
-          if ((paramAnonymousFloat1 > 1200.0F) && (ScanUIRectView.C(ScanUIRectView.this)))
+          double d;
+          if (i == 0)
           {
-            if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-              ScanUIRectView.F(ScanUIRectView.this).fED();
+            Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask beyond shake range");
+            if (localb.OPd != null)
+            {
+              paramAnonymousArrayOfByte = localb.OPd;
+              paramAnonymousArrayOfByte.OPA += 1;
             }
-            ScanUIRectView.b(ScanUIRectView.this, false);
+            com.tencent.mm.plugin.scanner.d.b.a(new b.5(localb));
+            AppMethodBeat.o(314528);
+            return;
+            long l2 = System.currentTimeMillis();
+            long l1 = l2 - localb.mJI;
+            localb.mJI = l2;
+            if (l2 - localb.OPq > 1000L)
+            {
+              i = 1;
+              continue;
+            }
+            if (localb.OPq > localb.OPr)
+            {
+              l2 = localb.OPq - localb.OPr;
+              float f1 = localb.pxk - localb.OPm;
+              float f2 = localb.pxl - localb.OPn;
+              float f3 = localb.OPl - localb.OPo;
+              localb.OPm = localb.pxk;
+              localb.OPn = localb.pxl;
+              localb.OPo = localb.OPl;
+              localb.OPr = localb.OPq;
+              localb.OPp = ((Math.pow(f1, 2.0D) + Math.pow(f2, 2.0D) + Math.pow(f3, 2.0D)) / l2 * 100.0D);
+              Log.v("MicroMsg.ReIdAiScanImageDecodeQueue", "getShakeDeltaFromLastDetect  dx:%f, dy:%f, dz:%f, shakeDelta:%f, timeInterval:%d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Double.valueOf(localb.OPp), Long.valueOf(l2) });
+            }
+            for (d = localb.OPp;; d = localb.OPp)
+            {
+              if (!BuildInfo.DEBUG) {
+                break label906;
+              }
+              if (d <= 8.0D) {
+                break;
+              }
+              Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+              break label906;
+              Log.w("MicroMsg.ReIdAiScanImageDecodeQueue", "getShakeDeltaFromLastDetect  return last delta " + localb.OPp);
+            }
+            if (d > 4.0D) {
+              Log.w("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+            } else {
+              Log.d("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+            }
+          }
+          else
+          {
+            if ((com.tencent.mm.plugin.scanner.d.b.OPf != null) && (com.tencent.mm.plugin.scanner.d.b.OPg != null) && (com.tencent.mm.plugin.scanner.d.b.OPf.id != com.tencent.mm.plugin.scanner.d.b.OPg.id) && (localb.OPd != null))
+            {
+              localObject = localb.OPd;
+              ((b.b)localObject).OPy += 1;
+            }
+            if (localb.OPd != null) {
+              Log.i("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask deal img:" + localb.OPd.OPB);
+            }
+            localObject = new com.tencent.mm.plugin.scanner.d.b.a();
+            ((com.tencent.mm.plugin.scanner.d.b.a)localObject).imageData = paramAnonymousArrayOfByte;
+            ((com.tencent.mm.plugin.scanner.d.b.a)localObject).id = System.currentTimeMillis();
+            com.tencent.mm.plugin.scanner.d.b.OPf = (com.tencent.mm.plugin.scanner.d.b.a)localObject;
+            localb.a(localPoint, j, k, true, true);
+            label900:
+            AppMethodBeat.o(314528);
+            return;
+          }
+          label906:
+          if (d < 4.0D) {
+            i = 1;
+          } else {
+            i = 0;
           }
         }
       }
-      
-      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222262);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
-        super.onLongPress(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(222262);
-      }
-      
-      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222259);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(222259);
-        return bool;
-      }
-    });
-    this.ITn = new b(Looper.getMainLooper());
+    };
+    this.Pcd = new ScanUIRectView.5(this);
+    this.lsF = new ScanUIRectView.6(this);
+    this.Pce = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.nwZ = new GestureDetector(new ScanUIRectView.7(this));
+    this.Pcf = new b(Looper.getMainLooper());
     AppMethodBeat.o(51945);
   }
   
@@ -553,30 +389,33 @@ public class ScanUIRectView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51946);
     this.mode = 1;
-    this.IOV = true;
-    this.IOW = false;
-    this.ISQ = true;
-    this.ISR = false;
-    this.ISS = 0;
-    this.IST = 120;
-    this.Cfm = false;
-    this.wxC = null;
-    this.ISV = true;
-    this.ISW = false;
-    this.IPp = false;
-    this.ISY = false;
-    this.ISZ = false;
+    this.OXw = true;
+    this.OXx = false;
+    this.PbI = true;
+    this.PbJ = false;
+    this.PbK = 0;
+    this.PbL = 120;
+    this.HRt = false;
+    this.zTI = null;
+    this.OXT = true;
+    this.PbN = true;
+    this.PbO = false;
+    this.OXS = false;
+    this.OTn = false;
+    this.OXP = false;
+    this.PbQ = false;
+    this.PbR = false;
     this.isFirst = true;
-    this.ITa = false;
-    this.ITb = new com.tencent.mm.plugin.scanner.util.h();
-    this.ITc = 0;
-    this.ITd = 0L;
-    this.mTimeout = this.ITb.mTimeout;
-    this.ITe = false;
-    this.ITf = true;
-    this.ITg = false;
-    this.isRetry = false;
-    this.ITh = new Runnable()
+    this.PbS = false;
+    this.PbT = new j();
+    this.PbU = 0;
+    this.PbV = 0L;
+    this.mTimeout = this.PbT.mTimeout;
+    this.PbW = false;
+    this.PbX = true;
+    this.PbY = false;
+    this.vBn = false;
+    this.PbZ = new Runnable()
     {
       public final void run()
       {
@@ -585,372 +424,197 @@ public class ScanUIRectView
         {
           ScanUIRectView.c(ScanUIRectView.this);
           ScanUIRectView.d(ScanUIRectView.this);
-          ad.fDf();
+          am.gRp();
           ScanUIRectView.e(ScanUIRectView.this);
         }
         AppMethodBeat.o(51916);
       }
     };
-    this.ITi = 0;
-    this.ITj = 0;
-    this.ITk = new h.c()
+    this.Pca = 0;
+    this.Pcb = 0;
+    this.Pcc = new h.c()
     {
-      public final void a(final long paramAnonymousLong, List<com.tencent.qbar.a.a> paramAnonymousList, final List<QbarNative.QBarPoint> paramAnonymousList1, final List<WxQbarNative.QBarReportMsg> paramAnonymousList2, final Bundle paramAnonymousBundle)
+      public final void a(long paramAnonymousLong, List<com.tencent.qbar.a.a> paramAnonymousList, List<QbarNative.QBarPoint> paramAnonymousList1, List<WxQbarNative.QBarReportMsg> paramAnonymousList2, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(217802);
+        AppMethodBeat.i(314519);
         Log.d("MicroMsg.ScanUIRectView", String.format("scan code after decode %d", new Object[] { Long.valueOf(paramAnonymousLong) }));
         if ((paramAnonymousList != null) && (!paramAnonymousList.isEmpty())) {
-          ScanUIRectView.this.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(161014);
-              ArrayList localArrayList;
-              int j;
-              int i;
-              Object localObject1;
-              if ((ScanUIRectView.l(ScanUIRectView.this) == paramAnonymousLong) && (paramAnonymousLong != 0L))
-              {
-                ScanUIRectView.this.fEa();
-                localArrayList = new ArrayList();
-                if ((paramAnonymousList2 != null) && (!paramAnonymousList2.isEmpty()))
-                {
-                  Log.i("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess result size: %d", new Object[] { Integer.valueOf(paramAnonymousList2.size()) });
-                  j = 0;
-                  i = 0;
-                  if (j < paramAnonymousList2.size())
-                  {
-                    localObject1 = (com.tencent.qbar.a.a)paramAnonymousList2.get(j);
-                    localObject1 = new WxQBarResult(((com.tencent.qbar.a.a)localObject1).typeID, ((com.tencent.qbar.a.a)localObject1).typeName, ((com.tencent.qbar.a.a)localObject1).data, ((com.tencent.qbar.a.a)localObject1).rawData, ((com.tencent.qbar.a.a)localObject1).charset, ((com.tencent.qbar.a.a)localObject1).priorityLevel);
-                    Log.i("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess result index: %d, format: %d, content:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(((WxQBarResult)localObject1).typeID), ((WxQBarResult)localObject1).data });
-                    if ((paramAnonymousList1 != null) && (paramAnonymousList1.size() >= j + 1))
-                    {
-                      localObject2 = (WxQbarNative.QBarReportMsg)paramAnonymousList1.get(j);
-                      if (localObject2 != null) {
-                        ((WxQBarResult)localObject1).Zmv = ((WxQbarNative.QBarReportMsg)localObject2).qrcodeVersion;
-                      }
-                    }
-                    if ((paramAnonymousBundle == null) || (paramAnonymousBundle.size() < j + 1)) {
-                      break label426;
-                    }
-                    Object localObject2 = (QbarNative.QBarPoint)paramAnonymousBundle.get(j);
-                    if (localObject2 == null) {
-                      break label426;
-                    }
-                    ((WxQBarResult)localObject1).ZmX = new WxQBarPoint((QbarNative.QBarPoint)localObject2);
-                    i += 1;
-                  }
-                }
-              }
-              label426:
-              for (;;)
-              {
-                localArrayList.add(localObject1);
-                j += 1;
-                break;
-                localObject1 = new Bundle();
-                ((Bundle)localObject1).putParcelableArrayList("result_qbar_result_list", localArrayList);
-                ((Bundle)localObject1).putInt("result_code_point_count", i);
-                if (this.ITr != null) {
-                  ((Bundle)localObject1).putAll(this.ITr);
-                }
-                ScanUIRectView.this.dlq();
-                if (ScanUIRectView.m(ScanUIRectView.this) != null) {
-                  ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), (Bundle)localObject1);
-                }
-                AppMethodBeat.o(161014);
-                return;
-              }
-            }
-          });
+          ScanUIRectView.this.post(new ScanUIRectView.4.2(this, paramAnonymousLong, paramAnonymousList, paramAnonymousList2, paramAnonymousList1, paramAnonymousBundle));
         }
-        AppMethodBeat.o(217802);
+        AppMethodBeat.o(314519);
       }
       
-      public final void as(final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void b(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(217800);
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(161013);
-            if ((paramAnonymousLong1 == ScanUIRectView.l(ScanUIRectView.this)) && (paramAnonymousLong1 != 0L)) {
-              ScanUIRectView.this.PW(this.DNj);
-            }
-            AppMethodBeat.o(161013);
-          }
-        });
-        AppMethodBeat.o(217800);
+        AppMethodBeat.i(314520);
+        ScanUIRectView.this.post(new ScanUIRectView.4.3(this, paramAnonymousLong, paramAnonymousBundle));
+        AppMethodBeat.o(314520);
       }
       
-      public final void b(final long paramAnonymousLong, Bundle paramAnonymousBundle)
+      public final void bc(long paramAnonymousLong1, long paramAnonymousLong2)
       {
-        AppMethodBeat.i(217803);
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(161015);
-            if ((paramAnonymousLong == ScanUIRectView.l(ScanUIRectView.this)) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
-            {
-              float f = this.val$param.getFloat("param_zoom_ratio", 0.0F);
-              Log.i("MicroMsg.ScanUIRectView", "zoom to scale %f", new Object[] { Float.valueOf(f) });
-              if ((f > 0.0F) && (ScanUIRectView.n(ScanUIRectView.this)) && (ScanUIRectView.o(ScanUIRectView.this).egx()))
-              {
-                int i = (int)(((com.tencent.scanlib.a.a)ScanUIRectView.p(ScanUIRectView.this)).iov() * f);
-                ((com.tencent.scanlib.a.a)ScanUIRectView.q(ScanUIRectView.this)).aAr(i);
-                c localc = c.Zmm;
-                localc.ZmA += 1;
-                localc.ZmB *= f;
-                localc.ZmC = (System.currentTimeMillis() - localc.IMq);
-                Log.v("MicroMsg.QBarEngineReporter", "alvinluo zoom %d, zoomFactor: %s, totalZoomFactor: %s, lastZoomCostTime: %d", new Object[] { Integer.valueOf(localc.ZmA), Float.valueOf(f), Float.valueOf(localc.ZmB), Long.valueOf(localc.ZmC) });
-              }
-            }
-            AppMethodBeat.o(161015);
-          }
-        });
-        AppMethodBeat.o(217803);
-      }
-    };
-    this.ITl = new com.tencent.mm.plugin.scanner.d.a.a()
-    {
-      public final void PQ(final long paramAnonymousLong)
-      {
-        AppMethodBeat.i(221446);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo postTakeShot session: %d, delay: %d", new Object[] { Long.valueOf(paramAnonymousLong), Long.valueOf(0L) });
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(221848);
-            if ((ScanUIRectView.l(ScanUIRectView.this) == paramAnonymousLong) && (ScanUIRectView.l(ScanUIRectView.this) != 0L)) {
-              ScanUIRectView.this.PW(this.DNj);
-            }
-            AppMethodBeat.o(221848);
-          }
-        });
-        AppMethodBeat.o(221446);
+        AppMethodBeat.i(314517);
+        Log.i("MicroMsg.ScanUIRectView", "postTakeShot  session:%d  delay:%d", new Object[] { Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
+        ScanUIRectView.this.post(new ScanUIRectView.4.1(this, paramAnonymousLong1, paramAnonymousLong2));
+        AppMethodBeat.o(314517);
       }
       
-      public final void a(final long paramAnonymousLong, Bundle paramAnonymousBundle)
+      public final void cr(byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(221444);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess %d", new Object[] { Long.valueOf(paramAnonymousLong) });
-        if (paramAnonymousBundle.getBoolean("result_is_best_img", false)) {
-          ScanUIRectView.this.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(222216);
-              if ((paramAnonymousLong == ScanUIRectView.l(ScanUIRectView.this)) && (ScanUIRectView.l(ScanUIRectView.this) != 0L) && (ScanUIRectView.m(ScanUIRectView.this) != null)) {
-                ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), this.val$result);
-              }
-              AppMethodBeat.o(222216);
-            }
-          });
+        AppMethodBeat.i(314528);
+        if (!ScanUIRectView.r(ScanUIRectView.this))
+        {
+          Log.w("MicroMsg.ScanUIRectView", "enableScanCodeProductMerge false, return");
+          AppMethodBeat.o(314528);
+          return;
         }
-        AppMethodBeat.o(221444);
-      }
-      
-      public final void a(final ac paramAnonymousac)
-      {
-        AppMethodBeat.i(221447);
-        ScanUIRectView.this.post(new Runnable()
+        if (ScanUIRectView.s(ScanUIRectView.this))
         {
-          public final void run()
+          Log.w("MicroMsg.ScanUIRectView", "disableScanProductInMergeMode true, return");
+          AppMethodBeat.o(314528);
+          return;
+        }
+        com.tencent.mm.plugin.scanner.d.b localb;
+        Point localPoint;
+        int j;
+        int k;
+        try
+        {
+          if (!ScanUIRectView.t(ScanUIRectView.this).isOpen()) {
+            break label900;
+          }
+          localb = com.tencent.mm.plugin.scanner.d.b.gQw();
+          localPoint = ScanUIRectView.u(ScanUIRectView.this).jXF();
+          j = ScanUIRectView.v(ScanUIRectView.this).getCameraRotation();
+          k = ((com.tencent.mm.plugin.scanner.a.a)ScanUIRectView.w(ScanUIRectView.this)).gQf();
+          if (!localb.OPe)
           {
-            AppMethodBeat.i(217934);
-            if ((paramAnonymousac != null) && ((ScanUIRectView.r(ScanUIRectView.this) instanceof ScanGoodsMaskView)))
-            {
-              ScanGoodsMaskView localScanGoodsMaskView = (ScanGoodsMaskView)ScanUIRectView.r(ScanUIRectView.this);
-              ac localac = paramAnonymousac;
-              kotlin.g.b.p.k(localac, "pointsResult");
-              if (localScanGoodsMaskView.Jam)
-              {
-                Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots isViewDestroy");
-                AppMethodBeat.o(217934);
-                return;
-              }
-              ScanPoint[] arrayOfScanPoint = localac.points;
-              if (arrayOfScanPoint != null)
-              {
-                Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots size: %d", new Object[] { Integer.valueOf(localac.pointCount) });
-                int j = localac.pointCount;
-                int i = 0;
-                if (i < j)
-                {
-                  Object localObject2 = (ScanPoint)e.g(arrayOfScanPoint, i);
-                  label149:
-                  Float localFloat;
-                  if (localObject2 != null)
-                  {
-                    localObject1 = Integer.valueOf(((ScanPoint)localObject2).getId());
-                    if (localObject2 == null) {
-                      break label216;
-                    }
-                    localFloat = Float.valueOf(((ScanPoint)localObject2).getX());
-                    label164:
-                    if (localObject2 == null) {
-                      break label222;
-                    }
-                  }
-                  label216:
-                  label222:
-                  for (localObject2 = Float.valueOf(((ScanPoint)localObject2).getY());; localObject2 = null)
-                  {
-                    Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo getPointObjects id: %d, x: %f, y: %f", new Object[] { localObject1, localFloat, localObject2 });
-                    i += 1;
-                    break;
-                    localObject1 = null;
-                    break label149;
-                    localFloat = null;
-                    break label164;
-                  }
-                }
-                Object localObject1 = localScanGoodsMaskView.IVq;
-                if (localObject1 == null) {
-                  kotlin.g.b.p.bGy("animationDotsView");
-                }
-                ((ScanAnimationDotsView)localObject1).b(localac);
-              }
-            }
-            AppMethodBeat.o(217934);
+            Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask is not working");
+            AppMethodBeat.o(314528);
+            return;
           }
-        });
-        AppMethodBeat.o(221447);
-      }
-    };
-    this.iQJ = new com.tencent.mm.modelgeo.b.a()
-    {
-      public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
-      {
-        AppMethodBeat.i(218352);
-        Log.i("MicroMsg.ScanUIRectView", "onGetLocation %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if (!paramAnonymousBoolean)
+        }
+        catch (Exception paramAnonymousArrayOfByte)
         {
-          Log.i("MicroMsg.ScanUIRectView", "check permission not passed!");
-          if ((!ScanUIRectView.s(ScanUIRectView.this)) && (!com.tencent.mm.modelgeo.d.blr()))
+          Log.printErrStackTrace("MicroMsg.ScanUIRectView", paramAnonymousArrayOfByte, "", new Object[0]);
+          AppMethodBeat.o(314528);
+          return;
+        }
+        if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length == 0))
+        {
+          Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask previewData is empty");
+          AppMethodBeat.o(314528);
+          return;
+        }
+        Object localObject;
+        if (localb.OPd != null)
+        {
+          localObject = localb.OPd;
+          ((b.b)localObject).OPx += 1;
+        }
+        if (localb.OPh < com.tencent.mm.plugin.scanner.d.b.OOK)
+        {
+          localb.OPh += 1;
+          if (localb.OPd != null)
           {
-            ScanUIRectView.t(ScanUIRectView.this);
-            com.tencent.mm.ui.base.h.a(ScanUIRectView.this.getContext(), ScanUIRectView.this.getContext().getString(l.i.gps_disable_tip), ScanUIRectView.this.getContext().getString(l.i.app_tip), ScanUIRectView.this.getContext().getString(l.i.jump_to_settings), ScanUIRectView.this.getContext().getString(l.i.app_cancel), false, new DialogInterface.OnClickListener()
-            {
-              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-              {
-                AppMethodBeat.i(222610);
-                com.tencent.mm.modelgeo.d.cW(ScanUIRectView.this.getContext());
-                AppMethodBeat.o(222610);
-              }
-            }, null);
+            paramAnonymousArrayOfByte = localb.OPd;
+            paramAnonymousArrayOfByte.OPz += 1;
           }
-          AppMethodBeat.o(218352);
-          return true;
+          Log.v("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask skip frame, hasSkipCount:" + localb.OPh);
+          AppMethodBeat.o(314528);
+          return;
         }
-        if (ScanUIRectView.u(ScanUIRectView.this))
-        {
-          Log.i("MicroMsg.ScanUIRectView", "ignore, has get lbs!");
-          AppMethodBeat.o(218352);
-          return false;
-        }
-        ScanUIRectView.this.dlq();
-        ScanUIRectView.v(ScanUIRectView.this);
-        n.a(2012, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-        if (ScanUIRectView.m(ScanUIRectView.this) != null)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putFloat("result_lbs_latitude", paramAnonymousFloat2);
-          localBundle.putFloat("result_lbs_longitude", paramAnonymousFloat1);
-          localBundle.putInt("result_lbs_accuracy", (int)paramAnonymousDouble2);
-          localBundle.putInt("result_lbs_source", paramAnonymousInt);
-          ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), localBundle);
-        }
-        AppMethodBeat.o(218352);
-        return false;
-      }
-    };
-    this.ITm = new IListener() {};
-    this.mBn = new GestureDetector(new GestureDetector.SimpleOnGestureListener()
-    {
-      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222264);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(222264);
-        return bool;
-      }
-      
-      public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(161025);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        Log.d("MicroMsg.ScanUIRectView", "double click,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getActionIndex()), Float.valueOf(paramAnonymousMotionEvent.getX(paramAnonymousMotionEvent.getActionIndex())), Float.valueOf(paramAnonymousMotionEvent.getY(paramAnonymousMotionEvent.getActionIndex())) });
-        ((com.tencent.scanlib.a.a)ScanUIRectView.A(ScanUIRectView.this)).aAs(5);
-        ad.je(ScanUIRectView.B(ScanUIRectView.this), 3);
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(161025);
-        return true;
-      }
-      
-      public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
-      {
-        AppMethodBeat.i(161026);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo onFling velocityX: %f, velocityY: %f, canScrollSwitchTab: %b, enableScrollSwitchTab: %b, isMultiTouch: %b", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Boolean.valueOf(ScanUIRectView.C(ScanUIRectView.this)), Boolean.valueOf(ScanUIRectView.D(ScanUIRectView.this)), Boolean.valueOf(ScanUIRectView.E(ScanUIRectView.this)) });
-        if ((!ScanUIRectView.E(ScanUIRectView.this)) && (ScanUIRectView.D(ScanUIRectView.this)) && (Math.abs(paramAnonymousFloat1) > Math.abs(paramAnonymousFloat2)))
-        {
-          if ((paramAnonymousFloat1 >= -1200.0F) || (!ScanUIRectView.C(ScanUIRectView.this))) {
-            break label168;
-          }
-          if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-            ScanUIRectView.F(ScanUIRectView.this).fEC();
-          }
-          ScanUIRectView.b(ScanUIRectView.this, false);
+        localb.OPh = 0;
+        int i;
+        if (!com.tencent.mm.plugin.scanner.c.a.gQt()) {
+          i = 1;
         }
         for (;;)
         {
-          boolean bool = super.onFling(paramAnonymousMotionEvent1, paramAnonymousMotionEvent2, paramAnonymousFloat1, paramAnonymousFloat2);
-          AppMethodBeat.o(161026);
-          return bool;
-          label168:
-          if ((paramAnonymousFloat1 > 1200.0F) && (ScanUIRectView.C(ScanUIRectView.this)))
+          double d;
+          if (i == 0)
           {
-            if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-              ScanUIRectView.F(ScanUIRectView.this).fED();
+            Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask beyond shake range");
+            if (localb.OPd != null)
+            {
+              paramAnonymousArrayOfByte = localb.OPd;
+              paramAnonymousArrayOfByte.OPA += 1;
             }
-            ScanUIRectView.b(ScanUIRectView.this, false);
+            com.tencent.mm.plugin.scanner.d.b.a(new b.5(localb));
+            AppMethodBeat.o(314528);
+            return;
+            long l2 = System.currentTimeMillis();
+            long l1 = l2 - localb.mJI;
+            localb.mJI = l2;
+            if (l2 - localb.OPq > 1000L)
+            {
+              i = 1;
+              continue;
+            }
+            if (localb.OPq > localb.OPr)
+            {
+              l2 = localb.OPq - localb.OPr;
+              float f1 = localb.pxk - localb.OPm;
+              float f2 = localb.pxl - localb.OPn;
+              float f3 = localb.OPl - localb.OPo;
+              localb.OPm = localb.pxk;
+              localb.OPn = localb.pxl;
+              localb.OPo = localb.OPl;
+              localb.OPr = localb.OPq;
+              localb.OPp = ((Math.pow(f1, 2.0D) + Math.pow(f2, 2.0D) + Math.pow(f3, 2.0D)) / l2 * 100.0D);
+              Log.v("MicroMsg.ReIdAiScanImageDecodeQueue", "getShakeDeltaFromLastDetect  dx:%f, dy:%f, dz:%f, shakeDelta:%f, timeInterval:%d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Double.valueOf(localb.OPp), Long.valueOf(l2) });
+            }
+            for (d = localb.OPp;; d = localb.OPp)
+            {
+              if (!BuildInfo.DEBUG) {
+                break label906;
+              }
+              if (d <= 8.0D) {
+                break;
+              }
+              Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+              break label906;
+              Log.w("MicroMsg.ReIdAiScanImageDecodeQueue", "getShakeDeltaFromLastDetect  return last delta " + localb.OPp);
+            }
+            if (d > 4.0D) {
+              Log.w("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+            } else {
+              Log.d("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+            }
+          }
+          else
+          {
+            if ((com.tencent.mm.plugin.scanner.d.b.OPf != null) && (com.tencent.mm.plugin.scanner.d.b.OPg != null) && (com.tencent.mm.plugin.scanner.d.b.OPf.id != com.tencent.mm.plugin.scanner.d.b.OPg.id) && (localb.OPd != null))
+            {
+              localObject = localb.OPd;
+              ((b.b)localObject).OPy += 1;
+            }
+            if (localb.OPd != null) {
+              Log.i("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask deal img:" + localb.OPd.OPB);
+            }
+            localObject = new com.tencent.mm.plugin.scanner.d.b.a();
+            ((com.tencent.mm.plugin.scanner.d.b.a)localObject).imageData = paramAnonymousArrayOfByte;
+            ((com.tencent.mm.plugin.scanner.d.b.a)localObject).id = System.currentTimeMillis();
+            com.tencent.mm.plugin.scanner.d.b.OPf = (com.tencent.mm.plugin.scanner.d.b.a)localObject;
+            localb.a(localPoint, j, k, true, true);
+            label900:
+            AppMethodBeat.o(314528);
+            return;
+          }
+          label906:
+          if (d < 4.0D) {
+            i = 1;
+          } else {
+            i = 0;
           }
         }
       }
-      
-      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222262);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
-        super.onLongPress(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(222262);
-      }
-      
-      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222259);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(222259);
-        return bool;
-      }
-    });
-    this.ITn = new b(Looper.getMainLooper());
+    };
+    this.Pcd = new ScanUIRectView.5(this);
+    this.lsF = new ScanUIRectView.6(this);
+    this.Pce = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.nwZ = new GestureDetector(new ScanUIRectView.7(this));
+    this.Pcf = new b(Looper.getMainLooper());
     AppMethodBeat.o(51946);
   }
   
@@ -959,30 +623,33 @@ public class ScanUIRectView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51947);
     this.mode = 1;
-    this.IOV = true;
-    this.IOW = false;
-    this.ISQ = true;
-    this.ISR = false;
-    this.ISS = 0;
-    this.IST = 120;
-    this.Cfm = false;
-    this.wxC = null;
-    this.ISV = true;
-    this.ISW = false;
-    this.IPp = false;
-    this.ISY = false;
-    this.ISZ = false;
+    this.OXw = true;
+    this.OXx = false;
+    this.PbI = true;
+    this.PbJ = false;
+    this.PbK = 0;
+    this.PbL = 120;
+    this.HRt = false;
+    this.zTI = null;
+    this.OXT = true;
+    this.PbN = true;
+    this.PbO = false;
+    this.OXS = false;
+    this.OTn = false;
+    this.OXP = false;
+    this.PbQ = false;
+    this.PbR = false;
     this.isFirst = true;
-    this.ITa = false;
-    this.ITb = new com.tencent.mm.plugin.scanner.util.h();
-    this.ITc = 0;
-    this.ITd = 0L;
-    this.mTimeout = this.ITb.mTimeout;
-    this.ITe = false;
-    this.ITf = true;
-    this.ITg = false;
-    this.isRetry = false;
-    this.ITh = new Runnable()
+    this.PbS = false;
+    this.PbT = new j();
+    this.PbU = 0;
+    this.PbV = 0L;
+    this.mTimeout = this.PbT.mTimeout;
+    this.PbW = false;
+    this.PbX = true;
+    this.PbY = false;
+    this.vBn = false;
+    this.PbZ = new Runnable()
     {
       public final void run()
       {
@@ -991,417 +658,244 @@ public class ScanUIRectView
         {
           ScanUIRectView.c(ScanUIRectView.this);
           ScanUIRectView.d(ScanUIRectView.this);
-          ad.fDf();
+          am.gRp();
           ScanUIRectView.e(ScanUIRectView.this);
         }
         AppMethodBeat.o(51916);
       }
     };
-    this.ITi = 0;
-    this.ITj = 0;
-    this.ITk = new h.c()
+    this.Pca = 0;
+    this.Pcb = 0;
+    this.Pcc = new h.c()
     {
-      public final void a(final long paramAnonymousLong, List<com.tencent.qbar.a.a> paramAnonymousList, final List<QbarNative.QBarPoint> paramAnonymousList1, final List<WxQbarNative.QBarReportMsg> paramAnonymousList2, final Bundle paramAnonymousBundle)
+      public final void a(long paramAnonymousLong, List<com.tencent.qbar.a.a> paramAnonymousList, List<QbarNative.QBarPoint> paramAnonymousList1, List<WxQbarNative.QBarReportMsg> paramAnonymousList2, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(217802);
+        AppMethodBeat.i(314519);
         Log.d("MicroMsg.ScanUIRectView", String.format("scan code after decode %d", new Object[] { Long.valueOf(paramAnonymousLong) }));
         if ((paramAnonymousList != null) && (!paramAnonymousList.isEmpty())) {
-          ScanUIRectView.this.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(161014);
-              ArrayList localArrayList;
-              int j;
-              int i;
-              Object localObject1;
-              if ((ScanUIRectView.l(ScanUIRectView.this) == paramAnonymousLong) && (paramAnonymousLong != 0L))
-              {
-                ScanUIRectView.this.fEa();
-                localArrayList = new ArrayList();
-                if ((paramAnonymousList2 != null) && (!paramAnonymousList2.isEmpty()))
-                {
-                  Log.i("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess result size: %d", new Object[] { Integer.valueOf(paramAnonymousList2.size()) });
-                  j = 0;
-                  i = 0;
-                  if (j < paramAnonymousList2.size())
-                  {
-                    localObject1 = (com.tencent.qbar.a.a)paramAnonymousList2.get(j);
-                    localObject1 = new WxQBarResult(((com.tencent.qbar.a.a)localObject1).typeID, ((com.tencent.qbar.a.a)localObject1).typeName, ((com.tencent.qbar.a.a)localObject1).data, ((com.tencent.qbar.a.a)localObject1).rawData, ((com.tencent.qbar.a.a)localObject1).charset, ((com.tencent.qbar.a.a)localObject1).priorityLevel);
-                    Log.i("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess result index: %d, format: %d, content:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(((WxQBarResult)localObject1).typeID), ((WxQBarResult)localObject1).data });
-                    if ((paramAnonymousList1 != null) && (paramAnonymousList1.size() >= j + 1))
-                    {
-                      localObject2 = (WxQbarNative.QBarReportMsg)paramAnonymousList1.get(j);
-                      if (localObject2 != null) {
-                        ((WxQBarResult)localObject1).Zmv = ((WxQbarNative.QBarReportMsg)localObject2).qrcodeVersion;
-                      }
-                    }
-                    if ((paramAnonymousBundle == null) || (paramAnonymousBundle.size() < j + 1)) {
-                      break label426;
-                    }
-                    Object localObject2 = (QbarNative.QBarPoint)paramAnonymousBundle.get(j);
-                    if (localObject2 == null) {
-                      break label426;
-                    }
-                    ((WxQBarResult)localObject1).ZmX = new WxQBarPoint((QbarNative.QBarPoint)localObject2);
-                    i += 1;
-                  }
-                }
-              }
-              label426:
-              for (;;)
-              {
-                localArrayList.add(localObject1);
-                j += 1;
-                break;
-                localObject1 = new Bundle();
-                ((Bundle)localObject1).putParcelableArrayList("result_qbar_result_list", localArrayList);
-                ((Bundle)localObject1).putInt("result_code_point_count", i);
-                if (this.ITr != null) {
-                  ((Bundle)localObject1).putAll(this.ITr);
-                }
-                ScanUIRectView.this.dlq();
-                if (ScanUIRectView.m(ScanUIRectView.this) != null) {
-                  ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), (Bundle)localObject1);
-                }
-                AppMethodBeat.o(161014);
-                return;
-              }
-            }
-          });
+          ScanUIRectView.this.post(new ScanUIRectView.4.2(this, paramAnonymousLong, paramAnonymousList, paramAnonymousList2, paramAnonymousList1, paramAnonymousBundle));
         }
-        AppMethodBeat.o(217802);
+        AppMethodBeat.o(314519);
       }
       
-      public final void as(final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void b(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(217800);
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(161013);
-            if ((paramAnonymousLong1 == ScanUIRectView.l(ScanUIRectView.this)) && (paramAnonymousLong1 != 0L)) {
-              ScanUIRectView.this.PW(this.DNj);
-            }
-            AppMethodBeat.o(161013);
-          }
-        });
-        AppMethodBeat.o(217800);
+        AppMethodBeat.i(314520);
+        ScanUIRectView.this.post(new ScanUIRectView.4.3(this, paramAnonymousLong, paramAnonymousBundle));
+        AppMethodBeat.o(314520);
       }
       
-      public final void b(final long paramAnonymousLong, Bundle paramAnonymousBundle)
+      public final void bc(long paramAnonymousLong1, long paramAnonymousLong2)
       {
-        AppMethodBeat.i(217803);
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(161015);
-            if ((paramAnonymousLong == ScanUIRectView.l(ScanUIRectView.this)) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
-            {
-              float f = this.val$param.getFloat("param_zoom_ratio", 0.0F);
-              Log.i("MicroMsg.ScanUIRectView", "zoom to scale %f", new Object[] { Float.valueOf(f) });
-              if ((f > 0.0F) && (ScanUIRectView.n(ScanUIRectView.this)) && (ScanUIRectView.o(ScanUIRectView.this).egx()))
-              {
-                int i = (int)(((com.tencent.scanlib.a.a)ScanUIRectView.p(ScanUIRectView.this)).iov() * f);
-                ((com.tencent.scanlib.a.a)ScanUIRectView.q(ScanUIRectView.this)).aAr(i);
-                c localc = c.Zmm;
-                localc.ZmA += 1;
-                localc.ZmB *= f;
-                localc.ZmC = (System.currentTimeMillis() - localc.IMq);
-                Log.v("MicroMsg.QBarEngineReporter", "alvinluo zoom %d, zoomFactor: %s, totalZoomFactor: %s, lastZoomCostTime: %d", new Object[] { Integer.valueOf(localc.ZmA), Float.valueOf(f), Float.valueOf(localc.ZmB), Long.valueOf(localc.ZmC) });
-              }
-            }
-            AppMethodBeat.o(161015);
-          }
-        });
-        AppMethodBeat.o(217803);
-      }
-    };
-    this.ITl = new com.tencent.mm.plugin.scanner.d.a.a()
-    {
-      public final void PQ(final long paramAnonymousLong)
-      {
-        AppMethodBeat.i(221446);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo postTakeShot session: %d, delay: %d", new Object[] { Long.valueOf(paramAnonymousLong), Long.valueOf(0L) });
-        ScanUIRectView.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(221848);
-            if ((ScanUIRectView.l(ScanUIRectView.this) == paramAnonymousLong) && (ScanUIRectView.l(ScanUIRectView.this) != 0L)) {
-              ScanUIRectView.this.PW(this.DNj);
-            }
-            AppMethodBeat.o(221848);
-          }
-        });
-        AppMethodBeat.o(221446);
+        AppMethodBeat.i(314517);
+        Log.i("MicroMsg.ScanUIRectView", "postTakeShot  session:%d  delay:%d", new Object[] { Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
+        ScanUIRectView.this.post(new ScanUIRectView.4.1(this, paramAnonymousLong1, paramAnonymousLong2));
+        AppMethodBeat.o(314517);
       }
       
-      public final void a(final long paramAnonymousLong, Bundle paramAnonymousBundle)
+      public final void cr(byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(221444);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo onDecodeSuccess %d", new Object[] { Long.valueOf(paramAnonymousLong) });
-        if (paramAnonymousBundle.getBoolean("result_is_best_img", false)) {
-          ScanUIRectView.this.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(222216);
-              if ((paramAnonymousLong == ScanUIRectView.l(ScanUIRectView.this)) && (ScanUIRectView.l(ScanUIRectView.this) != 0L) && (ScanUIRectView.m(ScanUIRectView.this) != null)) {
-                ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), this.val$result);
-              }
-              AppMethodBeat.o(222216);
-            }
-          });
+        AppMethodBeat.i(314528);
+        if (!ScanUIRectView.r(ScanUIRectView.this))
+        {
+          Log.w("MicroMsg.ScanUIRectView", "enableScanCodeProductMerge false, return");
+          AppMethodBeat.o(314528);
+          return;
         }
-        AppMethodBeat.o(221444);
-      }
-      
-      public final void a(final ac paramAnonymousac)
-      {
-        AppMethodBeat.i(221447);
-        ScanUIRectView.this.post(new Runnable()
+        if (ScanUIRectView.s(ScanUIRectView.this))
         {
-          public final void run()
+          Log.w("MicroMsg.ScanUIRectView", "disableScanProductInMergeMode true, return");
+          AppMethodBeat.o(314528);
+          return;
+        }
+        com.tencent.mm.plugin.scanner.d.b localb;
+        Point localPoint;
+        int j;
+        int k;
+        try
+        {
+          if (!ScanUIRectView.t(ScanUIRectView.this).isOpen()) {
+            break label900;
+          }
+          localb = com.tencent.mm.plugin.scanner.d.b.gQw();
+          localPoint = ScanUIRectView.u(ScanUIRectView.this).jXF();
+          j = ScanUIRectView.v(ScanUIRectView.this).getCameraRotation();
+          k = ((com.tencent.mm.plugin.scanner.a.a)ScanUIRectView.w(ScanUIRectView.this)).gQf();
+          if (!localb.OPe)
           {
-            AppMethodBeat.i(217934);
-            if ((paramAnonymousac != null) && ((ScanUIRectView.r(ScanUIRectView.this) instanceof ScanGoodsMaskView)))
-            {
-              ScanGoodsMaskView localScanGoodsMaskView = (ScanGoodsMaskView)ScanUIRectView.r(ScanUIRectView.this);
-              ac localac = paramAnonymousac;
-              kotlin.g.b.p.k(localac, "pointsResult");
-              if (localScanGoodsMaskView.Jam)
-              {
-                Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots isViewDestroy");
-                AppMethodBeat.o(217934);
-                return;
-              }
-              ScanPoint[] arrayOfScanPoint = localac.points;
-              if (arrayOfScanPoint != null)
-              {
-                Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo addAnimationScanDots size: %d", new Object[] { Integer.valueOf(localac.pointCount) });
-                int j = localac.pointCount;
-                int i = 0;
-                if (i < j)
-                {
-                  Object localObject2 = (ScanPoint)e.g(arrayOfScanPoint, i);
-                  label149:
-                  Float localFloat;
-                  if (localObject2 != null)
-                  {
-                    localObject1 = Integer.valueOf(((ScanPoint)localObject2).getId());
-                    if (localObject2 == null) {
-                      break label216;
-                    }
-                    localFloat = Float.valueOf(((ScanPoint)localObject2).getX());
-                    label164:
-                    if (localObject2 == null) {
-                      break label222;
-                    }
-                  }
-                  label216:
-                  label222:
-                  for (localObject2 = Float.valueOf(((ScanPoint)localObject2).getY());; localObject2 = null)
-                  {
-                    Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo getPointObjects id: %d, x: %f, y: %f", new Object[] { localObject1, localFloat, localObject2 });
-                    i += 1;
-                    break;
-                    localObject1 = null;
-                    break label149;
-                    localFloat = null;
-                    break label164;
-                  }
-                }
-                Object localObject1 = localScanGoodsMaskView.IVq;
-                if (localObject1 == null) {
-                  kotlin.g.b.p.bGy("animationDotsView");
-                }
-                ((ScanAnimationDotsView)localObject1).b(localac);
-              }
-            }
-            AppMethodBeat.o(217934);
+            Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask is not working");
+            AppMethodBeat.o(314528);
+            return;
           }
-        });
-        AppMethodBeat.o(221447);
-      }
-    };
-    this.iQJ = new com.tencent.mm.modelgeo.b.a()
-    {
-      public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
-      {
-        AppMethodBeat.i(218352);
-        Log.i("MicroMsg.ScanUIRectView", "onGetLocation %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if (!paramAnonymousBoolean)
+        }
+        catch (Exception paramAnonymousArrayOfByte)
         {
-          Log.i("MicroMsg.ScanUIRectView", "check permission not passed!");
-          if ((!ScanUIRectView.s(ScanUIRectView.this)) && (!com.tencent.mm.modelgeo.d.blr()))
+          Log.printErrStackTrace("MicroMsg.ScanUIRectView", paramAnonymousArrayOfByte, "", new Object[0]);
+          AppMethodBeat.o(314528);
+          return;
+        }
+        if ((paramAnonymousArrayOfByte == null) || (paramAnonymousArrayOfByte.length == 0))
+        {
+          Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask previewData is empty");
+          AppMethodBeat.o(314528);
+          return;
+        }
+        Object localObject;
+        if (localb.OPd != null)
+        {
+          localObject = localb.OPd;
+          ((b.b)localObject).OPx += 1;
+        }
+        if (localb.OPh < com.tencent.mm.plugin.scanner.d.b.OOK)
+        {
+          localb.OPh += 1;
+          if (localb.OPd != null)
           {
-            ScanUIRectView.t(ScanUIRectView.this);
-            com.tencent.mm.ui.base.h.a(ScanUIRectView.this.getContext(), ScanUIRectView.this.getContext().getString(l.i.gps_disable_tip), ScanUIRectView.this.getContext().getString(l.i.app_tip), ScanUIRectView.this.getContext().getString(l.i.jump_to_settings), ScanUIRectView.this.getContext().getString(l.i.app_cancel), false, new DialogInterface.OnClickListener()
-            {
-              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-              {
-                AppMethodBeat.i(222610);
-                com.tencent.mm.modelgeo.d.cW(ScanUIRectView.this.getContext());
-                AppMethodBeat.o(222610);
-              }
-            }, null);
+            paramAnonymousArrayOfByte = localb.OPd;
+            paramAnonymousArrayOfByte.OPz += 1;
           }
-          AppMethodBeat.o(218352);
-          return true;
+          Log.v("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask skip frame, hasSkipCount:" + localb.OPh);
+          AppMethodBeat.o(314528);
+          return;
         }
-        if (ScanUIRectView.u(ScanUIRectView.this))
-        {
-          Log.i("MicroMsg.ScanUIRectView", "ignore, has get lbs!");
-          AppMethodBeat.o(218352);
-          return false;
-        }
-        ScanUIRectView.this.dlq();
-        ScanUIRectView.v(ScanUIRectView.this);
-        n.a(2012, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-        if (ScanUIRectView.m(ScanUIRectView.this) != null)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putFloat("result_lbs_latitude", paramAnonymousFloat2);
-          localBundle.putFloat("result_lbs_longitude", paramAnonymousFloat1);
-          localBundle.putInt("result_lbs_accuracy", (int)paramAnonymousDouble2);
-          localBundle.putInt("result_lbs_source", paramAnonymousInt);
-          ScanUIRectView.m(ScanUIRectView.this).e(ScanUIRectView.l(ScanUIRectView.this), localBundle);
-        }
-        AppMethodBeat.o(218352);
-        return false;
-      }
-    };
-    this.ITm = new IListener() {};
-    this.mBn = new GestureDetector(new GestureDetector.SimpleOnGestureListener()
-    {
-      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222264);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(222264);
-        return bool;
-      }
-      
-      public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(161025);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        Log.d("MicroMsg.ScanUIRectView", "double click,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(paramAnonymousMotionEvent.getActionIndex()), Float.valueOf(paramAnonymousMotionEvent.getX(paramAnonymousMotionEvent.getActionIndex())), Float.valueOf(paramAnonymousMotionEvent.getY(paramAnonymousMotionEvent.getActionIndex())) });
-        ((com.tencent.scanlib.a.a)ScanUIRectView.A(ScanUIRectView.this)).aAs(5);
-        ad.je(ScanUIRectView.B(ScanUIRectView.this), 3);
-        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(161025);
-        return true;
-      }
-      
-      public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
-      {
-        AppMethodBeat.i(161026);
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo onFling velocityX: %f, velocityY: %f, canScrollSwitchTab: %b, enableScrollSwitchTab: %b, isMultiTouch: %b", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Boolean.valueOf(ScanUIRectView.C(ScanUIRectView.this)), Boolean.valueOf(ScanUIRectView.D(ScanUIRectView.this)), Boolean.valueOf(ScanUIRectView.E(ScanUIRectView.this)) });
-        if ((!ScanUIRectView.E(ScanUIRectView.this)) && (ScanUIRectView.D(ScanUIRectView.this)) && (Math.abs(paramAnonymousFloat1) > Math.abs(paramAnonymousFloat2)))
-        {
-          if ((paramAnonymousFloat1 >= -1200.0F) || (!ScanUIRectView.C(ScanUIRectView.this))) {
-            break label168;
-          }
-          if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-            ScanUIRectView.F(ScanUIRectView.this).fEC();
-          }
-          ScanUIRectView.b(ScanUIRectView.this, false);
+        localb.OPh = 0;
+        int i;
+        if (!com.tencent.mm.plugin.scanner.c.a.gQt()) {
+          i = 1;
         }
         for (;;)
         {
-          boolean bool = super.onFling(paramAnonymousMotionEvent1, paramAnonymousMotionEvent2, paramAnonymousFloat1, paramAnonymousFloat2);
-          AppMethodBeat.o(161026);
-          return bool;
-          label168:
-          if ((paramAnonymousFloat1 > 1200.0F) && (ScanUIRectView.C(ScanUIRectView.this)))
+          double d;
+          if (i == 0)
           {
-            if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-              ScanUIRectView.F(ScanUIRectView.this).fED();
+            Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask beyond shake range");
+            if (localb.OPd != null)
+            {
+              paramAnonymousArrayOfByte = localb.OPd;
+              paramAnonymousArrayOfByte.OPA += 1;
             }
-            ScanUIRectView.b(ScanUIRectView.this, false);
+            com.tencent.mm.plugin.scanner.d.b.a(new b.5(localb));
+            AppMethodBeat.o(314528);
+            return;
+            long l2 = System.currentTimeMillis();
+            long l1 = l2 - localb.mJI;
+            localb.mJI = l2;
+            if (l2 - localb.OPq > 1000L)
+            {
+              i = 1;
+              continue;
+            }
+            if (localb.OPq > localb.OPr)
+            {
+              l2 = localb.OPq - localb.OPr;
+              float f1 = localb.pxk - localb.OPm;
+              float f2 = localb.pxl - localb.OPn;
+              float f3 = localb.OPl - localb.OPo;
+              localb.OPm = localb.pxk;
+              localb.OPn = localb.pxl;
+              localb.OPo = localb.OPl;
+              localb.OPr = localb.OPq;
+              localb.OPp = ((Math.pow(f1, 2.0D) + Math.pow(f2, 2.0D) + Math.pow(f3, 2.0D)) / l2 * 100.0D);
+              Log.v("MicroMsg.ReIdAiScanImageDecodeQueue", "getShakeDeltaFromLastDetect  dx:%f, dy:%f, dz:%f, shakeDelta:%f, timeInterval:%d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Double.valueOf(localb.OPp), Long.valueOf(l2) });
+            }
+            for (d = localb.OPp;; d = localb.OPp)
+            {
+              if (!BuildInfo.DEBUG) {
+                break label906;
+              }
+              if (d <= 8.0D) {
+                break;
+              }
+              Log.e("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+              break label906;
+              Log.w("MicroMsg.ReIdAiScanImageDecodeQueue", "getShakeDeltaFromLastDetect  return last delta " + localb.OPp);
+            }
+            if (d > 4.0D) {
+              Log.w("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+            } else {
+              Log.d("MicroMsg.ReIdAiScanImageDecodeQueue", "isWithinAcceptableShakeRange：" + d + "   duration:" + l1);
+            }
+          }
+          else
+          {
+            if ((com.tencent.mm.plugin.scanner.d.b.OPf != null) && (com.tencent.mm.plugin.scanner.d.b.OPg != null) && (com.tencent.mm.plugin.scanner.d.b.OPf.id != com.tencent.mm.plugin.scanner.d.b.OPg.id) && (localb.OPd != null))
+            {
+              localObject = localb.OPd;
+              ((b.b)localObject).OPy += 1;
+            }
+            if (localb.OPd != null) {
+              Log.i("MicroMsg.ReIdAiScanImageDecodeQueue", "addDecodeTask deal img:" + localb.OPd.OPB);
+            }
+            localObject = new com.tencent.mm.plugin.scanner.d.b.a();
+            ((com.tencent.mm.plugin.scanner.d.b.a)localObject).imageData = paramAnonymousArrayOfByte;
+            ((com.tencent.mm.plugin.scanner.d.b.a)localObject).id = System.currentTimeMillis();
+            com.tencent.mm.plugin.scanner.d.b.OPf = (com.tencent.mm.plugin.scanner.d.b.a)localObject;
+            localb.a(localPoint, j, k, true, true);
+            label900:
+            AppMethodBeat.o(314528);
+            return;
+          }
+          label906:
+          if (d < 4.0D) {
+            i = 1;
+          } else {
+            i = 0;
           }
         }
       }
-      
-      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222262);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
-        super.onLongPress(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(222262);
-      }
-      
-      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(222259);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$15", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(222259);
-        return bool;
-      }
-    });
-    this.ITn = new b(Looper.getMainLooper());
+    };
+    this.Pcd = new ScanUIRectView.5(this);
+    this.lsF = new ScanUIRectView.6(this);
+    this.Pce = new IListener(com.tencent.mm.app.f.hfK) {};
+    this.nwZ = new GestureDetector(new ScanUIRectView.7(this));
+    this.Pcf = new b(Looper.getMainLooper());
     AppMethodBeat.o(51947);
   }
   
-  private void PX(long paramLong)
+  private void Ck(boolean paramBoolean)
   {
-    AppMethodBeat.i(161046);
-    long l1 = System.currentTimeMillis() - this.lastShotTime;
-    if (l1 > ZrE)
-    {
-      this.ITn.removeMessages(0);
-      this.ITn.sendEmptyMessageDelayed(0, paramLong);
-      AppMethodBeat.o(161046);
-      return;
+    AppMethodBeat.i(51974);
+    if (this.OSO != null) {
+      this.OSO.Ck(paramBoolean);
     }
-    long l2 = ZrE;
-    this.ITn.removeMessages(0);
-    this.ITn.sendEmptyMessageDelayed(0, l2 - l1 + paramLong);
-    AppMethodBeat.o(161046);
+    if (this.OSP != null) {
+      this.OSP.Ck(paramBoolean);
+    }
+    if (this.PbC != null) {
+      this.PbC.setVisibility(8);
+    }
+    if (this.PbH != null) {
+      this.PbH.gQK();
+    }
+    AppMethodBeat.o(51974);
   }
   
-  private void a(Object paramObject, com.tencent.mm.plugin.scanner.view.d paramd)
+  private void a(Object paramObject, com.tencent.mm.plugin.scanner.view.d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(217146);
+    AppMethodBeat.i(314559);
     Log.i("MicroMsg.ScanUIRectView", "alvinluo onScanSuccess");
-    fEj();
-    fEh();
-    if (this.ILO != null)
+    gSW();
+    gSt();
+    if (this.OSO != null)
     {
-      this.ILO.b(paramObject, paramd);
-      this.ILO.fY(this.aND);
+      this.OSO.a(paramObject, paramd);
+      this.OSO.iZ(this.cHz);
     }
-    if (this.ILP != null) {
-      this.ILP.fEG();
+    if (this.OSP != null) {
+      this.OSP.Ct(paramBoolean);
     }
-    if ((r.aeb(this.mode)) && (this.ITb != null)) {
-      this.ITb.IZj = true;
+    if ((t.aiG(this.mode)) && (this.PbT != null)) {
+      this.PbT.Pje = true;
     }
-    AppMethodBeat.o(217146);
+    AppMethodBeat.o(314559);
   }
   
-  private void cn(byte[] paramArrayOfByte)
+  private void co(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(161043);
-    if ((this.ZrD.egx()) && (((com.tencent.mm.plugin.scanner.a.a)this.ZrD).fCr())) {
-      ScanCameraLightDetector.IYP.P(paramArrayOfByte, ((com.tencent.mm.plugin.scanner.a.a)this.ZrD).ios().x, ((com.tencent.mm.plugin.scanner.a.a)this.ZrD).ios().y);
+    Log.i("MicroMsg.ScanUIRectView", "processFrame");
+    if ((this.ahwr.boa()) && (((com.tencent.mm.plugin.scanner.a.a)this.ahwr).gQd())) {
+      ScanCameraLightDetector.Pio.N(paramArrayOfByte, ((com.tencent.mm.plugin.scanner.a.a)this.ahwr).jXF().x, ((com.tencent.mm.plugin.scanner.a.a)this.ahwr).jXF().y);
     }
     switch (this.mode)
     {
@@ -1412,81 +906,82 @@ public class ScanUIRectView
     case 1: 
     case 4: 
     case 8: 
-      co(paramArrayOfByte);
+      cp(paramArrayOfByte);
       AppMethodBeat.o(161043);
       return;
     }
-    cp(paramArrayOfByte);
+    cq(paramArrayOfByte);
     AppMethodBeat.o(161043);
-  }
-  
-  private void co(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(161044);
-    Object localObject;
-    Rect localRect1;
-    if ((this.IIw != 0L) && (this.ZrD.egx()))
-    {
-      localObject = this.ZrD.ios();
-      if (localObject != null)
-      {
-        localRect1 = getScanCodeRect();
-        if ((this.isRetry) && (this.ITc != 1)) {
-          break label198;
-        }
-        Rect localRect2 = ((com.tencent.mm.plugin.scanner.a.a)this.ZrD).G(localRect1);
-        if (this.ILO != null)
-        {
-          this.ILO.setPreviewRect(localRect2);
-          this.ILO.setScanRect(localRect1);
-          if ((this.ILO instanceof ScanCodeMaskView)) {
-            ((ScanCodeMaskView)this.ILO).setNeedRotate(true);
-          }
-        }
-        com.tencent.qbar.h.inM().a(paramArrayOfByte, (Point)localObject, this.ZrD.getCameraRotation(), localRect2);
-      }
-    }
-    for (;;)
-    {
-      if ((!((com.tencent.scanlib.a.a)this.ZrD).fDZ()) && (com.tencent.qbar.h.inM().IIz > ISX))
-      {
-        Log.i("MicroMsg.ScanUIRectView", "change to FOCUS_MODE_AUTO");
-        this.ZrD.bCY("auto");
-        WO(100L);
-      }
-      AppMethodBeat.o(161044);
-      return;
-      label198:
-      if ((this.isRetry) && (this.ITc == 2))
-      {
-        localObject = new Rect(0, 0, this.ITi, this.ITj);
-        if (this.ILO != null)
-        {
-          this.ILO.setPreviewRect((Rect)localObject);
-          this.ILO.setScanRect(localRect1);
-          if ((this.ILO instanceof ScanCodeMaskView)) {
-            ((ScanCodeMaskView)this.ILO).setNeedRotate(false);
-          }
-        }
-        com.tencent.qbar.h.inM().a(paramArrayOfByte, new Point(this.ITi, this.ITj), 0, (Rect)localObject);
-      }
-    }
   }
   
   private void cp(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(161045);
-    if (this.IIw != 0L) {
-      synchronized (this.ZrD)
+    AppMethodBeat.i(161044);
+    Log.i("MicroMsg.ScanUIRectView", "handleCodeData");
+    Object localObject;
+    Rect localRect1;
+    if ((this.OOu != 0L) && (this.ahwr.boa()))
+    {
+      localObject = this.ahwr.jXF();
+      if (localObject != null)
       {
-        if (this.ZrD.egx())
+        localRect1 = getScanCodeRect();
+        if ((this.vBn) && (this.PbU != 1)) {
+          break label207;
+        }
+        Rect localRect2 = ((com.tencent.mm.plugin.scanner.a.a)this.ahwr).O(localRect1);
+        if (this.OSO != null)
         {
-          Point localPoint = this.ZrD.ios();
-          boolean bool = true;
-          if ((this.IPe instanceof ScanGoodsRequest)) {
-            bool = ((ScanGoodsRequest)this.IPe).IGw;
+          this.OSO.setPreviewRect(localRect2);
+          this.OSO.setScanRect(localRect1);
+          if ((this.OSO instanceof ScanCodeMaskView)) {
+            ((ScanCodeMaskView)this.OSO).setNeedRotate(true);
           }
-          com.tencent.mm.plugin.scanner.d.a.fCz().a(paramArrayOfByte, localPoint, this.ZrD.getCameraRotation(), ((com.tencent.mm.plugin.scanner.a.a)this.ZrD).fCt(), bool);
+        }
+        com.tencent.qbar.h.jWV().a(paramArrayOfByte, (Point)localObject, this.ahwr.getCameraRotation(), localRect2);
+      }
+    }
+    for (;;)
+    {
+      if ((!((com.tencent.scanlib.a.a)this.ahwr).gSN()) && (com.tencent.qbar.h.jWV().OOx > PbP))
+      {
+        Log.i("MicroMsg.ScanUIRectView", "change to FOCUS_MODE_AUTO");
+        this.ahwr.bFD("auto");
+        Bb(100L);
+      }
+      AppMethodBeat.o(161044);
+      return;
+      label207:
+      if ((this.vBn) && (this.PbU == 2))
+      {
+        localObject = new Rect(0, 0, this.Pca, this.Pcb);
+        if (this.OSO != null)
+        {
+          this.OSO.setPreviewRect((Rect)localObject);
+          this.OSO.setScanRect(localRect1);
+          if ((this.OSO instanceof ScanCodeMaskView)) {
+            ((ScanCodeMaskView)this.OSO).setNeedRotate(false);
+          }
+        }
+        com.tencent.qbar.h.jWV().a(paramArrayOfByte, new Point(this.Pca, this.Pcb), 0, (Rect)localObject);
+      }
+    }
+  }
+  
+  private void cq(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(161045);
+    if (this.OOu != 0L) {
+      synchronized (this.ahwr)
+      {
+        if (this.ahwr.boa())
+        {
+          Point localPoint = this.ahwr.jXF();
+          boolean bool = true;
+          if ((this.OXF instanceof ScanGoodsRequest)) {
+            bool = ((ScanGoodsRequest)this.OXF).OME;
+          }
+          com.tencent.mm.plugin.scanner.d.a.gQu().a(paramArrayOfByte, localPoint, this.ahwr.getCameraRotation(), ((com.tencent.mm.plugin.scanner.a.a)this.ahwr).gQf(), bool);
         }
         AppMethodBeat.o(161045);
         return;
@@ -1495,7 +990,7 @@ public class ScanUIRectView
     AppMethodBeat.o(161045);
   }
   
-  private byte[] fEb()
+  private byte[] gSP()
   {
     AppMethodBeat.i(161042);
     for (;;)
@@ -1504,20 +999,20 @@ public class ScanUIRectView
       try
       {
         l1 = System.currentTimeMillis();
-        k = this.aND.getWidth();
-        int m = this.aND.getHeight();
+        k = this.cHz.getWidth();
+        int m = this.cHz.getHeight();
         i = m;
         j = k;
-        if (this.ITb == null) {
+        if (this.PbT == null) {
           break label300;
         }
         i = m;
         j = k;
-        if (this.ITb.IZh == 0.0F) {
+        if (this.PbT.Pjc == 0.0F) {
           break label300;
         }
-        j = (int)(this.aND.getWidth() * this.ITb.IZh);
-        i = (int)(this.aND.getHeight() * this.ITb.IZh);
+        j = (int)(this.cHz.getWidth() * this.PbT.Pjc);
+        i = (int)(this.cHz.getHeight() * this.PbT.Pjc);
       }
       catch (Exception localException)
       {
@@ -1528,15 +1023,15 @@ public class ScanUIRectView
         AppMethodBeat.o(161042);
         return null;
       }
-      localObject = this.aND.getBitmap(k, j);
+      localObject = this.cHz.getBitmap(k, j);
       Log.d("MicroMsg.ScanUIRectView", "alvinluo generateFrameByTextureView getBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.ITi = ((Bitmap)localObject).getWidth();
-        this.ITj = ((Bitmap)localObject).getHeight();
-        Log.d("MicroMsg.ScanUIRectView", "alvinluo generateFrameByTextureView bitmap width: %d, height: %d", new Object[] { Integer.valueOf(this.ITi), Integer.valueOf(this.ITj) });
+        this.Pca = ((Bitmap)localObject).getWidth();
+        this.Pcb = ((Bitmap)localObject).getHeight();
+        Log.d("MicroMsg.ScanUIRectView", "alvinluo generateFrameByTextureView bitmap width: %d, height: %d", new Object[] { Integer.valueOf(this.Pca), Integer.valueOf(this.Pcb) });
         l1 = System.currentTimeMillis();
-        localObject = com.tencent.mm.plugin.scanner.util.p.getNV21(this.ITi, this.ITj, (Bitmap)localObject);
+        localObject = r.getNV21(this.Pca, this.Pcb, (Bitmap)localObject);
         l2 = System.currentTimeMillis();
         if (localObject != null)
         {
@@ -1560,219 +1055,297 @@ public class ScanUIRectView
     }
   }
   
-  private void fEc()
+  private void gSQ()
   {
     boolean bool3 = true;
     boolean bool2 = true;
+    Object localObject3 = null;
     AppMethodBeat.i(51960);
-    Log.d("MicroMsg.ScanUIRectView", "alvinluo createScanMaskView mode: %d, bottomHeight: %d", new Object[] { Integer.valueOf(this.mode), Integer.valueOf(this.ISS) });
+    Log.d("MicroMsg.ScanUIRectView", "createScanMaskView mode: %d, bottomHeight: %d", new Object[] { Integer.valueOf(this.mode), Integer.valueOf(this.PbK) });
+    Object localObject1;
     Object localObject2;
-    label239:
+    boolean bool1;
+    label280:
+    ScanSharedMaskView localScanSharedMaskView;
     int i;
-    Object localObject3;
+    label355:
+    Object localObject4;
     switch (this.mode)
     {
     default: 
       Log.i("MicroMsg.ScanUIRectView", "unknown scan mode %d", new Object[] { Integer.valueOf(this.mode) });
-      if ((this.ILO != null) && (this.ILP != null))
+      if ((this.OSO != null) && (this.OSP != null))
       {
-        this.ILO.setBottomExtraHeight(this.ISS);
-        this.ILO.IRX = ((com.tencent.mm.plugin.scanner.a.a)this.ZrD);
-        localObject1 = this.ILO;
-        localObject2 = this.ILP.getScanTipsView();
-        kotlin.g.b.p.k(localObject2, "tipsView");
-        ((BaseScanMaskView)localObject1).IXT = ((TextView)localObject2);
-        this.ILO.fEr();
-        this.ILP.setBottomExtraHeight(this.ISS);
-        this.ILP.setFlashStatus(this.IOH.dic);
-        localObject1 = this.ILP;
+        localObject1 = this.OSO;
+        localObject2 = this.PbH;
+        s.u(localObject2, "scanUIModel");
+        ((BaseScanMaskView)localObject1).OSW = ((com.tencent.mm.plugin.scanner.model.h)localObject2);
+        this.OSO.setBottomExtraHeight(this.PbK);
+        this.OSO.PaS = ((com.tencent.mm.plugin.scanner.a.a)this.ahwr);
+        localObject1 = this.OSO;
+        localObject2 = this.OSP.getScanTipsView();
+        s.u(localObject2, "tipsView");
+        ((BaseScanMaskView)localObject1).Pht = ((TextView)localObject2);
+        this.OSO.PhG = this.OXj.fhR;
+        this.OSO.gTe();
+        this.OSP.setBottomExtraHeight(this.PbK);
+        this.OSP.setFlashStatus(this.OXj.fhR);
+        localObject1 = this.OSP;
         if (this.isFirst) {
-          break label812;
+          break label880;
         }
         bool1 = true;
         ((ScanSharedMaskView)localObject1).setShowTitle(bool1);
-        localObject2 = this.ILP;
+        localScanSharedMaskView = this.OSP;
         i = this.mode;
-        Log.i("MicroMsg.ScanSharedMaskView", "alvinluo onViewReady currentTab: %d, hashCode: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(((ScanSharedMaskView)localObject2).hashCode()) });
-        ((ScanSharedMaskView)localObject2).IXY = i;
-        localObject3 = ((ScanSharedMaskView)localObject2).IXT;
-        if (localObject3 == null) {
-          kotlin.g.b.p.bGy("scanTips");
+        Log.i("MicroMsg.ScanSharedMaskView", "alvinluo onViewReady currentTab: %d, hashCode: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(localScanSharedMaskView.hashCode()) });
+        localScanSharedMaskView.Phy = i;
+        localObject1 = localScanSharedMaskView.Pht;
+        if (localObject1 != null) {
+          break label885;
         }
-        localObject1 = ((ScanSharedMaskView)localObject2).IXT;
-        if (localObject1 == null) {
-          kotlin.g.b.p.bGy("scanTips");
+        s.bIx("scanTips");
+        localObject1 = null;
+        localObject4 = localScanSharedMaskView.Pht;
+        localObject2 = localObject4;
+        if (localObject4 == null)
+        {
+          s.bIx("scanTips");
+          localObject2 = null;
         }
-        localObject1 = ((TextView)localObject1).getLayoutParams();
-        if (localObject1 == null) {
-          break label817;
+        localObject2 = ((TextView)localObject2).getLayoutParams();
+        if (localObject2 != null) {
+          break label888;
         }
-        if ((localObject1 instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(((ScanSharedMaskView)localObject2).getContext(), 120) + ((ScanSharedMaskView)localObject2).IYh);
+        localObject2 = null;
+        label395:
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localObject1 = localScanSharedMaskView.Phu;
+        if (localObject1 != null) {
+          break label928;
         }
-        label373:
-        ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject3 = ((ScanSharedMaskView)localObject2).IXU;
-        if (localObject3 == null) {
-          kotlin.g.b.p.bGy("scanToast");
+        s.bIx("scanToast");
+        localObject1 = null;
+        label423:
+        localObject4 = localScanSharedMaskView.Phu;
+        localObject2 = localObject4;
+        if (localObject4 == null)
+        {
+          s.bIx("scanToast");
+          localObject2 = null;
         }
-        localObject1 = ((ScanSharedMaskView)localObject2).IXU;
-        if (localObject1 == null) {
-          kotlin.g.b.p.bGy("scanToast");
-        }
-        localObject1 = ((TextView)localObject1).getLayoutParams();
-        if (localObject1 == null) {
-          break label823;
-        }
-        if ((localObject1 instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(((ScanSharedMaskView)localObject2).getContext(), 110) + ((ScanSharedMaskView)localObject2).IYh);
-        }
-        label460:
-        ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject3 = ((ScanSharedMaskView)localObject2).IXW;
-        if (localObject3 == null) {
-          kotlin.g.b.p.bGy("galleryButton");
-        }
-        localObject1 = ((ScanSharedMaskView)localObject2).IXW;
-        if (localObject1 == null) {
-          kotlin.g.b.p.bGy("galleryButton");
-        }
-        localObject1 = ((View)localObject1).getLayoutParams();
-        if (localObject1 == null) {
-          break label829;
-        }
-        if ((localObject1 instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(((ScanSharedMaskView)localObject2).getContext(), 32) + ((ScanSharedMaskView)localObject2).IYh);
-        }
-        label547:
-        ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        if (!r.aed(((ScanSharedMaskView)localObject2).IXY)) {
-          break label835;
-        }
-        localObject1 = ((ScanSharedMaskView)localObject2).IOH;
-        if (localObject1 == null) {
-          kotlin.g.b.p.bGy("flashSwitcher");
-        }
-        ((ScannerFlashSwitcher)localObject1).setVisibility(8);
-        if (((ScanSharedMaskView)localObject2).IYi) {
-          break label936;
-        }
-        if (((ScanSharedMaskView)localObject2).IYg) {
+        localObject2 = ((TextView)localObject2).getLayoutParams();
+        if (localObject2 != null) {
           break label931;
         }
+        localObject2 = null;
+        label463:
+        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localObject1 = localScanSharedMaskView.Phw;
+        if (localObject1 != null) {
+          break label971;
+        }
+        s.bIx("galleryButton");
+        localObject1 = null;
+        label491:
+        localObject4 = localScanSharedMaskView.Phw;
+        localObject2 = localObject4;
+        if (localObject4 == null)
+        {
+          s.bIx("galleryButton");
+          localObject2 = null;
+        }
+        localObject2 = ((View)localObject2).getLayoutParams();
+        if (localObject2 != null) {
+          break label974;
+        }
+        localObject2 = null;
+        label531:
+        ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        if (!t.aiI(localScanSharedMaskView.Phy)) {
+          break label1014;
+        }
+        localObject2 = localScanSharedMaskView.OXj;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("flashSwitcher");
+          localObject1 = null;
+        }
+        ((ScannerFlashSwitcher)localObject1).setVisibility(8);
+        if (localScanSharedMaskView.PhI) {
+          break label1133;
+        }
+        if (localScanSharedMaskView.PhG) {
+          break label1128;
+        }
+        bool1 = bool2;
+        label599:
+        localScanSharedMaskView.Cr(bool1);
+        localObject2 = localScanSharedMaskView.Phs;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          s.bIx("scanTitle");
+          localObject1 = null;
+        }
+        ((TextView)localObject1).setVisibility(8);
+        localScanSharedMaskView.PhF = false;
+        localObject1 = localScanSharedMaskView.Phu;
+        if (localObject1 != null) {
+          break label1326;
+        }
+        s.bIx("scanToast");
+        localObject1 = localObject3;
       }
       break;
     }
+    label928:
     label931:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label1326:
+    for (;;)
     {
-      ((ScanSharedMaskView)localObject2).xD(bool1);
-      localObject1 = ((ScanSharedMaskView)localObject2).IXS;
-      if (localObject1 == null) {
-        kotlin.g.b.p.bGy("scanTitle");
-      }
       ((TextView)localObject1).setVisibility(8);
-      ((ScanSharedMaskView)localObject2).IYf = false;
-      localObject1 = ((ScanSharedMaskView)localObject2).IXU;
-      if (localObject1 == null) {
-        kotlin.g.b.p.bGy("scanToast");
-      }
-      ((TextView)localObject1).setVisibility(8);
-      ((ScanSharedMaskView)localObject2).dBp();
-      ((ScanSharedMaskView)localObject2).adW(i);
+      localScanSharedMaskView.eqb();
+      localScanSharedMaskView.aiB(i);
       this.isFirst = false;
       AppMethodBeat.o(51960);
       return;
-      fEi();
-      this.ILO = new ScanCodeMaskView(getContext());
-      addView(this.ILO);
-      break;
-      this.ILO = new ScanTranslationMaskView(getContext());
-      addView(this.ILO);
-      break;
-      this.ILO = new ScanGoodsMaskView(getContext());
-      addView(this.ILO);
-      if ((!(this.ILO instanceof ScanGoodsMaskView)) || (!(this.IPe instanceof ScanGoodsRequest))) {
-        break;
-      }
-      ((ScanGoodsMaskView)this.ILO).setScanRequest((ScanGoodsRequest)this.IPe);
-      break;
-      label812:
-      bool1 = false;
-      break label239;
-      label817:
-      localObject1 = null;
-      break label373;
-      label823:
-      localObject1 = null;
-      break label460;
-      label829:
-      localObject1 = null;
-      break label547;
-      label835:
-      localObject3 = ((ScanSharedMaskView)localObject2).IOH;
-      if (localObject3 == null) {
-        kotlin.g.b.p.bGy("flashSwitcher");
-      }
-      localObject1 = ((ScanSharedMaskView)localObject2).IOH;
-      if (localObject1 == null) {
-        kotlin.g.b.p.bGy("flashSwitcher");
-      }
-      localObject1 = ((ScannerFlashSwitcher)localObject1).getLayoutParams();
-      if (localObject1 != null) {
-        if ((localObject1 instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(((ScanSharedMaskView)localObject2).getContext(), 32) + ((ScanSharedMaskView)localObject2).IYh);
-        }
+      gSV();
+      if (this.OTn)
+      {
+        this.PbG = new ScanCodeProductMergeMaskView(getContext());
+        this.OSO = this.PbG;
+        this.OXk = this.PbG.getScanProductView();
+        this.PbG.setScanProductCallBack(this.OYf);
+        this.PbG.setScanProductOnItemClickListener(this.OYd);
       }
       for (;;)
       {
-        ((ScannerFlashSwitcher)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        addView(this.OSO);
         break;
+        this.OSO = new ScanCodeMaskView(getContext());
+      }
+      this.OSO = new ScanTranslationMaskView(getContext());
+      addView(this.OSO);
+      break;
+      this.OSO = new ScanGoodsMaskView(getContext());
+      addView(this.OSO);
+      if ((!(this.OSO instanceof ScanGoodsMaskView)) || (!(this.OXF instanceof ScanGoodsRequest))) {
+        break;
+      }
+      ((ScanGoodsMaskView)this.OSO).setScanRequest((ScanGoodsRequest)this.OXF);
+      break;
+      label880:
+      bool1 = false;
+      break label280;
+      label885:
+      break label355;
+      label888:
+      if ((localObject2 instanceof ViewGroup.MarginLayoutParams)) {
+        ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = (com.tencent.mm.cd.a.fromDPToPix(localScanSharedMaskView.getContext(), 120) + localScanSharedMaskView.PhH);
+      }
+      localObject4 = ah.aiuX;
+      break label395;
+      break label423;
+      if ((localObject2 instanceof ViewGroup.MarginLayoutParams)) {
+        ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = (com.tencent.mm.cd.a.fromDPToPix(localScanSharedMaskView.getContext(), 110) + localScanSharedMaskView.PhH);
+      }
+      localObject4 = ah.aiuX;
+      break label463;
+      label971:
+      break label491;
+      label974:
+      if ((localObject2 instanceof ViewGroup.MarginLayoutParams)) {
+        ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = (com.tencent.mm.cd.a.fromDPToPix(localScanSharedMaskView.getContext(), 32) + localScanSharedMaskView.PhH);
+      }
+      localObject4 = ah.aiuX;
+      break label531;
+      label1014:
+      localObject1 = localScanSharedMaskView.OXj;
+      if (localObject1 == null)
+      {
+        s.bIx("flashSwitcher");
+        localObject1 = null;
+        localObject4 = localScanSharedMaskView.OXj;
+        localObject2 = localObject4;
+        if (localObject4 == null)
+        {
+          s.bIx("flashSwitcher");
+          localObject2 = null;
+        }
+        localObject2 = ((ScannerFlashSwitcher)localObject2).getLayoutParams();
+        if (localObject2 != null) {
+          break label1088;
+        }
+        localObject2 = null;
+      }
+      for (;;)
+      {
+        ((ScannerFlashSwitcher)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        break;
+        break label1035;
+        label1088:
+        if ((localObject2 instanceof ViewGroup.MarginLayoutParams)) {
+          ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = (com.tencent.mm.cd.a.fromDPToPix(localScanSharedMaskView.getContext(), 112) + localScanSharedMaskView.PhH);
+        }
+        localObject4 = ah.aiuX;
+      }
+      label1128:
+      bool1 = false;
+      break label599;
+      label1133:
+      localScanSharedMaskView.Cr(false);
+      localScanSharedMaskView.gTz();
+      localScanSharedMaskView.gTA();
+      localObject2 = localScanSharedMaskView.Phs;
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        s.bIx("scanTitle");
         localObject1 = null;
       }
-    }
-    label936:
-    ((ScanSharedMaskView)localObject2).xD(false);
-    ((ScanSharedMaskView)localObject2).fEE();
-    ((ScanSharedMaskView)localObject2).fEF();
-    Object localObject1 = ((ScanSharedMaskView)localObject2).IXS;
-    if (localObject1 == null) {
-      kotlin.g.b.p.bGy("scanTitle");
-    }
-    ((TextView)localObject1).setAlpha(1.0F);
-    localObject1 = ((ScanSharedMaskView)localObject2).IXS;
-    if (localObject1 == null) {
-      kotlin.g.b.p.bGy("scanTitle");
-    }
-    if (((TextView)localObject1).getVisibility() != 0) {}
-    for (bool1 = bool3;; bool1 = false)
-    {
-      if (((ScanSharedMaskView)localObject2).IYd == null)
+      ((TextView)localObject1).setAlpha(1.0F);
+      localObject2 = localScanSharedMaskView.Phs;
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        localObject1 = new m();
-        localObject3 = ((ScanSharedMaskView)localObject2).IXS;
-        if (localObject3 == null) {
-          kotlin.g.b.p.bGy("scanTitle");
-        }
-        localObject1 = ((m)localObject1).fZ((View)localObject3).fEX().fEY();
-        ((m)localObject1).IZK = ((m.b)new ScanSharedMaskView.f((ScanSharedMaskView)localObject2));
-        ((ScanSharedMaskView)localObject2).IYd = ((m)localObject1);
+        s.bIx("scanTitle");
+        localObject1 = null;
       }
-      localObject1 = ((ScanSharedMaskView)localObject2).IYd;
-      if (localObject1 == null) {
+      if (((TextView)localObject1).getVisibility() != 0) {}
+      for (bool1 = bool3;; bool1 = false)
+      {
+        if (localScanSharedMaskView.PhD == null)
+        {
+          localObject4 = new o();
+          localObject2 = localScanSharedMaskView.Phs;
+          localObject1 = localObject2;
+          if (localObject2 == null)
+          {
+            s.bIx("scanTitle");
+            localObject1 = null;
+          }
+          localObject1 = ((o)localObject4).ja((View)localObject1).gUh().gUi();
+          ((o)localObject1).PjD = ((o.b)new ScanSharedMaskView.d(localScanSharedMaskView));
+          localScanSharedMaskView.PhD = ((o)localObject1);
+        }
+        localObject1 = localScanSharedMaskView.PhD;
+        if (localObject1 == null) {
+          break;
+        }
+        ((o)localObject1).Cz(bool1);
         break;
       }
-      ((m)localObject1).xJ(bool1);
-      break;
     }
   }
   
-  private void fEd()
+  private void gSR()
   {
     AppMethodBeat.i(51962);
     String str = getScanTips();
-    this.ILP.setScanTips(str);
-    this.ILP.setScanRequest(this.IPe);
+    this.OSP.setScanTips(str);
+    this.OSP.setScanRequest(this.OXF);
     switch (this.mode)
     {
     default: 
@@ -1782,40 +1355,47 @@ public class ScanUIRectView
     case 1: 
     case 4: 
     case 8: 
-      this.ILP.setScanTitle(getResources().getString(l.i.IEP));
+      if (this.OTn)
+      {
+        this.OSP.setScanTitle(getResources().getString(l.i.OKT));
+        AppMethodBeat.o(51962);
+        return;
+      }
+      this.OSP.setScanTitle(getResources().getString(l.i.OKW));
       AppMethodBeat.o(51962);
       return;
     case 3: 
-      this.ILP.setScanTitle(getResources().getString(l.i.scan_entry_ocr));
+      this.OSP.setScanTitle(getResources().getString(l.i.scan_entry_ocr));
       AppMethodBeat.o(51962);
       return;
     }
-    this.ILP.setScanTitle(getResources().getString(l.i.IEN));
+    this.OSP.setScanTitle(getResources().getString(l.i.OKU));
     AppMethodBeat.o(51962);
   }
   
-  private void fEg()
+  private void gSU()
   {
     AppMethodBeat.i(51970);
-    if (this.ILO != null)
+    this.PbG = null;
+    if (this.OSO != null)
     {
-      final BaseScanMaskView localBaseScanMaskView = this.ILO;
+      final BaseScanMaskView localBaseScanMaskView = this.OSO;
       localBaseScanMaskView.a(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(170022);
+          AppMethodBeat.i(314505);
           ScanUIRectView.this.removeView((View)localBaseScanMaskView);
           localBaseScanMaskView.release();
-          AppMethodBeat.o(170022);
+          AppMethodBeat.o(314505);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(170021);
+          AppMethodBeat.i(314502);
           ScanUIRectView.this.removeView((View)localBaseScanMaskView);
           localBaseScanMaskView.release();
-          AppMethodBeat.o(170021);
+          AppMethodBeat.o(314502);
         }
         
         public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
@@ -1826,30 +1406,30 @@ public class ScanUIRectView
     AppMethodBeat.o(51970);
   }
   
-  private void fEi()
+  private void gSV()
   {
     AppMethodBeat.i(162394);
-    if (com.tencent.qbar.f.inJ())
+    if (com.tencent.qbar.f.jWS())
     {
-      Log.i("MicroMsg.ScanUIRectView", "alvinluo updateScanCodeRect visibleResolution: %s", new Object[] { this.wxC });
-      if ((this.wxC != null) && (this.wxC.x > 0) && (this.wxC.y > 0))
+      Log.i("MicroMsg.ScanUIRectView", "alvinluo updateScanCodeRect visibleResolution: %s", new Object[] { this.zTI });
+      if ((this.zTI != null) && (this.zTI.x > 0) && (this.zTI.y > 0))
       {
-        this.ISL.setDecorRect(new Rect(0, (int)(this.wxC.y * 1.0F / 19.0F), this.wxC.x, (int)(this.wxC.y * 17.0F / 19.0F)));
+        this.PbB.setDecorRect(new Rect(0, (int)(this.zTI.y * 1.0F / 19.0F), this.zTI.x, (int)(this.zTI.y * 17.0F / 19.0F)));
         AppMethodBeat.o(162394);
       }
     }
     else
     {
-      this.ISL.jp(getResources().getDimensionPixelSize(l.d.scan_code_rect_width), getResources().getDimensionPixelSize(l.d.scan_code_rect_height));
+      this.PbB.kX(getResources().getDimensionPixelSize(l.d.scan_code_rect_width), getResources().getDimensionPixelSize(l.d.scan_code_rect_height));
     }
     AppMethodBeat.o(162394);
   }
   
-  private void fEj()
+  private void gSW()
   {
     AppMethodBeat.i(160188);
-    if (this.ITh != null) {
-      removeCallbacks(this.ITh);
+    if (this.PbZ != null) {
+      removeCallbacks(this.PbZ);
     }
     AppMethodBeat.o(160188);
   }
@@ -1858,7 +1438,7 @@ public class ScanUIRectView
   {
     int j = 0;
     AppMethodBeat.i(51975);
-    if (com.tencent.qbar.f.inJ())
+    if (com.tencent.qbar.f.jWS())
     {
       localRect1 = getDecorRect();
       AppMethodBeat.o(51975);
@@ -1915,173 +1495,216 @@ public class ScanUIRectView
   private String getScanTips()
   {
     AppMethodBeat.i(51963);
-    if (!this.IOV)
+    if (!this.OXw)
     {
       AppMethodBeat.o(51963);
       return "";
     }
+    if (this.OTn) {}
     switch (this.mode)
     {
     default: 
-      AppMethodBeat.o(51963);
-      return "";
-    case 1: 
-      str = getResources().getString(l.i.IFp);
-      AppMethodBeat.o(51963);
-      return str;
-    case 8: 
-      str = getResources().getString(l.i.IED);
-      AppMethodBeat.o(51963);
-      return str;
-    case 4: 
-      str = getResources().getString(l.i.IEE);
-      AppMethodBeat.o(51963);
-      return str;
-    case 3: 
-      str = getResources().getString(l.i.scan_translation_capture_tip);
-      AppMethodBeat.o(51963);
-      return str;
+      switch (this.mode)
+      {
+      default: 
+        AppMethodBeat.o(51963);
+        return "";
+      }
+      break;
     }
-    if (!Util.isNullOrNil(this.ISO))
+    if (!Util.isNullOrNil(this.PbF))
     {
-      str = this.ISO;
+      str = this.PbF;
       AppMethodBeat.o(51963);
       return str;
     }
-    String str = getResources().getString(l.i.IER);
+    String str = getResources().getString(l.i.OKS);
+    AppMethodBeat.o(51963);
+    return str;
+    str = getResources().getString(l.i.OLx);
+    AppMethodBeat.o(51963);
+    return str;
+    str = getResources().getString(l.i.OKG);
+    AppMethodBeat.o(51963);
+    return str;
+    str = getResources().getString(l.i.OKH);
+    AppMethodBeat.o(51963);
+    return str;
+    str = getResources().getString(l.i.scan_translation_capture_tip);
+    AppMethodBeat.o(51963);
+    return str;
+    if (!Util.isNullOrNil(this.PbE))
+    {
+      str = this.PbE;
+      AppMethodBeat.o(51963);
+      return str;
+    }
+    str = getResources().getString(l.i.OKY);
     AppMethodBeat.o(51963);
     return str;
   }
   
-  private void xw(boolean paramBoolean)
+  private void ub(long paramLong)
   {
-    AppMethodBeat.i(51974);
-    if (this.ILO != null) {
-      this.ILO.xw(paramBoolean);
+    AppMethodBeat.i(161046);
+    long l1 = System.currentTimeMillis() - this.lastShotTime;
+    if (l1 > ahws)
+    {
+      this.Pcf.removeMessages(0);
+      this.Pcf.sendEmptyMessageDelayed(0, paramLong);
+      AppMethodBeat.o(161046);
+      return;
     }
-    if (this.ILP != null) {
-      this.ILP.xw(paramBoolean);
-    }
-    if (this.ISM != null) {
-      this.ISM.setVisibility(8);
-    }
-    if (this.ISP != null) {
-      this.ISP.fCJ();
-    }
-    AppMethodBeat.o(51974);
+    long l2 = ahws;
+    this.Pcf.removeMessages(0);
+    this.Pcf.sendEmptyMessageDelayed(0, l2 - l1 + paramLong);
+    AppMethodBeat.o(161046);
   }
   
-  public final void PW(long paramLong)
+  public final void Ci(boolean paramBoolean)
   {
-    AppMethodBeat.i(51957);
-    this.ISW = true;
-    Log.d("MicroMsg.ScanUIRectView", "alvinluo takeOneShot timeout: %d, isRetry: %b, onPreviewFrameCalled: %b, canReportOnPreviewFrame: %b, hasReport: %b", new Object[] { Long.valueOf(this.mTimeout), Boolean.valueOf(this.isRetry), Boolean.valueOf(this.ITg), Boolean.valueOf(this.ITf), Boolean.valueOf(this.ITe) });
-    if (!this.isRetry)
+    boolean bool2 = true;
+    AppMethodBeat.i(51969);
+    Log.v("MicroMsg.ScanUIRectView", "alvinluo onShowNoDataView show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject;
+    boolean bool1;
+    if (this.OSP != null)
     {
-      super.PW(paramLong);
-      this.ITd = System.currentTimeMillis();
-      if ((!this.ITg) && (this.ITf) && (r.aeb(this.mode)))
+      localObject = this.OSP;
+      if (!paramBoolean)
       {
-        removeCallbacks(this.ITh);
-        postDelayed(this.ITh, this.mTimeout);
-        AppMethodBeat.o(51957);
+        bool1 = true;
+        ((ScanSharedMaskView)localObject).Cv(bool1);
       }
     }
-    else if ((this.ITb != null) && (this.ITb.aea(this.ITc)))
+    else if (this.OSO != null)
     {
-      if (this.ITc == 1)
-      {
-        super.PW(paramLong);
-        this.ITd = System.currentTimeMillis();
-        AppMethodBeat.o(51957);
-        return;
-      }
-      if (this.ITc == 2) {
-        PX(paramLong);
+      localObject = this.OSO;
+      if (paramBoolean) {
+        break label90;
       }
     }
-    AppMethodBeat.o(51957);
+    label90:
+    for (paramBoolean = bool2;; paramBoolean = false)
+    {
+      ((BaseScanMaskView)localObject).CB(paramBoolean);
+      AppMethodBeat.o(51969);
+      return;
+      bool1 = false;
+      break;
+    }
   }
   
-  public final void TL()
+  public final void Cj(final boolean paramBoolean)
   {
-    AppMethodBeat.i(51956);
-    super.TL();
-    this.ISY = true;
-    this.ISZ = false;
-    AppMethodBeat.o(51956);
+    AppMethodBeat.i(170027);
+    am.ahT(this.mode);
+    if (this.mode == 12) {
+      am.aY(1, System.currentTimeMillis());
+    }
+    if (Looper.getMainLooper().getThread() == Thread.currentThread())
+    {
+      Ck(paramBoolean);
+      AppMethodBeat.o(170027);
+      return;
+    }
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(314513);
+        ScanUIRectView.a(ScanUIRectView.this, paramBoolean);
+        AppMethodBeat.o(314513);
+      }
+    });
+    AppMethodBeat.o(170027);
   }
   
   public final void a(final b.b.a parama)
   {
     AppMethodBeat.i(161041);
+    if (!this.OXT)
+    {
+      Log.w("MicroMsg.ScanUIRectView", "openCamera not enable and stop");
+      AppMethodBeat.o(161041);
+      return;
+    }
     super.a(new b.b.a()
     {
-      public final void fEl()
+      public final void gSY()
       {
-        AppMethodBeat.i(161029);
+        AppMethodBeat.i(170019);
         ScanUIRectView.h(ScanUIRectView.this);
         if (parama != null) {
-          parama.fEl();
+          parama.gSY();
         }
-        AppMethodBeat.o(161029);
+        AppMethodBeat.o(170019);
       }
     });
     AppMethodBeat.o(161041);
   }
   
-  public final void a(final Object paramObject, final com.tencent.mm.plugin.scanner.view.d paramd, boolean paramBoolean)
+  public final void a(final Object paramObject, final com.tencent.mm.plugin.scanner.view.d paramd, boolean paramBoolean1, final boolean paramBoolean2)
   {
-    AppMethodBeat.i(217144);
-    if (paramBoolean)
+    AppMethodBeat.i(315134);
+    if (paramBoolean1)
     {
-      com.tencent.e.h.ZvG.n(new Runnable()
+      com.tencent.threadpool.h.ahAA.o(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(170023);
-          ScanUIRectView.a(ScanUIRectView.this, paramObject, paramd);
-          AppMethodBeat.o(170023);
+          AppMethodBeat.i(314512);
+          ScanUIRectView.a(ScanUIRectView.this, paramObject, paramd, paramBoolean2);
+          AppMethodBeat.o(314512);
         }
       }, 200L);
-      AppMethodBeat.o(217144);
+      AppMethodBeat.o(315134);
       return;
     }
-    a(paramObject, paramd);
-    AppMethodBeat.o(217144);
+    a(paramObject, paramd, paramBoolean2);
+    AppMethodBeat.o(315134);
+  }
+  
+  public final void auq()
+  {
+    AppMethodBeat.i(51956);
+    super.auq();
+    this.PbQ = true;
+    this.PbR = false;
+    AppMethodBeat.o(51956);
   }
   
   public final void b(boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     AppMethodBeat.i(51965);
-    if (this.ILO != null) {
-      this.ILO.b(paramBoolean, paramOnCancelListener);
+    if (this.OSO != null) {
+      this.OSO.b(paramBoolean, paramOnCancelListener);
     }
     AppMethodBeat.o(51965);
   }
   
-  public final void dlq()
+  public final void dSg()
   {
     AppMethodBeat.i(51978);
-    if ((this.ILO != null) && ((this.ILO instanceof ScanCodeMaskView))) {
-      ((ScanCodeMaskView)this.ILO).dlq();
+    if ((this.OSO != null) && ((this.OSO instanceof ScanCodeMaskView))) {
+      ((ScanCodeMaskView)this.OSO).dSg();
     }
     AppMethodBeat.o(51978);
   }
   
-  public final void fDY()
+  public final void gSM()
   {
     AppMethodBeat.i(51948);
-    this.ZrD = new com.tencent.mm.plugin.scanner.a.a();
+    this.ahwr = new com.tencent.mm.plugin.scanner.a.a();
     AppMethodBeat.o(51948);
   }
   
-  public final boolean fDZ()
+  public final boolean gSN()
   {
     AppMethodBeat.i(51950);
-    if (this.ZrD != null)
+    if (this.ahwr != null)
     {
-      boolean bool = ((com.tencent.scanlib.a.a)this.ZrD).fDZ();
+      boolean bool = ((com.tencent.scanlib.a.a)this.ahwr).gSN();
       AppMethodBeat.o(51950);
       return bool;
     }
@@ -2089,84 +1712,117 @@ public class ScanUIRectView
     return false;
   }
   
-  public final void fEa()
+  public final void gSO()
   {
     AppMethodBeat.i(51952);
-    Log.i("MicroMsg.ScanUIRectView", "alvinluo stopCurrentSession %d", new Object[] { Long.valueOf(this.IIw) });
-    com.tencent.qbar.h.inM().PP(this.IIw);
-    com.tencent.mm.plugin.scanner.d.a.fCz().PP(this.IIw);
-    this.IIw = 0L;
+    Log.i("MicroMsg.ScanUIRectView", "alvinluo stopCurrentSession %d", new Object[] { Long.valueOf(this.OOu) });
+    com.tencent.qbar.h.jWV().tR(this.OOu);
+    com.tencent.mm.plugin.scanner.d.a.gQu().tR(this.OOu);
+    com.tencent.mm.plugin.scanner.d.b.gQw().gQy();
+    this.OOu = 0L;
     AppMethodBeat.o(51952);
   }
   
-  public final void fEe()
+  public final void gSS()
   {
     AppMethodBeat.i(51967);
-    if ((this.ILP != null) && (!this.IOH.dic)) {
-      this.ILP.xF(true);
+    if ((this.OSP != null) && (!this.OXj.fhR)) {
+      this.OSP.Cu(true);
+    }
+    if ((this.OSO != null) && (!this.OXj.fhR)) {
+      this.OSO.PhG = true;
     }
     AppMethodBeat.o(51967);
   }
   
-  public final void fEf()
+  public final void gST()
   {
     AppMethodBeat.i(51968);
-    if ((this.ILP != null) && (this.IOH.dic)) {
-      this.ILP.xF(false);
+    if ((this.OSP != null) && (this.OXj.fhR)) {
+      this.OSP.Cu(false);
+    }
+    if ((this.OSO != null) && (this.OXj.fhR)) {
+      this.OSO.PhG = false;
     }
     AppMethodBeat.o(51968);
   }
   
-  public final void fEh()
+  public final void gSt()
   {
-    AppMethodBeat.i(217151);
+    AppMethodBeat.i(315147);
     onPause();
-    TL();
-    AppMethodBeat.o(217151);
+    auq();
+    AppMethodBeat.o(315147);
   }
   
   public Rect getDecorRect()
   {
     AppMethodBeat.i(51976);
-    Rect localRect = this.ISL.getDecorRect();
+    Rect localRect = this.PbB.getDecorRect();
     AppMethodBeat.o(51976);
     return localRect;
   }
   
   public com.tencent.scanlib.a.f getScanCamera()
   {
-    return this.ZrD;
+    return this.ahwr;
+  }
+  
+  int getScanCodeTabType()
+  {
+    if (this.OTn) {
+      return com.tencent.qbar.c.ahqG;
+    }
+    return com.tencent.qbar.c.ahqD;
   }
   
   public BaseScanMaskView getScanMaskView()
   {
-    return this.ILO;
+    return this.OSO;
+  }
+  
+  public ScanProductMaskDecorView getScanProductMaskDecorView()
+  {
+    return this.OXk;
+  }
+  
+  h.d getSessionInfo()
+  {
+    AppMethodBeat.i(315013);
+    h.d locald = new h.d();
+    locald.OTy = am.ahU(this.mode);
+    locald.OTx = am.ahS(this.mode);
+    AppMethodBeat.o(315013);
+    return locald;
   }
   
   public ScanSharedMaskView getSharedMaskView()
   {
-    return this.ILP;
+    return this.OSP;
   }
   
   public TextureView getTextrueView()
   {
-    return this.aND;
+    return this.cHz;
   }
   
   public final void init()
   {
     AppMethodBeat.i(51959);
     super.init();
-    this.ISL = new ScanRectDecorView(getContext());
-    if (this.IPp) {
-      this.ISO = v.fCW();
+    this.PbB = new ScanRectDecorView(getContext());
+    if (this.OXS) {
+      this.PbE = ac.gRc();
     }
-    Log.i("MicroMsg.ScanUIRectView", "initScanGoodsTips enable: %b, %s", new Object[] { Boolean.valueOf(this.IPp), this.ISO });
-    addView(this.ISL, new FrameLayout.LayoutParams(-1, -1));
-    this.ILP = new ScanSharedMaskView(getContext());
-    this.IOH = this.ILP.getFlashSwitcherView();
-    addView(this.ILP, new FrameLayout.LayoutParams(-1, -1));
-    fEd();
+    if (this.OTn) {
+      this.PbF = ac.gRd();
+    }
+    Log.i("MicroMsg.ScanUIRectView", "initScanTips enableScanGoodsWording: %b, scanGoodsTips: %s, scanMergeTips: %s", new Object[] { Boolean.valueOf(this.OXS), this.PbE, this.PbF });
+    addView(this.PbB, new FrameLayout.LayoutParams(-1, -1));
+    this.OSP = new ScanSharedMaskView(getContext());
+    this.OXj = this.OSP.getFlashSwitcherView();
+    addView(this.OSP, new FrameLayout.LayoutParams(-1, -1));
+    gSR();
     AppMethodBeat.o(51959);
   }
   
@@ -2176,10 +1832,10 @@ public class ScanUIRectView
     Log.i("MicroMsg.ScanUIRectView", "onAutoFocus %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.ITf = false;
-      PW(0L);
+      this.PbX = false;
+      ua(0L);
     }
-    WO(ZrG);
+    Bb(ahwu);
     AppMethodBeat.o(51972);
   }
   
@@ -2187,115 +1843,15 @@ public class ScanUIRectView
   {
     AppMethodBeat.i(51949);
     super.onCreate();
-    this.IST = ((int)(com.tencent.mm.ci.a.kr(getContext()) / 4.5F));
-    if (r.aeb(this.mode)) {
-      com.tencent.qbar.h.inM().init(getContext());
+    this.PbL = ((int)(com.tencent.mm.cd.a.ms(getContext()) / 4.5F));
+    if (t.aiG(this.mode)) {
+      com.tencent.qbar.h.jWV().init(getContext());
     }
-    com.tencent.qbar.h.inM().ZmZ = new al();
-    setOnTouchListener(new View.OnTouchListener()
-    {
-      private float ITv;
-      private float ITw = 400.0F;
-      private boolean ITx = false;
-      
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(161027);
-        int i = paramAnonymousMotionEvent.getActionMasked();
-        int j = paramAnonymousMotionEvent.getActionIndex();
-        Log.d("MicroMsg.ScanUIRectView", "pointIndex:%d, action: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-        switch (i)
-        {
-        }
-        for (;;)
-        {
-          paramAnonymousView = ScanUIRectView.L(ScanUIRectView.this);
-          com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, locala.aFh(), "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$16", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/scanner/ui/ScanUIRectView$16", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          if (paramAnonymousMotionEvent.getAction() == 1) {
-            ScanUIRectView.c(ScanUIRectView.this, false);
-          }
-          AppMethodBeat.o(161027);
-          return true;
-          Log.d("MicroMsg.ScanUIRectView", "first down,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(j), Float.valueOf(paramAnonymousMotionEvent.getX()), Float.valueOf(paramAnonymousMotionEvent.getY()) });
-          ScanUIRectView.a(ScanUIRectView.this, paramAnonymousMotionEvent.getRawX());
-          ScanUIRectView.b(ScanUIRectView.this, true);
-          this.ITx = false;
-          continue;
-          Log.d("MicroMsg.ScanUIRectView", "down,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(j), Float.valueOf(paramAnonymousMotionEvent.getX(j)), Float.valueOf(paramAnonymousMotionEvent.getY(j)) });
-          if (paramAnonymousMotionEvent.getPointerCount() == 2)
-          {
-            this.ITv = ((float)(Math.pow(paramAnonymousMotionEvent.getX(0) - paramAnonymousMotionEvent.getX(1), 2.0D) + Math.pow(paramAnonymousMotionEvent.getY(0) - paramAnonymousMotionEvent.getY(1), 2.0D)));
-            ScanUIRectView.c(ScanUIRectView.this, true);
-          }
-          this.ITx = false;
-          continue;
-          Log.d("MicroMsg.ScanUIRectView", "last up,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(j), Float.valueOf(paramAnonymousMotionEvent.getX()), Float.valueOf(paramAnonymousMotionEvent.getY()) });
-          if (paramAnonymousMotionEvent.getPointerCount() == 2)
-          {
-            this.ITv = ((float)(Math.pow(paramAnonymousMotionEvent.getX(0) - paramAnonymousMotionEvent.getX(1), 2.0D) + Math.pow(paramAnonymousMotionEvent.getY(0) - paramAnonymousMotionEvent.getY(1), 2.0D)));
-            continue;
-            Log.d("MicroMsg.ScanUIRectView", "up,pointer:%d,x:%f,y:%f", new Object[] { Integer.valueOf(j), Float.valueOf(paramAnonymousMotionEvent.getX(j)), Float.valueOf(paramAnonymousMotionEvent.getY(j)) });
-            if (paramAnonymousMotionEvent.getPointerCount() == 2)
-            {
-              this.ITv = ((float)(Math.pow(paramAnonymousMotionEvent.getX(0) - paramAnonymousMotionEvent.getX(1), 2.0D) + Math.pow(paramAnonymousMotionEvent.getY(0) - paramAnonymousMotionEvent.getY(1), 2.0D)));
-              if (this.ITx)
-              {
-                this.ITx = false;
-                ad.je(ScanUIRectView.B(ScanUIRectView.this), 4);
-                continue;
-                float f;
-                if (paramAnonymousMotionEvent.getPointerCount() == 2)
-                {
-                  Log.d("MicroMsg.ScanUIRectView", "move,pointer:0,x:%f,y:%f", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getX(0)), Float.valueOf(paramAnonymousMotionEvent.getY(0)) });
-                  Log.d("MicroMsg.ScanUIRectView", "move,pointer:1,x:%f,y:%f", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getX(1)), Float.valueOf(paramAnonymousMotionEvent.getY(1)) });
-                  f = (float)(Math.pow(paramAnonymousMotionEvent.getX(0) - paramAnonymousMotionEvent.getX(1), 2.0D) + Math.pow(paramAnonymousMotionEvent.getY(0) - paramAnonymousMotionEvent.getY(1), 2.0D));
-                  Log.d("MicroMsg.ScanUIRectView", "distance:%f,lastDistance:%f,min move:%f", new Object[] { Float.valueOf(f), Float.valueOf(this.ITv), Float.valueOf(this.ITw) });
-                  if (Math.abs(f - this.ITv) > this.ITw)
-                  {
-                    if (ScanUIRectView.n(ScanUIRectView.this)) {
-                      ScanUIRectView.G(ScanUIRectView.this);
-                    }
-                    if (f - this.ITv > 0.0F) {
-                      ((com.tencent.scanlib.a.a)ScanUIRectView.H(ScanUIRectView.this)).aAs(2);
-                    }
-                    for (this.ITx = true;; this.ITx = true)
-                    {
-                      this.ITv = f;
-                      break;
-                      ((com.tencent.scanlib.a.a)ScanUIRectView.I(ScanUIRectView.this)).aAs(3);
-                    }
-                  }
-                }
-                else if ((paramAnonymousMotionEvent.getPointerCount() == 1) && (ScanUIRectView.D(ScanUIRectView.this)) && (!ScanUIRectView.E(ScanUIRectView.this)))
-                {
-                  f = paramAnonymousMotionEvent.getRawX() - ScanUIRectView.J(ScanUIRectView.this);
-                  Log.v("MicroMsg.ScanUIRectView", "alvinluo onTouchEvent offsetX: %f, canScrollSwitchTab: %b", new Object[] { Float.valueOf(f), Boolean.valueOf(ScanUIRectView.C(ScanUIRectView.this)) });
-                  if ((f >= ScanUIRectView.K(ScanUIRectView.this)) && (ScanUIRectView.C(ScanUIRectView.this)))
-                  {
-                    if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-                      ScanUIRectView.F(ScanUIRectView.this).fED();
-                    }
-                    ScanUIRectView.b(ScanUIRectView.this, false);
-                  }
-                  else if ((f <= -ScanUIRectView.K(ScanUIRectView.this)) && (ScanUIRectView.C(ScanUIRectView.this)))
-                  {
-                    if (ScanUIRectView.F(ScanUIRectView.this) != null) {
-                      ScanUIRectView.F(ScanUIRectView.this).fEC();
-                    }
-                    ScanUIRectView.b(ScanUIRectView.this, false);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    });
-    EventCenter.instance.addListener(this.ITm);
-    if (this.ITb != null) {
-      this.ITb.zUF = System.currentTimeMillis();
+    com.tencent.qbar.h.jWV().ahrw = new au();
+    setOnTouchListener(new ScanUIRectView.8(this));
+    this.Pce.alive();
+    if (this.PbT != null) {
+      this.PbT.AxK = System.currentTimeMillis();
     }
     AppMethodBeat.o(51949);
   }
@@ -2305,49 +1861,67 @@ public class ScanUIRectView
     AppMethodBeat.i(51955);
     super.onDestroy();
     Log.d("MicroMsg.ScanUIRectView", "alvinluo releaseView");
-    if (this.ILO != null) {
-      this.ILO.release();
+    if (this.OSO != null) {
+      this.OSO.release();
     }
-    if (this.ILP != null)
+    if (this.OSP != null)
     {
-      localObject = this.ILP;
-      Log.d("MicroMsg.ScanSharedMaskView", "alvinluo release hashCode: %d", new Object[] { Integer.valueOf(((ScanSharedMaskView)localObject).hashCode()) });
-      ((ScanSharedMaskView)localObject).fEE();
-      ((ScanSharedMaskView)localObject).fEF();
+      localObject1 = this.OSP;
+      Log.d("MicroMsg.ScanSharedMaskView", "alvinluo release hashCode: %d", new Object[] { Integer.valueOf(((ScanSharedMaskView)localObject1).hashCode()) });
+      ((ScanSharedMaskView)localObject1).gTz();
+      ((ScanSharedMaskView)localObject1).gTA();
     }
-    com.tencent.qbar.h.inM().release();
-    Object localObject = com.tencent.mm.plugin.scanner.d.a.fCz();
+    if (this.OXk != null) {
+      ScanProductMaskDecorView.onDestroy();
+    }
+    com.tencent.qbar.h.jWV().release();
+    Object localObject1 = com.tencent.mm.plugin.scanner.d.a.gQu();
     Log.i("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo release");
-    v.a(new a.3((com.tencent.mm.plugin.scanner.d.a)localObject));
-    EventCenter.instance.removeListener(this.ITm);
-    removeCallbacks(this.ITh);
-    this.ITh = null;
-    if (this.ITb != null)
+    ac.a(new a.3((com.tencent.mm.plugin.scanner.d.a)localObject1));
+    localObject1 = com.tencent.mm.plugin.scanner.d.b.gQw();
+    Log.i("MicroMsg.ReIdAiScanImageDecodeQueue", "release");
+    com.tencent.mm.plugin.scanner.d.b.a(new b.3((com.tencent.mm.plugin.scanner.d.b)localObject1));
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).OPe = false;
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).OPh = 0;
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).OPc = null;
+    Object localObject2 = com.tencent.mm.plugin.scanner.model.f.ORq;
+    localObject2 = ((com.tencent.mm.plugin.scanner.d.b)localObject1).OPd;
+    if (localObject2 != null) {
+      com.tencent.mm.plugin.scanner.model.f.a(((b.b)localObject2).OPw, ((b.b)localObject2).OPx, ((b.b)localObject2).OPy, ((b.b)localObject2).OPz, ((b.b)localObject2).OPB, ((b.b)localObject2).OPC, ((b.b)localObject2).OPD, ((b.b)localObject2).OPE, ((b.b)localObject2).OPF, ((b.b)localObject2).OPG, ((b.b)localObject2).OPH, ((b.b)localObject2).OPI, ((b.b)localObject2).OPJ, ((b.b)localObject2).OPA);
+    }
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).OPd = null;
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).gQA();
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).sensorManager = null;
+    ((com.tencent.mm.plugin.scanner.d.b)localObject1).OPi = null;
+    this.Pce.dead();
+    removeCallbacks(this.PbZ);
+    this.PbZ = null;
+    if (this.PbT != null)
     {
-      localObject = this.ITb;
-      ((com.tencent.mm.plugin.scanner.util.h)localObject).IZi = System.currentTimeMillis();
-      ((com.tencent.mm.plugin.scanner.util.h)localObject).fOa = (((com.tencent.mm.plugin.scanner.util.h)localObject).IZi - ((com.tencent.mm.plugin.scanner.util.h)localObject).zUF);
-      Log.i("MicroMsg.ScanRetryManager", "alvinluo exitScanUI stayTime: %d, isUpdated: %b, onPreviewFrameCalled: %b, isRetry: %b", new Object[] { Long.valueOf(((com.tencent.mm.plugin.scanner.util.h)localObject).fOa), Boolean.valueOf(((com.tencent.mm.plugin.scanner.util.h)localObject).IZd), Boolean.valueOf(((com.tencent.mm.plugin.scanner.util.h)localObject).ITg), Boolean.valueOf(((com.tencent.mm.plugin.scanner.util.h)localObject).isRetry) });
-      ad.a(((com.tencent.mm.plugin.scanner.util.h)localObject).IZe, ((com.tencent.mm.plugin.scanner.util.h)localObject).isRetry, ((com.tencent.mm.plugin.scanner.util.h)localObject).ITg, ((com.tencent.mm.plugin.scanner.util.h)localObject).fOa);
-      ad.l(((com.tencent.mm.plugin.scanner.util.h)localObject).IZe, ((com.tencent.mm.plugin.scanner.util.h)localObject).isRetry, ((com.tencent.mm.plugin.scanner.util.h)localObject).IZj);
-      if (!((com.tencent.mm.plugin.scanner.util.h)localObject).IZd) {
-        break label292;
+      localObject1 = this.PbT;
+      ((j)localObject1).Pjd = System.currentTimeMillis();
+      ((j)localObject1).hTS = (((j)localObject1).Pjd - ((j)localObject1).AxK);
+      Log.i("MicroMsg.ScanRetryManager", "alvinluo exitScanUI stayTime: %d, isUpdated: %b, onPreviewFrameCalled: %b, isRetry: %b", new Object[] { Long.valueOf(((j)localObject1).hTS), Boolean.valueOf(((j)localObject1).PiY), Boolean.valueOf(((j)localObject1).PbY), Boolean.valueOf(((j)localObject1).vBn) });
+      am.a(((j)localObject1).PiZ, ((j)localObject1).vBn, ((j)localObject1).PbY, ((j)localObject1).hTS);
+      am.n(((j)localObject1).PiZ, ((j)localObject1).vBn, ((j)localObject1).Pje);
+      if (!((j)localObject1).PiY) {
+        break label428;
       }
-      ((com.tencent.mm.plugin.scanner.util.h)localObject).PY(((com.tencent.mm.plugin.scanner.util.h)localObject).mTimeout);
+      ((j)localObject1).uc(((j)localObject1).mTimeout);
     }
     for (;;)
     {
-      if ((r.aeb(this.mode)) && (!this.ISW)) {
-        ad.fDh();
+      if ((t.aiG(this.mode)) && (!this.PbO)) {
+        am.gRr();
       }
       AppMethodBeat.o(51955);
       return;
-      label292:
-      if (!((com.tencent.mm.plugin.scanner.util.h)localObject).IZd)
+      label428:
+      if (!((j)localObject1).PiY)
       {
-        ((com.tencent.mm.plugin.scanner.util.h)localObject).mTimeout = ((com.tencent.mm.plugin.scanner.util.h)localObject).IZa;
-        ((com.tencent.mm.plugin.scanner.util.h)localObject).PY(((com.tencent.mm.plugin.scanner.util.h)localObject).mTimeout);
-        Log.i("MicroMsg.ScanRetryManager", "alvinluo checkAndResetTimeout timeout not updated and reset to %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.scanner.util.h)localObject).mTimeout) });
+        ((j)localObject1).mTimeout = ((j)localObject1).PiV;
+        ((j)localObject1).uc(((j)localObject1).mTimeout);
+        Log.i("MicroMsg.ScanRetryManager", "alvinluo checkAndResetTimeout timeout not updated and reset to %d", new Object[] { Long.valueOf(((j)localObject1).mTimeout) });
       }
     }
   }
@@ -2357,13 +1931,13 @@ public class ScanUIRectView
     AppMethodBeat.i(51953);
     super.onPause();
     Log.i("MicroMsg.ScanUIRectView", "alvinluo onPause");
-    fEj();
-    if (this.ILO != null) {
-      this.ILO.onPause();
+    gSW();
+    if (this.OSO != null) {
+      this.OSO.onPause();
     }
-    fEa();
-    if (this.lEL != null) {
-      this.lEL.b(this.iQJ);
+    gSO();
+    if (this.owr != null) {
+      this.owr.a(this.lsF);
     }
     AppMethodBeat.o(51953);
   }
@@ -2372,61 +1946,58 @@ public class ScanUIRectView
   {
     AppMethodBeat.i(51973);
     super.onPreviewFrame(paramArrayOfByte, paramCamera);
-    this.ITg = true;
+    this.PbY = true;
     boolean bool;
-    int i;
     if (paramArrayOfByte == null)
     {
       bool = true;
-      Log.d("MicroMsg.ScanUIRectView", "onPreviewFrame null data: %b, isPreviewPaused: %b, canResumePreview: %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.ISY), Boolean.valueOf(this.ISZ) });
-      if (this.ITc == 2) {
-        if (this.ITb != null)
+      Log.d("MicroMsg.ScanUIRectView", "onPreviewFrame null data: %b, isPreviewPaused: %b, canResumePreview: %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.PbQ), Boolean.valueOf(this.PbR) });
+      if (this.PbU == 2) {
+        if (this.PbT != null)
         {
-          paramCamera = this.ITb;
-          i = this.ITc;
+          paramCamera = this.PbT;
+          int i = this.PbU;
           Log.i("MicroMsg.ScanRetryManager", "alvinluo cancelRetryType: %d", new Object[] { Integer.valueOf(i) });
-          if (i != 1) {
-            break label260;
+          switch (i)
+          {
           }
-          paramCamera.IZf = false;
         }
       }
     }
     for (;;)
     {
-      this.isRetry = false;
-      removeCallbacks(this.ITh);
-      if (this.ITb != null)
+      this.vBn = false;
+      removeCallbacks(this.PbZ);
+      if (this.PbT != null)
       {
-        paramCamera = this.ITb;
+        paramCamera = this.PbT;
         long l1 = System.currentTimeMillis();
-        long l2 = this.ITd;
-        if (!paramCamera.IZd)
+        long l2 = this.PbV;
+        if (!paramCamera.PiY)
         {
-          paramCamera.IZd = true;
-          l1 = ((float)(l1 - l2) * paramCamera.IZc);
-          paramCamera.mTimeout = Math.max(paramCamera.IZb, Math.min(paramCamera.IZa, l1));
+          paramCamera.PiY = true;
+          l1 = ((float)(l1 - l2) * paramCamera.PiX);
+          paramCamera.mTimeout = Math.max(paramCamera.PiW, Math.min(paramCamera.PiV, l1));
         }
-        this.ITb.ITg = true;
+        this.PbT.PbY = true;
       }
-      if ((!this.ISY) || (!this.ISZ)) {
-        break label273;
+      if ((!this.PbQ) || (!this.PbR)) {
+        break label288;
       }
-      this.ISY = false;
-      this.ISZ = false;
-      xv(false);
-      PW(100L);
+      this.PbQ = false;
+      this.PbR = false;
+      Cj(false);
+      ua(100L);
       AppMethodBeat.o(51973);
       return;
       bool = false;
       break;
-      label260:
-      if (i == 2) {
-        paramCamera.IZg = false;
-      }
+      paramCamera.Pja = false;
+      continue;
+      paramCamera.Pjb = false;
     }
-    label273:
-    if (this.ITa)
+    label288:
+    if (this.PbS)
     {
       Log.w("MicroMsg.ScanUIRectView", "alvinluo onPreviewFrame ignorePreviewFrame");
       AppMethodBeat.o(51973);
@@ -2435,12 +2006,13 @@ public class ScanUIRectView
     if (paramArrayOfByte == null)
     {
       Log.w("MicroMsg.ScanUIRectView", "alvinluo onPreviewFrame data is null");
-      PW(0L);
-      ad.fDg();
+      ua(0L);
+      am.gRq();
       AppMethodBeat.o(51973);
       return;
     }
-    cn(paramArrayOfByte);
+    Log.i("MicroMsg.ScanUIRectView", "onPreviewFrame");
+    co(paramArrayOfByte);
     AppMethodBeat.o(51973);
   }
   
@@ -2448,82 +2020,83 @@ public class ScanUIRectView
   {
     AppMethodBeat.i(51951);
     super.onResume();
-    if (!this.ZrD.isOpen())
+    if (!this.ahwr.isOpen())
     {
       Log.i("MicroMsg.ScanUIRectView", "alvinluo onResume openCamera");
       a(null);
       Log.i("MicroMsg.ScanUIRectView", "onResume %s", new Object[] { Util.getStack() });
-      this.IIw = System.currentTimeMillis();
-      if (!r.aeb(this.mode)) {
-        break label244;
+      this.OOu = System.currentTimeMillis();
+      if (!t.aiG(this.mode)) {
+        break label258;
       }
-      com.tencent.qbar.h.inM().a(this.IIw, this.ITk);
+      com.tencent.qbar.h.jWV().a(this.OOu, getScanCodeTabType(), getSessionInfo(), this.Pcc);
+      com.tencent.mm.plugin.scanner.d.b.gQw().gQx();
     }
     for (;;)
     {
-      this.ISU = false;
-      if (this.ILO != null) {
-        this.ILO.onResume();
+      this.PbM = false;
+      if (this.OSO != null) {
+        this.OSO.onResume();
       }
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(51923);
-          if ((ScanUIRectView.f(ScanUIRectView.this) != null) && (ScanUIRectView.f(ScanUIRectView.this).IGm))
+          if ((ScanUIRectView.f(ScanUIRectView.this) != null) && (ScanUIRectView.f(ScanUIRectView.this).OMu))
           {
             AppMethodBeat.o(51923);
             return;
           }
-          ScanCameraLightDetector.IYP.start(((com.tencent.mm.plugin.scanner.a.a)ScanUIRectView.g(ScanUIRectView.this)).iow());
+          ScanCameraLightDetector.Pio.start(((com.tencent.mm.plugin.scanner.a.a)ScanUIRectView.g(ScanUIRectView.this)).jXJ());
           AppMethodBeat.o(51923);
         }
       }, 300L);
-      this.ISZ = true;
+      this.PbR = true;
       AppMethodBeat.o(51951);
       return;
-      if (!this.ZrD.egx())
+      if (!this.ahwr.boa())
       {
         Log.i("MicroMsg.ScanUIRectView", "alvinluo onResume startPreview");
-        ((com.tencent.mm.plugin.scanner.a.a)this.ZrD).fCp();
+        ((com.tencent.mm.plugin.scanner.a.a)this.ahwr).gQb();
         a(new b.d.a()
         {
-          public final void fEk()
+          public final void gSX()
           {
             AppMethodBeat.i(170017);
-            ScanUIRectView.this.PW(0L);
+            ScanUIRectView.this.ua(0L);
             AppMethodBeat.o(170017);
           }
         });
-        Log.i("MicroMsg.ScanUIRectView", "focus mode %s", new Object[] { this.ZrD.iow() });
+        Log.i("MicroMsg.ScanUIRectView", "focus mode %s", new Object[] { this.ahwr.jXJ() });
         break;
       }
       Log.i("MicroMsg.ScanUIRectView", "alvinluo onResume camera is previewing");
-      Log.i("MicroMsg.ScanUIRectView", "focus mode %s", new Object[] { this.ZrD.iow() });
-      PW(0L);
+      Log.i("MicroMsg.ScanUIRectView", "focus mode %s", new Object[] { this.ahwr.jXJ() });
+      ua(0L);
       break;
-      label244:
+      label258:
       if (this.mode == 12)
       {
-        Log.i("MicroMsg.ScanUIRectView", "alvinluo onResume currentNetworkAvailable: %b", new Object[] { Boolean.valueOf(this.IOW) });
-        if (this.IOW)
+        Log.i("MicroMsg.ScanUIRectView", "alvinluo onResume currentNetworkAvailable: %b", new Object[] { Boolean.valueOf(this.OXx) });
+        if (this.OXx)
         {
-          com.tencent.mm.plugin.scanner.d.a locala = com.tencent.mm.plugin.scanner.d.a.fCz();
-          long l = this.IIw;
-          com.tencent.mm.plugin.scanner.d.a.a locala1 = this.ITl;
-          synchronized (locala.Brg)
+          com.tencent.mm.plugin.scanner.d.a locala = com.tencent.mm.plugin.scanner.d.a.gQu();
+          long l = this.OOu;
+          com.tencent.mm.plugin.scanner.d.a.a locala1 = this.Pcd;
+          synchronized (locala.GXz)
           {
-            locala.IIw = l;
-            locala.IIN = locala1;
-            synchronized (locala.IIM)
+            locala.OOu = l;
+            locala.OOS = locala1;
+            synchronized (locala.OOR)
             {
-              if (locala.jvb) {
-                v.reset();
+              if (locala.lYs) {
+                ac.reset();
               }
             }
           }
         }
-        com.tencent.mm.plugin.scanner.d.a.fCz().PP(this.IIw);
+        com.tencent.mm.plugin.scanner.d.a.gQu().tR(this.OOu);
       }
     }
   }
@@ -2532,8 +2105,8 @@ public class ScanUIRectView
   {
     AppMethodBeat.i(51954);
     super.onStop();
-    aYA();
-    ScanCameraLightDetector.IYP.stop();
+    bty();
+    ScanCameraLightDetector.Pio.stop();
     AppMethodBeat.o(51954);
   }
   
@@ -2541,13 +2114,13 @@ public class ScanUIRectView
   {
     AppMethodBeat.i(162395);
     super.onSurfaceTextureAvailable(paramSurfaceTexture, paramInt1, paramInt2);
-    if ((this.wxC == null) || (paramInt1 != this.wxC.x) || (paramInt2 != this.wxC.y))
+    if ((this.zTI == null) || (paramInt1 != this.zTI.x) || (paramInt2 != this.zTI.y))
     {
-      if (this.wxC == null) {
-        this.wxC = new Point(paramInt1, paramInt2);
+      if (this.zTI == null) {
+        this.zTI = new Point(paramInt1, paramInt2);
       }
-      if (r.aeb(this.mode)) {
-        fEi();
+      if (t.aiG(this.mode)) {
+        gSV();
       }
     }
     AppMethodBeat.o(162395);
@@ -2556,10 +2129,10 @@ public class ScanUIRectView
   public final void refreshView()
   {
     AppMethodBeat.i(51961);
-    this.ISL.setVisibility(8);
-    fEd();
-    fEg();
-    fEc();
+    this.PbB.setVisibility(8);
+    gSR();
+    gSU();
+    gSQ();
     AppMethodBeat.o(51961);
   }
   
@@ -2571,11 +2144,11 @@ public class ScanUIRectView
   public void setBlackInterval(int paramInt)
   {
     AppMethodBeat.i(170024);
-    com.tencent.qbar.h localh = com.tencent.qbar.h.inM();
-    synchronized (localh.oMJ)
+    com.tencent.qbar.h localh = com.tencent.qbar.h.jWV();
+    synchronized (localh.rQG)
     {
-      if (localh.oMJ.hasInited()) {
-        localh.oMJ.setBlackInterval(paramInt);
+      if (localh.rQG.hasInited()) {
+        localh.rQG.setBlackInterval(paramInt);
       }
       AppMethodBeat.o(170024);
       return;
@@ -2584,14 +2157,14 @@ public class ScanUIRectView
   
   public void setBottomExtraHeight(int paramInt)
   {
-    this.ISS = paramInt;
+    this.PbK = paramInt;
   }
   
   public void setDecodeSuccessFrameData(ScanDecodeFrameData paramScanDecodeFrameData)
   {
     AppMethodBeat.i(170026);
-    if (this.ILO != null) {
-      this.ILO.setDecodeSuccessFrameData(paramScanDecodeFrameData);
+    if (this.OSO != null) {
+      this.OSO.setDecodeSuccessFrameData(paramScanDecodeFrameData);
     }
     AppMethodBeat.o(170026);
   }
@@ -2599,63 +2172,81 @@ public class ScanUIRectView
   public void setDecorRect(Rect paramRect)
   {
     AppMethodBeat.i(51977);
-    this.ISL.setDecorRect(paramRect);
+    this.PbB.setDecorRect(paramRect);
     AppMethodBeat.o(51977);
+  }
+  
+  public void setDisableScanProductInMergeMode(boolean paramBoolean)
+  {
+    this.OXP = paramBoolean;
+  }
+  
+  public void setEnableOpenCamera(boolean paramBoolean)
+  {
+    AppMethodBeat.i(315105);
+    Log.i("MicroMsg.ScanUIRectView", "setEnableOpenCamera: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.OXT = paramBoolean;
+    AppMethodBeat.o(315105);
+  }
+  
+  public void setEnableScanCodeProductMerge(boolean paramBoolean)
+  {
+    this.OTn = paramBoolean;
   }
   
   public void setEnableScanGoodsDynamicWording(boolean paramBoolean)
   {
-    this.IPp = paramBoolean;
+    this.OXS = paramBoolean;
   }
   
   public void setEnableScrollSwitchTab(boolean paramBoolean)
   {
     AppMethodBeat.i(51958);
     Log.i("MicroMsg.ScanUIRectView", "alvinluo setEnableScrollSwitchTab: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.ISQ = paramBoolean;
+    this.PbI = paramBoolean;
     AppMethodBeat.o(51958);
   }
   
   public void setFlashStatus(boolean paramBoolean)
   {
     AppMethodBeat.i(51966);
-    if (this.ILP != null) {
-      this.ILP.setFlashStatus(paramBoolean);
+    if (this.OSP != null) {
+      this.OSP.setFlashStatus(paramBoolean);
     }
     AppMethodBeat.o(51966);
   }
   
   public void setIgnorePreviewFrame(boolean paramBoolean)
   {
-    AppMethodBeat.i(217138);
+    AppMethodBeat.i(315109);
     Log.d("MicroMsg.ScanUIRectView", "alvinluo setIgnorePreviewFrame %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.ITa = paramBoolean;
-    AppMethodBeat.o(217138);
+    this.PbS = paramBoolean;
+    AppMethodBeat.o(315109);
   }
   
   public void setMyQrCodeVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(217131);
-    if ((this.ILO instanceof ScanCodeMaskView)) {
-      ((ScanCodeMaskView)this.ILO).setMyQrCodeButtonVisible(paramBoolean);
+    AppMethodBeat.i(314953);
+    if ((this.OSO instanceof ScanCodeMaskView)) {
+      ((ScanCodeMaskView)this.OSO).setMyQrCodeButtonVisible(paramBoolean);
     }
-    AppMethodBeat.o(217131);
+    AppMethodBeat.o(314953);
   }
   
   public void setNetworkAvailable(boolean paramBoolean)
   {
-    this.IOW = paramBoolean;
+    this.OXx = paramBoolean;
   }
   
-  public void setScanCallback(a parama)
+  public void setScanCallback(ScanUIRectView.a parama)
   {
-    this.ISN = parama;
+    this.PbD = parama;
   }
   
   public void setScanCodeReaders(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(51979);
-    com.tencent.qbar.h.inM().R(paramArrayOfInt);
+    com.tencent.qbar.h.jWV().T(paramArrayOfInt);
     AppMethodBeat.o(51979);
   }
   
@@ -2664,101 +2255,79 @@ public class ScanUIRectView
     this.mode = paramInt;
   }
   
+  public void setScanProductCallback(ScanProductMaskDecorView.e parame)
+  {
+    this.OYf = parame;
+  }
+  
+  public void setScanProductOnItemClickListener(ScanProductMaskDecorView.f paramf)
+  {
+    this.OYd = paramf;
+  }
+  
   public void setScanRequest(BaseScanRequest paramBaseScanRequest)
   {
-    this.IPe = paramBaseScanRequest;
+    this.OXF = paramBaseScanRequest;
   }
   
   public void setScanSource(int paramInt)
   {
     AppMethodBeat.i(51964);
-    if (this.ILO != null) {
-      this.ILO.setScanSource(paramInt);
+    if (this.OSO != null) {
+      this.OSO.setScanSource(paramInt);
     }
     AppMethodBeat.o(51964);
   }
   
   public void setScrollTabController(com.tencent.mm.plugin.scanner.ui.widget.b paramb)
   {
-    this.ION = paramb;
+    this.OXp = paramb;
   }
   
   public void setShowScanTips(boolean paramBoolean)
   {
-    this.IOV = paramBoolean;
+    this.OXw = paramBoolean;
   }
   
-  public void setSuccessMarkClickListener(ae paramae)
+  public void setSuccessMarkClickListener(an paraman)
   {
     AppMethodBeat.i(170025);
-    if ((this.ILO instanceof ScanCodeMaskView)) {
-      ((ScanCodeMaskView)this.ILO).setSuccessMarkClickListener(paramae);
+    if ((this.OSO instanceof ScanCodeMaskView)) {
+      ((ScanCodeMaskView)this.OSO).setSuccessMarkClickListener(paraman);
     }
     AppMethodBeat.o(170025);
   }
   
-  public final void xu(boolean paramBoolean)
+  public final void ua(long paramLong)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(51969);
-    Log.v("MicroMsg.ScanUIRectView", "alvinluo onShowNoDataView show: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    Object localObject;
-    boolean bool1;
-    if (this.ILP != null)
+    AppMethodBeat.i(51957);
+    this.PbO = true;
+    Log.d("MicroMsg.ScanUIRectView", "alvinluo takeOneShot timeout: %d, isRetry: %b, onPreviewFrameCalled: %b, canReportOnPreviewFrame: %b, hasReport: %b", new Object[] { Long.valueOf(this.mTimeout), Boolean.valueOf(this.vBn), Boolean.valueOf(this.PbY), Boolean.valueOf(this.PbX), Boolean.valueOf(this.PbW) });
+    if (!this.vBn)
     {
-      localObject = this.ILP;
-      if (!paramBoolean)
+      super.ua(paramLong);
+      this.PbV = System.currentTimeMillis();
+      if ((!this.PbY) && (this.PbX) && (t.aiG(this.mode)))
       {
-        bool1 = true;
-        ((ScanSharedMaskView)localObject).xG(bool1);
+        removeCallbacks(this.PbZ);
+        postDelayed(this.PbZ, this.mTimeout);
+        AppMethodBeat.o(51957);
       }
     }
-    else if (this.ILO != null)
+    else if ((this.PbT != null) && (this.PbT.aiF(this.PbU)))
     {
-      localObject = this.ILO;
-      if (paramBoolean) {
-        break label90;
-      }
-    }
-    label90:
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      ((BaseScanMaskView)localObject).xG(paramBoolean);
-      AppMethodBeat.o(51969);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public final void xv(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(170027);
-    ad.adw(this.mode);
-    if (this.mode == 12) {
-      ad.aR(1, System.currentTimeMillis());
-    }
-    if (Looper.getMainLooper().getThread() == Thread.currentThread())
-    {
-      xw(paramBoolean);
-      AppMethodBeat.o(170027);
-      return;
-    }
-    MMHandlerThread.postToMainThread(new Runnable()
-    {
-      public final void run()
+      if (this.PbU == 1)
       {
-        AppMethodBeat.i(218468);
-        ScanUIRectView.a(ScanUIRectView.this, paramBoolean);
-        AppMethodBeat.o(218468);
+        super.ua(paramLong);
+        this.PbV = System.currentTimeMillis();
+        AppMethodBeat.o(51957);
+        return;
       }
-    });
-    AppMethodBeat.o(170027);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void e(long paramLong, Bundle paramBundle);
+      if (this.PbU == 2) {
+        ub(paramLong);
+      }
+    }
+    AppMethodBeat.o(51957);
   }
   
   final class b
@@ -2773,14 +2342,14 @@ public class ScanUIRectView
     {
       AppMethodBeat.i(161040);
       ScanUIRectView.a(ScanUIRectView.this, System.currentTimeMillis());
-      ScanUIRectView.M(ScanUIRectView.this);
+      ScanUIRectView.S(ScanUIRectView.this);
       AppMethodBeat.o(161040);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanUIRectView
  * JD-Core Version:    0.7.0.1
  */

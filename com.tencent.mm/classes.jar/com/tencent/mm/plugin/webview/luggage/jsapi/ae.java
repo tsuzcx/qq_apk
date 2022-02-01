@@ -1,55 +1,99 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ae
-  extends br
+  extends bv<s>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
-  
-  public final void b(b.a parama)
+  public final void a(Context paramContext, String paramString, final bv.a parama)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(78570);
-    int i = parama.crh.cqn.optInt("id");
-    if (i <= 0) {
-      parama.a("fail", null);
-    }
-    String str = parama.crh.cqn.optString("value");
-    boolean bool1;
-    if (parama.crh.cqn.optInt("is_important") > 0)
+    AppMethodBeat.i(78567);
+    Log.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
+    long l;
+    try
     {
-      bool1 = true;
-      if (parama.crh.cqn.optInt("is_report_now") <= 0) {
-        break label108;
+      paramContext = new JSONObject(paramString);
+      l = paramContext.optLong("download_id");
+      if (l <= 0L)
+      {
+        Log.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
+        parama.j("fail_invalid_data", null);
+        AppMethodBeat.o(78567);
+        return;
       }
     }
-    for (;;)
+    catch (JSONException paramContext)
     {
-      h.IzE.b(i, str, bool2, bool1);
-      parama.a("", null);
-      AppMethodBeat.o(78570);
+      Log.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
+      parama.j("fail", null);
+      AppMethodBeat.o(78567);
       return;
-      bool1 = false;
-      break;
-      label108:
-      bool2 = false;
     }
+    paramString = f.duv().kS(l);
+    if (paramString.status == -1)
+    {
+      Log.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
+      parama.j("fail", null);
+      AppMethodBeat.o(78567);
+      return;
+    }
+    if (paramString.status != 3)
+    {
+      Log.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
+      parama.j("fail", null);
+      AppMethodBeat.o(78567);
+      return;
+    }
+    com.tencent.mm.plugin.downloader.f.a locala = d.la(l);
+    if (locala != null)
+    {
+      int i = paramContext.optInt("scene");
+      int j = paramContext.optInt("uiarea");
+      int k = paramContext.optInt("notice_id");
+      int m = paramContext.optInt("ssid");
+      locala.field_scene = i;
+      locala.field_uiarea = j;
+      locala.field_noticeId = k;
+      locala.field_ssid = m;
+      d.e(locala);
+    }
+    com.tencent.mm.plugin.downloader.h.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
+    {
+      public final void iZ(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(78566);
+        if (paramAnonymousBoolean)
+        {
+          parama.j(null, null);
+          AppMethodBeat.o(78566);
+          return;
+        }
+        parama.j("fail", null);
+        AppMethodBeat.o(78566);
+      }
+    });
+    AppMethodBeat.o(78567);
   }
   
-  public final int cDj()
+  public final void b(b<s>.a paramb) {}
+  
+  public final int dgI()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "kvReport";
+    return "installDownloadTask";
   }
 }
 

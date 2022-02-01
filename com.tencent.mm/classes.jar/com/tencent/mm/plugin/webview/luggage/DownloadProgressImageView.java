@@ -16,13 +16,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.downloader.b.a.c;
+import com.tencent.mm.plugin.downloader.event.a.c;
 import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,30 +32,30 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DownloadProgressImageView
   extends AppCompatImageView
 {
-  private a.c POW;
-  private List<DownloadTaskInfo> POX;
-  private DownloadTaskInfo POY;
-  private int POZ;
+  private a.c WFp;
+  private List<DownloadTaskInfo> WFq;
+  private DownloadTaskInfo WFr;
+  private int WFs;
   private boolean mIsDarkMode;
   private Paint mPaint;
-  private long oza;
+  private long rCS;
   
   public DownloadProgressImageView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(175733);
-    this.oza = -1L;
-    this.POX = new CopyOnWriteArrayList();
+    this.rCS = -1L;
+    this.WFq = new CopyOnWriteArrayList();
     this.mIsDarkMode = false;
-    this.POZ = 1;
+    this.WFs = 1;
     Log.i("MicroMsg.DownloadProgressImageView", "init");
-    this.mIsDarkMode = ar.isDarkMode();
+    this.mIsDarkMode = aw.isDarkMode();
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStyle(Paint.Style.STROKE);
-    this.POW = new a.c()
+    this.WFp = new a.c()
     {
-      public final void Z(Bundle paramAnonymousBundle)
+      public final void ak(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(175717);
         int k;
@@ -122,25 +122,25 @@ public class DownloadProgressImageView
       public final void run()
       {
         AppMethodBeat.i(175718);
-        paramContext.bPk();
-        DownloadProgressImageView.a(DownloadProgressImageView.this, paramContext.PPd);
+        paramContext.cpx();
+        DownloadProgressImageView.a(DownloadProgressImageView.this, paramContext.WFw);
         DownloadProgressImageView.b(DownloadProgressImageView.this);
         AppMethodBeat.o(175718);
       }
     };
-    paramContext.bsM();
+    paramContext.bQt();
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(175719);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/DownloadProgressImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/luggage/DownloadProgressImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("view_task", true);
         paramAnonymousView.putExtra("from_scene", 3);
-        ((c)h.ae(c.class)).a(DownloadProgressImageView.this.getContext(), paramAnonymousView, null);
+        ((c)h.ax(c.class)).a(DownloadProgressImageView.this.getContext(), paramAnonymousView, null);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/luggage/DownloadProgressImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(175719);
       }
@@ -148,11 +148,11 @@ public class DownloadProgressImageView
     AppMethodBeat.o(175733);
   }
   
-  private void gUp()
+  private void itX()
   {
-    AppMethodBeat.i(267961);
+    AppMethodBeat.i(295960);
     int i = 0;
-    switch (this.POZ)
+    switch (this.WFs)
     {
     }
     for (;;)
@@ -160,7 +160,7 @@ public class DownloadProgressImageView
       if (i != 0) {
         setImageResource(i);
       }
-      AppMethodBeat.o(267961);
+      AppMethodBeat.o(295960);
       return;
       if (this.mIsDarkMode)
       {
@@ -190,17 +190,17 @@ public class DownloadProgressImageView
   
   private void setImageDrawableWrapper(int paramInt)
   {
-    AppMethodBeat.i(267959);
-    this.POZ = paramInt;
-    gUp();
-    AppMethodBeat.o(267959);
+    AppMethodBeat.i(295958);
+    this.WFs = paramInt;
+    itX();
+    AppMethodBeat.o(295958);
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(175734);
     super.onAttachedToWindow();
-    com.tencent.mm.plugin.downloader.b.a.a(this.POW);
+    com.tencent.mm.plugin.downloader.event.a.a(this.WFp);
     AppMethodBeat.o(175734);
   }
   
@@ -208,16 +208,16 @@ public class DownloadProgressImageView
   {
     AppMethodBeat.i(175735);
     super.onDetachedFromWindow();
-    com.tencent.mm.plugin.downloader.b.a.b(this.POW);
+    com.tencent.mm.plugin.downloader.event.a.b(this.WFp);
     AppMethodBeat.o(175735);
   }
   
   public void setDarkMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(267958);
+    AppMethodBeat.i(295970);
     this.mIsDarkMode = paramBoolean;
-    gUp();
-    AppMethodBeat.o(267958);
+    itX();
+    AppMethodBeat.o(295970);
   }
   
   static class DownloadTaskInfo
@@ -277,7 +277,7 @@ public class DownloadProgressImageView
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetDownloadWidgeInfoTask> CREATOR;
-    public ArrayList<DownloadProgressImageView.DownloadTaskInfo> PPd;
+    public ArrayList<DownloadProgressImageView.DownloadTaskInfo> WFw;
     public Runnable callback;
     
     static
@@ -290,30 +290,30 @@ public class DownloadProgressImageView
     public GetDownloadWidgeInfoTask()
     {
       AppMethodBeat.i(175726);
-      this.PPd = new ArrayList();
+      this.WFw = new ArrayList();
       AppMethodBeat.o(175726);
     }
     
     private GetDownloadWidgeInfoTask(Parcel paramParcel)
     {
       AppMethodBeat.i(175727);
-      this.PPd = new ArrayList();
-      f(paramParcel);
+      this.WFw = new ArrayList();
+      h(paramParcel);
       AppMethodBeat.o(175727);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(175730);
-      if (h.ae(c.class) == null)
+      if (h.ax(c.class) == null)
       {
         AppMethodBeat.o(175730);
         return;
       }
-      Object localObject = ((c)h.ae(c.class)).cQv();
+      Object localObject = ((c)h.ax(c.class)).duO();
       if (Util.isNullOrNil((List)localObject))
       {
-        bPt();
+        cpA();
         AppMethodBeat.o(175730);
         return;
       }
@@ -325,13 +325,13 @@ public class DownloadProgressImageView
         localDownloadTaskInfo.appId = localDownloadWidgetTaskInfo.appId;
         localDownloadTaskInfo.state = localDownloadWidgetTaskInfo.state;
         localDownloadTaskInfo.progress = localDownloadWidgetTaskInfo.progress;
-        this.PPd.add(localDownloadTaskInfo);
+        this.WFw.add(localDownloadTaskInfo);
       }
-      bPt();
+      cpA();
       AppMethodBeat.o(175730);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(175731);
       if (this.callback != null) {
@@ -340,17 +340,17 @@ public class DownloadProgressImageView
       AppMethodBeat.o(175731);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(175728);
-      this.PPd = paramParcel.readArrayList(DownloadProgressImageView.DownloadTaskInfo.class.getClassLoader());
+      this.WFw = paramParcel.readArrayList(DownloadProgressImageView.DownloadTaskInfo.class.getClassLoader());
       AppMethodBeat.o(175728);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(175729);
-      paramParcel.writeList(this.PPd);
+      paramParcel.writeList(this.WFw);
       AppMethodBeat.o(175729);
     }
   }

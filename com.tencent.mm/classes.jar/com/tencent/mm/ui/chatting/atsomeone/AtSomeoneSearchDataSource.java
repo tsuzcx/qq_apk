@@ -1,177 +1,186 @@
 package com.tencent.mm.ui.chatting.atsomeone;
 
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.t;
+import androidx.lifecycle.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.plugin.livelist.a.c;
-import com.tencent.mm.plugin.livelist.a.d;
-import com.tencent.mm.plugin.livelist.i;
+import com.tencent.mm.plugin.fts.a.a.o;
+import com.tencent.mm.plugin.mvvmlist.a.b;
+import com.tencent.mm.plugin.mvvmlist.a.d;
+import com.tencent.mm.sdk.coroutines.LifecycleScope;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlinx.coroutines.ak;
-import kotlinx.coroutines.b.e;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlinx.coroutines.a.q;
+import kotlinx.coroutines.b.g;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource;", "Lcom/tencent/mm/plugin/livelist/datasource/BaseSearchDataSource;", "Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneLiveItem;", "", "Landroidx/lifecycle/LifecycleObserver;", "chatroom", "(Ljava/lang/String;)V", "getChatroom", "()Ljava/lang/String;", "currentSearchTask", "Lcom/tencent/mm/plugin/fts/api/model/BaseFTSTask;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "Lkotlin/Lazy;", "resultListener", "Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource$FTSResultListener;", "destroy", "", "getSearchData", "Lkotlinx/coroutines/flow/Flow;", "Lcom/tencent/mm/plugin/livelist/datasource/DataResponse;", "scope", "Lkotlinx/coroutines/CoroutineScope;", "dataRequest", "Lcom/tencent/mm/plugin/livelist/SearchDataRequest;", "stopSearch", "Companion", "FTSResultListener", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource;", "Lcom/tencent/mm/plugin/mvvmlist/datasource/BaseSearchDataSource;", "Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneLiveItem;", "", "Landroidx/lifecycle/LifecycleObserver;", "chatroom", "(Ljava/lang/String;)V", "getChatroom", "()Ljava/lang/String;", "currentSearchTask", "Lcom/tencent/mm/plugin/fts/api/model/BaseFTSTask;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handler$delegate", "Lkotlin/Lazy;", "resultListener", "Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource$FTSResultListener;", "destroy", "", "getSearchData", "Lkotlinx/coroutines/flow/Flow;", "Lcom/tencent/mm/plugin/mvvmlist/datasource/DataResponse;", "scope", "Lcom/tencent/mm/sdk/coroutines/LifecycleScope;", "dataRequest", "Lcom/tencent/mm/plugin/mvvmlist/SearchDataRequest;", "stopSearch", "Companion", "FTSResultListener", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AtSomeoneSearchDataSource
-  extends com.tencent.mm.plugin.livelist.a.b<f, String>
-  implements androidx.lifecycle.k
+  extends b<f, String>
+  implements androidx.lifecycle.p
 {
-  public static final AtSomeoneSearchDataSource.a WGt;
-  private com.tencent.mm.plugin.fts.a.a.a WGr;
-  private b WGs;
-  private final String fxT;
-  private final kotlin.f ocu;
+  public static final AtSomeoneSearchDataSource.a aenH;
+  private com.tencent.mm.plugin.fts.a.a.c DHR;
+  private b aenI;
+  private final String hCy;
+  private final j rdm;
   
   static
   {
-    AppMethodBeat.i(288291);
-    WGt = new AtSomeoneSearchDataSource.a((byte)0);
-    AppMethodBeat.o(288291);
+    AppMethodBeat.i(254196);
+    aenH = new AtSomeoneSearchDataSource.a((byte)0);
+    AppMethodBeat.o(254196);
   }
   
   public AtSomeoneSearchDataSource(String paramString)
   {
-    AppMethodBeat.i(288290);
-    this.fxT = paramString;
-    this.ocu = kotlin.g.ar((kotlin.g.a.a)AtSomeoneSearchDataSource.c.WGv);
-    AppMethodBeat.o(288290);
+    AppMethodBeat.i(254187);
+    this.hCy = paramString;
+    this.rdm = kotlin.k.cm((a)AtSomeoneSearchDataSource.c.aenK);
+    AppMethodBeat.o(254187);
   }
   
-  public final kotlinx.coroutines.b.b<d<f>> a(ak paramak, i<f, String> parami)
+  public final g<d<f>> a(LifecycleScope paramLifecycleScope, com.tencent.mm.plugin.mvvmlist.h<f, String> paramh)
   {
-    AppMethodBeat.i(288287);
-    p.k(paramak, "scope");
-    p.k(parami, "dataRequest");
-    paramak = new kotlinx.coroutines.a.n();
-    com.tencent.mm.plugin.fts.a.a.j localj = new com.tencent.mm.plugin.fts.a.a.j();
-    localj.BIN = this.fxT;
-    localj.query = ((String)parami.EiA);
-    localj.nRn = 12;
-    localj.handler = ((MMHandler)this.ocu.getValue());
-    this.WGs = new b((c)parami, paramak);
-    localj.BIU = ((com.tencent.mm.plugin.fts.a.l)this.WGs);
-    localj.BIS.add(z.bcZ());
-    if (this.WGr != null) {
-      ((com.tencent.mm.plugin.fts.a.n)h.ag(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.WGr);
+    AppMethodBeat.i(254211);
+    s.u(paramLifecycleScope, "scope");
+    s.u(paramh, "dataRequest");
+    paramLifecycleScope = new q();
+    com.tencent.mm.plugin.fts.a.a.l locall = new com.tencent.mm.plugin.fts.a.a.l();
+    locall.Htv = this.hCy;
+    locall.query = ((String)paramh.Mnu);
+    locall.qRb = 12;
+    locall.handler = ((MMHandler)this.rdm.getValue());
+    this.aenI = new b((com.tencent.mm.plugin.mvvmlist.a.c)paramh, paramLifecycleScope);
+    locall.HtC = ((com.tencent.mm.plugin.fts.a.l)this.aenI);
+    locall.HtA.add(com.tencent.mm.model.z.bAM());
+    if (this.DHR != null) {
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.DHR);
     }
-    this.WGr = ((com.tencent.mm.plugin.fts.a.n)h.ag(com.tencent.mm.plugin.fts.a.n.class)).search(2, localj);
-    paramak = e.a((kotlinx.coroutines.a.f)paramak);
-    AppMethodBeat.o(288287);
-    return paramak;
+    this.DHR = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).search(2, locall);
+    paramLifecycleScope = kotlinx.coroutines.b.k.a((kotlinx.coroutines.a.f)paramLifecycleScope);
+    AppMethodBeat.o(254211);
+    return paramLifecycleScope;
   }
   
-  @t(jl=h.a.ON_DESTROY)
+  @androidx.lifecycle.z(Ho=j.a.ON_DESTROY)
   public final void destroy()
   {
-    AppMethodBeat.i(288286);
-    if (this.WGr != null) {
-      ((com.tencent.mm.plugin.fts.a.n)h.ag(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.WGr);
+    AppMethodBeat.i(254204);
+    if (this.DHR != null) {
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.DHR);
     }
-    this.WGr = null;
-    this.WGs = null;
-    AppMethodBeat.o(288286);
+    this.DHR = null;
+    this.aenI = null;
+    AppMethodBeat.o(254204);
   }
   
-  public final void erx()
+  public final void eui()
   {
-    AppMethodBeat.i(288288);
-    if (this.WGr != null) {
-      ((com.tencent.mm.plugin.fts.a.n)h.ag(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.WGr);
+    AppMethodBeat.i(254214);
+    if (this.DHR != null) {
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.DHR);
     }
-    AppMethodBeat.o(288288);
+    AppMethodBeat.o(254214);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource$FTSResultListener;", "Lcom/tencent/mm/plugin/fts/api/IFTSResultListener;", "request", "Lcom/tencent/mm/plugin/livelist/datasource/DataRequest;", "Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneLiveItem;", "channel", "Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;", "Lcom/tencent/mm/plugin/livelist/datasource/DataResponse;", "(Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource;Lcom/tencent/mm/plugin/livelist/datasource/DataRequest;Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;)V", "getChannel", "()Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;", "getRequest", "()Lcom/tencent/mm/plugin/livelist/datasource/DataRequest;", "onFTSSearchEnd", "", "result", "Lcom/tencent/mm/plugin/fts/api/model/FTSResult;", "app_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource$FTSResultListener;", "Lcom/tencent/mm/plugin/fts/api/IFTSResultListener;", "request", "Lcom/tencent/mm/plugin/mvvmlist/datasource/DataRequest;", "Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneLiveItem;", "channel", "Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;", "Lcom/tencent/mm/plugin/mvvmlist/datasource/DataResponse;", "(Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneSearchDataSource;Lcom/tencent/mm/plugin/mvvmlist/datasource/DataRequest;Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;)V", "getChannel", "()Lkotlinx/coroutines/channels/ConflatedBroadcastChannel;", "getRequest", "()Lcom/tencent/mm/plugin/mvvmlist/datasource/DataRequest;", "onFTSSearchEnd", "", "result", "Lcom/tencent/mm/plugin/fts/api/model/FTSResult;", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class b
     implements com.tencent.mm.plugin.fts.a.l
   {
-    private final c<f> EiB;
-    private final kotlinx.coroutines.a.n<d<f>> lDN;
+    private final com.tencent.mm.plugin.mvvmlist.a.c<f> DHT;
+    private final q<d<f>> ovy;
     
-    public b(kotlinx.coroutines.a.n<d<f>> paramn)
+    public b(q<d<f>> paramq)
     {
-      AppMethodBeat.i(274455);
-      this.EiB = paramn;
-      this.lDN = localObject;
-      AppMethodBeat.o(274455);
+      AppMethodBeat.i(254185);
+      this.DHT = paramq;
+      this.ovy = localObject;
+      AppMethodBeat.o(254185);
     }
     
-    public final void b(com.tencent.mm.plugin.fts.a.a.k paramk)
+    public final void b(m paramm)
     {
-      AppMethodBeat.i(274454);
-      if (paramk != null)
+      AppMethodBeat.i(254195);
+      if (paramm != null)
       {
-        Object localObject1;
-        if (p.h(paramk.BIV, AtSomeoneSearchDataSource.a(AtSomeoneSearchDataSource.this))) {
-          localObject1 = paramk;
-        }
-        while (localObject1 != null) {
-          switch (paramk.resultCode)
-          {
-          default: 
-            this.lDN.iSs();
-            AppMethodBeat.o(274454);
-            return;
-            localObject1 = null;
-            break;
-          case 0: 
-            d locald = new d(this.EiB);
-            localObject1 = paramk.BIW;
-            p.j(localObject1, "result.resultList");
-            localObject1 = (m)kotlin.a.j.M((List)localObject1, 0);
-            if (localObject1 != null) {
-              ((m)localObject1).BHY = paramk.BHY;
-            }
-            while (localObject1 != null)
-            {
-              localObject1 = ((m)localObject1).BJg;
-              if (localObject1 == null) {
-                break;
-              }
-              localObject1 = ((Iterable)localObject1).iterator();
-              int i = 0;
-              while (((Iterator)localObject1).hasNext())
-              {
-                Object localObject2 = ((Iterator)localObject1).next();
-                if (i < 0) {
-                  kotlin.a.j.iBO();
-                }
-                localObject2 = (com.tencent.mm.plugin.fts.a.a.g)localObject2;
-                Object localObject3 = h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class);
-                p.j(localObject3, "MMKernel.service(IMessengerStorage::class.java)");
-                Object localObject4 = ((com.tencent.mm.plugin.messenger.foundation.a.n)localObject3).bbL().RG(((com.tencent.mm.plugin.fts.a.a.g)localObject2).username);
-                localObject3 = locald.mXB;
-                p.j(localObject4, "contact");
-                localObject4 = new f(i, (as)localObject4, 1);
-                ((f)localObject4).WGk = ((com.tencent.mm.plugin.fts.a.a.g)localObject2);
-                ((f)localObject4).BHY = paramk.BHY;
-                ((ArrayList)localObject3).add(localObject4);
-                i += 1;
-              }
-              localObject1 = null;
-            }
-            this.lDN.offer(locald);
-            AppMethodBeat.o(274454);
-            return;
+        Object localObject1 = AtSomeoneSearchDataSource.this;
+        d locald;
+        if (s.p(paramm.HtE, AtSomeoneSearchDataSource.a((AtSomeoneSearchDataSource)localObject1)))
+        {
+          localObject1 = paramm;
+          if (localObject1 == null) {
+            break label268;
           }
+          if (paramm.resultCode != 0) {
+            break label256;
+          }
+          locald = new d(this.DHT);
+          localObject1 = paramm.HtF;
+          s.s(localObject1, "result.resultList");
+          localObject1 = (o)kotlin.a.p.ae((List)localObject1, 0);
+          if (localObject1 != null) {
+            break label229;
+          }
+          localObject1 = null;
         }
+        for (;;)
+        {
+          if (localObject1 == null) {
+            break label240;
+          }
+          localObject1 = ((o)localObject1).HtP;
+          if (localObject1 == null) {
+            break label240;
+          }
+          localObject1 = ((Iterable)localObject1).iterator();
+          int i = 0;
+          while (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = ((Iterator)localObject1).next();
+            if (i < 0) {
+              kotlin.a.p.kkW();
+            }
+            Object localObject3 = (i)localObject2;
+            Object localObject4 = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bzA().JE(((i)localObject3).username);
+            localObject2 = locald.pUj;
+            s.s(localObject4, "contact");
+            localObject4 = new f(i, (au)localObject4, 1);
+            ((f)localObject4).aenF = ((i)localObject3);
+            ((f)localObject4).FWt = paramm.FWt;
+            localObject3 = ah.aiuX;
+            ((ArrayList)localObject2).add(localObject4);
+            i += 1;
+          }
+          localObject1 = null;
+          break;
+          label229:
+          ((o)localObject1).FWt = paramm.FWt;
+        }
+        label240:
+        this.ovy.offer(locald);
+        AppMethodBeat.o(254195);
+        return;
+        label256:
+        ((kotlinx.coroutines.a.f)this.ovy).kDk();
       }
-      AppMethodBeat.o(274454);
+      label268:
+      AppMethodBeat.o(254195);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.atsomeone.AtSomeoneSearchDataSource
  * JD-Core Version:    0.7.0.1
  */

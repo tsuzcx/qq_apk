@@ -1,53 +1,44 @@
 package kotlin.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"numberFormatError", "", "input", "", "toByteOrNull", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "radix", "", "(Ljava/lang/String;I)Ljava/lang/Byte;", "toIntOrNull", "(Ljava/lang/String;)Ljava/lang/Integer;", "(Ljava/lang/String;I)Ljava/lang/Integer;", "toLongOrNull", "", "(Ljava/lang/String;)Ljava/lang/Long;", "(Ljava/lang/String;I)Ljava/lang/Long;", "toShortOrNull", "", "(Ljava/lang/String;)Ljava/lang/Short;", "(Ljava/lang/String;I)Ljava/lang/Short;", "kotlin-stdlib"}, iBN=1)
+@Metadata(d1={""}, d2={"numberFormatError", "", "input", "", "toByteOrNull", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "radix", "", "(Ljava/lang/String;I)Ljava/lang/Byte;", "toIntOrNull", "(Ljava/lang/String;)Ljava/lang/Integer;", "(Ljava/lang/String;I)Ljava/lang/Integer;", "toLongOrNull", "", "(Ljava/lang/String;)Ljava/lang/Long;", "(Ljava/lang/String;I)Ljava/lang/Long;", "toShortOrNull", "", "(Ljava/lang/String;)Ljava/lang/Short;", "(Ljava/lang/String;I)Ljava/lang/Short;", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/text/StringsKt")
 public class v
   extends u
 {
-  public static final Integer bHC(String paramString)
+  public static final Integer bJF(String paramString)
   {
     AppMethodBeat.i(129444);
-    p.k(paramString, "$this$toIntOrNull");
-    paramString = n.iC(paramString, 10);
+    s.u(paramString, "$this$toIntOrNull");
+    paramString = n.bJG(paramString);
     AppMethodBeat.o(129444);
     return paramString;
   }
   
-  public static final Long bHD(String paramString)
-  {
-    AppMethodBeat.i(129446);
-    p.k(paramString, "$this$toLongOrNull");
-    paramString = n.iD(paramString, 10);
-    AppMethodBeat.o(129446);
-    return paramString;
-  }
-  
-  public static final Integer iC(String paramString, int paramInt)
+  public static final Integer bJG(String paramString)
   {
     int k = -2147483647;
     int n = 0;
-    AppMethodBeat.i(129445);
-    p.k(paramString, "$this$toIntOrNull");
-    a.aFL(paramInt);
+    AppMethodBeat.i(190921);
+    s.u(paramString, "$this$toIntOrNull");
+    a.aMy(10);
     int i2 = paramString.length();
     if (i2 == 0)
     {
-      AppMethodBeat.o(129445);
+      AppMethodBeat.o(190921);
       return null;
     }
     int i = paramString.charAt(0);
     int j;
     int i1;
     int m;
-    if (i < 48)
+    if (s.compare(i, 48) < 0)
     {
       if (i2 == 1)
       {
-        AppMethodBeat.o(129445);
+        AppMethodBeat.o(190921);
         return null;
       }
       if (i == 45)
@@ -63,12 +54,12 @@ public class v
     for (;;)
     {
       if (m >= i2) {
-        break label229;
+        break label232;
       }
-      int i3 = Character.digit(paramString.charAt(m), paramInt);
+      int i3 = Character.digit(paramString.charAt(m), 10);
       if (i3 < 0)
       {
-        AppMethodBeat.o(129445);
+        AppMethodBeat.o(190921);
         return null;
         if (i == 43)
         {
@@ -76,7 +67,7 @@ public class v
           j = 0;
           break;
         }
-        AppMethodBeat.o(129445);
+        AppMethodBeat.o(190921);
         return null;
         i = 0;
         j = 0;
@@ -85,127 +76,138 @@ public class v
       if (n < i) {
         if (i == -59652323)
         {
-          i1 = k / paramInt;
+          i1 = k / 10;
           i = i1;
           if (n < i1)
           {
-            AppMethodBeat.o(129445);
+            AppMethodBeat.o(190921);
             return null;
           }
         }
         else
         {
-          AppMethodBeat.o(129445);
+          AppMethodBeat.o(190921);
           return null;
         }
       }
-      n *= paramInt;
+      n *= 10;
       if (n < k + i3)
       {
-        AppMethodBeat.o(129445);
+        AppMethodBeat.o(190921);
         return null;
       }
       n -= i3;
       m += 1;
     }
-    label229:
+    label232:
     if (j != 0)
     {
-      AppMethodBeat.o(129445);
+      AppMethodBeat.o(190921);
       return Integer.valueOf(n);
     }
-    paramInt = -n;
-    AppMethodBeat.o(129445);
-    return Integer.valueOf(paramInt);
+    i = -n;
+    AppMethodBeat.o(190921);
+    return Integer.valueOf(i);
   }
   
-  public static final Long iD(String paramString, int paramInt)
+  public static final Long bJH(String paramString)
   {
-    long l2 = -9223372036854775807L;
-    AppMethodBeat.i(129447);
-    p.k(paramString, "$this$toLongOrNull");
-    a.aFL(paramInt);
+    AppMethodBeat.i(129446);
+    s.u(paramString, "$this$toLongOrNull");
+    paramString = n.bJI(paramString);
+    AppMethodBeat.o(129446);
+    return paramString;
+  }
+  
+  public static final Long bJI(String paramString)
+  {
+    AppMethodBeat.i(190927);
+    s.u(paramString, "$this$toLongOrNull");
+    a.aMy(10);
     int k = paramString.length();
     if (k == 0)
     {
-      AppMethodBeat.o(129447);
+      AppMethodBeat.o(190927);
       return null;
     }
     int i = paramString.charAt(0);
     int j;
+    long l2;
     long l3;
-    if (i < 48)
+    if (s.compare(i, 48) < 0)
     {
       if (k == 1)
       {
-        AppMethodBeat.o(129447);
+        AppMethodBeat.o(190927);
         return null;
       }
       if (i == 45)
       {
-        l2 = -9223372036854775808L;
+        l1 = -9223372036854775808L;
         i = 1;
         j = 1;
-        l1 = -256204778801521550L;
+        l2 = -256204778801521550L;
         l3 = 0L;
       }
     }
     for (;;)
     {
       if (i >= k) {
-        break label234;
+        break label242;
       }
-      int m = Character.digit(paramString.charAt(i), paramInt);
+      int m = Character.digit(paramString.charAt(i), 10);
       if (m < 0)
       {
-        AppMethodBeat.o(129447);
+        AppMethodBeat.o(190927);
         return null;
         if (i == 43)
         {
+          l1 = -9223372036854775807L;
           i = 1;
           j = 0;
           break;
         }
-        AppMethodBeat.o(129447);
+        AppMethodBeat.o(190927);
         return null;
+        l1 = -9223372036854775807L;
         i = 0;
         j = 0;
         break;
       }
-      if (l3 < l1) {
-        if (l1 == -256204778801521550L)
+      if (l3 < l2) {
+        if (l2 == -256204778801521550L)
         {
-          long l4 = l2 / paramInt;
-          l1 = l4;
+          long l4 = l1 / 10L;
+          l2 = l4;
           if (l3 < l4)
           {
-            AppMethodBeat.o(129447);
+            AppMethodBeat.o(190927);
             return null;
           }
         }
         else
         {
-          AppMethodBeat.o(129447);
+          AppMethodBeat.o(190927);
           return null;
         }
       }
-      l3 = paramInt * l3;
-      if (l3 < m + l2)
+      l3 = 10L * l3;
+      if (l3 < m + l1)
       {
-        AppMethodBeat.o(129447);
+        AppMethodBeat.o(190927);
         return null;
       }
       l3 -= m;
       i += 1;
     }
-    label234:
+    label242:
     if (j != 0)
     {
-      AppMethodBeat.o(129447);
+      AppMethodBeat.o(190927);
       return Long.valueOf(l3);
     }
     long l1 = -l3;
-    AppMethodBeat.o(129447);
+    AppMethodBeat.o(190927);
     return Long.valueOf(l1);
   }
 }

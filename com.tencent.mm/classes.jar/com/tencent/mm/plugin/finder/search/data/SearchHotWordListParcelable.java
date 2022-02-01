@@ -4,62 +4,62 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bio;
+import com.tencent.mm.protocal.protobuf.bux;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "TAG", "", "hotWordParcelable", "Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;", "getHotWordParcelable", "()Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;", "setHotWordParcelable", "(Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;)V", "position", "", "getPosition", "()I", "setPosition", "(I)V", "searchHotWordParcelableList", "Ljava/util/LinkedList;", "getSearchHotWordParcelableList", "()Ljava/util/LinkedList;", "setSearchHotWordParcelableList", "(Ljava/util/LinkedList;)V", "append", "", "list", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHotWord;", "describeContents", "getCurHotWord", "isAtEnd", "", "removePrev", "hotWord", "hotWordText", "toString", "writeToParcel", "flags", "CREATOR", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "()V", "TAG", "", "hotWordParcelable", "Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;", "getHotWordParcelable", "()Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;", "setHotWordParcelable", "(Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;)V", "position", "", "getPosition", "()I", "setPosition", "(I)V", "searchHotWordParcelableList", "Ljava/util/LinkedList;", "getSearchHotWordParcelableList", "()Ljava/util/LinkedList;", "setSearchHotWordParcelableList", "(Ljava/util/LinkedList;)V", "append", "", "list", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHotWord;", "describeContents", "getCurHotWord", "isAtEnd", "", "removePrev", "hotWord", "hotWordText", "toString", "writeToParcel", "flags", "CREATOR", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class SearchHotWordListParcelable
   implements Parcelable
 {
   public static final a CREATOR;
-  public SearchHotWordParcelable AcR;
-  public LinkedList<SearchHotWordParcelable> AcS;
+  public SearchHotWordParcelable FyD;
+  public LinkedList<SearchHotWordParcelable> FyE;
   private final String TAG;
   public int position;
   
   static
   {
-    AppMethodBeat.i(223581);
+    AppMethodBeat.i(342772);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(223581);
+    AppMethodBeat.o(342772);
   }
   
   public SearchHotWordListParcelable()
   {
-    AppMethodBeat.i(223576);
+    AppMethodBeat.i(342757);
     this.TAG = "Finder.SearchHotWordList";
     this.position = -1;
-    this.AcS = new LinkedList();
-    AppMethodBeat.o(223576);
+    this.FyE = new LinkedList();
+    AppMethodBeat.o(342757);
   }
   
   public SearchHotWordListParcelable(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(223579);
-    this.AcR = ((SearchHotWordParcelable)paramParcel.readParcelable(SearchHotWordParcelable.class.getClassLoader()));
+    AppMethodBeat.i(342763);
+    this.FyD = ((SearchHotWordParcelable)paramParcel.readParcelable(SearchHotWordParcelable.class.getClassLoader()));
     this.position = paramParcel.readInt();
-    paramParcel.readTypedList((List)this.AcS, (Parcelable.Creator)SearchHotWordParcelable.CREATOR);
-    AppMethodBeat.o(223579);
+    paramParcel.readTypedList((List)this.FyE, (Parcelable.Creator)SearchHotWordParcelable.CREATOR);
+    AppMethodBeat.o(342763);
   }
   
-  public final void aEr(String paramString)
+  public final void aAk(String paramString)
   {
-    AppMethodBeat.i(223564);
-    p.k(paramString, "hotWordText");
+    AppMethodBeat.i(342784);
+    s.u(paramString, "hotWordText");
     if (Util.isNullOrNil(paramString))
     {
       Log.i(this.TAG, "removePre return for empty");
-      AppMethodBeat.o(223564);
+      AppMethodBeat.o(342784);
       return;
     }
-    Iterator localIterator = this.AcS.iterator();
+    Iterator localIterator = this.FyE.iterator();
     int i = -1;
     for (;;)
     {
@@ -67,21 +67,21 @@ public final class SearchHotWordListParcelable
       if (localIterator.hasNext())
       {
         localSearchHotWordParcelable = (SearchHotWordParcelable)localIterator.next();
-        localObject = localSearchHotWordParcelable.AcT;
-        if (localObject == null) {
-          break label178;
+        localObject = localSearchHotWordParcelable.FyF;
+        if (localObject != null) {
+          break label175;
         }
       }
-      label178:
-      for (Object localObject = ((bio)localObject).SSO; Util.isEqual((String)localObject, paramString); localObject = null)
+      label175:
+      for (Object localObject = null; Util.isEqual((String)localObject, paramString); localObject = ((bux)localObject).aacq)
       {
-        Log.i(this.TAG, "remove :" + paramString + " index:" + this.AcS.indexOf(localSearchHotWordParcelable) + ": position:" + this.position);
-        if ((i >= 0) && (i < this.AcS.size()))
+        Log.i(this.TAG, "remove :" + paramString + " index:" + this.FyE.indexOf(localSearchHotWordParcelable) + ": position:" + this.position);
+        if ((i >= 0) && (i < this.FyE.size()))
         {
-          this.AcS.remove(i);
+          this.FyE.remove(i);
           this.position = (i - 1);
         }
-        AppMethodBeat.o(223564);
+        AppMethodBeat.o(342784);
         return;
       }
       i += 1;
@@ -95,57 +95,57 @@ public final class SearchHotWordListParcelable
   
   public final String toString()
   {
-    AppMethodBeat.i(223573);
-    String str = String.valueOf(this.AcR) + " pos:" + this.position + " list:" + this.AcS;
-    AppMethodBeat.o(223573);
+    AppMethodBeat.i(342796);
+    String str = this.FyD + " pos:" + this.position + " list:" + this.FyE;
+    AppMethodBeat.o(342796);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(223567);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeParcelable((Parcelable)this.AcR, paramInt);
+    AppMethodBeat.i(342789);
+    s.u(paramParcel, "parcel");
+    paramParcel.writeParcelable((Parcelable)this.FyD, paramInt);
     paramParcel.writeInt(this.position);
-    paramParcel.writeTypedList((List)this.AcS);
-    AppMethodBeat.o(223567);
+    paramParcel.writeTypedList((List)this.FyE);
+    AppMethodBeat.o(342789);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable;", "transform", "hotWord", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHotWord;", "position", "hotWordList", "", "transformFinderSearchHotWordList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordListParcelable;", "transform", "hotWord", "Lcom/tencent/mm/protocal/protobuf/FinderSearchHotWord;", "position", "hotWordList", "", "transformFinderSearchHotWordList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/search/data/SearchHotWordParcelable;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<SearchHotWordListParcelable>
   {
-    public static SearchHotWordListParcelable a(bio parambio, int paramInt, List<? extends bio> paramList)
+    public static SearchHotWordListParcelable a(bux parambux, int paramInt, List<? extends bux> paramList)
     {
-      AppMethodBeat.i(278576);
+      AppMethodBeat.i(342781);
       SearchHotWordParcelable localSearchHotWordParcelable = new SearchHotWordParcelable();
-      localSearchHotWordParcelable.AcT = parambio;
-      parambio = new SearchHotWordListParcelable();
-      parambio.AcR = localSearchHotWordParcelable;
-      parambio.position = paramInt;
-      paramList = eI(paramList);
-      p.k(paramList, "<set-?>");
-      parambio.AcS = paramList;
-      AppMethodBeat.o(278576);
-      return parambio;
+      localSearchHotWordParcelable.FyF = parambux;
+      parambux = new SearchHotWordListParcelable();
+      parambux.FyD = localSearchHotWordParcelable;
+      parambux.position = paramInt;
+      paramList = hs(paramList);
+      s.u(paramList, "<set-?>");
+      parambux.FyE = paramList;
+      AppMethodBeat.o(342781);
+      return parambux;
     }
     
-    private static LinkedList<SearchHotWordParcelable> eI(List<? extends bio> paramList)
+    private static LinkedList<SearchHotWordParcelable> hs(List<? extends bux> paramList)
     {
-      AppMethodBeat.i(278577);
+      AppMethodBeat.i(342787);
       LinkedList localLinkedList = new LinkedList();
       if (paramList != null)
       {
         paramList = ((Iterable)paramList).iterator();
         while (paramList.hasNext())
         {
-          bio localbio = (bio)paramList.next();
+          bux localbux = (bux)paramList.next();
           SearchHotWordParcelable localSearchHotWordParcelable = new SearchHotWordParcelable();
-          localSearchHotWordParcelable.AcT = localbio;
+          localSearchHotWordParcelable.FyF = localbux;
           localLinkedList.add(localSearchHotWordParcelable);
         }
       }
-      AppMethodBeat.o(278577);
+      AppMethodBeat.o(342787);
       return localLinkedList;
     }
   }

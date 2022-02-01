@@ -12,13 +12,13 @@ import java.util.Stack;
 final class v
   extends d
 {
-  private static final int[] abgB;
-  private final int abgC;
-  private final d abgD;
-  private final d abgE;
-  private final int abgF;
-  private final int abgG;
-  private int bPh;
+  private static final int[] dUI;
+  private final d ajfs;
+  private final d ajft;
+  private int dIL;
+  private final int dUJ;
+  private final int dUM;
+  private final int dUN;
   
   static
   {
@@ -37,11 +37,11 @@ final class v
       i = k + i;
     }
     localArrayList.add(Integer.valueOf(2147483647));
-    abgB = new int[localArrayList.size()];
+    dUI = new int[localArrayList.size()];
     i = 0;
-    while (i < abgB.length)
+    while (i < dUI.length)
     {
-      abgB[i] = ((Integer)localArrayList.get(i)).intValue();
+      dUI[i] = ((Integer)localArrayList.get(i)).intValue();
       i += 1;
     }
     AppMethodBeat.o(59569);
@@ -50,12 +50,12 @@ final class v
   private v(d paramd1, d paramd2)
   {
     AppMethodBeat.i(59555);
-    this.bPh = 0;
-    this.abgD = paramd1;
-    this.abgE = paramd2;
-    this.abgF = paramd1.size();
-    this.abgC = (this.abgF + paramd2.size());
-    this.abgG = (Math.max(paramd1.iNI(), paramd2.iNI()) + 1);
+    this.dIL = 0;
+    this.ajfs = paramd1;
+    this.ajft = paramd2;
+    this.dUM = paramd1.size();
+    this.dUJ = (this.dUM + paramd2.size());
+    this.dUN = (Math.max(paramd1.ZY(), paramd2.ZY()) + 1);
     AppMethodBeat.o(59555);
   }
   
@@ -88,20 +88,20 @@ final class v
       localObject = null;
       break;
       label68:
-      if ((localObject != null) && (((v)localObject).abgE.size() + paramd2.size() < 128))
+      if ((localObject != null) && (((v)localObject).ajft.size() + paramd2.size() < 128))
       {
-        paramd1 = b(((v)localObject).abgE, paramd2);
-        paramd1 = new v(((v)localObject).abgD, paramd1);
+        paramd1 = b(((v)localObject).ajft, paramd2);
+        paramd1 = new v(((v)localObject).ajfs, paramd1);
       }
-      else if ((localObject != null) && (((v)localObject).abgD.iNI() > ((v)localObject).abgE.iNI()) && (((v)localObject).abgG > paramd2.iNI()))
+      else if ((localObject != null) && (((v)localObject).ajfs.ZY() > ((v)localObject).ajft.ZY()) && (((v)localObject).dUN > paramd2.ZY()))
       {
-        paramd1 = new v(((v)localObject).abgE, paramd2);
-        paramd1 = new v(((v)localObject).abgD, paramd1);
+        paramd1 = new v(((v)localObject).ajft, paramd2);
+        paramd1 = new v(((v)localObject).ajfs, paramd1);
       }
       else
       {
-        int j = Math.max(paramd1.iNI(), paramd2.iNI());
-        if (i >= abgB[(j + 1)])
+        int j = Math.max(paramd1.ZY(), paramd2.ZY());
+        if (i >= dUI[(j + 1)])
         {
           paramd1 = new v(paramd1, paramd2);
         }
@@ -110,10 +110,10 @@ final class v
           localObject = new a((byte)0);
           ((a)localObject).g(paramd1);
           ((a)localObject).g(paramd2);
-          for (paramd2 = (d)((a)localObject).abgH.pop();; paramd2 = new v((d)((a)localObject).abgH.pop(), paramd2, (byte)0))
+          for (paramd2 = (d)((a)localObject).ajfu.pop();; paramd2 = new v((d)((a)localObject).ajfu.pop(), paramd2, (byte)0))
           {
             paramd1 = paramd2;
-            if (((a)localObject).abgH.isEmpty()) {
+            if (((a)localObject).ajfu.isEmpty()) {
               break;
             }
           }
@@ -129,18 +129,62 @@ final class v
     int i = paramd1.size();
     int j = paramd2.size();
     byte[] arrayOfByte = new byte[i + j];
-    paramd1.k(arrayOfByte, 0, 0, i);
-    paramd2.k(arrayOfByte, 0, i, j);
+    paramd1.b(arrayOfByte, 0, 0, i);
+    paramd2.b(arrayOfByte, 0, i, j);
     paramd1 = new q(arrayOfByte);
     AppMethodBeat.o(59557);
     return paramd1;
   }
   
-  public final boolean Aq()
+  protected final int Q(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(59562);
+    if (paramInt2 + paramInt3 <= this.dUM)
+    {
+      paramInt1 = this.ajfs.Q(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(59562);
+      return paramInt1;
+    }
+    if (paramInt2 >= this.dUM)
+    {
+      paramInt1 = this.ajft.Q(paramInt1, paramInt2 - this.dUM, paramInt3);
+      AppMethodBeat.o(59562);
+      return paramInt1;
+    }
+    int i = this.dUM - paramInt2;
+    paramInt1 = this.ajfs.Q(paramInt1, paramInt2, i);
+    paramInt1 = this.ajft.Q(paramInt1, 0, paramInt3 - i);
+    AppMethodBeat.o(59562);
+    return paramInt1;
+  }
+  
+  protected final int R(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(59565);
+    if (paramInt2 + paramInt3 <= this.dUM)
+    {
+      paramInt1 = this.ajfs.R(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(59565);
+      return paramInt1;
+    }
+    if (paramInt2 >= this.dUM)
+    {
+      paramInt1 = this.ajft.R(paramInt1, paramInt2 - this.dUM, paramInt3);
+      AppMethodBeat.o(59565);
+      return paramInt1;
+    }
+    int i = this.dUM - paramInt2;
+    paramInt1 = this.ajfs.R(paramInt1, paramInt2, i);
+    paramInt1 = this.ajft.R(paramInt1, 0, paramInt3 - i);
+    AppMethodBeat.o(59565);
+    return paramInt1;
+  }
+  
+  public final boolean ZW()
   {
     AppMethodBeat.i(59561);
-    int i = this.abgD.bn(0, 0, this.abgF);
-    if (this.abgE.bn(i, 0, this.abgE.size()) == 0)
+    int i = this.ajfs.Q(0, 0, this.dUM);
+    if (this.ajft.Q(i, 0, this.ajft.size()) == 0)
     {
       AppMethodBeat.o(59561);
       return true;
@@ -149,74 +193,56 @@ final class v
     return false;
   }
   
-  protected final int As()
+  protected final int ZY()
   {
-    return this.bPh;
+    return this.dUN;
+  }
+  
+  protected final int ZZ()
+  {
+    return this.dIL;
   }
   
   final void b(OutputStream paramOutputStream, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59559);
-    if (paramInt1 + paramInt2 <= this.abgF)
+    if (paramInt1 + paramInt2 <= this.dUM)
     {
-      this.abgD.b(paramOutputStream, paramInt1, paramInt2);
+      this.ajfs.b(paramOutputStream, paramInt1, paramInt2);
       AppMethodBeat.o(59559);
       return;
     }
-    if (paramInt1 >= this.abgF)
+    if (paramInt1 >= this.dUM)
     {
-      this.abgE.b(paramOutputStream, paramInt1 - this.abgF, paramInt2);
+      this.ajft.b(paramOutputStream, paramInt1 - this.dUM, paramInt2);
       AppMethodBeat.o(59559);
       return;
     }
-    int i = this.abgF - paramInt1;
-    this.abgD.b(paramOutputStream, paramInt1, i);
-    this.abgE.b(paramOutputStream, 0, paramInt2 - i);
+    int i = this.dUM - paramInt1;
+    this.ajfs.b(paramOutputStream, paramInt1, i);
+    this.ajft.b(paramOutputStream, 0, paramInt2 - i);
     AppMethodBeat.o(59559);
   }
   
-  protected final int bn(int paramInt1, int paramInt2, int paramInt3)
+  protected final void c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(59562);
-    if (paramInt2 + paramInt3 <= this.abgF)
+    AppMethodBeat.i(59558);
+    if (paramInt1 + paramInt3 <= this.dUM)
     {
-      paramInt1 = this.abgD.bn(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(59562);
-      return paramInt1;
+      this.ajfs.c(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(59558);
+      return;
     }
-    if (paramInt2 >= this.abgF)
+    if (paramInt1 >= this.dUM)
     {
-      paramInt1 = this.abgE.bn(paramInt1, paramInt2 - this.abgF, paramInt3);
-      AppMethodBeat.o(59562);
-      return paramInt1;
+      this.ajft.c(paramArrayOfByte, paramInt1 - this.dUM, paramInt2, paramInt3);
+      AppMethodBeat.o(59558);
+      return;
     }
-    int i = this.abgF - paramInt2;
-    paramInt1 = this.abgD.bn(paramInt1, paramInt2, i);
-    paramInt1 = this.abgE.bn(paramInt1, 0, paramInt3 - i);
-    AppMethodBeat.o(59562);
-    return paramInt1;
-  }
-  
-  protected final int bo(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(59565);
-    if (paramInt2 + paramInt3 <= this.abgF)
-    {
-      paramInt1 = this.abgD.bo(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(59565);
-      return paramInt1;
-    }
-    if (paramInt2 >= this.abgF)
-    {
-      paramInt1 = this.abgE.bo(paramInt1, paramInt2 - this.abgF, paramInt3);
-      AppMethodBeat.o(59565);
-      return paramInt1;
-    }
-    int i = this.abgF - paramInt2;
-    paramInt1 = this.abgD.bo(paramInt1, paramInt2, i);
-    paramInt1 = this.abgE.bo(paramInt1, 0, paramInt3 - i);
-    AppMethodBeat.o(59565);
-    return paramInt1;
+    int i = this.dUM - paramInt1;
+    this.ajfs.c(paramArrayOfByte, paramInt1, paramInt2, i);
+    this.ajft.c(paramArrayOfByte, 0, paramInt2 + i, paramInt3 - i);
+    AppMethodBeat.o(59558);
   }
   
   public final boolean equals(Object paramObject)
@@ -233,20 +259,20 @@ final class v
       return false;
     }
     paramObject = (d)paramObject;
-    if (this.abgC != paramObject.size())
+    if (this.dUJ != paramObject.size())
     {
       AppMethodBeat.o(59563);
       return false;
     }
-    if (this.abgC == 0)
+    if (this.dUJ == 0)
     {
       AppMethodBeat.o(59563);
       return true;
     }
-    if (this.bPh != 0)
+    if (this.dIL != 0)
     {
-      i = paramObject.As();
-      if ((i != 0) && (this.bPh != i))
+      i = paramObject.ZZ();
+      if ((i != 0) && (this.dIL != i))
       {
         AppMethodBeat.o(59563);
         return false;
@@ -271,9 +297,9 @@ final class v
         return false;
       }
       k += m;
-      if (k >= this.abgC)
+      if (k >= this.dUJ)
       {
-        if (k == this.abgC)
+        if (k == this.dUJ)
         {
           AppMethodBeat.o(59563);
           return true;
@@ -305,22 +331,22 @@ final class v
   public final int hashCode()
   {
     AppMethodBeat.i(59564);
-    int j = this.bPh;
+    int j = this.dIL;
     int i = j;
     if (j == 0)
     {
-      j = bo(this.abgC, 0, this.abgC);
+      j = R(this.dUJ, 0, this.dUJ);
       i = j;
       if (j == 0) {
         i = 1;
       }
-      this.bPh = i;
+      this.dIL = i;
     }
     AppMethodBeat.o(59564);
     return i;
   }
   
-  public final d.a iNG()
+  public final d.a kxZ()
   {
     AppMethodBeat.i(59567);
     c localc = new c((byte)0);
@@ -328,40 +354,14 @@ final class v
     return localc;
   }
   
-  protected final int iNI()
+  protected final boolean kyb()
   {
-    return this.abgG;
-  }
-  
-  protected final boolean iNJ()
-  {
-    return this.abgC >= abgB[this.abgG];
-  }
-  
-  protected final void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(59558);
-    if (paramInt1 + paramInt3 <= this.abgF)
-    {
-      this.abgD.m(paramArrayOfByte, paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(59558);
-      return;
-    }
-    if (paramInt1 >= this.abgF)
-    {
-      this.abgE.m(paramArrayOfByte, paramInt1 - this.abgF, paramInt2, paramInt3);
-      AppMethodBeat.o(59558);
-      return;
-    }
-    int i = this.abgF - paramInt1;
-    this.abgD.m(paramArrayOfByte, paramInt1, paramInt2, i);
-    this.abgE.m(paramArrayOfByte, 0, paramInt2 + i, paramInt3 - i);
-    AppMethodBeat.o(59558);
+    return this.dUJ >= dUI[this.dUN];
   }
   
   public final int size()
   {
-    return this.abgC;
+    return this.dUJ;
   }
   
   public final String toString(String paramString)
@@ -374,19 +374,19 @@ final class v
   
   static final class a
   {
-    final Stack<d> abgH;
+    final Stack<d> ajfu;
     
     private a()
     {
       AppMethodBeat.i(59533);
-      this.abgH = new Stack();
+      this.ajfu = new Stack();
       AppMethodBeat.o(59533);
     }
     
-    private static int aFx(int paramInt)
+    private static int aMl(int paramInt)
     {
       AppMethodBeat.i(59535);
-      int i = Arrays.binarySearch(v.iOe(), paramInt);
+      int i = Arrays.binarySearch(v.kyw(), paramInt);
       paramInt = i;
       if (i < 0) {
         paramInt = -(i + 1) - 1;
@@ -400,27 +400,27 @@ final class v
       AppMethodBeat.i(59534);
       for (;;)
       {
-        if (paramd.iNJ())
+        if (paramd.kyb())
         {
-          int i = aFx(paramd.size());
-          int j = v.iOe()[(i + 1)];
-          if ((this.abgH.isEmpty()) || (((d)this.abgH.peek()).size() >= j))
+          int i = aMl(paramd.size());
+          int j = v.kyw()[(i + 1)];
+          if ((this.ajfu.isEmpty()) || (((d)this.ajfu.peek()).size() >= j))
           {
-            this.abgH.push(paramd);
+            this.ajfu.push(paramd);
             AppMethodBeat.o(59534);
             return;
           }
-          i = v.iOe()[i];
-          for (Object localObject = (d)this.abgH.pop(); (!this.abgH.isEmpty()) && (((d)this.abgH.peek()).size() < i); localObject = new v((d)this.abgH.pop(), (d)localObject, (byte)0)) {}
-          for (paramd = new v((d)localObject, paramd, (byte)0); !this.abgH.isEmpty(); paramd = new v((d)this.abgH.pop(), paramd, (byte)0))
+          i = v.kyw()[i];
+          for (Object localObject = (d)this.ajfu.pop(); (!this.ajfu.isEmpty()) && (((d)this.ajfu.peek()).size() < i); localObject = new v((d)this.ajfu.pop(), (d)localObject, (byte)0)) {}
+          for (paramd = new v((d)localObject, paramd, (byte)0); !this.ajfu.isEmpty(); paramd = new v((d)this.ajfu.pop(), paramd, (byte)0))
           {
-            i = aFx(paramd.size());
-            i = v.iOe()[(i + 1)];
-            if (((d)this.abgH.peek()).size() >= i) {
+            i = aMl(paramd.size());
+            i = v.kyw()[(i + 1)];
+            if (((d)this.ajfu.peek()).size() >= i) {
               break;
             }
           }
-          this.abgH.push(paramd);
+          this.ajfu.push(paramd);
           AppMethodBeat.o(59534);
           return;
         }
@@ -441,14 +441,14 @@ final class v
   static final class b
     implements Iterator<q>
   {
-    private final Stack<v> abgI;
-    private q abgJ;
+    private final Stack<v> ajfv;
+    private q ajfw;
     
     private b(d paramd)
     {
       AppMethodBeat.i(59536);
-      this.abgI = new Stack();
-      this.abgJ = h(paramd);
+      this.ajfv = new Stack();
+      this.ajfw = h(paramd);
       AppMethodBeat.o(59536);
     }
     
@@ -458,7 +458,7 @@ final class v
       while ((paramd instanceof v))
       {
         paramd = (v)paramd;
-        this.abgI.push(paramd);
+        this.ajfv.push(paramd);
         paramd = v.a(paramd);
       }
       paramd = (q)paramd;
@@ -466,17 +466,17 @@ final class v
       return paramd;
     }
     
-    private q iOf()
+    private q kyx()
     {
       AppMethodBeat.i(59538);
       for (;;)
       {
-        if (this.abgI.isEmpty())
+        if (this.ajfv.isEmpty())
         {
           AppMethodBeat.o(59538);
           return null;
         }
-        q localq = h(v.b((v)this.abgI.pop()));
+        q localq = h(v.b((v)this.ajfv.pop()));
         if (localq.size() == 0) {}
         for (int i = 1; i == 0; i = 0)
         {
@@ -488,20 +488,20 @@ final class v
     
     public final boolean hasNext()
     {
-      return this.abgJ != null;
+      return this.ajfw != null;
     }
     
-    public final q iOg()
+    public final q kyy()
     {
       AppMethodBeat.i(59539);
-      if (this.abgJ == null)
+      if (this.ajfw == null)
       {
         localObject = new NoSuchElementException();
         AppMethodBeat.o(59539);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.abgJ;
-      this.abgJ = iOf();
+      Object localObject = this.ajfw;
+      this.ajfw = kyx();
       AppMethodBeat.o(59539);
       return localObject;
     }
@@ -518,32 +518,32 @@ final class v
   final class c
     implements d.a
   {
-    private final v.b abgK;
-    private d.a abgL;
-    int abgM;
+    private final v.b ajfx;
+    private d.a ajfy;
+    int ajfz;
     
     private c()
     {
       AppMethodBeat.i(59542);
-      this.abgK = new v.b(v.this, (byte)0);
-      this.abgL = this.abgK.iOg().iNG();
-      this.abgM = v.this.size();
+      this.ajfx = new v.b(v.this, (byte)0);
+      this.ajfy = this.ajfx.kyy().kxZ();
+      this.ajfz = v.this.size();
       AppMethodBeat.o(59542);
     }
     
     public final boolean hasNext()
     {
-      return this.abgM > 0;
+      return this.ajfz > 0;
     }
     
     public final byte nextByte()
     {
       AppMethodBeat.i(59543);
-      if (!this.abgL.hasNext()) {
-        this.abgL = this.abgK.iOg().iNG();
+      if (!this.ajfy.hasNext()) {
+        this.ajfy = this.ajfx.kyy().kxZ();
       }
-      this.abgM -= 1;
-      byte b = this.abgL.nextByte();
+      this.ajfz -= 1;
+      byte b = this.ajfy.nextByte();
       AppMethodBeat.o(59543);
       return b;
     }
@@ -559,7 +559,7 @@ final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.v
  * JD-Core Version:    0.7.0.1
  */

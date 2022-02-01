@@ -3,152 +3,151 @@ package com.tencent.mm.plugin.recordvideo.plugin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.component.api.jumper.UICustomParam;
-import com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView;
-import com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView;
-import com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView.a;
-import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.recordvideo.b.g;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
+import com.tencent.mm.ui.bb;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordFocusPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "captureFocus", "Lcom/tencent/mm/plugin/mmsight/ui/CameraFrontSightView;", "captureTouchView", "Lcom/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView;", "startTimeStamp", "", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "Companion", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordFilterPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "enable", "", "pluginEnable", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "getView", "()Landroid/widget/ImageView;", "initConfig", "", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setEnable", "setVisibility", "visibility", "", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aa
-  implements u
+  implements v
 {
-  public static final a HOA;
-  private long ptY;
-  private final CameraFrontSightView uYA;
-  private final MMSightCaptureTouchView uYB;
-  private View view;
+  private final com.tencent.mm.plugin.recordvideo.plugin.parent.a GrC;
+  public boolean Gsz;
+  public final ImageView cqj;
+  private boolean enable;
   
-  static
+  public aa(ImageView paramImageView, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    AppMethodBeat.i(75640);
-    HOA = new a((byte)0);
-    AppMethodBeat.o(75640);
+    AppMethodBeat.i(182853);
+    this.cqj = paramImageView;
+    this.GrC = parama;
+    this.cqj.setImageDrawable(bb.m(this.cqj.getContext(), b.g.icons_filled_filters, -1));
+    this.cqj.setOnClickListener(new aa..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(182853);
   }
   
-  public aa(View paramView, final d paramd)
+  private static final void a(aa paramaa, View paramView)
   {
-    AppMethodBeat.i(75639);
-    this.view = paramView;
-    paramView = this.view.findViewById(b.e.capture_focus_frame);
-    p.j(paramView, "view.findViewById(R.id.capture_focus_frame)");
-    this.uYA = ((CameraFrontSightView)paramView);
-    paramView = this.view.findViewById(b.e.capture_touch_view);
-    p.j(paramView, "view.findViewById(R.id.capture_touch_view)");
-    this.uYB = ((MMSightCaptureTouchView)paramView);
-    this.ptY = Util.currentTicks();
-    int i = a.fromDPToPix(this.view.getContext(), 120);
-    this.uYA.ii(i, i);
-    this.uYB.setTouchCallback((MMSightCaptureTouchView.a)new MMSightCaptureTouchView.a()
+    AppMethodBeat.i(280692);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramaa);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recordvideo/plugin/RecordFilterPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramaa, "this$0");
+    if (!paramaa.enable) {}
+    for (boolean bool = true;; bool = false)
     {
-      public final void J(float paramAnonymousFloat1, float paramAnonymousFloat2)
-      {
-        AppMethodBeat.i(75635);
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("PARAM_WIDTH_INT", aa.a(this.HOB).getWidth());
-        localBundle.putInt("PARAM_HEIGHT_INT", aa.a(this.HOB).getHeight());
-        localBundle.putFloat("PARAM_POINT_X", paramAnonymousFloat1);
-        localBundle.putFloat("PARAM_POINT_Y", paramAnonymousFloat2);
-        paramd.a(d.c.HRf, localBundle);
-        aa.b(this.HOB).ab(paramAnonymousFloat1, paramAnonymousFloat2);
-        AppMethodBeat.o(75635);
-      }
-      
-      public final void bBF()
-      {
-        AppMethodBeat.i(75637);
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_BOOLEAN", true);
-        localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_SCROLL_BOOLEAN", false);
-        localBundle.putInt("PARAM_PREPARE_CAMERA_ZOOM_FACTOR_INT", 1);
-        paramd.a(d.c.HRd, localBundle);
-        AppMethodBeat.o(75637);
-      }
-      
-      public final void bBG()
-      {
-        AppMethodBeat.i(75638);
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_BOOLEAN", false);
-        localBundle.putBoolean("PARAM_PREPARE_CAMERA_ZOOM_SCROLL_BOOLEAN", false);
-        localBundle.putInt("PARAM_PREPARE_CAMERA_ZOOM_FACTOR_INT", 1);
-        paramd.a(d.c.HRd, localBundle);
-        AppMethodBeat.o(75638);
-      }
-      
-      public final void cYv()
-      {
-        AppMethodBeat.i(75636);
-        if (Util.ticksToNow(aa.c(this.HOB)) < 1000L)
-        {
-          AppMethodBeat.o(75636);
-          return;
-        }
-        aa.a(this.HOB, Util.currentTicks());
-        d.b.a(paramd, d.c.HRe);
-        AppMethodBeat.o(75636);
-      }
-    });
-    AppMethodBeat.o(75639);
+      paramaa.setEnable(bool);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/recordvideo/plugin/RecordFilterPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(280692);
+      return;
+    }
   }
   
-  public final void bbp() {}
-  
-  public final void c(RecordConfigProvider paramRecordConfigProvider)
+  public final void a(RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(218016);
-    p.k(paramRecordConfigProvider, "config");
-    this.uYA.setFocusColor(paramRecordConfigProvider.HKT.jwh);
-    AppMethodBeat.o(218016);
+    AppMethodBeat.i(280710);
+    v.a.a(this, paramRecordConfigProvider);
+    AppMethodBeat.o(280710);
+  }
+  
+  public final void bwk()
+  {
+    AppMethodBeat.i(280728);
+    s.u(this, "this");
+    AppMethodBeat.o(280728);
   }
   
   public final String name()
   {
-    AppMethodBeat.i(218022);
-    String str = getClass().getName();
-    AppMethodBeat.o(218022);
+    AppMethodBeat.i(280715);
+    String str = v.a.b(this);
+    AppMethodBeat.o(280715);
     return str;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(280722);
+    s.u(this, "this");
+    AppMethodBeat.o(280722);
+  }
   
   public final boolean onBackPress()
   {
+    AppMethodBeat.i(280735);
+    s.u(this, "this");
+    AppMethodBeat.o(280735);
     return false;
   }
   
-  public final void onDetach() {}
+  public final void onDetach()
+  {
+    AppMethodBeat.i(280745);
+    s.u(this, "this");
+    AppMethodBeat.o(280745);
+  }
   
-  public final void onPause() {}
+  public final void onPause()
+  {
+    AppMethodBeat.i(280751);
+    s.u(this, "this");
+    AppMethodBeat.o(280751);
+  }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(218035);
-    p.k(paramArrayOfString, "permissions");
-    p.k(paramArrayOfInt, "grantResults");
-    u.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(218035);
+    AppMethodBeat.i(280760);
+    v.a.a(this, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(280760);
   }
   
-  public final void onResume() {}
+  public final void onResume()
+  {
+    AppMethodBeat.i(280771);
+    s.u(this, "this");
+    AppMethodBeat.o(280771);
+  }
   
-  public final void release() {}
+  public final void release()
+  {
+    AppMethodBeat.i(280780);
+    s.u(this, "this");
+    AppMethodBeat.o(280780);
+  }
   
-  public final void reset() {}
+  public final void reset()
+  {
+    AppMethodBeat.i(280789);
+    s.u(this, "this");
+    AppMethodBeat.o(280789);
+  }
   
-  public final void setVisibility(int paramInt) {}
+  public final void setEnable(boolean paramBoolean)
+  {
+    AppMethodBeat.i(182852);
+    this.enable = paramBoolean;
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("PARAM_BEAUTIFY_ENABLE", paramBoolean);
+    this.GrC.a(a.c.NNW, localBundle);
+    AppMethodBeat.o(182852);
+  }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordFocusPlugin$Companion;", "", "()V", "FLIP_BLOCK_TIME", "", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(182851);
+    if (this.Gsz) {
+      this.cqj.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(182851);
+  }
 }
 
 

@@ -8,27 +8,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ag
   implements ah
 {
-  private final ViewOverlay asZ;
+  private final ViewOverlay chI;
   
   ag(View paramView)
   {
-    AppMethodBeat.i(193200);
-    this.asZ = paramView.getOverlay();
-    AppMethodBeat.o(193200);
+    AppMethodBeat.i(201540);
+    this.chI = paramView.getOverlay();
+    AppMethodBeat.o(201540);
   }
   
-  public final void u(Drawable paramDrawable)
+  public final void x(Drawable paramDrawable)
   {
-    AppMethodBeat.i(193204);
-    this.asZ.add(paramDrawable);
-    AppMethodBeat.o(193204);
+    AppMethodBeat.i(201551);
+    this.chI.add(paramDrawable);
+    AppMethodBeat.o(201551);
   }
   
-  public final void v(Drawable paramDrawable)
+  public final void y(Drawable paramDrawable)
   {
-    AppMethodBeat.i(193208);
-    this.asZ.remove(paramDrawable);
-    AppMethodBeat.o(193208);
+    AppMethodBeat.i(201563);
+    this.chI.remove(paramDrawable);
+    AppMethodBeat.o(201563);
   }
 }
 

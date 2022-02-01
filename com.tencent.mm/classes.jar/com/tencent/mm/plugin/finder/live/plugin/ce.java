@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import kotlin.l;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-@l(iBK={1, 1, 16})
-public final class ce {}
+public abstract interface ce
+  extends Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.plugin.ce
  * JD-Core Version:    0.7.0.1
  */

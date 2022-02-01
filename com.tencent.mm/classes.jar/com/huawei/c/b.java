@@ -20,7 +20,7 @@ public abstract interface b
       attachInterface(this, "com.huawei.securitymgr.IAuthenticationClient");
     }
     
-    public static b k(IBinder paramIBinder)
+    public static b l(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;

@@ -14,7 +14,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import androidx.appcompat.a.a;
 import androidx.appcompat.b.a.c;
-import androidx.core.g.aa;
+import androidx.core.g.ad;
 import androidx.core.graphics.drawable.a;
 import androidx.core.widget.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -23,65 +23,65 @@ import java.lang.reflect.Field;
 class p
   extends ListView
 {
-  private final Rect sg;
-  private int sh;
-  private int si;
-  private int sj;
-  private int sk;
-  private int sl;
-  private Field sm;
-  private a sn;
-  private boolean so;
-  private boolean sq;
-  private boolean sr;
-  private aa ss;
-  private f st;
-  b su;
+  private final Rect te;
+  private int tf;
+  private int tg;
+  private int th;
+  private int ti;
+  private int tj;
+  private Field tk;
+  private a tl;
+  private boolean tn;
+  private boolean tp;
+  private boolean tq;
+  private ad tr;
+  private f tt;
+  b tu;
   
   p(Context paramContext, boolean paramBoolean)
   {
     super(paramContext, null, a.a.dropDownListViewStyle);
-    AppMethodBeat.i(241255);
-    this.sg = new Rect();
-    this.sh = 0;
-    this.si = 0;
-    this.sj = 0;
-    this.sk = 0;
-    this.sq = paramBoolean;
+    AppMethodBeat.i(199971);
+    this.te = new Rect();
+    this.tf = 0;
+    this.tg = 0;
+    this.th = 0;
+    this.ti = 0;
+    this.tp = paramBoolean;
     setCacheColorHint(0);
     try
     {
-      this.sm = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
-      this.sm.setAccessible(true);
-      AppMethodBeat.o(241255);
+      this.tk = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
+      this.tk.setAccessible(true);
+      AppMethodBeat.o(199971);
       return;
     }
     catch (NoSuchFieldException paramContext)
     {
-      AppMethodBeat.o(241255);
+      AppMethodBeat.o(199971);
     }
   }
   
-  private void dH()
+  private void eG()
   {
-    AppMethodBeat.i(241280);
+    AppMethodBeat.i(199989);
     Drawable localDrawable = getSelector();
-    if ((localDrawable != null) && (this.sr) && (isPressed())) {
+    if ((localDrawable != null) && (this.tq) && (isPressed())) {
       localDrawable.setState(getDrawableState());
     }
-    AppMethodBeat.o(241280);
+    AppMethodBeat.o(199989);
   }
   
   private void setSelectorEnabled(boolean paramBoolean)
   {
-    if (this.sn != null) {
-      this.sn.mEnabled = paramBoolean;
+    if (this.tl != null) {
+      this.tl.mEnabled = paramBoolean;
     }
   }
   
   public boolean a(MotionEvent paramMotionEvent, int paramInt)
   {
-    AppMethodBeat.i(241278);
+    AppMethodBeat.i(200120);
     boolean bool1 = true;
     boolean bool2 = true;
     int i = 0;
@@ -94,32 +94,32 @@ class p
       bool1 = bool2;
       if ((!bool1) || (paramInt != 0))
       {
-        this.sr = false;
+        this.tq = false;
         setPressed(false);
         drawableStateChanged();
-        localView = getChildAt(this.sl - getFirstVisiblePosition());
+        localView = getChildAt(this.tj - getFirstVisiblePosition());
         if (localView != null) {
           localView.setPressed(false);
         }
-        if (this.ss != null)
+        if (this.tr != null)
         {
-          this.ss.cancel();
-          this.ss = null;
+          this.tr.cancel();
+          this.tr = null;
         }
       }
       if (bool1)
       {
-        if (this.st == null) {
-          this.st = new f(this);
+        if (this.tt == null) {
+          this.tt = new f(this);
         }
-        this.st.ad(true);
-        this.st.onTouch(this, paramMotionEvent);
+        this.tt.aM(true);
+        this.tt.onTouch(this, paramMotionEvent);
       }
       break;
     }
     for (;;)
     {
-      AppMethodBeat.o(241278);
+      AppMethodBeat.o(200120);
       return bool1;
       bool1 = false;
       paramInt = i;
@@ -143,7 +143,7 @@ class p
       localView = getChildAt(k - getFirstVisiblePosition());
       float f1 = paramInt;
       float f2 = m;
-      this.sr = true;
+      this.tq = true;
       if (Build.VERSION.SDK_INT >= 21) {
         drawableHotspotChanged(f1, f2);
       }
@@ -151,14 +151,14 @@ class p
         setPressed(true);
       }
       layoutChildren();
-      if (this.sl != -1)
+      if (this.tj != -1)
       {
-        localObject1 = getChildAt(this.sl - getFirstVisiblePosition());
+        localObject1 = getChildAt(this.tj - getFirstVisiblePosition());
         if ((localObject1 != null) && (localObject1 != localView) && (((View)localObject1).isPressed())) {
           ((View)localObject1).setPressed(false);
         }
       }
-      this.sl = k;
+      this.tj = k;
       float f3 = localView.getLeft();
       float f4 = localView.getTop();
       if (Build.VERSION.SDK_INT >= 21) {
@@ -176,19 +176,19 @@ class p
         if (paramInt != 0) {
           ((Drawable)localObject1).setVisible(false, false);
         }
-        localObject2 = this.sg;
+        localObject2 = this.te;
         ((Rect)localObject2).set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-        ((Rect)localObject2).left -= this.sh;
-        ((Rect)localObject2).top -= this.si;
-        ((Rect)localObject2).right += this.sj;
-        ((Rect)localObject2).bottom += this.sk;
+        ((Rect)localObject2).left -= this.tf;
+        ((Rect)localObject2).top -= this.tg;
+        ((Rect)localObject2).right += this.th;
+        ((Rect)localObject2).bottom += this.ti;
       }
       try
       {
-        bool1 = this.sm.getBoolean(this);
+        bool1 = this.tk.getBoolean(this);
         if (localView.isEnabled() != bool1)
         {
-          localObject2 = this.sm;
+          localObject2 = this.tk;
           if (bool1) {
             break label717;
           }
@@ -207,7 +207,7 @@ class p
       }
       if (paramInt != 0)
       {
-        localObject2 = this.sg;
+        localObject2 = this.te;
         f3 = ((Rect)localObject2).exactCenterX();
         f4 = ((Rect)localObject2).exactCenterY();
         if (getVisibility() != 0) {
@@ -241,15 +241,15 @@ class p
         bool1 = false;
         break label564;
       }
-      if (this.st != null) {
-        this.st.ad(false);
+      if (this.tt != null) {
+        this.tt.aM(false);
       }
     }
   }
   
   public int d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(241269);
+    AppMethodBeat.i(200074);
     paramInt2 = getListPaddingTop();
     paramInt3 = getListPaddingBottom();
     getListPaddingLeft();
@@ -259,7 +259,7 @@ class p
     ListAdapter localListAdapter = getAdapter();
     if (localListAdapter == null)
     {
-      AppMethodBeat.o(241269);
+      AppMethodBeat.o(200074);
       return paramInt2 + paramInt3;
     }
     paramInt3 += paramInt2;
@@ -314,14 +314,14 @@ class p
       {
         if ((paramInt5 >= 0) && (j > paramInt5) && (paramInt2 > 0) && (paramInt3 != paramInt4))
         {
-          AppMethodBeat.o(241269);
+          AppMethodBeat.o(200074);
           return paramInt2;
           i = 0;
           break;
           m = View.MeasureSpec.makeMeasureSpec(0, 0);
           break label193;
         }
-        AppMethodBeat.o(241269);
+        AppMethodBeat.o(200074);
         return paramInt4;
       }
       if ((paramInt5 >= 0) && (j >= paramInt5)) {
@@ -333,7 +333,7 @@ class p
         m = k;
         localObject = localView;
         break;
-        AppMethodBeat.o(241269);
+        AppMethodBeat.o(200074);
         return paramInt3;
       }
     }
@@ -341,105 +341,105 @@ class p
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241265);
-    if (!this.sg.isEmpty())
+    AppMethodBeat.i(200049);
+    if (!this.te.isEmpty())
     {
       Drawable localDrawable = getSelector();
       if (localDrawable != null)
       {
-        localDrawable.setBounds(this.sg);
+        localDrawable.setBounds(this.te);
         localDrawable.draw(paramCanvas);
       }
     }
     super.dispatchDraw(paramCanvas);
-    AppMethodBeat.o(241265);
+    AppMethodBeat.o(200049);
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(241263);
-    if (this.su != null)
+    AppMethodBeat.i(200039);
+    if (this.tu != null)
     {
-      AppMethodBeat.o(241263);
+      AppMethodBeat.o(200039);
       return;
     }
     super.drawableStateChanged();
     setSelectorEnabled(true);
-    dH();
-    AppMethodBeat.o(241263);
+    eG();
+    AppMethodBeat.o(200039);
   }
   
   public boolean hasFocus()
   {
-    AppMethodBeat.i(241259);
-    if ((this.sq) || (super.hasFocus()))
+    AppMethodBeat.i(200023);
+    if ((this.tp) || (super.hasFocus()))
     {
-      AppMethodBeat.o(241259);
+      AppMethodBeat.o(200023);
       return true;
     }
-    AppMethodBeat.o(241259);
+    AppMethodBeat.o(200023);
     return false;
   }
   
   public boolean hasWindowFocus()
   {
-    AppMethodBeat.i(241257);
-    if ((this.sq) || (super.hasWindowFocus()))
+    AppMethodBeat.i(200009);
+    if ((this.tp) || (super.hasWindowFocus()))
     {
-      AppMethodBeat.o(241257);
+      AppMethodBeat.o(200009);
       return true;
     }
-    AppMethodBeat.o(241257);
+    AppMethodBeat.o(200009);
     return false;
   }
   
   public boolean isFocused()
   {
-    AppMethodBeat.i(241258);
-    if ((this.sq) || (super.isFocused()))
+    AppMethodBeat.i(200015);
+    if ((this.tp) || (super.isFocused()))
     {
-      AppMethodBeat.o(241258);
+      AppMethodBeat.o(200015);
       return true;
     }
-    AppMethodBeat.o(241258);
+    AppMethodBeat.o(200015);
     return false;
   }
   
   public boolean isInTouchMode()
   {
-    AppMethodBeat.i(241256);
-    if (((this.sq) && (this.so)) || (super.isInTouchMode()))
+    AppMethodBeat.i(199999);
+    if (((this.tp) && (this.tn)) || (super.isInTouchMode()))
     {
-      AppMethodBeat.o(241256);
+      AppMethodBeat.o(199999);
       return true;
     }
-    AppMethodBeat.o(241256);
+    AppMethodBeat.o(199999);
     return false;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(241274);
-    this.su = null;
+    AppMethodBeat.i(200102);
+    this.tu = null;
     super.onDetachedFromWindow();
-    AppMethodBeat.o(241274);
+    AppMethodBeat.o(200102);
   }
   
   public boolean onHoverEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241273);
+    AppMethodBeat.i(200092);
     if (Build.VERSION.SDK_INT < 26)
     {
       bool = super.onHoverEvent(paramMotionEvent);
-      AppMethodBeat.o(241273);
+      AppMethodBeat.o(200092);
       return bool;
     }
     int i = paramMotionEvent.getActionMasked();
-    if ((i == 10) && (this.su == null))
+    if ((i == 10) && (this.tu == null))
     {
-      this.su = new b();
-      b localb = this.su;
-      localb.sv.post(localb);
+      this.tu = new b();
+      b localb = this.tu;
+      localb.tv.post(localb);
     }
     boolean bool = super.onHoverEvent(paramMotionEvent);
     if ((i == 9) || (i == 7))
@@ -451,12 +451,12 @@ class p
         if (paramMotionEvent.isEnabled()) {
           setSelectionFromTop(i, paramMotionEvent.getTop() - getTop());
         }
-        dH();
+        eG();
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(241273);
+      AppMethodBeat.o(200092);
       return bool;
       setSelection(-1);
     }
@@ -464,47 +464,47 @@ class p
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(241267);
+    AppMethodBeat.i(200060);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      if (this.su != null)
+      if (this.tu != null)
       {
-        b localb = this.su;
-        localb.sv.su = null;
-        localb.sv.removeCallbacks(localb);
+        b localb = this.tu;
+        localb.tv.tu = null;
+        localb.tv.removeCallbacks(localb);
       }
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(241267);
+      AppMethodBeat.o(200060);
       return bool;
-      this.sl = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      this.tj = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
   }
   
   void setListSelectionHidden(boolean paramBoolean)
   {
-    this.so = paramBoolean;
+    this.tn = paramBoolean;
   }
   
   public void setSelector(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241261);
+    AppMethodBeat.i(200031);
     if (paramDrawable != null) {}
     for (Object localObject = new a(paramDrawable);; localObject = null)
     {
-      this.sn = ((a)localObject);
-      super.setSelector(this.sn);
+      this.tl = ((a)localObject);
+      super.setSelector(this.tl);
       localObject = new Rect();
       if (paramDrawable != null) {
         paramDrawable.getPadding((Rect)localObject);
       }
-      this.sh = ((Rect)localObject).left;
-      this.si = ((Rect)localObject).top;
-      this.sj = ((Rect)localObject).right;
-      this.sk = ((Rect)localObject).bottom;
-      AppMethodBeat.o(241261);
+      this.tf = ((Rect)localObject).left;
+      this.tg = ((Rect)localObject).top;
+      this.th = ((Rect)localObject).right;
+      this.ti = ((Rect)localObject).bottom;
+      AppMethodBeat.o(200031);
       return;
     }
   }
@@ -521,54 +521,54 @@ class p
     
     public final void draw(Canvas paramCanvas)
     {
-      AppMethodBeat.i(241248);
+      AppMethodBeat.i(199416);
       if (this.mEnabled) {
         super.draw(paramCanvas);
       }
-      AppMethodBeat.o(241248);
+      AppMethodBeat.o(199416);
     }
     
     public final void setHotspot(float paramFloat1, float paramFloat2)
     {
-      AppMethodBeat.i(241250);
+      AppMethodBeat.i(199423);
       if (this.mEnabled) {
         super.setHotspot(paramFloat1, paramFloat2);
       }
-      AppMethodBeat.o(241250);
+      AppMethodBeat.o(199423);
     }
     
     public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(241251);
+      AppMethodBeat.i(199433);
       if (this.mEnabled) {
         super.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
       }
-      AppMethodBeat.o(241251);
+      AppMethodBeat.o(199433);
     }
     
     public final boolean setState(int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(241246);
+      AppMethodBeat.i(199408);
       if (this.mEnabled)
       {
         boolean bool = super.setState(paramArrayOfInt);
-        AppMethodBeat.o(241246);
+        AppMethodBeat.o(199408);
         return bool;
       }
-      AppMethodBeat.o(241246);
+      AppMethodBeat.o(199408);
       return false;
     }
     
     public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(241252);
+      AppMethodBeat.i(199441);
       if (this.mEnabled)
       {
         paramBoolean1 = super.setVisible(paramBoolean1, paramBoolean2);
-        AppMethodBeat.o(241252);
+        AppMethodBeat.o(199441);
         return paramBoolean1;
       }
-      AppMethodBeat.o(241252);
+      AppMethodBeat.o(199441);
       return false;
     }
   }
@@ -580,16 +580,16 @@ class p
     
     public final void run()
     {
-      AppMethodBeat.i(241253);
-      p.this.su = null;
+      AppMethodBeat.i(199404);
+      p.this.tu = null;
       p.this.drawableStateChanged();
-      AppMethodBeat.o(241253);
+      AppMethodBeat.o(199404);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.p
  * JD-Core Version:    0.7.0.1
  */

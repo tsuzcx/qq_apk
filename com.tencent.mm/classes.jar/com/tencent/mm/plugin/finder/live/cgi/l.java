@@ -1,56 +1,58 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.cgi.bi;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.bct;
-import com.tencent.mm.protocal.protobuf.bcu;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.bhi;
+import com.tencent.mm.protocal.protobuf.bhj;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveStream;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamResponse;", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "tabType", "", "lng", "", "lat", "callback", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveStream$CallBack;", "(Lcom/tencent/mm/protobuf/ByteString;IFFLcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveStream$CallBack;)V", "TAG", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetContact;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetContactResponse;", "liveId", "", "objectId", "finderUserName", "", "scene", "", "callback", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetContact$CallBack;", "(JJLjava/lang/String;ILcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetContact$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGetContactRequest;", "resp", "getResp", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class l
-  extends c<bcu>
+  extends c<bhj>
 {
+  private bhi Cvs;
+  private bhj Cvt;
+  private a Cvu;
   private final String TAG;
-  private a xYf;
-  private bct xYg;
   
-  public l(b paramb, int paramInt, float paramFloat1, float paramFloat2, a parama)
+  public l(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(285684);
-    this.TAG = "Finder.CgiFinderLiveStream";
-    this.xYf = parama;
-    this.xYg = new bct();
-    this.xYg.lastBuffer = paramb;
-    this.xYg.SNY = paramInt;
-    this.xYg.longitude = paramFloat1;
-    this.xYg.latitude = paramFloat2;
-    paramb = new d.a();
-    paramb.c((a)this.xYg);
-    parama = new bcu();
-    parama.setBaseResponse(new jh());
-    parama.getBaseResponse().Tef = new eaf();
-    paramb.d((a)parama);
-    paramb.TW("/cgi-bin/micromsg-bin/finderlivestream");
-    paramb.vD(4151);
-    c(paramb.bgN());
-    Log.i(this.TAG, "CgiFinderLiveStream init " + this.xYg.SNY + ',' + this.xYg.lastBuffer);
-    AppMethodBeat.o(285684);
+    AppMethodBeat.i(351171);
+    this.TAG = "Finder.CgiFinderLiveGetContact";
+    this.Cvs = new bhi();
+    this.Cvu = null;
+    this.Cvs.liveId = paramLong1;
+    this.Cvs.hKN = paramLong2;
+    this.Cvs.username = paramString;
+    paramString = this.Cvs;
+    Object localObject = bi.ABn;
+    paramString.ZEc = bi.dVu();
+    this.Cvs.scene = 0;
+    paramString = new c.a();
+    paramString.otE = ((a)this.Cvs);
+    localObject = new bhj();
+    ((bhj)localObject).setBaseResponse(new kd());
+    ((bhj)localObject).getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)localObject);
+    paramString.uri = "/cgi-bin/micromsg-bin/finderlivegetcontact";
+    paramString.funcId = 6678;
+    c(paramString.bEF());
+    Log.i(this.TAG, "init " + this.Cvs.liveId + ',' + this.Cvs.username + ',' + this.Cvs.scene);
+    AppMethodBeat.o(351171);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveStream$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamResponse;", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, bcu parambcu);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveGetContact$CallBack;", "", "onFinish", "", "success", "", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.l
  * JD-Core Version:    0.7.0.1
  */

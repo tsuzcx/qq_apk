@@ -5,14 +5,18 @@ import com.tencent.map.lib.callbacks.TileOverlayCallback;
 import com.tencent.map.lib.models.AggregationOverlayInfo;
 import com.tencent.map.lib.models.AnnocationText;
 import com.tencent.map.lib.models.AnnocationTextResult;
+import com.tencent.map.lib.models.ArcLineOverlayInfo;
 import com.tencent.map.lib.models.CircleInfo;
 import com.tencent.map.lib.models.CityTrafficInfo;
 import com.tencent.map.lib.models.GeoPoint;
 import com.tencent.map.lib.models.GroundOverlayInfo;
+import com.tencent.map.lib.models.HeatmapInfo;
 import com.tencent.map.lib.models.IntersectionOverlayInfo;
 import com.tencent.map.lib.models.MarkerInfo;
 import com.tencent.map.lib.models.MaskLayer;
 import com.tencent.map.lib.models.PolygonInfo;
+import com.tencent.map.lib.models.ScatterPlotInfo;
+import com.tencent.map.lib.models.TrailOverlayInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions.Text;
@@ -23,7 +27,6 @@ import java.util.ArrayList;
 public class JNIInterface
   implements JNIInterfaceCallback
 {
-  public static final String LIB_NAME = "txmapengine";
   private JNIInterfaceCallback mCallback;
   
   public JNIInterface(JNIInterfaceCallback paramJNIInterfaceCallback)
@@ -71,9 +74,13 @@ public class JNIInterface
   
   public native long nativeAddAggregationOverlay(long paramLong, AggregationOverlayInfo paramAggregationOverlayInfo);
   
+  public native long nativeAddArcLineOverlay(long paramLong, ArcLineOverlayInfo paramArcLineOverlayInfo);
+  
   public native int nativeAddCircle(long paramLong, CircleInfo paramCircleInfo);
   
   public native long nativeAddGroundOverlay(long paramLong, GroundOverlayInfo paramGroundOverlayInfo);
+  
+  public native long nativeAddHeatmapOverlay(long paramLong, HeatmapInfo paramHeatmapInfo);
   
   public native long nativeAddIntersectionOverlay(long paramLong, IntersectionOverlayInfo paramIntersectionOverlayInfo);
   
@@ -87,7 +94,11 @@ public class JNIInterface
   
   public native void nativeAddRouteNameSegments(long paramLong, byte[][] paramArrayOfByte, int paramInt1, GeoPoint[] paramArrayOfGeoPoint, int paramInt2);
   
+  public native long nativeAddScatterPlotOverlay(long paramLong, ScatterPlotInfo paramScatterPlotInfo);
+  
   public native int nativeAddTileOverlay(long paramLong, TileOverlayCallback paramTileOverlayCallback, boolean paramBoolean);
+  
+  public native long nativeAddTrailOverlay(long paramLong, TrailOverlayInfo paramTrailOverlayInfo);
   
   public native void nativeBringElementAbove(long paramLong, int paramInt1, int paramInt2);
   
@@ -142,6 +153,8 @@ public class JNIInterface
   public native String nativeGetActiveIndoorBuildingGUID(long paramLong);
   
   public native VectorHeatAggregationUnit nativeGetAggregationUnit(long paramLong1, long paramLong2, LatLng paramLatLng);
+  
+  public native boolean nativeGetAndResetDirty(long paramLong);
   
   public native String nativeGetBlockRouteInfo(long paramLong, int paramInt1, int paramInt2);
   
@@ -310,6 +323,8 @@ public class JNIInterface
   
   public native int nativeSetLocationMarkerImage(long paramLong, String paramString, float paramFloat1, float paramFloat2);
   
+  public native void nativeSetMapFontSize(long paramLong, int paramInt);
+  
   public native void nativeSetMapParam(long paramLong, byte[] paramArrayOfByte);
   
   public native void nativeSetMapStyle(long paramLong, int paramInt, boolean paramBoolean);
@@ -368,11 +383,15 @@ public class JNIInterface
   
   public native void nativeUpdateAggregationOverlay(long paramLong1, long paramLong2, AggregationOverlayInfo paramAggregationOverlayInfo);
   
+  public native void nativeUpdateArcLineOverlay(long paramLong1, long paramLong2, ArcLineOverlayInfo paramArcLineOverlayInfo);
+  
   public native void nativeUpdateCircle(long paramLong, int paramInt, CircleInfo paramCircleInfo);
   
   public native void nativeUpdateFrame(long paramLong, double paramDouble);
   
   public native void nativeUpdateGroundOverlay(long paramLong1, long paramLong2, GroundOverlayInfo paramGroundOverlayInfo);
+  
+  public native void nativeUpdateHeatmapOverlay(long paramLong1, long paramLong2, HeatmapInfo paramHeatmapInfo);
   
   public native void nativeUpdateIntersectionOverlay(long paramLong, IntersectionOverlayInfo paramIntersectionOverlayInfo);
   
@@ -386,6 +405,10 @@ public class JNIInterface
   
   public native void nativeUpdatePolygon(long paramLong, int paramInt1, int paramInt2, PolygonInfo paramPolygonInfo);
   
+  public native void nativeUpdateScatterPlotOverlay(long paramLong1, long paramLong2, ScatterPlotInfo paramScatterPlotInfo);
+  
+  public native void nativeUpdateTrailOverlay(long paramLong1, long paramLong2, TrailOverlayInfo paramTrailOverlayInfo);
+  
   public native void nativeWriteMapDataBlock(long paramLong, String paramString, byte[] paramArrayOfByte);
   
   public native void nativeZoomIn(long paramLong, float paramFloat1, float paramFloat2);
@@ -398,14 +421,14 @@ public class JNIInterface
   
   public boolean onJniCallbackRenderMapFrame(int paramInt)
   {
-    AppMethodBeat.i(235681);
+    AppMethodBeat.i(210918);
     if (this.mCallback != null)
     {
       boolean bool = this.mCallback.onJniCallbackRenderMapFrame(paramInt);
-      AppMethodBeat.o(235681);
+      AppMethodBeat.o(210918);
       return bool;
     }
-    AppMethodBeat.o(235681);
+    AppMethodBeat.o(210918);
     return false;
   }
   
@@ -444,7 +467,7 @@ public class JNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.lib.JNIInterface
  * JD-Core Version:    0.7.0.1
  */

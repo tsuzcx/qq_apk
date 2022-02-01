@@ -1,15 +1,12 @@
 package com.tencent.mm.emoji.view;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "", "onStatus", "", "status", "", "plugin-emojisdk_release"})
-public abstract interface CoverEmojiStatusView$b
-{
-  public abstract void rH(int paramInt);
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/view/CoverEmojiStatusView$StatusListener;", "", "onStatus", "", "status", "", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface CoverEmojiStatusView$b {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.view.CoverEmojiStatusView.b
  * JD-Core Version:    0.7.0.1
  */

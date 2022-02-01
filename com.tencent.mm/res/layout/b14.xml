@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="@dimen/cn" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/eie" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginBottom="@dimen/bt" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/c5" android:textColor="@color/ua" android:id="@id/eih" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:singleLine="true" android:layout_below="@id/eie" android:layout_centerHorizontal="true" />
+<LinearLayout android:orientation="vertical" android:id="@id/iwz" android:background="@drawable/a_0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:paddingStart="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/kpd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1" android:paddingEnd="@dimen/cp">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="10.0dip" android:layout_toLeftOf="@id/k14">
+            <TextView android:id="@id/kpx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/m4" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="left" android:id="@id/c2g" android:paddingRight="@dimen/m2" android:layout_marginTop="@dimen/bv" style="@style/lk" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k14" android:focusable="false" android:visibility="invisible" android:clickable="false" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/Brand" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

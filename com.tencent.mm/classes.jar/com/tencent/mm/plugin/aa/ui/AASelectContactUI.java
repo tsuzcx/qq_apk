@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,32 +8,33 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.aa.model.i;
+import com.tencent.mm.plugin.aa.model.j;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.q;
 import com.tencent.mm.ui.contact.r;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -46,47 +46,28 @@ public class AASelectContactUI
   extends MMBaseSelectContactUI
 {
   private String chatroomName;
-  private ArrayList<String> mNf;
-  private ArrayList<String> mNg;
-  private HashSet<String> mNh;
-  private HashSet<String> mNi;
-  private long mNj;
-  private CheckBox mNk;
-  private View mNl;
-  private List<String> mNm;
-  private List<String> mNn;
+  private ArrayList<String> pJN;
+  private ArrayList<String> pJO;
+  private HashSet<String> pJP;
+  private HashSet<String> pJQ;
+  private long pJR;
+  private CheckBox pJS;
+  private View pJT;
+  private List<String> pJU;
+  private List<String> pJV;
   private int scene;
   private int selectType;
   private String title;
   
-  private void aP(List<String> paramList)
-  {
-    AppMethodBeat.i(218756);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        String str = (String)paramList.next();
-        if (as.bvK(str)) {
-          this.mNn.add(str);
-        } else {
-          this.mNm.add(str);
-        }
-      }
-    }
-    AppMethodBeat.o(218756);
-  }
-  
-  private void atk()
+  private void aNr()
   {
     AppMethodBeat.i(63544);
-    if (this.mNi.size() > 0)
+    if (this.pJQ.size() > 0)
     {
       enableOptionMenu(1, true);
-      updateOptionMenuText(1, getString(a.i.aa_confirm_num, new Object[] { Integer.valueOf(this.mNi.size()) }));
+      updateOptionMenuText(1, getString(a.i.aa_confirm_num, new Object[] { Integer.valueOf(this.pJQ.size()) }));
     }
-    while ((this.mNi.size() == 1) && (this.mNi.contains(z.bcZ())))
+    while ((this.pJQ.size() == 1) && (this.pJQ.contains(z.bAM())))
     {
       enableOptionMenu(1, false);
       AppMethodBeat.o(63544);
@@ -94,7 +75,7 @@ public class AASelectContactUI
       enableOptionMenu(1, false);
       updateOptionMenuText(1, getString(a.i.app_ok));
     }
-    if (this.mNi.size() == 0)
+    if (this.pJQ.size() == 0)
     {
       enableOptionMenu(1, false);
       AppMethodBeat.o(63544);
@@ -104,93 +85,101 @@ public class AASelectContactUI
     AppMethodBeat.o(63544);
   }
   
-  private boolean bwM()
+  private boolean bVC()
   {
     return this.scene == 6;
   }
   
-  public final void N(View paramView, int paramInt)
+  private void cu(List<String> paramList)
   {
-    AppMethodBeat.i(218748);
-    paramView = hUP();
-    Object localObject = paramView.awM(paramInt - getContentLV().getHeaderViewsCount());
-    if (localObject == null)
+    AppMethodBeat.i(268459);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      AppMethodBeat.o(218748);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (au.bwO(str)) {
+          this.pJV.add(str);
+        } else {
+          this.pJU.add(str);
+        }
+      }
+    }
+    AppMethodBeat.o(268459);
+  }
+  
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(268530);
+    paramAdapterView = jyE();
+    paramView = paramAdapterView.aDt(paramInt - getContentLV().getHeaderViewsCount());
+    if (paramView == null)
+    {
+      AppMethodBeat.o(268530);
       return;
     }
-    if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
+    if (paramView.contact == null)
     {
-      AppMethodBeat.o(218748);
+      AppMethodBeat.o(268530);
       return;
     }
-    Log.i("MicroMsg.AASelectContactUI", "ClickUser=%s", new Object[] { ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username });
-    localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
-    if (as.bvK((String)localObject))
+    Log.i("MicroMsg.AASelectContactUI", "ClickUser=%s", new Object[] { paramView.contact.field_username });
+    paramView = paramView.contact.field_username;
+    if (au.bwO(paramView))
     {
-      AppMethodBeat.o(218748);
+      AppMethodBeat.o(268530);
       return;
     }
-    if (((String)localObject).equals(z.bcZ()))
+    if (paramView.equals(z.bAM()))
     {
-      com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(4) });
-      hUZ();
-      if (!this.mNi.contains(localObject)) {
+      h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(4) });
+      iKA();
+      if (!this.pJQ.contains(paramView)) {
         break label228;
       }
-      this.mNi.remove(localObject);
+      this.pJQ.remove(paramView);
       label150:
-      if (!bwM()) {
+      if (!bVC()) {
         break label240;
       }
-      paramInt = this.mNg.size();
+      paramInt = this.pJO.size();
       label165:
-      if (this.mNi.size() != paramInt) {
+      if (this.pJQ.size() != paramInt) {
         break label279;
       }
-      this.mNk.setChecked(true);
+      this.pJS.setChecked(true);
     }
     for (;;)
     {
-      paramView.notifyDataSetChanged();
-      atk();
-      AppMethodBeat.o(218748);
+      paramAdapterView.notifyDataSetChanged();
+      aNr();
+      AppMethodBeat.o(268530);
       return;
-      com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(5) });
+      h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(5) });
       break;
       label228:
-      this.mNi.add(localObject);
+      this.pJQ.add(paramView);
       break label150;
       label240:
-      if (!ab.PR(this.chatroomName))
+      if (!ab.IG(this.chatroomName))
       {
-        paramInt = i.aag(this.chatroomName).size();
+        paramInt = j.SA(this.chatroomName).size();
         break label165;
       }
-      paramInt = this.mNm.size();
+      paramInt = this.pJU.size();
       break label165;
       label279:
-      this.mNk.setChecked(false);
+      this.pJS.setChecked(false);
     }
-  }
-  
-  public final void V(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(63545);
-    if (paramInt == 1)
-    {
-      this.mNi.remove(paramString);
-      hUP().notifyDataSetChanged();
-    }
-    AppMethodBeat.o(63545);
   }
   
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(63542);
-    if ((parama.XsX) && (parama.contact != null))
+    if ((parama.afey) && (parama.contact != null))
     {
-      boolean bool = this.mNi.contains(parama.contact.field_username);
+      boolean bool = this.pJQ.contains(parama.contact.field_username);
       AppMethodBeat.o(63542);
       return bool;
     }
@@ -198,78 +187,74 @@ public class AASelectContactUI
     return false;
   }
   
-  public final void ata()
+  public final void aNi()
   {
     AppMethodBeat.i(63536);
-    super.ata();
+    super.aNi();
     this.scene = getIntent().getIntExtra("enter_scene", 1);
-    this.mNg = getIntent().getStringArrayListExtra("third_party_usernamelist");
+    this.pJO = getIntent().getStringArrayListExtra("third_party_usernamelist");
     this.title = getIntent().getStringExtra("titile");
-    this.mNj = getIntent().getLongExtra("max_select_num", 20L);
+    this.pJR = getIntent().getLongExtra("max_select_num", 20L);
     this.selectType = getIntent().getIntExtra("select_type", 1);
     this.chatroomName = getIntent().getStringExtra("chatroomName");
-    if (!ab.Lj(this.chatroomName)) {
+    if (!au.bwE(this.chatroomName)) {
       Log.i("MicroMsg.AASelectContactUI", "is single chat");
     }
-    this.mNi = new HashSet();
-    this.mNh = new HashSet();
-    this.mNf = new ArrayList();
-    this.mNn = new ArrayList();
-    this.mNm = new ArrayList();
-    if (ab.PR(this.chatroomName)) {
-      aP(i.aag(this.chatroomName));
+    this.pJQ = new HashSet();
+    this.pJP = new HashSet();
+    this.pJN = new ArrayList();
+    this.pJV = new ArrayList();
+    this.pJU = new ArrayList();
+    if (ab.IG(this.chatroomName)) {
+      cu(j.SA(this.chatroomName));
     }
     String str = getIntent().getStringExtra("always_select_contact");
     if (!Util.isNullOrNil(str)) {
-      this.mNh.addAll(Arrays.asList(str.split(",")));
+      this.pJP.addAll(Arrays.asList(str.split(",")));
     }
     str = getIntent().getStringExtra("already_select_contact");
     if (!Util.isNullOrNil(str))
     {
-      this.mNi.addAll(Util.stringsToList(str.split(",")));
-      atk();
+      this.pJQ.addAll(Util.stringsToList(str.split(",")));
+      aNr();
     }
-    this.mNf.addAll(this.mNi);
-    this.mNk = ((CheckBox)findViewById(a.f.toggle_select_all));
-    this.mNl = findViewById(a.f.toggle_select_all_click_area);
-    this.mNl.setOnClickListener(new View.OnClickListener()
+    this.pJN.addAll(this.pJQ);
+    this.pJS = ((CheckBox)findViewById(a.f.toggle_select_all));
+    this.pJT = findViewById(a.f.toggle_select_all_click_area);
+    this.pJT.setOnClickListener(new com.tencent.mm.wallet_core.ui.k()
     {
-      public final void onClick(final View paramAnonymousView)
+      public final void dr(final View paramAnonymousView)
       {
-        AppMethodBeat.i(63530);
-        Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/aa/ui/AASelectContactUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        AppMethodBeat.i(268581);
         if (AASelectContactUI.a(AASelectContactUI.this).isChecked()) {
           if (AASelectContactUI.b(AASelectContactUI.this) != null)
           {
             AASelectContactUI.b(AASelectContactUI.this).clear();
             AASelectContactUI.a(AASelectContactUI.this).setChecked(false);
-            AASelectContactUI.this.hUP().notifyDataSetChanged();
+            AASelectContactUI.this.jyE().notifyDataSetChanged();
           }
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(6) });
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/AASelectContactUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(63530);
+          h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(6) });
+          AppMethodBeat.o(268581);
           return;
           AASelectContactUI.a(AASelectContactUI.this, new HashSet());
           break;
           if (AASelectContactUI.c(AASelectContactUI.this))
           {
             paramAnonymousView = new ArrayList();
-            localObject = AASelectContactUI.d(AASelectContactUI.this).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              paramAnonymousView.add((String)((Iterator)localObject).next());
+            Iterator localIterator = AASelectContactUI.d(AASelectContactUI.this).iterator();
+            while (localIterator.hasNext()) {
+              paramAnonymousView.add((String)localIterator.next());
             }
           }
           for (;;)
           {
             if (paramAnonymousView.size() <= AASelectContactUI.g(AASelectContactUI.this)) {
-              break label325;
+              break label284;
             }
-            com.tencent.mm.ui.base.h.a(AASelectContactUI.this.getContext(), AASelectContactUI.this.getString(a.i.aa_select_contact_exceed_alert, new Object[] { Long.valueOf(AASelectContactUI.g(AASelectContactUI.this)) }), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            com.tencent.mm.ui.base.k.a(AASelectContactUI.this.getContext(), AASelectContactUI.this.getString(a.i.aa_select_contact_exceed_alert, new Object[] { Long.valueOf(AASelectContactUI.g(AASelectContactUI.this)) }), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -282,29 +267,29 @@ public class AASelectContactUI
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
             });
             break;
-            if (!ab.PR(AASelectContactUI.e(AASelectContactUI.this))) {
-              paramAnonymousView = i.aag(AASelectContactUI.e(AASelectContactUI.this));
+            if (!ab.IG(AASelectContactUI.e(AASelectContactUI.this))) {
+              paramAnonymousView = j.SA(AASelectContactUI.e(AASelectContactUI.this));
             } else {
               paramAnonymousView = AASelectContactUI.f(AASelectContactUI.this);
             }
           }
-          label325:
+          label284:
           AASelectContactUI.a(AASelectContactUI.this, paramAnonymousView);
         }
       }
     });
     int i;
-    if (bwM())
+    if (bVC())
     {
-      i = this.mNg.size();
-      if (this.mNi.size() != i) {
+      i = this.pJO.size();
+      if (this.pJQ.size() != i) {
         break label416;
       }
-      this.mNk.setChecked(true);
+      this.pJS.setChecked(true);
     }
     for (;;)
     {
-      this.mNk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      this.pJS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
         public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
         {
@@ -315,24 +300,35 @@ public class AASelectContactUI
       });
       AppMethodBeat.o(63536);
       return;
-      if (!ab.PR(this.chatroomName))
+      if (!ab.IG(this.chatroomName))
       {
-        i = i.aag(this.chatroomName).size();
+        i = j.SA(this.chatroomName).size();
         break;
       }
-      i = this.mNm.size();
+      i = this.pJU.size();
       break;
       label416:
-      this.mNk.setChecked(false);
+      this.pJS.setChecked(false);
     }
+  }
+  
+  public final void ad(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(63545);
+    if (paramInt == 1)
+    {
+      this.pJQ.remove(paramString);
+      jyE().notifyDataSetChanged();
+    }
+    AppMethodBeat.o(63545);
   }
   
   public final boolean b(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(63543);
-    if ((parama.XsX) && (parama.contact != null))
+    if ((parama.afey) && (parama.contact != null))
     {
-      boolean bool = this.mNh.contains(parama.contact.field_username);
+      boolean bool = this.pJP.contains(parama.contact.field_username);
       AppMethodBeat.o(63543);
       return bool;
     }
@@ -340,27 +336,12 @@ public class AASelectContactUI
     return false;
   }
   
-  public final boolean bwH()
-  {
-    return false;
-  }
-  
-  public final boolean bwI()
-  {
-    return false;
-  }
-  
-  public final String bwJ()
-  {
-    return this.title;
-  }
-  
-  public final r bwK()
+  public final r bVA()
   {
     AppMethodBeat.i(63539);
-    if (bwM())
+    if (bVC())
     {
-      localObject = new d(this, this.mNg);
+      localObject = new d(this, this.pJO);
       AppMethodBeat.o(63539);
       return localObject;
     }
@@ -369,18 +350,33 @@ public class AASelectContactUI
     return localObject;
   }
   
-  public final p bwL()
+  public final p bVB()
   {
     AppMethodBeat.i(63540);
-    if (bwM())
+    if (bVC())
     {
-      localObject = new f(this, this.mNg);
+      localObject = new f(this, this.pJO);
       AppMethodBeat.o(63540);
       return localObject;
     }
     Object localObject = new g(this, this.chatroomName);
     AppMethodBeat.o(63540);
     return localObject;
+  }
+  
+  public final boolean bVx()
+  {
+    return false;
+  }
+  
+  public final boolean bVy()
+  {
+    return false;
+  }
+  
+  public final String bVz()
+  {
+    return this.title;
   }
   
   public int getForceOrientation()
@@ -404,15 +400,15 @@ public class AASelectContactUI
         AppMethodBeat.i(63532);
         if (AASelectContactUI.b(AASelectContactUI.this).size() > AASelectContactUI.g(AASelectContactUI.this))
         {
-          com.tencent.mm.ui.base.h.c(AASelectContactUI.this.getContext(), AASelectContactUI.this.getString(a.i.launch_aa_by_person_number_exceed_limit_alert, new Object[] { Long.valueOf(AASelectContactUI.g(AASelectContactUI.this)) }), "", true);
-          com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(8) });
-          com.tencent.mm.plugin.report.service.h.IzE.a(13722, new Object[] { Integer.valueOf(3) });
+          com.tencent.mm.ui.base.k.c(AASelectContactUI.this.getContext(), AASelectContactUI.this.getString(a.i.launch_aa_by_person_number_exceed_limit_alert, new Object[] { Long.valueOf(AASelectContactUI.g(AASelectContactUI.this)) }), "", true);
+          h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(8) });
+          h.OAn.b(13722, new Object[] { Integer.valueOf(3) });
           AppMethodBeat.o(63532);
           return true;
         }
         if (AASelectContactUI.b(AASelectContactUI.this).size() <= 0)
         {
-          com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(9) });
+          h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(9) });
           AppMethodBeat.o(63532);
           return true;
         }
@@ -422,19 +418,19 @@ public class AASelectContactUI
         AASelectContactUI.this.setResult(-1, AASelectContactUI.this.getIntent().putExtra("Select_Contact", paramAnonymousMenuItem));
         AASelectContactUI.this.finish();
         AASelectContactUI.this.hideVKB();
-        com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(8) });
+        h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(8) });
         AppMethodBeat.o(63532);
         return true;
       }
-    }, null, w.b.Wao);
-    atk();
-    this.ETP.setOnContactDeselectListener(this);
+    }, null, y.b.adEJ);
+    aNr();
+    this.KOt.setOnContactDeselectListener(this);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(63535);
-        if ((AASelectContactUI.b(AASelectContactUI.this) != null) && (AASelectContactUI.b(AASelectContactUI.this).size() > 0) && (AASelectContactUI.b(AASelectContactUI.this).size() <= AASelectContactUI.g(AASelectContactUI.this)) && ((AASelectContactUI.b(AASelectContactUI.this).size() != 1) || (!AASelectContactUI.b(AASelectContactUI.this).contains(z.bcZ()))))
+        if ((AASelectContactUI.b(AASelectContactUI.this) != null) && (AASelectContactUI.b(AASelectContactUI.this).size() > 0) && (AASelectContactUI.b(AASelectContactUI.this).size() <= AASelectContactUI.g(AASelectContactUI.this)) && ((AASelectContactUI.b(AASelectContactUI.this).size() != 1) || (!AASelectContactUI.b(AASelectContactUI.this).contains(z.bAM()))))
         {
           if ((AASelectContactUI.i(AASelectContactUI.this) == null) || (AASelectContactUI.i(AASelectContactUI.this).size() != AASelectContactUI.b(AASelectContactUI.this).size())) {
             break label297;
@@ -457,15 +453,15 @@ public class AASelectContactUI
         for (int i = 0;; i = 1)
         {
           if (i != 0) {
-            com.tencent.mm.ui.base.h.a(AASelectContactUI.this, AASelectContactUI.this.getString(a.i.aa_select_contact_back_confirm), null, AASelectContactUI.this.getString(a.i.aa_select_contact_save), AASelectContactUI.this.getString(a.i.aa_select_contact_not_save), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            com.tencent.mm.ui.base.k.a(AASelectContactUI.this, AASelectContactUI.this.getString(a.i.aa_select_contact_back_confirm), null, AASelectContactUI.this.getString(a.i.aa_select_contact_save), AASelectContactUI.this.getString(a.i.aa_select_contact_not_save), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(63533);
                 if (AASelectContactUI.b(AASelectContactUI.this).size() > AASelectContactUI.g(AASelectContactUI.this))
                 {
-                  com.tencent.mm.ui.base.h.c(AASelectContactUI.this.getContext(), AASelectContactUI.this.getString(a.i.launch_aa_by_person_number_exceed_limit_alert, new Object[] { Long.valueOf(AASelectContactUI.g(AASelectContactUI.this)) }), "", true);
-                  com.tencent.mm.plugin.report.service.h.IzE.a(13722, new Object[] { Integer.valueOf(3) });
+                  com.tencent.mm.ui.base.k.c(AASelectContactUI.this.getContext(), AASelectContactUI.this.getString(a.i.launch_aa_by_person_number_exceed_limit_alert, new Object[] { Long.valueOf(AASelectContactUI.g(AASelectContactUI.this)) }), "", true);
+                  h.OAn.b(13722, new Object[] { Integer.valueOf(3) });
                   AppMethodBeat.o(63533);
                   return;
                 }
@@ -474,7 +470,7 @@ public class AASelectContactUI
                 paramAnonymous2DialogInterface = Util.listToString(paramAnonymous2DialogInterface, ",");
                 AASelectContactUI.this.setResult(-1, AASelectContactUI.this.getIntent().putExtra("Select_Contact", paramAnonymous2DialogInterface));
                 AASelectContactUI.this.finish();
-                com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(11) });
+                h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(11) });
                 AppMethodBeat.o(63533);
               }
             }, new DialogInterface.OnClickListener()
@@ -483,14 +479,14 @@ public class AASelectContactUI
               {
                 AppMethodBeat.i(63534);
                 AASelectContactUI.this.finish();
-                com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(10) });
+                h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(10) });
                 AppMethodBeat.o(63534);
               }
             });
           }
           for (;;)
           {
-            com.tencent.mm.plugin.report.service.h.IzE.a(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(7) });
+            h.OAn.b(13721, new Object[] { Integer.valueOf(2), Integer.valueOf(7) });
             AppMethodBeat.o(63535);
             return true;
             AASelectContactUI.this.finish();
@@ -500,13 +496,13 @@ public class AASelectContactUI
         }
       }
     });
-    if (ab.PR(this.chatroomName))
+    if (ab.IG(this.chatroomName))
     {
-      View localView = ad.kS(getContext()).inflate(a.g.aa_small_footer, null);
+      View localView = af.mU(getContext()).inflate(a.g.aa_small_footer, null);
       LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(a.f.aa_small_footer_layout);
       ViewGroup.LayoutParams localLayoutParams = localLinearLayout.getLayoutParams();
-      localLayoutParams.height = com.tencent.mm.ci.a.fromDPToPix(getContext(), 44);
-      localLinearLayout.setPadding(com.tencent.mm.ci.a.fromDPToPix(getContext(), 16), com.tencent.mm.ci.a.fromDPToPix(getContext(), 15), 0, com.tencent.mm.ci.a.fromDPToPix(getContext(), 8));
+      localLayoutParams.height = com.tencent.mm.cd.a.fromDPToPix(getContext(), 44);
+      localLinearLayout.setPadding(com.tencent.mm.cd.a.fromDPToPix(getContext(), 16), com.tencent.mm.cd.a.fromDPToPix(getContext(), 15), 0, com.tencent.mm.cd.a.fromDPToPix(getContext(), 8));
       localLinearLayout.setLayoutParams(localLayoutParams);
       localView.findViewById(a.f.aa_small_tips).setVisibility(0);
       getContentLV().addHeaderView(localView, null, false);
@@ -520,8 +516,9 @@ public class AASelectContactUI
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("always_select_contact");
     if (!Util.isNullOrNil(paramBundle)) {
-      this.mNh.addAll(Util.stringsToList(paramBundle.split(",")));
+      this.pJP.addAll(Util.stringsToList(paramBundle.split(",")));
     }
+    getContentView().post(new AASelectContactUI.5(this));
     AppMethodBeat.o(63538);
   }
   
@@ -530,10 +527,18 @@ public class AASelectContactUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public void superImportUIComponents(HashSet<Class<? extends UIComponent>> paramHashSet)
+  {
+    AppMethodBeat.i(268510);
+    super.superImportUIComponents(paramHashSet);
+    paramHashSet.add(com.tencent.mm.plugin.aa.model.a.class);
+    AppMethodBeat.o(268510);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AASelectContactUI
  * JD-Core Version:    0.7.0.1
  */

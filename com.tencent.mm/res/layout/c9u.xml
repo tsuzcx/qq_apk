@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/crn" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/iwl" android:background="@color/ahb" android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/g38" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <TextView android:textSize="@dimen/hn" android:textStyle="bold" android:textColor="@color/zf" android:id="@id/ci4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+</RelativeLayout>

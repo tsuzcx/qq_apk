@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/jy8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:id="@id/koo" android:background="@drawable/a1c" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_alignParentStart="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kop" android:layout_width="17.5dip" android:layout_height="17.5dip" android:src="@raw/icons_filled_mic_off" android:layout_centerInParent="true" app:iconColor="@color/ag2" />
-    </RelativeLayout>
-    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/jy_" android:background="@drawable/cuq" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/ct" android:layout_alignParentEnd="true">
-        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/jy9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jab" android:layout_centerInParent="true" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/c5" />
-    </RelativeLayout>
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@id/llw" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:listSelector="@android:color/transparent" android:overScrollMode="never" dslv:collapsed_height="2.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/llt" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="hm4" dslv:float_alpha="0.4" dslv:max_drag_scroll_speed="0.5" dslv:remove_enabled="false" dslv:remove_mode="eag" dslv:slide_shuffle_speed="0.3" dslv:sort_enabled="true" dslv:track_drag_sort="false" dslv:use_default_controller="true" />
+</LinearLayout>

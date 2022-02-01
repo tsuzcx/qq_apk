@@ -1,10 +1,10 @@
 package com.tencent.mm.ui.component;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/component/Sample$ApiBizUIC;", "Lcom/tencent/mm/ui/component/ApiUIC;", "test", "", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/component/Sample$ApiMainUIC;", "Lcom/tencent/mm/ui/component/ApiUIC;", "main", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface Sample$a
-  extends a
+  extends c
 {}
 
 

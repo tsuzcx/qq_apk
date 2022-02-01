@@ -1,6 +1,5 @@
 package com.tencent.tav.asset;
 
-import android.annotation.TargetApi;
 import android.graphics.Matrix;
 import android.media.MediaFormat;
 import com.tencent.tav.coremedia.CGSize;
@@ -113,7 +112,6 @@ public abstract class Asset<Track extends AssetTrack>
   
   public void cancelLoading() {}
   
-  @TargetApi(16)
   protected void createTracks()
   {
     int j = this.extractor.getTrackCount();
@@ -240,7 +238,7 @@ public abstract class Asset<Track extends AssetTrack>
     //   6: ifnull +15 -> 21
     //   9: aload_0
     //   10: getfield 76	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   13: invokevirtual 280	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
+    //   13: invokevirtual 276	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
     //   16: astore_1
     //   17: aload_0
     //   18: monitorexit
@@ -281,7 +279,7 @@ public abstract class Asset<Track extends AssetTrack>
     //   9: aload_0
     //   10: getfield 76	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
     //   13: iload_1
-    //   14: invokevirtual 187	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   14: invokevirtual 184	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   17: astore_2
     //   18: aload_0
     //   19: monitorexit

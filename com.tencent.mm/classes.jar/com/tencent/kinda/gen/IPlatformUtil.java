@@ -2,6 +2,10 @@ package com.tencent.kinda.gen;
 
 public abstract interface IPlatformUtil
 {
+  public abstract void accessibilityAnnounce(KView paramKView, String paramString);
+  
+  public abstract void accessibilityFocus(KView paramKView);
+  
   public abstract int androidAPILevel();
   
   public abstract AndroidDpiLevel androidDpiLevel();
@@ -18,15 +22,27 @@ public abstract interface IPlatformUtil
   
   public abstract boolean delSecurityStore(String paramString);
   
+  public abstract float dynamicFontSize(float paramFloat);
+  
+  public abstract float dynamicSize(float paramFloat);
+  
+  public abstract float dynamicSizeByFontLevel(float paramFloat, int paramInt);
+  
   public abstract void endIgnoringInteractionEvents();
   
   public abstract String genUUID();
+  
+  public abstract String getAndroidRepairConfig(String paramString);
   
   public abstract float getBottomSafeAreaHeight();
   
   public abstract boolean getExptBoolValue(String paramString);
   
+  public abstract int getFontLevel();
+  
   public abstract float getIphoneSafeAreaBottomHeight();
+  
+  public abstract boolean getIsAccessibilityServiceRunning();
   
   public abstract float getLoigcalResolutionHeight();
   
@@ -48,13 +64,19 @@ public abstract interface IPlatformUtil
   
   public abstract String getRedDotWording(String paramString);
   
+  public abstract float getScaleByFontLevel(int paramInt);
+  
   public abstract float getScreenBrightness();
   
   public abstract float getStatusBarHeight();
   
+  public abstract float getViewScale();
+  
   public abstract IOSDevice iOSDevice();
   
   public abstract String iOSVersion();
+  
+  public abstract boolean isCareModeOn();
   
   public abstract boolean isNetworkConnected();
   
@@ -65,6 +87,8 @@ public abstract interface IPlatformUtil
   public abstract void makesureLonglink();
   
   public abstract String md5(String paramString);
+  
+  public abstract void openTinyApp(ITransmitKvData paramITransmitKvData);
   
   public abstract void playVibration();
   
@@ -98,7 +122,7 @@ public abstract interface IPlatformUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.IPlatformUtil
  * JD-Core Version:    0.7.0.1
  */

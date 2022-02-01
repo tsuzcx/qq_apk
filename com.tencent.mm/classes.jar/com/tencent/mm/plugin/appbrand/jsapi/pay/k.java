@@ -3,10 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.pay;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
 
 public final class k
-  extends c<j>
+  extends c<com.tencent.mm.plugin.appbrand.jsapi.k>
 {
   public static final int CTRL_INDEX = 682;
   public static final String NAME = "requestH5Transaction";

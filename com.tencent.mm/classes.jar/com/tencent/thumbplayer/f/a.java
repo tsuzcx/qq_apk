@@ -5,76 +5,76 @@ import com.tencent.thumbplayer.utils.g;
 
 public final class a
 {
-  public b Zyw;
+  public b ahDz;
   private String mTag;
   
   public a(b paramb)
   {
-    AppMethodBeat.i(220735);
-    this.Zyw = paramb;
-    this.mTag = this.Zyw.tag;
-    AppMethodBeat.o(220735);
+    AppMethodBeat.i(226930);
+    this.ahDz = paramb;
+    this.mTag = this.ahDz.tag;
+    AppMethodBeat.o(226930);
   }
   
   public a(b paramb, String paramString)
   {
-    AppMethodBeat.i(220736);
-    this.Zyw = new b(paramb, paramString);
-    this.mTag = this.Zyw.tag;
-    AppMethodBeat.o(220736);
+    AppMethodBeat.i(226933);
+    this.ahDz = new b(paramb, paramString);
+    this.mTag = this.ahDz.tag;
+    AppMethodBeat.o(226933);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(220741);
+    AppMethodBeat.i(226937);
     if (paramb == null)
     {
-      this.Zyw = new b(this.mTag);
-      AppMethodBeat.o(220741);
+      this.ahDz = new b(this.mTag);
+      AppMethodBeat.o(226937);
       return;
     }
-    this.Zyw = paramb;
-    AppMethodBeat.o(220741);
+    this.ahDz = paramb;
+    AppMethodBeat.o(226937);
   }
   
-  public final void bDx(String paramString)
+  public final void bGe(String paramString)
   {
-    AppMethodBeat.i(220744);
-    g.d(this.Zyw.tag, paramString);
-    AppMethodBeat.o(220744);
+    AppMethodBeat.i(226949);
+    g.i(this.ahDz.tag, paramString);
+    AppMethodBeat.o(226949);
   }
   
-  public final void bDy(String paramString)
+  public final void bGf(String paramString)
   {
-    AppMethodBeat.i(220745);
-    g.i(this.Zyw.tag, paramString);
-    AppMethodBeat.o(220745);
+    AppMethodBeat.i(226955);
+    g.w(this.ahDz.tag, paramString);
+    AppMethodBeat.o(226955);
   }
   
-  public final void bDz(String paramString)
+  public final void debug(String paramString)
   {
-    AppMethodBeat.i(220747);
-    g.w(this.Zyw.tag, paramString);
-    AppMethodBeat.o(220747);
+    AppMethodBeat.i(226946);
+    g.d(this.ahDz.tag, paramString);
+    AppMethodBeat.o(226946);
   }
   
   public final void error(String paramString)
   {
-    AppMethodBeat.i(220748);
-    g.e(this.Zyw.tag, paramString);
-    AppMethodBeat.o(220748);
+    AppMethodBeat.i(226957);
+    g.e(this.ahDz.tag, paramString);
+    AppMethodBeat.o(226957);
   }
   
-  public final void n(Exception paramException)
+  public final void p(Exception paramException)
   {
-    AppMethodBeat.i(220742);
-    g.e(this.Zyw.tag, paramException);
-    AppMethodBeat.o(220742);
+    AppMethodBeat.i(226941);
+    g.e(this.ahDz.tag, paramException);
+    AppMethodBeat.o(226941);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,122 +1,91 @@
 package com.tencent.mm.bp;
 
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.d.a.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bvg;
-import com.tencent.mm.protocal.protobuf.bvh;
-import com.tencent.mm.protocal.protobuf.rq;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.autogen.a.nr;
+import com.tencent.mm.autogen.a.nr.b;
+import com.tencent.mm.br.c;
+import com.tencent.mm.k.f;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.findersdk.a.ca;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Util;
+import org.xwalk.core.Log;
 
 public final class a
-  extends q
-  implements m
 {
-  private com.tencent.mm.an.i callback;
-  private bvg mtN;
-  public bvh mtO;
-  public com.tencent.mm.api.i mtP;
-  private String mtQ;
-  private d rr;
-  
-  public a(com.tencent.mm.api.i parami)
+  public static boolean aDN()
   {
-    AppMethodBeat.i(114107);
-    this.callback = null;
-    this.mtQ = null;
-    if (parami == null)
+    AppMethodBeat.i(231174);
+    nr localnr = new nr();
+    localnr.hQd.hHC = 7;
+    localnr.publish();
+    boolean bool = localnr.hQe.hCQ;
+    AppMethodBeat.o(231174);
+    return bool;
+  }
+  
+  public static void aM(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(231179);
+    if (iGm())
     {
-      AppMethodBeat.o(114107);
+      Log.i("NearbyHelper", "gotoNearByUILiveFriends");
+      ((e)h.az(e.class)).enterFinderLbsLiveFriendsUI(paramContext, paramIntent);
+      AppMethodBeat.o(231179);
       return;
     }
-    this.mtP = parami;
-    Log.i("MicroMsg.NetSceneGetFuncMsg", "new NetSceneGetFuncMsg, cgi: %s, cmdId: %s, functionMsgId: %s", new Object[] { parami.field_cgi, Integer.valueOf(parami.field_cmdid), parami.field_functionmsgid });
-    d.a locala = new d.a();
-    locala.lBU = new bvg();
-    locala.lBV = new bvh();
-    locala.funcId = 825;
-    locala.uri = parami.field_cgi;
-    locala.lBW = parami.field_cmdid;
-    locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    this.mtN = ((bvg)d.b.b(this.rr.lBR));
-    this.mtN.Tfl = parami.field_functionmsgid;
-    if (parami.field_custombuff != null) {
-      this.mtN.Tfm = parami.field_custombuff;
-    }
-    this.mtN.Tfn = parami.field_businessInfo;
-    parami = this.mtN.Tfl;
-    long l = this.mtN.Tfn.Saw;
-    if (this.mtN.Tfn.Sax != null) {}
-    for (int i = this.mtN.Tfn.Sax.UH.length;; i = 0)
+    Log.i("NearbyHelper", "gotoNearBy");
+    if (!iGn())
     {
-      Log.i("MicroMsg.NetSceneGetFuncMsg", "NetSceneGetFuncMsg request FunctionMsgID[%s] BusinessId[%d, %d]", new Object[] { parami, Long.valueOf(l), Integer.valueOf(i) });
-      AppMethodBeat.o(114107);
-      return;
-    }
-  }
-  
-  public final int doScene(g paramg, com.tencent.mm.an.i parami)
-  {
-    AppMethodBeat.i(114108);
-    if (this.mtP != null)
-    {
-      Log.i("MicroMsg.NetSceneGetFuncMsg", "doScene, functionMsgId: %s", new Object[] { this.mtP.field_functionmsgid });
-      this.mtP.field_status = 1;
-    }
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(114108);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 825;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(114109);
-    this.mtO = ((bvh)d.c.b(((d)params).lBS));
-    this.mtQ = this.mtO.Tfm;
-    Log.i("MicroMsg.NetSceneGetFuncMsg", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s, opCode: %s, responseCustomBuff==null: %s, response.version: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.mtO.RLe), Boolean.valueOf(Util.isNullOrNil(this.mtQ)), Long.valueOf(this.mtO.TaE) });
-    if (!Util.isNullOrNil(this.mtQ))
-    {
-      this.mtN = ((bvg)d.b.b(this.rr.lBR));
-      this.mtN.Tfm = this.mtQ;
-    }
-    if ((paramInt2 != 0) && (paramInt3 != 0))
-    {
-      if (paramInt2 == 4)
+      h.baC().aZJ();
+      if (((n)h.ax(n.class)).gaW().dkF() > 0)
       {
-        Log.i("MicroMsg.NetSceneGetFuncMsg", "server error");
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(114109);
+        c.ai(paramContext, "nearby", ".ui.NearbyFriendShowSayHiUI");
+        AppMethodBeat.o(231179);
         return;
       }
-      Log.i("MicroMsg.NetSceneGetFuncMsg", "onGYNetEnd, local error");
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(114109);
-      return;
     }
-    h.IzE.idkeyStat(this.mtP.field_reportid, this.mtP.field_successkey, 1L, false);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(114109);
+    c.ai(paramContext, "nearby", ".ui.NearbyFriendsUI");
+    AppMethodBeat.o(231179);
+  }
+  
+  public static boolean iGm()
+  {
+    AppMethodBeat.i(231164);
+    boolean bool = ((cn)h.az(cn.class)).getFinderUtilApi().fgF();
+    AppMethodBeat.o(231164);
+    return bool;
+  }
+  
+  public static boolean iGn()
+  {
+    AppMethodBeat.i(89923);
+    String str2 = ((com.tencent.mm.plugin.zero.b.a)h.ax(com.tencent.mm.plugin.zero.b.a.class)).aRC().getValue("EnableStrangerChat");
+    String str1 = str2;
+    if (Util.isNullOrNil(str2)) {
+      str1 = "0";
+    }
+    boolean bool = "1".equals(str1);
+    AppMethodBeat.o(89923);
+    return bool;
+  }
+  
+  public static void li(Context paramContext)
+  {
+    AppMethodBeat.i(89924);
+    aM(paramContext, new Intent());
+    AppMethodBeat.o(89924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bp.a
  * JD-Core Version:    0.7.0.1
  */

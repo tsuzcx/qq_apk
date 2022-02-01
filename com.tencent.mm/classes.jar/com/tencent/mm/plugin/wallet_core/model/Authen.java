@@ -11,44 +11,44 @@ public class Authen
   implements Parcelable
 {
   public static final Parcelable.Creator<Authen> CREATOR;
-  public String CBX;
-  public String DNX;
-  public String GGC;
-  public PayInfo HzF;
-  public String OIl;
-  public String OIv;
-  public int OMO;
-  public String OMP;
-  public String OMQ;
-  public int OMR;
-  public String OMS;
-  public String OMT;
-  public String OMU;
-  public String OMV;
-  public String OMW;
-  public String OMX;
-  public String OMY;
-  public String OMZ;
-  public String OMa;
-  public int OMk;
-  public String OMl;
-  public String OMp;
-  public String ONa;
-  public String ONb;
-  public String ONc;
-  public String ONd;
-  public String ONe;
-  public int ONf;
-  public String ONg;
-  public String Our;
-  public int cUP;
+  public String IvM;
+  public String JFm;
+  public String MDt;
+  public PayInfo Nxi;
+  public String VBL;
+  public int VBV;
+  public String VBW;
+  public String VCA;
+  public String VCB;
+  public int VCC;
+  public String VCD;
+  public String VCE;
+  public String VCF;
+  public String VCG;
+  public String VCH;
+  public String VCI;
+  public String VCJ;
+  public String VCK;
+  public String VCL;
+  public String VCM;
+  public String VCN;
+  public String VCO;
+  public String VCP;
+  public int VCQ;
+  public String VCR;
+  public String VCa;
+  public int VCz;
+  public String VjF;
+  public String VxX;
+  public String Vyh;
   public String city;
   public String country;
-  public String fvP;
-  public String hDf;
-  public String lLg;
-  public String nkC;
+  public int eQp;
+  public String hAk;
+  public String kab;
+  public String oDI;
   public String province;
+  public String qhL;
   public String token;
   
   static
@@ -61,52 +61,52 @@ public class Authen
   public Authen()
   {
     AppMethodBeat.i(70208);
-    this.OMO = 0;
-    this.HzF = new PayInfo();
+    this.VCz = 0;
+    this.Nxi = new PayInfo();
     AppMethodBeat.o(70208);
   }
   
   public Authen(Parcel paramParcel)
   {
     AppMethodBeat.i(70209);
-    this.OMO = 0;
-    this.HzF = new PayInfo();
-    this.cUP = paramParcel.readInt();
-    this.OMP = paramParcel.readString();
-    this.fvP = paramParcel.readString();
-    this.GGC = paramParcel.readString();
-    this.OMa = paramParcel.readString();
-    this.OMQ = paramParcel.readString();
-    this.OMR = paramParcel.readInt();
-    this.OIl = paramParcel.readString();
-    this.OMS = paramParcel.readString();
-    this.OMT = paramParcel.readString();
-    this.OMU = paramParcel.readString();
+    this.VCz = 0;
+    this.Nxi = new PayInfo();
+    this.eQp = paramParcel.readInt();
+    this.VCA = paramParcel.readString();
+    this.hAk = paramParcel.readString();
+    this.MDt = paramParcel.readString();
+    this.VBL = paramParcel.readString();
+    this.VCB = paramParcel.readString();
+    this.VCC = paramParcel.readInt();
+    this.VxX = paramParcel.readString();
+    this.VCD = paramParcel.readString();
+    this.VCE = paramParcel.readString();
+    this.VCF = paramParcel.readString();
     this.token = paramParcel.readString();
-    this.OMW = paramParcel.readString();
-    this.OMX = paramParcel.readString();
+    this.VCH = paramParcel.readString();
+    this.VCI = paramParcel.readString();
     this.country = paramParcel.readString();
     this.province = paramParcel.readString();
     this.city = paramParcel.readString();
-    this.lLg = paramParcel.readString();
-    this.DNX = paramParcel.readString();
-    this.nkC = paramParcel.readString();
-    this.hDf = paramParcel.readString();
-    this.Our = paramParcel.readString();
-    this.OMY = paramParcel.readString();
-    this.OMZ = paramParcel.readString();
-    this.OMV = paramParcel.readString();
-    this.ONa = paramParcel.readString();
-    this.ONb = paramParcel.readString();
-    this.ONc = paramParcel.readString();
-    this.ONd = paramParcel.readString();
-    this.ONe = paramParcel.readString();
-    this.OMk = paramParcel.readInt();
-    this.OMp = paramParcel.readString();
-    this.OMl = paramParcel.readString();
-    this.ONf = paramParcel.readInt();
-    this.OIv = paramParcel.readString();
-    this.ONg = paramParcel.readString();
+    this.oDI = paramParcel.readString();
+    this.JFm = paramParcel.readString();
+    this.qhL = paramParcel.readString();
+    this.kab = paramParcel.readString();
+    this.VjF = paramParcel.readString();
+    this.VCJ = paramParcel.readString();
+    this.VCK = paramParcel.readString();
+    this.VCG = paramParcel.readString();
+    this.VCL = paramParcel.readString();
+    this.VCM = paramParcel.readString();
+    this.VCN = paramParcel.readString();
+    this.VCO = paramParcel.readString();
+    this.VCP = paramParcel.readString();
+    this.VBV = paramParcel.readInt();
+    this.VCa = paramParcel.readString();
+    this.VBW = paramParcel.readString();
+    this.VCQ = paramParcel.readInt();
+    this.Vyh = paramParcel.readString();
+    this.VCR = paramParcel.readString();
     AppMethodBeat.o(70209);
   }
   
@@ -118,48 +118,48 @@ public class Authen
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70207);
-    paramParcel.writeInt(this.cUP);
-    paramParcel.writeString(Util.nullAs(this.OMP, ""));
-    paramParcel.writeString(Util.nullAs(this.fvP, ""));
-    paramParcel.writeString(Util.nullAs(this.GGC, ""));
-    paramParcel.writeString(Util.nullAs(this.OMa, ""));
-    paramParcel.writeString(Util.nullAs(this.OMQ, ""));
-    paramParcel.writeInt(this.OMR);
-    paramParcel.writeString(Util.nullAs(this.OIl, ""));
-    paramParcel.writeString(Util.nullAs(this.OMS, ""));
-    paramParcel.writeString(Util.nullAs(this.OMT, ""));
-    paramParcel.writeString(Util.nullAs(this.OMU, ""));
+    paramParcel.writeInt(this.eQp);
+    paramParcel.writeString(Util.nullAs(this.VCA, ""));
+    paramParcel.writeString(Util.nullAs(this.hAk, ""));
+    paramParcel.writeString(Util.nullAs(this.MDt, ""));
+    paramParcel.writeString(Util.nullAs(this.VBL, ""));
+    paramParcel.writeString(Util.nullAs(this.VCB, ""));
+    paramParcel.writeInt(this.VCC);
+    paramParcel.writeString(Util.nullAs(this.VxX, ""));
+    paramParcel.writeString(Util.nullAs(this.VCD, ""));
+    paramParcel.writeString(Util.nullAs(this.VCE, ""));
+    paramParcel.writeString(Util.nullAs(this.VCF, ""));
     paramParcel.writeString(Util.nullAs(this.token, ""));
-    paramParcel.writeString(Util.nullAs(this.OMW, ""));
-    paramParcel.writeString(Util.nullAs(this.OMX, ""));
+    paramParcel.writeString(Util.nullAs(this.VCH, ""));
+    paramParcel.writeString(Util.nullAs(this.VCI, ""));
     paramParcel.writeString(Util.nullAs(this.country, ""));
     paramParcel.writeString(Util.nullAs(this.province, ""));
     paramParcel.writeString(Util.nullAs(this.city, ""));
-    paramParcel.writeString(Util.nullAs(this.lLg, ""));
-    paramParcel.writeString(Util.nullAs(this.DNX, ""));
-    paramParcel.writeString(Util.nullAs(this.nkC, ""));
-    paramParcel.writeString(Util.nullAs(this.hDf, ""));
-    paramParcel.writeString(Util.nullAs(this.Our, ""));
-    paramParcel.writeString(Util.nullAs(this.OMY, ""));
-    paramParcel.writeString(Util.nullAs(this.OMZ, ""));
-    paramParcel.writeString(Util.nullAs(this.OMV, ""));
-    paramParcel.writeString(Util.nullAs(this.ONa, ""));
-    paramParcel.writeString(Util.nullAs(this.ONb, ""));
-    paramParcel.writeString(Util.nullAs(this.ONc, ""));
-    paramParcel.writeString(Util.nullAs(this.ONd, ""));
-    paramParcel.writeString(Util.nullAs(this.ONe, ""));
-    paramParcel.writeInt(Util.nullAs(Integer.valueOf(this.OMk), 0));
-    paramParcel.writeString(Util.nullAs(this.OMp, ""));
-    paramParcel.writeString(Util.nullAs(this.OMl, ""));
-    paramParcel.writeInt(Util.nullAs(Integer.valueOf(this.ONf), 0));
-    paramParcel.writeString(Util.nullAs(this.OIv, ""));
-    paramParcel.writeString(Util.nullAs(this.ONg, ""));
+    paramParcel.writeString(Util.nullAs(this.oDI, ""));
+    paramParcel.writeString(Util.nullAs(this.JFm, ""));
+    paramParcel.writeString(Util.nullAs(this.qhL, ""));
+    paramParcel.writeString(Util.nullAs(this.kab, ""));
+    paramParcel.writeString(Util.nullAs(this.VjF, ""));
+    paramParcel.writeString(Util.nullAs(this.VCJ, ""));
+    paramParcel.writeString(Util.nullAs(this.VCK, ""));
+    paramParcel.writeString(Util.nullAs(this.VCG, ""));
+    paramParcel.writeString(Util.nullAs(this.VCL, ""));
+    paramParcel.writeString(Util.nullAs(this.VCM, ""));
+    paramParcel.writeString(Util.nullAs(this.VCN, ""));
+    paramParcel.writeString(Util.nullAs(this.VCO, ""));
+    paramParcel.writeString(Util.nullAs(this.VCP, ""));
+    paramParcel.writeInt(Util.nullAs(Integer.valueOf(this.VBV), 0));
+    paramParcel.writeString(Util.nullAs(this.VCa, ""));
+    paramParcel.writeString(Util.nullAs(this.VBW, ""));
+    paramParcel.writeInt(Util.nullAs(Integer.valueOf(this.VCQ), 0));
+    paramParcel.writeString(Util.nullAs(this.Vyh, ""));
+    paramParcel.writeString(Util.nullAs(this.VCR, ""));
     AppMethodBeat.o(70207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.Authen
  * JD-Core Version:    0.7.0.1
  */

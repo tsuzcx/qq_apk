@@ -4,85 +4,85 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class avq
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String SHW;
-  public emr xGP;
+  public FinderContact contact;
+  public String recommendReason;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206350);
+    AppMethodBeat.i(257546);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SHW != null) {
-        paramVarArgs.f(1, this.SHW);
-      }
-      if (this.xGP != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.contact != null)
       {
-        paramVarArgs.oE(2, this.xGP.computeSize());
-        this.xGP.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.contact.computeSize());
+        this.contact.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(206350);
+      if (this.recommendReason != null) {
+        paramVarArgs.g(2, this.recommendReason);
+      }
+      AppMethodBeat.o(257546);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SHW == null) {
-        break label348;
+      if (this.contact == null) {
+        break label344;
       }
     }
-    label348:
-    for (paramInt = g.a.a.b.b.a.g(1, this.SHW) + 0;; paramInt = 0)
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.contact.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xGP != null) {
-        i = paramInt + g.a.a.a.oD(2, this.xGP.computeSize());
+      if (this.recommendReason != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.recommendReason);
       }
-      AppMethodBeat.o(206350);
+      AppMethodBeat.o(257546);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(206350);
+        AppMethodBeat.o(257546);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         avq localavq = (avq)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(206350);
+          AppMethodBeat.o(257546);
           return -1;
         case 1: 
-          localavq.SHW = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(206350);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            FinderContact localFinderContact = new FinderContact();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localFinderContact.parseFrom((byte[])localObject);
+            }
+            localavq.contact = localFinderContact;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257546);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          emr localemr = new emr();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localemr.parseFrom((byte[])localObject);
-          }
-          localavq.xGP = localemr;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(206350);
+        localavq.recommendReason = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(257546);
         return 0;
       }
-      AppMethodBeat.o(206350);
+      AppMethodBeat.o(257546);
       return -1;
     }
   }

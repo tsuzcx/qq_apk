@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -75,7 +75,7 @@ public class MMNativeJpeg
     //   102: invokestatic 58	com/tencent/mm/sdk/platformtools/MMNativeJpeg:decodeAsBitmap	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   105: astore 7
     //   107: aload 7
-    //   109: ifnull +160 -> 269
+    //   109: ifnull +161 -> 270
     //   112: aload 4
     //   114: astore 5
     //   116: aload 9
@@ -106,164 +106,165 @@ public class MMNativeJpeg
     //   168: aload 10
     //   170: astore_3
     //   171: aload 11
-    //   173: invokestatic 83	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
-    //   176: astore 4
-    //   178: aload 4
-    //   180: astore 8
-    //   182: aload 4
-    //   184: astore 5
-    //   186: aload 4
-    //   188: astore 6
-    //   190: aload 4
-    //   192: astore_3
-    //   193: aload 7
-    //   195: aload 12
-    //   197: iload_1
-    //   198: aload 4
-    //   200: invokevirtual 89	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   203: ifeq +66 -> 269
-    //   206: aload 4
-    //   208: astore 5
-    //   210: aload 4
-    //   212: astore 6
-    //   214: aload 4
-    //   216: astore_3
-    //   217: ldc 11
-    //   219: ldc 91
-    //   221: iconst_1
-    //   222: anewarray 4	java/lang/Object
-    //   225: dup
-    //   226: iconst_0
-    //   227: aload 11
-    //   229: aastore
-    //   230: invokestatic 93	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   233: aload 4
-    //   235: astore 5
-    //   237: aload 4
-    //   239: astore 6
-    //   241: aload 4
-    //   243: astore_3
-    //   244: aload 11
-    //   246: aload_0
-    //   247: iconst_1
-    //   248: invokestatic 99	com/tencent/mm/sdk/platformtools/FilesCopy:copy	(Ljava/lang/String;Ljava/lang/String;Z)Z
-    //   251: istore_2
-    //   252: aload 4
-    //   254: ifnull +8 -> 262
-    //   257: aload 4
-    //   259: invokevirtual 104	java/io/OutputStream:close	()V
-    //   262: ldc 23
-    //   264: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   267: iload_2
-    //   268: ireturn
-    //   269: aload 8
-    //   271: ifnull +8 -> 279
-    //   274: aload 8
-    //   276: invokevirtual 104	java/io/OutputStream:close	()V
-    //   279: ldc 23
-    //   281: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   284: iconst_0
-    //   285: ireturn
-    //   286: astore_0
-    //   287: aload 5
-    //   289: astore_3
-    //   290: ldc 11
-    //   292: ldc 106
-    //   294: iconst_1
-    //   295: anewarray 4	java/lang/Object
-    //   298: dup
-    //   299: iconst_0
-    //   300: aload_0
-    //   301: invokestatic 110	com/tencent/mm/sdk/platformtools/MMNativeJpeg:exception2String	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   304: aastore
-    //   305: invokestatic 41	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   308: aload 5
-    //   310: ifnull -31 -> 279
-    //   313: aload 5
-    //   315: invokevirtual 104	java/io/OutputStream:close	()V
-    //   318: goto -39 -> 279
-    //   321: astore_0
-    //   322: goto -43 -> 279
-    //   325: astore_0
-    //   326: aload 6
-    //   328: astore_3
-    //   329: ldc 11
-    //   331: ldc 112
-    //   333: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   336: aload 6
-    //   338: ifnull -59 -> 279
-    //   341: aload 6
-    //   343: invokevirtual 104	java/io/OutputStream:close	()V
-    //   346: goto -67 -> 279
-    //   349: astore_0
-    //   350: goto -71 -> 279
-    //   353: astore_0
-    //   354: aload_3
-    //   355: ifnull +7 -> 362
-    //   358: aload_3
-    //   359: invokevirtual 104	java/io/OutputStream:close	()V
-    //   362: ldc 23
-    //   364: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   367: aload_0
-    //   368: athrow
-    //   369: astore_0
-    //   370: goto -108 -> 262
-    //   373: astore_0
-    //   374: goto -95 -> 279
-    //   377: astore_3
-    //   378: goto -16 -> 362
+    //   173: iconst_0
+    //   174: invokestatic 83	com/tencent/mm/vfs/y:ev	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   177: astore 4
+    //   179: aload 4
+    //   181: astore 8
+    //   183: aload 4
+    //   185: astore 5
+    //   187: aload 4
+    //   189: astore 6
+    //   191: aload 4
+    //   193: astore_3
+    //   194: aload 7
+    //   196: aload 12
+    //   198: iload_1
+    //   199: aload 4
+    //   201: invokevirtual 89	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   204: ifeq +66 -> 270
+    //   207: aload 4
+    //   209: astore 5
+    //   211: aload 4
+    //   213: astore 6
+    //   215: aload 4
+    //   217: astore_3
+    //   218: ldc 11
+    //   220: ldc 91
+    //   222: iconst_1
+    //   223: anewarray 4	java/lang/Object
+    //   226: dup
+    //   227: iconst_0
+    //   228: aload 11
+    //   230: aastore
+    //   231: invokestatic 93	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   234: aload 4
+    //   236: astore 5
+    //   238: aload 4
+    //   240: astore 6
+    //   242: aload 4
+    //   244: astore_3
+    //   245: aload 11
+    //   247: aload_0
+    //   248: iconst_1
+    //   249: invokestatic 99	com/tencent/mm/sdk/platformtools/FilesCopy:copy	(Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   252: istore_2
+    //   253: aload 4
+    //   255: ifnull +8 -> 263
+    //   258: aload 4
+    //   260: invokevirtual 104	java/io/OutputStream:close	()V
+    //   263: ldc 23
+    //   265: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   268: iload_2
+    //   269: ireturn
+    //   270: aload 8
+    //   272: ifnull +8 -> 280
+    //   275: aload 8
+    //   277: invokevirtual 104	java/io/OutputStream:close	()V
+    //   280: ldc 23
+    //   282: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   285: iconst_0
+    //   286: ireturn
+    //   287: astore_0
+    //   288: aload 5
+    //   290: astore_3
+    //   291: ldc 11
+    //   293: ldc 106
+    //   295: iconst_1
+    //   296: anewarray 4	java/lang/Object
+    //   299: dup
+    //   300: iconst_0
+    //   301: aload_0
+    //   302: invokestatic 110	com/tencent/mm/sdk/platformtools/MMNativeJpeg:exception2String	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   305: aastore
+    //   306: invokestatic 41	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   309: aload 5
+    //   311: ifnull -31 -> 280
+    //   314: aload 5
+    //   316: invokevirtual 104	java/io/OutputStream:close	()V
+    //   319: goto -39 -> 280
+    //   322: astore_0
+    //   323: goto -43 -> 280
+    //   326: astore_0
+    //   327: aload 6
+    //   329: astore_3
+    //   330: ldc 11
+    //   332: ldc 112
+    //   334: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   337: aload 6
+    //   339: ifnull -59 -> 280
+    //   342: aload 6
+    //   344: invokevirtual 104	java/io/OutputStream:close	()V
+    //   347: goto -67 -> 280
+    //   350: astore_0
+    //   351: goto -71 -> 280
+    //   354: astore_0
+    //   355: aload_3
+    //   356: ifnull +7 -> 363
+    //   359: aload_3
+    //   360: invokevirtual 104	java/io/OutputStream:close	()V
+    //   363: ldc 23
+    //   365: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   368: aload_0
+    //   369: athrow
+    //   370: astore_0
+    //   371: goto -108 -> 263
+    //   374: astore_0
+    //   375: goto -95 -> 280
+    //   378: astore_3
+    //   379: goto -16 -> 363
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	381	0	paramString	String
-    //   0	381	1	paramInt	int
-    //   251	17	2	bool	boolean
-    //   56	303	3	localObject1	Object
-    //   377	1	3	localException	Exception
-    //   35	223	4	localOutputStream1	java.io.OutputStream
-    //   48	266	5	localOutputStream2	java.io.OutputStream
-    //   52	290	6	localObject2	Object
-    //   65	129	7	localObject3	Object
-    //   44	231	8	localOutputStream3	java.io.OutputStream
+    //   0	382	0	paramString	String
+    //   0	382	1	paramInt	int
+    //   252	17	2	bool	boolean
+    //   56	304	3	localObject1	Object
+    //   378	1	3	localException	Exception
+    //   35	224	4	localOutputStream1	java.io.OutputStream
+    //   48	267	5	localOutputStream2	java.io.OutputStream
+    //   52	291	6	localObject2	Object
+    //   65	130	7	localObject3	Object
+    //   44	232	8	localOutputStream3	java.io.OutputStream
     //   38	127	9	localObject4	Object
     //   41	128	10	localObject5	Object
-    //   61	184	11	localObject6	Object
-    //   158	38	12	localCompressFormat	android.graphics.Bitmap.CompressFormat
+    //   61	185	11	localObject6	Object
+    //   158	39	12	localCompressFormat	android.graphics.Bitmap.CompressFormat
     // Exception table:
     //   from	to	target	type
-    //   57	63	286	java/lang/Exception
-    //   83	90	286	java/lang/Exception
-    //   101	107	286	java/lang/Exception
-    //   123	144	286	java/lang/Exception
-    //   155	160	286	java/lang/Exception
-    //   171	178	286	java/lang/Exception
-    //   193	206	286	java/lang/Exception
-    //   217	233	286	java/lang/Exception
-    //   244	252	286	java/lang/Exception
-    //   313	318	321	java/lang/Exception
-    //   57	63	325	java/lang/OutOfMemoryError
-    //   83	90	325	java/lang/OutOfMemoryError
-    //   101	107	325	java/lang/OutOfMemoryError
-    //   123	144	325	java/lang/OutOfMemoryError
-    //   155	160	325	java/lang/OutOfMemoryError
-    //   171	178	325	java/lang/OutOfMemoryError
-    //   193	206	325	java/lang/OutOfMemoryError
-    //   217	233	325	java/lang/OutOfMemoryError
-    //   244	252	325	java/lang/OutOfMemoryError
-    //   341	346	349	java/lang/Exception
-    //   57	63	353	finally
-    //   83	90	353	finally
-    //   101	107	353	finally
-    //   123	144	353	finally
-    //   155	160	353	finally
-    //   171	178	353	finally
-    //   193	206	353	finally
-    //   217	233	353	finally
-    //   244	252	353	finally
-    //   290	308	353	finally
-    //   329	336	353	finally
-    //   257	262	369	java/lang/Exception
-    //   274	279	373	java/lang/Exception
-    //   358	362	377	java/lang/Exception
+    //   57	63	287	java/lang/Exception
+    //   83	90	287	java/lang/Exception
+    //   101	107	287	java/lang/Exception
+    //   123	144	287	java/lang/Exception
+    //   155	160	287	java/lang/Exception
+    //   171	179	287	java/lang/Exception
+    //   194	207	287	java/lang/Exception
+    //   218	234	287	java/lang/Exception
+    //   245	253	287	java/lang/Exception
+    //   314	319	322	java/lang/Exception
+    //   57	63	326	java/lang/OutOfMemoryError
+    //   83	90	326	java/lang/OutOfMemoryError
+    //   101	107	326	java/lang/OutOfMemoryError
+    //   123	144	326	java/lang/OutOfMemoryError
+    //   155	160	326	java/lang/OutOfMemoryError
+    //   171	179	326	java/lang/OutOfMemoryError
+    //   194	207	326	java/lang/OutOfMemoryError
+    //   218	234	326	java/lang/OutOfMemoryError
+    //   245	253	326	java/lang/OutOfMemoryError
+    //   342	347	350	java/lang/Exception
+    //   57	63	354	finally
+    //   83	90	354	finally
+    //   101	107	354	finally
+    //   123	144	354	finally
+    //   155	160	354	finally
+    //   171	179	354	finally
+    //   194	207	354	finally
+    //   218	234	354	finally
+    //   245	253	354	finally
+    //   291	309	354	finally
+    //   330	337	354	finally
+    //   258	263	370	java/lang/Exception
+    //   275	280	374	java/lang/Exception
+    //   359	363	378	java/lang/Exception
   }
   
   public static void Destroy() {}
@@ -323,7 +324,7 @@ public class MMNativeJpeg
         AppMethodBeat.o(156198);
         return false;
       }
-      boolean bool = u.oo(str, paramString);
+      boolean bool = y.qn(str, paramString);
       Log.i("MMJPEG.JAVA", "convert ret:%b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(156198);
       return bool;
@@ -394,7 +395,7 @@ public class MMNativeJpeg
       AppMethodBeat.o(156197);
       return false;
     }
-    if (!u.agG(paramString))
+    if (!y.ZC(paramString))
     {
       AppMethodBeat.o(156197);
       return false;
@@ -435,7 +436,7 @@ public class MMNativeJpeg
       AppMethodBeat.o(156196);
       return 0;
     }
-    if (!u.agG(paramString))
+    if (!y.ZC(paramString))
     {
       AppMethodBeat.o(156196);
       return 0;
@@ -486,7 +487,7 @@ public class MMNativeJpeg
     AppMethodBeat.i(156195);
     try
     {
-      String str3 = u.n(paramString, false);
+      String str3 = y.n(paramString, false);
       str1 = paramString;
       if (str3 != null)
       {
@@ -494,7 +495,7 @@ public class MMNativeJpeg
         str1 = str3;
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -509,7 +510,7 @@ public class MMNativeJpeg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMNativeJpeg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.api.o;
+import com.tencent.mm.api.p;
 
 public final class l
-  implements o
+  implements p
 {}
 
 

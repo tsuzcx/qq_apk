@@ -1,107 +1,71 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.cq;
-import com.tencent.mm.plugin.finder.model.av;
-import com.tencent.mm.plugin.finder.model.av.a;
+import com.tencent.mm.autogen.b.cx;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.ArrayList;
+import java.util.List;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderMediaCacheStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getAllData", "", "getByMediaId", "mediaId", "", "getByOriginMediaId", "Ljava/util/LinkedList;", "originMediaId", "insert", "", "item", "isExist", "isExistWithOriginMediaId", "update", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperationStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getAllData", "", "insert", "", "item", "remove", "", "localId", "", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends MAutoStorage<av>
+  extends MAutoStorage<s>
 {
-  public static final a Alx;
+  public static final a FKW;
   private static final String[] SQL_CREATE;
-  public final ISQLiteDatabase db;
+  private static final String TABLE_NAME;
+  private static final String TAG;
+  private final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(167026);
-    Alx = new a((byte)0);
-    av.a locala = av.zBi;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(av.access$getInfo$cp(), "FinderMediaCacheInfoV2") };
-    AppMethodBeat.o(167026);
+    AppMethodBeat.i(339275);
+    FKW = new a((byte)0);
+    TAG = "Finder.FinderLocalOperationStorage";
+    TABLE_NAME = "FinderLocalOperation";
+    s.a locala = s.FKV;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(s.access$getInfo$cp(), "FinderLocalOperation") };
+    AppMethodBeat.o(339275);
   }
   
   public t(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, av.access$getInfo$cp(), "FinderMediaCacheInfoV2", cq.INDEX_CREATE);
-    AppMethodBeat.i(167025);
+    super(paramISQLiteDatabase, s.access$getInfo$cp(), "FinderLocalOperation", cx.INDEX_CREATE);
+    AppMethodBeat.i(339255);
     this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(167025);
+    AppMethodBeat.o(339255);
   }
   
-  public final av aEJ(String paramString)
+  public final List<s> eZt()
   {
-    AppMethodBeat.i(167023);
-    p.k(paramString, "mediaId");
-    Object localObject = "select *, rowid from FinderMediaCacheInfoV2  where mediaId = '" + paramString + "' ";
-    localObject = this.db.rawQuery((String)localObject, null);
-    av localav = new av();
-    localav.field_mediaId = paramString;
-    if (localObject != null)
+    AppMethodBeat.i(339290);
+    Object localObject = new ArrayList();
+    Cursor localCursor = this.db.rawQuery("select * from FinderLocalOperation", null);
+    if (localCursor != null)
     {
-      if (((Cursor)localObject).moveToFirst()) {
-        localav.convertFrom((Cursor)localObject);
+      while (localCursor.moveToNext())
+      {
+        s locals = new s();
+        locals.convertFrom(localCursor);
+        ((ArrayList)localObject).add(locals);
       }
-      ((Cursor)localObject).close();
+      localCursor.close();
     }
-    for (;;)
-    {
-      AppMethodBeat.o(167023);
-      return localav;
-      Log.w("Finder.FinderMediaCacheStorage", "getByMediaId mediaId:" + paramString + ", cursor is null.");
-    }
+    Log.i(TAG, kotlin.g.b.s.X("getAllData size:", Integer.valueOf(((ArrayList)localObject).size())));
+    localObject = (List)localObject;
+    AppMethodBeat.o(339290);
+    return localObject;
   }
   
-  public final boolean b(av paramav)
-  {
-    AppMethodBeat.i(167020);
-    p.k(paramav, "item");
-    boolean bool = super.insert((IAutoDBItem)paramav);
-    AppMethodBeat.o(167020);
-    return bool;
-  }
-  
-  public final boolean c(av paramav)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(167022);
-    p.k(paramav, "item");
-    ContentValues localContentValues = paramav.convertTo();
-    localContentValues.remove("rowid");
-    if (this.db.update(getTableName(), localContentValues, "mediaId = ?", new String[] { Util.nullAsNil(localContentValues.getAsString("mediaId")) }) > 0)
-    {
-      if (!bool) {
-        break label79;
-      }
-      doNotify();
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(167022);
-      return bool;
-      bool = false;
-      break;
-      label79:
-      Log.e("Finder.FinderMediaCacheStorage", "[update] failure. " + paramav.field_mediaId);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderMediaCacheStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "Table", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperationStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE_NAME", "getTABLE_NAME", "()Ljava/lang/String;", "TAG", "getTAG", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.t
  * JD-Core Version:    0.7.0.1
  */

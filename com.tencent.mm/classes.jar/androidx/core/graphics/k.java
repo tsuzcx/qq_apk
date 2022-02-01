@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import androidx.core.content.a.c.b;
 import androidx.core.content.a.c.c;
-import androidx.core.d.b.b;
+import androidx.core.d.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.InputStream;
@@ -14,18 +14,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 class k
 {
-  private ConcurrentHashMap<Long, c.b> KG;
+  private ConcurrentHashMap<Long, c.b> bqO;
   
   k()
   {
-    AppMethodBeat.i(250779);
-    this.KG = new ConcurrentHashMap();
-    AppMethodBeat.o(250779);
+    AppMethodBeat.i(196060);
+    this.bqO = new ConcurrentHashMap();
+    AppMethodBeat.o(196060);
   }
   
   private static <T> T a(T[] paramArrayOfT, int paramInt, a<T> parama)
   {
-    AppMethodBeat.i(250781);
+    AppMethodBeat.i(196074);
     int i;
     int i1;
     label24:
@@ -49,8 +49,8 @@ class k
         break label142;
       }
       ? = paramArrayOfT[paramInt];
-      m = Math.abs(parama.B(?) - i);
-      if (parama.A(?) != i1) {
+      m = Math.abs(parama.aA(?) - i);
+      if (parama.az(?) != i1) {
         break label136;
       }
     }
@@ -78,16 +78,16 @@ class k
       break label24;
     }
     label142:
-    AppMethodBeat.o(250781);
+    AppMethodBeat.o(196074);
     return localObject;
   }
   
-  private static long b(Typeface paramTypeface)
+  private static long e(Typeface paramTypeface)
   {
-    AppMethodBeat.i(250782);
+    AppMethodBeat.i(196085);
     if (paramTypeface == null)
     {
-      AppMethodBeat.o(250782);
+      AppMethodBeat.o(196085);
       return 0L;
     }
     try
@@ -95,28 +95,28 @@ class k
       Field localField = Typeface.class.getDeclaredField("native_instance");
       localField.setAccessible(true);
       long l = ((Number)localField.get(paramTypeface)).longValue();
-      AppMethodBeat.o(250782);
+      AppMethodBeat.o(196085);
       return l;
     }
     catch (NoSuchFieldException paramTypeface)
     {
-      AppMethodBeat.o(250782);
+      AppMethodBeat.o(196085);
       return 0L;
     }
     catch (IllegalAccessException paramTypeface)
     {
-      AppMethodBeat.o(250782);
+      AppMethodBeat.o(196085);
     }
     return 0L;
   }
   
   public Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(250787);
-    paramContext = l.T(paramContext);
+    AppMethodBeat.i(196145);
+    paramContext = l.ai(paramContext);
     if (paramContext == null)
     {
-      AppMethodBeat.o(250787);
+      AppMethodBeat.o(196145);
       return null;
     }
     try
@@ -135,35 +135,35 @@ class k
     finally
     {
       paramContext.delete();
-      AppMethodBeat.o(250787);
+      AppMethodBeat.o(196145);
     }
   }
   
   public Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    AppMethodBeat.i(250786);
-    c.c localc = (c.c)a(paramb.Ka, paramInt, new a() {});
+    AppMethodBeat.i(196136);
+    c.c localc = (c.c)a(paramb.bqf, paramInt, new a() {});
     if (localc == null)
     {
-      AppMethodBeat.o(250786);
+      AppMethodBeat.o(196136);
       return null;
     }
-    paramContext = e.a(paramContext, paramResources, localc.Kf, localc.mFileName, paramInt);
-    long l = b(paramContext);
+    paramContext = e.a(paramContext, paramResources, localc.bqk, localc.mFileName, paramInt);
+    long l = e(paramContext);
     if (l != 0L) {
-      this.KG.put(Long.valueOf(l), paramb);
+      this.bqO.put(Long.valueOf(l), paramb);
     }
-    AppMethodBeat.o(250786);
+    AppMethodBeat.o(196136);
     return paramContext;
   }
   
   protected Typeface a(Context paramContext, InputStream paramInputStream)
   {
-    AppMethodBeat.i(250784);
-    paramContext = l.T(paramContext);
+    AppMethodBeat.i(196110);
+    paramContext = l.ai(paramContext);
     if (paramContext == null)
     {
-      AppMethodBeat.o(250784);
+      AppMethodBeat.o(196110);
       return null;
     }
     try
@@ -182,12 +182,12 @@ class k
     finally
     {
       paramContext.delete();
-      AppMethodBeat.o(250784);
+      AppMethodBeat.o(196110);
     }
   }
   
   /* Error */
-  public Typeface a(Context paramContext, b.b[] paramArrayOfb, int paramInt)
+  public Typeface a(Context paramContext, e.b[] paramArrayOfb, int paramInt)
   {
     // Byte code:
     //   0: ldc 161
@@ -202,12 +202,12 @@ class k
     //   17: aload_0
     //   18: aload_2
     //   19: iload_3
-    //   20: invokevirtual 164	androidx/core/graphics/k:a	([Landroidx/core/d/b$b;I)Landroidx/core/d/b$b;
+    //   20: invokevirtual 164	androidx/core/graphics/k:a	([Landroidx/core/d/e$b;I)Landroidx/core/d/e$b;
     //   23: astore_2
     //   24: aload_1
     //   25: invokevirtual 170	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   28: aload_2
-    //   29: getfield 176	androidx/core/d/b$b:mUri	Landroid/net/Uri;
+    //   29: getfield 176	androidx/core/d/e$b:mUri	Landroid/net/Uri;
     //   32: invokevirtual 182	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   35: astore_2
     //   36: aload_0
@@ -247,7 +247,7 @@ class k
     //   start	length	slot	name	signature
     //   0	90	0	this	k
     //   0	90	1	paramContext	Context
-    //   0	90	2	paramArrayOfb	b.b[]
+    //   0	90	2	paramArrayOfb	e.b[]
     //   0	90	3	paramInt	int
     // Exception table:
     //   from	to	target	type
@@ -257,24 +257,24 @@ class k
     //   36	43	86	java/io/IOException
   }
   
-  protected b.b a(b.b[] paramArrayOfb, int paramInt)
+  protected e.b a(e.b[] paramArrayOfb, int paramInt)
   {
-    AppMethodBeat.i(250783);
-    paramArrayOfb = (b.b)a(paramArrayOfb, paramInt, new a() {});
-    AppMethodBeat.o(250783);
+    AppMethodBeat.i(196095);
+    paramArrayOfb = (e.b)a(paramArrayOfb, paramInt, new a() {});
+    AppMethodBeat.o(196095);
     return paramArrayOfb;
   }
   
   static abstract interface a<T>
   {
-    public abstract boolean A(T paramT);
+    public abstract int aA(T paramT);
     
-    public abstract int B(T paramT);
+    public abstract boolean az(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.graphics.k
  * JD-Core Version:    0.7.0.1
  */

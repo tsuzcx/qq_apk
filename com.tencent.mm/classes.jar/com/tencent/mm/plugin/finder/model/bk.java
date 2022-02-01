@@ -1,46 +1,41 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.cs;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.plugin.finder.storage.av;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderOrAliasDeletingInfo;", "Lcom/tencent/mm/autogen/table/BaseFinderOrAliasDeletingInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "toString", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderMsgNotify;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bk
-  extends cs
+  extends a
 {
-  private static final IAutoDBItem.MAutoDBInfo info;
-  public static final a zBl;
-  
-  static
+  public bk(av paramav)
   {
-    AppMethodBeat.i(270834);
-    zBl = new a((byte)0);
-    info = cs.aoY();
-    AppMethodBeat.o(270834);
+    super(paramav);
+    AppMethodBeat.i(166409);
+    AppMethodBeat.o(166409);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(270832);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
-    p.j(localMAutoDBInfo, "info");
-    AppMethodBeat.o(270832);
-    return localMAutoDBInfo;
+    AppMethodBeat.i(166408);
+    s.u(paramk, "obj");
+    AppMethodBeat.o(166408);
+    return 0;
   }
   
-  public final String toString()
+  public final int bZB()
   {
-    return "";
+    AppMethodBeat.i(166407);
+    int i = bk.class.getName().hashCode();
+    AppMethodBeat.o(166407);
+    return i;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderOrAliasDeletingInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.bk
  * JD-Core Version:    0.7.0.1
  */

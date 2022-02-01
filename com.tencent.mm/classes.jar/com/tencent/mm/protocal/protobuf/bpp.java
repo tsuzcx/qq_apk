@@ -1,126 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class bpp
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<mw> Tbi;
-  public int rVx;
-  
-  public bpp()
-  {
-    AppMethodBeat.i(152560);
-    this.Tbi = new LinkedList();
-    AppMethodBeat.o(152560);
-  }
+  public long AAW;
+  public String hJS;
+  public int opType;
+  public long refObjectId;
+  public String refObjectNonceId;
+  public String scene;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152561);
+    AppMethodBeat.i(169012);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(152561);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.opType);
+      paramVarArgs.bv(2, this.refObjectId);
+      paramVarArgs.bv(3, this.AAW);
+      if (this.username != null) {
+        paramVarArgs.g(4, this.username);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.hJS != null) {
+        paramVarArgs.g(5, this.hJS);
       }
-      paramVarArgs.aY(2, this.rVx);
-      paramVarArgs.e(3, 8, this.Tbi);
-      AppMethodBeat.o(152561);
+      if (this.refObjectNonceId != null) {
+        paramVarArgs.g(6, this.refObjectNonceId);
+      }
+      if (this.scene != null) {
+        paramVarArgs.g(7, this.scene);
+      }
+      AppMethodBeat.o(169012);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label502;
-      }
-    }
-    label502:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(2, this.rVx);
-      int j = g.a.a.a.c(3, 8, this.Tbi);
-      AppMethodBeat.o(152561);
-      return paramInt + i + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Tbi.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(152561);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152561);
-        return 0;
+      int i = i.a.a.b.b.a.cJ(1, this.opType) + 0 + i.a.a.b.b.a.q(2, this.refObjectId) + i.a.a.b.b.a.q(3, this.AAW);
+      paramInt = i;
+      if (this.username != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.username);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        bpp localbpp = (bpp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(152561);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
-            }
-            localbpp.BaseResponse = ((jh)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(152561);
-          return 0;
-        case 2: 
-          localbpp.rVx = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(152561);
-          return 0;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new mw();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((mw)localObject2).parseFrom((byte[])localObject1);
-          }
-          localbpp.Tbi.add(localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(152561);
-        return 0;
+      i = paramInt;
+      if (this.hJS != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.hJS);
       }
-      AppMethodBeat.o(152561);
-      return -1;
+      paramInt = i;
+      if (this.refObjectNonceId != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.refObjectNonceId);
+      }
+      i = paramInt;
+      if (this.scene != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.scene);
+      }
+      AppMethodBeat.o(169012);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(169012);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+      bpp localbpp = (bpp)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(169012);
+        return -1;
+      case 1: 
+        localbpp.opType = locala.ajGk.aar();
+        AppMethodBeat.o(169012);
+        return 0;
+      case 2: 
+        localbpp.refObjectId = locala.ajGk.aaw();
+        AppMethodBeat.o(169012);
+        return 0;
+      case 3: 
+        localbpp.AAW = locala.ajGk.aaw();
+        AppMethodBeat.o(169012);
+        return 0;
+      case 4: 
+        localbpp.username = locala.ajGk.readString();
+        AppMethodBeat.o(169012);
+        return 0;
+      case 5: 
+        localbpp.hJS = locala.ajGk.readString();
+        AppMethodBeat.o(169012);
+        return 0;
+      case 6: 
+        localbpp.refObjectNonceId = locala.ajGk.readString();
+        AppMethodBeat.o(169012);
+        return 0;
+      }
+      localbpp.scene = locala.ajGk.readString();
+      AppMethodBeat.o(169012);
+      return 0;
+    }
+    AppMethodBeat.o(169012);
+    return -1;
   }
 }
 

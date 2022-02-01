@@ -1,63 +1,63 @@
 package com.tencent.mm.plugin.findersdk.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.protocal.protobuf.avx;
-import com.tencent.mm.protocal.protobuf.avy;
-import com.tencent.mm.protocal.protobuf.biv;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.bbf;
+import com.tencent.mm.protocal.protobuf.bbg;
+import com.tencent.mm.protocal.protobuf.bve;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/cgi/CgiFinderGetTopicFeed;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "topic", "", "topicType", "", "refObjectId", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;ILjava/lang/Long;Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getRefObjectId", "()Ljava/lang/Long;", "Ljava/lang/Long;", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "getTopic", "()Ljava/lang/String;", "getTopicType", "()I", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "finder-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/cgi/CgiFinderGetTopicFeed;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetTopicListResponse;", "topic", "", "topicType", "", "refObjectId", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;ILjava/lang/Long;Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getRefObjectId", "()Ljava/lang/Long;", "Ljava/lang/Long;", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "getTopic", "()Ljava/lang/String;", "getTopicType", "()I", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends c<avy>
+  extends c<bbg>
 {
-  public static final a Bvu;
+  public static final a HcD;
+  private final bve ACr;
+  private final int Auy;
+  private final Long Bjx;
   private final b lastBuffer;
   private final String topic;
-  private final int wXA;
-  private final Long xJH;
-  private final biv xcZ;
   
   static
   {
-    AppMethodBeat.i(208821);
-    Bvu = new a((byte)0);
-    AppMethodBeat.o(208821);
+    AppMethodBeat.i(273913);
+    HcD = new a((byte)0);
+    AppMethodBeat.o(273913);
   }
   
   public a(String paramString, Long paramLong)
   {
     super(null);
-    AppMethodBeat.i(208820);
+    AppMethodBeat.i(273903);
     this.topic = paramString;
-    this.wXA = 4;
-    this.xJH = paramLong;
+    this.Auy = 4;
+    this.Bjx = paramLong;
     this.lastBuffer = null;
-    this.xcZ = null;
-    paramString = new avx();
-    paramString.wXA = this.wXA;
+    this.ACr = null;
+    paramString = new bbf();
+    paramString.Auy = this.Auy;
     paramString.topic = this.topic;
-    paramString.SDI = this.lastBuffer;
-    paramLong = this.xJH;
+    paramString.ZEQ = this.lastBuffer;
+    paramLong = this.Bjx;
     if (paramLong != null)
     {
       ((Number)paramLong).longValue();
-      paramString.wZw = this.xJH.longValue();
+      paramString.Avd = this.Bjx.longValue();
     }
-    paramString.xcZ = this.xcZ;
-    paramLong = new d.a();
-    paramLong.c((com.tencent.mm.cd.a)paramString);
-    paramLong.vD(817);
-    paramLong.d((com.tencent.mm.cd.a)new avy());
-    paramLong.TW("/cgi-bin/micromsg-bin/findergettopiclist");
-    c(paramLong.bgN());
-    Log.i("Finder.CgiFinderGetTopicFeed", "NetSceneFinderGetTopicFeed get word init: " + this.topic + ", " + this.xJH);
-    AppMethodBeat.o(208820);
+    paramString.ACr = this.ACr;
+    paramLong = new c.a();
+    paramLong.otE = ((com.tencent.mm.bx.a)paramString);
+    paramLong.funcId = 817;
+    paramLong.otF = ((com.tencent.mm.bx.a)new bbg());
+    paramLong.uri = "/cgi-bin/micromsg-bin/findergettopiclist";
+    c(paramLong.bEF());
+    Log.i("Finder.CgiFinderGetTopicFeed", "NetSceneFinderGetTopicFeed get word init: " + this.topic + ", " + this.Bjx);
+    AppMethodBeat.o(273903);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/findersdk/cgi/CgiFinderGetTopicFeed$Companion;", "", "()V", "TAG", "", "finder-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/cgi/CgiFinderGetTopicFeed$Companion;", "", "()V", "TAG", "", "finder-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

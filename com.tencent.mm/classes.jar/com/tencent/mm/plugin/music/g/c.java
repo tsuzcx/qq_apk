@@ -11,11 +11,11 @@ public final class c
   implements IDataSourceFactory
 {
   public ByteBuffer buffer;
-  public e lzV;
+  public e orw;
   
   public c(e parame)
   {
-    this.lzV = parame;
+    this.orw = parame;
   }
   
   public c(ByteBuffer paramByteBuffer)
@@ -32,7 +32,7 @@ public final class c
       AppMethodBeat.o(137426);
       return localObject;
     }
-    Object localObject = new b(this.lzV);
+    Object localObject = new b(this.orw);
     AppMethodBeat.o(137426);
     return localObject;
   }
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.music.g.c
  * JD-Core Version:    0.7.0.1
  */

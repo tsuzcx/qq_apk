@@ -9,59 +9,59 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ToggleButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SpecialCheckBoxPreference
   extends Preference
 {
-  private ToggleButton Rri;
-  private ToggleButton Rrj;
-  private ToggleButton Rrk;
-  private CompoundButton.OnCheckedChangeListener Rrl;
-  private boolean fKN;
-  private boolean iXZ;
-  private boolean iYs;
+  private ToggleButton YnA;
+  private ToggleButton YnB;
+  private CompoundButton.OnCheckedChangeListener YnC;
+  private ToggleButton Ynz;
+  private boolean hQu;
+  private boolean lAj;
+  private boolean lzS;
   private Context mContext;
   private String roomId;
-  private as uNk;
+  private au xVS;
   
   public SpecialCheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31914);
-    this.Rrl = new CompoundButton.OnCheckedChangeListener()
+    this.YnC = new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(31913);
         int i = paramAnonymousCompoundButton.getId();
-        if (i == R.h.dSZ)
+        if (i == R.h.fVf)
         {
           SpecialCheckBoxPreference.a(SpecialCheckBoxPreference.this);
           AppMethodBeat.o(31913);
           return;
         }
-        if (i == R.h.dSY)
+        if (i == R.h.fVe)
         {
           SpecialCheckBoxPreference.b(SpecialCheckBoxPreference.this);
           AppMethodBeat.o(31913);
           return;
         }
-        if (i == R.h.dTa) {
+        if (i == R.h.fVg) {
           SpecialCheckBoxPreference.c(SpecialCheckBoxPreference.this);
         }
         AppMethodBeat.o(31913);
       }
     };
-    this.iYs = false;
+    this.lAj = false;
     this.mContext = paramContext;
     AppMethodBeat.o(31914);
   }
@@ -70,61 +70,61 @@ public class SpecialCheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31915);
-    this.Rrl = new CompoundButton.OnCheckedChangeListener()
+    this.YnC = new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(31913);
         int i = paramAnonymousCompoundButton.getId();
-        if (i == R.h.dSZ)
+        if (i == R.h.fVf)
         {
           SpecialCheckBoxPreference.a(SpecialCheckBoxPreference.this);
           AppMethodBeat.o(31913);
           return;
         }
-        if (i == R.h.dSY)
+        if (i == R.h.fVe)
         {
           SpecialCheckBoxPreference.b(SpecialCheckBoxPreference.this);
           AppMethodBeat.o(31913);
           return;
         }
-        if (i == R.h.dTa) {
+        if (i == R.h.fVg) {
           SpecialCheckBoxPreference.c(SpecialCheckBoxPreference.this);
         }
         AppMethodBeat.o(31913);
       }
     };
-    this.iYs = false;
+    this.lAj = false;
     this.mContext = paramContext;
     AppMethodBeat.o(31915);
   }
   
-  private boolean hmT()
+  private boolean iNJ()
   {
     AppMethodBeat.i(31917);
     boolean bool;
-    if (this.fKN) {
-      if (this.uNk.hDj == 0)
+    if (this.hQu) {
+      if (this.xVS.kaf == 0)
       {
         bool = true;
-        this.iYs = bool;
+        this.lAj = bool;
       }
     }
     for (;;)
     {
       if ((this.mContext instanceof MMActivity))
       {
-        if (this.iYs)
+        if (this.lAj)
         {
           ((MMActivity)this.mContext).setTitleMuteIconVisibility(0);
           AppMethodBeat.o(31917);
           return true;
           bool = false;
           break;
-          if (this.iXZ) {
+          if (this.lzS) {
             continue;
           }
-          this.iYs = this.uNk.aeg();
+          this.lAj = this.xVS.aGe();
           continue;
         }
         ((MMActivity)this.mContext).setTitleMuteIconVisibility(8);
@@ -140,25 +140,25 @@ public class SpecialCheckBoxPreference
   {
     AppMethodBeat.i(31916);
     super.onBindView(paramView);
-    this.Rri = ((ToggleButton)paramView.findViewById(R.h.dSZ));
-    this.Rrj = ((ToggleButton)paramView.findViewById(R.h.dSY));
-    this.Rrk = ((ToggleButton)paramView.findViewById(R.h.dTa));
+    this.Ynz = ((ToggleButton)paramView.findViewById(R.h.fVf));
+    this.YnA = ((ToggleButton)paramView.findViewById(R.h.fVe));
+    this.YnB = ((ToggleButton)paramView.findViewById(R.h.fVg));
     this.roomId = ((MMActivity)this.mContext).getIntent().getStringExtra("RoomInfo_Id");
-    this.fKN = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Chatroom", true);
-    this.iXZ = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Lbsroom", false);
-    bh.beI();
-    this.uNk = c.bbL().RG(this.roomId);
-    if (this.uNk != null)
+    this.hQu = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Chatroom", true);
+    this.lzS = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Lbsroom", false);
+    bh.bCz();
+    this.xVS = c.bzA().JE(this.roomId);
+    if (this.xVS != null)
     {
-      paramView = this.Rri;
-      bh.beI();
-      paramView.setChecked(c.bbR().bwF(this.uNk.field_username));
-      this.Rrk.setChecked(d.rk(this.uNk.field_type));
-      this.Rrj.setChecked(hmT());
+      paramView = this.Ynz;
+      bh.bCz();
+      paramView.setChecked(c.bzG().bxV(this.xVS.field_username));
+      this.YnB.setChecked(d.rs(this.xVS.field_type));
+      this.YnA.setChecked(iNJ());
     }
-    this.Rri.setOnCheckedChangeListener(this.Rrl);
-    this.Rrj.setOnCheckedChangeListener(this.Rrl);
-    this.Rrk.setOnCheckedChangeListener(this.Rrl);
+    this.Ynz.setOnCheckedChangeListener(this.YnC);
+    this.YnA.setOnCheckedChangeListener(this.YnC);
+    this.YnB.setOnCheckedChangeListener(this.YnC);
     AppMethodBeat.o(31916);
   }
 }

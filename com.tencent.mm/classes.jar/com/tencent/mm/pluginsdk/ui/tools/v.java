@@ -1,128 +1,78 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.webkit.MimeTypeMap;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
 
 public final class v
 {
-  public Context context;
-  public String filePath;
-  public int fileType;
-  public Uri uri;
+  private static int Yut = -1;
   
-  public v(Context paramContext, Uri paramUri)
+  public static void a(View paramView, VideoSightView paramVideoSightView)
   {
-    AppMethodBeat.i(152425);
-    this.fileType = 0;
-    this.context = paramContext;
-    this.uri = paramUri;
-    if (paramUri == null)
+    AppMethodBeat.i(116268);
+    if ((paramView == null) || (paramVideoSightView == null))
     {
-      Log.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
-      AppMethodBeat.o(152425);
+      Log.e("VideoSightHelper", "null view object " + paramView + "," + paramVideoSightView);
+      AppMethodBeat.o(116268);
       return;
     }
-    if (this.context == null)
-    {
-      Log.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
-      AppMethodBeat.o(152425);
-      return;
-    }
-    Object localObject2 = MimeTypeMap.getSingleton();
-    paramContext = this.context.getContentResolver().getType(paramUri);
-    int i;
-    if ((paramContext == null) || (paramContext.length() <= 0))
-    {
-      if (paramUri.getPath() != null)
+    if (paramView.getVisibility() == 0) {
+      paramVideoSightView.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
       {
-        localObject1 = new q(paramUri.getPath());
-        if (!((q)localObject1).ifE())
+        public final void onLayoutChange(final View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
         {
-          Log.e("MicroMsg.UriFileHelper", "File is null");
-          this.fileType = 0;
-          AppMethodBeat.o(152425);
-          return;
+          AppMethodBeat.i(116267);
+          paramAnonymousInt1 = paramAnonymousInt4 - paramAnonymousInt2;
+          if ((paramAnonymousInt1 > 0) && (paramAnonymousInt8 - paramAnonymousInt6 != paramAnonymousInt1)) {
+            paramAnonymousView.post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(116266);
+                int j = paramAnonymousView.getResources().getDisplayMetrics().heightPixels - paramAnonymousView.getHeight() >>> 1;
+                int i = (int)(j / 1.618D - (v.this.getHeight() >>> 1));
+                if (i >= 0)
+                {
+                  if (v.Yut < 0) {
+                    v.access$002(BackwardSupportUtil.BitmapFactory.fromDPToPix(paramAnonymousView.getContext(), 20.0F));
+                  }
+                  if (v.this.getHeight() + i + v.Yut <= j) {
+                    break label192;
+                  }
+                  i -= v.this.getHeight() + i + v.Yut - j;
+                }
+                label192:
+                for (;;)
+                {
+                  RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)v.this.getLayoutParams();
+                  if ((i > 0) && (i != localLayoutParams.bottomMargin))
+                  {
+                    Log.i("VideoSightHelper", "setting tip marginBottom ".concat(String.valueOf(i)));
+                    localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, i);
+                    v.this.setLayoutParams(localLayoutParams);
+                  }
+                  AppMethodBeat.o(116266);
+                  return;
+                }
+              }
+            });
+          }
+          AppMethodBeat.o(116267);
         }
-        this.filePath = ((q)localObject1).bOF();
-        i = this.filePath.lastIndexOf(".");
-        if ((i == -1) || (i >= this.filePath.length() - 1)) {
-          this.fileType = 1;
-        }
-        while ((paramContext == null) || (this.filePath == null))
-        {
-          this.fileType = 0;
-          AppMethodBeat.o(152425);
-          return;
-          paramContext = ((MimeTypeMap)localObject2).getMimeTypeFromExtension(this.filePath.substring(i + 1));
-        }
-      }
+      });
     }
-    else
-    {
-      if (this.context != null) {
-        break label244;
-      }
-      Log.e("MicroMsg.UriFileHelper", "getFilePath context == null");
-    }
-    for (;;)
-    {
-      this.filePath = ((String)localObject1);
-      break;
-      label244:
-      localObject2 = this.context.getContentResolver().query(paramUri, null, null, null, null);
-      if (localObject2 == null)
-      {
-        Log.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
-      }
-      else if ((((Cursor)localObject2).getCount() <= 0) || (!((Cursor)localObject2).moveToFirst()))
-      {
-        ((Cursor)localObject2).close();
-        Log.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
-      }
-      else
-      {
-        i = ((Cursor)localObject2).getColumnIndex("_data");
-        if (i == -1)
-        {
-          ((Cursor)localObject2).close();
-          Log.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
-        }
-        else
-        {
-          localObject1 = ((Cursor)localObject2).getString(i);
-          ((Cursor)localObject2).close();
-        }
-      }
-    }
-    if (paramContext.contains("image")) {
-      this.fileType = 3;
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
-      AppMethodBeat.o(152425);
-      return;
-      if (paramContext.contains("video")) {
-        this.fileType = 4;
-      } else if (paramContext.contains("audio")) {
-        this.fileType = 5;
-      } else if (paramContext.contains("mm_item")) {
-        this.fileType = 2;
-      } else {
-        this.fileType = 1;
-      }
-    }
+    AppMethodBeat.o(116268);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.v
  * JD-Core Version:    0.7.0.1
  */

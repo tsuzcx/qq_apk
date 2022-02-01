@@ -13,22 +13,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.f;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ui.h.a.a;
+import com.tencent.mm.ui.i.a.a;
 
 public final class HeadImgAndNamePreference
   extends Preference
 {
-  private View.OnClickListener Fms;
-  private View WqQ;
-  private LinearLayout WqR;
-  private String WqS;
-  private boolean WqT;
-  private boolean WqU;
-  private a WqV;
+  private View adYf;
+  private LinearLayout adYg;
+  private String adYh;
+  private boolean adYi;
+  private boolean adYj;
+  private a adYk;
   private int height;
-  private ImageView jmf;
-  private TextView mrM;
-  private ImageView txC;
+  private ImageView lPb;
+  private TextView plr;
+  private View.OnClickListener tyA;
+  private ImageView wBY;
   
   public HeadImgAndNamePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,8 +40,8 @@ public final class HeadImgAndNamePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164162);
     this.height = -1;
-    this.WqU = false;
-    this.WqV = null;
+    this.adYj = false;
+    this.adYk = null;
     setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(164162);
   }
@@ -50,37 +50,37 @@ public final class HeadImgAndNamePreference
   {
     AppMethodBeat.i(164165);
     super.onBindView(paramView);
-    if (this.txC == null) {
-      this.txC = ((ImageView)paramView.findViewById(a.g.image_headimg));
+    if (this.wBY == null) {
+      this.wBY = ((ImageView)paramView.findViewById(a.g.image_headimg));
     }
-    if (this.mrM == null) {
-      this.mrM = ((TextView)paramView.findViewById(a.g.no_header_icon_tip));
+    if (this.plr == null) {
+      this.plr = ((TextView)paramView.findViewById(a.g.no_header_icon_tip));
     }
-    if (this.WqQ == null) {
-      this.WqQ = paramView.findViewById(a.g.mask_header_icon);
+    if (this.adYf == null) {
+      this.adYf = paramView.findViewById(a.g.mask_header_icon);
     }
-    if (this.Fms != null) {
-      this.WqQ.setOnClickListener(this.Fms);
+    if (this.tyA != null) {
+      this.adYf.setOnClickListener(this.tyA);
     }
-    if (this.WqS != null)
+    if (this.adYh != null)
     {
-      if (this.WqV == null)
+      if (this.adYk == null)
       {
-        if (this.WqT) {
-          a.d(this.txC, this.WqS);
+        if (this.adYi) {
+          a.h(this.wBY, this.adYh);
         }
       }
       else {
-        this.WqS = null;
+        this.adYh = null;
       }
     }
     else
     {
-      if (this.WqU) {
+      if (this.adYj) {
         break label196;
       }
-      this.WqQ.setVisibility(8);
-      this.mrM.setVisibility(0);
+      this.adYf.setVisibility(8);
+      this.plr.setVisibility(0);
     }
     for (;;)
     {
@@ -90,15 +90,15 @@ public final class HeadImgAndNamePreference
       }
       AppMethodBeat.o(164165);
       return;
-      a.c(this.txC, this.WqS);
+      a.g(this.wBY, this.adYh);
       break;
       label196:
-      this.mrM.setVisibility(8);
-      this.WqQ.setVisibility(0);
-      if (this.WqT) {
-        this.WqQ.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_round_icon_click));
+      this.plr.setVisibility(8);
+      this.adYf.setVisibility(0);
+      if (this.adYi) {
+        this.adYf.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_round_icon_click));
       } else {
-        this.WqQ.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_icon_click));
+        this.adYf.setBackground(this.mContext.getDrawable(a.f.self_qrcode_header_icon_click));
       }
     }
   }
@@ -110,11 +110,11 @@ public final class HeadImgAndNamePreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
     View.inflate(this.mContext, a.h.mm_preference_content_avatar_name, localViewGroup);
-    this.txC = ((ImageView)paramViewGroup.findViewById(a.g.image_headimg));
-    this.WqQ = paramViewGroup.findViewById(a.g.mask_header_img);
-    this.WqR = ((LinearLayout)paramViewGroup.findViewById(a.g.desc_layout));
-    this.jmf = ((ImageView)paramViewGroup.findViewById(a.g.icon));
-    this.mrM = ((TextView)paramViewGroup.findViewById(a.g.desc));
+    this.wBY = ((ImageView)paramViewGroup.findViewById(a.g.image_headimg));
+    this.adYf = paramViewGroup.findViewById(a.g.mask_header_img);
+    this.adYg = ((LinearLayout)paramViewGroup.findViewById(a.g.desc_layout));
+    this.lPb = ((ImageView)paramViewGroup.findViewById(a.g.icon));
+    this.plr = ((TextView)paramViewGroup.findViewById(a.g.desc));
     AppMethodBeat.o(164163);
     return paramViewGroup;
   }
@@ -123,7 +123,7 @@ public final class HeadImgAndNamePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.HeadImgAndNamePreference
  * JD-Core Version:    0.7.0.1
  */

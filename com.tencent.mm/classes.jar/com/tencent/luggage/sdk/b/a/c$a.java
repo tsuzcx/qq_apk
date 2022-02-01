@@ -1,9 +1,9 @@
 package com.tencent.luggage.sdk.b.a;
 
-import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 
 public final class c$a
-  extends d
+  extends e
 {
   static final int CTRL_INDEX = 237;
   static final String NAME = "config_navigationBarRightButton";

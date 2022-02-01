@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.a;
 
+import android.content.res.AssetFileDescriptor;
 import com.tencent.thumbplayer.a.a.c.h;
 import com.tencent.thumbplayer.a.a.e;
 import com.tencent.thumbplayer.api.TPVideoInfo;
@@ -22,9 +23,11 @@ public abstract interface a
   
   public abstract int getPlayerType();
   
-  public abstract b iql();
-  
   public abstract boolean isPlaying();
+  
+  public abstract b jZG();
+  
+  public abstract void setDataSource(AssetFileDescriptor paramAssetFileDescriptor);
   
   public abstract void setOnPlayerStateChangeListener(c.h paramh);
   
@@ -32,7 +35,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class WakerLock
   private static long lastChecktime = 0L;
   private static Boolean shouldLock = null;
   private byte _hellAccFlag_;
-  private WakerLock.IAutoUnlockCallback autoUnlockCallback = null;
+  private IAutoUnlockCallback autoUnlockCallback = null;
   private Context context;
   private String mCreatePosStackLine = null;
   private MMHandler mHandler = null;
@@ -34,14 +34,19 @@ public class WakerLock
   
   public WakerLock(Context paramContext, String paramString)
   {
-    this.wakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(1, paramString);
+    this(paramContext, paramString, 1);
+  }
+  
+  public WakerLock(Context paramContext, String paramString, int paramInt)
+  {
+    this.wakeLock = ((PowerManager)paramContext.getSystemService("power")).newWakeLock(paramInt, paramString);
     this.wakeLock.setReferenceCounted(false);
     this.mHandler = new MMHandler(paramContext.getMainLooper());
     this.context = paramContext;
     Log.i("MicroMsg.WakerLock", "init [%d,%d] @[%s]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.wakeLock.hashCode()), this.mCreatePosStackLine });
   }
   
-  public WakerLock(Context paramContext, String paramString, WakerLock.IAutoUnlockCallback paramIAutoUnlockCallback)
+  public WakerLock(Context paramContext, String paramString, IAutoUnlockCallback paramIAutoUnlockCallback)
   {
     this(paramContext, paramString);
     this.autoUnlockCallback = paramIAutoUnlockCallback;
@@ -158,10 +163,15 @@ public class WakerLock
       Log.printErrStackTrace("MicroMsg.WakerLock", localException, "", new Object[] { "" });
     }
   }
+  
+  public static abstract interface IAutoUnlockCallback
+  {
+    public abstract void autoUnlockCallback();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.comm.WakerLock
  * JD-Core Version:    0.7.0.1
  */

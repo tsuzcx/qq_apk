@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<ScrollView android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/hw" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/hw" style="@style/lz">
-            <ImageView android:id="@id/hm3" android:paddingBottom="@dimen/hw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bal" />
-            <TextView android:textSize="@dimen/c" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hm2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/ob" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center" android:id="@id/hm1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/ob" />
-            <Button android:id="@id/a4n" android:visibility="gone" android:layout_marginBottom="@dimen/hs" android:text="@string/afp" style="@style/ou" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp">
+            <Button android:id="@id/hwt" android:layout_width="fill_parent" android:text="代码包入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+            <Button android:id="@id/bj2" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="大秒开入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp">
+            <Button android:id="@id/lng" android:layout_width="fill_parent" android:text="Web入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+            <Button android:id="@id/hj" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="广告入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp">
+            <Button android:id="@id/l56" android:layout_width="fill_parent" android:text="频道入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+            <Button android:id="@id/if2" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="推荐入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp">
+            <Button android:id="@id/hp" android:layout_width="fill_parent" android:text="直播入口" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+            <Button android:id="@id/cu9" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="公众号秒开" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp">
+            <Button android:id="@id/aqd" android:layout_width="fill_parent" android:text="Canvas测试" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+            <Button android:id="@id/i7_" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="Profile测试" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:layout_marginTop="@dimen/cp" android:layout_marginRight="@dimen/cp">
+            <Button android:id="@id/acn" android:layout_width="fill_parent" android:text="公众号测试" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+            <Button android:id="@id/hl8" android:visibility="invisible" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/cp" android:text="占位-有新的可以替换掉" android:layout_weight="1.0" android:onClick="onClick" style="@style/oi" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

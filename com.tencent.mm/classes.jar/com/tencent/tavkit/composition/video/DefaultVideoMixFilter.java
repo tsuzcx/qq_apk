@@ -14,25 +14,25 @@ class DefaultVideoMixFilter
 {
   private void checkFillInRenderSize(RenderInfo paramRenderInfo, ImageCollection.TrackImagePair paramTrackImagePair, CIImage paramCIImage)
   {
-    AppMethodBeat.i(212546);
+    AppMethodBeat.i(218989);
     if (!(paramTrackImagePair.getTrack() instanceof TAVClip))
     {
-      AppMethodBeat.o(212546);
+      AppMethodBeat.o(218989);
       return;
     }
     paramTrackImagePair = ((TAVClip)paramTrackImagePair.getTrack()).getVideoConfiguration();
     if (paramTrackImagePair.frameEnable())
     {
-      AppMethodBeat.o(212546);
+      AppMethodBeat.o(218989);
       return;
     }
     paramCIImage.applyFillInFrame(new CGRect(new PointF(0.0F, 0.0F), paramRenderInfo.getRenderSize()), paramTrackImagePair.getContentMode());
-    AppMethodBeat.o(212546);
+    AppMethodBeat.o(218989);
   }
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
   {
-    AppMethodBeat.i(212545);
+    AppMethodBeat.i(219003);
     paramTAVVideoMixEffect = new CIImage(paramRenderInfo.getRenderSize());
     Object localObject1 = paramImageCollection.getVideoChannelImages().iterator();
     Object localObject2;
@@ -51,7 +51,7 @@ class DefaultVideoMixFilter
       checkFillInRenderSize(paramRenderInfo, (ImageCollection.TrackImagePair)localObject1, (CIImage)localObject2);
       ((CIImage)localObject2).imageByCompositingOverImage(paramTAVVideoMixEffect);
     }
-    AppMethodBeat.o(212545);
+    AppMethodBeat.o(219003);
     return paramTAVVideoMixEffect;
   }
   

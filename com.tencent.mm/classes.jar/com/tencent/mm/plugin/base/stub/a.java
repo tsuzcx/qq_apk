@@ -8,7 +8,7 @@ import com.tencent.mm.R.l;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.game.api.b;
 import com.tencent.mm.plugin.game.api.b.a;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 public final class a
   extends d
@@ -18,19 +18,19 @@ public final class a
     super(paramContext, paramString1, paramString2, parama);
   }
   
-  protected final void cxh()
+  protected final void cZS()
   {
     AppMethodBeat.i(22165);
-    h.a(this.context, R.l.eGf, R.l.app_tip, false, new DialogInterface.OnClickListener()
+    k.a(this.context, R.l.gJa, R.l.app_tip, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(22164);
-        paramAnonymousDialogInterface = b.a.evu();
+        paramAnonymousDialogInterface = b.a.fCn();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.k(a.this.openId, z.bdc(), a.this.appId);
+          paramAnonymousDialogInterface.p(a.this.openId, z.bAP(), a.this.appId);
         }
-        a.this.sft.lk(false);
+        a.this.vrh.mC(false);
         AppMethodBeat.o(22164);
       }
     });
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.a
  * JD-Core Version:    0.7.0.1
  */

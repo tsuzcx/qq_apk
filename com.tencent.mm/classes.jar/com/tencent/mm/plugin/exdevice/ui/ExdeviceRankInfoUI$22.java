@@ -15,16 +15,16 @@ final class ExdeviceRankInfoUI$22
   {
     AppMethodBeat.i(24232);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    ExdeviceRankInfoUI.p(this.vqr);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    ExdeviceRankInfoUI.p(this.yCI);
     a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankInfoUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI.22
  * JD-Core Version:    0.7.0.1
  */

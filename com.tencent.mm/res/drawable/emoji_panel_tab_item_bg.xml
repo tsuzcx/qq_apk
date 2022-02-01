@@ -3,9 +3,9 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/ct" />
-            <solid android:color="@color/afz" />
+            <corners android:radius="@dimen/df" />
+            <solid android:color="@color/al2" />
         </shape>
     </item>
-    <item android:drawable="@color/ac_" />
+    <item android:drawable="@color/ahb" />
 </selector>

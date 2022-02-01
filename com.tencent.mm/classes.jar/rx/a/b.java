@@ -7,7 +7,23 @@ import java.util.Set;
 
 public final class b
 {
-  public static void R(Throwable paramThrowable)
+  public static void a(Throwable paramThrowable, rx.e<?> parame)
+  {
+    AppMethodBeat.i(90049);
+    ai(paramThrowable);
+    parame.l(paramThrowable);
+    AppMethodBeat.o(90049);
+  }
+  
+  public static void a(Throwable paramThrowable, rx.e<?> parame, Object paramObject)
+  {
+    AppMethodBeat.i(90048);
+    ai(paramThrowable);
+    parame.l(g.a(paramThrowable, paramObject));
+    AppMethodBeat.o(90048);
+  }
+  
+  public static void ai(Throwable paramThrowable)
   {
     if ((paramThrowable instanceof f)) {
       throw ((f)paramThrowable);
@@ -32,7 +48,7 @@ public final class b
     }
   }
   
-  public static Throwable S(Throwable paramThrowable)
+  public static Throwable aj(Throwable paramThrowable)
   {
     AppMethodBeat.i(90046);
     int i = 0;
@@ -51,23 +67,7 @@ public final class b
     return paramThrowable;
   }
   
-  public static void a(Throwable paramThrowable, rx.e<?> parame)
-  {
-    AppMethodBeat.i(90049);
-    R(paramThrowable);
-    parame.c(paramThrowable);
-    AppMethodBeat.o(90049);
-  }
-  
-  public static void a(Throwable paramThrowable, rx.e<?> parame, Object paramObject)
-  {
-    AppMethodBeat.i(90048);
-    R(paramThrowable);
-    parame.c(g.a(paramThrowable, paramObject));
-    AppMethodBeat.o(90048);
-  }
-  
-  public static void d(Throwable paramThrowable1, Throwable paramThrowable2)
+  public static void f(Throwable paramThrowable1, Throwable paramThrowable2)
   {
     AppMethodBeat.i(90045);
     HashSet localHashSet = new HashSet();
@@ -95,16 +95,15 @@ public final class b
     try
     {
       localThrowable.initCause(paramThrowable2);
-      AppMethodBeat.o(90045);
       return;
     }
-    catch (Throwable paramThrowable1)
+    finally
     {
       AppMethodBeat.o(90045);
     }
   }
   
-  public static void lM(List<? extends Throwable> paramList)
+  public static void pp(List<? extends Throwable> paramList)
   {
     AppMethodBeat.i(90047);
     if ((paramList != null) && (!paramList.isEmpty()))
@@ -137,7 +136,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.a.b
  * JD-Core Version:    0.7.0.1
  */

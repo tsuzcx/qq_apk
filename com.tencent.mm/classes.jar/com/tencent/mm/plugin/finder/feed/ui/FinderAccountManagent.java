@@ -1,210 +1,278 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.appbrand.api.g;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.b.m;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.finder.cgi.di;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.e.k;
 import com.tencent.mm.plugin.finder.widget.pref.a;
-import com.tencent.mm.protocal.protobuf.av;
 import com.tencent.mm.protocal.protobuf.ax;
+import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.protocal.protobuf.bys;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import java.util.HashMap;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAccountManagent;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "accountExtConfig", "Lcom/tencent/mm/protocal/protobuf/AccountExtraSettingConfig;", "getResourceId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAccountManagent;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "accountExtConfig", "Lcom/tencent/mm/protocal/protobuf/AccountExtraSettingConfig;", "isFirstResume", "", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "getResourceId", "", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPreferenceTreeClick", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refresh", "updateView", "isRemoveAll", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderAccountManagent
   extends MMPreference
+  implements com.tencent.mm.am.h
 {
-  private static final String xLe = "ACCOUNT_EXTRA_CONFIG";
-  public static final a xLf;
+  public static final a BkX;
+  private static final String BkZ;
+  private boolean AuP = true;
+  private bys AwM;
+  private ax BkY;
   private final String TAG = "Finder.FinderAccountManagent";
-  private HashMap _$_findViewCache;
-  private av xLd;
   
   static
   {
-    AppMethodBeat.i(246420);
-    xLf = new a((byte)0);
-    xLe = "ACCOUNT_EXTRA_CONFIG";
-    AppMethodBeat.o(246420);
+    AppMethodBeat.i(364901);
+    BkX = new a((byte)0);
+    BkZ = "ACCOUNT_EXTRA_CONFIG";
+    AppMethodBeat.o(364901);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  private static final boolean a(FinderAccountManagent paramFinderAccountManagent, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(246422);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    AppMethodBeat.i(364892);
+    kotlin.g.b.s.u(paramFinderAccountManagent, "this$0");
+    paramFinderAccountManagent.finish();
+    AppMethodBeat.o(364892);
+    return true;
+  }
+  
+  private final void kD(boolean paramBoolean)
+  {
+    AppMethodBeat.i(364887);
+    if (paramBoolean) {
+      getPreferenceScreen().removeAll();
     }
-    AppMethodBeat.o(246422);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(246421);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(246421);
-    return localView1;
-  }
-  
-  public final int getResourceId()
-  {
-    return b.m.finder_account_managent_pref;
-  }
-  
-  public final void initView()
-  {
-    AppMethodBeat.i(246417);
-    super.initView();
-    Object localObject = this.xLd;
+    Object localObject = this.BkY;
     if (localObject != null)
     {
-      localObject = ((av)localObject).RFl;
+      localObject = ((ax)localObject).YBN;
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          ax localax = (ax)((Iterator)localObject).next();
+          az localaz = (az)((Iterator)localObject).next();
           f localf = getPreferenceScreen();
-          p.j(localax, "it");
-          localf.b((Preference)new a(localax, (Context)this));
+          kotlin.g.b.s.s(localaz, "it");
+          localf.c((Preference)new a(localaz, (Context)this));
         }
       }
     }
     getPreferenceScreen().notifyDataSetChanged();
-    AppMethodBeat.o(246417);
+    AppMethodBeat.o(364887);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final int getResourceId()
+  {
+    return e.k.finder_account_managent_pref;
+  }
+  
+  public final void initView()
+  {
+    AppMethodBeat.i(364922);
+    super.initView();
+    kD(false);
+    AppMethodBeat.o(364922);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(246416);
+    AppMethodBeat.i(364914);
     super.onCreate(paramBundle);
-    setMMTitle(b.j.finder_account_management);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    byte[] arrayOfByte = getIntent().getByteArrayExtra(xLe);
-    if (arrayOfByte != null)
-    {
-      paramBundle = new av();
-      paramBundle.parseFrom(arrayOfByte);
+    setMMTitle(e.h.finder_account_management);
+    setBackBtn(new FinderAccountManagent..ExternalSyntheticLambda0(this));
+    byte[] arrayOfByte = getIntent().getByteArrayExtra(BkZ);
+    if (arrayOfByte == null) {
+      paramBundle = null;
     }
     for (;;)
     {
-      this.xLd = paramBundle;
-      if (this.xLd != null) {
+      this.BkY = paramBundle;
+      if (this.BkY != null) {
         break;
       }
       finish();
-      AppMethodBeat.o(246416);
+      AppMethodBeat.o(364914);
       return;
-      paramBundle = null;
+      paramBundle = new ax();
+      paramBundle.parseFrom(arrayOfByte);
     }
     initView();
-    AppMethodBeat.o(246416);
+    com.tencent.mm.kernel.h.aZW().a(3761, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(364914);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(364943);
+    super.onDestroy();
+    com.tencent.mm.kernel.h.aZW().b(3761, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(364943);
   }
   
   public final boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     g localg = null;
-    AppMethodBeat.i(246419);
+    AppMethodBeat.i(364956);
     if (paramPreference == null)
     {
-      paramf = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.widget.pref.FinderAccountManagementPref");
-      AppMethodBeat.o(246419);
+      paramf = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.widget.pref.FinderAccountManagementPref");
+      AppMethodBeat.o(364956);
       throw paramf;
     }
     a locala = (a)paramPreference;
-    paramf = locala.Bum;
-    if (paramf != null)
+    paramf = locala.HaX;
+    if (paramf == null)
     {
-      paramf = Integer.valueOf(paramf.tpK);
+      paramf = null;
       if (paramf != null) {
         break label73;
       }
-      label57:
+      label51:
       if (paramf != null) {
-        break label134;
+        break label137;
       }
     }
     label73:
-    while (paramf.intValue() != 1) {
-      for (;;)
+    while (paramf.intValue() != 1)
+    {
+      AppMethodBeat.o(364956);
+      return true;
+      paramf = Integer.valueOf(paramf.wuj);
+      break;
+      if (paramf.intValue() != 2) {
+        break label51;
+      }
+      paramPreference = new Intent();
+      paramf = locala.HaX;
+      if (paramf == null) {}
+      for (paramf = localg;; paramf = paramf.xmo)
       {
-        AppMethodBeat.o(246419);
-        return true;
-        paramf = null;
-        break;
-        if (paramf.intValue() != 2) {
-          break label57;
-        }
-        paramPreference = new Intent();
-        ax localax = locala.Bum;
-        paramf = localg;
-        if (localax != null) {
-          paramf = localax.ugh;
-        }
         paramPreference.putExtra("rawUrl", paramf);
-        c.b(locala.getContext(), "webview", ".ui.tools.WebViewUI", paramPreference);
+        c.b(locala.mContext, "webview", ".ui.tools.WebViewUI", paramPreference);
+        break;
       }
     }
-    label134:
+    label137:
     localg = new g();
-    paramf = locala.Bum;
-    if (paramf != null)
-    {
-      paramPreference = paramf.RFn;
-      paramf = paramPreference;
-      if (paramPreference != null) {}
-    }
-    else
+    paramf = locala.HaX;
+    if (paramf == null)
     {
       paramf = "";
-    }
-    localg.username = paramf;
-    paramf = locala.Bum;
-    if (paramf != null)
-    {
-      paramPreference = paramf.RFo;
-      paramf = paramPreference;
-      if (paramPreference != null) {}
-    }
-    else
-    {
+      label168:
+      localg.username = paramf;
+      paramf = locala.HaX;
+      if (paramf != null) {
+        break label256;
+      }
       paramf = "";
+      label188:
+      localg.qAF = paramf;
+      paramf = locala.HaX;
+      if (paramf != null) {
+        break label274;
+      }
     }
-    localg.nBq = paramf;
-    paramf = locala.Bum;
-    if (paramf != null) {}
-    for (int i = paramf.RFq;; i = 1000)
+    label256:
+    label274:
+    for (int i = 1000;; i = paramf.YBS)
     {
       localg.scene = i;
-      ((r)h.ae(r.class)).a(locala.getContext(), localg);
+      ((t)com.tencent.mm.kernel.h.ax(t.class)).a(locala.mContext, localg);
+      break;
+      paramPreference = paramf.YBP;
+      paramf = paramPreference;
+      if (paramPreference != null) {
+        break label168;
+      }
+      paramf = "";
+      break label168;
+      paramPreference = paramf.YBQ;
+      paramf = paramPreference;
+      if (paramPreference != null) {
+        break label188;
+      }
+      paramf = "";
+      break label188;
+    }
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(364932);
+    super.onResume();
+    if (this.AuP)
+    {
+      this.AuP = false;
+      AppMethodBeat.o(364932);
+      return;
+    }
+    di localdi = new di(2);
+    com.tencent.mm.kernel.h.aZW().a((p)localdi, 0);
+    AppMethodBeat.o(364932);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(364980);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("onSceneEnd errType ").append(paramInt1).append(", errCode ").append(paramInt2).append(", errMsg ").append(paramString).append(" scene ");
+    if (paramp == null)
+    {
+      paramString = null;
+      Log.i(str, paramString + " scene:" + paramp);
+      if (paramp != null) {
+        break label120;
+      }
+    }
+    label120:
+    for (paramString = localObject;; paramString = Integer.valueOf(paramp.getType()))
+    {
+      if (paramString != null) {
+        break label132;
+      }
+      AppMethodBeat.o(364980);
+      return;
+      paramString = Integer.valueOf(paramp.getType());
       break;
     }
+    label132:
+    if ((paramString.intValue() == 3761) && (paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if (paramp == null)
+      {
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderPrepareUser");
+        AppMethodBeat.o(364980);
+        throw paramString;
+      }
+      this.AwM = ((di)paramp).dVy();
+      paramString = this.AwM;
+      if (paramString != null)
+      {
+        this.BkY = paramString.aahF;
+        kD(true);
+      }
+    }
+    AppMethodBeat.o(364980);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -213,23 +281,8 @@ public final class FinderAccountManagent
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAccountManagent$Companion;", "", "()V", "ACCOUNT_EXTRA_CONFIG", "", "getACCOUNT_EXTRA_CONFIG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAccountManagent$Companion;", "", "()V", "ACCOUNT_EXTRA_CONFIG", "", "getACCOUNT_EXTRA_CONFIG", "()Ljava/lang/String;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(FinderAccountManagent paramFinderAccountManagent) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(269008);
-      this.xLg.finish();
-      AppMethodBeat.o(269008);
-      return true;
-    }
-  }
 }
 
 

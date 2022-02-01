@@ -5,53 +5,38 @@ import com.tencent.mm.kernel.a.a;
 
 public abstract class g
 {
-  public Application Zw;
-  public a kct;
-  private Boolean kfj;
-  public g.a kfk = new g.a();
+  public Application bGP;
+  public a mCB;
+  private Boolean mFG;
+  public a mFH = new a();
   public String mProcessName;
   
   public g(String paramString, Application paramApplication)
   {
     this.mProcessName = paramString;
-    this.kct = new a();
-    this.Zw = paramApplication;
+    this.mCB = new a();
+    this.bGP = paramApplication;
   }
   
-  public final boolean MY(String paramString)
+  public final boolean FH(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
   }
   
-  public final boolean MZ(String paramString)
+  public final boolean FI(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.contains(getPackageName() + paramString));
   }
   
-  public final Application aIC()
+  public final boolean bbA()
   {
-    return this.Zw;
-  }
-  
-  public final g.a aID()
-  {
-    return this.kfk;
-  }
-  
-  public final boolean aIE()
-  {
-    if (this.kfj == null) {
-      this.kfj = Boolean.valueOf(MY(""));
+    if (this.mFG == null) {
+      this.mFG = Boolean.valueOf(FH(""));
     }
-    return this.kfj.booleanValue();
+    return this.mFG.booleanValue();
   }
   
   public abstract String getPackageName();
-  
-  public final String getProcessName()
-  {
-    return this.mProcessName;
-  }
   
   public String toString()
   {
@@ -60,10 +45,24 @@ public abstract class g
     }
     return super.toString();
   }
+  
+  public static final class a
+  {
+    public long mFI;
+    public long mFJ;
+    public long mFK;
+    public long mFL;
+    public long mFM;
+    public long mFN;
+    public long mFO;
+    public long mFP;
+    public long mFQ;
+    public long mFR;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.kernel.b.g
  * JD-Core Version:    0.7.0.1
  */

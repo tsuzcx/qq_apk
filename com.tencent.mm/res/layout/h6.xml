@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{text}" android:maxLines="5" android:singleLine="false" />
-    <TextView android:id="@id/i34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{from source}" />
-    <EditText android:id="@id/ikp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/evp" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_below="@id/cii">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bec" android:padding="@dimen/cd" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/icons_outlined_arrow" android:contentDescription="@string/bfi" android:rotation="90.0" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/kpx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i5k" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/j51" android:background="@drawable/ccr" android:layout_width="fill_parent" android:layout_height="@dimen/d0" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/cp">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j63" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_margin="@dimen/bv" android:src="@raw/icons_outlined_search" app:iconColor="@color/FG_2" />
+        <com.tencent.mm.ui.search.FTSEditTextView android:id="@id/egd" android:layout_width="0.0dip" android:layout_height="@dimen/cv" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a8b" />
+    </LinearLayout>
+    <View android:background="@color/a1e" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/cp" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/b18" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/oy" android:layout_width="@dimen/e" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

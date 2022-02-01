@@ -1,6 +1,5 @@
 package com.tencent.mm.ext.ui;
 
-import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -18,50 +17,55 @@ public class SwipeBackActivity
   extends AppCompatActivity
   implements SwipeBackLayout.a, d.a
 {
-  private SwipeBackLayout jRd;
   private View mContentViewForSwipeBack = null;
   private boolean mSwiping;
+  private SwipeBackLayout mqn;
   
-  public final SwipeBackLayout aEb()
+  public final SwipeBackLayout aXf()
   {
-    return this.jRd;
+    return this.mqn;
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(258925);
-    SwipeBackLayout localSwipeBackLayout = this.jRd;
+    AppMethodBeat.i(235388);
+    SwipeBackLayout localSwipeBackLayout = this.mqn;
     if ((paramKeyEvent.getKeyCode() == 4) && (localSwipeBackLayout != null))
     {
-      localSwipeBackLayout.aEc();
-      if (localSwipeBackLayout.jRp)
+      localSwipeBackLayout.aXg();
+      if (localSwipeBackLayout.mqz)
       {
         com.tencent.liteapp.b.b.w("ashutest", "ashutest::IS SwipeBack ING, ignore KeyBack Event", new Object[0]);
-        AppMethodBeat.o(258925);
+        AppMethodBeat.o(235388);
         return true;
       }
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(258925);
+    AppMethodBeat.o(235388);
     return bool;
+  }
+  
+  public final boolean forceRemoveNoMatchOnPath()
+  {
+    return false;
   }
   
   protected final void initSwipeBack()
   {
-    AppMethodBeat.i(258926);
+    AppMethodBeat.i(235398);
     ViewGroup localViewGroup = (ViewGroup)getWindow().getDecorView();
-    this.jRd = ((SwipeBackLayout)LayoutInflater.from(this).inflate(a.e.wxa_swipeback_layout, localViewGroup, false));
-    this.jRd.init();
+    this.mqn = ((SwipeBackLayout)LayoutInflater.from(this).inflate(a.e.wxa_swipeback_layout, localViewGroup, false));
+    this.mqn.init();
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     getWindow().getDecorView().setBackgroundDrawable(null);
     View localView = localViewGroup.getChildAt(0);
     localView.setBackgroundResource(17170445);
     localViewGroup.removeView(localView);
-    this.jRd.addView(localView);
-    this.jRd.setContentView(localView);
-    localViewGroup.addView(this.jRd);
-    this.jRd.setSwipeGestureDelegate(this);
-    AppMethodBeat.o(258926);
+    this.mqn.addView(localView);
+    this.mqn.setContentView(localView);
+    localViewGroup.addView(this.mqn);
+    this.mqn.setSwipeGestureDelegate(this);
+    AppMethodBeat.o(235398);
   }
   
   public final void onCancel()
@@ -71,16 +75,16 @@ public class SwipeBackActivity
   
   public void onCreate(Bundle paramBundle, PersistableBundle paramPersistableBundle)
   {
-    AppMethodBeat.i(258915);
+    AppMethodBeat.i(235357);
     super.onCreate(paramBundle, paramPersistableBundle);
-    AppMethodBeat.o(258915);
+    AppMethodBeat.o(235357);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(258924);
+    AppMethodBeat.i(235383);
     super.onDestroy();
-    AppMethodBeat.o(258924);
+    AppMethodBeat.o(235383);
   }
   
   public final void onDrag()
@@ -90,35 +94,35 @@ public class SwipeBackActivity
   
   public void onPause()
   {
-    AppMethodBeat.i(258919);
+    AppMethodBeat.i(235371);
     super.onPause();
-    if (this.jRd != null) {
-      this.jRd.setEnableGesture(false);
+    if (this.mqn != null) {
+      this.mqn.setEnableGesture(false);
     }
     if (!isFinishing()) {
       d.a(this);
     }
-    AppMethodBeat.o(258919);
+    AppMethodBeat.o(235371);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(258921);
+    AppMethodBeat.i(235375);
     super.onResume();
     d.b(this);
     onSwipe(1.0F);
-    if (this.jRd != null)
+    if (this.mqn != null)
     {
-      this.jRd.setEnableGesture(true);
-      this.jRd.jRp = false;
+      this.mqn.setEnableGesture(true);
+      this.mqn.mqz = false;
     }
-    AppMethodBeat.o(258921);
+    AppMethodBeat.o(235375);
   }
   
   public final void onSettle(boolean paramBoolean, int paramInt)
   {
     long l = 130L;
-    AppMethodBeat.i(258928);
+    AppMethodBeat.i(235419);
     if (this.mContentViewForSwipeBack == null) {
       this.mContentViewForSwipeBack = e.a(getWindow(), getSupportActionBar().getCustomView());
     }
@@ -129,7 +133,7 @@ public class SwipeBackActivity
       for (;;)
       {
         b.a(localView, l, 0.0F, null);
-        AppMethodBeat.o(258928);
+        AppMethodBeat.o(235419);
         return;
         l = 260L;
       }
@@ -138,7 +142,7 @@ public class SwipeBackActivity
     for (;;)
     {
       b.a(localView, l, localView.getWidth() * -1 / 3.5F, null);
-      AppMethodBeat.o(258928);
+      AppMethodBeat.o(235419);
       return;
       l = 260L;
     }
@@ -146,21 +150,21 @@ public class SwipeBackActivity
   
   public void onStart()
   {
-    AppMethodBeat.i(258917);
+    AppMethodBeat.i(235363);
     super.onStart();
-    AppMethodBeat.o(258917);
+    AppMethodBeat.o(235363);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(258923);
+    AppMethodBeat.i(235380);
     super.onStop();
-    AppMethodBeat.o(258923);
+    AppMethodBeat.o(235380);
   }
   
   public final void onSwipe(float paramFloat)
   {
-    AppMethodBeat.i(258927);
+    AppMethodBeat.i(235413);
     Window localWindow;
     if (this.mContentViewForSwipeBack == null)
     {
@@ -177,24 +181,24 @@ public class SwipeBackActivity
       if (Float.compare(1.0F, paramFloat) > 0) {
         break;
       }
-      b.q(localView, 0.0F);
-      AppMethodBeat.o(258927);
+      b.r(localView, 0.0F);
+      AppMethodBeat.o(235413);
       return;
     }
-    b.q(localView, localView.getWidth() / 3.5F * (1.0F - paramFloat) * -1.0F);
-    AppMethodBeat.o(258927);
+    b.r(localView, localView.getWidth() / 3.5F * (1.0F - paramFloat) * -1.0F);
+    AppMethodBeat.o(235413);
   }
   
   public final void onSwipeBack()
   {
-    AppMethodBeat.i(258930);
+    AppMethodBeat.i(235430);
     if (!isFinishing()) {
       finish();
     }
     getWindow().getDecorView().setVisibility(8);
     overridePendingTransition(0, 0);
     this.mSwiping = false;
-    AppMethodBeat.o(258930);
+    AppMethodBeat.o(235430);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -205,7 +209,7 @@ public class SwipeBackActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ext.ui.SwipeBackActivity
  * JD-Core Version:    0.7.0.1
  */

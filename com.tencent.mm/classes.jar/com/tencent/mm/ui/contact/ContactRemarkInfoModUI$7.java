@@ -1,43 +1,30 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.tools.b.c.a;
 
 final class ContactRemarkInfoModUI$7
-  implements h.d
+  implements c.a
 {
   ContactRemarkInfoModUI$7(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
-  public final void qy(int paramInt)
+  public final void Tw(String paramString) {}
+  
+  public final void Tx(String paramString) {}
+  
+  public final void eY(String paramString)
   {
-    AppMethodBeat.i(286144);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(286144);
-      return;
-      Log.d("MiroMsg.ContactRemarkInfoModUI", "pick up an image");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("max_select_count", 1);
-      localIntent.putExtra("query_source_type", 0);
-      localIntent.putExtra("send_btn_string", " ");
-      localIntent.addFlags(67108864);
-      c.b(this.XrY, "gallery", ".ui.GalleryEntryUI", localIntent, 200);
-      AppMethodBeat.o(286144);
-      return;
-      Log.d("MiroMsg.ContactRemarkInfoModUI", "delete the remark image when download failed.");
-      ContactRemarkInfoModUI.z(this.XrY);
-    }
+    AppMethodBeat.i(252997);
+    k.s(this.afdA, R.l.settings_modify_desc_invalid_more, R.l.settings_modify_name_title);
+    this.afdA.afdx = false;
+    AppMethodBeat.o(252997);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkInfoModUI.7
  * JD-Core Version:    0.7.0.1
  */

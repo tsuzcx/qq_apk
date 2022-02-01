@@ -5,114 +5,114 @@ import com.tencent.tmediacodec.b.f;
 
 public final class a
 {
-  private final b ZPc;
-  private final b ZPd;
+  private final b ahUd;
+  private final b ahUe;
   
   public a()
   {
-    AppMethodBeat.i(224488);
-    this.ZPc = new b(2, "keep");
-    this.ZPd = new b(2147483647, "running");
-    this.ZPc.ZPg = new c()
+    AppMethodBeat.i(210742);
+    this.ahUd = new b(2, "keep");
+    this.ahUe = new b(2147483647, "running");
+    this.ahUd.ahUh = new c()
     {
       public final void i(f paramAnonymousf)
       {
-        AppMethodBeat.i(224472);
+        AppMethodBeat.i(210746);
         if (com.tencent.tmediacodec.g.b.isLogEnable())
         {
           "onErase codecWrapper:".concat(String.valueOf(paramAnonymousf));
-          com.tencent.tmediacodec.g.b.bDP("CodecWrapperManager");
+          com.tencent.tmediacodec.g.b.O("CodecWrapperManager");
         }
         paramAnonymousf.recycle();
-        AppMethodBeat.o(224472);
+        AppMethodBeat.o(210746);
       }
     };
-    AppMethodBeat.o(224488);
+    AppMethodBeat.o(210742);
   }
   
   public final f c(com.tencent.tmediacodec.b.e parame)
   {
-    AppMethodBeat.i(224482);
-    parame = this.ZPc.d(parame);
+    AppMethodBeat.i(210789);
+    parame = this.ahUd.d(parame);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       "obtainCodecWrapper codecWrapper:".concat(String.valueOf(parame));
-      com.tencent.tmediacodec.g.b.bDP("CodecWrapperManager");
+      com.tencent.tmediacodec.g.b.O("CodecWrapperManager");
     }
-    AppMethodBeat.o(224482);
+    AppMethodBeat.o(210789);
     return parame;
   }
   
   public final void f(final f paramf)
   {
-    AppMethodBeat.i(224473);
+    AppMethodBeat.i(210751);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       "transToRunning codecWrapper:".concat(String.valueOf(paramf));
-      com.tencent.tmediacodec.g.b.bDP("CodecWrapperManager");
+      com.tencent.tmediacodec.g.b.O("CodecWrapperManager");
     }
-    this.ZPc.l(paramf);
-    this.ZPd.j(paramf);
-    com.tencent.tmediacodec.g.e.bi(new Runnable()
+    this.ahUd.l(paramf);
+    this.ahUe.j(paramf);
+    com.tencent.tmediacodec.g.e.br(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(224468);
-        com.tencent.tmediacodec.a.a locala = paramf.ZOv;
+        AppMethodBeat.i(210754);
+        com.tencent.tmediacodec.a.a locala = paramf.ahTw;
         if (locala != null) {
           locala.onTransToRunningPool();
         }
-        AppMethodBeat.o(224468);
+        AppMethodBeat.o(210754);
       }
     });
-    AppMethodBeat.o(224473);
+    AppMethodBeat.o(210751);
   }
   
   public final void g(f paramf)
   {
-    AppMethodBeat.i(224476);
+    AppMethodBeat.i(210767);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       "removeFromRunning codecWrapper:".concat(String.valueOf(paramf));
-      com.tencent.tmediacodec.g.b.bDP("CodecWrapperManager");
+      com.tencent.tmediacodec.g.b.O("CodecWrapperManager");
     }
-    this.ZPd.l(paramf);
-    AppMethodBeat.o(224476);
+    this.ahUe.l(paramf);
+    AppMethodBeat.o(210767);
   }
   
   public final void h(f paramf)
   {
-    AppMethodBeat.i(224479);
+    AppMethodBeat.i(210780);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       "transTokeep codecWrapper:".concat(String.valueOf(paramf));
-      com.tencent.tmediacodec.g.b.bDP("CodecWrapperManager");
+      com.tencent.tmediacodec.g.b.O("CodecWrapperManager");
     }
-    this.ZPd.l(paramf);
-    this.ZPc.j(paramf);
-    paramf = paramf.ZOv;
+    this.ahUe.l(paramf);
+    this.ahUd.j(paramf);
+    paramf = paramf.ahTw;
     if (paramf != null) {
       paramf.onTransToKeepPool();
     }
-    AppMethodBeat.o(224479);
+    AppMethodBeat.o(210780);
   }
   
-  public final void ith()
+  public final void kcB()
   {
-    AppMethodBeat.i(224484);
+    AppMethodBeat.i(210800);
     if (com.tencent.tmediacodec.g.b.isLogEnable()) {
-      com.tencent.tmediacodec.g.b.bDQ("CodecWrapperManager");
+      com.tencent.tmediacodec.g.b.Q("CodecWrapperManager");
     }
-    this.ZPd.clear();
-    this.ZPc.clear();
-    AppMethodBeat.o(224484);
+    this.ahUe.clear();
+    this.ahUd.clear();
+    AppMethodBeat.o(210800);
   }
   
-  public final String iti()
+  public final String kcC()
   {
-    AppMethodBeat.i(224487);
-    String str = "runningPool:" + this.ZPd + " keepPool:" + this.ZPc;
-    AppMethodBeat.o(224487);
+    AppMethodBeat.i(210807);
+    String str = "runningPool:" + this.ahUe + " keepPool:" + this.ahUd;
+    AppMethodBeat.o(210807);
     return str;
   }
 }

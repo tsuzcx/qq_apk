@@ -13,7 +13,7 @@ abstract class LuckyMoneyPickEnvelopeUI$a
   
   public abstract void a(LuckyMoneyPickEnvelopeUI.e parame);
   
-  public abstract void tS(boolean paramBoolean);
+  public abstract void yh(boolean paramBoolean);
 }
 
 

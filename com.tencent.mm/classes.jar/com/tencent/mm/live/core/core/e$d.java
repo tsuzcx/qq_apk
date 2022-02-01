@@ -1,30 +1,30 @@
 package com.tencent.mm.live.core.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$EventKey;", "", "()V", "KEY_USERID", "", "getKEY_USERID", "()Ljava/lang/String;", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/core/LiveCoreConstants$EventKey;", "", "()V", "KEY_USERID", "", "getKEY_USERID", "()Ljava/lang/String;", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e$d
 {
-  private static final String kjB = "KEY_USERID";
-  public static final d kjC;
+  public static final d mKj;
+  private static final String mKk;
   
   static
   {
-    AppMethodBeat.i(201263);
-    kjC = new d();
-    kjB = "KEY_USERID";
-    AppMethodBeat.o(201263);
+    AppMethodBeat.i(247838);
+    mKj = new d();
+    mKk = "KEY_USERID";
+    AppMethodBeat.o(247838);
   }
   
-  public static String aJN()
+  public static String bcx()
   {
-    return kjB;
+    return mKk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.e.d
  * JD-Core Version:    0.7.0.1
  */

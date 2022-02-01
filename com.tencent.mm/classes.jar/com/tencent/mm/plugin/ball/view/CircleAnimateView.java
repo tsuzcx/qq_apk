@@ -23,14 +23,14 @@ public class CircleAnimateView
 {
   private int defaultHeight;
   private int defaultWidth;
-  private long progress;
+  private long hQO;
   
   public CircleAnimateView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(106371);
-    this.progress = -2147483648L;
-    eK(paramContext);
+    this.hQO = -2147483648L;
+    fF(paramContext);
     AppMethodBeat.o(106371);
   }
   
@@ -38,16 +38,16 @@ public class CircleAnimateView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106370);
-    this.progress = -2147483648L;
-    eK(paramContext);
+    this.hQO = -2147483648L;
+    fF(paramContext);
     AppMethodBeat.o(106370);
   }
   
-  private void eK(Context paramContext)
+  private void fF(Context paramContext)
   {
     AppMethodBeat.i(106372);
-    this.defaultWidth = com.tencent.mm.ci.a.aZ(paramContext, a.c.float_ball_default_icon_size);
-    this.defaultHeight = com.tencent.mm.ci.a.aZ(paramContext, a.c.float_ball_default_icon_size);
+    this.defaultWidth = com.tencent.mm.cd.a.bs(paramContext, a.c.float_ball_default_icon_size);
+    this.defaultHeight = com.tencent.mm.cd.a.bs(paramContext, a.c.float_ball_default_icon_size);
     AppMethodBeat.o(106372);
   }
   
@@ -83,7 +83,7 @@ public class CircleAnimateView
       label113:
       label126:
       Paint localPaint;
-      if (this.progress >= 0L)
+      if (this.hQO >= 0L)
       {
         if (getWidth() > 0)
         {
@@ -94,7 +94,7 @@ public class CircleAnimateView
           j = getWidth();
           float f1 = i / 2.0F;
           float f2 = j / 2.0F;
-          float f3 = com.tencent.mm.ci.a.fromDPToPix(getContext(), 1.5F);
+          float f3 = com.tencent.mm.cd.a.fromDPToPix(getContext(), 1.5F);
           float f4 = i * 0.75F / 2.0F - f3;
           localPaint = new Paint();
           localPaint.setAntiAlias(true);
@@ -103,7 +103,7 @@ public class CircleAnimateView
           localPaint.setColor(androidx.core.content.a.w(getContext(), a.b.BW_0_Alpha_0_1));
           ((Canvas)localObject).drawCircle(f1, f2, f4, localPaint);
           localPaint.setColor(androidx.core.content.a.w(getContext(), a.b.wechat_green));
-          ((Canvas)localObject).drawArc(f1 - f4, f2 - f4, f1 + f4, f2 + f4, -90.0F, (float)this.progress / 100.0F * 360.0F, false, localPaint);
+          ((Canvas)localObject).drawArc(f1 - f4, f2 - f4, f1 + f4, f2 + f4, -90.0F, (float)this.hQO / 100.0F * 360.0F, false, localPaint);
         }
       }
       else
@@ -181,14 +181,14 @@ public class CircleAnimateView
   public void setProgress(long paramLong)
   {
     AppMethodBeat.i(176974);
-    this.progress = paramLong;
+    this.hQO = paramLong;
     postInvalidate();
     AppMethodBeat.o(176974);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.CircleAnimateView
  * JD-Core Version:    0.7.0.1
  */

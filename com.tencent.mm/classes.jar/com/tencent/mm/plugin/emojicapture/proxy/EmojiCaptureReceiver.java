@@ -4,12 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.d.b;
+import com.tencent.mm.emoji.e.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureReceiver;", "Landroid/content/BroadcastReceiver;", "()V", "TAG", "", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-emojicapture_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class EmojiCaptureReceiver
   extends BroadcastReceiver
 {
@@ -18,40 +18,29 @@ public final class EmojiCaptureReceiver
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(415);
-    p.k(paramContext, "context");
-    p.k(paramIntent, "intent");
+    s.u(paramContext, "context");
+    s.u(paramIntent, "intent");
     paramContext = paramIntent.getAction();
-    Log.i(this.TAG, "onReceive: ".concat(String.valueOf(paramContext)));
-    if (paramContext == null)
+    Log.i(this.TAG, s.X("onReceive: ", paramContext));
+    boolean bool;
+    if (s.p(paramContext, "com.tencent.mm.Emoji_Capture_Res"))
     {
+      int i = paramIntent.getIntExtra("res_sub_type", 0);
+      bool = paramIntent.getBooleanExtra("res_result", false);
+      Log.i(this.TAG, "onReceive: res update " + i + ' ' + bool);
       AppMethodBeat.o(415);
       return;
     }
-    switch (paramContext.hashCode())
+    if (s.p(paramContext, "com.tencent.mm.Emoji_Capture_Upload"))
     {
+      long l = paramIntent.getLongExtra("upload_time_enter", 0L);
+      bool = paramIntent.getBooleanExtra("upload_success", false);
+      paramContext = paramIntent.getStringExtra("upload_md5");
+      paramIntent = b.mnS;
+      b.b(l, bool, paramContext);
+      Log.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
     }
-    for (;;)
-    {
-      AppMethodBeat.o(415);
-      return;
-      if (paramContext.equals("com.tencent.mm.Emoji_Capture_Res"))
-      {
-        int i = paramIntent.getIntExtra("res_sub_type", 0);
-        boolean bool = paramIntent.getBooleanExtra("res_result", false);
-        Log.i(this.TAG, "onReceive: res update " + i + ' ' + bool);
-        AppMethodBeat.o(415);
-        return;
-        if (paramContext.equals("com.tencent.mm.Emoji_Capture_Upload"))
-        {
-          long l = paramIntent.getLongExtra("upload_time_enter", 0L);
-          bool = paramIntent.getBooleanExtra("upload_success", false);
-          paramContext = paramIntent.getStringExtra("upload_md5");
-          paramIntent = b.jPc;
-          b.b(l, bool, paramContext);
-          Log.i(this.TAG, "onReceive: upload " + l + ", " + bool + ", " + paramContext);
-        }
-      }
-    }
+    AppMethodBeat.o(415);
   }
 }
 

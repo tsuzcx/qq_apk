@@ -1,15 +1,12 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
+import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 
-public final class z
-  extends WXWebpageObject
-{
-  public final int type()
-  {
-    return 54;
-  }
-}
+public class z
+  implements d<Bundle, IPCBoolean>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

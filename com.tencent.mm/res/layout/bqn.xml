@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/bx" android:src="@raw/wechat_gray_logo" />
-    <TextView android:textStyle="bold" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/hm8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:singleLine="true" style="@style/l4" />
-    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/gnd" style="@style/zi" />
-    <View android:id="@id/aax" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <Button android:layout_gravity="center_horizontal" android:id="@id/hms" android:layout_marginBottom="@dimen/bz" android:text="@string/f35" style="@style/p3" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <TextView android:id="@id/go6" style="@style/qs" />
+        <TextView android:id="@id/gmm" style="@style/qq" />
+        <EditText android:id="@id/glp" style="@style/qo" />
+        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/gm1" android:src="@drawable/aom" style="@style/qp" />
+    </LinearLayout>
+</merge>

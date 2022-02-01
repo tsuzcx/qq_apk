@@ -1,81 +1,81 @@
 package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.ui.e.a;
+import com.tencent.mm.plugin.card.ui.e.b;
 
 public abstract interface g
 {
-  public abstract void a(b paramb, e.a parama);
+  public abstract void a(b paramb, e.b paramb1);
   
-  public abstract String cJR();
+  public abstract boolean dmH();
   
-  public abstract boolean cJS();
+  public abstract boolean dnA();
   
-  public abstract boolean cJT();
+  public abstract boolean dnB();
   
-  public abstract boolean cJY();
+  public abstract boolean dnC();
   
-  public abstract boolean cJZ();
+  public abstract boolean dnD();
   
-  public abstract boolean cJq();
+  public abstract boolean dnE();
   
-  public abstract boolean cKa();
+  public abstract boolean dnF();
   
-  public abstract boolean cKb();
+  public abstract boolean dnG();
   
-  public abstract boolean cKc();
+  public abstract boolean dnH();
   
-  public abstract boolean cKd();
+  public abstract boolean dnI();
   
-  public abstract boolean cKe();
+  public abstract boolean dnJ();
   
-  public abstract boolean cKf();
+  public abstract boolean dnK();
   
-  public abstract boolean cKg();
+  public abstract boolean dnL();
   
-  public abstract boolean cKh();
+  public abstract boolean dnM();
   
-  public abstract boolean cKi();
+  public abstract boolean dnN();
   
-  public abstract boolean cKj();
+  public abstract boolean dnO();
   
-  public abstract boolean cKk();
+  public abstract void dnP();
   
-  public abstract boolean cKl();
+  public abstract String dnh();
   
-  public abstract boolean cKm();
+  public abstract boolean dni();
   
-  public abstract boolean cKn();
+  public abstract boolean dnj();
   
-  public abstract boolean cKo();
+  public abstract boolean dno();
   
-  public abstract boolean cKp();
+  public abstract boolean dnp();
   
-  public abstract boolean cKq();
+  public abstract boolean dnq();
   
-  public abstract boolean cKr();
+  public abstract boolean dnr();
   
-  public abstract boolean cKs();
+  public abstract boolean dns();
   
-  public abstract boolean cKt();
+  public abstract boolean dnt();
   
-  public abstract boolean cKu();
+  public abstract boolean dnu();
   
-  public abstract boolean cKv();
+  public abstract boolean dnv();
   
-  public abstract boolean cKw();
+  public abstract boolean dnw();
   
-  public abstract boolean cKx();
+  public abstract boolean dnx();
   
-  public abstract boolean cKy();
+  public abstract boolean dny();
   
-  public abstract void cKz();
+  public abstract boolean dnz();
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.g
  * JD-Core Version:    0.7.0.1
  */

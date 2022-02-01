@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.storage.aa;
 
 final class SnsUploadUI$25
-  implements View.OnClickListener
+  implements Runnable
 {
   SnsUploadUI$25(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(176383);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/sns/ui/SnsUploadUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    SnsUploadUI.p(this.LdU);
-    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(176383);
+    AppMethodBeat.i(369924);
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    this.REd.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    al.hgq();
+    aa.lD(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    AppMethodBeat.o(369924);
   }
 }
 

@@ -7,13 +7,10 @@ public enum b
   static
   {
     AppMethodBeat.i(61223);
-    b localb1 = new b("FOR_SUBTYPING", 0);
-    abso = localb1;
-    b localb2 = new b("FOR_INCORPORATION", 1);
-    absp = localb2;
-    b localb3 = new b("FROM_EXPRESSION", 2);
-    absq = localb3;
-    absr = new b[] { localb1, localb2, localb3 };
+    ajrC = new b("FOR_SUBTYPING", 0);
+    ajrD = new b("FOR_INCORPORATION", 1);
+    ajrE = new b("FROM_EXPRESSION", 2);
+    ajrF = new b[] { ajrC, ajrD, ajrE };
     AppMethodBeat.o(61223);
   }
   

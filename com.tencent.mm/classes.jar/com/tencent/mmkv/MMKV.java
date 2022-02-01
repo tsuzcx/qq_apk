@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -26,35 +27,41 @@ public class MMKV
   implements SharedPreferences, SharedPreferences.Editor
 {
   private static final int ASHMEM_MODE = 8;
+  private static final int BACKUP_MODE = 16;
   private static final int CONTEXT_MODE_MULTI_PROCESS = 4;
   public static final int MULTI_PROCESS_MODE = 2;
   public static final int SINGLE_PROCESS_MODE = 1;
+  private static final Set<Long> checkedHandleSet;
   private static b gCallbackHandler;
   private static a gContentChangeNotify;
   private static boolean gWantLogReDirecting;
-  private static c[] index2LogLevel;
-  private static EnumMap<c, Integer> logLevel2Index;
+  private static final c[] index2LogLevel;
+  private static boolean isProcessModeCheckerEnabled;
+  private static final EnumMap<c, Integer> logLevel2Index;
   private static final HashMap<String, Parcelable.Creator<?>> mCreators;
-  private static EnumMap<d, Integer> recoverIndex;
+  private static final EnumMap<d, Integer> recoverIndex;
   private static String rootDir;
-  private long nativeHandle;
+  private byte _hellAccFlag_;
+  private final long nativeHandle;
   
   static
   {
     AppMethodBeat.i(13527);
     EnumMap localEnumMap = new EnumMap(d.class);
     recoverIndex = localEnumMap;
-    localEnumMap.put(d.Zbk, Integer.valueOf(0));
-    recoverIndex.put(d.Zbl, Integer.valueOf(1));
+    localEnumMap.put(d.agZR, Integer.valueOf(0));
+    recoverIndex.put(d.agZS, Integer.valueOf(1));
     localEnumMap = new EnumMap(c.class);
     logLevel2Index = localEnumMap;
-    localEnumMap.put(c.Zbe, Integer.valueOf(0));
-    logLevel2Index.put(c.Zbf, Integer.valueOf(1));
-    logLevel2Index.put(c.Zbg, Integer.valueOf(2));
-    logLevel2Index.put(c.Zbh, Integer.valueOf(3));
-    logLevel2Index.put(c.Zbi, Integer.valueOf(4));
-    index2LogLevel = new c[] { c.Zbe, c.Zbf, c.Zbg, c.Zbh, c.Zbi };
+    localEnumMap.put(c.agZL, Integer.valueOf(0));
+    logLevel2Index.put(c.agZM, Integer.valueOf(1));
+    logLevel2Index.put(c.agZN, Integer.valueOf(2));
+    logLevel2Index.put(c.agZO, Integer.valueOf(3));
+    logLevel2Index.put(c.agZP, Integer.valueOf(4));
+    index2LogLevel = new c[] { c.agZL, c.agZM, c.agZN, c.agZO, c.agZP };
+    checkedHandleSet = new HashSet();
     rootDir = null;
+    isProcessModeCheckerEnabled = true;
     mCreators = new HashMap();
     gWantLogReDirecting = false;
     AppMethodBeat.o(13527);
@@ -64,6 +71,72 @@ public class MMKV
   {
     this.nativeHandle = paramLong;
   }
+  
+  private native long actualSize(long paramLong);
+  
+  public static MMKV backedUpMMKVWithID(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(210452);
+    if (rootDir == null)
+    {
+      paramString1 = new IllegalStateException("You should Call MMKV.initialize() first.");
+      AppMethodBeat.o(210452);
+      throw paramString1;
+    }
+    paramInt |= 0x10;
+    paramString1 = checkProcessMode(getMMKVWithID(paramString1, paramInt, paramString2, paramString3), paramString1, paramInt);
+    AppMethodBeat.o(210452);
+    return paramString1;
+  }
+  
+  public static native long backupAllToDirectory(String paramString);
+  
+  public static native boolean backupOneToDirectory(String paramString1, String paramString2, String paramString3);
+  
+  private static MMKV checkProcessMode(long paramLong, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(210459);
+    if (paramLong == 0L)
+    {
+      paramString = new RuntimeException("Fail to create an MMKV instance [" + paramString + "] in JNI");
+      AppMethodBeat.o(210459);
+      throw paramString;
+    }
+    if (!isProcessModeCheckerEnabled)
+    {
+      paramString = new MMKV(paramLong);
+      AppMethodBeat.o(210459);
+      return paramString;
+    }
+    for (;;)
+    {
+      synchronized (checkedHandleSet)
+      {
+        if (checkedHandleSet.contains(Long.valueOf(paramLong))) {
+          break label211;
+        }
+        if (checkProcessMode(paramLong)) {
+          break;
+        }
+        if (paramInt == 1)
+        {
+          paramString = "Opening a multi-process MMKV instance [" + paramString + "] with SINGLE_PROCESS_MODE!";
+          paramString = new IllegalArgumentException(paramString);
+          AppMethodBeat.o(210459);
+          throw paramString;
+        }
+      }
+      paramString = "Opening an MMKV instance [" + paramString + "] with MULTI_PROCESS_MODE, ";
+      paramString = paramString + "while it's already been opened with SINGLE_PROCESS_MODE by someone somewhere else!";
+    }
+    checkedHandleSet.add(Long.valueOf(paramLong));
+    label211:
+    paramString = new MMKV(paramLong);
+    AppMethodBeat.o(210459);
+    return paramString;
+  }
+  
+  private static native boolean checkProcessMode(long paramLong);
   
   private native boolean containsKey(long paramLong, String paramString);
   
@@ -110,7 +183,7 @@ public class MMKV
       AppMethodBeat.o(13460);
       throw ((Throwable)localObject);
     }
-    Object localObject = new MMKV(getDefaultMMKV(1, null));
+    Object localObject = checkProcessMode(getDefaultMMKV(1, null), "DefaultMMKV", 1);
     AppMethodBeat.o(13460);
     return localObject;
   }
@@ -124,7 +197,7 @@ public class MMKV
       AppMethodBeat.o(13461);
       throw paramString;
     }
-    paramString = new MMKV(getDefaultMMKV(paramInt, paramString));
+    paramString = checkProcessMode(getDefaultMMKV(paramInt, paramString), "DefaultMMKV", paramInt);
     AppMethodBeat.o(13461);
     return paramString;
   }
@@ -136,6 +209,52 @@ public class MMKV
     AppMethodBeat.i(13519);
     destroyNB(parame.pointer, parame.size);
     AppMethodBeat.o(13519);
+  }
+  
+  public static void disableProcessModeChecker()
+  {
+    synchronized (checkedHandleSet)
+    {
+      isProcessModeCheckerEnabled = false;
+      return;
+    }
+  }
+  
+  private static String doInitialize(String paramString1, String paramString2, a parama, c paramc)
+  {
+    AppMethodBeat.i(210430);
+    if (parama != null) {
+      "StaticCpp".equals("SharedCpp");
+    }
+    for (;;)
+    {
+      jniInitialize(paramString1, paramString2, logLevel2Int(paramc));
+      rootDir = paramString1;
+      AppMethodBeat.o(210430);
+      return paramString1;
+      if ("StaticCpp".equals("SharedCpp"))
+      {
+        parama = new com.tencent.mm.hellhoundlib.b.a().cG("c++_shared");
+        localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, parama.aYi(), "com/tencent/mmkv/MMKV", "doInitialize", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mmkv/MMKV$LibLoader;Lcom/tencent/mmkv/MMKVLogLevel;)Ljava/lang/String;", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)parama.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mmkv/MMKV", "doInitialize", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mmkv/MMKV$LibLoader;Lcom/tencent/mmkv/MMKVLogLevel;)Ljava/lang/String;", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      }
+      parama = new com.tencent.mm.hellhoundlib.b.a().cG("mmkv");
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, parama.aYi(), "com/tencent/mmkv/MMKV", "doInitialize", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mmkv/MMKV$LibLoader;Lcom/tencent/mmkv/MMKVLogLevel;)Ljava/lang/String;", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)parama.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mmkv/MMKV", "doInitialize", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mmkv/MMKV$LibLoader;Lcom/tencent/mmkv/MMKVLogLevel;)Ljava/lang/String;", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    }
+  }
+  
+  public static void enableProcessModeChecker()
+  {
+    synchronized (checkedHandleSet)
+    {
+      isProcessModeCheckerEnabled = true;
+      return;
+    }
   }
   
   private native boolean encodeBool(long paramLong, String paramString, boolean paramBoolean);
@@ -170,79 +289,136 @@ public class MMKV
   public static String initialize(Context paramContext)
   {
     AppMethodBeat.i(13450);
-    paramContext = initialize(paramContext.getFilesDir().getAbsolutePath() + "/mmkv", null, c.Zbf);
+    paramContext = initialize(paramContext, paramContext.getFilesDir().getAbsolutePath() + "/mmkv", null, c.agZM);
     AppMethodBeat.o(13450);
+    return paramContext;
+  }
+  
+  public static String initialize(Context paramContext, a parama)
+  {
+    AppMethodBeat.i(210412);
+    paramContext = initialize(paramContext, paramContext.getFilesDir().getAbsolutePath() + "/mmkv", parama, c.agZM);
+    AppMethodBeat.o(210412);
+    return paramContext;
+  }
+  
+  public static String initialize(Context paramContext, a parama, c paramc)
+  {
+    AppMethodBeat.i(210414);
+    paramContext = initialize(paramContext, paramContext.getFilesDir().getAbsolutePath() + "/mmkv", parama, paramc);
+    AppMethodBeat.o(210414);
     return paramContext;
   }
   
   public static String initialize(Context paramContext, c paramc)
   {
-    AppMethodBeat.i(244101);
-    paramContext = initialize(paramContext.getFilesDir().getAbsolutePath() + "/mmkv", null, paramc);
-    AppMethodBeat.o(244101);
+    AppMethodBeat.i(210409);
+    paramContext = initialize(paramContext, paramContext.getFilesDir().getAbsolutePath() + "/mmkv", null, paramc);
+    AppMethodBeat.o(210409);
     return paramContext;
   }
   
+  public static String initialize(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(210416);
+    paramContext = initialize(paramContext, paramString, null, c.agZM);
+    AppMethodBeat.o(210416);
+    return paramContext;
+  }
+  
+  public static String initialize(Context paramContext, String paramString, a parama)
+  {
+    AppMethodBeat.i(210422);
+    paramContext = initialize(paramContext, paramString, parama, c.agZM);
+    AppMethodBeat.o(210422);
+    return paramContext;
+  }
+  
+  public static String initialize(Context paramContext, String paramString, a parama, c paramc)
+  {
+    AppMethodBeat.i(210425);
+    if ((paramContext.getApplicationInfo().flags & 0x2) == 0) {
+      disableProcessModeChecker();
+    }
+    for (;;)
+    {
+      paramContext = doInitialize(paramString, paramContext.getCacheDir().getAbsolutePath(), parama, paramc);
+      AppMethodBeat.o(210425);
+      return paramContext;
+      enableProcessModeChecker();
+    }
+  }
+  
+  public static String initialize(Context paramContext, String paramString, c paramc)
+  {
+    AppMethodBeat.i(210419);
+    paramContext = initialize(paramContext, paramString, null, paramc);
+    AppMethodBeat.o(210419);
+    return paramContext;
+  }
+  
+  @Deprecated
   public static String initialize(String paramString)
   {
     AppMethodBeat.i(13451);
-    paramString = initialize(paramString, null, c.Zbf);
+    c localc = c.agZM;
+    paramString = doInitialize(paramString, paramString + "/.tmp", null, localc);
     AppMethodBeat.o(13451);
     return paramString;
   }
   
+  @Deprecated
   public static String initialize(String paramString, a parama)
   {
     AppMethodBeat.i(13452);
-    paramString = initialize(paramString, parama, c.Zbf);
+    c localc = c.agZM;
+    paramString = doInitialize(paramString, paramString + "/.tmp", parama, localc);
     AppMethodBeat.o(13452);
     return paramString;
   }
   
+  @Deprecated
   public static String initialize(String paramString, a parama, c paramc)
   {
-    AppMethodBeat.i(244103);
-    if (parama != null) {
-      "StaticCpp".equals("SharedCpp");
-    }
-    for (;;)
-    {
-      rootDir = paramString;
-      jniInitialize(paramString, logLevel2Int(paramc));
-      AppMethodBeat.o(244103);
-      return paramString;
-      if ("StaticCpp".equals("SharedCpp")) {
-        System.loadLibrary("c++_shared");
-      }
-      System.loadLibrary("mmkv");
-    }
-  }
-  
-  public static String initialize(String paramString, c paramc)
-  {
-    AppMethodBeat.i(244102);
-    paramString = initialize(paramString, null, paramc);
-    AppMethodBeat.o(244102);
+    AppMethodBeat.i(210438);
+    paramString = doInitialize(paramString, paramString + "/.tmp", parama, paramc);
+    AppMethodBeat.o(210438);
     return paramString;
   }
   
-  public static native boolean isFileValid(String paramString);
+  @Deprecated
+  public static String initialize(String paramString, c paramc)
+  {
+    AppMethodBeat.i(210434);
+    paramString = doInitialize(paramString, paramString + "/.tmp", null, paramc);
+    AppMethodBeat.o(210434);
+    return paramString;
+  }
   
-  private static native void jniInitialize(String paramString, int paramInt);
+  public static boolean isFileValid(String paramString)
+  {
+    AppMethodBeat.i(210462);
+    boolean bool = isFileValid(paramString, null);
+    AppMethodBeat.o(210462);
+    return bool;
+  }
+  
+  public static native boolean isFileValid(String paramString1, String paramString2);
+  
+  private static native void jniInitialize(String paramString1, String paramString2, int paramInt);
   
   private static int logLevel2Int(c paramc)
   {
-    int j = 1;
-    AppMethodBeat.i(244104);
-    int i = j;
-    switch (1.Zbc[paramc.ordinal()])
+    AppMethodBeat.i(210442);
+    int i;
+    switch (1.agZJ[paramc.ordinal()])
     {
     default: 
-      i = j;
+      i = 1;
     }
     for (;;)
     {
-      AppMethodBeat.o(244104);
+      AppMethodBeat.o(210442);
       return i;
       i = 0;
       continue;
@@ -263,7 +439,7 @@ public class MMKV
       AppMethodBeat.o(13525);
       return;
     }
-    paramString1 = 1.Zbc;
+    paramString1 = 1.agZJ;
     index2LogLevel[paramInt1].ordinal();
     AppMethodBeat.o(13525);
   }
@@ -271,7 +447,14 @@ public class MMKV
   public static MMKV mmkvWithAshmemFD(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(13517);
-    paramString1 = new MMKV(getMMKVWithAshmemFD(paramString1, paramInt1, paramInt2, paramString2));
+    long l = getMMKVWithAshmemFD(paramString1, paramInt1, paramInt2, paramString2);
+    if (l == 0L)
+    {
+      paramString1 = new RuntimeException("Fail to create an ashmem MMKV instance [" + paramString1 + "] in JNI");
+      AppMethodBeat.o(13517);
+      throw paramString1;
+    }
+    paramString1 = new MMKV(l);
     AppMethodBeat.o(13517);
     return paramString1;
   }
@@ -285,23 +468,25 @@ public class MMKV
       AppMethodBeat.o(13459);
       throw paramContext;
     }
-    Object localObject = MMKVContentProvider.bm(paramContext, Process.myPid());
+    Object localObject = MMKVContentProvider.bF(paramContext, Process.myPid());
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      simpleLog(c.Zbh, "process name detect fail, try again later");
+      simpleLog(c.agZO, "process name detect fail, try again later");
+      paramContext = new IllegalStateException("process name detect fail, try again later");
       AppMethodBeat.o(13459);
-      return null;
+      throw paramContext;
     }
     if (((String)localObject).contains(":"))
     {
-      localObject = MMKVContentProvider.lR(paramContext);
+      localObject = MMKVContentProvider.nW(paramContext);
       if (localObject == null)
       {
-        simpleLog(c.Zbh, "MMKVContentProvider has invalid authority");
+        simpleLog(c.agZO, "MMKVContentProvider has invalid authority");
+        paramContext = new IllegalStateException("MMKVContentProvider has invalid authority");
         AppMethodBeat.o(13459);
-        return null;
+        throw paramContext;
       }
-      simpleLog(c.Zbf, "getting parcelable mmkv in process, Uri = ".concat(String.valueOf(localObject)));
+      simpleLog(c.agZM, "getting parcelable mmkv in process, Uri = ".concat(String.valueOf(localObject)));
       Bundle localBundle = new Bundle();
       localBundle.putInt("KEY_SIZE", paramInt1);
       localBundle.putInt("KEY_MODE", paramInt2);
@@ -315,27 +500,27 @@ public class MMKV
         paramContext = (ParcelableMMKV)paramContext.getParcelable("KEY");
         if (paramContext != null)
         {
-          if ((paramContext.Zbo >= 0) && (paramContext.Zbp >= 0)) {}
-          for (paramContext = mmkvWithAshmemFD(paramContext.Zbn, paramContext.Zbo, paramContext.Zbp, paramContext.cryptKey);; paramContext = null)
+          if ((paramContext.agZV >= 0) && (paramContext.agZW >= 0)) {}
+          for (paramContext = mmkvWithAshmemFD(paramContext.agZU, paramContext.agZV, paramContext.agZW, paramContext.cryptKey); paramContext != null; paramContext = null)
           {
-            if (paramContext != null) {
-              simpleLog(c.Zbf, paramContext.mmapID() + " fd = " + paramContext.ashmemFD() + ", meta fd = " + paramContext.ashmemMetaFD());
-            }
+            simpleLog(c.agZM, paramContext.mmapID() + " fd = " + paramContext.ashmemFD() + ", meta fd = " + paramContext.ashmemMetaFD());
             AppMethodBeat.o(13459);
             return paramContext;
           }
         }
       }
     }
-    else
+    simpleLog(c.agZM, "getting mmkv in main process");
+    long l = getMMKVWithIDAndSize(paramString1, paramInt1, paramInt2 | 0x8, paramString2);
+    if (l != 0L)
     {
-      simpleLog(c.Zbf, "getting mmkv in main process");
-      paramContext = new MMKV(getMMKVWithIDAndSize(paramString1, paramInt1, paramInt2 | 0x8, paramString2));
+      paramContext = new MMKV(l);
       AppMethodBeat.o(13459);
       return paramContext;
     }
+    paramContext = new IllegalStateException("Fail to create an Ashmem MMKV instance [" + paramString1 + "]");
     AppMethodBeat.o(13459);
-    return null;
+    throw paramContext;
   }
   
   public static MMKV mmkvWithID(String paramString)
@@ -347,7 +532,7 @@ public class MMKV
       AppMethodBeat.o(13454);
       throw paramString;
     }
-    paramString = new MMKV(getMMKVWithID(paramString, 1, null, null));
+    paramString = checkProcessMode(getMMKVWithID(paramString, 1, null, null), paramString, 1);
     AppMethodBeat.o(13454);
     return paramString;
   }
@@ -361,7 +546,7 @@ public class MMKV
       AppMethodBeat.o(13455);
       throw paramString;
     }
-    paramString = new MMKV(getMMKVWithID(paramString, paramInt, null, null));
+    paramString = checkProcessMode(getMMKVWithID(paramString, paramInt, null, null), paramString, paramInt);
     AppMethodBeat.o(13455);
     return paramString;
   }
@@ -375,7 +560,7 @@ public class MMKV
       AppMethodBeat.o(13456);
       throw paramString1;
     }
-    paramString1 = new MMKV(getMMKVWithID(paramString1, paramInt, paramString2, null));
+    paramString1 = checkProcessMode(getMMKVWithID(paramString1, paramInt, paramString2, null), paramString1, paramInt);
     AppMethodBeat.o(13456);
     return paramString1;
   }
@@ -389,13 +574,7 @@ public class MMKV
       AppMethodBeat.o(13458);
       throw paramString1;
     }
-    long l = getMMKVWithID(paramString1, paramInt, paramString2, paramString3);
-    if (l == 0L)
-    {
-      AppMethodBeat.o(13458);
-      return null;
-    }
-    paramString1 = new MMKV(l);
+    paramString1 = checkProcessMode(getMMKVWithID(paramString1, paramInt, paramString2, paramString3), paramString1, paramInt);
     AppMethodBeat.o(13458);
     return paramString1;
   }
@@ -409,13 +588,7 @@ public class MMKV
       AppMethodBeat.o(13457);
       throw paramString1;
     }
-    long l = getMMKVWithID(paramString1, 1, null, paramString2);
-    if (l == 0L)
-    {
-      AppMethodBeat.o(13457);
-      return null;
-    }
-    paramString1 = new MMKV(l);
+    paramString1 = checkProcessMode(getMMKVWithID(paramString1, 1, null, paramString2), paramString1, 1);
     AppMethodBeat.o(13457);
     return paramString1;
   }
@@ -427,11 +600,11 @@ public class MMKV
   private static int onMMKVCRCCheckFail(String paramString)
   {
     AppMethodBeat.i(13523);
-    d locald = d.Zbk;
+    d locald = d.agZR;
     if (gCallbackHandler != null) {
       locald = gCallbackHandler.onMMKVCRCCheckFail(paramString);
     }
-    simpleLog(c.Zbf, "Recover strategic for " + paramString + " is " + locald);
+    simpleLog(c.agZM, "Recover strategic for " + paramString + " is " + locald);
     paramString = (Integer)recoverIndex.get(locald);
     if (paramString == null)
     {
@@ -446,11 +619,11 @@ public class MMKV
   private static int onMMKVFileLengthError(String paramString)
   {
     AppMethodBeat.i(13524);
-    d locald = d.Zbk;
+    d locald = d.agZR;
     if (gCallbackHandler != null) {
       locald = gCallbackHandler.onMMKVFileLengthError(paramString);
     }
-    simpleLog(c.Zbf, "Recover strategic for " + paramString + " is " + locald);
+    simpleLog(c.agZM, "Recover strategic for " + paramString + " is " + locald);
     paramString = (Integer)recoverIndex.get(locald);
     if (paramString == null)
     {
@@ -466,13 +639,13 @@ public class MMKV
   
   public static void registerContentChangeNotify(a parama)
   {
-    AppMethodBeat.i(244155);
+    AppMethodBeat.i(210463);
     gContentChangeNotify = parama;
     if (parama != null) {}
     for (boolean bool = true;; bool = false)
     {
       setWantsContentChangeNotify(bool);
-      AppMethodBeat.o(244155);
+      AppMethodBeat.o(210463);
       return;
     }
   }
@@ -494,6 +667,10 @@ public class MMKV
   }
   
   private native void removeValueForKey(long paramLong, String paramString);
+  
+  public static native long restoreAllFromDirectory(String paramString);
+  
+  public static native boolean restoreOneMMKVFromDirectory(String paramString1, String paramString2, String paramString3);
   
   private static native void setCallbackHandler(boolean paramBoolean1, boolean paramBoolean2);
   
@@ -529,10 +706,10 @@ public class MMKV
   
   public static void unregisterContentChangeNotify()
   {
-    AppMethodBeat.i(244156);
+    AppMethodBeat.i(210464);
     gContentChangeNotify = null;
     setWantsContentChangeNotify(false);
-    AppMethodBeat.o(244156);
+    AppMethodBeat.o(210464);
   }
   
   public static void unregisterHandler()
@@ -546,10 +723,21 @@ public class MMKV
   
   private native int valueSize(long paramLong, String paramString, boolean paramBoolean);
   
+  public static native String version();
+  
   private native int writeValueToNB(long paramLong1, String paramString, long paramLong2, int paramInt);
+  
+  public long actualSize()
+  {
+    AppMethodBeat.i(210658);
+    long l = actualSize(this.nativeHandle);
+    AppMethodBeat.o(210658);
+    return l;
+  }
   
   public native String[] allKeys();
   
+  @Deprecated
   public void apply()
   {
     AppMethodBeat.i(13513);
@@ -586,6 +774,7 @@ public class MMKV
   
   public native void close();
   
+  @Deprecated
   public boolean commit()
   {
     AppMethodBeat.i(13512);
@@ -646,14 +835,14 @@ public class MMKV
   
   public byte[] decodeBytes(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(244136);
+    AppMethodBeat.i(210616);
     paramString = decodeBytes(this.nativeHandle, paramString);
     if (paramString != null)
     {
-      AppMethodBeat.o(244136);
+      AppMethodBeat.o(210616);
       return paramString;
     }
-    AppMethodBeat.o(244136);
+    AppMethodBeat.o(210616);
     return paramArrayOfByte;
   }
   
@@ -734,67 +923,67 @@ public class MMKV
   {
     // Byte code:
     //   0: sipush 13487
-    //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_2
     //   7: ifnonnull +11 -> 18
     //   10: sipush 13487
-    //   13: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   13: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: aload_3
     //   17: areturn
     //   18: aload_0
     //   19: aload_0
-    //   20: getfield 117	com/tencent/mmkv/MMKV:nativeHandle	J
+    //   20: getfield 132	com/tencent/mmkv/MMKV:nativeHandle	J
     //   23: aload_1
-    //   24: invokespecial 530	com/tencent/mmkv/MMKV:decodeBytes	(JLjava/lang/String;)[B
+    //   24: invokespecial 683	com/tencent/mmkv/MMKV:decodeBytes	(JLjava/lang/String;)[B
     //   27: astore_1
     //   28: aload_1
     //   29: ifnonnull +11 -> 40
     //   32: sipush 13487
-    //   35: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   35: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_3
     //   39: areturn
-    //   40: invokestatic 560	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   40: invokestatic 712	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   43: astore 5
     //   45: aload 5
     //   47: aload_1
     //   48: iconst_0
     //   49: aload_1
     //   50: arraylength
-    //   51: invokevirtual 564	android/os/Parcel:unmarshall	([BII)V
+    //   51: invokevirtual 716	android/os/Parcel:unmarshall	([BII)V
     //   54: aload 5
     //   56: iconst_0
-    //   57: invokevirtual 567	android/os/Parcel:setDataPosition	(I)V
+    //   57: invokevirtual 719	android/os/Parcel:setDataPosition	(I)V
     //   60: aload_2
-    //   61: invokevirtual 568	java/lang/Class:toString	()Ljava/lang/String;
+    //   61: invokevirtual 720	java/lang/Class:toString	()Ljava/lang/String;
     //   64: astore 7
-    //   66: getstatic 107	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
+    //   66: getstatic 122	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
     //   69: astore 6
     //   71: aload 6
     //   73: monitorenter
-    //   74: getstatic 107	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
+    //   74: getstatic 122	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
     //   77: aload 7
-    //   79: invokevirtual 569	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   82: checkcast 571	android/os/Parcelable$Creator
+    //   79: invokevirtual 721	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   82: checkcast 723	android/os/Parcelable$Creator
     //   85: astore 4
     //   87: aload 4
     //   89: astore_1
     //   90: aload 4
     //   92: ifnonnull +36 -> 128
     //   95: aload_2
-    //   96: ldc_w 573
-    //   99: invokevirtual 577	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   96: ldc_w 725
+    //   99: invokevirtual 729	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   102: aconst_null
-    //   103: invokevirtual 580	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   106: checkcast 571	android/os/Parcelable$Creator
+    //   103: invokevirtual 732	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   106: checkcast 723	android/os/Parcelable$Creator
     //   109: astore_2
     //   110: aload_2
     //   111: astore_1
     //   112: aload_2
     //   113: ifnull +15 -> 128
-    //   116: getstatic 107	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
+    //   116: getstatic 122	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
     //   119: aload 7
     //   121: aload_2
-    //   122: invokevirtual 583	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   122: invokevirtual 735	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   125: pop
     //   126: aload_2
     //   127: astore_1
@@ -804,50 +993,50 @@ public class MMKV
     //   132: ifnull +64 -> 196
     //   135: aload_1
     //   136: aload 5
-    //   138: invokeinterface 587 2 0
-    //   143: checkcast 589	android/os/Parcelable
+    //   138: invokeinterface 739 2 0
+    //   143: checkcast 741	android/os/Parcelable
     //   146: astore_1
     //   147: aload 5
-    //   149: invokevirtual 592	android/os/Parcel:recycle	()V
+    //   149: invokevirtual 744	android/os/Parcel:recycle	()V
     //   152: sipush 13487
-    //   155: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   155: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   158: aload_1
     //   159: areturn
     //   160: astore_1
     //   161: aload 6
     //   163: monitorexit
     //   164: sipush 13487
-    //   167: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   167: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: aload_1
     //   171: athrow
     //   172: astore_1
-    //   173: getstatic 94	com/tencent/mmkv/c:Zbh	Lcom/tencent/mmkv/c;
+    //   173: getstatic 102	com/tencent/mmkv/c:agZO	Lcom/tencent/mmkv/c;
     //   176: aload_1
-    //   177: invokevirtual 593	java/lang/Exception:toString	()Ljava/lang/String;
-    //   180: invokestatic 306	com/tencent/mmkv/MMKV:simpleLog	(Lcom/tencent/mmkv/c;Ljava/lang/String;)V
+    //   177: invokevirtual 745	java/lang/Exception:toString	()Ljava/lang/String;
+    //   180: invokestatic 453	com/tencent/mmkv/MMKV:simpleLog	(Lcom/tencent/mmkv/c;Ljava/lang/String;)V
     //   183: aload 5
-    //   185: invokevirtual 592	android/os/Parcel:recycle	()V
+    //   185: invokevirtual 744	android/os/Parcel:recycle	()V
     //   188: sipush 13487
-    //   191: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   191: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   194: aload_3
     //   195: areturn
-    //   196: new 554	java/lang/Exception
+    //   196: new 706	java/lang/Exception
     //   199: dup
-    //   200: ldc_w 595
+    //   200: ldc_w 747
     //   203: aload 7
-    //   205: invokestatic 323	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   208: invokevirtual 326	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   211: invokespecial 596	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   205: invokestatic 469	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   208: invokevirtual 472	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   211: invokespecial 748	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   214: astore_1
     //   215: sipush 13487
-    //   218: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   218: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   221: aload_1
     //   222: athrow
     //   223: astore_1
     //   224: aload 5
-    //   226: invokevirtual 592	android/os/Parcel:recycle	()V
+    //   226: invokevirtual 744	android/os/Parcel:recycle	()V
     //   229: sipush 13487
-    //   232: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   232: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: aload_1
     //   236: athrow
     // Local variable table:
@@ -910,28 +1099,28 @@ public class MMKV
   
   public Set<String> decodeStringSet(String paramString, Set<String> paramSet, Class<? extends Set> paramClass)
   {
-    AppMethodBeat.i(244132);
+    AppMethodBeat.i(210603);
     paramString = decodeStringSet(this.nativeHandle, paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(244132);
+      AppMethodBeat.o(210603);
       return paramSet;
     }
     try
     {
       paramClass = (Set)paramClass.newInstance();
       paramClass.addAll(Arrays.asList(paramString));
-      AppMethodBeat.o(244132);
+      AppMethodBeat.o(210603);
       return paramClass;
     }
     catch (IllegalAccessException paramString)
     {
-      AppMethodBeat.o(244132);
+      AppMethodBeat.o(210603);
       return paramSet;
     }
     catch (InstantiationException paramString)
     {
-      AppMethodBeat.o(244132);
+      AppMethodBeat.o(210603);
     }
     return paramSet;
   }
@@ -976,8 +1165,14 @@ public class MMKV
   public boolean encode(String paramString, Parcelable paramParcelable)
   {
     AppMethodBeat.i(13485);
+    if (paramParcelable == null)
+    {
+      bool = encodeBytes(this.nativeHandle, paramString, null);
+      AppMethodBeat.o(13485);
+      return bool;
+    }
     Parcel localParcel = Parcel.obtain();
-    paramParcelable.writeToParcel(localParcel, paramParcelable.describeContents());
+    paramParcelable.writeToParcel(localParcel, 0);
     paramParcelable = localParcel.marshall();
     localParcel.recycle();
     boolean bool = encodeBytes(this.nativeHandle, paramString, paramParcelable);
@@ -996,9 +1191,14 @@ public class MMKV
   public boolean encode(String paramString, Set<String> paramSet)
   {
     AppMethodBeat.i(13480);
-    boolean bool = encodeSet(this.nativeHandle, paramString, (String[])paramSet.toArray(new String[0]));
-    AppMethodBeat.o(13480);
-    return bool;
+    long l = this.nativeHandle;
+    if (paramSet == null) {}
+    for (paramSet = null;; paramSet = (String[])paramSet.toArray(new String[0]))
+    {
+      boolean bool = encodeSet(l, paramString, paramSet);
+      AppMethodBeat.o(13480);
+      return bool;
+    }
   }
   
   public boolean encode(String paramString, boolean paramBoolean)
@@ -1020,7 +1220,7 @@ public class MMKV
   public Map<String, ?> getAll()
   {
     AppMethodBeat.i(13497);
-    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("use allKeys() instead, getAll() not implement because type-erasure inside mmkv");
+    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Intentionally Not Supported. Use allKeys() instead, getAll() not implement because type-erasure inside mmkv");
     AppMethodBeat.o(13497);
     throw localUnsupportedOperationException;
   }
@@ -1035,9 +1235,9 @@ public class MMKV
   
   public byte[] getBytes(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(244145);
+    AppMethodBeat.i(210694);
     paramString = decodeBytes(paramString, paramArrayOfByte);
-    AppMethodBeat.o(244145);
+    AppMethodBeat.o(210694);
     return paramString;
   }
   
@@ -1128,7 +1328,7 @@ public class MMKV
         } else if ((localObject instanceof Set)) {
           encode(str, (Set)localObject);
         } else {
-          simpleLog(c.Zbh, "unknown type: " + localObject.getClass());
+          simpleLog(c.agZO, "unknown type: " + localObject.getClass());
         }
       }
     }
@@ -1151,9 +1351,9 @@ public class MMKV
   
   public SharedPreferences.Editor putBytes(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(244144);
+    AppMethodBeat.i(210690);
     encode(paramString, paramArrayOfByte);
-    AppMethodBeat.o(244144);
+    AppMethodBeat.o(210690);
     return this;
   }
   
@@ -1202,7 +1402,7 @@ public class MMKV
   public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
     AppMethodBeat.i(13515);
-    paramOnSharedPreferenceChangeListener = new UnsupportedOperationException("Not implement in MMKV");
+    paramOnSharedPreferenceChangeListener = new UnsupportedOperationException("Intentionally Not implement in MMKV");
     AppMethodBeat.o(13515);
     throw paramOnSharedPreferenceChangeListener;
   }
@@ -1248,7 +1448,7 @@ public class MMKV
   public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
     AppMethodBeat.i(13516);
-    paramOnSharedPreferenceChangeListener = new UnsupportedOperationException("Not implement in MMKV");
+    paramOnSharedPreferenceChangeListener = new UnsupportedOperationException("Intentionally Not implement in MMKV");
     AppMethodBeat.o(13516);
     throw paramOnSharedPreferenceChangeListener;
   }
@@ -1265,7 +1465,7 @@ public class MMKV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mmkv.MMKV
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,23 +9,27 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.sns.b.c;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.b.i;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.tools.w;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.tools.v;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,47 +37,60 @@ import java.util.List;
 public class AtContactWidget
   extends LinearLayout
 {
-  private TextView AWF;
-  private TextView KBF;
-  private PreviewContactView KBG;
-  SnsUploadConfigView KBH;
-  private List<String> KBI;
-  private boolean KBJ;
+  private TextView DMt;
+  private WeImageView Rbm;
+  private TextView Rbn;
+  private PreviewContactView Rbo;
+  SnsUploadConfigView Rbp;
+  private List<String> Rbq;
+  private boolean Rbr;
   private View contentView;
   private Activity mContext;
-  private ImageView yVe;
   
   public AtContactWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97782);
-    this.KBI = new LinkedList();
-    this.KBJ = false;
+    this.Rbq = new LinkedList();
+    this.Rbr = false;
     init(paramContext);
     AppMethodBeat.o(97782);
   }
   
-  @TargetApi(11)
   public AtContactWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(97781);
-    this.KBI = new LinkedList();
-    this.KBJ = false;
+    this.Rbq = new LinkedList();
+    this.Rbr = false;
     init(paramContext);
     AppMethodBeat.o(97781);
   }
   
-  private void fTi()
+  private void hly()
+  {
+    AppMethodBeat.i(307942);
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.Rbq.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(ab.Jg(str).aSU() + ",");
+    }
+    this.contentView.setContentDescription(this.DMt.getText() + " " + localStringBuilder);
+    AppMethodBeat.o(307942);
+  }
+  
+  private void hlz()
   {
     AppMethodBeat.i(97787);
-    if (this.KBI.size() > 0)
+    if (this.Rbq.size() > 0)
     {
-      this.yVe.setImageDrawable(au.o(this.mContext, getWithDrawableId(), getContext().getResources().getColor(i.c.wechat_green)));
+      this.Rbm.oR(getWithDrawableId(), b.c.wechat_green);
       AppMethodBeat.o(97787);
       return;
     }
-    this.yVe.setImageDrawable(au.o(this.mContext, getWithEmptyDrawableId(), getContext().getResources().getColor(i.c.icon_color)));
+    this.Rbm.oR(getWithEmptyDrawableId(), b.c.icon_color);
     AppMethodBeat.o(97787);
   }
   
@@ -82,50 +98,85 @@ public class AtContactWidget
   {
     AppMethodBeat.i(97785);
     this.mContext = ((Activity)paramContext);
-    this.contentView = ad.kS(paramContext).inflate(getLayoutResource(), this);
-    this.KBG = ((PreviewContactView)this.contentView.findViewById(i.f.at_contact_avatar));
-    this.yVe = ((ImageView)this.contentView.findViewById(i.f.at_contact_iv));
-    this.KBF = ((TextView)this.contentView.findViewById(i.f.at_contact_num));
-    this.AWF = ((TextView)this.contentView.findViewById(i.f.at_contact_tips));
-    this.contentView.setOnClickListener(new View.OnClickListener()
+    this.contentView = af.mU(paramContext).inflate(getLayoutResource(), this);
+    this.Rbo = ((PreviewContactView)this.contentView.findViewById(b.f.at_contact_avatar));
+    this.Rbm = ((WeImageView)this.contentView.findViewById(b.f.at_contact_iv));
+    this.Rbn = ((TextView)this.contentView.findViewById(b.f.at_contact_num));
+    this.DMt = ((TextView)this.contentView.findViewById(b.f.at_contact_tips));
+    int i;
+    if (aj.hga())
     {
-      public final void onClick(View paramAnonymousView)
+      this.DMt.setText(b.j.sns_together_with_you);
+      paramContext = this.contentView.findViewById(b.f.at_contact_tips_reddot);
+      if (aj.hgb())
       {
-        AppMethodBeat.i(97779);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/AtContactWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        AtContactWidget.a(AtContactWidget.this);
-        a.a(this, "com/tencent/mm/plugin/sns/ui/AtContactWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(97779);
+        i = 0;
+        paramContext.setVisibility(i);
       }
-    });
-    this.contentView.post(new Runnable()
+    }
+    for (;;)
     {
-      public final void run()
+      this.contentView.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(97780);
-        int i = (int)(BitmapUtil.getDefaultDisplayMetrics().density * 36.0F);
-        if (i != 0)
+        public final void onClick(View paramAnonymousView)
         {
-          i = (AtContactWidget.b(AtContactWidget.this).getWidth() - AtContactWidget.c(AtContactWidget.this).getWidth() - AtContactWidget.d(AtContactWidget.this).getWidth() - (int)(BitmapUtil.getDefaultDisplayMetrics().density * 32.0F)) / i;
-          if ((i > 0) && (i < 5))
-          {
-            AtContactWidget.e(AtContactWidget.this).setLineNum(i);
-            RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)AtContactWidget.e(AtContactWidget.this).getLayoutParams();
-            localLayoutParams.alignWithParent = true;
-            AtContactWidget.e(AtContactWidget.this).setLayoutParams(localLayoutParams);
+          AppMethodBeat.i(97779);
+          b localb = new b();
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/sns/ui/AtContactWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          AtContactWidget.a(AtContactWidget.this).findViewById(b.f.at_contact_tips_reddot).setVisibility(8);
+          if (aj.hgb()) {
+            MultiProcessMMKV.getDefault().encode("sns_with_together_at_contact_red", 1);
           }
+          AtContactWidget.b(AtContactWidget.this);
+          a.a(this, "com/tencent/mm/plugin/sns/ui/AtContactWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(97779);
         }
-        AppMethodBeat.o(97780);
-      }
-    });
-    AppMethodBeat.o(97785);
+      });
+      this.contentView.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(97780);
+          int i = (int)(BitmapUtil.getDefaultDisplayMetrics().density * 36.0F);
+          if (i != 0)
+          {
+            i = (AtContactWidget.a(AtContactWidget.this).getWidth() - AtContactWidget.c(AtContactWidget.this).getWidth() - AtContactWidget.d(AtContactWidget.this).getWidth() - (int)(BitmapUtil.getDefaultDisplayMetrics().density * 32.0F)) / i;
+            if ((i > 0) && (i < 5))
+            {
+              AtContactWidget.e(AtContactWidget.this).setLineNum(i);
+              LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)AtContactWidget.e(AtContactWidget.this).getLayoutParams();
+              AtContactWidget.e(AtContactWidget.this).setLayoutParams(localLayoutParams);
+            }
+          }
+          AppMethodBeat.o(97780);
+        }
+      });
+      hly();
+      AppMethodBeat.o(97785);
+      return;
+      i = 8;
+      break;
+      this.contentView.findViewById(b.f.at_contact_tips_reddot).setVisibility(8);
+    }
   }
   
-  public final boolean aY(Intent paramIntent)
+  public final void DY(boolean paramBoolean)
   {
-    AppMethodBeat.i(97786);
+    AppMethodBeat.i(307967);
+    if ((this.Rbq.size() > 0) && (!paramBoolean) && (aj.hga()))
+    {
+      getRootView().findViewById(b.f.show_withta_msg).setVisibility(0);
+      AppMethodBeat.o(307967);
+      return;
+    }
+    getRootView().findViewById(b.f.show_withta_msg).setVisibility(8);
+    AppMethodBeat.o(307967);
+  }
+  
+  public final boolean d(Intent paramIntent, boolean paramBoolean)
+  {
+    AppMethodBeat.i(307971);
     paramIntent = paramIntent.getStringExtra("Select_Contact");
     new LinkedList();
     if ((paramIntent == null) || (paramIntent.equals(""))) {}
@@ -133,115 +184,135 @@ public class AtContactWidget
     Object localObject2;
     for (paramIntent = new LinkedList();; paramIntent = Util.stringsToList(paramIntent.split(",")))
     {
-      if (this.KBI == null) {
-        this.KBI = new LinkedList();
+      if (this.Rbq == null) {
+        this.Rbq = new LinkedList();
       }
-      this.KBI.clear();
+      this.Rbq.clear();
       localObject1 = paramIntent.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        if (!this.KBI.contains(localObject2)) {
-          this.KBI.add(localObject2);
+        if (!this.Rbq.contains(localObject2)) {
+          this.Rbq.add(localObject2);
         }
       }
     }
-    if (this.KBG != null) {
-      this.KBG.setList(this.KBI);
+    if (this.Rbo != null) {
+      this.Rbo.setList(this.Rbq);
     }
+    DY(paramBoolean);
     int i;
-    if (this.AWF != null)
+    if (this.DMt != null)
     {
-      localObject1 = this.AWF;
+      localObject1 = this.DMt;
       localObject2 = getResources();
       if (paramIntent.isEmpty())
       {
-        i = i.c.normal_text_color;
+        i = b.c.normal_text_color;
         ((TextView)localObject1).setTextColor(((Resources)localObject2).getColor(i));
       }
     }
-    else if (this.KBJ)
+    else if (this.Rbr)
     {
-      Log.d("MicroMsg.AtContactWiget", "withList count " + this.KBI.size());
-      if ((!this.KBJ) || (this.KBF == null) || (this.KBI.size() <= 0)) {
-        break label378;
+      Log.d("MicroMsg.AtContactWiget", "withList count " + this.Rbq.size());
+      if ((!this.Rbr) || (this.Rbn == null) || (this.Rbq.size() <= 0)) {
+        break label392;
       }
-      this.KBF.setVisibility(0);
-      if (this.KBI.size() >= 100) {
-        break label355;
+      this.Rbn.setVisibility(0);
+      if (this.Rbq.size() >= 100) {
+        break label369;
       }
-      this.KBF.setText(this.KBI.size());
-      this.KBF.setBackgroundResource(w.bj(getContext(), this.KBI.size()));
+      this.Rbn.setText(this.Rbq.size());
+      this.Rbn.setBackgroundResource(v.bC(getContext(), this.Rbq.size()));
     }
     for (;;)
     {
-      fTi();
-      AppMethodBeat.o(97786);
+      hlz();
+      hly();
+      AppMethodBeat.o(307971);
       return true;
-      i = i.c.green_text_color;
+      i = b.c.green_text_color;
       break;
-      label355:
-      this.KBF.setText("");
-      this.KBF.setBackgroundResource(i.i.badge_count_more);
+      label369:
+      this.Rbn.setText("");
+      this.Rbn.setBackgroundResource(b.i.badge_count_more);
       continue;
-      label378:
-      this.KBF.setVisibility(8);
+      label392:
+      this.Rbn.setVisibility(8);
     }
-  }
-  
-  public final void fTh()
-  {
-    AppMethodBeat.i(97784);
-    if (this.KBI == null) {
-      this.KBI = new LinkedList();
-    }
-    this.KBI.clear();
-    if (this.KBG != null) {
-      this.KBG.setList(this.KBI);
-    }
-    fTi();
-    if (this.KBF != null) {
-      this.KBF.setVisibility(8);
-    }
-    if (this.AWF != null) {
-      this.AWF.setTextColor(getResources().getColor(i.c.normal_text_color));
-    }
-    AppMethodBeat.o(97784);
   }
   
   public List<String> getAtList()
   {
     AppMethodBeat.i(97783);
-    if (this.KBI == null) {
-      this.KBI = new LinkedList();
+    if (this.Rbq == null) {
+      this.Rbq = new LinkedList();
     }
-    List localList = this.KBI;
+    List localList = this.Rbq;
     AppMethodBeat.o(97783);
     return localList;
   }
   
   protected int getLayoutResource()
   {
-    return i.g.at_contact_widget;
+    return b.g.at_contact_widget;
   }
   
   protected int getWithDrawableId()
   {
-    return i.i.album_mention_icon_pressed;
+    AppMethodBeat.i(307980);
+    if (aj.hga())
+    {
+      i = b.i.icon_filled_together;
+      AppMethodBeat.o(307980);
+      return i;
+    }
+    int i = b.i.album_mention_icon_pressed;
+    AppMethodBeat.o(307980);
+    return i;
   }
   
   protected int getWithEmptyDrawableId()
   {
-    return i.i.album_mention_icon_normal;
+    AppMethodBeat.i(307983);
+    if (aj.hga())
+    {
+      i = b.i.icon_outlined_together;
+      AppMethodBeat.o(307983);
+      return i;
+    }
+    int i = b.i.album_mention_icon_normal;
+    AppMethodBeat.o(307983);
+    return i;
+  }
+  
+  public final void hlx()
+  {
+    AppMethodBeat.i(97784);
+    if (this.Rbq == null) {
+      this.Rbq = new LinkedList();
+    }
+    this.Rbq.clear();
+    if (this.Rbo != null) {
+      this.Rbo.setList(this.Rbq);
+    }
+    hlz();
+    if (this.Rbn != null) {
+      this.Rbn.setVisibility(8);
+    }
+    if (this.DMt != null) {
+      this.DMt.setTextColor(getResources().getColor(b.c.normal_text_color));
+    }
+    AppMethodBeat.o(97784);
   }
   
   public void setShowAtList(boolean paramBoolean)
   {
     AppMethodBeat.i(97788);
     PreviewContactView localPreviewContactView;
-    if (this.KBG != null)
+    if (this.Rbo != null)
     {
-      localPreviewContactView = this.KBG;
+      localPreviewContactView = this.Rbo;
       if (!paramBoolean) {
         break label36;
       }
@@ -257,16 +328,16 @@ public class AtContactWidget
   
   public void setShowAtNum(boolean paramBoolean)
   {
-    this.KBJ = paramBoolean;
+    this.Rbr = paramBoolean;
   }
   
   public void setShowAtTips(boolean paramBoolean)
   {
     AppMethodBeat.i(97789);
     TextView localTextView;
-    if ((this.contentView != null) && (this.AWF != null))
+    if ((this.contentView != null) && (this.DMt != null))
     {
-      localTextView = this.AWF;
+      localTextView = this.DMt;
       if (!paramBoolean) {
         break label43;
       }
@@ -282,7 +353,7 @@ public class AtContactWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AtContactWidget
  * JD-Core Version:    0.7.0.1
  */

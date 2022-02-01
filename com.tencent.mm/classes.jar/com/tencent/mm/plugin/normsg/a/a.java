@@ -8,7 +8,11 @@ import com.tencent.mm.sdk.event.IEvent;
 
 public abstract interface a
 {
-  public abstract boolean M(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract String Af(boolean paramBoolean);
+  
+  public abstract void Ag(boolean paramBoolean);
+  
+  public abstract boolean K(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
   public abstract void a(View paramView, Class<? extends IEvent> paramClass);
   
@@ -20,85 +24,85 @@ public abstract interface a
   
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
-  public abstract String aTf(String paramString);
+  public abstract void aJ(String paramString1, String paramString2, String paramString3);
   
-  public abstract void aTh(String paramString);
+  public abstract String aPk();
   
-  public abstract void aTi(String paramString);
+  public abstract String aQf(String paramString);
   
-  public abstract void aTj(String paramString);
+  public abstract void aQh(String paramString);
   
-  public abstract boolean aTk(String paramString);
+  public abstract void aQi(String paramString);
   
-  public abstract byte[] aTl(String paramString);
+  public abstract void aQj(String paramString);
   
-  public abstract void aTm(String paramString);
+  public abstract boolean aQk(String paramString);
   
-  public abstract boolean aTn(String paramString);
+  public abstract byte[] aQl(String paramString);
   
-  public abstract byte[] aTo(String paramString);
+  public abstract void aQm(String paramString);
   
-  public abstract String aTp(String paramString);
+  public abstract boolean aQn(String paramString);
   
-  public abstract String[] aTq(String paramString);
+  public abstract byte[] aQo(String paramString);
   
-  public abstract byte[] aaw(int paramInt);
+  public abstract String aQp(String paramString);
   
-  public abstract String aax(int paramInt);
+  public abstract String[] aQq(String paramString);
   
-  public abstract void aay(int paramInt);
+  public abstract void aW(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract byte[] aaz(int paramInt);
+  public abstract byte[] aeP(int paramInt);
   
-  public abstract String auQ();
+  public abstract String aeQ(int paramInt);
   
-  public abstract void av(String paramString1, String paramString2, String paramString3);
+  public abstract void aeR(int paramInt);
   
-  public abstract void ay(int paramInt1, int paramInt2, int paramInt3);
+  public abstract byte[] aeS(int paramInt);
   
-  public abstract boolean c(Object paramObject, Class paramClass);
+  public abstract boolean d(Object paramObject, Class paramClass);
   
-  public abstract boolean dK(Object paramObject);
+  public abstract boolean ge(Object paramObject);
   
-  public abstract String fjk();
+  public abstract void gq(String paramString, int paramInt);
   
-  public abstract boolean fjl();
+  public abstract String gtB();
   
-  public abstract boolean fjm();
+  public abstract boolean gtC();
   
-  public abstract byte[] fjn();
+  public abstract boolean gtD();
   
-  public abstract byte[] fjo();
+  public abstract byte[] gtE();
   
-  public abstract boolean fjp();
+  public abstract byte[] gtF();
   
-  public abstract byte[] fjq();
+  public abstract boolean gtG();
   
-  public abstract boolean fjr();
+  public abstract byte[] gtH();
   
-  public abstract String fjs();
+  public abstract boolean gtI();
   
-  public abstract String fjt();
+  public abstract String gtJ();
   
-  public abstract String fju();
+  public abstract String gtK();
   
-  public abstract com.tencent.mm.normsg.a fjv();
+  public abstract String gtL();
   
-  public abstract com.tencent.mm.normsgext.a fjw();
+  public abstract com.tencent.mm.normsg.a gtM();
   
-  public abstract void fjx();
+  public abstract com.tencent.mm.normsgext.a gtN();
   
-  public abstract void fx(String paramString, int paramInt);
+  public abstract void gtO();
   
-  public abstract void jr(String paramString1, String paramString2);
+  public abstract void kI(String paramString1, String paramString2);
   
-  public abstract String vJ(boolean paramBoolean);
+  public abstract void sR(long paramLong);
   
-  public abstract void vK(boolean paramBoolean);
+  public abstract void sS(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.a.a
  * JD-Core Version:    0.7.0.1
  */

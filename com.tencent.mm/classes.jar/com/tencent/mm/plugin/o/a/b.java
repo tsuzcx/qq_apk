@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.o.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int DNR;
-  public String DNS;
-  public String DNT;
-  public String DNU;
-  public String DNV;
-  public String DNW;
-  public String DNX;
-  public String DNY;
-  public String DNZ;
-  public String DOa;
-  public String hDf;
+  public int JFg;
+  public String JFh;
+  public String JFi;
+  public String JFj;
+  public String JFk;
+  public String JFl;
+  public String JFm;
+  public String JFn;
+  public String JFo;
+  public String JFp;
+  public String kab;
   public String title;
   public String type;
   
@@ -24,107 +24,107 @@ public final class b
     AppMethodBeat.i(25280);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.DNR);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.JFg);
       if (this.type != null) {
-        paramVarArgs.f(2, this.type);
+        paramVarArgs.g(2, this.type);
       }
       if (this.title != null) {
-        paramVarArgs.f(3, this.title);
+        paramVarArgs.g(3, this.title);
       }
-      if (this.DNS != null) {
-        paramVarArgs.f(4, this.DNS);
+      if (this.JFh != null) {
+        paramVarArgs.g(4, this.JFh);
       }
-      if (this.DNT != null) {
-        paramVarArgs.f(5, this.DNT);
+      if (this.JFi != null) {
+        paramVarArgs.g(5, this.JFi);
       }
-      if (this.DNU != null) {
-        paramVarArgs.f(6, this.DNU);
+      if (this.JFj != null) {
+        paramVarArgs.g(6, this.JFj);
       }
-      if (this.DNV != null) {
-        paramVarArgs.f(7, this.DNV);
+      if (this.JFk != null) {
+        paramVarArgs.g(7, this.JFk);
       }
-      if (this.DNW != null) {
-        paramVarArgs.f(8, this.DNW);
+      if (this.JFl != null) {
+        paramVarArgs.g(8, this.JFl);
       }
-      if (this.DNX != null) {
-        paramVarArgs.f(9, this.DNX);
+      if (this.JFm != null) {
+        paramVarArgs.g(9, this.JFm);
       }
-      if (this.DNY != null) {
-        paramVarArgs.f(10, this.DNY);
+      if (this.JFn != null) {
+        paramVarArgs.g(10, this.JFn);
       }
-      if (this.hDf != null) {
-        paramVarArgs.f(11, this.hDf);
+      if (this.kab != null) {
+        paramVarArgs.g(11, this.kab);
       }
-      if (this.DNZ != null) {
-        paramVarArgs.f(12, this.DNZ);
+      if (this.JFo != null) {
+        paramVarArgs.g(12, this.JFo);
       }
-      if (this.DOa != null) {
-        paramVarArgs.f(13, this.DOa);
+      if (this.JFp != null) {
+        paramVarArgs.g(13, this.JFp);
       }
       AppMethodBeat.o(25280);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.DNR) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.JFg) + 0;
       paramInt = i;
       if (this.type != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.type);
+        paramInt = i + i.a.a.b.b.a.h(2, this.type);
       }
       i = paramInt;
       if (this.title != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.title);
+        i = paramInt + i.a.a.b.b.a.h(3, this.title);
       }
       paramInt = i;
-      if (this.DNS != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.DNS);
+      if (this.JFh != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.JFh);
       }
       i = paramInt;
-      if (this.DNT != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.DNT);
+      if (this.JFi != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.JFi);
       }
       paramInt = i;
-      if (this.DNU != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.DNU);
+      if (this.JFj != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.JFj);
       }
       i = paramInt;
-      if (this.DNV != null) {
-        i = paramInt + g.a.a.b.b.a.g(7, this.DNV);
+      if (this.JFk != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.JFk);
       }
       paramInt = i;
-      if (this.DNW != null) {
-        paramInt = i + g.a.a.b.b.a.g(8, this.DNW);
+      if (this.JFl != null) {
+        paramInt = i + i.a.a.b.b.a.h(8, this.JFl);
       }
       i = paramInt;
-      if (this.DNX != null) {
-        i = paramInt + g.a.a.b.b.a.g(9, this.DNX);
+      if (this.JFm != null) {
+        i = paramInt + i.a.a.b.b.a.h(9, this.JFm);
       }
       paramInt = i;
-      if (this.DNY != null) {
-        paramInt = i + g.a.a.b.b.a.g(10, this.DNY);
+      if (this.JFn != null) {
+        paramInt = i + i.a.a.b.b.a.h(10, this.JFn);
       }
       i = paramInt;
-      if (this.hDf != null) {
-        i = paramInt + g.a.a.b.b.a.g(11, this.hDf);
+      if (this.kab != null) {
+        i = paramInt + i.a.a.b.b.a.h(11, this.kab);
       }
       paramInt = i;
-      if (this.DNZ != null) {
-        paramInt = i + g.a.a.b.b.a.g(12, this.DNZ);
+      if (this.JFo != null) {
+        paramInt = i + i.a.a.b.b.a.h(12, this.JFo);
       }
       i = paramInt;
-      if (this.DOa != null) {
-        i = paramInt + g.a.a.b.b.a.g(13, this.DOa);
+      if (this.JFp != null) {
+        i = paramInt + i.a.a.b.b.a.h(13, this.JFp);
       }
       AppMethodBeat.o(25280);
       return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(25280);
@@ -132,7 +132,7 @@ public final class b
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       b localb = (b)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -140,55 +140,55 @@ public final class b
         AppMethodBeat.o(25280);
         return -1;
       case 1: 
-        localb.DNR = locala.abFh.AK();
+        localb.JFg = locala.ajGk.aar();
         AppMethodBeat.o(25280);
         return 0;
       case 2: 
-        localb.type = locala.abFh.readString();
+        localb.type = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 3: 
-        localb.title = locala.abFh.readString();
+        localb.title = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 4: 
-        localb.DNS = locala.abFh.readString();
+        localb.JFh = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 5: 
-        localb.DNT = locala.abFh.readString();
+        localb.JFi = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 6: 
-        localb.DNU = locala.abFh.readString();
+        localb.JFj = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 7: 
-        localb.DNV = locala.abFh.readString();
+        localb.JFk = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 8: 
-        localb.DNW = locala.abFh.readString();
+        localb.JFl = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 9: 
-        localb.DNX = locala.abFh.readString();
+        localb.JFm = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 10: 
-        localb.DNY = locala.abFh.readString();
+        localb.JFn = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 11: 
-        localb.hDf = locala.abFh.readString();
+        localb.kab = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       case 12: 
-        localb.DNZ = locala.abFh.readString();
+        localb.JFo = locala.ajGk.readString();
         AppMethodBeat.o(25280);
         return 0;
       }
-      localb.DOa = locala.abFh.readString();
+      localb.JFp = locala.ajGk.readString();
       AppMethodBeat.o(25280);
       return 0;
     }
@@ -198,7 +198,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.o.a.b
  * JD-Core Version:    0.7.0.1
  */

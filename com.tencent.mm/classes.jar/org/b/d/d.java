@@ -52,17 +52,17 @@ public final class d
     return i + j;
   }
   
-  public final String iVr()
+  public final String kJP()
   {
     AppMethodBeat.i(40540);
-    String str = c.aT(this.key).concat("=").concat(c.aT(this.value));
+    String str = c.cg(this.key).concat("=").concat(c.cg(this.value));
     AppMethodBeat.o(40540);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.d
  * JD-Core Version:    0.7.0.1
  */

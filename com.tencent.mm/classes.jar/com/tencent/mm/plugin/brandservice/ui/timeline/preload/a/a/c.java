@@ -1,128 +1,168 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a;
 
 import android.content.Context;
+import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.r;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.r.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.protocal.protobuf.coc;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.r.d;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.r.e;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.n.d;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/GamePrefetchJsApiTransferRequest;", "T", "Lcom/tencent/luggage/container/LuggageComponent;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi;", "()V", "getEnv", "", "invokeInMM", "", "context", "Landroid/content/Context;", "dataStr", "", "jsApiCallback", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi$JsApiCallback;", "invokeInOwn", "ctx", "Lcom/tencent/luggage/container/LuggageJsApi$InvokeContext;", "Lcom/tencent/luggage/container/LuggageJsApi;", "kotlin.jvm.PlatformType", "name", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/GamePrefetchJsApiSavePageData;", "T", "Lcom/tencent/luggage/container/LuggageComponent;", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi;", "()V", "getEnv", "", "invokeInMM", "", "context", "Landroid/content/Context;", "dataStr", "", "jsApiCallback", "Lcom/tencent/mm/plugin/webview/luggage/jsapi/LuggageBaseJsApi$JsApiCallback;", "invokeInOwn", "ctx", "Lcom/tencent/luggage/container/LuggageJsApi$InvokeContext;", "Lcom/tencent/luggage/container/LuggageJsApi;", "kotlin.jvm.PlatformType", "name", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c<T extends a>
-  extends br<T>
+  extends bv<T>
 {
-  public static final a sQg;
+  public static final a vVu;
   
   static
   {
-    AppMethodBeat.i(265067);
-    sQg = new a((byte)0);
-    AppMethodBeat.o(265067);
+    AppMethodBeat.i(303148);
+    vVu = new a((byte)0);
+    AppMethodBeat.o(303148);
   }
   
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
-  public final void b(b<T>.a paramb)
+  public final void b(com.tencent.luggage.d.b<T>.a paramb)
   {
-    AppMethodBeat.i(265066);
-    if (paramb != null) {}
-    for (JSONObject localJSONObject = paramb.NN();; localJSONObject = null)
+    AppMethodBeat.i(303171);
+    if (paramb == null)
     {
-      Log.d("MicroMsg.GamePrefetchJsApiTransferRequest", "[game-web-prefetch] transferRequest invokeInOwn, data: ".concat(String.valueOf(localJSONObject)));
-      if (localJSONObject != null) {
-        break label59;
-      }
-      if (paramb == null) {
-        break;
-      }
-      paramb.dr("data is null");
-      AppMethodBeat.o(265066);
+      AppMethodBeat.o(303171);
       return;
     }
-    AppMethodBeat.o(265066);
-    return;
-    label59:
-    r.a(localJSONObject, (r.a)new b(paramb));
-    AppMethodBeat.o(265066);
+    Log.d("MicroMsg.GamePrefetchJsApiSavePageData", "[game-web-prefetch] savePageData invokeInOwn");
+    Object localObject1 = paramb.eiZ.eif;
+    String str = ((JSONObject)localObject1).optString("pageUrl");
+    s.s(str, "url");
+    if (((CharSequence)str).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      paramb.a("pageUrl is empty", null);
+      AppMethodBeat.o(303171);
+      return;
+    }
+    if (((CharSequence)com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.getHost(str)).length() == 0) {}
+    for (i = 1; i != 0; i = 0)
+    {
+      paramb.a("host invalid", null);
+      AppMethodBeat.o(303171);
+      return;
+    }
+    Object localObject3 = ((JSONObject)localObject1).optString("content");
+    s.s(localObject3, "content");
+    if (((CharSequence)localObject3).length() == 0) {}
+    for (i = 1; i != 0; i = 0)
+    {
+      paramb.a("content is empty", null);
+      AppMethodBeat.o(303171);
+      return;
+    }
+    Object localObject2 = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ajl(str);
+    Object localObject4 = com.tencent.mm.plugin.az.c.WmU;
+    localObject4 = com.tencent.mm.plugin.az.c.ipm();
+    Object localObject5 = r.vTf;
+    localObject2 = new r.d(str, (String)localObject2, (com.tencent.mm.plugin.az.b)localObject4, r.dfI(), null, null, null, null, false, null, 2032);
+    localObject4 = ((r.d)localObject2).vTz;
+    s.checkNotNull(localObject4);
+    localObject4 = y.n(ah.v(((com.tencent.mm.plugin.az.b)localObject4).bii(((r.d)localObject2).dfT()).mUri), true);
+    localObject5 = ((String)localObject3).getBytes(d.UTF_8);
+    s.s(localObject5, "(this as java.lang.String).getBytes(charset)");
+    i = y.f((String)localObject4, (byte[])localObject5, localObject5.length);
+    Log.i("MicroMsg.GamePrefetchJsApiSavePageData", "[game-web-prefetch] savePageData content: " + ((String)localObject3).length() + ", targetPath: " + localObject4 + ", webId: " + ((r.d)localObject2).vTy + ", bizId: " + ((r.d)localObject2).dfT() + ", url: " + str + ", ret: " + i);
+    if (i != 0)
+    {
+      paramb.a("save page data error", null);
+      AppMethodBeat.o(303171);
+      return;
+    }
+    localObject1 = ((JSONObject)localObject1).optString("headers");
+    s.s(localObject1, "headers");
+    if (((CharSequence)localObject1).length() > 0)
+    {
+      i = 1;
+      if (i != 0)
+      {
+        Log.v("MicroMsg.GamePrefetchJsApiSavePageData", s.X("[game-web-prefetch] savePageData saveHeaders: ", localObject1));
+        localObject3 = new JSONObject((String)localObject1);
+        localObject1 = Integer.valueOf(((JSONObject)localObject3).optInt("x-wx-max-cache", -1));
+        if (((Number)localObject1).intValue() <= 0) {
+          break label596;
+        }
+        i = 1;
+        label459:
+        if (i == 0) {
+          break label601;
+        }
+        label463:
+        if (localObject1 != null)
+        {
+          i = ((Number)localObject1).intValue();
+          ((Map)((r.d)localObject2).dgb()).put("x-wx-max-cache", p.listOf(String.valueOf(i)));
+        }
+        localObject1 = Integer.valueOf(((JSONObject)localObject3).optInt("max-age", -1));
+        if (((Number)localObject1).intValue() <= 0) {
+          break label606;
+        }
+        i = 1;
+        label524:
+        if (i == 0) {
+          break label611;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (localObject1 != null)
+      {
+        i = ((Number)localObject1).intValue();
+        ((Map)((r.d)localObject2).dgb()).put("max-age", p.listOf(String.valueOf(i)));
+      }
+      ((r.d)localObject2).a(r.e.vTV, com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.getHost(str));
+      paramb.a("", null);
+      AppMethodBeat.o(303171);
+      return;
+      i = 0;
+      break;
+      label596:
+      i = 0;
+      break label459;
+      label601:
+      localObject1 = null;
+      break label463;
+      label606:
+      i = 0;
+      break label524;
+      label611:
+      localObject1 = null;
+    }
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "transferRequest";
+    return "savePageData";
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/GamePrefetchJsApiTransferRequest$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/GamePrefetchJsApiSavePageData$Companion;", "", "()V", "TAG", "", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/game/jsapi/GamePrefetchJsApiTransferRequest$invokeInOwn$1", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/TransferRequest$TransferRequestCallback;", "onResult", "", "errMsg", "", "response", "Lcom/tencent/mm/protocal/protobuf/JsApiResponse;", "plugin-brandservice_release"})
-  public static final class b
-    implements r.a
-  {
-    b(b.a parama) {}
-    
-    public final void a(String paramString, coc paramcoc)
-    {
-      AppMethodBeat.i(266776);
-      p.k(paramString, "errMsg");
-      if (paramcoc != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        String str = paramcoc.error_msg;
-        paramString = str;
-        if (str == null) {
-          paramString = "";
-        }
-        localJSONObject.put("err_desc", paramString);
-        str = paramcoc.RUC;
-        paramString = str;
-        if (str == null) {
-          paramString = "";
-        }
-        localJSONObject.put("respJson", paramString);
-        if (paramcoc.ret == 0)
-        {
-          this.sQe.e(localJSONObject);
-          AppMethodBeat.o(266776);
-          return;
-        }
-        this.sQe.a("failed " + paramcoc.ret, localJSONObject);
-        AppMethodBeat.o(266776);
-        return;
-      }
-      paramcoc = this.sQe;
-      int i;
-      if (((CharSequence)paramString).length() > 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label171;
-        }
-      }
-      for (;;)
-      {
-        paramcoc.dr(paramString);
-        AppMethodBeat.o(266776);
-        return;
-        i = 0;
-        break;
-        label171:
-        paramString = "transferRequest failed";
-      }
-    }
-  }
 }
 
 

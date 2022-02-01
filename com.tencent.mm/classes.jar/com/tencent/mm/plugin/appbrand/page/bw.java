@@ -2,79 +2,71 @@ package com.tencent.mm.plugin.appbrand.page;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/MonkeyTestAppPageViewRenderer;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewRendererWC;", "pv", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;)V", "onCreateCustomScriptProvider", "Lcom/tencent/mm/plugin/appbrand/page/IMPPageScriptProvider;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/page/MonkeyTestAppPageViewRenderer;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewRendererWC;", "pv", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;)V", "onCreateCustomScriptProvider", "Lcom/tencent/mm/plugin/appbrand/page/IMPPageScriptProvider;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bw
   extends ag
 {
   public bw(ah paramah)
   {
     super(paramah);
-    AppMethodBeat.i(271940);
-    AppMethodBeat.o(271940);
+    AppMethodBeat.i(324947);
+    AppMethodBeat.o(324947);
   }
   
-  protected final bg cdk()
+  protected final bg cDI()
   {
-    AppMethodBeat.i(271939);
-    bg localbg = (bg)new a(this, (a)this);
-    AppMethodBeat.o(271939);
+    AppMethodBeat.i(324948);
+    bg localbg = (bg)new a(this);
+    AppMethodBeat.o(324948);
     return localbg;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/page/MonkeyTestAppPageViewRenderer$onCreateCustomScriptProvider$1", "Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderDefaultImpl;", "provideScript", "", "resourceName", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/page/MonkeyTestAppPageViewRenderer$onCreateCustomScriptProvider$1", "Lcom/tencent/mm/plugin/appbrand/page/MPPageScriptProviderDefaultImpl;", "provideScript", "", "resourceName", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends bk
   {
-    a(a parama)
+    a(bw parambw)
     {
       super();
+      AppMethodBeat.i(324963);
+      AppMethodBeat.o(324963);
     }
     
-    public final String alO(String paramString)
+    public final String aeU(String paramString)
     {
-      AppMethodBeat.i(271351);
-      if (paramString == null) {}
-      do
+      AppMethodBeat.i(324965);
+      if (s.p(paramString, "WAWebview.js"))
       {
-        for (;;)
+        paramString = this.tBl.aa(ICommLibReader.class);
+        s.checkNotNull(paramString);
+        paramString = ((ICommLibReader)paramString).UW("WAWebview.js");
+        s.checkNotNull(paramString);
+        s.s(paramString, "this@MonkeyTestAppPageVi…g(SCRIPT_LIB_WAWEBVIEW)!!");
+        StringBuilder localStringBuilder = new StringBuilder();
+        f localf = this.tBl.aqX();
+        if (localf == null)
         {
-          paramString = super.alO(paramString);
-          AppMethodBeat.o(271351);
-          return paramString;
-          switch (paramString.hashCode())
-          {
-          }
+          paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.page.MonkeyTestAppPageView");
+          AppMethodBeat.o(324965);
+          throw paramString;
         }
-      } while (!paramString.equals("WAWebview.js"));
-      paramString = this.qww.R(ICommLibReader.class);
-      if (paramString == null) {
-        p.iCn();
+        paramString = ((bv)localf).tBk + "\n\n" + paramString;
+        AppMethodBeat.o(324965);
+        return paramString;
       }
-      paramString = ((ICommLibReader)paramString).acw("WAWebview.js");
-      if (paramString == null) {
-        p.iCn();
-      }
-      StringBuilder localStringBuilder = new StringBuilder();
-      ah localah = (ah)this.qww.QK();
-      if (localah == null)
-      {
-        paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.page.MonkeyTestAppPageView");
-        AppMethodBeat.o(271351);
-        throw paramString;
-      }
-      paramString = ((bv)localah).qwv + "\n\n" + paramString;
-      AppMethodBeat.o(271351);
+      paramString = super.aeU(paramString);
+      AppMethodBeat.o(324965);
       return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bw
  * JD-Core Version:    0.7.0.1
  */

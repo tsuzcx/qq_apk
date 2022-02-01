@@ -20,28 +20,28 @@ public class YtSDKKitNetHelper
   
   static
   {
-    AppMethodBeat.i(256916);
+    AppMethodBeat.i(218120);
     TAG = YtSDKKitNetHelper.class.getSimpleName();
-    AppMethodBeat.o(256916);
+    AppMethodBeat.o(218120);
   }
   
   private YtSDKKitNetHelper()
   {
-    AppMethodBeat.i(256912);
+    AppMethodBeat.i(218075);
     this.runningMap = new HashMap();
-    AppMethodBeat.o(256912);
+    AppMethodBeat.o(218075);
   }
   
   public static void clearInstance()
   {
     try
     {
-      AppMethodBeat.i(256910);
+      AppMethodBeat.i(218068);
       if (_instane != null) {
         _instane.stopNetworkRequest();
       }
       _instane = null;
-      AppMethodBeat.o(256910);
+      AppMethodBeat.o(218068);
       return;
     }
     finally {}
@@ -51,12 +51,12 @@ public class YtSDKKitNetHelper
   {
     try
     {
-      AppMethodBeat.i(256909);
+      AppMethodBeat.i(218066);
       if (_instane == null) {
         _instane = new YtSDKKitNetHelper();
       }
       YtSDKKitNetHelper localYtSDKKitNetHelper = _instane;
-      AppMethodBeat.o(256909);
+      AppMethodBeat.o(218066);
       return localYtSDKKitNetHelper;
     }
     finally {}
@@ -64,7 +64,7 @@ public class YtSDKKitNetHelper
   
   public void sendNetworkRequest(final String paramString1, final String paramString2, final HashMap<String, String> paramHashMap, final YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
   {
-    AppMethodBeat.i(256915);
+    AppMethodBeat.i(218132);
     this.networkThread = new Thread(new Runnable()
     {
       /* Error */
@@ -337,12 +337,12 @@ public class YtSDKKitNetHelper
     });
     this.networkThread.setName("YtNetworkRequestThread");
     this.networkThread.start();
-    AppMethodBeat.o(256915);
+    AppMethodBeat.o(218132);
   }
   
   public void stopNetworkRequest()
   {
-    AppMethodBeat.i(256914);
+    AppMethodBeat.i(218128);
     Iterator localIterator = this.runningMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
@@ -351,16 +351,16 @@ public class YtSDKKitNetHelper
       {
         this.runningMap.remove(localEntry.getKey());
         YtLogger.d(TAG, "network remove " + localEntry.getKey());
-        AppMethodBeat.o(256914);
+        AppMethodBeat.o(218128);
         return;
       }
     }
-    AppMethodBeat.o(256914);
+    AppMethodBeat.o(218128);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.net.YtSDKKitNetHelper
  * JD-Core Version:    0.7.0.1
  */

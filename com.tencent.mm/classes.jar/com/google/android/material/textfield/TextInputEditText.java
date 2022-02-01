@@ -25,62 +25,62 @@ public class TextInputEditText
   
   private CharSequence getHintFromLayout()
   {
-    AppMethodBeat.i(240242);
+    AppMethodBeat.i(209677);
     Object localObject = getTextInputLayout();
     if (localObject != null)
     {
       localObject = ((TextInputLayout)localObject).getHint();
-      AppMethodBeat.o(240242);
+      AppMethodBeat.o(209677);
       return localObject;
     }
-    AppMethodBeat.o(240242);
+    AppMethodBeat.o(209677);
     return null;
   }
   
   private TextInputLayout getTextInputLayout()
   {
-    AppMethodBeat.i(240239);
+    AppMethodBeat.i(209672);
     for (Object localObject = getParent(); (localObject instanceof View); localObject = ((ViewParent)localObject).getParent()) {
       if ((localObject instanceof TextInputLayout))
       {
         localObject = (TextInputLayout)localObject;
-        AppMethodBeat.o(240239);
+        AppMethodBeat.o(209672);
         return localObject;
       }
     }
-    AppMethodBeat.o(240239);
+    AppMethodBeat.o(209672);
     return null;
   }
   
   public CharSequence getHint()
   {
-    AppMethodBeat.i(240231);
+    AppMethodBeat.i(209684);
     Object localObject = getTextInputLayout();
-    if ((localObject != null) && (((TextInputLayout)localObject).bGE))
+    if ((localObject != null) && (((TextInputLayout)localObject).dzD))
     {
       localObject = ((TextInputLayout)localObject).getHint();
-      AppMethodBeat.o(240231);
+      AppMethodBeat.o(209684);
       return localObject;
     }
     localObject = super.getHint();
-    AppMethodBeat.o(240231);
+    AppMethodBeat.o(209684);
     return localObject;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    AppMethodBeat.i(240235);
+    AppMethodBeat.i(209694);
     InputConnection localInputConnection = super.onCreateInputConnection(paramEditorInfo);
     if ((localInputConnection != null) && (paramEditorInfo.hintText == null)) {
       paramEditorInfo.hintText = getHintFromLayout();
     }
-    AppMethodBeat.o(240235);
+    AppMethodBeat.o(209694);
     return localInputConnection;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.textfield.TextInputEditText
  * JD-Core Version:    0.7.0.1
  */

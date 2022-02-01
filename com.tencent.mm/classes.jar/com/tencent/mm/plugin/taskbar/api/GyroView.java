@@ -14,94 +14,94 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class GyroView
   extends View
 {
-  private float Mnm;
-  private float Mnn;
-  private float Mno;
-  private float Mnp;
-  private float Mnq;
-  private float Mnr;
-  private boolean Mns;
+  private float Rl;
+  private float SQF;
+  private float SQG;
+  private float SQH;
+  private float SQI;
+  private float SQJ;
+  private float SQK;
+  private boolean SQL;
   private Paint mPaint;
-  private float yW;
   
   public GyroView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(256267);
-    this.Mnm = 0.0F;
-    this.Mnn = 0.0F;
-    this.Mns = false;
-    this.Mnp = (40.0F * getResources().getDisplayMetrics().density);
-    this.Mno = (100.0F * getResources().getDisplayMetrics().density);
-    this.yW = (20.0F * getResources().getDisplayMetrics().density);
-    this.Mnq = (10.0F * getResources().getDisplayMetrics().density);
-    this.Mnr = (6.0F * getResources().getDisplayMetrics().density);
+    AppMethodBeat.i(264005);
+    this.SQF = 0.0F;
+    this.SQG = 0.0F;
+    this.SQL = false;
+    this.SQI = (40.0F * getResources().getDisplayMetrics().density);
+    this.SQH = (100.0F * getResources().getDisplayMetrics().density);
+    this.Rl = (20.0F * getResources().getDisplayMetrics().density);
+    this.SQJ = (10.0F * getResources().getDisplayMetrics().density);
+    this.SQK = (6.0F * getResources().getDisplayMetrics().density);
     this.mPaint = new Paint(1);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setColor(-9934744);
-    AppMethodBeat.o(256267);
+    AppMethodBeat.o(264005);
   }
   
   public final void f(float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(256270);
-    float f2 = (paramFloat - this.Mnp) / (paramInt - this.Mnp);
+    AppMethodBeat.i(264027);
+    float f2 = (paramFloat - this.SQI) / (paramInt - this.SQI);
     float f1 = f2;
-    if (this.Mns) {
+    if (this.SQL) {
       f1 = 1.0F - f2;
     }
-    this.Mnn = Math.max(0.0F, Math.min(f1, 1.0F));
-    f2 = paramFloat / this.Mnp;
+    this.SQG = Math.max(0.0F, Math.min(f1, 1.0F));
+    f2 = paramFloat / this.SQI;
     f1 = f2;
-    if (this.Mns) {
+    if (this.SQL) {
       f1 = 1.0F - f2;
     }
-    this.Mnm = Math.max(0.0F, Math.min(f1, 1.0F));
-    Log.d("MicroMsg.GyroView", "alvinluo GyroView setVerticalScroll y: %f, limit: %d, percent: %f, paddingPercent: %f", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt), Float.valueOf(this.Mnm), Float.valueOf(this.Mnn) });
+    this.SQF = Math.max(0.0F, Math.min(f1, 1.0F));
+    Log.d("MicroMsg.GyroView", "alvinluo GyroView setVerticalScroll y: %f, limit: %d, percent: %f, paddingPercent: %f", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt), Float.valueOf(this.SQF), Float.valueOf(this.SQG) });
     postInvalidate();
-    AppMethodBeat.o(256270);
+    AppMethodBeat.o(264027);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(256268);
+    AppMethodBeat.i(264012);
     super.onDraw(paramCanvas);
     float f1 = getMeasuredWidth() / 2.0F;
     float f2 = getMeasuredHeight() / 2.0F;
-    if (this.Mnn > 0.0F)
+    if (this.SQG > 0.0F)
     {
-      paramCanvas.drawCircle(f1, f2, this.Mnq / 2.0F - this.Mnn * (this.Mnq - this.Mnr) / 2.0F, this.mPaint);
-      paramCanvas.drawCircle(f1 - this.Mnn * this.yW, f2, this.Mnr / 2.0F, this.mPaint);
-      paramCanvas.drawCircle(f1 + this.Mnn * this.yW, f2, this.Mnr / 2.0F, this.mPaint);
-      AppMethodBeat.o(256268);
+      paramCanvas.drawCircle(f1, f2, this.SQJ / 2.0F - this.SQG * (this.SQJ - this.SQK) / 2.0F, this.mPaint);
+      paramCanvas.drawCircle(f1 - this.SQG * this.Rl, f2, this.SQK / 2.0F, this.mPaint);
+      paramCanvas.drawCircle(f1 + this.SQG * this.Rl, f2, this.SQK / 2.0F, this.mPaint);
+      AppMethodBeat.o(264012);
       return;
     }
-    paramCanvas.drawCircle(f1, f2, this.Mnm * this.Mnq / 2.0F, this.mPaint);
-    AppMethodBeat.o(256268);
+    paramCanvas.drawCircle(f1, f2, this.SQF * this.SQJ / 2.0F, this.mPaint);
+    AppMethodBeat.o(264012);
   }
   
   public void setVerticalScroll(float paramFloat)
   {
-    AppMethodBeat.i(256269);
-    float f2 = (paramFloat - this.Mnp) / (this.Mno - this.Mnp);
+    AppMethodBeat.i(264021);
+    float f2 = (paramFloat - this.SQI) / (this.SQH - this.SQI);
     float f1 = f2;
-    if (this.Mns) {
+    if (this.SQL) {
       f1 = 1.0F - f2;
     }
-    this.Mnn = Math.max(0.0F, Math.min(f1, 1.0F));
-    f1 = paramFloat / this.Mnp;
+    this.SQG = Math.max(0.0F, Math.min(f1, 1.0F));
+    f1 = paramFloat / this.SQI;
     paramFloat = f1;
-    if (this.Mns) {
+    if (this.SQL) {
       paramFloat = 1.0F - f1;
     }
-    this.Mnm = Math.max(0.0F, Math.min(paramFloat, 1.0F));
+    this.SQF = Math.max(0.0F, Math.min(paramFloat, 1.0F));
     postInvalidate();
-    AppMethodBeat.o(256269);
+    AppMethodBeat.o(264021);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.api.GyroView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/asu" android:paddingLeft="@dimen/agc" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fpv" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ect" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
-        <TextView android:textSize="@dimen/agi" android:textColor="@color/a2x" android:gravity="center|left" android:id="@id/gb3" android:layout_width="@dimen/agm" android:layout_height="wrap_content" android:singleLine="false" />
-        <TextView android:textSize="@dimen/agi" android:textColor="@color/x0" android:gravity="center_vertical" android:id="@id/gb2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/agk" android:singleLine="true" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/hr" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/gk2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌词测试" />
+    <View android:id="@id/bdr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/cp" />
+</LinearLayout>

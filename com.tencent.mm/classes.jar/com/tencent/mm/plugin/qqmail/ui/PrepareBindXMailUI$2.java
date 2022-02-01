@@ -13,13 +13,13 @@ final class PrepareBindXMailUI$2
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(250503);
+    AppMethodBeat.i(266965);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.Hrj.onBackPressed();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    this.NoW.onBackPressed();
     a.a(this, "com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(250503);
+    AppMethodBeat.o(266965);
   }
 }
 

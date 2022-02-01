@@ -1,33 +1,23 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import androidx.recyclerview.widget.RecyclerView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.o.e;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.websearch.webview.d;
+import com.tencent.mm.protocal.protobuf.gia;
+import kotlin.Metadata;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/fts/ui/widget/KeyboardSugHeadConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/fts/ui/widget/KeyboardSugItem;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "ui-fts_release"})
-public final class f
-  extends e<g>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/fts/ui/widget/IPardusUIComponent;", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "Lcom/tencent/mm/protocal/protobuf/WebSearchHomeContext;", "pardusAction", "", "area", "", "requestObj", "Lorg/json/JSONObject;", "renderFinish", "showFTSSearchBar", "ui-fts_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface f
+  extends d<gia>
 {
-  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
-  {
-    AppMethodBeat.i(194031);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(194031);
-  }
+  public abstract void bj(JSONObject paramJSONObject);
   
-  public final int getLayoutId()
-  {
-    return o.e.fts_keyboard_sug_head_view;
-  }
+  public abstract void d(int paramInt, JSONObject paramJSONObject);
+  
+  public abstract void fzz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.websearch.widget.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
 
 public final class a {}
 

@@ -11,8 +11,8 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public class MMCallBackScrollView
   extends ScrollView
 {
-  private int HjF;
-  private a HjG;
+  private int Nhs;
+  private a Nht;
   private MMHandler mHandler;
   private int mState;
   
@@ -68,13 +68,13 @@ public class MMCallBackScrollView
     AppMethodBeat.o(27681);
   }
   
-  private void abK(int paramInt)
+  private void afY(int paramInt)
   {
     AppMethodBeat.i(27679);
-    if ((this.HjG != null) && (this.mState != paramInt))
+    if ((this.Nht != null) && (this.mState != paramInt))
     {
       this.mState = paramInt;
-      this.HjG.onScrollStateChanged(paramInt);
+      this.Nht.onScrollStateChanged(paramInt);
     }
     AppMethodBeat.o(27679);
   }
@@ -83,7 +83,7 @@ public class MMCallBackScrollView
   {
     AppMethodBeat.i(27682);
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    this.HjF = getScrollY();
+    this.Nhs = getScrollY();
     switch (paramMotionEvent.getAction())
     {
     }
@@ -95,14 +95,14 @@ public class MMCallBackScrollView
       {
         this.mHandler.sendMessageDelayed(this.mHandler.obtainMessage(), 5L);
         continue;
-        abK(1);
+        afY(1);
       }
     }
   }
   
   public void setMMOnScrollListener(a parama)
   {
-    this.HjG = parama;
+    this.Nht = parama;
   }
   
   public static abstract interface a
@@ -112,7 +112,7 @@ public class MMCallBackScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMCallBackScrollView
  * JD-Core Version:    0.7.0.1
  */

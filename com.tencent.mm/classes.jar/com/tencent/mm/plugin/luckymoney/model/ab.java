@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g.a;
+import com.tencent.mm.g.c;
+import com.tencent.mm.g.d;
+import com.tencent.mm.g.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.ByteArrayOutputStream;
@@ -11,25 +11,25 @@ import java.io.ByteArrayOutputStream;
 public final class ab
   implements g.a
 {
-  a EAB;
-  String EAC;
-  boolean EAD = true;
-  String vhP = null;
+  ab.a Ktv;
+  String Ktw;
+  boolean Ktx = true;
+  String ytQ = null;
   
   public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(65240);
     Log.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-    if ((paramd != null) && (this.vhP.equals(paramString)) && (!Util.isNullOrNil(paramd.field_fileId)))
+    if ((paramd != null) && (this.ytQ.equals(paramString)) && (!Util.isNullOrNil(paramd.field_fileId)))
     {
       Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer success, sceneResult.field_retCode:" + paramd.field_retCode);
       if ((paramInt == 0) && (paramd.field_retCode == 0)) {
-        if (this.EAD)
+        if (this.Ktx)
         {
           Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, upload callback success");
           Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
-          if (this.EAB != null) {
-            this.EAB.bU(this.EAC, true);
+          if (this.Ktv != null) {
+            this.Ktv.cp(this.Ktw, true);
           }
         }
       }
@@ -41,15 +41,15 @@ public final class ab
       Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, download callback success");
       break;
       Log.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail");
-      if (this.EAB != null)
+      if (this.Ktv != null)
       {
-        this.EAB.bU(this.EAC, false);
+        this.Ktv.cp(this.Ktw, false);
         continue;
-        if ((paramd != null) && (this.vhP.equals(paramString)) && (paramd.field_retCode != 0))
+        if ((paramd != null) && (this.ytQ.equals(paramString)) && (paramd.field_retCode != 0))
         {
           Log.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail, sceneResult.field_retCode:" + paramd.field_retCode);
-          if (this.EAB != null) {
-            this.EAB.bU(this.EAC, false);
+          if (this.Ktv != null) {
+            this.Ktv.cp(this.Ktw, false);
           }
         }
         else if (paramc != null)
@@ -62,19 +62,14 @@ public final class ab
   
   public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
   
-  public final byte[] f(String paramString, byte[] paramArrayOfByte)
+  public final byte[] h(String paramString, byte[] paramArrayOfByte)
   {
     return null;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void bU(String paramString, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ab
  * JD-Core Version:    0.7.0.1
  */

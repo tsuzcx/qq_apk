@@ -1,16 +1,16 @@
 package com.tencent.magicbrush.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/MagicBrushView$MBRendererView$Companion;", "", "()V", "RENDER_MODE_FLAG_LIVE", "", "RENDER_MODE_FLAG_NORMAL", "RENDER_MODE_FLAG_RECORD", "lib-magicbrush-nano_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/magicbrush/ui/MagicBrushView$MBRendererView$Companion;", "", "()V", "RENDER_MODE_FLAG_LIVE", "", "RENDER_MODE_FLAG_NORMAL", "RENDER_MODE_FLAG_RECORD", "lib-magicbrush-nano_release"}, k=1, mv={1, 1, 16})
 public final class MagicBrushView$b$a
 {
   static
   {
-    AppMethodBeat.i(205402);
-    cPS = new a();
-    AppMethodBeat.o(205402);
+    AppMethodBeat.i(229009);
+    eKX = new a();
+    AppMethodBeat.o(229009);
   }
 }
 

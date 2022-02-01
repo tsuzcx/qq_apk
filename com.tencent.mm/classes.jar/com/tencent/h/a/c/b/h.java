@@ -9,37 +9,37 @@ import java.util.ArrayList;
 public final class h
   extends JceStruct
 {
-  static ArrayList<Double> ZTT;
-  public long Zqh = 0L;
-  public ArrayList<Double> mXB = null;
+  static ArrayList<Double> ahYt;
+  public long ahuO = 0L;
+  public ArrayList<Double> pUj = null;
   
   static
   {
-    AppMethodBeat.i(208011);
-    ZTT = new ArrayList();
-    ZTT.add(Double.valueOf(0.0D));
-    AppMethodBeat.o(208011);
+    AppMethodBeat.i(212178);
+    ahYt = new ArrayList();
+    ahYt.add(Double.valueOf(0.0D));
+    AppMethodBeat.o(212178);
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(208008);
-    this.Zqh = paramJceInputStream.read(this.Zqh, 0, true);
-    this.mXB = ((ArrayList)paramJceInputStream.read(ZTT, 1, true));
-    AppMethodBeat.o(208008);
+    AppMethodBeat.i(212191);
+    this.ahuO = paramJceInputStream.read(this.ahuO, 0, true);
+    this.pUj = ((ArrayList)paramJceInputStream.read(ahYt, 1, true));
+    AppMethodBeat.o(212191);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(208007);
-    paramJceOutputStream.write(this.Zqh, 0);
-    paramJceOutputStream.write(this.mXB, 1);
-    AppMethodBeat.o(208007);
+    AppMethodBeat.i(212184);
+    paramJceOutputStream.write(this.ahuO, 0);
+    paramJceOutputStream.write(this.pUj, 1);
+    AppMethodBeat.o(212184);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.c.b.h
  * JD-Core Version:    0.7.0.1
  */

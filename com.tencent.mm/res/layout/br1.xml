@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/sc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/om">
-        <LinearLayout style="@style/lz">
-            <EditText android:id="@id/hmw" android:inputType="textEmailAddress" style="@style/nn" />
-            <View style="@style/nj" />
-            <TextView android:id="@id/fj6" android:text="@string/gqs" android:layout_weight="1.0" style="@style/m0" />
-            <LinearLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <TextView android:id="@id/izp" android:text="@string/gvv" style="@style/oy" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+    <ImageView style="@style/sd" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/br0" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/ii0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerInside" android:adjustViewBounds="true" android:contentDescription="@string/hua" style="@style/jo" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/g3o" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a74" />
+        </FrameLayout>
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/sg" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/i7r" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:progressBarStyleHorizontal" />
 </LinearLayout>

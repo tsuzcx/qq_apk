@@ -11,7 +11,7 @@ import com.tencent.mm.chatroom.ui.SeeRoomManagerUI;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.a.e.c;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.neattextview.textview.view.NeatTextView;
@@ -21,27 +21,27 @@ import java.util.Map;
 public final class a
   implements e.c
 {
-  public com.tencent.mm.chatroom.e.a iVX;
+  public com.tencent.mm.chatroom.e.a lxU;
   
   public a()
   {
     AppMethodBeat.i(12445);
-    this.iVX = new com.tencent.mm.chatroom.e.a();
+    this.lxU = new com.tencent.mm.chatroom.e.a();
     AppMethodBeat.o(12445);
   }
   
   public final CharSequence a(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(186998);
+    AppMethodBeat.i(241464);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     paramString = (String)paramMap.get(paramString + ".title");
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(186998);
+      AppMethodBeat.o(241464);
       return "";
     }
-    SpannableString localSpannableString = l.c(MMApplicationContext.getContext(), paramString);
-    localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a(paramWeakReference, paramBundle)
+    SpannableString localSpannableString = p.b(MMApplicationContext.getContext(), paramString);
+    localSpannableString.setSpan(new com.tencent.mm.plugin.messenger.a.a(paramWeakReference)
     {
       public final void onClickImp(View paramAnonymousView)
       {
@@ -53,17 +53,17 @@ public final class a
           Intent localIntent = new Intent(paramAnonymousView, SeeRoomManagerUI.class);
           localIntent.setFlags(32768);
           localIntent.putExtra("RoomInfo_Id", (String)localObject);
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/chatroom/manager/ChatroomNewXmlMgr$1", "onClickImp", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/chatroom/manager/ChatroomNewXmlMgr$1", "onClickImp", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/chatroom/manager/ChatroomNewXmlMgr$1", "onClickImp", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((e)h.ae(e.class)).a("link_admin_explain", paramMap, paramBundle);
+          ((e)h.ax(e.class)).a("link_admin_explain", paramMap, paramBundle);
         }
         AppMethodBeat.o(12444);
       }
     }, 0, paramString.length(), 33);
     localSpannableStringBuilder.append(localSpannableString);
-    AppMethodBeat.o(186998);
+    AppMethodBeat.o(241464);
     return localSpannableStringBuilder;
   }
 }

@@ -1,137 +1,179 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnApplyWindowInsetsListener;
-import android.view.Window;
-import android.view.WindowInsets;
-import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.plugin.appbrand.af.l;
+import com.tencent.mm.protocal.protobuf.dgw;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-@TargetApi(21)
 public final class o
-  extends Drawable
+  extends MAutoStorage<p>
 {
-  private final Paint mPaint;
-  private final Rect mTempRect;
-  final Rect rnW;
-  private int rnX;
-  public int rnY;
+  public static final String tbu;
   
-  public o()
+  static
   {
-    AppMethodBeat.i(49371);
-    this.rnW = new Rect();
-    this.mTempRect = new Rect();
-    this.mPaint = new Paint();
-    this.rnX = 0;
-    this.rnY = 0;
-    AppMethodBeat.o(49371);
+    AppMethodBeat.i(76409);
+    tbu = MAutoStorage.getCreateSQLs(p.DB_INFO, "LaunchWxaWidgetRespData");
+    AppMethodBeat.o(76409);
   }
   
-  public static void a(Activity paramActivity, View paramView)
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(49372);
-    if ((paramView == null) || (paramActivity == null))
-    {
-      AppMethodBeat.o(49372);
-      return;
-    }
-    o localo = new o();
-    final View localView = paramActivity.getWindow().getDecorView();
-    paramView.setBackground(localo);
-    View.OnApplyWindowInsetsListener local1 = new View.OnApplyWindowInsetsListener()
-    {
-      public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
-      {
-        AppMethodBeat.i(49370);
-        this.rnZ.rnW.set(paramAnonymousWindowInsets.getSystemWindowInsetLeft(), paramAnonymousWindowInsets.getSystemWindowInsetTop(), paramAnonymousWindowInsets.getSystemWindowInsetRight(), paramAnonymousWindowInsets.getSystemWindowInsetBottom());
-        w.G(paramAnonymousView);
-        if (localView == paramAnonymousView)
-        {
-          AppMethodBeat.o(49370);
-          return paramAnonymousWindowInsets;
-        }
-        paramAnonymousView = paramAnonymousView.onApplyWindowInsets(paramAnonymousWindowInsets);
-        AppMethodBeat.o(49370);
-        return paramAnonymousView;
-      }
-    };
-    if (localView == paramView) {
-      as.bt(paramActivity).a(local1);
+    super(paramISQLiteDatabase, p.DB_INFO, "LaunchWxaWidgetRespData", p.INDEX_CREATE);
+  }
+  
+  private boolean a(p paramp, boolean paramBoolean)
+  {
+    AppMethodBeat.i(76403);
+    paramp.field_appIdHash = paramp.field_appId.hashCode();
+    super.insertNotify(paramp, paramBoolean);
+    paramBoolean = a(paramp, new String[] { "appId" });
+    AppMethodBeat.o(76403);
+    return paramBoolean;
+  }
+  
+  private boolean a(p paramp, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(76404);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
     }
     for (;;)
     {
-      localo.rnX = 0;
-      localo.rnY = paramActivity.getWindow().getNavigationBarColor();
-      AppMethodBeat.o(49372);
-      return;
-      paramView.setOnApplyWindowInsetsListener(local1);
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramp.field_appIdHash = paramp.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        paramBoolean = super.updateNotify(paramp, paramBoolean, paramVarArgs);
+        AppMethodBeat.o(76404);
+        return paramBoolean;
+      }
+      i += 1;
     }
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final p a(String paramString, int paramInt1, int paramInt2, dgw paramdgw)
   {
-    AppMethodBeat.i(49373);
-    Rect localRect = getBounds();
-    if ((localRect.width() <= 0) || (localRect.height() <= 0))
+    AppMethodBeat.i(76400);
+    if ((Util.isNullOrNil(paramString)) || (paramdgw == null))
     {
-      AppMethodBeat.o(49373);
-      return;
+      AppMethodBeat.o(76400);
+      return null;
     }
-    int i = Math.min(localRect.top + this.rnW.top, localRect.bottom);
-    int j = Math.min(localRect.left + this.rnW.left, localRect.right);
-    int k = Math.max(localRect.right - this.rnW.right, localRect.left);
-    int m = Math.max(localRect.bottom - this.rnW.bottom, localRect.top);
-    if ((this.rnX != 0) && (this.rnW.top > 0))
+    p localp = new p();
+    localp.field_appIdHash = paramString.hashCode();
+    localp.field_appId = paramString;
+    localp.field_pkgType = paramInt1;
+    localp.field_widgetType = paramInt2;
+    if (!a(localp, new String[] { "appId", "pkgType", "widgetType" }))
     {
-      this.mTempRect.set(j, localRect.top, k, i);
-      this.mPaint.setColor(this.rnX);
-      paramCanvas.drawRect(this.mTempRect, this.mPaint);
+      paramInt2 = 1;
+      if (l.a(localp.field_launchAction, paramdgw.aaMi)) {
+        break label291;
+      }
+      localp.field_launchAction = paramdgw.aaMi;
     }
-    if (this.rnY != 0)
+    label261:
+    label291:
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
-      if (this.rnW.left > 0)
+      if (!l.a(localp.field_jsApiInfo, paramdgw.aaMa))
       {
-        this.mTempRect.set(localRect.left, i, j, m);
-        this.mPaint.setColor(this.rnY);
-        paramCanvas.drawRect(this.mTempRect, this.mPaint);
+        localp.field_jsApiInfo = paramdgw.aaMa;
+        paramInt1 = 1;
       }
-      if (this.rnW.right > 0)
+      if (!l.a(localp.field_versionInfo, paramdgw.aaMj))
       {
-        this.mTempRect.set(k, i, localRect.right, m);
-        this.mPaint.setColor(this.rnY);
-        paramCanvas.drawRect(this.mTempRect, this.mPaint);
+        localp.field_versionInfo = paramdgw.aaMj;
+        paramInt1 = 1;
       }
-      if (this.rnW.bottom > 0)
+      if (!l.a(localp.field_widgetSetting, paramdgw.aaMk))
       {
-        this.mTempRect.set(j, m, k, localRect.bottom);
-        this.mPaint.setColor(this.rnY);
-        paramCanvas.drawRect(this.mTempRect, this.mPaint);
+        localp.field_widgetSetting = paramdgw.aaMk;
+        paramInt1 = 1;
+      }
+      if (paramInt1 != 0)
+      {
+        if (paramInt2 == 0) {
+          break label261;
+        }
+        a(localp, false);
+      }
+      for (;;)
+      {
+        if (paramInt1 != 0) {
+          a(localp, new String[] { "appId", "pkgType", "widgetType" });
+        }
+        AppMethodBeat.o(76400);
+        return localp;
+        paramInt2 = 0;
+        break;
+        a(localp, false, new String[] { "appId", "pkgType", "widgetType" });
       }
     }
-    AppMethodBeat.o(49373);
   }
   
-  public final int getOpacity()
+  public final boolean a(p paramp, String... paramVarArgs)
   {
-    return -3;
+    AppMethodBeat.i(76402);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramp.field_appIdHash = paramp.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        boolean bool = super.get(paramp, paramVarArgs);
+        AppMethodBeat.o(76402);
+        return bool;
+      }
+      i += 1;
+    }
   }
   
-  public final void setAlpha(int paramInt) {}
-  
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public final p aa(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(76401);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(76401);
+      return null;
+    }
+    p localp = new p();
+    localp.field_appIdHash = paramString.hashCode();
+    localp.field_appId = paramString;
+    localp.field_pkgType = paramInt1;
+    localp.field_widgetType = paramInt2;
+    if (a(localp, new String[] { "appId", "pkgType", "widgetType" }))
+    {
+      AppMethodBeat.o(76401);
+      return localp;
+    }
+    AppMethodBeat.o(76401);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.o
  * JD-Core Version:    0.7.0.1
  */

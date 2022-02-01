@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.o;
-import com.tencent.mm.model.bl.a;
-import com.tencent.mm.model.bl.b;
+import com.tencent.mm.am.n;
+import com.tencent.mm.model.bm.a;
+import com.tencent.mm.model.bm.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 final class a
-  extends o
+  extends n
 {
-  bl.a NGR;
-  bl.b NGS;
+  bm.a UsR;
+  bm.b UsS;
   
   a()
   {
     AppMethodBeat.i(29756);
-    this.NGR = new bl.a();
-    this.NGS = new bl.b();
+    this.UsR = new bm.a();
+    this.UsS = new bm.b();
     AppMethodBeat.o(29756);
   }
   
@@ -28,12 +28,12 @@ final class a
   
   public final l.d getReqObjImp()
   {
-    return this.NGR;
+    return this.UsR;
   }
   
   public final l.e getRespObj()
   {
-    return this.NGS;
+    return this.UsS;
   }
   
   public final int getType()
@@ -48,7 +48,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.a
  * JD-Core Version:    0.7.0.1
  */

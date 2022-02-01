@@ -6,14 +6,14 @@ import com.tencent.mm.sdk.event.IEvent;
 public final class d
   extends IEvent
 {
-  public String IAC;
+  public String OGJ;
   public Activity activity;
-  public int fys;
-  public int fyt;
+  public int hDb;
+  public int hDc;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 
-@VisibleForTesting
 final class zzfd
   extends SQLiteOpenHelper
 {
@@ -69,41 +67,41 @@ final class zzfd
     //   0: aconst_null
     //   1: astore_2
     //   2: sipush 1353
-    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 95	android/os/Build$VERSION:SDK_INT	I
+    //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 94	android/os/Build$VERSION:SDK_INT	I
     //   11: bipush 15
     //   13: if_icmpge +28 -> 41
     //   16: aload_1
-    //   17: ldc 97
+    //   17: ldc 96
     //   19: aconst_null
-    //   20: invokevirtual 103	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   20: invokevirtual 102	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   23: astore_3
     //   24: aload_3
-    //   25: invokeinterface 108 1 0
+    //   25: invokeinterface 107 1 0
     //   30: pop
     //   31: aload_3
     //   32: ifnull +9 -> 41
     //   35: aload_3
-    //   36: invokeinterface 112 1 0
+    //   36: invokeinterface 111 1 0
     //   41: aload_0
-    //   42: getfield 11	com/google/android/gms/internal/measurement/zzfd:zzaii	Lcom/google/android/gms/internal/measurement/zzfc;
-    //   45: invokevirtual 38	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   42: getfield 10	com/google/android/gms/internal/measurement/zzfd:zzaii	Lcom/google/android/gms/internal/measurement/zzfc;
+    //   45: invokevirtual 37	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
     //   48: aload_1
-    //   49: ldc 114
-    //   51: ldc 116
-    //   53: ldc 118
+    //   49: ldc 113
+    //   51: ldc 115
+    //   53: ldc 117
     //   55: aconst_null
-    //   56: invokestatic 121	com/google/android/gms/internal/measurement/zzei:zza	(Lcom/google/android/gms/internal/measurement/zzfg;Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   56: invokestatic 120	com/google/android/gms/internal/measurement/zzei:zza	(Lcom/google/android/gms/internal/measurement/zzfg;Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
     //   59: sipush 1353
-    //   62: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   62: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: return
     //   66: astore_1
     //   67: aload_2
     //   68: ifnull +9 -> 77
     //   71: aload_2
-    //   72: invokeinterface 112 1 0
+    //   72: invokeinterface 111 1 0
     //   77: sipush 1353
-    //   80: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: aload_1
     //   84: athrow
     //   85: astore_1
@@ -126,7 +124,7 @@ final class zzfd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfd
  * JD-Core Version:    0.7.0.1
  */

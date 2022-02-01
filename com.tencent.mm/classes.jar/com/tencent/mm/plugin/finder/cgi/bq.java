@@ -1,209 +1,92 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.auy;
-import com.tencent.mm.protocal.protobuf.auz;
-import com.tencent.mm.protocal.protobuf.awq;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.biv;
+import com.tencent.mm.protocal.protobuf.ayg;
+import com.tencent.mm.protocal.protobuf.ayh;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetLiveRelatedList;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "relScene", "", "lng", "", "lat", "sectionInfo", "Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protobuf/ByteString;IFFLcom/tencent/mm/protocal/protobuf/FinderSectionInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "objectId", "", "nonceId", "", "sessionBuffer", "scene", "baseRequest", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "lbsTabTipsInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLbsTabTipsInfo;", "(JLjava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;IFFLcom/tencent/mm/protocal/protobuf/FinderBaseRequest;Lcom/tencent/mm/protocal/protobuf/FinderLbsTabTipsInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "getBaseRequest", "()Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "setBaseRequest", "(Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "category", "getCategory", "()Ljava/lang/String;", "setCategory", "(Ljava/lang/String;)V", "feedId", "getFeedId", "()J", "setFeedId", "(J)V", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getLat", "()F", "setLat", "(F)V", "getLbsTabTipsInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLbsTabTipsInfo;", "setLbsTabTipsInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLbsTabTipsInfo;)V", "getLng", "setLng", "getNonceId", "setNonceId", "pullType", "getPullType", "()I", "setPullType", "(I)V", "getRelScene", "setRelScene", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getSectionInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;", "setSectionInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderSectionInfo;)V", "getSessionBuffer", "setSessionBuffer", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getFeedRelList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getRequestBuffer", "getResponseBuffer", "getType", "hasContinue", "", "isFetchFeedCgi", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "realInit", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneBlockPosterList;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "(Lcom/tencent/mm/protobuf/ByteString;)V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/FinderGetBlockPosterListResponse;", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bq
-  extends com.tencent.mm.plugin.findersdk.b.g
+  extends com.tencent.mm.plugin.findersdk.b.h
 {
   private final String TAG;
-  private i callback;
-  private long feedId;
-  private String idV;
-  private float lLr;
-  private float lLs;
-  private final b lastBuffer;
-  private String nonceId;
-  public int pullType;
-  public d rr;
-  private String sessionBuffer;
-  private int xcY;
-  private biv xcZ;
-  private aqe xda;
-  private awq xdb;
+  private com.tencent.mm.am.h callback;
+  private c rr;
   
-  public bq(long paramLong, String paramString1, String paramString2, b paramb, int paramInt, float paramFloat1, float paramFloat2, aqe paramaqe, awq paramawq, bid parambid)
+  public bq(b paramb)
   {
-    super(parambid);
-    AppMethodBeat.i(244469);
-    this.TAG = "NetSceneFinderGetLiveRelatedList";
-    this.nonceId = "";
-    this.sessionBuffer = "";
-    this.idV = "";
-    this.xcY = -1;
-    this.feedId = paramLong;
-    this.nonceId = paramString1;
-    this.sessionBuffer = paramString2;
-    this.lastBuffer = paramb;
-    this.xcY = paramInt;
-    this.lLs = paramFloat1;
-    this.lLr = paramFloat2;
-    this.xcZ = null;
-    this.xda = paramaqe;
-    this.xdb = paramawq;
-    paramb = new d.a();
-    paramb.vD(getType());
-    paramaqe = new auy();
-    paramaqe.object_id = this.feedId;
-    paramaqe.object_nonce_id = this.nonceId;
-    paramaqe.longitude = this.lLs;
-    paramaqe.latitude = this.lLr;
-    paramaqe.SDI = this.lastBuffer;
-    paramaqe.SHp = this.sessionBuffer;
-    paramString2 = this.xda;
-    paramString1 = paramString2;
-    if (paramString2 == null)
-    {
-      paramString1 = ao.xcj;
-      paramString1 = ao.a(this.xbu);
-    }
-    paramaqe.RLM = paramString1;
-    paramaqe.scene = this.xcY;
-    paramaqe.SHq = this.xdb;
-    paramb.c((a)paramaqe);
-    paramb.d((a)new auz());
-    paramb.TW("/cgi-bin/micromsg-bin/findergetliverelatedlist");
-    paramString1 = paramb.bgN();
-    p.j(paramString1, "builder.buildInstance()");
-    this.rr = paramString1;
-    paramString2 = this.TAG;
-    paramb = new StringBuilder("realInit feedId ").append(this.feedId).append("  category ").append(this.idV).append(" lastBuffer relScene:").append(this.xcY).append(' ').append(this.lastBuffer).append(" tab_tips_path=");
-    paramString1 = this.xdb;
-    label419:
-    boolean bool;
-    if (paramString1 != null)
-    {
-      paramString1 = paramString1.SJn;
-      paramb = paramb.append(paramString1).append(' ').append(" tabTipsByPassInfo=");
-      paramString1 = this.xdb;
-      if (paramString1 == null) {
-        break label488;
-      }
-      paramString1 = paramString1.SJd;
-      if (paramString1 == null) {
-        break label493;
-      }
-      bool = true;
-      label426:
-      paramb = paramb.append(bool).append(' ').append("objectId=");
-      paramString1 = this.xdb;
-      if (paramString1 == null) {
-        break label499;
-      }
-    }
-    label488:
-    label493:
-    label499:
-    for (paramString1 = Long.valueOf(paramString1.SJc);; paramString1 = null)
-    {
-      Log.i(paramString2, paramString1);
-      AppMethodBeat.o(244469);
-      return;
-      paramString1 = null;
-      break;
-      paramString1 = null;
-      break label419;
-      bool = false;
-      break label426;
-    }
+    AppMethodBeat.i(336382);
+    this.TAG = "NetSceneBlockPosterList";
+    c.a locala = new c.a();
+    locala.funcId = getType();
+    ayg localayg = new ayg();
+    localayg.lastBuffer = paramb;
+    paramb = bi.ABn;
+    localayg.ZEc = bi.dVu();
+    locala.otE = ((a)localayg);
+    locala.otF = ((a)new ayh());
+    locala.uri = "/cgi-bin/micromsg-bin/findergetblockposterlist";
+    paramb = locala.bEF();
+    kotlin.g.b.s.s(paramb, "builder.buildInstance()");
+    this.rr = paramb;
+    Log.i(this.TAG, "NetSceneBlockPosterList init, scene ");
+    AppMethodBeat.o(336382);
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params)
   {
-    AppMethodBeat.i(244464);
-    Log.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      params = this.TAG;
-      Object localObject1 = new StringBuilder("feedId ").append(this.feedId).append(", ");
-      Object localObject2 = am.xch;
-      Log.i(params, am.dY((List)dof()));
-      params = ((Iterable)dof()).iterator();
-      while (params.hasNext())
-      {
-        localObject1 = (FinderObject)params.next();
-        localObject2 = n.zWF;
-        n.c((FinderObject)localObject1, this.xbu);
-      }
-    }
+    AppMethodBeat.i(336403);
+    Log.i(this.TAG, "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null)
     {
       params = this.callback;
-      if (params == null) {
-        p.iCn();
-      }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      kotlin.g.b.s.checkNotNull(params);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
     }
-    AppMethodBeat.o(244464);
+    AppMethodBeat.o(336403);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final ayh dVB()
   {
-    AppMethodBeat.i(244462);
-    this.callback = parami;
-    parami = this.rr;
-    if (parami == null) {
-      p.bGy("rr");
-    }
-    int i = dispatch(paramg, (s)parami, (m)this);
-    AppMethodBeat.o(244462);
-    return i;
-  }
-  
-  public final LinkedList<FinderObject> dof()
-  {
-    AppMethodBeat.i(244465);
-    Object localObject = this.rr;
-    if (localObject == null) {
-      p.bGy("rr");
-    }
-    localObject = ((d)localObject).bhY();
+    AppMethodBeat.i(336411);
+    Object localObject = c.c.b(this.rr.otC);
     if (localObject == null)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetLiveRelatedListResponse");
-      AppMethodBeat.o(244465);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetBlockPosterListResponse");
+      AppMethodBeat.o(336411);
       throw ((Throwable)localObject);
     }
-    LinkedList localLinkedList = ((auz)localObject).object;
-    localObject = localLinkedList;
-    if (localLinkedList == null) {
-      localObject = new LinkedList();
-    }
-    AppMethodBeat.o(244465);
+    localObject = (ayh)localObject;
+    AppMethodBeat.o(336411);
     return localObject;
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(336388);
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.rr, (m)this);
+    AppMethodBeat.o(336388);
+    return i;
   }
   
   public final int getType()
   {
-    return 6479;
+    return 5905;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.bq
  * JD-Core Version:    0.7.0.1
  */

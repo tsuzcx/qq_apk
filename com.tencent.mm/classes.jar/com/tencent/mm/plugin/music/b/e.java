@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static boolean FNI = false;
-  private static long FNJ = 0L;
+  private static boolean LIE = false;
+  private static long LIF = 0L;
   
-  public static boolean fcP()
+  public static boolean glS()
   {
     AppMethodBeat.i(137011);
     System.currentTimeMillis();

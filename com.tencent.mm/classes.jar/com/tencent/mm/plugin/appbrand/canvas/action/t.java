@@ -44,14 +44,14 @@ public final class t
       }
       i = 2;
       break;
-      paramd.nTw.zp(2);
-      paramd.nTx.zp(2);
+      paramd.qTi.zC(2);
+      paramd.qTj.zC(2);
       continue;
-      paramd.nTw.zp(2);
-      paramd.nTx.zp(2);
+      paramd.qTi.zC(2);
+      paramd.qTj.zC(2);
       continue;
-      paramd.nTw.zp(0);
-      paramd.nTx.zp(0);
+      paramd.qTi.zC(0);
+      paramd.qTj.zC(0);
     }
   }
   
@@ -92,7 +92,7 @@ public final class t
     return false;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144925);
     SetFontStyleActionArg localSetFontStyleActionArg = new SetFontStyleActionArg();
@@ -107,7 +107,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.t
  * JD-Core Version:    0.7.0.1
  */

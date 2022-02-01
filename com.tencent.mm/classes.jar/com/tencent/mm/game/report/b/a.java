@@ -8,21 +8,7 @@ import java.util.Map;
 
 public final class a
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
-  {
-    AppMethodBeat.i(199244);
-    g.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    AppMethodBeat.o(199244);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
-  {
-    AppMethodBeat.i(199247);
-    g.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramString1, paramInt4, paramString2);
-    AppMethodBeat.o(199247);
-  }
-  
-  public static String b(int paramInt, Map paramMap)
+  public static String a(int paramInt, Map paramMap)
   {
     AppMethodBeat.i(108271);
     Object localObject = paramMap;
@@ -34,7 +20,7 @@ public final class a
     }
     for (;;)
     {
-      paramMap = com.tencent.mm.game.report.e.a.m((Map)localObject);
+      paramMap = com.tencent.mm.game.report.e.a.t((Map)localObject);
       AppMethodBeat.o(108271);
       return paramMap;
       ((Map)localObject).put("ssid", Integer.valueOf(9));
@@ -49,6 +35,20 @@ public final class a
       continue;
       ((Map)localObject).put("ssid", Integer.valueOf(13));
     }
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    AppMethodBeat.i(240749);
+    g.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    AppMethodBeat.o(240749);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
+  {
+    AppMethodBeat.i(240751);
+    g.a(paramContext, 87, paramInt1, paramInt2, paramInt3, paramString1, paramInt4, paramString2);
+    AppMethodBeat.o(240751);
   }
 }
 

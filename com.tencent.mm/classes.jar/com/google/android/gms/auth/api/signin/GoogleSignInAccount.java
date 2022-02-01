@@ -10,14 +10,8 @@ import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.util.Clock;
 import com.google.android.gms.common.util.DefaultClock;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,37 +24,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@SafeParcelable.Class(creator="GoogleSignInAccountCreator")
 public class GoogleSignInAccount
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<GoogleSignInAccount> CREATOR;
-  @VisibleForTesting
   public static Clock sClock;
-  @SafeParcelable.VersionField(id=1)
   private final int versionCode;
-  @SafeParcelable.Field(getter="getId", id=2)
   private String zze;
-  @SafeParcelable.Field(getter="getIdToken", id=3)
   private String zzf;
-  @SafeParcelable.Field(getter="getEmail", id=4)
   private String zzg;
-  @SafeParcelable.Field(getter="getDisplayName", id=5)
   private String zzh;
-  @SafeParcelable.Field(getter="getPhotoUrl", id=6)
   private Uri zzi;
-  @SafeParcelable.Field(getter="getServerAuthCode", id=7)
   private String zzj;
-  @SafeParcelable.Field(getter="getExpirationTimeSecs", id=8)
   private long zzk;
-  @SafeParcelable.Field(getter="getObfuscatedIdentifier", id=9)
   private String zzl;
-  @SafeParcelable.Field(id=10)
   private List<Scope> zzm;
-  @SafeParcelable.Field(getter="getGivenName", id=11)
   private String zzn;
-  @SafeParcelable.Field(getter="getFamilyName", id=12)
   private String zzo;
   private Set<Scope> zzp;
   
@@ -72,8 +52,7 @@ public class GoogleSignInAccount
     AppMethodBeat.o(10837);
   }
   
-  @SafeParcelable.Constructor
-  GoogleSignInAccount(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) String paramString2, @SafeParcelable.Param(id=4) String paramString3, @SafeParcelable.Param(id=5) String paramString4, @SafeParcelable.Param(id=6) Uri paramUri, @SafeParcelable.Param(id=7) String paramString5, @SafeParcelable.Param(id=8) long paramLong, @SafeParcelable.Param(id=9) String paramString6, @SafeParcelable.Param(id=10) List<Scope> paramList, @SafeParcelable.Param(id=11) String paramString7, @SafeParcelable.Param(id=12) String paramString8)
+  GoogleSignInAccount(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, String paramString5, long paramLong, String paramString6, List<Scope> paramList, String paramString7, String paramString8)
   {
     AppMethodBeat.i(10824);
     this.zzp = new HashSet();
@@ -404,7 +383,7 @@ public class GoogleSignInAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignInAccount
  * JD-Core Version:    0.7.0.1
  */

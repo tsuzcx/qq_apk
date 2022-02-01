@@ -10,12 +10,12 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class EllipsizeTextView
   extends TextView
 {
-  private String Who;
-  private int Whp;
-  private int Whq;
-  private a Whr;
-  private CharSequence Whs;
-  private long Wht = -1L;
+  private String adOl;
+  private int adOm;
+  private int adOn;
+  private a adOo;
+  private CharSequence adOp;
+  private long adOq = -1L;
   
   public EllipsizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,11 +30,11 @@ public class EllipsizeTextView
   public final void a(CharSequence paramCharSequence, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141626);
-    this.Who = paramString;
-    this.Whp = paramInt1;
-    this.Whq = paramInt2;
-    this.Whs = paramCharSequence;
-    setText(this.Whs + "  " + paramString);
+    this.adOl = paramString;
+    this.adOm = paramInt1;
+    this.adOn = paramInt2;
+    this.adOp = paramCharSequence;
+    setText(this.adOp + "  " + paramString);
     AppMethodBeat.o(141626);
   }
   
@@ -42,10 +42,10 @@ public class EllipsizeTextView
   {
     AppMethodBeat.i(141627);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((getMeasuredWidth() > 0) && (!Util.isNullOrNil(this.Who)) && (this.Whr != null) && (getText() != null) && (getText().length() > 0))
+    if ((getMeasuredWidth() > 0) && (!Util.isNullOrNil(this.adOl)) && (this.adOo != null) && (getText() != null) && (getText().length() > 0))
     {
-      CharSequence localCharSequence = this.Whr.a(this, this.Whs, this.Who, this.Whp, this.Whq);
-      this.Who = null;
+      CharSequence localCharSequence = this.adOo.a(this, this.adOp, this.adOl, this.adOm, this.adOn);
+      this.adOl = null;
       setText(localCharSequence, TextView.BufferType.SPANNABLE);
       requestLayout();
     }
@@ -54,7 +54,7 @@ public class EllipsizeTextView
   
   public void setLayoutCallback(a parama)
   {
-    this.Whr = parama;
+    this.adOo = parama;
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
@@ -71,7 +71,7 @@ public class EllipsizeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.EllipsizeTextView
  * JD-Core Version:    0.7.0.1
  */

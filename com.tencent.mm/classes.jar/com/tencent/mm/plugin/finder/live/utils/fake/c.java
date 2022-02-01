@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.finder.live.utils.fake;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.live.model.m;
-import com.tencent.mm.plugin.finder.live.util.p.b;
-import com.tencent.mm.plugin.finder.live.util.p.c;
+import com.tencent.mm.plugin.finder.live.model.q;
+import com.tencent.mm.plugin.finder.live.util.s.b;
+import com.tencent.mm.plugin.finder.live.util.s.c;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.axu;
-import com.tencent.mm.protocal.protobuf.aza;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bek;
+import com.tencent.mm.protocal.protobuf.bgh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -22,71 +21,88 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.k;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil;", "", "()V", "GIFT_COMMAND", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$IGiftFactory;", "Lkotlin/collections/HashMap;", "getGIFT_COMMAND", "()Ljava/util/HashMap;", "GIFT_ID", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$GiftInfo;", "getGIFT_ID", "IS_PRECIOUS", "", "getIS_PRECIOUS", "()[Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "[Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "TAG", "", "executeBatchMockCommand", "", "commandList", "", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "forceAddAll", "", "executeSingleMockCommand", "index", "", "command", "GiftInfo", "IGiftFactory", "MockCommand", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil;", "", "()V", "GIFT_COMMAND", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$IGiftFactory;", "Lkotlin/collections/HashMap;", "getGIFT_COMMAND", "()Ljava/util/HashMap;", "GIFT_ID", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$GiftInfo;", "getGIFT_ID", "IS_PRECIOUS", "", "getIS_PRECIOUS", "()[Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "[Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "TAG", "", "executeBatchMockCommand", "", "commandList", "", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "forceAddAll", "", "executeSingleMockCommand", "index", "", "command", "GiftInfo", "IGiftFactory", "MockCommand", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  private static final e[] yRS;
-  private static final HashMap<e, b> yRT;
-  private static final HashMap<e, c> yRU;
-  public static final c yRV;
+  public static final c DKj;
+  private static final e[] DKk;
+  private static final HashMap<e, c.b> DKl;
+  private static final HashMap<e, c> DKm;
   
   static
   {
-    AppMethodBeat.i(274784);
-    yRV = new c();
-    yRS = new e[] { e.ySk, e.ySl, e.ySm, e.ySn };
+    AppMethodBeat.i(351118);
+    DKj = new c();
+    DKk = new e[] { e.DKA, e.DKB, e.DKC, e.DKD, e.DKz, e.DKE, e.DKF };
     Object localObject = new HashMap();
-    ((Map)localObject).put(e.ySg, new b(e.ySg.id, "test_" + e.ySg.ySp));
-    ((Map)localObject).put(e.ySh, new b(e.ySh.id, "test_" + e.ySh.ySp));
-    ((Map)localObject).put(e.ySi, new b(e.ySi.id, "test_" + e.ySi.ySp));
-    ((Map)localObject).put(e.ySj, new b(e.ySj.id, "test_" + e.ySj.ySp));
-    ((Map)localObject).put(e.ySk, new b(e.ySk.id, "test_" + e.ySk.ySp));
-    ((Map)localObject).put(e.ySl, new b(e.ySl.id, "test_" + e.ySl.ySp));
-    ((Map)localObject).put(e.ySm, new b(e.ySm.id, "test_" + e.ySm.ySp));
-    ((Map)localObject).put(e.ySn, new b(e.ySn.id, "test_" + e.ySn.ySp));
-    yRT = (HashMap)localObject;
-    yRU = new HashMap();
-    localObject = ((Map)yRT).entrySet().iterator();
+    ((Map)localObject).put(e.DKw, new c.b(e.DKw.id, s.X("test_", e.DKw.DKv)));
+    ((Map)localObject).put(e.DKx, new c.b(e.DKx.id, s.X("test_", e.DKx.DKv)));
+    ((Map)localObject).put(e.DKy, new c.b(e.DKy.id, s.X("test_", e.DKy.DKv)));
+    ((Map)localObject).put(e.DKz, new c.b(e.DKz.id, s.X("test_", e.DKz.DKv)));
+    ((Map)localObject).put(e.DKA, new c.b(e.DKA.id, s.X("test_", e.DKA.DKv)));
+    ((Map)localObject).put(e.DKB, new c.b(e.DKB.id, s.X("test_", e.DKB.DKv)));
+    ((Map)localObject).put(e.DKC, new c.b(e.DKC.id, s.X("test_", e.DKC.DKv)));
+    ((Map)localObject).put(e.DKD, new c.b(e.DKD.id, s.X("test_", e.DKD.DKv)));
+    ((Map)localObject).put(e.DKE, new c.b(e.DKE.id, s.X("test_", e.DKE.DKv)));
+    ((Map)localObject).put(e.DKF, new c.b(e.DKF.id, s.X("test_", e.DKF.DKv)));
+    DKl = (HashMap)localObject;
+    DKm = new HashMap();
+    localObject = ((Map)DKl).entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      ((Map)yRU).put(localEntry.getKey(), new a(localEntry));
+      ((Map)DKm).put(localEntry.getKey(), new a(localEntry));
     }
-    AppMethodBeat.o(274784);
+    AppMethodBeat.o(351118);
   }
   
-  public static void d(List<d> paramList, boolean paramBoolean)
+  public static e[] euU()
   {
-    AppMethodBeat.i(274782);
-    p.k(paramList, "commandList");
-    Log.i("Finder.FinderLiveGiftMockUtil", "executeBatchMockCommand: ".concat(String.valueOf(paramList)));
+    return DKk;
+  }
+  
+  public static HashMap<e, c.b> euV()
+  {
+    return DKl;
+  }
+  
+  public static HashMap<e, c> euW()
+  {
+    return DKm;
+  }
+  
+  public static void k(List<d> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(351098);
+    s.u(paramList, "commandList");
+    Log.i("Finder.FinderLiveGiftMockUtil", s.X("executeBatchMockCommand: ", paramList));
     Object localObject1;
     if (paramBoolean)
     {
       Object localObject2 = (Iterable)paramList;
-      localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+      localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((Collection)localObject1).add(((d)((Iterator)localObject2).next()).dEU());
+        ((Collection)localObject1).add(((d)((Iterator)localObject2).next()).euY());
       }
-      localObject1 = j.t((Collection)localObject1);
+      localObject1 = p.J((Collection)localObject1);
       paramList = (d)paramList.get(0);
-      if (paramList.yRZ)
+      if (paramList.DKq)
       {
-        d.a(paramList.ySa, (kotlin.g.a.a)new e((List)localObject1));
-        AppMethodBeat.o(274782);
+        com.tencent.mm.ae.d.a(paramList.DKr, (kotlin.g.a.a)new e((List)localObject1));
+        AppMethodBeat.o(351098);
         return;
       }
-      localObject2 = new StringBuilder("FinderLiveGiftMockUtil");
-      kotlin.j.c.b localb = kotlin.j.c.aaBL;
-      d.a(kotlin.j.c.iCt().zD() % 4, (kotlin.g.a.a)new f((List)localObject1), paramList.ySa);
-      AppMethodBeat.o(274782);
+      localObject2 = kotlin.j.c.aixl;
+      com.tencent.mm.ae.d.a(s.X("FinderLiveGiftMockUtil", Integer.valueOf(kotlin.j.c.klI().Zo() % 4)), false, (kotlin.g.a.a)new f((List)localObject1), paramList.DKr, 2);
+      AppMethodBeat.o(351098);
       return;
     }
     paramList = ((Iterable)paramList).iterator();
@@ -96,330 +112,264 @@ public final class c
       localObject1 = paramList.next();
       int j = i + 1;
       if (i < 0) {
-        j.iBO();
+        p.kkW();
       }
       localObject1 = (d)localObject1;
-      if (((d)localObject1).yRZ)
+      if (((d)localObject1).DKq)
       {
-        d.a(((d)localObject1).ySa, (kotlin.g.a.a)new g((d)localObject1));
+        com.tencent.mm.ae.d.a(((d)localObject1).DKr, (kotlin.g.a.a)new g((d)localObject1));
         i = j;
       }
       else
       {
-        d.a("FinderLiveGiftMockUtil" + i % 4, (kotlin.g.a.a)new h((d)localObject1), ((d)localObject1).ySa);
+        com.tencent.mm.ae.d.a(s.X("FinderLiveGiftMockUtil", Integer.valueOf(i % 4)), false, (kotlin.g.a.a)new h((d)localObject1), ((d)localObject1).DKr, 2);
         i = j;
       }
     }
-    AppMethodBeat.o(274782);
+    AppMethodBeat.o(351098);
   }
   
-  public static e[] dEQ()
-  {
-    return yRS;
-  }
-  
-  public static HashMap<e, b> dER()
-  {
-    return yRT;
-  }
-  
-  public static HashMap<e, c> dES()
-  {
-    return yRU;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$1$1", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$IGiftFactory;", "create", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "count", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$1$1", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$IGiftFactory;", "create", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "count", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements c.c
   {
-    a(Map.Entry paramEntry) {}
+    a(Map.Entry<? extends e, c.b> paramEntry) {}
     
-    public final c.d NL(int paramInt)
+    public final c.d Pv(int paramInt)
     {
-      AppMethodBeat.i(269890);
+      AppMethodBeat.i(351067);
       c.d locald = new c.d(paramInt);
-      Object localObject = ((c.b)this.yRW.getValue()).name;
-      p.k(localObject, "_nickName");
+      Object localObject = ((c.b)this.DKn.getValue()).name;
+      s.u(localObject, "_nickName");
       locald.nickname = ((String)localObject);
-      localObject = (e)this.yRW.getKey();
-      p.k(localObject, "<set-?>");
-      locald.yRX = ((e)localObject);
-      AppMethodBeat.o(269890);
+      localObject = (e)this.DKn.getKey();
+      s.u(localObject, "<set-?>");
+      locald.DKo = ((e)localObject);
+      AppMethodBeat.o(351067);
       return locald;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$GiftInfo;", "", "giftId", "", "name", "(Ljava/lang/String;Ljava/lang/String;)V", "getGiftId", "()Ljava/lang/String;", "getName", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-finder_release"})
-  public static final class b
-  {
-    final String name;
-    final String yrC;
-    
-    public b(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(277395);
-      this.yrC = paramString1;
-      this.name = paramString2;
-      AppMethodBeat.o(277395);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(277399);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.h(this.yrC, paramObject.yrC)) || (!p.h(this.name, paramObject.name))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(277399);
-        return true;
-      }
-      AppMethodBeat.o(277399);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      int j = 0;
-      AppMethodBeat.i(277397);
-      String str = this.yrC;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
-      {
-        str = this.name;
-        if (str != null) {
-          j = str.hashCode();
-        }
-        AppMethodBeat.o(277397);
-        return i * 31 + j;
-      }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(277396);
-      String str = "GiftInfo(giftId=" + this.yrC + ", name=" + this.name + ")";
-      AppMethodBeat.o(277396);
-      return str;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$IGiftFactory;", "", "create", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "count", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$IGiftFactory;", "", "create", "Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "count", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface c
   {
-    public abstract c.d NL(int paramInt);
+    public abstract c.d Pv(int paramInt);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "", "count", "", "(I)V", "clientMsgId", "", "getCount", "()I", "setCount", "executeDelayMs", "", "executeInMainThread", "", "getExecuteInMainThread", "()Z", "setExecuteInMainThread", "(Z)V", "gift", "Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "getGift", "()Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "setGift", "(Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;)V", "giftComboId", "isSelfSend", "nickname", "targetUsername", "build", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftShowInfo;", "_clientMsgId", "comboId", "_comboId", "delay", "_executeDelayMs", "getDelayTime", "name", "_nickName", "self", "_targetUsername", "toString", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/utils/fake/FinderLiveGiftMockUtil$MockCommand;", "", "count", "", "(I)V", "clientMsgId", "", "getCount", "()I", "setCount", "executeDelayMs", "", "executeInMainThread", "", "getExecuteInMainThread", "()Z", "setExecuteInMainThread", "(Z)V", "gift", "Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "getGift", "()Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;", "setGift", "(Lcom/tencent/mm/plugin/finder/live/utils/fake/GiftType;)V", "giftComboId", "isSelfSend", "nickname", "targetUsername", "build", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftShowInfo;", "_clientMsgId", "comboId", "_comboId", "delay", "_executeDelayMs", "getDelayTime", "name", "_nickName", "self", "_targetUsername", "toString", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
   {
+    private String ACm;
+    e DKo;
+    private String DKp;
+    boolean DKq;
+    long DKr;
+    private boolean Dbw;
     private int count;
-    private String ilo;
+    private String kLn;
     String nickname;
-    private String xcW;
-    e yRX;
-    private String yRY;
-    boolean yRZ;
-    long ySa;
-    private boolean yrt;
     
     public d(int paramInt)
     {
       this.count = paramInt;
-      this.yRX = e.ySg;
-      this.yRY = "";
-      this.xcW = "";
-      this.ilo = "";
+      this.DKo = e.DKw;
+      this.DKp = "";
+      this.ACm = "";
+      this.kLn = "";
     }
     
-    public final d aCR(String paramString)
+    public final d axS(String paramString)
     {
-      AppMethodBeat.i(281835);
-      p.k(paramString, "_comboId");
-      this.yRY = paramString;
-      AppMethodBeat.o(281835);
+      AppMethodBeat.i(351079);
+      s.u(paramString, "_comboId");
+      this.DKp = paramString;
+      AppMethodBeat.o(351079);
       return this;
     }
     
-    public final d aCS(String paramString)
+    public final d axT(String paramString)
     {
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      this.xcW = str;
+      this.ACm = str;
       return this;
     }
     
-    public final d aCT(String paramString)
+    public final d axU(String paramString)
     {
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      this.ilo = str;
+      this.kLn = str;
       return this;
     }
     
-    public final d dET()
+    public final d euX()
     {
-      AppMethodBeat.i(281834);
-      this.yrt = true;
-      this.nickname = z.bdb();
-      AppMethodBeat.o(281834);
+      AppMethodBeat.i(351075);
+      this.Dbw = true;
+      this.nickname = z.bAO();
+      AppMethodBeat.o(351075);
       return this;
     }
     
-    public final p.b dEU()
+    public final s.b euY()
     {
-      Object localObject3 = null;
-      AppMethodBeat.i(281836);
-      Object localObject5 = new axu();
-      p.c localc = p.c.yQN;
+      Object localObject4 = null;
+      AppMethodBeat.i(351099);
+      bek localbek = new bek();
+      s.c localc = s.c.DJx;
       Object localObject2;
       Object localObject1;
-      label87:
-      Object localObject4;
-      label242:
+      label84:
+      Object localObject3;
+      label138:
+      label210:
+      label249:
       int i;
-      if (Util.isNullOrNil(this.yRY))
+      if (Util.isNullOrNil(this.DKp))
       {
         localObject2 = new StringBuilder();
-        localObject1 = c.yRV;
-        localObject1 = (c.b)c.dER().get(this.yRX);
-        if (localObject1 != null)
+        localObject1 = c.DKj;
+        localObject1 = (c.b)c.euV().get(this.DKo);
+        if (localObject1 == null)
         {
-          localObject1 = ((c.b)localObject1).name;
-          localObject1 = (String)localObject1 + '_' + UUID.randomUUID();
-          axe localaxe = new axe();
-          localaxe.SJH = new aza();
-          localObject2 = localaxe.SJH;
-          if (localObject2 != null) {
-            ((aza)localObject2).contact = new FinderContact();
+          localObject1 = null;
+          localObject2 = localObject1 + '_' + UUID.randomUUID();
+          bdm localbdm = new bdm();
+          localbdm.ZOb = new bgh();
+          localObject1 = localbdm.ZOb;
+          if (localObject1 != null) {
+            ((bgh)localObject1).contact = new FinderContact();
           }
-          localObject2 = localaxe.SJH;
-          if (localObject2 != null)
+          localObject1 = localbdm.ZOb;
+          if (localObject1 != null) {
+            break label449;
+          }
+          localObject1 = null;
+          if (localObject1 != null)
           {
-            FinderContact localFinderContact = ((aza)localObject2).contact;
-            if (localFinderContact != null)
+            String str = this.nickname;
+            localObject3 = str;
+            if (str == null)
             {
-              localObject4 = this.nickname;
-              localObject2 = localObject4;
-              if (localObject4 == null)
-              {
-                localObject2 = new StringBuilder("测试");
-                localObject4 = kotlin.j.c.aaBL;
-                localObject2 = kotlin.j.c.iCt().zD();
-              }
-              localFinderContact.nickname = ((String)localObject2);
+              localObject3 = kotlin.j.c.aixl;
+              localObject3 = s.X("测试", Integer.valueOf(kotlin.j.c.klI().Zo()));
             }
+            ((FinderContact)localObject1).nickname = ((String)localObject3);
           }
-          localObject4 = localaxe.SJH;
-          if (localObject4 != null)
+          localObject3 = localbdm.ZOb;
+          if (localObject3 != null)
           {
-            localObject2 = com.tencent.mm.plugin.finder.live.model.context.a.ykr;
-            localObject2 = com.tencent.mm.plugin.finder.live.model.context.a.dAc();
-            if (localObject2 == null) {
-              break label489;
+            localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.CMm;
+            localObject1 = com.tencent.mm.plugin.finder.live.model.context.a.emY();
+            if (localObject1 != null) {
+              break label457;
             }
-            localObject2 = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)((com.tencent.mm.plugin.finder.live.model.context.a)localObject2).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class);
-            if (localObject2 == null) {
-              break label489;
-            }
-            localObject2 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)localObject2).zeX;
-            ((aza)localObject4).SHe = ((LinkedList)localObject2);
+            localObject1 = null;
+            ((bgh)localObject3).ZKa = ((LinkedList)localObject1);
           }
-          localaxe.SJs = this.ilo;
-          localObject2 = c.yRV;
-          localObject2 = (c.b)c.dER().get(this.yRX);
-          if (localObject2 == null) {
-            break label494;
+          localbdm.Tro = this.kLn;
+          localObject1 = c.DKj;
+          localObject1 = (c.b)c.euV().get(this.DKo);
+          if (localObject1 != null) {
+            break label485;
           }
-          localObject2 = ((c.b)localObject2).yrC;
-          label284:
-          ((axu)localObject5).SKd = ((String)localObject2);
-          localObject4 = new p.b(localaxe);
-          ((p.b)localObject4).c(localc);
-          ((p.b)localObject4).a((axu)localObject5);
-          ((p.b)localObject4).yru = ((String)localObject1);
-          ((p.b)localObject4).yrv = 0;
-          ((p.b)localObject4).yQD = this.count;
-          localObject2 = c.yRV;
-          ((p.b)localObject4).yQE = kotlin.a.e.contains(c.dEQ(), this.yRX);
-          ((p.b)localObject4).yrt = this.yrt;
-          localObject2 = c.yRV;
-          localObject5 = (c.b)c.dER().get(this.yRX);
-          localObject2 = localObject3;
-          if (localObject5 != null) {
-            localObject2 = ((c.b)localObject5).yrC;
+          localObject1 = null;
+          localbek.ZOC = ((String)localObject1);
+          localObject3 = new s.b(localbdm);
+          ((s.b)localObject3).c(localc);
+          ((s.b)localObject3).a(localbek);
+          ((s.b)localObject3).Dbx = ((String)localObject2);
+          ((s.b)localObject3).Dby = 0;
+          ((s.b)localObject3).DJo = this.count;
+          localObject1 = c.DKj;
+          ((s.b)localObject3).DJp = k.contains(c.euU(), this.DKo);
+          ((s.b)localObject3).Dbw = this.Dbw;
+          localObject1 = c.DKj;
+          localObject1 = (c.b)c.euV().get(this.DKo);
+          if (localObject1 != null) {
+            break label493;
           }
-          ((p.b)localObject4).yrC = ((String)localObject2);
-          ((p.b)localObject4).aCo(this.xcW);
-          if ((Util.isNullOrNil((String)localObject1)) || ((((p.b)localObject4).yrv <= 1) && (((p.b)localObject4).yQD <= 1))) {
-            break label499;
+          localObject1 = localObject4;
+          label354:
+          ((s.b)localObject3).DbF = ((String)localObject1);
+          ((s.b)localObject3).awW(this.ACm);
+          if ((Util.isNullOrNil((String)localObject2)) || ((((s.b)localObject3).Dby <= 1) && (((s.b)localObject3).DJo <= 1))) {
+            break label501;
           }
           i = 1;
-          label439:
-          if (!this.yrt) {
-            break label529;
+          label396:
+          if (!this.Dbw) {
+            break label531;
           }
-          if (!((p.b)localObject4).yQE) {
-            break label511;
+          if (!((s.b)localObject3).DJp) {
+            break label513;
           }
           if (i == 0) {
-            break label504;
+            break label506;
           }
-          localObject1 = p.c.yQG;
+          localObject1 = s.c.DJq;
         }
       }
-      label529:
       for (;;)
       {
-        ((p.b)localObject4).c((p.c)localObject1);
-        AppMethodBeat.o(281836);
-        return localObject4;
-        localObject1 = null;
+        ((s.b)localObject3).c((s.c)localObject1);
+        AppMethodBeat.o(351099);
+        return localObject3;
+        localObject1 = ((c.b)localObject1).name;
         break;
-        localObject1 = this.yRY;
-        break label87;
-        label489:
-        localObject2 = null;
-        break label242;
-        label494:
-        localObject2 = null;
-        break label284;
-        label499:
+        localObject2 = this.DKp;
+        break label84;
+        label449:
+        localObject1 = ((bgh)localObject1).contact;
+        break label138;
+        label457:
+        localObject1 = (com.tencent.mm.plugin.finder.live.viewmodel.data.business.e)((com.tencent.mm.plugin.finder.live.model.context.a)localObject1).business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.e.class);
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          break label210;
+        }
+        localObject1 = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.e)localObject1).Ecm;
+        break label210;
+        label485:
+        localObject1 = ((c.b)localObject1).DbF;
+        break label249;
+        label493:
+        localObject1 = ((c.b)localObject1).DbF;
+        break label354;
+        label501:
         i = 0;
-        break label439;
-        label504:
-        localObject1 = p.c.yQH;
+        break label396;
+        label506:
+        localObject1 = s.c.DJr;
         continue;
-        label511:
+        label513:
         if (i != 0)
         {
-          localObject1 = p.c.yQI;
+          localObject1 = s.c.DJs;
         }
         else
         {
-          localObject1 = p.c.yQJ;
+          localObject1 = s.c.DJt;
           continue;
-          if (((p.b)localObject4).yQE)
+          label531:
+          if (((s.b)localObject3).DJp)
           {
             if (i != 0) {
-              localObject1 = p.c.yQK;
+              localObject1 = s.c.DJu;
             } else {
-              localObject1 = p.c.yQL;
+              localObject1 = s.c.DJv;
             }
           }
           else if (i != 0) {
-            localObject1 = p.c.yQM;
+            localObject1 = s.c.DJw;
           } else {
-            localObject1 = p.c.yQN;
+            localObject1 = s.c.DJx;
           }
         }
       }
@@ -428,68 +378,71 @@ public final class c
     public final String toString()
     {
       Object localObject2 = null;
-      AppMethodBeat.i(281837);
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      StringBuilder localStringBuilder2 = new StringBuilder("giftName = ");
-      Object localObject1 = m.yfw;
-      Object localObject3 = m.dyu();
-      localObject1 = c.yRV;
-      localObject1 = (c.b)c.dER().get(this.yRX);
-      if (localObject1 != null)
+      AppMethodBeat.i(351111);
+      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject1 = q.CFU;
+      Object localObject3 = q.ekL();
+      localObject1 = c.DKj;
+      localObject1 = (c.b)c.euV().get(this.DKo);
+      if (localObject1 == null)
       {
-        localObject1 = ((c.b)localObject1).yrC;
-        localObject1 = (com.tencent.c.a.a.a.d.a.b)((Map)localObject3).get(localObject1);
-        if (localObject1 == null) {
-          break label395;
-        }
-      }
-      label395:
-      for (localObject1 = ((com.tencent.c.a.a.a.d.a.b)localObject1).field_name;; localObject1 = null)
-      {
-        localStringBuilder1 = localStringBuilder1.append((String)localObject1).append(", ").append("comboId = " + this.yRY).append(", ").append("count = " + this.count).append(", ").append("executeInMainThread = " + this.yRZ).append(", ").append("nickname = " + this.nickname + " ,").append("isSelfSend = " + this.yrt + " ,");
-        localStringBuilder2 = new StringBuilder("giftLocalName = ");
-        localObject1 = c.yRV;
-        localObject3 = (c.b)c.dER().get(this.yRX);
-        localObject1 = localObject2;
-        if (localObject3 != null) {
-          localObject1 = ((c.b)localObject3).name;
-        }
-        localObject1 = localStringBuilder2.append((String)localObject1).append(", ").toString() + new StringBuilder("executeDelayMs = ").append(this.ySa).toString() + ", " + new StringBuilder("targetUserName = ").append(this.xcW).toString() + "\n";
-        p.j(localObject1, "StringBuilder()\n        …              .toString()");
-        AppMethodBeat.o(281837);
-        return localObject1;
         localObject1 = null;
+        localObject1 = (com.tencent.d.a.a.a.d.a.d)((Map)localObject3).get(localObject1);
+        if (localObject1 != null) {
+          break label329;
+        }
+        localObject1 = null;
+        label67:
+        localStringBuilder = localStringBuilder.append(s.X("giftName = ", localObject1)).append(", ").append(s.X("comboId = ", this.DKp)).append(", ").append(s.X("count = ", Integer.valueOf(this.count))).append(", ").append(s.X("executeInMainThread = ", Boolean.valueOf(this.DKq))).append(", ").append("nickname = " + this.nickname + " ,").append("isSelfSend = " + this.Dbw + " ,");
+        localObject3 = new StringBuilder("giftLocalName = ");
+        localObject1 = c.DKj;
+        localObject1 = (c.b)c.euV().get(this.DKo);
+        if (localObject1 != null) {
+          break label337;
+        }
+      }
+      label329:
+      label337:
+      for (localObject1 = localObject2;; localObject1 = ((c.b)localObject1).name)
+      {
+        localObject1 = ((StringBuilder)localObject3).append(localObject1).append(", ").toString() + s.X("executeDelayMs = ", Long.valueOf(this.DKr)) + ", " + s.X("targetUserName = ", this.ACm) + "\n";
+        s.s(localObject1, "StringBuilder()\n        …              .toString()");
+        AppMethodBeat.o(351111);
+        return localObject1;
+        localObject1 = ((c.b)localObject1).DbF;
         break;
+        localObject1 = ((com.tencent.d.a.a.a.d.a.d)localObject1).field_name;
+        break label67;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class e
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    e(List paramList)
+    e(List<s.b> paramList)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    f(List paramList)
+    f(List<s.b> paramList)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     g(c.d paramd)
     {
@@ -497,10 +450,10 @@ public final class c
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     h(c.d paramd)
     {
@@ -510,7 +463,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.utils.fake.c
  * JD-Core Version:    0.7.0.1
  */

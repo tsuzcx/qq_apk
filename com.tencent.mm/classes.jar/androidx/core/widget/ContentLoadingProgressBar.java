@@ -8,76 +8,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ContentLoadingProgressBar
   extends ProgressBar
 {
-  boolean Qa;
-  boolean Qb;
-  private final Runnable Qc;
-  private final Runnable Qd;
+  boolean bws;
+  boolean bwt;
+  private final Runnable bwu;
+  private final Runnable bwv;
   boolean mDismissed;
   long mStartTime;
   
   public ContentLoadingProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(252383);
+    AppMethodBeat.i(195369);
     this.mStartTime = -1L;
-    this.Qa = false;
-    this.Qb = false;
+    this.bws = false;
+    this.bwt = false;
     this.mDismissed = false;
-    this.Qc = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(252363);
-        ContentLoadingProgressBar.this.Qa = false;
-        ContentLoadingProgressBar.this.mStartTime = -1L;
-        ContentLoadingProgressBar.this.setVisibility(8);
-        AppMethodBeat.o(252363);
-      }
-    };
-    this.Qd = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(252368);
-        ContentLoadingProgressBar.this.Qb = false;
-        if (!ContentLoadingProgressBar.this.mDismissed)
-        {
-          ContentLoadingProgressBar.this.mStartTime = System.currentTimeMillis();
-          ContentLoadingProgressBar.this.setVisibility(0);
-        }
-        AppMethodBeat.o(252368);
-      }
-    };
-    AppMethodBeat.o(252383);
+    this.bwu = new ContentLoadingProgressBar..ExternalSyntheticLambda0(this);
+    this.bwv = new ContentLoadingProgressBar..ExternalSyntheticLambda1(this);
+    AppMethodBeat.o(195369);
   }
   
-  private void hC()
+  private void Fg()
   {
-    AppMethodBeat.i(252389);
-    removeCallbacks(this.Qc);
-    removeCallbacks(this.Qd);
-    AppMethodBeat.o(252389);
+    AppMethodBeat.i(195374);
+    removeCallbacks(this.bwu);
+    removeCallbacks(this.bwv);
+    AppMethodBeat.o(195374);
   }
   
   public void onAttachedToWindow()
   {
-    AppMethodBeat.i(252385);
+    AppMethodBeat.i(195408);
     super.onAttachedToWindow();
-    hC();
-    AppMethodBeat.o(252385);
+    Fg();
+    AppMethodBeat.o(195408);
   }
   
   public void onDetachedFromWindow()
   {
-    AppMethodBeat.i(252387);
+    AppMethodBeat.i(195414);
     super.onDetachedFromWindow();
-    hC();
-    AppMethodBeat.o(252387);
+    Fg();
+    AppMethodBeat.o(195414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.core.widget.ContentLoadingProgressBar
  * JD-Core Version:    0.7.0.1
  */

@@ -54,12 +54,12 @@ public class ActivityTestMultilineEllipse
       {
         AppMethodBeat.i(97664);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sns/ui/ActivityTestMultilineEllipse$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (this.KAi.getIsExpanded())
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/ActivityTestMultilineEllipse$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (this.QZP.getIsExpanded())
         {
-          paramAnonymousView = this.KAi;
-          paramAnonymousView.sTA = false;
+          paramAnonymousView = this.QZP;
+          paramAnonymousView.vYR = false;
           paramAnonymousView.requestLayout();
           paramAnonymousView.invalidate();
         }
@@ -68,8 +68,8 @@ public class ActivityTestMultilineEllipse
           a.a(this, "com/tencent/mm/plugin/sns/ui/ActivityTestMultilineEllipse$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(97664);
           return;
-          paramAnonymousView = this.KAi;
-          paramAnonymousView.sTA = true;
+          paramAnonymousView = this.QZP;
+          paramAnonymousView.vYR = true;
           paramAnonymousView.requestLayout();
           paramAnonymousView.invalidate();
         }

@@ -7,7 +7,6 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Log;
 import com.google.android.gms.common.util.DeviceStateUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List<Ljava.lang.String;>;
 
 public class WakeLockTracker
 {
-  @VisibleForTesting
   private static boolean zzyh;
   private static WakeLockTracker zzyz;
   private static Boolean zzza;
@@ -140,7 +138,7 @@ public class WakeLockTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.WakeLockTracker
  * JD-Core Version:    0.7.0.1
  */

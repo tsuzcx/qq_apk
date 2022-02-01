@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:id="@id/d37" android:background="@drawable/c9b" android:paddingLeft="@dimen/cc" android:paddingTop="10.0dip" android:paddingRight="@dimen/cc" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aja" android:textColor="@color/v9" android:gravity="center" android:layout_gravity="center" android:id="@id/d35" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cnw" android:includeFontPadding="false" />
+<FrameLayout android:paddingLeft="@dimen/cc" android:paddingBottom="@dimen/cc" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ViewFlipper android:id="@id/g7e" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_gravity="right" android:id="@id/jky" android:background="@color/BW_0_Alpha_0_1_5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/cv">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/df" android:src="@drawable/bxj" android:rotation="180.0" app:iconColor="@color/az" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/az" android:ellipsize="end" android:id="@id/jkz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/df" android:text="{banner}" android:maxLines="1" />
+        </LinearLayout>
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
 </FrameLayout>

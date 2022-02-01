@@ -16,6 +16,8 @@ public abstract interface AssetWriterVideoEncoder
   
   public abstract Surface createInputSurface();
   
+  public abstract void flush();
+  
   public abstract MediaFormat getEncodeFormat();
   
   public abstract long getEncodePresentationTimeUs();
@@ -31,6 +33,8 @@ public abstract interface AssetWriterVideoEncoder
   public abstract void processVideoTexture(TextureInfo paramTextureInfo, CMTime paramCMTime);
   
   public abstract void release();
+  
+  public abstract void reset();
   
   public abstract void setMediaMuxer(IMediaMuxer paramIMediaMuxer);
   

@@ -1,20 +1,20 @@
 package kotlin.d.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.d.d;
 import kotlin.d.f;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/coroutines/jvm/internal/CompletedContinuation;", "Lkotlin/coroutines/Continuation;", "", "()V", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "resumeWith", "", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/coroutines/jvm/internal/CompletedContinuation;", "Lkotlin/coroutines/Continuation;", "", "()V", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "resumeWith", "", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public final class c
   implements d<Object>
 {
-  public static final c aaAI;
+  public static final c aiwr;
   
   static
   {
     AppMethodBeat.i(129607);
-    aaAI = new c();
+    aiwr = new c();
     AppMethodBeat.o(129607);
   }
   

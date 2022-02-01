@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/n8" android:layout_width="@dimen/wj" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="82.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/ase" android:background="@drawable/n5" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/axd" style="@style/zx" />
-    <View android:background="@color/lx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
-    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/asc" android:background="@drawable/n5" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/axb" style="@style/zx" />
-    <View android:background="@color/lx" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
-    <TextView android:textColor="@color/BW_0_Alpha_0_9" android:gravity="center_horizontal" android:id="@id/asd" android:background="@drawable/n5" android:paddingTop="14.0dip" android:paddingBottom="14.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/axc" style="@style/zx" />
-</LinearLayout>
+    <ImageView android:id="@id/ifm" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="14.0dip" android:src="@drawable/b89" android:scaleType="centerCrop" android:layout_alignBottom="@id/ifn" />
+    <TextView android:textSize="11.0sp" android:textColor="@color/m4" android:id="@id/ifn" android:background="@drawable/lk" android:layout_width="82.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip" android:text="@string/bat" />
+</RelativeLayout>

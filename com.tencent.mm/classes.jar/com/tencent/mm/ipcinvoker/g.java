@@ -3,9 +3,9 @@ package com.tencent.mm.ipcinvoker;
 public abstract interface g<T>
   extends f<T>
 {
-  public abstract void aFq();
+  public abstract void aYr();
   
-  public abstract void g(Exception paramException);
+  public abstract void h(Exception paramException);
 }
 
 

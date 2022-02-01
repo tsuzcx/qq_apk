@@ -4,136 +4,97 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.k;
-import com.tencent.mm.f.a.si;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.autogen.a.ty;
+import com.tencent.mm.emoji.c.l;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class EmojiUpdateReceiver
   extends BroadcastReceiver
 {
-  public static String ACTION = "com.tencent.mm.Emoji_Update";
   public static String KEY_TYPE = "type";
-  public static String jOT = "update_all_custom_emoji";
-  public static String jOU = "update_download_custom_emoji";
-  public static String jOV = "update_store_emoji";
-  public static String jOW = "update_group_info";
-  public static String jOX = "update_capture_emoji";
-  public static String jOY = "update_emoji_download";
-  public static String jOZ = "update_sticker_download";
-  public static String jPa = "TYPE_UPDATE_EMOJI_SYNC";
+  public static String mnL = "com.tencent.mm.Emoji_Update";
+  public static String mnM = "update_all_custom_emoji";
+  public static String mnN = "update_download_custom_emoji";
+  public static String mnO = "update_store_emoji";
+  public static String mnP = "update_group_info";
+  public static String mnQ = "update_capture_emoji";
+  public static String mnR = "TYPE_UPDATE_EMOJI_SYNC";
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject1 = null;
-    paramContext = null;
     AppMethodBeat.i(104486);
-    String str = paramIntent.getAction();
-    Object localObject2;
-    if (ACTION.equals(str))
+    paramContext = paramIntent.getAction();
+    if (mnL.equals(paramContext))
     {
-      localObject2 = paramIntent.getStringExtra(KEY_TYPE);
-      Log.i("MicroMsg.EmojiUpdateReceiver", "receive %s, %s", new Object[] { str, localObject2 });
-      if (jOT.equals(localObject2))
+      String str = paramIntent.getStringExtra(KEY_TYPE);
+      Log.i("MicroMsg.EmojiUpdateReceiver", "receive %s, %s", new Object[] { paramContext, str });
+      if (mnM.equals(str))
       {
-        k.aBH().et(false);
-        EventCenter.instance.publish(new si());
+        l.aUF().ff(false);
+        new ty().publish();
         AppMethodBeat.o(104486);
         return;
       }
-      if (jOU.equals(localObject2))
+      if (mnN.equals(str))
       {
-        k.aBH().eu(false);
-        EventCenter.instance.publish(new si());
+        l.aUF().fg(false);
+        new ty().publish();
         AppMethodBeat.o(104486);
         return;
       }
-      if (jOV.equals(localObject2))
+      if (mnO.equals(str))
       {
-        k.aBH().jIg = true;
-        EventCenter.instance.publish(new si());
+        l.aUF().mhO = true;
+        new ty().publish();
         AppMethodBeat.o(104486);
         return;
       }
-      if (jOW.equals(localObject2))
+      if (mnP.equals(str))
       {
-        k.aBH().ev(false);
-        EventCenter.instance.publish(new si());
+        l.aUF().fh(false);
+        new ty().publish();
         AppMethodBeat.o(104486);
         return;
       }
-      if (jOX.equals(localObject2))
+      if (mnQ.equals(str))
       {
-        k.aBH().ew(false);
-        EventCenter.instance.publish(new si());
+        l.aUF().fi(false);
+        new ty().publish();
         AppMethodBeat.o(104486);
         return;
       }
-      boolean bool;
-      if (jOY.equals(localObject2))
+      if (mnR.equals(str))
       {
-        paramContext = paramIntent.getStringExtra("md5");
-        bool = paramIntent.getBooleanExtra("result", false);
-        Log.i("MicroMsg.EmojiUpdateReceiver", "onReceive: %s, %s, %s", new Object[] { localObject2, paramContext, Boolean.valueOf(bool) });
-        paramIntent = com.tencent.mm.emoji.loader.e.jGI;
-        com.tencent.mm.emoji.loader.e.v(paramContext, bool);
-        AppMethodBeat.o(104486);
-        return;
-      }
-      if (jOZ.equals(localObject2))
-      {
-        paramContext = paramIntent.getStringExtra("task_key");
-        bool = paramIntent.getBooleanExtra("result", false);
-        Log.i("MicroMsg.EmojiUpdateReceiver", "sticker download %s, %s", new Object[] { paramContext, Boolean.valueOf(bool) });
-        paramIntent = com.tencent.mm.sticker.loader.e.Vbx;
-        com.tencent.mm.sticker.loader.e.ds(paramContext, bool);
-        AppMethodBeat.o(104486);
-        return;
-      }
-      if (jPa.equals(localObject2))
-      {
-        localObject2 = (EmojiSyncLoaderIPC.EmojiSyncData)paramIntent.getParcelableExtra("data");
-        paramIntent = g.jOs;
-        if (localObject2 != null) {
-          if (((EmojiSyncLoaderIPC.EmojiSyncData)localObject2).jJL == 1)
+        paramIntent = (EmojiSyncLoaderIPC.EmojiSyncData)paramIntent.getParcelableExtra("data");
+        paramContext = g.mmX;
+        if (paramIntent != null)
+        {
+          if (paramIntent.mjd == 1)
           {
-            paramIntent = g.b.aDs();
-            if ((paramIntent instanceof EmojiSyncLoaderIPC)) {
-              break label500;
+            paramContext = g.b.aWo();
+            if ((paramContext instanceof EmojiSyncLoaderIPC)) {}
+            for (paramContext = (EmojiSyncLoaderIPC)paramContext; paramContext != null; paramContext = null)
+            {
+              paramContext.a(paramIntent);
+              AppMethodBeat.o(104486);
+              return;
             }
+          }
+          paramContext = g.b.aWn();
+          if (!(paramContext instanceof EmojiSyncLoaderIPC)) {
+            break label320;
           }
         }
       }
     }
-    for (;;)
+    label320:
+    for (paramContext = (EmojiSyncLoaderIPC)paramContext;; paramContext = null)
     {
-      paramContext = (EmojiSyncLoaderIPC)paramContext;
-      if (paramContext != null)
-      {
-        paramContext.a((EmojiSyncLoaderIPC.EmojiSyncData)localObject2);
-        AppMethodBeat.o(104486);
-        return;
+      if (paramContext != null) {
+        paramContext.a(paramIntent);
       }
       AppMethodBeat.o(104486);
       return;
-      paramContext = g.b.aDr();
-      if (!(paramContext instanceof EmojiSyncLoaderIPC)) {
-        paramContext = localObject1;
-      }
-      for (;;)
-      {
-        paramContext = (EmojiSyncLoaderIPC)paramContext;
-        if (paramContext != null)
-        {
-          paramContext.a((EmojiSyncLoaderIPC.EmojiSyncData)localObject2);
-          AppMethodBeat.o(104486);
-          return;
-        }
-        AppMethodBeat.o(104486);
-        return;
-      }
-      label500:
-      paramContext = paramIntent;
     }
   }
 }

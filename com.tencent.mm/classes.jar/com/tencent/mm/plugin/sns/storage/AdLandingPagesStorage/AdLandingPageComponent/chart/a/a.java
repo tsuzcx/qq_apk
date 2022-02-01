@@ -12,29 +12,29 @@ import java.util.Set;
 public class a
   extends LinkedHashMap<Spannable, Float>
 {
-  public b KnM;
-  public Interpolator KnN;
-  private String KnO;
+  public b QLT;
+  public Interpolator QLU;
+  private String QLV;
   public long duration;
   
   public a()
   {
     AppMethodBeat.i(96334);
-    this.KnM = new b();
-    this.KnN = null;
+    this.QLT = new b();
+    this.QLU = null;
     this.duration = 0L;
-    this.KnO = "";
+    this.QLV = "";
     AppMethodBeat.o(96334);
   }
   
   public a(b paramb)
   {
     AppMethodBeat.i(96335);
-    this.KnM = new b();
-    this.KnN = null;
+    this.QLT = new b();
+    this.QLU = null;
     this.duration = 0L;
-    this.KnO = "";
-    this.KnM = paramb;
+    this.QLV = "";
+    this.QLT = paramb;
     AppMethodBeat.o(96335);
   }
   
@@ -58,13 +58,13 @@ public class a
     return true;
   }
   
-  public final Spannable[] fQI()
+  public final Spannable[] hiG()
   {
     AppMethodBeat.i(96337);
     Object localObject = new ArrayList();
     Iterator localIterator = entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((ArrayList)localObject).add(((Map.Entry)localIterator.next()).getKey());
+      ((ArrayList)localObject).add((Spannable)((Map.Entry)localIterator.next()).getKey());
     }
     localObject = (Spannable[])((ArrayList)localObject).toArray(new Spannable[((ArrayList)localObject).size()]);
     AppMethodBeat.o(96337);
@@ -73,7 +73,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a
  * JD-Core Version:    0.7.0.1
  */

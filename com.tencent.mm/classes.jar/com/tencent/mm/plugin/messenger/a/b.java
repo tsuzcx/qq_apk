@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 
 public abstract interface b
   extends a
 {
-  public abstract String PI(String paramString);
+  public abstract String ID(String paramString);
   
-  public abstract String PJ(String paramString);
+  public abstract String IE(String paramString);
   
-  public abstract String PL(String paramString);
+  public abstract String IF(String paramString);
   
-  public abstract String aL(String paramString1, String paramString2);
+  public abstract String aV(String paramString1, String paramString2);
   
-  public abstract String b(as paramas);
+  public abstract String b(au paramau);
   
-  public abstract String b(as paramas, String paramString);
+  public abstract String b(au paramau, String paramString);
+  
+  public abstract String getDisplayName(String paramString);
 }
 
 

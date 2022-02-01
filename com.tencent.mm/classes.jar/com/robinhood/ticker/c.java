@@ -6,9 +6,9 @@ import java.util.Map;
 
 final class c
 {
-  final char[] ciA;
-  final Map<Character, Integer> ciB;
-  final int ciz;
+  final int dYY;
+  final char[] dYZ;
+  final Map<Character, Integer> dZa;
   
   c(String paramString)
   {
@@ -21,27 +21,27 @@ final class c
     }
     paramString = paramString.toCharArray();
     int k = paramString.length;
-    this.ciz = k;
-    this.ciB = new HashMap(k);
+    this.dYY = k;
+    this.dZa = new HashMap(k);
     int i = 0;
     while (i < k)
     {
-      this.ciB.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      this.dZa.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
       i += 1;
     }
-    this.ciA = new char[k * 2 + 1];
-    this.ciA[0] = '\000';
+    this.dYZ = new char[k * 2 + 1];
+    this.dYZ[0] = '\000';
     i = j;
     while (i < k)
     {
-      this.ciA[(i + 1)] = paramString[i];
-      this.ciA[(k + 1 + i)] = paramString[i];
+      this.dYZ[(i + 1)] = paramString[i];
+      this.dYZ[(k + 1 + i)] = paramString[i];
       i += 1;
     }
     AppMethodBeat.o(39843);
   }
   
-  final int u(char paramChar)
+  final int l(char paramChar)
   {
     AppMethodBeat.i(39844);
     if (paramChar == 0)
@@ -49,9 +49,9 @@ final class c
       AppMethodBeat.o(39844);
       return 0;
     }
-    if (this.ciB.containsKey(Character.valueOf(paramChar)))
+    if (this.dZa.containsKey(Character.valueOf(paramChar)))
     {
-      int i = ((Integer)this.ciB.get(Character.valueOf(paramChar))).intValue();
+      int i = ((Integer)this.dZa.get(Character.valueOf(paramChar))).intValue();
       AppMethodBeat.o(39844);
       return i + 1;
     }
@@ -61,7 +61,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.robinhood.ticker.c
  * JD-Core Version:    0.7.0.1
  */

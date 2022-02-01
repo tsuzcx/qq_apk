@@ -1,110 +1,118 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q.b;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.p.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.sns.data.t;
-import com.tencent.mm.plugin.sns.storage.r;
-import com.tencent.mm.protocal.protobuf.cvt;
-import com.tencent.mm.protocal.protobuf.eae;
-import com.tencent.mm.protocal.protobuf.ejs;
-import com.tencent.mm.protocal.protobuf.ejt;
+import com.tencent.mm.plugin.sns.storage.aa;
+import com.tencent.mm.plugin.sns.storage.z;
+import com.tencent.mm.protocal.protobuf.dmz;
+import com.tencent.mm.protocal.protobuf.fdz;
+import com.tencent.mm.protocal.protobuf.fea;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public final class q
-  extends com.tencent.mm.an.q
+  extends p
   implements m
 {
-  private String JVl;
-  private int JVm;
-  int JVn;
-  private boolean JVo;
-  private String JVp;
-  private cvt JVq;
-  public i callback;
+  private String Qsm;
+  private int Qsn;
+  int Qso;
+  private boolean Qsp;
+  private String Qsq;
+  private dmz Qsr;
+  public h callback;
   private String filename;
   String mediaId;
-  private OutputStream output;
-  private d rr;
+  private OutputStream osU;
+  private com.tencent.mm.am.c rr;
   
-  public q(cvt paramcvt, String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
+  public q(dmz paramdmz, String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, String paramString3)
   {
     AppMethodBeat.i(95589);
     this.mediaId = "";
-    this.output = null;
-    this.JVm = -1;
-    this.JVn = -1;
-    this.JVo = true;
-    this.JVp = null;
+    this.osU = null;
+    this.Qsn = -1;
+    this.Qso = -1;
+    this.Qsp = true;
+    this.Qsq = null;
     this.mediaId = paramString1;
-    this.JVq = paramcvt;
-    this.JVo = paramBoolean;
-    this.JVm = paramInt1;
-    this.JVn = paramInt2;
-    this.JVp = paramString3;
-    this.JVl = aq.kD(aj.getAccSnsPath(), paramString1);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ejs();
-    ((d.a)localObject).lBV = new ejt();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsdownload";
-    ((d.a)localObject).funcId = 208;
-    ((d.a)localObject).lBW = 96;
-    ((d.a)localObject).respCmdId = 1000000096;
-    this.rr = ((d.a)localObject).bgN();
-    ejs localejs = (ejs)d.b.b(this.rr.lBR);
-    com.tencent.mm.plugin.sns.storage.q localq = aj.fOx().bbE(paramString1);
-    localObject = localq;
-    if (localq == null) {
-      localObject = new com.tencent.mm.plugin.sns.storage.q();
+    this.Qsr = paramdmz;
+    this.Qsp = paramBoolean;
+    this.Qsn = paramInt1;
+    this.Qso = paramInt2;
+    this.Qsq = paramString3;
+    this.Qsm = as.mg(al.getAccSnsPath(), paramString1);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fdz();
+    ((c.a)localObject).otF = new fea();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsdownload";
+    ((c.a)localObject).funcId = 208;
+    ((c.a)localObject).otG = 96;
+    ((c.a)localObject).respCmdId = 1000000096;
+    this.rr = ((c.a)localObject).bEF();
+    fdz localfdz = (fdz)c.b.b(this.rr.otB);
+    z localz = al.hgq().bal(paramString1);
+    localObject = localz;
+    if (localz == null) {
+      localObject = new z();
     }
-    ((com.tencent.mm.plugin.sns.storage.q)localObject).KzZ = paramString1;
-    ((com.tencent.mm.plugin.sns.storage.q)localObject).offset = 0;
-    aj.fOx().a(paramString1, (com.tencent.mm.plugin.sns.storage.q)localObject);
+    ((z)localObject).strId = paramString1;
+    ((z)localObject).offset = 0;
+    al.hgq().a(paramString1, (z)localObject);
     if (paramBoolean) {}
-    for (this.filename = t.m(paramcvt);; this.filename = t.l(paramcvt))
+    for (this.filename = t.m(paramdmz);; this.filename = t.l(paramdmz))
     {
-      u.bBD(this.JVl);
-      u.deleteFile(aq.kD(aj.getAccSnsPath(), paramString1) + this.filename);
-      localejs.UlI = paramString2;
-      localejs.UlJ = 0;
-      localejs.Hna = 0;
-      localejs.HmZ = 0;
-      localejs.rWu = this.JVm;
+      y.bDX(this.Qsm);
+      y.deleteFile(as.mg(al.getAccSnsPath(), paramString1) + this.filename);
+      localfdz.abDD = paramString2;
+      localfdz.abDE = 0;
+      localfdz.NkO = 0;
+      localfdz.NkN = 0;
+      localfdz.vhJ = this.Qsn;
       Log.d("MicroMsg.NetSceneSnsDownload", "requestKey ".concat(String.valueOf(paramString3)));
       AppMethodBeat.o(95589);
       return;
     }
   }
   
+  private void atR()
+  {
+    AppMethodBeat.i(95592);
+    al.hgw().aXZ(this.Qsq);
+    AppMethodBeat.o(95592);
+  }
+  
   private int au(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95593);
-    if (!t.aZp(aj.getAccPath()))
+    if (!t.aXA(al.getAccPath()))
     {
       AppMethodBeat.o(95593);
       return 0;
     }
     try
     {
-      if (this.output == null)
+      if (this.osU == null)
       {
-        u.bBD(this.JVl);
-        this.output = u.Te(this.JVl + this.filename);
+        y.bDX(this.Qsm);
+        this.osU = y.ev(this.Qsm + this.filename, false);
       }
       Log.d("MicroMsg.NetSceneSnsDownload", "appendBuf " + paramArrayOfByte.length);
-      this.output.write(paramArrayOfByte);
-      bhK();
+      this.osU.write(paramArrayOfByte);
+      bFz();
       int i = paramArrayOfByte.length;
       AppMethodBeat.o(95593);
       return i;
@@ -116,21 +124,21 @@ public final class q
     }
     finally
     {
-      bhK();
+      bFz();
       AppMethodBeat.o(95593);
     }
   }
   
-  private void bhK()
+  private void bFz()
   {
     AppMethodBeat.i(95594);
     try
     {
-      if (this.output != null)
+      if (this.osU != null)
       {
-        this.output.flush();
-        this.output.close();
-        this.output = null;
+        this.osU.flush();
+        this.osU.close();
+        this.osU = null;
       }
       AppMethodBeat.o(95594);
       return;
@@ -142,17 +150,10 @@ public final class q
     }
   }
   
-  private void onError()
-  {
-    AppMethodBeat.i(95592);
-    aj.fOD().aZM(this.JVp);
-    AppMethodBeat.o(95592);
-  }
-  
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(95590);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(95590);
     return i;
@@ -167,98 +168,98 @@ public final class q
   {
     AppMethodBeat.i(95591);
     Log.d("MicroMsg.NetSceneSnsDownload", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    paramArrayOfByte = (d.c)params.getRespObj();
-    params = (ejt)d.c.b(((d)params).lBS);
+    paramArrayOfByte = (c.c)params.getRespObj();
+    params = (fea)c.c.b(((com.tencent.mm.am.c)params).otC);
     if (paramArrayOfByte.getRetCode() != 0)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      aj.fOD().aZM(this.JVp);
+      al.hgw().aXZ(this.Qsq);
       AppMethodBeat.o(95591);
       return;
     }
-    paramArrayOfByte = aj.fOx().bbE(this.mediaId);
-    if (params.HmZ <= 0)
+    paramArrayOfByte = al.hgq().bal(this.mediaId);
+    if (params.NkN <= 0)
     {
       Log.e("MicroMsg.NetSceneSnsDownload", "error 1");
-      onError();
+      atR();
       AppMethodBeat.o(95591);
       return;
     }
-    if (params.RNM == null)
+    if (params.YLa == null)
     {
       Log.e("MicroMsg.NetSceneSnsDownload", "error 2");
-      onError();
+      atR();
       AppMethodBeat.o(95591);
       return;
     }
-    if ((params.Hna < 0) || (params.Hna + params.RNM.Tkb.UH.length > params.HmZ))
+    if ((params.NkO < 0) || (params.NkO + params.YLa.aaxD.Op.length > params.NkN))
     {
       Log.e("MicroMsg.NetSceneSnsDownload", "error 3");
-      onError();
+      atR();
       AppMethodBeat.o(95591);
       return;
     }
-    if (params.Hna != paramArrayOfByte.offset)
+    if (params.NkO != paramArrayOfByte.offset)
     {
       Log.e("MicroMsg.NetSceneSnsDownload", "error 4");
-      onError();
+      atR();
       AppMethodBeat.o(95591);
       return;
     }
-    paramInt1 = au(params.RNM.Tkb.toByteArray());
+    paramInt1 = au(params.YLa.aaxD.toByteArray());
     if (paramInt1 < 0)
     {
       Log.e("MicroMsg.NetSceneSnsDownload", "error 5");
-      onError();
+      atR();
       AppMethodBeat.o(95591);
       return;
     }
     paramArrayOfByte.offset += paramInt1;
-    paramArrayOfByte.KzV = params.HmZ;
-    Log.d("MicroMsg.NetSceneSnsDownload", "byteLen " + paramInt1 + "  totalLen " + params.HmZ);
-    aj.fOx().a(this.mediaId, paramArrayOfByte);
-    if ((paramArrayOfByte.offset == paramArrayOfByte.KzV) && (paramArrayOfByte.KzV != 0))
+    paramArrayOfByte.QZs = params.NkN;
+    Log.d("MicroMsg.NetSceneSnsDownload", "byteLen " + paramInt1 + "  totalLen " + params.NkN);
+    al.hgq().a(this.mediaId, paramArrayOfByte);
+    if ((paramArrayOfByte.offset == paramArrayOfByte.QZs) && (paramArrayOfByte.QZs != 0))
     {
       paramInt1 = 1;
       if (paramInt1 == 0) {
-        break label665;
+        break label662;
       }
       Log.d("MicroMsg.NetSceneSnsDownload", "downLoad ok");
-      if (this.JVn != 1) {
-        break label552;
+      if (this.Qso != 1) {
+        break label549;
       }
-      params = t.d(this.JVq);
-      label442:
-      paramArrayOfByte = aq.kD(aj.getAccSnsPath(), this.mediaId);
-      u.deleteFile(paramArrayOfByte + params);
-      u.bj(paramArrayOfByte, this.filename, params);
-      if (!this.JVo) {
-        break label564;
+      params = t.d(this.Qsr);
+      label439:
+      paramArrayOfByte = as.mg(al.getAccSnsPath(), this.mediaId);
+      y.deleteFile(paramArrayOfByte + params);
+      y.bF(paramArrayOfByte, this.filename, params);
+      if (!this.Qsp) {
+        break label561;
       }
-      r.b(paramArrayOfByte, params, t.e(this.JVq), aj.fOV());
+      aa.b(paramArrayOfByte, params, t.e(this.Qsr), al.hgP());
     }
     for (;;)
     {
-      aj.fOD().aZM(this.JVp);
+      al.hgw().aXZ(this.Qsq);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95591);
       return;
       paramInt1 = 0;
       break;
-      label552:
-      params = t.k(this.JVq);
-      break label442;
-      label564:
-      String str = t.d(this.JVq);
-      if (!u.agG(paramArrayOfByte + str)) {
-        r.a(paramArrayOfByte, params, str, aj.fOW());
+      label549:
+      params = t.k(this.Qsr);
+      break label439;
+      label561:
+      String str = t.d(this.Qsr);
+      if (!y.ZC(paramArrayOfByte + str)) {
+        aa.a(paramArrayOfByte, params, str, al.hgQ());
       }
-      str = t.e(this.JVq);
-      if (!u.agG(paramArrayOfByte + str)) {
-        r.b(paramArrayOfByte, params, str, aj.fOV());
+      str = t.e(this.Qsr);
+      if (!y.ZC(paramArrayOfByte + str)) {
+        aa.b(paramArrayOfByte, params, str, al.hgP());
       }
     }
-    label665:
+    label662:
     doScene(dispatcher(), this.callback);
     AppMethodBeat.o(95591);
   }
@@ -268,14 +269,14 @@ public final class q
     return 100;
   }
   
-  public final q.b securityVerificationChecked(s params)
+  public final p.b securityVerificationChecked(s params)
   {
-    return q.b.lCx;
+    return p.b.ouh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.q
  * JD-Core Version:    0.7.0.1
  */

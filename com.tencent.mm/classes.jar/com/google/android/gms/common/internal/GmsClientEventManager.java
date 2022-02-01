@@ -9,7 +9,6 @@ import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -21,7 +20,6 @@ public final class GmsClientEventManager
   private final Object mLock;
   private final GmsClientEventState zztf;
   private final ArrayList<GoogleApiClient.ConnectionCallbacks> zztg;
-  @VisibleForTesting
   private final ArrayList<GoogleApiClient.ConnectionCallbacks> zzth;
   private final ArrayList<GoogleApiClient.OnConnectionFailedListener> zzti;
   private volatile boolean zztj;
@@ -106,7 +104,6 @@ public final class GmsClientEventManager
     }
   }
   
-  @VisibleForTesting
   public final void onConnectionFailure(ConnectionResult paramConnectionResult)
   {
     int i = 0;
@@ -152,7 +149,6 @@ public final class GmsClientEventManager
     AppMethodBeat.o(11831);
   }
   
-  @VisibleForTesting
   protected final void onConnectionSuccess()
   {
     AppMethodBeat.i(11828);
@@ -164,7 +160,6 @@ public final class GmsClientEventManager
     }
   }
   
-  @VisibleForTesting
   public final void onConnectionSuccess(Bundle paramBundle)
   {
     boolean bool2 = true;
@@ -226,7 +221,6 @@ public final class GmsClientEventManager
     AppMethodBeat.o(11829);
   }
   
-  @VisibleForTesting
   public final void onUnintentionalDisconnection(int paramInt)
   {
     int i = 0;
@@ -340,7 +334,6 @@ public final class GmsClientEventManager
     }
   }
   
-  @VisibleForTesting
   public static abstract interface GmsClientEventState
   {
     public abstract Bundle getConnectionHint();
@@ -350,7 +343,7 @@ public final class GmsClientEventManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.GmsClientEventManager
  * JD-Core Version:    0.7.0.1
  */

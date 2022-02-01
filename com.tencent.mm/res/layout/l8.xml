@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/c6i" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/azn" android:layout_width="fill_parent" android:layout_height="448.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/lmk" android:layout_width="fill_parent" android:layout_height="400.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/beq" android:background="@drawable/il" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginBottom="400.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bq2" android:rotation="-90.0" />
+    </FrameLayout>
+</RelativeLayout>

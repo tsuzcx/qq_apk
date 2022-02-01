@@ -1,151 +1,162 @@
 package com.tencent.mm.plugin.finder.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
-import com.tencent.mm.f.b.a.ig;
-import com.tencent.mm.plugin.findersdk.a.al;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dbr;
+import com.tencent.mm.autogen.b.cj;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.api.m.a;
+import com.tencent.mm.plugin.finder.conv.a.a;
+import com.tencent.mm.plugin.finder.conv.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storagebase.h;
+import java.io.Closeable;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.f.b;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderMvLogic;", "", "()V", "TAG", "", "playingPos", "", "getPlayingPos", "()I", "setPlayingPos", "(I)V", "createMusicWrapper", "Lcom/tencent/mm/modelmusic/MusicWrapper;", "musicSongInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMVSongInfo;", "musicId", "musicType", "directPlayMusic", "", "musicShareObject", "Lcom/tencent/mm/protocal/protobuf/MusicShareObject;", "isPlayingPosValid", "", "isTheSameIdPlaying", "playId", "playMusic", "musicCoverUrl", "playMusicWithNoFloatBall", "coverUrl", "playOrPauseMusic", "resetPlayingPos", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderContact;", "storage", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getStorage", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "getContact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "username", "", "insertContact", "", "contact", "replaceContact", "", "ct", "isUpdateTime", "reportSize", "", "updateContact", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class aa
+  extends MAutoStorage<cj>
 {
-  private static int Amf;
-  public static final aa Amg;
+  public static final a FLV;
+  private static final String[] INDEX_CREATE;
+  private static final String[] SQL_CREATE;
+  public final ISQLiteDatabase psb;
   
   static
   {
-    AppMethodBeat.i(250118);
-    Amg = new aa();
-    Amf = -1;
-    AppMethodBeat.o(250118);
+    AppMethodBeat.i(339529);
+    FLV = new a((byte)0);
+    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS FinderMsgAliasContactStorage_username_index ON FinderMsgAliasContactStorage(username)" };
+    m.a locala = m.Axk;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(m.access$getInfo$cp(), "FinderMsgAliasContactStorage") };
+    AppMethodBeat.o(339529);
   }
   
-  public static void Qj(int paramInt)
+  public aa(ISQLiteDatabase paramISQLiteDatabase)
   {
-    Amf = paramInt;
+    super(paramISQLiteDatabase, m.access$getInfo$cp(), "FinderMsgAliasContactStorage", INDEX_CREATE);
+    AppMethodBeat.i(339508);
+    this.psb = paramISQLiteDatabase;
+    AppMethodBeat.o(339508);
   }
   
-  private static f a(bds parambds, String paramString, int paramInt)
+  public final m auT(String paramString)
   {
-    AppMethodBeat.i(250115);
-    f localf = new f();
-    localf.lVr = paramInt;
-    localf.lVt = paramString;
-    localf.lVG = parambds.SOJ;
-    localf.lVx = parambds.albumName;
-    localf.lVv = parambds.HLH;
-    localf.lVw = parambds.ozs;
-    localf.lVy = parambds.SOM;
-    localf.lVK = parambds.SOM;
-    localf.lVB = parambds.SOK;
-    localf.lVz = parambds.musicDataUrl;
-    localf.lVX = true;
-    parambds = com.tencent.mm.plugin.comm.a.ubo;
-    localf.lVV = com.tencent.mm.plugin.comm.a.cPl();
-    AppMethodBeat.o(250115);
-    return localf;
-  }
-  
-  public static void a(bds parambds, dbr paramdbr, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(250107);
-    p.k(parambds, "musicSongInfo");
-    p.k(paramString1, "musicId");
-    parambds = a(parambds, paramString1, 14);
-    parambds.lVW = false;
-    ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString1, paramdbr, paramString2));
-    com.tencent.mm.bb.a.c(parambds);
-    AppMethodBeat.o(250107);
-  }
-  
-  public static void a(bds parambds, String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(250106);
-    p.k(parambds, "musicSongInfo");
-    p.k(paramString1, "musicId");
-    p.k(paramString2, "musicCoverUrl");
-    if (!aEL(paramString1))
+    int i = 1;
+    AppMethodBeat.i(339541);
+    s.u(paramString, "username");
+    localObject1 = s.X("SELECT *, rowid FROM FinderMsgAliasContactStorage WHERE username = ", h.EQ(paramString));
+    long l = SystemClock.uptimeMillis();
+    paramString = this.psb.rawQuery((String)localObject1, null, 2);
+    Object localObject2 = new a.a();
+    String str = Thread.currentThread().getName();
+    s.s(str, "currentThread().name");
+    localObject1 = ((a.a)localObject2).avh(str).avg((String)localObject1);
+    ((a.a)localObject1).duration = (SystemClock.uptimeMillis() - l);
+    ((a.a)localObject1).avf("FinderMsgAliasContactStorage.getContact").dWL().report();
+    localObject1 = (Closeable)paramString;
+    for (;;)
     {
-      Log.i("FinderMvLogic", "playMusic");
-      parambds = a(parambds, paramString1, paramInt);
-      ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString1, null, paramString2));
-      com.tencent.mm.bb.a.c(parambds);
-      AppMethodBeat.o(250106);
-      return;
-    }
-    Log.i("FinderMvLogic", "same music");
-    AppMethodBeat.o(250106);
-  }
-  
-  public static void a(bds parambds, String paramString, dbr paramdbr)
-  {
-    AppMethodBeat.i(250104);
-    p.k(parambds, "musicSongInfo");
-    p.k(paramString, "musicId");
-    if (!aEL(paramString))
-    {
-      Log.i("FinderMvLogic", "playMusic");
-      parambds = a(parambds, paramString, 13);
-      ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString, paramdbr));
-      com.tencent.mm.bb.a.c(parambds);
-      AppMethodBeat.o(250104);
-      return;
-    }
-    Log.i("FinderMvLogic", "same music");
-    AppMethodBeat.o(250104);
-  }
-  
-  public static boolean aEL(String paramString)
-  {
-    AppMethodBeat.i(250111);
-    p.k(paramString, "playId");
-    f localf = com.tencent.mm.bb.a.bnA();
-    if (localf != null) {}
-    for (String str = localf.lVt; (str != null) && (localf.lVr == 0) && (com.tencent.mm.bb.a.bnx()); str = null) {
       try
       {
-        if (!Util.isEqual(localf.lVt, paramString)) {
-          break;
+        localObject2 = (Cursor)localObject1;
+        if ((localObject2 == null) || (((Cursor)localObject2).moveToFirst() != true)) {
+          continue;
         }
-        AppMethodBeat.o(250111);
-        return true;
+        if (i == 0) {
+          continue;
+        }
+        paramString = new m();
+        paramString.convertFrom((Cursor)localObject2);
       }
-      catch (Exception paramString)
+      finally
       {
-        AppMethodBeat.o(250111);
-        return false;
+        try
+        {
+          AppMethodBeat.o(339541);
+          throw paramString;
+        }
+        finally
+        {
+          b.a((Closeable)localObject1, paramString);
+          AppMethodBeat.o(339541);
+        }
+        paramString = null;
+        continue;
+      }
+      localObject2 = ah.aiuX;
+      b.a((Closeable)localObject1, null);
+      AppMethodBeat.o(339541);
+      return paramString;
+      i = 0;
+    }
+  }
+  
+  public final boolean j(m paramm)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(339555);
+    s.u(paramm, "ct");
+    paramm.field_updateTime = cn.bDw();
+    Object localObject;
+    long l1;
+    String str;
+    if (auT(paramm.getUsername()) == null)
+    {
+      s.u(paramm, "contact");
+      localObject = paramm.convertTo();
+      l1 = SystemClock.uptimeMillis();
+      long l2 = this.psb.insert("FinderMsgAliasContactStorage", "", (ContentValues)localObject);
+      localObject = new a.a();
+      str = Thread.currentThread().getName();
+      s.s(str, "currentThread().name");
+      localObject = ((a.a)localObject).avh(str).avg("insertContact");
+      ((a.a)localObject).duration = (SystemClock.uptimeMillis() - l1);
+      ((a.a)localObject).avf("FinderMsgAliasContactStorage.insertContact").dWL().report();
+      Log.i("Finder.FinderMsgAliasContactStorage", "insert contact " + paramm + ' ' + l2);
+      paramm.systemRowid = l2;
+      if (l2 <= 0L) {}
+    }
+    for (;;)
+    {
+      if (bool) {
+        doNotify("FinderMsgAliasContactStorage", 4, paramm.getUsername());
+      }
+      AppMethodBeat.o(339555);
+      return bool;
+      bool = false;
+      continue;
+      s.u(paramm, "contact");
+      localObject = paramm.convertTo();
+      ((ContentValues)localObject).remove("rowid");
+      l1 = SystemClock.uptimeMillis();
+      int i = this.psb.update("FinderMsgAliasContactStorage", (ContentValues)localObject, "username=?", new String[] { s.X("", paramm.field_username) });
+      localObject = new a.a();
+      str = Thread.currentThread().getName();
+      s.s(str, "currentThread().name");
+      localObject = ((a.a)localObject).avh(str).avg("updateContact");
+      ((a.a)localObject).duration = (SystemClock.uptimeMillis() - l1);
+      ((a.a)localObject).avf("FinderMsgAliasContactStorage.updateContact").dWL().report();
+      Log.i("Finder.FinderMsgAliasContactStorage", "updateContact " + paramm.dUw() + ' ' + i);
+      if (i <= 0) {
+        bool = false;
       }
     }
-    AppMethodBeat.o(250111);
-    return false;
   }
   
-  public static void b(bds parambds, String paramString, dbr paramdbr)
-  {
-    AppMethodBeat.i(250110);
-    parambds = a(parambds, paramString, 0);
-    ((com.tencent.mm.bb.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.bb.a.a.class)).b(parambds, com.tencent.mm.bb.h.a(paramString, paramdbr));
-    com.tencent.mm.bb.a.c(parambds);
-    parambds = new ig();
-    parambds.sJ(1L);
-    parambds.sK(8L);
-    al.a(parambds);
-    AppMethodBeat.o(250110);
-  }
-  
-  public static void dYQ()
-  {
-    Amf = -1;
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/FinderMsgAliasContactStorage$Companion;", "", "()V", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SQL_CREATE", "kotlin.jvm.PlatformType", "getSQL_CREATE", "TABLE_NAME", "TAG", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.aa
  * JD-Core Version:    0.7.0.1
  */

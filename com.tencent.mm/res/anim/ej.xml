@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:interpolator="@android:interpolator/decelerate_quad"
+<set
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <translate android:duration="300" android:fillAfter="true" android:repeatCount="0" android:fromYDelta="0.0" android:toYDelta="100.0%" android:fillEnabled="true" />
+    <alpha android:duration="500" android:fromAlpha="0.0" android:toAlpha="1.0" />
+    <translate android:interpolator="@android:anim/accelerate_interpolator" android:duration="800" android:repeatCount="infinite" android:repeatMode="reverse" android:fromYDelta="-15.0" android:toYDelta="0.0" />
 </set>

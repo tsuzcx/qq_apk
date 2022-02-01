@@ -7,20 +7,21 @@ import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxLinearLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "Companion", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/WxLinearLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "Companion", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class WxLinearLayoutManager
   extends LinearLayoutManager
 {
-  public static final a YSJ;
+  public static final WxLinearLayoutManager.a agOA;
   private Context context;
   
   static
   {
-    AppMethodBeat.i(222058);
-    YSJ = new a((byte)0);
-    AppMethodBeat.o(222058);
+    AppMethodBeat.i(234904);
+    agOA = new WxLinearLayoutManager.a((byte)0);
+    AppMethodBeat.o(234904);
   }
   
   public WxLinearLayoutManager(Context paramContext)
@@ -42,37 +43,46 @@ public final class WxLinearLayoutManager
   
   public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(222055);
-    StringBuilder localStringBuilder;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    AppMethodBeat.i(234909);
     try
     {
       super.onLayoutChildren(paramn, params);
-      AppMethodBeat.o(222055);
+      AppMethodBeat.o(234909);
       return;
     }
     catch (IndexOutOfBoundsException paramn)
     {
       Log.e("MicroMsg.WxLinearLayoutManager", "meet a IOOBE in RecyclerView");
-      AppMethodBeat.o(222055);
+      AppMethodBeat.o(234909);
       return;
     }
     catch (IllegalArgumentException paramn)
     {
       params = (Throwable)paramn;
-      localStringBuilder = new StringBuilder("onLayoutChildren ");
       paramn = this.context;
       if (paramn == null) {}
+      for (paramn = localObject1;; paramn = paramn.getClass().getName())
+      {
+        Log.printErrStackTrace("MicroMsg.WxLinearLayoutManager", params, s.X("onLayoutChildren ", paramn), new Object[0]);
+        AppMethodBeat.o(234909);
+        return;
+      }
     }
-    for (paramn = paramn.getClass().getName();; paramn = null)
+    catch (Exception paramn)
     {
-      Log.printErrStackTrace("MicroMsg.WxLinearLayoutManager", params, paramn, new Object[0]);
-      AppMethodBeat.o(222055);
+      params = (Throwable)paramn;
+      paramn = this.context;
+      if (paramn != null) {}
+    }
+    for (paramn = localObject2;; paramn = paramn.getClass().getName())
+    {
+      Log.printErrStackTrace("MicroMsg.WxLinearLayoutManager", params, s.X("onLayoutChildren ", paramn), new Object[0]);
+      AppMethodBeat.o(234909);
       return;
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxLinearLayoutManager$Companion;", "", "()V", "TAG", "", "libmmui_release"})
-  public static final class a {}
 }
 
 

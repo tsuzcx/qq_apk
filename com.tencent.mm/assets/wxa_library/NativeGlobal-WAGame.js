@@ -3,7 +3,7 @@ this.requestAnimationFrame = NativeGlobal.requestAnimationFrame;
 this.cancelAnimationFrame = NativeGlobal.cancelAnimationFrame;
 NativeGlobal.__wxConfig = __wxConfig;
 NativeGlobal.BindingObject = NativeGlobal.Watcher;
-WeixinJSCore.invokeHandler = NativeGlobal.invokeHandler;
+//WeixinJSCore.invokeHandler = NativeGlobal.invokeHandler;
 (function(){
 
 let firstTime = true;

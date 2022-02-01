@@ -5,22 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public final View bAi;
-  public int bAj;
-  public boolean py;
+  public final View dtj;
+  public int dtk;
+  public boolean qv;
   
   public c(b paramb)
   {
-    AppMethodBeat.i(237044);
-    this.py = false;
-    this.bAj = 0;
-    this.bAi = ((View)paramb);
-    AppMethodBeat.o(237044);
+    AppMethodBeat.i(208959);
+    this.qv = false;
+    this.dtk = 0;
+    this.dtj = ((View)paramb);
+    AppMethodBeat.o(208959);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.c.c
  * JD-Core Version:    0.7.0.1
  */

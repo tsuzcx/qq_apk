@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.statusbar.DrawStatusBarPreference;
@@ -31,7 +30,7 @@ public class ContactProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactProfileUI
  * JD-Core Version:    0.7.0.1
  */

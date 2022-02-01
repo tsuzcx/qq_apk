@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/a7b" app:layout_constraintDimensionRatio="235:100" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/fh" />
-    <androidx.constraintlayout.widget.Barrier android:id="@id/a78" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="is_" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
-    <include layout="@layout/wv" />
+    <ImageView android:id="@id/ac7" app:layout_constraintDimensionRatio="366:205" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/fk" />
+    <androidx.constraintlayout.widget.Barrier android:id="@id/ac3" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="kr5" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
+    <include layout="@layout/wr" />
+    <ImageView android:id="@id/acg" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/hg" app:layout_constraintBottom_toTopOf="@id/biz_slot_title_neat_tv" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/ac7" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/al6" android:id="@id/acf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:shadowColor="@color/BW_0_Alpha_0_5" android:shadowRadius="10.0" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toBottomOf="@id/acg" />
 </androidx.constraintlayout.widget.ConstraintLayout>

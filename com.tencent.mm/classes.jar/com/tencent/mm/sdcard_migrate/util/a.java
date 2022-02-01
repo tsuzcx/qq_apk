@@ -10,67 +10,67 @@ public final class a
 {
   public static void a(MigrateResultCallback paramMigrateResultCallback, int paramInt)
   {
-    AppMethodBeat.i(191817);
+    AppMethodBeat.i(257184);
     if (paramMigrateResultCallback != null) {
       try
       {
         if (paramMigrateResultCallback.asBinder().isBinderAlive()) {
-          paramMigrateResultCallback.arZ(paramInt);
+          paramMigrateResultCallback.aye(paramInt);
         }
-        AppMethodBeat.o(191817);
+        AppMethodBeat.o(257184);
         return;
       }
-      catch (Throwable paramMigrateResultCallback)
+      finally
       {
-        ExtStorageMigrateMonitor.hsJ().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
+        ExtStorageMigrateMonitor.iSO().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
       }
     }
-    AppMethodBeat.o(191817);
+    AppMethodBeat.o(257184);
   }
   
   public static void a(MigrateResultCallback paramMigrateResultCallback, int paramInt, Throwable paramThrowable)
   {
-    AppMethodBeat.i(191822);
+    AppMethodBeat.i(257196);
     if (paramMigrateResultCallback != null) {
       try
       {
         if (paramMigrateResultCallback.asBinder().isBinderAlive()) {
           paramMigrateResultCallback.b(paramInt, new ExtStorageMigrateException(paramThrowable));
         }
-        AppMethodBeat.o(191822);
+        AppMethodBeat.o(257196);
         return;
       }
-      catch (Throwable paramMigrateResultCallback)
+      finally
       {
-        ExtStorageMigrateMonitor.hsJ().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
+        ExtStorageMigrateMonitor.iSO().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
       }
     }
-    AppMethodBeat.o(191822);
+    AppMethodBeat.o(257196);
   }
   
   public static void b(MigrateResultCallback paramMigrateResultCallback, int paramInt)
   {
-    AppMethodBeat.i(191818);
+    AppMethodBeat.i(257190);
     if (paramMigrateResultCallback != null) {
       try
       {
         if (paramMigrateResultCallback.asBinder().isBinderAlive()) {
-          paramMigrateResultCallback.asa(paramInt);
+          paramMigrateResultCallback.ayf(paramInt);
         }
-        AppMethodBeat.o(191818);
+        AppMethodBeat.o(257190);
         return;
       }
-      catch (Throwable paramMigrateResultCallback)
+      finally
       {
-        ExtStorageMigrateMonitor.hsJ().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
+        ExtStorageMigrateMonitor.iSO().printErrStackTrace("MicroMsg.MigrateResultCallbackHelper", paramMigrateResultCallback, "[-] Exception occurred.", new Object[0]);
       }
     }
-    AppMethodBeat.o(191818);
+    AppMethodBeat.o(257190);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.util.a
  * JD-Core Version:    0.7.0.1
  */

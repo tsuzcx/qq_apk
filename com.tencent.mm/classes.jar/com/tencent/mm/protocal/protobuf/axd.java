@@ -1,76 +1,61 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class axd
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<axc> SID;
-  
-  public axd()
-  {
-    AppMethodBeat.i(229639);
-    this.SID = new LinkedList();
-    AppMethodBeat.o(229639);
-  }
+  public int ZFU;
+  public int fans_count;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(229643);
+    AppMethodBeat.i(168955);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.SID);
-      AppMethodBeat.o(229643);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.fans_count);
+      paramVarArgs.bS(2, this.ZFU);
+      AppMethodBeat.o(168955);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 8, this.SID);
-      AppMethodBeat.o(229643);
-      return paramInt + 0;
+      paramInt = i.a.a.b.b.a.cJ(1, this.fans_count);
+      int i = i.a.a.b.b.a.cJ(2, this.ZFU);
+      AppMethodBeat.o(168955);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.SID.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(229643);
+      AppMethodBeat.o(168955);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       axd localaxd = (axd)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(229643);
+        AppMethodBeat.o(168955);
         return -1;
+      case 1: 
+        localaxd.fans_count = locala.ajGk.aar();
+        AppMethodBeat.o(168955);
+        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        axc localaxc = new axc();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localaxc.parseFrom((byte[])localObject);
-        }
-        localaxd.SID.add(localaxc);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(229643);
+      localaxd.ZFU = locala.ajGk.aar();
+      AppMethodBeat.o(168955);
       return 0;
     }
-    AppMethodBeat.o(229643);
+    AppMethodBeat.o(168955);
     return -1;
   }
 }

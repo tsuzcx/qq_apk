@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ba6" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/tx" android:gravity="center" android:id="@id/ba5" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-</FrameLayout>
+    <com.tencent.mm.plugin.game.ui.GameRankHeadView android:orientation="vertical" android:id="@id/eng" android:background="@drawable/bal" android:layout_width="fill_parent" android:layout_height="190.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/ek7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k" android:src="@drawable/bat" android:scaleType="centerCrop" />
+        <TextView android:textSize="20.0dip" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/ek9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_gravity="center_horizontal" android:id="@id/eju" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/k" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/Link" android:layout_gravity="center_horizontal" android:id="@id/ek8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/g" />
+            <ImageView android:id="@id/emo" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/bag" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.game.ui.GameRankHeadView>
+</LinearLayout>

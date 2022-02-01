@@ -13,8 +13,8 @@ import com.tencent.mm.sdk.system.AndroidContextUtil;
 public class WAGamePageViewContainerLayout
   extends FrameLayout
 {
-  private b cvq;
-  private a cvr;
+  private b eno;
+  private a enp;
   Activity mActivity;
   
   public WAGamePageViewContainerLayout(Context paramContext)
@@ -30,11 +30,11 @@ public class WAGamePageViewContainerLayout
   public WAGamePageViewContainerLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(246898);
-    this.cvq = null;
-    this.cvr = null;
+    AppMethodBeat.i(220150);
+    this.eno = null;
+    this.enp = null;
     this.mActivity = AndroidContextUtil.castActivityOrNull(getContext());
-    AppMethodBeat.o(246898);
+    AppMethodBeat.o(220150);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -49,30 +49,30 @@ public class WAGamePageViewContainerLayout
       {
       default: 
         Log.e("MicroMsg.WAContainerView", "hy: invalid rotate: %d!", new Object[] { Integer.valueOf(paramInt1) });
-        localb = b.cvs;
+        localb = b.enq;
       }
     }
     for (;;)
     {
-      if (this.cvr != null) {
-        this.cvr.a(this.cvq, localb);
+      if (this.enp != null) {
+        this.enp.a(this.eno, localb);
       }
-      this.cvq = localb;
+      this.eno = localb;
       AppMethodBeat.o(130643);
       return;
-      localb = b.cvt;
+      localb = b.enr;
       continue;
-      localb = b.cvu;
+      localb = b.ens;
       continue;
-      localb = b.cvw;
+      localb = b.ent;
       continue;
-      localb = b.cvx;
+      localb = b.enu;
     }
   }
   
   public void setOnConfigurationChangedListener(a parama)
   {
-    this.cvr = parama;
+    this.enp = parama;
   }
   
   public static abstract interface a
@@ -85,12 +85,12 @@ public class WAGamePageViewContainerLayout
     static
     {
       AppMethodBeat.i(130642);
-      cvs = new b("UNDEFINED", 0);
-      cvt = new b("PORTRAIT", 1);
-      cvu = new b("LANDSCAPE", 2);
-      cvw = new b("PORTRAIT_REVERSE", 3);
-      cvx = new b("LANDSCAPE_REVERSE", 4);
-      cvy = new b[] { cvs, cvt, cvu, cvw, cvx };
+      enq = new b("UNDEFINED", 0);
+      enr = new b("PORTRAIT", 1);
+      ens = new b("LANDSCAPE", 2);
+      ent = new b("PORTRAIT_REVERSE", 3);
+      enu = new b("LANDSCAPE_REVERSE", 4);
+      enw = new b[] { enq, enr, ens, ent, enu };
       AppMethodBeat.o(130642);
     }
     
@@ -99,7 +99,7 @@ public class WAGamePageViewContainerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.page.WAGamePageViewContainerLayout
  * JD-Core Version:    0.7.0.1
  */

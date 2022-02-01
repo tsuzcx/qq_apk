@@ -1,98 +1,60 @@
 package kotlin.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.an;
-import kotlin.l.b.a.b.e.a.b;
-import kotlin.l.b.a.b.e.b.a;
-import kotlin.l.b.a.b.e.b.c;
+import java.util.Set;
+import kotlin.a.ar;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.a.k.a;
+import kotlin.l.b.a.b.b.e;
+import kotlin.l.b.a.b.f.d;
+import kotlin.l.b.a.b.l.m;
 
 public final class h
 {
-  final c aaCB;
-  final a.b abnd;
-  final a abne;
-  final an abnf;
+  public static final h.b ajlP;
+  private static final Set<kotlin.l.b.a.b.f.b> ajlR;
+  private final j aiWx;
+  private final kotlin.g.a.b<h.a, e> ajlQ;
   
-  public h(c paramc, a.b paramb, a parama, an paraman)
+  static
   {
-    AppMethodBeat.i(60288);
-    this.aaCB = paramc;
-    this.abnd = paramb;
-    this.abne = parama;
-    this.abnf = paraman;
-    AppMethodBeat.o(60288);
+    AppMethodBeat.i(60299);
+    ajlP = new h.b((byte)0);
+    ajlR = ar.setOf(kotlin.l.b.a.b.f.b.s(k.a.aiCA.kxX()));
+    AppMethodBeat.o(60299);
   }
   
-  public final boolean equals(Object paramObject)
+  public h(j paramj)
   {
-    AppMethodBeat.i(60291);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof h))
-      {
-        paramObject = (h)paramObject;
-        if ((!p.h(this.aaCB, paramObject.aaCB)) || (!p.h(this.abnd, paramObject.abnd)) || (!p.h(this.abne, paramObject.abne)) || (!p.h(this.abnf, paramObject.abnf))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(60291);
-      return true;
-    }
-    AppMethodBeat.o(60291);
-    return false;
+    AppMethodBeat.i(60298);
+    this.aiWx = paramj;
+    this.ajlQ = ((kotlin.g.a.b)this.aiWx.aiBu.be((kotlin.g.a.b)new c(this)));
+    AppMethodBeat.o(60298);
   }
   
-  public final int hashCode()
+  public final e a(kotlin.l.b.a.b.f.b paramb, f paramf)
   {
-    int m = 0;
-    AppMethodBeat.i(60290);
-    Object localObject = this.aaCB;
-    int i;
-    int j;
-    if (localObject != null)
-    {
-      i = localObject.hashCode();
-      localObject = this.abnd;
-      if (localObject == null) {
-        break label105;
-      }
-      j = localObject.hashCode();
-      label42:
-      localObject = this.abne;
-      if (localObject == null) {
-        break label110;
-      }
-    }
-    label105:
-    label110:
-    for (int k = localObject.hashCode();; k = 0)
-    {
-      localObject = this.abnf;
-      if (localObject != null) {
-        m = localObject.hashCode();
-      }
-      AppMethodBeat.o(60290);
-      return (k + (j + i * 31) * 31) * 31 + m;
-      i = 0;
-      break;
-      j = 0;
-      break label42;
-    }
+    AppMethodBeat.i(60296);
+    s.u(paramb, "classId");
+    paramb = (e)this.ajlQ.invoke(new h.a(paramb, paramf));
+    AppMethodBeat.o(60296);
+    return paramb;
   }
   
-  public final String toString()
+  static final class c
+    extends u
+    implements kotlin.g.a.b<h.a, e>
   {
-    AppMethodBeat.i(60289);
-    String str = "ClassData(nameResolver=" + this.aaCB + ", classProto=" + this.abnd + ", metadataVersion=" + this.abne + ", sourceElement=" + this.abnf + ")";
-    AppMethodBeat.o(60289);
-    return str;
+    c(h paramh)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.hld.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class WelabHldInfoUI$b
-  extends q
+  extends u
   implements a<Integer>
 {
-  public static final b DGF;
+  public static final b Jyc;
   
   static
   {
-    AppMethodBeat.i(213901);
-    DGF = new b();
-    AppMethodBeat.o(213901);
+    AppMethodBeat.i(312222);
+    Jyc = new b();
+    AppMethodBeat.o(312222);
   }
   
   WelabHldInfoUI$b()

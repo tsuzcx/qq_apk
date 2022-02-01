@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.topstory.a.h;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.topstory.a.g;
 import com.tencent.mm.plugin.topstory.ui.c.c;
 import com.tencent.mm.plugin.topstory.ui.c.e;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
-import com.tencent.mm.protocal.protobuf.aci;
-import com.tencent.mm.protocal.protobuf.esk;
-import com.tencent.mm.protocal.protobuf.esl;
+import com.tencent.mm.protocal.protobuf.aem;
+import com.tencent.mm.protocal.protobuf.fnt;
+import com.tencent.mm.protocal.protobuf.fnu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -20,80 +23,93 @@ import org.json.JSONArray;
 
 public class d
 {
-  boolean Dqn;
-  private esk MYt;
-  private c MYu;
-  private WebSearchWebView MYv;
-  private e MYw;
-  public HashMap<Integer, esl> MYx;
-  public HashMap<Integer, String> MYy;
+  boolean JjV;
+  private fnt TLc;
+  private c TLd;
+  private WebSearchWebView TLe;
+  private e TLf;
+  public HashMap<Integer, fnu> TLg;
+  public HashMap<Integer, String> TLh;
   
   public d()
   {
     AppMethodBeat.i(126060);
-    this.Dqn = false;
-    this.MYx = new HashMap();
-    this.MYy = new HashMap();
+    this.JjV = false;
+    this.TLg = new HashMap();
+    this.TLh = new HashMap();
     AppMethodBeat.o(126060);
   }
   
-  private String a(esk paramesk, int paramInt, boolean paramBoolean, String paramString)
+  private String a(fnt paramfnt, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(206843);
+    AppMethodBeat.i(126063);
     String str = "";
     Object localObject;
-    if (this.MYx.containsKey(Integer.valueOf(paramInt)))
+    if (this.TLg.containsKey(Integer.valueOf(paramInt)))
     {
-      localObject = (esl)this.MYx.get(Integer.valueOf(paramInt));
-      Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((esl)localObject).Uuj), Integer.valueOf(((esl)localObject).TZU), Integer.valueOf(((esl)localObject).Uuk), Long.valueOf(System.currentTimeMillis()) });
-      if (((esl)localObject).Uuj + ((esl)localObject).TZU * 1000 > System.currentTimeMillis())
+      localObject = (fnu)this.TLg.get(Integer.valueOf(paramInt));
+      Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((fnu)localObject).abNM), Integer.valueOf(((fnu)localObject).abqR), Integer.valueOf(((fnu)localObject).abNN), Long.valueOf(cn.bDw()) });
+      if (((fnu)localObject).abNM + ((fnu)localObject).abqR * 1000 > cn.bDw())
       {
-        this.MYu.grU();
+        this.TLd.hOV();
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Auto Refresh");
-        localObject = ((esl)localObject).lpy;
+        localObject = ((fnu)localObject).nUB;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(206843);
+      AppMethodBeat.o(126063);
       return localObject;
-      if (((esl)localObject).Uuj + ((esl)localObject).Uuk * 1000 > System.currentTimeMillis())
+      if (((fnu)localObject).abNM + ((fnu)localObject).abNN * 1000 > cn.bDw())
       {
-        this.MYu.grU();
+        this.TLd.hOV();
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData Need Auto Refresh");
-        str = ((esl)localObject).lpy;
+        str = ((fnu)localObject).nUB;
       }
       for (;;)
       {
-        paramesk.Uuh.addAll(((esl)localObject).TZW);
+        paramfnt.abNH.addAll(((fnu)localObject).abqT);
+        localObject = i.agtt;
+        paramInt = i.a(b.a.agqN, 0);
         localObject = str;
-        if (!paramBoolean) {
+        if (paramInt == 1) {
           break;
         }
-        this.MYu.a(paramesk, false, false, 0, paramString);
+        if (paramInt != 2) {
+          break label263;
+        }
+        this.TLd.a(paramfnt, false, false, 0);
         localObject = str;
         break;
-        this.MYu.grU();
+        this.TLd.hOV();
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Show CacheData");
       }
-      this.MYu.grU();
+      label263:
       localObject = str;
       if (paramBoolean)
       {
-        this.MYu.a(paramesk, false, false, 0, paramString);
+        this.TLd.a(paramfnt, false, false, 0);
         localObject = str;
+        continue;
+        this.TLd.hOV();
+        localObject = str;
+        if (paramBoolean)
+        {
+          this.TLd.a(paramfnt, false, false, 0);
+          localObject = str;
+        }
       }
     }
   }
   
-  private boolean gqt()
+  private boolean hNs()
   {
     AppMethodBeat.i(126064);
-    if (this.MYx.containsKey(Integer.valueOf(100)))
+    if (this.TLg.containsKey(Integer.valueOf(100)))
     {
-      esl localesl = (esl)this.MYx.get(Integer.valueOf(100));
-      long l = localesl.Uuj;
-      if (localesl.TZU * 1000 + l > System.currentTimeMillis())
+      fnu localfnu = (fnu)this.TLg.get(Integer.valueOf(100));
+      long l = localfnu.abNM;
+      if (localfnu.abqR * 1000 + l > cn.bDw())
       {
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache false");
         AppMethodBeat.o(126064);
@@ -105,84 +121,64 @@ public class d
     return true;
   }
   
-  public final void a(esk paramesk, boolean paramBoolean, String paramString)
+  public final void a(fnt paramfnt, boolean paramBoolean, LinkedList<aem> paramLinkedList)
   {
-    AppMethodBeat.i(206838);
-    a(paramesk, paramBoolean, paramString, null);
-    AppMethodBeat.o(206838);
-  }
-  
-  public final void a(esk paramesk, boolean paramBoolean, String paramString, LinkedList<aci> paramLinkedList)
-  {
-    AppMethodBeat.i(206842);
+    AppMethodBeat.i(271780);
     int i;
-    if (!this.Dqn)
+    if (!this.JjV)
     {
-      this.Dqn = true;
-      com.tencent.mm.plugin.topstory.ui.d.c(paramesk, "startCreateWB", System.currentTimeMillis());
-      this.MYt = paramesk;
-      this.MYu = new c();
-      if (paramesk.channelId > 0) {
-        break label256;
+      this.JjV = true;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramfnt, "startCreateWB", cn.bDw());
+      this.TLc = paramfnt;
+      this.TLd = new c();
+      if (paramfnt.channelId > 0) {
+        break label251;
       }
       i = 100;
-      paramString = a(paramesk, i, paramBoolean, paramString);
-      this.MYv = new WebSearchWebView(MMApplicationContext.getContext());
+      String str = a(paramfnt, i, paramBoolean);
+      this.TLe = new WebSearchWebView(MMApplicationContext.getContext());
       com.tencent.mm.plugin.topstory.ui.c.b localb = new com.tencent.mm.plugin.topstory.ui.c.b();
-      com.tencent.mm.plugin.topstory.ui.c.d locald = new com.tencent.mm.plugin.topstory.ui.c.d(paramesk, this.MYu);
-      this.MYw = new e(this.MYv, paramesk, this.MYu, paramLinkedList);
-      this.MYv.a(localb, locald);
-      this.MYv.addJavascriptInterface(this.MYw, "topStoryJSApi");
-      if (this.MYu.Ndb == null) {
-        break label265;
+      com.tencent.mm.plugin.topstory.ui.c.d locald = new com.tencent.mm.plugin.topstory.ui.c.d(paramfnt);
+      this.TLf = new e(this.TLe, paramfnt, this.TLd, paramLinkedList);
+      this.TLe.a(localb, locald);
+      this.TLe.addJavascriptInterface(this.TLf, "topStoryJSApi");
+      if (this.TLd.TPM == null) {
+        break label260;
       }
-      paramLinkedList = (String)this.MYy.get(Integer.valueOf(i));
-      this.MYu.C(paramString, paramLinkedList, gqt());
-      this.MYv.loadDataWithBaseURL(paramesk.url, new String(this.MYu.Ndb), "text/html", "utf-8", null);
-      this.MYu.Ndb = null;
-      com.tencent.mm.plugin.topstory.ui.d.c(paramesk, "endCreateWBWithLoadData", System.currentTimeMillis());
+      paramLinkedList = (String)this.TLh.get(Integer.valueOf(i));
+      this.TLd.I(str, paramLinkedList, hNs());
+      this.TLe.loadDataWithBaseURL(paramfnt.url, new String(this.TLd.TPM), "text/html", "utf-8", null);
+      this.TLd.TPM = null;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramfnt, "endCreateWBWithLoadData", cn.bDw());
     }
     for (;;)
     {
-      if (100 == i) {
-        this.MYw.bfg("");
+      if (g.aoK(i)) {
+        this.TLf.beD("");
       }
-      AppMethodBeat.o(206842);
+      AppMethodBeat.o(271780);
       return;
-      label256:
-      i = paramesk.channelId;
+      label251:
+      i = paramfnt.channelId;
       break;
-      label265:
-      this.MYv.loadUrl(paramesk.url);
-      com.tencent.mm.plugin.topstory.ui.d.c(paramesk, "endCreateWBWithLoadURL", System.currentTimeMillis());
+      label260:
+      this.TLe.loadUrl(paramfnt.url);
+      com.tencent.mm.plugin.topstory.ui.d.c(paramfnt, "endCreateWBWithLoadURL", cn.bDw());
     }
   }
   
-  public final void b(b paramb)
-  {
-    AppMethodBeat.i(126062);
-    Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
-    paramb.a(this.MYu, this.MYv, this.MYw, this.MYt);
-    this.MYu = null;
-    this.MYv = null;
-    this.MYw = null;
-    this.MYt = null;
-    this.Dqn = false;
-    AppMethodBeat.o(126062);
-  }
-  
-  public final void cD(int paramInt, String paramString)
+  public final void ds(int paramInt, String paramString)
   {
     AppMethodBeat.i(126065);
-    this.MYy.put(Integer.valueOf(paramInt), paramString);
+    this.TLh.put(Integer.valueOf(paramInt), paramString);
     try
     {
       paramString = paramString.getBytes("utf-8");
-      q localq = new q(h.gpO());
-      if (!localq.ifE()) {
-        localq.ifL();
+      u localu = new u(g.hMK());
+      if (!localu.jKS()) {
+        localu.jKY();
       }
-      u.H(h.gpO() + paramInt, paramString);
+      y.f(g.hMK() + paramInt, paramString, paramString.length);
       Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putNegDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramString.length) });
       AppMethodBeat.o(126065);
       return;
@@ -195,7 +191,7 @@ public class d
   }
   
   /* Error */
-  public final void cE(final int paramInt, final String paramString)
+  public final void dt(final int paramInt, final String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -249,6 +245,19 @@ public class d
     //   from	to	target	type
     //   2	21	72	finally
     //   24	69	72	finally
+  }
+  
+  public final void n(b paramb)
+  {
+    AppMethodBeat.i(126062);
+    Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
+    paramb.a(this.TLd, this.TLe, this.TLf, this.TLc);
+    this.TLd = null;
+    this.TLe = null;
+    this.TLf = null;
+    this.TLc = null;
+    this.JjV = false;
+    AppMethodBeat.o(126062);
   }
 }
 

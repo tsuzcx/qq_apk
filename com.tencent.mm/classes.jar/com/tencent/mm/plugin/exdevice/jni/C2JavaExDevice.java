@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.jni;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.model.j;
+import com.tencent.mm.plugin.exdevice.model.l;
 import com.tencent.mm.plugin.exdevice.service.a;
 import com.tencent.mm.plugin.exdevice.service.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -50,7 +50,7 @@ public final class C2JavaExDevice
   {
     AppMethodBeat.i(23186);
     Log.v("MicroMsg.exdevice.C2JavaExDevice", "onAirKissCallback(errType : %d, errCode : %d)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    j.cZo().h(0, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    l.dFF().i(0, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(23186);
   }
   
@@ -68,7 +68,7 @@ public final class C2JavaExDevice
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.i("MicroMsg.exdevice.C2JavaExDevice", "onReceiveWCLanDeviceDiscPackage, dataLen(%d).", new Object[] { Integer.valueOf(i) });
-      j.cZo().h(10, new Object[] { paramArrayOfByte });
+      l.dFF().i(10, new Object[] { paramArrayOfByte });
       AppMethodBeat.o(23187);
       return;
     }
@@ -81,7 +81,7 @@ public final class C2JavaExDevice
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.i("MicroMsg.exdevice.C2JavaExDevice", "onReceiveWCLanDeviceProfile, data(%d).", new Object[] { Integer.valueOf(i) });
-      j.cZo().h(14, new Object[] { paramArrayOfByte });
+      l.dFF().i(14, new Object[] { paramArrayOfByte });
       AppMethodBeat.o(23191);
       return;
     }
@@ -91,7 +91,7 @@ public final class C2JavaExDevice
   {
     AppMethodBeat.i(23190);
     Log.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanDeviceConnectStateNotify, devclassinfo(%s), stateCode(%d).", new Object[] { paramString, Integer.valueOf(paramInt) });
-    j.cZo().h(13, new Object[] { paramString, Integer.valueOf(paramInt) });
+    l.dFF().i(13, new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(23190);
   }
   
@@ -99,7 +99,7 @@ public final class C2JavaExDevice
   {
     AppMethodBeat.i(23188);
     Log.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanDeviceUdpError, errCode(%d).", new Object[] { Integer.valueOf(paramInt) });
-    j.cZo().h(11, new Object[] { Integer.valueOf(paramInt) });
+    l.dFF().i(11, new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(23188);
   }
   
@@ -110,7 +110,7 @@ public final class C2JavaExDevice
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanFileTransferUpdate, cmdId(%d), data(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      j.cZo().h(15, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
+      l.dFF().i(15, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
       AppMethodBeat.o(23192);
       return;
     }
@@ -123,7 +123,7 @@ public final class C2JavaExDevice
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanReceiveNotify, devclassinfo(%s), data(%d).", new Object[] { paramString, Integer.valueOf(i) });
-      j.cZo().h(16, new Object[] { paramString, paramArrayOfByte });
+      l.dFF().i(16, new Object[] { paramString, paramArrayOfByte });
       AppMethodBeat.o(23193);
       return;
     }
@@ -136,7 +136,7 @@ public final class C2JavaExDevice
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.i("MicroMsg.exdevice.C2JavaExDevice", "onWCLanReceiveResponse, cmdId(%d), data(%d).", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      j.cZo().h(12, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
+      l.dFF().i(12, new Object[] { Integer.valueOf(paramInt), paramArrayOfByte });
       AppMethodBeat.o(23189);
       return;
     }
@@ -152,7 +152,7 @@ public final class C2JavaExDevice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.jni.C2JavaExDevice
  * JD-Core Version:    0.7.0.1
  */

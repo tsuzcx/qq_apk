@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference mm:key="more_tab_setting_personal_info" mm:layout="@layout/bbk" mm:title="@string/gsc" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="@raw/icons_outlined_wechatpay" mm:iconColor="@color/Brand" mm:key="settings_mm_wallet" mm:path="pay" mm:title="@string/gqd" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:icon="?gd" mm:key="settings_mm_favorite" mm:title="@string/gqb" />
-    <NormalIconPreference mm:icon="@raw/icons_outlined_album" mm:iconColor="@color/Indigo" mm:key="settings_my_album" mm:title="@string/gra" />
-    <NormalIconTipPreference mm:icon="@raw/icons_outlined_play" mm:iconColor="@color/Orange" mm:key="settings_my_finder_album" mm:title="@string/gr9" />
-    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="?gc" mm:key="settings_mm_cardpackage" mm:path="card" mm:title="@string/gq_" />
-    <NormalIconPreference mm:icon="@raw/icons_outlined_emoji" mm:iconColor="@color/Orange" mm:key="settings_emoji_store" mm:title="@string/goh" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="@raw/icons_outlined_setting" mm:iconColor="@color/Indigo" mm:key="more_setting" mm:path="setting" mm:title="@string/gvb" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:icon="@raw/more_ui_show" mm:key="more_uishow" mm:title="@string/hrv" />
-    <PreferenceCategory />
-    <Preference mm:key="settings_privacy_agreements" mm:layout="@layout/b_c" />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

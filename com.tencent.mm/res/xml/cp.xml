@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <Preference mm:key="settings_sex" mm:layout="@layout/b8j" mm:title="@string/gts" />
-    <Preference mm:key="settings_district" mm:layout="@layout/b8j" mm:title="@string/go_" />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference mm:key="settings_signature" mm:layout="@layout/b8j" mm:title="@string/gu0" />
-    <PreferenceSmallCategory />
-    <Preference mm:key="settings_linkedin" mm:layout="@layout/b8j" mm:title="@string/gpo" />
-    <PreferenceSmallCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <IconPreference newtip:key="settings_dark" newtip:layout="@layout/bdi" newtip:title="@string/iri" />
+    <PreferenceSmallCategory newtip:key="small_divider" />
+    <CheckBoxPreference newtip:defaultValue="false" newtip:key="settings_landscape_mode" newtip:title="@string/it3" />
+    <CheckBoxPreference newtip:defaultValue="false" newtip:key="settings_nfc_switch" newtip:title="@string/ivt" />
+    <Preference newtip:key="settings_silence_update_mode" newtip:layout="@layout/bdi" newtip:title="@string/iyx" />
+    <Preference newtip:key="settings_language" newtip:layout="@layout/bdi" newtip:title="@string/it4" />
+    <Preference newtip:key="settings_text_size" newtip:layout="@layout/bdi" newtip:title="@string/j0t" />
+    <Preference newtip:key="settings_take_photo" newtip:layout="@layout/bdi" newtip:title="@string/iwk" />
+    <Preference newtip:key="settings_manage_findmoreui" newtip:layout="@layout/bdi" newtip:title="@string/itl" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_plugins" newtip:path="wechattools" newtip:title="@string/iws" />
+    <Preference newtip:key="settings_traffic_statistic" newtip:layout="@layout/bdi" newtip:title="@string/j0z" />
+    <Preference newtip:key="settngs_clean" newtip:layout="@layout/bdi" newtip:title="@string/ivg" />
+    <Preference newtip:key="settngs_matrix_trace" newtip:layout="@layout/bdi" newtip:title="@string/itt" />
+    <PreferenceCategory />
 </PreferenceScreen>

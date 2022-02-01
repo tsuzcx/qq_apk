@@ -9,9 +9,9 @@ import java.util.concurrent.Future;
 
 public final class d
 {
-  private static volatile d QLA;
+  private static volatile d XEZ;
   private static Object lock;
-  HashMap<String, c> QLB;
+  HashMap<String, c> XFa;
   
   static
   {
@@ -23,20 +23,20 @@ public final class d
   private d()
   {
     AppMethodBeat.i(110598);
-    this.QLB = new HashMap();
+    this.XFa = new HashMap();
     AppMethodBeat.o(110598);
   }
   
-  public static d heC()
+  public static d iFk()
   {
     AppMethodBeat.i(110597);
-    if (QLA == null) {}
+    if (XEZ == null) {}
     synchronized (lock)
     {
-      if (QLA == null) {
-        QLA = new d();
+      if (XEZ == null) {
+        XEZ = new d();
       }
-      ??? = QLA;
+      ??? = XEZ;
       AppMethodBeat.o(110597);
       return ???;
     }
@@ -45,14 +45,14 @@ public final class d
   boolean a(c paramc)
   {
     AppMethodBeat.i(110600);
-    if (this.QLB.containsKey(paramc.QLs.QLQ))
+    if (this.XFa.containsKey(paramc.XER.XFp))
     {
-      paramc.QLx = true;
+      paramc.XEW = true;
       for (;;)
       {
         try
         {
-          HttpURLConnection localHttpURLConnection = paramc.QLt;
+          HttpURLConnection localHttpURLConnection = paramc.XES;
           if (localHttpURLConnection == null) {}
         }
         catch (Exception localException2)
@@ -62,12 +62,12 @@ public final class d
         }
         try
         {
-          paramc.QLt.getInputStream().close();
-          paramc.QLt.disconnect();
-          if (paramc.mBs != null) {
-            paramc.mBs.cancel(false);
+          paramc.XES.getInputStream().close();
+          paramc.XES.disconnect();
+          if (paramc.PL != null) {
+            paramc.PL.cancel(false);
           }
-          this.QLB.remove(paramc.QLs.QLQ);
+          this.XFa.remove(paramc.XER.XFp);
           AppMethodBeat.o(110600);
           return true;
         }
@@ -81,11 +81,11 @@ public final class d
     return false;
   }
   
-  public final boolean bov(String paramString)
+  public final boolean boj(String paramString)
   {
     AppMethodBeat.i(110599);
-    if (this.QLB.containsKey(paramString)) {
-      this.QLB.remove(paramString);
+    if (this.XFa.containsKey(paramString)) {
+      this.XFa.remove(paramString);
     }
     AppMethodBeat.o(110599);
     return true;

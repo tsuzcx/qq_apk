@@ -18,7 +18,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ZoneSelectOtherCountryPreference
   extends Preference
 {
-  a XVH;
+  a afLW;
   String text;
   
   public ZoneSelectOtherCountryPreference(Context paramContext)
@@ -43,7 +43,7 @@ public class ZoneSelectOtherCountryPreference
   {
     AppMethodBeat.i(39219);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(R.h.zonename);
+    TextView localTextView = (TextView)paramView.findViewById(R.h.gdT);
     if (!Util.isNullOrNil(this.text)) {
       localTextView.setText(this.text);
     }
@@ -53,8 +53,8 @@ public class ZoneSelectOtherCountryPreference
       {
         AppMethodBeat.i(39216);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/ui/tools/ZoneSelectOtherCountryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/ui/tools/ZoneSelectOtherCountryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (ZoneSelectOtherCountryPreference.a(ZoneSelectOtherCountryPreference.this) != null) {
           ZoneSelectOtherCountryPreference.a(ZoneSelectOtherCountryPreference.this).onClick();
         }
@@ -72,7 +72,7 @@ public class ZoneSelectOtherCountryPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eja, localViewGroup);
+    localLayoutInflater.inflate(R.i.gma, localViewGroup);
     AppMethodBeat.o(39218);
     return paramViewGroup;
   }
@@ -84,7 +84,7 @@ public class ZoneSelectOtherCountryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZoneSelectOtherCountryPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class e
   extends Preference
 {
-  public String GJK;
+  public String MGz;
   public View.OnClickListener mOnClickListener;
   private View mView;
   
@@ -27,7 +27,7 @@ public final class e
     AppMethodBeat.o(66811);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66812);
     if (this.mView == null) {
@@ -44,14 +44,14 @@ public final class e
     AppMethodBeat.i(66813);
     super.onBindView(paramView);
     paramView = (TextView)paramView.findViewById(a.f.mall_order_button_pref_btn);
-    paramView.setText(this.GJK);
+    paramView.setText(this.MGz);
     paramView.setOnClickListener(this.mOnClickListener);
     AppMethodBeat.o(66813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

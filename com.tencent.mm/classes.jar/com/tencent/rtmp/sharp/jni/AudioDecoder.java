@@ -4,8 +4,8 @@ import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import android.os.Build.VERSION;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -26,8 +26,8 @@ public class AudioDecoder
   private MediaExtractor mediaExtractor = null;
   int nFirstThreeFrameInfo = 3;
   int nFrameSize = 3840;
-  private OnCompleteListener onCompleteListener = null;
-  private OnProgressListener onProgressListener = null;
+  private AudioDecoder.OnCompleteListener onCompleteListener = null;
+  private AudioDecoder.OnProgressListener onProgressListener = null;
   int sampleRate = 0;
   private String srcPath;
   
@@ -133,7 +133,7 @@ public class AudioDecoder
       AppMethodBeat.o(13906);
       return;
     }
-    int j = Build.VERSION.SDK_INT;
+    int j = TXCBuild.VersionInt();
     int k;
     if (j >= 21)
     {
@@ -329,29 +329,19 @@ public class AudioDecoder
     this.m_nIndex = paramInt;
   }
   
-  public void setOnCompleteListener(OnCompleteListener paramOnCompleteListener)
+  public void setOnCompleteListener(AudioDecoder.OnCompleteListener paramOnCompleteListener)
   {
     this.onCompleteListener = paramOnCompleteListener;
   }
   
-  public void setOnProgressListener(OnProgressListener paramOnProgressListener)
+  public void setOnProgressListener(AudioDecoder.OnProgressListener paramOnProgressListener)
   {
     this.onProgressListener = paramOnProgressListener;
-  }
-  
-  public static abstract interface OnCompleteListener
-  {
-    public abstract void completed();
-  }
-  
-  public static abstract interface OnProgressListener
-  {
-    public abstract void progress();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

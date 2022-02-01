@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -8,18 +7,18 @@ import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ad;
+import com.tencent.xweb.ag;
 
 public class WebViewTestUI
   extends MMActivity
 {
-  MMWebViewWithJsApi QeO;
-  private ad quf;
+  MMWebViewWithJsApi WWM;
+  private ag tyV;
   
   public WebViewTestUI()
   {
     AppMethodBeat.i(80040);
-    this.quf = new ad()
+    this.tyV = new ag()
     {
       public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -41,10 +40,10 @@ public class WebViewTestUI
     AppMethodBeat.i(80041);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("rawUrl");
-    this.QeO = MMWebViewWithJsApi.a.jd(this);
-    this.QeO.setWebViewClient(this.quf);
-    setContentView(this.QeO);
-    this.QeO.loadUrl(paramBundle);
+    this.WWM = MMWebViewWithJsApi.a.ld(this);
+    this.WWM.setWebViewClient(this.tyV);
+    setContentView(this.WWM);
+    this.WWM.loadUrl(paramBundle);
     AppMethodBeat.o(80041);
   }
   

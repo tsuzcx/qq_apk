@@ -2,88 +2,82 @@ package com.tencent.mm.plugin.finder.nearby.base;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.nearby.report.e;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.nearby.report.g;
 import com.tencent.mm.plugin.finder.ui.fragment.MMFinderFragment;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.component.UIComponentFragment;
-import java.util.HashMap;
-import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/MMFinderFragment;", "()V", "tabType", "", "(I)V", "titleId", "(II)V", "title", "", "(Ljava/lang/String;I)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "clickSubTabContextId", "clickTabId", "getTabType", "()I", "setTabType", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "getTitleId", "setTitleId", "getClickSubTabContextId", "getClickSubTabId", "getClickTabId", "getCommentScene", "getPageName", "getReportType", "onActionbarClick", "", "onActionbarDoubleClick", "onBackPressed", "", "onCreateView", "Landroid/view/View;", "inflater", "Landroid/view/LayoutInflater;", "container", "Landroid/view/ViewGroup;", "savedInstanceState", "onMenuClick", "onResume", "onUserVisibleUnFocused", "onViewCreated", "view", "setClickSubTabContextId", "setClickTabId", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/MMFinderFragment;", "()V", "tabType", "", "(I)V", "titleId", "(II)V", "title", "", "(Ljava/lang/String;I)V", "args", "Landroid/os/Bundle;", "getArgs", "()Landroid/os/Bundle;", "setArgs", "(Landroid/os/Bundle;)V", "clickSubTabContextId", "clickTabId", "getTabType", "()I", "setTabType", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "getTitleId", "setTitleId", "getClickSubTabContextId", "getClickSubTabId", "getClickTabId", "getCommentScene", "getPageName", "getReportType", "isNeedSwitchTabOnResume", "", "onActionbarClick", "", "onActionbarDoubleClick", "onBackPressed", "onMenuClick", "onResume", "onUserVisibleUnFocused", "setClickSubTabContextId", "setClickTabId", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class AbsNearByFragment
   extends MMFinderFragment
 {
-  private HashMap _$_findViewCache;
-  public int fEH;
+  private String DnS = "";
+  public int EHx;
+  public Bundle EHy;
+  private String EHz = "";
+  public int hJx;
   public String title = "";
-  public String yAU = "";
-  public int zDq;
-  public Bundle zDr;
-  private String zDs = "";
   
   public AbsNearByFragment()
   {
     this.title = "";
-    this.fEH = -1;
+    this.hJx = -1;
   }
   
   public AbsNearByFragment(int paramInt1, int paramInt2)
   {
-    this.zDq = paramInt1;
-    this.fEH = paramInt2;
+    this.EHx = paramInt1;
+    this.hJx = paramInt2;
   }
   
-  public void _$_clearFindViewByIdCache()
+  public final void ayW(String paramString)
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
+    s.u(paramString, "clickTabId");
+    this.EHz = paramString;
   }
   
-  public final void aDy(String paramString)
+  public final void ayX(String paramString)
   {
-    p.k(paramString, "clickTabId");
-    this.zDs = paramString;
+    s.u(paramString, "clickSubTabContextId");
+    this.DnS = paramString;
   }
   
-  public final String aiS()
+  public void eEp() {}
+  
+  public void eEq() {}
+  
+  public void eEr() {}
+  
+  public boolean eEs()
   {
-    if ((TextUtils.isEmpty((CharSequence)this.yAU)) && (!TextUtils.isEmpty((CharSequence)dLw()))) {
-      this.yAU = (dLw() + "-" + cm.bfE());
-    }
-    return this.yAU;
+    return true;
   }
   
-  public String akA()
+  public String eEt()
   {
-    return "1001";
+    return this.EHz;
   }
   
-  public void dLs() {}
-  
-  public void dLt() {}
-  
-  public void dLu() {}
-  
-  public String dLv()
-  {
-    return this.zDs;
-  }
-  
-  public String dLw()
+  public String eEu()
   {
     return "";
   }
   
-  public int duR()
+  public final String eEv()
+  {
+    if ((TextUtils.isEmpty((CharSequence)this.DnS)) && (!TextUtils.isEmpty((CharSequence)eEu()))) {
+      this.DnS = (eEu() + '-' + cn.bDw());
+    }
+    return this.DnS;
+  }
+  
+  public String eEw()
+  {
+    return "1001";
+  }
+  
+  public int edC()
   {
     return 3;
   }
@@ -93,52 +87,25 @@ public abstract class AbsNearByFragment
     return 0;
   }
   
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
-  {
-    p.k(paramLayoutInflater, "inflater");
-    if (getRootView() == null)
-    {
-      paramLayoutInflater = ad.kS(getContext()).inflate(getLayoutId(), paramViewGroup, false);
-      Log.i("MicroMsg.UIComponentFragment", "[onCreateView] " + getClass().getSimpleName() + '@' + hashCode() + " uiComponents=" + this.uiComponents);
-      paramViewGroup = ((Iterable)this.uiComponents).iterator();
-      while (paramViewGroup.hasNext())
-      {
-        paramBundle = (UIComponent)paramViewGroup.next();
-        p.j(paramLayoutInflater, "view");
-        paramBundle.setRootView(paramLayoutInflater);
-      }
-      setRootView(paramLayoutInflater);
-      hUd();
-    }
-    return getRootView();
-  }
-  
   public void onResume()
   {
-    e locale = e.zJs;
-    e.d(this);
+    if (eEs())
+    {
+      g localg = g.ERj;
+      g.d(this);
+    }
     super.onResume();
   }
   
   public void onUserVisibleUnFocused()
   {
     super.onUserVisibleUnFocused();
-    this.zDr = null;
-  }
-  
-  public void onViewCreated(View paramView, Bundle paramBundle)
-  {
-    p.k(paramView, "view");
-    super.onViewCreated(paramView, paramBundle);
-    paramView = ((Iterable)this.uiComponents).iterator();
-    while (paramView.hasNext()) {
-      ((UIComponent)paramView.next()).onCreateBefore(paramBundle);
-    }
+    this.EHy = null;
   }
   
   public final void setTitle(String paramString)
   {
-    p.k(paramString, "<set-?>");
+    s.u(paramString, "<set-?>");
     this.title = paramString;
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 public abstract interface b$a<T>
 {
-  public abstract void a(boolean paramBoolean, T paramT1, T paramT2, T paramT3);
+  public abstract void onResult(boolean paramBoolean, T paramT1, T paramT2, T paramT3);
 }
 
 

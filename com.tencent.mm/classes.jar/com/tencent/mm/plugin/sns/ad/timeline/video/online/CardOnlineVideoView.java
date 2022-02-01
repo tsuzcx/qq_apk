@@ -3,62 +3,62 @@ package com.tencent.mm.plugin.sns.ad.timeline.video.online;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.b.f;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
-import com.tencent.mm.plugin.sns.ui.ap;
+import com.tencent.mm.plugin.sns.ui.aq;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.h;
 
 public class CardOnlineVideoView
   extends OnlineVideoView
 {
-  private View JLf;
+  private View QcO;
   private String cY;
   private volatile int mState;
   
   public CardOnlineVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(260414);
+    AppMethodBeat.i(310964);
     this.mState = 0;
     init();
-    AppMethodBeat.o(260414);
+    AppMethodBeat.o(310964);
   }
   
   public CardOnlineVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(260417);
+    AppMethodBeat.i(310971);
     this.mState = 0;
     init();
-    AppMethodBeat.o(260417);
+    AppMethodBeat.o(310971);
   }
   
-  private void fLI()
+  private void hce()
   {
-    AppMethodBeat.i(260421);
-    if (this.JLf != null) {
-      this.JLf.setVisibility(4);
+    AppMethodBeat.i(310984);
+    if (this.QcO != null) {
+      this.QcO.setVisibility(4);
     }
-    AppMethodBeat.o(260421);
+    AppMethodBeat.o(310984);
   }
   
   private void init()
   {
-    AppMethodBeat.i(260419);
-    this.JLf = findViewById(i.f.videoview_play_btn);
-    AppMethodBeat.o(260419);
+    AppMethodBeat.i(310980);
+    this.QcO = findViewById(b.f.videoview_play_btn);
+    AppMethodBeat.o(310980);
   }
   
-  public final void fLJ()
+  public final void bcl()
   {
-    AppMethodBeat.i(260424);
+    AppMethodBeat.i(310998);
     this.mState = 1;
-    super.fLJ();
-    fLI();
-    gA(true);
-    AppMethodBeat.o(260424);
+    super.bcl();
+    hce();
+    ho(true);
+    AppMethodBeat.o(310998);
   }
   
   public String getMediaId()
@@ -68,65 +68,57 @@ public class CardOnlineVideoView
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(260425);
+    AppMethodBeat.i(311009);
     super.onAttachedToWindow();
     Log.d("SnsAd.CardOnlineVideoView", "the online video view is attached to window, hashcode " + hashCode());
-    AppMethodBeat.o(260425);
+    AppMethodBeat.o(311009);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(260427);
+    AppMethodBeat.i(311029);
     Log.d("SnsAd.CardOnlineVideoView", "onDestroy is called " + this.cY + ", hashcode " + hashCode());
     super.onDestroy();
     this.mState = 0;
-    AppMethodBeat.o(260427);
+    AppMethodBeat.o(311029);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(260426);
+    AppMethodBeat.i(311020);
     super.onDetachedFromWindow();
     Log.d("SnsAd.CardOnlineVideoView", "the online video view detached from window, hashcode " + hashCode());
     Log.d("SnsAd.CardOnlineVideoView", "asyncStop is called " + this.cY + ", hashcode " + hashCode());
     this.cY = "";
     if ((this.mState == 2) || (this.mState == 0))
     {
-      AppMethodBeat.o(260426);
+      AppMethodBeat.o(311020);
       return;
     }
-    if (this.KHu != null)
+    if (this.RgU != null)
     {
-      this.KHu.stop();
-      this.KHu = null;
+      this.RgU.stop();
+      this.RgU = null;
     }
-    if (this.KHk != null)
+    if (this.RgK != null)
     {
-      this.KHk.fUC();
-      this.KHk.clear();
-      this.KHk = null;
+      this.RgK.hmT();
+      this.RgK.clear();
+      this.RgK = null;
     }
-    fTZ();
+    hmt();
     this.mState = 2;
-    h.ZvG.be(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(208610);
-        CardOnlineVideoView.this.onDestroy();
-        AppMethodBeat.o(208610);
-      }
-    });
-    AppMethodBeat.o(260426);
+    h.ahAA.bm(new CardOnlineVideoView.1(this));
+    AppMethodBeat.o(311020);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(260423);
+    AppMethodBeat.i(310993);
     this.mState = 1;
-    fLI();
+    hce();
     super.onResume();
-    AppMethodBeat.o(260423);
+    AppMethodBeat.o(310993);
   }
   
   public void setMediaId(String paramString)
@@ -136,7 +128,7 @@ public class CardOnlineVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.video.online.CardOnlineVideoView
  * JD-Core Version:    0.7.0.1
  */

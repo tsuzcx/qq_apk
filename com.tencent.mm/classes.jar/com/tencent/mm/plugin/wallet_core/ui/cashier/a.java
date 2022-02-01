@@ -12,13 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.wallet.a.c;
-import com.tencent.mm.plugin.wallet.a.d;
-import com.tencent.mm.plugin.wallet.a.h;
-import com.tencent.mm.plugin.wallet.a.n;
-import com.tencent.mm.plugin.wallet.a.o;
+import com.tencent.mm.plugin.wallet.model.c;
+import com.tencent.mm.plugin.wallet.model.d;
+import com.tencent.mm.plugin.wallet.model.h;
+import com.tencent.mm.plugin.wallet.model.l;
+import com.tencent.mm.plugin.wallet.model.m;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
@@ -28,46 +27,45 @@ import com.tencent.mm.plugin.wxpay.a.j;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.i;
-import com.tencent.mm.wallet_core.c.ab;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.model.ac;
+import com.tencent.mm.wallet_core.ui.k;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  extends i
+  extends com.tencent.mm.ui.widget.a.i
 {
-  Orders Ivh;
-  Bankcard OBu;
-  com.tencent.mm.plugin.wallet_core.utils.a OuA;
-  FavorPayInfo OxY;
-  private ImageView Pdk;
-  ViewGroup Pdl;
-  TextView Pdm;
-  List<WcPayCashierBankcardItemLayout> Pdn;
-  int Pdo;
-  boolean Pdp;
-  int Pdq;
-  boolean Pdr;
-  a Pds;
-  WcPayCashierDialog.b Pdt;
+  Bankcard MAF;
+  Orders OsJ;
+  private ImageView VTR;
+  ViewGroup VTS;
+  TextView VTT;
+  List<WcPayCashierBankcardItemLayout> VTU;
+  int VTV;
+  boolean VTW;
+  int VTX;
+  boolean VTY;
+  a VTZ;
+  WcPayCashierDialog.b VUa;
+  com.tencent.mm.plugin.wallet_core.utils.b VjO;
+  FavorPayInfo Vnj;
   private Context mContext;
   PayInfo mPayInfo;
-  private ViewGroup qoE;
+  private ViewGroup tth;
   
   public a(Context paramContext)
   {
     super(paramContext, a.j.mmalertdialog);
     AppMethodBeat.i(71314);
-    this.Pdn = new ArrayList();
+    this.VTU = new ArrayList();
     this.mPayInfo = new PayInfo();
-    this.Ivh = new Orders();
-    this.Pdr = true;
-    this.Pdt = new WcPayCashierDialog.b()
+    this.OsJ = new Orders();
+    this.VTY = true;
+    this.VUa = new WcPayCashierDialog.b()
     {
-      public final void gLX()
+      public final void iln()
       {
         AppMethodBeat.i(71307);
         Log.i("MicroMsg.WcPayCashierBankcardDialog", "cashier dialog has dismissed");
@@ -76,16 +74,16 @@ public final class a
       }
     };
     this.mContext = paramContext;
-    this.qoE = ((ViewGroup)View.inflate(getContext(), a.g.wc_pay_cashier_bankcard_dialog, null));
-    this.Pdk = ((ImageView)this.qoE.findViewById(a.f.wpcb_close_iv));
-    this.Pdl = ((ViewGroup)this.qoE.findViewById(a.f.wpcb_bankcard_layout));
-    this.Pdm = ((TextView)this.qoE.findViewById(a.f.wpcb_hint_tv));
-    paramContext = this.Pdk;
-    int i = WcPayCashierDialog.PdD;
-    int j = WcPayCashierDialog.PdD;
+    this.tth = ((ViewGroup)View.inflate(getContext(), a.g.wc_pay_cashier_bankcard_dialog, null));
+    this.VTR = ((ImageView)this.tth.findViewById(a.f.wpcb_close_iv));
+    this.VTS = ((ViewGroup)this.tth.findViewById(a.f.wpcb_bankcard_layout));
+    this.VTT = ((TextView)this.tth.findViewById(a.f.wpcb_hint_tv));
+    paramContext = this.VTR;
+    int i = WcPayCashierDialog.VUk;
+    int j = WcPayCashierDialog.VUk;
     Util.expandViewTouchArea(paramContext, i, i, j, j);
-    this.Pdk.setOnClickListener(new a.4(this));
-    setContentView(this.qoE);
+    this.VTR.setOnClickListener(new a.4(this));
+    setContentView(this.tth);
     setCanceledOnTouchOutside(false);
     setOnCancelListener(new DialogInterface.OnCancelListener()
     {
@@ -107,30 +105,30 @@ public final class a
         AppMethodBeat.o(71309);
       }
     });
-    this.OuA = new com.tencent.mm.plugin.wallet_core.utils.a();
+    this.VjO = new com.tencent.mm.plugin.wallet_core.utils.b();
     AppMethodBeat.o(71314);
   }
   
   public final void a(WcPayCashierDialog paramWcPayCashierDialog)
   {
     AppMethodBeat.i(71316);
-    WcPayCashierDialog.b localb = this.Pdt;
-    paramWcPayCashierDialog.Peq.remove(localb);
+    WcPayCashierDialog.b localb = this.VUa;
+    paramWcPayCashierDialog.VUY.remove(localb);
     AppMethodBeat.o(71316);
   }
   
-  final LinkedList<String> gLW()
+  final LinkedList<String> ilm()
   {
     AppMethodBeat.i(71318);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.Ivh != null) && (this.Ivh.ORe != null) && (this.Ivh.ORe.Owx != null))
+    if ((this.OsJ != null) && (this.OsJ.VGY != null) && (this.OsJ.VGY.VlI != null))
     {
-      Object localObject = this.Ivh.ORe.Owx.OvT;
+      Object localObject = this.OsJ.VGY.VlI.Vle;
       if (localObject != null)
       {
-        localObject = ((n)localObject).OwJ.iterator();
+        localObject = ((l)localObject).VlU.iterator();
         while (((Iterator)localObject).hasNext()) {
-          localLinkedList.add(((o)((Iterator)localObject).next()).Ila);
+          localLinkedList.add(((m)((Iterator)localObject).next()).OhO);
         }
         AppMethodBeat.o(71318);
         return localLinkedList;
@@ -140,21 +138,21 @@ public final class a
     return localLinkedList;
   }
   
-  final LinkedList<String> i(Bankcard paramBankcard)
+  final LinkedList<String> j(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71317);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.Ivh != null) && (this.Ivh.ORe != null) && (this.Ivh.ORe.Owx != null))
+    if ((this.OsJ != null) && (this.OsJ.VGY != null) && (this.OsJ.VGY.VlI != null))
     {
-      Iterator localIterator = this.Ivh.ORe.Owx.OvS.iterator();
+      Iterator localIterator = this.OsJ.VGY.VlI.Vld.iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.GGC.equals(paramBankcard.field_bindSerial))
+        if (localc.MDt.equals(paramBankcard.field_bindSerial))
         {
-          paramBankcard = localc.Owd.iterator();
+          paramBankcard = localc.Vlo.iterator();
           while (paramBankcard.hasNext()) {
-            localLinkedList.add(((d)paramBankcard.next()).Ila);
+            localLinkedList.add(((d)paramBankcard.next()).OhO);
           }
           AppMethodBeat.o(71317);
           return localLinkedList;
@@ -174,22 +172,22 @@ public final class a
       Log.w("MicroMsg.WcPayCashierBankcardDialog", "pay info is null!!");
       dismiss();
     }
-    ab.ny(7, 0);
+    ac.pu(7, 0);
     AppMethodBeat.o(71315);
   }
   
   public static abstract interface a
   {
-    public abstract void gFG();
+    public abstract void ieE();
     
-    public abstract void k(Bankcard paramBankcard);
+    public abstract void l(Bankcard paramBankcard);
     
     public abstract void onCancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.a
  * JD-Core Version:    0.7.0.1
  */

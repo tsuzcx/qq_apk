@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/do1" android:background="@color/a2r" android:layout_width="fill_parent" android:layout_height="@dimen/b9"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/a8z" android:minHeight="@dimen/a8z"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/iq2" android:background="@drawable/b7" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/iq1" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/he" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/l" android:textColor="@color/bv" android:ellipsize="end" android:gravity="center|left" android:id="@id/ff4" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ekn" android:singleLine="true" />
-    <View android:id="@id/c3c" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/iqw" android:background="@drawable/b7" android:focusable="true" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9" android:src="@raw/actionbar_icon_dark_search" />
-    <ImageButton android:id="@id/iq3" android:background="@drawable/b7" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iq4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:id="@id/d9" android:layout_marginRight="@dimen/br" android:text="send" style="@style/ow" />
-    </LinearLayout>
-</LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:id="@id/ijp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/cv" android:layout_marginBottom="@dimen/df" android:text="@string/hvk" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="bottom|center" android:id="@id/ivn" android:background="@drawable/ad3" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginBottom="@dimen/cp" />
+</FrameLayout>

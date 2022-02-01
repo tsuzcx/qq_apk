@@ -1,6 +1,5 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,7 +11,6 @@ class SmoothScrollToPosition22
   private static final int SCROLL_UNIT = 10;
   private byte _hellAccFlag_;
   
-  @TargetApi(8)
   public void doScroll(ListView paramListView)
   {
     AppMethodBeat.i(156352);
@@ -22,14 +20,13 @@ class SmoothScrollToPosition22
     if (Build.VERSION.SDK_INT >= 8)
     {
       com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.b(paramListView, locala.aFh(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;)V", "Undefined", "smoothScrollToPosition", "(I)V");
-      paramListView.smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.b(paramListView, locala.aYi(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      paramListView.smoothScrollToPosition(((Integer)locala.sb(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.c(paramListView, "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;)V", "Undefined", "smoothScrollToPosition", "(I)V");
     }
     AppMethodBeat.o(156352);
   }
   
-  @TargetApi(8)
   public void doScroll(ListView paramListView, int paramInt)
   {
     AppMethodBeat.i(156353);
@@ -42,8 +39,8 @@ class SmoothScrollToPosition22
       if (Build.VERSION.SDK_INT >= 8)
       {
         com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.b(paramListView, locala.aFh(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPosition", "(I)V");
-        paramListView.smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.b(paramListView, locala.aYi(), "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPosition", "(I)V");
+        paramListView.smoothScrollToPosition(((Integer)locala.sb(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.c(paramListView, "com/tencent/mm/sdk/platformtools/SmoothScrollToPosition22", "doScroll", "(Landroid/widget/ListView;I)V", "Undefined", "smoothScrollToPosition", "(I)V");
       }
       AppMethodBeat.o(156353);
@@ -54,18 +51,17 @@ class SmoothScrollToPosition22
     }
   }
   
-  @TargetApi(11)
   public void doScrollFromTop(ListView paramListView, int paramInt)
   {
-    AppMethodBeat.i(262152);
+    AppMethodBeat.i(243765);
     paramListView.getFirstVisiblePosition();
     paramListView.setSelection(paramInt);
-    AppMethodBeat.o(262152);
+    AppMethodBeat.o(243765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.SmoothScrollToPosition22
  * JD-Core Version:    0.7.0.1
  */

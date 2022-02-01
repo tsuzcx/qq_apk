@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends b
 {
-  private final int bnA;
-  private final Object bnW;
+  private final Object cpt;
+  private final int reason;
   
   public d(q paramq, int paramInt)
   {
@@ -18,26 +18,26 @@ public final class d
   {
     super(paramq, new int[] { paramInt });
     AppMethodBeat.i(92947);
-    this.bnA = 0;
-    this.bnW = null;
+    this.reason = 0;
+    this.cpt = null;
     AppMethodBeat.o(92947);
   }
   
-  public final void ai(long paramLong) {}
+  public final int Tq()
+  {
+    return this.reason;
+  }
+  
+  public final Object Tr()
+  {
+    return this.cpt;
+  }
+  
+  public final void cw(long paramLong) {}
   
   public final int getSelectedIndex()
   {
     return 0;
-  }
-  
-  public final int tN()
-  {
-    return this.bnA;
-  }
-  
-  public final Object tO()
-  {
-    return this.bnW;
   }
 }
 

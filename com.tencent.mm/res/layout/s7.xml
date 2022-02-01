@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/gs"
+<LinearLayout style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/au5" android:layout_alignParentLeft="true" layout="@layout/qp" style="@style/go" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/au5" android:layout_alignTop="@id/au5" style="@style/gt">
-        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
-        <TextView android:id="@id/ayy" android:visibility="gone" android:text="@string/b38" android:layout_below="@id/ayn" android:layout_alignLeft="@id/ayn" style="@style/gw" />
-        <com.tencent.mm.ui.base.AnimImageView android:orientation="horizontal" android:id="@id/ayz" android:background="@drawable/mv" android:layout_width="100.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/ad" android:layout_below="@id/ayy" android:layout_alignLeft="@id/ayn" />
-        <FrameLayout android:id="@id/az2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/ayz" android:layout_alignLeft="@id/ayn">
-            <FrameLayout android:id="@id/az1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:id="@id/az0" android:background="@drawable/mv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/ad" android:drawableLeft="?e5" />
-                <com.tencent.mm.ui.base.AnimImageView android:id="@id/ayw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/ad" />
-                <ProgressBar android:gravity="center" android:layout_gravity="center|left" android:id="@id/ayx" android:padding="@dimen/ib" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5" style="@style/a71" />
-                <TextView android:textColor="@color/FG_0" android:layout_gravity="center_vertical" android:id="@id/auk" android:layout_marginLeft="34.0dip" android:layout_alignLeft="@id/az0" style="@style/h8" />
-            </FrameLayout>
-        </FrameLayout>
-        <ViewStub android:id="@id/iva" android:layout="@layout/tn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/i2" android:layout_below="@id/az2" android:layout_alignLeft="@id/ayn" />
-        <ImageView android:id="@id/ayb" android:background="@null" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/ct" android:src="@drawable/b1a" android:layout_toRightOf="@id/az2" android:layout_alignTop="@id/az2" android:layout_alignBottom="@id/az2" />
-        <ImageView android:id="@id/ave" android:background="@null" android:visibility="gone" android:layout_marginLeft="@dimen/ct" android:src="@drawable/awi" android:layout_toRightOf="@id/az2" android:layout_alignTop="@id/az2" android:layout_alignBottom="@id/az2" style="@style/h2" />
-        <RelativeLayout android:id="@id/avg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_toRightOf="@id/ayb" android:layout_alignTop="@id/az2" android:layout_alignBottom="@id/az2">
-            <TextView android:textSize="@dimen/c5" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/avf" android:background="@drawable/b2h" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="wrap_content" android:layout_height="@dimen/cc" android:text="@string/fcj" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <TextView android:id="@id/at6" android:visibility="gone" android:layout_marginRight="5.0dip" android:text="@string/axz" android:layout_below="@id/az2" android:layout_alignRight="@id/az2" style="@style/gj" />
-    </RelativeLayout>
-</RelativeLayout>
+    <include layout="@layout/qi" style="@style/gx" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b47" android:background="@drawable/lu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="0.0dip" style="@style/h2">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/b9z" android:background="@raw/voip_voicecall" style="@style/hf" />
+        <TextView android:id="@id/b_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bv" android:includeFontPadding="false" style="@style/zp" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/b8v" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/m2" android:src="@drawable/azm" />
+</LinearLayout>

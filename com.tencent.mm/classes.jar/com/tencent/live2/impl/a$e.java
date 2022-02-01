@@ -17,7 +17,7 @@ public class a$e
   
   public a$e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    AppMethodBeat.i(215121);
+    AppMethodBeat.i(211504);
     this.a = 15;
     this.b = 1300;
     this.c = 850;
@@ -34,12 +34,12 @@ public class a$e
     this.f = b.a(paramInt1);
     this.g = paramInt6;
     this.h = paramInt7;
-    AppMethodBeat.o(215121);
+    AppMethodBeat.o(211504);
   }
   
   public a$e(V2TXLiveDef.V2TXLiveVideoResolution paramV2TXLiveVideoResolution, V2TXLiveDef.V2TXLiveVideoResolutionMode paramV2TXLiveVideoResolutionMode)
   {
-    AppMethodBeat.i(215122);
+    AppMethodBeat.i(211514);
     this.a = 15;
     this.b = 1300;
     this.c = 850;
@@ -65,7 +65,7 @@ public class a$e
     {
       this.h = i;
       this.g = -1;
-      AppMethodBeat.o(215122);
+      AppMethodBeat.o(211514);
       return;
       bool = false;
       break;
@@ -76,15 +76,15 @@ public class a$e
   
   public String toString()
   {
-    AppMethodBeat.i(215125);
+    AppMethodBeat.i(211522);
     String str = "[resolution:" + this.e + "][fps:" + this.a + "][gop:" + this.d + "][maxBitrate:" + this.b + "][minBitrate:" + this.c + "][homeOrientation:" + this.g + "][portrait:" + this.f + "]";
-    AppMethodBeat.o(215125);
+    AppMethodBeat.o(211522);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.impl.a.e
  * JD-Core Version:    0.7.0.1
  */

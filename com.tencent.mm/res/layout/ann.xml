@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/kxu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:text="阿婆牛杂(天河南二路)" android:layout_marginStart="@dimen/cv" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kxt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:text="3.5公里 | 天河区天河南二路与天祥街交叉路口东北…" android:maxLines="1" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g1g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lqk" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6t" android:src="@raw/icons_filled_time" android:layout_marginStart="@dimen/cv" app:iconColor="@color/Blue" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lqj" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6t" android:src="@raw/icons_filled_error" android:layout_marginStart="@dimen/cv" app:iconColor="@color/Orange_100" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kxq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eh4" android:maxLines="1" android:layout_marginStart="@dimen/bv" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/lqi" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/a6s" android:src="@raw/icons_outlined_arrow" android:layout_marginEnd="@dimen/cp" app:iconColor="@color/FG_1" />
+    </LinearLayout>
+    <View android:id="@id/l3j" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="@dimen/a6s" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" />
+</LinearLayout>

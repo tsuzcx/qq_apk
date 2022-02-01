@@ -1,141 +1,79 @@
 package com.tencent.mm.plugin.finder.live;
 
-import com.tencent.c.a.a.a.a.a;
+import com.tencent.d.a.a.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
+import com.tencent.mm.plugin.finder.feed.model.internal.q;
 import com.tencent.mm.plugin.finder.live.viewmodel.data.f;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/FinderLiveDataLoader;", "Lcom/tencent/mm/plugin/finder/live/IFinderLiveDataLoader;", "()V", "dataLoader", "Lcom/tencent/mm/plugin/finder/live/FinderLiveRelatedLoader;", "livePreload", "Lcom/tencent/mm/plugin/finder/feed/model/internal/Preload;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveData;", "loadType", "", "loading", "", "getLoading", "()Z", "setLoading", "(Z)V", "presenter", "Lcom/tencent/mm/plugin/finder/live/FinderLiveContract$Presenter;", "checkLoadingType", "type", "getLoader", "loadData", "loadParams", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveRelatedLoaderParam;", "loadMoreLiveFeed", "onAttach", "", "onDetach", "preloadLiveFeed", "preloading", "setLoader", "loader", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/FinderLiveDataLoader;", "Lcom/tencent/mm/plugin/finder/live/IFinderLiveDataLoader;", "()V", "curState", "", "getCurState", "()I", "setCurState", "(I)V", "dataLoader", "Lcom/tencent/mm/plugin/finder/live/FinderLiveRelatedLoader;", "livePreload", "Lcom/tencent/mm/plugin/finder/feed/model/internal/Preload;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveData;", "loading", "", "getLoading", "()Z", "setLoading", "(Z)V", "logicPullType", "presenter", "Lcom/tencent/mm/plugin/finder/live/FinderLiveContract$Presenter;", "checkLoadingType", "type", "genNetScene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetLiveRelatedList;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "loadParams", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveRelatedLoaderParam;", "getLoader", "loadData", "onAttach", "", "onDetach", "onSideBarStateChanged", "show", "preloading", "setLoader", "loader", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements m
 {
-  private static final int xUR;
-  public static final b xUS;
-  volatile boolean aGh;
-  private c.a xUN;
-  private final com.tencent.mm.plugin.finder.feed.model.internal.p<f> xUO;
-  private int xUP;
-  private FinderLiveRelatedLoader xUQ;
+  static long Bhv;
+  public static final a BvP;
+  private static final int BvU;
+  private static long BvV;
+  c.a BvQ;
+  final q<f> BvR;
+  int BvS;
+  FinderLiveRelatedLoader BvT;
+  volatile boolean loading;
+  int owq;
   
   static
   {
-    AppMethodBeat.i(282747);
-    xUS = new b((byte)0);
-    a locala = a.Zlt;
-    xUR = ((Number)a.imx().aSr()).intValue();
-    AppMethodBeat.o(282747);
+    AppMethodBeat.i(350757);
+    BvP = new a((byte)0);
+    a locala = a.ahiX;
+    BvU = ((Number)a.jSZ().bmg()).intValue();
+    Bhv = -1L;
+    BvV = -1L;
+    AppMethodBeat.o(350757);
   }
   
   public d()
   {
-    AppMethodBeat.i(282746);
-    this.xUO = new com.tencent.mm.plugin.finder.feed.model.internal.p((byte)0);
-    this.xUP = 3;
-    FinderLiveRelatedLoader localFinderLiveRelatedLoader = new FinderLiveRelatedLoader();
-    localFinderLiveRelatedLoader.fetchEndCallback = ((kotlin.g.a.b)new a(localFinderLiveRelatedLoader, this));
-    this.xUQ = localFinderLiveRelatedLoader;
-    AppMethodBeat.o(282746);
+    AppMethodBeat.i(350720);
+    this.BvR = new q((byte)0);
+    this.BvS = 2;
+    final FinderLiveRelatedLoader localFinderLiveRelatedLoader = new FinderLiveRelatedLoader();
+    localFinderLiveRelatedLoader.fetchEndCallback = ((kotlin.g.a.b)new b(this, localFinderLiveRelatedLoader));
+    ah localah = ah.aiuX;
+    this.BvT = localFinderLiveRelatedLoader;
+    AppMethodBeat.o(350720);
   }
   
-  public final void a(c.a parama)
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/FinderLiveDataLoader$Companion;", "", "()V", "LOADMORE_THRESHOLD", "", "NormalState", "SideBarState", "TAG", "", "isIgnorePreloadForFeedId", "", "()J", "setIgnorePreloadForFeedId", "(J)V", "isIgnorePreloadShopForFeedId", "setIgnorePreloadShopForFeedId", "needPreload", "", "curPos", "listSize", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    AppMethodBeat.i(282740);
-    kotlin.g.b.p.k(parama, "presenter");
-    this.xUN = parama;
-    this.xUQ.setPreload((com.tencent.mm.plugin.finder.feed.model.internal.l)this.xUO);
-    AppMethodBeat.o(282740);
-  }
-  
-  public final boolean a(int paramInt, j paramj)
-  {
-    AppMethodBeat.i(282744);
-    kotlin.g.b.p.k(paramj, "loadParams");
-    StringBuilder localStringBuilder = new StringBuilder("loadData presenter:");
-    c.a locala = this.xUN;
-    if (locala != null)
+    public static boolean hy(int paramInt1, int paramInt2)
     {
-      i = locala.hashCode();
-      Log.i("FinderLiveDataLoader", i + ", curLoadType:" + this.xUP + ", type:" + paramInt + ", loading:" + this.aGh);
-      if (!this.aGh) {
-        break label129;
+      AppMethodBeat.i(350815);
+      Log.i("FinderLiveDataLoader", "needPreload curPos:" + paramInt1 + ", listSize:" + paramInt2 + ", threshold:" + d.egI() + '!');
+      if (paramInt2 - paramInt1 <= d.egI())
+      {
+        AppMethodBeat.o(350815);
+        return true;
       }
-      if ((this.xUP == 3) && (paramInt == 2)) {
-        this.xUP = 2;
-      }
-    }
-    label129:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label134;
-      }
-      AppMethodBeat.o(282744);
+      AppMethodBeat.o(350815);
       return false;
-      i = 0;
-      break;
     }
-    label134:
-    this.aGh = true;
-    switch (paramInt)
-    {
-    default: 
-      this.xUP = 2;
-      this.xUQ.a(paramj);
-      this.xUQ.requestLoadMore();
-      AppMethodBeat.o(282744);
-      return true;
-    }
-    this.xUP = 3;
-    this.xUQ.a(paramj);
-    this.xUQ.requestPreload();
-    AppMethodBeat.o(282744);
-    return true;
   }
   
-  public final FinderLiveRelatedLoader dwi()
+  @Metadata(d1={""}, d2={"<anonymous>", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveData;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<IResponse<f>, ah>
   {
-    return this.xUQ;
-  }
-  
-  public final boolean dwj()
-  {
-    return this.xUO.isLoading;
-  }
-  
-  public final boolean dwk()
-  {
-    return this.aGh;
-  }
-  
-  public final void onDetach()
-  {
-    AppMethodBeat.i(282742);
-    com.tencent.mm.plugin.finder.feed.model.internal.p localp = this.xUO;
-    if (localp != null) {
-      localp.clearCache();
-    }
-    this.aGh = false;
-    this.xUN = null;
-    AppMethodBeat.o(282742);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveData;", "invoke", "com/tencent/mm/plugin/finder/live/FinderLiveDataLoader$dataLoader$1$1"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<IResponse<f>, x>
-  {
-    a(FinderLiveRelatedLoader paramFinderLiveRelatedLoader, d paramd)
+    b(d paramd, FinderLiveRelatedLoader paramFinderLiveRelatedLoader)
     {
       super();
     }
   }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/FinderLiveDataLoader$Companion;", "", "()V", "LOADMORE_THRESHOLD", "", "TAG", "", "needPreload", "", "curPos", "listSize", "plugin-finder_release"})
-  public static final class b {}
 }
 
 

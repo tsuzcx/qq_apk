@@ -4,19 +4,19 @@ import android.view.View;
 import com.tencent.mm.ui.widget.listview.PullDownListView.IPullDownCallback;
 
 public abstract interface b
-  extends k, n, p, PullDownListView.IPullDownCallback
+  extends m, p, v, PullDownListView.IPullDownCallback
 {
-  public abstract void a(g paramg);
+  public abstract void a(i parami);
   
   public abstract View getView();
   
-  public abstract void gkD();
+  public abstract void hFo();
   
-  public abstract void gkE();
+  public abstract void hFp();
   
-  public abstract void gkF();
+  public abstract void hFq();
   
-  public abstract boolean gkG();
+  public abstract boolean hFr();
 }
 
 

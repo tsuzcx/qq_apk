@@ -3,41 +3,49 @@ package com.tencent.mm.plugin.vlog.model;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.plugin.recordvideo.util.MultiMediaVideoChecker;
+import com.tencent.mm.plugin.recordvideo.util.MultiMediaVideoChecker.a;
+import com.tencent.mm.vfs.y;
 import com.tencent.mm.videocomposition.b.a;
-import com.tencent.mm.videocomposition.e;
+import java.io.Closeable;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
 import kotlin.ResultKt;
-import kotlin.d.a.a;
+import kotlin.a.ab;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.d.b.a.k;
+import kotlin.d.d;
 import kotlin.d.f;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.g;
-import kotlinx.coroutines.i;
+import kotlin.g.b.s;
+import kotlinx.coroutines.aq;
+import kotlinx.coroutines.ay;
+import kotlinx.coroutines.bg;
+import kotlinx.coroutines.j;
+import kotlinx.coroutines.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "", "width", "", "height", "type", "fromCamera", "(IIII)V", "getFromCamera", "()I", "setFromCamera", "(I)V", "getHeight", "setHeight", "getType", "setType", "getWidth", "setWidth", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "", "width", "", "height", "type", "fromCamera", "(IIII)V", "getFromCamera", "()I", "setFromCamera", "(I)V", "getHeight", "setHeight", "getType", "setType", "getWidth", "setWidth", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class z
 {
-  public static final a NmH;
-  private static final String TAG = "MicroMsg.SourceMaterial";
-  int NmG;
+  private static final String TAG;
+  public static final a Uai;
+  int Uaj;
   int height;
   private int type;
   int width;
   
   static
   {
-    AppMethodBeat.i(252087);
-    NmH = new a((byte)0);
+    AppMethodBeat.i(283543);
+    Uai = new a((byte)0);
     TAG = "MicroMsg.SourceMaterial";
-    AppMethodBeat.o(252087);
+    AppMethodBeat.o(283543);
   }
   
   private z(int paramInt1, int paramInt2, int paramInt3)
@@ -45,195 +53,154 @@ public class z
     this.width = paramInt1;
     this.height = paramInt2;
     this.type = paramInt3;
-    this.NmG = 0;
+    this.Uaj = 0;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/SourceMaterial$Companion;", "", "()V", "CropMinDuration", "", "ImageSourceDuration", "MaxHeight", "", "MaxWidth", "TAG", "", "TypeImage", "TypeVideo", "VideoTrackMaxDuration", "asyncSourceToTrackList", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "sources", "Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "(Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "createFromPath", "paths", "types", "sourceFrom", "images", "videos", "indices", "", "createImageSource", "Lcom/tencent/mm/plugin/vlog/model/ImageSource;", "path", "createVideoSource", "Lcom/tencent/mm/plugin/vlog/model/VideoSource;", "getImageRotate", "sourceToTrack", "source", "(Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/model/SourceMaterial$Companion;", "", "()V", "CropMinDuration", "", "ImageSourceDuration", "MaxHeight", "", "MaxWidth", "TAG", "", "TypeImage", "TypeVideo", "VideoTrackMaxDuration", "asyncSourceToTrackList", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "sources", "Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;", "(Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "createFromPath", "paths", "types", "sourceFrom", "images", "videos", "indices", "", "createImageSource", "Lcom/tencent/mm/plugin/vlog/model/ImageSource;", "path", "createVideoSource", "Lcom/tencent/mm/plugin/vlog/model/VideoSource;", "getImageRotate", "sourceToTrack", "source", "(Lcom/tencent/mm/plugin/vlog/model/SourceMaterial;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static Object a(List<? extends z> paramList, kotlin.d.d<? super List<ad>> paramd)
+    public static Object b(List<? extends z> paramList, d<? super List<ad>> paramd)
     {
-      AppMethodBeat.i(245695);
-      paramList = i.a((f)bc.iRs(), (m)new a(paramList, null), paramd);
-      AppMethodBeat.o(245695);
+      AppMethodBeat.i(283769);
+      paramList = l.a((f)bg.kCi(), (m)new a(paramList, null), paramd);
+      AppMethodBeat.o(283769);
       return paramList;
     }
     
-    private static r bfu(String paramString)
+    private static r bfb(String paramString)
     {
-      AppMethodBeat.i(245692);
-      p.k(paramString, "path");
+      AppMethodBeat.i(283748);
+      s.u(paramString, "path");
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
       MMBitmapFactory.decodeFile(paramString, localOptions);
-      int k = bfv(paramString);
+      int k = bfc(paramString);
       int j = localOptions.outWidth;
       int i = localOptions.outHeight;
-      if ((k == 90) || (k == 270))
+      switch (k)
       {
+      }
+      for (;;)
+      {
+        paramString = new r(j, i, paramString);
+        AppMethodBeat.o(283748);
+        return paramString;
         j = localOptions.outHeight;
         i = localOptions.outWidth;
       }
-      paramString = new r(j, i, paramString);
-      AppMethodBeat.o(245692);
-      return paramString;
     }
     
-    /* Error */
-    private static int bfv(String paramString)
+    private static int bfc(String paramString)
     {
-      // Byte code:
-      //   0: aconst_null
-      //   1: astore_2
-      //   2: aconst_null
-      //   3: astore_1
-      //   4: ldc 130
-      //   6: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   9: aload_0
-      //   10: invokestatic 136	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
-      //   13: astore_0
-      //   14: aload_0
-      //   15: ifnull +85 -> 100
-      //   18: aload_0
-      //   19: checkcast 138	java/io/Closeable
-      //   22: astore_3
-      //   23: new 140	androidx/e/a/a
-      //   26: dup
-      //   27: aload_3
-      //   28: checkcast 142	java/io/InputStream
-      //   31: invokespecial 145	androidx/e/a/a:<init>	(Ljava/io/InputStream;)V
-      //   34: astore_0
-      //   35: getstatic 151	kotlin/x:aazN	Lkotlin/x;
-      //   38: astore 4
-      //   40: aload_3
-      //   41: aconst_null
-      //   42: invokestatic 156	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   45: aload_0
-      //   46: ifnull +14 -> 60
-      //   49: aload_0
-      //   50: ldc 158
-      //   52: iconst_1
-      //   53: invokevirtual 161	androidx/e/a/a:i	(Ljava/lang/String;I)I
-      //   56: invokestatic 167	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   59: astore_1
-      //   60: aload_1
-      //   61: ifnonnull +44 -> 105
-      //   64: aload_1
-      //   65: ifnonnull +57 -> 122
-      //   68: aload_1
-      //   69: ifnonnull +70 -> 139
-      //   72: ldc 130
-      //   74: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   77: iconst_0
-      //   78: ireturn
-      //   79: astore_1
-      //   80: ldc 130
-      //   82: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   85: aload_1
-      //   86: athrow
-      //   87: astore_0
-      //   88: aload_3
-      //   89: aload_1
-      //   90: invokestatic 156	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-      //   93: ldc 130
-      //   95: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   98: aload_0
-      //   99: athrow
-      //   100: aconst_null
-      //   101: astore_0
-      //   102: goto -57 -> 45
-      //   105: aload_1
-      //   106: invokevirtual 171	java/lang/Integer:intValue	()I
-      //   109: bipush 6
-      //   111: if_icmpne -47 -> 64
-      //   114: ldc 130
-      //   116: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   119: bipush 90
-      //   121: ireturn
-      //   122: aload_1
-      //   123: invokevirtual 171	java/lang/Integer:intValue	()I
-      //   126: iconst_3
-      //   127: if_icmpne -59 -> 68
-      //   130: ldc 130
-      //   132: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   135: sipush 180
-      //   138: ireturn
-      //   139: aload_1
-      //   140: invokevirtual 171	java/lang/Integer:intValue	()I
-      //   143: bipush 8
-      //   145: if_icmpne -73 -> 72
-      //   148: ldc 130
-      //   150: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   153: sipush 270
-      //   156: ireturn
-      //   157: astore_0
-      //   158: aload_2
-      //   159: astore_1
-      //   160: goto -72 -> 88
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	163	0	paramString	String
-      //   3	66	1	localInteger	Integer
-      //   79	61	1	localThrowable	Throwable
-      //   159	1	1	localObject1	Object
-      //   1	158	2	localObject2	Object
-      //   22	67	3	localCloseable	java.io.Closeable
-      //   38	1	4	localx	x
-      // Exception table:
-      //   from	to	target	type
-      //   23	40	79	java/lang/Throwable
-      //   80	87	87	finally
-      //   23	40	157	finally
-    }
-    
-    private static ak bfw(String paramString)
-    {
-      AppMethodBeat.i(245694);
-      p.k(paramString, "path");
+      AppMethodBeat.i(283757);
+      paramString = y.Lh(paramString);
+      Closeable localCloseable;
+      if (paramString != null) {
+        localCloseable = (Closeable)paramString;
+      }
+      label134:
       for (;;)
       {
         try
         {
-          MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.NmA.bfs(paramString);
+          paramString = new androidx.f.a.a((InputStream)localCloseable);
+          ah localah = ah.aiuX;
+          kotlin.f.b.a(localCloseable, null);
+          if (paramString != null) {
+            continue;
+          }
+          paramString = null;
+        }
+        finally
+        {
+          try
+          {
+            AppMethodBeat.o(283757);
+            throw paramString;
+          }
+          finally
+          {
+            kotlin.f.b.a(localCloseable, paramString);
+            AppMethodBeat.o(283757);
+          }
+          paramString = Integer.valueOf(paramString.k("Orientation", 1));
+          continue;
+          if (paramString.intValue() != 6) {
+            continue;
+          }
+          AppMethodBeat.o(283757);
+          return 90;
+        }
+        if (paramString == null)
+        {
+          if (paramString != null) {
+            break label117;
+          }
+          if (paramString != null) {
+            break label134;
+          }
+          AppMethodBeat.o(283757);
+          return 0;
+        }
+        label117:
+        if (paramString.intValue() == 3)
+        {
+          AppMethodBeat.o(283757);
+          return 180;
+          if (paramString.intValue() == 8)
+          {
+            AppMethodBeat.o(283757);
+            return 270;
+            paramString = null;
+          }
+        }
+      }
+    }
+    
+    private static al bfd(String paramString)
+    {
+      AppMethodBeat.i(283763);
+      s.u(paramString, "path");
+      for (;;)
+      {
+        int k;
+        try
+        {
+          MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.ObB.aTG(paramString);
           if (locala == null) {
             continue;
           }
           i = locala.width;
-          j = locala.height;
-          l = locala.duration;
-          k = locala.fSM;
-          if (k == 90) {
-            break label113;
-          }
-          if (k != 270) {
-            break label110;
+          k = locala.height;
+          long l = locala.duration;
+          switch (locala.hYK)
+          {
+          case 90: 
+            paramString = new al(i, j, paramString, l);
+            AppMethodBeat.o(283763);
+            return paramString;
           }
         }
         catch (Exception paramString)
         {
-          long l;
+          int i;
           com.tencent.mm.audio.mix.h.b.printErrStackTrace(z.access$getTAG$cp(), (Throwable)paramString, "createVideoSource error", new Object[0]);
-          AppMethodBeat.o(245694);
+          AppMethodBeat.o(283763);
           return null;
         }
-        paramString = new ak(i, j, paramString, l);
-        AppMethodBeat.o(245694);
-        return paramString;
-        label110:
+        int j = i;
+        i = k;
         continue;
-        label113:
-        int k = i;
-        int i = j;
-        int j = k;
+        j = k;
       }
     }
     
     public static List<z> e(List<String> paramList, List<Integer> paramList1, List<Integer> paramList2)
     {
-      AppMethodBeat.i(245691);
-      p.k(paramList, "paths");
-      p.k(paramList1, "types");
-      p.k(paramList2, "sourceFrom");
+      AppMethodBeat.i(283743);
+      s.u(paramList, "paths");
+      s.u(paramList1, "types");
+      s.u(paramList2, "sourceFrom");
       LinkedList localLinkedList = new LinkedList();
       paramList = ((Iterable)paramList).iterator();
       int i = 0;
@@ -242,243 +209,214 @@ public class z
         Object localObject1 = paramList.next();
         int j = i + 1;
         if (i < 0) {
-          kotlin.a.j.iBO();
+          p.kkW();
         }
         localObject1 = (String)localObject1;
-        Object localObject2 = (Integer)kotlin.a.j.M(paramList1, i);
-        if (localObject2 == null) {}
-        while (((Integer)localObject2).intValue() != 2)
+        Object localObject2 = (Integer)p.ae(paramList1, i);
+        if (localObject2 == null)
         {
-          localObject2 = z.NmH;
-          localObject1 = bfu((String)localObject1);
-          ((z)localObject1).NmG = ((Number)paramList2.get(i)).intValue();
-          localLinkedList.add(localObject1);
+          label95:
+          localObject2 = z.Uai;
+          localObject1 = bfb((String)localObject1);
+          if (localObject1 != null)
+          {
+            ((z)localObject1).Uaj = ((Number)paramList2.get(i)).intValue();
+            localLinkedList.add(localObject1);
+          }
+        }
+        do
+        {
           i = j;
           break;
-        }
-        localObject2 = z.NmH;
-        localObject1 = bfw((String)localObject1);
-        if (localObject1 != null)
-        {
-          ((z)localObject1).NmG = ((Number)paramList2.get(i)).intValue();
-          localLinkedList.add(localObject1);
-          i = j;
-        }
-        else
-        {
-          i = j;
-        }
+          if (((Integer)localObject2).intValue() != 2) {
+            break label95;
+          }
+          localObject2 = z.Uai;
+          localObject1 = bfd((String)localObject1);
+        } while (localObject1 == null);
+        ((z)localObject1).Uaj = ((Number)paramList2.get(i)).intValue();
+        localLinkedList.add(localObject1);
+        i = j;
       }
       paramList = (List)localLinkedList;
-      AppMethodBeat.o(245691);
+      AppMethodBeat.o(283743);
       return paramList;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+    @Metadata(d1={""}, d2={"<anonymous>", "", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends kotlin.d.b.a.j
-      implements m<kotlinx.coroutines.ak, kotlin.d.d<? super List<? extends ad>>, Object>
+      extends k
+      implements m<aq, d<? super List<? extends ad>>, Object>
     {
-      Object L$0;
       int label;
-      Object oDA;
-      private kotlinx.coroutines.ak p$;
       
-      a(List paramList, kotlin.d.d paramd)
+      a(List<? extends z> paramList, d<? super a> paramd)
       {
         super(paramd);
       }
       
-      public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+      public final d<ah> create(Object paramObject, d<?> paramd)
       {
-        AppMethodBeat.i(246082);
-        p.k(paramd, "completion");
-        paramd = new a(this.NmI, paramd);
-        paramd.p$ = ((kotlinx.coroutines.ak)paramObject);
-        AppMethodBeat.o(246082);
-        return paramd;
-      }
-      
-      public final Object invoke(Object paramObject1, Object paramObject2)
-      {
-        AppMethodBeat.i(246084);
-        paramObject1 = ((a)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-        AppMethodBeat.o(246084);
-        return paramObject1;
+        AppMethodBeat.i(283399);
+        paramd = new a(this.Uak, paramd);
+        paramd.L$0 = paramObject;
+        paramObject = (d)paramd;
+        AppMethodBeat.o(283399);
+        return paramObject;
       }
       
       public final Object invokeSuspend(Object paramObject)
       {
-        AppMethodBeat.i(246078);
-        Object localObject2 = a.aaAA;
-        Object localObject3;
+        AppMethodBeat.i(283385);
+        Object localObject2 = kotlin.d.a.a.aiwj;
         switch (this.label)
         {
         default: 
           paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-          AppMethodBeat.o(246078);
+          AppMethodBeat.o(283385);
           throw paramObject;
         case 0: 
           ResultKt.throwOnFailure(paramObject);
-          paramObject = this.p$;
-          localObject3 = (Iterable)this.NmI;
-          localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject3, 10));
+          paramObject = (aq)this.L$0;
+          localObject3 = (Iterable)this.Uak;
+          localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject3, 10));
           localObject3 = ((Iterable)localObject3).iterator();
           while (((Iterator)localObject3).hasNext()) {
-            ((Collection)localObject1).add(g.a(paramObject, null, (m)new a((z)((Iterator)localObject3).next(), null), 3));
+            ((Collection)localObject1).add(j.a(paramObject, null, (m)new a((z)((Iterator)localObject3).next(), null), 3));
           }
-          localObject1 = (List)localObject1;
-          localObject3 = (Collection)localObject1;
-          this.L$0 = paramObject;
-          this.oDA = localObject1;
+          localObject1 = (Collection)localObject1;
+          paramObject = (d)this;
           this.label = 1;
-          localObject1 = kotlinx.coroutines.d.a((Collection)localObject3, this);
-          paramObject = localObject1;
-          if (localObject1 == localObject2)
+          if (((Collection)localObject1).isEmpty()) {}
+          for (paramObject = (List)ab.aivy;; paramObject = new kotlinx.coroutines.e((ay[])localObject1).e(paramObject))
           {
-            AppMethodBeat.o(246078);
+            localObject1 = paramObject;
+            if (paramObject != localObject2) {
+              break;
+            }
+            AppMethodBeat.o(283385);
             return localObject2;
+            localObject1 = ((Collection)localObject1).toArray(new ay[0]);
+            if (localObject1 == null)
+            {
+              paramObject = new NullPointerException("null cannot be cast to non-null type kotlin.Array<T>");
+              AppMethodBeat.o(283385);
+              throw paramObject;
+            }
           }
-          break;
-        case 1: 
-          ResultKt.throwOnFailure(paramObject);
         }
-        Object localObject1 = kotlin.a.j.l((Iterable)paramObject);
+        ResultKt.throwOnFailure(paramObject);
+        Object localObject1 = paramObject;
+        localObject1 = p.l((Iterable)localObject1);
         paramObject = (Iterable)localObject1;
+        localObject2 = this.Uak;
         int i = 0;
-        localObject2 = paramObject.iterator();
-        while (((Iterator)localObject2).hasNext())
+        Object localObject3 = paramObject.iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          paramObject = ((Iterator)localObject2).next();
+          paramObject = ((Iterator)localObject3).next();
           int j = i + 1;
           if (i < 0) {
-            kotlin.a.j.iBO();
+            p.kkW();
           }
-          localObject3 = (ad)paramObject;
-          i = ((Number)Integer.valueOf(i)).intValue();
-          paramObject = (z)this.NmI.get(i);
+          ad localad = (ad)paramObject;
+          paramObject = (z)((List)localObject2).get(i);
           long l2;
           long l1;
-          switch (((ad)localObject3).type)
+          switch (localad.type)
           {
           default: 
             l2 = 0L;
-            com.tencent.mm.audio.mix.h.b.i(z.access$getTAG$cp(), "unknown track type:" + ((ad)localObject3).type);
+            com.tencent.mm.audio.mix.h.b.i(z.access$getTAG$cp(), s.X("unknown track type:", Integer.valueOf(localad.type)));
             l1 = 0L;
           }
           for (;;)
           {
-            ((ad)localObject3).Sn(0L);
-            ((ad)localObject3).So(l2);
-            ((ad)localObject3).Nnf.originDuration = l1;
-            ((ad)localObject3).Nnf.targetDuration = l1;
+            localad.wB(0L);
+            localad.wC(l2);
+            localad.UaH.originDuration = l1;
+            localad.UaH.targetDuration = l1;
             if ((paramObject.width <= 1080) && (paramObject.height <= 1280)) {
-              break label609;
+              break label610;
             }
             float f = Math.max(paramObject.width * 1.0F / 1080.0F, paramObject.height * 1.0F / 1280.0F);
-            ((ad)localObject3).Nna = ((int)(paramObject.width / f));
-            ((ad)localObject3).Nnb = ((int)(paramObject.height / f));
-            ((ad)localObject3).Nnc = f;
+            localad.UaC = ((int)(paramObject.width / f));
+            localad.UaD = ((int)(paramObject.height / f));
+            localad.UaE = f;
             i = j;
             break;
-            if (paramObject == null)
-            {
-              paramObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.VideoSource");
-              AppMethodBeat.o(246078);
-              throw paramObject;
-            }
             paramObject = (z)paramObject;
-            if (((ak)paramObject).duration > 60000L) {}
-            for (l1 = 60000L;; l1 = ((ak)paramObject).duration)
+            if (((al)paramObject).duration > 60000L) {}
+            for (l1 = 60000L;; l1 = ((al)paramObject).duration)
             {
-              long l3 = ((ak)paramObject).duration;
-              ((ad)localObject3).Nnf.type = 2;
+              long l3 = ((al)paramObject).duration;
+              localad.UaH.type = 2;
               l2 = l1;
               l1 = l3;
               break;
             }
-            if (paramObject == null)
-            {
-              paramObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.model.ImageSource");
-              AppMethodBeat.o(246078);
-              throw paramObject;
-            }
             paramObject = (z)paramObject;
             l2 = 4000L;
-            ((ad)localObject3).Nnf.type = 1;
+            localad.UaH.type = 1;
             l1 = 4000L;
           }
-          label609:
-          ((ad)localObject3).Nna = paramObject.width;
-          ((ad)localObject3).Nnb = paramObject.height;
+          label610:
+          localad.UaC = paramObject.width;
+          localad.UaD = paramObject.height;
           i = j;
         }
-        paramObject = com.tencent.mm.videocomposition.b.YHY;
+        paramObject = com.tencent.mm.videocomposition.b.agDF;
         localObject2 = (Iterable)localObject1;
-        paramObject = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
+        paramObject = (Collection)new ArrayList(p.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
         while (((Iterator)localObject2).hasNext()) {
-          paramObject.add(((ad)((Iterator)localObject2).next()).Nng);
+          paramObject.add(((ad)((Iterator)localObject2).next()).UaI);
         }
-        b.a.iK((List)paramObject);
-        AppMethodBeat.o(246078);
+        b.a.lS((List)paramObject);
+        AppMethodBeat.o(283385);
         return localObject1;
       }
       
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+      @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "Lkotlinx/coroutines/CoroutineScope;"}, k=3, mv={1, 5, 1}, xi=48)
       static final class a
-        extends kotlin.d.b.a.j
-        implements m<kotlinx.coroutines.ak, kotlin.d.d<? super ad>, Object>
+        extends k
+        implements m<aq, d<? super ad>, Object>
       {
-        Object L$0;
         int label;
-        private kotlinx.coroutines.ak p$;
         
-        a(z paramz, kotlin.d.d paramd)
+        a(z paramz, d<? super a> paramd)
         {
           super(paramd);
         }
         
-        public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
+        public final d<ah> create(Object paramObject, d<?> paramd)
         {
-          AppMethodBeat.i(235207);
-          p.k(paramd, "completion");
-          paramd = new a(this.NmJ, paramd);
-          paramd.p$ = ((kotlinx.coroutines.ak)paramObject);
-          AppMethodBeat.o(235207);
-          return paramd;
-        }
-        
-        public final Object invoke(Object paramObject1, Object paramObject2)
-        {
-          AppMethodBeat.i(235208);
-          paramObject1 = ((a)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.aazN);
-          AppMethodBeat.o(235208);
-          return paramObject1;
+          AppMethodBeat.i(283546);
+          paramObject = (d)new a(this.Ual, paramd);
+          AppMethodBeat.o(283546);
+          return paramObject;
         }
         
         public final Object invokeSuspend(Object paramObject)
         {
-          AppMethodBeat.i(235205);
-          a locala = a.aaAA;
+          AppMethodBeat.i(283535);
+          kotlin.d.a.a locala = kotlin.d.a.a.aiwj;
           switch (this.label)
           {
           default: 
             paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-            AppMethodBeat.o(235205);
+            AppMethodBeat.o(283535);
             throw paramObject;
           case 0: 
             ResultKt.throwOnFailure(paramObject);
-            paramObject = this.p$;
-            localObject = z.NmH;
-            localObject = this.NmJ;
-            this.L$0 = paramObject;
+            paramObject = z.Uai;
+            paramObject = this.Ual;
             this.label = 1;
-            if ((localObject instanceof ak))
+            if ((paramObject instanceof al))
             {
-              paramObject = new ad(((ak)localObject).path, 2, ((z)localObject).NmG);
-              localObject = paramObject.Nng;
-              e.YIc.e((com.tencent.mm.videocomposition.b)localObject);
+              paramObject = new ad(((al)paramObject).path, 2, paramObject.Uaj);
+              localObject = paramObject.UaI;
+              com.tencent.mm.videocomposition.e.agDJ.e((com.tencent.mm.videocomposition.b)localObject);
             }
             for (;;)
             {
@@ -486,13 +424,13 @@ public class z
               if (paramObject != locala) {
                 break;
               }
-              AppMethodBeat.o(235205);
+              AppMethodBeat.o(283535);
               return locala;
-              if ((localObject instanceof r))
+              if ((paramObject instanceof r))
               {
-                paramObject = new ad(((r)localObject).path, 1, ((z)localObject).NmG);
-                localObject = paramObject.Nng;
-                e.YIc.e((com.tencent.mm.videocomposition.b)localObject);
+                paramObject = new ad(((r)paramObject).path, 1, paramObject.Uaj);
+                localObject = paramObject.UaI;
+                com.tencent.mm.videocomposition.e.agDJ.e((com.tencent.mm.videocomposition.b)localObject);
               }
               else
               {
@@ -502,7 +440,7 @@ public class z
           }
           ResultKt.throwOnFailure(paramObject);
           Object localObject = paramObject;
-          AppMethodBeat.o(235205);
+          AppMethodBeat.o(283535);
           return localObject;
         }
       }
@@ -511,7 +449,7 @@ public class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.z
  * JD-Core Version:    0.7.0.1
  */

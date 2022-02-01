@@ -10,8 +10,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.i;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.plugin.game.model.k.a;
 import com.tencent.mm.plugin.game.model.l;
@@ -22,68 +22,68 @@ public class GameRankHeadView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private com.tencent.mm.plugin.game.model.c CLp;
-  k.a CUR;
-  private l CUT;
-  private TextView CUq;
-  private TextView CZL;
-  private ImageView CZM;
-  private TextView jMg;
+  private com.tencent.mm.plugin.game.model.c IFw;
+  private TextView IOH;
+  k.a IPj;
+  private l IPl;
+  private TextView IUb;
+  private ImageView IUc;
+  private TextView mll;
   
   public GameRankHeadView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void dFV()
+  private void exg()
   {
     AppMethodBeat.i(42343);
-    if (h.a(getContext(), this.CLp))
+    if (h.a(getContext(), this.IFw))
     {
-      int i = com.tencent.mm.plugin.game.d.c.aKt(this.CLp.field_packageName);
-      if (this.CLp.versionCode > i)
+      int i = com.tencent.mm.plugin.game.d.c.aHj(this.IFw.field_packageName);
+      if (this.IFw.versionCode > i)
       {
-        this.CUq.setText(g.i.CoL);
+        this.IOH.setText(h.i.IaT);
         AppMethodBeat.o(42343);
         return;
       }
-      this.CUq.setText(g.i.CoJ);
+      this.IOH.setText(h.i.IaR);
       AppMethodBeat.o(42343);
       return;
     }
-    switch (this.CLp.status)
+    switch (this.IFw.status)
     {
     default: 
-      this.CUq.setText(g.i.CoG);
+      this.IOH.setText(h.i.IaO);
       AppMethodBeat.o(42343);
       return;
     }
-    if (this.CUT == null)
+    if (this.IPl == null)
     {
-      this.CUq.setVisibility(8);
-      this.CZM.setVisibility(8);
+      this.IOH.setVisibility(8);
+      this.IUc.setVisibility(8);
       AppMethodBeat.o(42343);
       return;
     }
-    this.CUq.setVisibility(0);
-    this.CZM.setVisibility(0);
-    switch (this.CUT.status)
+    this.IOH.setVisibility(0);
+    this.IUc.setVisibility(0);
+    switch (this.IPl.status)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(42343);
       return;
-      this.CUq.setText(g.i.CoG);
+      this.IOH.setText(h.i.IaO);
       AppMethodBeat.o(42343);
       return;
-      this.CUq.setText(g.i.CoH);
+      this.IOH.setText(h.i.IaP);
       AppMethodBeat.o(42343);
       return;
-      this.CUq.setText(g.i.CoF);
+      this.IOH.setText(h.i.IaN);
       AppMethodBeat.o(42343);
       return;
-      this.CUq.setText(g.i.CoI);
+      this.IOH.setText(h.i.IaQ);
     }
   }
   
@@ -91,11 +91,11 @@ public class GameRankHeadView
   {
     AppMethodBeat.i(42345);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/game/ui/GameRankHeadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/game/ui/GameRankHeadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     paramView = new d(getContext());
-    localObject = new l(this.CLp);
-    paramView.a(this.CLp, (l)localObject);
+    localObject = new l(this.IFw);
+    paramView.a(this.IFw, (l)localObject);
     a.a(this, "com/tencent/mm/plugin/game/ui/GameRankHeadView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42345);
   }
@@ -104,10 +104,10 @@ public class GameRankHeadView
   {
     AppMethodBeat.i(42342);
     super.onFinishInflate();
-    this.jMg = ((TextView)findViewById(g.e.CiX));
-    this.CZL = ((TextView)findViewById(g.e.CiJ));
-    this.CUq = ((TextView)findViewById(g.e.CiW));
-    this.CZM = ((ImageView)findViewById(g.e.game_more_icon));
+    this.mll = ((TextView)findViewById(h.e.HVf));
+    this.IUb = ((TextView)findViewById(h.e.HUR));
+    this.IOH = ((TextView)findViewById(h.e.HVe));
+    this.IUc = ((ImageView)findViewById(h.e.game_more_icon));
     Log.i("MicroMsg.GameRankHeadView", "initView finished");
     AppMethodBeat.o(42342);
   }
@@ -115,34 +115,34 @@ public class GameRankHeadView
   public void setData(GameDetailRankUI.a parama)
   {
     AppMethodBeat.i(42344);
-    this.jMg.setText(parama.CUK);
-    this.CZL.setText(parama.CUL);
-    this.CLp = parama.CUM;
-    this.CLp.fSl = 1203;
-    this.CLp.position = 2;
-    if (this.CUT == null) {
-      this.CUT = new l(this.CLp);
+    this.mll.setText(parama.IPc);
+    this.IUb.setText(parama.IPd);
+    this.IFw = parama.IPe;
+    this.IFw.hYi = 1203;
+    this.IFw.position = 2;
+    if (this.IPl == null) {
+      this.IPl = new l(this.IFw);
     }
-    this.CUT.gC(getContext());
-    this.CUT.cQV();
-    dFV();
-    if (this.CUR != null) {
-      k.a(this.CUR);
+    this.IPl.hV(getContext());
+    this.IPl.dvo();
+    exg();
+    if (this.IPj != null) {
+      k.a(this.IPj);
     }
     for (;;)
     {
-      this.CUq.setOnClickListener(this);
+      this.IOH.setOnClickListener(this);
       AppMethodBeat.o(42344);
       return;
-      this.CUR = new k.a()
+      this.IPj = new k.a()
       {
         public final void f(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(42341);
           if (GameRankHeadView.a(GameRankHeadView.this) != null)
           {
-            GameRankHeadView.b(GameRankHeadView.this).gC(GameRankHeadView.this.getContext());
-            GameRankHeadView.b(GameRankHeadView.this).cQV();
+            GameRankHeadView.b(GameRankHeadView.this).hV(GameRankHeadView.this.getContext());
+            GameRankHeadView.b(GameRankHeadView.this).dvo();
             if (paramAnonymousBoolean) {
               GameRankHeadView.c(GameRankHeadView.this);
             }
@@ -150,13 +150,13 @@ public class GameRankHeadView
           AppMethodBeat.o(42341);
         }
       };
-      k.a(this.CUR);
+      k.a(this.IPj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRankHeadView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,12 @@
 package com.google.android.gms.common.api;
 
 import android.os.Looper;
-import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.internal.BasePendingResult;
 import com.google.android.gms.common.api.internal.OptionalPendingResultImpl;
 import com.google.android.gms.common.api.internal.StatusPendingResult;
 import com.google.android.gms.common.internal.Preconditions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdk
 public final class PendingResults
 {
   public static PendingResult<Status> canceledPendingResult()
@@ -35,7 +33,6 @@ public final class PendingResults
     }
   }
   
-  @KeepForSdk
   public static <R extends Result> PendingResult<R> immediateFailedResult(R paramR, GoogleApiClient paramGoogleApiClient)
   {
     AppMethodBeat.i(11050);
@@ -51,7 +48,6 @@ public final class PendingResults
     }
   }
   
-  @KeepForSdk
   public static <R extends Result> OptionalPendingResult<R> immediatePendingResult(R paramR)
   {
     AppMethodBeat.i(11051);
@@ -63,7 +59,6 @@ public final class PendingResults
     return paramR;
   }
   
-  @KeepForSdk
   public static <R extends Result> OptionalPendingResult<R> immediatePendingResult(R paramR, GoogleApiClient paramGoogleApiClient)
   {
     AppMethodBeat.i(11052);
@@ -75,7 +70,6 @@ public final class PendingResults
     return paramR;
   }
   
-  @KeepForSdk
   public static PendingResult<Status> immediatePendingResult(Status paramStatus)
   {
     AppMethodBeat.i(11048);
@@ -86,7 +80,6 @@ public final class PendingResults
     return localStatusPendingResult;
   }
   
-  @KeepForSdk
   public static PendingResult<Status> immediatePendingResult(Status paramStatus, GoogleApiClient paramGoogleApiClient)
   {
     AppMethodBeat.i(11049);
@@ -161,7 +154,7 @@ public final class PendingResults
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.PendingResults
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,20 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.b;
-import io.flutter.embedding.engine.renderer.a;
-import io.flutter.embedding.engine.renderer.c;
+import io.flutter.Log;
+import io.flutter.embedding.engine.renderer.FlutterRenderer;
+import io.flutter.embedding.engine.renderer.RenderSurface;
 
 public class FlutterTextureView
   extends TextureView
-  implements c
+  implements RenderSurface
 {
-  private a aaoR;
-  private boolean aaoU;
-  private boolean aapb;
-  private final TextureView.SurfaceTextureListener aape;
-  private Surface ooH;
+  private static final String TAG = "FlutterTextureView";
+  private FlutterRenderer flutterRenderer;
+  private boolean isAttachedToFlutterRenderer;
+  private boolean isSurfaceAvailableForRendering;
+  private Surface renderSurface;
+  private final TextureView.SurfaceTextureListener surfaceTextureListener;
   
   public FlutterTextureView(Context paramContext)
   {
@@ -30,141 +31,162 @@ public class FlutterTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9970);
-    this.aapb = false;
-    this.aaoU = false;
-    this.aape = new TextureView.SurfaceTextureListener()
+    this.isSurfaceAvailableForRendering = false;
+    this.isAttachedToFlutterRenderer = false;
+    this.surfaceTextureListener = new TextureView.SurfaceTextureListener()
     {
-      public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
+      public void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(10019);
-        b.iAd();
-        FlutterTextureView.a(FlutterTextureView.this, true);
-        if (FlutterTextureView.a(FlutterTextureView.this)) {
-          FlutterTextureView.b(FlutterTextureView.this);
+        Log.v("FlutterTextureView", "SurfaceTextureListener.onSurfaceTextureAvailable()");
+        FlutterTextureView.access$002(FlutterTextureView.this, true);
+        if (FlutterTextureView.this.isAttachedToFlutterRenderer) {
+          FlutterTextureView.access$200(FlutterTextureView.this);
         }
         AppMethodBeat.o(10019);
       }
       
-      public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
+      public boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
       {
         AppMethodBeat.i(10021);
-        b.iAd();
-        FlutterTextureView.a(FlutterTextureView.this, false);
-        if (FlutterTextureView.a(FlutterTextureView.this)) {
-          FlutterTextureView.c(FlutterTextureView.this);
+        Log.v("FlutterTextureView", "SurfaceTextureListener.onSurfaceTextureDestroyed()");
+        FlutterTextureView.access$002(FlutterTextureView.this, false);
+        if (FlutterTextureView.this.isAttachedToFlutterRenderer) {
+          FlutterTextureView.access$400(FlutterTextureView.this);
         }
         AppMethodBeat.o(10021);
         return true;
       }
       
-      public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
+      public void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(10020);
-        b.iAd();
-        if (FlutterTextureView.a(FlutterTextureView.this)) {
-          FlutterTextureView.a(FlutterTextureView.this, paramAnonymousInt1, paramAnonymousInt2);
+        Log.v("FlutterTextureView", "SurfaceTextureListener.onSurfaceTextureSizeChanged()");
+        if (FlutterTextureView.this.isAttachedToFlutterRenderer) {
+          FlutterTextureView.access$300(FlutterTextureView.this, paramAnonymousInt1, paramAnonymousInt2);
         }
         AppMethodBeat.o(10020);
       }
       
-      public final void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture) {}
+      public void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture) {}
     };
-    setSurfaceTextureListener(this.aape);
+    init();
     AppMethodBeat.o(9970);
   }
   
-  private void iAB()
+  private void changeSurfaceSize(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(190405);
+    if (this.flutterRenderer == null)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("changeSurfaceSize() should only be called when flutterRenderer is non-null.");
+      AppMethodBeat.o(190405);
+      throw localIllegalStateException;
+    }
+    Log.v("FlutterTextureView", "Notifying FlutterRenderer that Android surface size has changed to " + paramInt1 + " x " + paramInt2);
+    this.flutterRenderer.surfaceChanged(paramInt1, paramInt2);
+    AppMethodBeat.o(190405);
+  }
+  
+  private void connectSurfaceToRenderer()
   {
     AppMethodBeat.i(9973);
-    if ((this.aaoR == null) || (getSurfaceTexture() == null))
+    if ((this.flutterRenderer == null) || (getSurfaceTexture() == null))
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getSurfaceTexture() are non-null.");
       AppMethodBeat.o(9973);
       throw localIllegalStateException;
     }
-    this.ooH = new Surface(getSurfaceTexture());
-    this.aaoR.t(this.ooH);
+    this.renderSurface = new Surface(getSurfaceTexture());
+    this.flutterRenderer.startRenderingToSurface(this.renderSurface);
     AppMethodBeat.o(9973);
   }
   
-  private void iAC()
+  private void disconnectSurfaceFromRenderer()
   {
     AppMethodBeat.i(9974);
-    if (this.aaoR == null)
+    if (this.flutterRenderer == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
       AppMethodBeat.o(9974);
       throw localIllegalStateException;
     }
-    this.aaoR.iBb();
-    if (this.ooH != null)
+    this.flutterRenderer.stopRenderingToSurface();
+    if (this.renderSurface != null)
     {
-      this.ooH.release();
-      this.ooH = null;
+      this.renderSurface.release();
+      this.renderSurface = null;
     }
     AppMethodBeat.o(9974);
   }
   
-  public final void a(a parama)
+  private void init()
+  {
+    AppMethodBeat.i(190390);
+    setSurfaceTextureListener(this.surfaceTextureListener);
+    AppMethodBeat.o(190390);
+  }
+  
+  public void attachToRenderer(FlutterRenderer paramFlutterRenderer)
   {
     AppMethodBeat.i(9971);
-    b.iAd();
-    if (this.aaoR != null)
+    Log.v("FlutterTextureView", "Attaching to FlutterRenderer.");
+    if (this.flutterRenderer != null)
     {
-      b.iAd();
-      this.aaoR.iBb();
+      Log.v("FlutterTextureView", "Already connected to a FlutterRenderer. Detaching from old one and attaching to new one.");
+      this.flutterRenderer.stopRenderingToSurface();
     }
-    this.aaoR = parama;
-    this.aaoU = true;
-    if (this.aapb)
+    this.flutterRenderer = paramFlutterRenderer;
+    this.isAttachedToFlutterRenderer = true;
+    if (this.isSurfaceAvailableForRendering)
     {
-      b.iAd();
-      iAB();
+      Log.v("FlutterTextureView", "Surface is available for rendering. Connecting FlutterRenderer to Android surface.");
+      connectSurfaceToRenderer();
     }
     AppMethodBeat.o(9971);
   }
   
-  public a getAttachedRenderer()
-  {
-    return this.aaoR;
-  }
-  
-  public final void iAz()
+  public void detachFromRenderer()
   {
     AppMethodBeat.i(9972);
-    if (this.aaoR != null)
+    if (this.flutterRenderer != null)
     {
       if (getWindowToken() != null)
       {
-        b.iAd();
-        iAC();
+        Log.v("FlutterTextureView", "Disconnecting FlutterRenderer from Android surface.");
+        disconnectSurfaceFromRenderer();
       }
-      this.aaoR = null;
-      this.aaoU = false;
+      this.flutterRenderer = null;
+      this.isAttachedToFlutterRenderer = false;
       AppMethodBeat.o(9972);
       return;
     }
-    b.iAf();
+    Log.w("FlutterTextureView", "detachFromRenderer() invoked when no FlutterRenderer was attached.");
     AppMethodBeat.o(9972);
   }
   
-  public final void pause()
+  public FlutterRenderer getAttachedRenderer()
   {
-    AppMethodBeat.i(255477);
-    if (this.aaoR != null)
+    return this.flutterRenderer;
+  }
+  
+  public void pause()
+  {
+    AppMethodBeat.i(190491);
+    if (this.flutterRenderer != null)
     {
-      this.aaoR = null;
-      this.aaoU = false;
-      AppMethodBeat.o(255477);
+      this.flutterRenderer = null;
+      this.isAttachedToFlutterRenderer = false;
+      AppMethodBeat.o(190491);
       return;
     }
-    b.iAf();
-    AppMethodBeat.o(255477);
+    Log.w("FlutterTextureView", "pause() invoked when no FlutterRenderer was attached.");
+    AppMethodBeat.o(190491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterTextureView
  * JD-Core Version:    0.7.0.1
  */

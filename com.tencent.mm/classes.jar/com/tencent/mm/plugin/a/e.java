@@ -10,51 +10,37 @@ import java.nio.channels.FileChannel;
 
 public final class e
 {
-  private static final int mHm;
-  private static final int mHn;
-  private static final int mHo;
-  private static final int mHp;
-  private static final int mHq;
-  private static final int mHr;
-  private static final int mHs;
-  private static final int mHt;
-  private static final int mHu;
-  private static final int mHv;
-  private static final int mHw;
-  private static final int mHx;
-  private static final int mHy;
+  private static final int pDM;
+  private static final int pDN;
+  private static final int pDO;
+  private static final int pDP;
+  private static final int pDQ;
+  private static final int pDR;
+  private static final int pDS;
+  private static final int pDT;
+  private static final int pDU;
+  private static final int pDV;
+  private static final int pDW;
+  private static final int pDX;
+  private static final int pDY;
   
   static
   {
     AppMethodBeat.i(133865);
-    mHm = aQ(new byte[] { 102, 114, 101, 101 });
-    mHn = aQ(new byte[] { 106, 117, 110, 107 });
-    mHo = aQ(new byte[] { 109, 100, 97, 116 });
-    mHp = aQ(new byte[] { 109, 111, 111, 118 });
-    mHq = aQ(new byte[] { 112, 110, 111, 116 });
-    mHr = aQ(new byte[] { 115, 107, 105, 112 });
-    mHs = aQ(new byte[] { 119, 105, 100, 101 });
-    mHt = aQ(new byte[] { 80, 73, 67, 84 });
-    mHu = aQ(new byte[] { 102, 116, 121, 112 });
-    mHv = aQ(new byte[] { 117, 117, 105, 100 });
-    mHw = aQ(new byte[] { 99, 109, 111, 118 });
-    mHx = aQ(new byte[] { 115, 116, 99, 111 });
-    mHy = aQ(new byte[] { 99, 111, 54, 52 });
+    pDM = aQ(new byte[] { 102, 114, 101, 101 });
+    pDN = aQ(new byte[] { 106, 117, 110, 107 });
+    pDO = aQ(new byte[] { 109, 100, 97, 116 });
+    pDP = aQ(new byte[] { 109, 111, 111, 118 });
+    pDQ = aQ(new byte[] { 112, 110, 111, 116 });
+    pDR = aQ(new byte[] { 115, 107, 105, 112 });
+    pDS = aQ(new byte[] { 119, 105, 100, 101 });
+    pDT = aQ(new byte[] { 80, 73, 67, 84 });
+    pDU = aQ(new byte[] { 102, 116, 121, 112 });
+    pDV = aQ(new byte[] { 117, 117, 105, 100 });
+    pDW = aQ(new byte[] { 99, 109, 111, 118 });
+    pDX = aQ(new byte[] { 115, 116, 99, 111 });
+    pDY = aQ(new byte[] { 99, 111, 54, 52 });
     AppMethodBeat.o(133865);
-  }
-  
-  private static int Ha(long paramLong)
-  {
-    AppMethodBeat.i(133860);
-    if ((paramLong > 2147483647L) || (paramLong < 0L))
-    {
-      Exception localException = new Exception("uint32 value is too large");
-      AppMethodBeat.o(133860);
-      throw localException;
-    }
-    int i = (int)paramLong;
-    AppMethodBeat.o(133860);
-    return i;
   }
   
   private static boolean a(FileChannel paramFileChannel, ByteBuffer paramByteBuffer)
@@ -84,1107 +70,1113 @@ public final class e
   public static boolean b(java.lang.String paramString1, java.lang.String paramString2, com.tencent.mm.pointers.PInt paramPInt)
   {
     // Byte code:
-    //   0: ldc 142
+    //   0: ldc 131
     //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 144	com/tencent/mm/vfs/q
+    //   5: new 133	com/tencent/mm/vfs/u
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 145	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 137	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   13: astore 20
-    //   15: new 144	com/tencent/mm/vfs/q
+    //   15: new 133	com/tencent/mm/vfs/u
     //   18: dup
     //   19: aload_1
-    //   20: invokespecial 145	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 137	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   23: astore 26
     //   25: aload 20
-    //   27: invokestatic 151	com/tencent/mm/vfs/u:am	(Lcom/tencent/mm/vfs/q;)Ljava/nio/channels/ReadableByteChannel;
-    //   30: checkcast 110	java/nio/channels/FileChannel
-    //   33: astore 21
-    //   35: aload 26
-    //   37: invokestatic 155	com/tencent/mm/vfs/u:ao	(Lcom/tencent/mm/vfs/q;)Ljava/nio/channels/WritableByteChannel;
-    //   40: checkcast 110	java/nio/channels/FileChannel
-    //   43: astore 25
-    //   45: iconst_0
-    //   46: istore 4
-    //   48: lconst_0
-    //   49: lstore 12
-    //   51: aconst_null
-    //   52: astore 20
-    //   54: aload 21
-    //   56: astore 22
-    //   58: aload 25
-    //   60: astore 23
-    //   62: bipush 8
-    //   64: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   67: getstatic 132	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
-    //   70: invokevirtual 136	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   73: astore 27
-    //   75: lconst_0
-    //   76: lstore 14
-    //   78: iconst_0
-    //   79: istore_3
-    //   80: iconst_0
-    //   81: istore 5
-    //   83: iconst_0
-    //   84: istore 8
-    //   86: aload 21
-    //   88: astore 22
-    //   90: aload 25
-    //   92: astore 23
-    //   94: iload_3
-    //   95: istore 6
-    //   97: aload 20
-    //   99: astore 24
-    //   101: iload 4
-    //   103: istore 7
-    //   105: aload 21
-    //   107: aload 27
-    //   109: invokestatic 161	com/tencent/mm/plugin/a/e:a	(Ljava/nio/channels/FileChannel;Ljava/nio/ByteBuffer;)Z
-    //   112: ifeq +1504 -> 1616
-    //   115: aload 21
-    //   117: astore 22
-    //   119: aload 25
-    //   121: astore 23
+    //   27: getfield 141	com/tencent/mm/vfs/u:mUri	Landroid/net/Uri;
+    //   30: aload 20
+    //   32: invokevirtual 145	com/tencent/mm/vfs/u:jKM	()Lcom/tencent/mm/vfs/k$f;
+    //   35: invokestatic 151	com/tencent/mm/vfs/y:c	(Landroid/net/Uri;Lcom/tencent/mm/vfs/k$f;)Ljava/nio/channels/ReadableByteChannel;
+    //   38: checkcast 97	java/nio/channels/FileChannel
+    //   41: astore 21
+    //   43: aload 26
+    //   45: getfield 141	com/tencent/mm/vfs/u:mUri	Landroid/net/Uri;
+    //   48: aload 26
+    //   50: invokevirtual 145	com/tencent/mm/vfs/u:jKM	()Lcom/tencent/mm/vfs/k$f;
+    //   53: invokestatic 155	com/tencent/mm/vfs/y:d	(Landroid/net/Uri;Lcom/tencent/mm/vfs/k$f;)Ljava/nio/channels/WritableByteChannel;
+    //   56: checkcast 97	java/nio/channels/FileChannel
+    //   59: astore 25
+    //   61: iconst_0
+    //   62: istore 4
+    //   64: lconst_0
+    //   65: lstore 12
+    //   67: aconst_null
+    //   68: astore 20
+    //   70: aload 21
+    //   72: astore 22
+    //   74: aload 25
+    //   76: astore 23
+    //   78: bipush 8
+    //   80: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   83: getstatic 119	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
+    //   86: invokevirtual 123	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   89: astore 27
+    //   91: lconst_0
+    //   92: lstore 14
+    //   94: iconst_0
+    //   95: istore_3
+    //   96: iconst_0
+    //   97: istore 5
+    //   99: iconst_0
+    //   100: istore 8
+    //   102: aload 21
+    //   104: astore 22
+    //   106: aload 25
+    //   108: astore 23
+    //   110: iload_3
+    //   111: istore 6
+    //   113: aload 20
+    //   115: astore 24
+    //   117: iload 4
+    //   119: istore 7
+    //   121: aload 21
     //   123: aload 27
-    //   125: invokevirtual 139	java/nio/ByteBuffer:getInt	()I
-    //   128: i2l
-    //   129: ldc2_w 162
-    //   132: land
-    //   133: lstore 10
-    //   135: aload 21
-    //   137: astore 22
-    //   139: aload 25
-    //   141: astore 23
-    //   143: aload 27
-    //   145: invokevirtual 139	java/nio/ByteBuffer:getInt	()I
-    //   148: istore 4
-    //   150: aload 21
-    //   152: astore 22
-    //   154: aload 25
-    //   156: astore 23
-    //   158: iload 4
-    //   160: getstatic 71	com/tencent/mm/plugin/a/e:mHu	I
-    //   163: if_icmpne +222 -> 385
-    //   166: iconst_1
-    //   167: istore 6
-    //   169: iconst_1
-    //   170: istore_3
-    //   171: aload 21
-    //   173: astore 22
-    //   175: aload 25
-    //   177: astore 23
-    //   179: lload 10
-    //   181: invokestatic 165	com/tencent/mm/plugin/a/e:Ha	(J)I
-    //   184: istore 9
-    //   186: aload 21
-    //   188: astore 22
-    //   190: aload 25
-    //   192: astore 23
-    //   194: iload 9
-    //   196: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   199: getstatic 132	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
-    //   202: invokevirtual 136	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   205: astore 20
-    //   207: aload 21
-    //   209: astore 22
-    //   211: aload 25
-    //   213: astore 23
-    //   215: aload 27
-    //   217: invokevirtual 168	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
-    //   220: pop
-    //   221: aload 21
-    //   223: astore 22
-    //   225: aload 25
-    //   227: astore 23
-    //   229: aload 20
+    //   125: invokestatic 161	com/tencent/mm/plugin/a/e:a	(Ljava/nio/channels/FileChannel;Ljava/nio/ByteBuffer;)Z
+    //   128: ifeq +1504 -> 1632
+    //   131: aload 21
+    //   133: astore 22
+    //   135: aload 25
+    //   137: astore 23
+    //   139: aload 27
+    //   141: invokevirtual 126	java/nio/ByteBuffer:getInt	()I
+    //   144: i2l
+    //   145: ldc2_w 162
+    //   148: land
+    //   149: lstore 10
+    //   151: aload 21
+    //   153: astore 22
+    //   155: aload 25
+    //   157: astore 23
+    //   159: aload 27
+    //   161: invokevirtual 126	java/nio/ByteBuffer:getInt	()I
+    //   164: istore 4
+    //   166: aload 21
+    //   168: astore 22
+    //   170: aload 25
+    //   172: astore 23
+    //   174: iload 4
+    //   176: getstatic 71	com/tencent/mm/plugin/a/e:pDU	I
+    //   179: if_icmpne +222 -> 401
+    //   182: iconst_1
+    //   183: istore 6
+    //   185: iconst_1
+    //   186: istore_3
+    //   187: aload 21
+    //   189: astore 22
+    //   191: aload 25
+    //   193: astore 23
+    //   195: lload 10
+    //   197: invokestatic 167	com/tencent/mm/plugin/a/e:jk	(J)I
+    //   200: istore 9
+    //   202: aload 21
+    //   204: astore 22
+    //   206: aload 25
+    //   208: astore 23
+    //   210: iload 9
+    //   212: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   215: getstatic 119	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
+    //   218: invokevirtual 123	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   221: astore 20
+    //   223: aload 21
+    //   225: astore 22
+    //   227: aload 25
+    //   229: astore 23
     //   231: aload 27
-    //   233: invokevirtual 172	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   233: invokevirtual 170	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   236: pop
     //   237: aload 21
     //   239: astore 22
     //   241: aload 25
     //   243: astore 23
     //   245: aload 20
-    //   247: astore 24
-    //   249: lload 10
-    //   251: lstore 12
-    //   253: iload 4
-    //   255: istore 7
-    //   257: aload 21
-    //   259: aload 20
-    //   261: invokevirtual 114	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;)I
-    //   264: iload 9
-    //   266: bipush 8
-    //   268: isub
-    //   269: if_icmplt +1347 -> 1616
-    //   272: aload 21
-    //   274: astore 22
-    //   276: aload 25
-    //   278: astore 23
-    //   280: aload 20
-    //   282: invokevirtual 117	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
-    //   285: pop
-    //   286: aload 21
-    //   288: astore 22
-    //   290: aload 25
-    //   292: astore 23
-    //   294: aload 21
-    //   296: invokevirtual 176	java/nio/channels/FileChannel:position	()J
-    //   299: lstore 14
-    //   301: lload 10
-    //   303: lstore 12
-    //   305: lload 10
-    //   307: ldc2_w 177
-    //   310: lcmp
-    //   311: ifge -225 -> 86
-    //   314: aload 21
-    //   316: astore 22
-    //   318: aload 25
-    //   320: astore 23
-    //   322: ldc 180
-    //   324: ldc 182
-    //   326: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   329: iconst_0
-    //   330: istore 18
-    //   332: iload 18
-    //   334: istore 19
-    //   336: iload 18
-    //   338: ifeq +18 -> 356
-    //   341: aload 21
-    //   343: astore 22
-    //   345: aload 25
-    //   347: astore 23
-    //   349: aload_0
-    //   350: aload_1
-    //   351: invokestatic 192	com/tencent/mm/plugin/a/e:bY	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   354: istore 19
-    //   356: aload 21
-    //   358: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   247: aload 27
+    //   249: invokevirtual 174	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
+    //   252: pop
+    //   253: aload 21
+    //   255: astore 22
+    //   257: aload 25
+    //   259: astore 23
+    //   261: aload 20
+    //   263: astore 24
+    //   265: lload 10
+    //   267: lstore 12
+    //   269: iload 4
+    //   271: istore 7
+    //   273: aload 21
+    //   275: aload 20
+    //   277: invokevirtual 101	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;)I
+    //   280: iload 9
+    //   282: bipush 8
+    //   284: isub
+    //   285: if_icmplt +1347 -> 1632
+    //   288: aload 21
+    //   290: astore 22
+    //   292: aload 25
+    //   294: astore 23
+    //   296: aload 20
+    //   298: invokevirtual 104	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
+    //   301: pop
+    //   302: aload 21
+    //   304: astore 22
+    //   306: aload 25
+    //   308: astore 23
+    //   310: aload 21
+    //   312: invokevirtual 178	java/nio/channels/FileChannel:position	()J
+    //   315: lstore 14
+    //   317: lload 10
+    //   319: lstore 12
+    //   321: lload 10
+    //   323: ldc2_w 179
+    //   326: lcmp
+    //   327: ifge -225 -> 102
+    //   330: aload 21
+    //   332: astore 22
+    //   334: aload 25
+    //   336: astore 23
+    //   338: ldc 182
+    //   340: ldc 184
+    //   342: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   345: iconst_0
+    //   346: istore 18
+    //   348: iload 18
+    //   350: istore 19
+    //   352: iload 18
+    //   354: ifeq +18 -> 372
+    //   357: aload 21
+    //   359: astore 22
     //   361: aload 25
-    //   363: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   366: iload 19
-    //   368: ifne +9 -> 377
-    //   371: aload 26
-    //   373: invokevirtual 200	com/tencent/mm/vfs/q:cFq	()Z
-    //   376: pop
-    //   377: ldc 142
-    //   379: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   363: astore 23
+    //   365: aload_0
+    //   366: aload_1
+    //   367: invokestatic 194	com/tencent/mm/plugin/a/e:cl	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   370: istore 19
+    //   372: aload 21
+    //   374: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   377: aload 25
+    //   379: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
     //   382: iload 19
-    //   384: ireturn
-    //   385: aload 21
-    //   387: astore 22
-    //   389: aload 25
-    //   391: astore 23
-    //   393: iload 4
-    //   395: getstatic 52	com/tencent/mm/plugin/a/e:mHp	I
-    //   398: if_icmpne +111 -> 509
+    //   384: ifne +9 -> 393
+    //   387: aload 26
+    //   389: invokevirtual 202	com/tencent/mm/vfs/u:diJ	()Z
+    //   392: pop
+    //   393: ldc 131
+    //   395: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   398: iload 19
+    //   400: ireturn
     //   401: aload 21
     //   403: astore 22
     //   405: aload 25
     //   407: astore 23
-    //   409: aload 21
-    //   411: invokevirtual 176	java/nio/channels/FileChannel:position	()J
-    //   414: lstore 12
-    //   416: iconst_1
-    //   417: istore 6
-    //   419: iload 5
-    //   421: ifne +37 -> 458
-    //   424: aload 21
-    //   426: astore 22
-    //   428: aload 25
-    //   430: astore 23
-    //   432: ldc 180
-    //   434: ldc 202
-    //   436: invokestatic 205	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   439: aload 21
-    //   441: astore 22
-    //   443: aload 25
-    //   445: astore 23
-    //   447: aload_2
-    //   448: iconst_1
-    //   449: putfield 210	com/tencent/mm/pointers/PInt:value	I
-    //   452: iconst_0
-    //   453: istore 18
-    //   455: goto -123 -> 332
-    //   458: aload 21
-    //   460: astore 22
-    //   462: aload 25
-    //   464: astore 23
-    //   466: ldc 180
-    //   468: ldc 212
-    //   470: invokestatic 205	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   473: lload 12
-    //   475: ldc2_w 177
-    //   478: lsub
-    //   479: lstore 12
-    //   481: iload 6
-    //   483: istore 5
-    //   485: goto +1159 -> 1644
-    //   488: aload 21
-    //   490: astore 22
-    //   492: aload 25
-    //   494: astore 23
-    //   496: ldc 180
-    //   498: ldc 214
-    //   500: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   503: iconst_0
-    //   504: istore 18
-    //   506: goto -174 -> 332
-    //   509: aload 21
-    //   511: astore 22
-    //   513: aload 25
-    //   515: astore 23
-    //   517: iload 4
-    //   519: getstatic 48	com/tencent/mm/plugin/a/e:mHo	I
-    //   522: if_icmpne +6 -> 528
-    //   525: iconst_1
-    //   526: istore 5
-    //   528: lload 10
-    //   530: lconst_1
-    //   531: lcmp
-    //   532: ifne +218 -> 750
-    //   535: aload 21
-    //   537: astore 22
-    //   539: aload 25
-    //   541: astore 23
-    //   543: aload 27
-    //   545: invokevirtual 108	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   548: pop
-    //   549: aload 21
-    //   551: astore 22
-    //   553: aload 25
-    //   555: astore 23
-    //   557: iload_3
-    //   558: istore 6
-    //   560: aload 20
-    //   562: astore 24
-    //   564: lload 10
-    //   566: lstore 12
-    //   568: iload 4
-    //   570: istore 7
-    //   572: aload 21
-    //   574: aload 27
-    //   576: invokestatic 161	com/tencent/mm/plugin/a/e:a	(Ljava/nio/channels/FileChannel;Ljava/nio/ByteBuffer;)Z
-    //   579: ifeq +1037 -> 1616
-    //   582: aload 21
-    //   584: astore 22
-    //   586: aload 25
-    //   588: astore 23
+    //   409: iload 4
+    //   411: getstatic 52	com/tencent/mm/plugin/a/e:pDP	I
+    //   414: if_icmpne +111 -> 525
+    //   417: aload 21
+    //   419: astore 22
+    //   421: aload 25
+    //   423: astore 23
+    //   425: aload 21
+    //   427: invokevirtual 178	java/nio/channels/FileChannel:position	()J
+    //   430: lstore 12
+    //   432: iconst_1
+    //   433: istore 6
+    //   435: iload 5
+    //   437: ifne +37 -> 474
+    //   440: aload 21
+    //   442: astore 22
+    //   444: aload 25
+    //   446: astore 23
+    //   448: ldc 182
+    //   450: ldc 204
+    //   452: invokestatic 206	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   455: aload 21
+    //   457: astore 22
+    //   459: aload 25
+    //   461: astore 23
+    //   463: aload_2
+    //   464: iconst_1
+    //   465: putfield 211	com/tencent/mm/pointers/PInt:value	I
+    //   468: iconst_0
+    //   469: istore 18
+    //   471: goto -123 -> 348
+    //   474: aload 21
+    //   476: astore 22
+    //   478: aload 25
+    //   480: astore 23
+    //   482: ldc 182
+    //   484: ldc 213
+    //   486: invokestatic 206	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   489: lload 12
+    //   491: ldc2_w 179
+    //   494: lsub
+    //   495: lstore 12
+    //   497: iload 6
+    //   499: istore 5
+    //   501: goto +1159 -> 1660
+    //   504: aload 21
+    //   506: astore 22
+    //   508: aload 25
+    //   510: astore 23
+    //   512: ldc 182
+    //   514: ldc 215
+    //   516: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   519: iconst_0
+    //   520: istore 18
+    //   522: goto -174 -> 348
+    //   525: aload 21
+    //   527: astore 22
+    //   529: aload 25
+    //   531: astore 23
+    //   533: iload 4
+    //   535: getstatic 48	com/tencent/mm/plugin/a/e:pDO	I
+    //   538: if_icmpne +6 -> 544
+    //   541: iconst_1
+    //   542: istore 5
+    //   544: lload 10
+    //   546: lconst_1
+    //   547: lcmp
+    //   548: ifne +218 -> 766
+    //   551: aload 21
+    //   553: astore 22
+    //   555: aload 25
+    //   557: astore 23
+    //   559: aload 27
+    //   561: invokevirtual 95	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   564: pop
+    //   565: aload 21
+    //   567: astore 22
+    //   569: aload 25
+    //   571: astore 23
+    //   573: iload_3
+    //   574: istore 6
+    //   576: aload 20
+    //   578: astore 24
+    //   580: lload 10
+    //   582: lstore 12
+    //   584: iload 4
+    //   586: istore 7
+    //   588: aload 21
     //   590: aload 27
-    //   592: invokevirtual 217	java/nio/ByteBuffer:getLong	()J
-    //   595: lstore 10
-    //   597: lload 10
-    //   599: lconst_0
-    //   600: lcmp
-    //   601: ifge +98 -> 699
-    //   604: aload 21
-    //   606: astore 22
-    //   608: aload 25
-    //   610: astore 23
-    //   612: new 93	java/lang/Exception
-    //   615: dup
-    //   616: ldc 219
-    //   618: invokespecial 99	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   621: astore_0
-    //   622: aload 21
-    //   624: astore 22
-    //   626: aload 25
-    //   628: astore 23
-    //   630: ldc 142
-    //   632: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   635: aload 21
-    //   637: astore 22
-    //   639: aload 25
-    //   641: astore 23
-    //   643: aload_0
-    //   644: athrow
-    //   645: astore_0
-    //   646: iconst_0
-    //   647: istore 18
-    //   649: aload 25
-    //   651: astore_1
-    //   652: aload 21
-    //   654: astore 22
-    //   656: aload_1
+    //   592: invokestatic 161	com/tencent/mm/plugin/a/e:a	(Ljava/nio/channels/FileChannel;Ljava/nio/ByteBuffer;)Z
+    //   595: ifeq +1037 -> 1632
+    //   598: aload 21
+    //   600: astore 22
+    //   602: aload 25
+    //   604: astore 23
+    //   606: aload 27
+    //   608: invokevirtual 218	java/nio/ByteBuffer:getLong	()J
+    //   611: lstore 10
+    //   613: lload 10
+    //   615: lconst_0
+    //   616: lcmp
+    //   617: ifge +98 -> 715
+    //   620: aload 21
+    //   622: astore 22
+    //   624: aload 25
+    //   626: astore 23
+    //   628: new 130	java/lang/Exception
+    //   631: dup
+    //   632: ldc 220
+    //   634: invokespecial 221	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   637: astore_0
+    //   638: aload 21
+    //   640: astore 22
+    //   642: aload 25
+    //   644: astore 23
+    //   646: ldc 131
+    //   648: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   651: aload 21
+    //   653: astore 22
+    //   655: aload 25
     //   657: astore 23
-    //   659: ldc 180
-    //   661: new 221	java/lang/StringBuilder
-    //   664: dup
-    //   665: ldc 223
-    //   667: invokespecial 224	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   670: aload_0
-    //   671: invokevirtual 228	java/lang/Exception:toString	()Ljava/lang/String;
-    //   674: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   677: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   680: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   683: aload 21
-    //   685: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   688: aload_1
-    //   689: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   692: iload 18
-    //   694: istore 19
-    //   696: goto -330 -> 366
+    //   659: aload_0
+    //   660: athrow
+    //   661: astore_0
+    //   662: iconst_0
+    //   663: istore 18
+    //   665: aload 25
+    //   667: astore_1
+    //   668: aload 21
+    //   670: astore 22
+    //   672: aload_1
+    //   673: astore 23
+    //   675: ldc 182
+    //   677: new 223	java/lang/StringBuilder
+    //   680: dup
+    //   681: ldc 225
+    //   683: invokespecial 226	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   686: aload_0
+    //   687: invokevirtual 230	java/lang/Exception:toString	()Ljava/lang/String;
+    //   690: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   693: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   696: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   699: aload 21
-    //   701: astore 22
-    //   703: aload 25
-    //   705: astore 23
-    //   707: aload 21
-    //   709: aload 21
-    //   711: invokevirtual 176	java/nio/channels/FileChannel:position	()J
-    //   714: lload 10
-    //   716: ladd
-    //   717: ldc2_w 234
-    //   720: lsub
-    //   721: invokevirtual 238	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
-    //   724: pop
-    //   725: goto -424 -> 301
-    //   728: astore_0
-    //   729: aload 22
-    //   731: astore 21
-    //   733: aload 21
-    //   735: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   738: aload 23
-    //   740: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   743: ldc 142
-    //   745: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   748: aload_0
-    //   749: athrow
-    //   750: aload 21
-    //   752: astore 22
-    //   754: aload 25
-    //   756: astore 23
-    //   758: aload 21
-    //   760: aload 21
-    //   762: invokevirtual 176	java/nio/channels/FileChannel:position	()J
-    //   765: lload 10
-    //   767: ladd
-    //   768: ldc2_w 177
-    //   771: lsub
-    //   772: invokevirtual 238	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
-    //   775: pop
-    //   776: goto -475 -> 301
-    //   779: aload 21
-    //   781: astore 22
-    //   783: aload 25
-    //   785: astore 23
-    //   787: iload 4
-    //   789: getstatic 52	com/tencent/mm/plugin/a/e:mHp	I
-    //   792: if_icmpne +10 -> 802
-    //   795: lload 12
-    //   797: lconst_0
-    //   798: lcmp
-    //   799: ifge +24 -> 823
-    //   802: aload 21
-    //   804: astore 22
-    //   806: aload 25
-    //   808: astore 23
-    //   810: ldc 180
-    //   812: ldc 240
-    //   814: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   817: iconst_0
-    //   818: istore 18
-    //   820: goto -488 -> 332
-    //   823: aload 21
-    //   825: astore 22
-    //   827: aload 25
-    //   829: astore 23
-    //   831: lload 10
-    //   833: invokestatic 165	com/tencent/mm/plugin/a/e:Ha	(J)I
-    //   836: istore 4
-    //   838: aload 21
-    //   840: astore 22
-    //   842: aload 25
-    //   844: astore 23
-    //   846: iload 4
-    //   848: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   851: getstatic 132	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
-    //   854: invokevirtual 136	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   857: astore_2
-    //   858: aload 21
-    //   860: astore 22
-    //   862: aload 25
-    //   864: astore 23
-    //   866: aload_2
-    //   867: invokevirtual 108	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   870: pop
-    //   871: aload 21
-    //   873: astore 22
-    //   875: aload 25
-    //   877: astore 23
-    //   879: aload 21
-    //   881: aload_2
-    //   882: lload 12
-    //   884: invokevirtual 243	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;J)I
-    //   887: istore_3
-    //   888: aload 21
-    //   890: astore 22
-    //   892: aload 25
-    //   894: astore 23
-    //   896: aload_2
-    //   897: invokevirtual 117	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
-    //   900: pop
-    //   901: aload 21
-    //   903: astore 22
-    //   905: aload 25
-    //   907: astore 23
-    //   909: iload_3
-    //   910: aload_2
-    //   911: invokevirtual 121	java/nio/ByteBuffer:capacity	()I
-    //   914: if_icmpne +742 -> 1656
-    //   917: iconst_1
-    //   918: istore_3
-    //   919: iload_3
-    //   920: ifne +24 -> 944
-    //   923: aload 21
-    //   925: astore 22
-    //   927: aload 25
-    //   929: astore 23
-    //   931: ldc 180
-    //   933: ldc 245
-    //   935: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   938: iconst_0
-    //   939: istore 18
-    //   941: goto -609 -> 332
-    //   944: aload 21
-    //   946: astore 22
-    //   948: aload 25
-    //   950: astore 23
-    //   952: aload_2
-    //   953: bipush 12
-    //   955: invokevirtual 248	java/nio/ByteBuffer:getInt	(I)I
-    //   958: getstatic 76	com/tencent/mm/plugin/a/e:mHw	I
-    //   961: if_icmpne +24 -> 985
-    //   964: aload 21
-    //   966: astore 22
-    //   968: aload 25
-    //   970: astore 23
-    //   972: ldc 180
-    //   974: ldc 250
-    //   976: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   979: iconst_0
-    //   980: istore 18
-    //   982: goto -650 -> 332
-    //   985: aload 21
-    //   987: astore 22
-    //   989: aload 25
-    //   991: astore 23
-    //   993: aload_2
-    //   994: invokevirtual 253	java/nio/ByteBuffer:remaining	()I
-    //   997: bipush 8
-    //   999: if_icmplt +430 -> 1429
-    //   1002: aload 21
-    //   1004: astore 22
-    //   1006: aload 25
-    //   1008: astore 23
-    //   1010: aload_2
-    //   1011: invokevirtual 255	java/nio/ByteBuffer:position	()I
-    //   1014: istore 5
-    //   1016: aload 21
-    //   1018: astore 22
-    //   1020: aload 25
-    //   1022: astore 23
-    //   1024: aload_2
-    //   1025: iload 5
-    //   1027: iconst_4
-    //   1028: iadd
-    //   1029: invokevirtual 248	java/nio/ByteBuffer:getInt	(I)I
-    //   1032: istore_3
-    //   1033: aload 21
-    //   1035: astore 22
-    //   1037: aload 25
-    //   1039: astore 23
-    //   1041: iload_3
-    //   1042: getstatic 78	com/tencent/mm/plugin/a/e:mHx	I
-    //   1045: if_icmpeq +40 -> 1085
-    //   1048: aload 21
-    //   1050: astore 22
-    //   1052: aload 25
-    //   1054: astore 23
-    //   1056: iload_3
-    //   1057: getstatic 82	com/tencent/mm/plugin/a/e:mHy	I
-    //   1060: if_icmpeq +25 -> 1085
-    //   1063: aload 21
-    //   1065: astore 22
-    //   1067: aload 25
-    //   1069: astore 23
-    //   1071: aload_2
-    //   1072: aload_2
-    //   1073: invokevirtual 255	java/nio/ByteBuffer:position	()I
-    //   1076: iconst_1
-    //   1077: iadd
-    //   1078: invokevirtual 258	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   1081: pop
-    //   1082: goto -97 -> 985
-    //   1085: aload 21
-    //   1087: astore 22
-    //   1089: aload 25
-    //   1091: astore 23
-    //   1093: aload_2
-    //   1094: iload 5
-    //   1096: invokevirtual 248	java/nio/ByteBuffer:getInt	(I)I
-    //   1099: i2l
-    //   1100: ldc2_w 162
-    //   1103: land
-    //   1104: aload_2
-    //   1105: invokevirtual 253	java/nio/ByteBuffer:remaining	()I
-    //   1108: i2l
-    //   1109: lcmp
-    //   1110: ifle +25 -> 1135
-    //   1113: aload 21
-    //   1115: astore 22
-    //   1117: aload 25
-    //   1119: astore 23
-    //   1121: ldc 180
-    //   1123: ldc_w 260
-    //   1126: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1129: iconst_0
-    //   1130: istore 18
-    //   1132: goto -800 -> 332
-    //   1135: aload 21
-    //   1137: astore 22
-    //   1139: aload 25
-    //   1141: astore 23
-    //   1143: aload_2
-    //   1144: iload 5
-    //   1146: bipush 12
-    //   1148: iadd
-    //   1149: invokevirtual 258	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
-    //   1152: pop
-    //   1153: aload 21
-    //   1155: astore 22
-    //   1157: aload 25
-    //   1159: astore 23
-    //   1161: aload_2
-    //   1162: invokevirtual 253	java/nio/ByteBuffer:remaining	()I
-    //   1165: iconst_4
-    //   1166: if_icmpge +25 -> 1191
+    //   701: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   704: aload_1
+    //   705: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   708: iload 18
+    //   710: istore 19
+    //   712: goto -330 -> 382
+    //   715: aload 21
+    //   717: astore 22
+    //   719: aload 25
+    //   721: astore 23
+    //   723: aload 21
+    //   725: aload 21
+    //   727: invokevirtual 178	java/nio/channels/FileChannel:position	()J
+    //   730: lload 10
+    //   732: ladd
+    //   733: ldc2_w 236
+    //   736: lsub
+    //   737: invokevirtual 240	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   740: pop
+    //   741: goto -424 -> 317
+    //   744: astore_0
+    //   745: aload 22
+    //   747: astore 21
+    //   749: aload 21
+    //   751: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   754: aload 23
+    //   756: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   759: ldc 131
+    //   761: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   764: aload_0
+    //   765: athrow
+    //   766: aload 21
+    //   768: astore 22
+    //   770: aload 25
+    //   772: astore 23
+    //   774: aload 21
+    //   776: aload 21
+    //   778: invokevirtual 178	java/nio/channels/FileChannel:position	()J
+    //   781: lload 10
+    //   783: ladd
+    //   784: ldc2_w 179
+    //   787: lsub
+    //   788: invokevirtual 240	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   791: pop
+    //   792: goto -475 -> 317
+    //   795: aload 21
+    //   797: astore 22
+    //   799: aload 25
+    //   801: astore 23
+    //   803: iload 4
+    //   805: getstatic 52	com/tencent/mm/plugin/a/e:pDP	I
+    //   808: if_icmpne +10 -> 818
+    //   811: lload 12
+    //   813: lconst_0
+    //   814: lcmp
+    //   815: ifge +24 -> 839
+    //   818: aload 21
+    //   820: astore 22
+    //   822: aload 25
+    //   824: astore 23
+    //   826: ldc 182
+    //   828: ldc 242
+    //   830: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   833: iconst_0
+    //   834: istore 18
+    //   836: goto -488 -> 348
+    //   839: aload 21
+    //   841: astore 22
+    //   843: aload 25
+    //   845: astore 23
+    //   847: lload 10
+    //   849: invokestatic 167	com/tencent/mm/plugin/a/e:jk	(J)I
+    //   852: istore 4
+    //   854: aload 21
+    //   856: astore 22
+    //   858: aload 25
+    //   860: astore 23
+    //   862: iload 4
+    //   864: invokestatic 159	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   867: getstatic 119	java/nio/ByteOrder:BIG_ENDIAN	Ljava/nio/ByteOrder;
+    //   870: invokevirtual 123	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   873: astore_2
+    //   874: aload 21
+    //   876: astore 22
+    //   878: aload 25
+    //   880: astore 23
+    //   882: aload_2
+    //   883: invokevirtual 95	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   886: pop
+    //   887: aload 21
+    //   889: astore 22
+    //   891: aload 25
+    //   893: astore 23
+    //   895: aload 21
+    //   897: aload_2
+    //   898: lload 12
+    //   900: invokevirtual 245	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;J)I
+    //   903: istore_3
+    //   904: aload 21
+    //   906: astore 22
+    //   908: aload 25
+    //   910: astore 23
+    //   912: aload_2
+    //   913: invokevirtual 104	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
+    //   916: pop
+    //   917: aload 21
+    //   919: astore 22
+    //   921: aload 25
+    //   923: astore 23
+    //   925: iload_3
+    //   926: aload_2
+    //   927: invokevirtual 108	java/nio/ByteBuffer:capacity	()I
+    //   930: if_icmpne +742 -> 1672
+    //   933: iconst_1
+    //   934: istore_3
+    //   935: iload_3
+    //   936: ifne +24 -> 960
+    //   939: aload 21
+    //   941: astore 22
+    //   943: aload 25
+    //   945: astore 23
+    //   947: ldc 182
+    //   949: ldc 247
+    //   951: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   954: iconst_0
+    //   955: istore 18
+    //   957: goto -609 -> 348
+    //   960: aload 21
+    //   962: astore 22
+    //   964: aload 25
+    //   966: astore 23
+    //   968: aload_2
+    //   969: bipush 12
+    //   971: invokevirtual 250	java/nio/ByteBuffer:getInt	(I)I
+    //   974: getstatic 76	com/tencent/mm/plugin/a/e:pDW	I
+    //   977: if_icmpne +24 -> 1001
+    //   980: aload 21
+    //   982: astore 22
+    //   984: aload 25
+    //   986: astore 23
+    //   988: ldc 182
+    //   990: ldc 252
+    //   992: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   995: iconst_0
+    //   996: istore 18
+    //   998: goto -650 -> 348
+    //   1001: aload 21
+    //   1003: astore 22
+    //   1005: aload 25
+    //   1007: astore 23
+    //   1009: aload_2
+    //   1010: invokevirtual 255	java/nio/ByteBuffer:remaining	()I
+    //   1013: bipush 8
+    //   1015: if_icmplt +430 -> 1445
+    //   1018: aload 21
+    //   1020: astore 22
+    //   1022: aload 25
+    //   1024: astore 23
+    //   1026: aload_2
+    //   1027: invokevirtual 257	java/nio/ByteBuffer:position	()I
+    //   1030: istore 5
+    //   1032: aload 21
+    //   1034: astore 22
+    //   1036: aload 25
+    //   1038: astore 23
+    //   1040: aload_2
+    //   1041: iload 5
+    //   1043: iconst_4
+    //   1044: iadd
+    //   1045: invokevirtual 250	java/nio/ByteBuffer:getInt	(I)I
+    //   1048: istore_3
+    //   1049: aload 21
+    //   1051: astore 22
+    //   1053: aload 25
+    //   1055: astore 23
+    //   1057: iload_3
+    //   1058: getstatic 78	com/tencent/mm/plugin/a/e:pDX	I
+    //   1061: if_icmpeq +40 -> 1101
+    //   1064: aload 21
+    //   1066: astore 22
+    //   1068: aload 25
+    //   1070: astore 23
+    //   1072: iload_3
+    //   1073: getstatic 82	com/tencent/mm/plugin/a/e:pDY	I
+    //   1076: if_icmpeq +25 -> 1101
+    //   1079: aload 21
+    //   1081: astore 22
+    //   1083: aload 25
+    //   1085: astore 23
+    //   1087: aload_2
+    //   1088: aload_2
+    //   1089: invokevirtual 257	java/nio/ByteBuffer:position	()I
+    //   1092: iconst_1
+    //   1093: iadd
+    //   1094: invokevirtual 260	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1097: pop
+    //   1098: goto -97 -> 1001
+    //   1101: aload 21
+    //   1103: astore 22
+    //   1105: aload 25
+    //   1107: astore 23
+    //   1109: aload_2
+    //   1110: iload 5
+    //   1112: invokevirtual 250	java/nio/ByteBuffer:getInt	(I)I
+    //   1115: i2l
+    //   1116: ldc2_w 162
+    //   1119: land
+    //   1120: aload_2
+    //   1121: invokevirtual 255	java/nio/ByteBuffer:remaining	()I
+    //   1124: i2l
+    //   1125: lcmp
+    //   1126: ifle +25 -> 1151
+    //   1129: aload 21
+    //   1131: astore 22
+    //   1133: aload 25
+    //   1135: astore 23
+    //   1137: ldc 182
+    //   1139: ldc_w 262
+    //   1142: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1145: iconst_0
+    //   1146: istore 18
+    //   1148: goto -800 -> 348
+    //   1151: aload 21
+    //   1153: astore 22
+    //   1155: aload 25
+    //   1157: astore 23
+    //   1159: aload_2
+    //   1160: iload 5
+    //   1162: bipush 12
+    //   1164: iadd
+    //   1165: invokevirtual 260	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
+    //   1168: pop
     //   1169: aload 21
     //   1171: astore 22
     //   1173: aload 25
     //   1175: astore 23
-    //   1177: ldc 180
-    //   1179: ldc_w 262
-    //   1182: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1185: iconst_0
-    //   1186: istore 18
-    //   1188: goto -856 -> 332
-    //   1191: aload 21
-    //   1193: astore 22
-    //   1195: aload 25
-    //   1197: astore 23
-    //   1199: aload_2
-    //   1200: invokevirtual 139	java/nio/ByteBuffer:getInt	()I
-    //   1203: i2l
-    //   1204: invokestatic 165	com/tencent/mm/plugin/a/e:Ha	(J)I
-    //   1207: istore 5
-    //   1209: aload 21
-    //   1211: astore 22
-    //   1213: aload 25
-    //   1215: astore 23
-    //   1217: iload_3
-    //   1218: getstatic 78	com/tencent/mm/plugin/a/e:mHx	I
-    //   1221: if_icmpne +113 -> 1334
-    //   1224: aload 21
-    //   1226: astore 22
-    //   1228: aload 25
-    //   1230: astore 23
-    //   1232: aload_2
-    //   1233: invokevirtual 253	java/nio/ByteBuffer:remaining	()I
-    //   1236: iload 5
-    //   1238: iconst_4
-    //   1239: imul
-    //   1240: if_icmpge +421 -> 1661
-    //   1243: aload 21
-    //   1245: astore 22
-    //   1247: aload 25
-    //   1249: astore 23
-    //   1251: ldc 180
-    //   1253: ldc_w 264
-    //   1256: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1259: iconst_0
-    //   1260: istore 18
-    //   1262: goto -930 -> 332
-    //   1265: iload_3
-    //   1266: iload 5
-    //   1268: if_icmpge -283 -> 985
-    //   1271: aload 21
-    //   1273: astore 22
-    //   1275: aload 25
-    //   1277: astore 23
-    //   1279: aload_2
-    //   1280: aload_2
-    //   1281: invokevirtual 255	java/nio/ByteBuffer:position	()I
-    //   1284: invokevirtual 248	java/nio/ByteBuffer:getInt	(I)I
-    //   1287: istore 6
-    //   1289: iload 6
-    //   1291: iload 4
-    //   1293: iadd
-    //   1294: istore 7
-    //   1296: iload 6
-    //   1298: ifge +14 -> 1312
-    //   1301: iload 7
-    //   1303: iflt +9 -> 1312
-    //   1306: iconst_0
-    //   1307: istore 18
-    //   1309: goto -977 -> 332
-    //   1312: aload 21
-    //   1314: astore 22
-    //   1316: aload 25
-    //   1318: astore 23
-    //   1320: aload_2
-    //   1321: iload 7
-    //   1323: invokevirtual 267	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
-    //   1326: pop
-    //   1327: iload_3
-    //   1328: iconst_1
-    //   1329: iadd
-    //   1330: istore_3
-    //   1331: goto -66 -> 1265
-    //   1334: aload 21
-    //   1336: astore 22
-    //   1338: aload 25
-    //   1340: astore 23
-    //   1342: iload_3
-    //   1343: getstatic 82	com/tencent/mm/plugin/a/e:mHy	I
-    //   1346: if_icmpne -361 -> 985
-    //   1349: aload 21
-    //   1351: astore 22
-    //   1353: aload 25
-    //   1355: astore 23
-    //   1357: aload_2
-    //   1358: invokevirtual 253	java/nio/ByteBuffer:remaining	()I
-    //   1361: iload 5
-    //   1363: bipush 8
-    //   1365: imul
-    //   1366: if_icmpge +300 -> 1666
-    //   1369: aload 21
-    //   1371: astore 22
-    //   1373: aload 25
-    //   1375: astore 23
-    //   1377: ldc 180
-    //   1379: ldc_w 264
-    //   1382: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1385: iconst_0
-    //   1386: istore 18
-    //   1388: goto -1056 -> 332
-    //   1391: iload_3
-    //   1392: iload 5
-    //   1394: if_icmpge -409 -> 985
-    //   1397: aload 21
-    //   1399: astore 22
-    //   1401: aload 25
-    //   1403: astore 23
-    //   1405: aload_2
-    //   1406: aload_2
-    //   1407: aload_2
-    //   1408: invokevirtual 255	java/nio/ByteBuffer:position	()I
-    //   1411: invokevirtual 270	java/nio/ByteBuffer:getLong	(I)J
-    //   1414: iload 4
-    //   1416: i2l
-    //   1417: ladd
-    //   1418: invokevirtual 274	java/nio/ByteBuffer:putLong	(J)Ljava/nio/ByteBuffer;
-    //   1421: pop
-    //   1422: iload_3
-    //   1423: iconst_1
-    //   1424: iadd
-    //   1425: istore_3
-    //   1426: goto -35 -> 1391
-    //   1429: aload 21
-    //   1431: astore 22
-    //   1433: aload 25
-    //   1435: astore 23
-    //   1437: aload 21
-    //   1439: lload 14
-    //   1441: invokevirtual 238	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
-    //   1444: pop
-    //   1445: aload 20
-    //   1447: ifnull +33 -> 1480
-    //   1450: aload 21
-    //   1452: astore 22
-    //   1454: aload 25
-    //   1456: astore 23
-    //   1458: aload 20
-    //   1460: invokevirtual 168	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
-    //   1463: pop
-    //   1464: aload 21
-    //   1466: astore 22
-    //   1468: aload 25
-    //   1470: astore 23
-    //   1472: aload 25
+    //   1177: aload_2
+    //   1178: invokevirtual 255	java/nio/ByteBuffer:remaining	()I
+    //   1181: iconst_4
+    //   1182: if_icmpge +25 -> 1207
+    //   1185: aload 21
+    //   1187: astore 22
+    //   1189: aload 25
+    //   1191: astore 23
+    //   1193: ldc 182
+    //   1195: ldc_w 264
+    //   1198: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1201: iconst_0
+    //   1202: istore 18
+    //   1204: goto -856 -> 348
+    //   1207: aload 21
+    //   1209: astore 22
+    //   1211: aload 25
+    //   1213: astore 23
+    //   1215: aload_2
+    //   1216: invokevirtual 126	java/nio/ByteBuffer:getInt	()I
+    //   1219: i2l
+    //   1220: invokestatic 167	com/tencent/mm/plugin/a/e:jk	(J)I
+    //   1223: istore 5
+    //   1225: aload 21
+    //   1227: astore 22
+    //   1229: aload 25
+    //   1231: astore 23
+    //   1233: iload_3
+    //   1234: getstatic 78	com/tencent/mm/plugin/a/e:pDX	I
+    //   1237: if_icmpne +113 -> 1350
+    //   1240: aload 21
+    //   1242: astore 22
+    //   1244: aload 25
+    //   1246: astore 23
+    //   1248: aload_2
+    //   1249: invokevirtual 255	java/nio/ByteBuffer:remaining	()I
+    //   1252: iload 5
+    //   1254: iconst_4
+    //   1255: imul
+    //   1256: if_icmpge +421 -> 1677
+    //   1259: aload 21
+    //   1261: astore 22
+    //   1263: aload 25
+    //   1265: astore 23
+    //   1267: ldc 182
+    //   1269: ldc_w 266
+    //   1272: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1275: iconst_0
+    //   1276: istore 18
+    //   1278: goto -930 -> 348
+    //   1281: iload_3
+    //   1282: iload 5
+    //   1284: if_icmpge -283 -> 1001
+    //   1287: aload 21
+    //   1289: astore 22
+    //   1291: aload 25
+    //   1293: astore 23
+    //   1295: aload_2
+    //   1296: aload_2
+    //   1297: invokevirtual 257	java/nio/ByteBuffer:position	()I
+    //   1300: invokevirtual 250	java/nio/ByteBuffer:getInt	(I)I
+    //   1303: istore 6
+    //   1305: iload 6
+    //   1307: iload 4
+    //   1309: iadd
+    //   1310: istore 7
+    //   1312: iload 6
+    //   1314: ifge +14 -> 1328
+    //   1317: iload 7
+    //   1319: iflt +9 -> 1328
+    //   1322: iconst_0
+    //   1323: istore 18
+    //   1325: goto -977 -> 348
+    //   1328: aload 21
+    //   1330: astore 22
+    //   1332: aload 25
+    //   1334: astore 23
+    //   1336: aload_2
+    //   1337: iload 7
+    //   1339: invokevirtual 269	java/nio/ByteBuffer:putInt	(I)Ljava/nio/ByteBuffer;
+    //   1342: pop
+    //   1343: iload_3
+    //   1344: iconst_1
+    //   1345: iadd
+    //   1346: istore_3
+    //   1347: goto -66 -> 1281
+    //   1350: aload 21
+    //   1352: astore 22
+    //   1354: aload 25
+    //   1356: astore 23
+    //   1358: iload_3
+    //   1359: getstatic 82	com/tencent/mm/plugin/a/e:pDY	I
+    //   1362: if_icmpne -361 -> 1001
+    //   1365: aload 21
+    //   1367: astore 22
+    //   1369: aload 25
+    //   1371: astore 23
+    //   1373: aload_2
+    //   1374: invokevirtual 255	java/nio/ByteBuffer:remaining	()I
+    //   1377: iload 5
+    //   1379: bipush 8
+    //   1381: imul
+    //   1382: if_icmpge +300 -> 1682
+    //   1385: aload 21
+    //   1387: astore 22
+    //   1389: aload 25
+    //   1391: astore 23
+    //   1393: ldc 182
+    //   1395: ldc_w 266
+    //   1398: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1401: iconst_0
+    //   1402: istore 18
+    //   1404: goto -1056 -> 348
+    //   1407: iload_3
+    //   1408: iload 5
+    //   1410: if_icmpge -409 -> 1001
+    //   1413: aload 21
+    //   1415: astore 22
+    //   1417: aload 25
+    //   1419: astore 23
+    //   1421: aload_2
+    //   1422: aload_2
+    //   1423: aload_2
+    //   1424: invokevirtual 257	java/nio/ByteBuffer:position	()I
+    //   1427: invokevirtual 272	java/nio/ByteBuffer:getLong	(I)J
+    //   1430: iload 4
+    //   1432: i2l
+    //   1433: ladd
+    //   1434: invokevirtual 276	java/nio/ByteBuffer:putLong	(J)Ljava/nio/ByteBuffer;
+    //   1437: pop
+    //   1438: iload_3
+    //   1439: iconst_1
+    //   1440: iadd
+    //   1441: istore_3
+    //   1442: goto -35 -> 1407
+    //   1445: aload 21
+    //   1447: astore 22
+    //   1449: aload 25
+    //   1451: astore 23
+    //   1453: aload 21
+    //   1455: lload 14
+    //   1457: invokevirtual 240	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   1460: pop
+    //   1461: aload 20
+    //   1463: ifnull +33 -> 1496
+    //   1466: aload 21
+    //   1468: astore 22
+    //   1470: aload 25
+    //   1472: astore 23
     //   1474: aload 20
-    //   1476: invokevirtual 277	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
+    //   1476: invokevirtual 170	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
     //   1479: pop
     //   1480: aload 21
     //   1482: astore 22
     //   1484: aload 25
     //   1486: astore 23
-    //   1488: aload_2
-    //   1489: invokevirtual 168	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
-    //   1492: pop
-    //   1493: aload 21
-    //   1495: astore 22
-    //   1497: aload 25
-    //   1499: astore 23
-    //   1501: aload 25
-    //   1503: aload_2
-    //   1504: invokevirtual 277	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
-    //   1507: pop
-    //   1508: aload 21
-    //   1510: astore 22
-    //   1512: aload 25
-    //   1514: astore 23
-    //   1516: aload 21
-    //   1518: lload 14
-    //   1520: lload 12
-    //   1522: lload 14
-    //   1524: lsub
-    //   1525: aload 25
-    //   1527: invokevirtual 281	java/nio/channels/FileChannel:transferTo	(JJLjava/nio/channels/WritableByteChannel;)J
-    //   1530: pop2
-    //   1531: aload 21
-    //   1533: astore 22
-    //   1535: aload 25
-    //   1537: astore 23
-    //   1539: aload 21
-    //   1541: iload 4
-    //   1543: i2l
-    //   1544: lload 12
-    //   1546: ladd
+    //   1488: aload 25
+    //   1490: aload 20
+    //   1492: invokevirtual 279	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
+    //   1495: pop
+    //   1496: aload 21
+    //   1498: astore 22
+    //   1500: aload 25
+    //   1502: astore 23
+    //   1504: aload_2
+    //   1505: invokevirtual 170	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   1508: pop
+    //   1509: aload 21
+    //   1511: astore 22
+    //   1513: aload 25
+    //   1515: astore 23
+    //   1517: aload 25
+    //   1519: aload_2
+    //   1520: invokevirtual 279	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
+    //   1523: pop
+    //   1524: aload 21
+    //   1526: astore 22
+    //   1528: aload 25
+    //   1530: astore 23
+    //   1532: aload 21
+    //   1534: lload 14
+    //   1536: lload 12
+    //   1538: lload 14
+    //   1540: lsub
+    //   1541: aload 25
+    //   1543: invokevirtual 283	java/nio/channels/FileChannel:transferTo	(JJLjava/nio/channels/WritableByteChannel;)J
+    //   1546: pop2
     //   1547: aload 21
-    //   1549: invokevirtual 284	java/nio/channels/FileChannel:size	()J
-    //   1552: lload 12
-    //   1554: lsub
-    //   1555: iload 4
-    //   1557: i2l
-    //   1558: lsub
-    //   1559: aload 25
-    //   1561: invokevirtual 281	java/nio/channels/FileChannel:transferTo	(JJLjava/nio/channels/WritableByteChannel;)J
-    //   1564: pop2
-    //   1565: iconst_1
-    //   1566: istore 18
-    //   1568: goto -1236 -> 332
-    //   1571: astore_0
-    //   1572: aconst_null
-    //   1573: astore 23
-    //   1575: aconst_null
-    //   1576: astore 21
-    //   1578: goto -845 -> 733
-    //   1581: astore_0
-    //   1582: aconst_null
-    //   1583: astore 23
-    //   1585: goto -852 -> 733
-    //   1588: astore_0
-    //   1589: aconst_null
-    //   1590: astore_1
+    //   1549: astore 22
+    //   1551: aload 25
+    //   1553: astore 23
+    //   1555: aload 21
+    //   1557: iload 4
+    //   1559: i2l
+    //   1560: lload 12
+    //   1562: ladd
+    //   1563: aload 21
+    //   1565: invokevirtual 286	java/nio/channels/FileChannel:size	()J
+    //   1568: lload 12
+    //   1570: lsub
+    //   1571: iload 4
+    //   1573: i2l
+    //   1574: lsub
+    //   1575: aload 25
+    //   1577: invokevirtual 283	java/nio/channels/FileChannel:transferTo	(JJLjava/nio/channels/WritableByteChannel;)J
+    //   1580: pop2
+    //   1581: iconst_1
+    //   1582: istore 18
+    //   1584: goto -1236 -> 348
+    //   1587: astore_0
+    //   1588: aconst_null
+    //   1589: astore 23
     //   1591: aconst_null
     //   1592: astore 21
-    //   1594: iconst_0
-    //   1595: istore 18
-    //   1597: goto -945 -> 652
-    //   1600: astore_0
-    //   1601: aconst_null
-    //   1602: astore_1
-    //   1603: iconst_0
-    //   1604: istore 18
-    //   1606: goto -954 -> 652
-    //   1609: astore_0
-    //   1610: aload 25
-    //   1612: astore_1
-    //   1613: goto -961 -> 652
-    //   1616: ldc2_w 285
-    //   1619: lstore 16
-    //   1621: iload 7
-    //   1623: istore 4
-    //   1625: lload 12
-    //   1627: lstore 10
-    //   1629: aload 24
-    //   1631: astore 20
-    //   1633: iload 6
-    //   1635: istore_3
-    //   1636: lload 16
-    //   1638: lstore 12
-    //   1640: iload 8
-    //   1642: istore 5
-    //   1644: iload_3
-    //   1645: ifeq -1157 -> 488
-    //   1648: iload 5
-    //   1650: ifne -871 -> 779
-    //   1653: goto -1165 -> 488
-    //   1656: iconst_0
-    //   1657: istore_3
-    //   1658: goto -739 -> 919
-    //   1661: iconst_0
-    //   1662: istore_3
-    //   1663: goto -398 -> 1265
-    //   1666: iconst_0
-    //   1667: istore_3
-    //   1668: goto -277 -> 1391
+    //   1594: goto -845 -> 749
+    //   1597: astore_0
+    //   1598: aconst_null
+    //   1599: astore 23
+    //   1601: goto -852 -> 749
+    //   1604: astore_0
+    //   1605: aconst_null
+    //   1606: astore_1
+    //   1607: aconst_null
+    //   1608: astore 21
+    //   1610: iconst_0
+    //   1611: istore 18
+    //   1613: goto -945 -> 668
+    //   1616: astore_0
+    //   1617: aconst_null
+    //   1618: astore_1
+    //   1619: iconst_0
+    //   1620: istore 18
+    //   1622: goto -954 -> 668
+    //   1625: astore_0
+    //   1626: aload 25
+    //   1628: astore_1
+    //   1629: goto -961 -> 668
+    //   1632: ldc2_w 287
+    //   1635: lstore 16
+    //   1637: iload 7
+    //   1639: istore 4
+    //   1641: lload 12
+    //   1643: lstore 10
+    //   1645: aload 24
+    //   1647: astore 20
+    //   1649: iload 6
+    //   1651: istore_3
+    //   1652: lload 16
+    //   1654: lstore 12
+    //   1656: iload 8
+    //   1658: istore 5
+    //   1660: iload_3
+    //   1661: ifeq -1157 -> 504
+    //   1664: iload 5
+    //   1666: ifne -871 -> 795
+    //   1669: goto -1165 -> 504
+    //   1672: iconst_0
+    //   1673: istore_3
+    //   1674: goto -739 -> 935
+    //   1677: iconst_0
+    //   1678: istore_3
+    //   1679: goto -398 -> 1281
+    //   1682: iconst_0
+    //   1683: istore_3
+    //   1684: goto -277 -> 1407
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1671	0	paramString1	java.lang.String
-    //   0	1671	1	paramString2	java.lang.String
-    //   0	1671	2	paramPInt	com.tencent.mm.pointers.PInt
-    //   79	1589	3	i	int
-    //   46	1578	4	j	int
-    //   81	1568	5	k	int
-    //   95	1539	6	m	int
-    //   103	1519	7	n	int
-    //   84	1557	8	i1	int
-    //   184	85	9	i2	int
-    //   133	1495	10	l1	long
-    //   49	1590	12	l2	long
-    //   76	1447	14	l3	long
-    //   1619	18	16	l4	long
-    //   330	1275	18	bool1	boolean
-    //   334	361	19	bool2	boolean
-    //   13	1619	20	localObject1	Object
-    //   33	1560	21	localObject2	Object
-    //   56	1478	22	localObject3	Object
-    //   60	1524	23	localObject4	Object
-    //   99	1531	24	localObject5	Object
-    //   43	1568	25	localFileChannel	FileChannel
-    //   23	349	26	localq	com.tencent.mm.vfs.q
-    //   73	518	27	localByteBuffer	ByteBuffer
+    //   0	1687	0	paramString1	java.lang.String
+    //   0	1687	1	paramString2	java.lang.String
+    //   0	1687	2	paramPInt	com.tencent.mm.pointers.PInt
+    //   95	1589	3	i	int
+    //   62	1578	4	j	int
+    //   97	1568	5	k	int
+    //   111	1539	6	m	int
+    //   119	1519	7	n	int
+    //   100	1557	8	i1	int
+    //   200	85	9	i2	int
+    //   149	1495	10	l1	long
+    //   65	1590	12	l2	long
+    //   92	1447	14	l3	long
+    //   1635	18	16	l4	long
+    //   346	1275	18	bool1	boolean
+    //   350	361	19	bool2	boolean
+    //   13	1635	20	localObject1	Object
+    //   41	1568	21	localObject2	Object
+    //   72	1478	22	localObject3	Object
+    //   76	1524	23	localObject4	Object
+    //   115	1531	24	localObject5	Object
+    //   59	1568	25	localFileChannel	FileChannel
+    //   23	365	26	localu	com.tencent.mm.vfs.u
+    //   89	518	27	localByteBuffer	ByteBuffer
     // Exception table:
     //   from	to	target	type
-    //   62	75	645	java/lang/Exception
-    //   105	115	645	java/lang/Exception
-    //   123	135	645	java/lang/Exception
-    //   143	150	645	java/lang/Exception
-    //   158	166	645	java/lang/Exception
-    //   179	186	645	java/lang/Exception
-    //   194	207	645	java/lang/Exception
-    //   215	221	645	java/lang/Exception
-    //   229	237	645	java/lang/Exception
-    //   257	272	645	java/lang/Exception
-    //   280	286	645	java/lang/Exception
-    //   294	301	645	java/lang/Exception
-    //   322	329	645	java/lang/Exception
-    //   393	401	645	java/lang/Exception
-    //   409	416	645	java/lang/Exception
-    //   432	439	645	java/lang/Exception
-    //   447	452	645	java/lang/Exception
-    //   466	473	645	java/lang/Exception
-    //   496	503	645	java/lang/Exception
-    //   517	525	645	java/lang/Exception
-    //   543	549	645	java/lang/Exception
-    //   572	582	645	java/lang/Exception
-    //   590	597	645	java/lang/Exception
-    //   612	622	645	java/lang/Exception
-    //   630	635	645	java/lang/Exception
-    //   643	645	645	java/lang/Exception
-    //   707	725	645	java/lang/Exception
-    //   758	776	645	java/lang/Exception
-    //   787	795	645	java/lang/Exception
-    //   810	817	645	java/lang/Exception
-    //   831	838	645	java/lang/Exception
-    //   846	858	645	java/lang/Exception
-    //   866	871	645	java/lang/Exception
-    //   879	888	645	java/lang/Exception
-    //   896	901	645	java/lang/Exception
-    //   909	917	645	java/lang/Exception
-    //   931	938	645	java/lang/Exception
-    //   952	964	645	java/lang/Exception
-    //   972	979	645	java/lang/Exception
-    //   993	1002	645	java/lang/Exception
-    //   1010	1016	645	java/lang/Exception
-    //   1024	1033	645	java/lang/Exception
-    //   1041	1048	645	java/lang/Exception
-    //   1056	1063	645	java/lang/Exception
-    //   1071	1082	645	java/lang/Exception
-    //   1093	1113	645	java/lang/Exception
-    //   1121	1129	645	java/lang/Exception
-    //   1143	1153	645	java/lang/Exception
-    //   1161	1169	645	java/lang/Exception
-    //   1177	1185	645	java/lang/Exception
-    //   1199	1209	645	java/lang/Exception
-    //   1217	1224	645	java/lang/Exception
-    //   1232	1243	645	java/lang/Exception
-    //   1251	1259	645	java/lang/Exception
-    //   1279	1289	645	java/lang/Exception
-    //   1320	1327	645	java/lang/Exception
-    //   1342	1349	645	java/lang/Exception
-    //   1357	1369	645	java/lang/Exception
-    //   1377	1385	645	java/lang/Exception
-    //   1405	1422	645	java/lang/Exception
-    //   1437	1445	645	java/lang/Exception
-    //   1458	1464	645	java/lang/Exception
-    //   1472	1480	645	java/lang/Exception
-    //   1488	1493	645	java/lang/Exception
-    //   1501	1508	645	java/lang/Exception
-    //   1516	1531	645	java/lang/Exception
-    //   1539	1565	645	java/lang/Exception
-    //   62	75	728	finally
-    //   105	115	728	finally
-    //   123	135	728	finally
-    //   143	150	728	finally
-    //   158	166	728	finally
-    //   179	186	728	finally
-    //   194	207	728	finally
-    //   215	221	728	finally
-    //   229	237	728	finally
-    //   257	272	728	finally
-    //   280	286	728	finally
-    //   294	301	728	finally
-    //   322	329	728	finally
-    //   349	356	728	finally
-    //   393	401	728	finally
-    //   409	416	728	finally
-    //   432	439	728	finally
-    //   447	452	728	finally
-    //   466	473	728	finally
-    //   496	503	728	finally
-    //   517	525	728	finally
-    //   543	549	728	finally
-    //   572	582	728	finally
-    //   590	597	728	finally
-    //   612	622	728	finally
-    //   630	635	728	finally
-    //   643	645	728	finally
-    //   659	683	728	finally
-    //   707	725	728	finally
-    //   758	776	728	finally
-    //   787	795	728	finally
-    //   810	817	728	finally
-    //   831	838	728	finally
-    //   846	858	728	finally
-    //   866	871	728	finally
-    //   879	888	728	finally
-    //   896	901	728	finally
-    //   909	917	728	finally
-    //   931	938	728	finally
-    //   952	964	728	finally
-    //   972	979	728	finally
-    //   993	1002	728	finally
-    //   1010	1016	728	finally
-    //   1024	1033	728	finally
-    //   1041	1048	728	finally
-    //   1056	1063	728	finally
-    //   1071	1082	728	finally
-    //   1093	1113	728	finally
-    //   1121	1129	728	finally
-    //   1143	1153	728	finally
-    //   1161	1169	728	finally
-    //   1177	1185	728	finally
-    //   1199	1209	728	finally
-    //   1217	1224	728	finally
-    //   1232	1243	728	finally
-    //   1251	1259	728	finally
-    //   1279	1289	728	finally
-    //   1320	1327	728	finally
-    //   1342	1349	728	finally
-    //   1357	1369	728	finally
-    //   1377	1385	728	finally
-    //   1405	1422	728	finally
-    //   1437	1445	728	finally
-    //   1458	1464	728	finally
-    //   1472	1480	728	finally
-    //   1488	1493	728	finally
-    //   1501	1508	728	finally
-    //   1516	1531	728	finally
-    //   1539	1565	728	finally
-    //   25	35	1571	finally
-    //   35	45	1581	finally
-    //   25	35	1588	java/lang/Exception
-    //   35	45	1600	java/lang/Exception
-    //   349	356	1609	java/lang/Exception
+    //   78	91	661	java/lang/Exception
+    //   121	131	661	java/lang/Exception
+    //   139	151	661	java/lang/Exception
+    //   159	166	661	java/lang/Exception
+    //   174	182	661	java/lang/Exception
+    //   195	202	661	java/lang/Exception
+    //   210	223	661	java/lang/Exception
+    //   231	237	661	java/lang/Exception
+    //   245	253	661	java/lang/Exception
+    //   273	288	661	java/lang/Exception
+    //   296	302	661	java/lang/Exception
+    //   310	317	661	java/lang/Exception
+    //   338	345	661	java/lang/Exception
+    //   409	417	661	java/lang/Exception
+    //   425	432	661	java/lang/Exception
+    //   448	455	661	java/lang/Exception
+    //   463	468	661	java/lang/Exception
+    //   482	489	661	java/lang/Exception
+    //   512	519	661	java/lang/Exception
+    //   533	541	661	java/lang/Exception
+    //   559	565	661	java/lang/Exception
+    //   588	598	661	java/lang/Exception
+    //   606	613	661	java/lang/Exception
+    //   628	638	661	java/lang/Exception
+    //   646	651	661	java/lang/Exception
+    //   659	661	661	java/lang/Exception
+    //   723	741	661	java/lang/Exception
+    //   774	792	661	java/lang/Exception
+    //   803	811	661	java/lang/Exception
+    //   826	833	661	java/lang/Exception
+    //   847	854	661	java/lang/Exception
+    //   862	874	661	java/lang/Exception
+    //   882	887	661	java/lang/Exception
+    //   895	904	661	java/lang/Exception
+    //   912	917	661	java/lang/Exception
+    //   925	933	661	java/lang/Exception
+    //   947	954	661	java/lang/Exception
+    //   968	980	661	java/lang/Exception
+    //   988	995	661	java/lang/Exception
+    //   1009	1018	661	java/lang/Exception
+    //   1026	1032	661	java/lang/Exception
+    //   1040	1049	661	java/lang/Exception
+    //   1057	1064	661	java/lang/Exception
+    //   1072	1079	661	java/lang/Exception
+    //   1087	1098	661	java/lang/Exception
+    //   1109	1129	661	java/lang/Exception
+    //   1137	1145	661	java/lang/Exception
+    //   1159	1169	661	java/lang/Exception
+    //   1177	1185	661	java/lang/Exception
+    //   1193	1201	661	java/lang/Exception
+    //   1215	1225	661	java/lang/Exception
+    //   1233	1240	661	java/lang/Exception
+    //   1248	1259	661	java/lang/Exception
+    //   1267	1275	661	java/lang/Exception
+    //   1295	1305	661	java/lang/Exception
+    //   1336	1343	661	java/lang/Exception
+    //   1358	1365	661	java/lang/Exception
+    //   1373	1385	661	java/lang/Exception
+    //   1393	1401	661	java/lang/Exception
+    //   1421	1438	661	java/lang/Exception
+    //   1453	1461	661	java/lang/Exception
+    //   1474	1480	661	java/lang/Exception
+    //   1488	1496	661	java/lang/Exception
+    //   1504	1509	661	java/lang/Exception
+    //   1517	1524	661	java/lang/Exception
+    //   1532	1547	661	java/lang/Exception
+    //   1555	1581	661	java/lang/Exception
+    //   78	91	744	finally
+    //   121	131	744	finally
+    //   139	151	744	finally
+    //   159	166	744	finally
+    //   174	182	744	finally
+    //   195	202	744	finally
+    //   210	223	744	finally
+    //   231	237	744	finally
+    //   245	253	744	finally
+    //   273	288	744	finally
+    //   296	302	744	finally
+    //   310	317	744	finally
+    //   338	345	744	finally
+    //   365	372	744	finally
+    //   409	417	744	finally
+    //   425	432	744	finally
+    //   448	455	744	finally
+    //   463	468	744	finally
+    //   482	489	744	finally
+    //   512	519	744	finally
+    //   533	541	744	finally
+    //   559	565	744	finally
+    //   588	598	744	finally
+    //   606	613	744	finally
+    //   628	638	744	finally
+    //   646	651	744	finally
+    //   659	661	744	finally
+    //   675	699	744	finally
+    //   723	741	744	finally
+    //   774	792	744	finally
+    //   803	811	744	finally
+    //   826	833	744	finally
+    //   847	854	744	finally
+    //   862	874	744	finally
+    //   882	887	744	finally
+    //   895	904	744	finally
+    //   912	917	744	finally
+    //   925	933	744	finally
+    //   947	954	744	finally
+    //   968	980	744	finally
+    //   988	995	744	finally
+    //   1009	1018	744	finally
+    //   1026	1032	744	finally
+    //   1040	1049	744	finally
+    //   1057	1064	744	finally
+    //   1072	1079	744	finally
+    //   1087	1098	744	finally
+    //   1109	1129	744	finally
+    //   1137	1145	744	finally
+    //   1159	1169	744	finally
+    //   1177	1185	744	finally
+    //   1193	1201	744	finally
+    //   1215	1225	744	finally
+    //   1233	1240	744	finally
+    //   1248	1259	744	finally
+    //   1267	1275	744	finally
+    //   1295	1305	744	finally
+    //   1336	1343	744	finally
+    //   1358	1365	744	finally
+    //   1373	1385	744	finally
+    //   1393	1401	744	finally
+    //   1421	1438	744	finally
+    //   1453	1461	744	finally
+    //   1474	1480	744	finally
+    //   1488	1496	744	finally
+    //   1504	1509	744	finally
+    //   1517	1524	744	finally
+    //   1532	1547	744	finally
+    //   1555	1581	744	finally
+    //   25	43	1587	finally
+    //   43	61	1597	finally
+    //   25	43	1604	java/lang/Exception
+    //   43	61	1616	java/lang/Exception
+    //   365	372	1625	java/lang/Exception
   }
   
   /* Error */
-  private static boolean bY(java.lang.String paramString1, java.lang.String paramString2)
+  private static boolean cl(java.lang.String paramString1, java.lang.String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 287
+    //   0: ldc_w 289
     //   3: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 144	com/tencent/mm/vfs/q
+    //   6: new 133	com/tencent/mm/vfs/u
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 145	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 137	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   14: astore 6
-    //   16: new 144	com/tencent/mm/vfs/q
+    //   16: new 133	com/tencent/mm/vfs/u
     //   19: dup
     //   20: aload_1
-    //   21: invokespecial 145	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   21: invokespecial 137	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   24: astore 7
     //   26: aload 6
-    //   28: invokevirtual 290	com/tencent/mm/vfs/q:length	()J
+    //   28: invokevirtual 292	com/tencent/mm/vfs/u:length	()J
     //   31: aload 7
-    //   33: invokevirtual 290	com/tencent/mm/vfs/q:length	()J
+    //   33: invokevirtual 292	com/tencent/mm/vfs/u:length	()J
     //   36: lcmp
     //   37: ifeq +19 -> 56
-    //   40: ldc 180
-    //   42: ldc_w 292
-    //   45: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   48: ldc_w 287
+    //   40: ldc 182
+    //   42: ldc_w 294
+    //   45: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   48: ldc_w 289
     //   51: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: iconst_0
     //   55: ireturn
-    //   56: new 294	com/tencent/mm/plugin/a/b
+    //   56: new 296	com/tencent/mm/plugin/a/b
     //   59: dup
-    //   60: invokespecial 296	com/tencent/mm/plugin/a/b:<init>	()V
+    //   60: invokespecial 298	com/tencent/mm/plugin/a/b:<init>	()V
     //   63: aload_0
-    //   64: invokevirtual 300	com/tencent/mm/plugin/a/b:ZY	(Ljava/lang/String;)J
+    //   64: invokevirtual 302	com/tencent/mm/plugin/a/b:Sl	(Ljava/lang/String;)J
     //   67: lstore 4
-    //   69: new 302	com/tencent/mm/plugin/a/j
+    //   69: new 304	com/tencent/mm/plugin/a/j
     //   72: dup
-    //   73: invokespecial 303	com/tencent/mm/plugin/a/j:<init>	()V
+    //   73: invokespecial 305	com/tencent/mm/plugin/a/j:<init>	()V
     //   76: astore 9
     //   78: aload 9
     //   80: aload_0
     //   81: lload 4
-    //   83: invokevirtual 307	com/tencent/mm/plugin/a/j:K	(Ljava/lang/String;J)Z
+    //   83: invokevirtual 309	com/tencent/mm/plugin/a/j:O	(Ljava/lang/String;J)Z
     //   86: pop
     //   87: aload 9
-    //   89: getfield 310	com/tencent/mm/plugin/a/j:mHG	I
+    //   89: getfield 312	com/tencent/mm/plugin/a/j:pEg	I
     //   92: istore_3
-    //   93: new 294	com/tencent/mm/plugin/a/b
+    //   93: new 296	com/tencent/mm/plugin/a/b
     //   96: dup
-    //   97: invokespecial 296	com/tencent/mm/plugin/a/b:<init>	()V
+    //   97: invokespecial 298	com/tencent/mm/plugin/a/b:<init>	()V
     //   100: aload_1
-    //   101: invokevirtual 300	com/tencent/mm/plugin/a/b:ZY	(Ljava/lang/String;)J
+    //   101: invokevirtual 302	com/tencent/mm/plugin/a/b:Sl	(Ljava/lang/String;)J
     //   104: lstore 4
-    //   106: new 302	com/tencent/mm/plugin/a/j
+    //   106: new 304	com/tencent/mm/plugin/a/j
     //   109: dup
-    //   110: invokespecial 303	com/tencent/mm/plugin/a/j:<init>	()V
+    //   110: invokespecial 305	com/tencent/mm/plugin/a/j:<init>	()V
     //   113: astore 8
     //   115: aload 8
     //   117: aload_1
     //   118: lload 4
-    //   120: invokevirtual 307	com/tencent/mm/plugin/a/j:K	(Ljava/lang/String;J)Z
+    //   120: invokevirtual 309	com/tencent/mm/plugin/a/j:O	(Ljava/lang/String;J)Z
     //   123: pop
     //   124: aload 8
-    //   126: getfield 310	com/tencent/mm/plugin/a/j:mHG	I
+    //   126: getfield 312	com/tencent/mm/plugin/a/j:pEg	I
     //   129: istore_2
     //   130: iload_2
     //   131: iload_3
     //   132: if_icmpeq +19 -> 151
-    //   135: ldc 180
-    //   137: ldc_w 312
-    //   140: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   143: ldc_w 287
+    //   135: ldc 182
+    //   137: ldc_w 314
+    //   140: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   143: ldc_w 289
     //   146: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   149: iconst_0
     //   150: ireturn
-    //   151: ldc 180
-    //   153: new 221	java/lang/StringBuilder
+    //   151: ldc 182
+    //   153: new 223	java/lang/StringBuilder
     //   156: dup
-    //   157: ldc_w 314
-    //   160: invokespecial 224	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   157: ldc_w 316
+    //   160: invokespecial 226	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   163: iload_3
-    //   164: invokevirtual 317	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   167: ldc_w 319
-    //   170: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: invokevirtual 319	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   167: ldc_w 321
+    //   170: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   173: iload_2
-    //   174: invokevirtual 317	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   177: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: invokestatic 205	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   183: new 321	java/util/Random
+    //   174: invokevirtual 319	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   177: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   180: invokestatic 206	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: new 323	java/util/Random
     //   186: dup
-    //   187: invokespecial 322	java/util/Random:<init>	()V
+    //   187: invokespecial 324	java/util/Random:<init>	()V
     //   190: iload_2
     //   191: iconst_1
     //   192: isub
-    //   193: invokevirtual 325	java/util/Random:nextInt	(I)I
+    //   193: invokevirtual 327	java/util/Random:nextInt	(I)I
     //   196: iconst_1
     //   197: iadd
     //   198: istore_3
@@ -1193,45 +1185,45 @@ public final class e
     //   201: iadd
     //   202: iload_2
     //   203: if_icmple +88 -> 291
-    //   206: new 207	com/tencent/mm/pointers/PInt
+    //   206: new 208	com/tencent/mm/pointers/PInt
     //   209: dup
-    //   210: invokespecial 326	com/tencent/mm/pointers/PInt:<init>	()V
+    //   210: invokespecial 328	com/tencent/mm/pointers/PInt:<init>	()V
     //   213: astore_0
-    //   214: new 207	com/tencent/mm/pointers/PInt
+    //   214: new 208	com/tencent/mm/pointers/PInt
     //   217: dup
-    //   218: invokespecial 326	com/tencent/mm/pointers/PInt:<init>	()V
+    //   218: invokespecial 328	com/tencent/mm/pointers/PInt:<init>	()V
     //   221: astore 10
     //   223: aload 9
     //   225: iload_3
     //   226: iload_2
     //   227: aload_0
     //   228: aload 10
-    //   230: invokevirtual 329	com/tencent/mm/plugin/a/j:a	(IILcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
+    //   230: invokevirtual 331	com/tencent/mm/plugin/a/j:a	(IILcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
     //   233: pop
-    //   234: new 207	com/tencent/mm/pointers/PInt
+    //   234: new 208	com/tencent/mm/pointers/PInt
     //   237: dup
-    //   238: invokespecial 326	com/tencent/mm/pointers/PInt:<init>	()V
+    //   238: invokespecial 328	com/tencent/mm/pointers/PInt:<init>	()V
     //   241: astore_1
-    //   242: new 207	com/tencent/mm/pointers/PInt
+    //   242: new 208	com/tencent/mm/pointers/PInt
     //   245: dup
-    //   246: invokespecial 326	com/tencent/mm/pointers/PInt:<init>	()V
+    //   246: invokespecial 328	com/tencent/mm/pointers/PInt:<init>	()V
     //   249: astore 9
     //   251: aload 8
     //   253: iload_3
     //   254: iload_2
     //   255: aload_1
     //   256: aload 9
-    //   258: invokevirtual 329	com/tencent/mm/plugin/a/j:a	(IILcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
+    //   258: invokevirtual 331	com/tencent/mm/plugin/a/j:a	(IILcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
     //   261: pop
     //   262: aload 9
-    //   264: getfield 210	com/tencent/mm/pointers/PInt:value	I
+    //   264: getfield 211	com/tencent/mm/pointers/PInt:value	I
     //   267: aload 10
-    //   269: getfield 210	com/tencent/mm/pointers/PInt:value	I
+    //   269: getfield 211	com/tencent/mm/pointers/PInt:value	I
     //   272: if_icmpeq +26 -> 298
-    //   275: ldc 180
-    //   277: ldc_w 331
-    //   280: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   283: ldc_w 287
+    //   275: ldc 182
+    //   277: ldc_w 333
+    //   280: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   283: ldc_w 289
     //   286: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   289: iconst_0
     //   290: ireturn
@@ -1241,57 +1233,57 @@ public final class e
     //   294: istore_2
     //   295: goto -89 -> 206
     //   298: aload 6
-    //   300: invokestatic 335	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   300: invokestatic 337	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   303: astore 6
     //   305: aload 6
     //   307: aload_0
-    //   308: getfield 210	com/tencent/mm/pointers/PInt:value	I
+    //   308: getfield 211	com/tencent/mm/pointers/PInt:value	I
     //   311: i2l
-    //   312: invokevirtual 341	java/io/InputStream:skip	(J)J
+    //   312: invokevirtual 343	java/io/InputStream:skip	(J)J
     //   315: pop2
     //   316: sipush 4096
     //   319: newarray byte
     //   321: astore 8
     //   323: aload 6
     //   325: aload 8
-    //   327: invokevirtual 343	java/io/InputStream:read	([B)I
+    //   327: invokevirtual 345	java/io/InputStream:read	([B)I
     //   330: pop
     //   331: aload 7
-    //   333: invokestatic 335	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   333: invokestatic 337	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   336: astore_0
     //   337: aload_0
     //   338: aload_1
-    //   339: getfield 210	com/tencent/mm/pointers/PInt:value	I
+    //   339: getfield 211	com/tencent/mm/pointers/PInt:value	I
     //   342: i2l
-    //   343: invokevirtual 341	java/io/InputStream:skip	(J)J
+    //   343: invokevirtual 343	java/io/InputStream:skip	(J)J
     //   346: pop2
     //   347: sipush 4096
     //   350: newarray byte
     //   352: astore_1
     //   353: aload 6
     //   355: aload_1
-    //   356: invokevirtual 343	java/io/InputStream:read	([B)I
+    //   356: invokevirtual 345	java/io/InputStream:read	([B)I
     //   359: pop
     //   360: aload 8
     //   362: aload_1
-    //   363: invokestatic 349	java/util/Arrays:equals	([B[B)Z
+    //   363: invokestatic 351	java/util/Arrays:equals	([B[B)Z
     //   366: ifeq +28 -> 394
-    //   369: ldc 180
-    //   371: ldc_w 351
-    //   374: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   369: ldc 182
+    //   371: ldc_w 353
+    //   374: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   377: aload 6
-    //   379: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   379: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
     //   382: aload_0
-    //   383: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   386: ldc_w 287
+    //   383: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   386: ldc_w 289
     //   389: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   392: iconst_0
     //   393: ireturn
     //   394: aload 6
-    //   396: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   396: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
     //   399: aload_0
-    //   400: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   403: ldc_w 287
+    //   400: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   403: ldc_w 289
     //   406: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   409: iconst_1
     //   410: ireturn
@@ -1300,20 +1292,20 @@ public final class e
     //   413: astore_1
     //   414: aconst_null
     //   415: astore 6
-    //   417: ldc 180
-    //   419: new 221	java/lang/StringBuilder
+    //   417: ldc 182
+    //   419: new 223	java/lang/StringBuilder
     //   422: dup
-    //   423: ldc 223
-    //   425: invokespecial 224	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   423: ldc 225
+    //   425: invokespecial 226	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   428: aload_0
-    //   429: invokevirtual 228	java/lang/Exception:toString	()Ljava/lang/String;
-    //   432: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   435: invokevirtual 233	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   438: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   429: invokevirtual 230	java/lang/Exception:toString	()Ljava/lang/String;
+    //   432: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   435: invokevirtual 235	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   438: invokestatic 190	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   441: aload 6
-    //   443: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   443: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
     //   446: aload_1
-    //   447: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   447: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
     //   450: goto -47 -> 403
     //   453: astore_0
     //   454: aconst_null
@@ -1321,10 +1313,10 @@ public final class e
     //   456: aconst_null
     //   457: astore 6
     //   459: aload 6
-    //   461: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   461: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
     //   464: aload_1
-    //   465: invokestatic 196	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
-    //   468: ldc_w 287
+    //   465: invokestatic 198	com/tencent/mm/plugin/a/e:safeClose	(Ljava/io/Closeable;)V
+    //   468: ldc_w 289
     //   471: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   474: aload_0
     //   475: athrow
@@ -1358,7 +1350,7 @@ public final class e
     //   92	202	3	j	int
     //   67	52	4	l	long
     //   14	446	6	localObject1	Object
-    //   24	308	7	localq	com.tencent.mm.vfs.q
+    //   24	308	7	localu	com.tencent.mm.vfs.u
     //   482	5	7	localObject2	Object
     //   502	5	7	localException	Exception
     //   113	248	8	localObject3	Object
@@ -1373,6 +1365,20 @@ public final class e
     //   417	441	492	finally
     //   305	337	496	java/lang/Exception
     //   337	377	502	java/lang/Exception
+  }
+  
+  private static int jk(long paramLong)
+  {
+    AppMethodBeat.i(133860);
+    if ((paramLong > 2147483647L) || (paramLong < 0L))
+    {
+      Exception localException = new Exception("uint32 value is too large");
+      AppMethodBeat.o(133860);
+      throw localException;
+    }
+    int i = (int)paramLong;
+    AppMethodBeat.o(133860);
+    return i;
   }
   
   private static void safeClose(Closeable paramCloseable)
@@ -1395,7 +1401,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.a.e
  * JD-Core Version:    0.7.0.1
  */

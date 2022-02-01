@@ -19,12 +19,12 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.app.d;
-import com.tencent.mm.ay.a.c.h;
-import com.tencent.mm.ay.a.d.b;
-import com.tencent.mm.ay.i;
-import com.tencent.mm.ay.q;
+import com.tencent.mm.app.e;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.modelimage.j;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.loader.c.b;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -34,37 +34,37 @@ import com.tencent.tinker.entry.ApplicationLike;
 final class k$a
   extends c.a
 {
-  public static final int Xfw;
-  public TextView JKu;
-  public MMImageView Xdh;
-  public int Xev = 0;
-  public boolean Xfv;
-  public TextView mNb;
-  public TextView mrM;
-  public View oFU;
+  public static final int aePz;
+  public TextView Qcc;
+  public MMImageView aeNf;
+  public int aeOt = 0;
+  public boolean aePy;
+  public TextView pJJ;
+  public TextView plr;
+  public View rIZ;
   
   static
   {
     AppMethodBeat.i(36902);
-    Xfw = (int)com.tencent.mm.ci.a.getDensity(d.fcb.getApplication()) * 64;
+    aePz = (int)com.tencent.mm.cd.a.getDensity(e.hfI.getApplication()) * 64;
     AppMethodBeat.o(36902);
   }
   
-  public final a K(View paramView, boolean paramBoolean)
+  public final a Q(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36900);
     super.create(paramView);
-    this.Xfv = paramBoolean;
-    this.timeTV = ((TextView)this.convertView.findViewById(R.h.dzs));
-    this.checkBox = ((CheckBox)paramView.findViewById(R.h.dwZ));
-    this.maskView = this.convertView.findViewById(R.h.dyD);
-    this.userTV = ((TextView)this.convertView.findViewById(R.h.chatting_user_tv));
-    this.Xdh = ((MMImageView)this.convertView.findViewById(R.h.drO));
-    this.mNb = ((TextView)this.convertView.findViewById(R.h.drP));
-    this.mrM = ((TextView)this.convertView.findViewById(R.h.drN));
-    this.JKu = ((TextView)this.convertView.findViewById(R.h.drL));
-    this.oFU = this.convertView.findViewById(R.h.drM);
-    this.Xev = c.lj(MMApplicationContext.getContext());
+    this.aePy = paramBoolean;
+    this.timeTV = ((TextView)this.convertView.findViewById(R.h.fAm));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.fxt));
+    this.maskView = this.convertView.findViewById(R.h.fzn);
+    this.userTV = ((TextView)this.convertView.findViewById(R.h.fAr));
+    this.aeNf = ((MMImageView)this.convertView.findViewById(R.h.fsg));
+    this.pJJ = ((TextView)this.convertView.findViewById(R.h.fsh));
+    this.plr = ((TextView)this.convertView.findViewById(R.h.fsf));
+    this.Qcc = ((TextView)this.convertView.findViewById(R.h.fsd));
+    this.rIZ = this.convertView.findViewById(R.h.fse);
+    this.aeOt = c.nn(MMApplicationContext.getContext());
     AppMethodBeat.o(36900);
     return this;
   }
@@ -72,72 +72,72 @@ final class k$a
   public final void a(final Context paramContext, k.b paramb, final String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36901);
-    resetChatBubbleWidth(this.clickArea, this.Xev);
+    resetChatBubbleWidth(this.clickArea, this.aeOt);
     Object localObject1;
     int i;
     switch (paramb.type)
     {
     default: 
-      this.mNb.setText(paramb.description);
-      this.mrM.setText(paramb.lnk);
-      this.Xdh.setVisibility(0);
+      this.pJJ.setText(paramb.description);
+      this.plr.setText(paramb.nSo);
+      this.aeNf.setVisibility(0);
       if (paramBoolean)
       {
-        paramContext = q.bml();
-        paramb = q.bmh().T(paramString, true);
-        paramString = this.Xdh;
-        localObject1 = new com.tencent.mm.ay.a.a.c.a();
-        ((com.tencent.mm.ay.a.a.c.a)localObject1).lRG = 1;
-        i = Xfw;
-        localObject1 = ((com.tencent.mm.ay.a.a.c.a)localObject1).dO(i, i);
-        ((com.tencent.mm.ay.a.a.c.a)localObject1).lRP = R.k.app_attach_file_icon_webpage;
-        ((com.tencent.mm.ay.a.a.c.a)localObject1).kPz = true;
-        paramContext.a(paramb, paramString, ((com.tencent.mm.ay.a.a.c.a)localObject1).bmL());
+        paramContext = r.bKe();
+        paramb = r.bKa().X(paramString, true);
+        paramString = this.aeNf;
+        localObject1 = new com.tencent.mm.modelimage.loader.a.c.a();
+        ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKs = 1;
+        i = aePz;
+        localObject1 = ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).eG(i, i);
+        ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKB = R.k.app_attach_file_icon_webpage;
+        ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).nrc = true;
+        paramContext.a(paramb, paramString, ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).bKx());
         AppMethodBeat.o(36901);
         return;
       }
       break;
     case 16: 
-      this.mNb.setText(paramb.description);
-      this.mrM.setText(paramb.lnk);
-      this.Xdh.setVisibility(0);
+      this.pJJ.setText(paramb.description);
+      this.plr.setText(paramb.nSo);
+      this.aeNf.setVisibility(0);
       if (paramBoolean)
       {
-        paramContext = q.bml();
+        paramContext = r.bKe();
         paramb = paramb.thumburl;
-        paramString = this.Xdh;
-        localObject1 = new com.tencent.mm.ay.a.a.c.a();
-        i = Xfw;
-        localObject1 = ((com.tencent.mm.ay.a.a.c.a)localObject1).dO(i, i);
-        ((com.tencent.mm.ay.a.a.c.a)localObject1).lRP = R.k.app_attach_file_icon_webpage;
-        ((com.tencent.mm.ay.a.a.c.a)localObject1).kPz = true;
-        paramContext.a(paramb, paramString, ((com.tencent.mm.ay.a.a.c.a)localObject1).bmL());
+        paramString = this.aeNf;
+        localObject1 = new com.tencent.mm.modelimage.loader.a.c.a();
+        i = aePz;
+        localObject1 = ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).eG(i, i);
+        ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKB = R.k.app_attach_file_icon_webpage;
+        ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).nrc = true;
+        paramContext.a(paramb, paramString, ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).bKx());
         AppMethodBeat.o(36901);
         return;
       }
-      this.Xdh.setImageResource(R.g.dok);
+      this.aeNf.setImageResource(R.g.foI);
       AppMethodBeat.o(36901);
       return;
     case 34: 
       if ((paramb.title != null) && (paramb.title.length() > 0))
       {
-        this.mNb.setVisibility(0);
-        this.mNb.setText(paramb.title);
-        if (!Util.isNullOrNil(paramb.lnt))
+        this.pJJ.setVisibility(0);
+        this.pJJ.setText(paramb.title);
+        if (!Util.isNullOrNil(paramb.nSx))
         {
-          this.mNb.setTextColor(Util.convertStringToRGB(paramb.lnt, paramContext.getResources().getColor(R.e.normal_text_color)));
-          this.mrM.setMaxLines(2);
-          this.mrM.setVisibility(0);
-          this.mrM.setText(paramb.description);
-          if (Util.isNullOrNil(paramb.lnu)) {
+          this.pJJ.setTextColor(Util.convertStringToRGB(paramb.nSx, paramContext.getResources().getColor(R.e.normal_text_color)));
+          this.plr.setMaxLines(2);
+          this.plr.setVisibility(0);
+          this.plr.setText(paramb.description);
+          if (Util.isNullOrNil(paramb.nSy)) {
             break label612;
           }
-          this.mrM.setTextColor(Util.convertStringToRGB(paramb.lnu, paramContext.getResources().getColor(R.e.grey_background_text_color)));
+          this.plr.setTextColor(Util.convertStringToRGB(paramb.nSy, paramContext.getResources().getColor(R.e.grey_background_text_color)));
           label415:
-          if (Util.isNullOrNil(paramb.lnp)) {
+          if (Util.isNullOrNil(paramb.nSt)) {
             break label632;
           }
-          this.JKu.setText(paramb.lnp);
+          this.Qcc.setText(paramb.nSt);
         }
       }
       for (;;)
@@ -145,31 +145,29 @@ final class k$a
         if (paramBoolean)
         {
           Object localObject2;
-          com.tencent.mm.ay.a.a.c.a locala;
-          if (!Util.isNullOrNil(paramb.lns))
+          com.tencent.mm.modelimage.loader.a.c.a locala;
+          if (!Util.isNullOrNil(paramb.nSw))
           {
-            paramString = q.bml();
+            paramString = r.bKe();
             localObject1 = paramb.thumburl;
-            localObject2 = this.Xdh;
-            locala = new com.tencent.mm.ay.a.a.c.a();
-            i = Xfw;
-            locala = locala.dO(i, i);
-            locala.lRP = R.k.app_attach_file_icon_webpage;
-            locala.kPz = true;
-            paramString.a((String)localObject1, (ImageView)localObject2, locala.bmL());
-            paramString = q.bml();
-            paramb = paramb.lns;
+            localObject2 = this.aeNf;
+            locala = new com.tencent.mm.modelimage.loader.a.c.a();
+            i = aePz;
+            locala = locala.eG(i, i);
+            locala.oKB = R.k.app_attach_file_icon_webpage;
+            locala.nrc = true;
+            paramString.a((String)localObject1, (ImageView)localObject2, locala.bKx());
+            paramString = r.bKe();
+            paramb = paramb.nSw;
             localObject1 = new ImageView(paramContext);
-            localObject2 = new com.tencent.mm.ay.a.a.c.a();
-            ((com.tencent.mm.ay.a.a.c.a)localObject2).lRD = true;
-            paramString.a(paramb, (ImageView)localObject1, ((com.tencent.mm.ay.a.a.c.a)localObject2).bmL(), new h()
+            localObject2 = new com.tencent.mm.modelimage.loader.a.c.a();
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject2).oKp = true;
+            paramString.a(paramb, (ImageView)localObject1, ((com.tencent.mm.modelimage.loader.a.c.a)localObject2).bKx(), new h()
             {
               public final Bitmap a(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
               {
                 return null;
               }
-              
-              public final void b(String paramAnonymousString, View paramAnonymousView) {}
               
               public final void b(final String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
               {
@@ -177,27 +175,27 @@ final class k$a
                 if (paramAnonymousb.bitmap != null)
                 {
                   paramAnonymousString = paramAnonymousb.bitmap;
-                  k.a.this.oFU.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+                  k.a.this.rIZ.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
                   {
                     public final boolean onPreDraw()
                     {
                       AppMethodBeat.i(36897);
-                      k.a.this.oFU.getViewTreeObserver().removeOnPreDrawListener(this);
-                      int j = k.a.this.oFU.getHeight();
-                      int k = k.a.this.oFU.getWidth();
+                      k.a.this.rIZ.getViewTreeObserver().removeOnPreDrawListener(this);
+                      int j = k.a.this.rIZ.getHeight();
+                      int k = k.a.this.rIZ.getWidth();
                       int i = j;
                       if (j == 0) {
-                        i = com.tencent.mm.ci.a.aY(k.a.1.this.val$context, R.f.chatting_music_item_height);
+                        i = com.tencent.mm.cd.a.br(k.a.1.this.val$context, R.f.chatting_music_item_height);
                       }
                       j = k;
                       if (k == 0) {
-                        j = com.tencent.mm.ci.a.aY(k.a.1.this.val$context, R.f.chatting_music_item_width);
+                        j = com.tencent.mm.cd.a.br(k.a.1.this.val$context, R.f.chatting_music_item_width);
                       }
-                      if (k.a.this.Xfv) {}
+                      if (k.a.this.aePy) {}
                       for (Object localObject = BitmapUtil.createMaskImage(paramAnonymousString, R.g.chat_from_content_bg_mask, j, i);; localObject = BitmapUtil.createMaskImage(paramAnonymousString, R.g.chat_to_content_bg_mask, j, i))
                       {
                         localObject = new BitmapDrawable((Bitmap)localObject);
-                        k.a.this.oFU.setBackgroundDrawable((Drawable)localObject);
+                        k.a.this.rIZ.setBackgroundDrawable((Drawable)localObject);
                         AppMethodBeat.o(36897);
                         return true;
                       }
@@ -206,44 +204,46 @@ final class k$a
                 }
                 AppMethodBeat.o(36898);
               }
+              
+              public final void c(String paramAnonymousString, View paramAnonymousView) {}
             });
             AppMethodBeat.o(36901);
             return;
-            this.mNb.setTextColor(paramContext.getResources().getColor(R.e.normal_text_color));
+            this.pJJ.setTextColor(paramContext.getResources().getColor(R.e.normal_text_color));
             break;
-            this.mNb.setVisibility(8);
+            this.pJJ.setVisibility(8);
             break;
             label612:
-            this.mrM.setTextColor(paramContext.getResources().getColor(R.e.grey_background_text_color));
+            this.plr.setTextColor(paramContext.getResources().getColor(R.e.grey_background_text_color));
             break label415;
             label632:
-            this.JKu.setText(R.l.evC);
+            this.Qcc.setText(R.l.gyc);
             continue;
           }
-          paramString = q.bmh().a(paramString, com.tencent.mm.ci.a.getDensity(paramContext), false);
+          paramString = r.bKa().a(paramString, com.tencent.mm.cd.a.getDensity(paramContext), false);
           if ((paramString != null) && (!paramString.isRecycled()))
           {
             paramb = BitmapUtil.getRoundedCornerBitmap(paramString, false, paramString.getWidth() / 2);
-            this.Xdh.setImageBitmap(paramb);
+            this.aeNf.setImageBitmap(paramb);
           }
           for (;;)
           {
-            this.oFU.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+            this.rIZ.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
             {
-              private boolean XeE = false;
+              private boolean aeOC = false;
               
               public final boolean onPreDraw()
               {
                 AppMethodBeat.i(36899);
-                if (this.XeE)
+                if (this.aeOC)
                 {
-                  k.a.this.oFU.getViewTreeObserver().removeOnPreDrawListener(this);
+                  k.a.this.rIZ.getViewTreeObserver().removeOnPreDrawListener(this);
                   AppMethodBeat.o(36899);
                   return true;
                 }
-                k.a.this.oFU.getViewTreeObserver().removeOnPreDrawListener(this);
-                this.XeE = true;
-                int i = com.tencent.mm.ci.a.fromDPToPix(paramContext, 24);
+                k.a.this.rIZ.getViewTreeObserver().removeOnPreDrawListener(this);
+                this.aeOC = true;
+                int i = com.tencent.mm.cd.a.fromDPToPix(paramContext, 24);
                 Bitmap localBitmap = paramString;
                 if (localBitmap != null)
                 {
@@ -259,17 +259,17 @@ final class k$a
                 {
                   i = j;
                   localObject = BitmapUtil.fastblur(BitmapUtil.setContrast(Bitmap.createScaledBitmap((Bitmap)localObject, i, i, true), 0.9F), 20);
-                  j = k.a.this.oFU.getHeight();
-                  int k = k.a.this.oFU.getWidth();
+                  j = k.a.this.rIZ.getHeight();
+                  int k = k.a.this.rIZ.getWidth();
                   i = j;
                   if (j == 0) {
-                    i = com.tencent.mm.ci.a.aY(paramContext, R.f.chatting_music_item_height);
+                    i = com.tencent.mm.cd.a.br(paramContext, R.f.chatting_music_item_height);
                   }
                   j = k;
                   if (k == 0) {
-                    j = com.tencent.mm.ci.a.aY(paramContext, R.f.chatting_music_item_width);
+                    j = com.tencent.mm.cd.a.br(paramContext, R.f.chatting_music_item_width);
                   }
-                  if (!k.a.this.Xfv) {
+                  if (!k.a.this.aePy) {
                     break label249;
                   }
                 }
@@ -277,7 +277,7 @@ final class k$a
                 for (Object localObject = BitmapUtil.createMaskImage((Bitmap)localObject, R.g.chat_from_content_bg_mask, j, i);; localObject = BitmapUtil.createMaskImage((Bitmap)localObject, R.g.chat_to_content_bg_mask, j, i))
                 {
                   localObject = new BitmapDrawable((Bitmap)localObject);
-                  k.a.this.oFU.setBackgroundDrawable((Drawable)localObject);
+                  k.a.this.rIZ.setBackgroundDrawable((Drawable)localObject);
                   AppMethodBeat.o(36899);
                   return true;
                   break;
@@ -286,23 +286,23 @@ final class k$a
             });
             AppMethodBeat.o(36901);
             return;
-            localObject1 = q.bml();
+            localObject1 = r.bKe();
             paramb = paramb.thumburl;
-            localObject2 = this.Xdh;
-            locala = new com.tencent.mm.ay.a.a.c.a();
-            i = Xfw;
-            locala = locala.dO(i, i);
-            locala.lRP = R.k.app_attach_file_icon_webpage;
-            locala.kPz = true;
-            ((com.tencent.mm.ay.a.a)localObject1).a(paramb, (ImageView)localObject2, locala.bmL());
+            localObject2 = this.aeNf;
+            locala = new com.tencent.mm.modelimage.loader.a.c.a();
+            i = aePz;
+            locala = locala.eG(i, i);
+            locala.oKB = R.k.app_attach_file_icon_webpage;
+            locala.nrc = true;
+            ((com.tencent.mm.modelimage.loader.a)localObject1).a(paramb, (ImageView)localObject2, locala.bKx());
           }
         }
       }
-      this.Xdh.setImageBitmap(BitmapFactory.decodeResource(paramContext.getResources(), R.g.dok));
+      this.aeNf.setImageBitmap(BitmapFactory.decodeResource(paramContext.getResources(), R.g.foI));
       AppMethodBeat.o(36901);
       return;
     }
-    this.Xdh.setImageResource(R.g.dok);
+    this.aeNf.setImageResource(R.g.foI);
     AppMethodBeat.o(36901);
   }
   
@@ -313,7 +313,7 @@ final class k$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.k.a
  * JD-Core Version:    0.7.0.1
  */

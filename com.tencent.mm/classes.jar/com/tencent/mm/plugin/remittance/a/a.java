@@ -1,53 +1,29 @@
 package com.tencent.mm.plugin.remittance.a;
 
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.remittance.ui.RemittanceAdapterUI;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.autogen.b.be;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-public class a
-  extends d
+public final class a
+  extends be
 {
-  public d a(Activity paramActivity, Bundle paramBundle)
+  public static IAutoDBItem.MAutoDBInfo info;
+  
+  static
   {
-    AppMethodBeat.i(67333);
-    Log.d("MicroMsg.RemittanceProcess", "start Process : RemittanceProcess");
-    b(paramActivity, RemittanceAdapterUI.class, paramBundle);
-    AppMethodBeat.o(67333);
-    return this;
+    AppMethodBeat.i(67616);
+    info = aJm();
+    AppMethodBeat.o(67616);
   }
   
-  public final void a(Activity paramActivity, int paramInt, Bundle paramBundle) {}
-  
-  public final void b(Activity paramActivity, Bundle paramBundle)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(67334);
-    super.bH(paramActivity);
-    AppMethodBeat.o(67334);
-  }
-  
-  public final boolean c(Activity paramActivity, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  public final String epb()
-  {
-    return "RemittanceProcess";
-  }
-  
-  public final void h(Activity paramActivity, int paramInt)
-  {
-    AppMethodBeat.i(67335);
-    Q(paramActivity);
-    AppMethodBeat.o(67335);
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.a
  * JD-Core Version:    0.7.0.1
  */

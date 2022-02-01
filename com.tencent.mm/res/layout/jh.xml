@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:background="#00000000" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:importantForAccessibility="no" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jj" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/jb" />
+    <LinearLayout android:orientation="vertical" android:id="@id/acp" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:id="@id/l9z" android:layout="@layout/kh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l_1" android:layout="@layout/kq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l9x" android:layout="@layout/kj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l9y" android:layout="@layout/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l_2" android:layout="@layout/kr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l9w" android:layout="@layout/ki" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/l_0" android:layout="@layout/kp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/jkg" android:background="@drawable/h5" android:paddingLeft="@dimen/v8" android:paddingRight="@dimen/v8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:layout_width="fill_parent" style="@style/i7" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/r" android:layout_marginBottom="@dimen/r">
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/a1_" android:layout_gravity="center_vertical" android:id="@id/jkh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/ow" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/biz_item_more_icon" app:iconColor="@color/FG_0" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,61 +1,44 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.utils.u;
+import com.tencent.mm.vending.e.a;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public final class bi
-  extends bk
+  implements u
 {
-  protected final int A(Intent paramIntent)
+  final Set<a> qyA;
+  
+  public bi()
   {
-    AppMethodBeat.i(44001);
-    int i = paramIntent.getIntExtra("SCENE", -1);
-    if (i == 2)
-    {
-      AppMethodBeat.o(44001);
-      return 1114;
-    }
-    if (i == 1)
-    {
-      AppMethodBeat.o(44001);
-      return 1113;
-    }
-    AppMethodBeat.o(44001);
-    return -1;
+    AppMethodBeat.i(176540);
+    this.qyA = new CopyOnWriteArraySet();
+    AppMethodBeat.o(176540);
   }
   
-  protected final void a(Context paramContext, Intent paramIntent, boolean paramBoolean) {}
-  
-  protected final boolean b(Intent paramIntent, boolean paramBoolean)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(44002);
-    paramBoolean = super.b(paramIntent, paramBoolean);
-    if (A(paramIntent) == -1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        Log.i("MiroMsg.WxaManufacturerShortcutEntry", "invalid scene ");
-      }
-      if ((i != 0) || (!paramBoolean)) {
-        break;
-      }
-      AppMethodBeat.o(44002);
-      return true;
+    AppMethodBeat.i(176542);
+    if (parama != null) {
+      this.qyA.remove(parama);
     }
-    AppMethodBeat.o(44002);
-    return false;
+    AppMethodBeat.o(176542);
   }
   
-  public final int getType()
+  public final void keep(a parama)
   {
-    return 3;
+    AppMethodBeat.i(176541);
+    if (parama != null) {
+      this.qyA.add(parama);
+    }
+    AppMethodBeat.o(176541);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bi
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
-import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.plugin.scanner.util.s;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -19,28 +19,28 @@ import com.tencent.mm.ui.base.preference.f;
 
 public final class a
   extends Preference
-  implements u.a
+  implements r.a
 {
-  private TextView IOB;
-  String IOC;
+  private TextView OXd;
+  String OXe;
   private View mView;
-  private f mrf;
-  private ImageView oFa;
-  String uFL;
+  private f pkD;
+  private ImageView rIe;
+  String xOn;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51673);
     this.mView = null;
-    this.IOB = null;
-    this.IOC = null;
-    setLayoutResource(l.g.IEw);
-    u.a(this);
+    this.OXd = null;
+    this.OXe = null;
+    setLayoutResource(l.g.OKz);
+    r.a(this);
     AppMethodBeat.o(51673);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51674);
     if (this.mView == null) {
@@ -55,7 +55,7 @@ public final class a
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51676);
-    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.uFL)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.oFa != null)) {
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.xOn)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.rIe != null)) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
@@ -77,33 +77,33 @@ public final class a
   {
     AppMethodBeat.i(51675);
     super.onBindView(paramView);
-    this.IOB = ((TextView)paramView.findViewById(l.f.dEM));
-    this.oFa = ((ImageView)paramView.findViewById(l.f.ICu));
-    if (!Util.isNullOrNil(this.IOC))
+    this.OXd = ((TextView)paramView.findViewById(l.f.fFQ));
+    this.rIe = ((ImageView)paramView.findViewById(l.f.OIv));
+    if (!Util.isNullOrNil(this.OXe))
     {
-      this.IOB.setText(this.IOC);
-      this.IOB.setVisibility(0);
+      this.OXd.setText(this.OXe);
+      this.OXd.setVisibility(0);
     }
     for (;;)
     {
-      if (!Util.isNullOrNil(this.uFL))
+      if (!Util.isNullOrNil(this.xOn))
       {
-        paramView = u.a(new q(this.uFL));
+        paramView = r.a(new s(this.xOn));
         if ((paramView != null) && (!paramView.isRecycled()))
         {
-          this.oFa.setImageBitmap(paramView);
-          this.oFa.setVisibility(0);
+          this.rIe.setImageBitmap(paramView);
+          this.rIe.setVisibility(0);
         }
       }
       AppMethodBeat.o(51675);
       return;
-      this.IOB.setVisibility(8);
+      this.OXd.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.a
  * JD-Core Version:    0.7.0.1
  */

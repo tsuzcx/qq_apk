@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/eb2" android:paddingLeft="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/dgg" style="@style/kq">
-        <ImageView android:id="@id/dgj" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:layout_marginRight="@dimen/jq" android:layout_alignParentLeft="true" />
-        <TextView android:id="@id/dge" android:layout_marginLeft="5.0dip" android:minHeight="24.0dip" android:layout_alignTop="@id/dgj" android:layout_alignParentRight="true" style="@style/mo" />
-        <TextView android:gravity="center_vertical" android:id="@id/dgl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="24.0dip" android:layout_toLeftOf="@id/dge" android:layout_toRightOf="@id/dgj" android:layout_alignTop="@id/dgj" style="@style/mp" />
-        <TextView android:gravity="center_vertical" android:id="@id/dgh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minHeight="24.0dip" android:singleLine="true" android:layout_toRightOf="@id/dgj" android:layout_alignLeft="@id/dgl" android:layout_alignBottom="@id/dgj" style="@style/mo" />
-    </RelativeLayout>
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ebe" android:layout_width="fill_parent" android:layout_height="@dimen/az">
+        <com.tencent.mm.ui.base.MaskLayout android:id="@id/eax" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax" android:layout_marginRight="@dimen/cd">
+            <ImageView android:id="@id/br7" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.base.MaskLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?uy" android:paddingRight="@dimen/e" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:gravity="center_vertical" android:id="@id/ko8" android:paddingRight="@dimen/i6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gz" android:singleLine="true" style="@style/ma" />
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:gravity="center" android:id="@id/ebc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

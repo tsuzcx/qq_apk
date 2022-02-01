@@ -3,20 +3,15 @@ package com.tencent.mm.plugin.translate;
 import android.os.Looper;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.zh;
-import com.tencent.mm.f.a.zh.a;
-import com.tencent.mm.f.a.zj;
-import com.tencent.mm.f.a.zk;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.abe;
 import com.tencent.mm.model.be;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.translate.a.c;
-import com.tencent.mm.plugin.translate.a.c.a;
-import com.tencent.mm.plugin.translate.a.c.b;
-import com.tencent.mm.plugin.translate.a.c.c;
-import com.tencent.mm.plugin.translate.a.d;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.translate.b.e;
+import com.tencent.mm.plugin.translate.b.e.a;
+import com.tencent.mm.plugin.translate.b.e.b;
+import com.tencent.mm.plugin.translate.b.e.c;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -27,33 +22,32 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Queue;
 
 public final class a
   implements be
 {
-  private c NfM;
-  private QueueWorkerThread NfN;
-  private c.a NfO;
-  private IListener NfP;
-  private IListener NfQ;
+  private IListener TSA;
+  private IListener TSB;
+  private e TSx;
+  private QueueWorkerThread TSy;
+  private e.a TSz;
   private MMHandler handler;
   
   public a()
   {
     AppMethodBeat.i(29736);
-    this.NfM = c.b.Nga;
-    this.NfN = new QueueWorkerThread(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
-    this.NfO = new c.a()
+    this.TSx = e.b.TSY;
+    this.TSy = new QueueWorkerThread(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
+    this.TSz = new e.a()
     {
-      public final void a(final int paramAnonymousInt, SparseArray<c.c> paramAnonymousSparseArray)
+      public final void a(final int paramAnonymousInt, SparseArray<e.c> paramAnonymousSparseArray)
       {
         AppMethodBeat.i(29732);
         int i = 0;
         while (i < paramAnonymousSparseArray.size())
         {
-          final c.c localc = (c.c)paramAnonymousSparseArray.valueAt(i);
+          final e.c localc = (e.c)paramAnonymousSparseArray.valueAt(i);
           if (localc != null) {
             a.a(a.this).add(new QueueWorkerThread.ThreadObject()
             {
@@ -73,7 +67,7 @@ public final class a
                   AppMethodBeat.o(29731);
                   return true;
                 }
-                if (Util.isNullOrNil(localc.fYO))
+                if (Util.isNullOrNil(localc.ieQ))
                 {
                   Log.e("MicroMsg.SubCoreTranslate", "translate return null");
                   AppMethodBeat.o(29731);
@@ -94,17 +88,17 @@ public final class a
                 if (paramAnonymousInt != 0) {}
                 for (int i = paramAnonymousInt;; i = localc.ret)
                 {
-                  zk localzk = new zk();
-                  localzk.fYN.ret = i;
-                  localzk.fYN.fYF = localc.fYF;
-                  localzk.fYN.id = localc.id;
-                  localzk.fYN.fYO = localc.fYO;
-                  localzk.fYN.type = localc.type;
-                  localzk.fYN.source = localc.source;
-                  localzk.fYN.fWy = localc.fWy;
-                  localzk.fYN.fYH = localc.ils;
-                  localzk.fYN.fYP = localc.fYP;
-                  EventCenter.instance.publish(localzk);
+                  abe localabe = new abe();
+                  localabe.ieP.ret = i;
+                  localabe.ieP.ieH = localc.ieH;
+                  localabe.ieP.id = localc.id;
+                  localabe.ieP.ieQ = localc.ieQ;
+                  localabe.ieP.type = localc.type;
+                  localabe.ieP.source = localc.source;
+                  localabe.ieP.icx = localc.icx;
+                  localabe.ieP.ieJ = localc.kLr;
+                  localabe.ieP.ieR = localc.ieR;
+                  localabe.publish();
                   AppMethodBeat.o(29730);
                   return false;
                 }
@@ -117,8 +111,8 @@ public final class a
       }
     };
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.NfP = new IListener() {};
-    this.NfQ = new IListener() {};
+    this.TSA = new SubCoreTranslate.2(this, com.tencent.mm.app.f.hfK);
+    this.TSB = new SubCoreTranslate.3(this, com.tencent.mm.app.f.hfK);
     AppMethodBeat.o(29736);
   }
   
@@ -132,58 +126,58 @@ public final class a
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(29737);
-    c localc = this.NfM;
-    c.a locala = this.NfO;
-    if ((locala == null) || (localc.listeners.contains(locala))) {}
+    e locale = this.TSx;
+    e.a locala = this.TSz;
+    if ((locala == null) || (locale.listeners.contains(locala))) {}
     for (;;)
     {
-      EventCenter.instance.addListener(this.NfP);
-      EventCenter.instance.addListener(this.NfQ);
+      this.TSA.alive();
+      this.TSB.alive();
       AppMethodBeat.o(29737);
       return;
-      localc.listeners.add(locala);
+      locale.listeners.add(locala);
     }
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(29738);
-    EventCenter.instance.removeListener(this.NfP);
-    EventCenter.instance.removeListener(this.NfQ);
-    c localc = this.NfM;
-    Object localObject = this.NfO;
-    if ((localObject == null) || (!localc.listeners.contains(localObject))) {}
+    this.TSA.dead();
+    this.TSB.dead();
+    e locale = this.TSx;
+    Object localObject = this.TSz;
+    if ((localObject == null) || (!locale.listeners.contains(localObject))) {}
     for (;;)
     {
-      localc = this.NfM;
-      if (localc.NfX == null) {
+      locale = this.TSx;
+      if (locale.TSV == null) {
         break;
       }
-      localObject = localc.NfX;
+      localObject = locale.TSV;
       int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        i locali = localObject[i];
-        if (locali != null)
+        h localh = localObject[i];
+        if (localh != null)
         {
-          bh.aGY().b(631, locali);
-          if (locali.Ngg != null)
+          bh.aZW().b(631, localh);
+          if (localh.TTe != null)
           {
-            locali.Ngi.stopTimer();
-            bh.aGY().a(locali.Ngg);
+            localh.TTg.stopTimer();
+            bh.aZW().a(localh.TTe);
           }
-          locali.gsq();
-          locali.Nge = null;
+          localh.hPy();
+          localh.TTc = null;
         }
         i += 1;
       }
-      localc.listeners.remove(localObject);
+      locale.listeners.remove(localObject);
     }
-    localc.NfZ.clear();
-    localc.NfY.clear();
-    localc.listeners.clear();
-    localc.jGL = 0;
+    locale.TSX.clear();
+    locale.TSW.clear();
+    locale.listeners.clear();
+    locale.wrD = 0;
     AppMethodBeat.o(29738);
   }
   
@@ -191,7 +185,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ public class URLSpanNoUnderline
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(247088);
+    AppMethodBeat.i(326662);
     super.updateDrawState(paramTextPaint);
     paramTextPaint.setUnderlineText(false);
-    AppMethodBeat.o(247088);
+    AppMethodBeat.o(326662);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.autofill.URLSpanNoUnderline
  * JD-Core Version:    0.7.0.1
  */

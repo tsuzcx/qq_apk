@@ -1,27 +1,32 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.lang.reflect.Method;
 
 final class ae
-  extends HellActivity
 {
-  public final void onCreate(Bundle paramBundle)
+  public static boolean cA(Context paramContext)
   {
-    AppMethodBeat.i(160031);
-    super.onCreate(paramBundle);
-    Log.i("WxSplash.SuicideHackActivity", "onCreate");
-    finish();
-    AppMethodBeat.o(160031);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.at(this, paramBoolean);
+    AppMethodBeat.i(239156);
+    try
+    {
+      if (!((Boolean)Class.forName(MMApplicationContext.getSourcePackageName() + ".recovery.RecoveryInitializer").getMethod("init", new Class[] { Context.class }).invoke(null, new Object[] { paramContext })).booleanValue())
+      {
+        AppMethodBeat.o(239156);
+        return true;
+      }
+      AppMethodBeat.o(239156);
+      return false;
+    }
+    finally
+    {
+      Log.printErrStackTrace("MicroMsg.recovery.loader", paramContext, "recovery init fail", new Object[0]);
+      AppMethodBeat.o(239156);
+    }
+    return false;
   }
 }
 

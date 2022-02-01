@@ -13,6 +13,8 @@ public abstract interface ITPDownloadProxyAidl
 {
   public abstract String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
+  public abstract String getNativeInfo(int paramInt);
+  
   public abstract String getPlayErrorCodeStr(int paramInt);
   
   public abstract String getPlayUrl(int paramInt1, int paramInt2);
@@ -49,15 +51,16 @@ public abstract interface ITPDownloadProxyAidl
   {
     private static final String DESCRIPTOR = "com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl";
     static final int TRANSACTION_getClipPlayUrl = 6;
+    static final int TRANSACTION_getNativeInfo = 14;
     static final int TRANSACTION_getPlayErrorCodeStr = 7;
     static final int TRANSACTION_getPlayUrl = 5;
     static final int TRANSACTION_init = 1;
     static final int TRANSACTION_pauseDownload = 9;
-    static final int TRANSACTION_pushEvent = 14;
+    static final int TRANSACTION_pushEvent = 15;
     static final int TRANSACTION_resumeDownload = 10;
     static final int TRANSACTION_setClipInfo = 4;
-    static final int TRANSACTION_setMaxStorageSizeMB = 16;
-    static final int TRANSACTION_setPlayState = 15;
+    static final int TRANSACTION_setMaxStorageSizeMB = 17;
+    static final int TRANSACTION_setPlayState = 16;
     static final int TRANSACTION_setUserData = 13;
     static final int TRANSACTION_startClipPlay = 3;
     static final int TRANSACTION_startPlay = 2;
@@ -196,10 +199,16 @@ public abstract interface ITPDownloadProxyAidl
         return true;
       case 14: 
         paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+        paramParcel1 = getNativeInfo(paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        paramParcel2.writeString(paramParcel1);
+        return true;
+      case 15: 
+        paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
         pushEvent(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
-      case 15: 
+      case 16: 
         paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
         setPlayState(paramParcel1.readInt(), paramParcel1.readInt());
         paramParcel2.writeNoException();
@@ -228,7 +237,7 @@ public abstract interface ITPDownloadProxyAidl
       
       public String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3)
       {
-        AppMethodBeat.i(255322);
+        AppMethodBeat.i(228269);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -246,7 +255,7 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255322);
+          AppMethodBeat.o(228269);
         }
       }
       
@@ -255,9 +264,31 @@ public abstract interface ITPDownloadProxyAidl
         return "com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl";
       }
       
+      public String getNativeInfo(int paramInt)
+      {
+        AppMethodBeat.i(228347);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+          localParcel1.writeInt(paramInt);
+          this.mRemote.transact(14, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(228347);
+        }
+      }
+      
       public String getPlayErrorCodeStr(int paramInt)
       {
-        AppMethodBeat.i(255325);
+        AppMethodBeat.i(228281);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -273,13 +304,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255325);
+          AppMethodBeat.o(228281);
         }
       }
       
       public String getPlayUrl(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(255318);
+        AppMethodBeat.i(228262);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -296,13 +327,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255318);
+          AppMethodBeat.o(228262);
         }
       }
       
       public int init(String paramString)
       {
-        AppMethodBeat.i(255309);
+        AppMethodBeat.i(228228);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -318,13 +349,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255309);
+          AppMethodBeat.o(228228);
         }
       }
       
       public int pauseDownload(int paramInt)
       {
-        AppMethodBeat.i(255332);
+        AppMethodBeat.i(228302);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -340,20 +371,20 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255332);
+          AppMethodBeat.o(228302);
         }
       }
       
       public void pushEvent(int paramInt)
       {
-        AppMethodBeat.i(255345);
+        AppMethodBeat.i(228357);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
           localParcel1.writeInt(paramInt);
-          this.mRemote.transact(14, localParcel1, localParcel2, 0);
+          this.mRemote.transact(15, localParcel1, localParcel2, 0);
           localParcel2.readException();
           return;
         }
@@ -361,13 +392,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255345);
+          AppMethodBeat.o(228357);
         }
       }
       
       public int resumeDownload(int paramInt)
       {
-        AppMethodBeat.i(255336);
+        AppMethodBeat.i(228311);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -383,14 +414,14 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255336);
+          AppMethodBeat.o(228311);
         }
       }
       
       public boolean setClipInfo(int paramInt1, int paramInt2, String paramString, TPDownloadParamAidl paramTPDownloadParamAidl)
       {
         boolean bool = true;
-        AppMethodBeat.i(255315);
+        AppMethodBeat.i(228251);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -423,20 +454,42 @@ public abstract interface ITPDownloadProxyAidl
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(255315);
+            AppMethodBeat.o(228251);
           }
         }
       }
       
       public void setMaxStorageSizeMB(long paramLong)
       {
-        AppMethodBeat.i(255349);
+        AppMethodBeat.i(228369);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
           localParcel1.writeLong(paramLong);
+          this.mRemote.transact(17, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(228369);
+        }
+      }
+      
+      public void setPlayState(int paramInt1, int paramInt2)
+      {
+        AppMethodBeat.i(228363);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
+          localParcel1.writeInt(paramInt1);
+          localParcel1.writeInt(paramInt2);
           this.mRemote.transact(16, localParcel1, localParcel2, 0);
           localParcel2.readException();
           return;
@@ -445,35 +498,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255349);
-        }
-      }
-      
-      public void setPlayState(int paramInt1, int paramInt2)
-      {
-        AppMethodBeat.i(255348);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
-          localParcel1.writeInt(paramInt1);
-          localParcel1.writeInt(paramInt2);
-          this.mRemote.transact(15, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(255348);
+          AppMethodBeat.o(228363);
         }
       }
       
       public void setUserData(Map paramMap)
       {
-        AppMethodBeat.i(255343);
+        AppMethodBeat.i(228341);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -488,7 +519,7 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255343);
+          AppMethodBeat.o(228341);
         }
       }
       
@@ -496,7 +527,7 @@ public abstract interface ITPDownloadProxyAidl
       public int startClipPlay(String paramString, int paramInt, ITPPlayListenerAidl paramITPPlayListenerAidl)
       {
         // Byte code:
-        //   0: ldc 116
+        //   0: ldc 118
         //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: invokestatic 37	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   8: astore 4
@@ -507,18 +538,18 @@ public abstract interface ITPDownloadProxyAidl
         //   19: invokevirtual 43	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
         //   22: aload 4
         //   24: aload_1
-        //   25: invokevirtual 78	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   25: invokevirtual 80	android/os/Parcel:writeString	(Ljava/lang/String;)V
         //   28: aload 4
         //   30: iload_2
         //   31: invokevirtual 46	android/os/Parcel:writeInt	(I)V
         //   34: aload_3
         //   35: ifnull +60 -> 95
         //   38: aload_3
-        //   39: invokeinterface 120 1 0
+        //   39: invokeinterface 122 1 0
         //   44: astore_1
         //   45: aload 4
         //   47: aload_1
-        //   48: invokevirtual 123	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+        //   48: invokevirtual 125	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
         //   51: aload_0
         //   52: getfield 19	com/tencent/thumbplayer/core/downloadproxy/aidl/ITPDownloadProxyAidl$Stub$Proxy:mRemote	Landroid/os/IBinder;
         //   55: iconst_3
@@ -530,13 +561,13 @@ public abstract interface ITPDownloadProxyAidl
         //   67: aload 5
         //   69: invokevirtual 55	android/os/Parcel:readException	()V
         //   72: aload 5
-        //   74: invokevirtual 82	android/os/Parcel:readInt	()I
+        //   74: invokevirtual 84	android/os/Parcel:readInt	()I
         //   77: istore_2
         //   78: aload 5
         //   80: invokevirtual 62	android/os/Parcel:recycle	()V
         //   83: aload 4
         //   85: invokevirtual 62	android/os/Parcel:recycle	()V
-        //   88: ldc 116
+        //   88: ldc 118
         //   90: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   93: iload_2
         //   94: ireturn
@@ -548,7 +579,7 @@ public abstract interface ITPDownloadProxyAidl
         //   103: invokevirtual 62	android/os/Parcel:recycle	()V
         //   106: aload 4
         //   108: invokevirtual 62	android/os/Parcel:recycle	()V
-        //   111: ldc 116
+        //   111: ldc 118
         //   113: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   116: aload_1
         //   117: athrow
@@ -569,7 +600,7 @@ public abstract interface ITPDownloadProxyAidl
       
       public int startPlay(String paramString, TPDownloadParamAidl paramTPDownloadParamAidl, ITPPlayListenerAidl paramITPPlayListenerAidl)
       {
-        AppMethodBeat.i(255311);
+        AppMethodBeat.i(228237);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -603,14 +634,14 @@ public abstract interface ITPDownloadProxyAidl
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(255311);
+            AppMethodBeat.o(228237);
           }
         }
       }
       
       public int startPreload(String paramString, TPDownloadParamAidl paramTPDownloadParamAidl, ITPPreLoadListenerAidl paramITPPreLoadListenerAidl)
       {
-        AppMethodBeat.i(255340);
+        AppMethodBeat.i(228322);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -644,14 +675,14 @@ public abstract interface ITPDownloadProxyAidl
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(255340);
+            AppMethodBeat.o(228322);
           }
         }
       }
       
       public void stopPlay(int paramInt)
       {
-        AppMethodBeat.i(255329);
+        AppMethodBeat.i(228292);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -666,13 +697,13 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255329);
+          AppMethodBeat.o(228292);
         }
       }
       
       public void stopPreload(int paramInt)
       {
-        AppMethodBeat.i(255341);
+        AppMethodBeat.i(228332);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -687,7 +718,7 @@ public abstract interface ITPDownloadProxyAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(255341);
+          AppMethodBeat.o(228332);
         }
       }
     }
@@ -695,7 +726,7 @@ public abstract interface ITPDownloadProxyAidl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl
  * JD-Core Version:    0.7.0.1
  */

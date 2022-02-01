@@ -5,22 +5,23 @@ import android.view.View;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.JsResult;
-import com.tencent.xweb.internal.e;
+import com.tencent.xweb.internal.f;
+import com.tencent.xweb.q;
 import org.xwalk.core.XWalkView;
 
 public final class h
-  implements e
+  implements f
 {
-  m aain;
-  o aaio;
-  XWalkView aaip;
+  l aioV;
+  n aioW;
+  private XWalkView aioX;
   
   public h(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154285);
-    this.aaip = paramXWalkView;
-    this.aain = new m(paramXWalkView);
-    this.aaio = new o(paramXWalkView);
+    this.aioX = paramXWalkView;
+    this.aioV = new l(paramXWalkView);
+    this.aioW = new n(paramXWalkView);
     AppMethodBeat.o(154285);
   }
   
@@ -29,7 +30,7 @@ public final class h
     AppMethodBeat.i(154289);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.aain.b(this.aaip, paramString1, paramString2, ((g.c)paramJsResult).aaij);
+      boolean bool = this.aioV.b(this.aioX, paramString1, paramString2, ((g.c)paramJsResult).aioQ);
       AppMethodBeat.o(154289);
       return bool;
     }
@@ -37,12 +38,12 @@ public final class h
     return false;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, com.tencent.xweb.o paramo)
+  public final boolean a(String paramString1, String paramString2, String paramString3, q paramq)
   {
     AppMethodBeat.i(154291);
-    if ((paramo instanceof g.e))
+    if ((paramq instanceof g.e))
     {
-      boolean bool = this.aain.a(this.aaip, paramString1, paramString2, paramString3, ((g.e)paramo).aaij);
+      boolean bool = this.aioV.a(this.aioX, paramString1, paramString2, paramString3, ((g.e)paramq).aioQ);
       AppMethodBeat.o(154291);
       return bool;
     }
@@ -55,7 +56,7 @@ public final class h
     AppMethodBeat.i(154290);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.aain.a(this.aaip, paramString1, paramString2, ((g.c)paramJsResult).aaij);
+      boolean bool = this.aioV.a(this.aioX, paramString1, paramString2, ((g.c)paramJsResult).aioQ);
       AppMethodBeat.o(154290);
       return bool;
     }
@@ -63,10 +64,20 @@ public final class h
     return false;
   }
   
+  public final boolean cxL()
+  {
+    return false;
+  }
+  
+  public final boolean khc()
+  {
+    return false;
+  }
+  
   public final void onHideCustomView()
   {
     AppMethodBeat.i(154288);
-    this.aain.iyw();
+    this.aioV.kiK();
     AppMethodBeat.o(154288);
   }
   
@@ -74,7 +85,7 @@ public final class h
   {
     AppMethodBeat.i(154287);
     if ((paramCustomViewCallback instanceof g.a)) {
-      this.aain.a(paramView, ((g.a)paramCustomViewCallback).aaih);
+      this.aioV.a(paramView, ((g.a)paramCustomViewCallback).aioO);
     }
     AppMethodBeat.o(154287);
   }
@@ -82,13 +93,13 @@ public final class h
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(154286);
-    this.aain.a(this.aaip, paramString);
+    this.aioV.a(this.aioX, paramString);
     AppMethodBeat.o(154286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.xwalk.h
  * JD-Core Version:    0.7.0.1
  */

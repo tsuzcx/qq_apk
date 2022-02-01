@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="156.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bdv" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/iq">
-        <TextView android:textSize="@dimen/is" android:id="@id/bdw" android:paddingLeft="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/mp" />
-    </RelativeLayout>
+    <com.tencent.mm.ui.MMImageView android:id="@id/k3c" android:layout_width="fill_parent" android:layout_height="156.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/k3d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="#66000000" android:layout_alignParentStart="true" />
+    <FrameLayout android:id="@id/k3a" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/i6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/k3c" android:paddingStart="@dimen/i6" android:paddingEnd="@dimen/m2" android:layout_alignEnd="@id/k3c">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/k3b" android:background="@drawable/avs" android:layout_width="@dimen/as" android:layout_height="@dimen/as" />
+    </FrameLayout>
 </RelativeLayout>

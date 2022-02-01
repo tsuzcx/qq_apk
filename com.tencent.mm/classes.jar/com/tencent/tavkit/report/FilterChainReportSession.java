@@ -13,9 +13,9 @@ public class FilterChainReportSession
   
   public FilterChainReportSession()
   {
-    AppMethodBeat.i(212823);
+    AppMethodBeat.i(218615);
     this.timeConsumerMap = new HashMap();
-    AppMethodBeat.o(212823);
+    AppMethodBeat.o(218615);
   }
   
   public static void setReporter(IReporter paramIReporter)
@@ -34,7 +34,7 @@ public class FilterChainReportSession
   
   public void commit()
   {
-    AppMethodBeat.i(212827);
+    AppMethodBeat.i(218646);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = this.timeConsumerMap.values().iterator();
     while (localIterator.hasNext())
@@ -53,13 +53,13 @@ public class FilterChainReportSession
     }
     finally
     {
-      AppMethodBeat.o(212827);
+      AppMethodBeat.o(218646);
     }
   }
   
   public void tick(String paramString, long paramLong)
   {
-    AppMethodBeat.i(212825);
+    AppMethodBeat.i(218634);
     TimeConsumer localTimeConsumer2 = (TimeConsumer)this.timeConsumerMap.get(paramString);
     TimeConsumer localTimeConsumer1 = localTimeConsumer2;
     if (localTimeConsumer2 == null)
@@ -68,7 +68,7 @@ public class FilterChainReportSession
       this.timeConsumerMap.put(localTimeConsumer1.key, localTimeConsumer1);
     }
     TimeConsumer.access$100(localTimeConsumer1, paramLong / 1000L);
-    AppMethodBeat.o(212825);
+    AppMethodBeat.o(218634);
   }
   
   public static abstract interface IReporter

@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.fts.a.d.a;
 
 import android.content.Context;
-import com.tencent.mm.plugin.fts.a.a.h;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.o;
+import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
 {
-  public h BHY;
-  public boolean BJF;
-  public boolean BJG = true;
-  public int BJH;
-  public int BJI;
-  public String BJJ;
-  public long BJK;
-  public boolean BJL;
-  public int BJM;
-  public int BJN;
-  public long BJO;
-  public boolean BJP;
-  public String fTp;
+  public j FWt;
+  public boolean Huo;
+  public boolean Hup = true;
+  public int Huq;
+  public int Hur;
+  public String Hus;
+  public long Hut;
+  public boolean Huu;
+  public int Huv;
+  public int Huw;
+  public long Hux;
+  public boolean Huy;
+  public String hZn;
   public int pageType;
   public final int position;
-  public int ptD;
-  public int uMD;
+  public int syO;
   public final int viewType;
+  public int xVf;
   
   public a(int paramInt1, int paramInt2)
   {
@@ -32,31 +37,41 @@ public abstract class a
     Log.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
-  public void a(Context paramContext, a.a parama, Object... paramVarArgs) {}
+  public void a(Context paramContext, a parama, Object... paramVarArgs) {}
   
-  public abstract a.b aEw();
+  public abstract b aXA();
   
-  public String bOm()
+  public String coA()
   {
     return "";
   }
   
-  public int bOn()
+  public String coB()
+  {
+    return "";
+  }
+  
+  public int coC()
   {
     return 0;
   }
   
-  public int erd()
+  public String egv()
+  {
+    return "";
+  }
+  
+  public int fxK()
   {
     return 0;
   }
   
-  public boolean ere()
+  public boolean fxL()
   {
     return false;
   }
   
-  public int erf()
+  public int fxM()
   {
     return 0;
   }
@@ -66,16 +81,37 @@ public abstract class a
     return "";
   }
   
-  public final void hx(int paramInt1, int paramInt2)
+  public final void iW(int paramInt1, int paramInt2)
   {
-    this.BJM = paramInt1;
-    this.BJN = paramInt2;
-    this.BJP = true;
+    this.Huv = paramInt1;
+    this.Huw = paramInt2;
+    this.Huy = true;
+  }
+  
+  public abstract class a
+  {
+    public a() {}
+  }
+  
+  public abstract class b
+  {
+    public b() {}
+    
+    protected static void a(String paramString, o paramo)
+    {
+      ((n)h.az(n.class)).updateTopHitsRank(paramString, paramo, 0);
+    }
+    
+    public abstract View a(Context paramContext, ViewGroup paramViewGroup);
+    
+    public abstract void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs);
+    
+    public abstract boolean a(Context paramContext, View paramView, a paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.a.a
  * JD-Core Version:    0.7.0.1
  */

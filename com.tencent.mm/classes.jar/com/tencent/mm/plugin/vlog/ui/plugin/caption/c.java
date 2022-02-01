@@ -7,8 +7,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
@@ -23,96 +21,141 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.b.d;
 import com.tencent.mm.plugin.recordvideo.b.e;
 import com.tencent.mm.plugin.recordvideo.b.f;
-import com.tencent.mm.protocal.protobuf.ta;
+import com.tencent.mm.protocal.protobuf.uq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.b.s;
 import kotlin.n.d;
-import kotlin.t;
-import kotlin.x;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "adapter", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter;", "cancelClickListener", "Lkotlin/Function0;", "", "getCancelClickListener", "()Lkotlin/jvm/functions/Function0;", "setCancelClickListener", "(Lkotlin/jvm/functions/Function0;)V", "captionType", "", "captionView", "Landroidx/recyclerview/widget/RecyclerView;", "currentPos", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "repeat", "showIm", "Ljava/lang/Runnable;", "sureClickListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "result", "getSureClickListener", "()Lkotlin/jvm/functions/Function2;", "setSureClickListener", "(Lkotlin/jvm/functions/Function2;)V", "addCaptionItemData", "items", "", "clearCaptionData", "hasInit", "", "hideInput", "notifyDataSetChanged", "onKeyboardHeightChanged", "height", "isResized", "pause", "release", "resume", "selectCaption", "transResult", "selectType", "delay", "", "time2Pos", "timeStampMs", "Companion", "EditorCaptionAdapter", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "adapter", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter;", "cancelClickListener", "Lkotlin/Function0;", "", "getCancelClickListener", "()Lkotlin/jvm/functions/Function0;", "setCancelClickListener", "(Lkotlin/jvm/functions/Function0;)V", "captionType", "", "captionView", "Landroidx/recyclerview/widget/RecyclerView;", "currentPos", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "repeat", "showIm", "Ljava/lang/Runnable;", "sureClickListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "result", "getSureClickListener", "()Lkotlin/jvm/functions/Function2;", "setSureClickListener", "(Lkotlin/jvm/functions/Function2;)V", "addCaptionItemData", "items", "", "clearCaptionData", "hasInit", "", "hideInput", "notifyDataSetChanged", "onKeyboardHeightChanged", "height", "isResized", "pause", "release", "resume", "selectCaption", "transResult", "selectType", "delay", "", "time2Pos", "timeStampMs", "Companion", "EditorCaptionAdapter", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends LinearLayout
   implements com.tencent.mm.ui.tools.h
 {
-  @Deprecated
-  public static final a NxW;
-  int NxP;
-  RecyclerView NxQ;
-  b NxR;
-  m<? super Integer, ? super ArrayList<ta>, x> NxS;
-  private kotlin.g.a.a<x> NxT;
-  int NxU;
-  private final Runnable NxV;
-  int agM;
-  com.tencent.mm.ui.tools.i jij;
+  private static final c.a UkQ;
+  int UkR;
+  RecyclerView UkS;
+  b UkT;
+  m<? super Integer, ? super ArrayList<uq>, ah> UkU;
+  private kotlin.g.a.a<ah> UkV;
+  int UkW;
+  private final Runnable UkX;
+  int bVs;
+  com.tencent.mm.ui.tools.i lKz;
   
   static
   {
-    AppMethodBeat.i(243271);
-    NxW = new a((byte)0);
-    AppMethodBeat.o(243271);
+    AppMethodBeat.i(283283);
+    UkQ = new c.a((byte)0);
+    AppMethodBeat.o(283283);
   }
   
-  public c(final Context paramContext)
+  public c(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(243270);
-    this.NxR = new b(paramContext);
-    this.jij = new com.tencent.mm.ui.tools.i((Activity)paramContext);
+    AppMethodBeat.i(283250);
+    this.UkT = new b(paramContext);
+    this.lKz = new com.tencent.mm.ui.tools.i((Activity)paramContext);
     LayoutInflater.from(paramContext).inflate(b.f.editor_edit_caption_view, (ViewGroup)this, true);
     setBackgroundResource(b.d.bg_black_corner);
     setOrientation(1);
     View localView = findViewById(b.e.caption_list);
-    p.j(localView, "findViewById(R.id.caption_list)");
-    this.NxQ = ((RecyclerView)localView);
-    findViewById(b.e.caption_cancel).setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(228024);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.NxX.getCancelClickListener();
-        if (paramAnonymousView != null) {
-          paramAnonymousView.invoke();
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(228024);
-      }
-    });
-    findViewById(b.e.caption_sure).setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(230687);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramAnonymousView = this.NxX.getSureClickListener();
-        if (paramAnonymousView != null) {
-          paramAnonymousView.invoke(Integer.valueOf(c.a(this.NxX)), c.b(this.NxX).NxY);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(230687);
-      }
-    });
-    this.NxQ.setLayoutManager((RecyclerView.LayoutManager)new EditorCaptionLayoutManager(paramContext));
-    this.NxQ.setAdapter((RecyclerView.a)this.NxR);
-    this.jij.setKeyboardHeightObserver((com.tencent.mm.ui.tools.h)this);
-    this.NxV = ((Runnable)new c(this, paramContext));
-    AppMethodBeat.o(243270);
+    s.s(localView, "findViewById(R.id.caption_list)");
+    this.UkS = ((RecyclerView)localView);
+    findViewById(b.e.caption_cancel).setOnClickListener(new c..ExternalSyntheticLambda0(this));
+    findViewById(b.e.caption_sure).setOnClickListener(new c..ExternalSyntheticLambda1(this));
+    this.UkS.setLayoutManager((RecyclerView.LayoutManager)new EditorCaptionLayoutManager(paramContext));
+    this.UkS.setAdapter((RecyclerView.a)this.UkT);
+    this.lKz.afIL = ((com.tencent.mm.ui.tools.h)this);
+    this.UkX = new c..ExternalSyntheticLambda2(this, paramContext);
+    AppMethodBeat.o(283250);
   }
   
-  public final void A(int paramInt, boolean paramBoolean)
+  private static final void a(c paramc, Context paramContext)
   {
-    AppMethodBeat.i(243267);
+    AppMethodBeat.i(283277);
+    s.u(paramc, "this$0");
+    s.u(paramContext, "$context");
+    Object localObject = paramc.UkS.getLayoutManager();
+    if (localObject == null)
+    {
+      paramc = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+      AppMethodBeat.o(283277);
+      throw paramc;
+    }
+    localObject = ((LinearLayoutManager)localObject).findViewByPosition(paramc.bVs);
+    if (localObject == null) {}
+    for (localObject = null;; localObject = (MMEditText)((View)localObject).findViewById(b.e.caption_content))
+    {
+      if (localObject != null) {
+        ((MMEditText)localObject).requestFocus();
+      }
+      if (localObject != null) {
+        ((MMEditText)localObject).setSelection(((MMEditText)localObject).getText().length());
+      }
+      paramc.UkW += 1;
+      Log.i("MicroMsg.EditorEditCaptionView", s.X("repeat ", Integer.valueOf(paramc.UkW)));
+      paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
+      if ((paramContext != null) && (!paramContext.showSoftInput((View)localObject, 0)) && (paramc.UkW < 5)) {
+        paramc.wO(50L);
+      }
+      AppMethodBeat.o(283277);
+      return;
+    }
+  }
+  
+  private static final void a(c paramc, View paramView)
+  {
+    AppMethodBeat.i(283262);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "this$0");
+    paramc = paramc.getCancelClickListener();
+    if (paramc != null) {
+      paramc.invoke();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(283262);
+  }
+  
+  private static final void b(c paramc, View paramView)
+  {
+    AppMethodBeat.i(283266);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "this$0");
+    paramView = paramc.getSureClickListener();
+    if (paramView != null) {
+      paramView.invoke(Integer.valueOf(paramc.UkR), paramc.UkT.UkY);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(283266);
+  }
+  
+  public final kotlin.g.a.a<ah> getCancelClickListener()
+  {
+    return this.UkV;
+  }
+  
+  public final m<Integer, ArrayList<uq>, ah> getSureClickListener()
+  {
+    return this.UkU;
+  }
+  
+  public final void onKeyboardHeightChanged(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(283343);
     Log.i("MicroMsg.EditorEditCaptionView", "onKeyboardHeightChanged, height:" + paramInt + ", isResized:" + paramBoolean);
     if (getVisibility() == 0)
     {
@@ -121,146 +164,147 @@ public final class c
       {
         localLayoutParams.bottomMargin = paramInt;
         setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-        AppMethodBeat.o(243267);
-        return;
       }
     }
-    AppMethodBeat.o(243267);
+    AppMethodBeat.o(283343);
   }
   
-  final void SA(long paramLong)
+  public final void setCancelClickListener(kotlin.g.a.a<ah> parama)
   {
-    AppMethodBeat.i(243269);
-    com.tencent.e.h.ZvG.n(this.NxV, paramLong);
-    AppMethodBeat.o(243269);
+    this.UkV = parama;
   }
   
-  public final kotlin.g.a.a<x> getCancelClickListener()
+  public final void setSureClickListener(m<? super Integer, ? super ArrayList<uq>, ah> paramm)
   {
-    return this.NxT;
+    this.UkU = paramm;
   }
   
-  public final m<Integer, ArrayList<ta>, x> getSureClickListener()
+  final void wO(long paramLong)
   {
-    return this.NxS;
+    AppMethodBeat.i(283350);
+    com.tencent.threadpool.h.ahAA.o(this.UkX, paramLong);
+    AppMethodBeat.o(283350);
   }
   
-  public final void setCancelClickListener(kotlin.g.a.a<x> parama)
-  {
-    this.NxT = parama;
-  }
-  
-  public final void setSureClickListener(m<? super Integer, ? super ArrayList<ta>, x> paramm)
-  {
-    this.NxS = paramm;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "getCaptionItems", "()Ljava/util/ArrayList;", "setCaptionItems", "(Ljava/util/ArrayList;)V", "getContext", "()Landroid/content/Context;", "setContext", "currentPos", "", "getCurrentPos", "()I", "setCurrentPos", "(I)V", "listener", "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$listener$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$listener$1;", "getItemCount", "getString", "", "byte", "Lcom/tencent/mm/protobuf/ByteString;", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "getCaptionItems", "()Ljava/util/ArrayList;", "setCaptionItems", "(Ljava/util/ArrayList;)V", "getContext", "()Landroid/content/Context;", "setContext", "currentPos", "", "getCurrentPos", "()I", "setCurrentPos", "(I)V", "listener", "com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$listener$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$listener$1;", "getItemCount", "getString", "", "byte", "Lcom/tencent/mm/protobuf/ByteString;", "onBindViewHolder", "", "viewHolder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends RecyclerView.a<RecyclerView.v>
   {
-    ArrayList<ta> NxY;
-    private final a NxZ;
+    ArrayList<uq> UkY;
+    private final a UkZ;
     private Context context;
     
     public b(Context paramContext)
     {
-      AppMethodBeat.i(243242);
+      AppMethodBeat.i(283140);
       this.context = paramContext;
-      this.NxY = new ArrayList();
-      this.NxZ = new a(this);
-      AppMethodBeat.o(243242);
+      this.UkY = new ArrayList();
+      this.UkZ = new a(this);
+      AppMethodBeat.o(283140);
     }
     
-    private static String e(com.tencent.mm.cd.b paramb)
+    private static final void a(b paramb, int paramInt, MMEditText paramMMEditText, View paramView, boolean paramBoolean)
     {
-      AppMethodBeat.i(243240);
+      AppMethodBeat.i(283154);
+      s.u(paramb, "this$0");
+      if (paramBoolean)
+      {
+        paramb.UkZ.position = paramInt;
+        paramMMEditText.addTextChangedListener((TextWatcher)paramb.UkZ);
+        AppMethodBeat.o(283154);
+        return;
+      }
+      paramMMEditText.removeTextChangedListener((TextWatcher)paramb.UkZ);
+      AppMethodBeat.o(283154);
+    }
+    
+    private static String j(com.tencent.mm.bx.b paramb)
+    {
+      AppMethodBeat.i(283148);
       if (paramb == null)
       {
-        AppMethodBeat.o(243240);
+        AppMethodBeat.o(283148);
         return "";
       }
       paramb = paramb.toString("UTF-8");
-      p.j(paramb, "byte.toString(\"UTF-8\")");
-      AppMethodBeat.o(243240);
+      s.s(paramb, "byte.toString(\"UTF-8\")");
+      AppMethodBeat.o(283148);
       return paramb;
     }
     
     public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(243235);
-      p.k(paramViewGroup, "parent");
+      AppMethodBeat.i(283169);
+      s.u(paramViewGroup, "parent");
       paramViewGroup = LayoutInflater.from(this.context).inflate(b.f.editor_edit_caption_item, paramViewGroup, false);
       if (paramViewGroup == null)
       {
-        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(243235);
+        paramViewGroup = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(283169);
         throw paramViewGroup;
       }
-      paramViewGroup = (ViewGroup)paramViewGroup;
-      paramViewGroup = (RecyclerView.v)new c(paramViewGroup, (View)paramViewGroup);
-      AppMethodBeat.o(243235);
+      paramViewGroup = (RecyclerView.v)new b((ViewGroup)paramViewGroup);
+      AppMethodBeat.o(283169);
       return paramViewGroup;
     }
     
-    public final void d(final RecyclerView.v paramv, final int paramInt)
+    public final void d(RecyclerView.v paramv, int paramInt)
     {
-      AppMethodBeat.i(243238);
-      p.k(paramv, "viewHolder");
-      paramv = paramv.amk;
-      p.j(paramv, "viewHolder.itemView");
-      Object localObject = this.NxY.get(paramInt);
-      p.j(localObject, "captionItems[position]");
-      localObject = (ta)localObject;
-      if ((((ta)localObject).Sch) || (TextUtils.isEmpty((CharSequence)e(((ta)localObject).Sce))))
+      AppMethodBeat.i(283187);
+      s.u(paramv, "viewHolder");
+      paramv = paramv.caK;
+      s.s(paramv, "viewHolder.itemView");
+      Object localObject = this.UkY.get(paramInt);
+      s.s(localObject, "captionItems[position]");
+      localObject = (uq)localObject;
+      if ((((uq)localObject).YZZ) || (TextUtils.isEmpty((CharSequence)j(((uq)localObject).YZW))))
       {
         paramv.setVisibility(4);
-        AppMethodBeat.o(243238);
+        AppMethodBeat.o(283187);
         return;
       }
       paramv.setVisibility(0);
       paramv = (MMEditText)paramv.findViewById(b.e.caption_content);
-      paramv.setOnFocusChangeListener((View.OnFocusChangeListener)new b(this, paramInt, paramv));
-      paramv.setText((CharSequence)e(((ta)this.NxY.get(paramInt)).Sce));
-      AppMethodBeat.o(243238);
+      paramv.setOnFocusChangeListener(new c.b..ExternalSyntheticLambda0(this, paramInt, paramv));
+      paramv.setText((CharSequence)j(((uq)this.UkY.get(paramInt)).YZW));
+      AppMethodBeat.o(283187);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(243237);
-      int i = this.NxY.size();
-      AppMethodBeat.o(243237);
+      AppMethodBeat.i(283176);
+      int i = this.UkY.size();
+      AppMethodBeat.o(283176);
       return i;
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$listener$1", "Landroid/text/TextWatcher;", "position", "", "getPosition", "()I", "setPosition", "(I)V", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "count", "after", "onTextChanged", "before", "plugin-vlog_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$listener$1", "Landroid/text/TextWatcher;", "position", "", "getPosition", "()I", "setPosition", "(I)V", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "count", "after", "onTextChanged", "before", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements TextWatcher
     {
       int position;
       
+      a(c.b paramb) {}
+      
       public final void afterTextChanged(Editable paramEditable)
       {
-        AppMethodBeat.i(227594);
+        AppMethodBeat.i(283118);
         if (paramEditable != null)
         {
-          ta localta = (ta)this.Nya.NxY.get(this.position);
+          uq localuq = (uq)this.Ula.UkY.get(this.position);
           paramEditable = paramEditable.toString();
           Charset localCharset = d.UTF_8;
           if (paramEditable == null)
           {
-            paramEditable = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(227594);
+            paramEditable = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+            AppMethodBeat.o(283118);
             throw paramEditable;
           }
           paramEditable = paramEditable.getBytes(localCharset);
-          p.j(paramEditable, "(this as java.lang.String).getBytes(charset)");
-          localta.Sce = new com.tencent.mm.cd.b(paramEditable);
+          s.s(paramEditable, "(this as java.lang.String).getBytes(charset)");
+          localuq.YZW = new com.tencent.mm.bx.b(paramEditable);
         }
-        AppMethodBeat.o(227594);
+        AppMethodBeat.o(283118);
       }
       
       public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -268,74 +312,15 @@ public final class c
       public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "hasFocus", "", "onFocusChange"})
-    static final class b
-      implements View.OnFocusChangeListener
-    {
-      b(c.b paramb, int paramInt, MMEditText paramMMEditText) {}
-      
-      public final void onFocusChange(View paramView, boolean paramBoolean)
-      {
-        AppMethodBeat.i(224975);
-        if (paramBoolean)
-        {
-          c.b.a(this.Nya).position = paramInt;
-          paramv.addTextChangedListener((TextWatcher)c.b.a(this.Nya));
-          AppMethodBeat.o(224975);
-          return;
-        }
-        paramv.removeTextChangedListener((TextWatcher)c.b.a(this.Nya));
-        AppMethodBeat.o(224975);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$onCreateViewHolder$1", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "plugin-vlog_release"})
-    public static final class c
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/vlog/ui/plugin/caption/EditorEditCaptionView$EditorCaptionAdapter$onCreateViewHolder$1", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class b
       extends RecyclerView.v
     {
-      c(ViewGroup paramViewGroup, View paramView)
+      b(ViewGroup paramViewGroup)
       {
         super();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(c paramc, Context paramContext) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(241135);
-      Object localObject1 = c.c(this.NxX).getLayoutManager();
-      if (localObject1 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
-        AppMethodBeat.o(241135);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = ((LinearLayoutManager)localObject1).findViewByPosition(c.d(this.NxX));
-      if (localObject1 != null) {}
-      for (localObject1 = (MMEditText)((View)localObject1).findViewById(b.e.caption_content);; localObject1 = null)
-      {
-        if (localObject1 != null) {
-          ((MMEditText)localObject1).requestFocus();
-        }
-        if (localObject1 != null) {
-          ((MMEditText)localObject1).setSelection(((MMEditText)localObject1).getText().length());
-        }
-        Object localObject2 = this.NxX;
-        c.a((c)localObject2, c.e((c)localObject2) + 1);
-        c.gvW();
-        Log.i("MicroMsg.EditorEditCaptionView", "repeat " + c.e(this.NxX));
-        localObject2 = (InputMethodManager)paramContext.getSystemService("input_method");
-        if ((localObject2 != null) && (!((InputMethodManager)localObject2).showSoftInput((View)localObject1, 0)) && (c.e(this.NxX) < 5)) {
-          c.f(this.NxX);
-        }
-        AppMethodBeat.o(241135);
-        return;
+        AppMethodBeat.i(283183);
+        AppMethodBeat.o(283183);
       }
     }
   }

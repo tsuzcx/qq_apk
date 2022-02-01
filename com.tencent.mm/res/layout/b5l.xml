@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/aa0" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/apc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/j4d" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:layout_gravity="left" android:id="@id/j4e" android:background="@drawable/aqf" android:layout_width="@dimen/g" android:layout_height="@dimen/g" />
+</LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/cor" />
-    <item android:drawable="@drawable/coq" />
-</selector>
+    <solid android:color="#fff1b924" />
+    <corners android:radius="3.0dip" />
+</shape>

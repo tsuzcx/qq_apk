@@ -6,7 +6,7 @@ import android.util.Pair;
 import c.t.m.sapp.c.e;
 import c.t.m.sapp.c.f;
 import c.t.m.sapp.c.j;
-import c.t.m.sapp.c.q;
+import c.t.m.sapp.c.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import dalvik.system.DexClassLoader;
 import java.lang.reflect.Constructor;
@@ -28,57 +28,98 @@ public final class TencentLocationManager
   public int mInitStatus;
   public final byte[] mLock;
   
+  /* Error */
   public TencentLocationManager(Context paramContext, Pair<String, String> paramPair)
   {
-    AppMethodBeat.i(254891);
-    this.mLock = new byte[0];
-    this.mInitStatus = 0;
-    if (TencentLocationManagerOptions.isLoadLibraryEnabled()) {}
-    for (;;)
-    {
-      try
-      {
-        System.loadLibrary("tencentlocsapp");
-        mContext = paramContext;
-        e.a(paramContext).c();
-        int i = 0;
-        if (i >= 3) {
-          break;
-        }
-        if (paramPair == null)
-        {
-          Pair localPair = mPair;
-          if (localPair != null)
-          {
-            bool = a(paramContext, localPair, i);
-            if (bool) {
-              break;
-            }
-            i += 1;
-            continue;
-          }
-        }
-        boolean bool = a(paramContext, paramPair, i);
-      }
-      catch (Throwable paramContext)
-      {
-        j.a("libtencentloc", paramContext);
-        this.mInitStatus = 3;
-        AppMethodBeat.o(254891);
-        return;
-      }
-    }
-    AppMethodBeat.o(254891);
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 40	java/lang/Object:<init>	()V
+    //   4: ldc 41
+    //   6: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: aload_0
+    //   10: iconst_0
+    //   11: newarray byte
+    //   13: putfield 49	com/tencent/map/geolocation/sapp/TencentLocationManager:mLock	[B
+    //   16: aload_0
+    //   17: iconst_0
+    //   18: putfield 51	com/tencent/map/geolocation/sapp/TencentLocationManager:mInitStatus	I
+    //   21: invokestatic 57	com/tencent/map/geolocation/sapp/TencentLocationManagerOptions:isLoadLibraryEnabled	()Z
+    //   24: ifeq +8 -> 32
+    //   27: ldc 59
+    //   29: invokestatic 65	java/lang/System:loadLibrary	(Ljava/lang/String;)V
+    //   32: aload_1
+    //   33: putstatic 67	com/tencent/map/geolocation/sapp/TencentLocationManager:mContext	Landroid/content/Context;
+    //   36: aload_1
+    //   37: aload_2
+    //   38: invokestatic 72	c/t/m/sapp/c/r:a	(Landroid/content/Context;Landroid/util/Pair;)V
+    //   41: aload_1
+    //   42: invokestatic 77	c/t/m/sapp/c/e:a	(Landroid/content/Context;)Lc/t/m/sapp/c/e;
+    //   45: invokevirtual 80	c/t/m/sapp/c/e:c	()V
+    //   48: iconst_0
+    //   49: istore_3
+    //   50: iload_3
+    //   51: iconst_3
+    //   52: if_icmpge +69 -> 121
+    //   55: aload_2
+    //   56: ifnonnull +53 -> 109
+    //   59: getstatic 82	com/tencent/map/geolocation/sapp/TencentLocationManager:mPair	Landroid/util/Pair;
+    //   62: astore 5
+    //   64: aload 5
+    //   66: ifnull +43 -> 109
+    //   69: aload_0
+    //   70: aload_1
+    //   71: aload 5
+    //   73: iload_3
+    //   74: invokespecial 85	com/tencent/map/geolocation/sapp/TencentLocationManager:a	(Landroid/content/Context;Landroid/util/Pair;I)Z
+    //   77: istore 4
+    //   79: iload 4
+    //   81: ifne +40 -> 121
+    //   84: iload_3
+    //   85: iconst_1
+    //   86: iadd
+    //   87: istore_3
+    //   88: goto -38 -> 50
+    //   91: astore_1
+    //   92: ldc 87
+    //   94: aload_1
+    //   95: invokestatic 92	c/t/m/sapp/c/j:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   98: aload_0
+    //   99: iconst_3
+    //   100: putfield 51	com/tencent/map/geolocation/sapp/TencentLocationManager:mInitStatus	I
+    //   103: ldc 41
+    //   105: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: return
+    //   109: aload_0
+    //   110: aload_1
+    //   111: aload_2
+    //   112: iload_3
+    //   113: invokespecial 85	com/tencent/map/geolocation/sapp/TencentLocationManager:a	(Landroid/content/Context;Landroid/util/Pair;I)Z
+    //   116: istore 4
+    //   118: goto -39 -> 79
+    //   121: ldc 41
+    //   123: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	127	0	this	TencentLocationManager
+    //   0	127	1	paramContext	Context
+    //   0	127	2	paramPair	Pair<String, String>
+    //   49	64	3	i	int
+    //   77	40	4	bool	boolean
+    //   62	10	5	localPair	Pair
+    // Exception table:
+    //   from	to	target	type
+    //   27	32	91	finally
   }
   
   private boolean a(Context paramContext, Pair<String, String> paramPair, int paramInt)
   {
-    AppMethodBeat.i(254894);
+    AppMethodBeat.i(210888);
     if (paramInt > 0)
     {
-      q.a(q.d(paramContext));
-      q.a(q.i(paramContext));
-      q.a();
+      r.a(r.c(paramContext));
+      r.a(r.h(paramContext));
+      r.a();
       f.a(paramContext).c();
     }
     Object localObject = f.a(paramContext);
@@ -92,7 +133,7 @@ public final class TencentLocationManager
         paramContext = e.b();
         paramContext.a("LMI", "41");
         this.mInitStatus = 4;
-        AppMethodBeat.o(254894);
+        AppMethodBeat.o(210888);
         return false;
       }
       mProxyClass = ((DexClassLoader)localObject).loadClass("com.tencent.map.geolocation.sapp.proxy.TencentLocationManagerProxy");
@@ -105,22 +146,22 @@ public final class TencentLocationManager
         paramContext = e.b();
         paramPair = new StringBuilder();
         paramContext.a("LMI", "42," + paramInt);
-        AppMethodBeat.o(254894);
+        AppMethodBeat.o(210888);
         return false;
       }
       paramContext = e.b();
     }
-    catch (Throwable paramContext)
+    finally
     {
       this.mInitStatus = 5;
       j.a("initLocManager", paramContext);
       e.b().a("LMI", "5" + paramContext.toString());
-      AppMethodBeat.o(254894);
+      AppMethodBeat.o(210888);
       return false;
     }
     paramPair = new StringBuilder();
     paramContext.a("LMI", "0," + paramInt);
-    AppMethodBeat.o(254894);
+    AppMethodBeat.o(210888);
     return true;
   }
   
@@ -128,7 +169,7 @@ public final class TencentLocationManager
   {
     try
     {
-      AppMethodBeat.i(254896);
+      AppMethodBeat.i(210895);
       if (sInstance == null)
       {
         if (paramContext == null) {
@@ -143,17 +184,17 @@ public final class TencentLocationManager
       else
       {
         paramContext = sInstance;
-        AppMethodBeat.o(254896);
+        AppMethodBeat.o(210895);
         return paramContext;
       }
       paramContext = new NullPointerException("application context is null");
-      AppMethodBeat.o(254896);
+      AppMethodBeat.o(210895);
       throw paramContext;
     }
     finally {}
     label81:
     paramContext = new NullPointerException("context is null");
-    AppMethodBeat.o(254896);
+    AppMethodBeat.o(210895);
     throw paramContext;
   }
   
@@ -161,7 +202,7 @@ public final class TencentLocationManager
   {
     try
     {
-      AppMethodBeat.i(254897);
+      AppMethodBeat.i(210900);
       if (sInstance == null)
       {
         if (paramContext == null) {
@@ -176,37 +217,37 @@ public final class TencentLocationManager
       else
       {
         paramContext = sInstance;
-        AppMethodBeat.o(254897);
+        AppMethodBeat.o(210900);
         return paramContext;
       }
       paramContext = new NullPointerException("application context is null");
-      AppMethodBeat.o(254897);
+      AppMethodBeat.o(210900);
       throw paramContext;
     }
     finally {}
     label81:
     paramContext = new NullPointerException("context is null");
-    AppMethodBeat.o(254897);
+    AppMethodBeat.o(210900);
     throw paramContext;
   }
   
   public static boolean isOtherIdIllegal(String paramString)
   {
-    AppMethodBeat.i(254899);
+    AppMethodBeat.i(210910);
     boolean bool = paramString.matches("^[a-z0-9A-Z]{6,32}$");
-    AppMethodBeat.o(254899);
+    AppMethodBeat.o(210910);
     return bool;
   }
   
   public static void setDeviceID(Pair<String, String> paramPair)
   {
-    AppMethodBeat.i(254898);
+    AppMethodBeat.i(210904);
     if (paramPair != null)
     {
       if ((!((String)paramPair.first).equals("qImei")) && (!((String)paramPair.first).equals("oaId")) && (!isOtherIdIllegal((String)paramPair.first)))
       {
         paramPair = new IllegalArgumentException("your deviceID is illegal!");
-        AppMethodBeat.o(254898);
+        AppMethodBeat.o(210904);
         throw paramPair;
       }
       try
@@ -224,190 +265,131 @@ public final class TencentLocationManager
                 break label165;
               }
               ((Method)localObject).invoke(mProxyObj, new Object[] { mContext, paramPair });
-              AppMethodBeat.o(254898);
-              return;
             }
-            catch (Exception paramPair)
-            {
-              AppMethodBeat.o(254898);
-              return;
-            }
+            catch (Exception paramPair) {}
           }
         }
         else
         {
           mPair = paramPair;
-          AppMethodBeat.o(254898);
-          return;
         }
       }
-      catch (Throwable paramPair)
+      finally
       {
         label165:
-        AppMethodBeat.o(254898);
+        AppMethodBeat.o(210904);
         return;
       }
     }
     paramPair = new IllegalArgumentException("deviceID is null!");
-    AppMethodBeat.o(254898);
+    AppMethodBeat.o(210904);
     throw paramPair;
   }
   
   public final String getBuild()
   {
-    AppMethodBeat.i(254913);
+    AppMethodBeat.i(210956);
     try
     {
-      Object localObject = mProxyClass;
-      localObject = (String)((Class)localObject).getDeclaredMethod("getBuild", new Class[0]).invoke(mProxyObj, new Object[0]);
-      AppMethodBeat.o(254913);
-      return localObject;
+      Object localObject1 = mProxyClass;
+      localObject1 = (String)((Class)localObject1).getDeclaredMethod("getBuild", new Class[0]).invoke(mProxyObj, new Object[0]);
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254913);
+      AppMethodBeat.o(210956);
     }
     return "error";
   }
   
   public final int getCoordinateType()
   {
-    AppMethodBeat.i(254903);
+    AppMethodBeat.i(210919);
     try
     {
       Class localClass = mProxyClass;
       int i = ((Integer)localClass.getDeclaredMethod("getCoordinateType", new Class[0]).invoke(mProxyObj, new Object[0])).intValue();
-      AppMethodBeat.o(254903);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254903);
+      AppMethodBeat.o(210919);
     }
     return -1;
   }
   
   public final TencentLocation getLastKnownLocation()
   {
-    AppMethodBeat.i(254910);
+    AppMethodBeat.i(210951);
     try
     {
-      Object localObject = mProxyClass;
-      localObject = (TencentLocation)((Class)localObject).getDeclaredMethod("getLastKnownLocation", new Class[0]).invoke(mProxyObj, new Object[0]);
-      AppMethodBeat.o(254910);
-      return localObject;
+      Object localObject1 = mProxyClass;
+      localObject1 = (TencentLocation)((Class)localObject1).getDeclaredMethod("getLastKnownLocation", new Class[0]).invoke(mProxyObj, new Object[0]);
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254910);
+      AppMethodBeat.o(210951);
     }
     return null;
   }
   
   public final String getVersion()
   {
-    AppMethodBeat.i(254914);
+    AppMethodBeat.i(210959);
     try
     {
-      Object localObject = mProxyClass;
-      localObject = (String)((Class)localObject).getDeclaredMethod("getVersion", new Class[0]).invoke(mProxyObj, new Object[0]);
-      AppMethodBeat.o(254914);
-      return localObject;
+      Object localObject1 = mProxyClass;
+      localObject1 = (String)((Class)localObject1).getDeclaredMethod("getVersion", new Class[0]).invoke(mProxyObj, new Object[0]);
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254914);
+      AppMethodBeat.o(210959);
     }
     return "error";
   }
   
-  /* Error */
   public final void removeUpdates(TencentLocationListener paramTencentLocationListener)
   {
-    // Byte code:
-    //   0: ldc_w 288
-    //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: getfield 51	com/tencent/map/geolocation/sapp/TencentLocationManager:mLock	[B
-    //   10: astore_2
-    //   11: aload_2
-    //   12: monitorenter
-    //   13: getstatic 158	com/tencent/map/geolocation/sapp/TencentLocationManager:mProxyClass	Ljava/lang/Class;
-    //   16: astore_3
-    //   17: aload_3
-    //   18: ldc_w 289
-    //   21: iconst_1
-    //   22: anewarray 160	java/lang/Class
-    //   25: dup
-    //   26: iconst_0
-    //   27: ldc_w 291
-    //   30: aastore
-    //   31: invokevirtual 249	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   34: getstatic 176	com/tencent/map/geolocation/sapp/TencentLocationManager:mProxyObj	Ljava/lang/Object;
-    //   37: iconst_1
-    //   38: anewarray 4	java/lang/Object
-    //   41: dup
-    //   42: iconst_0
-    //   43: aload_1
-    //   44: aastore
-    //   45: invokevirtual 259	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   48: pop
-    //   49: invokestatic 141	c/t/m/sapp/c/e:b	()Lc/t/m/sapp/c/e;
-    //   52: invokevirtual 293	c/t/m/sapp/c/e:d	()V
-    //   55: aload_2
-    //   56: monitorexit
-    //   57: ldc_w 288
-    //   60: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: return
-    //   64: astore_1
-    //   65: aload_2
-    //   66: monitorexit
-    //   67: ldc_w 288
-    //   70: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   73: aload_1
-    //   74: athrow
-    //   75: astore_1
-    //   76: goto -21 -> 55
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	TencentLocationManager
-    //   0	79	1	paramTencentLocationListener	TencentLocationListener
-    //   16	2	3	localClass	Class
-    // Exception table:
-    //   from	to	target	type
-    //   13	17	64	finally
-    //   17	55	64	finally
-    //   13	17	75	java/lang/Throwable
-    //   17	55	75	java/lang/Throwable
+    AppMethodBeat.i(210953);
+    synchronized (this.mLock)
+    {
+      Class localClass = mProxyClass;
+      localClass.getDeclaredMethod("removeUpdates", new Class[] { TencentLocationListener.class }).invoke(mProxyObj, new Object[] { paramTencentLocationListener });
+      e.b().d();
+      AppMethodBeat.o(210953);
+      return;
+    }
   }
   
   public final int requestLocationUpdates(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener)
   {
-    AppMethodBeat.i(254904);
+    AppMethodBeat.i(210924);
     int i = this.mInitStatus;
     if (i > 0)
     {
-      AppMethodBeat.o(254904);
+      AppMethodBeat.o(210924);
       return i;
     }
     try
     {
       Class localClass = mProxyClass;
       i = ((Integer)localClass.getDeclaredMethod("requestLocationUpdates", new Class[] { TencentLocationRequest.class, TencentLocationListener.class }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest, paramTencentLocationListener })).intValue();
-      AppMethodBeat.o(254904);
+      AppMethodBeat.o(210924);
       return i;
     }
-    catch (Throwable paramTencentLocationRequest)
+    finally
     {
       j.a("reqLocUpdates error. ", paramTencentLocationRequest);
-      AppMethodBeat.o(254904);
+      AppMethodBeat.o(210924);
     }
     return 5;
   }
   
   public final int requestLocationUpdates(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener, Looper paramLooper)
   {
-    AppMethodBeat.i(254905);
+    AppMethodBeat.i(210928);
     System.currentTimeMillis();
     if (paramTencentLocationRequest != null)
     {
@@ -418,55 +400,43 @@ public final class TencentLocationManager
           int i = this.mInitStatus;
           if (i > 0)
           {
-            AppMethodBeat.o(254905);
+            AppMethodBeat.o(210928);
             return i;
           }
           synchronized (this.mLock)
           {
-            try
-            {
-              Class localClass = mProxyClass;
-              paramTencentLocationRequest = (Integer)localClass.getDeclaredMethod("requestLocationUpdates", new Class[] { TencentLocationRequest.class, TencentLocationListener.class, Looper.class }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest, paramTencentLocationListener, paramLooper });
-              paramTencentLocationListener = e.b();
-              paramTencentLocationListener.a("RLU", paramTencentLocationRequest.toString());
-              i = paramTencentLocationRequest.intValue();
-              AppMethodBeat.o(254905);
-              return i;
-            }
-            catch (Throwable paramTencentLocationRequest)
-            {
-              paramTencentLocationListener = e.b();
-              paramLooper = new StringBuilder();
-              paramTencentLocationListener.a("RLU", "5," + paramTencentLocationRequest.toString());
-              j.a("reqLocUpdates looper error. ", paramTencentLocationRequest);
-              AppMethodBeat.o(254905);
-              return 5;
-            }
+            Class localClass = mProxyClass;
+            paramTencentLocationRequest = (Integer)localClass.getDeclaredMethod("requestLocationUpdates", new Class[] { TencentLocationRequest.class, TencentLocationListener.class, Looper.class }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest, paramTencentLocationListener, paramLooper });
+            paramTencentLocationListener = e.b();
+            paramTencentLocationListener.a("RLU", paramTencentLocationRequest.toString());
+            i = paramTencentLocationRequest.intValue();
+            AppMethodBeat.o(210928);
+            return i;
           }
         }
         paramTencentLocationRequest = new NullPointerException("looper is null");
-        AppMethodBeat.o(254905);
+        AppMethodBeat.o(210928);
         throw paramTencentLocationRequest;
       }
       paramTencentLocationRequest = new NullPointerException("listener is null");
-      AppMethodBeat.o(254905);
+      AppMethodBeat.o(210928);
       throw paramTencentLocationRequest;
     }
     paramTencentLocationRequest = new NullPointerException("request is null");
-    AppMethodBeat.o(254905);
+    AppMethodBeat.o(210928);
   }
   
   public final int requestSingleFreshLocation(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener, Looper paramLooper)
   {
-    AppMethodBeat.i(254907);
+    AppMethodBeat.i(210940);
     int i = requestSingleFreshLocation(paramTencentLocationRequest, paramTencentLocationListener, paramLooper, false);
-    AppMethodBeat.o(254907);
+    AppMethodBeat.o(210940);
     return i;
   }
   
   public final int requestSingleFreshLocation(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener, Looper paramLooper, boolean paramBoolean)
   {
-    AppMethodBeat.i(254906);
+    AppMethodBeat.i(210934);
     if (paramTencentLocationListener != null)
     {
       if (paramLooper != null)
@@ -474,158 +444,79 @@ public final class TencentLocationManager
         int i = this.mInitStatus;
         if (i > 0)
         {
-          AppMethodBeat.o(254906);
+          AppMethodBeat.o(210934);
           return i;
         }
         synchronized (this.mLock)
         {
-          try
-          {
-            Class localClass = mProxyClass;
-            i = ((Integer)localClass.getDeclaredMethod("requestSingleFreshLocation", new Class[] { TencentLocationRequest.class, TencentLocationListener.class, Looper.class, Boolean.TYPE }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest, paramTencentLocationListener, paramLooper, Boolean.valueOf(paramBoolean) })).intValue();
-            AppMethodBeat.o(254906);
-            return i;
-          }
-          catch (Throwable paramTencentLocationRequest)
-          {
-            j.a("reqSigLoc error. ", paramTencentLocationRequest);
-            AppMethodBeat.o(254906);
-            return 5;
-          }
+          Class localClass = mProxyClass;
+          i = ((Integer)localClass.getDeclaredMethod("requestSingleFreshLocation", new Class[] { TencentLocationRequest.class, TencentLocationListener.class, Looper.class, Boolean.TYPE }).invoke(mProxyObj, new Object[] { paramTencentLocationRequest, paramTencentLocationListener, paramLooper, Boolean.valueOf(paramBoolean) })).intValue();
+          AppMethodBeat.o(210934);
+          return i;
         }
       }
       paramTencentLocationRequest = new NullPointerException("looper is null");
-      AppMethodBeat.o(254906);
+      AppMethodBeat.o(210934);
       throw paramTencentLocationRequest;
     }
     paramTencentLocationRequest = new NullPointerException("listener is null");
-    AppMethodBeat.o(254906);
+    AppMethodBeat.o(210934);
   }
   
-  /* Error */
   public final void setCoordinateType(int paramInt)
   {
-    // Byte code:
-    //   0: ldc_w 338
-    //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: iload_1
-    //   7: iconst_1
-    //   8: if_icmpeq +53 -> 61
-    //   11: iload_1
-    //   12: ifeq +49 -> 61
-    //   15: new 121	java/lang/StringBuilder
-    //   18: dup
-    //   19: invokespecial 122	java/lang/StringBuilder:<init>	()V
-    //   22: astore_2
-    //   23: new 240	java/lang/IllegalArgumentException
-    //   26: dup
-    //   27: aload_2
-    //   28: ldc_w 340
-    //   31: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: iload_1
-    //   35: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokespecial 243	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
-    //   44: astore_2
-    //   45: ldc_w 338
-    //   48: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   51: aload_2
-    //   52: athrow
-    //   53: astore_2
-    //   54: ldc_w 338
-    //   57: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   60: return
-    //   61: aload_0
-    //   62: getfield 51	com/tencent/map/geolocation/sapp/TencentLocationManager:mLock	[B
-    //   65: astore_2
-    //   66: aload_2
-    //   67: monitorenter
-    //   68: getstatic 158	com/tencent/map/geolocation/sapp/TencentLocationManager:mProxyClass	Ljava/lang/Class;
-    //   71: astore_3
-    //   72: aload_3
-    //   73: ldc_w 341
-    //   76: iconst_1
-    //   77: anewarray 160	java/lang/Class
-    //   80: dup
-    //   81: iconst_0
-    //   82: getstatic 342	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   85: aastore
-    //   86: invokevirtual 249	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   89: getstatic 176	com/tencent/map/geolocation/sapp/TencentLocationManager:mProxyObj	Ljava/lang/Object;
-    //   92: iconst_1
-    //   93: anewarray 4	java/lang/Object
-    //   96: dup
-    //   97: iconst_0
-    //   98: iload_1
-    //   99: invokestatic 345	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   102: aastore
-    //   103: invokevirtual 259	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   106: pop
-    //   107: aload_2
-    //   108: monitorexit
-    //   109: ldc_w 338
-    //   112: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   115: return
-    //   116: astore_3
-    //   117: aload_2
-    //   118: monitorexit
-    //   119: ldc_w 338
-    //   122: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   125: aload_3
-    //   126: athrow
-    //   127: astore_3
-    //   128: goto -21 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	131	0	this	TencentLocationManager
-    //   0	131	1	paramInt	int
-    //   22	30	2	localObject1	Object
-    //   53	1	2	localException	Exception
-    //   71	2	3	localClass	Class
-    //   116	10	3	localObject2	Object
-    //   127	1	3	localThrowable	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   15	23	53	java/lang/Exception
-    //   23	53	53	java/lang/Exception
-    //   61	68	53	java/lang/Exception
-    //   119	127	53	java/lang/Exception
-    //   68	72	116	finally
-    //   72	107	116	finally
-    //   68	72	127	java/lang/Throwable
-    //   72	107	127	java/lang/Throwable
+    AppMethodBeat.i(210915);
+    if ((paramInt != 1) && (paramInt != 0)) {
+      try
+      {
+        Object localObject1 = new StringBuilder();
+        localObject1 = new IllegalArgumentException("unknown coordinate type: " + paramInt);
+        AppMethodBeat.o(210915);
+        throw ((Throwable)localObject1);
+      }
+      catch (Exception localException)
+      {
+        AppMethodBeat.o(210915);
+        return;
+      }
+    }
+    synchronized (this.mLock)
+    {
+      Class localClass = mProxyClass;
+      localClass.getDeclaredMethod("setCoordinateType", new Class[] { Integer.TYPE }).invoke(mProxyObj, new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(210915);
+      return;
+    }
   }
   
   public final boolean startIndoorLocation()
   {
-    AppMethodBeat.i(254908);
+    AppMethodBeat.i(210943);
     try
     {
       Class localClass = mProxyClass;
       boolean bool = ((Boolean)localClass.getDeclaredMethod("startIndoorLocation", new Class[0]).invoke(mProxyObj, new Object[0])).booleanValue();
-      AppMethodBeat.o(254908);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254908);
+      AppMethodBeat.o(210943);
     }
     return false;
   }
   
   public final boolean stopIndoorLocation()
   {
-    AppMethodBeat.i(254909);
+    AppMethodBeat.i(210947);
     try
     {
       Class localClass = mProxyClass;
       boolean bool = ((Boolean)localClass.getDeclaredMethod("stopIndoorLocation", new Class[0]).invoke(mProxyObj, new Object[0])).booleanValue();
-      AppMethodBeat.o(254909);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254909);
+      AppMethodBeat.o(210947);
     }
     return false;
   }

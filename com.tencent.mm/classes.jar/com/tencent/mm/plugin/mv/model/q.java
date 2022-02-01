@@ -1,42 +1,40 @@
 package com.tencent.mm.plugin.mv.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
-import kotlin.l;
+import com.tencent.mm.model.cn;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/model/StatRecord;", "", "index", "", "(I)V", "createTimeStamp", "", "getCreateTimeStamp", "()J", "setCreateTimeStamp", "(J)V", "getIndex", "()I", "setIndex", "isAutoPlay", "", "()Z", "setAutoPlay", "(Z)V", "lastPlayTime", "getLastPlayTime", "setLastPlayTime", "maxPlayLength", "getMaxPlayLength", "setMaxPlayLength", "maxPlayPercent", "getMaxPlayPercent", "setMaxPlayPercent", "retryPlayTimes", "getRetryPlayTimes", "setRetryPlayTimes", "vidPlayLen", "getVidPlayLen", "setVidPlayLen", "component1", "copy", "equals", "other", "hashCode", "toString", "", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/model/StatRecord;", "", "index", "", "(I)V", "createTimeStamp", "", "getCreateTimeStamp", "()J", "setCreateTimeStamp", "(J)V", "getIndex", "()I", "setIndex", "isAutoPlay", "", "()Z", "setAutoPlay", "(Z)V", "lastPlayTime", "getLastPlayTime", "setLastPlayTime", "maxPlayLength", "getMaxPlayLength", "setMaxPlayLength", "maxPlayPercent", "getMaxPlayPercent", "setMaxPlayPercent", "retryPlayTimes", "getRetryPlayTimes", "setRetryPlayTimes", "vidPlayLen", "getVidPlayLen", "setVidPlayLen", "component1", "copy", "equals", "other", "hashCode", "toString", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
 {
-  public int AUa;
+  public int FsL;
+  public int FsM;
+  public long FsW;
+  public int Gwt;
   int index;
   public boolean isAutoPlay;
-  long oiL;
-  public int zXf;
-  public int zXg;
-  public long zXq;
+  long rmn;
   
   public q(int paramInt)
   {
-    AppMethodBeat.i(243568);
+    AppMethodBeat.i(286119);
     this.index = paramInt;
-    this.oiL = cm.bfE();
+    this.rmn = cn.bDw();
     this.isAutoPlay = true;
-    AppMethodBeat.o(243568);
+    AppMethodBeat.o(286119);
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (this != paramObject)
+    if (this == paramObject) {}
+    do
     {
-      if ((paramObject instanceof q))
-      {
-        paramObject = (q)paramObject;
-        if (this.index != paramObject.index) {}
-      }
-    }
-    else {
       return true;
-    }
+      if (!(paramObject instanceof q)) {
+        return false;
+      }
+      paramObject = (q)paramObject;
+    } while (this.index == paramObject.index);
     return false;
   }
   
@@ -47,9 +45,9 @@ public final class q
   
   public final String toString()
   {
-    AppMethodBeat.i(243569);
-    String str = "StatRecord(index=" + this.index + ")";
-    AppMethodBeat.o(243569);
+    AppMethodBeat.i(286127);
+    String str = "StatRecord(index=" + this.index + ')';
+    AppMethodBeat.o(286127);
     return str;
   }
 }

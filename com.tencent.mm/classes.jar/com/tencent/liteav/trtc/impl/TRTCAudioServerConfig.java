@@ -39,14 +39,14 @@ public class TRTCAudioServerConfig
   
   static
   {
-    AppMethodBeat.i(227190);
+    AppMethodBeat.i(230878);
     DEFAULT_LOW_LATENCY_SAMPLERATE_BLOCK_TIME = TimeUnit.DAYS.toMillis(7L);
-    AppMethodBeat.o(227190);
+    AppMethodBeat.o(230878);
   }
   
   public static TRTCAudioServerConfig loadFromSharedPreferences(Context paramContext)
   {
-    AppMethodBeat.i(227186);
+    AppMethodBeat.i(230873);
     try
     {
       TRTCAudioServerConfig localTRTCAudioServerConfig = new TRTCAudioServerConfig();
@@ -64,13 +64,13 @@ public class TRTCAudioServerConfig
     }
     finally
     {
-      AppMethodBeat.o(227186);
+      AppMethodBeat.o(230873);
     }
   }
   
   public static void saveToSharedPreferences(Context paramContext, TRTCAudioServerConfig paramTRTCAudioServerConfig)
   {
-    AppMethodBeat.i(227182);
+    AppMethodBeat.i(230867);
     try
     {
       paramContext = paramContext.getSharedPreferences("trtc_audio_server_config", 0).edit();
@@ -88,21 +88,21 @@ public class TRTCAudioServerConfig
     }
     finally
     {
-      AppMethodBeat.o(227182);
+      AppMethodBeat.o(230867);
     }
   }
   
   public String toString()
   {
-    AppMethodBeat.i(227173);
+    AppMethodBeat.i(230883);
     String str = "enableOpenSL: " + this.enableOpenSL + ", enableAutoRestartDevice: " + this.enableAutoRestartDevice + ", deviceAutoRestartMinInterval: " + this.deviceAutoRestartMinInterval + ", audio16KPackageStrategy: " + this.audio16KPackageStrategy + ", isLowLatencySampleRateSupported: " + this.isLowLatencySampleRateSupported + ", lowLatencySampleRateBlockTime: " + this.lowLatencySampleRateBlockTime + ", enableDeviceAbnormalDetection: " + this.enableDeviceAbnormalDetection;
-    AppMethodBeat.o(227173);
+    AppMethodBeat.o(230883);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCAudioServerConfig
  * JD-Core Version:    0.7.0.1
  */

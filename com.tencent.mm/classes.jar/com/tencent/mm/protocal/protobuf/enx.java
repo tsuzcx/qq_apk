@@ -1,61 +1,63 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class enx
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long UpP;
-  public int UqI;
+  public LinkedList<Integer> aaTg;
+  
+  public enx()
+  {
+    AppMethodBeat.i(259776);
+    this.aaTg = new LinkedList();
+    AppMethodBeat.o(259776);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(118457);
+    AppMethodBeat.i(259777);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bm(1, this.UpP);
-      paramVarArgs.aY(2, this.UqI);
-      AppMethodBeat.o(118457);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 2, this.aaTg);
+      AppMethodBeat.o(259777);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.p(1, this.UpP);
-      int i = g.a.a.b.b.a.bM(2, this.UqI);
-      AppMethodBeat.o(118457);
-      return paramInt + 0 + i;
+      paramInt = i.a.a.a.c(1, 2, this.aaTg);
+      AppMethodBeat.o(259777);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.aaTg.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(118457);
+      AppMethodBeat.o(259777);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       enx localenx = (enx)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(118457);
+        AppMethodBeat.o(259777);
         return -1;
-      case 1: 
-        localenx.UpP = locala.abFh.AN();
-        AppMethodBeat.o(118457);
-        return 0;
       }
-      localenx.UqI = locala.abFh.AK();
-      AppMethodBeat.o(118457);
+      localenx.aaTg.add(Integer.valueOf(locala.ajGk.aar()));
+      AppMethodBeat.o(259777);
       return 0;
     }
-    AppMethodBeat.o(118457);
+    AppMethodBeat.o(259777);
     return -1;
   }
 }

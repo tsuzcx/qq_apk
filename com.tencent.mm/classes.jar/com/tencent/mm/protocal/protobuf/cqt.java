@@ -1,79 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cqt
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String session_id;
-  public String tsk;
+  public long timestamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104816);
+    AppMethodBeat.i(258977);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.tsk != null) {
-        paramVarArgs.f(1, this.tsk);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.session_id != null) {
-        paramVarArgs.f(2, this.session_id);
-      }
-      AppMethodBeat.o(104816);
+      paramVarArgs.bv(2, this.timestamp);
+      AppMethodBeat.o(258977);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.tsk == null) {
-        break label274;
+      if (this.BaseRequest == null) {
+        break label328;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.tsk) + 0;; paramInt = 0)
+    label328:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.session_id != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.session_id);
-      }
-      AppMethodBeat.o(104816);
-      return i;
+      int i = i.a.a.b.b.a.q(2, this.timestamp);
+      AppMethodBeat.o(258977);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(104816);
+        AppMethodBeat.o(258977);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cqt localcqt = (cqt)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(104816);
+          AppMethodBeat.o(258977);
           return -1;
         case 1: 
-          localcqt.tsk = locala.abFh.readString();
-          AppMethodBeat.o(104816);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localcqt.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(258977);
           return 0;
         }
-        localcqt.session_id = locala.abFh.readString();
-        AppMethodBeat.o(104816);
+        localcqt.timestamp = ((i.a.a.a.a)localObject).ajGk.aaw();
+        AppMethodBeat.o(258977);
         return 0;
       }
-      AppMethodBeat.o(104816);
+      AppMethodBeat.o(258977);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cqt
  * JD-Core Version:    0.7.0.1
  */

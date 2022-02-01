@@ -6,210 +6,279 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnCreateContextMenuListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.cgi.bh;
-import com.tencent.mm.plugin.finder.service.k;
-import com.tencent.mm.plugin.findersdk.a.aj;
-import com.tencent.mm.protocal.protobuf.aqu;
-import com.tencent.mm.protocal.protobuf.asn;
-import com.tencent.mm.protocal.protobuf.atp;
-import com.tencent.mm.protocal.protobuf.beo;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.plugin.finder.cgi.ce;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.findersdk.a.ck;
+import com.tencent.mm.protocal.protobuf.aux;
+import com.tencent.mm.protocal.protobuf.axc;
+import com.tencent.mm.protocal.protobuf.ayf;
+import com.tencent.mm.protocal.protobuf.bpp;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.q.g;
 import java.util.ArrayList;
-import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderBlackListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "delayLoadingRunnable", "Ljava/lang/Runnable;", "emptyTip", "Landroid/widget/TextView;", "hasMore", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FansListAdapter;", "listView", "Landroid/widget/ListView;", "loadingView", "Landroid/view/View;", "popupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "retryView", "dismissLoadingView", "", "doGetBlackListScene", "getLayoutId", "", "initView", "merge", "contacts", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestRefresh", "showPopupMenu", "fansContact", "anchor", "update", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderBlackListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "delayLoadingRunnable", "Ljava/lang/Runnable;", "emptyTip", "Landroid/widget/TextView;", "hasMore", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/ui/FansListAdapter;", "listView", "Landroid/widget/ListView;", "loadingView", "Landroid/view/View;", "popupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "retryView", "dismissLoadingView", "", "doGetBlackListScene", "getLayoutId", "", "initView", "merge", "contacts", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestRefresh", "showPopupMenu", "fansContact", "anchor", "update", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderBlackListUI
   extends MMFinderUI
-  implements i, aj<beo>
+  implements com.tencent.mm.am.h, ck<bpp>
 {
-  public static final a Aon;
-  private final a Aok;
-  private View Aol;
-  private Runnable Aom;
-  private HashMap _$_findViewCache;
+  public static final FinderBlackListUI.a FOD;
+  private com.tencent.mm.bx.b AyB;
+  private final ArrayList<axc> BmO;
+  private View BsS;
+  private final a FOE;
+  private Runnable FOF;
   private boolean hasMore;
-  private View kGT;
-  private TextView kGj;
-  private ListView niO;
-  private com.tencent.mm.ui.widget.b.a szq;
-  private final ArrayList<asn> xMG;
-  private com.tencent.mm.cd.b xaw;
+  private View njN;
+  private TextView njh;
+  private ListView qgc;
+  private com.tencent.mm.ui.widget.b.a vEV;
   
   static
   {
-    AppMethodBeat.i(229342);
-    Aon = new a((byte)0);
-    AppMethodBeat.o(229342);
+    AppMethodBeat.i(347369);
+    FOD = new FinderBlackListUI.a((byte)0);
+    AppMethodBeat.o(347369);
   }
   
   public FinderBlackListUI()
   {
     AppMethodBeat.i(167154);
-    this.Aok = new a((Activity)this);
-    this.xMG = new ArrayList();
-    this.Aom = ((Runnable)new b(this));
+    this.FOE = new a((Activity)this);
+    this.BmO = new ArrayList();
+    this.FOF = new FinderBlackListUI..ExternalSyntheticLambda4(this);
     AppMethodBeat.o(167154);
   }
   
-  private final void dZL()
+  private static final void a(FinderBlackListUI paramFinderBlackListUI)
   {
-    AppMethodBeat.i(229329);
-    View localView = this.kGT;
-    if (localView != null) {
-      localView.removeCallbacks(this.Aom);
+    AppMethodBeat.i(347277);
+    kotlin.g.b.s.u(paramFinderBlackListUI, "this$0");
+    paramFinderBlackListUI = paramFinderBlackListUI.njN;
+    if (paramFinderBlackListUI != null) {
+      paramFinderBlackListUI.setVisibility(0);
     }
-    localView = this.kGT;
-    if (localView != null)
-    {
-      localView.setVisibility(8);
-      AppMethodBeat.o(229329);
-      return;
-    }
-    AppMethodBeat.o(229329);
+    AppMethodBeat.o(347277);
   }
   
-  private final void dZM()
+  private static final void a(FinderBlackListUI paramFinderBlackListUI, ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  {
+    AppMethodBeat.i(347306);
+    kotlin.g.b.s.u(paramFinderBlackListUI, "this$0");
+    paramContextMenu.add(0, 1001, 0, (CharSequence)paramFinderBlackListUI.getString(e.h.contact_info_moveout_blacklist));
+    AppMethodBeat.o(347306);
+  }
+  
+  private static final void a(FinderBlackListUI paramFinderBlackListUI, View paramView)
+  {
+    AppMethodBeat.i(347297);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderBlackListUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderBlackListUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramFinderBlackListUI, "this$0");
+    paramView = paramFinderBlackListUI.njN;
+    if (paramView != null) {
+      paramView.setVisibility(0);
+    }
+    localObject = paramFinderBlackListUI.qgc;
+    paramView = (View)localObject;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("listView");
+      paramView = null;
+    }
+    paramView.setVisibility(4);
+    paramView = paramFinderBlackListUI.BsS;
+    if (paramView != null) {
+      paramView.setVisibility(8);
+    }
+    paramFinderBlackListUI.faK();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/ui/FinderBlackListUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(347297);
+  }
+  
+  private static final void a(axc paramaxc, FinderBlackListUI paramFinderBlackListUI, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(347313);
+    kotlin.g.b.s.u(paramaxc, "$fansContact");
+    kotlin.g.b.s.u(paramFinderBlackListUI, "this$0");
+    if (paramMenuItem.getItemId() == 1001)
+    {
+      com.tencent.mm.plugin.finder.service.p localp = (com.tencent.mm.plugin.finder.service.p)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.finder.service.p.class);
+      paramMenuItem = paramaxc.hJS;
+      paramaxc = paramMenuItem;
+      if (paramMenuItem == null) {
+        paramaxc = "";
+      }
+      localp.b(paramaxc, false, (ck)paramFinderBlackListUI);
+    }
+    AppMethodBeat.o(347313);
+  }
+  
+  private static final boolean a(FinderBlackListUI paramFinderBlackListUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(347286);
+    kotlin.g.b.s.u(paramFinderBlackListUI, "this$0");
+    paramFinderBlackListUI.finish();
+    AppMethodBeat.o(347286);
+    return true;
+  }
+  
+  private final void faJ()
+  {
+    AppMethodBeat.i(347266);
+    View localView = this.njN;
+    if (localView != null) {
+      localView.removeCallbacks(this.FOF);
+    }
+    localView = this.njN;
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+    AppMethodBeat.o(347266);
+  }
+  
+  private final void faK()
   {
     AppMethodBeat.i(167151);
-    bh localbh = new bh(this.xaw);
-    h.aGY().b((com.tencent.mm.an.q)localbh);
+    ce localce = new ce(this.AyB);
+    com.tencent.mm.kernel.h.aZW().a((com.tencent.mm.am.p)localce, 0);
     AppMethodBeat.o(167151);
   }
   
   private final void update()
   {
+    TextView localTextView = null;
+    ListView localListView = null;
     AppMethodBeat.i(167149);
-    dZL();
-    Object localObject = this.Aol;
+    faJ();
+    Object localObject = this.BsS;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    if (this.xMG.isEmpty())
+    if (this.BmO.isEmpty())
     {
-      localObject = this.kGj;
-      if (localObject == null) {
-        p.bGy("emptyTip");
+      localTextView = this.njh;
+      localObject = localTextView;
+      if (localTextView == null)
+      {
+        kotlin.g.b.s.bIx("emptyTip");
+        localObject = null;
       }
       ((TextView)localObject).setVisibility(0);
-      localObject = this.kGj;
-      if (localObject == null) {
-        p.bGy("emptyTip");
+      localObject = this.njh;
+      if (localObject == null)
+      {
+        kotlin.g.b.s.bIx("emptyTip");
+        localObject = localListView;
       }
-      ((TextView)localObject).setText((CharSequence)getString(b.j.finder_blacklist_empty_hint));
+      for (;;)
+      {
+        ((TextView)localObject).setText((CharSequence)getString(e.h.finder_blacklist_empty_hint));
+        AppMethodBeat.o(167149);
+        return;
+      }
+    }
+    localListView = this.qgc;
+    localObject = localListView;
+    if (localListView == null)
+    {
+      kotlin.g.b.s.bIx("listView");
+      localObject = null;
+    }
+    ((ListView)localObject).setVisibility(0);
+    localObject = this.njh;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("emptyTip");
+      localObject = localTextView;
+    }
+    for (;;)
+    {
+      ((TextView)localObject).setVisibility(8);
       AppMethodBeat.o(167149);
       return;
     }
-    localObject = this.niO;
-    if (localObject == null) {
-      p.bGy("listView");
-    }
-    ((ListView)localObject).setVisibility(0);
-    localObject = this.kGj;
-    if (localObject == null) {
-      p.bGy("emptyTip");
-    }
-    ((TextView)localObject).setVisibility(8);
-    AppMethodBeat.o(167149);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(229361);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(229361);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(229358);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(229358);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_contact_sort_list_ui;
+    return e.f.finder_contact_sort_list_ui;
   }
   
   public final void initView()
   {
+    Object localObject2 = null;
     AppMethodBeat.i(167148);
-    setMMTitle(getString(b.j.finder_my_blacklist));
-    Object localObject = findViewById(b.f.contact_list);
-    p.j(localObject, "findViewById<ListView>(R.id.contact_list)");
-    this.niO = ((ListView)localObject);
-    localObject = findViewById(b.f.empty_tip);
-    p.j(localObject, "findViewById<TextView>(R.id.empty_tip)");
-    this.kGj = ((TextView)localObject);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new c(this));
-    this.szq = new com.tencent.mm.ui.widget.b.a((Context)this);
-    localObject = this.niO;
-    if (localObject == null) {
-      p.bGy("listView");
-    }
-    ((ListView)localObject).setAdapter((ListAdapter)this.Aok);
-    localObject = this.niO;
-    if (localObject == null) {
-      p.bGy("listView");
-    }
-    ((ListView)localObject).setOnScrollListener((AbsListView.OnScrollListener)new d(this));
-    this.Aok.yWG = ((m)new e(this));
-    this.kGT = findViewById(b.f.tips_loading);
-    localObject = this.kGT;
-    if (localObject != null) {
-      ((View)localObject).postDelayed(this.Aom, 400L);
-    }
-    this.Aol = findViewById(b.f.tips_retry);
-    localObject = this.Aol;
-    if (localObject != null)
+    setMMTitle(getString(e.h.finder_my_blacklist));
+    Object localObject1 = findViewById(e.e.contact_list);
+    kotlin.g.b.s.s(localObject1, "findViewById<ListView>(R.id.contact_list)");
+    this.qgc = ((ListView)localObject1);
+    localObject1 = findViewById(e.e.empty_tip);
+    kotlin.g.b.s.s(localObject1, "findViewById<TextView>(R.id.empty_tip)");
+    this.njh = ((TextView)localObject1);
+    setBackBtn(new FinderBlackListUI..ExternalSyntheticLambda0(this));
+    this.vEV = new com.tencent.mm.ui.widget.b.a((Context)this);
+    localObject1 = this.qgc;
+    if (localObject1 == null)
     {
-      ((View)localObject).setOnClickListener((View.OnClickListener)new f(this));
+      kotlin.g.b.s.bIx("listView");
+      localObject1 = null;
+      ((ListView)localObject1).setAdapter((ListAdapter)this.FOE);
+      localObject1 = this.qgc;
+      if (localObject1 != null) {
+        break label242;
+      }
+      kotlin.g.b.s.bIx("listView");
+      localObject1 = localObject2;
+    }
+    label242:
+    for (;;)
+    {
+      ((ListView)localObject1).setOnScrollListener((AbsListView.OnScrollListener)new b(this));
+      this.FOE.FNY = ((m)new c(this));
+      this.njN = findViewById(e.e.tips_loading);
+      localObject1 = this.njN;
+      if (localObject1 != null) {
+        ((View)localObject1).postDelayed(this.FOF, 400L);
+      }
+      this.BsS = findViewById(e.e.tips_retry);
+      localObject1 = this.BsS;
+      if (localObject1 != null) {
+        ((View)localObject1).setOnClickListener(new FinderBlackListUI..ExternalSyntheticLambda1(this));
+      }
       AppMethodBeat.o(167148);
       return;
+      break;
     }
-    AppMethodBeat.o(167148);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(167147);
     super.onCreate(paramBundle);
-    h.aGY().a(3717, (i)this);
+    com.tencent.mm.kernel.h.aZW().a(3717, (com.tencent.mm.am.h)this);
     initView();
-    dZM();
+    faK();
     AppMethodBeat.o(167147);
   }
   
@@ -217,55 +286,52 @@ public final class FinderBlackListUI
   {
     AppMethodBeat.i(167152);
     super.onDestroy();
-    h.aGY().b(3717, (i)this);
+    com.tencent.mm.kernel.h.aZW().b(3717, (com.tencent.mm.am.h)this);
     AppMethodBeat.o(167152);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(167153);
     Log.i("Finder.FinderBlackListUI", "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if (paramq == null)
+      if (paramp == null)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetBlackList");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetBlackList");
         AppMethodBeat.o(167153);
         throw paramString;
       }
-      paramString = ((bh)paramq).rr.bhY();
+      paramString = c.c.b(((ce)paramp).rr.otC);
       if (paramString == null)
       {
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetBlackListResponse");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetBlackListResponse");
         AppMethodBeat.o(167153);
         throw paramString;
       }
-      if (((atp)paramString).continueFlag != 0) {}
+      if (((ayf)paramString).continueFlag != 0) {}
       for (boolean bool = true;; bool = false)
       {
         this.hasMore = bool;
-        paramString = ((bh)paramq).rr.bhY();
+        paramString = c.c.b(((ce)paramp).rr.otC);
         if (paramString != null) {
           break;
         }
-        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetBlackListResponse");
+        paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetBlackListResponse");
         AppMethodBeat.o(167153);
         throw paramString;
       }
-      this.xaw = ((atp)paramString).xHE;
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new h(this, paramq));
+      this.AyB = ((ayf)paramString).BgS;
+      d.uiThread((kotlin.g.a.a)new FinderBlackListUI.e(this, paramp));
       AppMethodBeat.o(167153);
       return;
     }
-    dZL();
-    if (this.xMG.isEmpty())
+    faJ();
+    if (this.BmO.isEmpty())
     {
-      paramString = this.Aol;
-      if (paramString != null)
-      {
+      paramString = this.BsS;
+      if (paramString != null) {
         paramString.setVisibility(0);
-        AppMethodBeat.o(167153);
-        return;
       }
     }
     AppMethodBeat.o(167153);
@@ -277,166 +343,77 @@ public final class FinderBlackListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderBlackListUI$Companion;", "", "()V", "DELAY_LOADING_TIME", "", "MENU_ID_UNSET_BLACK_LIST", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/ui/FinderBlackListUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
+    implements AbsListView.OnScrollListener
   {
     b(FinderBlackListUI paramFinderBlackListUI) {}
     
-    public final void run()
-    {
-      AppMethodBeat.i(291076);
-      View localView = FinderBlackListUI.h(this.Aoo);
-      if (localView != null)
-      {
-        localView.setVisibility(0);
-        AppMethodBeat.o(291076);
-        return;
-      }
-      AppMethodBeat.o(291076);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
-    implements MenuItem.OnMenuItemClickListener
-  {
-    c(FinderBlackListUI paramFinderBlackListUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(167140);
-      this.Aoo.finish();
-      AppMethodBeat.o(167140);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderBlackListUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"})
-  public static final class d
-    implements AbsListView.OnScrollListener
-  {
     public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
     {
       AppMethodBeat.i(167141);
-      if ((paramInt == 0) && (paramAbsListView != null) && (!paramAbsListView.canScrollVertically(1)))
+      if ((paramInt == 0) && (paramAbsListView != null))
       {
-        if (FinderBlackListUI.a(this.Aoo))
+        FinderBlackListUI localFinderBlackListUI = this.FOG;
+        if (!paramAbsListView.canScrollVertically(1))
         {
-          FinderBlackListUI.b(this.Aoo);
-          AppMethodBeat.o(167141);
-          return;
-        }
-        if (FinderBlackListUI.c(this.Aoo).getFooterViewsCount() == 0) {
-          FinderBlackListUI.c(this.Aoo).addFooterView(View.inflate((Context)this.Aoo, b.g.finder_load_no_more_footer, null));
+          if (FinderBlackListUI.b(localFinderBlackListUI))
+          {
+            FinderBlackListUI.c(localFinderBlackListUI);
+            AppMethodBeat.o(167141);
+            return;
+          }
+          ListView localListView = FinderBlackListUI.d(localFinderBlackListUI);
+          paramAbsListView = localListView;
+          if (localListView == null)
+          {
+            kotlin.g.b.s.bIx("listView");
+            paramAbsListView = null;
+          }
+          if (paramAbsListView.getFooterViewsCount() == 0)
+          {
+            localListView = FinderBlackListUI.d(localFinderBlackListUI);
+            paramAbsListView = localListView;
+            if (localListView == null)
+            {
+              kotlin.g.b.s.bIx("listView");
+              paramAbsListView = null;
+            }
+            paramAbsListView.addFooterView(View.inflate((Context)localFinderBlackListUI, e.f.finder_load_no_more_footer, null));
+          }
         }
       }
       AppMethodBeat.o(167141);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "position", "", "invoke"})
-  static final class e
-    extends kotlin.g.b.q
-    implements m<View, Integer, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "position", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements m<View, Integer, ah>
   {
-    e(FinderBlackListUI paramFinderBlackListUI)
+    c(FinderBlackListUI paramFinderBlackListUI)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    f(FinderBlackListUI paramFinderBlackListUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(289280);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderBlackListUI$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      FinderBlackListUI.e(this.Aoo);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderBlackListUI$initView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(289280);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    g(FinderBlackListUI paramFinderBlackListUI, aqu paramaqu, beo parambeo)
+    d(aux paramaux, FinderBlackListUI paramFinderBlackListUI, bpp parambpp)
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    h(FinderBlackListUI paramFinderBlackListUI, com.tencent.mm.an.q paramq)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
-  static final class i
-    implements View.OnCreateContextMenuListener
-  {
-    i(FinderBlackListUI paramFinderBlackListUI) {}
-    
-    public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
-    {
-      AppMethodBeat.i(167145);
-      paramContextMenu.add(0, 1001, 0, (CharSequence)this.Aoo.getString(b.j.contact_info_moveout_blacklist));
-      AppMethodBeat.o(167145);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class j
-    implements q.g
-  {
-    j(FinderBlackListUI paramFinderBlackListUI, asn paramasn) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(167146);
-      p.j(paramMenuItem, "menuItem");
-      switch (paramMenuItem.getItemId())
-      {
-      default: 
-        AppMethodBeat.o(167146);
-        return;
-      }
-      k localk = (k)h.ae(k.class);
-      paramMenuItem = this.Aop.fFa;
-      if (paramMenuItem == null) {
-        paramMenuItem = "";
-      }
-      for (;;)
-      {
-        localk.b(paramMenuItem, false, (aj)this.Aoo);
-        break;
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderBlackListUI
  * JD-Core Version:    0.7.0.1
  */

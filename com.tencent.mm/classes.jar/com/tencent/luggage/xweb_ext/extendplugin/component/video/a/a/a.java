@@ -6,21 +6,22 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMFileSlotManager;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 
 public final class a
   implements f
 {
-  MMFileSlotManager cKA;
+  MMFileSlotManager eEl;
   
   public a()
   {
     AppMethodBeat.i(177186);
-    this.cKA = new MMFileSlotManager("bizplaylist", 86400L);
+    this.eEl = new MMFileSlotManager("bizplaylist", 86400L);
     AppMethodBeat.o(177186);
   }
   
-  public final q ev(String paramString)
+  public final u fS(String paramString)
   {
     AppMethodBeat.i(177187);
     if (!Util.isNullOrNil(paramString))
@@ -28,11 +29,11 @@ public final class a
       String str = Uri.parse(paramString).getLastPathSegment();
       if (!Util.isNullOrNil(str))
       {
-        q localq = (q)this.cKA.findSlot(str);
-        if (localq != null)
+        u localu = (u)this.eEl.findSlot(str);
+        if (localu != null)
         {
           Log.i("PlaylistFileInterceptor", "intercept success, contentId:%s, url:%s", new Object[] { str, paramString });
-          paramString = new q(String.format("%s/%s", new Object[] { localq.getPath(), str }));
+          paramString = new u(String.format("%s/%s", new Object[] { ah.v(localu.mUri), str }));
           AppMethodBeat.o(177187);
           return paramString;
         }

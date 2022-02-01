@@ -12,8 +12,8 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class NormalIconTipPreference
   extends NormalIconPreference
 {
-  private TextView AWF = null;
-  private String Wsv = "";
+  private TextView DMt = null;
+  private String adZL = "";
   
   public NormalIconTipPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,50 +25,50 @@ public class NormalIconTipPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void hKU()
+  private void jnB()
   {
-    AppMethodBeat.i(193067);
-    if (this.AWF != null)
+    AppMethodBeat.i(251497);
+    if (this.DMt != null)
     {
-      if (Util.isNullOrNil(this.Wsv))
+      if (Util.isNullOrNil(this.adZL))
       {
-        this.AWF.setVisibility(8);
-        this.AWF.setText("");
-        AppMethodBeat.o(193067);
+        this.DMt.setVisibility(8);
+        this.DMt.setText("");
+        AppMethodBeat.o(251497);
         return;
       }
-      this.AWF.setVisibility(0);
-      this.AWF.setText(this.Wsv);
+      this.DMt.setVisibility(0);
+      this.DMt.setText(this.adZL);
     }
-    AppMethodBeat.o(193067);
+    AppMethodBeat.o(251497);
   }
   
-  public final void byK(String paramString)
+  public final void bAm(String paramString)
   {
-    AppMethodBeat.i(193064);
-    this.Wsv = paramString;
-    hKU();
-    AppMethodBeat.o(193064);
+    AppMethodBeat.i(251502);
+    this.adZL = paramString;
+    jnB();
+    AppMethodBeat.o(251502);
   }
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(193063);
+    AppMethodBeat.i(251499);
     super.onBindView(paramView);
-    this.AWF = ((TextView)paramView.findViewById(a.g.icon_tips_tv));
-    hKU();
+    this.DMt = ((TextView)paramView.findViewById(a.g.icon_tips_tv));
+    jnB();
     paramView = paramView.findViewById(a.g.right_rl);
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    AppMethodBeat.o(193063);
+    AppMethodBeat.o(251499);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(193058);
+    AppMethodBeat.i(251498);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(193058);
+    AppMethodBeat.o(251498);
     return paramViewGroup;
   }
 }

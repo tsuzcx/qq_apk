@@ -4,25 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
-@SafeParcelable.Class(creator="StorageInfoResponseCreator")
-@SafeParcelable.Reserved({1})
 public final class zzge
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzge> CREATOR;
-  @SafeParcelable.Field(id=2)
   private final int statusCode;
-  @SafeParcelable.Field(id=3)
   private final long zzep;
-  @SafeParcelable.Field(id=4)
   private final List<zzfs> zzer;
   
   static
@@ -32,8 +22,7 @@ public final class zzge
     AppMethodBeat.o(101346);
   }
   
-  @SafeParcelable.Constructor
-  public zzge(@SafeParcelable.Param(id=2) int paramInt, @SafeParcelable.Param(id=3) long paramLong, @SafeParcelable.Param(id=4) List<zzfs> paramList)
+  public zzge(int paramInt, long paramLong, List<zzfs> paramList)
   {
     this.statusCode = paramInt;
     this.zzep = paramLong;
@@ -53,7 +42,7 @@ public final class zzge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzge
  * JD-Core Version:    0.7.0.1
  */

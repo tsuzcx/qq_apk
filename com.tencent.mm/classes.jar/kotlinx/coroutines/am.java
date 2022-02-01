@@ -1,36 +1,81 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.List;
+import java.util.ServiceLoader;
+import kotlin.Metadata;
+import kotlin.m.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/CoroutineStart;", "", "(Ljava/lang/String;I)V", "isLazy", "", "isLazy$annotations", "()V", "()Z", "invoke", "", "T", "block", "Lkotlin/Function1;", "Lkotlin/coroutines/Continuation;", "", "completion", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "DEFAULT", "LAZY", "ATOMIC", "UNDISPATCHED", "kotlinx-coroutines-core"})
-public enum am
+@Metadata(d1={""}, d2={"handlers", "", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handleCoroutineExceptionImpl", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
+public final class am
 {
+  private static final List<CoroutineExceptionHandler> wNB;
+  
   static
   {
-    AppMethodBeat.i(118175);
-    am localam1 = new am("DEFAULT", 0);
-    abwA = localam1;
-    am localam2 = new am("LAZY", 1);
-    abwB = localam2;
-    am localam3 = new am("ATOMIC", 2);
-    abwC = localam3;
-    am localam4 = new am("UNDISPATCHED", 3);
-    abwD = localam4;
-    abwE = new am[] { localam1, localam2, localam3, localam4 };
-    AppMethodBeat.o(118175);
+    AppMethodBeat.i(118160);
+    wNB = k.d(k.d(ServiceLoader.load(CoroutineExceptionHandler.class, CoroutineExceptionHandler.class.getClassLoader()).iterator()));
+    AppMethodBeat.o(118160);
   }
   
-  private am() {}
-  
-  public final boolean iRf()
+  /* Error */
+  public static final void a(kotlin.d.f paramf, java.lang.Throwable paramThrowable)
   {
-    return (am)this == abwB;
+    // Byte code:
+    //   0: ldc 71
+    //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: getstatic 64	kotlinx/coroutines/am:wNB	Ljava/util/List;
+    //   8: invokeinterface 74 1 0
+    //   13: astore_2
+    //   14: aload_2
+    //   15: invokeinterface 80 1 0
+    //   20: ifeq +50 -> 70
+    //   23: aload_2
+    //   24: invokeinterface 84 1 0
+    //   29: checkcast 37	kotlinx/coroutines/CoroutineExceptionHandler
+    //   32: astore_3
+    //   33: aload_3
+    //   34: aload_0
+    //   35: aload_1
+    //   36: invokeinterface 87 3 0
+    //   41: goto -27 -> 14
+    //   44: astore_3
+    //   45: invokestatic 93	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   48: astore 4
+    //   50: aload 4
+    //   52: invokevirtual 97	java/lang/Thread:getUncaughtExceptionHandler	()Ljava/lang/Thread$UncaughtExceptionHandler;
+    //   55: aload 4
+    //   57: aload_1
+    //   58: aload_3
+    //   59: invokestatic 103	kotlinx/coroutines/an:b	(Ljava/lang/Throwable;Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   62: invokeinterface 109 3 0
+    //   67: goto -53 -> 14
+    //   70: invokestatic 93	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 97	java/lang/Thread:getUncaughtExceptionHandler	()Ljava/lang/Thread$UncaughtExceptionHandler;
+    //   78: aload_0
+    //   79: aload_1
+    //   80: invokeinterface 109 3 0
+    //   85: ldc 71
+    //   87: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	paramf	kotlin.d.f
+    //   0	91	1	paramThrowable	java.lang.Throwable
+    //   13	11	2	localIterator	java.util.Iterator
+    //   32	2	3	localCoroutineExceptionHandler	CoroutineExceptionHandler
+    //   44	15	3	localThrowable	java.lang.Throwable
+    //   48	8	4	localThread	java.lang.Thread
+    // Exception table:
+    //   from	to	target	type
+    //   33	41	44	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.am
  * JD-Core Version:    0.7.0.1
  */

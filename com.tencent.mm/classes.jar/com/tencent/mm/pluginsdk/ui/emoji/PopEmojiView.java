@@ -16,9 +16,9 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public class PopEmojiView
   extends LinearLayout
 {
-  private MMEmojiView Rpi;
-  private ProgressBar Rpj;
-  private ViewGroup qoE;
+  private ProgressBar YlA;
+  private MMEmojiView Ylz;
+  private ViewGroup tth;
   
   public PopEmojiView(Context paramContext)
   {
@@ -47,20 +47,20 @@ public class PopEmojiView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(104718);
-    this.qoE = ((ViewGroup)inflate(getContext(), a.h.preview_emoji, null));
-    this.Rpi = ((MMEmojiView)this.qoE.findViewById(a.g.image));
-    this.Rpi.setIsMaxSizeLimit(true);
-    this.Rpi.setMaxSize(paramContext.getResources().getDimensionPixelSize(a.e.emoji_view_image_size) - paramContext.getResources().getDimensionPixelSize(a.e.MiddlePadding) * 3);
-    this.Rpj = ((ProgressBar)this.qoE.findViewById(a.g.progress));
-    addView(this.qoE, -1, -1);
+    this.tth = ((ViewGroup)inflate(getContext(), a.h.preview_emoji, null));
+    this.Ylz = ((MMEmojiView)this.tth.findViewById(a.g.image));
+    this.Ylz.setIsMaxSizeLimit(true);
+    this.Ylz.setMaxSize(paramContext.getResources().getDimensionPixelSize(a.e.emoji_view_image_size) - paramContext.getResources().getDimensionPixelSize(a.e.MiddlePadding) * 3);
+    this.YlA = ((ProgressBar)this.tth.findViewById(a.g.progress));
+    addView(this.tth, -1, -1);
     AppMethodBeat.o(104718);
   }
   
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(104720);
-    if (this.Rpi != null) {
-      this.Rpi.b(paramEmojiInfo, "");
+    if (this.Ylz != null) {
+      this.Ylz.b(paramEmojiInfo, "");
     }
     AppMethodBeat.o(104720);
   }
@@ -68,10 +68,10 @@ public class PopEmojiView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(104721);
-    if ((this.Rpi != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((this.Ylz != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      paramBitmap.setDensity(this.Rpi.getEmojiDensity());
-      this.Rpi.setImageBitmap(paramBitmap);
+      paramBitmap.setDensity(this.Ylz.getEmojiDensity());
+      this.Ylz.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(104721);
   }
@@ -79,8 +79,8 @@ public class PopEmojiView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(104719);
-    if (this.Rpi != null) {
-      this.Rpi.setImageResource(paramInt);
+    if (this.Ylz != null) {
+      this.Ylz.setImageResource(paramInt);
     }
     AppMethodBeat.o(104719);
   }

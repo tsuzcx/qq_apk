@@ -9,16 +9,23 @@ final class a
 {
   static void a(Animator paramAnimator, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(191630);
+    AppMethodBeat.i(201522);
     if (Build.VERSION.SDK_INT >= 19) {
       paramAnimator.addPauseListener(paramAnimatorListenerAdapter);
     }
-    AppMethodBeat.o(191630);
+    AppMethodBeat.o(201522);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void onAnimationPause(Animator paramAnimator);
+    
+    public abstract void onAnimationResume(Animator paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.transition.a
  * JD-Core Version:    0.7.0.1
  */

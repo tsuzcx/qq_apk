@@ -13,8 +13,8 @@ import com.tencent.mm.plugin.wxpay.a.g;
 public class F2fDynamicCodeItemLayout
   extends LinearLayout
 {
-  TextView InN;
-  TextView uzI;
+  TextView Olf;
+  TextView xGl;
   
   public F2fDynamicCodeItemLayout(Context paramContext)
   {
@@ -44,14 +44,14 @@ public class F2fDynamicCodeItemLayout
   {
     AppMethodBeat.i(67920);
     View localView = LayoutInflater.from(getContext()).inflate(a.g.remittance_f2f_dynamic_code_item_layout, this);
-    this.InN = ((TextView)localView.findViewById(a.f.rfdi_left_tv));
-    this.uzI = ((TextView)localView.findViewById(a.f.rfdi_right_tv));
+    this.Olf = ((TextView)localView.findViewById(a.f.rfdi_left_tv));
+    this.xGl = ((TextView)localView.findViewById(a.f.rfdi_right_tv));
     AppMethodBeat.o(67920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.F2fDynamicCodeItemLayout
  * JD-Core Version:    0.7.0.1
  */

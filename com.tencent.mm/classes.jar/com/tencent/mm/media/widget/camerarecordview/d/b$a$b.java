@@ -2,53 +2,55 @@ package com.tencent.mm.media.widget.camerarecordview.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$FocusConfigItem;", "", "focusPriority", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "getFocusPriority", "()Ljava/util/ArrayList;", "setFocusPriority", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$FocusConfigItem;", "", "focusPriority", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "getFocusPriority", "()Ljava/util/ArrayList;", "setFocusPriority", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$a$b
 {
-  public ArrayList<String> lgk = null;
+  public ArrayList<String> nKU = null;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(258122);
-    if (this != paramObject)
+    AppMethodBeat.i(237693);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof b))
-      {
-        paramObject = (b)paramObject;
-        if (!p.h(this.lgk, paramObject.lgk)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(258122);
+      AppMethodBeat.o(237693);
       return true;
     }
-    AppMethodBeat.o(258122);
-    return false;
+    if (!(paramObject instanceof b))
+    {
+      AppMethodBeat.o(237693);
+      return false;
+    }
+    paramObject = (b)paramObject;
+    if (!s.p(this.nKU, paramObject.nKU))
+    {
+      AppMethodBeat.o(237693);
+      return false;
+    }
+    AppMethodBeat.o(237693);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(258121);
-    ArrayList localArrayList = this.lgk;
-    if (localArrayList != null)
+    AppMethodBeat.i(237687);
+    if (this.nKU == null)
     {
-      int i = localArrayList.hashCode();
-      AppMethodBeat.o(258121);
-      return i;
+      AppMethodBeat.o(237687);
+      return 0;
     }
-    AppMethodBeat.o(258121);
-    return 0;
+    int i = this.nKU.hashCode();
+    AppMethodBeat.o(237687);
+    return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(258119);
-    String str = "FocusConfigItem(focusPriority=" + this.lgk + ")";
-    AppMethodBeat.o(258119);
+    AppMethodBeat.i(237681);
+    String str = "FocusConfigItem(focusPriority=" + this.nKU + ')';
+    AppMethodBeat.o(237681);
     return str;
   }
 }

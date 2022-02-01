@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.tab.GameTabWidget android:id="@id/igl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/igl">
-        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/gl_" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a61" />
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@drawable/v3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/ca1" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:layout_centerInParent="true" />
+    <FrameLayout android:layout_gravity="start|center" android:id="@id/be_" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_centerVertical="true" android:contentDescription="@string/bfi" android:layout_alignParentStart="true" app:layout_constraintBottom_toBottomOf="@id/ca1" app:layout_constraintLeft_toLeftOf="@id/ca1" app:layout_constraintTop_toTopOf="@id/ca1">
+        <FrameLayout android:layout_gravity="start|center" android:id="@id/bel" android:background="@drawable/a5j" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:importantForAccessibility="noHideDescendants" android:layout_marginStart="@dimen/cd">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/bek" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_0" />
+        </FrameLayout>
     </FrameLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.search.FTSSearchView android:id="@id/ca0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cv" app:layout_constraintTop_toBottomOf="@id/ca1" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ca5" android:background="@drawable/a46" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv" app:layout_constraintTop_toBottomOf="@id/ca1">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ca4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bv" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_0_Alpha_0_5" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a2o" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

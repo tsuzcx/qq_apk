@@ -17,42 +17,42 @@ public abstract class MigrateResultCallback
   
   protected abstract void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException);
   
-  protected abstract void arU(int paramInt);
+  protected abstract void axZ(int paramInt);
   
-  protected abstract void arV(int paramInt);
+  protected abstract void aya(int paramInt);
   
-  public final void arZ(final int paramInt)
+  public final void aye(final int paramInt)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      arU(paramInt);
+      axZ(paramInt);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(191762);
-        MigrateResultCallback.this.arU(paramInt);
-        AppMethodBeat.o(191762);
+        AppMethodBeat.i(257083);
+        MigrateResultCallback.this.axZ(paramInt);
+        AppMethodBeat.o(257083);
       }
     });
   }
   
-  public final void asa(final int paramInt)
+  public final void ayf(final int paramInt)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      arV(paramInt);
+      aya(paramInt);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192199);
-        MigrateResultCallback.this.arV(paramInt);
-        AppMethodBeat.o(192199);
+        AppMethodBeat.i(257081);
+        MigrateResultCallback.this.aya(paramInt);
+        AppMethodBeat.o(257081);
       }
     });
   }
@@ -68,9 +68,9 @@ public abstract class MigrateResultCallback
     {
       public final void run()
       {
-        AppMethodBeat.i(191827);
+        AppMethodBeat.i(257080);
         MigrateResultCallback.this.a(paramInt, paramExtStorageMigrateException);
-        AppMethodBeat.o(191827);
+        AppMethodBeat.o(257080);
       }
     });
   }
@@ -80,62 +80,62 @@ public abstract class MigrateResultCallback
     return 0;
   }
   
-  protected abstract void hsG();
+  protected abstract void iSL();
   
-  protected abstract void hsH();
+  protected abstract void iSM();
   
-  public final void hth()
+  public final void iTn()
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      hsH();
+      iSM();
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(191563);
-        MigrateResultCallback.this.hsH();
-        AppMethodBeat.o(191563);
+        AppMethodBeat.i(257074);
+        MigrateResultCallback.this.iSM();
+        AppMethodBeat.o(257074);
       }
     });
   }
   
-  protected abstract void ma(int paramInt1, int paramInt2);
+  protected abstract void nP(int paramInt1, int paramInt2);
   
-  public final void mb(final int paramInt1, final int paramInt2)
+  public final void nQ(final int paramInt1, final int paramInt2)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ma(paramInt1, paramInt2);
+      nP(paramInt1, paramInt2);
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192355);
-        MigrateResultCallback.this.ma(paramInt1, paramInt2);
-        AppMethodBeat.o(192355);
+        AppMethodBeat.i(257076);
+        MigrateResultCallback.this.nP(paramInt1, paramInt2);
+        AppMethodBeat.o(257076);
       }
     });
   }
   
-  public final void nE(final String paramString1, final String paramString2)
+  public final void pA(final String paramString1, final String paramString2)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      hsG();
+      iSL();
       return;
     }
     this.mHandler.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(192471);
-        MigrateResultCallback.this.hsG();
-        AppMethodBeat.o(192471);
+        AppMethodBeat.i(257085);
+        MigrateResultCallback.this.iSL();
+        AppMethodBeat.o(257085);
       }
     });
   }
@@ -147,7 +147,7 @@ public abstract class MigrateResultCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.MigrateResultCallback
  * JD-Core Version:    0.7.0.1
  */

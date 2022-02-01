@@ -7,24 +7,24 @@ import com.tencent.stubs.logger.Log;
 public final class b$i
   extends b.d
 {
-  private f ZqS;
+  private f ahvH;
   private SurfaceTexture surfaceTexture;
   
   public b$i(f paramf, SurfaceTexture paramSurfaceTexture)
   {
-    this.ZqS = paramf;
+    this.ahvH = paramf;
     this.surfaceTexture = paramSurfaceTexture;
   }
   
-  private Void call()
+  private Void cni()
   {
     AppMethodBeat.i(174588);
     try
     {
-      if ((this.ZqS.isOpen()) && (!this.ZqS.egx()))
+      if ((this.ahvH.isOpen()) && (!this.ahvH.boa()))
       {
         Log.i("CameraTask.DefaultStartPreviewTask", "start preview");
-        this.ZqS.u(this.surfaceTexture);
+        this.ahvH.w(this.surfaceTexture);
       }
       AppMethodBeat.o(174588);
       return null;
@@ -40,7 +40,7 @@ public final class b$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.scanlib.a.b.i
  * JD-Core Version:    0.7.0.1
  */

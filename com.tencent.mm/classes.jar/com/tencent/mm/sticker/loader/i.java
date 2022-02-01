@@ -2,22 +2,23 @@ package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/StickerUrlTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "md5", "outputPath", "zipFile", "call", "", "onResult", "success", "", "uniqueId", "Companion", "plugin-sticker_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/loader/StickerUrlTask;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "(Lcom/tencent/mm/sticker/loader/StickerLoadInfo;)V", "TAG", "", "md5", "outputPath", "zipFile", "call", "", "onResult", "success", "", "uniqueId", "Companion", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
   extends g
 {
-  public static final a VbH;
+  public static final i.a acCX;
   private final String TAG;
-  private final String VbG;
+  private final String acCY;
   private final String md5;
-  private final String uVk;
+  private final String outputPath;
   
   static
   {
     AppMethodBeat.i(105954);
-    VbH = new a((byte)0);
+    acCX = new i.a((byte)0);
     AppMethodBeat.o(105954);
   }
   
@@ -27,16 +28,14 @@ public final class i
     AppMethodBeat.i(105953);
     this.TAG = "MicroMsg.StickerUrlTask";
     this.md5 = paramStickerLoadInfo.key();
-    paramStickerLoadInfo = new StringBuilder();
-    e locale = e.Vbx;
-    this.uVk = (e.huZ() + "preview/");
-    paramStickerLoadInfo = new StringBuilder();
-    locale = e.Vbx;
-    this.VbG = (e.huZ() + "preview.zip");
+    paramStickerLoadInfo = e.acCJ;
+    this.outputPath = s.X(e.iWB(), "preview/");
+    paramStickerLoadInfo = e.acCJ;
+    this.acCY = s.X(e.iWB(), "preview.zip");
     AppMethodBeat.o(105953);
   }
   
-  public final String aBG()
+  public final String aUE()
   {
     return this.md5;
   }
@@ -45,476 +44,458 @@ public final class i
   public final void call()
   {
     // Byte code:
-    //   0: ldc 108
-    //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 110	com/tencent/mm/network/d$b
+    //   0: ldc 102
+    //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 104	com/tencent/mm/network/d$b
     //   8: dup
     //   9: aload_0
-    //   10: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   13: getfield 116	com/tencent/mm/sticker/loader/StickerLoadInfo:url	Ljava/lang/String;
-    //   16: invokespecial 119	com/tencent/mm/network/d$b:<init>	(Ljava/lang/String;)V
+    //   10: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   13: getfield 110	com/tencent/mm/sticker/loader/StickerLoadInfo:url	Ljava/lang/String;
+    //   16: invokespecial 113	com/tencent/mm/network/d$b:<init>	(Ljava/lang/String;)V
     //   19: astore 4
     //   21: aload_0
-    //   22: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   25: getfield 116	com/tencent/mm/sticker/loader/StickerLoadInfo:url	Ljava/lang/String;
+    //   22: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   25: getfield 110	com/tencent/mm/sticker/loader/StickerLoadInfo:url	Ljava/lang/String;
     //   28: aload 4
-    //   30: invokestatic 124	com/tencent/mm/network/d:a	(Ljava/lang/String;Lcom/tencent/mm/network/d$b;)Lcom/tencent/mm/network/x;
+    //   30: invokestatic 119	com/tencent/mm/network/d:a	(Ljava/lang/String;Lcom/tencent/mm/network/d$b;)Lcom/tencent/mm/network/y;
     //   33: astore 8
     //   35: aload 8
-    //   37: ldc 126
-    //   39: invokestatic 129	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   37: ldc 121
+    //   39: invokestatic 124	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
     //   42: aload 8
-    //   44: invokevirtual 135	com/tencent/mm/network/x:getResponseCode	()I
+    //   44: invokevirtual 130	com/tencent/mm/network/y:getResponseCode	()I
     //   47: istore_1
     //   48: aload 8
-    //   50: invokevirtual 139	com/tencent/mm/network/x:getInputStream	()Ljava/io/InputStream;
+    //   50: invokevirtual 134	com/tencent/mm/network/y:getInputStream	()Ljava/io/InputStream;
     //   53: astore 4
     //   55: aload 8
-    //   57: invokevirtual 142	com/tencent/mm/network/x:btu	()Ljava/lang/String;
-    //   60: astore 9
-    //   62: aload_0
-    //   63: getfield 68	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
-    //   66: new 78	java/lang/StringBuilder
-    //   69: dup
-    //   70: ldc 144
-    //   72: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   75: iload_1
-    //   76: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   79: ldc 150
-    //   81: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: aload 9
-    //   86: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   92: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   95: iload_1
-    //   96: sipush 200
-    //   99: if_icmpeq +43 -> 142
-    //   102: aload 8
-    //   104: invokevirtual 158	com/tencent/mm/network/x:disconnect	()V
-    //   107: aload_0
-    //   108: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   111: iconst_1
-    //   112: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   115: aload_0
-    //   116: iconst_0
-    //   117: invokevirtual 166	com/tencent/mm/sticker/loader/i:ep	(Z)V
-    //   120: aload 4
-    //   122: ifnull +14 -> 136
-    //   125: aload 4
-    //   127: invokevirtual 171	java/io/InputStream:close	()V
-    //   130: ldc 108
-    //   132: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   135: return
-    //   136: ldc 108
-    //   138: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   141: return
-    //   142: aload_0
-    //   143: getfield 100	com/tencent/mm/sticker/loader/i:uVk	Ljava/lang/String;
-    //   146: invokestatic 177	com/tencent/mm/vfs/u:bBD	(Ljava/lang/String;)Z
-    //   149: pop
-    //   150: aload_0
-    //   151: getfield 104	com/tencent/mm/sticker/loader/i:VbG	Ljava/lang/String;
-    //   154: invokestatic 181	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
-    //   157: astore 5
-    //   159: aload 5
-    //   161: astore 6
-    //   163: aload 4
-    //   165: astore 7
-    //   167: aload 4
-    //   169: ldc 183
-    //   171: invokestatic 129	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   174: aload 5
-    //   176: astore 6
-    //   178: aload 4
-    //   180: astore 7
-    //   182: aload 4
-    //   184: aload 5
-    //   186: invokestatic 189	kotlin/f/a:g	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
-    //   189: lstore_2
-    //   190: aload 5
-    //   192: astore 6
-    //   194: aload 4
-    //   196: astore 7
-    //   198: aload_0
-    //   199: getfield 68	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
-    //   202: ldc 191
-    //   204: lload_2
-    //   205: invokestatic 197	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   208: invokevirtual 201	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   211: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   214: aload 5
-    //   216: astore 6
-    //   218: aload 4
-    //   220: astore 7
-    //   222: aload 8
-    //   224: invokevirtual 158	com/tencent/mm/network/x:disconnect	()V
-    //   227: aload 5
-    //   229: astore 6
-    //   231: aload 4
-    //   233: astore 7
-    //   235: aload 9
-    //   237: ldc 203
-    //   239: invokestatic 207	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   242: ifeq +329 -> 571
+    //   57: getfield 138	com/tencent/mm/network/y:connection	Ljava/net/HttpURLConnection;
+    //   60: invokevirtual 143	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   63: astore 9
+    //   65: aload_0
+    //   66: getfield 69	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
+    //   69: new 145	java/lang/StringBuilder
+    //   72: dup
+    //   73: ldc 147
+    //   75: invokespecial 148	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   78: iload_1
+    //   79: invokevirtual 152	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: ldc 154
+    //   84: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: aload 9
+    //   89: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: iload_1
+    //   99: sipush 200
+    //   102: if_icmpeq +37 -> 139
+    //   105: aload 8
+    //   107: invokevirtual 171	com/tencent/mm/network/y:disconnect	()V
+    //   110: aload_0
+    //   111: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   114: iconst_1
+    //   115: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
+    //   118: aload_0
+    //   119: iconst_0
+    //   120: invokevirtual 178	com/tencent/mm/sticker/loader/i:onResult	(Z)V
+    //   123: aload 4
+    //   125: ifnull +8 -> 133
+    //   128: aload 4
+    //   130: invokevirtual 183	java/io/InputStream:close	()V
+    //   133: ldc 102
+    //   135: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: return
+    //   139: aload_0
+    //   140: getfield 94	com/tencent/mm/sticker/loader/i:outputPath	Ljava/lang/String;
+    //   143: invokestatic 189	com/tencent/mm/vfs/y:bDX	(Ljava/lang/String;)Z
+    //   146: pop
+    //   147: aload_0
+    //   148: getfield 98	com/tencent/mm/sticker/loader/i:acCY	Ljava/lang/String;
+    //   151: iconst_0
+    //   152: invokestatic 193	com/tencent/mm/vfs/y:ev	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   155: astore 5
+    //   157: aload 5
+    //   159: astore 6
+    //   161: aload 4
+    //   163: astore 7
+    //   165: aload 4
+    //   167: aload 5
+    //   169: invokestatic 199	kotlin/f/a:j	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+    //   172: lstore_2
+    //   173: aload 5
+    //   175: astore 6
+    //   177: aload 4
+    //   179: astore 7
+    //   181: aload_0
+    //   182: getfield 69	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
+    //   185: ldc 201
+    //   187: lload_2
+    //   188: invokestatic 207	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   191: invokestatic 92	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   194: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: aload 5
+    //   199: astore 6
+    //   201: aload 4
+    //   203: astore 7
+    //   205: aload 8
+    //   207: invokevirtual 171	com/tencent/mm/network/y:disconnect	()V
+    //   210: aload 5
+    //   212: astore 6
+    //   214: aload 4
+    //   216: astore 7
+    //   218: aload 9
+    //   220: ldc 209
+    //   222: invokestatic 213	kotlin/g/b/s:p	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   225: ifeq +334 -> 559
+    //   228: aload 5
+    //   230: astore 6
+    //   232: aload 4
+    //   234: astore 7
+    //   236: aload_0
+    //   237: getfield 94	com/tencent/mm/sticker/loader/i:outputPath	Ljava/lang/String;
+    //   240: iconst_1
+    //   241: invokestatic 217	com/tencent/mm/vfs/y:ew	(Ljava/lang/String;Z)Z
+    //   244: pop
     //   245: aload 5
     //   247: astore 6
     //   249: aload 4
     //   251: astore 7
     //   253: aload_0
-    //   254: getfield 100	com/tencent/mm/sticker/loader/i:uVk	Ljava/lang/String;
-    //   257: invokestatic 210	com/tencent/mm/vfs/u:deleteDir	(Ljava/lang/String;)Z
+    //   254: getfield 94	com/tencent/mm/sticker/loader/i:outputPath	Ljava/lang/String;
+    //   257: invokestatic 189	com/tencent/mm/vfs/y:bDX	(Ljava/lang/String;)Z
     //   260: pop
     //   261: aload 5
     //   263: astore 6
     //   265: aload 4
     //   267: astore 7
     //   269: aload_0
-    //   270: getfield 100	com/tencent/mm/sticker/loader/i:uVk	Ljava/lang/String;
-    //   273: invokestatic 177	com/tencent/mm/vfs/u:bBD	(Ljava/lang/String;)Z
-    //   276: pop
-    //   277: aload 5
-    //   279: astore 6
-    //   281: aload 4
-    //   283: astore 7
-    //   285: aload_0
-    //   286: getfield 104	com/tencent/mm/sticker/loader/i:VbG	Ljava/lang/String;
-    //   289: aload_0
-    //   290: getfield 100	com/tencent/mm/sticker/loader/i:uVk	Ljava/lang/String;
-    //   293: invokestatic 214	com/tencent/mm/vfs/u:gj	(Ljava/lang/String;Ljava/lang/String;)I
-    //   296: ifeq +59 -> 355
+    //   270: getfield 98	com/tencent/mm/sticker/loader/i:acCY	Ljava/lang/String;
+    //   273: aload_0
+    //   274: getfield 94	com/tencent/mm/sticker/loader/i:outputPath	Ljava/lang/String;
+    //   277: invokestatic 221	com/tencent/mm/vfs/y:aA	(Ljava/lang/String;Ljava/lang/String;)I
+    //   280: ifeq +58 -> 338
+    //   283: aload 5
+    //   285: astore 6
+    //   287: aload 4
+    //   289: astore 7
+    //   291: aload_0
+    //   292: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   295: iconst_2
+    //   296: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
     //   299: aload 5
     //   301: astore 6
     //   303: aload 4
     //   305: astore 7
     //   307: aload_0
-    //   308: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   311: iconst_2
-    //   312: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   315: aload 5
-    //   317: astore 6
-    //   319: aload 4
-    //   321: astore 7
-    //   323: aload_0
-    //   324: iconst_0
-    //   325: invokevirtual 166	com/tencent/mm/sticker/loader/i:ep	(Z)V
-    //   328: aload 4
-    //   330: invokevirtual 171	java/io/InputStream:close	()V
-    //   333: aload 5
-    //   335: ifnull +14 -> 349
+    //   308: iconst_0
+    //   309: invokevirtual 178	com/tencent/mm/sticker/loader/i:onResult	(Z)V
+    //   312: aload 4
+    //   314: ifnull +8 -> 322
+    //   317: aload 4
+    //   319: invokevirtual 183	java/io/InputStream:close	()V
+    //   322: aload 5
+    //   324: ifnull +8 -> 332
+    //   327: aload 5
+    //   329: invokevirtual 224	java/io/OutputStream:close	()V
+    //   332: ldc 102
+    //   334: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   337: return
     //   338: aload 5
-    //   340: invokevirtual 217	java/io/OutputStream:close	()V
-    //   343: ldc 108
-    //   345: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   348: return
-    //   349: ldc 108
-    //   351: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   354: return
+    //   340: astore 6
+    //   342: aload 4
+    //   344: astore 7
+    //   346: new 226	com/tencent/mm/sticker/f
+    //   349: dup
+    //   350: invokespecial 228	com/tencent/mm/sticker/f:<init>	()V
+    //   353: astore 8
     //   355: aload 5
     //   357: astore 6
     //   359: aload 4
     //   361: astore 7
-    //   363: new 219	com/tencent/mm/sticker/f
-    //   366: dup
-    //   367: invokespecial 220	com/tencent/mm/sticker/f:<init>	()V
-    //   370: astore 8
+    //   363: aload 8
+    //   365: aload_0
+    //   366: getfield 94	com/tencent/mm/sticker/loader/i:outputPath	Ljava/lang/String;
+    //   369: invokevirtual 231	com/tencent/mm/sticker/f:buM	(Ljava/lang/String;)V
     //   372: aload 5
     //   374: astore 6
     //   376: aload 4
     //   378: astore 7
     //   380: aload 8
     //   382: aload_0
-    //   383: getfield 100	com/tencent/mm/sticker/loader/i:uVk	Ljava/lang/String;
-    //   386: invokevirtual 223	com/tencent/mm/sticker/f:buG	(Ljava/lang/String;)V
+    //   383: getfield 94	com/tencent/mm/sticker/loader/i:outputPath	Ljava/lang/String;
+    //   386: invokevirtual 234	com/tencent/mm/sticker/f:buP	(Ljava/lang/String;)V
     //   389: aload 5
     //   391: astore 6
     //   393: aload 4
     //   395: astore 7
     //   397: aload 8
-    //   399: aload_0
-    //   400: getfield 100	com/tencent/mm/sticker/loader/i:uVk	Ljava/lang/String;
-    //   403: invokevirtual 226	com/tencent/mm/sticker/f:buJ	(Ljava/lang/String;)V
-    //   406: aload 5
-    //   408: astore 6
-    //   410: aload 4
-    //   412: astore 7
-    //   414: aload 8
-    //   416: invokevirtual 230	com/tencent/mm/sticker/f:isValid	()Z
-    //   419: ifeq +37 -> 456
-    //   422: aload 5
-    //   424: astore 6
-    //   426: aload 4
-    //   428: astore 7
-    //   430: aload_0
-    //   431: iconst_1
-    //   432: invokevirtual 166	com/tencent/mm/sticker/loader/i:ep	(Z)V
-    //   435: aload 4
-    //   437: invokevirtual 171	java/io/InputStream:close	()V
-    //   440: aload 5
-    //   442: ifnull +326 -> 768
-    //   445: aload 5
-    //   447: invokevirtual 217	java/io/OutputStream:close	()V
-    //   450: ldc 108
-    //   452: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   455: return
-    //   456: aload 5
-    //   458: astore 6
-    //   460: aload 4
-    //   462: astore 7
-    //   464: aload_0
-    //   465: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   468: iconst_2
-    //   469: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   472: aload 5
-    //   474: astore 6
-    //   476: aload 4
-    //   478: astore 7
-    //   480: aload_0
-    //   481: iconst_0
-    //   482: invokevirtual 166	com/tencent/mm/sticker/loader/i:ep	(Z)V
-    //   485: goto -50 -> 435
-    //   488: astore 8
-    //   490: aload 5
-    //   492: astore 6
-    //   494: aload 4
-    //   496: astore 7
-    //   498: aload_0
-    //   499: getfield 68	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
-    //   502: aload 8
-    //   504: checkcast 232	java/lang/Throwable
-    //   507: ldc 233
-    //   509: iconst_0
-    //   510: anewarray 235	java/lang/Object
-    //   513: invokestatic 239	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   516: aload 5
-    //   518: astore 6
-    //   520: aload 4
-    //   522: astore 7
-    //   524: aload_0
-    //   525: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   528: iconst_1
-    //   529: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   532: aload 5
-    //   534: astore 6
-    //   536: aload 4
-    //   538: astore 7
-    //   540: aload_0
-    //   541: iconst_0
-    //   542: invokevirtual 166	com/tencent/mm/sticker/loader/i:ep	(Z)V
-    //   545: aload 4
-    //   547: ifnull +8 -> 555
-    //   550: aload 4
-    //   552: invokevirtual 171	java/io/InputStream:close	()V
-    //   555: aload 5
-    //   557: ifnull +217 -> 774
-    //   560: aload 5
-    //   562: invokevirtual 217	java/io/OutputStream:close	()V
-    //   565: ldc 108
-    //   567: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   570: return
-    //   571: aload 5
-    //   573: astore 6
-    //   575: aload 4
-    //   577: astore 7
-    //   579: aload_0
-    //   580: getfield 104	com/tencent/mm/sticker/loader/i:VbG	Ljava/lang/String;
-    //   583: invokestatic 242	com/tencent/mm/vfs/u:bBS	(Ljava/lang/String;)Ljava/lang/String;
-    //   586: astore 8
-    //   588: aload 5
-    //   590: astore 6
-    //   592: aload 4
-    //   594: astore 7
-    //   596: aload_0
-    //   597: getfield 68	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
-    //   600: ldc 244
-    //   602: aload 8
-    //   604: invokestatic 247	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   607: invokevirtual 201	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   610: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   613: aload 5
-    //   615: astore 6
-    //   617: aload 4
-    //   619: astore 7
-    //   621: new 249	org/json/JSONObject
-    //   624: dup
-    //   625: aload 8
-    //   627: invokespecial 250	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   630: ldc 252
-    //   632: invokevirtual 256	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   635: ldc_w 258
-    //   638: invokevirtual 262	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   641: tableswitch	default:+177 -> 818, 1206:+89->730, 1207:+108->749
-    //   665: iconst_2
+    //   399: invokevirtual 238	com/tencent/mm/sticker/f:isValid	()Z
+    //   402: ifeq +42 -> 444
+    //   405: aload 5
+    //   407: astore 6
+    //   409: aload 4
+    //   411: astore 7
+    //   413: aload_0
+    //   414: iconst_1
+    //   415: invokevirtual 178	com/tencent/mm/sticker/loader/i:onResult	(Z)V
+    //   418: aload 4
+    //   420: ifnull +8 -> 428
+    //   423: aload 4
+    //   425: invokevirtual 183	java/io/InputStream:close	()V
+    //   428: aload 5
+    //   430: ifnull +8 -> 438
+    //   433: aload 5
+    //   435: invokevirtual 224	java/io/OutputStream:close	()V
+    //   438: ldc 102
+    //   440: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   443: return
+    //   444: aload 5
+    //   446: astore 6
+    //   448: aload 4
+    //   450: astore 7
+    //   452: aload_0
+    //   453: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   456: iconst_2
+    //   457: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
+    //   460: aload 5
+    //   462: astore 6
+    //   464: aload 4
+    //   466: astore 7
+    //   468: aload_0
+    //   469: iconst_0
+    //   470: invokevirtual 178	com/tencent/mm/sticker/loader/i:onResult	(Z)V
+    //   473: goto -55 -> 418
+    //   476: astore 8
+    //   478: aload 5
+    //   480: astore 6
+    //   482: aload 4
+    //   484: astore 7
+    //   486: aload_0
+    //   487: getfield 69	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
+    //   490: aload 8
+    //   492: checkcast 240	java/lang/Throwable
+    //   495: ldc 241
+    //   497: iconst_0
+    //   498: anewarray 243	java/lang/Object
+    //   501: invokestatic 247	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   504: aload 5
+    //   506: astore 6
+    //   508: aload 4
+    //   510: astore 7
+    //   512: aload_0
+    //   513: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   516: iconst_1
+    //   517: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
+    //   520: aload 5
+    //   522: astore 6
+    //   524: aload 4
+    //   526: astore 7
+    //   528: aload_0
+    //   529: iconst_0
+    //   530: invokevirtual 178	com/tencent/mm/sticker/loader/i:onResult	(Z)V
+    //   533: aload 4
+    //   535: ifnull +8 -> 543
+    //   538: aload 4
+    //   540: invokevirtual 183	java/io/InputStream:close	()V
+    //   543: aload 5
+    //   545: ifnull +8 -> 553
+    //   548: aload 5
+    //   550: invokevirtual 224	java/io/OutputStream:close	()V
+    //   553: ldc 102
+    //   555: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   558: return
+    //   559: aload 5
+    //   561: astore 6
+    //   563: aload 4
+    //   565: astore 7
+    //   567: aload_0
+    //   568: getfield 98	com/tencent/mm/sticker/loader/i:acCY	Ljava/lang/String;
+    //   571: invokestatic 251	com/tencent/mm/vfs/y:bEn	(Ljava/lang/String;)Ljava/lang/String;
+    //   574: astore 8
+    //   576: aload 5
+    //   578: astore 6
+    //   580: aload 4
+    //   582: astore 7
+    //   584: aload_0
+    //   585: getfield 69	com/tencent/mm/sticker/loader/i:TAG	Ljava/lang/String;
+    //   588: ldc 253
+    //   590: aload 8
+    //   592: invokestatic 92	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    //   595: invokestatic 168	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   598: aload 5
+    //   600: astore 6
+    //   602: aload 4
+    //   604: astore 7
+    //   606: new 255	org/json/JSONObject
+    //   609: dup
+    //   610: aload 8
+    //   612: invokespecial 256	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   615: ldc_w 258
+    //   618: invokevirtual 262	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   621: ldc_w 264
+    //   624: invokevirtual 268	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   627: tableswitch	default:+163 -> 790, 1206:+87->714, 1207:+106->733
+    //   649: iconst_2
+    //   650: astore 6
+    //   652: aload 4
+    //   654: astore 7
+    //   656: aload_0
+    //   657: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   660: iconst_2
+    //   661: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
+    //   664: aload 5
     //   666: astore 6
     //   668: aload 4
     //   670: astore 7
     //   672: aload_0
-    //   673: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   676: iconst_2
-    //   677: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   680: aload 5
-    //   682: astore 6
-    //   684: aload 4
-    //   686: astore 7
-    //   688: aload_0
-    //   689: iconst_0
-    //   690: invokevirtual 166	com/tencent/mm/sticker/loader/i:ep	(Z)V
-    //   693: goto -258 -> 435
-    //   696: astore 5
-    //   698: aload 7
-    //   700: astore 4
-    //   702: aload 4
-    //   704: ifnull +8 -> 712
-    //   707: aload 4
-    //   709: invokevirtual 171	java/io/InputStream:close	()V
-    //   712: aload 6
-    //   714: ifnull +8 -> 722
-    //   717: aload 6
-    //   719: invokevirtual 217	java/io/OutputStream:close	()V
-    //   722: ldc 108
-    //   724: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   727: aload 5
-    //   729: athrow
-    //   730: aload 5
-    //   732: astore 6
-    //   734: aload 4
-    //   736: astore 7
-    //   738: aload_0
-    //   739: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   742: iconst_4
-    //   743: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   746: goto -66 -> 680
-    //   749: aload 5
-    //   751: astore 6
-    //   753: aload 4
-    //   755: astore 7
-    //   757: aload_0
-    //   758: getfield 113	com/tencent/mm/sticker/loader/g:VbE	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
-    //   761: iconst_5
-    //   762: putfield 162	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
-    //   765: goto -85 -> 680
-    //   768: ldc 108
-    //   770: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   773: return
-    //   774: ldc 108
-    //   776: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   779: return
-    //   780: astore 5
-    //   782: aconst_null
-    //   783: astore 6
-    //   785: aconst_null
-    //   786: astore 4
-    //   788: goto -86 -> 702
-    //   791: astore 5
-    //   793: aconst_null
-    //   794: astore 6
-    //   796: goto -94 -> 702
-    //   799: astore 8
-    //   801: aconst_null
-    //   802: astore 5
-    //   804: aconst_null
-    //   805: astore 4
-    //   807: goto -317 -> 490
-    //   810: astore 8
-    //   812: aconst_null
-    //   813: astore 5
-    //   815: goto -325 -> 490
-    //   818: goto -154 -> 664
+    //   673: iconst_0
+    //   674: invokevirtual 178	com/tencent/mm/sticker/loader/i:onResult	(Z)V
+    //   677: goto -259 -> 418
+    //   680: astore 5
+    //   682: aload 7
+    //   684: astore 4
+    //   686: aload 4
+    //   688: ifnull +8 -> 696
+    //   691: aload 4
+    //   693: invokevirtual 183	java/io/InputStream:close	()V
+    //   696: aload 6
+    //   698: ifnull +8 -> 706
+    //   701: aload 6
+    //   703: invokevirtual 224	java/io/OutputStream:close	()V
+    //   706: ldc 102
+    //   708: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   711: aload 5
+    //   713: athrow
+    //   714: aload 5
+    //   716: astore 6
+    //   718: aload 4
+    //   720: astore 7
+    //   722: aload_0
+    //   723: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   726: iconst_4
+    //   727: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
+    //   730: goto -66 -> 664
+    //   733: aload 5
+    //   735: astore 6
+    //   737: aload 4
+    //   739: astore 7
+    //   741: aload_0
+    //   742: getfield 107	com/tencent/mm/sticker/loader/g:acCU	Lcom/tencent/mm/sticker/loader/StickerLoadInfo;
+    //   745: iconst_5
+    //   746: putfield 175	com/tencent/mm/sticker/loader/StickerLoadInfo:errType	I
+    //   749: goto -85 -> 664
+    //   752: astore 5
+    //   754: aconst_null
+    //   755: astore 6
+    //   757: aconst_null
+    //   758: astore 4
+    //   760: goto -74 -> 686
+    //   763: astore 5
+    //   765: aconst_null
+    //   766: astore 6
+    //   768: goto -82 -> 686
+    //   771: astore 8
+    //   773: aconst_null
+    //   774: astore 5
+    //   776: aconst_null
+    //   777: astore 4
+    //   779: goto -301 -> 478
+    //   782: astore 8
+    //   784: aconst_null
+    //   785: astore 5
+    //   787: goto -309 -> 478
+    //   790: goto -142 -> 648
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	821	0	this	i
-    //   47	53	1	i	int
-    //   189	16	2	l	long
-    //   19	787	4	localObject1	Object
-    //   157	524	5	localOutputStream	java.io.OutputStream
-    //   696	54	5	localObject2	Object
-    //   780	1	5	localObject3	Object
-    //   791	1	5	localObject4	Object
-    //   802	12	5	localObject5	Object
-    //   161	634	6	localObject6	Object
-    //   165	591	7	localObject7	Object
-    //   33	382	8	localObject8	Object
-    //   488	15	8	localException1	java.lang.Exception
-    //   586	40	8	str1	String
-    //   799	1	8	localException2	java.lang.Exception
-    //   810	1	8	localException3	java.lang.Exception
-    //   60	176	9	str2	String
+    //   0	793	0	this	i
+    //   47	56	1	i	int
+    //   172	16	2	l	long
+    //   19	759	4	localObject1	java.lang.Object
+    //   155	510	5	localOutputStream	java.io.OutputStream
+    //   680	54	5	localObject2	java.lang.Object
+    //   752	1	5	localObject3	java.lang.Object
+    //   763	1	5	localObject4	java.lang.Object
+    //   774	12	5	localObject5	java.lang.Object
+    //   159	608	6	localObject6	java.lang.Object
+    //   163	577	7	localObject7	java.lang.Object
+    //   33	365	8	localObject8	java.lang.Object
+    //   476	15	8	localException1	java.lang.Exception
+    //   574	37	8	str1	String
+    //   771	1	8	localException2	java.lang.Exception
+    //   782	1	8	localException3	java.lang.Exception
+    //   63	156	9	str2	String
     // Exception table:
     //   from	to	target	type
-    //   167	174	488	java/lang/Exception
-    //   182	190	488	java/lang/Exception
-    //   198	214	488	java/lang/Exception
-    //   222	227	488	java/lang/Exception
-    //   235	245	488	java/lang/Exception
-    //   253	261	488	java/lang/Exception
-    //   269	277	488	java/lang/Exception
-    //   285	299	488	java/lang/Exception
-    //   307	315	488	java/lang/Exception
-    //   323	328	488	java/lang/Exception
-    //   363	372	488	java/lang/Exception
-    //   380	389	488	java/lang/Exception
-    //   397	406	488	java/lang/Exception
-    //   414	422	488	java/lang/Exception
-    //   430	435	488	java/lang/Exception
-    //   464	472	488	java/lang/Exception
-    //   480	485	488	java/lang/Exception
-    //   579	588	488	java/lang/Exception
-    //   596	613	488	java/lang/Exception
-    //   621	664	488	java/lang/Exception
-    //   672	680	488	java/lang/Exception
-    //   688	693	488	java/lang/Exception
-    //   738	746	488	java/lang/Exception
-    //   757	765	488	java/lang/Exception
-    //   167	174	696	finally
-    //   182	190	696	finally
-    //   198	214	696	finally
-    //   222	227	696	finally
-    //   235	245	696	finally
-    //   253	261	696	finally
-    //   269	277	696	finally
-    //   285	299	696	finally
-    //   307	315	696	finally
-    //   323	328	696	finally
-    //   363	372	696	finally
-    //   380	389	696	finally
-    //   397	406	696	finally
-    //   414	422	696	finally
-    //   430	435	696	finally
-    //   464	472	696	finally
-    //   480	485	696	finally
-    //   498	516	696	finally
-    //   524	532	696	finally
-    //   540	545	696	finally
-    //   579	588	696	finally
-    //   596	613	696	finally
-    //   621	664	696	finally
-    //   672	680	696	finally
-    //   688	693	696	finally
-    //   738	746	696	finally
-    //   757	765	696	finally
-    //   21	55	780	finally
-    //   55	95	791	finally
-    //   102	120	791	finally
-    //   142	159	791	finally
-    //   21	55	799	java/lang/Exception
-    //   55	95	810	java/lang/Exception
-    //   102	120	810	java/lang/Exception
-    //   142	159	810	java/lang/Exception
+    //   165	173	476	java/lang/Exception
+    //   181	197	476	java/lang/Exception
+    //   205	210	476	java/lang/Exception
+    //   218	228	476	java/lang/Exception
+    //   236	245	476	java/lang/Exception
+    //   253	261	476	java/lang/Exception
+    //   269	283	476	java/lang/Exception
+    //   291	299	476	java/lang/Exception
+    //   307	312	476	java/lang/Exception
+    //   346	355	476	java/lang/Exception
+    //   363	372	476	java/lang/Exception
+    //   380	389	476	java/lang/Exception
+    //   397	405	476	java/lang/Exception
+    //   413	418	476	java/lang/Exception
+    //   452	460	476	java/lang/Exception
+    //   468	473	476	java/lang/Exception
+    //   567	576	476	java/lang/Exception
+    //   584	598	476	java/lang/Exception
+    //   606	648	476	java/lang/Exception
+    //   656	664	476	java/lang/Exception
+    //   672	677	476	java/lang/Exception
+    //   722	730	476	java/lang/Exception
+    //   741	749	476	java/lang/Exception
+    //   165	173	680	finally
+    //   181	197	680	finally
+    //   205	210	680	finally
+    //   218	228	680	finally
+    //   236	245	680	finally
+    //   253	261	680	finally
+    //   269	283	680	finally
+    //   291	299	680	finally
+    //   307	312	680	finally
+    //   346	355	680	finally
+    //   363	372	680	finally
+    //   380	389	680	finally
+    //   397	405	680	finally
+    //   413	418	680	finally
+    //   452	460	680	finally
+    //   468	473	680	finally
+    //   486	504	680	finally
+    //   512	520	680	finally
+    //   528	533	680	finally
+    //   567	576	680	finally
+    //   584	598	680	finally
+    //   606	648	680	finally
+    //   656	664	680	finally
+    //   672	677	680	finally
+    //   722	730	680	finally
+    //   741	749	680	finally
+    //   21	55	752	finally
+    //   55	98	763	finally
+    //   105	123	763	finally
+    //   139	157	763	finally
+    //   21	55	771	java/lang/Exception
+    //   55	98	782	java/lang/Exception
+    //   105	123	782	java/lang/Exception
+    //   139	157	782	java/lang/Exception
   }
   
-  public final void ep(boolean paramBoolean)
+  public final void onResult(boolean paramBoolean)
   {
     AppMethodBeat.i(105952);
-    Log.i(this.TAG, "onResult: " + paramBoolean + ", " + this.VbE.errType);
-    super.ep(paramBoolean);
+    Log.i(this.TAG, "onResult: " + paramBoolean + ", " + this.acCU.errType);
+    super.onResult(paramBoolean);
     AppMethodBeat.o(105952);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/StickerUrlTask$Companion;", "", "()V", "RET_EXPIRED", "", "RET_UNI_MISMATCH", "plugin-sticker_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.i
  * JD-Core Version:    0.7.0.1
  */

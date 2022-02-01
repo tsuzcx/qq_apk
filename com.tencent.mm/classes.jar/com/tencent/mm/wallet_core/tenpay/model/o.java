@@ -2,12 +2,11 @@ package com.tencent.mm.wallet_core.tenpay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.fhv;
-import com.tencent.mm.protocal.protobuf.tj;
+import com.tencent.mm.protocal.protobuf.geh;
+import com.tencent.mm.protocal.protobuf.uz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.c;
-import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.wallet_core.model.j;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
@@ -19,20 +18,20 @@ public class o
   extends m
   implements j
 {
-  public String Pjv;
-  public fhv Pjw;
-  public String YWv;
+  public String Wan;
+  public geh Wao;
+  public String agUp;
   public String appId;
   public int channel;
-  public String fwv;
+  public String hAT;
   public String productId;
   public int scene;
-  public String tVH;
+  public String wZb;
   
   public o(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
     AppMethodBeat.i(72894);
-    this.Pjw = new fhv();
+    this.Wao = new geh();
     this.scene = paramInt1;
     this.channel = paramInt3;
     HashMap localHashMap = new HashMap();
@@ -50,8 +49,8 @@ public class o
     for (;;)
     {
       setRequestData(localHashMap);
-      paramString2 = com.tencent.mm.model.c.d.bgB().Mu("100456");
-      if (paramString2.isValid()) {
+      paramString2 = com.tencent.mm.model.newabtest.d.bEt().Fd("100456");
+      if ((paramString2 != null) && (paramString2.isValid())) {
         break;
       }
       Log.w("MicroMsg.NetSceneTenpayNativeAuthen", "invalid abtest value");
@@ -60,7 +59,7 @@ public class o
       localHashMap.put("source_type", String.valueOf(paramInt4));
       localHashMap.put("source", paramString2);
     }
-    if (Util.getInt((String)paramString2.hvz().get("open"), 0) == 0)
+    if (Util.getInt((String)paramString2.iWZ().get("open"), 0) == 0)
     {
       Log.i("MicroMsg.NetSceneTenpayNativeAuthen", "abtest unopened");
       AppMethodBeat.o(72894);
@@ -119,34 +118,34 @@ public class o
     AppMethodBeat.i(72895);
     Log.i("MicroMsg.NetSceneTenpayNativeAuthen", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     Log.d("MicroMsg.NetSceneTenpayNativeAuthen", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.fwv = paramJSONObject.optString("reqkey");
+    this.hAT = paramJSONObject.optString("reqkey");
     this.appId = paramJSONObject.optString("appid");
-    this.Pjv = paramJSONObject.optString("appsource");
+    this.Wan = paramJSONObject.optString("appsource");
     this.productId = paramJSONObject.optString("productid");
-    this.YWv = paramJSONObject.optString("retcode");
-    this.tVH = paramJSONObject.optString("retmsg");
+    this.agUp = paramJSONObject.optString("retcode");
+    this.wZb = paramJSONObject.optString("retmsg");
     paramString = paramJSONObject.optJSONObject("wallet_mix_sp_genprepay_resp");
     if (paramString != null)
     {
-      this.Pjw.UHJ = paramString.optString("pay_gate_url");
-      this.Pjw.UHL = paramString.optBoolean("need_dialog");
-      this.Pjw.UHM = paramString.optString("dialog_text");
+      this.Wao.acbS = paramString.optString("pay_gate_url");
+      this.Wao.acbU = paramString.optBoolean("need_dialog");
+      this.Wao.acbV = paramString.optString("dialog_text");
       paramString = paramString.optJSONObject("callback_retry_conf");
       if (paramString != null)
       {
-        this.Pjw.UHK = new tj();
-        this.Pjw.UHK.Sdf = paramString.optInt("inteval_time");
-        this.Pjw.UHK.Sdg = paramString.optInt("max_count");
-        this.Pjw.UHK.Sdh = paramString.optString("default_wording");
+        this.Wao.acbT = new uz();
+        this.Wao.acbT.ZaX = paramString.optInt("inteval_time");
+        this.Wao.acbT.ZaY = paramString.optInt("max_count");
+        this.Wao.acbT.ZaZ = paramString.optString("default_wording");
       }
-      Log.d("MicroMsg.NetSceneTenpayNativeAuthen", "pay_gate_url: %s, dialog_text: %s", new Object[] { this.Pjw.UHJ, this.Pjw.UHM });
+      Log.d("MicroMsg.NetSceneTenpayNativeAuthen", "pay_gate_url: %s, dialog_text: %s", new Object[] { this.Wao.acbS, this.Wao.acbV });
     }
     AppMethodBeat.o(72895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.o
  * JD-Core Version:    0.7.0.1
  */

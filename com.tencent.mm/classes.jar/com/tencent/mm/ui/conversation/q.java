@@ -1,86 +1,62 @@
 package com.tencent.mm.ui.conversation;
 
-import android.app.Activity;
-import android.os.Message;
-import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bj.a;
-import com.tencent.mm.bj.b;
-import com.tencent.mm.bj.g;
-import com.tencent.mm.f.a.mx;
-import com.tencent.mm.f.a.sh;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.HomeUI;
-import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MainTabUI;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import com.tencent.mm.accessibility.type.ViewType;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/conversation/NewBizConversationAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
-  implements a
+  extends MMBaseAccessibilityConfig
 {
-  j XAI;
-  ConversationListView XCL;
-  IListener XEl;
-  IListener XEm;
-  Runnable XpT;
-  Activity fDf;
-  MessageQueue.IdleHandler sJE;
-  IListener uCp;
-  
-  public q()
+  public q(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(38735);
-    this.uCp = null;
-    this.XEl = null;
-    this.XEm = null;
-    this.XpT = new Runnable()
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(256803);
+    AppMethodBeat.o(256803);
+  }
+  
+  public final void initConfig()
+  {
+    AppMethodBeat.i(256809);
+    root(R.i.giE).view(R.h.fDC).disableChildren().type(ViewType.Button).desc((b)new a(this));
+    root(R.i.giF).view(R.h.fDC).disableChildren().type(ViewType.Button).desc((b)new b(this));
+    AppMethodBeat.o(256809);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<View, String>
+  {
+    a(q paramq)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(38734);
-        Object localObject = q.this;
-        LauncherUI localLauncherUI = (LauncherUI)((q)localObject).fDf;
-        if ((localLauncherUI == null) || (localLauncherUI.VXk.getMainTabUI().iU == 0))
-        {
-          localObject = ((q)localObject).XCL;
-          if (((ConversationListView)localObject).getFirstVisiblePosition() > ((ConversationListView)localObject).getFirstHeaderVisible() + 16) {
-            ((ConversationListView)localObject).setSelection(((ConversationListView)localObject).getFirstHeaderVisible() + 16);
-          }
-          ((ConversationListView)localObject).post(new ConversationListView.2((ConversationListView)localObject));
-        }
-        AppMethodBeat.o(38734);
-      }
-    };
-    AppMethodBeat.o(38735);
+      super();
+    }
   }
   
-  public final void h(String paramString1, String paramString2, String paramString3)
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, String>
   {
-    AppMethodBeat.i(38736);
-    if (this.XAI != null) {
-      this.XAI.notifyDataSetChanged();
+    b(q paramq)
+    {
+      super();
     }
-    AppMethodBeat.o(38736);
-  }
-  
-  public final void hFe()
-  {
-    AppMethodBeat.i(290848);
-    if (g.meT != null) {
-      g.meT.b(this);
-    }
-    p.hWK();
-    LauncherUI localLauncherUI = (LauncherUI)this.fDf;
-    if (localLauncherUI != null) {
-      localLauncherUI.getHomeUI().aO(this.XpT);
-    }
-    AppMethodBeat.o(290848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.q
  * JD-Core Version:    0.7.0.1
  */

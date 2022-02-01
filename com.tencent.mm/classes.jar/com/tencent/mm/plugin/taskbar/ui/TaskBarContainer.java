@@ -22,12 +22,15 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.abt;
+import com.tencent.mm.autogen.a.ls;
+import com.tencent.mm.autogen.a.ls.a;
+import com.tencent.mm.ce.j;
 import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView;
 import com.tencent.mm.dynamicbackground.view.GradientColorBackgroundView;
-import com.tencent.mm.f.a.ko;
-import com.tencent.mm.f.a.ko.a;
-import com.tencent.mm.f.a.zw;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView;
 import com.tencent.mm.plugin.multitask.ui.bg.DynamicBgContainer;
 import com.tencent.mm.plugin.taskbar.api.GyroView;
@@ -39,427 +42,450 @@ import com.tencent.mm.plugin.taskbar.d.f;
 import com.tencent.mm.plugin.taskbar.d.g;
 import com.tencent.mm.plugin.textstatus.a.a.b;
 import com.tencent.mm.plugin.textstatus.a.a.c;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.ax;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import kotlin.t;
 
 public class TaskBarContainer
   extends RelativeLayout
   implements View.OnTouchListener
 {
-  public boolean ARi;
-  private int INC;
-  private MMFragmentActivity Jvc;
-  private a MoF;
-  public TaskBarView MoG;
-  public DynamicBgContainer MoH;
-  private GradientColorBackgroundView MoI;
-  private Rect MoJ;
-  public LinearLayout MoK;
-  public View MoL;
-  private View MoM;
-  private TextView MoN;
-  private WeImageView MoO;
-  private WeImageView MoP;
-  private WeImageView MoQ;
-  private WeImageView MoR;
-  private View MoS;
-  private View MoT;
-  private TaskBarBottomView MoU;
-  AppBrandDesktopContainerView MoV;
-  private boolean MoW;
-  private int MoX;
-  private int MoY;
-  private boolean MoZ;
-  private GyroView Mor;
-  public Runnable Mpa;
-  public IListener Mpb;
-  private int aIj;
-  private int aIk;
-  private int ajm;
-  private View raR;
+  public boolean Gtm;
+  private MMFragmentActivity PIA;
+  private GyroView SRL;
+  private a SRY;
+  public TaskBarView SRZ;
+  public DynamicBgContainer SSa;
+  private GradientColorBackgroundView SSb;
+  private Rect SSc;
+  public LinearLayout SSd;
+  ViewGroup SSe;
+  public View SSf;
+  private View SSg;
+  private TextView SSh;
+  private WeImageView SSi;
+  private WeImageView SSj;
+  private WeImageView SSk;
+  private WeImageView SSl;
+  private View SSm;
+  private View SSn;
+  private TaskBarBottomView SSo;
+  AppBrandDesktopContainerView SSp;
+  private boolean SSq;
+  private int SSr;
+  private int SSs;
+  private boolean SSt;
+  public Runnable SSu;
+  public IListener SSv;
+  private int bXQ;
+  private int mViewHeight;
+  private int mViewWidth;
+  private View ugI;
+  private int vpn;
   
   public TaskBarContainer(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(215157);
-    this.MoJ = new Rect();
-    this.INC = ax.getStatusBarHeight(getContext());
-    this.MoW = true;
-    this.aIj = 0;
-    this.aIk = 0;
-    this.MoX = 0;
-    this.MoY = 0;
-    this.ajm = 0;
-    this.ARi = true;
-    this.MoZ = LocaleUtil.isChineseAppLang();
-    this.Mpa = null;
-    this.Mpb = new IListener() {};
+    AppMethodBeat.i(264458);
+    this.SSc = new Rect();
+    this.vpn = bf.getStatusBarHeight(getContext());
+    this.SSq = true;
+    this.mViewWidth = 0;
+    this.mViewHeight = 0;
+    this.SSr = 0;
+    this.SSs = 0;
+    this.bXQ = 0;
+    this.Gtm = true;
+    this.SSt = LocaleUtil.isChineseAppLang();
+    this.SSu = null;
+    this.SSv = new IListener(com.tencent.mm.app.f.hfK) {};
     init(paramContext);
-    AppMethodBeat.o(215157);
+    AppMethodBeat.o(264458);
   }
   
   public TaskBarContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(215158);
-    this.MoJ = new Rect();
-    this.INC = ax.getStatusBarHeight(getContext());
-    this.MoW = true;
-    this.aIj = 0;
-    this.aIk = 0;
-    this.MoX = 0;
-    this.MoY = 0;
-    this.ajm = 0;
-    this.ARi = true;
-    this.MoZ = LocaleUtil.isChineseAppLang();
-    this.Mpa = null;
-    this.Mpb = new IListener() {};
+    AppMethodBeat.i(264464);
+    this.SSc = new Rect();
+    this.vpn = bf.getStatusBarHeight(getContext());
+    this.SSq = true;
+    this.mViewWidth = 0;
+    this.mViewHeight = 0;
+    this.SSr = 0;
+    this.SSs = 0;
+    this.bXQ = 0;
+    this.Gtm = true;
+    this.SSt = LocaleUtil.isChineseAppLang();
+    this.SSu = null;
+    this.SSv = new IListener(com.tencent.mm.app.f.hfK) {};
     init(paramContext);
-    AppMethodBeat.o(215158);
+    AppMethodBeat.o(264464);
   }
   
   public TaskBarContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(215159);
-    this.MoJ = new Rect();
-    this.INC = ax.getStatusBarHeight(getContext());
-    this.MoW = true;
-    this.aIj = 0;
-    this.aIk = 0;
-    this.MoX = 0;
-    this.MoY = 0;
-    this.ajm = 0;
-    this.ARi = true;
-    this.MoZ = LocaleUtil.isChineseAppLang();
-    this.Mpa = null;
-    this.Mpb = new IListener() {};
+    AppMethodBeat.i(264473);
+    this.SSc = new Rect();
+    this.vpn = bf.getStatusBarHeight(getContext());
+    this.SSq = true;
+    this.mViewWidth = 0;
+    this.mViewHeight = 0;
+    this.SSr = 0;
+    this.SSs = 0;
+    this.bXQ = 0;
+    this.Gtm = true;
+    this.SSt = LocaleUtil.isChineseAppLang();
+    this.SSu = null;
+    this.SSv = new IListener(com.tencent.mm.app.f.hfK) {};
     init(paramContext);
-    AppMethodBeat.o(215159);
+    AppMethodBeat.o(264473);
   }
   
-  private void gjp()
+  private void hDp()
   {
-    AppMethodBeat.i(215164);
+    AppMethodBeat.i(264480);
     int i = getResources().getConfiguration().orientation;
-    this.MoX = 0;
-    AppMethodBeat.o(215164);
+    this.SSr = 0;
+    AppMethodBeat.o(264480);
   }
   
-  private void gjq()
+  private void hDq()
   {
-    AppMethodBeat.i(215174);
+    AppMethodBeat.i(264506);
     Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo initViewScale measuredWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()) });
-    if (!this.ARi)
+    if (!this.Gtm)
     {
-      AppMethodBeat.o(215174);
+      AppMethodBeat.o(264506);
       return;
     }
-    if (this.MoK != null)
+    if (this.SSd != null)
     {
-      this.MoK.setScaleX(0.6F);
-      this.MoK.setScaleY(0.6F);
+      this.SSd.setScaleX(0.6F);
+      this.SSd.setScaleY(0.6F);
     }
-    AppMethodBeat.o(215174);
+    AppMethodBeat.o(264506);
   }
   
-  private void gjr()
+  private void hDr()
   {
-    AppMethodBeat.i(215177);
+    AppMethodBeat.i(264513);
     Object localObject;
-    if ((this.MoN != null) && (this.raR != null))
+    if ((this.SSh != null) && (this.ugI != null))
     {
       localObject = new int[2];
-      this.raR.getLocationOnScreen((int[])localObject);
+      this.ugI.getLocationOnScreen((int[])localObject);
       Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateFakeActionBarLeftMargin location x: %d, y: %d", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]) });
       if (Build.VERSION.SDK_INT < 24) {
         break label163;
       }
     }
     label163:
-    for (boolean bool = this.Jvc.isInMultiWindowMode();; bool = false)
+    for (boolean bool = this.PIA.isInMultiWindowMode();; bool = false)
     {
       if (bool)
       {
-        localObject = (LinearLayout.LayoutParams)this.MoN.getLayoutParams();
+        localObject = (LinearLayout.LayoutParams)this.SSh.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).leftMargin = getResources().getDimensionPixelSize(d.b.BiggerPadding);
         Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateFakeActionBarLeftMargin leftMargin: %d", new Object[] { Integer.valueOf(((LinearLayout.LayoutParams)localObject).leftMargin) });
-        if (this.MoN.getParent() != null) {
-          this.MoN.getParent().requestLayout();
+        if (this.SSh.getParent() != null) {
+          this.SSh.getParent().requestLayout();
         }
-        this.MoL.setVisibility(0);
+        this.SSf.setVisibility(0);
       }
-      AppMethodBeat.o(215177);
+      AppMethodBeat.o(264513);
       return;
     }
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(215166);
+    AppMethodBeat.i(264488);
     Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo HeaderContainer init");
-    this.ajm = com.tencent.mm.ci.a.aZ(paramContext, d.b.app_brand_desktop_close_area_extra);
-    gjp();
+    setImportantForAccessibility(2);
+    this.bXQ = com.tencent.mm.cd.a.bs(paramContext, d.b.app_brand_desktop_close_area_extra);
+    hDp();
     setBackgroundColor(getResources().getColor(d.a.transparent));
-    com.tencent.mm.plugin.taskbar.ui.a.a locala = com.tencent.mm.plugin.taskbar.ui.a.a.Mqu;
-    com.tencent.mm.plugin.taskbar.ui.a.a.gjY();
-    ip(paramContext);
-    AppMethodBeat.o(215166);
+    com.tencent.mm.plugin.taskbar.ui.a.a locala = com.tencent.mm.plugin.taskbar.ui.a.a.STE;
+    com.tencent.mm.plugin.taskbar.ui.a.a.hDY();
+    kf(paramContext);
+    AppMethodBeat.o(264488);
   }
   
-  private void ip(Context paramContext)
+  private void kf(Context paramContext)
   {
-    AppMethodBeat.i(215172);
-    View localView = LayoutInflater.from(paramContext).inflate(d.e.MmB, null);
-    this.MoK = ((LinearLayout)localView.findViewById(d.d.app_brand_desktop_root_layout));
-    ((FrameLayout.LayoutParams)this.MoK.getLayoutParams()).topMargin = this.INC;
-    this.Mor = ((GyroView)localView.findViewById(d.d.gyro_view));
-    this.MoV = ((AppBrandDesktopContainerView)localView.findViewById(d.d.Mms));
-    FrameLayout localFrameLayout = (FrameLayout)localView.findViewById(d.d.Mmr);
-    this.MoL = LayoutInflater.from(paramContext).inflate(d.e.MmC, null);
-    this.MoM = this.MoL.findViewById(d.d.container);
-    localFrameLayout.addView(this.MoL, -1, -1);
-    this.MoN = ((TextView)this.MoL.findViewById(d.d.Mmp));
-    this.MoO = ((WeImageView)this.MoL.findViewById(d.d.search_icon));
-    this.MoP = ((WeImageView)this.MoL.findViewById(d.d.Mmu));
-    this.MoR = ((WeImageView)this.MoL.findViewById(d.d.home_title_icon));
-    this.MoS = this.MoL.findViewById(d.d.Mmw);
-    this.MoT = this.MoL.findViewById(d.d.Mmv);
-    this.MoU = ((TaskBarBottomView)this.MoL.findViewById(d.d.Mmq));
-    this.MoQ = ((WeImageView)this.MoL.findViewById(d.d.actionbar_up_indicator_btn));
-    this.MoO.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(264501);
+    View localView = LayoutInflater.from(paramContext).inflate(d.e.SPT, null);
+    this.SSd = ((LinearLayout)localView.findViewById(d.d.app_brand_desktop_root_layout));
+    ((FrameLayout.LayoutParams)this.SSd.getLayoutParams()).topMargin = this.vpn;
+    this.SRL = ((GyroView)localView.findViewById(d.d.gyro_view));
+    this.SSe = ((ViewGroup)localView.findViewById(d.d.SPH));
+    this.SSp = ((AppBrandDesktopContainerView)localView.findViewById(d.d.SPI));
+    FrameLayout localFrameLayout = (FrameLayout)localView.findViewById(d.d.SPG);
+    this.SSf = LayoutInflater.from(paramContext).inflate(d.e.SPU, null);
+    this.SSg = this.SSf.findViewById(d.d.container);
+    localFrameLayout.addView(this.SSf, -1, -1);
+    this.SSh = ((TextView)this.SSf.findViewById(16908308));
+    this.SSi = ((WeImageView)this.SSf.findViewById(d.d.search_icon));
+    this.SSj = ((WeImageView)this.SSf.findViewById(d.d.SPK));
+    this.SSl = ((WeImageView)this.SSf.findViewById(d.d.home_title_icon));
+    this.SSm = this.SSf.findViewById(d.d.SPM);
+    this.SSn = this.SSf.findViewById(d.d.SPL);
+    this.SSo = ((TaskBarBottomView)this.SSf.findViewById(d.d.SPF));
+    this.SSk = ((WeImageView)this.SSf.findViewById(d.d.actionbar_up_indicator_btn));
+    this.SSi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(214930);
+        AppMethodBeat.i(264054);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if ((TaskBarContainer.a(TaskBarContainer.this) != null) && (TaskBarContainer.a(TaskBarContainer.this).fcH())) {
-          TaskBarContainer.a(TaskBarContainer.this).DC(16);
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if ((TaskBarContainer.a(TaskBarContainer.this) != null) && (TaskBarContainer.a(TaskBarContainer.this).glK())) {
+          TaskBarContainer.a(TaskBarContainer.this).Eb(16);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(214930);
+        AppMethodBeat.o(264054);
       }
     });
-    this.MoP.setOnClickListener(new View.OnClickListener()
+    this.SSj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(214811);
+        AppMethodBeat.i(264055);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarContainer$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if ((TaskBarContainer.a(TaskBarContainer.this) != null) && (TaskBarContainer.a(TaskBarContainer.this).fcH())) {
-          TaskBarContainer.a(TaskBarContainer.this).DC(14);
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarContainer$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if ((TaskBarContainer.a(TaskBarContainer.this) != null) && (TaskBarContainer.a(TaskBarContainer.this).glK())) {
+          TaskBarContainer.a(TaskBarContainer.this).Eb(14);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarContainer$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(214811);
+        AppMethodBeat.o(264055);
       }
     });
-    gjq();
-    this.MoG = ((TaskBarView)localView.findViewById(d.d.app_brand_desktop_view));
-    this.MoG.setHeaderContainer(this);
-    this.MoG.setId(d.d.app_brand_desktop_view);
+    hDq();
+    this.SRZ = ((TaskBarView)localView.findViewById(d.d.app_brand_desktop_view));
+    this.SRZ.setHeaderContainer(this);
+    this.SRZ.setId(d.d.app_brand_desktop_view);
     addView(localView, new RelativeLayout.LayoutParams(-1, -1));
-    AppMethodBeat.o(215172);
+    AppMethodBeat.o(264501);
   }
   
   private void setActionBarTitle(String paramString)
   {
-    AppMethodBeat.i(215181);
-    if (!com.tencent.mm.kernel.h.aHB())
+    AppMethodBeat.i(264527);
+    if (!h.baz())
     {
-      AppMethodBeat.o(215181);
+      AppMethodBeat.o(264527);
       return;
     }
-    if (this.MoN != null)
+    if (this.SSh != null)
     {
-      paramString = l.d(getContext(), paramString, com.tencent.mm.ci.a.aY(getContext(), d.b.BigTextSize));
-      this.MoN.setText(paramString);
-      float f = com.tencent.mm.ci.a.aZ(getContext(), d.b.ActionBarTextSize) * com.tencent.mm.ci.a.km(getContext());
-      if (this.MoN.getTextSize() != f) {
-        this.MoN.setTextSize(0, f);
+      paramString = p.d(getContext(), paramString, com.tencent.mm.cd.a.br(getContext(), d.b.BigTextSize));
+      this.SSh.setText(paramString);
+      float f = com.tencent.mm.cd.a.bs(getContext(), d.b.ActionBarTextSize) * com.tencent.mm.cd.a.jO(getContext());
+      if (this.SSh.getTextSize() != f) {
+        this.SSh.setTextSize(0, f);
       }
-      ar.a(this.MoN.getPaint(), 0.8F);
-      ((com.tencent.mm.plugin.textstatus.a.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.textstatus.a.d.class)).setTextWithStatus(this.MoN, com.tencent.mm.plugin.auth.a.a.crN(), a.b.MzF, a.c.MzI);
+      aw.a(this.SSh.getPaint(), 0.8F);
+      ((com.tencent.mm.plugin.textstatus.a.f)h.az(com.tencent.mm.plugin.textstatus.a.f.class)).setTextWithStatus(this.SSh, com.tencent.mm.plugin.auth.a.a.cUx(), a.b.ThJ, a.c.ThP);
     }
-    AppMethodBeat.o(215181);
+    AppMethodBeat.o(264527);
+  }
+  
+  public final void Fj(boolean paramBoolean)
+  {
+    AppMethodBeat.i(264702);
+    this.SRZ.Fl(paramBoolean);
+    AppMethodBeat.o(264702);
+  }
+  
+  public final void Fk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(264731);
+    if (this.SRZ != null)
+    {
+      TaskBarView localTaskBarView = this.SRZ;
+      Log.i("MicroMsg.TaskBarView", "alvinluo notifyMultiWindowModeChanged: %b, old: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(localTaskBarView.hRD) });
+      if (localTaskBarView.hRD != paramBoolean) {
+        localTaskBarView.hRD = paramBoolean;
+      }
+    }
+    DynamicBgContainer.setIsInMultiWindowMode(paramBoolean);
+    AppMethodBeat.o(264731);
   }
   
   public final void a(DynamicBgContainer paramDynamicBgContainer, GradientColorBackgroundView paramGradientColorBackgroundView)
   {
-    AppMethodBeat.i(215189);
-    this.MoH = paramDynamicBgContainer;
-    this.MoI = paramGradientColorBackgroundView;
-    if (this.MoF != null) {
-      this.MoF.o(paramDynamicBgContainer, this.MoI);
+    AppMethodBeat.i(264673);
+    this.SSa = paramDynamicBgContainer;
+    this.SSb = paramGradientColorBackgroundView;
+    if (this.SRY != null) {
+      this.SRY.u(paramDynamicBgContainer, this.SSb);
     }
-    AppMethodBeat.o(215189);
+    AppMethodBeat.o(264673);
   }
   
-  public final void aiU(int paramInt)
+  public final void aD(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(215171);
-    if (this.INC != paramInt)
+    AppMethodBeat.i(264655);
+    if (this.SRY != null) {
+      this.SRY.j(paramLong, paramInt, false);
+    }
+    AppMethodBeat.o(264655);
+  }
+  
+  public final void aE(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(264661);
+    if (this.SRY != null) {
+      this.SRY.j(paramLong, paramInt, true);
+    }
+    AppMethodBeat.o(264661);
+  }
+  
+  public final void anW(int paramInt)
+  {
+    AppMethodBeat.i(264621);
+    if (this.vpn != paramInt)
     {
-      this.INC = paramInt;
-      ((FrameLayout.LayoutParams)this.MoK.getLayoutParams()).topMargin = paramInt;
-      Object localObject = this.MoV.rpp.getLayoutParams();
+      this.vpn = paramInt;
+      ((FrameLayout.LayoutParams)this.SSd.getLayoutParams()).topMargin = paramInt;
+      Object localObject = this.SSp.uzB.getLayoutParams();
       if (localObject == null)
       {
-        localObject = new t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(215171);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(264621);
         throw ((Throwable)localObject);
       }
       ((FrameLayout.LayoutParams)localObject).topMargin = paramInt;
     }
-    AppMethodBeat.o(215171);
+    AppMethodBeat.o(264621);
   }
   
-  public final void aiV(int paramInt)
+  public final void anX(int paramInt)
   {
-    AppMethodBeat.i(215195);
-    if (this.MoU != null) {
-      this.MoU.setDrawColor(paramInt);
+    AppMethodBeat.i(264713);
+    if (this.SSo != null) {
+      this.SSo.setDrawColor(paramInt);
     }
-    AppMethodBeat.o(215195);
-  }
-  
-  public final void al(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(215186);
-    if (this.MoF != null) {
-      this.MoF.i(paramLong, paramInt, false);
-    }
-    AppMethodBeat.o(215186);
-  }
-  
-  public final void am(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(215187);
-    if (this.MoF != null) {
-      this.MoF.i(paramLong, paramInt, true);
-    }
-    AppMethodBeat.o(215187);
+    AppMethodBeat.o(264713);
   }
   
   public int getAnimationScrollOffset()
   {
-    return this.MoF.Moa;
+    return this.SRY.SRu;
   }
   
   public Rect getBackUpFooterRect()
   {
-    return this.MoJ;
+    return this.SSc;
   }
   
   public DynamicBgContainer getBackgroundGLSurfaceContainer()
   {
-    return this.MoH;
+    return this.SSa;
   }
   
   public View getBackgroundGLSurfaceView()
   {
-    AppMethodBeat.i(215190);
-    DynamicBackgroundGLSurfaceView localDynamicBackgroundGLSurfaceView = this.MoH.getDynamicBgSurfaceView();
-    AppMethodBeat.o(215190);
+    AppMethodBeat.i(264690);
+    DynamicBackgroundGLSurfaceView localDynamicBackgroundGLSurfaceView = this.SSa.getDynamicBgSurfaceView();
+    AppMethodBeat.o(264690);
     return localDynamicBackgroundGLSurfaceView;
   }
   
   public View getBackgroundGradientView()
   {
-    return this.MoI;
+    return this.SSb;
   }
   
   public AppBrandDesktopContainerView getDesktopContainerView()
   {
-    return this.MoV;
+    return this.SSp;
   }
   
   public int getExtraBottomHeight()
   {
-    return this.MoY;
+    return this.SSs;
   }
   
-  public com.tencent.mm.plugin.appbrand.widget.d.a.a getHeaderView()
+  public com.tencent.mm.plugin.appbrand.widget.e.a.a getHeaderView()
   {
     return null;
   }
   
   public LinearLayout getRootLayout()
   {
-    return this.MoK;
+    return this.SSd;
   }
   
   public TaskBarView getTaskBarView()
   {
-    return this.MoG;
+    return this.SRZ;
   }
   
   public int getViewHeight()
   {
-    return this.aIk;
+    return this.mViewHeight;
   }
   
-  public final void gjs()
+  public final void hDs()
   {
-    AppMethodBeat.i(215184);
-    if (this.Jvc == null)
+    AppMethodBeat.i(264648);
+    if (this.PIA == null)
     {
-      AppMethodBeat.o(215184);
+      AppMethodBeat.o(264648);
       return;
     }
-    Pair localPair = com.tencent.mm.plugin.taskbar.ui.c.b.aU(this.Jvc);
-    ((FrameLayout.LayoutParams)this.MoM.getLayoutParams()).setMargins(((Integer)localPair.first).intValue(), 0, ((Integer)localPair.second).intValue(), 0);
-    this.MoL.requestLayout();
-    this.MoL.setVisibility(0);
-    AppMethodBeat.o(215184);
+    Pair localPair = com.tencent.mm.plugin.taskbar.ui.c.b.by(this.PIA);
+    ((FrameLayout.LayoutParams)this.SSg.getLayoutParams()).setMargins(((Integer)localPair.first).intValue(), 0, ((Integer)localPair.second).intValue(), 0);
+    this.SSf.requestLayout();
+    this.SSf.setVisibility(0);
+    AppMethodBeat.o(264648);
   }
   
-  public final boolean gjt()
+  public final boolean hDt()
   {
-    AppMethodBeat.i(215185);
-    if (this.MoF != null)
+    AppMethodBeat.i(264652);
+    if (this.SRY != null)
     {
-      boolean bool = this.MoF.gjg();
-      AppMethodBeat.o(215185);
+      boolean bool = this.SRY.hDg();
+      AppMethodBeat.o(264652);
       return bool;
     }
-    AppMethodBeat.o(215185);
+    AppMethodBeat.o(264652);
     return false;
   }
   
-  public final void ks(int paramInt1, int paramInt2)
+  public final void me(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215197);
-    if (this.MoN != null) {
-      this.MoN.setTextColor(paramInt1);
+    AppMethodBeat.i(264719);
+    if (this.SSh != null) {
+      this.SSh.setTextColor(paramInt1);
     }
-    if (this.MoO != null)
+    if (this.SSi != null)
     {
-      this.MoO.setImageResource(d.f.actionbar_icon_dark_search);
-      this.MoO.setIconColor(paramInt2);
+      this.SSi.setImageResource(d.f.actionbar_icon_dark_search);
+      this.SSi.setIconColor(paramInt2);
     }
-    if (this.MoP != null)
+    if (this.SSj != null)
     {
-      this.MoP.setImageResource(d.f.icons_outlined_add2);
-      this.MoP.setIconColor(paramInt2);
+      this.SSj.setImageResource(d.f.icons_outlined_add2);
+      this.SSj.setIconColor(paramInt2);
     }
     Object localObject;
-    if (this.MoR != null)
+    if (this.SSl != null)
     {
-      localObject = this.MoR;
-      if (!this.MoG.Mph.lsi) {
+      localObject = this.SSl;
+      if (!this.SRZ.SSB.epi) {
         break label162;
       }
     }
@@ -467,102 +493,102 @@ public class TaskBarContainer
     for (paramInt1 = 0;; paramInt1 = 8)
     {
       ((WeImageView)localObject).setVisibility(paramInt1);
-      if (this.MoQ == null) {
+      if (this.SSk == null) {
         break label176;
       }
-      this.MoQ.setIconColor(paramInt2);
-      if (this.raR == null) {
+      this.SSk.setIconColor(paramInt2);
+      if (this.ugI == null) {
         break label176;
       }
-      localObject = this.raR.findViewById(d.d.actionbar_up_indicator_btn);
+      localObject = this.ugI.findViewById(d.d.actionbar_up_indicator_btn);
       if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {
         break;
       }
-      this.MoQ.setVisibility(4);
-      AppMethodBeat.o(215197);
+      this.SSk.setVisibility(4);
+      AppMethodBeat.o(264719);
       return;
     }
-    this.MoQ.setVisibility(0);
+    this.SSk.setVisibility(0);
     label176:
-    AppMethodBeat.o(215197);
+    AppMethodBeat.o(264719);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(215167);
+    AppMethodBeat.i(264605);
     super.onAttachedToWindow();
     Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktopContainer onAttachedToWindow");
-    if (this.Mpb != null) {
-      this.Mpb.alive();
+    if (this.SSv != null) {
+      this.SSv.alive();
     }
-    ko localko = new ko();
-    EventCenter.instance.publish(localko);
-    Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateUnReadCount unReadCount: %d", new Object[] { Integer.valueOf(localko.fIc.fId) });
-    Object localObject2 = getContext().getResources().getString(d.g.app_name);
-    if (!com.tencent.mm.protocal.d.RAG)
+    ls localls = new ls();
+    localls.publish();
+    Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateUnReadCount unReadCount: %d", new Object[] { Integer.valueOf(localls.hNC.hND) });
+    Object localObject2 = getContext().getResources().getString(d.g.app_name_separation);
+    if (!com.tencent.mm.protocal.d.Yxk)
     {
       localObject1 = localObject2;
       if (!BuildInfo.IS_FLAVOR_BLUE) {}
     }
     else
     {
-      if (!this.MoZ) {
-        break label225;
+      if (!this.SSt) {
+        break label221;
       }
     }
-    label225:
-    for (Object localObject1 = (String)localObject2 + com.tencent.mm.cj.h.kv(getContext());; localObject1 = (String)localObject2 + " " + com.tencent.mm.cj.h.kv(getContext()))
+    label221:
+    for (Object localObject1 = (String)localObject2 + j.mx(getContext());; localObject1 = (String)localObject2 + " " + j.mx(getContext()))
     {
       localObject2 = localObject1;
-      if (localko.fIc.fId > 0)
+      if (localls.hNC.hND > 0)
       {
         localObject2 = localObject1;
-        if (!this.MoZ) {
+        if (!this.SSt) {
           localObject2 = (String)localObject1 + " ";
         }
-        localObject2 = (String)localObject2 + "(" + localko.fIc.fId + ")";
+        localObject2 = (String)localObject2 + "(" + localls.hNC.hND + ")";
       }
       setActionBarTitle((String)localObject2);
-      AppMethodBeat.o(215167);
+      AppMethodBeat.o(264605);
       return;
     }
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(215169);
+    AppMethodBeat.i(264611);
     super.onDetachedFromWindow();
     Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktopContainer onDetachedFromWindow");
-    if (this.Mpb != null) {
-      this.Mpb.dead();
+    if (this.SSv != null) {
+      this.SSv.dead();
     }
-    AppMethodBeat.o(215169);
+    AppMethodBeat.o(264611);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215162);
-    gjp();
-    Log.v("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure orientation: %d, closeHeight: %d, extraBottomHeight: %d", new Object[] { Integer.valueOf(getResources().getConfiguration().orientation), Integer.valueOf(this.MoX), Integer.valueOf(this.MoY) });
-    if (this.MoW)
+    AppMethodBeat.i(264587);
+    hDp();
+    Log.v("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure orientation: %d, closeHeight: %d, extraBottomHeight: %d", new Object[] { Integer.valueOf(getResources().getConfiguration().orientation), Integer.valueOf(this.SSr), Integer.valueOf(this.SSs) });
+    if (this.SSq)
     {
-      int i = ((ViewGroup)getParent()).getMeasuredHeight() - this.MoX - this.MoY - this.ajm;
+      int i = ((ViewGroup)getParent()).getMeasuredHeight() - this.SSr - this.SSs - this.bXQ;
       paramInt2 = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
-      this.aIk = i;
+      this.mViewHeight = i;
     }
     for (;;)
     {
       super.onMeasure(paramInt1, paramInt2);
-      if (getMeasuredWidth() != this.aIj)
+      if (getMeasuredWidth() != this.mViewWidth)
       {
-        Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure width new: %d, old: %d", new Object[] { Integer.valueOf(getMeasuredWidth()), Integer.valueOf(this.aIj) });
-        this.aIj = getMeasuredWidth();
+        Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure width new: %d, old: %d", new Object[] { Integer.valueOf(getMeasuredWidth()), Integer.valueOf(this.mViewWidth) });
+        this.mViewWidth = getMeasuredWidth();
         Log.i("MicroMsg.AppBrandDesktopContainer", "alvinluo initViewPivot getMeasuredWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()) });
-        this.MoK.setPivotX(getMeasuredWidth() / 2.0F);
-        this.MoK.setPivotY(ax.ew(getContext()));
-        gjq();
+        this.SSd.setPivotX(getMeasuredWidth() / 2.0F);
+        this.SSd.setPivotY(bf.fs(getContext()));
+        hDq();
       }
-      AppMethodBeat.o(215162);
+      AppMethodBeat.o(264587);
       return;
       paramInt2 = View.MeasureSpec.makeMeasureSpec(0, 1073741824);
     }
@@ -570,79 +596,64 @@ public class TaskBarContainer
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(215182);
-    if ((this.MoF != null) && ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))) {
-      this.MoF.onTouch(paramView, paramMotionEvent);
+    AppMethodBeat.i(264637);
+    if ((this.SRY != null) && ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))) {
+      this.SRY.onTouch(paramView, paramMotionEvent);
     }
-    AppMethodBeat.o(215182);
+    AppMethodBeat.o(264637);
     return false;
   }
   
   public void setActionBar(View paramView)
   {
-    AppMethodBeat.i(215176);
-    this.raR = paramView;
-    gjr();
-    AppMethodBeat.o(215176);
+    AppMethodBeat.i(264627);
+    this.ugI = paramView;
+    hDr();
+    AppMethodBeat.o(264627);
   }
   
   public void setActivity(MMFragmentActivity paramMMFragmentActivity)
   {
-    this.Jvc = paramMMFragmentActivity;
+    this.PIA = paramMMFragmentActivity;
   }
   
   public void setAnimController(a parama)
   {
-    AppMethodBeat.i(215161);
-    this.MoF = parama;
-    if ((this.MoG != null) && (this.MoF != null)) {
-      this.MoF.a(this.MoG);
+    AppMethodBeat.i(264567);
+    this.SRY = parama;
+    if ((this.SRZ != null) && (this.SRY != null)) {
+      this.SRY.a(this.SRZ);
     }
-    AppMethodBeat.o(215161);
+    AppMethodBeat.o(264567);
   }
   
   public void setDynamicBackgroundView(View paramView)
   {
-    AppMethodBeat.i(215188);
-    a((DynamicBgContainer)paramView, this.MoI);
-    AppMethodBeat.o(215188);
+    AppMethodBeat.i(264665);
+    a((DynamicBgContainer)paramView, this.SSb);
+    AppMethodBeat.o(264665);
   }
   
   public void setExtraBottomHeight(int paramInt)
   {
-    this.MoY = paramInt;
+    this.SSs = paramInt;
   }
   
   public void setFixedHeight(boolean paramBoolean)
   {
-    this.MoW = paramBoolean;
+    this.SSq = paramBoolean;
   }
   
-  public final void zS(boolean paramBoolean)
+  public void setFoldBanner(View paramView)
   {
-    AppMethodBeat.i(215192);
-    this.MoG.zU(paramBoolean);
-    AppMethodBeat.o(215192);
-  }
-  
-  public final void zT(boolean paramBoolean)
-  {
-    AppMethodBeat.i(215203);
-    if (this.MoG != null)
-    {
-      TaskBarView localTaskBarView = this.MoG;
-      Log.i("MicroMsg.TaskBarView", "alvinluo notifyMultiWindowModeChanged: %b, old: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(localTaskBarView.fLS) });
-      if (localTaskBarView.fLS != paramBoolean) {
-        localTaskBarView.fLS = paramBoolean;
-      }
+    if (this.SRY != null) {
+      this.SRY.SRa = paramView;
     }
-    DynamicBgContainer.setIsInMultiWindowMode(paramBoolean);
-    AppMethodBeat.o(215203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.TaskBarContainer
  * JD-Core Version:    0.7.0.1
  */

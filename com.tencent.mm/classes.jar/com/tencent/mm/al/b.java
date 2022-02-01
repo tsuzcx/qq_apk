@@ -10,31 +10,31 @@ public final class b
   public int currentTime = 0;
   public String filePath = "";
   public long fileSize = 0L;
-  public boolean fmC = true;
-  public String fmF = "";
-  public String fnV = "";
-  public int fod = 0;
   public int fromScene = 0;
+  public boolean hqN = true;
+  public String hqQ = "";
+  public String hsg = "";
   public boolean loop = false;
-  public int lzH = 0;
-  public boolean lzI = false;
-  public long lzJ = 0L;
-  public double lzK = 1.0D;
-  public double lzL = 1.0D;
-  public long lzM = 0L;
-  public long lzN = 0L;
-  public long lzO = 0L;
-  public long lzP = 0L;
-  public long lzQ = 0L;
-  public long lzR = 0L;
-  public long lzS = 0L;
-  public String lzT = null;
-  public String lzU = null;
-  public e lzV;
-  public boolean lzW = false;
-  public boolean lzX = false;
-  public ByteBuffer lzY;
+  public int ori = 0;
+  public boolean orj = false;
+  public long ork = 0L;
+  public double orl = 1.0D;
+  public double orm = 1.0D;
+  public long orn = 0L;
+  public long oro = 0L;
+  public long orp = 0L;
+  public long orq = 0L;
+  public long orr = 0L;
+  public long ors = 0L;
+  public long ort = 0L;
+  public String oru = null;
+  public String orv = null;
+  public e orw;
+  public boolean orx = false;
+  public boolean ory = false;
+  public ByteBuffer orz;
   public String processName = "";
+  public int startTime = 0;
   
   public final boolean j(b paramb)
   {
@@ -44,7 +44,7 @@ public final class b
       AppMethodBeat.o(136977);
       return false;
     }
-    if ((this.fmF != null) && (this.fmF.equalsIgnoreCase(paramb.fmF)) && (this.fnV != null) && (this.fnV.equalsIgnoreCase(paramb.fnV)))
+    if ((this.hqQ != null) && (this.hqQ.equalsIgnoreCase(paramb.hqQ)) && (this.hsg != null) && (this.hsg.equalsIgnoreCase(paramb.hsg)))
     {
       AppMethodBeat.o(136977);
       return true;
@@ -56,30 +56,30 @@ public final class b
   public final void k(b paramb)
   {
     AppMethodBeat.i(136978);
-    this.fmF = paramb.fmF;
-    this.fnV = paramb.fnV;
+    this.hqQ = paramb.hqQ;
+    this.hsg = paramb.hsg;
     if (!TextUtils.isEmpty(paramb.filePath)) {
       this.filePath = paramb.filePath;
     }
-    this.fod = paramb.fod;
-    this.lzH = paramb.lzH;
-    this.lzI = paramb.lzI;
+    this.startTime = paramb.startTime;
+    this.ori = paramb.ori;
+    this.orj = paramb.orj;
     this.loop = paramb.loop;
     this.fromScene = paramb.fromScene;
     this.processName = paramb.processName;
-    this.lzK = paramb.lzK;
+    this.orl = paramb.orl;
     this.appId = paramb.appId;
-    if (paramb.lzV != null) {
-      this.lzV = paramb.lzV;
+    if (paramb.orw != null) {
+      this.orw = paramb.orw;
     }
     this.fileSize = paramb.fileSize;
-    this.lzL = paramb.lzL;
+    this.orm = paramb.orm;
     AppMethodBeat.o(136978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.al.b
  * JD-Core Version:    0.7.0.1
  */

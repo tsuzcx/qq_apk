@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/eo" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/ksk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-    <View android:layout_gravity="center_vertical" android:id="@id/ksj" android:background="@color/pz" android:visibility="gone" android:layout_width="1.0px" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/ct" />
-    <TextView android:textSize="@dimen/eo" android:textColor="@color/UN_BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/ksi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-</merge>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/ce" android:textColor="@color/gb" android:id="@id/m7h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cp" android:layout_alignStart="@id/m7g" />
+    <com.tencent.mm.plugin.emoji.ui.v3.EmojiStoreV3SingleProductRecyclerView android:id="@id/m7g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_below="@id/m7h" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m7f" android:layout_width="@dimen/cc" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_arrow" android:layout_alignBottom="@id/m7h" android:layout_marginEnd="@dimen/cp" android:layout_alignEnd="@id/m7g" app:iconColor="@color/BW_0_Alpha_0_2" />
+</RelativeLayout>

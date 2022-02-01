@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@color/FG_3" />
-    <item android:state_focused="true" android:drawable="@color/FG_3" />
-    <item android:state_pressed="true" android:drawable="@color/FG_3" />
-    <item android:state_focused="false" android:state_pressed="false" android:drawable="@color/d" />
-</selector>
+    <item android:gravity="bottom|center" android:height="12.0dip" android:width="12.0dip" android:bottom="3.0dip">
+        <rotate android:fromDegrees="45.0" android:toDegrees="45.0" android:pivotX="50.0%" android:pivotY="50.0%">
+            <shape android:shape="rectangle">
+                <solid android:color="@color/zm" />
+                <size android:height="24.0dip" android:width="24.0dip" />
+            </shape>
+        </rotate>
+    </item>
+    <item android:bottom="5.0dip">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/acu" />
+            <solid android:color="@color/zm" />
+        </shape>
+    </item>
+</layer-list>

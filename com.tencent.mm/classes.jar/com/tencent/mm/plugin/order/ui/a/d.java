@@ -7,10 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.ay.a.a.c;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.q;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.order.a.b;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
@@ -23,7 +23,7 @@ public final class d
   String mName;
   View.OnClickListener mOnClickListener;
   private View mView;
-  String uFL;
+  String xOn;
   
   public d(Context paramContext)
   {
@@ -34,7 +34,7 @@ public final class d
     AppMethodBeat.o(66808);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66809);
     if (this.mView == null) {
@@ -53,16 +53,16 @@ public final class d
     ImageView localImageView = (ImageView)paramView.findViewById(a.f.mall_order_biz_pref_icon);
     TextView localTextView = (TextView)paramView.findViewById(a.f.mall_order_biz_pref_name);
     localImageView.setImageBitmap(null);
-    if (!Util.isNullOrNil(this.uFL))
+    if (!Util.isNullOrNil(this.xOn))
     {
       Object localObject = new c.a();
-      b.fmH();
-      ((c.a)localObject).prefixPath = b.eNV();
-      ((c.a)localObject).lRD = true;
-      ((c.a)localObject).kOl = true;
-      ((c.a)localObject).kPz = true;
-      localObject = ((c.a)localObject).bmL();
-      q.bml().a(this.uFL, localImageView, (c)localObject);
+      b.gxv();
+      ((c.a)localObject).prefixPath = b.fWo();
+      ((c.a)localObject).oKp = true;
+      ((c.a)localObject).nqa = true;
+      ((c.a)localObject).nrc = true;
+      localObject = ((c.a)localObject).bKx();
+      r.bKe().a(this.xOn, localImageView, (c)localObject);
     }
     localTextView.setText(this.mName);
     paramView.findViewById(a.f.mall_order_biz_pref_container).setOnClickListener(this.mOnClickListener);
@@ -71,7 +71,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

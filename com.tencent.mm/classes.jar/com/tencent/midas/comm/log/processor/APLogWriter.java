@@ -19,33 +19,33 @@ public class APLogWriter
   
   public static APLogWriter create()
   {
-    AppMethodBeat.i(254034);
+    AppMethodBeat.i(217248);
     APLogWriter localAPLogWriter = new APLogWriter();
     localAPLogWriter.openLogFile();
-    AppMethodBeat.o(254034);
+    AppMethodBeat.o(217248);
     return localAPLogWriter;
   }
   
   private void openLogFile()
   {
-    AppMethodBeat.i(254037);
+    AppMethodBeat.i(217256);
     try
     {
       new StringBuilder("open log file: ").append(APLogFileInfo.fileName);
       this.randomAccessFile = new RandomAccessFile(APLogFileInfo.fileName, "rw");
       this.fileChannel = this.randomAccessFile.getChannel();
-      AppMethodBeat.o(254037);
+      AppMethodBeat.o(217256);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      AppMethodBeat.o(254037);
+      AppMethodBeat.o(217256);
     }
   }
   
   private long refreshFileChannel(long paramLong)
   {
-    AppMethodBeat.i(254040);
+    AppMethodBeat.i(217263);
     try
     {
       l1 = this.fileChannel.size();
@@ -58,7 +58,7 @@ public class APLogWriter
         openLogFile();
         l2 = 0L;
       }
-      AppMethodBeat.o(254040);
+      AppMethodBeat.o(217263);
       return l2;
     }
     catch (IOException localIOException)
@@ -74,7 +74,7 @@ public class APLogWriter
   
   public void close()
   {
-    AppMethodBeat.i(254043);
+    AppMethodBeat.i(217288);
     try
     {
       if (this.fileChannel != null) {
@@ -88,27 +88,26 @@ public class APLogWriter
         this.mappedByteBuffer.force();
         this.mappedByteBuffer.clear();
       }
-      AppMethodBeat.o(254043);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(254043);
+      AppMethodBeat.o(217288);
     }
   }
   
   public void flush()
   {
-    AppMethodBeat.i(254042);
+    AppMethodBeat.i(217280);
     if (this.mappedByteBuffer != null) {
       this.mappedByteBuffer.force();
     }
-    AppMethodBeat.o(254042);
+    AppMethodBeat.o(217280);
   }
   
   public void write(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    AppMethodBeat.i(254039);
+    AppMethodBeat.i(217272);
     try
     {
       long l2 = refreshFileChannel(paramArrayOfByte1.length);
@@ -123,19 +122,19 @@ public class APLogWriter
       long l4 = System.currentTimeMillis();
       new StringBuilder("write map time: ").append(l2 - l1).append(", sync time: ").append(l4 - l3);
       APLogFileUtil.deleteOldFileToday(APLogFileInfo.dirName);
-      AppMethodBeat.o(254039);
+      AppMethodBeat.o(217272);
       return;
     }
-    catch (Throwable paramArrayOfByte1)
+    finally
     {
       String.format(Locale.CHINA, "cache log to file error: <%s>%s", new Object[] { paramArrayOfByte1.getClass().getName(), paramArrayOfByte1.getMessage() });
-      AppMethodBeat.o(254039);
+      AppMethodBeat.o(217272);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.log.processor.APLogWriter
  * JD-Core Version:    0.7.0.1
  */

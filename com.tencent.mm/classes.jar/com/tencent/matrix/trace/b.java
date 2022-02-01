@@ -5,25 +5,33 @@ import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Choreographer;
-import com.tencent.matrix.e.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.matrix.trace.f.e;
+import com.tencent.matrix.trace.tracer.SignalAnrTracer;
+import com.tencent.matrix.trace.tracer.ThreadPriorityTracer;
+import com.tencent.matrix.trace.tracer.TouchEventLagTracer;
+import com.tencent.matrix.trace.tracer.d;
+import com.tencent.matrix.trace.tracer.e;
 
 public class b
   extends com.tencent.matrix.d.b
 {
-  public final com.tencent.matrix.trace.a.b deE;
-  public com.tencent.matrix.trace.f.b deF;
-  public e deG;
-  public com.tencent.matrix.trace.f.c deH;
-  public com.tencent.matrix.trace.f.a deI;
+  private static boolean fdx;
+  public final com.tencent.matrix.trace.a.b fdo;
+  public com.tencent.matrix.trace.tracer.a fdp;
+  public com.tencent.matrix.trace.tracer.f fdq;
+  public com.tencent.matrix.trace.tracer.b fdr;
+  public e fds;
+  private SignalAnrTracer fdt;
+  private d fdu;
+  private TouchEventLagTracer fdv;
+  private ThreadPriorityTracer fdw;
   
   public b(com.tencent.matrix.trace.a.b paramb)
   {
-    this.deE = paramb;
+    this.fdo = paramb;
   }
   
-  public static AppMethodBeat XX()
+  public static AppMethodBeat azC()
   {
     return AppMethodBeat.getInstance();
   }
@@ -41,17 +49,21 @@ public class b
   public void init(Application paramApplication, com.tencent.matrix.d.c paramc)
   {
     super.init(paramApplication, paramc);
-    com.tencent.matrix.e.c.i("Matrix.TracePlugin", "trace plugin init, trace config: %s", new Object[] { this.deE.toString() });
-    if (Build.VERSION.SDK_INT < 16)
+    com.tencent.matrix.e.c.i("Matrix.TracePlugin", "trace plugin init, trace config: %s", new Object[] { this.fdo.toString() });
+    int i = Build.VERSION.SDK_INT;
+    if (i < 16)
     {
       com.tencent.matrix.e.c.e("Matrix.TracePlugin", "[FrameBeat] API is low Build.VERSION_CODES.JELLY_BEAN(16), TracePlugin is not supported", new Object[0]);
       unSupportPlugin();
       return;
     }
-    this.deI = new com.tencent.matrix.trace.f.a(this.deE);
-    this.deH = new com.tencent.matrix.trace.f.c(this.deE);
-    this.deF = new com.tencent.matrix.trace.f.b(this.deE);
-    this.deG = new e(this.deE);
+    if (i >= 26) {
+      fdx = true;
+    }
+    this.fds = new e(this.fdo);
+    this.fdr = new com.tencent.matrix.trace.tracer.b(this.fdo, fdx);
+    this.fdp = new com.tencent.matrix.trace.tracer.a(this.fdo);
+    this.fdq = new com.tencent.matrix.trace.tracer.f(this.fdo);
   }
   
   public void onForeground(boolean paramBoolean)
@@ -61,17 +73,17 @@ public class b
     do
     {
       return;
-      if (this.deH != null) {
-        this.deH.onForeground(paramBoolean);
+      if (this.fdr != null) {
+        this.fdr.onForeground(paramBoolean);
       }
-      if (this.deI != null) {
-        this.deI.onForeground(paramBoolean);
+      if (this.fds != null) {
+        this.fds.onForeground(paramBoolean);
       }
-      if (this.deF != null) {
-        this.deF.onForeground(paramBoolean);
+      if (this.fdp != null) {
+        this.fdp.onForeground(paramBoolean);
       }
-    } while (this.deG == null);
-    this.deG.onForeground(paramBoolean);
+    } while (this.fdq == null);
+    this.fdq.onForeground(paramBoolean);
   }
   
   public void start()
@@ -87,27 +99,30 @@ public class b
     {
       public final void run()
       {
-        label64:
         boolean bool1;
-        label310:
+        label92:
         boolean bool2;
-        label320:
+        label347:
+        label357:
         boolean bool3;
-        label330:
+        label367:
         boolean bool4;
-        label341:
+        label378:
         boolean bool5;
-        label352:
+        label389:
         boolean bool6;
-        if (!com.tencent.matrix.trace.core.b.Ya().isInit)
+        if ((b.a(b.a(b.this))) && (!com.tencent.matrix.trace.core.b.azL().isInit))
         {
           com.tencent.matrix.trace.a.b localb1;
           try
           {
-            com.tencent.matrix.trace.core.b localb = com.tencent.matrix.trace.core.b.Ya();
+            com.tencent.matrix.trace.core.b localb = com.tencent.matrix.trace.core.b.azL();
             localb1 = b.a(b.this);
+            bool1 = b.ayB();
+            localb.fdU = localb1;
+            com.tencent.matrix.trace.core.b.feF = bool1;
             if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-              break label64;
+              break label92;
             }
             throw new AssertionError("must be init in main thread!");
           }
@@ -116,88 +131,110 @@ public class b
             com.tencent.matrix.e.c.e("Matrix.TracePlugin", "[start] RuntimeException:%s", new Object[] { localRuntimeException });
           }
           return;
-          localRuntimeException.deV = localb1;
-          localRuntimeException.choreographer = Choreographer.getInstance();
-          localRuntimeException.dfr = f.b(localRuntimeException.choreographer, "mLock", new Object());
-          localRuntimeException.dfs = ((Object[])f.b(localRuntimeException.choreographer, "mCallbackQueues", null));
-          if (localRuntimeException.dfs != null)
-          {
-            localRuntimeException.dfu = f.c(localRuntimeException.dfs[0], "addCallbackLocked", new Class[] { Long.TYPE, Object.class, Object.class });
-            localRuntimeException.dfv = f.c(localRuntimeException.dfs[1], "addCallbackLocked", new Class[] { Long.TYPE, Object.class, Object.class });
-            localRuntimeException.dft = f.c(localRuntimeException.dfs[2], "addCallbackLocked", new Class[] { Long.TYPE, Object.class, Object.class });
-          }
-          localRuntimeException.dfw = f.b(localRuntimeException.choreographer, "mDisplayEventReceiver", null);
-          localRuntimeException.cQd = ((Long)f.b(localRuntimeException.choreographer, "mFrameIntervalNanos", Long.valueOf(16666667L))).longValue();
-          com.tencent.matrix.trace.core.a.a(new com.tencent.matrix.trace.core.b.1(localRuntimeException));
+          com.tencent.matrix.trace.core.a.a(new com.tencent.matrix.trace.core.b.1(localRuntimeException, localb1.fdT, localb1.eLL));
           localRuntimeException.isInit = true;
-          if (localRuntimeException.dfr != null) {
-            break label572;
-          }
-          bool1 = true;
-          if (localRuntimeException.dfs != null) {
-            break label577;
-          }
-          bool2 = true;
-          if (localRuntimeException.dfu != null) {
-            break label582;
-          }
-          bool3 = true;
-          if (localRuntimeException.dft != null) {
-            break label587;
-          }
-          bool4 = true;
-          if (localRuntimeException.dfv != null) {
-            break label593;
-          }
-          bool5 = true;
-          if (localRuntimeException.dfw != null) {
-            break label599;
-          }
-          bool6 = true;
-          label363:
-          com.tencent.matrix.e.c.i("Matrix.UIThreadMonitor", "[UIThreadMonitor] %s %s %s %s %s %s frameIntervalNanos:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Long.valueOf(localRuntimeException.cQd) });
-          if (localb1.deR) {
-            localRuntimeException.a(new com.tencent.matrix.trace.core.b.2(localRuntimeException));
+          localRuntimeException.eLi = ((Long)com.tencent.matrix.e.f.c(localRuntimeException.choreographer, "mFrameIntervalNanos", Long.valueOf(16666667L))).longValue();
+          if (!com.tencent.matrix.trace.core.b.feF)
+          {
+            localRuntimeException.choreographer = Choreographer.getInstance();
+            localRuntimeException.feG = com.tencent.matrix.e.f.c(localRuntimeException.choreographer, "mLock", new Object());
+            localRuntimeException.feH = ((Object[])com.tencent.matrix.e.f.c(localRuntimeException.choreographer, "mCallbackQueues", null));
+            if (localRuntimeException.feH != null)
+            {
+              localRuntimeException.feJ = com.tencent.matrix.e.f.c(localRuntimeException.feH[0], "addCallbackLocked", new Class[] { Long.TYPE, Object.class, Object.class });
+              localRuntimeException.feK = com.tencent.matrix.e.f.c(localRuntimeException.feH[1], "addCallbackLocked", new Class[] { Long.TYPE, Object.class, Object.class });
+              localRuntimeException.feI = com.tencent.matrix.e.f.c(localRuntimeException.feH[2], "addCallbackLocked", new Class[] { Long.TYPE, Object.class, Object.class });
+            }
+            localRuntimeException.feL = com.tencent.matrix.e.f.c(localRuntimeException.choreographer, "mDisplayEventReceiver", null);
+            if (localRuntimeException.feG != null) {
+              break label788;
+            }
+            bool1 = true;
+            if (localRuntimeException.feH != null) {
+              break label793;
+            }
+            bool2 = true;
+            if (localRuntimeException.feJ != null) {
+              break label798;
+            }
+            bool3 = true;
+            if (localRuntimeException.feI != null) {
+              break label803;
+            }
+            bool4 = true;
+            if (localRuntimeException.feK != null) {
+              break label809;
+            }
+            bool5 = true;
+            if (localRuntimeException.feL != null) {
+              break label815;
+            }
+            bool6 = true;
+            label400:
+            com.tencent.matrix.e.c.i("Matrix.UIThreadMonitor", "[UIThreadMonitor] %s %s %s %s %s %s frameIntervalNanos:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Long.valueOf(localRuntimeException.eLi) });
+            if (localb1.fdK) {
+              localRuntimeException.a(new com.tencent.matrix.trace.core.b.2(localRuntimeException));
+            }
           }
         }
-        if (b.a(b.this).deP) {
+        if (b.a(b.this).azE()) {
           AppMethodBeat.getInstance().onStart();
         }
         for (;;)
         {
-          com.tencent.matrix.trace.core.b.Ya().onStart();
-          if (b.a(b.this).deQ) {
-            b.b(b.this).Yk();
+          com.tencent.matrix.trace.core.b.azL().onStart();
+          if (b.a(b.this).fdF) {
+            b.b(b.this).aAa();
           }
-          if (b.a(b.this).deM) {
-            b.c(b.this).Yk();
+          if (b.a(b.this).fdG)
+          {
+            b.a(b.this, new d(b.a(b.this)));
+            b.c(b.this).aAa();
           }
-          if (b.a(b.this).deN) {
-            b.d(b.this).Yk();
+          if (b.a(b.this).fdJ)
+          {
+            b.a(b.this, new TouchEventLagTracer(b.a(b.this)));
+            b.d(b.this).aAa();
           }
-          if (!b.a(b.this).deO) {
+          if ((b.a(b.this).fdL) && (!SignalAnrTracer.fgA))
+          {
+            b.a(b.this, new SignalAnrTracer(b.a(b.this)));
+            b.e(b.this).aAa();
+          }
+          if (b.a(b.this).fdN)
+          {
+            b.a(b.this, new ThreadPriorityTracer());
+            b.f(b.this).aAa();
+          }
+          if (b.a(b.this).fdB) {
+            b.g(b.this).aAa();
+          }
+          if (b.a(b.this).fdC) {
+            b.h(b.this).aAa();
+          }
+          if (!b.a(b.this).fdD) {
             break;
           }
-          b.e(b.this).Yk();
+          b.i(b.this).aAa();
           return;
-          label572:
+          label788:
           bool1 = false;
-          break label310;
-          label577:
+          break label347;
+          label793:
           bool2 = false;
-          break label320;
-          label582:
+          break label357;
+          label798:
           bool3 = false;
-          break label330;
-          label587:
+          break label367;
+          label803:
           bool4 = false;
-          break label341;
-          label593:
+          break label378;
+          label809:
           bool5 = false;
-          break label352;
-          label599:
+          break label389;
+          label815:
           bool6 = false;
-          break label363;
+          break label400;
           AppMethodBeat.getInstance().forceStop();
         }
       }
@@ -208,7 +245,7 @@ public class b
       return;
     }
     com.tencent.matrix.e.c.w("Matrix.TracePlugin", "start TracePlugin in Thread[%s] but not in mainThread!", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
-    com.tencent.matrix.e.b.Ys().post(local1);
+    com.tencent.matrix.e.b.aAn().post(local1);
   }
   
   public void stop()
@@ -225,11 +262,20 @@ public class b
       public final void run()
       {
         AppMethodBeat.getInstance().onStop();
-        com.tencent.matrix.trace.core.b.Ya().onStop();
-        b.b(b.this).Yl();
-        b.c(b.this).Yl();
-        b.d(b.this).Yl();
-        b.e(b.this).Yl();
+        com.tencent.matrix.trace.core.b.azL().onStop();
+        b.b(b.this).aAb();
+        b.g(b.this).aAb();
+        b.h(b.this).aAb();
+        b.i(b.this).aAb();
+        if (b.e(b.this) != null) {
+          b.e(b.this).aAb();
+        }
+        if (b.c(b.this) != null) {
+          b.c(b.this).aAb();
+        }
+        if (b.f(b.this) != null) {
+          b.f(b.this).aAb();
+        }
       }
     };
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
@@ -238,12 +284,12 @@ public class b
       return;
     }
     com.tencent.matrix.e.c.w("Matrix.TracePlugin", "stop TracePlugin in Thread[%s] but not in mainThread!", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
-    com.tencent.matrix.e.b.Ys().post(local2);
+    com.tencent.matrix.e.b.aAn().post(local2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.trace.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.text.InputFilter.AllCaps;
 import android.text.method.NumberKeyListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.numberpad.a;
 
@@ -15,7 +15,7 @@ public final class s
   extends r
   implements a
 {
-  private InputConnection rvQ;
+  private InputConnection uGW;
   
   public s(Context paramContext)
   {
@@ -30,7 +30,7 @@ public final class s
       
       public final int getInputType()
       {
-        if (s.this.rwX) {}
+        if (s.this.uIb) {}
         for (int i = 16;; i = 0) {
           return i | 0x2;
         }
@@ -39,17 +39,10 @@ public final class s
     AppMethodBeat.o(136461);
   }
   
-  public final void clearFocus()
-  {
-    AppMethodBeat.i(136462);
-    cph();
-    AppMethodBeat.o(136462);
-  }
-  
-  public final void coJ()
+  public final void cRl()
   {
     AppMethodBeat.i(136468);
-    if (!w.al(this))
+    if (!z.ay(this))
     {
       AppMethodBeat.o(136468);
       return;
@@ -61,19 +54,26 @@ public final class s
     AppMethodBeat.o(136468);
   }
   
-  public final InputConnection coM()
+  public final InputConnection cRo()
   {
     AppMethodBeat.i(136465);
     InputConnection localInputConnection = super.onCreateInputConnection(new EditorInfo());
-    this.rvQ = localInputConnection;
+    this.uGW = localInputConnection;
     AppMethodBeat.o(136465);
     return localInputConnection;
+  }
+  
+  public final void clearFocus()
+  {
+    AppMethodBeat.i(136462);
+    cRK();
+    AppMethodBeat.o(136462);
   }
   
   public final v getInputPanel()
   {
     AppMethodBeat.i(136467);
-    v localv = v.dt(this);
+    v localv = v.eh(this);
     AppMethodBeat.o(136467);
     return localv;
   }
@@ -113,7 +113,7 @@ public final class s
   public final void setPasswordMode(boolean paramBoolean)
   {
     AppMethodBeat.i(136466);
-    cpf();
+    cRI();
     int i = getInputType() | 0x2;
     if (paramBoolean) {
       i |= 0x10;
@@ -122,7 +122,7 @@ public final class s
     {
       setInputType(i);
       super.setPasswordMode(paramBoolean);
-      cpg();
+      cRJ();
       AppMethodBeat.o(136466);
       return;
       i &= 0xFFFFFFEF;
@@ -131,7 +131,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.s
  * JD-Core Version:    0.7.0.1
  */

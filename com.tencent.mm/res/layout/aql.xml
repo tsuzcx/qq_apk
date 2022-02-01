@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="64.0dip"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:layout_gravity="center_vertical" android:background="@color/BW_0_Alpha_0_1" android:layout_width="32.0dip" android:layout_height="1.0px" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/drq" />
-        <View android:layout_gravity="center_vertical" android:background="@color/BW_0_Alpha_0_1" android:layout_width="32.0dip" android:layout_height="1.0px" />
-    </LinearLayout>
-</FrameLayout>
+    <ImageView android:padding="@dimen/df" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/a4g" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k_2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/icons_filled_done2" android:contentDescription="@string/hux" />
+</merge>

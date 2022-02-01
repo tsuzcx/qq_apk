@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/k5" android:insetRight="@dimen/k5"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape>
-        <solid android:color="@color/x5" />
-    </shape>
-</inset>
+    <corners android:radius="@dimen/df" />
+    <solid android:color="@color/BW_0_Alpha_0_4" />
+</shape>

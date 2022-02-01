@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/un" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dqa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/dq9" android:layout_width="37.0dip" android:layout_height="37.0dip" android:layout_marginTop="12.0dip" android:scaleType="fitXY" />
-            <TextView android:textSize="15.0dip" android:textColor="@color/am" android:id="@id/dq_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" />
-            <TextView android:textSize="13.0dip" android:textColor="@color/BW_100_Alpha_0_6" android:id="@id/dqb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="" android:alpha="0.6" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/a7m" android:paddingTop="38.0dip" android:paddingBottom="38.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip">
-                <TextView android:textSize="13.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e03" />
-                <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="40.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/dqc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="" wallet:walletTypeFace="i48" />
-                <TextView android:textSize="13.0dip" android:textColor="@color/UN_BW_0_Alpha_0_5" android:id="@id/dqd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/e0t" />
-            </LinearLayout>
-        </LinearLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/bec" android:padding="@dimen/cd" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" />
+    <FrameLayout android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.fts.ui.widget.FTSVoiceInputLayoutImpl android:layout_gravity="center_horizontal" android:id="@id/egj" android:background="@color/al2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d6" />
     </FrameLayout>
-</ScrollView>
+</LinearLayout>

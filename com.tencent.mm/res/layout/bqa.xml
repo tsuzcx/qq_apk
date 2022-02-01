@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hku" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k5" android:text="@string/gkp" android:singleLine="false" />
-    <FrameLayout android:id="@id/by0" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <EditText android:id="@id/hkt" android:paddingRight="25.0dip" style="@style/nn" />
-        <TextView android:layout_gravity="bottom|center|right" android:id="@id/joi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" style="@style/zx" />
-    </FrameLayout>
-</LinearLayout>
+<RelativeLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.gif.MMAnimateView android:gravity="center" android:layout_gravity="center" android:id="@id/f3g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.ui.base.WxImageView android:gravity="center" android:id="@id/luf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:tileBackgroundColor="@color/az" />
+    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/h3a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:imageBackgroundColor="@color/az" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bqd" />
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/kkb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ProgressBar android:id="@id/i8f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a75" />
+</RelativeLayout>

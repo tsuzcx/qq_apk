@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public String GKB;
-  public boolean GKC;
-  public Pair<Long, Long> GKz;
+  public Pair<Long, Long> MHt;
+  public String MHv;
+  public boolean MHw;
   public long createTime;
   public int scene;
   public String talker;
   
   public c()
   {
-    AppMethodBeat.i(186593);
+    AppMethodBeat.i(266351);
     this.createTime = System.currentTimeMillis();
-    AppMethodBeat.o(186593);
+    AppMethodBeat.o(266351);
   }
 }
 

@@ -7,49 +7,49 @@ import com.tencent.luggage.a.e;
 import com.tencent.luggage.game.b.a.d.b;
 import com.tencent.luggage.game.b.a.d.c;
 import com.tencent.luggage.game.b.a.d.d;
-import com.tencent.luggage.sdk.b.a.c.d;
+import com.tencent.luggage.sdk.b.a.d.d;
 import com.tencent.magicbrush.MBRuntime;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appstorage.r;
-import com.tencent.mm.plugin.appbrand.m.i;
-import com.tencent.mm.plugin.appbrand.m.k;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.appstorage.w;
+import com.tencent.mm.plugin.appbrand.n.i;
+import com.tencent.mm.plugin.appbrand.n.k;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 public final class c
 {
-  public static final c csM;
-  private WeakReference<com.tencent.luggage.game.d.a.a.b> csA = null;
-  private final int csK = 2048;
-  private final int csL = 2048;
-  private boolean csz;
+  public static final c ekG;
+  private final int ekE = 2048;
+  private final int ekF = 2048;
+  private boolean ekt;
+  private WeakReference<com.tencent.luggage.game.d.a.a.b> eku = null;
   
   static
   {
     AppMethodBeat.i(130469);
-    csM = new c();
+    ekG = new c();
     AppMethodBeat.o(130469);
   }
   
   public final void a(MBRuntime paramMBRuntime, AppBrandRuntime paramAppBrandRuntime, boolean paramBoolean)
   {
     AppMethodBeat.i(130465);
-    this.csz = paramBoolean;
+    this.ekt = paramBoolean;
     Log.i("MicroMsg.MBImageHandlerRegistry", "dl: MBImageHandlerRegistry register ");
-    if ((paramBoolean) && (paramAppBrandRuntime != null) && ((paramAppBrandRuntime.QW() instanceof d))) {}
-    for (com.tencent.luggage.game.d.a.a.b localb = (com.tencent.luggage.game.d.a.a.b)((d)paramAppBrandRuntime.QW()).R(com.tencent.luggage.game.d.a.a.b.class);; localb = null)
+    if ((paramBoolean) && (paramAppBrandRuntime != null) && ((paramAppBrandRuntime.ari() instanceof d))) {}
+    for (com.tencent.luggage.game.d.a.a.b localb = (com.tencent.luggage.game.d.a.a.b)((d)paramAppBrandRuntime.ari()).aa(com.tencent.luggage.game.d.a.a.b.class);; localb = null)
     {
-      this.csA = new WeakReference(localb);
-      paramMBRuntime = paramMBRuntime.UN();
+      this.eku = new WeakReference(localb);
+      paramMBRuntime = paramMBRuntime.avq();
       paramAppBrandRuntime = new a(paramAppBrandRuntime, (byte)0);
       paramMBRuntime.addImageStreamFetcher(new com.tencent.luggage.game.b.a.a(paramAppBrandRuntime), true);
       paramMBRuntime.addImageStreamFetcher(new com.tencent.luggage.game.b.a.b(paramAppBrandRuntime), false);
       paramMBRuntime.addImageStreamFetcher(new com.tencent.luggage.game.b.a.c(paramAppBrandRuntime), false);
       paramMBRuntime.setKvReportDelegate(new b());
       paramAppBrandRuntime = new com.tencent.magicbrush.b.a();
-      paramAppBrandRuntime.bc(2048, 2048);
+      paramAppBrandRuntime.bX(2048, 2048);
       paramMBRuntime.setBitmapDecodeSlave(paramAppBrandRuntime);
       AppMethodBeat.o(130465);
       return;
@@ -59,108 +59,66 @@ public final class c
   static final class a
     implements d.b, d.c, d.d
   {
-    private final WeakReference<AppBrandRuntime> csN;
+    private final WeakReference<AppBrandRuntime> ekH;
     
     private a(AppBrandRuntime paramAppBrandRuntime)
     {
-      AppMethodBeat.i(246905);
-      this.csN = new WeakReference(paramAppBrandRuntime);
-      AppMethodBeat.o(246905);
+      AppMethodBeat.i(220124);
+      this.ekH = new WeakReference(paramAppBrandRuntime);
+      AppMethodBeat.o(220124);
     }
     
-    private int OK()
-    {
-      AppMethodBeat.i(246913);
-      Object localObject = (AppBrandRuntime)this.csN.get();
-      if (localObject == null)
-      {
-        AppMethodBeat.o(246913);
-        return 0;
-      }
-      localObject = (com.tencent.mm.plugin.appbrand.s.a)((AppBrandRuntime)localObject).au(com.tencent.mm.plugin.appbrand.s.a.class);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(246913);
-        return 0;
-      }
-      int i = ((com.tencent.mm.plugin.appbrand.s.a)localObject).qiq;
-      AppMethodBeat.o(246913);
-      return i;
-    }
-    
-    private static ImageDecodeConfig.ReferrerPolicy a(com.tencent.mm.plugin.appbrand.jsapi.v.c paramc)
+    private static ImageDecodeConfig.ReferrerPolicy a(com.tencent.mm.plugin.appbrand.jsapi.y.c paramc)
     {
       if (paramc == null) {
         return ImageDecodeConfig.ReferrerPolicy.NOT_SET;
       }
-      if (paramc == com.tencent.mm.plugin.appbrand.jsapi.v.c.pmz) {
+      if (paramc == com.tencent.mm.plugin.appbrand.jsapi.y.c.srt) {
         return ImageDecodeConfig.ReferrerPolicy.NO_REFERRER;
       }
-      if (paramc == com.tencent.mm.plugin.appbrand.jsapi.v.c.pmy) {
+      if (paramc == com.tencent.mm.plugin.appbrand.jsapi.y.c.srs) {
         return ImageDecodeConfig.ReferrerPolicy.ORIGIN;
       }
       return ImageDecodeConfig.ReferrerPolicy.NOT_SET;
     }
     
-    public final String OI()
+    private int aoS()
     {
-      AppMethodBeat.i(246907);
-      if (this.csN.get() != null)
+      AppMethodBeat.i(220127);
+      Object localObject = (AppBrandRuntime)this.ekH.get();
+      if (localObject == null)
       {
-        String str = ((AppBrandRuntime)this.csN.get()).mAppId;
-        AppMethodBeat.o(246907);
-        return str;
+        AppMethodBeat.o(220127);
+        return 0;
       }
-      AppMethodBeat.o(246907);
-      return "";
-    }
-    
-    public final int OJ()
-    {
-      AppMethodBeat.i(246911);
-      int i = OK();
-      AppMethodBeat.o(246911);
-      return i;
-    }
-    
-    public final int OL()
-    {
-      AppMethodBeat.i(246914);
-      int i = OK();
-      AppMethodBeat.o(246914);
-      return i;
-    }
-    
-    public final k OM()
-    {
-      AppMethodBeat.i(246921);
-      if (this.csN.get() != null)
+      localObject = (com.tencent.mm.plugin.appbrand.t.a)((AppBrandRuntime)localObject).aN(com.tencent.mm.plugin.appbrand.t.a.class);
+      if (localObject == null)
       {
-        k localk = (k)((AppBrandRuntime)this.csN.get()).QW().getJsRuntime().Q(k.class);
-        AppMethodBeat.o(246921);
-        return localk;
+        AppMethodBeat.o(220127);
+        return 0;
       }
-      AppMethodBeat.o(246921);
-      return null;
+      int i = ((com.tencent.mm.plugin.appbrand.t.a)localObject).tnc;
+      AppMethodBeat.o(220127);
+      return i;
     }
     
     public final String a(ImageDecodeConfig.ReferrerPolicy paramReferrerPolicy)
     {
-      AppMethodBeat.i(246918);
-      AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)this.csN.get();
-      com.tencent.mm.plugin.appbrand.jsapi.v.a locala;
+      AppMethodBeat.i(220140);
+      AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)this.ekH.get();
+      com.tencent.mm.plugin.appbrand.jsapi.y.a locala;
       if (localAppBrandRuntime != null)
       {
-        locala = (com.tencent.mm.plugin.appbrand.jsapi.v.a)e.K(com.tencent.mm.plugin.appbrand.jsapi.v.a.class);
+        locala = (com.tencent.mm.plugin.appbrand.jsapi.y.a)e.T(com.tencent.mm.plugin.appbrand.jsapi.y.a.class);
         if (locala != null)
         {
           ImageDecodeConfig.ReferrerPolicy localReferrerPolicy = paramReferrerPolicy;
           if (paramReferrerPolicy == ImageDecodeConfig.ReferrerPolicy.NOT_SET) {
-            localReferrerPolicy = a(locala.A(localAppBrandRuntime.QW()));
+            localReferrerPolicy = a(locala.C(localAppBrandRuntime.ari()));
           }
           paramReferrerPolicy = localReferrerPolicy;
           if (localReferrerPolicy == ImageDecodeConfig.ReferrerPolicy.NOT_SET) {
-            paramReferrerPolicy = a(locala.bUd());
+            paramReferrerPolicy = a(locala.cuq());
           }
           if (paramReferrerPolicy != ImageDecodeConfig.ReferrerPolicy.ORIGIN) {
             break label112;
@@ -168,44 +126,86 @@ public final class c
         }
       }
       label112:
-      for (paramReferrerPolicy = locala.B(localAppBrandRuntime.QW());; paramReferrerPolicy = null)
+      for (paramReferrerPolicy = locala.D(localAppBrandRuntime.ari());; paramReferrerPolicy = null)
       {
-        AppMethodBeat.o(246918);
+        AppMethodBeat.o(220140);
         return paramReferrerPolicy;
         Log.w("MicroMsg.ImageFetcherConfigImp", "referrer helper is null");
       }
     }
     
-    public final r getFileSystem()
+    public final String aoQ()
     {
-      AppMethodBeat.i(246910);
-      if (this.csN.get() != null)
+      AppMethodBeat.i(220133);
+      if (this.ekH.get() != null)
       {
-        r localr = ((AppBrandRuntime)this.csN.get()).getFileSystem();
-        AppMethodBeat.o(246910);
-        return localr;
+        String str = ((AppBrandRuntime)this.ekH.get()).mAppId;
+        AppMethodBeat.o(220133);
+        return str;
       }
-      AppMethodBeat.o(246910);
+      AppMethodBeat.o(220133);
+      return "";
+    }
+    
+    public final int aoR()
+    {
+      AppMethodBeat.i(220135);
+      int i = aoS();
+      AppMethodBeat.o(220135);
+      return i;
+    }
+    
+    public final int aoT()
+    {
+      AppMethodBeat.i(220136);
+      int i = aoS();
+      AppMethodBeat.o(220136);
+      return i;
+    }
+    
+    public final k aoU()
+    {
+      AppMethodBeat.i(220142);
+      if (this.ekH.get() != null)
+      {
+        k localk = (k)((AppBrandRuntime)this.ekH.get()).ari().getJsRuntime().Z(k.class);
+        AppMethodBeat.o(220142);
+        return localk;
+      }
+      AppMethodBeat.o(220142);
+      return null;
+    }
+    
+    public final w getFileSystem()
+    {
+      AppMethodBeat.i(220134);
+      if (this.ekH.get() != null)
+      {
+        w localw = ((AppBrandRuntime)this.ekH.get()).getFileSystem();
+        AppMethodBeat.o(220134);
+        return localw;
+      }
+      AppMethodBeat.o(220134);
       return null;
     }
     
     public final String getUserAgentString()
     {
-      AppMethodBeat.i(246915);
-      Object localObject = (AppBrandRuntime)this.csN.get();
+      AppMethodBeat.i(220138);
+      Object localObject = (AppBrandRuntime)this.ekH.get();
       if (localObject == null)
       {
-        AppMethodBeat.o(246915);
+        AppMethodBeat.o(220138);
         return "";
       }
-      localObject = (com.tencent.mm.plugin.appbrand.s.a)((AppBrandRuntime)localObject).au(com.tencent.mm.plugin.appbrand.s.a.class);
+      localObject = (com.tencent.mm.plugin.appbrand.t.a)((AppBrandRuntime)localObject).aN(com.tencent.mm.plugin.appbrand.t.a.class);
       if (localObject == null)
       {
-        AppMethodBeat.o(246915);
+        AppMethodBeat.o(220138);
         return "";
       }
-      localObject = ((com.tencent.mm.plugin.appbrand.s.a)localObject).qiv;
-      AppMethodBeat.o(246915);
+      localObject = ((com.tencent.mm.plugin.appbrand.t.a)localObject).tnh;
+      AppMethodBeat.o(220138);
       return localObject;
     }
   }
@@ -213,12 +213,12 @@ public final class c
   public static final class b
     implements com.github.henryye.nativeiv.a.c.b
   {
-    private int csO = 14883;
+    private int ekI = 14883;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.b.c
  * JD-Core Version:    0.7.0.1
  */

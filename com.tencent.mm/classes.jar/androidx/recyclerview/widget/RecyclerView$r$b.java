@@ -4,7 +4,7 @@ import android.graphics.PointF;
 
 public abstract interface RecyclerView$r$b
 {
-  public abstract PointF cB(int paramInt);
+  public abstract PointF fM(int paramInt);
 }
 
 

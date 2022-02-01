@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.anu;
+import com.tencent.mm.protocal.protobuf.arn;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c$a
 {
-  public anu PTL;
+  public arn WKx;
   public String appid;
   public String desc;
-  public String fUk;
+  public String iah;
   public String thumbUrl;
   public String title;
   public String url;
   
-  public final boolean fCF()
+  public final boolean boj()
   {
     AppMethodBeat.i(78836);
     if (!Util.isNullOrNil(this.url))

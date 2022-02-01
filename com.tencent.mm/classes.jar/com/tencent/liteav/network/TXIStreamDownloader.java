@@ -20,7 +20,8 @@ public abstract class TXIStreamDownloader
   protected String mFlvSessionKey = "";
   protected Map<String, String> mHeaders;
   protected boolean mIsRunning = false;
-  protected f mListener = null;
+  protected h mListener = null;
+  protected g mMessageNotifyListener = null;
   protected b mNotifyListener = null;
   protected String mOriginUrl = "";
   protected a mRestartListener = null;
@@ -112,21 +113,15 @@ public abstract class TXIStreamDownloader
   
   public void onRecvMetaData(HashMap<String, String> paramHashMap)
   {
-    if ((paramHashMap != null) && (paramHashMap.size() > 0) && (this.mNotifyListener != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putSerializable("EVT_GET_METADATA", paramHashMap);
-      this.mNotifyListener.onNotifyEvent(2028, localBundle);
+    if ((paramHashMap != null) && (paramHashMap.size() > 0) && (this.mMessageNotifyListener != null)) {
+      this.mMessageNotifyListener.onMetaDataMessage(paramHashMap);
     }
   }
   
   public void onRecvSEIData(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (this.mNotifyListener != null))
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putByteArray("EVT_GET_MSG", paramArrayOfByte);
-      this.mNotifyListener.onNotifyEvent(2012, localBundle);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (this.mMessageNotifyListener != null)) {
+      this.mMessageNotifyListener.onSEIMessage(paramArrayOfByte);
     }
   }
   
@@ -173,9 +168,14 @@ public abstract class TXIStreamDownloader
     this.mHeaders = paramMap;
   }
   
-  public void setListener(f paramf)
+  public void setListener(h paramh)
   {
-    this.mListener = paramf;
+    this.mListener = paramh;
+  }
+  
+  public void setMessageNotifyListener(g paramg)
+  {
+    this.mMessageNotifyListener = paramg;
   }
   
   public void setNotifyListener(b paramb)
@@ -198,7 +198,9 @@ public abstract class TXIStreamDownloader
     this.mUserID = paramString;
   }
   
-  public abstract void startDownload(Vector<e> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  public abstract void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  
+  public abstract void startDownload(Vector<f> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, e parame);
   
   public abstract void stopDownload();
   
@@ -211,7 +213,7 @@ public abstract class TXIStreamDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.TXIStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

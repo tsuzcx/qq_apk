@@ -22,7 +22,7 @@ public final class i
   public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121330);
-    parama = parama.aGj();
+    parama = parama.aZk();
     b localb = new b();
     localb.id = parama.getString("__page_view_id", "");
     localb.url = paramJSONObject.optString("url", "");
@@ -40,7 +40,7 @@ public final class i
     String id;
     String url;
     
-    public final void e(Parcel paramParcel)
+    public final void g(Parcel paramParcel)
     {
       AppMethodBeat.i(121328);
       paramParcel.writeString(this.id);
@@ -59,7 +59,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.i
  * JD-Core Version:    0.7.0.1
  */

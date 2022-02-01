@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.masssend.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
@@ -14,7 +14,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.report.service.h;
@@ -29,7 +29,7 @@ import com.tencent.mm.ui.contact.q;
 import com.tencent.mm.ui.contact.r;
 import com.tencent.mm.ui.contact.u;
 import com.tencent.mm.ui.contact.w;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,69 +37,69 @@ import java.util.List;
 public class MassSendSelectContactUI
   extends MMBaseSelectContactUI
 {
-  private Button ETM;
-  private List<String> ETN;
-  private boolean ETO;
-  private MultiSelectContactView ETP;
-  private List<String> jkb;
+  private Button KOq;
+  private List<String> KOr;
+  private boolean KOs;
+  private MultiSelectContactView KOt;
+  private List<String> lMF;
   
-  private void Wx(int paramInt)
+  private void aat(int paramInt)
   {
     AppMethodBeat.i(26503);
     if (paramInt > 0)
     {
-      updateOptionMenuText(1, getString(R.l.dMl) + "(" + this.ETN.size() + ")");
+      updateOptionMenuText(1, getString(R.l.fNU) + "(" + this.KOr.size() + ")");
       enableOptionMenu(1, true);
       AppMethodBeat.o(26503);
       return;
     }
-    updateOptionMenuText(1, getString(R.l.dMl));
+    updateOptionMenuText(1, getString(R.l.fNU));
     enableOptionMenu(1, false);
     AppMethodBeat.o(26503);
   }
   
-  public final void N(View paramView, int paramInt)
+  public final void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(274346);
-    paramView = hUP();
-    Object localObject = paramView.awM(paramInt - getContentLV().getHeaderViewsCount());
-    if (localObject == null)
+    AppMethodBeat.i(272795);
+    paramAdapterView = jyE();
+    paramView = paramAdapterView.aDt(paramInt - getContentLV().getHeaderViewsCount());
+    if (paramView == null)
     {
-      AppMethodBeat.o(274346);
+      AppMethodBeat.o(272795);
       return;
     }
-    if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
+    if (paramView.contact == null)
     {
-      AppMethodBeat.o(274346);
+      AppMethodBeat.o(272795);
       return;
     }
-    Log.i("MicroMsg.MassSendSelectContactUI", "ClickUser=%s", new Object[] { ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username });
-    localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
-    hUZ();
-    if (this.ETN.contains(localObject))
+    Log.i("MicroMsg.MassSendSelectContactUI", "ClickUser=%s", new Object[] { paramView.contact.field_username });
+    paramView = paramView.contact.field_username;
+    iKA();
+    if (this.KOr.contains(paramView))
     {
-      this.ETN.remove(localObject);
-      this.ETP.bqR((String)localObject);
+      this.KOr.remove(paramView);
+      this.KOt.bqG(paramView);
     }
     for (;;)
     {
-      Wx(this.ETN.size());
-      paramView.notifyDataSetChanged();
-      hUZ();
-      hVa();
-      AppMethodBeat.o(274346);
+      aat(this.KOr.size());
+      paramAdapterView.notifyDataSetChanged();
+      iKA();
+      jyN();
+      AppMethodBeat.o(272795);
       return;
-      this.ETN.add(localObject);
-      this.ETP.bqR((String)localObject);
+      this.KOr.add(paramView);
+      this.KOt.bqG(paramView);
     }
   }
   
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(26510);
-    if ((parama.XsX) && (parama.contact != null))
+    if ((parama.afey) && (parama.contact != null))
     {
-      boolean bool = this.ETN.contains(parama.contact.field_username);
+      boolean bool = this.KOr.contains(parama.contact.field_username);
       AppMethodBeat.o(26510);
       return bool;
     }
@@ -107,80 +107,80 @@ public class MassSendSelectContactUI
     return false;
   }
   
-  public final void aOd(String paramString)
+  public final void aLa(String paramString)
   {
     AppMethodBeat.i(26504);
-    h.IzE.a(11225, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
+    h.OAn.b(11225, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
     Intent localIntent = new Intent();
     localIntent.putExtra("label", paramString);
-    localIntent.putExtra("always_select_contact", Util.listToString(new ArrayList(this.ETN), ","));
-    localIntent.putExtra("list_attr", w.P(new int[] { 16384, 64 }));
-    com.tencent.mm.by.c.d(this, ".ui.contact.SelectLabelContactUI", localIntent, 0);
+    localIntent.putExtra("always_select_contact", Util.listToString(new ArrayList(this.KOr), ","));
+    localIntent.putExtra("list_attr", w.R(new int[] { 16384, 64 }));
+    com.tencent.mm.br.c.d(this, ".ui.contact.SelectLabelContactUI", localIntent, 0);
     AppMethodBeat.o(26504);
   }
   
-  public final void ata()
+  public final void aNi()
   {
     AppMethodBeat.i(26501);
-    super.ata();
-    this.jkb = new ArrayList();
-    this.jkb.addAll(w.hVh());
-    this.jkb.addAll(w.hVi());
-    this.jkb.add(z.bcZ());
-    this.ETN = new LinkedList();
+    super.aNi();
+    this.lMF = new ArrayList();
+    this.lMF.addAll(w.jyV());
+    this.lMF.addAll(w.jyW());
+    this.lMF.add(z.bAM());
+    this.KOr = new LinkedList();
     AppMethodBeat.o(26501);
   }
   
-  public final boolean bwH()
-  {
-    return false;
-  }
-  
-  public final boolean bwI()
-  {
-    return true;
-  }
-  
-  public final String bwJ()
-  {
-    AppMethodBeat.i(26507);
-    String str = getString(R.l.eLF);
-    AppMethodBeat.o(26507);
-    return str;
-  }
-  
-  public final r bwK()
+  public final r bVA()
   {
     AppMethodBeat.i(26508);
     Object localObject = new c.a();
-    ((c.a)localObject).Xqx = true;
-    ((c.a)localObject).XoS = "@all.contact.without.chatroom.without.openim.without.openimfavour";
-    localObject = new com.tencent.mm.ui.contact.c(this, this.jkb, true, (c.a)localObject, (byte)0);
+    ((c.a)localObject).afbY = true;
+    ((c.a)localObject).afau = "@all.contact.without.chatroom.without.openim.without.openimfavour";
+    localObject = new com.tencent.mm.ui.contact.c(this, this.lMF, true, (c.a)localObject, (byte)0);
     AppMethodBeat.o(26508);
     return localObject;
   }
   
-  public final p bwL()
+  public final p bVB()
   {
     AppMethodBeat.i(26509);
-    u localu = new u(this, this.jkb, true, this.scene);
+    u localu = new u(this, this.lMF, true, this.scene);
     AppMethodBeat.o(26509);
     return localu;
   }
   
-  public final int[] dvA()
+  public final boolean bVx()
+  {
+    return false;
+  }
+  
+  public final boolean bVy()
+  {
+    return true;
+  }
+  
+  public final String bVz()
+  {
+    AppMethodBeat.i(26507);
+    String str = getString(R.l.gNz);
+    AppMethodBeat.o(26507);
+    return str;
+  }
+  
+  public final int[] efu()
   {
     return new int[] { 131072 };
   }
   
-  public final boolean eRT()
+  public final boolean gaC()
   {
     return true;
   }
   
   public int getLayoutId()
   {
-    return R.i.eiB;
+    return R.i.glA;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -215,14 +215,14 @@ public class MassSendSelectContactUI
       while (paramInt1 < paramInt2)
       {
         Object localObject = paramIntent[paramInt1];
-        if (this.ETN.add(localObject)) {
-          this.ETP.bqR(localObject);
+        if (this.KOr.add(localObject)) {
+          this.KOt.bqG(localObject);
         }
         paramInt1 += 1;
       }
-      Wx(this.ETN.size());
-      hUP().notifyDataSetChanged();
-      hVb();
+      aat(this.KOr.size());
+      jyE().notifyDataSetChanged();
+      jyO();
     }
   }
   
@@ -231,15 +231,15 @@ public class MassSendSelectContactUI
     AppMethodBeat.i(26502);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.MassSendSelectContactUI", "create!");
-    this.ETP = this.ETP;
-    if (this.ETP == null)
+    this.KOt = this.KOt;
+    if (this.KOt == null)
     {
       finish();
       AppMethodBeat.o(26502);
       return;
     }
-    this.ETP.setBackgroundDrawable(null);
-    addTextOptionMenu(1, getString(R.l.dMl), new MenuItem.OnMenuItemClickListener()
+    this.KOt.setBackgroundDrawable(null);
+    addTextOptionMenu(1, getString(R.l.fNU), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -252,44 +252,44 @@ public class MassSendSelectContactUI
           AppMethodBeat.o(26498);
           return false;
         }
-        paramAnonymousMenuItem.remove(z.bcZ());
+        paramAnonymousMenuItem.remove(z.bAM());
         Object localObject = Util.listToString(paramAnonymousMenuItem, ";");
         paramAnonymousMenuItem = new Intent(MassSendSelectContactUI.this, MassSendMsgUI.class);
         paramAnonymousMenuItem.putExtra("mass_send_contact_list", (String)localObject);
         localObject = MassSendSelectContactUI.this;
-        paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMenuItem);
-        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousMenuItem.aFh(), "com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((MassSendSelectContactUI)localObject).startActivity((Intent)paramAnonymousMenuItem.sf(0));
+        paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().cG(paramAnonymousMenuItem);
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousMenuItem.aYi(), "com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MassSendSelectContactUI)localObject).startActivity((Intent)paramAnonymousMenuItem.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(26498);
         return true;
       }
-    }, null, w.b.Wao);
-    this.ETM = ((Button)findViewById(R.h.dTy));
-    this.ETM.setOnClickListener(new View.OnClickListener()
+    }, null, y.b.adEJ);
+    this.KOq = ((Button)findViewById(R.h.fVF));
+    this.KOq.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(26499);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         Log.i("MicroMsg.MassSendSelectContactUI", "Click SelectAll");
         paramAnonymousView = (q)((HeaderViewListAdapter)MassSendSelectContactUI.this.getContentLV().getAdapter()).getWrappedAdapter();
         if (!MassSendSelectContactUI.b(MassSendSelectContactUI.this))
         {
-          MassSendSelectContactUI.c(MassSendSelectContactUI.this).setText(R.l.eLx);
+          MassSendSelectContactUI.c(MassSendSelectContactUI.this).setText(R.l.gNr);
           int j = paramAnonymousView.getCount();
           int i = 0;
           while (i < j)
           {
-            localObject = paramAnonymousView.awM(i);
+            localObject = paramAnonymousView.aDt(i);
             if ((localObject != null) && (((com.tencent.mm.ui.contact.a.a)localObject).contact != null)) {
               MassSendSelectContactUI.a(MassSendSelectContactUI.this).add(((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username);
             }
             i += 1;
           }
-          MassSendSelectContactUI.d(MassSendSelectContactUI.this).jk(MassSendSelectContactUI.a(MassSendSelectContactUI.this));
+          MassSendSelectContactUI.d(MassSendSelectContactUI.this).mv(MassSendSelectContactUI.a(MassSendSelectContactUI.this));
           localObject = MassSendSelectContactUI.this;
           if (MassSendSelectContactUI.b(MassSendSelectContactUI.this)) {
             break label279;
@@ -304,16 +304,16 @@ public class MassSendSelectContactUI
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(26499);
           return;
-          MassSendSelectContactUI.c(MassSendSelectContactUI.this).setText(R.l.eLE);
-          MassSendSelectContactUI.d(MassSendSelectContactUI.this).jk(new LinkedList());
+          MassSendSelectContactUI.c(MassSendSelectContactUI.this).setText(R.l.gNy);
+          MassSendSelectContactUI.d(MassSendSelectContactUI.this).mv(new LinkedList());
           MassSendSelectContactUI.a(MassSendSelectContactUI.this).clear();
           break;
         }
       }
     });
-    this.ETP.setOnContactDeselectListener(new MultiSelectContactView.c()
+    this.KOt.setOnContactDeselectListener(new MultiSelectContactView.c()
     {
-      public final void V(int paramAnonymousInt, String paramAnonymousString)
+      public final void ad(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(26500);
         if ((paramAnonymousInt == 1) && (paramAnonymousString != null))
@@ -324,7 +324,7 @@ public class MassSendSelectContactUI
         AppMethodBeat.o(26500);
       }
     });
-    Wx(this.ETN.size());
+    aat(this.KOr.size());
     AppMethodBeat.o(26502);
   }
   

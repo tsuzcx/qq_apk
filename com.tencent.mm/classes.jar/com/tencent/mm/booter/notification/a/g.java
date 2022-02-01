@@ -5,39 +5,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b iSR;
-  public c iSS;
-  public d iST;
-  public h iSU;
-  private f iSV;
-  public a iSW;
-  public int iSX;
-  public int iSY;
-  public int iSZ;
-  public int iTa;
-  public boolean iTb;
-  private int iTc;
-  private int iTd;
-  public boolean iTe;
-  public boolean iTf;
+  public b luP;
+  public c luQ;
+  public d luR;
+  public h luS;
+  private f luT;
+  public a luU;
+  public int luV;
+  public int luW;
+  public int luX;
+  public int luY;
+  public boolean luZ;
+  private int lva;
+  private int lvb;
+  public boolean lvc;
+  public boolean lvd;
   public Context mContext;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(20067);
-    this.iTc = -1;
-    this.iTd = -1;
+    this.lva = -1;
+    this.lvb = -1;
     this.mContext = paramContext;
-    this.iSR = new b();
-    this.iSS = new c();
-    this.iST = new d();
-    this.iSU = new h();
-    this.iSW = new a();
-    this.iSV = f.a.ars();
+    this.luP = new b();
+    this.luQ = new c();
+    this.luR = new d();
+    this.luS = new h();
+    this.luU = new a();
+    this.luT = f.a.aLo();
     AppMethodBeat.o(20067);
   }
   
-  public static String a(long[] paramArrayOfLong)
+  public static String c(long[] paramArrayOfLong)
   {
     AppMethodBeat.i(20069);
     if (paramArrayOfLong == null)
@@ -64,38 +64,38 @@ public final class g
     return paramArrayOfLong;
   }
   
-  public final void JW(String paramString)
+  public final int aLp()
   {
-    AppMethodBeat.i(20068);
-    this.iSV.JV(paramString);
-    AppMethodBeat.o(20068);
-  }
-  
-  public final int art()
-  {
-    AppMethodBeat.i(287280);
-    if (this.iSY == -1) {
-      this.iSY = com.tencent.mm.n.g.awY();
+    AppMethodBeat.i(238927);
+    if (this.luW == -1) {
+      this.luW = com.tencent.mm.k.h.aRy();
     }
-    int i = this.iSY;
-    AppMethodBeat.o(287280);
+    int i = this.luW;
+    AppMethodBeat.o(238927);
     return i;
   }
   
-  public final int aru()
+  public final int aLq()
   {
-    AppMethodBeat.i(287281);
-    if (this.iSZ == -1) {
-      this.iSZ = com.tencent.mm.n.g.awZ();
+    AppMethodBeat.i(238928);
+    if (this.luX == -1) {
+      this.luX = com.tencent.mm.k.h.aRz();
     }
-    int i = this.iSZ;
-    AppMethodBeat.o(287281);
+    int i = this.luX;
+    AppMethodBeat.o(238928);
     return i;
+  }
+  
+  public final void t(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(238929);
+    this.luT.s(paramString, paramBoolean);
+    AppMethodBeat.o(238929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.webkit.ConsoleMessage;
 import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.as;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.o;
-import com.tencent.xweb.x;
+import com.tencent.xweb.q;
+import com.tencent.xweb.z;
 
 public final class b
-  extends x
+  extends z
 {
   public final void a(WebView paramWebView, int paramInt) {}
   
@@ -27,11 +27,11 @@ public final class b
     return bool;
   }
   
-  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
+  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, q paramq)
   {
     AppMethodBeat.i(126550);
     Log.i("MicroMsg.TopStory.TopStoryWebChromeClient", "onJsPrompt %s %s", new Object[] { paramString1, paramString2 });
-    boolean bool = super.a(paramWebView, paramString1, paramString2, paramString3, paramo);
+    boolean bool = super.a(paramWebView, paramString1, paramString2, paramString3, paramq);
     AppMethodBeat.o(126550);
     return bool;
   }
@@ -51,11 +51,11 @@ public final class b
     Log.i("MicroMsg.TopStory.TopStoryWebChromeClient", "onConsoleMessage %d %s %s %s", new Object[] { Integer.valueOf(paramConsoleMessage.lineNumber()), paramConsoleMessage.messageLevel().name(), paramConsoleMessage.message(), paramConsoleMessage.sourceId() });
     if ((paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR) && (!Util.isNullOrNil(paramConsoleMessage.message())))
     {
-      f.Iyx.a(19153, new Object[] { Integer.valueOf(ai.anh(1)), paramConsoleMessage.messageLevel(), Integer.valueOf(1) });
+      f.Ozc.b(19153, new Object[] { Integer.valueOf(aj.asY(1)), paramConsoleMessage.messageLevel(), Integer.valueOf(1) });
       if (!paramConsoleMessage.message().contains("SyntaxError")) {
         break label137;
       }
-      ar.anp(22);
+      as.atf(22);
     }
     for (;;)
     {
@@ -64,14 +64,14 @@ public final class b
       return bool;
       label137:
       if (paramConsoleMessage.message().contains("Maximum call stack size exceeded")) {
-        ar.anp(33);
+        as.atf(33);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.c.b
  * JD-Core Version:    0.7.0.1
  */

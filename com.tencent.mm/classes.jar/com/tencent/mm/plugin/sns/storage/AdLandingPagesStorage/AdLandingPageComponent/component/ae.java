@@ -2,408 +2,142 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.wh;
-import com.tencent.mm.f.a.wh.a;
-import com.tencent.mm.plugin.sns.ad.landingpage.a.a;
-import com.tencent.mm.plugin.sns.data.j;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy.e;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.protocal.protobuf.cbd;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b.h.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.n;
+import com.tencent.mm.plugin.sns.ui.SnsAdProxyUI;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.s;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import java.io.Serializable;
+import org.json.JSONObject;
 
 public final class ae
-  extends q
+  extends r
+  implements Serializable
 {
-  j Kqk;
-  ac KsQ;
-  String KsR = "";
-  String KsS = "";
-  String KsT = "";
-  volatile int KsU = -10;
-  IListener<wh> KsV;
-  s qVG = null;
+  protected AdLandingPagesProxy.e QQp;
+  protected n QRe;
+  protected String QRf;
+  protected w lKp;
+  protected String luk;
   
-  public ae(Context paramContext, ac paramac, ViewGroup paramViewGroup)
+  public ae(Context paramContext, n paramn, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramac, paramViewGroup);
-    this.KsQ = paramac;
-  }
-  
-  private void fRz()
-  {
-    AppMethodBeat.i(231703);
-    Bundle localBundle;
-    ac localac;
-    String str;
-    if (this.Kqk == null)
+    super(paramContext, paramn, paramViewGroup);
+    AppMethodBeat.i(306914);
+    this.QQp = new AdLandingPagesProxy.e()
     {
-      localBundle = new Bundle();
-      localac = this.KsQ;
-      if (localac == null) {
-        break label89;
-      }
-      str = localac.Kmh;
-      localBundle.putString("qrExtInfo", str);
-      if (localac == null) {
-        break label95;
-      }
-    }
-    label89:
-    label95:
-    for (int i = localac.KmU;; i = 0)
-    {
-      localBundle.putInt("qrIsDirectJump", i);
-      this.Kqk = new j(this.context, fRp(), 3, localBundle);
-      AppMethodBeat.o(231703);
-      return;
-      str = "";
-      break;
-    }
-  }
-  
-  protected final void R(int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(231702);
-    wh localwh = new wh();
-    localwh.fVv.fVw = this.KqB.KmB;
-    localwh.fVv.fVx = paramString1;
-    localwh.fVv.fVy = paramString2;
-    localwh.fVv.fVz = paramInt;
-    EventCenter.instance.publish(localwh);
-    AppMethodBeat.o(231702);
-  }
-  
-  protected final void fKd()
-  {
-    AppMethodBeat.i(231697);
-    fRz();
-    try
-    {
-      if ((this.qVG == null) && ((this.context instanceof Activity)) && (!((Activity)this.context).isFinishing())) {
-        this.qVG = a.aH(this.context, i.j.sns_ad_loading);
-      }
-      if ((this.qVG != null) && (!this.qVG.isShowing())) {
-        this.qVG.show();
-      }
-      if (this.KsQ.KmT == 1)
+      public final void h(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
       {
-        if ((this.KsU == 3) && (!TextUtils.isEmpty(this.KsT)))
+        AppMethodBeat.i(307070);
+        Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onCallback, errType=" + paramAnonymousInt1 + ", errNo=" + paramAnonymousInt2);
+        if (((ae.this.context instanceof Activity)) && (((Activity)ae.this.context).isFinishing()))
         {
-          this.KqQ.kQ("qrUrl", this.KsS);
-          this.KqQ.br("qrScanDirectJump", this.KsQ.KmU);
-          if (this.KsQ.KmU == 1)
+          Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onCallback, isFinishing return");
+          AppMethodBeat.o(307070);
+          return;
+        }
+        MMHandlerThread.postToMainThread(new ae.2(ae.this));
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (!(paramAnonymousObject instanceof byte[])))
+        {
+          MMHandlerThread.postToMainThread(new Runnable()
           {
-            this.Kqk.b(this.KsT, this.KsS, this.qVG);
-            AppMethodBeat.o(231697);
+            public final void run()
+            {
+              AppMethodBeat.i(307290);
+              aa.makeText(ae.this.context, b.j.sns_ad_open_service_chat_failed, 0).show();
+              AppMethodBeat.o(307290);
+            }
+          });
+          AppMethodBeat.o(307070);
+          return;
+        }
+        Object localObject = new Intent(ae.this.context, SnsAdProxyUI.class);
+        ((Intent)localObject).putExtra("action_type", 3);
+        ((Intent)localObject).putExtra("searchContactResponseByte", (byte[])paramAnonymousObject);
+        ((Intent)localObject).putExtra("searchWord", Util.nullAsNil(ae.this.QRf));
+        paramAnonymousObject = ae.this.context;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousObject, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePersonalProfileBtnComp$1", "onCallback", "(IILjava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousObject.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousObject, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingPagePersonalProfileBtnComp$1", "onCallback", "(IILjava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(307070);
+      }
+      
+      public final void onCallback(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(307074);
+        if ((paramAnonymousObject instanceof String)) {
+          try
+          {
+            paramAnonymousObject = new JSONObject((String)paramAnonymousObject);
+            ae.this.luk = paramAnonymousObject.optString("username");
+            ae.this.QRf = paramAnonymousObject.optString("aliasname");
+            AppMethodBeat.o(307074);
             return;
           }
-          this.Kqk.a(this.KsT, this.KsS, this.qVG);
-          AppMethodBeat.o(231697);
-          return;
-        }
-        if ((this.KsU != 0) && (this.KsU != 1))
-        {
-          int i = this.KsU;
-          if (i != 2) {}
-        }
-        else
-        {
-          AppMethodBeat.o(231697);
-          return;
-        }
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      Log.e("SnsAd.AdLandingPageQRCodeBtnComp", localThrowable1.toString());
-      if (!TextUtils.isEmpty(this.KsR))
-      {
-        try
-        {
-          this.KqQ.kQ("qrUrl", this.KsQ.KmS);
-          this.KqQ.br("qrScanDirectJump", this.KsQ.KmU);
-          if (this.KsQ.KmU != 1) {
-            break label348;
-          }
-          this.Kqk.b(this.KsR, this.KsQ.KmS, this.qVG);
-          AppMethodBeat.o(231697);
-          return;
-        }
-        catch (Throwable localThrowable2)
-        {
-          Log.e("SnsAd.AdLandingPageQRCodeBtnComp", "the ad qr helper has something wrong. exception: ".concat(String.valueOf(localThrowable2)));
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(231697);
-        return;
-      }
-    }
-    label348:
-    this.Kqk.a(this.KsR, this.KsQ.KmS, this.qVG);
-    AppMethodBeat.o(231697);
-  }
-  
-  protected final void fKe()
-  {
-    AppMethodBeat.i(231690);
-    super.fKe();
-    String str;
-    if (this.KsQ != null)
-    {
-      str = this.KsQ.KmS;
-      Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "the qr code img url: ".concat(String.valueOf(str)));
-      if (this.KsQ.KmT != 1) {}
-    }
-    try
-    {
-      AdLandingPagesProxy.getInstance().doAdUpdateQrUrlScene("", this.KsQ.Kmh, "", fRp().uxInfo, this.KqB.KmB, fRp().getSnsId(), new b(this));
-      this.KsU = 0;
-      Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = " + this.KsU);
-      h.a("adId", str, new a(this, false));
-      AppMethodBeat.o(231690);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Log.e("SnsAd.AdLandingPageQRCodeBtnComp", localThrowable.toString());
-      }
-    }
-  }
-  
-  public final void fKo()
-  {
-    AppMethodBeat.i(231699);
-    super.fKo();
-    if (this.KsV != null)
-    {
-      this.KsV.dead();
-      this.KsV = null;
-    }
-    AppMethodBeat.o(231699);
-  }
-  
-  public final void fKp()
-  {
-    AppMethodBeat.i(231687);
-    super.fKp();
-    fRz();
-    if (this.KsV == null)
-    {
-      this.KsV = new IListener()
-      {
-        private boolean a(wh paramAnonymouswh)
-        {
-          AppMethodBeat.i(269193);
-          for (;;)
+          catch (Exception paramAnonymousObject)
           {
-            try
-            {
-              localae = ae.this;
-              if ((paramAnonymouswh != null) && (paramAnonymouswh.fVv != null))
-              {
-                localObject = localae.KsQ;
-                if (localObject != null) {
-                  continue;
-                }
-              }
-            }
-            catch (Throwable paramAnonymouswh)
-            {
-              ae localae;
-              Object localObject;
-              String str1;
-              int i;
-              String str2;
-              continue;
-            }
-            AppMethodBeat.o(269193);
-            return false;
-            str1 = paramAnonymouswh.fVv.fVw;
-            localObject = paramAnonymouswh.fVv.fVx;
-            i = paramAnonymouswh.fVv.fVz;
-            str2 = localae.KqB.KmB;
-            Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "onDownloadEventFromOthers is called, from " + str1 + "; self is " + str2 + "; type is " + i);
-            if ((!Util.isEqual(str1, str2)) && (!TextUtils.isEmpty(paramAnonymouswh.fVv.fVy)))
-            {
-              paramAnonymouswh = paramAnonymouswh.fVv.fVy;
-              Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "onDownloadEventFromOthers is called, the path is ".concat(String.valueOf(paramAnonymouswh)));
-              if (i == 0)
-              {
-                if ((Util.isEqual((String)localObject, localae.KsQ.KmS)) && (TextUtils.isEmpty(localae.KsR))) {
-                  localae.KsR = paramAnonymouswh;
-                }
-              }
-              else if ((i == 1) && (Util.isEqual((String)localObject, localae.KsS)) && (TextUtils.isEmpty(localae.KsT))) {
-                localae.KsT = paramAnonymouswh;
-              }
-            }
+            Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "parse username exp=" + paramAnonymousObject.toString());
           }
         }
-      };
-      this.KsV.alive();
-    }
-    AppMethodBeat.o(231687);
+        AppMethodBeat.o(307074);
+      }
+    };
+    this.QRe = paramn;
+    this.QPl.mx("wxGroupInfo", paramn.QJI);
+    AppMethodBeat.o(306914);
   }
   
-  public static final class a
-    implements f.a
+  protected final void hiZ()
   {
-    WeakReference<ae> KsX;
-    private boolean KsY;
-    
-    a(ae paramae, boolean paramBoolean)
+    AppMethodBeat.i(306916);
+    String str = Util.nullAsNil(hjn().uxInfo);
+    if (!TextUtils.isEmpty(this.QRe.QJI))
     {
-      AppMethodBeat.i(268118);
-      this.KsY = false;
-      this.KsX = new WeakReference(paramae);
-      this.KsY = paramBoolean;
-      AppMethodBeat.o(268118);
-    }
-    
-    public final void aYs(String paramString)
-    {
-      AppMethodBeat.i(268122);
-      ae localae = (ae)this.KsX.get();
-      if (localae != null)
-      {
-        Log.d("SnsAd.AdLandingPageQRCodeBtnComp", "download qr image completed, the path " + paramString + "; cId " + localae.KqB.KmB);
-        if (this.KsY)
-        {
-          localae.KsT = paramString;
-          localae.KsU = 3;
-          Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 3");
-          localae.R(1, localae.KsS, paramString);
-          AppMethodBeat.o(268122);
-          return;
-        }
-        localae.KsR = paramString;
-        if (localae.KsQ != null)
-        {
-          localae.R(0, localae.KsQ.KmS, paramString);
-          AppMethodBeat.o(268122);
-        }
-      }
-      else
-      {
-        Log.w("SnsAd.AdLandingPageQRCodeBtnComp", "qrCodeBtnComp is null in weak ref");
-      }
-      AppMethodBeat.o(268122);
-    }
-    
-    public final void fJU()
-    {
-      AppMethodBeat.i(268119);
-      ae localae = (ae)this.KsX.get();
-      if ((localae != null) && (this.KsY))
-      {
-        localae.KsU = 2;
-        Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 2");
-      }
-      AppMethodBeat.o(268119);
-    }
-    
-    public final void fJV()
-    {
-      AppMethodBeat.i(268121);
-      Log.e("SnsAd.AdLandingPageQRCodeBtnComp", "there is something error happening when downloading qr image.");
-      ae localae = (ae)this.KsX.get();
-      if (localae != null)
-      {
-        if (this.KsY)
-        {
-          localae.KsU = -2;
-          Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = -2");
-        }
-        if (localae.Kqk != null) {
-          localae.Kqk.a(localae.qVG);
-        }
-      }
-      AppMethodBeat.o(268121);
-    }
-  }
-  
-  public static final class b
-    implements AdLandingPagesProxy.e
-  {
-    private WeakReference<ae> KsX;
-    
-    b(ae paramae)
-    {
-      AppMethodBeat.i(266426);
-      this.KsX = new WeakReference(paramae);
-      AppMethodBeat.o(266426);
-    }
-    
-    public final void aH(Object paramObject) {}
-    
-    public final void i(int paramInt1, int paramInt2, Object paramObject)
-    {
-      AppMethodBeat.i(266427);
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+      Log.i("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onBtnClick, btnInfo=" + this.QRe + ", uxinfo=" + str);
       try
       {
-        if ((paramObject instanceof byte[]))
-        {
-          cbd localcbd = new cbd();
-          localcbd.parseFrom((byte[])paramObject);
-          if (this.KsX != null)
-          {
-            paramObject = (ae)this.KsX.get();
-            if ((paramObject != null) && (paramObject.KqB.KmB.equals(localcbd.Tjv)))
-            {
-              Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "request new qr image imgUrl completed");
-              paramObject.KsS = localcbd.url;
-              paramObject.KsU = 1;
-              Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = 1");
-              h.a("adId", paramObject.KsS, new ae.a(paramObject, true));
-            }
-          }
-          AppMethodBeat.o(266427);
-          return;
+        if (this.lKp == null) {
+          this.lKp = k.a(this.context, this.context.getString(b.j.loading_tips), true, null);
         }
-        if (this.KsX != null)
-        {
-          paramObject = (ae)this.KsX.get();
-          if (paramObject != null)
-          {
-            paramObject.KsU = -1;
-            Log.i("SnsAd.AdLandingPageQRCodeBtnComp", "mNewQRStatus = -1");
-          }
+        if (!this.lKp.isShowing()) {
+          this.lKp.show();
         }
-        AppMethodBeat.o(266427);
-        return;
       }
-      catch (Throwable paramObject)
+      finally
       {
-        Log.e("SnsAd.AdLandingPageQRCodeBtnComp", paramObject.toString());
-        AppMethodBeat.o(266427);
+        for (;;)
+        {
+          Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "showLoading exp=" + localObject.toString());
+        }
       }
+      AdLandingPagesProxy.getInstance().getBtnPersonalWxUserName(str, this.QRe.QJI, this.QQp);
+    }
+    for (;;)
+    {
+      hja();
+      AppMethodBeat.o(306916);
+      return;
+      Log.e("MicroMsg.AdLandingPagePersonalProfileBtnComp", "onBtnClick, wxGroupInfo==null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ae
  * JD-Core Version:    0.7.0.1
  */

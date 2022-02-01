@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base.preference;
 
 public abstract interface Preference$c
 {
-  public abstract boolean fqY();
+  public abstract boolean gCr();
 }
 
 

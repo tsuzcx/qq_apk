@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/jtn" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="@dimen/ie" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" android:minWidth="@dimen/ie" android:minHeight="120.0dip" style="@style/sa">
-        <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cn" android:text="@string/dwk" android:singleLine="true" android:layout_centerVertical="true" android:lineSpacingMultiplier="1.6" />
-        <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/ci" android:text="@string/dwj" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/iri" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/ce" android:layout_marginRight="@dimen/cn" android:src="@drawable/cp6" android:scaleType="centerCrop" />
-        <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/irn" android:layout_width="wrap_content" android:layout_marginTop="@dimen/cn" android:layout_marginBottom="@dimen/cr" android:text="@string/w0" style="@style/p3" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/jtr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:layout_constraintHeight_default="k02" app:layout_constraintTop_toTopOf="hr_" />
+    <FrameLayout android:id="@id/m1s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintHeight_default="k02" app:layout_constraintTop_toTopOf="hr_">
+        <ImageView android:id="@id/m1o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/cc5" android:scaleType="centerCrop" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/m1p" android:layout_width="44.0dip" android:layout_height="51.0dip" android:layout_marginBottom="@dimen/cp" android:src="@drawable/cc6" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center" android:id="@id/m1q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center" android:id="@id/m1r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cp" android:maxLines="2" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/al6" android:gravity="center" android:layout_gravity="center" android:id="@id/m1t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="邀请你参与火炬护跑" />
+        </LinearLayout>
+    </FrameLayout>
+    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:layout_gravity="center|left|top" android:id="@id/dny" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_margin="@dimen/bv" android:minWidth="@dimen/d9" app:desc_color="@color/az" app:desc_margin_left="2.0dip" app:desc_margin_right="@dimen/df" app:desc_text="@string/e71" app:desc_text_size="@dimen/a3" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:logo_anim_auto_paly="false" app:logo_color="@color/az" app:logo_height="@dimen/cd" app:logo_margin_left="@dimen/bv" app:logo_mode="hmb" app:logo_style="f3g" app:logo_width="@dimen/cd" />
+</androidx.constraintlayout.widget.ConstraintLayout>

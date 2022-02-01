@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/k1n" android:background="@drawable/a_h" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/k1q" layout="@layout/cea" />
-    <include android:id="@id/k1o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/k1q" layout="@layout/ce8" />
-</RelativeLayout>
+<CheckedTextView android:textAppearance="@style/nx" android:textColor="@color/a7b" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/ba6" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/aq1" android:maxHeight="48.0dip" android:minHeight="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,63 +1,68 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.protocal.protobuf.ayn;
-import com.tencent.mm.protocal.protobuf.ayo;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
-import java.util.LinkedList;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bfa;
+import com.tencent.mm.protocal.protobuf.bfb;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMicContact;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMicContactResponse;", "liveId", "", "objectId", "objectNonceId", "", "liveCookie", "", "scene", "", "usernameList", "Ljava/util/LinkedList;", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMicContact$CallBack;", "(JJLjava/lang/String;[BILjava/util/LinkedList;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMicContact$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMicContact$CallBack;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMicContactRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveApplyBattle;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveApplyBattleResponse;", "liveId", "", "objectId", "objectNonceId", "", "liveCookie", "", "scene", "", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(JJLjava/lang/String;[BILcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveApplyBattleRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
-  extends n<ayo>
+  extends o<bfb>
 {
+  private bfa CJo;
   private final String TAG;
-  private ayn yjk;
-  private final a yjl;
   
-  public q(long paramLong1, long paramLong2, String paramString, byte[] paramArrayOfByte, LinkedList<String> paramLinkedList, a parama)
+  public q(long paramLong1, long paramLong2, String paramString, byte[] paramArrayOfByte, int paramInt, bdm parambdm)
   {
-    AppMethodBeat.i(265352);
-    this.yjl = parama;
-    this.TAG = "Finder.CgiFinderLiveBatchGetMicContact";
-    this.yjk = new ayn();
-    this.yjk.klE = paramLong1;
-    parama = this.yjk;
-    ao localao = ao.xcj;
-    parama.RLM = ao.dnO();
-    this.yjk.object_id = paramLong2;
-    this.yjk.object_nonce_id = paramString;
-    this.yjk.RLO = b.cU(paramArrayOfByte);
-    this.yjk.RLN = z.bdh();
-    this.yjk.scene = 1;
-    this.yjk.SKE = paramLinkedList;
-    paramString = new d.a();
-    paramString.c((a)this.yjk);
-    paramArrayOfByte = new ayo();
-    paramArrayOfByte.setBaseResponse(new jh());
-    paramArrayOfByte.getBaseResponse().Tef = new eaf();
-    paramString.d((a)paramArrayOfByte);
-    paramString.TW("/cgi-bin/micromsg-bin/finderlivebatchgetmiccontact");
-    paramString.vD(4224);
-    c(paramString.bgN());
-    AppMethodBeat.o(265352);
+    AppMethodBeat.i(360256);
+    this.TAG = "Finder.CgiFinderLiveApplyBattle";
+    this.CJo = new bfa();
+    this.CJo.mMJ = paramLong1;
+    bfa localbfa = this.CJo;
+    bi localbi = bi.ABn;
+    localbfa.YIY = bi.dVu();
+    this.CJo.object_id = paramLong2;
+    this.CJo.object_nonce_id = paramString;
+    this.CJo.YJa = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    this.CJo.YIZ = z.bAW();
+    this.CJo.scene = paramInt;
+    this.CJo.CER = parambdm;
+    paramString = new c.a();
+    paramString.otE = ((a)this.CJo);
+    paramArrayOfByte = new bfb();
+    paramArrayOfByte.setBaseResponse(new kd());
+    paramArrayOfByte.getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)paramArrayOfByte);
+    paramString.uri = "/cgi-bin/micromsg-bin/finderliveapplybattle";
+    paramString.funcId = 5817;
+    paramString = paramString.bEF();
+    Log.i(this.TAG, "liveId:" + this.CJo.mMJ + " objectId:" + this.CJo.object_id + " nonceId:" + this.CJo.object_nonce_id + " username:" + this.CJo.YIZ + " scene:" + this.CJo.scene);
+    c(paramString);
+    AppMethodBeat.o(360256);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMicContact$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMicContactResponse;", "plugin-finder_release"})
+  public final com.tencent.mm.plugin.findersdk.b.a.b dVi()
+  {
+    return com.tencent.mm.plugin.findersdk.b.a.b.Hde;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveApplyBattle$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveApplyBattleResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, ayo paramayo);
+    public abstract void a(int paramInt1, int paramInt2, String paramString, bfb parambfb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.q
  * JD-Core Version:    0.7.0.1
  */

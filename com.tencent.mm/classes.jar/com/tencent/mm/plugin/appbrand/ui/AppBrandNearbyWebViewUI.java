@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -8,10 +7,10 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.plugin.appbrand.ag;
-import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.plugin.appbrand.ak;
+import com.tencent.mm.plugin.appbrand.ba.c;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 
 public final class AppBrandNearbyWebViewUI
   extends WebViewUI
@@ -30,12 +29,12 @@ public final class AppBrandNearbyWebViewUI
     //   13: astore_2
     //   14: aconst_null
     //   15: astore_1
-    //   16: new 25	com/tencent/mm/vfs/q
+    //   16: new 25	com/tencent/mm/vfs/u
     //   19: dup
     //   20: invokestatic 31	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   23: ldc 33
-    //   25: invokespecial 36	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: invokestatic 42	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   25: invokespecial 36	com/tencent/mm/vfs/u:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   28: invokestatic 42	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   31: astore_3
     //   32: aload_3
     //   33: astore_1
@@ -129,35 +128,35 @@ public final class AppBrandNearbyWebViewUI
     //   131	135	147	java/lang/Exception
   }
   
-  public final void cjK()
+  public final void cKX()
   {
     AppMethodBeat.i(21121);
-    super.cjK();
+    super.cKX();
     setActionbarColor(-855310);
     AppMethodBeat.o(21121);
   }
   
-  public final int cjL()
+  public final int cKY()
   {
     AppMethodBeat.i(21122);
     if ((Build.VERSION.SDK_INT >= 23) && ((!g.isMIUI()) || (!isMIUIV8())))
     {
-      ar.d(getWindow(), true);
+      aw.c(getWindow(), true);
       AppMethodBeat.o(21122);
       return -855310;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = ag.nym;
+      i = ak.qxA;
       AppMethodBeat.o(21122);
       return i;
     }
-    int i = super.cjL();
+    int i = super.cKY();
     AppMethodBeat.o(21122);
     return i;
   }
   
-  public final boolean cjM()
+  public final boolean cKZ()
   {
     return true;
   }
@@ -195,7 +194,7 @@ public final class AppBrandNearbyWebViewUI
   {
     AppMethodBeat.i(21119);
     super.setMMTitle(paramString);
-    setMMTitleColor(getContext().getResources().getColor(au.c.FG_0));
+    setMMTitleColor(getContext().getResources().getColor(ba.c.FG_0));
     AppMethodBeat.o(21119);
   }
 }

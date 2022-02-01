@@ -2,51 +2,52 @@ package androidx.browser.customtabs;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.core.app.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class b
 {
   public final Intent intent;
-  public final Bundle yq;
+  public final Bundle zl;
   
   public b(Intent paramIntent, Bundle paramBundle)
   {
     this.intent = paramIntent;
-    this.yq = paramBundle;
+    this.zl = paramBundle;
   }
   
   public static final class a
   {
     public final Intent mIntent;
-    public ArrayList<Bundle> yr;
-    public Bundle ys;
-    public ArrayList<Bundle> yt;
-    public boolean yu;
+    public ArrayList<Bundle> zm;
+    public Bundle zn;
+    public ArrayList<Bundle> zo;
+    public boolean zp;
     
     public a()
     {
       this((byte)0);
     }
     
-    private a(byte paramByte)
+    public a(byte paramByte)
     {
-      AppMethodBeat.i(191288);
+      AppMethodBeat.i(192966);
       this.mIntent = new Intent("android.intent.action.VIEW");
-      this.yr = null;
-      this.ys = null;
-      this.yt = null;
-      this.yu = true;
+      this.zm = null;
+      this.zn = null;
+      this.zo = null;
+      this.zp = true;
       Bundle localBundle = new Bundle();
-      androidx.core.app.b.a(localBundle, "android.support.customtabs.extra.SESSION", null);
+      c.a(localBundle, "android.support.customtabs.extra.SESSION", null);
       this.mIntent.putExtras(localBundle);
-      AppMethodBeat.o(191288);
+      AppMethodBeat.o(192966);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.browser.customtabs.b
  * JD-Core Version:    0.7.0.1
  */

@@ -37,55 +37,55 @@ public class APLogInfo
   
   private void initLogPath()
   {
-    AppMethodBeat.i(253940);
+    AppMethodBeat.i(217198);
     try
     {
       if (!this.hasWritePermission)
       {
-        localObject = this.context.getExternalFilesDir("midas" + File.separator + "log" + File.separator);
-        if (localObject != null) {
+        localObject1 = this.context.getExternalFilesDir("midas" + File.separator + "log" + File.separator);
+        if (localObject1 != null) {
           break label153;
         }
       }
       label153:
-      for (Object localObject = "";; localObject = ((File)localObject).getPath())
+      for (Object localObject1 = "";; localObject1 = ((File)localObject1).getPath())
       {
-        this.logPath = ((String)localObject);
+        this.logPath = ((String)localObject1);
         if ((TextUtils.isEmpty(this.logPath)) || (!new File(this.logPath).canWrite())) {
           this.logPath = (Environment.getExternalStorageDirectory() + File.separator + "tencent" + File.separator + "Midas" + File.separator + "Log" + File.separator);
         }
-        AppMethodBeat.o(253940);
+        AppMethodBeat.o(217198);
         return;
       }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      new StringBuilder("init log path error: ").append(localThrowable.getMessage());
+      new StringBuilder("init log path error: ").append(localObject2.getMessage());
       this.logPath = (Environment.getExternalStorageDirectory() + File.separator + "tencent" + File.separator + "Midas" + File.separator + "Log" + File.separator);
-      AppMethodBeat.o(253940);
+      AppMethodBeat.o(217198);
     }
   }
   
   private void initPermission()
   {
-    AppMethodBeat.i(253936);
+    AppMethodBeat.i(217181);
     if (this.context.getPackageManager().checkPermission("android.permission.WRITE_EXTERNAL_STORAGE", this.pkgName) == 0) {}
     for (boolean bool = true;; bool = false)
     {
       this.hasWritePermission = bool;
       new StringBuilder("has WRITE_EXTERNAL_STORAGE? : ").append(this.hasWritePermission);
-      AppMethodBeat.o(253936);
+      AppMethodBeat.o(217181);
       return;
     }
   }
   
   private void initPkgName()
   {
-    AppMethodBeat.i(253934);
+    AppMethodBeat.i(217174);
     if (this.context == null)
     {
-      AppMethodBeat.o(253934);
+      AppMethodBeat.o(217174);
       return;
     }
     PackageManager localPackageManager = this.context.getPackageManager();
@@ -93,51 +93,51 @@ public class APLogInfo
     {
       this.pkgName = localPackageManager.getPackageInfo(this.context.getApplicationContext().getPackageName(), 0).packageName;
       new StringBuilder("get pkgName: ").append(this.pkgName);
-      AppMethodBeat.o(253934);
+      AppMethodBeat.o(217174);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        new StringBuilder("getPackage: ").append(localThrowable.toString());
+        new StringBuilder("getPackage: ").append(localObject.toString());
       }
     }
   }
   
   private void initProcessName()
   {
-    AppMethodBeat.i(253938);
+    AppMethodBeat.i(217188);
     for (;;)
     {
       try
       {
         int i = Process.myPid();
-        Object localObject = (ActivityManager)this.context.getSystemService("activity");
-        if (localObject != null)
+        Object localObject1 = (ActivityManager)this.context.getSystemService("activity");
+        if (localObject1 != null)
         {
-          localObject = ((ActivityManager)localObject).getRunningAppProcesses().iterator();
-          if (((Iterator)localObject).hasNext())
+          localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses().iterator();
+          if (((Iterator)localObject1).hasNext())
           {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
             if (localRunningAppProcessInfo.pid != i) {
               continue;
             }
-            localObject = localRunningAppProcessInfo.processName.split(":");
-            if (localObject.length <= 1) {
+            localObject1 = localRunningAppProcessInfo.processName.split(":");
+            if (localObject1.length <= 1) {
               continue;
             }
-            this.processName = localObject[1];
+            this.processName = localObject1[1];
           }
         }
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        new StringBuilder("get process: ").append(localThrowable.toString());
+        new StringBuilder("get process: ").append(localObject2.toString());
         continue;
       }
       new StringBuilder("get process name: ").append(this.processName);
-      AppMethodBeat.o(253938);
+      AppMethodBeat.o(217188);
       return;
       this.processName = "";
     }
@@ -185,17 +185,17 @@ public class APLogInfo
   
   public void init()
   {
-    AppMethodBeat.i(253932);
+    AppMethodBeat.i(217217);
     if (this.context == null)
     {
-      AppMethodBeat.o(253932);
+      AppMethodBeat.o(217217);
       return;
     }
     initPkgName();
     initPermission();
     initProcessName();
     initLogPath();
-    AppMethodBeat.o(253932);
+    AppMethodBeat.o(217217);
   }
   
   public boolean isAutoFlush()
@@ -245,16 +245,16 @@ public class APLogInfo
   
   public void setContext(Context paramContext)
   {
-    AppMethodBeat.i(253944);
+    AppMethodBeat.i(217241);
     this.context = paramContext.getApplicationContext();
-    AppMethodBeat.o(253944);
+    AppMethodBeat.o(217241);
   }
   
   public void setEncryptKey(String paramString)
   {
-    AppMethodBeat.i(253955);
+    AppMethodBeat.i(217388);
     APLogEncryptor.setEncryptKey(paramString);
-    AppMethodBeat.o(253955);
+    AppMethodBeat.o(217388);
   }
   
   public void setEncryptLog(boolean paramBoolean)
@@ -264,9 +264,9 @@ public class APLogInfo
   
   public void setEncryptProtocolVersion(byte paramByte)
   {
-    AppMethodBeat.i(253957);
+    AppMethodBeat.i(217395);
     APLogEncryptor.setProtocolVersion(paramByte);
-    AppMethodBeat.o(253957);
+    AppMethodBeat.o(217395);
   }
   
   public void setLogCallbackClassName(String paramString)
@@ -291,17 +291,17 @@ public class APLogInfo
   
   public void setLogFileSizeMB(int paramInt)
   {
-    AppMethodBeat.i(253959);
+    AppMethodBeat.i(217400);
     APLogFileUtil.maxLogFileSizeMB = paramInt;
     new StringBuilder("set log file size: ").append(paramInt).append(" MB");
-    AppMethodBeat.o(253959);
+    AppMethodBeat.o(217400);
   }
   
   public void setLogParamFromServer(String paramString)
   {
-    AppMethodBeat.i(253948);
+    AppMethodBeat.i(217305);
     setLogWrite(paramString);
-    AppMethodBeat.o(253948);
+    AppMethodBeat.o(217305);
   }
   
   public void setLogPath(String paramString)
@@ -317,7 +317,7 @@ public class APLogInfo
   public void setLogWrite(String paramString)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(253949);
+    AppMethodBeat.i(217315);
     try
     {
       i = Integer.valueOf(paramString).intValue();
@@ -330,10 +330,10 @@ public class APLogInfo
         }
         bool1 = bool2;
         setWriteLog(bool1);
-        AppMethodBeat.o(253949);
+        AppMethodBeat.o(217315);
       }
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
@@ -349,19 +349,19 @@ public class APLogInfo
   
   public boolean shouldPrintLog()
   {
-    AppMethodBeat.i(253951);
+    AppMethodBeat.i(217332);
     if ((this.logEnable) || (this.printLog) || (APLogFileUtil.isDebugMode(APLogFileInfo.dirName)))
     {
-      AppMethodBeat.o(253951);
+      AppMethodBeat.o(217332);
       return true;
     }
-    AppMethodBeat.o(253951);
+    AppMethodBeat.o(217332);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.APLogInfo
  * JD-Core Version:    0.7.0.1
  */

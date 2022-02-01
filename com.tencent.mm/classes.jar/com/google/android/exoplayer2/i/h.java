@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public final class h
 {
-  private long[] bqO;
+  private long[] dks;
   public int size;
   
   public h()
@@ -16,17 +16,25 @@ public final class h
   private h(byte paramByte)
   {
     AppMethodBeat.i(93136);
-    this.bqO = new long[32];
+    this.dks = new long[32];
     AppMethodBeat.o(93136);
+  }
+  
+  public final long[] UA()
+  {
+    AppMethodBeat.i(93139);
+    long[] arrayOfLong = Arrays.copyOf(this.dks, this.size);
+    AppMethodBeat.o(93139);
+    return arrayOfLong;
   }
   
   public final void add(long paramLong)
   {
     AppMethodBeat.i(93137);
-    if (this.size == this.bqO.length) {
-      this.bqO = Arrays.copyOf(this.bqO, this.size * 2);
+    if (this.size == this.dks.length) {
+      this.dks = Arrays.copyOf(this.dks, this.size * 2);
     }
-    long[] arrayOfLong = this.bqO;
+    long[] arrayOfLong = this.dks;
     int i = this.size;
     this.size = (i + 1);
     arrayOfLong[i] = paramLong;
@@ -42,17 +50,9 @@ public final class h
       AppMethodBeat.o(93138);
       throw localIndexOutOfBoundsException;
     }
-    long l = this.bqO[paramInt];
+    long l = this.dks[paramInt];
     AppMethodBeat.o(93138);
     return l;
-  }
-  
-  public final long[] vb()
-  {
-    AppMethodBeat.i(93139);
-    long[] arrayOfLong = Arrays.copyOf(this.bqO, this.size);
-    AppMethodBeat.o(93139);
-    return arrayOfLong;
   }
 }
 

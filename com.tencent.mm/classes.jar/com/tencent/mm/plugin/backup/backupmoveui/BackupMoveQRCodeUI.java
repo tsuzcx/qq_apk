@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.backup.backupmoveui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -24,24 +23,24 @@ import com.tencent.mm.plugin.backup.b.b.d;
 import com.tencent.mm.plugin.backup.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
 public class BackupMoveQRCodeUI
   extends MMWizardActivity
 {
-  private b.d rMv;
-  private ImageView rOY;
-  private TextView rOZ;
-  private TextView rPa;
-  private boolean rPb;
+  private b.d uXI;
+  private ImageView van;
+  private TextView vao;
+  private TextView vap;
+  private boolean vaq;
   
   public BackupMoveQRCodeUI()
   {
     AppMethodBeat.i(21406);
-    this.rPb = false;
-    this.rMv = new b.d()
+    this.vaq = false;
+    this.uXI = new b.d()
     {
-      public final void EB(int paramAnonymousInt)
+      public final void Fc(int paramAnonymousInt)
       {
         AppMethodBeat.i(21403);
         Log.i("MicroMsg.BackupMoveQRCodeUI", "onUpdateUIProgress backupState:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
@@ -58,33 +57,33 @@ public class BackupMoveQRCodeUI
           AppMethodBeat.o(21403);
           return;
           Log.i("MicroMsg.BackupMoveQRCodeUI", "auth success. go to BackupMoveUI.");
-          com.tencent.mm.plugin.backup.d.b.csI().crZ().rKS = 12;
+          com.tencent.mm.plugin.backup.d.b.cVs().cUJ().uWg = 12;
           Object localObject = new Intent(BackupMoveQRCodeUI.this, BackupMoveUI.class);
-          MMWizardActivity.aH(BackupMoveQRCodeUI.this, (Intent)localObject);
+          MMWizardActivity.aQ(BackupMoveQRCodeUI.this, (Intent)localObject);
           AppMethodBeat.o(21403);
           return;
-          localObject = com.tencent.mm.plugin.backup.d.b.csI().csK().bitmapData;
+          localObject = com.tencent.mm.plugin.backup.d.b.cVs().cVu().bitmapData;
           BackupMoveQRCodeUI.b(BackupMoveQRCodeUI.this).setImageBitmap(BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length));
-          BackupMoveQRCodeUI.c(BackupMoveQRCodeUI.this).setText(R.l.eql);
+          BackupMoveQRCodeUI.c(BackupMoveQRCodeUI.this).setText(R.l.gtm);
           BackupMoveQRCodeUI.c(BackupMoveQRCodeUI.this).setTextColor(BackupMoveQRCodeUI.this.getContext().getResources().getColor(R.e.normal_text_color));
           BackupMoveQRCodeUI.d(BackupMoveQRCodeUI.this).setVisibility(4);
           AppMethodBeat.o(21403);
           return;
-          BackupMoveQRCodeUI.c(BackupMoveQRCodeUI.this).setText(R.l.epM);
+          BackupMoveQRCodeUI.c(BackupMoveQRCodeUI.this).setText(R.l.gsN);
           BackupMoveQRCodeUI.c(BackupMoveQRCodeUI.this).setTextColor(BackupMoveQRCodeUI.this.getContext().getResources().getColor(R.e.red));
           BackupMoveQRCodeUI.b(BackupMoveQRCodeUI.this).setImageResource(R.k.backup_move_qrcode_light);
           BackupMoveQRCodeUI.d(BackupMoveQRCodeUI.this).setVisibility(4);
           AppMethodBeat.o(21403);
           return;
           BackupMoveQRCodeUI.a(BackupMoveQRCodeUI.this, true);
-          h.a(BackupMoveQRCodeUI.this, R.l.epV, 0, R.l.epk, R.l.epl, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          k.a(BackupMoveQRCodeUI.this, R.l.gsW, 0, R.l.gsl, R.l.gsm, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(21396);
               Log.i("MicroMsg.BackupMoveQRCodeUI", "CLIENT_NOT_SUPPORT_SELECT_TIME_AND_QUICK_BACKUP, user click move all.");
               BackupMoveQRCodeUI.a(BackupMoveQRCodeUI.this, false);
-              com.tencent.mm.plugin.backup.d.b.csI().csK().kM(true);
+              com.tencent.mm.plugin.backup.d.b.cVs().cVu().lZ(true);
               AppMethodBeat.o(21396);
             }
           }, new DialogInterface.OnClickListener()
@@ -96,18 +95,18 @@ public class BackupMoveQRCodeUI
               BackupMoveQRCodeUI.e(BackupMoveQRCodeUI.this);
               AppMethodBeat.o(21397);
             }
-          }, R.e.dke);
+          }, R.e.fkf);
           AppMethodBeat.o(21403);
           return;
           BackupMoveQRCodeUI.a(BackupMoveQRCodeUI.this, true);
-          h.a(BackupMoveQRCodeUI.this, R.l.epU, 0, R.l.epj, R.l.epl, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          k.a(BackupMoveQRCodeUI.this, R.l.gsV, 0, R.l.gsk, R.l.gsm, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(21398);
               Log.i("MicroMsg.BackupMoveQRCodeUI", "CLIENT_NOT_SUPPORT_SELECT_TIME, user click move all.");
               BackupMoveQRCodeUI.a(BackupMoveQRCodeUI.this, false);
-              com.tencent.mm.plugin.backup.d.b.csI().csK().kM(true);
+              com.tencent.mm.plugin.backup.d.b.cVs().cVu().lZ(true);
               AppMethodBeat.o(21398);
             }
           }, new DialogInterface.OnClickListener()
@@ -119,10 +118,10 @@ public class BackupMoveQRCodeUI
               BackupMoveQRCodeUI.e(BackupMoveQRCodeUI.this);
               AppMethodBeat.o(21399);
             }
-          }, R.e.dke);
+          }, R.e.fkf);
           AppMethodBeat.o(21403);
           return;
-          h.a(BackupMoveQRCodeUI.this, R.l.epX, 0, R.l.erY, 0, false, new DialogInterface.OnClickListener()
+          k.a(BackupMoveQRCodeUI.this, R.l.gsY, 0, R.l.guZ, 0, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -130,18 +129,18 @@ public class BackupMoveQRCodeUI
               Log.i("MicroMsg.BackupMoveQRCodeUI", "move phone old version");
               AppMethodBeat.o(21400);
             }
-          }, null, R.e.dke);
+          }, null, R.e.fkf);
           AppMethodBeat.o(21403);
           return;
           BackupMoveQRCodeUI.a(BackupMoveQRCodeUI.this, true);
-          h.a(BackupMoveQRCodeUI.this, R.l.epT, 0, R.l.epk, R.l.epl, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          k.a(BackupMoveQRCodeUI.this, R.l.gsU, 0, R.l.gsl, R.l.gsm, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(21401);
               Log.i("MicroMsg.BackupMoveQRCodeUI", "CLIENT_NOT_SUPPORT_QUICK_BACKUP, user click move all.");
               BackupMoveQRCodeUI.a(BackupMoveQRCodeUI.this, false);
-              com.tencent.mm.plugin.backup.d.b.csI().csK().kM(true);
+              com.tencent.mm.plugin.backup.d.b.cVs().cVu().lZ(true);
               AppMethodBeat.o(21401);
             }
           }, new DialogInterface.OnClickListener()
@@ -153,56 +152,56 @@ public class BackupMoveQRCodeUI
               BackupMoveQRCodeUI.e(BackupMoveQRCodeUI.this);
               AppMethodBeat.o(21402);
             }
-          }, R.e.dke);
+          }, R.e.fkf);
         }
       }
       
-      public final void crY() {}
+      public final void cUI() {}
     };
     AppMethodBeat.o(21406);
   }
   
-  private void ctf()
+  private void cVO()
   {
     AppMethodBeat.i(21412);
-    if (bh.aGE())
+    if (bh.aZG())
     {
-      h.a(this, R.l.eqk, R.l.eqj, R.l.eqF, R.l.epl, false, new DialogInterface.OnClickListener()
+      k.a(this, R.l.gtl, R.l.gtk, R.l.gtG, R.l.gsm, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(21405);
           Log.i("MicroMsg.BackupMoveQRCodeUI", "user click close. stop move.");
-          com.tencent.mm.plugin.backup.d.b.csI().csJ().stop();
-          com.tencent.mm.plugin.backup.d.b.csI().csK().cancel(true);
-          com.tencent.mm.plugin.backup.d.b.csI().crZ().rKS = -100;
+          com.tencent.mm.plugin.backup.d.b.cVs().cVt().stop();
+          com.tencent.mm.plugin.backup.d.b.cVs().cVu().cancel(true);
+          com.tencent.mm.plugin.backup.d.b.cVs().cUJ().uWg = -100;
           BackupMoveQRCodeUI.g(BackupMoveQRCodeUI.this);
           AppMethodBeat.o(21405);
         }
-      }, null, R.e.dkf);
+      }, null, R.e.fkg);
       AppMethodBeat.o(21412);
       return;
     }
     Log.i("MicroMsg.BackupMoveQRCodeUI", "user click close. stop move.");
-    com.tencent.mm.plugin.backup.d.b.csI().csJ().stop();
-    com.tencent.mm.plugin.backup.d.b.csI().csK().cancel(true);
-    com.tencent.mm.plugin.backup.d.b.csI().crZ().rKS = -100;
-    atX(1);
+    com.tencent.mm.plugin.backup.d.b.cVs().cVt().stop();
+    com.tencent.mm.plugin.backup.d.b.cVs().cVu().cancel(true);
+    com.tencent.mm.plugin.backup.d.b.cVs().cUJ().uWg = -100;
+    aAp(1);
     AppMethodBeat.o(21412);
   }
   
   public int getLayoutId()
   {
-    return R.i.ebP;
+    return R.i.gex;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21410);
     setMMTitle(R.l.backup_move);
-    this.rOY = ((ImageView)findViewById(R.h.dsH));
-    this.rOZ = ((TextView)findViewById(R.h.dsJ));
-    this.rPa = ((TextView)findViewById(R.h.dsI));
+    this.van = ((ImageView)findViewById(R.h.fsY));
+    this.vao = ((TextView)findViewById(R.h.fta));
+    this.vap = ((TextView)findViewById(R.h.fsZ));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -225,7 +224,7 @@ public class BackupMoveQRCodeUI
       AppMethodBeat.o(21407);
       return;
     }
-    if (!bh.aHB())
+    if (!bh.baz())
     {
       finish();
       AppMethodBeat.o(21407);
@@ -233,19 +232,19 @@ public class BackupMoveQRCodeUI
     }
     initView();
     com.tencent.mm.plugin.backup.g.b.clear();
-    paramBundle = com.tencent.mm.plugin.backup.d.b.csI().csK();
-    com.tencent.mm.plugin.backup.g.b.a(paramBundle.rNQ);
-    com.tencent.mm.plugin.backup.b.d.EC(21);
-    com.tencent.mm.plugin.backup.g.b.a(paramBundle.rNP);
-    com.tencent.mm.plugin.backup.d.b.csI().csa();
-    com.tencent.mm.plugin.backup.g.b.a(paramBundle.rOi);
-    com.tencent.mm.plugin.backup.g.b.a(com.tencent.mm.plugin.backup.d.b.csI().csJ());
-    com.tencent.mm.plugin.backup.g.b.EC(2);
-    com.tencent.mm.plugin.backup.d.b.csI().rKN = null;
-    paramBundle.rOc = false;
-    paramBundle.rNZ = new com.tencent.mm.plugin.backup.c.c(com.tencent.mm.plugin.backup.d.b.csI(), 2, paramBundle.rLE);
-    com.tencent.mm.plugin.backup.d.b.csI().csK().rOd = com.tencent.mm.plugin.backup.b.c.rKD;
-    com.tencent.mm.plugin.backup.b.d.csf();
+    paramBundle = com.tencent.mm.plugin.backup.d.b.cVs().cVu();
+    com.tencent.mm.plugin.backup.g.b.a(paramBundle.uZe);
+    com.tencent.mm.plugin.backup.b.d.Fd(21);
+    com.tencent.mm.plugin.backup.g.b.a(paramBundle.uZd);
+    com.tencent.mm.plugin.backup.d.b.cVs().cUK();
+    com.tencent.mm.plugin.backup.g.b.a(paramBundle.uZw);
+    com.tencent.mm.plugin.backup.g.b.a(com.tencent.mm.plugin.backup.d.b.cVs().cVt());
+    com.tencent.mm.plugin.backup.g.b.Fd(2);
+    com.tencent.mm.plugin.backup.d.b.cVs().uWb = null;
+    paramBundle.uZq = false;
+    paramBundle.uZn = new com.tencent.mm.plugin.backup.c.c(com.tencent.mm.plugin.backup.d.b.cVs(), 2, paramBundle.uWR);
+    com.tencent.mm.plugin.backup.d.b.cVs().cVu().uZr = com.tencent.mm.plugin.backup.b.c.uVR;
+    com.tencent.mm.plugin.backup.b.d.cUP();
     AppMethodBeat.o(21407);
   }
   
@@ -254,7 +253,7 @@ public class BackupMoveQRCodeUI
     AppMethodBeat.i(21411);
     if (paramInt == 4)
     {
-      ctf();
+      cVO();
       AppMethodBeat.o(21411);
       return true;
     }
@@ -265,23 +264,23 @@ public class BackupMoveQRCodeUI
   
   public void onPause()
   {
-    AppMethodBeat.i(287289);
+    AppMethodBeat.i(300784);
     Log.i("MicroMsg.BackupMoveQRCodeUI", "BackupMoveQRCodeUI onPause.");
-    com.tencent.mm.plugin.backup.d.b.csI().csK().b(this.rMv);
-    if (com.tencent.mm.plugin.backup.d.b.csI().csK().rOj != null) {
-      com.tencent.mm.plugin.backup.d.b.csI().csK().rOj.stop();
+    com.tencent.mm.plugin.backup.d.b.cVs().cVu().b(this.uXI);
+    if (com.tencent.mm.plugin.backup.d.b.cVs().cVu().uZx != null) {
+      com.tencent.mm.plugin.backup.d.b.cVs().cVu().uZx.stop();
     }
     super.onPause();
-    AppMethodBeat.o(287289);
+    AppMethodBeat.o(300784);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(21409);
     super.onResume();
-    com.tencent.mm.plugin.backup.d.b.csI().csK().rOj.start();
-    com.tencent.mm.plugin.backup.d.b.csI().csK().a(this.rMv);
-    this.rMv.EB(com.tencent.mm.plugin.backup.d.b.csI().crZ().rKS);
+    com.tencent.mm.plugin.backup.d.b.cVs().cVu().uZx.start();
+    com.tencent.mm.plugin.backup.d.b.cVs().cVu().a(this.uXI);
+    this.uXI.Fc(com.tencent.mm.plugin.backup.d.b.cVs().cUJ().uWg);
     AppMethodBeat.o(21409);
   }
   
@@ -293,7 +292,7 @@ public class BackupMoveQRCodeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupMoveQRCodeUI
  * JD-Core Version:    0.7.0.1
  */

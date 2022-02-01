@@ -1,88 +1,131 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class mx
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int CreateTime;
-  public int RIt;
-  public int RTg;
-  public int RTh;
-  public int rWu;
+  public String YOa;
+  public String YOb;
+  public String session_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124398);
+    AppMethodBeat.i(184127);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.RTg);
-      paramVarArgs.aY(2, this.CreateTime);
-      paramVarArgs.aY(3, this.RIt);
-      paramVarArgs.aY(4, this.rWu);
-      paramVarArgs.aY(5, this.RTh);
-      AppMethodBeat.o(124398);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.RTg);
-      int i = g.a.a.b.b.a.bM(2, this.CreateTime);
-      int j = g.a.a.b.b.a.bM(3, this.RIt);
-      int k = g.a.a.b.b.a.bM(4, this.rWu);
-      int m = g.a.a.b.b.a.bM(5, this.RTh);
-      AppMethodBeat.o(124398);
-      return paramInt + 0 + i + j + k + m;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(124398);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      mx localmx = (mx)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-      default: 
-        AppMethodBeat.o(124398);
-        return -1;
-      case 1: 
-        localmx.RTg = locala.abFh.AK();
-        AppMethodBeat.o(124398);
-        return 0;
-      case 2: 
-        localmx.CreateTime = locala.abFh.AK();
-        AppMethodBeat.o(124398);
-        return 0;
-      case 3: 
-        localmx.RIt = locala.abFh.AK();
-        AppMethodBeat.o(124398);
-        return 0;
-      case 4: 
-        localmx.rWu = locala.abFh.AK();
-        AppMethodBeat.o(124398);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(184127);
+        throw paramVarArgs;
       }
-      localmx.RTh = locala.abFh.AK();
-      AppMethodBeat.o(124398);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      if (this.session_id != null) {
+        paramVarArgs.g(2, this.session_id);
+      }
+      if (this.YOa != null) {
+        paramVarArgs.g(3, this.YOa);
+      }
+      if (this.YOb != null) {
+        paramVarArgs.g(4, this.YOb);
+      }
+      AppMethodBeat.o(184127);
       return 0;
     }
-    AppMethodBeat.o(124398);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label512;
+      }
+    }
+    label512:
+    for (int i = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.session_id != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.session_id);
+      }
+      i = paramInt;
+      if (this.YOa != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.YOa);
+      }
+      paramInt = i;
+      if (this.YOb != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.YOb);
+      }
+      AppMethodBeat.o(184127);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(184127);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(184127);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        mx localmx = (mx)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(184127);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localmx.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(184127);
+          return 0;
+        case 2: 
+          localmx.session_id = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(184127);
+          return 0;
+        case 3: 
+          localmx.YOa = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(184127);
+          return 0;
+        }
+        localmx.YOb = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(184127);
+        return 0;
+      }
+      AppMethodBeat.o(184127);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.mx
  * JD-Core Version:    0.7.0.1
  */

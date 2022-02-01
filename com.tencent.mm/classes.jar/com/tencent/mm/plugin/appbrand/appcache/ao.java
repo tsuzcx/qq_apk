@@ -1,91 +1,62 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ab.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.autogen.b.gn;
+import com.tencent.mm.plugin.appbrand.ae.b;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.util.Locale;
 
-public class ao
-  extends c<an>
+public final class ao
+  extends gn
+  implements b
 {
-  public static final String[] lqL;
-  private final ISQLiteDatabase nFQ;
+  static final IAutoDBItem.MAutoDBInfo nVV;
+  static final String[] qDJ;
   
   static
   {
-    AppMethodBeat.i(90563);
-    lqL = new String[] { MAutoStorage.getCreateSQLs(an.lqK, "PredownloadEncryptPkgInfo") };
-    AppMethodBeat.o(90563);
+    int i = 0;
+    AppMethodBeat.i(90559);
+    qDJ = new String[] { "appId", "type", "version" };
+    nVV = gn.aJm();
+    String str = " PRIMARY KEY ( ";
+    Object localObject1 = qDJ;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      localObject2 = localObject1[i];
+      str = str + ", " + (String)localObject2;
+      i += 1;
+    }
+    str = str.replaceFirst(",", "");
+    str = str + " )";
+    localObject1 = new StringBuilder();
+    Object localObject2 = nVV;
+    ((IAutoDBItem.MAutoDBInfo)localObject2).sql = (((IAutoDBItem.MAutoDBInfo)localObject2).sql + "," + str);
+    AppMethodBeat.o(90559);
   }
   
-  public ao(ISQLiteDatabase paramISQLiteDatabase)
+  public final String cfO()
   {
-    super(paramISQLiteDatabase, an.lqK, "PredownloadEncryptPkgInfo", an.INDEX_CREATE);
-    this.nFQ = paramISQLiteDatabase;
+    AppMethodBeat.i(90558);
+    String str = String.format(Locale.US, "EncryptPkgInfo[%s %d %d]", new Object[] { this.field_appId, Integer.valueOf(this.field_type), Integer.valueOf(this.field_version) });
+    AppMethodBeat.o(90558);
+    return str;
   }
   
-  static boolean a(an paraman)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(90562);
-    if (Util.isNullOrNil(paraman.field_pkgPath))
-    {
-      Log.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s path nil", new Object[] { paraman.bGo() });
-      AppMethodBeat.o(90562);
-      return false;
-    }
-    if (Util.isNullOrNil(paraman.field_pkgMd5))
-    {
-      Log.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s record md5 nil", new Object[] { paraman.bGo() });
-      AppMethodBeat.o(90562);
-      return false;
-    }
-    String str = u.buc(paraman.field_pkgPath);
-    Log.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity with %s, file_md5(%s), record_md5(%s)", new Object[] { paraman.bGo(), str, paraman.field_pkgMd5 });
-    boolean bool = paraman.field_pkgMd5.equals(str);
-    AppMethodBeat.o(90562);
-    return bool;
+    return nVV;
   }
   
-  public final an A(String paramString, int paramInt1, int paramInt2)
+  public final String[] getKeys()
   {
-    AppMethodBeat.i(90561);
-    paramString = z(paramString, paramInt1, paramInt2);
-    if ((paramString != null) && (a(paramString)))
-    {
-      AppMethodBeat.o(90561);
-      return paramString;
-    }
-    AppMethodBeat.o(90561);
-    return null;
-  }
-  
-  public final an z(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90560);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(90560);
-      return null;
-    }
-    an localan = new an();
-    localan.field_appId = paramString;
-    localan.field_type = paramInt1;
-    localan.field_version = paramInt2;
-    if (get(localan, an.nDP))
-    {
-      AppMethodBeat.o(90560);
-      return localan;
-    }
-    AppMethodBeat.o(90560);
-    return null;
+    return qDJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ao
  * JD-Core Version:    0.7.0.1
  */

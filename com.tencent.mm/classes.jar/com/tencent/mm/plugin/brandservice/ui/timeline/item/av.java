@@ -1,229 +1,198 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.m;
-import com.tencent.mm.aj.u;
-import com.tencent.mm.aj.v;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.model.o;
+import com.tencent.mm.plugin.brandservice.d.a;
 import com.tencent.mm.plugin.brandservice.d.b;
-import com.tencent.mm.plugin.brandservice.d.d;
 import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.e;
-import com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr;
-import com.tencent.mm.pluginsdk.ui.applet.m.a;
+import com.tencent.mm.protocal.protobuf.ene;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import kotlin.g.b.p;
+import com.tencent.mm.storage.ah;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTlRecFeedCard;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BaseBizTimeViewHolder;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getContext", "()Landroid/content/Context;", "topLine", "Landroid/view/View;", "getTopLine", "()Landroid/view/View;", "topLine$delegate", "Lkotlin/Lazy;", "viewBizCanvas", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecFeedCanvas;", "viewBizContent", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecFeedContent;", "viewBizTag", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecFeedTag;", "viewItemList", "", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "[Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "viewParent", "doInsertAnimation", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "filling", "preInfo", "pos", "", "convertView", "getView", "hideAll", "initGapLine", "isSupportStyle", "", "style", "showGap", "showLine", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class av
-  extends ak
+  extends a
 {
-  public ImageView bwJ;
-  public ImageView sCR;
-  public TextView sDo;
-  public View sDp;
-  public View sDq;
-  private String sIe = "";
+  public static final av.a vND;
+  private final Context context;
+  private final b vHY;
+  public final View vLv;
+  private final ad vNE;
+  private final ae vNF;
+  private final ac vNG;
+  private final ab[] vNH;
+  private final j vNI;
   
-  public final void a(int paramInt, v paramv, z paramz)
+  static
   {
-    AppMethodBeat.i(259179);
-    super.a(paramInt, paramv, paramz);
-    if ((this.sDe != null) && (this.sDe.getVisibility() == 0))
-    {
-      if (a.ez(this.mContext) >= 1.125F)
-      {
-        this.sDe.setMaxLines(1);
-        AppMethodBeat.o(259179);
-        return;
-      }
-      this.sDe.setMaxLines(2);
-    }
-    AppMethodBeat.o(259179);
+    AppMethodBeat.i(302843);
+    vND = new av.a((byte)0);
+    AppMethodBeat.o(302843);
   }
   
-  public final void a(int paramInt1, v paramv, final z paramz, final int paramInt2, u paramu, int paramInt3)
+  public av(Context paramContext, b paramb)
   {
-    AppMethodBeat.i(6064);
-    super.a(paramInt1, paramv, paramz, paramInt2, paramu, paramInt3);
-    Object localObject1 = MPVideoPreviewMgr.sSn;
-    MPVideoPreviewMgr.q(paramz);
-    localObject1 = MPVideoPreviewMgr.sSn;
-    localObject1 = this.sIe;
-    Object localObject2 = paramv.vid;
-    label170:
-    boolean bool1;
-    if ((!MPVideoPreviewMgr.sRX) || (Util.isNullOrNil(MPVideoPreviewMgr.sSg)) || (Util.isNullOrNil((String)localObject1)))
+    AppMethodBeat.i(302829);
+    this.context = paramContext;
+    this.vHY = paramb;
+    this.vNE = new ad(this.vHY, this.context);
+    this.vNF = new ae(this.vHY, this.context);
+    this.vNG = new ac(this.vHY, this.context);
+    this.vNH = new ab[] { (ab)this.vNE, (ab)this.vNF, (ab)this.vNG };
+    paramContext = View.inflate(this.context, d.f.biz_time_line_rec_feed_layout, null);
+    s.s(paramContext, "inflate(context, R.layou…ne_rec_feed_layout, null)");
+    this.vLv = paramContext;
+    this.vNI = k.cm((kotlin.g.a.a)new b(this));
+    AppMethodBeat.o(302829);
+  }
+  
+  private final View ddW()
+  {
+    AppMethodBeat.i(302833);
+    View localView = (View)this.vNI.getValue();
+    AppMethodBeat.o(302833);
+    return localView;
+  }
+  
+  private final void ddX()
+  {
+    AppMethodBeat.i(302835);
+    ab[] arrayOfab = this.vNH;
+    int j = arrayOfab.length;
+    int i = 0;
+    while (i < j)
     {
-      this.sIe = paramv.vid;
-      this.mCount = paramInt1;
-      this.sHc = false;
-      this.sDf.setVisibility(8);
-      paramz.Vec = g.apE(paramz.field_talker);
-      Y(this.sDp, b.sAq);
-      localObject1 = m.uD(paramv.lpO);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label623;
-      }
-      this.sDo.setVisibility(0);
-      this.sDo.setText((CharSequence)localObject1);
-      this.sDo.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
-      this.sDo.setShadowLayer(10.0F, 0.0F, 0.0F, this.mContext.getResources().getColor(d.b.BW_0_Alpha_0_5));
-      this.sCR.setVisibility(0);
-      this.sDe.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
-      this.sDg.setBackgroundResource(d.d.mm_trans);
-      this.sDl.setTextColor(this.mContext.getResources().getColor(d.b.light_grey_text_color));
-      paramInt3 = this.sHf.sAc.getContentWidth();
-      this.sHf.sAc.a(paramz.field_msgId, 0, paramv, paramv.lpK, this.sCR, paramInt3, b.sAq, false, new m.a()
+      arrayOfab[i].ddv();
+      i += 1;
+    }
+    AppMethodBeat.o(302835);
+  }
+  
+  public final void a(com.tencent.mm.storage.ab paramab1, com.tencent.mm.storage.ab paramab2, int paramInt, View paramView)
+  {
+    int j = 1;
+    AppMethodBeat.i(302851);
+    s.u(paramab1, "info");
+    s.u(paramView, "convertView");
+    if (paramab1.acFJ == null)
+    {
+      Log.i("MicroMsg.BizTlRecFeedCard", "[TRACE_BIZRECFEED] recFeed is null");
+      ddX();
+      AppMethodBeat.o(302851);
+      return;
+    }
+    if (!ah.ayM(paramab1.acFJ.bcb))
+    {
+      Log.i("MicroMsg.BizTlRecFeedCard", "[TRACE_BIZRECFEED] style = " + paramab1.acFJ.bcb + " not support");
+      ddX();
+      AppMethodBeat.o(302851);
+      return;
+    }
+    ene localene = paramab1.acFJ;
+    s.s(localene, "info.recFeed");
+    if (!ah.c(localene))
+    {
+      Log.i("MicroMsg.BizTlRecFeedCard", "[TRACE_BIZRECFEED] recFeed is illegal");
+      ddX();
+      AppMethodBeat.o(302851);
+      return;
+    }
+    paramab1.field_isRead = 1;
+    int i;
+    if (paramab1.acFJ.abrI == 0) {
+      if ((paramab2 != null) && (paramab2.iYd() == true))
       {
-        public final void onFinish()
-        {
-          AppMethodBeat.i(6062);
-          av.this.sHc = true;
-          av.this.sDl.setTextColor(av.this.mContext.getResources().getColor(d.b.BW_100_Alpha_0_9));
-          if (av.this.sDf != null) {
-            av.this.sDf.setVisibility(0);
-          }
-          if (av.this.mCount > 1) {
-            av.this.sDe.setTextColor(av.this.mContext.getResources().getColor(d.b.white_text_color));
-          }
-          if (av.this.sHd > 0) {
-            av.this.sDg.setBackgroundResource(d.d.dmA);
-          }
-          av.this.sDo.setTextColor(av.this.mContext.getResources().getColor(d.b.white_text_color));
-          av.this.sHf.sAc.p(paramz.field_msgId, paramInt2);
-          AppMethodBeat.o(6062);
+        i = 1;
+        if (i == 0) {
+          break label305;
         }
-        
-        public final void onStart() {}
-      }, false, this.sHe);
-      a(this.mCount, paramv, paramz);
-      float f = 0.5F;
-      if (this.sDe.getVisibility() != 0) {
-        break label635;
+        paramab2 = paramab2.acFJ;
+        if ((paramab2 == null) || (paramab2.abrI != 0)) {
+          break label299;
+        }
+        i = j;
+        label193:
+        if (i == 0) {
+          break label305;
+        }
+        ddW().setVisibility(0);
+        this.vLv.setPadding(0, 0, 0, 0);
+        label217:
+        paramab2 = o.ojb;
+        o.ir(20L);
+        paramab2 = this.vNH;
+        int k = paramab2.length;
+        i = 0;
+        label239:
+        if (i >= k) {
+          break label363;
+        }
+        localene = paramab2[i];
+        if ((paramab1.iYd()) && (paramab1.acFJ != null)) {
+          break label330;
+        }
+        j = -1;
+        label269:
+        if (j == localene.TY()) {
+          break label342;
+        }
+        localene.ddv();
       }
-      this.sDe.measure(a.kr(this.mContext) - a.fromDPToPix(this.mContext, 48), 0);
-      paramInt3 = this.sDp.getLayoutParams().height;
-      int i = this.sDe.getMeasuredHeight();
-      int j = b.sAA;
-      f = 0.56F;
-      paramInt3 = paramInt3 - i - j;
-      label400:
-      if (this.sDq != null) {
-        ((RelativeLayout.LayoutParams)this.sDq.getLayoutParams()).topMargin = ((int)(paramInt3 * f - a.fromDPToPix(this.mContext, 48) / 2));
-      }
-      localObject1 = e.sKW;
-      e.G(paramv.url, paramv.type, "");
-      if (!a(paramInt1, paramv)) {
-        a(this, paramz, paramv);
-      }
-      localObject1 = this.sHf;
-      localObject2 = this.sDd;
-      if (this.mCount <= 1) {
-        break label650;
-      }
-      bool1 = true;
-      label497:
-      ((b)localObject1).a(paramv, paramz, paramInt2, paramu, (View)localObject2, bool1, 0);
-      if (this.mCount != 1) {
-        break label656;
-      }
-      this.sDd.setBackgroundResource(d.d.spE);
-      this.sDd.setPadding(this.sDd.getPaddingLeft(), 0, this.sDd.getPaddingRight(), b.sAt);
     }
     for (;;)
     {
-      this.sDf.setBackgroundResource(d.d.spC);
-      AppMethodBeat.o(6064);
-      return;
-      bool1 = p.h(localObject1, localObject2);
-      boolean bool2 = p.h(MPVideoPreviewMgr.sSg, localObject1);
-      if ((!(bool1 ^ true)) || (!bool2)) {
-        break;
-      }
-      Log.i("MicroMsg.MPVideoPreviewMgr", "checkSameTopVideo true");
-      MPVideoPreviewMgr.sSf = false;
-      MPVideoPreviewMgr.cEa();
+      i += 1;
+      break label239;
+      i = 0;
       break;
-      label623:
-      this.sDo.setVisibility(8);
-      break label170;
-      label635:
-      paramInt3 = this.sDp.getLayoutParams().height;
-      break label400;
-      label650:
-      bool1 = false;
-      break label497;
-      label656:
-      this.sDd.setBackgroundResource(d.d.spF);
-      this.sDd.setPadding(this.sDd.getPaddingLeft(), 0, this.sDd.getPaddingRight(), 0);
+      label299:
+      i = 0;
+      break label193;
+      label305:
+      ddW().setVisibility(8);
+      this.vLv.setPadding(0, b.vGm, 0, 0);
+      break label217;
+      label330:
+      j = paramab1.acFJ.bcb;
+      break label269;
+      label342:
+      localene.show();
+      localene.a(paramab1, paramInt, paramView, this.vLv);
     }
+    label363:
+    if (paramab1.acFC)
+    {
+      paramab1.acFC = false;
+      this.vLv.setBackgroundColor(com.tencent.mm.cd.a.w(this.context, d.b.white));
+      this.vLv.findViewById(d.e.rec_feed_anim_view).startAnimation(AnimationUtils.loadAnimation(this.context, d.a.biz_faded_in));
+    }
+    AppMethodBeat.o(302851);
   }
   
-  public final void a(View paramView, b paramb)
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<View>
   {
-    AppMethodBeat.i(6063);
-    super.a(paramView, paramb);
-    if (this.sEi != null)
+    b(av paramav)
     {
-      AppMethodBeat.o(6063);
-      return;
+      super();
     }
-    paramb = (ViewStub)paramView.findViewById(d.e.dZA);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(6063);
-      return;
-    }
-    paramb.inflate();
-    this.sEi = paramView.findViewById(d.e.sqQ);
-    this.sDd = paramView.findViewById(d.e.srA);
-    cAo();
-    this.sCR = ((ImageView)this.sEi.findViewById(d.e.cover));
-    this.bwJ = ((ImageView)this.sEi.findViewById(d.e.video_icon));
-    this.sDe = ((MMNeat7extView)this.sEi.findViewById(d.e.title_tv));
-    this.sDo = ((TextView)this.sEi.findViewById(d.e.sss));
-    this.sDp = this.sEi.findViewById(d.e.dzy);
-    this.sDf = ((ImageView)this.sEi.findViewById(d.e.dRn));
-    this.sDq = this.sEi.findViewById(d.e.stn);
-    this.sDg = ((LinearLayout)this.sEi.findViewById(d.e.srq));
-    this.sDh = ((LinearLayout)this.sEi.findViewById(d.e.ssV));
-    this.sDi = ((MMNeat7extView)this.sEi.findViewById(d.e.ssT));
-    this.sDj = ((MMNeat7extView)this.sEi.findViewById(d.e.dVp));
-    this.sHa = this.sEi.findViewById(d.e.stb);
-    this.sHb = ((TextView)this.sEi.findViewById(d.e.srU));
-    paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-    if (com.tencent.mm.plugin.brandservice.ui.b.d.cEs())
-    {
-      paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-      com.tencent.mm.plugin.brandservice.ui.b.d.e(this.sDe);
-    }
-    paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-    if (com.tencent.mm.plugin.brandservice.ui.b.d.cEs())
-    {
-      paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
-      com.tencent.mm.plugin.brandservice.ui.b.d.e(this.sDi);
-    }
-    AppMethodBeat.o(6063);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.av
  * JD-Core Version:    0.7.0.1
  */

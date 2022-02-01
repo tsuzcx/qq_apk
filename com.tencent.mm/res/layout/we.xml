@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/azr" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ka" android:textColor="@color/a34" android:background="@color/ac_" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/b9w" style="@style/mz" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e1w" android:layout_width="fill_parent" android:layout_height="58.0dip" style="@style/mz">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d59" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/dtd" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:src="@drawable/icon" />
-            <TextView android:textSize="@dimen/is" android:textColor="@color/wx" android:id="@id/ipq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/be5" android:layout_width="wrap_content" android:layout_height="@dimen/ip" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|right" android:orientation="horizontal" android:id="@id/fjr" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="15.0dip" android:textColor="@color/wx" android:id="@id/bga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/b9x" />
-            <ImageView android:layout_gravity="center|right" android:id="@id/fjp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k_" android:src="@drawable/aie" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="@dimen/fa" android:layout_gravity="center_horizontal" android:id="@id/ab6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" android:layout_marginBottom="@dimen/cr" android:text="@string/anx" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/aaz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

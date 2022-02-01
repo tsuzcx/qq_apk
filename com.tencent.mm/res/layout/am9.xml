@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="@dimen/a49"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<com.tencent.mm.view.HardTouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/am7" />
+    <include layout="@layout/am6" />
+</com.tencent.mm.view.HardTouchableLayout>

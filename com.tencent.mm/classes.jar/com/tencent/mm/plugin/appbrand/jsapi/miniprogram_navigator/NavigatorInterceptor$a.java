@@ -4,27 +4,26 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.launching.e.f;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.appbrand.launching.precondition.f;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/NavigatorInterceptor$MMLaunchEntryProxyTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/NavigatorInterceptor$MMLaunchEntryProxyTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class NavigatorInterceptor$a
   extends AppBrandProxyUIProcessTask
 {
-  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  public final void handleRequest(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(274255);
+    AppMethodBeat.i(326272);
     if (paramProcessRequest == null)
     {
-      paramProcessRequest = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.NavigatorInterceptor.MMLaunchEntryProxyRequest");
-      AppMethodBeat.o(274255);
+      paramProcessRequest = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.NavigatorInterceptor.MMLaunchEntryProxyRequest");
+      AppMethodBeat.o(326272);
       throw paramProcessRequest;
     }
-    paramProcessRequest = ((NavigatorInterceptor.MMLaunchEntryProxyRequest)paramProcessRequest).pdr;
-    f.pZN.a((Context)bPf(), paramProcessRequest);
-    b(null);
-    AppMethodBeat.o(274255);
+    paramProcessRequest = ((NavigatorInterceptor.MMLaunchEntryProxyRequest)paramProcessRequest).siI;
+    f.teH.a((Context)getActivityContext(), paramProcessRequest);
+    finishProcess(null);
+    AppMethodBeat.o(326272);
   }
 }
 

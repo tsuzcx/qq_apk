@@ -1,152 +1,185 @@
 package com.tencent.mm.plugin.hld.view;
 
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.a;
-import androidx.recyclerview.widget.RecyclerView.v;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.hld.a.f;
+import com.tencent.mm.plugin.hld.f.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/ImeFourGridBaseAdapter;", "T", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "W", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "()V", "viewTypeCacheMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getViewTypeCacheMap", "()Ljava/util/HashMap;", "updateData", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dataList", "", "arg", "", "holdPosition", "", "updateViewType", "plugin-hld_release"})
-public abstract class f<T extends RecyclerView.v, W>
-  extends RecyclerView.a<T>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/ImeOnClickHelper;", "Landroid/view/View$OnClickListener;", "Landroid/view/View$OnTouchListener;", "()V", "TAG", "", "handleNormalTouch", "", "v", "Lcom/tencent/mm/plugin/hld/view/ImeTouchSoundView;", "event", "Landroid/view/MotionEvent;", "onClick", "", "Landroid/view/View;", "onTouch", "setOnClickListener", "listener", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class f
+  implements View.OnClickListener, View.OnTouchListener
 {
-  private final HashMap<Integer, Integer> DIh = new HashMap();
+  public static final f JzR;
   
-  public abstract void a(RecyclerView paramRecyclerView, List<? extends W> paramList, String paramString, boolean paramBoolean);
-  
-  protected final HashMap<Integer, Integer> eHF()
+  static
   {
-    return this.DIh;
+    AppMethodBeat.i(312616);
+    JzR = new f();
+    AppMethodBeat.o(312616);
   }
   
-  public final void fF(List<? extends W> paramList)
+  public final void a(View paramView, View.OnClickListener paramOnClickListener)
   {
-    p.k(paramList, "dataList");
-    this.DIh.clear();
-    int j = ((Collection)paramList).size();
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(312624);
+    if (paramView == null)
     {
-      ((Map)this.DIh).put(Integer.valueOf(i), Integer.valueOf(getItemViewType(i)));
-      i += 1;
+      paramOnClickListener = null;
+      if (paramOnClickListener == null) {
+        Log.e("WxIme.ImeOnClickHelper", s.X("view is null ", Util.getStack()));
+      }
+      if (!(paramView instanceof ImeTouchSoundView)) {
+        break label89;
+      }
     }
-    ArrayList localArrayList = new ArrayList();
-    int k = ((Collection)paramList).size();
-    j = 0;
-    i = 0;
-    if (j < k)
+    label89:
+    for (paramOnClickListener = (ImeTouchSoundView)paramView;; paramOnClickListener = null)
     {
-      paramList = (Integer)this.DIh.get(Integer.valueOf(j));
-      if (paramList != null) {
-        if (paramList.intValue() + i == 4)
-        {
-          localArrayList.clear();
-          i = 0;
+      if (paramOnClickListener != null) {
+        ((ImeTouchSoundView)paramView).setOnTouchListener((View.OnTouchListener)this);
+      }
+      AppMethodBeat.o(312624);
+      return;
+      paramView.setTag(a.f.ime_click_listener, paramOnClickListener);
+      paramView.setOnClickListener((View.OnClickListener)this);
+      paramView.setSoundEffectsEnabled(false);
+      paramOnClickListener = ah.aiuX;
+      break;
+    }
+  }
+  
+  public final void onClick(View paramView)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(312639);
+    Object localObject1 = new b();
+    ((b)localObject1).cH(paramView);
+    a.c("com/tencent/mm/plugin/hld/view/ImeOnClickHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aYj());
+    if (paramView == null) {}
+    View.OnClickListener localOnClickListener;
+    for (paramView = null;; paramView = null)
+    {
+      if (paramView == null) {
+        Log.e("WxIme.ImeOnClickHelper", "view is null");
+      }
+      a.a(this, "com/tencent/mm/plugin/hld/view/ImeOnClickHelper", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(312639);
+      return;
+      localOnClickListener = (View.OnClickListener)paramView.getTag(a.f.ime_click_listener);
+      if (localOnClickListener != null) {
+        break;
+      }
+    }
+    if ((localOnClickListener instanceof g))
+    {
+      localObject1 = paramView.getTag(a.f.ime_click_timestamp);
+      if (!(localObject1 instanceof Long)) {
+        break label193;
+      }
+      localObject1 = (Long)localObject1;
+      label129:
+      if (localObject1 != null) {
+        break label199;
+      }
+      localObject1 = null;
+      label137:
+      if (localObject1 != null) {}
+    }
+    else
+    {
+      localOnClickListener.onClick(paramView);
+    }
+    if ((paramView instanceof ImeTouchSoundView))
+    {
+      localObject1 = (ImeTouchSoundView)paramView;
+      label163:
+      if (localObject1 != null) {
+        break label240;
+      }
+    }
+    label193:
+    label199:
+    label240:
+    for (localObject1 = localObject2;; localObject1 = ah.aiuX)
+    {
+      if (localObject1 == null)
+      {
+        localObject1 = i.JyA;
+        i.hV(paramView);
+      }
+      paramView = ah.aiuX;
+      break;
+      localObject1 = null;
+      break label129;
+      long l = ((Number)localObject1).longValue();
+      ((g)localOnClickListener).k(Long.valueOf(System.currentTimeMillis() - l));
+      localObject1 = ah.aiuX;
+      break label137;
+      localObject1 = null;
+      break label163;
+    }
+  }
+  
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(312649);
+    if ((paramView instanceof ImeTouchSoundView))
+    {
+      ImeTouchSoundView localImeTouchSoundView = (ImeTouchSoundView)paramView;
+      if (paramMotionEvent == null)
+      {
+        paramView = null;
+        if (paramView != null) {
+          break label60;
+        }
+        label27:
+        if (paramView != null) {
+          break label122;
         }
       }
       for (;;)
       {
-        j += 1;
+        Log.d("WxIme.ImeOnClickHelper", s.X("action:", paramView));
+        AppMethodBeat.o(312649);
+        return false;
+        paramView = Integer.valueOf(paramMotionEvent.getActionMasked());
         break;
-        if (paramList.intValue() + i < 4)
-        {
-          p.j(paramList, "it");
-          int m = paramList.intValue();
-          localArrayList.add(paramList);
-          i = m + i;
+        label60:
+        if (paramView.intValue() != 5) {
+          break label27;
         }
-        else
+        label122:
+        do
         {
-          if (localArrayList.size() == 1) {
-            ((Map)this.DIh).put(Integer.valueOf(j - 1), Integer.valueOf(4));
-          }
-          for (;;)
+          switch (paramView.intValue())
           {
-            localArrayList.clear();
-            p.j(paramList, "it");
-            i = paramList.intValue();
-            localArrayList.add(paramList);
+          default: 
             break;
-            Object localObject1;
-            label262:
-            label285:
-            Object localObject2;
-            if (localArrayList.size() == 2)
-            {
-              localObject1 = (Integer)this.DIh.get(Integer.valueOf(j - 1));
-              if (localObject1 == null)
-              {
-                localObject1 = (Integer)this.DIh.get(Integer.valueOf(j - 1));
-                if (localObject1 != null) {
-                  break label469;
-                }
-                localObject1 = (Integer)this.DIh.get(Integer.valueOf(j - 1));
-                if (localObject1 != null) {
-                  break label536;
-                }
-              }
-              label469:
-              do
-              {
-                do
-                {
-                  localObject1 = (Map)this.DIh;
-                  localObject2 = this.DIh.get(Integer.valueOf(j - 1));
-                  if (localObject2 == null) {
-                    p.iCn();
-                  }
-                  p.j(localObject2, "viewTypeCacheMap[i - 1]!!");
-                  ((Map)localObject1).put(Integer.valueOf(j - 1), Integer.valueOf(((Number)localObject2).intValue() + (4 - i)));
-                  break;
-                  if (((Integer)localObject1).intValue() != 1) {
-                    break label262;
-                  }
-                  localObject1 = (Integer)this.DIh.get(Integer.valueOf(j - 2));
-                  if ((localObject1 == null) || (((Integer)localObject1).intValue() != 1)) {
-                    break label262;
-                  }
-                  ((Map)this.DIh).put(Integer.valueOf(j - 1), Integer.valueOf(2));
-                  ((Map)this.DIh).put(Integer.valueOf(j - 2), Integer.valueOf(2));
-                  break;
-                  if (((Integer)localObject1).intValue() != 2) {
-                    break label285;
-                  }
-                  localObject1 = (Integer)this.DIh.get(Integer.valueOf(j - 2));
-                  if ((localObject1 == null) || (((Integer)localObject1).intValue() != 1)) {
-                    break label285;
-                  }
-                  ((Map)this.DIh).put(Integer.valueOf(j - 2), Integer.valueOf(2));
-                  break;
-                } while (((Integer)localObject1).intValue() != 1);
-                localObject1 = (Integer)this.DIh.get(Integer.valueOf(j - 2));
-              } while ((localObject1 == null) || (((Integer)localObject1).intValue() != 2));
-              label536:
-              ((Map)this.DIh).put(Integer.valueOf(j - 1), Integer.valueOf(2));
-            }
-            else if (localArrayList.size() == 3)
-            {
-              localObject1 = (Map)this.DIh;
-              localObject2 = this.DIh.get(Integer.valueOf(j - 1));
-              if (localObject2 == null) {
-                p.iCn();
-              }
-              p.j(localObject2, "viewTypeCacheMap[i - 1]!!");
-              ((Map)localObject1).put(Integer.valueOf(j - 1), Integer.valueOf(((Number)localObject2).intValue() + (4 - i)));
-            }
+          case 0: 
+            paramView = i.JyA;
+            i.hV((View)localImeTouchSoundView);
+            localImeTouchSoundView.setTag(a.f.ime_click_timestamp, Long.valueOf(System.currentTimeMillis()));
+            break;
           }
-        }
+        } while (paramView.intValue() == 0);
       }
     }
+    AppMethodBeat.o(312649);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.hld.view.f
  * JD-Core Version:    0.7.0.1
  */

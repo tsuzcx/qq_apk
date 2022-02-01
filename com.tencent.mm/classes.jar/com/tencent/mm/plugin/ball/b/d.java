@@ -8,24 +8,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends AnimatorListenerAdapter
 {
-  private View kJL;
-  private AnimatorListenerAdapter rYj;
+  private View nmf;
+  private AnimatorListenerAdapter vjz;
   
   public d(View paramView, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    this.kJL = paramView;
-    this.rYj = paramAnimatorListenerAdapter;
+    this.nmf = paramView;
+    this.vjz = paramAnimatorListenerAdapter;
   }
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
     AppMethodBeat.i(106048);
     super.onAnimationCancel(paramAnimator);
-    if (this.kJL != null) {
-      this.kJL.setVisibility(8);
+    if (this.nmf != null) {
+      this.nmf.setVisibility(8);
     }
-    if (this.rYj != null) {
-      this.rYj.onAnimationCancel(paramAnimator);
+    if (this.vjz != null) {
+      this.vjz.onAnimationCancel(paramAnimator);
     }
     AppMethodBeat.o(106048);
   }
@@ -34,11 +34,11 @@ public final class d
   {
     AppMethodBeat.i(106049);
     super.onAnimationEnd(paramAnimator);
-    if (this.kJL != null) {
-      this.kJL.setVisibility(8);
+    if (this.nmf != null) {
+      this.nmf.setVisibility(8);
     }
-    if (this.rYj != null) {
-      this.rYj.onAnimationEnd(paramAnimator);
+    if (this.vjz != null) {
+      this.vjz.onAnimationEnd(paramAnimator);
     }
     AppMethodBeat.o(106049);
   }
@@ -47,8 +47,8 @@ public final class d
   {
     AppMethodBeat.i(106052);
     super.onAnimationPause(paramAnimator);
-    if (this.rYj != null) {
-      this.rYj.onAnimationPause(paramAnimator);
+    if (this.vjz != null) {
+      this.vjz.onAnimationPause(paramAnimator);
     }
     AppMethodBeat.o(106052);
   }
@@ -57,8 +57,8 @@ public final class d
   {
     AppMethodBeat.i(106050);
     super.onAnimationRepeat(paramAnimator);
-    if (this.rYj != null) {
-      this.rYj.onAnimationRepeat(paramAnimator);
+    if (this.vjz != null) {
+      this.vjz.onAnimationRepeat(paramAnimator);
     }
     AppMethodBeat.o(106050);
   }
@@ -67,8 +67,8 @@ public final class d
   {
     AppMethodBeat.i(106053);
     super.onAnimationResume(paramAnimator);
-    if (this.rYj != null) {
-      this.rYj.onAnimationResume(paramAnimator);
+    if (this.vjz != null) {
+      this.vjz.onAnimationResume(paramAnimator);
     }
     AppMethodBeat.o(106053);
   }
@@ -77,15 +77,15 @@ public final class d
   {
     AppMethodBeat.i(106051);
     super.onAnimationStart(paramAnimator);
-    if (this.rYj != null) {
-      this.rYj.onAnimationStart(paramAnimator);
+    if (this.vjz != null) {
+      this.vjz.onAnimationStart(paramAnimator);
     }
     AppMethodBeat.o(106051);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.b.d
  * JD-Core Version:    0.7.0.1
  */

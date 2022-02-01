@@ -14,21 +14,21 @@ import java.util.List;
 public final class d$b
   extends RecyclerView.a<a>
 {
-  private final List<String> qgv;
-  private final d.a qgw;
+  private final List<String> tlg;
+  private final d.a tlh;
   
   public d$b(List<String> paramList, d.a parama)
   {
     AppMethodBeat.i(134923);
-    this.qgv = new ArrayList(paramList);
-    this.qgw = parama;
+    this.tlg = new ArrayList(paramList);
+    this.tlh = parama;
     AppMethodBeat.o(134923);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(134924);
-    int i = this.qgv.size();
+    int i = this.tlg.size();
     AppMethodBeat.o(134924);
     return i;
   }
@@ -46,7 +46,7 @@ public final class d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.d.b
  * JD-Core Version:    0.7.0.1
  */

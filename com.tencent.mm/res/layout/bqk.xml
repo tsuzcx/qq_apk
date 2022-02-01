@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center" android:id="@id/ijk" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:gravity="center" android:id="@id/ijj" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:gravity="center" android:id="@id/iji" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/kc" android:gravity="center" android:id="@id/bg5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs" android:text="@string/tb" style="@style/m0" />
+<LinearLayout android:orientation="vertical" android:id="@id/iwu" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/ce" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/evm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="@string/ij3" android:layout_marginStart="@dimen/cp" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ifl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cd" android:overScrollMode="never" />
 </LinearLayout>

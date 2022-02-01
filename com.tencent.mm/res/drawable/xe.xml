@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:color="@color/BW_0_Alpha_0_2" />
-    <item android:state_pressed="true" android:color="@color/afz" />
-    <item android:color="@color/afz" />
-</selector>
+    <solid android:color="@color/t9" />
+    <corners android:radius="1.0dip" />
+</shape>

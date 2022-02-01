@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dse;
-import com.tencent.mm.protocal.protobuf.dsf;
+import com.tencent.mm.protocal.protobuf.ekz;
+import com.tencent.mm.protocal.protobuf.ela;
 
 public final class c
-  extends a<dse, dsf>
+  extends a<ekz, ela>
 {
   public c(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(64875);
-    dse localdse = new dse();
-    localdse.appid = paramString1;
-    localdse.TNi = paramString2;
-    localdse.offset = paramInt;
-    a(localdse);
+    ekz localekz = new ekz();
+    localekz.appid = paramString1;
+    localekz.abdB = paramString2;
+    localekz.offset = paramInt;
+    a(localekz);
     AppMethodBeat.o(64875);
   }
   

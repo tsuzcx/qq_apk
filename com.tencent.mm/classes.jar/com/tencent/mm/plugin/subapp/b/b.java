@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.subapp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.az.c;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.vfs.y;
 
 public final class b
   implements az.c
 {
-  private static int aiD(int paramInt)
+  private static int anE(int paramInt)
   {
     if (paramInt == 0)
     {
@@ -39,10 +39,10 @@ public final class b
     }
   }
   
-  private static int aiE(int paramInt)
+  private static int anF(int paramInt)
   {
     AppMethodBeat.i(28913);
-    paramInt = aiD(paramInt);
+    paramInt = anE(paramInt);
     if (paramInt == -1)
     {
       AppMethodBeat.o(28913);
@@ -52,41 +52,41 @@ public final class b
     return 1 << paramInt;
   }
   
-  private String bl(int paramInt, boolean paramBoolean)
+  private String bT(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(28908);
-    bh.beI();
+    bh.bCz();
     if (!c.isSDCardAvailable())
     {
       AppMethodBeat.o(28908);
       return null;
     }
-    String str = bm(paramInt, paramBoolean);
-    if (u.agG(str))
+    String str = bU(paramInt, paramBoolean);
+    if (y.ZC(str))
     {
       AppMethodBeat.o(28908);
       return str;
     }
-    bet();
+    bCl();
     AppMethodBeat.o(28908);
     return null;
   }
   
-  private String bm(int paramInt, boolean paramBoolean)
+  private String bU(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(28911);
-    paramInt = aiE(paramInt);
+    paramInt = anF(paramInt);
     if (paramInt == 0)
     {
       AppMethodBeat.o(28911);
       return null;
     }
-    String str = G(paramInt, paramBoolean);
+    String str = V(paramInt, paramBoolean);
     AppMethodBeat.o(28911);
     return str;
   }
   
-  public final String G(int paramInt, boolean paramBoolean)
+  public final String V(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(28912);
     if (paramInt == 0)
@@ -94,7 +94,7 @@ public final class b
       AppMethodBeat.o(28912);
       return null;
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(com.tencent.mm.loader.j.b.aSP()).append("vuserpic_").append(Integer.toHexString(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder().append(com.tencent.mm.loader.i.b.bmD()).append("vuserpic_").append(Integer.toHexString(paramInt));
     if (paramBoolean) {}
     for (String str = "_HD";; str = "")
     {
@@ -104,46 +104,46 @@ public final class b
     }
   }
   
-  public final void bet()
+  public final void bCl()
   {
     AppMethodBeat.i(28909);
-    bh.beI();
+    bh.bCz();
     if (!c.isSDCardAvailable())
     {
       AppMethodBeat.o(28909);
       return;
     }
-    bh.beI();
-    long l1 = Util.nullAs((Long)c.aHp().b(66051, null), 0L);
+    bh.bCz();
+    long l1 = Util.nullAs((Long)c.ban().d(66051, null), 0L);
     long l2 = Util.nowMilliSecond();
     if (432000000L > l2 - l1)
     {
       AppMethodBeat.o(28909);
       return;
     }
-    bh.beI();
-    c.aHp().i(66051, Long.valueOf(l2));
+    bh.bCz();
+    c.ban().B(66051, Long.valueOf(l2));
     new a();
     AppMethodBeat.o(28909);
   }
   
-  public final String uS(int paramInt)
+  public final String vd(int paramInt)
   {
     AppMethodBeat.i(28906);
-    String str = bl(paramInt, true);
+    String str = bT(paramInt, true);
     AppMethodBeat.o(28906);
     return str;
   }
   
-  public final String uT(int paramInt)
+  public final String ve(int paramInt)
   {
     AppMethodBeat.i(28907);
-    String str = bl(paramInt, false);
+    String str = bT(paramInt, false);
     AppMethodBeat.o(28907);
     return str;
   }
   
-  public final boolean uU(int paramInt)
+  public final boolean vf(int paramInt)
   {
     AppMethodBeat.i(28910);
     if (paramInt == 0)
@@ -154,7 +154,7 @@ public final class b
     int i = 0;
     while (i < 32)
     {
-      if ((!u.agG(G(1 << i & paramInt, false))) || (!u.agG(G(1 << i & paramInt, true))))
+      if ((!y.ZC(V(1 << i & paramInt, false))) || (!y.ZC(V(1 << i & paramInt, true))))
       {
         AppMethodBeat.o(28910);
         return false;
@@ -166,21 +166,21 @@ public final class b
   }
   
   static final class a
-    implements i
+    implements h
   {
     public a()
     {
       AppMethodBeat.i(28904);
-      bh.aGY().a(167, this);
+      bh.aZW().a(167, this);
       a locala = new a();
-      bh.aGY().a(locala, 0);
+      bh.aZW().a(locala, 0);
       AppMethodBeat.o(28904);
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
     {
       AppMethodBeat.i(28905);
-      bh.aGY().b(167, this);
+      bh.aZW().b(167, this);
       AppMethodBeat.o(28905);
     }
   }

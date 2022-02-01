@@ -7,8 +7,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.ipcinvoker.j;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.modelappbrand.g;
 import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -20,7 +18,7 @@ public final class a
   public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(121281);
-    if (!((g)h.ae(g.class)).bgR().bgY())
+    if (!((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().bEP())
     {
       AppMethodBeat.o(121281);
       return true;
@@ -66,7 +64,7 @@ public final class a
       }
       i = 2;
       break label111;
-      com.tencent.mm.co.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -85,7 +83,7 @@ public final class a
         }
       });
       continue;
-      com.tencent.mm.co.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -123,7 +121,7 @@ public final class a
         default: 
           break;
         case 0: 
-          ((g)h.ae(g.class)).bgR().ge(true);
+          ((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().gV(true);
           break;
           if (!paramArrayOfString.equals("-or")) {
             break label288;
@@ -141,9 +139,9 @@ public final class a
           i = 2;
         }
       }
-      ((g)h.ae(g.class)).bgR().ge(false);
+      ((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().gV(false);
       continue;
-      ((g)h.ae(g.class)).bgR().cS(paramContext);
+      ((com.tencent.mm.modelappbrand.h)com.tencent.mm.kernel.h.ax(com.tencent.mm.modelappbrand.h.class)).bEJ().dN(paramContext);
     }
   }
   

@@ -1,6 +1,5 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,41 +7,39 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.by.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.am.z;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.protocal.protobuf.zr;
-import com.tencent.mm.protocal.protobuf.zs;
+import com.tencent.mm.protocal.protobuf.abp;
+import com.tencent.mm.protocal.protobuf.abq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class CheckSmsCanAddCardUI
   extends MMActivity
-  implements i
+  implements h
 {
-  private String VRO;
-  private d rr;
+  private String advX;
+  private com.tencent.mm.am.c rr;
   
-  private void hFB()
+  private void jhN()
   {
     AppMethodBeat.i(32989);
-    Toast.makeText(this, getString(R.l.eUD), 1).show();
-    LauncherUI.kH(this);
+    Toast.makeText(this, getString(R.l.gXC), 1).show();
+    LauncherUI.mK(this);
     finish();
     AppMethodBeat.o(32989);
   }
   
   protected int getLayoutId()
   {
-    return R.i.eik;
+    return R.i.glf;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -50,7 +47,7 @@ public class CheckSmsCanAddCardUI
     AppMethodBeat.i(32986);
     super.onCreate(paramBundle);
     hideTitleView();
-    if ((!bh.beJ()) || (bh.aGE()))
+    if ((!bh.bCA()) || (bh.aZG()))
     {
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent());
       finish();
@@ -71,27 +68,27 @@ public class CheckSmsCanAddCardUI
       if (i == 0) {
         break label267;
       }
-      bh.aGY().a(1038, this);
-      paramBundle = new d.a();
-      paramBundle.lBU = new zr();
-      paramBundle.lBV = new zs();
+      bh.aZW().a(1038, this);
+      paramBundle = new c.a();
+      paramBundle.otE = new abp();
+      paramBundle.otF = new abq();
       paramBundle.funcId = 1038;
       paramBundle.uri = "/cgi-bin/mmbiz-bin/api/checksmscanaddcard";
-      this.rr = paramBundle.bgN();
-      ((zr)d.b.b(this.rr.lBR)).SlZ = this.VRO;
-      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.VRO });
-      this.rr = aa.d(this.rr);
+      this.rr = paramBundle.bEF();
+      ((abp)c.b.b(this.rr.otB)).Zkk = this.advX;
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.advX });
+      this.rr = z.d(this.rr);
       AppMethodBeat.o(32986);
       return;
       label224:
-      this.VRO = paramBundle.getQueryParameter("encrystr");
-      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.VRO });
-      if (Util.isNullOrNil(this.VRO)) {
+      this.advX = paramBundle.getQueryParameter("encrystr");
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.advX });
+      if (Util.isNullOrNil(this.advX)) {
         break;
       }
     }
     label267:
-    hFB();
+    jhN();
     AppMethodBeat.o(32986);
   }
   
@@ -99,31 +96,31 @@ public class CheckSmsCanAddCardUI
   {
     AppMethodBeat.i(32987);
     super.onDestroy();
-    bh.aGY().b(1038, this);
+    bh.aZW().b(1038, this);
     AppMethodBeat.o(32987);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(32988);
     Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramq = (zs)d.c.b(this.rr.lBS);
-      paramString = paramq.fUL;
-      paramq = paramq.fUM;
-      Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramq });
+      paramp = (abq)c.c.b(this.rr.otC);
+      paramString = paramp.iaI;
+      paramp = paramp.iaJ;
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramp });
       Intent localIntent = new Intent();
       localIntent.putExtra("key_card_id", paramString);
-      localIntent.putExtra("key_card_ext", paramq);
+      localIntent.putExtra("key_card_ext", paramp);
       localIntent.putExtra("key_from_scene", 8);
       localIntent.putExtra("key_is_sms_add_card", true);
-      c.c(this, "card", ".ui.CardDetailUI", localIntent);
+      com.tencent.mm.br.c.c(this, "card", ".ui.CardDetailUI", localIntent);
       finish();
       AppMethodBeat.o(32988);
       return;
     }
-    hFB();
+    jhN();
     AppMethodBeat.o(32988);
   }
   

@@ -15,8 +15,8 @@ final class ContactMoreInfoUI$4
   {
     AppMethodBeat.i(27029);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     a.a(this, "com/tencent/mm/plugin/profile/ui/ContactMoreInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(27029);
   }

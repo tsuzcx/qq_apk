@@ -3,14 +3,15 @@ package com.tencent.luggage.sdk.config;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.luggage.sdk.launching.OnWXAppResultXPCWrapper;
-import com.tencent.luggage.sdk.launching.a;
 import com.tencent.luggage.sdk.launching.b;
+import com.tencent.luggage.sdk.launching.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.plugin.appbrand.config.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.sdk.platformtools.Util;
 import junit.framework.Assert;
@@ -22,24 +23,33 @@ public class AppBrandInitConfigLU
   extends AppBrandInitConfig
 {
   public static final Parcelable.Creator<AppBrandInitConfigLU> CREATOR;
+  public int appServiceType;
   public int appVersion;
-  public String cwP;
-  public String cwQ;
-  public int cwR;
-  public boolean cwS;
-  public String cwT;
-  public String cwU;
-  public final AppBrandLaunchReferrer cwV;
-  public final AppBrandWeishiParams cwW;
-  public int cwX;
-  public WxaAttributes.WxaVersionInfo cwY;
-  public String cwZ;
-  public int cxa;
-  public boolean cxb;
-  public a<?> cxc;
-  public boolean cxd;
-  public b cxe;
-  public transient AppBrandStatObject cxf;
+  public String eoP;
+  public String eoQ;
+  public String eoR;
+  private Boolean eoS;
+  public String eoT;
+  public String eoU;
+  public final AppBrandLaunchReferrer eoV;
+  public final AppBrandWeishiParams eoW;
+  public boolean eoX;
+  public String eoY;
+  public int eoZ;
+  public WxaAttributes.WxaVersionInfo epa;
+  public String epb;
+  public int epc;
+  public boolean epd;
+  public boolean epe;
+  public boolean epf;
+  public b<?> epg;
+  public b<?> eph;
+  public boolean epi;
+  public AppBrandInitWindowConfig epj;
+  public boolean epk;
+  public boolean epl;
+  public com.tencent.luggage.sdk.launching.e epm;
+  public transient AppBrandStatObject epn;
   public String extInfo;
   public long startTime;
   public int uin;
@@ -48,17 +58,19 @@ public class AppBrandInitConfigLU
   static
   {
     AppMethodBeat.i(146703);
-    CREATOR = new AppBrandInitConfigLU.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(146703);
   }
   
   public AppBrandInitConfigLU()
   {
     AppMethodBeat.i(169428);
-    this.cxd = false;
-    this.cxe = b.cBe;
-    this.cwV = new AppBrandLaunchReferrer();
-    this.cwW = new AppBrandWeishiParams();
+    this.eoS = null;
+    this.epj = null;
+    this.epl = false;
+    this.epm = com.tencent.luggage.sdk.launching.e.etI;
+    this.eoV = new AppBrandLaunchReferrer();
+    this.eoW = new AppBrandWeishiParams();
     AppMethodBeat.o(169428);
   }
   
@@ -66,134 +78,201 @@ public class AppBrandInitConfigLU
   {
     super(paramParcel);
     AppMethodBeat.i(146697);
-    this.cxd = false;
-    this.cxe = b.cBe;
-    this.cwP = paramParcel.readString();
-    this.cwQ = paramParcel.readString();
+    this.eoS = null;
+    this.epj = null;
+    this.epl = false;
+    this.epm = com.tencent.luggage.sdk.launching.e.etI;
+    this.eoP = paramParcel.readString();
+    this.eoQ = paramParcel.readString();
     this.username = paramParcel.readString();
-    this.cwT = paramParcel.readString();
-    this.cwU = paramParcel.readString();
-    this.cwV = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
-    this.cwW = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
-    this.cwR = paramParcel.readInt();
+    this.eoR = paramParcel.readString();
+    this.eoT = paramParcel.readString();
+    this.eoU = paramParcel.readString();
+    this.eoV = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
+    this.eoW = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.appServiceType = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.cwS = bool1;
+      this.eoX = bool1;
       this.extInfo = paramParcel.readString();
+      this.eoY = paramParcel.readString();
       this.startTime = paramParcel.readLong();
       this.appVersion = paramParcel.readInt();
-      this.cwX = paramParcel.readInt();
-      this.cwY = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
-      this.cwZ = paramParcel.readString();
+      this.eoZ = paramParcel.readInt();
+      this.epa = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
+      this.epb = paramParcel.readString();
       this.uin = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label245;
+        break label353;
       }
       bool1 = true;
-      label191:
-      this.cxd = bool1;
-      this.cxc = OnWXAppResultXPCWrapper.a(paramParcel);
-      this.cxe = b.b(paramParcel);
-      this.cxa = paramParcel.readInt();
+      label217:
+      this.epl = bool1;
+      this.epg = d.c(paramParcel);
+      this.eph = d.c(paramParcel);
+      this.epm = com.tencent.luggage.sdk.launching.e.d(paramParcel);
+      this.epc = paramParcel.readInt();
       if (paramParcel.readInt() <= 0) {
-        break label250;
+        break label358;
+      }
+      bool1 = true;
+      label263:
+      this.epd = bool1;
+      if (paramParcel.readByte() <= 0) {
+        break label363;
+      }
+      bool1 = true;
+      label277:
+      this.epe = bool1;
+      if (paramParcel.readByte() <= 0) {
+        break label368;
+      }
+      bool1 = true;
+      label291:
+      this.epf = bool1;
+      this.epj = ((AppBrandInitWindowConfig)paramParcel.readParcelable(AppBrandInitWindowConfig.class.getClassLoader()));
+      if (paramParcel.readInt() != 1) {
+        break label373;
+      }
+      bool1 = true;
+      label322:
+      this.epk = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label378;
       }
     }
-    label245:
-    label250:
+    label353:
+    label358:
+    label363:
+    label368:
+    label373:
+    label378:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.cxb = bool1;
+      this.epi = bool1;
       AppMethodBeat.o(146697);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label191;
+      break label217;
+      bool1 = false;
+      break label263;
+      bool1 = false;
+      break label277;
+      bool1 = false;
+      break label291;
+      bool1 = false;
+      break label322;
     }
   }
   
-  public final JSONObject QA()
+  public final boolean aqC()
   {
-    AppMethodBeat.i(146696);
-    if ((this.cwV != null) && (2 == this.cwV.nYB) && (TextUtils.isEmpty(this.cwV.appId)))
+    AppMethodBeat.i(220240);
+    boolean bool;
+    if (this.eoS != null)
     {
-      AppMethodBeat.o(146696);
-      return null;
+      bool = this.eoS.booleanValue();
+      AppMethodBeat.o(220240);
+      return bool;
     }
-    JSONObject localJSONObject = this.cwV.bLk();
-    AppMethodBeat.o(146696);
-    return localJSONObject;
-  }
-  
-  public AppBrandInitConfigLU QB()
-  {
-    AppMethodBeat.i(146699);
-    AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)super.QC();
-    AppMethodBeat.o(146699);
-    return localAppBrandInitConfigLU;
-  }
-  
-  public final boolean Qs()
-  {
-    AppMethodBeat.i(247886);
-    if (Util.isNullOrNil(this.cwY.obF))
+    Object localObject;
+    if (Util.isNullOrNil(this.epa.rcs))
     {
-      AppMethodBeat.o(247886);
-      return false;
+      localObject = Boolean.FALSE;
+      this.eoS = ((Boolean)localObject);
+      bool = ((Boolean)localObject).booleanValue();
+      AppMethodBeat.o(220240);
+      return bool;
     }
     try
     {
-      JSONArray localJSONArray = new JSONObject(this.cwY.obF).optJSONArray("call_plugin_info");
-      if ((localJSONArray != null) && (localJSONArray.length() > 0))
+      localObject = new JSONObject(this.epa.rcs).optJSONArray("call_plugin_info");
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {}
+      for (bool = true;; bool = false)
       {
-        AppMethodBeat.o(247886);
-        return true;
+        localObject = Boolean.valueOf(bool);
+        this.eoS = ((Boolean)localObject);
+        bool = ((Boolean)localObject).booleanValue();
+        AppMethodBeat.o(220240);
+        return bool;
       }
-      AppMethodBeat.o(247886);
       return false;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(247886);
+      AppMethodBeat.o(220240);
     }
-    return false;
   }
   
-  public final boolean Qt()
+  public final boolean aqD()
   {
-    return this.cxd;
+    AppMethodBeat.i(220243);
+    boolean bool = Util.nullAsNil(this.epa.rcB).contains("skyline");
+    AppMethodBeat.o(220243);
+    return bool;
   }
   
-  public final AppBrandStatObject Qu()
+  public final z aqE()
   {
-    return this.cxf;
+    if (this.epj == null) {
+      return z.raV;
+    }
+    return this.epj.epq;
   }
   
-  public boolean Qv()
+  public final String aqF()
   {
-    return this.cwR == 4;
+    if (this.epj == null) {
+      return null;
+    }
+    return this.epj.epr;
   }
   
-  public final String Qw()
+  public final y aqG()
   {
-    return this.cwP;
+    if (this.epj == null) {
+      return y.raQ;
+    }
+    return this.epj.ept;
   }
   
-  public final String Qx()
+  public final y aqH()
   {
-    return this.cwQ;
+    if (this.epj == null) {
+      return y.raQ;
+    }
+    return this.epj.epu;
   }
   
-  public final JSONObject Qy()
+  public final void aqI()
+  {
+    AppMethodBeat.i(146693);
+    com.tencent.mm.sdk.platformtools.Log.i("Luggage.AppBrandInitConfigLU", "resetSession() %s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
+    e locale2 = e.a.eqq;
+    e locale1 = locale2;
+    if (locale2 == null) {
+      locale1 = e.eqp;
+    }
+    this.eoP = locale1.aqQ();
+    AppMethodBeat.o(146693);
+  }
+  
+  public boolean aqJ()
+  {
+    return this.appServiceType == 4;
+  }
+  
+  public final JSONObject aqK()
   {
     AppMethodBeat.i(146694);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("shareKey", this.cwU);
-      localJSONObject.put("shareName", this.cwT);
+      localJSONObject.put("shareKey", this.eoU);
+      localJSONObject.put("shareName", this.eoT);
       if (localJSONObject.length() == 0)
       {
         AppMethodBeat.o(146694);
@@ -209,14 +288,14 @@ public class AppBrandInitConfigLU
     return localJSONException;
   }
   
-  public final JSONObject Qz()
+  public final JSONObject aqL()
   {
     AppMethodBeat.i(146695);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("appId", this.appId);
-      localJSONObject.put("nickname", this.fzM);
+      localJSONObject.put("nickname", this.hEy);
       localJSONObject.put("icon", this.iconUrl);
       if (localJSONObject.length() == 0)
       {
@@ -233,104 +312,143 @@ public class AppBrandInitConfigLU
     return localJSONException;
   }
   
-  public final void a(AppBrandStatObject paramAppBrandStatObject)
+  public final JSONObject aqM()
   {
-    this.cxf = paramAppBrandStatObject;
+    AppMethodBeat.i(146696);
+    JSONObject localJSONObject = this.eoV.ckI();
+    AppMethodBeat.o(146696);
+    return localJSONObject;
   }
   
-  public final void dV(String paramString)
+  public AppBrandInitConfigLU aqN()
   {
-    AppMethodBeat.i(247887);
+    AppMethodBeat.i(146699);
+    AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)super.aqO();
+    AppMethodBeat.o(146699);
+    return localAppBrandInitConfigLU;
+  }
+  
+  public final void ff(String paramString)
+  {
+    AppMethodBeat.i(220257);
     com.tencent.mm.sdk.platformtools.Log.i("Luggage.AppBrandInitConfigLU", "resetSession(%s) %s", new Object[] { paramString, android.util.Log.getStackTraceString(new Throwable()) });
-    this.cwP = paramString;
-    AppMethodBeat.o(247887);
+    this.eoP = paramString;
+    AppMethodBeat.o(220257);
   }
   
-  public final void dW(String paramString)
+  public final void fk(String paramString)
   {
-    AppMethodBeat.i(247888);
+    AppMethodBeat.i(220258);
     Assert.assertFalse(TextUtils.isEmpty(paramString));
     com.tencent.mm.sdk.platformtools.Log.i("Luggage.AppBrandInitConfigLU", "resetInstanceId(%s) %s", new Object[] { paramString, android.util.Log.getStackTraceString(new Throwable()) });
-    this.cwQ = paramString;
-    AppMethodBeat.o(247888);
-  }
-  
-  public final void resetSession()
-  {
-    AppMethodBeat.i(146693);
-    com.tencent.mm.sdk.platformtools.Log.i("Luggage.AppBrandInitConfigLU", "resetSession() %s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
-    d locald2 = d.a.cxV;
-    d locald1 = locald2;
-    if (locald2 == null) {
-      locald1 = d.cxU;
-    }
-    this.cwP = locald1.QE();
-    AppMethodBeat.o(146693);
+    this.eoQ = paramString;
+    AppMethodBeat.o(220258);
   }
   
   public String toString()
   {
     AppMethodBeat.i(146698);
-    String str = "AppBrandInitConfigLU {visitingSessionId='" + this.cwP + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.fzM + '\'' + ", debugType=" + this.cBI + ", orientation='" + this.cCi + '\'' + ", enterPath='" + this.nBq + '\'' + ", shareName='" + this.cwT + '\'' + ", shareKey='" + this.cwU + '\'' + ", startTime=" + this.startTime + ", referrer=" + this.cwV + ", extInfo=" + this.extInfo + ", appVersion=" + this.appVersion + '}';
+    String str = "AppBrandInitConfigLU {visitingSessionId='" + this.eoP + '\'' + ", wxaLaunchInstanceId=" + this.eoQ + ", clickTimestamp=" + this.startTime + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.hEy + '\'' + ", debugType=" + this.eul + ", orientation='" + this.euP + '\'' + ", enterPath='" + this.qAF + '\'' + ", shareName='" + this.eoT + '\'' + ", shareKey='" + this.eoU + '\'' + ", startTime=" + this.startTime + ", referrer=" + this.eoV + ", extInfo=" + this.extInfo + ", appVersion=" + this.appVersion + ", wsEndpoint=" + this.eoY + '}';
     AppMethodBeat.o(146698);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
+    int j = 1;
     AppMethodBeat.i(146700);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.cwP);
-    paramParcel.writeString(this.cwQ);
+    paramParcel.writeString(this.eoP);
+    paramParcel.writeString(this.eoQ);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.cwT);
-    paramParcel.writeString(this.cwU);
-    paramParcel.writeParcelable(this.cwV, paramInt);
-    paramParcel.writeParcelable(this.cwW, paramInt);
-    paramParcel.writeInt(this.cwR);
+    paramParcel.writeString(this.eoR);
+    paramParcel.writeString(this.eoT);
+    paramParcel.writeString(this.eoU);
+    paramParcel.writeParcelable(this.eoV, paramInt);
+    paramParcel.writeParcelable(this.eoW, paramInt);
+    paramParcel.writeInt(this.appServiceType);
     byte b;
-    if (this.cwS)
+    int i;
+    if (this.eoX)
     {
       b = 1;
       paramParcel.writeByte(b);
       paramParcel.writeString(this.extInfo);
+      paramParcel.writeString(this.eoY);
       paramParcel.writeLong(this.startTime);
       paramParcel.writeInt(this.appVersion);
-      paramParcel.writeInt(this.cwX);
-      paramParcel.writeParcelable(this.cwY, paramInt);
-      paramParcel.writeString(this.cwZ);
+      paramParcel.writeInt(this.eoZ);
+      paramParcel.writeParcelable(this.epa, paramInt);
+      paramParcel.writeString(this.epb);
       paramParcel.writeInt(this.uin);
-      if (!this.cxd) {
-        break label218;
+      if (!this.epl) {
+        break label317;
+      }
+      i = 1;
+      label178:
+      paramParcel.writeByte((byte)i);
+      d.b(this.epg, paramParcel);
+      d.b(this.eph, paramParcel);
+      com.tencent.luggage.sdk.launching.e.a(this.epm, paramParcel);
+      paramParcel.writeInt(this.epc);
+      if (!this.epd) {
+        break label323;
+      }
+      i = 1;
+      label227:
+      paramParcel.writeInt(i);
+      if (!this.epe) {
+        break label329;
+      }
+      i = 1;
+      label243:
+      paramParcel.writeByte((byte)i);
+      if (!this.epf) {
+        break label335;
+      }
+      i = 1;
+      label260:
+      paramParcel.writeByte((byte)i);
+      paramParcel.writeParcelable(this.epj, paramInt);
+      if (!this.epk) {
+        break label341;
       }
       paramInt = 1;
-      label161:
-      paramParcel.writeByte((byte)paramInt);
-      OnWXAppResultXPCWrapper.a(this.cxc, paramParcel);
-      b.a(this.cxe, paramParcel);
-      paramParcel.writeInt(this.cxa);
-      if (!this.cxb) {
-        break label223;
+      label285:
+      paramParcel.writeInt(paramInt);
+      if (!this.epi) {
+        break label346;
       }
     }
-    label218:
-    label223:
-    for (paramInt = i;; paramInt = 0)
+    label317:
+    label323:
+    label329:
+    label335:
+    label341:
+    label346:
+    for (paramInt = j;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       AppMethodBeat.o(146700);
       return;
       b = 0;
       break;
+      i = 0;
+      break label178;
+      i = 0;
+      break label227;
+      i = 0;
+      break label243;
+      i = 0;
+      break label260;
       paramInt = 0;
-      break label161;
+      break label285;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.AppBrandInitConfigLU
  * JD-Core Version:    0.7.0.1
  */

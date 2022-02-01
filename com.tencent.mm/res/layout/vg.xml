@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="wrap_content" app:cardBackgroundColor="@android:color/transparent" app:cardElevation="10.0dip"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/q0" android:layout_width="300.0dip" android:layout_height="wrap_content"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <RelativeLayout android:orientation="horizontal" android:background="@drawable/q2" android:layout_width="fill_parent" android:layout_height="100.0dip">
-            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <androidx.appcompat.widget.AppCompatImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="11.0dip" android:scaleType="fitXY" android:adjustViewBounds="false" app:srcCompat="@drawable/q9" />
-            </FrameLayout>
-            <TextView android:textSize="30.0sp" android:typeface="sans" android:textColor="@color/jr" android:gravity="center" android:id="@id/b_o" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:fontFamily="roboto_condensed" />
-            <ProgressBar android:id="@id/gl_" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignTop="@id/b_o" android:layout_alignBottom="@id/b_o" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <TextView android:textSize="12.0sp" android:typeface="sans" android:textColor="@color/k3" android:gravity="center" android:id="@id/b85" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:singleLine="false" android:fontFamily="roboto_condensed" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:layout_marginBottom="17.0dip">
-            <Button android:textSize="10.0sp" android:typeface="sans" android:textStyle="bold" android:textColor="@color/k3" android:layout_gravity="center_horizontal" android:id="@id/aic" android:background="@drawable/q1" android:focusable="true" android:clickable="true" android:layout_width="84.0dip" android:layout_height="27.0dip" android:text="@android:string/cancel" android:textAllCaps="true" android:fontFamily="roboto_condensed">
-                <requestFocus />
-            </Button>
-        </FrameLayout>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    <com.tencent.mm.media.camera.view.CameraKitView android:id="@id/apr" android:layout_width="fill_parent" android:layout_height="fill_parent" app:cameraId="a2w" app:cameraView="m85" />
+</androidx.constraintlayout.widget.ConstraintLayout>

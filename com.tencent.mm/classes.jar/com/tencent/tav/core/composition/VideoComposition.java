@@ -21,7 +21,7 @@ public class VideoComposition
   private Class<? extends VideoCompositing> customVideoCompositorClass;
   private CMTime frameDuration;
   private List<? extends VideoCompositionInstruction> instructions;
-  private VideoComposition.RenderLayoutMode renderLayoutMode;
+  private RenderLayoutMode renderLayoutMode;
   private float renderScale;
   private CGSize renderSize;
   private int sourceTrackIDForFrameTiming;
@@ -30,16 +30,16 @@ public class VideoComposition
   
   public VideoComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(189721);
+    AppMethodBeat.i(215680);
     this.asset = paramAsset;
     this.instructions = new ArrayList();
     fillSourceProperty();
-    AppMethodBeat.o(189721);
+    AppMethodBeat.o(215680);
   }
   
   private void fillSourceProperty()
   {
-    AppMethodBeat.i(189734);
+    AppMethodBeat.i(215693);
     Object localObject2 = this.asset.tracksWithMediaType(1);
     this.frameDuration = null;
     this.renderSize = null;
@@ -110,16 +110,16 @@ public class VideoComposition
       }
     }
     this.renderScale = 1.0F;
-    AppMethodBeat.o(189734);
+    AppMethodBeat.o(215693);
   }
   
   public static VideoCompositionInstruction findInstruction(VideoComposition paramVideoComposition, CMTime paramCMTime)
   {
     Object localObject = null;
-    AppMethodBeat.i(189759);
+    AppMethodBeat.i(215707);
     if (paramVideoComposition.getInstructions() == null)
     {
-      AppMethodBeat.o(189759);
+      AppMethodBeat.o(215707);
       return null;
     }
     Iterator localIterator = paramVideoComposition.getInstructions().iterator();
@@ -149,24 +149,24 @@ public class VideoComposition
           paramVideoComposition = (VideoComposition)localObject;
           if (localCMTimeRange.getEndUs() > paramCMTime.getTimeUs())
           {
-            AppMethodBeat.o(189759);
+            AppMethodBeat.o(215707);
             return localVideoCompositionInstruction;
           }
         }
       }
     }
-    AppMethodBeat.o(189759);
+    AppMethodBeat.o(215707);
     return paramVideoComposition;
   }
   
   public VideoCompositing getCustomVideoCompositor()
   {
-    AppMethodBeat.i(189742);
+    AppMethodBeat.i(215714);
     if (this.customVideoCompositorClass != null) {
       try
       {
         VideoCompositing localVideoCompositing = (VideoCompositing)this.customVideoCompositorClass.newInstance();
-        AppMethodBeat.o(189742);
+        AppMethodBeat.o(215714);
         return localVideoCompositing;
       }
       catch (InstantiationException localInstantiationException)
@@ -185,7 +185,7 @@ public class VideoComposition
       }
     }
     VideoCompositor localVideoCompositor2 = new VideoCompositor();
-    AppMethodBeat.o(189742);
+    AppMethodBeat.o(215714);
     return localVideoCompositor2;
   }
   
@@ -204,7 +204,7 @@ public class VideoComposition
     return this.instructions;
   }
   
-  public VideoComposition.RenderLayoutMode getRenderLayoutMode()
+  public RenderLayoutMode getRenderLayoutMode()
   {
     return this.renderLayoutMode;
   }
@@ -226,10 +226,24 @@ public class VideoComposition
   
   public String toString()
   {
-    AppMethodBeat.i(189764);
+    AppMethodBeat.i(215772);
     String str = "MutableVideoComposition{, frameDuration=" + this.frameDuration + ", renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", instructions=" + this.instructions + '}';
-    AppMethodBeat.o(189764);
+    AppMethodBeat.o(215772);
     return str;
+  }
+  
+  public static enum RenderLayoutMode
+  {
+    static
+    {
+      AppMethodBeat.i(215674);
+      aspectFit = new RenderLayoutMode("aspectFit", 0);
+      aspectFill = new RenderLayoutMode("aspectFill", 1);
+      $VALUES = new RenderLayoutMode[] { aspectFit, aspectFill };
+      AppMethodBeat.o(215674);
+    }
+    
+    private RenderLayoutMode() {}
   }
 }
 

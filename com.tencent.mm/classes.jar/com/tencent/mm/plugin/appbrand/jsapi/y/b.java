@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.y;
 
-import com.tencent.mm.plugin.appbrand.jsapi.r;
+import kotlin.Metadata;
 
-public final class b
-  extends r
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerPolicyContainer;", "", "referrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "setReferrerPolicy", "(Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;)V", "luggage-commons_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface b
 {
-  public static final int CTRL_INDEX = 1004;
-  public static final String NAME = "onSalesDrivingMessage";
+  public abstract c getReferrerPolicy();
+  
+  public abstract void setReferrerPolicy(c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.y.b
  * JD-Core Version:    0.7.0.1
  */

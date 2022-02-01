@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.t.a.g;
-import com.tencent.mm.t.a.h;
-import kotlin.l;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.r.a.g;
+import com.tencent.mm.r.a.h;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionMaterialCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionMaterialResp;", "keyword", "", "uxinfo", "source", "", "traceId", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V", "plugin-eggspring_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionMaterialCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionMaterialResp;", "keyword", "", "uxinfo", "source", "", "traceId", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V", "plugin-eggspring_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends c<h>
+  extends b<h>
 {
   public d(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(249462);
+    AppMethodBeat.i(266534);
     g localg = new g();
-    localg.fwe = paramString1;
-    localg.jDL = paramString2;
+    localg.hAB = paramString1;
+    localg.mdG = paramString2;
     localg.source = 0;
-    localg.jDM = paramString3;
-    paramString1 = new d.a();
-    paramString1.c((a)localg);
-    paramString1.d((a)new h());
-    paramString1.vF(0);
-    paramString1.vG(0);
-    paramString1.TW("/cgi-bin/mmoc-bin/interaction/get_interaction_material");
-    paramString1.vD(4310);
-    c(paramString1.bgN());
-    AppMethodBeat.o(249462);
+    localg.mdH = paramString3;
+    paramString1 = new c.a();
+    paramString1.otE = ((a)localg);
+    paramString1.otF = ((a)new h());
+    paramString1.otG = 0;
+    paramString1.respCmdId = 0;
+    paramString1.uri = "/cgi-bin/mmoc-bin/interaction/get_interaction_material";
+    paramString1.funcId = 4310;
+    c(paramString1.bEF());
+    AppMethodBeat.o(266534);
   }
 }
 

@@ -34,60 +34,60 @@ import java.util.List;
 
 public final class c
 {
+  private MMTextureView Abl;
+  HandlerThread Abm;
+  MMHandler Abn;
+  public w Abo;
+  public int Abs;
+  int Abw;
   private boolean isFrontCamera;
-  private d.a.a lbk;
   Context mContext;
   int mDesiredPreviewHeight;
   int mDesiredPreviewWidth;
-  private Point sdD;
-  d.b wBD;
-  private MMTextureView wFa;
-  HandlerThread wFb;
-  MMHandler wFc;
-  public w wFd;
-  private boolean wFe;
-  public boolean wFf;
-  public int wFj;
-  int wFn;
-  private Point wxB;
-  private Point wxC;
-  private boolean wxD;
-  private int wxE;
-  private Point wxG;
+  private boolean mIsCameraOpened;
+  private d.a.a nGr;
+  public boolean nvB;
+  private Point vpf;
+  private Point zTH;
+  private Point zTI;
+  private boolean zTJ;
+  private int zTK;
+  private Point zTM;
+  d.b zXO;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(198617);
-    this.wxB = null;
-    this.sdD = null;
-    this.wxC = null;
-    this.wxG = null;
-    this.wFj = 0;
-    this.wBD = new d.b()
+    AppMethodBeat.i(264443);
+    this.zTH = null;
+    this.vpf = null;
+    this.zTI = null;
+    this.zTM = null;
+    this.Abs = 0;
+    this.zXO = new d.b()
     {
       public final void bQ(byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(198386);
-        com.tencent.mm.plugin.facedetect.model.c.wwx.as(paramAnonymousArrayOfByte);
-        AppMethodBeat.o(198386);
+        AppMethodBeat.i(264463);
+        com.tencent.mm.plugin.facedetect.model.c.zSD.as(paramAnonymousArrayOfByte);
+        AppMethodBeat.o(264463);
       }
       
-      public final a<byte[]> dhW()
+      public final a<byte[]> dOH()
       {
-        return com.tencent.mm.plugin.facedetect.model.c.wwx;
+        return com.tencent.mm.plugin.facedetect.model.c.zSD;
       }
     };
     this.mContext = paramContext;
-    this.wFe = false;
-    this.wFf = false;
-    this.wFb = null;
-    this.wFe = false;
-    AppMethodBeat.o(198617);
+    this.mIsCameraOpened = false;
+    this.nvB = false;
+    this.Abm = null;
+    this.mIsCameraOpened = false;
+    AppMethodBeat.o(264443);
   }
   
   private static Point a(Camera.Parameters paramParameters, Point paramPoint)
   {
-    AppMethodBeat.i(198679);
+    AppMethodBeat.i(264471);
     Object localObject = new ArrayList(paramParameters.getSupportedPreviewSizes());
     Collections.sort((List)localObject, new c.b((byte)0));
     Point localPoint = null;
@@ -127,12 +127,12 @@ public final class c
         for (int m = i;; m = j)
         {
           Log.d("MicroMsg.FaceFlashManagerCamera", "maybeFlippedWidth: %d, maybeFlippedHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
-          if ((k != paramPoint.x) || (m != paramPoint.y) || (!l(k, m, l))) {
+          if ((k != paramPoint.x) || (m != paramPoint.y) || (!m(k, m, l))) {
             break label359;
           }
           paramParameters = new Point(i, j);
           Log.i("MicroMsg.FaceFlashManagerCamera", "Found preview size exactly matching screen size: ".concat(String.valueOf(paramParameters)));
-          AppMethodBeat.o(198679);
+          AppMethodBeat.o(264471);
           return paramParameters;
           m = 0;
           break;
@@ -143,7 +143,7 @@ public final class c
         f2 = Math.abs(k / m - f3);
         if (i % 10 == 0)
         {
-          if ((f2 >= f1) || (!l(i, j, l))) {
+          if ((f2 >= f1) || (!m(i, j, l))) {
             break label539;
           }
           localPoint = new Point(i, j);
@@ -170,7 +170,7 @@ public final class c
       for (;;)
       {
         Log.i("MicroMsg.FaceFlashManagerCamera", "Found best approximate preview size: ".concat(String.valueOf(paramPoint)));
-        AppMethodBeat.o(198679);
+        AppMethodBeat.o(264471);
         return paramPoint;
         Log.e("MicroMsg.FaceFlashManagerCamera", "hy: can not find default size!!");
         paramPoint = localPoint;
@@ -178,19 +178,32 @@ public final class c
     }
   }
   
-  private static void d(Camera.Parameters paramParameters)
+  private void dPU()
   {
-    AppMethodBeat.i(198692);
-    if (af.juH.jpZ > 0)
+    AppMethodBeat.i(264455);
+    if (this.Abm == null)
+    {
+      Log.i("MicroMsg.FaceFlashManagerCamera", "start camera thread");
+      this.Abm = com.tencent.threadpool.c.d.jx("cameraBackground", 5);
+      this.Abm.start();
+      this.Abn = new MMHandler(this.Abm.getLooper());
+    }
+    AppMethodBeat.o(264455);
+  }
+  
+  private static void f(Camera.Parameters paramParameters)
+  {
+    AppMethodBeat.i(264482);
+    if (af.lXY.lTg > 0)
     {
       Log.i("MicroMsg.FaceFlashManagerCamera", "set frame rate > 0, do not try set preview fps range");
-      AppMethodBeat.o(198692);
+      AppMethodBeat.o(264482);
       return;
     }
     List localList = paramParameters.getSupportedPreviewFpsRange();
     if ((localList == null) || (localList.size() == 0))
     {
-      AppMethodBeat.o(198692);
+      AppMethodBeat.o(264482);
       return;
     }
     int j = -2147483648;
@@ -207,12 +220,12 @@ public final class c
       i2 = i;
       i1 = j;
       if (arrayOfInt == null) {
-        break label384;
+        break label391;
       }
       i2 = i;
       i1 = j;
       if (arrayOfInt.length <= 1) {
-        break label384;
+        break label391;
       }
       int i5 = arrayOfInt[0];
       int i4 = arrayOfInt[1];
@@ -220,12 +233,12 @@ public final class c
       i2 = i;
       i1 = j;
       if (i5 < 0) {
-        break label384;
+        break label391;
       }
       i2 = i;
       i1 = j;
       if (i4 < i5) {
-        break label384;
+        break label391;
       }
       k = i;
       int m = j;
@@ -242,7 +255,7 @@ public final class c
       i2 = k;
       i1 = m;
       if (i4 < 30000) {
-        break label384;
+        break label391;
       }
       n = 1;
       j = m;
@@ -257,155 +270,128 @@ public final class c
       Log.i("MicroMsg.FaceFlashManagerCamera", "dkfps get fit  [%d %d], max target fps %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(30) });
       if ((j == 2147483647) || (i == 2147483647))
       {
-        AppMethodBeat.o(198692);
+        AppMethodBeat.o(264482);
         return;
       }
       try
       {
         paramParameters.setPreviewFpsRange(j, i);
         Log.i("MicroMsg.FaceFlashManagerCamera", "set fps range %d %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-        AppMethodBeat.o(198692);
+        AppMethodBeat.o(264482);
         return;
       }
       catch (Exception paramParameters)
       {
         Log.i("MicroMsg.FaceFlashManagerCamera", "trySetPreviewFpsRangeParameters Exception, %s, %s", new Object[] { Looper.myLooper(), paramParameters.getMessage() });
-        AppMethodBeat.o(198692);
+        AppMethodBeat.o(264482);
         return;
       }
-      label384:
+      label391:
       k = n;
       i = i2;
       j = i1;
     }
   }
   
-  private void djj()
+  private static boolean m(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(198657);
-    if (this.wFb == null)
-    {
-      Log.i("MicroMsg.FaceFlashManagerCamera", "start camera thread");
-      this.wFb = com.tencent.e.c.d.il("cameraBackground", 5);
-      this.wFb.start();
-      this.wFc = new MMHandler(this.wFb.getLooper());
-    }
-    AppMethodBeat.o(198657);
-  }
-  
-  private static boolean l(int paramInt1, int paramInt2, long paramLong)
-  {
-    AppMethodBeat.i(198698);
+    AppMethodBeat.i(264489);
     double d = paramInt1 * paramInt2 * 3.0D / 2.0D / 1024.0D / 1024.0D;
     Log.d("MicroMsg.FaceFlashManagerCamera", "dataSizeInMB: %f, availableMemInMb: %d", new Object[] { Double.valueOf(d), Long.valueOf(paramLong) });
     if (paramLong / d >= 5.0D)
     {
-      AppMethodBeat.o(198698);
+      AppMethodBeat.o(264489);
       return true;
     }
-    AppMethodBeat.o(198698);
+    AppMethodBeat.o(264489);
     return false;
-  }
-  
-  public final void TL()
-  {
-    AppMethodBeat.i(198653);
-    Log.i("MicroMsg.FaceFlashManagerCamera", "stopPreview, isPreviewing: %s", new Object[] { Boolean.valueOf(this.wFf) });
-    if ((this.wFd != null) && (!this.wFd.jtb) && (this.wFf))
-    {
-      Log.i("MicroMsg.FaceFlashManagerCamera", "just stopPreview");
-      this.wFd.TL();
-      this.wFf = false;
-      com.tencent.mm.plugin.facedetect.model.c.wwx.baL();
-    }
-    AppMethodBeat.o(198653);
   }
   
   public final void a(SurfaceTexture paramSurfaceTexture, final Camera.PreviewCallback paramPreviewCallback)
   {
-    AppMethodBeat.i(198644);
-    if (n(paramSurfaceTexture)) {
-      this.wFd.b(new Camera.PreviewCallback()
+    AppMethodBeat.i(264538);
+    if (m(paramSurfaceTexture)) {
+      this.Abo.b(new Camera.PreviewCallback()
       {
         public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
         {
-          AppMethodBeat.i(195430);
+          AppMethodBeat.i(264504);
           if (paramPreviewCallback != null) {
             paramPreviewCallback.onPreviewFrame(paramAnonymousArrayOfByte, paramAnonymousCamera);
           }
           paramAnonymousCamera.addCallbackBuffer(paramAnonymousArrayOfByte);
-          AppMethodBeat.o(195430);
+          AppMethodBeat.o(264504);
         }
       });
     }
-    AppMethodBeat.o(198644);
+    AppMethodBeat.o(264538);
   }
   
   public final void a(final Camera.PreviewCallback paramPreviewCallback)
   {
-    AppMethodBeat.i(198651);
-    if (this.wFd == null)
+    AppMethodBeat.i(264565);
+    if (this.Abo == null)
     {
       Log.w("MicroMsg.FaceFlashManagerCamera", "hy: camera is null. setPreviewCallback failed");
-      AppMethodBeat.o(198651);
+      AppMethodBeat.o(264565);
       return;
     }
-    int j = this.mDesiredPreviewWidth * this.mDesiredPreviewHeight * ImageFormat.getBitsPerPixel(this.wFd.avd().getPreviewFormat()) / 8;
+    int j = this.mDesiredPreviewWidth * this.mDesiredPreviewHeight * ImageFormat.getBitsPerPixel(this.Abo.aPy().getPreviewFormat()) / 8;
     int i = 0;
     while (i < 5)
     {
-      byte[] arrayOfByte = com.tencent.mm.plugin.facedetect.model.c.wwx.k(Integer.valueOf(j));
-      this.wFd.aj(arrayOfByte);
+      byte[] arrayOfByte = com.tencent.mm.plugin.facedetect.model.c.zSD.m(Integer.valueOf(j));
+      this.Abo.aj(arrayOfByte);
       i += 1;
     }
-    this.wFd.b(new Camera.PreviewCallback()
+    this.Abo.b(new Camera.PreviewCallback()
     {
       public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera)
       {
-        AppMethodBeat.i(198479);
+        AppMethodBeat.i(264454);
         if (paramPreviewCallback != null) {
           paramPreviewCallback.onPreviewFrame(paramAnonymousArrayOfByte, paramAnonymousCamera);
         }
         paramAnonymousCamera.addCallbackBuffer(paramAnonymousArrayOfByte);
-        AppMethodBeat.o(198479);
+        AppMethodBeat.o(264454);
       }
     });
-    com.tencent.mm.plugin.facedetect.model.d.dhV().a(this.wBD);
-    AppMethodBeat.o(198651);
+    com.tencent.mm.plugin.facedetect.model.d.dOG().a(this.zXO);
+    AppMethodBeat.o(264565);
   }
   
   public final void a(MMTextureView paramMMTextureView, final a parama)
   {
-    AppMethodBeat.i(198618);
+    AppMethodBeat.i(264498);
     Log.i("MicroMsg.FaceFlashManagerCamera", "openCameraForSurfaceTexture");
-    this.wFa = paramMMTextureView;
-    djj();
-    if (this.wFc != null)
+    this.Abl = paramMMTextureView;
+    dPU();
+    if (this.Abn != null)
     {
-      this.wFc.post(new Runnable()
+      this.Abn.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(189960);
-          boolean bool2 = c.this.dji();
+          AppMethodBeat.i(264497);
+          boolean bool2 = c.this.dPT();
           boolean bool1 = bool2;
           h localh;
           if (!bool2)
           {
             Log.i("MicroMsg.FaceFlashManagerCamera", "reopen Camera");
-            localh = h.IzE;
-            if (c.this.wFn == 1)
+            localh = h.OAn;
+            if (c.this.Abw == 1)
             {
               l = 3L;
               localh.idkeyStat(917L, l, 1L, false);
-              bool1 = c.this.dji();
+              bool1 = c.this.dPT();
             }
           }
           else
           {
             Log.i("MicroMsg.FaceFlashManagerCamera", "isOpenCamera：%s", new Object[] { Boolean.valueOf(bool1) });
-            localh = h.IzE;
-            if (c.this.wFn != 1) {
+            localh = h.OAn;
+            if (c.this.Abw != 1) {
               break label144;
             }
           }
@@ -414,63 +400,77 @@ public final class c
           {
             localh.idkeyStat(917L, l, 1L, false);
             parama.a(Boolean.valueOf(bool1), c.this);
-            AppMethodBeat.o(189960);
+            AppMethodBeat.o(264497);
             return;
             l = 39L;
             break;
           }
         }
       });
-      AppMethodBeat.o(198618);
+      AppMethodBeat.o(264498);
       return;
     }
     Log.i("MicroMsg.FaceFlashManagerCamera", "back thread is not running");
-    AppMethodBeat.o(198618);
+    AppMethodBeat.o(264498);
   }
   
   public final boolean a(final SurfaceTexture paramSurfaceTexture, final a parama)
   {
-    AppMethodBeat.i(198648);
-    Log.i("MicroMsg.FaceFlashManagerCamera", "mIsPreviewing is " + this.wFf);
-    if ((this.wFd != null) && (!this.wFf))
+    AppMethodBeat.i(264548);
+    Log.i("MicroMsg.FaceFlashManagerCamera", "mIsPreviewing is " + this.nvB);
+    if ((this.Abo != null) && (!this.nvB))
     {
-      this.wFf = true;
-      this.wFc.post(new Runnable()
+      this.nvB = true;
+      this.Abn.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(197573);
+          AppMethodBeat.i(264511);
           try
           {
-            c.this.wFd.f(paramSurfaceTexture);
-            com.tencent.mm.plugin.facedetect.model.c.dE(c.this.mDesiredPreviewWidth, c.this.mDesiredPreviewHeight);
-            c.this.wFd.ave();
-            AppMethodBeat.o(197573);
+            c.this.Abo.f(paramSurfaceTexture);
+            com.tencent.mm.plugin.facedetect.model.c.ey(c.this.mDesiredPreviewWidth, c.this.mDesiredPreviewHeight);
+            c.this.Abo.aPz();
+            AppMethodBeat.o(264511);
             return;
           }
           catch (IOException localIOException)
           {
             Log.i("MicroMsg.FaceFlashManagerCamera", "start Preview failed:" + localIOException.getMessage());
-            c.this.wFf = false;
+            c.this.nvB = false;
             if (parama != null) {
               parama.a(Boolean.FALSE, null);
             }
-            AppMethodBeat.o(197573);
+            AppMethodBeat.o(264511);
           }
         }
       });
       Log.i("MicroMsg.FaceFlashManagerCamera", "start preview, is previewing");
     }
-    boolean bool = this.wFf;
-    AppMethodBeat.o(198648);
+    boolean bool = this.nvB;
+    AppMethodBeat.o(264548);
     return bool;
   }
   
-  final boolean dji()
+  public final void auq()
   {
-    AppMethodBeat.i(198642);
+    AppMethodBeat.i(264574);
+    Log.i("MicroMsg.FaceFlashManagerCamera", "stopPreview, isPreviewing: %s", new Object[] { Boolean.valueOf(this.nvB) });
+    if ((this.Abo != null) && (!this.Abo.lWt) && (this.nvB))
+    {
+      Log.i("MicroMsg.FaceFlashManagerCamera", "just stopPreview");
+      this.Abo.auq();
+      this.nvB = false;
+      com.tencent.mm.plugin.facedetect.model.c.zSD.bvG();
+    }
+    AppMethodBeat.o(264574);
+  }
+  
+  final boolean dPT()
+  {
+    AppMethodBeat.i(264529);
     Log.i("MicroMsg.FaceFlashManagerCamera", "start open camera");
-    this.wFe = false;
+    this.mIsCameraOpened = false;
     this.isFrontCamera = true;
     int j = Camera.getNumberOfCameras();
     int i = 0;
@@ -488,7 +488,7 @@ public final class c
       if (i == -1)
       {
         Log.i("MicroMsg.FaceFlashManagerCamera", "not found available camera id");
-        AppMethodBeat.o(198642);
+        AppMethodBeat.o(264529);
         return false;
         if ((localCameraInfo.facing == 0) && (!this.isFrontCamera))
         {
@@ -499,61 +499,61 @@ public final class c
         break;
       }
       long l = Util.currentTicks();
-      if (this.lbk == null) {
+      if (this.nGr == null) {
         Log.i("MicroMsg.FaceFlashManagerCamera", "openCameraRes is null");
       }
       try
       {
-        this.lbk = com.tencent.mm.compatible.deviceinfo.d.D(this.mContext, i);
-        if (this.lbk == null)
+        this.nGr = com.tencent.mm.compatible.deviceinfo.d.G(this.mContext, i);
+        if (this.nGr == null)
         {
           Log.e("MicroMsg.FaceFlashManagerCamera", "in open(), openCameraRes == null");
-          AppMethodBeat.o(198642);
+          AppMethodBeat.o(264529);
           return false;
         }
       }
       catch (Exception localException1)
       {
         Log.printErrStackTrace("MicroMsg.FaceFlashManagerCamera", localException1, "MicroMsg.FaceFlashManagerError", new Object[0]);
-        AppMethodBeat.o(198642);
+        AppMethodBeat.o(264529);
         return false;
       }
-      this.wFj = i;
-      this.wFe = true;
+      this.Abs = i;
+      this.mIsCameraOpened = true;
       Log.i("MicroMsg.FaceFlashManagerCamera", "openCamera done, cameraId=[%s] costTime=[%s]", new Object[] { Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
-      this.wxE = this.lbk.fSM;
-      if (this.lbk.fSM % 180 != 0) {}
+      this.zTK = this.nGr.hYK;
+      if (this.nGr.hYK % 180 != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.wxD = bool;
-        this.wFd = this.lbk.jqD;
-        if (this.wFd != null) {
+        this.zTJ = bool;
+        this.Abo = this.nGr.lTN;
+        if (this.Abo != null) {
           break;
         }
-        Log.i("MicroMsg.FaceFlashManagerCamera", "in open(), camera == null, bNeedRotate=[%s]", new Object[] { Boolean.valueOf(this.wxD) });
-        AppMethodBeat.o(198642);
+        Log.i("MicroMsg.FaceFlashManagerCamera", "in open(), camera == null, bNeedRotate=[%s]", new Object[] { Boolean.valueOf(this.zTJ) });
+        AppMethodBeat.o(264529);
         return false;
       }
       Camera.Parameters localParameters;
       try
       {
-        localParameters = this.wFd.avd();
+        localParameters = this.Abo.aPy();
         if (localParameters == null)
         {
           Log.i("MicroMsg.FaceFlashManagerCamera", "in open(), parameters == null");
-          AppMethodBeat.o(198642);
+          AppMethodBeat.o(264529);
           return false;
         }
       }
       catch (Exception localException2)
       {
         Log.printErrStackTrace("MicroMsg.FaceFlashManagerCamera", localException2, "camera getParameters error: %s", new Object[] { localException2.getMessage() });
-        AppMethodBeat.o(198642);
+        AppMethodBeat.o(264529);
         return false;
       }
-      this.sdD = new Point(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
-      Point localPoint2 = this.sdD;
-      Point localPoint1 = this.wxC;
+      this.vpf = new Point(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
+      Point localPoint2 = this.vpf;
+      Point localPoint1 = this.zTI;
       Object localObject2 = localParameters.get("preview-size-values");
       if (localObject2 == null) {
         localObject2 = localParameters.get("preview-size-value");
@@ -570,11 +570,11 @@ public final class c
         if (localObject1 == null) {
           localObject2 = new Point(localPoint1.x >> 3 << 3, localPoint1.y >> 3 << 3);
         }
-        this.wxB = ((Point)localObject2);
-        this.wxG = new Point(this.wxB);
-        Log.d("MicroMsg.FaceFlashManagerCamera", "getCameraResolution: " + this.sdD + " camera:" + this.wxB + "bestVideoEncodeSize: " + this.wxG);
-        this.mDesiredPreviewWidth = this.wxB.x;
-        this.mDesiredPreviewHeight = this.wxB.y;
+        this.zTH = ((Point)localObject2);
+        this.zTM = new Point(this.zTH);
+        Log.d("MicroMsg.FaceFlashManagerCamera", "getCameraResolution: " + this.vpf + " camera:" + this.zTH + "bestVideoEncodeSize: " + this.zTM);
+        this.mDesiredPreviewWidth = this.zTH.x;
+        this.mDesiredPreviewHeight = this.zTH.y;
         localParameters.setPreviewSize(this.mDesiredPreviewWidth, this.mDesiredPreviewHeight);
         Log.d("MicroMsg.FaceFlashManagerCamera", "mDesiredPreviewWidth：" + this.mDesiredPreviewWidth);
         Log.d("MicroMsg.FaceFlashManagerCamera", "mDesiredPreviewHeight：" + this.mDesiredPreviewHeight);
@@ -606,11 +606,11 @@ public final class c
             }
             localParameters.setPreviewFormat(17);
             label825:
-            if (this.wxD) {
-              localParameters.setRotation(this.wxE);
+            if (this.zTJ) {
+              localParameters.setRotation(this.zTK);
             }
             Log.d("MicroMsg.FaceFlashManagerCamera", "new ratio=".concat(String.valueOf(this.mDesiredPreviewWidth / this.mDesiredPreviewHeight)));
-            d(localParameters);
+            f(localParameters);
             localObject1 = localParameters.getSupportedPreviewFpsRange();
             Log.d("MicroMsg.FaceFlashManagerCamera", "range:" + ((List)localObject1).size());
             i = 0;
@@ -657,9 +657,9 @@ public final class c
               Log.i("MicroMsg.FaceFlashManagerCamera", "Camera preview-fps-range：" + localParameters.get("preview-frame-rate"));
               try
               {
-                this.wFd.c(localParameters);
-                bool = this.wFe;
-                AppMethodBeat.o(198642);
+                this.Abo.c(localParameters);
+                bool = this.mIsCameraOpened;
+                AppMethodBeat.o(264529);
                 return bool;
               }
               catch (Exception localException4)
@@ -681,38 +681,38 @@ public final class c
   
   public final float getAspectRatio()
   {
-    AppMethodBeat.i(198707);
+    AppMethodBeat.i(264592);
     try
     {
-      Object localObject = this.wFd.avd().get("preview-size");
+      Object localObject = this.Abo.aPy().get("preview-size");
       Log.i("MicroMsg.FaceFlashManagerCamera", "preview size:%s", new Object[] { localObject });
       localObject = ((String)localObject).split("x");
       float f = Integer.parseInt(localObject[0]);
       int i = Integer.parseInt(localObject[1]);
       f = f * 1.0F / i;
-      AppMethodBeat.o(198707);
+      AppMethodBeat.o(264592);
       return f;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(198707);
+      AppMethodBeat.o(264592);
     }
     return 1.0F;
   }
   
   public final Point getPreviewSize()
   {
-    AppMethodBeat.i(198700);
+    AppMethodBeat.i(264585);
     try
     {
-      Object localObject = this.wFd.avd().get("preview-size");
+      Object localObject = this.Abo.aPy().get("preview-size");
       Log.i("MicroMsg.FaceFlashManagerCamera", "preview size:%s", new Object[] { localObject });
       localObject = ((String)localObject).split("x");
       this.mDesiredPreviewWidth = Integer.parseInt(localObject[0]);
       this.mDesiredPreviewHeight = Integer.parseInt(localObject[1]);
       label64:
       localObject = new Point(this.mDesiredPreviewWidth, this.mDesiredPreviewHeight);
-      AppMethodBeat.o(198700);
+      AppMethodBeat.o(264585);
       return localObject;
     }
     catch (Exception localException)
@@ -721,66 +721,66 @@ public final class c
     }
   }
   
-  public final boolean n(SurfaceTexture paramSurfaceTexture)
+  public final boolean m(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(198649);
+    AppMethodBeat.i(264555);
     boolean bool = a(paramSurfaceTexture, new a()
     {
       public final void a(Boolean paramAnonymousBoolean, c paramAnonymousc) {}
     });
-    AppMethodBeat.o(198649);
+    AppMethodBeat.o(264555);
     return bool;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(198694);
-    this.wFa = null;
-    if (this.wFc != null)
+    AppMethodBeat.i(264580);
+    this.Abl = null;
+    if (this.Abn != null)
     {
-      this.wFc.post(new Runnable()
+      this.Abn.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(197976);
+          AppMethodBeat.i(264469);
           c localc = c.this;
           Log.i("MicroMsg.FaceFlashManagerCamera", "closeCamera start");
-          com.tencent.mm.plugin.facedetect.model.d.dhV().b(localc.wBD);
-          if (localc.wFd != null) {}
+          com.tencent.mm.plugin.facedetect.model.d.dOG().b(localc.zXO);
+          if (localc.Abo != null) {}
           try
           {
-            if (localc.wFf)
+            if (localc.nvB)
             {
-              localc.wFf = false;
-              localc.wFd.TL();
-              localc.wFd.a(null);
+              localc.nvB = false;
+              localc.Abo.auq();
+              localc.Abo.a(null);
               Log.i("MicroMsg.FaceFlashManagerCamera", "stop preview, not previewing");
             }
             try
             {
-              localc.wFd.a(null);
-              localc.wFd.release();
-              localc.wFd = null;
-              localc.wFd = null;
+              localc.Abo.a(null);
+              localc.Abo.release();
+              localc.Abo = null;
+              localc.Abo = null;
             }
             catch (Exception localException2)
             {
               for (;;)
               {
                 Log.i("MicroMsg.FaceFlashManagerCamera", "Error setting camera preview: " + localException2.getMessage());
-                localc.wFd = null;
+                localc.Abo = null;
               }
             }
             finally
             {
-              localc.wFd = null;
-              AppMethodBeat.o(197976);
+              localc.Abo = null;
+              AppMethodBeat.o(264469);
             }
             Log.i("MicroMsg.FaceFlashManagerCamera", "closeCamera end");
             localc = c.this;
-            if (localc.wFb == null)
+            if (localc.Abm == null)
             {
-              AppMethodBeat.o(197976);
+              AppMethodBeat.o(264469);
               return;
             }
           }
@@ -791,30 +791,30 @@ public final class c
               Log.i("MicroMsg.FaceFlashManagerCamera", "Error setting camera preview: " + localException1.getMessage());
             }
           }
-          if (localc.wFc != null) {
-            localc.wFc.removeCallbacksAndMessages(null);
+          if (localc.Abn != null) {
+            localc.Abn.removeCallbacksAndMessages(null);
           }
           Log.i("MicroMsg.FaceFlashManagerCamera", "stop camera thread");
           if (Build.VERSION.SDK_INT >= 18) {
-            localc.wFb.quitSafely();
+            localc.Abm.quitSafely();
           }
           for (;;)
           {
-            localc.wFb = null;
-            localc.wFc = null;
+            localc.Abm = null;
+            localc.Abn = null;
             localc.mContext = null;
             Log.i("MicroMsg.FaceFlashManagerCamera", "stop camera thread finish");
-            AppMethodBeat.o(197976);
+            AppMethodBeat.o(264469);
             return;
-            localc.wFb.quit();
+            localc.Abm.quit();
           }
         }
       });
-      AppMethodBeat.o(198694);
+      AppMethodBeat.o(264580);
       return;
     }
     Log.i("MicroMsg.FaceFlashManagerCamera", "back thread is not running");
-    AppMethodBeat.o(198694);
+    AppMethodBeat.o(264580);
   }
   
   public static abstract interface a
@@ -824,7 +824,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.c
  * JD-Core Version:    0.7.0.1
  */

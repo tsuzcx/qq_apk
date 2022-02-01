@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <TextView android:textColor="@color/p9" android:id="@id/cco" android:paddingLeft="@dimen/ei" android:paddingTop="@dimen/ei" android:paddingRight="@dimen/ei" android:paddingBottom="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/cdj" android:paddingBottom="@dimen/ei" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ei" android:layout_marginRight="@dimen/ei" flowlayout:horizontalSpacing="@dimen/ei" flowlayout:verticalSpacing="@dimen/ei" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/fa" android:textColor="@color/FG_2" android:gravity="center" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/e05" />
+</FrameLayout>

@@ -5,7 +5,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.google.android.gms.common.internal.Preconditions;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -119,7 +118,6 @@ public final class TextFilteredDataBuffer<T>
     AppMethodBeat.o(11677);
   }
   
-  @VisibleForTesting
   public final void setFilterTerm(Context paramContext, String paramString)
   {
     AppMethodBeat.i(11676);
@@ -129,7 +127,7 @@ public final class TextFilteredDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.TextFilteredDataBuffer
  * JD-Core Version:    0.7.0.1
  */

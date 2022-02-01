@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,52 +10,69 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.s;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.account.bind.a.a;
 import com.tencent.mm.plugin.account.bind.a.e;
 import com.tencent.mm.plugin.account.bind.a.f;
 import com.tencent.mm.plugin.account.bind.a.h;
 import com.tencent.mm.plugin.account.bind.a.i;
-import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.plugin.wxpaysdk.api.c;
+import com.tencent.mm.plugin.account.friend.model.i;
+import com.tencent.mm.plugin.account.friend.model.i.a;
+import com.tencent.mm.protocal.GeneralControlWrapper;
+import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.widget.a.g.a;
+import com.tencent.mm.ui.widget.a.g.c;
 import java.util.Map;
 
 @com.tencent.mm.ui.base.a(3)
 public class BindMobilePolicyUI
   extends BindMContactIntroUI
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private Map<String, String> mSE;
+  private Map<String, String> pPl;
   
-  protected final void bxv()
+  protected final void bWj()
   {
-    AppMethodBeat.i(241450);
+    AppMethodBeat.i(304882);
     hideVKB();
-    if ((this.mSd == 9) && (this.mRZ != l.a.mWk))
+    if ((this.pOK == 9) && (this.pOG != i.a.pSQ))
     {
-      f.a locala = new f.a(getContext());
-      locala.bBl((String)this.mSE.get(".sysmsg.BindPhoneGuidance.doublecheck_content")).bBq((String)this.mSE.get(".sysmsg.BindPhoneGuidance.doublecheck_cancel")).bBp((String)this.mSE.get(".sysmsg.BindPhoneGuidance.doublecheck_ok")).HL(true);
-      locala.c(new BindMobilePolicyUI.2(this)).show();
-      AppMethodBeat.o(241450);
+      g.a locala = new g.a(getContext());
+      locala.bDE((String)this.pPl.get(".sysmsg.BindPhoneGuidance.doublecheck_content")).bDJ((String)this.pPl.get(".sysmsg.BindPhoneGuidance.doublecheck_cancel")).bDI((String)this.pPl.get(".sysmsg.BindPhoneGuidance.doublecheck_ok")).NF(true);
+      locala.c(new g.c()
+      {
+        public final void onDialogClick(boolean paramAnonymousBoolean, String paramAnonymousString)
+        {
+          AppMethodBeat.i(304891);
+          if (!paramAnonymousBoolean)
+          {
+            paramAnonymousString = new com.tencent.mm.plugin.account.bind.a.c(3, (String)com.tencent.mm.kernel.h.baE().ban().d(274436, null));
+            com.tencent.mm.kernel.h.aZW().a(paramAnonymousString, 0);
+            BindMobilePolicyUI.b(BindMobilePolicyUI.this);
+          }
+          AppMethodBeat.o(304891);
+        }
+      }).show();
+      AppMethodBeat.o(304882);
       return;
     }
-    super.bxv();
-    AppMethodBeat.o(241450);
+    super.bWj();
+    AppMethodBeat.o(304882);
   }
   
   public void finish()
   {
-    AppMethodBeat.i(241441);
+    AppMethodBeat.i(304878);
     super.finish();
     overridePendingTransition(a.a.anim_not_change, a.a.push_down_out);
-    AppMethodBeat.o(241441);
+    com.tencent.mm.plugin.account.friend.model.w.pTm = 0;
+    AppMethodBeat.o(304878);
   }
   
   public int getLayoutId()
@@ -66,28 +82,32 @@ public class BindMobilePolicyUI
   
   public void initView()
   {
-    AppMethodBeat.i(241445);
-    this.mSE = XmlParser.parseXml(getIntent().getStringExtra("key_wording_cfg"), "sysmsg", null);
-    Log.i("MicroMsg.BindMobilePolicyUI", "wording:%s", new Object[] { this.mSE });
+    AppMethodBeat.i(304880);
+    this.pPl = XmlParser.parseXml(getIntent().getStringExtra("key_wording_cfg"), "sysmsg", null);
+    Log.i("MicroMsg.BindMobilePolicyUI", "wording:%s", new Object[] { this.pPl });
+    Object localObject = i.bWW();
+    if ((localObject == i.a.pSO) || (localObject == i.a.pSP)) {
+      i.bWX();
+    }
     super.initView();
-    if ((this.mSE != null) && ("yes".equals(this.mSE.get(".sysmsg.BindPhoneGuidance.canUseBankAuthInstead"))))
+    if ((this.pPl != null) && ("yes".equals(this.pPl.get(".sysmsg.BindPhoneGuidance.canUseBankAuthInstead"))))
     {
-      TextView localTextView = (TextView)findViewById(a.e.goto_realname_process);
-      localTextView.setOnClickListener(new View.OnClickListener()
+      localObject = (TextView)findViewById(a.e.setting_bind_mobile_help_tips);
+      ((TextView)localObject).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(241656);
+          AppMethodBeat.i(304895);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobilePolicyUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-          paramAnonymousView = new f.a(BindMobilePolicyUI.this.getContext());
-          paramAnonymousView.bBl(BindMobilePolicyUI.this.getString(a.i.bind_mcontact_goto_realname_process_alert_msg)).ayp(a.i.bind_mcontact_goto_realname_process_alert_ok).HL(true);
-          paramAnonymousView.c(new f.c()
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobilePolicyUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+          paramAnonymousView = new g.a(BindMobilePolicyUI.this.getContext());
+          paramAnonymousView.bDE(BindMobilePolicyUI.this.getString(a.i.bind_mcontact_goto_realname_process_alert_msg)).aEX(a.i.bind_mcontact_goto_realname_process_alert_ok).NF(true);
+          paramAnonymousView.c(new g.c()
           {
-            public final void g(boolean paramAnonymous2Boolean, String paramAnonymous2String)
+            public final void onDialogClick(boolean paramAnonymous2Boolean, String paramAnonymous2String)
             {
-              AppMethodBeat.i(241662);
+              AppMethodBeat.i(304874);
               if (paramAnonymous2Boolean)
               {
                 paramAnonymous2String = BindMobilePolicyUI.this.getContext().getComponentName().getClassName();
@@ -100,35 +120,86 @@ public class BindMobilePolicyUI
               label97:
               for (;;)
               {
-                ((c)h.ae(c.class)).g(BindMobilePolicyUI.this.getContext(), paramAnonymous2String, "account");
-                AppMethodBeat.o(241662);
+                ((com.tencent.mm.plugin.wxpaysdk.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.wxpaysdk.api.c.class)).f(BindMobilePolicyUI.this.getContext(), paramAnonymous2String, "account");
+                AppMethodBeat.o(304874);
                 return;
               }
             }
           }).show();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobilePolicyUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(241656);
+          AppMethodBeat.o(304895);
         }
       });
-      localTextView.setVisibility(0);
+      ((TextView)localObject).setVisibility(0);
     }
-    AppMethodBeat.o(241445);
+    for (;;)
+    {
+      if ((this.pPl != null) && (this.pOB != null) && ("yes".equalsIgnoreCase((String)this.pPl.get(".sysmsg.BindPhoneGuidance.guidanceHideIcon")))) {
+        this.pOB.setVisibility(8);
+      }
+      AppMethodBeat.o(304880);
+      return;
+      if ((this.pPl != null) && (this.pPl.get(".sysmsg.BindPhoneGuidance.guidanceHelp") != null))
+      {
+        localObject = (TextView)findViewById(a.e.setting_bind_mobile_help_tips);
+        ((TextView)localObject).setText((CharSequence)this.pPl.get(".sysmsg.BindPhoneGuidance.guidanceHelp.tips"));
+        ((TextView)localObject).setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(304894);
+            b localb = new b();
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMobilePolicyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            paramAnonymousView = new Intent();
+            paramAnonymousView.putExtra("rawUrl", (String)BindMobilePolicyUI.a(BindMobilePolicyUI.this).get(".sysmsg.BindPhoneGuidance.guidanceHelp.jumpUrl"));
+            paramAnonymousView.putExtra("showShare", false);
+            paramAnonymousView.putExtra("show_bottom", false);
+            paramAnonymousView.putExtra("needRedirect", false);
+            paramAnonymousView.putExtra("neverGetA8Key", true);
+            paramAnonymousView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.YxF);
+            paramAnonymousView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.YxA);
+            com.tencent.mm.br.c.b(BindMobilePolicyUI.this.getContext(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramAnonymousView, 100);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMobilePolicyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(304894);
+          }
+        });
+        ((TextView)localObject).setVisibility(0);
+      }
+    }
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(304883);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 == 100) && (paramIntent != null))
+    {
+      paramIntent = (Map)paramIntent.getBundleExtra("result_data").getSerializable("next_params");
+      if ((paramIntent != null) && ("continue_bind_mobile".equalsIgnoreCase((String)paramIntent.get("next_step")))) {
+        bWk();
+      }
+    }
+    AppMethodBeat.o(304883);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(241440);
+    AppMethodBeat.i(304877);
     super.onCreate(paramBundle);
+    setMMTitle("");
     overridePendingTransition(a.a.push_up_in, a.a.anim_not_change);
-    AppMethodBeat.o(241440);
+    com.tencent.mm.plugin.account.friend.model.w.pTm = 1;
+    AppMethodBeat.o(304877);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(241442);
+    AppMethodBeat.i(304879);
     overridePendingTransition(a.a.anim_not_change, a.a.push_down_out);
+    com.tencent.mm.plugin.account.friend.model.w.pTm = 0;
     super.onDestroy();
-    AppMethodBeat.o(241442);
+    AppMethodBeat.o(304879);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -139,41 +210,41 @@ public class BindMobilePolicyUI
   
   protected final void updateView()
   {
-    AppMethodBeat.i(241447);
-    if (this.mRZ == l.a.mWi)
+    AppMethodBeat.i(304881);
+    if (this.pOG == i.a.pSO)
     {
       showOptionMenu(1, false);
-      this.mRU.setImageResource(a.h.mobile_unbind_icon);
-      this.mRW.setVisibility(0);
-      this.mRY.setVisibility(8);
-      TextView localTextView = this.mRV;
-      if (this.mSE != null)
+      this.pOB.setImageResource(a.h.mobile_unbind_icon);
+      this.pOD.setVisibility(0);
+      this.pOF.setVisibility(8);
+      TextView localTextView = this.pOC;
+      if (this.pPl != null)
       {
-        str = (String)this.mSE.get(".sysmsg.BindPhoneGuidance.guidanceTitle");
-        localTextView.setText(str);
-        localTextView = this.mRW;
-        if (this.mSE == null) {
-          break label140;
+        localObject = (CharSequence)this.pPl.get(".sysmsg.BindPhoneGuidance.guidanceTitle");
+        localTextView.setText((CharSequence)localObject);
+        localTextView = this.pOD;
+        if (this.pPl == null) {
+          break label143;
         }
       }
-      label140:
-      for (String str = (String)this.mSE.get(".sysmsg.BindPhoneGuidance.guidanceTip");; str = getString(a.i.bind_mcontact_hint))
+      label143:
+      for (Object localObject = (CharSequence)this.pPl.get(".sysmsg.BindPhoneGuidance.guidanceTip");; localObject = getString(a.i.bind_mcontact_hint))
       {
-        localTextView.setText(str);
-        this.mRX.setText(a.i.bind_mcontact_bind_btn_text);
-        AppMethodBeat.o(241447);
+        localTextView.setText((CharSequence)localObject);
+        this.pOE.setText(a.i.bind_mcontact_bind_btn_text);
+        AppMethodBeat.o(304881);
         return;
-        str = getString(a.i.bind_mcontact_hint_title);
+        localObject = getString(a.i.bind_mcontact_hint_title);
         break;
       }
     }
     super.updateView();
-    AppMethodBeat.o(241447);
+    AppMethodBeat.o(304881);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMobilePolicyUI
  * JD-Core Version:    0.7.0.1
  */

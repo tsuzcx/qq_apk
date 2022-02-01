@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="64.0dip" android:width="64.0dip" android:viewportWidth="24.0" android:viewportHeight="24.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="20.0dip" />
-            <solid android:color="@color/BW_0_Alpha_0_0_5_K" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="20.0dip" />
-            <solid android:color="#ffe5d39f" />
-        </shape>
-    </item>
-    <item android:state_pressed="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="20.0dip" />
-            <solid android:color="#ffffecb2" />
-        </shape>
-    </item>
-</selector>
+    <path android:fillColor="#fff6c443" android:pathData="M12,22C6.477,22 2,17.523 2,12S6.477,2 12,2s10,4.477 10,10 -4.477,10 -10,10zM11.237,6.136l0.11,7.596h1.305l0.11,-7.596h-1.525zM11.996,17.103c0.512,0 0.902,-0.383 0.902,-0.882 0,-0.5 -0.39,-0.882 -0.902,-0.882a0.878,0.878 0,0 0,-0.896 0.882c0,0.499 0.396,0.882 0.896,0.882z" />
+</vector>

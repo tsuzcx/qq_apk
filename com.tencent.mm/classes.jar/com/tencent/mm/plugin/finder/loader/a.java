@@ -2,574 +2,621 @@ package com.tencent.mm.plugin.finder.loader;
 
 import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hz;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
-import com.tencent.mm.plugin.finder.feed.model.internal.f;
-import com.tencent.mm.plugin.finder.feed.model.internal.k;
 import com.tencent.mm.plugin.finder.feed.model.internal.m.c;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.profile.uic.c;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.component.k.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.Long;Ljava.lang.Integer;>;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge;", "", "fragment", "Landroidx/fragment/app/Fragment;", "atFeedLoader", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader;", "(Landroidx/fragment/app/Fragment;Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader;)V", "atFeedDataObserver", "com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1;", "data", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "limit", "", "attach", "", "detach", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge;", "", "fragment", "Landroidx/fragment/app/Fragment;", "atFeedLoader", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader;", "(Landroidx/fragment/app/Fragment;Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedLoader;)V", "atFeedDataObserver", "com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1;", "data", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "limit", "", "attach", "", "detach", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a zsD;
+  public static final a Ews;
+  public final FinderAtFeedLoader Ewt;
+  public DataBuffer<cc> Ewu;
+  public final b Ewv;
   private final Fragment fragment;
   private final int limit;
-  public DataBuffer<bu> zsA;
-  public final b zsB;
-  public final FinderAtFeedLoader zsC;
   
   static
   {
-    AppMethodBeat.i(272068);
-    zsD = new a((byte)0);
-    AppMethodBeat.o(272068);
+    AppMethodBeat.i(331825);
+    Ews = new a((byte)0);
+    AppMethodBeat.o(331825);
   }
   
   public a(Fragment paramFragment, FinderAtFeedLoader paramFinderAtFeedLoader)
   {
-    AppMethodBeat.i(272067);
+    AppMethodBeat.i(331809);
     this.fragment = paramFragment;
-    this.zsC = paramFinderAtFeedLoader;
+    this.Ewt = paramFinderAtFeedLoader;
     this.limit = 300;
-    this.zsB = new b(this);
-    AppMethodBeat.o(272067);
+    this.Ewv = new b(this);
+    AppMethodBeat.o(331809);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/LoaderShareStore$GroupObserver;", "fetchData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isRefreshAll", "", "updateAtFeedListener", "com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1", "getUpdateAtFeedListener", "()Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1;", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1;", "findInsertIndex", "", "pos", "getFetchData", "", "interceptChange", "size", "observeKey", "", "onAllItemChange", "idMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "onItemChange", "position", "feedId", "onOwnerAlive", "onOwnerDead", "refreshAll", "safeGet", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataBuffer", "updateCacheState", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/LoaderShareStore$GroupObserver;", "fetchData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isRefreshAll", "", "updateAtFeedListener", "com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1", "getUpdateAtFeedListener", "()Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1;", "Lcom/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1;", "findInsertIndex", "", "pos", "getFetchData", "", "interceptChange", "size", "observeKey", "", "onAllItemChange", "idMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "onItemChange", "position", "feedId", "onOwnerAlive", "onOwnerDead", "refreshAll", "safeGet", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataBuffer", "updateCacheState", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends m.c
   {
-    boolean zsE;
-    private DataBuffer<bu> zsF;
-    public final a zsG;
+    boolean Eww;
+    private DataBuffer<cc> Ewx;
+    public final FinderAtFeedExtraMerge.atFeedDataObserver.1.updateAtFeedListener.1 Ewy;
     
-    b()
+    b(a parama)
     {
-      AppMethodBeat.i(291727);
-      this.zsE = true;
-      this.zsG = new a(this);
-      AppMethodBeat.o(291727);
+      AppMethodBeat.i(331671);
+      this.Eww = true;
+      parama = com.tencent.mm.app.f.hfK;
+      this.Ewy = new FinderAtFeedExtraMerge.atFeedDataObserver.1.updateAtFeedListener.1(this.Ewz, this, parama);
+      AppMethodBeat.o(331671);
     }
     
-    private static BaseFinderFeed a(int paramInt, DataBuffer<bu> paramDataBuffer)
+    private static BaseFinderFeed a(int paramInt, DataBuffer<cc> paramDataBuffer)
     {
-      AppMethodBeat.i(291724);
-      int i;
-      if (paramDataBuffer != null) {
+      AppMethodBeat.i(331683);
+      if (paramDataBuffer == null) {
+        paramDataBuffer = null;
+      }
+      while ((paramDataBuffer instanceof BaseFinderFeed))
+      {
+        paramDataBuffer = (BaseFinderFeed)paramDataBuffer;
+        AppMethodBeat.o(331683);
+        return paramDataBuffer;
+        int i;
         if ((paramInt >= 0) && (paramInt < paramDataBuffer.size()))
         {
           i = 1;
+          label44:
           if (i == 0) {
-            break label68;
-          }
-          label27:
-          if (paramDataBuffer == null) {
-            break label73;
+            break label62;
           }
         }
-      }
-      label68:
-      label73:
-      for (paramDataBuffer = (bu)paramDataBuffer.get(paramInt);; paramDataBuffer = null)
-      {
-        DataBuffer<bu> localDataBuffer = paramDataBuffer;
-        if (!(paramDataBuffer instanceof BaseFinderFeed)) {
-          localDataBuffer = null;
+        for (;;)
+        {
+          if (paramDataBuffer != null) {
+            break label67;
+          }
+          paramDataBuffer = null;
+          break;
+          i = 0;
+          break label44;
+          label62:
+          paramDataBuffer = null;
         }
-        paramDataBuffer = (BaseFinderFeed)localDataBuffer;
-        AppMethodBeat.o(291724);
-        return paramDataBuffer;
-        i = 0;
-        break;
-        paramDataBuffer = null;
-        break label27;
+        label67:
+        paramDataBuffer = (cc)paramDataBuffer.get(paramInt);
       }
+      AppMethodBeat.o(331683);
+      return null;
     }
     
-    private final void dIT()
+    private final void eBZ()
     {
-      AppMethodBeat.i(291723);
-      if (this.zsF == null) {
-        this.zsF = duA();
+      AppMethodBeat.i(331675);
+      if (this.Ewx == null) {
+        this.Ewx = edZ();
       }
-      AppMethodBeat.o(291723);
+      AppMethodBeat.o(331675);
     }
     
-    public final void ah(int paramInt, long paramLong)
+    public final void al(int paramInt, long paramLong)
     {
+      int m = 0;
       int k = 0;
-      AppMethodBeat.i(291722);
-      if (this.zsE)
+      AppMethodBeat.i(331724);
+      if (this.Eww)
       {
-        dIU();
-        AppMethodBeat.o(291722);
+        eCa();
+        AppMethodBeat.o(331724);
         return;
       }
-      dIT();
+      eBZ();
       Object localObject1;
       Object localObject2;
-      int j;
-      int i;
       if (paramInt == -1)
       {
-        localObject1 = this.zsF;
-        if (localObject1 != null)
+        localObject1 = this.Ewx;
+        if (localObject1 == null)
         {
-          Object localObject3 = ((List)localObject1).iterator();
-          paramInt = 0;
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject2 = (bu)((Iterator)localObject3).next();
-            localObject1 = localObject2;
-            if (!(localObject2 instanceof BaseFinderFeed)) {
-              localObject1 = null;
-            }
-            localObject1 = (BaseFinderFeed)localObject1;
-            if (localObject1 != null)
-            {
-              localObject1 = ((BaseFinderFeed)localObject1).feedObject;
-              if ((localObject1 == null) || (((FinderItem)localObject1).getId() != paramLong)) {}
-            }
-            for (j = 1;; j = 0)
-            {
-              i = paramInt;
-              if (j != 0) {
-                break label481;
-              }
-              paramInt += 1;
-              break;
-            }
-          }
           paramInt = -1;
-          localObject1 = a(paramInt, this.zsF);
-          if (localObject1 != null)
-          {
-            localObject2 = a.a(this.zsH);
-            if (localObject2 == null) {
-              break label508;
-            }
-            localObject2 = ((List)localObject2).iterator();
-            i = 0;
-            label200:
-            if (!((Iterator)localObject2).hasNext()) {
-              break label502;
-            }
-            if (((bu)((Iterator)localObject2).next()).a((k)localObject1) != 0) {
-              break label487;
-            }
-            j = 1;
-            label236:
-            if (j == 0) {
-              break label493;
-            }
-            label241:
-            Log.i("Finder.AtFeedExtraMerge", "get changeIndex :".concat(String.valueOf(i)));
-            if (i != -1) {
-              break label546;
-            }
-            i = paramInt - 1;
-            label267:
-            if (i < 0) {
-              break label612;
-            }
-            localObject2 = a(i, this.zsF);
-            if (localObject2 == null) {
-              break label537;
-            }
-            localObject3 = ((BaseFinderFeed)localObject2).feedObject;
-            if ((localObject3 == null) || (((FinderItem)localObject3).getMentionListSelected() != 2)) {
-              break label537;
-            }
-            localObject3 = a.a(this.zsH);
-            if (localObject3 == null) {
-              break label532;
-            }
-            localObject3 = ((List)localObject3).iterator();
-            paramInt = 0;
-            label337:
-            if (!((Iterator)localObject3).hasNext()) {
-              break label527;
-            }
-            if (((bu)((Iterator)localObject3).next()).a((k)localObject2) != 0) {
-              break label514;
-            }
-            j = 1;
-            label373:
-            if (j == 0) {
-              break label520;
-            }
+          localObject2 = a(paramInt, this.Ewx);
+          if (localObject2 != null) {
+            break label208;
           }
+          localObject1 = null;
         }
       }
       for (;;)
       {
-        label378:
-        Log.i("Finder.AtFeedExtraMerge", "changePos :" + i + " insertIndex:" + paramInt);
-        localObject2 = a.a(this.zsH);
-        if (localObject2 != null)
+        if (localObject1 == null) {
+          Log.i("Finder.AtFeedExtraMerge", "get no data");
+        }
+        AppMethodBeat.o(331724);
+        return;
+        localObject2 = ((List)localObject1).iterator();
+        paramInt = 0;
+        label137:
+        int j;
+        if (((Iterator)localObject2).hasNext())
         {
-          ((DataBuffer)localObject2).add(paramInt, localObject1);
-          dIV();
-          a.b(this.zsH).dispatcher().onItemRangeInserted(paramInt, 1);
+          localObject1 = (cc)((Iterator)localObject2).next();
+          if ((localObject1 instanceof BaseFinderFeed))
+          {
+            localObject1 = (BaseFinderFeed)localObject1;
+            if (localObject1 == null) {
+              break label188;
+            }
+            localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+            if ((localObject1 == null) || (((FinderItem)localObject1).getId() != paramLong)) {
+              break label188;
+            }
+          }
+          label188:
+          for (j = 1;; j = 0)
+          {
+            i = paramInt;
+            if (j != 0) {
+              break label202;
+            }
+            paramInt += 1;
+            break;
+            localObject1 = null;
+            break label137;
+          }
+        }
+        paramInt = -1;
+        break;
+        int i = paramInt;
+        label202:
+        paramInt = i;
+        break;
+        label208:
+        a locala = this.Ewz;
+        localObject1 = a.a(locala);
+        label277:
+        label282:
+        if (localObject1 != null)
+        {
+          localObject1 = ((List)localObject1).iterator();
+          i = 0;
+          label241:
+          if (((Iterator)localObject1).hasNext()) {
+            if (((cc)((Iterator)localObject1).next()).a((com.tencent.mm.plugin.finder.feed.model.internal.k)localObject2) == 0)
+            {
+              j = 1;
+              if (j == 0) {
+                break label461;
+              }
+              Log.i("Finder.AtFeedExtraMerge", s.X("get changeIndex :", Integer.valueOf(i)));
+              if (i != -1) {
+                break label566;
+              }
+              i = paramInt - 1;
+            }
+          }
         }
         for (;;)
         {
-          if (localObject1 == null)
-          {
-            Log.i("Finder.AtFeedExtraMerge", "get no data");
-            localObject1 = x.aazN;
-          }
-          AppMethodBeat.o(291722);
-          return;
-          paramInt = -1;
-          break;
-          i = paramInt;
-          label481:
-          paramInt = i;
-          break;
-          label487:
-          j = 0;
-          break label236;
-          label493:
-          i += 1;
-          break label200;
-          label502:
-          i = -1;
-          break label241;
-          label508:
-          i = -1;
-          break label241;
-          label514:
-          j = 0;
-          break label373;
-          label520:
-          paramInt += 1;
-          break label337;
-          label527:
-          paramInt = -1;
-          break label378;
-          label532:
-          paramInt = 0;
-          break label378;
-          label537:
-          i -= 1;
-          break label267;
-          label546:
           paramInt = k;
-          if (((BaseFinderFeed)localObject1).feedObject.getMentionListSelected() == 2) {
-            paramInt = 1;
-          }
-          if (paramInt == 0)
+          Object localObject3;
+          if (i >= 0)
           {
-            localObject2 = a.a(this.zsH);
-            if (localObject2 != null) {
-              ((DataBuffer)localObject2).remove(i);
+            localObject1 = a(i, this.Ewx);
+            if (localObject1 == null) {
+              break label476;
             }
-            dIV();
-            a.b(this.zsH).dispatcher().onItemRangeRemoved(i, 1);
+            localObject3 = ((BaseFinderFeed)localObject1).feedObject;
+            if ((localObject3 == null) || (((FinderItem)localObject3).getMentionListSelected() != 2)) {
+              break label476;
+            }
+            paramInt = 1;
+            label355:
+            if (paramInt == 0) {
+              break label557;
+            }
+            localObject3 = a.a(this.Ewz);
+            if (localObject3 != null) {
+              break label481;
+            }
+            paramInt = k;
           }
+          for (;;)
+          {
+            Log.i("Finder.AtFeedExtraMerge", "changePos :" + i + " insertIndex:" + paramInt);
+            localObject3 = a.a(locala);
+            localObject1 = localObject2;
+            if (localObject3 == null) {
+              break;
+            }
+            ((DataBuffer)localObject3).add(paramInt, localObject2);
+            eCb();
+            a.b(locala).dispatcher().onItemRangeInserted(paramInt, 1);
+            localObject1 = localObject2;
+            break;
+            j = 0;
+            break label277;
+            label461:
+            i += 1;
+            break label241;
+            i = -1;
+            break label282;
+            label476:
+            paramInt = 0;
+            break label355;
+            label481:
+            localObject3 = ((List)localObject3).iterator();
+            paramInt = 0;
+            for (;;)
+            {
+              if (!((Iterator)localObject3).hasNext()) {
+                break label552;
+              }
+              if (((cc)((Iterator)localObject3).next()).a((com.tencent.mm.plugin.finder.feed.model.internal.k)localObject1) == 0) {}
+              for (j = 1;; j = 0)
+              {
+                if (j == 0) {
+                  break label545;
+                }
+                break;
+              }
+              label545:
+              paramInt += 1;
+            }
+            label552:
+            paramInt = -1;
+          }
+          label557:
+          i -= 1;
         }
-        label612:
-        paramInt = 0;
+        label566:
+        paramInt = m;
+        if (((BaseFinderFeed)localObject2).feedObject.getMentionListSelected() == 2) {
+          paramInt = 1;
+        }
+        localObject1 = localObject2;
+        if (paramInt == 0)
+        {
+          localObject1 = a.a(locala);
+          if (localObject1 != null) {
+            ((DataBuffer)localObject1).remove(i);
+          }
+          eCb();
+          a.b(locala).dispatcher().onItemRangeRemoved(i, 1);
+          localObject1 = localObject2;
+        }
       }
     }
     
-    final void dIU()
+    final void eCa()
     {
-      AppMethodBeat.i(291725);
-      a.b(this.zsH).requestRefresh();
-      AppMethodBeat.o(291725);
+      AppMethodBeat.i(331729);
+      a.b(this.Ewz).requestRefresh();
+      AppMethodBeat.o(331729);
     }
     
-    final void dIV()
+    final void eCb()
     {
-      AppMethodBeat.i(291726);
-      FinderAtFeedLoader localFinderAtFeedLoader = a.b(this.zsH);
-      Object localObject = a.a(this.zsH);
+      AppMethodBeat.i(331737);
+      FinderAtFeedLoader localFinderAtFeedLoader = a.b(this.Ewz);
+      Object localObject = a.a(this.Ewz);
       int i;
       if (localObject != null) {
         if (!((Collection)localObject).isEmpty())
         {
           i = 1;
           if (i != 1) {
-            break label90;
+            break label96;
           }
-          localObject = g.Xox;
-          ((c)g.h(a.c(this.zsH)).i(c.class)).dNq();
-          localObject = FinderAtFeedLoader.c.zsU;
+          i = 1;
+          label46:
+          if (i == 0) {
+            break label101;
+          }
+          localObject = com.tencent.mm.ui.component.k.aeZF;
+          ((c)com.tencent.mm.ui.component.k.y(a.c(this.Ewz)).q(c.class)).eIR();
+          localObject = FinderAtFeedLoader.c.EwN;
         }
       }
       for (;;)
       {
         localFinderAtFeedLoader.a((FinderAtFeedLoader.c)localObject);
-        AppMethodBeat.o(291726);
+        AppMethodBeat.o(331737);
         return;
         i = 0;
         break;
-        label90:
-        if (a.b(this.zsH).mentionCount > 0)
+        label96:
+        i = 0;
+        break label46;
+        label101:
+        if (a.b(this.Ewz).mentionCount > 0)
         {
-          localObject = g.Xox;
-          ((c)g.h(a.c(this.zsH)).i(c.class)).dNq();
-          localObject = FinderAtFeedLoader.c.zsV;
+          localObject = com.tencent.mm.ui.component.k.aeZF;
+          ((c)com.tencent.mm.ui.component.k.y(a.c(this.Ewz)).q(c.class)).eIR();
+          localObject = FinderAtFeedLoader.c.EwO;
         }
         else
         {
-          localObject = FinderAtFeedLoader.c.zsT;
+          localObject = FinderAtFeedLoader.c.EwM;
         }
       }
     }
     
-    public final void duB()
-    {
-      AppMethodBeat.i(291719);
-      Log.i("Finder.AtFeedExtraMerge", "onOwnerAlive");
-      this.zsG.dead();
-      AppMethodBeat.o(291719);
-    }
-    
-    public final void duC()
-    {
-      AppMethodBeat.i(291720);
-      Log.i("Finder.AtFeedExtraMerge", "onOwnerDead");
-      this.zsF = null;
-      this.zsG.alive();
-      AppMethodBeat.o(291720);
-    }
-    
-    public final String duz()
+    public final String edY()
     {
       return "atFeedManage";
     }
     
-    public final void l(HashMap<Long, Integer> paramHashMap)
+    public final void eea()
     {
-      AppMethodBeat.i(291721);
-      p.k(paramHashMap, "idMap");
-      if (this.zsE)
+      AppMethodBeat.i(331696);
+      Log.i("Finder.AtFeedExtraMerge", "onOwnerAlive");
+      this.Ewy.dead();
+      AppMethodBeat.o(331696);
+    }
+    
+    public final void eeb()
+    {
+      AppMethodBeat.i(331704);
+      Log.i("Finder.AtFeedExtraMerge", "onOwnerDead");
+      this.Ewx = null;
+      this.Ewy.alive();
+      AppMethodBeat.o(331704);
+    }
+    
+    public final void p(HashMap<Long, Integer> paramHashMap)
+    {
+      AppMethodBeat.i(331713);
+      s.u(paramHashMap, "idMap");
+      if (this.Eww)
       {
-        dIU();
-        AppMethodBeat.o(291721);
+        eCa();
+        AppMethodBeat.o(331713);
         return;
       }
-      dIT();
-      Log.i("Finder.AtFeedExtraMerge", "fetchData :" + this.zsF);
-      paramHashMap = this.zsF;
+      eBZ();
+      Log.i("Finder.AtFeedExtraMerge", s.X("fetchData :", this.Ewx));
+      paramHashMap = this.Ewx;
+      label77:
+      label88:
       Object localObject2;
+      label104:
       Object localObject3;
       Object localObject4;
-      label178:
-      label220:
-      Object localObject5;
-      if (paramHashMap != null)
+      if (paramHashMap == null)
       {
-        paramHashMap = (Iterable)paramHashMap;
-        localObject2 = (Collection)new ArrayList();
-        localObject3 = paramHashMap.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = ((Iterator)localObject3).next();
-          localObject1 = (bu)localObject4;
-          paramHashMap = (HashMap<Long, Integer>)localObject1;
-          if (!(localObject1 instanceof BaseFinderFeed)) {
-            paramHashMap = null;
-          }
-          paramHashMap = (BaseFinderFeed)paramHashMap;
-          if (paramHashMap != null)
-          {
-            paramHashMap = paramHashMap.feedObject;
-            if ((paramHashMap == null) || (paramHashMap.getMentionListSelected() != 2)) {}
-          }
-          for (i = 1;; i = 0)
-          {
-            if (i == 0) {
-              break label178;
-            }
-            ((Collection)localObject2).add(localObject4);
-            break;
-          }
+        paramHashMap = null;
+        if (paramHashMap != null) {
+          break label346;
         }
-        paramHashMap = (List)localObject2;
-        localObject1 = this.zsF;
-        if (localObject1 != null)
-        {
-          localObject1 = (Iterable)localObject1;
-          localObject3 = (Collection)new ArrayList();
-          localObject4 = ((Iterable)localObject1).iterator();
+        localObject1 = (List)new ArrayList();
+        paramHashMap = this.Ewx;
+        if (paramHashMap != null) {
+          break label352;
         }
+        paramHashMap = null;
+        if (paramHashMap != null) {
+          break label473;
+        }
+        localObject2 = (List)new ArrayList();
+        localObject3 = new ArrayList();
+        Log.i("Finder.AtFeedExtraMerge", "visibleList :" + ((List)localObject1).size() + "  invisibleList: " + ((List)localObject2).size());
+        localObject4 = ((List)localObject1).iterator();
       }
-      else
+      label166:
+      label332:
+      label335:
+      label473:
+      label601:
+      for (;;)
       {
-        label321:
+        if (!((Iterator)localObject4).hasNext()) {
+          break label603;
+        }
+        cc localcc = (cc)((Iterator)localObject4).next();
+        paramHashMap = a.a(this.Ewz);
+        if (paramHashMap == null)
+        {
+          paramHashMap = null;
+          if (paramHashMap != null) {
+            break label549;
+          }
+          localObject1 = null;
+        }
         for (;;)
         {
-          if (!((Iterator)localObject4).hasNext()) {
-            break label323;
+          if (localObject1 != null) {
+            break label601;
           }
-          localObject5 = ((Iterator)localObject4).next();
-          localObject2 = (bu)localObject5;
-          localObject1 = localObject2;
-          if (!(localObject2 instanceof BaseFinderFeed)) {
-            localObject1 = null;
-          }
-          localObject1 = (BaseFinderFeed)localObject1;
-          if (localObject1 != null)
+          ((ArrayList)localObject3).add(localcc);
+          break label166;
+          paramHashMap = (Iterable)paramHashMap;
+          localObject1 = (Collection)new ArrayList();
+          localObject2 = paramHashMap.iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            localObject1 = ((BaseFinderFeed)localObject1).feedObject;
-            if ((localObject1 == null) || (((FinderItem)localObject1).getMentionListSelected() != 3)) {}
-          }
-          for (i = 1;; i = 0)
-          {
-            if (i == 0) {
-              break label321;
+            localObject3 = ((Iterator)localObject2).next();
+            paramHashMap = (cc)localObject3;
+            if ((paramHashMap instanceof BaseFinderFeed))
+            {
+              paramHashMap = (BaseFinderFeed)paramHashMap;
+              if (paramHashMap == null) {
+                break label332;
+              }
+              paramHashMap = paramHashMap.feedObject;
+              if ((paramHashMap == null) || (paramHashMap.getMentionListSelected() != 2)) {
+                break label332;
+              }
             }
-            ((Collection)localObject3).add(localObject5);
-            break label220;
-            paramHashMap = (List)new ArrayList();
-            break;
+            for (i = 1;; i = 0)
+            {
+              if (i == 0) {
+                break label335;
+              }
+              ((Collection)localObject1).add(localObject3);
+              break;
+              paramHashMap = null;
+              break label287;
+            }
           }
-        }
-        label323:
-        localObject1 = (List)localObject3;
-        localObject2 = new ArrayList();
-        Log.i("Finder.AtFeedExtraMerge", "visibleList :" + paramHashMap.size() + "  invisibleList: " + ((List)localObject1).size());
-        localObject3 = paramHashMap.iterator();
-        label388:
-        if (!((Iterator)localObject3).hasNext()) {
-          break label571;
-        }
-        localObject4 = (bu)((Iterator)localObject3).next();
-        paramHashMap = a.a(this.zsH);
-        if (paramHashMap == null) {
-          break label566;
-        }
-        localObject5 = ((Iterable)paramHashMap).iterator();
-        label433:
-        if (!((Iterator)localObject5).hasNext()) {
-          break label561;
-        }
-        paramHashMap = ((Iterator)localObject5).next();
-        if (((bu)paramHashMap).a((k)localObject4) != 0) {
-          break label556;
-        }
-        i = 1;
-        label470:
-        if (i == 0) {
-          break label559;
-        }
-      }
-      label474:
-      for (paramHashMap = (bu)paramHashMap;; paramHashMap = null)
-      {
-        if (paramHashMap != null)
-        {
-          Log.i("Finder.AtFeedExtraMerge", "visibleFeedId add id:".concat(String.valueOf(localObject4)));
-          ((ArrayList)localObject2).add(paramHashMap);
-          localObject5 = a.a(this.zsH);
-          if (localObject5 != null) {
-            ((DataBuffer)localObject5).remove(paramHashMap);
-          }
-          if (paramHashMap != null) {
-            break label388;
-          }
-        }
-        ((ArrayList)localObject2).add(localObject4);
-        break label388;
-        localObject1 = (List)new ArrayList();
-        break;
-        i = 0;
-        break label470;
-        break label433;
-        paramHashMap = null;
-        break label474;
-      }
-      label556:
-      label559:
-      label561:
-      label566:
-      label571:
-      Object localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject3 = (bu)((Iterator)localObject1).next();
-        Log.i("Finder.AtFeedExtraMerge", "invisibleFeed :".concat(String.valueOf(localObject3)));
-        paramHashMap = a.a(this.zsH);
-        if (paramHashMap != null)
-        {
-          localObject4 = ((Iterable)paramHashMap).iterator();
-          label637:
-          if (((Iterator)localObject4).hasNext())
+          paramHashMap = (List)localObject1;
+          break;
+          label346:
+          localObject1 = paramHashMap;
+          break label77;
+          label352:
+          paramHashMap = (Iterable)paramHashMap;
+          localObject2 = (Collection)new ArrayList();
+          localObject3 = paramHashMap.iterator();
+          while (((Iterator)localObject3).hasNext())
           {
-            paramHashMap = ((Iterator)localObject4).next();
-            if (((bu)paramHashMap).a((k)localObject3) == 0)
+            localObject4 = ((Iterator)localObject3).next();
+            paramHashMap = (cc)localObject4;
+            if ((paramHashMap instanceof BaseFinderFeed))
+            {
+              paramHashMap = (BaseFinderFeed)paramHashMap;
+              if (paramHashMap == null) {
+                break label459;
+              }
+              paramHashMap = paramHashMap.feedObject;
+              if ((paramHashMap == null) || (paramHashMap.getMentionListSelected() != 3)) {
+                break label459;
+              }
+            }
+            for (i = 1;; i = 0)
+            {
+              if (i == 0) {
+                break label462;
+              }
+              ((Collection)localObject2).add(localObject4);
+              break;
+              paramHashMap = null;
+              break label414;
+            }
+          }
+          paramHashMap = (List)localObject2;
+          break label88;
+          localObject2 = paramHashMap;
+          break label104;
+          localObject1 = ((Iterable)paramHashMap).iterator();
+          label490:
+          if (((Iterator)localObject1).hasNext())
+          {
+            paramHashMap = ((Iterator)localObject1).next();
+            if (((cc)paramHashMap).a((com.tencent.mm.plugin.finder.feed.model.internal.k)localcc) == 0)
             {
               i = 1;
               if (i == 0) {
-                break label729;
+                break label542;
               }
             }
           }
           for (;;)
           {
-            label674:
-            paramHashMap = (bu)paramHashMap;
+            paramHashMap = (cc)paramHashMap;
+            break;
+            i = 0;
+            break label527;
+            break label490;
+            paramHashMap = null;
+          }
+          localObject1 = this.Ewz;
+          Log.i("Finder.AtFeedExtraMerge", s.X("visibleFeedId add id:", localcc));
+          ((ArrayList)localObject3).add(paramHashMap);
+          DataBuffer localDataBuffer = a.a((a)localObject1);
+          localObject1 = paramHashMap;
+          if (localDataBuffer != null)
+          {
+            localDataBuffer.remove(paramHashMap);
+            localObject1 = paramHashMap;
+          }
+        }
+      }
+      label287:
+      label459:
+      label462:
+      label603:
+      Object localObject1 = ((List)localObject2).iterator();
+      label414:
+      label549:
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (cc)((Iterator)localObject1).next();
+        Log.i("Finder.AtFeedExtraMerge", s.X("invisibleFeed :", localObject2));
+        paramHashMap = a.a(this.Ewz);
+        if (paramHashMap != null)
+        {
+          localObject4 = ((Iterable)paramHashMap).iterator();
+          if (((Iterator)localObject4).hasNext())
+          {
+            paramHashMap = ((Iterator)localObject4).next();
+            if (((cc)paramHashMap).a((com.tencent.mm.plugin.finder.feed.model.internal.k)localObject2) == 0)
+            {
+              i = 1;
+              label707:
+              if (i == 0) {
+                break label763;
+              }
+            }
+          }
+          for (;;)
+          {
+            paramHashMap = (cc)paramHashMap;
             if (paramHashMap == null) {
               break;
             }
-            Log.i("Finder.AtFeedExtraMerge", "data remove :".concat(String.valueOf(paramHashMap)));
-            localObject3 = a.a(this.zsH);
-            if (localObject3 == null) {
+            localObject2 = this.Ewz;
+            Log.i("Finder.AtFeedExtraMerge", s.X("data remove :", paramHashMap));
+            localObject2 = a.a((a)localObject2);
+            if (localObject2 == null) {
               break;
             }
-            ((DataBuffer)localObject3).remove(paramHashMap);
+            ((DataBuffer)localObject2).remove(paramHashMap);
             break;
             i = 0;
-            break label674;
-            label729:
-            break label637;
+            break label707;
+            label763:
+            break label670;
             paramHashMap = null;
           }
         }
       }
-      int i = ((ArrayList)localObject2).size() - 1;
-      while (i >= 0)
+      label527:
+      label542:
+      label670:
+      int i = ((ArrayList)localObject3).size() - 1;
+      if (i >= 0) {}
+      for (;;)
       {
-        Log.i("Finder.AtFeedExtraMerge", "data visibleFeed from tempList index: ".concat(String.valueOf(i)));
-        paramHashMap = a.a(this.zsH);
+        int j = i - 1;
+        Log.i("Finder.AtFeedExtraMerge", s.X("data visibleFeed from tempList index: ", Integer.valueOf(i)));
+        paramHashMap = a.a(this.Ewz);
         if (paramHashMap != null) {
-          paramHashMap.add(0, ((ArrayList)localObject2).get(i));
+          paramHashMap.add(0, ((ArrayList)localObject3).get(i));
         }
-        i -= 1;
+        if (j < 0)
+        {
+          eCb();
+          a.b(this.Ewz).dispatcher().onChanged();
+          AppMethodBeat.o(331713);
+          return;
+        }
+        i = j;
       }
-      dIV();
-      a.b(this.zsH).dispatcher().onChanged();
-      AppMethodBeat.o(291721);
     }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/loader/FinderAtFeedExtraMerge$atFeedDataObserver$1$updateAtFeedListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FinderAtFeedUpdateEvent;", "callback", "", "event", "plugin-finder_release"})
-    public static final class a
-      extends IListener<hz>
-    {}
   }
 }
 

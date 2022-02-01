@@ -4,69 +4,54 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.c.h;
-import com.tencent.mm.videocomposition.effect.d;
-import com.tencent.mm.xeffect.effect.EffectManager;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.modelimage.loader.b.h;
+import com.tencent.mm.modelimage.loader.c.b;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/convert/MvItemConvert$initBgCover$1", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/convert/MvItemConvert$initBgCover$2", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c$e
   implements h
 {
   c$e(ImageView paramImageView) {}
   
-  public final Bitmap a(String paramString, View paramView, com.tencent.mm.ay.a.d.b paramb)
+  public final Bitmap a(String paramString, View paramView, b paramb)
   {
     return null;
   }
   
-  public final void b(String paramString, View paramView) {}
-  
-  public final void b(String paramString, View paramView, com.tencent.mm.ay.a.d.b paramb)
+  public final void b(final String paramString, View paramView, b paramb)
   {
-    paramView = null;
-    AppMethodBeat.i(227744);
-    p.k(paramString, "url");
-    if (paramb != null) {}
-    for (paramString = paramb.bitmap;; paramString = null)
+    AppMethodBeat.i(288212);
+    s.u(paramString, "url");
+    if (paramb == null) {}
+    for (paramString = null;; paramString = paramb.bitmap)
     {
-      if (paramString != null)
+      if ((paramString != null) && (!paramb.bitmap.isRecycled()))
       {
-        paramString = paramView;
-        if (paramb != null) {
-          paramString = paramb.bitmap;
-        }
-        p.j(paramString, "imageData?.bitmap");
-        if (!paramString.isRecycled())
-        {
-          paramString = new com.tencent.mm.videocomposition.effect.a();
-          paramView = paramb.bitmap;
-          p.j(paramView, "imageData.bitmap");
-          paramString.setInputBitmap(paramView);
-          paramView = this.GfQ;
-          p.j(paramView, "coverIv");
-          int i = paramView.getWidth();
-          paramView = this.GfQ;
-          p.j(paramView, "coverIv");
-          paramString.setOutputSize(i, paramView.getHeight());
-          paramString.YIy.ANo.ikd();
-          paramString.af((kotlin.g.a.b)new a(this));
+        paramString = BitmapUtil.fastblur(paramb.bitmap, 10);
+        if (paramString != null) {
+          d.uiThread((a)new a(this.Mbh, paramString));
         }
       }
-      AppMethodBeat.o(227744);
+      AppMethodBeat.o(288212);
       return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Bitmap;", "invoke"})
+  public final void c(String paramString, View paramView) {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.b<Bitmap, x>
+    extends u
+    implements a<ah>
   {
-    a(c.e parame)
+    a(ImageView paramImageView, Bitmap paramBitmap)
     {
       super();
     }
@@ -74,7 +59,7 @@ public final class c$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.a.c.e
  * JD-Core Version:    0.7.0.1
  */

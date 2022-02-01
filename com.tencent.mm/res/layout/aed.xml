@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cu8" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/mx" android:layout_width="@dimen/by" android:layout_height="@dimen/by" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/qa" android:gravity="center" android:id="@id/bgd" android:background="@drawable/a17" android:visibility="visible" android:layout_width="@dimen/cp" android:layout_height="@dimen/ce" android:text="" android:layout_alignBottom="@id/mx" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/xs" android:layout_width="fill_parent" android:layout_height="@dimen/d_">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/h6a" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cp" style="@style/jv" />
+        <RelativeLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/h67" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d6" android:layout_marginRight="@dimen/d0">
+            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/h71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌曲名字" android:singleLine="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/xe" android:ellipsize="end" android:id="@id/jlw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="歌手" android:singleLine="true" android:layout_below="@id/h71" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cp" android:src="@raw/finder_live_move_icon" app:iconColor="@color/sn" />
+        <View android:layout_gravity="bottom" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/d6" />
+    </FrameLayout>
+</FrameLayout>

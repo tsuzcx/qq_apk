@@ -2,28 +2,28 @@ package com.tencent.mm.videocomposition;
 
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"saveTexture", "Landroid/graphics/Bitmap;", "texture", "", "width", "height", "centerCrop", "", "Landroid/graphics/Rect;", "target", "targetWidth", "targetHeight", "centerInside", "copy", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "Lcom/tencent/mm/videocomposition/TrackTransition;", "Lcom/tencent/mm/videocomposition/VideoComposition;", "effectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "scale", "", "toFloatArray", "", "Lorg/json/JSONArray;", "toIntArray", "", "toLongArray", "", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"saveTexture", "Landroid/graphics/Bitmap;", "texture", "", "width", "height", "centerCrop", "", "Landroid/graphics/Rect;", "target", "targetWidth", "targetHeight", "centerInside", "copy", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "Lcom/tencent/mm/videocomposition/TrackTransition;", "Lcom/tencent/mm/videocomposition/VideoComposition;", "effectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "scale", "", "toFloatArray", "", "Lorg/json/JSONArray;", "toIntArray", "", "toLongArray", "", "video_composition_release"}, k=2, mv={1, 1, 15})
 public final class h
 {
   public static final void b(Rect paramRect, float paramFloat)
   {
-    AppMethodBeat.i(247985);
-    p.k(paramRect, "$this$scale");
+    AppMethodBeat.i(233480);
+    s.t(paramRect, "$this$scale");
     paramRect.bottom = ((int)(paramRect.bottom * paramFloat));
     paramRect.left = ((int)(paramRect.left * paramFloat));
     paramRect.right = ((int)(paramRect.right * paramFloat));
     paramRect.top = ((int)(paramRect.top * paramFloat));
-    AppMethodBeat.o(247985);
+    AppMethodBeat.o(233480);
   }
   
-  public static final void c(Rect paramRect1, Rect paramRect2)
+  public static final void g(Rect paramRect1, Rect paramRect2)
   {
-    AppMethodBeat.i(247984);
-    p.k(paramRect1, "$this$centerCrop");
-    p.k(paramRect2, "target");
+    AppMethodBeat.i(233474);
+    s.t(paramRect1, "$this$centerCrop");
+    s.t(paramRect2, "target");
     float f1 = paramRect2.width() * 1.0F / paramRect1.width();
     float f2 = paramRect2.height() * 1.0F / paramRect1.height();
     if (f1 > f2)
@@ -32,14 +32,14 @@ public final class h
       paramRect1.set(paramRect2);
       paramRect1.top -= i;
       paramRect1.bottom = (i + paramRect1.bottom);
-      AppMethodBeat.o(247984);
+      AppMethodBeat.o(233474);
       return;
     }
     int i = (int)((paramRect1.width() * f2 - paramRect2.width()) / 2.0F);
     paramRect1.set(paramRect2);
     paramRect1.left -= i;
     paramRect1.right = (i + paramRect1.right);
-    AppMethodBeat.o(247984);
+    AppMethodBeat.o(233474);
   }
 }
 

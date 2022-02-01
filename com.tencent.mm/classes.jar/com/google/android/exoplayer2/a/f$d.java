@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f$d
   extends Exception
 {
-  public final int aPN;
+  public final int cJJ;
   
   public f$d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super("AudioTrack init failed: " + paramInt1 + ", Config(" + paramInt2 + ", " + paramInt3 + ", " + paramInt4 + ")");
     AppMethodBeat.i(91783);
-    this.aPN = paramInt1;
+    this.cJJ = paramInt1;
     AppMethodBeat.o(91783);
   }
 }

@@ -13,21 +13,21 @@ final class c$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(191990);
+    AppMethodBeat.i(257223);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (this.UWG.UVN != null) {
-      this.UWG.UVN.onClick(this.UWz, -3);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.acrR.acqY != null) {
+      this.acrR.acqY.onClick(this.acrK, -3);
     }
-    this.UWz.dismiss();
+    this.acrK.dismiss();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(191990);
+    AppMethodBeat.o(257223);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.a.c.8
  * JD-Core Version:    0.7.0.1
  */

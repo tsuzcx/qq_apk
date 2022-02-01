@@ -13,13 +13,13 @@ public final class j$4
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(55959);
-    h.IzE.a(10997, new Object[] { "18", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+    h.OAn.b(10997, new Object[] { "18", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
     AppMethodBeat.o(55959);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.j.4
  * JD-Core Version:    0.7.0.1
  */

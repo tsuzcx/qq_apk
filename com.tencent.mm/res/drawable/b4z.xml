@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@raw/webview_search_next_word_disable" />
-    <item android:drawable="@raw/webview_search_next_word" />
-</selector>
+    <solid android:color="#4cffffff" />
+    <size android:height="4.0dip" android:width="4.0dip" />
+</shape>

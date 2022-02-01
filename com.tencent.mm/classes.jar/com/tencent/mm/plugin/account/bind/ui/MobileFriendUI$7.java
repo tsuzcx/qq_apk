@@ -17,9 +17,9 @@ final class MobileFriendUI$7
   {
     AppMethodBeat.i(110151);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    MMWizardActivity.aH(this.mUK, new Intent(this.mUK, BindMContactIntroUI.class));
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    MMWizardActivity.aQ(this.pRr, new Intent(this.pRr, BindMContactIntroUI.class));
     a.a(this, "com/tencent/mm/plugin/account/bind/ui/MobileFriendUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(110151);
   }

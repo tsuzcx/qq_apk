@@ -1,126 +1,122 @@
 package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.protocal.protobuf.o;
+import com.tencent.mm.g.a;
+import com.tencent.mm.g.c;
+import com.tencent.mm.g.d;
+import com.tencent.mm.g.g.a;
+import com.tencent.mm.modelcdntran.k;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vending.g.b;
-import com.tencent.mm.vending.g.g;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
 
 public final class e
-  implements com.tencent.mm.an.i
 {
-  private static int mJD = 20;
-  private static int mJE = 20;
-  private static int mJF = 20;
-  private static long mJG = 4000000L;
-  private static long mJH = 200000L;
-  public String mJI = "";
-  public String mJJ = "";
-  b mJv;
+  public static int osI = 20301;
+  private String hQn;
+  private String mediaId;
+  private long osG;
+  private g.a osH;
+  private a pGi;
   
-  public e() {}
-  
-  public e(String paramString1, String paramString2)
+  public e(String paramString, a parama)
   {
-    this.mJI = paramString1;
-    this.mJJ = paramString2;
-  }
-  
-  public static void a(o paramo)
-  {
-    AppMethodBeat.i(63330);
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmL, Integer.valueOf(paramo.mKG));
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmM, Integer.valueOf(paramo.mKH));
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmN, Integer.valueOf(paramo.mKI));
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmO, Long.valueOf(paramo.mKJ));
-    com.tencent.mm.kernel.h.aHH();
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmP, Long.valueOf(paramo.mKK));
-    AppMethodBeat.o(63330);
-  }
-  
-  public static int bwn()
-  {
-    AppMethodBeat.i(63326);
-    com.tencent.mm.kernel.h.aHH();
-    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmL, Integer.valueOf(mJD))).intValue();
-    AppMethodBeat.o(63326);
-    return i;
-  }
-  
-  public static int bwo()
-  {
-    AppMethodBeat.i(63327);
-    com.tencent.mm.kernel.h.aHH();
-    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmN, Integer.valueOf(mJF))).intValue();
-    AppMethodBeat.o(63327);
-    return i;
-  }
-  
-  public static long bwp()
-  {
-    AppMethodBeat.i(63328);
-    com.tencent.mm.kernel.h.aHH();
-    long l = ((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmP, Long.valueOf(mJH))).longValue();
-    AppMethodBeat.o(63328);
-    return l;
-  }
-  
-  public static int bwq()
-  {
-    AppMethodBeat.i(271042);
-    com.tencent.mm.kernel.h.aHH();
-    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VmQ, Integer.valueOf(2))).intValue();
-    AppMethodBeat.o(271042);
-    return i;
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
-  {
-    AppMethodBeat.i(63329);
-    Log.i("MicroMsg.AAOperationData", "get AAOperation, onSceneEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 == 0) && (paramInt2 == 0))
+    AppMethodBeat.i(63324);
+    this.osG = 0L;
+    this.osH = new g.a()
     {
-      paramString = ((com.tencent.mm.plugin.aa.model.cgi.i)paramq).mKz;
-      Log.i("MicroMsg.AAOperationData", "get AAOperation data, retCode: %s, retMsg: %s, max_payer_num: %s, max_receiver_num: %s, max_total_num: %s, max_total_amount: %s, max_per_amount: %s, notice: %s, notice_url: %s,response.default_mod:%s", new Object[] { Integer.valueOf(paramString.fwx), paramString.tVo, Integer.valueOf(paramString.mKG), Integer.valueOf(paramString.mKH), Integer.valueOf(paramString.mKI), Long.valueOf(paramString.mKJ), Long.valueOf(paramString.mKK), paramString.mKL, paramString.mKM, Integer.valueOf(paramString.RDA) });
-      if (paramString.fwx == 0)
+      public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmL, Integer.valueOf(paramString.mKG));
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmM, Integer.valueOf(paramString.mKH));
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmN, Integer.valueOf(paramString.mKI));
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmO, Long.valueOf(paramString.mKJ));
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmP, Long.valueOf(paramString.mKK));
-        com.tencent.mm.kernel.h.aHH();
-        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VmQ, Integer.valueOf(paramString.RDA));
-        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(407L, 33L, 1L, false);
-        g.a(this.mJv, new Object[] { new e(paramString.mKM, paramString.mKL) });
-        AppMethodBeat.o(63329);
-        return;
+        AppMethodBeat.i(63323);
+        if (paramAnonymousInt == -21005)
+        {
+          Log.d("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          AppMethodBeat.o(63323);
+          return 0;
+        }
+        if ((paramAnonymousd != null) && (paramAnonymousd.field_retCode == 0))
+        {
+          Log.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          e.a(e.this).cp(paramAnonymousd.field_fileUrl, paramAnonymousd.field_thumbUrl);
+          Log.i("MicroMsg.Aa.AAImagUpload", "uploadsns cdndone pass: " + (System.currentTimeMillis() - e.b(e.this)) + " " + paramAnonymousd.field_filemd5);
+          AppMethodBeat.o(63323);
+          return 0;
+        }
+        if ((paramAnonymousd != null) && (paramAnonymousd.field_retCode != 0))
+        {
+          Log.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          e.a(e.this).bVe();
+          AppMethodBeat.o(63323);
+          return 0;
+        }
+        if (paramAnonymousInt != 0)
+        {
+          Log.i("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+          e.a(e.this).bVe();
+          AppMethodBeat.o(63323);
+          return 0;
+        }
+        Log.d("MicroMsg.Aa.AAImagUpload", "cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, paramAnonymousd });
+        AppMethodBeat.o(63323);
+        return 0;
       }
-      g.ieE().eo(Boolean.FALSE);
-      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(407L, 35L, 1L, false);
-      AppMethodBeat.o(63329);
+      
+      public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
+      
+      public final byte[] h(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
+      {
+        return null;
+      }
+    };
+    this.osG = System.currentTimeMillis();
+    this.hQn = paramString;
+    this.pGi = parama;
+    if (Util.isNullOrNil(this.hQn)) {}
+    for (parama = "";; parama = com.tencent.mm.b.g.getMessageDigest(this.hQn.getBytes()))
+    {
+      this.mediaId = parama;
+      Log.i("MicroMsg.Aa.AAImagUpload", "AAImagUpload imgPath:%s mediaId:%s", new Object[] { paramString, this.mediaId });
+      AppMethodBeat.o(63324);
       return;
     }
-    g.ieE().eo(Boolean.FALSE);
-    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(407L, 34L, 1L, false);
-    AppMethodBeat.o(63329);
+  }
+  
+  public final boolean bFu()
+  {
+    AppMethodBeat.i(63325);
+    com.tencent.mm.g.g localg = new com.tencent.mm.g.g();
+    localg.taskName = "task_AAImagUpload";
+    localg.lwL = this.osH;
+    localg.field_mediaId = this.mediaId;
+    localg.field_fullpath = this.hQn;
+    localg.field_thumbpath = "";
+    localg.field_fileType = 20301;
+    localg.field_talker = "";
+    localg.field_priority = a.lvZ;
+    localg.field_needStorage = true;
+    localg.field_isStreamMedia = false;
+    localg.field_appType = 249;
+    localg.field_bzScene = 2;
+    if (!k.bHW().g(localg))
+    {
+      Log.e("MicroMsg.Aa.AAImagUpload", "cdntra addSendTask failed. mediaId:%s", new Object[] { this.mediaId });
+      AppMethodBeat.o(63325);
+      return false;
+    }
+    AppMethodBeat.o(63325);
+    return true;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bVe();
+    
+    public abstract void cp(String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.e
  * JD-Core Version:    0.7.0.1
  */

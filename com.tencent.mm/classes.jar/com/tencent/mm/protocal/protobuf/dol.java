@@ -1,94 +1,92 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class dol
-  extends dyy
+  extends com.tencent.mm.bx.a
 {
+  public String nRQ;
+  public String url;
+  public String vFa;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(155447);
+    AppMethodBeat.i(72514);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(155447);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.vFa != null) {
+        paramVarArgs.g(1, this.vFa);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.nRQ != null) {
+        paramVarArgs.g(2, this.nRQ);
       }
-      AppMethodBeat.o(155447);
+      if (this.url != null) {
+        paramVarArgs.g(4, this.url);
+      }
+      AppMethodBeat.o(72514);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label336;
+      if (this.vFa == null) {
+        break label334;
       }
     }
-    label336:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label334:
+    for (int i = i.a.a.b.b.a.h(1, this.vFa) + 0;; i = 0)
     {
-      AppMethodBeat.o(155447);
-      return paramInt;
+      paramInt = i;
+      if (this.nRQ != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.nRQ);
+      }
+      i = paramInt;
+      if (this.url != null) {
+        i = paramInt + i.a.a.b.b.a.h(4, this.url);
+      }
+      AppMethodBeat.o(72514);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(155447);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(155447);
+        AppMethodBeat.o(72514);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dol localdol = (dol)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
+        case 3: 
         default: 
-          AppMethodBeat.o(155447);
+          AppMethodBeat.o(72514);
           return -1;
+        case 1: 
+          localdol.vFa = locala.ajGk.readString();
+          AppMethodBeat.o(72514);
+          return 0;
+        case 2: 
+          localdol.nRQ = locala.ajGk.readString();
+          AppMethodBeat.o(72514);
+          return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject = (byte[])paramVarArgs.get(paramInt);
-          jh localjh = new jh();
-          if ((localObject != null) && (localObject.length > 0)) {
-            localjh.parseFrom((byte[])localObject);
-          }
-          localdol.BaseResponse = localjh;
-          paramInt += 1;
-        }
-        AppMethodBeat.o(155447);
+        localdol.url = locala.ajGk.readString();
+        AppMethodBeat.o(72514);
         return 0;
       }
-      AppMethodBeat.o(155447);
+      AppMethodBeat.o(72514);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dol
  * JD-Core Version:    0.7.0.1
  */

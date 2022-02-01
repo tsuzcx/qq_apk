@@ -3,84 +3,133 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
-public class aof
-  extends com.tencent.mm.cd.a
+public final class aof
+  extends erp
 {
-  public int RIr;
-  public LinkedList<apd> SAF;
-  
-  public aof()
-  {
-    AppMethodBeat.i(127476);
-    this.SAF = new LinkedList();
-    AppMethodBeat.o(127476);
-  }
+  public int OzH;
+  public bi Zbi;
+  public String ZvJ;
+  public String oOI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127477);
+    AppMethodBeat.i(91441);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.RIr);
-      paramVarArgs.e(2, 8, this.SAF);
-      AppMethodBeat.o(127477);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bM(1, this.RIr);
-      i = g.a.a.a.c(2, 8, this.SAF);
-      AppMethodBeat.o(127477);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.SAF.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(127477);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      aof localaof = (aof)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(127477);
-        return -1;
-      case 1: 
-        localaof.RIr = ((g.a.a.a.a)localObject).abFh.AK();
-        AppMethodBeat.o(127477);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.ZvJ != null) {
+        paramVarArgs.g(2, this.ZvJ);
+      }
+      if (this.oOI != null) {
+        paramVarArgs.g(3, this.oOI);
+      }
+      paramVarArgs.bS(4, this.OzH);
+      if (this.Zbi != null)
+      {
+        paramVarArgs.qD(5, this.Zbi.computeSize());
+        this.Zbi.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(91441);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label582;
+      }
+    }
+    label582:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.ZvJ != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.ZvJ);
+      }
+      i = paramInt;
+      if (this.oOI != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.oOI);
+      }
+      i += i.a.a.b.b.a.cJ(4, this.OzH);
+      paramInt = i;
+      if (this.Zbi != null) {
+        paramInt = i + i.a.a.a.qC(5, this.Zbi.computeSize());
+      }
+      AppMethodBeat.o(91441);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(91441);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        apd localapd = new apd();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localapd.parseFrom((byte[])localObject);
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        aof localaof = (aof)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91441);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localaof.BaseRequest = ((kc)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91441);
+          return 0;
+        case 2: 
+          localaof.ZvJ = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(91441);
+          return 0;
+        case 3: 
+          localaof.oOI = ((i.a.a.a.a)localObject1).ajGk.readString();
+          AppMethodBeat.o(91441);
+          return 0;
+        case 4: 
+          localaof.OzH = ((i.a.a.a.a)localObject1).ajGk.aar();
+          AppMethodBeat.o(91441);
+          return 0;
         }
-        localaof.SAF.add(localapd);
-        paramInt += 1;
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bi();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bi)localObject2).parseFrom((byte[])localObject1);
+          }
+          localaof.Zbi = ((bi)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91441);
+        return 0;
       }
-      AppMethodBeat.o(127477);
-      return 0;
+      AppMethodBeat.o(91441);
+      return -1;
     }
-    AppMethodBeat.o(127477);
-    return -1;
   }
 }
 

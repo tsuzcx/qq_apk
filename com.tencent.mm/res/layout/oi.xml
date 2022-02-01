@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:layout_gravity="center_vertical" android:background="@color/FG_3" android:visibility="visible" android:layout_width="1.0px" android:layout_height="65.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/lqa" layout="@layout/op" />
+    <View android:id="@id/asl" android:background="@drawable/q1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/r" android:layout_marginRight="@dimen/r" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/lqa" android:layerType="software" />
+</RelativeLayout>

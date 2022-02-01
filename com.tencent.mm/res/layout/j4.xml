@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/hw" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/hw" style="@style/lz">
-            <ImageView android:id="@id/a43" android:paddingBottom="@dimen/hw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" />
-            <TextView android:textSize="@dimen/c" android:textColor="@color/a2x" android:gravity="center" android:id="@id/a41" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/ob" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center" android:id="@id/a3z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/ob" />
-            <Button android:id="@id/a42" android:layout_marginBottom="@dimen/hs" android:text="@string/aeh" style="@style/ou" />
-        </LinearLayout>
-    </ScrollView>
+<LinearLayout android:orientation="vertical" android:id="@id/acv" android:paddingBottom="@dimen/cp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ad4" android:paddingLeft="@dimen/i6" android:paddingTop="@dimen/df" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/cd" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginRight="@dimen/bv" android:src="@raw/finder_live_icon" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/gb" android:id="@id/ad3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-100.0dip" android:text="@string/aok" android:includeFontPadding="false" android:layout_toRightOf="@id/ad2" />
+            <FrameLayout android:id="@id/ad2" android:background="@color/lz" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0dip" android:textColor="@color/gb" android:id="@id/ad1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aoj" android:includeFontPadding="false" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/acu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip">
+            <ImageView android:id="@id/act" android:background="@drawable/ge" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/acs" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/outlined_arrow_down" android:layout_centerInParent="true" app:iconColor="@color/gb" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/ad0" android:paddingBottom="@dimen/bv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

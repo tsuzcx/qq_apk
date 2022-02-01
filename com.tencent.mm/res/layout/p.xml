@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout android:background="@color/rv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/aal" />
-    <ImageView android:id="@id/coq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/ei5" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:indeterminateDrawable="@drawable/a4j" style="@style/a63" />
-    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/clr" android:background="@drawable/vx" android:paddingTop="@dimen/by" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="20.0dip" android:textColor="@color/am" android:layout_gravity="center_horizontal" android:id="@id/cpy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cs" android:text="@string/cs5" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aaa" />
-        <include android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/ck4" />
-        <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/cw_" android:paddingLeft="@dimen/ct" android:paddingTop="2.0dip" android:paddingRight="@dimen/ct" android:paddingBottom="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/cb" app:customBackground="@drawable/yo" app:desc_color="@color/v6" app:desc_text_size="14.0dip" app:logo_mode="g43" app:logo_style="dup" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" layout="@layout/aa2" />
-        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" layout="@layout/ces" />
-        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" layout="@layout/aa5" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/aa6" />
-        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" layout="@layout/ck5" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/cdy" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/cdr" />
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" layout="@layout/aa8" />
-        <include android:visibility="gone" layout="@layout/aby" />
-        <include android:visibility="gone" layout="@layout/cjx" />
-        <ViewStub android:layout_gravity="bottom|center" android:id="@id/fku" android:focusable="false" android:clickable="false" android:layout="@layout/ah0" android:layout_width="fill_parent" android:layout_height="112.0dip" />
-        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/ct" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" layout="@layout/cdv" />
-        <ViewStub android:layout_gravity="bottom|center" android:id="@id/ke3" android:focusable="false" android:clickable="false" android:layout="@layout/cdx" android:layout_width="fill_parent" android:layout_height="@dimen/bu" />
-        <ViewStub android:id="@id/ic" android:layout="@layout/dm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/aav" />
+    <ImageView android:id="@id/dgv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/fve" android:layout_width="@dimen/cw" android:layout_height="@dimen/cw" android:indeterminateDrawable="@drawable/a5z" style="@style/a76" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.finder.view.FinderFeedLiveRecommendView android:id="@id/d9u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d0" />
+        <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/d9b" android:background="@drawable/tf" android:paddingTop="@dimen/d6" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <FrameLayout android:gravity="bottom" android:id="@id/lzh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/lzg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ViewStub android:id="@id/d9f" android:layout="@layout/aan" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" layout="@layout/aac" />
+                    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" layout="@layout/aab" />
+                    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" layout="@layout/aa_" />
+                    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" layout="@layout/a7y" />
+                </LinearLayout>
+            </FrameLayout>
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" layout="@layout/aak" />
+            <include android:visibility="gone" layout="@layout/ac5" />
+            <include android:visibility="gone" layout="@layout/a8v" />
+            <ViewStub android:layout_gravity="bottom|center" android:id="@id/h07" android:focusable="false" android:clickable="false" android:layout="@layout/amn" android:layout_width="fill_parent" android:layout_height="112.0dip" />
+            <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d_" android:layout_marginTop="@dimen/df" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" layout="@layout/a90" />
+            <ViewStub android:layout_gravity="bottom|center" android:id="@id/e49" android:focusable="false" android:clickable="false" android:layout="@layout/a9h" android:layout_width="fill_parent" android:layout_height="@dimen/bx" />
+            <ViewStub android:id="@id/a3" android:layout="@layout/d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end|center|top" android:id="@id/jzv" android:padding="@dimen/cb" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_more" app:iconColor="@color/v6" />
-    <FrameLayout android:id="@id/e32" android:background="@color/v0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
-    <ViewStub android:layout_gravity="center|top" android:id="@id/a2" android:layout="@layout/d" android:layout_width="fill_parent" android:layout_height="@dimen/c1" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="end|center|top" android:id="@id/f29" android:padding="@dimen/cp" android:visibility="gone" android:layout_width="@dimen/d_" android:layout_height="@dimen/d_" android:src="@raw/icons_filled_more" app:iconColor="@color/yc" />
+    <FrameLayout android:id="@id/fbe" android:background="@color/y7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+    <ViewStub android:layout_gravity="center|top" android:id="@id/a4" android:layout="@layout/f" android:layout_width="fill_parent" android:layout_height="@dimen/c8" />
 </com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout>

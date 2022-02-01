@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
@@ -13,117 +12,201 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.a;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.c.k;
-import com.tencent.mm.loader.c.e.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.loader.b.e;
+import com.tencent.mm.loader.b.e.a;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.multitask.h;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.multitask.ui.a.c;
-import com.tencent.mm.plugin.multitask.ui.a.c.a;
 import com.tencent.mm.plugin.multitask.ui.e.b;
 import com.tencent.mm.plugin.multitask.ui.e.c;
 import com.tencent.mm.plugin.multitask.ui.minusscreen.a.a;
-import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.plugin.multitask.ui.uic.c;
+import com.tencent.mm.plugin.multitask.ui.uic.c.a;
+import com.tencent.mm.protocal.protobuf.drz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bd;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "layoutResId", "", "listener", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;", "(ILcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;)V", "MAX_NAME_COUNT", "getMAX_NAME_COUNT", "()I", "TAG", "", "thumbLoaderOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "getThumbLoaderOption", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "getLayoutId", "getNickName", "context", "Landroid/content/Context;", "item", "getTimeShowString", "time", "loadImage", "", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "imgView", "Landroid/widget/ImageView;", "defaultImgView", "defaultBgContainer", "Landroid/view/View;", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "makeTimeString", "d", "onAttachedToRecyclerView", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "onBindViewHolder", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "useBottomGradient", "ui-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "layoutResId", "", "listener", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;", "(ILcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;)V", "MAX_NAME_COUNT", "getMAX_NAME_COUNT", "()I", "TAG", "", "thumbLoaderOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "getThumbLoaderOption", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "getLayoutId", "getNickName", "context", "Landroid/content/Context;", "item", "getTimeShowString", "time", "loadImage", "", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "imgView", "Landroid/widget/ImageView;", "defaultImgView", "defaultBgContainer", "Landroid/view/View;", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "makeTimeString", "d", "onAttachedToRecyclerView", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "onBindViewHolder", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "useBottomGradient", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class d
-  extends com.tencent.mm.view.recyclerview.e<com.tencent.mm.plugin.multitask.ui.minusscreen.b.a>
+  extends f<com.tencent.mm.plugin.multitask.ui.minusscreen.b.a>
 {
-  private final com.tencent.mm.loader.c.e FKT;
-  com.tencent.mm.plugin.multitask.ui.minusscreen.d.a FKU;
-  final String TAG;
-  private final int xlY;
-  private final int xmc;
+  private final int AKn;
+  private final int AKy;
+  private com.tencent.mm.plugin.multitask.ui.minusscreen.d.a LGe;
+  private final e LGf;
+  private final String TAG;
   
   public d(int paramInt, com.tencent.mm.plugin.multitask.ui.minusscreen.d.a parama)
   {
-    this.xmc = paramInt;
-    this.FKU = parama;
+    this.AKy = paramInt;
+    this.LGe = parama;
     this.TAG = "MicroMsg.MultiTask.MinusScreenRoundCornerConvert";
     parama = new e.a();
-    parama.kOp = true;
-    parama.kOo = true;
-    this.FKT = parama.aRT();
-    this.xlY = 5;
+    parama.nqd = true;
+    parama.nqc = true;
+    this.LGf = parama.blI();
+    this.AKn = 5;
   }
   
-  public static String AP(int paramInt)
+  public static String Be(int paramInt)
   {
-    return AQ(paramInt / 60) + ":" + AQ(paramInt % 60);
+    return Bf(paramInt / 60) + ':' + Bf(paramInt % 60);
   }
   
-  private static String AQ(int paramInt)
+  private static String Bf(int paramInt)
   {
     if (paramInt < 10) {
-      return "0".concat(String.valueOf(paramInt));
+      return s.X("0", Integer.valueOf(paramInt));
     }
     return String.valueOf(paramInt);
   }
   
+  private static final void a(d paramd, com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama, j paramj, View paramView)
+  {
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramd);
+    localb.cH(parama);
+    localb.cH(paramj);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramd, "this$0");
+    s.u(parama, "$item");
+    s.u(paramj, "$holder");
+    paramd = paramd.LGe;
+    if (paramd != null) {
+      paramd.a(parama, paramj);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+  }
+  
+  private static final void a(final d paramd, final j paramj, String paramString1, final ImageView paramImageView1, MultiTaskInfo paramMultiTaskInfo, final ImageView paramImageView2, final View paramView1, String paramString2, View paramView2, final Bitmap paramBitmap, Object[] paramArrayOfObject)
+  {
+    s.u(paramd, "this$0");
+    s.u(paramj, "$holder");
+    s.u(paramString1, "$srcImgPath");
+    s.u(paramImageView1, "$imgView");
+    s.u(paramMultiTaskInfo, "$multiTaskInfo");
+    s.u(paramImageView2, "$defaultImgView");
+    s.u(paramView1, "$defaultBgContainer");
+    label118:
+    int i;
+    if ((paramView2 instanceof ImageView))
+    {
+      paramString2 = (ImageView)paramView2;
+      if ((paramString2 == null) || (paramBitmap == null)) {
+        break label271;
+      }
+      Log.i(paramd.TAG, "loadImage callback " + paramString2.hashCode() + ' ' + paramBitmap);
+      paramd = paramj.getRecyclerView();
+      if (paramd != null) {
+        break label249;
+      }
+      paramd = null;
+      if (!(paramd instanceof GridLayoutManager)) {
+        break label257;
+      }
+      paramd = (GridLayoutManager)paramd;
+      label130:
+      if (paramd != null) {
+        break label262;
+      }
+      i = 1;
+      label137:
+      paramd = com.tencent.mm.plugin.multitask.ui.minusscreen.a.LFz;
+      int j = a.a.gkL();
+      float f = (aw.getDeviceWidth() - j * (i + 1)) / (i * paramBitmap.getWidth());
+      paramd = new Matrix();
+      paramd.setScale(f, f);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(paramString2, paramd, paramBitmap));
+    }
+    label257:
+    label262:
+    label271:
+    for (paramd = ah.aiuX;; paramd = null)
+    {
+      if (paramd == null)
+      {
+        r.bKe().a(paramString1, paramImageView1);
+        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(paramMultiTaskInfo, paramImageView2, paramImageView1, paramView1, paramj));
+      }
+      return;
+      paramString2 = null;
+      break;
+      label249:
+      paramd = paramd.getLayoutManager();
+      break label118;
+      paramd = null;
+      break label130;
+      i = paramd.bWl;
+      break label137;
+    }
+  }
+  
   public String a(Context paramContext, com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama)
   {
-    p.k(paramContext, "context");
-    p.k(parama, "item");
-    return parama.FKP.fbc().nickname;
+    s.u(paramContext, "context");
+    s.u(parama, "item");
+    return parama.LGa.gkh().nickname;
   }
   
   public void a(RecyclerView paramRecyclerView, WxRecyclerAdapter<?> paramWxRecyclerAdapter)
   {
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(paramWxRecyclerAdapter, "adapter");
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramWxRecyclerAdapter, "adapter");
     super.a(paramRecyclerView, paramWxRecyclerAdapter);
   }
   
-  public void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  public void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
     paramRecyclerView = paramRecyclerView.getAdapter();
-    if (paramRecyclerView != null)
+    if (paramRecyclerView == null)
     {
-      paramInt = paramRecyclerView.getItemCount();
-      Log.i(this.TAG, "onCreateViewHolder itemCount:" + paramInt + ", layoutPosition:" + parami.mc());
+      paramInt = 0;
+      Log.i(this.TAG, "onCreateViewHolder itemCount:" + paramInt + ", layoutPosition:" + paramj.KI());
       if (paramInt != 2) {
-        break label190;
+        break label194;
       }
-      paramRecyclerView = parami.amk.findViewById(e.c.FIy);
+      paramRecyclerView = paramj.caK.findViewById(e.c.LDI);
       if (paramRecyclerView != null)
       {
-        localObject = c.FNc;
-        paramRecyclerView.setTranslationX(c.fcv());
-        localObject = c.FNc;
-        paramRecyclerView.setTranslationY(c.fcu());
+        localObject = c.LHl;
+        paramRecyclerView.setTranslationX(c.gly());
+        localObject = c.LHl;
+        paramRecyclerView.setTranslationY(c.glx());
         localObject = paramRecyclerView.getLayoutParams();
-        locala = c.FNc;
-        ((ViewGroup.LayoutParams)localObject).height = c.fcp();
+        locala = c.LHl;
+        ((ViewGroup.LayoutParams)localObject).height = c.gls();
         localObject = paramRecyclerView.getLayoutParams();
-        locala = c.FNc;
-        ((ViewGroup.LayoutParams)localObject).width = c.fco();
-        parami = (RoundedCornerFrameLayout)parami.amk.findViewById(e.c.multi_task_item_bg);
-        if (parami != null)
+        locala = c.LHl;
+        ((ViewGroup.LayoutParams)localObject).width = c.glr();
+        paramj = (RoundedCornerFrameLayout)paramj.caK.findViewById(e.c.multi_task_item_bg);
+        if (paramj != null)
         {
-          parami = parami.getLayoutParams();
-          localObject = c.FNc;
-          parami.height = c.fct();
+          paramj = paramj.getLayoutParams();
+          localObject = c.LHl;
+          paramj.height = c.glw();
         }
         paramRecyclerView.requestLayout();
       }
     }
-    label190:
+    label194:
     do
     {
       do
@@ -131,245 +214,192 @@ public abstract class d
         do
         {
           return;
-          paramInt = 0;
+          paramInt = paramRecyclerView.getItemCount();
           break;
           if (paramInt != 3) {
-            break label301;
+            break label305;
           }
-          paramRecyclerView = parami.amk.findViewById(e.c.FIy);
+          paramRecyclerView = paramj.caK.findViewById(e.c.LDI);
         } while (paramRecyclerView == null);
-        localObject = c.FNc;
-        paramRecyclerView.setTranslationY(c.fcx());
+        localObject = c.LHl;
+        paramRecyclerView.setTranslationY(c.glA());
         localObject = paramRecyclerView.getLayoutParams();
-        locala = c.FNc;
-        ((ViewGroup.LayoutParams)localObject).height = c.fcn();
+        locala = c.LHl;
+        ((ViewGroup.LayoutParams)localObject).height = c.glq();
         localObject = paramRecyclerView.getLayoutParams();
-        locala = c.FNc;
-        ((ViewGroup.LayoutParams)localObject).width = c.fcm();
-        parami = (RoundedCornerFrameLayout)parami.amk.findViewById(e.c.multi_task_item_bg);
-        if (parami != null)
+        locala = c.LHl;
+        ((ViewGroup.LayoutParams)localObject).width = c.glp();
+        paramj = (RoundedCornerFrameLayout)paramj.caK.findViewById(e.c.multi_task_item_bg);
+        if (paramj != null)
         {
-          parami = parami.getLayoutParams();
-          localObject = c.FNc;
-          parami.height = c.fcr();
+          paramj = paramj.getLayoutParams();
+          localObject = c.LHl;
+          paramj.height = c.glu();
         }
         paramRecyclerView.requestLayout();
         return;
       } while (paramInt < 4);
-      paramRecyclerView = parami.amk.findViewById(e.c.FIy);
+      paramRecyclerView = paramj.caK.findViewById(e.c.LDI);
     } while (paramRecyclerView == null);
-    label301:
+    label305:
     Object localObject = paramRecyclerView.getLayoutParams();
-    c.a locala = c.FNc;
-    ((ViewGroup.LayoutParams)localObject).height = c.fcn();
+    c.a locala = c.LHl;
+    ((ViewGroup.LayoutParams)localObject).height = c.glq();
     localObject = paramRecyclerView.getLayoutParams();
-    locala = c.FNc;
-    ((ViewGroup.LayoutParams)localObject).width = c.fcm();
-    parami = (RoundedCornerFrameLayout)parami.amk.findViewById(e.c.multi_task_item_bg);
-    if (parami != null)
+    locala = c.LHl;
+    ((ViewGroup.LayoutParams)localObject).width = c.glp();
+    paramj = (RoundedCornerFrameLayout)paramj.caK.findViewById(e.c.multi_task_item_bg);
+    if (paramj != null)
     {
-      parami = parami.getLayoutParams();
-      localObject = c.FNc;
-      parami.height = c.fcr();
+      paramj = paramj.getLayoutParams();
+      localObject = c.LHl;
+      paramj.height = c.glu();
     }
     paramRecyclerView.requestLayout();
   }
   
-  public void a(final i parami, final com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama, int paramInt1, int paramInt2, boolean paramBoolean, final List<Object> paramList)
+  public void a(j paramj, com.tencent.mm.plugin.multitask.ui.minusscreen.b.a parama, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    p.k(parami, "holder");
-    p.k(parama, "item");
-    Log.d(this.TAG, "onBindViewHolder, position:".concat(String.valueOf(paramInt1)));
-    Object localObject3 = parami.amk.findViewById(e.c.FIQ);
-    Object localObject6 = (TextView)parami.amk.findViewById(e.c.FIN);
-    TextView localTextView = (TextView)parami.amk.findViewById(e.c.FIP);
-    paramList = (MMImageView)parami.amk.findViewById(e.c.FIR);
-    Object localObject4 = (MinusScreenRoundFrameLayout)parami.amk.findViewById(e.c.FIF);
-    Object localObject5 = (TextView)parami.amk.findViewById(e.c.FIO);
-    Object localObject1 = (RoundedCornerFrameLayout)parami.amk.findViewById(e.c.multi_task_item_bg);
-    Object localObject2 = (WeImageView)parami.amk.findViewById(e.c.FIK);
-    Object localObject7 = (ImageView)parami.RD(e.c.FIJ);
+    s.u(paramj, "holder");
+    s.u(parama, "item");
+    Log.d(this.TAG, s.X("onBindViewHolder, position:", Integer.valueOf(paramInt1)));
+    Object localObject3 = paramj.caK.findViewById(e.c.LEa);
+    Object localObject6 = (TextView)paramj.caK.findViewById(e.c.LDX);
+    TextView localTextView = (TextView)paramj.caK.findViewById(e.c.LDZ);
+    paramList = (MMImageView)paramj.caK.findViewById(e.c.LEb);
+    Object localObject4 = (MinusScreenRoundFrameLayout)paramj.caK.findViewById(e.c.LDP);
+    Object localObject5 = (TextView)paramj.caK.findViewById(e.c.LDY);
+    Object localObject1 = (RoundedCornerFrameLayout)paramj.caK.findViewById(e.c.multi_task_item_bg);
+    Object localObject2 = (WeImageView)paramj.caK.findViewById(e.c.LDU);
+    Object localObject7 = (ImageView)paramj.UH(e.c.LDT);
     if (localObject7 != null) {
-      ((ImageView)localObject7).setOnClickListener((View.OnClickListener)new d.b(this, parama, parami));
+      ((ImageView)localObject7).setOnClickListener(new d..ExternalSyntheticLambda0(this, parama, paramj));
     }
-    localObject7 = parami.getContext();
-    p.j(localObject7, "holder.context");
+    localObject7 = paramj.context;
+    s.s(localObject7, "holder.context");
     ((TextView)localObject6).setText((CharSequence)a((Context)localObject7, parama));
-    if (Util.isNullOrNil(parama.FKP.fbc().title))
+    if (Util.isNullOrNil(parama.LGa.gkh().title))
     {
-      p.j(localTextView, "title");
       localTextView.setVisibility(8);
-      p.j(localObject3, "tagContainerView");
       localObject6 = ((View)localObject3).getLayoutParams();
       if (localObject6 == null) {
-        throw new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        throw new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       }
       localObject6 = (ViewGroup.MarginLayoutParams)localObject6;
-      ((ViewGroup.MarginLayoutParams)localObject6).topMargin = aw.fromDPToPix(parami.getContext(), 16);
+      ((ViewGroup.MarginLayoutParams)localObject6).topMargin = bd.fromDPToPix(paramj.context, 16);
       ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject6);
-      if (Util.isNullOrNil(parama.FKP.fbc().tag)) {
-        break label570;
+      if (Util.isNullOrNil(parama.LGa.gkh().tag)) {
+        break label572;
       }
-      ((TextView)localObject5).setText((CharSequence)parama.FKP.fbc().tag);
-      p.j(localObject5, "tagView");
+      ((TextView)localObject5).setText((CharSequence)parama.LGa.gkh().tag);
       ((TextView)localObject5).setVisibility(0);
+      label326:
+      ((MinusScreenRoundFrameLayout)localObject4).setUseBottomGradient(gkP());
+      if (!parama.LGa.gkh().aaXR) {
+        break label582;
+      }
+      ((WeImageView)localObject2).setVisibility(0);
+      paramList.setVisibility(8);
+      ((RoundedCornerFrameLayout)localObject1).setBackgroundColor(paramj.context.getResources().getColor(e.b.multi_task_item_bg));
+      localObject1 = com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.LGc;
+      ((WeImageView)localObject2).setImageResource(com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.acv(parama.LGa.field_type));
+      localObject1 = h.LBd;
+      localObject1 = h.g(parama.LGa);
+      r.bKe().a((String)localObject1, (ImageView)paramList);
     }
     for (;;)
     {
-      ((MinusScreenRoundFrameLayout)localObject4).setUseBottomGradient(fbL());
-      if (!parama.FKP.fbc().TIi) {
-        break label588;
+      paramList = (ImageView)paramj.UH(e.c.LDT);
+      if (paramList != null) {
+        paramList.setTag(e.c.LEc, Integer.valueOf(parama.LGa.field_type));
       }
-      p.j(localObject2, "defaultBgView");
-      ((WeImageView)localObject2).setVisibility(0);
-      p.j(paramList, "imgView");
-      paramList.setVisibility(8);
-      parami = parami.getContext();
-      p.j(parami, "holder.context");
-      ((RoundedCornerFrameLayout)localObject1).setBackgroundColor(parami.getResources().getColor(e.b.multi_task_item_bg));
-      parami = com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.FKR;
-      ((WeImageView)localObject2).setImageResource(com.tencent.mm.plugin.multitask.ui.minusscreen.e.a.Yj(parama.FKP.field_type));
-      parami = h.FFb;
-      parami = h.g(parama.FKP);
-      com.tencent.mm.ay.q.bml().a(parami, (ImageView)paramList);
+      paramj = paramj.UH(e.c.LDI);
+      if (paramj != null) {
+        paramj.setTag(e.c.LEd, Integer.valueOf(parama.LGa.field_type));
+      }
       return;
-      p.j(localTextView, "title");
       localTextView.setVisibility(0);
-      localTextView.setText((CharSequence)parama.FKP.fbc().title);
-      p.j(localObject3, "tagContainerView");
+      localTextView.setText((CharSequence)parama.LGa.gkh().title);
       localObject6 = ((View)localObject3).getLayoutParams();
       if (localObject6 == null) {
-        throw new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        throw new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
       }
       localObject6 = (ViewGroup.MarginLayoutParams)localObject6;
-      ((ViewGroup.MarginLayoutParams)localObject6).topMargin = aw.fromDPToPix(parami.getContext(), 6);
+      ((ViewGroup.MarginLayoutParams)localObject6).topMargin = bd.fromDPToPix(paramj.context, 6);
       ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject6);
       break;
-      label570:
-      p.j(localObject5, "tagView");
+      label572:
       ((TextView)localObject5).setVisibility(8);
+      break label326;
+      label582:
+      ((WeImageView)localObject2).setVisibility(8);
+      paramList.setVisibility(0);
+      ((RoundedCornerFrameLayout)localObject1).setBackgroundColor(0);
+      localObject3 = parama.LGa;
+      s.s(paramList, "imgView");
+      paramList = (ImageView)paramList;
+      s.s(localObject2, "defaultBgView");
+      localObject2 = (ImageView)localObject2;
+      s.s(localObject1, "defaultBgContainer");
+      localObject1 = (View)localObject1;
+      s.u(localObject3, "multiTaskInfo");
+      s.u(paramList, "imgView");
+      s.u(localObject2, "defaultImgView");
+      s.u(localObject1, "defaultBgContainer");
+      s.u(paramj, "holder");
+      localObject4 = h.LBd;
+      localObject4 = h.g((MultiTaskInfo)localObject3);
+      localObject5 = r.bKe();
+      localObject6 = h.LBd;
+      ((com.tencent.mm.modelimage.loader.a)localObject5).a((String)localObject4, paramList, h.gju(), new d..ExternalSyntheticLambda1(this, paramj, (String)localObject4, paramList, (MultiTaskInfo)localObject3, (ImageView)localObject2, (View)localObject1));
     }
-    label588:
-    p.j(localObject2, "defaultBgView");
-    ((WeImageView)localObject2).setVisibility(8);
-    p.j(paramList, "imgView");
-    paramList.setVisibility(0);
-    ((RoundedCornerFrameLayout)localObject1).setBackgroundColor(0);
-    parama = parama.FKP;
-    paramList = (ImageView)paramList;
-    localObject2 = (ImageView)localObject2;
-    p.j(localObject1, "defaultBgContainer");
-    localObject1 = (View)localObject1;
-    p.k(parama, "multiTaskInfo");
-    p.k(paramList, "imgView");
-    p.k(localObject2, "defaultImgView");
-    p.k(localObject1, "defaultBgContainer");
-    p.k(parami, "holder");
-    localObject3 = h.FFb;
-    localObject3 = h.g(parama);
-    localObject4 = com.tencent.mm.ay.q.bml();
-    localObject5 = h.FFb;
-    ((com.tencent.mm.ay.a.a)localObject4).a((String)localObject3, paramList, h.fap(), (k)new a(this, parami, (String)localObject3, paramList, parama, (ImageView)localObject2, (View)localObject1));
-  }
-  
-  public final int fbK()
-  {
-    return this.xlY;
-  }
-  
-  public boolean fbL()
-  {
-    return false;
   }
   
   public final int getLayoutId()
   {
-    return this.xmc;
+    return this.AKy;
   }
   
-  protected final com.tencent.mm.loader.c.e getThumbLoaderOption()
+  protected final e getThumbLoaderOption()
   {
-    return this.FKT;
+    return this.LGf;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "url", "", "view", "Landroid/view/View;", "bitmap", "Landroid/graphics/Bitmap;", "extraObj", "", "", "onImageLoadComplete", "(Ljava/lang/String;Landroid/view/View;Landroid/graphics/Bitmap;[Ljava/lang/Object;)V"})
+  public final int gkO()
+  {
+    return this.AKn;
+  }
+  
+  public boolean gkP()
+  {
+    return false;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    implements k
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    a(d paramd, i parami, String paramString, ImageView paramImageView1, MultiTaskInfo paramMultiTaskInfo, ImageView paramImageView2, View paramView) {}
-    
-    public final void a(String paramString, View paramView, Bitmap paramBitmap, Object[] paramArrayOfObject)
+    a(ImageView paramImageView, Matrix paramMatrix, Bitmap paramBitmap)
     {
-      Object localObject = null;
-      paramArrayOfObject = null;
-      AppMethodBeat.i(196352);
-      if (!(paramView instanceof ImageView)) {}
-      for (paramString = null;; paramString = paramView)
-      {
-        paramView = (ImageView)paramString;
-        paramString = localObject;
-        if (paramView != null)
-        {
-          paramString = localObject;
-          if (paramBitmap != null)
-          {
-            Log.i(this.FKV.TAG, "loadImage callback " + paramView.hashCode() + ' ' + paramBitmap);
-            paramString = parami.getRecyclerView();
-            if (paramString == null) {
-              break label230;
-            }
-            paramString = paramString.getLayoutManager();
-            if ((paramString instanceof GridLayoutManager)) {
-              break label241;
-            }
-            paramString = paramArrayOfObject;
-          }
-        }
-        label230:
-        label241:
-        for (;;)
-        {
-          paramString = (GridLayoutManager)paramString;
-          if (paramString != null) {}
-          for (int i = paramString.ku();; i = 1)
-          {
-            paramString = com.tencent.mm.plugin.multitask.ui.minusscreen.a.FKk;
-            int j = a.a.fbH();
-            float f = (ar.getDeviceWidth() - j * (i + 1)) / (i * paramBitmap.getWidth());
-            paramString = new Matrix();
-            paramString.setScale(f, f);
-            com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d.a.b(paramView, paramString, paramBitmap));
-            paramString = x.aazN;
-            if (paramString == null)
-            {
-              com.tencent.mm.ay.q.bml().a(this.FKW, paramList);
-              com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-              paramString = x.aazN;
-            }
-            AppMethodBeat.o(196352);
-            return;
-            paramString = null;
-            break;
-          }
-        }
-      }
+      super();
     }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitask/ui/minusscreen/view/MinusScreenRoundCornerConvert$loadImage$1$2$1"})
-    static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    b(MultiTaskInfo paramMultiTaskInfo, ImageView paramImageView1, ImageView paramImageView2, View paramView, j paramj)
     {
-      a(d.a parama)
-      {
-        super();
-      }
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.minusscreen.view.d
  * JD-Core Version:    0.7.0.1
  */

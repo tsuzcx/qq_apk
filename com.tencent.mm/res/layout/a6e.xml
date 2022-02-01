@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/cuo" android:background="@drawable/b4g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/c91" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.facedetect.views.FaceDetectView android:id="@id/c9f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <RelativeLayout android:id="@id/c9r" android:background="@drawable/u9" android:layout_width="fill_parent" android:layout_height="@dimen/a3y" android:layout_alignParentTop="true" />
-    <RelativeLayout android:background="@drawable/u4" android:layout_width="fill_parent" android:layout_height="@dimen/a3y" android:layout_alignParentBottom="true" />
-    <Button android:id="@id/ea8" style="@style/ix" />
-    <com.tencent.mm.plugin.facedetect.views.FaceScanRect android:id="@id/c9g" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="50.0dip" android:layout_marginTop="-63.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="99.0dip" android:layout_below="@id/c9r" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/o3" android:id="@id/c4h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="164.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="13.0dip" android:textColor="#ffaaaaaa" android:id="@id/cun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_centerInParent="true" />
+    <Button android:textSize="@dimen/hq" android:id="@id/cum" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/x0" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/ok" />
 </RelativeLayout>

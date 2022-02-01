@@ -16,13 +16,13 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class DomainMailListPreference
   extends Preference
 {
-  private String Xsh;
-  private TextView Xsi;
-  private TextView Xsj;
-  private TextView Xsk;
+  private String afdI;
+  private TextView afdJ;
+  private TextView afdK;
+  private TextView afdL;
   private String title;
   private TextView titleTv;
-  private boolean vkO;
+  private boolean yxr;
   
   public DomainMailListPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,20 +42,20 @@ public class DomainMailListPreference
   
   private void init()
   {
-    this.vkO = false;
+    this.yxr = false;
     this.title = "";
-    this.Xsh = "";
+    this.afdI = "";
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(37819);
     this.titleTv = ((TextView)paramView.findViewById(R.h.title));
-    this.Xsi = ((TextView)paramView.findViewById(R.h.dHb));
-    this.Xsj = ((TextView)paramView.findViewById(R.h.dTu));
-    this.Xsk = ((TextView)paramView.findViewById(R.h.dWz));
-    this.vkO = true;
-    if (!this.vkO)
+    this.afdJ = ((TextView)paramView.findViewById(R.h.fIk));
+    this.afdK = ((TextView)paramView.findViewById(R.h.fVB));
+    this.afdL = ((TextView)paramView.findViewById(R.h.fZf));
+    this.yxr = true;
+    if (!this.yxr)
     {
       Log.e("MicroMsg.DomainMailPreference", "initView : unbind view");
       super.onBindView(paramView);
@@ -63,40 +63,40 @@ public class DomainMailListPreference
       return;
     }
     this.titleTv.setText(Util.nullAsNil(this.title));
-    String[] arrayOfString = this.Xsh.split(";");
-    if (Util.nullAsNil(this.Xsh).length() <= 0)
+    String[] arrayOfString = this.afdI.split(";");
+    if (Util.nullAsNil(this.afdI).length() <= 0)
     {
-      this.Xsi.setVisibility(8);
-      this.Xsj.setVisibility(8);
+      this.afdJ.setVisibility(8);
+      this.afdK.setVisibility(8);
     }
     label263:
     for (;;)
     {
-      this.Xsk.setVisibility(8);
+      this.afdL.setVisibility(8);
       break;
       if (arrayOfString.length > 0)
       {
-        this.Xsi.setVisibility(0);
-        this.Xsi.setText(Util.nullAsNil(arrayOfString[0]));
+        this.afdJ.setVisibility(0);
+        this.afdJ.setText(Util.nullAsNil(arrayOfString[0]));
         label184:
         if (arrayOfString.length <= 1) {
           break label253;
         }
-        this.Xsj.setVisibility(0);
-        this.Xsj.setText(Util.nullAsNil(arrayOfString[1]));
+        this.afdK.setVisibility(0);
+        this.afdK.setText(Util.nullAsNil(arrayOfString[1]));
       }
       for (;;)
       {
         if (arrayOfString.length <= 2) {
           break label263;
         }
-        this.Xsk.setVisibility(0);
-        this.Xsk.setText(Util.nullAsNil(arrayOfString[2]));
+        this.afdL.setVisibility(0);
+        this.afdL.setText(Util.nullAsNil(arrayOfString[2]));
         break;
-        this.Xsi.setVisibility(8);
+        this.afdJ.setVisibility(8);
         break label184;
         label253:
-        this.Xsj.setVisibility(8);
+        this.afdK.setVisibility(8);
       }
     }
   }
@@ -108,7 +108,7 @@ public class DomainMailListPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eiP, localViewGroup);
+    localLayoutInflater.inflate(R.i.glO, localViewGroup);
     AppMethodBeat.o(37818);
     return paramViewGroup;
   }

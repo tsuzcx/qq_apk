@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.r.a;
-import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.platformtools.o.a;
+import com.tencent.mm.plugin.appbrand.app.n;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgStorageInvalidRecordFixer;", "", "()V", "TAG", "", "removeInvalidReleaseRecords", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgStorageInvalidRecordFixer;", "", "()V", "TAG", "", "removeInvalidReleaseRecords", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class bo
 {
-  public static final bo nHS;
+  public static final bo qHH;
   
   static
   {
     AppMethodBeat.i(50182);
-    nHS = new bo();
+    qHH = new bo();
     AppMethodBeat.o(50182);
   }
   
-  public static final void bHG()
+  public static final void chc()
   {
     AppMethodBeat.i(50181);
-    r.a locala = m.bFB();
+    o.a locala = n.ceY();
     if (locala != null) {
       try
       {
@@ -33,9 +33,7 @@ public final class bo
       catch (Exception localException)
       {
         Log.printErrStackTrace("MiroMsg.WxaPkgStorageInvalidRecordFixer", (Throwable)localException, " removeInvalidReleaseRecords", new Object[0]);
-        x localx = x.aazN;
-        AppMethodBeat.o(50181);
-        return;
+        ah localah = ah.aiuX;
       }
     }
     AppMethodBeat.o(50181);
@@ -43,7 +41,7 @@ public final class bo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bo
  * JD-Core Version:    0.7.0.1
  */

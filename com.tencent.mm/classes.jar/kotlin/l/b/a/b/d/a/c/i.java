@@ -2,56 +2,54 @@ package kotlin.l.b.a.b.d.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.b.l;
-import kotlin.l.b.a.b.d.a.c.a.n;
-import kotlin.l.b.a.b.d.a.e.w;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.b.ba;
 import kotlin.l.b.a.b.d.a.e.x;
-import kotlin.l.b.a.b.l.d;
-import kotlin.l.b.a.b.l.j;
+import kotlin.l.b.a.b.d.a.e.y;
+import kotlin.l.b.a.b.l.g;
 import kotlin.l.b.a.b.o.a;
 
 public final class i
-  implements m
+  implements l
 {
-  final l aaNi;
-  final h aaUh;
-  final Map<w, Integer> aaUs;
-  private final d<w, n> aaUt;
-  final int aaUu;
+  final kotlin.l.b.a.b.b.l aiJT;
+  final h aiSh;
+  final int aiSu;
+  final Map<x, Integer> aiSv;
+  private final g<x, kotlin.l.b.a.b.d.a.c.a.m> aiSw;
   
-  public i(h paramh, l paraml, x paramx, int paramInt)
+  public i(h paramh, kotlin.l.b.a.b.b.l paraml, y paramy, int paramInt)
   {
     AppMethodBeat.i(57764);
-    this.aaUh = paramh;
-    this.aaNi = paraml;
-    this.aaUu = paramInt;
-    this.aaUs = a.G((Iterable)paramx.iEG());
-    this.aaUt = this.aaUh.aaUp.aaFH.al((kotlin.g.a.b)new a(this));
+    this.aiSh = paramh;
+    this.aiJT = paraml;
+    this.aiSu = paramInt;
+    this.aiSv = a.J((Iterable)paramy.koa());
+    this.aiSw = this.aiSh.aiSp.aiBu.be((b)new a(this));
     AppMethodBeat.o(57764);
   }
   
-  public final as a(w paramw)
+  public final ba a(x paramx)
   {
     AppMethodBeat.i(57763);
-    p.k(paramw, "javaTypeParameter");
-    n localn = (n)this.aaUt.invoke(paramw);
-    if (localn != null)
+    s.u(paramx, "javaTypeParameter");
+    kotlin.l.b.a.b.d.a.c.a.m localm = (kotlin.l.b.a.b.d.a.c.a.m)this.aiSw.invoke(paramx);
+    if (localm == null)
     {
-      paramw = (as)localn;
+      paramx = this.aiSh.aiSq.a(paramx);
       AppMethodBeat.o(57763);
-      return paramw;
+      return paramx;
     }
-    paramw = this.aaUh.aaUq.a(paramw);
+    paramx = (ba)localm;
     AppMethodBeat.o(57763);
-    return paramw;
+    return paramx;
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.b<w, n>
+    extends u
+    implements b<x, kotlin.l.b.a.b.d.a.c.a.m>
   {
     a(i parami)
     {
@@ -61,7 +59,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.i
  * JD-Core Version:    0.7.0.1
  */

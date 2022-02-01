@@ -130,6 +130,21 @@ public class MMKViewLayout<Layout extends ViewGroup>
     AppMethodBeat.o(19269);
   }
   
+  public void setAccessible(boolean paramBoolean)
+  {
+    AppMethodBeat.i(226573);
+    if (paramBoolean)
+    {
+      ((ViewGroup)getView()).setImportantForAccessibility(1);
+      ((ViewGroup)getView()).post(new MMKViewLayout.1(this));
+      AppMethodBeat.o(226573);
+      return;
+    }
+    ((ViewGroup)getView()).setImportantForAccessibility(2);
+    ((ViewGroup)getView()).post(new MMKViewLayout.2(this));
+    AppMethodBeat.o(226573);
+  }
+  
   public void setAlignContent(Align paramAlign)
   {
     AppMethodBeat.i(19279);
@@ -160,10 +175,10 @@ public class MMKViewLayout<Layout extends ViewGroup>
   
   public void setFocusableInTouchMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(262930);
+    AppMethodBeat.i(226560);
     ((ViewGroup)getView()).setFocusable(true);
     ((ViewGroup)getView()).setFocusableInTouchMode(true);
-    AppMethodBeat.o(262930);
+    AppMethodBeat.o(226560);
   }
   
   public void setJustifyContent(Justify paramJustify)
@@ -175,7 +190,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKViewLayout
  * JD-Core Version:    0.7.0.1
  */

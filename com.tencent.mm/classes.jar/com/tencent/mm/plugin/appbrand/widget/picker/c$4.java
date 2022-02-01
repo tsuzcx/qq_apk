@@ -15,11 +15,11 @@ final class c$4
   {
     AppMethodBeat.i(138044);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-    localObject = this.rCB;
-    if (c.e(this.rCB) == null) {}
-    for (paramView = null;; paramView = c.e(this.rCB).currentValue())
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    localObject = this.uNS;
+    if (c.e(this.uNS) == null) {}
+    for (paramView = null;; paramView = c.e(this.uNS).currentValue())
     {
       c.a((c)localObject, true, paramView);
       a.a(this, "com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");

@@ -8,88 +8,80 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ak;
-import com.tencent.mm.ui.ak.a;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ao.a;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/bizui/util/BizViewUtils;", "", "()V", "TAG", "", "TITLE_SCENE_MP_CHAT", "", "TITLE_SCENE_MP_CHAT_COVER_TITLE", "TITLE_SCENE_MP_CHAT_ITEM", "TITLE_SCENE_PROFILE", "TITLE_SCENE_PROFILE_COVER_TITLE", "TITLE_SCENE_PROFILE_ITEM", "TITLE_SCENE_TIME_LINE", "TITLE_SCENE_TIME_LINE_COVER_TITLE", "TITLE_SCENE_TIME_LINE_ITEM", "optionSearchOpen", "", "getOptionSearchOpen", "()Z", "optionSearchOpen$delegate", "Lkotlin/Lazy;", "widthMap", "Ljava/util/HashMap;", "getWidthMap", "()Ljava/util/HashMap;", "setWidthMap", "(Ljava/util/HashMap;)V", "appendIcon", "", "tv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "text", "", "drawable", "Landroid/graphics/drawable/Drawable;", "padding", "expandTouchArea", "parent", "Landroid/view/ViewParent;", "v", "Landroid/view/View;", "x", "y", "getDefaultTitleWidth", "scene", "context", "Landroid/content/Context;", "getGreenUnreadCountShape", "textSize", "getPaddingSpan", "Landroid/text/SpannableString;", "size", "getRealScreenWidth", "getTitleWidth", "getViewTop", "root", "target", "isCoverTitle", "setAccessibilityFocusable", "view", "focused", "setTitleEndWithPayIcon", "icon", "setTitleWidth", "width", "setViewSize", "height", "ui-biz_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/bizui/util/BizViewUtils;", "", "()V", "TAG", "", "TITLE_SCENE_MP_CHAT", "", "TITLE_SCENE_MP_CHAT_COVER_TITLE", "TITLE_SCENE_MP_CHAT_ITEM", "TITLE_SCENE_PROFILE", "TITLE_SCENE_PROFILE_COVER_TITLE", "TITLE_SCENE_PROFILE_ITEM", "TITLE_SCENE_TIME_LINE", "TITLE_SCENE_TIME_LINE_COVER_TITLE", "TITLE_SCENE_TIME_LINE_ITEM", "bizVideoOpenWithFinder", "", "getBizVideoOpenWithFinder", "()Z", "bizVideoOpenWithFinder$delegate", "Lkotlin/Lazy;", "optionSearchOpen", "getOptionSearchOpen", "optionSearchOpen$delegate", "widthMap", "Ljava/util/HashMap;", "getWidthMap", "()Ljava/util/HashMap;", "setWidthMap", "(Ljava/util/HashMap;)V", "appendIcon", "", "tv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "text", "", "drawable", "Landroid/graphics/drawable/Drawable;", "padding", "expandTouchArea", "parent", "Landroid/view/ViewParent;", "v", "Landroid/view/View;", "x", "y", "getDefaultTitleWidth", "scene", "context", "Landroid/content/Context;", "getGreenUnreadCountShape", "textSize", "getPaddingSpan", "Landroid/text/SpannableString;", "size", "getRealScreenWidth", "getTitleWidth", "getViewTop", "root", "target", "isCoverTitle", "roundCorner", "view", "cornerRadius", "", "topRound", "bottomRound", "setAccessibilityFocusable", "focused", "setTitleEndWithPayIcon", "icon", "setTitleWidth", "width", "setViewHeight", "height", "setViewSize", "setViewWidth", "ui-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static HashMap<Integer, Integer> shE;
-  private static final f shF;
-  public static final a shG;
+  public static final a vtB;
+  private static HashMap<Integer, Integer> vtC;
+  private static final j vtD;
+  private static final j vtE;
   
   static
   {
     AppMethodBeat.i(123735);
-    shG = new a();
-    shE = new HashMap();
-    shF = g.ar((kotlin.g.a.a)a.a.shH);
+    vtB = new a();
+    vtC = new HashMap();
+    vtD = k.cm((kotlin.g.a.a)a.b.vtG);
+    vtE = k.cm((kotlin.g.a.a)a.a.vtF);
     AppMethodBeat.o(123735);
   }
   
-  public static boolean Go(int paramInt)
+  public static boolean GN(int paramInt)
   {
     return (paramInt == 11) || (paramInt == 21) || (paramInt == 41);
   }
   
-  private static SpannableString W(Context paramContext, int paramInt)
+  public static void Y(View paramView, int paramInt)
   {
-    AppMethodBeat.i(123734);
-    Object localObject = paramContext.getResources().getDrawable(com.tencent.mm.plugin.bizui.a.b.mm_trans);
-    ((Drawable)localObject).setBounds(0, 0, com.tencent.mm.ci.a.fromDPToPix(paramContext, 8), paramInt);
-    paramContext = new com.tencent.mm.ui.widget.a((Drawable)localObject, 1);
-    localObject = new SpannableString((CharSequence)"@");
-    ((SpannableString)localObject).setSpan(paramContext, 0, 1, 33);
-    AppMethodBeat.o(123734);
-    return localObject;
+    AppMethodBeat.i(260928);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(260928);
+      return;
+    }
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localLayoutParams.width = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(260928);
   }
   
-  public static int X(Context paramContext, int paramInt)
+  public static void Z(View paramView, int paramInt)
   {
-    AppMethodBeat.i(195685);
-    if (Float.compare(com.tencent.mm.ci.a.ez(paramContext), com.tencent.mm.ci.a.kd(paramContext)) > 0)
+    AppMethodBeat.i(260929);
+    if (paramView == null)
     {
-      if (paramInt < 2)
-      {
-        paramInt = com.tencent.mm.plugin.bizui.a.b.green_unread_count_shape_large_circle;
-        AppMethodBeat.o(195685);
-        return paramInt;
-      }
-      paramInt = com.tencent.mm.plugin.bizui.a.b.biz_green_unread_count_shape_large;
-      AppMethodBeat.o(195685);
-      return paramInt;
+      AppMethodBeat.o(260929);
+      return;
     }
-    if (paramInt < 2)
-    {
-      paramInt = com.tencent.mm.plugin.bizui.a.b.biz_green_unread_count_shape_circle;
-      AppMethodBeat.o(195685);
-      return paramInt;
-    }
-    paramInt = com.tencent.mm.plugin.bizui.a.b.biz_green_unread_count_shape;
-    AppMethodBeat.o(195685);
-    return paramInt;
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    localLayoutParams.height = paramInt;
+    paramView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(260929);
   }
   
   public static void a(Context paramContext, MMNeat7extView paramMMNeat7extView, int paramInt1, CharSequence paramCharSequence, final int paramInt2)
   {
     AppMethodBeat.i(123732);
-    p.k(paramContext, "context");
-    p.k(paramMMNeat7extView, "tv");
-    p.k(paramCharSequence, "text");
-    paramMMNeat7extView.aL(paramCharSequence);
+    s.u(paramContext, "context");
+    s.u(paramMMNeat7extView, "tv");
+    s.u(paramCharSequence, "text");
+    paramMMNeat7extView.aZ(paramCharSequence);
     int j;
     int i;
     Object localObject;
@@ -101,104 +93,187 @@ public final class a
       {
         localObject = paramMMNeat7extView.getViewTreeObserver();
         if (localObject != null) {
-          ((ViewTreeObserver)localObject).addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new b(paramMMNeat7extView, paramInt2));
+          ((ViewTreeObserver)localObject).addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new d(paramMMNeat7extView, paramInt2));
         }
-        if ((paramInt2 != 0) && (paramInt2 != 11)) {
-          break label302;
+        switch (paramInt2)
+        {
+        default: 
+          if (paramInt2 == 1) {
+            i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 136);
+          }
+          break;
         }
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 48);
       }
     }
     for (;;)
     {
       localObject = paramContext.getResources().getDrawable(paramInt1);
       paramInt1 = (int)paramMMNeat7extView.getTextSize();
-      p.j(localObject, "drawable");
       paramInt2 = ((Drawable)localObject).getIntrinsicWidth() * paramInt1 / ((Drawable)localObject).getIntrinsicHeight();
       ((Drawable)localObject).setBounds(0, 0, paramInt2, paramInt1);
       float f1 = paramInt2;
-      float f2 = com.tencent.mm.ci.a.fromDPToPix(paramContext, 9);
+      float f2 = com.tencent.mm.cd.a.fromDPToPix(paramContext, 9);
       paramMMNeat7extView.a(TextUtils.TruncateAt.END, f1 + f2);
-      paramContext = paramMMNeat7extView.nH(i, 2147483647);
+      paramContext = paramMMNeat7extView.pE(i, 2147483647);
       if (paramContext == null) {
+        break label548;
+      }
+      paramInt1 = paramContext.aGN(paramMMNeat7extView.getMaxLines() - 1);
+      if (paramInt1 > 0) {
         break label499;
       }
-      paramInt1 = paramContext.aAa(paramMMNeat7extView.getMaxLines() - 1);
-      if (paramInt1 > 0) {
-        break label445;
-      }
+      s.s(localObject, "drawable");
       a(paramMMNeat7extView, paramCharSequence, (Drawable)localObject);
       AppMethodBeat.o(123732);
       return;
-      if (((Map)shE).containsKey(Integer.valueOf(paramInt2)))
+      if (((Map)vtC).containsKey(Integer.valueOf(paramInt2)))
       {
-        localObject = shE.get(Integer.valueOf(paramInt2));
-        if (localObject == null) {
-          p.iCn();
-        }
+        localObject = vtC.get(Integer.valueOf(paramInt2));
+        s.checkNotNull(localObject);
+        s.s(localObject, "widthMap[scene]!!");
         j = ((Number)localObject).intValue();
         break;
       }
-      ((Map)shE).put(Integer.valueOf(paramInt2), Integer.valueOf(0));
+      ((Map)vtC).put(Integer.valueOf(paramInt2), Integer.valueOf(0));
       j = 0;
       break;
-      label302:
-      if (paramInt2 == 1) {
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 136);
-      } else if ((paramInt2 == 2) || (paramInt2 == 21)) {
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 64);
-      } else if (paramInt2 == 3) {
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 136);
-      } else if ((paramInt2 == 4) || (paramInt2 == 41)) {
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 64);
-      } else if (paramInt2 == 5) {
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 144);
-      } else {
-        i = com.tencent.mm.ci.a.kr(paramContext) - com.tencent.mm.ci.a.fromDPToPix(paramContext, 64);
+      i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 48);
+      continue;
+      switch (paramInt2)
+      {
+      default: 
+        if (paramInt2 == 3) {
+          i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 136);
+        }
+        break;
+      case 2: 
+      case 21: 
+        i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 64);
+        continue;
+        switch (paramInt2)
+        {
+        default: 
+          if (paramInt2 == 5) {
+            i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 144);
+          }
+          break;
+        case 4: 
+        case 41: 
+          i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 64);
+          continue;
+          i = com.tencent.mm.cd.a.ms(paramContext) - com.tencent.mm.cd.a.fromDPToPix(paramContext, 64);
+        }
+        break;
       }
     }
-    label445:
-    paramContext = paramCharSequence.subSequence(0, paramCharSequence.length() - paramInt1).toString();
-    a(paramMMNeat7extView, (CharSequence)(paramContext + '…'), (Drawable)localObject);
+    label499:
+    paramContext = (CharSequence)s.X(paramCharSequence.subSequence(0, paramCharSequence.length() - paramInt1).toString(), "…");
+    s.s(localObject, "drawable");
+    a(paramMMNeat7extView, paramContext, (Drawable)localObject);
     AppMethodBeat.o(123732);
     return;
-    label499:
+    label548:
+    s.s(localObject, "drawable");
     a(paramMMNeat7extView, paramCharSequence, (Drawable)localObject);
     AppMethodBeat.o(123732);
+  }
+  
+  public static void a(View paramView, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(260932);
+    if (paramFloat <= 0.0F)
+    {
+      AppMethodBeat.o(260932);
+      return;
+    }
+    if (paramView != null) {
+      paramView.setOutlineProvider((ViewOutlineProvider)new a.c(paramBoolean1, paramBoolean2, paramFloat));
+    }
+    if (paramView != null) {
+      paramView.setClipToOutline(true);
+    }
+    AppMethodBeat.o(260932);
   }
   
   private static void a(MMNeat7extView paramMMNeat7extView, CharSequence paramCharSequence, Drawable paramDrawable)
   {
     AppMethodBeat.i(123733);
-    p.k(paramMMNeat7extView, "tv");
-    p.k(paramCharSequence, "text");
-    p.k(paramDrawable, "drawable");
+    s.u(paramMMNeat7extView, "tv");
+    s.u(paramCharSequence, "text");
+    s.u(paramDrawable, "drawable");
     paramMMNeat7extView.a(TextUtils.TruncateAt.END, 0.0F);
     Object localObject = new com.tencent.mm.ui.widget.a(paramDrawable, 1);
     paramDrawable = new SpannableString((CharSequence)"@");
     paramDrawable.setSpan(localObject, 0, 1, 33);
     localObject = paramMMNeat7extView.getContext();
-    p.j(localObject, "tv.context");
-    paramMMNeat7extView.aL(TextUtils.concat(new CharSequence[] { paramCharSequence, (CharSequence)W((Context)localObject, (int)paramMMNeat7extView.getTextSize()), (CharSequence)paramDrawable }));
+    s.s(localObject, "tv.context");
+    paramMMNeat7extView.aZ(TextUtils.concat(new CharSequence[] { paramCharSequence, (CharSequence)ad((Context)localObject, (int)paramMMNeat7extView.getTextSize()), (CharSequence)paramDrawable }));
+    paramMMNeat7extView.setContentDescription((CharSequence)(paramMMNeat7extView.jPy() + 65292 + paramMMNeat7extView.getContext().getResources().getString(com.tencent.mm.plugin.bizui.a.d.mp_pay_content)));
     AppMethodBeat.o(123733);
   }
   
-  public static boolean cxR()
+  private static SpannableString ad(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(195664);
-    boolean bool = ((Boolean)shF.getValue()).booleanValue();
-    AppMethodBeat.o(195664);
+    AppMethodBeat.i(123734);
+    Object localObject = paramContext.getResources().getDrawable(com.tencent.mm.plugin.bizui.a.b.mm_trans);
+    ((Drawable)localObject).setBounds(0, 0, com.tencent.mm.cd.a.fromDPToPix(paramContext, 8), paramInt);
+    paramContext = new com.tencent.mm.ui.widget.a((Drawable)localObject, 1);
+    localObject = new SpannableString((CharSequence)"@");
+    ((SpannableString)localObject).setSpan(paramContext, 0, 1, 33);
+    AppMethodBeat.o(123734);
+    return localObject;
+  }
+  
+  public static int ae(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(260921);
+    if (Float.compare(com.tencent.mm.cd.a.getScaleSize(paramContext), com.tencent.mm.cd.a.mf(paramContext)) > 0)
+    {
+      if (paramInt < 2)
+      {
+        paramInt = com.tencent.mm.plugin.bizui.a.b.green_unread_count_shape_large_circle;
+        AppMethodBeat.o(260921);
+        return paramInt;
+      }
+      paramInt = com.tencent.mm.plugin.bizui.a.b.biz_green_unread_count_shape_large;
+      AppMethodBeat.o(260921);
+      return paramInt;
+    }
+    if (paramInt < 2)
+    {
+      paramInt = com.tencent.mm.plugin.bizui.a.b.biz_green_unread_count_shape_circle;
+      AppMethodBeat.o(260921);
+      return paramInt;
+    }
+    paramInt = com.tencent.mm.plugin.bizui.a.b.biz_green_unread_count_shape;
+    AppMethodBeat.o(260921);
+    return paramInt;
+  }
+  
+  public static boolean daI()
+  {
+    AppMethodBeat.i(260879);
+    boolean bool = ((Boolean)vtD.getValue()).booleanValue();
+    AppMethodBeat.o(260879);
     return bool;
   }
   
-  public static int eO(Context paramContext)
+  public static boolean daJ()
   {
-    AppMethodBeat.i(195689);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(260885);
+    boolean bool = ((Boolean)vtE.getValue()).booleanValue();
+    AppMethodBeat.o(260885);
+    return bool;
+  }
+  
+  public static int fK(Context paramContext)
+  {
+    AppMethodBeat.i(260923);
+    s.u(paramContext, "context");
     try
     {
-      i = ak.kU(paramContext).width;
-      AppMethodBeat.o(195689);
+      i = ao.mX(paramContext).width;
+      AppMethodBeat.o(260923);
       return i;
     }
     catch (Exception paramContext)
@@ -236,7 +311,7 @@ public final class a
       paramView2 = paramView2.getParent();
       if (paramView2 == null)
       {
-        paramView1 = new t("null cannot be cast to non-null type android.view.View");
+        paramView1 = new NullPointerException("null cannot be cast to non-null type android.view.View");
         AppMethodBeat.o(123731);
         throw paramView1;
       }
@@ -246,74 +321,68 @@ public final class a
     return j;
   }
   
-  public static void n(View paramView, boolean paramBoolean)
+  public static void o(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(195691);
+    AppMethodBeat.i(260924);
     if (paramView != null)
     {
       if (paramBoolean)
       {
-        w.p(paramView, 1);
-        AppMethodBeat.o(195691);
+        z.p(paramView, 1);
+        AppMethodBeat.o(260924);
         return;
       }
-      w.p(paramView, 2);
+      z.p(paramView, 2);
     }
-    AppMethodBeat.o(195691);
+    AppMethodBeat.o(260924);
   }
   
   public static void r(View paramView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(195694);
+    AppMethodBeat.i(260926);
     if (paramView == null)
     {
-      AppMethodBeat.o(195694);
+      AppMethodBeat.o(260926);
       return;
     }
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     localLayoutParams.width = paramInt1;
     localLayoutParams.height = paramInt2;
     paramView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(195694);
+    AppMethodBeat.o(260926);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/bizui/util/BizViewUtils$setTitleEndWithPayIcon$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "ui-biz_release"})
-  public static final class b
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/bizui/util/BizViewUtils$setTitleEndWithPayIcon$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "ui-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
     implements ViewTreeObserver.OnPreDrawListener
   {
-    b(MMNeat7extView paramMMNeat7extView, int paramInt) {}
+    d(MMNeat7extView paramMMNeat7extView, int paramInt) {}
+    
+    private static final void a(int paramInt, MMNeat7extView paramMMNeat7extView)
+    {
+      AppMethodBeat.i(260852);
+      s.u(paramMMNeat7extView, "$tv");
+      a locala = a.vtB;
+      a.gr(paramInt, paramMMNeat7extView.getWidth());
+      AppMethodBeat.o(260852);
+    }
     
     public final boolean onPreDraw()
     {
       AppMethodBeat.i(123730);
-      ViewTreeObserver localViewTreeObserver = this.shI.getViewTreeObserver();
+      ViewTreeObserver localViewTreeObserver = this.vtK.getViewTreeObserver();
       if (localViewTreeObserver != null) {
         localViewTreeObserver.removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
       }
-      this.shI.post((Runnable)new a(this));
+      this.vtK.post(new a.d..ExternalSyntheticLambda0(paramInt2, this.vtK));
       AppMethodBeat.o(123730);
       return true;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(a.b paramb) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(123729);
-        a locala = a.shG;
-        a.fz(this.shJ.$scene, this.shJ.shI.getWidth());
-        AppMethodBeat.o(123729);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bizui.a.a
  * JD-Core Version:    0.7.0.1
  */

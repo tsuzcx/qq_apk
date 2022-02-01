@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/i3e" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:maxWidth="@dimen/ce" android:maxHeight="@dimen/ce" android:minWidth="@dimen/ce" android:minHeight="@dimen/ce" style="@style/a71" />
-</FrameLayout>

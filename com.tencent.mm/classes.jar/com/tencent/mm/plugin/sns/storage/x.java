@@ -1,48 +1,58 @@
 package com.tencent.mm.plugin.sns.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.autogen.b.hn;
+import com.tencent.mm.plugin.sns.model.al;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class x
-  extends MAutoStorage<w>
+  extends hn
 {
-  public static int KAd;
-  public static final String[] SQL_CREATE;
-  public static int zci;
-  public h lvy;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public int localid;
   
   static
   {
-    AppMethodBeat.i(196048);
-    zci = 0;
-    KAd = 1;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(w.info, "SnsWsFoldGroup") };
-    AppMethodBeat.o(196048);
+    AppMethodBeat.i(97590);
+    info = hn.aJm();
+    AppMethodBeat.o(97590);
   }
   
-  public x(h paramh)
+  public final void convertFrom(Cursor paramCursor)
   {
-    super(paramh, s.info, "SnsWsFoldGroup", null);
-    this.lvy = paramh;
-  }
-  
-  public final boolean a(w paramw)
-  {
-    AppMethodBeat.i(196046);
-    if (paramw.field_size >= ah.JXi) {
-      paramw.field_state = KAd;
-    }
-    paramw = paramw.convertTo();
-    if (this.lvy.replace("SnsWsFoldGroup", "bottom", paramw) > 0L) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(97589);
+    try
     {
-      Log.d("MicroMsg.SnsWsFoldGroupStorage", "SnsWsFoldGroup replace result ".concat(String.valueOf(bool)));
-      AppMethodBeat.o(196046);
-      return bool;
+      super.convertFrom(paramCursor);
+      this.localid = ((int)this.systemRowid);
+      AppMethodBeat.o(97589);
+      return;
     }
+    catch (Exception paramCursor)
+    {
+      String str = paramCursor.getMessage();
+      Log.e("MicroMsg.SnsKvReport", "error ".concat(String.valueOf(str)));
+      if ((str != null) && (str.contains("Unable to convert"))) {
+        al.hgH().gGK();
+      }
+      try
+      {
+        AppMethodBeat.o(97589);
+        throw paramCursor;
+      }
+      catch (Exception paramCursor)
+      {
+        Log.printErrStackTrace("MicroMsg.SnsKvReport", paramCursor, "", new Object[0]);
+        AppMethodBeat.o(97589);
+      }
+    }
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
   }
 }
 

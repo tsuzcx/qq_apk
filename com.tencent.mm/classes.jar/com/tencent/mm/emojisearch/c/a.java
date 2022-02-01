@@ -1,125 +1,115 @@
 package com.tencent.mm.emojisearch.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dus;
-import com.tencent.mm.protocal.protobuf.dut;
-import com.tencent.mm.search.data.SimilarEmojiQueryModel;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emojisearch/model/NetSceneSearchEmoji;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "model", "Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;", "(Lcom/tencent/mm/search/data/SimilarEmojiQueryModel;)V", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getEmojiSearchList", "", "Lcom/tencent/mm/protocal/protobuf/RecommendEmoji;", "getSessionId", "", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emojisearch/report/EmojiSearchReport;", "", "()V", "EMOJI_SEARCH_ENTRANCE_ACTION_TYPE_CLICK_SEARCH_ICON", "", "EMOJI_SEARCH_ENTRANCE_ACTION_TYPE_CLICK_SEARCH_MORE", "EMOJI_SEARCH_ENTRANCE_ACTION_TYPE_CLICK_SEARCH_STORE", "EMOJI_SEARCH_ENTRANCE_KV_KEY", "EMOJI_SEARCH_EXPOSE_ACTION_TYPE_SEARCH_RESULT", "EMOJI_SEARCH_EXPOSE_ACTION_TYPE_SEND_EMOJI", "EMOJI_SEARCH_EXPOSE_KV_KEY", "EMOJI_SEARCH_EXPOSE_QUERY_SOURCE_TYPE_EDITTEXT_BRING", "EMOJI_SEARCH_EXPOSE_QUERY_SOURCE_TYPE_USER_INPUT", "chatId", "", "query", "querySource", "reportCount", "reportIndex", "reportMD5", "searchId", "sessionId", "enableReport", "", "start", "", "markClickSearchMore", "", "markClickSearchStore", "markSearchResultByEmojiInfo", "emojiInfoList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "totalCount", "index", "markSearchResultByMd5", "md5List", "markSendEmoji", "md5", "position", "markShowEmojiSearchPanel", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends q
-  implements m
 {
-  public static final a jQh;
-  private i jQg;
-  public final d rr;
+  private static String mfW;
+  private static int miq;
+  public static final a moZ;
+  private static String mpa;
+  private static int mpb;
+  private static String mpc;
+  private static int mpd;
+  private static String query;
+  private static String sessionId;
   
   static
   {
-    AppMethodBeat.i(228121);
-    jQh = new a((byte)0);
-    AppMethodBeat.o(228121);
+    AppMethodBeat.i(231498);
+    moZ = new a();
+    mfW = "";
+    query = "";
+    mpa = "";
+    sessionId = "";
+    mpb = 1;
+    mpc = "";
+    AppMethodBeat.o(231498);
   }
   
-  public a(SimilarEmojiQueryModel paramSimilarEmojiQueryModel)
+  public static void EA(String paramString)
   {
-    AppMethodBeat.i(228119);
-    Object localObject = new d.a();
-    ((d.a)localObject).c((com.tencent.mm.cd.a)new dus());
-    ((d.a)localObject).d((com.tencent.mm.cd.a)new dut());
-    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/mmrecommendpanelemoji");
-    ((d.a)localObject).vD(3793);
-    ((d.a)localObject).vF(0);
-    ((d.a)localObject).vG(0);
-    localObject = ((d.a)localObject).bgN();
-    p.j(localObject, "builder.buildInstance()");
-    this.rr = ((d)localObject);
-    localObject = this.rr.bhX();
-    if (localObject == null)
-    {
-      paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
-      AppMethodBeat.o(228119);
-      throw paramSimilarEmojiQueryModel;
-    }
-    ((dus)localObject).RYJ = paramSimilarEmojiQueryModel.query;
-    localObject = this.rr.bhX();
-    if (localObject == null)
-    {
-      paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
-      AppMethodBeat.o(228119);
-      throw paramSimilarEmojiQueryModel;
-    }
-    ((dus)localObject).UaY = paramSimilarEmojiQueryModel.UWL;
-    localObject = this.rr.bhX();
-    if (localObject == null)
-    {
-      paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
-      AppMethodBeat.o(228119);
-      throw paramSimilarEmojiQueryModel;
-    }
-    ((dus)localObject).SessionId = String.valueOf(paramSimilarEmojiQueryModel.timestamp);
-    localObject = this.rr.bhX();
-    if (localObject == null)
-    {
-      paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
-      AppMethodBeat.o(228119);
-      throw paramSimilarEmojiQueryModel;
-    }
-    ((dus)localObject).TgT = paramSimilarEmojiQueryModel.UWM;
-    localObject = this.rr.bhX();
-    if (localObject == null)
-    {
-      paramSimilarEmojiQueryModel = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecommendPanelEmojiRequest");
-      AppMethodBeat.o(228119);
-      throw paramSimilarEmojiQueryModel;
-    }
-    ((dus)localObject).CPw = paramSimilarEmojiQueryModel.scene;
-    AppMethodBeat.o(228119);
+    AppMethodBeat.i(231480);
+    s.u(paramString, "chatId");
+    mpa = String.valueOf(System.currentTimeMillis());
+    mfW = paramString;
+    h.OAn.b(21160, new Object[] { mpa, sessionId, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+    AppMethodBeat.o(231480);
   }
   
-  public final int doScene(g paramg, i parami)
+  public static void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(228107);
-    this.jQg = parami;
-    int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(228107);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 3793;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(228111);
-    params = this.jQg;
-    if (params != null)
-    {
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(228111);
-      return;
+    AppMethodBeat.i(231458);
+    s.u(paramString1, "query");
+    s.u(paramString2, "sessionId");
+    s.u(paramArrayList, "md5List");
+    query = paramString1;
+    sessionId = paramString2;
+    mpb = paramInt2;
+    miq = paramInt1;
+    mpd = paramInt3;
+    StringBuffer localStringBuffer = new StringBuffer();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      localStringBuffer.append((String)paramArrayList.next()).append("#");
     }
-    AppMethodBeat.o(228111);
+    paramArrayList = localStringBuffer.toString();
+    s.s(paramArrayList, "md5String.toString()");
+    mpc = paramArrayList;
+    h.OAn.b(21159, new Object[] { paramString1, mpa, paramString2, Integer.valueOf(1), mpc, Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), mfW, Integer.valueOf(paramInt3) });
+    AppMethodBeat.o(231458);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emojisearch/model/NetSceneSearchEmoji$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
-  public static final class a {}
+  public static void aWP()
+  {
+    AppMethodBeat.i(231488);
+    h.OAn.b(21160, new Object[] { mpa, sessionId, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+    AppMethodBeat.o(231488);
+  }
+  
+  public static void aWQ()
+  {
+    AppMethodBeat.i(231495);
+    h.OAn.b(21160, new Object[] { mpa, sessionId, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3) });
+    AppMethodBeat.o(231495);
+  }
+  
+  public static void ar(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(231471);
+    s.u(paramString, "md5");
+    h.OAn.b(21159, new Object[] { query, mpa, sessionId, Integer.valueOf(2), paramString, Integer.valueOf(1), Integer.valueOf(paramInt), Integer.valueOf(mpb), mfW, Integer.valueOf(mpd) });
+    AppMethodBeat.o(231471);
+  }
+  
+  public static void e(ArrayList<EmojiInfo> paramArrayList, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(231464);
+    s.u(paramArrayList, "emojiInfoList");
+    miq = paramInt1;
+    mpd = paramInt2;
+    StringBuffer localStringBuffer = new StringBuffer();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      localStringBuffer.append(((EmojiInfo)paramArrayList.next()).getMd5()).append("#");
+    }
+    paramArrayList = localStringBuffer.toString();
+    s.s(paramArrayList, "md5String.toString()");
+    mpc = paramArrayList;
+    h.OAn.b(21159, new Object[] { query, mpa, sessionId, Integer.valueOf(1), mpc, Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(mpb), mfW, Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(231464);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emojisearch.c.a
  * JD-Core Version:    0.7.0.1
  */

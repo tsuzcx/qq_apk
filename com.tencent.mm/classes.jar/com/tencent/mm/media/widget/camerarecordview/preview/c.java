@@ -1,20 +1,19 @@
 package com.tencent.mm.media.widget.camerarecordview.preview;
 
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.l;
 
-@l(iBK={1, 1, 16})
-final class c
-  implements Runnable
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "", "queueEvent", "", "r", "Lkotlin/Function0;", "requestRender", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface c
 {
-  c(a parama)
-  {
-    this.csv = parama;
-  }
+  public abstract void H(a<ah> parama);
+  
+  public abstract void requestRender();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.preview.c
  * JD-Core Version:    0.7.0.1
  */

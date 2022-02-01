@@ -1,211 +1,92 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ac;
 
-import android.os.IInterface;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.game.g.b.3;
+import com.tencent.mm.plugin.appbrand.game.g.b.8;
+import com.tencent.mm.plugin.appbrand.game.g.b.9;
+import com.tencent.mm.plugin.appbrand.game.g.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.trafficcard.ITencentSmartcardOpenService;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends a
+  extends b
 {
-  public static final int CTRL_INDEX = 895;
-  public static final String NAME = "checkTrafficCardConditions";
+  public static final int CTRL_INDEX = 686;
+  public static final String NAME = "operateMediaContainer";
   
-  protected final void a(j paramj, int paramInt, IInterface paramIInterface, JSONObject paramJSONObject)
+  public final void a(final com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(268014);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(46755);
+    Log.i("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: %s %s", new Object[] { "operateMediaContainer", paramJSONObject.toString() });
+    Object localObject1 = paramJSONObject.optString("operationType");
+    if (((String)localObject1).equalsIgnoreCase("create"))
     {
-      paramIInterface = new HashMap();
-      paramIInterface.put("errCode", Integer.valueOf(b.psC.errorCode));
-      paramj.j(paramInt, m("fail:" + b.psC.errorMsg, paramIInterface));
-      q(2, b.psC.errorCode, "deviceData is null");
-      Log.e("MicroMsg.JsApiCheckTrafficCardConditions", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%s]", new Object[] { b.psC.errorMsg, paramj.getAppId(), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(268014);
+      localObject1 = e(paramc);
+      paramc = new d() {};
+      Log.i("MicroMsg.GameRecorderMgr", "hy: trigger createMediaContainer");
+      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.3((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
+      AppMethodBeat.o(46755);
       return;
     }
-    localObject3 = new HashMap();
-    localObject1 = paramJSONObject.optString("issuerID");
-    localObject4 = paramJSONObject.optString("serviceID");
-    bool1 = "issueCardService".equals(localObject4);
-    ((HashMap)localObject3).put("issuerID", localObject1);
-    Object localObject8 = null;
-    Object localObject9 = null;
-    Object localObject6 = null;
-    Object localObject7 = null;
-    bool2 = paramIInterface instanceof com.huawei.b.a.a.a;
-    localObject5 = "";
-    paramJSONObject = "";
-    if (bool2)
+    if (((String)localObject1).equalsIgnoreCase("export"))
     {
-      localObject1 = localObject6;
-      localObject2 = localObject8;
-    }
-    for (;;)
-    {
+      int i = paramJSONObject.optInt("containerId");
+      localObject1 = paramJSONObject.optString("mimeType");
+      if (Util.isNullOrNil((String)localObject1))
+      {
+        paramc.callback(paramInt, ZP(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() })));
+        AppMethodBeat.o(46755);
+        return;
+      }
+      Object localObject2 = d(paramc, i + "." + (String)localObject1);
+      if ((localObject2 == null) || (Util.isNullOrNil(((b.a)localObject2).rrh)) || (Util.isNullOrNil(((b.a)localObject2).rri)))
+      {
+        Log.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: %s, alloc file failed", new Object[] { "operateMediaContainer" });
+        paramc.callback(paramInt, ZP(String.format("fail: internal create file failed", new Object[0])));
+        AppMethodBeat.o(46755);
+        return;
+      }
       try
       {
-        localObject5 = ((com.huawei.b.a.a.a)paramIInterface).queryCplc();
-        if (bool1)
-        {
-          localObject1 = localObject6;
-          localObject2 = localObject8;
-          paramJSONObject = ((com.huawei.b.a.a.a)paramIInterface).checkIssueConditions((Map)localObject3);
-        }
-        localObject1 = localObject6;
-        localObject2 = localObject8;
-        ((HashMap)localObject3).put("serviceID", localObject4);
-        localObject1 = localObject6;
-        localObject2 = localObject8;
-        localObject3 = ((com.huawei.b.a.a.a)paramIInterface).checkServiceStatus((Map)localObject3);
-        localObject4 = paramJSONObject;
-      }
-      catch (Exception paramIInterface)
-      {
-        Log.e("MicroMsg.JsApiCheckTrafficCardConditions", "call remote interface fail: [%s] ! ", new Object[] { paramIInterface.getMessage() });
-        localObject4 = localObject2;
-        localObject5 = localObject1;
-        paramIInterface = null;
-        paramJSONObject = (JSONObject)localObject5;
-        continue;
-        int k = ((JSONObject)localObject4).optInt("resultCode");
-        int m = paramIInterface.optInt("resultCode");
-        int i = 0;
-        if (!bool1) {
-          continue;
-        }
-        i = paramJSONObject.optInt("resultCode");
-        int j = 0;
-        if (j >= 3) {
-          continue;
-        }
-        int n = new int[] { k, i, m }[j];
-        if (n == b.psB.errorCode) {
-          continue;
-        }
-        if (!bool2) {
-          continue;
-        }
-        paramIInterface = b.AM(n);
-        paramJSONObject = paramIInterface;
-        if (paramIInterface != b.ptn) {
-          continue;
-        }
-        paramJSONObject = b.psY;
-        paramIInterface = new HashMap();
-        paramIInterface.put("errCode", Integer.valueOf(paramJSONObject.errorCode));
-        if (k != 0) {
-          continue;
-        }
-        paramIInterface.put("data", ((JSONObject)localObject4).optJSONObject("data"));
-        paramj.j(paramInt, m("fail:" + paramJSONObject.errorMsg, paramIInterface));
-        q(2, paramJSONObject.errorCode, paramJSONObject.errorMsg);
-        Log.e("MicroMsg.JsApiCheckTrafficCardConditions", "Return code from huawei remote interface! with RetCode cplc[%s] issueConditions[%s] serviceStatus [%s] ", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(m) });
-        AppMethodBeat.o(268014);
+        paramJSONObject.put("filePath", ((b.a)localObject2).rrh);
+        localObject1 = e(paramc);
+        localObject2 = new d() {};
+        ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.8((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, (d)localObject2));
+        AppMethodBeat.o(46755);
         return;
-        paramIInterface = b.AN(n);
-        continue;
-        j += 1;
-        continue;
-        paramIInterface = new HashMap();
-        paramIInterface.put("errCode", Integer.valueOf(b.psB.errorCode));
-        localObject1 = ((JSONObject)localObject4).optJSONObject("data");
-        if ((!bool1) || (!paramJSONObject.has("data"))) {
-          continue;
-        }
-        try
-        {
-          ((JSONObject)localObject1).put("customData", paramJSONObject.optJSONObject("data"));
-          paramIInterface.put("data", localObject1);
-          paramj.j(paramInt, m(b.psB.errorMsg, paramIInterface));
-          q(2, b.psB.errorCode, "");
-          AppMethodBeat.o(268014);
-          return;
-        }
-        catch (Exception paramJSONObject)
-        {
-          Log.e("MicroMsg.JsApiCheckTrafficCardConditions", "checkIssueConditions do not contains data: [%s] ! ", new Object[] { paramJSONObject.getMessage() });
-          continue;
-        }
-        localObject3 = "";
-        localObject4 = paramJSONObject;
-        continue;
       }
-      paramIInterface = localObject9;
-      localObject1 = localObject6;
-      localObject2 = localObject8;
-      if (!TextUtils.isEmpty((CharSequence)localObject5))
+      catch (JSONException paramJSONObject)
       {
-        localObject1 = localObject6;
-        localObject2 = localObject8;
-        paramIInterface = new JSONObject((String)localObject5);
+        paramc.callback(paramInt, ZP(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() })));
+        AppMethodBeat.o(46755);
+        return;
       }
-      paramJSONObject = localObject7;
-      localObject1 = localObject6;
-      localObject2 = paramIInterface;
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
+      catch (Exception paramJSONObject)
       {
-        localObject1 = localObject6;
-        localObject2 = paramIInterface;
-        paramJSONObject = new JSONObject((String)localObject4);
+        paramc.callback(paramInt, ZP(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() })));
+        AppMethodBeat.o(46755);
+        return;
       }
-      localObject1 = paramJSONObject;
-      localObject2 = paramIInterface;
-      localObject5 = paramJSONObject;
-      localObject4 = paramIInterface;
-      if (TextUtils.isEmpty((CharSequence)localObject3)) {
-        continue;
-      }
-      localObject1 = paramJSONObject;
-      localObject2 = paramIInterface;
-      localObject3 = new JSONObject((String)localObject3);
-      localObject4 = paramIInterface;
-      paramIInterface = (IInterface)localObject3;
-      if ((localObject4 != null) && ((!bool1) || (paramJSONObject != null)) && (paramIInterface != null)) {
-        continue;
-      }
-      paramIInterface = new HashMap();
-      paramIInterface.put("errCode", Integer.valueOf(b.psG.errorCode));
-      paramj.j(paramInt, m("fail:" + b.psG.errorMsg, paramIInterface));
-      q(2, b.psG.errorCode, "call remote interface exception");
-      Log.e("MicroMsg.JsApiCheckTrafficCardConditions", "call remote interface exception.");
-      AppMethodBeat.o(268014);
-      return;
-      localObject1 = localObject6;
-      localObject2 = localObject8;
-      if (!(paramIInterface instanceof ITencentSmartcardOpenService)) {
-        continue;
-      }
-      localObject1 = localObject6;
-      localObject2 = localObject8;
-      localObject5 = ((ITencentSmartcardOpenService)paramIInterface).queryCplc();
-      if (bool1)
-      {
-        localObject1 = localObject6;
-        localObject2 = localObject8;
-        paramJSONObject = ((ITencentSmartcardOpenService)paramIInterface).checkIssueConditions((Map)localObject3);
-        localObject1 = localObject6;
-        localObject2 = localObject8;
-        Log.i("MicroMsg.JsApiCheckTrafficCardConditions", "issueConditions: [%s]! ", new Object[] { paramJSONObject });
-      }
-      localObject1 = localObject6;
-      localObject2 = localObject8;
-      ((HashMap)localObject3).put("serviceID", localObject4);
-      localObject1 = localObject6;
-      localObject2 = localObject8;
-      localObject3 = ((ITencentSmartcardOpenService)paramIInterface).checkServiceStatus((Map)localObject3);
-      localObject4 = paramJSONObject;
     }
+    if (((String)localObject1).equalsIgnoreCase("remove"))
+    {
+      localObject1 = e(paramc);
+      paramc = new d() {};
+      ((com.tencent.mm.plugin.appbrand.game.g.b)localObject1).rtv.postToWorker(new b.9((com.tencent.mm.plugin.appbrand.game.g.b)localObject1, paramJSONObject, paramc));
+      AppMethodBeat.o(46755);
+      return;
+    }
+    Log.e("MicroMsg.GameRecord.JsApiScreenRecorderOperateMediaContainer", "hy: invalid operate type: %s", new Object[] { localObject1 });
+    paramc.callback(paramInt, ZP(String.format("fail: not valid operate type: %s", new Object[] { localObject1 })));
+    AppMethodBeat.o(46755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ac.c
  * JD-Core Version:    0.7.0.1
  */

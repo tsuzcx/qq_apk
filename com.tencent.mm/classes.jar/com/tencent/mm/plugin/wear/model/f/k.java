@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.fjy;
+import com.tencent.mm.protocal.protobuf.ggm;
 import java.io.IOException;
 
 public final class k
@@ -18,20 +18,25 @@ public final class k
     this.msg = paramString;
   }
   
-  protected final void gOA()
+  public final String getName()
+  {
+    return "WearPushPayResponseTask";
+  }
+  
+  protected final void send()
   {
     AppMethodBeat.i(30133);
-    fjy localfjy = new fjy();
+    ggm localggm = new ggm();
     switch (this.code)
     {
     }
     for (;;)
     {
-      localfjy.Uht = this.msg;
+      localggm.acbp = this.msg;
       try
       {
-        a.gOx();
-        r.a(20016, localfjy.toByteArray(), true);
+        a.inM();
+        r.a(20016, localggm.toByteArray(), true);
         AppMethodBeat.o(30133);
         return;
       }
@@ -39,26 +44,21 @@ public final class k
       {
         AppMethodBeat.o(30133);
       }
-      localfjy.Upv = 0;
+      localggm.abIu = 0;
       continue;
-      localfjy.Upv = 196610;
+      localggm.abIu = 196610;
       continue;
-      localfjy.Upv = 196613;
+      localggm.abIu = 196613;
       continue;
-      localfjy.Upv = 196614;
+      localggm.abIu = 196614;
       continue;
-      localfjy.Upv = 196615;
+      localggm.abIu = 196615;
     }
-  }
-  
-  public final String getName()
-  {
-    return "WearPushPayResponseTask";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.k
  * JD-Core Version:    0.7.0.1
  */

@@ -5,22 +5,13 @@ import android.os.ParcelFileDescriptor;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="GetFdForAssetResponseCreator")
-@SafeParcelable.Reserved({1})
 public final class zzee
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzee> CREATOR;
-  @SafeParcelable.Field(id=2)
   public final int statusCode;
-  @SafeParcelable.Field(id=3)
   public final ParcelFileDescriptor zzdz;
   
   static
@@ -30,8 +21,7 @@ public final class zzee
     AppMethodBeat.o(101226);
   }
   
-  @SafeParcelable.Constructor
-  public zzee(@SafeParcelable.Param(id=2) int paramInt, @SafeParcelable.Param(id=3) ParcelFileDescriptor paramParcelFileDescriptor)
+  public zzee(int paramInt, ParcelFileDescriptor paramParcelFileDescriptor)
   {
     this.statusCode = paramInt;
     this.zzdz = paramParcelFileDescriptor;
@@ -49,7 +39,7 @@ public final class zzee
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzee
  * JD-Core Version:    0.7.0.1
  */

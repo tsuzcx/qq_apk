@@ -1,136 +1,119 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import i.a.a.b;
 import java.util.LinkedList;
 
 public final class ym
-  extends dyy
+  extends erp
 {
-  public String CRQ;
-  public String SkA;
-  public String SkB;
-  public String SkC;
+  public String Zhd;
+  public int channel;
+  public String wYJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124470);
+    AppMethodBeat.i(72439);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.wYJ == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(124470);
+        paramVarArgs = new b("Not all required fields were included: qrcode_url");
+        AppMethodBeat.o(72439);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.SkA != null) {
-        paramVarArgs.f(2, this.SkA);
+      if (this.wYJ != null) {
+        paramVarArgs.g(2, this.wYJ);
       }
-      if (this.CRQ != null) {
-        paramVarArgs.f(3, this.CRQ);
+      paramVarArgs.bS(3, this.channel);
+      if (this.Zhd != null) {
+        paramVarArgs.g(4, this.Zhd);
       }
-      if (this.SkB != null) {
-        paramVarArgs.f(4, this.SkB);
-      }
-      if (this.SkC != null) {
-        paramVarArgs.f(5, this.SkC);
-      }
-      AppMethodBeat.o(124470);
+      AppMethodBeat.o(72439);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label576;
+      if (this.BaseRequest == null) {
+        break label496;
       }
     }
-    label576:
-    for (int i = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    label496:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.wYJ != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.wYJ);
+      }
+      i += i.a.a.b.b.a.cJ(3, this.channel);
       paramInt = i;
-      if (this.SkA != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.SkA);
+      if (this.Zhd != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Zhd);
       }
-      i = paramInt;
-      if (this.CRQ != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.CRQ);
-      }
-      paramInt = i;
-      if (this.SkB != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.SkB);
-      }
-      i = paramInt;
-      if (this.SkC != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.SkC);
-      }
-      AppMethodBeat.o(124470);
-      return i;
+      AppMethodBeat.o(72439);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.wYJ == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(124470);
+          paramVarArgs = new b("Not all required fields were included: qrcode_url");
+          AppMethodBeat.o(72439);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(124470);
+        AppMethodBeat.o(72439);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ym localym = (ym)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124470);
+          AppMethodBeat.o(72439);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localym.BaseResponse = localjh;
+            localym.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(124470);
+          AppMethodBeat.o(72439);
           return 0;
         case 2: 
-          localym.SkA = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(124470);
+          localym.wYJ = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(72439);
           return 0;
         case 3: 
-          localym.CRQ = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(124470);
-          return 0;
-        case 4: 
-          localym.SkB = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(124470);
+          localym.channel = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(72439);
           return 0;
         }
-        localym.SkC = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(124470);
+        localym.Zhd = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(72439);
         return 0;
       }
-      AppMethodBeat.o(124470);
+      AppMethodBeat.o(72439);
       return -1;
     }
   }

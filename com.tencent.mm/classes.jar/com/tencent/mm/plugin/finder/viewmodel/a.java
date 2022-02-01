@@ -1,295 +1,187 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.il;
-import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.location.model.g;
-import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.protocal.protobuf.btn;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.n;
+import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.aa.b;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
-import kotlin.x;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.j;
+import kotlin.k;
+import org.apache.commons.c.g;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/finder/api/IFinderGlobalLocationVM;", "()V", "lastAddress", "Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "getLastAddress", "()Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;", "setLastAddress", "(Lcom/tencent/mm/protocal/protobuf/GetCurLocationResponse;)V", "locationListener", "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1;", "checkLocationPermissionWithRequest", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "checkLocationPermissionWithoutRequest", "forceRequestLocation", "lastLocation", "Lkotlin/Pair;", "", "lastLocationTime", "", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestLocation", "requestLocationPermission", "storeLocation", "longitude", "latitude", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/Finder18054CacheVM;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/Finder18054CacheVM$Item;", "isRestored", "", "limitCount", "", "getLimitCount", "()I", "limitCount$delegate", "Lkotlin/Lazy;", "storeLimitCount", "getStoreLimitCount", "addCache", "", "scene", "feedId", "", "checkValid", "key", "restoreCache", "storeCache", "Companion", "Item", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.ui.component.i<PluginFinder>
-  implements com.tencent.mm.an.i, com.tencent.mm.plugin.finder.api.f
+  extends n<PluginFinder>
 {
-  public static final a Bgh;
-  public btn Bgf;
-  private final c Bgg;
+  public static final a.a GJT;
+  public final ConcurrentHashMap<String, a.b> BvD;
+  public boolean GJU;
+  public final j GJV;
+  private final int GJW;
   
   static
   {
-    AppMethodBeat.i(289642);
-    Bgh = new a((byte)0);
-    AppMethodBeat.o(289642);
+    AppMethodBeat.i(337257);
+    GJT = new a.a((byte)0);
+    AppMethodBeat.o(337257);
   }
   
   public a()
   {
-    AppMethodBeat.i(289641);
-    StringBuilder localStringBuilder = new StringBuilder("isGetGps=");
-    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    Log.i("Finder.GlobalLocationVM", com.tencent.mm.plugin.finder.storage.d.dTc());
-    this.Bgg = new c(this);
-    AppMethodBeat.o(289641);
+    AppMethodBeat.i(337203);
+    this.GJV = k.cm((kotlin.g.a.a)a.c.GJX);
+    this.GJW = 300;
+    this.BvD = new ConcurrentHashMap();
+    AppMethodBeat.o(337203);
   }
   
-  public static boolean ejZ()
+  private static final void a(a parama)
   {
-    AppMethodBeat.i(289634);
-    boolean bool = b.k(MMApplicationContext.getContext(), "android.permission.ACCESS_FINE_LOCATION", false);
-    AppMethodBeat.o(289634);
-    return bool;
-  }
-  
-  public static long eka()
-  {
-    AppMethodBeat.i(289638);
-    com.tencent.mm.kernel.f localf = com.tencent.mm.kernel.h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    long l = localf.aHp().a(ar.a.VBv, 0L);
-    AppMethodBeat.o(289638);
-    return l;
-  }
-  
-  public static boolean i(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(289635);
-    p.k(paramMMActivity, "activity");
-    boolean bool = b.a((Activity)paramMMActivity, "android.permission.ACCESS_FINE_LOCATION", 79, null, null);
-    AppMethodBeat.o(289635);
-    return bool;
-  }
-  
-  public final void cKK()
-  {
-    AppMethodBeat.i(289636);
-    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (!com.tencent.mm.plugin.finder.storage.d.dTc())
+    AppMethodBeat.i(337232);
+    s.u(parama, "this$0");
+    try
     {
-      Log.w("Finder.GlobalLocationVM", "[requestLocation] is not enabel");
-      AppMethodBeat.o(289636);
-      return;
-    }
-    if (!ejZ())
-    {
-      Log.w("Finder.GlobalLocationVM", "[requestLocation] without perssion.");
-      AppMethodBeat.o(289636);
-      return;
-    }
-    Log.i("Finder.GlobalLocationVM", "[requestLocation]...");
-    com.tencent.mm.ae.d.c("Finder.GlobalLocationVM#RequestLocation", (kotlin.g.a.a)new d(this));
-    AppMethodBeat.o(289636);
-  }
-  
-  public final o<Float, Float> dnl()
-  {
-    float f2 = 0.0F;
-    AppMethodBeat.i(289637);
-    Object localObject = com.tencent.mm.kernel.h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    localObject = ((com.tencent.mm.kernel.f)localObject).aHp().get(ar.a.VBu, ";");
-    if (localObject == null)
-    {
-      localObject = new kotlin.t("null cannot be cast to non-null type kotlin.String");
-      AppMethodBeat.o(289637);
-      throw ((Throwable)localObject);
-    }
-    localObject = kotlin.n.n.a((CharSequence)localObject, new char[] { ';' });
-    Float localFloat = kotlin.n.n.bHA((String)((List)localObject).get(0));
-    if (localFloat != null) {}
-    for (float f1 = localFloat.floatValue();; f1 = 0.0F)
-    {
-      localObject = kotlin.n.n.bHA((String)((List)localObject).get(1));
-      if (localObject != null) {
-        f2 = ((Float)localObject).floatValue();
+      localObject1 = Result.Companion;
+      localObject1 = av.GiL;
+      localObject1 = new u(av.Ub(9));
+      if (!((u)localObject1).isDirectory()) {
+        ((u)localObject1).diJ();
       }
-      localObject = new o(Float.valueOf(f1), Float.valueOf(f2));
-      AppMethodBeat.o(289637);
-      return localObject;
-    }
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
-  {
-    AppMethodBeat.i(289639);
-    if (paramq != null) {
-      switch (paramq.getType())
-      {
+      if (!((u)localObject1).jKS()) {
+        ((u)localObject1).jKY();
       }
+      localObject1 = s.X(com.tencent.mm.vfs.ah.v(((u)localObject1).jKT()), "/18054.ext");
+      y.deleteFile((String)localObject1);
+      Object localObject2 = parama.BvD.values();
+      s.s(localObject2, "cache.values");
+      localObject2 = p.a((Iterable)localObject2, (Comparator)new a.d());
+      parama = new ArrayList((Collection)((List)localObject2).subList(0, Math.min(parama.GJW, ((List)localObject2).size())));
+      localObject2 = (Serializable)parama;
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(512);
+      g.a((Serializable)localObject2, localByteArrayOutputStream);
+      localObject2 = localByteArrayOutputStream.toByteArray();
+      int i = y.f((String)localObject1, (byte[])localObject2, localObject2.length);
+      Log.i("Finder.18054CacheVM", "[storeCache] ret=" + i + " store cache[" + parama.size() + "].");
+      parama = Result.constructor-impl(kotlin.ah.aiuX);
     }
-    for (;;)
+    finally
     {
-      AppMethodBeat.o(289639);
-      return;
-      com.tencent.mm.kernel.h.aGY().b(665, (com.tencent.mm.an.i)this);
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        this.Bgf = ((g)paramq).eMc();
-      }
-      btn localbtn = this.Bgf;
-      if (localbtn != null)
-      {
-        if (Util.isNullOrNil(localbtn.mVH))
-        {
-          this.Bgf = null;
-          Log.i("Finder.GlobalLocationVM", "Get Location Fail");
-          AppMethodBeat.o(289639);
-          return;
-        }
-        paramq = localbtn.mVz;
-        paramString = paramq;
-        if (paramq == null) {
-          paramString = "";
-        }
-        localbtn.mVz = paramString;
-        paramq = localbtn.mVA;
-        paramString = paramq;
-        if (paramq == null) {
-          paramString = "";
-        }
-        localbtn.mVA = paramString;
-        Log.i("Finder.GlobalLocationVM", "Get Location " + localbtn.mVH + ' ' + localbtn.mVz + ' ' + localbtn.mVA);
-        AppMethodBeat.o(289639);
-        return;
-      }
-      Log.i("Finder.GlobalLocationVM", "Get Location Fail");
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$Companion;", "", "()V", "REQUST_PERMISSION_CODE", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  public static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    public b(a parama)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$locationListener$1", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "onGetLocation", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "plugin-finder_release"})
-  public static final class c
-    implements b.a
-  {
-    public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2)
-    {
-      AppMethodBeat.i(292248);
-      com.tencent.mm.modelgeo.d.blq().b((b.a)this);
-      final aa.b localb1 = new aa.b();
-      localb1.aaBy = paramFloat1;
-      final aa.b localb2 = new aa.b();
-      localb2.aaBy = paramFloat2;
-      Object localObject;
-      if (paramBoolean)
-      {
-        a.W(paramFloat1, paramFloat2);
-        Log.i("Finder.GlobalLocationVM", "[onGetLocation] longitude=" + localb1.aaBy + " latitude=" + localb2.aaBy);
-        localObject = new il();
-        ((il)localObject).fFF.lng = paramFloat1;
-        ((il)localObject).fFF.lat = paramFloat2;
-        EventCenter.instance.publish((IEvent)localObject);
-      }
       for (;;)
       {
-        com.tencent.e.h.ZvG.be((Runnable)new a(this, localb2, localb1));
-        AppMethodBeat.o(292248);
-        return true;
-        localObject = this.Bgi.dnl();
-        localb1.aaBy = ((Number)((o)localObject).Mx).floatValue();
-        localb2.aaBy = ((Number)((o)localObject).My).floatValue();
-        Log.i("Finder.GlobalLocationVM", "[onGetLocation] from cache. longitude=" + localb1.aaBy + " latitude=" + localb2.aaBy);
+        Object localObject1 = Result.Companion;
+        parama = Result.constructor-impl(ResultKt.createFailure(parama));
       }
     }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
+    parama = Result.exceptionOrNull-impl(parama);
+    if (parama != null) {
+      Log.printErrStackTrace("Finder.18054CacheVM", parama, "", new Object[0]);
+    }
+    AppMethodBeat.o(337232);
+  }
+  
+  public static String ay(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(337215);
+    String str = paramInt + '-' + d.hF(paramLong);
+    AppMethodBeat.o(337215);
+    return str;
+  }
+  
+  private static final void b(a parama)
+  {
+    AppMethodBeat.i(337248);
+    s.u(parama, "this$0");
+    try
     {
-      a(a.c paramc, aa.b paramb1, aa.b paramb2) {}
-      
-      public final void run()
+      localObject = Result.Companion;
+      localObject = av.GiL;
+      localObject = y.bi(s.X(com.tencent.mm.vfs.ah.v(new u(av.Ub(9)).jKT()), "/18054.ext"), 0, -1);
+      if (localObject != null) {
+        break label89;
+      }
+      parama = null;
+      parama = Result.constructor-impl(parama);
+    }
+    finally
+    {
+      for (;;)
       {
-        AppMethodBeat.i(274662);
-        g localg = new g(localb2.aaBy, localb1.aaBy);
-        com.tencent.mm.kernel.h.aGY().a(665, (com.tencent.mm.an.i)this.Bgj.Bgi);
-        com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)localg);
-        AppMethodBeat.o(274662);
+        localObject = Result.Companion;
+        parama = Result.constructor-impl(ResultKt.createFailure(parama));
+      }
+      localObject = g.aj(new ByteArrayInputStream((byte[])localObject));
+      if (!(localObject instanceof List)) {
+        break label241;
       }
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    d(a parama)
+    parama = Result.exceptionOrNull-impl(parama);
+    if (parama != null) {
+      Log.printErrStackTrace("Finder.18054CacheVM", parama, "", new Object[0]);
+    }
+    AppMethodBeat.o(337248);
+    return;
+    label89:
+    if (localObject == null)
     {
-      super();
+      parama = new IllegalArgumentException("The byte[] must not be null");
+      AppMethodBeat.o(337248);
+      throw parama;
+    }
+    label241:
+    for (Object localObject = (List)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          a.b localb = (a.b)((Iterator)localObject).next();
+          ((Map)parama.BvD).put(ay(localb.scene, localb.time), localb);
+        }
+      }
+      Log.i("Finder.18054CacheVM", s.X("[restoreCache] cacheSize=", Integer.valueOf(parama.BvD.size())));
+      parama = kotlin.ah.aiuX;
+      break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  public static final class e
-    implements DialogInterface.OnClickListener
+  public final void fmK()
   {
-    public e(MMActivity paramMMActivity) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(272275);
-      paramDialogInterface = com.tencent.mm.plugin.finder.report.n.zWF;
-      com.tencent.mm.plugin.finder.report.n.al((Context)this.mpU, 4);
-      paramDialogInterface = this.mpU;
-      Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-      com.tencent.mm.hellhoundlib.a.a.b(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$requestLocationPermission$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-      com.tencent.mm.hellhoundlib.a.a.c(paramDialogInterface, "com/tencent/mm/plugin/finder/viewmodel/FinderGlobalLocationVM$requestLocationPermission$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(272275);
-    }
+    AppMethodBeat.i(337277);
+    h.ahAA.g(new a..ExternalSyntheticLambda1(this), "Finder.18054CacheVM");
+    AppMethodBeat.o(337277);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  public static final class f
-    implements DialogInterface.OnClickListener
+  public final void fmL()
   {
-    public f(MMActivity paramMMActivity) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(281842);
-      paramDialogInterface = com.tencent.mm.plugin.finder.report.n.zWF;
-      com.tencent.mm.plugin.finder.report.n.al((Context)this.mpU, 3);
-      AppMethodBeat.o(281842);
-    }
+    AppMethodBeat.i(337282);
+    h.ahAA.g(new a..ExternalSyntheticLambda0(this), "Finder.18054CacheVM");
+    AppMethodBeat.o(337282);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.a
  * JD-Core Version:    0.7.0.1
  */

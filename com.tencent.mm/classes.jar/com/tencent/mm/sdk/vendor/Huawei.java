@@ -22,12 +22,12 @@ public class Huawei
   
   private static String getProperty()
   {
-    AppMethodBeat.i(209942);
+    AppMethodBeat.i(243219);
     Object localObject;
     if (!Util.isNullOrNil(systemName))
     {
       localObject = systemName;
-      AppMethodBeat.o(209942);
+      AppMethodBeat.o(243219);
       return localObject;
     }
     try
@@ -36,7 +36,7 @@ public class Huawei
       localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject, new Object[] { "ro.build.version.emui", "unknown" });
       localObject = Util.nullAs((String)localObject, "").toLowerCase();
       systemName = (String)localObject;
-      AppMethodBeat.o(209942);
+      AppMethodBeat.o(243219);
       return localObject;
     }
     catch (Exception localException)
@@ -124,7 +124,7 @@ public class Huawei
   public static boolean ifOnlyHUAWEI()
   {
     boolean bool = true;
-    AppMethodBeat.i(209926);
+    AppMethodBeat.i(243200);
     String str;
     if (ifOnlyHUAWEI == null)
     {
@@ -138,7 +138,7 @@ public class Huawei
     for (;;)
     {
       bool = ifOnlyHUAWEI.booleanValue();
-      AppMethodBeat.o(209926);
+      AppMethodBeat.o(243200);
       return bool;
       label61:
       if ("HONOR".equalsIgnoreCase(str))
@@ -159,49 +159,49 @@ public class Huawei
   
   public static boolean isEMUI10()
   {
-    AppMethodBeat.i(209934);
+    AppMethodBeat.i(243210);
     if (getProperty().startsWith("EmotionUI_10".toLowerCase()))
     {
-      AppMethodBeat.o(209934);
+      AppMethodBeat.o(243210);
       return true;
     }
-    AppMethodBeat.o(209934);
+    AppMethodBeat.o(243210);
     return false;
   }
   
   public static boolean isEMUI8()
   {
-    AppMethodBeat.i(209929);
+    AppMethodBeat.i(243205);
     if (getProperty().startsWith("EmotionUI_8".toLowerCase()))
     {
-      AppMethodBeat.o(209929);
+      AppMethodBeat.o(243205);
       return true;
     }
-    AppMethodBeat.o(209929);
+    AppMethodBeat.o(243205);
     return false;
   }
   
   public static boolean isEMUI9()
   {
-    AppMethodBeat.i(209931);
+    AppMethodBeat.i(243207);
     if (getProperty().startsWith("EmotionUI_9".toLowerCase()))
     {
-      AppMethodBeat.o(209931);
+      AppMethodBeat.o(243207);
       return true;
     }
-    AppMethodBeat.o(209931);
+    AppMethodBeat.o(243207);
     return false;
   }
   
   public static boolean isNotBelowEMUI10()
   {
-    AppMethodBeat.i(209937);
+    AppMethodBeat.i(243214);
     if (getProperty().startsWith("EmotionUI_1".toLowerCase()))
     {
-      AppMethodBeat.o(209937);
+      AppMethodBeat.o(243214);
       return true;
     }
-    AppMethodBeat.o(209937);
+    AppMethodBeat.o(243214);
     return false;
   }
 }

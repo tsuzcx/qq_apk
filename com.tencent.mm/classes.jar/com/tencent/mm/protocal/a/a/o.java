@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class o
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<m> RDd;
+  public LinkedList<m> YzF;
   
   public o()
   {
     AppMethodBeat.i(143959);
-    this.RDd = new LinkedList();
+    this.YzF = new LinkedList();
     AppMethodBeat.o(143959);
   }
   
@@ -20,24 +20,24 @@ public class o
     AppMethodBeat.i(143960);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.RDd);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.YzF);
       AppMethodBeat.o(143960);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.a.c(1, 8, this.RDd);
+      paramInt = i.a.a.a.c(1, 8, this.YzF);
       AppMethodBeat.o(143960);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.RDd.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.YzF.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(143960);
@@ -45,7 +45,7 @@ public class o
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       o localo = (o)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -54,7 +54,7 @@ public class o
         AppMethodBeat.o(143960);
         return -1;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
       int i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
@@ -64,7 +64,7 @@ public class o
         if ((localObject != null) && (localObject.length > 0)) {
           localm.parseFrom((byte[])localObject);
         }
-        localo.RDd.add(localm);
+        localo.YzF.add(localm);
         paramInt += 1;
       }
       AppMethodBeat.o(143960);
@@ -76,7 +76,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.o
  * JD-Core Version:    0.7.0.1
  */

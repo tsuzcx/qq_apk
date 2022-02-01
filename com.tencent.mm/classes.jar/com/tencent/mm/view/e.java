@@ -1,133 +1,136 @@
 package com.tencent.mm.view;
 
 import android.graphics.Rect;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/ExposeElves;", "", "()V", "CHECK_TIME_NS", "", "TAG", "", "lastCheckTime", "", "rect", "Landroid/graphics/Rect;", "watchSize", "getWatchSize", "()I", "setWatchSize", "(I)V", "checkExpose", "", "checkExposeImpl", "target", "Landroid/view/View;", "exposedData", "Lcom/tencent/mm/view/ExposedData;", "checkGroupExpose", "checkLeak", "", "view", "OnRecyclerViewChildExposedListener", "OnViewExposedListener", "OnViewGroupChildExposedListener", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/ExposeElves;", "", "()V", "CHECK_TIME_NS", "", "TAG", "", "checkExposedRunnable", "Lkotlin/Function0;", "", "lastCheckTime", "", "rect", "Landroid/graphics/Rect;", "watchSize", "getWatchSize", "()I", "setWatchSize", "(I)V", "checkExpose", "checkExposeImpl", "target", "Landroid/view/View;", "exposedData", "Lcom/tencent/mm/view/ExposedData;", "checkGroupExpose", "checkLeak", "", "view", "OnRecyclerViewChildExposedListener", "OnViewExposedListener", "OnViewGroupChildExposedListener", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  private static int YKw;
-  public static final e YKx;
-  private static final Rect byG;
+  public static final e agGn;
+  private static int agGo;
+  private static final a<ah> agGp;
   private static long lastCheckTime;
+  private static final Rect rect;
   
   static
   {
-    AppMethodBeat.i(188576);
-    YKx = new e();
-    byG = new Rect();
-    a locala = (a)e.d.YKz;
-    Thread localThread = Thread.currentThread();
-    Looper localLooper = Looper.getMainLooper();
-    p.j(localLooper, "Looper.getMainLooper()");
-    if ((p.h(localThread, localLooper.getThread()) ^ true))
-    {
-      f.igY().post((Runnable)new e.1(locala));
-      AppMethodBeat.o(188576);
-      return;
-    }
-    locala.invoke();
-    AppMethodBeat.o(188576);
+    AppMethodBeat.i(234712);
+    agGn = new e();
+    rect = new Rect();
+    f.bt((a)1.agGq);
+    agGp = (a)d.agGr;
+    AppMethodBeat.o(234712);
   }
   
   private static void a(View paramView, g paramg)
   {
-    AppMethodBeat.i(188575);
-    c localc = paramg.YKQ;
+    AppMethodBeat.i(234696);
+    e.c localc = paramg.agGF;
     if (localc == null)
     {
-      AppMethodBeat.o(188575);
+      AppMethodBeat.o(234696);
       return;
     }
-    if (localc.igW())
+    if (localc.jMl())
     {
-      AppMethodBeat.o(188575);
+      AppMethodBeat.o(234696);
       return;
     }
     if (!(paramView instanceof ViewGroup))
     {
-      AppMethodBeat.o(188575);
+      AppMethodBeat.o(234696);
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    long l1 = 0L;
+    long l2 = 0L;
     int i = 0;
-    int j = ((ViewGroup)paramView).getChildCount();
-    while (i < j)
+    int k = ((ViewGroup)paramView).getChildCount();
+    long l1 = l2;
+    if (k > 0) {}
+    for (;;)
     {
+      int j = i + 1;
       View localView = ((ViewGroup)paramView).getChildAt(i);
-      p.j(localView, "child");
-      long l3 = localc.er(localView);
-      long l2 = l1;
+      s.s(localView, "child");
+      long l3 = localc.fq(localView);
+      l1 = l2;
       if (localView.isShown())
       {
-        l2 = l1;
+        l1 = l2;
         if (localView.getAlpha() > 0.0F)
         {
-          l2 = l1;
-          if (localView.getGlobalVisibleRect(byG))
+          l1 = l2;
+          if (localView.getGlobalVisibleRect(rect))
           {
-            localLinkedList.add(localView);
-            l2 = l1 + l3;
+            l1 = l2;
+            if (localc.mx(localView))
+            {
+              localLinkedList.add(localView);
+              l1 = l2 + l3;
+            }
           }
         }
       }
-      i += 1;
-      l1 = l2;
-    }
-    if (paramg.YKR != l1)
-    {
-      paramg.YKR = l1;
-      paramg = paramg.YKQ;
-      if (paramg != null)
+      if (j >= k)
       {
-        paramg.b(paramView, (List)localLinkedList);
-        AppMethodBeat.o(188575);
+        if (paramg.agGG != l1)
+        {
+          paramg.agGG = l1;
+          paramg = paramg.agGF;
+          if (paramg != null) {
+            paramg.b(paramView, (List)localLinkedList);
+          }
+        }
+        AppMethodBeat.o(234696);
         return;
       }
+      i = j;
+      l2 = l1;
     }
-    AppMethodBeat.o(188575);
   }
   
-  public static void azl(int paramInt)
+  public static void aFP(int paramInt)
   {
-    YKw = paramInt;
+    agGo = paramInt;
   }
   
-  public static int igU()
+  public static int jMj()
   {
-    return YKw;
+    return agGo;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/ExposeElves$OnViewGroupChildExposedListener;", "", "()V", "getExposedId", "", "view", "Landroid/view/View;", "ignoreExposeChanged", "", "onChildExposeChanged", "", "parent", "exposedChildren", "", "libmmui_release"})
-  public static abstract class c
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements a<ah>
   {
-    public abstract void b(View paramView, List<? extends View> paramList);
+    public static final d agGr;
     
-    public long er(View paramView)
+    static
     {
-      p.k(paramView, "view");
-      return paramView.hashCode();
+      AppMethodBeat.i(234700);
+      agGr = new d();
+      AppMethodBeat.o(234700);
     }
     
-    public boolean igW()
+    d()
     {
-      return false;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.view.e
  * JD-Core Version:    0.7.0.1
  */

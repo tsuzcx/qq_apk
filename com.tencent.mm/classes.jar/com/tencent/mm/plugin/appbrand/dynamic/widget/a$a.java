@@ -11,7 +11,7 @@ public final class a$a
   public String id;
   public int width;
   
-  public final void e(Parcel paramParcel)
+  public final void g(Parcel paramParcel)
   {
     AppMethodBeat.i(121568);
     paramParcel.writeString(this.id);
@@ -31,7 +31,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

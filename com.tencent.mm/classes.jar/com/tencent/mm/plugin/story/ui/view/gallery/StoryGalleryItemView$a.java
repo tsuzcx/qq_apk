@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "", "state", "", "index", "isSelf", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class StoryGalleryItemView$a
-  extends kotlin.g.b.q
-  implements kotlin.g.a.q<Integer, Integer, Boolean, x>
+  extends u
+  implements q<Integer, Integer, Boolean, ah>
 {
-  StoryGalleryItemView$a(kotlin.g.a.q paramq)
+  StoryGalleryItemView$a(q<? super Integer, ? super Integer, ? super Boolean, ah> paramq)
   {
     super(3);
   }

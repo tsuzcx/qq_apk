@@ -9,9 +9,9 @@ public class a
 {
   public static String a(long paramLong)
   {
-    AppMethodBeat.i(194231);
+    AppMethodBeat.i(219676);
     String str = String.format(Locale.getDefault(), "%d(%s)", new Object[] { Long.valueOf(paramLong), new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.getDefault()).format(new Date(paramLong)) });
-    AppMethodBeat.o(194231);
+    AppMethodBeat.o(219676);
     return str;
   }
 }

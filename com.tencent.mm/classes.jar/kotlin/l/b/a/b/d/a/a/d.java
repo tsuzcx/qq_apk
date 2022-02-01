@@ -8,80 +8,93 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import kotlin.a.ae;
-import kotlin.a.x;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.a.g.a;
+import kotlin.a.ak;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.a.k.a;
 import kotlin.l.b.a.b.b.a.n;
-import kotlin.l.b.a.b.b.y;
-import kotlin.l.b.a.b.f.a;
+import kotlin.l.b.a.b.b.ae;
 import kotlin.l.b.a.b.f.f;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.o;
-import kotlin.s;
+import kotlin.l.b.a.b.j.b.g;
+import kotlin.l.b.a.b.j.b.j;
+import kotlin.r;
+import kotlin.v;
 
 public final class d
 {
-  private static final Map<String, EnumSet<n>> aaSZ;
-  private static final Map<String, kotlin.l.b.a.b.b.a.m> aaTa;
-  public static final d aaTb;
+  public static final d aiRa;
+  private static final Map<String, EnumSet<n>> aiRb;
+  private static final Map<String, kotlin.l.b.a.b.b.a.m> aiRc;
   
   static
   {
     AppMethodBeat.i(57665);
-    aaTb = new d();
-    aaSZ = ae.e(new o[] { s.M("PACKAGE", EnumSet.noneOf(n.class)), s.M("TYPE", EnumSet.of((Enum)n.aaLP, (Enum)n.aaMc)), s.M("ANNOTATION_TYPE", EnumSet.of((Enum)n.aaLQ)), s.M("TYPE_PARAMETER", EnumSet.of((Enum)n.aaLR)), s.M("FIELD", EnumSet.of((Enum)n.aaLT)), s.M("LOCAL_VARIABLE", EnumSet.of((Enum)n.aaLU)), s.M("PARAMETER", EnumSet.of((Enum)n.aaLV)), s.M("CONSTRUCTOR", EnumSet.of((Enum)n.aaLW)), s.M("METHOD", EnumSet.of((Enum)n.aaLX, (Enum)n.aaLY, (Enum)n.aaLZ)), s.M("TYPE_USE", EnumSet.of((Enum)n.aaMa)) });
-    aaTa = ae.e(new o[] { s.M("RUNTIME", kotlin.l.b.a.b.b.a.m.aaLL), s.M("CLASS", kotlin.l.b.a.b.b.a.m.aaLM), s.M("SOURCE", kotlin.l.b.a.b.b.a.m.aaLN) });
+    aiRa = new d();
+    aiRb = ak.e(new r[] { v.Y("PACKAGE", EnumSet.noneOf(n.class)), v.Y("TYPE", EnumSet.of((Enum)n.aiID, (Enum)n.aiIQ)), v.Y("ANNOTATION_TYPE", EnumSet.of((Enum)n.aiIE)), v.Y("TYPE_PARAMETER", EnumSet.of((Enum)n.aiIF)), v.Y("FIELD", EnumSet.of((Enum)n.aiIH)), v.Y("LOCAL_VARIABLE", EnumSet.of((Enum)n.aiII)), v.Y("PARAMETER", EnumSet.of((Enum)n.aiIJ)), v.Y("CONSTRUCTOR", EnumSet.of((Enum)n.aiIK)), v.Y("METHOD", EnumSet.of((Enum)n.aiIL, (Enum)n.aiIM, (Enum)n.aiIN)), v.Y("TYPE_USE", EnumSet.of((Enum)n.aiIO)) });
+    aiRc = ak.e(new r[] { v.Y("RUNTIME", kotlin.l.b.a.b.b.a.m.aiIv), v.Y("CLASS", kotlin.l.b.a.b.b.a.m.aiIw), v.Y("SOURCE", kotlin.l.b.a.b.b.a.m.aiIx) });
     AppMethodBeat.o(57665);
   }
   
-  public static kotlin.l.b.a.b.j.b.g<?> a(kotlin.l.b.a.b.d.a.e.b paramb)
+  public static g<?> a(kotlin.l.b.a.b.d.a.e.b paramb)
   {
     AppMethodBeat.i(57664);
-    if (!(paramb instanceof kotlin.l.b.a.b.d.a.e.m)) {
+    if ((paramb instanceof kotlin.l.b.a.b.d.a.e.m))
+    {
+      paramb = (kotlin.l.b.a.b.d.a.e.m)paramb;
+      if (paramb != null) {
+        break label40;
+      }
       paramb = null;
     }
     for (;;)
     {
-      paramb = (kotlin.l.b.a.b.d.a.e.m)paramb;
-      if (paramb != null)
+      paramb = (g)paramb;
+      AppMethodBeat.o(57664);
+      return paramb;
+      paramb = null;
+      break;
+      label40:
+      Object localObject = aiRc;
+      paramb = paramb.kra();
+      if (paramb == null) {}
+      for (paramb = null;; paramb = paramb.PF())
       {
-        Object localObject = aaTa;
-        paramb = paramb.iHt();
-        if (paramb != null)
-        {
-          paramb = paramb.qu();
-          localObject = (kotlin.l.b.a.b.b.a.m)((Map)localObject).get(paramb);
-          if (localObject == null) {
-            break label115;
-          }
-          paramb = a.p(kotlin.l.b.a.b.a.g.aaFI.aaGr);
-          p.j(paramb, "ClassId.topLevel(KotlinB…AMES.annotationRetention)");
-          localObject = f.bHb(((kotlin.l.b.a.b.b.a.m)localObject).name());
-          p.j(localObject, "Name.identifier(retention.name)");
-          paramb = new kotlin.l.b.a.b.j.b.j(paramb, (f)localObject);
+        localObject = (kotlin.l.b.a.b.b.a.m)((Map)localObject).get(paramb);
+        if (localObject != null) {
+          break label85;
         }
-      }
-      for (;;)
-      {
-        paramb = (kotlin.l.b.a.b.j.b.g)paramb;
-        AppMethodBeat.o(57664);
-        return paramb;
         paramb = null;
         break;
-        label115:
-        paramb = null;
-        continue;
-        paramb = null;
       }
+      label85:
+      paramb = kotlin.l.b.a.b.f.b.s(k.a.aiDe);
+      s.s(paramb, "topLevel(StandardNames.F…ames.annotationRetention)");
+      localObject = f.bJe(((kotlin.l.b.a.b.b.a.m)localObject).name());
+      s.s(localObject, "identifier(retention.name)");
+      paramb = new j(paramb, (f)localObject);
     }
   }
   
-  public static kotlin.l.b.a.b.j.b.g<?> lB(List<? extends kotlin.l.b.a.b.d.a.e.b> paramList)
+  public static Set<n> bIR(String paramString)
+  {
+    AppMethodBeat.i(192122);
+    paramString = (EnumSet)aiRb.get(paramString);
+    if (paramString == null)
+    {
+      paramString = (Set)kotlin.a.ad.aivA;
+      AppMethodBeat.o(192122);
+      return paramString;
+    }
+    paramString = (Set)paramString;
+    AppMethodBeat.o(192122);
+    return paramString;
+  }
+  
+  public static g<?> oZ(List<? extends kotlin.l.b.a.b.d.a.e.b> paramList)
   {
     AppMethodBeat.i(57663);
-    p.k(paramList, "arguments");
+    s.u(paramList, "arguments");
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
@@ -97,52 +110,41 @@ public final class d
     Object localObject2 = paramList.iterator();
     if (((Iterator)localObject2).hasNext())
     {
-      paramList = ((kotlin.l.b.a.b.d.a.e.m)((Iterator)localObject2).next()).iHt();
-      if (paramList != null)
+      paramList = ((kotlin.l.b.a.b.d.a.e.m)((Iterator)localObject2).next()).kra();
+      if (paramList == null) {}
+      for (paramList = null;; paramList = paramList.PF())
       {
-        paramList = paramList.qu();
-        label127:
-        paramList = (EnumSet)aaSZ.get(paramList);
-        if (paramList == null) {
-          break label166;
-        }
-      }
-      label166:
-      for (paramList = (Set)paramList;; paramList = (Set)x.aaAf)
-      {
-        kotlin.a.j.a((Collection)localObject1, (Iterable)paramList);
+        p.a((Collection)localObject1, (Iterable)bIR(paramList));
         break;
-        paramList = null;
-        break label127;
       }
     }
     localObject1 = (Iterable)localObject1;
-    paramList = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
+    paramList = (Collection)new ArrayList(p.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject3 = (n)((Iterator)localObject1).next();
-      localObject2 = a.p(kotlin.l.b.a.b.a.g.aaFI.aaGq);
-      p.j(localObject2, "ClassId.topLevel(KotlinB…Q_NAMES.annotationTarget)");
-      localObject3 = f.bHb(((n)localObject3).name());
-      p.j(localObject3, "Name.identifier(kotlinTarget.name)");
-      paramList.add(new kotlin.l.b.a.b.j.b.j((a)localObject2, (f)localObject3));
+      localObject2 = kotlin.l.b.a.b.f.b.s(k.a.aiDd);
+      s.s(localObject2, "topLevel(StandardNames.FqNames.annotationTarget)");
+      localObject3 = f.bJe(((n)localObject3).name());
+      s.s(localObject3, "identifier(kotlinTarget.name)");
+      paramList.add(new j((kotlin.l.b.a.b.f.b)localObject2, (f)localObject3));
     }
-    paramList = (kotlin.l.b.a.b.j.b.g)new kotlin.l.b.a.b.j.b.b((List)paramList, (kotlin.g.a.b)a.aaTc);
+    paramList = (g)new kotlin.l.b.a.b.j.b.b((List)paramList, (kotlin.g.a.b)a.aiRd);
     AppMethodBeat.o(57663);
     return paramList;
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.b<y, ab>
+    extends u
+    implements kotlin.g.a.b<ae, kotlin.l.b.a.b.m.ad>
   {
-    public static final a aaTc;
+    public static final a aiRd;
     
     static
     {
       AppMethodBeat.i(57662);
-      aaTc = new a();
+      aiRd = new a();
       AppMethodBeat.o(57662);
     }
     
@@ -154,7 +156,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.a.d
  * JD-Core Version:    0.7.0.1
  */

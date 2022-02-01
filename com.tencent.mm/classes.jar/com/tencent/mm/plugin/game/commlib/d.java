@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.b.b;
+import com.tencent.mm.plugin.game.commlib.b.c;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -9,32 +9,32 @@ import java.util.HashMap;
 public final class d
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.game.commlib.a.a
 {
-  private b Cze;
+  private c IsQ;
   
-  public final void a(String paramString, com.tencent.mm.cd.a parama)
+  public final void a(String paramString, com.tencent.mm.bx.a parama)
   {
     AppMethodBeat.i(89937);
-    this.Cze.b(paramString, parama);
+    this.IsQ.b(paramString, parama);
     AppMethodBeat.o(89937);
   }
   
-  public final byte[] aIX(String paramString)
+  public final byte[] aFI(String paramString)
   {
     AppMethodBeat.i(89938);
-    if (this.Cze == null)
+    if (this.IsQ == null)
     {
       AppMethodBeat.o(89938);
       return null;
     }
-    paramString = this.Cze.aIX(paramString);
+    paramString = this.IsQ.aFI(paramString);
     AppMethodBeat.o(89938);
     return paramString;
   }
   
-  public final void aIY(String paramString)
+  public final void aFJ(String paramString)
   {
     AppMethodBeat.i(184538);
-    this.Cze.aIY(paramString);
+    this.IsQ.aFJ(paramString);
     AppMethodBeat.o(184538);
   }
   
@@ -46,7 +46,7 @@ public final class d
     {
       public final String[] getSQLs()
       {
-        return b.SQL_CREATE;
+        return c.SQL_CREATE;
       }
     });
     AppMethodBeat.o(89939);
@@ -58,14 +58,14 @@ public final class d
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(89940);
-    this.Cze = new b(paramh1);
+    this.IsQ = new c(paramh1);
     AppMethodBeat.o(89940);
   }
   
-  public final void t(String paramString, byte[] paramArrayOfByte)
+  public final void x(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184537);
-    this.Cze.u(paramString, paramArrayOfByte);
+    this.IsQ.y(paramString, paramArrayOfByte);
     AppMethodBeat.o(184537);
   }
 }

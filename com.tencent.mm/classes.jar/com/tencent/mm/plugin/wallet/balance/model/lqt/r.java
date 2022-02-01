@@ -1,61 +1,32 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c.a;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.protocal.protobuf.dlh;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.io.IOException;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.protocal.protobuf.dwd;
+import com.tencent.mm.protocal.protobuf.dwe;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class r
-  extends com.tencent.mm.wallet_core.c.a<dlh, CgiLqtPlanIndex>
+  extends z<dwe>
 {
-  private static dlh gFv()
+  public r(String paramString)
   {
-    AppMethodBeat.i(68454);
-    Object localObject = (String)h.aHG().aHp().get(ar.a.VtE, "");
-    if (Util.isNullOrNil((String)localObject))
-    {
-      AppMethodBeat.o(68454);
-      return null;
-    }
-    localObject = ((String)localObject).getBytes(org.apache.commons.a.a.ISO_8859_1);
-    try
-    {
-      localObject = (dlh)new dlh().parseFrom((byte[])localObject);
-      AppMethodBeat.o(68454);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      Log.printErrStackTrace("MicroMsg.CgiPlanIndexAsyncLoader", localIOException, "", new Object[0]);
-      AppMethodBeat.o(68454);
-    }
-    return null;
-  }
-  
-  public final void b(c.a<dlh> parama)
-  {
-    AppMethodBeat.i(182497);
-    Log.i("MicroMsg.CgiPlanIndexAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
-    if ((parama.errType == 0) && (parama.errCode == 0) && (((dlh)parama.lBJ).tqa == 0)) {
-      try
-      {
-        parama = new String(((dlh)parama.lBJ).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
-        h.aHG().aHp().set(ar.a.VtE, parama);
-        AppMethodBeat.o(182497);
-        return;
-      }
-      catch (IOException parama)
-      {
-        Log.printErrStackTrace("MicroMsg.CgiPlanIndexAsyncLoader", parama, "", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(182497);
+    AppMethodBeat.i(316109);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new dwd();
+    ((c.a)localObject).otF = new dwe();
+    ((c.a)localObject).funcId = 4574;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickreddot";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    dwd localdwd = (dwd)c.b.b(((c)localObject).otB);
+    localdwd.ZQJ = paramString;
+    localdwd.Vbl = ai.ieD();
+    c((c)localObject);
+    AppMethodBeat.o(316109);
   }
 }
 

@@ -1,43 +1,56 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import java.util.HashMap;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.viewmodel.component.ap;
+import com.tencent.mm.ui.component.UIComponent;
+import java.util.Set;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderPoiRelateListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderPoiRelateListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderPoiRelateListUI
   extends MMFinderUI
 {
-  private HashMap _$_findViewCache;
-  
-  public final void _$_clearFindViewByIdCache()
+  private static final boolean a(FinderPoiRelateListUI paramFinderPoiRelateListUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(222553);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(222553);
+    AppMethodBeat.i(365064);
+    s.u(paramFinderPoiRelateListUI, "this$0");
+    paramFinderPoiRelateListUI.finish();
+    AppMethodBeat.o(365064);
+    return true;
   }
   
-  public final View _$_findCachedViewById(int paramInt)
+  public final void _$_clearFindViewByIdCache() {}
+  
+  public final int getCommentScene()
   {
-    AppMethodBeat.i(222552);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(222552);
-    return localView1;
+    return 124;
+  }
+  
+  public final Set<Class<? extends UIComponent>> importUIComponents()
+  {
+    AppMethodBeat.i(365079);
+    Set localSet = ar.setOf(ap.class);
+    AppMethodBeat.o(365079);
+    return localSet;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(365088);
+    super.onCreate(paramBundle);
+    setBackBtn(new FinderPoiRelateListUI..ExternalSyntheticLambda0(this));
+    setActionbarColor(getResources().getColor(e.b.BG_2));
+    setMMTitle(getResources().getString(e.h.finder_poi_add_guide_title));
+    hideActionbarLine();
+    AppMethodBeat.o(365088);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -48,7 +61,7 @@ public final class FinderPoiRelateListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderPoiRelateListUI
  * JD-Core Version:    0.7.0.1
  */

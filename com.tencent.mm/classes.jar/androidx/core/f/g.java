@@ -1,51 +1,173 @@
 package androidx.core.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.PrintWriter;
 
 public final class g
 {
-  public static int bv(int paramInt)
+  private static final Object bsE;
+  private static char[] bsF;
+  
+  static
   {
-    AppMethodBeat.i(251353);
-    if (paramInt < 0)
-    {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException();
-      AppMethodBeat.o(251353);
-      throw localIllegalArgumentException;
-    }
-    AppMethodBeat.o(251353);
-    return paramInt;
+    AppMethodBeat.i(196086);
+    bsE = new Object();
+    bsF = new char[24];
+    AppMethodBeat.o(196086);
   }
   
-  public static <T> T checkNotNull(T paramT)
+  private static int a(char[] paramArrayOfChar, int paramInt1, char paramChar, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(251350);
-    if (paramT == null)
+    int i;
+    int j;
+    if (!paramBoolean)
     {
-      paramT = new NullPointerException();
-      AppMethodBeat.o(251350);
-      throw paramT;
+      i = paramInt2;
+      if (paramInt1 <= 0) {}
     }
-    AppMethodBeat.o(251350);
-    return paramT;
+    else
+    {
+      if (paramInt1 <= 99) {
+        break label120;
+      }
+      j = paramInt1 / 100;
+      paramArrayOfChar[paramInt2] = ((char)(j + 48));
+      i = paramInt2 + 1;
+      paramInt1 -= j * 100;
+    }
+    for (;;)
+    {
+      int k;
+      if (paramInt1 <= 9)
+      {
+        k = i;
+        j = paramInt1;
+        if (paramInt2 == i) {}
+      }
+      else
+      {
+        paramInt2 = paramInt1 / 10;
+        paramArrayOfChar[i] = ((char)(paramInt2 + 48));
+        k = i + 1;
+        j = paramInt1 - paramInt2 * 10;
+      }
+      paramArrayOfChar[k] = ((char)(j + 48));
+      paramInt1 = k + 1;
+      paramArrayOfChar[paramInt1] = paramChar;
+      i = paramInt1 + 1;
+      return i;
+      label120:
+      i = paramInt2;
+    }
   }
   
-  public static <T> T checkNotNull(T paramT, Object paramObject)
+  public static void a(long paramLong1, long paramLong2, PrintWriter paramPrintWriter)
   {
-    AppMethodBeat.i(251352);
-    if (paramT == null)
+    AppMethodBeat.i(196071);
+    if (paramLong1 == 0L)
     {
-      paramT = new NullPointerException(String.valueOf(paramObject));
-      AppMethodBeat.o(251352);
-      throw paramT;
+      paramPrintWriter.print("--");
+      AppMethodBeat.o(196071);
+      return;
     }
-    AppMethodBeat.o(251352);
-    return paramT;
+    a(paramLong1 - paramLong2, paramPrintWriter);
+    AppMethodBeat.o(196071);
+  }
+  
+  private static void a(long paramLong, PrintWriter paramPrintWriter)
+  {
+    boolean bool2 = true;
+    int j = 1;
+    AppMethodBeat.i(196043);
+    for (;;)
+    {
+      synchronized (bsE)
+      {
+        if (bsF.length < 0) {
+          bsF = new char[0];
+        }
+        char[] arrayOfChar = bsF;
+        if (paramLong == 0L)
+        {
+          arrayOfChar[0] = '0';
+          paramPrintWriter.print(new String(bsF, 0, j));
+          AppMethodBeat.o(196043);
+          return;
+        }
+        int i;
+        if (paramLong > 0L)
+        {
+          i = 43;
+          int i1 = (int)(paramLong % 1000L);
+          j = (int)Math.floor(paramLong / 1000L);
+          if (j <= 86400) {
+            break label346;
+          }
+          k = j / 86400;
+          j -= k * 86400;
+          if (j <= 3600) {
+            break label340;
+          }
+          m = j / 3600;
+          j -= m * 3600;
+          if (j <= 60) {
+            break label334;
+          }
+          n = j / 60;
+          j -= n * 60;
+          arrayOfChar[0] = i;
+          k = a(arrayOfChar, k, 'd', 1, false);
+          if (k != 1)
+          {
+            bool1 = true;
+            k = a(arrayOfChar, m, 'h', k, bool1);
+            if (k == 1) {
+              continue;
+            }
+            bool1 = true;
+            k = a(arrayOfChar, n, 'm', k, bool1);
+            if (k == 1) {
+              continue;
+            }
+            bool1 = bool2;
+            j = a(arrayOfChar, i1, 'm', a(arrayOfChar, j, 's', k, bool1), true);
+            arrayOfChar[j] = 's';
+            j += 1;
+          }
+        }
+        else
+        {
+          paramLong = -paramLong;
+          i = 45;
+          continue;
+        }
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        bool1 = false;
+      }
+      label334:
+      int n = 0;
+      continue;
+      label340:
+      int m = 0;
+      continue;
+      label346:
+      int k = 0;
+    }
+  }
+  
+  public static void b(long paramLong, PrintWriter paramPrintWriter)
+  {
+    AppMethodBeat.i(196055);
+    a(paramLong, paramPrintWriter);
+    AppMethodBeat.o(196055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.f.g
  * JD-Core Version:    0.7.0.1
  */

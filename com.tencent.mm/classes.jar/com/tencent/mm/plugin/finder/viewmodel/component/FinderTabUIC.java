@@ -4,274 +4,337 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.LinearLayout.LayoutParams;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.e;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayout.b;
 import com.google.android.material.tabs.TabLayout.e;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.profile.uic.FinderProfileTabUIC.c;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
-import com.tencent.mm.plugin.finder.utils.ay;
+import com.tencent.mm.plugin.finder.utils.bp;
 import com.tencent.mm.plugin.finder.view.FinderFragmentChangeObserver;
 import com.tencent.mm.plugin.finder.view.adapter.a.a;
 import com.tencent.mm.plugin.finder.view.adapter.c;
 import com.tencent.mm.plugin.finder.view.tabcomp.IFinderTabProvider;
-import com.tencent.mm.plugin.finder.view.tabcomp.f;
 import com.tencent.mm.plugin.finder.view.tabcomp.g;
+import com.tencent.mm.plugin.finder.view.tabcomp.m;
+import com.tencent.mm.plugin.finder.view.tabcomp.n;
+import com.tencent.mm.plugin.finder.view.tabcomp.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.view.HardTouchableLayout;
 import com.tencent.mm.view.HardTouchableLayout.b;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
-import kotlin.a.j;
-import kotlin.g.b.ag;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.an;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "dynamicPagerAdapter", "Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "getDynamicPagerAdapter", "()Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;", "setDynamicPagerAdapter", "(Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;)V", "fragmentChangeListeners", "Ljava/util/concurrent/CopyOnWriteArraySet;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "getFragmentChangeListeners", "()Ljava/util/concurrent/CopyOnWriteArraySet;", "fragments", "", "getFragments", "()Ljava/util/List;", "setFragments", "(Ljava/util/List;)V", "isDynamic", "", "lastIndex", "", "tabContainer", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "getTabContainer", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "setTabContainer", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;)V", "tabLayout", "Lcom/google/android/material/tabs/TabLayout;", "getTabLayout", "()Lcom/google/android/material/tabs/TabLayout;", "setTabLayout", "(Lcom/google/android/material/tabs/TabLayout;)V", "tabProvider", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "getTabProvider", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "setTabProvider", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;)V", "tabViewAction", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "getTabViewAction", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "setTabViewAction", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;)V", "tabs", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "getTabs", "setTabs", "viewPager", "Landroidx/viewpager/widget/ViewPager;", "getViewPager", "()Landroidx/viewpager/widget/ViewPager;", "setViewPager", "(Landroidx/viewpager/widget/ViewPager;)V", "viewPagerAdapter", "Lcom/tencent/mm/plugin/finder/view/adapter/FinderFragmentPagerAdapter;", "getViewPagerAdapter", "()Lcom/tencent/mm/plugin/finder/view/adapter/FinderFragmentPagerAdapter;", "setViewPagerAdapter", "(Lcom/tencent/mm/plugin/finder/view/adapter/FinderFragmentPagerAdapter;)V", "addTab", "", "finderTab", "position", "index", "addTabAndFragment", "tab", "fragment", "scrollToAfterAdd", "adjustTabIndicator", "ajustIndicator", "buildTab", "checkFragmentExistByTabType", "tabType", "checkTabLayoutVisibility", "convertIndexToTabType", "ensureTabInjections", "ensureTabUIC", "generateProvider", "getActiveFragment", "getActiveIndex", "getActiveTabType", "getFragment", "getFragmentByTabType", "getIndicatorView", "Landroid/view/ViewGroup;", "getLayoutId", "getTab", "getTabByType", "getTabIndex", "initNormalRefs", "initTabContainer", "initViewPager", "initViewRefs", "injectProvider", "isTabProviderInitialized", "isTabsInitialized", "onActionbarClick", "onActionbarDoubleClick", "onBtnBack", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "removeTabAndFragment", "selectPos", "removeTabAndFragmentByTabType", "selectTab", "isForceSelect", "setCurrentPage", "setMargins", "tabIndicator", "leftMargin", "rightMargin", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "dynamicPagerAdapter", "Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "getDynamicPagerAdapter", "()Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;", "setDynamicPagerAdapter", "(Lcom/tencent/mm/plugin/finder/view/adapter/DynamicPagerAdapter;)V", "enableSortTab", "", "fragmentChangeListeners", "Ljava/util/concurrent/CopyOnWriteArraySet;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "getFragmentChangeListeners", "()Ljava/util/concurrent/CopyOnWriteArraySet;", "fragmentChangeObserver", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver;", "fragments", "", "getFragments", "()Ljava/util/List;", "setFragments", "(Ljava/util/List;)V", "isDynamic", "lastIndex", "", "getLastIndex", "()I", "setLastIndex", "(I)V", "tabAlignStrategy", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabLayoutAlignStrategy;", "getTabAlignStrategy", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabLayoutAlignStrategy;", "setTabAlignStrategy", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabLayoutAlignStrategy;)V", "tabContainer", "Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "getTabContainer", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;", "setTabContainer", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/ITabContainer;)V", "tabLayout", "Lcom/google/android/material/tabs/TabLayout;", "getTabLayout", "()Lcom/google/android/material/tabs/TabLayout;", "setTabLayout", "(Lcom/google/android/material/tabs/TabLayout;)V", "tabProvider", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "getTabProvider", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;", "setTabProvider", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabProvider;)V", "tabViewAction", "Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "getTabViewAction", "()Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "setTabViewAction", "(Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;)V", "tabs", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "getTabs", "setTabs", "viewPager", "Landroidx/viewpager/widget/ViewPager;", "getViewPager", "()Landroidx/viewpager/widget/ViewPager;", "setViewPager", "(Landroidx/viewpager/widget/ViewPager;)V", "viewPagerAdapter", "Lcom/tencent/mm/plugin/finder/view/adapter/FinderFragmentPagerAdapter;", "getViewPagerAdapter", "()Lcom/tencent/mm/plugin/finder/view/adapter/FinderFragmentPagerAdapter;", "setViewPagerAdapter", "(Lcom/tencent/mm/plugin/finder/view/adapter/FinderFragmentPagerAdapter;)V", "addTab", "", "finderTab", "position", "index", "addTabAndFragment", "tab", "fragment", "scrollToAfterAdd", "adjustIndicator", "adjustTabIndicator", "buildTab", "checkFragmentExistByTabType", "tabType", "checkTabLayoutVisibility", "convertIndexToTabType", "ensureTabInjections", "ensureTabUIC", "generateProvider", "getActiveFragment", "getActiveIndex", "getActiveTabType", "getFragment", "getFragmentByTabType", "getFragmentIndex", "getIndicatorView", "Landroid/view/ViewGroup;", "getLayoutId", "getSelectedTabPosition", "getTab", "getTabByType", "getTabIndex", "initNormalRefs", "initOtherNormalRefs", "initOtherViewRefs", "initTabContainer", "initViewPager", "initViewRefs", "injectProvider", "isTabProviderInitialized", "isTabsInitialized", "onActionbarClick", "onActionbarDoubleClick", "onBtnBack", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "removeTabAndFragment", "selectPos", "removeTabAndFragmentByTabType", "removeTabAt", "reoderTabPos", "selectFirstPage", "selectTab", "isForceSelect", "setCurrentPage", "setMargins", "tabIndicator", "leftMargin", "rightMargin", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class FinderTabUIC
   extends UIComponent
 {
-  public static final a BoI = new a((byte)0);
-  final CopyOnWriteArraySet<com.tencent.mm.plugin.finder.view.i> Bls = new CopyOnWriteArraySet();
-  protected TabLayout BoG;
-  private com.tencent.mm.plugin.finder.view.adapter.a<FinderHomeTabFragment> BoH;
-  private boolean aNY;
-  private ViewPager bFl;
+  public static final FinderTabUIC.a GVl = new FinderTabUIC.a((byte)0);
+  private c Buz;
+  final CopyOnWriteArraySet<com.tencent.mm.plugin.finder.view.h> GRB = new CopyOnWriteArraySet();
+  private com.tencent.mm.plugin.finder.view.adapter.a<FinderHomeTabFragment> GVm;
+  private o GVn;
+  private FinderFragmentChangeObserver GVo;
+  private boolean GVp;
+  private boolean cHU;
+  protected ViewPager dyl;
   public List<? extends FinderHomeTabFragment> fragments;
-  private int lastIndex = -1;
-  public g tabContainer;
+  protected int lastIndex = -1;
+  public n tabContainer;
   public IFinderTabProvider tabProvider;
-  public f tabViewAction;
-  public List<? extends com.tencent.mm.plugin.finder.view.tabcomp.a> tabs;
-  private c xTE;
+  public m tabViewAction;
+  public List<? extends g> tabs;
+  private TabLayout yaj;
   
   public FinderTabUIC(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
+    paramAppCompatActivity = com.tencent.mm.plugin.finder.storage.d.FAy;
+    this.GVp = com.tencent.mm.plugin.finder.storage.d.eWB();
   }
   
-  private void a(int paramInt, com.tencent.mm.plugin.finder.view.tabcomp.a parama, FinderHomeTabFragment paramFinderHomeTabFragment, boolean paramBoolean)
+  private int a(int paramInt, g paramg)
   {
-    p.k(parama, "tab");
-    p.k(paramFinderHomeTabFragment, "fragment");
-    Object localObject;
-    if (this.aNY)
+    Object localObject3 = null;
+    Object localObject2 = null;
+    s.u(paramg, "tab");
+    int i;
+    if (paramInt <= getTabs().size())
     {
-      localObject = this.tabs;
-      if (localObject == null) {
-        p.bGy("tabs");
-      }
-      if (ag.fe(localObject)) {}
-    }
-    else
-    {
-      Log.e("Finder.FinderTabUIC", "addTabAndFragment param error");
-      return;
-    }
-    if (paramInt >= 0)
-    {
-      localObject = this.tabs;
-      if (localObject == null) {
-        p.bGy("tabs");
-      }
-      if (paramInt <= ((List)localObject).size())
+      i = paramInt;
+      if (this.GVp)
       {
-        int i = elu();
-        parama.index = paramInt;
-        localObject = this.tabs;
-        if (localObject == null) {
-          p.bGy("tabs");
-        }
-        if (localObject == null) {
-          throw new t("null cannot be cast to non-null type kotlin.collections.MutableList<com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab>");
-        }
-        ag.ff(localObject).add(paramInt, parama);
-        localObject = this.BoG;
-        if (localObject != null) {
-          a((TabLayout)localObject, parama, paramInt);
-        }
-        parama = this.BoH;
-        if (parama != null) {
-          parama.a(new a.a(true, paramInt), paramFinderHomeTabFragment);
-        }
-        if (i >= paramInt) {
-          aA(i + 1, true);
-        }
-      }
-    }
-    dOQ();
-  }
-  
-  private static void a(TabLayout paramTabLayout, com.tencent.mm.plugin.finder.view.tabcomp.a parama, int paramInt)
-  {
-    TabLayout.e locale = paramTabLayout.xz();
-    p.j(locale, "tabLayout.newTab()");
-    if (parama != null)
-    {
-      locale.gk(parama.getLayoutId());
-      parama.z((ViewGroup)locale.getCustomView());
-      parama.rx(false);
-    }
-    locale.ac(parama);
-    if (paramInt >= 0)
-    {
-      paramTabLayout.a(locale, paramInt);
-      return;
-    }
-    paramTabLayout.a(locale);
-  }
-  
-  private final void ekJ()
-  {
-    TabLayout localTabLayout = this.BoG;
-    if (localTabLayout != null)
-    {
-      localTabLayout.a((TabLayout.b)new c(localTabLayout, this));
-      Object localObject1 = this.tabs;
-      if (localObject1 == null) {
-        p.bGy("tabs");
-      }
-      localObject1 = (Iterable)localObject1;
-      int i = 0;
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = ((Iterator)localObject1).next();
-        if (i < 0) {
-          j.iBO();
-        }
-        localObject2 = (com.tencent.mm.plugin.finder.view.tabcomp.a)localObject2;
-        ((com.tencent.mm.plugin.finder.view.tabcomp.a)localObject2).index = i;
-        a(localTabLayout, (com.tencent.mm.plugin.finder.view.tabcomp.a)localObject2, -1);
-        i += 1;
-      }
-      localTabLayout = this.BoG;
-      if (localTabLayout != null)
-      {
-        Log.i("Finder.FinderTabUIC", "ajustIndicator:" + localTabLayout.getTabCount());
-        if (localTabLayout.getTabCount() > 1) {
-          localTabLayout.post((Runnable)new b(this));
-        }
-      }
-    }
-  }
-  
-  private final void els()
-  {
-    if (!elt())
-    {
-      this.tabProvider = dmS();
-      elw();
-    }
-  }
-  
-  private boolean elt()
-  {
-    return ((FinderTabUIC)this).tabProvider != null;
-  }
-  
-  private final void elw()
-  {
-    if (((FinderTabUIC)this).tabProvider != null)
-    {
-      IFinderTabProvider localIFinderTabProvider = this.tabProvider;
-      if (localIFinderTabProvider == null) {
-        p.bGy("tabProvider");
-      }
-      this.fragments = localIFinderTabProvider.fragments();
-      localIFinderTabProvider = this.tabProvider;
-      if (localIFinderTabProvider == null) {
-        p.bGy("tabProvider");
-      }
-      this.tabs = localIFinderTabProvider.tabs();
-      localIFinderTabProvider = this.tabProvider;
-      if (localIFinderTabProvider == null) {
-        p.bGy("tabProvider");
-      }
-      this.tabViewAction = localIFinderTabProvider.tabViewAction();
-      localIFinderTabProvider = this.tabProvider;
-      if (localIFinderTabProvider == null) {
-        p.bGy("tabProvider");
-      }
-      this.tabContainer = localIFinderTabProvider.tabContainer();
-      localIFinderTabProvider = this.tabProvider;
-      if (localIFinderTabProvider == null) {
-        p.bGy("tabProvider");
-      }
-      this.aNY = localIFinderTabProvider.isDynamic();
-    }
-  }
-  
-  private void ho(int paramInt1, int paramInt2)
-  {
-    Object localObject;
-    if (this.aNY)
-    {
-      localObject = this.tabs;
-      if (localObject == null) {
-        p.bGy("tabs");
-      }
-      if (ag.fe(localObject)) {}
-    }
-    else
-    {
-      Log.e("Finder.FinderTabUIC", "removeTabAndFragment param error");
-      return;
-    }
-    if ((this.aNY) && (paramInt1 >= 0))
-    {
-      localObject = this.tabs;
-      if (localObject == null) {
-        p.bGy("tabs");
-      }
-      if (paramInt1 < ((List)localObject).size())
-      {
-        localObject = this.tabs;
-        if (localObject == null) {
-          p.bGy("tabs");
-        }
-        if (localObject == null) {
-          throw new t("null cannot be cast to non-null type kotlin.collections.MutableList<com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab>");
-        }
-        ag.ff(localObject).remove(paramInt1);
-        localObject = this.BoG;
-        if (localObject != null) {
-          ((TabLayout)localObject).ge(paramInt1);
-        }
-        localObject = this.BoH;
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.finder.view.adapter.a)localObject).a(new a.a(false, paramInt1), null);
-        }
-        if (paramInt2 < 0) {
-          break label187;
-        }
-        localObject = this.tabs;
-        if (localObject == null) {
-          p.bGy("tabs");
-        }
-        if (paramInt2 >= ((List)localObject).size()) {
-          break label187;
+        i = paramInt;
+        if (paramg.priority >= 0)
+        {
+          i = paramInt;
+          if (paramg.priority < 2147483647)
+          {
+            localObject1 = (Iterable)getTabs();
+            i = 0;
+            localObject1 = ((Iterable)localObject1).iterator();
+          }
         }
       }
     }
     for (;;)
     {
-      aA(paramInt2, false);
-      dOQ();
+      if (!((Iterator)localObject1).hasNext()) {
+        break label325;
+      }
+      Object localObject4 = ((Iterator)localObject1).next();
+      if (i < 0) {
+        p.kkW();
+      }
+      if (((g)localObject4).priority > paramg.priority)
+      {
+        localObject1 = new StringBuilder("reoderTabPos ");
+        if ((paramg instanceof FinderProfileTabUIC.c))
+        {
+          paramg = (FinderProfileTabUIC.c)paramg;
+          label139:
+          if (paramg != null) {
+            break label307;
+          }
+        }
+        label289:
+        label307:
+        for (paramg = localObject2;; paramg = Integer.valueOf(paramg.EHx))
+        {
+          Log.i("Finder.FinderTabUIC", paramg + " pos from:" + paramInt + " to:" + i + '!');
+          return i;
+          localObject4 = new StringBuilder("reoderTabPos ");
+          if ((paramg instanceof FinderProfileTabUIC.c))
+          {
+            localObject1 = (FinderProfileTabUIC.c)paramg;
+            label213:
+            if (localObject1 != null) {
+              break label289;
+            }
+          }
+          for (localObject1 = null;; localObject1 = Integer.valueOf(((FinderProfileTabUIC.c)localObject1).EHx))
+          {
+            Log.e("Finder.FinderTabUIC", localObject1 + " pos from:" + paramInt + " to:" + getTabs().size() + '!');
+            paramInt = getTabs().size();
+            break;
+            localObject1 = null;
+            break label213;
+          }
+          paramg = null;
+          break label139;
+        }
+      }
+      i += 1;
+    }
+    label325:
+    Object localObject1 = new StringBuilder("reoderTabPos  ");
+    if ((paramg instanceof FinderProfileTabUIC.c))
+    {
+      paramg = (FinderProfileTabUIC.c)paramg;
+      if (paramg != null) {
+        break label419;
+      }
+    }
+    label419:
+    for (paramg = localObject3;; paramg = Integer.valueOf(paramg.EHx))
+    {
+      Log.i("Finder.FinderTabUIC", paramg + " priority is max, pos from:" + paramInt + " to:" + getTabs().size() + '!');
+      return getTabs().size();
+      paramg = null;
+      break;
+    }
+  }
+  
+  private void a(int paramInt, g paramg, FinderHomeTabFragment paramFinderHomeTabFragment, boolean paramBoolean)
+  {
+    s.u(paramg, "tab");
+    s.u(paramFinderHomeTabFragment, "fragment");
+    if ((!this.cHU) || (!an.hC(getTabs())))
+    {
+      Log.e("Finder.FinderTabUIC", "addTabAndFragment param error");
       return;
-      label187:
+    }
+    int i = a(paramInt, paramg);
+    Log.i("Finder.FinderTabUIC", "after reoderTabPos position from:" + paramInt + " to " + i);
+    if ((i >= 0) && (i <= getTabs().size()))
+    {
+      paramInt = fpi();
+      paramg.index = i;
+      an.hD(getTabs()).add(i, paramg);
+      if (this.yaj != null) {
+        a(paramg, i);
+      }
+      paramg = this.GVm;
+      if (paramg != null) {
+        paramg.a(new a.a(true, i), paramFinderHomeTabFragment);
+      }
+      if (paramInt >= i) {
+        aV(paramInt + 1, true);
+      }
+    }
+    eKo();
+  }
+  
+  private void a(IFinderTabProvider paramIFinderTabProvider)
+  {
+    s.u(paramIFinderTabProvider, "<set-?>");
+    this.tabProvider = paramIFinderTabProvider;
+  }
+  
+  private static final void a(FinderTabUIC paramFinderTabUIC)
+  {
+    s.u(paramFinderTabUIC, "this$0");
+    Log.i("Finder.FinderTabUIC", "onActionbarDoubleClick");
+    g localg = paramFinderTabUIC.Vu(paramFinderTabUIC.getSelectedTabPosition());
+    if (localg != null) {
+      paramFinderTabUIC.getTabViewAction().d((Context)paramFinderTabUIC.getActivity(), localg);
+    }
+  }
+  
+  private static final void a(FinderTabUIC paramFinderTabUIC, View paramView)
+  {
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderTabUIC);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderTabUIC, "this$0");
+    paramFinderTabUIC.foe();
+    if (!paramFinderTabUIC.getActivity().isFinishing()) {
+      paramFinderTabUIC.getActivity().finish();
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+  }
+  
+  protected static void b(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject = null;
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      return;
+    }
+    int i;
+    if (paramViewGroup != null)
+    {
+      if ((paramViewGroup.getChildCount() <= paramInt1) || (paramInt1 < 0)) {
+        break label93;
+      }
+      i = 1;
+      if (i == 0) {
+        break label99;
+      }
+      label36:
+      if (paramViewGroup != null)
+      {
+        paramViewGroup = paramViewGroup.getChildAt(paramInt1);
+        if (paramViewGroup != null) {
+          break label104;
+        }
+      }
+    }
+    label93:
+    label99:
+    label104:
+    for (paramViewGroup = localObject;; paramViewGroup = paramViewGroup.getLayoutParams())
+    {
+      if ((paramViewGroup instanceof LinearLayout.LayoutParams))
+      {
+        ((LinearLayout.LayoutParams)paramViewGroup).leftMargin = paramInt2;
+        ((LinearLayout.LayoutParams)paramViewGroup).rightMargin = paramInt3;
+      }
+      Log.i("Finder.FinderTabUIC", s.X("setMargins : invalidate", Integer.valueOf(paramInt1)));
+      return;
+      i = 0;
+      break;
+      paramViewGroup = null;
+      break label36;
+    }
+  }
+  
+  private static final void b(FinderTabUIC paramFinderTabUIC)
+  {
+    s.u(paramFinderTabUIC, "this$0");
+    Log.i("Finder.FinderTabUIC", "onActionbarClick");
+    g localg = paramFinderTabUIC.Vu(paramFinderTabUIC.getSelectedTabPosition());
+    if (localg != null) {
+      paramFinderTabUIC.getTabViewAction().c((Context)paramFinderTabUIC.getActivity(), localg);
+    }
+  }
+  
+  private static final void c(FinderTabUIC paramFinderTabUIC)
+  {
+    s.u(paramFinderTabUIC, "this$0");
+    paramFinderTabUIC.fmx();
+  }
+  
+  private final void fpg()
+  {
+    if (!fph())
+    {
+      a(dTN());
+      fpk();
+    }
+  }
+  
+  private boolean fph()
+  {
+    return this.tabProvider != null;
+  }
+  
+  private final void fpk()
+  {
+    if (this.tabProvider != null)
+    {
+      setFragments(fpe().fragments());
+      setTabs(fpe().tabs());
+      setTabViewAction(fpe().tabViewAction());
+      setTabContainer(fpe().tabContainer());
+      this.cHU = fpe().isDynamic();
+      fmu();
+    }
+  }
+  
+  private void iK(int paramInt1, int paramInt2)
+  {
+    if ((!this.cHU) || (!an.hC(getTabs())))
+    {
+      Log.e("Finder.FinderTabUIC", "removeTabAndFragment param error");
+      return;
+    }
+    if ((this.cHU) && (paramInt1 >= 0) && (paramInt1 < getTabs().size()))
+    {
+      an.hD(getTabs()).remove(paramInt1);
+      UQ(paramInt1);
+      com.tencent.mm.plugin.finder.view.adapter.a locala = this.GVm;
+      if (locala != null) {
+        locala.a(new a.a(false, paramInt1), null);
+      }
+      if ((paramInt2 < 0) || (paramInt2 >= getTabs().size())) {
+        break label121;
+      }
+    }
+    for (;;)
+    {
+      aV(paramInt2, false);
+      eKo();
+      return;
+      label121:
       if (paramInt1 - 1 < 0) {
         paramInt2 = 0;
       } else {
@@ -280,371 +343,539 @@ public abstract class FinderTabUIC
     }
   }
   
-  public final com.tencent.mm.plugin.finder.view.tabcomp.a Sc(int paramInt)
+  private void setFragments(List<? extends FinderHomeTabFragment> paramList)
   {
-    com.tencent.mm.plugin.finder.view.tabcomp.a locala = null;
-    List localList = this.tabs;
-    if (localList == null) {
-      p.bGy("tabs");
+    s.u(paramList, "<set-?>");
+    this.fragments = paramList;
+  }
+  
+  private void setTabContainer(n paramn)
+  {
+    s.u(paramn, "<set-?>");
+    this.tabContainer = paramn;
+  }
+  
+  private void setTabViewAction(m paramm)
+  {
+    s.u(paramm, "<set-?>");
+    this.tabViewAction = paramm;
+  }
+  
+  private void setTabs(List<? extends g> paramList)
+  {
+    s.u(paramList, "<set-?>");
+    this.tabs = paramList;
+  }
+  
+  public void UQ(int paramInt)
+  {
+    TabLayout localTabLayout = this.yaj;
+    if (localTabLayout != null)
+    {
+      if (localTabLayout.dxQ != null) {}
+      for (int i = localTabLayout.dxQ.position;; i = 0)
+      {
+        localTabLayout.ju(paramInt);
+        locale = (TabLayout.e)localTabLayout.dxP.remove(paramInt);
+        if (locale != null)
+        {
+          locale.reset();
+          TabLayout.b(locale);
+        }
+        int k = localTabLayout.dxP.size();
+        int j = paramInt;
+        while (j < k)
+        {
+          ((TabLayout.e)localTabLayout.dxP.get(j)).position = j;
+          j += 1;
+        }
+      }
+      if (i == paramInt) {
+        if (!localTabLayout.dxP.isEmpty()) {
+          break label138;
+        }
+      }
     }
+    label138:
+    for (TabLayout.e locale = null;; locale = (TabLayout.e)localTabLayout.dxP.get(Math.max(0, paramInt - 1)))
+    {
+      localTabLayout.b(locale, true);
+      return;
+    }
+  }
+  
+  public final g Vu(int paramInt)
+  {
+    List localList = getTabs();
     int i;
     if ((paramInt >= 0) && (paramInt < localList.size()))
     {
       i = 1;
       if (i == 0) {
-        break label75;
+        break label36;
       }
     }
     for (;;)
     {
-      if (localList != null)
-      {
-        localList = this.tabs;
-        if (localList == null) {
-          p.bGy("tabs");
-        }
-        locala = (com.tencent.mm.plugin.finder.view.tabcomp.a)localList.get(paramInt);
+      if (localList != null) {
+        break label41;
       }
-      return locala;
+      return null;
       i = 0;
       break;
-      label75:
+      label36:
       localList = null;
     }
+    label41:
+    return (g)getTabs().get(paramInt);
   }
   
-  public final boolean Sd(int paramInt)
+  public final boolean Vv(int paramInt)
   {
-    Object localObject = this.fragments;
-    if (localObject == null) {
-      p.bGy("fragments");
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (((FinderHomeTabFragment)((Iterator)localObject).next()).fEH == paramInt) {
+    Iterator localIterator = getFragments().iterator();
+    while (localIterator.hasNext()) {
+      if (((FinderHomeTabFragment)localIterator.next()).hJx == paramInt) {
         return true;
       }
     }
     return false;
   }
   
-  public final void aA(int paramInt, boolean paramBoolean)
+  public final void Vw(int paramInt)
   {
-    Object localObject = this.BoG;
+    if (paramInt >= 0)
+    {
+      ViewPager localViewPager = this.dyl;
+      if (localViewPager != null) {
+        localViewPager.setCurrentItem(paramInt);
+      }
+    }
+    Log.i("Finder.FinderTabUIC", s.X("setCurrentPage :", Integer.valueOf(paramInt)));
+  }
+  
+  public final int a(g paramg)
+  {
+    s.u(paramg, "tab");
+    return getTabs().indexOf(paramg);
+  }
+  
+  public void a(g paramg, int paramInt)
+  {
+    TabLayout localTabLayout = this.yaj;
+    TabLayout.e locale;
+    if (localTabLayout != null)
+    {
+      locale = localTabLayout.WW();
+      s.s(locale, "tabLayout.newTab()");
+      if (paramg != null)
+      {
+        locale.jw(paramg.getLayoutId());
+        paramg.H((ViewGroup)locale.dyK);
+        paramg.vg(false);
+        if ((paramg instanceof com.tencent.mm.plugin.finder.view.tabcomp.i)) {
+          locale.E((CharSequence)((com.tencent.mm.plugin.finder.view.tabcomp.i)paramg).ht((Context)getContext()));
+        }
+      }
+      locale.tag = paramg;
+      if (paramInt >= 0) {
+        localTabLayout.a(locale, paramInt, localTabLayout.dxP.isEmpty());
+      }
+    }
+    else
+    {
+      return;
+    }
+    localTabLayout.a(locale);
+  }
+  
+  public final void a(o paramo)
+  {
+    this.GVn = paramo;
+  }
+  
+  public void aV(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = this.yaj;
     int i;
     if (localObject != null)
     {
       if ((paramInt < 0) || (paramInt >= ((TabLayout)localObject).getTabCount())) {
-        break label81;
+        break label82;
       }
       i = 1;
       if (i == 0) {
-        break label86;
+        break label87;
       }
     }
     for (;;)
     {
       if (localObject != null)
       {
-        localObject = ((TabLayout)localObject).gd(paramInt);
+        localObject = ((TabLayout)localObject).js(paramInt);
         if ((localObject != null) && ((paramBoolean) || (!((TabLayout.e)localObject).isSelected())))
         {
-          Log.i("Finder.FinderTabUIC", "select :".concat(String.valueOf(paramInt)));
-          ((TabLayout.e)localObject).xI();
+          Log.i("Finder.FinderTabUIC", s.X("select :", Integer.valueOf(paramInt)));
+          ((TabLayout.e)localObject).Xf();
         }
       }
       return;
-      label81:
+      label82:
       i = 0;
       break;
-      label86:
+      label87:
       localObject = null;
     }
   }
   
-  public void dOQ()
+  public abstract IFinderTabProvider dTN();
+  
+  public void eKo()
   {
-    Object localObject = this.tabs;
-    if (localObject == null) {
-      p.bGy("tabs");
-    }
-    if (((List)localObject).size() <= 1)
+    HardTouchableLayout localHardTouchableLayout;
+    if (getTabs().size() <= 1)
     {
-      localObject = this.tabContainer;
-      if (localObject == null) {
-        p.bGy("tabContainer");
-      }
-      localObject = ((g)localObject).ejV();
-      if (localObject != null) {
-        ((HardTouchableLayout)localObject).setVisibility(8);
+      localHardTouchableLayout = getTabContainer().fmB();
+      if (localHardTouchableLayout != null) {
+        localHardTouchableLayout.setVisibility(8);
       }
     }
     do
     {
       return;
-      localObject = this.tabContainer;
-      if (localObject == null) {
-        p.bGy("tabContainer");
+      localHardTouchableLayout = getTabContainer().fmB();
+    } while (localHardTouchableLayout == null);
+    localHardTouchableLayout.setVisibility(0);
+  }
+  
+  protected void fmt() {}
+  
+  protected void fmu() {}
+  
+  protected void fmv()
+  {
+    Object localObject1 = this.yaj;
+    if (localObject1 != null)
+    {
+      ((TabLayout)localObject1).a((TabLayout.b)new b(this, (TabLayout)localObject1));
+      localObject1 = (Iterable)getTabs();
+      int i = 0;
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (i < 0) {
+          p.kkW();
+        }
+        localObject2 = (g)localObject2;
+        ((g)localObject2).index = i;
+        a((g)localObject2, -1);
+        i += 1;
       }
-      localObject = ((g)localObject).ejV();
-    } while (localObject == null);
-    ((HardTouchableLayout)localObject).setVisibility(0);
-  }
-  
-  public abstract IFinderTabProvider dmS();
-  
-  public final ViewPager ejW()
-  {
-    return this.bFl;
-  }
-  
-  public void ekP() {}
-  
-  public final int elu()
-  {
-    ViewPager localViewPager = this.bFl;
-    if (localViewPager != null) {
-      return localViewPager.getCurrentItem();
+      fmw();
     }
-    return this.lastIndex;
   }
   
-  public final void elv()
+  protected void fmw()
   {
-    List localList = this.tabs;
-    if (localList == null) {
-      p.bGy("tabs");
+    TabLayout localTabLayout = this.yaj;
+    if (localTabLayout != null)
+    {
+      Log.i("Finder.FinderTabUIC", s.X("ajustIndicator:", Integer.valueOf(localTabLayout.getTabCount())));
+      if (localTabLayout.getTabCount() > 1) {}
     }
-    ho(localList.size() - 1, -1);
+    else
+    {
+      return;
+    }
+    localTabLayout.post(new FinderTabUIC..ExternalSyntheticLambda1(this));
+  }
+  
+  protected void fmx()
+  {
+    Object localObject = this.yaj;
+    ViewGroup localViewGroup;
+    int j;
+    int i;
+    int k;
+    if (localObject != null)
+    {
+      int m = ((TabLayout)localObject).getTabCount();
+      localViewGroup = fmy();
+      if (localViewGroup != null)
+      {
+        if (m <= 0) {
+          break label181;
+        }
+        j = 0;
+        i = 0;
+        k = j + 1;
+        localObject = this.yaj;
+        if (localObject == null) {
+          localObject = null;
+        }
+        while (localObject == null)
+        {
+          throw new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
+          localObject = ((TabLayout)localObject).js(j);
+          if (localObject == null) {
+            localObject = null;
+          } else {
+            localObject = ((TabLayout.e)localObject).tag;
+          }
+        }
+        localObject = ((g)localObject).dTO();
+        if ((localObject[0] <= 0) && (localObject[1] <= 0)) {
+          break label178;
+        }
+        b(localViewGroup, j, com.tencent.mm.cd.a.fromDPToPix(localViewGroup.getContext(), localObject[0]), com.tencent.mm.cd.a.fromDPToPix(localViewGroup.getContext(), localObject[1]));
+        i = 1;
+        label157:
+        if (k < m) {
+          break label173;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        localViewGroup.requestLayout();
+      }
+      return;
+      label173:
+      j = k;
+      break;
+      label178:
+      break label157;
+      label181:
+      i = 0;
+    }
+  }
+  
+  protected ViewGroup fmy()
+  {
+    Object localObject = this.yaj;
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((TabLayout)localObject).getChildAt(0);
+    if (localObject == null) {
+      return null;
+    }
+    return (ViewGroup)localObject;
+  }
+  
+  public final TabLayout fmz()
+  {
+    return this.yaj;
+  }
+  
+  public void foe() {}
+  
+  public final o fpd()
+  {
+    return this.GVn;
+  }
+  
+  public final IFinderTabProvider fpe()
+  {
+    IFinderTabProvider localIFinderTabProvider = this.tabProvider;
+    if (localIFinderTabProvider != null) {
+      return localIFinderTabProvider;
+    }
+    s.bIx("tabProvider");
+    return null;
+  }
+  
+  public final void fpf()
+  {
+    com.tencent.mm.ae.d.a(0L, (kotlin.g.a.a)new e(this));
+  }
+  
+  public final int fpi()
+  {
+    Object localObject = this.dyl;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = Integer.valueOf(((ViewPager)localObject).getCurrentItem())) {
+      return this.lastIndex;
+    }
+    return ((Integer)localObject).intValue();
+  }
+  
+  public final void fpj()
+  {
+    iK(getTabs().size() - 1, -1);
   }
   
   public final FinderHomeTabFragment getActiveFragment()
   {
-    Object localObject = this.bFl;
-    if (localObject != null) {}
-    for (int i = ((ViewPager)localObject).getCurrentItem();; i = this.lastIndex)
+    Object localObject = this.dyl;
+    if (localObject == null)
+    {
+      localObject = null;
+      if (localObject != null) {
+        break label66;
+      }
+    }
+    label66:
+    for (int i = this.lastIndex;; i = ((Integer)localObject).intValue())
     {
       int j;
       if (i >= 0)
       {
-        localObject = this.fragments;
-        if (localObject == null) {
-          p.bGy("fragments");
-        }
         j = i;
-        if (i < ((List)localObject).size()) {}
+        if (i < getFragments().size()) {}
       }
       else
       {
         j = 0;
       }
-      localObject = this.fragments;
-      if (localObject == null) {
-        p.bGy("fragments");
-      }
-      return (FinderHomeTabFragment)((List)localObject).get(j);
+      return (FinderHomeTabFragment)getFragments().get(j);
+      localObject = Integer.valueOf(((ViewPager)localObject).getCurrentItem());
+      break;
     }
   }
   
   public final List<FinderHomeTabFragment> getFragments()
   {
     List localList = this.fragments;
-    if (localList == null) {
-      p.bGy("fragments");
+    if (localList != null) {
+      return localList;
     }
-    return localList;
+    s.bIx("fragments");
+    return null;
   }
   
   public int getLayoutId()
   {
-    els();
-    g localg = this.tabContainer;
-    if (localg == null) {
-      p.bGy("tabContainer");
-    }
-    return localg.getLayoutId();
+    fpg();
+    return getTabContainer().getLayoutId();
   }
   
-  public final g getTabContainer()
+  public int getSelectedTabPosition()
   {
-    g localg = this.tabContainer;
-    if (localg == null) {
-      p.bGy("tabContainer");
+    Object localObject = this.yaj;
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = Integer.valueOf(((TabLayout)localObject).getSelectedTabPosition())) {
+      return this.lastIndex;
     }
-    return localg;
+    return ((Integer)localObject).intValue();
   }
   
-  public final f getTabViewAction()
+  public final n getTabContainer()
   {
-    f localf = this.tabViewAction;
-    if (localf == null) {
-      p.bGy("tabViewAction");
+    n localn = this.tabContainer;
+    if (localn != null) {
+      return localn;
     }
-    return localf;
+    s.bIx("tabContainer");
+    return null;
   }
   
-  public final List<com.tencent.mm.plugin.finder.view.tabcomp.a> getTabs()
+  public final m getTabViewAction()
+  {
+    m localm = this.tabViewAction;
+    if (localm != null) {
+      return localm;
+    }
+    s.bIx("tabViewAction");
+    return null;
+  }
+  
+  public final List<g> getTabs()
   {
     List localList = this.tabs;
-    if (localList == null) {
-      p.bGy("tabs");
+    if (localList != null) {
+      return localList;
     }
-    return localList;
+    s.bIx("tabs");
+    return null;
   }
   
-  public final void hn(int paramInt1, int paramInt2)
+  public final void iJ(int paramInt1, int paramInt2)
   {
-    Object localObject = this.fragments;
-    if (localObject == null) {
-      p.bGy("fragments");
-    }
-    localObject = ((List)localObject).iterator();
+    Iterator localIterator = getFragments().iterator();
     int i = -1;
-    if (((Iterator)localObject).hasNext())
+    while (localIterator.hasNext())
     {
-      FinderHomeTabFragment localFinderHomeTabFragment = (FinderHomeTabFragment)((Iterator)localObject).next();
-      if (localFinderHomeTabFragment.fEH != paramInt1) {
-        break label104;
+      FinderHomeTabFragment localFinderHomeTabFragment = (FinderHomeTabFragment)localIterator.next();
+      if (localFinderHomeTabFragment.hJx == paramInt1) {
+        i = getFragments().indexOf(localFinderHomeTabFragment);
       }
-      List localList = this.fragments;
-      if (localList == null) {
-        p.bGy("fragments");
-      }
-      i = localList.indexOf(localFinderHomeTabFragment);
     }
-    label104:
-    for (;;)
-    {
-      break;
-      if (i >= 0) {
-        ho(i, paramInt2);
-      }
-      dOQ();
-      return;
+    if (i >= 0) {
+      iK(i, paramInt2);
     }
+    eKo();
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    els();
+    fpg();
     super.onCreate(paramBundle);
-    paramBundle = this.fragments;
-    if (paramBundle == null) {
-      p.bGy("fragments");
-    }
-    int i = paramBundle.size();
-    paramBundle = this.tabs;
-    if (paramBundle == null) {
-      p.bGy("tabs");
-    }
-    if (i != paramBundle.size())
+    if (getFragments().size() != getTabs().size())
     {
       Log.e("Finder.FinderTabUIC", "fragments size must not be equal to tabs");
-      throw ((Throwable)new IllegalArgumentException("FinderTabUIC: fragments size must not be equal to tabs"));
+      throw new IllegalArgumentException("FinderTabUIC: fragments size must not be equal to tabs");
     }
-    paramBundle = this.tabContainer;
-    if (paramBundle == null) {
-      p.bGy("tabContainer");
-    }
-    Object localObject1 = getActivity().getWindow();
-    p.j(localObject1, "activity.window");
-    paramBundle.c((Window)localObject1);
-    if (((FinderTabUIC)this).tabProvider != null)
+    paramBundle = getTabContainer();
+    Object localObject = getActivity().getWindow();
+    s.s(localObject, "activity.window");
+    paramBundle.e((Window)localObject);
+    if (this.tabProvider != null)
     {
-      paramBundle = this.tabContainer;
-      if (paramBundle == null) {
-        p.bGy("tabContainer");
-      }
-      this.BoG = paramBundle.ejU();
-      paramBundle = this.tabContainer;
-      if (paramBundle == null) {
-        p.bGy("tabContainer");
-      }
-      this.bFl = paramBundle.ejW();
+      this.yaj = getTabContainer().fmz();
+      this.dyl = getTabContainer().fmC();
+      fmt();
     }
-    paramBundle = getActivity();
-    if (paramBundle == null) {
-      throw new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-    }
-    ((MMActivity)paramBundle).setTitleBarClickListener((Runnable)new f(this), (Runnable)new g(this));
-    paramBundle = this.tabContainer;
-    if (paramBundle == null) {
-      p.bGy("tabContainer");
-    }
-    paramBundle = paramBundle.getBackBtn();
+    ((MMActivity)getActivity()).setTitleBarClickListener(new FinderTabUIC..ExternalSyntheticLambda2(this), new FinderTabUIC..ExternalSyntheticLambda3(this));
+    paramBundle = getTabContainer().getBackBtn();
     if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new h(this));
+      paramBundle.setOnClickListener(new FinderTabUIC..ExternalSyntheticLambda0(this));
     }
-    paramBundle = getActivity();
-    if (paramBundle == null) {
-      throw new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-    }
-    paramBundle = (MMActivity)paramBundle;
-    localObject1 = this.fragments;
-    if (localObject1 == null) {
-      p.bGy("fragments");
-    }
-    localObject1 = (FinderFragmentChangeObserver)new e(this, paramBundle, (List)localObject1);
-    paramBundle = this.bFl;
-    Object localObject2;
-    List localList;
-    if (paramBundle != null)
+    this.GVo = ((FinderFragmentChangeObserver)new FinderTabUIC.d(this, getActivity(), getFragments()));
+    ViewPager localViewPager = this.dyl;
+    if (localViewPager != null)
     {
-      if (!this.aNY) {
-        break label541;
+      if (!this.cHU) {
+        break label383;
       }
-      localObject2 = getActivity().getSupportFragmentManager();
-      p.j(localObject2, "activity.supportFragmentManager");
-      localList = this.fragments;
-      if (localList == null) {
-        p.bGy("fragments");
-      }
-      if (localList == null) {
-        throw new t("null cannot be cast to non-null type kotlin.collections.MutableList<com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment>");
-      }
-      this.BoH = new com.tencent.mm.plugin.finder.view.adapter.a(paramBundle, (e)localObject2, ag.ff(localList));
-      paramBundle.setAdapter((androidx.viewpager.widget.a)this.BoH);
-      localObject2 = this.tabs;
-      if (localObject2 == null) {
-        p.bGy("tabs");
-      }
-      paramBundle.setOffscreenPageLimit(kotlin.k.i.ow(((List)localObject2).size() + 3, 5));
+      paramBundle = getActivity().getSupportFragmentManager();
+      s.s(paramBundle, "activity.supportFragmentManager");
+      this.GVm = new com.tencent.mm.plugin.finder.view.adapter.a(localViewPager, paramBundle, an.hD(getFragments()));
+      localViewPager.setAdapter((androidx.viewpager.widget.a)this.GVm);
+      localViewPager.setOffscreenPageLimit(k.qv(getTabs().size() + 3, 5));
     }
     for (;;)
     {
-      paramBundle.addOnPageChangeListener((ViewPager.OnPageChangeListener)localObject1);
-      localObject1 = d.AjH;
-      i = ((Number)d.dUU().aSr()).intValue();
+      localObject = this.GVo;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("fragmentChangeObserver");
+        paramBundle = null;
+      }
+      localViewPager.addOnPageChangeListener((ViewPager.OnPageChangeListener)paramBundle);
+      paramBundle = com.tencent.mm.plugin.finder.storage.d.FAy;
+      int i = ((Number)com.tencent.mm.plugin.finder.storage.d.eTt().bmg()).intValue();
       if (i > 0)
       {
-        localObject1 = ay.AJC;
-        ay.a(paramBundle.getContext(), paramBundle, i);
+        paramBundle = bp.Gmq;
+        bp.a(localViewPager.getContext(), localViewPager, i);
       }
-      ekJ();
-      paramBundle = this.tabContainer;
-      if (paramBundle == null) {
-        p.bGy("tabContainer");
-      }
-      paramBundle = paramBundle.ejV();
+      fmv();
+      paramBundle = getTabContainer().fmB();
       if (paramBundle != null) {
-        paramBundle.setOnDoubleClickListener((HardTouchableLayout.b)new d(this));
+        paramBundle.setOnDoubleClickListener((HardTouchableLayout.b)new c(this));
       }
-      aA(0, false);
+      aV(0, false);
+      fpf();
       return;
-      label541:
-      localObject2 = getActivity().getSupportFragmentManager();
-      p.j(localObject2, "activity.supportFragmentManager");
-      localList = this.fragments;
-      if (localList == null) {
-        p.bGy("fragments");
-      }
-      this.xTE = new c((e)localObject2, localList);
-      paramBundle.setAdapter((androidx.viewpager.widget.a)this.xTE);
-      localObject2 = this.tabs;
-      if (localObject2 == null) {
-        p.bGy("tabs");
-      }
-      paramBundle.setOffscreenPageLimit(((List)localObject2).size() + 1);
+      label383:
+      paramBundle = getActivity().getSupportFragmentManager();
+      s.s(paramBundle, "activity.supportFragmentManager");
+      this.Buz = new c(paramBundle, getFragments());
+      localViewPager.setAdapter((androidx.viewpager.widget.a)this.Buz);
+      localViewPager.setOffscreenPageLimit(getTabs().size() + 1);
     }
   }
   
@@ -652,266 +883,165 @@ public abstract class FinderTabUIC
   {
     super.onDestroy();
     Log.i("Finder.FinderTabUIC", "onDestroy");
-    com.tencent.mm.plugin.finder.view.adapter.a locala = this.BoH;
+    com.tencent.mm.plugin.finder.view.adapter.a locala = this.GVm;
     if (locala != null)
     {
       Log.i("Finder.DynamicAdapter", "removePendingActions");
-      if (locala.Bdh != null) {
-        locala.bFl.removeCallbacks(locala.Bdh);
+      if (locala.GFX != null) {
+        locala.dyl.removeCallbacks(locala.GFX);
       }
-      locala.Bdf.clear();
-      locala.Bdg.clear();
+      locala.GFV.clear();
+      locala.GFW.clear();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$Companion;", "", "()V", "MAX_OFFSCREEN_PAGE_LIMIT", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$ajustIndicator$1$1"})
-  static final class b
-    implements Runnable
-  {
-    b(FinderTabUIC paramFinderTabUIC) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(280590);
-      FinderTabUIC.d(this.BoJ);
-      AppMethodBeat.o(280590);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$buildTab$1$1", "Lcom/google/android/material/tabs/TabLayout$BaseOnTabSelectedListener;", "Lcom/google/android/material/tabs/TabLayout$Tab;", "onTabReselected", "", "tab", "onTabSelected", "onTabUnselected", "plugin-finder_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$buildTab$1$1", "Lcom/google/android/material/tabs/TabLayout$BaseOnTabSelectedListener;", "Lcom/google/android/material/tabs/TabLayout$Tab;", "onTabReselected", "", "tab", "onTabSelected", "onTabUnselected", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     implements TabLayout.b<TabLayout.e>
   {
-    c(TabLayout paramTabLayout, FinderTabUIC paramFinderTabUIC) {}
+    b(FinderTabUIC paramFinderTabUIC, TabLayout paramTabLayout) {}
     
     public final void i(TabLayout.e parame)
     {
-      AppMethodBeat.i(285934);
+      AppMethodBeat.i(337774);
       if (parame != null)
       {
-        Object localObject1 = jdField_this.getTabViewAction();
-        Object localObject2 = this.BoK.getContext();
-        p.j(localObject2, "context");
-        Object localObject3 = parame.getTag();
+        FinderTabUIC localFinderTabUIC = this.GVq;
+        Object localObject2 = this.CSU;
+        Object localObject1 = localFinderTabUIC.getTabViewAction();
+        localObject2 = ((TabLayout)localObject2).getContext();
+        s.s(localObject2, "context");
+        Object localObject3 = parame.tag;
         if (localObject3 == null)
         {
-          parame = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
-          AppMethodBeat.o(285934);
+          parame = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
+          AppMethodBeat.o(337774);
           throw parame;
         }
-        ((f)localObject1).a((Context)localObject2, (com.tencent.mm.plugin.finder.view.tabcomp.a)localObject3);
-        localObject1 = parame.getTag();
+        ((m)localObject1).a((Context)localObject2, (g)localObject3);
+        localObject1 = parame.tag;
         if (localObject1 == null)
         {
-          parame = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
-          AppMethodBeat.o(285934);
+          parame = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
+          AppMethodBeat.o(337774);
           throw parame;
         }
-        localObject1 = (com.tencent.mm.plugin.finder.view.tabcomp.a)localObject1;
-        localObject2 = parame.getCustomView();
+        localObject1 = (g)localObject1;
+        localObject2 = parame.dyK;
         if (localObject2 == null)
         {
-          parame = new t("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(285934);
+          parame = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(337774);
           throw parame;
         }
-        ((com.tencent.mm.plugin.finder.view.tabcomp.a)localObject1).a(true, (ViewGroup)localObject2);
-        localObject1 = jdField_this;
-        parame = parame.getTag();
+        ((g)localObject1).a(true, (ViewGroup)localObject2);
+        parame = parame.tag;
         if (parame == null)
         {
-          parame = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
-          AppMethodBeat.o(285934);
+          parame = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
+          AppMethodBeat.o(337774);
           throw parame;
         }
-        int j = FinderTabUIC.a((FinderTabUIC)localObject1, (com.tencent.mm.plugin.finder.view.tabcomp.a)parame);
-        Log.i("Finder.FinderTabUIC", "setCurrentPage:".concat(String.valueOf(j)));
+        int j = localFinderTabUIC.a((g)parame);
+        Log.i("Finder.FinderTabUIC", s.X("setCurrentPage:", Integer.valueOf(j)));
         int i = j;
         if (j == -1) {
           i = 0;
         }
-        FinderTabUIC.d(jdField_this, i);
-        AppMethodBeat.o(285934);
-        return;
+        localFinderTabUIC.Vw(i);
       }
-      AppMethodBeat.o(285934);
+      AppMethodBeat.o(337774);
     }
     
     public final void j(TabLayout.e parame)
     {
-      AppMethodBeat.i(285933);
+      AppMethodBeat.i(337767);
       if (parame != null)
       {
-        if ((parame.getTag() instanceof com.tencent.mm.plugin.finder.view.tabcomp.a))
+        Object localObject1 = this.GVq;
+        Object localObject2 = this.CSU;
+        if ((parame.tag instanceof g))
         {
-          Object localObject1 = jdField_this.getTabViewAction();
-          Context localContext = this.BoK.getContext();
-          p.j(localContext, "context");
-          Object localObject2 = parame.getTag();
-          if (localObject2 == null)
+          localObject1 = ((FinderTabUIC)localObject1).getTabViewAction();
+          localObject2 = ((TabLayout)localObject2).getContext();
+          s.s(localObject2, "context");
+          Object localObject3 = parame.tag;
+          if (localObject3 == null)
           {
-            parame = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
-            AppMethodBeat.o(285933);
+            parame = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
+            AppMethodBeat.o(337767);
             throw parame;
           }
-          ((f)localObject1).b(localContext, (com.tencent.mm.plugin.finder.view.tabcomp.a)localObject2);
-          localObject1 = parame.getTag();
+          ((m)localObject1).b((Context)localObject2, (g)localObject3);
+          localObject1 = parame.tag;
           if (localObject1 == null)
           {
-            parame = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
-            AppMethodBeat.o(285933);
+            parame = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.tabcomp.FinderBaseTab");
+            AppMethodBeat.o(337767);
             throw parame;
           }
-          localObject1 = (com.tencent.mm.plugin.finder.view.tabcomp.a)localObject1;
-          parame = parame.getCustomView();
+          localObject1 = (g)localObject1;
+          parame = parame.dyK;
           if (parame == null)
           {
-            parame = new t("null cannot be cast to non-null type android.view.ViewGroup");
-            AppMethodBeat.o(285933);
+            parame = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+            AppMethodBeat.o(337767);
             throw parame;
           }
-          ((com.tencent.mm.plugin.finder.view.tabcomp.a)localObject1).a(false, (ViewGroup)parame);
+          ((g)localObject1).a(false, (ViewGroup)parame);
         }
-        AppMethodBeat.o(285933);
-        return;
       }
-      AppMethodBeat.o(285933);
+      AppMethodBeat.o(337767);
     }
     
     public final void k(TabLayout.e parame) {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$initTabContainer$1", "Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "onDoubleClick", "", "view", "Landroid/view/View;", "e", "Landroid/view/MotionEvent;", "plugin-finder_release"})
-  public static final class d
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$initTabContainer$1", "Lcom/tencent/mm/view/HardTouchableLayout$OnDoubleClickListener;", "onDoubleClick", "", "view", "Landroid/view/View;", "e", "Landroid/view/MotionEvent;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
     implements HardTouchableLayout.b
   {
-    public final void a(View paramView, MotionEvent paramMotionEvent)
+    c(FinderTabUIC paramFinderTabUIC) {}
+    
+    private static final void e(FinderTabUIC paramFinderTabUIC)
     {
-      AppMethodBeat.i(282292);
-      p.k(paramView, "view");
-      p.k(paramMotionEvent, "e");
+      AppMethodBeat.i(337732);
+      s.u(paramFinderTabUIC, "this$0");
+      paramFinderTabUIC.getActiveFragment().eEr();
+      AppMethodBeat.o(337732);
+    }
+    
+    public final void c(View paramView, MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(337750);
+      s.u(paramView, "view");
+      s.u(paramMotionEvent, "e");
       Log.i("Finder.FinderTabUIC", "onDoubleClick");
-      h.ZvG.bc((Runnable)new a(this));
-      paramView = this.BoJ;
-      paramMotionEvent = this.BoJ.BoG;
-      if (paramMotionEvent != null) {}
-      for (int i = paramMotionEvent.getSelectedTabPosition();; i = FinderTabUIC.c(this.BoJ))
+      com.tencent.threadpool.h.ahAA.bk(new FinderTabUIC.c..ExternalSyntheticLambda0(this.GVq));
+      paramView = this.GVq.Vu(this.GVq.getSelectedTabPosition());
+      if (paramView != null)
       {
-        paramView = paramView.Sc(i);
-        if (paramView == null) {
-          break;
-        }
-        this.BoJ.getTabViewAction().d((Context)this.BoJ.getActivity(), paramView);
-        AppMethodBeat.o(282292);
-        return;
+        paramMotionEvent = this.GVq;
+        paramMotionEvent.getTabViewAction().d((Context)paramMotionEvent.getActivity(), paramView);
       }
-      AppMethodBeat.o(282292);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(FinderTabUIC.d paramd) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(291423);
-        this.BoL.BoJ.getActiveFragment().dLu();
-        AppMethodBeat.o(291423);
-      }
+      AppMethodBeat.o(337750);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$initViewPager$fragmentChangeObserver$1", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver;", "onFragmentChange", "", "from", "", "to", "fromType", "toType", "onUserVisibleFragmentChange", "isUserVisibleFocused", "", "index", "fragment", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "plugin-finder_release"})
-  public static final class e
-    extends FinderFragmentChangeObserver
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    e(MMActivity paramMMActivity, List paramList)
+    e(FinderTabUIC paramFinderTabUIC)
     {
-      super(localList);
-    }
-    
-    public final void H(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      AppMethodBeat.i(287511);
-      Log.i("Finder.FragmentChangeObserver", "to :" + paramInt2 + " lastIndex:" + FinderTabUIC.c(this.BoJ));
-      FinderTabUIC.e(this.BoJ, paramInt2);
-      FinderTabUIC.a(this.BoJ, paramInt2);
-      Iterator localIterator = ((Iterable)this.BoJ.Bls).iterator();
-      while (localIterator.hasNext()) {
-        ((com.tencent.mm.plugin.finder.view.i)localIterator.next()).H(paramInt1, paramInt2, paramInt3, paramInt4);
-      }
-      AppMethodBeat.o(287511);
-    }
-    
-    public final void a(boolean paramBoolean, int paramInt, FinderHomeTabFragment paramFinderHomeTabFragment)
-    {
-      AppMethodBeat.i(287510);
-      p.k(paramFinderHomeTabFragment, "fragment");
-      Iterator localIterator = ((Iterable)this.BoJ.Bls).iterator();
-      while (localIterator.hasNext()) {
-        ((com.tencent.mm.plugin.finder.view.i)localIterator.next()).a(paramBoolean, paramInt, paramFinderHomeTabFragment);
-      }
-      AppMethodBeat.o(287510);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
-  {
-    f(FinderTabUIC paramFinderTabUIC) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(270859);
-      FinderTabUIC.a(this.BoJ);
-      AppMethodBeat.o(270859);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(FinderTabUIC paramFinderTabUIC) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(256296);
-      FinderTabUIC.b(this.BoJ);
-      AppMethodBeat.o(256296);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class h
-    implements View.OnClickListener
-  {
-    h(FinderTabUIC paramFinderTabUIC) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(225948);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      this.BoJ.ekP();
-      if (!this.BoJ.getActivity().isFinishing()) {
-        this.BoJ.getActivity().finish();
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/viewmodel/component/FinderTabUIC$onCreate$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(225948);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderTabUIC
  * JD-Core Version:    0.7.0.1
  */

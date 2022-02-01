@@ -3,26 +3,27 @@ package com.tencent.mm.plugin.gamelive.event;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import androidx.compose.a.q.a..ExternalSyntheticBackport0;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveStartInfoPayload;", "Landroid/os/Parcelable;", "nickname", "", "headerUrl", "joinLiveTips", "liveId", "", "finderUsrName", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;)V", "getFinderUsrName", "()Ljava/lang/String;", "setFinderUsrName", "(Ljava/lang/String;)V", "getHeaderUrl", "setHeaderUrl", "getJoinLiveTips", "setJoinLiveTips", "getLiveId", "()J", "setLiveId", "(J)V", "getNickname", "setNickname", "component1", "component2", "component3", "component4", "component5", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/event/GameLiveAppbrandEventService$LiveStartInfoPayload;", "Landroid/os/Parcelable;", "nickname", "", "headerUrl", "joinLiveTips", "liveId", "", "finderUsrName", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;)V", "getFinderUsrName", "()Ljava/lang/String;", "setFinderUsrName", "(Ljava/lang/String;)V", "getHeaderUrl", "setHeaderUrl", "getJoinLiveTips", "setJoinLiveTips", "getLiveId", "()J", "setLiveId", "(J)V", "getNickname", "setNickname", "component1", "component2", "component3", "component4", "component5", "copy", "describeContents", "", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveAppbrandEventService$LiveStartInfoPayload
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  private String Dmw;
-  private String Dmx;
-  private String Dmy;
+  public static final Parcelable.Creator<LiveStartInfoPayload> CREATOR;
+  private String JfK;
+  private String JfL;
+  private String JfM;
   private long liveId;
   private String nickname;
   
   static
   {
-    AppMethodBeat.i(208383);
-    CREATOR = new a();
-    AppMethodBeat.o(208383);
+    AppMethodBeat.i(277451);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(277451);
   }
   
   private GameLiveAppbrandEventService$LiveStartInfoPayload(byte paramByte)
@@ -33,10 +34,10 @@ public final class GameLiveAppbrandEventService$LiveStartInfoPayload
   public GameLiveAppbrandEventService$LiveStartInfoPayload(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4)
   {
     this.nickname = paramString1;
-    this.Dmw = paramString2;
-    this.Dmx = paramString3;
+    this.JfK = paramString2;
+    this.JfL = paramString3;
     this.liveId = paramLong;
-    this.Dmy = paramString4;
+    this.JfM = paramString4;
   }
   
   public final int describeContents()
@@ -46,102 +47,114 @@ public final class GameLiveAppbrandEventService$LiveStartInfoPayload
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(208379);
-    if (this != paramObject)
+    AppMethodBeat.i(277477);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof LiveStartInfoPayload))
-      {
-        paramObject = (LiveStartInfoPayload)paramObject;
-        if ((!p.h(this.nickname, paramObject.nickname)) || (!p.h(this.Dmw, paramObject.Dmw)) || (!p.h(this.Dmx, paramObject.Dmx)) || (this.liveId != paramObject.liveId) || (!p.h(this.Dmy, paramObject.Dmy))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(208379);
+      AppMethodBeat.o(277477);
       return true;
     }
-    AppMethodBeat.o(208379);
-    return false;
+    if (!(paramObject instanceof LiveStartInfoPayload))
+    {
+      AppMethodBeat.o(277477);
+      return false;
+    }
+    paramObject = (LiveStartInfoPayload)paramObject;
+    if (!s.p(this.nickname, paramObject.nickname))
+    {
+      AppMethodBeat.o(277477);
+      return false;
+    }
+    if (!s.p(this.JfK, paramObject.JfK))
+    {
+      AppMethodBeat.o(277477);
+      return false;
+    }
+    if (!s.p(this.JfL, paramObject.JfL))
+    {
+      AppMethodBeat.o(277477);
+      return false;
+    }
+    if (this.liveId != paramObject.liveId)
+    {
+      AppMethodBeat.o(277477);
+      return false;
+    }
+    if (!s.p(this.JfM, paramObject.JfM))
+    {
+      AppMethodBeat.o(277477);
+      return false;
+    }
+    AppMethodBeat.o(277477);
+    return true;
   }
   
   public final int hashCode()
   {
     int m = 0;
-    AppMethodBeat.i(208377);
-    String str = this.nickname;
+    AppMethodBeat.i(277466);
     int i;
     int j;
-    if (str != null)
+    label26:
+    int k;
+    label35:
+    int n;
+    if (this.nickname == null)
     {
-      i = str.hashCode();
-      str = this.Dmw;
-      if (str == null) {
-        break label128;
+      i = 0;
+      if (this.JfK != null) {
+        break label91;
       }
-      j = str.hashCode();
-      label42:
-      str = this.Dmx;
-      if (str == null) {
-        break label133;
+      j = 0;
+      if (this.JfL != null) {
+        break label102;
+      }
+      k = 0;
+      n = q.a..ExternalSyntheticBackport0.m(this.liveId);
+      if (this.JfM != null) {
+        break label113;
       }
     }
-    label128:
-    label133:
-    for (int k = str.hashCode();; k = 0)
+    for (;;)
     {
-      long l = this.liveId;
-      int n = (int)(l ^ l >>> 32);
-      str = this.Dmy;
-      if (str != null) {
-        m = str.hashCode();
-      }
-      AppMethodBeat.o(208377);
+      AppMethodBeat.o(277466);
       return ((k + (j + i * 31) * 31) * 31 + n) * 31 + m;
-      i = 0;
+      i = this.nickname.hashCode();
       break;
-      j = 0;
-      break label42;
+      label91:
+      j = this.JfK.hashCode();
+      break label26;
+      label102:
+      k = this.JfL.hashCode();
+      break label35;
+      label113:
+      m = this.JfM.hashCode();
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(208376);
-    String str = "LiveStartInfoPayload(nickname=" + this.nickname + ", headerUrl=" + this.Dmw + ", joinLiveTips=" + this.Dmx + ", liveId=" + this.liveId + ", finderUsrName=" + this.Dmy + ")";
-    AppMethodBeat.o(208376);
+    AppMethodBeat.i(277459);
+    String str = "LiveStartInfoPayload(nickname=" + this.nickname + ", headerUrl=" + this.JfK + ", joinLiveTips=" + this.JfL + ", liveId=" + this.liveId + ", finderUsrName=" + this.JfM + ')';
+    AppMethodBeat.o(277459);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(208382);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(277491);
+    s.u(paramParcel, "out");
     paramParcel.writeString(this.nickname);
-    paramParcel.writeString(this.Dmw);
-    paramParcel.writeString(this.Dmx);
+    paramParcel.writeString(this.JfK);
+    paramParcel.writeString(this.JfL);
     paramParcel.writeLong(this.liveId);
-    paramParcel.writeString(this.Dmy);
-    AppMethodBeat.o(208382);
+    paramParcel.writeString(this.JfM);
+    AppMethodBeat.o(277491);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(208740);
-      p.k(paramParcel, "in");
-      paramParcel = new GameLiveAppbrandEventService.LiveStartInfoPayload(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readLong(), paramParcel.readString());
-      AppMethodBeat.o(208740);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new GameLiveAppbrandEventService.LiveStartInfoPayload[paramInt];
-    }
-  }
+    implements Parcelable.Creator<GameLiveAppbrandEventService.LiveStartInfoPayload>
+  {}
 }
 
 

@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 
 public abstract interface ISharedPreferenceProvider
 {
-  public abstract SharedPreferences F(String paramString, int paramInt, boolean paramBoolean);
+  public abstract SharedPreferences H(String paramString, int paramInt, boolean paramBoolean);
 }
 
 

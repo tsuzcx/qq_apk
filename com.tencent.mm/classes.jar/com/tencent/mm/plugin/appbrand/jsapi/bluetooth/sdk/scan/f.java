@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan;
 
 import com.tencent.luggage.a.b;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/IAppScanStats;", "Lcom/tencent/luggage/base/ICustomize;", "isScanningTooFrequently", "", "recordScanStart", "", "recordScanStop", "", "id", "luggage-commons-jsapi-connectivity-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/scan/IAppScanStats;", "Lcom/tencent/luggage/base/ICustomize;", "isScanningTooFrequently", "", "recordScanStart", "", "recordScanStop", "", "id", "luggage-commons-jsapi-connectivity-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface f
   extends b
 {
-  public abstract int QI();
+  public abstract int aqV();
   
-  public abstract boolean QJ();
+  public abstract boolean aqW();
   
-  public abstract void iQ(int paramInt);
+  public abstract void mr(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.f
  * JD-Core Version:    0.7.0.1
  */

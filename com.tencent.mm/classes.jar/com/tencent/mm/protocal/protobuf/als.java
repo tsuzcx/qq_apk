@@ -1,73 +1,113 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import java.util.LinkedList;
 
 public final class als
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String SvX;
+  public int YSW;
+  public String ZsI;
+  public String hAB;
+  public int offset;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32197);
+    AppMethodBeat.i(257946);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.SvX == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: LoginUrl");
-        AppMethodBeat.o(32197);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.SvX != null) {
-        paramVarArgs.f(1, this.SvX);
+      if (this.hAB != null) {
+        paramVarArgs.g(2, this.hAB);
       }
-      AppMethodBeat.o(32197);
+      if (this.ZsI != null) {
+        paramVarArgs.g(3, this.ZsI);
+      }
+      paramVarArgs.bS(4, this.YSW);
+      paramVarArgs.bS(5, this.offset);
+      AppMethodBeat.o(257946);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.SvX == null) {
-        break label268;
+      if (this.BaseRequest == null) {
+        break label496;
       }
     }
-    label268:
-    for (paramInt = g.a.a.b.b.a.g(1, this.SvX) + 0;; paramInt = 0)
+    label496:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      AppMethodBeat.o(32197);
-      return paramInt;
+      paramInt = i;
+      if (this.hAB != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.hAB);
+      }
+      i = paramInt;
+      if (this.ZsI != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZsI);
+      }
+      paramInt = i.a.a.b.b.a.cJ(4, this.YSW);
+      int j = i.a.a.b.b.a.cJ(5, this.offset);
+      AppMethodBeat.o(257946);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.SvX == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: LoginUrl");
-          AppMethodBeat.o(32197);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32197);
+        AppMethodBeat.o(257946);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         als localals = (als)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32197);
+          AppMethodBeat.o(257946);
           return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localals.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257946);
+          return 0;
+        case 2: 
+          localals.hAB = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(257946);
+          return 0;
+        case 3: 
+          localals.ZsI = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(257946);
+          return 0;
+        case 4: 
+          localals.YSW = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(257946);
+          return 0;
         }
-        localals.SvX = locala.abFh.readString();
-        AppMethodBeat.o(32197);
+        localals.offset = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(257946);
         return 0;
       }
-      AppMethodBeat.o(32197);
+      AppMethodBeat.o(257946);
       return -1;
     }
   }

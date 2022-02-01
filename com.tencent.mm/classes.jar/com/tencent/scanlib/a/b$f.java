@@ -6,21 +6,21 @@ import com.tencent.stubs.logger.Log;
 public final class b$f
   extends b.a
 {
-  private f ZqS;
+  private f ahvH;
   
   public b$f(f paramf)
   {
-    this.ZqS = paramf;
+    this.ahvH = paramf;
   }
   
-  private Void call()
+  private Void cni()
   {
     AppMethodBeat.i(174582);
     try
     {
-      if (this.ZqS.isOpen())
+      if (this.ahvH.isOpen())
       {
-        this.ZqS.close();
+        this.ahvH.close();
         Log.i("CameraTask.DefaultCloseTask", "close camera");
       }
       AppMethodBeat.o(174582);
@@ -37,7 +37,7 @@ public final class b$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.scanlib.a.b.f
  * JD-Core Version:    0.7.0.1
  */

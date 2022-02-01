@@ -5,6 +5,7 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -15,14 +16,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.i;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class LivingDescBarLayout
   extends RelativeLayout
 {
-  a JMm;
+  private a QgQ;
+  private ImageView uPE;
   
   public LivingDescBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,212 +36,288 @@ public class LivingDescBarLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void fMd()
+  public final void hcW()
   {
-    AppMethodBeat.i(201103);
-    a locala = this.JMm;
+    AppMethodBeat.i(310378);
+    if (this.uPE != null) {
+      this.uPE.setImageResource(b.i.ad_living_description_icon);
+    }
+    AppMethodBeat.o(310378);
+  }
+  
+  public final boolean hcX()
+  {
+    AppMethodBeat.i(310384);
+    a locala = this.QgQ;
+    if (locala != null)
+    {
+      boolean bool = locala.hcX();
+      AppMethodBeat.o(310384);
+      return bool;
+    }
+    AppMethodBeat.o(310384);
+    return false;
+  }
+  
+  public final void hcY()
+  {
+    AppMethodBeat.i(310397);
+    a locala = this.QgQ;
+    if (locala != null) {
+      locala.hcY();
+    }
+    AppMethodBeat.o(310397);
+  }
+  
+  public final void hcZ()
+  {
+    AppMethodBeat.i(310407);
+    a locala = this.QgQ;
     if (locala != null) {
       locala.stop();
     }
-    AppMethodBeat.o(201103);
+    AppMethodBeat.o(310407);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(201104);
+    AppMethodBeat.i(310417);
     super.onAttachedToWindow();
     Log.w("SnsAd.LivingDescBarLayout", "onAttachedToWindow is called!!");
-    AppMethodBeat.o(201104);
+    AppMethodBeat.o(310417);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(201107);
+    AppMethodBeat.i(310425);
     super.onDetachedFromWindow();
-    a locala = this.JMm;
+    a locala = this.QgQ;
     if (locala != null) {
       locala.a(null);
     }
-    AppMethodBeat.o(201107);
+    AppMethodBeat.o(310425);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(201097);
+    AppMethodBeat.i(310361);
     super.onFinishInflate();
     try
     {
-      ((ImageView)findViewById(i.f.ad_live_desc_image)).setImageResource(i.i.ad_living_description_icon);
-      this.JMm = new a((TextView)findViewById(i.f.ad_live_desc_content1), (TextView)findViewById(i.f.ad_live_desc_content2));
-      AppMethodBeat.o(201097);
+      this.uPE = ((ImageView)findViewById(b.f.ad_live_desc_image));
+      this.uPE.setImageResource(b.i.ad_living_description_icon);
+      this.QgQ = new a((TextView)findViewById(b.f.ad_live_desc_content1), (TextView)findViewById(b.f.ad_live_desc_content2));
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(201097);
+      AppMethodBeat.o(310361);
     }
+  }
+  
+  public void setIconImage(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(310372);
+    if ((this.uPE != null) && (paramDrawable != null)) {
+      this.uPE.setImageDrawable(paramDrawable);
+    }
+    AppMethodBeat.o(310372);
   }
   
   public void setSlideAdapter(b paramb)
   {
-    AppMethodBeat.i(201100);
-    a locala = this.JMm;
+    AppMethodBeat.i(310391);
+    a locala = this.QgQ;
     if (locala != null) {
       locala.a(paramb);
     }
-    AppMethodBeat.o(201100);
+    AppMethodBeat.o(310391);
   }
   
   static final class a
     implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, Handler.Callback
   {
-    private TextView JMn;
-    private TextView JMo;
-    Handler JMp;
-    LivingDescBarLayout.b JMq;
-    private int JMr;
-    float JMs;
-    ValueAnimator aiD;
+    Handler PRJ;
+    private TextView QgR;
+    private TextView QgS;
+    LivingDescBarLayout.b QgT;
+    private int QgU;
+    float QgV;
+    ValueAnimator bXi;
     int mState;
     
     public a(TextView paramTextView1, TextView paramTextView2)
     {
-      AppMethodBeat.i(265149);
-      this.JMr = 0;
-      this.JMs = 0.0F;
+      AppMethodBeat.i(310401);
+      this.QgU = 0;
+      this.QgV = 0.0F;
       this.mState = 1;
-      this.JMp = new Handler(Looper.getMainLooper(), this);
-      this.JMn = paramTextView1;
-      this.JMo = paramTextView2;
-      AppMethodBeat.o(265149);
+      this.PRJ = new Handler(Looper.getMainLooper(), this);
+      this.QgR = paramTextView1;
+      this.QgS = paramTextView2;
+      AppMethodBeat.o(310401);
     }
     
-    private boolean fMe()
+    private boolean hda()
     {
-      return (this.JMo != null) && (this.JMn != null);
+      return (this.QgS != null) && (this.QgR != null);
     }
     
-    private static void gk(View paramView)
+    private static void jo(View paramView)
     {
-      AppMethodBeat.i(265165);
+      AppMethodBeat.i(310419);
       if (paramView != null)
       {
         paramView.setVisibility(4);
         paramView.setTranslationY(0.0F);
         paramView.setAlpha(1.0F);
       }
-      AppMethodBeat.o(265165);
+      AppMethodBeat.o(310419);
     }
     
     public final void a(LivingDescBarLayout.b paramb)
     {
-      AppMethodBeat.i(265152);
+      AppMethodBeat.i(310461);
       try
       {
         stop();
-        if ((paramb != null) && (paramb.getCount() > 0) && (fMe()))
+        if ((paramb != null) && (paramb.getCount() > 0) && (hda()))
         {
-          this.JMr = 0;
-          String str = paramb.afk(this.JMr);
-          this.JMn.setVisibility(0);
-          this.JMn.setText(str);
+          this.QgU = 0;
+          String str = paramb.ajB(this.QgU);
+          this.QgR.setVisibility(0);
+          this.QgR.setText(str);
           if (paramb.getCount() > 1) {
-            this.JMp.sendEmptyMessageDelayed(1, 2000L);
+            this.PRJ.sendEmptyMessageDelayed(1, 2000L);
           }
         }
-        this.JMq = paramb;
-        AppMethodBeat.o(265152);
+        this.QgT = paramb;
         return;
       }
-      catch (Throwable paramb)
+      finally
       {
-        AppMethodBeat.o(265152);
+        AppMethodBeat.o(310461);
       }
     }
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(265164);
+      AppMethodBeat.i(310558);
       try
       {
         int i = paramMessage.what;
         if (i != 1) {}
       }
-      catch (Throwable paramMessage)
+      finally
       {
         label93:
-        AppMethodBeat.o(265164);
+        AppMethodBeat.o(310558);
         return false;
       }
       try
       {
-        if (this.aiD == null)
+        if (this.bXi == null)
         {
-          this.aiD = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
-          this.aiD.addUpdateListener(this);
-          this.aiD.addListener(this);
+          this.bXi = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
+          this.bXi.addUpdateListener(this);
+          this.bXi.addListener(this);
         }
-        if (fMe())
+        if (hda())
         {
-          this.JMs = this.JMn.getHeight();
-          this.aiD.start();
+          this.QgV = this.QgR.getHeight();
+          this.bXi.start();
           this.mState = 0;
         }
       }
-      catch (Throwable paramMessage)
+      finally
       {
         break label93;
       }
-      AppMethodBeat.o(265164);
+      AppMethodBeat.o(310558);
       return true;
+    }
+    
+    final boolean hcX()
+    {
+      AppMethodBeat.i(310444);
+      if ((this.QgT == null) || (this.QgT.getCount() <= 0))
+      {
+        AppMethodBeat.o(310444);
+        return true;
+      }
+      AppMethodBeat.o(310444);
+      return false;
+    }
+    
+    public final void hcY()
+    {
+      AppMethodBeat.i(310480);
+      try
+      {
+        if ((this.QgT != null) && (this.QgT.getCount() > 0) && (hda()))
+        {
+          Log.i("SlideController", "notifyCurrentDataChange, mCurrentVisibleView pre text is " + this.QgR.getText() + ", mToVisibleView pre text is " + this.QgS.getText());
+          String str1 = this.QgT.ajB(this.QgU);
+          this.QgR.setText(str1);
+          int i = this.QgU;
+          int j = this.QgT.getCount();
+          String str2 = this.QgT.ajB((i + 1) % j);
+          this.QgS.setText(str2);
+          Log.i("SlideController", "notifyCurrentDataChange, mCurrentVisibleView: " + str1 + ", mToVisibleView: " + str2);
+        }
+        AppMethodBeat.o(310480);
+        return;
+      }
+      finally
+      {
+        Log.e("SlideController", localObject.toString());
+        AppMethodBeat.o(310480);
+      }
     }
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(265162);
+      AppMethodBeat.i(310517);
       try
       {
         Log.d("SlideController", "onAnimationCancel is called ");
-        gk(this.JMo);
-        gk(this.JMn);
-        AppMethodBeat.o(265162);
+        jo(this.QgS);
+        jo(this.QgR);
         return;
       }
-      catch (Throwable paramAnimator)
+      finally
       {
-        AppMethodBeat.o(265162);
+        AppMethodBeat.o(310517);
       }
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(265160);
+      AppMethodBeat.i(310509);
       Log.d("SlideController", "onAnimationEnd is called ");
       try
       {
-        paramAnimator = this.JMq;
-        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!fMe()))
+        paramAnimator = this.QgT;
+        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!hda()))
         {
           Log.d("SlideController", "onAnimationEnd return because of count is 0");
-          AppMethodBeat.o(265160);
           return;
         }
-        TextView localTextView = this.JMo;
-        this.JMo = this.JMn;
-        this.JMn = localTextView;
-        gk(this.JMo);
-        this.JMr = ((this.JMr + 1) % paramAnimator.getCount());
-        this.JMs = 0.0F;
+        TextView localTextView = this.QgS;
+        this.QgS = this.QgR;
+        this.QgR = localTextView;
+        jo(this.QgS);
+        this.QgU = ((this.QgU + 1) % paramAnimator.getCount());
+        this.QgV = 0.0F;
         if (this.mState == 0) {
-          this.JMp.sendEmptyMessageDelayed(1, 2000L);
+          this.PRJ.sendEmptyMessageDelayed(1, 2000L);
         }
-        this.aiD = null;
-        AppMethodBeat.o(265160);
+        this.bXi = null;
         return;
       }
-      catch (Throwable paramAnimator)
+      finally
       {
-        AppMethodBeat.o(265160);
+        AppMethodBeat.o(310509);
       }
     }
     
@@ -247,89 +325,85 @@ public class LivingDescBarLayout
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(265157);
+      AppMethodBeat.i(310497);
       Log.d("SlideController", "onAnimationStart is called ");
       try
       {
-        paramAnimator = this.JMq;
-        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!fMe()))
+        paramAnimator = this.QgT;
+        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!hda()))
         {
           Log.d("SlideController", "onAnimationStart return because of count is 0 ");
-          AppMethodBeat.o(265157);
           return;
         }
-        this.JMo.setTranslationY(this.JMs);
-        this.JMo.setAlpha(0.0F);
-        this.JMo.setVisibility(0);
-        int i = this.JMr;
+        this.QgS.setTranslationY(this.QgV);
+        this.QgS.setAlpha(0.0F);
+        this.QgS.setVisibility(0);
+        int i = this.QgU;
         int j = paramAnimator.getCount();
-        this.JMo.setText(paramAnimator.afk((i + 1) % j));
-        AppMethodBeat.o(265157);
+        this.QgS.setText(paramAnimator.ajB((i + 1) % j));
         return;
       }
-      catch (Throwable paramAnimator)
+      finally
       {
-        AppMethodBeat.o(265157);
+        AppMethodBeat.o(310497);
       }
     }
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(265163);
+      AppMethodBeat.i(310542);
       try
       {
         paramValueAnimator = paramValueAnimator.getAnimatedValue();
         if ((paramValueAnimator instanceof Float))
         {
           float f1 = ((Float)paramValueAnimator).floatValue();
-          if (fMe())
+          if (hda())
           {
-            float f2 = this.JMs * f1;
-            this.JMo.setTranslationY(this.JMs - f2);
-            this.JMo.setAlpha(f1);
-            this.JMn.setTranslationY(-f2);
-            this.JMn.setAlpha(1.0F - f1);
+            float f2 = this.QgV * f1;
+            this.QgS.setTranslationY(this.QgV - f2);
+            this.QgS.setAlpha(f1);
+            this.QgR.setTranslationY(-f2);
+            this.QgR.setAlpha(1.0F - f1);
           }
         }
-        AppMethodBeat.o(265163);
         return;
       }
-      catch (Throwable paramValueAnimator)
+      finally
       {
-        AppMethodBeat.o(265163);
+        AppMethodBeat.o(310542);
       }
     }
     
     public final void stop()
     {
-      AppMethodBeat.i(265154);
+      AppMethodBeat.i(310489);
       try
       {
         this.mState = 1;
-        this.JMp.removeMessages(1);
-        if ((this.aiD != null) && (this.aiD.isRunning())) {
-          this.aiD.cancel();
+        this.PRJ.removeMessages(1);
+        if ((this.bXi != null) && (this.bXi.isRunning())) {
+          this.bXi.cancel();
         }
-        AppMethodBeat.o(265154);
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        AppMethodBeat.o(265154);
+        AppMethodBeat.o(310489);
       }
     }
   }
   
   public static abstract interface b
   {
-    public abstract String afk(int paramInt);
+    public abstract String ajB(int paramInt);
     
     public abstract int getCount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.LivingDescBarLayout
  * JD-Core Version:    0.7.0.1
  */

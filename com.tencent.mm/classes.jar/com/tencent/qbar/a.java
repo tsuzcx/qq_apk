@@ -8,14 +8,14 @@ import java.util.List;
 
 public class a
 {
-  protected int Zmb;
-  protected QbarNative Zmc;
+  protected int ahqv;
+  protected QbarNative ahqw;
   
   public a()
   {
     AppMethodBeat.i(88393);
-    this.Zmb = -1;
-    this.Zmc = new QbarNative();
+    this.ahqv = -1;
+    this.ahqw = new QbarNative();
     AppMethodBeat.o(88393);
   }
   
@@ -35,7 +35,24 @@ public class a
     return str;
   }
   
-  public final int L(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public int R(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(88397);
+    try
+    {
+      if (this.ahqv < 0) {
+        return -1;
+      }
+      paramInt1 = this.ahqw.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.ahqv);
+      return paramInt1;
+    }
+    finally
+    {
+      AppMethodBeat.o(88397);
+    }
+  }
+  
+  public final int Y(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     int k = 0;
     AppMethodBeat.i(88401);
@@ -45,7 +62,7 @@ public class a
       int j;
       try
       {
-        if (this.Zmb < 0) {
+        if (this.ahqv < 0) {
           return 0;
         }
         QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
@@ -60,7 +77,7 @@ public class a
         }
         paramList.clear();
         paramList1.clear();
-        this.Zmc.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.Zmb);
+        this.ahqw.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.ahqv);
         i = 0;
         j = k;
         if (i < 3)
@@ -96,44 +113,27 @@ public class a
     }
   }
   
-  public int U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final int a(int paramInt1, int paramInt2, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam)
   {
-    AppMethodBeat.i(88397);
+    AppMethodBeat.i(226804);
     try
     {
-      if (this.Zmb < 0) {
-        return -1;
+      if (this.ahqv < 0) {
+        this.ahqv = this.ahqw.Init(paramInt1, 1, paramInt2, paramString1, paramString2, paramQbarAiModelParam);
       }
-      paramInt1 = this.Zmc.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.Zmb);
-      return paramInt1;
-    }
-    finally
-    {
-      AppMethodBeat.o(88397);
-    }
-  }
-  
-  public final int a(int paramInt, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam)
-  {
-    AppMethodBeat.i(88395);
-    try
-    {
-      if (this.Zmb < 0) {
-        this.Zmb = this.Zmc.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
-      }
-      System.out.println("qbarId:" + this.Zmb);
-      if (this.Zmb < 0) {
+      System.out.println("qbarId:" + this.ahqv);
+      if (this.ahqv < 0) {
         return -1;
       }
       return 0;
     }
     finally
     {
-      AppMethodBeat.o(88395);
+      AppMethodBeat.o(226804);
     }
   }
   
-  public final List<a> iny()
+  public final List<a> jWG()
   {
     int j = 0;
     AppMethodBeat.i(88399);
@@ -142,7 +142,7 @@ public class a
       int i;
       try
       {
-        if (this.Zmb < 0) {
+        if (this.ahqv < 0) {
           return null;
         }
         QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
@@ -156,7 +156,7 @@ public class a
           i += 1;
           continue;
         }
-        this.Zmc.GetResults(arrayOfQBarResultJNI, this.Zmb);
+        this.ahqw.GetResults(arrayOfQBarResultJNI, this.ahqv);
         ArrayList localArrayList = new ArrayList();
         i = j;
         if (i < 3)
@@ -198,16 +198,16 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo inz()
+  public final QbarNative.QBarZoomInfo jWH()
   {
     AppMethodBeat.i(88400);
     try
     {
-      if (this.Zmb < 0) {
+      if (this.ahqv < 0) {
         return null;
       }
       QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
-      this.Zmc.GetZoomInfo(localQBarZoomInfo, this.Zmb);
+      this.ahqw.GetZoomInfo(localQBarZoomInfo, this.ahqv);
       return localQBarZoomInfo;
     }
     finally
@@ -216,38 +216,38 @@ public class a
     }
   }
   
-  public final int l(int[] paramArrayOfInt, int paramInt)
-  {
-    AppMethodBeat.i(88396);
-    try
-    {
-      if (this.Zmb < 0) {
-        return -1;
-      }
-      paramInt = this.Zmc.SetReaders(paramArrayOfInt, paramInt, this.Zmb);
-      return paramInt;
-    }
-    finally
-    {
-      AppMethodBeat.o(88396);
-    }
-  }
-  
   public final int release()
   {
     AppMethodBeat.i(88398);
     try
     {
-      if (this.Zmb < 0) {
+      if (this.ahqv < 0) {
         return 0;
       }
-      int i = this.Zmc.Release(this.Zmb);
-      this.Zmb = -1;
+      int i = this.ahqw.Release(this.ahqv);
+      this.ahqv = -1;
       return i;
     }
     finally
     {
       AppMethodBeat.o(88398);
+    }
+  }
+  
+  public final int y(int[] paramArrayOfInt, int paramInt)
+  {
+    AppMethodBeat.i(88396);
+    try
+    {
+      if (this.ahqv < 0) {
+        return -1;
+      }
+      paramInt = this.ahqw.SetReaders(paramArrayOfInt, paramInt, this.ahqv);
+      return paramInt;
+    }
+    finally
+    {
+      AppMethodBeat.o(88396);
     }
   }
   
@@ -263,7 +263,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.qbar.a
  * JD-Core Version:    0.7.0.1
  */

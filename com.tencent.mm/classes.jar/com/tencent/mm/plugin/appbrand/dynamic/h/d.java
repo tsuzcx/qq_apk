@@ -12,19 +12,19 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private static Set<String> ojQ;
+  private static Set<String> rns;
   
   static
   {
     AppMethodBeat.i(121439);
-    ojQ = new HashSet();
+    rns = new HashSet();
     if (!TextUtils.isEmpty("drawCanvas")) {
-      ojQ.add("drawCanvas");
+      rns.add("drawCanvas");
     }
     AppMethodBeat.o(121439);
   }
   
-  public static String J(JSONObject paramJSONObject)
+  public static String U(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(121438);
     paramJSONObject = paramJSONObject.optString("__session_id");
@@ -32,16 +32,24 @@ public final class d
     return paramJSONObject;
   }
   
-  public static void a(String paramString1, String paramString2, JSONObject paramJSONObject)
+  public static boolean Xf(String paramString)
+  {
+    AppMethodBeat.i(121436);
+    boolean bool = rns.contains(paramString);
+    AppMethodBeat.o(121436);
+    return bool;
+  }
+  
+  public static void b(String paramString1, String paramString2, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(121437);
     try
     {
       paramJSONObject.put("__session_id", paramString1);
       paramJSONObject.put("__invoke_jsapi_timestamp", System.nanoTime());
-      paramString1 = c.aev(paramString1);
+      paramString1 = c.WY(paramString1);
       if (paramString1 != null) {
-        paramString1.fHg.putInt("__invoke_jsapi_data_size", paramString2.length());
+        paramString1.hMD.putInt("__invoke_jsapi_data_size", paramString2.length());
       }
       AppMethodBeat.o(121437);
       return;
@@ -52,18 +60,10 @@ public final class d
       AppMethodBeat.o(121437);
     }
   }
-  
-  public static boolean aeC(String paramString)
-  {
-    AppMethodBeat.i(121436);
-    boolean bool = ojQ.contains(paramString);
-    AppMethodBeat.o(121436);
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.d
  * JD-Core Version:    0.7.0.1
  */

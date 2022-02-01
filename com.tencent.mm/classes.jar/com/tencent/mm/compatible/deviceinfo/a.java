@@ -2,17 +2,17 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class a
 {
-  public boolean jnI = false;
-  public String jnJ = "";
+  public boolean lQQ = false;
+  public String lQR = "";
   
-  public final void KJ(String paramString)
+  public final void Do(String paramString)
   {
-    this.jnJ = paramString;
+    this.lQR = paramString;
   }
   
-  public final void dQ(boolean paramBoolean)
+  public final void eC(boolean paramBoolean)
   {
-    this.jnI = paramBoolean;
+    this.lQQ = paramBoolean;
   }
 }
 

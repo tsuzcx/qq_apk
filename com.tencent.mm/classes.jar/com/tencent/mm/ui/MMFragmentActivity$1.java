@@ -11,19 +11,19 @@ final class MMFragmentActivity$1
   
   public final void run()
   {
-    AppMethodBeat.i(193603);
+    AppMethodBeat.i(249145);
     Log.i("MicroMsg.MMFragmentActivity", "createNfcFilterHelperTask run");
-    MMFragmentActivity.access$002(this.WaU, new MMFragmentActivity.c(this.WaU, (byte)0));
-    MMFragmentActivity.c localc = MMFragmentActivity.access$000(this.WaU);
+    MMFragmentActivity.access$002(this.adFp, new MMFragmentActivity.e(this.adFp, (byte)0));
+    MMFragmentActivity.e locale = MMFragmentActivity.access$000(this.adFp);
     try
     {
       Log.i("MicroMsg.MMFragmentActivity", "[NFC] getDefaultAdapter");
-      localc.Wba = NfcAdapter.getDefaultAdapter(localc.WaU);
-      localc.init();
-      AppMethodBeat.o(193603);
+      locale.adFv = NfcAdapter.getDefaultAdapter(locale.adFp);
+      locale.init();
+      AppMethodBeat.o(249145);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -34,7 +34,7 @@ final class MMFragmentActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.MMFragmentActivity.1
  * JD-Core Version:    0.7.0.1
  */

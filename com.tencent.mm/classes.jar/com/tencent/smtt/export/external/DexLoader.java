@@ -2,7 +2,6 @@ package com.tencent.smtt.export.external;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import dalvik.system.DexClassLoader;
@@ -113,32 +112,90 @@ public class DexLoader
     }
   }
   
+  /* Error */
   private DexClassLoader createDexClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader, Context paramContext)
   {
-    AppMethodBeat.i(53142);
-    if (shouldUseTbsCorePrivateClassLoader(paramString1)) {
-      paramString1 = new TbsCorePrivateClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
-    }
-    for (;;)
-    {
-      new StringBuilder("createDexClassLoader result: ").append(paramString1);
-      AppMethodBeat.o(53142);
-      return paramString1;
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 25) && (mUseSpeedyClassLoader)) {
-        try
-        {
-          paramContext = DexClassLoaderProvider.createDexClassLoader(paramString1, paramString2, paramString3, paramClassLoader, paramContext);
-          paramString1 = paramContext;
-        }
-        catch (Throwable paramContext)
-        {
-          new StringBuilder("createDexClassLoader exception: ").append(paramContext);
-          paramString1 = new DexClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
-        }
-      } else {
-        paramString1 = new DexClassLoader(paramString1, paramString2, paramString3, paramClassLoader);
-      }
-    }
+    // Byte code:
+    //   0: ldc 144
+    //   2: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: aload_1
+    //   7: invokespecial 148	com/tencent/smtt/export/external/DexLoader:shouldUseTbsCorePrivateClassLoader	(Ljava/lang/String;)Z
+    //   10: ifeq +37 -> 47
+    //   13: new 6	com/tencent/smtt/export/external/DexLoader$TbsCorePrivateClassLoader
+    //   16: dup
+    //   17: aload_1
+    //   18: aload_2
+    //   19: aload_3
+    //   20: aload 4
+    //   22: invokespecial 151	com/tencent/smtt/export/external/DexLoader$TbsCorePrivateClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   25: astore_1
+    //   26: new 102	java/lang/StringBuilder
+    //   29: dup
+    //   30: ldc 153
+    //   32: invokespecial 134	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   35: aload_1
+    //   36: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: ldc 144
+    //   42: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: aload_1
+    //   46: areturn
+    //   47: getstatic 159	android/os/Build$VERSION:SDK_INT	I
+    //   50: bipush 21
+    //   52: if_icmplt +68 -> 120
+    //   55: getstatic 159	android/os/Build$VERSION:SDK_INT	I
+    //   58: bipush 25
+    //   60: if_icmpgt +60 -> 120
+    //   63: getstatic 39	com/tencent/smtt/export/external/DexLoader:mUseSpeedyClassLoader	Z
+    //   66: ifeq +54 -> 120
+    //   69: aload_1
+    //   70: aload_2
+    //   71: aload_3
+    //   72: aload 4
+    //   74: aload 5
+    //   76: invokestatic 162	com/tencent/smtt/export/external/DexClassLoaderProvider:createDexClassLoader	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;Landroid/content/Context;)Ldalvik/system/DexClassLoader;
+    //   79: astore 5
+    //   81: aload 5
+    //   83: astore_1
+    //   84: goto -58 -> 26
+    //   87: astore 5
+    //   89: new 102	java/lang/StringBuilder
+    //   92: dup
+    //   93: ldc 164
+    //   95: invokespecial 134	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   98: aload 5
+    //   100: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   103: pop
+    //   104: new 166	dalvik/system/DexClassLoader
+    //   107: dup
+    //   108: aload_1
+    //   109: aload_2
+    //   110: aload_3
+    //   111: aload 4
+    //   113: invokespecial 167	dalvik/system/DexClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   116: astore_1
+    //   117: goto -91 -> 26
+    //   120: new 166	dalvik/system/DexClassLoader
+    //   123: dup
+    //   124: aload_1
+    //   125: aload_2
+    //   126: aload_3
+    //   127: aload 4
+    //   129: invokespecial 167	dalvik/system/DexClassLoader:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   132: astore_1
+    //   133: goto -107 -> 26
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	136	0	this	DexLoader
+    //   0	136	1	paramString1	String
+    //   0	136	2	paramString2	String
+    //   0	136	3	paramString3	String
+    //   0	136	4	paramClassLoader	ClassLoader
+    //   0	136	5	paramContext	Context
+    // Exception table:
+    //   from	to	target	type
+    //   69	81	87	finally
   }
   
   public static void initTbsSettings(Map<String, Object> paramMap)
@@ -167,7 +224,7 @@ public class DexLoader
         AppMethodBeat.o(53136);
         return;
       }
-      catch (Throwable paramMap) {}
+      finally {}
     }
     AppMethodBeat.o(53136);
   }
@@ -199,13 +256,13 @@ public class DexLoader
     AppMethodBeat.i(53148);
     try
     {
-      Object localObject = this.mClassLoader.loadClass(paramString1).getField(paramString2);
-      ((Field)localObject).setAccessible(true);
-      localObject = ((Field)localObject).get(null);
+      Object localObject1 = this.mClassLoader.loadClass(paramString1).getField(paramString2);
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = ((Field)localObject1).get(null);
       AppMethodBeat.o(53148);
-      return localObject;
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' get field '").append(paramString2).append("' failed");
@@ -225,7 +282,7 @@ public class DexLoader
       AppMethodBeat.o(53147);
       return paramObject;
     }
-    catch (Throwable paramObject)
+    finally
     {
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' invoke method '").append(paramString2).append("' failed");
@@ -245,7 +302,7 @@ public class DexLoader
       AppMethodBeat.o(53146);
       return paramArrayOfClass;
     }
-    catch (Throwable paramArrayOfClass)
+    finally
     {
       if ((paramString2 != null) && (paramString2.equalsIgnoreCase("initTesRuntimeEnvironment")))
       {
@@ -270,7 +327,7 @@ public class DexLoader
       AppMethodBeat.o(53145);
       return localClass;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       getClass().getSimpleName();
       new StringBuilder("loadClass '").append(paramString).append("' failed");
@@ -284,11 +341,11 @@ public class DexLoader
     AppMethodBeat.i(53143);
     try
     {
-      Object localObject = this.mClassLoader.loadClass(paramString).newInstance();
+      Object localObject1 = this.mClassLoader.loadClass(paramString).newInstance();
       AppMethodBeat.o(53143);
-      return localObject;
+      return localObject1;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       getClass().getSimpleName();
       new StringBuilder("create ").append(paramString).append(" instance failed");
@@ -306,7 +363,7 @@ public class DexLoader
       AppMethodBeat.o(53144);
       return paramArrayOfClass;
     }
-    catch (Throwable paramArrayOfClass)
+    finally
     {
       if ("com.tencent.tbs.core.webkit.adapter.X5WebViewAdapter".equalsIgnoreCase(paramString))
       {
@@ -333,7 +390,7 @@ public class DexLoader
       AppMethodBeat.o(53149);
       return;
     }
-    catch (Throwable paramObject)
+    finally
     {
       getClass().getSimpleName();
       new StringBuilder("'").append(paramString1).append("' set field '").append(paramString2).append("' failed");
@@ -404,7 +461,7 @@ public class DexLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexLoader
  * JD-Core Version:    0.7.0.1
  */

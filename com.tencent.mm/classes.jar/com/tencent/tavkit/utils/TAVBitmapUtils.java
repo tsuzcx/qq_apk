@@ -9,7 +9,7 @@ public class TAVBitmapUtils
   public static int readImagePreferRotation(String paramString)
   {
     int i = 1;
-    AppMethodBeat.i(213208);
+    AppMethodBeat.i(218550);
     try
     {
       int j = new ExifInterface(paramString).getAttributeInt("Orientation", 1);
@@ -23,7 +23,7 @@ public class TAVBitmapUtils
       }
       for (;;)
       {
-        AppMethodBeat.o(213208);
+        AppMethodBeat.o(218550);
         return i;
         i = 3;
         continue;
@@ -33,13 +33,13 @@ public class TAVBitmapUtils
     }
     catch (IOException paramString)
     {
-      AppMethodBeat.o(213208);
+      AppMethodBeat.o(218550);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.utils.TAVBitmapUtils
  * JD-Core Version:    0.7.0.1
  */

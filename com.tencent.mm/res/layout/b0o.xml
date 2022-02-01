@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/egg" android:layout_width="wrap_content" android:layout_height="180.0dip"
+<RelativeLayout android:id="@id/l68" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bf8" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/egd" android:fadingEdge="vertical" android:fadingEdgeLength="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:requiresFadingEdge="vertical" />
-        <RelativeLayout android:id="@id/ege" android:background="@drawable/ad8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/cn">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a5r" android:id="@id/egf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/l7s" android:background="@drawable/a9o" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar android:id="@id/l79" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:onClick="onClick" />
+    </LinearLayout>
 </RelativeLayout>

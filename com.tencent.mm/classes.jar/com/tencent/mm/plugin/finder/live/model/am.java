@@ -1,58 +1,106 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.bgh;
+import com.tencent.mm.protocal.protobuf.bke;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveWatchTimeMgr;", "", "()V", "TAG", "", "recordTimeMap", "", "", "getRecordTimeMap", "()Ljava/util/Map;", "recordTimeMap$delegate", "Lkotlin/Lazy;", "getCurrentWatchTime", "anchorUserName", "joinLive", "", "quitLive", "plugin-finder_release"})
-public final class am
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveTextMsg;", "Lcom/tencent/mm/plugin/finder/live/model/IFinderLiveMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;)V", "getMsg", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "setMsg", "getContent", "", "getFromContact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "getFromUserName", "getFromUserNickName", "getLocalClientMsgId", "getMsgTime", "", "getPayLoadContent", "", "getSeq", "", "getToContact", "getToUserName", "getToUserNickName", "getType", "setSeq", "", "sq", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class am
+  implements aq
 {
-  private static final f yii;
-  public static final am yij;
+  public bke CIc;
   
-  static
+  public am(bke parambke)
   {
-    AppMethodBeat.i(278147);
-    yij = new am();
-    yii = g.ar((a)a.yik);
-    AppMethodBeat.o(278147);
+    AppMethodBeat.i(360076);
+    this.CIc = parambke;
+    AppMethodBeat.o(360076);
   }
   
-  public static Map<String, Long> dzT()
+  public final long dFp()
   {
-    AppMethodBeat.i(278144);
-    Map localMap = (Map)yii.getValue();
-    AppMethodBeat.o(278144);
-    return localMap;
+    return this.CIc.seq;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Map<String, Long>>
+  public final String djQ()
   {
-    public static final a yik;
-    
-    static
+    Object localObject = this.CIc.EbJ;
+    if (localObject == null) {}
+    do
     {
-      AppMethodBeat.i(254479);
-      yik = new a();
-      AppMethodBeat.o(254479);
-    }
-    
-    a()
+      return null;
+      localObject = ((bgh)localObject).contact;
+    } while (localObject == null);
+    return ((FinderContact)localObject).username;
+  }
+  
+  public final Object ekF()
+  {
+    return null;
+  }
+  
+  public final String ekt()
+  {
+    Object localObject = this.CIc.EbJ;
+    if (localObject == null) {}
+    do
     {
-      super();
+      return null;
+      localObject = ((bgh)localObject).contact;
+    } while (localObject == null);
+    return ((FinderContact)localObject).nickname;
+  }
+  
+  public final bgh eku()
+  {
+    return this.CIc.EbJ;
+  }
+  
+  public final bgh ekv()
+  {
+    return this.CIc.ZTq;
+  }
+  
+  public final String ekw()
+  {
+    return "";
+  }
+  
+  public final String ekx()
+  {
+    return "";
+  }
+  
+  public final String eky()
+  {
+    String str2 = this.CIc.ZTp;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    return str1;
+  }
+  
+  public final int ekz()
+  {
+    return this.CIc.ZOd;
+  }
+  
+  public final String getContent()
+  {
+    return this.CIc.content;
+  }
+  
+  public final int getType()
+  {
+    return this.CIc.type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.am
  * JD-Core Version:    0.7.0.1
  */

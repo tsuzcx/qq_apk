@@ -11,7 +11,7 @@ public final class Metadata
   implements Parcelable
 {
   public static final Parcelable.Creator<Metadata> CREATOR;
-  public final Entry[] bdA;
+  public final Entry[] cXu;
   
   static
   {
@@ -23,11 +23,11 @@ public final class Metadata
   Metadata(Parcel paramParcel)
   {
     AppMethodBeat.i(92464);
-    this.bdA = new Entry[paramParcel.readInt()];
+    this.cXu = new Entry[paramParcel.readInt()];
     int i = 0;
-    while (i < this.bdA.length)
+    while (i < this.cXu.length)
     {
-      this.bdA[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
+      this.cXu[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
       i += 1;
     }
     AppMethodBeat.o(92464);
@@ -36,14 +36,14 @@ public final class Metadata
   public Metadata(List<? extends Entry> paramList)
   {
     AppMethodBeat.i(92463);
-    this.bdA = new Entry[paramList.size()];
-    paramList.toArray(this.bdA);
+    this.cXu = new Entry[paramList.size()];
+    paramList.toArray(this.cXu);
     AppMethodBeat.o(92463);
   }
   
   public Metadata(Entry... paramVarArgs)
   {
-    this.bdA = paramVarArgs;
+    this.cXu = paramVarArgs;
   }
   
   public final int describeContents()
@@ -65,7 +65,7 @@ public final class Metadata
       return false;
     }
     paramObject = (Metadata)paramObject;
-    boolean bool = Arrays.equals(this.bdA, paramObject.bdA);
+    boolean bool = Arrays.equals(this.cXu, paramObject.cXu);
     AppMethodBeat.o(92465);
     return bool;
   }
@@ -73,7 +73,7 @@ public final class Metadata
   public final int hashCode()
   {
     AppMethodBeat.i(92466);
-    int i = Arrays.hashCode(this.bdA);
+    int i = Arrays.hashCode(this.cXu);
     AppMethodBeat.o(92466);
     return i;
   }
@@ -81,8 +81,8 @@ public final class Metadata
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92467);
-    paramParcel.writeInt(this.bdA.length);
-    Entry[] arrayOfEntry = this.bdA;
+    paramParcel.writeInt(this.cXu.length);
+    Entry[] arrayOfEntry = this.cXu;
     int i = arrayOfEntry.length;
     paramInt = 0;
     while (paramInt < i)

@@ -1,80 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import java.util.LinkedList;
 
 public final class fdg
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String TVX;
-  public int TVY;
+  public etl abCM;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125493);
+    AppMethodBeat.i(125761);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TVX == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.abCM != null)
       {
-        paramVarArgs = new b("Not all required fields were included: Ip");
-        AppMethodBeat.o(125493);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.abCM.computeSize());
+        this.abCM.writeFields(paramVarArgs);
       }
-      if (this.TVX != null) {
-        paramVarArgs.f(1, this.TVX);
-      }
-      paramVarArgs.aY(2, this.TVY);
-      AppMethodBeat.o(125493);
+      AppMethodBeat.o(125761);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.TVX == null) {
-        break label306;
+      if (this.abCM == null) {
+        break label284;
       }
     }
-    label306:
-    for (paramInt = g.a.a.b.b.a.g(1, this.TVX) + 0;; paramInt = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.abCM.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.TVY);
-      AppMethodBeat.o(125493);
-      return paramInt + i;
+      AppMethodBeat.o(125761);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.TVX == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Ip");
-          AppMethodBeat.o(125493);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(125493);
+        AppMethodBeat.o(125761);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         fdg localfdg = (fdg)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125493);
+          AppMethodBeat.o(125761);
           return -1;
-        case 1: 
-          localfdg.TVX = locala.abFh.readString();
-          AppMethodBeat.o(125493);
-          return 0;
         }
-        localfdg.TVY = locala.abFh.AK();
-        AppMethodBeat.o(125493);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          etl localetl = new etl();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localetl.dh((byte[])localObject);
+          }
+          localfdg.abCM = localetl;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125761);
         return 0;
       }
-      AppMethodBeat.o(125493);
+      AppMethodBeat.o(125761);
       return -1;
     }
   }

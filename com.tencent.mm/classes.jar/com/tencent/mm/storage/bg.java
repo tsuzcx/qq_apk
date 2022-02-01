@@ -1,132 +1,145 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.si;
-import com.tencent.mm.memory.a.c;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.emotion.a;
-import com.tencent.mm.storage.emotion.b;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/EmojiDesignerProductList;", "", "()V", "TAG", "", "designerUin", "", "getDesignerUin", "()I", "setDesignerUin", "(I)V", "productList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/storage/emotion/EmojiDesignerProduct;", "getProductList", "()Ljava/util/LinkedList;", "getNew", "", "hasNew", "", "markRead", "", "Cache", "Companion", "plugin-emojisdk_release"})
 public final class bg
 {
-  public static final bg.b VFl;
-  private final String TAG;
-  public int jHU;
-  public final LinkedList<a> ziJ;
+  public boolean adiM;
+  public String adiN;
+  public String md5;
+  private String paV;
+  public boolean paW;
+  public long time;
   
-  static
+  public bg(String paramString)
   {
-    AppMethodBeat.i(183993);
-    VFl = new bg.b((byte)0);
-    AppMethodBeat.o(183993);
-  }
-  
-  public bg()
-  {
-    AppMethodBeat.i(183992);
-    this.TAG = "MicroMsg.EmojiDesignerProductList";
-    this.ziJ = new LinkedList();
-    AppMethodBeat.o(183992);
-  }
-  
-  public final boolean hyT()
-  {
-    AppMethodBeat.i(183990);
-    Log.i(this.TAG, "hasNew: " + this.jHU + ", " + this.ziJ.size());
-    int j = (int)Util.nowSecond();
-    Object localObject = (Iterable)this.ziJ;
-    if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
+    AppMethodBeat.i(104954);
+    this.md5 = "-1";
+    this.adiN = "";
+    if (Util.isNullOrNil(paramString))
     {
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
+      AppMethodBeat.o(104954);
+      return;
+    }
+    for (;;)
+    {
+      try
       {
-        if (((a)((Iterator)localObject).next()).field_syncTime > j - 2592000L) {}
-        for (int i = 1; i != 0; i = 0)
+        Object localObject;
+        if (paramString.endsWith("\n"))
         {
-          AppMethodBeat.o(183990);
-          return true;
+          localObject = paramString.substring(0, paramString.length() - 1);
+          localObject = ((String)localObject).split(":", 6);
+          if ((localObject.length == 4) && (au.bwS(localObject[0])))
+          {
+            i = 1;
+            if (localObject.length > i) {
+              this.paV = localObject[i];
+            }
+            if (localObject.length > i + 1) {
+              this.time = Util.getLong(localObject[(i + 1)], 0L);
+            }
+            if (localObject.length > i + 2) {
+              this.paW = localObject[(i + 2)].equals("1");
+            }
+            if (localObject.length > i + 3) {
+              this.md5 = localObject[(i + 3)];
+            }
+            if (localObject.length > i + 4) {
+              this.adiN = localObject[(i + 4)].replace("*#*", ":");
+            }
+            if (localObject.length > i + 5) {
+              this.adiM = localObject[(i + 5)].equals("1");
+            }
+            AppMethodBeat.o(104954);
+          }
         }
-      }
-    }
-    AppMethodBeat.o(183990);
-    return false;
-  }
-  
-  public final void hyU()
-  {
-    AppMethodBeat.i(183991);
-    if (hyT())
-    {
-      Iterator localIterator = ((Iterable)this.ziJ).iterator();
-      while (localIterator.hasNext()) {
-        ((a)localIterator.next()).field_syncTime = 0;
-      }
-      bj.hyV().hza().a(this);
-      EventCenter.instance.publish((IEvent)new si());
-    }
-    AppMethodBeat.o(183991);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/EmojiDesignerProductList$Cache;", "", "()V", "map", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "Lcom/tencent/mm/storage/EmojiDesignerProductList;", "getMap", "()Lcom/tencent/mm/memory/cache/DefaultResource;", "get", "designerUin", "put", "", "info", "plugin-emojisdk_release"})
-  public static final class a
-  {
-    private static final c<Integer, bg> VFm;
-    public static final a VFn;
-    
-    static
-    {
-      AppMethodBeat.i(183989);
-      VFn = new a();
-      VFm = new c(500);
-      AppMethodBeat.o(183989);
-    }
-    
-    public static void a(int paramInt, bg parambg)
-    {
-      AppMethodBeat.i(183988);
-      p.k(parambg, "info");
-      VFm.put(Integer.valueOf(paramInt), parambg);
-      AppMethodBeat.o(183988);
-    }
-    
-    public static bg asF(int paramInt)
-    {
-      AppMethodBeat.i(183987);
-      bg localbg2 = (bg)VFm.get(Integer.valueOf(paramInt));
-      bg localbg1;
-      if (MMApplicationContext.isMainProcess())
-      {
-        localbg1 = localbg2;
-        if (localbg2 == null)
+        else
         {
-          localbg1 = bj.hyV().hza().asK(paramInt);
-          VFm.put(Integer.valueOf(paramInt), localbg1);
+          this.adiN = paramString.replace(":", "*#*");
+          localObject = paramString;
+          continue;
         }
+        int i = 0;
       }
-      for (;;)
+      catch (Exception localException)
       {
-        p.j(localbg1, "info");
-        AppMethodBeat.o(183987);
-        return localbg1;
-        localbg1 = new bg();
-        localbg1.jHU = paramInt;
+        this.time = 0L;
+        Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, Util.stackTraceToString(localException) });
+        AppMethodBeat.o(104954);
+        return;
       }
+    }
+  }
+  
+  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
+  {
+    int j = 1;
+    AppMethodBeat.i(104952);
+    paramString3 = paramString3.replace(":", "*#*");
+    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
+    if (paramBoolean1)
+    {
+      i = 1;
+      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
+      if (!paramBoolean2) {
+        break label121;
+      }
+    }
+    label121:
+    for (int i = j;; i = 0)
+    {
+      paramString1 = i + "\n";
+      AppMethodBeat.o(104952);
+      return paramString1;
+      i = 0;
+      break;
+    }
+  }
+  
+  public static bg byj(String paramString)
+  {
+    AppMethodBeat.i(104955);
+    paramString = new bg(paramString);
+    AppMethodBeat.o(104955);
+    return paramString;
+  }
+  
+  public final String bOq()
+  {
+    return this.paV;
+  }
+  
+  public final String bPi()
+  {
+    int j = 1;
+    AppMethodBeat.i(104953);
+    Object localObject = new StringBuilder().append(this.paV).append(":").append(this.time).append(":");
+    if (this.paW)
+    {
+      i = 1;
+      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.adiN).append(":");
+      if (!this.adiM) {
+        break label118;
+      }
+    }
+    label118:
+    for (int i = j;; i = 0)
+    {
+      localObject = i + "\n";
+      AppMethodBeat.o(104953);
+      return localObject;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bg
  * JD-Core Version:    0.7.0.1
  */

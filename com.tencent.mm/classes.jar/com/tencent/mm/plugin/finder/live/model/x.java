@@ -1,45 +1,27 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.axz;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.bke;
+import com.tencent.mm.protocal.protobuf.boi;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveLuckyMoneyRecvMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBaseMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "getPayLoadContent", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveLocationMsg;", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveTextMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "loc", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "getLoc", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setLoc", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class x
-  extends g
+  extends am
 {
-  public x(axe paramaxe)
-  {
-    super(paramaxe);
-    AppMethodBeat.i(288188);
-    AppMethodBeat.o(288188);
-  }
+  public boi CGu;
   
-  public final Object dyn()
+  public x(bke parambke, boi paramboi)
   {
-    byte[] arrayOfByte = null;
-    AppMethodBeat.i(288187);
-    switch (getType())
-    {
-    default: 
-      AppMethodBeat.o(288187);
-      return null;
-    }
-    axz localaxz = new axz();
-    b localb = dyj().SJE;
-    if (localb != null) {
-      arrayOfByte = localb.toByteArray();
-    }
-    localaxz.parseFrom(arrayOfByte);
-    AppMethodBeat.o(288187);
-    return localaxz;
+    super(parambke);
+    AppMethodBeat.i(359459);
+    this.CGu = paramboi;
+    AppMethodBeat.o(359459);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.x
  * JD-Core Version:    0.7.0.1
  */

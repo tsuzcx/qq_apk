@@ -3,40 +3,38 @@ package com.tencent.liteapp.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ext.ui.e;
-import io.flutter.plugin.a.j;
+import io.flutter.plugin.common.MethodCall;
+import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.w;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer;", "Lcom/tencent/wxa/MethodCallConsumer;", "()V", "consume", "Lcom/tencent/wxa/MethodCallConsumer$Result;", "call", "Lio/flutter/plugin/common/MethodCall;", "enterFullScreen", "args", "", "exitFullScreen", "getCutOutHeight", "hasCutOut", "hideKeyboard", "inputLocationChange", "navigateBack", "openWebView", "Companion", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer;", "Lcom/tencent/wxa/MethodCallConsumer;", "()V", "consume", "Lcom/tencent/wxa/MethodCallConsumer$Result;", "call", "Lio/flutter/plugin/common/MethodCall;", "enterFullScreen", "args", "", "exitFullScreen", "getCutOutHeight", "hasCutOut", "hideKeyboard", "navigateBack", "openWebView", "tryReleaseDefaultEngine", "Companion", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public final class a
   extends com.tencent.wxa.b
 {
   private static final String TAG = "WxaLiteApp.WxaLiteAppConsumer";
-  public static final a coG;
+  public static final a efR;
   
   static
   {
-    AppMethodBeat.i(259176);
-    coG = new a((byte)0);
+    AppMethodBeat.i(219014);
+    efR = new a((byte)0);
     TAG = "WxaLiteApp.WxaLiteAppConsumer";
-    AppMethodBeat.o(259176);
+    AppMethodBeat.o(219014);
   }
   
-  public final com.tencent.wxa.b.a a(j paramj)
+  public final com.tencent.wxa.b.a a(MethodCall paramMethodCall)
   {
-    AppMethodBeat.i(259173);
-    if (paramj == null) {
-      p.iCn();
+    AppMethodBeat.i(219031);
+    if (paramMethodCall == null) {
+      s.klw();
     }
-    Object localObject = paramj.method;
-    paramj = paramj.ZZe;
+    Object localObject = paramMethodCall.method;
+    paramMethodCall = paramMethodCall.arguments;
     com.tencent.liteapp.b.b.d(TAG, "consume method: ".concat(String.valueOf(localObject)), new Object[0]);
     if (localObject == null) {}
-    label307:
-    label436:
-    label767:
     do
     {
       do
@@ -65,206 +63,270 @@ public final class a
                             {
                               do
                               {
-                                do
+                                for (;;)
                                 {
-                                  for (;;)
+                                  paramMethodCall = keP();
+                                  s.r(paramMethodCall, "consumeSkip()");
+                                  AppMethodBeat.o(219031);
+                                  return paramMethodCall;
+                                  switch (((String)localObject).hashCode())
                                   {
-                                    paramj = ivs();
-                                    p.j(paramj, "consumeSkip()");
-                                    AppMethodBeat.o(259173);
-                                    return paramj;
-                                    switch (((String)localObject).hashCode())
-                                    {
-                                    }
                                   }
-                                } while (!((String)localObject).equals("inputLocationChange"));
-                                p.j(paramj, "args");
-                                localObject = com.tencent.wxa.c.ivt();
-                                p.j(localObject, "WxaRouter.getInstance()");
-                                localObject = ((com.tencent.wxa.c)localObject).ivv();
-                                p.j(localObject, "WxaRouter.getInstance().currentActivity");
-                                localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
-                                if (localObject != null) {
-                                  break;
                                 }
-                                paramj = eO(Boolean.TRUE);
-                                p.j(paramj, "consumed(true)");
-                                AppMethodBeat.o(259173);
-                                return paramj;
-                              } while (!((String)localObject).equals("hideKeyboard"));
-                              paramj = com.tencent.wxa.c.ivt();
-                              p.j(paramj, "WxaRouter.getInstance()");
-                              paramj = paramj.ivv();
-                              p.j(paramj, "WxaRouter.getInstance().currentActivity");
-                              paramj = paramj.getActivity();
-                              if (paramj != null) {
-                                break label980;
-                              }
-                              paramj = eO(Boolean.TRUE);
-                              p.j(paramj, "consumed(true)");
-                              AppMethodBeat.o(259173);
-                              return paramj;
-                            } while (!((String)localObject).equals("hasCutOut"));
-                            paramj = com.tencent.wxa.c.ivt();
-                            p.j(paramj, "WxaRouter.getInstance()");
-                            paramj = paramj.ivv();
-                            p.j(paramj, "WxaRouter.getInstance().currentActivity");
-                            paramj = eO(Boolean.valueOf(e.cE((Context)paramj.getActivity())));
-                            p.j(paramj, "consumed(result)");
-                            AppMethodBeat.o(259173);
-                            return paramj;
-                          } while (!((String)localObject).equals("enterFullScreen"));
-                          p.j(paramj, "args");
-                          paramj = com.tencent.wxa.c.ivt();
-                          p.j(paramj, "WxaRouter.getInstance()");
-                          paramj = paramj.ivv();
-                          p.j(paramj, "WxaRouter.getInstance().currentActivity");
-                          paramj = paramj.getActivity();
-                          if (paramj != null) {
-                            break label1018;
+                              } while (!((String)localObject).equals("publishEvent"));
+                              paramMethodCall = hl(Boolean.TRUE);
+                              s.r(paramMethodCall, "consumed(true)");
+                              AppMethodBeat.o(219031);
+                              return paramMethodCall;
+                            } while (!((String)localObject).equals("hideKeyboard"));
+                            s.r(paramMethodCall, "args");
+                            if (paramMethodCall != null) {
+                              break;
+                            }
+                            paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+                            AppMethodBeat.o(219031);
+                            throw paramMethodCall;
+                          } while (!((String)localObject).equals("hasCutOut"));
+                          s.r(paramMethodCall, "args");
+                          if (paramMethodCall != null) {
+                            break label975;
                           }
-                          paramj = eO(Boolean.TRUE);
-                          p.j(paramj, "consumed(true)");
-                          AppMethodBeat.o(259173);
-                          return paramj;
-                        } while (!((String)localObject).equals("getCutOutHeight"));
-                        paramj = com.tencent.liteapp.b.cox;
-                        paramj = com.tencent.liteapp.b.a.getAppContext();
-                        localObject = com.tencent.liteapp.b.cox;
-                        paramj = eO(Double.valueOf(com.tencent.mm.ext.ui.c.H(paramj, e.aM(com.tencent.liteapp.b.a.getAppContext()))));
-                        p.j(paramj, "consumed(result)");
-                        AppMethodBeat.o(259173);
-                        return paramj;
-                      } while (!((String)localObject).equals("navigateBack"));
-                      p.j(paramj, "args");
-                      localObject = com.tencent.wxa.c.ivt();
-                      p.j(localObject, "WxaRouter.getInstance()");
-                      localObject = ((com.tencent.wxa.c)localObject).ivv();
-                      p.j(localObject, "WxaRouter.getInstance().currentActivity");
-                      localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
-                      if (localObject != null) {
-                        break label1037;
-                      }
-                      paramj = eO(Boolean.TRUE);
-                      p.j(paramj, "consumed(true)");
-                      AppMethodBeat.o(259173);
-                      return paramj;
-                    } while (!((String)localObject).equals("showPicker"));
-                    paramj = eO(Boolean.TRUE);
-                    p.j(paramj, "consumed(true)");
-                    AppMethodBeat.o(259173);
-                    return paramj;
-                  } while (!((String)localObject).equals("inputOnKeyboardValueChange"));
-                  paramj = eO(Boolean.TRUE);
-                  p.j(paramj, "consumed(true)");
-                  AppMethodBeat.o(259173);
-                  return paramj;
-                } while (!((String)localObject).equals("onRenderCallback"));
-                paramj = eO(Boolean.TRUE);
-                p.j(paramj, "consumed(true)");
-                AppMethodBeat.o(259173);
-                return paramj;
-              } while (!((String)localObject).equals("generateInputEventData"));
-              paramj = eO(Boolean.TRUE);
-              p.j(paramj, "consumed(true)");
-              AppMethodBeat.o(259173);
-              return paramj;
-            } while (!((String)localObject).equals("publishEvent"));
-            paramj = eO(Boolean.TRUE);
-            p.j(paramj, "consumed(true)");
-            AppMethodBeat.o(259173);
-            return paramj;
+                          paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+                          AppMethodBeat.o(219031);
+                          throw paramMethodCall;
+                        } while (!((String)localObject).equals("enterFullScreen"));
+                        s.r(paramMethodCall, "args");
+                        if (paramMethodCall != null) {
+                          break label875;
+                        }
+                        paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+                        AppMethodBeat.o(219031);
+                        throw paramMethodCall;
+                      } while (!((String)localObject).equals("getCutOutHeight"));
+                      s.r(paramMethodCall, "args");
+                      paramMethodCall = com.tencent.liteapp.b.efD;
+                      paramMethodCall = com.tencent.liteapp.b.a.getAppContext();
+                      localObject = com.tencent.liteapp.b.efD;
+                      paramMethodCall = hl(Double.valueOf(com.tencent.mm.ext.ui.c.K(paramMethodCall, e.bw(com.tencent.liteapp.b.a.getAppContext()))));
+                      s.r(paramMethodCall, "consumed(result)");
+                      AppMethodBeat.o(219031);
+                      return paramMethodCall;
+                    } while (!((String)localObject).equals("onStageEmpty"));
+                    s.r(paramMethodCall, "args");
+                    if (paramMethodCall != null) {
+                      break label1337;
+                    }
+                    paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+                    AppMethodBeat.o(219031);
+                    throw paramMethodCall;
+                  } while (!((String)localObject).equals("navigateBack"));
+                  s.r(paramMethodCall, "args");
+                  if (paramMethodCall != null) {
+                    break label1083;
+                  }
+                  paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+                  AppMethodBeat.o(219031);
+                  throw paramMethodCall;
+                } while (!((String)localObject).equals("inputOnKeyboardValueChange"));
+                paramMethodCall = hl(Boolean.TRUE);
+                s.r(paramMethodCall, "consumed(true)");
+                AppMethodBeat.o(219031);
+                return paramMethodCall;
+              } while (!((String)localObject).equals("onRenderCallback"));
+              paramMethodCall = hl(Boolean.TRUE);
+              s.r(paramMethodCall, "consumed(true)");
+              AppMethodBeat.o(219031);
+              return paramMethodCall;
+            } while (!((String)localObject).equals("generateInputEventData"));
+            paramMethodCall = hl(Boolean.TRUE);
+            s.r(paramMethodCall, "consumed(true)");
+            AppMethodBeat.o(219031);
+            return paramMethodCall;
           } while (!((String)localObject).equals("exitFullScreen"));
-          p.j(paramj, "args");
-          paramj = com.tencent.wxa.c.ivt();
-          p.j(paramj, "WxaRouter.getInstance()");
-          paramj = paramj.ivv();
-          p.j(paramj, "WxaRouter.getInstance().currentActivity");
-          paramj = paramj.getActivity();
-          if (paramj != null) {
-            break label999;
+          s.r(paramMethodCall, "args");
+          if (paramMethodCall != null) {
+            break label775;
           }
-          paramj = eO(Boolean.TRUE);
-          p.j(paramj, "consumed(true)");
-          AppMethodBeat.o(259173);
-          return paramj;
+          paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+          AppMethodBeat.o(219031);
+          throw paramMethodCall;
         } while (!((String)localObject).equals("getLocalFileData"));
-        paramj = eO(Boolean.TRUE);
-        p.j(paramj, "consumed(true)");
-        AppMethodBeat.o(259173);
-        return paramj;
+        paramMethodCall = hl(Boolean.TRUE);
+        s.r(paramMethodCall, "consumed(true)");
+        AppMethodBeat.o(219031);
+        return paramMethodCall;
       } while (!((String)localObject).equals("setCanOverScroll"));
-      paramj = eO(Boolean.TRUE);
-      p.j(paramj, "consumed(true)");
-      AppMethodBeat.o(259173);
-      return paramj;
+      paramMethodCall = hl(Boolean.TRUE);
+      s.r(paramMethodCall, "consumed(true)");
+      AppMethodBeat.o(219031);
+      return paramMethodCall;
     } while (!((String)localObject).equals("openWebView"));
-    label555:
-    p.j(paramj, "args");
-    localObject = com.tencent.wxa.c.ivt();
-    p.j(localObject, "WxaRouter.getInstance()");
-    localObject = ((com.tencent.wxa.c)localObject).ivv();
-    p.j(localObject, "WxaRouter.getInstance().currentActivity");
+    s.r(paramMethodCall, "args");
+    if (paramMethodCall == null)
+    {
+      paramMethodCall = new w("null cannot be cast to non-null type kotlin.collections.HashMap<kotlin.String, *> /* = java.util.HashMap<kotlin.String, *> */");
+      AppMethodBeat.o(219031);
+      throw paramMethodCall;
+      paramMethodCall = ((HashMap)paramMethodCall).get("activityId");
+      if (paramMethodCall == null)
+      {
+        paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(219031);
+        throw paramMethodCall;
+      }
+      paramMethodCall = (String)paramMethodCall;
+      paramMethodCall = com.tencent.wxa.c.keQ().bGZ(paramMethodCall);
+      s.r(paramMethodCall, "WxaRouter.getInstance().…utterActivity(activityId)");
+      paramMethodCall = paramMethodCall.getActivity();
+      if (paramMethodCall == null) {}
+      for (;;)
+      {
+        paramMethodCall = hl(Boolean.TRUE);
+        s.r(paramMethodCall, "consumed(true)");
+        AppMethodBeat.o(219031);
+        return paramMethodCall;
+        if ((paramMethodCall instanceof com.tencent.liteapp.ui.a)) {
+          ((com.tencent.liteapp.ui.a)paramMethodCall).hideKeyboard();
+        }
+      }
+      label775:
+      paramMethodCall = ((HashMap)paramMethodCall).get("activityId");
+      if (paramMethodCall == null)
+      {
+        paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(219031);
+        throw paramMethodCall;
+      }
+      paramMethodCall = (String)paramMethodCall;
+      paramMethodCall = com.tencent.wxa.c.keQ().bGZ(paramMethodCall);
+      s.r(paramMethodCall, "WxaRouter.getInstance().…utterActivity(activityId)");
+      paramMethodCall = paramMethodCall.getActivity();
+      if (paramMethodCall == null) {}
+      for (;;)
+      {
+        paramMethodCall = hl(Boolean.TRUE);
+        s.r(paramMethodCall, "consumed(true)");
+        AppMethodBeat.o(219031);
+        return paramMethodCall;
+        if ((paramMethodCall instanceof com.tencent.liteapp.ui.a)) {
+          ((com.tencent.liteapp.ui.a)paramMethodCall).anI();
+        }
+      }
+      label875:
+      paramMethodCall = ((HashMap)paramMethodCall).get("activityId");
+      if (paramMethodCall == null)
+      {
+        paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(219031);
+        throw paramMethodCall;
+      }
+      paramMethodCall = (String)paramMethodCall;
+      paramMethodCall = com.tencent.wxa.c.keQ().bGZ(paramMethodCall);
+      s.r(paramMethodCall, "WxaRouter.getInstance().…utterActivity(activityId)");
+      paramMethodCall = paramMethodCall.getActivity();
+      if (paramMethodCall == null) {}
+      for (;;)
+      {
+        paramMethodCall = hl(Boolean.TRUE);
+        s.r(paramMethodCall, "consumed(true)");
+        AppMethodBeat.o(219031);
+        return paramMethodCall;
+        if ((paramMethodCall instanceof com.tencent.liteapp.ui.a)) {
+          ((com.tencent.liteapp.ui.a)paramMethodCall).anJ();
+        }
+      }
+      label975:
+      paramMethodCall = ((HashMap)paramMethodCall).get("activityId");
+      if (paramMethodCall == null)
+      {
+        paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(219031);
+        throw paramMethodCall;
+      }
+      paramMethodCall = (String)paramMethodCall;
+      paramMethodCall = com.tencent.wxa.c.keQ().bGZ(paramMethodCall);
+      s.r(paramMethodCall, "WxaRouter.getInstance().…utterActivity(activityId)");
+      paramMethodCall = paramMethodCall.getActivity();
+      if (paramMethodCall == null)
+      {
+        paramMethodCall = hl(Boolean.TRUE);
+        s.r(paramMethodCall, "consumed(true)");
+        AppMethodBeat.o(219031);
+        return paramMethodCall;
+      }
+      paramMethodCall = hl(Boolean.valueOf(e.ds((Context)paramMethodCall)));
+      s.r(paramMethodCall, "consumed(result)");
+      AppMethodBeat.o(219031);
+      return paramMethodCall;
+      label1083:
+      localObject = ((HashMap)paramMethodCall).get("activityId");
+      if (localObject == null)
+      {
+        paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(219031);
+        throw paramMethodCall;
+      }
+      localObject = (String)localObject;
+      localObject = com.tencent.wxa.c.keQ().bGZ((String)localObject);
+      s.r(localObject, "WxaRouter.getInstance().…utterActivity(activityId)");
+      localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
+      if (localObject == null) {}
+      for (;;)
+      {
+        paramMethodCall = hl(Boolean.TRUE);
+        s.r(paramMethodCall, "consumed(true)");
+        AppMethodBeat.o(219031);
+        return paramMethodCall;
+        if (((localObject instanceof com.tencent.liteapp.ui.a)) && ((paramMethodCall instanceof Map)))
+        {
+          localObject = (com.tencent.liteapp.ui.a)localObject;
+          paramMethodCall = ((HashMap)paramMethodCall).get("animation");
+          if (paramMethodCall == null)
+          {
+            paramMethodCall = new w("null cannot be cast to non-null type kotlin.Boolean");
+            AppMethodBeat.o(219031);
+            throw paramMethodCall;
+          }
+          ((com.tencent.liteapp.ui.a)localObject).navigateBack(((Boolean)paramMethodCall).booleanValue());
+        }
+      }
+    }
+    localObject = ((HashMap)paramMethodCall).get("activityId");
+    if (localObject == null)
+    {
+      paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(219031);
+      throw paramMethodCall;
+    }
+    localObject = (String)localObject;
+    localObject = com.tencent.wxa.c.keQ().bGZ((String)localObject);
+    s.r(localObject, "WxaRouter.getInstance().…utterActivity(activityId)");
     localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
     if (localObject == null) {}
     for (;;)
     {
-      paramj = eO(Boolean.TRUE);
-      p.j(paramj, "consumed(true)");
-      AppMethodBeat.o(259173);
-      return paramj;
-      if ((!(localObject instanceof com.tencent.liteapp.ui.a)) || (!(paramj instanceof Map))) {
-        break;
-      }
-      localObject = (com.tencent.liteapp.ui.a)localObject;
-      paramj = ((Map)paramj).get("offset");
-      if (paramj == null)
-      {
-        paramj = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(259173);
-        throw paramj;
-      }
-      ((com.tencent.liteapp.ui.a)localObject).iD(((Integer)paramj).intValue());
-      break;
-      label980:
-      if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
-        break label307;
-      }
-      ((com.tencent.liteapp.ui.a)paramj).hideKeyboard();
-      break label307;
-      label999:
-      if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
-        break label767;
-      }
-      ((com.tencent.liteapp.ui.a)paramj).Np();
-      break label767;
-      label1018:
-      if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
-        break label436;
-      }
-      ((com.tencent.liteapp.ui.a)paramj).Nq();
-      break label436;
-      label1037:
-      if ((!(localObject instanceof com.tencent.liteapp.ui.a)) || (!(paramj instanceof Map))) {
-        break label555;
-      }
-      localObject = (com.tencent.liteapp.ui.a)localObject;
-      paramj = ((Map)paramj).get("animation");
-      if (paramj == null)
-      {
-        paramj = new t("null cannot be cast to non-null type kotlin.Boolean");
-        AppMethodBeat.o(259173);
-        throw paramj;
-      }
-      ((com.tencent.liteapp.ui.a)localObject).navigateBack(((Boolean)paramj).booleanValue());
-      break label555;
-      if (((localObject instanceof com.tencent.liteapp.ui.a)) && ((paramj instanceof Map))) {
-        ((com.tencent.liteapp.ui.a)localObject).Nr();
+      paramMethodCall = hl(Boolean.TRUE);
+      s.r(paramMethodCall, "consumed(true)");
+      AppMethodBeat.o(219031);
+      return paramMethodCall;
+      if (((localObject instanceof com.tencent.liteapp.ui.a)) && ((paramMethodCall instanceof Map))) {
+        ((com.tencent.liteapp.ui.a)localObject).anK();
       }
     }
+    label1337:
+    if (((HashMap)paramMethodCall).get("activityId") == null)
+    {
+      paramMethodCall = new w("null cannot be cast to non-null type kotlin.String");
+      AppMethodBeat.o(219031);
+      throw paramMethodCall;
+    }
+    paramMethodCall = keP();
+    s.r(paramMethodCall, "consumeSkip()");
+    AppMethodBeat.o(219031);
+    return paramMethodCall;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
   public static final class a {}
 }
 

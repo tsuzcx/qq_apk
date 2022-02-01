@@ -5,10 +5,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$a
 {
   private static double a = 6378245.0D;
-  private static double lLt = 3.141592653589793D;
-  private static double lLu = 0.006693421622965943D;
+  private static double oDV = 3.141592653589793D;
+  private static double oDW = 0.006693421622965943D;
   
-  public static double[] b(double paramDouble1, double paramDouble2)
+  public static double[] f(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(150460);
     int i;
@@ -28,32 +28,32 @@ public final class a$a
     double d1 = paramDouble1 - 105.0D;
     double d2 = paramDouble2 - 35.0D;
     double d3 = Math.sqrt(Math.abs(d1));
-    double d4 = Math.sin(6.0D * d1 * lLt);
-    double d9 = (Math.sin(d1 * 2.0D * lLt) * 20.0D + 20.0D * d4) * 2.0D / 3.0D;
-    double d10 = (20.0D * Math.sin(lLt * d2) + 40.0D * Math.sin(d2 / 3.0D * lLt)) * 2.0D / 3.0D;
-    d4 = Math.sin(d2 / 12.0D * lLt);
-    double d13 = (Math.sin(d2 * lLt / 30.0D) * 320.0D + 160.0D * d4) * 2.0D / 3.0D;
+    double d4 = Math.sin(6.0D * d1 * oDV);
+    double d9 = (Math.sin(d1 * 2.0D * oDV) * 20.0D + 20.0D * d4) * 2.0D / 3.0D;
+    double d10 = (20.0D * Math.sin(oDV * d2) + 40.0D * Math.sin(d2 / 3.0D * oDV)) * 2.0D / 3.0D;
+    d4 = Math.sin(d2 / 12.0D * oDV);
+    double d13 = (Math.sin(d2 * oDV / 30.0D) * 320.0D + 160.0D * d4) * 2.0D / 3.0D;
     d4 = paramDouble1 - 105.0D;
     double d5 = paramDouble2 - 35.0D;
     double d6 = Math.sqrt(Math.abs(d4));
-    double d7 = (20.0D * Math.sin(6.0D * d4 * lLt) + 20.0D * Math.sin(2.0D * d4 * lLt)) * 2.0D / 3.0D;
-    double d8 = (20.0D * Math.sin(lLt * d4) + 40.0D * Math.sin(d4 / 3.0D * lLt)) * 2.0D / 3.0D;
-    double d11 = Math.sin(d4 / 12.0D * lLt);
-    d11 = (Math.sin(d4 / 30.0D * lLt) * 300.0D + 150.0D * d11) * 2.0D / 3.0D;
-    double d12 = paramDouble2 / 180.0D * lLt;
+    double d7 = (20.0D * Math.sin(6.0D * d4 * oDV) + 20.0D * Math.sin(2.0D * d4 * oDV)) * 2.0D / 3.0D;
+    double d8 = (20.0D * Math.sin(oDV * d4) + 40.0D * Math.sin(d4 / 3.0D * oDV)) * 2.0D / 3.0D;
+    double d11 = Math.sin(d4 / 12.0D * oDV);
+    d11 = (Math.sin(d4 / 30.0D * oDV) * 300.0D + 150.0D * d11) * 2.0D / 3.0D;
+    double d12 = paramDouble2 / 180.0D * oDV;
     double d14 = Math.sin(d12);
-    double d15 = 1.0D - d14 * (lLu * d14);
+    double d15 = 1.0D - d14 * (oDW * d14);
     d14 = Math.sqrt(d15);
-    d1 = (d9 + (-100.0D + 2.0D * d1 + 3.0D * d2 + 0.2D * d2 * d2 + 0.1D * d1 * d2 + 0.2D * d3) + d10 + d13) * 180.0D / (a * (1.0D - lLu) / (d15 * d14) * lLt);
+    d1 = (d9 + (-100.0D + 2.0D * d1 + 3.0D * d2 + 0.2D * d2 * d2 + 0.1D * d1 * d2 + 0.2D * d3) + d10 + d13) * 180.0D / (a * (1.0D - oDW) / (d15 * d14) * oDV);
     d2 = a / d14;
-    d2 = (d11 + (d5 * (0.1D * d4) + (300.0D + d4 + 2.0D * d5 + 0.1D * d4 * d4) + 0.1D * d6 + d7 + d8)) * 180.0D / (Math.cos(d12) * d2 * lLt);
+    d2 = (d11 + (d5 * (0.1D * d4) + (300.0D + d4 + 2.0D * d5 + 0.1D * d4 * d4) + 0.1D * d6 + d7 + d8)) * 180.0D / (Math.cos(d12) * d2 * oDV);
     AppMethodBeat.o(150460);
     return new double[] { 2.0D * paramDouble1 - (d2 + paramDouble1), 2.0D * paramDouble2 - (paramDouble2 + d1) };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelgeo.a.a
  * JD-Core Version:    0.7.0.1
  */

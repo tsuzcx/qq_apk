@@ -15,11 +15,11 @@ final class EmojiStoreV2TabView$1
   {
     AppMethodBeat.i(109371);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     int i = ((Integer)paramView.getTag()).intValue();
-    if (EmojiStoreV2TabView.a(this.uQe) != null) {
-      EmojiStoreV2TabView.a(this.uQe).onTabClick(i);
+    if (EmojiStoreV2TabView.a(this.xYP) != null) {
+      EmojiStoreV2TabView.a(this.xYP).onTabClick(i);
     }
     a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109371);
@@ -27,7 +27,7 @@ final class EmojiStoreV2TabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView.1
  * JD-Core Version:    0.7.0.1
  */

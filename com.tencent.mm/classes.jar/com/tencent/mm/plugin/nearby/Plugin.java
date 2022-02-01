@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.nearby;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
-import com.tencent.mm.plugin.nearby.a.f;
+import com.tencent.mm.plugin.nearby.model.f;
 import com.tencent.mm.pluginsdk.c.c;
 import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
@@ -11,14 +11,14 @@ import com.tencent.mm.pluginsdk.n;
 public class Plugin
   implements d
 {
-  private c smX;
+  private c vyV;
   
   public Plugin()
   {
     AppMethodBeat.i(89751);
-    this.smX = new c()
+    this.vyV = new c()
     {
-      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a al(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(89750);
         paramAnonymousContext = new com.tencent.mm.plugin.nearby.ui.a(paramAnonymousContext);
@@ -47,12 +47,12 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.smX;
+    return this.vyV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.Plugin
  * JD-Core Version:    0.7.0.1
  */

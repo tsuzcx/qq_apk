@@ -7,8 +7,8 @@ import android.view.inputmethod.InputConnection;
 import android.webkit.ValueCallback;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.af;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.aw;
 import com.tencent.mm.plugin.appbrand.widget.input.aa;
@@ -19,55 +19,55 @@ import com.tencent.mm.plugin.appbrand.widget.input.n;
 import com.tencent.mm.plugin.appbrand.widget.input.u;
 import com.tencent.mm.plugin.appbrand.widget.input.u.c;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.xweb.XWebExtendInterface;
 import org.json.JSONObject;
 import org.xwalk.core.XWalkExtendTextAreaClient;
-import org.xwalk.core.XWalkView;
 
 public final class a
   extends XWalkExtendTextAreaClient
 {
   private final String TAG;
-  public aw cKG;
-  private u cKH;
-  private aa cKI;
-  private EditText cKJ;
-  private int cKK;
-  private int cKL;
-  private boolean cKM;
-  private aa.d cKN;
-  private final u.c cKO;
-  private int cpD;
-  private final af czp;
-  private boolean czr;
+  public aw eEr;
+  private u eEs;
+  private aa eEt;
+  private EditText eEu;
+  private int eEv;
+  private int eEw;
+  private boolean eEx;
+  private aa.d eEy;
+  private final u.c eEz;
+  private int ehr;
+  private final ai erO;
+  private boolean erQ;
   
-  public a(XWalkView paramXWalkView)
+  public a(XWebExtendInterface paramXWebExtendInterface)
   {
-    super(paramXWalkView);
-    AppMethodBeat.i(139367);
+    super(paramXWebExtendInterface);
+    AppMethodBeat.i(220583);
     this.TAG = "WebViewExtendTextAreaClient";
-    this.cKK = 0;
-    this.cpD = 0;
-    this.czr = false;
-    this.cKL = 0;
-    this.cKM = false;
-    this.czp = new af();
-    this.cKN = new aa.d()
+    this.eEv = 0;
+    this.ehr = 0;
+    this.erQ = false;
+    this.eEw = 0;
+    this.eEx = false;
+    this.erO = new ai();
+    this.eEy = new aa.d()
     {
       public final EditText getEditText()
       {
-        AppMethodBeat.i(222403);
+        AppMethodBeat.i(220596);
         EditText localEditText = a.d(a.this);
-        AppMethodBeat.o(222403);
+        AppMethodBeat.o(220596);
         return localEditText;
       }
       
-      public final void jj(int paramAnonymousInt)
+      public final void mL(int paramAnonymousInt)
       {
         boolean bool = true;
-        AppMethodBeat.i(222402);
+        AppMethodBeat.i(220590);
         if (a.a(a.this) == null)
         {
-          AppMethodBeat.o(222402);
+          AppMethodBeat.o(220590);
           return;
         }
         int i = a.a(a.this).getMinimumHeight();
@@ -86,25 +86,25 @@ public final class a
         {
           locala.onKeyboardHeightChanged(bool, j, false);
           a.c(a.this);
-          AppMethodBeat.o(222402);
+          AppMethodBeat.o(220590);
           return;
           label129:
           bool = false;
         }
       }
     };
-    this.cKO = new u.c()
+    this.eEz = new u.c()
     {
-      public final void ca(boolean paramAnonymousBoolean)
+      public final void cK(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(223057);
+        AppMethodBeat.i(220595);
         Object localObject = a.f(a.this);
         if (localObject != null)
         {
           if (a.d(a.this) != null)
           {
             if (paramAnonymousBoolean) {
-              ((aa)localObject).rwP = a.d(a.this);
+              ((aa)localObject).uHT = a.d(a.this);
             }
           }
           else
@@ -114,7 +114,7 @@ public final class a
             }
             i = a.e(a.this);
             label54:
-            ((aa)localObject).iF(i);
+            ((aa)localObject).mo(i);
           }
         }
         else
@@ -130,7 +130,7 @@ public final class a
         {
           ((a)localObject).onKeyboardHeightChanged(paramAnonymousBoolean, i, false);
           a.c(a.this);
-          AppMethodBeat.o(223057);
+          AppMethodBeat.o(220595);
           return;
           ((aa)localObject).b(a.d(a.this));
           break;
@@ -141,16 +141,16 @@ public final class a
       
       public final int getHeight()
       {
-        AppMethodBeat.i(223059);
+        AppMethodBeat.i(220598);
         int i = a.e(a.this);
-        AppMethodBeat.o(223059);
+        AppMethodBeat.o(220598);
         return i;
       }
       
-      public final void iF(int paramAnonymousInt)
+      public final void mo(int paramAnonymousInt)
       {
         int j = 0;
-        AppMethodBeat.i(223051);
+        AppMethodBeat.i(220589);
         int i = j;
         Object localObject;
         if (paramAnonymousInt != 0)
@@ -179,49 +179,49 @@ public final class a
           }
           localObject = a.f(a.this);
           if (localObject != null) {
-            ((aa)localObject).iF(paramAnonymousInt);
+            ((aa)localObject).mo(paramAnonymousInt);
           }
-          AppMethodBeat.o(223051);
+          AppMethodBeat.o(220589);
           return;
         }
       }
     };
-    AppMethodBeat.o(139367);
+    AppMethodBeat.o(220583);
   }
   
-  private aa Uu()
+  private aa auX()
   {
     Object localObject3 = null;
     AppMethodBeat.i(139368);
     try
     {
       Object localObject1;
-      if (this.cKI != null)
+      if (this.eEt != null)
       {
-        localObject1 = this.cKI;
+        localObject1 = this.eEt;
         return localObject1;
       }
-      if (!this.czr) {
+      if (!this.erQ) {
         return null;
       }
-      if ((this.cKG != null) && (this.cKG.cey() != null))
+      if ((this.eEr != null) && (this.eEr.cFb() != null))
       {
-        View localView = this.cKG.cey().getContentView();
+        View localView = this.eEr.cFb().getContentView();
         localObject1 = localObject3;
-        if (this.cKG.cey() != null)
+        if (this.eEr.cFb() != null)
         {
           localObject1 = localObject3;
-          if ((this.cKG.cey() instanceof ad)) {
-            localObject1 = ((ad)this.cKG.cey()).cef();
+          if ((this.eEr.cFb() instanceof ad)) {
+            localObject1 = ((ad)this.eEr.cFb()).cEK();
           }
         }
-        this.cKI = aa.b(localView, (com.tencent.mm.plugin.appbrand.n.a)localObject1);
-        if (this.cKI != null)
+        this.eEt = aa.b(localView, (com.tencent.mm.plugin.appbrand.o.a)localObject1);
+        if (this.eEt != null)
         {
-          this.cKJ = new EditText(this.cKI.getContext());
-          this.cKI.a(this.cKN);
+          this.eEu = new EditText(this.eEt.getContext());
+          this.eEt.a(this.eEy);
         }
-        localObject1 = this.cKI;
+        localObject1 = this.eEt;
         return localObject1;
       }
       return null;
@@ -232,16 +232,15 @@ public final class a
     }
   }
   
-  private void cy(boolean paramBoolean)
+  private void de(boolean paramBoolean)
   {
-    AppMethodBeat.i(228262);
+    AppMethodBeat.i(220597);
     StringBuilder localStringBuilder = new StringBuilder("(function(){    var focusElement = document.activeElement;    if(focusElement){        if(focusElement.onkeyboardconfirm){            focusElement.onkeyboardconfirm();        }");
     if (!paramBoolean) {}
     for (String str = "        focusElement.blur();";; str = "")
     {
-      str = str + "    }})();";
-      getXWalkView().evaluateJavascript(str, new ValueCallback() {});
-      AppMethodBeat.o(228262);
+      evaluateJavascript(str + "    }})();", new ValueCallback() {});
+      AppMethodBeat.o(220597);
       return;
     }
   }
@@ -249,11 +248,11 @@ public final class a
   public final int getToolBarHeight(int paramInt)
   {
     AppMethodBeat.i(139371);
-    aa localaa = Uu();
+    aa localaa = auX();
     if (localaa != null)
     {
-      this.cKK = localaa.getMinimumHeight();
-      int i = this.cKK;
+      this.eEv = localaa.getMinimumHeight();
+      int i = this.eEv;
       AppMethodBeat.o(139371);
       return i + paramInt;
     }
@@ -264,21 +263,21 @@ public final class a
   public final boolean onHideKeyboard(String paramString, InputConnection paramInputConnection)
   {
     AppMethodBeat.i(139370);
-    if (this.cKG != null)
+    if (this.eEr != null)
     {
-      paramString = Uu();
+      paramString = auX();
       if (paramString != null) {
-        paramString.ca(false);
+        paramString.cK(false);
       }
     }
-    if (this.cKH != null) {
-      this.cKH.b(this.cKO);
+    if (this.eEs != null) {
+      this.eEs.b(this.eEz);
     }
-    this.czr = false;
-    if (this.cKI != null) {
-      this.cKI.b(this.cKN);
+    this.erQ = false;
+    if (this.eEt != null) {
+      this.eEt.b(this.eEy);
     }
-    this.cKI = null;
+    this.eEt = null;
     AppMethodBeat.o(139370);
     return false;
   }
@@ -287,23 +286,23 @@ public final class a
   {
     boolean bool = true;
     AppMethodBeat.i(139369);
-    this.czr = true;
-    if (this.cKH == null) {
-      this.cKH = n.dr(this.cKG.cey().getContentView());
+    this.erQ = true;
+    if (this.eEs == null) {
+      this.eEs = n.ef(this.eEr.cFb().getContentView());
     }
-    if (this.cKH != null) {
-      this.cKH.a(this.cKO);
+    if (this.eEs != null) {
+      this.eEs.a(this.eEz);
     }
     paramString = new a(paramString);
-    this.cKM = paramString.cKZ;
-    if (this.cKG != null)
+    this.eEx = paramString.eEK;
+    if (this.eEr != null)
     {
-      paramInputConnection = Uu();
-      if ((paramInputConnection != null) && (paramString.cKW))
+      paramInputConnection = auX();
+      if ((paramInputConnection != null) && (paramString.eEH))
       {
-        paramInputConnection.setComponentView(paramString.cKY);
-        paramInputConnection.coX();
-        if ((paramString.cKX) || (!"emoji".equals(paramString.cKU))) {
+        paramInputConnection.setComponentView(paramString.eEJ);
+        paramInputConnection.cRz();
+        if ((paramString.eEI) || (!"emoji".equals(paramString.eEF))) {
           break label181;
         }
       }
@@ -311,26 +310,26 @@ public final class a
     for (;;)
     {
       paramInputConnection.setCanSmileyInput(bool);
-      paramInputConnection.setShowDoneButton(paramString.cKW);
+      paramInputConnection.setShowDoneButton(paramString.eEH);
       paramInputConnection.setOnDoneListener(new aa.c()
       {
-        public final void cz(boolean paramAnonymousBoolean)
+        public final void df(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(223119);
+          AppMethodBeat.i(220585);
           Log.i("WebViewExtendTextAreaClient", "onInputDone#onShowKeyboard, fromDoneButton: %b, confirmHold: %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(a.g(a.this)) });
           a.h(a.this);
-          AppMethodBeat.o(223119);
+          AppMethodBeat.o(220585);
         }
       });
       paramInputConnection.postDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(222179);
+          AppMethodBeat.i(220587);
           a locala;
           if (a.i(a.this))
           {
-            paramInputConnection.ca(paramString.cKW);
+            paramInputConnection.cK(paramString.eEH);
             locala = a.this;
             if (!a.i(a.this)) {
               break label72;
@@ -341,7 +340,7 @@ public final class a
           {
             locala.onKeyboardHeightChanged(true, i, false);
             a.c(a.this);
-            AppMethodBeat.o(222179);
+            AppMethodBeat.o(220587);
             return;
           }
         }
@@ -356,21 +355,21 @@ public final class a
   public final boolean onShowKeyboardConfig(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, EditorInfo paramEditorInfo)
   {
     Object localObject = null;
-    AppMethodBeat.i(228257);
+    AppMethodBeat.i(220634);
     Log.d("WebViewExtendTextAreaClient", "onShowKeyboardConfig");
     try
     {
-      paramString = b.anD(new JSONObject(paramString).optString("confirm-type", null));
+      paramString = b.ahb(new JSONObject(paramString).optString("confirm-type", null));
       if (paramString != null)
       {
         Log.i("WebViewExtendTextAreaClient", "onShowKeyboardConfig, confirmType: ".concat(String.valueOf(paramString)));
-        if (b.rzX != paramString) {
+        if (b.uLo != paramString) {
           paramEditorInfo.imeOptions &= 0xBFFFFFFF;
         }
-        paramEditorInfo.imeOptions |= paramString.rzY;
-        this.cKL = paramString.rzY;
+        paramEditorInfo.imeOptions |= paramString.uLp;
+        this.eEw = paramString.uLp;
       }
-      AppMethodBeat.o(228257);
+      AppMethodBeat.o(220634);
       return false;
     }
     catch (Exception paramString)
@@ -385,29 +384,29 @@ public final class a
   
   public final boolean performEditorAction(int paramInt)
   {
-    AppMethodBeat.i(228258);
+    AppMethodBeat.i(220637);
     Log.d("WebViewExtendTextAreaClient", "performEditorAction, actionCode: ".concat(String.valueOf(paramInt)));
-    if ((paramInt != 0) && (paramInt == this.cKL))
+    if ((paramInt != 0) && (paramInt == this.eEw))
     {
-      Log.i("WebViewExtendTextAreaClient", "performEditorAction, confirmHold: " + this.cKM);
-      cy(this.cKM);
-      AppMethodBeat.o(228258);
+      Log.i("WebViewExtendTextAreaClient", "performEditorAction, confirmHold: " + this.eEx);
+      de(this.eEx);
+      AppMethodBeat.o(220637);
       return false;
     }
-    AppMethodBeat.o(228258);
+    AppMethodBeat.o(220637);
     return true;
   }
   
   public final class a
   {
-    public String cKS;
-    public String cKT;
-    public String cKU;
-    public Integer cKV;
-    public boolean cKW;
-    public boolean cKX;
-    public boolean cKY;
-    public boolean cKZ;
+    public String eED;
+    public String eEE;
+    public String eEF;
+    public Integer eEG;
+    public boolean eEH;
+    public boolean eEI;
+    public boolean eEJ;
+    public boolean eEK;
     
     /* Error */
     public a(String paramString)
@@ -415,35 +414,35 @@ public final class a
       // Byte code:
       //   0: aload_0
       //   1: aload_1
-      //   2: putfield 30	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKP	Lcom/tencent/luggage/xweb_ext/extendplugin/c/a;
+      //   2: putfield 30	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEA	Lcom/tencent/luggage/xweb_ext/extendplugin/c/a;
       //   5: aload_0
       //   6: invokespecial 33	java/lang/Object:<init>	()V
       //   9: ldc 34
       //   11: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   14: aload_0
       //   15: ldc 42
-      //   17: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKS	Ljava/lang/String;
+      //   17: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eED	Ljava/lang/String;
       //   20: aload_0
       //   21: ldc 42
-      //   23: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKT	Ljava/lang/String;
+      //   23: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEE	Ljava/lang/String;
       //   26: aload_0
       //   27: ldc 42
-      //   29: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKU	Ljava/lang/String;
+      //   29: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEF	Ljava/lang/String;
       //   32: aload_0
       //   33: aconst_null
-      //   34: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKV	Ljava/lang/Integer;
+      //   34: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEG	Ljava/lang/Integer;
       //   37: aload_0
       //   38: iconst_0
-      //   39: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKW	Z
+      //   39: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEH	Z
       //   42: aload_0
       //   43: iconst_0
-      //   44: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKX	Z
+      //   44: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEI	Z
       //   47: aload_0
       //   48: iconst_0
-      //   49: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKY	Z
+      //   49: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEJ	Z
       //   52: aload_0
       //   53: iconst_0
-      //   54: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKZ	Z
+      //   54: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEK	Z
       //   57: ldc 60
       //   59: ldc 62
       //   61: aload_2
@@ -452,7 +451,7 @@ public final class a
       //   68: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   71: aload_0
       //   72: aload_2
-      //   73: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKS	Ljava/lang/String;
+      //   73: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eED	Ljava/lang/String;
       //   76: new 79	org/json/JSONObject
       //   79: dup
       //   80: aload_2
@@ -466,7 +465,7 @@ public final class a
       //   95: aload_1
       //   96: ldc 84
       //   98: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-      //   101: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKT	Ljava/lang/String;
+      //   101: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEE	Ljava/lang/String;
       //   104: aload_1
       //   105: ldc 93
       //   107: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -475,7 +474,7 @@ public final class a
       //   114: aload_1
       //   115: ldc 93
       //   117: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-      //   120: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKU	Ljava/lang/String;
+      //   120: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEF	Ljava/lang/String;
       //   123: aload_1
       //   124: ldc 95
       //   126: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -487,7 +486,7 @@ public final class a
       //   139: iconst_0
       //   140: invokestatic 101	com/tencent/mm/sdk/platformtools/Util:getInt	(Ljava/lang/String;I)I
       //   143: invokestatic 106	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   146: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKV	Ljava/lang/Integer;
+      //   146: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEG	Ljava/lang/Integer;
       //   149: aload_1
       //   150: ldc 108
       //   152: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -498,7 +497,7 @@ public final class a
       //   162: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   165: iconst_0
       //   166: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   169: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKW	Z
+      //   169: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEH	Z
       //   172: aload_1
       //   173: ldc 114
       //   175: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -509,7 +508,7 @@ public final class a
       //   185: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   188: iconst_0
       //   189: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   192: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKX	Z
+      //   192: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEI	Z
       //   195: aload_1
       //   196: ldc 116
       //   198: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -520,7 +519,7 @@ public final class a
       //   208: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   211: iconst_0
       //   212: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   215: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKY	Z
+      //   215: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEJ	Z
       //   218: aload_1
       //   219: ldc 118
       //   221: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -531,7 +530,7 @@ public final class a
       //   231: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   234: iconst_0
       //   235: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   238: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKZ	Z
+      //   238: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:eEK	Z
       //   241: ldc 34
       //   243: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   246: return
@@ -639,7 +638,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.c.a
  * JD-Core Version:    0.7.0.1
  */

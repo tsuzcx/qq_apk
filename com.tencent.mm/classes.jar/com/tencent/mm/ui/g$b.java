@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g$b<K, T>
 {
-  public int VTo;
-  public T VTp;
+  public int adxx;
+  public T adxy;
   public K object;
   
   public g$b(K paramK, int paramInt)
   {
     this.object = paramK;
-    this.VTo = paramInt;
-    this.VTp = null;
+    this.adxx = paramInt;
+    this.adxy = null;
   }
   
   public final boolean equals(Object paramObject)
@@ -34,7 +34,7 @@ public final class g$b<K, T>
       return false;
     }
     paramObject = (b)paramObject;
-    if (this.VTo != paramObject.VTo)
+    if (this.adxx != paramObject.adxx)
     {
       AppMethodBeat.o(32999);
       return false;
@@ -59,7 +59,7 @@ public final class g$b<K, T>
   public final int hashCode()
   {
     AppMethodBeat.i(32998);
-    int j = this.VTo;
+    int j = this.adxx;
     if (this.object == null) {}
     for (int i = 0;; i = this.object.hashCode())
     {

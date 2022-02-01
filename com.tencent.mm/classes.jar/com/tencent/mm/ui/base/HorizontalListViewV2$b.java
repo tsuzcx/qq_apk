@@ -1,11 +1,9 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(11)
 final class HorizontalListViewV2$b
 {
   static

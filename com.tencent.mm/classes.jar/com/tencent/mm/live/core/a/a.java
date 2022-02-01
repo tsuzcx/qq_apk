@@ -1,21 +1,21 @@
 package com.tencent.mm.live.core.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/log/LiveErrorCodeTranslate;", "", "()V", "LIVE_CDN_SEI_MSG", "", "LIVE_ERR_CODE", "LIVE_FIRST_FRAME_HEIGHT", "LIVE_FIRST_FRAME_WIDTH", "LIVE_MEDIA_ENABLE", "LIVE_STREAM_TYPE", "LIVE_USER_EXIT_REASON", "LIVE_USER_ID", "LIVE_USER_VOLUME_INFO", "translate", "code", "", "plugin-core_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/core/log/LiveErrorCodeTranslate;", "", "()V", "LIVE_CDN_SEI_MSG", "", "LIVE_ERR_CODE", "LIVE_FIRST_FRAME_HEIGHT", "LIVE_FIRST_FRAME_WIDTH", "LIVE_LINK_MIC_INFO_IN_ANCHOR_SEI_MSG", "LIVE_MEDIA_ENABLE", "LIVE_STREAM_TYPE", "LIVE_USER_EXIT_REASON", "LIVE_USER_ID", "LIVE_USER_VOLUME_INFO", "translate", "code", "", "plugin-core_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a kqC;
+  public static final a mUB;
   
   static
   {
-    AppMethodBeat.i(198225);
-    kqC = new a();
-    AppMethodBeat.o(198225);
+    AppMethodBeat.i(247549);
+    mUB = new a();
+    AppMethodBeat.o(247549);
   }
   
-  public static String ti(int paramInt)
+  public static String td(int paramInt)
   {
     switch (paramInt)
     {
@@ -327,7 +327,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.a.a
  * JD-Core Version:    0.7.0.1
  */

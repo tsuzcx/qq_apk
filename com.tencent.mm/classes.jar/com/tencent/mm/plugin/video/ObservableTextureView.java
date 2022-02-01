@@ -12,15 +12,15 @@ public class ObservableTextureView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  protected b Nkn;
-  private boolean Nko;
+  protected b TXa;
+  private boolean TXb;
   protected SurfaceTexture surfaceTexture;
   
   public ObservableTextureView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(127133);
-    this.Nko = false;
+    this.TXb = false;
     init();
     AppMethodBeat.o(127133);
   }
@@ -29,7 +29,7 @@ public class ObservableTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(127134);
-    this.Nko = false;
+    this.TXb = false;
     init();
     AppMethodBeat.o(127134);
   }
@@ -37,7 +37,7 @@ public class ObservableTextureView
   public ObservableTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.Nko = false;
+    this.TXb = false;
   }
   
   private void init()
@@ -50,17 +50,17 @@ public class ObservableTextureView
   
   public boolean isAvailable()
   {
-    return this.Nko;
+    return this.TXb;
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127136);
     Log.i("MicroMsg.ObservableTextureView", "onSurfaceTextureAvailable");
-    hKg();
-    this.Nko = true;
-    if (this.Nkn != null) {
-      this.Nkn.g(paramSurfaceTexture);
+    jmM();
+    this.TXb = true;
+    if (this.TXa != null) {
+      this.TXa.h(paramSurfaceTexture);
     }
     AppMethodBeat.o(127136);
   }
@@ -69,7 +69,7 @@ public class ObservableTextureView
   {
     AppMethodBeat.i(127138);
     Log.i("MicroMsg.ObservableTextureView", "onSurfaceTextureDestroyed");
-    this.Nko = false;
+    this.TXb = false;
     AppMethodBeat.o(127138);
     return false;
   }
@@ -85,7 +85,7 @@ public class ObservableTextureView
   
   public void setTextureChangeCallback(b paramb)
   {
-    this.Nkn = paramb;
+    this.TXa = paramb;
   }
 }
 

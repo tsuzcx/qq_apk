@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/c5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_filled_search_logo" app:iconColor="@color/a5c" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/cf_" />
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/cv" android:paddingRight="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/FG_0" android:gravity="center_vertical" android:id="@id/hpi" android:layout_width="fill_parent" android:layout_height="@dimen/db" android:text="@string/eg1" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/FG_0" android:id="@id/hph" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/egj" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bz" android:layout_marginBottom="@dimen/d0">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7q" android:gravity="center" android:id="@id/hp7" android:background="@drawable/vd" android:layout_width="@dimen/cj" android:layout_height="@dimen/d4" android:text="@string/zp" />
+    </LinearLayout>
 </LinearLayout>

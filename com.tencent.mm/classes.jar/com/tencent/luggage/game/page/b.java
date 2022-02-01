@@ -14,7 +14,7 @@ public final class b
   extends FrameLayout
   implements bh
 {
-  private b cvn = null;
+  private b enl = null;
   
   public b(Context paramContext)
   {
@@ -32,7 +32,7 @@ public final class b
     return this;
   }
   
-  public final void iK(int paramInt) {}
+  public final void mn(int paramInt) {}
   
   public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
@@ -43,27 +43,27 @@ public final class b
     if (((paramView instanceof CoverViewContainer)) && (!paramView.hasOnClickListeners())) {
       paramView.setOnTouchListener(new b.a((byte)0));
     }
-    if (this.cvn != null) {
-      this.cvn.cs(paramView);
+    if (this.enl != null) {
+      this.enl.cO(paramView);
     }
     AppMethodBeat.o(130626);
   }
   
   public final void setNativeWidgetAddedCallback(b paramb)
   {
-    this.cvn = paramb;
+    this.enl = paramb;
   }
   
   public final void setupWebViewTouchInterceptor(bd parambd) {}
   
   public static abstract interface b
   {
-    public abstract void cs(View paramView);
+    public abstract void cO(View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.page.b
  * JD-Core Version:    0.7.0.1
  */

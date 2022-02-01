@@ -12,6 +12,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction;
+import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 import android.view.accessibility.AccessibilityNodeInfo.CollectionItemInfo;
 import androidx.core.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -23,19 +24,64 @@ import java.util.List;
 
 public class d
 {
-  private static int Oy = 0;
-  public final AccessibilityNodeInfo Ov;
-  public int Ow = -1;
-  public int Ox = -1;
+  private static int buR = 0;
+  public final AccessibilityNodeInfo buO;
+  public int buP = -1;
+  private int buQ = -1;
   
   private d(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    this.Ov = paramAccessibilityNodeInfo;
+    this.buO = paramAccessibilityNodeInfo;
+  }
+  
+  public static d EI()
+  {
+    AppMethodBeat.i(196024);
+    d locald = a(AccessibilityNodeInfo.obtain());
+    AppMethodBeat.o(196024);
+    return locald;
+  }
+  
+  private boolean ES()
+  {
+    AppMethodBeat.i(196094);
+    if (!az("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY").isEmpty())
+    {
+      AppMethodBeat.o(196094);
+      return true;
+    }
+    AppMethodBeat.o(196094);
+    return false;
+  }
+  
+  private List<a> EU()
+  {
+    AppMethodBeat.i(196117);
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (List localList = this.buO.getActionList();; localList = null)
+    {
+      if (localList != null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        int j = localList.size();
+        int i = 0;
+        while (i < j)
+        {
+          localArrayList.add(new a(localList.get(i)));
+          i += 1;
+        }
+        AppMethodBeat.o(196117);
+        return localArrayList;
+      }
+      localList = Collections.emptyList();
+      AppMethodBeat.o(196117);
+      return localList;
+    }
   }
   
   public static int a(ClickableSpan paramClickableSpan, SparseArray<WeakReference<ClickableSpan>> paramSparseArray)
   {
-    AppMethodBeat.i(252143);
+    AppMethodBeat.i(196075);
     if (paramSparseArray != null)
     {
       i = 0;
@@ -44,51 +90,51 @@ public class d
         if (paramClickableSpan.equals((ClickableSpan)((WeakReference)paramSparseArray.valueAt(i)).get()))
         {
           i = paramSparseArray.keyAt(i);
-          AppMethodBeat.o(252143);
+          AppMethodBeat.o(196075);
           return i;
         }
         i += 1;
       }
     }
-    int i = Oy;
-    Oy = i + 1;
-    AppMethodBeat.o(252143);
+    int i = buR;
+    buR = i + 1;
+    AppMethodBeat.o(196075);
     return i;
   }
   
   public static d a(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    AppMethodBeat.i(252083);
+    AppMethodBeat.i(196004);
     paramAccessibilityNodeInfo = new d(paramAccessibilityNodeInfo);
-    AppMethodBeat.o(252083);
+    AppMethodBeat.o(196004);
     return paramAccessibilityNodeInfo;
   }
   
   public static d a(d paramd)
   {
-    AppMethodBeat.i(252091);
-    paramd = a(AccessibilityNodeInfo.obtain(paramd.Ov));
-    AppMethodBeat.o(252091);
+    AppMethodBeat.i(196033);
+    paramd = a(AccessibilityNodeInfo.obtain(paramd.buO));
+    AppMethodBeat.o(196033);
     return paramd;
   }
   
-  public static d aw(View paramView)
+  public static d aK(View paramView)
   {
-    AppMethodBeat.i(252085);
+    AppMethodBeat.i(196013);
     paramView = a(AccessibilityNodeInfo.obtain(paramView));
-    AppMethodBeat.o(252085);
+    AppMethodBeat.o(196013);
     return paramView;
   }
   
-  public static SparseArray<WeakReference<ClickableSpan>> az(View paramView)
+  public static SparseArray<WeakReference<ClickableSpan>> aN(View paramView)
   {
-    AppMethodBeat.i(252141);
+    AppMethodBeat.i(196049);
     paramView = (SparseArray)paramView.getTag(a.c.tag_accessibility_clickable_spans);
-    AppMethodBeat.o(252141);
+    AppMethodBeat.o(196049);
     return paramView;
   }
   
-  private static String bB(int paramInt)
+  private static String ew(int paramInt)
   {
     switch (paramInt)
     {
@@ -164,489 +210,700 @@ public class d
       return "ACTION_MOVE_WINDOW";
     case 16908356: 
       return "ACTION_SHOW_TOOLTIP";
+    case 16908357: 
+      return "ACTION_HIDE_TOOLTIP";
+    case 16908362: 
+      return "ACTION_PRESS_AND_HOLD";
     }
-    return "ACTION_HIDE_TOOLTIP";
+    return "ACTION_IME_ENTER";
   }
   
-  public static d hr()
+  private void t(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(252088);
-    d locald = a(AccessibilityNodeInfo.obtain());
-    AppMethodBeat.o(252088);
-    return locald;
-  }
-  
-  private List<a> hu()
-  {
-    AppMethodBeat.i(252149);
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (List localList = this.Ov.getActionList();; localList = null)
-    {
-      if (localList != null)
-      {
-        ArrayList localArrayList = new ArrayList();
-        int j = localList.size();
-        int i = 0;
-        while (i < j)
-        {
-          localArrayList.add(new a(localList.get(i)));
-          i += 1;
-        }
-        AppMethodBeat.o(252149);
-        return localArrayList;
-      }
-      localList = Collections.emptyList();
-      AppMethodBeat.o(252149);
-      return localList;
-    }
-  }
-  
-  public static ClickableSpan[] u(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(252142);
-    if ((paramCharSequence instanceof Spanned))
-    {
-      paramCharSequence = (ClickableSpan[])((Spanned)paramCharSequence).getSpans(0, paramCharSequence.length(), ClickableSpan.class);
-      AppMethodBeat.o(252142);
-      return paramCharSequence;
-    }
-    AppMethodBeat.o(252142);
-    return null;
-  }
-  
-  public final void D(Object paramObject)
-  {
-    AppMethodBeat.i(252146);
-    AccessibilityNodeInfo localAccessibilityNodeInfo;
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      localAccessibilityNodeInfo = this.Ov;
-      if (paramObject != null) {
-        break label35;
-      }
-    }
-    label35:
-    for (paramObject = null;; paramObject = (AccessibilityNodeInfo.CollectionItemInfo)((c)paramObject).Pq)
-    {
-      localAccessibilityNodeInfo.setCollectionItemInfo(paramObject);
-      AppMethodBeat.o(252146);
-      return;
-    }
-  }
-  
-  public final List<Integer> F(String paramString)
-  {
-    AppMethodBeat.i(252098);
-    if (Build.VERSION.SDK_INT < 19)
-    {
-      paramString = new ArrayList();
-      AppMethodBeat.o(252098);
-      return paramString;
-    }
-    ArrayList localArrayList2 = this.Ov.getExtras().getIntegerArrayList(paramString);
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null)
-    {
-      localArrayList1 = new ArrayList();
-      this.Ov.getExtras().putIntegerArrayList(paramString, localArrayList1);
-    }
-    AppMethodBeat.o(252098);
-    return localArrayList1;
-  }
-  
-  public final void Y(boolean paramBoolean)
-  {
-    AppMethodBeat.i(252114);
-    this.Ov.setFocused(paramBoolean);
-    AppMethodBeat.o(252114);
-  }
-  
-  public final void Z(boolean paramBoolean)
-  {
-    AppMethodBeat.i(252118);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.Ov.setVisibleToUser(paramBoolean);
-    }
-    AppMethodBeat.o(252118);
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(252099);
-    if (Build.VERSION.SDK_INT >= 21) {
-      this.Ov.addAction((AccessibilityNodeInfo.AccessibilityAction)parama.Pn);
-    }
-    AppMethodBeat.o(252099);
-  }
-  
-  public final void aa(boolean paramBoolean)
-  {
-    AppMethodBeat.i(252121);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.Ov.setAccessibilityFocused(paramBoolean);
-    }
-    AppMethodBeat.o(252121);
-  }
-  
-  public final void ab(boolean paramBoolean)
-  {
-    AppMethodBeat.i(252130);
-    this.Ov.setScrollable(paramBoolean);
-    AppMethodBeat.o(252130);
-  }
-  
-  public final void ac(boolean paramBoolean)
-  {
-    AppMethodBeat.i(252152);
-    if (Build.VERSION.SDK_INT >= 19) {
-      this.Ov.setDismissable(paramBoolean);
-    }
-    AppMethodBeat.o(252152);
-  }
-  
-  public final void ax(View paramView)
-  {
-    AppMethodBeat.i(252093);
-    this.Ox = -1;
-    this.Ov.setSource(paramView);
-    AppMethodBeat.o(252093);
-  }
-  
-  public final void ay(View paramView)
-  {
-    AppMethodBeat.i(252094);
-    this.Ov.addChild(paramView);
-    AppMethodBeat.o(252094);
-  }
-  
-  public final boolean b(a parama)
-  {
-    AppMethodBeat.i(252101);
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      boolean bool = this.Ov.removeAction((AccessibilityNodeInfo.AccessibilityAction)parama.Pn);
-      AppMethodBeat.o(252101);
-      return bool;
-    }
-    AppMethodBeat.o(252101);
-    return false;
-  }
-  
-  public final void bA(int paramInt)
-  {
-    AppMethodBeat.i(252097);
-    this.Ov.addAction(paramInt);
-    AppMethodBeat.o(252097);
-  }
-  
-  @Deprecated
-  public final void e(Rect paramRect)
-  {
-    AppMethodBeat.i(252104);
-    this.Ov.getBoundsInParent(paramRect);
-    AppMethodBeat.o(252104);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(252154);
-    if (this == paramObject)
-    {
-      AppMethodBeat.o(252154);
-      return true;
-    }
-    if (paramObject == null)
-    {
-      AppMethodBeat.o(252154);
-      return false;
-    }
-    if (!(paramObject instanceof d))
-    {
-      AppMethodBeat.o(252154);
-      return false;
-    }
-    paramObject = (d)paramObject;
-    if (this.Ov == null)
-    {
-      if (paramObject.Ov != null)
-      {
-        AppMethodBeat.o(252154);
-        return false;
-      }
-    }
-    else if (!this.Ov.equals(paramObject.Ov))
-    {
-      AppMethodBeat.o(252154);
-      return false;
-    }
-    if (this.Ox != paramObject.Ox)
-    {
-      AppMethodBeat.o(252154);
-      return false;
-    }
-    if (this.Ow != paramObject.Ow)
-    {
-      AppMethodBeat.o(252154);
-      return false;
-    }
-    AppMethodBeat.o(252154);
-    return true;
-  }
-  
-  public final void f(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(252159);
+    AppMethodBeat.i(196134);
     Bundle localBundle = getExtras();
     int j;
     if (localBundle != null)
     {
       j = localBundle.getInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY", 0);
       if (!paramBoolean) {
-        break label57;
+        break label53;
       }
     }
-    label57:
+    label53:
     for (int i = paramInt;; i = 0)
     {
       localBundle.putInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.BOOLEAN_PROPERTY_KEY", j & (paramInt ^ 0xFFFFFFFF) | i);
-      AppMethodBeat.o(252159);
+      AppMethodBeat.o(196134);
       return;
     }
   }
   
-  @Deprecated
-  public final void f(Rect paramRect)
+  public static ClickableSpan[] w(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(252106);
-    this.Ov.setBoundsInParent(paramRect);
-    AppMethodBeat.o(252106);
+    AppMethodBeat.i(196059);
+    if ((paramCharSequence instanceof Spanned))
+    {
+      paramCharSequence = (ClickableSpan[])((Spanned)paramCharSequence).getSpans(0, paramCharSequence.length(), ClickableSpan.class);
+      AppMethodBeat.o(196059);
+      return paramCharSequence;
+    }
+    AppMethodBeat.o(196059);
+    return null;
   }
   
-  public final void g(Rect paramRect)
+  public final void A(View paramView, int paramInt)
   {
-    AppMethodBeat.i(252108);
-    this.Ov.getBoundsInScreen(paramRect);
-    AppMethodBeat.o(252108);
+    AppMethodBeat.i(196340);
+    this.buP = paramInt;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.buO.setParent(paramView, paramInt);
+    }
+    AppMethodBeat.o(196340);
+  }
+  
+  public final int EJ()
+  {
+    AppMethodBeat.i(196242);
+    int i = this.buO.getActions();
+    AppMethodBeat.o(196242);
+    return i;
+  }
+  
+  public final int EK()
+  {
+    AppMethodBeat.i(196314);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      int i = this.buO.getMovementGranularities();
+      AppMethodBeat.o(196314);
+      return i;
+    }
+    AppMethodBeat.o(196314);
+    return 0;
+  }
+  
+  public final boolean EL()
+  {
+    AppMethodBeat.i(196479);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      boolean bool = this.buO.isVisibleToUser();
+      AppMethodBeat.o(196479);
+      return bool;
+    }
+    AppMethodBeat.o(196479);
+    return false;
+  }
+  
+  public final boolean EM()
+  {
+    AppMethodBeat.i(196500);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      boolean bool = this.buO.isAccessibilityFocused();
+      AppMethodBeat.o(196500);
+      return bool;
+    }
+    AppMethodBeat.o(196500);
+    return false;
+  }
+  
+  public final boolean EN()
+  {
+    AppMethodBeat.i(196571);
+    boolean bool = this.buO.isLongClickable();
+    AppMethodBeat.o(196571);
+    return bool;
+  }
+  
+  public final boolean EO()
+  {
+    AppMethodBeat.i(196604);
+    boolean bool = this.buO.isPassword();
+    AppMethodBeat.o(196604);
+    return bool;
+  }
+  
+  public final boolean EP()
+  {
+    AppMethodBeat.i(196615);
+    boolean bool = this.buO.isScrollable();
+    AppMethodBeat.o(196615);
+    return bool;
+  }
+  
+  public final CharSequence EQ()
+  {
+    AppMethodBeat.i(196630);
+    CharSequence localCharSequence = this.buO.getPackageName();
+    AppMethodBeat.o(196630);
+    return localCharSequence;
+  }
+  
+  public final CharSequence ER()
+  {
+    AppMethodBeat.i(196650);
+    CharSequence localCharSequence = this.buO.getClassName();
+    AppMethodBeat.o(196650);
+    return localCharSequence;
+  }
+  
+  public final CharSequence ET()
+  {
+    AppMethodBeat.i(196692);
+    CharSequence localCharSequence;
+    if (androidx.core.c.a.DR())
+    {
+      localCharSequence = this.buO.getStateDescription();
+      AppMethodBeat.o(196692);
+      return localCharSequence;
+    }
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      localCharSequence = this.buO.getExtras().getCharSequence("androidx.view.accessibility.AccessibilityNodeInfoCompat.STATE_DESCRIPTION_KEY");
+      AppMethodBeat.o(196692);
+      return localCharSequence;
+    }
+    AppMethodBeat.o(196692);
+    return null;
+  }
+  
+  public final void EV()
+  {
+    AppMethodBeat.i(196754);
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.buO.setContentInvalid(true);
+    }
+    AppMethodBeat.o(196754);
+  }
+  
+  public final void EW()
+  {
+    AppMethodBeat.i(196781);
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.buO.setCanOpenPopup(true);
+    }
+    AppMethodBeat.o(196781);
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(196281);
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.buO.addAction((AccessibilityNodeInfo.AccessibilityAction)parama.bvF);
+    }
+    AppMethodBeat.o(196281);
+  }
+  
+  public final void aB(Object paramObject)
+  {
+    AppMethodBeat.i(196731);
+    AccessibilityNodeInfo localAccessibilityNodeInfo;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      localAccessibilityNodeInfo = this.buO;
+      if (paramObject != null) {
+        break label37;
+      }
+    }
+    label37:
+    for (paramObject = null;; paramObject = (AccessibilityNodeInfo.CollectionInfo)((d.b)paramObject).bvI)
+    {
+      localAccessibilityNodeInfo.setCollectionInfo(paramObject);
+      AppMethodBeat.o(196731);
+      return;
+    }
+  }
+  
+  public final void aC(Object paramObject)
+  {
+    AppMethodBeat.i(196740);
+    AccessibilityNodeInfo localAccessibilityNodeInfo;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      localAccessibilityNodeInfo = this.buO;
+      if (paramObject != null) {
+        break label37;
+      }
+    }
+    label37:
+    for (paramObject = null;; paramObject = (AccessibilityNodeInfo.CollectionItemInfo)((d.c)paramObject).bvI)
+    {
+      localAccessibilityNodeInfo.setCollectionItemInfo(paramObject);
+      AppMethodBeat.o(196740);
+      return;
+    }
+  }
+  
+  public final void aE(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196468);
+    this.buO.setFocused(paramBoolean);
+    AppMethodBeat.o(196468);
+  }
+  
+  public final void aF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196491);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.buO.setVisibleToUser(paramBoolean);
+    }
+    AppMethodBeat.o(196491);
+  }
+  
+  public final void aG(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196512);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.buO.setAccessibilityFocused(paramBoolean);
+    }
+    AppMethodBeat.o(196512);
+  }
+  
+  public final void aH(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196625);
+    this.buO.setScrollable(paramBoolean);
+    AppMethodBeat.o(196625);
+  }
+  
+  public final void aI(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196799);
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.buO.setDismissable(paramBoolean);
+    }
+    AppMethodBeat.o(196799);
+  }
+  
+  public final void aJ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196819);
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      this.buO.setScreenReaderFocusable(paramBoolean);
+      AppMethodBeat.o(196819);
+      return;
+    }
+    t(1, paramBoolean);
+    AppMethodBeat.o(196819);
+  }
+  
+  public final void aK(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196829);
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      this.buO.setShowingHintText(paramBoolean);
+      AppMethodBeat.o(196829);
+      return;
+    }
+    t(4, paramBoolean);
+    AppMethodBeat.o(196829);
+  }
+  
+  public final void aL(View paramView)
+  {
+    AppMethodBeat.i(196181);
+    this.buQ = -1;
+    this.buO.setSource(paramView);
+    AppMethodBeat.o(196181);
+  }
+  
+  public final void aL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196835);
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      this.buO.setHeading(paramBoolean);
+      AppMethodBeat.o(196835);
+      return;
+    }
+    t(2, paramBoolean);
+    AppMethodBeat.o(196835);
+  }
+  
+  public final void aM(View paramView)
+  {
+    AppMethodBeat.i(196217);
+    this.buO.addChild(paramView);
+    AppMethodBeat.o(196217);
+  }
+  
+  public final List<Integer> az(String paramString)
+  {
+    AppMethodBeat.i(196272);
+    if (Build.VERSION.SDK_INT < 19)
+    {
+      paramString = new ArrayList();
+      AppMethodBeat.o(196272);
+      return paramString;
+    }
+    ArrayList localArrayList2 = this.buO.getExtras().getIntegerArrayList(paramString);
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null)
+    {
+      localArrayList1 = new ArrayList();
+      this.buO.getExtras().putIntegerArrayList(paramString, localArrayList1);
+    }
+    AppMethodBeat.o(196272);
+    return localArrayList1;
+  }
+  
+  public final boolean b(a parama)
+  {
+    AppMethodBeat.i(196292);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      boolean bool = this.buO.removeAction((AccessibilityNodeInfo.AccessibilityAction)parama.bvF);
+      AppMethodBeat.o(196292);
+      return bool;
+    }
+    AppMethodBeat.o(196292);
+    return false;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(196854);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(196854);
+      return true;
+    }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(196854);
+      return false;
+    }
+    if (!(paramObject instanceof d))
+    {
+      AppMethodBeat.o(196854);
+      return false;
+    }
+    paramObject = (d)paramObject;
+    if (this.buO == null)
+    {
+      if (paramObject.buO != null)
+      {
+        AppMethodBeat.o(196854);
+        return false;
+      }
+    }
+    else if (!this.buO.equals(paramObject.buO))
+    {
+      AppMethodBeat.o(196854);
+      return false;
+    }
+    if (this.buQ != paramObject.buQ)
+    {
+      AppMethodBeat.o(196854);
+      return false;
+    }
+    if (this.buP != paramObject.buP)
+    {
+      AppMethodBeat.o(196854);
+      return false;
+    }
+    AppMethodBeat.o(196854);
+    return true;
+  }
+  
+  public final void eu(int paramInt)
+  {
+    AppMethodBeat.i(196258);
+    this.buO.addAction(paramInt);
+    AppMethodBeat.o(196258);
+  }
+  
+  public final void ev(int paramInt)
+  {
+    AppMethodBeat.i(196304);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.buO.setMovementGranularities(paramInt);
+    }
+    AppMethodBeat.o(196304);
+  }
+  
+  public final int getChildCount()
+  {
+    AppMethodBeat.i(196206);
+    int i = this.buO.getChildCount();
+    AppMethodBeat.o(196206);
+    return i;
+  }
+  
+  public final CharSequence getContentDescription()
+  {
+    AppMethodBeat.i(196681);
+    CharSequence localCharSequence = this.buO.getContentDescription();
+    AppMethodBeat.o(196681);
+    return localCharSequence;
   }
   
   public final Bundle getExtras()
   {
-    AppMethodBeat.i(252151);
+    AppMethodBeat.i(196789);
     if (Build.VERSION.SDK_INT >= 19)
     {
-      localBundle = this.Ov.getExtras();
-      AppMethodBeat.o(252151);
+      localBundle = this.buO.getExtras();
+      AppMethodBeat.o(196789);
       return localBundle;
     }
     Bundle localBundle = new Bundle();
-    AppMethodBeat.o(252151);
+    AppMethodBeat.o(196789);
     return localBundle;
   }
   
   public final CharSequence getText()
   {
-    AppMethodBeat.i(252138);
-    int i;
-    if (!F("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY").isEmpty()) {
-      i = 1;
-    }
-    while (i != 0)
+    AppMethodBeat.i(196666);
+    if (ES())
     {
-      localObject = F("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY");
-      List localList1 = F("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_END_KEY");
-      List localList2 = F("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_FLAGS_KEY");
-      List localList3 = F("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ID_KEY");
-      SpannableString localSpannableString = new SpannableString(TextUtils.substring(this.Ov.getText(), 0, this.Ov.getText().length()));
-      i = 0;
-      for (;;)
+      localObject = az("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_START_KEY");
+      List localList1 = az("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_END_KEY");
+      List localList2 = az("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_FLAGS_KEY");
+      List localList3 = az("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ID_KEY");
+      SpannableString localSpannableString = new SpannableString(TextUtils.substring(this.buO.getText(), 0, this.buO.getText().length()));
+      int i = 0;
+      while (i < ((List)localObject).size())
       {
-        if (i < ((List)localObject).size())
-        {
-          localSpannableString.setSpan(new a(((Integer)localList3.get(i)).intValue(), this, getExtras().getInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY")), ((Integer)((List)localObject).get(i)).intValue(), ((Integer)localList1.get(i)).intValue(), ((Integer)localList2.get(i)).intValue());
-          i += 1;
-          continue;
-          i = 0;
-          break;
-        }
+        localSpannableString.setSpan(new a(((Integer)localList3.get(i)).intValue(), this, getExtras().getInt("androidx.view.accessibility.AccessibilityNodeInfoCompat.SPANS_ACTION_ID_KEY")), ((Integer)((List)localObject).get(i)).intValue(), ((Integer)localList1.get(i)).intValue(), ((Integer)localList2.get(i)).intValue());
+        i += 1;
       }
-      AppMethodBeat.o(252138);
+      AppMethodBeat.o(196666);
       return localSpannableString;
     }
-    Object localObject = this.Ov.getText();
-    AppMethodBeat.o(252138);
+    Object localObject = this.buO.getText();
+    AppMethodBeat.o(196666);
     return localObject;
-  }
-  
-  public final void h(Rect paramRect)
-  {
-    AppMethodBeat.i(252109);
-    this.Ov.setBoundsInScreen(paramRect);
-    AppMethodBeat.o(252109);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(252153);
-    if (this.Ov == null)
+    AppMethodBeat.i(196846);
+    if (this.buO == null)
     {
-      AppMethodBeat.o(252153);
+      AppMethodBeat.o(196846);
       return 0;
     }
-    int i = this.Ov.hashCode();
-    AppMethodBeat.o(252153);
+    int i = this.buO.hashCode();
+    AppMethodBeat.o(196846);
     return i;
   }
   
-  public final boolean hs()
+  public final boolean isChecked()
   {
-    AppMethodBeat.i(252116);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      boolean bool = this.Ov.isVisibleToUser();
-      AppMethodBeat.o(252116);
-      return bool;
-    }
-    AppMethodBeat.o(252116);
-    return false;
+    AppMethodBeat.i(196424);
+    boolean bool = this.buO.isChecked();
+    AppMethodBeat.o(196424);
+    return bool;
   }
   
-  public final boolean ht()
+  public final boolean isClickable()
   {
-    AppMethodBeat.i(252119);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      boolean bool = this.Ov.isAccessibilityFocused();
-      AppMethodBeat.o(252119);
-      return bool;
-    }
-    AppMethodBeat.o(252119);
-    return false;
+    AppMethodBeat.i(196547);
+    boolean bool = this.buO.isClickable();
+    AppMethodBeat.o(196547);
+    return bool;
   }
   
-  public final void s(CharSequence paramCharSequence)
+  public final boolean isEnabled()
   {
-    AppMethodBeat.i(252132);
-    this.Ov.setPackageName(paramCharSequence);
-    AppMethodBeat.o(252132);
+    AppMethodBeat.i(196588);
+    boolean bool = this.buO.isEnabled();
+    AppMethodBeat.o(196588);
+    return bool;
+  }
+  
+  public final boolean isFocusable()
+  {
+    AppMethodBeat.i(369499);
+    boolean bool = this.buO.isFocusable();
+    AppMethodBeat.o(369499);
+    return bool;
+  }
+  
+  public final boolean isFocused()
+  {
+    AppMethodBeat.i(369500);
+    boolean bool = this.buO.isFocused();
+    AppMethodBeat.o(369500);
+    return bool;
+  }
+  
+  public final boolean isSelected()
+  {
+    AppMethodBeat.i(196521);
+    boolean bool = this.buO.isSelected();
+    AppMethodBeat.o(196521);
+    return bool;
+  }
+  
+  @Deprecated
+  public final void j(Rect paramRect)
+  {
+    AppMethodBeat.i(196352);
+    this.buO.getBoundsInParent(paramRect);
+    AppMethodBeat.o(196352);
+  }
+  
+  @Deprecated
+  public final void k(Rect paramRect)
+  {
+    AppMethodBeat.i(196368);
+    this.buO.setBoundsInParent(paramRect);
+    AppMethodBeat.o(196368);
+  }
+  
+  public final void l(Rect paramRect)
+  {
+    AppMethodBeat.i(196382);
+    this.buO.getBoundsInScreen(paramRect);
+    AppMethodBeat.o(196382);
+  }
+  
+  public final void m(Rect paramRect)
+  {
+    AppMethodBeat.i(196395);
+    this.buO.setBoundsInScreen(paramRect);
+    AppMethodBeat.o(196395);
+  }
+  
+  public final void recycle()
+  {
+    AppMethodBeat.i(369501);
+    this.buO.recycle();
+    AppMethodBeat.o(369501);
   }
   
   public final void setCheckable(boolean paramBoolean)
   {
-    AppMethodBeat.i(252110);
-    this.Ov.setCheckable(paramBoolean);
-    AppMethodBeat.o(252110);
+    AppMethodBeat.i(196412);
+    this.buO.setCheckable(paramBoolean);
+    AppMethodBeat.o(196412);
+  }
+  
+  public final void setChecked(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196431);
+    this.buO.setChecked(paramBoolean);
+    AppMethodBeat.o(196431);
   }
   
   public final void setClickable(boolean paramBoolean)
   {
-    AppMethodBeat.i(252125);
-    this.Ov.setClickable(paramBoolean);
-    AppMethodBeat.o(252125);
+    AppMethodBeat.i(196561);
+    this.buO.setClickable(paramBoolean);
+    AppMethodBeat.o(196561);
   }
   
   public final void setContentDescription(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(252145);
-    this.Ov.setContentDescription(paramCharSequence);
-    AppMethodBeat.o(252145);
+    AppMethodBeat.i(196702);
+    this.buO.setContentDescription(paramCharSequence);
+    AppMethodBeat.o(196702);
   }
   
   public final void setEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(252129);
-    this.Ov.setEnabled(paramBoolean);
-    AppMethodBeat.o(252129);
+    AppMethodBeat.i(196599);
+    this.buO.setEnabled(paramBoolean);
+    AppMethodBeat.o(196599);
+  }
+  
+  public final void setError(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(196769);
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.buO.setError(paramCharSequence);
+    }
+    AppMethodBeat.o(196769);
   }
   
   public final void setFocusable(boolean paramBoolean)
   {
-    AppMethodBeat.i(252112);
-    this.Ov.setFocusable(paramBoolean);
-    AppMethodBeat.o(252112);
+    AppMethodBeat.i(196444);
+    this.buO.setFocusable(paramBoolean);
+    AppMethodBeat.o(196444);
   }
   
   public final void setLongClickable(boolean paramBoolean)
   {
-    AppMethodBeat.i(252127);
-    this.Ov.setLongClickable(paramBoolean);
-    AppMethodBeat.o(252127);
+    AppMethodBeat.i(196580);
+    this.buO.setLongClickable(paramBoolean);
+    AppMethodBeat.o(196580);
   }
   
   public final void setParent(View paramView)
   {
-    AppMethodBeat.i(252103);
-    this.Ow = -1;
-    this.Ov.setParent(paramView);
-    AppMethodBeat.o(252103);
+    AppMethodBeat.i(196327);
+    this.buP = -1;
+    this.buO.setParent(paramView);
+    AppMethodBeat.o(196327);
   }
   
   public final void setSelected(boolean paramBoolean)
   {
-    AppMethodBeat.i(252122);
-    this.Ov.setSelected(paramBoolean);
-    AppMethodBeat.o(252122);
+    AppMethodBeat.i(196534);
+    this.buO.setSelected(paramBoolean);
+    AppMethodBeat.o(196534);
   }
   
   public final void setText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(252139);
-    this.Ov.setText(paramCharSequence);
-    AppMethodBeat.o(252139);
-  }
-  
-  public final void t(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(252134);
-    this.Ov.setClassName(paramCharSequence);
-    AppMethodBeat.o(252134);
+    AppMethodBeat.i(196674);
+    this.buO.setText(paramCharSequence);
+    AppMethodBeat.o(196674);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(252157);
+    AppMethodBeat.i(196869);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(super.toString());
     Object localObject1 = new Rect();
-    e((Rect)localObject1);
+    j((Rect)localObject1);
     localStringBuilder.append("; boundsInParent: ".concat(String.valueOf(localObject1)));
-    g((Rect)localObject1);
+    l((Rect)localObject1);
     localStringBuilder.append("; boundsInScreen: ".concat(String.valueOf(localObject1)));
-    localStringBuilder.append("; packageName: ").append(this.Ov.getPackageName());
-    localStringBuilder.append("; className: ").append(this.Ov.getClassName());
+    localStringBuilder.append("; packageName: ").append(this.buO.getPackageName());
+    localStringBuilder.append("; className: ").append(this.buO.getClassName());
     localStringBuilder.append("; text: ").append(getText());
-    localStringBuilder.append("; contentDescription: ").append(this.Ov.getContentDescription());
+    localStringBuilder.append("; contentDescription: ").append(this.buO.getContentDescription());
     Object localObject2 = localStringBuilder.append("; viewId: ");
     int i;
     if (Build.VERSION.SDK_INT >= 18)
     {
-      localObject1 = this.Ov.getViewIdResourceName();
+      localObject1 = this.buO.getViewIdResourceName();
       ((StringBuilder)localObject2).append((String)localObject1);
-      localStringBuilder.append("; checkable: ").append(this.Ov.isCheckable());
-      localStringBuilder.append("; checked: ").append(this.Ov.isChecked());
-      localStringBuilder.append("; focusable: ").append(this.Ov.isFocusable());
-      localStringBuilder.append("; focused: ").append(this.Ov.isFocused());
-      localStringBuilder.append("; selected: ").append(this.Ov.isSelected());
-      localStringBuilder.append("; clickable: ").append(this.Ov.isClickable());
-      localStringBuilder.append("; longClickable: ").append(this.Ov.isLongClickable());
-      localStringBuilder.append("; enabled: ").append(this.Ov.isEnabled());
-      localStringBuilder.append("; password: ").append(this.Ov.isPassword());
-      localStringBuilder.append("; scrollable: " + this.Ov.isScrollable());
+      localStringBuilder.append("; checkable: ").append(this.buO.isCheckable());
+      localStringBuilder.append("; checked: ").append(this.buO.isChecked());
+      localStringBuilder.append("; focusable: ").append(this.buO.isFocusable());
+      localStringBuilder.append("; focused: ").append(this.buO.isFocused());
+      localStringBuilder.append("; selected: ").append(this.buO.isSelected());
+      localStringBuilder.append("; clickable: ").append(this.buO.isClickable());
+      localStringBuilder.append("; longClickable: ").append(this.buO.isLongClickable());
+      localStringBuilder.append("; enabled: ").append(this.buO.isEnabled());
+      localStringBuilder.append("; password: ").append(this.buO.isPassword());
+      localStringBuilder.append("; scrollable: " + this.buO.isScrollable());
       localStringBuilder.append("; [");
       if (Build.VERSION.SDK_INT < 21) {
         break label520;
       }
-      localObject2 = hu();
+      localObject2 = EU();
       i = 0;
       label413:
       if (i >= ((List)localObject2).size()) {
         break label575;
       }
       a locala = (a)((List)localObject2).get(i);
-      localObject1 = bB(locala.getId());
-      if ((!((String)localObject1).equals("ACTION_UNKNOWN")) || (locala.hv() == null)) {
+      localObject1 = ew(locala.getId());
+      if ((!((String)localObject1).equals("ACTION_UNKNOWN")) || (locala.EX() == null)) {
         break label600;
       }
-      localObject1 = locala.hv().toString();
+      localObject1 = locala.EX().toString();
     }
     label520:
     label575:
@@ -661,12 +918,12 @@ public class d
       break label413;
       localObject1 = null;
       break;
-      i = this.Ov.getActions();
+      i = this.buO.getActions();
       while (i != 0)
       {
         int k = 1 << Integer.numberOfTrailingZeros(i);
         int j = i & (k ^ 0xFFFFFFFF);
-        localStringBuilder.append(bB(k));
+        localStringBuilder.append(ew(k));
         i = j;
         if (j != 0)
         {
@@ -676,376 +933,444 @@ public class d
       }
       localStringBuilder.append("]");
       localObject1 = localStringBuilder.toString();
-      AppMethodBeat.o(252157);
+      AppMethodBeat.o(196869);
       return localObject1;
     }
   }
   
+  public final void u(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(196639);
+    this.buO.setPackageName(paramCharSequence);
+    AppMethodBeat.o(196639);
+  }
+  
+  public final void v(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(196659);
+    this.buO.setClassName(paramCharSequence);
+    AppMethodBeat.o(196659);
+  }
+  
+  public final void x(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(196713);
+    if (androidx.core.c.a.DR())
+    {
+      this.buO.setStateDescription(paramCharSequence);
+      AppMethodBeat.o(196713);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.buO.getExtras().putCharSequence("androidx.view.accessibility.AccessibilityNodeInfoCompat.STATE_DESCRIPTION_KEY", paramCharSequence);
+    }
+    AppMethodBeat.o(196713);
+  }
+  
+  public final void y(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(196195);
+    this.buQ = paramInt;
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.buO.setSource(paramView, paramInt);
+    }
+    AppMethodBeat.o(196195);
+  }
+  
+  public final void y(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(196761);
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      this.buO.setHintText(paramCharSequence);
+      AppMethodBeat.o(196761);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.buO.getExtras().putCharSequence("androidx.view.accessibility.AccessibilityNodeInfoCompat.HINT_TEXT_KEY", paramCharSequence);
+    }
+    AppMethodBeat.o(196761);
+  }
+  
+  public final void z(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(196231);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.buO.addChild(paramView, paramInt);
+    }
+    AppMethodBeat.o(196231);
+  }
+  
+  public final void z(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(196809);
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      this.buO.setPaneTitle(paramCharSequence);
+      AppMethodBeat.o(196809);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.buO.getExtras().putCharSequence("androidx.view.accessibility.AccessibilityNodeInfoCompat.PANE_TITLE_KEY", paramCharSequence);
+    }
+    AppMethodBeat.o(196809);
+  }
+  
   public static final class a
   {
-    public static final a OA;
-    public static final a OB;
-    public static final a OC;
-    public static final a OD;
-    public static final a OE;
-    public static final a OF;
-    public static final a OG;
-    public static final a OH;
-    public static final a OI;
-    public static final a OJ;
-    public static final a OL;
-    public static final a OM;
-    public static final a OO;
-    public static final a OP;
-    public static final a OQ;
-    public static final a OS;
-    public static final a OT;
-    public static final a OU;
-    public static final a OV;
-    public static final a OW;
-    public static final a OX;
-    public static final a OY;
-    public static final a OZ;
-    public static final a Oz;
-    public static final a Pa;
-    public static final a Pb;
-    public static final a Pc;
-    public static final a Pd;
-    public static final a Pe;
-    public static final a Pf;
-    public static final a Pg;
-    public static final a Ph;
-    public static final a Pi;
-    public static final a Pj;
-    public static final a Pk;
-    public static final a Pl;
-    public static final a Pm;
-    final Object Pn;
-    private final Class<? extends g.a> Po;
-    protected final g Pp;
+    public static final a buS;
+    public static final a buT;
+    public static final a buU;
+    public static final a buV;
+    public static final a buW;
+    public static final a buX;
+    public static final a buY;
+    public static final a buZ;
+    public static final a bvA;
+    public static final a bvB;
+    public static final a bvC;
+    public static final a bvD;
+    public static final a bvE;
+    public static final a bva;
+    public static final a bvb;
+    public static final a bvc;
+    public static final a bvd;
+    public static final a bve;
+    public static final a bvf;
+    public static final a bvg;
+    public static final a bvh;
+    public static final a bvi;
+    public static final a bvj;
+    public static final a bvk;
+    public static final a bvl;
+    public static final a bvm;
+    public static final a bvn;
+    public static final a bvo;
+    public static final a bvp;
+    public static final a bvq;
+    public static final a bvr;
+    public static final a bvs;
+    public static final a bvt;
+    public static final a bvu;
+    public static final a bvv;
+    public static final a bvw;
+    public static final a bvx;
+    public static final a bvy;
+    public static final a bvz;
+    final Object bvF;
+    private final Class<? extends g.a> bvG;
+    protected final g bvH;
     private final int mId;
     
     static
     {
-      AppMethodBeat.i(252063);
-      Oz = new a(1);
-      OA = new a(2);
-      OB = new a(4);
-      OC = new a(8);
-      OD = new a(16);
-      OE = new a(32);
-      OF = new a(64);
-      OG = new a(128);
-      OH = new a(256, g.b.class);
-      OI = new a(512, g.b.class);
-      OJ = new a(1024, g.c.class);
-      OL = new a(2048, g.c.class);
-      OM = new a(4096);
-      OO = new a(8192);
-      OP = new a(16384);
-      OQ = new a(32768);
-      OS = new a(65536);
-      OT = new a(131072, g.g.class);
-      OU = new a(262144);
-      OV = new a(524288);
-      OW = new a(1048576);
-      OX = new a(2097152, g.h.class);
+      AppMethodBeat.i(196014);
+      buS = new a(1, null);
+      buT = new a(2, null);
+      buU = new a(4, null);
+      buV = new a(8, null);
+      buW = new a(16, null);
+      buX = new a(32, null);
+      buY = new a(64, null);
+      buZ = new a(128, null);
+      bva = new a(256, g.b.class);
+      bvb = new a(512, g.b.class);
+      bvc = new a(1024, g.c.class);
+      bvd = new a(2048, g.c.class);
+      bve = new a(4096, null);
+      bvf = new a(8192, null);
+      bvg = new a(16384, null);
+      bvh = new a(32768, null);
+      bvi = new a(65536, null);
+      bvj = new a(131072, g.g.class);
+      bvk = new a(262144, null);
+      bvl = new a(524288, null);
+      bvm = new a(1048576, null);
+      bvn = new a(2097152, g.h.class);
       if (Build.VERSION.SDK_INT >= 23)
       {
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_ON_SCREEN;
-        OY = new a(localAccessibilityAction, 16908342, null);
+        bvo = new a(localAccessibilityAction, 16908342, null, null);
         if (Build.VERSION.SDK_INT < 23) {
-          break label690;
+          break label775;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_TO_POSITION;
-        label324:
-        OZ = new a(localAccessibilityAction, 16908343, g.e.class);
+        label341:
+        bvp = new a(localAccessibilityAction, 16908343, null, g.e.class);
         if (Build.VERSION.SDK_INT < 23) {
-          break label695;
+          break label780;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_UP;
-        label351:
-        Pa = new a(localAccessibilityAction, 16908344, null);
+        label369:
+        bvq = new a(localAccessibilityAction, 16908344, null, null);
         if (Build.VERSION.SDK_INT < 23) {
-          break label700;
+          break label785;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_LEFT;
-        label377:
-        Pb = new a(localAccessibilityAction, 16908345, null);
+        label396:
+        bvr = new a(localAccessibilityAction, 16908345, null, null);
         if (Build.VERSION.SDK_INT < 23) {
-          break label705;
+          break label790;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_DOWN;
-        label403:
-        Pc = new a(localAccessibilityAction, 16908346, null);
+        label423:
+        bvs = new a(localAccessibilityAction, 16908346, null, null);
         if (Build.VERSION.SDK_INT < 23) {
-          break label710;
+          break label795;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SCROLL_RIGHT;
-        label429:
-        Pd = new a(localAccessibilityAction, 16908347, null);
+        label450:
+        bvt = new a(localAccessibilityAction, 16908347, null, null);
         if (Build.VERSION.SDK_INT < 29) {
-          break label715;
+          break label800;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_UP;
-        label455:
-        Pe = new a(localAccessibilityAction, 16908358, null);
+        label477:
+        bvu = new a(localAccessibilityAction, 16908358, null, null);
         if (Build.VERSION.SDK_INT < 29) {
-          break label720;
+          break label805;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_DOWN;
-        label481:
-        Pf = new a(localAccessibilityAction, 16908359, null);
+        label504:
+        bvv = new a(localAccessibilityAction, 16908359, null, null);
         if (Build.VERSION.SDK_INT < 29) {
-          break label725;
+          break label810;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_LEFT;
-        label507:
-        Pg = new a(localAccessibilityAction, 16908360, null);
+        label531:
+        bvw = new a(localAccessibilityAction, 16908360, null, null);
         if (Build.VERSION.SDK_INT < 29) {
-          break label730;
+          break label815;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_PAGE_RIGHT;
-        label533:
-        Ph = new a(localAccessibilityAction, 16908361, null);
+        label558:
+        bvx = new a(localAccessibilityAction, 16908361, null, null);
         if (Build.VERSION.SDK_INT < 23) {
-          break label735;
+          break label820;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_CONTEXT_CLICK;
-        label559:
-        Pi = new a(localAccessibilityAction, 16908348, null);
+        label585:
+        bvy = new a(localAccessibilityAction, 16908348, null, null);
         if (Build.VERSION.SDK_INT < 24) {
-          break label740;
+          break label825;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SET_PROGRESS;
-        label585:
-        Pj = new a(localAccessibilityAction, 16908349, g.f.class);
+        label612:
+        bvz = new a(localAccessibilityAction, 16908349, null, g.f.class);
         if (Build.VERSION.SDK_INT < 26) {
-          break label745;
+          break label830;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_MOVE_WINDOW;
-        label612:
-        Pk = new a(localAccessibilityAction, 16908354, g.d.class);
+        label640:
+        bvA = new a(localAccessibilityAction, 16908354, null, g.d.class);
         if (Build.VERSION.SDK_INT < 28) {
-          break label750;
+          break label835;
         }
         localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_SHOW_TOOLTIP;
-        label639:
-        Pl = new a(localAccessibilityAction, 16908356, null);
+        label668:
+        bvB = new a(localAccessibilityAction, 16908356, null, null);
         if (Build.VERSION.SDK_INT < 28) {
-          break label755;
+          break label840;
+        }
+        localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_HIDE_TOOLTIP;
+        label695:
+        bvC = new a(localAccessibilityAction, 16908357, null, null);
+        if (Build.VERSION.SDK_INT < 30) {
+          break label845;
+        }
+        localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_PRESS_AND_HOLD;
+        label722:
+        bvD = new a(localAccessibilityAction, 16908362, null, null);
+        if (Build.VERSION.SDK_INT < 30) {
+          break label850;
         }
       }
-      label690:
-      label695:
-      label700:
-      label705:
-      label710:
-      label715:
-      label720:
-      label725:
-      label730:
-      label735:
-      label740:
-      label745:
-      label750:
-      label755:
-      for (AccessibilityNodeInfo.AccessibilityAction localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_HIDE_TOOLTIP;; localAccessibilityAction = null)
+      label775:
+      label780:
+      label785:
+      label790:
+      label795:
+      label800:
+      label805:
+      label810:
+      label815:
+      label820:
+      label825:
+      label830:
+      label835:
+      label840:
+      label845:
+      label850:
+      for (AccessibilityNodeInfo.AccessibilityAction localAccessibilityAction = AccessibilityNodeInfo.AccessibilityAction.ACTION_IME_ENTER;; localAccessibilityAction = null)
       {
-        Pm = new a(localAccessibilityAction, 16908357, null);
-        AppMethodBeat.o(252063);
+        bvE = new a(localAccessibilityAction, 16908372, null, null);
+        AppMethodBeat.o(196014);
         return;
         localAccessibilityAction = null;
         break;
         localAccessibilityAction = null;
-        break label324;
+        break label341;
         localAccessibilityAction = null;
-        break label351;
+        break label369;
         localAccessibilityAction = null;
-        break label377;
+        break label396;
         localAccessibilityAction = null;
-        break label403;
+        break label423;
         localAccessibilityAction = null;
-        break label429;
+        break label450;
         localAccessibilityAction = null;
-        break label455;
+        break label477;
         localAccessibilityAction = null;
-        break label481;
+        break label504;
         localAccessibilityAction = null;
-        break label507;
+        break label531;
         localAccessibilityAction = null;
-        break label533;
-        localAccessibilityAction = null;
-        break label559;
+        break label558;
         localAccessibilityAction = null;
         break label585;
         localAccessibilityAction = null;
         break label612;
         localAccessibilityAction = null;
-        break label639;
+        break label640;
+        localAccessibilityAction = null;
+        break label668;
+        localAccessibilityAction = null;
+        break label695;
+        localAccessibilityAction = null;
+        break label722;
       }
     }
     
-    private a(int paramInt)
+    public a(int paramInt, CharSequence paramCharSequence)
     {
-      this(null, paramInt, null);
+      this(null, paramInt, paramCharSequence, null);
     }
     
     private a(int paramInt, Class<? extends g.a> paramClass)
     {
-      this(null, paramInt, paramClass);
+      this(null, paramInt, null, paramClass);
     }
     
     a(Object paramObject)
     {
-      this(paramObject, 0, null);
+      this(paramObject, 0, null, null);
     }
     
-    private a(Object paramObject, int paramInt, Class<? extends g.a> paramClass)
+    private a(Object paramObject, int paramInt, CharSequence paramCharSequence, Class<? extends g.a> paramClass)
     {
-      AppMethodBeat.i(252052);
+      AppMethodBeat.i(196000);
       this.mId = paramInt;
-      this.Pp = null;
+      this.bvH = null;
       if ((Build.VERSION.SDK_INT >= 21) && (paramObject == null)) {}
-      for (this.Pn = new AccessibilityNodeInfo.AccessibilityAction(paramInt, null);; this.Pn = paramObject)
+      for (this.bvF = new AccessibilityNodeInfo.AccessibilityAction(paramInt, paramCharSequence);; this.bvF = paramObject)
       {
-        this.Po = paramClass;
-        AppMethodBeat.o(252052);
+        this.bvG = paramClass;
+        AppMethodBeat.o(196000);
         return;
       }
     }
     
+    public final CharSequence EX()
+    {
+      AppMethodBeat.i(196025);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        CharSequence localCharSequence = ((AccessibilityNodeInfo.AccessibilityAction)this.bvF).getLabel();
+        AppMethodBeat.o(196025);
+        return localCharSequence;
+      }
+      AppMethodBeat.o(196025);
+      return null;
+    }
+    
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(252061);
+      AppMethodBeat.i(196050);
       if (paramObject == null)
       {
-        AppMethodBeat.o(252061);
+        AppMethodBeat.o(196050);
         return false;
       }
       if (!(paramObject instanceof a))
       {
-        AppMethodBeat.o(252061);
+        AppMethodBeat.o(196050);
         return false;
       }
       paramObject = (a)paramObject;
-      if (this.Pn == null)
+      if (this.bvF == null)
       {
-        if (paramObject.Pn != null)
+        if (paramObject.bvF != null)
         {
-          AppMethodBeat.o(252061);
+          AppMethodBeat.o(196050);
           return false;
         }
       }
-      else if (!this.Pn.equals(paramObject.Pn))
+      else if (!this.bvF.equals(paramObject.bvF))
       {
-        AppMethodBeat.o(252061);
+        AppMethodBeat.o(196050);
         return false;
       }
-      AppMethodBeat.o(252061);
+      AppMethodBeat.o(196050);
       return true;
     }
     
     public final int getId()
     {
-      AppMethodBeat.i(252053);
+      AppMethodBeat.i(196020);
       if (Build.VERSION.SDK_INT >= 21)
       {
-        int i = ((AccessibilityNodeInfo.AccessibilityAction)this.Pn).getId();
-        AppMethodBeat.o(252053);
+        int i = ((AccessibilityNodeInfo.AccessibilityAction)this.bvF).getId();
+        AppMethodBeat.o(196020);
         return i;
       }
-      AppMethodBeat.o(252053);
+      AppMethodBeat.o(196020);
       return 0;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(252060);
-      if (this.Pn != null)
+      AppMethodBeat.i(196041);
+      if (this.bvF != null)
       {
-        int i = this.Pn.hashCode();
-        AppMethodBeat.o(252060);
+        int i = this.bvF.hashCode();
+        AppMethodBeat.o(196041);
         return i;
       }
-      AppMethodBeat.o(252060);
+      AppMethodBeat.o(196041);
       return 0;
     }
     
-    public final CharSequence hv()
+    public final boolean l(Bundle paramBundle)
     {
-      AppMethodBeat.i(252055);
-      if (Build.VERSION.SDK_INT >= 21)
+      AppMethodBeat.i(196032);
+      if (this.bvH != null)
       {
-        CharSequence localCharSequence = ((AccessibilityNodeInfo.AccessibilityAction)this.Pn).getLabel();
-        AppMethodBeat.o(252055);
-        return localCharSequence;
-      }
-      AppMethodBeat.o(252055);
-      return null;
-    }
-    
-    public final boolean i(Bundle paramBundle)
-    {
-      AppMethodBeat.i(252058);
-      if (this.Pp != null)
-      {
-        if (this.Po != null) {}
+        if (this.bvG != null) {}
         try
         {
-          ((g.a)this.Po.getDeclaredConstructor(new Class[0]).newInstance(new Object[0])).mBundle = paramBundle;
-          boolean bool = this.Pp.hx();
-          AppMethodBeat.o(252058);
+          ((g.a)this.bvG.getDeclaredConstructor(new Class[0]).newInstance(new Object[0])).mBundle = paramBundle;
+          boolean bool = this.bvH.Fa();
+          AppMethodBeat.o(196032);
           return bool;
         }
         catch (Exception paramBundle)
         {
           for (;;)
           {
-            if (this.Po != null) {
-              this.Po.getName();
+            if (this.bvG != null) {
+              this.bvG.getName();
             }
           }
         }
       }
-      AppMethodBeat.o(252058);
+      AppMethodBeat.o(196032);
       return false;
-    }
-  }
-  
-  public static final class c
-  {
-    final Object Pq;
-    
-    private c(Object paramObject)
-    {
-      this.Pq = paramObject;
-    }
-    
-    public static c a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
-    {
-      AppMethodBeat.i(252066);
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        localc = new c(AccessibilityNodeInfo.CollectionItemInfo.obtain(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, false));
-        AppMethodBeat.o(252066);
-        return localc;
-      }
-      if (Build.VERSION.SDK_INT >= 19)
-      {
-        localc = new c(AccessibilityNodeInfo.CollectionItemInfo.obtain(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean));
-        AppMethodBeat.o(252066);
-        return localc;
-      }
-      c localc = new c(null);
-      AppMethodBeat.o(252066);
-      return localc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.g.a.d
  * JD-Core Version:    0.7.0.1
  */

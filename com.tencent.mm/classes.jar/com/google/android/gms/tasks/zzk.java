@@ -2,14 +2,12 @@ package com.google.android.gms.tasks;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Executor;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzk<TResult>
   implements zzq<TResult>
 {
   private final Object mLock;
   private final Executor zzafk;
-  @GuardedBy("mLock")
   private OnFailureListener zzafu;
   
   public zzk(Executor paramExecutor, OnFailureListener paramOnFailureListener)
@@ -49,7 +47,7 @@ final class zzk<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.tasks.zzk
  * JD-Core Version:    0.7.0.1
  */

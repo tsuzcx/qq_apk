@@ -15,9 +15,9 @@ import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.widget.a.i;
 
 final class TalkRoomUI$12
   implements View.OnClickListener
@@ -28,21 +28,21 @@ final class TalkRoomUI$12
   {
     AppMethodBeat.i(29600);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/talkroom/ui/TalkRoomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-    paramView = this.Mlw;
-    bh.beI();
-    if (Util.nullAs((Integer)c.aHp().b(144641, null), 0) > 0) {}
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/talkroom/ui/TalkRoomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    paramView = this.SOQ;
+    bh.bCz();
+    if (Util.nullAs((Integer)c.ban().d(144641, null), 0) > 0) {}
     for (int i = 0;; i = 1)
     {
       if (i == 0) {
-        this.Mlw.onBackPressed();
+        this.SOQ.onBackPressed();
       }
       a.a(this, "com/tencent/mm/plugin/talkroom/ui/TalkRoomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(29600);
       return;
       localObject = new i(paramView, R.m.mmdialog);
-      LinearLayout localLinearLayout = (LinearLayout)ad.kS(MMApplicationContext.getContext()).inflate(R.i.elx, null);
+      LinearLayout localLinearLayout = (LinearLayout)af.mU(MMApplicationContext.getContext()).inflate(R.i.goB, null);
       localLinearLayout.setMinimumWidth(10000);
       Button localButton = (Button)localLinearLayout.findViewById(R.h.i_know_btn);
       ((i)localObject).setCanceledOnTouchOutside(true);
@@ -56,7 +56,7 @@ final class TalkRoomUI$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.12
  * JD-Core Version:    0.7.0.1
  */

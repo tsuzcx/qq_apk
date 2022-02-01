@@ -23,10 +23,10 @@ public final class a$h
     {
       try
       {
-        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.fMd, paramIPCAudioParamRequest.mimeType });
-        localObject1 = paramIPCAudioParamRequest.fMd;
+        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.musicId, paramIPCAudioParamRequest.mimeType });
+        localObject1 = paramIPCAudioParamRequest.musicId;
         paramIPCAudioParamRequest = paramIPCAudioParamRequest.mimeType;
-        localObject2 = o.feX().aSn((String)localObject1);
+        localObject2 = o.goe().aPh((String)localObject1);
         if (localObject2 != null) {
           continue;
         }
@@ -49,11 +49,11 @@ public final class a$h
         continue;
       }
       Log.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "updatePieceFileMIMEType()");
-      localObject2 = o.feX();
+      localObject2 = o.goe();
       localContentValues = new ContentValues();
       localContentValues.put("pieceFileMIMEType", paramIPCAudioParamRequest);
       Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceFileMIMEType raw=%d musicId=%s", new Object[] { Integer.valueOf(((d)localObject2).db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject1 })), localObject1 });
-      localObject1 = (c)((d)localObject2).FSN.get(localObject1);
+      localObject1 = (c)((d)localObject2).LNJ.get(localObject1);
       if (localObject1 != null) {
         ((c)localObject1).field_pieceFileMIMEType = paramIPCAudioParamRequest;
       }
@@ -62,7 +62,7 @@ public final class a$h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.h
  * JD-Core Version:    0.7.0.1
  */

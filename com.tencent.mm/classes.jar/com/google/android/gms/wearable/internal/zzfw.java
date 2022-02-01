@@ -6,21 +6,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="RemoveListenerRequestCreator")
 public final class zzfw
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzfw> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int versionCode;
-  @SafeParcelable.Field(getter="getListenerAsBinder", id=2, type="android.os.IBinder")
   private final zzem zzaz;
   
   static
@@ -30,8 +22,7 @@ public final class zzfw
     AppMethodBeat.o(101328);
   }
   
-  @SafeParcelable.Constructor
-  zzfw(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) IBinder paramIBinder)
+  zzfw(int paramInt, IBinder paramIBinder)
   {
     AppMethodBeat.i(101326);
     this.versionCode = paramInt;
@@ -80,7 +71,7 @@ public final class zzfw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzfw
  * JD-Core Version:    0.7.0.1
  */

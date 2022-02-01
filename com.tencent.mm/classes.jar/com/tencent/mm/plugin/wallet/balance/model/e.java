@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wallet.balance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.wallet_core.model.j;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
 import com.tencent.mm.wallet_core.tenpay.model.m;
-import com.tencent.mm.wallet_core.ui.g;
+import com.tencent.mm.wallet_core.ui.i;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashMap;
@@ -17,24 +17,24 @@ public final class e
   extends m
   implements j, ITenpaySave
 {
-  public boolean OkE;
-  public String OkF;
-  public String fHb;
-  public String gat;
-  public String gau;
-  public String gav;
-  public String gaw;
-  public String gax;
+  public boolean UZh;
+  public String UZi;
+  public String hMy;
+  public String igC;
+  public String igD;
+  public String igE;
+  public String igF;
+  public String igG;
   private ITenpaySave.RetryPayInfo retryPayInfo;
   
   public e(double paramDouble, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(68396);
-    this.fHb = null;
-    this.OkE = false;
-    this.OkF = "";
+    this.hMy = null;
+    this.UZh = false;
+    this.UZi = "";
     HashMap localHashMap = new HashMap();
-    localHashMap.put("total_fee", g.c(String.valueOf(paramDouble), "100", 0, RoundingMode.HALF_UP).toString());
+    localHashMap.put("total_fee", i.c(String.valueOf(paramDouble), "100", 0, RoundingMode.HALF_UP).toString());
     localHashMap.put("fee_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
     localHashMap.put("bank_type", paramString3);
@@ -71,27 +71,27 @@ public final class e
       AppMethodBeat.o(68397);
       return;
     }
-    this.fHb = paramJSONObject.optString("req_key");
-    this.OkE = "1".equals(paramJSONObject.optString("should_alert"));
-    this.OkF = paramJSONObject.optString("alert_msg");
+    this.hMy = paramJSONObject.optString("req_key");
+    this.UZh = "1".equals(paramJSONObject.optString("should_alert"));
+    this.UZi = paramJSONObject.optString("alert_msg");
     if (paramJSONObject.has("real_name_info"))
     {
       paramString = paramJSONObject.optJSONObject("real_name_info");
       Log.i("Micromsg.NetSceneTenpayBalanceSave", "get real_name_info %s", new Object[] { paramString.toString() });
-      this.gat = paramString.optString("guide_flag");
-      this.gau = paramString.optString("guide_wording");
-      this.gav = paramString.optString("left_button_wording");
-      this.gaw = paramString.optString("right_button_wording");
-      this.gax = paramString.optString("upload_credit_url");
+      this.igC = paramString.optString("guide_flag");
+      this.igD = paramString.optString("guide_wording");
+      this.igE = paramString.optString("left_button_wording");
+      this.igF = paramString.optString("right_button_wording");
+      this.igG = paramString.optString("upload_credit_url");
     }
     this.retryPayInfo = new ITenpaySave.RetryPayInfo();
-    this.retryPayInfo.bV(paramJSONObject);
+    this.retryPayInfo.cq(paramJSONObject);
     AppMethodBeat.o(68397);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.e
  * JD-Core Version:    0.7.0.1
  */

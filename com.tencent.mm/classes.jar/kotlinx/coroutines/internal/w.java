@@ -1,45 +1,20 @@
 package kotlinx.coroutines.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
-import kotlin.n.n;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={"kotlinx/coroutines/internal/SystemPropsKt__SystemPropsKt", "kotlinx/coroutines/internal/SystemPropsKt__SystemProps_commonKt"})
-public final class w
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/internal/OpDescriptor;", "", "()V", "atomicOp", "Lkotlinx/coroutines/internal/AtomicOp;", "getAtomicOp", "()Lkotlinx/coroutines/internal/AtomicOp;", "isEarlierThan", "", "that", "perform", "affected", "toString", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class w
 {
-  public static final long e(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public abstract Object jj(Object paramObject);
+  
+  public String toString()
   {
-    AppMethodBeat.i(118123);
-    String str = x.bHF(paramString);
-    if (str == null)
-    {
-      AppMethodBeat.o(118123);
-      return paramLong1;
-    }
-    Long localLong = n.bHD(str);
-    if (localLong != null)
-    {
-      paramLong1 = localLong.longValue();
-      if ((paramLong2 > paramLong1) || (paramLong3 < paramLong1))
-      {
-        paramString = (Throwable)new IllegalStateException(("System property '" + paramString + "' should be in range " + paramLong2 + ".." + paramLong3 + ", but is '" + paramLong1 + '\'').toString());
-        AppMethodBeat.o(118123);
-        throw paramString;
-      }
-    }
-    else
-    {
-      paramString = (Throwable)new IllegalStateException(("System property '" + paramString + "' has unrecognized value '" + str + '\'').toString());
-      AppMethodBeat.o(118123);
-      throw paramString;
-    }
-    AppMethodBeat.o(118123);
-    return paramLong1;
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.internal.w
  * JD-Core Version:    0.7.0.1
  */

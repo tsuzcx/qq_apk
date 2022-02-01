@@ -1,30 +1,24 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.autogen.a.acn;
+import com.tencent.mm.sdk.event.IListener;
 
-final class BaseScanUI$31
-  implements View.OnClickListener
+class BaseScanUI$31
+  extends IListener<acn>
 {
-  BaseScanUI$31(BaseScanUI paramBaseScanUI) {}
-  
-  public final void onClick(View paramView)
+  BaseScanUI$31(BaseScanUI paramBaseScanUI, q paramq)
   {
-    AppMethodBeat.i(169984);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/scanner/ui/BaseScanUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    BaseScanUI.z(this.IPw);
-    a.a(this, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(169984);
+    super(paramq);
+    AppMethodBeat.i(314492);
+    this.__eventId = acn.class.getName().hashCode();
+    AppMethodBeat.o(314492);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.31
  * JD-Core Version:    0.7.0.1
  */

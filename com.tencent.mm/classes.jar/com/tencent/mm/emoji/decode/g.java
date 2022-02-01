@@ -7,150 +7,145 @@ import com.tencent.mm.plugin.gif.MMGIFException;
 import com.tencent.mm.plugin.gif.MMWXGFJNI;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/MMWXGFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "TAG", "", "currFrame", "", "currFrameTime", "frameMetadata", "", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifHandle", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/decode/MMWXGFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "TAG", "", "currFrame", "", "currFrameTime", "frameMetadata", "", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifHandle", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   implements d
 {
   private final String TAG;
-  private Bitmap jFB;
-  private final int[] jFD;
-  private int jFE;
-  private int jFF;
-  private final c jFG;
-  private long jFH;
-  private final int[] jFI;
+  private Bitmap mfo;
+  private final int[] mfq;
+  private int mfr;
+  private int mfs;
+  private final c mft;
+  private long mfu;
+  private final int[] mfv;
   
   public g(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(105378);
     this.TAG = "MicroMsg.GIF.MMWXGFDecoder";
-    this.jFD = new int[4];
-    this.jFI = new int[4];
-    this.jFE = -1;
-    this.jFH = MMWXGFJNI.nativeInitWxAMDecoder();
-    if ((this.jFH == 0L) || (this.jFH == -901L))
+    this.mfq = new int[4];
+    this.mfv = new int[4];
+    this.mfr = -1;
+    this.mfu = MMWXGFJNI.nativeInitWxAMDecoder();
+    if ((this.mfu == 0L) || (this.mfu == -901L))
     {
-      Log.w(this.TAG, "Cpan init wxam decoder failed. gifHandle:%d", new Object[] { Long.valueOf(this.jFH) });
-      if (this.jFH == -901L) {
-        h.IzE.idkeyStat(711L, 5L, 1L, false);
+      Log.w(this.TAG, "Cpan init wxam decoder failed. gifHandle:%d", new Object[] { Long.valueOf(this.mfu) });
+      if (this.mfu == -901L) {
+        h.OAn.idkeyStat(711L, 5L, 1L, false);
       }
-      h.IzE.idkeyStat(711L, 4L, 1L, false);
-      paramArrayOfByte = (Throwable)new MMGIFException(201);
+      h.OAn.idkeyStat(711L, 4L, 1L, false);
+      paramArrayOfByte = new MMGIFException(201);
       AppMethodBeat.o(105378);
       throw paramArrayOfByte;
     }
-    int i = MMWXGFJNI.nativeDecodeBufferHeader(this.jFH, paramArrayOfByte, paramArrayOfByte.length);
+    int i = MMWXGFJNI.nativeDecodeBufferHeader(this.mfu, paramArrayOfByte, paramArrayOfByte.length);
     if (i != 0)
     {
       Log.w(this.TAG, "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
       if (i == -904) {
-        h.IzE.idkeyStat(711L, 8L, 1L, false);
+        h.OAn.idkeyStat(711L, 8L, 1L, false);
       }
       for (;;)
       {
-        paramArrayOfByte = (Throwable)new MMGIFException(i);
+        paramArrayOfByte = new MMGIFException(i);
         AppMethodBeat.o(105378);
         throw paramArrayOfByte;
-        h.IzE.idkeyStat(711L, 3L, 1L, false);
+        h.OAn.idkeyStat(711L, 3L, 1L, false);
       }
     }
-    i = MMWXGFJNI.nativeGetOption(this.jFH, paramArrayOfByte, paramArrayOfByte.length, this.jFD);
+    i = MMWXGFJNI.nativeGetOption(this.mfu, paramArrayOfByte, paramArrayOfByte.length, this.mfq);
     if (i != 0)
     {
       Log.w(this.TAG, "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
       if (i == -903) {
-        h.IzE.idkeyStat(711L, 7L, 1L, false);
+        h.OAn.idkeyStat(711L, 7L, 1L, false);
       }
       for (;;)
       {
-        paramArrayOfByte = (Throwable)new MMGIFException(i);
+        paramArrayOfByte = new MMGIFException(i);
         AppMethodBeat.o(105378);
         throw paramArrayOfByte;
-        h.IzE.idkeyStat(711L, 3L, 1L, false);
+        h.OAn.idkeyStat(711L, 3L, 1L, false);
       }
     }
-    paramArrayOfByte = Bitmap.createBitmap(this.jFD[1], this.jFD[2], Bitmap.Config.ARGB_8888);
-    p.j(paramArrayOfByte, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
-    this.jFB = paramArrayOfByte;
-    this.jFG = new c(this.jFD[0]);
+    paramArrayOfByte = Bitmap.createBitmap(this.mfq[1], this.mfq[2], Bitmap.Config.ARGB_8888);
+    s.s(paramArrayOfByte, "createBitmap(frameWidth(… Bitmap.Config.ARGB_8888)");
+    this.mfo = paramArrayOfByte;
+    this.mft = new c(this.mfq[0]);
     AppMethodBeat.o(105378);
   }
   
-  public final void aBh()
+  public final void aUe()
   {
     AppMethodBeat.i(105376);
-    Bitmap localBitmap = this.jFB;
-    int i = MMWXGFJNI.nativeDecodeBufferFrame(this.jFH, null, 0, localBitmap, this.jFI);
-    if (i == -904)
+    Bitmap localBitmap = this.mfo;
+    int i = MMWXGFJNI.nativeDecodeBufferFrame(this.mfu, null, 0, localBitmap, this.mfv);
+    switch (i)
     {
-      Log.i(this.TAG, "nativeDecodeBufferFrame failed. func is null.");
-      h.IzE.idkeyStat(401L, 8L, 1L, false);
-      this.jFE += 1;
-      if (((this.jFE >= this.jFD[0] - 1) || (i == 1)) && (MMWXGFJNI.nativeRewindBuffer(this.jFH) == -905))
+    default: 
+      this.mfr += 1;
+      if (((this.mfr >= this.mfq[0] - 1) || (i == 1)) && (MMWXGFJNI.nativeRewindBuffer(this.mfu) == -905))
       {
-        h.IzE.idkeyStat(711L, 9L, 1L, false);
+        h.OAn.idkeyStat(711L, 9L, 1L, false);
         Log.w(this.TAG, "Cpan Rewind buffer failed.");
       }
-      this.jFE %= this.jFD[0];
-      if (this.jFI[0] <= 0) {
-        break label251;
+      this.mfr %= this.mfq[0];
+      if (this.mfv[0] <= 0) {
+        break;
       }
     }
-    label251:
-    for (i = this.jFI[0];; i = 100)
+    for (i = this.mfv[0];; i = 100)
     {
-      this.jFF = i;
-      Log.d(this.TAG, "drawFrameBitmap: decode frame " + this.jFE + ", " + this.jFF);
+      this.mfs = i;
+      Log.d(this.TAG, "drawFrameBitmap: decode frame " + this.mfr + ", " + this.mfs);
       AppMethodBeat.o(105376);
       return;
-      if (i == -909)
-      {
-        Log.i(this.TAG, "nativeDecodeBufferFrame failed. frame is null.");
-        h.IzE.idkeyStat(401L, 11L, 1L, false);
-        break;
-      }
-      if (i != -1) {
-        break;
-      }
+      Log.i(this.TAG, "nativeDecodeBufferFrame failed. func is null.");
+      h.OAn.idkeyStat(401L, 8L, 1L, false);
+      break;
+      Log.i(this.TAG, "nativeDecodeBufferFrame failed. frame is null.");
+      h.OAn.idkeyStat(401L, 11L, 1L, false);
+      break;
       Log.i(this.TAG, "nativeDecodeBufferFrame failed.");
       break;
     }
   }
   
-  public final int aBi()
+  public final int aUf()
   {
-    return this.jFD[0];
+    return this.mfq[0];
   }
   
-  public final int aBj()
+  public final int aUg()
   {
-    if (this.jFD[0] == 1) {
+    if (this.mfq[0] == 1) {
       return 2147483647;
     }
-    return this.jFF;
+    return this.mfs;
   }
   
-  public final int aBk()
+  public final int aUh()
   {
-    return this.jFD[1];
+    return this.mfq[1];
   }
   
-  public final int aBl()
+  public final int aUi()
   {
-    return this.jFD[2];
+    return this.mfq[2];
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(105377);
-    long l = this.jFH;
-    this.jFH = 0L;
+    long l = this.mfu;
+    this.mfu = 0L;
     int i = MMWXGFJNI.nativeUninit(l);
     if (i == -906) {
-      h.IzE.idkeyStat(401L, 10L, 1L, false);
+      h.OAn.idkeyStat(401L, 10L, 1L, false);
     }
     Log.d(this.TAG, "nativeUninit result:%d gifHandle:%s", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
     AppMethodBeat.o(105377);
@@ -158,40 +153,55 @@ public final class g
   
   public final Bitmap getFrame()
   {
-    return this.jFB;
+    return this.mfo;
   }
   
   public final void seekTo(long paramLong)
   {
-    int k = 0;
-    AppMethodBeat.i(232182);
-    if (this.jFF <= 0) {
-      aBh();
+    AppMethodBeat.i(242228);
+    if (this.mfs <= 0) {
+      aUe();
     }
-    int j = this.jFG.rx((int)paramLong);
-    int m = this.jFD[0];
-    int i = 0;
-    while ((i < m) && (j < 0))
+    int i = this.mft.rz((int)paramLong);
+    int n = this.mfq[0];
+    int j = i;
+    if (n > 0)
     {
-      aBh();
-      this.jFG.cT(this.jFE, this.jFF);
-      j = this.jFG.rx((int)paramLong);
-      i += 1;
+      j = 0;
+      int m;
+      do
+      {
+        m = j + 1;
+        j = i;
+        if (i >= 0) {
+          break;
+        }
+        aUe();
+        this.mft.dG(this.mfr, this.mfs);
+        k = this.mft.rz((int)paramLong);
+        i = k;
+        j = m;
+      } while (m < n);
+      j = k;
     }
-    j = (j - this.jFE + this.jFD[0]) % this.jFD[0];
-    Log.d(this.TAG, "seekTo: " + paramLong + ", " + this.jFE + ", " + j + ", " + aBj() + ", " + this.jFD[0] + 65292 + this.jFG.jFz);
-    i = k;
-    while (i < j)
+    int k = (j - this.mfr + this.mfq[0]) % this.mfq[0];
+    Log.d(this.TAG, "seekTo: " + paramLong + ", " + this.mfr + ", " + k + ", " + aUg() + ", " + this.mfq[0] + 65292 + this.mft.mfm);
+    if (k > 0)
     {
-      aBh();
-      i += 1;
+      i = 0;
+      do
+      {
+        j = i + 1;
+        aUe();
+        i = j;
+      } while (j < k);
     }
-    AppMethodBeat.o(232182);
+    AppMethodBeat.o(242228);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.g
  * JD-Core Version:    0.7.0.1
  */

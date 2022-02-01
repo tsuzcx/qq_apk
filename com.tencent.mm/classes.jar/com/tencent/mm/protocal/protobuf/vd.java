@@ -1,88 +1,87 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class vd
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int RIt;
-  public String RVi;
-  public long SgB;
-  public int SgC;
-  public int rVU;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(93332);
+    AppMethodBeat.i(91388);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RVi != null) {
-        paramVarArgs.f(1, this.RVi);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(91388);
+        throw paramVarArgs;
       }
-      paramVarArgs.bm(2, this.SgB);
-      paramVarArgs.aY(3, this.SgC);
-      paramVarArgs.aY(4, this.RIt);
-      paramVarArgs.aY(5, this.rVU);
-      AppMethodBeat.o(93332);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(91388);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RVi == null) {
-        break label398;
+      if (this.BaseResponse == null) {
+        break label332;
       }
     }
-    label398:
-    for (paramInt = g.a.a.b.b.a.g(1, this.RVi) + 0;; paramInt = 0)
+    label332:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.p(2, this.SgB);
-      int j = g.a.a.b.b.a.bM(3, this.SgC);
-      int k = g.a.a.b.b.a.bM(4, this.RIt);
-      int m = g.a.a.b.b.a.bM(5, this.rVU);
-      AppMethodBeat.o(93332);
-      return paramInt + i + j + k + m;
+      AppMethodBeat.o(91388);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(93332);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(91388);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(91388);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         vd localvd = (vd)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(93332);
+          AppMethodBeat.o(91388);
           return -1;
-        case 1: 
-          localvd.RVi = locala.abFh.readString();
-          AppMethodBeat.o(93332);
-          return 0;
-        case 2: 
-          localvd.SgB = locala.abFh.AN();
-          AppMethodBeat.o(93332);
-          return 0;
-        case 3: 
-          localvd.SgC = locala.abFh.AK();
-          AppMethodBeat.o(93332);
-          return 0;
-        case 4: 
-          localvd.RIt = locala.abFh.AK();
-          AppMethodBeat.o(93332);
-          return 0;
         }
-        localvd.rVU = locala.abFh.AK();
-        AppMethodBeat.o(93332);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          kd localkd = new kd();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localkd.parseFrom((byte[])localObject);
+          }
+          localvd.BaseResponse = localkd;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91388);
         return 0;
       }
-      AppMethodBeat.o(93332);
+      AppMethodBeat.o(91388);
       return -1;
     }
   }

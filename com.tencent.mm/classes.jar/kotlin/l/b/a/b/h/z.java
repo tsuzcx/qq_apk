@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class z
 {
-  static int B(int paramInt1, int paramInt2, int paramInt3)
+  static int T(int paramInt1, int paramInt2, int paramInt3)
   {
     if ((paramInt1 > -12) || (paramInt2 > -65) || (paramInt3 > -65)) {
       return -1;
@@ -12,7 +12,7 @@ final class z
     return paramInt2 << 8 ^ paramInt1 ^ paramInt3 << 16;
   }
   
-  public static int Y(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static int W(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59636);
     while ((paramInt1 < paramInt2) && (paramArrayOfByte[paramInt1] >= 0)) {
@@ -23,12 +23,12 @@ final class z
       AppMethodBeat.o(59636);
       return 0;
     }
-    paramInt1 = Z(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = X(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(59636);
     return paramInt1;
   }
   
-  private static int Z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static int X(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59637);
     for (;;)
@@ -67,7 +67,7 @@ final class z
           {
             if (i >= paramInt2 - 1)
             {
-              paramInt1 = aa(paramArrayOfByte, i, paramInt2);
+              paramInt1 = Y(paramArrayOfByte, i, paramInt2);
               AppMethodBeat.o(59637);
               return paramInt1;
             }
@@ -88,7 +88,7 @@ final class z
           {
             if (i >= paramInt2 - 2)
             {
-              paramInt1 = aa(paramArrayOfByte, i, paramInt2);
+              paramInt1 = Y(paramArrayOfByte, i, paramInt2);
               AppMethodBeat.o(59637);
               return paramInt1;
             }
@@ -117,7 +117,7 @@ final class z
     }
   }
   
-  private static int aa(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static int Y(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59638);
     int i = paramArrayOfByte[(paramInt1 - 1)];
@@ -128,20 +128,20 @@ final class z
       AppMethodBeat.o(59638);
       throw paramArrayOfByte;
     case 0: 
-      paramInt1 = hM(i);
+      paramInt1 = lB(i);
       AppMethodBeat.o(59638);
       return paramInt1;
     case 1: 
-      paramInt1 = bR(i, paramArrayOfByte[paramInt1]);
+      paramInt1 = cS(i, paramArrayOfByte[paramInt1]);
       AppMethodBeat.o(59638);
       return paramInt1;
     }
-    paramInt1 = B(i, paramArrayOfByte[paramInt1], paramArrayOfByte[(paramInt1 + 1)]);
+    paramInt1 = T(i, paramArrayOfByte[paramInt1], paramArrayOfByte[(paramInt1 + 1)]);
     AppMethodBeat.o(59638);
     return paramInt1;
   }
   
-  static int bR(int paramInt1, int paramInt2)
+  static int cS(int paramInt1, int paramInt2)
   {
     if ((paramInt1 > -12) || (paramInt2 > -65)) {
       return -1;
@@ -149,7 +149,7 @@ final class z
     return paramInt2 << 8 ^ paramInt1;
   }
   
-  private static int hM(int paramInt)
+  private static int lB(int paramInt)
   {
     int i = paramInt;
     if (paramInt > -12) {
@@ -158,10 +158,10 @@ final class z
     return i;
   }
   
-  public static boolean s(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static boolean t(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(59635);
-    if (Y(paramArrayOfByte, paramInt1, paramInt2) == 0)
+    if (W(paramArrayOfByte, paramInt1, paramInt2) == 0)
     {
       AppMethodBeat.o(59635);
       return true;
@@ -172,7 +172,7 @@ final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.h.z
  * JD-Core Version:    0.7.0.1
  */

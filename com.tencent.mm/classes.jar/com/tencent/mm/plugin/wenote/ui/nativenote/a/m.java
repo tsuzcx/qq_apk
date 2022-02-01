@@ -8,42 +8,42 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.e;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.u;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.pluginsdk.ui.span.t.b;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.pluginsdk.ui.span.x.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class m
   extends a
 {
-  private WXRTEditText QKw;
+  private WXRTEditText XDV;
   
   public m(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30879);
-    this.QKw = ((WXRTEditText)paramView.findViewById(R.h.dTc));
-    if ((paramk.QHZ != 2) || (!this.QIM.QIa))
+    this.XDV = ((WXRTEditText)paramView.findViewById(R.h.fVi));
+    if ((paramk.XBx != 2) || (!this.XCl.XBy))
     {
-      this.QKw.setKeyListener(null);
-      this.QKw.setFocusable(false);
-      this.QKw.setClickable(true);
+      this.XDV.setKeyListener(null);
+      this.XDV.setFocusable(false);
+      this.XDV.setClickable(true);
     }
-    this.QKw.utn = this;
-    this.QKw.setEditTextType(0);
-    this.QIM.q(this.QKw);
-    this.QKw.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    this.XDV.xzK = this;
+    this.XDV.setEditTextType(0);
+    this.XCl.q(this.XDV);
+    this.XDV.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(30876);
-        bh.aHJ().postToWorker(new Runnable()
+        bh.baH().postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -60,120 +60,128 @@ public final class m
   
   public final void a(final com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
+    x.b localb = null;
     paramInt2 = -1;
     AppMethodBeat.i(30880);
-    this.QKw.setPosInDataList(paramInt1);
+    this.XDV.setPosInDataList(paramInt1);
     final com.tencent.mm.plugin.wenote.model.a.i locali = (com.tencent.mm.plugin.wenote.model.a.i)paramc;
-    locali.QHd = this.QKw;
-    locali.QHb = null;
-    locali.QHc = null;
-    paramc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.hdz().aph(paramInt1 - 1);
+    locali.XAB = this.XDV;
+    locali.XAz = null;
+    locali.XAA = null;
+    paramc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.iEg().avf(paramInt1 - 1);
     if ((paramc != null) && (paramc.getType() == 1))
     {
-      paramc = (LinearLayout.LayoutParams)this.QKw.getLayoutParams();
+      paramc = (LinearLayout.LayoutParams)this.XDV.getLayoutParams();
       paramc.topMargin = 0;
-      this.QKw.setLayoutParams(paramc);
+      this.XDV.setLayoutParams(paramc);
     }
-    paramc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.hdz().aph(paramInt1 + 1);
+    paramc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.iEg().avf(paramInt1 + 1);
     if ((paramc != null) && (paramc.getType() == 1))
     {
-      paramc = (LinearLayout.LayoutParams)this.QKw.getLayoutParams();
+      paramc = (LinearLayout.LayoutParams)this.XDV.getLayoutParams();
       paramc.bottomMargin = 0;
-      this.QKw.setLayoutParams(paramc);
+      this.XDV.setLayoutParams(paramc);
     }
-    switch (this.QIM.QHZ)
+    paramc = localb;
+    switch (this.XCl.XBx)
     {
-    case 3: 
     default: 
-      paramc = null;
-      if ((this.QIM.QHZ != 2) || (!this.QIM.QIa))
+      paramc = localb;
+    case 3: 
+      if ((this.XCl.XBx != 2) || (!this.XCl.XBy))
       {
-        this.QKw.setRichTextEditing(locali.content);
-        l.b(this.QKw, paramc, l.Rsm);
+        this.XDV.setRichTextEditing(locali.content);
+        p.b(this.XDV, paramc, p.YoF);
+        Log.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + KI());
+        AppMethodBeat.o(30880);
+        return;
       }
       break;
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + mc());
-      AppMethodBeat.o(30880);
-      return;
-      paramc = t.b.Rtu;
-      paramInt1 = paramInt2;
-      for (;;)
+    case 2: 
+      paramc = x.b.YpQ;
+    case 4: 
+      for (paramInt1 = paramInt2;; paramInt1 = paramInt2)
       {
-        paramc = paramc.aqS(paramInt1);
+        paramc = paramc.awY(paramInt1);
         break;
-        paramc = t.b.Rtx;
-        paramInt1 = paramInt2;
-        continue;
-        bh.beI();
-        String str = com.tencent.mm.model.c.bbO().Oq(this.QIM.msgId).field_talker;
-        if (this.QIM.QHP)
+        paramc = x.b.YpT;
+      }
+    case 1: 
+      label228:
+      bh.bCz();
+      label265:
+      paramc = com.tencent.mm.model.c.bzD().sl(this.XCl.msgId);
+      if (paramc == null) {}
+      break;
+    }
+    for (paramc = paramc.field_talker;; paramc = null)
+    {
+      if (this.XCl.XBn)
+      {
+        localb = x.b.YpS;
+        if (paramc == null) {}
+        for (paramInt1 = -1;; paramInt1 = com.tencent.mm.modelappbrand.a.KG(paramc))
         {
-          paramc = t.b.Rtw;
-          if (str == null) {}
-          for (paramInt1 = -1;; paramInt1 = com.tencent.mm.modelappbrand.a.SF(str))
-          {
-            paramc = paramc.aqS(paramInt1);
-            break;
-          }
-        }
-        t.b localb = t.b.Rtv;
-        paramc = localb;
-        paramInt1 = paramInt2;
-        if (str != null)
-        {
-          paramInt1 = com.tencent.mm.modelappbrand.a.SF(str);
-          paramc = localb;
+          paramc = localb.awY(paramInt1);
+          break;
         }
       }
+      localb = x.b.YpR;
+      if (paramc == null)
+      {
+        paramc = localb;
+        paramInt1 = paramInt2;
+        break label265;
+      }
+      paramInt1 = com.tencent.mm.modelappbrand.a.KG(paramc);
+      paramc = localb;
+      break label265;
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(30878);
           m.a(m.this).setRichTextEditing(locali.content);
-          m.a(m.this).cSm();
-          m.a(m.this).cSo();
-          l.b(m.a(m.this), paramc, l.Rsm);
-          m.a(m.this).cSp();
-          m.a(m.this).cSn();
-          if (locali.urG) {
-            if ((locali.urI != -1) && (locali.urI < m.a(m.this).getText().toString().length()))
+          m.a(m.this).dwE();
+          m.a(m.this).dwG();
+          p.b(m.a(m.this), paramc, p.YoF);
+          m.a(m.this).dwH();
+          m.a(m.this).dwF();
+          if (locali.xyb) {
+            if ((locali.xyd != -1) && (locali.xyd < m.a(m.this).getText().toString().length()))
             {
-              m.a(m.this).setSelection(locali.urI);
+              m.a(m.this).setSelection(locali.xyd);
               m.a(m.this).requestFocus();
               MMHandlerThread.postToMainThreadDelayed(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(30877);
-                  if (m.2.this.QKz.urP != 0)
+                  if (m.2.this.XDY.xyk != 0)
                   {
-                    int i = m.a(m.this).getSelection().tH;
-                    if (i == m.2.this.QKz.content.length())
+                    int i = m.a(m.this).getSelection().uG;
+                    if (i == m.2.this.XDY.content.length())
                     {
-                      m.a(m.this).cSm();
+                      m.a(m.this).dwE();
                       m.a(m.this).getText().append("\n");
-                      m.a(m.this).cSn();
+                      m.a(m.this).dwF();
                       m.a(m.this).setSelection(i);
                     }
-                    m.2.this.QKz.urP = 0;
-                    if (m.2.this.QKz.urQ == 1)
+                    m.2.this.XDY.xyk = 0;
+                    if (m.2.this.XDY.xyl == 1)
                     {
-                      m.a(m.this).a(u.QIB, Boolean.TRUE);
+                      m.a(m.this).a(u.XCa, Boolean.TRUE);
                       AppMethodBeat.o(30877);
                       return;
                     }
-                    if (m.2.this.QKz.urQ == 3)
+                    if (m.2.this.XDY.xyl == 3)
                     {
-                      m.a(m.this).a(u.QIA, Boolean.TRUE);
+                      m.a(m.this).a(u.XBZ, Boolean.TRUE);
                       AppMethodBeat.o(30877);
                       return;
                     }
-                    if (m.2.this.QKz.urQ == 2) {
-                      m.a(m.this).a(u.QIC, Boolean.TRUE);
+                    if (m.2.this.XDY.xyl == 2) {
+                      m.a(m.this).a(u.XCb, Boolean.TRUE);
                     }
                   }
                   AppMethodBeat.o(30877);
@@ -183,10 +191,10 @@ public final class m
           }
           for (;;)
           {
-            if (locali.urO)
+            if (locali.xyj)
             {
-              locali.urO = false;
-              m.a(m.this).urO = true;
+              locali.xyj = false;
+              m.a(m.this).xyj = true;
               m.a(m.this).onTextContextMenuItem(16908322);
             }
             AppMethodBeat.o(30878);
@@ -199,17 +207,18 @@ public final class m
           }
         }
       });
+      break label228;
     }
   }
   
-  public final int cRD()
+  public final int dvW()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.m
  * JD-Core Version:    0.7.0.1
  */

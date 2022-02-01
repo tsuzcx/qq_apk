@@ -63,7 +63,7 @@ public class g
   
   public static a a(c paramc)
   {
-    AppMethodBeat.i(244835);
+    AppMethodBeat.i(229335);
     a locala = new a();
     switch (1.a[paramc.ordinal()])
     {
@@ -73,7 +73,7 @@ public class g
     }
     for (;;)
     {
-      AppMethodBeat.o(244835);
+      AppMethodBeat.o(229335);
       return locala;
       locala.a = 368;
       locala.b = 640;
@@ -148,7 +148,7 @@ public class g
   
   public boolean a()
   {
-    AppMethodBeat.i(244836);
+    AppMethodBeat.i(229338);
     if (this.l != c.a)
     {
       a locala = a(this.l);
@@ -157,18 +157,18 @@ public class g
     }
     if (this.a > this.b)
     {
-      AppMethodBeat.o(244836);
+      AppMethodBeat.o(229338);
       return true;
     }
-    AppMethodBeat.o(244836);
+    AppMethodBeat.o(229338);
     return false;
   }
   
   protected Object clone()
   {
-    AppMethodBeat.i(244837);
+    AppMethodBeat.i(229342);
     g localg = (g)super.clone();
-    AppMethodBeat.o(244837);
+    AppMethodBeat.o(229342);
     return localg;
   }
   
@@ -180,7 +180,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.g
  * JD-Core Version:    0.7.0.1
  */

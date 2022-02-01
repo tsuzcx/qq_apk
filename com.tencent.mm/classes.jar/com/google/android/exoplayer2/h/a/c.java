@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements f.a
 {
-  private final a bpx;
-  private final long bpy;
   private final int bufferSize;
+  private final a dja;
+  private final long djb;
   
   public c(a parama, long paramLong)
   {
@@ -18,22 +18,22 @@ public final class c
   
   private c(a parama, long paramLong, byte paramByte)
   {
-    this.bpx = parama;
-    this.bpy = paramLong;
+    this.dja = parama;
+    this.djb = paramLong;
     this.bufferSize = 20480;
   }
   
-  public final f uG()
+  public final f Uj()
   {
     AppMethodBeat.i(92965);
-    b localb = new b(this.bpx, this.bpy, this.bufferSize);
+    b localb = new b(this.dja, this.djb, this.bufferSize);
     AppMethodBeat.o(92965);
     return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.c
  * JD-Core Version:    0.7.0.1
  */

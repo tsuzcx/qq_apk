@@ -8,57 +8,74 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "openFinderTopicView", "extInfo", "OpenFinderTopicTask", "OpenFinderTopicTaskData", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "openFinderTopicView", "extInfo", "OpenFinderTopicTask", "OpenFinderTopicTaskData", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class JsApiOpenFinderTopicView
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends com.tencent.mm.plugin.webview.jsapi.c.a
 {
-  private static final int IIl = 392;
-  public static final JsApiOpenFinderTopicView Qvw;
-  private static final String fXz = "openFinderTopicView";
+  private static final int OOk;
+  public static final JsApiOpenFinderTopicView XnB;
+  private static final String idA;
   
   static
   {
-    AppMethodBeat.i(231169);
-    Qvw = new JsApiOpenFinderTopicView();
-    IIl = 392;
-    fXz = "openFinderTopicView";
-    AppMethodBeat.o(231169);
+    AppMethodBeat.i(297813);
+    XnB = new JsApiOpenFinderTopicView();
+    OOk = 392;
+    idA = "openFinderTopicView";
+    AppMethodBeat.o(297813);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, final n paramn)
+  private static final void d(h paramh, p paramp, IPCBoolean paramIPCBoolean)
   {
-    AppMethodBeat.i(231167);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
+    AppMethodBeat.i(297804);
+    s.u(paramh, "$env");
+    s.u(paramp, "$msg");
+    if (paramIPCBoolean.value)
+    {
+      paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), null);
+      AppMethodBeat.o(297804);
+      return;
+    }
+    paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":fail open fail"), null);
+    AppMethodBeat.o(297804);
+  }
+  
+  public final boolean a(h paramh, p paramp)
+  {
+    AppMethodBeat.i(297852);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
     Log.i("MicroMsg.JsApiOpenFinderTopicView", "OpenFinderTopicView");
-    String str2 = (String)paramn.params.get("extInfo");
+    String str2 = (String)paramp.params.get("extInfo");
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     Log.d("MicroMsg.JsApiOpenFinderTopicView", "OpenFinderTopicView extInfo: %s", new Object[] { str1 });
-    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new OpenFinderTopicTaskData(str1), a.class, (com.tencent.mm.ipcinvoker.f)new b(paramf, paramn));
-    AppMethodBeat.o(231167);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new OpenFinderTopicTaskData(str1), a.class, new JsApiOpenFinderTopicView..ExternalSyntheticLambda0(paramh, paramp));
+    AppMethodBeat.o(297852);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
-    return fXz;
+    return idA;
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
-    return IIl;
+    return OOk;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "Landroid/os/Parcelable;", "extInfo", "", "(Ljava/lang/String;)V", "src", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "describeContents", "", "writeToParcel", "", "parcel", "flags", "CREATOR", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "Landroid/os/Parcelable;", "extInfo", "", "(Ljava/lang/String;)V", "src", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getExtInfo", "()Ljava/lang/String;", "setExtInfo", "describeContents", "", "writeToParcel", "", "parcel", "flags", "CREATOR", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class OpenFinderTopicTaskData
     implements Parcelable
   {
@@ -67,14 +84,14 @@ public final class JsApiOpenFinderTopicView
     
     static
     {
-      AppMethodBeat.i(254439);
+      AppMethodBeat.i(297853);
       CREATOR = new a((byte)0);
-      AppMethodBeat.o(254439);
+      AppMethodBeat.o(297853);
     }
     
     public OpenFinderTopicTaskData(Parcel paramParcel)
     {
-      AppMethodBeat.i(254437);
+      AppMethodBeat.i(297849);
       this.extInfo = "";
       String str = paramParcel.readString();
       paramParcel = str;
@@ -82,15 +99,15 @@ public final class JsApiOpenFinderTopicView
         paramParcel = "";
       }
       this.extInfo = paramParcel;
-      AppMethodBeat.o(254437);
+      AppMethodBeat.o(297849);
     }
     
     public OpenFinderTopicTaskData(String paramString)
     {
-      AppMethodBeat.i(254435);
+      AppMethodBeat.i(297845);
       this.extInfo = "";
       this.extInfo = paramString;
-      AppMethodBeat.o(254435);
+      AppMethodBeat.o(297845);
     }
     
     public final int describeContents()
@@ -100,30 +117,23 @@ public final class JsApiOpenFinderTopicView
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(254432);
-      p.k(paramParcel, "parcel");
+      AppMethodBeat.i(297857);
+      s.u(paramParcel, "parcel");
       paramParcel.writeString(this.extInfo);
-      AppMethodBeat.o(254432);
+      AppMethodBeat.o(297857);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "plugin-webview_release"})
+    @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements Parcelable.Creator<JsApiOpenFinderTopicView.OpenFinderTopicTaskData>
     {}
   }
   
   @com.tencent.mm.ipcinvoker.c.a
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOpenFinderTopicView$OpenFinderTopicTaskData;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class a
     implements d<JsApiOpenFinderTopicView.OpenFinderTopicTaskData, IPCBoolean>
   {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements com.tencent.mm.ipcinvoker.f<IPCBoolean>
-  {
-    b(com.tencent.mm.plugin.webview.d.f paramf, n paramn) {}
-  }
 }
 
 

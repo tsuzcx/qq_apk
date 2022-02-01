@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.hld.keyboard.selfdraw.bean;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyboardConfig;", "", "vWidth", "", "vHeight", "line", "", "lineHeight", "", "lineGap", "swipeable", "", "paddingLeft", "paddingRight", "marginLeft", "marginRight", "marginTop", "marginBottom", "(Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;)V", "getLine", "()Ljava/lang/Integer;", "setLine", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "getLineGap", "()Ljava/lang/Float;", "setLineGap", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "getLineHeight", "()Ljava/util/List;", "setLineHeight", "(Ljava/util/List;)V", "getMarginBottom", "setMarginBottom", "getMarginLeft", "setMarginLeft", "getMarginRight", "setMarginRight", "getMarginTop", "setMarginTop", "getPaddingLeft", "setPaddingLeft", "getPaddingRight", "setPaddingRight", "getSwipeable", "()Ljava/lang/Boolean;", "setSwipeable", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "getVHeight", "setVHeight", "getVWidth", "setVWidth", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;)Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyboardConfig;", "equals", "other", "hashCode", "toString", "", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyboardConfig;", "", "vWidth", "", "vHeight", "line", "", "lineHeight", "", "lineGap", "swipeable", "", "paddingLeft", "paddingRight", "marginLeft", "marginRight", "marginTop", "marginBottom", "(Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;)V", "getLine", "()Ljava/lang/Integer;", "setLine", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "getLineGap", "()Ljava/lang/Float;", "setLineGap", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "getLineHeight", "()Ljava/util/List;", "setLineHeight", "(Ljava/util/List;)V", "getMarginBottom", "setMarginBottom", "getMarginLeft", "setMarginLeft", "getMarginRight", "setMarginRight", "getMarginTop", "setMarginTop", "getPaddingLeft", "setPaddingLeft", "getPaddingRight", "setPaddingRight", "getSwipeable", "()Ljava/lang/Boolean;", "setSwipeable", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "getVHeight", "setVHeight", "getVWidth", "setVWidth", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Integer;Ljava/util/List;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;)Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/bean/KeyboardConfig;", "equals", "other", "hashCode", "toString", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class KeyboardConfig
 {
   private Integer line;
@@ -99,30 +99,88 @@ public final class KeyboardConfig
   
   public final KeyboardConfig copy(Float paramFloat1, Float paramFloat2, Integer paramInteger, List<Float> paramList, Float paramFloat3, Boolean paramBoolean, Float paramFloat4, Float paramFloat5, Float paramFloat6, Float paramFloat7, Float paramFloat8, Float paramFloat9)
   {
-    AppMethodBeat.i(210745);
+    AppMethodBeat.i(313278);
     paramFloat1 = new KeyboardConfig(paramFloat1, paramFloat2, paramInteger, paramList, paramFloat3, paramBoolean, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramFloat9);
-    AppMethodBeat.o(210745);
+    AppMethodBeat.o(313278);
     return paramFloat1;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(210750);
-    if (this != paramObject)
+    AppMethodBeat.i(313291);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof KeyboardConfig))
-      {
-        paramObject = (KeyboardConfig)paramObject;
-        if ((!p.h(this.vWidth, paramObject.vWidth)) || (!p.h(this.vHeight, paramObject.vHeight)) || (!p.h(this.line, paramObject.line)) || (!p.h(this.lineHeight, paramObject.lineHeight)) || (!p.h(this.lineGap, paramObject.lineGap)) || (!p.h(this.swipeable, paramObject.swipeable)) || (!p.h(this.paddingLeft, paramObject.paddingLeft)) || (!p.h(this.paddingRight, paramObject.paddingRight)) || (!p.h(this.marginLeft, paramObject.marginLeft)) || (!p.h(this.marginRight, paramObject.marginRight)) || (!p.h(this.marginTop, paramObject.marginTop)) || (!p.h(this.marginBottom, paramObject.marginBottom))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(210750);
+      AppMethodBeat.o(313291);
       return true;
     }
-    AppMethodBeat.o(210750);
-    return false;
+    if (!(paramObject instanceof KeyboardConfig))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    paramObject = (KeyboardConfig)paramObject;
+    if (!s.p(this.vWidth, paramObject.vWidth))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.vHeight, paramObject.vHeight))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.line, paramObject.line))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.lineHeight, paramObject.lineHeight))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.lineGap, paramObject.lineGap))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.swipeable, paramObject.swipeable))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.paddingLeft, paramObject.paddingLeft))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.paddingRight, paramObject.paddingRight))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.marginLeft, paramObject.marginLeft))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.marginRight, paramObject.marginRight))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.marginTop, paramObject.marginTop))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    if (!s.p(this.marginBottom, paramObject.marginBottom))
+    {
+      AppMethodBeat.o(313291);
+      return false;
+    }
+    AppMethodBeat.o(313291);
+    return true;
   }
   
   public final Integer getLine()
@@ -188,118 +246,113 @@ public final class KeyboardConfig
   public final int hashCode()
   {
     int i7 = 0;
-    AppMethodBeat.i(210749);
-    Object localObject = this.vWidth;
+    AppMethodBeat.i(313286);
     int i;
     int j;
-    label42:
+    label26:
     int k;
-    label59:
+    label35:
     int m;
-    label77:
+    label45:
     int n;
-    label95:
+    label55:
     int i1;
-    label113:
+    label65:
     int i2;
-    label131:
+    label75:
     int i3;
-    label149:
+    label85:
     int i4;
-    label167:
+    label95:
     int i5;
-    if (localObject != null)
+    label105:
+    int i6;
+    if (this.vWidth == null)
     {
-      i = localObject.hashCode();
-      localObject = this.vHeight;
-      if (localObject == null) {
-        break label297;
+      i = 0;
+      if (this.vHeight != null) {
+        break label204;
       }
-      j = localObject.hashCode();
-      localObject = this.line;
-      if (localObject == null) {
-        break label302;
+      j = 0;
+      if (this.line != null) {
+        break label215;
       }
-      k = localObject.hashCode();
-      localObject = this.lineHeight;
-      if (localObject == null) {
-        break label307;
+      k = 0;
+      if (this.lineHeight != null) {
+        break label226;
       }
-      m = localObject.hashCode();
-      localObject = this.lineGap;
-      if (localObject == null) {
-        break label313;
+      m = 0;
+      if (this.lineGap != null) {
+        break label238;
       }
-      n = localObject.hashCode();
-      localObject = this.swipeable;
-      if (localObject == null) {
-        break label319;
+      n = 0;
+      if (this.swipeable != null) {
+        break label250;
       }
-      i1 = localObject.hashCode();
-      localObject = this.paddingLeft;
-      if (localObject == null) {
-        break label325;
+      i1 = 0;
+      if (this.paddingLeft != null) {
+        break label262;
       }
-      i2 = localObject.hashCode();
-      localObject = this.paddingRight;
-      if (localObject == null) {
-        break label331;
+      i2 = 0;
+      if (this.paddingRight != null) {
+        break label274;
       }
-      i3 = localObject.hashCode();
-      localObject = this.marginLeft;
-      if (localObject == null) {
-        break label337;
+      i3 = 0;
+      if (this.marginLeft != null) {
+        break label286;
       }
-      i4 = localObject.hashCode();
-      localObject = this.marginRight;
-      if (localObject == null) {
-        break label343;
+      i4 = 0;
+      if (this.marginRight != null) {
+        break label298;
       }
-      i5 = localObject.hashCode();
-      label185:
-      localObject = this.marginTop;
-      if (localObject == null) {
-        break label349;
+      i5 = 0;
+      if (this.marginTop != null) {
+        break label310;
+      }
+      i6 = 0;
+      label115:
+      if (this.marginBottom != null) {
+        break label322;
       }
     }
-    label297:
-    label302:
-    label307:
-    label313:
-    label319:
-    label325:
-    label331:
-    label337:
-    label343:
-    label349:
-    for (int i6 = localObject.hashCode();; i6 = 0)
+    for (;;)
     {
-      localObject = this.marginBottom;
-      if (localObject != null) {
-        i7 = localObject.hashCode();
-      }
-      AppMethodBeat.o(210749);
+      AppMethodBeat.o(313286);
       return (i6 + (i5 + (i4 + (i3 + (i2 + (i1 + (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i7;
-      i = 0;
+      i = this.vWidth.hashCode();
       break;
-      j = 0;
-      break label42;
-      k = 0;
-      break label59;
-      m = 0;
-      break label77;
-      n = 0;
+      label204:
+      j = this.vHeight.hashCode();
+      break label26;
+      label215:
+      k = this.line.hashCode();
+      break label35;
+      label226:
+      m = this.lineHeight.hashCode();
+      break label45;
+      label238:
+      n = this.lineGap.hashCode();
+      break label55;
+      label250:
+      i1 = this.swipeable.hashCode();
+      break label65;
+      label262:
+      i2 = this.paddingLeft.hashCode();
+      break label75;
+      label274:
+      i3 = this.paddingRight.hashCode();
+      break label85;
+      label286:
+      i4 = this.marginLeft.hashCode();
       break label95;
-      i1 = 0;
-      break label113;
-      i2 = 0;
-      break label131;
-      i3 = 0;
-      break label149;
-      i4 = 0;
-      break label167;
-      i5 = 0;
-      break label185;
+      label298:
+      i5 = this.marginRight.hashCode();
+      break label105;
+      label310:
+      i6 = this.marginTop.hashCode();
+      break label115;
+      label322:
+      i7 = this.marginBottom.hashCode();
     }
   }
   
@@ -365,10 +418,13 @@ public final class KeyboardConfig
   
   public final String toString()
   {
-    AppMethodBeat.i(210748);
-    String str = "KeyboardConfig(vWidth=" + this.vWidth + ", vHeight=" + this.vHeight + ", line=" + this.line + ", lineHeight=" + this.lineHeight + ", lineGap=" + this.lineGap + ", swipeable=" + this.swipeable + ", paddingLeft=" + this.paddingLeft + ", paddingRight=" + this.paddingRight + ", marginLeft=" + this.marginLeft + ", marginRight=" + this.marginRight + ", marginTop=" + this.marginTop + ", marginBottom=" + this.marginBottom + ")";
-    AppMethodBeat.o(210748);
-    return str;
+    AppMethodBeat.i(313283);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("KeyboardConfig(vWidth=").append(this.vWidth).append(", vHeight=").append(this.vHeight).append(", line=").append(this.line).append(", lineHeight=").append(this.lineHeight).append(", lineGap=").append(this.lineGap).append(", swipeable=").append(this.swipeable).append(", paddingLeft=").append(this.paddingLeft).append(", paddingRight=").append(this.paddingRight).append(", marginLeft=").append(this.marginLeft).append(", marginRight=").append(this.marginRight).append(", marginTop=").append(this.marginTop).append(", marginBottom=");
+    ((StringBuilder)localObject).append(this.marginBottom).append(')');
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(313283);
+    return localObject;
   }
 }
 

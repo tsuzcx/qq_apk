@@ -2,22 +2,22 @@ package com.tencent.mm.ui.chatting.atsomeone;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;"}, k=3, mv={1, 5, 1}, xi=48)
 final class AtSomeoneSearchDataSource$c
-  extends q
+  extends u
   implements a<MMHandler>
 {
-  public static final c WGv;
+  public static final c aenK;
   
   static
   {
-    AppMethodBeat.i(220174);
-    WGv = new c();
-    AppMethodBeat.o(220174);
+    AppMethodBeat.i(254175);
+    aenK = new c();
+    AppMethodBeat.o(254175);
   }
   
   AtSomeoneSearchDataSource$c()

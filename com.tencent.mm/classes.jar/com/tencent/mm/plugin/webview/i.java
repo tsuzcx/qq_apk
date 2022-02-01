@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/WebTransHelpButtonStatus;", "", "(Ljava/lang/String;I)V", "None", "Trans", "Revert", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/WebTransHelpButtonStatus;", "", "(Ljava/lang/String;I)V", "None", "Trans", "Revert", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum i
 {
   static
   {
-    AppMethodBeat.i(218506);
-    i locali1 = new i("None", 0);
-    PEh = locali1;
-    i locali2 = new i("Trans", 1);
-    PEi = locali2;
-    i locali3 = new i("Revert", 2);
-    PEj = locali3;
-    PEk = new i[] { locali1, locali2, locali3 };
-    AppMethodBeat.o(218506);
+    AppMethodBeat.i(295860);
+    WuK = new i("None", 0);
+    WuL = new i("Trans", 1);
+    WuM = new i("Revert", 2);
+    WuN = new i[] { WuK, WuL, WuM };
+    AppMethodBeat.o(295860);
   }
   
   private i() {}

@@ -15,16 +15,16 @@ import java.util.Set;
 
 public final class a
 {
-  private static SparseArray<HashMap> Lrn;
-  private static m Lro;
+  private static SparseArray<HashMap> RUs;
+  private static m RUt;
   
   static
   {
     AppMethodBeat.i(100382);
-    Lrn = new SparseArray();
-    Lro = new m()
+    RUs = new SparseArray();
+    RUt = new m()
     {
-      public final void cF(final String paramAnonymousString, final boolean paramAnonymousBoolean)
+      public final void dl(final String paramAnonymousString, final boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(100378);
         MMHandlerThread.postToMainThread(new Runnable()
@@ -33,9 +33,9 @@ public final class a
           {
             AppMethodBeat.i(100377);
             int i = 0;
-            while (i < a.fYW().size())
+            while (i < a.hsh().size())
             {
-              Object localObject = (Set)((HashMap)a.fYW().valueAt(i)).get(paramAnonymousString);
+              Object localObject = (Set)((HashMap)a.hsh().valueAt(i)).get(paramAnonymousString);
               if ((localObject == null) || (((Set)localObject).size() == 0))
               {
                 AppMethodBeat.o(100377);
@@ -46,7 +46,7 @@ public final class a
               {
                 m localm = (m)((WeakReference)((Iterator)localObject).next()).get();
                 if (localm != null) {
-                  localm.cF(paramAnonymousString, paramAnonymousBoolean);
+                  localm.dl(paramAnonymousString, paramAnonymousBoolean);
                 }
               }
               i += 1;
@@ -57,7 +57,7 @@ public final class a
         AppMethodBeat.o(100378);
       }
     };
-    ((e)h.ag(e.class)).addStoryStatusNotifyListener(Lro);
+    ((e)h.az(e.class)).addStoryStatusNotifyListener(RUt);
     AppMethodBeat.o(100382);
   }
   
@@ -69,7 +69,7 @@ public final class a
       AppMethodBeat.o(100379);
       return;
     }
-    HashMap localHashMap = (HashMap)Lrn.get(paramInt);
+    HashMap localHashMap = (HashMap)RUs.get(paramInt);
     if (localHashMap == null) {
       localHashMap = new HashMap();
     }
@@ -82,7 +82,7 @@ public final class a
       }
       ((Set)localObject).add(new WeakReference(paramm));
       localHashMap.put(paramString, localObject);
-      Lrn.put(paramInt, localHashMap);
+      RUs.put(paramInt, localHashMap);
       AppMethodBeat.o(100379);
       return;
     }
@@ -96,7 +96,7 @@ public final class a
       AppMethodBeat.o(100380);
       return;
     }
-    Object localObject = (HashMap)Lrn.get(paramInt);
+    Object localObject = (HashMap)RUs.get(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(100380);
@@ -119,16 +119,16 @@ public final class a
     AppMethodBeat.o(100380);
   }
   
-  public static void fYV()
+  public static void hsg()
   {
     AppMethodBeat.i(100381);
-    Lrn.remove(4);
+    RUs.remove(4);
     AppMethodBeat.o(100381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "", "flattenVal", "", "(Ljava/lang/String;II)V", "getFlattenVal", "()I", "SUCCESS", "CANCEL", "FAIL", "Companion", "plugin-appbrand-integration_release"})
-public enum ac
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+final class ac
+  extends AppBrandProxyUIProcessTask
 {
-  public static final a prh;
-  final int prg;
-  
-  static
+  public final void handleRequest(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(280393);
-    ac localac1 = new ac("SUCCESS", 0, 0);
-    prc = localac1;
-    ac localac2 = new ac("CANCEL", 1, 1);
-    prd = localac2;
-    ac localac3 = new ac("FAIL", 2, 2);
-    pre = localac3;
-    prf = new ac[] { localac1, localac2, localac3 };
-    prh = new a((byte)0);
-    AppMethodBeat.o(280393);
-  }
-  
-  private ac(int paramInt)
-  {
-    this.prg = paramInt;
-  }
-  
-  public static final ac AK(int paramInt)
-  {
-    AppMethodBeat.i(280397);
-    ac localac = a.AK(paramInt);
-    AppMethodBeat.o(280397);
-    return localac;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult$Companion;", "", "()V", "from", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "flattenVal", "", "plugin-appbrand-integration_release"})
-  public static final class a
-  {
-    public static ac AK(int paramInt)
+    AppMethodBeat.i(326352);
+    if (!(paramProcessRequest instanceof ShareVideoToConversationRequest))
     {
-      AppMethodBeat.i(282143);
-      ac[] arrayOfac = ac.values();
-      int k = arrayOfac.length;
-      int i = 0;
-      while (i < k)
-      {
-        ac localac = arrayOfac[i];
-        if (paramInt == localac.prg) {}
-        for (int j = 1; j != 0; j = 0)
-        {
-          AppMethodBeat.o(282143);
-          return localac;
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(282143);
-      return null;
+      Log.w("MicroMsg.AppBrand.JsApiShareVideoMessage", "handleRequest, request is not ShareVideoToConversationRequest");
+      AppMethodBeat.o(326352);
+      return;
+    }
+    if (((CharSequence)((ShareVideoToConversationRequest)paramProcessRequest).videoPath).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.w("MicroMsg.AppBrand.JsApiShareVideoMessage", "handleRequest, fail since videoPath is empty");
+      finishProcess((AppBrandProxyUIProcessTask.ProcessResult)new ShareToConversationResult(aa.svP.rht));
+      AppMethodBeat.o(326352);
+      return;
+    }
+    Object localObject = ab.svR;
+    localObject = getActivityContext();
+    s.s(localObject, "activityContext");
+    ab.a((Activity)localObject, ((ShareVideoToConversationRequest)paramProcessRequest).videoPath, ((ShareVideoToConversationRequest)paramProcessRequest).thumbPath, (b)new a(this));
+    AppMethodBeat.o(326352);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "shareResult", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<aa, ah>
+  {
+    a(ac paramac)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -9,49 +9,49 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.t.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/ActiveFrameDrawable;", "Landroid/graphics/drawable/Drawable;", "resources", "Landroid/content/res/Resources;", "(Landroid/content/res/Resources;)V", "basicScale", "", "framePadding", "frameRect", "frameStroke", "paint", "Landroid/graphics/Paint;", "getResources", "()Landroid/content/res/Resources;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getOpacity", "", "setAlpha", "alpha", "setColorFilter", "colorFilter", "Landroid/graphics/ColorFilter;", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/ActiveFrameDrawable;", "Landroid/graphics/drawable/Drawable;", "resources", "Landroid/content/res/Resources;", "(Landroid/content/res/Resources;)V", "basicScale", "", "framePadding", "frameRect", "frameStroke", "paint", "Landroid/graphics/Paint;", "getResources", "()Landroid/content/res/Resources;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getOpacity", "", "setAlpha", "alpha", "setColorFilter", "colorFilter", "Landroid/graphics/ColorFilter;", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends Drawable
 {
-  private final Resources lRm;
+  private final Resources oJY;
   private final Paint paint;
-  private float uWF;
-  private final float uWG;
-  private final float uWH;
-  private final float uWI;
+  private float yje;
+  private final float yjf;
+  private final float yjg;
+  private final float yjh;
   
   public a(Resources paramResources)
   {
-    AppMethodBeat.i(221107);
-    this.lRm = paramResources;
-    this.uWF = 2.0F;
+    AppMethodBeat.i(280010);
+    this.oJY = paramResources;
+    this.yje = 2.0F;
     this.paint = new Paint();
     this.paint.setColor(-1);
     this.paint.setAntiAlias(true);
-    this.paint.setStrokeWidth(this.lRm.getDimension(a.a.editor_item_frame_stroke));
+    this.paint.setStrokeWidth(this.oJY.getDimension(a.a.editor_item_frame_stroke));
     this.paint.setStyle(Paint.Style.FILL);
-    this.uWG = this.lRm.getDimension(a.a.editor_item_frame_stroke);
-    this.uWH = this.lRm.getDimension(a.a.editor_item_frame_padding);
-    this.uWI = this.lRm.getDimension(a.a.editor_item_frame_rect);
-    AppMethodBeat.o(221107);
+    this.yjf = this.oJY.getDimension(a.a.editor_item_frame_stroke);
+    this.yjg = this.oJY.getDimension(a.a.editor_item_frame_padding);
+    this.yjh = this.oJY.getDimension(a.a.editor_item_frame_rect);
+    AppMethodBeat.o(280010);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(221097);
-    p.k(paramCanvas, "canvas");
-    float f1 = getBounds().left - this.uWH / this.uWF;
-    float f2 = getBounds().top - this.uWH / this.uWF;
-    float f3 = getBounds().right + this.uWH / this.uWF;
-    float f4 = getBounds().bottom + this.uWH / this.uWF;
-    this.paint.setStrokeWidth(this.uWG / this.uWF);
+    AppMethodBeat.i(280017);
+    s.u(paramCanvas, "canvas");
+    float f1 = getBounds().left - this.yjg / this.yje;
+    float f2 = getBounds().top - this.yjg / this.yje;
+    float f3 = getBounds().right + this.yjg / this.yje;
+    float f4 = getBounds().bottom + this.yjg / this.yje;
+    this.paint.setStrokeWidth(this.yjf / this.yje);
     this.paint.setAntiAlias(true);
     Paint localPaint = this.paint;
     paramCanvas.drawLines(new float[] { f1, f2, f3, f2, f3, f2, f3, f4, f3, f4, f1, f4, f1, f4, f1, f2 }, localPaint);
-    AppMethodBeat.o(221097);
+    AppMethodBeat.o(280017);
   }
   
   public final int getOpacity()

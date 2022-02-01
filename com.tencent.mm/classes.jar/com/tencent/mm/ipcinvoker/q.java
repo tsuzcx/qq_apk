@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface q
 {
-  public abstract void aFx();
+  public abstract void onReconnect();
 }
 
 

@@ -17,23 +17,23 @@ import java.util.List;
 public final class t
   extends BaseAdapter
 {
-  private List<String> RgR;
+  private List<String> GGS;
   private Context mContext;
-  private List<String> mNr;
+  private List<String> pJZ;
   
   public t(Context paramContext, List<String> paramList1, List<String> paramList2)
   {
     this.mContext = paramContext;
-    this.mNr = paramList2;
-    this.RgR = paramList1;
+    this.pJZ = paramList2;
+    this.GGS = paramList1;
   }
   
-  private static a hx(View paramView)
+  private static a kN(View paramView)
   {
     AppMethodBeat.i(31426);
     a locala = new a((byte)0);
-    locala.iZG = ((ImageView)paramView.findViewById(R.h.chatroom_member_avatar));
-    locala.mYd = ((TextView)paramView.findViewById(R.h.chatroom_member_name));
+    locala.lBC = ((ImageView)paramView.findViewById(R.h.chatroom_member_avatar));
+    locala.pUL = ((TextView)paramView.findViewById(R.h.chatroom_member_name));
     paramView.setTag(locala);
     AppMethodBeat.o(31426);
     return locala;
@@ -42,7 +42,7 @@ public final class t
   public final int getCount()
   {
     AppMethodBeat.i(31423);
-    int i = this.mNr.size();
+    int i = this.pJZ.size();
     AppMethodBeat.o(31423);
     return i;
   }
@@ -50,7 +50,7 @@ public final class t
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(31424);
-    Object localObject = this.mNr.get(paramInt);
+    Object localObject = this.pJZ.get(paramInt);
     AppMethodBeat.o(31424);
     return localObject;
   }
@@ -66,23 +66,25 @@ public final class t
     if (paramView == null)
     {
       paramView = View.inflate(this.mContext, R.i.chatroom_avatar_item, null);
-      paramViewGroup = hx(paramView);
+      paramView.findViewById(R.h.chatroom_member_avatar).setImportantForAccessibility(2);
+      paramViewGroup = kN(paramView);
     }
-    label262:
+    label259:
+    label273:
     for (;;)
     {
-      int i = this.mNr.size();
-      if ((paramInt >= 0) && (paramInt < this.mNr.size()) && (paramInt < this.RgR.size()))
+      int i = this.pJZ.size();
+      if ((paramInt >= 0) && (paramInt < this.pJZ.size()) && (paramInt < this.GGS.size()))
       {
-        paramViewGroup.iZG.setVisibility(0);
-        paramViewGroup.mYd.setVisibility(0);
-        a.b.c(paramViewGroup.iZG, (String)this.RgR.get(paramInt));
-        paramViewGroup.mYd.setText((CharSequence)this.mNr.get(paramInt));
-        paramViewGroup.mYd.setText(((com.tencent.mm.plugin.emoji.b.a)h.ae(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, (CharSequence)this.mNr.get(paramInt), paramViewGroup.mYd.getTextSize()));
-        if ((this.mNr.size() <= 12) || (paramInt < this.mNr.size() - i % 4)) {
-          break label248;
+        paramViewGroup.lBC.setVisibility(0);
+        paramViewGroup.pUL.setVisibility(0);
+        a.b.g(paramViewGroup.lBC, (String)this.GGS.get(paramInt));
+        paramViewGroup.pUL.setText((CharSequence)this.pJZ.get(paramInt));
+        paramViewGroup.pUL.setText(((com.tencent.mm.plugin.emoji.c.a)h.ax(com.tencent.mm.plugin.emoji.c.a.class)).a(this.mContext, (CharSequence)this.pJZ.get(paramInt), paramViewGroup.pUL.getTextSize()));
+        if ((this.pJZ.size() <= 12) || (paramInt < this.pJZ.size() - i % 4)) {
+          break label259;
         }
-        paramViewGroup.mYd.setPadding(0, 0, 0, com.tencent.mm.ci.a.aY(this.mContext, R.f.DialogAvatarLinePadding));
+        paramViewGroup.pUL.setPadding(0, 0, 0, com.tencent.mm.cd.a.br(this.mContext, R.f.DialogAvatarLinePadding));
       }
       for (;;)
       {
@@ -90,25 +92,24 @@ public final class t
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         if (paramViewGroup != null) {
-          break label262;
+          break label273;
         }
-        paramViewGroup = hx(paramView);
+        paramViewGroup = kN(paramView);
         break;
-        label248:
-        paramViewGroup.mYd.setPadding(0, 0, 0, 0);
+        paramViewGroup.pUL.setPadding(0, 0, 0, 0);
       }
     }
   }
   
   static final class a
   {
-    public ImageView iZG;
-    public TextView mYd;
+    public ImageView lBC;
+    public TextView pUL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.t
  * JD-Core Version:    0.7.0.1
  */

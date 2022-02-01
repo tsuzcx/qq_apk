@@ -1,6 +1,5 @@
 package com.tencent.mars.cdn;
 
-import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +7,7 @@ import android.net.http.X509TrustManagerExtensions;
 import android.os.Build.VERSION;
 import android.util.Pair;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.KeyStore;
@@ -44,7 +43,7 @@ public class X509Util
   private static X509TrustManagerImplementation sDefaultTrustManager;
   private static boolean sLoadedSystemKeyStore;
   private static final Object sLock;
-  private static q sSystemCertificateDirectory;
+  private static u sSystemCertificateDirectory;
   private static KeyStore sSystemKeyStore;
   private static Set<Pair<X500Principal, PublicKey>> sSystemTrustAnchorCache;
   private static KeyStore sTestKeyStore;
@@ -171,7 +170,7 @@ public class X509Util
     //   64: getstatic 252	com/tencent/mars/cdn/X509Util:sSystemKeyStore	Ljava/security/KeyStore;
     //   67: aconst_null
     //   68: invokevirtual 152	java/security/KeyStore:load	(Ljava/security/KeyStore$LoadStoreParameter;)V
-    //   71: new 254	com/tencent/mm/vfs/q
+    //   71: new 254	com/tencent/mm/vfs/u
     //   74: dup
     //   75: new 114	java/lang/StringBuilder
     //   78: dup
@@ -182,8 +181,8 @@ public class X509Util
     //   91: ldc_w 265
     //   94: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokespecial 266	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
-    //   103: putstatic 268	com/tencent/mars/cdn/X509Util:sSystemCertificateDirectory	Lcom/tencent/mm/vfs/q;
+    //   100: invokespecial 266	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   103: putstatic 268	com/tencent/mars/cdn/X509Util:sSystemCertificateDirectory	Lcom/tencent/mm/vfs/u;
     //   106: iconst_1
     //   107: putstatic 245	com/tencent/mars/cdn/X509Util:sLoadedSystemKeyStore	Z
     //   110: getstatic 270	com/tencent/mars/cdn/X509Util:sSystemTrustAnchorCache	Ljava/util/Set;
@@ -347,7 +346,7 @@ public class X509Util
       String str = hashPrincipal(paramX509Certificate.getSubjectX500Principal());
       i = 0;
       localObject1 = str + '.' + i;
-    } while (!new q(sSystemCertificateDirectory, (String)localObject1).ifE());
+    } while (!new u(sSystemCertificateDirectory, (String)localObject1).jKS());
     Object localObject2 = sSystemKeyStore.getCertificate("system:".concat(String.valueOf(localObject1)));
     if (localObject2 != null)
     {
@@ -857,13 +856,11 @@ public class X509Util
   {
     private final X509TrustManagerExtensions mTrustManagerExtensions;
     
-    @SuppressLint({"NewApi"})
     public X509TrustManagerJellyBean(X509TrustManager paramX509TrustManager)
     {
       this.mTrustManagerExtensions = new X509TrustManagerExtensions(paramX509TrustManager);
     }
     
-    @SuppressLint({"NewApi"})
     public final List<X509Certificate> checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString1, String paramString2)
     {
       return this.mTrustManagerExtensions.checkServerTrusted(paramArrayOfX509Certificate, paramString1, paramString2);
@@ -872,7 +869,7 @@ public class X509Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.cdn.X509Util
  * JD-Core Version:    0.7.0.1
  */

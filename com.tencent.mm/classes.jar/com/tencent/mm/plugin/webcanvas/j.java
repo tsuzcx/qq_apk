@@ -1,12 +1,40 @@
 package com.tencent.mm.plugin.webcanvas;
 
-import android.view.View;
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasPopupTarget;", "", "view", "Landroid/view/View;", "getView", "()Landroid/view/View;", "webview-sdk_release"})
-public abstract interface j
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasReport;", "", "()V", "idKey1454", "", "value", "", "kv20821", "appId", "", "contextName", "reason", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class j
 {
-  public abstract View getView();
+  public static final j WkY;
+  
+  static
+  {
+    AppMethodBeat.i(261307);
+    WkY = new j();
+    AppMethodBeat.o(261307);
+  }
+  
+  public static void bn(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(261287);
+    if (paramString3 == null) {}
+    for (paramString3 = null;; paramString3 = n.a(paramString3, ',', '.'))
+    {
+      h.OAn.b(20821, new Object[] { paramString1, paramString2, paramString3 });
+      AppMethodBeat.o(261287);
+      return;
+    }
+  }
+  
+  public static void xC(long paramLong)
+  {
+    AppMethodBeat.i(261274);
+    h.OAn.p(1454L, paramLong, 1L);
+    AppMethodBeat.o(261274);
+  }
 }
 
 

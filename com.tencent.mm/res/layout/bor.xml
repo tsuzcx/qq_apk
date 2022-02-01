@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/lj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/ea4" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="12.0dip" android:text="@string/fc9" android:layout_weight="1.0" android:layout_marginStart="24.0dip" />
-            <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="38.0dip" android:layout_marginRight="@dimen/hv">
-                <ImageView android:id="@id/fv6" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/login_app_default_avatar" />
-                <TextView android:textSize="15.0dip" android:textColor="@color/dm" android:layout_gravity="center" android:id="@id/fv9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxLines="2" />
-                <TextView android:textSize="15.0dip" android:textColor="@color/dm" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fc7" />
-            </LinearLayout>
-            <TextView android:textSize="22.0dip" android:textColor="@color/a2x" android:layout_gravity="start" android:id="@id/vv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/hv" android:text="" android:lineSpacingMultiplier="1.25" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/vu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/hv" android:text="用于在QQ浏览器中使用王者荣耀云游戏" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="60.0dip" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/ir">
-                <Button android:id="@id/erq" android:text="同意" style="@style/ov" />
-                <Button android:id="@id/ert" android:layout_marginTop="@dimen/cb" android:text="拒绝" style="@style/p3" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    <AutoCompleteTextView android:textSize="@dimen/j7" android:layout_gravity="center|left" android:id="@id/gmy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="120.0dip" android:completionThreshold="1" android:dropDownSelector="@color/a6w" android:dropDownWidth="fill_parent" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="-20.0dip" android:dropDownVerticalOffset="-5.0dip" style="@style/n9" />
+</LinearLayout>

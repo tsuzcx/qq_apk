@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/sb" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="215.0dip">
-        <com.tencent.mm.ui.base.MMFlipper android:gravity="center" android:layout_gravity="center" android:id="@id/sd" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:orientation="horizontal" android:id="@id/sc" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
+<LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="82.0dip" android:layout_height="wrap_content" android:minHeight="90.0dip">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="82.0dip" android:layout_height="wrap_content" android:minHeight="90.0dip">
+            <RelativeLayout android:layout_width="56.0dip" android:layout_height="56.0dip">
+                <ImageView android:id="@id/vf" android:background="@drawable/dx" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip" android:layout_centerInParent="true" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ve" android:layout_width="56.0dip" android:layout_height="56.0dip" android:scaleType="center" android:layout_centerInParent="true" app:iconColor="@color/FG_0" />
+                <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/vd" android:background="@color/ahb" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip" android:scaleType="center" />
+            </RelativeLayout>
+            <TextView android:textSize="@dimen/fa" android:ellipsize="end" android:id="@id/vg" android:layout_marginTop="4.0dip" android:maxWidth="78.0dip" android:singleLine="true" style="@style/zn" />
+            <TextView android:textSize="@dimen/a3" android:textColor="@color/xo" android:ellipsize="end" android:id="@id/vc" android:visibility="gone" android:maxWidth="78.0dip" android:singleLine="true" style="@style/zn" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center|right|top" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="10.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/vh" android:background="@drawable/aku" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="40.0dip" android:text="@string/a11" />
+            <TextView android:textColor="@color/al6" android:gravity="center" android:id="@id/vi" android:background="@drawable/azm" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="8.0dip" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

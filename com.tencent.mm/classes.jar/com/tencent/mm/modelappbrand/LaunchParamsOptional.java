@@ -10,16 +10,17 @@ public final class LaunchParamsOptional
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParamsOptional> CREATOR;
-  public String cwT;
-  public String cwU;
-  public AppBrandWeishiParams cwW;
-  public String lyv;
-  public int lyw;
+  public String eoT;
+  public String eoU;
+  public AppBrandWeishiParams eoW;
+  public String eoY;
+  public String opW;
+  public int opX;
   
   static
   {
     AppMethodBeat.i(146921);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new LaunchParamsOptional.1();
     AppMethodBeat.o(146921);
   }
   
@@ -28,10 +29,12 @@ public final class LaunchParamsOptional
   private LaunchParamsOptional(Parcel paramParcel)
   {
     AppMethodBeat.i(146920);
-    this.cwT = paramParcel.readString();
-    this.cwU = paramParcel.readString();
-    this.cwW = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
-    this.lyw = paramParcel.readInt();
+    this.eoT = paramParcel.readString();
+    this.eoU = paramParcel.readString();
+    this.eoW = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.opX = paramParcel.readInt();
+    this.eoY = paramParcel.readString();
+    this.opW = paramParcel.readString();
     AppMethodBeat.o(146920);
   }
   
@@ -43,16 +46,18 @@ public final class LaunchParamsOptional
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146919);
-    paramParcel.writeString(this.cwT);
-    paramParcel.writeString(this.cwU);
-    paramParcel.writeParcelable(this.cwW, paramInt);
-    paramParcel.writeInt(this.lyw);
+    paramParcel.writeString(this.eoT);
+    paramParcel.writeString(this.eoU);
+    paramParcel.writeParcelable(this.eoW, paramInt);
+    paramParcel.writeInt(this.opX);
+    paramParcel.writeString(this.eoY);
+    paramParcel.writeString(this.opW);
     AppMethodBeat.o(146919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.LaunchParamsOptional
  * JD-Core Version:    0.7.0.1
  */

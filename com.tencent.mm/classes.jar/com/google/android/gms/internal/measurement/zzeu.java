@@ -5,26 +5,15 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="EventParcelCreator")
-@SafeParcelable.Reserved({1})
 public final class zzeu
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzeu> CREATOR;
-  @SafeParcelable.Field(id=2)
   public final String name;
-  @SafeParcelable.Field(id=4)
   public final String origin;
-  @SafeParcelable.Field(id=3)
   public final zzer zzafq;
-  @SafeParcelable.Field(id=5)
   public final long zzagb;
   
   static
@@ -45,8 +34,7 @@ public final class zzeu
     AppMethodBeat.o(1268);
   }
   
-  @SafeParcelable.Constructor
-  public zzeu(@SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) zzer paramzzer, @SafeParcelable.Param(id=4) String paramString2, @SafeParcelable.Param(id=5) long paramLong)
+  public zzeu(String paramString1, zzer paramzzer, String paramString2, long paramLong)
   {
     this.name = paramString1;
     this.zzafq = paramzzer;
@@ -79,7 +67,7 @@ public final class zzeu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzeu
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ public class V2TXLiveDef
   {
     static
     {
-      AppMethodBeat.i(213767);
+      AppMethodBeat.i(211365);
       V2TXLiveVideoResolutionModeLandscape = new V2TXLiveVideoResolutionMode("V2TXLiveVideoResolutionModeLandscape", 0);
       V2TXLiveVideoResolutionModePortrait = new V2TXLiveVideoResolutionMode("V2TXLiveVideoResolutionModePortrait", 1);
       $VALUES = new V2TXLiveVideoResolutionMode[] { V2TXLiveVideoResolutionModeLandscape, V2TXLiveVideoResolutionModePortrait };
-      AppMethodBeat.o(213767);
+      AppMethodBeat.o(211365);
     }
     
     private V2TXLiveVideoResolutionMode() {}

@@ -14,37 +14,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class Placeholder
   extends View
 {
-  private int GQ;
-  View GR;
-  private int GS;
+  private int bmQ;
+  View bmR;
+  private int bmS;
   
   public Placeholder(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194979);
-    this.GQ = -1;
-    this.GR = null;
-    this.GS = 4;
+    AppMethodBeat.i(194154);
+    this.bmQ = -1;
+    this.bmR = null;
+    this.bmS = 4;
     f(paramAttributeSet);
-    AppMethodBeat.o(194979);
+    AppMethodBeat.o(194154);
   }
   
   public Placeholder(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194984);
-    this.GQ = -1;
-    this.GR = null;
-    this.GS = 4;
+    AppMethodBeat.i(194161);
+    this.bmQ = -1;
+    this.bmR = null;
+    this.bmS = 4;
     f(paramAttributeSet);
-    AppMethodBeat.o(194984);
+    AppMethodBeat.o(194161);
   }
   
   private void f(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(194989);
-    super.setVisibility(this.GS);
-    this.GQ = -1;
+    AppMethodBeat.i(194168);
+    super.setVisibility(this.bmS);
+    this.bmQ = -1;
     if (paramAttributeSet != null)
     {
       paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.ConstraintLayout_placeholder);
@@ -54,50 +54,50 @@ public class Placeholder
       {
         int k = paramAttributeSet.getIndex(i);
         if (k == R.styleable.ConstraintLayout_placeholder_content) {
-          this.GQ = paramAttributeSet.getResourceId(k, this.GQ);
+          this.bmQ = paramAttributeSet.getResourceId(k, this.bmQ);
         }
         for (;;)
         {
           i += 1;
           break;
           if (k == R.styleable.ConstraintLayout_placeholder_emptyVisibility) {
-            this.GS = paramAttributeSet.getInt(k, this.GS);
+            this.bmS = paramAttributeSet.getInt(k, this.bmS);
           }
         }
       }
     }
-    AppMethodBeat.o(194989);
+    AppMethodBeat.o(194168);
   }
   
   public final void a(ConstraintLayout paramConstraintLayout)
   {
-    AppMethodBeat.i(195001);
-    if ((this.GQ == -1) && (!isInEditMode())) {
-      setVisibility(this.GS);
+    AppMethodBeat.i(194198);
+    if ((this.bmQ == -1) && (!isInEditMode())) {
+      setVisibility(this.bmS);
     }
-    this.GR = paramConstraintLayout.findViewById(this.GQ);
-    if (this.GR != null)
+    this.bmR = paramConstraintLayout.findViewById(this.bmQ);
+    if (this.bmR != null)
     {
-      ((ConstraintLayout.LayoutParams)this.GR.getLayoutParams()).FW = true;
-      this.GR.setVisibility(0);
+      ((ConstraintLayout.LayoutParams)this.bmR.getLayoutParams()).bma = true;
+      this.bmR.setVisibility(0);
       setVisibility(0);
     }
-    AppMethodBeat.o(195001);
+    AppMethodBeat.o(194198);
   }
   
   public View getContent()
   {
-    return this.GR;
+    return this.bmR;
   }
   
   public int getEmptyVisibility()
   {
-    return this.GS;
+    return this.bmS;
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(194997);
+    AppMethodBeat.i(194194);
     if (isInEditMode())
     {
       paramCanvas.drawRGB(223, 223, 223);
@@ -114,24 +114,24 @@ public class Placeholder
       localPaint.getTextBounds("?", 0, "?".length(), localRect);
       paramCanvas.drawText("?", j / 2.0F - localRect.width() / 2.0F - localRect.left, i / 2.0F + localRect.height() / 2.0F - localRect.bottom, localPaint);
     }
-    AppMethodBeat.o(194997);
+    AppMethodBeat.o(194194);
   }
   
   public void setContentId(int paramInt)
   {
-    AppMethodBeat.i(195008);
-    if (this.GQ == paramInt)
+    AppMethodBeat.i(194202);
+    if (this.bmQ == paramInt)
     {
-      AppMethodBeat.o(195008);
+      AppMethodBeat.o(194202);
       return;
     }
-    if (this.GR != null)
+    if (this.bmR != null)
     {
-      this.GR.setVisibility(0);
-      ((ConstraintLayout.LayoutParams)this.GR.getLayoutParams()).FW = false;
-      this.GR = null;
+      this.bmR.setVisibility(0);
+      ((ConstraintLayout.LayoutParams)this.bmR.getLayoutParams()).bma = false;
+      this.bmR = null;
     }
-    this.GQ = paramInt;
+    this.bmQ = paramInt;
     if (paramInt != -1)
     {
       View localView = ((View)getParent()).findViewById(paramInt);
@@ -139,17 +139,17 @@ public class Placeholder
         localView.setVisibility(8);
       }
     }
-    AppMethodBeat.o(195008);
+    AppMethodBeat.o(194202);
   }
   
   public void setEmptyVisibility(int paramInt)
   {
-    this.GS = paramInt;
+    this.bmS = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     androidx.constraintlayout.widget.Placeholder
  * JD-Core Version:    0.7.0.1
  */

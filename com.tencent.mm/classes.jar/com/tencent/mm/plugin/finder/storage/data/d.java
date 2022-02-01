@@ -2,104 +2,108 @@ package com.tencent.mm.plugin.finder.storage.data;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.kernel.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
-import com.tencent.mm.modelmulti.c;
-import com.tencent.mm.plugin.finder.cgi.bu;
+import com.tencent.mm.plugin.finder.cgi.cs;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.bkh;
-import com.tencent.mm.protocal.protobuf.cyc;
-import com.tencent.mm.protocal.protobuf.cyd;
-import com.tencent.mm.protocal.protobuf.kn;
+import com.tencent.mm.protocal.protobuf.bxj;
+import com.tencent.mm.protocal.protobuf.dpi;
+import com.tencent.mm.protocal.protobuf.dpj;
+import com.tencent.mm.protocal.protobuf.lj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
-import java.nio.charset.Charset;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.bkh;>;
+import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.bxj;>;
 import java.util.List;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
+import kotlin.g.b.u;
+import kotlin.j;
 import kotlin.k;
-import kotlin.l;
+import kotlin.o;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "blackList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getBlackList", "()Ljava/util/ArrayList;", "setBlackList", "(Ljava/util/ArrayList;)V", "getBaseCachePath", "getCacheFilePath", "name", "getFileName", "onAlive", "", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "readCache", "refreshByBatchSetBlackList", "data", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeResInfo;", "refreshByGetTagContact", "Lcom/tencent/mm/protocal/protobuf/FinderTagContact;", "refreshDataFromNet", "saveCache", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "blackList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getBlackList", "()Ljava/util/ArrayList;", "setBlackList", "(Ljava/util/ArrayList;)V", "getBaseCachePath", "getCacheFilePath", "name", "getFileName", "onAlive", "", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "readCache", "refreshByBatchSetBlackList", "data", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModContactTypeResInfo;", "refreshByGetTagContact", "Lcom/tencent/mm/protocal/protobuf/FinderTagContact;", "refreshDataFromNet", "saveCache", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements i
+  implements com.tencent.mm.am.h
 {
-  public static final a AmR;
-  private static final String TAG = "Finder.FinderBlackListCache";
-  private static final kotlin.f kPd;
-  private ArrayList<String> nXH;
+  public static final a FML;
+  private static final String TAG;
+  private static final j<d> nqI;
+  private ArrayList<String> qXB;
   
   static
   {
-    AppMethodBeat.i(285539);
-    AmR = new a((byte)0);
-    kPd = g.a(k.aazB, (a)b.AmS);
+    AppMethodBeat.i(339384);
+    FML = new a((byte)0);
+    nqI = k.a(o.aiuF, (a)b.FMM);
     TAG = "Finder.FinderBlackListCache";
-    AppMethodBeat.o(285539);
+    AppMethodBeat.o(339384);
   }
   
   private d()
   {
-    AppMethodBeat.i(285538);
-    this.nXH = new ArrayList();
-    AppMethodBeat.o(285538);
+    AppMethodBeat.i(339356);
+    this.qXB = new ArrayList();
+    AppMethodBeat.o(339356);
   }
   
-  private final void aP(LinkedList<bkh> paramLinkedList)
+  private final void aW(LinkedList<bxj> paramLinkedList)
   {
-    AppMethodBeat.i(285534);
+    AppMethodBeat.i(339366);
     Object localObject2 = TAG;
-    Object localObject3 = new StringBuilder("refreshByGetTagContact size ");
-    if (paramLinkedList != null) {}
-    for (Object localObject1 = Integer.valueOf(paramLinkedList.size());; localObject1 = null)
+    Object localObject1;
+    label46:
+    ArrayList localArrayList;
+    if (paramLinkedList == null)
     {
-      Log.d((String)localObject2, localObject1);
-      this.nXH.clear();
+      localObject1 = null;
+      Log.d((String)localObject2, kotlin.g.b.s.X("refreshByGetTagContact size ", localObject1));
+      this.qXB.clear();
       if (paramLinkedList == null) {
-        break label135;
+        break label121;
       }
       localObject2 = ((Iterable)paramLinkedList).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        paramLinkedList = (bkh)((Iterator)localObject2).next();
-        localObject3 = this.nXH;
-        paramLinkedList = paramLinkedList.contact;
-        if (paramLinkedList != null)
-        {
-          localObject1 = paramLinkedList.username;
-          paramLinkedList = (LinkedList<bkh>)localObject1;
-          if (localObject1 != null) {}
-        }
-        else
-        {
-          paramLinkedList = "";
-        }
-        ((ArrayList)localObject3).add(paramLinkedList);
+      if (!((Iterator)localObject2).hasNext()) {
+        break label121;
+      }
+      paramLinkedList = (bxj)((Iterator)localObject2).next();
+      localArrayList = this.qXB;
+      paramLinkedList = paramLinkedList.contact;
+      if (paramLinkedList != null) {
+        break label104;
+      }
+      paramLinkedList = "";
+    }
+    for (;;)
+    {
+      localArrayList.add(paramLinkedList);
+      break label46;
+      localObject1 = Integer.valueOf(paramLinkedList.size());
+      break;
+      label104:
+      localObject1 = paramLinkedList.username;
+      paramLinkedList = (LinkedList<bxj>)localObject1;
+      if (localObject1 == null) {
+        paramLinkedList = "";
       }
     }
-    AppMethodBeat.o(285534);
-    return;
-    label135:
-    AppMethodBeat.o(285534);
+    label121:
+    AppMethodBeat.o(339366);
   }
   
-  private final void aQ(LinkedList<cyd> paramLinkedList)
+  private final void aX(LinkedList<dpj> paramLinkedList)
   {
-    AppMethodBeat.i(285535);
+    AppMethodBeat.i(339372);
     String str = TAG;
-    StringBuilder localStringBuilder = new StringBuilder("refreshByBatchSetBlackList size ");
     Object localObject;
-    if (paramLinkedList != null)
+    if (paramLinkedList == null)
     {
-      localObject = Integer.valueOf(paramLinkedList.size());
-      Log.d(str, localObject);
+      localObject = null;
+      Log.d(str, kotlin.g.b.s.X("refreshByBatchSetBlackList size ", localObject));
       if (paramLinkedList != null) {
         paramLinkedList = ((Iterable)paramLinkedList).iterator();
       }
@@ -109,99 +113,86 @@ public final class d
       for (;;)
       {
         if (!paramLinkedList.hasNext()) {
-          break label242;
+          break label208;
         }
-        localObject = (cyd)paramLinkedList.next();
-        switch (((cyd)localObject).TGC.TGB)
+        localObject = (dpj)paramLinkedList.next();
+        switch (((dpj)localObject).aaWj.aaWi)
         {
         default: 
           break;
         case 1: 
-          if (!this.nXH.contains(((cyd)localObject).TGC.UserName))
+          if (!this.qXB.contains(((dpj)localObject).aaWj.UserName))
           {
-            Log.d(TAG, "refreshByBatchSetBlackList add " + ((cyd)localObject).TGC.UserName);
-            this.nXH.add(((cyd)localObject).TGC.UserName);
+            Log.d(TAG, kotlin.g.b.s.X("refreshByBatchSetBlackList add ", ((dpj)localObject).aaWj.UserName));
+            this.qXB.add(((dpj)localObject).aaWj.UserName);
             continue;
-            localObject = null;
+            localObject = Integer.valueOf(paramLinkedList.size());
           }
           break;
         case 2: 
-          if (this.nXH.contains(((cyd)localObject).TGC.UserName))
+          if (this.qXB.contains(((dpj)localObject).aaWj.UserName))
           {
-            Log.d(TAG, "refreshByBatchSetBlackList del " + ((cyd)localObject).TGC.UserName);
-            this.nXH.remove(((cyd)localObject).TGC.UserName);
+            Log.d(TAG, kotlin.g.b.s.X("refreshByBatchSetBlackList del ", ((dpj)localObject).aaWj.UserName));
+            this.qXB.remove(((dpj)localObject).aaWj.UserName);
           }
           break;
         }
       }
-      label242:
-      AppMethodBeat.o(285535);
-      return;
     }
-    AppMethodBeat.o(285535);
+    label208:
+    AppMethodBeat.o(339372);
   }
   
-  private static String alY(String paramString)
+  private static String afg(String paramString)
   {
-    AppMethodBeat.i(285529);
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    com.tencent.mm.kernel.f localf = h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    paramString = localStringBuilder2.append(localf.aHl()).append("finder/black_list/").toString() + paramString;
-    AppMethodBeat.o(285529);
+    AppMethodBeat.i(339349);
+    paramString = kotlin.g.b.s.X(kotlin.g.b.s.X(com.tencent.mm.kernel.h.baE().cachePath, "finder/black_list/"), paramString);
+    AppMethodBeat.o(339349);
     return paramString;
   }
   
-  public static void dZm()
+  public static void eZV()
   {
-    AppMethodBeat.i(285533);
-    Object localObject = bu.xdi;
-    localObject = new bu(bu.dou());
-    h.aGY().b((com.tencent.mm.an.q)localObject);
-    AppMethodBeat.o(285533);
+    AppMethodBeat.i(339361);
+    Object localObject = cs.ACD;
+    localObject = new cs(cs.dWg());
+    com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
+    AppMethodBeat.o(339361);
   }
   
   private static String getFileName()
   {
-    AppMethodBeat.i(285530);
-    Object localObject = z.bdh();
-    p.j(localObject, "finderUserName");
-    Charset localCharset = kotlin.n.d.UTF_8;
-    if (localObject == null)
-    {
-      localObject = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(285530);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((String)localObject).getBytes(localCharset);
-    p.j(localObject, "(this as java.lang.String).getBytes(charset)");
+    AppMethodBeat.i(339353);
+    Object localObject = z.bAW();
+    kotlin.g.b.s.s(localObject, "finderUserName");
+    localObject = ((String)localObject).getBytes(kotlin.n.d.UTF_8);
+    kotlin.g.b.s.s(localObject, "(this as java.lang.String).getBytes(charset)");
     localObject = Base64.encodeToString((byte[])localObject, 0);
-    p.j(localObject, "Base64.encodeToString(fi…eArray(), Base64.DEFAULT)");
-    AppMethodBeat.o(285530);
+    kotlin.g.b.s.s(localObject, "encodeToString(finderUse…eArray(), Base64.DEFAULT)");
+    AppMethodBeat.o(339353);
     return localObject;
   }
   
-  public final ArrayList<String> dZn()
+  public final ArrayList<String> eZW()
   {
-    AppMethodBeat.i(285536);
-    if (this.nXH.isEmpty())
+    AppMethodBeat.i(339396);
+    if (this.qXB.isEmpty())
     {
-      Object localObject = alY(getFileName());
-      if (u.agG((String)localObject)) {
+      Object localObject = afg(getFileName());
+      if (y.ZC((String)localObject)) {
         try
         {
-          localObject = Util.stringToList(u.bBS((String)localObject), ",");
-          p.j(localObject, "Util.stringToList(content, \",\")");
+          localObject = Util.stringToList(y.bEn((String)localObject), ",");
+          kotlin.g.b.s.s(localObject, "stringToList(content, \",\")");
           localObject = ((Iterable)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             String str = (String)((Iterator)localObject).next();
-            Log.d(TAG, "read cahe:".concat(String.valueOf(str)));
-            this.nXH.clear();
-            this.nXH.add(str);
+            Log.d(TAG, kotlin.g.b.s.X("read cahe:", str));
+            this.qXB.clear();
+            this.qXB.add(str);
           }
-          localArrayList = this.nXH;
+          localArrayList = this.qXB;
         }
         catch (Exception localException)
         {
@@ -210,90 +201,81 @@ public final class d
       }
     }
     ArrayList localArrayList;
-    AppMethodBeat.o(285536);
+    AppMethodBeat.o(339396);
     return localArrayList;
   }
   
   public final void onAlive()
   {
-    AppMethodBeat.i(285531);
-    h.aGY().a(3528, (i)this);
-    h.aGY().a(3990, (i)this);
-    AppMethodBeat.o(285531);
+    AppMethodBeat.i(339389);
+    com.tencent.mm.kernel.h.aZW().a(3528, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().a(3990, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(339389);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(285532);
-    h.aGY().b(3528, (i)this);
-    h.aGY().b(3990, (i)this);
-    AppMethodBeat.o(285532);
+    AppMethodBeat.i(339392);
+    com.tencent.mm.kernel.h.aZW().b(3528, (com.tencent.mm.am.h)this);
+    com.tencent.mm.kernel.h.aZW().b(3990, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(339392);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(285537);
-    if ((paramq instanceof bu))
+    AppMethodBeat.i(339419);
+    if ((paramp instanceof cs))
     {
       Log.i(TAG, "NetSceneFinderGetTagContact errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        aP(((bu)paramq).dot());
+        aW(((cs)paramp).dWf());
       }
     }
-    Charset localCharset;
     for (;;)
     {
-      Log.d(TAG, "saveCache,size = " + this.nXH.size());
-      paramq = Util.listToString((List)this.nXH, ",");
-      paramString = alY(getFileName());
-      p.j(paramq, "content");
-      localCharset = kotlin.n.d.UTF_8;
-      if (paramq != null) {
-        break;
-      }
-      paramString = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(285537);
-      throw paramString;
-      if ((paramq instanceof c))
+      Log.d(TAG, kotlin.g.b.s.X("saveCache,size = ", Integer.valueOf(this.qXB.size())));
+      paramp = Util.listToString((List)this.qXB, ",");
+      paramString = afg(getFileName());
+      kotlin.g.b.s.s(paramp, "content");
+      paramp = paramp.getBytes(kotlin.n.d.UTF_8);
+      kotlin.g.b.s.s(paramp, "(this as java.lang.String).getBytes(charset)");
+      y.f(paramString, paramp, paramp.length);
+      AppMethodBeat.o(339419);
+      return;
+      if ((paramp instanceof com.tencent.mm.modelmulti.h))
       {
         Log.i(TAG, "NetSceneBatchSetBlackList errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
         if ((paramInt1 == 0) && (paramInt2 == 0)) {
-          aQ(((c)paramq).bnd().RPN);
+          aX(((com.tencent.mm.modelmulti.h)paramp).bKO().YNb);
         }
       }
     }
-    paramq = paramq.getBytes(localCharset);
-    p.j(paramq, "(this as java.lang.String).getBytes(charset)");
-    u.H(paramString, paramq);
-    AppMethodBeat.o(285537);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "getInstance", "()Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "instance$delegate", "Lkotlin/Lazy;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "instance", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "getInstance", "()Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "instance$delegate", "Lkotlin/Lazy;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static d dZo()
+    public static d eZX()
     {
-      AppMethodBeat.i(266871);
-      Object localObject = d.aRW();
-      a locala = d.AmR;
-      localObject = (d)((kotlin.f)localObject).getValue();
-      AppMethodBeat.o(266871);
-      return localObject;
+      AppMethodBeat.i(339364);
+      d locald = (d)d.blL().getValue();
+      AppMethodBeat.o(339364);
+      return locald;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/data/FinderBlackListCache;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
+    extends u
     implements a<d>
   {
-    public static final b AmS;
+    public static final b FMM;
     
     static
     {
-      AppMethodBeat.i(291973);
-      AmS = new b();
-      AppMethodBeat.o(291973);
+      AppMethodBeat.i(339377);
+      FMM = new b();
+      AppMethodBeat.o(339377);
     }
     
     b()
@@ -304,7 +286,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.d
  * JD-Core Version:    0.7.0.1
  */

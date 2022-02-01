@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <SelectPreference android:key="select_male" android:title="@string/gxi" />
-    <SelectPreference android:key="select_female" android:title="@string/gxh" />
+    <IconPreference android:icon="@drawable/bfe" android:key="settings_invite_facebook_friends" android:title="@string/isw" />
+    <IconPreference android:icon="@raw/find_more_friend_qq_icon" android:key="settings_invite_qq_friends" android:title="@string/isz" />
+    <IconPreference android:icon="@drawable/bb5" android:key="settings_recommend_by_mail" android:title="@string/ixi" />
+    <IconPreference android:icon="@drawable/bfg" android:key="settings_recommend_by_mb" android:title="@string/ixj" />
+    <IconPreference android:icon="@drawable/bb6" android:key="settings_invite_mobile_friends" android:title="@string/isy" />
 </PreferenceScreen>

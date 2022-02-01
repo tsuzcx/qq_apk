@@ -23,31 +23,31 @@ public final class b
   implements a
 {
   private static String TAG = "TPAssetResourceLoader";
-  private ITPAssetResourceLoaderListener ZCD;
-  private long ZCE;
-  private String ZCF;
-  private String ZCG;
-  private String ZCH;
-  private int ZCI;
-  private ArrayList<d> ZCJ;
-  private TPAssetResourceLoadingContentInformationRequest ZCK;
-  private HandlerThread ZCL;
-  private a ZCM;
+  private ITPAssetResourceLoaderListener ahHG;
+  private long ahHH;
+  private String ahHI;
+  private String ahHJ;
+  private String ahHK;
+  private int ahHL;
+  private ArrayList<d> ahHM;
+  private TPAssetResourceLoadingContentInformationRequest ahHN;
+  private HandlerThread ahHO;
+  private a ahHP;
   private String mContentType;
   private Context mContext;
   private HandlerThread mHandlerThread;
   
   public b(Context paramContext, Looper paramLooper)
   {
-    AppMethodBeat.i(220603);
-    this.ZCE = 0L;
+    AppMethodBeat.i(227013);
+    this.ahHH = 0L;
     this.mContentType = "";
-    this.ZCF = "";
-    this.ZCG = "";
-    this.ZCH = ".mp4";
-    this.ZCI = 0;
+    this.ahHI = "";
+    this.ahHJ = "";
+    this.ahHK = ".mp4";
+    this.ahHL = 0;
     this.mContext = paramContext;
-    this.ZCJ = new ArrayList();
+    this.ahHM = new ArrayList();
     paramContext = paramLooper;
     if (paramLooper == null)
     {
@@ -55,14 +55,14 @@ public final class b
       this.mHandlerThread.start();
       paramContext = this.mHandlerThread.getLooper();
     }
-    this.ZCM = new a(paramContext);
-    this.ZCL = new HandlerThread("TPAssetResourceLoader-dataWriteThread");
-    this.ZCL.start();
-    AppMethodBeat.o(220603);
+    this.ahHP = new a(paramContext);
+    this.ahHO = new HandlerThread("TPAssetResourceLoader-dataWriteThread");
+    this.ahHO.start();
+    AppMethodBeat.o(227013);
   }
   
   /* Error */
-  private int WV(long paramLong)
+  private int Bi(long paramLong)
   {
     // Byte code:
     //   0: iconst_0
@@ -72,7 +72,7 @@ public final class b
     //   4: ldc 108
     //   6: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 77	com/tencent/thumbplayer/e/a/b:ZCJ	Ljava/util/ArrayList;
+    //   10: getfield 77	com/tencent/thumbplayer/e/a/b:ahHM	Ljava/util/ArrayList;
     //   13: ifnonnull +12 -> 25
     //   16: ldc 108
     //   18: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -86,18 +86,18 @@ public final class b
     //   29: istore_3
     //   30: iload 4
     //   32: aload_0
-    //   33: getfield 77	com/tencent/thumbplayer/e/a/b:ZCJ	Ljava/util/ArrayList;
+    //   33: getfield 77	com/tencent/thumbplayer/e/a/b:ahHM	Ljava/util/ArrayList;
     //   36: invokevirtual 112	java/util/ArrayList:size	()I
     //   39: if_icmpge +36 -> 75
     //   42: iload_3
     //   43: aload_0
-    //   44: getfield 77	com/tencent/thumbplayer/e/a/b:ZCJ	Ljava/util/ArrayList;
+    //   44: getfield 77	com/tencent/thumbplayer/e/a/b:ahHM	Ljava/util/ArrayList;
     //   47: iload 4
     //   49: invokevirtual 116	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   52: checkcast 118	com/tencent/thumbplayer/e/a/d
-    //   55: getfield 122	com/tencent/thumbplayer/e/a/d:ZCX	Lcom/tencent/thumbplayer/e/a/c;
+    //   55: getfield 122	com/tencent/thumbplayer/e/a/d:ahIa	Lcom/tencent/thumbplayer/e/a/c;
     //   58: lload_1
-    //   59: invokevirtual 126	com/tencent/thumbplayer/e/a/c:WV	(J)I
+    //   59: invokevirtual 126	com/tencent/thumbplayer/e/a/c:Bi	(J)I
     //   62: invokestatic 132	java/lang/Math:max	(II)I
     //   65: istore_3
     //   66: iload 4
@@ -131,37 +131,37 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(220655);
-      if (this.ZCJ != null) {
-        this.ZCJ.add(paramd);
+      AppMethodBeat.i(227038);
+      if (this.ahHM != null) {
+        this.ahHM.add(paramd);
       }
-      AppMethodBeat.o(220655);
+      AppMethodBeat.o(227038);
       return;
     }
     finally {}
   }
   
-  private d aBj(int paramInt)
+  private d aHW(int paramInt)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(220643);
-        if (this.ZCJ == null)
+        AppMethodBeat.i(227019);
+        if (this.ahHM == null)
         {
-          AppMethodBeat.o(220643);
+          AppMethodBeat.o(227019);
           locald = null;
           return locald;
         }
         int i = 0;
-        if (i >= this.ZCJ.size()) {
+        if (i >= this.ahHM.size()) {
           break label81;
         }
-        d locald = (d)this.ZCJ.get(i);
-        if (locald.ZCX.getRequestNum() == paramInt)
+        d locald = (d)this.ahHM.get(i);
+        if (locald.ahIa.getRequestNum() == paramInt)
         {
-          AppMethodBeat.o(220643);
+          AppMethodBeat.o(227019);
           continue;
         }
         i += 1;
@@ -169,7 +169,7 @@ public final class b
       finally {}
       continue;
       label81:
-      AppMethodBeat.o(220643);
+      AppMethodBeat.o(227019);
       Object localObject2 = null;
     }
   }
@@ -178,11 +178,11 @@ public final class b
   {
     try
     {
-      AppMethodBeat.i(220656);
-      if (this.ZCJ != null) {
-        this.ZCJ.remove(paramd);
+      AppMethodBeat.i(227041);
+      if (this.ahHM != null) {
+        this.ahHM.remove(paramd);
       }
-      AppMethodBeat.o(220656);
+      AppMethodBeat.o(227041);
       return;
     }
     finally {}
@@ -190,65 +190,43 @@ public final class b
   
   private void e(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(220659);
-    if (this.ZCM != null)
+    AppMethodBeat.i(227050);
+    if (this.ahHP != null)
     {
-      Message localMessage = this.ZCM.obtainMessage();
+      Message localMessage = this.ahHP.obtainMessage();
       localMessage.what = paramInt1;
       localMessage.arg1 = paramInt2;
       localMessage.arg2 = paramInt3;
       localMessage.obj = paramObject;
-      this.ZCM.sendMessage(localMessage);
+      this.ahHP.sendMessage(localMessage);
     }
-    AppMethodBeat.o(220659);
+    AppMethodBeat.o(227050);
   }
   
-  private void ird()
+  private void kaz()
   {
     try
     {
-      AppMethodBeat.i(220653);
-      if (this.ZCJ != null)
+      AppMethodBeat.i(227033);
+      if (this.ahHM != null)
       {
-        Iterator localIterator = this.ZCJ.iterator();
+        Iterator localIterator = this.ahHM.iterator();
         while (localIterator.hasNext())
         {
           ITPAssetResourceLoadingRequest localITPAssetResourceLoadingRequest = (ITPAssetResourceLoadingRequest)localIterator.next();
-          ((d)localITPAssetResourceLoadingRequest).ire();
-          this.ZCD.didCancelLoadingRequest(localITPAssetResourceLoadingRequest);
+          ((d)localITPAssetResourceLoadingRequest).kaA();
+          this.ahHG.didCancelLoadingRequest(localITPAssetResourceLoadingRequest);
         }
-        this.ZCJ.clear();
+        this.ahHM.clear();
       }
     }
     finally {}
-    AppMethodBeat.o(220653);
-  }
-  
-  public final String Rv(int paramInt)
-  {
-    AppMethodBeat.i(220627);
-    Object localObject = this.ZCF;
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      AppMethodBeat.o(220627);
-      return localObject;
-    }
-    localObject = this.mContext;
-    if (TextUtils.isEmpty(this.ZCG))
-    {
-      String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-      localObject = TPDLFileSystem.getExternalCacheFile((Context)localObject, "resourceLoader", str + "-" + paramInt + this.ZCH);
-      TPDLIOUtil.createFile((File)localObject);
-      this.ZCG = ((File)localObject).getAbsolutePath();
-    }
-    localObject = this.ZCG;
-    AppMethodBeat.o(220627);
-    return localObject;
+    AppMethodBeat.o(227033);
   }
   
   public final void a(ITPAssetResourceLoaderListener paramITPAssetResourceLoaderListener)
   {
-    this.ZCD = paramITPAssetResourceLoaderListener;
+    this.ahHG = paramITPAssetResourceLoaderListener;
   }
   
   public final String getContentType(int paramInt, String paramString)
@@ -256,82 +234,104 @@ public final class b
     return this.mContentType;
   }
   
+  public final String getDataFilePath(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(227179);
+    paramString = this.ahHI;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(227179);
+      return paramString;
+    }
+    paramString = this.mContext;
+    if (TextUtils.isEmpty(this.ahHJ))
+    {
+      String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+      paramString = TPDLFileSystem.getExternalCacheFile(paramString, "resourceLoader", str + "-" + paramInt + this.ahHK);
+      TPDLIOUtil.createFile(paramString);
+      this.ahHJ = paramString.getAbsolutePath();
+    }
+    paramString = this.ahHJ;
+    AppMethodBeat.o(227179);
+    return paramString;
+  }
+  
   public final long getDataTotalSize(int paramInt, String paramString)
   {
-    return this.ZCE;
+    return this.ahHH;
   }
   
-  public final void irc()
+  public final void kay()
   {
-    AppMethodBeat.i(220608);
-    if (this.ZCD == null)
+    AppMethodBeat.i(227134);
+    if (this.ahHG == null)
     {
       g.e(TAG, "listener not set");
-      AppMethodBeat.o(220608);
+      AppMethodBeat.o(227134);
       return;
     }
-    this.ZCK = new TPAssetResourceLoadingContentInformationRequest();
-    this.ZCD.fillInContentInformation(this.ZCK);
-    this.mContentType = this.ZCK.contentType;
-    this.ZCE = this.ZCK.dataTotalSize;
-    this.ZCF = this.ZCK.dataFilePath;
-    g.i(TAG, "proxy start, mDataTotalSize: " + this.ZCE + " businessPath:" + this.ZCF);
-    AppMethodBeat.o(220608);
+    this.ahHN = new TPAssetResourceLoadingContentInformationRequest();
+    this.ahHG.fillInContentInformation(this.ahHN);
+    this.mContentType = this.ahHN.contentType;
+    this.ahHH = this.ahHN.dataTotalSize;
+    this.ahHI = this.ahHN.dataFilePath;
+    g.i(TAG, "proxy start, mDataTotalSize: " + this.ahHH + " businessPath:" + this.ahHI);
+    AppMethodBeat.o(227134);
   }
   
-  public final int n(int paramInt, long paramLong1, long paramLong2)
+  public final int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(220618);
-    int i = (int)Math.min(WV(paramLong1), paramLong2);
+    AppMethodBeat.i(227153);
+    int i = (int)Math.min(Bi(paramLong1), paramLong2);
     if (i <= 0)
     {
-      AppMethodBeat.o(220618);
+      AppMethodBeat.o(227153);
       return -1;
     }
     g.d(TAG, "onReadData, fileId: " + paramInt + " readOffset: " + paramLong1 + " readLength:" + paramLong2 + " readyLength:" + i);
-    AppMethodBeat.o(220618);
+    AppMethodBeat.o(227153);
     return i;
   }
   
   public final int onStartReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(220615);
-    if (this.ZCD == null)
+    AppMethodBeat.i(227145);
+    if (this.ahHG == null)
     {
       g.e(TAG, "listener not set");
-      AppMethodBeat.o(220615);
+      AppMethodBeat.o(227145);
       return 0;
     }
     g.i(TAG, "onStartReadData, fileId:" + paramInt + ", fileKey:" + paramString + ", requestStart:" + paramLong1 + ", requestEnd:" + paramLong2);
-    int i = this.ZCI + 1;
+    int i = this.ahHL + 1;
     b localb = new b((byte)0);
     localb.requestStart = paramLong1;
     localb.requestEnd = paramLong2;
     localb.fileKey = paramString;
     e(256, paramInt, i, localb);
-    this.ZCI = i;
-    paramInt = this.ZCI;
-    AppMethodBeat.o(220615);
+    this.ahHL = i;
+    paramInt = this.ahHL;
+    AppMethodBeat.o(227145);
     return paramInt;
   }
   
   public final int onStopReadData(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(220620);
-    if (this.ZCD == null)
+    AppMethodBeat.i(227160);
+    if (this.ahHG == null)
     {
       g.e(TAG, "listener not set");
-      AppMethodBeat.o(220620);
+      AppMethodBeat.o(227160);
       return 0;
     }
     e(257, paramInt2, 0, null);
-    AppMethodBeat.o(220620);
+    AppMethodBeat.o(227160);
     return 0;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(220638);
+    AppMethodBeat.i(227200);
     g.i(TAG, "release start");
     reset();
     if (this.mHandlerThread != null)
@@ -339,29 +339,29 @@ public final class b
       this.mHandlerThread.quit();
       this.mHandlerThread = null;
     }
-    if (this.ZCL != null)
+    if (this.ahHO != null)
     {
-      this.ZCL.quit();
-      this.ZCL = null;
+      this.ahHO.quit();
+      this.ahHO = null;
     }
-    this.ZCJ = null;
-    AppMethodBeat.o(220638);
+    this.ahHM = null;
+    AppMethodBeat.o(227200);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(220634);
+    AppMethodBeat.i(227193);
     g.i(TAG, "reset start");
-    ird();
-    this.ZCE = 0L;
+    kaz();
+    this.ahHH = 0L;
     this.mContentType = "";
-    this.ZCF = "";
-    if (!TextUtils.isEmpty(this.ZCG)) {
+    this.ahHI = "";
+    if (!TextUtils.isEmpty(this.ahHJ)) {
       try
       {
-        new File(this.ZCG).deleteOnExit();
-        this.ZCG = "";
-        AppMethodBeat.o(220634);
+        new File(this.ahHJ).deleteOnExit();
+        this.ahHJ = "";
+        AppMethodBeat.o(227193);
         return;
       }
       catch (Exception localException)
@@ -369,7 +369,7 @@ public final class b
         g.e(TAG, "reset, delete cache file has exception:" + localException.toString());
       }
     }
-    AppMethodBeat.o(220634);
+    AppMethodBeat.o(227193);
   }
   
   final class a
@@ -382,11 +382,11 @@ public final class b
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(220591);
+      AppMethodBeat.i(227008);
       g.d(b.TAG, "mCallbackForResourceLoaderHandler msg : " + paramMessage.what);
       if (b.a(b.this) == null)
       {
-        AppMethodBeat.o(220591);
+        AppMethodBeat.o(227008);
         return;
       }
       switch (paramMessage.what)
@@ -394,12 +394,13 @@ public final class b
       }
       for (;;)
       {
-        AppMethodBeat.o(220591);
+        AppMethodBeat.o(227008);
         return;
         g.i(b.TAG, "start read data");
         Object localObject = (b.b)paramMessage.obj;
         long l1 = ((b.b)localObject).requestStart;
         long l2 = ((b.b)localObject).requestEnd;
+        localObject = ((b.b)localObject).fileKey;
         int i = paramMessage.arg1;
         int j = paramMessage.arg2;
         g.i(b.TAG, "start read data, requestStart: " + l1 + " requestEnd:" + l2 + " requestId:" + j);
@@ -407,7 +408,7 @@ public final class b
         if (l2 <= 0L)
         {
           g.e(b.TAG, "requestLength invalid, check requestStart and requestEnd");
-          AppMethodBeat.o(220591);
+          AppMethodBeat.o(227008);
           return;
         }
         boolean bool2 = false;
@@ -423,18 +424,18 @@ public final class b
           b.e(b.this);
         }
         paramMessage = new d(l1, l2, j, bool1);
-        localObject = b.b(b.this).getLooper();
-        c localc = paramMessage.ZCX;
-        localc.ZCT = new c.b(localc, (Looper)localObject);
-        localObject = b.this.Rv(i);
-        paramMessage.ZCX.ZCU = ((String)localObject);
-        paramMessage.ZCK = b.c(b.this);
+        Looper localLooper = b.b(b.this).getLooper();
+        c localc = paramMessage.ahIa;
+        localc.ahHW = new c.b(localc, localLooper);
+        localObject = b.this.getDataFilePath(i, (String)localObject);
+        paramMessage.ahIa.ahHX = ((String)localObject);
+        paramMessage.ahHN = b.c(b.this);
         if (b.a(b.this).shouldWaitForLoadingOfRequestedResource(paramMessage))
         {
           b.a(b.this, paramMessage);
           g.i(b.TAG, "add to mLoadingRequests, requestId: ".concat(String.valueOf(j)));
         }
-        AppMethodBeat.o(220591);
+        AppMethodBeat.o(227008);
         return;
         g.i(b.TAG, "stop read data");
         b.a(b.this, paramMessage.arg1);
@@ -451,7 +452,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.e.a.b
  * JD-Core Version:    0.7.0.1
  */

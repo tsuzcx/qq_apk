@@ -7,13 +7,13 @@ public final class c$b
   public int fps = -1;
   public int gop = -1;
   public int height = -1;
-  public c.a oqu = null;
-  public c.a oqv = null;
+  public c.a rue = null;
+  public c.a ruf = null;
   public int width = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.g.c.b
  * JD-Core Version:    0.7.0.1
  */

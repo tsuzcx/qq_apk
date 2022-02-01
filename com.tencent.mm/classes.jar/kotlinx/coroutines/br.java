@@ -1,26 +1,31 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.d.f;
-import kotlin.d.g;
-import kotlin.l;
+import java.io.Closeable;
+import kotlin.Metadata;
+import kotlin.d.f.b;
+import kotlin.d.f.c;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
-public final class br
-  implements ak
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Ljava/io/Closeable;", "()V", "executor", "Ljava/util/concurrent/Executor;", "getExecutor", "()Ljava/util/concurrent/Executor;", "close", "", "Key", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class br
+  extends al
+  implements Closeable
 {
-  public static final br abxo;
+  public static final a ajwm = new a((byte)0);
   
-  static
-  {
-    AppMethodBeat.i(118184);
-    abxo = new br();
-    AppMethodBeat.o(118184);
-  }
+  public abstract void close();
   
-  public final f getCoroutineContext()
+  @Metadata(d1={""}, d2={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "()V", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+    extends kotlin.d.b<al, br>
   {
-    return (f)g.aaAw;
+    private a()
+    {
+      super((kotlin.g.a.b)1.ajwn);
+      AppMethodBeat.i(188851);
+      AppMethodBeat.o(188851);
+    }
   }
 }
 

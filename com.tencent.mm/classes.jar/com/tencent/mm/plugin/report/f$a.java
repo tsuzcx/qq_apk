@@ -18,16 +18,16 @@ final class f$a
   
   public final void a(int paramInt1, int paramInt2, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(249466);
+    AppMethodBeat.i(261704);
     Log.i("MicroMsg.ReportService", "this is DummyReportService");
-    AppMethodBeat.o(249466);
+    AppMethodBeat.o(261704);
   }
   
   public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object... paramVarArgs)
   {
-    AppMethodBeat.i(249465);
+    AppMethodBeat.i(261698);
     Log.i("MicroMsg.ReportService", "this is DummyReportService");
-    AppMethodBeat.o(249465);
+    AppMethodBeat.o(261698);
   }
   
   public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object... paramVarArgs)
@@ -37,18 +37,18 @@ final class f$a
     AppMethodBeat.o(125126);
   }
   
-  public final void a(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(125123);
-    Log.i("MicroMsg.ReportService", "this is DummyReportService");
-    AppMethodBeat.o(125123);
-  }
-  
   public final void b(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(125125);
     Log.i("MicroMsg.ReportService", "this is DummyReportService");
     AppMethodBeat.o(125125);
+  }
+  
+  public final void b(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(125123);
+    Log.i("MicroMsg.ReportService", "this is DummyReportService");
+    AppMethodBeat.o(125123);
   }
   
   public final void b(ArrayList<IDKey> paramArrayList, boolean paramBoolean)
@@ -63,6 +63,14 @@ final class f$a
     AppMethodBeat.i(125128);
     Log.i("MicroMsg.ReportService", "this is DummyReportService");
     AppMethodBeat.o(125128);
+  }
+  
+  public final boolean cH(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(261677);
+    Log.i("MicroMsg.ReportService", "this is DummyReportService");
+    AppMethodBeat.o(261677);
+    return false;
   }
   
   public final void e(String paramString1, String paramString2, Map<String, Object> paramMap)
@@ -95,7 +103,7 @@ final class f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.report.f.a
  * JD-Core Version:    0.7.0.1
  */

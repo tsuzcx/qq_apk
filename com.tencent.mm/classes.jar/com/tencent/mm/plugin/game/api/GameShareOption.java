@@ -9,7 +9,7 @@ public class GameShareOption
   implements Parcelable
 {
   public static final Parcelable.Creator<GameShareOption> CREATOR;
-  public boolean Cqo;
+  public boolean Icx;
   public int id;
   public String title;
   
@@ -22,22 +22,22 @@ public class GameShareOption
   
   public GameShareOption(int paramInt, String paramString, boolean paramBoolean)
   {
-    this.Cqo = false;
+    this.Icx = false;
     this.id = paramInt;
     this.title = paramString;
-    this.Cqo = paramBoolean;
+    this.Icx = paramBoolean;
   }
   
   protected GameShareOption(Parcel paramParcel)
   {
     AppMethodBeat.i(89657);
-    this.Cqo = false;
+    this.Icx = false;
     this.id = paramParcel.readInt();
     this.title = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.Cqo = bool;
+      this.Icx = bool;
       AppMethodBeat.o(89657);
       return;
       bool = false;
@@ -54,7 +54,7 @@ public class GameShareOption
     AppMethodBeat.i(89658);
     paramParcel.writeInt(this.id);
     paramParcel.writeString(this.title);
-    if (this.Cqo) {}
+    if (this.Icx) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -65,7 +65,7 @@ public class GameShareOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.api.GameShareOption
  * JD-Core Version:    0.7.0.1
  */

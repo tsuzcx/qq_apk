@@ -7,80 +7,84 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.w;
 
-@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
+@Metadata(bv={1, 0, 2}, d1={""}, d2={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"}, k=1, mv={1, 1, 11})
 public final class a
   implements c
 {
-  public static final a.a jBy;
-  private boolean dih = true;
+  public static final a.a mbl;
+  private boolean egk = true;
   
   static
   {
     AppMethodBeat.i(103076);
-    jBy = new a.a((byte)0);
+    mbl = new a.a((byte)0);
     AppMethodBeat.o(103076);
   }
   
-  public final boolean aAA()
+  public final boolean aTo()
+  {
+    return this.egk;
+  }
+  
+  public final void aTp()
+  {
+    this.egk = false;
+  }
+  
+  public final void aTq()
+  {
+    AppMethodBeat.i(103075);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("dynamicBg");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl", "loadDynamicBgLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl", "loadDynamicBgLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(103075);
+  }
+  
+  public final boolean aTr()
   {
     return false;
   }
   
-  public final boolean aAB()
+  public final void aTs() {}
+  
+  public final void aTt() {}
+  
+  public final void aTu() {}
+  
+  public final boolean aTv()
   {
     return false;
   }
   
-  public final void aAC() {}
+  public final boolean aTw()
+  {
+    return false;
+  }
   
-  public final void aAD() {}
+  public final void aTx() {}
   
-  public final float aAE()
+  public final void aTy() {}
+  
+  public final float aTz()
   {
     return 16.0F;
   }
   
-  public final boolean aAt()
-  {
-    return this.dih;
-  }
-  
-  public final void aAu()
-  {
-    this.dih = false;
-  }
-  
-  public final void aAv()
-  {
-    AppMethodBeat.i(103075);
-    System.loadLibrary("dynamicBg");
-    AppMethodBeat.o(103075);
-  }
-  
-  public final boolean aAw()
-  {
-    return false;
-  }
-  
-  public final void aAx() {}
-  
-  public final void aAy() {}
-  
-  public final void aAz() {}
-  
-  public final Point au(Context paramContext)
+  public final Point bf(Context paramContext)
   {
     AppMethodBeat.i(103074);
-    p.k(paramContext, "context");
+    s.t(paramContext, "context");
     Point localPoint = new Point();
     paramContext = paramContext.getSystemService("window");
     if (paramContext == null)
     {
-      paramContext = new t("null cannot be cast to non-null type android.view.WindowManager");
+      paramContext = new w("null cannot be cast to non-null type android.view.WindowManager");
       AppMethodBeat.o(103074);
       throw paramContext;
     }
@@ -102,7 +106,7 @@ public final class a
           if (localObject3 != null) {
             break label149;
           }
-          localObject1 = new t("null cannot be cast to non-null type kotlin.Int");
+          localObject1 = new w("null cannot be cast to non-null type kotlin.Int");
           AppMethodBeat.o(103074);
           throw ((Throwable)localObject1);
         }
@@ -118,7 +122,7 @@ public final class a
       Object localObject2 = localException.invoke(paramContext, new Object[0]);
       if (localObject2 == null)
       {
-        localObject2 = new t("null cannot be cast to non-null type kotlin.Int");
+        localObject2 = new w("null cannot be cast to non-null type kotlin.Int");
         AppMethodBeat.o(103074);
         throw ((Throwable)localObject2);
       }
@@ -128,7 +132,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.a
  * JD-Core Version:    0.7.0.1
  */

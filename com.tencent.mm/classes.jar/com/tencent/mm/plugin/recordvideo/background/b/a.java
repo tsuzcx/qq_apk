@@ -7,28 +7,28 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
 {
-  protected int HHm;
+  protected int NEG;
   
-  private static void acg(int paramInt)
+  private static void agu(int paramInt)
   {
     GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
   }
   
-  public static int i(Bitmap paramBitmap, int paramInt)
+  public static int h(Bitmap paramBitmap, int paramInt)
   {
     if (paramInt > 0) {
       return paramInt;
     }
-    return j(paramBitmap, paramInt);
+    return i(paramBitmap, paramInt);
   }
   
-  public static int j(Bitmap paramBitmap, int paramInt)
+  public static int i(Bitmap paramBitmap, int paramInt)
   {
     Log.i("MicroMsg.Story.AbsShader", "loadTexture");
     if (paramBitmap != null)
     {
       if (paramInt > 0) {
-        acg(paramInt);
+        agu(paramInt);
       }
       int[] arrayOfInt = new int[1];
       GLES20.glGenTextures(1, arrayOfInt, 0);
@@ -65,14 +65,14 @@ public abstract class a
     return paramInt;
   }
   
-  public final void fvk()
+  public final void gHb()
   {
-    GLES20.glUseProgram(this.HHm);
+    GLES20.glUseProgram(this.NEG);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.a
  * JD-Core Version:    0.7.0.1
  */

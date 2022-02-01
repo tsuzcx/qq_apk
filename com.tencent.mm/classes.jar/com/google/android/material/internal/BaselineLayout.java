@@ -28,7 +28,7 @@ public class BaselineLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(237516);
+    AppMethodBeat.i(209457);
     int j = getChildCount();
     int k = getPaddingLeft();
     int m = getPaddingRight();
@@ -57,12 +57,12 @@ public class BaselineLayout
         break;
       }
     }
-    AppMethodBeat.o(237516);
+    AppMethodBeat.o(209457);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(237514);
+    AppMethodBeat.i(209446);
     int i7 = getChildCount();
     int i3 = 0;
     int i1 = 0;
@@ -107,12 +107,12 @@ public class BaselineLayout
     }
     i = Math.max(m, getSuggestedMinimumHeight());
     setMeasuredDimension(View.resolveSizeAndState(Math.max(i2, getSuggestedMinimumWidth()), paramInt1, i1), View.resolveSizeAndState(i, paramInt2, i1 << 16));
-    AppMethodBeat.o(237514);
+    AppMethodBeat.o(209446);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.material.internal.BaselineLayout
  * JD-Core Version:    0.7.0.1
  */

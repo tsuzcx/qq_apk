@@ -4,9 +4,9 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/MultiTaskEvent;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "TAG", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/MultiTaskEvent;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "TAG", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   implements d<Bundle, Bundle>
 {
@@ -14,10 +14,10 @@ public final class e
   
   public e()
   {
-    AppMethodBeat.i(248620);
+    AppMethodBeat.i(303703);
     this.TAG = "MicroMsg.MultiTask.HideMultiTaskUIC";
     Log.i(this.TAG, "create add task info");
-    AppMethodBeat.o(248620);
+    AppMethodBeat.o(303703);
   }
 }
 

@@ -11,16 +11,18 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import androidx.fragment.app.FragmentActivity;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.pa;
-import com.tencent.mm.f.b.a.pa.a;
-import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.autogen.mmdata.rpt.st;
+import com.tencent.mm.autogen.mmdata.rpt.st.a;
+import com.tencent.mm.plugin.appbrand.app.f;
+import com.tencent.mm.plugin.appbrand.ba.c;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.launching.z;
-import com.tencent.mm.plugin.appbrand.loading.b;
-import com.tencent.mm.plugin.appbrand.report.j;
+import com.tencent.mm.plugin.appbrand.launching.ab;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.report.model.q;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.plugin.appbrand.ui.wxa_container.AppBrandContainerFragmentActivity;
 import com.tencent.mm.plugin.secdata.ui.MMSecDataFragmentActivity;
@@ -28,47 +30,49 @@ import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import java.util.HashMap;
-import kotlin.g.b.ab;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.g.b.v;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.xweb.ao;
+import kotlin.Metadata;
+import kotlin.g.b.aa;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.g.b.z;
+import kotlin.k;
+import kotlin.l.o;
 
 @com.tencent.mm.ui.base.a(7)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI;", "Lcom/tencent/mm/plugin/secdata/ui/MMSecDataFragmentActivity;", "Lcom/tencent/mm/plugin/appbrand/launching/IMMActivityResultInstrumentation;", "()V", "appBrandUIEnterAnimationCompleteEventListener", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI$AppBrandUIEnterAnimationCompleteEventListener;", "appId", "", "connect", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "isBindServiceSuccess", "", "isCloseByUser", "<set-?>", "isForeground", "()Z", "setForeground", "(Z)V", "isForeground$delegate", "Lkotlin/properties/ReadWriteProperty;", "kv14576", "Lcom/tencent/mm/plugin/appbrand/report/model/kv_14576;", "pendingIntent", "Landroid/content/Intent;", "pendingIntentKey", "", "pendingIntentTask", "Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "scene", "getScene", "()I", "scene$delegate", "Lkotlin/Lazy;", "serviceName", "splashView", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "getSplashView", "()Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "splashView$delegate", "targetUiName", "uiFlavor", "getUiFlavor", "uiFlavor$delegate", "versionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "attach", "", "intent", "lifecycle", "canStartActivityForResult", "finish", "isNfcFilterEnabled", "isSupportNavigationSwipeBack", "mayRainbowBackgroundForTest", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "onPause", "onRestoreInstanceState", "onResume", "report", "startActivityForResult", "onActResult", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "requestCode", "tryToInterruptPost", "clearFlags", "flags", "AppBrandUIEnterAnimationCompleteEventListener", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI;", "Lcom/tencent/mm/plugin/secdata/ui/MMSecDataFragmentActivity;", "Lcom/tencent/mm/plugin/appbrand/launching/IMMActivityResultInstrumentation;", "()V", "appBrandUIEnterAnimationCompleteEventListener", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI$AppBrandUIEnterAnimationCompleteEventListener;", "appId", "", "appbrandUIFinishEventListener", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI$AppBrandUIFinishEventListener;", "connect", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandPreLoadingServiceConnection;", "isBindServiceSuccess", "", "isCloseByUser", "<set-?>", "isForeground", "()Z", "setForeground", "(Z)V", "isForeground$delegate", "Lkotlin/properties/ReadWriteProperty;", "kv14576", "Lcom/tencent/mm/plugin/appbrand/report/model/kv_14576;", "pendingIntent", "Landroid/content/Intent;", "pendingIntentKey", "", "pendingIntentTask", "Lcom/tencent/mm/plugin/appbrand/loading/PendingIntentTask;", "scene", "getScene", "()I", "scene$delegate", "Lkotlin/Lazy;", "serviceName", "splashView", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "getSplashView", "()Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "splashView$delegate", "targetUiName", "uiFlavor", "getUiFlavor", "uiFlavor$delegate", "versionInfo", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaVersionInfo;", "attach", "", "intent", "lifecycle", "canStartActivityForResult", "finish", "isNfcFilterEnabled", "isSupportNavigationSwipeBack", "mayRainbowBackgroundForTest", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEnterAnimationComplete", "onNewIntent", "onPause", "onRestoreInstanceState", "onResume", "report", "startActivityForResult", "onActResult", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "requestCode", "tryToInterruptPost", "clearFlags", "flags", "AppBrandUIEnterAnimationCompleteEventListener", "AppBrandUIFinishEventListener", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class AppBrandPreLoadingUI
   extends MMSecDataFragmentActivity
-  implements z
+  implements ab
 {
-  public static final AppBrandPreLoadingUI.c qWg;
-  private HashMap _$_findViewCache;
+  public static final AppBrandPreLoadingUI.a ubE;
   private String appId;
-  private final kotlin.f mta;
-  private WxaAttributes.WxaVersionInfo oaQ;
-  private final kotlin.i.c pLC;
-  private com.tencent.mm.plugin.appbrand.loading.e qVW;
-  private Intent qVX;
-  private boolean qVY;
-  private boolean qVZ;
-  private AppBrandPreLoadingUI.b qWa;
-  private com.tencent.mm.plugin.appbrand.report.model.n qWb;
-  private String qWc;
-  private b qWd;
-  private final kotlin.f qWe;
-  private final kotlin.f qWf;
-  private int qaa;
+  private final kotlin.j pmx;
+  private WxaAttributes.WxaVersionInfo rbC;
+  private final kotlin.i.c sQx;
   private String serviceName;
+  private int tfj;
+  private com.tencent.mm.plugin.appbrand.loading.e ubF;
+  private Intent ubG;
+  private boolean ubH;
+  private boolean ubI;
+  private AppBrandPreLoadingUI.AppBrandUIEnterAnimationCompleteEventListener ubJ;
+  private AppBrandPreLoadingUI.AppBrandUIFinishEventListener ubK;
+  private q ubL;
+  private String ubM;
+  private com.tencent.mm.plugin.appbrand.loading.b ubN;
+  private final kotlin.j ubO;
+  private final kotlin.j ubP;
   
   static
   {
     AppMethodBeat.i(51126);
-    cMt = new kotlin.l.n[] { (kotlin.l.n)ab.a(new v(ab.bO(AppBrandPreLoadingUI.class), "isForeground", "isForeground()Z")) };
-    qWg = new AppBrandPreLoadingUI.c((byte)0);
+    aYe = new o[] { (o)ai.a((z)new aa(AppBrandPreLoadingUI.class, "isForeground", "isForeground()Z", 0)) };
+    ubE = new AppBrandPreLoadingUI.a((byte)0);
     AppMethodBeat.o(51126);
   }
   
@@ -76,44 +80,44 @@ public class AppBrandPreLoadingUI
   {
     AppMethodBeat.i(51141);
     this.appId = "";
-    Object localObject = kotlin.i.a.aaBH;
+    Object localObject = kotlin.i.a.aixi;
     localObject = Boolean.TRUE;
-    this.pLC = ((kotlin.i.c)new AppBrandPreLoadingUI.a(localObject, localObject, this));
-    this.qaa = -1;
+    this.sQx = ((kotlin.i.c)new f(localObject, localObject, this));
+    this.tfj = -1;
     this.serviceName = "";
-    this.qWb = new com.tencent.mm.plugin.appbrand.report.model.n();
-    this.qWc = "";
-    this.qWe = kotlin.g.ar((kotlin.g.a.a)new AppBrandPreLoadingUI.i(this));
-    this.mta = kotlin.g.ar((kotlin.g.a.a)new AppBrandPreLoadingUI.g(this));
-    this.qWf = kotlin.g.ar((kotlin.g.a.a)new h(this));
+    this.ubL = new q();
+    this.ubM = "";
+    this.ubO = k.cm((kotlin.g.a.a)new h(this));
+    this.pmx = k.cm((kotlin.g.a.a)new e(this));
+    this.ubP = k.cm((kotlin.g.a.a)new g(this));
     AppMethodBeat.o(51141);
   }
   
-  private final int cjQ()
+  private final int cBb()
   {
     AppMethodBeat.i(51128);
-    int i = ((Number)this.qWe.getValue()).intValue();
+    int i = ((Number)this.ubO.getValue()).intValue();
     AppMethodBeat.o(51128);
     return i;
   }
   
-  private final aa cjR()
+  private final ah cLd()
   {
     AppMethodBeat.i(51129);
-    aa localaa = (aa)this.qWf.getValue();
+    ah localah = (ah)this.ubP.getValue();
     AppMethodBeat.o(51129);
-    return localaa;
+    return localah;
   }
   
-  private final void cjS()
+  private final void cLe()
   {
     AppMethodBeat.i(51137);
-    this.qVW = com.tencent.mm.plugin.appbrand.loading.c.qan.BQ(this.qaa);
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "tryToInterruptPost: interrupt #" + this.qaa + " successful");
+    this.ubF = com.tencent.mm.plugin.appbrand.loading.c.tfr.Cf(this.tfj);
+    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "tryToInterruptPost: interrupt #" + this.tfj + " successful");
     AppMethodBeat.o(51137);
   }
   
-  private final void d(Intent paramIntent, String paramString)
+  private final void d(Intent paramIntent, final String paramString)
   {
     AppMethodBeat.i(175217);
     Object localObject1 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.icon");
@@ -122,79 +126,87 @@ public class AppBrandPreLoadingUI
     }
     for (;;)
     {
-      String str1 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.name");
-      if (str1 == null) {
-        str1 = "";
-      }
-      for (;;)
+      String str = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.name");
+      label39:
+      Object localObject2;
+      if (str == null)
       {
-        String str2 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.appId");
-        Object localObject2 = str2;
-        if (str2 == null) {
+        str = "";
+        Object localObject3 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.appId");
+        localObject2 = localObject3;
+        if (localObject3 == null) {
           localObject2 = "";
         }
         this.appId = ((String)localObject2);
-        this.oaQ = ((WxaAttributes.WxaVersionInfo)paramIntent.getParcelableExtra("MicroMsg.AppBrandPreLoadingLogic.versionInfo"));
-        str2 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.targetActivityName");
-        localObject2 = str2;
-        if (str2 == null) {
+        this.rbC = ((WxaAttributes.WxaVersionInfo)paramIntent.getParcelableExtra("MicroMsg.AppBrandPreLoadingLogic.versionInfo"));
+        localObject3 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.targetActivityName");
+        localObject2 = localObject3;
+        if (localObject3 == null) {
           localObject2 = "";
         }
-        this.qWc = ((String)localObject2);
-        this.qaa = paramIntent.getIntExtra("MicroMsg.AppBrandPreLoadingLogic.intentKey", -1);
-        com.tencent.mm.plugin.appbrand.loading.c.qan.b(this.qaa, (Context)this);
-        localObject2 = this.qWa;
+        this.ubM = ((String)localObject2);
+        this.tfj = paramIntent.getIntExtra("MicroMsg.AppBrandPreLoadingLogic.intentKey", -1);
+        com.tencent.mm.plugin.appbrand.loading.c.tfr.d(this.tfj, (Context)this);
+        localObject2 = com.tencent.mm.plugin.appbrand.loading.c.tfr.Ce(this.tfj);
         if (localObject2 != null) {
-          ((AppBrandPreLoadingUI.b)localObject2).dead();
+          break label552;
         }
-        this.qWa = new AppBrandPreLoadingUI.b(this);
-        localObject2 = this.qWa;
-        if (localObject2 == null) {
-          p.iCn();
+        localObject2 = null;
+        if (localObject2 != null) {
+          ((ap)com.tencent.luggage.a.e.T(ap.class)).a((Activity)this, (AppBrandInitConfig)localObject2);
         }
-        ((AppBrandPreLoadingUI.b)localObject2).alive();
+        localObject2 = this.ubJ;
+        if (localObject2 != null) {
+          ((AppBrandPreLoadingUI.AppBrandUIEnterAnimationCompleteEventListener)localObject2).dead();
+        }
+        localObject2 = new AppBrandPreLoadingUI.AppBrandUIEnterAnimationCompleteEventListener(this);
+        ((AppBrandPreLoadingUI.AppBrandUIEnterAnimationCompleteEventListener)localObject2).alive();
+        localObject3 = kotlin.ah.aiuX;
+        this.ubJ = ((AppBrandPreLoadingUI.AppBrandUIEnterAnimationCompleteEventListener)localObject2);
+        localObject2 = this.ubK;
+        if (localObject2 != null) {
+          ((AppBrandPreLoadingUI.AppBrandUIFinishEventListener)localObject2).dead();
+        }
+        localObject2 = new AppBrandPreLoadingUI.AppBrandUIFinishEventListener(this);
+        ((AppBrandPreLoadingUI.AppBrandUIFinishEventListener)localObject2).alive();
+        localObject3 = kotlin.ah.aiuX;
+        this.ubK = ((AppBrandPreLoadingUI.AppBrandUIFinishEventListener)localObject2);
         localObject2 = paramIntent.getStringExtra("MicroMsg.AppBrandPreLoadingLogic.serviceName");
         paramIntent = (Intent)localObject2;
         if (localObject2 == null) {
           paramIntent = "";
         }
         this.serviceName = paramIntent;
-        cjR().eC((String)localObject1, str1);
-        if ((cjR() instanceof ac))
-        {
-          paramIntent = cjR();
-          if (paramIntent == null)
-          {
-            paramIntent = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.IAppBrandLoadingSplashCloseable");
-            AppMethodBeat.o(175217);
-            throw paramIntent;
-          }
-          ((ac)paramIntent).A((kotlin.g.a.a)new AppBrandPreLoadingUI.d(this));
+        cLd().eT((String)localObject1, str);
+        if ((cLd() instanceof aj)) {
+          ((aj)cLd()).av((kotlin.g.a.a)new b(this));
         }
-        Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "attach[" + paramString + "]: uiFlavor = " + cjQ() + ", iconUrl = " + (String)localObject1 + ", name = " + str1);
+        Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "attach[" + paramString + "]: uiFlavor = " + cBb() + ", iconUrl = " + (String)localObject1 + ", name = " + str);
         paramIntent = new Intent();
         paramIntent.setClassName((Context)this, this.serviceName);
-        this.qWd = new b(this.qaa, "MicroMsg.AppBrand.AppBrandPreLoadingUI", (kotlin.g.a.a)new AppBrandPreLoadingUI.e(this, paramString));
-        try
-        {
-          localObject1 = this.qWd;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          this.qVZ = bindService(paramIntent, (ServiceConnection)localObject1, 65);
-          Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "attach[" + paramString + "]: bind " + this.serviceName + " ret = " + this.qVZ);
-        }
-        catch (Exception paramIntent)
-        {
-          for (;;)
-          {
-            Log.e("MicroMsg.AppBrand.AppBrandPreLoadingUI", "attach[" + paramString + "]: bindService fail", new Object[] { paramIntent });
-          }
-        }
-        this.qWb = new com.tencent.mm.plugin.appbrand.report.model.n();
-        this.qWb.chZ();
+        this.ubN = new com.tencent.mm.plugin.appbrand.loading.b(this.tfj, "MicroMsg.AppBrand.AppBrandPreLoadingUI", (kotlin.g.a.a)new c(this, paramString));
+      }
+      try
+      {
+        localObject1 = this.ubN;
+        s.checkNotNull(localObject1);
+        this.ubI = bindService(paramIntent, (ServiceConnection)localObject1, 65);
+        Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "attach[" + paramString + "]: bind " + this.serviceName + " ret = " + this.ubI);
+        this.ubL = new q();
+        this.ubL.tQo = Util.currentTicks();
         AppMethodBeat.o(175217);
         return;
+        continue;
+        break label39;
+        label552:
+        localObject2 = ((com.tencent.mm.plugin.appbrand.loading.e)localObject2).initConfig;
+      }
+      catch (Exception paramIntent)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.AppBrand.AppBrandPreLoadingUI", "attach[" + paramString + "]: bindService fail", new Object[] { paramIntent });
+        }
       }
     }
   }
@@ -202,45 +214,22 @@ public class AppBrandPreLoadingUI
   private final void setForeground(boolean paramBoolean)
   {
     AppMethodBeat.i(51127);
-    this.pLC.a(cMt[0], Boolean.valueOf(paramBoolean));
+    this.sQx.a(aYe[0], Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(51127);
   }
   
-  public void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(279081);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(279081);
-  }
-  
-  public View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(279080);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(279080);
-    return localView1;
-  }
+  public void _$_clearFindViewByIdCache() {}
   
   public final void a(MMActivity.a parama, Intent paramIntent, int paramInt) {}
   
-  public final boolean bZv()
+  public final boolean czG()
   {
     return false;
   }
   
   public void finish()
   {
+    int j = 1;
     AppMethodBeat.i(51138);
     if ((isFinishing()) || (isDestroyed()))
     {
@@ -248,69 +237,100 @@ public class AppBrandPreLoadingUI
       return;
     }
     super.finish();
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "finish: isCloseByUser:" + this.qVY + ", appId:" + this.appId);
-    if (this.qVY)
+    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "finish: isCloseByUser:" + this.ubH + ", appId:" + this.appId);
+    Object localObject1;
+    if (this.ubH)
     {
       Object localObject3;
-      if (this.qVW != null)
+      int i;
+      if (this.ubF != null)
       {
-        localObject1 = this.qVW;
-        if (localObject1 == null) {
-          p.iCn();
+        localObject1 = this.ubF;
+        s.checkNotNull(localObject1);
+        localObject1 = ((com.tencent.mm.plugin.appbrand.loading.e)localObject1).initConfig;
+        Object localObject2 = this.ubL;
+        localObject3 = this.ubF;
+        s.checkNotNull(localObject3);
+        localObject3 = ((com.tencent.mm.plugin.appbrand.loading.e)localObject3).epn;
+        ((q)localObject2).sessionId = ((AppBrandInitConfigLU)localObject1).eoP;
+        com.tencent.mm.plugin.appbrand.u.Ux(((AppBrandInitConfigWC)localObject1).appId);
+        ((q)localObject2).networkType = com.tencent.mm.plugin.appbrand.report.j.getNetworkType(MMApplicationContext.getContext());
+        ((q)localObject2).appId = ((AppBrandInitConfigWC)localObject1).appId;
+        ((q)localObject2).appVersion = ((AppBrandInitConfigWC)localObject1).appVersion;
+        ((q)localObject2).hzw = ((AppBrandInitConfigWC)localObject1).eul;
+        ((q)localObject2).scene = ((AppBrandStatObject)localObject3).scene;
+        if (!((q)localObject2).tQp) {
+          break label522;
         }
-        localObject1 = ((com.tencent.mm.plugin.appbrand.loading.e)localObject1).nyg;
-        Object localObject2 = this.qWb;
-        localObject3 = this.qVW;
-        if (localObject3 == null) {
-          p.iCn();
+        i = 1;
+        ((q)localObject2).tQq = i;
+        if (!ao.kgm()) {
+          break label527;
         }
-        ((com.tencent.mm.plugin.appbrand.report.model.n)localObject2).f((AppBrandInitConfigWC)localObject1, ((com.tencent.mm.plugin.appbrand.loading.e)localObject3).cxf);
-        this.qWb.report();
-        localObject2 = ((AppBrandInitConfigWC)localObject1).nYk;
-        localObject3 = new pa();
-        ((pa)localObject3).FV(((QualitySession)localObject2).cBH);
-        ((pa)localObject3).FW(((QualitySession)localObject2).appId);
-        ((pa)localObject3).BA(((QualitySession)localObject2).qNx);
-        ((pa)localObject3).a(pa.a.oB(((QualitySession)localObject2).qLQ));
-        ((pa)localObject3).BB(((QualitySession)localObject2).apptype);
-        ((pa)localObject3).BD(((QualitySession)localObject2).scene);
-        ((pa)localObject3).FX(((AppBrandInitConfigWC)localObject1).username);
-        ((pa)localObject3).aoG();
-        ((pa)localObject3).aoH();
-        ((pa)localObject3).FY(j.getNetworkType(MMApplicationContext.getContext()));
-        if (!((AppBrandInitConfigWC)localObject1).Qt()) {
-          break label365;
+        i = j;
+        label222:
+        ((q)localObject2).tQr = i;
+        ((q)localObject2).tQs = Util.ticksToNow(((q)localObject2).tQo);
+        ((q)localObject2).tQt = Util.nowMilliSecond();
+        ((q)localObject2).username = ((AppBrandInitConfigWC)localObject1).username;
+        ((q)localObject2).qMB = ((AppBrandInitConfigWC)localObject1).qYm.apptype;
+        ((q)localObject2).eup = ((AppBrandInitConfigWC)localObject1).qYm.eup;
+        this.ubL.report();
+        localObject2 = ((AppBrandInitConfigWC)localObject1).qYm;
+        localObject3 = new st();
+        ((st)localObject3).zm(((QualitySession)localObject2).eup);
+        ((st)localObject3).zn(((QualitySession)localObject2).appId);
+        ((st)localObject3).ind = ((QualitySession)localObject2).tSh;
+        ((st)localObject3).jzE = st.a.oO(((QualitySession)localObject2).tQx);
+        ((st)localObject3).jax = ((QualitySession)localObject2).apptype;
+        ((st)localObject3).iqr = ((QualitySession)localObject2).scene;
+        ((st)localObject3).zo(((AppBrandInitConfigWC)localObject1).username);
+        ((st)localObject3).jys = 2L;
+        ((st)localObject3).jyp = 0L;
+        ((st)localObject3).zp(com.tencent.mm.plugin.appbrand.report.j.getNetworkType(MMApplicationContext.getContext()));
+        if (!((AppBrandInitConfigLU)localObject1).epl) {
+          break label532;
         }
       }
-      label365:
+      label522:
+      label527:
+      label532:
       for (long l = 1L;; l = 0L)
       {
-        ((pa)localObject3).BF(l);
-        ((pa)localObject3).aoI();
-        ((pa)localObject3).BE(((AppBrandInitConfigWC)localObject1).startTime);
-        ((pa)localObject3).aoF();
-        ((pa)localObject3).BC(((pa)localObject3).Su() - ((pa)localObject3).St());
-        ((pa)localObject3).aoJ();
-        ((pa)localObject3).bpa();
-        this.qVW = null;
-        if (cjQ() != 5) {
-          break;
+        ((st)localObject3).jzF = l;
+        ((st)localObject3).jzG = 2L;
+        ((st)localObject3).fM(((AppBrandInitConfigWC)localObject1).startTime);
+        ((st)localObject3).aJa();
+        ((st)localObject3).fL(((st)localObject3).jyJ - ((st)localObject3).jyI);
+        ((st)localObject3).jzH = 0L;
+        ((st)localObject3).bMH();
+        this.ubF = null;
+        if (cBb() != 5) {
+          break label537;
         }
-        ((ah)com.tencent.luggage.a.e.K(ah.class)).k((Activity)this);
+        ((ap)com.tencent.luggage.a.e.T(ap.class)).l((Activity)this);
         AppMethodBeat.o(51138);
         return;
+        i = 0;
+        break;
+        i = 0;
+        break label222;
       }
-      if (cjQ() == 4) {
-        super.overridePendingTransition(MMFragmentActivity.a.ria, MMFragmentActivity.a.rib);
+      label537:
+      if (cBb() == 4)
+      {
+        super.overridePendingTransition(MMFragmentActivity.a.upW, MMFragmentActivity.a.upX);
+        AppMethodBeat.o(51138);
       }
-      AppMethodBeat.o(51138);
-      return;
     }
-    Object localObject1 = findViewById(16908290);
-    if (localObject1 != null) {
-      ((View)localObject1).setVisibility(8);
+    else
+    {
+      localObject1 = findViewById(16908290);
+      if (localObject1 != null) {
+        ((View)localObject1).setVisibility(8);
+      }
+      super.overridePendingTransition(0, 0);
     }
-    super.overridePendingTransition(0, 0);
     AppMethodBeat.o(51138);
   }
   
@@ -327,9 +347,8 @@ public class AppBrandPreLoadingUI
   public void onBackPressed()
   {
     AppMethodBeat.i(51136);
-    this.qVY = true;
-    cjS();
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onBackPressed: ");
+    this.ubH = true;
+    cLe();
     super.onBackPressed();
     AppMethodBeat.o(51136);
   }
@@ -346,31 +365,40 @@ public class AppBrandPreLoadingUI
       if (paramBundle != null)
       {
         Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onCreate: saved intent != null");
-        paramBundle = new com.tencent.mm.hellhoundlib.b.a().bm(paramBundle);
-        com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aFh(), "com/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramBundle.sf(0));
+        paramBundle = new com.tencent.mm.hellhoundlib.b.a().cG(paramBundle);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramBundle.aYi(), "com/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramBundle.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     paramBundle = new FrameLayout((Context)this);
     setContentView((View)paramBundle);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    if ((WeChatEnvironment.hasDebugger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
+    Object localObject;
+    if ((BuildInfo.DEBUG) || (WeChatEnvironment.hasDebugger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
     {
-      localObject = com.tencent.mm.plugin.appbrand.app.f.nCi.aal();
-      if ((localObject != null) && (((MultiProcessMMKV)localObject).getBoolean("enable_pre_loading_rainbow", false) == true))
-      {
-        localObject = (kotlin.g.a.a)AppBrandPreLoadingUI.f.qWj;
-        cjR().BU(Color.rgb(((Number)((kotlin.g.a.a)localObject).invoke()).intValue(), ((Number)((kotlin.g.a.a)localObject).invoke()).intValue(), ((Number)((kotlin.g.a.a)localObject).invoke()).intValue()));
+      localObject = f.qBv;
+      localObject = f.aBP();
+      if ((localObject == null) || (((MultiProcessMMKV)localObject).getBoolean("enable_pre_loading_rainbow", false) != true)) {
+        break label335;
       }
     }
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onCreate: ");
-    Object localObject = getIntent();
-    p.j(localObject, "intent");
-    d((Intent)localObject, "onCreate");
-    paramBundle.addView(cjR().getView(), (ViewGroup.LayoutParams)localLayoutParams);
-    AppBrandContainerFragmentActivity.e((Activity)this, androidx.core.content.a.w((Context)this, au.c.BG_1));
-    AppMethodBeat.o(51134);
+    label335:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        localObject = (kotlin.g.a.a)AppBrandPreLoadingUI.d.ubS;
+        cLd().Cj(Color.rgb(((Number)((kotlin.g.a.a)localObject).invoke()).intValue(), ((Number)((kotlin.g.a.a)localObject).invoke()).intValue(), ((Number)((kotlin.g.a.a)localObject).invoke()).intValue()));
+      }
+      localObject = getIntent();
+      s.s(localObject, "intent");
+      d((Intent)localObject, "onCreate");
+      paramBundle.addView(cLd().getView(), (ViewGroup.LayoutParams)localLayoutParams);
+      AppBrandContainerFragmentActivity.e((Activity)this, androidx.core.content.a.w((Context)this, ba.c.BG_1));
+      AppMethodBeat.o(51134);
+      return;
+    }
   }
   
   public void onDestroy()
@@ -379,15 +407,13 @@ public class AppBrandPreLoadingUI
     super.onDestroy();
     Object localObject = new Intent();
     ((Intent)localObject).setClassName((Context)this, this.serviceName);
-    if (this.qVZ) {}
+    if (this.ubI) {}
     try
     {
-      if (this.qWd != null)
+      if (this.ubN != null)
       {
-        b localb = this.qWd;
-        if (localb == null) {
-          p.iCn();
-        }
+        com.tencent.mm.plugin.appbrand.loading.b localb = this.ubN;
+        s.checkNotNull(localb);
         unbindService((ServiceConnection)localb);
       }
       stopService((Intent)localObject);
@@ -399,26 +425,36 @@ public class AppBrandPreLoadingUI
         Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onDestroy: ", new Object[] { localException });
       }
     }
-    localObject = this.qWa;
+    localObject = this.ubJ;
     if (localObject != null) {
-      ((AppBrandPreLoadingUI.b)localObject).dead();
+      ((AppBrandPreLoadingUI.AppBrandUIEnterAnimationCompleteEventListener)localObject).dead();
     }
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onDestroy: ");
+    localObject = this.ubK;
+    if (localObject != null) {
+      ((AppBrandPreLoadingUI.AppBrandUIFinishEventListener)localObject).dead();
+    }
     AppMethodBeat.o(51139);
+  }
+  
+  public void onEnterAnimationComplete()
+  {
+    AppMethodBeat.i(322372);
+    super.onEnterAnimationComplete();
+    com.tencent.mm.ui.base.b.a((Activity)this, null);
+    AppMethodBeat.o(322372);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(51131);
     super.onNewIntent(paramIntent);
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onNewIntent: ");
     if (paramIntent == null)
     {
       AppMethodBeat.o(51131);
       return;
     }
-    this.qVX = null;
-    this.qVY = false;
+    this.ubG = null;
+    this.ubH = false;
     d(paramIntent, "onNewIntent");
     AppMethodBeat.o(51131);
   }
@@ -427,8 +463,7 @@ public class AppBrandPreLoadingUI
   {
     AppMethodBeat.i(51135);
     super.onPause();
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onPause: ");
-    if (!this.qVY) {
+    if (!this.ubH) {
       overridePendingTransition(0, 0);
     }
     setForeground(false);
@@ -438,10 +473,11 @@ public class AppBrandPreLoadingUI
   public void onRestoreInstanceState(Bundle paramBundle)
   {
     AppMethodBeat.i(51140);
+    s.u(paramBundle, "savedInstanceState");
     super.onRestoreInstanceState(paramBundle);
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onRestoreInstanceState: pendingIntent = " + this.qVX);
-    if ((paramBundle != null) && (this.qVX != null)) {
-      paramBundle.putParcelable("MicroMsg.AppBrandPreLoadingUI.intent", (Parcelable)this.qVX);
+    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", s.X("onRestoreInstanceState: pendingIntent = ", this.ubG));
+    if (this.ubG != null) {
+      paramBundle.putParcelable("MicroMsg.AppBrandPreLoadingUI.intent", (Parcelable)this.ubG);
     }
     AppMethodBeat.o(51140);
   }
@@ -450,22 +486,8 @@ public class AppBrandPreLoadingUI
   {
     AppMethodBeat.i(51133);
     super.onResume();
-    Log.i("MicroMsg.AppBrand.AppBrandPreLoadingUI", "onResume: ");
-    if (cjQ() == 4)
-    {
-      if (!com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g.BT(((Number)this.mta.getValue()).intValue())) {
-        break label66;
-      }
-      overridePendingTransition(0, 0);
-    }
-    for (;;)
-    {
-      setForeground(true);
-      AppMethodBeat.o(51133);
-      return;
-      label66:
-      overridePendingTransition(MMFragmentActivity.a.rhY, MMFragmentActivity.a.rhZ);
-    }
+    setForeground(true);
+    AppMethodBeat.o(51133);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -474,10 +496,83 @@ public class AppBrandPreLoadingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<kotlin.ah>
+  {
+    b(AppBrandPreLoadingUI paramAppBrandPreLoadingUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<kotlin.ah>
+  {
+    c(AppBrandPreLoadingUI paramAppBrandPreLoadingUI, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<Integer>
+  {
+    e(AppBrandPreLoadingUI paramAppBrandPreLoadingUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"kotlin/properties/Delegates$observable$1", "Lkotlin/properties/ObservableProperty;", "afterChange", "", "property", "Lkotlin/reflect/KProperty;", "oldValue", "newValue", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+  public static final class f
+    extends kotlin.i.b<Boolean>
+  {
+    public f(Object paramObject1, Object paramObject2, AppBrandPreLoadingUI paramAppBrandPreLoadingUI)
+    {
+      super();
+    }
+    
+    public final void a(o<?> paramo, Boolean paramBoolean1, Boolean paramBoolean2)
+    {
+      AppMethodBeat.i(321996);
+      s.u(paramo, "property");
+      boolean bool1 = ((Boolean)paramBoolean2).booleanValue();
+      boolean bool2 = ((Boolean)paramBoolean1).booleanValue();
+      if ((bool1) && (!bool2) && (AppBrandPreLoadingUI.f(jdField_this) != null))
+      {
+        paramo = jdField_this;
+        paramBoolean1 = AppBrandPreLoadingUI.f(jdField_this);
+        paramBoolean1 = new com.tencent.mm.hellhoundlib.b.a().cG(paramBoolean1);
+        com.tencent.mm.hellhoundlib.a.a.b(paramo, paramBoolean1.aYi(), "com/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI$special$$inlined$observable$1", "afterChange", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramo.startActivity((Intent)paramBoolean1.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramo, "com/tencent/mm/plugin/appbrand/ui/AppBrandPreLoadingUI$special$$inlined$observable$1", "afterChange", "(Lkotlin/reflect/KProperty;Ljava/lang/Object;Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppBrandPreLoadingUI.a(jdField_this, null);
+      }
+      AppMethodBeat.o(321996);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
+  {
+    g(AppBrandPreLoadingUI paramAppBrandPreLoadingUI)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class h
-    extends q
-    implements kotlin.g.a.a<aa>
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<Integer>
   {
     h(AppBrandPreLoadingUI paramAppBrandPreLoadingUI)
     {
@@ -487,7 +582,7 @@ public class AppBrandPreLoadingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandPreLoadingUI
  * JD-Core Version:    0.7.0.1
  */

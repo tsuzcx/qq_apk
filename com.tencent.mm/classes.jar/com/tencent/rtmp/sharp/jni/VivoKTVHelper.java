@@ -2,7 +2,7 @@ package com.tencent.rtmp.sharp.jni;
 
 import android.content.Context;
 import android.media.AudioManager;
-import android.os.Build;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.StringTokenizer;
 
@@ -44,7 +44,7 @@ public class VivoKTVHelper
   private int getKTVParam(String paramString)
   {
     AppMethodBeat.i(13778);
-    if (Build.MODEL.trim().contains("vivo"))
+    if (TXCBuild.Model().trim().contains("vivo"))
     {
       StringTokenizer localStringTokenizer = new StringTokenizer(this.mAudioManager.getParameters(paramString), "=");
       if ((localStringTokenizer.countTokens() == 2) && (paramString.equals(localStringTokenizer.nextToken())))
@@ -116,7 +116,7 @@ public class VivoKTVHelper
   public boolean isDeviceSupportKaraoke()
   {
     AppMethodBeat.i(13764);
-    if (Build.MODEL.trim().contains("vivo"))
+    if (TXCBuild.Model().trim().contains("vivo"))
     {
       StringTokenizer localStringTokenizer = new StringTokenizer(this.mAudioManager.getParameters("vivo_ktv_mic_type"), "=");
       if (localStringTokenizer.countTokens() != 2)
@@ -219,7 +219,7 @@ public class VivoKTVHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.VivoKTVHelper
  * JD-Core Version:    0.7.0.1
  */

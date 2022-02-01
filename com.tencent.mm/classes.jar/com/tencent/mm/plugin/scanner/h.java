@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.scanner;
 
 import android.graphics.PointF;
 import java.util.ArrayList;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ImageCodeHandleListener;", "", "handleOutsideCode", "", "data", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "srcDataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "showMultiCodeView", "dstPointList", "Landroid/graphics/PointF;", "point", "plugin-comm_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/ImageCodeHandleListener;", "", "handleOutsideCode", "", "data", "Lcom/tencent/mm/plugin/scanner/ImageQBarDataBean;", "srcDataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "showMultiCodeView", "dstPointList", "Landroid/graphics/PointF;", "point", "plugin-comm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface h
 {
   public abstract void a(ImageQBarDataBean paramImageQBarDataBean, ArrayList<ImageQBarDataBean> paramArrayList);

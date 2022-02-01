@@ -20,7 +20,7 @@ public final class e
   public final void parallelsDependency()
   {
     AppMethodBeat.i(22354);
-    a.a(this, c.class).bI(h.ag(n.class));
+    a.a(this, c.class).db(h.az(n.class));
     AppMethodBeat.o(22354);
   }
 }

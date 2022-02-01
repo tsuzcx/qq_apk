@@ -21,15 +21,15 @@ public class TestCoordinatorLayout
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(290627);
+    AppMethodBeat.i(305874);
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     Log.i("TestCoordinatorLayout", "TestCoordinatorLayout:%d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    AppMethodBeat.o(290627);
+    AppMethodBeat.o(305874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.TestCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

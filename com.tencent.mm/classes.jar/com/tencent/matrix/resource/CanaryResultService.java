@@ -2,13 +2,14 @@ package com.tencent.matrix.resource;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.matrix.report.f;
+import com.tencent.matrix.d.b;
+import com.tencent.matrix.report.g;
 import org.json.JSONObject;
 
 public class CanaryResultService
   extends MatrixJobIntentService
 {
-  public static void c(Context paramContext, String paramString1, String paramString2)
+  public static void e(Context paramContext, String paramString1, String paramString2)
   {
     Intent localIntent = new Intent(paramContext, CanaryResultService.class);
     localIntent.setAction("com.tencent.matrix.resource.result.action.REPORT_HPROF_RESULT");
@@ -17,7 +18,7 @@ public class CanaryResultService
     a(paramContext, CanaryResultService.class, -84148994, localIntent);
   }
   
-  protected final void n(Intent paramIntent)
+  protected final void o(Intent paramIntent)
   {
     Object localObject;
     String str;
@@ -28,7 +29,7 @@ public class CanaryResultService
       str = paramIntent.getStringExtra("RESULT_ACTIVITY");
       if ((localObject != null) && (!((String)localObject).isEmpty()) && (str != null) && (!str.isEmpty()))
       {
-        paramIntent = new f(0);
+        paramIntent = new g(0);
         localJSONObject = new JSONObject();
       }
     }
@@ -38,14 +39,14 @@ public class CanaryResultService
       {
         localJSONObject.put("resultZipPath", localObject);
         localJSONObject.put("activity", str);
-        paramIntent.cZZ = localJSONObject;
-        localObject = com.tencent.matrix.b.Vu().Y(c.class);
+        paramIntent.eYz = localJSONObject;
+        localObject = com.tencent.matrix.c.avW().ai(c.class);
         if (localObject != null) {
-          ((com.tencent.matrix.d.b)localObject).onDetectIssue(paramIntent);
+          ((b)localObject).onDetectIssue(paramIntent);
         }
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         for (;;)
         {
@@ -58,7 +59,7 @@ public class CanaryResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.CanaryResultService
  * JD-Core Version:    0.7.0.1
  */

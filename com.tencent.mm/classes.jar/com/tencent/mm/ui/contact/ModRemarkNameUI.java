@@ -3,16 +3,21 @@ package com.tencent.mm.ui.contact;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -28,134 +33,177 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.mmdata.rpt.ma;
 import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.bh;
+import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
 import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.pluginsdk.ui.span.m;
-import com.tencent.mm.pluginsdk.ui.tools.m.a;
+import com.tencent.mm.pluginsdk.ui.span.q;
+import com.tencent.mm.pluginsdk.ui.tools.k.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.co;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.cr;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.base.MMClearEditText;
+import com.tencent.mm.ui.base.MMClearEditText.b;
 import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.bb;
 import com.tencent.mm.ui.tools.g;
-import com.tencent.mm.ui.w;
-import com.tencent.mm.ui.w.b;
 import com.tencent.mm.ui.widget.MMEditText.b;
+import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.y.b;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class ModRemarkNameUI
   extends MMActivity
-  implements com.tencent.mm.an.i, com.tencent.mm.ui.tools.h
+  implements com.tencent.mm.am.h, com.tencent.mm.ui.tools.h
 {
-  private HashSet<String> EeR;
-  private HashSet<String> EeS;
-  private HashSet<String> EeT;
-  private ObjectAnimator EeU;
-  private k Eeu;
-  private String GYH;
-  private List<String> Hci;
-  private ImageView Hcl;
-  private LinearLayout Hcm;
-  private TextView Hcn;
-  private boolean Hcp;
-  private String Hcq;
-  private String Hcr;
-  private int Hcs;
-  private boolean Hct;
-  private int Hcu;
-  private int Hcv;
-  private List<String> Hcw;
-  private HashSet<String> Hcx;
-  private co Hvc;
-  private TextView XrB;
-  private View XrC;
-  private List<String> XrL;
-  private HashSet<String> XrM;
-  private ScrollView Xru;
-  private TextView XtV;
-  private int XtW;
-  private String XtX;
-  private TextView XtY;
-  private EditText XtZ;
-  private TextView Xua;
-  private String Xub;
-  private boolean Xuc;
-  private ModRemarkNameUI.a Xud;
-  private View Xue;
-  private TextView Xuf;
-  private MMClearEditText aadg;
-  private int aadh;
-  private as contact;
-  private long fOa;
-  private String fPV;
-  private com.tencent.mm.ui.tools.i jij;
-  private int mXL;
+  private View CzL;
+  private String IMS;
+  private boolean JVi;
+  private HashSet<String> JWF;
+  private HashSet<String> JWG;
+  private HashSet<String> JWH;
+  private ObjectAnimator JWJ;
+  private m JWf;
+  private String MWK;
+  private String NaB;
+  private String NaC;
+  private int NaD;
+  private boolean NaE;
+  private int NaF;
+  private int NaG;
+  private List<String> NaH;
+  private HashSet<String> NaI;
+  private List<String> Nau;
+  private ImageView Nax;
+  private LinearLayout Nay;
+  private TextView Naz;
+  private cr NsP;
+  private ScrollView afcV;
+  private TextView afdc;
+  private View afdd;
+  private List<String> afdm;
+  private HashSet<String> afdo;
+  private TextView affA;
+  private int affB;
+  private String affC;
+  private int affD;
+  private TextView affE;
+  private EditText affF;
+  private TextView affG;
+  private String affH;
+  private boolean affI;
+  private ModRemarkNameUI.a affJ;
+  private View affK;
+  private TextView affL;
+  private MMClearEditText affz;
+  private au contact;
+  private long hTS;
+  private String hVQ;
+  private com.tencent.mm.ui.tools.i lKz;
+  private int pUt;
   private String remark;
-  private View ybl;
   
   public ModRemarkNameUI()
   {
     AppMethodBeat.i(37872);
-    this.XtX = "";
+    this.affC = "";
     this.remark = "";
-    this.aadh = -1;
-    this.Hcp = false;
-    this.XtY = null;
-    this.XtZ = null;
-    this.Xua = null;
-    this.Xub = "";
-    this.Xuc = false;
-    this.mXL = 9;
-    this.Xud = new ModRemarkNameUI.a(this, (byte)0);
-    this.Hcs = 0;
-    this.Hci = new ArrayList();
-    this.Hcw = new ArrayList();
-    this.XrL = new ArrayList();
-    this.XrM = new HashSet();
-    this.Hcx = new HashSet();
-    this.EeR = new HashSet();
-    this.EeS = new HashSet();
-    this.EeT = new HashSet();
-    this.EeU = null;
+    this.affD = -1;
+    this.JVi = false;
+    this.affE = null;
+    this.affF = null;
+    this.affG = null;
+    this.affH = "";
+    this.affI = false;
+    this.pUt = 9;
+    this.affJ = new ModRemarkNameUI.a(this, (byte)0);
+    this.NaD = 0;
+    this.Nau = new ArrayList();
+    this.NaH = new ArrayList();
+    this.afdm = new ArrayList();
+    this.afdo = new HashSet();
+    this.NaI = new HashSet();
+    this.JWF = new HashSet();
+    this.JWG = new HashSet();
+    this.JWH = new HashSet();
+    this.JWJ = null;
     AppMethodBeat.o(37872);
+  }
+  
+  private static boolean H(List<String> paramList1, List<String> paramList2)
+  {
+    AppMethodBeat.i(253062);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (paramList1 != null) {
+      localArrayList1.addAll(paramList1);
+    }
+    if (paramList2 != null) {
+      localArrayList2.addAll(paramList2);
+    }
+    Collections.sort(localArrayList1);
+    Collections.sort(localArrayList2);
+    if (localArrayList1.equals(localArrayList2))
+    {
+      AppMethodBeat.o(253062);
+      return false;
+    }
+    AppMethodBeat.o(253062);
+    return true;
   }
   
   private void goBack()
   {
-    AppMethodBeat.i(293228);
-    boolean bool1 = iWC();
-    boolean bool2 = hUx();
+    AppMethodBeat.i(253051);
+    boolean bool1 = jyY();
+    boolean bool2 = jyn();
     if ((bool1) || (bool2))
     {
-      com.tencent.mm.ui.base.h.c(this, getString(R.l.eyW), null, getString(R.l.eyY), getString(R.l.eyX), new ModRemarkNameUI.9(this), new ModRemarkNameUI.10(this));
-      AppMethodBeat.o(293228);
+      k.b(this, getString(R.l.gBO), null, getString(R.l.gBQ), getString(R.l.gBP), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(253015);
+          ModRemarkNameUI.d(ModRemarkNameUI.this);
+          AppMethodBeat.o(253015);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(253016);
+          ModRemarkNameUI.this.finish();
+          ModRemarkNameUI.this.hm(2L);
+          AppMethodBeat.o(253016);
+        }
+      });
+      AppMethodBeat.o(253051);
       return;
     }
     finish();
-    Ph(2L);
-    AppMethodBeat.o(293228);
+    hm(2L);
+    AppMethodBeat.o(253051);
   }
   
-  private void gw(List<String> paramList)
+  private void jw(List<String> paramList)
   {
-    AppMethodBeat.i(269668);
+    AppMethodBeat.i(253059);
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.Hcn.setText("");
-      AppMethodBeat.o(269668);
+      this.Naz.setText("");
+      AppMethodBeat.o(253059);
       return;
     }
     String str = "";
@@ -171,132 +219,132 @@ public class ModRemarkNameUI
         break;
       }
     }
-    this.Hcn.setText(str);
-    AppMethodBeat.o(269668);
+    this.Naz.setText(str);
+    AppMethodBeat.o(253059);
   }
   
-  private void hUB()
+  private boolean jyY()
   {
-    AppMethodBeat.i(269667);
-    List localList = null;
-    bh.beI();
-    this.Hvc = com.tencent.mm.model.c.bbM().aPj(this.fPV);
-    if (this.Hvc != null)
+    AppMethodBeat.i(253048);
+    String str2 = this.affz.getText().toString().trim();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    if (this.affB == 0)
     {
-      this.GYH = this.Hvc.field_contactLabels;
-      localList = com.tencent.mm.plugin.label.a.a.eLe().aMP(this.GYH);
+      if (this.affD == 1)
+      {
+        if (Util.isNullOrNil(str1))
+        {
+          if (this.JVi)
+          {
+            AppMethodBeat.o(253048);
+            return true;
+          }
+          AppMethodBeat.o(253048);
+          return false;
+        }
+        AppMethodBeat.o(253048);
+        return true;
+      }
+      if (this.affD == 2)
+      {
+        if ((Util.isNullOrNil(str1)) && (Util.isNullOrNil(this.NaB)))
+        {
+          AppMethodBeat.o(253048);
+          return false;
+        }
+        if (!str1.equals(this.NaB))
+        {
+          AppMethodBeat.o(253048);
+          return true;
+        }
+        AppMethodBeat.o(253048);
+        return false;
+      }
     }
-    if (this.Hci == null) {
-      this.Hci = new ArrayList();
+    if ((this.affB == 3) && (!Util.isNullOrNil(this.NaB)))
+    {
+      if (!this.NaB.equals(str1))
+      {
+        AppMethodBeat.o(253048);
+        return true;
+      }
+      AppMethodBeat.o(253048);
+      return false;
     }
-    this.Hcw.clear();
-    this.Hci.clear();
-    this.XrL.clear();
+    if (((this.remark == null) || (!this.remark.equals(str1))) && ((!Util.isNullOrNil(this.remark)) || (!Util.isNullOrNil(str1))))
+    {
+      AppMethodBeat.o(253048);
+      return true;
+    }
+    AppMethodBeat.o(253048);
+    return false;
+  }
+  
+  private boolean jyn()
+  {
+    AppMethodBeat.i(253044);
+    String str = this.affF.getText().toString().trim();
+    if (((this.affH == null) || (!this.affH.equals(str))) && ((!Util.isNullOrNil(this.affH)) || (!Util.isNullOrNil(str))))
+    {
+      AppMethodBeat.o(253044);
+      return true;
+    }
+    AppMethodBeat.o(253044);
+    return false;
+  }
+  
+  private void jyq()
+  {
+    AppMethodBeat.i(253057);
+    List localList = null;
+    bh.bCz();
+    this.NsP = com.tencent.mm.model.c.bzB().aMi(this.hVQ);
+    if (this.NsP != null)
+    {
+      this.MWK = this.NsP.field_contactLabels;
+      localList = com.tencent.mm.plugin.label.a.a.fTb().aJI(this.MWK);
+    }
+    if (this.Nau == null) {
+      this.Nau = new ArrayList();
+    }
+    this.NaH.clear();
+    this.Nau.clear();
+    this.afdm.clear();
     if (localList != null)
     {
-      this.Hci.addAll(localList);
-      this.Hcw.addAll(localList);
-      this.XrL.addAll(localList);
+      this.Nau.addAll(localList);
+      this.NaH.addAll(localList);
+      this.afdm.addAll(localList);
     }
     for (;;)
     {
-      localList = com.tencent.mm.plugin.label.a.a.eLe().eLb();
+      localList = com.tencent.mm.plugin.label.a.a.fTb().fSY();
       if (localList == null) {
         break;
       }
       int i = 0;
       while (i < localList.size())
       {
-        if (!this.Hci.contains(localList.get(i))) {
-          this.Hci.add(localList.get(i));
+        if (!this.Nau.contains(localList.get(i))) {
+          this.Nau.add((String)localList.get(i));
         }
         i += 1;
       }
       new ArrayList();
     }
-    gw(this.Hcw);
-    this.Hcu = localList.size();
-    this.Hcv = this.Hcw.size();
-    this.XrM.addAll(this.Hcw);
-    AppMethodBeat.o(269667);
+    jw(this.NaH);
+    this.NaF = localList.size();
+    this.NaG = this.NaH.size();
+    this.afdo.addAll(this.NaH);
+    AppMethodBeat.o(253057);
   }
   
-  private boolean hUx()
+  private List<EditText> lU(View paramView)
   {
-    AppMethodBeat.i(293226);
-    String str = this.XtZ.getText().toString().trim();
-    if (((this.Xub == null) || (!this.Xub.equals(str))) && ((!Util.isNullOrNil(this.Xub)) || (!Util.isNullOrNil(str))))
-    {
-      AppMethodBeat.o(293226);
-      return true;
-    }
-    AppMethodBeat.o(293226);
-    return false;
-  }
-  
-  private boolean iWC()
-  {
-    AppMethodBeat.i(293227);
-    String str2 = this.aadg.getText().toString().trim();
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    if (this.XtW == 0)
-    {
-      if (this.aadh == 1)
-      {
-        if (Util.isNullOrNil(str1))
-        {
-          if (this.Hcp)
-          {
-            AppMethodBeat.o(293227);
-            return true;
-          }
-          AppMethodBeat.o(293227);
-          return false;
-        }
-        AppMethodBeat.o(293227);
-        return true;
-      }
-      if (this.aadh == 2)
-      {
-        if ((Util.isNullOrNil(str1)) && (Util.isNullOrNil(this.Hcq)))
-        {
-          AppMethodBeat.o(293227);
-          return false;
-        }
-        if (!str1.equals(this.Hcq))
-        {
-          AppMethodBeat.o(293227);
-          return true;
-        }
-        AppMethodBeat.o(293227);
-        return false;
-      }
-    }
-    if ((this.XtW == 3) && (!Util.isNullOrNil(this.Hcq)))
-    {
-      if (!this.Hcq.equals(str1))
-      {
-        AppMethodBeat.o(293227);
-        return true;
-      }
-      AppMethodBeat.o(293227);
-      return false;
-    }
-    if (((this.remark == null) || (!this.remark.equals(str1))) && ((!Util.isNullOrNil(this.remark)) || (!Util.isNullOrNil(str1))))
-    {
-      AppMethodBeat.o(293227);
-      return true;
-    }
-    AppMethodBeat.o(293227);
-    return false;
-  }
-  
-  private List<EditText> iy(View paramView)
-  {
-    AppMethodBeat.i(269665);
+    AppMethodBeat.i(253054);
     ArrayList localArrayList = new ArrayList();
     if ((paramView instanceof ViewGroup))
     {
@@ -308,69 +356,645 @@ public class ModRemarkNameUI
         if (((localView instanceof EditText)) && (((EditText)localView).isFocused())) {
           localArrayList.add((EditText)localView);
         }
-        localArrayList.addAll(iy(localView));
+        localArrayList.addAll(lU(localView));
         i += 1;
       }
     }
-    AppMethodBeat.o(269665);
+    AppMethodBeat.o(253054);
     return localArrayList;
   }
   
-  private static boolean t(List<String> paramList1, List<String> paramList2)
+  public int getLayoutId()
   {
-    AppMethodBeat.i(269671);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (paramList1 != null) {
-      localArrayList1.addAll(paramList1);
-    }
-    if (paramList2 != null) {
-      localArrayList2.addAll(paramList2);
-    }
-    Collections.sort(localArrayList1);
-    Collections.sort(localArrayList2);
-    if (localArrayList1.equals(localArrayList2))
-    {
-      AppMethodBeat.o(269671);
-      return false;
-    }
-    AppMethodBeat.o(269671);
-    return true;
+    return R.i.gmj;
   }
   
-  public final void A(int paramInt, boolean paramBoolean)
+  public final void hm(final long paramLong)
   {
-    AppMethodBeat.i(269666);
-    Log.i("MiroMsg.ModRemarkName", "height:%s", new Object[] { Integer.valueOf(paramInt) });
-    if ((this.EeU != null) && (this.EeU.isRunning())) {
-      this.EeU.cancel();
-    }
-    Object localObject1 = this.Xru;
-    if ((this.Eeu != null) && (this.Eeu.isShowing()))
+    AppMethodBeat.i(253231);
+    com.tencent.threadpool.h.ahAA.bm(new Runnable()
     {
-      if ((this.Eeu.oFW == null) || (!(this.Eeu.oFW.getParent() instanceof View))) {
+      public final void run()
+      {
+        AppMethodBeat.i(253010);
+        ma localma = new ma();
+        Object localObject1 = ModRemarkNameUI.l(ModRemarkNameUI.this);
+        localma.uI(ModRemarkNameUI.m(ModRemarkNameUI.this));
+        long l;
+        Object localObject2;
+        int i;
+        label67:
+        String str;
+        if (ModRemarkNameUI.n(ModRemarkNameUI.this))
+        {
+          l = 1L;
+          localma.jaJ = l;
+          localObject2 = ((List)localObject1).iterator();
+          i = 0;
+          if (!((Iterator)localObject2).hasNext()) {
+            break label117;
+          }
+          str = (String)((Iterator)localObject2).next();
+          if (!ModRemarkNameUI.o(ModRemarkNameUI.this).contains(str)) {
+            break label916;
+          }
+          i += 1;
+        }
+        label904:
+        label907:
+        label910:
+        label913:
+        label916:
+        for (;;)
+        {
+          break label67;
+          l = 0L;
+          break;
+          label117:
+          localma.jaL = i;
+          l = 0L;
+          localObject2 = ((List)localObject1).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            str = (String)((Iterator)localObject2).next();
+            if (ModRemarkNameUI.p(ModRemarkNameUI.this).contains(str)) {
+              l += 1L;
+            }
+          }
+          localma.jaN = l;
+          localObject2 = ((List)localObject1).iterator();
+          int j = 0;
+          if (((Iterator)localObject2).hasNext())
+          {
+            str = (String)((Iterator)localObject2).next();
+            if (!ModRemarkNameUI.q(ModRemarkNameUI.this).contains(str)) {
+              break label913;
+            }
+            j += 1;
+          }
+          for (;;)
+          {
+            break;
+            localma.jaM = j;
+            localObject2 = ((List)localObject1).iterator();
+            int k = 0;
+            if (((Iterator)localObject2).hasNext())
+            {
+              str = (String)((Iterator)localObject2).next();
+              if (!ModRemarkNameUI.r(ModRemarkNameUI.this).contains(str)) {
+                break label910;
+              }
+              k += 1;
+            }
+            for (;;)
+            {
+              break;
+              localma.jaK = k;
+              localma.iGM = (System.currentTimeMillis() - ModRemarkNameUI.s(ModRemarkNameUI.this));
+              localma.jaR = ModRemarkNameUI.t(ModRemarkNameUI.this);
+              localma.jaS = paramLong;
+              localma.jaO = ModRemarkNameUI.u(ModRemarkNameUI.this);
+              int i1 = ModRemarkNameUI.this.getIntent().getIntExtra("key_label_click_source", 0);
+              if (i1 != 0) {
+                localma.aIQ();
+              }
+              int n = 0;
+              localObject2 = ((List)localObject1).iterator();
+              int m = 0;
+              if (((Iterator)localObject2).hasNext())
+              {
+                str = (String)((Iterator)localObject2).next();
+                if (ModRemarkNameUI.v(ModRemarkNameUI.this).contains(str)) {
+                  break label907;
+                }
+                m += 1;
+              }
+              for (;;)
+              {
+                break;
+                localObject2 = ModRemarkNameUI.v(ModRemarkNameUI.this).iterator();
+                if (((Iterator)localObject2).hasNext())
+                {
+                  if (((List)localObject1).contains((String)((Iterator)localObject2).next())) {
+                    break label904;
+                  }
+                  n += 1;
+                }
+                for (;;)
+                {
+                  break;
+                  localma.iuA = 3L;
+                  localObject2 = ModRemarkNameUI.a(ModRemarkNameUI.this).getText().toString().trim();
+                  localObject1 = localObject2;
+                  if (localObject2 == null) {
+                    localObject1 = "";
+                  }
+                  if (!ab.isNullOrNil(ModRemarkNameUI.w(ModRemarkNameUI.this))) {
+                    if (ModRemarkNameUI.w(ModRemarkNameUI.this).equals(localObject1)) {
+                      ModRemarkNameUI.a(ModRemarkNameUI.this, 3);
+                    }
+                  }
+                  for (;;)
+                  {
+                    localma.jaT = ModRemarkNameUI.z(ModRemarkNameUI.this);
+                    localma.jaQ = m;
+                    localma.jaP = n;
+                    localma.bMH();
+                    Log.i("MiroMsg.ModRemarkName", "22865 setAddedLabelCnt = " + m + ",setRemovedLabelCnt = " + n + ",source = " + i1 + ",oriLabelCnt = " + ModRemarkNameUI.u(ModRemarkNameUI.this) + ",opResult = " + paramLong + ",totalLabelCnt = " + ModRemarkNameUI.t(ModRemarkNameUI.this) + ",selectNewLabelCnt = " + k + ",addRemarkType = " + ModRemarkNameUI.z(ModRemarkNameUI.this) + ",scene= 3,selectAddLabelCnt = " + j + ",newLebalCountBySearch = " + i + ",searchAddLabelCnt = " + l);
+                    AppMethodBeat.o(253010);
+                    return;
+                    ModRemarkNameUI.a(ModRemarkNameUI.this, 2);
+                    continue;
+                    if (!ModRemarkNameUI.x(ModRemarkNameUI.this)) {
+                      ModRemarkNameUI.a(ModRemarkNameUI.this, 3);
+                    } else if (!ab.isNullOrNil(ModRemarkNameUI.y(ModRemarkNameUI.this)))
+                    {
+                      if (ModRemarkNameUI.y(ModRemarkNameUI.this).equals(localObject1)) {
+                        ModRemarkNameUI.a(ModRemarkNameUI.this, 1);
+                      } else if (Util.isNullOrNil((String)localObject1)) {
+                        ModRemarkNameUI.a(ModRemarkNameUI.this, 3);
+                      } else {
+                        ModRemarkNameUI.a(ModRemarkNameUI.this, 2);
+                      }
+                    }
+                    else if (((String)localObject1).equals(ModRemarkNameUI.y(ModRemarkNameUI.this))) {
+                      ModRemarkNameUI.a(ModRemarkNameUI.this, 3);
+                    } else {
+                      ModRemarkNameUI.a(ModRemarkNameUI.this, 2);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(253231);
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(37874);
+    this.hVQ = getIntent().getStringExtra("Contact_User");
+    if ((this.hVQ != null) && (this.hVQ.length() > 0))
+    {
+      bh.bCz();
+      this.contact = com.tencent.mm.model.c.bzA().JE(this.hVQ);
+      bh.bCz();
+      this.NsP = com.tencent.mm.model.c.bzB().aMi(this.hVQ);
+      if ((this.contact == null) || (Util.isNullOrNil(this.contact.field_username)))
+      {
+        this.contact = new au(this.hVQ);
+        this.contact.setNickname(Util.nullAsNil(this.affC));
+        this.contact.AW(Util.nullAsNil(this.remark));
+      }
+    }
+    this.afcV = ((ScrollView)findViewById(R.h.scrollview));
+    this.affA = ((TextView)findViewById(R.h.title_area_container));
+    this.affz = ((MMClearEditText)findViewById(R.h.fCx));
+    Object localObject1 = new MMEditText.b()
+    {
+      public final void bXT()
+      {
+        AppMethodBeat.i(37864);
+        if (ModRemarkNameUI.a(ModRemarkNameUI.this).getText().toString().trim().length() > 0) {
+          ModRemarkNameUI.this.enableOptionMenu(true);
+        }
+        AppMethodBeat.o(37864);
+      }
+    };
+    this.affz.setClearBtnListener(new MMClearEditText.b()
+    {
+      public final void jmh()
+      {
+        AppMethodBeat.i(253006);
+        ModRemarkNameUI.b(ModRemarkNameUI.this);
+        AppMethodBeat.o(253006);
+      }
+    });
+    Object localObject2 = new k.a();
+    ((k.a)localObject2).Ytq = ((MMEditText.b)localObject1);
+    this.affz.addTextChangedListener((TextWatcher)localObject2);
+    this.affz.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    {
+      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(253007);
+        if (paramAnonymousBoolean)
+        {
+          if ((!Util.isNullOrNil(ModRemarkNameUI.a(ModRemarkNameUI.this).getHint())) && (Util.isNullOrNil(ModRemarkNameUI.a(ModRemarkNameUI.this).getText())))
+          {
+            ModRemarkNameUI.a(ModRemarkNameUI.this).setText(ModRemarkNameUI.a(ModRemarkNameUI.this).getHint());
+            ModRemarkNameUI.a(ModRemarkNameUI.this).setHint(null);
+          }
+          ModRemarkNameUI.c(ModRemarkNameUI.this);
+          ModRemarkNameUI.a(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.a(ModRemarkNameUI.this).getText().length());
+          ModRemarkNameUI.a(ModRemarkNameUI.this, 1);
+        }
+        AppMethodBeat.o(253007);
+      }
+    });
+    com.tencent.mm.ui.tools.b.c.i(this.affz).aEg(32).a(null);
+    int i;
+    if ((this.contact != null) && (this.affB != 3)) {
+      if (this.affB == 4)
+      {
+        this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.affC), this.affz.getTextSize()));
+        i = 0;
+        this.affz.setSelection(this.affz.getText().length());
+      }
+    }
+    for (;;)
+    {
+      if ((this.affB == 0) && (!au.aAy(this.hVQ)))
+      {
+        this.affA.setText(R.l.gBA);
+        localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(this.contact.field_username);
+        if ((localObject1 == null) || (Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI())) || (((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI().equals(this.affz.getText())))
+        {
+          label399:
+          if ((!Util.isNullOrNil(this.IMS)) && ((this.afdc == null) || (Util.isNullOrNil(this.afdc.getText()))) && ((this.affz.getText() == null) || (!this.IMS.equals(this.affz.getText().toString())))) {
+            break label1459;
+          }
+          label459:
+          setMMTitle("");
+          if ((this.affz.getHint() != null) && (!Util.isNullOrNil(this.affz.getHint().toString())))
+          {
+            this.NaB = this.affz.getHint().toString();
+            this.affD = 1;
+          }
+          if ((this.affz.getText() != null) && (!Util.isNullOrNil(this.affz.getText().toString())))
+          {
+            this.NaB = this.affz.getText().toString();
+            this.affD = 2;
+          }
+          addTextOptionMenu(0, getString(R.l.app_save), new MenuItem.OnMenuItemClickListener()
+          {
+            public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+            {
+              AppMethodBeat.i(253009);
+              ModRemarkNameUI.d(ModRemarkNameUI.this);
+              AppMethodBeat.o(253009);
+              return true;
+            }
+          }, null, y.b.adEJ);
+          setActionbarColor(getContext().getResources().getColor(R.e.white_color));
+          hideActionbarLine();
+          this.mController.setStatusBarColor(getResources().getColor(a.c.white_color));
+          if ((this.affz == null) || (this.affz.getText().toString().trim().length() <= 0) || (i != 0)) {
+            break label1804;
+          }
+          enableOptionMenu(true);
+        }
+      }
+      for (;;)
+      {
+        setBackBtn(new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(253011);
+            ModRemarkNameUI.e(ModRemarkNameUI.this);
+            AppMethodBeat.o(253011);
+            return true;
+          }
+        });
+        this.affE = ((TextView)findViewById(R.h.fCD));
+        this.affF = ((EditText)findViewById(R.h.fCw));
+        this.affG = ((TextView)findViewById(R.h.wordcount));
+        this.CzL = findViewById(R.h.fCv);
+        com.tencent.mm.ui.tools.b.c.i(this.affF).aEg(400).a(null);
+        this.affG.setText(g.ej(400, this.affF.getEditableText().toString()));
+        this.affF.append(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.affH), this.affF.getTextSize()));
+        this.affE.append(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.affH), this.affE.getTextSize()));
+        if (this.NsP != null)
+        {
+          this.affH = Util.nullAsNil(this.NsP.field_conDescription);
+          this.affF.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.NsP.field_conDescription), this.affF.getTextSize()));
+          this.affE.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.NsP.field_conDescription), this.affF.getTextSize()));
+        }
+        this.affF.addTextChangedListener(new b((byte)0));
+        this.affE.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(253014);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.cH(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/ModRemarkNameUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+            ModRemarkNameUI.f(ModRemarkNameUI.this).setVisibility(0);
+            ModRemarkNameUI.g(ModRemarkNameUI.this).setVisibility(8);
+            ModRemarkNameUI.h(ModRemarkNameUI.this).requestFocus();
+            ModRemarkNameUI.h(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.h(ModRemarkNameUI.this).getText().length());
+            ModRemarkNameUI.this.showVKB();
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/ModRemarkNameUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(253014);
+          }
+        });
+        AppMethodBeat.o(37874);
+        return;
+        if (!Util.isNullOrNil(this.contact.field_conRemark))
+        {
+          if ((this.affB == 0) && (!Util.isNullOrNil(this.remark))) {
+            this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, this.remark, this.affz.getTextSize()));
+          }
+          for (;;)
+          {
+            if (!this.contact.field_conRemark.equals(this.remark)) {
+              break label1324;
+            }
+            i = 1;
+            break;
+            this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.contact.field_conRemark), this.affz.getTextSize()));
+          }
+        }
+        if (!Util.isNullOrNil(this.remark))
+        {
+          this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.remark), this.affz.getTextSize()));
+          if (!this.contact.field_conRemark.equals(this.remark)) {
+            break label1324;
+          }
+          i = 1;
+          break;
+        }
+        if (!Util.isNullOrNil(this.contact.field_nickname))
+        {
+          if ((this.affB == 0) && (!Util.isNullOrNil(this.affC)) && (!d.rs(this.contact.field_type)))
+          {
+            this.affz.setHint(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.affC), this.affz.getTextSize()));
+            i = 0;
+            break;
+          }
+          this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.contact.field_nickname), this.affz.getTextSize()));
+          i = 0;
+          break;
+        }
+        if (!Util.isNullOrNil(this.affC))
+        {
+          this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.affC), this.affz.getTextSize()));
+          i = 0;
+          break;
+        }
+        localObject1 = this.contact.field_nickname;
+        if ((Util.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
+        for (i = 0;; i = 1)
+        {
+          if (i == 0) {
+            break label1315;
+          }
+          this.affz.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(this.contact.aSV()), this.affz.getTextSize()));
+          i = 0;
+          break;
+        }
+        label1315:
+        this.affz.setText("");
+        label1324:
+        i = 0;
+        break;
+        this.afdc = ((TextView)findViewById(R.h.fOt));
+        this.afdd = findViewById(R.h.fOp);
+        this.afdd.setVisibility(0);
+        this.afdc.setText(Util.nullAsNil(getString(R.l.gCd, new Object[] { ((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI() })));
+        localObject2 = new q(getString(R.l.write_contact_remark));
+        ((q)localObject2).setSpan(new c(((com.tencent.mm.plugin.account.friend.model.a)localObject1).bWI()), 0, ((q)localObject2).length(), 17);
+        this.afdc.append(" ");
+        this.afdc.append((CharSequence)localObject2);
+        this.afdc.setMovementMethod(LinkMovementMethod.getInstance());
+        break label399;
+        label1459:
+        this.afdc = ((TextView)findViewById(R.h.fOt));
+        this.afdd = findViewById(R.h.fOp);
+        this.afdd.setVisibility(0);
+        this.afdc.setText(com.tencent.mm.pluginsdk.ui.span.p.b(this, Util.nullAsNil(getString(R.l.gCc, new Object[] { this.IMS })), this.afdc.getTextSize()));
+        localObject1 = new q(getString(R.l.write_contact_remark));
+        ((q)localObject1).setSpan(new c(this.IMS), 0, ((q)localObject1).length(), 17);
+        this.afdc.append(" ");
+        this.afdc.append((CharSequence)localObject1);
+        this.afdc.setMovementMethod(LinkMovementMethod.getInstance());
+        break label459;
+        if (this.affB == 3)
+        {
+          this.affA.setText(R.l.tag_rename);
+          this.affz.setHint("");
+          if (!Util.isNullOrNil(this.affC)) {
+            this.affz.setText(this.affC);
+          }
+          localObject1 = (TextView)findViewById(R.h.fCy);
+          ((TextView)localObject1).setText(R.l.set_tag_name);
+          ((TextView)localObject1).setVisibility(0);
+          findViewById(R.h.fOq).setVisibility(8);
+          localObject1 = findViewById(R.h.fOn);
+          if (localObject1 != null) {
+            ((View)localObject1).setVisibility(8);
+          }
+          i = 1;
+          break label459;
+        }
+        if (this.affB == 4)
+        {
+          this.affA.setText(R.l.gTR);
+          this.affz.setHint("");
+          localObject1 = (TextView)findViewById(R.h.fCy);
+          ((TextView)localObject1).setText(R.l.gTX);
+          ((TextView)localObject1).setVisibility(0);
+          break label459;
+        }
+        if (au.aAy(this.hVQ))
+        {
+          this.affA.setText(R.l.tag_rename);
+          if (findViewById(R.h.label_layout) != null) {
+            findViewById(R.h.label_layout).setVisibility(8);
+          }
+        }
+        break label459;
+        label1804:
+        enableOptionMenu(false);
+      }
+      i = 0;
+    }
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(253228);
+    Log.i("MiroMsg.ModRemarkName", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (paramIntent == null)
+    {
+      Log.e("MiroMsg.ModRemarkName", "data shouldnot be null");
+      AppMethodBeat.o(253228);
+      return;
+    }
+    switch (paramInt1)
+    {
+    default: 
+      AppMethodBeat.o(253228);
+      return;
+    }
+    ArrayList localArrayList = paramIntent.getStringArrayListExtra("result_label_id_list");
+    List localList = com.tencent.mm.plugin.label.a.a.fTb().fSY();
+    Log.i("MiroMsg.ModRemarkName", "onAcvityResult，labelLists: %s, allLabelListsNow: %s.", new Object[] { localArrayList, localList });
+    if ((!H(localArrayList, this.afdm)) && (!H(localList, this.Nau)))
+    {
+      Log.i("MiroMsg.ModRemarkName", "onAcvityResult checkLebalChanges.");
+      AppMethodBeat.o(253228);
+      return;
+    }
+    localArrayList = paramIntent.getStringArrayListExtra("contact_search_label_new_list");
+    if (localArrayList != null) {
+      this.NaI.addAll(localArrayList);
+    }
+    localArrayList = paramIntent.getStringArrayListExtra("contact_search_label_add_list");
+    if (localArrayList != null) {
+      this.JWF.addAll(localArrayList);
+    }
+    localArrayList = paramIntent.getStringArrayListExtra("contact_select_label_add_list");
+    if (localArrayList != null) {
+      this.JWH.addAll(localArrayList);
+    }
+    paramIntent = paramIntent.getStringArrayListExtra("contact_select_label_new_list");
+    if (paramIntent != null) {
+      this.JWG.addAll(paramIntent);
+    }
+    if (this.Nau == null) {
+      this.Nau = new ArrayList();
+    }
+    jyq();
+    AppMethodBeat.o(253228);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    int j = 0;
+    AppMethodBeat.i(37873);
+    super.onCreate(paramBundle);
+    this.hTS = System.currentTimeMillis();
+    this.pUt = getIntent().getIntExtra("Contact_Scene", 9);
+    this.IMS = getIntent().getStringExtra("Contact_RoomNickname");
+    this.affB = getIntent().getIntExtra("Contact_mode_name_type", 0);
+    this.affC = Util.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
+    this.remark = Util.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
+    this.NaC = this.remark;
+    this.affI = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
+    initView();
+    if (au.bwO(this.hVQ))
+    {
+      Log.i("MiroMsg.ModRemarkName", "initLabelPanelAll, isOpenIM, userName: %s.", new Object[] { this.hVQ });
+      paramBundle = findViewById(R.h.fCu);
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
+      }
+      paramBundle = findViewById(R.h.fCt);
+      if (paramBundle != null) {
+        paramBundle.setVisibility(8);
+      }
+      if ((this.contact == null) || (!au.bwO(this.contact.field_username))) {
+        break label458;
+      }
+    }
+    label458:
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) || (this.affz == null)) {
+        break label463;
+      }
+      paramBundle = (ViewGroup)this.affz.getParent();
+      int k = paramBundle.getChildCount();
+      i = j;
+      while (i < k)
+      {
+        View localView = paramBundle.getChildAt(i);
+        j = localView.getId();
+        if ((j != R.h.fCy) && (j != R.h.fCx)) {
+          localView.setVisibility(8);
+        }
+        i += 1;
+      }
+      this.affL = ((TextView)findViewById(R.h.fCu));
+      this.affK = findViewById(R.h.fCt);
+      this.Nay = ((LinearLayout)findViewById(R.h.fCt));
+      this.Naz = ((TextView)findViewById(R.h.fCs));
+      this.Nax = ((ImageView)findViewById(R.h.fso));
+      if (this.Nax != null) {
+        this.Nax.setImageDrawable(bb.m(this, R.k.icons_outlined_arrow, com.tencent.mm.cd.a.w(getContext(), R.e.BW_70)));
+      }
+      this.Nay.setOnClickListener(this.affJ);
+      if (this.affB != 0)
+      {
+        this.affK.setVisibility(8);
+        this.affL.setVisibility(8);
+      }
+      for (;;)
+      {
+        jyq();
+        break;
+        this.affK.setVisibility(0);
+        this.affL.setVisibility(0);
+        this.Naz.setVisibility(0);
+      }
+    }
+    label463:
+    this.lKz = new com.tencent.mm.ui.tools.i(this);
+    this.lKz.afIL = this;
+    AppMethodBeat.o(37873);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(37876);
+    if (this.lKz != null) {
+      this.lKz.close();
+    }
+    super.onDestroy();
+    AppMethodBeat.o(37876);
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(253190);
+    if (paramKeyEvent.getKeyCode() == 4)
+    {
+      goBack();
+      AppMethodBeat.o(253190);
+      return true;
+    }
+    AppMethodBeat.o(253190);
+    return false;
+  }
+  
+  public void onKeyboardHeightChanged(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(253222);
+    Log.i("MiroMsg.ModRemarkName", "height:%s", new Object[] { Integer.valueOf(paramInt) });
+    if ((this.JWJ != null) && (this.JWJ.isRunning())) {
+      this.JWJ.cancel();
+    }
+    Object localObject1 = this.afcV;
+    if ((this.JWf != null) && (this.JWf.isShowing()))
+    {
+      if ((this.JWf.rootView == null) || (!(this.JWf.rootView.getParent() instanceof View))) {
         break label353;
       }
-      localObject1 = (View)this.Eeu.oFW.getParent();
+      localObject1 = (View)this.JWf.rootView.getParent();
     }
     label353:
     for (;;)
     {
       if (localObject1 == null)
       {
-        AppMethodBeat.o(269666);
+        AppMethodBeat.o(253222);
         return;
-        localObject1 = this.Xru;
+        localObject1 = this.afcV;
       }
       else
       {
         int i = paramInt;
-        if (localObject1 == this.Xru)
+        if (localObject1 == this.afcV)
         {
-          Object localObject2 = iy(this.Xru);
+          Object localObject2 = lU(this.afcV);
           if (((List)localObject2).isEmpty())
           {
-            AppMethodBeat.o(269666);
+            AppMethodBeat.o(253222);
             return;
           }
           localObject2 = (EditText)((List)localObject2).get(((List)localObject2).size() - 1);
@@ -384,441 +1008,59 @@ public class ModRemarkNameUI
             ((View)localObject1).setTranslationY(0.0F);
           }
         }
-        for (this.EeU = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { 0.0F, -i });; this.EeU = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { ((View)localObject1).getTranslationY(), 0.0F }))
+        for (this.JWJ = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { 0.0F, -i });; this.JWJ = ObjectAnimator.ofFloat(localObject1, "translationY", new float[] { ((View)localObject1).getTranslationY(), 0.0F }))
         {
-          this.EeU.setDuration(200L);
-          this.EeU.setInterpolator(new androidx.f.a.a.b());
-          this.EeU.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+          this.JWJ.setDuration(200L);
+          this.JWJ.setInterpolator(new androidx.g.a.a.b());
+          this.JWJ.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
           {
             public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
             {
-              AppMethodBeat.i(293369);
+              AppMethodBeat.i(253598);
               Log.i("MiroMsg.ModRemarkName", "onAnimationUpdate %s", new Object[] { Float.valueOf(((Float)paramAnonymousValueAnimator.getAnimatedValue("translationY")).floatValue()) });
-              AppMethodBeat.o(293369);
+              AppMethodBeat.o(253598);
             }
           });
-          this.EeU.start();
-          AppMethodBeat.o(269666);
+          this.JWJ.start();
+          AppMethodBeat.o(253222);
           return;
         }
       }
     }
   }
   
-  public final void Ph(long paramLong)
-  {
-    AppMethodBeat.i(269672);
-    com.tencent.e.h.ZvG.be(new ModRemarkNameUI.8(this, paramLong));
-    AppMethodBeat.o(269672);
-  }
-  
-  public int getLayoutId()
-  {
-    return R.i.eji;
-  }
-  
-  public void initView()
-  {
-    AppMethodBeat.i(37874);
-    this.fPV = getIntent().getStringExtra("Contact_User");
-    if ((this.fPV != null) && (this.fPV.length() > 0))
-    {
-      bh.beI();
-      this.contact = com.tencent.mm.model.c.bbL().RG(this.fPV);
-      bh.beI();
-      this.Hvc = com.tencent.mm.model.c.bbM().aPj(this.fPV);
-      if ((this.contact == null) || (Util.isNullOrNil(this.contact.field_username)))
-      {
-        this.contact = new as(this.fPV);
-        this.contact.setNickname(Util.nullAsNil(this.XtX));
-        this.contact.Ir(Util.nullAsNil(this.remark));
-      }
-    }
-    this.Xru = ((ScrollView)findViewById(R.h.scrollview));
-    this.XtV = ((TextView)findViewById(R.h.title_area_container));
-    this.aadg = ((MMClearEditText)findViewById(R.h.dBj));
-    Object localObject1 = new ModRemarkNameUI.1(this);
-    this.aadg.setClearBtnListener(new ModRemarkNameUI.2(this));
-    Object localObject2 = new m.a();
-    ((m.a)localObject2).Rxe = ((MMEditText.b)localObject1);
-    this.aadg.addTextChangedListener((TextWatcher)localObject2);
-    this.aadg.setOnFocusChangeListener(new View.OnFocusChangeListener()
-    {
-      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(293224);
-        if (paramAnonymousBoolean)
-        {
-          if ((!Util.isNullOrNil(ModRemarkNameUI.a(ModRemarkNameUI.this).getHint())) && (Util.isNullOrNil(ModRemarkNameUI.a(ModRemarkNameUI.this).getText())))
-          {
-            ModRemarkNameUI.a(ModRemarkNameUI.this).setText(ModRemarkNameUI.a(ModRemarkNameUI.this).getHint());
-            ModRemarkNameUI.a(ModRemarkNameUI.this).setHint(null);
-          }
-          ModRemarkNameUI.f(ModRemarkNameUI.this);
-          ModRemarkNameUI.a(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.a(ModRemarkNameUI.this).getText().length());
-          ModRemarkNameUI.a(ModRemarkNameUI.this, 1);
-        }
-        AppMethodBeat.o(293224);
-      }
-    });
-    com.tencent.mm.ui.tools.b.c.i(this.aadg).axx(32).a(null);
-    int i;
-    if ((this.contact != null) && (this.XtW != 3)) {
-      if (this.XtW == 4)
-      {
-        this.aadg.setText(l.b(this, Util.nullAsNil(this.XtX), this.aadg.getTextSize()));
-        i = 0;
-        this.aadg.setSelection(this.aadg.getText().length());
-      }
-    }
-    for (;;)
-    {
-      if ((this.XtW == 0) && (!as.aEF(this.fPV)))
-      {
-        this.XtV.setText(R.l.eyI);
-        localObject1 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(this.contact.field_username);
-        if ((localObject1 == null) || (Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT())) || (((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT().equals(this.aadg.getText())))
-        {
-          label399:
-          setMMTitle("");
-          if ((this.aadg.getHint() != null) && (!Util.isNullOrNil(this.aadg.getHint().toString())))
-          {
-            this.Hcq = this.aadg.getHint().toString();
-            this.aadh = 1;
-          }
-          if ((this.aadg.getText() != null) && (!Util.isNullOrNil(this.aadg.getText().toString())))
-          {
-            this.Hcq = this.aadg.getText().toString();
-            this.aadh = 2;
-          }
-          addTextOptionMenu(0, getString(R.l.app_save), new MenuItem.OnMenuItemClickListener()
-          {
-            public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-            {
-              AppMethodBeat.i(284104);
-              ModRemarkNameUI.d(ModRemarkNameUI.this);
-              AppMethodBeat.o(284104);
-              return true;
-            }
-          }, null, w.b.Wao);
-          setActionbarColor(getContext().getResources().getColor(R.e.white));
-          hideActionbarLine();
-          this.mController.setStatusBarColor(getResources().getColor(a.c.white));
-          if ((this.aadg == null) || (this.aadg.getText().toString().trim().length() <= 0) || (i != 0)) {
-            break label1603;
-          }
-          enableOptionMenu(true);
-        }
-      }
-      for (;;)
-      {
-        setBackBtn(new ModRemarkNameUI.5(this));
-        this.XtY = ((TextView)findViewById(R.h.dBp));
-        this.XtZ = ((EditText)findViewById(R.h.dBi));
-        this.Xua = ((TextView)findViewById(R.h.wordcount));
-        this.ybl = findViewById(R.h.dBh);
-        com.tencent.mm.ui.tools.b.c.i(this.XtZ).axx(800).a(null);
-        this.Xua.setText(g.dq(800, this.XtZ.getEditableText().toString()));
-        this.XtZ.append(l.b(this, Util.nullAsNil(this.Xub), this.XtZ.getTextSize()));
-        this.XtY.append(l.b(this, Util.nullAsNil(this.Xub), this.XtY.getTextSize()));
-        if (this.Hvc != null)
-        {
-          this.Xub = Util.nullAsNil(this.Hvc.field_conDescription);
-          this.XtZ.setText(l.b(this, Util.nullAsNil(this.Hvc.field_conDescription), this.XtZ.getTextSize()));
-          this.XtY.setText(l.b(this, Util.nullAsNil(this.Hvc.field_conDescription), this.XtZ.getTextSize()));
-        }
-        this.XtZ.addTextChangedListener(new ModRemarkNameUI.b(this, (byte)0));
-        this.XtY.setOnClickListener(new ModRemarkNameUI.6(this));
-        AppMethodBeat.o(37874);
-        return;
-        if (!Util.isNullOrNil(this.contact.field_conRemark))
-        {
-          if ((this.XtW == 0) && (!Util.isNullOrNil(this.remark))) {
-            this.aadg.setText(l.b(this, this.remark, this.aadg.getTextSize()));
-          }
-          for (;;)
-          {
-            if (!this.contact.field_conRemark.equals(this.remark)) {
-              break label1264;
-            }
-            i = 1;
-            break;
-            this.aadg.setText(l.b(this, Util.nullAsNil(this.contact.field_conRemark), this.aadg.getTextSize()));
-          }
-        }
-        if (!Util.isNullOrNil(this.remark))
-        {
-          this.aadg.setText(l.b(this, Util.nullAsNil(this.remark), this.aadg.getTextSize()));
-          if (!this.contact.field_conRemark.equals(this.remark)) {
-            break label1264;
-          }
-          i = 1;
-          break;
-        }
-        if (!Util.isNullOrNil(this.contact.field_nickname))
-        {
-          if ((this.XtW == 0) && (!Util.isNullOrNil(this.XtX)) && (!d.rk(this.contact.field_type)))
-          {
-            this.aadg.setHint(l.b(this, Util.nullAsNil(this.XtX), this.aadg.getTextSize()));
-            i = 0;
-            break;
-          }
-          this.aadg.setText(l.b(this, Util.nullAsNil(this.contact.field_nickname), this.aadg.getTextSize()));
-          i = 0;
-          break;
-        }
-        if (!Util.isNullOrNil(this.XtX))
-        {
-          this.aadg.setText(l.b(this, Util.nullAsNil(this.XtX), this.aadg.getTextSize()));
-          i = 0;
-          break;
-        }
-        localObject1 = this.contact.field_nickname;
-        if ((Util.isNullOrNil((String)localObject1)) || (((String)localObject1).length() > 50)) {}
-        for (i = 0;; i = 1)
-        {
-          if (i == 0) {
-            break label1255;
-          }
-          this.aadg.setText(l.b(this, Util.nullAsNil(this.contact.ays()), this.aadg.getTextSize()));
-          i = 0;
-          break;
-        }
-        label1255:
-        this.aadg.setText("");
-        label1264:
-        i = 0;
-        break;
-        this.XrB = ((TextView)findViewById(R.h.dMJ));
-        this.XrC = findViewById(R.h.dME);
-        this.XrC.setVisibility(0);
-        this.XrB.setText(Util.nullAsNil(getString(R.l.ezo, new Object[] { ((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT() })));
-        localObject2 = new m(getString(R.l.write_contact_remark));
-        ((m)localObject2).setSpan(new ModRemarkNameUI.c(this, ((com.tencent.mm.plugin.account.friend.a.a)localObject1).bxT()), 0, ((m)localObject2).length(), 17);
-        this.XrB.append(" ");
-        this.XrB.append((CharSequence)localObject2);
-        this.XrB.setMovementMethod(LinkMovementMethod.getInstance());
-        break label399;
-        if (this.XtW == 3)
-        {
-          this.XtV.setText(R.l.tag_rename);
-          this.aadg.setHint("");
-          if (!Util.isNullOrNil(this.XtX)) {
-            this.aadg.setText(this.XtX);
-          }
-          localObject1 = (TextView)findViewById(R.h.dBk);
-          ((TextView)localObject1).setText(R.l.set_tag_name);
-          ((TextView)localObject1).setVisibility(0);
-          findViewById(R.h.dMF).setVisibility(8);
-          localObject1 = findViewById(R.h.nmH);
-          if (localObject1 != null) {
-            ((View)localObject1).setVisibility(8);
-          }
-          i = 1;
-          break label399;
-        }
-        if (this.XtW == 4)
-        {
-          this.XtV.setText(R.l.eRl);
-          this.aadg.setHint("");
-          localObject1 = (TextView)findViewById(R.h.dBk);
-          ((TextView)localObject1).setText(R.l.eRr);
-          ((TextView)localObject1).setVisibility(0);
-          break label399;
-        }
-        if (as.aEF(this.fPV))
-        {
-          this.XtV.setText(R.l.tag_rename);
-          if (findViewById(R.h.label_layout) != null) {
-            findViewById(R.h.label_layout).setVisibility(8);
-          }
-        }
-        break label399;
-        label1603:
-        enableOptionMenu(false);
-      }
-      i = 0;
-    }
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(269670);
-    Log.i("MiroMsg.ModRemarkName", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramIntent == null)
-    {
-      Log.e("MiroMsg.ModRemarkName", "data shouldnot be null");
-      AppMethodBeat.o(269670);
-      return;
-    }
-    switch (paramInt1)
-    {
-    default: 
-      AppMethodBeat.o(269670);
-      return;
-    }
-    ArrayList localArrayList = paramIntent.getStringArrayListExtra("result_label_id_list");
-    List localList = com.tencent.mm.plugin.label.a.a.eLe().eLb();
-    Log.i("MiroMsg.ModRemarkName", "onAcvityResult，labelLists: %s, allLabelListsNow: %s.", new Object[] { localArrayList, localList });
-    if ((!t(localArrayList, this.XrL)) && (!t(localList, this.Hci)))
-    {
-      Log.i("MiroMsg.ModRemarkName", "onAcvityResult checkLebalChanges.");
-      AppMethodBeat.o(269670);
-      return;
-    }
-    localArrayList = paramIntent.getStringArrayListExtra("contact_search_label_new_list");
-    if (localArrayList != null) {
-      this.Hcx.addAll(localArrayList);
-    }
-    localArrayList = paramIntent.getStringArrayListExtra("contact_search_label_add_list");
-    if (localArrayList != null) {
-      this.EeR.addAll(localArrayList);
-    }
-    localArrayList = paramIntent.getStringArrayListExtra("contact_select_label_add_list");
-    if (localArrayList != null) {
-      this.EeT.addAll(localArrayList);
-    }
-    paramIntent = paramIntent.getStringArrayListExtra("contact_select_label_new_list");
-    if (paramIntent != null) {
-      this.EeS.addAll(paramIntent);
-    }
-    if (this.Hci == null) {
-      this.Hci = new ArrayList();
-    }
-    hUB();
-    AppMethodBeat.o(269670);
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    int j = 0;
-    AppMethodBeat.i(37873);
-    super.onCreate(paramBundle);
-    this.fOa = System.currentTimeMillis();
-    this.mXL = getIntent().getIntExtra("Contact_Scene", 9);
-    this.XtW = getIntent().getIntExtra("Contact_mode_name_type", 0);
-    this.XtX = Util.nullAsNil(getIntent().getStringExtra("Contact_Nick"));
-    this.remark = Util.nullAsNil(getIntent().getStringExtra("Contact_RemarkName"));
-    this.Hcr = this.remark;
-    this.Xuc = getIntent().getBooleanExtra("Contact_ModStrangerRemark", true);
-    initView();
-    if (as.bvK(this.fPV))
-    {
-      Log.i("MiroMsg.ModRemarkName", "initLabelPanelAll, isOpenIM, userName: %s.", new Object[] { this.fPV });
-      paramBundle = findViewById(R.h.dBg);
-      if (paramBundle != null) {
-        paramBundle.setVisibility(8);
-      }
-      paramBundle = findViewById(R.h.dBf);
-      if (paramBundle != null) {
-        paramBundle.setVisibility(8);
-      }
-      if ((this.contact == null) || (!as.bvK(this.contact.field_username))) {
-        break label444;
-      }
-    }
-    label444:
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) || (this.aadg == null)) {
-        break label449;
-      }
-      paramBundle = (ViewGroup)this.aadg.getParent();
-      int k = paramBundle.getChildCount();
-      i = j;
-      while (i < k)
-      {
-        View localView = paramBundle.getChildAt(i);
-        j = localView.getId();
-        if ((j != R.h.dBk) && (j != R.h.dBj)) {
-          localView.setVisibility(8);
-        }
-        i += 1;
-      }
-      this.Xuf = ((TextView)findViewById(R.h.dBg));
-      this.Xue = findViewById(R.h.dBf);
-      this.Hcm = ((LinearLayout)findViewById(R.h.dBf));
-      this.Hcn = ((TextView)findViewById(R.h.dBe));
-      this.Hcl = ((ImageView)findViewById(R.h.drW));
-      if (this.Hcl != null) {
-        this.Hcl.setImageDrawable(au.o(this, R.k.icons_outlined_arrow, com.tencent.mm.ci.a.w(getContext(), R.e.BW_70)));
-      }
-      this.Hcm.setOnClickListener(this.Xud);
-      if (this.XtW != 0)
-      {
-        this.Xue.setVisibility(8);
-        this.Xuf.setVisibility(8);
-      }
-      for (;;)
-      {
-        hUB();
-        break;
-        this.Xue.setVisibility(0);
-        this.Xuf.setVisibility(0);
-        this.Hcn.setVisibility(0);
-      }
-    }
-    label449:
-    this.jij = new com.tencent.mm.ui.tools.i(this);
-    this.jij.XSx = this;
-    AppMethodBeat.o(37873);
-  }
-  
-  public void onDestroy()
-  {
-    AppMethodBeat.i(37876);
-    if (this.jij != null) {
-      this.jij.close();
-    }
-    super.onDestroy();
-    AppMethodBeat.o(37876);
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(293225);
-    if (paramKeyEvent.getKeyCode() == 4)
-    {
-      goBack();
-      AppMethodBeat.o(293225);
-      return true;
-    }
-    AppMethodBeat.o(293225);
-    return false;
-  }
-  
   public void onPause()
   {
-    AppMethodBeat.i(269663);
-    bh.aGY().b(635, this);
-    if (this.jij != null) {
-      this.jij.close();
+    AppMethodBeat.i(253201);
+    bh.aZW().b(635, this);
+    if (this.lKz != null) {
+      this.lKz.close();
     }
     super.onPause();
-    AppMethodBeat.o(269663);
+    AppMethodBeat.o(253201);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(37875);
     super.onResume();
-    bh.aGY().a(635, this);
-    if (this.jij != null) {
-      this.jij.start();
+    bh.aZW().a(635, this);
+    if (this.lKz != null) {
+      this.lKz.start();
     }
     AppMethodBeat.o(37875);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(37877);
     Log.i("MiroMsg.ModRemarkName", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (paramq.getType() == 44)
+    if (paramp.getType() == 44)
     {
       if ((paramInt1 != 0) && (paramInt2 < 0))
       {
         Log.d("MiroMsg.ModRemarkName", "addRoomCard Error!");
-        Toast.makeText(this, getString(R.l.eRp, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+        Toast.makeText(this, getString(R.l.gTV, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       }
       finish();
     }
@@ -827,18 +1069,72 @@ public class ModRemarkNameUI
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(269664);
+    AppMethodBeat.i(253211);
     AppMethodBeat.at(this, paramBoolean);
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jij != null) {
-      this.jij.start();
+    if (this.lKz != null) {
+      this.lKz.start();
     }
-    AppMethodBeat.o(269664);
+    AppMethodBeat.o(253211);
+  }
+  
+  final class b
+    implements TextWatcher
+  {
+    private int Ppb = 400;
+    
+    private b() {}
+    
+    public final void afterTextChanged(Editable paramEditable)
+    {
+      AppMethodBeat.i(37869);
+      this.Ppb = g.ej(400, paramEditable.toString());
+      if (this.Ppb < 0) {
+        this.Ppb = 0;
+      }
+      if (ModRemarkNameUI.i(ModRemarkNameUI.this) != null) {
+        ModRemarkNameUI.i(ModRemarkNameUI.this).setText(this.Ppb);
+      }
+      ModRemarkNameUI.b(ModRemarkNameUI.this);
+      AppMethodBeat.o(37869);
+    }
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  }
+  
+  final class c
+    extends ClickableSpan
+  {
+    public String remark;
+    
+    public c(String paramString)
+    {
+      this.remark = paramString;
+    }
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(37870);
+      ModRemarkNameUI.a(ModRemarkNameUI.this).setText(com.tencent.mm.pluginsdk.ui.span.p.b(ModRemarkNameUI.this, Util.nullAsNil(this.remark), ModRemarkNameUI.a(ModRemarkNameUI.this).getTextSize()));
+      ModRemarkNameUI.a(ModRemarkNameUI.this).setSelection(ModRemarkNameUI.a(ModRemarkNameUI.this).getText().length());
+      ModRemarkNameUI.k(ModRemarkNameUI.this).setVisibility(8);
+      AppMethodBeat.o(37870);
+    }
+    
+    public final void updateDrawState(TextPaint paramTextPaint)
+    {
+      AppMethodBeat.i(37871);
+      paramTextPaint.setColor(ModRemarkNameUI.this.getResources().getColor(R.e.blue_text_color));
+      paramTextPaint.setUnderlineText(false);
+      AppMethodBeat.o(37871);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ModRemarkNameUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.login_exdevice.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -25,232 +24,233 @@ import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.k;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.app.WorkerProfile;
 import com.tencent.mm.model.bg;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.model.bv.a;
+import com.tencent.mm.model.bw;
+import com.tencent.mm.model.bw.a;
+import com.tencent.mm.network.d;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.y;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.platformtools.v;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.j.g;
-import com.tencent.mm.protocal.protobuf.bxs;
-import com.tencent.mm.protocal.protobuf.cta;
-import com.tencent.mm.protocal.protobuf.dpy;
-import com.tencent.mm.protocal.protobuf.evr;
-import com.tencent.mm.protocal.protobuf.ha;
+import com.tencent.mm.protocal.protobuf.cmv;
+import com.tencent.mm.protocal.protobuf.dkc;
+import com.tencent.mm.protocal.protobuf.eit;
+import com.tencent.mm.protocal.protobuf.frg;
+import com.tencent.mm.protocal.protobuf.hw;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.bd;
 
 public class LoginAsExDeviceUI
   extends MMActivity
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  private ImageView EsA;
-  private TextView EsB;
-  private Button EsC;
-  private Button EsD;
-  private TextView EsE;
-  private byte[] EsF;
-  private int EsG;
-  private ImageView Ess;
-  private ImageView Est;
-  private Button Esu;
-  private View Esv;
-  private View Esw;
-  private View Esx;
-  private ImageView Esy;
-  private TextView Esz;
+  private ImageView KkY;
+  private ImageView KkZ;
+  private Button Kla;
+  private View Klb;
+  private View Klc;
+  private View Kld;
+  private ImageView Kle;
+  private TextView Klf;
+  private ImageView Klg;
+  private TextView Klh;
+  private Button Kli;
+  private Button Klj;
+  private TextView Klk;
+  private byte[] Kll;
+  private int Klm;
   private String UUID;
-  private ProgressDialog ndq;
-  private x nex;
+  private ProgressDialog qaH;
+  private com.tencent.mm.platformtools.u qbk;
   
   public LoginAsExDeviceUI()
   {
-    AppMethodBeat.i(230286);
-    this.EsG = 200;
-    this.nex = new x();
-    AppMethodBeat.o(230286);
+    AppMethodBeat.i(262356);
+    this.Klm = 200;
+    this.qbk = new com.tencent.mm.platformtools.u();
+    AppMethodBeat.o(262356);
   }
   
-  private void eNI()
+  private void fWb()
   {
-    AppMethodBeat.i(230293);
+    AppMethodBeat.i(262357);
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(276723);
+        AppMethodBeat.i(262331);
         com.tencent.mm.plugin.login_exdevice.a.b localb = new com.tencent.mm.plugin.login_exdevice.a.b();
-        com.tencent.mm.kernel.h.aGY().a(localb, 0);
+        com.tencent.mm.kernel.h.aZW().a(localb, 0);
         if (LoginAsExDeviceUI.b(LoginAsExDeviceUI.this) != null) {
           LoginAsExDeviceUI.b(LoginAsExDeviceUI.this).dismiss();
         }
-        LoginAsExDeviceUI.a(LoginAsExDeviceUI.this, com.tencent.mm.ui.base.h.a(LoginAsExDeviceUI.this, LoginAsExDeviceUI.this.getString(R.l.loading_tips), true, null));
-        AppMethodBeat.o(276723);
+        LoginAsExDeviceUI.a(LoginAsExDeviceUI.this, k.a(LoginAsExDeviceUI.this, LoginAsExDeviceUI.this.getString(R.l.loading_tips), true, null));
+        AppMethodBeat.o(262331);
       }
     }, 0L);
-    AppMethodBeat.o(230293);
+    AppMethodBeat.o(262357);
   }
   
-  private void eNJ()
+  private void fWc()
   {
-    AppMethodBeat.i(230296);
+    AppMethodBeat.i(262361);
     this.UUID = null;
-    this.EsF = null;
-    this.Ess.setImageResource(R.g.card_qrcode_disable);
-    this.Ess.setOnClickListener(new View.OnClickListener()
+    this.Kll = null;
+    this.KkY.setImageResource(R.g.card_qrcode_disable);
+    this.KkY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(279730);
+        AppMethodBeat.i(262328);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         LoginAsExDeviceUI.e(LoginAsExDeviceUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(279730);
+        AppMethodBeat.o(262328);
       }
     });
-    eNL();
-    AppMethodBeat.o(230296);
+    fWe();
+    AppMethodBeat.o(262361);
   }
   
-  private void eNK()
+  private void fWd()
   {
-    AppMethodBeat.i(230298);
+    AppMethodBeat.i(262365);
     Log.i("MicroMsg.LoginAsExDeviceUI", "doCheckLogin %s", new Object[] { Util.getStack() });
     Runnable local8 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(287983);
+        AppMethodBeat.i(262343);
         com.tencent.mm.plugin.login_exdevice.a.a locala = new com.tencent.mm.plugin.login_exdevice.a.a(LoginAsExDeviceUI.g(LoginAsExDeviceUI.this), LoginAsExDeviceUI.h(LoginAsExDeviceUI.this));
-        com.tencent.mm.kernel.h.aGY().a(locala, 0);
-        AppMethodBeat.o(287983);
+        com.tencent.mm.kernel.h.aZW().a(locala, 0);
+        AppMethodBeat.o(262343);
       }
     };
-    if (this.EsG > 2000) {}
+    if (this.Klm > 2000) {}
     int i;
     for (long l = 2000L;; l = i)
     {
       MMHandlerThread.postToMainThreadDelayed(local8, l);
-      AppMethodBeat.o(230298);
+      AppMethodBeat.o(262365);
       return;
-      i = this.EsG + 200;
-      this.EsG = i;
+      i = this.Klm + 200;
+      this.Klm = i;
     }
   }
   
-  private void eNL()
+  private void fWe()
   {
-    AppMethodBeat.i(230301);
-    if ((!Util.isNullOrNil(this.UUID)) && (this.EsF != null))
+    AppMethodBeat.i(262370);
+    if ((!Util.isNullOrNil(this.UUID)) && (this.Kll != null))
     {
-      this.Esu.setText(R.l.login_by_scan_qrcode);
-      if (this.EsE != null) {
-        this.EsE.setVisibility(0);
+      this.Kla.setText(R.l.login_by_scan_qrcode);
+      if (this.Klk != null) {
+        this.Klk.setVisibility(0);
       }
-      if (this.Est != null)
+      if (this.KkZ != null)
       {
-        this.Est.setVisibility(8);
-        AppMethodBeat.o(230301);
+        this.KkZ.setVisibility(8);
+        AppMethodBeat.o(262370);
       }
     }
     else
     {
-      this.Esu.setVisibility(0);
-      if (this.EsE != null) {
-        this.EsE.setVisibility(8);
+      this.Kla.setVisibility(0);
+      if (this.Klk != null) {
+        this.Klk.setVisibility(8);
       }
-      if (this.Est != null) {
-        this.Est.setVisibility(0);
+      if (this.KkZ != null) {
+        this.KkZ.setVisibility(0);
       }
-      this.Esu.setText(R.l.login_as_other_qrcode_expired_tip);
-      this.Esu.setOnClickListener(new View.OnClickListener()
+      this.Kla.setText(R.l.login_as_other_qrcode_expired_tip);
+      this.Kla.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(275995);
+          AppMethodBeat.i(262340);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           LoginAsExDeviceUI.e(LoginAsExDeviceUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(275995);
+          AppMethodBeat.o(262340);
         }
       });
     }
-    AppMethodBeat.o(230301);
+    AppMethodBeat.o(262370);
   }
   
   private void goBack()
   {
-    AppMethodBeat.i(230309);
+    AppMethodBeat.i(262373);
+    WorkerProfile.aDG();
     finish();
     overridePendingTransition(R.a.anim_not_change, R.a.push_down_out);
-    AppMethodBeat.o(230309);
+    AppMethodBeat.o(262373);
   }
   
   public int getLayoutId()
   {
-    AppMethodBeat.i(230310);
+    AppMethodBeat.i(262405);
     int i = getResources().getConfiguration().orientation;
     if (BuildInfo.EX_DEVICE_LOGIN)
     {
       i = R.i.login_as_other_device;
-      AppMethodBeat.o(230310);
+      AppMethodBeat.o(262405);
       return i;
     }
     if (i == 2)
     {
-      i = R.i.eip;
-      AppMethodBeat.o(230310);
+      i = R.i.gln;
+      AppMethodBeat.o(262405);
       return i;
     }
-    i = R.i.eio;
-    AppMethodBeat.o(230310);
+    i = R.i.glm;
+    AppMethodBeat.o(262405);
     return i;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(230292);
-    this.Esv = findViewById(R.h.dLO);
-    this.Ess = ((ImageView)this.Esv.findViewById(R.h.dLH));
-    this.Esu = ((Button)this.Esv.findViewById(R.h.dLG));
-    this.EsE = ((TextView)this.Esv.findViewById(R.h.dLF));
-    this.Est = ((ImageView)this.Esv.findViewById(R.h.dRW));
-    this.Esw = findViewById(R.h.dLK);
-    this.EsA = ((ImageView)this.Esw.findViewById(R.h.dLM));
-    this.EsB = ((TextView)this.Esw.findViewById(R.h.dLN));
-    this.EsC = ((Button)this.Esw.findViewById(R.h.dLL));
-    this.EsD = ((Button)this.Esw.findViewById(R.h.dVV));
-    this.Esx = findViewById(R.h.dLE);
-    this.Esy = ((ImageView)this.Esx.findViewById(R.h.dLI));
-    this.Esz = ((TextView)this.Esx.findViewById(R.h.dLJ));
+    AppMethodBeat.i(262391);
+    this.Klb = findViewById(R.h.fNw);
+    this.KkY = ((ImageView)this.Klb.findViewById(R.h.fNo));
+    this.Kla = ((Button)this.Klb.findViewById(R.h.fNn));
+    this.Klk = ((TextView)this.Klb.findViewById(R.h.fNm));
+    this.KkZ = ((ImageView)this.Klb.findViewById(R.h.fTW));
+    this.Klc = findViewById(R.h.fNs);
+    this.Klg = ((ImageView)this.Klc.findViewById(R.h.fNu));
+    this.Klh = ((TextView)this.Klc.findViewById(R.h.fNv));
+    this.Kli = ((Button)this.Klc.findViewById(R.h.fNt));
+    this.Klj = ((Button)this.Klc.findViewById(R.h.fYw));
+    this.Kld = findViewById(R.h.fNl);
+    this.Kle = ((ImageView)this.Kld.findViewById(R.h.fNp));
+    this.Klf = ((TextView)this.Kld.findViewById(R.h.fNq));
     setActionbarColor(getResources().getColor(R.e.BG_2));
     hideActionbarLine();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(244310);
+        AppMethodBeat.i(262345);
         LoginAsExDeviceUI.a(LoginAsExDeviceUI.this);
-        AppMethodBeat.o(244310);
+        AppMethodBeat.o(262345);
         return true;
       }
     }, R.k.actionbar_icon_close_black);
@@ -258,184 +258,185 @@ public class LoginAsExDeviceUI
       throw new NullPointerException();
     }
     setMMTitle(getResources().getString(R.l.login_as_qrcode));
-    eNI();
-    AppMethodBeat.o(230292);
+    fWb();
+    AppMethodBeat.o(262391);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(230289);
+    AppMethodBeat.i(262389);
     super.onCreate(paramBundle);
+    WorkerProfile.nL(0);
     initView();
-    AppMethodBeat.o(230289);
+    AppMethodBeat.o(262389);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(230303);
+    AppMethodBeat.i(262394);
     if (paramInt == 4)
     {
       goBack();
-      AppMethodBeat.o(230303);
+      AppMethodBeat.o(262394);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(230303);
+    AppMethodBeat.o(262394);
     return bool;
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(230325);
-    this.nex.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(230325);
+    AppMethodBeat.i(262418);
+    this.qbk.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(262418);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(230304);
+    AppMethodBeat.i(262396);
     super.onResume();
-    com.tencent.mm.kernel.h.aGY().a(502, this);
-    com.tencent.mm.kernel.h.aGY().a(503, this);
-    com.tencent.mm.kernel.h.aGY().a(701, this);
-    com.tencent.mm.kernel.h.aGY().a(252, this);
-    com.tencent.mm.kernel.h.aGY().a(654, this);
-    AppMethodBeat.o(230304);
+    com.tencent.mm.kernel.h.aZW().a(502, this);
+    com.tencent.mm.kernel.h.aZW().a(503, this);
+    com.tencent.mm.kernel.h.aZW().a(701, this);
+    com.tencent.mm.kernel.h.aZW().a(252, this);
+    com.tencent.mm.kernel.h.aZW().a(654, this);
+    AppMethodBeat.o(262396);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
-    AppMethodBeat.i(230322);
-    Log.i("MicroMsg.LoginAsExDeviceUI", "errType %d, errCode %d, errMsg %s, sceneType:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramq.getType()) });
-    if (this.ndq != null) {
-      this.ndq.dismiss();
+    AppMethodBeat.i(262414);
+    Log.i("MicroMsg.LoginAsExDeviceUI", "errType %d, errCode %d, errMsg %s, sceneType:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramp.getType()) });
+    if (this.qaH != null) {
+      this.qaH.dismiss();
     }
-    if (paramq.getType() == 502)
+    if (paramp.getType() == 502)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = BitmapUtil.decodeByteArray(z.a(((bxs)d.c.b(((com.tencent.mm.plugin.login_exdevice.a.b)paramq).kwO.lBS)).Thg));
-        this.Ess.setImageBitmap(paramString);
-        this.EsF = z.a(((bxs)d.c.b(((com.tencent.mm.plugin.login_exdevice.a.b)paramq).kwO.lBS)).Thi);
-        this.UUID = ((bxs)d.c.b(((com.tencent.mm.plugin.login_exdevice.a.b)paramq).kwO.lBS)).UUID;
+        paramString = BitmapUtil.decodeByteArray(w.a(((cmv)c.c.b(((com.tencent.mm.plugin.login_exdevice.a.b)paramp).nao.otC)).aauw));
+        this.KkY.setImageBitmap(paramString);
+        this.Kll = w.a(((cmv)c.c.b(((com.tencent.mm.plugin.login_exdevice.a.b)paramp).nao.otC)).aauy);
+        this.UUID = ((cmv)c.c.b(((com.tencent.mm.plugin.login_exdevice.a.b)paramp).nao.otC)).UUID;
         Log.i("MicroMsg.LoginAsExDeviceUI", "get UUID %s", new Object[] { this.UUID });
-        eNL();
-        this.EsG = 200;
-        eNK();
-        AppMethodBeat.o(230322);
+        fWe();
+        this.Klm = 200;
+        fWd();
+        AppMethodBeat.o(262414);
         return;
       }
       Log.i("MicroMsg.LoginAsExDeviceUI", "get login qrcode failed!");
-      eNJ();
-      com.tencent.mm.plugin.report.service.h.IzE.PJ(5L);
-      AppMethodBeat.o(230322);
+      fWc();
+      com.tencent.mm.plugin.report.service.h.OAn.tJ(5L);
+      AppMethodBeat.o(262414);
       return;
     }
     Object localObject;
-    if (paramq.getType() == 503)
+    if (paramp.getType() == 503)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((com.tencent.mm.plugin.login_exdevice.a.a)paramq).eNH();
+        paramString = ((com.tencent.mm.plugin.login_exdevice.a.a)paramp).fWa();
         if (paramString != null)
         {
-          Log.i("MicroMsg.LoginAsExDeviceUI", "uuid %s, UUID %s, imgurl:%s, nickName:%s, status:%s, expire %d", new Object[] { paramString.UUID, this.UUID, paramString.TAF, paramString.rWI, Integer.valueOf(paramString.rVU), Integer.valueOf(paramString.SXb) });
+          Log.i("MicroMsg.LoginAsExDeviceUI", "uuid %s, UUID %s, imgurl:%s, nickName:%s, status:%s, expire %d", new Object[] { paramString.UUID, this.UUID, paramString.aaPV, paramString.vhX, Integer.valueOf(paramString.vhk), Integer.valueOf(paramString.aaiS) });
           if ((!Util.isNullOrNil(new String[] { paramString.UUID, this.UUID })) && (this.UUID.equals(paramString.UUID)))
           {
-            switch (paramString.rVU)
+            switch (paramString.vhk)
             {
             default: 
-              eNK();
-              AppMethodBeat.o(230322);
+              fWd();
+              AppMethodBeat.o(262414);
               return;
             case 2: 
-              paramq = paramString.UserName;
-              localObject = paramString.RRg;
-              if (!Util.isNullOrNil(new String[] { paramString.UserName, paramString.RRg }))
+              paramp = paramString.UserName;
+              localObject = paramString.YOy;
+              if (!Util.isNullOrNil(new String[] { paramString.UserName, paramString.YOy }))
               {
-                this.Esx.setVisibility(0);
-                this.Esv.setVisibility(8);
-                this.Esw.setVisibility(8);
-                paramString = new com.tencent.mm.modelsimple.t(paramq, (String)localObject, 0, "", "", "", 0, "", true, false);
-                com.tencent.mm.kernel.h.aGY().a(paramString, 0);
-                if (this.ndq != null) {
-                  this.ndq.dismiss();
+                this.Kld.setVisibility(0);
+                this.Klb.setVisibility(8);
+                this.Klc.setVisibility(8);
+                paramString = new com.tencent.mm.modelsimple.u(paramp, (String)localObject, 0, "", "", "", 0, "", true, false);
+                com.tencent.mm.kernel.h.aZW().a(paramString, 0);
+                if (this.qaH != null) {
+                  this.qaH.dismiss();
                 }
-                this.ndq = com.tencent.mm.ui.base.h.a(this, getString(R.l.login_logining), true, null);
-                AppMethodBeat.o(230322);
+                this.qaH = k.a(this, getString(R.l.login_logining), true, null);
+                AppMethodBeat.o(262414);
                 return;
               }
               Log.e("MicroMsg.LoginAsExDeviceUI", "login error when confirm, usename and pwd is empty or null");
-              AppMethodBeat.o(230322);
+              AppMethodBeat.o(262414);
               return;
             case 1: 
-              this.Esx.setVisibility(0);
-              this.Esv.setVisibility(8);
-              this.Esw.setVisibility(8);
-              paramq = paramString.rWI;
-              this.Esz.setText(paramq);
-              if (!Util.isNullOrNil(paramString.TAF))
+              this.Kld.setVisibility(0);
+              this.Klb.setVisibility(8);
+              this.Klc.setVisibility(8);
+              paramp = paramString.vhX;
+              this.Klf.setText(paramp);
+              if (!Util.isNullOrNil(paramString.aaPV))
               {
-                paramString = paramString.TAF;
-                com.tencent.e.h.ZvG.be(new Runnable()
+                paramString = paramString.aaPV;
+                com.tencent.threadpool.h.ahAA.bm(new Runnable()
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(290966);
+                    AppMethodBeat.i(262348);
                     try
                     {
-                      Bitmap localBitmap = BackwardSupportUtil.BitmapFactory.decodeStream(com.tencent.mm.network.d.x(paramString, 10000, 20000));
+                      Bitmap localBitmap = BackwardSupportUtil.BitmapFactory.decodeStream(d.A(paramString, 10000, 20000));
                       if (localBitmap != null) {
                         MMHandlerThread.postToMainThread(new Runnable()
                         {
                           public final void run()
                           {
-                            AppMethodBeat.i(272247);
-                            LoginAsExDeviceUI.f(LoginAsExDeviceUI.this).setImageBitmap(this.EsL);
-                            AppMethodBeat.o(272247);
+                            AppMethodBeat.i(262344);
+                            LoginAsExDeviceUI.f(LoginAsExDeviceUI.this).setImageBitmap(this.Klr);
+                            AppMethodBeat.o(262344);
                           }
                         });
                       }
-                      AppMethodBeat.o(290966);
+                      AppMethodBeat.o(262348);
                       return;
                     }
                     catch (Exception localException)
                     {
                       Log.e("MicroMsg.LoginAsExDeviceUI", "download avatar failed");
                       Log.printErrStackTrace("MicroMsg.LoginAsExDeviceUI", localException, "", new Object[0]);
-                      AppMethodBeat.o(290966);
+                      AppMethodBeat.o(262348);
                     }
                   }
                 });
               }
-              eNK();
-              AppMethodBeat.o(230322);
+              fWd();
+              AppMethodBeat.o(262414);
               return;
             }
-            eNJ();
-            com.tencent.mm.plugin.report.service.h.IzE.PJ(6L);
-            AppMethodBeat.o(230322);
+            fWc();
+            com.tencent.mm.plugin.report.service.h.OAn.tJ(6L);
+            AppMethodBeat.o(262414);
             return;
           }
           Log.i("MicroMsg.LoginAsExDeviceUI", "check login qrcode failed! uuid invalid");
-          eNJ();
-          com.tencent.mm.plugin.report.service.h.IzE.PJ(6L);
-          AppMethodBeat.o(230322);
+          fWc();
+          com.tencent.mm.plugin.report.service.h.OAn.tJ(6L);
+          AppMethodBeat.o(262414);
           return;
         }
         Log.i("MicroMsg.LoginAsExDeviceUI", "check login qrcode failed! loginnotify invalid");
-        eNJ();
-        com.tencent.mm.plugin.report.service.h.IzE.PJ(6L);
-        AppMethodBeat.o(230322);
+        fWc();
+        com.tencent.mm.plugin.report.service.h.OAn.tJ(6L);
+        AppMethodBeat.o(262414);
         return;
       }
       Log.i("MicroMsg.LoginAsExDeviceUI", "check login qrcode failed!");
-      eNJ();
-      com.tencent.mm.plugin.report.service.h.IzE.PJ(6L);
-      AppMethodBeat.o(230322);
+      fWc();
+      com.tencent.mm.plugin.report.service.h.OAn.tJ(6L);
+      AppMethodBeat.o(262414);
       return;
     }
-    if ((paramq.getType() == 252) || (paramq.getType() == 701))
+    if ((paramp.getType() == 252) || (paramp.getType() == 701))
     {
       int j = 0;
       int i = j;
@@ -448,110 +449,109 @@ public class LoginAsExDeviceUI
         else
         {
           i = 1;
-          bh.aGY().a(new bv(new bv.a()
+          bh.aZW().a(new bw(new bw.a()
           {
-            public final void a(g paramAnonymousg)
+            public final void b(g paramAnonymousg)
             {
-              AppMethodBeat.i(264109);
+              AppMethodBeat.i(262350);
               if (paramAnonymousg == null)
               {
-                AppMethodBeat.o(264109);
+                AppMethodBeat.o(262350);
                 return;
               }
-              paramAnonymousg = paramAnonymousg.biw();
-              bh.beI();
+              paramAnonymousg = paramAnonymousg.bGg();
+              bh.bCz();
               int i = com.tencent.mm.model.c.getUin();
               paramAnonymousg.a(new byte[0], new byte[0], new byte[0], i);
-              AppMethodBeat.o(264109);
+              AppMethodBeat.o(262350);
             }
           }), 0);
         }
       }
       if ((i != 0) || ((paramInt1 == 0) && (paramInt2 == 0)))
       {
-        bh.aGG();
-        l.byn();
-        paramString = ((com.tencent.mm.modelsimple.t)paramq).account;
-        bg.ltv.aS("last_login_exdevice_weixin_username", paramString);
-        localObject = z.a(((j.g)((com.tencent.mm.modelsimple.t)paramq).lCW.getRespObj()).RBm.Uxi.RLV);
+        bh.aZI();
+        com.tencent.mm.plugin.account.friend.model.i.bXa();
+        paramString = ((com.tencent.mm.modelsimple.u)paramp).account;
+        bg.okT.bc("last_login_exdevice_weixin_username", paramString);
+        localObject = w.a(((j.g)((com.tencent.mm.modelsimple.u)paramp).ouH.getRespObj()).YxP.abQQ.YJj);
         if ((localObject != null) && (localObject.length > 0)) {
-          bg.ltv.aS("last_login_exdevice_auth_key", Base64.encodeToString((byte[])localObject, 0));
+          bg.okT.bc("last_login_exdevice_auth_key", Base64.encodeToString((byte[])localObject, 0));
         }
-        if ((!as.bvU(paramString)) || (Util.isNullOrNil(((com.tencent.mm.modelsimple.t)paramq).apf()))) {
-          break label1162;
+        if ((!au.bxb(paramString)) || (Util.isNullOrNil(((com.tencent.mm.modelsimple.u)paramp).aJs()))) {
+          break label1158;
         }
-        paramString = ((com.tencent.mm.modelsimple.t)paramq).apf();
+        paramString = ((com.tencent.mm.modelsimple.u)paramp).aJs();
       }
     }
-    label1162:
+    label1158:
     for (;;)
     {
-      y.ZV(paramString);
-      com.tencent.mm.platformtools.t.jdMethod_do(this);
-      this.nex.b(this, new Runnable()
+      v.Sj(paramString);
+      this.qbk.b(this, new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(273369);
-          Object localObject = com.tencent.mm.plugin.login_exdevice.a.mIG.bX(LoginAsExDeviceUI.this);
+          AppMethodBeat.i(262349);
+          Object localObject = com.tencent.mm.plugin.login_exdevice.a.pFn.cJ(LoginAsExDeviceUI.this);
           ((Intent)localObject).addFlags(67108864);
           LoginAsExDeviceUI localLoginAsExDeviceUI = LoginAsExDeviceUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-          com.tencent.mm.hellhoundlib.a.a.b(localLoginAsExDeviceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$10", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          localLoginAsExDeviceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(localLoginAsExDeviceUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$10", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localLoginAsExDeviceUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(localLoginAsExDeviceUI, "com/tencent/mm/plugin/login_exdevice/ui/LoginAsExDeviceUI$10", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           LoginAsExDeviceUI.this.finish();
           localLoginAsExDeviceUI = LoginAsExDeviceUI.this;
           int i = R.a.anim_not_change;
           localLoginAsExDeviceUI.overridePendingTransition(i, i);
-          com.tencent.mm.plugin.report.service.h.IzE.PJ(7L);
-          AppMethodBeat.o(273369);
+          com.tencent.mm.plugin.report.service.h.OAn.tJ(7L);
+          AppMethodBeat.o(262349);
         }
       });
-      AppMethodBeat.o(230322);
+      AppMethodBeat.o(262414);
       return;
       Log.i("MicroMsg.LoginAsExDeviceUI", "login failed!");
-      paramString = com.tencent.mm.h.a.Kb(paramString);
+      paramString = com.tencent.mm.broadcast.a.CH(paramString);
       if ((paramString != null) && (paramString.a(this, null, null)))
       {
-        AppMethodBeat.o(230322);
+        AppMethodBeat.o(262414);
         return;
       }
-      eNJ();
-      AppMethodBeat.o(230322);
+      fWc();
+      AppMethodBeat.o(262414);
       return;
-      if (paramq.getType() == 654)
+      if (paramp.getType() == 654)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          this.UUID = ((dpy)d.c.b(((com.tencent.mm.plugin.login_exdevice.a.c)paramq).kwO.lBS)).UUID;
-          this.EsF = z.a(((dpy)d.c.b(((com.tencent.mm.plugin.login_exdevice.a.c)paramq).kwO.lBS)).Thi);
-          this.EsG = 200;
-          eNK();
-          AppMethodBeat.o(230322);
+          this.UUID = ((eit)c.c.b(((com.tencent.mm.plugin.login_exdevice.a.c)paramp).nao.otC)).UUID;
+          this.Kll = w.a(((eit)c.c.b(((com.tencent.mm.plugin.login_exdevice.a.c)paramp).nao.otC)).aauy);
+          this.Klm = 200;
+          fWd();
+          AppMethodBeat.o(262414);
           return;
         }
         Log.i("MicroMsg.LoginAsExDeviceUI", "push loginurl failed");
         setMMTitle(getResources().getString(R.l.login_as_qrcode));
-        this.Esv.setVisibility(0);
-        this.Esw.setVisibility(8);
-        eNJ();
+        this.Klb.setVisibility(0);
+        this.Klc.setVisibility(8);
+        fWc();
       }
-      AppMethodBeat.o(230322);
+      AppMethodBeat.o(262414);
       return;
     }
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(230306);
-    com.tencent.mm.kernel.h.aGY().b(502, this);
-    com.tencent.mm.kernel.h.aGY().b(503, this);
-    com.tencent.mm.kernel.h.aGY().b(701, this);
-    com.tencent.mm.kernel.h.aGY().b(252, this);
-    com.tencent.mm.kernel.h.aGY().b(654, this);
+    AppMethodBeat.i(262400);
+    com.tencent.mm.kernel.h.aZW().b(502, this);
+    com.tencent.mm.kernel.h.aZW().b(503, this);
+    com.tencent.mm.kernel.h.aZW().b(701, this);
+    com.tencent.mm.kernel.h.aZW().b(252, this);
+    com.tencent.mm.kernel.h.aZW().b(654, this);
     super.onStop();
-    AppMethodBeat.o(230306);
+    AppMethodBeat.o(262400);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -562,7 +562,7 @@ public class LoginAsExDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.login_exdevice.ui.LoginAsExDeviceUI
  * JD-Core Version:    0.7.0.1
  */

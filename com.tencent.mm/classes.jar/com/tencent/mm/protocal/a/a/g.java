@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class g
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RCH;
-  public LinkedList<b> RCI;
-  public com.tencent.mm.cd.b RCJ;
-  public int RCr;
+  public int YyT;
+  public int Yzj;
+  public LinkedList<b> Yzk;
+  public com.tencent.mm.bx.b Yzl;
   
   public g()
   {
     AppMethodBeat.i(143947);
-    this.RCI = new LinkedList();
+    this.Yzk = new LinkedList();
     AppMethodBeat.o(143947);
   }
   
@@ -23,12 +23,12 @@ public class g
     AppMethodBeat.i(143948);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.RCr);
-      paramVarArgs.aY(2, this.RCH);
-      paramVarArgs.e(3, 8, this.RCI);
-      if (this.RCJ != null) {
-        paramVarArgs.c(4, this.RCJ);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.YyT);
+      paramVarArgs.bS(2, this.Yzj);
+      paramVarArgs.e(3, 8, this.Yzk);
+      if (this.Yzl != null) {
+        paramVarArgs.d(4, this.Yzl);
       }
       AppMethodBeat.o(143948);
       return 0;
@@ -36,10 +36,10 @@ public class g
     int i;
     if (paramInt == 1)
     {
-      i = g.a.a.b.b.a.bM(1, this.RCr) + 0 + g.a.a.b.b.a.bM(2, this.RCH) + g.a.a.a.c(3, 8, this.RCI);
+      i = i.a.a.b.b.a.cJ(1, this.YyT) + 0 + i.a.a.b.b.a.cJ(2, this.Yzj) + i.a.a.a.c(3, 8, this.Yzk);
       paramInt = i;
-      if (this.RCJ != null) {
-        paramInt = i + g.a.a.b.b.a.b(4, this.RCJ);
+      if (this.Yzl != null) {
+        paramInt = i + i.a.a.b.b.a.c(4, this.Yzl);
       }
       AppMethodBeat.o(143948);
       return paramInt;
@@ -47,11 +47,11 @@ public class g
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.RCI.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      this.Yzk.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(143948);
@@ -59,7 +59,7 @@ public class g
     }
     if (paramInt == 3)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       g localg = (g)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -68,15 +68,15 @@ public class g
         AppMethodBeat.o(143948);
         return -1;
       case 1: 
-        localg.RCr = ((g.a.a.a.a)localObject).abFh.AK();
+        localg.YyT = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143948);
         return 0;
       case 2: 
-        localg.RCH = ((g.a.a.a.a)localObject).abFh.AK();
+        localg.Yzj = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(143948);
         return 0;
       case 3: 
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -86,13 +86,13 @@ public class g
           if ((localObject != null) && (localObject.length > 0)) {
             localb.parseFrom((byte[])localObject);
           }
-          localg.RCI.add(localb);
+          localg.Yzk.add(localb);
           paramInt += 1;
         }
         AppMethodBeat.o(143948);
         return 0;
       }
-      localg.RCJ = ((g.a.a.a.a)localObject).abFh.iUw();
+      localg.Yzl = ((i.a.a.a.a)localObject).ajGk.kFX();
       AppMethodBeat.o(143948);
       return 0;
     }
@@ -102,7 +102,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,59 +3,64 @@ package com.tencent.mm.plugin.wear.model.f;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.ab;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.fjl;
+import com.tencent.mm.protocal.protobuf.gfz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.cc;
 import java.io.IOException;
 
 public final class g
   extends b
 {
-  private ca fNz;
+  private cc hTm;
   
-  public g(ca paramca)
+  public g(cc paramcc)
   {
-    this.fNz = paramca;
+    this.hTm = paramcc;
   }
   
-  protected final void gOA()
+  public final String getName()
+  {
+    return "WearLuckyCreateTask";
+  }
+  
+  protected final void send()
   {
     AppMethodBeat.i(30127);
-    fjl localfjl = new fjl();
-    Object localObject = this.fNz.field_content;
+    gfz localgfz = new gfz();
+    Object localObject = this.hTm.field_content;
     String str;
     if (localObject != null)
     {
-      localObject = k.b.aG((String)localObject, this.fNz.field_reserved);
-      if ((localObject == null) || (!((k.b)localObject).lnH.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
+      localObject = k.b.aP((String)localObject, this.hTm.field_reserved);
+      if ((localObject == null) || (!((k.b)localObject).nSL.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))) {
         break label245;
       }
-      localfjl.RNj = this.fNz.field_msgId;
-      localfjl.Ueg = this.fNz.field_talker;
-      if (this.fNz.field_isSend != 1) {
+      localgfz.YKx = this.hTm.field_msgId;
+      localgfz.abvu = this.hTm.field_talker;
+      if (this.hTm.field_isSend != 1) {
         break label221;
       }
-      localObject = ((k.b)localObject).lnB;
-      localfjl.fwr = h.bhV(this.fNz.field_talker);
-      if (!ab.Lj(this.fNz.field_talker)) {
+      localObject = ((k.b)localObject).nSF;
+      localgfz.hAP = h.bhE(this.hTm.field_talker);
+      if (!au.bwE(this.hTm.field_talker)) {
         break label229;
       }
-      str = d(this.fNz.field_talker, this.fNz);
+      str = d(this.hTm.field_talker, this.hTm);
     }
-    for (localfjl.lpy = String.format(MMApplicationContext.getContext().getString(R.l.eNt), new Object[] { h.bhV(str), Character.valueOf('​'), localObject });; localfjl.lpy = ((String)localObject))
+    for (localgfz.nUB = String.format(MMApplicationContext.getContext().getString(R.l.gPG), new Object[] { h.bhE(str), Character.valueOf('​'), localObject });; localgfz.nUB = ((String)localObject))
     {
       try
       {
-        com.tencent.mm.plugin.wear.model.a.gOx();
-        r.a(20014, localfjl.toByteArray(), true);
-        com.tencent.mm.plugin.wear.model.c.a.lp(10, 0);
-        com.tencent.mm.plugin.wear.model.c.a.amT(10);
+        com.tencent.mm.plugin.wear.model.a.inM();
+        r.a(20014, localgfz.toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.c.a.kK(10, 0);
+        com.tencent.mm.plugin.wear.model.c.a.asK(10);
         AppMethodBeat.o(30127);
         return;
       }
@@ -69,22 +74,17 @@ public final class g
       Log.w("MicroMsg.Wear.WearLuckyCreateTask", "xml is null!");
       AppMethodBeat.o(30127);
       return;
-      localObject = ((k.b)localObject).lnA;
+      localObject = ((k.b)localObject).nSE;
       break;
     }
     label245:
     Log.i("MicroMsg.Wear.WearLuckyCreateTask", "biz c2c message, do not send to watch!");
     AppMethodBeat.o(30127);
   }
-  
-  public final String getName()
-  {
-    return "WearLuckyCreateTask";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.g
  * JD-Core Version:    0.7.0.1
  */

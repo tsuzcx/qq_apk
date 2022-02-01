@@ -8,13 +8,13 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class c
   extends SFSInputStream
 {
-  private a lYR;
+  private a oRW;
   
   public c(long paramLong1, long paramLong2)
   {
     super(paramLong1);
     AppMethodBeat.i(155985);
-    this.lYR = new a(paramLong2);
+    this.oRW = new a(paramLong2);
     AppMethodBeat.o(155985);
   }
   
@@ -22,8 +22,8 @@ public final class c
   {
     AppMethodBeat.i(155991);
     super.close();
-    if (this.lYR != null) {
-      this.lYR.free();
+    if (this.oRW != null) {
+      this.oRW.free();
     }
     AppMethodBeat.o(155991);
   }
@@ -32,8 +32,8 @@ public final class c
   {
     AppMethodBeat.i(155986);
     super.mark(paramInt);
-    a locala = this.lYR;
-    locala.lYQ = locala.lYO;
+    a locala = this.oRW;
+    locala.oRV = locala.oRT;
     AppMethodBeat.o(155986);
   }
   
@@ -54,7 +54,7 @@ public final class c
       AppMethodBeat.o(155989);
       return paramInt1;
     }
-    this.lYR.B(paramArrayOfByte, paramInt2);
+    this.oRW.A(paramArrayOfByte, paramInt2);
     AppMethodBeat.o(155989);
     return paramInt1;
   }
@@ -63,19 +63,19 @@ public final class c
   {
     AppMethodBeat.i(155987);
     super.reset();
-    a locala = this.lYR;
+    a locala = this.oRW;
     Log.i("MicroMsg.EncEngine", "reset " + Util.getStack());
     locala.free();
-    if (locala.lYQ == 0L)
+    if (locala.oRV == 0L)
     {
       locala.init();
-      locala.lYO = 0L;
+      locala.oRT = 0L;
       AppMethodBeat.o(155987);
       return;
     }
     locala.init();
-    MMIMAGEENCJNI.seek(locala.mNativePtr, locala.lYQ, 1);
-    locala.lYO = locala.lYQ;
+    MMIMAGEENCJNI.seek(locala.mNativePtr, locala.oRV, 1);
+    locala.oRT = locala.oRV;
     AppMethodBeat.o(155987);
   }
   
@@ -83,8 +83,8 @@ public final class c
   {
     AppMethodBeat.i(155990);
     long l = super.skip(paramLong);
-    a locala = this.lYR;
-    locala.lYO = paramLong;
+    a locala = this.oRW;
+    locala.oRT = paramLong;
     MMIMAGEENCJNI.seek(locala.mNativePtr, paramLong, 1);
     AppMethodBeat.o(155990);
     return l;
@@ -92,7 +92,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsfs.c
  * JD-Core Version:    0.7.0.1
  */

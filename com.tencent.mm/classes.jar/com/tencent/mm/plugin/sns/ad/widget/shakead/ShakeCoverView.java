@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.sns.ad.widget.shakead;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
@@ -11,22 +13,22 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import androidx.lifecycle.h;
-import androidx.lifecycle.h.a;
-import androidx.lifecycle.k;
-import androidx.lifecycle.l;
+import androidx.lifecycle.j;
+import androidx.lifecycle.j.a;
+import androidx.lifecycle.p;
+import androidx.lifecycle.q;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.xw;
+import com.tencent.mm.plugin.sns.ad.widget.interactionlabel.ShakeCoverAnimView;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
 import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.pluginsdk.m.d;
-import com.tencent.mm.pluginsdk.m.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
@@ -35,95 +37,140 @@ import org.libpag.PAGView;
 
 public class ShakeCoverView
   extends FrameLayout
-  implements k
+  implements p
 {
-  private a JDc;
-  private Handler JMp;
-  private ImageView JNM;
-  private PAGView JNN;
-  private ImageView JNO;
-  private TextView JNP;
-  private TextView JNQ;
-  private ViewGroup JNR;
-  private d JNS;
-  private boolean JNT;
-  private boolean JNU;
-  private boolean JNV;
-  private boolean JNW;
-  private boolean JNX;
-  boolean JNY;
-  boolean JNZ;
-  boolean JOa;
-  private a JOb;
-  private SnsInfo Jws;
-  private int Oeh;
+  public SnsInfo PJQ;
+  public Handler PRJ;
+  public PAGView QiB;
+  public TextView QiC;
+  public TextView QiD;
+  private ViewGroup QiE;
+  private ShakeCoverAnimView QiF;
+  public a QiG;
+  private b QiH;
+  private boolean QiI;
+  private boolean QiJ;
+  private boolean QiK;
+  private boolean QiL;
+  private boolean QiM;
+  boolean QiN;
+  boolean QiO;
+  boolean QiP;
+  private a QiQ;
   private Context mContext;
-  private boolean mIsDestroyed;
-  private int mScene;
+  public boolean mIsDestroyed;
+  public int mScene;
   
   public ShakeCoverView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200126);
+    AppMethodBeat.i(310572);
     this.mIsDestroyed = false;
-    this.JNT = false;
-    this.JMp = new Handler()
+    this.QiI = false;
+    this.PRJ = new Handler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(269429);
+        AppMethodBeat.i(310585);
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(269429);
+          AppMethodBeat.o(310585);
           return;
           ShakeCoverView.a(ShakeCoverView.this, paramAnonymousMessage.arg1);
         }
       }
     };
-    this.JNU = true;
-    this.JNV = false;
-    this.JNW = false;
-    this.JNX = false;
-    this.JNY = false;
-    this.JNZ = false;
-    this.JOa = false;
+    this.QiJ = true;
+    this.QiK = false;
+    this.QiL = false;
+    this.QiM = false;
+    this.QiN = false;
+    this.QiO = false;
+    this.QiP = false;
     this.mContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(i.g.sns_ad_shake_cover_layout, this, true);
-    this.JNN = ((PAGView)findViewById(i.f.pag_shake_icon));
-    this.JNO = ((ImageView)findViewById(i.f.static_icon));
-    this.JNM = ((ImageView)findViewById(i.f.shake_bg));
-    this.JNM.setAlpha(0.5F);
-    this.JNP = ((TextView)findViewById(i.f.tip_title));
-    this.JNQ = ((TextView)findViewById(i.f.tip_desc));
-    this.JNR = ((ViewGroup)findViewById(i.f.tip_txt_layout));
-    this.JNN.post(new Runnable()
+    LayoutInflater.from(paramContext).inflate(b.g.sns_ad_shake_cover_layout, this, true);
+    this.QiB = ((PAGView)findViewById(b.f.pag_shake_icon));
+    this.QiC = ((TextView)findViewById(b.f.tip_title));
+    this.QiD = ((TextView)findViewById(b.f.tip_desc));
+    this.QiE = ((ViewGroup)findViewById(b.f.tip_txt_layout));
+    this.QiF = ((ShakeCoverAnimView)findViewById(b.f.anim_bg_view));
+    m.q(this.QiC, b.d.sns_ad_shake_cover_title_font_size);
+    m.q(this.QiD, b.d.sns_ad_shake_cover_desc_font_size);
+    this.QiB.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(245608);
+        AppMethodBeat.i(310584);
         ShakeCoverView.a(ShakeCoverView.this).setPath("assets://sns/sns_ad_shake_icon_anim.pag");
         ShakeCoverView.a(ShakeCoverView.this).setScaleMode(3);
         ShakeCoverView.a(ShakeCoverView.this).setRepeatCount(0);
-        AppMethodBeat.o(245608);
+        AppMethodBeat.o(310584);
       }
     });
-    this.Oeh = com.tencent.mm.ci.a.fromDPToPix(paramContext, 50);
-    if ((paramContext instanceof l)) {
-      ((l)paramContext).getLifecycle().a(this);
+    if ((paramContext instanceof q)) {
+      ((q)paramContext).getLifecycle().addObserver(this);
     }
-    AppMethodBeat.o(200126);
+    AppMethodBeat.o(310572);
   }
   
-  public static void a(ai paramai, int paramInt)
+  private void Dz(boolean paramBoolean)
   {
-    AppMethodBeat.i(200165);
+    AppMethodBeat.i(310581);
+    if (!this.QiN)
+    {
+      AppMethodBeat.o(310581);
+      return;
+    }
+    Log.i("ShakeCoverView", "unSpreadUp, isForDestroy=".concat(String.valueOf(paramBoolean)));
+    this.QiN = false;
+    this.QiP = false;
+    if (!paramBoolean)
+    {
+      Object localObject2 = this.QiF;
+      Log.i("ShakeCoverAnimView", "unSpreadUp, scale=" + ((ShakeCoverAnimView)localObject2).hco);
+      Object localObject1 = ObjectAnimator.ofFloat(((ShakeCoverAnimView)localObject2).Qgo, "alpha", new float[] { 0.7F, 0.7F });
+      ((ObjectAnimator)localObject1).setDuration(ShakeCoverAnimView.Qgp);
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(((ShakeCoverAnimView)localObject2).Qgo, "scaleX", new float[] { ((ShakeCoverAnimView)localObject2).hco, 1.0F });
+      localObjectAnimator.setDuration(ShakeCoverAnimView.Qgp);
+      localObject2 = ObjectAnimator.ofFloat(((ShakeCoverAnimView)localObject2).Qgo, "scaleY", new float[] { ((ShakeCoverAnimView)localObject2).hco, 1.0F });
+      ((ObjectAnimator)localObject2).setDuration(ShakeCoverAnimView.Qgp);
+      AnimatorSet localAnimatorSet = new AnimatorSet();
+      localAnimatorSet.play((Animator)localObject1).with(localObjectAnimator).with((Animator)localObject2);
+      localAnimatorSet.start();
+      localObject1 = ObjectAnimator.ofFloat(this.QiE, "alpha", new float[] { 1.0F, 0.0F });
+      ((ObjectAnimator)localObject1).setDuration(500L);
+      ((ObjectAnimator)localObject1).addListener(new com.tencent.mm.plugin.sns.ad.widget.b()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(310589);
+          ShakeCoverView.b(ShakeCoverView.this).setVisibility(4);
+          AppMethodBeat.o(310589);
+        }
+      });
+      ((ObjectAnimator)localObject1).start();
+      localObject1 = new xw();
+      ((xw)localObject1).ibp.hQm = 2;
+      ((xw)localObject1).ibp.ibq = this.PJQ.field_snsId;
+      ((xw)localObject1).publish();
+      AppMethodBeat.o(310581);
+      return;
+    }
+    this.QiE.setVisibility(4);
+    this.QiF.setVisibility(4);
+    AppMethodBeat.o(310581);
+  }
+  
+  public static void a(ai paramai, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(310619);
     if (paramai == null)
     {
       Log.e("ShakeCoverView_report", "reportGetShakeCardIdResult, landingPageData==null");
-      AppMethodBeat.o(200165);
+      AppMethodBeat.o(310619);
       return;
     }
     Object localObject = paramai.getSnsId();
@@ -137,30 +184,36 @@ public class ShakeCoverView
       paramai.put("scene", i);
       localObject = new JSONObject();
       ((JSONObject)localObject).put("result", paramInt);
-      paramai.put("extInfo", localObject);
-      paramai = paramai.toString();
-      m.ks("timeline_shakead_canvas_get_cardId_result", paramai);
-      Log.i("ShakeCoverView_report", "reportGetShakeCardIdResult, content=".concat(String.valueOf(paramai)));
-      AppMethodBeat.o(200165);
+      if (paramBoolean) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        ((JSONObject)localObject).put("encoreShake", paramInt);
+        paramai.put("extInfo", localObject);
+        paramai = paramai.toString();
+        m.lU("timeline_shakead_canvas_get_cardId_result", paramai);
+        Log.i("ShakeCoverView_report", "reportGetShakeCardIdResult, content=".concat(String.valueOf(paramai)));
+        AppMethodBeat.o(310619);
+        return;
+      }
       return;
     }
     catch (Exception paramai)
     {
       Log.e("ShakeCoverView_report", "reportGetShakeCardIdResult exp:" + paramai.toString());
-      AppMethodBeat.o(200165);
+      AppMethodBeat.o(310619);
     }
   }
   
   private static void a(SnsInfo paramSnsInfo, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200170);
+    AppMethodBeat.i(310636);
     if (paramSnsInfo == null)
     {
       Log.e("ShakeCoverView_report", "reportShakeActionResult, landingPageData==null");
-      AppMethodBeat.o(200170);
+      AppMethodBeat.o(310636);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.sns.data.t.Qu(paramSnsInfo.field_snsId);
+    Object localObject = t.uA(paramSnsInfo.field_snsId);
     String str = paramSnsInfo.getUxinfo();
     try
     {
@@ -172,284 +225,227 @@ public class ShakeCoverView
       ((JSONObject)localObject).put("result", paramInt1);
       paramSnsInfo.put("extInfo", localObject);
       paramSnsInfo = paramSnsInfo.toString();
-      m.ks("timeline_shakead_shake_result", paramSnsInfo);
+      m.lU("timeline_shakead_shake_result", paramSnsInfo);
       Log.i("ShakeCoverView_report", "reportShakeActionResult, content=".concat(String.valueOf(paramSnsInfo)));
-      AppMethodBeat.o(200170);
+      AppMethodBeat.o(310636);
       return;
     }
     catch (Exception paramSnsInfo)
     {
       Log.e("ShakeCoverView_report", "reportShakeActionResult exp:" + paramSnsInfo.toString());
-      AppMethodBeat.o(200170);
+      AppMethodBeat.o(310636);
     }
   }
   
-  private void fMy()
+  private void hdA()
   {
-    AppMethodBeat.i(200141);
-    if (this.JNZ) {
-      Log.i("ShakeCoverView", "stopShakeAnim");
-    }
-    this.JNZ = false;
-    this.JNN.post(new Runnable()
+    AppMethodBeat.i(310605);
+    if (this.QiH != null)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(270160);
-        ShakeCoverView.a(ShakeCoverView.this).stop();
-        AppMethodBeat.o(270160);
-      }
-    });
-    AppMethodBeat.o(200141);
-  }
-  
-  private void fMz()
-  {
-    AppMethodBeat.i(200158);
-    if (this.JNS != null)
-    {
-      if (this.JNS.hiU()) {
+      if (this.QiH.hdD()) {
         Log.i("ShakeCoverView", "stopListenShake");
       }
-      this.JNS.cPS();
+      this.QiH.cuD();
     }
-    AppMethodBeat.o(200158);
+    AppMethodBeat.o(310605);
   }
   
-  public final void Qp(long paramLong)
+  private void hdy()
   {
-    AppMethodBeat.i(200136);
-    Message localMessage = Message.obtain(this.JMp, 1);
-    localMessage.arg1 = ((int)paramLong);
-    localMessage.sendToTarget();
-    AppMethodBeat.o(200136);
-  }
-  
-  public final void a(SnsInfo paramSnsInfo, int paramInt)
-  {
-    AppMethodBeat.i(200135);
-    if (paramSnsInfo == null)
+    AppMethodBeat.i(310588);
+    Log.i("ShakeCoverView", "startShakeAnim, isUIPaused=" + this.QiI + ", isDestroy=" + this.mIsDestroyed);
+    if ((this.mIsDestroyed) || (this.QiI))
     {
-      AppMethodBeat.o(200135);
+      AppMethodBeat.o(310588);
       return;
     }
-    this.mScene = paramInt;
-    this.Jws = paramSnsInfo;
-    this.JDc = paramSnsInfo.getAdXml().adShakeInfo;
-    if (this.JDc != null)
-    {
-      this.JNP.setText(this.JDc.title);
-      this.JNQ.setText(this.JDc.desc);
-    }
-    this.mIsDestroyed = false;
-    AppMethodBeat.o(200135);
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(200155);
-    this.mIsDestroyed = true;
-    this.JMp.removeCallbacksAndMessages(null);
-    fMw();
-    AppMethodBeat.o(200155);
-  }
-  
-  public final void fMw()
-  {
-    AppMethodBeat.i(200139);
-    Log.i("ShakeCoverView", "doOnPause");
-    fMz();
-    fMy();
-    AppMethodBeat.o(200139);
-  }
-  
-  public final void fMx()
-  {
-    AppMethodBeat.i(200140);
-    Log.i("ShakeCoverView", "startShakeAnim, isUIPaused=" + this.JNT + ", isDestroy=" + this.mIsDestroyed);
-    if ((this.mIsDestroyed) || (this.JNT))
-    {
-      AppMethodBeat.o(200140);
-      return;
-    }
-    this.JNZ = true;
-    this.JNN.post(new Runnable()
+    this.QiO = true;
+    this.QiB.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206666);
+        AppMethodBeat.i(310578);
         if (ShakeCoverView.c(ShakeCoverView.this))
         {
           Log.w("ShakeCoverView", "do startShakeAnim, isDestroyed");
-          AppMethodBeat.o(206666);
+          AppMethodBeat.o(310578);
           return;
         }
         Log.i("ShakeCoverView", "do startShakeAnim");
         ShakeCoverView.a(ShakeCoverView.this).play();
-        AppMethodBeat.o(206666);
+        AppMethodBeat.o(310578);
       }
     });
-    AppMethodBeat.o(200140);
+    AppMethodBeat.o(310588);
+  }
+  
+  private void hdz()
+  {
+    AppMethodBeat.i(310595);
+    if (this.QiO) {
+      Log.i("ShakeCoverView", "stopShakeAnim");
+    }
+    this.QiO = false;
+    this.QiB.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(310569);
+        ShakeCoverView.a(ShakeCoverView.this).stop();
+        AppMethodBeat.o(310569);
+      }
+    });
+    AppMethodBeat.o(310595);
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(310743);
+    this.mIsDestroyed = true;
+    this.PRJ.removeCallbacksAndMessages(null);
+    hdx();
+    Dz(true);
+    AppMethodBeat.o(310743);
+  }
+  
+  public final void hdx()
+  {
+    AppMethodBeat.i(310688);
+    Log.i("ShakeCoverView", "doOnPause");
+    hdA();
+    hdz();
+    AppMethodBeat.o(310688);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(200149);
+    AppMethodBeat.i(310718);
     super.onDetachedFromWindow();
     Log.i("ShakeCoverView", "onDetachedFromWindow");
-    if ((this.JNW) && (!this.JNX)) {
-      a(this.Jws, 2, this.mScene);
+    if ((this.QiL) && (!this.QiM)) {
+      a(this.PJQ, 2, this.mScene);
     }
     clear();
-    this.JNU = true;
-    this.JNV = false;
-    this.JNX = false;
-    AppMethodBeat.o(200149);
-  }
-  
-  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(200133);
-    super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    Log.i("ShakeCoverView", "onSizeChanged, w=" + paramInt1 + ", h=" + paramInt2);
-    if ((paramInt1 != 0) && (paramInt2 != 0))
-    {
-      paramInt1 = getHeight();
-      paramInt2 = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 68);
-      paramInt3 = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 20);
-      this.Oeh = ((paramInt1 - paramInt2 - com.tencent.mm.ci.a.fromDPToPix(this.mContext, 49) - paramInt3) / 2);
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.JNN.getLayoutParams();
-      if (localLayoutParams.topMargin != this.Oeh)
-      {
-        localLayoutParams.topMargin = this.Oeh;
-        this.JNN.setLayoutParams(localLayoutParams);
-      }
-      if (!this.JNY)
-      {
-        float f1 = getWidth() / 2 - com.tencent.mm.ci.a.fromDPToPix(this.mContext, 28);
-        float f2 = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 34) + this.Oeh - com.tencent.mm.ci.a.fromDPToPix(this.mContext, 28);
-        this.JNN.setTranslationX(f1);
-        this.JNN.setTranslationY(-f2);
-        this.JNN.setScaleX(0.41F);
-        this.JNN.setScaleY(0.41F);
-      }
-    }
-    AppMethodBeat.o(200133);
+    this.QiJ = true;
+    this.QiK = false;
+    this.QiM = false;
+    AppMethodBeat.o(310718);
   }
   
   public void onStartTemporaryDetach()
   {
-    AppMethodBeat.i(200152);
+    AppMethodBeat.i(310732);
     super.onStartTemporaryDetach();
     if (Build.VERSION.SDK_INT < 24)
     {
       Log.i("ShakeCoverView", "onStartTemporaryDetach");
-      if ((this.JNW) && (!this.JNX)) {
-        a(this.Jws, 2, this.mScene);
+      if ((this.QiL) && (!this.QiM)) {
+        a(this.PJQ, 2, this.mScene);
       }
       clear();
-      this.JNU = true;
-      this.JNV = false;
-      this.JNX = false;
-      AppMethodBeat.o(200152);
+      this.QiJ = true;
+      this.QiK = false;
+      this.QiM = false;
+      AppMethodBeat.o(310732);
       return;
     }
     Log.d("ShakeCoverView", "onStartTemporaryDetach");
-    AppMethodBeat.o(200152);
+    AppMethodBeat.o(310732);
   }
   
-  @androidx.lifecycle.t(jl=h.a.ON_PAUSE)
+  @z(Ho=j.a.ON_PAUSE)
   public void onUIPause()
   {
-    AppMethodBeat.i(200148);
+    AppMethodBeat.i(310706);
     Log.i("ShakeCoverView", "onUIPause");
-    this.JNT = true;
-    fMw();
-    AppMethodBeat.o(200148);
+    this.QiI = true;
+    hdx();
+    AppMethodBeat.o(310706);
   }
   
-  @androidx.lifecycle.t(jl=h.a.ON_RESUME)
+  @z(Ho=j.a.ON_RESUME)
   public void onUIResume()
   {
-    AppMethodBeat.i(200145);
+    AppMethodBeat.i(310697);
     Log.i("ShakeCoverView", "onUIResume");
-    this.JNT = false;
-    AppMethodBeat.o(200145);
+    this.QiI = false;
+    AppMethodBeat.o(310697);
   }
   
   public void setOnShakeListener(a parama)
   {
-    this.JOb = parama;
+    this.QiQ = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void onShake();
+    public abstract void hat();
   }
   
   static final class b
-    extends d.a
+    extends b.a
   {
-    WeakReference<ShakeCoverView> JOd;
+    WeakReference<ShakeCoverView> QiS;
     private long lastShakeTime;
     
-    public b(ShakeCoverView paramShakeCoverView)
+    public b(ShakeCoverView paramShakeCoverView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(268252);
+      super(paramInt2);
+      AppMethodBeat.i(310614);
       this.lastShakeTime = Util.currentTicks();
-      this.JOd = new WeakReference(paramShakeCoverView);
-      AppMethodBeat.o(268252);
+      this.QiS = new WeakReference(paramShakeCoverView);
+      AppMethodBeat.o(310614);
     }
     
-    public final void onRelease()
+    public final void hdB()
     {
-      AppMethodBeat.i(268254);
-      Log.i("ShakeCoverView", "onRelease");
-      AppMethodBeat.o(268254);
-    }
-    
-    public final void onShake(boolean paramBoolean)
-    {
-      AppMethodBeat.i(268253);
-      ShakeCoverView localShakeCoverView = (ShakeCoverView)this.JOd.get();
+      AppMethodBeat.i(310625);
+      ShakeCoverView localShakeCoverView = (ShakeCoverView)this.QiS.get();
       if (localShakeCoverView == null)
       {
         Log.w("ShakeCoverView", "onShake， shakeCoverView==null");
-        AppMethodBeat.o(268253);
+        AppMethodBeat.o(310625);
         return;
       }
       Context localContext = localShakeCoverView.getContext();
       if (localContext == null)
       {
         Log.w("ShakeCoverView", "onShake， context==null");
-        AppMethodBeat.o(268253);
+        AppMethodBeat.o(310625);
         return;
       }
       if (((localContext instanceof Activity)) && (((Activity)localContext).isFinishing()))
       {
         Log.e("ShakeCoverView", "onShake, ui finished");
-        AppMethodBeat.o(268253);
+        AppMethodBeat.o(310625);
         return;
       }
       long l = Util.ticksToNow(this.lastShakeTime);
-      if (l < 800L)
+      if (l < 1000L)
       {
         Log.i("ShakeCoverView", "onShake, too short, delay=".concat(String.valueOf(l)));
-        AppMethodBeat.o(268253);
+        AppMethodBeat.o(310625);
         return;
       }
       this.lastShakeTime = Util.currentTicks();
-      com.tencent.mm.plugin.sns.data.t.e(new long[] { 0L, 80L });
+      t.g(new long[] { 0L, 80L });
       reset();
       Log.i("ShakeCoverView", "onShake succ");
       ShakeCoverView.d(localShakeCoverView);
-      AppMethodBeat.o(268253);
+      AppMethodBeat.o(310625);
+    }
+    
+    public final void onRelease()
+    {
+      AppMethodBeat.i(310633);
+      Log.i("ShakeCoverView", "onRelease");
+      AppMethodBeat.o(310633);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.shakead.ShakeCoverView
  * JD-Core Version:    0.7.0.1
  */

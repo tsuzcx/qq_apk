@@ -1,11 +1,11 @@
 package com.tencent.mm.pluginsdk.b;
 
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.SmileyInfo;
 import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
-import com.tencent.mm.storage.emotion.v;
+import com.tencent.mm.storage.emotion.x;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,43 +13,43 @@ public abstract interface e
 {
   public abstract byte[] a(EmojiInfo paramEmojiInfo);
   
-  public abstract boolean aBZ();
+  public abstract boolean aUW();
   
-  public abstract boolean aCa();
+  public abstract boolean aUX();
   
-  public abstract EmojiInfo aue(String paramString);
+  public abstract EmojiInfo aof(String paramString);
   
-  public abstract String auh(String paramString);
+  public abstract String aoi(String paramString);
   
-  public abstract void aur(String paramString);
+  public abstract void aos(String paramString);
   
-  public abstract boolean aus(String paramString);
+  public abstract boolean aot(String paramString);
   
-  public abstract boolean aut(String paramString);
+  public abstract boolean aou(String paramString);
   
-  public abstract void auu(String paramString);
+  public abstract void aov(String paramString);
   
-  public abstract void auv(String paramString);
+  public abstract void aow(String paramString);
   
-  public abstract <T> T c(ar.a parama, T paramT);
+  public abstract <T> T c(at.a parama, T paramT);
   
-  public abstract ArrayList<SmileyInfo> cUo();
+  public abstract void d(at.a parama, Object paramObject);
   
-  public abstract ArrayList<SmileyPanelConfigInfo> cUp();
+  public abstract void dzA();
   
-  public abstract String cUs();
+  public abstract boolean dzD();
   
-  public abstract void cUt();
+  public abstract List<x> dzE();
   
-  public abstract boolean cUw();
+  public abstract void dzF();
   
-  public abstract List<v> cUx();
+  public abstract boolean dzG();
   
-  public abstract void cUy();
+  public abstract ArrayList<SmileyInfo> dzv();
   
-  public abstract boolean cUz();
+  public abstract ArrayList<SmileyPanelConfigInfo> dzw();
   
-  public abstract void d(ar.a parama, Object paramObject);
+  public abstract String dzz();
   
   public abstract String getAccPath();
   
@@ -61,7 +61,7 @@ public abstract interface e
   
   public abstract void k(MStorage.IOnStorageChange paramIOnStorageChange);
   
-  public abstract EmojiInfo n(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public abstract EmojiInfo o(String paramString, int paramInt1, int paramInt2, int paramInt3);
   
   public abstract EmojiInfo p(EmojiInfo paramEmojiInfo);
   
@@ -71,7 +71,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.b.e
  * JD-Core Version:    0.7.0.1
  */

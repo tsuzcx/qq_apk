@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.a.m;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "view", "Landroid/view/View;", "margin", "", "invoke"})
+@Metadata(d1={""}, d2={"<no name provided>", "", "view", "Landroid/view/View;", "left", "", "top", "right", "bottom"}, k=3, mv={1, 5, 1}, xi=48)
 final class t$a$c
-  extends q
-  implements m<View, Integer, x>
+  extends u
+  implements s<View, Integer, Integer, Integer, Integer, ah>
 {
-  public static final c sEr;
+  public static final c vKn;
   
   static
   {
-    AppMethodBeat.i(262128);
-    sEr = new c();
-    AppMethodBeat.o(262128);
+    AppMethodBeat.i(302723);
+    vKn = new c();
+    AppMethodBeat.o(302723);
   }
   
   t$a$c()
   {
-    super(2);
+    super(5);
   }
 }
 

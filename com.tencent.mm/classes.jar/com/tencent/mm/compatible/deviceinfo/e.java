@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   implements d.a
 {
-  public static d.a.a e(Looper paramLooper)
+  public static d.a.a f(Looper paramLooper)
   {
     AppMethodBeat.i(155648);
     d.a.a locala = new d.a.a();
     try
     {
-      locala.jqD = x.f(paramLooper);
-      locala.fSM = 0;
-      if (locala.jqD == null)
+      locala.lTN = x.g(paramLooper);
+      locala.hYK = 0;
+      if (locala.lTN == null)
       {
         AppMethodBeat.o(155648);
         return null;
@@ -31,7 +31,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.e
  * JD-Core Version:    0.7.0.1
  */

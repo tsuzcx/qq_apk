@@ -1,306 +1,317 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.caption;
 
+import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker;
-import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.recordvideo.util.MultiMediaVideoChecker;
+import com.tencent.mm.plugin.recordvideo.util.MultiMediaVideoChecker.a;
 import com.tencent.mm.plugin.vlog.model.u;
-import com.tencent.mm.protocal.protobuf.ta;
+import com.tencent.mm.protocal.protobuf.uq;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.ResultKt;
-import kotlin.d.d;
-import kotlin.g.a.m;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.r;
-import kotlin.g.b.p;
-import kotlin.l;
 import kotlin.n.n;
-import kotlin.x;
-import kotlinx.coroutines.ak;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "type", "", "key", "ret", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "transition", "", "chanCfg", "extractFinish", "", "filePath", "isRelease", "mediaExtractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "needRequest", "netScene", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/NetSceneGetVideoCaption;", "profile", "requesting", "getRequesting", "()Z", "setRequesting", "(Z)V", "sampleRate", "total", "transResult", "transRet", "voiceData", "Ljava/nio/ByteBuffer;", "doNetRequest", "data", "Lcom/tencent/mm/protobuf/ByteString;", "seq", "offset", "doNetVoiceTranslate", "getTransResult", "getTransStatus", "loadAudioTrackData", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "saveBuffer2File", "setupExtractor", "voiceTransLate", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "type", "", "key", "ret", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "transition", "", "chanCfg", "extractFinish", "", "filePath", "isRelease", "mediaExtractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "needRequest", "netScene", "Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/NetSceneGetVideoCaption;", "profile", "requesting", "getRequesting", "()Z", "setRequesting", "(Z)V", "sampleRate", "total", "transResult", "transRet", "voiceData", "Ljava/nio/ByteBuffer;", "doNetRequest", "data", "Lcom/tencent/mm/protobuf/ByteString;", "seq", "offset", "doNetVoiceTranslate", "getTransResult", "getTransStatus", "loadAudioTrackData", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "saveBuffer2File", "setupExtractor", "voiceTransLate", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private static long Nxw;
-  public static final a Nxx;
-  private e Nxp;
-  ArrayList<ta> Nxq;
-  private ByteBuffer Nxr;
-  private boolean Nxs;
-  boolean Nxt;
-  int Nxu;
-  private int Nxv;
+  public static final a.a Ukq;
+  private static long Uky;
+  boolean Bcz;
+  private e Ukr;
+  ArrayList<uq> Uks;
+  private ByteBuffer Ukt;
+  private boolean Uku;
+  boolean Ukv;
+  int Ukw;
+  private int Ukx;
   String filePath;
-  volatile boolean kTS;
-  com.tencent.mm.compatible.i.c kUU;
-  r<? super Integer, ? super String, ? super Integer, ? super ArrayList<ta>, x> ktT;
+  r<? super Integer, ? super String, ? super Integer, ? super ArrayList<uq>, ah> mXP;
+  com.tencent.mm.compatible.i.c nAr;
+  volatile boolean nzB;
   private int profile;
   private int sampleRate;
   private int total;
-  boolean xFl;
   
   static
   {
-    AppMethodBeat.i(228865);
-    Nxx = new a((byte)0);
-    AppMethodBeat.o(228865);
+    AppMethodBeat.i(283255);
+    Ukq = new a.a((byte)0);
+    AppMethodBeat.o(283255);
   }
   
   public a()
   {
-    AppMethodBeat.i(228864);
-    this.Nxq = new ArrayList();
+    AppMethodBeat.i(283224);
+    this.Uks = new ArrayList();
     this.filePath = "";
-    this.Nxt = true;
+    this.Ukv = true;
     this.profile = 2;
     this.sampleRate = 44100;
-    this.Nxv = 1;
-    com.tencent.mm.kernel.c localc = h.aHF();
-    p.j(localc, "MMKernel.network()");
-    localc.aGY().a(3835, (i)this);
-    AppMethodBeat.o(228864);
+    this.Ukx = 1;
+    com.tencent.mm.kernel.h.baD().mCm.a(3835, (com.tencent.mm.am.h)this);
+    AppMethodBeat.o(283224);
   }
   
   private final void a(int paramInt1, b paramb, int paramInt2, int paramInt3)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(228847);
+    AppMethodBeat.i(283235);
     int i = this.total;
-    Object localObject1 = this.Nxp;
+    Object localObject1 = this.Ukr;
     e locale;
-    StringBuilder localStringBuilder;
-    if (localObject1 != null)
+    if (localObject1 == null)
     {
-      localObject1 = ((e)localObject1).NyL;
+      localObject1 = null;
       locale = new e(paramInt1, paramb, paramInt2, paramInt3, i, (b)localObject1);
-      localStringBuilder = new StringBuilder("[").append(hashCode()).append("]do voiceTransLate vid:");
-      localObject1 = locale.NyL;
-      if (localObject1 == null) {
-        break label220;
+      StringBuilder localStringBuilder = new StringBuilder("[").append(hashCode()).append("]do voiceTransLate vid:");
+      localObject1 = locale.UlI;
+      if (localObject1 != null) {
+        break label195;
+      }
+      localObject1 = null;
+      label84:
+      localObject1 = localStringBuilder.append(localObject1).append(" seq:").append(paramInt2).append(" size:");
+      if (paramb != null) {
+        break label207;
       }
     }
-    label220:
-    for (localObject1 = ((b)localObject1).toString("UTF-8");; localObject1 = null)
+    label195:
+    label207:
+    for (paramb = localObject2;; paramb = Integer.valueOf(paramb.Op.length))
     {
-      localStringBuilder = localStringBuilder.append((String)localObject1).append(" seq:").append(paramInt2).append(" size:");
-      localObject1 = localObject2;
-      if (paramb != null) {
-        localObject1 = Integer.valueOf(paramb.UH.length);
-      }
-      Log.i("MicroMsg.EditCaptionDataManager", localObject1 + " offset:" + paramInt3);
+      Log.i("MicroMsg.EditCaptionDataManager", paramb + " offset:" + paramInt3);
       paramb = this.filePath;
-      p.k(paramb, "<set-?>");
+      kotlin.g.b.s.u(paramb, "<set-?>");
       locale.filePath = paramb;
-      this.Nxp = locale;
-      paramb = h.aHF();
-      p.j(paramb, "MMKernel.network()");
-      paramb.aGY().b((q)this.Nxp);
-      AppMethodBeat.o(228847);
+      this.Ukr = locale;
+      com.tencent.mm.kernel.h.baD().mCm.a((com.tencent.mm.am.p)this.Ukr, 0);
+      AppMethodBeat.o(283235);
       return;
-      localObject1 = null;
+      localObject1 = ((e)localObject1).UlI;
       break;
+      localObject1 = ((b)localObject1).toString("UTF-8");
+      break label84;
     }
   }
   
-  final int bfM(String paramString)
+  final int bfs(String paramString)
   {
-    AppMethodBeat.i(228845);
+    AppMethodBeat.i(283271);
+    label81:
+    label727:
+    label736:
     for (;;)
     {
+      Object localObject1;
+      int i;
+      int j;
+      int m;
+      int k;
+      label126:
+      long l;
       try
       {
-        if (this.kUU == null)
+        if (this.nAr == null)
         {
-          this.kUU = new com.tencent.mm.compatible.i.c();
-          localObject1 = this.kUU;
+          this.nAr = new com.tencent.mm.compatible.i.c();
+          localObject1 = this.nAr;
           if (localObject1 != null) {
             ((com.tencent.mm.compatible.i.c)localObject1).setDataSource(paramString);
           }
-          localObject1 = this.kUU;
-          if (localObject1 != null)
+          localObject1 = this.nAr;
+          if (localObject1 == null)
           {
-            i = ((com.tencent.mm.compatible.i.c)localObject1).getTrackCount();
-            break label682;
-            if (j >= i) {
-              break label676;
-            }
-            localObject1 = this.kUU;
-            if (localObject1 == null) {
-              break label309;
-            }
-            localObject1 = ((com.tencent.mm.compatible.i.c)localObject1).getTrackFormat(j);
-            if (localObject1 == null) {
-              break label315;
-            }
-            localObject2 = ((MediaFormat)localObject1).getString("mime");
-            Log.i("MicroMsg.EditCaptionDataManager", "track mime:".concat(String.valueOf(localObject2)));
-            if ((TextUtils.isEmpty((CharSequence)localObject2)) || (localObject2 == null) || (n.M((String)localObject2, "audio/", false) != true)) {
-              break label324;
-            }
-            localObject2 = this.kUU;
-            if (localObject2 == null) {
-              break label321;
-            }
-            ((com.tencent.mm.compatible.i.c)localObject2).selectTrack(j);
+            i = 0;
+            break label674;
+            m = j + 1;
+            localObject1 = this.nAr;
             if (localObject1 != null) {
-              break label333;
+              continue;
+            }
+            localObject1 = null;
+            break label685;
+            Log.i("MicroMsg.EditCaptionDataManager", kotlin.g.b.s.X("track mime:", localObject2));
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              break label702;
+            }
+            if ((localObject2 == null) || (n.U((String)localObject2, "audio/", false) != true)) {
+              break label696;
+            }
+            k = 1;
+            if (k == 0) {
+              break label702;
+            }
+            com.tencent.mm.compatible.i.c localc = this.nAr;
+            localObject2 = localObject1;
+            if (localc != null)
+            {
+              localc.selectTrack(j);
+              localObject2 = localObject1;
+            }
+            if (localObject2 != null) {
+              continue;
             }
             Log.e("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "no audio track]");
-            paramString = this.kUU;
+            paramString = this.nAr;
             if (paramString != null) {
-              paramString.release();
+              paramString.lZm.release();
             }
-            this.kUU = null;
-            this.Nxu = -2;
-            AppMethodBeat.o(228845);
+            this.nAr = null;
+            this.Ukw = -2;
+            AppMethodBeat.o(283271);
             return -2;
           }
         }
         else
         {
           Log.i("MicroMsg.EditCaptionDataManager", "already create extractor success");
-          AppMethodBeat.o(228845);
+          AppMethodBeat.o(283271);
           return 0;
         }
+        i = ((com.tencent.mm.compatible.i.c)localObject1).lZm.getTrackCount();
+        break label674;
+        localObject1 = ((com.tencent.mm.compatible.i.c)localObject1).getTrackFormat(j);
+        break label685;
+        localObject2 = ((MediaFormat)localObject1).getString("mime");
+        continue;
+        paramString = MultiMediaVideoChecker.ObB.aTG(paramString);
+        Log.i("MicroMsg.EditCaptionDataManager", "audio format:" + localObject2 + ", videoInfo:" + paramString);
+        if (paramString == null)
+        {
+          l = 0L;
+          kotlin.g.b.s.u(localObject2, "<this>");
+          kotlin.g.b.s.u("durationUs", "name");
+          if (!((MediaFormat)localObject2).containsKey("durationUs")) {
+            break label727;
+          }
+          l = ((MediaFormat)localObject2).getLong("durationUs");
+          break label715;
+          i = u.c((MediaFormat)localObject2, "bitrate", i);
+          this.profile = u.c((MediaFormat)localObject2, "profile", this.profile);
+          this.sampleRate = u.c((MediaFormat)localObject2, "sample-rate", this.sampleRate);
+          this.Ukx = u.c((MediaFormat)localObject2, "channel-count", this.Ukx);
+          float f1 = 2.0F * (i * ((float)l / 1000.0F / 1000.0F) / 8.0F);
+          float f2 = (float)l / 1000.0F / 20.0F * 7.0F;
+          this.Ukt = ByteBuffer.allocateDirect((int)(f1 + f2));
+          localObject1 = new StringBuilder("[").append(hashCode()).append("]allocate buffer size:");
+          paramString = this.Ukt;
+          if (paramString == null)
+          {
+            paramString = null;
+            Log.i("MicroMsg.EditCaptionDataManager", paramString + ", voiceSize:" + f1 + ", adtsSize:" + f2 + ", duration:" + l + ", bitrate:" + i);
+            AppMethodBeat.o(283271);
+            return 0;
+          }
+        }
+        else
+        {
+          l = paramString.duration;
+          continue;
+          i = paramString.audioBitrate;
+          continue;
+        }
+        j = paramString.capacity();
+        paramString = Integer.valueOf(j);
+        continue;
+        j = m;
       }
       catch (Exception paramString)
       {
-        localObject1 = this.kUU;
+        localObject1 = this.nAr;
         if (localObject1 != null) {
-          ((com.tencent.mm.compatible.i.c)localObject1).release();
+          ((com.tencent.mm.compatible.i.c)localObject1).lZm.release();
         }
-        this.kUU = null;
+        this.nAr = null;
         Log.printErrStackTrace("MicroMsg.EditCaptionDataManager", (Throwable)paramString, "", new Object[0]);
-        this.Nxu = -3;
-        AppMethodBeat.o(228845);
+        this.Ukw = -3;
+        AppMethodBeat.o(283271);
         return -3;
       }
-      int i = 0;
-      break label682;
-      label309:
-      Object localObject1 = null;
-      continue;
-      label315:
+      do
+      {
+        break;
+        if (i <= 0) {
+          break label709;
+        }
+        j = 0;
+        break;
+        if (localObject1 != null) {
+          break label269;
+        }
+        localObject2 = null;
+        break label81;
+        k = 0;
+        break label126;
+      } while (m < i);
       Object localObject2 = null;
       continue;
-      label321:
-      continue;
-      label324:
-      j += 1;
-      continue;
-      label333:
-      paramString = MultiMediaVideoChecker.NmA.bfs(paramString);
-      Log.i("MicroMsg.EditCaptionDataManager", "audio format:" + localObject1 + ", videoInfo:" + paramString);
-      long l;
-      label422:
-      label432:
-      float f1;
-      float f2;
-      if (paramString != null)
+      for (;;)
       {
-        l = paramString.duration;
-        p.k(localObject1, "$this$getLong");
-        p.k("durationUs", "name");
-        if (!((MediaFormat)localObject1).containsKey("durationUs")) {
-          break label652;
+        if (paramString != null) {
+          break label736;
         }
-        l = ((MediaFormat)localObject1).getLong("durationUs");
-        if (paramString == null) {
-          break label663;
-        }
-        i = paramString.audioBitrate;
-        i = u.c((MediaFormat)localObject1, "bitrate", i);
-        this.profile = u.c((MediaFormat)localObject1, "profile", this.profile);
-        this.sampleRate = u.c((MediaFormat)localObject1, "sample-rate", this.sampleRate);
-        this.Nxv = u.c((MediaFormat)localObject1, "channel-count", this.Nxv);
-        f1 = 2.0F * (i * ((float)l / 1000.0F / 1000.0F) / 8.0F);
-        f2 = (float)l / 1000.0F / 20.0F * 7.0F;
-        this.Nxr = ByteBuffer.allocateDirect((int)(f1 + f2));
-        localObject1 = new StringBuilder("[").append(hashCode()).append("]allocate buffer size:");
-        paramString = this.Nxr;
-        if (paramString == null) {
-          break label671;
-        }
-      }
-      label652:
-      label663:
-      label671:
-      for (paramString = Integer.valueOf(paramString.capacity());; paramString = null)
-      {
-        Log.i("MicroMsg.EditCaptionDataManager", paramString + ", voiceSize:" + f1 + ", adtsSize:" + f2 + ", duration:" + l + ", bitrate:" + i);
-        AppMethodBeat.o(228845);
-        return 0;
-        l = 0L;
+        i = 128000;
         break;
         l *= 1000L;
-        break label422;
-        i = 128000;
-        break label432;
       }
-      label676:
-      localObject1 = null;
-      continue;
-      label682:
-      int j = 0;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(228863);
-    if (paramq == null)
+    AppMethodBeat.i(283287);
+    if (paramp == null)
     {
-      paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.NetSceneGetVideoCaption");
-      AppMethodBeat.o(228863);
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.vlog.ui.plugin.caption.NetSceneGetVideoCaption");
+      AppMethodBeat.o(283287);
       throw paramString;
     }
-    if ((p.h(((e)paramq).filePath, this.filePath)) && (!this.kTS))
+    if ((kotlin.g.b.s.p(((e)paramp).filePath, this.filePath)) && (!this.nzB))
     {
       Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]onSceneEnd errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
-      int i = ((e)paramq).NxP;
+      int i = ((e)paramp).UkR;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.Nxq = ((e)paramq).NyJ;
-        Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]scene seq:" + ((e)paramq).mbp + " isLastRequest:" + ((e)paramq).NyK + " progress:" + ((e)paramq).getProgress());
-        paramString = (Iterable)this.Nxq;
+        this.Uks = ((e)paramp).UlJ;
+        Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]scene seq:" + ((e)paramp).oUj + " isLastRequest:" + ((e)paramp).UlK + " progress:" + ((e)paramp).getProgress());
+        paramString = (Iterable)this.Uks;
         paramInt1 = 0;
         paramString = paramString.iterator();
         while (paramString.hasNext())
         {
           Object localObject = paramString.next();
           if (paramInt1 < 0) {
-            kotlin.a.j.iBO();
+            kotlin.a.p.kkW();
           }
-          localObject = (ta)localObject;
-          Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]result" + paramInt1 + ": start:" + ((ta)localObject).Scf + " end:" + ((ta)localObject).Scg + " text:" + ((ta)localObject).Sce.toString("UTF-8"));
-          if ((((e)paramq).NyK) && (((e)paramq).getProgress() >= 100))
+          localObject = (uq)localObject;
+          Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]result" + paramInt1 + ": start:" + ((uq)localObject).YZX + " end:" + ((uq)localObject).YZY + " text:" + ((uq)localObject).YZW.toString("UTF-8"));
+          if ((((e)paramp).UlK) && (((e)paramp).getProgress() >= 100))
           {
-            long l = Nxw + 1L;
-            Nxw = l;
-            ((ta)localObject).id = l;
+            long l = Uky + 1L;
+            Uky = l;
+            ((uq)localObject).id = l;
           }
           paramInt1 += 1;
         }
         Log.i("MicroMsg.EditCaptionDataManager", "\n");
-        if (((e)paramq).NyK)
-        {
-          if (((e)paramq).getProgress() >= 100)
+        if (((e)paramp).UlK) {
+          if (((e)paramp).getProgress() >= 100)
           {
-            this.xFl = false;
-            paramString = this.ktT;
+            this.Bcz = false;
+            paramString = this.mXP;
             if (paramString != null)
             {
-              paramq = this.filePath;
-              if (!((Collection)this.Nxq).isEmpty())
+              paramp = this.filePath;
+              if (!((Collection)this.Uks).isEmpty())
               {
                 paramInt1 = 1;
                 if (paramInt1 == 0) {
@@ -310,100 +321,45 @@ public final class a
               label502:
               for (paramInt1 = 0;; paramInt1 = -2)
               {
-                paramString.a(Integer.valueOf(i), paramq, Integer.valueOf(paramInt1), this.Nxq);
-                AppMethodBeat.o(228863);
+                paramString.a(Integer.valueOf(i), paramp, Integer.valueOf(paramInt1), this.Uks);
+                AppMethodBeat.o(283287);
                 return;
                 paramInt1 = 0;
                 break;
               }
             }
-            AppMethodBeat.o(228863);
-            return;
           }
-          paramString = this.ktT;
-          if (paramString != null) {
-            paramString.a(Integer.valueOf(i), this.filePath, Integer.valueOf(0), this.Nxq);
+          else
+          {
+            paramString = this.mXP;
+            if (paramString != null) {
+              paramString.a(Integer.valueOf(i), this.filePath, Integer.valueOf(0), this.Uks);
+            }
+            Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]repeat query voice data");
+            paramString = this.Ukr;
+            kotlin.g.b.s.checkNotNull(paramString);
+            a(i, null, paramString.oUj, 0);
+            AppMethodBeat.o(283287);
           }
-          Log.i("MicroMsg.EditCaptionDataManager", "[" + hashCode() + "]repeat query voice data");
-          paramString = this.Nxp;
-          if (paramString == null) {
-            p.iCn();
-          }
-          a(i, null, paramString.mbp, 0);
-          AppMethodBeat.o(228863);
         }
       }
-      else if (((e)paramq).NyK)
+      else if (((e)paramp).UlK)
       {
-        this.Nxu = -1;
-        this.xFl = false;
-        paramString = this.ktT;
+        this.Ukw = -1;
+        this.Bcz = false;
+        paramString = this.mXP;
         if (paramString != null) {
           paramString.a(Integer.valueOf(i), this.filePath, Integer.valueOf(-1), null);
         }
-        this.Nxt = true;
+        this.Ukv = true;
       }
     }
-    AppMethodBeat.o(228863);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/caption/EditCaptionDataManager$Companion;", "", "()V", "BASE_CAPTION_ID", "", "CAPTION_EXTRACTOR_ERROR", "", "CAPTION_NO_AUDIO", "CAPTION_RESULT_ERROR", "CAPTION_RESULT_LOAD_MORE", "CAPTION_RESULT_OK", "DefaultAudioBitrate", "REQUEST_VOICE_SIZE", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class b
-    extends kotlin.d.b.a.j
-    implements m<ak, d<? super x>, Object>
-  {
-    int label;
-    private ak p$;
-    
-    b(a parama, int paramInt, d paramd)
-    {
-      super(paramd);
-    }
-    
-    public final d<x> create(Object paramObject, d<?> paramd)
-    {
-      AppMethodBeat.i(231525);
-      p.k(paramd, "completion");
-      paramd = new b(this.Nxy, this.cPi, paramd);
-      paramd.p$ = ((ak)paramObject);
-      AppMethodBeat.o(231525);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(231526);
-      paramObject1 = ((b)create(paramObject1, (d)paramObject2)).invokeSuspend(x.aazN);
-      AppMethodBeat.o(231526);
-      return paramObject1;
-    }
-    
-    public final Object invokeSuspend(Object paramObject)
-    {
-      AppMethodBeat.i(231524);
-      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
-      switch (this.label)
-      {
-      default: 
-        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(231524);
-        throw paramObject;
-      }
-      ResultKt.throwOnFailure(paramObject);
-      a.a(this.Nxy);
-      a.a(this.Nxy, this.cPi);
-      paramObject = x.aazN;
-      AppMethodBeat.o(231524);
-      return paramObject;
-    }
+    AppMethodBeat.o(283287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.caption.a
  * JD-Core Version:    0.7.0.1
  */

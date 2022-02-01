@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mv.ui.widget;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -18,61 +17,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mv.b.e;
 import com.tencent.mm.plugin.mv.b.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView;", "Landroidx/recyclerview/widget/RecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "itemDuration", "", "itemWidth", "", "layout", "Landroidx/recyclerview/widget/LinearLayoutManager;", "value", "", "progress", "getProgress", "()J", "setProgress", "(J)V", "totalDuration", "getTotalDuration", "setTotalDuration", "widthPerMills", "getWidthPerMills", "()D", "calculateItemWidth", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "fixPosition", "", "onInterceptTouchEvent", "e", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "updatePadding", "Companion", "SpanViewHolder", "SpansAdapter", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView;", "Landroidx/recyclerview/widget/RecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "itemDuration", "", "itemWidth", "", "layout", "Landroidx/recyclerview/widget/LinearLayoutManager;", "value", "", "progress", "getProgress", "()J", "setProgress", "(J)V", "totalDuration", "getTotalDuration", "setTotalDuration", "widthPerMills", "getWidthPerMills", "()D", "calculateItemWidth", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "fixPosition", "", "onInterceptTouchEvent", "e", "onSizeChanged", "w", "h", "oldw", "oldh", "onTouchEvent", "updatePadding", "Companion", "SpanViewHolder", "SpansAdapter", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TimeSpansView
   extends RecyclerView
 {
-  public static final a Gst;
-  private long Glx;
-  private final LinearLayoutManager Gsq;
-  private double Gsr;
-  private final double Gss;
-  private long progress;
-  private final int tHY;
+  public static final TimeSpansView.a Mms;
+  private long MfX;
+  private final LinearLayoutManager Mmt;
+  private double Mmu;
+  private final double Mmv;
+  private long hQO;
+  private final int wLI;
   
   static
   {
-    AppMethodBeat.i(231677);
-    Gst = new a((byte)0);
-    AppMethodBeat.o(231677);
+    AppMethodBeat.i(286724);
+    Mms = new TimeSpansView.a((byte)0);
+    AppMethodBeat.o(286724);
   }
   
   public TimeSpansView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(231676);
-    this.Gsq = new LinearLayoutManager(0, false);
-    this.Gsr = 5000.0D;
-    paramContext = LayoutInflater.from(getContext()).inflate(b.f.FZr, null, false);
-    p.j(paramContext, "itemView");
-    new b(paramContext).sGk.setText((CharSequence)"00:00");
+    AppMethodBeat.i(286703);
+    this.Mmt = new LinearLayoutManager(0, false);
+    this.Mmu = 5000.0D;
+    paramContext = LayoutInflater.from(getContext()).inflate(b.f.LVo, null, false);
+    s.s(paramContext, "itemView");
+    new b(paramContext).vLJ.setText((CharSequence)"00:00");
     paramContext.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    this.tHY = paramContext.getMeasuredWidth();
-    this.Gss = (this.tHY / this.Gsr);
+    this.wLI = paramContext.getMeasuredWidth();
+    this.Mmv = (this.wLI / this.Mmu);
     setAdapter((RecyclerView.a)new c());
-    setLayoutManager((RecyclerView.LayoutManager)this.Gsq);
+    setLayoutManager((RecyclerView.LayoutManager)this.Mmt);
     setClipChildren(false);
     setClipToPadding(false);
     a((RecyclerView.l)new TimeSpansView.1());
-    AppMethodBeat.o(231676);
+    AppMethodBeat.o(286703);
   }
   
-  private final void aad(int paramInt)
+  private final void aew(int paramInt)
   {
-    AppMethodBeat.i(231666);
-    double d1 = this.Glx;
+    AppMethodBeat.i(286710);
+    double d1 = this.MfX;
     RecyclerView.a locala = getAdapter();
-    if (locala == null) {
-      p.iCn();
-    }
-    p.j(locala, "adapter!!");
+    s.checkNotNull(locala);
     double d2 = locala.getItemCount();
-    double d3 = this.Gsr;
-    setPadding(paramInt / 2, 0, (int)((d1 - d2 * d3) * this.Gss) + paramInt / 2, 0);
-    AppMethodBeat.o(231666);
+    double d3 = this.Mmu;
+    setPadding(paramInt / 2, 0, (int)((d1 - d2 * d3) * this.Mmv) + paramInt / 2, 0);
+    AppMethodBeat.o(286710);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -82,17 +78,17 @@ public final class TimeSpansView
   
   public final long getProgress()
   {
-    return this.progress;
+    return this.hQO;
   }
   
   public final long getTotalDuration()
   {
-    return this.Glx;
+    return this.MfX;
   }
   
   public final double getWidthPerMills()
   {
-    return this.Gss;
+    return this.Mmv;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -102,13 +98,12 @@ public final class TimeSpansView
   
   public final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(231662);
+    AppMethodBeat.i(286762);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    aad(paramInt1);
-    AppMethodBeat.o(231662);
+    aew(paramInt1);
+    AppMethodBeat.o(286762);
   }
   
-  @SuppressLint({"ClickableViewAccessibility"})
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     return false;
@@ -116,70 +111,67 @@ public final class TimeSpansView
   
   public final void setProgress(long paramLong)
   {
-    AppMethodBeat.i(231661);
-    this.progress = paramLong;
-    int i = (int)(paramLong / this.Gsr);
+    AppMethodBeat.i(286756);
+    this.hQO = paramLong;
+    int i = (int)(paramLong / this.Mmu);
     double d1 = paramLong;
-    double d2 = this.Gsr;
+    double d2 = this.Mmu;
     double d3 = i;
-    double d4 = this.Gss;
-    this.Gsq.au(i, -(int)((d1 - d2 * d3) * d4));
-    AppMethodBeat.o(231661);
+    double d4 = this.Mmv;
+    this.Mmt.bo(i, -(int)((d1 - d2 * d3) * d4));
+    AppMethodBeat.o(286756);
   }
   
   public final void setTotalDuration(long paramLong)
   {
-    AppMethodBeat.i(231659);
-    this.Glx = paramLong;
-    Log.i("MicroMsg.TimeSpansView", "setup duration: " + this.Glx);
+    AppMethodBeat.i(286738);
+    this.MfX = paramLong;
+    Log.i("MicroMsg.TimeSpansView", s.X("setup duration: ", Long.valueOf(this.MfX)));
     int i = getWidth();
     getHeight();
-    aad(i);
-    AppMethodBeat.o(231659);
+    aew(i);
+    AppMethodBeat.o(286738);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$Companion;", "", "()V", "TAG", "", "plugin-mv_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$SpanViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "dot", "getDot", "()Landroid/view/View;", "time", "Landroid/widget/TextView;", "getTime", "()Landroid/widget/TextView;", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$SpanViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "dot", "getDot", "()Landroid/view/View;", "time", "Landroid/widget/TextView;", "getTime", "()Landroid/widget/TextView;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class b
     extends RecyclerView.v
   {
-    final View Gsu;
-    final TextView sGk;
+    final View Mmw;
+    final TextView vLJ;
     
     public b(View paramView)
     {
       super();
-      AppMethodBeat.i(229154);
+      AppMethodBeat.i(286595);
       View localView = paramView.findViewById(b.e.time);
-      p.j(localView, "itemView.findViewById(R.id.time)");
-      this.sGk = ((TextView)localView);
+      s.s(localView, "itemView.findViewById(R.id.time)");
+      this.vLJ = ((TextView)localView);
       paramView = paramView.findViewById(b.e.dot);
-      p.j(paramView, "itemView.findViewById(R.id.dot)");
-      this.Gsu = paramView;
-      AppMethodBeat.o(229154);
+      s.s(paramView, "itemView.findViewById(R.id.dot)");
+      this.Mmw = paramView;
+      AppMethodBeat.o(286595);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$SpansAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$SpanViewHolder;", "(Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView;)V", "inflater", "Landroid/view/LayoutInflater;", "kotlin.jvm.PlatformType", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$SpansAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView$SpanViewHolder;", "(Lcom/tencent/mm/plugin/mv/ui/widget/TimeSpansView;)V", "inflater", "Landroid/view/LayoutInflater;", "kotlin.jvm.PlatformType", "getItemCount", "", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   final class c
     extends RecyclerView.a<TimeSpansView.b>
   {
-    private final LayoutInflater mYa;
+    private final LayoutInflater pUI;
     
     public c()
     {
-      AppMethodBeat.i(227825);
-      this.mYa = LayoutInflater.from(this$1.getContext());
-      AppMethodBeat.o(227825);
+      AppMethodBeat.i(286589);
+      this.pUI = LayoutInflater.from(this.Mmx.getContext());
+      AppMethodBeat.o(286589);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(227823);
-      int i = (int)Math.ceil(this.Gsv.getTotalDuration() / TimeSpansView.a(this.Gsv));
-      AppMethodBeat.o(227823);
+      AppMethodBeat.i(286598);
+      int i = (int)Math.ceil(this.Mmx.getTotalDuration() / TimeSpansView.a(this.Mmx));
+      AppMethodBeat.o(286598);
       return i;
     }
   }

@@ -11,332 +11,333 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.thumbplayer.d.c.c;
-import com.tencent.mm.plugin.thumbplayer.d.f;
-import com.tencent.mm.plugin.thumbplayer.e.e;
+import com.tencent.mm.plugin.thumbplayer.c.b.c;
+import com.tencent.mm.plugin.thumbplayer.d.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.videocomposition.effect.g;
+import com.tencent.mm.videocomposition.effect.h;
 import com.tencent.mm.xeffect.effect.EffectManager;
 import java.util.List;
-import kotlin.a.j;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "effector", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController;", "value", "Lkotlin/Function0;", "", "firstFrameRenderCallback", "getFirstFrameRenderCallback", "()Lkotlin/jvm/functions/Function0;", "setFirstFrameRenderCallback", "(Lkotlin/jvm/functions/Function0;)V", "lastPauseMusicPosition", "", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "mediaChangeListener", "getMediaChangeListener", "()Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "setMediaChangeListener", "(Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;)V", "mvMusicProxy", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getMvMusicProxy", "()Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "setMvMusicProxy", "(Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;)V", "onPlayFinishListener", "getOnPlayFinishListener", "setOnPlayFinishListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "timeMs", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "mediaInfo", "onProgressCallback", "getOnProgressCallback", "()Lkotlin/jvm/functions/Function2;", "setOnProgressCallback", "(Lkotlin/jvm/functions/Function2;)V", "", "pauseOnVideoPlay", "getPauseOnVideoPlay", "()Z", "setPauseOnVideoPlay", "(Z)V", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;", "playStatusChangeListener", "getPlayStatusChangeListener", "()Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;", "setPlayStatusChangeListener", "(Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;)V", "reportInfo", "Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "getReportInfo", "()Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "textureView", "Landroid/view/TextureView;", "<set-?>", "totalDuration", "getTotalDuration", "()J", "clearPlayRange", "getCurrentPositionMs", "getEffectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "getMediaList", "", "getThumbFetcherExtraData", "", "onSurfaceTextureAvailable", "surface", "Landroid/graphics/SurfaceTexture;", "width", "height", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "pause", "refreshFrame", "release", "requestSnapshot", "callback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "resume", "seekTo", "seekToIndex", "index", "seekToIndexTime", "seekToMusic", "setLoop", "loop", "setMediaList", "mediaList", "setMute", "mute", "setPlayLoopForMedia", "media", "setPlayRange", "startTimeMs", "endTimeMs", "setTransition", "prevTransitionMedia", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaSEInfo;", "transitionPath", "start", "startIgnoreMusicPosition", "stop", "plugin-thumbplayer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/view/MultiMediaEffectVideoLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/TextureView$SurfaceTextureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "effector", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController;", "value", "Lkotlin/Function0;", "", "firstFrameRenderCallback", "getFirstFrameRenderCallback", "()Lkotlin/jvm/functions/Function0;", "setFirstFrameRenderCallback", "(Lkotlin/jvm/functions/Function0;)V", "lastPauseMusicPosition", "", "Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "mediaChangeListener", "getMediaChangeListener", "()Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "setMediaChangeListener", "(Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;)V", "mvMusicProxy", "Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "getMvMusicProxy", "()Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;", "setMvMusicProxy", "(Lcom/tencent/mm/plugin/thumbplayer/view/MvMusicProxy;)V", "onPlayFinishListener", "getOnPlayFinishListener", "setOnPlayFinishListener", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "timeMs", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "mediaInfo", "onProgressCallback", "getOnProgressCallback", "()Lkotlin/jvm/functions/Function2;", "setOnProgressCallback", "(Lkotlin/jvm/functions/Function2;)V", "", "pauseOnVideoPlay", "getPauseOnVideoPlay", "()Z", "setPauseOnVideoPlay", "(Z)V", "Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;", "playStatusChangeListener", "getPlayStatusChangeListener", "()Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;", "setPlayStatusChangeListener", "(Lcom/tencent/mm/plugin/thumbplayer/effect/MultiMediaEffectController$PlayerStatusChangeListener;)V", "reportInfo", "Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "getReportInfo", "()Lcom/tencent/mm/plugin/thumbplayer/model/MvPlayReportInfo;", "textureView", "Landroid/view/TextureView;", "<set-?>", "totalDuration", "getTotalDuration", "()J", "clearPlayRange", "getCurrentPositionMs", "getEffectManager", "Lcom/tencent/mm/xeffect/effect/EffectManager;", "getMediaList", "", "getThumbFetcherExtraData", "", "onSurfaceTextureAvailable", "surface", "Landroid/graphics/SurfaceTexture;", "width", "height", "onSurfaceTextureDestroyed", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "pause", "refreshFrame", "release", "requestSnapshot", "callback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "resume", "seekTo", "seekToIndex", "index", "seekToIndexTime", "seekToMusic", "setLoop", "loop", "setMediaList", "mediaList", "setMute", "mute", "setPlayLoopForMedia", "media", "setPlayRange", "startTimeMs", "endTimeMs", "setTransition", "prevTransitionMedia", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaSEInfo;", "transitionPath", "start", "startIgnoreMusicPosition", "stop", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MultiMediaEffectVideoLayout
   extends FrameLayout
   implements TextureView.SurfaceTextureListener
 {
-  private d Gjl;
-  private c.c MQh;
-  private boolean MQj;
-  private a<x> MQk;
-  private m<? super Long, ? super com.tencent.mm.plugin.thumbplayer.e.d, x> MQl;
-  private a<x> MQm;
-  private b MTV;
-  public final com.tencent.mm.plugin.thumbplayer.d.c MUy;
-  public long MUz;
+  private d Meq;
   public final String TAG;
-  private final TextureView aND;
+  private b.c TCK;
+  private boolean TCM;
+  private a<ah> TCN;
+  private m<? super Long, ? super com.tencent.mm.plugin.thumbplayer.a.b, ah> TCO;
+  private a<ah> TCQ;
+  private b TGB;
+  public final com.tencent.mm.plugin.thumbplayer.c.b TGY;
+  public long TGZ;
+  private final TextureView cHz;
   
   public MultiMediaEffectVideoLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(189841);
+    AppMethodBeat.i(272401);
     this.TAG = "MicroMsg.MultiMediaEffectVideoLayout";
-    this.aND = new TextureView(getContext());
-    this.MUy = new com.tencent.mm.plugin.thumbplayer.d.c();
-    this.MUz = -1L;
-    this.aND.setAlpha(1.0F);
-    this.aND.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
+    this.cHz = new TextureView(getContext());
+    this.TGY = new com.tencent.mm.plugin.thumbplayer.c.b();
+    this.TGZ = -1L;
+    this.cHz.setAlpha(1.0F);
+    this.cHz.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    addView((View)this.aND, (ViewGroup.LayoutParams)paramContext);
-    AppMethodBeat.o(189841);
+    addView((View)this.cHz, (ViewGroup.LayoutParams)paramContext);
+    AppMethodBeat.o(272401);
   }
   
   public MultiMediaEffectVideoLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(189843);
+    AppMethodBeat.i(272408);
     this.TAG = "MicroMsg.MultiMediaEffectVideoLayout";
-    this.aND = new TextureView(getContext());
-    this.MUy = new com.tencent.mm.plugin.thumbplayer.d.c();
-    this.MUz = -1L;
-    this.aND.setAlpha(1.0F);
-    this.aND.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
+    this.cHz = new TextureView(getContext());
+    this.TGY = new com.tencent.mm.plugin.thumbplayer.c.b();
+    this.TGZ = -1L;
+    this.cHz.setAlpha(1.0F);
+    this.cHz.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    addView((View)this.aND, (ViewGroup.LayoutParams)paramContext);
-    AppMethodBeat.o(189843);
+    addView((View)this.cHz, (ViewGroup.LayoutParams)paramContext);
+    AppMethodBeat.o(272408);
   }
   
   public MultiMediaEffectVideoLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(189849);
+    AppMethodBeat.i(272416);
     this.TAG = "MicroMsg.MultiMediaEffectVideoLayout";
-    this.aND = new TextureView(getContext());
-    this.MUy = new com.tencent.mm.plugin.thumbplayer.d.c();
-    this.MUz = -1L;
-    this.aND.setAlpha(1.0F);
-    this.aND.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
+    this.cHz = new TextureView(getContext());
+    this.TGY = new com.tencent.mm.plugin.thumbplayer.c.b();
+    this.TGZ = -1L;
+    this.cHz.setAlpha(1.0F);
+    this.cHz.setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
-    addView((View)this.aND, (ViewGroup.LayoutParams)paramContext);
-    AppMethodBeat.o(189849);
+    addView((View)this.cHz, (ViewGroup.LayoutParams)paramContext);
+    AppMethodBeat.o(272416);
   }
   
-  public final void a(e parame, String paramString)
+  public final void a(com.tencent.mm.plugin.thumbplayer.d.d paramd, String paramString)
   {
-    AppMethodBeat.i(189813);
-    p.k(parame, "prevTransitionMedia");
-    this.MUy.a(parame, paramString);
-    AppMethodBeat.o(189813);
+    AppMethodBeat.i(272572);
+    s.u(paramd, "prevTransitionMedia");
+    this.TGY.a(paramd, paramString);
+    AppMethodBeat.o(272572);
   }
   
-  public final void aG(long paramLong1, long paramLong2)
+  public final void bs(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(189815);
-    this.MUy.aG(paramLong1, paramLong2);
-    AppMethodBeat.o(189815);
+    AppMethodBeat.i(272574);
+    this.TGY.bs(paramLong1, paramLong2);
+    AppMethodBeat.o(272574);
   }
   
   public final long getCurrentPositionMs()
   {
-    return this.MUy.MQt;
+    return this.TGY.TCX;
   }
   
   public final EffectManager getEffectManager()
   {
-    return this.MUy.MQn.ANo;
+    return this.TGY.TCR.GpO;
   }
   
-  public final a<x> getFirstFrameRenderCallback()
+  public final a<ah> getFirstFrameRenderCallback()
   {
-    return this.MQk;
+    return this.TCN;
   }
   
   public final d getMediaChangeListener()
   {
-    return this.Gjl;
+    return this.Meq;
   }
   
-  public final List<com.tencent.mm.plugin.thumbplayer.e.d> getMediaList()
+  public final List<com.tencent.mm.plugin.thumbplayer.a.b> getMediaList()
   {
-    return (List)this.MUy.xoX;
+    return (List)this.TGY.ofu;
   }
   
   public final b getMvMusicProxy()
   {
-    return this.MTV;
+    return this.TGB;
   }
   
-  public final a<x> getOnPlayFinishListener()
+  public final a<ah> getOnPlayFinishListener()
   {
-    return this.MQm;
+    return this.TCQ;
   }
   
-  public final m<Long, com.tencent.mm.plugin.thumbplayer.e.d, x> getOnProgressCallback()
+  public final m<Long, com.tencent.mm.plugin.thumbplayer.a.b, ah> getOnProgressCallback()
   {
-    return this.MQl;
+    return this.TCO;
   }
   
   public final boolean getPauseOnVideoPlay()
   {
-    return this.MQj;
+    return this.TCM;
   }
   
-  public final c.c getPlayStatusChangeListener()
+  public final b.c getPlayStatusChangeListener()
   {
-    return this.MQh;
+    return this.TCK;
   }
   
-  public final com.tencent.mm.plugin.thumbplayer.e.c getReportInfo()
+  public final c getReportInfo()
   {
-    return this.MUy.MQB;
+    return this.TGY.TDf;
   }
   
   public final long getTotalDuration()
   {
-    AppMethodBeat.i(189782);
-    f localf = this.MUy.MQr;
-    if (localf != null)
+    AppMethodBeat.i(272493);
+    com.tencent.mm.plugin.thumbplayer.c.d locald = this.TGY.TCV;
+    if (locald == null)
     {
-      long l = localf.getDuration();
-      AppMethodBeat.o(189782);
-      return l;
+      AppMethodBeat.o(272493);
+      return 0L;
     }
-    AppMethodBeat.o(189782);
-    return 0L;
+    long l = locald.getDuration();
+    AppMethodBeat.o(272493);
+    return l;
   }
   
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189832);
+    AppMethodBeat.i(272595);
+    s.u(paramSurfaceTexture, "surface");
     Log.i(this.TAG, "onSurfaceTextureAvailable, size:[" + paramInt1 + ',' + paramInt2 + "], surface:" + paramSurfaceTexture);
-    this.MUy.setSize(paramInt1, paramInt2);
-    if (paramSurfaceTexture != null)
-    {
-      com.tencent.mm.plugin.thumbplayer.d.c localc = this.MUy;
-      p.k(paramSurfaceTexture, "surface");
-      Log.i(localc.TAG, "attachSurface:".concat(String.valueOf(paramSurfaceTexture)));
-      localc.MQn.setSurface(new Surface(paramSurfaceTexture));
-      localc.FhU = paramSurfaceTexture;
-    }
-    AppMethodBeat.o(189832);
+    this.TGY.setSize(paramInt1, paramInt2);
+    com.tencent.mm.plugin.thumbplayer.c.b localb = this.TGY;
+    s.u(paramSurfaceTexture, "surface");
+    Log.i(localb.TAG, s.X("attachSurface:", paramSurfaceTexture));
+    localb.TCR.setSurface(new Surface(paramSurfaceTexture));
+    localb.Ldt = paramSurfaceTexture;
+    AppMethodBeat.o(272595);
   }
   
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(189825);
-    Log.i(this.TAG, "onSurfaceTextureDestroyed:".concat(String.valueOf(paramSurfaceTexture)));
-    paramSurfaceTexture = this.MUy;
+    AppMethodBeat.i(272590);
+    s.u(paramSurfaceTexture, "surface");
+    Log.i(this.TAG, s.X("onSurfaceTextureDestroyed:", paramSurfaceTexture));
+    paramSurfaceTexture = this.TGY;
     Log.i(paramSurfaceTexture.TAG, "detachSurface");
-    paramSurfaceTexture.MQn.setSurface(null);
-    paramSurfaceTexture.FhU = null;
-    AppMethodBeat.o(189825);
+    paramSurfaceTexture.TCR.setSurface(null);
+    paramSurfaceTexture.Ldt = null;
+    AppMethodBeat.o(272590);
     return true;
   }
   
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189820);
+    AppMethodBeat.i(272584);
+    s.u(paramSurfaceTexture, "surface");
     Log.i(this.TAG, "onSurfaceTextureSizeChanged, size:[" + paramInt1 + ',' + paramInt2 + "], surface:" + paramSurfaceTexture);
-    this.MUy.setSize(paramInt1, paramInt2);
-    AppMethodBeat.o(189820);
+    this.TGY.setSize(paramInt1, paramInt2);
+    AppMethodBeat.o(272584);
   }
   
-  public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
+  {
+    AppMethodBeat.i(272586);
+    s.u(paramSurfaceTexture, "surface");
+    AppMethodBeat.o(272586);
+  }
   
   public final void pause()
   {
-    AppMethodBeat.i(189800);
-    this.MUy.pause();
-    b localb = this.MTV;
-    if (localb != null) {}
-    for (long l = localb.getCurrentPosition();; l = -1L)
+    AppMethodBeat.i(272541);
+    this.TGY.pause();
+    b localb = this.TGB;
+    if (localb == null) {}
+    for (long l = -1L;; l = localb.getCurrentPosition())
     {
-      this.MUz = l;
-      AppMethodBeat.o(189800);
+      this.TGZ = l;
+      AppMethodBeat.o(272541);
       return;
     }
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(189804);
-    this.MUy.seekTo(paramLong);
-    AppMethodBeat.o(189804);
+    AppMethodBeat.i(272548);
+    this.TGY.seekTo(paramLong);
+    AppMethodBeat.o(272548);
   }
   
-  public final void setFirstFrameRenderCallback(a<x> parama)
+  public final void setFirstFrameRenderCallback(a<ah> parama)
   {
-    this.MUy.MQk = parama;
-    this.MQk = parama;
+    this.TGY.TCN = parama;
+    this.TCN = parama;
   }
   
   public final void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(189807);
-    this.MUy.setLoop(paramBoolean);
-    AppMethodBeat.o(189807);
+    AppMethodBeat.i(272555);
+    this.TGY.setLoop(paramBoolean);
+    AppMethodBeat.o(272555);
   }
   
   public final void setMediaChangeListener(d paramd)
   {
-    this.MUy.MQi = paramd;
-    this.Gjl = paramd;
+    this.TGY.TCL = paramd;
+    this.Meq = paramd;
   }
   
-  public final void setMediaList(List<? extends com.tencent.mm.plugin.thumbplayer.e.d> paramList)
+  public final void setMediaList(List<? extends com.tencent.mm.plugin.thumbplayer.a.b> paramList)
   {
-    AppMethodBeat.i(189785);
-    p.k(paramList, "mediaList");
-    com.tencent.mm.plugin.thumbplayer.d.c.a(this.MUy, paramList);
-    AppMethodBeat.o(189785);
+    AppMethodBeat.i(272505);
+    s.u(paramList, "mediaList");
+    com.tencent.mm.plugin.thumbplayer.c.b.a(this.TGY, paramList);
+    AppMethodBeat.o(272505);
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(189789);
-    com.tencent.mm.plugin.thumbplayer.d.c localc = this.MUy;
-    Log.i(localc.TAG, "setMute:".concat(String.valueOf(paramBoolean)));
-    localc.lhf = paramBoolean;
-    AppMethodBeat.o(189789);
+    AppMethodBeat.i(272515);
+    com.tencent.mm.plugin.thumbplayer.c.b localb = this.TGY;
+    Log.i(localb.TAG, s.X("setMute:", Boolean.valueOf(paramBoolean)));
+    localb.nLP = paramBoolean;
+    AppMethodBeat.o(272515);
   }
   
   public final void setMvMusicProxy(b paramb)
   {
-    this.MTV = paramb;
+    this.TGB = paramb;
   }
   
-  public final void setOnPlayFinishListener(a<x> parama)
+  public final void setOnPlayFinishListener(a<ah> parama)
   {
-    this.MUy.MQm = parama;
-    this.MQm = parama;
+    this.TGY.TCQ = parama;
+    this.TCQ = parama;
   }
   
-  public final void setOnProgressCallback(m<? super Long, ? super com.tencent.mm.plugin.thumbplayer.e.d, x> paramm)
+  public final void setOnProgressCallback(m<? super Long, ? super com.tencent.mm.plugin.thumbplayer.a.b, ah> paramm)
   {
-    this.MUy.MQl = paramm;
-    this.MQl = paramm;
+    this.TGY.TCO = paramm;
+    this.TCO = paramm;
   }
   
   public final void setPauseOnVideoPlay(boolean paramBoolean)
   {
-    AppMethodBeat.i(189773);
-    Log.i(this.TAG, "set pauseOnVideoPlay:".concat(String.valueOf(paramBoolean)));
-    this.MUy.MQj = paramBoolean;
-    this.MQj = paramBoolean;
-    AppMethodBeat.o(189773);
+    AppMethodBeat.i(272451);
+    Log.i(this.TAG, s.X("set pauseOnVideoPlay:", Boolean.valueOf(paramBoolean)));
+    this.TGY.TCM = paramBoolean;
+    this.TCM = paramBoolean;
+    AppMethodBeat.o(272451);
   }
   
-  public final void setPlayLoopForMedia(com.tencent.mm.plugin.thumbplayer.e.d paramd)
+  public final void setPlayLoopForMedia(com.tencent.mm.plugin.thumbplayer.a.b paramb)
   {
-    AppMethodBeat.i(189795);
-    p.k(paramd, "media");
-    Object localObject = this.MUy;
-    p.k(paramd, "media");
-    Log.i(((com.tencent.mm.plugin.thumbplayer.d.c)localObject).TAG, "setPlayLoopForMedia, mediaId:" + paramd.mediaId);
-    ((com.tencent.mm.plugin.thumbplayer.d.c)localObject).setLoop(true);
-    ((com.tencent.mm.plugin.thumbplayer.d.c)localObject).iv(j.listOf(paramd));
-    localObject = this.MTV;
-    if (localObject != null)
-    {
-      ((b)localObject).ZN((int)paramd.MSE);
-      AppMethodBeat.o(189795);
-      return;
+    AppMethodBeat.i(272524);
+    s.u(paramb, "media");
+    Object localObject = this.TGY;
+    s.u(paramb, "media");
+    Log.i(((com.tencent.mm.plugin.thumbplayer.c.b)localObject).TAG, s.X("setPlayLoopForMedia, mediaId:", paramb.mediaId));
+    ((com.tencent.mm.plugin.thumbplayer.c.b)localObject).setLoop(true);
+    ((com.tencent.mm.plugin.thumbplayer.c.b)localObject).lB(p.listOf(paramb));
+    localObject = this.TGB;
+    if (localObject != null) {
+      ((b)localObject).aea((int)paramb.TBM);
     }
-    AppMethodBeat.o(189795);
+    AppMethodBeat.o(272524);
   }
   
-  public final void setPlayStatusChangeListener(c.c paramc)
+  public final void setPlayStatusChangeListener(b.c paramc)
   {
-    this.MUy.MQh = paramc;
-    this.MQh = paramc;
+    this.TGY.TCK = paramc;
+    this.TCK = paramc;
   }
   
   public final void start()
   {
-    AppMethodBeat.i(189797);
-    b localb = this.MTV;
-    if (localb != null) {}
-    for (long l = localb.getCurrentPosition();; l = -1L)
+    AppMethodBeat.i(272531);
+    b localb = this.TGB;
+    if (localb == null) {}
+    for (long l = -1L;; l = localb.getCurrentPosition())
     {
-      if ((l >= 0L) && (this.MUz != l)) {
-        this.MUy.seekTo(l);
+      if ((l >= 0L) && (this.TGZ != l)) {
+        this.TGY.seekTo(l);
       }
-      this.MUy.start();
-      this.MUz = -1L;
-      AppMethodBeat.o(189797);
+      this.TGY.start();
+      this.TGZ = -1L;
+      AppMethodBeat.o(272531);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.view.MultiMediaEffectVideoLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,109 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController;
+import com.tencent.mm.plugin.webview.core.m;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.j;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiDoAuthCurrentUrl;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "lastCallBackID", "getLastCallBackID", "setLastCallBackID", "(Ljava/lang/String;)V", "doCallBack", "", "jsApiHandler", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "errMsg", "doFailCallBack", "doSuccessCallBack", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiDoAuthCurrentUrl;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "lastCallBackID", "getLastCallBackID", "setLastCallBackID", "(Ljava/lang/String;)V", "doCallBack", "", "jsApiHandler", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "errMsg", "doFailCallBack", "doSuccessCallBack", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
-  extends com.tencent.mm.plugin.webview.d.c.a
+  extends com.tencent.mm.plugin.webview.jsapi.c.a
 {
-  private static String QuV;
-  public static final g QuW;
+  public static final g XmS;
+  private static String XmT;
   
   static
   {
-    AppMethodBeat.i(266012);
-    QuW = new g();
-    AppMethodBeat.o(266012);
+    AppMethodBeat.i(297888);
+    XmS = new g();
+    AppMethodBeat.o(297888);
   }
   
-  public static void b(h paramh, String paramString)
+  public static void b(j paramj, String paramString)
   {
-    AppMethodBeat.i(266010);
-    p.k(paramh, "jsApiHandler");
-    c(paramh, "doAuthCurrentUrl:fail ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(266010);
+    AppMethodBeat.i(297869);
+    s.u(paramj, "jsApiHandler");
+    c(paramj, "doAuthCurrentUrl:fail ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(297869);
   }
   
-  public static void bnd(String paramString)
+  public static void bmI(String paramString)
   {
-    QuV = paramString;
+    XmT = paramString;
   }
   
-  public static void c(h paramh, final String paramString)
+  public static void c(j paramj, final String paramString)
   {
-    AppMethodBeat.i(266011);
-    p.k(paramh, "jsApiHandler");
-    CharSequence localCharSequence = (CharSequence)QuV;
+    AppMethodBeat.i(297879);
+    s.u(paramj, "jsApiHandler");
+    CharSequence localCharSequence = (CharSequence)XmT;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.i("MicroMsg.JsApiDoAuthCurrentUrl", "lastCallBackID is null");
-      AppMethodBeat.o(266011);
+      AppMethodBeat.o(297879);
       return;
     }
-    d.uiThread((kotlin.g.a.a)new a(paramh, paramString));
-    AppMethodBeat.o(266011);
+    d.uiThread((kotlin.g.a.a)new a(paramj, paramString));
+    AppMethodBeat.o(297879);
   }
   
-  public static String hby()
+  public static String iBK()
   {
-    return QuV;
+    return XmT;
   }
   
-  public final boolean a(f paramf, n paramn)
+  public final boolean a(h paramh, p paramp)
   {
-    AppMethodBeat.i(266009);
-    p.k(paramf, "env");
-    p.k(paramn, "msg");
-    Context localContext = paramf.context;
-    if ((localContext instanceof WebViewUI)) {
-      ((WebViewUI)localContext).gZi();
+    AppMethodBeat.i(297896);
+    s.u(paramh, "env");
+    s.u(paramp, "msg");
+    Object localObject = paramh.context;
+    if ((localObject instanceof WebViewUI))
+    {
+      localObject = (WebViewUI)localObject;
+      if (((WebViewUI)localObject).Wzl != null)
+      {
+        localObject = ((Iterable)((WebViewUI)localObject).Wzl.WmV).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((m)((Iterator)localObject).next()).isL();
+        }
+      }
     }
-    QuV = paramn.POu;
+    XmT = paramp.WEH;
     Log.i("MicroMsg.JsApiDoAuthCurrentUrl", "SPA-Trace, JsApiDoAuthCurrentUrl call");
-    paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
-    AppMethodBeat.o(266009);
+    paramh.WDy.doCallback(paramp.WEH, s.X(paramp.function, ":ok"), null);
+    AppMethodBeat.o(297896);
     return true;
   }
   
-  public final String fCm()
+  public final String gPX()
   {
     return "doAuthCurrentUrl";
   }
   
-  public final int fCn()
+  public final int gPZ()
   {
     return 397;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    a(h paramh, String paramString)
+    a(j paramj, String paramString)
     {
       super();
     }

@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ab
 {
-  public boolean juo;
-  public int jup;
-  public int juq;
-  public int jur;
-  public int jus;
-  public int jut;
-  public int juu;
-  public int juv;
-  public int juw;
+  public boolean lXF;
+  public int lXG;
+  public int lXH;
+  public int lXI;
+  public int lXJ;
+  public int lXK;
+  public int lXL;
+  public int lXM;
+  public int lXN;
   public int mVideoHeight;
   public int mVideoWidth;
   
@@ -25,17 +25,17 @@ public final class ab
   
   public final void reset()
   {
-    this.juo = false;
+    this.lXF = false;
     this.mVideoHeight = 224;
     this.mVideoWidth = 288;
-    this.jup = 10;
-    this.juq = 3000000;
-    this.jur = 1;
-    this.jus = 1;
-    this.jut = 1;
-    this.juu = 0;
-    this.juv = 1;
-    this.juw = 0;
+    this.lXG = 10;
+    this.lXH = 3000000;
+    this.lXI = 1;
+    this.lXJ = 1;
+    this.lXK = 1;
+    this.lXL = 0;
+    this.lXM = 1;
+    this.lXN = 0;
   }
 }
 

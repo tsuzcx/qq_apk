@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.g;
+import com.tencent.mm.app.i;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.n;
 import com.tencent.mm.plugin.report.f;
@@ -19,7 +19,7 @@ public final class b
   public static boolean c(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131860);
-    if (((!paramString.equals("noop")) || ((ChannelUtil.shouldShowGprsAlert) && (ChannelUtil.isShowingGprsAlert))) && (n.cG(paramContext)))
+    if (((!paramString.equals("noop")) || ((ChannelUtil.shouldShowGprsAlert) && (ChannelUtil.isShowingGprsAlert))) && (n.dv(paramContext)))
     {
       Log.i("MicroMsg.CoreServiceHelper", "fully exited, no need to start service");
       AppMethodBeat.o(131860);
@@ -29,27 +29,27 @@ public final class b
     Intent localIntent = new Intent(paramContext, CoreService.class);
     localIntent.setFlags(268435456);
     localIntent.putExtra("START_TYPE", paramString);
-    if (c.aqw())
+    if (c.aKu())
     {
       Log.i("MicroMsg.CoreServiceHelper", "ensureServiceInstance() bindService");
-      MMApplicationContext.getContext().bindService(localIntent, new g(), 1);
+      MMApplicationContext.getContext().bindService(localIntent, new i(), 1);
       Log.i("MicroMsg.CoreServiceUtil", "if_26_num=%s  if_ignore_false=%s  ignore_true=%s", new Object[] { Boolean.valueOf(MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("if_26_num", true)), Boolean.valueOf(MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("if_ignore_false", true)), Boolean.valueOf(MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("ignore_true", false)) });
-      if ((d.qV(26)) && (MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("if_26_num", true)))
+      if ((d.rb(26)) && (MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("if_26_num", true)))
       {
         MultiProcessMMKV.getMMKV("service_launch_way").edit().putBoolean("if_26_num", false).commit();
-        f.Iyx.idkeyStat(954L, 92L, 1L, false);
+        f.Ozc.idkeyStat(954L, 92L, 1L, false);
       }
-      if (d.qV(26))
+      if (d.rb(26))
       {
-        if (c.cb(paramContext)) {
+        if (c.cN(paramContext)) {
           break label963;
         }
         if (MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("if_ignore_false", true))
         {
           MultiProcessMMKV.getMMKV("service_launch_way").edit().putBoolean("if_ignore_false", false).commit();
-          f.Iyx.idkeyStat(954L, 90L, 1L, false);
+          f.Ozc.idkeyStat(954L, 90L, 1L, false);
           if (MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("ignore_true", false)) {
-            f.Iyx.idkeyStat(954L, 91L, 1L, false);
+            f.Ozc.idkeyStat(954L, 91L, 1L, false);
           }
         }
       }
@@ -67,16 +67,16 @@ public final class b
         try
         {
           paramContext.startService(localIntent);
-          if (!d.qV(26)) {
+          if (!d.rb(26)) {
             break;
           }
-          if (d.qV(26))
+          if (d.rb(26))
           {
-            Log.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService crash_not_ignore=%s service_IllegalStateException=%s", new Object[] { Boolean.valueOf(MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("crash_not_ignore", false)), Boolean.valueOf(c.cb(paramContext)) });
-            if ((MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("crash_not_ignore", false)) && (c.cb(paramContext)) && (i == 0))
+            Log.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService crash_not_ignore=%s service_IllegalStateException=%s", new Object[] { Boolean.valueOf(MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("crash_not_ignore", false)), Boolean.valueOf(c.cN(paramContext)) });
+            if ((MultiProcessMMKV.getMMKV("service_launch_way").getBoolean("crash_not_ignore", false)) && (c.cN(paramContext)) && (i == 0))
             {
               MultiProcessMMKV.getMMKV("service_launch_way").edit().putBoolean("crash_not_ignore", false);
-              f.Iyx.idkeyStat(954L, 85L, 1L, false);
+              f.Ozc.idkeyStat(954L, 85L, 1L, false);
             }
           }
           if (j == 0) {
@@ -95,36 +95,36 @@ public final class b
             if ((localException instanceof IllegalStateException)) {
               i = 1;
             }
-            if (d.qV(26))
+            if (d.rb(26))
             {
               MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("service_launch_way");
-              boolean bool = c.cb(paramContext);
+              boolean bool = c.cN(paramContext);
               if (localMultiProcessMMKV.getBoolean("service_first_crash", true))
               {
                 Log.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=true result=%s", new Object[] { Boolean.valueOf(bool) });
                 localMultiProcessMMKV.edit().putBoolean("service_first_crash", false).commit();
-                f.Iyx.idkeyStat(954L, 80L, 1L, false);
+                f.Ozc.idkeyStat(954L, 80L, 1L, false);
                 if ((localException instanceof IllegalStateException))
                 {
-                  c.dG(false);
+                  c.es(false);
                   localMultiProcessMMKV.edit().putBoolean("service_IllegalStateException", true).commit();
-                  f.Iyx.idkeyStat(954L, 81L, 1L, false);
+                  f.Ozc.idkeyStat(954L, 81L, 1L, false);
                   if (bool)
                   {
-                    f.Iyx.idkeyStat(954L, 82L, 1L, false);
+                    f.Ozc.idkeyStat(954L, 82L, 1L, false);
                     k = 1;
                     j = i;
                     i = k;
                     continue;
                   }
                   localMultiProcessMMKV.edit().putBoolean("crash_not_ignore", true).commit();
-                  f.Iyx.idkeyStat(954L, 83L, 1L, false);
+                  f.Ozc.idkeyStat(954L, 83L, 1L, false);
                   k = 1;
                   j = i;
                   i = k;
                   continue;
                 }
-                f.Iyx.idkeyStat(954L, 86L, 1L, false);
+                f.Ozc.idkeyStat(954L, 86L, 1L, false);
                 k = 1;
                 j = i;
                 i = k;
@@ -133,22 +133,22 @@ public final class b
               Log.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false result=%s", new Object[] { Boolean.valueOf(bool) });
               if ((localException instanceof IllegalStateException))
               {
-                c.dG(false);
+                c.es(false);
                 if (!localMultiProcessMMKV.getBoolean("service_IllegalStateException", false))
                 {
                   Log.i("MicroMsg.CoreServiceUtil", "ensureServiceInstance() startService service_first_crash=false service_IllegalStateException=false");
                   localMultiProcessMMKV.edit().putBoolean("service_IllegalStateException", true).commit();
-                  f.Iyx.idkeyStat(954L, 87L, 1L, false);
+                  f.Ozc.idkeyStat(954L, 87L, 1L, false);
                   if (bool)
                   {
-                    f.Iyx.idkeyStat(954L, 82L, 1L, false);
+                    f.Ozc.idkeyStat(954L, 82L, 1L, false);
                     k = 1;
                     j = i;
                     i = k;
                     continue;
                   }
                   localMultiProcessMMKV.edit().putBoolean("crash_not_ignore", true).commit();
-                  f.Iyx.idkeyStat(954L, 83L, 1L, false);
+                  f.Ozc.idkeyStat(954L, 83L, 1L, false);
                   k = 1;
                   j = i;
                   i = k;
@@ -170,12 +170,12 @@ public final class b
     }
   }
   
-  public static void ca(Context paramContext)
+  public static void cM(Context paramContext)
   {
     AppMethodBeat.i(131861);
-    if (c.aqw())
+    if (c.aKu())
     {
-      g.aaF();
+      i.aCm();
       AppMethodBeat.o(131861);
       return;
     }
@@ -195,7 +195,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.b
  * JD-Core Version:    0.7.0.1
  */

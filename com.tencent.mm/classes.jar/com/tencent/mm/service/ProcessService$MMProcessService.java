@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class ProcessService$MMProcessService
   extends CommonProcessService
 {
-  private CoreService.a iPm = null;
+  private CoreService.a lri = null;
   
   public final String getTag()
   {
@@ -19,9 +19,9 @@ public class ProcessService$MMProcessService
     AppMethodBeat.i(133210);
     try
     {
-      this.iPm = ((CoreService.a)Class.forName("com.tencent.mm.platformtools.BroadcastHelper").newInstance());
-      Log.d("MicroMsg.MMProcessService", "broadcastRegisterHelper = %s", new Object[] { this.iPm });
-      this.iPm.registerBroadcasts();
+      this.lri = ((CoreService.a)Class.forName("com.tencent.mm.platformtools.BroadcastHelper").newInstance());
+      Log.d("MicroMsg.MMProcessService", "broadcastRegisterHelper = %s", new Object[] { this.lri });
+      this.lri.registerBroadcasts();
       super.onCreate();
       AppMethodBeat.o(133210);
       return;
@@ -38,10 +38,10 @@ public class ProcessService$MMProcessService
   public void onDestroy()
   {
     AppMethodBeat.i(133211);
-    if (this.iPm != null) {}
+    if (this.lri != null) {}
     try
     {
-      this.iPm.unRegisterBroadcasts();
+      this.lri.unRegisterBroadcasts();
       super.onDestroy();
       AppMethodBeat.o(133211);
       return;
@@ -57,7 +57,7 @@ public class ProcessService$MMProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.service.ProcessService.MMProcessService
  * JD-Core Version:    0.7.0.1
  */

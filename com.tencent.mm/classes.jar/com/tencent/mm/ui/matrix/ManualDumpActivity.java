@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.matrix;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +9,9 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.e.i;
 import com.tencent.matrix.resource.b.a.b;
-import com.tencent.matrix.resource.c;
 import com.tencent.matrix.resource.processor.ManualDumpProcessor;
-import com.tencent.matrix.resource.processor.ManualDumpProcessor.ManualDumpProcessorHelper;
-import com.tencent.matrix.resource.processor.ManualDumpProcessor.a;
+import com.tencent.matrix.resource.processor.ManualDumpProcessor.ManualDumpData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
@@ -26,77 +22,63 @@ import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.vfs.u;
+import com.tencent.threadpool.i;
 
 public class ManualDumpActivity
   extends MMActivity
   implements View.OnLongClickListener
 {
-  private String XKA;
-  private TextView XKB;
-  private TextView XKC;
-  private TextView XKD;
-  private TextView XKE;
-  private String XKy;
-  String XKz;
+  private String afxm;
+  private String afxn;
+  private String afxo;
+  private TextView afxp;
+  private TextView afxq;
+  private TextView afxr;
+  private TextView afxs;
+  private a afxt;
   
   public ManualDumpActivity()
   {
     AppMethodBeat.i(38869);
+    this.afxt = a.afxx;
     AppMethodBeat.o(38869);
-  }
-  
-  public static void XT()
-  {
-    AppMethodBeat.i(290795);
-    Log.v("MicroMsg.ManualDumpActivity", "triggering gc...");
-    Runtime.getRuntime().gc();
-    try
-    {
-      Thread.sleep(100L);
-      label24:
-      Runtime.getRuntime().runFinalization();
-      Log.v("MicroMsg.ManualDumpActivity", "gc was triggered.");
-      AppMethodBeat.o(290795);
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label24;
-    }
   }
   
   public int getLayoutId()
   {
-    return R.i.eiu;
+    return R.i.glt;
   }
   
   public void mute(View paramView)
   {
-    AppMethodBeat.i(290792);
-    paramView = (c)com.tencent.matrix.b.Vu().Y(c.class);
+    AppMethodBeat.i(249812);
+    paramView = (com.tencent.matrix.resource.c)com.tencent.matrix.c.avW().ai(com.tencent.matrix.resource.c.class);
     if (paramView == null)
     {
-      AppMethodBeat.o(290792);
+      AppMethodBeat.o(249812);
       return;
     }
-    paramView = paramView.daQ;
+    paramView = paramView.eZq;
     if (paramView == null)
     {
-      AppMethodBeat.o(290792);
+      AppMethodBeat.o(249812);
       return;
     }
-    paramView = paramView.dej;
+    paramView = paramView.fcU;
     if (!(paramView instanceof ManualDumpProcessor))
     {
-      AppMethodBeat.o(290792);
+      AppMethodBeat.o(249812);
       return;
     }
-    ((ManualDumpProcessor)paramView).ddS = true;
-    com.tencent.mm.plugin.report.service.h.IzE.a(18573, new Object[] { this.XKz, "mute", Integer.valueOf(0), Integer.valueOf(14), Integer.valueOf(0), BuildInfo.BUILD_TAG, BuildInfo.REV });
+    ((ManualDumpProcessor)paramView).fcC = true;
     Toast.makeText(this, "won't notify you util reboot", 0).show();
-    AppMethodBeat.o(290792);
+    if (this.afxt == a.afxx) {
+      this.afxt = a.afxz;
+    }
+    AppMethodBeat.o(249812);
   }
   
   public void onBackPressed()
@@ -128,90 +110,106 @@ public class ManualDumpActivity
           return true;
         }
       });
-      this.XKD = ((TextView)findViewById(R.h.dLa));
-      this.XKC = ((TextView)findViewById(R.h.dIx));
-      this.XKB = ((TextView)findViewById(R.h.dLb));
-      this.XKE = ((TextView)findViewById(R.h.dLc));
-      this.XKD.setOnLongClickListener(this);
-      this.XKC.setOnLongClickListener(this);
-      this.XKB.setOnLongClickListener(this);
-      this.XKz = getIntent().getStringExtra("activity");
-      this.XKy = getIntent().getStringExtra("ref_key");
-      this.XKA = getIntent().getStringExtra("leak_process");
-      this.XKD.setText(this.XKz);
-      paramBundle = (c)com.tencent.matrix.b.Vu().Y(c.class);
+      this.afxr = ((TextView)findViewById(R.h.fMD));
+      this.afxq = ((TextView)findViewById(R.h.fJP));
+      this.afxp = ((TextView)findViewById(R.h.fME));
+      this.afxs = ((TextView)findViewById(R.h.fMF));
+      this.afxr.setOnLongClickListener(this);
+      this.afxq.setOnLongClickListener(this);
+      this.afxp.setOnLongClickListener(this);
+      this.afxn = getIntent().getStringExtra("activity");
+      this.afxm = getIntent().getStringExtra("ref_key");
+      this.afxo = getIntent().getStringExtra("leak_process");
+      this.afxr.setText(this.afxn);
+      paramBundle = (com.tencent.matrix.resource.c)com.tencent.matrix.c.avW().ai(com.tencent.matrix.resource.c.class);
       if (paramBundle != null)
       {
-        paramBundle = paramBundle.daP;
-        paramBundle = "fgCycle:" + paramBundle.XE() + " ms, \nbgCycle:" + paramBundle.XF() + " ms, \ndetect times:" + paramBundle.XG() + "\nyour activity has leaked for more than " + paramBundle.XE() * paramBundle.XG() / 1000.0D / 60.0D + " minutes\n";
-        this.XKE.setText(paramBundle);
+        paramBundle = paramBundle.eZp;
+        paramBundle = "fgCycle:" + paramBundle.azk() + " ms, \nbgCycle:" + paramBundle.azl() + " ms, \ndetect times:" + paramBundle.azm() + "\nyour activity has leaked for more than " + paramBundle.azk() * paramBundle.azm() / 1000.0D / 60.0D + " minutes\n";
+        this.afxs.setText(paramBundle);
       }
-      Log.i("MicroMsg.ManualDumpActivity", "onCreate:mLeakedActivity:%s, mRefString:%s, mLeakProcess:%s", new Object[] { this.XKz, this.XKy, this.XKA });
+      Log.i("MicroMsg.ManualDumpActivity", "onCreate:mLeakedActivity:%s, mRefString:%s, mLeakProcess:%s", new Object[] { this.afxn, this.afxm, this.afxo });
+      paramBundle = (ManualDumpProcessor.ManualDumpData)getIntent().getParcelableExtra("dump_data");
+      localObject = (com.tencent.matrix.resource.c)com.tencent.matrix.c.avW().ai(com.tencent.matrix.resource.c.class);
+      if (localObject != null) {
+        break;
+      }
+      Log.e("MicroMsg.ManualDumpActivity", "plugin == null");
+      Toast.makeText(this, "plugin == null", 0).show();
       AppMethodBeat.o(38870);
       return;
       if (WeChatEnvironment.hasDebugger()) {
         paramBundle = "Activity Leak" + "(coolassist)";
       }
     }
+    if (((com.tencent.matrix.resource.c)localObject).eZq == null)
+    {
+      Log.e("MicroMsg.ManualDumpActivity", "watcher == null");
+      Toast.makeText(this, "watcher == null", 0).show();
+      AppMethodBeat.o(38870);
+      return;
+    }
+    Object localObject = ((com.tencent.matrix.resource.c)localObject).eZp.fbd;
+    if (localObject != a.b.fbl)
+    {
+      Log.e("MicroMsg.ManualDumpActivity", "current dump mode [%s] is not MANUAL_DUMP", new Object[] { ((a.b)localObject).name() });
+      Toast.makeText(this, "current dump mode [" + ((a.b)localObject).name() + "] is not MANUAL_DUMP, pls confirm that you are in the debug/coolassist env.", 1).show();
+      AppMethodBeat.o(38870);
+      return;
+    }
+    System.currentTimeMillis();
+    if (paramBundle != null)
+    {
+      localObject = paramBundle.fcI;
+      paramBundle = paramBundle.fcJ;
+      Log.i("MicroMsg.ManualDumpActivity", "dump success! leak process = %s, leak activity = %s, leak instance = %s", new Object[] { this.afxo, this.afxn, this.afxm });
+      Log.i("MicroMsg.ManualDumpActivity", "dump success! hprof = %s", new Object[] { localObject });
+      Log.i("MicroMsg.ManualDumpActivity", "dump success! refChain = %s", new Object[] { paramBundle });
+      this.afxq.setText((CharSequence)localObject);
+      localObject = this.afxp;
+      if (paramBundle == null) {}
+      for (paramBundle = "reference is null, pls pull hprof.";; paramBundle = paramBundle.replace(";", ";\n"))
+      {
+        ((TextView)localObject).setText(paramBundle);
+        AppMethodBeat.o(38870);
+        return;
+      }
+    }
+    Log.e("MicroMsg.ManualDumpActivity", "analyze failed");
+    Toast.makeText(this, "analyze failed", 0).show();
+    AppMethodBeat.o(38870);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(249801);
+    super.onDestroy();
+    a locala = this.afxt;
+    com.tencent.mm.plugin.report.service.h.OAn.b(18573, new Object[] { locala.getContent(), String.valueOf(locala.getId()), "0", Integer.valueOf(18), Integer.valueOf(0), BuildInfo.BUILD_TAG, BuildInfo.REV });
+    AppMethodBeat.o(249801);
   }
   
   public boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(290791);
+    AppMethodBeat.i(249807);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/matrix/ManualDumpActivity", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/matrix/ManualDumpActivity", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
     if ((paramView instanceof TextView))
     {
       ClipboardHelper.setText(((TextView)paramView).getText().toString());
-      com.tencent.mm.ui.base.h.cO(this, getString(R.l.app_copy_ok));
+      k.cZ(this, getString(R.l.app_copy_ok));
     }
     com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/matrix/ManualDumpActivity", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(290791);
+    AppMethodBeat.o(249807);
     return true;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(290790);
+    AppMethodBeat.i(249803);
     super.onResume();
-    com.tencent.e.h.ZvG.n(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(212495);
-        ManualDumpActivity localManualDumpActivity = ManualDumpActivity.this;
-        Object localObject = (c)com.tencent.matrix.b.Vu().Y(c.class);
-        if (localObject == null)
-        {
-          Log.e("MicroMsg.ManualDumpActivity", "plugin == null");
-          Toast.makeText(localManualDumpActivity, "plugin == null", 0).show();
-          AppMethodBeat.o(212495);
-          return;
-        }
-        if (((c)localObject).daQ == null)
-        {
-          Log.e("MicroMsg.ManualDumpActivity", "watcher == null");
-          Toast.makeText(localManualDumpActivity, "watcher == null", 0).show();
-          AppMethodBeat.o(212495);
-          return;
-        }
-        localObject = ((c)localObject).daP.dcD;
-        if (localObject != a.b.dcK)
-        {
-          Log.e("MicroMsg.ManualDumpActivity", "current dump mode [%s] is not MANUAL_DUMP", new Object[] { ((a.b)localObject).name() });
-          Toast.makeText(localManualDumpActivity, "current dump mode [" + ((a.b)localObject).name() + "] is not MANUAL_DUMP, pls confirm that you are in the debug/coolassist env.", 1).show();
-          AppMethodBeat.o(212495);
-          return;
-        }
-        localObject = s.a(localManualDumpActivity, "dumping...", false, 0, null);
-        long l = System.currentTimeMillis();
-        com.tencent.mm.plugin.report.service.h.IzE.a(18573, new Object[] { localManualDumpActivity.XKz, "clicked", Integer.valueOf(0), Integer.valueOf(11), Integer.valueOf(0), BuildInfo.BUILD_TAG, BuildInfo.REV });
-        com.tencent.e.h.ZvG.o(new ManualDumpActivity.3(localManualDumpActivity, l, (ProgressDialog)localObject), 500L);
-        AppMethodBeat.o(212495);
-      }
-    }, 500L);
-    AppMethodBeat.o(290790);
+    AppMethodBeat.o(249803);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -222,35 +220,47 @@ public class ManualDumpActivity
   
   public void share(final View paramView)
   {
-    AppMethodBeat.i(290794);
-    paramView = s.a(this, "compressing...", false, 0, null);
-    com.tencent.e.h.ZvG.f(new Runnable()
+    AppMethodBeat.i(249816);
+    paramView = w.a(this, "compressing...", false, 0, null);
+    com.tencent.threadpool.h.ahAA.i(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(242214);
-        String str1 = ManualDumpActivity.d(ManualDumpActivity.this).getText().toString();
+        AppMethodBeat.i(249791);
+        String str1 = ManualDumpActivity.a(ManualDumpActivity.this).getText().toString();
         final String str2 = str1 + ".zip";
-        r.a(new q(str1), str2);
-        com.tencent.e.h.ZvG.bc(new Runnable()
+        r.a(new u(str1), str2);
+        com.tencent.threadpool.h.ahAA.bk(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(249115);
-            ManualDumpActivity.4.this.ucb.dismiss();
+            AppMethodBeat.i(249789);
+            ManualDumpActivity.2.this.xif.dismiss();
             ManualDumpActivity.a(ManualDumpActivity.this, str2);
-            AppMethodBeat.o(249115);
+            AppMethodBeat.o(249789);
           }
         });
-        AppMethodBeat.o(242214);
+        AppMethodBeat.o(249791);
       }
     }, "MicroMsg.ManualDumpActivity");
-    AppMethodBeat.o(290794);
+    if (this.afxt == a.afxx) {
+      this.afxt = a.afxy;
+    }
+    AppMethodBeat.o(249816);
+  }
+  
+  static abstract enum a
+  {
+    private a() {}
+    
+    abstract String getContent();
+    
+    abstract int getId();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.ManualDumpActivity
  * JD-Core Version:    0.7.0.1
  */

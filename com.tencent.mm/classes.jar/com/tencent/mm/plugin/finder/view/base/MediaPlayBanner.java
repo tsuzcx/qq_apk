@@ -16,46 +16,48 @@ import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.c;
 import androidx.recyclerview.widget.RecyclerView.r;
 import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import com.tencent.mm.ui.base.a.b;
 import com.tencent.mm.view.MediaBanner.c;
 import com.tencent.mm.view.RecyclerHorizontalViewPager;
 import com.tencent.mm.view.RecyclerHorizontalViewPager.b;
-import com.tencent.mm.view.h;
-import kotlin.l;
+import com.tencent.mm.view.i;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/base/MediaPlayBanner;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "adapter", "getAdapter", "()Landroidx/recyclerview/widget/RecyclerView$Adapter;", "setAdapter", "(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V", "dataObserver", "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "Lcom/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1;", "focusPosition", "getFocusPosition", "()I", "setFocusPosition", "(I)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "indicator", "Lcom/tencent/mm/view/IMediaBannerIndicator;", "getIndicator", "()Lcom/tencent/mm/view/IMediaBannerIndicator;", "setIndicator", "(Lcom/tencent/mm/view/IMediaBannerIndicator;)V", "", "isAutoPlay", "()Z", "setAutoPlay", "(Z)V", "Landroidx/recyclerview/widget/LinearLayoutManager;", "layoutManager", "getLayoutManager", "()Landroidx/recyclerview/widget/LinearLayoutManager;", "setLayoutManager", "(Landroidx/recyclerview/widget/LinearLayoutManager;)V", "pageChangeCallback", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "getPageChangeCallback", "()Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "setPageChangeCallback", "(Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;)V", "", "playLoopDurationMs", "getPlayLoopDurationMs", "()J", "setPlayLoopDurationMs", "(J)V", "recyclerView", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "getRecyclerView", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "smoothScrollerSpeed", "", "getSmoothScrollerSpeed", "()F", "setSmoothScrollerSpeed", "(F)V", "getChildViewAt", "Landroid/view/View;", "position", "onAttachedToWindow", "", "onDetachedFromWindow", "pauseLoopPlay", "pauseDuration", "selectViewAt", "isAuto", "smoothScrollTo", "startLoopPlay", "duration", "stopLoopPlay", "Companion", "IPageChangeCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/view/base/MediaPlayBanner;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/ui/base/adapter/ViewWrapper;", "adapter", "getAdapter", "()Landroidx/recyclerview/widget/RecyclerView$Adapter;", "setAdapter", "(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V", "dataObserver", "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "Lcom/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1;", "focusPosition", "getFocusPosition", "()I", "setFocusPosition", "(I)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "indicator", "Lcom/tencent/mm/view/IMediaBannerIndicator;", "getIndicator", "()Lcom/tencent/mm/view/IMediaBannerIndicator;", "setIndicator", "(Lcom/tencent/mm/view/IMediaBannerIndicator;)V", "", "isAutoPlay", "()Z", "setAutoPlay", "(Z)V", "Landroidx/recyclerview/widget/LinearLayoutManager;", "layoutManager", "getLayoutManager", "()Landroidx/recyclerview/widget/LinearLayoutManager;", "setLayoutManager", "(Landroidx/recyclerview/widget/LinearLayoutManager;)V", "pageChangeCallback", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "getPageChangeCallback", "()Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "setPageChangeCallback", "(Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;)V", "", "playLoopDurationMs", "getPlayLoopDurationMs", "()J", "setPlayLoopDurationMs", "(J)V", "recyclerView", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "getRecyclerView", "()Lcom/tencent/mm/view/RecyclerHorizontalViewPager;", "smoothScrollerSpeed", "", "getSmoothScrollerSpeed", "()F", "setSmoothScrollerSpeed", "(F)V", "getChildViewAt", "Landroid/view/View;", "position", "onAttachedToWindow", "", "onDetachedFromWindow", "pauseLoopPlay", "pauseDuration", "selectViewAt", "isAuto", "smoothScrollTo", "startLoopPlay", "duration", "stopLoopPlay", "Companion", "IPageChangeCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class MediaPlayBanner
   extends FrameLayout
 {
-  public static final d Bec;
-  private LinearLayoutManager Arh;
-  private float BdV;
-  final RecyclerHorizontalViewPager BdW;
-  private long BdX;
-  private int BdY;
-  private h BdZ;
-  private MediaBanner.c Bea;
-  private final e Beb;
+  public static final MediaPlayBanner.a GGw;
+  private LinearLayoutManager AJH;
+  private int GGA;
+  private i GGB;
+  private MediaBanner.c GGC;
+  private final b GGD;
+  private float GGx;
+  private final RecyclerHorizontalViewPager GGy;
+  private long GGz;
   private final MMHandler handler;
   private boolean isAutoPlay;
-  private RecyclerView.a<b> jMq;
+  private RecyclerView.a<b> mlt;
   
   static
   {
-    AppMethodBeat.i(277080);
-    Bec = new d((byte)0);
-    AppMethodBeat.o(277080);
+    AppMethodBeat.i(345824);
+    GGw = new MediaPlayBanner.a((byte)0);
+    AppMethodBeat.o(345824);
   }
   
   public MediaPlayBanner(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(277077);
-    this.BdV = 60.0F;
+    AppMethodBeat.i(345732);
+    this.GGx = 60.0F;
     getContext();
     paramContext = new LinearLayoutManager()
     {
@@ -66,52 +68,55 @@ public class MediaPlayBanner
       
       public final void smoothScrollToPosition(RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss, int paramAnonymousInt)
       {
-        AppMethodBeat.i(270397);
-        paramAnonymousRecyclerView = new a(this, this.Bed.getContext());
-        paramAnonymousRecyclerView.cV(paramAnonymousInt);
+        AppMethodBeat.i(345728);
+        paramAnonymousRecyclerView = this.GGE.getContext();
+        paramAnonymousRecyclerView = new a(this.GGE, paramAnonymousRecyclerView);
+        paramAnonymousRecyclerView.cag = paramAnonymousInt;
         startSmoothScroll((RecyclerView.r)paramAnonymousRecyclerView);
-        AppMethodBeat.o(270397);
+        AppMethodBeat.o(345728);
       }
       
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
+      @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
       public static final class a
-        extends androidx.recyclerview.widget.p
+        extends o
       {
-        a(Context paramContext)
+        a(MediaPlayBanner paramMediaPlayBanner, Context paramContext)
         {
           super();
         }
         
-        public final float a(DisplayMetrics paramDisplayMetrics)
+        public final float c(DisplayMetrics paramDisplayMetrics)
         {
-          AppMethodBeat.i(291906);
-          kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
-          float f = this.Bef.Bed.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
-          AppMethodBeat.o(291906);
+          AppMethodBeat.i(345714);
+          s.u(paramDisplayMetrics, "displayMetrics");
+          float f = this.GGE.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
+          AppMethodBeat.o(345714);
           return f;
         }
       }
     };
     paramContext.setOrientation(0);
-    this.Arh = ((LinearLayoutManager)paramContext);
+    ah localah = ah.aiuX;
+    this.AJH = ((LinearLayoutManager)paramContext);
     paramContext = getContext();
-    kotlin.g.b.p.j(paramContext, "context");
+    s.s(paramContext, "context");
     paramContext = new RecyclerHorizontalViewPager(paramContext);
-    paramContext.setPageChangeListener((RecyclerHorizontalViewPager.b)new a(this));
-    paramContext.setLayoutManager((RecyclerView.LayoutManager)this.Arh);
+    paramContext.setPageChangeListener((RecyclerHorizontalViewPager.b)new c(this));
+    paramContext.setLayoutManager((RecyclerView.LayoutManager)getLayoutManager());
     addView((View)paramContext, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.BdW = paramContext;
-    this.BdX = 2500L;
-    this.Beb = new e(this);
-    this.handler = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new f(this));
-    AppMethodBeat.o(277077);
+    localah = ah.aiuX;
+    this.GGy = paramContext;
+    this.GGz = 2500L;
+    this.GGD = new b(this);
+    this.handler = new MMHandler(Looper.getMainLooper(), new MediaPlayBanner..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(345732);
   }
   
   public MediaPlayBanner(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(277078);
-    this.BdV = 60.0F;
+    AppMethodBeat.i(345738);
+    this.GGx = 60.0F;
     getContext();
     paramContext = new LinearLayoutManager()
     {
@@ -122,52 +127,55 @@ public class MediaPlayBanner
       
       public final void smoothScrollToPosition(RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss, int paramAnonymousInt)
       {
-        AppMethodBeat.i(270397);
-        paramAnonymousRecyclerView = new a(this, this.Bed.getContext());
-        paramAnonymousRecyclerView.cV(paramAnonymousInt);
+        AppMethodBeat.i(345728);
+        paramAnonymousRecyclerView = this.GGE.getContext();
+        paramAnonymousRecyclerView = new a(this.GGE, paramAnonymousRecyclerView);
+        paramAnonymousRecyclerView.cag = paramAnonymousInt;
         startSmoothScroll((RecyclerView.r)paramAnonymousRecyclerView);
-        AppMethodBeat.o(270397);
+        AppMethodBeat.o(345728);
       }
       
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
+      @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
       public static final class a
-        extends androidx.recyclerview.widget.p
+        extends o
       {
-        a(Context paramContext)
+        a(MediaPlayBanner paramMediaPlayBanner, Context paramContext)
         {
           super();
         }
         
-        public final float a(DisplayMetrics paramDisplayMetrics)
+        public final float c(DisplayMetrics paramDisplayMetrics)
         {
-          AppMethodBeat.i(291906);
-          kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
-          float f = this.Bef.Bed.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
-          AppMethodBeat.o(291906);
+          AppMethodBeat.i(345714);
+          s.u(paramDisplayMetrics, "displayMetrics");
+          float f = this.GGE.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
+          AppMethodBeat.o(345714);
           return f;
         }
       }
     };
     paramContext.setOrientation(0);
-    this.Arh = ((LinearLayoutManager)paramContext);
+    paramAttributeSet = ah.aiuX;
+    this.AJH = ((LinearLayoutManager)paramContext);
     paramContext = getContext();
-    kotlin.g.b.p.j(paramContext, "context");
+    s.s(paramContext, "context");
     paramContext = new RecyclerHorizontalViewPager(paramContext);
-    paramContext.setPageChangeListener((RecyclerHorizontalViewPager.b)new b(this));
-    paramContext.setLayoutManager((RecyclerView.LayoutManager)this.Arh);
+    paramContext.setPageChangeListener((RecyclerHorizontalViewPager.b)new c(this));
+    paramContext.setLayoutManager((RecyclerView.LayoutManager)getLayoutManager());
     addView((View)paramContext, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.BdW = paramContext;
-    this.BdX = 2500L;
-    this.Beb = new e(this);
-    this.handler = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new f(this));
-    AppMethodBeat.o(277078);
+    paramAttributeSet = ah.aiuX;
+    this.GGy = paramContext;
+    this.GGz = 2500L;
+    this.GGD = new b(this);
+    this.handler = new MMHandler(Looper.getMainLooper(), new MediaPlayBanner..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(345738);
   }
   
   public MediaPlayBanner(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(277079);
-    this.BdV = 60.0F;
+    AppMethodBeat.i(345748);
+    this.GGx = 60.0F;
     getContext();
     paramContext = new LinearLayoutManager()
     {
@@ -178,486 +186,427 @@ public class MediaPlayBanner
       
       public final void smoothScrollToPosition(RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss, int paramAnonymousInt)
       {
-        AppMethodBeat.i(270397);
-        paramAnonymousRecyclerView = new a(this, this.Bed.getContext());
-        paramAnonymousRecyclerView.cV(paramAnonymousInt);
+        AppMethodBeat.i(345728);
+        paramAnonymousRecyclerView = this.GGE.getContext();
+        paramAnonymousRecyclerView = new a(this.GGE, paramAnonymousRecyclerView);
+        paramAnonymousRecyclerView.cag = paramAnonymousInt;
         startSmoothScroll((RecyclerView.r)paramAnonymousRecyclerView);
-        AppMethodBeat.o(270397);
+        AppMethodBeat.o(345728);
       }
       
-      @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
+      @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
       public static final class a
-        extends androidx.recyclerview.widget.p
+        extends o
       {
-        a(Context paramContext)
+        a(MediaPlayBanner paramMediaPlayBanner, Context paramContext)
         {
           super();
         }
         
-        public final float a(DisplayMetrics paramDisplayMetrics)
+        public final float c(DisplayMetrics paramDisplayMetrics)
         {
-          AppMethodBeat.i(291906);
-          kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
-          float f = this.Bef.Bed.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
-          AppMethodBeat.o(291906);
+          AppMethodBeat.i(345714);
+          s.u(paramDisplayMetrics, "displayMetrics");
+          float f = this.GGE.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
+          AppMethodBeat.o(345714);
           return f;
         }
       }
     };
     paramContext.setOrientation(0);
-    this.Arh = ((LinearLayoutManager)paramContext);
+    paramAttributeSet = ah.aiuX;
+    this.AJH = ((LinearLayoutManager)paramContext);
     paramContext = getContext();
-    kotlin.g.b.p.j(paramContext, "context");
+    s.s(paramContext, "context");
     paramContext = new RecyclerHorizontalViewPager(paramContext);
     paramContext.setPageChangeListener((RecyclerHorizontalViewPager.b)new c(this));
-    paramContext.setLayoutManager((RecyclerView.LayoutManager)this.Arh);
+    paramContext.setLayoutManager((RecyclerView.LayoutManager)getLayoutManager());
     addView((View)paramContext, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.BdW = paramContext;
-    this.BdX = 2500L;
-    this.Beb = new e(this);
-    this.handler = new MMHandler(Looper.getMainLooper(), (MMHandler.Callback)new f(this));
-    AppMethodBeat.o(277079);
+    paramAttributeSet = ah.aiuX;
+    this.GGy = paramContext;
+    this.GGz = 2500L;
+    this.GGD = new b(this);
+    this.handler = new MMHandler(Looper.getMainLooper(), new MediaPlayBanner..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(345748);
   }
   
-  private void Nz(long paramLong)
+  private static final void a(RecyclerView.a parama, MediaPlayBanner paramMediaPlayBanner)
   {
-    AppMethodBeat.i(277072);
+    AppMethodBeat.i(345798);
+    s.u(paramMediaPlayBanner, "this$0");
+    ((com.tencent.mm.ui.base.a.a)parama).removeItem(((com.tencent.mm.ui.base.a.a)parama).getItemCount() - 1);
+    ((com.tencent.mm.ui.base.a.a)parama).a((RecyclerView.c)paramMediaPlayBanner.GGD);
+    parama = paramMediaPlayBanner.GGy;
+    com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+    com.tencent.mm.hellhoundlib.a.a.b(parama, locala.aYi(), "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "selectViewAt", "(IZ)V", "Undefined", "scrollToPosition", "(I)V");
+    parama.scrollToPosition(((Integer)locala.sb(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(parama, "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "selectViewAt", "(IZ)V", "Undefined", "scrollToPosition", "(I)V");
+    paramMediaPlayBanner.GGy.g(0, true, true);
+    a(paramMediaPlayBanner);
+    AppMethodBeat.o(345798);
+  }
+  
+  private static final boolean a(MediaPlayBanner paramMediaPlayBanner, Message paramMessage)
+  {
+    AppMethodBeat.i(345815);
+    s.u(paramMediaPlayBanner, "this$0");
+    s.u(paramMessage, "it");
+    RecyclerView.a locala;
+    int i;
+    int j;
+    if (paramMessage.what == 1)
+    {
+      locala = paramMediaPlayBanner.getAdapter();
+      if (locala != null) {
+        break label88;
+      }
+      i = 0;
+      if (i > 1)
+      {
+        j = paramMediaPlayBanner.getFocusPosition() + 1;
+        locala = paramMediaPlayBanner.getAdapter();
+        if (locala != null) {
+          break label97;
+        }
+        i = 0;
+        label65:
+        if (j >= i) {
+          break label106;
+        }
+        paramMediaPlayBanner.aU(j, true);
+        a(paramMediaPlayBanner);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(345815);
+      return true;
+      label88:
+      i = locala.getItemCount();
+      break;
+      label97:
+      i = locala.getItemCount();
+      break label65;
+      label106:
+      locala = paramMediaPlayBanner.getAdapter();
+      if (locala == null)
+      {
+        i = 0;
+        label119:
+        if (j != i) {
+          continue;
+        }
+        locala = paramMediaPlayBanner.getAdapter();
+        if (!(locala instanceof com.tencent.mm.ui.base.a.a)) {
+          continue;
+        }
+      }
+      try
+      {
+        ((com.tencent.mm.ui.base.a.a)locala).b((RecyclerView.c)paramMediaPlayBanner.GGD);
+        label153:
+        ((com.tencent.mm.ui.base.a.a)locala).aBb(((com.tencent.mm.ui.base.a.a)locala).getItemCount());
+        paramMediaPlayBanner.getRecyclerView().setItemAnimator(null);
+        paramMediaPlayBanner.aU(j, false);
+        paramMessage = paramMessage.obj;
+        if ((paramMessage instanceof Long))
+        {
+          paramMessage = (Long)paramMessage;
+          label200:
+          if (paramMessage != null) {
+            break label247;
+          }
+        }
+        label247:
+        for (long l = 2500L;; l = paramMessage.longValue())
+        {
+          paramMediaPlayBanner.postDelayed(new MediaPlayBanner..ExternalSyntheticLambda1(locala, paramMediaPlayBanner), l / 5L);
+          break;
+          i = locala.getItemCount();
+          break label119;
+          paramMessage = null;
+          break label200;
+        }
+      }
+      catch (Exception localException)
+      {
+        break label153;
+      }
+    }
+  }
+  
+  private void aU(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(345755);
+    RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = this.GGy;
+    com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+    com.tencent.mm.hellhoundlib.a.a.b(localRecyclerHorizontalViewPager, locala.aYi(), "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "smoothScrollTo", "(IZ)V", "Undefined", "smoothScrollToPosition", "(I)V");
+    localRecyclerHorizontalViewPager.smoothScrollToPosition(((Integer)locala.sb(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localRecyclerHorizontalViewPager, "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "smoothScrollTo", "(IZ)V", "Undefined", "smoothScrollToPosition", "(I)V");
+    this.GGy.g(paramInt, true, paramBoolean);
+    AppMethodBeat.o(345755);
+  }
+  
+  private void flb()
+  {
+    AppMethodBeat.i(345784);
+    this.handler.removeMessages(1);
+    AppMethodBeat.o(345784);
+  }
+  
+  private void rd(long paramLong)
+  {
+    AppMethodBeat.i(345764);
     if (this.isAutoPlay)
     {
       this.handler.removeMessages(1);
       Message localMessage = this.handler.obtainMessage(1, Long.valueOf(paramLong));
       this.handler.sendMessageDelayed(localMessage, paramLong);
     }
-    AppMethodBeat.o(277072);
-  }
-  
-  private void eiY()
-  {
-    AppMethodBeat.i(277074);
-    this.handler.removeMessages(1);
-    AppMethodBeat.o(277074);
-  }
-  
-  public final void ay(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(277070);
-    RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = this.BdW;
-    com.tencent.mm.hellhoundlib.b.a locala = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.b(localRecyclerHorizontalViewPager, locala.aFh(), "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "smoothScrollTo", "(IZ)V", "Undefined", "smoothScrollToPosition", "(I)V");
-    localRecyclerHorizontalViewPager.smoothScrollToPosition(((Integer)locala.sf(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.c(localRecyclerHorizontalViewPager, "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "smoothScrollTo", "(IZ)V", "Undefined", "smoothScrollToPosition", "(I)V");
-    this.BdW.g(paramInt, true, paramBoolean);
-    AppMethodBeat.o(277070);
+    AppMethodBeat.o(345764);
   }
   
   public final RecyclerView.a<b> getAdapter()
   {
-    return this.jMq;
+    return this.mlt;
   }
   
   public final int getFocusPosition()
   {
-    return this.BdY;
+    return this.GGA;
   }
   
-  public final h getIndicator()
+  public final i getIndicator()
   {
-    return this.BdZ;
+    return this.GGB;
   }
   
   public final LinearLayoutManager getLayoutManager()
   {
-    return this.Arh;
+    return this.AJH;
   }
   
   public final MediaBanner.c getPageChangeCallback()
   {
-    return this.Bea;
+    return this.GGC;
   }
   
   public final long getPlayLoopDurationMs()
   {
-    return this.BdX;
+    return this.GGz;
   }
   
   public final RecyclerHorizontalViewPager getRecyclerView()
   {
-    return this.BdW;
+    return this.GGy;
   }
   
   public final float getSmoothScrollerSpeed()
   {
-    return this.BdV;
+    return this.GGx;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(277075);
+    AppMethodBeat.i(345963);
     super.onAttachedToWindow();
     if (this.isAutoPlay) {
       a(this);
     }
-    AppMethodBeat.o(277075);
+    AppMethodBeat.o(345963);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(277076);
+    AppMethodBeat.i(345970);
     super.onDetachedFromWindow();
-    eiY();
-    AppMethodBeat.o(277076);
+    flb();
+    AppMethodBeat.o(345970);
   }
   
   public final void setAdapter(RecyclerView.a<b> parama)
   {
-    AppMethodBeat.i(277067);
-    this.jMq = parama;
-    this.BdW.setAdapter(this.jMq);
+    AppMethodBeat.i(345898);
+    this.mlt = parama;
+    this.GGy.setAdapter(this.mlt);
     try
     {
-      parama = this.jMq;
+      parama = this.mlt;
       if (parama != null) {
-        parama.b((RecyclerView.c)this.Beb);
+        parama.b((RecyclerView.c)this.GGD);
       }
     }
-    catch (Throwable parama)
+    finally
     {
       label42:
       break label42;
     }
-    parama = this.jMq;
-    if (parama != null)
-    {
-      parama.a((RecyclerView.c)this.Beb);
-      AppMethodBeat.o(277067);
-      return;
+    parama = this.mlt;
+    if (parama != null) {
+      parama.a((RecyclerView.c)this.GGD);
     }
-    AppMethodBeat.o(277067);
+    AppMethodBeat.o(345898);
   }
   
   public final void setAutoPlay(boolean paramBoolean)
   {
-    AppMethodBeat.i(277068);
+    AppMethodBeat.i(345908);
     this.isAutoPlay = paramBoolean;
     if (paramBoolean)
     {
       a(this);
-      AppMethodBeat.o(277068);
+      AppMethodBeat.o(345908);
       return;
     }
-    eiY();
-    AppMethodBeat.o(277068);
+    flb();
+    AppMethodBeat.o(345908);
   }
   
   public final void setFocusPosition(int paramInt)
   {
-    this.BdY = paramInt;
+    this.GGA = paramInt;
   }
   
-  public final void setIndicator(h paramh)
+  public final void setIndicator(i parami)
   {
-    this.BdZ = paramh;
+    this.GGB = parami;
   }
   
   public final void setLayoutManager(LinearLayoutManager paramLinearLayoutManager)
   {
-    AppMethodBeat.i(277066);
-    kotlin.g.b.p.k(paramLinearLayoutManager, "value");
-    this.Arh = paramLinearLayoutManager;
-    this.BdW.setLayoutManager((RecyclerView.LayoutManager)paramLinearLayoutManager);
-    AppMethodBeat.o(277066);
+    AppMethodBeat.i(345870);
+    s.u(paramLinearLayoutManager, "value");
+    this.AJH = paramLinearLayoutManager;
+    this.GGy.setLayoutManager((RecyclerView.LayoutManager)paramLinearLayoutManager);
+    AppMethodBeat.o(345870);
   }
   
   public final void setPageChangeCallback(MediaBanner.c paramc)
   {
-    this.Bea = paramc;
+    this.GGC = paramc;
   }
   
   public final void setPlayLoopDurationMs(long paramLong)
   {
-    AppMethodBeat.i(277069);
-    this.BdX = paramLong;
-    Nz(paramLong);
-    AppMethodBeat.o(277069);
+    AppMethodBeat.i(345920);
+    this.GGz = paramLong;
+    rd(paramLong);
+    AppMethodBeat.o(345920);
   }
   
   public final void setSmoothScrollerSpeed(float paramFloat)
   {
-    this.BdV = paramFloat;
+    this.GGx = paramFloat;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$recyclerView$1$1", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "plugin-finder_release"})
-  public static final class a
-    implements RecyclerHorizontalViewPager.b
-  {
-    a(MediaPlayBanner paramMediaPlayBanner) {}
-    
-    public final void al(int paramInt, boolean paramBoolean)
-    {
-      AppMethodBeat.i(263227);
-      this.Bed.setFocusPosition(paramInt);
-      Object localObject = this.Bed.getIndicator();
-      if (localObject != null) {
-        ((h)localObject).setCurrentIndex(paramInt);
-      }
-      localObject = this.Bed.getPageChangeCallback();
-      if (localObject != null)
-      {
-        ((MediaBanner.c)localObject).g(paramInt, paramBoolean, false);
-        AppMethodBeat.o(263227);
-        return;
-      }
-      AppMethodBeat.o(263227);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$recyclerView$1$1", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "Landroidx/recyclerview/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeInserted", "positionStart", "", "itemCount", "onItemRangeRemoved", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements RecyclerHorizontalViewPager.b
+    extends RecyclerView.c
   {
     b(MediaPlayBanner paramMediaPlayBanner) {}
     
-    public final void al(int paramInt, boolean paramBoolean)
+    public final void onChanged()
     {
-      AppMethodBeat.i(224458);
-      this.Bed.setFocusPosition(paramInt);
-      Object localObject = this.Bed.getIndicator();
-      if (localObject != null) {
-        ((h)localObject).setCurrentIndex(paramInt);
-      }
-      localObject = this.Bed.getPageChangeCallback();
-      if (localObject != null)
+      AppMethodBeat.i(345708);
+      super.onChanged();
+      Object localObject2 = this.GGE.getAdapter();
+      Object localObject1;
+      if (localObject2 != null)
       {
-        ((MediaBanner.c)localObject).g(paramInt, paramBoolean, false);
-        AppMethodBeat.o(224458);
+        localObject1 = this.GGE;
+        i locali = ((MediaPlayBanner)localObject1).getIndicator();
+        if (locali != null) {
+          locali.setCount(((RecyclerView.a)localObject2).getItemCount());
+        }
+        localObject2 = ((MediaPlayBanner)localObject1).getIndicator();
+        if (localObject2 != null) {
+          break label137;
+        }
+      }
+      label137:
+      for (int i = 0;; i = ((i)localObject2).getCount())
+      {
+        if (i > 0)
+        {
+          localObject1 = ((MediaPlayBanner)localObject1).getRecyclerView();
+          localObject2 = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+          com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aYi(), "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
+          ((RecyclerHorizontalViewPager)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sb(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
+        }
+        AppMethodBeat.o(345708);
         return;
       }
-      AppMethodBeat.o(224458);
+    }
+    
+    public final void onItemRangeInserted(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(345716);
+      super.onItemRangeInserted(paramInt1, paramInt2);
+      RecyclerView.a locala = this.GGE.getAdapter();
+      if (locala != null)
+      {
+        i locali = this.GGE.getIndicator();
+        if (locali != null) {
+          locali.setCount(locala.getItemCount());
+        }
+      }
+      AppMethodBeat.o(345716);
+    }
+    
+    public final void onItemRangeRemoved(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(345722);
+      super.onItemRangeRemoved(paramInt1, paramInt2);
+      RecyclerView.a locala = this.GGE.getAdapter();
+      if (locala != null)
+      {
+        i locali = this.GGE.getIndicator();
+        if (locali != null) {
+          locali.setCount(locala.getItemCount());
+        }
+      }
+      AppMethodBeat.o(345722);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$recyclerView$1$1", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$recyclerView$1$1", "Lcom/tencent/mm/view/RecyclerHorizontalViewPager$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     implements RecyclerHorizontalViewPager.b
   {
     c(MediaPlayBanner paramMediaPlayBanner) {}
     
-    public final void al(int paramInt, boolean paramBoolean)
+    public final void aE(int paramInt, boolean paramBoolean)
     {
-      AppMethodBeat.i(264762);
-      this.Bed.setFocusPosition(paramInt);
-      Object localObject = this.Bed.getIndicator();
+      AppMethodBeat.i(345719);
+      this.GGE.setFocusPosition(paramInt);
+      Object localObject = this.GGE.getIndicator();
       if (localObject != null) {
-        ((h)localObject).setCurrentIndex(paramInt);
+        ((i)localObject).setCurrentIndex(paramInt);
       }
-      localObject = this.Bed.getPageChangeCallback();
-      if (localObject != null)
-      {
+      localObject = this.GGE.getPageChangeCallback();
+      if (localObject != null) {
         ((MediaBanner.c)localObject).g(paramInt, paramBoolean, false);
-        AppMethodBeat.o(264762);
-        return;
       }
-      AppMethodBeat.o(264762);
+      AppMethodBeat.o(345719);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/base/MediaPlayBanner$Companion;", "", "()V", "DEFAULT_LOOP_INTERVAL", "", "DEFAULT_LOOP_PAUSE_INTERVAL", "SCROLL_TO_NEXT_WHAT", "", "TAG", "", "plugin-finder_release"})
-  public static final class d {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "Landroidx/recyclerview/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeInserted", "positionStart", "", "itemCount", "onItemRangeRemoved", "plugin-finder_release"})
-  public static final class e
-    extends RecyclerView.c
-  {
-    public final void onChanged()
-    {
-      AppMethodBeat.i(286910);
-      super.onChanged();
-      Object localObject1 = this.Bed.getAdapter();
-      if (localObject1 != null)
-      {
-        Object localObject2 = this.Bed.getIndicator();
-        if (localObject2 != null) {
-          ((h)localObject2).setCount(((RecyclerView.a)localObject1).getItemCount());
-        }
-        localObject1 = this.Bed.getIndicator();
-        if (localObject1 != null) {}
-        for (int i = ((h)localObject1).getCount();; i = 0)
-        {
-          if (i > 0)
-          {
-            localObject1 = this.Bed.getRecyclerView();
-            localObject2 = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-            com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
-            ((RecyclerHorizontalViewPager)localObject1).scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
-            com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$dataObserver$1", "onChanged", "()V", "Undefined", "scrollToPosition", "(I)V");
-          }
-          AppMethodBeat.o(286910);
-          return;
-        }
-      }
-      AppMethodBeat.o(286910);
-    }
-    
-    public final void onItemRangeInserted(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(286911);
-      super.onItemRangeInserted(paramInt1, paramInt2);
-      RecyclerView.a locala = this.Bed.getAdapter();
-      if (locala != null)
-      {
-        h localh = this.Bed.getIndicator();
-        if (localh != null)
-        {
-          localh.setCount(locala.getItemCount());
-          AppMethodBeat.o(286911);
-          return;
-        }
-        AppMethodBeat.o(286911);
-        return;
-      }
-      AppMethodBeat.o(286911);
-    }
-    
-    public final void onItemRangeRemoved(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(286912);
-      super.onItemRangeRemoved(paramInt1, paramInt2);
-      RecyclerView.a locala = this.Bed.getAdapter();
-      if (locala != null)
-      {
-        h localh = this.Bed.getIndicator();
-        if (localh != null)
-        {
-          localh.setCount(locala.getItemCount());
-          AppMethodBeat.o(286912);
-          return;
-        }
-        AppMethodBeat.o(286912);
-        return;
-      }
-      AppMethodBeat.o(286912);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
-  static final class f
-    implements MMHandler.Callback
-  {
-    f(MediaPlayBanner paramMediaPlayBanner) {}
-    
-    public final boolean handleMessage(Message paramMessage)
-    {
-      int j = 0;
-      AppMethodBeat.i(291535);
-      switch (paramMessage.what)
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(291535);
-        return true;
-        Object localObject = this.Bed.getAdapter();
-        label55:
-        int k;
-        if (localObject != null)
-        {
-          i = ((RecyclerView.a)localObject).getItemCount();
-          if (i <= 1) {
-            break label120;
-          }
-          k = this.Bed.getFocusPosition() + 1;
-          localObject = this.Bed.getAdapter();
-          if (localObject == null) {
-            break label122;
-          }
-        }
-        label120:
-        label122:
-        for (int i = ((RecyclerView.a)localObject).getItemCount();; i = 0)
-        {
-          if (k >= i) {
-            break label127;
-          }
-          this.Bed.ay(k, true);
-          MediaPlayBanner.a(this.Bed);
-          break;
-          i = 0;
-          break label55;
-          break;
-        }
-        label127:
-        localObject = this.Bed.getAdapter();
-        i = j;
-        if (localObject != null) {
-          i = ((RecyclerView.a)localObject).getItemCount();
-        }
-        if (k != i) {
-          continue;
-        }
-        final RecyclerView.a locala = this.Bed.getAdapter();
-        if (!(locala instanceof com.tencent.mm.ui.base.a.a)) {
-          continue;
-        }
-        try
-        {
-          locala.b((RecyclerView.c)MediaPlayBanner.b(this.Bed));
-          label187:
-          ((com.tencent.mm.ui.base.a.a)locala).auA(((com.tencent.mm.ui.base.a.a)locala).getItemCount());
-          this.Bed.getRecyclerView().setItemAnimator(null);
-          MediaPlayBanner.a(this.Bed, k);
-          localObject = paramMessage.obj;
-          paramMessage = (Message)localObject;
-          if (!(localObject instanceof Long)) {
-            paramMessage = null;
-          }
-          paramMessage = (Long)paramMessage;
-          if (paramMessage != null) {}
-          for (long l = paramMessage.longValue();; l = 2500L)
-          {
-            this.Bed.postDelayed((Runnable)new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(272757);
-                ((com.tencent.mm.ui.base.a.a)locala).removeItem(((com.tencent.mm.ui.base.a.a)locala).getItemCount() - 1);
-                locala.a((RecyclerView.c)MediaPlayBanner.b(this.Bee.Bed));
-                MediaPlayBanner localMediaPlayBanner = this.Bee.Bed;
-                RecyclerHorizontalViewPager localRecyclerHorizontalViewPager = localMediaPlayBanner.BdW;
-                com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-                com.tencent.mm.hellhoundlib.a.a.b(localRecyclerHorizontalViewPager, locala.aFh(), "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "selectViewAt", "(IZ)V", "Undefined", "scrollToPosition", "(I)V");
-                localRecyclerHorizontalViewPager.scrollToPosition(((Integer)locala.sf(0)).intValue());
-                com.tencent.mm.hellhoundlib.a.a.c(localRecyclerHorizontalViewPager, "com/tencent/mm/plugin/finder/view/base/MediaPlayBanner", "selectViewAt", "(IZ)V", "Undefined", "scrollToPosition", "(I)V");
-                localMediaPlayBanner.BdW.g(0, true, true);
-                MediaPlayBanner.a(this.Bee.Bed);
-                AppMethodBeat.o(272757);
-              }
-            }, l / 5L);
-            break;
-          }
-        }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/view/base/MediaPlayBanner$layoutManager$1$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class layoutManager$1$a
-    extends androidx.recyclerview.widget.p
+    extends o
   {
-    layoutManager$1$a(Context paramContext)
+    layoutManager$1$a(MediaPlayBanner paramMediaPlayBanner, Context paramContext)
     {
       super();
     }
     
-    public final float a(DisplayMetrics paramDisplayMetrics)
+    public final float c(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(291906);
-      kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
-      float f = this.Bef.Bed.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(291906);
+      AppMethodBeat.i(345714);
+      s.u(paramDisplayMetrics, "displayMetrics");
+      float f = this.GGE.getSmoothScrollerSpeed() / paramDisplayMetrics.densityDpi;
+      AppMethodBeat.o(345714);
       return f;
     }
   }

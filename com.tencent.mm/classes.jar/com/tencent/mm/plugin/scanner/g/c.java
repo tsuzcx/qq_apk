@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.scanner.g;
 
-import com.tencent.qbar.a.a;
-import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/result/IScanCodeResultFilter;", "", "filter", "", "Lcom/tencent/qbar/QBar$QBarResult;", "codeResultList", "scan-sdk_release"})
-public abstract interface c
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/result/IResultHandler;", "T", "", "destroy", "", "handleResult", "session", "", "result", "(JLjava/lang/Object;)V", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface c<T>
 {
-  public abstract List<a.a> hi(List<? extends a.a> paramList);
+  public abstract void destroy();
+  
+  public abstract void h(long paramLong, T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.g.c
  * JD-Core Version:    0.7.0.1
  */

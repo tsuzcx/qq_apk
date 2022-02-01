@@ -5,33 +5,33 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.VideoCapabilities;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
-import android.os.Build.VERSION;
 import com.tencent.liteav.basic.a;
 import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.util.TXCBuild;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class e
 {
   public static boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(230824);
+    AppMethodBeat.i(229889);
     if (a.a())
     {
-      AppMethodBeat.o(230824);
+      AppMethodBeat.o(229889);
       return true;
     }
     boolean bool = b(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(230824);
+    AppMethodBeat.o(229889);
     return bool;
   }
   
   public static boolean b(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(230826);
-    if (Build.VERSION.SDK_INT < 21)
+    AppMethodBeat.i(229900);
+    if (TXCBuild.VersionInt() < 21)
     {
-      AppMethodBeat.o(230826);
+      AppMethodBeat.o(229900);
       return false;
     }
     boolean bool2 = false;
@@ -124,14 +124,14 @@ public class e
     for (boolean bool1 = true;; bool1 = false)
     {
       TXCLog.i("TXCVideoDecoderUtils", "config hevc decoder switch : " + bool1 + " ,isSupport=" + bool2);
-      AppMethodBeat.o(230826);
+      AppMethodBeat.o(229900);
       return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.e
  * JD-Core Version:    0.7.0.1
  */

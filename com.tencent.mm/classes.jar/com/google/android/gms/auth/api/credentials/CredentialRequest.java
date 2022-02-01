@@ -5,37 +5,23 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="CredentialRequestCreator")
 public final class CredentialRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<CredentialRequest> CREATOR;
-  @SafeParcelable.Field(getter="isPasswordLoginSupported", id=1)
   private final boolean zzcu;
-  @SafeParcelable.Field(getter="getAccountTypes", id=2)
   private final String[] zzcv;
-  @SafeParcelable.Field(getter="getCredentialPickerConfig", id=3)
   private final CredentialPickerConfig zzcw;
-  @SafeParcelable.Field(getter="getCredentialHintPickerConfig", id=4)
   private final CredentialPickerConfig zzcx;
-  @SafeParcelable.Field(getter="isIdTokenRequested", id=5)
   private final boolean zzcy;
-  @SafeParcelable.Field(getter="getServerClientId", id=6)
   private final String zzcz;
-  @SafeParcelable.Field(getter="getIdTokenNonce", id=7)
   private final String zzda;
-  @SafeParcelable.Field(getter="getRequireUserMediation", id=8)
   private final boolean zzdb;
-  @SafeParcelable.Field(id=1000)
   private final int zzy;
   
   static
@@ -45,8 +31,7 @@ public final class CredentialRequest
     AppMethodBeat.o(88222);
   }
   
-  @SafeParcelable.Constructor
-  CredentialRequest(@SafeParcelable.Param(id=1000) int paramInt, @SafeParcelable.Param(id=1) boolean paramBoolean1, @SafeParcelable.Param(id=2) String[] paramArrayOfString, @SafeParcelable.Param(id=3) CredentialPickerConfig paramCredentialPickerConfig1, @SafeParcelable.Param(id=4) CredentialPickerConfig paramCredentialPickerConfig2, @SafeParcelable.Param(id=5) boolean paramBoolean2, @SafeParcelable.Param(id=6) String paramString1, @SafeParcelable.Param(id=7) String paramString2, @SafeParcelable.Param(id=8) boolean paramBoolean3)
+  CredentialRequest(int paramInt, boolean paramBoolean1, String[] paramArrayOfString, CredentialPickerConfig paramCredentialPickerConfig1, CredentialPickerConfig paramCredentialPickerConfig2, boolean paramBoolean2, String paramString1, String paramString2, boolean paramBoolean3)
   {
     AppMethodBeat.i(88217);
     this.zzy = paramInt;
@@ -239,7 +224,7 @@ public final class CredentialRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.CredentialRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/b86" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/cnc" />
+        <View android:id="@id/jzz" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="52.0dip" />
+    </LinearLayout>
+</FrameLayout>

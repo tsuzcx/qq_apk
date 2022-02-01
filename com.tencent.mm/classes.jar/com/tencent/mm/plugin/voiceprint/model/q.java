@@ -1,41 +1,42 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class q
-  implements i
+  implements h
 {
-  private String NGZ;
-  public a NHH;
-  private int NHe;
-  public String NHq;
-  public int NHr;
+  private String UsZ;
+  public a UtH;
+  private int Ute;
+  public String Utq;
+  public int Utr;
   
   public q()
   {
     AppMethodBeat.i(29809);
-    this.NHH = null;
-    this.NHr = -1;
-    this.NHq = null;
-    this.NGZ = null;
-    this.NHe = 0;
-    bh.aGY().a(611, this);
-    bh.aGY().a(613, this);
+    this.UtH = null;
+    this.Utr = -1;
+    this.Utq = null;
+    this.UsZ = null;
+    this.Ute = 0;
+    bh.aZW().a(611, this);
+    bh.aZW().a(613, this);
     AppMethodBeat.o(29809);
   }
   
   public q(a parama)
   {
     this();
-    this.NHH = parama;
+    this.UtH = parama;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(29810);
     Log.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
@@ -44,44 +45,44 @@ public final class q
       if (paramInt2 == -34)
       {
         Log.d("MicroMsg.VoicePrintUnLockService", "blocked by limit");
-        if (this.NHH != null) {
-          this.NHH.gwS();
+        if (this.UtH != null) {
+          this.UtH.hUP();
         }
         AppMethodBeat.o(29810);
         return;
       }
-      if (this.NHH != null) {
-        this.NHH.gwQ();
+      if (this.UtH != null) {
+        this.UtH.hUN();
       }
       AppMethodBeat.o(29810);
       return;
     }
-    if (paramq.getType() == 611)
+    if (paramp.getType() == 611)
     {
-      paramString = (d)paramq;
-      this.NHr = paramString.NGY;
-      this.NHq = paramString.NGX;
-      this.NGZ = paramString.NGZ;
-      Log.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.NHr), this.NGZ, Boolean.valueOf(Util.isNullOrNil(this.NHq)) });
-      if (this.NHH != null) {
-        this.NHH.bfZ(this.NHq);
+      paramString = (d)paramp;
+      this.Utr = paramString.UsY;
+      this.Utq = paramString.UsX;
+      this.UsZ = paramString.UsZ;
+      Log.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.Utr), this.UsZ, Boolean.valueOf(Util.isNullOrNil(this.Utq)) });
+      if (this.UtH != null) {
+        this.UtH.bfF(this.Utq);
       }
     }
-    if (paramq.getType() == 613) {
-      if (((j)paramq).Lz == 0)
+    if (paramp.getType() == 613) {
+      if (((j)paramp).brM == 0)
       {
         Log.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
-        if (this.NHH != null)
+        if (this.UtH != null)
         {
-          this.NHH.AH(true);
+          this.UtH.Gg(true);
           AppMethodBeat.o(29810);
         }
       }
       else
       {
         Log.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
-        if (this.NHH != null) {
-          this.NHH.AH(false);
+        if (this.UtH != null) {
+          this.UtH.Gg(false);
         }
       }
     }
@@ -90,18 +91,18 @@ public final class q
   
   public static abstract interface a
   {
-    public abstract void AH(boolean paramBoolean);
+    public abstract void Gg(boolean paramBoolean);
     
-    public abstract void bfZ(String paramString);
+    public abstract void bfF(String paramString);
     
-    public abstract void gwQ();
+    public abstract void hUN();
     
-    public abstract void gwS();
+    public abstract void hUP();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.q
  * JD-Core Version:    0.7.0.1
  */

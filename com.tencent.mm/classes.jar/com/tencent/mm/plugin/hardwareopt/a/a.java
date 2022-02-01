@@ -13,12 +13,12 @@ import com.tencent.mm.vending.g.e;
 public final class a
   implements com.tencent.mm.plugin.hardwareopt.a.a.a
 {
-  public final void sE(boolean paramBoolean)
+  public final void wK(boolean paramBoolean)
   {
     AppMethodBeat.i(55554);
-    new e().H(new Object[] { MMApplicationContext.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
+    new e().L(new Object[] { MMApplicationContext.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
     {
-      public final void cm(Object paramAnonymousObject)
+      public final void onInterrupt(Object paramAnonymousObject)
       {
         AppMethodBeat.i(55553);
         Log.w("MicroMsg.HardwareProvider", "hy: on interrupt.");

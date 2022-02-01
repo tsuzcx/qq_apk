@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/a8r"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@color/sg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:background="@color/sf" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:background="@color/se" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:background="@color/sh" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/d4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/hx5" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:src="@raw/media_player_play_btn" android:layout_centerVertical="true" android:elevation="@dimen/avq" app:iconColor="@color/az" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/g3i" android:background="@drawable/ag9" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_centerVertical="true" android:layout_marginStart="6.0dip" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/t3" android:id="@id/hx7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:minWidth="@dimen/d4" android:text="00:00" android:shadowColor="#33000000" android:shadowDx="3.0" android:shadowDy="3.0" android:shadowRadius="12.0" android:layout_toRightOf="@id/hx5" android:layout_centerVertical="true" android:elevation="@dimen/avq" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/t3" android:id="@id/hxg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bv" android:text="00:00" android:shadowColor="#33000000" android:shadowDx="3.0" android:shadowDy="3.0" android:shadowRadius="12.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:elevation="@dimen/avq" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/hxg" android:layout_toRightOf="@id/hx7" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center|left" android:id="@id/hxr" android:background="@drawable/azy" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" android:elevation="@dimen/avq" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/hxt" android:background="@drawable/azy" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/hxs" android:background="@drawable/azz" android:layout_width="0.0dip" android:layout_height="2.0dip" android:layout_marginLeft="@dimen/cd" android:layout_marginRight="@dimen/cd" />
+        <ImageView android:id="@id/hxv" android:paddingLeft="@dimen/df" android:paddingTop="@dimen/df" android:paddingRight="@dimen/df" android:paddingBottom="@dimen/df" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/bv" android:src="@raw/media_player_control_btn" android:elevation="@dimen/avq" />
+    </FrameLayout>
+</RelativeLayout>

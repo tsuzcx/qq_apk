@@ -1,137 +1,114 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.matrix.c.b;
-import com.tencent.matrix.report.d.a;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import com.tencent.e.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.bl;
-import com.tencent.mm.f.a.xa;
-import com.tencent.mm.f.a.xn;
-import com.tencent.mm.kernel.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.autogen.a.vd;
+import com.tencent.mm.k.i;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.w;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.agh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Date;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class ar
 {
-  long JZJ;
-  private boolean JZK;
-  int JZL;
-  int JZM;
-  IListener<xa> JZN;
-  IListener JZO;
-  IListener JZP;
-  boolean mgH;
-  boolean mgI;
+  private static final int Qwz;
   
-  ar()
+  static
   {
-    AppMethodBeat.i(95927);
-    this.JZJ = 0L;
-    this.mgH = false;
-    this.mgI = false;
-    this.JZK = false;
-    this.JZL = 0;
-    this.JZM = 1440;
-    this.JZN = new IListener()
+    AppMethodBeat.i(95919);
+    Qwz = i.aRC().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
+    AppMethodBeat.o(95919);
+  }
+  
+  public static boolean hhh()
+  {
+    AppMethodBeat.i(95917);
+    h.baF();
+    int i = ((Integer)h.baE().ban().get(at.a.acXg, Integer.valueOf(0))).intValue();
+    Log.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(Qwz) });
+    if (i < Qwz)
     {
-      private boolean fPs()
+      h.baF();
+      h.baE().ban().set(at.a.acXg, Integer.valueOf(i + 1));
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      AppMethodBeat.o(95917);
+      return bool;
+    }
+  }
+  
+  public static void j(ArrayList<String> paramArrayList, String paramString)
+  {
+    AppMethodBeat.i(95916);
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      AppMethodBeat.o(95916);
+      return;
+    }
+    paramArrayList = new ArrayList(paramArrayList).iterator();
+    while (paramArrayList.hasNext())
+    {
+      int i = Util.getInt((String)paramArrayList.next(), 0);
+      if (i != 0)
       {
-        AppMethodBeat.i(95923);
-        ar localar = ar.this;
-        try
+        Object localObject = al.hgB().alB(i);
+        if (localObject != null)
         {
-          if (localar.fPr())
+          TimeLineObject localTimeLineObject = ((SnsInfo)localObject).getTimeLine();
+          if ((localTimeLineObject != null) && (localTimeLineObject.ContentObj != null) && (localTimeLineObject.ContentObj.Zpq == 26))
           {
-            Date localDate = new Date();
-            i = localDate.getHours();
-            i = localDate.getMinutes() + i * 60;
-            if ((i >= localar.JZL) && (i <= localar.JZM))
-            {
-              Log.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  %d in [%d, %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localar.JZL), Integer.valueOf(localar.JZM) });
-              AppMethodBeat.o(95923);
-              return false;
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            int i = com.tencent.mm.n.h.axc().getInt("SnsImgPreLoadingSmallImage", 1);
-            int k = com.tencent.mm.n.h.axc().getInt("SnsImgPreLoadingBigImage", 1);
-            int m = com.tencent.mm.plugin.sns.model.b.a.fQc();
-            int j = com.tencent.mm.plugin.sns.model.b.a.fQb();
-            Log.i("MicroMsg.SnsPreTimelineService", " preloadingSamllImage %d preloadingBigImage %d preloadingVideo %d preloadingInterval %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
-            if ((i > 0) || (k > 0) || (m > 0))
-            {
-              i = j;
-              if (j <= 0) {
-                i = 1200;
-              }
-              if ((localar.mgH) || (localar.mgI) || (Util.secondsToNow(localar.JZJ) < i))
-              {
-                Log.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  isInChatting:%b, isInSnsTimeline:%b", new Object[] { Boolean.valueOf(localar.mgH), Boolean.valueOf(localar.mgI) });
-              }
-              else if (!z.aZV("@__weixintimtline"))
-              {
-                Log.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked: doing timeline");
-              }
-              else if ((com.tencent.matrix.c.a.jC(82)) && (b.Xm()))
-              {
-                Log.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked: on doze mode");
-                d.a.jD(82);
-              }
-              else
-              {
-                com.tencent.mm.kernel.h.aHH();
-                if (!com.tencent.mm.kernel.h.aHF().kcd.a(new u(), 0))
-                {
-                  Log.i("MicroMsg.SnsPreTimelineService", "newObjectSync triggered");
-                  z.aZW("@__weixintimtline");
-                }
-                localar.JZJ = Util.nowSecond();
-              }
-            }
+            localTimeLineObject.ContentObj.Zpt = paramString;
+            al.hgB().f(i, (SnsInfo)localObject);
+            localObject = new vd();
+            ((vd)localObject).hYU.hYV = i;
+            ((vd)localObject).publish();
           }
         }
       }
-    };
-    this.JZO = new IListener() {};
-    this.JZP = new IListener() {};
-    AppMethodBeat.o(95927);
+    }
+    AppMethodBeat.o(95916);
   }
   
-  final boolean fPr()
+  public static boolean jr(Context paramContext)
   {
-    AppMethodBeat.i(95928);
-    Object localObject = com.tencent.mm.n.h.axc().getValue("SnsImgPreLoadingTimeLimit");
-    Log.i("MicroMsg.SnsPreTimelineService", "preloadLimit:%s", new Object[] { localObject });
-    if (Util.isNullOrNil((String)localObject))
-    {
-      AppMethodBeat.o(95928);
-      return false;
-    }
+    bool1 = true;
+    AppMethodBeat.i(95918);
     try
     {
-      localObject = ((String)localObject).split("-");
-      String[] arrayOfString = localObject[0].split(":");
-      int i = Util.safeParseInt(arrayOfString[0]);
-      this.JZL = (Util.safeParseInt(arrayOfString[1]) + i * 60);
-      localObject = localObject[1].split(":");
-      i = Util.safeParseInt(localObject[0]);
-      this.JZM = (Util.safeParseInt(localObject[1]) + i * 60);
-      Log.d("MicroMsg.SnsPreTimelineService", "preloadLimit:%d-%d", new Object[] { Integer.valueOf(this.JZL), Integer.valueOf(this.JZM) });
-      AppMethodBeat.o(95928);
-      return true;
+      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
+      if (paramContext == null) {
+        break label87;
+      }
+      paramContext = paramContext.signatures[0].toByteArray();
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramContext);
+      boolean bool2 = Util.isEqual(e.aC(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
+      if (!bool2) {
+        break label87;
+      }
     }
-    catch (Exception localException)
+    catch (Exception paramContext)
     {
-      AppMethodBeat.o(95928);
+      for (;;)
+      {
+        Log.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
+        bool1 = false;
+      }
     }
-    return false;
+    AppMethodBeat.o(95918);
+    return bool1;
   }
 }
 

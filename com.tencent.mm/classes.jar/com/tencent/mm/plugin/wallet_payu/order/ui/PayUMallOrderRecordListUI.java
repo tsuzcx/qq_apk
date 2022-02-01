@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.wallet_payu.order.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.order.model.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.order.model.g;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI.a;
 import com.tencent.mm.plugin.wallet_payu.order.a.a;
 import com.tencent.mm.plugin.wallet_payu.order.a.b;
 import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.protocal.protobuf.dkj;
-import com.tencent.mm.protocal.protobuf.dks;
+import com.tencent.mm.protocal.protobuf.ect;
+import com.tencent.mm.protocal.protobuf.edc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -28,15 +27,15 @@ import java.util.Locale;
 public class PayUMallOrderRecordListUI
   extends MallOrderRecordListUI
 {
-  public final String aaW(int paramInt)
+  public final String afo(int paramInt)
   {
     AppMethodBeat.i(72077);
-    String str = com.tencent.mm.wallet_core.ui.g.a(paramInt, new SimpleDateFormat("dd MMMM", Locale.ENGLISH), new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH));
+    String str = com.tencent.mm.wallet_core.ui.i.a(paramInt, new SimpleDateFormat("dd MMMM", Locale.ENGLISH), new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH));
     AppMethodBeat.o(72077);
     return str;
   }
   
-  public final void fmT()
+  public final void gxH()
   {
     AppMethodBeat.i(72073);
     addSceneEndListener(1519);
@@ -44,7 +43,7 @@ public class PayUMallOrderRecordListUI
     AppMethodBeat.o(72073);
   }
   
-  public final void fmU()
+  public final void gxI()
   {
     AppMethodBeat.i(72074);
     removeSceneEndListener(1519);
@@ -52,69 +51,69 @@ public class PayUMallOrderRecordListUI
     AppMethodBeat.o(72074);
   }
   
-  public final void fmV()
+  public final void gxJ()
   {
     AppMethodBeat.i(72076);
-    doSceneProgress(new a(this.zP));
+    doSceneProgress(new a(this.Sc));
     AppMethodBeat.o(72076);
   }
   
-  public final void ju(String paramString1, String paramString2)
+  public final void kL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72075);
     doSceneProgress(new b(paramString1));
     AppMethodBeat.o(72075);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(72078);
     Object localObject;
     boolean bool;
-    if ((paramq instanceof a))
+    if ((paramp instanceof a))
     {
       if (this.mProgressDialog != null)
       {
         this.mProgressDialog.dismiss();
         this.mProgressDialog = null;
       }
-      paramString = (a)paramq;
-      localObject = ((dkj)d.c.b(paramString.rr.lBS)).TRM;
-      paramq = new LinkedList();
+      paramString = (a)paramp;
+      localObject = ((ect)c.c.b(paramString.rr.otC)).abil;
+      paramp = new LinkedList();
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        dks localdks = (dks)((Iterator)localObject).next();
-        i locali = new i();
-        locali.CQz = localdks.CQz;
-        locali.GIq = localdks.GIq;
-        locali.GIr = localdks.GIr;
-        locali.CreateTime = localdks.CreateTime;
-        locali.GIm = localdks.GIm;
-        locali.GIj = localdks.GIj;
-        locali.GIp = "0";
-        locali.GIl = localdks.GIl;
-        locali.GIo = localdks.GIo;
-        locali.GIu = 1;
-        locali.GIt = localdks.GIt;
-        locali.GIs = localdks.GIs;
-        locali.GIn = localdks.GIn;
-        locali.GIi = localdks.TRD;
-        locali.GIk = localdks.GIk;
-        locali.GIh = localdks.GIh;
-        paramq.add(locali);
+        edc localedc = (edc)((Iterator)localObject).next();
+        com.tencent.mm.plugin.order.model.i locali = new com.tencent.mm.plugin.order.model.i();
+        locali.IKJ = localedc.IKJ;
+        locali.MFg = localedc.MFg;
+        locali.MFh = localedc.MFh;
+        locali.CreateTime = localedc.CreateTime;
+        locali.MFc = localedc.MFc;
+        locali.MEZ = localedc.MEZ;
+        locali.MFf = "0";
+        locali.MFb = localedc.MFb;
+        locali.MFe = localedc.MFe;
+        locali.MFk = 1;
+        locali.MFj = localedc.MFj;
+        locali.MFi = localedc.MFi;
+        locali.MFd = localedc.MFd;
+        locali.MEY = localedc.abic;
+        locali.MFa = localedc.MFa;
+        locali.MEX = localedc.MEX;
+        paramp.add(locali);
       }
-      gq(paramq);
-      gr(null);
-      this.mCount = this.GJl.size();
-      if (paramString.gNi() > this.mCount)
+      jq(paramp);
+      jr(null);
+      this.mCount = this.MGa.size();
+      if (paramString.imx() > this.mCount)
       {
         bool = true;
-        this.EGI = bool;
-        this.GJk.notifyDataSetChanged();
+        this.KzR = bool;
+        this.MFZ.notifyDataSetChanged();
         Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list count: " + this.mCount);
-        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list total record: " + paramString.gNi());
-        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list has more: " + this.EGI);
+        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list total record: " + paramString.imx());
+        Log.d("MicroMsg.PayUMallOrderRecordListUI", "orders list has more: " + this.KzR);
         this.mHandler.post(new Runnable()
         {
           public final void run()
@@ -125,7 +124,7 @@ public class PayUMallOrderRecordListUI
               Log.v("MicroMsg.PayUMallOrderRecordListUI", "has more");
               if (!PayUMallOrderRecordListUI.b(PayUMallOrderRecordListUI.this))
               {
-                PayUMallOrderRecordListUI.c(PayUMallOrderRecordListUI.this).hJK();
+                PayUMallOrderRecordListUI.c(PayUMallOrderRecordListUI.this).jms();
                 PayUMallOrderRecordListUI.e(PayUMallOrderRecordListUI.this).setAdapter(PayUMallOrderRecordListUI.d(PayUMallOrderRecordListUI.this));
                 PayUMallOrderRecordListUI.f(PayUMallOrderRecordListUI.this);
               }
@@ -136,13 +135,13 @@ public class PayUMallOrderRecordListUI
               AppMethodBeat.o(72071);
               return;
               Log.v("MicroMsg.PayUMallOrderRecordListUI", "no more! dismiss footer view!");
-              PayUMallOrderRecordListUI.g(PayUMallOrderRecordListUI.this).hJL();
+              PayUMallOrderRecordListUI.g(PayUMallOrderRecordListUI.this).jmt();
             }
           }
         });
         this.isLoading = false;
         label418:
-        if ((this.mCount > 0) || (this.GJl.size() != 0)) {
+        if ((this.mCount > 0) || (this.MGa.size() != 0)) {
           break label660;
         }
         showOptionMenu(false);
@@ -155,7 +154,7 @@ public class PayUMallOrderRecordListUI
       return true;
       bool = false;
       break;
-      if (!(paramq instanceof com.tencent.mm.plugin.order.model.g)) {
+      if (!(paramp instanceof g)) {
         break label418;
       }
       if (this.mProgressDialog != null)
@@ -163,16 +162,16 @@ public class PayUMallOrderRecordListUI
         this.mProgressDialog.dismiss();
         this.mProgressDialog = null;
       }
-      paramString = (com.tencent.mm.plugin.order.model.g)paramq;
+      paramString = (g)paramp;
       label539:
-      if (paramString.fmP() == 2)
+      if (paramString.gxD() == 2)
       {
-        if (this.GJl != null) {
-          this.GJl.clear();
+        if (this.MGa != null) {
+          this.MGa.clear();
         }
         this.mCount = 0;
-        this.EGI = false;
-        this.jkX.hJL();
+        this.KzR = false;
+        this.lNP.jmt();
       }
       for (;;)
       {
@@ -186,19 +185,19 @@ public class PayUMallOrderRecordListUI
           }
         });
         break;
-        paramString = paramString.fmQ();
+        paramString = paramString.gxE();
         Log.d("MicroMsg.PayUMallOrderRecordListUI", "delete transId:".concat(String.valueOf(paramString)));
         if (!Util.isNullOrNil(paramString))
         {
-          paramq = this.GJl.iterator();
-          if (paramq.hasNext())
+          paramp = this.MGa.iterator();
+          if (paramp.hasNext())
           {
-            localObject = (i)paramq.next();
-            if (!paramString.equals(((i)localObject).GIh)) {
+            localObject = (com.tencent.mm.plugin.order.model.i)paramp.next();
+            if (!paramString.equals(((com.tencent.mm.plugin.order.model.i)localObject).MEX)) {
               break label539;
             }
-            this.GJl.remove(localObject);
-            this.mCount = this.GJl.size();
+            this.MGa.remove(localObject);
+            this.mCount = this.MGa.size();
           }
         }
       }
@@ -216,7 +215,7 @@ public class PayUMallOrderRecordListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderRecordListUI
  * JD-Core Version:    0.7.0.1
  */

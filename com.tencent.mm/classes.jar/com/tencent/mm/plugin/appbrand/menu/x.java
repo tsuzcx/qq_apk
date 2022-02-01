@@ -1,89 +1,56 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import com.tencent.luggage.game.d.a.a.b;
-import com.tencent.luggage.sdk.b.a.c.d;
-import com.tencent.magicbrush.MBRuntime.MBParams;
-import com.tencent.magicbrush.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.game.a.t;
-import com.tencent.mm.plugin.appbrand.game.a.u;
-import com.tencent.mm.plugin.appbrand.v;
-import kotlin.g.b.p;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/menu/ShowPkgInfoKt;", "", "()V", "showWAGameInfoIfNeeded", "", "sb", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "plugin-appbrand-integration_release"})
-public final class x
+public enum x
 {
-  public static final x qgm;
-  
   static
   {
-    AppMethodBeat.i(50885);
-    qgm = new x();
-    AppMethodBeat.o(50885);
+    AppMethodBeat.i(147329);
+    tkh = new x("CopyPath", 0);
+    tki = new x("BackToHome", 1);
+    tkj = new x("splitScreen", 2);
+    tkk = new x("ShareAppMsg", 3);
+    tkl = new x("ShareToTimeLine", 4);
+    tkm = new x("EnableDebug", 5);
+    tkn = new x("ShowPkgInfo", 6);
+    tko = new x("EnablePerformancePanel", 7);
+    tkp = new x("OpenGamePreload", 8);
+    tkq = new x("Exit", 9);
+    tkr = new x("StickInWeChat", 10);
+    tks = new x("SendToDesktop", 11);
+    tkt = new x("ModifyCollection", 12);
+    tku = new x("AboutUs", 13);
+    tkv = new x("AppId", 14);
+    tkw = new x("DebugRestart", 15);
+    tkx = new x("DumpPerformanceTrace", 16);
+    tky = new x("SendRed", 17);
+    tkz = new x("ReceiveRed", 18);
+    tkA = new x("GameCpuProfiler", 19);
+    tkB = new x("GameHeapProfiler", 20);
+    tkC = new x("GameForceGc", 21);
+    tkD = new x("Minimize", 22);
+    tkE = new x("Setting", 23);
+    tkF = new x("Complaint", 24);
+    tkG = new x("GrowthCare", 25);
+    tkH = new x("DevTools", 26);
+    tkI = new x("Restart", 27);
+    tkJ = new x("Fav", 28);
+    tkK = new x("ShareToWork", 29);
+    tkL = new x("SendHandoff", 30);
+    tkM = new x("CopyShortLink", 31);
+    tkN = new x("SalesDriving", 32);
+    tkO = new x("GameLive", 33);
+    tkP = new x("TradeComplaint", 34);
+    tkQ = new x[] { tkh, tki, tkj, tkk, tkl, tkm, tkn, tko, tkp, tkq, tkr, tks, tkt, tku, tkv, tkw, tkx, tky, tkz, tkA, tkB, tkC, tkD, tkE, tkF, tkG, tkH, tkI, tkJ, tkK, tkL, tkM, tkN, tkO, tkP };
+    AppMethodBeat.o(147329);
   }
   
-  public static void a(StringBuilder paramStringBuilder, v paramv)
-  {
-    AppMethodBeat.i(50884);
-    p.k(paramStringBuilder, "sb");
-    if (!(paramv instanceof d)) {
-      paramv = null;
-    }
-    for (;;)
-    {
-      paramv = (d)paramv;
-      if (paramv != null) {}
-      for (paramv = (b)paramv.R(b.class); paramv == null; paramv = null)
-      {
-        AppMethodBeat.o(50884);
-        return;
-      }
-      paramv = paramv.getMagicBrush();
-      if (paramv == null)
-      {
-        paramStringBuilder.append("\n[renderer] ").append("unknown");
-        AppMethodBeat.o(50884);
-        return;
-      }
-      paramStringBuilder.append("\n[renderer] ").append("mbruntime");
-      paramStringBuilder.append("\n[renderer] ").append("commandbuffer ").append(paramv.US().use_command_buffer);
-      paramStringBuilder.append("\n[renderer] ").append("cmd pool ").append(paramv.US().cmd_pool_type);
-      StringBuilder localStringBuilder = paramStringBuilder.append("\n[renderer] ").append("antialias ");
-      if (paramv.US().allow_antialias_)
-      {
-        paramv = "allowed";
-        localStringBuilder.append(paramv);
-        localStringBuilder = paramStringBuilder.append("\n[renderer] ").append("surface ");
-        if (!((Boolean)u.omQ.aUb()).booleanValue()) {
-          break label254;
-        }
-        paramv = "surfacetexture";
-        label200:
-        localStringBuilder.append(paramv);
-        paramv = paramStringBuilder.append("\n[renderer] ").append("jsengine ");
-        if (!((Boolean)t.omP.aUb()).booleanValue()) {
-          break label260;
-        }
-      }
-      label260:
-      for (paramStringBuilder = "node";; paramStringBuilder = "j2v8")
-      {
-        paramv.append(paramStringBuilder);
-        AppMethodBeat.o(50884);
-        return;
-        paramv = "disallowed";
-        break;
-        label254:
-        paramv = "legacysurface";
-        break label200;
-      }
-    }
-  }
+  private x() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.x
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import java.lang.reflect.Field;
 public final class b
 {
   /* Error */
-  @com.tencent.thumbplayer.api.TPCommonEnum.NativeSeekMode
-  public static int aAN(@com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode int paramInt)
+  @com.tencent.thumbplayer.api.TPCommonEnum.NativeSurfaceType
+  public static int aHA(@com.tencent.thumbplayer.api.TPCommonEnum.TPSurfaceType int paramInt)
   {
     // Byte code:
     //   0: ldc 13
@@ -53,7 +53,7 @@ public final class b
     //   69: aload 5
     //   71: ldc 62
     //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   76: checkcast 62	com/tencent/thumbplayer/a/b/b/a$h
+    //   76: checkcast 62	com/tencent/thumbplayer/a/b/b/a$i
     //   79: astore 5
     //   81: aload 5
     //   83: ifnull +18 -> 101
@@ -86,7 +86,7 @@ public final class b
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   141: ldc 13
     //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   146: iconst_2
+    //   146: iconst_0
     //   147: ireturn
     //   148: astore_3
     //   149: ldc 75
@@ -115,7 +115,7 @@ public final class b
   
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.NativeSwitchDefMode
-  public static int aAO(@com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode int paramInt)
+  public static int aHB(@com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode int paramInt)
   {
     // Byte code:
     //   0: ldc 110
@@ -156,7 +156,7 @@ public final class b
     //   69: aload 5
     //   71: ldc 112
     //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   76: checkcast 112	com/tencent/thumbplayer/a/b/b/a$i
+    //   76: checkcast 112	com/tencent/thumbplayer/a/b/b/a$j
     //   79: astore 5
     //   81: aload 5
     //   83: ifnull +18 -> 101
@@ -183,7 +183,7 @@ public final class b
     //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   126: iload_0
     //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   130: ldc 95
+    //   130: ldc 117
     //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
@@ -218,12 +218,12 @@ public final class b
   
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.TPErrorType
-  public static int aAP(@com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType int paramInt)
+  public static int aHC(@com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType int paramInt)
   {
     // Byte code:
-    //   0: ldc 119
+    //   0: ldc 121
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 121
+    //   5: ldc 123
     //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
     //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   13: astore_3
@@ -252,21 +252,21 @@ public final class b
     //   55: iconst_1
     //   56: invokevirtual 56	java/lang/reflect/Field:setAccessible	(Z)V
     //   59: aload 5
-    //   61: ldc 123
+    //   61: ldc 125
     //   63: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   66: checkcast 123	com/tencent/thumbplayer/a/b/b/a$c
+    //   66: checkcast 125	com/tencent/thumbplayer/a/b/b/a$c
     //   69: astore 6
     //   71: aload 6
     //   73: ifnull +28 -> 101
     //   76: iload_0
     //   77: aload 6
-    //   79: invokeinterface 124 1 0
+    //   79: invokeinterface 126 1 0
     //   84: if_icmpne +17 -> 101
     //   87: aload 5
     //   89: aload_3
     //   90: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   93: istore_1
-    //   94: ldc 119
+    //   94: ldc 121
     //   96: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: iload_1
     //   100: ireturn
@@ -282,15 +282,15 @@ public final class b
     //   115: ldc 75
     //   117: new 83	java/lang/StringBuilder
     //   120: dup
-    //   121: ldc 126
+    //   121: ldc 128
     //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   126: iload_0
     //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   130: ldc 128
+    //   130: ldc 130
     //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: ldc 119
+    //   141: ldc 121
     //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: sipush 1001
     //   149: ireturn
@@ -322,12 +322,12 @@ public final class b
   
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.TPMsgInfo
-  public static int aAQ(@com.tencent.thumbplayer.api.TPCommonEnum.NativeMsgInfo int paramInt)
+  public static int aHD(@com.tencent.thumbplayer.api.TPCommonEnum.NativeMsgInfo int paramInt)
   {
     // Byte code:
-    //   0: ldc 132
+    //   0: ldc 134
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 134
+    //   5: ldc 136
     //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
     //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   13: astore_3
@@ -356,21 +356,21 @@ public final class b
     //   55: iconst_1
     //   56: invokevirtual 56	java/lang/reflect/Field:setAccessible	(Z)V
     //   59: aload 5
-    //   61: ldc 136
+    //   61: ldc 138
     //   63: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   66: checkcast 136	com/tencent/thumbplayer/a/b/b/a$e
+    //   66: checkcast 138	com/tencent/thumbplayer/a/b/b/a$e
     //   69: astore 6
     //   71: aload 6
     //   73: ifnull +28 -> 101
     //   76: iload_0
     //   77: aload 6
-    //   79: invokeinterface 137 1 0
+    //   79: invokeinterface 139 1 0
     //   84: if_icmpne +17 -> 101
     //   87: aload 5
     //   89: aload_3
     //   90: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   93: istore_1
-    //   94: ldc 132
+    //   94: ldc 134
     //   96: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: iload_1
     //   100: ireturn
@@ -386,15 +386,15 @@ public final class b
     //   115: ldc 75
     //   117: new 83	java/lang/StringBuilder
     //   120: dup
-    //   121: ldc 139
+    //   121: ldc 141
     //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   126: iload_0
     //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   130: ldc 141
+    //   130: ldc 143
     //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: ldc 132
+    //   141: ldc 134
     //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iconst_m1
     //   147: ireturn
@@ -425,12 +425,12 @@ public final class b
   }
   
   /* Error */
-  public static c.a aAR(@TPCommonEnum.TPOptionalId int paramInt)
+  public static c.a aHE(@TPCommonEnum.TPOptionalId int paramInt)
   {
     // Byte code:
-    //   0: ldc 145
+    //   0: ldc 147
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 147
+    //   5: ldc 149
     //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
     //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   13: astore_3
@@ -464,21 +464,21 @@ public final class b
     //   63: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   66: if_icmpne +49 -> 115
     //   69: aload 5
-    //   71: ldc 149
+    //   71: ldc 151
     //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   76: checkcast 149	com/tencent/thumbplayer/a/b/b/a$d
+    //   76: checkcast 151	com/tencent/thumbplayer/a/b/b/a$d
     //   79: astore 5
     //   81: aload 5
     //   83: ifnull +32 -> 115
-    //   86: new 151	com/tencent/thumbplayer/a/a/b/c$a
+    //   86: new 153	com/tencent/thumbplayer/a/a/b/c$a
     //   89: dup
     //   90: aload 5
-    //   92: invokeinterface 154 1 0
+    //   92: invokeinterface 156 1 0
     //   97: aload 5
-    //   99: invokeinterface 155 1 0
-    //   104: invokespecial 158	com/tencent/thumbplayer/a/a/b/c$a:<init>	(II)V
+    //   99: invokeinterface 157 1 0
+    //   104: invokespecial 160	com/tencent/thumbplayer/a/a/b/c$a:<init>	(II)V
     //   107: astore_3
-    //   108: ldc 145
+    //   108: ldc 147
     //   110: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_3
     //   114: areturn
@@ -494,15 +494,15 @@ public final class b
     //   129: ldc 75
     //   131: new 83	java/lang/StringBuilder
     //   134: dup
-    //   135: ldc 160
+    //   135: ldc 162
     //   137: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   140: iload_0
     //   141: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   144: ldc 162
+    //   144: ldc 164
     //   146: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   149: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   152: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   155: ldc 145
+    //   155: ldc 147
     //   157: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: aconst_null
     //   161: areturn
@@ -531,61 +531,61 @@ public final class b
     //   86	108	162	java/lang/IllegalAccessException
   }
   
-  public static c.a aAS(@TPCommonEnum.TPOptionalId int paramInt)
+  public static c.a aHF(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    AppMethodBeat.i(219725);
-    c.a locala = aAT(paramInt);
+    AppMethodBeat.i(228598);
+    c.a locala = aHG(paramInt);
     if (locala == null)
     {
-      locala = aAU(paramInt);
-      AppMethodBeat.o(219725);
+      locala = aHH(paramInt);
+      AppMethodBeat.o(228598);
       return locala;
     }
-    AppMethodBeat.o(219725);
+    AppMethodBeat.o(228598);
     return locala;
   }
   
-  private static c.a aAT(@TPCommonEnum.TPOptionalId int paramInt)
+  private static c.a aHG(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    AppMethodBeat.i(219726);
+    AppMethodBeat.i(228601);
     try
     {
       c.a locala = d(paramInt, Class.forName(TPOptionalID.class.getName()));
-      AppMethodBeat.o(219726);
+      AppMethodBeat.o(228601);
       return locala;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       g.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      AppMethodBeat.o(219726);
+      AppMethodBeat.o(228601);
     }
     return null;
   }
   
-  private static c.a aAU(@TPCommonEnum.TPOptionalId int paramInt)
+  private static c.a aHH(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    AppMethodBeat.i(219727);
+    AppMethodBeat.i(228611);
     try
     {
       c.a locala = d(paramInt, Class.forName(a.class.getName()));
-      AppMethodBeat.o(219727);
+      AppMethodBeat.o(228611);
       return locala;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       g.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      AppMethodBeat.o(219727);
+      AppMethodBeat.o(228611);
     }
     return null;
   }
   
   /* Error */
-  public static int aAV(int paramInt)
+  public static int aHI(int paramInt)
   {
     // Byte code:
-    //   0: ldc 180
+    //   0: ldc 182
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 182
+    //   5: ldc 184
     //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
     //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   13: astore_3
@@ -619,16 +619,16 @@ public final class b
     //   63: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   66: if_icmpne +35 -> 101
     //   69: aload 5
-    //   71: ldc 184
+    //   71: ldc 186
     //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   76: checkcast 184	com/tencent/thumbplayer/a/b/b/a$g
+    //   76: checkcast 186	com/tencent/thumbplayer/a/b/b/a$g
     //   79: astore 5
     //   81: aload 5
     //   83: ifnull +18 -> 101
     //   86: aload 5
-    //   88: invokeinterface 185 1 0
+    //   88: invokeinterface 187 1 0
     //   93: istore_1
-    //   94: ldc 180
+    //   94: ldc 182
     //   96: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: iload_1
     //   100: ireturn
@@ -644,15 +644,15 @@ public final class b
     //   115: ldc 75
     //   117: new 83	java/lang/StringBuilder
     //   120: dup
-    //   121: ldc 187
+    //   121: ldc 189
     //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   126: iload_0
     //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   130: ldc 189
+    //   130: ldc 191
     //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: ldc 180
+    //   141: ldc 182
     //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iconst_m1
     //   147: ireturn
@@ -682,12 +682,12 @@ public final class b
   }
   
   /* Error */
-  public static int aAW(int paramInt)
+  public static int aHJ(int paramInt)
   {
     // Byte code:
-    //   0: ldc 191
+    //   0: ldc 193
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 193
+    //   5: ldc 195
     //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
     //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   13: astore_3
@@ -721,16 +721,16 @@ public final class b
     //   63: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   66: if_icmpne +35 -> 101
     //   69: aload 5
-    //   71: ldc 195
+    //   71: ldc 197
     //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   76: checkcast 195	com/tencent/thumbplayer/a/b/b/a$a
+    //   76: checkcast 197	com/tencent/thumbplayer/a/b/b/a$a
     //   79: astore 5
     //   81: aload 5
     //   83: ifnull +18 -> 101
     //   86: aload 5
-    //   88: invokeinterface 196 1 0
+    //   88: invokeinterface 198 1 0
     //   93: istore_1
-    //   94: ldc 191
+    //   94: ldc 193
     //   96: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: iload_1
     //   100: ireturn
@@ -746,15 +746,15 @@ public final class b
     //   115: ldc 75
     //   117: new 83	java/lang/StringBuilder
     //   120: dup
-    //   121: ldc 198
+    //   121: ldc 200
     //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   126: iload_0
     //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   130: ldc 189
+    //   130: ldc 191
     //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: ldc 191
+    //   141: ldc 193
     //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iconst_m1
     //   147: ireturn
@@ -784,12 +784,12 @@ public final class b
   }
   
   /* Error */
-  public static int aAX(int paramInt)
+  public static int aHK(int paramInt)
   {
     // Byte code:
-    //   0: ldc 200
+    //   0: ldc 202
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 193
+    //   5: ldc 195
     //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
     //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   13: astore_3
@@ -823,16 +823,16 @@ public final class b
     //   63: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
     //   66: if_icmpne +35 -> 101
     //   69: aload 5
-    //   71: ldc 202
+    //   71: ldc 204
     //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
-    //   76: checkcast 202	com/tencent/thumbplayer/a/b/b/a$b
+    //   76: checkcast 204	com/tencent/thumbplayer/a/b/b/a$b
     //   79: astore 5
     //   81: aload 5
     //   83: ifnull +18 -> 101
     //   86: aload 5
-    //   88: invokeinterface 203 1 0
+    //   88: invokeinterface 205 1 0
     //   93: istore_1
-    //   94: ldc 200
+    //   94: ldc 202
     //   96: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: iload_1
     //   100: ireturn
@@ -848,17 +848,120 @@ public final class b
     //   115: ldc 75
     //   117: new 83	java/lang/StringBuilder
     //   120: dup
-    //   121: ldc 205
+    //   121: ldc 207
     //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   126: iload_0
     //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   130: ldc 189
+    //   130: ldc 191
     //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   141: ldc 200
+    //   141: ldc 202
     //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iconst_m1
+    //   147: ireturn
+    //   148: astore_3
+    //   149: ldc 75
+    //   151: aload_3
+    //   152: invokestatic 81	com/tencent/thumbplayer/utils/g:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   155: goto -40 -> 115
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	158	0	paramInt	int
+    //   25	80	1	i	int
+    //   23	6	2	j	int
+    //   13	50	3	localClass	Class
+    //   108	4	3	localClassNotFoundException	ClassNotFoundException
+    //   148	4	3	localIllegalAccessException	IllegalAccessException
+    //   18	14	4	arrayOfField	Field[]
+    //   35	52	5	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   5	24	108	java/lang/ClassNotFoundException
+    //   37	81	108	java/lang/ClassNotFoundException
+    //   86	94	108	java/lang/ClassNotFoundException
+    //   5	24	148	java/lang/IllegalAccessException
+    //   37	81	148	java/lang/IllegalAccessException
+    //   86	94	148	java/lang/IllegalAccessException
+  }
+  
+  /* Error */
+  @com.tencent.thumbplayer.api.TPCommonEnum.NativeSeekMode
+  public static int aHz(@com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode int paramInt)
+  {
+    // Byte code:
+    //   0: ldc 211
+    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 21
+    //   7: invokevirtual 27	java/lang/Class:getName	()Ljava/lang/String;
+    //   10: invokestatic 31	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   13: astore_3
+    //   14: aload_3
+    //   15: invokevirtual 35	java/lang/Class:getDeclaredFields	()[Ljava/lang/reflect/Field;
+    //   18: astore 4
+    //   20: aload 4
+    //   22: arraylength
+    //   23: istore_2
+    //   24: iconst_0
+    //   25: istore_1
+    //   26: iload_1
+    //   27: iload_2
+    //   28: if_icmpge +87 -> 115
+    //   31: aload 4
+    //   33: iload_1
+    //   34: aaload
+    //   35: astore 5
+    //   37: aload 5
+    //   39: invokevirtual 41	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   42: invokevirtual 44	java/lang/Class:toString	()Ljava/lang/String;
+    //   45: ldc 46
+    //   47: invokevirtual 52	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   50: ifeq +51 -> 101
+    //   53: aload 5
+    //   55: iconst_1
+    //   56: invokevirtual 56	java/lang/reflect/Field:setAccessible	(Z)V
+    //   59: iload_0
+    //   60: aload 5
+    //   62: aload_3
+    //   63: invokevirtual 60	java/lang/reflect/Field:getInt	(Ljava/lang/Object;)I
+    //   66: if_icmpne +35 -> 101
+    //   69: aload 5
+    //   71: ldc 213
+    //   73: invokevirtual 66	java/lang/reflect/Field:getAnnotation	(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+    //   76: checkcast 213	com/tencent/thumbplayer/a/b/b/a$h
+    //   79: astore 5
+    //   81: aload 5
+    //   83: ifnull +18 -> 101
+    //   86: aload 5
+    //   88: invokeinterface 214 1 0
+    //   93: istore_1
+    //   94: ldc 211
+    //   96: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   99: iload_1
+    //   100: ireturn
+    //   101: iload_1
+    //   102: iconst_1
+    //   103: iadd
+    //   104: istore_1
+    //   105: goto -79 -> 26
+    //   108: astore_3
+    //   109: ldc 75
+    //   111: aload_3
+    //   112: invokestatic 81	com/tencent/thumbplayer/utils/g:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   115: ldc 75
+    //   117: new 83	java/lang/StringBuilder
+    //   120: dup
+    //   121: ldc 216
+    //   123: invokespecial 89	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   126: iload_0
+    //   127: invokevirtual 93	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   130: ldc 117
+    //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokestatic 103	com/tencent/thumbplayer/utils/g:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   141: ldc 211
+    //   143: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: iconst_2
     //   147: ireturn
     //   148: astore_3
     //   149: ldc 75
@@ -887,7 +990,7 @@ public final class b
   
   private static c.a d(@TPCommonEnum.TPOptionalId int paramInt, Class paramClass)
   {
-    AppMethodBeat.i(219731);
+    AppMethodBeat.i(228618);
     try
     {
       Field[] arrayOfField = paramClass.getDeclaredFields();
@@ -905,7 +1008,7 @@ public final class b
             if (localObject != null)
             {
               paramClass = new c.a(((a.f)localObject).type(), ((a.f)localObject).value());
-              AppMethodBeat.o(219731);
+              AppMethodBeat.o(228618);
               return paramClass;
             }
           }
@@ -918,13 +1021,13 @@ public final class b
     {
       g.e("TPNativeKeyMapUtil", paramClass);
       g.w("TPNativeKeyMapUtil", "convertToNativeOptionalIdInternal, tpOptionalId: " + paramInt + " not recognition, return null");
-      AppMethodBeat.o(219731);
+      AppMethodBeat.o(228618);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b.b.b
  * JD-Core Version:    0.7.0.1
  */

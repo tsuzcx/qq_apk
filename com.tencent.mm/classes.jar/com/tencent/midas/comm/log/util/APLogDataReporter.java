@@ -17,9 +17,9 @@ public class APLogDataReporter
   
   public static APLogDataReporter getInstance()
   {
-    AppMethodBeat.i(254052);
+    AppMethodBeat.i(217270);
     APLogDataReporter localAPLogDataReporter = Holder.INSTANCE;
-    AppMethodBeat.o(254052);
+    AppMethodBeat.o(217270);
     return localAPLogDataReporter;
   }
   
@@ -30,34 +30,34 @@ public class APLogDataReporter
   
   public void report(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(254055);
+    AppMethodBeat.i(217300);
     report("launchpay", paramString1, paramString2);
-    AppMethodBeat.o(254055);
+    AppMethodBeat.o(217300);
   }
   
   public void report(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(254056);
+    AppMethodBeat.i(217307);
     try
     {
       if (this.reporter != null) {
         this.reporter.report(paramString1, paramString2, paramString3);
       }
-      AppMethodBeat.o(254056);
+      AppMethodBeat.o(217307);
       return;
     }
-    catch (Throwable paramString1)
+    finally
     {
       new StringBuilder("report error: ").append(paramString1.getMessage());
-      AppMethodBeat.o(254056);
+      AppMethodBeat.o(217307);
     }
   }
   
   public void reportTimeEx(String paramString, long paramLong)
   {
-    AppMethodBeat.i(254057);
+    AppMethodBeat.i(217318);
     report(paramString, String.valueOf(System.currentTimeMillis() - paramLong));
-    AppMethodBeat.o(254057);
+    AppMethodBeat.o(217318);
   }
   
   public void setReporter(Reporter paramReporter)
@@ -71,9 +71,9 @@ public class APLogDataReporter
     
     static
     {
-      AppMethodBeat.i(254046);
+      AppMethodBeat.i(217267);
       INSTANCE = new APLogDataReporter(null);
-      AppMethodBeat.o(254046);
+      AppMethodBeat.o(217267);
     }
   }
   
@@ -84,7 +84,7 @@ public class APLogDataReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.comm.log.util.APLogDataReporter
  * JD-Core Version:    0.7.0.1
  */

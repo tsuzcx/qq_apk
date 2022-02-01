@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
@@ -10,59 +9,56 @@ import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.az.b.a;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.zv;
-import com.tencent.mm.modelsimple.u;
+import com.tencent.mm.am.p;
+import com.tencent.mm.au.b;
+import com.tencent.mm.au.b.a;
+import com.tencent.mm.autogen.a.abs;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelsimple.v;
 import com.tencent.mm.plugin.account.bind.a.e;
 import com.tencent.mm.plugin.account.bind.a.f;
 import com.tencent.mm.plugin.account.bind.a.h;
 import com.tencent.mm.plugin.account.bind.a.i;
-import com.tencent.mm.plugin.account.friend.a.aa;
-import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.plugin.account.friend.ui.i.a;
-import com.tencent.mm.protocal.protobuf.zz;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.account.friend.model.x;
+import com.tencent.mm.plugin.account.friend.ui.i.b;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.abz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.base.u.i;
 
 public class BindMContactIntroUI
   extends MMWizardActivity
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  private String fLC;
-  protected ImageView mRU;
-  protected TextView mRV;
-  protected TextView mRW;
-  protected Button mRX;
-  protected Button mRY;
-  l.a mRZ;
-  private boolean mRn = false;
-  private com.tencent.mm.plugin.account.friend.ui.i mSa;
-  private String mSb = null;
-  int mSc;
-  int mSd = 0;
-  private s tipDialog = null;
+  private String hRk;
+  private boolean pNU = false;
+  protected ImageView pOB;
+  protected TextView pOC;
+  protected TextView pOD;
+  protected Button pOE;
+  protected Button pOF;
+  com.tencent.mm.plugin.account.friend.model.i.a pOG;
+  private com.tencent.mm.plugin.account.friend.ui.i pOH;
+  private String pOI = null;
+  int pOJ;
+  int pOK = 0;
+  private com.tencent.mm.ui.base.w tipDialog = null;
   
-  private void gU(boolean paramBoolean)
+  private void hK(boolean paramBoolean)
   {
     AppMethodBeat.i(109872);
     Intent localIntent = new Intent(this, BindMContactUI.class);
@@ -74,33 +70,134 @@ public class BindMContactIntroUI
       Object localObject = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
       if (!Util.isNullOrNil((String)localObject))
       {
-        localObject = com.tencent.mm.az.b.bw((String)localObject, getString(a.i.country_code));
+        localObject = b.bH((String)localObject, getString(a.i.country_code));
         if (localObject != null)
         {
-          localIntent.putExtra("country_name", ((b.a)localObject).lSz);
-          localIntent.putExtra("couttry_code", ((b.a)localObject).lSy);
+          localIntent.putExtra("country_name", ((b.a)localObject).oLl);
+          localIntent.putExtra("couttry_code", ((b.a)localObject).oLk);
         }
       }
-      aH(this, localIntent);
+      aQ(this, localIntent);
       AppMethodBeat.o(109872);
       return;
       localIntent.putExtra("bind_scene", 0);
     }
   }
   
-  protected void bxv()
+  protected void bWj()
   {
     AppMethodBeat.i(109871);
     hideVKB();
-    if (this.mSc == 2)
+    if (this.pOJ == 2)
     {
       cancel();
       finish();
       AppMethodBeat.o(109871);
       return;
     }
-    atX(1);
+    aAp(1);
     AppMethodBeat.o(109871);
+  }
+  
+  public final void bWk()
+  {
+    AppMethodBeat.i(304896);
+    switch (20.pON[this.pOG.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(304896);
+      return;
+      hK(false);
+      AppMethodBeat.o(304896);
+      return;
+      Object localObject = this.hRk;
+      if (this.pOH == null) {
+        this.pOH = new com.tencent.mm.plugin.account.friend.ui.i(i.b.pWc, this, new com.tencent.mm.plugin.account.friend.ui.i.a()
+        {
+          public final void k(int paramAnonymousInt, Bundle paramAnonymousBundle)
+          {
+            AppMethodBeat.i(109863);
+            if (paramAnonymousInt == 2)
+            {
+              if (BindMContactIntroUI.this.pOJ == 1)
+              {
+                if (!z.bBc())
+                {
+                  paramAnonymousBundle = new abs();
+                  paramAnonymousBundle.ifi.hAJ = true;
+                  paramAnonymousBundle.ifi.ifj = true;
+                  paramAnonymousBundle.publish();
+                }
+                BindMContactIntroUI.d(BindMContactIntroUI.this);
+                paramAnonymousBundle = new Intent();
+                paramAnonymousBundle.addFlags(67108864);
+                com.tencent.mm.plugin.account.sdk.a.pFn.e(BindMContactIntroUI.this, paramAnonymousBundle);
+                AppMethodBeat.o(109863);
+                return;
+              }
+              MMWizardActivity.aQ(BindMContactIntroUI.this, new Intent(BindMContactIntroUI.this, BindMContactStatusUI.class).putExtra("bind_scene", BindMContactIntroUI.this.pOJ));
+              if (BindMContactIntroUI.e(BindMContactIntroUI.this))
+              {
+                if (BindMContactIntroUI.this.pOJ == 2)
+                {
+                  com.tencent.mm.plugin.report.service.h.OAn.b(11002, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
+                  AppMethodBeat.o(109863);
+                  return;
+                }
+                com.tencent.mm.plugin.report.service.h.OAn.b(11002, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+                AppMethodBeat.o(109863);
+              }
+            }
+            else if (paramAnonymousInt == 1)
+            {
+              paramAnonymousBundle = new Intent(BindMContactIntroUI.this, BindMContactVerifyUI.class);
+              paramAnonymousBundle.putExtra("bindmcontact_mobile", this.pOR);
+              paramAnonymousBundle.putExtra("bind_scene", BindMContactIntroUI.this.pOJ);
+              paramAnonymousBundle.putExtra("KEnterFromBanner", BindMContactIntroUI.e(BindMContactIntroUI.this));
+              MMWizardActivity.aQ(BindMContactIntroUI.this, paramAnonymousBundle);
+            }
+            AppMethodBeat.o(109863);
+          }
+        });
+      }
+      com.tencent.mm.plugin.account.friend.ui.i locali = this.pOH;
+      if ((this.pOJ == 0) || (this.pOJ == 3)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        locali.pVZ = bool;
+        this.pOH.Tl((String)localObject);
+        AppMethodBeat.o(304896);
+        return;
+      }
+      localObject = new Intent(this, MobileFriendUI.class);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI", "onClickMainButton", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI", "onClickMainButton", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(304896);
+      return;
+      com.tencent.mm.plugin.account.friend.model.i.hN(false);
+      ((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.account.sdk.a.a.class)).showAddrBookUploadConfirm(this, new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(109855);
+          if (com.tencent.mm.plugin.account.friend.model.i.bWU())
+          {
+            BindMContactIntroUI.bWl();
+            BindMContactIntroUI.this.pOE.setText(BindMContactIntroUI.this.getString(a.i.bind_mcontact_friend_btn_text));
+            BindMContactIntroUI.this.pOG = com.tencent.mm.plugin.account.friend.model.i.a.pSQ;
+            boolean bool = Util.nullAs((Boolean)com.tencent.mm.kernel.h.baE().ban().d(12322, Boolean.FALSE), false);
+            if ((BindMContactIntroUI.e(BindMContactIntroUI.this)) && (bool)) {
+              com.tencent.mm.plugin.report.service.h.OAn.b(11002, new Object[] { Integer.valueOf(3), Integer.valueOf(3) });
+            }
+          }
+          AppMethodBeat.o(109855);
+        }
+      }, true, this.pOK);
+    }
   }
   
   public int getLayoutId()
@@ -111,61 +208,28 @@ public class BindMContactIntroUI
   public void initView()
   {
     AppMethodBeat.i(109869);
-    this.mSc = getIntent().getIntExtra("bind_scene", 0);
-    this.mRn = getIntent().getBooleanExtra("KEnterFromBanner", false);
-    this.mSd = getIntent().getIntExtra("key_upload_scene", 0);
-    this.mRZ = com.tencent.mm.plugin.account.friend.a.l.byi();
-    Log.d("MicroMsg.BindMContactIntroUI", "state " + this.mRZ);
-    this.fLC = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(6, null));
-    if ((this.fLC == null) || (this.fLC.equals(""))) {
-      this.fLC = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(4097, null));
+    this.pOJ = getIntent().getIntExtra("bind_scene", 0);
+    this.pNU = getIntent().getBooleanExtra("KEnterFromBanner", false);
+    this.pOK = getIntent().getIntExtra("key_upload_scene", 0);
+    this.pOG = com.tencent.mm.plugin.account.friend.model.i.bWW();
+    Log.d("MicroMsg.BindMContactIntroUI", "state " + this.pOG);
+    this.hRk = ((String)com.tencent.mm.kernel.h.baE().ban().d(6, null));
+    if ((this.hRk == null) || (this.hRk.equals(""))) {
+      this.hRk = ((String)com.tencent.mm.kernel.h.baE().ban().d(4097, null));
     }
-    this.mRU = ((ImageView)findViewById(a.e.setting_bind_moblie_state_icon));
-    this.mRV = ((TextView)findViewById(a.e.setting_bind_mobile_msg_title));
-    this.mRW = ((TextView)findViewById(a.e.setting_bind_mobile_msg_hit));
-    this.mRX = ((Button)findViewById(a.e.setting_bind_mobile_main_btn));
-    this.mRY = ((Button)findViewById(a.e.setting_bind_mobile_sub_btn));
-    this.mRX.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(109850);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        BindMContactIntroUI.a(BindMContactIntroUI.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(109850);
-      }
-    });
-    this.mRY.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(109854);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        BindMContactIntroUI.b(BindMContactIntroUI.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactIntroUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(109854);
-      }
-    });
+    this.pOB = ((ImageView)findViewById(a.e.setting_bind_moblie_state_icon));
+    this.pOC = ((TextView)findViewById(a.e.setting_bind_mobile_msg_title));
+    this.pOD = ((TextView)findViewById(a.e.setting_bind_mobile_msg_hit));
+    this.pOE = ((Button)findViewById(a.e.setting_bind_mobile_main_btn));
+    this.pOF = ((Button)findViewById(a.e.setting_bind_mobile_sub_btn));
+    this.pOE.setOnClickListener(new BindMContactIntroUI.1(this));
+    this.pOF.setOnClickListener(new BindMContactIntroUI.12(this));
     if (getIntent().getBooleanExtra("skip", false))
     {
-      addTextOptionMenu(0, getString(a.i.app_ignore_it), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(0, getString(a.i.app_ignore_it), new BindMContactIntroUI.21(this));
+      if ((this.pOG == com.tencent.mm.plugin.account.friend.model.i.a.pSR) || (this.pOG == com.tencent.mm.plugin.account.friend.model.i.a.pSQ))
       {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(109857);
-          BindMContactIntroUI.this.bxv();
-          AppMethodBeat.o(109857);
-          return true;
-        }
-      });
-      if ((this.mRZ == l.a.mWl) || (this.mRZ == l.a.mWk))
-      {
-        localObject = com.tencent.mm.n.h.axc().getValue("ShowUnbindPhone");
+        localObject = com.tencent.mm.k.i.aRC().getValue("ShowUnbindPhone");
         i = 2;
         if (!Util.isNullOrNil((String)localObject)) {
           i = Util.safeParseInt((String)localObject);
@@ -176,23 +240,23 @@ public class BindMContactIntroUI
             public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
             {
               AppMethodBeat.i(109861);
-              paramAnonymousMenuItem = new com.tencent.mm.ui.tools.m(BindMContactIntroUI.this.getContext());
-              paramAnonymousMenuItem.ODT = new q.f()
+              paramAnonymousMenuItem = new com.tencent.mm.ui.tools.l(BindMContactIntroUI.this.getContext());
+              paramAnonymousMenuItem.Vtg = new u.g()
               {
-                public final void onCreateMMMenu(o paramAnonymous2o)
+                public final void onCreateMMMenu(com.tencent.mm.ui.base.s paramAnonymous2s)
                 {
                   AppMethodBeat.i(109859);
-                  paramAnonymous2o.setHeaderTitle(a.i.bind_mcontact_list_menu_title);
-                  if ((BindMContactIntroUI.23.this.mSh & 0x2) != 0) {
-                    paramAnonymous2o.mn(0, a.i.bind_mcontact_unbind_mobile_text);
+                  paramAnonymous2s.setHeaderTitle(a.i.bind_mcontact_list_menu_title);
+                  if ((BindMContactIntroUI.23.this.pOO & 0x2) != 0) {
+                    paramAnonymous2s.oh(0, a.i.bind_mcontact_unbind_mobile_text);
                   }
-                  if ((BindMContactIntroUI.23.this.mSh & 0x1) != 0) {
-                    paramAnonymous2o.mn(1, a.i.bind_mcontact_change_privacy);
+                  if ((BindMContactIntroUI.23.this.pOO & 0x1) != 0) {
+                    paramAnonymous2s.oh(1, a.i.bind_mcontact_change_privacy);
                   }
                   AppMethodBeat.o(109859);
                 }
               };
-              paramAnonymousMenuItem.ODU = new q.g()
+              paramAnonymousMenuItem.GAC = new u.i()
               {
                 public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                 {
@@ -204,7 +268,7 @@ public class BindMContactIntroUI
                   {
                     AppMethodBeat.o(109860);
                     return;
-                    BindMContactIntroUI.c(BindMContactIntroUI.this);
+                    BindMContactIntroUI.b(BindMContactIntroUI.this);
                     AppMethodBeat.o(109860);
                     return;
                     paramAnonymous2MenuItem = new Intent();
@@ -213,7 +277,7 @@ public class BindMContactIntroUI
                   }
                 }
               };
-              paramAnonymousMenuItem.hYu();
+              paramAnonymousMenuItem.jDd();
               AppMethodBeat.o(109861);
               return false;
             }
@@ -224,17 +288,8 @@ public class BindMContactIntroUI
       AppMethodBeat.o(109869);
       return;
     }
-    Object localObject = new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(109858);
-        BindMContactIntroUI.this.bxv();
-        AppMethodBeat.o(109858);
-        return true;
-      }
-    };
-    if (this.mSd == 9) {}
+    Object localObject = new BindMContactIntroUI.22(this);
+    if (this.pOK == 9) {}
     for (final int i = a.h.actionbar_icon_close_black;; i = 0)
     {
       setBackBtn((MenuItem.OnMenuItemClickListener)localObject, i);
@@ -256,14 +311,11 @@ public class BindMContactIntroUI
       return;
       if (paramInt2 == -1)
       {
-        Log.i("MicroMsg.BindMContactIntroUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again mobile: " + this.fLC);
-        paramIntent = new aa(aa.mWH);
-        com.tencent.mm.kernel.h.aGY().a(paramIntent, 0);
+        Log.i("MicroMsg.BindMContactIntroUI", "summerunbind REQUEST_CODE_SET_PSW ok and start NetSceneCheckUnBind again mobile: " + this.hRk);
+        paramIntent = new x(x.pTo);
+        com.tencent.mm.kernel.h.aZW().a(paramIntent, 0);
         getString(a.i.app_tip);
-        this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(a.i.app_loading), true, new DialogInterface.OnCancelListener()
-        {
-          public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
-        });
+        this.tipDialog = k.a(this, getString(a.i.app_loading), true, new BindMContactIntroUI.19(this));
       }
     }
   }
@@ -272,8 +324,8 @@ public class BindMContactIntroUI
   {
     AppMethodBeat.i(109866);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.h.aGY().a(255, this);
-    com.tencent.mm.kernel.h.aGY().a(254, this);
+    com.tencent.mm.kernel.h.aZW().a(255, this);
+    com.tencent.mm.kernel.h.aZW().a(254, this);
     setMMTitle(a.i.bind_mcontact_title_setting);
     AppMethodBeat.o(109866);
   }
@@ -281,10 +333,10 @@ public class BindMContactIntroUI
   public void onDestroy()
   {
     AppMethodBeat.i(109867);
-    com.tencent.mm.kernel.h.aGY().b(255, this);
-    com.tencent.mm.kernel.h.aGY().b(254, this);
-    if (this.mSa != null) {
-      this.mSa.recycle();
+    com.tencent.mm.kernel.h.aZW().b(255, this);
+    com.tencent.mm.kernel.h.aZW().b(254, this);
+    if (this.pOH != null) {
+      this.pOH.recycle();
     }
     super.onDestroy();
     AppMethodBeat.o(109867);
@@ -295,7 +347,7 @@ public class BindMContactIntroUI
     AppMethodBeat.i(109870);
     if (paramInt == 4)
     {
-      bxv();
+      bWj();
       AppMethodBeat.o(109870);
       return true;
     }
@@ -309,45 +361,45 @@ public class BindMContactIntroUI
     AppMethodBeat.i(109868);
     super.onResume();
     initView();
-    com.tencent.mm.kernel.h.aGY().a(132, this);
+    com.tencent.mm.kernel.h.aZW().a(132, this);
     AppMethodBeat.o(109868);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(109873);
-    Log.i("MicroMsg.BindMContactIntroUI", "summerunbind onSceneEnd type: " + paramq.getType() + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if ((paramq.getType() == 132) && (paramInt1 == 0) && (paramInt2 == 0))
+    Log.i("MicroMsg.BindMContactIntroUI", "summerunbind onSceneEnd type: " + paramp.getType() + " errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if ((paramp.getType() == 132) && (paramInt1 == 0) && (paramInt2 == 0))
     {
       if (this.tipDialog != null)
       {
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
-      if (((com.tencent.mm.plugin.account.friend.a.z)paramq).ZB() == 3)
+      if (((com.tencent.mm.plugin.account.friend.model.w)paramp).bIO() == 3)
       {
-        ((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).removeSelfAccount(this);
-        if (!Util.isNullOrNil(this.mSb))
+        ((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.account.sdk.a.a.class)).removeSelfAccount(this);
+        if (!Util.isNullOrNil(this.pOI))
         {
-          com.tencent.mm.ui.base.h.a(this, this.mSb, "", getString(a.i.app_i_known), new DialogInterface.OnClickListener()
+          k.a(this, this.pOI, "", getString(a.i.app_i_known), new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(109864);
-              MMWizardActivity.aH(BindMContactIntroUI.this, new Intent(BindMContactIntroUI.this, BindMContactStatusUI.class));
+              MMWizardActivity.aQ(BindMContactIntroUI.this, new Intent(BindMContactIntroUI.this, BindMContactStatusUI.class));
               AppMethodBeat.o(109864);
             }
           });
           AppMethodBeat.o(109873);
           return;
         }
-        aH(this, new Intent(this, BindMContactStatusUI.class));
+        aQ(this, new Intent(this, BindMContactStatusUI.class));
       }
       AppMethodBeat.o(109873);
       return;
     }
     int i;
-    if (com.tencent.mm.plugin.account.sdk.a.mIH.a(this, paramInt1, paramInt2, paramString)) {
+    if (com.tencent.mm.plugin.account.sdk.a.pFo.a(this, paramInt1, paramInt2, paramString)) {
       i = 1;
     }
     while (i != 0)
@@ -365,7 +417,7 @@ public class BindMContactIntroUI
       default: 
         break;
       case -214: 
-        paramString = com.tencent.mm.h.a.Kb(paramString);
+        paramString = com.tencent.mm.broadcast.a.CH(paramString);
         if (paramString != null) {
           paramString.a(this, null, null);
         }
@@ -392,7 +444,7 @@ public class BindMContactIntroUI
         i = 1;
       }
     }
-    if (paramq.getType() == 254)
+    if (paramp.getType() == 254)
     {
       if (this.tipDialog != null)
       {
@@ -401,34 +453,34 @@ public class BindMContactIntroUI
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.mSb = ((aa)paramq).byu().Smn;
-        if (!Util.isNullOrNil(this.mSb))
+        this.pOI = ((x)paramp).bXi().Zkz;
+        if (!Util.isNullOrNil(this.pOI))
         {
-          paramString = new com.tencent.mm.plugin.account.friend.a.z(this.fLC, 3, "", 0, "");
-          com.tencent.mm.kernel.h.aGY().a(paramString, 0);
-          paramq = getContext();
+          paramString = new com.tencent.mm.plugin.account.friend.model.w(this.hRk, 3, "", 0, "", "");
+          com.tencent.mm.kernel.h.aZW().a(paramString, 0);
+          paramp = getContext();
           getString(a.i.app_tip);
-          this.tipDialog = com.tencent.mm.ui.base.h.a(paramq, getString(a.i.bind_mcontact_unbinding), true, new DialogInterface.OnCancelListener()
+          this.tipDialog = k.a(paramp, getString(a.i.bind_mcontact_unbinding), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymousDialogInterface)
             {
               AppMethodBeat.i(109865);
-              com.tencent.mm.kernel.h.aGY().a(paramString);
+              com.tencent.mm.kernel.h.aZW().a(paramString);
               AppMethodBeat.o(109865);
             }
           });
           AppMethodBeat.o(109873);
           return;
         }
-        paramString = new u(2);
-        com.tencent.mm.kernel.h.aGY().a(paramString, 0);
+        paramString = new v(2);
+        com.tencent.mm.kernel.h.aZW().a(paramString, 0);
         AppMethodBeat.o(109873);
         return;
       }
       if (paramInt2 == -3)
       {
         Log.d("MicroMsg.BindMContactIntroUI", "summerunbind MMFunc_QueryHasPasswd err and set psw");
-        com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        k.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -452,7 +504,7 @@ public class BindMContactIntroUI
         });
       }
     }
-    else if (paramq.getType() == 255)
+    else if (paramp.getType() == 255)
     {
       if (this.tipDialog != null)
       {
@@ -460,36 +512,36 @@ public class BindMContactIntroUI
         this.tipDialog = null;
       }
       if (paramInt2 != 0) {
-        break label986;
+        break label992;
       }
-      paramString = new com.tencent.mm.plugin.account.friend.a.z(this.fLC, 3, "", 0, "");
-      com.tencent.mm.kernel.h.aGY().a(paramString, 0);
+      paramString = new com.tencent.mm.plugin.account.friend.model.w(this.hRk, 3, "", 0, "", "");
+      com.tencent.mm.kernel.h.aZW().a(paramString, 0);
       AppCompatActivity localAppCompatActivity = getContext();
       getString(a.i.app_tip);
-      this.tipDialog = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(a.i.bind_mcontact_unbinding), true, new DialogInterface.OnCancelListener()
+      this.tipDialog = k.a(localAppCompatActivity, getString(a.i.bind_mcontact_unbinding), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(109852);
-          com.tencent.mm.kernel.h.aGY().a(paramString);
+          com.tencent.mm.kernel.h.aZW().a(paramString);
           AppMethodBeat.o(109852);
         }
       });
     }
     for (;;)
     {
-      if (paramq.getType() == 132)
+      if (paramp.getType() == 132)
       {
         if (this.tipDialog != null)
         {
           this.tipDialog.dismiss();
           this.tipDialog = null;
         }
-        if (((com.tencent.mm.plugin.account.friend.a.z)paramq).ZB() == 3)
+        if (((com.tencent.mm.plugin.account.friend.model.w)paramp).bIO() == 3)
         {
           if (paramInt2 == -82)
           {
-            com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_one_left, a.i.app_tip, new DialogInterface.OnClickListener()
+            k.a(this, a.i.setting_unbind_qq_err_one_left, a.i.app_tip, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
             });
@@ -497,7 +549,7 @@ public class BindMContactIntroUI
             return;
             if (paramInt2 == -81)
             {
-              com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_norbindqq, a.i.app_tip, new DialogInterface.OnClickListener()
+              k.a(this, a.i.setting_unbind_qq_err_norbindqq, a.i.app_tip, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
               });
@@ -505,7 +557,7 @@ public class BindMContactIntroUI
             }
             if (paramInt2 == -82)
             {
-              com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_one_left, a.i.app_tip, new DialogInterface.OnClickListener()
+              k.a(this, a.i.setting_unbind_qq_err_one_left, a.i.app_tip, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
               });
@@ -513,7 +565,7 @@ public class BindMContactIntroUI
             }
             if (paramInt2 == -83)
             {
-              com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_has_unbind, a.i.app_tip, new DialogInterface.OnClickListener()
+              k.a(this, a.i.setting_unbind_qq_err_has_unbind, a.i.app_tip, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
               });
@@ -521,7 +573,7 @@ public class BindMContactIntroUI
             }
             if (paramInt2 == -84)
             {
-              com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_hasbinded, a.i.app_tip, new DialogInterface.OnClickListener()
+              k.a(this, a.i.setting_unbind_qq_err_hasbinded, a.i.app_tip, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
               });
@@ -529,7 +581,7 @@ public class BindMContactIntroUI
             }
             if (paramInt2 == -85)
             {
-              com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_mobile_err_bindedbyother, a.i.app_tip, new DialogInterface.OnClickListener()
+              k.a(this, a.i.setting_unbind_mobile_err_bindedbyother, a.i.app_tip, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
               });
@@ -538,14 +590,14 @@ public class BindMContactIntroUI
             if (paramInt2 != -86) {
               break;
             }
-            com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_qmail, a.i.app_tip, new DialogInterface.OnClickListener()
+            k.a(this, a.i.setting_unbind_qq_err_qmail, a.i.app_tip, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
             });
             break;
-            label986:
+            label992:
             Log.i("MicroMsg.BindMContactIntroUI", "summerunbind old err_password");
-            com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            k.a(getContext(), getString(a.i.settings_unbind_tips_set_user_password), null, getString(a.i.settings_unbind_tips_unbind_btn), getString(a.i.settings_unbind_tips_cancel_btn), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
@@ -571,7 +623,7 @@ public class BindMContactIntroUI
           }
           if (paramInt2 == -83)
           {
-            com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_has_unbind, a.i.app_tip, new DialogInterface.OnClickListener()
+            k.a(this, a.i.setting_unbind_qq_err_has_unbind, a.i.app_tip, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
             });
@@ -580,7 +632,7 @@ public class BindMContactIntroUI
           }
           if (paramInt2 == -84)
           {
-            com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_qq_err_hasbinded, a.i.app_tip, new DialogInterface.OnClickListener()
+            k.a(this, a.i.setting_unbind_qq_err_hasbinded, a.i.app_tip, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
             });
@@ -589,7 +641,7 @@ public class BindMContactIntroUI
           }
           if (paramInt2 == -85)
           {
-            com.tencent.mm.ui.base.h.a(this, a.i.setting_unbind_mobile_err_bindedbyother, a.i.app_tip, new DialogInterface.OnClickListener()
+            k.a(this, a.i.setting_unbind_mobile_err_bindedbyother, a.i.app_tip, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
             });
@@ -605,10 +657,10 @@ public class BindMContactIntroUI
   
   public void onStop()
   {
-    AppMethodBeat.i(241611);
-    com.tencent.mm.kernel.h.aGY().b(132, this);
+    AppMethodBeat.i(304890);
+    com.tencent.mm.kernel.h.aZW().b(132, this);
     super.onStop();
-    AppMethodBeat.o(241611);
+    AppMethodBeat.o(304890);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -619,57 +671,57 @@ public class BindMContactIntroUI
   
   protected void updateView()
   {
-    AppMethodBeat.i(241615);
-    switch (BindMContactIntroUI.20.mSg[this.mRZ.ordinal()])
+    AppMethodBeat.i(304893);
+    switch (20.pON[this.pOG.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(241615);
+      AppMethodBeat.o(304893);
       return;
       showOptionMenu(1, false);
-      this.mRU.setImageResource(a.h.mobile_unbind_icon);
-      this.mRW.setVisibility(0);
-      this.mRY.setVisibility(8);
-      this.mRV.setText(getString(a.i.bind_mcontact_hint_title));
-      this.mRW.setText(getString(a.i.bind_mcontact_hint));
-      this.mRX.setText(a.i.bind_mcontact_bind_btn_text);
-      AppMethodBeat.o(241615);
+      this.pOB.setImageResource(a.h.mobile_unbind_icon);
+      this.pOD.setVisibility(0);
+      this.pOF.setVisibility(8);
+      this.pOC.setText(getString(a.i.bind_mcontact_hint_title));
+      this.pOD.setText(getString(a.i.bind_mcontact_hint));
+      this.pOE.setText(a.i.bind_mcontact_bind_btn_text);
+      AppMethodBeat.o(304893);
       return;
       showOptionMenu(1, false);
-      this.mRU.setImageResource(a.h.mobile_unbind_icon);
-      this.mRW.setVisibility(0);
-      this.mRY.setVisibility(0);
-      this.mRV.setText(String.format(getString(a.i.bind_mcontact_verify_mobile), new Object[] { this.fLC }));
-      this.mRW.setText(a.i.bind_mcontact_unverify_mobile);
-      this.mRX.setText(a.i.bind_mcontact_verify_btn_text);
-      this.mRY.setText(a.i.bind_mcontact_del_btn_text);
-      AppMethodBeat.o(241615);
+      this.pOB.setImageResource(a.h.mobile_unbind_icon);
+      this.pOD.setVisibility(0);
+      this.pOF.setVisibility(0);
+      this.pOC.setText(String.format(getString(a.i.bind_mcontact_verify_mobile), new Object[] { this.hRk }));
+      this.pOD.setText(a.i.bind_mcontact_unverify_mobile);
+      this.pOE.setText(a.i.bind_mcontact_verify_btn_text);
+      this.pOF.setText(a.i.bind_mcontact_del_btn_text);
+      AppMethodBeat.o(304893);
       return;
       showOptionMenu(1, true);
-      this.mRU.setImageResource(a.h.mobile_binded_icon);
-      this.mRW.setVisibility(0);
-      this.mRY.setVisibility(0);
-      this.mRV.setText(String.format(getString(a.i.bind_mcontact_verify_mobile), new Object[] { this.fLC }));
-      this.mRW.setText(a.i.bind_mcontact_upload_addressbook_hint);
-      this.mRX.setText(a.i.bind_mcontact_upload_btn_text);
-      this.mRY.setText(a.i.bind_mcontact_change_mobile_text);
-      AppMethodBeat.o(241615);
+      this.pOB.setImageResource(a.h.mobile_binded_icon);
+      this.pOD.setVisibility(0);
+      this.pOF.setVisibility(0);
+      this.pOC.setText(String.format(getString(a.i.bind_mcontact_verify_mobile), new Object[] { this.hRk }));
+      this.pOD.setText(a.i.bind_mcontact_upload_addressbook_hint);
+      this.pOE.setText(a.i.bind_mcontact_upload_btn_text);
+      this.pOF.setText(a.i.bind_mcontact_change_mobile_text);
+      AppMethodBeat.o(304893);
       return;
       showOptionMenu(1, true);
-      this.mRU.setImageResource(a.h.mobile_binded_icon);
-      this.mRW.setVisibility(0);
-      this.mRY.setVisibility(0);
-      this.mRV.setText(String.format(getString(a.i.bind_mcontact_verify_mobile), new Object[] { this.fLC }));
-      this.mRW.setText(a.i.bind_mcontact_change_hint);
-      this.mRX.setText(a.i.bind_mcontact_friend_btn_text);
-      this.mRY.setText(a.i.bind_mcontact_change_mobile_text);
+      this.pOB.setImageResource(a.h.mobile_binded_icon);
+      this.pOD.setVisibility(0);
+      this.pOF.setVisibility(0);
+      this.pOC.setText(String.format(getString(a.i.bind_mcontact_verify_mobile), new Object[] { this.hRk }));
+      this.pOD.setText(a.i.bind_mcontact_change_hint);
+      this.pOE.setText(a.i.bind_mcontact_friend_btn_text);
+      this.pOF.setText(a.i.bind_mcontact_change_mobile_text);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI
  * JD-Core Version:    0.7.0.1
  */

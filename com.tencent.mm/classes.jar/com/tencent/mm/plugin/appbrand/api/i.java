@@ -2,17 +2,19 @@ package com.tencent.mm.plugin.appbrand.api;
 
 public abstract interface i
 {
-  public abstract void bFd();
+  public abstract void UP(String paramString);
   
-  public abstract void bFe();
+  public abstract void ceq();
   
-  public abstract void bFf();
+  public abstract void cer();
   
-  public abstract void hn(boolean paramBoolean);
+  public abstract void ces();
+  
+  public abstract void ie(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.api.i
  * JD-Core Version:    0.7.0.1
  */

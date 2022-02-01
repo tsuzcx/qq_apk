@@ -15,22 +15,22 @@ public final class j
 {
   private static void a(w paramw)
   {
-    AppMethodBeat.i(238280);
+    AppMethodBeat.i(209289);
     if ((paramw.view instanceof TextView))
     {
       TextView localTextView = (TextView)paramw.view;
       paramw.values.put("android:textscale:scale", Float.valueOf(localTextView.getScaleX()));
     }
-    AppMethodBeat.o(238280);
+    AppMethodBeat.o(209289);
   }
   
   public final Animator a(final ViewGroup paramViewGroup, w paramw1, w paramw2)
   {
     float f2 = 1.0F;
-    AppMethodBeat.i(238283);
+    AppMethodBeat.i(209312);
     if ((paramw1 == null) || (paramw2 == null) || (!(paramw1.view instanceof TextView)) || (!(paramw2.view instanceof TextView)))
     {
-      AppMethodBeat.o(238283);
+      AppMethodBeat.o(209312);
       return null;
     }
     paramViewGroup = (TextView)paramw2.view;
@@ -45,7 +45,7 @@ public final class j
       if (f1 != f2) {
         break;
       }
-      AppMethodBeat.o(238283);
+      AppMethodBeat.o(209312);
       return null;
     }
     paramw1 = ValueAnimator.ofFloat(new float[] { f1, f2 });
@@ -53,34 +53,34 @@ public final class j
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(238230);
+        AppMethodBeat.i(209421);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         paramViewGroup.setScaleX(f);
         paramViewGroup.setScaleY(f);
-        AppMethodBeat.o(238230);
+        AppMethodBeat.o(209421);
       }
     });
-    AppMethodBeat.o(238283);
+    AppMethodBeat.o(209312);
     return paramw1;
   }
   
   public final void b(w paramw)
   {
-    AppMethodBeat.i(238275);
+    AppMethodBeat.i(209296);
     a(paramw);
-    AppMethodBeat.o(238275);
+    AppMethodBeat.o(209296);
   }
   
   public final void c(w paramw)
   {
-    AppMethodBeat.i(238277);
+    AppMethodBeat.i(209303);
     a(paramw);
-    AppMethodBeat.o(238277);
+    AppMethodBeat.o(209303);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.material.internal.j
  * JD-Core Version:    0.7.0.1
  */

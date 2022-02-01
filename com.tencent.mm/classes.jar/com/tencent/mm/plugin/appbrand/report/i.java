@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.appbrand.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.model.b;
+import com.tencent.mm.plugin.appbrand.report.model.c;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class i
-  extends b
+  extends c
 {
-  private volatile long qJm = 0L;
-  private volatile boolean qJn = false;
-  public volatile String qJo;
+  private volatile long tNP = 0L;
+  private volatile boolean tNQ = false;
+  public volatile String tNR;
   
   public i(int paramInt)
   {
     super(paramInt);
   }
   
-  public final void amA(String paramString)
+  public final void afL(String paramString)
   {
-    AppMethodBeat.i(277968);
-    this.qJm = (Util.nowMilliSecond() - this.qKC.qKb.getStartTime());
-    this.qJo = paramString;
-    this.qJn = true;
-    AppMethodBeat.o(277968);
-  }
-  
-  public final void amz(String paramString)
-  {
-    AppMethodBeat.i(277967);
+    AppMethodBeat.i(321368);
     super.onForeground();
-    this.qJm = 0L;
+    this.tNP = 0L;
     if (paramString.startsWith("__wx__"))
     {
-      this.qJn = false;
-      this.qJo = null;
+      this.tNQ = false;
+      this.tNR = null;
     }
-    AppMethodBeat.o(277967);
+    AppMethodBeat.o(321368);
   }
   
-  public final long chC()
+  public final void afM(String paramString)
   {
-    if (this.qJn) {
-      return this.qKC.qKf - this.qJm;
+    AppMethodBeat.i(321375);
+    this.tNP = (Util.nowMilliSecond() - this.tPf.tOH.getStartTime());
+    this.tNR = paramString;
+    this.tNQ = true;
+    AppMethodBeat.o(321375);
+  }
+  
+  public final long cIw()
+  {
+    if (this.tNQ) {
+      return this.tPf.tOL - this.tNP;
     }
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.i
  * JD-Core Version:    0.7.0.1
  */

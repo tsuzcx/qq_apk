@@ -15,7 +15,7 @@ import java.util.Set;
 public final class a
   extends RuntimeException
 {
-  private final List<Throwable> abNF;
+  private final List<Throwable> akay;
   private Throwable cause;
   private final String message;
   
@@ -32,7 +32,7 @@ public final class a
       {
         Throwable localThrowable = (Throwable)paramCollection.next();
         if ((localThrowable instanceof a)) {
-          localLinkedHashSet.addAll(((a)localThrowable).abNF);
+          localLinkedHashSet.addAll(((a)localThrowable).akay);
         } else if (localThrowable != null) {
           localLinkedHashSet.add(localThrowable);
         } else {
@@ -42,64 +42,14 @@ public final class a
     }
     localLinkedHashSet.add(new NullPointerException());
     localArrayList.addAll(localLinkedHashSet);
-    this.abNF = Collections.unmodifiableList(localArrayList);
-    this.message = (this.abNF.size() + " exceptions occurred. ");
+    this.akay = Collections.unmodifiableList(localArrayList);
+    this.message = (this.akay.size() + " exceptions occurred. ");
     AppMethodBeat.o(90036);
   }
   
   public a(Collection<? extends Throwable> paramCollection, byte paramByte)
   {
     this(paramCollection);
-  }
-  
-  private static List<Throwable> P(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90043);
-    ArrayList localArrayList = new ArrayList();
-    Throwable localThrowable2 = paramThrowable.getCause();
-    Throwable localThrowable1;
-    if (localThrowable2 != null)
-    {
-      localThrowable1 = localThrowable2;
-      if (localThrowable2 != paramThrowable) {}
-    }
-    else
-    {
-      AppMethodBeat.o(90043);
-      return localArrayList;
-    }
-    do
-    {
-      localThrowable1 = localThrowable1.getCause();
-      localArrayList.add(localThrowable1);
-      paramThrowable = localThrowable1.getCause();
-    } while ((paramThrowable != null) && (paramThrowable != localThrowable1));
-    AppMethodBeat.o(90043);
-    return localArrayList;
-  }
-  
-  private static Throwable Q(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90044);
-    Throwable localThrowable2 = paramThrowable.getCause();
-    Throwable localThrowable1;
-    if (localThrowable2 != null)
-    {
-      localThrowable1 = localThrowable2;
-      if (localThrowable2 != paramThrowable) {}
-    }
-    else
-    {
-      AppMethodBeat.o(90044);
-      return paramThrowable;
-    }
-    do
-    {
-      localThrowable1 = localThrowable1.getCause();
-      paramThrowable = localThrowable1.getCause();
-    } while ((paramThrowable != null) && (paramThrowable != localThrowable1));
-    AppMethodBeat.o(90044);
-    return localThrowable1;
   }
   
   private static void a(StringBuilder paramStringBuilder, Throwable paramThrowable, String paramString)
@@ -142,7 +92,7 @@ public final class a
       localStringBuilder.append("\tat ").append(localObject2).append('\n');
       i += 1;
     }
-    ??? = this.abNF.iterator();
+    ??? = this.akay.iterator();
     i = 1;
     while (((Iterator)???).hasNext())
     {
@@ -151,12 +101,62 @@ public final class a
       a(localStringBuilder, (Throwable)localObject2, "\t");
       i += 1;
     }
-    synchronized (paramb.iVL())
+    synchronized (paramb.kKj())
     {
-      paramb.hf(localStringBuilder.toString());
+      paramb.jW(localStringBuilder.toString());
       AppMethodBeat.o(90041);
       return;
     }
+  }
+  
+  private static List<Throwable> ag(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(90043);
+    ArrayList localArrayList = new ArrayList();
+    Throwable localThrowable2 = paramThrowable.getCause();
+    Throwable localThrowable1;
+    if (localThrowable2 != null)
+    {
+      localThrowable1 = localThrowable2;
+      if (localThrowable2 != paramThrowable) {}
+    }
+    else
+    {
+      AppMethodBeat.o(90043);
+      return localArrayList;
+    }
+    do
+    {
+      localThrowable1 = localThrowable1.getCause();
+      localArrayList.add(localThrowable1);
+      paramThrowable = localThrowable1.getCause();
+    } while ((paramThrowable != null) && (paramThrowable != localThrowable1));
+    AppMethodBeat.o(90043);
+    return localArrayList;
+  }
+  
+  private static Throwable ah(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(90044);
+    Throwable localThrowable2 = paramThrowable.getCause();
+    Throwable localThrowable1;
+    if (localThrowable2 != null)
+    {
+      localThrowable1 = localThrowable2;
+      if (localThrowable2 != paramThrowable) {}
+    }
+    else
+    {
+      AppMethodBeat.o(90044);
+      return paramThrowable;
+    }
+    do
+    {
+      localThrowable1 = localThrowable1.getCause();
+      paramThrowable = localThrowable1.getCause();
+    } while ((paramThrowable != null) && (paramThrowable != localThrowable1));
+    AppMethodBeat.o(90044);
+    return localThrowable1;
   }
   
   public final Throwable getCause()
@@ -171,43 +171,46 @@ public final class a
       {
         locala2 = new a();
         localHashSet = new HashSet();
-        localIterator1 = this.abNF.iterator();
+        localIterator1 = this.akay.iterator();
         a locala1 = locala2;
       }
       for (;;)
       {
-        Object localObject;
+        Object localObject1;
         if (localIterator1.hasNext())
         {
-          localObject = (Throwable)localIterator1.next();
-          if (localHashSet.contains(localObject)) {
+          localObject1 = (Throwable)localIterator1.next();
+          if (localHashSet.contains(localObject1)) {
             continue;
           }
-          localHashSet.add(localObject);
-          Iterator localIterator2 = P((Throwable)localObject).iterator();
+          localHashSet.add(localObject1);
+          Iterator localIterator2 = ag((Throwable)localObject1).iterator();
           while (localIterator2.hasNext())
           {
-            Throwable localThrowable4 = (Throwable)localIterator2.next();
-            if (localHashSet.contains(localThrowable4)) {
-              localObject = new RuntimeException("Duplicate found in causal chain so cropping to prevent loop ...");
+            Throwable localThrowable3 = (Throwable)localIterator2.next();
+            if (localHashSet.contains(localThrowable3)) {
+              localObject1 = new RuntimeException("Duplicate found in causal chain so cropping to prevent loop ...");
             } else {
-              localHashSet.add(localThrowable4);
+              localHashSet.add(localThrowable3);
             }
           }
         }
         try
         {
-          localThrowable1.initCause((Throwable)localObject);
-          Throwable localThrowable2 = Q(localThrowable1);
+          localThrowable1.initCause((Throwable)localObject1);
+          Throwable localThrowable2 = ah(localThrowable1);
           continue;
           this.cause = locala2;
           localThrowable2 = this.cause;
           AppMethodBeat.o(90037);
           return localThrowable2;
         }
-        catch (Throwable localThrowable3)
+        finally
         {
-          break label167;
+          for (;;)
+          {
+            localObject2 = finally;
+          }
         }
       }
     }
@@ -251,60 +254,60 @@ public final class a
   
   static abstract class b
   {
-    abstract void hf(Object paramObject);
+    abstract void jW(Object paramObject);
     
-    abstract Object iVL();
+    abstract Object kKj();
   }
   
   static final class c
     extends a.b
   {
-    private final PrintStream abNG;
+    private final PrintStream akaz;
     
     c(PrintStream paramPrintStream)
     {
-      this.abNG = paramPrintStream;
+      this.akaz = paramPrintStream;
     }
     
-    final void hf(Object paramObject)
+    final void jW(Object paramObject)
     {
       AppMethodBeat.i(90034);
-      this.abNG.println(paramObject);
+      this.akaz.println(paramObject);
       AppMethodBeat.o(90034);
     }
     
-    final Object iVL()
+    final Object kKj()
     {
-      return this.abNG;
+      return this.akaz;
     }
   }
   
   static final class d
     extends a.b
   {
-    private final PrintWriter abNH;
+    private final PrintWriter akaA;
     
     d(PrintWriter paramPrintWriter)
     {
-      this.abNH = paramPrintWriter;
+      this.akaA = paramPrintWriter;
     }
     
-    final void hf(Object paramObject)
+    final void jW(Object paramObject)
     {
       AppMethodBeat.i(90035);
-      this.abNH.println(paramObject);
+      this.akaA.println(paramObject);
       AppMethodBeat.o(90035);
     }
     
-    final Object iVL()
+    final Object kKj()
     {
-      return this.abNH;
+      return this.akaA;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     rx.a.a
  * JD-Core Version:    0.7.0.1
  */

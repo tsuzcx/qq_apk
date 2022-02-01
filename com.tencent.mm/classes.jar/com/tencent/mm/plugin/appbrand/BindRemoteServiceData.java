@@ -6,32 +6,32 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/BindRemoteServiceData;", "Landroid/os/Parcelable;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "loaderId", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;I)V", "getInitConfig", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getLoaderId", "()I", "getStat", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/BindRemoteServiceData;", "Landroid/os/Parcelable;", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "loaderId", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;I)V", "getInitConfig", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getLoaderId", "()I", "getStat", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "component1", "component2", "component3", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class BindRemoteServiceData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  final AppBrandInitConfigWC nyg;
-  final AppBrandStatObject nyh;
-  final int nyi;
+  public static final Parcelable.Creator<BindRemoteServiceData> CREATOR;
+  final AppBrandInitConfigWC initConfig;
+  final AppBrandStatObject qxv;
+  final int qxw;
   
   static
   {
-    AppMethodBeat.i(243156);
-    CREATOR = new a();
-    AppMethodBeat.o(243156);
+    AppMethodBeat.i(316894);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(316894);
   }
   
   public BindRemoteServiceData(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject, int paramInt)
   {
-    AppMethodBeat.i(243147);
-    this.nyg = paramAppBrandInitConfigWC;
-    this.nyh = paramAppBrandStatObject;
-    this.nyi = paramInt;
-    AppMethodBeat.o(243147);
+    AppMethodBeat.i(316888);
+    this.initConfig = paramAppBrandInitConfigWC;
+    this.qxv = paramAppBrandStatObject;
+    this.qxw = paramInt;
+    AppMethodBeat.o(316888);
   }
   
   public final int describeContents()
@@ -41,82 +41,73 @@ final class BindRemoteServiceData
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(243153);
-    if (this != paramObject)
+    AppMethodBeat.i(316908);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof BindRemoteServiceData))
-      {
-        paramObject = (BindRemoteServiceData)paramObject;
-        if ((!p.h(this.nyg, paramObject.nyg)) || (!p.h(this.nyh, paramObject.nyh)) || (this.nyi != paramObject.nyi)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(243153);
+      AppMethodBeat.o(316908);
       return true;
     }
-    AppMethodBeat.o(243153);
-    return false;
+    if (!(paramObject instanceof BindRemoteServiceData))
+    {
+      AppMethodBeat.o(316908);
+      return false;
+    }
+    paramObject = (BindRemoteServiceData)paramObject;
+    if (!s.p(this.initConfig, paramObject.initConfig))
+    {
+      AppMethodBeat.o(316908);
+      return false;
+    }
+    if (!s.p(this.qxv, paramObject.qxv))
+    {
+      AppMethodBeat.o(316908);
+      return false;
+    }
+    if (this.qxw != paramObject.qxw)
+    {
+      AppMethodBeat.o(316908);
+      return false;
+    }
+    AppMethodBeat.o(316908);
+    return true;
   }
   
   public final int hashCode()
   {
-    int j = 0;
-    AppMethodBeat.i(243151);
-    Object localObject = this.nyg;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.nyh;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      int k = this.nyi;
-      AppMethodBeat.o(243151);
-      return (i * 31 + j) * 31 + k;
-    }
+    AppMethodBeat.i(316903);
+    int i = this.initConfig.hashCode();
+    int j = this.qxv.hashCode();
+    int k = this.qxw;
+    AppMethodBeat.o(316903);
+    return (i * 31 + j) * 31 + k;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(243149);
-    String str = "BindRemoteServiceData(initConfig=" + this.nyg + ", stat=" + this.nyh + ", loaderId=" + this.nyi + ")";
-    AppMethodBeat.o(243149);
+    AppMethodBeat.i(316899);
+    String str = "BindRemoteServiceData(initConfig=" + this.initConfig + ", stat=" + this.qxv + ", loaderId=" + this.qxw + ')';
+    AppMethodBeat.o(316899);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(243155);
-    p.k(paramParcel, "parcel");
-    paramParcel.writeParcelable(this.nyg, paramInt);
-    this.nyh.writeToParcel(paramParcel, 0);
-    paramParcel.writeInt(this.nyi);
-    AppMethodBeat.o(243155);
+    AppMethodBeat.i(316919);
+    s.u(paramParcel, "out");
+    paramParcel.writeParcelable((Parcelable)this.initConfig, paramInt);
+    paramParcel.writeParcelable((Parcelable)this.qxv, paramInt);
+    paramParcel.writeInt(this.qxw);
+    AppMethodBeat.o(316919);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(252594);
-      p.k(paramParcel, "in");
-      paramParcel = new BindRemoteServiceData((AppBrandInitConfigWC)paramParcel.readParcelable(BindRemoteServiceData.class.getClassLoader()), (AppBrandStatObject)AppBrandStatObject.CREATOR.createFromParcel(paramParcel), paramParcel.readInt());
-      AppMethodBeat.o(252594);
-      return paramParcel;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new BindRemoteServiceData[paramInt];
-    }
-  }
+    implements Parcelable.Creator<BindRemoteServiceData>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.BindRemoteServiceData
  * JD-Core Version:    0.7.0.1
  */

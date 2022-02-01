@@ -25,25 +25,25 @@ import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.l;
+import com.tencent.mm.plugin.sns.b.l;
 
 public class CircularImageView
   extends ImageView
 {
   private static final String TAG;
-  private boolean Kwc;
-  private boolean Kwd;
-  private int Kwe;
-  private int Kwf;
-  private BitmapShader Kwg;
-  private Bitmap Kwh;
-  private Paint Kwi;
-  private Paint Kwj;
-  private ColorFilter Kwk;
-  private float bDp;
-  private float bDq;
-  private boolean bEc;
+  private boolean QUL;
+  private boolean QUM;
+  private int QUN;
+  private int QUO;
+  private BitmapShader QUP;
+  private Bitmap QUQ;
+  private Paint QUR;
+  private Paint QUS;
+  private ColorFilter QUT;
   private int borderWidth;
+  private float dwq;
+  private float dwr;
+  private boolean dxd;
   private boolean isSelected;
   private Paint paint;
   private int shadowColor;
@@ -58,12 +58,12 @@ public class CircularImageView
   
   public CircularImageView(Context paramContext)
   {
-    this(paramContext, null, i.l.CircularImageViewStyle_circularImageViewDefault);
+    this(paramContext, null, b.l.CircularImageViewStyle_circularImageViewDefault);
   }
   
   public CircularImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, i.l.CircularImageViewStyle_circularImageViewDefault);
+    this(paramContext, paramAttributeSet, b.l.CircularImageViewStyle_circularImageViewDefault);
   }
   
   public CircularImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -72,37 +72,37 @@ public class CircularImageView
     AppMethodBeat.i(97162);
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
-    this.Kwi = new Paint();
-    this.Kwi.setAntiAlias(true);
-    this.Kwi.setStyle(Paint.Style.STROKE);
-    this.Kwj = new Paint();
-    this.Kwj.setAntiAlias(true);
+    this.QUR = new Paint();
+    this.QUR.setAntiAlias(true);
+    this.QUR.setStyle(Paint.Style.STROKE);
+    this.QUS = new Paint();
+    this.QUS.setAntiAlias(true);
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, i.l.CircularImageView, paramInt, 0);
-    this.Kwc = paramAttributeSet.getBoolean(i.l.CircularImageView_civ_border, false);
-    this.Kwd = paramAttributeSet.getBoolean(i.l.CircularImageView_civ_selector, false);
-    this.bEc = paramAttributeSet.getBoolean(i.l.CircularImageView_civ_shadow, false);
-    if (this.Kwc)
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, b.l.CircularImageView, paramInt, 0);
+    this.QUL = paramAttributeSet.getBoolean(b.l.CircularImageView_civ_border, false);
+    this.QUM = paramAttributeSet.getBoolean(b.l.CircularImageView_civ_selector, false);
+    this.dxd = paramAttributeSet.getBoolean(b.l.CircularImageView_civ_shadow, false);
+    if (this.QUL)
     {
       paramInt = (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F);
-      setBorderWidth(paramAttributeSet.getDimensionPixelOffset(i.l.CircularImageView_civ_borderWidth, paramInt));
-      setBorderColor(paramAttributeSet.getColor(i.l.CircularImageView_civ_borderColor, -1));
+      setBorderWidth(paramAttributeSet.getDimensionPixelOffset(b.l.CircularImageView_civ_borderWidth, paramInt));
+      setBorderColor(paramAttributeSet.getColor(b.l.CircularImageView_civ_borderColor, -1));
     }
-    if (this.Kwd)
+    if (this.QUM)
     {
       paramInt = (int)(paramContext.getResources().getDisplayMetrics().density * 2.0F + 0.5F);
-      setSelectorColor(paramAttributeSet.getColor(i.l.CircularImageView_civ_selectorColor, 0));
-      setSelectorStrokeWidth(paramAttributeSet.getDimensionPixelOffset(i.l.CircularImageView_civ_selectorStrokeWidth, paramInt));
-      setSelectorStrokeColor(paramAttributeSet.getColor(i.l.CircularImageView_civ_selectorStrokeColor, -16776961));
+      setSelectorColor(paramAttributeSet.getColor(b.l.CircularImageView_civ_selectorColor, 0));
+      setSelectorStrokeWidth(paramAttributeSet.getDimensionPixelOffset(b.l.CircularImageView_civ_selectorStrokeWidth, paramInt));
+      setSelectorStrokeColor(paramAttributeSet.getColor(b.l.CircularImageView_civ_selectorStrokeColor, -16776961));
     }
-    if (this.bEc)
+    if (this.dxd)
     {
-      this.shadowRadius = paramAttributeSet.getFloat(i.l.CircularImageView_civ_shadowRadius, 4.0F);
-      this.bDp = paramAttributeSet.getFloat(i.l.CircularImageView_civ_shadowDx, 0.0F);
-      this.bDq = paramAttributeSet.getFloat(i.l.CircularImageView_civ_shadowDy, 2.0F);
-      this.shadowColor = paramAttributeSet.getColor(i.l.CircularImageView_civ_shadowColor, -16777216);
+      this.shadowRadius = paramAttributeSet.getFloat(b.l.CircularImageView_civ_shadowRadius, 4.0F);
+      this.dwq = paramAttributeSet.getFloat(b.l.CircularImageView_civ_shadowDx, 0.0F);
+      this.dwr = paramAttributeSet.getFloat(b.l.CircularImageView_civ_shadowDy, 2.0F);
+      this.shadowColor = paramAttributeSet.getColor(b.l.CircularImageView_civ_shadowColor, -16777216);
       setShadowEnabled(true);
     }
     paramAttributeSet.recycle();
@@ -146,23 +146,23 @@ public class CircularImageView
     return null;
   }
   
-  private void fSg()
+  private void hkl()
   {
     AppMethodBeat.i(97177);
-    if (this.Kwh == null)
+    if (this.QUQ == null)
     {
       AppMethodBeat.o(97177);
       return;
     }
-    Object localObject = this.Kwh;
+    Object localObject = this.QUQ;
     Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.Kwg = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
-    if ((this.Kwe != this.Kwh.getWidth()) || (this.Kwe != this.Kwh.getHeight()))
+    this.QUP = new BitmapShader((Bitmap)localObject, localTileMode, localTileMode);
+    if ((this.QUN != this.QUQ.getWidth()) || (this.QUN != this.QUQ.getHeight()))
     {
       localObject = new Matrix();
-      float f = this.Kwe / this.Kwh.getWidth();
+      float f = this.QUN / this.QUQ.getWidth();
       ((Matrix)localObject).setScale(f, f);
-      this.Kwg.setLocalMatrix((Matrix)localObject);
+      this.QUP.setLocalMatrix((Matrix)localObject);
     }
     AppMethodBeat.o(97177);
   }
@@ -202,49 +202,49 @@ public class CircularImageView
   {
     int j = 0;
     AppMethodBeat.i(97169);
-    if (this.Kwh == null)
+    if (this.QUQ == null)
     {
       AppMethodBeat.o(97169);
       return;
     }
-    if ((this.Kwh.getHeight() == 0) || (this.Kwh.getWidth() == 0))
+    if ((this.QUQ.getHeight() == 0) || (this.QUQ.getWidth() == 0))
     {
       AppMethodBeat.o(97169);
       return;
     }
-    int k = this.Kwe;
+    int k = this.QUN;
     int i;
     if (getWidth() < getHeight())
     {
       i = getWidth();
-      this.Kwe = i;
-      if (k != this.Kwe) {
-        fSg();
+      this.QUN = i;
+      if (k != this.QUN) {
+        hkl();
       }
-      this.paint.setShader(this.Kwg);
-      i = this.Kwe / 2;
-      if ((!this.Kwd) || (!this.isSelected)) {
+      this.paint.setShader(this.QUP);
+      i = this.QUN / 2;
+      if ((!this.QUM) || (!this.isSelected)) {
         break label224;
       }
-      j = this.Kwf;
-      i = (this.Kwe - j * 2) / 2;
-      this.paint.setColorFilter(this.Kwk);
-      paramCanvas.drawCircle(i + j, i + j, (this.Kwe - j * 2) / 2 + j - 4.0F, this.Kwj);
+      j = this.QUO;
+      i = (this.QUN - j * 2) / 2;
+      this.paint.setColorFilter(this.QUT);
+      paramCanvas.drawCircle(i + j, i + j, (this.QUN - j * 2) / 2 + j - 4.0F, this.QUS);
     }
     for (;;)
     {
-      paramCanvas.drawCircle(i + j, i + j, (this.Kwe - j * 2) / 2, this.paint);
+      paramCanvas.drawCircle(i + j, i + j, (this.QUN - j * 2) / 2, this.paint);
       AppMethodBeat.o(97169);
       return;
       i = getHeight();
       break;
       label224:
-      if (this.Kwc)
+      if (this.QUL)
       {
         j = this.borderWidth;
-        i = (this.Kwe - j * 2) / 2;
+        i = (this.QUN - j * 2) / 2;
         this.paint.setColorFilter(null);
-        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.Kwe - j / 2, this.Kwe - j / 2), 360.0F, 360.0F, false, this.Kwi);
+        paramCanvas.drawArc(new RectF(j / 2 + 0, j / 2 + 0, this.QUN - j / 2, this.QUN - j / 2), 360.0F, 360.0F, false, this.QUR);
       }
       else
       {
@@ -274,11 +274,11 @@ public class CircularImageView
       if (i == -2147483648) {
         break;
       }
-      paramInt1 = this.Kwe;
+      paramInt1 = this.QUN;
       break;
       label70:
       if (i != -2147483648) {
-        paramInt2 = this.Kwe;
+        paramInt2 = this.QUN;
       }
     }
   }
@@ -286,8 +286,8 @@ public class CircularImageView
   public void setBorderColor(int paramInt)
   {
     AppMethodBeat.i(97164);
-    if (this.Kwi != null) {
-      this.Kwi.setColor(paramInt);
+    if (this.QUR != null) {
+      this.QUR.setColor(paramInt);
     }
     invalidate();
     AppMethodBeat.o(97164);
@@ -297,8 +297,8 @@ public class CircularImageView
   {
     AppMethodBeat.i(97163);
     this.borderWidth = paramInt;
-    if (this.Kwi != null) {
-      this.Kwi.setStrokeWidth(paramInt);
+    if (this.QUR != null) {
+      this.QUR.setStrokeWidth(paramInt);
     }
     requestLayout();
     invalidate();
@@ -311,9 +311,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97174);
     super.setImageBitmap(paramBitmap);
-    this.Kwh = paramBitmap;
-    if (this.Kwe > 0) {
-      fSg();
+    this.QUQ = paramBitmap;
+    if (this.QUN > 0) {
+      hkl();
     }
     AppMethodBeat.o(97174);
   }
@@ -322,9 +322,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97173);
     super.setImageDrawable(paramDrawable);
-    this.Kwh = drawableToBitmap(getDrawable());
-    if (this.Kwe > 0) {
-      fSg();
+    this.QUQ = drawableToBitmap(getDrawable());
+    if (this.QUN > 0) {
+      hkl();
     }
     AppMethodBeat.o(97173);
   }
@@ -333,9 +333,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97172);
     super.setImageResource(paramInt);
-    this.Kwh = drawableToBitmap(getDrawable());
-    if (this.Kwe > 0) {
-      fSg();
+    this.QUQ = drawableToBitmap(getDrawable());
+    if (this.QUN > 0) {
+      hkl();
     }
     AppMethodBeat.o(97172);
   }
@@ -344,9 +344,9 @@ public class CircularImageView
   {
     AppMethodBeat.i(97171);
     super.setImageURI(paramUri);
-    this.Kwh = drawableToBitmap(getDrawable());
-    if (this.Kwe > 0) {
-      fSg();
+    this.QUQ = drawableToBitmap(getDrawable());
+    if (this.QUN > 0) {
+      hkl();
     }
     AppMethodBeat.o(97171);
   }
@@ -354,7 +354,7 @@ public class CircularImageView
   public void setSelectorColor(int paramInt)
   {
     AppMethodBeat.i(97165);
-    this.Kwk = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.QUT = new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     invalidate();
     AppMethodBeat.o(97165);
   }
@@ -362,8 +362,8 @@ public class CircularImageView
   public void setSelectorStrokeColor(int paramInt)
   {
     AppMethodBeat.i(97167);
-    if (this.Kwj != null) {
-      this.Kwj.setColor(paramInt);
+    if (this.QUS != null) {
+      this.QUS.setColor(paramInt);
     }
     invalidate();
     AppMethodBeat.o(97167);
@@ -372,7 +372,7 @@ public class CircularImageView
   public void setSelectorStrokeWidth(int paramInt)
   {
     AppMethodBeat.i(97166);
-    this.Kwf = paramInt;
+    this.QUO = paramInt;
     requestLayout();
     invalidate();
     AppMethodBeat.o(97166);
@@ -381,12 +381,12 @@ public class CircularImageView
   public void setShadowEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(97168);
-    this.bEc = paramBoolean;
-    if (this.bEc) {}
+    this.dxd = paramBoolean;
+    if (this.dxd) {}
     for (float f = this.shadowRadius;; f = 0.0F)
     {
-      this.Kwi.setShadowLayer(f, this.bDp, this.bDq, this.shadowColor);
-      this.Kwj.setShadowLayer(f, this.bDp, this.bDq, this.shadowColor);
+      this.QUR.setShadowLayer(f, this.dwq, this.dwr, this.shadowColor);
+      this.QUS.setShadowLayer(f, this.dwq, this.dwr, this.shadowColor);
       AppMethodBeat.o(97168);
       return;
     }

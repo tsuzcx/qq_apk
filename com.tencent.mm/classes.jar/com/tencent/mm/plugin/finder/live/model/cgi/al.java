@@ -1,69 +1,63 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.c;
-import com.tencent.mm.protocal.protobuf.bac;
-import com.tencent.mm.protocal.protobuf.bbd;
-import com.tencent.mm.protocal.protobuf.bdc;
-import com.tencent.mm.protocal.protobuf.bdd;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.findersdk.b.a.b;
+import com.tencent.mm.protocal.protobuf.bsd;
+import com.tencent.mm.protocal.protobuf.bse;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveTopComment;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTopCommentResponse;", "liveData", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;)V", "TAG", "", "getLiveData", "()Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "setLiveData", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;)V", "getMsg", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "setMsg", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;)V", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTopCommentRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePause;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderPauseLiveResponse;", "liveId", "", "finderUsername", "", "objectId", "pauseSecond", "", "pauseMode", "scene", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePause$CallBack;", "(JLjava/lang/String;JIIILcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePause$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePause$CallBack;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderPauseLiveRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class al
-  extends n<bdd>
+  extends o<bse>
 {
+  private final a CKh;
+  private bsd CKi;
   private final String TAG;
-  private com.tencent.mm.plugin.finder.live.model.context.a xYp;
-  private bbd yig;
-  private bdc yki;
   
-  public al(com.tencent.mm.plugin.finder.live.model.context.a parama, bbd parambbd)
+  public al(long paramLong1, String paramString, long paramLong2, int paramInt1, int paramInt2, a parama)
   {
-    AppMethodBeat.i(269140);
-    this.xYp = parama;
-    this.yig = parambbd;
-    this.TAG = "Finder.CgiFinderLiveTopComment";
-    this.yki = new bdc();
-    parama = this.yki;
-    parambbd = ao.xcj;
-    parama.SDi = ao.dnO();
-    this.yki.liveId = ((c)this.xYp.business(c.class)).liveInfo.liveId;
-    this.yki.xbk = ((c)this.xYp.business(c.class)).xbk;
-    this.yki.ilo = (this.yig.ilo + '_' + cm.bfF() + '_' + ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYp.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).yeE);
-    this.yki.xak = com.tencent.mm.cd.b.cU(((c)this.xYp.business(c.class)).kvN);
-    this.yki.seq = this.yig.seq;
-    this.yki.fSo = 0;
-    this.yki.SKW = d.Nb(((c)this.xYp.business(c.class)).nonceId);
-    this.yki.finderUsername = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYp.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).kig;
-    this.yki.jDI = ((c)this.xYp.business(c.class)).nonceId;
-    ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYp.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgg.add(this.yki.ilo);
-    parama = new d.a();
-    parama.c((com.tencent.mm.cd.a)this.yki);
-    parambbd = new bdd();
-    parambbd.setBaseResponse(new jh());
-    parama.d((com.tencent.mm.cd.a)parambbd);
-    parama.TW("/cgi-bin/micromsg-bin/finderlivetopcomment");
-    parama.vD(6295);
-    c(parama.bgN());
-    Log.i(this.TAG, "CgiFinderLiveTopComment init " + this.yki.liveId + ',' + ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.xYp.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).kig + ',' + this.yig.content);
-    AppMethodBeat.o(269140);
+    AppMethodBeat.i(360270);
+    this.CKh = parama;
+    this.TAG = "Finder.CgiFinderLivePause";
+    this.CKi = new bsd();
+    this.CKi.mMJ = paramLong1;
+    this.CKi.YIZ = paramString;
+    this.CKi.object_id = paramLong2;
+    this.CKi.aaab = 0;
+    this.CKi.aaac = paramInt1;
+    this.CKi.scene = paramInt2;
+    paramString = new c.a();
+    paramString.otE = ((a)this.CKi);
+    parama = new bse();
+    parama.setBaseResponse(new kd());
+    parama.getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)parama);
+    paramString.uri = "/cgi-bin/micromsg-bin/finderpauselive";
+    paramString.funcId = 4197;
+    c(paramString.bEF());
+    Log.i(this.TAG, "CgiFinderLivePause init " + this.CKi.mMJ + ',' + this.CKi.YIZ + ",pause_second:" + this.CKi.aaab + ",pause_mode:" + this.CKi.aaac);
+    AppMethodBeat.o(360270);
   }
   
-  public final com.tencent.mm.plugin.findersdk.b.a.b dnF()
+  public final b dVi()
   {
-    return com.tencent.mm.plugin.findersdk.b.a.b.BvU;
+    return b.Hde;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePause$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderPauseLiveResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, int paramInt2, bse parambse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.al
  * JD-Core Version:    0.7.0.1
  */

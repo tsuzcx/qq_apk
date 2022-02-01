@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.scanner.util.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.f;
-import kotlin.g;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressRequest;", "()V", "configMaxImageSize", "", "getConfigMaxImageSize", "()I", "configMaxImageSize$delegate", "Lkotlin/Lazy;", "computeSampleSize", "request", "width", "height", "isSizeValid", "", "name", "", "onTransform", "Landroid/graphics/Bitmap;", "bitmap", "Companion", "scan-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressStrategy;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressRequest;", "()V", "configMaxImageSize", "", "getConfigMaxImageSize", "()I", "configMaxImageSize$delegate", "Lkotlin/Lazy;", "computeSampleSize", "request", "width", "height", "isSizeValid", "", "name", "", "onTransform", "Landroid/graphics/Bitmap;", "bitmap", "Companion", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements i<c>
 {
-  public static final a Jad;
-  private final f Jac;
+  public static final a PjU;
+  private final j PjV;
   
   static
   {
-    AppMethodBeat.i(193529);
-    Jad = new a((byte)0);
-    AppMethodBeat.o(193529);
+    AppMethodBeat.i(314153);
+    PjU = new a((byte)0);
+    AppMethodBeat.o(314153);
   }
   
   public d()
   {
-    AppMethodBeat.i(193528);
-    this.Jac = g.ar((a)b.Jae);
-    AppMethodBeat.o(193528);
+    AppMethodBeat.i(314149);
+    this.PjV = k.cm((a)b.PjW);
+    AppMethodBeat.o(314149);
   }
   
-  public final boolean jo(int paramInt1, int paramInt2)
+  public final boolean kW(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(193525);
+    AppMethodBeat.i(314159);
     if ((paramInt1 < 4) || (paramInt2 < 4))
     {
       Log.w("MicroMsg.ScanCodeImageCompressStrategy", "isSizeValid invalid width: " + paramInt1 + ", height: " + paramInt2);
-      AppMethodBeat.o(193525);
+      AppMethodBeat.o(314159);
       return false;
     }
-    AppMethodBeat.o(193525);
+    AppMethodBeat.o(314159);
     return true;
   }
   
@@ -47,21 +47,21 @@ public final class d
     return "MicroMsg.ScanCodeImageCompressStrategy";
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressStrategy$Companion;", "", "()V", "DEFAULT_SCAN_CODE_IMAGE_SIZE", "", "MAX_SCAN_CODE_IMAGE_SIZE", "MIN_IMAGE_SIZE", "MIN_SCAN_CODE_IMAGE_SIZE", "TAG", "", "scan-sdk_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressStrategy$Companion;", "", "()V", "DEFAULT_SCAN_CODE_IMAGE_SIZE", "", "MAX_SCAN_CODE_IMAGE_SIZE", "MIN_IMAGE_SIZE", "MIN_SCAN_CODE_IMAGE_SIZE", "TAG", "", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements a<Integer>
   {
-    public static final b Jae;
+    public static final b PjW;
     
     static
     {
-      AppMethodBeat.i(192599);
-      Jae = new b();
-      AppMethodBeat.o(192599);
+      AppMethodBeat.i(314147);
+      PjW = new b();
+      AppMethodBeat.o(314147);
     }
     
     b()

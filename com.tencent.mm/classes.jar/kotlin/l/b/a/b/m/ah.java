@@ -3,23 +3,23 @@ package kotlin.l.b.a.b.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ah
-  extends o
+  extends p
 {
-  public ah(aj paramaj)
+  public ah(al paramal)
   {
-    super(paramaj);
-    AppMethodBeat.i(60782);
-    AppMethodBeat.o(60782);
+    super(paramal);
+    AppMethodBeat.i(60780);
+    AppMethodBeat.o(60780);
   }
   
-  public final boolean iIu()
+  public final boolean ksB()
   {
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ah
  * JD-Core Version:    0.7.0.1
  */

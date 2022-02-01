@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/cls" android:background="@drawable/c9b" android:paddingLeft="@dimen/cc" android:paddingTop="10.0dip" android:paddingRight="@dimen/cc" android:paddingBottom="14.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/cc"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aja" android:textColor="@color/v9" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cmz" android:includeFontPadding="true" />
-</FrameLayout>

@@ -4,8 +4,14 @@ public final class j
 {
   public static final class a
   {
-    public static final int anim_not_change = 2130771986;
-    public static final int pop_out = 2130772122;
+    public static final int anim_not_change = 2130771992;
+    public static final int pop_out = 2130772134;
+  }
+  
+  public static final class h
+  {
+    public static final int enter_multi_task_float_ball = 2131759188;
+    public static final int webview_minimize_sound_path = 2131771789;
   }
 }
 

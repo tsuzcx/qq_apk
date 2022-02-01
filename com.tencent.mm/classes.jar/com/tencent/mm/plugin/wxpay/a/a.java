@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.wxpay.a;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.wallet_core.c.aa;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.wallet_core.model.ab;
 
 public abstract interface a
   extends com.tencent.mm.kernel.b.a
@@ -12,13 +13,15 @@ public abstract interface a
   
   public abstract void doRedPacketPreviewLoading(Context paramContext, String paramString);
   
-  public abstract aa getWalletCacheStg();
+  public abstract ab getWalletCacheStg();
   
   public abstract void gotoLuckyMoneyReceiveUI(Context paramContext, Bundle paramBundle, k.b paramb);
   
   public abstract void gotoRedPacketPreviewUI(Context paramContext, String paramString);
   
   public abstract boolean hasInitBiometricManager();
+  
+  public abstract boolean isPayScene(Activity paramActivity);
   
   public abstract void onExitRedPacketPreviewChatting();
   

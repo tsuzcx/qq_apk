@@ -2,7 +2,7 @@ package com.tencent.luggage.xweb_ext.extendplugin;
 
 public abstract interface a$a
 {
-  public abstract void iW(int paramInt);
+  public abstract void my(int paramInt);
   
   public abstract void onDestroy();
   

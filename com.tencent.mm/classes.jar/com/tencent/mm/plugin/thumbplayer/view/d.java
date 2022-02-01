@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.thumbplayer.view;
 
-import kotlin.l;
+import com.tencent.mm.plugin.thumbplayer.a.b;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "", "onChange", "", "index", "", "targetMedia", "Lcom/tencent/mm/plugin/thumbplayer/model/TPMediaInfo;", "plugin-thumbplayer_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/thumbplayer/view/OnPlayerChangeMediaListener;", "", "onChange", "", "index", "", "targetMedia", "Lcom/tencent/mm/plugin/thumbplayer/api/TPMediaInfo;", "plugin-thumbplayer_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface d
 {
-  public abstract void a(int paramInt, com.tencent.mm.plugin.thumbplayer.e.d paramd);
+  public abstract void a(int paramInt, b paramb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.thumbplayer.view.d
  * JD-Core Version:    0.7.0.1
  */

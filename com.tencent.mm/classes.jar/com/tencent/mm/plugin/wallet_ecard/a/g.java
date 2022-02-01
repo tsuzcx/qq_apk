@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.wallet_ecard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dqv;
-import com.tencent.mm.protocal.protobuf.dqw;
+import com.tencent.mm.protocal.protobuf.ejq;
+import com.tencent.mm.protocal.protobuf.ejr;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class g
   extends r
 {
-  public dqw PiG;
-  private i callback;
-  private d rr;
+  public ejr VZu;
+  private h callback;
+  private c rr;
   
   public g()
   {
     AppMethodBeat.i(71701);
-    d.a locala = new d.a();
-    locala.lBU = new dqv();
-    locala.lBV = new dqw();
+    c.a locala = new c.a();
+    locala.otE = new ejq();
+    locala.otF = new ejr();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/mmpay-bin/qrycancelecarddesc";
-    locala.lBW = 0;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((dqv)d.b.b(this.rr.lBR)).TXs = 1L;
+    this.rr = locala.bEF();
+    ((ejq)c.b.b(this.rr.otB)).aboj = 1L;
     AppMethodBeat.o(71701);
   }
   
@@ -38,18 +38,18 @@ public final class g
   {
     AppMethodBeat.i(71702);
     Log.i("MicroMsg.NetSceneQryECardLogout", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.PiG = ((dqw)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneQryECardLogout", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.PiG.tqa), this.PiG.tqb });
+    this.VZu = ((ejr)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneQryECardLogout", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.VZu.wuz), this.VZu.wuA });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(71702);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(71703);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(71703);
     return i;
@@ -57,11 +57,11 @@ public final class g
   
   public final void f(s params)
   {
-    AppMethodBeat.i(264728);
-    params = (dqw)d.c.b(((d)params).lBS);
-    this.YVy = params.tqa;
-    this.YVz = params.tqb;
-    AppMethodBeat.o(264728);
+    AppMethodBeat.i(262487);
+    params = (ejr)c.c.b(((c)params).otC);
+    this.agTs = params.wuz;
+    this.agTt = params.wuA;
+    AppMethodBeat.o(262487);
   }
   
   public final int getType()
@@ -71,7 +71,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.a.g
  * JD-Core Version:    0.7.0.1
  */

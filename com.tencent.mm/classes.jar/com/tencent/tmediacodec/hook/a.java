@@ -11,83 +11,83 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private static boolean ZOW;
-  private static final Map<String, c> ZOX;
+  private static boolean ahTX;
+  private static final Map<String, c> ahTY;
   
   static
   {
-    AppMethodBeat.i(224439);
-    ZOX = new ConcurrentHashMap();
-    AppMethodBeat.o(224439);
+    AppMethodBeat.i(210874);
+    ahTY = new ConcurrentHashMap();
+    AppMethodBeat.o(210874);
   }
   
   public static void a(String paramString, c paramc)
   {
-    AppMethodBeat.i(224433);
-    ZOX.put(paramString, paramc);
+    AppMethodBeat.i(210847);
+    ahTY.put(paramString, paramc);
     if (b.isLogEnable())
     {
-      new StringBuilder("after hookSurfaceCallback size:").append(ZOX.size()).append(" mHoldCallbackMap:").append(ZOX);
-      b.bDP("HookManager");
+      new StringBuilder("after hookSurfaceCallback size:").append(ahTY.size()).append(" mHoldCallbackMap:").append(ahTY);
+      b.O("HookManager");
     }
-    if (!ZOW)
+    if (!ahTX)
     {
-      ZOW = true;
+      ahTX = true;
       THookTextureView.setHookCallback(new THookTextureView.a()
       {
-        public final boolean x(SurfaceTexture paramAnonymousSurfaceTexture)
+        public final boolean z(SurfaceTexture paramAnonymousSurfaceTexture)
         {
-          AppMethodBeat.i(224429);
+          AppMethodBeat.i(210845);
           if (paramAnonymousSurfaceTexture == null)
           {
-            AppMethodBeat.o(224429);
+            AppMethodBeat.o(210845);
             return true;
           }
           Object localObject = paramAnonymousSurfaceTexture.toString();
-          Iterator localIterator = a.ZOX.keySet().iterator();
+          Iterator localIterator = a.aYC().keySet().iterator();
           while (localIterator.hasNext()) {
             if (TextUtils.equals((String)localIterator.next(), (CharSequence)localObject))
             {
-              localObject = (c)a.ZOX.get(localObject);
+              localObject = (c)a.aYC().get(localObject);
               if (localObject != null) {
-                ((c)localObject).v(paramAnonymousSurfaceTexture);
+                ((c)localObject).x(paramAnonymousSurfaceTexture);
               }
-              AppMethodBeat.o(224429);
+              AppMethodBeat.o(210845);
               return false;
             }
           }
-          AppMethodBeat.o(224429);
+          AppMethodBeat.o(210845);
           return true;
         }
       });
     }
-    AppMethodBeat.o(224433);
+    AppMethodBeat.o(210847);
   }
   
-  public static void bDN(String paramString)
+  public static void bGs(String paramString)
   {
-    AppMethodBeat.i(224434);
-    ZOX.remove(paramString);
-    AppMethodBeat.o(224434);
+    AppMethodBeat.i(210855);
+    ahTY.remove(paramString);
+    AppMethodBeat.o(210855);
   }
   
-  public static void w(SurfaceTexture paramSurfaceTexture)
+  public static void y(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(224437);
+    AppMethodBeat.i(210862);
     try
     {
       "realReleaseSurfaceTexture surfaceTexture:".concat(String.valueOf(paramSurfaceTexture));
-      b.bDR("HookManager");
-      bDN(paramSurfaceTexture.toString());
+      b.R("HookManager");
+      bGs(paramSurfaceTexture.toString());
       paramSurfaceTexture.release();
-      AppMethodBeat.o(224437);
+      AppMethodBeat.o(210862);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       new StringBuilder("realReleaseSurfaceTexture surfaceTexture:").append(paramSurfaceTexture).append(" ignoreThrowable");
-      b.bDS("HookManager");
-      AppMethodBeat.o(224437);
+      b.S("HookManager");
+      AppMethodBeat.o(210862);
     }
   }
 }

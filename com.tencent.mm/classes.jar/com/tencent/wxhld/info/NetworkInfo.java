@@ -12,12 +12,12 @@ public class NetworkInfo
   
   public NetworkInfo(int paramInt)
   {
-    AppMethodBeat.i(244071);
+    AppMethodBeat.i(212299);
     this.debugIp = null;
     this.useDefaultDebugIp = false;
     this.lkid = null;
     this.authCode = new byte[paramInt];
-    AppMethodBeat.o(244071);
+    AppMethodBeat.o(212299);
   }
 }
 

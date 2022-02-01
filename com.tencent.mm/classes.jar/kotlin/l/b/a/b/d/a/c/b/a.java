@@ -1,37 +1,46 @@
 package kotlin.l.b.a.b.d.a.c.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.as;
-import kotlin.l.b.a.b.d.a.a.l;
+import java.util.Set;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.ba;
+import kotlin.l.b.a.b.d.a.a.k;
+import kotlin.l.b.a.b.m.al;
 
 public final class a
 {
-  final l aaVV;
-  final b aaVW;
-  final boolean aaVX;
-  final as aaVY;
+  final k aiTX;
+  final b aiTY;
+  final boolean aiTZ;
+  final Set<ba> aiUa;
+  final al aiUb;
   
-  private a(l paraml, b paramb, boolean paramBoolean, as paramas)
+  private a(k paramk, b paramb, boolean paramBoolean, Set<? extends ba> paramSet, al paramal)
   {
-    AppMethodBeat.i(57949);
-    this.aaVV = paraml;
-    this.aaVW = paramb;
-    this.aaVX = paramBoolean;
-    this.aaVY = paramas;
-    AppMethodBeat.o(57949);
+    AppMethodBeat.i(192136);
+    this.aiTX = paramk;
+    this.aiTY = paramb;
+    this.aiTZ = paramBoolean;
+    this.aiUa = paramSet;
+    this.aiUb = paramal;
+    AppMethodBeat.o(192136);
+  }
+  
+  private static a a(k paramk, b paramb, boolean paramBoolean, Set<? extends ba> paramSet, al paramal)
+  {
+    AppMethodBeat.i(192145);
+    s.u(paramk, "howThisTypeIsUsed");
+    s.u(paramb, "flexibility");
+    paramk = new a(paramk, paramb, paramBoolean, paramSet, paramal);
+    AppMethodBeat.o(192145);
+    return paramk;
   }
   
   public final a a(b paramb)
   {
     AppMethodBeat.i(57948);
-    p.k(paramb, "flexibility");
-    l locall = this.aaVV;
-    boolean bool = this.aaVX;
-    as localas = this.aaVY;
-    p.k(locall, "howThisTypeIsUsed");
-    p.k(paramb, "flexibility");
-    paramb = new a(locall, paramb, bool, localas);
+    s.u(paramb, "flexibility");
+    paramb = a(this, null, paramb, false, null, null, 29);
     AppMethodBeat.o(57948);
     return paramb;
   }
@@ -39,21 +48,44 @@ public final class a
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57953);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((!p.h(this.aaVV, paramObject.aaVV)) || (!p.h(this.aaVW, paramObject.aaVW)) || (this.aaVX != paramObject.aaVX) || (!p.h(this.aaVY, paramObject.aaVY))) {}
-      }
-    }
-    else
+    if (this == paramObject)
     {
       AppMethodBeat.o(57953);
       return true;
     }
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(57953);
+      return false;
+    }
+    paramObject = (a)paramObject;
+    if (this.aiTX != paramObject.aiTX)
+    {
+      AppMethodBeat.o(57953);
+      return false;
+    }
+    if (this.aiTY != paramObject.aiTY)
+    {
+      AppMethodBeat.o(57953);
+      return false;
+    }
+    if (this.aiTZ != paramObject.aiTZ)
+    {
+      AppMethodBeat.o(57953);
+      return false;
+    }
+    if (!s.p(this.aiUa, paramObject.aiUa))
+    {
+      AppMethodBeat.o(57953);
+      return false;
+    }
+    if (!s.p(this.aiUb, paramObject.aiUb))
+    {
+      AppMethodBeat.o(57953);
+      return false;
+    }
     AppMethodBeat.o(57953);
-    return false;
+    return true;
   }
   
   public final int hashCode()
@@ -64,14 +96,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(57951);
-    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.aaVV + ", flexibility=" + this.aaVW + ", isForAnnotationParameter=" + this.aaVX + ", upperBoundOfTypeParameter=" + this.aaVY + ")";
+    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.aiTX + ", flexibility=" + this.aiTY + ", isForAnnotationParameter=" + this.aiTZ + ", visitedTypeParameters=" + this.aiUa + ", defaultType=" + this.aiUb + ')';
     AppMethodBeat.o(57951);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,25 +2,26 @@ package com.tencent.mm.plugin.voip;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.c.d
+  implements d
 {
   public final n createApplication()
   {
     AppMethodBeat.i(114797);
-    d locald = new d();
+    c localc = new c();
     AppMethodBeat.o(114797);
-    return locald;
+    return localc;
   }
   
   public final be createSubCore()
   {
     AppMethodBeat.i(114798);
-    c localc = new c();
+    SubCoreVoip localSubCoreVoip = new SubCoreVoip();
     AppMethodBeat.o(114798);
-    return localc;
+    return localSubCoreVoip;
   }
   
   public final com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()

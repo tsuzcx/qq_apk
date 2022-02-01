@@ -1,7 +1,5 @@
 package com.tencent.mm.ui.widget;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
@@ -18,48 +16,48 @@ import com.tencent.mm.ah.a.k;
 public final class g
   extends DatePickerDialog
 {
-  private boolean Ybe = true;
-  private long Ybf;
-  private int Ybg;
+  private boolean afSW = true;
+  private long afSX;
+  private int afSY;
   
   public g(Context paramContext, DatePickerDialog.OnDateSetListener paramOnDateSetListener, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     super(paramContext, paramOnDateSetListener, paramInt1, paramInt2, paramInt3);
-    this.Ybf = paramLong;
-    this.Ybg = 1;
+    this.afSX = paramLong;
+    this.afSY = 1;
   }
   
   public g(Context paramContext, DatePickerDialog.OnDateSetListener paramOnDateSetListener, int paramInt1, int paramInt2, int paramInt3, long paramLong, byte paramByte)
   {
     super(paramContext, 3, paramOnDateSetListener, paramInt1, paramInt2, paramInt3);
-    this.Ybf = paramLong;
-    this.Ybg = 1;
+    this.afSX = paramLong;
+    this.afSY = 1;
   }
   
   public g(Context paramContext, DatePickerDialog.OnDateSetListener paramOnDateSetListener, int paramInt1, int paramInt2, int paramInt3, long paramLong, char paramChar)
   {
     super(paramContext, 3, paramOnDateSetListener, paramInt1, paramInt2, paramInt3);
-    this.Ybf = paramLong;
-    this.Ybg = 1;
+    this.afSX = paramLong;
+    this.afSY = 1;
   }
   
-  private void mN(int paramInt1, int paramInt2)
+  private void oG(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143344);
-    if (this.Ybg > 1) {
+    if (this.afSY > 1) {
       setTitle(getContext().getString(a.k.fmt_year_month_str, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1) }));
     }
     AppMethodBeat.o(143344);
   }
   
-  public final void Wm(long paramLong)
+  public final void Ay(long paramLong)
   {
     AppMethodBeat.i(143345);
     getDatePicker().setMaxDate(paramLong);
     AppMethodBeat.o(143345);
   }
   
-  public final void Wn(long paramLong)
+  public final void Az(long paramLong)
   {
     AppMethodBeat.i(143346);
     getDatePicker().setMinDate(paramLong);
@@ -70,24 +68,23 @@ public final class g
   {
     AppMethodBeat.i(143343);
     super.onDateChanged(paramDatePicker, paramInt1, paramInt2, paramInt3);
-    mN(paramInt1, paramInt2);
+    oG(paramInt1, paramInt2);
     AppMethodBeat.o(143343);
   }
   
-  @SuppressLint({"DefaultLocale"})
   public final void show()
   {
     int j = 1;
     AppMethodBeat.i(143342);
     super.show();
     Object localObject;
-    if (this.Ybe)
+    if (this.afSW)
     {
       if (Build.VERSION.SDK_INT < 11) {
         break label107;
       }
-      localObject = new a().Y((ViewGroup)getWindow().getDecorView());
-      if ((localObject != null) && (this.Ybg > 1)) {
+      localObject = new a().ai((ViewGroup)getWindow().getDecorView());
+      if ((localObject != null) && (this.afSY > 1)) {
         ((View)localObject).setVisibility(8);
       }
     }
@@ -98,8 +95,8 @@ public final class g
       int i = getDatePicker().getYear();
       j = getDatePicker().getMonth();
       getDatePicker().getDayOfMonth();
-      mN(i, j);
-      this.Ybe = false;
+      oG(i, j);
+      this.afSW = false;
       AppMethodBeat.o(143342);
       return;
       String str = Settings.System.getString(getContext().getContentResolver(), "date_format");
@@ -141,8 +138,7 @@ public final class g
   {
     a() {}
     
-    @TargetApi(11)
-    public final NumberPicker Y(ViewGroup paramViewGroup)
+    public final NumberPicker ai(ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(143340);
       if (paramViewGroup != null)
@@ -163,7 +159,7 @@ public final class g
           }
           if ((localObject instanceof ViewGroup))
           {
-            localObject = Y((ViewGroup)localObject);
+            localObject = ai((ViewGroup)localObject);
             if (localObject != null)
             {
               AppMethodBeat.o(143340);
@@ -180,7 +176,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.g
  * JD-Core Version:    0.7.0.1
  */

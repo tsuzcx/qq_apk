@@ -1,91 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class hk
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public String RMD;
-  public String RME;
-  public String fvP;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123549);
+    AppMethodBeat.i(152498);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RMD != null) {
-        paramVarArgs.f(1, this.RMD);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.RME != null) {
-        paramVarArgs.f(2, this.RME);
-      }
-      if (this.fvP != null) {
-        paramVarArgs.f(3, this.fvP);
-      }
-      AppMethodBeat.o(123549);
+      AppMethodBeat.o(152498);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.RMD == null) {
-        break label334;
+      if (this.BaseResponse == null) {
+        break label284;
       }
     }
-    label334:
-    for (int i = g.a.a.b.b.a.g(1, this.RMD) + 0;; i = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.RME != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.RME);
-      }
-      i = paramInt;
-      if (this.fvP != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.fvP);
-      }
-      AppMethodBeat.o(123549);
-      return i;
+      AppMethodBeat.o(152498);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(123549);
+        AppMethodBeat.o(152498);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         hk localhk = (hk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123549);
+          AppMethodBeat.o(152498);
           return -1;
-        case 1: 
-          localhk.RMD = locala.abFh.readString();
-          AppMethodBeat.o(123549);
-          return 0;
-        case 2: 
-          localhk.RME = locala.abFh.readString();
-          AppMethodBeat.o(123549);
-          return 0;
         }
-        localhk.fvP = locala.abFh.readString();
-        AppMethodBeat.o(123549);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          kd localkd = new kd();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localkd.parseFrom((byte[])localObject);
+          }
+          localhk.BaseResponse = localkd;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(152498);
         return 0;
       }
-      AppMethodBeat.o(123549);
+      AppMethodBeat.o(152498);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.hk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,116 +1,130 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class dps
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int TWD;
-  public boolean TWE;
-  public boolean TgY;
-  public String fJj;
-  public String md5;
-  public String url;
-  public int version;
+  public cyx YNR;
+  public cyy YNS;
+  public int aaWu;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123639);
+    AppMethodBeat.i(32350);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.co(1, this.TgY);
-      if (this.url != null) {
-        paramVarArgs.f(2, this.url);
-      }
-      if (this.md5 != null) {
-        paramVarArgs.f(3, this.md5);
-      }
-      paramVarArgs.aY(4, this.version);
-      paramVarArgs.aY(5, this.TWD);
-      if (this.fJj != null) {
-        paramVarArgs.f(6, this.fJj);
-      }
-      paramVarArgs.co(7, this.TWE);
-      AppMethodBeat.o(123639);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.gL(1) + 1 + 0;
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.url);
-      }
-      i = paramInt;
-      if (this.md5 != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.md5);
-      }
-      i = i + g.a.a.b.b.a.bM(4, this.version) + g.a.a.b.b.a.bM(5, this.TWD);
-      paramInt = i;
-      if (this.fJj != null) {
-        paramInt = i + g.a.a.b.b.a.g(6, this.fJj);
-      }
-      i = g.a.a.b.b.a.gL(7);
-      AppMethodBeat.o(123639);
-      return paramInt + (i + 1);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(123639);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      dps localdps = (dps)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YNR == null)
       {
-      default: 
-        AppMethodBeat.o(123639);
-        return -1;
-      case 1: 
-        localdps.TgY = locala.abFh.AB();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 2: 
-        localdps.url = locala.abFh.readString();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 3: 
-        localdps.md5 = locala.abFh.readString();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 4: 
-        localdps.version = locala.abFh.AK();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 5: 
-        localdps.TWD = locala.abFh.AK();
-        AppMethodBeat.o(123639);
-        return 0;
-      case 6: 
-        localdps.fJj = locala.abFh.readString();
-        AppMethodBeat.o(123639);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: HardDevice");
+        AppMethodBeat.o(32350);
+        throw paramVarArgs;
       }
-      localdps.TWE = locala.abFh.AB();
-      AppMethodBeat.o(123639);
+      if (this.YNR != null)
+      {
+        paramVarArgs.qD(1, this.YNR.computeSize());
+        this.YNR.writeFields(paramVarArgs);
+      }
+      if (this.YNS != null)
+      {
+        paramVarArgs.qD(2, this.YNS.computeSize());
+        this.YNS.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bS(3, this.aaWu);
+      AppMethodBeat.o(32350);
       return 0;
     }
-    AppMethodBeat.o(123639);
-    return -1;
+    if (paramInt == 1) {
+      if (this.YNR == null) {
+        break label519;
+      }
+    }
+    label519:
+    for (paramInt = i.a.a.a.qC(1, this.YNR.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.YNS != null) {
+        i = paramInt + i.a.a.a.qC(2, this.YNS.computeSize());
+      }
+      paramInt = i.a.a.b.b.a.cJ(3, this.aaWu);
+      AppMethodBeat.o(32350);
+      return i + paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.YNR == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: HardDevice");
+          AppMethodBeat.o(32350);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32350);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
+        dps localdps = (dps)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32350);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new cyx();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((cyx)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdps.YNR = ((cyx)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32350);
+          return 0;
+        case 2: 
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new cyy();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((cyy)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdps.YNS = ((cyy)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32350);
+          return 0;
+        }
+        localdps.aaWu = ((i.a.a.a.a)localObject1).ajGk.aar();
+        AppMethodBeat.o(32350);
+        return 0;
+      }
+      AppMethodBeat.o(32350);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dps
  * JD-Core Version:    0.7.0.1
  */

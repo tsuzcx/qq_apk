@@ -1,10 +1,10 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.protocal.protobuf.evu;
+import com.tencent.mm.protocal.protobuf.frj;
 
 public abstract interface m$a
 {
-  public abstract void a(String paramString, evu paramevu);
+  public abstract void a(String paramString, frj paramfrj);
 }
 
 

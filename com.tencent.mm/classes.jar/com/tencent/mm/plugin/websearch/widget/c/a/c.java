@@ -19,7 +19,7 @@ import java.util.Set;
 public final class c
   implements a
 {
-  private boolean b(final Context paramContext, final String paramString, Map<String, String> paramMap)
+  private boolean c(final Context paramContext, final String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(116664);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
@@ -39,7 +39,7 @@ public final class c
           paramString.putExtra((String)localEntry.getKey(), (String)localEntry.getValue());
         }
       }
-      com.tencent.mm.co.a.post(new Runnable()
+      com.tencent.mm.ci.a.post(new Runnable()
       {
         public final void run()
         {
@@ -59,15 +59,7 @@ public final class c
     return true;
   }
   
-  public final boolean Tz(long paramLong)
-  {
-    AppMethodBeat.i(116661);
-    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.at(paramLong, 1);
-    AppMethodBeat.o(116661);
-    return bool;
-  }
-  
-  public final boolean bjf(String paramString)
+  public final boolean biQ(String paramString)
   {
     AppMethodBeat.i(116662);
     if (TextUtils.isEmpty(paramString))
@@ -80,10 +72,10 @@ public final class c
     return bool;
   }
   
-  public final boolean bjg(String paramString)
+  public final boolean biR(String paramString)
   {
     AppMethodBeat.i(116663);
-    if (!bjf(paramString))
+    if (!biQ(paramString))
     {
       AppMethodBeat.o(116663);
       return false;
@@ -97,15 +89,23 @@ public final class c
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
       localHashMap.put(str2, str1);
     }
-    if (!b(MMApplicationContext.getContext(), paramString, localHashMap))
+    if (!c(MMApplicationContext.getContext(), paramString, localHashMap))
     {
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject);
       paramString.putExtra("useJs", true);
-      com.tencent.mm.by.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
+      com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
     }
     AppMethodBeat.o(116663);
     return true;
+  }
+  
+  public final boolean xJ(long paramLong)
+  {
+    AppMethodBeat.i(116661);
+    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.aJ(paramLong, 1);
+    AppMethodBeat.o(116661);
+    return bool;
   }
 }
 

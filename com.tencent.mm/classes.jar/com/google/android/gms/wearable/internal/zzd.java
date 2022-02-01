@@ -7,29 +7,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import javax.annotation.Nullable;
 
-@SafeParcelable.Class(creator="AddListenerRequestCreator")
-@SafeParcelable.Reserved({1})
 public final class zzd
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<zzd> CREATOR;
-  @SafeParcelable.Field(getter="getListenerAsBinder", id=2, type="android.os.IBinder")
   private final zzem zzaz;
-  @SafeParcelable.Field(id=3)
   private final IntentFilter[] zzba;
-  @Nullable
-  @SafeParcelable.Field(id=4)
   private final String zzbb;
-  @Nullable
-  @SafeParcelable.Field(id=5)
   private final String zzbc;
   
   static
@@ -39,8 +25,7 @@ public final class zzd
     AppMethodBeat.o(101169);
   }
   
-  @SafeParcelable.Constructor
-  zzd(@SafeParcelable.Param(id=2) IBinder paramIBinder, @SafeParcelable.Param(id=3) IntentFilter[] paramArrayOfIntentFilter, @SafeParcelable.Param(id=4) @Nullable String paramString1, @SafeParcelable.Param(id=5) @Nullable String paramString2)
+  zzd(IBinder paramIBinder, IntentFilter[] paramArrayOfIntentFilter, String paramString1, String paramString2)
   {
     AppMethodBeat.i(101166);
     if (paramIBinder != null) {
@@ -95,7 +80,7 @@ public final class zzd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzd
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 
 final class n
 {
-  boolean lbD;
-  d.a.a lbE;
   final Object lock;
+  boolean nGG;
+  d.a.a nve;
   
   n()
   {
     AppMethodBeat.i(89445);
     this.lock = new byte[0];
-    this.lbD = false;
+    this.nGG = false;
     AppMethodBeat.o(89445);
   }
   
-  public final d.a.a D(final Context paramContext, int paramInt)
+  public final d.a.a G(final Context paramContext, int paramInt)
   {
     AppMethodBeat.i(89446);
     if (paramContext == null)
@@ -33,8 +33,8 @@ final class n
     final long l2 = Thread.currentThread().getId();
     synchronized (this.lock)
     {
-      this.lbD = false;
-      this.lbE = null;
+      this.nGG = false;
+      this.nve = null;
       ThreadPool.post(new Runnable()
       {
         /* Error */
@@ -50,7 +50,7 @@ final class n
           //   13: dup
           //   14: iconst_0
           //   15: aload_0
-          //   16: getfield 26	com/tencent/mm/plugin/mmsight/model/n$1:Faf	J
+          //   16: getfield 26	com/tencent/mm/plugin/mmsight/model/n$1:KVQ	J
           //   19: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
           //   22: aastore
           //   23: dup
@@ -63,33 +63,33 @@ final class n
           //   36: iconst_2
           //   37: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
           //   40: aload_0
-          //   41: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:cAj	J
+          //   41: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:esF	J
           //   44: lsub
           //   45: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
           //   48: aastore
           //   49: invokestatic 76	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   52: aload_0
-          //   53: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   53: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
           //   56: getfield 80	com/tencent/mm/plugin/mmsight/model/n:lock	Ljava/lang/Object;
           //   59: astore_1
           //   60: aload_1
           //   61: monitorenter
           //   62: aload_0
-          //   63: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   63: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
           //   66: aload_0
           //   67: getfield 30	com/tencent/mm/plugin/mmsight/model/n$1:val$context	Landroid/content/Context;
           //   70: aload_0
-          //   71: getfield 32	com/tencent/mm/plugin/mmsight/model/n$1:Fag	I
+          //   71: getfield 32	com/tencent/mm/plugin/mmsight/model/n$1:KVR	I
           //   74: invokestatic 86	android/os/Looper:getMainLooper	()Landroid/os/Looper;
           //   77: invokestatic 92	com/tencent/mm/compatible/deviceinfo/d:a	(Landroid/content/Context;ILandroid/os/Looper;)Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   80: putfield 96	com/tencent/mm/plugin/mmsight/model/n:lbE	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
+          //   80: putfield 96	com/tencent/mm/plugin/mmsight/model/n:nve	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
           //   83: aload_0
-          //   84: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
-          //   87: getfield 100	com/tencent/mm/plugin/mmsight/model/n:lbD	Z
+          //   84: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   87: getfield 100	com/tencent/mm/plugin/mmsight/model/n:nGG	Z
           //   90: ifeq +70 -> 160
           //   93: aload_0
-          //   94: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
-          //   97: getfield 96	com/tencent/mm/plugin/mmsight/model/n:lbE	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
+          //   94: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   97: getfield 96	com/tencent/mm/plugin/mmsight/model/n:nve	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
           //   100: ifnull +60 -> 160
           //   103: ldc 48
           //   105: ldc 102
@@ -99,29 +99,29 @@ final class n
           //   112: iconst_0
           //   113: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
           //   116: aload_0
-          //   117: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:cAj	J
+          //   117: getfield 28	com/tencent/mm/plugin/mmsight/model/n$1:esF	J
           //   120: lsub
           //   121: invokestatic 56	java/lang/Long:valueOf	(J)Ljava/lang/Long;
           //   124: aastore
           //   125: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   128: aload_0
-          //   129: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
-          //   132: getfield 96	com/tencent/mm/plugin/mmsight/model/n:lbE	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
-          //   135: getfield 111	com/tencent/mm/compatible/deviceinfo/d$a$a:jqD	Lcom/tencent/mm/compatible/deviceinfo/w;
+          //   129: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   132: getfield 96	com/tencent/mm/plugin/mmsight/model/n:nve	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
+          //   135: getfield 111	com/tencent/mm/compatible/deviceinfo/d$a$a:lTN	Lcom/tencent/mm/compatible/deviceinfo/w;
           //   138: astore_2
           //   139: aload_2
           //   140: aconst_null
           //   141: invokevirtual 116	com/tencent/mm/compatible/deviceinfo/w:a	(Landroid/hardware/Camera$PreviewCallback;)V
           //   144: aload_2
-          //   145: invokevirtual 119	com/tencent/mm/compatible/deviceinfo/w:TL	()V
+          //   145: invokevirtual 119	com/tencent/mm/compatible/deviceinfo/w:auq	()V
           //   148: aload_2
           //   149: invokevirtual 122	com/tencent/mm/compatible/deviceinfo/w:release	()V
           //   152: aload_0
-          //   153: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   153: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
           //   156: aconst_null
-          //   157: putfield 96	com/tencent/mm/plugin/mmsight/model/n:lbE	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
+          //   157: putfield 96	com/tencent/mm/plugin/mmsight/model/n:nve	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
           //   160: aload_0
-          //   161: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   161: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
           //   164: getfield 80	com/tencent/mm/plugin/mmsight/model/n:lock	Ljava/lang/Object;
           //   167: invokevirtual 125	java/lang/Object:notify	()V
           //   170: aload_1
@@ -141,9 +141,9 @@ final class n
           //   193: aastore
           //   194: invokestatic 105	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   197: aload_0
-          //   198: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:Fah	Lcom/tencent/mm/plugin/mmsight/model/n;
+          //   198: getfield 24	com/tencent/mm/plugin/mmsight/model/n$1:KVS	Lcom/tencent/mm/plugin/mmsight/model/n;
           //   201: aconst_null
-          //   202: putfield 96	com/tencent/mm/plugin/mmsight/model/n:lbE	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
+          //   202: putfield 96	com/tencent/mm/plugin/mmsight/model/n:nve	Lcom/tencent/mm/compatible/deviceinfo/d$a$a;
           //   205: goto -122 -> 83
           //   208: astore_2
           //   209: aload_1
@@ -187,10 +187,10 @@ final class n
       try
       {
         this.lock.wait(30000L);
-        if ((this.lbE != null) && (this.lbE.jqD != null))
+        if ((this.nve != null) && (this.nve.lTN != null))
         {
-          Log.i("MicroMsg.SightCamera.OpenCameraThread", "Open Camera Succ thread:%d Time:%d camera:%s", new Object[] { Long.valueOf(l2), Long.valueOf(Util.nowMilliSecond() - l1), this.lbE.jqD });
-          paramContext = this.lbE;
+          Log.i("MicroMsg.SightCamera.OpenCameraThread", "Open Camera Succ thread:%d Time:%d camera:%s", new Object[] { Long.valueOf(l2), Long.valueOf(Util.nowMilliSecond() - l1), this.nve.lTN });
+          paramContext = this.nve;
           AppMethodBeat.o(89446);
           return paramContext;
         }
@@ -203,7 +203,7 @@ final class n
         }
       }
     }
-    this.lbD = true;
+    this.nGG = true;
     Log.e("MicroMsg.SightCamera.OpenCameraThread", "Open Camera Timeout:%d", new Object[] { Long.valueOf(Util.nowMilliSecond() - l1) });
     AppMethodBeat.o(89446);
     return null;
@@ -211,7 +211,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.n
  * JD-Core Version:    0.7.0.1
  */

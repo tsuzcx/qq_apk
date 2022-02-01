@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.biz.a;
 
-import com.tencent.mm.aj.u;
+import com.tencent.mm.message.u;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract boolean OS(String paramString);
+  public abstract boolean Hh(String paramString);
   
-  public abstract String OT(String paramString);
+  public abstract String Hi(String paramString);
   
-  public abstract String OU(String paramString);
+  public abstract String Hj(String paramString);
   
-  public abstract String aH(String paramString1, String paramString2);
+  public abstract String aQ(String paramString1, String paramString2);
   
-  public abstract u b(long paramLong, String paramString);
+  public abstract u c(long paramLong, String paramString);
   
-  public abstract int c(long paramLong, String paramString);
+  public abstract int d(long paramLong, String paramString);
 }
 
 

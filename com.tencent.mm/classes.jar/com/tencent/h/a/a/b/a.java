@@ -24,62 +24,62 @@ public final class a
 {
   public static long a(com.tencent.h.a.c.b.a parama)
   {
-    AppMethodBeat.i(207768);
+    AppMethodBeat.i(212119);
     if ((b(parama)) && (c(parama)))
     {
-      Object localObject = ((com.tencent.h.a.c.b.c)((f)parama.ZTq.get(0)).mXB.get(0)).ZTI;
+      Object localObject = ((com.tencent.h.a.c.b.c)((f)parama.ahXQ.get(0)).pUj.get(0)).ahYi;
       parama = (g)((ArrayList)localObject).get(0);
       localObject = (g)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
       if ((parama == null) || (localObject == null))
       {
-        AppMethodBeat.o(207768);
+        AppMethodBeat.o(212119);
         return 0L;
       }
-      long l = Math.abs(((g)localObject).Zqg - parama.Zqg);
+      long l = Math.abs(((g)localObject).ahuN - parama.ahuN);
       i.i("sensor_ConvtUtil", "[method: getReqDuration ] calculate by sensor : ".concat(String.valueOf(l)));
-      AppMethodBeat.o(207768);
+      AppMethodBeat.o(212119);
       return l;
     }
-    AppMethodBeat.o(207768);
+    AppMethodBeat.o(212119);
     return 0L;
   }
   
   public static void a(com.tencent.h.a.a.c paramc, com.tencent.h.a.c.b.a parama, com.tencent.h.a.b paramb)
   {
-    AppMethodBeat.i(207774);
+    AppMethodBeat.i(212142);
     if ((paramc == null) || (parama == null) || (paramb == null))
     {
-      AppMethodBeat.o(207774);
+      AppMethodBeat.o(212142);
       return;
     }
     parama.channelId = 301096;
-    parama.ZTr = 2L;
+    parama.ahXR = 3L;
     int i;
-    if (com.tencent.h.a.b.ZRL == paramb) {
+    if (com.tencent.h.a.b.ahWi == paramb) {
       i = 0;
     }
     for (;;)
     {
       parama.dataType = i;
-      parama.ZTs = paramc.ZSr.ZSB;
-      paramb = com.tencent.g.c.c.bCQ("");
-      String str1 = com.tencent.g.c.c.bCQ("");
-      String str2 = com.tencent.g.c.c.bCQ(com.tencent.g.c.c.lX(paramc.mAppContext));
+      parama.ahXS = paramc.ahWP.ahXb;
+      paramb = com.tencent.g.c.c.bFv(com.tencent.g.c.c.kcS());
+      String str1 = com.tencent.g.c.c.bFv(com.tencent.g.c.c.kcS());
+      String str2 = com.tencent.g.c.c.bFv(com.tencent.g.c.c.jXA());
       parama.vid = (paramb + "_" + str1 + "_" + str2);
       parama.platform = 2;
       parama.brand = Build.BRAND;
-      parama.model = Build.MODEL;
-      parama.PzG = com.tencent.g.c.c.getAppVersionCode(paramc.mAppContext);
-      parama.ZnN = "24C8B65CA976DDE3";
-      parama.ZpU = com.tencent.g.c.c.getAppPackageName(paramc.mAppContext);
-      parama.imsi = "";
-      parama.ZpV = Build.FINGERPRINT;
+      parama.model = com.tencent.g.c.c.getModelName();
+      parama.WpO = com.tencent.g.c.c.getAppVersionCode(paramc.mAppContext);
+      parama.ahsv = "5MBQ49B5AM14YYWJ";
+      parama.ahuC = com.tencent.g.c.c.getAppPackageName(paramc.mAppContext);
+      parama.imsi = com.tencent.g.c.c.kcR();
+      parama.hyE = Build.FINGERPRINT;
       parama.sdkVer = Build.VERSION.SDK_INT;
-      parama.ZTu = 2;
-      parama.imei = "1234567890ABCDEF";
-      AppMethodBeat.o(207774);
+      parama.ahXU = 3;
+      parama.imei = com.tencent.g.c.c.kcQ();
+      AppMethodBeat.o(212142);
       return;
-      if (com.tencent.h.a.b.ZRN == paramb) {
+      if (com.tencent.h.a.b.ahWk == paramb) {
         i = 3;
       } else {
         i = 2;
@@ -89,119 +89,119 @@ public final class a
   
   public static void a(f paramf1, f paramf2)
   {
-    AppMethodBeat.i(207769);
+    AppMethodBeat.i(212124);
     if ((paramf1 == null) || (paramf2 == null))
     {
-      AppMethodBeat.o(207769);
+      AppMethodBeat.o(212124);
       return;
     }
-    if ((paramf1.mXB == null) || (paramf1.mXB.isEmpty()) || (((com.tencent.h.a.c.b.c)paramf1.mXB.get(0)).ZTI == null))
+    if ((paramf1.pUj == null) || (paramf1.pUj.isEmpty()) || (((com.tencent.h.a.c.b.c)paramf1.pUj.get(0)).ahYi == null))
     {
-      AppMethodBeat.o(207769);
+      AppMethodBeat.o(212124);
       return;
     }
-    if ((paramf2.mXB == null) || (paramf2.mXB.isEmpty()) || (((com.tencent.h.a.c.b.c)paramf2.mXB.get(0)).ZTI == null))
+    if ((paramf2.pUj == null) || (paramf2.pUj.isEmpty()) || (((com.tencent.h.a.c.b.c)paramf2.pUj.get(0)).ahYi == null))
     {
-      AppMethodBeat.o(207769);
+      AppMethodBeat.o(212124);
       return;
     }
-    ((com.tencent.h.a.c.b.c)paramf1.mXB.get(0)).ZTI.addAll(((com.tencent.h.a.c.b.c)paramf2.mXB.get(0)).ZTI);
-    AppMethodBeat.o(207769);
+    ((com.tencent.h.a.c.b.c)paramf1.pUj.get(0)).ahYi.addAll(((com.tencent.h.a.c.b.c)paramf2.pUj.get(0)).ahYi);
+    AppMethodBeat.o(212124);
   }
   
   public static void b(f paramf1, f paramf2)
   {
-    AppMethodBeat.i(207770);
+    AppMethodBeat.i(212129);
     if ((paramf1 == null) || (paramf2 == null))
     {
-      AppMethodBeat.o(207770);
+      AppMethodBeat.o(212129);
       return;
     }
-    if (paramf1.ZTQ == null) {
-      paramf1.ZTQ = new ArrayList();
+    if (paramf1.ahYq == null) {
+      paramf1.ahYq = new ArrayList();
     }
-    if (paramf2.ZTQ != null) {
-      paramf1.ZTQ.addAll(paramf2.ZTQ);
+    if (paramf2.ahYq != null) {
+      paramf1.ahYq.addAll(paramf2.ahYq);
     }
-    AppMethodBeat.o(207770);
+    AppMethodBeat.o(212129);
   }
   
   public static boolean b(com.tencent.h.a.c.b.a parama)
   {
-    AppMethodBeat.i(207771);
-    if ((parama == null) || (parama.ZTq == null) || (parama.ZTq.isEmpty()))
+    AppMethodBeat.i(212135);
+    if ((parama == null) || (parama.ahXQ == null) || (parama.ahXQ.isEmpty()))
     {
-      AppMethodBeat.o(207771);
+      AppMethodBeat.o(212135);
       return false;
     }
-    parama = (f)parama.ZTq.get(0);
-    if ((parama == null) || (parama.mXB == null) || (parama.mXB.isEmpty()))
+    parama = (f)parama.ahXQ.get(0);
+    if ((parama == null) || (parama.pUj == null) || (parama.pUj.isEmpty()))
     {
-      AppMethodBeat.o(207771);
+      AppMethodBeat.o(212135);
       return false;
     }
-    parama = (com.tencent.h.a.c.b.c)parama.mXB.get(0);
-    if ((parama == null) || (parama.ZTI == null) || (parama.ZTI.isEmpty()))
+    parama = (com.tencent.h.a.c.b.c)parama.pUj.get(0);
+    if ((parama == null) || (parama.ahYi == null) || (parama.ahYi.isEmpty()))
     {
-      AppMethodBeat.o(207771);
+      AppMethodBeat.o(212135);
       return false;
     }
-    AppMethodBeat.o(207771);
+    AppMethodBeat.o(212135);
     return true;
   }
   
   public static boolean c(com.tencent.h.a.c.b.a parama)
   {
-    AppMethodBeat.i(207773);
-    if ((parama == null) || (parama.ZTq == null) || (parama.ZTq.isEmpty()))
+    AppMethodBeat.i(212136);
+    if ((parama == null) || (parama.ahXQ == null) || (parama.ahXQ.isEmpty()))
     {
-      AppMethodBeat.o(207773);
+      AppMethodBeat.o(212136);
       return false;
     }
-    parama = (f)parama.ZTq.get(0);
-    if ((parama == null) || (parama.ZTQ == null) || (parama.ZTQ.isEmpty()))
+    parama = (f)parama.ahXQ.get(0);
+    if ((parama == null) || (parama.ahYq == null) || (parama.ahYq.isEmpty()))
     {
-      AppMethodBeat.o(207773);
+      AppMethodBeat.o(212136);
       return false;
     }
-    if ((parama.ZTQ == null) || (parama.ZTQ.isEmpty()))
+    if ((parama.ahYq == null) || (parama.ahYq.isEmpty()))
     {
-      AppMethodBeat.o(207773);
+      AppMethodBeat.o(212136);
       return false;
     }
-    AppMethodBeat.o(207773);
+    AppMethodBeat.o(212136);
     return true;
   }
   
-  public static Map<String, String> ms(Context paramContext)
+  public static Map<String, String> oI(Context paramContext)
   {
-    AppMethodBeat.i(207776);
+    AppMethodBeat.i(212151);
     HashMap localHashMap = new HashMap();
     try
     {
       Object localObject = j.a(new j.a()
       {
-        public final byte[] dt(byte[] paramAnonymousArrayOfByte)
+        public final byte[] dv(byte[] paramAnonymousArrayOfByte)
         {
-          AppMethodBeat.i(207799);
-          paramAnonymousArrayOfByte = com.tencent.g.c.a.dt(paramAnonymousArrayOfByte);
-          AppMethodBeat.o(207799);
+          AppMethodBeat.i(212118);
+          paramAnonymousArrayOfByte = com.tencent.g.c.a.dv(paramAnonymousArrayOfByte);
+          AppMethodBeat.o(212118);
           return paramAnonymousArrayOfByte;
         }
         
         public final byte[] readFile(String paramAnonymousString)
         {
-          AppMethodBeat.i(207800);
-          paramAnonymousString = e.T(new File(paramAnonymousString));
-          AppMethodBeat.o(207800);
+          AppMethodBeat.i(212122);
+          paramAnonymousString = e.Y(new File(paramAnonymousString));
+          AppMethodBeat.o(212122);
           return paramAnonymousString;
         }
         
-        public final byte[] s(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
+        public final byte[] t(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
         {
-          AppMethodBeat.i(207797);
-          paramAnonymousArrayOfByte1 = com.tencent.g.c.b.q(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
-          AppMethodBeat.o(207797);
+          AppMethodBeat.i(212113);
+          paramAnonymousArrayOfByte1 = com.tencent.g.c.b.r(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
+          AppMethodBeat.o(212113);
           return paramAnonymousArrayOfByte1;
         }
       });
@@ -216,11 +216,11 @@ public final class a
           localHashMap.put("turingO", localObject);
         }
       }
-      localObject = com.tencent.g.c.c.ity();
+      localObject = com.tencent.g.c.c.kcT();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         localHashMap.put("turingSID", localObject);
       }
-      localObject = com.tencent.g.c.c.ioo();
+      localObject = com.tencent.g.c.c.jXB();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         localHashMap.put("turingKV", localObject);
       }
@@ -229,24 +229,20 @@ public final class a
       localHashMap.put("turingDPL", String.valueOf(i) + "*" + String.valueOf(j));
       return localHashMap;
     }
-    catch (Throwable paramContext)
-    {
-      return localHashMap;
-    }
     finally
     {
-      AppMethodBeat.o(207776);
+      AppMethodBeat.o(212151);
     }
     return localHashMap;
   }
   
-  public static ArrayList<d> w(HashMap<String, String> paramHashMap)
+  public static ArrayList<d> z(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(207767);
+    AppMethodBeat.i(212111);
     ArrayList localArrayList = new ArrayList();
     if ((paramHashMap == null) || (paramHashMap.isEmpty()))
     {
-      AppMethodBeat.o(207767);
+      AppMethodBeat.o(212111);
       return localArrayList;
     }
     paramHashMap = paramHashMap.entrySet().iterator();
@@ -254,18 +250,18 @@ public final class a
     {
       Map.Entry localEntry = (Map.Entry)paramHashMap.next();
       d locald = new d();
-      locald.ZTM = ((String)localEntry.getKey());
-      locald.ZTN = ((String)localEntry.getValue());
-      i.i("sensor_ConvtUtil", "[method: toDetectFeatures ] [ " + locald.ZTM + ", " + locald.ZTN + " ]");
+      locald.ahYm = ((String)localEntry.getKey());
+      locald.ahYn = ((String)localEntry.getValue());
+      i.i("sensor_ConvtUtil", "[method: toDetectFeatures ] [ " + locald.ahYm + ", " + locald.ahYn + " ]");
       localArrayList.add(locald);
     }
-    AppMethodBeat.o(207767);
+    AppMethodBeat.o(212111);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

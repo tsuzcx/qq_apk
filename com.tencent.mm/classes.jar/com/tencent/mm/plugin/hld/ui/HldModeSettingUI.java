@@ -1,21 +1,18 @@
 package com.tencent.mm.plugin.hld.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.e;
 import com.tencent.mm.plugin.hld.a.f;
@@ -25,99 +22,92 @@ import com.tencent.mm.plugin.hld.b.e;
 import com.tencent.mm.plugin.hld.b.e.a;
 import com.tencent.mm.plugin.hld.b.f;
 import com.tencent.mm.plugin.hld.model.WxImeInterService;
-import com.tencent.mm.plugin.hld.model.k;
-import com.tencent.mm.plugin.hld.model.k.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.aa;
 import com.tencent.mm.ui.base.w;
-import com.tencent.mm.ui.w.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.ui.y.b;
+import com.tencent.threadpool.h;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldModeSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/hld/cgi/ImeOplogSyncCallback;", "()V", "currentMode", "", "normalSelectIv", "Landroid/widget/ImageView;", "normalTitle", "Landroid/widget/RelativeLayout;", "oriMode", "safetySelectIv", "safetyTitle", "settingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "doOplogSyncCallback", "", "success", "getForceOrientation", "", "getLayoutId", "initView", "isSelect", "id", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "updateChildrenView", "updateStyle", "isSafeMode", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/ui/HldModeSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/hld/cgi/ImeOplogSyncCallback;", "()V", "currentMode", "", "normalSelectIv", "Landroid/widget/ImageView;", "normalTitle", "Landroid/widget/RelativeLayout;", "oriMode", "safetySelectIv", "safetyTitle", "settingDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "doOplogSyncCallback", "", "success", "getForceOrientation", "", "getLayoutId", "initView", "isSelect", "id", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "updateChildrenView", "updateStyle", "isSafeMode", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HldModeSettingUI
   extends MMActivity
   implements f
 {
-  public static final a DGn;
-  private ImageView DFX;
-  private ImageView DFY;
-  private RelativeLayout DFZ;
-  private RelativeLayout DGa;
-  private s DGb;
-  private boolean DGl;
-  private boolean DGm;
+  public static final HldModeSettingUI.a JxM;
+  private ImageView JxB;
+  private ImageView JxC;
+  private RelativeLayout JxD;
+  private RelativeLayout JxE;
+  private w JxF;
+  private boolean JxN;
+  private boolean JxO;
   
   static
   {
-    AppMethodBeat.i(211512);
-    DGn = new a((byte)0);
-    AppMethodBeat.o(211512);
+    AppMethodBeat.i(312409);
+    JxM = new HldModeSettingUI.a((byte)0);
+    AppMethodBeat.o(312409);
   }
   
   public HldModeSettingUI()
   {
-    AppMethodBeat.i(211510);
-    com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.DHq;
-    this.DGl = com.tencent.mm.plugin.hld.f.i.eGC();
-    locali = com.tencent.mm.plugin.hld.f.i.DHq;
-    this.DGm = com.tencent.mm.plugin.hld.f.i.eGC();
-    AppMethodBeat.o(211510);
+    AppMethodBeat.i(312337);
+    com.tencent.mm.plugin.hld.f.i locali = com.tencent.mm.plugin.hld.f.i.JyA;
+    this.JxN = com.tencent.mm.plugin.hld.f.i.fOo();
+    locali = com.tencent.mm.plugin.hld.f.i.JyA;
+    this.JxO = com.tencent.mm.plugin.hld.f.i.fOo();
+    AppMethodBeat.o(312337);
   }
   
-  private final void Uv(final int paramInt)
+  private final void Ys(int paramInt)
   {
     int i = 4;
-    AppMethodBeat.i(211498);
+    AppMethodBeat.i(312348);
     LinearLayout localLinearLayout = (LinearLayout)findViewById(paramInt);
-    p.j(localLinearLayout, "view");
     localLinearLayout.setVisibility(0);
     Object localObject = (RelativeLayout)localLinearLayout.findViewById(a.f.title_ll);
     ImageView localImageView = (ImageView)localLinearLayout.findViewById(a.f.state_icon);
     TextView localTextView1 = (TextView)localLinearLayout.findViewById(a.f.title_tv);
     TextView localTextView2 = (TextView)localLinearLayout.findViewById(a.f.desc_tv);
-    p.j(localImageView, "selectIv");
     localImageView.setTag(Integer.valueOf(paramInt));
     if (paramInt == a.f.safety_item)
     {
-      this.DFX = localImageView;
-      this.DFZ = ((RelativeLayout)localObject);
-      p.j(localTextView1, "titleTv");
+      this.JxB = localImageView;
+      this.JxD = ((RelativeLayout)localObject);
       localTextView1.setText((CharSequence)getString(a.j.ime_mode_safety_name));
-      p.j(localTextView2, "descTv");
       localTextView2.setText((CharSequence)getString(a.j.ime_mode_safety_desc));
-      localObject = this.DFX;
+      localObject = this.JxB;
       if (localObject != null)
       {
-        if (!this.DGm) {
-          break label202;
+        if (!this.JxO) {
+          break label172;
         }
         i = 0;
         ((ImageView)localObject).setVisibility(i);
       }
     }
-    label202:
+    label172:
     do
     {
       do
       {
-        localLinearLayout.setOnClickListener((View.OnClickListener)new f(this, paramInt));
-        AppMethodBeat.o(211498);
+        localLinearLayout.setOnClickListener(new HldModeSettingUI..ExternalSyntheticLambda2(paramInt, this));
+        AppMethodBeat.o(312348);
         return;
         i = 4;
         break;
       } while (paramInt != a.f.normal_item);
-      this.DFY = localImageView;
-      this.DGa = ((RelativeLayout)localObject);
-      p.j(localTextView1, "titleTv");
+      this.JxC = localImageView;
+      this.JxE = ((RelativeLayout)localObject);
       localTextView1.setText((CharSequence)getString(a.j.ime_mode_normal_name));
-      p.j(localTextView2, "descTv");
       localTextView2.setText((CharSequence)getString(a.j.ime_mode_normal_desc));
-      localObject = this.DFY;
+      localObject = this.JxC;
     } while (localObject == null);
-    if (this.DGm) {}
+    if (this.JxO) {}
     for (;;)
     {
       ((ImageView)localObject).setVisibility(i);
@@ -126,127 +116,237 @@ public final class HldModeSettingUI
     }
   }
   
-  private final void sV(boolean paramBoolean)
+  private static final void a(int paramInt, HldModeSettingUI paramHldModeSettingUI, View paramView)
   {
-    AppMethodBeat.i(211501);
-    Object localObject1;
-    Object localObject2;
-    if (paramBoolean)
+    AppMethodBeat.i(312384);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.sc(paramInt);
+    localb.cH(paramHldModeSettingUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldModeSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramHldModeSettingUI, "this$0");
+    if (paramInt == a.f.safety_item)
     {
-      localObject1 = this.DFZ;
-      if (localObject1 != null)
+      paramView = paramHldModeSettingUI.JxB;
+      if (paramView != null) {
+        paramView.setVisibility(0);
+      }
+      paramView = paramHldModeSettingUI.JxC;
+      if (paramView != null) {
+        paramView.setVisibility(4);
+      }
+      paramHldModeSettingUI.JxN = true;
+      paramHldModeSettingUI.xa(true);
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/hld/ui/HldModeSettingUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(312384);
+      return;
+      if (paramInt == a.f.normal_item)
       {
-        localObject1 = ((RelativeLayout)localObject1).getParent();
-        localObject2 = this.DGa;
-        if (localObject2 == null) {
-          break label310;
+        paramView = paramHldModeSettingUI.JxB;
+        if (paramView != null) {
+          paramView.setVisibility(4);
         }
-        localObject3 = ((RelativeLayout)localObject2).getParent();
-        label38:
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        if ((localObject2 instanceof View)) {
-          break label394;
+        paramView = paramHldModeSettingUI.JxC;
+        if (paramView != null) {
+          paramView.setVisibility(0);
         }
+        paramHldModeSettingUI.JxN = false;
+        paramHldModeSettingUI.xa(false);
       }
     }
-    label394:
-    for (Object localObject3 = null;; localObject3 = localObject2)
+  }
+  
+  private static final void a(HldModeSettingUI paramHldModeSettingUI)
+  {
+    AppMethodBeat.i(312391);
+    s.u(paramHldModeSettingUI, "this$0");
+    Intent localIntent = new Intent(MMApplicationContext.getContext(), WxImeInterService.class);
+    localIntent.putExtra("ime_load_contact", true);
+    localIntent.putExtra("ime_mode_switch", true);
+    c.n(localIntent, "hld");
+    if (paramHldModeSettingUI.JxN)
     {
-      localObject3 = (View)localObject3;
-      if (localObject3 != null) {
-        ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_select_bg);
-      }
-      if (!(localObject1 instanceof View)) {}
-      for (localObject3 = null;; localObject3 = localObject1)
+      paramHldModeSettingUI = com.tencent.mm.plugin.hld.c.a.JoL;
+      com.tencent.mm.plugin.hld.c.a.wQ(true);
+      AppMethodBeat.o(312391);
+      return;
+    }
+    paramHldModeSettingUI = com.tencent.mm.plugin.hld.c.a.JoL;
+    com.tencent.mm.plugin.hld.c.a.wQ(false);
+    AppMethodBeat.o(312391);
+  }
+  
+  private static final boolean a(HldModeSettingUI paramHldModeSettingUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(312364);
+    s.u(paramHldModeSettingUI, "this$0");
+    paramHldModeSettingUI.finish();
+    AppMethodBeat.o(312364);
+    return true;
+  }
+  
+  private static final void b(HldModeSettingUI paramHldModeSettingUI)
+  {
+    AppMethodBeat.i(312399);
+    s.u(paramHldModeSettingUI, "this$0");
+    aa.makeText((Context)paramHldModeSettingUI, (CharSequence)paramHldModeSettingUI.getString(a.j.ime_mode_setting_fail), 0).show();
+    AppMethodBeat.o(312399);
+  }
+  
+  private static final boolean b(HldModeSettingUI paramHldModeSettingUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(312375);
+    s.u(paramHldModeSettingUI, "this$0");
+    Log.i("WxIme.HldModeSettingUI", "current mode is safety(" + paramHldModeSettingUI.JxN + "), oriMode:" + paramHldModeSettingUI.JxO);
+    if (paramHldModeSettingUI.JxO != paramHldModeSettingUI.JxN)
+    {
+      paramMenuItem = (Context)paramHldModeSettingUI;
+      paramHldModeSettingUI.getString(a.j.app_tip);
+      paramHldModeSettingUI.JxF = com.tencent.mm.ui.base.k.a(paramMenuItem, paramHldModeSettingUI.getString(a.j.app_waiting), false, null);
+      paramMenuItem = e.JoK;
+      if (paramHldModeSettingUI.JxO)
       {
-        localObject3 = (View)localObject3;
+        paramMenuItem = com.tencent.mm.plugin.hld.model.b.Jur;
+        e.a.a(paramMenuItem, 0L, (f)paramHldModeSettingUI, 2);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(312375);
+      return true;
+      paramMenuItem = com.tencent.mm.plugin.hld.model.b.Jus;
+      break;
+      paramHldModeSettingUI.finish();
+    }
+  }
+  
+  private final void xa(boolean paramBoolean)
+  {
+    AppMethodBeat.i(312359);
+    Object localObject2;
+    label32:
+    Object localObject3;
+    if (paramBoolean)
+    {
+      localObject1 = this.JxD;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        localObject2 = this.JxE;
+        if (localObject2 != null) {
+          break label285;
+        }
+        localObject2 = null;
+        if (!(localObject1 instanceof View)) {
+          break label334;
+        }
+        localObject3 = (View)localObject1;
+        label45:
+        if (localObject3 != null) {
+          ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_select_bg);
+        }
+        if (!(localObject2 instanceof View)) {
+          break label340;
+        }
+        localObject3 = (View)localObject2;
+        label71:
         if (localObject3 != null) {
           ((View)localObject3).setBackgroundResource(a.e.ime_collect_data_item_unselect_bg);
         }
-        if (!(localObject2 instanceof View)) {}
-        for (localObject3 = null;; localObject3 = localObject2)
+        if (!(localObject1 instanceof View)) {
+          break label346;
+        }
+        localObject3 = (View)localObject1;
+        label97:
+        if (localObject3 != null)
         {
-          localObject3 = (View)localObject3;
-          if (localObject3 != null)
-          {
-            localObject3 = (TextView)((View)localObject3).findViewById(a.f.title_tv);
-            if (localObject3 != null) {
-              ((TextView)localObject3).setTextColor(getResources().getColor(a.c.Brand));
-            }
-          }
-          if (!(localObject2 instanceof View)) {
-            localObject2 = null;
-          }
-          for (;;)
-          {
-            localObject2 = (View)localObject2;
-            if (localObject2 != null)
-            {
-              localObject2 = (TextView)((View)localObject2).findViewById(a.f.desc_tv);
-              if (localObject2 != null) {
-                ((TextView)localObject2).setTextColor(getResources().getColor(a.c.Brand));
-              }
-            }
-            if (!(localObject1 instanceof View)) {}
-            for (localObject2 = null;; localObject2 = localObject1)
-            {
-              localObject2 = (View)localObject2;
-              if (localObject2 != null)
-              {
-                localObject2 = (TextView)((View)localObject2).findViewById(a.f.title_tv);
-                if (localObject2 != null) {
-                  ((TextView)localObject2).setTextColor(getResources().getColor(a.c.normal_text_color));
-                }
-              }
-              if (!(localObject1 instanceof View)) {
-                localObject1 = null;
-              }
-              for (;;)
-              {
-                localObject1 = (View)localObject1;
-                if (localObject1 != null)
-                {
-                  localObject1 = (TextView)((View)localObject1).findViewById(a.f.desc_tv);
-                  if (localObject1 != null)
-                  {
-                    ((TextView)localObject1).setTextColor(getResources().getColor(a.c.hint_text_color));
-                    AppMethodBeat.o(211501);
-                    return;
-                    localObject1 = null;
-                    break;
-                    label310:
-                    localObject3 = null;
-                    break label38;
-                    localObject1 = this.DGa;
-                    if (localObject1 != null)
-                    {
-                      localObject1 = ((RelativeLayout)localObject1).getParent();
-                      label330:
-                      localObject2 = this.DFZ;
-                      if (localObject2 == null) {
-                        break label360;
-                      }
-                    }
-                    label360:
-                    for (localObject2 = ((RelativeLayout)localObject2).getParent();; localObject2 = null)
-                    {
-                      localObject3 = localObject1;
-                      localObject1 = localObject2;
-                      localObject2 = localObject3;
-                      break;
-                      localObject1 = null;
-                      break label330;
-                    }
-                  }
-                }
-                AppMethodBeat.o(211501);
-                return;
-              }
-            }
+          localObject3 = (TextView)((View)localObject3).findViewById(a.f.title_tv);
+          if (localObject3 != null) {
+            ((TextView)localObject3).setTextColor(getResources().getColor(a.c.Brand));
           }
         }
+        if (!(localObject1 instanceof View)) {
+          break label352;
+        }
+        localObject1 = (View)localObject1;
+        label147:
+        if (localObject1 != null)
+        {
+          localObject1 = (TextView)((View)localObject1).findViewById(a.f.desc_tv);
+          if (localObject1 != null) {
+            ((TextView)localObject1).setTextColor(getResources().getColor(a.c.Brand));
+          }
+        }
+        if (!(localObject2 instanceof View)) {
+          break label357;
+        }
+        localObject1 = (View)localObject2;
+        label192:
+        if (localObject1 != null)
+        {
+          localObject1 = (TextView)((View)localObject1).findViewById(a.f.title_tv);
+          if (localObject1 != null) {
+            ((TextView)localObject1).setTextColor(getResources().getColor(a.c.normal_text_color));
+          }
+        }
+        if (!(localObject2 instanceof View)) {
+          break label362;
+        }
       }
+    }
+    label285:
+    label304:
+    label326:
+    label334:
+    label340:
+    label346:
+    label352:
+    label357:
+    label362:
+    for (Object localObject1 = (View)localObject2;; localObject1 = null)
+    {
+      if (localObject1 != null)
+      {
+        localObject1 = (TextView)((View)localObject1).findViewById(a.f.desc_tv);
+        if (localObject1 != null) {
+          ((TextView)localObject1).setTextColor(getResources().getColor(a.c.hint_text_color));
+        }
+      }
+      AppMethodBeat.o(312359);
+      return;
+      localObject1 = ((RelativeLayout)localObject1).getParent();
+      break;
+      localObject2 = ((RelativeLayout)localObject2).getParent();
+      break label32;
+      localObject1 = this.JxE;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        localObject2 = this.JxD;
+        if (localObject2 != null) {
+          break label326;
+        }
+      }
+      for (localObject2 = null;; localObject2 = ((RelativeLayout)localObject2).getParent())
+      {
+        break;
+        localObject1 = ((RelativeLayout)localObject1).getParent();
+        break label304;
+      }
+      localObject3 = null;
+      break label45;
+      localObject3 = null;
+      break label71;
+      localObject3 = null;
+      break label97;
+      localObject1 = null;
+      break label147;
+      localObject1 = null;
+      break label192;
     }
   }
   
@@ -262,30 +362,27 @@ public final class HldModeSettingUI
   
   public final void initView()
   {
-    AppMethodBeat.i(211497);
+    AppMethodBeat.i(312476);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.c.white));
     setBackGroundColorResource(a.c.white);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
-    addTextOptionMenu(0, getString(a.j.app_finish), (MenuItem.OnMenuItemClickListener)new e(this), null, w.b.Wao);
-    Uv(a.f.safety_item);
-    Uv(a.f.normal_item);
-    sV(this.DGm);
-    AppMethodBeat.o(211497);
+    setBackBtn(new HldModeSettingUI..ExternalSyntheticLambda0(this));
+    addTextOptionMenu(0, getString(a.j.app_finish), new HldModeSettingUI..ExternalSyntheticLambda1(this), null, y.b.adEJ);
+    Ys(a.f.safety_item);
+    Ys(a.f.normal_item);
+    xa(this.JxO);
+    AppMethodBeat.o(312476);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(211495);
-    k localk = k.DDb;
-    long l = System.currentTimeMillis();
-    if (!k.eEz()) {
-      com.tencent.e.h.ZvG.d((Runnable)new k.q(l), "WxIme.ImeReporter");
-    }
+    AppMethodBeat.i(312464);
+    com.tencent.mm.plugin.hld.model.k localk = com.tencent.mm.plugin.hld.model.k.JvH;
+    com.tencent.mm.plugin.hld.model.k.rP(System.currentTimeMillis());
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(211495);
+    AppMethodBeat.o(312464);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -294,165 +391,25 @@ public final class HldModeSettingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void sJ(boolean paramBoolean)
+  public final void wP(boolean paramBoolean)
   {
-    AppMethodBeat.i(211505);
-    Log.i("WxIme.HldModeSettingUI", "doOplogSyncCallback ".concat(String.valueOf(paramBoolean)));
-    Object localObject = this.DGb;
+    AppMethodBeat.i(312491);
+    Log.i("WxIme.HldModeSettingUI", s.X("doOplogSyncCallback ", Boolean.valueOf(paramBoolean)));
+    Object localObject = this.JxF;
     if (localObject != null) {
-      ((s)localObject).dismiss();
+      ((w)localObject).dismiss();
     }
     if (paramBoolean)
     {
-      localObject = com.tencent.mm.plugin.hld.f.i.DHq;
-      com.tencent.mm.plugin.hld.f.i.td(this.DGl);
-      com.tencent.e.h.ZvG.be((Runnable)new b(this));
+      localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+      com.tencent.mm.plugin.hld.f.i.xo(this.JxN);
+      h.ahAA.bm(new HldModeSettingUI..ExternalSyntheticLambda3(this));
       finish();
-      AppMethodBeat.o(211505);
+      AppMethodBeat.o(312491);
       return;
     }
-    com.tencent.e.h.ZvG.bc((Runnable)new c(this));
-    AppMethodBeat.o(211505);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldModeSettingUI$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(HldModeSettingUI paramHldModeSettingUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213542);
-      Object localObject = new Intent(MMApplicationContext.getContext(), WxImeInterService.class);
-      ((Intent)localObject).putExtra("ime_load_contact", true);
-      ((Intent)localObject).putExtra("ime_mode_switch", true);
-      c.l((Intent)localObject, "hld");
-      if (HldModeSettingUI.a(this.DGo))
-      {
-        localObject = com.tencent.mm.plugin.hld.c.a.DvH;
-        com.tencent.mm.plugin.hld.c.a.sK(true);
-        AppMethodBeat.o(213542);
-        return;
-      }
-      localObject = com.tencent.mm.plugin.hld.c.a.DvH;
-      com.tencent.mm.plugin.hld.c.a.sK(false);
-      AppMethodBeat.o(213542);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(HldModeSettingUI paramHldModeSettingUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209843);
-      w.makeText((Context)this.DGo, (CharSequence)this.DGo.getString(a.j.ime_mode_setting_fail), 0).show();
-      AppMethodBeat.o(209843);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
-  {
-    d(HldModeSettingUI paramHldModeSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(215141);
-      this.DGo.finish();
-      AppMethodBeat.o(215141);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class e
-    implements MenuItem.OnMenuItemClickListener
-  {
-    e(HldModeSettingUI paramHldModeSettingUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(209840);
-      Log.i("WxIme.HldModeSettingUI", "current mode is safety(" + HldModeSettingUI.a(this.DGo) + "), oriMode:" + HldModeSettingUI.b(this.DGo));
-      if (HldModeSettingUI.b(this.DGo) != HldModeSettingUI.a(this.DGo))
-      {
-        paramMenuItem = this.DGo;
-        Context localContext = (Context)this.DGo;
-        this.DGo.getString(a.j.app_tip);
-        HldModeSettingUI.a(paramMenuItem, com.tencent.mm.ui.base.h.a(localContext, this.DGo.getString(a.j.app_waiting), false, null));
-        paramMenuItem = e.Dvq;
-        if (HldModeSettingUI.b(this.DGo))
-        {
-          paramMenuItem = com.tencent.mm.plugin.hld.model.b.DBs;
-          e.a.a(paramMenuItem, 0L, (f)this.DGo, 2);
-        }
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(209840);
-        return true;
-        paramMenuItem = com.tencent.mm.plugin.hld.model.b.DBt;
-        break;
-        this.DGo.finish();
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class f
-    implements View.OnClickListener
-  {
-    f(HldModeSettingUI paramHldModeSettingUI, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(213880);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldModeSettingUI$updateChildrenView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      int i = paramInt;
-      if (i == a.f.safety_item)
-      {
-        paramView = HldModeSettingUI.c(this.DGo);
-        if (paramView != null) {
-          paramView.setVisibility(0);
-        }
-        paramView = HldModeSettingUI.d(this.DGo);
-        if (paramView != null) {
-          paramView.setVisibility(4);
-        }
-        HldModeSettingUI.a(this.DGo, true);
-        HldModeSettingUI.b(this.DGo, true);
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/ui/HldModeSettingUI$updateChildrenView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(213880);
-        return;
-        if (i == a.f.normal_item)
-        {
-          paramView = HldModeSettingUI.c(this.DGo);
-          if (paramView != null) {
-            paramView.setVisibility(4);
-          }
-          paramView = HldModeSettingUI.d(this.DGo);
-          if (paramView != null) {
-            paramView.setVisibility(0);
-          }
-          HldModeSettingUI.a(this.DGo, false);
-          HldModeSettingUI.b(this.DGo, false);
-        }
-      }
-    }
+    h.ahAA.bk(new HldModeSettingUI..ExternalSyntheticLambda4(this));
+    AppMethodBeat.o(312491);
   }
 }
 

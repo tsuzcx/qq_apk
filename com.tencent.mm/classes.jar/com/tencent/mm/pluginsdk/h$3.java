@@ -14,10 +14,10 @@ final class h$3
   public final void run()
   {
     AppMethodBeat.i(141146);
-    this.QSb.getWindow().getDecorView().setSystemUiVisibility(this.QSb.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
+    this.XNS.getWindow().getDecorView().setSystemUiVisibility(this.XNS.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
     Log.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(this.val$height) });
-    if (this.OKn != null) {
-      this.OKn.setPadding(0, this.val$height, 0, 0);
+    if (this.VzZ != null) {
+      this.VzZ.setPadding(0, this.val$height, 0, 0);
     }
     AppMethodBeat.o(141146);
   }

@@ -1,11 +1,12 @@
 package com.tencent.mm.compatible.util;
 
-import androidx.e.a.a;
+import androidx.f.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.ByteArrayInputStream;
+import java.io.Closeable;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -70,52 +71,39 @@ public class Exif
   
   private void readExifFromInterface()
   {
-    int i = -1;
     AppMethodBeat.i(155896);
     if (this.mExif == null)
     {
       AppMethodBeat.o(155896);
       return;
     }
-    this.imageDescription = this.mExif.I("ImageDescription");
-    this.make = this.mExif.I("Make");
-    this.model = this.mExif.I("Model");
-    this.orientation = ((short)this.mExif.i("Orientation", 0));
-    this.bitsPerSample = ((short)this.mExif.i("BitsPerSample", 0));
-    this.software = this.mExif.I("Software");
-    this.dateTime = this.mExif.I("DateTime");
-    this.dateTimeOriginal = this.mExif.I("DateTimeOriginal");
-    this.dateTimeDigitized = this.mExif.I("DateTimeDigitized");
-    this.subSecTimeOriginal = this.mExif.I("SubSecTimeOriginal");
-    this.copyright = this.mExif.I("Copyright");
+    this.imageDescription = this.mExif.aC("ImageDescription");
+    this.make = this.mExif.aC("Make");
+    this.model = this.mExif.aC("Model");
+    this.orientation = ((short)this.mExif.k("Orientation", 0));
+    this.bitsPerSample = ((short)this.mExif.k("BitsPerSample", 0));
+    this.software = this.mExif.aC("Software");
+    this.dateTime = this.mExif.aC("DateTime");
+    this.dateTimeOriginal = this.mExif.aC("DateTimeOriginal");
+    this.dateTimeDigitized = this.mExif.aC("DateTimeDigitized");
+    this.subSecTimeOriginal = this.mExif.aC("SubSecTimeOriginal");
+    this.copyright = this.mExif.aC("Copyright");
     this.exposureTime = this.mExif.a("ExposureTime", 0.0D);
     this.fNumber = this.mExif.a("FNumber", 0.0D);
-    this.isoSpeedRatings = ((short)this.mExif.i("ISOSpeedRatings", 0));
-    this.flash = ((byte)this.mExif.i("Flash", 0));
-    this.imageWidth = this.mExif.i("ImageWidth", 0);
-    this.imageHeight = this.mExif.i("ImageLength", 0);
-    this.fileSource = this.mExif.i("FileSource", 0);
-    this.sceneType = this.mExif.i("SceneType", 0);
-    Object localObject = this.mExif.jdMethod_if();
-    if (localObject != null)
+    this.isoSpeedRatings = ((short)this.mExif.k("ISOSpeedRatings", 0));
+    this.flash = ((byte)this.mExif.k("Flash", 0));
+    this.imageWidth = this.mExif.k("ImageWidth", 0);
+    this.imageHeight = this.mExif.k("ImageLength", 0);
+    this.fileSource = this.mExif.k("FileSource", 0);
+    this.sceneType = this.mExif.k("SceneType", 0);
+    double[] arrayOfDouble = this.mExif.FP();
+    if (arrayOfDouble != null)
     {
-      this.latitude = localObject[0];
-      this.longitude = localObject[1];
+      this.latitude = arrayOfDouble[0];
+      this.longitude = arrayOfDouble[1];
     }
-    localObject = this.mExif;
-    double d = ((a)localObject).a("GPSAltitude", -1.0D);
-    int j = ((a)localObject).i("GPSAltitudeRef", -1);
-    if ((d >= 0.0D) && (j >= 0)) {
-      if (j != 1) {}
-    }
-    for (d = i * d;; d = 0.0D)
-    {
-      this.altitude = d;
-      AppMethodBeat.o(155896);
-      return;
-      i = 1;
-      break;
-    }
+    this.altitude = this.mExif.FQ();
+    AppMethodBeat.o(155896);
   }
   
   public a getLocation()
@@ -136,22 +124,9 @@ public class Exif
     AppMethodBeat.i(155897);
     if (this.mExif != null)
     {
-      switch (this.mExif.i("Orientation", 1))
-      {
-      default: 
-        AppMethodBeat.o(155897);
-        return 0;
-      case 6: 
-      case 7: 
-        AppMethodBeat.o(155897);
-        return 90;
-      case 3: 
-      case 4: 
-        AppMethodBeat.o(155897);
-        return 180;
-      }
+      int i = this.mExif.iB();
       AppMethodBeat.o(155897);
-      return 270;
+      return i;
     }
     switch (this.orientation)
     {
@@ -214,28 +189,43 @@ public class Exif
   public int parseFromFile(String paramString)
   {
     AppMethodBeat.i(155892);
-    Object localObject2 = null;
+    Object localObject3 = null;
     Object localObject1 = null;
+    Object localObject2 = null;
     try
     {
-      InputStream localInputStream = u.Tf(paramString);
-      localObject1 = localInputStream;
+      InputStream localInputStream = y.Lh(paramString);
       localObject2 = localInputStream;
+      localObject3 = localInputStream;
+      localObject1 = localInputStream;
       this.mExif = new a(localInputStream);
-      localObject1 = localInputStream;
       localObject2 = localInputStream;
+      localObject3 = localInputStream;
+      localObject1 = localInputStream;
       readExifFromInterface();
+      Util.qualityClose(localInputStream);
+      AppMethodBeat.o(155892);
       return 0;
     }
     catch (Exception localException)
     {
-      localObject2 = localObject1;
+      localObject1 = localObject2;
       Log.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
+      Util.qualityClose(localObject2);
+      AppMethodBeat.o(155892);
       return -1;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      localObject1 = localException;
+      Log.printErrStackTrace("MicroMsg.Exif", paramString, "parseFromFile", new Object[0]);
+      Util.qualityClose(localException);
+      AppMethodBeat.o(155892);
+      return 0;
     }
     finally
     {
-      Util.qualityClose(localObject2);
+      Util.qualityClose((Closeable)localObject1);
       AppMethodBeat.o(155892);
     }
   }
@@ -274,7 +264,7 @@ public class Exif
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.util.Exif
  * JD-Core Version:    0.7.0.1
  */

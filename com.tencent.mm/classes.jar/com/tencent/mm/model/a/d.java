@@ -1,42 +1,43 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
-import com.tencent.mm.an.h.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
+import com.tencent.mm.am.g.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.dl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 
 public final class d
-  implements com.tencent.mm.an.h
+  implements com.tencent.mm.am.g
 {
-  public final h.b b(h.a parama)
+  public final g.b b(g.a parama)
   {
     AppMethodBeat.i(153093);
-    parama = parama.jQG;
-    if ((parama == null) || (parama.RIF == null))
+    parama = parama.mpN;
+    if ((parama == null) || (parama.YFG == null))
     {
       Log.f("MicroMsg.abtest.AbTestMsgExtension", "[Abtest] AbTestMsgExtension failed, invalid cmdAM");
       AppMethodBeat.o(153093);
       return null;
     }
-    String str = z.a(parama.RIF);
-    com.tencent.mm.kernel.h.aHG().aHp().i(328193, str);
-    parama = g.bga();
+    String str = w.a(parama.YFG);
+    h.baE().ban().B(328193, str);
+    parama = g.bDR();
     long l = System.currentTimeMillis();
     try
     {
-      parama.Sl(str);
-      str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(328197, null);
-      if ((Util.isNullOrNil(str)) || ((parama.lwB != null) && (!str.equals(parama.lwB.lwy))))
+      parama.Kn(str);
+      str = (String)h.baE().ban().d(328197, null);
+      if ((Util.isNullOrNil(str)) || ((parama.ooa != null) && (!str.equals(parama.ooa.onX))))
       {
-        com.tencent.mm.kernel.h.aHG().aHp().i(328197, parama.lwB.lwy);
-        com.tencent.mm.kernel.h.aHG().aHp().i(328195, Boolean.FALSE);
-        com.tencent.mm.kernel.h.aHG().aHp().i(328194, Boolean.FALSE);
-        com.tencent.mm.kernel.h.aHG().aHp().i(328196, Boolean.FALSE);
+        h.baE().ban().B(328197, parama.ooa.onX);
+        h.baE().ban().B(328195, Boolean.FALSE);
+        h.baE().ban().B(328194, Boolean.FALSE);
+        h.baE().ban().B(328196, Boolean.FALSE);
         Log.i("MicroMsg.abtest.AbTestManager", "[cpan] new case id or new case id , reset click value.");
       }
     }
@@ -48,14 +49,14 @@ public final class d
       }
     }
     Log.i("MicroMsg.abtest.AbTestManager", "[Abtest] update use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    if (g.bga().bfY()) {
-      f.Sn(g.bga().lwB.lwy);
+    if (g.bDR().bDP()) {
+      f.Kp(g.bDR().ooa.onX);
     }
     AppMethodBeat.o(153093);
     return null;
   }
   
-  public final void b(h.c paramc) {}
+  public final void b(g.c paramc) {}
 }
 
 

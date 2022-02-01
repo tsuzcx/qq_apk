@@ -15,196 +15,175 @@ import android.widget.ScrollView;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.f;
+import com.tencent.mm.ck.a.f;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/pulldown/WeUIBounceViewV2;", "Lcom/tencent/mm/ui/widget/pulldown/NestedBounceView;", "Lcom/tencent/mm/ui/widget/pulldown/IBounceView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBackgroundContainer", "Landroid/widget/FrameLayout;", "mBackgroundView", "Landroid/view/View;", "mContentContainer", "mContentView", "mEnd2StartBg", "Landroid/graphics/drawable/Drawable;", "getMEnd2StartBg", "()Landroid/graphics/drawable/Drawable;", "setMEnd2StartBg", "(Landroid/graphics/drawable/Drawable;)V", "mEnd2StartBgByNavigationBar", "getMEnd2StartBgByNavigationBar", "setMEnd2StartBgByNavigationBar", "mPullDownEnableFlag", "", "mStart2EndBg", "getMStart2EndBg", "setMStart2EndBg", "mStart2EndBgByActionBar", "getMStart2EndBgByActionBar", "setMStart2EndBgByActionBar", "checkInterceptScroll", "", "deltaY", "enableEnd2Start", "", "enable", "enableStart2End", "getOffset", "child", "getView", "initBounce", "isBounceEnabled", "onStartNestedScroll", "target", "axes", "type", "setAtEndCallback", "callback", "Lcom/tencent/mm/ui/widget/pulldown/AtEndCallback;", "setAtStartCallback", "Lcom/tencent/mm/ui/widget/pulldown/AtStartCallback;", "setBg", "drawable", "setBgColor", "color", "setBounceEnabled", "enabled", "setEnd2StartBg", "setEnd2StartBgColor", "setEnd2StartBgColorByNavigationBar", "setOffset", "offset", "setStart2EndBg", "setStart2EndBgColor", "setStart2EndBgColorByActionBar", "setView", "bgView", "contentView", "weui-native-android-lib_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/pulldown/WeUIBounceViewV2;", "Lcom/tencent/mm/ui/widget/pulldown/NestedBounceView;", "Lcom/tencent/mm/ui/widget/pulldown/IBounceView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBackgroundContainer", "Landroid/widget/FrameLayout;", "mBackgroundView", "Landroid/view/View;", "mContentContainer", "mContentView", "getMContentView", "()Landroid/view/View;", "setMContentView", "(Landroid/view/View;)V", "mEnd2StartBg", "Landroid/graphics/drawable/Drawable;", "getMEnd2StartBg", "()Landroid/graphics/drawable/Drawable;", "setMEnd2StartBg", "(Landroid/graphics/drawable/Drawable;)V", "mEnd2StartBgByNavigationBar", "getMEnd2StartBgByNavigationBar", "setMEnd2StartBgByNavigationBar", "mStart2EndBg", "getMStart2EndBg", "setMStart2EndBg", "mStart2EndBgByActionBar", "getMStart2EndBgByActionBar", "setMStart2EndBgByActionBar", "getOffset", "", "child", "getView", "initBounce", "", "isBounceEnabled", "", "onStartNestedScroll", "target", "axes", "type", "setAtEndCallback", "callback", "Lcom/tencent/mm/ui/widget/pulldown/AtEndCallback;", "setAtStartCallback", "Lcom/tencent/mm/ui/widget/pulldown/AtStartCallback;", "setBg", "drawable", "setBgColor", "color", "setBounceEnabled", "enabled", "setEnd2StartBg", "setEnd2StartBgColor", "setEnd2StartBgColorByNavigationBar", "setOffset", "offset", "setStart2EndBg", "setStart2EndBgColor", "setStart2EndBgColorByActionBar", "setView", "contentView", "weui-native-android-lib_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class WeUIBounceViewV2
   extends NestedBounceView
-  implements e
+  implements f
 {
-  private int YtP;
-  private Drawable YtQ;
-  private Drawable YtR;
-  private Drawable YtS;
-  private Drawable YtT;
+  private Drawable agmi;
+  private Drawable agmj;
+  private Drawable agmk;
+  private Drawable agml;
   private View mContentView;
-  private FrameLayout qoa;
-  private View qtw;
-  private FrameLayout qtx;
+  private FrameLayout tsH;
+  private View tyc;
   
   public WeUIBounceViewV2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(251351);
-    this.YtP = 3;
-    this.YtS = ((Drawable)new ColorDrawable(0));
-    this.YtT = ((Drawable)new ColorDrawable(0));
-    AppMethodBeat.o(251351);
+    AppMethodBeat.i(251966);
+    this.agmk = ((Drawable)new ColorDrawable(0));
+    this.agml = ((Drawable)new ColorDrawable(0));
+    AppMethodBeat.o(251966);
   }
   
-  public final void HO(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = this.YtP | 0x1;; i = this.YtP & 0xFFFFFFFE)
-    {
-      this.YtP = i;
-      return;
-    }
-  }
-  
-  public final void K(View paramView, int paramInt)
+  public void P(View paramView, int paramInt)
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(251347);
+    AppMethodBeat.i(252076);
     if (paramInt < 0) {
-      if ((this.YtP & 0x2) != 0) {
-        break label236;
+      if ((getMPullDownEnableFlag() & 0x2) != 0) {
+        break label242;
       }
     }
     for (;;)
     {
-      View localView = this.qtw;
+      View localView = this.tyc;
+      j = i;
       Drawable localDrawable;
       if (localView != null)
       {
-        localDrawable = this.YtR;
+        localDrawable = this.agmj;
         paramView = localDrawable;
         if (localDrawable == null) {
-          paramView = this.YtT;
+          paramView = this.agml;
         }
         localView.setBackground(paramView);
       }
       for (;;)
       {
-        paramView = i.YtH;
-        if (i.idO()) {
-          new StringBuilder("[setOffset] offset:").append(paramInt).append(" offsetFinal:").append(i).append(" flag:").append(this.YtP);
+        paramView = j.aglL;
+        if (j.jIW()) {
+          new StringBuilder("[setOffset] offset:").append(paramInt).append(" offsetFinal:").append(i).append(" flag:").append(getMPullDownEnableFlag());
         }
-        paramView = i.YtH;
-        i.idP().K((View)this.qoa, i);
+        paramView = j.aglL;
+        j.jIX().P((View)this.tsH, i);
         paramView = getMBounceOffsetChangedListeners().iterator();
-        for (;;)
+        while (paramView.hasNext())
         {
-          if (paramView.hasNext())
-          {
-            ((e.a)paramView.next()).alg(i);
-            continue;
-            break;
-            if (paramInt <= 0) {
-              break label231;
-            }
-            if ((this.YtP & 0x1) != 0) {
-              break label226;
-            }
+          ((f.a)paramView.next()).Wm(i);
+          continue;
+          if (paramInt <= 0) {
+            break label237;
+          }
+          if ((getMPullDownEnableFlag() & 0x1) != 0) {
+            break label232;
           }
         }
-        label226:
+        label232:
         for (i = j;; i = paramInt)
         {
-          localView = this.qtw;
+          localView = this.tyc;
+          j = i;
           if (localView != null)
           {
-            localDrawable = this.YtQ;
+            localDrawable = this.agmi;
             paramView = localDrawable;
             if (localDrawable == null) {
-              paramView = this.YtS;
+              paramView = this.agmk;
             }
             localView.setBackground(paramView);
-            break;
+            j = i;
           }
+          i = j;
           break;
-          AppMethodBeat.o(251347);
+          AppMethodBeat.o(252076);
           return;
         }
-        label231:
+        label237:
         i = paramInt;
       }
-      label236:
+      label242:
       i = paramInt;
     }
   }
   
   public final void a(a parama, View paramView)
   {
-    AppMethodBeat.i(251339);
+    AppMethodBeat.i(252061);
     if (paramView != null)
     {
-      p.k(paramView, "$this$setAtEndCallback");
+      s.u(paramView, "<this>");
       paramView.setTag(a.f.weui_at_end_callback, parama);
-      AppMethodBeat.o(251339);
-      return;
     }
-    AppMethodBeat.o(251339);
+    AppMethodBeat.o(252061);
   }
   
   public final boolean a(View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(251345);
-    p.k(paramView1, "child");
-    p.k(paramView2, "target");
+    AppMethodBeat.i(252071);
+    s.u(paramView1, "child");
+    s.u(paramView2, "target");
     if (!getMIsEnabled())
     {
-      paramView1 = i.YtH;
-      if (i.idO()) {
-        new StringBuilder("[onStartNestedScroll] mIsEnabled:").append(getMIsEnabled());
+      paramView1 = j.aglL;
+      if (j.jIW()) {
+        s.X("[onStartNestedScroll] mIsEnabled:", Boolean.valueOf(getMIsEnabled()));
       }
-      AppMethodBeat.o(251345);
+      AppMethodBeat.o(252071);
       return false;
     }
     boolean bool = super.a(paramView1, paramView2, paramInt1, paramInt2);
-    AppMethodBeat.o(251345);
+    AppMethodBeat.o(252071);
     return bool;
   }
   
-  protected final boolean ayS(int paramInt)
+  public final int cI(View paramView)
   {
-    if ((paramInt > 0) && ((this.YtP & 0x1) != 0)) {}
-    while ((paramInt < 0) && ((this.YtP & 0x2) != 0)) {
-      return true;
-    }
-    return false;
+    AppMethodBeat.i(252079);
+    paramView = j.aglL;
+    int i = j.jIX().cI((View)this.tsH);
+    AppMethodBeat.o(252079);
+    return i;
   }
   
-  public final int cm(View paramView)
+  protected final View getMContentView()
   {
-    AppMethodBeat.i(251349);
-    paramView = i.YtH;
-    int i = i.idP().cm((View)this.qoa);
-    AppMethodBeat.o(251349);
-    return i;
+    return this.mContentView;
   }
   
   public final Drawable getMEnd2StartBg()
   {
-    return this.YtR;
+    return this.agmj;
   }
   
   public final Drawable getMEnd2StartBgByNavigationBar()
   {
-    return this.YtT;
+    return this.agml;
   }
   
   public final Drawable getMStart2EndBg()
   {
-    return this.YtQ;
+    return this.agmi;
   }
   
   public final Drawable getMStart2EndBgByActionBar()
   {
-    return this.YtS;
+    return this.agmk;
   }
   
   public int getOffset()
   {
-    AppMethodBeat.i(293019);
-    int i = cm(null);
-    AppMethodBeat.o(293019);
+    AppMethodBeat.i(252066);
+    int i = cI(null);
+    AppMethodBeat.o(252066);
     return i;
   }
   
@@ -213,63 +192,9 @@ public class WeUIBounceViewV2
     return (View)this;
   }
   
-  public final void h(View paramView1, View paramView2)
+  public final void jIK()
   {
-    AppMethodBeat.i(251318);
-    this.qtw = paramView1;
-    this.qtx = new FrameLayout(getContext());
-    FrameLayout localFrameLayout = this.qtx;
-    if (localFrameLayout != null) {
-      localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    }
-    localFrameLayout = this.qtx;
-    if (localFrameLayout != null) {
-      localFrameLayout.addView(paramView1);
-    }
-    this.mContentView = paramView2;
-    this.qoa = new FrameLayout(getContext());
-    paramView1 = this.qoa;
-    if (paramView1 != null) {
-      paramView1.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    }
-    int i;
-    if (paramView2 != null)
-    {
-      paramView1 = paramView2.getLayoutParams();
-      if (paramView1 == null) {
-        break label262;
-      }
-      i = paramView1.width;
-      if (paramView1 == null) {
-        break label267;
-      }
-    }
-    label262:
-    label267:
-    for (int j = paramView1.height;; j = -1)
-    {
-      paramView1 = new FrameLayout.LayoutParams(i, j);
-      localFrameLayout = this.qoa;
-      if (localFrameLayout != null) {
-        localFrameLayout.addView(paramView2, (ViewGroup.LayoutParams)paramView1);
-      }
-      paramView1 = new NestedScrollView(getContext());
-      paramView1.setOverScrollMode(2);
-      paramView1.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      paramView1.addView((View)new LinearLayout(getContext()), new ViewGroup.LayoutParams(-1, -1));
-      addView((View)paramView1);
-      addView((View)this.qtx);
-      addView((View)this.qoa);
-      AppMethodBeat.o(251318);
-      return;
-      i = -1;
-      break;
-    }
-  }
-  
-  public final void idC()
-  {
-    AppMethodBeat.i(251337);
+    AppMethodBeat.i(252057);
     Object localObject2 = this.mContentView;
     if ((localObject2 instanceof ViewGroup))
     {
@@ -278,7 +203,7 @@ public class WeUIBounceViewV2
       while (!((LinkedList)localObject1).isEmpty())
       {
         localObject2 = ((LinkedList)localObject1).pollFirst();
-        p.j(localObject2, "queue.pollFirst()");
+        s.s(localObject2, "queue.pollFirst()");
         localObject2 = (View)localObject2;
         if ((localObject2 instanceof AbsListView))
         {
@@ -301,125 +226,222 @@ public class WeUIBounceViewV2
         else if ((localObject2 instanceof ViewGroup))
         {
           int i = 0;
-          int j = ((ViewGroup)localObject2).getChildCount();
-          while (i < j)
-          {
-            if ((((ViewGroup)localObject2).getChildAt(i) instanceof ViewGroup))
+          int k = ((ViewGroup)localObject2).getChildCount();
+          if (k > 0) {
+            for (;;)
             {
-              View localView = ((ViewGroup)localObject2).getChildAt(i);
-              if (localView == null)
+              int j = i + 1;
+              if ((((ViewGroup)localObject2).getChildAt(i) instanceof ViewGroup))
               {
-                localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-                AppMethodBeat.o(251337);
-                throw ((Throwable)localObject1);
+                View localView = ((ViewGroup)localObject2).getChildAt(i);
+                if (localView == null)
+                {
+                  localObject1 = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+                  AppMethodBeat.o(252057);
+                  throw ((Throwable)localObject1);
+                }
+                ((LinkedList)localObject1).addLast((ViewGroup)localView);
               }
-              ((LinkedList)localObject1).addLast((ViewGroup)localView);
+              if (j >= k) {
+                break;
+              }
+              i = j;
             }
-            i += 1;
           }
         }
       }
     }
-    AppMethodBeat.o(251337);
+    AppMethodBeat.o(252057);
   }
   
   public void setBg(Drawable paramDrawable)
   {
-    AppMethodBeat.i(251335);
-    p.k(paramDrawable, "drawable");
+    AppMethodBeat.i(252050);
+    s.u(paramDrawable, "drawable");
     setStart2EndBg(paramDrawable);
     setEnd2StartBg(paramDrawable);
-    AppMethodBeat.o(251335);
+    AppMethodBeat.o(252050);
   }
   
   public void setBgColor(int paramInt)
   {
-    AppMethodBeat.i(251327);
+    AppMethodBeat.i(252027);
     setStart2EndBgColor(paramInt);
     setEnd2StartBgColor(paramInt);
-    AppMethodBeat.o(251327);
+    AppMethodBeat.o(252027);
   }
   
   public void setBounceEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(251319);
+    AppMethodBeat.i(252017);
     setMIsEnabled(paramBoolean);
-    AppMethodBeat.o(251319);
+    AppMethodBeat.o(252017);
   }
   
   public void setEnd2StartBg(Drawable paramDrawable)
   {
-    AppMethodBeat.i(251329);
-    p.k(paramDrawable, "drawable");
-    this.YtR = paramDrawable;
-    AppMethodBeat.o(251329);
+    AppMethodBeat.i(252036);
+    s.u(paramDrawable, "drawable");
+    this.agmj = paramDrawable;
+    AppMethodBeat.o(252036);
   }
   
   public void setEnd2StartBgColor(int paramInt)
   {
-    AppMethodBeat.i(251325);
-    this.YtR = ((Drawable)new ColorDrawable(paramInt));
-    AppMethodBeat.o(251325);
+    AppMethodBeat.i(252021);
+    this.agmj = ((Drawable)new ColorDrawable(paramInt));
+    AppMethodBeat.o(252021);
   }
   
   public void setEnd2StartBgColorByNavigationBar(int paramInt)
   {
-    AppMethodBeat.i(251332);
-    this.YtT = ((Drawable)new ColorDrawable(paramInt));
-    AppMethodBeat.o(251332);
+    AppMethodBeat.i(252045);
+    this.agml = ((Drawable)new ColorDrawable(paramInt));
+    AppMethodBeat.o(252045);
+  }
+  
+  protected final void setMContentView(View paramView)
+  {
+    this.mContentView = paramView;
   }
   
   public final void setMEnd2StartBg(Drawable paramDrawable)
   {
-    this.YtR = paramDrawable;
+    this.agmj = paramDrawable;
   }
   
   public final void setMEnd2StartBgByNavigationBar(Drawable paramDrawable)
   {
-    AppMethodBeat.i(251316);
-    p.k(paramDrawable, "<set-?>");
-    this.YtT = paramDrawable;
-    AppMethodBeat.o(251316);
+    AppMethodBeat.i(252007);
+    s.u(paramDrawable, "<set-?>");
+    this.agml = paramDrawable;
+    AppMethodBeat.o(252007);
   }
   
   public final void setMStart2EndBg(Drawable paramDrawable)
   {
-    this.YtQ = paramDrawable;
+    this.agmi = paramDrawable;
   }
   
   public final void setMStart2EndBgByActionBar(Drawable paramDrawable)
   {
-    AppMethodBeat.i(251314);
-    p.k(paramDrawable, "<set-?>");
-    this.YtS = paramDrawable;
-    AppMethodBeat.o(251314);
+    AppMethodBeat.i(252002);
+    s.u(paramDrawable, "<set-?>");
+    this.agmk = paramDrawable;
+    AppMethodBeat.o(252002);
   }
   
   public void setStart2EndBg(Drawable paramDrawable)
   {
-    AppMethodBeat.i(251328);
-    p.k(paramDrawable, "drawable");
-    this.YtQ = paramDrawable;
-    AppMethodBeat.o(251328);
+    AppMethodBeat.i(252032);
+    s.u(paramDrawable, "drawable");
+    this.agmi = paramDrawable;
+    AppMethodBeat.o(252032);
   }
   
   public void setStart2EndBgColor(int paramInt)
   {
-    AppMethodBeat.i(251323);
-    this.YtQ = ((Drawable)new ColorDrawable(paramInt));
-    AppMethodBeat.o(251323);
+    AppMethodBeat.i(252020);
+    this.agmi = ((Drawable)new ColorDrawable(paramInt));
+    AppMethodBeat.o(252020);
   }
   
   public void setStart2EndBgColorByActionBar(int paramInt)
   {
-    AppMethodBeat.i(251331);
-    this.YtS = ((Drawable)new ColorDrawable(paramInt));
-    AppMethodBeat.o(251331);
+    AppMethodBeat.i(252041);
+    this.agmk = ((Drawable)new ColorDrawable(paramInt));
+    AppMethodBeat.o(252041);
+  }
+  
+  public void setView(View paramView)
+  {
+    int j = 1;
+    AppMethodBeat.i(252014);
+    this.mContentView = paramView;
+    this.tsH = new FrameLayout(getContext());
+    Object localObject1 = this.tsH;
+    if (localObject1 != null) {
+      ((FrameLayout)localObject1).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    }
+    Object localObject2;
+    int i;
+    if (paramView != null)
+    {
+      localObject2 = paramView.getLayoutParams();
+      if (localObject2 != null) {
+        break label232;
+      }
+      localObject1 = null;
+      if (localObject1 != null) {
+        break label245;
+      }
+      i = 1;
+      label78:
+      if (i == 0) {
+        break label263;
+      }
+      i = -1;
+      label84:
+      if (localObject2 != null) {
+        break label272;
+      }
+      localObject1 = null;
+      label92:
+      if (localObject1 != null) {
+        break label285;
+      }
+      label97:
+      if (j == 0) {
+        break label298;
+      }
+    }
+    label263:
+    label272:
+    label285:
+    label298:
+    for (j = -1;; j = ((ViewGroup.LayoutParams)localObject2).height)
+    {
+      localObject1 = new FrameLayout.LayoutParams(i, j);
+      localObject2 = this.tsH;
+      if (localObject2 != null) {
+        ((FrameLayout)localObject2).addView(paramView, (ViewGroup.LayoutParams)localObject1);
+      }
+      paramView = new NestedScrollView(getContext());
+      paramView.setOverScrollMode(2);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      paramView.addView((View)new LinearLayout(getContext()), new ViewGroup.LayoutParams(-1, -1));
+      paramView.setImportantForAccessibility(2);
+      this.tyc = ((View)paramView);
+      addView((View)paramView);
+      addView((View)this.tsH);
+      AppMethodBeat.o(252014);
+      return;
+      label232:
+      localObject1 = Integer.valueOf(((ViewGroup.LayoutParams)localObject2).width);
+      break;
+      label245:
+      if (((Integer)localObject1).intValue() == 0)
+      {
+        i = 1;
+        break label78;
+      }
+      i = 0;
+      break label78;
+      i = ((ViewGroup.LayoutParams)localObject2).width;
+      break label84;
+      localObject1 = Integer.valueOf(((ViewGroup.LayoutParams)localObject2).height);
+      break label92;
+      if (((Integer)localObject1).intValue() == 0) {
+        break label97;
+      }
+      j = 0;
+      break label97;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.pulldown.WeUIBounceViewV2
  * JD-Core Version:    0.7.0.1
  */

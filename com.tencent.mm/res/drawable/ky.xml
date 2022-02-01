@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@raw/checkbox_selected" />
-    <item android:state_pressed="true" android:drawable="@raw/checkbox_selected" />
-    <item android:drawable="@raw/checkbox_selected" />
-</selector>
+    <corners android:radius="31.0dip" />
+    <solid android:color="@color/BW_97" />
+</shape>

@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bm.e;
+import com.tencent.mm.be.e;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
+import com.tencent.mm.plugin.sight.base.ABAPrams;
 import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.remoteservice.d;
@@ -21,30 +20,29 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 
-@TargetApi(16)
 public class VideoCompressUI
   extends MMBaseActivity
 {
-  private static int iWt;
-  private ProgressDialog FeA;
-  private int[] FeB;
-  private a FeC;
-  private boolean FeD;
-  private Runnable FeE;
-  private d jGJ;
-  private VideoTransPara mjz;
+  private static int lyw;
+  private ProgressDialog Laj;
+  private ABAPrams Lak;
+  private a Lal;
+  private boolean Lam;
+  private Runnable Lan;
+  private VideoTransPara pcW;
+  private d pfZ;
   private String thumbPath;
   private String videoPath;
   
   public VideoCompressUI()
   {
     AppMethodBeat.i(107701);
-    this.jGJ = new d(this);
-    this.FeB = new int[34];
-    this.FeC = new a((byte)0);
-    this.FeE = new Runnable()
+    this.pfZ = new d(this);
+    this.Lak = null;
+    this.Lal = new a((byte)0);
+    this.Lan = new Runnable()
     {
       public final void run()
       {
@@ -56,7 +54,7 @@ public class VideoCompressUI
           {
             VideoCompressUI.a(VideoCompressUI.this, VideoCompressUI.c(VideoCompressUI.this));
             localIntent = new Intent();
-            localPoint = VideoCompressUI.K(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight, VideoCompressUI.a(VideoCompressUI.this).width, VideoCompressUI.a(VideoCompressUI.this).height);
+            localPoint = VideoCompressUI.P(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight, VideoCompressUI.a(VideoCompressUI.this).width, VideoCompressUI.a(VideoCompressUI.this).height);
             j = 0;
             str = SightVideoJNI.getMP4CprtH(VideoCompressUI.c(VideoCompressUI.this));
             i = j;
@@ -77,30 +75,33 @@ public class VideoCompressUI
               }
             }
             if (((!VideoCompressUI.b(VideoCompressUI.this, VideoCompressUI.a(VideoCompressUI.this))) && (localPoint == null)) || (i != 0)) {
-              break label1178;
+              break label1183;
             }
             if (localPoint != null) {
-              break label1234;
+              break label1240;
             }
             localPoint = new Point(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight);
             VideoCompressUI.c(VideoCompressUI.this);
-            str = VideoCompressUI.eUl();
-            if (VideoCompressUI.a(VideoCompressUI.this).lJz == 2)
+            str = VideoCompressUI.gcZ();
+            if (VideoCompressUI.a(VideoCompressUI.this).oCb == 2)
             {
-              VideoCompressUI.a(VideoCompressUI.this, AdaptiveAdjustBitrate.a(VideoCompressUI.c(VideoCompressUI.this), localPoint.y, localPoint.x, VideoCompressUI.a(VideoCompressUI.this).fps, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, 0.0F, 0.0F, 2, VideoCompressUI.a(VideoCompressUI.this).lJB, VideoCompressUI.a(VideoCompressUI.this).lJC, VideoCompressUI.a(VideoCompressUI.this).lJD, VideoCompressUI.a(VideoCompressUI.this).lJE, VideoCompressUI.a(VideoCompressUI.this).lJF, VideoCompressUI.a(VideoCompressUI.this).lJG, VideoCompressUI.a(VideoCompressUI.this).lJH, false));
-              VideoCompressUI.a(VideoCompressUI.this).videoBitrate = (VideoCompressUI.f(VideoCompressUI.this)[0] * 1000);
-              localPoint.x = VideoCompressUI.f(VideoCompressUI.this)[1];
-              localPoint.y = VideoCompressUI.f(VideoCompressUI.this)[2];
+              VideoCompressUI.a(VideoCompressUI.this, AdaptiveAdjustBitrate.a(VideoCompressUI.c(VideoCompressUI.this), localPoint.y, localPoint.x, VideoCompressUI.a(VideoCompressUI.this).fps, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, 0.0F, 0.0F, 2, VideoCompressUI.a(VideoCompressUI.this).oCd, VideoCompressUI.a(VideoCompressUI.this).oCf, VideoCompressUI.a(VideoCompressUI.this).oCg, VideoCompressUI.a(VideoCompressUI.this).oCh, VideoCompressUI.a(VideoCompressUI.this).oCi, VideoCompressUI.a(VideoCompressUI.this).oCj, false));
+              if (VideoCompressUI.f(VideoCompressUI.this) != null)
+              {
+                VideoCompressUI.a(VideoCompressUI.this).videoBitrate = (VideoCompressUI.f(VideoCompressUI.this).outputKbps * 1000);
+                localPoint.x = VideoCompressUI.f(VideoCompressUI.this).outputWidth;
+                localPoint.y = VideoCompressUI.f(VideoCompressUI.this).outputHeight;
+              }
               Log.i("MicroMsg.VideoCompressUI", "ABA: VideoCompressUI Send directly: [%d], [%d], [%d] ", new Object[] { Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).videoBitrate), Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y) });
             }
-            if ((VideoCompressUI.a(VideoCompressUI.this).lJA != 1) && (VideoCompressUI.a(VideoCompressUI.this).lJA != 2)) {
+            if ((VideoCompressUI.a(VideoCompressUI.this).oCc != 1) && (VideoCompressUI.a(VideoCompressUI.this).oCc != 2)) {
               continue;
             }
-            Log.i("MicroMsg.VideoCompressUI", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).kSl), Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).kSm) });
-            i = VideoCompressUI.a(VideoCompressUI.this).kSl;
-            j = VideoCompressUI.a(VideoCompressUI.this).kSm;
+            Log.i("MicroMsg.VideoCompressUI", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).nxU), Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).nxV) });
+            i = VideoCompressUI.a(VideoCompressUI.this).nxU;
+            j = VideoCompressUI.a(VideoCompressUI.this).nxV;
             if (VideoCompressUI.d(VideoCompressUI.this).videoWidth >= 2000) {
-              break label1237;
+              break label1243;
             }
             if (VideoCompressUI.d(VideoCompressUI.this).videoHeight < 2000) {
               continue;
@@ -119,10 +120,10 @@ public class VideoCompressUI
             int k;
             Log.printErrStackTrace("MicroMsg.VideoCompressUI", localException, "video compress failed e [%s]", new Object[] { localException.getMessage() });
             return;
-            if (VideoCompressUI.a(VideoCompressUI.this).lJz != 2) {
+            if (VideoCompressUI.a(VideoCompressUI.this).oCb != 2) {
               continue;
             }
-            SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), VideoCompressUI.a(VideoCompressUI.this).lJz, 0);
+            SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), VideoCompressUI.a(VideoCompressUI.this).oCb, 0);
             continue;
           }
           finally
@@ -149,21 +150,21 @@ public class VideoCompressUI
           if (WXHardCoderJNI.hcEncodeVideoThr)
           {
             k = Process.myTid();
-            VideoCompressUI.vr(WXHardCoderJNI.startPerformance(bool2, m, n, i1, k, 30000, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.VideoCompressUI"));
-            Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(VideoCompressUI.bKj()) });
+            VideoCompressUI.vB(WXHardCoderJNI.startPerformance(bool2, m, n, i1, k, 30000, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.VideoCompressUI"));
+            Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(VideoCompressUI.cjJ()) });
             if ((!VideoCompressUI.e(VideoCompressUI.this)) && (!bool1))
             {
-              SightVideoJNI.remuxingVFS(VideoCompressUI.c(VideoCompressUI.this), str, localPoint.x, localPoint.y, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, VideoCompressUI.a(VideoCompressUI.this).lJn, 8, VideoCompressUI.a(VideoCompressUI.this).lJm, 25.0F, VideoCompressUI.a(VideoCompressUI.this).fps, null, 0, false, i, j);
-              if (VideoCompressUI.bKj() != 0)
+              SightVideoJNI.remuxingVFS(VideoCompressUI.c(VideoCompressUI.this), str, localPoint.x, localPoint.y, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, VideoCompressUI.a(VideoCompressUI.this).oBP, 8, VideoCompressUI.a(VideoCompressUI.this).oBO, 25.0F, VideoCompressUI.a(VideoCompressUI.this).fps, null, 0, false, i, j);
+              if (VideoCompressUI.cjJ() != 0)
               {
-                WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEncodeVideoEnable, VideoCompressUI.bKj());
-                Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance stopPerformace %s", new Object[] { Integer.valueOf(VideoCompressUI.bKj()) });
-                VideoCompressUI.vr(0);
+                WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEncodeVideoEnable, VideoCompressUI.cjJ());
+                Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance stopPerformace %s", new Object[] { Integer.valueOf(VideoCompressUI.cjJ()) });
+                VideoCompressUI.vB(0);
               }
-              if (VideoCompressUI.a(VideoCompressUI.this).lJA <= 0) {
+              if (VideoCompressUI.a(VideoCompressUI.this).oCc <= 0) {
                 continue;
               }
-              SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), 0, VideoCompressUI.a(VideoCompressUI.this).lJA);
+              SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), 0, VideoCompressUI.a(VideoCompressUI.this).oCc);
               localIntent.putExtra("K_SEGMENTVIDEOPATH", str);
               localIntent.putExtra("KSEGMENTVIDEOTHUMBPATH", VideoCompressUI.a(VideoCompressUI.this, str, null));
               VideoCompressUI.this.setResult(-1, localIntent);
@@ -198,14 +199,14 @@ public class VideoCompressUI
           VideoCompressUI.a(VideoCompressUI.this).height = localPoint.y;
           e.a(VideoCompressUI.c(VideoCompressUI.this), str, VideoCompressUI.a(VideoCompressUI.this));
           continue;
-          label1178:
+          label1183:
           Log.i("MicroMsg.VideoCompressUI", "no need remux, directly set result");
           localIntent.putExtra("K_SEGMENTVIDEOPATH", VideoCompressUI.c(VideoCompressUI.this));
           localIntent.putExtra("KSEGMENTVIDEOTHUMBPATH", VideoCompressUI.a(VideoCompressUI.this, VideoCompressUI.c(VideoCompressUI.this), VideoCompressUI.g(VideoCompressUI.this)));
           continue;
-          label1234:
+          label1240:
           continue;
-          label1237:
+          label1243:
           boolean bool1 = true;
         }
       }
@@ -214,33 +215,33 @@ public class VideoCompressUI
   }
   
   /* Error */
-  private String iV(String paramString1, String paramString2)
+  private String kj(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 373
-    //   3: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 370
+    //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_2
-    //   7: invokestatic 246	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   7: invokestatic 244	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   10: ifne +11 -> 21
-    //   13: ldc_w 373
-    //   16: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   13: ldc_w 370
+    //   16: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: aload_2
     //   20: areturn
-    //   21: new 375	android/content/Intent
+    //   21: new 372	android/content/Intent
     //   24: dup
-    //   25: invokespecial 376	android/content/Intent:<init>	()V
+    //   25: invokespecial 373	android/content/Intent:<init>	()V
     //   28: astore_3
     //   29: aload_3
-    //   30: ldc_w 378
+    //   30: ldc_w 375
     //   33: aload_1
-    //   34: invokestatic 381	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   37: invokevirtual 384	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   40: invokestatic 390	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   43: invokevirtual 394	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
+    //   34: invokestatic 378	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   37: invokevirtual 381	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: invokestatic 387	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   43: invokevirtual 391	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
     //   46: pop
     //   47: aload_0
     //   48: aload_3
-    //   49: invokestatic 400	com/tencent/mm/compatible/i/a:j	(Landroid/content/Context;Landroid/content/Intent;)Lcom/tencent/mm/compatible/i/a$a;
+    //   49: invokestatic 397	com/tencent/mm/compatible/i/a:j	(Landroid/content/Context;Landroid/content/Intent;)Lcom/tencent/mm/compatible/i/a$a;
     //   52: astore_3
     //   53: aload_2
     //   54: astore_1
@@ -249,76 +250,76 @@ public class VideoCompressUI
     //   59: aload_2
     //   60: astore_1
     //   61: aload_3
-    //   62: getfield 406	com/tencent/mm/compatible/i/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   62: getfield 403	com/tencent/mm/compatible/i/a$a:bitmap	Landroid/graphics/Bitmap;
     //   65: ifnull +111 -> 176
-    //   68: new 85	java/lang/StringBuilder
+    //   68: new 82	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 325	java/lang/StringBuilder:<init>	()V
-    //   75: invokestatic 331	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getInstance	()Lcom/tencent/mm/plugin/mmsight/model/CaptureMMProxy;
-    //   78: invokevirtual 334	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getAccVideoPath	()Ljava/lang/String;
-    //   81: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: ldc_w 408
-    //   87: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   72: invokespecial 327	java/lang/StringBuilder:<init>	()V
+    //   75: invokestatic 333	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getInstance	()Lcom/tencent/mm/plugin/mmsight/model/CaptureMMProxy;
+    //   78: invokevirtual 336	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getAccVideoPath	()Ljava/lang/String;
+    //   81: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: ldc_w 405
+    //   87: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: astore_1
     //   94: aload_1
-    //   95: invokestatic 341	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+    //   95: invokestatic 343	com/tencent/mm/vfs/y:ZC	(Ljava/lang/String;)Z
     //   98: ifeq +9 -> 107
     //   101: aload_1
     //   102: iconst_1
-    //   103: invokestatic 345	com/tencent/mm/vfs/u:dK	(Ljava/lang/String;Z)Z
+    //   103: invokestatic 347	com/tencent/mm/vfs/y:ew	(Ljava/lang/String;Z)Z
     //   106: pop
     //   107: aload_1
-    //   108: invokestatic 348	com/tencent/mm/vfs/u:bBD	(Ljava/lang/String;)Z
+    //   108: invokestatic 350	com/tencent/mm/vfs/y:bDX	(Ljava/lang/String;)Z
     //   111: pop
-    //   112: new 85	java/lang/StringBuilder
+    //   112: new 82	java/lang/StringBuilder
     //   115: dup
-    //   116: invokespecial 325	java/lang/StringBuilder:<init>	()V
+    //   116: invokespecial 327	java/lang/StringBuilder:<init>	()V
     //   119: aload_1
-    //   120: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: ldc_w 410
-    //   126: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: invokestatic 356	java/lang/System:currentTimeMillis	()J
-    //   132: invokevirtual 359	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   135: ldc_w 412
-    //   138: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: ldc_w 407
+    //   126: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokestatic 358	java/lang/System:currentTimeMillis	()J
+    //   132: invokevirtual 361	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   135: ldc_w 409
+    //   138: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   144: astore_1
-    //   145: ldc 83
-    //   147: ldc_w 414
+    //   145: ldc 80
+    //   147: ldc_w 411
     //   150: iconst_1
-    //   151: anewarray 134	java/lang/Object
+    //   151: anewarray 131	java/lang/Object
     //   154: dup
     //   155: iconst_0
     //   156: aload_1
     //   157: aastore
-    //   158: invokestatic 143	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   158: invokestatic 140	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   161: aload_3
-    //   162: getfield 406	com/tencent/mm/compatible/i/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   162: getfield 403	com/tencent/mm/compatible/i/a$a:bitmap	Landroid/graphics/Bitmap;
     //   165: bipush 80
-    //   167: getstatic 420	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   167: getstatic 417	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   170: aload_1
     //   171: iconst_1
-    //   172: invokestatic 426	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   172: invokestatic 423	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   175: pop
-    //   176: ldc_w 373
-    //   179: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   176: ldc_w 370
+    //   179: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   182: aload_1
     //   183: areturn
     //   184: astore_3
     //   185: aload_2
     //   186: astore_1
-    //   187: ldc 83
+    //   187: ldc 80
     //   189: aload_3
-    //   190: ldc_w 428
+    //   190: ldc_w 425
     //   193: iconst_1
-    //   194: anewarray 134	java/lang/Object
+    //   194: anewarray 131	java/lang/Object
     //   197: dup
     //   198: iconst_0
     //   199: aload_3
-    //   200: invokevirtual 297	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   200: invokevirtual 295	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   203: aastore
-    //   204: invokestatic 432	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   204: invokestatic 429	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   207: goto -31 -> 176
     //   210: astore_3
     //   211: goto -24 -> 187
@@ -351,11 +352,11 @@ public class VideoCompressUI
       AppMethodBeat.o(107702);
       return;
     }
-    this.FeA = h.a(this, getString(l.b.app_waiting), false, null);
+    this.Laj = k.a(this, getString(l.b.app_waiting), false, null);
     this.videoPath = paramBundle.getStringExtra("K_SEGMENTVIDEOPATH");
     this.thumbPath = paramBundle.getStringExtra("KSEGMENTVIDEOTHUMBPATH");
-    CaptureMMProxy.createProxy(new CaptureMMProxy(this.jGJ));
-    this.jGJ.connect(new Runnable()
+    CaptureMMProxy.createProxy(new CaptureMMProxy(this.pfZ));
+    this.pfZ.connect(new Runnable()
     {
       public final void run()
       {
@@ -369,7 +370,7 @@ public class VideoCompressUI
           AppMethodBeat.o(107697);
           return;
         }
-        af.KN(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+        af.Ds(CaptureMMProxy.getInstance().getDeviceInfoConfig());
         ThreadPool.post(VideoCompressUI.b(VideoCompressUI.this), "video_remuxing_if_needed");
         AppMethodBeat.o(107697);
       }
@@ -381,8 +382,8 @@ public class VideoCompressUI
   {
     AppMethodBeat.i(107704);
     super.onDestroy();
-    if (this.jGJ != null) {
-      this.jGJ.release();
+    if (this.pfZ != null) {
+      this.pfZ.release();
     }
     AppMethodBeat.o(107704);
   }
@@ -396,9 +397,9 @@ public class VideoCompressUI
   final class a
   {
     public int audioBitRate = -1;
-    public String maR;
-    public String maS;
-    public int maT = -1;
+    public String oTL;
+    public String oTM;
+    public int oTN = -1;
     public int videoBitRate = -1;
     public int videoFrameRate = -1;
     public int videoHeight = -1;
@@ -410,7 +411,7 @@ public class VideoCompressUI
     public final String toString()
     {
       AppMethodBeat.i(107700);
-      String str = "VideoAnalysisStruct{videoTrackMime='" + this.maR + '\'' + ", audioTrackMime='" + this.maS + '\'' + ", durationMs=" + this.maT + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.videoIFrameInterval + ", videoFrameRate=" + this.videoFrameRate + ", audioBitRate=" + this.audioBitRate + '}';
+      String str = "VideoAnalysisStruct{videoTrackMime='" + this.oTL + '\'' + ", audioTrackMime='" + this.oTM + '\'' + ", durationMs=" + this.oTN + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.videoIFrameInterval + ", videoFrameRate=" + this.videoFrameRate + ", audioBitRate=" + this.audioBitRate + '}';
       AppMethodBeat.o(107700);
       return str;
     }

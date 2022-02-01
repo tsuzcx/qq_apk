@@ -2,7 +2,6 @@ package com.tencent.mm.ui.tools;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
@@ -25,123 +24,124 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.base.g;
 
 public final class f
 {
-  boolean KVq;
-  boolean KVr;
-  boolean KVs;
-  int XRL;
-  int XRM;
-  private int XRN;
-  private int XRO;
-  float XRP;
-  float XRQ;
-  private float XRR;
-  public float XRS;
-  private int XRT;
-  int XRU;
-  float XRV;
-  public int XRW;
-  int XRX;
-  int XRY;
-  int XRZ;
-  int XSa;
-  private int XSb;
-  private int XSc;
-  int XSd;
-  int XSe;
-  int XSf;
-  int XSg;
-  int XSh;
-  int XSi;
-  d XSj;
-  f XSk;
-  private f.e XSl;
-  b XSm;
-  float aIC;
-  float aID;
-  private float aIl;
-  private float aIm;
-  private int apP;
-  private final Context context;
+  boolean Rvo;
+  boolean Rvp;
+  boolean Rvq;
+  int afHZ;
+  public b afIA;
+  int afIa;
+  private int afIb;
+  private int afIc;
+  float afId;
+  float afIe;
+  private float afIf;
+  public float afIg;
+  private int afIh;
+  int afIi;
+  float afIj;
+  public int afIk;
+  int afIl;
+  int afIm;
+  int afIn;
+  int afIo;
+  private int afIp;
+  private int afIq;
+  int afIr;
+  int afIs;
+  int afIt;
+  int afIu;
+  int afIv;
+  int afIw;
+  public d afIx;
+  public f afIy;
+  public e afIz;
+  private int cey;
+  public final Context context;
   private MMHandler mHandler;
   int mHeight;
+  private float mHeightScale;
   VelocityTracker mVelocityTracker;
   int mWidth;
-  private int tF;
+  private float mWidthScale;
+  private int uE;
+  float x_down;
+  float y_down;
   
   public f(Context paramContext)
   {
     AppMethodBeat.i(143093);
-    this.tF = 0;
-    this.apP = 0;
+    this.uE = 0;
+    this.cey = 0;
     this.mWidth = 0;
     this.mHeight = 0;
-    this.XRL = 0;
-    this.XRM = 0;
-    this.XRN = 0;
-    this.XRO = 0;
-    this.aIl = 0.0F;
-    this.aIm = 0.0F;
-    this.XRP = 0.0F;
-    this.XRQ = 0.0F;
-    this.XRR = 1.0F;
-    this.XRS = 1.0F;
-    this.XRT = 0;
-    this.XRU = 0;
-    this.XRV = 1.0F;
-    this.XRW = 0;
-    this.XRX = 0;
-    this.XRY = 0;
-    this.XRZ = 0;
-    this.XSa = 0;
-    this.XSb = 300;
-    this.XSc = 10;
-    this.XSd = 0;
-    this.XSe = 1;
-    this.XSf = 2;
-    this.XSg = 3;
-    this.XSh = 4;
-    this.XSi = this.XSd;
+    this.afHZ = 0;
+    this.afIa = 0;
+    this.afIb = 0;
+    this.afIc = 0;
+    this.mWidthScale = 0.0F;
+    this.mHeightScale = 0.0F;
+    this.afId = 0.0F;
+    this.afIe = 0.0F;
+    this.afIf = 1.0F;
+    this.afIg = 1.0F;
+    this.afIh = 0;
+    this.afIi = 0;
+    this.afIj = 1.0F;
+    this.afIk = 0;
+    this.afIl = 0;
+    this.afIm = 0;
+    this.afIn = 0;
+    this.afIo = 0;
+    this.afIp = 300;
+    this.afIq = 10;
+    this.afIr = 0;
+    this.afIs = 1;
+    this.afIt = 2;
+    this.afIu = 3;
+    this.afIv = 4;
+    this.afIw = this.afIr;
     this.mHandler = new MMHandler();
-    this.aIC = 0.0F;
-    this.aID = 0.0F;
-    this.KVq = false;
-    this.KVr = false;
-    this.KVs = false;
+    this.x_down = 0.0F;
+    this.y_down = 0.0F;
+    this.Rvo = false;
+    this.Rvp = false;
+    this.Rvq = false;
     this.context = paramContext;
     AppMethodBeat.o(143093);
   }
   
-  private void Y(View paramView, boolean paramBoolean)
+  private void ae(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(143094);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    if ((this.tF == 0) && (this.apP == 0))
+    if ((this.uE == 0) && (this.cey == 0))
     {
-      this.tF = (paramView.getWidth() / 2);
-      this.apP = (paramView.getHeight() / 2);
+      this.uE = (paramView.getWidth() / 2);
+      this.cey = (paramView.getHeight() / 2);
     }
-    this.XRN = (this.tF - arrayOfInt[0]);
-    this.XRO = (this.apP - arrayOfInt[1]);
+    this.afIb = (this.uE - arrayOfInt[0]);
+    this.afIc = (this.cey - arrayOfInt[1]);
     int i = paramView.getWidth();
     int j = paramView.getHeight();
     if ((i == 0) || (j == 0))
     {
-      i = this.XRL;
-      j = this.XRM;
+      i = this.afHZ;
+      j = this.afIa;
     }
     for (;;)
     {
       if ((i != 0) && (j != 0))
       {
-        this.aIl = (this.mWidth / i);
-        this.aIm = (this.mHeight / j);
+        this.mWidthScale = (this.mWidth / i);
+        this.mHeightScale = (this.mHeight / j);
       }
-      float f1 = this.XRR;
-      if ((this.XRX != 0) || (this.XRY != 0) || (this.XRZ != 0) || (this.XSa != 0)) {
+      float f1 = this.afIf;
+      if ((this.afIl != 0) || (this.afIm != 0) || (this.afIn != 0) || (this.afIo != 0)) {
         f1 = 1.1F;
       }
       float f2;
@@ -149,108 +149,96 @@ public final class f
       {
         f2 = 1.0F;
         f1 = f2;
-        if (this.XRL != 0)
+        if (this.afHZ != 0)
         {
           f1 = f2;
-          if (this.XRM != 0)
+          if (this.afIa != 0)
           {
-            this.aIl = (this.mWidth / this.XRL);
-            this.aIm = (this.mHeight / this.XRM);
+            this.mWidthScale = (this.mWidth / this.afHZ);
+            this.mHeightScale = (this.mHeight / this.afIa);
             f1 = f2;
           }
         }
       }
-      if (this.XRS != 1.0D)
+      if (this.afIg != 1.0D)
       {
-        this.XRN += arrayOfInt[0];
-        this.XRO += arrayOfInt[1];
-        this.XRP = (this.aIl * this.XRS);
-        this.XRQ = this.XRP;
-        this.XRO = ((int)(this.XRO - this.XRU * this.XRP));
-        this.XRN = ((int)(this.XRN - this.XRT * this.XRP));
+        this.afIb += arrayOfInt[0];
+        this.afIc += arrayOfInt[1];
+        this.afId = (this.mWidthScale * this.afIg);
+        this.afIe = this.afId;
+        this.afIc = ((int)(this.afIc - this.afIi * this.afId));
+        this.afIb = ((int)(this.afIb - this.afIh * this.afId));
         AppMethodBeat.o(143094);
         return;
       }
-      if (this.aIl > this.aIm)
+      if (this.mWidthScale > this.mHeightScale)
       {
-        this.XRP = (this.aIl * f1);
-        this.XRO = ((int)(this.XRO - (j * this.XRP - this.mHeight * f1) / 2.0F));
-        this.XRO = ((int)(this.XRO - this.mHeight * (f1 - 1.0F) / 2.0F - this.XRW * this.XRP / 2.0F));
-        this.XRN = ((int)(this.XRN - this.mWidth * (f1 - 1.0F) / 2.0F));
-        if ((this.XRM == 0) || (this.apP >= (j - this.XRM) / 2)) {
+        this.afId = (this.mWidthScale * f1);
+        this.afIc = ((int)(this.afIc - (j * this.afId - this.mHeight * f1) / 2.0F));
+        this.afIc = ((int)(this.afIc - this.mHeight * (f1 - 1.0F) / 2.0F - this.afIk * this.afId / 2.0F));
+        this.afIb = ((int)(this.afIb - this.mWidth * (f1 - 1.0F) / 2.0F));
+        if ((this.afIa == 0) || (this.cey >= (j - this.afIa) / 2)) {
           break label760;
         }
-        f2 = this.XRO;
+        f2 = this.afIc;
       }
-      for (this.XRO = ((int)((f1 - 1.0F) * this.mHeight / 2.0F + f2));; this.XRO = ((int)(this.XRO - (f1 - 1.0F) * this.mHeight / 2.0F))) {
+      for (this.afIc = ((int)((f1 - 1.0F) * this.mHeight / 2.0F + f2));; this.afIc = ((int)(this.afIc - (f1 - 1.0F) * this.mHeight / 2.0F))) {
         label760:
         do
         {
           if ((this.mWidth == 0) && (this.mHeight == 0))
           {
-            this.XRP = 0.5F;
-            this.XRV = 0.0F;
-            this.XRN = ((int)(this.XRN - i * this.XRP / 2.0F));
-            this.XRO = ((int)(this.XRO - j * this.XRP / 2.0F - this.XRW * this.XRP / 2.0F));
+            this.afId = 0.5F;
+            this.afIj = 0.0F;
+            this.afIb = ((int)(this.afIb - i * this.afId / 2.0F));
+            this.afIc = ((int)(this.afIc - j * this.afId / 2.0F - this.afIk * this.afId / 2.0F));
           }
-          Log.i("MicroMsg.ImagePreviewAnimation", "left: %s; top: %s; width: %s; height: %s; zoomScale: %s; LeftDelta: %s; TopDelta: %s", new Object[] { Integer.valueOf(this.tF), Integer.valueOf(this.apP), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Float.valueOf(this.XRP), Integer.valueOf(this.XRN), Integer.valueOf(this.XRO) });
+          Log.i("MicroMsg.ImagePreviewAnimation", "left: %s; top: %s; width: %s; height: %s; zoomScale: %s; LeftDelta: %s; TopDelta: %s", new Object[] { Integer.valueOf(this.uE), Integer.valueOf(this.cey), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight), Float.valueOf(this.afId), Integer.valueOf(this.afIb), Integer.valueOf(this.afIc) });
           AppMethodBeat.o(143094);
           return;
-          this.XRP = (this.aIm * f1);
-          this.XRN = ((int)(this.XRN - (i * this.XRP - this.mWidth * f1) / 2.0F));
-          if ((this.XRM == 0) || (this.XRM >= j)) {
+          this.afId = (this.mHeightScale * f1);
+          this.afIb = ((int)(this.afIb - (i * this.afId - this.mWidth * f1) / 2.0F));
+          if ((this.afIa == 0) || (this.afIa >= j)) {
             break;
           }
-          this.XRO = ((int)(this.XRO - (j * this.XRP - this.mHeight * f1) / 2.0F));
+          this.afIc = ((int)(this.afIc - (j * this.afId - this.mHeight * f1) / 2.0F));
           break;
-        } while ((this.XRM == 0) || (this.apP + this.mHeight <= (this.XRM + j) / 2));
+        } while ((this.afIa == 0) || (this.cey + this.mHeight <= (this.afIa + j) / 2));
       }
     }
   }
   
-  public final void V(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(211586);
-    this.tF = paramInt1;
-    this.apP = paramInt2;
-    this.mWidth = paramInt3;
-    this.mHeight = paramInt4;
-    Log.i("MicroMsg.ImagePreviewAnimation", "setAnimationParam: left=%d, top=%d, width=%d, height=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    AppMethodBeat.o(211586);
-  }
-  
-  @TargetApi(16)
-  public final void a(final View paramView1, View paramView2, final f.c paramc)
+  public final void a(final View paramView1, View paramView2, final c paramc)
   {
     AppMethodBeat.i(143095);
-    if ((Build.VERSION.SDK_INT < 12) || (paramView1 == null) || (this.XSi == this.XSf) || (this.XSi == this.XSh) || (this.XSi == this.XSg))
+    if ((Build.VERSION.SDK_INT < 12) || (paramView1 == null) || (this.afIw == this.afIt) || (this.afIw == this.afIv) || (this.afIw == this.afIu))
     {
-      Log.e("MicroMsg.ImagePreviewAnimation", "[runEnterAnimation] %s %s ", new Object[] { Integer.valueOf(this.XSi), paramView1 });
+      Log.e("MicroMsg.ImagePreviewAnimation", "[runEnterAnimation] %s %s ", new Object[] { Integer.valueOf(this.afIw), paramView1 });
       AppMethodBeat.o(143095);
       return;
     }
-    if (Float.isNaN(this.XRP))
+    if (Float.isNaN(this.afId))
     {
       AppMethodBeat.o(143095);
       return;
     }
-    Y(paramView1, false);
+    ae(paramView1, false);
     paramView1.setPivotX(0.0F);
     paramView1.setPivotY(0.0F);
-    paramView1.setScaleX(this.XRP);
-    paramView1.setScaleY(this.XRP);
-    paramView1.setTranslationX(this.XRN);
-    paramView1.setTranslationY(this.XRO);
+    paramView1.setScaleX(this.afId);
+    paramView1.setScaleY(this.afId);
+    paramView1.setTranslationX(this.afIb);
+    paramView1.setTranslationY(this.afIc);
     if (paramView2 != null)
     {
       paramView2.setAlpha(0.0F);
-      paramView2.animate().setDuration(this.XSb).setInterpolator(new DecelerateInterpolator(1.2F)).alpha(1.0F).setListener(new f.1(this, paramView2));
+      paramView2.animate().setDuration(this.afIp).setInterpolator(new DecelerateInterpolator(1.2F)).alpha(1.0F).setListener(new f.1(this, paramView2));
     }
-    paramView1.animate().setDuration(this.XSb).setInterpolator(new DecelerateInterpolator(1.2F)).scaleX(1.0F).scaleY(1.0F).translationX(0.0F).translationY(0.0F).setListener(new Animator.AnimatorListener()
+    paramView1.animate().setDuration(this.afIp).setInterpolator(new DecelerateInterpolator(1.2F)).scaleX(1.0F).scaleY(1.0F).translationX(0.0F).translationY(0.0F).setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        f.this.XSi = f.this.XSg;
+        f.this.afIw = f.this.afIu;
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
@@ -259,7 +247,7 @@ public final class f
         if (paramc != null) {
           paramc.onAnimationEnd();
         }
-        f.this.XSi = f.this.XSg;
+        f.this.afIw = f.this.afIu;
         Log.i("MicroMsg.ImagePreviewAnimation", "pennqin, gallery animation result, sx %s, sy %s, tx %s, ty %s.", new Object[] { Float.valueOf(paramView1.getScaleX()), Float.valueOf(paramView1.getScaleY()), Float.valueOf(paramView1.getTranslationX()), Float.valueOf(paramView1.getTranslationY()) });
         AppMethodBeat.o(143083);
       }
@@ -272,30 +260,41 @@ public final class f
         if (paramc != null) {
           paramc.onAnimationStart();
         }
-        f.this.XSi = f.this.XSf;
+        f.this.afIw = f.this.afIt;
         AppMethodBeat.o(143082);
       }
     });
-    this.mHandler.postDelayed(new f.3(this, paramView1), this.XSc);
+    this.mHandler.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(143084);
+        if (f.this.afIw == f.this.afIr)
+        {
+          Log.i("MicroMsg.ImagePreviewAnimation", "dancy enter Animation not Start!");
+          paramView1.requestLayout();
+        }
+        AppMethodBeat.o(143084);
+      }
+    }, this.afIq);
     AppMethodBeat.o(143095);
   }
   
-  @TargetApi(16)
-  public final void a(final View paramView1, View paramView2, final f.c paramc, final f.a parama)
+  public final void a(final View paramView1, View paramView2, final c paramc, final f.a parama)
   {
     AppMethodBeat.i(143096);
-    if ((Build.VERSION.SDK_INT < 12) || (paramView1 == null) || (this.XSi == this.XSf) || (this.XSi == this.XSh) || (this.XSi == this.XSe))
+    if ((Build.VERSION.SDK_INT < 12) || (paramView1 == null) || (this.afIw == this.afIt) || (this.afIw == this.afIv) || (this.afIw == this.afIs))
     {
-      Log.i("MicroMsg.ImagePreviewAnimation", "ExitAnimation not run! animationState: %s , gallery:%s", new Object[] { Integer.valueOf(this.XSi), paramView1 });
+      Log.i("MicroMsg.ImagePreviewAnimation", "ExitAnimation not run! animationState: %s , gallery:%s", new Object[] { Integer.valueOf(this.afIw), paramView1 });
       AppMethodBeat.o(143096);
       return;
     }
-    Y(paramView1, true);
+    ae(paramView1, true);
     if (paramView2 != null) {
       paramView2.animate().setDuration(200L).setInterpolator(new DecelerateInterpolator(1.2F)).alpha(0.0F).setListener(new f.4(this, paramView2));
     }
     paramView2 = new AnimationSet(true);
-    parama = new ScaleAnimation(this.XRP, this.XRP, paramView1, parama)
+    parama = new ScaleAnimation(this.afId, this.afId, paramView1, parama)
     {
       protected final void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
       {
@@ -304,28 +303,28 @@ public final class f
         int i;
         int n;
         int i1;
-        if ((f.this.XRL != 0) && (f.this.XRM != 0) && (f.this.XRS == 1.0F))
+        if ((f.this.afHZ != 0) && (f.this.afIa != 0) && (f.this.afIg == 1.0F))
         {
           Rect localRect = new Rect();
           paramView1.getGlobalVisibleRect(localRect);
           int m = (localRect.right - localRect.left) / 2;
-          int j = (localRect.bottom - localRect.top + f.this.XRW) / 2;
-          k = (int)(((f.this.XRL - f.this.mWidth) * (1.0F - paramAnonymousFloat) + f.this.mWidth) / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
-          i = (int)(((f.this.XRM - f.this.mHeight) * (1.0F - paramAnonymousFloat) + f.this.mHeight) / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
-          if (f.this.XRS != 1.0F)
+          int j = (localRect.bottom - localRect.top + f.this.afIk) / 2;
+          k = (int)(((f.this.afHZ - f.this.mWidth) * (1.0F - paramAnonymousFloat) + f.this.mWidth) / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
+          i = (int)(((f.this.afIa - f.this.mHeight) * (1.0F - paramAnonymousFloat) + f.this.mHeight) / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
+          if (f.this.afIg != 1.0F)
           {
-            f.this.XRP = (f.this.XRQ / f.this.XRS);
+            f.this.afId = (f.this.afIe / f.this.afIg);
             i = localRect.right;
             i = localRect.left;
             m = (localRect.right + localRect.left) / 2;
-            j = f.this.XRU - localRect.top + (int)(f.this.XRM / 2.0F);
-            k = (int)(((f.this.XRL - f.this.mWidth) * (1.0F - paramAnonymousFloat) + f.this.mWidth) / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
-            i = (int)(((f.this.XRM - f.this.mHeight) * (1.0F - paramAnonymousFloat) + f.this.mHeight) / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
+            j = f.this.afIi - localRect.top + (int)(f.this.afIa / 2.0F);
+            k = (int)(((f.this.afHZ - f.this.mWidth) * (1.0F - paramAnonymousFloat) + f.this.mWidth) / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
+            i = (int)(((f.this.afIa - f.this.mHeight) * (1.0F - paramAnonymousFloat) + f.this.mHeight) / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
           }
-          n = (int)(m - k / 2 + f.this.XRX * paramAnonymousFloat / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
-          i1 = (int)(j - i / 2 - f.this.XRW * (1.0F - paramAnonymousFloat) / 2.0F + f.this.XRZ * paramAnonymousFloat / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
-          k = (int)(k / 2 + m - f.this.XRY * paramAnonymousFloat / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
-          i = (int)(i / 2 + j - f.this.XSa * paramAnonymousFloat / (1.0F - (1.0F - f.this.XRP) * paramAnonymousFloat));
+          n = (int)(m - k / 2 + f.this.afIl * paramAnonymousFloat / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
+          i1 = (int)(j - i / 2 - f.this.afIk * (1.0F - paramAnonymousFloat) / 2.0F + f.this.afIn * paramAnonymousFloat / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
+          k = (int)(k / 2 + m - f.this.afIm * paramAnonymousFloat / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
+          i = (int)(i / 2 + j - f.this.afIo * paramAnonymousFloat / (1.0F - (1.0F - f.this.afId) * paramAnonymousFloat));
           if (Build.VERSION.SDK_INT < 21) {
             break label561;
           }
@@ -339,7 +338,7 @@ public final class f
           label561:
           if (Build.VERSION.SDK_INT >= 18) {
             if (parama != null) {
-              parama.Q(n, i1, k, i);
+              parama.Z(n, i1, k, i);
             } else {
               paramView1.setClipBounds(new Rect(n + paramView1.getScrollX(), i1, k + paramView1.getScrollX(), i));
             }
@@ -350,11 +349,11 @@ public final class f
     parama.setDuration(200L);
     parama.setInterpolator(new DecelerateInterpolator(1.2F));
     paramView2.addAnimation(parama);
-    parama = new TranslateAnimation(0.0F, this.XRN, 0.0F, this.XRO);
+    parama = new TranslateAnimation(0.0F, this.afIb, 0.0F, this.afIc);
     parama.setDuration(200L);
     parama.setInterpolator(new DecelerateInterpolator(1.2F));
     paramView2.addAnimation(parama);
-    parama = new AlphaAnimation(1.0F, this.XRV);
+    parama = new AlphaAnimation(1.0F, this.afIj);
     parama.setDuration(200L);
     parama.setInterpolator(new DecelerateInterpolator(1.2F));
     paramView2.addAnimation(parama);
@@ -368,7 +367,7 @@ public final class f
         if (paramc != null) {
           paramc.onAnimationEnd();
         }
-        f.this.XSi = f.this.XSe;
+        f.this.afIw = f.this.afIs;
         AppMethodBeat.o(143089);
       }
       
@@ -381,7 +380,7 @@ public final class f
         if (paramc != null) {
           paramc.onAnimationStart();
         }
-        f.this.XSi = f.this.XSh;
+        f.this.afIw = f.this.afIv;
         AppMethodBeat.o(143088);
       }
     });
@@ -389,189 +388,35 @@ public final class f
     AppMethodBeat.o(143096);
   }
   
-  public final void a(b paramb)
+  public final void af(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.XSm = paramb;
+    AppMethodBeat.i(251049);
+    this.uE = paramInt1;
+    this.cey = paramInt2;
+    this.mWidth = paramInt3;
+    this.mHeight = paramInt4;
+    Log.i("MicroMsg.ImagePreviewAnimation", "setAnimationParam: left=%d, top=%d, width=%d, height=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    AppMethodBeat.o(251049);
   }
   
-  public final void a(d paramd)
+  public final void oC(int paramInt1, int paramInt2)
   {
-    this.XSj = paramd;
+    this.afHZ = paramInt1;
+    this.afIa = paramInt2;
   }
   
-  public final void a(f.e parame)
+  public final void oD(int paramInt1, int paramInt2)
   {
-    this.XSl = parame;
+    this.afIl = paramInt1;
+    this.afIm = paramInt2;
+    this.afIn = 0;
+    this.afIo = 0;
   }
   
-  public final void a(f paramf)
+  public final void oE(int paramInt1, int paramInt2)
   {
-    this.XSk = paramf;
-  }
-  
-  public final void b(final View paramView1, final View paramView2, final View paramView3)
-  {
-    AppMethodBeat.i(143097);
-    paramView1.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(215180);
-        b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(215180);
-        return bool;
-      }
-      
-      public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(215179);
-        b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(215179);
-        return bool;
-      }
-      
-      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(143090);
-        b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
-        f.this.KVs = true;
-        if (f.this.XSj != null) {
-          f.this.XSj.bwC();
-        }
-        super.onLongPress(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(143090);
-      }
-      
-      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(143091);
-        b localb = new b();
-        localb.bn(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
-        if (f.this.XSk != null) {
-          f.this.XSk.onClick();
-        }
-        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/tools/ImagePreviewAnimation$7", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(143091);
-        return bool;
-      }
-    }
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(143092);
-        paramAnonymousView = this.XSs;
-        com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, locala.aFh(), "com/tencent/mm/ui/tools/ImagePreviewAnimation$8", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/ui/tools/ImagePreviewAnimation$8", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-        if (f.this.mVelocityTracker == null) {
-          f.this.mVelocityTracker = VelocityTracker.obtain();
-        }
-        f.this.mVelocityTracker.addMovement(paramAnonymousMotionEvent);
-        if (paramAnonymousMotionEvent.getAction() == 0)
-        {
-          f.this.aIC = paramAnonymousMotionEvent.getX();
-          f.this.aID = paramAnonymousMotionEvent.getY();
-        }
-        if (paramAnonymousMotionEvent.getAction() == 1)
-        {
-          if ((!f.this.KVr) || (!f.this.KVq)) {
-            break label222;
-          }
-          f.a(f.this, 0.0F, 0.0F, paramView1, paramView2, paramView3);
-          f.this.KVq = false;
-        }
-        label222:
-        while (!f.this.KVq)
-        {
-          f.this.KVs = false;
-          if (paramAnonymousMotionEvent.getAction() != 2) {
-            break label474;
-          }
-          if (com.tencent.mm.ui.base.f.ar(paramAnonymousMotionEvent) != 2) {
-            break;
-          }
-          AppMethodBeat.o(143092);
-          return false;
-        }
-        if (f.this.XSm != null) {
-          f.this.XSm.onExit();
-        }
-        for (;;)
-        {
-          f.this.KVq = false;
-          f.this.KVr = false;
-          break;
-          f.this.a(paramView1, paramView2, this.XSp, null);
-        }
-        paramAnonymousView = f.this.mVelocityTracker;
-        paramAnonymousView.computeCurrentVelocity(1000);
-        int i = (int)paramAnonymousView.getXVelocity();
-        int j = (int)paramAnonymousView.getYVelocity();
-        float f1 = paramAnonymousMotionEvent.getX() - f.this.aIC;
-        float f2 = paramAnonymousMotionEvent.getY() - f.this.aID;
-        if (((Math.abs(f1) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (j > 0) && (!f.this.KVs)) || (f.this.KVq))
-        {
-          f.a(f.this, f1, f2, paramView1, paramView2, paramView3);
-          f.this.KVq = true;
-          if (f2 <= 200.0F) {
-            break label492;
-          }
-        }
-        label474:
-        label492:
-        for (f.this.KVr = false;; f.this.KVr = true)
-        {
-          if (f.this.mVelocityTracker != null)
-          {
-            f.this.mVelocityTracker.recycle();
-            f.this.mVelocityTracker = null;
-          }
-          AppMethodBeat.o(143092);
-          return false;
-          f.this.KVq = false;
-          break;
-        }
-      }
-    });
-    AppMethodBeat.o(143097);
-  }
-  
-  public final void hYr()
-  {
-    this.XRS = 1.0F;
-  }
-  
-  public final void mJ(int paramInt1, int paramInt2)
-  {
-    this.XRL = paramInt1;
-    this.XRM = paramInt2;
-  }
-  
-  public final void mK(int paramInt1, int paramInt2)
-  {
-    this.XRX = paramInt1;
-    this.XRY = paramInt2;
-    this.XRZ = 0;
-    this.XSa = 0;
-  }
-  
-  public final void mL(int paramInt1, int paramInt2)
-  {
-    this.XRT = paramInt1;
-    this.XRU = paramInt2;
+    this.afIh = paramInt1;
+    this.afIi = paramInt2;
   }
   
   public static abstract interface b
@@ -579,9 +424,21 @@ public final class f
     public abstract void onExit();
   }
   
+  public static abstract interface c
+  {
+    public abstract void onAnimationEnd();
+    
+    public abstract void onAnimationStart();
+  }
+  
   public static abstract interface d
   {
-    public abstract void bwC();
+    public abstract void longClickOver();
+  }
+  
+  public static abstract interface e
+  {
+    public abstract void onGalleryScale(float paramFloat1, float paramFloat2);
   }
   
   public static abstract interface f
@@ -591,7 +448,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.f
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,12 @@ public class a
     AppMethodBeat.o(69202);
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "BindCardForPayProcess";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69201);
     if (paramActivity != null) {
@@ -34,7 +34,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a
  * JD-Core Version:    0.7.0.1
  */

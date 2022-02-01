@@ -4,12 +4,12 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class KindaGlobalAnimator$1
+class KindaGlobalAnimator$1
   extends AnimatorListenerAdapter
 {
   KindaGlobalAnimator$1(Runnable paramRunnable) {}
   
-  public final void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(18327);
     this.val$animOnComplete.run();

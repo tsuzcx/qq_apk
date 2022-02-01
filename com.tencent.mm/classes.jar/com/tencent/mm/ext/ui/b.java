@@ -3,7 +3,6 @@ package com.tencent.mm.ext.ui;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.TimeInterpolator;
-import android.annotation.TargetApi;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.AnimationUtils;
@@ -14,13 +13,12 @@ import com.tencent.mm.ext.a.b.a;
 
 public final class b
 {
-  @TargetApi(14)
   public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
-    AppMethodBeat.i(258907);
-    if ((paramView == null) || (a.qW(14)))
+    AppMethodBeat.i(235350);
+    if ((paramView == null) || (a.rc(14)))
     {
-      AppMethodBeat.o(258907);
+      AppMethodBeat.o(235350);
       return;
     }
     Object localObject = (Animator)paramView.getTag(a.d.property_anim);
@@ -34,39 +32,38 @@ public final class b
     if (parama == null)
     {
       paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject);
-      AppMethodBeat.o(258907);
+      AppMethodBeat.o(235350);
       return;
     }
     paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject).setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(258901);
-        this.jRc.aEa();
-        AppMethodBeat.o(258901);
+        AppMethodBeat.i(235370);
+        this.mqm.aXe();
+        AppMethodBeat.o(235370);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(258899);
-        this.jRc.onAnimationEnd();
-        AppMethodBeat.o(258899);
+        AppMethodBeat.i(235364);
+        this.mqm.onAnimationEnd();
+        AppMethodBeat.o(235364);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
     });
-    AppMethodBeat.o(258907);
+    AppMethodBeat.o(235350);
   }
   
-  @TargetApi(14)
-  public static final void q(View paramView, float paramFloat)
+  public static final void r(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(258905);
-    if ((paramView == null) || (a.qW(14)))
+    AppMethodBeat.i(235337);
+    if ((paramView == null) || (a.rc(14)))
     {
-      AppMethodBeat.o(258905);
+      AppMethodBeat.o(235337);
       return;
     }
     Animator localAnimator = (Animator)paramView.getTag(a.d.property_anim);
@@ -76,19 +73,19 @@ public final class b
     paramView.animate().cancel();
     paramView.setTranslationX(paramFloat);
     paramView.setTranslationY(0.0F);
-    AppMethodBeat.o(258905);
+    AppMethodBeat.o(235337);
   }
   
   public static abstract interface a
   {
-    public abstract void aEa();
+    public abstract void aXe();
     
     public abstract void onAnimationEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ext.ui.b
  * JD-Core Version:    0.7.0.1
  */

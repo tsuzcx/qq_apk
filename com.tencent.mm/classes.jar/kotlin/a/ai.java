@@ -1,64 +1,18 @@
 package kotlin.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.m.h;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.g.b.a.a;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"all", "", "K", "V", "", "predicate", "Lkotlin/Function1;", "", "any", "asIterable", "", "asSequence", "Lkotlin/sequences/Sequence;", "count", "", "flatMap", "", "R", "transform", "flatMapTo", "C", "", "destination", "(Ljava/util/Map;Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;", "forEach", "", "action", "map", "mapNotNull", "", "mapNotNullTo", "mapTo", "maxBy", "", "selector", "maxWith", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "minBy", "minWith", "none", "onEach", "M", "(Ljava/util/Map;Lkotlin/jvm/functions/Function1;)Ljava/util/Map;", "toList", "Lkotlin/Pair;", "kotlin-stdlib"}, iBN=1)
-public class ai
-  extends ah
+@Metadata(d1={""}, d2={"Lkotlin/collections/LongIterator;", "", "", "()V", "next", "()Ljava/lang/Long;", "nextLong", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
+public abstract class ai
+  implements Iterator<Long>, a
 {
-  public static final <K, V> List<o<K, V>> cC(Map<? extends K, ? extends V> paramMap)
-  {
-    AppMethodBeat.i(129241);
-    p.k(paramMap, "$this$toList");
-    if (paramMap.size() == 0)
-    {
-      paramMap = (List)v.aaAd;
-      AppMethodBeat.o(129241);
-      return paramMap;
-    }
-    Iterator localIterator = paramMap.entrySet().iterator();
-    if (!localIterator.hasNext())
-    {
-      paramMap = (List)v.aaAd;
-      AppMethodBeat.o(129241);
-      return paramMap;
-    }
-    Map.Entry localEntry = (Map.Entry)localIterator.next();
-    if (!localIterator.hasNext())
-    {
-      paramMap = j.listOf(new o(localEntry.getKey(), localEntry.getValue()));
-      AppMethodBeat.o(129241);
-      return paramMap;
-    }
-    paramMap = new ArrayList(paramMap.size());
-    paramMap.add(new o(localEntry.getKey(), localEntry.getValue()));
-    do
-    {
-      localEntry = (Map.Entry)localIterator.next();
-      paramMap.add(new o(localEntry.getKey(), localEntry.getValue()));
-    } while (localIterator.hasNext());
-    paramMap = (List)paramMap;
-    AppMethodBeat.o(129241);
-    return paramMap;
-  }
+  public abstract long Zn();
   
-  public static final <K, V> h<Map.Entry<K, V>> cD(Map<? extends K, ? extends V> paramMap)
+  public void remove()
   {
-    AppMethodBeat.i(218851);
-    p.k(paramMap, "$this$asSequence");
-    paramMap = j.z((Iterable)paramMap.entrySet());
-    AppMethodBeat.o(218851);
-    return paramMap;
+    throw new UnsupportedOperationException("Operation is not supported for read-only collection");
   }
 }
 

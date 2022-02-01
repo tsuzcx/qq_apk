@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public final int bNA()
+  public final int cnP()
   {
     return 0;
   }
@@ -16,14 +16,14 @@ public final class d
   {
     AppMethodBeat.i(121378);
     paramString = super.d(paramJSONObject, paramString);
-    paramString.h(paramJSONObject.optJSONArray("actions"));
+    paramString.k(paramJSONObject.optJSONArray("actions"));
     AppMethodBeat.o(121378);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.a.d
  * JD-Core Version:    0.7.0.1
  */

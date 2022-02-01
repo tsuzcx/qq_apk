@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.google.android.material.tabs.TabLayout android:id="@id/byc" android:background="@color/ac_" android:layout_width="0.0dip" android:layout_height="@dimen/cp" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:tabGravity="aq3" app:tabIndicator="@drawable/yh" app:tabIndicatorColor="@color/am" app:tabIndicatorFullWidth="@dimen/ce" app:tabIndicatorHeight="2.0dip" app:tabPadding="@dimen/cb" app:tabSelectedTextColor="@color/am" app:tabTextColor="@color/BW_100_Alpha_0_3" />
-    <androidx.viewpager.widget.ViewPager android:id="@id/byd" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/byc" />
-</merge>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fcy" android:background="@drawable/b__" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginTop="@dimen/cd" android:scaleType="centerCrop" android:contentDescription="@string/a_q" android:layout_marginStart="@dimen/cp" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/kwl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginStart="@dimen/cd" android:layout_marginEnd="@dimen/cd" android:layout_toEndOf="@id/fcy" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/kwk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:maxLines="1" android:layout_below="@id/kwl" android:layout_marginEnd="@dimen/cd" android:layout_alignStart="@id/kwl" />
+    <View android:id="@id/l39" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="@dimen/a6s" android:layout_marginTop="@dimen/cd" android:layout_below="@id/fcy" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+</RelativeLayout>

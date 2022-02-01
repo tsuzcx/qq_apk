@@ -7,42 +7,53 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class ai
 {
-  @GuardedBy("MessengerIpcClient.class")
-  private static ai bKj;
-  final Context bJa;
-  final ScheduledExecutorService bKk;
-  @GuardedBy("this")
-  private aj bKl;
-  @GuardedBy("this")
-  private int bKm;
+  private static ai dDR;
+  final Context dCI;
+  final ScheduledExecutorService dDS;
+  private aj dDT;
+  private int dDU;
   
   private ai(Context paramContext, ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(4254);
-    this.bKl = new aj(this, (byte)0);
-    this.bKm = 1;
-    this.bKk = paramScheduledExecutorService;
-    this.bJa = paramContext.getApplicationContext();
+    this.dDT = new aj(this, (byte)0);
+    this.dDU = 1;
+    this.dDS = paramScheduledExecutorService;
+    this.dCI = paramContext.getApplicationContext();
     AppMethodBeat.o(4254);
   }
   
-  public static ai ao(Context paramContext)
+  public static ai aZ(Context paramContext)
   {
     try
     {
       AppMethodBeat.i(4253);
-      if (bKj == null) {
-        bKj = new ai(paramContext, Executors.newSingleThreadScheduledExecutor());
+      if (dDR == null) {
+        dDR = new ai(paramContext, Executors.newSingleThreadScheduledExecutor());
       }
-      paramContext = bKj;
+      paramContext = dDR;
       AppMethodBeat.o(4253);
       return paramContext;
     }
     finally {}
+  }
+  
+  public final int YB()
+  {
+    try
+    {
+      int i = this.dDU;
+      this.dDU = (i + 1);
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final <T> Task<T> a(c<T> paramc)
@@ -55,36 +66,21 @@ public final class ai
         String str = String.valueOf(paramc);
         new StringBuilder(String.valueOf(str).length() + 9).append("Queueing ").append(str);
       }
-      if (!this.bKl.b(paramc))
+      if (!this.dDT.b(paramc))
       {
-        this.bKl = new aj(this, (byte)0);
-        this.bKl.b(paramc);
+        this.dDT = new aj(this, (byte)0);
+        this.dDT.b(paramc);
       }
-      paramc = paramc.bIY.getTask();
+      paramc = paramc.dCG.getTask();
       AppMethodBeat.o(4255);
       return paramc;
     }
     finally {}
   }
-  
-  public final int yQ()
-  {
-    try
-    {
-      int i = this.bKm;
-      this.bKm = (i + 1);
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.ai
  * JD-Core Version:    0.7.0.1
  */

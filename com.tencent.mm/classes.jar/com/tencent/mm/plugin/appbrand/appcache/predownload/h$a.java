@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+@Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
 final class h$a
-  extends q
-  implements a<x>
+  extends u
+  implements a<ah>
 {
-  public static final a nJv;
+  public static final a qJd;
   
   static
   {
-    AppMethodBeat.i(247407);
-    nJv = new a();
-    AppMethodBeat.o(247407);
+    AppMethodBeat.i(320393);
+    qJd = new a();
+    AppMethodBeat.o(320393);
   }
   
   h$a()

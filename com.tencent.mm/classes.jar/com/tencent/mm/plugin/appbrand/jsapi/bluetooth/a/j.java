@@ -1,141 +1,111 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 
-import android.util.Base64;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.g;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import java.util.Arrays;
-import kotlin.a.ae;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.o;
-import kotlin.s;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.e;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.g.b.s;
+import kotlin.r;
+import kotlin.v;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/central/JsApiMakeBluetoothPair;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/central/JsApiIsBluetoothDevicePaired;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
-  extends c<e>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<f>
 {
-  public static final int CTRL_INDEX = 815;
-  public static final String NAME = "makeBluetoothPair";
-  public static final j.a oHi;
+  public static final int CTRL_INDEX = 1059;
+  public static final String NAME = "isBluetoothDevicePaired";
+  public static final j.a rKZ;
   
   static
   {
-    AppMethodBeat.i(199094);
-    oHi = new j.a((byte)0);
-    AppMethodBeat.o(199094);
+    AppMethodBeat.i(329667);
+    rKZ = new j.a((byte)0);
+    AppMethodBeat.o(329667);
   }
   
-  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(199093);
-    if (parame == null)
+    Iterator localIterator = null;
+    AppMethodBeat.i(329669);
+    if (paramf == null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "env is null", new Object[0]);
-      AppMethodBeat.o(199093);
+      AppMethodBeat.o(329669);
       return;
     }
-    if ((paramJSONObject == null) || (!paramJSONObject.has("deviceId")))
+    if (paramJSONObject == null)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "data is null or do not have key: deviceId", new Object[0]);
-      parame.j(paramInt, m("fail:invalid data", ae.f(new o[] { s.M("errCode", Integer.valueOf(10013)) })));
-      AppMethodBeat.o(199093);
+      a.w("MicroMsg.AppBrand.JsApiIsBluetoothDevicePaired", "invoke, data is null", new Object[0]);
+      paramf.callback(paramInt, a("fail:invalid data", a.e.rVz, null));
+      AppMethodBeat.o(329669);
       return;
     }
-    final String str1 = parame.getAppId();
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "appId: " + str1 + ", data: " + paramJSONObject, new Object[0]);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.ahq(str1);
-    if (localb == null)
+    if (!paramJSONObject.has("deviceId"))
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "bleWorker is null", new Object[0]);
-      parame.j(paramInt, m("fail:not init", ae.f(new o[] { s.M("errCode", Integer.valueOf(10000)) })));
-      AppMethodBeat.o(199093);
+      a.w("MicroMsg.AppBrand.JsApiIsBluetoothDevicePaired", "invoke, do not have key: deviceId", new Object[0]);
+      paramf.callback(paramInt, a("fail:invalid data", a.e.rVz, null));
+      AppMethodBeat.o(329669);
       return;
     }
-    String str2 = paramJSONObject.optString("deviceId", null);
-    if (str2 == null)
+    String str = paramJSONObject.optString("deviceId");
+    a.i("MicroMsg.AppBrand.JsApiIsBluetoothDevicePaired", s.X("invoke, deviceId: ", str), new Object[0]);
+    if (!BluetoothAdapter.checkBluetoothAddress(str))
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "deviceId is null", new Object[0]);
-      parame.j(paramInt, m("fail:invalid data", ae.f(new o[] { s.M("errCode", Integer.valueOf(10013)) })));
-      AppMethodBeat.o(199093);
+      a.w("MicroMsg.AppBrand.JsApiIsBluetoothDevicePaired", "invoke, deviceId is illegal", new Object[0]);
+      paramf.callback(paramInt, a("fail:invalid data", a.e.rVz, null));
+      AppMethodBeat.o(329669);
       return;
     }
-    Object localObject = paramJSONObject.optString("pin", null);
-    long l;
-    boolean bool1;
-    boolean bool2;
-    StringBuilder localStringBuilder;
-    if (localObject == null)
+    paramJSONObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.crs();
+    if ((paramJSONObject == null) || (!paramJSONObject.isEnabled()))
     {
-      localObject = null;
-      l = paramJSONObject.optLong("timeout", 20000L);
-      bool1 = paramJSONObject.optBoolean("forcePair", false);
-      bool2 = paramJSONObject.optBoolean("useOldImpl", false);
-      localStringBuilder = new StringBuilder("deviceId: ").append(str2).append(", pin: ");
-      if (localObject == null) {
-        break label521;
+      a.w("MicroMsg.AppBrand.JsApiIsBluetoothDevicePaired", "invoke, bluetoothAdapter is null or disabled", new Object[0]);
+      paramf.callback(paramInt, a("fail:not available", a.c.rUF, null));
+      AppMethodBeat.o(329669);
+      return;
+    }
+    paramJSONObject = paramJSONObject.getBondedDevices();
+    if (paramJSONObject == null)
+    {
+      paramJSONObject = localIterator;
+      if (paramJSONObject == null) {
+        break label349;
       }
-      paramJSONObject = Arrays.toString((byte[])localObject);
-      p.j(paramJSONObject, "java.util.Arrays.toString(this)");
     }
-    for (;;)
+    label349:
+    for (boolean bool = true;; bool = false)
     {
+      a.i("MicroMsg.AppBrand.JsApiIsBluetoothDevicePaired", s.X("invoke, isPaired: ", Boolean.valueOf(bool)), new Object[0]);
+      paramf.callback(paramInt, a(a.e.rVt, ak.f(new r[] { v.Y("isPaired", Boolean.valueOf(bool)) })));
+      AppMethodBeat.o(329669);
+      return;
+      localIterator = ((Iterable)paramJSONObject).iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramJSONObject = localIterator.next();
+      } while (!s.p(str, ((BluetoothDevice)paramJSONObject).getAddress()));
       for (;;)
       {
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.AppBrand.JsApiMakeBluetoothPair", paramJSONObject + ", timeoutMs: " + l + ", forcePair: " + bool1 + ", useOldImpl: " + bool2, new Object[0]);
-        localb.a(str2, (com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a)new g(str2, (byte[])localObject, l, bool1, bool2), (com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b)new b(this, str1, paramInt, parame));
-        AppMethodBeat.o(199093);
-        return;
-        try
-        {
-          localObject = Base64.decode((String)localObject, 2);
-        }
-        catch (Exception paramJSONObject)
-        {
-          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "decode pin fail since " + paramJSONObject.toString(), new Object[0]);
-          parame.j(paramInt, m("fail:invalid data", ae.f(new o[] { s.M("errCode", Integer.valueOf(10013)) })));
-          AppMethodBeat.o(199093);
-          return;
-        }
+        paramJSONObject = (BluetoothDevice)paramJSONObject;
+        break;
+        paramJSONObject = null;
       }
-      label521:
-      paramJSONObject = null;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/sdk/model/Result;", "kotlin.jvm.PlatformType", "onResult"})
-  static final class b
-    implements com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b
-  {
-    b(j paramj, String paramString, int paramInt, e parame) {}
-    
-    public final void a(com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j paramj)
-    {
-      AppMethodBeat.i(198885);
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.AppBrand.JsApiMakeBluetoothPair", "appId: " + str1 + ", result: " + paramj, new Object[0]);
-      switch (paramj.errCode)
-      {
-      default: 
-        j localj = this.oHj;
-        int i = paramInt;
-        e locale = parame;
-        int j = paramj.errCode;
-        paramj = paramj.errMsg;
-        p.j(paramj, "result.errMsg");
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(localj, i, locale, j, paramj);
-        AppMethodBeat.o(198885);
-        return;
-      }
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this.oHj, paramInt, parame);
-      AppMethodBeat.o(198885);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.j
  * JD-Core Version:    0.7.0.1
  */

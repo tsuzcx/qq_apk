@@ -7,10 +7,10 @@ public enum Vending$f$b
   static
   {
     AppMethodBeat.i(74954);
-    YzH = new b("NIL", 0);
-    YzI = new b("PENDING", 1);
-    YzJ = new b("FILLED", 2);
-    YzK = new b[] { YzH, YzI, YzJ };
+    aguf = new b("NIL", 0);
+    agug = new b("PENDING", 1);
+    aguh = new b("FILLED", 2);
+    agui = new b[] { aguf, agug, aguh };
     AppMethodBeat.o(74954);
   }
   
@@ -18,7 +18,7 @@ public enum Vending$f$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.vending.base.Vending.f.b
  * JD-Core Version:    0.7.0.1
  */

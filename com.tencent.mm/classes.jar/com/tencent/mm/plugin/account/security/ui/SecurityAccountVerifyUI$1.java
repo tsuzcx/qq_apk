@@ -16,7 +16,7 @@ final class SecurityAccountVerifyUI$1
     if ((paramEditable != null) && (!Util.isNullOrNil(paramEditable.toString()))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nbx.enableOptionMenu(bool);
+      this.pYF.enableOptionMenu(bool);
       AppMethodBeat.o(125597);
       return;
     }

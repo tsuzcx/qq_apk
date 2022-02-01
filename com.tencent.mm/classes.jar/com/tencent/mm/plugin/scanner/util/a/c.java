@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.scanner.util.a;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressRequest;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressDefaultRequest;", "imagePath", "", "(Ljava/lang/String;)V", "enableGetCodePosition", "", "getEnableGetCodePosition", "()Z", "setEnableGetCodePosition", "(Z)V", "scan-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/util/compress/ScanCodeImageCompressRequest;", "Lcom/tencent/mm/plugin/scanner/util/compress/ScanImageCompressDefaultRequest;", "imagePath", "", "(Ljava/lang/String;)V", "enableGetCodePosition", "", "getEnableGetCodePosition", "()Z", "setEnableGetCodePosition", "(Z)V", "scan-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends f
 {
-  public boolean fRi;
+  public boolean hXf;
   
   public c(String paramString)
   {

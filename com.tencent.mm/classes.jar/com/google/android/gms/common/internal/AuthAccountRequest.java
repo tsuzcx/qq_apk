@@ -7,34 +7,21 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-@SafeParcelable.Class(creator="AuthAccountRequestCreator")
 public class AuthAccountRequest
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<AuthAccountRequest> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
   @Deprecated
-  @SafeParcelable.Field(id=2)
   private final IBinder zzqv;
-  @SafeParcelable.Field(id=3)
   private final Scope[] zzqw;
-  @SafeParcelable.Field(id=4)
   private Integer zzqx;
-  @SafeParcelable.Field(id=5)
   private Integer zzqy;
-  @SafeParcelable.Field(id=6, type="android.accounts.Account")
   private Account zzs;
   
   static
@@ -44,8 +31,7 @@ public class AuthAccountRequest
     AppMethodBeat.o(11797);
   }
   
-  @SafeParcelable.Constructor
-  AuthAccountRequest(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) IBinder paramIBinder, @SafeParcelable.Param(id=3) Scope[] paramArrayOfScope, @SafeParcelable.Param(id=4) Integer paramInteger1, @SafeParcelable.Param(id=5) Integer paramInteger2, @SafeParcelable.Param(id=6) Account paramAccount)
+  AuthAccountRequest(int paramInt, IBinder paramIBinder, Scope[] paramArrayOfScope, Integer paramInteger1, Integer paramInteger2, Account paramAccount)
   {
     this.zzal = paramInt;
     this.zzqv = paramIBinder;
@@ -87,13 +73,11 @@ public class AuthAccountRequest
     }
   }
   
-  @Nullable
   public Integer getOauthPolicy()
   {
     return this.zzqx;
   }
   
-  @Nullable
   public Integer getPolicyAction()
   {
     return this.zzqy;
@@ -107,13 +91,13 @@ public class AuthAccountRequest
     return localHashSet;
   }
   
-  public AuthAccountRequest setOauthPolicy(@Nullable Integer paramInteger)
+  public AuthAccountRequest setOauthPolicy(Integer paramInteger)
   {
     this.zzqx = paramInteger;
     return this;
   }
   
-  public AuthAccountRequest setPolicyAction(@Nullable Integer paramInteger)
+  public AuthAccountRequest setPolicyAction(Integer paramInteger)
   {
     this.zzqy = paramInteger;
     return this;
@@ -135,7 +119,7 @@ public class AuthAccountRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.AuthAccountRequest
  * JD-Core Version:    0.7.0.1
  */

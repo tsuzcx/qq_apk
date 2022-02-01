@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.xlabeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.j.b.e;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/xlabeffect/FaceTrackProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "(II)V", "getHeight", "getWidth", "refreshDrawSize", "", "setRotate", "degree", "updateTextureSize", "width", "height", "Companion", "plugin-xlabeffect_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/xlabeffect/FaceTrackProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "(II)V", "getHeight", "getWidth", "refreshDrawSize", "", "setRotate", "degree", "updateTextureSize", "width", "height", "Companion", "plugin-xlabeffect_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
   extends e
 {
-  public static final a QPo;
+  public static final a.a XJP;
   
   static
   {
     AppMethodBeat.i(90504);
-    QPo = new a((byte)0);
+    XJP = new a.a((byte)0);
     AppMethodBeat.o(90504);
   }
   
@@ -22,18 +22,18 @@ public final class a
     super(0, 0, 0, 0, 2, 1);
   }
   
-  private final void heV()
+  private final void iFH()
   {
     int i = 320;
     AppMethodBeat.i(90503);
     int j;
-    if (aVy() > aVx()) {
-      if (aVy() > 320)
+    if (bpU() > bpT()) {
+      if (bpU() > 320)
       {
-        k = aVx() * i / aVy();
+        k = bpT() * i / bpU();
         j = i;
         i = k;
-        if (aVp() % 180 == 0) {
+        if (this.nDr % 180 == 0) {
           break label116;
         }
       }
@@ -44,33 +44,33 @@ public final class a
       if (k == 0) {
         break label121;
       }
-      du(j, i);
+      ek(j, i);
       AppMethodBeat.o(90503);
       return;
-      i = aVy();
+      i = bpU();
       break;
-      if (aVx() > 320) {}
+      if (bpT() > 320) {}
       for (;;)
       {
-        j = aVy() * i / aVx();
+        j = bpU() * i / bpT();
         break;
-        i = aVx();
+        i = bpT();
       }
     }
     label121:
-    du(i, j);
+    ek(i, j);
     AppMethodBeat.o(90503);
   }
   
-  public final void dv(int paramInt1, int paramInt2)
+  public final void el(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90501);
-    if ((paramInt1 != aVx()) || (paramInt2 != aVy())) {}
+    if ((paramInt1 != bpT()) || (paramInt2 != bpU())) {}
     for (int i = 1;; i = 0)
     {
-      super.dv(paramInt1, paramInt2);
+      super.el(paramInt1, paramInt2);
       if (i != 0) {
-        heV();
+        iFH();
       }
       AppMethodBeat.o(90501);
       return;
@@ -79,41 +79,38 @@ public final class a
   
   public final int getHeight()
   {
-    AppMethodBeat.i(187270);
+    AppMethodBeat.i(261666);
     int i = getDrawHeight();
-    AppMethodBeat.o(187270);
+    AppMethodBeat.o(261666);
     return i;
   }
   
   public final int getWidth()
   {
-    AppMethodBeat.i(187269);
+    AppMethodBeat.i(261661);
     int i = getDrawWidth();
-    AppMethodBeat.o(187269);
+    AppMethodBeat.o(261661);
     return i;
   }
   
-  public final void tm(int paramInt)
+  public final void th(int paramInt)
   {
     AppMethodBeat.i(90502);
-    if (paramInt != aVp()) {}
+    if (paramInt != this.nDr) {}
     for (int i = 1;; i = 0)
     {
-      super.tm(paramInt);
+      super.th(paramInt);
       if (i != 0) {
-        heV();
+        iFH();
       }
       AppMethodBeat.o(90502);
       return;
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/xlabeffect/FaceTrackProc$Companion;", "", "()V", "FACE_TRACK_SIZE", "", "plugin-xlabeffect_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.xlabeffect.a
  * JD-Core Version:    0.7.0.1
  */

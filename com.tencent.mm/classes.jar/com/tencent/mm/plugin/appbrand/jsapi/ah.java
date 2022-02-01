@@ -1,15 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import kotlin.l;
-
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/IReturnCopyUrlWatcher;", "", "onReturnUrl", "", "url", "", "luggage-wechat-full-sdk_release"})
-public abstract interface ah
+public final class ah
 {
-  public abstract void agV(String paramString);
+  public String data;
+  public String event;
+  public int src;
+  
+  public ah(String paramString1, String paramString2, int paramInt)
+  {
+    this.event = paramString1;
+    this.data = paramString2;
+    this.src = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ah
  * JD-Core Version:    0.7.0.1
  */

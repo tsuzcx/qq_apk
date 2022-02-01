@@ -1,106 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class ayg
-  extends dyy
+  extends erp
 {
-  public String SCJ;
-  public long SCK;
-  public String session_id;
+  public atz ZEc;
+  public b lastBuffer;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(231261);
+    AppMethodBeat.i(259460);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.SCJ != null) {
-        paramVarArgs.f(2, this.SCJ);
+      if (this.lastBuffer != null) {
+        paramVarArgs.d(2, this.lastBuffer);
       }
-      paramVarArgs.bm(3, this.SCK);
-      if (this.session_id != null) {
-        paramVarArgs.f(4, this.session_id);
+      if (this.ZEc != null)
+      {
+        paramVarArgs.qD(3, this.ZEc.computeSize());
+        this.ZEc.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(231261);
+      AppMethodBeat.o(259460);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label452;
+      if (this.BaseRequest == null) {
+        break label478;
       }
     }
-    label452:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label478:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.SCJ != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.SCJ);
-      }
-      i += g.a.a.b.b.a.p(3, this.SCK);
       paramInt = i;
-      if (this.session_id != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.session_id);
+      if (this.lastBuffer != null) {
+        paramInt = i + i.a.a.b.b.a.c(2, this.lastBuffer);
       }
-      AppMethodBeat.o(231261);
-      return paramInt;
+      i = paramInt;
+      if (this.ZEc != null) {
+        i = paramInt + i.a.a.a.qC(3, this.ZEc.computeSize());
+      }
+      AppMethodBeat.o(259460);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(231261);
+        AppMethodBeat.o(259460);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (i.a.a.a.a)paramVarArgs[0];
         ayg localayg = (ayg)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(231261);
+          AppMethodBeat.o(259460);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            jh localjh = new jh();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localjh.parseFrom((byte[])localObject);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new kc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((kc)localObject2).parseFrom((byte[])localObject1);
             }
-            localayg.BaseResponse = localjh;
+            localayg.BaseRequest = ((kc)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(231261);
+          AppMethodBeat.o(259460);
           return 0;
         case 2: 
-          localayg.SCJ = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(231261);
-          return 0;
-        case 3: 
-          localayg.SCK = ((g.a.a.a.a)localObject).abFh.AN();
-          AppMethodBeat.o(231261);
+          localayg.lastBuffer = ((i.a.a.a.a)localObject1).ajGk.kFX();
+          AppMethodBeat.o(259460);
           return 0;
         }
-        localayg.session_id = ((g.a.a.a.a)localObject).abFh.readString();
-        AppMethodBeat.o(231261);
+        paramVarArgs = ((i.a.a.a.a)localObject1).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new atz();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((atz)localObject2).parseFrom((byte[])localObject1);
+          }
+          localayg.ZEc = ((atz)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(259460);
         return 0;
       }
-      AppMethodBeat.o(231261);
+      AppMethodBeat.o(259460);
       return -1;
     }
   }

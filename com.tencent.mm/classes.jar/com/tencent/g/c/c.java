@@ -2,21 +2,21 @@ package com.tencent.g.c;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.PowerManager;
 import android.os.Process;
-import android.provider.Settings.Secure;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -24,36 +24,48 @@ import java.util.List;
 
 public final class c
 {
-  public static String bCQ(String paramString)
+  private static String ahVW;
+  private static final String zxT;
+  
+  static
   {
-    AppMethodBeat.i(208235);
+    AppMethodBeat.i(212165);
+    Object localObject = MMApplicationContext.getContext().getContentResolver();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG("android_id").cG(localObject);
+    zxT = (String)com.tencent.mm.hellhoundlib.a.a.a(new Object(), ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/turingshield/utils/DeviceUtil", "<clinit>", "()V", "android/provider/Settings$Secure", "getString", "(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;");
+    AppMethodBeat.o(212165);
+  }
+  
+  public static String bFv(String paramString)
+  {
+    AppMethodBeat.i(212066);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(208235);
+      AppMethodBeat.o(212066);
       return "";
     }
-    AppMethodBeat.o(208235);
+    AppMethodBeat.o(212066);
     return paramString;
   }
   
   /* Error */
-  private static String bDY(String paramString)
+  private static String bGx(String paramString)
   {
     // Byte code:
-    //   0: ldc 29
-    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 31
-    //   7: invokestatic 37	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   0: ldc 83
+    //   2: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 85
+    //   7: invokestatic 91	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   10: astore_1
     //   11: aload_1
-    //   12: ldc 39
+    //   12: ldc 93
     //   14: iconst_1
-    //   15: anewarray 33	java/lang/Class
+    //   15: anewarray 87	java/lang/Class
     //   18: dup
     //   19: iconst_0
-    //   20: ldc 41
+    //   20: ldc 62
     //   22: aastore
-    //   23: invokevirtual 45	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   23: invokevirtual 97	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   26: aload_1
     //   27: iconst_1
     //   28: anewarray 4	java/lang/Object
@@ -61,47 +73,46 @@ public final class c
     //   32: iconst_0
     //   33: aload_0
     //   34: aastore
-    //   35: invokevirtual 51	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   38: checkcast 41	java/lang/String
-    //   41: checkcast 41	java/lang/String
-    //   44: astore_0
-    //   45: ldc 29
-    //   47: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   50: aload_0
-    //   51: areturn
-    //   52: astore_0
-    //   53: ldc 29
-    //   55: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: ldc 24
-    //   60: areturn
-    //   61: astore_0
-    //   62: ldc 29
-    //   64: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   67: ldc 24
-    //   69: areturn
+    //   35: invokevirtual 103	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   38: checkcast 62	java/lang/String
+    //   41: astore_0
+    //   42: ldc 83
+    //   44: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: aload_0
+    //   48: areturn
+    //   49: astore_0
+    //   50: ldc 83
+    //   52: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: ldc 79
+    //   57: areturn
+    //   58: astore_0
+    //   59: ldc 83
+    //   61: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc 79
+    //   66: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	70	0	paramString	String
+    //   0	67	0	paramString	String
     //   10	17	1	localClass	Class
     // Exception table:
     //   from	to	target	type
-    //   5	45	52	java/lang/Exception
-    //   5	45	61	finally
+    //   5	42	49	java/lang/Exception
+    //   5	42	58	finally
   }
   
   public static String getAppPackageName(Context paramContext)
   {
-    AppMethodBeat.i(208246);
+    AppMethodBeat.i(212091);
     String str = "";
     if (paramContext == null)
     {
-      AppMethodBeat.o(208246);
+      AppMethodBeat.o(212091);
       return "";
     }
     try
     {
       paramContext = paramContext.getPackageName();
-      AppMethodBeat.o(208246);
+      AppMethodBeat.o(212091);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -116,10 +127,10 @@ public final class c
   public static int getAppVersionCode(Context paramContext)
   {
     int i = -1;
-    AppMethodBeat.i(208239);
+    AppMethodBeat.i(212072);
     if (paramContext == null)
     {
-      AppMethodBeat.o(208239);
+      AppMethodBeat.o(212072);
       return -1;
     }
     PackageManager localPackageManager = paramContext.getPackageManager();
@@ -133,24 +144,24 @@ public final class c
       label38:
       break label38;
     }
-    AppMethodBeat.o(208239);
+    AppMethodBeat.o(212072);
     return i;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(208244);
+    AppMethodBeat.i(212083);
     String str = "";
     if (paramContext == null)
     {
-      AppMethodBeat.o(208244);
+      AppMethodBeat.o(212083);
       return "";
     }
     PackageManager localPackageManager = paramContext.getPackageManager();
     try
     {
       paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      AppMethodBeat.o(208244);
+      AppMethodBeat.o(212083);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -162,12 +173,20 @@ public final class c
     }
   }
   
+  public static String getModelName()
+  {
+    if (ahVW == null) {
+      ahVW = Build.MODEL;
+    }
+    return ahVW;
+  }
+  
   public static String getProcessName(Context paramContext)
   {
-    AppMethodBeat.i(208253);
+    AppMethodBeat.i(212112);
     if (paramContext == null)
     {
-      AppMethodBeat.o(208253);
+      AppMethodBeat.o(212112);
       return "";
     }
     try
@@ -180,40 +199,38 @@ public final class c
         if (localRunningAppProcessInfo.pid == i)
         {
           paramContext = localRunningAppProcessInfo.processName;
-          AppMethodBeat.o(208253);
           return paramContext;
         }
       }
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(208253);
+      AppMethodBeat.o(212112);
     }
     return "";
   }
   
   public static int getScreenHeight(Context paramContext)
   {
-    AppMethodBeat.i(208260);
+    AppMethodBeat.i(212134);
     try
     {
       paramContext = (WindowManager)paramContext.getSystemService("window");
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
       int i = localDisplayMetrics.heightPixels;
-      AppMethodBeat.o(208260);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(208260);
+      AppMethodBeat.o(212134);
     }
     return -1;
   }
   
   public static int getScreenOrientation(Context paramContext)
   {
-    AppMethodBeat.i(208263);
+    AppMethodBeat.i(212141);
     try
     {
       paramContext = (WindowManager)paramContext.getSystemService("window");
@@ -221,230 +238,235 @@ public final class c
       paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
       int i = localDisplayMetrics.heightPixels;
       int j = localDisplayMetrics.widthPixels;
-      if (i > j)
-      {
-        AppMethodBeat.o(208263);
+      if (i > j) {
         return 0;
       }
-      AppMethodBeat.o(208263);
       return 1;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(208263);
+      AppMethodBeat.o(212141);
     }
     return -1;
   }
   
   public static int getScreenWidth(Context paramContext)
   {
-    AppMethodBeat.i(208257);
+    AppMethodBeat.i(212126);
     try
     {
       paramContext = (WindowManager)paramContext.getSystemService("window");
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
       int i = localDisplayMetrics.widthPixels;
-      AppMethodBeat.o(208257);
       return i;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(208257);
+      AppMethodBeat.o(212126);
     }
     return -1;
   }
   
-  public static float i(Context paramContext, float paramFloat)
+  public static float j(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(208255);
+    AppMethodBeat.i(212121);
     paramFloat /= paramContext.getResources().getDisplayMetrics().density;
-    AppMethodBeat.o(208255);
+    AppMethodBeat.o(212121);
     return paramFloat;
   }
   
+  public static String jXA()
+  {
+    AppMethodBeat.i(212048);
+    try
+    {
+      String str = MD5Util.getMD5String("[TuringSMI]".concat(String.valueOf(zxT)));
+      return str;
+    }
+    finally
+    {
+      AppMethodBeat.o(212048);
+    }
+    return "";
+  }
+  
   /* Error */
-  public static String ioo()
+  public static String jXB()
   {
     // Byte code:
-    //   0: ldc 181
-    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 183	java/io/FileInputStream
+    //   0: ldc 250
+    //   2: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 252	java/io/FileInputStream
     //   8: dup
-    //   9: ldc 185
-    //   11: invokespecial 188	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   14: astore_0
-    //   15: new 190	java/io/BufferedReader
+    //   9: ldc 254
+    //   11: invokespecial 257	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   14: astore_1
+    //   15: new 259	java/io/BufferedReader
     //   18: dup
-    //   19: new 192	java/io/InputStreamReader
+    //   19: new 261	java/io/InputStreamReader
     //   22: dup
-    //   23: aload_0
-    //   24: invokespecial 195	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   23: aload_1
+    //   24: invokespecial 264	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   27: sipush 8192
-    //   30: invokespecial 198	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   30: invokespecial 267	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   33: astore_2
-    //   34: new 200	java/lang/StringBuilder
+    //   34: new 269	java/lang/StringBuilder
     //   37: dup
-    //   38: ldc 24
-    //   40: invokespecial 201	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   43: astore_1
+    //   38: ldc 79
+    //   40: invokespecial 270	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   43: astore_0
     //   44: aload_2
-    //   45: invokevirtual 204	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 273	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore_3
     //   49: aload_3
     //   50: ifnull +42 -> 92
-    //   53: aload_1
+    //   53: aload_0
     //   54: aload_3
-    //   55: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: pop
     //   59: goto -15 -> 44
     //   62: astore_3
     //   63: aload_2
-    //   64: invokevirtual 211	java/io/BufferedReader:close	()V
-    //   67: aload_0
-    //   68: invokevirtual 214	java/io/InputStream:close	()V
-    //   71: aload_1
-    //   72: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokevirtual 280	java/io/BufferedReader:close	()V
+    //   67: aload_1
+    //   68: invokevirtual 283	java/io/InputStream:close	()V
+    //   71: aload_0
+    //   72: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   75: astore_0
-    //   76: ldc 181
-    //   78: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: ldc 250
+    //   78: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: aload_0
     //   82: areturn
     //   83: astore_0
-    //   84: ldc 181
-    //   86: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   89: ldc 24
+    //   84: ldc 250
+    //   86: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: ldc 79
     //   91: areturn
     //   92: aload_2
-    //   93: invokevirtual 211	java/io/BufferedReader:close	()V
-    //   96: aload_0
-    //   97: invokevirtual 214	java/io/InputStream:close	()V
-    //   100: aload_1
-    //   101: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokevirtual 280	java/io/BufferedReader:close	()V
+    //   96: aload_1
+    //   97: invokevirtual 283	java/io/InputStream:close	()V
+    //   100: aload_0
+    //   101: invokevirtual 286	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   104: astore_0
     //   105: goto -29 -> 76
-    //   108: astore_1
-    //   109: aload_2
-    //   110: invokevirtual 211	java/io/BufferedReader:close	()V
-    //   113: aload_0
-    //   114: invokevirtual 214	java/io/InputStream:close	()V
-    //   117: ldc 181
-    //   119: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   122: aload_1
-    //   123: athrow
-    //   124: astore_2
-    //   125: goto -29 -> 96
-    //   128: astore_0
-    //   129: goto -29 -> 100
-    //   132: astore_2
-    //   133: goto -66 -> 67
-    //   136: astore_0
-    //   137: goto -66 -> 71
-    //   140: astore_2
-    //   141: goto -28 -> 113
-    //   144: astore_0
-    //   145: goto -28 -> 117
+    //   108: astore_2
+    //   109: goto -13 -> 96
+    //   112: astore_1
+    //   113: goto -13 -> 100
+    //   116: astore_2
+    //   117: goto -50 -> 67
+    //   120: astore_1
+    //   121: goto -50 -> 71
     // Local variable table:
     //   start	length	slot	name	signature
-    //   14	68	0	localObject1	Object
-    //   83	14	0	localThrowable1	Throwable
-    //   104	10	0	str1	String
-    //   128	1	0	localThrowable2	Throwable
-    //   136	1	0	localThrowable3	Throwable
-    //   144	1	0	localThrowable4	Throwable
-    //   43	58	1	localStringBuilder	java.lang.StringBuilder
-    //   108	15	1	localObject2	Object
-    //   33	77	2	localBufferedReader	java.io.BufferedReader
-    //   124	1	2	localThrowable5	Throwable
-    //   132	1	2	localThrowable6	Throwable
-    //   140	1	2	localThrowable7	Throwable
+    //   43	39	0	localObject1	Object
+    //   83	18	0	localObject2	Object
+    //   104	1	0	str1	String
+    //   14	83	1	localFileInputStream	java.io.FileInputStream
+    //   112	1	1	localObject3	Object
+    //   120	1	1	localObject4	Object
+    //   33	60	2	localBufferedReader	java.io.BufferedReader
+    //   108	1	2	localObject5	Object
+    //   116	1	2	localObject6	Object
     //   48	7	3	str2	String
-    //   62	1	3	localThrowable8	Throwable
+    //   62	1	3	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   44	49	62	java/lang/Throwable
-    //   53	59	62	java/lang/Throwable
-    //   5	15	83	java/lang/Throwable
-    //   44	49	108	finally
-    //   53	59	108	finally
-    //   92	96	124	java/lang/Throwable
-    //   96	100	128	java/lang/Throwable
-    //   63	67	132	java/lang/Throwable
-    //   67	71	136	java/lang/Throwable
-    //   109	113	140	java/lang/Throwable
-    //   113	117	144	java/lang/Throwable
+    //   44	49	62	finally
+    //   53	59	62	finally
+    //   5	15	83	finally
+    //   92	96	108	finally
+    //   96	100	112	finally
+    //   63	67	116	finally
+    //   67	71	120	finally
   }
   
-  public static String ity()
+  public static String kcQ()
+  {
+    return "1234567890ABCDEF";
+  }
+  
+  public static String kcR()
+  {
+    return "";
+  }
+  
+  public static String kcS()
+  {
+    return "";
+  }
+  
+  public static String kcT()
   {
     int i = 0;
-    AppMethodBeat.i(208266);
+    AppMethodBeat.i(212145);
     String str1 = null;
-    String str2 = d.U(d.ZRB);
-    String str3 = d.U(d.ZRC);
+    String str2 = d.W(d.ahVY);
+    String str3 = d.W(d.ahVZ);
     for (;;)
     {
       if (i < 2)
       {
-        str1 = bDY(new String[] { str2, str3 }[i]);
+        str1 = bGx(new String[] { str2, str3 }[i]);
         if (!TextUtils.isEmpty(str1)) {
           str1 = MD5Util.getMD5String("[TuringSMI]".concat(String.valueOf(str1)));
         }
       }
       else
       {
-        AppMethodBeat.o(208266);
+        AppMethodBeat.o(212145);
         return str1;
       }
       i += 1;
     }
   }
   
-  public static String lX(Context paramContext)
+  /* Error */
+  public static int oF(Context paramContext)
   {
-    AppMethodBeat.i(208224);
-    try
-    {
-      paramContext = MD5Util.getMD5String("[TuringSMI]".concat(String.valueOf(Settings.Secure.getString(paramContext.getContentResolver(), "android_id"))));
-      AppMethodBeat.o(208224);
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(208224);
-    }
-    return "";
+    // Byte code:
+    //   0: ldc_w 310
+    //   3: invokestatic 16	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ldc_w 312
+    //   10: invokevirtual 156	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   13: checkcast 314	android/app/KeyguardManager
+    //   16: invokevirtual 317	android/app/KeyguardManager:inKeyguardRestrictedInputMode	()Z
+    //   19: istore_2
+    //   20: iload_2
+    //   21: ifeq +13 -> 34
+    //   24: iconst_0
+    //   25: istore_1
+    //   26: ldc_w 310
+    //   29: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: iload_1
+    //   33: ireturn
+    //   34: iconst_1
+    //   35: istore_1
+    //   36: goto -10 -> 26
+    //   39: astore_0
+    //   40: ldc_w 319
+    //   43: aload_0
+    //   44: invokestatic 325	com/tencent/g/c/i:h	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   47: iconst_0
+    //   48: istore_1
+    //   49: goto -23 -> 26
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	52	0	paramContext	Context
+    //   25	24	1	i	int
+    //   19	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	20	39	finally
   }
   
-  public static int mp(Context paramContext)
-  {
-    AppMethodBeat.i(208248);
-    for (;;)
-    {
-      try
-      {
-        boolean bool = ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-        if (!bool) {
-          continue;
-        }
-        i = 0;
-      }
-      catch (Throwable paramContext)
-      {
-        i.b("DeviceUtil", paramContext);
-        int i = 0;
-        continue;
-      }
-      AppMethodBeat.o(208248);
-      return i;
-      i = 1;
-    }
-  }
-  
-  public static int mq(Context paramContext)
+  public static int oG(Context paramContext)
   {
     m = 1;
-    AppMethodBeat.i(208251);
+    AppMethodBeat.i(212108);
     for (;;)
     {
       try
@@ -461,7 +483,7 @@ public final class c
         }
         i = -1;
       }
-      catch (Throwable paramContext)
+      finally
       {
         Object localObject1;
         Field localField;
@@ -469,7 +491,7 @@ public final class c
         int k;
         Object localObject2;
         boolean bool;
-        i.b("DeviceUtil", paramContext);
+        i.h("DeviceUtil", paramContext);
         int i = -1;
         continue;
         i = j;
@@ -483,7 +505,7 @@ public final class c
         i = 0;
         continue;
       }
-      AppMethodBeat.o(208251);
+      AppMethodBeat.o(212108);
       return i;
       localObject1 = ((Class)localObject1).getMethod("getDisplays", new Class[0]);
       if (localObject1 == null)
@@ -514,7 +536,7 @@ public final class c
         paramContext = (PowerManager)paramContext.getSystemService("power");
         if (paramContext == null)
         {
-          AppMethodBeat.o(208251);
+          AppMethodBeat.o(212108);
           return -1;
         }
         bool = paramContext.isScreenOn();
@@ -528,7 +550,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.g.c.c
  * JD-Core Version:    0.7.0.1
  */

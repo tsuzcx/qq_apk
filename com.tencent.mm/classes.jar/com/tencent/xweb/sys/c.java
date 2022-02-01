@@ -2,9 +2,8 @@ package com.tencent.xweb.sys;
 
 import android.os.Build.VERSION;
 import android.webkit.SslErrorHandler;
-import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.r;
+import com.tencent.xweb.t;
 import org.xwalk.core.Log;
 
 public final class c
@@ -17,16 +16,16 @@ public final class c
       AppMethodBeat.o(153667);
       return null;
     }
-    if ((paramWebResourceResponse.aaaT) && (Build.VERSION.SDK_INT >= 21)) {
+    if ((paramWebResourceResponse.aifn) && (Build.VERSION.SDK_INT >= 21)) {
       try
       {
         android.webkit.WebResourceResponse localWebResourceResponse1 = new android.webkit.WebResourceResponse(paramWebResourceResponse.mMimeType, paramWebResourceResponse.mEncoding, paramWebResourceResponse.mStatusCode, paramWebResourceResponse.mReasonPhrase, paramWebResourceResponse.mResponseHeaders, paramWebResourceResponse.mInputStream);
         AppMethodBeat.o(153667);
         return localWebResourceResponse1;
       }
-      catch (Exception localException)
+      finally
       {
-        Log.e("SysWebDataTrans", "create webkit WebResourceResponse error :" + localException.getMessage());
+        Log.e("SysWebDataTrans", "create webkit WebResourceResponse error:".concat(String.valueOf(localObject)));
       }
     }
     android.webkit.WebResourceResponse localWebResourceResponse2 = new android.webkit.WebResourceResponse(paramWebResourceResponse.mMimeType, paramWebResourceResponse.mEncoding, paramWebResourceResponse.mInputStream);
@@ -41,28 +40,27 @@ public final class c
     return localWebResourceResponse2;
   }
   
-  @JgClassChecked(author=20001, fComment="checked", lastDate="20171024", reviewer=20001, vComment={com.jg.EType.JSEXECUTECHECK})
   public static final class a
-    implements r
+    implements t
   {
-    SslErrorHandler aafh;
+    SslErrorHandler aiky;
     
     public a(SslErrorHandler paramSslErrorHandler)
     {
-      this.aafh = paramSslErrorHandler;
+      this.aiky = paramSslErrorHandler;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(153658);
-      this.aafh.cancel();
+      this.aiky.cancel();
       AppMethodBeat.o(153658);
     }
     
     public final void proceed()
     {
       AppMethodBeat.i(153657);
-      this.aafh.proceed();
+      this.aiky.proceed();
       AppMethodBeat.o(153657);
     }
   }

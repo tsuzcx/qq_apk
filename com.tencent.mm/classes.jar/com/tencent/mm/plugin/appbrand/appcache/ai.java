@@ -1,69 +1,29 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.fo;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class ai
-  extends fo
+  extends MAutoStorage<ah>
 {
-  static final String[] nDP;
-  static final IAutoDBItem.MAutoDBInfo nFK;
+  public static final String[] nVW;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(44315);
-    nDP = new String[] { "appId", "type" };
-    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[4];
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[5];
-    Object localObject2 = new StringBuilder();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "appId";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "type";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("type", "INTEGER");
-    ((StringBuilder)localObject2).append(" type INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "hit";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("hit", "INTEGER");
-    ((StringBuilder)localObject2).append(" hit INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "hitTimeMS";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("hitTimeMS", "LONG");
-    ((StringBuilder)localObject2).append(" hitTimeMS LONG");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "rowid";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    nFK = (IAutoDBItem.MAutoDBInfo)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = nDP;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = nFK;
-    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(44315);
+    AppMethodBeat.i(44314);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(ah.DB_INFO, "PkgUpdateStats") };
+    AppMethodBeat.o(44314);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public ai(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return nFK;
+    super(paramISQLiteDatabase, ah.DB_INFO, "PkgUpdateStats", ah.INDEX_CREATE);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ai
  * JD-Core Version:    0.7.0.1
  */

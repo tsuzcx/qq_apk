@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<ScrollView android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout style="@style/lz">
-            <TextView android:text="@string/afd" style="@style/no" />
-            <View style="@style/nj" />
-            <TextView android:text="@string/afe" style="@style/no" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/enw" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="-5.0dip" android:minHeight="@dimen/k4">
-                <TextView android:id="@id/e7n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="@string/afb" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+    <LinearLayout android:orientation="vertical" android:id="@id/k_k" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/bb">
+            <LinearLayout android:gravity="center_vertical" android:id="@id/g1q" android:background="@drawable/aw8" android:paddingLeft="@dimen/i6" android:paddingRight="@dimen/i6" android:layout_width="fill_parent" android:layout_height="@dimen/bb">
+                <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_0_Alpha_0_9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ao7" android:layout_weight="1.0" android:layout_centerVertical="true" />
+                <include android:id="@id/k_g" layout="@layout/bdp" />
             </LinearLayout>
-            <Button android:layout_gravity="center_horizontal" android:id="@id/a4h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="5.0dip" android:text="@string/afh" style="@style/ou" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/k_i" android:paddingTop="@dimen/i9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:text="@string/ao6" />
+        <com.tencent.mm.msgsubscription.ui.MaxRecyclerView android:id="@id/k_d" android:background="@drawable/aw8" android:paddingTop="1.0px" android:paddingBottom="1.0px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:nestedScrollingEnabled="false" />
+    </LinearLayout>
+</ScrollView>

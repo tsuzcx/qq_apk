@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private static final int[] aXP;
+  private static final int[] cRL;
   
   static
   {
     AppMethodBeat.i(92128);
-    aXP = new int[] { x.bU("isom"), x.bU("iso2"), x.bU("iso3"), x.bU("iso4"), x.bU("iso5"), x.bU("iso6"), x.bU("avc1"), x.bU("hvc1"), x.bU("hev1"), x.bU("mp41"), x.bU("mp42"), x.bU("3g2a"), x.bU("3g2b"), x.bU("3gr6"), x.bU("3gs6"), x.bU("3ge6"), x.bU("3gg6"), x.bU("M4V "), x.bU("M4A "), x.bU("f4v "), x.bU("kddi"), x.bU("M4VP"), x.bU("qt  "), x.bU("MSNV") };
+    cRL = new int[] { x.du("isom"), x.du("iso2"), x.du("iso3"), x.du("iso4"), x.du("iso5"), x.du("iso6"), x.du("avc1"), x.du("hvc1"), x.du("hev1"), x.du("mp41"), x.du("mp42"), x.du("3g2a"), x.du("3g2b"), x.du("3gr6"), x.du("3gs6"), x.du("3ge6"), x.du("3gg6"), x.du("M4V "), x.du("M4A "), x.du("f4v "), x.du("kddi"), x.du("M4VP"), x.du("qt  "), x.du("MSNV") };
     AppMethodBeat.o(92128);
   }
   
   private static boolean b(f paramf, boolean paramBoolean)
   {
     AppMethodBeat.i(92126);
-    long l2 = paramf.sr();
+    long l2 = paramf.RU();
     long l1;
     if (l2 != -1L)
     {
@@ -43,16 +43,16 @@ final class i
       if (i < n)
       {
         m = 8;
-        localm.fs(8);
+        localm.iF(8);
         paramf.b(localm.data, 0, 8);
-        l2 = localm.ii();
+        l2 = localm.FT();
         i1 = localm.readInt();
         if (l2 == 1L)
         {
           k = 16;
           paramf.b(localm.data, 8, 8);
-          localm.ft(16);
-          l1 = localm.vq();
+          localm.iG(16);
+          l1 = localm.UP();
         }
         while (l1 < k)
         {
@@ -62,7 +62,7 @@ final class i
           k = m;
           if (l2 == 0L)
           {
-            long l3 = paramf.sr();
+            long l3 = paramf.RU();
             l1 = l2;
             k = m;
             if (l3 != -1L)
@@ -74,10 +74,10 @@ final class i
         }
         m = i + k;
         i = m;
-        if (i1 == a.aUM) {
+        if (i1 == a.cOI) {
           continue;
         }
-        if ((i1 != a.aUV) && (i1 != a.aUX)) {
+        if ((i1 != a.cOR) && (i1 != a.cOT)) {
           break label283;
         }
         bool1 = true;
@@ -94,14 +94,14 @@ final class i
       } while (m + l1 - k >= n);
       int k = (int)(l1 - k);
       i = m + k;
-      if (i1 == a.aUl)
+      if (i1 == a.cOh)
       {
         if (k < 8)
         {
           AppMethodBeat.o(92126);
           return false;
         }
-        localm.fs(k);
+        localm.iF(k);
         paramf.b(localm.data, 0, k);
         i1 = k / 4;
         m = 0;
@@ -109,9 +109,9 @@ final class i
         if (m < i1)
         {
           if (m == 1) {
-            localm.fu(4);
+            localm.iH(4);
           }
-          while (!ev(localm.readInt()))
+          while (!hL(localm.readInt()))
           {
             m += 1;
             break;
@@ -127,34 +127,10 @@ final class i
       }
       else if (k != 0)
       {
-        paramf.ee(k);
+        paramf.hu(k);
       }
     }
     AppMethodBeat.o(92126);
-    return false;
-  }
-  
-  private static boolean ev(int paramInt)
-  {
-    AppMethodBeat.i(92127);
-    if (paramInt >>> 8 == x.bU("3gp"))
-    {
-      AppMethodBeat.o(92127);
-      return true;
-    }
-    int[] arrayOfInt = aXP;
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (arrayOfInt[i] == paramInt)
-      {
-        AppMethodBeat.o(92127);
-        return true;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(92127);
     return false;
   }
   
@@ -173,10 +149,34 @@ final class i
     AppMethodBeat.o(92125);
     return bool;
   }
+  
+  private static boolean hL(int paramInt)
+  {
+    AppMethodBeat.i(92127);
+    if (paramInt >>> 8 == x.du("3gp"))
+    {
+      AppMethodBeat.o(92127);
+      return true;
+    }
+    int[] arrayOfInt = cRL;
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfInt[i] == paramInt)
+      {
+        AppMethodBeat.o(92127);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(92127);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.i
  * JD-Core Version:    0.7.0.1
  */

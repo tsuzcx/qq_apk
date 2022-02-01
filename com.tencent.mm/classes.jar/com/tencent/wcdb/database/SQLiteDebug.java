@@ -1,6 +1,5 @@
 package com.tencent.wcdb.database;
 
-import android.annotation.SuppressLint;
 import android.util.Printer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.support.Log;
@@ -10,7 +9,7 @@ public final class SQLiteDebug
 {
   private static final String TAG = "WCDB.SQLiteDebug";
   private static volatile int sLastErrorLine;
-  private static volatile ArrayList<IOTraceStats> sLastIOTraceStats;
+  private static volatile ArrayList<SQLiteDebug.IOTraceStats> sLastIOTraceStats;
   
   static
   {
@@ -98,12 +97,12 @@ public final class SQLiteDebug
     return sLastErrorLine;
   }
   
-  public static ArrayList<IOTraceStats> getLastIOTraceStats()
+  public static ArrayList<SQLiteDebug.IOTraceStats> getLastIOTraceStats()
   {
     return sLastIOTraceStats;
   }
   
-  private static native void nativeGetIOTraceStats(long paramLong, ArrayList<IOTraceStats> paramArrayList);
+  private static native void nativeGetIOTraceStats(long paramLong, ArrayList<SQLiteDebug.IOTraceStats> paramArrayList);
   
   private static native int nativeGetLastErrorLine();
   
@@ -123,32 +122,6 @@ public final class SQLiteDebug
     return paramLong > 300L;
   }
   
-  public static class IOTraceStats
-  {
-    public String dbName;
-    public String journalMode;
-    public long lastJournalReadOffset;
-    public byte[] lastJournalReadPage;
-    public long lastJournalWriteOffset;
-    public byte[] lastJournalWritePage;
-    public long lastReadOffset;
-    public byte[] lastReadPage;
-    public long lastWriteOffset;
-    public byte[] lastWritePage;
-    public long pageCount;
-    public long pageSize;
-    public String path;
-    
-    @SuppressLint({"DefaultLocale"})
-    public String toString()
-    {
-      AppMethodBeat.i(3231);
-      String str = String.format("[%s | %s] pageSize: %d, pageCount: %d, journal: %s, lastRead: %d, lastWrite: %d, lastJournalRead: %d, lastJournalWrite: %d", new Object[] { this.dbName, this.path, Long.valueOf(this.pageSize), Long.valueOf(this.pageCount), this.journalMode, Long.valueOf(this.lastReadOffset), Long.valueOf(this.lastWriteOffset), Long.valueOf(this.lastJournalReadOffset), Long.valueOf(this.lastJournalWriteOffset) });
-      AppMethodBeat.o(3231);
-      return str;
-    }
-  }
-  
   public static class PagerStats
   {
     public ArrayList<SQLiteDebug.DbStats> dbStats;
@@ -159,7 +132,7 @@ public final class SQLiteDebug
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteDebug
  * JD-Core Version:    0.7.0.1
  */

@@ -12,216 +12,216 @@ import com.tencent.mm.plugin.appbrand.jsapi.video.d.h;
 public final class g
   implements d
 {
-  private e pEo;
+  private e sJz;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(227770);
-    this.pEo = new e(paramContext);
-    AppMethodBeat.o(227770);
+    AppMethodBeat.i(328901);
+    this.sJz = new e(paramContext);
+    AppMethodBeat.o(328901);
   }
   
-  public final boolean a(double paramDouble, boolean paramBoolean)
+  public final boolean G(double paramDouble)
   {
-    AppMethodBeat.i(227781);
-    paramBoolean = this.pEo.a(paramDouble, paramBoolean);
-    AppMethodBeat.o(227781);
-    return paramBoolean;
-  }
-  
-  public final boolean aO(float paramFloat)
-  {
-    AppMethodBeat.i(227822);
-    boolean bool = this.pEo.aO(paramFloat);
-    AppMethodBeat.o(227822);
+    AppMethodBeat.i(328921);
+    boolean bool = this.sJz.G(paramDouble);
+    AppMethodBeat.o(328921);
     return bool;
   }
   
-  public final void bUF()
+  public final void b(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(227774);
-    this.pEo.bUF();
-    AppMethodBeat.o(227774);
+    AppMethodBeat.i(328977);
+    this.sJz.b(paramBoolean, paramString, paramInt);
+    AppMethodBeat.o(328977);
   }
   
-  public final void c(boolean paramBoolean, String paramString, int paramInt)
+  public final boolean b(double paramDouble, boolean paramBoolean)
   {
-    AppMethodBeat.i(227800);
-    this.pEo.c(paramBoolean, paramString, paramInt);
-    AppMethodBeat.o(227800);
+    AppMethodBeat.i(328925);
+    paramBoolean = this.sJz.b(paramDouble, paramBoolean);
+    AppMethodBeat.o(328925);
+    return paramBoolean;
+  }
+  
+  public final boolean bM(float paramFloat)
+  {
+    AppMethodBeat.i(329056);
+    boolean bool = this.sJz.bM(paramFloat);
+    AppMethodBeat.o(329056);
+    return bool;
+  }
+  
+  public final void cuV()
+  {
+    AppMethodBeat.i(328912);
+    this.sJz.cuV();
+    AppMethodBeat.o(328912);
   }
   
   public final int getCacheTimeSec()
   {
-    AppMethodBeat.i(227794);
-    int i = this.pEo.getCacheTimeSec();
-    AppMethodBeat.o(227794);
+    AppMethodBeat.i(328956);
+    int i = this.sJz.getCacheTimeSec();
+    AppMethodBeat.o(328956);
     return i;
   }
   
   public final int getCurrPosMs()
   {
-    AppMethodBeat.i(227791);
-    int i = this.pEo.getCurrPosMs();
-    AppMethodBeat.o(227791);
+    AppMethodBeat.i(328947);
+    int i = this.sJz.getCurrPosMs();
+    AppMethodBeat.o(328947);
     return i;
   }
   
   public final int getCurrPosSec()
   {
-    AppMethodBeat.i(227793);
-    int i = this.pEo.getCurrPosSec();
-    AppMethodBeat.o(227793);
+    AppMethodBeat.i(328952);
+    int i = this.sJz.getCurrPosSec();
+    AppMethodBeat.o(328952);
     return i;
   }
   
   public final int getPlayerType()
   {
-    AppMethodBeat.i(227777);
-    int i = this.pEo.getPlayerType();
-    AppMethodBeat.o(227777);
+    AppMethodBeat.i(328918);
+    int i = this.sJz.getPlayerType();
+    AppMethodBeat.o(328918);
     return i;
   }
   
   public final int getVideoDurationSec()
   {
-    AppMethodBeat.i(227788);
-    int i = this.pEo.getVideoDurationSec();
-    AppMethodBeat.o(227788);
+    AppMethodBeat.i(328941);
+    int i = this.sJz.getVideoDurationSec();
+    AppMethodBeat.o(328941);
     return i;
   }
   
   public final View getView()
   {
-    return this.pEo;
+    return this.sJz;
   }
   
   public final boolean isLive()
   {
-    AppMethodBeat.i(227798);
-    boolean bool = this.pEo.isLive();
-    AppMethodBeat.o(227798);
+    AppMethodBeat.i(328966);
+    boolean bool = this.sJz.isLive();
+    AppMethodBeat.o(328966);
     return bool;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(227797);
-    boolean bool = this.pEo.isPlaying();
-    AppMethodBeat.o(227797);
+    AppMethodBeat.i(328960);
+    boolean bool = this.sJz.isPlaying();
+    AppMethodBeat.o(328960);
     return bool;
   }
   
   public final void onUIDestroy()
   {
-    AppMethodBeat.i(227817);
-    this.pEo.onUIDestroy();
-    AppMethodBeat.o(227817);
+    AppMethodBeat.i(329032);
+    this.sJz.onUIDestroy();
+    AppMethodBeat.o(329032);
   }
   
   public final void onUIPause()
   {
-    AppMethodBeat.i(227815);
-    this.pEo.onUIPause();
-    AppMethodBeat.o(227815);
+    AppMethodBeat.i(329027);
+    this.sJz.onUIPause();
+    AppMethodBeat.o(329027);
   }
   
   public final void onUIResume()
   {
-    AppMethodBeat.i(227813);
-    this.pEo.onUIResume();
-    AppMethodBeat.o(227813);
-  }
-  
-  public final boolean p(double paramDouble)
-  {
-    AppMethodBeat.i(227779);
-    boolean bool = this.pEo.p(paramDouble);
-    AppMethodBeat.o(227779);
-    return bool;
+    AppMethodBeat.i(329019);
+    this.sJz.onUIResume();
+    AppMethodBeat.o(329019);
   }
   
   public final boolean pause()
   {
-    AppMethodBeat.i(227810);
-    boolean bool = this.pEo.pause();
-    AppMethodBeat.o(227810);
+    AppMethodBeat.i(329004);
+    boolean bool = this.sJz.pause();
+    AppMethodBeat.o(329004);
     return bool;
   }
   
   public final void setCover(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(227799);
-    this.pEo.setCover(paramBitmap);
-    AppMethodBeat.o(227799);
+    AppMethodBeat.i(328971);
+    this.sJz.setCover(paramBitmap);
+    AppMethodBeat.o(328971);
   }
   
   public final void setFullDirection(int paramInt)
   {
-    AppMethodBeat.i(227785);
-    this.pEo.setFullDirection(paramInt);
-    AppMethodBeat.o(227785);
+    AppMethodBeat.i(328933);
+    this.sJz.setFullDirection(paramInt);
+    AppMethodBeat.o(328933);
   }
   
   public final void setIMMVideoViewCallback(d.c paramc)
   {
-    AppMethodBeat.i(227821);
-    this.pEo.setIMMVideoViewCallback(paramc);
-    AppMethodBeat.o(227821);
+    AppMethodBeat.i(329048);
+    this.sJz.setIMMVideoViewCallback(paramc);
+    AppMethodBeat.o(329048);
   }
   
   public final void setIsShowBasicControls(boolean paramBoolean)
   {
-    AppMethodBeat.i(227782);
-    this.pEo.setIsShowBasicControls(paramBoolean);
-    AppMethodBeat.o(227782);
+    AppMethodBeat.i(328927);
+    this.sJz.setIsShowBasicControls(paramBoolean);
+    AppMethodBeat.o(328927);
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(227811);
-    this.pEo.setMute(paramBoolean);
-    AppMethodBeat.o(227811);
+    AppMethodBeat.i(329012);
+    this.sJz.setMute(paramBoolean);
+    AppMethodBeat.o(329012);
   }
   
   public final void setScaleType(d.h paramh)
   {
-    AppMethodBeat.i(227818);
-    this.pEo.setScaleType(paramh);
-    AppMethodBeat.o(227818);
+    AppMethodBeat.i(329040);
+    this.sJz.setScaleType(paramh);
+    AppMethodBeat.o(329040);
   }
   
   public final void setVideoFooterView(d.b paramb)
   {
-    AppMethodBeat.i(227805);
-    this.pEo.setVideoFooterView(paramb);
-    AppMethodBeat.o(227805);
+    AppMethodBeat.i(328987);
+    this.sJz.setVideoFooterView(paramb);
+    AppMethodBeat.o(328987);
   }
   
   public final void setVideoSource(int paramInt)
   {
-    AppMethodBeat.i(227802);
-    this.pEo.setVideoSource(paramInt);
-    AppMethodBeat.o(227802);
+    AppMethodBeat.i(328982);
+    this.sJz.setVideoSource(paramInt);
+    AppMethodBeat.o(328982);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(227807);
-    this.pEo.start();
-    AppMethodBeat.o(227807);
+    AppMethodBeat.i(328993);
+    this.sJz.start();
+    AppMethodBeat.o(328993);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(227809);
-    this.pEo.stop();
-    AppMethodBeat.o(227809);
+    AppMethodBeat.i(328997);
+    this.sJz.stop();
+    AppMethodBeat.o(328997);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a.g
  * JD-Core Version:    0.7.0.1
  */

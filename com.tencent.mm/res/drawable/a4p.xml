@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval">
-            <gradient android:startColor="#ff000000" android:endColor="#00000000" android:angle="0.0" android:type="radial" android:gradientRadius="70.0" android:centerColor="#38000000" />
-            <size android:height="56.0dip" android:width="56.0dip" />
-        </shape>
-    </item>
-    <item android:left="8.0dip" android:top="8.0dip" android:right="8.0dip" android:bottom="8.0dip">
-        <shape android:shape="oval">
-            <solid android:color="@color/am" />
-        </shape>
-    </item>
-</layer-list>
+    <corners android:radius="2.0dip" />
+    <solid android:color="@color/Brand_Alpha_0_1" />
+</shape>

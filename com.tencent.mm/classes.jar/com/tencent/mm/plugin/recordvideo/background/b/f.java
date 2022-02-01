@@ -2,138 +2,29 @@ package com.tencent.mm.plugin.recordvideo.background.b;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Arrays;
 
 public final class f
   extends a
 {
-  public final float[] HHV;
-  private final float[] HHr;
-  private final float[] HHs;
-  private FloatBuffer HHt;
-  private FloatBuffer HHu;
-  private int HHv;
-  private int HHx;
+  final float[] NEL;
+  final float[] NEM;
+  FloatBuffer NEN;
+  FloatBuffer NEO;
+  int NEP;
+  public final float[] NFn;
+  int mPl;
   
   public f()
   {
     AppMethodBeat.i(75012);
-    this.HHr = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
-    this.HHs = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    this.HHV = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    this.NEL = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
+    this.NEM = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    this.NFn = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
     AppMethodBeat.o(75012);
   }
   
-  public static void fvm()
-  {
-    AppMethodBeat.i(75016);
-    GLES20.glDrawArrays(5, 0, 4);
-    AppMethodBeat.o(75016);
-  }
-  
-  public final void a(a.a parama, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(75017);
-    long l = System.currentTimeMillis();
-    float f9 = paramInt1 / paramInt3;
-    float f10 = paramInt2 / paramInt4;
-    float f8 = -1.0F;
-    float f7 = 1.0F;
-    float f6 = 1.0F;
-    float f5 = -1.0F;
-    float f4 = 0.0F;
-    float f3 = 1.0F;
-    float[] arrayOfFloat1 = Arrays.copyOf(this.HHs, this.HHs.length);
-    float[] arrayOfFloat2 = Arrays.copyOf(this.HHr, this.HHr.length);
-    float f1;
-    switch (1.HHW[parama.ordinal()])
-    {
-    default: 
-      f1 = 1.0F;
-      f2 = 0.0F;
-      arrayOfFloat1[0] = f4;
-      arrayOfFloat1[1] = f1;
-      arrayOfFloat1[2] = f3;
-      arrayOfFloat1[3] = f1;
-      arrayOfFloat1[4] = f4;
-      arrayOfFloat1[5] = f2;
-      arrayOfFloat1[6] = f3;
-      arrayOfFloat1[7] = f2;
-      arrayOfFloat2[0] = f8;
-      arrayOfFloat2[1] = f5;
-      arrayOfFloat2[3] = f7;
-      arrayOfFloat2[4] = f5;
-      arrayOfFloat2[6] = f8;
-      arrayOfFloat2[7] = f6;
-      arrayOfFloat2[9] = f7;
-      arrayOfFloat2[10] = f6;
-      this.HHt = ByteBuffer.allocateDirect(arrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.HHt.put(arrayOfFloat2).position(0);
-      GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.HHt);
-      GLES20.glEnableVertexAttribArray(0);
-      this.HHu = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.HHu.put(arrayOfFloat1).position(0);
-      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.HHu);
-      GLES20.glEnableVertexAttribArray(1);
-      new StringBuilder("scale cost:").append(System.currentTimeMillis() - l);
-      AppMethodBeat.o(75017);
-      return;
-    case 1: 
-      f3 = 0.0F;
-      f1 = 0.0F;
-      if (f9 < f10) {
-        f2 = paramInt3 - (int)(paramInt1 / f10);
-      }
-      for (;;)
-      {
-        f4 = f2 / 2.0F / paramInt3;
-        f2 = f1 / 2.0F / paramInt4;
-        f1 = 1.0F - f2;
-        f3 = 1.0F - f4;
-        break;
-        f2 = f3;
-        if (f9 > f10)
-        {
-          f1 = paramInt4 - (int)(paramInt2 / f9);
-          f2 = f3;
-        }
-      }
-    }
-    float f2 = paramInt1;
-    f5 = paramInt2;
-    if (f9 < f10) {
-      f1 = paramInt4 * f9;
-    }
-    for (;;)
-    {
-      f7 = f2 / paramInt1;
-      f8 = 0.0F - f7;
-      f6 = f1 / paramInt2;
-      f5 = 0.0F - f6;
-      f1 = 1.0F;
-      f2 = 0.0F;
-      break;
-      f1 = f5;
-      if (f9 > f10)
-      {
-        f2 = paramInt3 * f10;
-        f1 = f5;
-      }
-    }
-  }
-  
-  public final void ach(int paramInt)
-  {
-    AppMethodBeat.i(75014);
-    GLES20.glBindTexture(3553, paramInt);
-    GLES20.glUniform1f(this.HHv, 0.0F);
-    AppMethodBeat.o(75014);
-  }
-  
-  public final void fvl()
+  public final void gHc()
   {
     AppMethodBeat.i(75013);
     int[] arrayOfInt = new int[1];
@@ -158,22 +49,15 @@ public final class f
       AppMethodBeat.o(75013);
       return;
     }
-    this.HHx = GLES20.glGetUniformLocation(k, "uMVPMatrix");
-    this.HHv = GLES20.glGetUniformLocation(k, "u_Texture");
-    this.HHm = k;
+    this.mPl = GLES20.glGetUniformLocation(k, "uMVPMatrix");
+    this.NEP = GLES20.glGetUniformLocation(k, "u_Texture");
+    this.NEG = k;
     AppMethodBeat.o(75013);
-  }
-  
-  public final void n(float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(75015);
-    GLES20.glUniformMatrix4fv(this.HHx, 1, false, paramArrayOfFloat, 0);
-    AppMethodBeat.o(75015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,14 @@ import android.util.AttributeSet;
 import android.widget.RadioButton;
 import androidx.appcompat.a.a;
 import androidx.appcompat.a.a.a;
-import androidx.core.widget.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppCompatRadioButton
   extends RadioButton
-  implements j
+  implements androidx.core.widget.k
 {
   private final k mTextHelper;
-  private final e qt;
+  private final e rp;
   
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,82 +25,82 @@ public class AppCompatRadioButton
   public AppCompatRadioButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(z.L(paramContext), paramAttributeSet, paramInt);
-    AppMethodBeat.i(240938);
-    this.qt = new e(this);
-    this.qt.a(paramAttributeSet, paramInt);
+    AppMethodBeat.i(199351);
+    this.rp = new e(this);
+    this.rp.a(paramAttributeSet, paramInt);
     this.mTextHelper = new k(this);
     this.mTextHelper.a(paramAttributeSet, paramInt);
-    AppMethodBeat.o(240938);
+    AppMethodBeat.o(199351);
   }
   
   public int getCompoundPaddingLeft()
   {
-    AppMethodBeat.i(240943);
+    AppMethodBeat.i(199374);
     int i = super.getCompoundPaddingLeft();
-    if (this.qt != null)
+    if (this.rp != null)
     {
-      i = this.qt.as(i);
-      AppMethodBeat.o(240943);
+      i = this.rp.aq(i);
+      AppMethodBeat.o(199374);
       return i;
     }
-    AppMethodBeat.o(240943);
+    AppMethodBeat.o(199374);
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.qt != null) {
-      return this.qt.qv;
+    if (this.rp != null) {
+      return this.rp.rs;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.qt != null) {
-      return this.qt.qw;
+    if (this.rp != null) {
+      return this.rp.rt;
     }
     return null;
   }
   
   public void setButtonDrawable(int paramInt)
   {
-    AppMethodBeat.i(240942);
+    AppMethodBeat.i(199368);
     setButtonDrawable(a.m(getContext(), paramInt));
-    AppMethodBeat.o(240942);
+    AppMethodBeat.o(199368);
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(240941);
+    AppMethodBeat.i(199360);
     super.setButtonDrawable(paramDrawable);
-    if (this.qt != null) {
-      this.qt.jdMethod_do();
+    if (this.rp != null) {
+      this.rp.en();
     }
-    AppMethodBeat.o(240941);
+    AppMethodBeat.o(199360);
   }
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(240944);
-    if (this.qt != null) {
-      this.qt.setSupportButtonTintList(paramColorStateList);
+    AppMethodBeat.i(199384);
+    if (this.rp != null) {
+      this.rp.setSupportButtonTintList(paramColorStateList);
     }
-    AppMethodBeat.o(240944);
+    AppMethodBeat.o(199384);
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(240945);
-    if (this.qt != null) {
-      this.qt.setSupportButtonTintMode(paramMode);
+    AppMethodBeat.i(199400);
+    if (this.rp != null) {
+      this.rp.setSupportButtonTintMode(paramMode);
     }
-    AppMethodBeat.o(240945);
+    AppMethodBeat.o(199400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.AppCompatRadioButton
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Parcel;
 
 public abstract interface f
 {
-  public abstract void e(Parcel paramParcel);
+  public abstract void g(Parcel paramParcel);
   
   public abstract void readFromParcel(Parcel paramParcel);
 }

@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.hld.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/ImeDeviceType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "General", "Android", "IOS", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/ImeDeviceType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "General", "Android", "IOS", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum e
 {
   public final int value;
   
   static
   {
-    AppMethodBeat.i(211161);
-    e locale1 = new e("General", 0, 0);
-    DBE = locale1;
-    e locale2 = new e("Android", 1, 1);
-    DBF = locale2;
-    e locale3 = new e("IOS", 2, 2);
-    DBG = locale3;
-    DBH = new e[] { locale1, locale2, locale3 };
-    AppMethodBeat.o(211161);
+    AppMethodBeat.i(311901);
+    JuD = new e("General", 0, 0);
+    JuE = new e("Android", 1, 1);
+    JuF = new e("IOS", 2, 2);
+    JuG = new e[] { JuD, JuE, JuF };
+    AppMethodBeat.o(311901);
   }
   
   private e(int paramInt)

@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.style.CharacterStyle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,119 +17,111 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "()V", "commentList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "getCommentList", "()Ljava/util/ArrayList;", "onItemCLickListener", "Lkotlin/Function1;", "", "", "getOnItemCLickListener", "()Lkotlin/jvm/functions/Function1;", "setOnItemCLickListener", "(Lkotlin/jvm/functions/Function1;)V", "sysSpan", "com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1;", "appendComment", "comment", "getItemCount", "", "onBindSysMsg", "context", "Landroid/content/Context;", "holder", "commentData", "onBindTextMsg", "onBindViewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "removeComment", "updateComments", "", "LiveCommentItemHolder", "LiveHeightSpan", "plugin-logic_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "()V", "commentList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/view/adapter/CommentData;", "Lkotlin/collections/ArrayList;", "getCommentList", "()Ljava/util/ArrayList;", "onItemCLickListener", "Lkotlin/Function1;", "", "", "getOnItemCLickListener", "()Lkotlin/jvm/functions/Function1;", "setOnItemCLickListener", "(Lkotlin/jvm/functions/Function1;)V", "sysSpan", "com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1;", "appendComment", "comment", "getItemCount", "", "onBindSysMsg", "context", "Landroid/content/Context;", "holder", "commentData", "onBindTextMsg", "onBindViewHolder", "position", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "type", "removeComment", "updateComments", "", "LiveCommentItemHolder", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends RecyclerView.a<a>
 {
-  public final ArrayList<a> kMd;
-  private final c kMe;
-  kotlin.g.a.b<? super String, x> kMf;
+  public final ArrayList<a> nnY;
+  private final b nnZ;
+  private kotlin.g.a.b<? super String, ah> noa;
   
   public c()
   {
-    AppMethodBeat.i(192966);
-    this.kMd = new ArrayList();
-    this.kMe = new c();
-    AppMethodBeat.o(192966);
+    AppMethodBeat.i(246205);
+    this.nnY = new ArrayList();
+    this.nnZ = new b();
+    AppMethodBeat.o(246205);
+  }
+  
+  private static final void a(c paramc, int paramInt, View paramView)
+  {
+    AppMethodBeat.i(246218);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramc);
+    localb.sc(paramInt);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/view/adapter/LiveCommentAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramc, "this$0");
+    paramView = paramc.noa;
+    if (paramView != null) {
+      paramView.invoke(((a)paramc.nnY.get(paramInt)).nnR);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/live/view/adapter/LiveCommentAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(246218);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(192933);
-    p.k(parama, "comment");
-    int i = this.kMd.size();
-    this.kMd.add(parama);
-    cM(i);
-    AppMethodBeat.o(192933);
+    AppMethodBeat.i(246240);
+    s.u(parama, "comment");
+    int i = this.nnY.size();
+    this.nnY.add(parama);
+    fW(i);
+    AppMethodBeat.o(246240);
   }
   
-  public final void ah(List<a> paramList)
+  public final void bI(List<a> paramList)
   {
-    AppMethodBeat.i(192928);
-    p.k(paramList, "commentList");
-    this.kMd.clear();
-    this.kMd.addAll((Collection)paramList);
-    AppMethodBeat.o(192928);
+    AppMethodBeat.i(246233);
+    s.u(paramList, "commentList");
+    this.nnY.clear();
+    this.nnY.addAll((Collection)paramList);
+    AppMethodBeat.o(246233);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(192944);
-    int i = this.kMd.size();
-    AppMethodBeat.o(192944);
+    AppMethodBeat.i(246247);
+    int i = this.nnY.size();
+    AppMethodBeat.o(246247);
     return i;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarGroup", "Landroid/view/ViewGroup;", "getAvatarGroup", "()Landroid/view/ViewGroup;", "avatarIcon", "Landroid/widget/ImageView;", "getAvatarIcon", "()Landroid/widget/ImageView;", "contentTv", "Landroid/widget/TextView;", "getContentTv", "()Landroid/widget/TextView;", "plugin-logic_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter$LiveCommentItemHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "avatarGroup", "Landroid/view/ViewGroup;", "getAvatarGroup", "()Landroid/view/ViewGroup;", "avatarIcon", "Landroid/widget/ImageView;", "getAvatarIcon", "()Landroid/widget/ImageView;", "contentTv", "Landroid/widget/TextView;", "getContentTv", "()Landroid/widget/TextView;", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     extends RecyclerView.v
   {
-    final ImageView kLZ;
-    final ViewGroup kMg;
-    final TextView kMh;
+    final ImageView nnV;
+    final ViewGroup nob;
+    final TextView noc;
     
     public a(View paramView)
     {
       super();
-      AppMethodBeat.i(195404);
+      AppMethodBeat.i(246190);
       View localView = paramView.findViewById(b.e.live_comment_item_avatar_group);
-      p.j(localView, "itemView.findViewById(R.…omment_item_avatar_group)");
-      this.kMg = ((ViewGroup)localView);
+      s.s(localView, "itemView.findViewById(R.…omment_item_avatar_group)");
+      this.nob = ((ViewGroup)localView);
       localView = paramView.findViewById(b.e.live_comment_item_avatar_icon);
-      p.j(localView, "itemView.findViewById(R.…comment_item_avatar_icon)");
-      this.kLZ = ((ImageView)localView);
+      s.s(localView, "itemView.findViewById(R.…comment_item_avatar_icon)");
+      this.nnV = ((ImageView)localView);
       paramView = paramView.findViewById(b.e.live_comment_item_content_tv);
-      p.j(paramView, "itemView.findViewById(R.…_comment_item_content_tv)");
-      this.kMh = ((TextView)paramView);
-      AppMethodBeat.o(195404);
+      s.s(paramView, "itemView.findViewById(R.…_comment_item_content_tv)");
+      this.noc = ((TextView)paramView);
+      AppMethodBeat.o(246190);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(c paramc, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(197604);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/view/adapter/LiveCommentAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = this.kMi.kMf;
-      if (paramView != null) {
-        paramView.invoke(((a)this.kMi.kMd.get(this.jEN)).kLV);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/view/adapter/LiveCommentAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(197604);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Landroid/text/style/CharacterStyle;", "updateDrawState", "", "tp", "Landroid/text/TextPaint;", "plugin-logic_release"})
-  public static final class c
+  @Metadata(d1={""}, d2={"com/tencent/mm/live/view/adapter/LiveCommentAdapter$sysSpan$1", "Landroid/text/style/CharacterStyle;", "updateDrawState", "", "tp", "Landroid/text/TextPaint;", "plugin-logic_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b
     extends CharacterStyle
   {
     public final void updateDrawState(TextPaint paramTextPaint)
     {
-      AppMethodBeat.i(190151);
-      Context localContext = MMApplicationContext.getContext();
-      p.j(localContext, "MMApplicationContext.getContext()");
-      int i = localContext.getResources().getColor(b.b.half_alpha_white);
+      AppMethodBeat.i(246193);
+      int i = MMApplicationContext.getContext().getResources().getColor(b.b.half_alpha_white);
       if (paramTextPaint != null) {
         paramTextPaint.setColor(i);
       }
-      if (paramTextPaint != null)
-      {
+      if (paramTextPaint != null) {
         paramTextPaint.setUnderlineText(false);
-        AppMethodBeat.o(190151);
-        return;
       }
-      AppMethodBeat.o(190151);
+      AppMethodBeat.o(246193);
     }
   }
 }

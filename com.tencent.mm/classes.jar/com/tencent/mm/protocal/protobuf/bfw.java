@@ -1,77 +1,88 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bfw
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<FinderCommentInfo> commentList;
-  
-  public bfw()
-  {
-    AppMethodBeat.i(169025);
-    this.commentList = new LinkedList();
-    AppMethodBeat.o(169025);
-  }
+  public boolean ZPG;
+  public String image;
+  public long seq;
+  public String text;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169026);
+    AppMethodBeat.i(258255);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.commentList);
-      AppMethodBeat.o(169026);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.a.c(1, 8, this.commentList);
-      AppMethodBeat.o(169026);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.commentList.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.text != null) {
+        paramVarArgs.g(1, this.text);
       }
-      AppMethodBeat.o(169026);
+      if (this.image != null) {
+        paramVarArgs.g(2, this.image);
+      }
+      paramVarArgs.di(3, this.ZPG);
+      paramVarArgs.bv(4, this.seq);
+      AppMethodBeat.o(258255);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.text == null) {
+        break label358;
+      }
+    }
+    label358:
+    for (paramInt = i.a.a.b.b.a.h(1, this.text) + 0;; paramInt = 0)
     {
-      Object localObject = (g.a.a.a.a)paramVarArgs[0];
-      bfw localbfw = (bfw)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      int i = paramInt;
+      if (this.image != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.image);
+      }
+      paramInt = i.a.a.b.b.a.ko(3);
+      int j = i.a.a.b.b.a.q(4, this.seq);
+      AppMethodBeat.o(258255);
+      return i + (paramInt + 1) + j;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(169026);
-        return -1;
-      }
-      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject = (byte[])paramVarArgs.get(paramInt);
-        FinderCommentInfo localFinderCommentInfo = new FinderCommentInfo();
-        if ((localObject != null) && (localObject.length > 0)) {
-          localFinderCommentInfo.parseFrom((byte[])localObject);
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
-        localbfw.commentList.add(localFinderCommentInfo);
-        paramInt += 1;
+        AppMethodBeat.o(258255);
+        return 0;
       }
-      AppMethodBeat.o(169026);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        bfw localbfw = (bfw)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(258255);
+          return -1;
+        case 1: 
+          localbfw.text = locala.ajGk.readString();
+          AppMethodBeat.o(258255);
+          return 0;
+        case 2: 
+          localbfw.image = locala.ajGk.readString();
+          AppMethodBeat.o(258255);
+          return 0;
+        case 3: 
+          localbfw.ZPG = locala.ajGk.aai();
+          AppMethodBeat.o(258255);
+          return 0;
+        }
+        localbfw.seq = locala.ajGk.aaw();
+        AppMethodBeat.o(258255);
+        return 0;
+      }
+      AppMethodBeat.o(258255);
+      return -1;
     }
-    AppMethodBeat.o(169026);
-    return -1;
   }
 }
 

@@ -13,15 +13,15 @@ public class a$c
   
   public String toString()
   {
-    AppMethodBeat.i(214786);
+    AppMethodBeat.i(211529);
     String str = "[fps:" + this.b + "][pauseVideo:" + this.c + "][pauseAudio:" + this.d + "][duration:" + this.e + "]";
-    AppMethodBeat.o(214786);
+    AppMethodBeat.o(211529);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.live2.impl.a.c
  * JD-Core Version:    0.7.0.1
  */

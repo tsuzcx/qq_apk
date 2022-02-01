@@ -8,15 +8,15 @@ import java.util.List;
 
 public final class a
 {
-  public static double K(List<PointF> paramList1, List<PointF> paramList2)
+  public static double X(List<PointF> paramList1, List<PointF> paramList2)
   {
-    AppMethodBeat.i(204007);
+    AppMethodBeat.i(251041);
     try
     {
-      paramList1 = kQ(paramList1);
-      paramList2 = kQ(paramList2);
-      paramList1 = kR(paramList1);
-      paramList2 = kR(paramList2);
+      paramList1 = oi(paramList1);
+      paramList2 = oi(paramList2);
+      paramList1 = oj(paramList1);
+      paramList2 = oj(paramList2);
       double d2 = 0.0D;
       double d1 = 0.0D;
       int j = paramList1.size();
@@ -39,22 +39,22 @@ public final class a
         double d3 = Math.atan(d1 / d2);
         double d4 = Math.cos(d3);
         d1 = Math.acos(Math.sin(d3) * d1 + d2 * d4);
-        AppMethodBeat.o(204007);
+        AppMethodBeat.o(251041);
         return d1;
       }
       Log.e("MicroMsg.GestureRecognizer.ToIos", "devide a but a == 0");
-      AppMethodBeat.o(204007);
+      AppMethodBeat.o(251041);
       return 1.570796326794897D;
     }
-    catch (Throwable paramList1)
+    finally
     {
       Log.e("MicroMsg.GestureRecognizer.ToIos", paramList1.toString());
-      AppMethodBeat.o(204007);
+      AppMethodBeat.o(251041);
     }
     return 0.0D;
   }
   
-  private static float b(PointF paramPointF1, PointF paramPointF2)
+  private static float a(PointF paramPointF1, PointF paramPointF2)
   {
     AppMethodBeat.i(182570);
     float f = (float)Math.hypot(paramPointF1.x - paramPointF2.x, paramPointF1.y - paramPointF2.y);
@@ -62,9 +62,9 @@ public final class a
     return f;
   }
   
-  public static List<PointF> kQ(List<PointF> paramList)
+  public static List<PointF> oi(List<PointF> paramList)
   {
-    AppMethodBeat.i(204005);
+    AppMethodBeat.i(251035);
     double d1 = 0.0D;
     try
     {
@@ -73,7 +73,7 @@ public final class a
       int i = 1;
       while (i < j)
       {
-        d1 += b(localPointF1, (PointF)paramList.get(i));
+        d1 += a(localPointF1, (PointF)paramList.get(i));
         localPointF1 = (PointF)paramList.get(i);
         i += 1;
       }
@@ -87,7 +87,7 @@ public final class a
       while (i < j)
       {
         PointF localPointF2 = (PointF)paramList.get(i);
-        double d3 = b(localPointF1, localPointF2);
+        double d3 = a(localPointF1, localPointF2);
         if (d1 + d3 >= d2)
         {
           if (d3 > 0.0D)
@@ -109,21 +109,21 @@ public final class a
           i += 1;
         }
       }
-      AppMethodBeat.o(204005);
+      AppMethodBeat.o(251035);
       return localArrayList;
     }
-    catch (Throwable paramList)
+    finally
     {
       Log.e("MicroMsg.GestureRecognizer.ToIos", paramList.toString());
       paramList = new ArrayList();
-      AppMethodBeat.o(204005);
+      AppMethodBeat.o(251035);
     }
     return paramList;
   }
   
-  private static List<Float> kR(List<PointF> paramList)
+  private static List<Float> oj(List<PointF> paramList)
   {
-    AppMethodBeat.i(204006);
+    AppMethodBeat.i(251039);
     double d2 = 0.0D;
     double d1 = 0.0D;
     int j = paramList.size();
@@ -168,12 +168,12 @@ public final class a
     if (Math.min(d4, d1) / d3 < 0.2000000029802322D) {}
     for (i = 1;; i = 0)
     {
-      d2 = ((a)localObject).XVJ / d4;
-      d1 = ((a)localObject).XVK / d1;
+      d2 = ((a)localObject).afLY / d4;
+      d1 = ((a)localObject).afLZ / d1;
       if (i != 0)
       {
-        d2 = ((a)localObject).XVJ / d3;
-        d1 = ((a)localObject).XVK / d3;
+        d2 = ((a)localObject).afLY / d3;
+        d1 = ((a)localObject).afLZ / d3;
       }
       i = 0;
       while (i < j)
@@ -216,51 +216,51 @@ public final class a
       ((List)localObject).set(i, Float.valueOf((float)(((Float)((List)localObject).get(i)).floatValue() / d1 + 0.0001D)));
       i += 1;
     }
-    AppMethodBeat.o(204006);
+    AppMethodBeat.o(251039);
     return localObject;
   }
   
-  public static List<PointF> kS(List<PointF> paramList)
+  public static List<PointF> ok(List<PointF> paramList)
   {
-    AppMethodBeat.i(204009);
+    AppMethodBeat.i(251043);
     ArrayList localArrayList = new ArrayList();
     if ((paramList == null) || (paramList.size() <= 0))
     {
-      AppMethodBeat.o(204009);
+      AppMethodBeat.o(251043);
       return localArrayList;
     }
     int k = paramList.size();
-    localArrayList.add(paramList.get(0));
+    localArrayList.add((PointF)paramList.get(0));
     int i = localArrayList.size() - 1;
     int j = 1;
     if (j < k)
     {
       if (((PointF)paramList.get(j)).equals(localArrayList.get(i))) {
-        break label148;
+        break label154;
       }
-      localArrayList.add(paramList.get(j));
+      localArrayList.add((PointF)paramList.get(j));
       i = localArrayList.size() - 1;
     }
-    label148:
+    label154:
     for (;;)
     {
       j += 1;
       break;
       Log.i("MicroMsg.GestureRecognizer", localArrayList.toString());
-      AppMethodBeat.o(204009);
+      AppMethodBeat.o(251043);
       return localArrayList;
     }
   }
   
   static final class a
   {
-    double XVJ = 150.0D;
-    double XVK = 150.0D;
+    double afLY = 150.0D;
+    double afLZ = 150.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.a.a
  * JD-Core Version:    0.7.0.1
  */

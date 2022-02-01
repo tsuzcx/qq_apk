@@ -1,293 +1,493 @@
 package com.tencent.mm.plugin.finder.live.model;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
+import com.tencent.d.a.a.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.live.core.core.model.h;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.live.model.cgi.ak.a;
-import com.tencent.mm.plugin.finder.live.viewmodel.data.business.e;
-import com.tencent.mm.protocal.protobuf.baf;
-import com.tencent.mm.protocal.protobuf.bcw;
+import com.tencent.mm.ae.e;
+import com.tencent.mm.ae.e.a;
+import com.tencent.mm.plugin.finder.utils.aw;
+import com.tencent.mm.protocal.protobuf.bfk;
+import com.tencent.mm.protocal.protobuf.bfr;
+import com.tencent.mm.protocal.protobuf.bkh;
+import com.tencent.mm.protocal.protobuf.bmm;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.k.k;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAnchorVerifyManager;", "", "curLiveContext", "Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;", "curLiveLayout", "Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;", "(Lcom/tencent/mm/plugin/finder/live/model/context/LiveBuContext;Lcom/tencent/mm/plugin/finder/live/view/FinderBaseLivePluginLayout;)V", "callback", "Lkotlin/Function1;", "", "", "countDownTime", "", "currentVerifyId", "", "currentVerifyMode", "timer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "verificationUrl", "addSystemMsg", "isVerifying", "checkAnchorVerify", "forceUpdate", "checkTimer", "serverCountDownTime", "finishAnchorVerify", "gotoVerificationH5", "postVerifyRequest", "success", "recoveryLive", "release", "reset", "showRecoveryToast", "updateCountDownTip", "updateCurLiveLayout", "layout", "updateLayerShowView", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLayerAnchorVerificationShowInfo;", "updateVerifyInfo", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAnchorMusicData;", "", "()V", "MAX_MUSIC_SIZE", "", "getMAX_MUSIC_SIZE", "()I", "setMAX_MUSIC_SIZE", "(I)V", "UPDATE_SIZE", "getUPDATE_SIZE", "setUPDATE_SIZE", "curPlayPos", "getCurPlayPos", "setCurPlayPos", "lastSearchBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastSearchBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastSearchBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "musicList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "Lkotlin/collections/ArrayList;", "getMusicList", "()Ljava/util/ArrayList;", "setMusicList", "(Ljava/util/ArrayList;)V", "prepareSongIdList", "Ljava/util/LinkedList;", "getPrepareSongIdList", "()Ljava/util/LinkedList;", "setPrepareSongIdList", "(Ljava/util/LinkedList;)V", "queryContent", "", "getQueryContent", "()Ljava/lang/String;", "setQueryContent", "(Ljava/lang/String;)V", "searchContinueFlag", "getSearchContinueFlag", "setSearchContinueFlag", "searchList", "getSearchList", "setSearchList", "songIdList", "getSongIdList", "setSongIdList", "addMusicItem", "", "item", "canAddMusic", "", "deleteMusicItem", "index", "findMusicItem", "Lkotlin/Pair;", "songId", "findNextMusicItem", "musicItem", "pos", "getCurMusicItem", "getCurSongId", "getModifyMusicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBackgroundMusicInfo;", "getUpdateSongIdList", "loadAll", "initSongId", "liveStatus", "isMusicInfoComplete", "pauseMusicItem", "playMusicItem", "replaceAnchorMusicData", "resetMusicItem", "resetSelectMusicItems", "resumeMusicItem", "savePrepareSongIdList", "stopMusicItem", "updateMusicInfo", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMusicInfoResponse;", "updateSearchMusicData", "query", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSearchMusicListResponse;", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  public static final a ydu;
-  private final kotlin.g.a.b<Boolean, x> callback;
-  MTimerHandler timer;
-  int ydo;
-  String ydp;
-  String ydq;
-  int ydr;
-  final com.tencent.mm.plugin.finder.live.model.context.a yds;
-  com.tencent.mm.plugin.finder.live.view.a ydt;
+  public static final a CDC;
+  public int CDD;
+  private int CDE;
+  public LinkedList<Integer> CDF;
+  public LinkedList<Integer> CDG;
+  public ArrayList<at> CDH;
+  public ArrayList<at> CDI;
+  public String CDJ;
+  public com.tencent.mm.bx.b CDK;
+  public int CDL;
+  public int hKr;
   
   static
   {
-    AppMethodBeat.i(286335);
-    ydu = new a((byte)0);
-    AppMethodBeat.o(286335);
+    AppMethodBeat.i(359296);
+    CDC = new a((byte)0);
+    AppMethodBeat.o(359296);
   }
   
-  public c(com.tencent.mm.plugin.finder.live.model.context.a parama, com.tencent.mm.plugin.finder.live.view.a parama1)
+  public c()
   {
-    AppMethodBeat.i(286334);
-    this.yds = parama;
-    this.ydt = parama1;
-    this.callback = ((kotlin.g.a.b)new b(this));
-    this.timer = new MTimerHandler("FinderLiveAnchorVerifyManager::Timer", (MTimerHandler.CallBack)new MTimerHandler.CallBack()
+    AppMethodBeat.i(359277);
+    a locala = a.ahiX;
+    this.CDD = ((Number)a.jRS().bmg()).intValue();
+    this.CDE = 50;
+    this.CDF = new LinkedList();
+    this.hKr = -1;
+    this.CDG = new LinkedList();
+    this.CDH = new ArrayList();
+    this.CDI = new ArrayList();
+    this.CDJ = "";
+    AppMethodBeat.o(359277);
+  }
+  
+  public final r<at, Integer> OL(int paramInt)
+  {
+    AppMethodBeat.i(359379);
+    Object localObject1 = (Iterable)this.CDH;
+    int i = 0;
+    localObject1 = ((Iterable)localObject1).iterator();
+    for (;;)
     {
-      public final boolean onTimerExpired()
+      if (((Iterator)localObject1).hasNext())
       {
-        AppMethodBeat.i(279723);
-        c localc = this.ydv;
-        c.b(localc, c.e(localc) - 1);
-        if (c.e(this.ydv) >= 0)
-        {
-          c.j(this.ydv);
-          AppMethodBeat.o(279723);
-          return true;
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (i < 0) {
+          p.kkW();
         }
-        Log.i("Finder.FinderLiveAnchorVerifyManager", "backupTimer onTimerExpired: currentVerifyMode:" + c.d(this.ydv) + ", currentVerifyId:" + c.k(this.ydv));
-        switch (c.d(this.ydv))
+        localObject2 = (at)localObject2;
+        if (((at)localObject2).CIu.ZTv == paramInt)
         {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(279723);
-          return false;
-          c.a(this.ydv, false);
+          localObject1 = new r(localObject2, Integer.valueOf(i));
+          AppMethodBeat.o(359379);
+          return localObject1;
         }
       }
-    }, true);
-    AppMethodBeat.o(286334);
-  }
-  
-  private final void oK(boolean paramBoolean)
-  {
-    AppMethodBeat.i(286333);
-    if ((paramBoolean) && (((e)this.yds.business(e.class)).ncq))
-    {
-      AppMethodBeat.o(286333);
-      return;
+      else
+      {
+        localObject1 = new r(null, Integer.valueOf(-1));
+        AppMethodBeat.o(359379);
+        return localObject1;
+      }
+      i += 1;
     }
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = MMApplicationContext.getContext();
-      p.j(localObject, "MMApplicationContext.getContext()");
-      localObject = ((Context)localObject).getResources().getString(b.j.finder_live_pause_comment_tips);
-      p.j(localObject, "if (isVerifying) {\n     …y_comment_tips)\n        }");
-      switch (this.ydo)
-      {
-      }
-    }
-    do
-    {
-      AppMethodBeat.o(286333);
-      return;
-      localObject = MMApplicationContext.getContext();
-      p.j(localObject, "MMApplicationContext.getContext()");
-      localObject = ((Context)localObject).getResources().getString(b.j.finder_live_pause_recovery_comment_tips);
-      break;
-      com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.a((String)localObject, this.yds);
-      if (paramBoolean)
-      {
-        localObject = ah.yhC;
-        localObject = ah.getLiveCore();
-        if (localObject != null)
-        {
-          ((com.tencent.mm.live.core.core.trtc.a)localObject).sV(2);
-          AppMethodBeat.o(286333);
-          return;
-        }
-        AppMethodBeat.o(286333);
-        return;
-      }
-      localObject = ah.yhC;
-      localObject = ah.getLiveCore();
-    } while (localObject == null);
-    ((com.tencent.mm.live.core.core.trtc.a)localObject).sW(2);
-    AppMethodBeat.o(286333);
   }
   
-  final void dxS()
+  public final void a(bfr parambfr)
   {
-    AppMethodBeat.i(286332);
-    d.uiThread((kotlin.g.a.a)new f(this));
-    AppMethodBeat.o(286332);
-  }
-  
-  public final void oJ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(286330);
-    if (((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)this.yds.business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).isLiveStarted())
+    AppMethodBeat.i(359345);
+    s.u(parambfr, "resp");
+    for (;;)
     {
-      Object localObject = ((e)this.yds.business(e.class)).zha;
-      if (localObject == null)
+      Object localObject1;
+      int i;
+      boolean bool;
+      try
       {
-        AppMethodBeat.o(286330);
-        return;
-      }
-      if ((TextUtils.equals((CharSequence)this.ydp, (CharSequence)((baf)localObject).SMe)) && (this.ydo == ((baf)localObject).SMc) && (!paramBoolean))
-      {
-        Log.i("Finder.FinderLiveAnchorVerifyManager", "checkAnchorVerify: same id and mode, ignore. currentVerifyMode:" + this.ydo + ", currentVerifyId:" + this.ydp);
-        AppMethodBeat.o(286330);
-        return;
-      }
-      if (localObject == null) {
-        Log.i("Finder.FinderLiveAnchorVerifyManager", "updateVerifyInfo: info is null");
-      }
-      for (;;)
-      {
-        ((e)this.yds.business(e.class)).ncq = true;
-        localObject = ah.yhC;
-        localObject = ah.dzB();
-        if (localObject != null)
+        parambfr = parambfr.ZPz;
+        Object localObject2;
+        if (parambfr == null)
         {
-          localObject = ((com.tencent.mm.live.core.core.trtc.a)localObject).knA;
-          if ((localObject != null) && (((h)localObject).pause == true)) {
-            break;
+          localObject1 = null;
+          break label397;
+          i = ekd();
+          localObject2 = ((Iterable)((c)this).CDH).iterator();
+          if (!((Iterator)localObject2).hasNext()) {
+            break label391;
+          }
+          int j = ((at)((Iterator)localObject2).next()).CIu.ZTv;
+          if ((parambfr == null) || (j != parambfr.intValue())) {
+            continue;
+          }
+          bool = true;
+          label92:
+          if ((!bool) && (localObject1 != null)) {
+            this.CDH.addAll((Collection)localObject1);
+          }
+          localObject1 = new StringBuilder("updateMusicInfo respMusicInfo.first songId:").append(parambfr).append(", cur songId:").append(i).append(", songIdExist:").append(bool).append(", curPlayPos:").append(this.hKr).append(", size:");
+          parambfr = this.CDG;
+          if (parambfr == null)
+          {
+            parambfr = null;
+            label181:
+            Log.i("FinderLiveAnchorMusicData", parambfr);
+            a.c(this.CDH, "updateMusicInfo", false);
+            AppMethodBeat.o(359345);
           }
         }
-        localObject = ah.yhC;
-        localObject = ah.dzB();
-        if (localObject == null) {
+        else
+        {
+          localObject1 = (Iterable)parambfr;
+          parambfr = (Collection)new ArrayList(p.a((Iterable)localObject1, 10));
+          localObject1 = ((Iterable)localObject1).iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (bkh)((Iterator)localObject1).next();
+            s.s(localObject2, "it");
+            parambfr.add(new at((bkh)localObject2, 0, 0, 24));
+            continue;
+          }
+          localObject1 = (List)parambfr;
+        }
+      }
+      catch (Exception parambfr)
+      {
+        e.a.a((e)com.tencent.mm.plugin.findersdk.b.HbT, "updateMusicInfo", false, null, false, null, 60);
+        localObject1 = aw.Gjk;
+        aw.a(parambfr, "FinderLiveAnchorMusicData updateMusicInfo");
+        AppMethodBeat.o(359345);
+        return;
+      }
+      label391:
+      label397:
+      while (localObject1 != null)
+      {
+        parambfr = (at)p.oL((List)localObject1);
+        if (parambfr == null)
+        {
+          parambfr = null;
           break;
         }
-        ((com.tencent.mm.live.core.core.a.b)localObject).aLE();
-        AppMethodBeat.o(286330);
-        return;
-        Log.i("Finder.FinderLiveAnchorVerifyManager", "updateVerifyInfo: verify_mode:" + ((baf)localObject).SMc + ',' + " verification_id:" + ((baf)localObject).SMe + ", remaining_seconds:" + ((baf)localObject).SMf);
-        this.ydo = ((baf)localObject).SMc;
-        this.ydp = ((baf)localObject).SMe;
-        this.ydq = ((baf)localObject).RLx;
-        d.uiThread((kotlin.g.a.a)new i(this, (baf)localObject));
-        oK(true);
+        parambfr = Integer.valueOf(parambfr.CIu.ZTv);
+        break;
+        i = parambfr.size();
+        parambfr = Integer.valueOf(i);
+        break label181;
+        bool = false;
+        break label92;
+      }
+      parambfr = null;
+    }
+  }
+  
+  public final void a(String paramString, bmm parambmm)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(359403);
+    s.u(paramString, "query");
+    s.u(parambmm, "resp");
+    int i;
+    Object localObject1;
+    label78:
+    Object localObject3;
+    if (((CharSequence)paramString).length() == 0)
+    {
+      i = 1;
+      if ((i != 0) || (!s.p(paramString, this.CDJ)))
+      {
+        this.CDI.clear();
+        this.CDJ = paramString;
+      }
+      localObject1 = parambmm.ZPz;
+      if (localObject1 != null) {
+        break label181;
+      }
+      localObject1 = null;
+      localObject3 = new StringBuilder("updateSearchMusicData last query:").append(this.CDJ).append(", new query:").append(paramString).append(", size:");
+      if (localObject1 != null) {
+        break label431;
       }
     }
-    AppMethodBeat.o(286330);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAnchorVerifyManager$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.b<Boolean, x>
-  {
-    b(c paramc)
+    label270:
+    label298:
+    label301:
+    label431:
+    for (paramString = localObject2;; paramString = Integer.valueOf(((List)localObject1).size()))
     {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    c(c paramc)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    d(c paramc)
-    {
-      super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/model/FinderLiveAnchorVerifyManager$postVerifyRequest$callback$1", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveSuspiciousVerify$CallBack;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSuspiciousVerifyResponse;", "plugin-finder_release"})
-  public static final class e
-    implements ak.a
-  {
-    e(boolean paramBoolean) {}
-    
-    public final void a(int paramInt1, int paramInt2, bcw parambcw)
-    {
-      AppMethodBeat.i(288344);
-      p.k(parambcw, "resp");
-      if (!this.jHs)
-      {
-        c.f(this.ydv);
-        AppMethodBeat.o(288344);
-        return;
+      Log.i("FinderLiveAnchorMusicData", paramString);
+      if (localObject1 != null) {
+        this.CDI.addAll((Collection)localObject1);
       }
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      this.CDK = parambmm.ZEQ;
+      this.CDL = parambmm.BeA;
+      AppMethodBeat.o(359403);
+      return;
+      i = 0;
+      break;
+      label181:
+      localObject3 = (Iterable)localObject1;
+      localObject1 = (Collection)new ArrayList();
+      localObject3 = ((Iterable)localObject3).iterator();
+      Object localObject4;
+      while (((Iterator)localObject3).hasNext())
       {
-        if (c.d(this.ydv) == 4)
+        localObject4 = ((Iterator)localObject3).next();
+        Object localObject5 = (bkh)localObject4;
+        if (((bkh)localObject5).playable)
         {
-          c.g(this.ydv);
-          AppMethodBeat.o(288344);
-          return;
+          localObject5 = (CharSequence)((bkh)localObject5).ZTB;
+          if ((localObject5 == null) || (((CharSequence)localObject5).length() == 0))
+          {
+            i = 1;
+            if (i != 0) {
+              break label298;
+            }
+          }
         }
-        c.h(this.ydv);
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label301;
+          }
+          ((Collection)localObject1).add(localObject4);
+          break;
+          i = 0;
+          break label270;
+        }
       }
-      AppMethodBeat.o(288344);
+      localObject3 = (Iterable)localObject1;
+      localObject1 = (Collection)new ArrayList(p.a((Iterable)localObject3, 10));
+      localObject3 = ((Iterable)localObject3).iterator();
+      if (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (bkh)((Iterator)localObject3).next();
+        s.s(localObject4, "it");
+        if (this.CDG.contains(Integer.valueOf(((bkh)localObject4).ZTv))) {}
+        for (i = 51;; i = 0)
+        {
+          ((Collection)localObject1).add(new at((bkh)localObject4, i, 0, 24));
+          break;
+        }
+      }
+      localObject1 = (List)localObject1;
+      break label78;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class f
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void aq(LinkedList<Integer> paramLinkedList)
   {
-    f(c paramc)
+    AppMethodBeat.i(359301);
+    StringBuilder localStringBuilder = new StringBuilder("savePrepareSongIdList size:");
+    if (paramLinkedList == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(paramLinkedList.size()))
     {
-      super();
+      Log.i("FinderLiveAnchorMusicData", localObject + ", curPlayPos:" + this.hKr);
+      if (paramLinkedList != null) {
+        break;
+      }
+      AppMethodBeat.o(359301);
+      return;
+    }
+    this.CDF = paramLinkedList;
+    AppMethodBeat.o(359301);
+  }
+  
+  public final void c(at paramat, int paramInt)
+  {
+    AppMethodBeat.i(359364);
+    s.u(paramat, "item");
+    try
+    {
+      localObject1 = ekc();
+      Object localObject2 = this.CDH.get(paramInt);
+      s.s(localObject2, "musicList[pos]");
+      localObject2 = (at)localObject2;
+      if (((at)localObject2).CIu.ZTv == paramat.CIu.ZTv)
+      {
+        if (localObject1 != null) {
+          ((at)localObject1).oYt = 0;
+        }
+        ((at)localObject2).oYt = 1;
+        this.hKr = paramInt;
+      }
+      Log.i("FinderLiveAnchorMusicData", "playMusicItem item:" + paramat + " songId size:" + this.CDG.size() + ", musicList id size:" + this.CDH.size() + ", pos:" + paramInt + " oriMusicItem:" + localObject1 + " newMusicItem:" + localObject2 + ", curPlayPos:" + this.hKr);
+      AppMethodBeat.o(359364);
+      return;
+    }
+    catch (Exception paramat)
+    {
+      Object localObject1 = aw.Gjk;
+      aw.a(paramat, "FinderLiveAnchorMusicData playMusicItem");
+      AppMethodBeat.o(359364);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class g
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void d(at paramat, int paramInt)
   {
-    g(c paramc, Context paramContext)
+    AppMethodBeat.i(359371);
+    if (paramat != null) {
+      paramat.oYt = 0;
+    }
+    Log.i("FinderLiveAnchorMusicData", "resetMusicItem " + paramat + " songId size:" + this.CDG.size() + ", musicList id size:" + this.CDH.size() + ", pos:" + paramInt + ", curPlayPos:" + this.hKr);
+    AppMethodBeat.o(359371);
+  }
+  
+  public final r<at, Integer> e(at paramat, int paramInt)
+  {
+    int j = 0;
+    AppMethodBeat.i(359387);
+    s.u(paramat, "musicItem");
+    d(paramat, paramInt);
+    paramat = (Collection)this.CDH;
+    if ((paramat == null) || (paramat.isEmpty())) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      super();
+      Log.e("FinderLiveAnchorMusicData", "musicList is empty!");
+      paramat = new r(null, Integer.valueOf(-1));
+      AppMethodBeat.o(359387);
+      return paramat;
+    }
+    i = paramInt + 1;
+    if (i >= this.CDH.size()) {
+      i = j;
+    }
+    for (;;)
+    {
+      paramat = this.CDH.get(i);
+      s.s(paramat, "musicList[nextPos]");
+      paramat = (at)paramat;
+      Log.i("FinderLiveAnchorMusicData", "songId size:" + this.CDG.size() + ", musicList id size:" + this.CDH.size() + ", findNextMusicItem pos:" + paramInt + ", nextPos:" + i + ", curPlayPos:" + this.hKr + ",nextMusicItem:" + paramat);
+      paramat = new r(paramat, Integer.valueOf(i));
+      AppMethodBeat.o(359387);
+      return paramat;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class h
-    extends q
-    implements kotlin.g.a.a<x>
+  public final at ekc()
   {
-    h(c paramc)
+    AppMethodBeat.i(359315);
+    if ((this.hKr >= 0) && (this.hKr < this.CDH.size()))
     {
-      super();
+      at localat = (at)this.CDH.get(this.hKr);
+      AppMethodBeat.o(359315);
+      return localat;
+    }
+    AppMethodBeat.o(359315);
+    return null;
+  }
+  
+  public final int ekd()
+  {
+    AppMethodBeat.i(359322);
+    if ((this.hKr >= 0) && (this.hKr < this.CDG.size()))
+    {
+      Object localObject = this.CDG.get(this.hKr);
+      s.s(localObject, "songIdList[curPlayPos]");
+      int i = ((Number)localObject).intValue();
+      AppMethodBeat.o(359322);
+      return i;
+    }
+    AppMethodBeat.o(359322);
+    return 0;
+  }
+  
+  public final void eke()
+  {
+    AppMethodBeat.i(359353);
+    Iterator localIterator = ((Iterable)this.CDH).iterator();
+    while (localIterator.hasNext()) {
+      ((at)localIterator.next()).CIw = false;
+    }
+    AppMethodBeat.o(359353);
+  }
+  
+  public final bfk ekf()
+  {
+    AppMethodBeat.i(359394);
+    bfk localbfk = new bfk();
+    localbfk.ZPo = this.CDG;
+    AppMethodBeat.o(359394);
+    return localbfk;
+  }
+  
+  public final boolean ekg()
+  {
+    AppMethodBeat.i(359409);
+    Log.i("FinderLiveAnchorMusicData", "isMusicInfoComplete musicSize:" + this.CDH.size() + ", songIdSize:" + this.CDG.size());
+    if (this.CDH.size() == this.CDG.size())
+    {
+      AppMethodBeat.o(359409);
+      return true;
+    }
+    AppMethodBeat.o(359409);
+    return false;
+  }
+  
+  public final void h(LinkedList<Integer> paramLinkedList, int paramInt)
+  {
+    AppMethodBeat.i(359309);
+    StringBuilder localStringBuilder = new StringBuilder("initSongId liveStatus:").append(paramInt).append(", size:");
+    if (paramLinkedList == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(paramLinkedList.size()))
+    {
+      Log.i("FinderLiveAnchorMusicData", localObject + ", curPlayPos:" + this.hKr);
+      if (paramLinkedList != null) {
+        break;
+      }
+      AppMethodBeat.o(359309);
+      return;
+    }
+    this.CDG = paramLinkedList;
+    AppMethodBeat.o(359309);
+  }
+  
+  public final LinkedList<Integer> qy(boolean paramBoolean)
+  {
+    AppMethodBeat.i(359331);
+    int i = this.CDG.size();
+    int j = this.CDH.size();
+    i -= j;
+    if (i <= 0)
+    {
+      AppMethodBeat.o(359331);
+      return null;
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      LinkedList localLinkedList = new LinkedList((Collection)this.CDG.subList(j, i + j));
+      AppMethodBeat.o(359331);
+      return localLinkedList;
+      i = k.qv(this.CDE, i);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class i
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAnchorMusicData$Companion;", "", "()V", "TAG", "", "printInfo", "", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "Lkotlin/collections/ArrayList;", "tag", "briefPrint", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
   {
-    i(c paramc, baf parambaf)
+    public static void c(ArrayList<at> paramArrayList, String paramString, boolean paramBoolean)
     {
-      super();
+      AppMethodBeat.i(359295);
+      s.u(paramArrayList, "list");
+      s.u(paramString, "tag");
+      paramString = new StringBuilder(s.X(paramString, ":"));
+      Iterator localIterator = ((Iterable)paramArrayList).iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        paramArrayList = localIterator.next();
+        if (i < 0) {
+          p.kkW();
+        }
+        paramArrayList = (at)paramArrayList;
+        paramString.append("[第" + i + "首:");
+        if (paramBoolean) {}
+        for (paramArrayList = paramArrayList.CIu.ZTv + ", " + paramArrayList.oYt + ']';; paramArrayList = paramArrayList + ']')
+        {
+          paramString.append(paramArrayList);
+          i += 1;
+          break;
+        }
+      }
+      Log.i("FinderLiveAnchorMusicData", paramString.toString());
+      AppMethodBeat.o(359295);
     }
   }
 }

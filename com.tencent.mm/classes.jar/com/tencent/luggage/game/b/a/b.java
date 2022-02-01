@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.github.henryye.nativeiv.ImageDecodeConfig;
 import com.github.henryye.nativeiv.b.b.a;
-import com.tencent.luggage.wxa.a.a.e;
+import com.tencent.luggage.wxa.a.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -16,54 +16,42 @@ import java.net.URL;
 public final class b
   extends d<d.c>
 {
-  private int aKQ;
-  private int aKR;
-  private d.c csU;
-  private final String mUserAgent;
+  private int cEM;
+  private int cEN;
+  private final String ekO;
+  private d.c ekP;
   
   public b(d.c paramc)
   {
     super(paramc);
-    AppMethodBeat.i(247557);
-    this.aKQ = 60000;
-    this.aKR = 60000;
-    this.csU = paramc;
-    int i = paramc.OJ();
-    int j = paramc.OL();
+    AppMethodBeat.i(220120);
+    this.cEM = 60000;
+    this.cEN = 60000;
+    this.ekP = paramc;
+    int i = paramc.aoR();
+    int j = paramc.aoT();
     if ((i <= 0) || (j <= 0)) {}
     for (;;)
     {
-      this.mUserAgent = paramc.getUserAgentString();
-      AppMethodBeat.o(247557);
+      this.ekO = paramc.getUserAgentString();
+      AppMethodBeat.o(220120);
       return;
-      this.aKQ = i;
-      this.aKR = j;
+      this.cEM = i;
+      this.cEN = j;
       Log.i("AppBrandImageHttpFetcher", "Http Timeout Set: connection[%d] read[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     }
   }
   
-  public final boolean V(Object paramObject)
+  public final String Qj()
   {
-    AppMethodBeat.i(247559);
-    if (!(paramObject instanceof String))
-    {
-      AppMethodBeat.o(247559);
-      return false;
-    }
-    if ((((String)paramObject).startsWith("http://")) || (((String)paramObject).startsWith("https://")))
-    {
-      AppMethodBeat.o(247559);
-      return true;
-    }
-    AppMethodBeat.o(247559);
-    return false;
+    return "http";
   }
   
   public final b.a a(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
-    AppMethodBeat.i(247561);
+    AppMethodBeat.i(220129);
     locala = new b.a();
-    String str2 = this.csU.a(paramImageDecodeConfig.mReferrerPolicy);
+    String str2 = this.ekP.a(paramImageDecodeConfig.mReferrerPolicy);
     localObject2 = null;
     try
     {
@@ -75,8 +63,8 @@ public final class b
       for (;;)
       {
         int j;
-        Log.e("AppBrandImageHttpFetcher", "ImageFetch Timeout! path[%s] connectionTimeout[%d] readTimeout[%d] error[%s]", new Object[] { paramObject, Integer.valueOf(this.aKQ), Integer.valueOf(this.aKR), paramImageDecodeConfig.toString() });
-        locala.errorMsg = MMApplicationContext.getContext().getString(a.e.appbrand_game_image_stream_error_http_timeout);
+        Log.e("AppBrandImageHttpFetcher", "ImageFetch Timeout! path[%s] connectionTimeout[%d] readTimeout[%d] error[%s]", new Object[] { paramObject, Integer.valueOf(this.cEM), Integer.valueOf(this.cEN), paramImageDecodeConfig.toString() });
+        locala.errorMsg = MMApplicationContext.getContext().getString(a.f.appbrand_game_image_stream_error_http_timeout);
         paramObject = localObject2;
       }
     }
@@ -88,7 +76,7 @@ public final class b
         HttpURLConnection localHttpURLConnection;
         String str1;
         Log.e("AppBrandImageHttpFetcher", "fetch error. path = [%s], error = [%s]", new Object[] { paramObject, paramImageDecodeConfig.toString() });
-        locala.errorMsg = String.format(MMApplicationContext.getContext().getString(a.e.appbrand_game_image_stream_error_http_inner), new Object[] { paramImageDecodeConfig.toString() });
+        locala.errorMsg = String.format(MMApplicationContext.getContext().getString(a.f.appbrand_game_image_stream_error_http_inner), new Object[] { paramImageDecodeConfig.toString() });
         paramObject = localObject2;
         continue;
         paramObject = null;
@@ -103,9 +91,9 @@ public final class b
     if ((paramImageDecodeConfig != null) && (!TextUtils.isEmpty(str2))) {
       localHttpURLConnection.addRequestProperty("Referer", str2);
     }
-    localHttpURLConnection.setRequestProperty("User-Agent", this.mUserAgent);
-    localHttpURLConnection.setReadTimeout(this.aKR);
-    localHttpURLConnection.setConnectTimeout(this.aKQ);
+    localHttpURLConnection.setRequestProperty("User-Agent", this.ekO);
+    localHttpURLConnection.setReadTimeout(this.cEN);
+    localHttpURLConnection.setConnectTimeout(this.cEM);
     j = localHttpURLConnection.getResponseCode();
     if ((j == 301) || (j == 302))
     {
@@ -120,31 +108,43 @@ public final class b
     {
       paramImageDecodeConfig = new BufferedInputStream(paramImageDecodeConfig.getInputStream());
       paramObject = paramImageDecodeConfig;
-      locala.aFw = paramObject;
-      AppMethodBeat.o(247561);
+      locala.inputStream = paramObject;
+      AppMethodBeat.o(220129);
       return locala;
       if ((j >= 200) && (j < 300)) {
         break label430;
       }
-      locala.errorMsg = String.format(MMApplicationContext.getContext().getString(a.e.appbrand_game_image_stream_error_http_code), new Object[] { Integer.valueOf(j) });
+      locala.errorMsg = String.format(MMApplicationContext.getContext().getString(a.f.appbrand_game_image_stream_error_http_code), new Object[] { Integer.valueOf(j) });
       break label430;
       label263:
       if (i < 3) {
         break label419;
       }
       Log.e("AppBrandImageHttpFetcher", "too much redirection!");
-      locala.errorMsg = MMApplicationContext.getContext().getString(a.e.appbrand_game_image_stream_error_http_redirect);
+      locala.errorMsg = MMApplicationContext.getContext().getString(a.f.appbrand_game_image_stream_error_http_redirect);
     }
   }
   
-  public final String qG()
+  public final boolean be(Object paramObject)
   {
-    return "http";
+    AppMethodBeat.i(220123);
+    if (!(paramObject instanceof String))
+    {
+      AppMethodBeat.o(220123);
+      return false;
+    }
+    if ((((String)paramObject).startsWith("http://")) || (((String)paramObject).startsWith("https://")))
+    {
+      AppMethodBeat.o(220123);
+      return true;
+    }
+    AppMethodBeat.o(220123);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.game.b.a.b
  * JD-Core Version:    0.7.0.1
  */

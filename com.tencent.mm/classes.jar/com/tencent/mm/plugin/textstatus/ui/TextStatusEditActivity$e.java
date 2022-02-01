@@ -3,63 +3,77 @@ package com.tencent.mm.plugin.textstatus.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.textstatus.proto.TextStatusJumpInfo;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$ThirdInfo;", "", "sourceId", "", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getJumpInfos", "()Ljava/util/List;", "getSourceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusEditActivity$ThirdInfo;", "", "sourceId", "", "jumpInfos", "", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getJumpInfos", "()Ljava/util/List;", "getSourceId", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusEditActivity$e
 {
+  final List<TextStatusJumpInfo> DHi;
   final String sourceId;
-  final List<TextStatusJumpInfo> yNX;
   
   public TextStatusEditActivity$e(String paramString, List<? extends TextStatusJumpInfo> paramList)
   {
     this.sourceId = paramString;
-    this.yNX = paramList;
+    this.DHi = paramList;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(232984);
-    if (this != paramObject)
+    AppMethodBeat.i(291236);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof e))
-      {
-        paramObject = (e)paramObject;
-        if ((!p.h(this.sourceId, paramObject.sourceId)) || (!p.h(this.yNX, paramObject.yNX))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(232984);
+      AppMethodBeat.o(291236);
       return true;
     }
-    AppMethodBeat.o(232984);
-    return false;
+    if (!(paramObject instanceof e))
+    {
+      AppMethodBeat.o(291236);
+      return false;
+    }
+    paramObject = (e)paramObject;
+    if (!s.p(this.sourceId, paramObject.sourceId))
+    {
+      AppMethodBeat.o(291236);
+      return false;
+    }
+    if (!s.p(this.DHi, paramObject.DHi))
+    {
+      AppMethodBeat.o(291236);
+      return false;
+    }
+    AppMethodBeat.o(291236);
+    return true;
   }
   
   public final int hashCode()
   {
     int j = 0;
-    AppMethodBeat.i(232981);
-    Object localObject = this.sourceId;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
+    AppMethodBeat.i(291230);
+    int i;
+    if (this.sourceId == null)
     {
-      localObject = this.yNX;
-      if (localObject != null) {
-        j = localObject.hashCode();
+      i = 0;
+      if (this.DHi != null) {
+        break label46;
       }
-      AppMethodBeat.o(232981);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(291230);
       return i * 31 + j;
+      i = this.sourceId.hashCode();
+      break;
+      label46:
+      j = this.DHi.hashCode();
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(232979);
-    String str = "ThirdInfo(sourceId=" + this.sourceId + ", jumpInfos=" + this.yNX + ")";
-    AppMethodBeat.o(232979);
+    AppMethodBeat.i(291222);
+    String str = "ThirdInfo(sourceId=" + this.sourceId + ", jumpInfos=" + this.DHi + ')';
+    AppMethodBeat.o(291222);
     return str;
   }
 }

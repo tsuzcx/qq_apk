@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.wallet_payu.pwd.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyHistoryEnvelopeUI;
 

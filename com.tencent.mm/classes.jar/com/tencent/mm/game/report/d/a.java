@@ -3,11 +3,14 @@ package com.tencent.mm.game.report.d;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.game.report.c.b;
 import com.tencent.mm.game.report.c.g;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.f;
@@ -15,81 +18,99 @@ import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/game/report/service/GameChatReportWrapper;", "", "()V", "CMD_UNREAD_MSG", "", "KEY_CMD", "", "KEY_HAS_UNREAD_MSG", "TAG", "curSeq", "", "isBusy", "", "waitingList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/game/report/protobuf/ChatReportRequest;", "report", "", "data", "Landroid/os/Bundle;", "reportInMainProcess", "request", "reportUnreadState", "hasUnreadMsg", "tryDoScene", "IpcChatReportTask", "report-api_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/game/report/service/GameChatReportWrapper;", "", "()V", "CMD_UNREAD_MSG", "", "KEY_CMD", "", "KEY_HAS_UNREAD_MSG", "TAG", "curSeq", "", "isBusy", "", "waitingList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/game/report/protobuf/ChatReportRequest;", "report", "", "data", "Landroid/os/Bundle;", "reportInMainProcess", "request", "reportUnreadState", "hasUnreadMsg", "tryDoScene", "IpcChatReportTask", "report-api_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  private static final LinkedList<com.tencent.mm.game.report.c.a> jTl;
-  private static boolean jTm;
-  private static long jUq;
-  public static final a jUr;
+  private static final LinkedList<com.tencent.mm.game.report.c.a> mtD;
+  private static boolean mtE;
+  public static final a muI;
+  private static long muJ;
   
   static
   {
-    AppMethodBeat.i(198976);
-    jUr = new a();
-    jTl = new LinkedList();
-    AppMethodBeat.o(198976);
+    AppMethodBeat.i(240803);
+    muI = new a();
+    mtD = new LinkedList();
+    AppMethodBeat.o(240803);
   }
   
-  private final void B(Bundle paramBundle)
+  private final void I(Bundle paramBundle)
   {
+    com.tencent.mm.game.report.c.a locala;
+    try
+    {
+      AppMethodBeat.i(240773);
+      if (paramBundle == null) {
+        break label199;
+      }
+      if (!MMApplicationContext.isMainProcess()) {
+        break label185;
+      }
+      locala = new com.tencent.mm.game.report.c.a();
+      if (paramBundle.getInt("cmd", 0) != 1) {
+        break label177;
+      }
+      if (muJ != 0L) {
+        break label109;
+      }
+      localObject = h.baE().ban().get(at.a.acHR, Long.valueOf(1000L));
+      if (localObject == null)
+      {
+        paramBundle = new NullPointerException("null cannot be cast to non-null type kotlin.Long");
+        AppMethodBeat.o(240773);
+        throw paramBundle;
+      }
+    }
+    finally {}
+    muJ = Util.nullAsNil(Long.valueOf(((Long)localObject).longValue()));
+    label109:
+    Object localObject = new g();
+    long l = muJ + 1L;
+    muJ = l;
+    ((g)localObject).seq = l;
+    ((g)localObject).muG = q.aPj();
+    ((g)localObject).muH = paramBundle.getBoolean("has_unread_msg", false);
+    locala.mus = ((g)localObject);
+    muI.a(locala);
+    AppMethodBeat.o(240773);
     for (;;)
     {
-      com.tencent.mm.game.report.c.a locala;
-      try
-      {
-        AppMethodBeat.i(198965);
-        if (paramBundle == null) {
-          break label216;
-        }
-        if (!MMApplicationContext.isMainProcess()) {
-          break label194;
-        }
-        locala = new com.tencent.mm.game.report.c.a();
-        switch (paramBundle.getInt("cmd", 0))
-        {
-        case 1: 
-          AppMethodBeat.o(198965);
-          return;
-        }
-      }
-      finally {}
-      if (jUq == 0L)
-      {
-        localObject = h.aHG().aHp().get(ar.a.VgC, Long.valueOf(1000L));
-        if (localObject == null)
-        {
-          paramBundle = new t("null cannot be cast to non-null type kotlin.Long");
-          AppMethodBeat.o(198965);
-          throw paramBundle;
-        }
-        jUq = Util.nullAsNil((Long)localObject);
-      }
-      Object localObject = new g();
-      long l = jUq + 1L;
-      jUq = l;
-      ((g)localObject).seq = l;
-      ((g)localObject).jUo = com.tencent.mm.compatible.deviceinfo.q.auP();
-      ((g)localObject).jUp = paramBundle.getBoolean("has_unread_msg", false);
-      locala.jUa = ((g)localObject);
-      jUr.a(locala);
-      AppMethodBeat.o(198965);
+      return;
+      label177:
+      AppMethodBeat.o(240773);
       continue;
-      label194:
+      label185:
       j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)paramBundle, a.class, null);
-      AppMethodBeat.o(198965);
-      continue;
-      label216:
-      AppMethodBeat.o(198965);
+      label199:
+      AppMethodBeat.o(240773);
     }
+  }
+  
+  private static final int a(com.tencent.mm.game.report.c.a parama, int paramInt1, int paramInt2, String paramString, c paramc, p paramp)
+  {
+    AppMethodBeat.i(240792);
+    s.u(parama, "$this_run");
+    Log.i("MicroMsg.GameChatReport", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      parama = parama.mus;
+      if (parama != null)
+      {
+        h.baE().ban().set(at.a.acHR, Long.valueOf(parama.seq));
+        h.baE().ban().set(at.a.acHS, Boolean.valueOf(parama.muH));
+      }
+    }
+    mtE = false;
+    muI.aXF();
+    AppMethodBeat.o(240792);
+    return 0;
   }
   
   /* Error */
@@ -98,29 +119,29 @@ public final class a
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 181
-    //   4: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 185	com/tencent/mm/kernel/h:aHE	()Lcom/tencent/mm/kernel/b;
-    //   10: invokevirtual 190	com/tencent/mm/kernel/b:aGM	()Z
+    //   2: ldc 231
+    //   4: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: invokestatic 235	com/tencent/mm/kernel/h:baC	()Lcom/tencent/mm/kernel/b;
+    //   10: invokevirtual 240	com/tencent/mm/kernel/b:aZN	()Z
     //   13: ifeq +9 -> 22
-    //   16: invokestatic 193	com/tencent/mm/kernel/b:aGE	()Z
+    //   16: invokestatic 243	com/tencent/mm/kernel/b:aZG	()Z
     //   19: ifeq +18 -> 37
-    //   22: ldc 195
-    //   24: ldc 197
-    //   26: invokestatic 203	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: ldc 181
-    //   31: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: ldc 201
+    //   24: ldc 245
+    //   26: invokestatic 249	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   29: ldc 231
+    //   31: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
     //   35: monitorexit
     //   36: return
-    //   37: getstatic 64	com/tencent/mm/game/report/d/a:jTl	Ljava/util/LinkedList;
+    //   37: getstatic 74	com/tencent/mm/game/report/d/a:mtD	Ljava/util/LinkedList;
     //   40: aload_1
-    //   41: invokevirtual 207	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   41: invokevirtual 253	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   44: pop
     //   45: aload_0
-    //   46: invokespecial 210	com/tencent/mm/game/report/d/a:aEB	()V
-    //   49: ldc 181
-    //   51: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: invokespecial 230	com/tencent/mm/game/report/d/a:aXF	()V
+    //   49: ldc 231
+    //   51: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: goto -20 -> 34
     //   57: astore_1
     //   58: aload_0
@@ -138,96 +159,67 @@ public final class a
     //   37	54	57	finally
   }
   
-  private final void aEB()
+  private final void aXF()
   {
-    for (;;)
+    try
     {
-      try
+      AppMethodBeat.i(240786);
+      if (mtE)
       {
-        AppMethodBeat.i(198972);
-        if (jTm)
-        {
-          Log.i("MicroMsg.GameChatReport", "tryDoScene isBusy");
-          AppMethodBeat.o(198972);
-          return;
+        Log.i("MicroMsg.GameChatReport", "tryDoScene isBusy");
+        AppMethodBeat.o(240786);
+      }
+      for (;;)
+      {
+        return;
+        if (!Util.isNullOrNil((List)mtD)) {
+          break;
         }
-        if (Util.isNullOrNil((List)jTl))
-        {
-          Log.i("MicroMsg.GameChatReport", "waitingList is null");
-          AppMethodBeat.o(198972);
-          continue;
-        }
-        localObject2 = (com.tencent.mm.game.report.c.a)jTl.remove(0);
+        Log.i("MicroMsg.GameChatReport", "waitingList is null");
+        AppMethodBeat.o(240786);
       }
-      finally {}
-      Object localObject2;
-      if (localObject2 != null)
-      {
-        jTm = true;
-        d.a locala = new d.a();
-        locala.TW("/cgi-bin/mmgame-bin/gamegamelifeappsvr/chatreport");
-        locala.vD(4352);
-        locala.vF(0);
-        locala.vG(0);
-        locala.c((com.tencent.mm.cd.a)localObject2);
-        locala.d((com.tencent.mm.cd.a)new b());
-        if (aa.a(locala.bgN(), (aa.a)new b((com.tencent.mm.game.report.c.a)localObject2)) != null) {}
+      localObject2 = (com.tencent.mm.game.report.c.a)mtD.remove(0);
+    }
+    finally {}
+    if (localObject2 == null) {}
+    c.a locala;
+    for (Object localObject2 = null;; localObject2 = z.a(locala.bEF(), new a..ExternalSyntheticLambda0((com.tencent.mm.game.report.c.a)localObject2)))
+    {
+      if (localObject2 == null) {
+        aXF();
       }
-      else
-      {
-        aEB();
-        localObject2 = x.aazN;
-      }
-      AppMethodBeat.o(198972);
+      AppMethodBeat.o(240786);
+      break;
+      mtE = true;
+      locala = new c.a();
+      locala.uri = "/cgi-bin/mmgame-bin/gamegamelifeappsvr/chatreport";
+      locala.funcId = 4352;
+      locala.otG = 0;
+      locala.respCmdId = 0;
+      locala.otE = ((com.tencent.mm.bx.a)localObject2);
+      locala.otF = ((com.tencent.mm.bx.a)new b());
     }
   }
   
-  public static void eI(boolean paramBoolean)
+  public static void fs(boolean paramBoolean)
   {
-    AppMethodBeat.i(198959);
+    AppMethodBeat.i(240765);
     Bundle localBundle = new Bundle();
     localBundle.putInt("cmd", 1);
     localBundle.putBoolean("has_unread_msg", paramBoolean);
-    jUr.B(localBundle);
-    AppMethodBeat.o(198959);
+    muI.I(localBundle);
+    AppMethodBeat.o(240765);
   }
   
   @com.tencent.mm.ipcinvoker.c.a
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/game/report/service/GameChatReportWrapper$IpcChatReportTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "report-api_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/game/report/service/GameChatReportWrapper$IpcChatReportTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "report-api_release"}, k=1, mv={1, 5, 1}, xi=48)
   static final class a
-    implements com.tencent.mm.ipcinvoker.d<Bundle, Bundle>
+    implements d<Bundle, Bundle>
   {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-  static final class b
-    implements aa.a
-  {
-    b(com.tencent.mm.game.report.c.a parama) {}
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.d paramd, com.tencent.mm.an.q paramq)
-    {
-      AppMethodBeat.i(198990);
-      Log.i("MicroMsg.GameChatReport", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        paramString = this.jUs.jUa;
-        if (paramString != null)
-        {
-          h.aHG().aHp().set(ar.a.VgC, Long.valueOf(paramString.seq));
-          h.aHG().aHp().set(ar.a.VgD, Boolean.valueOf(paramString.jUp));
-        }
-      }
-      paramString = a.jUr;
-      a.aEC();
-      a.a(a.jUr);
-      AppMethodBeat.o(198990);
-      return 0;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.game.report.d.a
  * JD-Core Version:    0.7.0.1
  */

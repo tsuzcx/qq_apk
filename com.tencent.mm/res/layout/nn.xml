@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b2s" android:background="@drawable/m2" android:paddingLeft="10.0dip" android:paddingTop="9.0dip" android:paddingRight="10.0dip" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb">
-        <TextView android:textSize="@dimen/ka" android:textColor="@color/fq" android:id="@id/b2t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{有注册过的会员卡可添加}" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/icons_filled_arrow" app:iconColor="@color/FG_2" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b2p" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/u_" android:id="@id/b2q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/apq" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b30" android:layout_width="8.5dip" android:layout_height="8.5dip" android:layout_marginLeft="4.0dip" android:src="@raw/card_sort_icon" app:iconColor="@color/FG_2" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:background="@color/ii" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/f9v" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true">
+        <View android:id="@id/fob" android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/m4" android:gravity="center_vertical" android:id="@id/f9s" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/ayu" android:layout_below="@id/fob" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/Link" android:gravity="center_vertical" android:id="@id/f_b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:text="@string/az3" android:layout_toRightOf="@id/f9s" android:layout_below="@id/fob" />
+        <TextView android:textSize="13.0dip" android:textColor="@color/al6" android:gravity="center" android:id="@id/f_7" android:background="@drawable/j8" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:text="@string/az0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bs8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/j8" android:id="@id/hgh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b0h" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ListView android:id="@id/avk" android:background="@color/lz" android:visibility="visible" android:layout_height="fill_parent" android:transcriptMode="disabled" android:layout_above="@id/f9v" style="@style/g8" />
+</RelativeLayout>

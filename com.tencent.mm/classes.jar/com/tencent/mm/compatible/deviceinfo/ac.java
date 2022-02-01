@@ -8,17 +8,18 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class ac
 {
-  public static int juA = 2;
-  public static int juB = 3;
-  public static int juC = 4;
-  public static int juD = 5;
-  private static ac jux = null;
-  public static int juy = 0;
-  public static int juz = 1;
+  private static ac lXO = null;
+  public static int lXP = 0;
+  public static int lXQ = 1;
+  public static int lXR = 2;
+  public static int lXS = 3;
+  public static int lXT = 4;
+  public static int lXU = 5;
   
-  public static int avq()
+  public static int aPK()
   {
     AppMethodBeat.i(155821);
+    MMApplicationContext.getContext();
     NetworkInfo localNetworkInfo = ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
     if (localNetworkInfo == null)
     {
@@ -40,7 +41,7 @@ public final class ac
     default: 
       if (i >= 20)
       {
-        i = juD;
+        i = lXU;
         AppMethodBeat.o(155821);
         return i;
       }

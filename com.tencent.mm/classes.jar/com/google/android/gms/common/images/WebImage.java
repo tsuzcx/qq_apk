@@ -6,28 +6,18 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Locale;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@SafeParcelable.Class(creator="WebImageCreator")
 public final class WebImage
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<WebImage> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getWidth", id=3)
   private final int zzps;
-  @SafeParcelable.Field(getter="getHeight", id=4)
   private final int zzpt;
-  @SafeParcelable.Field(getter="getUrl", id=2)
   private final Uri zzpu;
   
   static
@@ -37,8 +27,7 @@ public final class WebImage
     AppMethodBeat.o(11746);
   }
   
-  @SafeParcelable.Constructor
-  WebImage(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) Uri paramUri, @SafeParcelable.Param(id=3) int paramInt2, @SafeParcelable.Param(id=4) int paramInt3)
+  WebImage(int paramInt1, Uri paramUri, int paramInt2, int paramInt3)
   {
     this.zzal = paramInt1;
     this.zzpu = paramUri;
@@ -185,7 +174,7 @@ public final class WebImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.images.WebImage
  * JD-Core Version:    0.7.0.1
  */

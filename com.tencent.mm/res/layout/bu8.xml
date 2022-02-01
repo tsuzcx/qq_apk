@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/d" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <HorizontalScrollView android:id="@id/er" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/es" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" />
-        </RelativeLayout>
-    </HorizontalScrollView>
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/glr" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a61" />
-</RelativeLayout>
+    <include android:id="@id/iv8" layout="@layout/bu7" />
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hgw" android:background="@color/a" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/xh" />
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:layout_gravity="top" android:id="@id/iux" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

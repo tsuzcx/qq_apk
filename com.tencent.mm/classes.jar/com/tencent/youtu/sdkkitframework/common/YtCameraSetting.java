@@ -29,7 +29,7 @@ public class YtCameraSetting
   private static int chooseFixedPreviewFps(Camera.Parameters paramParameters, int paramInt)
   {
     int j = 0;
-    AppMethodBeat.i(256601);
+    AppMethodBeat.i(218405);
     Object localObject = paramParameters.getSupportedPreviewFpsRange().iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -40,7 +40,7 @@ public class YtCameraSetting
         paramParameters.setPreviewFpsRange(arrayOfInt[0], arrayOfInt[1]);
         YtLogger.d("YtCameraSetting", "use preview fps range: " + arrayOfInt[0] + " " + arrayOfInt[1]);
         paramInt = arrayOfInt[0];
-        AppMethodBeat.o(256601);
+        AppMethodBeat.o(218405);
         return paramInt;
       }
     }
@@ -75,7 +75,7 @@ public class YtCameraSetting
         if (paramInt < j)
         {
           paramParameters.setPreviewFrameRate(j / 1000);
-          AppMethodBeat.o(256601);
+          AppMethodBeat.o(218405);
           return j;
           i = paramInt;
           if (paramInt > localObject[1]) {
@@ -102,7 +102,7 @@ public class YtCameraSetting
       }
     }
     paramParameters.setPreviewFrameRate(i / 1000);
-    AppMethodBeat.o(256601);
+    AppMethodBeat.o(218405);
     return i;
   }
   
@@ -118,10 +118,10 @@ public class YtCameraSetting
   
   private static Camera.Size getOptimalPreviewSize(List<Camera.Size> paramList, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256600);
+    AppMethodBeat.i(218385);
     if (paramList == null)
     {
-      AppMethodBeat.o(256600);
+      AppMethodBeat.o(218385);
       return null;
     }
     Object localObject1 = null;
@@ -165,28 +165,28 @@ public class YtCameraSetting
           }
         }
       }
-      AppMethodBeat.o(256600);
+      AppMethodBeat.o(218385);
       return localObject2;
     }
   }
   
   public static int getRotate(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256578);
+    AppMethodBeat.i(218303);
     paramInt1 = getRotateTag(getVideoRotate(paramContext, paramInt1), paramInt2);
-    AppMethodBeat.o(256578);
+    AppMethodBeat.o(218303);
     return paramInt1;
   }
   
   public static int getRotateTag(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256582);
+    AppMethodBeat.i(218318);
     if (paramInt1 == 90) {
       paramInt1 = 7;
     }
     while (paramInt2 == 1)
     {
-      AppMethodBeat.o(256582);
+      AppMethodBeat.o(218318);
       return paramInt1;
       if (paramInt1 == 180)
       {
@@ -203,13 +203,13 @@ public class YtCameraSetting
       }
     }
     paramInt1 = transBackFacingCameraRatateTag(paramInt1);
-    AppMethodBeat.o(256582);
+    AppMethodBeat.o(218318);
     return paramInt1;
   }
   
   public static int getVideoRotate(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(256585);
+    AppMethodBeat.i(218331);
     Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
     Camera.getCameraInfo(paramInt, localCameraInfo);
     switch (((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getRotation())
@@ -223,7 +223,7 @@ public class YtCameraSetting
     for (int i = (360 - (localCameraInfo.orientation + paramInt) % 360) % 360;; i = (localCameraInfo.orientation - paramInt + 360) % 360)
     {
       YtLogger.i("YtCameraSetting", "debug camera orientation is " + localCameraInfo.orientation + " ui degrees is " + paramInt);
-      AppMethodBeat.o(256585);
+      AppMethodBeat.o(218331);
       return i;
       paramInt = 0;
       break;
@@ -238,15 +238,15 @@ public class YtCameraSetting
   
   public static int initCamera(Context paramContext, Camera paramCamera, int paramInt)
   {
-    AppMethodBeat.i(256587);
+    AppMethodBeat.i(218340);
     initCamera(paramContext, paramCamera, paramInt, 4);
-    AppMethodBeat.o(256587);
+    AppMethodBeat.o(218340);
     return 0;
   }
   
   public static int initCamera(Context paramContext, Camera paramCamera, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(256593);
+    AppMethodBeat.i(218363);
     Camera.Parameters localParameters1;
     List localList;
     try
@@ -266,7 +266,7 @@ public class YtCameraSetting
     catch (Exception paramContext)
     {
       YtLogger.e("YtCameraSetting", "get camera parameters failed. 1. Check Camera.getParameters() interface. 2. Get logs for more detail.");
-      AppMethodBeat.o(256593);
+      AppMethodBeat.o(218363);
       return 1;
     }
     if (localList.indexOf("continuous-video") >= 0)
@@ -290,7 +290,7 @@ public class YtCameraSetting
     finally
     {
       paramCamera.getParameters();
-      AppMethodBeat.o(256593);
+      AppMethodBeat.o(218363);
     }
     int i = getVideoRotate(paramContext, paramInt1);
     paramCamera.setDisplayOrientation(i);
@@ -367,7 +367,7 @@ public class YtCameraSetting
         YtLogger.d("YtCameraSetting", "after set parameters getPreviewFpsRange=" + paramCamera[0] + "-" + paramCamera[1] + " ;after set parameter fps=" + paramInt1);
         paramContext = paramContext.getPreviewSize();
         YtLogger.d("YtCameraSetting", "camera preview size is " + paramContext.width + " " + paramContext.height);
-        AppMethodBeat.o(256593);
+        AppMethodBeat.o(218363);
         return 0;
         paramContext = paramContext;
         YtLogger.e("YtCameraSetting", "Camera.setParameters.setPreviewSize failed!!: " + paramContext.getLocalizedMessage());
@@ -394,7 +394,7 @@ public class YtCameraSetting
   
   public static void setVideoSize(Camera.Parameters paramParameters, CamcorderProfile paramCamcorderProfile)
   {
-    AppMethodBeat.i(256597);
+    AppMethodBeat.i(218375);
     Object localObject = paramParameters.getSupportedPreviewSizes();
     if (paramParameters.getSupportedVideoSizes() == null)
     {
@@ -431,60 +431,60 @@ public class YtCameraSetting
       }
     }
     YtLogger.d("YtCameraSetting", "select video size camcorderProfile:" + paramCamcorderProfile.videoFrameWidth + "x" + paramCamcorderProfile.videoFrameHeight);
-    AppMethodBeat.o(256597);
+    AppMethodBeat.o(218375);
   }
   
   public static int transBackFacingCameraRatateTag(int paramInt)
   {
-    AppMethodBeat.i(256580);
+    AppMethodBeat.i(218311);
     if (paramInt == 1)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 2;
     }
     if (paramInt == 2)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 1;
     }
     if (paramInt == 3)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 4;
     }
     if (paramInt == 4)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 3;
     }
     if (paramInt == 5)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 8;
     }
     if (paramInt == 6)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 7;
     }
     if (paramInt == 7)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 6;
     }
     if (paramInt == 8)
     {
-      AppMethodBeat.o(256580);
+      AppMethodBeat.o(218311);
       return 5;
     }
     YtLogger.w("YtCameraSetting", "[YtCameraSetting.transBackFacingCameraRatateTag] unsurported rotateTag: ".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(256580);
+    AppMethodBeat.o(218311);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YtCameraSetting
  * JD-Core Version:    0.7.0.1
  */

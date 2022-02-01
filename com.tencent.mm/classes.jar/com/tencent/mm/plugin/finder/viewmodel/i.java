@@ -1,41 +1,86 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
-import androidx.lifecycle.x;
+import androidx.lifecycle.af;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import java.util.ArrayList;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.auk;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTopicFeedCache;", "Landroidx/lifecycle/ViewModel;", "()V", "caches", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lkotlin/collections/ArrayList;", "get", "onCleared", "", "resetCache", "store", "lastDataList", "Cache", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM;", "Landroidx/lifecycle/ViewModel;", "()V", "caches", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Cache;", "get", "tabType", "onCleared", "", "resetCache", "store", "lastSelectedPosition", "lastDataList", "Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "Cache", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends x
+  extends af
 {
-  public static final a Bhw;
-  public ArrayList<BaseFinderFeed> Bhv;
+  public static final b GLq;
+  public final ConcurrentHashMap<Integer, a> GKl;
   
   static
   {
-    AppMethodBeat.i(290135);
-    Bhw = new a((byte)0);
-    AppMethodBeat.o(290135);
+    AppMethodBeat.i(337165);
+    GLq = new b((byte)0);
+    AppMethodBeat.o(337165);
+  }
+  
+  public i()
+  {
+    AppMethodBeat.i(337157);
+    this.GKl = new ConcurrentHashMap();
+    AppMethodBeat.o(337157);
   }
   
   public final void onCleared()
   {
-    AppMethodBeat.i(290133);
+    AppMethodBeat.i(337174);
     super.onCleared();
-    ArrayList localArrayList = this.Bhv;
-    if (localArrayList != null)
-    {
-      localArrayList.clear();
-      AppMethodBeat.o(290133);
-      return;
-    }
-    AppMethodBeat.o(290133);
+    this.GKl.clear();
+    AppMethodBeat.o(337174);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTopicFeedCache$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Cache;", "", "tabType", "", "(I)V", "lastDataList", "Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "getLastDataList", "()Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;", "setLastDataList", "(Lcom/tencent/mm/protocal/protobuf/FinderCategoryRecommend;)V", "lastSelectedPosition", "getLastSelectedPosition", "()I", "setLastSelectedPosition", "getTabType", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public auk GLr;
+    public int GLs;
+    private final int hJx;
+    
+    public a()
+    {
+      AppMethodBeat.i(337383);
+      this.hJx = 4;
+      this.GLr = new auk();
+      this.GLs = -1;
+      AppMethodBeat.o(337383);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if (!(paramObject instanceof a)) {
+          return false;
+        }
+        paramObject = (a)paramObject;
+      } while (this.hJx == paramObject.hJx);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      return this.hJx;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(337387);
+      String str = "Cache(tabType=" + this.hJx + ')';
+      AppMethodBeat.o(337387);
+      return str;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderTagCacheVM$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class b {}
 }
 
 

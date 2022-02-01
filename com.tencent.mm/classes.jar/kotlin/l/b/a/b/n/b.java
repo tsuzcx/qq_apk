@@ -1,24 +1,25 @@
 package kotlin.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.t;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.x;
 
 public abstract interface b
 {
   public abstract String getDescription();
   
-  public abstract boolean h(t paramt);
+  public abstract boolean h(x paramx);
   
-  public abstract String i(t paramt);
+  public abstract String i(x paramx);
   
   public static final class a
   {
-    public static String a(b paramb, t paramt)
+    public static String a(b paramb, x paramx)
     {
       AppMethodBeat.i(61278);
-      p.k(paramt, "functionDescriptor");
-      if (!paramb.h(paramt))
+      s.u(paramb, "this");
+      s.u(paramx, "functionDescriptor");
+      if (!paramb.h(paramx))
       {
         paramb = paramb.getDescription();
         AppMethodBeat.o(61278);
@@ -31,7 +32,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.n.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,55 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.exdevice.g.b.f;
-import com.tencent.mm.plugin.exdevice.model.ae;
-import com.tencent.mm.protocal.protobuf.blw;
-import com.tencent.mm.protocal.protobuf.cex;
-import com.tencent.mm.protocal.protobuf.cey;
-import com.tencent.mm.protocal.protobuf.fqm;
-import com.tencent.mm.protocal.protobuf.fqn;
+import com.tencent.mm.plugin.exdevice.model.ah;
+import com.tencent.mm.protocal.protobuf.bzo;
+import com.tencent.mm.protocal.protobuf.cva;
+import com.tencent.mm.protocal.protobuf.cvb;
+import com.tencent.mm.protocal.protobuf.gnv;
+import com.tencent.mm.protocal.protobuf.gnw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bx;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.plugin.exdevice.b.a<cex, cey>
+  extends com.tencent.mm.plugin.exdevice.b.a<cva, cvb>
 {
   public String appName;
-  public String pqW;
-  public String vhY;
-  public boolean vij;
-  public boolean vik;
-  public String vil;
-  public String vim;
-  public com.tencent.mm.plugin.exdevice.g.b.a.a vin;
-  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> vio;
-  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> vip;
-  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> viq;
-  public ArrayList<String> vir;
-  public String vis;
-  public String vit;
-  public boolean viu;
-  public boolean viv;
-  public String viw;
-  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<j>> vix;
-  public a viy;
+  public String svG;
+  public String ytZ;
+  public boolean yui;
+  public boolean yuj;
+  public String yuk;
+  public String yul;
+  public com.tencent.mm.plugin.exdevice.g.b.a.a yum;
+  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> yun;
+  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.c> yuo;
+  public ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> yup;
+  public ArrayList<String> yuq;
+  public String yur;
+  public String yus;
+  public boolean yut;
+  public boolean yuu;
+  public String yuv;
+  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<j>> yuw;
+  public a yux;
   
   public j(String paramString1, String paramString2, String paramString3, boolean paramBoolean, com.tencent.mm.plugin.exdevice.b.b<j> paramb)
   {
     AppMethodBeat.i(23526);
-    this.vix = new WeakReference(paramb);
-    this.vis = paramString1;
-    this.vil = paramString1;
+    this.yuw = new WeakReference(paramb);
+    this.yur = paramString1;
+    this.yuk = paramString1;
     this.appName = Util.nullAsNil(paramString2);
-    this.vik = paramBoolean;
-    this.vim = paramString3;
+    this.yuj = paramBoolean;
+    this.yul = paramString3;
     AppMethodBeat.o(23526);
   }
   
@@ -65,11 +63,11 @@ public final class j
     return "/cgi-bin/mmbiz-bin/rank/getuserranklike";
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23527);
     Log.d("MicroMsg.NetSceneGetRankInfo", "hy: get rank info end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    cey localcey;
+    cvb localcvb;
     Object localObject1;
     Object localObject3;
     Object localObject4;
@@ -78,19 +76,19 @@ public final class j
     Object localObject2;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      localcey = (cey)ctC();
+      localcvb = (cvb)cWm();
       localObject1 = "";
-      this.vip = new ArrayList();
-      if (localcey.RIz != null)
+      this.yuo = new ArrayList();
+      if (localcvb.YFB != null)
       {
-        localObject3 = localcey.RIz.iterator();
+        localObject3 = localcvb.YFB.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (blw)((Iterator)localObject3).next();
-          bh.beI();
-          if (com.tencent.mm.model.c.bbL().bwd(((blw)localObject4).username))
+          localObject4 = (bzo)((Iterator)localObject3).next();
+          bh.bCz();
+          if (com.tencent.mm.model.c.bzA().bxr(((bzo)localObject4).username))
           {
-            str1 = localcey.lmG;
+            str1 = localcvb.nRL;
             str2 = this.appName;
             if ((Util.isNullOrNil(str1)) || (localObject4 == null))
             {
@@ -102,32 +100,32 @@ public final class j
               if (localObject2 == null) {
                 break label226;
               }
-              this.vip.add(localObject2);
+              this.yuo.add(localObject2);
               break;
               localObject2 = new com.tencent.mm.plugin.exdevice.g.b.a.c();
               ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_rankID = str1;
-              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_username = ((blw)localObject4).username;
-              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_step = ((blw)localObject4).oxQ;
+              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_username = ((bzo)localObject4).username;
+              ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_step = ((bzo)localObject4).rBp;
               ((com.tencent.mm.plugin.exdevice.g.b.a.c)localObject2).field_appusername = str2;
             }
           }
           else
           {
             label226:
-            bh.aGY().a(new h(((blw)localObject4).username, null), 0);
+            bh.aZW().a(new h(((bzo)localObject4).username, null), 0);
           }
         }
       }
-      this.vio = new ArrayList();
+      this.yun = new ArrayList();
       localObject2 = localObject1;
-      if (localcey.Tmy != null)
+      if (localcvb.aaAF != null)
       {
-        localObject3 = localcey.Tmy.iterator();
+        localObject3 = localcvb.aaAF.iterator();
         localObject2 = localObject1;
         if (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (fqm)((Iterator)localObject3).next();
-          str1 = localcey.lmG;
+          localObject4 = (gnv)((Iterator)localObject3).next();
+          str1 = localcvb.nRL;
           str2 = this.appName;
           if ((Util.isNullOrNil(str1)) || (localObject4 == null))
           {
@@ -151,28 +149,28 @@ public final class j
     label1245:
     for (;;)
     {
-      this.vio.add(localObject2);
+      this.yun.add(localObject2);
       break;
       localObject2 = new com.tencent.mm.plugin.exdevice.g.b.a.d();
       ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_appusername = str2;
       ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_rankID = str1;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_likecount = ((fqm)localObject4).Sry;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_ranknum = ((fqm)localObject4).UOk;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_score = ((fqm)localObject4).score;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_selfLikeState = ((fqm)localObject4).UOl;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_username = ((fqm)localObject4).username;
-      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_sportRecord = ((fqm)localObject4).UOm;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_likecount = ((gnv)localObject4).ZqA;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_ranknum = ((gnv)localObject4).aciM;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_score = ((gnv)localObject4).score;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_selfLikeState = ((gnv)localObject4).aciN;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_username = ((gnv)localObject4).username;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.d)localObject2).field_sportRecord = ((gnv)localObject4).aciO;
       break label347;
       break;
-      this.viq = new ArrayList();
-      if (localcey.Tmz != null)
+      this.yup = new ArrayList();
+      if (localcvb.aaAG != null)
       {
-        localObject3 = localcey.Tmz.iterator();
+        localObject3 = localcvb.aaAG.iterator();
         label616:
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (fqn)((Iterator)localObject3).next();
-          str1 = localcey.lmG;
+          localObject4 = (gnw)((Iterator)localObject3).next();
+          str1 = localcvb.nRL;
           str2 = this.appName;
           if ((Util.isNullOrNil(str1)) || (localObject4 == null))
           {
@@ -184,31 +182,31 @@ public final class j
             if (localObject1 == null) {
               break label616;
             }
-            this.viq.add(localObject1);
+            this.yup.add(localObject1);
             break;
             localObject1 = new com.tencent.mm.plugin.exdevice.g.b.a.e();
             ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_appusername = str2;
             ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_rankID = str1;
-            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_timestamp = ((fqn)localObject4).dXr;
-            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_username = ((fqn)localObject4).username;
+            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_timestamp = ((gnw)localObject4).fZW;
+            ((com.tencent.mm.plugin.exdevice.g.b.a.e)localObject1).field_username = ((gnw)localObject4).username;
           }
         }
       }
-      this.vir = new ArrayList();
-      if (localcey.Tmp != null)
+      this.yuq = new ArrayList();
+      if (localcvb.aaAw != null)
       {
-        localObject1 = localcey.Tmp.iterator();
+        localObject1 = localcvb.aaAw.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject3 = (String)((Iterator)localObject1).next();
-          this.vir.add(localObject3);
+          this.yuq.add(localObject3);
         }
       }
-      if (!Util.isNullOrNil(this.vim)) {
-        localObject2 = this.vim;
+      if (!Util.isNullOrNil(this.yul)) {
+        localObject2 = this.yul;
       }
-      localObject3 = localcey.TmA;
-      localObject4 = localcey.TmB;
+      localObject3 = localcvb.aaAH;
+      localObject4 = localcvb.aaAI;
       boolean bool;
       int i;
       int j;
@@ -216,65 +214,65 @@ public final class j
       {
         Log.w("MicroMsg.ExdeviceRankConverter", "hy: param error");
         localObject1 = null;
-        this.vin = ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1);
-        this.vis = localcey.lmG;
-        this.pqW = localcey.Tmr;
-        this.vhY = localcey.Tmq;
-        this.vit = localcey.TmC;
-        this.viu = localcey.viu;
-        if (localcey.TmF != 1) {
+        this.yum = ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1);
+        this.yur = localcvb.nRL;
+        this.svG = localcvb.aaAy;
+        this.ytZ = localcvb.aaAx;
+        this.yus = localcvb.aaAJ;
+        this.yut = localcvb.yut;
+        if (localcvb.aaAM != 1) {
           break label1169;
         }
         bool = true;
-        this.viv = bool;
-        this.viw = localcey.TmG;
-        this.vij = localcey.Tmt;
+        this.yuu = bool;
+        this.yuv = localcvb.aaAN;
+        this.yui = localcvb.aaAA;
         Log.d("MicroMsg.NetSceneGetRankInfo", "hy: get score info ok.");
-        if ((this.vil == null) || (!this.vil.equals(this.vis)))
+        if ((this.yuk == null) || (!this.yuk.equals(this.yur)))
         {
-          localObject1 = ae.cZG().viH;
+          localObject1 = ah.dFZ().yuG;
           if (localObject1 != null) {
-            ((f)localObject1).avB(this.vis);
+            ((f)localObject1).apB(this.yur);
           }
         }
-        if ((this.viy != null) && (this.vik)) {
-          this.viy.a(this);
+        if ((this.yux != null) && (this.yuj)) {
+          this.yux.a(this);
         }
-        if (this.vik) {
-          ae.cZA().jdMethod_do(this.vip);
+        if (this.yuj) {
+          ah.dFT().fl(this.yuo);
         }
-        localObject1 = ae.cZz();
-        localObject2 = this.vis;
+        localObject1 = ah.dFS();
+        localObject2 = this.yur;
         if (!Util.isNullOrNil((String)localObject2)) {
           break label1175;
         }
         Log.w("MicroMsg.ExdeviceRankInfoStg", "delete rankInfo by rankId failed, rankId is null or nil.");
-        ae.cZz().g(this.vis, this.vio);
-        bool = this.viu;
-        if (this.vip == null) {
+        ah.dFS().g(this.yur, this.yun);
+        bool = this.yut;
+        if (this.yuo == null) {
           break label1227;
         }
-        i = this.vip.size();
-        if (this.vio == null) {
+        i = this.yuo.size();
+        if (this.yun == null) {
           break label1233;
         }
-        j = this.vio.size();
+        j = this.yun.size();
         label991:
-        if (this.viq == null) {
+        if (this.yup == null) {
           break label1239;
         }
       }
-      for (int k = this.viq.size();; k = 0)
+      for (int k = this.yup.size();; k = 0)
       {
         Log.i("MicroMsg.NetSceneGetRankInfo", "isCacheExist(%s), RankFollowInfo size(%s), RankInfo size(%d), LikeInfo size(%d).", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-        ae.cZD().a(this.vis, this.appName, this.viq);
-        if (this.vin != null) {
-          ae.cZC().a(this.vin);
+        ah.dFW().a(this.yur, this.appName, this.yup);
+        if (this.yum != null) {
+          ah.dFV().a(this.yum);
         }
         super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
-        params = (com.tencent.mm.plugin.exdevice.b.b)this.vix.get();
+        params = (com.tencent.mm.plugin.exdevice.b.b)this.yuw.get();
         if (params != null) {
-          params.a(paramInt2, paramInt3, paramString, this);
+          params.onNetSceneEndCallback(paramInt2, paramInt3, paramString, this);
         }
         AppMethodBeat.o(23527);
         return;
@@ -302,7 +300,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.j
  * JD-Core Version:    0.7.0.1
  */

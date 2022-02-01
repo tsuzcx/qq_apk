@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -12,28 +12,29 @@ import java.util.List<Lcom.tencent.mm.plugin.appbrand.backgroundrunning.AppBrand
 
 public enum c
 {
-  public int aOm;
+  public int cIi;
   public int info;
   
   static
   {
     AppMethodBeat.i(44790);
-    nSB = new c("LOCATION", 0, 2, au.i.app_brand_background_location);
-    nSC = new c("APPBRAND_VOIP", 1, 4, au.i.app_brand_background_voip);
-    nSD = new c("AUDIO_OF_VIDEO_BACKGROUND_PLAY", 2, 8, au.i.app_brand_background_audio_of_video_play);
-    nSE = new c("APPBRAND_VOIP_1v1", 3, 16, au.i.app_brand_background_voip);
-    nSF = new c("ALL", 4, 65535, -1);
-    nSG = new c[] { nSB, nSC, nSD, nSE, nSF };
+    qSm = new c("LOCATION", 0, 2, ba.i.app_brand_background_location);
+    qSn = new c("APPBRAND_VOIP", 1, 4, ba.i.app_brand_background_voip);
+    qSo = new c("AUDIO_OF_VIDEO_BACKGROUND_PLAY", 2, 8, ba.i.app_brand_background_audio_of_video_play);
+    qSp = new c("APPBRAND_VOIP_1v1", 3, 16, ba.i.app_brand_background_voip);
+    qSq = new c("BLUETOOTH", 4, 32, ba.i.app_brand_background_bluetooth);
+    qSr = new c("ALL", 5, 65535, -1);
+    qSs = new c[] { qSm, qSn, qSo, qSp, qSq, qSr };
     AppMethodBeat.o(44790);
   }
   
   private c(int paramInt1, int paramInt2)
   {
-    this.aOm = paramInt1;
+    this.cIi = paramInt1;
     this.info = paramInt2;
   }
   
-  public static String bk(List<AppBrandBackgroundRunningApp> paramList)
+  public static String cV(List<AppBrandBackgroundRunningApp> paramList)
   {
     AppMethodBeat.i(44788);
     AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = null;
@@ -45,16 +46,16 @@ public enum c
       if (localIterator.hasNext())
       {
         localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
-        if (eo(localAppBrandBackgroundRunningApp.aOm, nSC.aOm))
+        if (fh(localAppBrandBackgroundRunningApp.cIi, qSn.cIi))
         {
-          if (localAppBrandBackgroundRunningApp.aOm != nSC.aOm) {
+          if (localAppBrandBackgroundRunningApp.cIi != qSn.cIi) {
             localArrayList.add(localAppBrandBackgroundRunningApp);
           }
           paramList = localAppBrandBackgroundRunningApp;
         }
-        if (eo(localAppBrandBackgroundRunningApp.aOm, nSE.aOm))
+        if (fh(localAppBrandBackgroundRunningApp.cIi, qSp.cIi))
         {
-          if (localAppBrandBackgroundRunningApp.aOm != nSE.aOm)
+          if (localAppBrandBackgroundRunningApp.cIi != qSp.cIi)
           {
             localArrayList.add(localAppBrandBackgroundRunningApp);
             paramList = localAppBrandBackgroundRunningApp;
@@ -68,11 +69,11 @@ public enum c
       {
         if (paramList != null)
         {
-          paramList = String.format("%s %s", new Object[] { String.format("%s %s", new Object[] { String.format(MMApplicationContext.getContext().getString(au.i.app_brand_background_notification_single_wxapp), new Object[] { paramList.name }), MMApplicationContext.getContext().getString(au.i.app_brand_background_voip) }), bl(localArrayList) });
+          paramList = String.format("%s %s", new Object[] { String.format("%s %s", new Object[] { String.format(MMApplicationContext.getContext().getString(ba.i.app_brand_background_notification_single_wxapp), new Object[] { paramList.name }), MMApplicationContext.getContext().getString(ba.i.app_brand_background_voip) }), cW(localArrayList) });
           AppMethodBeat.o(44788);
           return paramList;
         }
-        paramList = bl(localArrayList);
+        paramList = cW(localArrayList);
         AppMethodBeat.o(44788);
         return paramList;
       }
@@ -80,9 +81,9 @@ public enum c
     }
   }
   
-  private static String bl(List<AppBrandBackgroundRunningApp> paramList)
+  private static String cW(List<AppBrandBackgroundRunningApp> paramList)
   {
-    AppMethodBeat.i(246522);
+    AppMethodBeat.i(318216);
     String str = "";
     if (!paramList.isEmpty())
     {
@@ -92,18 +93,18 @@ public enum c
       paramList = (AppBrandBackgroundRunningApp)paramList.get(0);
     }
     label93:
-    for (str = String.format("%s %s", new Object[] { String.format(MMApplicationContext.getContext().getString(au.i.app_brand_background_notification_single_wxapp), new Object[] { paramList.name }), MMApplicationContext.getContext().getString(au.i.app_brand_background_is_using) });; str = String.format("%s %s", new Object[] { String.format(MMApplicationContext.getContext().getString(au.i.app_brand_background_many_wxapp), new Object[] { Integer.valueOf(paramList.size()) }), MMApplicationContext.getContext().getString(au.i.app_brand_background_is_using) }))
+    for (str = String.format("%s %s", new Object[] { String.format(MMApplicationContext.getContext().getString(ba.i.app_brand_background_notification_single_wxapp), new Object[] { paramList.name }), MMApplicationContext.getContext().getString(ba.i.app_brand_background_is_using) });; str = String.format("%s %s", new Object[] { String.format(MMApplicationContext.getContext().getString(ba.i.app_brand_background_many_wxapp), new Object[] { Integer.valueOf(paramList.size()) }), MMApplicationContext.getContext().getString(ba.i.app_brand_background_is_using) }))
     {
-      AppMethodBeat.o(246522);
+      AppMethodBeat.o(318216);
       return str;
     }
   }
   
-  public static String bm(List<AppBrandBackgroundRunningApp> paramList)
+  public static String cX(List<AppBrandBackgroundRunningApp> paramList)
   {
     AppMethodBeat.i(44789);
     paramList = paramList.iterator();
-    for (int i = 0; paramList.hasNext(); i = ((AppBrandBackgroundRunningApp)paramList.next()).aOm | i) {}
+    for (int i = 0; paramList.hasNext(); i = ((AppBrandBackgroundRunningApp)paramList.next()).cIi | i) {}
     Object localObject = null;
     c[] arrayOfc = values();
     int k = arrayOfc.length;
@@ -112,16 +113,16 @@ public enum c
     {
       c localc = arrayOfc[j];
       paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-      if (localc.aOm != nSF.aOm)
+      if (localc.cIi != qSr.cIi)
       {
         paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-        if (localc.aOm != nSC.aOm)
+        if (localc.cIi != qSn.cIi)
         {
           paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-          if (localc.aOm != nSE.aOm)
+          if (localc.cIi != qSp.cIi)
           {
             paramList = (List<AppBrandBackgroundRunningApp>)localObject;
-            if (eo(i, localc.aOm)) {
+            if (fh(i, localc.cIi)) {
               if (!Util.isNullOrNil((String)localObject)) {
                 break label162;
               }
@@ -141,24 +142,24 @@ public enum c
     return localObject;
   }
   
-  public static boolean eo(int paramInt1, int paramInt2)
+  public static boolean fh(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) > 0;
   }
   
-  public static int ep(int paramInt1, int paramInt2)
+  public static int fi(int paramInt1, int paramInt2)
   {
     return paramInt1 | paramInt2;
   }
   
-  public static int eq(int paramInt1, int paramInt2)
+  public static int fj(int paramInt1, int paramInt2)
   {
     return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.c
  * JD-Core Version:    0.7.0.1
  */

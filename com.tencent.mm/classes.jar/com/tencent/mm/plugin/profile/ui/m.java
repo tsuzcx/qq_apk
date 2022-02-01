@@ -1,157 +1,162 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.sns.c.b;
+import com.tencent.mm.plugin.sns.c.k;
+import com.tencent.mm.plugin.sns.c.k.a;
+import com.tencent.mm.plugin.sns.c.q;
 import com.tencent.mm.pluginsdk.c.a;
+import com.tencent.mm.pluginsdk.model.v;
+import com.tencent.mm.sdk.platformtools.DoNotCheckLeakForActivities;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.MStorageEx;
-import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.f;
 import junit.framework.Assert;
 
-abstract class m
-  implements a, MStorageEx.IOnStorageChange
+@DoNotCheckLeakForActivities({ContactInfoUI.class})
+public final class m
+  implements h, k.a, a
 {
-  protected HelperHeaderPreference.a GZD;
-  protected as contact;
-  protected Context context;
-  protected f screen;
+  public final void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, b paramb, boolean paramBoolean2) {}
   
-  public m(Context paramContext, HelperHeaderPreference.a parama)
+  public final void a(String paramString, boolean paramBoolean, int paramInt, b paramb)
   {
-    this.context = paramContext;
-    this.GZD = parama;
+    AppMethodBeat.i(27203);
+    AppMethodBeat.o(27203);
+    throw null;
   }
   
-  private void cQY()
+  public final boolean a(f paramf, au paramau, boolean paramBoolean, int paramInt)
   {
-    this.screen.removeAll();
-    this.screen.auC(getResourceId());
-    boolean bool = fqn();
-    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.byG("contact_info_header_helper");
-    if (localHelperHeaderPreference != null) {
-      localHelperHeaderPreference.a(this.contact, this.GZD);
-    }
-    if (!bool)
-    {
-      this.screen.byI("contact_info_plugin_view");
-      this.screen.byI("contact_info_plugin_clear_data");
-      this.screen.byI("contact_info_plugin_uninstall");
-      return;
-    }
-    this.screen.byI("contact_info_plugin_install");
-  }
-  
-  public boolean a(f paramf, as paramas, boolean paramBoolean, int paramInt)
-  {
-    boolean bool = false;
-    if (paramas != null)
+    boolean bool = true;
+    AppMethodBeat.i(27193);
+    if (paramau != null)
     {
       paramBoolean = true;
       Assert.assertTrue(paramBoolean);
-      if (Util.nullAsNil(paramas.field_username).length() <= 0) {
-        break label77;
+      if (Util.nullAsNil(paramau.field_username).length() <= 0) {
+        break label62;
+      }
+      paramBoolean = true;
+      label34:
+      Assert.assertTrue(paramBoolean);
+      if (paramf == null) {
+        break label67;
       }
     }
-    label77:
-    for (paramBoolean = true;; paramBoolean = false)
+    label62:
+    label67:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
       Assert.assertTrue(paramBoolean);
-      paramBoolean = bool;
-      if (paramf != null) {
-        paramBoolean = true;
-      }
-      Assert.assertTrue(paramBoolean);
-      bh.beI();
-      c.aHp().add(this);
-      this.contact = paramas;
-      this.screen = paramf;
-      cQY();
-      return true;
+      AppMethodBeat.o(27193);
+      throw null;
       paramBoolean = false;
       break;
+      paramBoolean = false;
+      break label34;
     }
   }
   
-  public boolean atw(String paramString)
+  public final boolean anl(String paramString)
   {
-    if ("contact_info_plugin_clear_data".equals(paramString))
+    AppMethodBeat.i(27190);
+    if (paramString.equals("contact_info_sns"))
     {
-      h.c(this.context, this.context.getString(R.l.contact_info_clear_data), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      bh.bCz();
+      if (!c.isSDCardAvailable())
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(27204);
-          m.this.clear();
-          AppMethodBeat.o(27204);
-        }
-      }, null);
-      return true;
+        AppMethodBeat.o(27190);
+        throw null;
+      }
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    if (paramString.equals("contact_info_plugin_install"))
+    if (paramString.equals("contact_info_more"))
     {
-      vY(true);
-      return true;
+      new Intent();
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    if (paramString.equals("contact_info_plugin_uninstall"))
+    if (paramString.equals("contact_info_social"))
     {
-      h.c(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(27205);
-          m.this.vY(false);
-          AppMethodBeat.o(27205);
-        }
-      }, null);
-      return true;
+      new Intent();
+      AppMethodBeat.o(27190);
+      throw null;
     }
-    Log.e("MicroMsg.ContactWidgetPlugin", "handleEvent : unexpected key = ".concat(String.valueOf(paramString)));
-    return false;
-  }
-  
-  public boolean cQX()
-  {
-    bh.beI();
-    c.aHp().remove(this);
-    this.screen.byG("contact_info_header_helper");
+    if (paramString.equals("contact_info_invite_source"))
+    {
+      AppMethodBeat.o(27190);
+      throw null;
+    }
+    AppMethodBeat.o(27190);
     return true;
   }
   
-  protected abstract void clear();
+  public final void b(String paramString, boolean paramBoolean, int paramInt, b paramb) {}
   
-  protected abstract boolean fqn();
-  
-  protected abstract int getResourceId();
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  public final boolean dvq()
   {
-    int i = Util.nullAsInt(paramObject, 0);
-    Log.d("MicroMsg.ContactWidgetPlugin", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
-    bh.beI();
-    if ((paramMStorageEx != c.aHp()) || (i <= 0)) {
-      Log.e("MicroMsg.ContactWidgetPlugin", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
+    AppMethodBeat.i(27201);
+    if (q.Qkn != null) {
+      q.Qkn.a(this, 3);
     }
-    while ((i != 40) && (i != 34) && (i != 7)) {
-      return;
-    }
-    cQY();
+    bh.aZW().b(30, this);
+    bh.aZW().b(453, this);
+    AppMethodBeat.o(27201);
+    throw null;
   }
   
-  protected abstract void vY(boolean paramBoolean);
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
+  {
+    AppMethodBeat.i(27202);
+    if ((paramp.getType() != 30) && (paramp.getType() != 458))
+    {
+      Log.w("MicroMsg.ContactWidgetNormal", "not expected scene,  type = " + paramp.getType());
+      AppMethodBeat.o(27202);
+      return;
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if (paramp.getType() == 30)
+      {
+        paramString = (v)paramp;
+        if ((paramString.hId != 1) && (paramString.hId != 3))
+        {
+          AppMethodBeat.o(27202);
+          return;
+        }
+        if (paramString.XRr != null)
+        {
+          AppMethodBeat.o(27202);
+          throw null;
+        }
+        AppMethodBeat.o(27202);
+        throw null;
+      }
+      if (paramp.getType() == 453)
+      {
+        AppMethodBeat.o(27202);
+        throw null;
+      }
+    }
+    else if ((paramInt1 == 4) && (paramInt2 == -24) && (!Util.isNullOrNil(paramString)))
+    {
+      AppMethodBeat.o(27202);
+      throw null;
+    }
+    AppMethodBeat.o(27202);
+  }
 }
 
 

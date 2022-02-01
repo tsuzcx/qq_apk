@@ -1,94 +1,99 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.api.d;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.protocal.protobuf.bkh;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/WxLiveShoppingExtranData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "()V", "clickScene", "", "getClickScene", "()I", "setClickScene", "(I)V", "clickid", "", "getClickid", "()[B", "setClickid", "([B)V", "enableGesture", "", "getEnableGesture", "()Z", "setEnableGesture", "(Z)V", "extraData", "", "getExtraData", "()Ljava/lang/String;", "setExtraData", "(Ljava/lang/String;)V", "isPreRender", "setPreRender", "openMode", "getOpenMode", "setOpenMode", "platform_id", "getPlatform_id", "setPlatform_id", "preloadType", "getPreloadType", "setPreloadType", "productId", "", "getProductId", "()J", "setProductId", "(J)V", "shopExtraData", "getShopExtraData", "setShopExtraData", "toJsonString", "toString", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "", "musicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMusicInfo;", "playStatus", "", "favState", "type", "select", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveMusicInfo;IIIZ)V", "getFavState", "()I", "setFavState", "(I)V", "getMusicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveMusicInfo;", "getPlayStatus", "setPlayStatus", "getSelect", "()Z", "setSelect", "(Z)V", "getType", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class at
-  implements d
 {
-  public static final a yiI;
-  private String fMh = "";
-  public int yiA;
-  private String yiB = "";
-  public String yiC = "";
-  public int yiD;
-  public byte[] yiE;
-  public int yiF;
-  public boolean yiG = true;
-  public int yiH;
-  public long yiz;
+  public static final at.a CIt;
+  public final bkh CIu;
+  public int CIv;
+  public boolean CIw;
+  public int oYt;
+  public final int type;
   
   static
   {
-    AppMethodBeat.i(287638);
-    yiI = new a((byte)0);
-    AppMethodBeat.o(287638);
+    AppMethodBeat.i(360082);
+    CIt = new at.a((byte)0);
+    AppMethodBeat.o(360082);
   }
   
-  public final void aCh(String paramString)
+  private at(bkh parambkh, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(287634);
-    p.k(paramString, "<set-?>");
-    this.fMh = paramString;
-    AppMethodBeat.o(287634);
+    AppMethodBeat.i(360066);
+    this.CIu = parambkh;
+    this.oYt = 0;
+    this.CIv = paramInt1;
+    this.type = paramInt2;
+    this.CIw = false;
+    AppMethodBeat.o(360066);
   }
   
-  public final void aCi(String paramString)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(287635);
-    p.k(paramString, "<set-?>");
-    this.yiB = paramString;
-    AppMethodBeat.o(287635);
-  }
-  
-  public final String bFa()
-  {
-    AppMethodBeat.i(287636);
-    try
+    AppMethodBeat.i(360111);
+    if (this == paramObject)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("extraData", this.fMh);
-      localJSONObject.put("productId", this.yiz);
-      localJSONObject.put("isPreRender", this.yiA);
-      localJSONObject.put("openMode", this.yiB);
-      String str3 = this.yiC;
-      str1 = str3;
-      if (str3 == null) {
-        str1 = "";
-      }
-      localJSONObject.put("shopExtraData", str1);
-      str1 = localJSONObject.toString();
-      p.j(str1, "obj.toString()");
+      AppMethodBeat.o(360111);
+      return true;
     }
-    catch (JSONException localJSONException)
+    if (!(paramObject instanceof at))
     {
-      for (;;)
-      {
-        String str1;
-        Log.printErrStackTrace("WxLiveShoppingExtranData", (Throwable)localJSONException, "", new Object[0]);
-        String str2 = "{}";
-      }
+      AppMethodBeat.o(360111);
+      return false;
     }
-    AppMethodBeat.o(287636);
-    return str1;
+    paramObject = (at)paramObject;
+    if (!s.p(this.CIu, paramObject.CIu))
+    {
+      AppMethodBeat.o(360111);
+      return false;
+    }
+    if (this.oYt != paramObject.oYt)
+    {
+      AppMethodBeat.o(360111);
+      return false;
+    }
+    if (this.CIv != paramObject.CIv)
+    {
+      AppMethodBeat.o(360111);
+      return false;
+    }
+    if (this.type != paramObject.type)
+    {
+      AppMethodBeat.o(360111);
+      return false;
+    }
+    if (this.CIw != paramObject.CIw)
+    {
+      AppMethodBeat.o(360111);
+      return false;
+    }
+    AppMethodBeat.o(360111);
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(287637);
-    String str = bFa();
-    AppMethodBeat.o(287637);
-    return str;
+    AppMethodBeat.i(360093);
+    Object localObject = new StringBuilder("musicInfo:").append(this.CIu.ZTw).append(',').append(this.CIu.ZTv).append(",url is empty:");
+    CharSequence localCharSequence = (CharSequence)this.CIu.ZTB;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localObject = bool + ",playable:" + this.CIu.playable + ",playStatus:" + this.oYt + ",favState:" + this.CIv + ", type:" + this.type + ", select:" + this.CIw;
+      AppMethodBeat.o(360093);
+      return localObject;
+    }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/WxLiveShoppingExtranData$Companion;", "", "()V", "PRE_DOWNLOAD", "", "PRE_HOT", "PRE_LOAD", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 

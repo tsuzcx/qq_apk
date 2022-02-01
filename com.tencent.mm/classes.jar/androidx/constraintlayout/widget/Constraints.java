@@ -12,41 +12,41 @@ import java.util.HashMap;
 public class Constraints
   extends ViewGroup
 {
-  a GP;
+  a bmP;
   
   public Constraints(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(194932);
+    AppMethodBeat.i(194173);
     super.setVisibility(8);
-    AppMethodBeat.o(194932);
+    AppMethodBeat.o(194173);
   }
   
   public Constraints(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(194935);
+    AppMethodBeat.i(194180);
     super.setVisibility(8);
-    AppMethodBeat.o(194935);
+    AppMethodBeat.o(194180);
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(194938);
+    AppMethodBeat.i(194184);
     paramLayoutParams = new ConstraintLayout.LayoutParams(paramLayoutParams);
-    AppMethodBeat.o(194938);
+    AppMethodBeat.o(194184);
     return paramLayoutParams;
   }
   
   public a getConstraintSet()
   {
-    AppMethodBeat.i(194944);
-    if (this.GP == null) {
-      this.GP = new a();
+    AppMethodBeat.i(194192);
+    if (this.bmP == null) {
+      this.bmP = new a();
     }
-    Object localObject1 = this.GP;
+    Object localObject1 = this.bmP;
     int j = getChildCount();
-    ((a)localObject1).Gl.clear();
+    ((a)localObject1).bmp.clear();
     int i = 0;
     while (i < j)
     {
@@ -56,30 +56,30 @@ public class Constraints
       if (k == -1)
       {
         localObject1 = new RuntimeException("All children of ConstraintLayout must have ids to use ConstraintSet");
-        AppMethodBeat.o(194944);
+        AppMethodBeat.o(194192);
         throw ((Throwable)localObject1);
       }
-      if (!((a)localObject1).Gl.containsKey(Integer.valueOf(k))) {
-        ((a)localObject1).Gl.put(Integer.valueOf(k), new a.a((byte)0));
+      if (!((a)localObject1).bmp.containsKey(Integer.valueOf(k))) {
+        ((a)localObject1).bmp.put(Integer.valueOf(k), new a.a((byte)0));
       }
-      a.a locala = (a.a)((a)localObject1).Gl.get(Integer.valueOf(k));
+      a.a locala = (a.a)((a)localObject1).bmp.get(Integer.valueOf(k));
       if ((localObject2 instanceof ConstraintHelper))
       {
         localObject2 = (ConstraintHelper)localObject2;
         locala.a(k, localLayoutParams);
         if ((localObject2 instanceof Barrier))
         {
-          locala.GM = 1;
+          locala.bmM = 1;
           localObject2 = (Barrier)localObject2;
-          locala.GL = ((Barrier)localObject2).getType();
-          locala.GN = ((Barrier)localObject2).getReferencedIds();
+          locala.bmL = ((Barrier)localObject2).getType();
+          locala.bmN = ((Barrier)localObject2).getReferencedIds();
         }
       }
       locala.a(k, localLayoutParams);
       i += 1;
     }
-    localObject1 = this.GP;
-    AppMethodBeat.o(194944);
+    localObject1 = this.bmP;
+    AppMethodBeat.o(194192);
     return localObject1;
   }
   
@@ -88,16 +88,16 @@ public class Constraints
   public static class LayoutParams
     extends ConstraintLayout.LayoutParams
   {
-    public float GA;
-    public float GB;
-    public float GC;
-    public float GD;
-    public boolean Gv;
-    public float Gw;
-    public float Gx;
-    public float Gy;
-    public float Gz;
     public float alpha;
+    public float ayc;
+    public float ayd;
+    public float ayf;
+    public float ayg;
+    public float bmA;
+    public float bmB;
+    public float bmC;
+    public float bmD;
+    public boolean bmz;
     public float rotation;
     public float scaleX;
     public float scaleY;
@@ -106,37 +106,37 @@ public class Constraints
     {
       super(-2);
       this.alpha = 1.0F;
-      this.Gv = false;
-      this.Gw = 0.0F;
+      this.bmz = false;
+      this.bmA = 0.0F;
       this.rotation = 0.0F;
-      this.Gx = 0.0F;
-      this.Gy = 0.0F;
+      this.ayf = 0.0F;
+      this.ayg = 0.0F;
       this.scaleX = 1.0F;
       this.scaleY = 1.0F;
-      this.Gz = 0.0F;
-      this.GA = 0.0F;
-      this.GB = 0.0F;
-      this.GC = 0.0F;
-      this.GD = 0.0F;
+      this.bmB = 0.0F;
+      this.bmC = 0.0F;
+      this.ayc = 0.0F;
+      this.ayd = 0.0F;
+      this.bmD = 0.0F;
     }
     
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(194927);
+      AppMethodBeat.i(194185);
       this.alpha = 1.0F;
-      this.Gv = false;
-      this.Gw = 0.0F;
+      this.bmz = false;
+      this.bmA = 0.0F;
       this.rotation = 0.0F;
-      this.Gx = 0.0F;
-      this.Gy = 0.0F;
+      this.ayf = 0.0F;
+      this.ayg = 0.0F;
       this.scaleX = 1.0F;
       this.scaleY = 1.0F;
-      this.Gz = 0.0F;
-      this.GA = 0.0F;
-      this.GB = 0.0F;
-      this.GC = 0.0F;
-      this.GD = 0.0F;
+      this.bmB = 0.0F;
+      this.bmC = 0.0F;
+      this.ayc = 0.0F;
+      this.ayd = 0.0F;
+      this.bmD = 0.0F;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ConstraintSet);
       int j = paramContext.getIndexCount();
       if (i < j)
@@ -151,16 +151,16 @@ public class Constraints
           break;
           if (k == R.styleable.ConstraintSet_android_elevation)
           {
-            this.Gw = paramContext.getFloat(k, this.Gw);
-            this.Gv = true;
+            this.bmA = paramContext.getFloat(k, this.bmA);
+            this.bmz = true;
           }
           else if (k == R.styleable.ConstraintSet_android_rotationX)
           {
-            this.Gx = paramContext.getFloat(k, this.Gx);
+            this.ayf = paramContext.getFloat(k, this.ayf);
           }
           else if (k == R.styleable.ConstraintSet_android_rotationY)
           {
-            this.Gy = paramContext.getFloat(k, this.Gy);
+            this.ayg = paramContext.getFloat(k, this.ayg);
           }
           else if (k == R.styleable.ConstraintSet_android_rotation)
           {
@@ -176,33 +176,33 @@ public class Constraints
           }
           else if (k == R.styleable.ConstraintSet_android_transformPivotX)
           {
-            this.Gz = paramContext.getFloat(k, this.Gz);
+            this.bmB = paramContext.getFloat(k, this.bmB);
           }
           else if (k == R.styleable.ConstraintSet_android_transformPivotY)
           {
-            this.GA = paramContext.getFloat(k, this.GA);
+            this.bmC = paramContext.getFloat(k, this.bmC);
           }
           else if (k == R.styleable.ConstraintSet_android_translationX)
           {
-            this.GB = paramContext.getFloat(k, this.GB);
+            this.ayc = paramContext.getFloat(k, this.ayc);
           }
           else if (k == R.styleable.ConstraintSet_android_translationY)
           {
-            this.GC = paramContext.getFloat(k, this.GC);
+            this.ayd = paramContext.getFloat(k, this.ayd);
           }
           else if (k == R.styleable.ConstraintSet_android_translationZ)
           {
-            this.GB = paramContext.getFloat(k, this.GD);
+            this.ayc = paramContext.getFloat(k, this.bmD);
           }
         }
       }
-      AppMethodBeat.o(194927);
+      AppMethodBeat.o(194185);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.widget.Constraints
  * JD-Core Version:    0.7.0.1
  */

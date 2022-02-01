@@ -6,26 +6,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
 {
-  private static volatile d csP;
-  public g csQ;
+  private static volatile d ekJ;
+  public g ekK;
   
   protected d()
   {
     AppMethodBeat.i(130470);
-    this.csQ = new c();
+    this.ekK = new c();
     AppMethodBeat.o(130470);
   }
   
-  public static d ON()
+  public static d aoV()
   {
     AppMethodBeat.i(130471);
-    if (csP == null) {}
+    if (ekJ == null) {}
     try
     {
-      if (csP == null) {
-        csP = new d();
+      if (ekJ == null) {
+        ekJ = new d();
       }
-      d locald = csP;
+      d locald = ekJ;
       AppMethodBeat.o(130471);
       return locald;
     }

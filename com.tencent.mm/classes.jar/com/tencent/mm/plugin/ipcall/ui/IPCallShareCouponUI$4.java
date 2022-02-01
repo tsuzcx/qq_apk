@@ -15,7 +15,7 @@ final class IPCallShareCouponUI$4
     AppMethodBeat.i(25939);
     try
     {
-      this.DYL.finish();
+      this.JPU.finish();
       AppMethodBeat.o(25939);
       return;
     }

@@ -9,18 +9,18 @@ import android.text.TextUtils;
 public abstract class ApkInstalledWatcher
   extends BroadcastReceiver
 {
-  private static String aW(Intent paramIntent)
+  private static String bw(Intent paramIntent)
   {
     try
     {
       paramIntent = paramIntent.getData().getSchemeSpecificPart();
       return paramIntent;
     }
-    catch (Throwable paramIntent) {}
+    finally {}
     return "";
   }
   
-  protected abstract boolean aZx(String paramString);
+  protected abstract boolean aXI(String paramString);
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -30,24 +30,24 @@ public abstract class ApkInstalledWatcher
         paramContext = paramIntent.getAction();
         if ("android.intent.action.PACKAGE_ADDED".equals(paramContext))
         {
-          paramContext = aW(paramIntent);
+          paramContext = bw(paramIntent);
           if (!TextUtils.isEmpty(paramContext)) {
-            aZx(paramContext);
+            aXI(paramContext);
           }
         }
         else if ("android.intent.action.PACKAGE_REMOVED".equals(paramContext))
         {
-          TextUtils.isEmpty(aW(paramIntent));
+          TextUtils.isEmpty(bw(paramIntent));
           return;
         }
       }
-      catch (Throwable paramContext) {}
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.ApkInstalledWatcher
  * JD-Core Version:    0.7.0.1
  */

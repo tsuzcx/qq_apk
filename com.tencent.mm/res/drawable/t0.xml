@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/editor_ol_unpress" />
-    <item android:drawable="@raw/editor_ol_unpress" />
-</selector>
+    <corners android:radius="5.0dip" />
+    <solid android:color="@color/al2" />
+</shape>

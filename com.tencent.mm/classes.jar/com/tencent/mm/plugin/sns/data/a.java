@@ -16,14 +16,14 @@ public final class a
   
   public a()
   {
-    AppMethodBeat.i(200184);
+    AppMethodBeat.i(306371);
     this.adActionExtUserList = new LinkedList();
-    AppMethodBeat.o(200184);
+    AppMethodBeat.o(306371);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.a
  * JD-Core Version:    0.7.0.1
  */

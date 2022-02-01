@@ -40,7 +40,7 @@ public class AMSInterceptHandler
         INTENT_SENDER_ACTIVITY = i;
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
         i = 2;
         continue;
@@ -151,35 +151,28 @@ public class AMSInterceptHandler
   {
     boolean bool2 = false;
     int i = paramActivityInfo.getThemeResource();
-    Object localObject2 = this.mContext.getResources().newTheme();
-    ((Resources.Theme)localObject2).applyStyle(i, true);
-    Object localObject1 = null;
+    Object localObject1 = this.mContext.getResources().newTheme();
+    ((Resources.Theme)localObject1).applyStyle(i, true);
     paramActivityInfo = null;
     try
     {
-      localObject2 = ((Resources.Theme)localObject2).obtainStyledAttributes(TRANSLUCENT_ATTR_ID);
-      paramActivityInfo = (ActivityInfo)localObject2;
-      localObject1 = localObject2;
-      boolean bool1 = ((TypedArray)localObject2).getBoolean(0, false);
+      localObject1 = ((Resources.Theme)localObject1).obtainStyledAttributes(TRANSLUCENT_ATTR_ID);
+      paramActivityInfo = (ActivityInfo)localObject1;
+      boolean bool1 = ((TypedArray)localObject1).getBoolean(0, false);
       bool2 = bool1;
-      if (localObject2 != null)
+      if (localObject1 != null)
       {
-        ((TypedArray)localObject2).recycle();
+        ((TypedArray)localObject1).recycle();
         bool2 = bool1;
       }
     }
-    catch (Throwable localThrowable)
-    {
-      return false;
-    }
     finally
     {
-      if (localThrowable == null) {
-        break label99;
-      }
-      localThrowable.recycle();
+      while (paramActivityInfo == null) {}
+      paramActivityInfo.recycle();
     }
     return bool2;
+    return false;
   }
   
   private void processActivityIntent(Intent paramIntent)
@@ -252,7 +245,7 @@ public class AMSInterceptHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.handler.AMSInterceptHandler
  * JD-Core Version:    0.7.0.1
  */

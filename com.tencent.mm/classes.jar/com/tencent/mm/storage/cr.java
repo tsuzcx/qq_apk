@@ -1,56 +1,75 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.hd;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.h;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.autogen.b.hx;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class cr
-  extends MAutoStorage<hd>
+  extends hx
 {
-  public static final String[] SQL_CREATE;
-  public h lvy;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(133310);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cq.info, "TablesVersion") };
-    AppMethodBeat.o(133310);
+    AppMethodBeat.i(43306);
+    info = hx.aJm();
+    AppMethodBeat.o(43306);
   }
   
-  public cr(h paramh)
+  public cr()
   {
-    super(paramh, cq.info, "TablesVersion", hd.INDEX_CREATE);
-    this.lvy = paramh;
+    AppMethodBeat.i(43304);
+    this.field_encryptUsername = "";
+    this.field_conRemark = "";
+    AppMethodBeat.o(43304);
   }
   
-  public final ConcurrentHashMap<Integer, String> hAP()
+  public cr(String paramString)
   {
-    AppMethodBeat.i(133309);
-    Cursor localCursor = this.lvy.rawQuery("select * from TablesVersion", new String[0]);
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(133309);
-      return localConcurrentHashMap;
+    this();
+    AppMethodBeat.i(43302);
+    this.field_conRemark = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    try
-    {
-      if (localCursor.moveToNext()) {}
-      return localConcurrentHashMap1;
+    this.field_encryptUsername = str;
+    AppMethodBeat.o(43302);
+  }
+  
+  public cr(String paramString1, String paramString2)
+  {
+    this();
+    AppMethodBeat.i(43303);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    finally
-    {
-      localCursor.close();
-      AppMethodBeat.o(133309);
+    this.field_encryptUsername = str;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
+    this.field_conRemark = paramString1;
+    AppMethodBeat.o(43303);
+  }
+  
+  protected final Object clone()
+  {
+    AppMethodBeat.i(43305);
+    Object localObject = super.clone();
+    AppMethodBeat.o(43305);
+    return localObject;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.cr
  * JD-Core Version:    0.7.0.1
  */

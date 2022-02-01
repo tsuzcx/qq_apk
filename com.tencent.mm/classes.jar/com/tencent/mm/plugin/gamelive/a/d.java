@@ -1,353 +1,345 @@
 package com.tencent.mm.plugin.gamelive.a;
 
-import com.tencent.e.b;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import com.tencent.threadpool.b;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/audio/GameLiveMainAudioMgrService;", "Lcom/tencent/mm/plugin/gamelive/audio/IGameLiveMainAudioMgrService;", "()V", "audioTask", "Ljava/lang/Runnable;", "getAudioTask", "()Ljava/lang/Runnable;", "forkExecutorService", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "kotlin.jvm.PlatformType", "reconnecting", "", "reconnect", "", "start", "stop", "Companion", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/audio/GameLiveMainAudioMgrService;", "Lcom/tencent/mm/plugin/gamelive/audio/IGameLiveMainAudioMgrService;", "()V", "audioTask", "Ljava/lang/Runnable;", "getAudioTask", "()Ljava/lang/Runnable;", "forkExecutorService", "Lcom/tencent/threadpool/ForkThreadPoolExecutor;", "kotlin.jvm.PlatformType", "reconnecting", "", "reconnect", "", "start", "stop", "Companion", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   implements f
 {
-  public static boolean DlY;
-  public static final d.a DlZ;
-  public volatile boolean DlW;
-  public final Runnable DlX;
-  public final b Dli;
+  public static final d.a Jff;
+  public static boolean Jfi;
+  public final b Jes;
+  public volatile boolean Jfg;
+  public final Runnable Jfh;
   
   static
   {
-    AppMethodBeat.i(207806);
-    DlZ = new d.a((byte)0);
-    DlY = true;
-    AppMethodBeat.o(207806);
+    AppMethodBeat.i(277539);
+    Jff = new d.a((byte)0);
+    Jfi = true;
+    AppMethodBeat.o(277539);
   }
   
   public d()
   {
-    AppMethodBeat.i(207803);
-    this.Dli = h.ZvG.bDi("gamelive_audio_mix_ipc_main");
-    this.DlX = ((Runnable)new b(this));
-    AppMethodBeat.o(207803);
+    AppMethodBeat.i(277504);
+    this.Jes = h.ahAA.bFR("gamelive_audio_mix_ipc_main");
+    this.Jfh = ((Runnable)new b(this));
+    AppMethodBeat.o(277504);
   }
   
   public static void stop()
   {
-    AppMethodBeat.i(207802);
-    DlY = false;
+    AppMethodBeat.i(277511);
+    Jfi = false;
     Log.i("MicroMsg.GameLiveMainAudioMgrService", "stop main audio");
-    AppMethodBeat.o(207802);
+    AppMethodBeat.o(277511);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/gamelive/audio/GameLiveMainAudioMgrService$audioTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-gamelive_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/gamelive/audio/GameLiveMainAudioMgrService$audioTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements Runnable
   {
+    b(d paramd) {}
+    
     /* Error */
     public final void run()
     {
       // Byte code:
       //   0: iconst_0
       //   1: istore_1
-      //   2: ldc 34
-      //   4: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   2: ldc 36
+      //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 28	com/tencent/mm/plugin/gamelive/a/d$b:Dma	Lcom/tencent/mm/plugin/gamelive/a/d;
-      //   11: invokestatic 43	com/tencent/mm/plugin/gamelive/a/d:b	(Lcom/tencent/mm/plugin/gamelive/a/d;)V
-      //   14: new 45	java/lang/StringBuilder
-      //   17: dup
-      //   18: ldc 47
-      //   20: invokespecial 50	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   23: astore_3
-      //   24: invokestatic 56	com/tencent/mm/kernel/h:aHE	()Lcom/tencent/mm/kernel/b;
-      //   27: ldc 58
-      //   29: invokestatic 64	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   32: aload_3
-      //   33: invokestatic 70	com/tencent/mm/kernel/b:getUin	()I
-      //   36: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-      //   39: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   42: astore_3
-      //   43: getstatic 84	kotlin/n/d:UTF_8	Ljava/nio/charset/Charset;
-      //   46: astore 4
-      //   48: aload_3
-      //   49: ifnonnull +20 -> 69
-      //   52: new 86	kotlin/t
-      //   55: dup
-      //   56: ldc 88
-      //   58: invokespecial 89	kotlin/t:<init>	(Ljava/lang/String;)V
-      //   61: astore_3
-      //   62: ldc 34
-      //   64: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   67: aload_3
-      //   68: athrow
+      //   8: getfield 31	com/tencent/mm/plugin/gamelive/a/d$b:Jfj	Lcom/tencent/mm/plugin/gamelive/a/d;
+      //   11: invokestatic 45	com/tencent/mm/plugin/gamelive/a/d:a	(Lcom/tencent/mm/plugin/gamelive/a/d;)V
+      //   14: invokestatic 51	com/tencent/mm/kernel/h:baC	()Lcom/tencent/mm/kernel/b;
+      //   17: pop
+      //   18: ldc 53
+      //   20: invokestatic 59	com/tencent/mm/kernel/b:getUin	()I
+      //   23: invokestatic 65	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   26: invokestatic 71	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+      //   29: astore_3
+      //   30: getstatic 77	kotlin/n/d:UTF_8	Ljava/nio/charset/Charset;
+      //   33: astore 4
+      //   35: aload_3
+      //   36: ifnonnull +20 -> 56
+      //   39: new 79	java/lang/NullPointerException
+      //   42: dup
+      //   43: ldc 81
+      //   45: invokespecial 84	java/lang/NullPointerException:<init>	(Ljava/lang/String;)V
+      //   48: astore_3
+      //   49: ldc 36
+      //   51: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   54: aload_3
+      //   55: athrow
+      //   56: aload_3
+      //   57: aload 4
+      //   59: invokevirtual 93	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
+      //   62: astore_3
+      //   63: aload_3
+      //   64: ldc 95
+      //   66: invokestatic 99	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
       //   69: aload_3
-      //   70: aload 4
-      //   72: invokevirtual 98	java/lang/String:getBytes	(Ljava/nio/charset/Charset;)[B
-      //   75: astore_3
-      //   76: aload_3
-      //   77: ldc 100
-      //   79: invokestatic 64	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-      //   82: aload_3
-      //   83: invokestatic 106	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
-      //   86: astore_3
-      //   87: ldc 108
-      //   89: ldc 110
-      //   91: aload_3
-      //   92: invokestatic 114	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   95: invokevirtual 118	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   98: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   101: new 125	android/net/LocalSocket
-      //   104: dup
-      //   105: invokespecial 126	android/net/LocalSocket:<init>	()V
-      //   108: astore 7
-      //   110: new 128	android/net/LocalSocketAddress
-      //   113: dup
-      //   114: aload_3
-      //   115: getstatic 134	android/net/LocalSocketAddress$Namespace:ABSTRACT	Landroid/net/LocalSocketAddress$Namespace;
-      //   118: invokespecial 137	android/net/LocalSocketAddress:<init>	(Ljava/lang/String;Landroid/net/LocalSocketAddress$Namespace;)V
-      //   121: astore_3
-      //   122: ldc 139
-      //   124: invokestatic 143	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-      //   127: checkcast 139	com/tencent/c/a/a/a/b
-      //   130: astore 8
-      //   132: aload 7
-      //   134: aload_3
-      //   135: invokevirtual 147	android/net/LocalSocket:connect	(Landroid/net/LocalSocketAddress;)V
-      //   138: ldc 108
-      //   140: ldc 149
-      //   142: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   145: aconst_null
-      //   146: astore_3
-      //   147: aconst_null
-      //   148: astore 6
-      //   150: new 151	java/io/ObjectInputStream
-      //   153: dup
-      //   154: aload 7
-      //   156: invokevirtual 155	android/net/LocalSocket:getInputStream	()Ljava/io/InputStream;
-      //   159: invokespecial 158	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-      //   162: astore 4
-      //   164: aload 4
-      //   166: invokevirtual 162	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-      //   169: astore_3
-      //   170: aload_3
-      //   171: ifnonnull +249 -> 420
-      //   174: new 86	kotlin/t
-      //   177: dup
-      //   178: ldc 164
-      //   180: invokespecial 89	kotlin/t:<init>	(Ljava/lang/String;)V
-      //   183: astore_3
-      //   184: ldc 34
-      //   186: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   189: aload_3
-      //   190: athrow
-      //   191: astore 5
-      //   193: aload 4
-      //   195: astore_3
-      //   196: aload 5
-      //   198: instanceof 166
-      //   201: ifeq +276 -> 477
-      //   204: aload 4
-      //   206: astore_3
-      //   207: getstatic 170	com/tencent/mm/plugin/gamelive/a/d:DlZ	Lcom/tencent/mm/plugin/gamelive/a/d$a;
-      //   210: astore 5
-      //   212: aload 4
-      //   214: astore_3
-      //   215: invokestatic 174	com/tencent/mm/plugin/gamelive/a/d:eAS	()Z
-      //   218: ifeq +81 -> 299
-      //   221: aload 4
-      //   223: astore_3
-      //   224: aload_0
-      //   225: getfield 28	com/tencent/mm/plugin/gamelive/a/d$b:Dma	Lcom/tencent/mm/plugin/gamelive/a/d;
-      //   228: invokestatic 178	com/tencent/mm/plugin/gamelive/a/d:a	(Lcom/tencent/mm/plugin/gamelive/a/d;)Z
-      //   231: ifne +68 -> 299
-      //   234: aload 4
-      //   236: astore_3
-      //   237: ldc 108
-      //   239: ldc 180
-      //   241: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   244: aload 4
-      //   246: astore_3
-      //   247: aload 8
-      //   249: iconst_1
-      //   250: invokestatic 189	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-      //   253: invokeinterface 193 3 0
-      //   258: aload 4
-      //   260: astore_3
-      //   261: ldc 195
-      //   263: invokestatic 143	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-      //   266: checkcast 195	com/tencent/mm/plugin/gamelive/PluginGameLive
-      //   269: getstatic 201	com/tencent/mm/plugin/gamelive/PluginGameLive$b:Dkq	Lcom/tencent/mm/plugin/gamelive/PluginGameLive$b;
-      //   272: invokevirtual 205	com/tencent/mm/plugin/gamelive/PluginGameLive:setGameLiveCurrentState_$plugin_gamelive_release	(Lcom/tencent/mm/plugin/gamelive/PluginGameLive$b;)V
-      //   275: aload 4
-      //   277: astore_3
-      //   278: ldc 195
-      //   280: invokestatic 143	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-      //   283: checkcast 195	com/tencent/mm/plugin/gamelive/PluginGameLive
-      //   286: invokevirtual 209	com/tencent/mm/plugin/gamelive/PluginGameLive:getMainProcessService$plugin_gamelive_release	()Lcom/tencent/mm/plugin/gamelive/b;
-      //   289: ifnull +10 -> 299
-      //   292: aload 4
-      //   294: astore_3
-      //   295: iconst_0
-      //   296: invokestatic 215	com/tencent/mm/plugin/gamelive/b:sx	(Z)V
-      //   299: aload 4
-      //   301: astore_3
-      //   302: ldc 108
-      //   304: ldc 217
-      //   306: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   309: aload 4
-      //   311: ifnull +8 -> 319
-      //   314: aload 4
-      //   316: invokevirtual 220	java/io/ObjectInputStream:close	()V
-      //   319: aload 7
-      //   321: invokevirtual 221	android/net/LocalSocket:close	()V
-      //   324: ldc 108
-      //   326: new 45	java/lang/StringBuilder
-      //   329: dup
-      //   330: ldc 223
-      //   332: invokespecial 50	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   335: aload_0
-      //   336: getfield 28	com/tencent/mm/plugin/gamelive/a/d$b:Dma	Lcom/tencent/mm/plugin/gamelive/a/d;
-      //   339: invokestatic 178	com/tencent/mm/plugin/gamelive/a/d:a	(Lcom/tencent/mm/plugin/gamelive/a/d;)Z
-      //   342: invokevirtual 226	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-      //   345: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   348: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   351: aload_0
-      //   352: getfield 28	com/tencent/mm/plugin/gamelive/a/d$b:Dma	Lcom/tencent/mm/plugin/gamelive/a/d;
-      //   355: invokestatic 178	com/tencent/mm/plugin/gamelive/a/d:a	(Lcom/tencent/mm/plugin/gamelive/a/d;)Z
-      //   358: ifeq +17 -> 375
-      //   361: aload_0
-      //   362: getfield 28	com/tencent/mm/plugin/gamelive/a/d$b:Dma	Lcom/tencent/mm/plugin/gamelive/a/d;
-      //   365: invokestatic 230	com/tencent/mm/plugin/gamelive/a/d:c	(Lcom/tencent/mm/plugin/gamelive/a/d;)Lcom/tencent/e/b;
-      //   368: aload_0
-      //   369: checkcast 6	java/lang/Runnable
-      //   372: invokevirtual 236	com/tencent/e/b:execute	(Ljava/lang/Runnable;)V
-      //   375: ldc 34
-      //   377: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   380: return
-      //   381: astore 4
-      //   383: ldc 108
-      //   385: ldc 238
-      //   387: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-      //   390: ldc2_w 242
-      //   393: invokestatic 249	java/lang/Thread:sleep	(J)V
-      //   396: iload_1
-      //   397: iconst_1
-      //   398: iadd
-      //   399: istore_2
-      //   400: iload_2
-      //   401: istore_1
-      //   402: iload_2
-      //   403: iconst_1
-      //   404: if_icmple -272 -> 132
-      //   407: ldc 108
-      //   409: ldc 251
-      //   411: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   414: ldc 34
-      //   416: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   419: return
-      //   420: aload_3
-      //   421: checkcast 253	com/tencent/mm/plugin/gamelive/a/g
-      //   424: astore_3
-      //   425: aload 8
-      //   427: aload_3
-      //   428: getfield 257	com/tencent/mm/plugin/gamelive/a/g:data	[B
-      //   431: ldc_w 258
-      //   434: iconst_2
-      //   435: aload_3
-      //   436: getfield 262	com/tencent/mm/plugin/gamelive/a/g:timestamp	J
-      //   439: invokeinterface 266 6 0
-      //   444: goto -280 -> 164
-      //   447: astore 5
-      //   449: aload 4
-      //   451: astore_3
-      //   452: aload 5
-      //   454: astore 4
-      //   456: aload_3
-      //   457: ifnull +7 -> 464
-      //   460: aload_3
-      //   461: invokevirtual 220	java/io/ObjectInputStream:close	()V
-      //   464: aload 7
-      //   466: invokevirtual 221	android/net/LocalSocket:close	()V
-      //   469: ldc 34
-      //   471: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   474: aload 4
-      //   476: athrow
-      //   477: aload 4
-      //   479: astore_3
-      //   480: aload 5
-      //   482: instanceof 268
-      //   485: ifeq +17 -> 502
-      //   488: aload 4
-      //   490: astore_3
-      //   491: ldc 108
-      //   493: ldc_w 270
-      //   496: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   499: goto -190 -> 309
-      //   502: aload 4
-      //   504: astore_3
-      //   505: ldc 108
-      //   507: aload 5
-      //   509: checkcast 272	java/lang/Throwable
-      //   512: ldc_w 274
-      //   515: iconst_0
-      //   516: anewarray 4	java/lang/Object
-      //   519: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   522: goto -213 -> 309
-      //   525: astore 5
-      //   527: aload 6
-      //   529: astore 4
-      //   531: goto -338 -> 193
-      //   534: astore 4
-      //   536: goto -80 -> 456
+      //   70: invokestatic 105	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
+      //   73: astore_3
+      //   74: ldc 107
+      //   76: ldc 109
+      //   78: aload_3
+      //   79: invokestatic 71	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+      //   82: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   85: new 116	android/net/LocalSocket
+      //   88: dup
+      //   89: invokespecial 117	android/net/LocalSocket:<init>	()V
+      //   92: astore 7
+      //   94: new 119	android/net/LocalSocketAddress
+      //   97: dup
+      //   98: aload_3
+      //   99: getstatic 125	android/net/LocalSocketAddress$Namespace:ABSTRACT	Landroid/net/LocalSocketAddress$Namespace;
+      //   102: invokespecial 128	android/net/LocalSocketAddress:<init>	(Ljava/lang/String;Landroid/net/LocalSocketAddress$Namespace;)V
+      //   105: astore_3
+      //   106: ldc 130
+      //   108: invokestatic 134	com/tencent/mm/kernel/h:az	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+      //   111: checkcast 130	com/tencent/d/a/a/a/b
+      //   114: astore 8
+      //   116: aload 7
+      //   118: aload_3
+      //   119: invokevirtual 138	android/net/LocalSocket:connect	(Landroid/net/LocalSocketAddress;)V
+      //   122: ldc 107
+      //   124: ldc 140
+      //   126: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   129: aconst_null
+      //   130: astore_3
+      //   131: aconst_null
+      //   132: astore 6
+      //   134: new 142	java/io/ObjectInputStream
+      //   137: dup
+      //   138: aload 7
+      //   140: invokevirtual 146	android/net/LocalSocket:getInputStream	()Ljava/io/InputStream;
+      //   143: invokespecial 149	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+      //   146: astore 4
+      //   148: aload 4
+      //   150: invokevirtual 153	java/io/ObjectInputStream:readUnshared	()Ljava/lang/Object;
+      //   153: astore_3
+      //   154: aload_3
+      //   155: ifnonnull +242 -> 397
+      //   158: new 79	java/lang/NullPointerException
+      //   161: dup
+      //   162: ldc 155
+      //   164: invokespecial 84	java/lang/NullPointerException:<init>	(Ljava/lang/String;)V
+      //   167: astore_3
+      //   168: ldc 36
+      //   170: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   173: aload_3
+      //   174: athrow
+      //   175: astore 5
+      //   177: aload 4
+      //   179: astore_3
+      //   180: aload 5
+      //   182: instanceof 157
+      //   185: ifeq +268 -> 453
+      //   188: aload 4
+      //   190: astore_3
+      //   191: getstatic 161	com/tencent/mm/plugin/gamelive/a/d:Jff	Lcom/tencent/mm/plugin/gamelive/a/d$a;
+      //   194: astore 5
+      //   196: aload 4
+      //   198: astore_3
+      //   199: invokestatic 165	com/tencent/mm/plugin/gamelive/a/d:fIU	()Z
+      //   202: ifeq +81 -> 283
+      //   205: aload 4
+      //   207: astore_3
+      //   208: aload_0
+      //   209: getfield 31	com/tencent/mm/plugin/gamelive/a/d$b:Jfj	Lcom/tencent/mm/plugin/gamelive/a/d;
+      //   212: invokestatic 169	com/tencent/mm/plugin/gamelive/a/d:b	(Lcom/tencent/mm/plugin/gamelive/a/d;)Z
+      //   215: ifne +68 -> 283
+      //   218: aload 4
+      //   220: astore_3
+      //   221: ldc 107
+      //   223: ldc 171
+      //   225: invokestatic 174	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   228: aload 4
+      //   230: astore_3
+      //   231: aload 8
+      //   233: iconst_1
+      //   234: invokestatic 180	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+      //   237: invokeinterface 184 3 0
+      //   242: aload 4
+      //   244: astore_3
+      //   245: ldc 186
+      //   247: invokestatic 134	com/tencent/mm/kernel/h:az	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+      //   250: checkcast 186	com/tencent/mm/plugin/gamelive/PluginGameLive
+      //   253: getstatic 192	com/tencent/mm/plugin/gamelive/PluginGameLive$b:Jdy	Lcom/tencent/mm/plugin/gamelive/PluginGameLive$b;
+      //   256: invokevirtual 196	com/tencent/mm/plugin/gamelive/PluginGameLive:setGameLiveCurrentState_$plugin_gamelive_release	(Lcom/tencent/mm/plugin/gamelive/PluginGameLive$b;)V
+      //   259: aload 4
+      //   261: astore_3
+      //   262: ldc 186
+      //   264: invokestatic 134	com/tencent/mm/kernel/h:az	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+      //   267: checkcast 186	com/tencent/mm/plugin/gamelive/PluginGameLive
+      //   270: invokevirtual 200	com/tencent/mm/plugin/gamelive/PluginGameLive:getMainProcessService$plugin_gamelive_release	()Lcom/tencent/mm/plugin/gamelive/a;
+      //   273: ifnull +10 -> 283
+      //   276: aload 4
+      //   278: astore_3
+      //   279: iconst_0
+      //   280: invokestatic 206	com/tencent/mm/plugin/gamelive/a:wD	(Z)V
+      //   283: aload 4
+      //   285: astore_3
+      //   286: ldc 107
+      //   288: ldc 208
+      //   290: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   293: aload 4
+      //   295: ifnull +8 -> 303
+      //   298: aload 4
+      //   300: invokevirtual 211	java/io/ObjectInputStream:close	()V
+      //   303: aload 7
+      //   305: invokevirtual 212	android/net/LocalSocket:close	()V
+      //   308: ldc 107
+      //   310: ldc 214
+      //   312: aload_0
+      //   313: getfield 31	com/tencent/mm/plugin/gamelive/a/d$b:Jfj	Lcom/tencent/mm/plugin/gamelive/a/d;
+      //   316: invokestatic 169	com/tencent/mm/plugin/gamelive/a/d:b	(Lcom/tencent/mm/plugin/gamelive/a/d;)Z
+      //   319: invokestatic 219	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+      //   322: invokestatic 71	kotlin/g/b/s:X	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+      //   325: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   328: aload_0
+      //   329: getfield 31	com/tencent/mm/plugin/gamelive/a/d$b:Jfj	Lcom/tencent/mm/plugin/gamelive/a/d;
+      //   332: invokestatic 169	com/tencent/mm/plugin/gamelive/a/d:b	(Lcom/tencent/mm/plugin/gamelive/a/d;)Z
+      //   335: ifeq +17 -> 352
+      //   338: aload_0
+      //   339: getfield 31	com/tencent/mm/plugin/gamelive/a/d$b:Jfj	Lcom/tencent/mm/plugin/gamelive/a/d;
+      //   342: invokestatic 223	com/tencent/mm/plugin/gamelive/a/d:c	(Lcom/tencent/mm/plugin/gamelive/a/d;)Lcom/tencent/threadpool/b;
+      //   345: aload_0
+      //   346: checkcast 6	java/lang/Runnable
+      //   349: invokevirtual 229	com/tencent/threadpool/b:execute	(Ljava/lang/Runnable;)V
+      //   352: ldc 36
+      //   354: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   357: return
+      //   358: astore 4
+      //   360: ldc 107
+      //   362: ldc 231
+      //   364: invokestatic 234	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   367: ldc2_w 235
+      //   370: invokestatic 242	java/lang/Thread:sleep	(J)V
+      //   373: iload_1
+      //   374: iconst_1
+      //   375: iadd
+      //   376: istore_2
+      //   377: iload_2
+      //   378: istore_1
+      //   379: iload_2
+      //   380: iconst_1
+      //   381: if_icmple -265 -> 116
+      //   384: ldc 107
+      //   386: ldc 244
+      //   388: invokestatic 174	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   391: ldc 36
+      //   393: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   396: return
+      //   397: aload_3
+      //   398: checkcast 246	com/tencent/mm/plugin/gamelive/a/g
+      //   401: astore_3
+      //   402: aload 8
+      //   404: aload_3
+      //   405: getfield 250	com/tencent/mm/plugin/gamelive/a/g:data	[B
+      //   408: ldc 251
+      //   410: iconst_2
+      //   411: aload_3
+      //   412: getfield 255	com/tencent/mm/plugin/gamelive/a/g:timestamp	J
+      //   415: invokeinterface 259 6 0
+      //   420: goto -272 -> 148
+      //   423: astore 5
+      //   425: aload 4
+      //   427: astore_3
+      //   428: aload 5
+      //   430: astore 4
+      //   432: aload_3
+      //   433: ifnull +7 -> 440
+      //   436: aload_3
+      //   437: invokevirtual 211	java/io/ObjectInputStream:close	()V
+      //   440: aload 7
+      //   442: invokevirtual 212	android/net/LocalSocket:close	()V
+      //   445: ldc 36
+      //   447: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   450: aload 4
+      //   452: athrow
+      //   453: aload 4
+      //   455: astore_3
+      //   456: aload 5
+      //   458: instanceof 261
+      //   461: ifeq +17 -> 478
+      //   464: aload 4
+      //   466: astore_3
+      //   467: ldc 107
+      //   469: ldc_w 263
+      //   472: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   475: goto -182 -> 293
+      //   478: aload 4
+      //   480: astore_3
+      //   481: ldc 107
+      //   483: aload 5
+      //   485: checkcast 265	java/lang/Throwable
+      //   488: ldc_w 267
+      //   491: iconst_0
+      //   492: anewarray 4	java/lang/Object
+      //   495: invokestatic 271	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   498: goto -205 -> 293
+      //   501: astore 5
+      //   503: aload 6
+      //   505: astore 4
+      //   507: goto -330 -> 177
+      //   510: astore 4
+      //   512: goto -80 -> 432
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	539	0	this	b
-      //   1	401	1	i	int
-      //   399	6	2	j	int
-      //   23	482	3	localObject1	Object
-      //   46	269	4	localObject2	Object
-      //   381	69	4	localIOException1	java.io.IOException
-      //   454	76	4	localObject3	Object
-      //   534	1	4	localObject4	Object
-      //   191	6	5	localIOException2	java.io.IOException
-      //   210	1	5	locala	d.a
-      //   447	61	5	localObject5	Object
-      //   525	1	5	localIOException3	java.io.IOException
-      //   148	380	6	localObject6	Object
-      //   108	357	7	localLocalSocket	android.net.LocalSocket
-      //   130	296	8	localb	com.tencent.c.a.a.a.b
+      //   0	515	0	this	b
+      //   1	378	1	i	int
+      //   376	6	2	j	int
+      //   29	452	3	localObject1	Object
+      //   33	266	4	localObject2	Object
+      //   358	68	4	localIOException1	java.io.IOException
+      //   430	76	4	localObject3	Object
+      //   510	1	4	localObject4	Object
+      //   175	6	5	localIOException2	java.io.IOException
+      //   194	1	5	locala	d.a
+      //   423	61	5	localObject5	Object
+      //   501	1	5	localIOException3	java.io.IOException
+      //   132	372	6	localObject6	Object
+      //   92	349	7	localLocalSocket	android.net.LocalSocket
+      //   114	289	8	localb	com.tencent.d.a.a.a.b
       // Exception table:
       //   from	to	target	type
-      //   164	170	191	java/io/IOException
-      //   174	191	191	java/io/IOException
-      //   420	444	191	java/io/IOException
-      //   132	145	381	java/io/IOException
-      //   164	170	447	finally
-      //   174	191	447	finally
-      //   420	444	447	finally
-      //   150	164	525	java/io/IOException
-      //   150	164	534	finally
-      //   196	204	534	finally
-      //   207	212	534	finally
-      //   215	221	534	finally
-      //   224	234	534	finally
-      //   237	244	534	finally
-      //   247	258	534	finally
-      //   261	275	534	finally
-      //   278	292	534	finally
-      //   295	299	534	finally
-      //   302	309	534	finally
-      //   480	488	534	finally
-      //   491	499	534	finally
-      //   505	522	534	finally
+      //   148	154	175	java/io/IOException
+      //   158	175	175	java/io/IOException
+      //   397	420	175	java/io/IOException
+      //   116	129	358	java/io/IOException
+      //   148	154	423	finally
+      //   158	175	423	finally
+      //   397	420	423	finally
+      //   134	148	501	java/io/IOException
+      //   134	148	510	finally
+      //   180	188	510	finally
+      //   191	196	510	finally
+      //   199	205	510	finally
+      //   208	218	510	finally
+      //   221	228	510	finally
+      //   231	242	510	finally
+      //   245	259	510	finally
+      //   262	276	510	finally
+      //   279	283	510	finally
+      //   286	293	510	finally
+      //   456	464	510	finally
+      //   467	475	510	finally
+      //   481	498	510	finally
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelive.a.d
  * JD-Core Version:    0.7.0.1
  */

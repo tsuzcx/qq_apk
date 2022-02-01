@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.aa.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mh;
+import com.tencent.mm.autogen.a.nn;
 import com.tencent.mm.sdk.event.IListener;
 
-final class LaunchAAUI$1
-  extends IListener<mh>
+class LaunchAAUI$1
+  extends IListener<nn>
 {
-  LaunchAAUI$1(LaunchAAUI paramLaunchAAUI)
+  LaunchAAUI$1(LaunchAAUI paramLaunchAAUI, q paramq)
   {
-    AppMethodBeat.i(160787);
-    this.__eventId = mh.class.getName().hashCode();
-    AppMethodBeat.o(160787);
+    super(paramq);
+    AppMethodBeat.i(268570);
+    this.__eventId = nn.class.getName().hashCode();
+    AppMethodBeat.o(268570);
   }
 }
 

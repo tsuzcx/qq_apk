@@ -19,7 +19,7 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(21153);
-    com.tencent.mm.plugin.auto.a.c localc = new com.tencent.mm.plugin.auto.a.c();
+    com.tencent.mm.plugin.auto.model.c localc = new com.tencent.mm.plugin.auto.model.c();
     AppMethodBeat.o(21153);
     return localc;
   }

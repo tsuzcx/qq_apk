@@ -2,7 +2,6 @@ package androidx.transition;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
-import android.animation.TypeEvaluator;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -20,9 +19,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class v
 {
-  private static final boolean ass;
-  private static final boolean ast;
-  private static final boolean asu;
+  private static final boolean chb;
+  private static final boolean chc;
+  private static final boolean chd;
   
   static
   {
@@ -30,13 +29,13 @@ final class v
     if (Build.VERSION.SDK_INT >= 19)
     {
       bool1 = true;
-      ass = bool1;
+      chb = bool1;
       if (Build.VERSION.SDK_INT < 18) {
         break label50;
       }
       bool1 = true;
       label26:
-      ast = bool1;
+      chc = bool1;
       if (Build.VERSION.SDK_INT < 28) {
         break label55;
       }
@@ -45,7 +44,7 @@ final class v
     label55:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      asu = bool1;
+      chd = bool1;
       return;
       bool1 = false;
       break;
@@ -56,26 +55,26 @@ final class v
   
   static Animator a(Animator paramAnimator1, Animator paramAnimator2)
   {
-    AppMethodBeat.i(193033);
+    AppMethodBeat.i(201510);
     if (paramAnimator1 == null)
     {
-      AppMethodBeat.o(193033);
+      AppMethodBeat.o(201510);
       return paramAnimator2;
     }
     if (paramAnimator2 == null)
     {
-      AppMethodBeat.o(193033);
+      AppMethodBeat.o(201510);
       return paramAnimator1;
     }
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { paramAnimator1, paramAnimator2 });
-    AppMethodBeat.o(193033);
+    AppMethodBeat.o(201510);
     return localAnimatorSet;
   }
   
   static View a(ViewGroup paramViewGroup, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(193028);
+    AppMethodBeat.i(201500);
     Matrix localMatrix = new Matrix();
     localMatrix.setTranslate(-paramView2.getScrollX(), -paramView2.getScrollY());
     ai.a(paramView1, localMatrix);
@@ -90,7 +89,7 @@ final class v
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     int i;
     boolean bool;
-    if (ass) {
+    if (chb) {
       if (!paramView1.isAttachedToWindow())
       {
         i = 1;
@@ -104,7 +103,7 @@ final class v
     for (;;)
     {
       j = 0;
-      if ((!ast) || (i == 0)) {
+      if ((!chc) || (i == 0)) {
         break label506;
       }
       if (bool) {
@@ -116,7 +115,7 @@ final class v
       }
       localImageView.measure(View.MeasureSpec.makeMeasureSpec(n - k, 1073741824), View.MeasureSpec.makeMeasureSpec(i1 - m, 1073741824));
       localImageView.layout(k, m, n, i1);
-      AppMethodBeat.o(193028);
+      AppMethodBeat.o(201500);
       return localImageView;
       i = 0;
       break;
@@ -146,7 +145,7 @@ final class v
           i2 = Math.round(i2 * f);
           localMatrix.postTranslate(-localRectF.left, -localRectF.top);
           localMatrix.postScale(f, f);
-          if (!asu) {
+          if (!chd) {
             break label469;
           }
           paramView2 = new Picture();
@@ -160,7 +159,7 @@ final class v
       for (;;)
       {
         localObject = paramView2;
-        if (!ast) {
+        if (!chc) {
           break;
         }
         localObject = paramView2;
@@ -179,23 +178,6 @@ final class v
       }
       label506:
       localViewGroup = null;
-    }
-  }
-  
-  static final class a
-    implements TypeEvaluator<Matrix>
-  {
-    final Matrix JR;
-    final float[] asv;
-    final float[] asw;
-    
-    a()
-    {
-      AppMethodBeat.i(193009);
-      this.asv = new float[9];
-      this.asw = new float[9];
-      this.JR = new Matrix();
-      AppMethodBeat.o(193009);
     }
   }
 }

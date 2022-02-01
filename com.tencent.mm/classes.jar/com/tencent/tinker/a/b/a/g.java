@@ -5,22 +5,22 @@ import java.io.EOFException;
 public final class g
   extends a
 {
-  final short[] ZKd;
+  final short[] ahPf;
   
   public g(short[] paramArrayOfShort)
   {
     if (paramArrayOfShort == null) {
       throw new NullPointerException("array == null");
     }
-    this.ZKd = paramArrayOfShort;
+    this.ahPf = paramArrayOfShort;
   }
   
   public final int read()
   {
     try
     {
-      int i = this.ZKd[this.YO];
-      isz();
+      int i = this.ahPf[this.bGj];
+      kbZ();
       return i & 0xFFFF;
     }
     catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException)
@@ -41,7 +41,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.g
  * JD-Core Version:    0.7.0.1
  */

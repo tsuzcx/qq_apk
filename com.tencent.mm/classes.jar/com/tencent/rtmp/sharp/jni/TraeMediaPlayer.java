@@ -713,7 +713,7 @@ public class TraeMediaPlayer
     //   1168: aload_0
     //   1169: iconst_0
     //   1170: putfield 49	com/tencent/rtmp/sharp/jni/TraeMediaPlayer:_streamType	I
-    //   1173: getstatic 374	android/os/Build$VERSION:SDK_INT	I
+    //   1173: invokestatic 374	com/tencent/liteav/basic/util/TXCBuild:VersionInt	()I
     //   1176: bipush 11
     //   1178: if_icmplt -213 -> 965
     //   1181: iconst_3

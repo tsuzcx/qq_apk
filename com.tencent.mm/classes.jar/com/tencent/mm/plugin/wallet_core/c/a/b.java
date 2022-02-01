@@ -2,64 +2,62 @@ package com.tencent.mm.plugin.wallet_core.c.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.djq;
-import com.tencent.mm.protocal.protobuf.djr;
+import com.tencent.mm.protocal.protobuf.eca;
+import com.tencent.mm.protocal.protobuf.ecb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class b
   extends w
 {
-  public int OIP;
-  private i callback;
+  public int VyB;
+  private com.tencent.mm.am.h callback;
   public String jumpUrl;
-  private d rr;
+  private c rr;
   
   public b()
   {
     AppMethodBeat.i(69970);
-    this.OIP = 0;
-    d.a locala = new d.a();
-    djq localdjq = new djq();
-    h.aHH();
-    Object localObject = h.aHG().aHp().get(ar.a.VkB, Boolean.FALSE);
+    this.VyB = 0;
+    c.a locala = new c.a();
+    eca localeca = new eca();
+    com.tencent.mm.kernel.h.baF();
+    Object localObject = com.tencent.mm.kernel.h.baE().ban().get(at.a.acLV, Boolean.FALSE);
     if (localObject != null) {}
     for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
     {
       if (bool) {}
       for (int i = 1;; i = 0)
       {
-        localdjq.TQX = i;
-        locala.lBU = localdjq;
-        locala.lBV = new djr();
+        localeca.abhw = i;
+        locala.otE = localeca;
+        locala.otF = new ecb();
         locala.uri = "/cgi-bin/mmpay-bin/payibggetjumpurl";
         locala.funcId = 1564;
-        locala.lBW = 0;
+        locala.otG = 0;
         locala.respCmdId = 0;
-        this.rr = locala.bgN();
+        this.rr = locala.bEF();
         AppMethodBeat.o(69970);
         return;
       }
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
     AppMethodBeat.i(69972);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69972);
     return i;
@@ -74,14 +72,14 @@ public final class b
   {
     AppMethodBeat.i(69971);
     Log.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg jump url raw net errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    params = (djr)d.c.b(((d)params).lBS);
+    params = (ecb)c.c.b(((c)params).otC);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Log.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg pay jump url. biz_errcode: %d, biz_errmsg: %s", new Object[] { Integer.valueOf(params.vht), params.vhu });
-      paramString = params.vhu;
-      paramInt3 = params.vht;
-      this.jumpUrl = params.CMD;
-      this.OIP = params.TQY;
+      Log.i("MicroMsg.NetSceneIbgPayGetJumpUrl", "hy: get ibg pay jump url. biz_errcode: %d, biz_errmsg: %s", new Object[] { Integer.valueOf(params.ytv), params.ytw });
+      paramString = params.ytw;
+      paramInt3 = params.ytv;
+      this.jumpUrl = params.IGI;
+      this.VyB = params.abhx;
     }
     for (;;)
     {

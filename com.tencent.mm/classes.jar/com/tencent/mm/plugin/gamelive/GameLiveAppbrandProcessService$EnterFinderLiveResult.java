@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "errCode", "", "(I)V", "getErrCode", "()I", "describeContents", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-gamelive_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "errCode", "", "(I)V", "getErrCode", "()I", "describeContents", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class GameLiveAppbrandProcessService$EnterFinderLiveResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
@@ -16,9 +16,9 @@ public final class GameLiveAppbrandProcessService$EnterFinderLiveResult
   
   static
   {
-    AppMethodBeat.i(208175);
+    AppMethodBeat.i(277214);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(208175);
+    AppMethodBeat.o(277214);
   }
   
   public GameLiveAppbrandProcessService$EnterFinderLiveResult(int paramInt)
@@ -29,8 +29,8 @@ public final class GameLiveAppbrandProcessService$EnterFinderLiveResult
   public GameLiveAppbrandProcessService$EnterFinderLiveResult(Parcel paramParcel)
   {
     this(paramParcel.readInt());
-    AppMethodBeat.i(208174);
-    AppMethodBeat.o(208174);
+    AppMethodBeat.i(277207);
+    AppMethodBeat.o(277207);
   }
   
   public final int describeContents()
@@ -38,24 +38,24 @@ public final class GameLiveAppbrandProcessService$EnterFinderLiveResult
     return 0;
   }
   
-  public final void k(Parcel paramParcel) {}
+  public final void readParcel(Parcel paramParcel) {}
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(208170);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(277222);
+    s.u(paramParcel, "parcel");
     paramParcel.writeInt(this.errCode);
-    AppMethodBeat.o(208170);
+    AppMethodBeat.o(277222);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult;", "plugin-gamelive_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/gamelive/GameLiveAppbrandProcessService$EnterFinderLiveResult;", "plugin-gamelive_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
     implements Parcelable.Creator<GameLiveAppbrandProcessService.EnterFinderLiveResult>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelive.GameLiveAppbrandProcessService.EnterFinderLiveResult
  * JD-Core Version:    0.7.0.1
  */

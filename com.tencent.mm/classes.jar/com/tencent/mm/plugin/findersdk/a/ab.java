@@ -1,45 +1,12 @@
 package com.tencent.mm.plugin.findersdk.a;
 
-import android.content.Context;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.bfe;
-import com.tencent.mm.protocal.protobuf.bff;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.ui.component.c;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/findersdk/api/IFinderDescPanelUIC;", "Lcom/tencent/mm/ui/component/ApiUIC;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface ab
-  extends a
-{
-  public abstract void a(Context paramContext, int paramInt1, String paramString, int paramInt2, a parama);
-  
-  public abstract void a(Context paramContext, int paramInt1, String paramString1, String paramString2, Long paramLong, int paramInt2, a parama);
-  
-  public abstract void a(Context paramContext, String paramString, a parama);
-  
-  public abstract void a(Context paramContext, String paramString1, String paramString2, a parama);
-  
-  public abstract void a(Context paramContext, String paramString1, String paramString2, Long paramLong1, Long paramLong2, a parama);
-  
-  public abstract void a(LinkedList<bfe> paramLinkedList, b paramb);
-  
-  public abstract String aED(String paramString);
-  
-  public abstract String aEE(String paramString);
-  
-  public abstract boolean aEF(String paramString);
-  
-  public abstract String dX(String paramString, int paramInt);
-  
-  public static abstract interface a
-  {
-    public abstract void l(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void eK(List<bff> paramList);
-  }
-}
+  extends c
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

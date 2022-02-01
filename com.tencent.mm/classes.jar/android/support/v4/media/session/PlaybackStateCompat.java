@@ -131,24 +131,24 @@ public final class PlaybackStateCompat
   {
     public static final Parcelable.Creator<CustomAction> CREATOR = new Parcelable.Creator() {};
     private final String eb;
-    private final CharSequence ec;
-    private final int ed;
-    private Object ee;
+    private final CharSequence ed;
+    private final int ee;
+    private Object ef;
     private final Bundle mExtras;
     
     CustomAction(Parcel paramParcel)
     {
       this.eb = paramParcel.readString();
-      this.ec = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-      this.ed = paramParcel.readInt();
+      this.ed = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+      this.ee = paramParcel.readInt();
       this.mExtras = paramParcel.readBundle(MediaSessionCompat.class.getClassLoader());
     }
     
     private CustomAction(String paramString, CharSequence paramCharSequence, int paramInt, Bundle paramBundle)
     {
       this.eb = paramString;
-      this.ec = paramCharSequence;
-      this.ed = paramInt;
+      this.ed = paramCharSequence;
+      this.ee = paramInt;
       this.mExtras = paramBundle;
     }
     
@@ -158,7 +158,7 @@ public final class PlaybackStateCompat
         return null;
       }
       CustomAction localCustomAction = new CustomAction(((PlaybackState.CustomAction)paramObject).getAction(), ((PlaybackState.CustomAction)paramObject).getName(), ((PlaybackState.CustomAction)paramObject).getIcon(), ((PlaybackState.CustomAction)paramObject).getExtras());
-      localCustomAction.ee = paramObject;
+      localCustomAction.ef = paramObject;
       return localCustomAction;
     }
     
@@ -169,21 +169,21 @@ public final class PlaybackStateCompat
     
     public final String toString()
     {
-      return "Action:mName='" + this.ec + ", mIcon=" + this.ed + ", mExtras=" + this.mExtras;
+      return "Action:mName='" + this.ed + ", mIcon=" + this.ee + ", mExtras=" + this.mExtras;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       paramParcel.writeString(this.eb);
-      TextUtils.writeToParcel(this.ec, paramParcel, paramInt);
-      paramParcel.writeInt(this.ed);
+      TextUtils.writeToParcel(this.ed, paramParcel, paramInt);
+      paramParcel.writeInt(this.ee);
       paramParcel.writeBundle(this.mExtras);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.media.session.PlaybackStateCompat
  * JD-Core Version:    0.7.0.1
  */

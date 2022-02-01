@@ -5,23 +5,22 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.h;
-import com.tencent.mm.emoji.c.e;
-import com.tencent.mm.f.b.a.az;
+import com.tencent.mm.autogen.mmdata.rpt.bv;
+import com.tencent.mm.emoji.c.b.h;
+import com.tencent.mm.emoji.d.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/popview/EmojiOperatePopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "context", "Landroid/content/Context;", "type", "", "(Landroid/content/Context;I)V", "TAG", "", "emojiPopView", "Lcom/tencent/mm/view/popview/EmojiPopView;", "lastAnchor", "Landroid/view/View;", "windowManager", "Landroid/view/WindowManager;", "dead", "", "onLongPress", "", "anchor", "item", "", "onMove", "onOutsideTouched", "onTouchEnd", "removePopup", "updatePopupView", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/popview/EmojiOperatePopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "context", "Landroid/content/Context;", "type", "", "(Landroid/content/Context;I)V", "TAG", "", "emojiPopView", "Lcom/tencent/mm/view/popview/EmojiPopView;", "lastAnchor", "Landroid/view/View;", "windowManager", "Landroid/view/WindowManager;", "dead", "", "onLongPress", "", "anchor", "item", "", "onMove", "onOutsideTouched", "onTouchEnd", "removePopup", "updatePopupView", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends a
   implements com.tencent.mm.vending.e.a
 {
   private final String TAG;
-  private View YRA;
-  private EmojiPopView YRz;
+  private EmojiPopView agNf;
+  private View agNg;
   private final Context context;
   private final int type;
   private final WindowManager windowManager;
@@ -35,7 +34,7 @@ public final class b
     paramContext = this.context.getSystemService("window");
     if (paramContext == null)
     {
-      paramContext = new t("null cannot be cast to non-null type android.view.WindowManager");
+      paramContext = new NullPointerException("null cannot be cast to non-null type android.view.WindowManager");
       AppMethodBeat.o(184003);
       throw paramContext;
     }
@@ -43,7 +42,47 @@ public final class b
     AppMethodBeat.o(184003);
   }
   
-  private final void e(final View paramView, Object paramObject)
+  private static final void a(b paramb)
+  {
+    AppMethodBeat.i(235033);
+    s.u(paramb, "this$0");
+    paramb.jNg();
+    AppMethodBeat.o(235033);
+  }
+  
+  private static final void a(b paramb, View paramView)
+  {
+    AppMethodBeat.i(235036);
+    s.u(paramb, "this$0");
+    s.u(paramView, "$anchor");
+    Object localObject;
+    if (paramb.agNf != null)
+    {
+      localObject = paramb.agNf;
+      if (localObject != null) {
+        ((EmojiPopView)localObject).setVisibility(0);
+      }
+      localObject = paramb.agNf;
+      if (localObject != null) {
+        ((EmojiPopView)localObject).mB(paramView);
+      }
+      paramView = paramb.windowManager;
+      localObject = (View)paramb.agNf;
+      paramb = paramb.agNf;
+      if (paramb != null) {
+        break label93;
+      }
+    }
+    label93:
+    for (paramb = null;; paramb = paramb.getWindowLayoutParams())
+    {
+      paramView.updateViewLayout((View)localObject, (ViewGroup.LayoutParams)paramb);
+      AppMethodBeat.o(235036);
+      return;
+    }
+  }
+  
+  private final void d(View paramView, Object paramObject)
   {
     Object localObject2 = null;
     Object localObject1 = null;
@@ -52,201 +91,140 @@ public final class b
     {
       if ((this.type == 2) || (this.type == 3) || (this.type == 4))
       {
-        localObject3 = e.jNv;
-        e.aDd().jw(((h)paramObject).jHh.aCt());
+        localObject3 = e.mmt;
+        e.aWd().le(((h)paramObject).mgK.field_groupId);
       }
-      Object localObject3 = e.jNv;
-      e.rL(this.type);
-      localObject3 = e.jNv;
-      e.aDd().jx(((h)paramObject).jHh.getMd5());
-      localObject3 = e.jNv;
-      e.rE(1);
+      Object localObject3 = e.mmt;
+      e.rN(this.type);
+      localObject3 = e.mmt;
+      e.aWd().lf(((h)paramObject).mgK.getMd5());
+      localObject3 = e.mmt;
+      e.rG(1);
       paramView.setPressed(true);
-      Object localObject4;
-      if (this.YRz == null)
+      if (this.agNf == null)
       {
-        this.YRz = new EmojiPopView(this.context);
-        localObject2 = this.YRz;
+        this.agNf = new EmojiPopView(this.context);
+        localObject2 = this.agNf;
         if (localObject2 != null) {
-          ((EmojiPopView)localObject2).setOnDismissCallback((AbstractPopView.a)new a(this));
+          ((EmojiPopView)localObject2).setOnDismissCallback(new b..ExternalSyntheticLambda0(this));
         }
         localObject2 = this.windowManager;
-        localObject3 = (View)this.YRz;
-        localObject4 = this.YRz;
-        if (localObject4 != null) {
+        localObject3 = (View)this.agNf;
+        localObject4 = this.agNf;
+        if (localObject4 == null) {}
+        for (;;)
+        {
+          ((WindowManager)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
+          localObject1 = this.agNf;
+          if (localObject1 != null) {
+            ((EmojiPopView)localObject1).setVisibility(4);
+          }
+          localObject1 = this.agNf;
+          if (localObject1 != null) {
+            ((EmojiPopView)localObject1).post(new b..ExternalSyntheticLambda1(this, paramView));
+          }
+          paramView = this.agNf;
+          if (paramView != null) {
+            paramView.setEmojiInfo(((h)paramObject).mgK);
+          }
+          paramView = this.agNf;
+          if (paramView == null) {
+            break;
+          }
+          paramView.setPopupType(this.type);
+          AppMethodBeat.o(184002);
+          return;
           localObject1 = ((EmojiPopView)localObject4).getWindowLayoutParams();
         }
-        ((WindowManager)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject1);
-        localObject1 = this.YRz;
-        if (localObject1 != null) {
-          ((EmojiPopView)localObject1).setVisibility(4);
-        }
       }
-      for (;;)
+      localObject1 = this.agNf;
+      if (localObject1 != null) {
+        ((EmojiPopView)localObject1).mB(paramView);
+      }
+      localObject3 = this.windowManager;
+      Object localObject4 = (View)this.agNf;
+      localObject1 = this.agNf;
+      if (localObject1 == null) {}
+      for (localObject1 = localObject2;; localObject1 = ((EmojiPopView)localObject1).getWindowLayoutParams())
       {
-        localObject1 = this.YRz;
-        if (localObject1 != null) {
-          ((EmojiPopView)localObject1).post((Runnable)new b(this, paramView));
-        }
-        paramView = this.YRz;
-        if (paramView != null) {
-          paramView.setEmojiInfo(((h)paramObject).jHh);
-        }
-        paramView = this.YRz;
-        if (paramView == null) {
-          break;
-        }
-        paramView.setPopupType(this.type);
-        AppMethodBeat.o(184002);
-        return;
-        localObject1 = this.YRz;
-        if (localObject1 != null) {
-          ((EmojiPopView)localObject1).jd(paramView);
-        }
-        localObject3 = this.windowManager;
-        localObject4 = (View)this.YRz;
-        EmojiPopView localEmojiPopView = this.YRz;
-        localObject1 = localObject2;
-        if (localEmojiPopView != null) {
-          localObject1 = localEmojiPopView.getWindowLayoutParams();
-        }
         ((WindowManager)localObject3).updateViewLayout((View)localObject4, (ViewGroup.LayoutParams)localObject1);
+        break;
       }
-      AppMethodBeat.o(184002);
-      return;
     }
-    paramView = this.YRz;
-    if (paramView != null)
-    {
+    paramView = this.agNf;
+    if (paramView != null) {
       paramView.setVisibility(8);
-      AppMethodBeat.o(184002);
-      return;
     }
     AppMethodBeat.o(184002);
   }
   
-  private final void ihS()
+  private final void jNg()
   {
-    AppMethodBeat.i(227128);
-    Log.i(this.TAG, "removePopup: " + this.YRz);
-    Object localObject = this.YRA;
+    AppMethodBeat.i(235030);
+    Log.i(this.TAG, s.X("removePopup: ", this.agNf));
+    Object localObject = this.agNg;
     if (localObject != null) {
       ((View)localObject).setPressed(false);
     }
-    this.YRA = null;
-    localObject = this.YRz;
+    this.agNg = null;
+    localObject = this.agNf;
     if (localObject != null) {
       this.windowManager.removeView((View)localObject);
     }
-    this.YRz = null;
-    AppMethodBeat.o(227128);
+    this.agNf = null;
+    AppMethodBeat.o(235030);
   }
   
-  public final boolean c(View paramView, Object paramObject)
+  public final boolean b(View paramView, Object paramObject)
   {
     AppMethodBeat.i(183998);
-    p.k(paramView, "anchor");
+    s.u(paramView, "anchor");
     if ((!(paramObject instanceof h)) || (!paramView.isEnabled()))
     {
       AppMethodBeat.o(183998);
       return false;
     }
-    this.YRA = paramView;
+    this.agNg = paramView;
     paramView.setPressed(true);
-    e(paramView, paramObject);
+    d(paramView, paramObject);
     AppMethodBeat.o(183998);
     return true;
   }
   
-  public final void d(View paramView, Object paramObject)
+  public final void c(View paramView, Object paramObject)
   {
     AppMethodBeat.i(183999);
-    p.k(paramView, "anchor");
+    s.u(paramView, "anchor");
     paramView.setPressed(true);
-    if (p.h(this.YRA, paramView))
+    if (s.p(this.agNg, paramView))
     {
       AppMethodBeat.o(183999);
       return;
     }
-    View localView = this.YRA;
+    View localView = this.agNg;
     if (localView != null) {
       localView.setPressed(false);
     }
-    this.YRA = paramView;
-    e(paramView, paramObject);
+    this.agNg = paramView;
+    d(paramView, paramObject);
     AppMethodBeat.o(183999);
   }
   
   public final void dead()
   {
-    AppMethodBeat.i(227090);
-    ihS();
-    AppMethodBeat.o(227090);
+    AppMethodBeat.i(235055);
+    jNg();
+    AppMethodBeat.o(235055);
   }
   
-  public final void fRF()
+  public final void hjF()
   {
     AppMethodBeat.i(184000);
-    View localView = this.YRA;
-    if (localView != null)
-    {
+    View localView = this.agNg;
+    if (localView != null) {
       localView.setPressed(false);
-      AppMethodBeat.o(184000);
-      return;
     }
     AppMethodBeat.o(184000);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDismiss"})
-  static final class a
-    implements AbstractPopView.a
-  {
-    a(b paramb) {}
-    
-    public final void onDismiss()
-    {
-      AppMethodBeat.i(183996);
-      b.a(this.YRB);
-      AppMethodBeat.o(183996);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(b paramb, View paramView) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(183997);
-      WindowManager localWindowManager;
-      View localView;
-      if (b.b(this.YRB) != null)
-      {
-        localObject = b.b(this.YRB);
-        if (localObject != null) {
-          ((EmojiPopView)localObject).setVisibility(0);
-        }
-        localObject = b.b(this.YRB);
-        if (localObject != null) {
-          ((EmojiPopView)localObject).jd(paramView);
-        }
-        localWindowManager = b.c(this.YRB);
-        localView = (View)b.b(this.YRB);
-        localObject = b.b(this.YRB);
-        if (localObject == null) {
-          break label105;
-        }
-      }
-      label105:
-      for (Object localObject = ((EmojiPopView)localObject).getWindowLayoutParams();; localObject = null)
-      {
-        localWindowManager.updateViewLayout(localView, (ViewGroup.LayoutParams)localObject);
-        AppMethodBeat.o(183997);
-        return;
-      }
-    }
   }
 }
 

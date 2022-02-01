@@ -1,93 +1,93 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.c;
+import com.google.d.a.e;
 
 public final class a$bb
   extends e
 {
-  private static volatile bb[] Zif;
-  public int RCR = 0;
-  public long Zig = 0L;
-  public String Zih = "";
-  public String Zii = "";
+  private static volatile bb[] ahgG;
+  public int Yzt = 0;
+  public long ahgH = 0L;
+  public String ahgI = "";
+  public String ahgJ = "";
   public String headUrl = "";
   public String username = "";
   
   public a$bb()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public static bb[] ikW()
+  public static bb[] jRn()
   {
-    if (Zif == null) {}
-    synchronized (c.ccQ)
+    if (ahgG == null) {}
+    synchronized (c.dXu)
     {
-      if (Zif == null) {
-        Zif = new bb[0];
+      if (ahgG == null) {
+        ahgG = new bb[0];
       }
-      return Zif;
+      return ahgG;
     }
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.RCR != 0) {
-      i = j + b.bN(1, this.RCR);
-    }
-    j = i;
-    if (!this.username.equals("")) {
-      j = i + b.g(2, this.username);
-    }
-    i = j;
-    if (!this.headUrl.equals("")) {
-      i = j + b.g(3, this.headUrl);
-    }
-    j = i;
-    if (this.Zig != 0L) {
-      j = i + b.q(4, this.Zig);
-    }
-    i = j;
-    if (!this.Zih.equals("")) {
-      i = j + b.g(5, this.Zih);
-    }
-    j = i;
-    if (!this.Zii.equals("")) {
-      j = i + b.g(6, this.Zii);
-    }
-    return j;
   }
   
   public final void a(b paramb)
   {
-    if (this.RCR != 0) {
-      paramb.bK(1, this.RCR);
+    if (this.Yzt != 0) {
+      paramb.cG(1, this.Yzt);
     }
     if (!this.username.equals("")) {
-      paramb.f(2, this.username);
+      paramb.g(2, this.username);
     }
     if (!this.headUrl.equals("")) {
-      paramb.f(3, this.headUrl);
+      paramb.g(3, this.headUrl);
     }
-    if (this.Zig != 0L) {
-      paramb.n(4, this.Zig);
+    if (this.ahgH != 0L) {
+      paramb.n(4, this.ahgH);
     }
-    if (!this.Zih.equals("")) {
-      paramb.f(5, this.Zih);
+    if (!this.ahgI.equals("")) {
+      paramb.g(5, this.ahgI);
     }
-    if (!this.Zii.equals("")) {
-      paramb.f(6, this.Zii);
+    if (!this.ahgJ.equals("")) {
+      paramb.g(6, this.ahgJ);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.Yzt != 0) {
+      i = j + b.cK(1, this.Yzt);
+    }
+    j = i;
+    if (!this.username.equals("")) {
+      j = i + b.h(2, this.username);
+    }
+    i = j;
+    if (!this.headUrl.equals("")) {
+      i = j + b.h(3, this.headUrl);
+    }
+    j = i;
+    if (this.ahgH != 0L) {
+      j = i + b.r(4, this.ahgH);
+    }
+    i = j;
+    if (!this.ahgI.equals("")) {
+      i = j + b.h(5, this.ahgI);
+    }
+    j = i;
+    if (!this.ahgJ.equals("")) {
+      j = i + b.h(6, this.ahgJ);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.bb
  * JD-Core Version:    0.7.0.1
  */

@@ -107,10 +107,13 @@
     }
 
     function goThroughDOM(){
-        const titleNode = document.getElementsByTagName('title')[0].childNodes[0];
-        //公众号文章的titleNode比较特殊，要先判断一下
-        processNode(titleNode,true);
-        textNodesUnder(document.body);
+        var titleNodeParent = document.getElementsByTagName('title')[0]
+        if (titleNodeParent != undefined) {
+            const titleNode = document.getElementsByTagName('title')[0].childNodes[0];
+            //公众号文章的titleNode比较特殊，要先判断一下
+            processNode(titleNode,true);
+        }
+        textNodesUnder(document.body)
     }
 
     function startTrans(){

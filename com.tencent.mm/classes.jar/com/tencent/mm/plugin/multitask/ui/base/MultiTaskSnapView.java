@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.multitask.ui.base;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.mm.ui.MMImageView;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;", "Lcom/tencent/mm/ui/MMImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/base/MultiTaskSnapView;", "Lcom/tencent/mm/ui/MMImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class MultiTaskSnapView
   extends MMImageView
 {

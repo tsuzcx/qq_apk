@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.audio.b;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "()V", "shiftSpeaker", "", "beSpeakerphoneOn", "ignoreBluetooth", "StreamType", "", "plugin-audio_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseAudioManager;", "()V", "shiftSpeaker", "", "beSpeakerphoneOn", "ignoreBluetooth", "StreamType", "", "plugin-audio_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class d
   extends a
 {
-  public final boolean kA(boolean paramBoolean)
+  public final boolean lN(boolean paramBoolean)
   {
     return false;
   }

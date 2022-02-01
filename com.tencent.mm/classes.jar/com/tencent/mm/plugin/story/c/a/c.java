@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.story.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.y;
-import com.tencent.mm.media.k.h.a;
+import com.tencent.mm.media.util.h.a;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.zero.b.a;
@@ -11,337 +11,342 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "()V", "RECORDER_TYPE_FFMPEG", "", "RECORDER_TYPE_MEDIACODEC", "TAG", "", "getTAG", "()Ljava/lang/String;", "findVideoFps", "path", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "EncodeConfig", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "()V", "RECORDER_TYPE_FFMPEG", "", "RECORDER_TYPE_MEDIACODEC", "TAG", "", "getTAG", "()Ljava/lang/String;", "findVideoFps", "path", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "EncodeConfig", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends com.tencent.mm.plugin.story.c.b<a>
 {
-  public static final c LFb;
-  private static final String TAG = "MicroMsg.StoryEncodeElementConfig";
+  public static final c SiN;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(118594);
-    LFb = new c();
+    SiN = new c();
     TAG = "MicroMsg.StoryEncodeElementConfig";
     AppMethodBeat.o(118594);
   }
   
   /* Error */
-  private static int bcL(String paramString)
+  private static int bbz(String paramString)
   {
     // Byte code:
-    //   0: ldc 65
-    //   2: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 67	com/tencent/mm/compatible/i/c
+    //   0: ldc 72
+    //   2: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 74	com/tencent/mm/compatible/i/c
     //   8: dup
-    //   9: invokespecial 68	com/tencent/mm/compatible/i/c:<init>	()V
-    //   12: astore 4
-    //   14: aload 4
-    //   16: astore_3
-    //   17: aload 4
-    //   19: aload_0
-    //   20: invokevirtual 72	com/tencent/mm/compatible/i/c:setDataSource	(Ljava/lang/String;)V
-    //   23: aload 4
-    //   25: astore_3
-    //   26: aload 4
-    //   28: invokevirtual 76	com/tencent/mm/compatible/i/c:getTrackCount	()I
-    //   31: istore_2
-    //   32: iconst_0
-    //   33: istore_1
-    //   34: iload_1
-    //   35: iload_2
-    //   36: if_icmpge +219 -> 255
-    //   39: aload 4
-    //   41: astore_3
-    //   42: aload 4
-    //   44: iload_1
-    //   45: invokevirtual 80	com/tencent/mm/compatible/i/c:getTrackFormat	(I)Landroid/media/MediaFormat;
-    //   48: astore_0
-    //   49: aload 4
-    //   51: astore_3
-    //   52: aload_0
-    //   53: ldc 82
-    //   55: invokestatic 88	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   58: aload 4
-    //   60: astore_3
-    //   61: aload_0
-    //   62: ldc 90
-    //   64: invokevirtual 96	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
-    //   67: ifeq +193 -> 260
-    //   70: aload 4
-    //   72: astore_3
-    //   73: aload_0
-    //   74: ldc 90
-    //   76: invokevirtual 100	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   79: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   82: ifeq +6 -> 88
-    //   85: goto +175 -> 260
-    //   88: aload 4
-    //   90: astore_3
-    //   91: aload_0
-    //   92: ldc 90
-    //   94: invokevirtual 100	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   97: astore 5
-    //   99: aload 4
-    //   101: astore_3
-    //   102: getstatic 55	com/tencent/mm/plugin/story/c/a/c:TAG	Ljava/lang/String;
-    //   105: ldc 107
-    //   107: iconst_1
-    //   108: anewarray 109	java/lang/Object
-    //   111: dup
-    //   112: iconst_0
-    //   113: aload 5
-    //   115: aastore
-    //   116: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   119: aload 4
-    //   121: astore_3
-    //   122: aload 5
-    //   124: ldc 90
-    //   126: invokestatic 88	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   129: aload 4
-    //   131: astore_3
-    //   132: aload 5
-    //   134: ldc 116
-    //   136: iconst_0
-    //   137: invokestatic 122	kotlin/n/n:M	(Ljava/lang/String;Ljava/lang/String;Z)Z
-    //   140: ifeq +120 -> 260
-    //   143: aload 4
-    //   145: astore_3
-    //   146: aload_0
-    //   147: ldc 124
-    //   149: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   152: istore_1
-    //   153: aload 4
-    //   155: astore_3
-    //   156: getstatic 55	com/tencent/mm/plugin/story/c/a/c:TAG	Ljava/lang/String;
-    //   159: ldc 129
-    //   161: iconst_1
-    //   162: anewarray 109	java/lang/Object
-    //   165: dup
-    //   166: iconst_0
-    //   167: iload_1
-    //   168: invokestatic 135	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   171: aastore
-    //   172: invokestatic 114	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   175: aload 4
-    //   177: invokevirtual 138	com/tencent/mm/compatible/i/c:release	()V
-    //   180: ldc 65
-    //   182: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   185: iload_1
-    //   186: ireturn
-    //   187: astore 5
-    //   189: aconst_null
-    //   190: astore_0
-    //   191: aload_0
-    //   192: astore_3
-    //   193: getstatic 55	com/tencent/mm/plugin/story/c/a/c:TAG	Ljava/lang/String;
-    //   196: aload 5
-    //   198: checkcast 140	java/lang/Throwable
-    //   201: ldc 142
-    //   203: iconst_0
-    //   204: anewarray 109	java/lang/Object
-    //   207: invokestatic 146	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   210: aload_0
-    //   211: ifnull +7 -> 218
-    //   214: aload_0
-    //   215: invokevirtual 138	com/tencent/mm/compatible/i/c:release	()V
-    //   218: ldc 65
-    //   220: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   223: iconst_0
-    //   224: ireturn
-    //   225: astore_0
-    //   226: aconst_null
-    //   227: astore_3
-    //   228: aload_3
-    //   229: ifnull +7 -> 236
-    //   232: aload_3
-    //   233: invokevirtual 138	com/tencent/mm/compatible/i/c:release	()V
-    //   236: ldc 65
-    //   238: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   241: aload_0
-    //   242: athrow
-    //   243: astore_0
-    //   244: goto -16 -> 228
-    //   247: astore 5
-    //   249: aload 4
-    //   251: astore_0
-    //   252: goto -61 -> 191
-    //   255: iconst_0
-    //   256: istore_1
-    //   257: goto -82 -> 175
-    //   260: iload_1
-    //   261: iconst_1
-    //   262: iadd
-    //   263: istore_1
-    //   264: goto -230 -> 34
+    //   9: invokespecial 75	com/tencent/mm/compatible/i/c:<init>	()V
+    //   12: astore 6
+    //   14: aload 6
+    //   16: astore 5
+    //   18: aload 6
+    //   20: aload_0
+    //   21: invokevirtual 79	com/tencent/mm/compatible/i/c:setDataSource	(Ljava/lang/String;)V
+    //   24: aload 6
+    //   26: astore 5
+    //   28: aload 6
+    //   30: getfield 83	com/tencent/mm/compatible/i/c:lZm	Landroid/media/MediaExtractor;
+    //   33: invokevirtual 89	android/media/MediaExtractor:getTrackCount	()I
+    //   36: istore_3
+    //   37: iload_3
+    //   38: ifle +68 -> 106
+    //   41: iconst_0
+    //   42: istore_1
+    //   43: iload_1
+    //   44: iconst_1
+    //   45: iadd
+    //   46: istore_2
+    //   47: aload 6
+    //   49: astore 5
+    //   51: aload 6
+    //   53: iload_1
+    //   54: invokevirtual 93	com/tencent/mm/compatible/i/c:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   57: astore_0
+    //   58: aload 6
+    //   60: astore 5
+    //   62: aload_0
+    //   63: ldc 95
+    //   65: invokestatic 101	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   68: aload 6
+    //   70: astore 5
+    //   72: aload_0
+    //   73: ldc 103
+    //   75: invokevirtual 109	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   78: ifeq +23 -> 101
+    //   81: aload 6
+    //   83: astore 5
+    //   85: aload_0
+    //   86: ldc 103
+    //   88: invokevirtual 113	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   91: invokestatic 118	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   94: istore 4
+    //   96: iload 4
+    //   98: ifeq +25 -> 123
+    //   101: iload_2
+    //   102: iload_3
+    //   103: if_icmplt +196 -> 299
+    //   106: iconst_0
+    //   107: istore_1
+    //   108: aload 6
+    //   110: getfield 83	com/tencent/mm/compatible/i/c:lZm	Landroid/media/MediaExtractor;
+    //   113: invokevirtual 121	android/media/MediaExtractor:release	()V
+    //   116: ldc 72
+    //   118: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: iload_1
+    //   122: ireturn
+    //   123: aload 6
+    //   125: astore 5
+    //   127: aload_0
+    //   128: ldc 103
+    //   130: invokevirtual 113	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: astore 7
+    //   135: aload 6
+    //   137: astore 5
+    //   139: getstatic 58	com/tencent/mm/plugin/story/c/a/c:TAG	Ljava/lang/String;
+    //   142: ldc 123
+    //   144: iconst_1
+    //   145: anewarray 125	java/lang/Object
+    //   148: dup
+    //   149: iconst_0
+    //   150: aload 7
+    //   152: aastore
+    //   153: invokestatic 130	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   156: aload 6
+    //   158: astore 5
+    //   160: aload 7
+    //   162: invokestatic 134	kotlin/g/b/s:checkNotNull	(Ljava/lang/Object;)V
+    //   165: aload 6
+    //   167: astore 5
+    //   169: aload 7
+    //   171: ldc 136
+    //   173: iconst_0
+    //   174: invokestatic 142	kotlin/n/n:U	(Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   177: ifeq -76 -> 101
+    //   180: aload 6
+    //   182: astore 5
+    //   184: aload_0
+    //   185: ldc 144
+    //   187: invokevirtual 147	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   190: istore_1
+    //   191: aload 6
+    //   193: astore 5
+    //   195: getstatic 58	com/tencent/mm/plugin/story/c/a/c:TAG	Ljava/lang/String;
+    //   198: ldc 149
+    //   200: iconst_1
+    //   201: anewarray 125	java/lang/Object
+    //   204: dup
+    //   205: iconst_0
+    //   206: iload_1
+    //   207: invokestatic 155	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   210: aastore
+    //   211: invokestatic 130	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   214: goto -106 -> 108
+    //   217: astore 5
+    //   219: aload 6
+    //   221: astore_0
+    //   222: aload 5
+    //   224: astore 6
+    //   226: aload_0
+    //   227: astore 5
+    //   229: getstatic 58	com/tencent/mm/plugin/story/c/a/c:TAG	Ljava/lang/String;
+    //   232: aload 6
+    //   234: checkcast 157	java/lang/Throwable
+    //   237: ldc 159
+    //   239: iconst_0
+    //   240: anewarray 125	java/lang/Object
+    //   243: invokestatic 163	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   246: aload_0
+    //   247: ifnull +10 -> 257
+    //   250: aload_0
+    //   251: getfield 83	com/tencent/mm/compatible/i/c:lZm	Landroid/media/MediaExtractor;
+    //   254: invokevirtual 121	android/media/MediaExtractor:release	()V
+    //   257: ldc 72
+    //   259: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   262: iconst_0
+    //   263: ireturn
+    //   264: astore_0
+    //   265: aconst_null
+    //   266: astore 5
+    //   268: aload 5
+    //   270: ifnull +11 -> 281
+    //   273: aload 5
+    //   275: getfield 83	com/tencent/mm/compatible/i/c:lZm	Landroid/media/MediaExtractor;
+    //   278: invokevirtual 121	android/media/MediaExtractor:release	()V
+    //   281: ldc 72
+    //   283: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   286: aload_0
+    //   287: athrow
+    //   288: astore_0
+    //   289: goto -21 -> 268
+    //   292: astore 6
+    //   294: aconst_null
+    //   295: astore_0
+    //   296: goto -70 -> 226
+    //   299: iload_2
+    //   300: istore_1
+    //   301: goto -258 -> 43
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	267	0	paramString	String
-    //   33	231	1	i	int
-    //   31	6	2	j	int
-    //   16	217	3	localObject	Object
-    //   12	238	4	localc	com.tencent.mm.compatible.i.c
-    //   97	36	5	str	String
-    //   187	10	5	localException1	Exception
-    //   247	1	5	localException2	Exception
+    //   0	304	0	paramString	String
+    //   42	259	1	i	int
+    //   46	254	2	j	int
+    //   36	68	3	k	int
+    //   94	3	4	bool	boolean
+    //   16	178	5	localObject1	Object
+    //   217	6	5	localException1	Exception
+    //   227	47	5	str1	String
+    //   12	221	6	localObject2	Object
+    //   292	1	6	localException2	Exception
+    //   133	37	7	str2	String
     // Exception table:
     //   from	to	target	type
-    //   5	14	187	java/lang/Exception
-    //   5	14	225	finally
-    //   17	23	243	finally
-    //   26	32	243	finally
-    //   42	49	243	finally
-    //   52	58	243	finally
-    //   61	70	243	finally
-    //   73	85	243	finally
-    //   91	99	243	finally
-    //   102	119	243	finally
-    //   122	129	243	finally
-    //   132	143	243	finally
-    //   146	153	243	finally
-    //   156	175	243	finally
-    //   193	210	243	finally
-    //   17	23	247	java/lang/Exception
-    //   26	32	247	java/lang/Exception
-    //   42	49	247	java/lang/Exception
-    //   52	58	247	java/lang/Exception
-    //   61	70	247	java/lang/Exception
-    //   73	85	247	java/lang/Exception
-    //   91	99	247	java/lang/Exception
-    //   102	119	247	java/lang/Exception
-    //   122	129	247	java/lang/Exception
-    //   132	143	247	java/lang/Exception
-    //   146	153	247	java/lang/Exception
-    //   156	175	247	java/lang/Exception
+    //   18	24	217	java/lang/Exception
+    //   28	37	217	java/lang/Exception
+    //   51	58	217	java/lang/Exception
+    //   62	68	217	java/lang/Exception
+    //   72	81	217	java/lang/Exception
+    //   85	96	217	java/lang/Exception
+    //   127	135	217	java/lang/Exception
+    //   139	156	217	java/lang/Exception
+    //   160	165	217	java/lang/Exception
+    //   169	180	217	java/lang/Exception
+    //   184	191	217	java/lang/Exception
+    //   195	214	217	java/lang/Exception
+    //   5	14	264	finally
+    //   18	24	288	finally
+    //   28	37	288	finally
+    //   51	58	288	finally
+    //   62	68	288	finally
+    //   72	81	288	finally
+    //   85	96	288	finally
+    //   127	135	288	finally
+    //   139	156	288	finally
+    //   160	165	288	finally
+    //   169	180	288	finally
+    //   184	191	288	finally
+    //   195	214	288	finally
+    //   229	246	288	finally
+    //   5	14	292	java/lang/Exception
   }
   
-  public final void aTZ()
+  public final void boD()
   {
     AppMethodBeat.i(118592);
-    Object localObject1 = (a)aTX();
-    Object localObject2 = com.tencent.mm.plugin.story.proxy.c.LNy;
-    com.tencent.mm.plugin.story.proxy.c.gef();
+    Object localObject1 = (a)boB();
+    Object localObject2 = com.tencent.mm.plugin.story.proxy.c.Sql;
+    com.tencent.mm.plugin.story.proxy.c.hxy();
     localObject2 = com.tencent.mm.plugin.story.proxy.c.getVideoPara();
-    p.k(localObject2, "<set-?>");
-    ((a)localObject1).mfk = ((VideoTransPara)localObject2);
-    localObject1 = ((a)aTX()).mfk;
-    ((a)aTX()).targetWidth = ((VideoTransPara)localObject1).width;
-    localObject2 = (a)aTX();
-    h.a locala = com.tencent.mm.media.k.h.laG;
-    ((a)localObject2).targetHeight = h.a.ug(((VideoTransPara)localObject1).width);
-    if (((a)aTX()).targetHeight % 16 != 0) {
-      ((a)aTX()).targetHeight = com.tencent.mm.plugin.mmsight.d.WV(((a)aTX()).targetHeight);
+    s.u(localObject2, "<set-?>");
+    ((a)localObject1).oXZ = ((VideoTransPara)localObject2);
+    localObject1 = ((a)boB()).oXZ;
+    ((a)boB()).nxO = ((VideoTransPara)localObject1).width;
+    localObject2 = (a)boB();
+    h.a locala = com.tencent.mm.media.util.h.nFI;
+    ((a)localObject2).nxP = h.a.uf(((VideoTransPara)localObject1).width);
+    if (((a)boB()).nxP % 16 != 0) {
+      ((a)boB()).nxP = com.tencent.mm.plugin.mmsight.d.aaX(((a)boB()).nxP);
     }
-    if (((a)aTX()).targetWidth % 16 != 0) {
-      ((a)aTX()).targetWidth = com.tencent.mm.plugin.mmsight.d.WV(((a)aTX()).targetWidth);
+    if (((a)boB()).nxO % 16 != 0) {
+      ((a)boB()).nxO = com.tencent.mm.plugin.mmsight.d.aaX(((a)boB()).nxO);
     }
-    ((a)aTX()).mfk.width = ((a)aTX()).targetWidth;
-    ((a)aTX()).mfk.height = ((a)aTX()).targetHeight;
-    ((a)aTX()).videoBitrate = ((VideoTransPara)localObject1).videoBitrate;
-    ((a)aTX()).audioBitrate = ((VideoTransPara)localObject1).audioBitrate;
-    ((a)aTX()).frameRate = ((VideoTransPara)localObject1).fps;
-    ((a)aTX()).kXt = ((VideoTransPara)localObject1).kXt;
-    ((a)aTX()).duration = ((VideoTransPara)localObject1).duration;
-    ((a)aTX()).lJn = ((VideoTransPara)localObject1).lJn;
-    ((a)aTX()).lJm = ((VideoTransPara)localObject1).lJm;
-    ((a)aTX()).lJx = ((VideoTransPara)localObject1).lJx;
-    ((a)aTX()).lJy = ((VideoTransPara)localObject1).lJy;
-    ((a)aTX()).audioSampleRate = ((VideoTransPara)localObject1).audioSampleRate;
-    localObject1 = (a)aTX();
-    p.k("StoryCheckSendVideoBitrateLimit", "key");
-    if (MMApplicationContext.isMMProcess())
+    ((a)boB()).oXZ.width = ((a)boB()).nxO;
+    ((a)boB()).oXZ.height = ((a)boB()).nxP;
+    ((a)boB()).videoBitrate = ((VideoTransPara)localObject1).videoBitrate;
+    ((a)boB()).audioBitrate = ((VideoTransPara)localObject1).audioBitrate;
+    ((a)boB()).frameRate = ((VideoTransPara)localObject1).fps;
+    ((a)boB()).nCd = ((VideoTransPara)localObject1).nCd;
+    ((a)boB()).duration = ((VideoTransPara)localObject1).duration;
+    ((a)boB()).oBP = ((VideoTransPara)localObject1).oBP;
+    ((a)boB()).oBO = ((VideoTransPara)localObject1).oBO;
+    ((a)boB()).oBZ = ((VideoTransPara)localObject1).oBZ;
+    ((a)boB()).oCa = ((VideoTransPara)localObject1).oCa;
+    ((a)boB()).audioSampleRate = ((VideoTransPara)localObject1).audioSampleRate;
+    localObject1 = (a)boB();
+    s.u("StoryCheckSendVideoBitrateLimit", "key");
+    if (MMApplicationContext.isMMProcess()) {}
+    for (float f = Util.getFloat(((a)com.tencent.mm.kernel.h.ax(a.class)).aRC().getValue("StoryCheckSendVideoBitrateLimit"), 1.3F);; f = Util.getFloat(CaptureMMProxy.getInstance().getDynamicConfig("StoryCheckSendVideoBitrateLimit"), 1.3F))
     {
-      localObject2 = com.tencent.mm.kernel.h.ae(a.class);
-      p.j(localObject2, "MMKernel.service<IConfig…onfigService::class.java)");
-    }
-    for (float f = Util.getFloat(((a)localObject2).axc().getValue("StoryCheckSendVideoBitrateLimit"), 1.3F);; f = Util.getFloat(CaptureMMProxy.getInstance().getDynamicConfig("StoryCheckSendVideoBitrateLimit"), 1.3F))
-    {
-      ((a)localObject1).LFc = f;
-      if (af.juP.jth != -1) {
-        ((a)aTX()).jth = af.juP.jth;
+      ((a)localObject1).SiP = f;
+      if (af.lYg.lWy != -1) {
+        ((a)boB()).lWy = af.lYg.lWy;
       }
-      if (WeChatEnvironment.hasDebugger())
-      {
-        localObject1 = (a)aTX();
-        localObject2 = com.tencent.mm.kernel.h.aHG();
-        p.j(localObject2, "MMKernel.storage()");
-        ((a)localObject1).jth = ((com.tencent.mm.kernel.f)localObject2).aHp().getInt(ar.a.Vup, 2);
+      if (WeChatEnvironment.hasDebugger()) {
+        ((a)boB()).lWy = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acVY, 2);
       }
-      Log.i(TAG, "loadConfigFromVideoParam: " + (a)aTX());
+      Log.i(TAG, s.X("loadConfigFromVideoParam: ", boB()));
       AppMethodBeat.o(118592);
       return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "", "targetWidth", "", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "duration", "iFrame", "profileIndex", "presetIndex", "isDefault", "", "thumbSize", "audioSampleRate", "recorderType", "exceedVideoBitrateTolerance", "", "(IIIIIIIIIIZIIIF)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioSampleRate", "setAudioSampleRate", "getDuration", "setDuration", "getExceedVideoBitrateTolerance", "()F", "setExceedVideoBitrateTolerance", "(F)V", "getFrameRate", "setFrameRate", "getIFrame", "setIFrame", "()Z", "setDefault", "(Z)V", "getPresetIndex", "setPresetIndex", "getProfileIndex", "setProfileIndex", "getRecorderType", "setRecorderType", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getThumbSize", "setThumbSize", "getVideoBitrate", "setVideoBitrate", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getVideoParam", "()Lcom/tencent/mm/modelcontrol/VideoTransPara;", "setVideoParam", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;)V", "getVideoRotate", "setVideoRotate", "checkExceedConfigBitrate", "path", "", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "videoConfigForLocalFile", "", "Companion", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig;", "", "targetWidth", "", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "duration", "iFrame", "profileIndex", "presetIndex", "isDefault", "", "thumbSize", "audioSampleRate", "recorderType", "exceedVideoBitrateTolerance", "", "(IIIIIIIIIIZIIIF)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioSampleRate", "setAudioSampleRate", "getDuration", "setDuration", "getExceedVideoBitrateTolerance", "()F", "setExceedVideoBitrateTolerance", "(F)V", "getFrameRate", "setFrameRate", "getIFrame", "setIFrame", "()Z", "setDefault", "(Z)V", "getPresetIndex", "setPresetIndex", "getProfileIndex", "setProfileIndex", "getRecorderType", "setRecorderType", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getThumbSize", "setThumbSize", "getVideoBitrate", "setVideoBitrate", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "getVideoParam", "()Lcom/tencent/mm/modelcontrol/VideoTransPara;", "setVideoParam", "(Lcom/tencent/mm/modelcontrol/VideoTransPara;)V", "getVideoRotate", "setVideoRotate", "checkExceedConfigBitrate", "path", "", "component1", "component10", "component11", "component12", "component13", "component14", "component15", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "videoConfigForLocalFile", "", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static final a LFd;
-    float LFc;
+    public static final c.a.a SiO;
+    float SiP;
     int audioBitrate;
     int audioSampleRate;
     public int duration;
     public int frameRate;
-    int jth;
-    public int kWG;
-    int kXt;
-    int lJm;
-    int lJn;
-    boolean lJx;
-    int lJy;
-    public VideoTransPara mfk;
-    public int targetHeight;
-    public int targetWidth;
+    int lWy;
+    int nCd;
+    public int nCg;
+    public int nxO;
+    public int nxP;
+    int oBO;
+    int oBP;
+    boolean oBZ;
+    int oCa;
+    public VideoTransPara oXZ;
     public int videoBitrate;
     
     static
     {
       AppMethodBeat.i(118587);
-      LFd = new a((byte)0);
+      SiO = new c.a.a((byte)0);
       AppMethodBeat.o(118587);
     }
     
     private a()
     {
       AppMethodBeat.i(118586);
-      this.targetWidth = 0;
-      this.targetHeight = 0;
+      this.nxO = 0;
+      this.nxP = 0;
       this.videoBitrate = 0;
       this.audioBitrate = 0;
       this.frameRate = 0;
-      this.kWG = 0;
+      this.nCg = 0;
       this.duration = 0;
-      this.kXt = 0;
-      this.lJm = 0;
-      this.lJn = 0;
-      this.lJx = false;
-      this.lJy = 0;
+      this.nCd = 0;
+      this.oBO = 0;
+      this.oBP = 0;
+      this.oBZ = false;
+      this.oCa = 0;
       this.audioSampleRate = 0;
-      this.jth = 2;
-      this.LFc = 1.3F;
-      this.mfk = new VideoTransPara();
+      this.lWy = 2;
+      this.SiP = 1.3F;
+      this.oXZ = new VideoTransPara();
       AppMethodBeat.o(118586);
     }
     
-    public final boolean bcN(String paramString)
+    public final boolean bbB(String paramString)
     {
       AppMethodBeat.i(118585);
-      p.k(paramString, "path");
+      s.u(paramString, "path");
       if (Log.getLogLevel() >= 0)
       {
-        localObject = com.tencent.mm.plugin.recordvideo.b.f.HJU;
-        if (com.tencent.mm.plugin.recordvideo.b.f.fvD())
+        localObject = com.tencent.mm.plugin.recordvideo.c.f.NGM;
+        if (com.tencent.mm.plugin.recordvideo.c.f.gHr())
         {
           AppMethodBeat.o(118585);
           return true;
         }
       }
-      Object localObject = com.tencent.mm.plugin.sight.base.f.aYg(paramString);
+      Object localObject = com.tencent.mm.plugin.sight.base.f.aVX(paramString);
       if (localObject != null) {}
       for (int i = ((com.tencent.mm.plugin.sight.base.b)localObject).videoBitrate;; i = 0)
       {
@@ -365,8 +370,8 @@ public final class c
           label100:
           break label100;
         }
-        Log.i("MicroMsg.IEncodeConfig", "checkExceedConfigBitrate, path:" + paramString + ", bitrate:" + j + ", videoBitrate:" + this.videoBitrate + ", exceedVideoBitrateTolerance:" + this.LFc);
-        if (j > this.videoBitrate * this.LFc)
+        Log.i("MicroMsg.IEncodeConfig", "checkExceedConfigBitrate, path:" + paramString + ", bitrate:" + j + ", videoBitrate:" + this.videoBitrate + ", exceedVideoBitrateTolerance:" + this.SiP);
+        if (j > this.videoBitrate * this.SiP)
         {
           AppMethodBeat.o(118585);
           return true;
@@ -379,21 +384,94 @@ public final class c
     public final boolean equals(Object paramObject)
     {
       AppMethodBeat.i(118590);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.kWG != paramObject.kWG) || (this.duration != paramObject.duration) || (this.kXt != paramObject.kXt) || (this.lJm != paramObject.lJm) || (this.lJn != paramObject.lJn) || (this.lJx != paramObject.lJx) || (this.lJy != paramObject.lJy) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.jth != paramObject.jth) || (Float.compare(this.LFc, paramObject.LFc) != 0)) {}
-        }
-      }
-      else
+      if (this == paramObject)
       {
         AppMethodBeat.o(118590);
         return true;
       }
+      if (!(paramObject instanceof a))
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      paramObject = (a)paramObject;
+      if (this.nxO != paramObject.nxO)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.nxP != paramObject.nxP)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.videoBitrate != paramObject.videoBitrate)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.audioBitrate != paramObject.audioBitrate)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.frameRate != paramObject.frameRate)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.nCg != paramObject.nCg)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.duration != paramObject.duration)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.nCd != paramObject.nCd)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.oBO != paramObject.oBO)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.oBP != paramObject.oBP)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.oBZ != paramObject.oBZ)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.oCa != paramObject.oCa)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.audioSampleRate != paramObject.audioSampleRate)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (this.lWy != paramObject.lWy)
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
+      if (!s.p(Float.valueOf(this.SiP), Float.valueOf(paramObject.SiP)))
+      {
+        AppMethodBeat.o(118590);
+        return false;
+      }
       AppMethodBeat.o(118590);
-      return false;
+      return true;
     }
     
     public final int hashCode()
@@ -404,18 +482,18 @@ public final class c
     public final String toString()
     {
       AppMethodBeat.i(118588);
-      String str = "EncodeConfig(targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.kWG + ", duration=" + this.duration + ", iFrame=" + this.kXt + ", profileIndex=" + this.lJm + ", presetIndex=" + this.lJn + ", isDefault=" + this.lJx + ", thumbSize=" + this.lJy + ", audioSampleRate=" + this.audioSampleRate + ", recorderType=" + this.jth + ", exceedVideoBitrateTolerance=" + this.LFc + ")";
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("EncodeConfig(targetWidth=").append(this.nxO).append(", targetHeight=").append(this.nxP).append(", videoBitrate=").append(this.videoBitrate).append(", audioBitrate=").append(this.audioBitrate).append(", frameRate=").append(this.frameRate).append(", videoRotate=").append(this.nCg).append(", duration=").append(this.duration).append(", iFrame=").append(this.nCd).append(", profileIndex=").append(this.oBO).append(", presetIndex=").append(this.oBP).append(", isDefault=").append(this.oBZ).append(", thumbSize=");
+      ((StringBuilder)localObject).append(this.oCa).append(", audioSampleRate=").append(this.audioSampleRate).append(", recorderType=").append(this.lWy).append(", exceedVideoBitrateTolerance=").append(this.SiP).append(')');
+      localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(118588);
-      return str;
+      return localObject;
     }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEncodeElementConfig$EncodeConfig$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
-    public static final class a {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.c.a.c
  * JD-Core Version:    0.7.0.1
  */

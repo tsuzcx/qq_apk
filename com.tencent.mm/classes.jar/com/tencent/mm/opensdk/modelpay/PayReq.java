@@ -137,33 +137,17 @@ public class PayReq
     
     public Options()
     {
-      AppMethodBeat.i(254945);
+      AppMethodBeat.i(242949);
       this.callbackFlags = -1;
-      AppMethodBeat.o(254945);
+      AppMethodBeat.o(242949);
     }
     
     public void fromBundle(Bundle paramBundle)
     {
-      int j = -1;
       AppMethodBeat.i(3846);
       this.callbackClassName = a.a(paramBundle, "_wxapi_payoptions_callback_classname");
-      int i = j;
-      if (paramBundle != null) {}
-      try
-      {
-        i = paramBundle.getInt("_wxapi_payoptions_callback_flags", -1);
-        this.callbackFlags = i;
-        AppMethodBeat.o(3846);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.IntentUtil", "getIntExtra exception:" + paramBundle.getMessage());
-          i = j;
-        }
-      }
+      this.callbackFlags = a.a(paramBundle, "_wxapi_payoptions_callback_flags", -1);
+      AppMethodBeat.o(3846);
     }
     
     public void toBundle(Bundle paramBundle)

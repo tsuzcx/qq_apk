@@ -1,38 +1,15 @@
 package com.tencent.mm.loader.e;
 
-import com.tencent.mm.loader.d.c;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import com.tencent.mm.loader.d.b.g;
+import com.tencent.mm.loader.g.a.a;
 
-public final class e
-  implements c
+public abstract interface e<T, R>
 {
-  public static byte[] p(InputStream paramInputStream)
-  {
-    return q(paramInputStream);
-  }
-  
-  private static byte[] q(InputStream paramInputStream)
-  {
-    byte[] arrayOfByte = new byte[1024];
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    for (;;)
-    {
-      int i = paramInputStream.read(arrayOfByte);
-      if (i == -1) {
-        break;
-      }
-      localByteArrayOutputStream.write(arrayOfByte, 0, i);
-    }
-    arrayOfByte = localByteArrayOutputStream.toByteArray();
-    localByteArrayOutputStream.close();
-    paramInputStream.close();
-    return arrayOfByte;
-  }
+  public abstract void onImageLoadComplete(a<T> parama, g<?> paramg, R paramR);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.e.e
  * JD-Core Version:    0.7.0.1
  */

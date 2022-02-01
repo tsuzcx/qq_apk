@@ -4,147 +4,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dax
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public bds GaB;
-  public String SMU;
-  public String TIm;
-  public String TIr;
-  public int TIs;
-  public String ozs;
-  public String ugh;
+  public LinkedList<daz> aaGs;
+  public int rid;
+  public String uuid;
+  
+  public dax()
+  {
+    AppMethodBeat.i(82427);
+    this.aaGs = new LinkedList();
+    AppMethodBeat.o(82427);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(228133);
+    AppMethodBeat.i(82428);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.TIm != null) {
-        paramVarArgs.f(1, this.TIm);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.uuid != null) {
+        paramVarArgs.g(1, this.uuid);
       }
-      if (this.SMU != null) {
-        paramVarArgs.f(2, this.SMU);
-      }
-      if (this.ozs != null) {
-        paramVarArgs.f(3, this.ozs);
-      }
-      if (this.ugh != null) {
-        paramVarArgs.f(4, this.ugh);
-      }
-      if (this.TIr != null) {
-        paramVarArgs.f(5, this.TIr);
-      }
-      paramVarArgs.aY(6, this.TIs);
-      if (this.GaB != null)
-      {
-        paramVarArgs.oE(7, this.GaB.computeSize());
-        this.GaB.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(228133);
+      paramVarArgs.bS(2, this.rid);
+      paramVarArgs.e(3, 8, this.aaGs);
+      AppMethodBeat.o(82428);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.TIm == null) {
-        break label636;
+      if (this.uuid == null) {
+        break label380;
       }
     }
-    label636:
-    for (int i = g.a.a.b.b.a.g(1, this.TIm) + 0;; i = 0)
+    label380:
+    for (paramInt = i.a.a.b.b.a.h(1, this.uuid) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.SMU != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.SMU);
-      }
-      i = paramInt;
-      if (this.ozs != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.ozs);
-      }
-      paramInt = i;
-      if (this.ugh != null) {
-        paramInt = i + g.a.a.b.b.a.g(4, this.ugh);
-      }
-      i = paramInt;
-      if (this.TIr != null) {
-        i = paramInt + g.a.a.b.b.a.g(5, this.TIr);
-      }
-      i += g.a.a.b.b.a.bM(6, this.TIs);
-      paramInt = i;
-      if (this.GaB != null) {
-        paramInt = i + g.a.a.a.oD(7, this.GaB.computeSize());
-      }
-      AppMethodBeat.o(228133);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.rid);
+      int j = i.a.a.a.c(3, 8, this.aaGs);
+      AppMethodBeat.o(82428);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.aaGs.clear();
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(228133);
+        AppMethodBeat.o(82428);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         dax localdax = (dax)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(228133);
+          AppMethodBeat.o(82428);
           return -1;
         case 1: 
-          localdax.TIm = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(228133);
+          localdax.uuid = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82428);
           return 0;
         case 2: 
-          localdax.SMU = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(228133);
-          return 0;
-        case 3: 
-          localdax.ozs = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(228133);
-          return 0;
-        case 4: 
-          localdax.ugh = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(228133);
-          return 0;
-        case 5: 
-          localdax.TIr = ((g.a.a.a.a)localObject).abFh.readString();
-          AppMethodBeat.o(228133);
-          return 0;
-        case 6: 
-          localdax.TIs = ((g.a.a.a.a)localObject).abFh.AK();
-          AppMethodBeat.o(228133);
+          localdax.rid = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(82428);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject = (byte[])paramVarArgs.get(paramInt);
-          bds localbds = new bds();
+          daz localdaz = new daz();
           if ((localObject != null) && (localObject.length > 0)) {
-            localbds.parseFrom((byte[])localObject);
+            localdaz.parseFrom((byte[])localObject);
           }
-          localdax.GaB = localbds;
+          localdax.aaGs.add(localdaz);
           paramInt += 1;
         }
-        AppMethodBeat.o(228133);
+        AppMethodBeat.o(82428);
         return 0;
       }
-      AppMethodBeat.o(228133);
+      AppMethodBeat.o(82428);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dax
  * JD-Core Version:    0.7.0.1
  */

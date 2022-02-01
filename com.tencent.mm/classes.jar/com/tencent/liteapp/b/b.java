@@ -4,53 +4,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static a coO;
+  private static a ega;
   
   static
   {
-    AppMethodBeat.i(258531);
-    coO = new a();
-    AppMethodBeat.o(258531);
+    AppMethodBeat.i(219110);
+    ega = new a();
+    AppMethodBeat.o(219110);
   }
   
   public static void a(a parama)
   {
-    coO = parama;
+    ega = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(258526);
-    coO.d(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(258526);
+    AppMethodBeat.i(219084);
+    ega.d(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(219084);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(258530);
-    coO.e(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(258530);
+    AppMethodBeat.i(219105);
+    ega.e(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(219105);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(258527);
-    coO.i(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(258527);
+    AppMethodBeat.i(219090);
+    ega.i(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(219090);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(258525);
-    coO.v(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(258525);
+    AppMethodBeat.i(219077);
+    ega.v(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(219077);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(258528);
-    coO.w(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(258528);
+    AppMethodBeat.i(219096);
+    ega.w(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(219096);
   }
   
   static final class a
@@ -58,37 +58,37 @@ public final class b
   {
     public final void d(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(258521);
+      AppMethodBeat.i(219091);
       String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(258521);
+      AppMethodBeat.o(219091);
     }
     
     public final void e(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(258524);
+      AppMethodBeat.i(219126);
       String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(258524);
+      AppMethodBeat.o(219126);
     }
     
     public final void i(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(258522);
+      AppMethodBeat.i(219104);
       String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(258522);
+      AppMethodBeat.o(219104);
     }
     
     public final void v(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(258520);
+      AppMethodBeat.i(219082);
       String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(258520);
+      AppMethodBeat.o(219082);
     }
     
     public final void w(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(258523);
+      AppMethodBeat.i(219113);
       String.format(paramString2, paramVarArgs);
-      AppMethodBeat.o(258523);
+      AppMethodBeat.o(219113);
     }
   }
 }

@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import android.content.Context;
+import android.os.Bundle;
 import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.ag;
 
 public abstract interface f
 {
-  public abstract MMWebView eN(Context paramContext);
+  public abstract ag a(MMWebView paramMMWebView, g paramg, Bundle paramBundle);
+  
+  public abstract ag a(MMWebView paramMMWebView, boolean paramBoolean, g paramg);
   
   public static final class a
   {
-    public static f QwC;
+    public static f Xpv;
   }
 }
 

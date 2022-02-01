@@ -10,9 +10,9 @@ import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location_soso.ViewManager;
-import com.tencent.mm.plugin.q.b;
-import com.tencent.mm.plugin.q.d;
-import com.tencent.mm.plugin.q.e;
+import com.tencent.mm.plugin.p.b;
+import com.tencent.mm.plugin.p.d;
+import com.tencent.mm.plugin.p.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tencentmap.mapsdk.map.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.map.CameraUpdateFactory;
@@ -514,7 +514,7 @@ public class SoSoMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.location_soso.api.SoSoMapView
  * JD-Core Version:    0.7.0.1
  */

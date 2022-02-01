@@ -7,22 +7,24 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.t;
-import com.tencent.mm.plugin.appbrand.ui.x;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.ui.ae;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.plugin.downloader.model.g;
 import com.tencent.mm.plugin.downloader.model.g.a;
-import com.tencent.mm.protocal.protobuf.cmu;
-import com.tencent.mm.protocal.protobuf.cmv;
+import com.tencent.mm.protocal.protobuf.ddi;
+import com.tencent.mm.protocal.protobuf.ddj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
@@ -38,13 +40,13 @@ public final class JsApiLaunchApplicationDirectly
   private static final int CTRL_INDEX = 620;
   private static final String NAME = "launchApplicationDirectly";
   
-  public final void a(v paramv, JSONObject paramJSONObject, int paramInt)
+  public final void a(y paramy, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(45537);
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.JsApiLaunchApplicationDirectly", "data is null");
-      paramv.j(paramInt, h("fail:data is null", null));
+      paramy.callback(paramInt, ZP("fail:data is null"));
       AppMethodBeat.o(45537);
       return;
     }
@@ -64,14 +66,14 @@ public final class JsApiLaunchApplicationDirectly
     if ((Util.isNullOrNil(str1)) && (Util.isNullOrNil(str2)))
     {
       Log.e("MicroMsg.JsApiLaunchApplicationDirectly", "appid and scheme is null or nil");
-      paramv.j(paramInt, h("fail:appid and scheme is null or nil", null));
+      paramy.callback(paramInt, ZP("fail:appid and scheme is null or nil"));
       AppMethodBeat.o(45537);
       return;
     }
-    String str9 = paramv.getAppId();
-    paramJSONObject = paramv.getCurrentPageView();
+    String str9 = paramy.getAppId();
+    paramJSONObject = paramy.getCurrentPageView();
     if (paramJSONObject != null) {
-      paramJSONObject = paramJSONObject.oxe;
+      paramJSONObject = paramJSONObject.cgR();
     }
     for (;;)
     {
@@ -80,27 +82,27 @@ public final class JsApiLaunchApplicationDirectly
       try
       {
         localBundle.putString("current_page_url", URLEncoder.encode(paramJSONObject, "UTF-8"));
-        label259:
+        label257:
         localBundle.putString("current_page_appid", str9);
         localBundle.putString("current_page_biz_info", (String)localObject2);
         localBundle.putString("current_page_source_info", (String)localObject1);
-        localObject1 = new d.a();
-        ((d.a)localObject1).lBU = new cmu();
-        ((d.a)localObject1).lBV = new cmv();
-        ((d.a)localObject1).uri = "/cgi-bin/mmbiz-bin/checklaunchapp";
-        ((d.a)localObject1).funcId = 1125;
-        localObject2 = (cmu)d.b.b(((d.a)localObject1).bgN().lBR);
-        ((cmu)localObject2).appid = str9;
-        ((cmu)localObject2).Tur = str1;
-        ((cmu)localObject2).scene = ((t)paramv.getRuntime()).Sk().cxf.scene;
-        ((cmu)localObject2).url = paramJSONObject;
-        ((cmu)localObject2).Tus = str2;
-        ((cmu)localObject2).tVq = i;
-        ((cmu)localObject2).SEl = 1;
-        ((cmu)localObject2).Tut = j;
-        ((cmu)localObject2).Tuu = str6;
-        Log.i("MicroMsg.JsApiLaunchApplicationDirectly", "run cgi to check(appId : %s, toAppId : %s, scene : %s, url : %s, schemeUrl : %s, alertType : %s, operateDirectly : %s)", new Object[] { str9, str1, Integer.valueOf(((cmu)localObject2).scene), ((cmu)localObject2).url, ((cmu)localObject2).Tus, Integer.valueOf(((cmu)localObject2).tVq), Integer.valueOf(((cmu)localObject2).Tut) });
-        IPCRunCgi.a(((d.a)localObject1).bgN(), new JsApiLaunchApplicationDirectly.1(this, paramv, paramInt, str5, str6, str1, str8, str7, str2, localBundle, str3, str4));
+        localObject1 = new c.a();
+        ((c.a)localObject1).otE = new ddi();
+        ((c.a)localObject1).otF = new ddj();
+        ((c.a)localObject1).uri = "/cgi-bin/mmbiz-bin/checklaunchapp";
+        ((c.a)localObject1).funcId = 1125;
+        localObject2 = (ddi)c.b.b(((c.a)localObject1).bEF().otB);
+        ((ddi)localObject2).appid = str9;
+        ((ddi)localObject2).aaIV = str1;
+        ((ddi)localObject2).scene = ((w)paramy.getRuntime()).asA().epn.scene;
+        ((ddi)localObject2).url = paramJSONObject;
+        ((ddi)localObject2).aaIW = str2;
+        ((ddi)localObject2).wYK = i;
+        ((ddi)localObject2).ZFJ = 1;
+        ((ddi)localObject2).aaIX = j;
+        ((ddi)localObject2).aaIY = str6;
+        Log.i("MicroMsg.JsApiLaunchApplicationDirectly", "run cgi to check(appId : %s, toAppId : %s, scene : %s, url : %s, schemeUrl : %s, alertType : %s, operateDirectly : %s)", new Object[] { str9, str1, Integer.valueOf(((ddi)localObject2).scene), ((ddi)localObject2).url, ((ddi)localObject2).aaIW, Integer.valueOf(((ddi)localObject2).wYK), Integer.valueOf(((ddi)localObject2).aaIX) });
+        IPCRunCgi.a(((c.a)localObject1).bEF(), new JsApiLaunchApplicationDirectly.1(this, paramy, paramInt, str5, str6, str1, str8, str7, str2, localBundle, str3, str4));
         AppMethodBeat.o(45537);
         return;
         Log.e("MicroMsg.JsApiLaunchApplicationDirectly", "getCurrentPageView is null");
@@ -108,7 +110,7 @@ public final class JsApiLaunchApplicationDirectly
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        break label259;
+        break label257;
       }
     }
   }
@@ -117,21 +119,21 @@ public final class JsApiLaunchApplicationDirectly
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddDownloadTaskStraightTask> CREATOR;
-    private int cqA;
+    private int eit;
     private String mAppId;
     private String mPackageName;
-    private v ntA;
-    private String ovA;
-    private String ovB;
-    private String ovC;
-    private String ovD;
-    private long ovE;
-    private String ovF;
-    private String ovG;
-    private boolean ovH;
-    private String ovI;
-    private long ovJ;
-    private o ovz;
+    private y qsi;
+    private p ryT;
+    private String ryU;
+    private String ryV;
+    private String ryW;
+    private String ryX;
+    private long ryY;
+    private String ryZ;
+    private String rza;
+    private boolean rzb;
+    private String rzc;
+    private long rzd;
     
     static
     {
@@ -143,119 +145,119 @@ public final class JsApiLaunchApplicationDirectly
     public AddDownloadTaskStraightTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45521);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(45521);
     }
     
-    public AddDownloadTaskStraightTask(o paramo, v paramv, int paramInt, JSONObject paramJSONObject)
+    public AddDownloadTaskStraightTask(p paramp, y paramy, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45520);
-      this.ovz = paramo;
-      this.ntA = paramv;
-      this.cqA = paramInt;
-      this.ovA = paramJSONObject.optString("taskName");
-      this.ovB = paramJSONObject.optString("taskUrl");
-      this.ovC = paramJSONObject.optString("fileMd5");
-      this.ovD = paramJSONObject.optString("alternativeUrl");
-      this.ovE = paramJSONObject.optInt("taskSize", 0);
-      this.ovF = paramJSONObject.optString("extInfo");
-      this.ovG = paramJSONObject.optString("fileType");
+      this.ryT = paramp;
+      this.qsi = paramy;
+      this.eit = paramInt;
+      this.ryU = paramJSONObject.optString("taskName");
+      this.ryV = paramJSONObject.optString("taskUrl");
+      this.ryW = paramJSONObject.optString("fileMd5");
+      this.ryX = paramJSONObject.optString("alternativeUrl");
+      this.ryY = paramJSONObject.optInt("taskSize", 0);
+      this.ryZ = paramJSONObject.optString("extInfo");
+      this.rza = paramJSONObject.optString("fileType");
       this.mAppId = paramJSONObject.optString("appId");
       this.mPackageName = paramJSONObject.optString("packageName");
-      this.ovH = true;
+      this.rzb = true;
       AppMethodBeat.o(45520);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45522);
-      h.aHH();
-      if (!h.aHG().isSDCardAvailable()) {
-        this.ovI = "fail_sdcard_not_ready";
+      h.baF();
+      if (!h.baE().isSDCardAvailable()) {
+        this.rzc = "fail_sdcard_not_ready";
       }
       for (;;)
       {
-        bPt();
+        cpA();
         AppMethodBeat.o(45522);
         return;
-        if ((this.ovE > 0L) && (!e.EY(this.ovE)))
+        if ((this.ryY > 0L) && (!e.hq(this.ryY)))
         {
-          this.ovI = "fail_sdcard_has_not_enough_space";
+          this.rzc = "fail_sdcard_has_not_enough_space";
         }
-        else if (Util.isNullOrNil(this.ovB))
+        else if (Util.isNullOrNil(this.ryV))
         {
-          this.ovI = "fail_invalid_url";
+          this.rzc = "fail_invalid_url";
         }
         else
         {
-          Log.i("MicroMsg.JsApiLaunchApplicationDirectly", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.ovB, this.ovC });
+          Log.i("MicroMsg.JsApiLaunchApplicationDirectly", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.ryV, this.ryW });
           Object localObject = new g.a();
-          ((g.a)localObject).atc(this.ovB);
-          ((g.a)localObject).atd(this.ovD);
-          ((g.a)localObject).setFileSize(this.ovE);
-          ((g.a)localObject).ate(this.ovA);
-          ((g.a)localObject).setFileMD5(this.ovC);
+          ((g.a)localObject).amR(this.ryV);
+          ((g.a)localObject).amS(this.ryX);
+          ((g.a)localObject).setFileSize(this.ryY);
+          ((g.a)localObject).amT(this.ryU);
+          ((g.a)localObject).setFileMD5(this.ryW);
           ((g.a)localObject).setAppId(this.mAppId);
           ((g.a)localObject).setPackageName(this.mPackageName);
-          ((g.a)localObject).me(true);
-          ((g.a)localObject).IS(Util.getInt(this.ovG, 1));
+          ((g.a)localObject).nA(true);
+          ((g.a)localObject).JA(Util.getInt(this.rza, 1));
           ((g.a)localObject).setScene(6001);
-          ((g.a)localObject).YS(this.ovF);
-          localObject = ((g.a)localObject).uhY;
-          long l = com.tencent.mm.plugin.downloader.model.f.cPZ().a((g)localObject);
+          ((g.a)localObject).QX(this.ryZ);
+          localObject = ((g.a)localObject).xoe;
+          long l = com.tencent.mm.plugin.downloader.model.f.duv().a((g)localObject);
           Log.i("MicroMsg.JsApiLaunchApplicationDirectly", "doAddDownloadTaskStraight, downloadId = ".concat(String.valueOf(l)));
           if (l <= 0L)
           {
             Log.e("MicroMsg.JsApiLaunchApplicationDirectly", "doAddDownloadTaskStraight fail, downloadId = ".concat(String.valueOf(l)));
-            this.ovI = "";
+            this.rzc = "";
           }
           else
           {
-            this.ovH = false;
-            this.ovJ = l;
+            this.rzb = false;
+            this.rzd = l;
           }
         }
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45523);
-      if (this.ovH)
+      if (this.rzb)
       {
-        if (Util.isNullOrNil(this.ovI)) {}
-        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.ovI }))
+        if (Util.isNullOrNil(this.rzc)) {}
+        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.rzc }))
         {
-          this.ntA.j(this.cqA, this.ovz.h((String)localObject, null));
+          this.qsi.callback(this.eit, this.ryT.ZP((String)localObject));
           AppMethodBeat.o(45523);
           return;
         }
       }
       Object localObject = new HashMap();
-      ((Map)localObject).put("downloadId", Long.valueOf(this.ovJ));
-      this.ntA.j(this.cqA, this.ovz.m("ok", (Map)localObject));
+      ((Map)localObject).put("downloadId", Long.valueOf(this.rzd));
+      this.qsi.callback(this.eit, this.ryT.m("ok", (Map)localObject));
       AppMethodBeat.o(45523);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(45524);
-      this.ovA = paramParcel.readString();
-      this.ovB = paramParcel.readString();
-      this.ovC = paramParcel.readString();
-      this.ovD = paramParcel.readString();
-      this.ovE = paramParcel.readLong();
-      this.ovF = paramParcel.readString();
-      this.ovG = paramParcel.readString();
+      this.ryU = paramParcel.readString();
+      this.ryV = paramParcel.readString();
+      this.ryW = paramParcel.readString();
+      this.ryX = paramParcel.readString();
+      this.ryY = paramParcel.readLong();
+      this.ryZ = paramParcel.readString();
+      this.rza = paramParcel.readString();
       this.mAppId = paramParcel.readString();
       this.mPackageName = paramParcel.readString();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.ovH = bool;
-        this.ovI = paramParcel.readString();
-        this.ovJ = paramParcel.readLong();
+        this.rzb = bool;
+        this.rzc = paramParcel.readString();
+        this.rzd = paramParcel.readLong();
         AppMethodBeat.o(45524);
         return;
         bool = false;
@@ -265,21 +267,21 @@ public final class JsApiLaunchApplicationDirectly
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45525);
-      paramParcel.writeString(this.ovA);
-      paramParcel.writeString(this.ovB);
-      paramParcel.writeString(this.ovC);
-      paramParcel.writeString(this.ovD);
-      paramParcel.writeLong(this.ovE);
-      paramParcel.writeString(this.ovF);
-      paramParcel.writeString(this.ovG);
+      paramParcel.writeString(this.ryU);
+      paramParcel.writeString(this.ryV);
+      paramParcel.writeString(this.ryW);
+      paramParcel.writeString(this.ryX);
+      paramParcel.writeLong(this.ryY);
+      paramParcel.writeString(this.ryZ);
+      paramParcel.writeString(this.rza);
       paramParcel.writeString(this.mAppId);
       paramParcel.writeString(this.mPackageName);
-      if (this.ovH) {}
+      if (this.rzb) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ovI);
-        paramParcel.writeLong(this.ovJ);
+        paramParcel.writeString(this.rzc);
+        paramParcel.writeLong(this.rzd);
         AppMethodBeat.o(45525);
         return;
       }

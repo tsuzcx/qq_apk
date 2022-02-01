@@ -1,36 +1,49 @@
 package com.tencent.mm.plugin.wallet_core.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.model.l;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet_core/utils/MessageEventType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "DEFAULT", "ADD", "DELETE", "MODIFY", "plugin-wxpay_release"})
-public enum c
+public final class c
 {
-  final int value;
+  public dfc VXQ;
+  public dfc VXR;
+  public int VXS;
+  public String wording;
   
-  static
+  public static c cC(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(274970);
-    c localc1 = new c("DEFAULT", 0, 0);
-    Phg = localc1;
-    c localc2 = new c("ADD", 1, 1);
-    Phh = localc2;
-    c localc3 = new c("DELETE", 2, 2);
-    Phi = localc3;
-    c localc4 = new c("MODIFY", 3, 3);
-    Phj = localc4;
-    Phk = new c[] { localc1, localc2, localc3, localc4 };
-    AppMethodBeat.o(274970);
-  }
-  
-  private c(int paramInt)
-  {
-    this.value = paramInt;
+    AppMethodBeat.i(301406);
+    if (paramJSONObject == null)
+    {
+      Log.w("MicroMsg.InterceptWin", "createFromJSONObject() jsonObject == null");
+      AppMethodBeat.o(301406);
+      return null;
+    }
+    c localc = new c();
+    localc.wording = paramJSONObject.optString("wording");
+    try
+    {
+      localc.VXQ = l.cO(paramJSONObject.getJSONObject("left_button"));
+      localc.VXR = l.cO(paramJSONObject.getJSONObject("right_button"));
+      localc.VXS = paramJSONObject.optInt("win_type");
+      AppMethodBeat.o(301406);
+      return localc;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      Log.e("MicroMsg.InterceptWin", "createFromJSONObject() Exception:%s", new Object[] { paramJSONObject.getMessage() });
+      AppMethodBeat.o(301406);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.c
  * JD-Core Version:    0.7.0.1
  */

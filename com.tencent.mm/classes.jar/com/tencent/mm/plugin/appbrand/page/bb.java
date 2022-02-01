@@ -7,10 +7,10 @@ public enum bb
   static
   {
     AppMethodBeat.i(135279);
-    quZ = new bb("MODAL", 0);
-    qva = new bb("ACTION_SHEET", 1);
-    qvb = new bb("TOAST", 2);
-    qvc = new bb[] { quZ, qva, qvb };
+    tzO = new bb("MODAL", 0);
+    tzP = new bb("ACTION_SHEET", 1);
+    tzQ = new bb("TOAST", 2);
+    tzR = new bb[] { tzO, tzP, tzQ };
     AppMethodBeat.o(135279);
   }
   

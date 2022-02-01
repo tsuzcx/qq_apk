@@ -1,124 +1,173 @@
 package com.tencent.mm.plugin.textstatus.proto;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.protocal.protobuf.jh;
-import g.a.a.b;
-import java.util.LinkedList;
 
-public final class p
-  extends dyy
+public class p
+  extends com.tencent.mm.bx.a
 {
-  public ae MFo;
+  public String Tpc;
+  public String Tpd;
+  public int Tpe;
+  public int Tpf;
+  public int Tpg;
+  public int Tph;
+  public int Tpi;
+  public int Tpj;
+  public long Tpk;
+  public long Tpl;
+  public long Tpm;
+  public String oOW;
+  public String sessionId;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(243826);
+    AppMethodBeat.i(290029);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(243826);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.sessionId != null) {
+        paramVarArgs.g(1, this.sessionId);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.oE(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.username != null) {
+        paramVarArgs.g(2, this.username);
       }
-      if (this.MFo != null)
-      {
-        paramVarArgs.oE(2, this.MFo.computeSize());
-        this.MFo.writeFields(paramVarArgs);
+      if (this.Tpc != null) {
+        paramVarArgs.g(3, this.Tpc);
       }
-      AppMethodBeat.o(243826);
+      if (this.Tpd != null) {
+        paramVarArgs.g(4, this.Tpd);
+      }
+      paramVarArgs.bS(5, this.Tpe);
+      paramVarArgs.bS(6, this.Tpf);
+      paramVarArgs.bS(7, this.Tpg);
+      paramVarArgs.bS(8, this.Tph);
+      paramVarArgs.bS(9, this.Tpi);
+      paramVarArgs.bS(10, this.Tpj);
+      if (this.oOW != null) {
+        paramVarArgs.g(11, this.oOW);
+      }
+      paramVarArgs.bv(12, this.Tpk);
+      paramVarArgs.bv(13, this.Tpl);
+      paramVarArgs.bv(14, this.Tpm);
+      AppMethodBeat.o(290029);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label470;
+      if (this.sessionId == null) {
+        break label858;
       }
     }
-    label470:
-    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label858:
+    for (int i = i.a.a.b.b.a.h(1, this.sessionId) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.MFo != null) {
-        i = paramInt + g.a.a.a.oD(2, this.MFo.computeSize());
+      paramInt = i;
+      if (this.username != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.username);
       }
-      AppMethodBeat.o(243826);
-      return i;
+      i = paramInt;
+      if (this.Tpc != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.Tpc);
+      }
+      paramInt = i;
+      if (this.Tpd != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.Tpd);
+      }
+      i = paramInt + i.a.a.b.b.a.cJ(5, this.Tpe) + i.a.a.b.b.a.cJ(6, this.Tpf) + i.a.a.b.b.a.cJ(7, this.Tpg) + i.a.a.b.b.a.cJ(8, this.Tph) + i.a.a.b.b.a.cJ(9, this.Tpi) + i.a.a.b.b.a.cJ(10, this.Tpj);
+      paramInt = i;
+      if (this.oOW != null) {
+        paramInt = i + i.a.a.b.b.a.h(11, this.oOW);
+      }
+      i = i.a.a.b.b.a.q(12, this.Tpk);
+      int j = i.a.a.b.b.a.q(13, this.Tpl);
+      int k = i.a.a.b.b.a.q(14, this.Tpm);
+      AppMethodBeat.o(290029);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(243826);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(243826);
+        AppMethodBeat.o(290029);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         p localp = (p)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(243826);
+          AppMethodBeat.o(290029);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jh();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jh)localObject2).parseFrom((byte[])localObject1);
-            }
-            localp.BaseResponse = ((jh)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(243826);
+          localp.sessionId = locala.ajGk.readString();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 2: 
+          localp.username = locala.ajGk.readString();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 3: 
+          localp.Tpc = locala.ajGk.readString();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 4: 
+          localp.Tpd = locala.ajGk.readString();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 5: 
+          localp.Tpe = locala.ajGk.aar();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 6: 
+          localp.Tpf = locala.ajGk.aar();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 7: 
+          localp.Tpg = locala.ajGk.aar();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 8: 
+          localp.Tph = locala.ajGk.aar();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 9: 
+          localp.Tpi = locala.ajGk.aar();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 10: 
+          localp.Tpj = locala.ajGk.aar();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 11: 
+          localp.oOW = locala.ajGk.readString();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 12: 
+          localp.Tpk = locala.ajGk.aaw();
+          AppMethodBeat.o(290029);
+          return 0;
+        case 13: 
+          localp.Tpl = locala.ajGk.aaw();
+          AppMethodBeat.o(290029);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject1 = (byte[])paramVarArgs.get(paramInt);
-          localObject2 = new ae();
-          if ((localObject1 != null) && (localObject1.length > 0)) {
-            ((ae)localObject2).parseFrom((byte[])localObject1);
-          }
-          localp.MFo = ((ae)localObject2);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(243826);
+        localp.Tpm = locala.ajGk.aaw();
+        AppMethodBeat.o(290029);
         return 0;
       }
-      AppMethodBeat.o(243826);
+      AppMethodBeat.o(290029);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.proto.p
  * JD-Core Version:    0.7.0.1
  */

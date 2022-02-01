@@ -76,9 +76,9 @@ public class SQLiteLintUtil
       AppMethodBeat.o(52972);
       return str;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      SLog.e("SQLiteLint.SQLiteLintUtil", "getThrowableStack ex %s", new Object[] { localThrowable.getMessage() });
+      SLog.e("SQLiteLint.SQLiteLintUtil", "getThrowableStack ex %s", new Object[] { localObject.getMessage() });
       AppMethodBeat.o(52972);
     }
     return "";
@@ -174,7 +174,7 @@ public class SQLiteLintUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.util.SQLiteLintUtil
  * JD-Core Version:    0.7.0.1
  */

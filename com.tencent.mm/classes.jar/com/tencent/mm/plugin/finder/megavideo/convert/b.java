@@ -7,210 +7,215 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.j;
-import com.tencent.mm.plugin.finder.loader.r;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.model.bs;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.plugin.finder.utils.m;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.loader.n;
+import com.tencent.mm.plugin.finder.loader.p.a;
+import com.tencent.mm.plugin.finder.model.ca;
+import com.tencent.mm.plugin.finder.storage.data.i;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.finder.utils.r;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.protocal.protobuf.cvy;
-import com.tencent.mm.protocal.protobuf.cwc;
-import com.tencent.mm.protocal.protobuf.cwq;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.protocal.protobuf.dne;
+import com.tencent.mm.protocal.protobuf.dnh;
+import com.tencent.mm.protocal.protobuf.dnv;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
+import java.util.List<Ljava.lang.Object;>;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoListItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "()V", "getLayoutId", "", "makeTimeString", "", "d", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/convert/FinderMegaVideoListItemConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "()V", "getLayoutId", "", "makeTimeString", "", "d", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class b
-  extends e<bs>
+  extends f<ca>
 {
-  private static String AQ(int paramInt)
+  private static String Bf(int paramInt)
   {
-    AppMethodBeat.i(289508);
+    AppMethodBeat.i(342287);
     if (paramInt < 10)
     {
-      str = "0".concat(String.valueOf(paramInt));
-      AppMethodBeat.o(289508);
+      String str = s.X("0", Integer.valueOf(paramInt));
+      AppMethodBeat.o(342287);
       return str;
     }
-    String str = String.valueOf(paramInt);
-    AppMethodBeat.o(289508);
-    return str;
+    AppMethodBeat.o(342287);
+    return String.valueOf(paramInt);
   }
   
-  public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.i parami, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(289505);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    AppMethodBeat.o(289505);
+    AppMethodBeat.i(342299);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    AppMethodBeat.o(342299);
   }
   
-  public void a(com.tencent.mm.view.recyclerview.i parami, bs parambs, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public void a(j paramj, ca paramca, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(289506);
-    p.k(parami, "holder");
-    p.k(parambs, "item");
-    paramList = parambs.xcy;
+    AppMethodBeat.i(342316);
+    s.u(paramj, "holder");
+    s.u(paramca, "item");
+    paramList = paramca.ABK;
+    Object localObject1;
+    Object localObject3;
+    long l;
     if (paramList != null)
     {
-      paramList = paramList.TEM;
+      paramList = paramList.aaUt;
       if (paramList != null)
       {
         paramList = paramList.media;
         if (paramList != null)
         {
-          paramList = (cwq)j.lp((List)paramList);
+          paramList = (dnv)kotlin.a.p.oL((List)paramList);
           if (paramList != null)
           {
-            paramList = com.tencent.mm.plugin.finder.storage.data.i.a(paramList);
-            Object localObject1 = (ImageView)parami.RD(b.f.thumb_iv);
-            Object localObject2;
-            Object localObject3;
-            if (localObject1 != null)
+            paramList = i.a(paramList);
+            if (paramList != null)
             {
-              localObject2 = new r(paramList, u.Alz, null, null, 12);
-              localObject3 = t.ztT;
-              localObject3 = t.dJe();
-              t localt = t.ztT;
-              ((com.tencent.mm.loader.d)localObject3).a(localObject2, (ImageView)localObject1, t.a(t.a.ztU));
-            }
-            localObject1 = (TextView)parami.RD(b.f.video_duration_tv);
-            long l;
-            if (localObject1 != null)
-            {
-              paramInt2 = paramList.videoDuration;
-              l = paramInt2;
-              paramList = com.tencent.mm.plugin.finder.storage.d.AjH;
-              paramInt1 = paramInt2;
-              if (l >= com.tencent.mm.plugin.finder.storage.d.dSX() * 1000L) {
-                paramInt1 = paramInt2 / 1000;
+              localObject1 = (ImageView)paramj.UH(e.e.thumb_iv);
+              if (localObject1 != null)
+              {
+                localObject2 = new n(paramList, v.FKZ, null, null, 12);
+                localObject3 = com.tencent.mm.plugin.finder.loader.p.ExI;
+                localObject3 = com.tencent.mm.plugin.finder.loader.p.eCl();
+                com.tencent.mm.plugin.finder.loader.p localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+                ((com.tencent.mm.loader.d)localObject3).a(localObject2, (ImageView)localObject1, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExJ));
               }
-              ((TextView)localObject1).setText((CharSequence)(AQ(paramInt1 / 60) + ":" + AQ(paramInt1 % 60)));
-            }
-            localObject1 = (TextView)parami.RD(b.f.video_desc_tv);
-            if (localObject1 != null)
-            {
-              paramList = parambs.xcy;
+              localObject1 = (TextView)paramj.UH(e.e.video_duration_tv);
+              if (localObject1 != null)
+              {
+                paramInt2 = paramList.videoDuration;
+                l = paramInt2;
+                paramList = com.tencent.mm.plugin.finder.storage.d.FAy;
+                paramInt1 = paramInt2;
+                if (l >= com.tencent.mm.plugin.finder.storage.d.eRl() * 1000L) {
+                  paramInt1 = paramInt2 / 1000;
+                }
+                ((TextView)localObject1).setText((CharSequence)(Bf(paramInt1 / 60) + ':' + Bf(paramInt1 % 60)));
+              }
+              Object localObject2 = (TextView)paramj.UH(e.e.video_desc_tv);
+              if (localObject2 != null)
+              {
+                paramList = paramca.ABK;
+                if (paramList != null) {
+                  break label514;
+                }
+                paramList = null;
+                if (!Util.isNullOrNil(paramList)) {
+                  break label552;
+                }
+                localObject1 = ((TextView)localObject2).getResources();
+                paramInt1 = e.h.mega_video_post_ui_desc_tv_hint;
+                localObject3 = ((TextView)localObject2).getContext();
+                paramList = paramca.contact;
+                if (paramList != null) {
+                  break label542;
+                }
+                paramList = null;
+                label319:
+                paramList = (CharSequence)((Resources)localObject1).getString(paramInt1, new Object[] { com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject3, (CharSequence)paramList) });
+                ((TextView)localObject2).setText(paramList);
+              }
+              paramList = (TextView)paramj.UH(e.e.video_expose_times_tv);
               if (paramList != null)
               {
-                paramList = paramList.TEM;
-                if (paramList != null)
-                {
-                  paramList = paramList.description;
-                  if (!Util.isNullOrNil(paramList)) {
-                    break label557;
-                  }
-                  localObject2 = ((TextView)localObject1).getResources();
-                  paramInt1 = b.j.mega_video_post_ui_desc_tv_hint;
-                  localObject3 = ((TextView)localObject1).getContext();
-                  paramList = parambs.contact;
-                  if (paramList == null) {
-                    break label551;
-                  }
-                  paramList = paramList.nickname;
-                  label334:
-                  paramList = (CharSequence)((Resources)localObject2).getString(paramInt1, new Object[] { com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject3, (CharSequence)paramList) });
-                  ((TextView)localObject1).setText(paramList);
+                localObject1 = r.TP(paramca.getFeedObject().likeCount);
+                paramList.setText((CharSequence)paramj.context.getResources().getString(e.h.finder_mega_video_list_item_like_count_text, new Object[] { localObject1 }));
+              }
+              paramList = (TextView)paramj.UH(e.e.video_create_time_tv);
+              if (paramList != null)
+              {
+                paramj = paramj.context;
+                paramca = paramca.ABK;
+                if (paramca != null) {
+                  break label636;
+                }
+                l = 0L;
+                label447:
+                paramj = r.f(paramj, l * 1000L);
+                if (TextUtils.isEmpty((CharSequence)paramj)) {
+                  break label646;
+                }
+                paramInt1 = 1;
+                label470:
+                if (paramInt1 == 0) {
+                  break label651;
                 }
               }
             }
-            else
-            {
-              paramList = (TextView)parami.RD(b.f.video_expose_times_tv);
-              if (paramList != null)
-              {
-                localObject1 = m.QF(parambs.getFeedObject().likeCount);
-                localObject2 = parami.getContext();
-                p.j(localObject2, "holder.context");
-                paramList.setText((CharSequence)((Context)localObject2).getResources().getString(b.j.finder_mega_video_list_item_like_count_text, new Object[] { localObject1 }));
-              }
-              paramList = (TextView)parami.RD(b.f.video_create_time_tv);
-              if (paramList == null) {
-                break label647;
-              }
-              parami = parami.getContext();
-              parambs = parambs.xcy;
-              if (parambs == null) {
-                break label631;
-              }
-              l = parambs.createTime;
-              label478:
-              parami = m.f(parami, l * 1000L);
-              if (TextUtils.isEmpty((CharSequence)parami)) {
-                break label637;
-              }
-              paramInt1 = 1;
-              label501:
-              if (paramInt1 == 0) {
-                break label642;
-              }
-            }
-            for (;;)
-            {
-              parambs = new StringBuilder();
-              parambs.append("·");
-              parambs.append(parami);
-              paramList.setText((CharSequence)parambs.toString());
-              AppMethodBeat.o(289506);
-              return;
-              paramList = null;
-              break;
-              label551:
-              paramList = null;
-              break label334;
-              label557:
-              localObject2 = parami.getContext();
-              paramList = parambs.xcy;
-              if (paramList != null)
-              {
-                paramList = paramList.TEM;
-                if (paramList != null)
-                {
-                  paramList = paramList.description;
-                  if (paramList == null) {}
-                }
-              }
-              for (paramList = (CharSequence)paramList;; paramList = (CharSequence)"")
-              {
-                paramList = (CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, paramList);
-                break;
-              }
-              label631:
-              l = 0L;
-              break label478;
-              label637:
-              paramInt1 = 0;
-              break label501;
-              label642:
-              parami = null;
-            }
-            label647:
-            AppMethodBeat.o(289506);
-            return;
           }
         }
       }
     }
-    AppMethodBeat.o(289506);
+    for (;;)
+    {
+      paramca = new StringBuilder();
+      paramca.append("·");
+      paramca.append(paramj);
+      paramList.setText((CharSequence)paramca.toString());
+      AppMethodBeat.o(342316);
+      return;
+      label514:
+      paramList = paramList.aaUt;
+      if (paramList == null)
+      {
+        paramList = null;
+        break;
+      }
+      paramList = paramList.description;
+      break;
+      label542:
+      paramList = paramList.nickname;
+      break label319;
+      label552:
+      localObject3 = paramj.context;
+      paramList = paramca.ABK;
+      if (paramList == null) {
+        paramList = "";
+      }
+      for (;;)
+      {
+        paramList = (CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)localObject3, (CharSequence)paramList);
+        break;
+        paramList = paramList.aaUt;
+        if (paramList == null)
+        {
+          paramList = "";
+        }
+        else
+        {
+          localObject1 = paramList.description;
+          paramList = (List<Object>)localObject1;
+          if (localObject1 == null) {
+            paramList = "";
+          }
+        }
+      }
+      label636:
+      l = paramca.createTime;
+      break label447;
+      label646:
+      paramInt1 = 0;
+      break label470;
+      label651:
+      paramj = null;
+    }
   }
   
   public int getLayoutId()
   {
-    return b.g.finder_mega_video_list_item;
+    return e.f.finder_mega_video_list_item;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.megavideo.convert.b
  * JD-Core Version:    0.7.0.1
  */

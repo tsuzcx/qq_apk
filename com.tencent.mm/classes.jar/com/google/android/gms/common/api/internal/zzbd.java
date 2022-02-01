@@ -25,7 +25,6 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class zzbd
   implements zzbp, zzq
@@ -75,7 +74,6 @@ public final class zzbd
     AppMethodBeat.o(11308);
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult blockingConnect()
   {
     AppMethodBeat.i(11312);
@@ -110,7 +108,6 @@ public final class zzbd
     return localConnectionResult;
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult blockingConnect(long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(11313);
@@ -150,7 +147,6 @@ public final class zzbd
     return paramTimeUnit;
   }
   
-  @GuardedBy("mLock")
   public final void connect()
   {
     AppMethodBeat.i(11311);
@@ -158,7 +154,6 @@ public final class zzbd
     AppMethodBeat.o(11311);
   }
   
-  @GuardedBy("mLock")
   public final void disconnect()
   {
     AppMethodBeat.i(11314);
@@ -183,7 +178,6 @@ public final class zzbd
     AppMethodBeat.o(11325);
   }
   
-  @GuardedBy("mLock")
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
     AppMethodBeat.i(11309);
@@ -193,7 +187,6 @@ public final class zzbd
     return paramT;
   }
   
-  @GuardedBy("mLock")
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
     AppMethodBeat.i(11310);
@@ -203,7 +196,6 @@ public final class zzbd
     return paramT;
   }
   
-  @GuardedBy("mLock")
   public final ConnectionResult getConnectionResult(Api<?> paramApi)
   {
     AppMethodBeat.i(11315);
@@ -364,7 +356,6 @@ public final class zzbd
     }
   }
   
-  @GuardedBy("mLock")
   public final void zzz()
   {
     AppMethodBeat.i(11319);
@@ -376,7 +367,7 @@ public final class zzbd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzbd
  * JD-Core Version:    0.7.0.1
  */

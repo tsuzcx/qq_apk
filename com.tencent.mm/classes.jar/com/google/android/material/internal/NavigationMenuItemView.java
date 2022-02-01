@@ -16,14 +16,12 @@ import android.view.ViewStub;
 import android.widget.CheckedTextView;
 import android.widget.FrameLayout;
 import androidx.appcompat.a.a;
-import androidx.appcompat.view.menu.j;
 import androidx.appcompat.view.menu.p.a;
 import androidx.appcompat.widget.LinearLayoutCompat.LayoutParams;
 import androidx.appcompat.widget.ae;
 import androidx.core.content.a.f;
 import androidx.core.g.a.d;
-import androidx.core.g.w;
-import androidx.core.widget.i;
+import androidx.core.g.z;
 import com.google.android.material.a.d;
 import com.google.android.material.a.e;
 import com.google.android.material.a.f;
@@ -34,16 +32,16 @@ public class NavigationMenuItemView
   extends ForegroundLinearLayout
   implements p.a
 {
-  private static final int[] wo = { 16842912 };
-  private final androidx.core.g.a bCA;
-  private boolean bCu;
-  final CheckedTextView bCv;
-  FrameLayout bCw;
-  private ColorStateList bCx;
-  private boolean bCy;
-  private Drawable bCz;
-  private j bwN;
-  boolean bzb;
+  private static final int[] xk = { 16842912 };
+  private androidx.appcompat.view.menu.j dpQ;
+  boolean dsb;
+  private Drawable dvA;
+  private final androidx.core.g.a dvB;
+  private boolean dvv;
+  final CheckedTextView dvw;
+  FrameLayout dvx;
+  private ColorStateList dvy;
+  private boolean dvz;
   private final int iconSize;
   
   public NavigationMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
@@ -54,44 +52,44 @@ public class NavigationMenuItemView
   public NavigationMenuItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(237774);
-    this.bCA = new androidx.core.g.a()
+    AppMethodBeat.i(209427);
+    this.dvB = new androidx.core.g.a()
     {
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, d paramAnonymousd)
       {
-        AppMethodBeat.i(237755);
+        AppMethodBeat.i(209373);
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousd);
-        paramAnonymousd.setCheckable(NavigationMenuItemView.this.bzb);
-        AppMethodBeat.o(237755);
+        paramAnonymousd.setCheckable(NavigationMenuItemView.this.dsb);
+        AppMethodBeat.o(209373);
       }
     };
     setOrientation(0);
     LayoutInflater.from(paramContext).inflate(a.h.design_navigation_menu_item, this, true);
     this.iconSize = paramContext.getResources().getDimensionPixelSize(a.d.design_navigation_icon_size);
-    this.bCv = ((CheckedTextView)findViewById(a.f.design_menu_item_text));
-    this.bCv.setDuplicateParentStateEnabled(true);
-    w.a(this.bCv, this.bCA);
-    AppMethodBeat.o(237774);
+    this.dvw = ((CheckedTextView)findViewById(a.f.design_menu_item_text));
+    this.dvw.setDuplicateParentStateEnabled(true);
+    z.a(this.dvw, this.dvB);
+    AppMethodBeat.o(209427);
   }
   
   private void setActionView(View paramView)
   {
-    AppMethodBeat.i(237782);
+    AppMethodBeat.i(209436);
     if (paramView != null)
     {
-      if (this.bCw == null) {
-        this.bCw = ((FrameLayout)((ViewStub)findViewById(a.f.design_menu_item_action_area_stub)).inflate());
+      if (this.dvx == null) {
+        this.dvx = ((FrameLayout)((ViewStub)findViewById(a.f.design_menu_item_action_area_stub)).inflate());
       }
-      this.bCw.removeAllViews();
-      this.bCw.addView(paramView);
+      this.dvx.removeAllViews();
+      this.dvx.addView(paramView);
     }
-    AppMethodBeat.o(237782);
+    AppMethodBeat.o(209436);
   }
   
-  public final void a(j paramj)
+  public final void a(androidx.appcompat.view.menu.j paramj)
   {
-    AppMethodBeat.i(237779);
-    this.bwN = paramj;
+    AppMethodBeat.i(209453);
+    this.dpQ = paramj;
     StateListDrawable localStateListDrawable;
     if (paramj.isVisible())
     {
@@ -104,10 +102,10 @@ public class NavigationMenuItemView
           break label258;
         }
         localStateListDrawable = new StateListDrawable();
-        localStateListDrawable.addState(wo, new ColorDrawable(localTypedValue.data));
+        localStateListDrawable.addState(xk, new ColorDrawable(localTypedValue.data));
         localStateListDrawable.addState(EMPTY_STATE_SET, new ColorDrawable(0));
         label101:
-        w.a(this, localStateListDrawable);
+        z.a(this, localStateListDrawable);
       }
       setCheckable(paramj.isCheckable());
       setChecked(paramj.isChecked());
@@ -117,7 +115,7 @@ public class NavigationMenuItemView
       setActionView(paramj.getActionView());
       setContentDescription(paramj.getContentDescription());
       ae.a(this, paramj.getTooltipText());
-      if ((this.bwN.getTitle() != null) || (this.bwN.getIcon() != null) || (this.bwN.getActionView() == null)) {
+      if ((this.dpQ.getTitle() != null) || (this.dpQ.getIcon() != null) || (this.dpQ.getActionView() == null)) {
         break label263;
       }
     }
@@ -128,14 +126,14 @@ public class NavigationMenuItemView
       if (i == 0) {
         break label268;
       }
-      this.bCv.setVisibility(8);
-      if (this.bCw == null) {
+      this.dvw.setVisibility(8);
+      if (this.dvx == null) {
         break label308;
       }
-      paramj = (LinearLayoutCompat.LayoutParams)this.bCw.getLayoutParams();
+      paramj = (LinearLayoutCompat.LayoutParams)this.dvx.getLayoutParams();
       paramj.width = -1;
-      this.bCw.setLayoutParams(paramj);
-      AppMethodBeat.o(237779);
+      this.dvx.setLayoutParams(paramj);
+      AppMethodBeat.o(209453);
       return;
       i = 8;
       break;
@@ -143,79 +141,79 @@ public class NavigationMenuItemView
       break label101;
     }
     label268:
-    this.bCv.setVisibility(0);
-    if (this.bCw != null)
+    this.dvw.setVisibility(0);
+    if (this.dvx != null)
     {
-      paramj = (LinearLayoutCompat.LayoutParams)this.bCw.getLayoutParams();
+      paramj = (LinearLayoutCompat.LayoutParams)this.dvx.getLayoutParams();
       paramj.width = -2;
-      this.bCw.setLayoutParams(paramj);
+      this.dvx.setLayoutParams(paramj);
     }
     label308:
-    AppMethodBeat.o(237779);
+    AppMethodBeat.o(209453);
   }
   
-  public final boolean bL()
+  public final boolean cE()
   {
     return false;
   }
   
-  public j getItemData()
+  public androidx.appcompat.view.menu.j getItemData()
   {
-    return this.bwN;
+    return this.dpQ;
   }
   
   protected int[] onCreateDrawableState(int paramInt)
   {
-    AppMethodBeat.i(237796);
+    AppMethodBeat.i(209496);
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    if ((this.bwN != null) && (this.bwN.isCheckable()) && (this.bwN.isChecked())) {
-      mergeDrawableStates(arrayOfInt, wo);
+    if ((this.dpQ != null) && (this.dpQ.isCheckable()) && (this.dpQ.isChecked())) {
+      mergeDrawableStates(arrayOfInt, xk);
     }
-    AppMethodBeat.o(237796);
+    AppMethodBeat.o(209496);
     return arrayOfInt;
   }
   
   public void setCheckable(boolean paramBoolean)
   {
-    AppMethodBeat.i(237786);
+    AppMethodBeat.i(209470);
     refreshDrawableState();
-    if (this.bzb != paramBoolean)
+    if (this.dsb != paramBoolean)
     {
-      this.bzb = paramBoolean;
-      this.bCA.sendAccessibilityEvent(this.bCv, 2048);
+      this.dsb = paramBoolean;
+      this.dvB.sendAccessibilityEvent(this.dvw, 2048);
     }
-    AppMethodBeat.o(237786);
+    AppMethodBeat.o(209470);
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    AppMethodBeat.i(237787);
+    AppMethodBeat.i(209477);
     refreshDrawableState();
-    this.bCv.setChecked(paramBoolean);
-    AppMethodBeat.o(237787);
+    this.dvw.setChecked(paramBoolean);
+    AppMethodBeat.o(209477);
   }
   
   public void setHorizontalPadding(int paramInt)
   {
-    AppMethodBeat.i(237807);
+    AppMethodBeat.i(209535);
     setPadding(paramInt, 0, paramInt, 0);
-    AppMethodBeat.o(237807);
+    AppMethodBeat.o(209535);
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    AppMethodBeat.i(237791);
+    AppMethodBeat.i(209483);
     Object localObject;
     if (paramDrawable != null)
     {
       localObject = paramDrawable;
-      if (this.bCy)
+      if (this.dvz)
       {
         localObject = paramDrawable.getConstantState();
         if (localObject == null)
         {
-          localObject = androidx.core.graphics.drawable.a.p(paramDrawable).mutate();
-          androidx.core.graphics.drawable.a.a((Drawable)localObject, this.bCx);
+          localObject = androidx.core.graphics.drawable.a.s(paramDrawable).mutate();
+          androidx.core.graphics.drawable.a.a((Drawable)localObject, this.dvy);
         }
       }
       else
@@ -226,77 +224,77 @@ public class NavigationMenuItemView
     }
     for (;;)
     {
-      i.a(this.bCv, paramDrawable, null, null, null);
-      AppMethodBeat.o(237791);
+      androidx.core.widget.j.a(this.dvw, paramDrawable, null, null, null);
+      AppMethodBeat.o(209483);
       return;
       paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
       break;
-      if (this.bCu)
+      if (this.dvv)
       {
-        if (this.bCz == null)
+        if (this.dvA == null)
         {
-          this.bCz = f.b(getResources(), a.e.navigation_empty_icon, getContext().getTheme());
-          if (this.bCz != null) {
-            this.bCz.setBounds(0, 0, this.iconSize, this.iconSize);
+          this.dvA = f.b(getResources(), a.e.navigation_empty_icon, getContext().getTheme());
+          if (this.dvA != null) {
+            this.dvA.setBounds(0, 0, this.iconSize, this.iconSize);
           }
         }
-        paramDrawable = this.bCz;
+        paramDrawable = this.dvA;
       }
     }
   }
   
   public void setIconPadding(int paramInt)
   {
-    AppMethodBeat.i(237810);
-    this.bCv.setCompoundDrawablePadding(paramInt);
-    AppMethodBeat.o(237810);
+    AppMethodBeat.i(209542);
+    this.dvw.setCompoundDrawablePadding(paramInt);
+    AppMethodBeat.o(209542);
   }
   
   void setIconTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237799);
-    this.bCx = paramColorStateList;
-    if (this.bCx != null) {}
+    AppMethodBeat.i(209504);
+    this.dvy = paramColorStateList;
+    if (this.dvy != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bCy = bool;
-      if (this.bwN != null) {
-        setIcon(this.bwN.getIcon());
+      this.dvz = bool;
+      if (this.dpQ != null) {
+        setIcon(this.dpQ.getIcon());
       }
-      AppMethodBeat.o(237799);
+      AppMethodBeat.o(209504);
       return;
     }
   }
   
   public void setNeedsEmptyIcon(boolean paramBoolean)
   {
-    this.bCu = paramBoolean;
+    this.dvv = paramBoolean;
   }
   
   public void setTextAppearance(int paramInt)
   {
-    AppMethodBeat.i(237801);
-    i.a(this.bCv, paramInt);
-    AppMethodBeat.o(237801);
+    AppMethodBeat.i(209512);
+    androidx.core.widget.j.a(this.dvw, paramInt);
+    AppMethodBeat.o(209512);
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(237803);
-    this.bCv.setTextColor(paramColorStateList);
-    AppMethodBeat.o(237803);
+    AppMethodBeat.i(209520);
+    this.dvw.setTextColor(paramColorStateList);
+    AppMethodBeat.o(209520);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(237783);
-    this.bCv.setText(paramCharSequence);
-    AppMethodBeat.o(237783);
+    AppMethodBeat.i(209464);
+    this.dvw.setText(paramCharSequence);
+    AppMethodBeat.o(209464);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.NavigationMenuItemView
  * JD-Core Version:    0.7.0.1
  */

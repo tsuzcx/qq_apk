@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -28,7 +28,7 @@ public final class z
     }
     try
     {
-      g.s(paramJSONArray);
+      i.v(paramJSONArray);
       AppMethodBeat.o(144949);
       return false;
     }
@@ -41,7 +41,7 @@ public final class z
     }
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     return null;
   }
@@ -53,7 +53,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.z
  * JD-Core Version:    0.7.0.1
  */

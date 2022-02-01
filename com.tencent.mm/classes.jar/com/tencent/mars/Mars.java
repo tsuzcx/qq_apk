@@ -2,7 +2,7 @@ package com.tencent.mars;
 
 import android.content.Context;
 import com.tencent.mars.comm.PlatformComm;
-import com.tencent.mm.app.o.a;
+import com.tencent.mm.app.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
@@ -14,14 +14,14 @@ public class Mars
 {
   private static final int CertVersion_Mainland = 1;
   private static final int CertVersion_WeChatUS = 2;
-  private static final o.a appForegroundListener = new o.a()
+  private static final q.a appForegroundListener = new q.a()
   {
-    public final void onAppBackground(String paramAnonymousString)
+    public void onAppBackground(String paramAnonymousString)
     {
       Mars.onForeground(false);
     }
     
-    public final void onAppForeground(String paramAnonymousString)
+    public void onAppForeground(String paramAnonymousString)
     {
       Mars.onForeground(true);
     }
@@ -32,6 +32,7 @@ public class Mars
   public static final String libMarsMM = "wechatmm";
   public static final String libMarsNetwork = "wechatnetwork";
   private static ArrayList<String[]> libModules = new ArrayList();
+  private byte _hellAccFlag_;
   
   public static void checkLoadedModules(ArrayList<String> paramArrayList, String paramString)
   {
@@ -171,10 +172,14 @@ public class Mars
   {
     try
     {
-      System.loadLibrary("c++_shared");
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("c++_shared");
+      Object localObject2 = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala.aYi(), "com/tencent/mars/Mars", "loadDefaultMarsLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)locala.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mars/Mars", "loadDefaultMarsLibrary", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       return;
     }
-    catch (Throwable localThrowable) {}
+    finally {}
   }
   
   public static void onCreate()
@@ -230,7 +235,7 @@ public class Mars
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.Mars
  * JD-Core Version:    0.7.0.1
  */

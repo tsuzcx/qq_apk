@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.an.h.a;
+import com.tencent.mm.am.g.a;
 import java.util.Map;
 
 public abstract interface t
 {
-  public abstract void onNewXmlReceived(String paramString, Map<String, String> paramMap, h.a parama);
+  public abstract void onNewXmlReceived(String paramString, Map<String, String> paramMap, g.a parama);
 }
 
 

@@ -1,35 +1,30 @@
 package com.tencent.xweb.x5;
 
-import android.content.Context;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.X5JsCore;
-import com.tencent.xweb.internal.IJsRuntime;
-import org.xwalk.core.Log;
+import com.tencent.smtt.sdk.WebChromeClient;
 
-public final class f
-  implements IJsRuntime
+public class f
+  extends WebChromeClient
 {
-  private X5JsCore aagk;
-  private Context mContext;
-  
-  public f(Context paramContext)
+  public View getVideoLoadingProgressView()
   {
-    AppMethodBeat.i(153843);
-    this.mContext = paramContext;
-    Log.i("MicroMsg.X5JsRuntime", "create X5V8JsRuntime");
-    AppMethodBeat.o(153843);
+    AppMethodBeat.i(213179);
+    View localView = super.getVideoLoadingProgressView();
+    AppMethodBeat.o(213179);
+    return localView;
   }
   
-  public final void init(int paramInt)
+  public final void kiK()
   {
-    AppMethodBeat.i(153844);
-    this.aagk = new X5JsCore(this.mContext);
-    AppMethodBeat.o(153844);
+    AppMethodBeat.i(213174);
+    super.onHideCustomView();
+    AppMethodBeat.o(213174);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.x5.f
  * JD-Core Version:    0.7.0.1
  */

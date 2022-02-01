@@ -6,19 +6,19 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(207458);
-    ZRL = new b("DATA_USAGE_TYPE_IDENTIFY", 0);
-    ZRM = new b("DATA_USAGE_TYPE_TRAIN", 1);
-    ZRN = new b("DATA_USAGE_TYPE_IDENTIFY_TRAIN", 2);
-    ZRO = new b[] { ZRL, ZRM, ZRN };
-    AppMethodBeat.o(207458);
+    AppMethodBeat.i(212114);
+    ahWi = new b("DATA_USAGE_TYPE_IDENTIFY", 0);
+    ahWj = new b("DATA_USAGE_TYPE_TRAIN", 1);
+    ahWk = new b("DATA_USAGE_TYPE_IDENTIFY_TRAIN", 2);
+    ahWl = new b[] { ahWi, ahWj, ahWk };
+    AppMethodBeat.o(212114);
   }
   
   private b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.h.a.b
  * JD-Core Version:    0.7.0.1
  */

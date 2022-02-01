@@ -17,216 +17,216 @@ import java.util.ArrayList;
 public class MMEditorCircularProgressBar
   extends View
 {
-  private int FfL;
-  private int FfM;
-  private int FfN;
-  private RectF FfO;
-  private Paint FfP;
-  private Paint FfQ;
-  private int FfR;
-  private float FfS;
-  private int FfT;
-  private ArrayList<Float> FfX;
-  private ArrayList<Float> FfY;
-  private boolean FfZ;
-  private boolean Fga;
-  private boolean Fgb;
-  private a HZV;
+  private boolean LbA;
+  private boolean LbB;
+  private int Lbl;
+  private int Lbm;
+  private int Lbn;
+  private RectF Lbo;
+  private Paint Lbp;
+  private Paint Lbq;
+  private int Lbr;
+  private float Lbs;
+  private int Lbt;
+  private ArrayList<Float> Lbx;
+  private ArrayList<Float> Lby;
+  private boolean Lbz;
+  private a NWx;
   private int duration;
   private boolean isStart;
-  private boolean kfR;
   private Context mContext;
+  private boolean mGp;
   private float offset;
-  private float opr;
   private Paint paint;
+  private float rsZ;
   private float strokeWidth;
   
   public MMEditorCircularProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216541);
-    this.FfL = Color.parseColor("#1AAD19");
-    this.FfM = Color.parseColor("#FFFFFF");
-    this.FfN = Color.parseColor("#FA5151");
+    AppMethodBeat.i(279852);
+    this.Lbl = Color.parseColor("#1AAD19");
+    this.Lbm = Color.parseColor("#FFFFFF");
+    this.Lbn = Color.parseColor("#FA5151");
     this.strokeWidth = 0.0F;
     this.offset = 0.0F;
-    this.FfR = 153;
-    this.FfS = 0.0F;
-    this.FfT = 0;
-    this.opr = 0.0F;
+    this.Lbr = 153;
+    this.Lbs = 0.0F;
+    this.Lbt = 0;
+    this.rsZ = 0.0F;
     this.duration = 0;
     this.isStart = false;
-    this.FfX = new ArrayList();
-    this.FfY = new ArrayList();
-    this.FfZ = false;
-    this.Fga = false;
-    this.Fgb = false;
-    this.kfR = false;
+    this.Lbx = new ArrayList();
+    this.Lby = new ArrayList();
+    this.Lbz = false;
+    this.LbA = false;
+    this.LbB = false;
+    this.mGp = false;
     this.mContext = paramContext;
-    AppMethodBeat.o(216541);
+    AppMethodBeat.o(279852);
   }
   
   public MMEditorCircularProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(216542);
-    this.FfL = Color.parseColor("#1AAD19");
-    this.FfM = Color.parseColor("#FFFFFF");
-    this.FfN = Color.parseColor("#FA5151");
+    AppMethodBeat.i(279862);
+    this.Lbl = Color.parseColor("#1AAD19");
+    this.Lbm = Color.parseColor("#FFFFFF");
+    this.Lbn = Color.parseColor("#FA5151");
     this.strokeWidth = 0.0F;
     this.offset = 0.0F;
-    this.FfR = 153;
-    this.FfS = 0.0F;
-    this.FfT = 0;
-    this.opr = 0.0F;
+    this.Lbr = 153;
+    this.Lbs = 0.0F;
+    this.Lbt = 0;
+    this.rsZ = 0.0F;
     this.duration = 0;
     this.isStart = false;
-    this.FfX = new ArrayList();
-    this.FfY = new ArrayList();
-    this.FfZ = false;
-    this.Fga = false;
-    this.Fgb = false;
-    this.kfR = false;
+    this.Lbx = new ArrayList();
+    this.Lby = new ArrayList();
+    this.Lbz = false;
+    this.LbA = false;
+    this.LbB = false;
+    this.mGp = false;
     this.mContext = paramContext;
-    AppMethodBeat.o(216542);
+    AppMethodBeat.o(279862);
   }
   
   public int getDrawWidth()
   {
-    AppMethodBeat.i(216545);
-    int i = (int)this.FfO.width();
-    AppMethodBeat.o(216545);
+    AppMethodBeat.i(279871);
+    int i = (int)this.Lbo.width();
+    AppMethodBeat.o(279871);
     return i;
   }
   
   public ArrayList<Float> getSubProgress()
   {
-    return this.FfX;
+    return this.Lbx;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(216553);
+    AppMethodBeat.i(279902);
     paramCanvas.save();
     paramCanvas.translate(this.offset, this.offset);
-    paramCanvas.rotate(180.0F, this.FfO.right / 2.0F, this.FfO.bottom / 2.0F);
-    if (this.FfZ)
+    paramCanvas.rotate(180.0F, this.Lbo.right / 2.0F, this.Lbo.bottom / 2.0F);
+    if (this.Lbz)
     {
       int i = 0;
       float f = 0.0F;
-      if (i < this.FfX.size())
+      if (i < this.Lbx.size())
       {
-        if ((this.Fgb) && (i == this.FfX.size() - 1)) {
-          paramCanvas.drawArc(this.FfO, 90.0F + f / this.opr * 360.0F, (((Float)this.FfX.get(i)).floatValue() - f) / this.opr * 360.0F, false, this.FfQ);
+        if ((this.LbB) && (i == this.Lbx.size() - 1)) {
+          paramCanvas.drawArc(this.Lbo, 90.0F + f / this.rsZ * 360.0F, (((Float)this.Lbx.get(i)).floatValue() - f) / this.rsZ * 360.0F, false, this.Lbq);
         }
         for (;;)
         {
-          f = ((Float)this.FfX.get(i)).floatValue();
-          paramCanvas.drawArc(this.FfO, 90.0F + (f - 0.85F) / this.opr * 360.0F, 0.85F / this.opr * 360.0F, false, this.FfP);
+          f = ((Float)this.Lbx.get(i)).floatValue();
+          paramCanvas.drawArc(this.Lbo, 90.0F + (f - 0.85F) / this.rsZ * 360.0F, 0.85F / this.rsZ * 360.0F, false, this.Lbp);
           i += 1;
           break;
-          paramCanvas.drawArc(this.FfO, 90.0F + f / this.opr * 360.0F, (((Float)this.FfX.get(i)).floatValue() - f) / this.opr * 360.0F, false, this.paint);
+          paramCanvas.drawArc(this.Lbo, 90.0F + f / this.rsZ * 360.0F, (((Float)this.Lbx.get(i)).floatValue() - f) / this.rsZ * 360.0F, false, this.paint);
         }
       }
-      paramCanvas.drawArc(this.FfO, 90.0F + f / this.opr * 360.0F, (this.FfS - f) / this.opr * 360.0F, false, this.paint);
+      paramCanvas.drawArc(this.Lbo, 90.0F + f / this.rsZ * 360.0F, (this.Lbs - f) / this.rsZ * 360.0F, false, this.paint);
     }
     for (;;)
     {
       paramCanvas.restore();
-      AppMethodBeat.o(216553);
+      AppMethodBeat.o(279902);
       return;
-      paramCanvas.drawArc(this.FfO, 90.0F, this.FfS / this.opr * 360.0F, false, this.paint);
+      paramCanvas.drawArc(this.Lbo, 90.0F, this.Lbs / this.rsZ * 360.0F, false, this.paint);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(216543);
+    AppMethodBeat.i(279866);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.kfR)
+    if (!this.mGp)
     {
-      this.kfR = true;
+      this.mGp = true;
       float f = getWidth();
       this.strokeWidth = this.mContext.getResources().getDimensionPixelSize(a.c.mmsight_recorder_progress_circular_thickness);
       this.offset = (this.strokeWidth / 2.0F);
-      this.FfO = new RectF(this.offset, this.offset, f - this.offset, f - this.offset);
+      this.Lbo = new RectF(this.offset, this.offset, f - this.offset, f - this.offset);
       this.paint = new Paint();
       this.paint.setStyle(Paint.Style.STROKE);
       this.paint.setStrokeWidth(this.strokeWidth);
-      this.paint.setColor(this.FfL);
-      this.paint.setAlpha(this.FfR);
+      this.paint.setColor(this.Lbl);
+      this.paint.setAlpha(this.Lbr);
       this.paint.setAntiAlias(true);
-      this.FfP = new Paint();
-      this.FfP.setStyle(Paint.Style.STROKE);
-      this.FfP.setStrokeWidth(this.strokeWidth);
-      this.FfP.setColor(this.FfM);
-      this.FfP.setAlpha(this.FfR);
-      this.FfP.setAntiAlias(true);
-      this.FfQ = new Paint();
-      this.FfQ.setStyle(Paint.Style.STROKE);
-      this.FfQ.setStrokeWidth(this.strokeWidth);
-      this.FfQ.setColor(this.FfN);
-      this.FfQ.setAntiAlias(true);
+      this.Lbp = new Paint();
+      this.Lbp.setStyle(Paint.Style.STROKE);
+      this.Lbp.setStrokeWidth(this.strokeWidth);
+      this.Lbp.setColor(this.Lbm);
+      this.Lbp.setAlpha(this.Lbr);
+      this.Lbp.setAntiAlias(true);
+      this.Lbq = new Paint();
+      this.Lbq.setStyle(Paint.Style.STROKE);
+      this.Lbq.setStrokeWidth(this.strokeWidth);
+      this.Lbq.setColor(this.Lbn);
+      this.Lbq.setAntiAlias(true);
     }
-    AppMethodBeat.o(216543);
+    AppMethodBeat.o(279866);
   }
   
   public void setCircularColor(int paramInt)
   {
-    AppMethodBeat.i(216552);
-    this.FfL = paramInt;
-    this.FfR = 255;
+    AppMethodBeat.i(279892);
+    this.Lbl = paramInt;
+    this.Lbr = 255;
     if ((this.paint != null) && (paramInt != 0)) {
       this.paint.setColor(paramInt);
     }
-    AppMethodBeat.o(216552);
+    AppMethodBeat.o(279892);
   }
   
   public void setCurrentProgress(float paramFloat)
   {
-    AppMethodBeat.i(216551);
-    this.FfS = paramFloat;
+    AppMethodBeat.i(279889);
+    this.Lbs = paramFloat;
     invalidate();
-    AppMethodBeat.o(216551);
+    AppMethodBeat.o(279889);
   }
   
   public void setDuration(int paramInt)
   {
-    AppMethodBeat.i(216549);
+    AppMethodBeat.i(279880);
     Log.i("MicroMsg.MMSightCircularProgressBar", "setDuration: %s", new Object[] { Integer.valueOf(paramInt) });
     this.duration = paramInt;
-    AppMethodBeat.o(216549);
+    AppMethodBeat.o(279880);
   }
   
   public void setEnableSubProgress(boolean paramBoolean)
   {
-    AppMethodBeat.i(216546);
+    AppMethodBeat.i(279874);
     Log.i("MicroMsg.MMSightCircularProgressBar", "setEnableSubProgress: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.FfZ = paramBoolean;
-    AppMethodBeat.o(216546);
+    this.Lbz = paramBoolean;
+    AppMethodBeat.o(279874);
   }
   
   public void setInitProgress(int paramInt)
   {
-    AppMethodBeat.i(216550);
+    AppMethodBeat.i(279884);
     Log.i("MicroMsg.MMSightCircularProgressBar", "setInitProgress: %s, isStart: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.isStart) });
     if (!this.isStart) {
-      this.FfT = paramInt;
+      this.Lbt = paramInt;
     }
-    AppMethodBeat.o(216550);
+    AppMethodBeat.o(279884);
   }
   
   public void setMaxProgress(float paramFloat)
   {
-    AppMethodBeat.i(216548);
+    AppMethodBeat.i(279878);
     Log.i("MicroMsg.MMSightCircularProgressBar", "setMaxProgress: %s", new Object[] { Float.valueOf(paramFloat) });
-    this.opr = paramFloat;
-    AppMethodBeat.o(216548);
+    this.rsZ = paramFloat;
+    AppMethodBeat.o(279878);
   }
   
   public void setProgressCallback(a parama)
   {
-    this.HZV = parama;
+    this.NWx = parama;
   }
   
   public static abstract interface a {}

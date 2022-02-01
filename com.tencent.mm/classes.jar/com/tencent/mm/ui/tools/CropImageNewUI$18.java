@@ -15,16 +15,16 @@ final class CropImageNewUI$18
   {
     AppMethodBeat.i(39022);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/tools/CropImageNewUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    CropImageNewUI.a(this.XNW, true);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/tools/CropImageNewUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    CropImageNewUI.a(this.afEk, true);
     a.a(this, "com/tencent/mm/ui/tools/CropImageNewUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(39022);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageNewUI.18
  * JD-Core Version:    0.7.0.1
  */

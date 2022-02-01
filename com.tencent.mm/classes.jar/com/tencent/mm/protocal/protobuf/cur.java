@@ -1,88 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cur
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public int CPw;
-  public long TCs;
-  public long TCt;
-  public int TCu;
-  public String Tkw;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117877);
+    AppMethodBeat.i(257726);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.CPw);
-      if (this.Tkw != null) {
-        paramVarArgs.f(2, this.Tkw);
-      }
-      paramVarArgs.bm(3, this.TCt);
-      paramVarArgs.bm(4, this.TCs);
-      paramVarArgs.aY(5, this.TCu);
-      AppMethodBeat.o(117877);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.CPw) + 0;
-      paramInt = i;
-      if (this.Tkw != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.Tkw);
-      }
-      i = g.a.a.b.b.a.p(3, this.TCt);
-      int j = g.a.a.b.b.a.p(4, this.TCs);
-      int k = g.a.a.b.b.a.bM(5, this.TCu);
-      AppMethodBeat.o(117877);
-      return paramInt + i + j + k;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(117877);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cur localcur = (cur)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(117877);
-        return -1;
-      case 1: 
-        localcur.CPw = locala.abFh.AK();
-        AppMethodBeat.o(117877);
-        return 0;
-      case 2: 
-        localcur.Tkw = locala.abFh.readString();
-        AppMethodBeat.o(117877);
-        return 0;
-      case 3: 
-        localcur.TCt = locala.abFh.AN();
-        AppMethodBeat.o(117877);
-        return 0;
-      case 4: 
-        localcur.TCs = locala.abFh.AN();
-        AppMethodBeat.o(117877);
-        return 0;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localcur.TCu = locala.abFh.AK();
-      AppMethodBeat.o(117877);
+      AppMethodBeat.o(257726);
       return 0;
     }
-    AppMethodBeat.o(117877);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label284;
+      }
+    }
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(257726);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        AppMethodBeat.o(257726);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        cur localcur = (cur)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(257726);
+          return -1;
+        }
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          kc localkc = new kc();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localkc.parseFrom((byte[])localObject);
+          }
+          localcur.BaseRequest = localkc;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(257726);
+        return 0;
+      }
+      AppMethodBeat.o(257726);
+      return -1;
+    }
   }
 }
 

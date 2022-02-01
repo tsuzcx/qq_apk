@@ -7,78 +7,71 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.c.g;
 import com.tencent.mm.plugin.voip.widget.BaseSmallView;
 import com.tencent.mm.plugin.voip.widget.a;
-import com.tencent.mm.plugin.voip.widget.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/ui/VoipViewFragment;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "audioView", "Lcom/tencent/mm/plugin/voip/widget/BaseSmallView;", "mIsVideoTalking", "", "videoView", "doAnimator", "", "isSwitchToVideo", "getCurrentView", "getSmallView", "isVideo", "isSwitch", "initAudioView", "initVideoView", "onBadNetTipShow", "show", "onHangupHappened", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onStartRecordFailed", "refreshMiniView", "setVoicePlayDevice", "device", "switchToVideo", "switchToVoice", "updateText", "text", "", "updateTime", "plugin-voip_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/voip/ui/VoipViewFragment;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "audioView", "Lcom/tencent/mm/plugin/voip/widget/BaseSmallView;", "mIsVideoTalking", "", "videoView", "doAnimator", "", "isSwitchToVideo", "getCurrentView", "getSmallView", "isVideo", "isSwitch", "initAudioView", "initVideoView", "onBadNetTipShow", "show", "onHangupHappened", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onStartRecordFailed", "refreshMiniView", "setVoicePlayDevice", "device", "switchToVideo", "switchToVoice", "updateText", "text", "", "updateTime", "plugin-voip_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class VoipViewFragment
   extends FrameLayout
 {
-  public BaseSmallView NWr;
-  public BaseSmallView NWs;
-  private boolean NWt;
+  public BaseSmallView UKR;
+  public BaseSmallView UKS;
+  private boolean UKT;
   
   public VoipViewFragment(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(234787);
-    AppMethodBeat.o(234787);
+    AppMethodBeat.i(292454);
+    AppMethodBeat.o(292454);
   }
   
   public VoipViewFragment(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(234788);
-    AppMethodBeat.o(234788);
+    AppMethodBeat.i(292456);
+    AppMethodBeat.o(292456);
   }
   
   public VoipViewFragment(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(234790);
-    if (g.gCD()) {}
-    for (paramContext = (BaseSmallView)new a(MMApplicationContext.getContext());; paramContext = (BaseSmallView)new c(MMApplicationContext.getContext()))
-    {
-      this.NWs = paramContext;
-      this.NWr = ((BaseSmallView)new f(MMApplicationContext.getContext()));
-      paramContext = this.NWr;
-      if (paramContext != null) {
-        paramContext.setVisibility(8);
-      }
-      paramContext = this.NWs;
-      if (paramContext != null) {
-        paramContext.setVisibility(8);
-      }
-      addView((View)this.NWr);
-      addView((View)this.NWs);
-      AppMethodBeat.o(234790);
-      return;
+    AppMethodBeat.i(292465);
+    this.UKS = ((BaseSmallView)new a(MMApplicationContext.getContext()));
+    this.UKR = ((BaseSmallView)new l(MMApplicationContext.getContext()));
+    paramContext = this.UKR;
+    if (paramContext != null) {
+      paramContext.setVisibility(8);
     }
+    paramContext = this.UKS;
+    if (paramContext != null) {
+      paramContext.setVisibility(8);
+    }
+    addView((View)this.UKR);
+    addView((View)this.UKS);
+    AppMethodBeat.o(292465);
   }
   
-  private final void Bf(boolean paramBoolean)
+  private final void GI(boolean paramBoolean)
   {
-    AppMethodBeat.i(234781);
+    AppMethodBeat.i(292472);
     if (paramBoolean)
     {
-      this.NWt = true;
-      localObject = this.NWr;
+      this.UKT = true;
+      localObject = this.UKR;
       if (localObject != null) {
         ((BaseSmallView)localObject).setVisibility(0);
       }
-      localObject = this.NWs;
+      localObject = this.UKS;
       if (localObject != null) {
         ((BaseSmallView)localObject).setVisibility(0);
       }
-      localObject = this.NWs;
+      localObject = this.UKS;
       if (localObject != null) {
         ((BaseSmallView)localObject).setAlpha(0.0F);
       }
-      localObject = this.NWr;
+      localObject = this.UKR;
       if (localObject != null)
       {
         localObject = ((BaseSmallView)localObject).animate();
@@ -94,7 +87,7 @@ public final class VoipViewFragment
           }
         }
       }
-      localObject = this.NWs;
+      localObject = this.UKS;
       if (localObject != null)
       {
         localObject = ((BaseSmallView)localObject).animate();
@@ -104,35 +97,32 @@ public final class VoipViewFragment
           if (localObject != null)
           {
             localObject = ((ViewPropertyAnimator)localObject).setDuration(300L);
-            if (localObject != null)
-            {
+            if (localObject != null) {
               ((ViewPropertyAnimator)localObject).start();
-              AppMethodBeat.o(234781);
-              return;
             }
           }
         }
       }
-      AppMethodBeat.o(234781);
+      AppMethodBeat.o(292472);
       return;
     }
-    this.NWt = false;
-    Object localObject = this.NWs;
+    this.UKT = false;
+    Object localObject = this.UKS;
     if (localObject != null) {
       ((BaseSmallView)localObject).setVisibility(8);
     }
-    if (this.NWs != null) {
-      removeView((View)this.NWs);
+    if (this.UKS != null) {
+      removeView((View)this.UKS);
     }
-    localObject = this.NWr;
+    localObject = this.UKR;
     if (localObject != null) {
       ((BaseSmallView)localObject).setVisibility(0);
     }
-    localObject = this.NWr;
+    localObject = this.UKR;
     if (localObject != null) {
       ((BaseSmallView)localObject).setAlpha(0.0F);
     }
-    localObject = this.NWr;
+    localObject = this.UKR;
     if (localObject != null)
     {
       localObject = ((BaseSmallView)localObject).animate();
@@ -142,76 +132,57 @@ public final class VoipViewFragment
         if (localObject != null)
         {
           localObject = ((ViewPropertyAnimator)localObject).setDuration(300L);
-          if (localObject != null)
-          {
+          if (localObject != null) {
             ((ViewPropertyAnimator)localObject).start();
-            AppMethodBeat.o(234781);
-            return;
           }
         }
       }
     }
-    AppMethodBeat.o(234781);
+    AppMethodBeat.o(292472);
   }
   
-  public final void aQM(String paramString)
+  public final void aNF(String paramString)
   {
-    AppMethodBeat.i(234785);
+    AppMethodBeat.i(292503);
     BaseSmallView localBaseSmallView = getCurrentView();
-    if (localBaseSmallView != null)
-    {
-      localBaseSmallView.aQM(paramString);
-      AppMethodBeat.o(234785);
-      return;
+    if (localBaseSmallView != null) {
+      localBaseSmallView.aNF(paramString);
     }
-    AppMethodBeat.o(234785);
+    AppMethodBeat.o(292503);
   }
   
-  public final void aQN(String paramString)
+  public final BaseSmallView br(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(234786);
-    BaseSmallView localBaseSmallView = getCurrentView();
-    if (localBaseSmallView != null)
-    {
-      localBaseSmallView.aQN(paramString);
-      AppMethodBeat.o(234786);
-      return;
-    }
-    AppMethodBeat.o(234786);
-  }
-  
-  public final BaseSmallView aV(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(234783);
+    AppMethodBeat.i(292481);
     if (paramBoolean2) {
-      Bf(paramBoolean1);
+      GI(paramBoolean1);
     }
-    this.NWt = paramBoolean1;
+    this.UKT = paramBoolean1;
     if (paramBoolean1)
     {
-      localBaseSmallView = this.NWs;
+      localBaseSmallView = this.UKS;
       if (localBaseSmallView != null) {
         localBaseSmallView.setVisibility(0);
       }
-      localBaseSmallView = this.NWs;
-      AppMethodBeat.o(234783);
+      localBaseSmallView = this.UKS;
+      AppMethodBeat.o(292481);
       return localBaseSmallView;
     }
-    BaseSmallView localBaseSmallView = this.NWr;
+    BaseSmallView localBaseSmallView = this.UKR;
     if (localBaseSmallView != null) {
       localBaseSmallView.setVisibility(0);
     }
-    localBaseSmallView = this.NWr;
-    AppMethodBeat.o(234783);
+    localBaseSmallView = this.UKR;
+    AppMethodBeat.o(292481);
     return localBaseSmallView;
   }
   
   final BaseSmallView getCurrentView()
   {
-    if (this.NWt) {
-      return this.NWs;
+    if (this.UKT) {
+      return this.UKS;
     }
-    return this.NWr;
+    return this.UKR;
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -221,20 +192,27 @@ public final class VoipViewFragment
   
   public final void setVoicePlayDevice(int paramInt)
   {
-    AppMethodBeat.i(234784);
+    AppMethodBeat.i(292489);
     BaseSmallView localBaseSmallView = getCurrentView();
-    if (localBaseSmallView != null)
-    {
+    if (localBaseSmallView != null) {
       localBaseSmallView.setVoicePlayDevice(paramInt);
-      AppMethodBeat.o(234784);
-      return;
     }
-    AppMethodBeat.o(234784);
+    AppMethodBeat.o(292489);
+  }
+  
+  public final void updateText(String paramString)
+  {
+    AppMethodBeat.i(292496);
+    BaseSmallView localBaseSmallView = getCurrentView();
+    if (localBaseSmallView != null) {
+      localBaseSmallView.updateText(paramString);
+    }
+    AppMethodBeat.o(292496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipViewFragment
  * JD-Core Version:    0.7.0.1
  */

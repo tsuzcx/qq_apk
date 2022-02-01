@@ -1,9 +1,9 @@
 package kotlin.m;
 
 import java.util.Iterator;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/Sequence;", "T", "", "iterator", "", "kotlin-stdlib"})
+@Metadata(d1={""}, d2={"Lkotlin/sequences/Sequence;", "T", "", "iterator", "", "kotlin-stdlib"}, k=1, mv={1, 5, 1})
 public abstract interface h<T>
 {
   public abstract Iterator<T> iterator();

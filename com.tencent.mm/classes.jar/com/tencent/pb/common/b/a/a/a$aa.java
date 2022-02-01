@@ -1,39 +1,39 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$aa
   extends e
 {
-  public String ZeQ = "";
+  public String ahdt = "";
   
   public a$aa()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (!this.ZeQ.equals("")) {
-      i = j + b.g(1, this.ZeQ);
-    }
-    return i;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
-    if (!this.ZeQ.equals("")) {
-      paramb.f(1, this.ZeQ);
+    if (!this.ahdt.equals("")) {
+      paramb.g(1, this.ahdt);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (!this.ahdt.equals("")) {
+      i = j + b.h(1, this.ahdt);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.aa
  * JD-Core Version:    0.7.0.1
  */

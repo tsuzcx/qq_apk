@@ -1,250 +1,70 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import android.content.Context;
-import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.ab;
-import com.tencent.mm.plugin.finder.convert.af;
-import com.tencent.mm.plugin.finder.convert.ak;
-import com.tencent.mm.plugin.finder.convert.am;
-import com.tencent.mm.plugin.finder.convert.bg;
-import com.tencent.mm.plugin.finder.convert.cp;
-import com.tencent.mm.plugin.finder.convert.r;
-import com.tencent.mm.plugin.finder.convert.u;
-import com.tencent.mm.plugin.finder.convert.v;
-import com.tencent.mm.plugin.finder.convert.y;
-import com.tencent.mm.plugin.finder.convert.z;
-import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
-import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bu;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.j;
-import com.tencent.mm.view.recyclerview.e;
-import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getDataAt", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "index", "", "getDataIndex", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFeedList", "Ljava/util/ArrayList;", "getVideoData", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "ifSafeMode", "", "initViewCallback", "", "loadInitData", "onAttach", "model", "callback", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "onDetach", "removeDataAt", "plugin-finder_release"})
-public abstract class aa$a
-  extends b.a
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderLiveFeedDecorator$AnchorData;", "", "sdkUserId", "", "audioMode", "", "(Ljava/lang/String;Z)V", "getAudioMode", "()Z", "setAudioMode", "(Z)V", "getSdkUserId", "()Ljava/lang/String;", "setSdkUserId", "(Ljava/lang/String;)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class aa$a
 {
-  private final String TAG = "Finder.FinderLoaderFeedUIContract.Presenter";
-  public BaseFinderFeedLoader xnX;
+  boolean AWE;
+  String mXL;
   
-  public aa$a(MMActivity paramMMActivity)
+  private aa$a(String paramString)
   {
-    super(paramMMActivity);
+    AppMethodBeat.i(362444);
+    this.mXL = paramString;
+    this.AWE = false;
+    AppMethodBeat.o(362444);
   }
   
-  public final bu Mv(int paramInt)
+  public final void avP(String paramString)
   {
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-    if (localBaseFinderFeedLoader != null) {
-      return (bu)localBaseFinderFeedLoader.safeGet(paramInt);
-    }
-    return null;
+    AppMethodBeat.i(362457);
+    s.u(paramString, "<set-?>");
+    this.mXL = paramString;
+    AppMethodBeat.o(362457);
   }
   
-  public void a(BaseFinderFeedLoader paramBaseFinderFeedLoader, aa.b paramb)
+  public final boolean equals(Object paramObject)
   {
-    p.k(paramBaseFinderFeedLoader, "model");
-    p.k(paramb, "callback");
-    this.xnX = paramBaseFinderFeedLoader;
-    super.a((b.b)paramb);
-    paramBaseFinderFeedLoader = g.Xox;
-    ((com.tencent.mm.plugin.finder.viewmodel.component.s)g.b((AppCompatActivity)this.iXq).i(com.tencent.mm.plugin.finder.viewmodel.component.s.class)).u(paramb.xvJ.getRecyclerView());
-  }
-  
-  public final void dsF()
-  {
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-    if (localBaseFinderFeedLoader != null) {
-      BaseFeedLoader.requestInit$default(localBaseFinderFeedLoader, false, 1, null);
-    }
-  }
-  
-  public boolean dsZ()
-  {
-    return false;
-  }
-  
-  public final void dsr()
-  {
-    Object localObject = this.xvC;
-    if (localObject == null) {
-      throw new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderLoaderFeedUIContract.ViewCallback");
-    }
-    localObject = ((aa.b)localObject).dtb();
-    if (localObject != null)
+    AppMethodBeat.i(362472);
+    if (this == paramObject)
     {
-      localBaseFinderFeedLoader = this.xnX;
-      if (localBaseFinderFeedLoader != null) {
-        localBaseFinderFeedLoader.register((j)localObject);
-      }
+      AppMethodBeat.o(362472);
+      return true;
     }
-    localObject = this.xvC;
-    if (localObject == null) {
-      p.iCn();
-    }
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-    if (localBaseFinderFeedLoader == null) {
-      p.iCn();
-    }
-    ((b.b)localObject).ab((ArrayList)localBaseFinderFeedLoader.getDataListJustForAdapter());
-  }
-  
-  public final DataBuffer<bu> dss()
-  {
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-    if (localBaseFinderFeedLoader == null) {
-      p.iCn();
-    }
-    return localBaseFinderFeedLoader.getDataListJustForAdapter();
-  }
-  
-  public com.tencent.mm.view.recyclerview.f dsu()
-  {
-    return (com.tencent.mm.view.recyclerview.f)new a(this);
-  }
-  
-  public ArrayList<bu> dta()
-  {
-    Object localObject = this.xnX;
-    if (localObject != null) {}
-    for (localObject = ((BaseFinderFeedLoader)localObject).getDataListJustForAdapter();; localObject = null) {
-      return (ArrayList)localObject;
-    }
-  }
-  
-  public String getTAG()
-  {
-    return this.TAG;
-  }
-  
-  public final int m(BaseFinderFeed paramBaseFinderFeed)
-  {
-    p.k(paramBaseFinderFeed, "feed");
-    Object localObject = this.xnX;
-    if (localObject != null)
+    if (!(paramObject instanceof a))
     {
-      localObject = ((BaseFinderFeedLoader)localObject).getDataListJustForAdapter();
-      if (localObject != null) {
-        return ((DataBuffer)localObject).indexOf(paramBaseFinderFeed);
-      }
+      AppMethodBeat.o(362472);
+      return false;
     }
-    return -1;
+    paramObject = (a)paramObject;
+    if (!s.p(this.mXL, paramObject.mXL))
+    {
+      AppMethodBeat.o(362472);
+      return false;
+    }
+    if (this.AWE != paramObject.AWE)
+    {
+      AppMethodBeat.o(362472);
+      return false;
+    }
+    AppMethodBeat.o(362472);
+    return true;
   }
   
-  public void onDetach()
+  public final int hashCode()
   {
-    Object localObject = this.xvC;
-    if (localObject == null) {
-      throw new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.feed.FinderLoaderFeedUIContract.ViewCallback");
-    }
-    localObject = ((aa.b)localObject).dtb();
-    if (localObject != null)
-    {
-      BaseFinderFeedLoader localBaseFinderFeedLoader = this.xnX;
-      if (localBaseFinderFeedLoader != null) {
-        localBaseFinderFeedLoader.unregister((j)localObject);
-      }
-    }
-    super.onDetach();
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$Presenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.f
+  public final String toString()
   {
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(165721);
-      switch (paramInt)
-      {
-      default: 
-        localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-        com.tencent.mm.plugin.finder.utils.aj.em(this.xzv.getTAG(), paramInt);
-        localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 3002: 
-        localObject = (e)new am(this.xzv.xkW, (i)this.xzv, this.xzv.dsZ(), 0, 8);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 3001: 
-        localObject = (e)new v((i)this.xzv, this.xzv.dsZ(), 0, 4);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 7: 
-        localObject = (e)new ak((i)this.xzv, this.xzv.dsZ(), 0, 4);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 8: 
-        localObject = (e)new ab(this.xzv.xkW, (i)this.xzv, this.xzv.dsZ(), 0, 8);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 2014: 
-        localObject = (e)new cp(this.xzv.xnX);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 1: 
-        localObject = (e)new af((i)this.xzv, this.xzv.dsZ(), 0, 4);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 2001: 
-        localObject = (e)new bg();
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 9: 
-        if (this.xzv.dsq())
-        {
-          localObject = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          localObject = aj.a.fZ((Context)this.xzv.iXq);
-          if (localObject != null) {}
-          for (paramInt = ((com.tencent.mm.plugin.finder.viewmodel.component.aj)localObject).xkX;; paramInt = 0)
-          {
-            localObject = (e)new com.tencent.mm.plugin.finder.convert.s(this.xzv.xkW, (i)this.xzv, this.xzv.dsZ(), this.xzv.fEH, paramInt);
-            AppMethodBeat.o(165721);
-            return localObject;
-          }
-        }
-        localObject = (e)new y(this.xzv.xkW, (i)this.xzv, this.xzv.dsZ());
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 4: 
-        if (this.xzv.dsq())
-        {
-          localObject = (e)new u(this.xzv.xkW, (i)this.xzv, this.xzv.dsZ(), this.xzv.fEH);
-          AppMethodBeat.o(165721);
-          return localObject;
-        }
-        localObject = (e)new am(this.xzv.xkW, (i)this.xzv, this.xzv.dsZ(), this.xzv.fEH);
-        AppMethodBeat.o(165721);
-        return localObject;
-      case 2: 
-        if (this.xzv.dsq())
-        {
-          localObject = (e)new r((i)this.xzv, this.xzv.dsZ(), this.xzv.fEH);
-          AppMethodBeat.o(165721);
-          return localObject;
-        }
-        localObject = (e)new v((i)this.xzv, this.xzv.dsZ(), this.xzv.fEH);
-        AppMethodBeat.o(165721);
-        return localObject;
-      }
-      Object localObject = (i)this.xzv;
-      g localg = g.Xox;
-      localObject = (e)new z((i)localObject, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)g.b((AppCompatActivity)this.xzv.iXq).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY(), 0);
-      AppMethodBeat.o(165721);
-      return localObject;
-    }
+    AppMethodBeat.i(362462);
+    String str = "AnchorData(sdkUserId=" + this.mXL + ", audioMode=" + this.AWE + ')';
+    AppMethodBeat.o(362462);
+    return str;
   }
 }
 

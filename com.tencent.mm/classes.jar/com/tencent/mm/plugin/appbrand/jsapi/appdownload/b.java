@@ -7,13 +7,13 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.a.c;
-import com.tencent.mm.plugin.appbrand.a.c.a;
+import com.tencent.mm.plugin.appbrand.b.c;
+import com.tencent.mm.plugin.appbrand.b.c.a;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
-import com.tencent.mm.plugin.appbrand.ipc.e;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.ipc.f;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.y;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,50 +21,50 @@ import java.util.Set;
 import org.json.JSONObject;
 
 public class b
-  extends r
+  extends s
 {
   public static final int CTRL_INDEX = 662;
   public static final String NAME = "onDownloadAppStateChangeForNative";
-  public static HashMap<String, b> oyx;
-  private static Set<String> oyy;
-  private MMToClientEvent.c oyw;
+  public static HashMap<String, b> rCp;
+  private static Set<String> rCq;
+  private MMToClientEvent.c rCo;
   
   static
   {
     AppMethodBeat.i(45740);
-    oyx = new HashMap();
-    oyy = new HashSet();
+    rCp = new HashMap();
+    rCq = new HashSet();
     AppMethodBeat.o(45740);
   }
   
-  public b(final v paramv)
+  public b(final y paramy)
   {
     AppMethodBeat.i(45736);
-    this.oyw = new MMToClientEvent.c()
+    this.rCo = new MMToClientEvent.c()
     {
-      public final void cq(Object paramAnonymousObject)
+      public final void dL(Object paramAnonymousObject)
       {
         AppMethodBeat.i(45732);
         if ((paramAnonymousObject instanceof AppbrandDownloadState))
         {
           paramAnonymousObject = (AppbrandDownloadState)paramAnonymousObject;
-          if (paramv != null) {
-            b.this.i(paramv).agT(paramAnonymousObject.bPW().toString()).bPO();
+          if (paramy != null) {
+            b.this.h(paramy).ZQ(paramAnonymousObject.cqc().toString()).cpV();
           }
         }
         AppMethodBeat.o(45732);
       }
     };
-    MMToClientEvent.a(paramv.getAppId(), this.oyw);
-    paramv.getRuntime().ntR.a(new c.a()
+    MMToClientEvent.a(paramy.getAppId(), this.rCo);
+    paramy.getRuntime().qsB.a(new c.a()
     {
-      public final void a(String paramAnonymousString, com.tencent.mm.plugin.appbrand.a.b paramAnonymousb)
+      public final void onRunningStateChanged(String paramAnonymousString, com.tencent.mm.plugin.appbrand.b.b paramAnonymousb)
       {
         AppMethodBeat.i(45733);
-        if (paramAnonymousb == com.tencent.mm.plugin.appbrand.a.b.nKS)
+        if (paramAnonymousb == com.tencent.mm.plugin.appbrand.b.b.qKz)
         {
-          MMToClientEvent.b(paramv.getAppId(), b.a(b.this));
-          b.m(paramv);
+          MMToClientEvent.b(paramy.getAppId(), b.a(b.this));
+          b.m(paramy);
         }
         AppMethodBeat.o(45733);
       }
@@ -75,18 +75,18 @@ public class b
   public static void a(AppbrandDownloadState paramAppbrandDownloadState)
   {
     AppMethodBeat.i(45737);
-    Iterator localIterator = oyy.iterator();
+    Iterator localIterator = rCq.iterator();
     while (localIterator.hasNext()) {
-      e.b((String)localIterator.next(), paramAppbrandDownloadState);
+      f.b((String)localIterator.next(), paramAppbrandDownloadState);
     }
     AppMethodBeat.o(45737);
   }
   
-  public static void a(v paramv, b paramb)
+  public static void a(y paramy, b paramb)
   {
     AppMethodBeat.i(45738);
-    oyx.put(paramv.getAppId(), paramb);
-    j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramv.getAppId()), a.class, null);
+    rCp.put(paramy.getAppId(), paramb);
+    j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramy.getAppId()), a.class, null);
     AppMethodBeat.o(45738);
   }
   

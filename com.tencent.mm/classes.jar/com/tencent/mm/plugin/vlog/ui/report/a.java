@@ -2,44 +2,44 @@ package com.tencent.mm.plugin.vlog.ui.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import kotlin.a.j;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "", "()V", "MAX_INDEX", "", "seekTimeArray", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "updateCompositionTimeArray", "addSeekTime", "", "time", "addUpdateCompositionTime", "getSeekTimeStr", "", "getUpdateTimeStr", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "", "()V", "MAX_INDEX", "", "seekTimeArray", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "updateCompositionTimeArray", "addSeekTime", "", "time", "addUpdateCompositionTime", "getSeekTimeStr", "", "getUpdateTimeStr", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public final int NCg;
-  public ArrayList<Long> NCh;
-  public ArrayList<Long> NCi;
+  public final int UoM;
+  public ArrayList<Long> UoN;
+  public ArrayList<Long> UoO;
   
   public a()
   {
-    AppMethodBeat.i(225487);
-    this.NCg = 50;
-    this.NCh = new ArrayList();
-    this.NCi = new ArrayList();
-    AppMethodBeat.o(225487);
+    AppMethodBeat.i(281481);
+    this.UoM = 50;
+    this.UoN = new ArrayList();
+    this.UoO = new ArrayList();
+    AppMethodBeat.o(281481);
   }
   
-  public final String alO()
+  public final String hUm()
   {
-    AppMethodBeat.i(225483);
-    String str = j.a((Iterable)this.NCh, (CharSequence)"#", null, null, 0, null, null, 62);
-    AppMethodBeat.o(225483);
+    AppMethodBeat.i(281486);
+    String str = p.a((Iterable)this.UoN, (CharSequence)"#", null, null, 0, null, null, 62);
+    AppMethodBeat.o(281486);
     return str;
   }
   
-  public final String gwu()
+  public final String hUn()
   {
-    AppMethodBeat.i(225486);
-    String str = j.a((Iterable)this.NCi, (CharSequence)"#", null, null, 0, null, null, 62);
-    AppMethodBeat.o(225486);
+    AppMethodBeat.i(281494);
+    String str = p.a((Iterable)this.UoO, (CharSequence)"#", null, null, 0, null, null, 62);
+    AppMethodBeat.o(281494);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.report.a
  * JD-Core Version:    0.7.0.1
  */

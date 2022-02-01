@@ -2,14 +2,13 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ll;
+import com.tencent.mm.autogen.a.mr;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import java.io.File;
 
@@ -75,14 +74,14 @@ public final class e
     for (paramArrayOfString = "/data/local/tmp/test.apk";; paramArrayOfString = paramArrayOfString[2])
     {
       Log.d("MicroMsg.CommandTestHotPatches", "hotpatch test from %s", new Object[] { paramArrayOfString });
-      if (!com.tencent.tinker.lib.e.a.mi(paramContext).ZML) {
-        com.tencent.tinker.lib.e.a.mi(paramContext).eIk();
+      if (!com.tencent.tinker.lib.e.a.oy(paramContext).ahRN) {
+        com.tencent.tinker.lib.e.a.oy(paramContext).fQd();
       }
-      bh.beI();
-      c.aHp().set(ar.a.Vrx, Long.valueOf(System.currentTimeMillis() - 300000L));
-      paramContext = new ll();
-      paramContext.fJg.fJl = paramArrayOfString;
-      EventCenter.instance.publish(paramContext);
+      bh.bCz();
+      c.ban().set(at.a.acTb, Long.valueOf(System.currentTimeMillis() - 300000L));
+      paramContext = new mr();
+      paramContext.hON.hOS = paramArrayOfString;
+      paramContext.publish();
       AppMethodBeat.o(20177);
       return true;
     }
@@ -90,9 +89,9 @@ public final class e
     AppMethodBeat.o(20177);
     return true;
     Log.d("MicroMsg.CommandTestHotPatches", "clear hotpatch");
-    paramContext = new ll();
-    paramContext.fJg.fvK = 1;
-    EventCenter.instance.publish(paramContext);
+    paramContext = new mr();
+    paramContext.hON.hAf = 1;
+    paramContext.publish();
     AppMethodBeat.o(20177);
     return true;
     if (paramArrayOfString.length < 3)
@@ -116,7 +115,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.e
  * JD-Core Version:    0.7.0.1
  */

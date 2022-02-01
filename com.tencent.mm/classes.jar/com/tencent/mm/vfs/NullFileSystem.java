@@ -3,34 +3,28 @@ package com.tencent.mm.vfs;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
 
 public final class NullFileSystem
-  extends j
+  extends m
   implements FileSystem
 {
   public static final a CREATOR;
   
   static
   {
-    AppMethodBeat.i(236412);
+    AppMethodBeat.i(238246);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(236412);
+    AppMethodBeat.o(238246);
   }
   
-  public static FileSystem.b ifq()
+  public static FileSystem.b jKG()
   {
-    return (FileSystem.b)a.YDk.YCm;
+    return (FileSystem.b)a.agwt.agzC;
   }
   
-  static g ifr()
+  static r<FileSystem, FileSystem.b> jKt()
   {
-    return a.YDk;
-  }
-  
-  public final FileSystem.b cp(Map<String, String> paramMap)
-  {
-    return this;
+    return a.agwt;
   }
   
   public final int describeContents()
@@ -38,7 +32,7 @@ public final class NullFileSystem
     return 0;
   }
   
-  public final FileSystem ieX()
+  public final FileSystem jKa()
   {
     return this;
   }
@@ -53,19 +47,19 @@ public final class NullFileSystem
   static class a
     implements Parcelable.Creator<NullFileSystem>
   {
-    static final g YDk;
+    static final r<FileSystem, FileSystem.b> agwt;
     
     static
     {
-      AppMethodBeat.i(236407);
-      YDk = new g(new NullFileSystem((byte)0));
-      AppMethodBeat.o(236407);
+      AppMethodBeat.i(238466);
+      agwt = new r(new NullFileSystem((byte)0));
+      AppMethodBeat.o(238466);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.NullFileSystem
  * JD-Core Version:    0.7.0.1
  */

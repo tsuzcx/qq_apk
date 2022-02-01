@@ -10,16 +10,16 @@ import org.json.JSONObject;
 public final class ai
   extends m
 {
-  public String OIi;
-  public String OIv;
+  public String VxV;
+  public String Vyh;
   
   public ai(w paramw, String paramString)
   {
     AppMethodBeat.i(69960);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("verify_code", paramw.OTh);
+    localHashMap.put("verify_code", paramw.VJo);
     localHashMap.put("token", paramw.token);
-    localHashMap.put("passwd", paramw.mVf);
+    localHashMap.put("passwd", paramw.pRM);
     localHashMap.put("relation_key", paramString);
     setRequestData(localHashMap);
     AppMethodBeat.o(69960);
@@ -45,15 +45,15 @@ public final class ai
     AppMethodBeat.i(69961);
     if ((paramJSONObject != null) && (paramInt == 0))
     {
-      this.OIi = paramJSONObject.optString("token_type");
-      this.OIv = paramJSONObject.optString("usertoken");
+      this.VxV = paramJSONObject.optString("token_type");
+      this.Vyh = paramJSONObject.optString("usertoken");
     }
     AppMethodBeat.o(69961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.ai
  * JD-Core Version:    0.7.0.1
  */

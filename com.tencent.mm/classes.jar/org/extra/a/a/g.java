@@ -9,25 +9,25 @@ public final class g
 {
   public g(f paramf, c.b paramb, long paramLong)
   {
-    AppMethodBeat.i(194748);
+    AppMethodBeat.i(187253);
     ByteBuffer localByteBuffer = ByteBuffer.allocate(4);
-    if (paramb.abLe) {}
+    if (paramb.ajXX) {}
     for (ByteOrder localByteOrder = ByteOrder.BIG_ENDIAN;; localByteOrder = ByteOrder.LITTLE_ENDIAN)
     {
       localByteBuffer.order(localByteOrder);
-      paramLong = paramb.abLf + paramb.abLh * paramLong;
-      this.fwf = paramf.e(localByteBuffer, paramLong);
-      this.offset = paramf.e(localByteBuffer, 4L + paramLong);
-      this.abLm = paramf.e(localByteBuffer, 8L + paramLong);
-      this.abLn = paramf.e(localByteBuffer, paramLong + 20L);
-      AppMethodBeat.o(194748);
+      paramLong = paramb.ajXY + paramb.ajYa * paramLong;
+      this.beV = paramf.f(localByteBuffer, paramLong);
+      this.offset = paramf.f(localByteBuffer, 4L + paramLong);
+      this.ajYf = paramf.f(localByteBuffer, 8L + paramLong);
+      this.ajYg = paramf.f(localByteBuffer, paramLong + 20L);
+      AppMethodBeat.o(187253);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     org.extra.a.a.g
  * JD-Core Version:    0.7.0.1
  */

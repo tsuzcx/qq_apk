@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
-        <TextView android:gravity="center_vertical" android:id="@id/j2o" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/acx" />
-        <SeekBar android:id="@id/j2n" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
-        <TextView android:gravity="center_vertical" android:id="@id/j2q" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/ad2" />
-        <SeekBar android:id="@id/j2p" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:paddingStart="16.0dip" android:paddingEnd="16.0dip">
-        <TextView android:gravity="center_vertical" android:id="@id/j2s" android:layout_width="80.0dip" android:layout_height="fill_parent" android:text="@string/hv7" />
-        <SeekBar android:id="@id/j2r" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+<LinearLayout android:orientation="vertical" android:id="@id/at0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/asx" android:background="@color/aav" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/afh" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ave" android:background="@drawable/km" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/at3" android:background="@color/UN_BW_0_Alpha_0_1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
+        <LinearLayout android:id="@id/asv" android:focusable="false" android:layout_height="@dimen/ik" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" style="@style/g2">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/asz" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" android:importantForAccessibility="no" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/a7b" android:id="@id/at2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/m4" android:id="@id/at1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
+            <CheckBox android:id="@id/asy" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/lq" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/asu" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:src="@raw/icons_outlined_arrow" android:importantForAccessibility="no" app:iconColor="@color/BW_0_Alpha_0_3" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

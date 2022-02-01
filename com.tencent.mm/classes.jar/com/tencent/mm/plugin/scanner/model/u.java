@@ -1,177 +1,95 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.q;
-import com.tencent.mm.protocal.protobuf.ctz;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.dla;
+import com.tencent.mm.protocal.protobuf.dlb;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanConfigManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "SCAN_CONFIG_SYNC_THREAD_TAG", "", "TAG", "callbackMap", "Ljava/util/HashMap;", "", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/model/ScanConfigManager$ScanConfigSyncCallback;", "Lkotlin/collections/ArrayList;", "Lkotlin/collections/HashMap;", "netSceneMap", "Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync;", "cancel", "", "type", "onFailed", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "removeConfigType", "configType", "runTask", "task", "Ljava/lang/Runnable;", "scanGoodsShowPreviewImage", "", "syncScanConfig", "callback", "ScanConfigSyncCallback", "plugin-scan_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "type", "", "(I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "configType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "getScanConfigType", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class u
-  implements com.tencent.mm.an.i
+  extends p
+  implements m
 {
-  private static HashMap<Integer, m> ILj;
-  public static final u ILk;
-  private static HashMap<Integer, ArrayList<a>> jPb;
+  public static final a ORO;
+  int ORP;
+  private h callback;
+  final c rr;
   
   static
   {
-    AppMethodBeat.i(223527);
-    ILk = new u();
-    jPb = new HashMap();
-    ILj = new HashMap();
-    AppMethodBeat.o(223527);
+    AppMethodBeat.i(52169);
+    ORO = new a((byte)0);
+    AppMethodBeat.o(52169);
   }
   
-  public static final void a(int paramInt, final a parama)
+  public u(int paramInt)
   {
-    AppMethodBeat.i(223514);
-    u((Runnable)new c(paramInt, parama));
-    AppMethodBeat.o(223514);
-  }
-  
-  private static void adq(int paramInt)
-  {
-    AppMethodBeat.i(223522);
-    Log.v("MicroMsg.ScanConfigSyncManager", "alvinluo removeConfigType: %d", new Object[] { Integer.valueOf(paramInt) });
-    jPb.remove(Integer.valueOf(paramInt));
-    ILj.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(223522);
-  }
-  
-  public static final boolean fCO()
-  {
-    return true;
-  }
-  
-  private static void u(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(223525);
-    com.tencent.e.h.ZvG.d(paramRunnable, "ScanConfigSync");
-    AppMethodBeat.o(223525);
-  }
-  
-  public final void onSceneEnd(final int paramInt1, final int paramInt2, final String paramString, q paramq)
-  {
-    AppMethodBeat.i(223518);
-    Log.i("MicroMsg.ScanConfigSyncManager", "alvinluo onSceneEnd errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    u((Runnable)new b(paramq, paramInt1, paramInt2, paramString));
-    AppMethodBeat.o(223518);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/model/ScanConfigManager$ScanConfigSyncCallback;", "", "onFailed", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "plugin-scan_release"})
-  public static abstract interface a
-  {
-    public abstract void a(ctz paramctz);
-    
-    public abstract void p(int paramInt1, int paramInt2, String paramString);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(q paramq, int paramInt1, int paramInt2, String paramString) {}
-    
-    public final void run()
+    AppMethodBeat.i(52168);
+    this.ORP = paramInt;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = ((a)new dla());
+    ((c.a)localObject).otF = ((a)new dlb());
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/mmbizscan_confsync";
+    ((c.a)localObject).funcId = 1812;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    localObject = ((c.a)localObject).bEF();
+    kotlin.g.b.s.s(localObject, "builder.buildInstance()");
+    this.rr = ((c)localObject);
+    localObject = c.b.b(this.rr.otB);
+    if (localObject == null)
     {
-      AppMethodBeat.i(217673);
-      Object localObject = this.khQ;
-      if (localObject != null)
-      {
-        if (((q)localObject).getType() != 1812) {
-          break label188;
-        }
-        if (this.khQ.isCanceled())
-        {
-          Log.w("MicroMsg.ScanConfigSyncManager", "alvinluo onSceneEnd updateScanConfig is cancelled and ignore");
-          AppMethodBeat.o(217673);
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(217673);
-        return;
-      }
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        localObject = this.khQ;
-        if (localObject == null)
-        {
-          localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.scanner.model.NetSceneScanConfigSync");
-          AppMethodBeat.o(217673);
-          throw ((Throwable)localObject);
-        }
-        localObject = (m)localObject;
-        if (((m)localObject).rr.bhY() != null)
-        {
-          localObject = ((m)localObject).rr.bhY();
-          if (localObject == null)
-          {
-            localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MMBizScanConfSyncResp");
-            AppMethodBeat.o(217673);
-            throw ((Throwable)localObject);
-          }
-        }
-        for (localObject = (ctz)localObject;; localObject = null)
-        {
-          u localu = u.ILk;
-          u.a(this.khQ, (ctz)localObject);
-          AppMethodBeat.o(217673);
-          return;
-        }
-      }
-      localObject = u.ILk;
-      u.i(paramInt1, paramInt2, paramString, this.khQ);
-      label188:
-      AppMethodBeat.o(217673);
+      localObject = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MMBizScanConfSyncReq");
+      AppMethodBeat.o(52168);
+      throw ((Throwable)localObject);
     }
+    ((dla)localObject).type = paramInt;
+    Log.i("MicroMsg.NetSceneScanConfigSync", "alvinluo scanConfigSync type: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(52168);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
+  public final int doScene(g paramg, h paramh)
   {
-    c(int paramInt, u.a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(218431);
-      Object localObject1 = u.ILk;
-      Object localObject2 = (ArrayList)u.fCP().get(Integer.valueOf(this.cPi));
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = new ArrayList();
-        localObject2 = u.ILk;
-        ((Map)u.fCP()).put(Integer.valueOf(this.cPi), localObject1);
-      }
-      if (parama != null) {
-        ((ArrayList)localObject1).add(parama);
-      }
-      localObject1 = u.ILk;
-      if (u.fCQ().containsKey(Integer.valueOf(this.cPi)))
-      {
-        Log.w("MicroMsg.ScanConfigSyncManager", "alvinluo syncScanConfig netScene is running and ignore");
-        AppMethodBeat.o(218431);
-        return;
-      }
-      com.tencent.mm.kernel.h.aGY().a(1812, (com.tencent.mm.an.i)u.ILk);
-      localObject1 = new m(this.cPi);
-      com.tencent.mm.kernel.h.aGY().b((q)localObject1);
-      localObject2 = u.ILk;
-      ((Map)u.fCQ()).put(Integer.valueOf(this.cPi), localObject1);
-      AppMethodBeat.o(218431);
-    }
+    AppMethodBeat.i(52167);
+    kotlin.g.b.s.u(paramg, "dispatcher");
+    kotlin.g.b.s.u(paramh, "callback");
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.rr, (m)this);
+    AppMethodBeat.o(52167);
+    return i;
   }
+  
+  public final int getType()
+  {
+    return 1812;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(52166);
+    Log.i("MicroMsg.NetSceneScanConfigSync", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = this.callback;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
+    }
+    AppMethodBeat.o(52166);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync$Companion;", "", "()V", "CONFIG_SYNC_TYPE_FOCUS_ENGINE", "", "CONFIG_SYNC_TYPE_PHASH", "CONFIG_SYNC_TYPE_SCAN_CODE_PRODUCT_MERGE", "CONFIG_SYNC_TYPE_SCAN_GOODS_GUIDE", "TAG", "", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.u
  * JD-Core Version:    0.7.0.1
  */

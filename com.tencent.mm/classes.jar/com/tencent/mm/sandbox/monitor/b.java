@@ -15,61 +15,61 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 
 public final class b
 {
-  private static a URC;
-  public static int URD;
-  private static MMHandler URF;
-  private static Runnable URG;
-  private static boolean URH;
-  public static long kje;
-  private long URE;
-  private long URI;
+  private static a acmP;
+  public static int acmQ;
+  private static MMHandler acmS;
+  private static Runnable acmT;
+  private static boolean acmU;
+  public static long mJI;
+  private long acmR;
+  private long acmV;
   
   static
   {
-    AppMethodBeat.i(270214);
-    URC = null;
-    URD = 0;
-    kje = 0L;
-    URF = new MMHandler();
-    URG = new Runnable()
+    AppMethodBeat.i(248397);
+    acmP = null;
+    acmQ = 0;
+    mJI = 0L;
+    acmS = new MMHandler();
+    acmT = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(32594);
         Log.d("MicroMsg.ExceptionMonitor", "stopSelf");
-        if (b.hrW() != null) {
-          b.hrW().stopSelf();
+        if (b.iSc() != null) {
+          b.iSc().stopSelf();
         }
         AppMethodBeat.o(32594);
       }
     };
-    URH = false;
-    AppMethodBeat.o(270214);
+    acmU = false;
+    AppMethodBeat.o(248397);
   }
   
   public b()
   {
     AppMethodBeat.i(32596);
-    this.URE = 300000L;
+    this.acmR = 300000L;
     AppMethodBeat.o(32596);
   }
   
-  public static boolean hrV()
+  public static boolean iSb()
   {
-    AppMethodBeat.i(270213);
+    AppMethodBeat.i(248389);
     Log.i("MicroMsg.ExceptionMonitor", "isCrashWorking process:" + MMApplicationContext.getProcessName());
     if (MMApplicationContext.isSandBoxProcess())
     {
-      Log.i("MicroMsg.ExceptionMonitor", "isCrashWorking :" + URH);
-      boolean bool = URH;
-      AppMethodBeat.o(270213);
+      Log.i("MicroMsg.ExceptionMonitor", "isCrashWorking :" + acmU);
+      boolean bool = acmU;
+      AppMethodBeat.o(248389);
       return bool;
     }
-    AppMethodBeat.o(270213);
+    AppMethodBeat.o(248389);
     return false;
   }
   
-  public static void kw(Context paramContext)
+  public static void my(Context paramContext)
   {
     AppMethodBeat.i(32600);
     Intent localIntent = new Intent(paramContext, CrashUploadAlarmReceiver.class);
@@ -86,11 +86,11 @@ public final class b
   public final void a(a parama)
   {
     AppMethodBeat.i(32597);
-    URC = parama;
-    c.u(hashCode(), this);
-    URF.removeCallbacks(URG);
-    URF.postDelayed(URG, this.URE);
-    URH = true;
+    acmP = parama;
+    c.O(hashCode(), this);
+    acmS.removeCallbacks(acmT);
+    acmS.postDelayed(acmT, this.acmR);
+    acmU = true;
     Log.i("MicroMsg.ExceptionMonitor", "onCreate");
     AppMethodBeat.o(32597);
   }
@@ -98,15 +98,15 @@ public final class b
   public final void onDestroy()
   {
     AppMethodBeat.i(32598);
-    c.v(hashCode(), this);
-    URF.removeCallbacks(URG);
-    URH = false;
-    URC = null;
+    c.P(hashCode(), this);
+    acmS.removeCallbacks(acmT);
+    acmU = false;
+    acmP = null;
     Log.i("MicroMsg.ExceptionMonitor", "onDestroy");
     AppMethodBeat.o(32598);
   }
   
-  public final void q(Intent paramIntent)
+  public final void r(Intent paramIntent)
   {
     AppMethodBeat.i(32599);
     Log.i("MicroMsg.ExceptionMonitor", "handleCommand()");
@@ -115,9 +115,9 @@ public final class b
       AppMethodBeat.o(32599);
       return;
     }
-    URF.removeCallbacks(URG);
-    URF.postDelayed(URG, this.URE);
-    URH = true;
+    acmS.removeCallbacks(acmT);
+    acmS.postDelayed(acmT, this.acmR);
+    acmU = true;
     Log.i("MicroMsg.ExceptionMonitor", "handleCommand");
     String str3 = paramIntent.getAction();
     Log.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand action:".concat(String.valueOf(str3)));
@@ -139,11 +139,11 @@ public final class b
         str2 = paramIntent.getStringExtra("exceptionProcess");
         if (Util.isEqual(str2, "mm"))
         {
-          h.IzE.idkeyStat(1185L, 11L, 1L, true);
+          h.OAn.idkeyStat(1185L, 11L, 1L, true);
           int i = paramIntent.getIntExtra("exceptionPid", 0);
           str1.equals("exception");
-          URD = i;
-          kje = paramIntent.getLongExtra("exceptionTime", SystemClock.elapsedRealtime());
+          acmQ = i;
+          mJI = paramIntent.getLongExtra("exceptionTime", SystemClock.elapsedRealtime());
           str4 = paramIntent.getStringExtra("exceptionMsg");
           str5 = paramIntent.getStringExtra("userName");
           str6 = paramIntent.getStringExtra("exceptionPreventPath");
@@ -164,23 +164,23 @@ public final class b
         return;
       }
       if (Util.isEqual(str2, "push")) {
-        h.IzE.idkeyStat(1185L, 12L, 1L, true);
+        h.OAn.idkeyStat(1185L, 12L, 1L, true);
       } else if (Util.isEqual(str2, "other")) {
-        h.IzE.idkeyStat(1185L, 13L, 1L, true);
+        h.OAn.idkeyStat(1185L, 13L, 1L, true);
       }
     }
     if (a.a(str5, str1, new ErrLog.Error(str5, str1, Util.nowSecond(), str4, bool), str6, false) == 0) {
-      kw(MMApplicationContext.getContext());
+      my(MMApplicationContext.getContext());
     }
-    if (System.currentTimeMillis() - this.URI > 600000L)
+    if (System.currentTimeMillis() - this.acmV > 600000L)
     {
-      this.URI = System.currentTimeMillis();
+      this.acmV = System.currentTimeMillis();
       ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(32595);
-          com.tencent.mm.modelrecovery.b.bnW();
+          com.tencent.mm.modelrecovery.b.bLJ();
           AppMethodBeat.o(32595);
         }
       }, "RecoveryWriteLogThread");
@@ -195,7 +195,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.b
  * JD-Core Version:    0.7.0.1
  */

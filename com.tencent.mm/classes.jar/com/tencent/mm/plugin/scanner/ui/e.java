@@ -7,12 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.u;
-import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.platformtools.r;
+import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.scanner.l.c;
 import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.plugin.scanner.l.g;
-import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.plugin.scanner.util.s;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -20,10 +20,10 @@ import com.tencent.mm.ui.base.preference.f;
 
 public final class e
   extends Preference
-  implements u.a
+  implements r.a
 {
-  private ImageView IOE;
-  String IOF;
+  private ImageView OXg;
+  String OXh;
   private Context mContext;
   private View mView;
   f screen;
@@ -33,14 +33,14 @@ public final class e
     super(paramContext);
     AppMethodBeat.i(51803);
     this.mView = null;
-    this.IOE = null;
-    setLayoutResource(l.g.IEr);
-    u.a(this);
+    this.OXg = null;
+    setLayoutResource(l.g.OKu);
+    r.a(this);
     this.mContext = paramContext;
     AppMethodBeat.o(51803);
   }
   
-  public final View c(View paramView, ViewGroup paramViewGroup)
+  public final View b(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51804);
     if (this.mView == null) {
@@ -55,7 +55,7 @@ public final class e
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51806);
-    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.IOF)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.OXh)) && (paramBitmap != null) && (!paramBitmap.isRecycled())) {
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
@@ -77,24 +77,24 @@ public final class e
   {
     AppMethodBeat.i(51805);
     super.onBindView(paramView);
-    this.IOE = ((ImageView)paramView.findViewById(l.f.media_thumb));
-    if (!Util.isNullOrNil(this.IOF))
+    this.OXg = ((ImageView)paramView.findViewById(l.f.media_thumb));
+    if (!Util.isNullOrNil(this.OXh))
     {
-      Bitmap localBitmap = u.a(new q(this.IOF));
+      Bitmap localBitmap = r.a(new s(this.OXh));
       if ((localBitmap == null) || (localBitmap.isRecycled())) {
         break label96;
       }
-      this.IOE.setImageBitmap(localBitmap);
-      this.IOE.setBackgroundColor(0);
+      this.OXg.setImageBitmap(localBitmap);
+      this.OXg.setBackgroundColor(0);
     }
     for (;;)
     {
-      ((ImageView)paramView.findViewById(l.f.ICL)).setVisibility(0);
+      ((ImageView)paramView.findViewById(l.f.OIM)).setVisibility(0);
       AppMethodBeat.o(51805);
       return;
       label96:
-      this.IOE.setBackgroundColor(this.mContext.getResources().getColor(l.c.IBU));
-      this.IOE.setImageBitmap(null);
+      this.OXg.setBackgroundColor(this.mContext.getResources().getColor(l.c.OHW));
+      this.OXg.setImageBitmap(null);
     }
   }
 }

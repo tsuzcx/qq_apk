@@ -1,94 +1,95 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
+import com.tencent.mm.bv.a;
 import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.plugin.setting.b.k;
 import com.tencent.mm.plugin.setting.c;
+import com.tencent.mm.plugin.sns.ui.widget.i;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
-import com.tencent.mm.ui.w.b;
+import com.tencent.mm.ui.base.preference.f;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.ui.widget.a.f.c;
-import org.xwalk.core.XWalkEnvironment;
+import com.tencent.mm.ui.widget.a.g.c;
+import com.tencent.mm.ui.y.b;
+import com.tencent.xweb.ao;
 
 public class SettingDarkMode
   extends MMPreference
 {
-  private int CKR = 0;
-  private SelectPreference Jfp;
-  private SelectPreference Jfq;
-  private int Jfr = 0;
-  private boolean Jfs;
-  private boolean Jft;
-  private boolean cpt;
-  private boolean jRR;
-  private int oEk = 0;
-  private com.tencent.mm.ui.base.preference.f screen;
-  private boolean wNV = false;
+  private boolean Akx = false;
+  private int IEZ = 0;
+  private SelectPreference PpR;
+  private SelectPreference PpS;
+  private int PpT = 0;
+  private boolean PpU;
+  private boolean PpV;
+  private boolean ehd;
+  private boolean mrb;
+  private int rHu = 0;
+  private f screen;
   
-  private void fFU()
+  private void CF(boolean paramBoolean)
   {
-    AppMethodBeat.i(263993);
+    AppMethodBeat.i(298696);
+    if (!aw.aXj()) {
+      this.screen.eh("manual_title", true);
+    }
+    for (;;)
+    {
+      this.screen.eh("dark_mode", paramBoolean);
+      this.screen.eh("normal_mode", paramBoolean);
+      AppMethodBeat.o(298696);
+      return;
+      this.screen.eh("manual_title", paramBoolean);
+    }
+  }
+  
+  private void gVi()
+  {
+    AppMethodBeat.i(298700);
     com.tencent.mm.plugin.report.service.h localh;
     int j;
     int k;
     int m;
-    if (this.wNV)
+    if (this.Akx)
     {
-      if (ar.aEk())
+      if (aw.aXo())
       {
         MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system_need_report", true);
-        AppMethodBeat.o(263993);
+        AppMethodBeat.o(298700);
         return;
       }
-      if (this.Jft != this.jRR) {
-        this.oEk = 4;
+      if (this.PpV != this.mrb) {
+        this.rHu = 4;
       }
-      localh = com.tencent.mm.plugin.report.service.h.IzE;
-      j = this.oEk;
-      k = this.Jfr;
-      m = this.CKR;
-      if (!ar.aEf()) {
+      localh = com.tencent.mm.plugin.report.service.h.OAn;
+      j = this.rHu;
+      k = this.PpT;
+      m = this.IEZ;
+      if (!aw.aXj()) {
         break label186;
       }
     }
     label186:
     for (int i = 1;; i = 0)
     {
-      localh.a(18893, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(2), Integer.valueOf(m), Integer.valueOf(i) });
-      Log.i("MicroMsg.mmui.MMPreference", "dark mode kvReport logID:%s, action:%s, dark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(this.oEk), Integer.valueOf(this.Jfr), Integer.valueOf(this.CKR) });
-      AppMethodBeat.o(263993);
+      localh.b(18893, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(2), Integer.valueOf(m), Integer.valueOf(i) });
+      Log.i("MicroMsg.mmui.MMPreference", "dark mode kvReport logID:%s, action:%s, dark:%s, mode:%s", new Object[] { Integer.valueOf(18893), Integer.valueOf(this.rHu), Integer.valueOf(this.PpT), Integer.valueOf(this.IEZ) });
+      AppMethodBeat.o(298700);
       return;
-    }
-  }
-  
-  private void xN(boolean paramBoolean)
-  {
-    AppMethodBeat.i(263988);
-    if (!ar.aEf()) {
-      this.screen.dz("manual_title", true);
-    }
-    for (;;)
-    {
-      this.screen.dz("dark_mode", paramBoolean);
-      this.screen.dz("normal_mode", paramBoolean);
-      AppMethodBeat.o(263988);
-      return;
-      this.screen.dz("manual_title", paramBoolean);
     }
   }
   
@@ -99,30 +100,30 @@ public class SettingDarkMode
   
   public void initView()
   {
-    AppMethodBeat.i(263986);
+    AppMethodBeat.i(298756);
     setMMTitle(getString(b.i.settings_dark_mode));
     this.screen = getPreferenceScreen();
-    if (!ar.aEf())
+    if (!aw.aXj())
     {
       MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system", false);
-      ar.hIV();
+      aw.jlk();
     }
-    this.cpt = ar.isDarkMode();
-    this.Jfs = this.cpt;
+    this.ehd = aw.isDarkMode();
+    this.PpU = this.ehd;
     MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_follow_system_need_report", false);
-    this.jRR = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("dark_mode_follow_system", false);
-    this.Jft = this.jRR;
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.byG("follow_system");
-    this.Jfp = ((SelectPreference)this.screen.byG("dark_mode"));
-    this.Jfq = ((SelectPreference)this.screen.byG("normal_mode"));
-    if (!ar.aEf())
+    this.mrb = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getBoolean("dark_mode_follow_system", false);
+    this.PpV = this.mrb;
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.bAi("follow_system");
+    this.PpR = ((SelectPreference)this.screen.bAi("dark_mode"));
+    this.PpS = ((SelectPreference)this.screen.bAi("normal_mode"));
+    if (!aw.aXj())
     {
-      this.screen.dz("follow_system", true);
-      this.screen.dz("manual_title", true);
-      if (!this.jRR) {
+      this.screen.eh("follow_system", true);
+      this.screen.eh("manual_title", true);
+      if (!this.mrb) {
         break label272;
       }
-      xN(true);
+      CF(true);
     }
     for (;;)
     {
@@ -131,9 +132,9 @@ public class SettingDarkMode
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(263611);
+          AppMethodBeat.i(299298);
           SettingDarkMode.this.finish();
-          AppMethodBeat.o(263611);
+          AppMethodBeat.o(299298);
           return true;
         }
       });
@@ -141,130 +142,130 @@ public class SettingDarkMode
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(264106);
+          AppMethodBeat.i(299294);
           SettingDarkMode.a(SettingDarkMode.this);
-          AppMethodBeat.o(264106);
+          AppMethodBeat.o(299294);
           return true;
         }
-      }, null, w.b.Wao);
-      AppMethodBeat.o(263986);
+      }, null, y.b.adEJ);
+      AppMethodBeat.o(298756);
       return;
       if (localCheckBoxPreference == null) {
         break;
       }
-      localCheckBoxPreference.setChecked(this.jRR);
-      localCheckBoxPreference.BT(this.jRR);
-      localCheckBoxPreference.WsF = false;
+      localCheckBoxPreference.setChecked(this.mrb);
+      localCheckBoxPreference.Hy(this.mrb);
+      localCheckBoxPreference.adZV = false;
       break;
       label272:
-      xN(false);
-      if (this.cpt)
+      CF(false);
+      if (this.ehd)
       {
-        this.Jfp.isSelected = true;
-        this.Jfq.isSelected = false;
+        this.PpR.isSelected = true;
+        this.PpS.isSelected = false;
       }
       else
       {
-        this.Jfq.isSelected = true;
-        this.Jfp.isSelected = false;
+        this.PpS.isSelected = true;
+        this.PpR.isSelected = false;
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(263982);
+    AppMethodBeat.i(298746);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(263982);
+    AppMethodBeat.o(298746);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(263992);
+    AppMethodBeat.i(298766);
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 0))
     {
       finish();
-      AppMethodBeat.o(263992);
+      AppMethodBeat.o(298766);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(263992);
+    AppMethodBeat.o(298766);
     return bool;
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     int i = 1;
-    AppMethodBeat.i(263991);
+    AppMethodBeat.i(298762);
     String str = paramPreference.mKey;
-    this.wNV = true;
+    this.Akx = true;
     if (str.equals("follow_system"))
     {
       if (((CheckBoxPreference)paramPreference).isChecked())
       {
-        this.oEk = 4;
-        if (ar.f(getResources()))
+        this.rHu = 4;
+        if (aw.f(getResources()))
         {
           i = 1;
-          this.Jfr = i;
-          this.CKR = 1;
-          this.Jft = true;
-          xN(true);
+          this.PpT = i;
+          this.IEZ = 1;
+          this.PpV = true;
+          CF(true);
         }
       }
       for (;;)
       {
-        this.Jfs = this.cpt;
+        this.PpU = this.ehd;
         paramf.notifyDataSetChanged();
-        AppMethodBeat.o(263991);
+        AppMethodBeat.o(298762);
         return false;
         i = 0;
         break;
-        this.oEk = 4;
-        if (this.cpt) {}
+        this.rHu = 4;
+        if (this.ehd) {}
         for (i = 1;; i = 0)
         {
-          this.Jfr = i;
-          this.CKR = 2;
-          this.Jft = false;
-          xN(false);
-          if (!this.cpt) {
+          this.PpT = i;
+          this.IEZ = 2;
+          this.PpV = false;
+          CF(false);
+          if (!this.ehd) {
             break label168;
           }
-          this.Jfp.isSelected = true;
-          this.Jfq.isSelected = false;
+          this.PpR.isSelected = true;
+          this.PpS.isSelected = false;
           break;
         }
         label168:
-        this.Jfq.isSelected = true;
-        this.Jfp.isSelected = false;
+        this.PpS.isSelected = true;
+        this.PpR.isSelected = false;
       }
     }
-    boolean bool = this.cpt;
+    boolean bool = this.ehd;
     if (str.equals("dark_mode"))
     {
-      this.Jfp.isSelected = true;
-      this.Jfq.isSelected = false;
+      this.PpR.isSelected = true;
+      this.PpS.isSelected = false;
       paramf.notifyDataSetChanged();
       bool = true;
       label228:
-      this.oEk = 2;
+      this.rHu = 2;
       if (!bool) {
         break label295;
       }
     }
     for (;;)
     {
-      this.Jfr = i;
-      this.CKR = 2;
-      this.Jfs = bool;
+      this.PpT = i;
+      this.IEZ = 2;
+      this.PpU = bool;
       break;
       if (!str.equals("normal_mode")) {
         break label228;
       }
-      this.Jfp.isSelected = false;
-      this.Jfq.isSelected = true;
+      this.PpR.isSelected = false;
+      this.PpS.isSelected = true;
       paramf.notifyDataSetChanged();
       bool = false;
       break label228;
@@ -281,7 +282,7 @@ public class SettingDarkMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingDarkMode
  * JD-Core Version:    0.7.0.1
  */

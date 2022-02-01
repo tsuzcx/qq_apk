@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.report;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.compatible.util.r;
 
 public final class n
 {
-  private static boolean CJ(int paramInt)
+  private static boolean Da(int paramInt)
   {
     switch (paramInt)
     {
@@ -16,10 +16,10 @@ public final class n
     return true;
   }
   
-  public static int m(int paramInt, Bundle paramBundle)
+  public static int o(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(48066);
-    if ((paramBundle == null) || (!CJ(paramInt)))
+    if ((paramBundle == null) || (!Da(paramInt)))
     {
       AppMethodBeat.o(48066);
       return 0;
@@ -29,10 +29,10 @@ public final class n
     return paramInt;
   }
   
-  public static String n(int paramInt, Bundle paramBundle)
+  public static String p(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(48067);
-    if ((paramBundle == null) || (!CJ(paramInt)))
+    if ((paramBundle == null) || (!Da(paramInt)))
     {
       AppMethodBeat.o(48067);
       return "";
@@ -60,7 +60,7 @@ public final class n
       AppMethodBeat.o(48067);
       return paramBundle;
     case 4: 
-      paramBundle = q.aT(paramBundle.getString("stat_url"));
+      paramBundle = r.cg(paramBundle.getString("stat_url"));
       AppMethodBeat.o(48067);
       return paramBundle;
     case 6: 
@@ -71,7 +71,7 @@ public final class n
       if (str == null) {
         paramBundle = "";
       }
-      paramBundle = q.aT(paramBundle);
+      paramBundle = r.cg(paramBundle);
       AppMethodBeat.o(48067);
       return paramBundle;
     case 7: 
@@ -92,7 +92,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.n
  * JD-Core Version:    0.7.0.1
  */

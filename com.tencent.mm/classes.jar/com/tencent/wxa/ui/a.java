@@ -5,394 +5,394 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.view.View;
-import androidx.lifecycle.h;
+import androidx.lifecycle.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.wxa.b.b;
+import io.flutter.embedding.android.FlutterEngineConfigurator;
+import io.flutter.embedding.android.FlutterEngineProvider;
 import io.flutter.embedding.android.FlutterView;
-import io.flutter.embedding.android.FlutterView.b;
-import io.flutter.embedding.android.FlutterView.c;
-import io.flutter.embedding.android.f;
-import io.flutter.embedding.android.j;
-import io.flutter.embedding.android.k;
-import io.flutter.embedding.engine.b.l;
+import io.flutter.embedding.android.FlutterView.RenderMode;
+import io.flutter.embedding.android.FlutterView.TransparencyMode;
+import io.flutter.embedding.android.SplashScreen;
+import io.flutter.embedding.android.SplashScreenProvider;
+import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.embedding.engine.dart.DartExecutor.a;
-import io.flutter.plugin.a.k.d;
+import io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint;
+import io.flutter.embedding.engine.plugins.activity.ActivityControlSurface;
+import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
+import io.flutter.embedding.engine.systemchannels.NavigationChannel;
+import io.flutter.embedding.engine.systemchannels.SystemChannel;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.platform.PlatformPlugin;
 import java.util.Arrays;
 
 public final class a
 {
-  public FlutterView BCI;
-  private io.flutter.plugin.platform.b BCJ;
-  private io.flutter.embedding.engine.a BCx;
-  a ZZi;
-  private WxaFlutterSplashView ZZj;
-  private boolean ZZk;
-  public com.tencent.wxa.b.c ZZl;
-  private final io.flutter.embedding.engine.renderer.b ZZm;
-  private boolean fEs;
+  a aidU;
+  private WxaFlutterSplashView aidV;
+  public com.tencent.wxa.b.c aidW;
+  private final FlutterUiDisplayListener aidX;
+  public FlutterEngine flutterEngine;
+  public FlutterView flutterView;
+  private boolean hJi;
+  private boolean isFlutterEngineFromHost;
+  private PlatformPlugin platformPlugin;
   
   public a(a parama)
   {
-    AppMethodBeat.i(224938);
-    this.fEs = true;
-    this.ZZm = new io.flutter.embedding.engine.renderer.b()
+    AppMethodBeat.i(210518);
+    this.hJi = true;
+    this.aidX = new FlutterUiDisplayListener()
     {
-      public final void epX() {}
+      public final void onFlutterUiDisplayed() {}
       
-      public final void epY() {}
+      public final void onFlutterUiNoLongerDisplayed() {}
     };
-    this.ZZi = parama;
-    this.ZZl = new com.tencent.wxa.b.a(this.ZZi.Nv());
-    AppMethodBeat.o(224938);
-  }
-  
-  private void ivB()
-  {
-    AppMethodBeat.i(224941);
-    com.tencent.wxa.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Setting up FlutterEngine.", new Object[0]);
-    ivE();
-    a locala = this.ZZi;
-    this.ZZi.getContext();
-    this.BCx = locala.ND();
-    if (this.BCx != null)
+    this.aidU = parama;
+    if (this.flutterEngine == null)
     {
-      this.ZZk = true;
-      AppMethodBeat.o(224941);
-      return;
-    }
-    com.tencent.wxa.c.a.i("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "flutter engine is null.", new Object[0]);
-    this.ZZk = false;
-    AppMethodBeat.o(224941);
-  }
-  
-  private void ivD()
-  {
-    AppMethodBeat.i(224948);
-    if ((this.ZZi.Nw() == null) && (!this.BCx.aapU.aaqG))
-    {
-      com.tencent.wxa.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Executing Dart entrypoint: " + this.ZZi.Nx() + ", and sending initial route: " + this.ZZi.Nz(), new Object[0]);
-      if (this.ZZi.Nz() != null) {
-        this.BCx.aaqb.setInitialRoute(this.ZZi.Nz());
+      com.tencent.wxa.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Setting up FlutterEngine.", new Object[0]);
+      ensureAlive();
+      this.flutterEngine = this.aidU.provideFlutterEngine(this.aidU.getContext());
+      if (this.flutterEngine == null) {
+        break label117;
       }
-      DartExecutor.a locala = new DartExecutor.a(this.ZZi.Ny(), this.ZZi.Nx());
-      this.BCx.aapU.a(locala);
     }
-    AppMethodBeat.o(224948);
+    for (this.isFlutterEngineFromHost = true;; this.isFlutterEngineFromHost = false)
+    {
+      this.aidW = new com.tencent.wxa.b.a(this.aidU.anM(), this.flutterEngine);
+      AppMethodBeat.o(210518);
+      return;
+      label117:
+      com.tencent.wxa.c.a.i("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "flutter engine is null.", new Object[0]);
+    }
   }
   
-  private void ivE()
+  private void doInitialFlutterViewRun()
   {
-    AppMethodBeat.i(224976);
-    if (this.ZZi == null)
+    AppMethodBeat.i(210527);
+    if ((this.aidU.getCachedEngineId() == null) && (!this.flutterEngine.getDartExecutor().isExecutingDart()))
+    {
+      com.tencent.wxa.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Executing Dart entrypoint: " + this.aidU.getDartEntrypointFunctionName() + ", and sending initial route: " + this.aidU.getInitialRoute(), new Object[0]);
+      if (this.aidU.getInitialRoute() != null) {
+        this.flutterEngine.getNavigationChannel().setInitialRoute(this.aidU.getInitialRoute());
+      }
+      DartExecutor.DartEntrypoint localDartEntrypoint = new DartExecutor.DartEntrypoint(this.aidU.getAppBundlePath(), this.aidU.getDartEntrypointFunctionName());
+      this.flutterEngine.getDartExecutor().executeDartEntrypoint(localDartEntrypoint);
+    }
+    AppMethodBeat.o(210527);
+  }
+  
+  private void ensureAlive()
+  {
+    AppMethodBeat.i(210532);
+    if (this.aidU == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("Cannot execute method on a destroyed FlutterActivityAndFragmentDelegate.");
-      AppMethodBeat.o(224976);
+      AppMethodBeat.o(210532);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(224976);
+    AppMethodBeat.o(210532);
   }
   
-  public final void ivA()
+  public final void keU()
   {
-    AppMethodBeat.i(224939);
-    ivE();
-    com.tencent.wxa.c.ivt().init();
-    com.tencent.wxa.c.ivt().ZYK = this.ZZi.Nv();
-    if (this.BCx == null) {
-      ivB();
-    }
-    this.BCJ = this.ZZi.a(this.ZZi.getActivity(), this.BCx);
-    this.ZZi.a(this.BCx);
-    AppMethodBeat.o(224939);
+    AppMethodBeat.i(210539);
+    ensureAlive();
+    com.tencent.wxa.c.keQ().a(this.aidU.anM(), this.flutterEngine);
+    this.platformPlugin = this.aidU.providePlatformPlugin(this.aidU.getActivity(), this.flutterEngine);
+    this.aidU.configureFlutterEngine(this.flutterEngine);
+    AppMethodBeat.o(210539);
   }
   
-  public final View ivC()
+  public final View keV()
   {
-    AppMethodBeat.i(224944);
+    AppMethodBeat.i(210545);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Creating FlutterView.", new Object[0]);
-    ivE();
-    this.BCx.aapV.a(this.ZZi.getActivity(), this.ZZi.getLifecycle());
-    this.ZZl.onCreateView();
-    this.BCI = new FlutterView(this.ZZi.getActivity(), this.ZZi.NA(), this.ZZi.NB());
-    this.BCI.a(this.ZZm);
-    this.ZZj = new WxaFlutterSplashView(this.ZZi.getContext());
+    ensureAlive();
+    this.flutterEngine.getActivityControlSurface().attachToActivity(this.aidU.getActivity(), this.aidU.getLifecycle());
+    this.aidW.onCreateView();
+    this.flutterView = new FlutterView(this.aidU.getActivity(), this.aidU.anN(), this.aidU.anO());
+    this.flutterView.addOnFirstFrameRenderedListener(this.aidX);
+    this.aidV = new WxaFlutterSplashView(this.aidU.getContext());
     if (Build.VERSION.SDK_INT >= 17) {
-      this.ZZj.setId(View.generateViewId());
+      this.aidV.setId(View.generateViewId());
     }
     for (;;)
     {
-      this.ZZj.a(this.BCI, this.ZZi.NC());
-      WxaFlutterSplashView localWxaFlutterSplashView = this.ZZj;
-      AppMethodBeat.o(224944);
+      this.aidV.displayFlutterViewWithSplash(this.flutterView, this.aidU.provideSplashScreen());
+      WxaFlutterSplashView localWxaFlutterSplashView = this.aidV;
+      AppMethodBeat.o(210545);
       return localWxaFlutterSplashView;
-      this.ZZj.setId(0);
+      this.aidV.setId(0);
     }
-  }
-  
-  public final void oC(boolean paramBoolean)
-  {
-    AppMethodBeat.i(224961);
-    com.tencent.wxa.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onBackPressed", new Object[0]);
-    ivE();
-    if (this.BCx != null)
-    {
-      com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onBackPressed() to FlutterEngine.", new Object[0]);
-      this.ZZl.a(paramBoolean, new k.d()
-      {
-        public final void b(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
-        {
-          AppMethodBeat.i(224934);
-          com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() error. s:%s s1:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
-          if (a.this.ZZi.getActivity() != null) {
-            a.this.ZZi.getActivity().finish();
-          }
-          AppMethodBeat.o(224934);
-        }
-        
-        public final void bb(Object paramAnonymousObject)
-        {
-          AppMethodBeat.i(224931);
-          if ((paramAnonymousObject != null) && ((paramAnonymousObject instanceof Boolean)) && (((Boolean)paramAnonymousObject).booleanValue()))
-          {
-            com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() back press comsumed .", new Object[0]);
-            AppMethodBeat.o(224931);
-            return;
-          }
-          if (a.this.ZZi.getActivity() != null) {
-            a.this.ZZi.getActivity().finish();
-          }
-          AppMethodBeat.o(224931);
-        }
-        
-        public final void epZ()
-        {
-          AppMethodBeat.i(224935);
-          com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() notImplemented.", new Object[0]);
-          if (a.this.ZZi.getActivity() != null) {
-            a.this.ZZi.getActivity().finish();
-          }
-          AppMethodBeat.o(224935);
-        }
-      });
-      AppMethodBeat.o(224961);
-      return;
-    }
-    com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() before FlutterFragment was attached to an Activity.", new Object[0]);
-    if (this.ZZi.getActivity() != null) {
-      this.ZZi.getActivity().finish();
-    }
-    AppMethodBeat.o(224961);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(224971);
-    ivE();
-    if (this.BCx != null)
+    AppMethodBeat.i(210612);
+    ensureAlive();
+    if (this.flutterEngine != null)
     {
       com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onActivityResult() to FlutterEngine:\nrequestCode: " + paramInt1 + "\nresultCode: " + paramInt2 + "\ndata: " + paramIntent, new Object[0]);
-      this.BCx.aapV.onActivityResult(paramInt1, paramInt2, paramIntent);
-      AppMethodBeat.o(224971);
+      this.flutterEngine.getActivityControlSurface().onActivityResult(paramInt1, paramInt2, paramIntent);
+      AppMethodBeat.o(210612);
       return;
     }
     com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onActivityResult() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(224971);
+    AppMethodBeat.o(210612);
   }
   
   public final void onDestroyView()
   {
-    AppMethodBeat.i(224956);
+    AppMethodBeat.i(210583);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onDestroyView()", new Object[0]);
-    this.ZZl.onDestroyView();
-    ivE();
-    AppMethodBeat.o(224956);
+    this.aidW.onDestroyView();
+    ensureAlive();
+    AppMethodBeat.o(210583);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(224958);
+    AppMethodBeat.i(210589);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onDetach()", new Object[0]);
-    ivE();
-    if (this.BCJ != null)
+    ensureAlive();
+    if (this.platformPlugin != null)
     {
-      this.BCJ.destroy();
-      this.BCJ = null;
+      this.platformPlugin.destroy();
+      this.platformPlugin = null;
     }
-    com.tencent.wxa.c.ivt().ZYK = null;
-    AppMethodBeat.o(224958);
+    com.tencent.wxa.c.keQ().b(this.aidU.anM(), this.flutterEngine);
+    AppMethodBeat.o(210589);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(224969);
-    ivE();
-    if (this.BCx != null)
+    AppMethodBeat.i(210606);
+    ensureAlive();
+    if (this.flutterEngine != null)
     {
       com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onNewIntent() to FlutterEngine.", new Object[0]);
-      this.BCx.aapV.onNewIntent(paramIntent);
-      AppMethodBeat.o(224969);
+      this.flutterEngine.getActivityControlSurface().onNewIntent(paramIntent);
+      AppMethodBeat.o(210606);
       return;
     }
     com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onNewIntent() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(224969);
+    AppMethodBeat.o(210606);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(224954);
+    AppMethodBeat.i(210568);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onPause()", new Object[0]);
-    this.fEs = true;
-    this.ZZl.onPause();
-    ivE();
-    AppMethodBeat.o(224954);
+    this.hJi = true;
+    this.aidW.onPause();
+    com.tencent.wxa.c.keQ().c(this.flutterView, this.flutterEngine);
+    ensureAlive();
+    AppMethodBeat.o(210568);
   }
   
   public final void onPostResume()
   {
-    AppMethodBeat.i(224951);
+    AppMethodBeat.i(210562);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onPostResume()", new Object[0]);
-    ivE();
-    if (this.BCx != null)
+    ensureAlive();
+    if (this.flutterEngine != null)
     {
-      if (this.BCJ != null)
+      if (this.platformPlugin != null)
       {
-        this.BCJ.iBs();
-        AppMethodBeat.o(224951);
+        this.platformPlugin.updateSystemUiOverlays();
+        AppMethodBeat.o(210562);
       }
     }
     else {
       com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onPostResume() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
     }
-    AppMethodBeat.o(224951);
+    AppMethodBeat.o(210562);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(224968);
-    ivE();
-    if (this.BCx != null)
+    AppMethodBeat.i(210602);
+    ensureAlive();
+    if (this.flutterEngine != null)
     {
       com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onRequestPermissionsResult() to FlutterEngine:\nrequestCode: " + paramInt + "\npermissions: " + Arrays.toString(paramArrayOfString) + "\ngrantResults: " + Arrays.toString(paramArrayOfInt), new Object[0]);
-      this.BCx.aapV.a(paramInt, paramArrayOfString, paramArrayOfInt);
-      AppMethodBeat.o(224968);
+      this.flutterEngine.getActivityControlSurface().onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+      AppMethodBeat.o(210602);
       return;
     }
     com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onRequestPermissionResult() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(224968);
+    AppMethodBeat.o(210602);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(224949);
+    AppMethodBeat.i(210555);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onResume()", new Object[0]);
-    if (this.fEs)
+    if (this.hJi)
     {
-      com.tencent.wxa.c.ivt().ZYK = this.ZZi.Nv();
-      com.tencent.wxa.c.ivt().a(this.BCI, this.BCx);
-      com.tencent.wxa.c.ivt().b(this.BCI);
+      com.tencent.wxa.c.keQ().a(this.aidU.anM(), this.flutterEngine);
+      com.tencent.wxa.c.keQ().a(this.flutterView, this.flutterEngine);
+      com.tencent.wxa.c.keQ().d(this.flutterView, this.flutterEngine);
       com.tencent.wxa.c.a.i("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "attachViewToFlutterEngine", new Object[0]);
-      this.fEs = false;
+      this.hJi = false;
     }
-    this.ZZl.onResume();
-    ivE();
-    AppMethodBeat.o(224949);
+    this.aidW.onResume();
+    ensureAlive();
+    AppMethodBeat.o(210555);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(224945);
+    AppMethodBeat.i(210551);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onStart()", new Object[0]);
-    ivE();
+    ensureAlive();
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Attaching FlutterEngine to FlutterView.", new Object[0]);
-    com.tencent.wxa.c.ivt().ZYK = this.ZZi.Nv();
-    com.tencent.wxa.c.ivt().a(this.BCI, this.BCx);
-    ivD();
+    com.tencent.wxa.c.keQ().a(this.aidU.anM(), this.flutterEngine);
+    com.tencent.wxa.c.keQ().a(this.flutterView, this.flutterEngine);
+    doInitialFlutterViewRun();
     com.tencent.wxa.c.a.i("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "attachViewToFlutterEngine", new Object[0]);
-    this.fEs = false;
-    com.tencent.wxa.c.ivt().b(this.BCI);
-    AppMethodBeat.o(224945);
+    this.hJi = false;
+    com.tencent.wxa.c.keQ().d(this.flutterView, this.flutterEngine);
+    AppMethodBeat.o(210551);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(224955);
+    AppMethodBeat.i(210575);
     com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onStop()", new Object[0]);
-    ivE();
-    com.tencent.wxa.c.ivt().a(this.BCI);
+    ensureAlive();
+    com.tencent.wxa.c.keQ().e(this.flutterView, this.flutterEngine);
+    com.tencent.wxa.c.keQ().b(this.flutterView, this.flutterEngine);
     com.tencent.wxa.c.a.i("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "detachViewFromFlutterEngine", new Object[0]);
-    com.tencent.wxa.c.ivt().c(this.BCI);
-    AppMethodBeat.o(224955);
+    AppMethodBeat.o(210575);
   }
   
   public final void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(224974);
-    ivE();
-    if (this.BCx != null)
+    AppMethodBeat.i(210622);
+    ensureAlive();
+    if (this.flutterEngine != null)
     {
       if (paramInt == 10)
       {
         com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onTrimMemory() to FlutterEngine. Level: ".concat(String.valueOf(paramInt)), new Object[0]);
-        this.BCx.aaqf.iBl();
-        AppMethodBeat.o(224974);
+        this.flutterEngine.getSystemChannel().sendMemoryPressureWarning();
+        AppMethodBeat.o(210622);
       }
     }
     else {
       com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onTrimMemory() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
     }
-    AppMethodBeat.o(224974);
+    AppMethodBeat.o(210622);
   }
   
   public final void onUserLeaveHint()
   {
-    AppMethodBeat.i(224972);
-    ivE();
-    if (this.BCx != null)
+    AppMethodBeat.i(210617);
+    ensureAlive();
+    if (this.flutterEngine != null)
     {
       com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onUserLeaveHint() to FlutterEngine.", new Object[0]);
-      this.BCx.aapV.onUserLeaveHint();
-      AppMethodBeat.o(224972);
+      this.flutterEngine.getActivityControlSurface().onUserLeaveHint();
+      AppMethodBeat.o(210617);
       return;
     }
     com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onUserLeaveHint() invoked before FlutterFragment was attached to an Activity.", new Object[0]);
-    AppMethodBeat.o(224972);
+    AppMethodBeat.o(210617);
+  }
+  
+  public final void qf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(210595);
+    com.tencent.wxa.c.a.d("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "onBackPressed", new Object[0]);
+    ensureAlive();
+    if (this.flutterEngine != null)
+    {
+      com.tencent.wxa.c.a.v("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Forwarding onBackPressed() to FlutterEngine.", new Object[0]);
+      this.aidW.a(paramBoolean, new MethodChannel.Result()
+      {
+        public final void error(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
+        {
+          AppMethodBeat.i(210515);
+          com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() error. s:%s s1:%s", new Object[] { paramAnonymousString1, paramAnonymousString2 });
+          if (a.this.aidU.getActivity() != null) {
+            a.this.aidU.getActivity().finish();
+          }
+          AppMethodBeat.o(210515);
+        }
+        
+        public final void notImplemented()
+        {
+          AppMethodBeat.i(210524);
+          com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() notImplemented.", new Object[0]);
+          if (a.this.aidU.getActivity() != null) {
+            a.this.aidU.getActivity().finish();
+          }
+          AppMethodBeat.o(210524);
+        }
+        
+        public final void success(Object paramAnonymousObject)
+        {
+          AppMethodBeat.i(210511);
+          if ((paramAnonymousObject != null) && ((paramAnonymousObject instanceof Boolean)) && (((Boolean)paramAnonymousObject).booleanValue()))
+          {
+            com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() back press comsumed .", new Object[0]);
+            AppMethodBeat.o(210511);
+            return;
+          }
+          if (a.this.aidU.getActivity() != null) {
+            a.this.aidU.getActivity().finish();
+          }
+          AppMethodBeat.o(210511);
+        }
+      });
+      AppMethodBeat.o(210595);
+      return;
+    }
+    com.tencent.wxa.c.a.w("WxaRouter.WxaFlutterActivityAndFragmentDelegate", "Invoked onBackPressed() before FlutterFragment was attached to an Activity.", new Object[0]);
+    if (this.aidU.getActivity() != null) {
+      this.aidU.getActivity().finish();
+    }
+    AppMethodBeat.o(210595);
   }
   
   public static abstract interface a
-    extends f, io.flutter.embedding.android.g, k
+    extends FlutterEngineConfigurator, FlutterEngineProvider, SplashScreenProvider
   {
-    public abstract FlutterView.b NA();
+    public abstract b anM();
     
-    public abstract FlutterView.c NB();
+    public abstract FlutterView.RenderMode anN();
     
-    public abstract j NC();
+    public abstract FlutterView.TransparencyMode anO();
     
-    public abstract io.flutter.embedding.engine.a ND();
-    
-    public abstract com.tencent.wxa.b.b Nv();
-    
-    public abstract String Nw();
-    
-    public abstract String Nx();
-    
-    public abstract String Ny();
-    
-    public abstract String Nz();
-    
-    public abstract io.flutter.plugin.platform.b a(Activity paramActivity, io.flutter.embedding.engine.a parama);
-    
-    public abstract void a(io.flutter.embedding.engine.a parama);
+    public abstract void configureFlutterEngine(FlutterEngine paramFlutterEngine);
     
     public abstract Activity getActivity();
     
+    public abstract String getAppBundlePath();
+    
+    public abstract String getCachedEngineId();
+    
     public abstract Context getContext();
     
-    public abstract h getLifecycle();
+    public abstract String getDartEntrypointFunctionName();
+    
+    public abstract String getInitialRoute();
+    
+    public abstract j getLifecycle();
+    
+    public abstract FlutterEngine provideFlutterEngine(Context paramContext);
+    
+    public abstract PlatformPlugin providePlatformPlugin(Activity paramActivity, FlutterEngine paramFlutterEngine);
+    
+    public abstract SplashScreen provideSplashScreen();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.wxa.ui.a
  * JD-Core Version:    0.7.0.1
  */

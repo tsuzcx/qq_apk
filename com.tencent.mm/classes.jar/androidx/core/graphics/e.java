@@ -1,6 +1,5 @@
 package androidx.core.graphics;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -9,136 +8,199 @@ import android.os.Handler;
 import androidx.core.content.a.c.a;
 import androidx.core.content.a.c.b;
 import androidx.core.content.a.c.d;
-import androidx.core.content.a.f.a;
-import androidx.core.d.b;
-import androidx.core.d.b.b;
+import androidx.core.content.a.f.c;
+import androidx.core.d.a;
+import androidx.core.d.d;
+import androidx.core.d.e.b;
+import androidx.core.d.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SuppressLint({"NewApi"})
 public final class e
 {
-  private static final k Ks;
-  private static final androidx.b.e<String, Typeface> Kt;
+  private static final androidx.b.e<String, Typeface> bqA;
+  private static final k bqz;
   
   static
   {
-    AppMethodBeat.i(250703);
+    AppMethodBeat.i(196154);
     if (Build.VERSION.SDK_INT >= 29) {
-      Ks = new j();
+      bqz = new j();
     }
     for (;;)
     {
-      Kt = new androidx.b.e(16);
-      AppMethodBeat.o(250703);
+      bqA = new androidx.b.e(16);
+      AppMethodBeat.o(196154);
       return;
       if (Build.VERSION.SDK_INT >= 28) {
-        Ks = new i();
+        bqz = new i();
       } else if (Build.VERSION.SDK_INT >= 26) {
-        Ks = new h();
-      } else if ((Build.VERSION.SDK_INT >= 24) && (g.gx())) {
-        Ks = new g();
+        bqz = new h();
+      } else if ((Build.VERSION.SDK_INT >= 24) && (g.DI())) {
+        bqz = new g();
       } else if (Build.VERSION.SDK_INT >= 21) {
-        Ks = new f();
+        bqz = new f();
       } else {
-        Ks = new k();
+        bqz = new k();
       }
     }
   }
   
   public static Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(250699);
-    paramContext = Ks.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
+    AppMethodBeat.i(196138);
+    paramContext = bqz.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
     if (paramContext != null)
     {
       paramResources = b(paramResources, paramInt1, paramInt2);
-      Kt.put(paramResources, paramContext);
+      bqA.put(paramResources, paramContext);
     }
-    AppMethodBeat.o(250699);
+    AppMethodBeat.o(196138);
     return paramContext;
   }
   
-  public static Typeface a(Context paramContext, c.a parama, Resources paramResources, int paramInt1, int paramInt2, f.a parama1, Handler paramHandler, boolean paramBoolean)
+  public static Typeface a(Context paramContext, c.a parama, Resources paramResources, int paramInt1, int paramInt2, f.c paramc, Handler paramHandler, boolean paramBoolean)
   {
-    boolean bool = true;
-    AppMethodBeat.i(250697);
-    int i;
+    int i = 1;
+    AppMethodBeat.i(196125);
+    int j;
     if ((parama instanceof c.d))
     {
-      parama = (c.d)parama;
+      c.d locald = (c.d)parama;
+      parama = locald.bqn;
+      if ((parama == null) || (parama.isEmpty())) {
+        parama = null;
+      }
+      while (parama != null)
+      {
+        if (paramc != null) {
+          paramc.a(parama, paramHandler);
+        }
+        AppMethodBeat.o(196125);
+        return parama;
+        Typeface localTypeface1 = Typeface.create(parama, 0);
+        Typeface localTypeface2 = Typeface.create(Typeface.DEFAULT, 0);
+        if (localTypeface1 != null)
+        {
+          parama = localTypeface1;
+          if (!localTypeface1.equals(localTypeface2)) {}
+        }
+        else
+        {
+          parama = null;
+        }
+      }
       if (paramBoolean) {
-        if (parama.Ki == 0)
+        if (locald.bqm == 0)
         {
           if (!paramBoolean) {
-            break label105;
+            break label223;
           }
-          i = parama.Kh;
-          label43:
-          paramContext = b.a(paramContext, parama.Kg, parama1, paramHandler, bool, i, paramInt2);
+          j = locald.mTimeoutMs;
+          label128:
+          parama = f.c.c(paramHandler);
+          paramc = new a(paramc);
+          paramHandler = locald.bql;
+          parama = new a(paramc, parama);
+          if (i == 0) {
+            break label229;
+          }
+          paramContext = d.a(paramContext, paramHandler, parama, paramInt2, j);
         }
       }
     }
     for (;;)
     {
       if (paramContext != null) {
-        Kt.put(b(paramResources, paramInt1, paramInt2), paramContext);
+        bqA.put(b(paramResources, paramInt1, paramInt2), paramContext);
       }
-      AppMethodBeat.o(250697);
+      AppMethodBeat.o(196125);
       return paramContext;
-      bool = false;
+      i = 0;
       break;
-      if (parama1 == null) {
+      if (paramc == null) {
         break;
       }
-      bool = false;
+      i = 0;
       break;
-      label105:
-      i = -1;
-      break label43;
-      parama = Ks.a(paramContext, (c.b)parama, paramResources, paramInt2);
+      label223:
+      j = -1;
+      break label128;
+      label229:
+      paramContext = d.a(paramContext, paramHandler, paramInt2, parama);
+      continue;
+      parama = bqz.a(paramContext, (c.b)parama, paramResources, paramInt2);
       paramContext = parama;
-      if (parama1 != null) {
+      if (paramc != null) {
         if (parama != null)
         {
-          parama1.a(parama, paramHandler);
+          paramc.a(parama, paramHandler);
           paramContext = parama;
         }
         else
         {
-          parama1.a(-3, paramHandler);
+          paramc.a(-3, paramHandler);
           paramContext = parama;
         }
       }
     }
   }
   
-  public static Typeface a(Context paramContext, b.b[] paramArrayOfb, int paramInt)
+  public static Typeface a(Context paramContext, e.b[] paramArrayOfb, int paramInt)
   {
-    AppMethodBeat.i(250701);
-    paramContext = Ks.a(paramContext, paramArrayOfb, paramInt);
-    AppMethodBeat.o(250701);
+    AppMethodBeat.i(196146);
+    paramContext = bqz.a(paramContext, paramArrayOfb, paramInt);
+    AppMethodBeat.o(196146);
     return paramContext;
   }
   
   public static Typeface a(Resources paramResources, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(250694);
-    paramResources = (Typeface)Kt.get(b(paramResources, paramInt1, paramInt2));
-    AppMethodBeat.o(250694);
+    AppMethodBeat.i(196096);
+    paramResources = (Typeface)bqA.get(b(paramResources, paramInt1, paramInt2));
+    AppMethodBeat.o(196096);
     return paramResources;
   }
   
   private static String b(Resources paramResources, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(250695);
+    AppMethodBeat.i(196108);
     paramResources = paramResources.getResourcePackageName(paramInt1) + "-" + paramInt1 + "-" + paramInt2;
-    AppMethodBeat.o(250695);
+    AppMethodBeat.o(196108);
     return paramResources;
+  }
+  
+  public static final class a
+    extends e.c
+  {
+    private f.c bqB;
+    
+    public a(f.c paramc)
+    {
+      this.bqB = paramc;
+    }
+    
+    public final void d(Typeface paramTypeface)
+    {
+      AppMethodBeat.i(196029);
+      if (this.bqB != null) {
+        this.bqB.b(paramTypeface);
+      }
+      AppMethodBeat.o(196029);
+    }
+    
+    public final void ei(int paramInt)
+    {
+      AppMethodBeat.i(196035);
+      if (this.bqB != null) {
+        this.bqB.as(paramInt);
+      }
+      AppMethodBeat.o(196035);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.core.graphics.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,242 +1,77 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.luggage.d.b;
+import android.content.Intent;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.game.luggage.j.a;
-import com.tencent.mm.plugin.lite.a.a;
-import com.tencent.mm.plugin.lite.a.a.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.webview.luggage.c.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bv.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONObject;
 
 public class aa
-  extends bs<i>
+  extends bv<com.tencent.luggage.d.a>
 {
-  public final void a(Context paramContext, String paramString, final br.a parama)
+  public final void a(final Context paramContext, String paramString, final bv.a parama)
   {
-    AppMethodBeat.i(231063);
-    JSONObject localJSONObject = c.agO(paramString);
-    if (localJSONObject == null)
+    AppMethodBeat.i(277165);
+    Log.i("MicroMsg.JsApiOpenGameLifeChatroom", "invokeInMM");
+    paramString = c.ZL(paramString);
+    if (paramString == null)
     {
-      parama.i("invalid_data", null);
-      AppMethodBeat.o(231063);
+      parama.j("invalid_params", null);
+      AppMethodBeat.o(277165);
       return;
     }
-    Bundle localBundle = new Bundle();
-    boolean bool3 = false;
-    bool1 = false;
-    Object localObject3 = "";
-    Object localObject2 = "";
-    String str3 = "";
-    paramString = str3;
-    localObject1 = localObject2;
-    localObject4 = localObject3;
-    bool2 = bool3;
-    try
+    String str1 = paramString.optString("chatroom_name");
+    if (Util.isNullOrNil(str1))
     {
-      if (!localJSONObject.has("appId"))
-      {
-        paramString = str3;
-        localObject1 = localObject2;
-        localObject4 = localObject3;
-        bool2 = bool3;
-        parama.i("invalid_appid", null);
-        AppMethodBeat.o(231063);
-        return;
-      }
-      paramString = str3;
-      localObject1 = localObject2;
-      localObject4 = localObject3;
-      bool2 = bool3;
-      localBundle.putString("appId", localJSONObject.getString("appId"));
-      paramString = str3;
-      localObject1 = localObject2;
-      localObject4 = localObject3;
-      bool2 = bool3;
-      String str2 = localJSONObject.getString("appId");
-      localObject3 = localObject2;
-      paramString = str3;
-      localObject1 = localObject2;
-      localObject4 = str2;
-      bool2 = bool3;
-      if (localJSONObject.has("page"))
-      {
-        paramString = str3;
-        localObject1 = localObject2;
-        localObject4 = str2;
-        bool2 = bool3;
-        localObject3 = localJSONObject.getString("page");
-        paramString = str3;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool3;
-        localBundle.putString("path", localJSONObject.getString("page"));
-      }
-      paramString = str3;
-      localObject1 = localObject3;
-      localObject4 = str2;
-      bool2 = bool3;
-      if (localJSONObject.has("checkUpdate"))
-      {
-        paramString = str3;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool3;
-        bool1 = localJSONObject.getBoolean("checkUpdate");
-      }
-      localObject2 = str3;
-      paramString = str3;
-      localObject1 = localObject3;
-      localObject4 = str2;
-      bool2 = bool1;
-      if (localJSONObject.has("query"))
-      {
-        paramString = str3;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        localObject2 = localJSONObject.getJSONObject("query").toString();
-        paramString = (String)localObject2;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        localBundle.putString("query", localJSONObject.getJSONObject("query").toString());
-      }
-      paramString = (String)localObject2;
-      localObject1 = localObject3;
-      localObject4 = str2;
-      bool2 = bool1;
-      if (localJSONObject.has("transparent"))
-      {
-        paramString = (String)localObject2;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        if (localJSONObject.getBoolean("transparent"))
-        {
-          paramString = (String)localObject2;
-          localObject1 = localObject3;
-          localObject4 = str2;
-          bool2 = bool1;
-          localBundle.putBoolean("transparent", true);
-        }
-      }
-      paramString = (String)localObject2;
-      localObject1 = localObject3;
-      localObject4 = str2;
-      bool2 = bool1;
-      if (localJSONObject.has("mode"))
-      {
-        paramString = (String)localObject2;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        str3 = localJSONObject.getString("mode");
-        paramString = (String)localObject2;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        if (!Util.isNullOrNil(str3))
-        {
-          paramString = (String)localObject2;
-          localObject1 = localObject3;
-          localObject4 = str2;
-          bool2 = bool1;
-          localBundle.putString("mode", str3);
-        }
-      }
-      paramString = (String)localObject2;
-      localObject1 = localObject3;
-      localObject4 = str2;
-      bool2 = bool1;
-      if (localJSONObject.has("sheet_height"))
-      {
-        paramString = (String)localObject2;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        str3 = localJSONObject.getString("sheet_height");
-        paramString = (String)localObject2;
-        localObject1 = localObject3;
-        localObject4 = str2;
-        bool2 = bool1;
-        if (!Util.isNullOrNil(str3))
-        {
-          paramString = (String)localObject2;
-          localObject1 = localObject3;
-          localObject4 = str2;
-          bool2 = bool1;
-          localBundle.putString("sheet_height", str3);
-        }
-      }
-      paramString = (String)localObject3;
-      localObject1 = str2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("JsApiOpenLiteApp", localJSONException, "", new Object[0]);
-        parama.i("fail", null);
-        bool1 = bool2;
-        String str1 = paramString;
-        paramString = localObject1;
-        localObject1 = localObject4;
-        continue;
-        int i = 0;
-      }
-    }
-    localBundle.putInt("nextAnimIn", j.a.slide_right_in);
-    localBundle.putInt("currentAnimOut", j.a.slide_right_out);
-    localObject3 = new StringBuilder();
-    localObject2 = ((StringBuilder)localObject3).append(localObject1).append(",").append(paramString).append(",").append((String)localObject2).append(",");
-    if (bool1)
-    {
-      i = 1;
-      ((StringBuilder)localObject2).append(i);
-      com.tencent.mm.plugin.report.service.h.IzE.kvStat(20980, ((StringBuilder)localObject3).toString());
-      com.tencent.mm.plugin.report.service.h.IzE.p(1293L, 89L, 1L);
-      Log.i("JsApiOpenLiteApp", "open liteapp:" + localObject1 + ",page:" + paramString);
-      ((a)com.tencent.mm.kernel.h.ae(a.class)).a(paramContext, localBundle, bool1, new a.a()
-      {
-        public final void ewC()
-        {
-          AppMethodBeat.i(231276);
-          Log.i("JsApiOpenLiteApp", "JsApiOpenLiteApp success");
-          parama.i(null, null);
-          AppMethodBeat.o(231276);
-        }
-        
-        public final void ewD()
-        {
-          AppMethodBeat.i(231277);
-          Log.i("JsApiOpenLiteApp", "JsApiOpenLiteApp fail");
-          parama.i("fail", null);
-          AppMethodBeat.o(231277);
-        }
-      });
-      AppMethodBeat.o(231063);
+      parama.j("invalid_params", null);
+      AppMethodBeat.o(277165);
       return;
     }
+    String str2 = paramString.optString("chatroom_icon");
+    boolean bool1 = paramString.optBoolean("is_auto_join", false);
+    long l1 = paramString.optLong("sourceid", 0L);
+    long l2 = paramString.optLong("ssid", 0L);
+    boolean bool2 = paramString.optBoolean("backToRoomList", false);
+    int i = paramString.optInt("targetChannelId", -1);
+    long l3 = paramString.optLong("targetSeq", -1L);
+    Log.i("MicroMsg.JsApiOpenGameLifeChatroom", "chatRoomName:%s, iconUrl:%s, isAutoJoin:%b, sourceId:%d, ssid:%d, backToRoomList:%b, targetChannelId:%s, targetSeq:%s", new Object[] { str1, str2, Boolean.valueOf(bool1), Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool2), Integer.valueOf(i), Long.valueOf(l3) });
+    ((MMActivity)paramContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    {
+      public final void mmOnActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(277153);
+        if (paramAnonymousInt1 == 3345)
+        {
+          ((MMActivity)paramContext).mmSetOnActivityResultCallback(null);
+          parama.j(null, null);
+        }
+        AppMethodBeat.o(277153);
+      }
+    });
+    if (!((com.tencent.mm.plugin.game.chatroom.a.a)h.az(com.tencent.mm.plugin.game.chatroom.a.a.class)).enterGameChatRoomFromWeb(paramContext, str1, str2, bool1, l2, l1, bool2, null, i, l3, 3345)) {
+      parama.j(null, null);
+    }
+    AppMethodBeat.o(277165);
   }
   
-  public final void b(b<i>.a paramb) {}
+  public final void b(b.a parama) {}
   
-  public final int cDj()
+  public final int dgI()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "openLiteApp";
+    return "openGameLifeChatroom";
   }
 }
 

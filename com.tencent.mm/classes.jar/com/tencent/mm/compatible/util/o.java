@@ -1,93 +1,40 @@
 package com.tencent.mm.compatible.util;
 
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.af;
-import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
 {
-  public static boolean E(CharSequence paramCharSequence)
+  public static int I(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(155911);
-    if (paramCharSequence == null)
+    AppMethodBeat.i(240829);
+    try
     {
-      AppMethodBeat.o(155911);
-      return false;
-    }
-    if (af.juS.jqT == 1)
-    {
-      AppMethodBeat.o(155911);
-      return true;
-    }
-    if (Build.VERSION.SDK_INT == 16)
-    {
-      if (Util.nullAs(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
+      paramContext = paramContext.getResources();
+      int i = paramContext.getIdentifier("status_bar_height", "dimen", "android");
+      if (i != 0)
       {
-        AppMethodBeat.o(155911);
-        return false;
+        i = paramContext.getDimensionPixelSize(i);
+        AppMethodBeat.o(240829);
+        return i;
       }
-      AppMethodBeat.o(155911);
-      return true;
+      AppMethodBeat.o(240829);
+      return paramInt;
     }
-    AppMethodBeat.o(155911);
-    return false;
-  }
-  
-  public static String La(String paramString)
-  {
-    AppMethodBeat.i(155912);
-    if (paramString == null)
+    catch (Resources.NotFoundException paramContext)
     {
-      AppMethodBeat.o(155912);
-      return paramString;
+      Log.printErrStackTrace("MicroMsg.ResourceCompat", paramContext, "get res of status_bar_height fail", new Object[0]);
+      AppMethodBeat.o(240829);
     }
-    if (af.juS.jqT == 2)
-    {
-      AppMethodBeat.o(155912);
-      return paramString;
-    }
-    if (af.juS.jre == 1)
-    {
-      AppMethodBeat.o(155912);
-      return paramString;
-    }
-    if (af.juS.jqT == 1)
-    {
-      if (paramString.toString().contains("\n"))
-      {
-        paramString = paramString.toString().replace("\n", " ");
-        AppMethodBeat.o(155912);
-        return paramString;
-      }
-      AppMethodBeat.o(155912);
-      return paramString;
-    }
-    if (Build.VERSION.SDK_INT == 16)
-    {
-      if (paramString.toString().contains("\n"))
-      {
-        if (Util.nullAs(Build.MANUFACTURER, "").toLowerCase().indexOf("meizu".toLowerCase()) >= 0)
-        {
-          AppMethodBeat.o(155912);
-          return paramString;
-        }
-        paramString = paramString.toString().replace("\n", " ");
-        AppMethodBeat.o(155912);
-        return paramString;
-      }
-      AppMethodBeat.o(155912);
-      return paramString;
-    }
-    AppMethodBeat.o(155912);
-    return paramString;
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.util.o
  * JD-Core Version:    0.7.0.1
  */

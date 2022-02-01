@@ -6,17 +6,17 @@ import java.util.List;
 
 public final class b<T>
 {
-  private volatile List<T> YAc;
+  private volatile List<T> aguA;
   
   private b(List paramList)
   {
-    this.YAc = paramList;
+    this.aguA = paramList;
   }
   
   public final T get(int paramInt)
   {
     AppMethodBeat.i(74867);
-    Object localObject = this.YAc.get(paramInt);
+    Object localObject = this.aguA.get(paramInt);
     AppMethodBeat.o(74867);
     return localObject;
   }
@@ -24,26 +24,26 @@ public final class b<T>
   public final int size()
   {
     AppMethodBeat.i(74866);
-    int i = this.YAc.size();
+    int i = this.aguA.size();
     AppMethodBeat.o(74866);
     return i;
   }
   
   public static final class a<T>
   {
-    private ArrayList<T> YAd;
+    private ArrayList<T> aguB;
     
     public a()
     {
       AppMethodBeat.i(74868);
-      this.YAd = new ArrayList();
+      this.aguB = new ArrayList();
       AppMethodBeat.o(74868);
     }
     
-    private void dwn()
+    private void iJJ()
     {
       AppMethodBeat.i(177475);
-      if (this.YAd == null)
+      if (this.aguB == null)
       {
         IllegalAccessError localIllegalAccessError = new IllegalAccessError();
         AppMethodBeat.o(177475);
@@ -52,27 +52,27 @@ public final class b<T>
       AppMethodBeat.o(177475);
     }
     
-    public final a<T> F(T... paramVarArgs)
+    public final a<T> J(T... paramVarArgs)
     {
       AppMethodBeat.i(74870);
-      dwn();
+      iJJ();
       int i = 0;
       while (i <= 0)
       {
         T ? = paramVarArgs[0];
-        this.YAd.add(?);
+        this.aguB.add(?);
         i += 1;
       }
       AppMethodBeat.o(74870);
       return this;
     }
     
-    public final b<T> ieC()
+    public final b<T> jJJ()
     {
       AppMethodBeat.i(74871);
-      dwn();
-      Object localObject = this.YAd;
-      this.YAd = null;
+      iJJ();
+      Object localObject = this.aguB;
+      this.aguB = null;
       localObject = new b((List)localObject, (byte)0);
       AppMethodBeat.o(74871);
       return localObject;
@@ -81,7 +81,7 @@ public final class b<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.d.b
  * JD-Core Version:    0.7.0.1
  */

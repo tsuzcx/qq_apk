@@ -1,91 +1,167 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class ddn
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public String iconUrl;
-  public String recommendReason;
-  public String wording;
+  public String YNW;
+  public String ZjI;
+  public String ZjJ;
+  public String ZjK;
+  public String ZjL;
+  public String oOI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200507);
+    AppMethodBeat.i(82437);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.wording != null) {
-        paramVarArgs.f(1, this.wording);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(82437);
+        throw paramVarArgs;
       }
-      if (this.iconUrl != null) {
-        paramVarArgs.f(2, this.iconUrl);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.recommendReason != null) {
-        paramVarArgs.f(3, this.recommendReason);
+      if (this.oOI != null) {
+        paramVarArgs.g(2, this.oOI);
       }
-      AppMethodBeat.o(200507);
+      if (this.ZjI != null) {
+        paramVarArgs.g(3, this.ZjI);
+      }
+      if (this.YNW != null) {
+        paramVarArgs.g(4, this.YNW);
+      }
+      if (this.ZjJ != null) {
+        paramVarArgs.g(5, this.ZjJ);
+      }
+      if (this.ZjK != null) {
+        paramVarArgs.g(6, this.ZjK);
+      }
+      if (this.ZjL != null) {
+        paramVarArgs.g(7, this.ZjL);
+      }
+      AppMethodBeat.o(82437);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wording == null) {
-        break label334;
+      if (this.BaseResponse == null) {
+        break label696;
       }
     }
-    label334:
-    for (int i = g.a.a.b.b.a.g(1, this.wording) + 0;; i = 0)
+    label696:
+    for (int i = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.iconUrl != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.iconUrl);
+      if (this.oOI != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.oOI);
       }
       i = paramInt;
-      if (this.recommendReason != null) {
-        i = paramInt + g.a.a.b.b.a.g(3, this.recommendReason);
+      if (this.ZjI != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.ZjI);
       }
-      AppMethodBeat.o(200507);
+      paramInt = i;
+      if (this.YNW != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.YNW);
+      }
+      i = paramInt;
+      if (this.ZjJ != null) {
+        i = paramInt + i.a.a.b.b.a.h(5, this.ZjJ);
+      }
+      paramInt = i;
+      if (this.ZjK != null) {
+        paramInt = i + i.a.a.b.b.a.h(6, this.ZjK);
+      }
+      i = paramInt;
+      if (this.ZjL != null) {
+        i = paramInt + i.a.a.b.b.a.h(7, this.ZjL);
+      }
+      AppMethodBeat.o(82437);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(200507);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(82437);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(82437);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         ddn localddn = (ddn)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(200507);
+          AppMethodBeat.o(82437);
           return -1;
         case 1: 
-          localddn.wording = locala.abFh.readString();
-          AppMethodBeat.o(200507);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localddn.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(82437);
           return 0;
         case 2: 
-          localddn.iconUrl = locala.abFh.readString();
-          AppMethodBeat.o(200507);
+          localddn.oOI = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82437);
+          return 0;
+        case 3: 
+          localddn.ZjI = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82437);
+          return 0;
+        case 4: 
+          localddn.YNW = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82437);
+          return 0;
+        case 5: 
+          localddn.ZjJ = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82437);
+          return 0;
+        case 6: 
+          localddn.ZjK = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(82437);
           return 0;
         }
-        localddn.recommendReason = locala.abFh.readString();
-        AppMethodBeat.o(200507);
+        localddn.ZjL = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(82437);
         return 0;
       }
-      AppMethodBeat.o(200507);
+      AppMethodBeat.o(82437);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ddn
  * JD-Core Version:    0.7.0.1
  */

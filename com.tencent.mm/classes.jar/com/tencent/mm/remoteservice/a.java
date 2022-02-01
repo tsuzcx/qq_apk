@@ -13,22 +13,22 @@ import java.util.List;
 public class a
   extends b.a
 {
-  protected RemoteService UPW;
-  public b UPX;
-  private final d jGJ;
+  protected RemoteService ackT;
+  public b ackU;
+  private final d pfZ;
   
   public a(d paramd)
   {
-    this.jGJ = paramd;
+    this.pfZ = paramd;
   }
   
   public Object CLIENT_CALL(String paramString, Object... paramVarArgs)
   {
     AppMethodBeat.i(152736);
-    paramVarArgs = o(paramVarArgs);
+    paramVarArgs = q(paramVarArgs);
     try
     {
-      this.UPX.onCallback(paramString, paramVarArgs, true);
+      this.ackU.onCallback(paramString, paramVarArgs, true);
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152736);
       return paramString;
@@ -45,21 +45,21 @@ public class a
   public Object REMOTE_CALL(final String paramString, final Object... paramVarArgs)
   {
     AppMethodBeat.i(152735);
-    if (this.jGJ.isConnected())
+    if (this.pfZ.isConnected())
     {
-      paramVarArgs = o(paramVarArgs);
-      this.jGJ.a(this, paramString, paramVarArgs);
+      paramVarArgs = q(paramVarArgs);
+      this.pfZ.a(this, paramString, paramVarArgs);
       paramVarArgs.setClassLoader(getClass().getClassLoader());
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152735);
       return paramString;
     }
-    this.jGJ.connect(new Runnable()
+    this.pfZ.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(152733);
-        Bundle localBundle = a.this.o(paramVarArgs);
+        Bundle localBundle = a.this.q(paramVarArgs);
         a.a(a.this).a(a.this, paramString, localBundle);
         AppMethodBeat.o(152733);
       }
@@ -85,32 +85,6 @@ public class a
     paramBundle = localLinkedList.toArray();
     AppMethodBeat.o(152738);
     return paramBundle;
-  }
-  
-  protected Bundle o(Object... paramVarArgs)
-  {
-    AppMethodBeat.i(152737);
-    Bundle localBundle = new Bundle();
-    int j = paramVarArgs.length;
-    int i = 0;
-    if (i < j)
-    {
-      if ((paramVarArgs[i] instanceof Bundle)) {
-        localBundle.putBundle(String.valueOf(i), (Bundle)paramVarArgs[i]);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramVarArgs[i] instanceof Parcelable)) {
-          localBundle.putParcelable(String.valueOf(i), (Parcelable)paramVarArgs[i]);
-        } else {
-          localBundle.putSerializable(String.valueOf(i), (Serializable)paramVarArgs[i]);
-        }
-      }
-    }
-    AppMethodBeat.o(152737);
-    return localBundle;
   }
   
   public void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
@@ -164,6 +138,32 @@ public class a
         paramString = e.class;
       }
     }
+  }
+  
+  protected Bundle q(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(152737);
+    Bundle localBundle = new Bundle();
+    int j = paramVarArgs.length;
+    int i = 0;
+    if (i < j)
+    {
+      if ((paramVarArgs[i] instanceof Bundle)) {
+        localBundle.putBundle(String.valueOf(i), (Bundle)paramVarArgs[i]);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramVarArgs[i] instanceof Parcelable)) {
+          localBundle.putParcelable(String.valueOf(i), (Parcelable)paramVarArgs[i]);
+        } else {
+          localBundle.putSerializable(String.valueOf(i), (Serializable)paramVarArgs[i]);
+        }
+      }
+    }
+    AppMethodBeat.o(152737);
+    return localBundle;
   }
 }
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path name="external" path="" />
-    <root-path name="root_path" path="" />
-</paths>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:defaultValue="true" android:key="checkbox_preference_one" android:summary="@string/ej8" android:title="@string/ej7" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_message_mute" android:title="@string/ebx" />
+    <PreferenceFooterCategory android:key="settings_message_mute_desc" android:title="@string/ebw" />
+    <CheckBoxPreference android:defaultValue="false" android:key="feed_reproduction" android:summary="@string/d_5" android:title="@string/d_1" />
+    <CheckBoxPreference android:defaultValue="true" android:key="feed_mv_reproduction" android:summary="@string/d_4" android:title="@string/d_2" />
+    <SummaryBelowPreference android:key="settings_blacklist" android:summary="@string/d2_" android:title="@string/d20" />
+    <IconPreference android:key="settings_personal_info_export" android:layout="@layout/bdi" android:title="@string/egv" />
+</PreferenceScreen>

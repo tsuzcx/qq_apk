@@ -1,0 +1,88 @@
+package com.tencent.mm.plugin.repairer.ui.demo;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.repairer.ui.BaseRepairerUI;
+import com.tencent.mm.plugin.repairer.ui.b.c;
+import com.tencent.mm.plugin.repairer.ui.b.d;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI;", "Lcom/tencent/mm/plugin/repairer/ui/BaseRepairerUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "ui-repairer_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class RepairerConversationDemoUI
+  extends BaseRepairerUI
+{
+  private final String TAG = "MicroMsg.RepairerConversationDemoUI";
+  
+  private static final void a(RepairerConversationDemoUI paramRepairerConversationDemoUI, View paramView)
+  {
+    AppMethodBeat.i(278588);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramRepairerConversationDemoUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramRepairerConversationDemoUI, "this$0");
+    paramView = new Intent().setClassName((Context)paramRepairerConversationDemoUI, "com.tencent.mm.plugin.repairer.ui.demo.RepairerConversationDemoUI");
+    paramView = new com.tencent.mm.hellhoundlib.b.a().cG(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b(paramRepairerConversationDemoUI, paramView.aYi(), "com/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI", "onCreate$lambda-1", "(Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI;Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramRepairerConversationDemoUI.startActivity((Intent)paramView.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramRepairerConversationDemoUI, "com/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI", "onCreate$lambda-1", "(Lcom/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI;Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(278588);
+  }
+  
+  private static final boolean a(RepairerConversationDemoUI paramRepairerConversationDemoUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(278583);
+    s.u(paramRepairerConversationDemoUI, "this$0");
+    paramRepairerConversationDemoUI.finish();
+    AppMethodBeat.o(278583);
+    return true;
+  }
+  
+  private static final void eV(View paramView)
+  {
+    AppMethodBeat.i(278596);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/repairer/ui/demo/RepairerConversationDemoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(278596);
+  }
+  
+  public final int getLayoutId()
+  {
+    return b.d.Ovo;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(278632);
+    super.onCreate(paramBundle);
+    setMMTitle("ConversationDemo");
+    setBackBtn(new RepairerConversationDemoUI..ExternalSyntheticLambda0(this));
+    ((Button)findViewById(b.c.Oub)).setOnClickListener(new RepairerConversationDemoUI..ExternalSyntheticLambda1(this));
+    ((Button)findViewById(b.c.Ovh)).setOnClickListener(RepairerConversationDemoUI..ExternalSyntheticLambda2.INSTANCE);
+    AppMethodBeat.o(278632);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.repairer.ui.demo.RepairerConversationDemoUI
+ * JD-Core Version:    0.7.0.1
+ */

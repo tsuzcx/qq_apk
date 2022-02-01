@@ -8,26 +8,26 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class b
   implements Runnable
 {
-  private Queue<Object> jWY;
-  private boolean jWZ;
+  private Queue<Object> mwS;
+  private boolean mwT;
   private Thread thread;
   
   public b()
   {
     AppMethodBeat.i(62452);
-    this.jWY = new ConcurrentLinkedQueue();
+    this.mwS = new ConcurrentLinkedQueue();
     this.thread = null;
-    this.jWZ = false;
+    this.mwT = false;
     AppMethodBeat.o(62452);
   }
   
-  public final void bd(Object paramObject)
+  public final void cx(Object paramObject)
   {
     AppMethodBeat.i(62455);
-    if (this.jWY != null) {
+    if (this.mwS != null) {
       try
       {
-        this.jWY.add(paramObject);
+        this.mwS.add(paramObject);
         notify();
         return;
       }
@@ -43,7 +43,7 @@ public final class b
   {
     AppMethodBeat.i(62456);
     super.finalize();
-    this.jWY.clear();
+    this.mwS.clear();
     AppMethodBeat.o(62456);
   }
   
@@ -67,25 +67,25 @@ public final class b
           e.a((a.b)localObject1);
         }
         if ((Thread.currentThread() != null) && (!Thread.currentThread().isInterrupted())) {
-          if (!this.jWY.isEmpty())
+          if (!this.mwS.isEmpty())
           {
-            localObject1 = this.jWY.poll();
+            localObject1 = this.mwS.poll();
             if (!(localObject1 instanceof a)) {
               continue;
             }
             Object localObject3 = (a)localObject1;
             long l1 = ((a)localObject3).time;
-            localObject1 = ((a)localObject3).jXa;
-            int k = ((a)localObject3).jXb;
-            m = ((a)localObject3).jXd;
-            localObject3 = ((a)localObject3).jWW;
+            localObject1 = ((a)localObject3).mwU;
+            int k = ((a)localObject3).mwV;
+            m = ((a)localObject3).mwX;
+            localObject3 = ((a)localObject3).mwQ;
             d.d("Hardcoder.HardCoderReporter", String.format("forgives, time:%s, size:%s, cpu:%s, io:%s", new Object[] { Long.valueOf(l1), Integer.valueOf(((List)localObject1).size()), Integer.valueOf(k), Integer.valueOf(m) }));
             i = 0;
             if (i >= ((List)localObject1).size()) {
               continue;
             }
             localb = (a.b)((List)localObject1).get(i);
-            if (!localb.aFd()) {
+            if (!localb.aYe()) {
               break label654;
             }
             l2 = l1 - localb.lastUpdateTime;
@@ -94,8 +94,8 @@ public final class b
             {
               if (k == -2)
               {
-                arrayOfInt = localb.jWU;
-                j = localb.jWS;
+                arrayOfInt = localb.mwO;
+                j = localb.mwM;
                 arrayOfInt[j] = ((int)(arrayOfInt[j] + l2));
                 if (m == -1) {
                   continue;
@@ -103,25 +103,25 @@ public final class b
                 if (m != -2) {
                   continue;
                 }
-                arrayOfInt = localb.jWV;
-                j = localb.jWT;
+                arrayOfInt = localb.mwP;
+                j = localb.mwN;
                 arrayOfInt[j] = ((int)(l2 + arrayOfInt[j]));
                 if ((localObject3 != null) && (localObject3.length > 0)) {
-                  localb.jWW = ((int[])localObject3);
+                  localb.mwQ = ((int[])localObject3);
                 }
-                if (!localb.aFd()) {
+                if (!localb.aYe()) {
                   break label661;
                 }
-                j = localb.jWN[0];
-                l2 = f.se(f.sd(j));
-                if (localb.jWX == 0L) {
-                  localb.jWX = l2;
+                j = localb.mwH[0];
+                l2 = f.sa(f.rZ(j));
+                if (localb.mwR == 0L) {
+                  localb.mwR = l2;
                 }
-                localb.jWX = ((l2 + localb.jWX) / 2L);
+                localb.mwR = ((l2 + localb.mwR) / 2L);
                 break label654;
               }
-              localb.jWS = k;
-              arrayOfInt = localb.jWU;
+              localb.mwM = k;
+              arrayOfInt = localb.mwO;
               arrayOfInt[k] = ((int)(arrayOfInt[k] + l2));
               continue;
             }
@@ -134,9 +134,9 @@ public final class b
         Thread.currentThread().interrupt();
         AppMethodBeat.o(62454);
         return;
-        localb.jWS = 0;
-        arrayOfInt = localb.jWU;
-        j = localb.jWS;
+        localb.mwM = 0;
+        arrayOfInt = localb.mwO;
+        j = localb.mwM;
         arrayOfInt[j] = ((int)(arrayOfInt[j] + l2));
         continue;
       }
@@ -147,24 +147,24 @@ public final class b
         long l2;
         d.printErrStackTrace("Hardcoder.HCPerfStatThread", localException, "run exception:", new Object[0]);
         continue;
-        localb.jWT = m;
-        int[] arrayOfInt = localb.jWV;
+        localb.mwN = m;
+        int[] arrayOfInt = localb.mwP;
         arrayOfInt[m] = ((int)(l2 + arrayOfInt[m]));
         continue;
-        localb.jWT = 0;
-        arrayOfInt = localb.jWV;
-        j = localb.jWT;
+        localb.mwN = 0;
+        arrayOfInt = localb.mwP;
+        j = localb.mwN;
         arrayOfInt[j] = ((int)(l2 + arrayOfInt[j]));
         continue;
         try
         {
-          if ((this.jWZ) && (this.thread != null))
+          if ((this.mwT) && (this.thread != null))
           {
             this.thread.interrupt();
             this.thread = null;
-            this.jWZ = false;
+            this.mwT = false;
           }
-          if (this.jWY.isEmpty())
+          if (this.mwS.isEmpty())
           {
             wait();
             continue;
@@ -205,27 +205,27 @@ public final class b
   
   public static final class a
   {
-    public final int[] jWW;
-    public final List<a.b> jXa;
-    public final int jXb;
-    public final int jXc;
-    public final int jXd;
+    public final int[] mwQ;
+    public final List<a.b> mwU;
+    public final int mwV;
+    public final int mwW;
+    public final int mwX;
     public final long time;
     
     public a(long paramLong, List<a.b> paramList, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
     {
       this.time = paramLong;
-      this.jXa = paramList;
-      this.jXb = paramInt1;
-      this.jXc = paramInt2;
-      this.jXd = paramInt3;
-      this.jWW = paramArrayOfInt;
+      this.mwU = paramList;
+      this.mwV = paramInt1;
+      this.mwW = paramInt2;
+      this.mwX = paramInt3;
+      this.mwQ = paramArrayOfInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.hardcoder.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,226 +1,294 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.ch;
-import com.tencent.mm.f.c.cu;
+import com.tencent.mm.plugin.newtips.a.k;
+import com.tencent.mm.plugin.newtips.a.l.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.FinderTipsShowEntranceExtInfo;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.protocal.protobuf.bxi;
+import com.tencent.mm.protocal.protobuf.bxq;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import kotlin.g.b.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "delete", "", "item", "isNotify", "keys", "", "", "(Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;Z[Ljava/lang/String;)Z", "deleteAll", "insertDataForTest", "", "count", "", "isExist", "id", "optMsgInfo", "timeStamp", "", "tipsShowEntranceExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "optPostRedDot", "queryAll", "Ljava/util/LinkedList;", "replace", "update", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "Lcom/tencent/mm/plugin/newtips/model/NewTipsXMLConsumer$NewTipsHandleCallback;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "changeNewTipsPathToCtrInfoPath", "", "pathId", "", "checkValidClientVersion", "", "tipsId", "", "values", "", "findCtrInfoType", "getFinderNewTips", "handleAdd", "uniqueId", "tipsList", "", "Lcom/tencent/mm/plugin/newtips/storage/NewTipsInfo;", "handleCancel", "init", "", "parseFinderExtInfo", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends MAutoStorage<l>
+  implements l.a
 {
-  private static final String[] SQL_CREATE;
-  public static final a xsA;
-  final ISQLiteDatabase db;
+  public static final a APU;
+  private final i Asl;
   
   static
   {
-    AppMethodBeat.i(178147);
-    xsA = new a((byte)0);
-    l.a locala = l.xuN;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(l.access$getInfo$cp(), "FinderRedDotInfo") };
-    AppMethodBeat.o(178147);
+    AppMethodBeat.i(366769);
+    APU = new a((byte)0);
+    AppMethodBeat.o(366769);
   }
   
-  public c(ISQLiteDatabase paramISQLiteDatabase)
+  public c(i parami)
   {
-    super(paramISQLiteDatabase, l.access$getInfo$cp(), "FinderRedDotInfo", cu.INDEX_CREATE);
-    AppMethodBeat.i(178146);
-    this.db = paramISQLiteDatabase;
-    AppMethodBeat.o(178146);
+    AppMethodBeat.i(366753);
+    this.Asl = parami;
+    AppMethodBeat.o(366753);
   }
   
-  private boolean a(l paraml, boolean paramBoolean)
+  private static boolean a(long paramLong, Map<String, String> paramMap)
   {
-    bool1 = true;
-    AppMethodBeat.i(274437);
-    if (paraml == null)
+    AppMethodBeat.i(366765);
+    if (paramMap.containsKey(".sysmsg.newtips.control.android_min_clientversion")) {}
+    for (int i = Util.getInt((String)paramMap.get(".sysmsg.newtips.control.android_min_clientversion"), 0);; i = 0)
     {
-      Log.i("Finder.RedDotCtrInfoStorage", "[replace] failure!");
-      AppMethodBeat.o(274437);
-      return false;
+      if (paramMap.containsKey(".sysmsg.newtips.control.android_max_clientversion")) {}
+      for (int j = Util.getInt((String)paramMap.get(".sysmsg.newtips.control.android_max_clientversion"), 2147483647);; j = 0)
+      {
+        if ((d.Yxh < i) || (d.Yxh > j))
+        {
+          Log.w("Finder.NewTipsTransform", "tipsId=%s, checkValidClientVersion client not match(%s, %s) %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(d.Yxh) });
+          AppMethodBeat.o(366765);
+          return false;
+        }
+        AppMethodBeat.o(366765);
+        return true;
+      }
     }
-    Object localObject = paraml.field_tipsId;
-    p.j(localObject, "item.field_tipsId");
-    p.k(localObject, "id");
-    localObject = "select * from FinderRedDotInfo  where tipsId = '" + (String)localObject + "' ";
-    localObject = this.db.rawQuery((String)localObject, null);
-    p.j(localObject, "cursor");
-    boolean bool2;
-    if (((Cursor)localObject).getCount() > 0)
+  }
+  
+  private static Map<String, String> b(Map<String, String> paramMap, long paramLong)
+  {
+    AppMethodBeat.i(366758);
+    paramMap = (String)paramMap.get(".sysmsg.newtips.ext_info");
+    int i;
+    label39:
+    label68:
+    label72:
+    Object localObject;
+    if (paramMap != null) {
+      if (((CharSequence)paramMap).length() > 0)
+      {
+        i = 1;
+        if (i == 0) {
+          break label114;
+        }
+        if (paramMap == null) {
+          break label124;
+        }
+        paramMap = XmlParser.parseXml(paramMap, "finder", null);
+        s.s(paramMap, "extValues");
+        if (paramMap.isEmpty()) {
+          break label119;
+        }
+        i = 1;
+        if (i == 0) {
+          break label124;
+        }
+        if (paramMap != null)
+        {
+          localObject = (String)paramMap.get(".finder.reddot_type");
+          if (localObject != null) {
+            break label129;
+          }
+          localObject = null;
+          label97:
+          if (localObject != null) {
+            break label139;
+          }
+        }
+      }
+    }
+    label114:
+    label119:
+    label124:
+    while ((((Integer)localObject).intValue() != 1) || ((paramLong != 40001001L) && (paramLong != 40001002L)))
     {
-      bool2 = true;
-      ((Cursor)localObject).close();
-      if (!bool2) {
-        break label280;
+      AppMethodBeat.o(366758);
+      return null;
+      i = 0;
+      break;
+      paramMap = null;
+      break label39;
+      i = 0;
+      break label68;
+      paramMap = null;
+      break label72;
+      localObject = n.bJF((String)localObject);
+      break label97;
+    }
+    label129:
+    label139:
+    AppMethodBeat.o(366758);
+    return paramMap;
+  }
+  
+  public final boolean a(long paramLong, String paramString, List<com.tencent.mm.plugin.newtips.b.c> paramList, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(366783);
+    s.u(paramList, "tipsList");
+    s.u(paramMap, "values");
+    Log.w("Finder.NewTipsTransform", "[handleCancel] tipsId=" + paramLong + " uniqueId=" + paramString);
+    int i;
+    if (b(paramMap, paramLong) != null)
+    {
+      if (!a(paramLong, paramMap))
+      {
+        AppMethodBeat.o(366783);
+        return true;
+      }
+      if (paramLong == 40001002L) {
+        i = 1003;
       }
     }
     for (;;)
     {
-      try
-      {
-        p.k(paraml, "item");
-        if (this.db.update(getTableName(), paraml.convertTo(), "tipsId = ?", new String[] { paraml.field_tipsId }) <= 0) {
-          continue;
-        }
-        if ((bool1) && (paramBoolean)) {
-          doNotify("update");
-        }
-        Log.i("Finder.RedDotCtrInfoStorage", "[update] ret=" + bool1 + " item=" + paraml.field_tipsId + " isNotify=" + paramBoolean);
+      if ((i != -1) && (this.Asl.b(i, (kotlin.g.a.b)new c.b(paramString)))) {
+        Log.i("Finder.NewTipsTransform", "[handleCancel] successfully! tipsId=" + paramLong + " uniqueId=" + paramString);
       }
-      catch (Exception localException)
+      AppMethodBeat.o(366783);
+      return true;
+      if (paramLong == 40001001L)
       {
-        label280:
-        Log.printErrStackTrace("Finder.RedDotCtrInfoStorage", (Throwable)localException, "tipsId=" + paraml.field_tipsId + " type=" + paraml.field_ctrType, new Object[0]);
-        ch localch = new ch();
-        localch.mh("1");
-        localch.fk(10003L);
-        localch.bpa();
-        bool1 = false;
+        i = 1004;
         continue;
+        AppMethodBeat.o(366783);
+        return false;
       }
-      Log.i("Finder.RedDotCtrInfoStorage", "[replace] ret=" + bool1 + " isExist=" + bool2 + " item=" + paraml.field_tipsId + " isNotify=" + paramBoolean);
-      AppMethodBeat.o(274437);
-      return bool1;
-      bool2 = false;
-      break;
-      bool1 = false;
-      continue;
-      bool1 = insertNotify((IAutoDBItem)paraml, paramBoolean);
+      else
+      {
+        i = -1;
+      }
     }
   }
   
-  /* Error */
-  public final java.util.LinkedList<l> dqx()
+  public final boolean b(long paramLong, String paramString, List<com.tencent.mm.plugin.newtips.b.c> paramList, Map<String, String> paramMap)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: ldc_w 257
-    //   6: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 263	java/lang/System:currentTimeMillis	()J
-    //   12: lstore_1
-    //   13: new 265	java/util/LinkedList
-    //   16: dup
-    //   17: invokespecial 266	java/util/LinkedList:<init>	()V
-    //   20: astore 4
-    //   22: aload_0
-    //   23: invokevirtual 270	com/tencent/mm/plugin/finder/extension/reddot/c:getAll	()Landroid/database/Cursor;
-    //   26: astore 6
-    //   28: aload 6
-    //   30: ifnull +74 -> 104
-    //   33: aload 6
-    //   35: checkcast 272	java/io/Closeable
-    //   38: astore 6
-    //   40: aload 6
-    //   42: checkcast 156	android/database/Cursor
-    //   45: astore 7
-    //   47: aload 7
-    //   49: invokeinterface 275 1 0
-    //   54: istore_3
-    //   55: iload_3
-    //   56: ifeq +37 -> 93
-    //   59: new 66	com/tencent/mm/plugin/finder/extension/reddot/l
-    //   62: dup
-    //   63: invokespecial 276	com/tencent/mm/plugin/finder/extension/reddot/l:<init>	()V
-    //   66: astore 8
-    //   68: aload 8
-    //   70: aload 7
-    //   72: invokevirtual 280	com/tencent/mm/plugin/finder/extension/reddot/l:convertFrom	(Landroid/database/Cursor;)V
-    //   75: aload 4
-    //   77: aload 8
-    //   79: invokevirtual 284	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   82: pop
-    //   83: aload 7
-    //   85: invokeinterface 287 1 0
-    //   90: ifne -31 -> 59
-    //   93: getstatic 293	kotlin/x:aazN	Lkotlin/x;
-    //   96: astore 7
-    //   98: aload 6
-    //   100: aconst_null
-    //   101: invokestatic 298	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   104: ldc 112
-    //   106: new 131	java/lang/StringBuilder
-    //   109: dup
-    //   110: ldc_w 300
-    //   113: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   116: invokestatic 263	java/lang/System:currentTimeMillis	()J
-    //   119: lload_1
-    //   120: lsub
-    //   121: invokevirtual 303	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   124: ldc_w 305
-    //   127: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   130: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: invokestatic 119	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   136: ldc_w 257
-    //   139: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   142: aload 4
-    //   144: areturn
-    //   145: astore 8
-    //   147: ldc 112
-    //   149: aload 8
-    //   151: checkcast 201	java/lang/Throwable
-    //   154: ldc_w 306
-    //   157: iconst_0
-    //   158: anewarray 214	java/lang/Object
-    //   161: invokestatic 218	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   164: goto -81 -> 83
-    //   167: astore 5
-    //   169: ldc_w 257
-    //   172: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   175: aload 5
-    //   177: athrow
-    //   178: astore 4
-    //   180: aload 6
-    //   182: aload 5
-    //   184: invokestatic 298	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   187: ldc_w 257
-    //   190: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   193: aload 4
-    //   195: athrow
-    //   196: astore 4
-    //   198: goto -18 -> 180
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	201	0	this	c
-    //   12	108	1	l	long
-    //   54	2	3	bool	boolean
-    //   20	123	4	localLinkedList	java.util.LinkedList
-    //   178	16	4	localObject1	Object
-    //   196	1	4	localObject2	Object
-    //   1	1	5	localObject3	Object
-    //   167	16	5	localThrowable	Throwable
-    //   26	155	6	localObject4	Object
-    //   45	52	7	localObject5	Object
-    //   66	12	8	locall	l
-    //   145	5	8	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   59	83	145	java/lang/Exception
-    //   40	55	167	java/lang/Throwable
-    //   59	83	167	java/lang/Throwable
-    //   83	93	167	java/lang/Throwable
-    //   93	98	167	java/lang/Throwable
-    //   147	164	167	java/lang/Throwable
-    //   169	178	178	finally
-    //   40	55	196	finally
-    //   59	83	196	finally
-    //   83	93	196	finally
-    //   93	98	196	finally
-    //   147	164	196	finally
+    AppMethodBeat.i(366793);
+    s.u(paramList, "tipsList");
+    s.u(paramMap, "values");
+    if (b(paramMap, paramLong) != null)
+    {
+      if (!a(paramLong, paramMap))
+      {
+        AppMethodBeat.o(366793);
+        return true;
+      }
+      paramMap = (com.tencent.mm.plugin.newtips.b.c)p.oL(paramList);
+      int i;
+      Iterator localIterator;
+      if (paramMap == null)
+      {
+        i = 0;
+        paramMap = new btw();
+        localIterator = ((Iterable)paramList).iterator();
+      }
+      for (;;)
+      {
+        label83:
+        if (!localIterator.hasNext()) {
+          break label491;
+        }
+        paramList = (com.tencent.mm.plugin.newtips.b.c)localIterator.next();
+        bxq localbxq = new bxq();
+        if (paramList.field_showType != k.MsJ.value)
+        {
+          paramMap.aabA.add(localbxq);
+          int j = paramList.field_showType;
+          if (j == k.MsM.value)
+          {
+            localbxq.title = paramList.field_title;
+            localbxq.show_type = 3;
+            label173:
+            switch (paramList.field_path)
+            {
+            default: 
+              paramList = "";
+            }
+          }
+          for (;;)
+          {
+            localbxq.path = paramList;
+            localbxq.aagq = 1;
+            if (paramLong != 40001002L) {
+              break label434;
+            }
+            paramList = new FinderTipsShowEntranceExtInfo();
+            paramList.tab_type = 2;
+            localbxq.aagr = 1;
+            localbxq.aags = new com.tencent.mm.bx.b(paramList.toByteArray());
+            paramMap.type = 1003;
+            break label83;
+            i = paramMap.field_priority;
+            break;
+            if (j == k.MsP.value)
+            {
+              localbxq.count = 1;
+              localbxq.show_type = 2;
+              break label173;
+            }
+            if (j == k.MsN.value)
+            {
+              localbxq.icon_url = paramList.field_icon_url;
+              localbxq.show_type = 4;
+              break label173;
+            }
+            if (j == k.MsK.value)
+            {
+              localbxq.show_type = 1;
+              break label173;
+            }
+            if (j != k.MsL.value) {
+              break label173;
+            }
+            localbxq.show_type = 100;
+            break label173;
+            paramList = "Discovery";
+            continue;
+            paramList = "FinderEntrance";
+            continue;
+            paramList = "finder_tl_hot_tab";
+            continue;
+            paramList = "finder_tl_nearby_tab";
+          }
+          label434:
+          if (paramLong == 40001001L)
+          {
+            paramList = new FinderTipsShowEntranceExtInfo();
+            paramList.tab_type = 4;
+            localbxq.aagr = 1;
+            localbxq.aags = new com.tencent.mm.bx.b(paramList.toByteArray());
+            paramMap.type = 1004;
+          }
+        }
+      }
+      label491:
+      paramMap.ZYN = paramString;
+      paramMap.priority = i;
+      paramString = new bxh();
+      paramList = new bxi();
+      paramString.aace.add(paramList);
+      paramList.aagf = paramMap;
+      this.Asl.a(paramString, "FinderNewTipsTransform");
+      AppMethodBeat.o(366793);
+      return true;
+    }
+    AppMethodBeat.o(366793);
+    return false;
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "TAG", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$Companion;", "", "()V", "NEW_TIPS_TIPS_ID_FINDER_TL_HOT_TAB", "", "NEW_TIPS_TIPS_ID_FINDER_TL_NEARBY_TAB", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER", "", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER_RED_DOT_TYPE", "TAG", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.c
  * JD-Core Version:    0.7.0.1
  */

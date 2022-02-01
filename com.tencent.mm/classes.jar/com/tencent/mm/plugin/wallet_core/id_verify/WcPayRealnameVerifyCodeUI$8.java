@@ -10,9 +10,9 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.u.g;
+import com.tencent.mm.ui.widget.a.f;
 
 final class WcPayRealnameVerifyCodeUI$8
   implements View.OnClickListener
@@ -23,37 +23,37 @@ final class WcPayRealnameVerifyCodeUI$8
   {
     AppMethodBeat.i(174466);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
     Log.d("MicroMsg.WcPayRealNameVerifyCodeUI", "click verify code fail tv");
-    paramView = new e(this.OKl.getContext(), 1, false);
-    localObject = this.OKl.getLayoutInflater().inflate(a.g.wc_pay_realname_verify_code_fail_dialog, null);
+    paramView = new f(this.VzX.getContext(), 1, false);
+    localObject = this.VzX.getLayoutInflater().inflate(a.g.wc_pay_realname_verify_code_fail_dialog, null);
     ((Button)((View)localObject).findViewById(a.f.i_know_btn)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(174464);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$8$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        paramView.bYF();
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$8$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        paramView.cyW();
         a.a(this, "com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$8$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(174464);
       }
     });
-    paramView.ODT = new q.f()
+    paramView.Vtg = new u.g()
     {
-      public final void onCreateMMMenu(o paramAnonymouso)
+      public final void onCreateMMMenu(s paramAnonymouss)
       {
         AppMethodBeat.i(174465);
-        paramAnonymouso.clear();
+        paramAnonymouss.clear();
         paramView.setFooterView(null);
-        paramView.setFooterView(this.OKn);
+        paramView.setFooterView(this.VzZ);
         AppMethodBeat.o(174465);
       }
     };
-    paramView.rn(true);
-    paramView.eik();
+    paramView.uR(true);
+    paramView.dDn();
     a.a(this, "com/tencent/mm/plugin/wallet_core/id_verify/WcPayRealnameVerifyCodeUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(174466);
   }

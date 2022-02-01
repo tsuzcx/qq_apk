@@ -1,76 +1,91 @@
 package com.tencent.mm.plugin.finder.live.cgi;
 
-import com.tencent.c.a.a.a.c.a.b;
+import com.tencent.d.a.a.a.c.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.plugin.finder.live.model.cgi.n;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.protocal.protobuf.auu;
-import com.tencent.mm.protocal.protobuf.auv;
-import com.tencent.mm.protocal.protobuf.ayv;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.plugin.finder.live.model.cgi.o;
+import com.tencent.mm.protocal.protobuf.atz;
+import com.tencent.mm.protocal.protobuf.azo;
+import com.tencent.mm.protocal.protobuf.azp;
+import com.tencent.mm.protocal.protobuf.bfv;
+import com.tencent.mm.protocal.protobuf.bgc;
+import com.tencent.mm.protocal.protobuf.bma;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.a.j;
-import kotlin.l;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderGetLiveMsg;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveMsgResp;", "finderBaseRequest", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "finderUsername", "", "liveCookies", "", "liveId", "", "objectId", "nonceId", "scene", "", "offline", "", "clientStatus", "Lcom/tencent/mm/protocal/protobuf/FinderLiveClientStatus;", "reqVisitorRoleType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "callback", "Lcom/tencent/plugin/finder/live/api/service/ILiveCgiFactoryService$IGetLiveMsgCallBack;", "(Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;Ljava/lang/String;[BJJLjava/lang/String;IZLcom/tencent/mm/protocal/protobuf/FinderLiveClientStatus;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Lcom/tencent/plugin/finder/live/api/service/ILiveCgiFactoryService$IGetLiveMsgCallBack;)V", "TAG", "getReqVisitorRoleType", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveMsgReq;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderGetLiveMsg;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveMsgResp;", "finderBaseRequest", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "finderUsername", "", "liveCookies", "", "liveId", "", "objectId", "nonceId", "scene", "", "offline", "", "clientStatus", "Lcom/tencent/mm/protocal/protobuf/FinderLiveClientStatus;", "reqVisitorRoleType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "uniqueId", "callback", "Lcom/tencent/plugin/finder/live/api/service/ILiveCgiFactoryService$IGetLiveMsgCallBack;", "seiData", "curBox", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBoxId;", "liveReportObj", "Lcom/tencent/mm/protocal/protobuf/FinderLiveReportBaseInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;Ljava/lang/String;[BJJLjava/lang/String;IZLcom/tencent/mm/protocal/protobuf/FinderLiveClientStatus;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;Ljava/lang/String;Lcom/tencent/plugin/finder/live/api/service/ILiveCgiFactoryService$IGetLiveMsgCallBack;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderLiveBoxId;Lcom/tencent/mm/protocal/protobuf/FinderLiveReportBaseInfo;)V", "TAG", "getReqVisitorRoleType", "()I", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetLiveMsgReq;", "getUniqueId", "()Ljava/lang/String;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends n<auv>
+  extends o<azp>
 {
+  private final int CuT;
+  private a.b CuU;
+  private azo CuV;
   private final String TAG;
-  private a.b xXN;
-  private auu xXO;
-  private final int xXP;
+  private final String hTs;
   
-  public b(aqe paramaqe, String paramString1, byte[] paramArrayOfByte, long paramLong1, long paramLong2, String paramString2, int paramInt1, boolean paramBoolean, ayv paramayv, int paramInt2, bid parambid, a.b paramb)
+  public b(atz paramatz, String paramString1, byte[] paramArrayOfByte, long paramLong1, long paramLong2, String paramString2, int paramInt1, boolean paramBoolean, bgc parambgc, int paramInt2, bui parambui, String paramString3, a.b paramb, String paramString4, bfv parambfv, bma parambma)
   {
-    super(parambid);
-    AppMethodBeat.i(233965);
-    this.xXP = paramInt2;
+    super(parambui);
+    AppMethodBeat.i(371260);
+    this.CuT = paramInt2;
+    this.hTs = paramString3;
     this.TAG = "Finder.CgiFinderGetLiveMsg";
-    this.xXN = paramb;
-    this.xXO = new auu();
-    this.xXO.SDi = paramaqe;
-    this.xXO.finderUsername = paramString1;
-    this.xXO.xak = com.tencent.mm.cd.b.cU(paramArrayOfByte);
-    this.xXO.liveId = paramLong1;
-    this.xXO.xbk = paramLong2;
-    this.xXO.object_nonce_id = paramString2;
-    this.xXO.scene = paramInt1;
-    this.xXO.Gch = paramBoolean;
-    this.xXO.SGQ = paramayv;
-    paramaqe = ao.xcj;
-    ao.a(this.xXO.SDi, j.listOf(new o(Integer.valueOf(parambid.xkX), Long.valueOf(paramLong2))));
-    paramaqe = new d.a();
-    paramaqe.c((a)this.xXO);
-    paramString1 = new auv();
-    paramString1.setBaseResponse(new jh());
-    paramString1.getBaseResponse().Tef = new eaf();
-    paramaqe.d((a)paramString1);
-    paramaqe.TW("/cgi-bin/micromsg-bin/findergetlivemsg");
-    paramaqe.vD(3976);
-    paramaqe.bia();
-    paramaqe.bib();
-    c(paramaqe.bgN());
-    paramaqe = this.TAG;
-    paramString1 = new StringBuilder("CgiFinderGetLiveMsg init ").append(this.xXO.liveId).append(',').append(this.xXO.finderUsername).append(',').append(this.xXO.scene).append(",liveCookies is null:");
-    if (this.xXO.xak == null) {}
+    this.CuU = paramb;
+    this.CuV = new azo();
+    this.CuV.ZEc = paramatz;
+    this.CuV.finderUsername = paramString1;
+    this.CuV.Ayh = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    this.CuV.liveId = paramLong1;
+    this.CuV.hKN = paramLong2;
+    this.CuV.object_nonce_id = paramString2;
+    this.CuV.scene = paramInt1;
+    this.CuV.LXS = paramBoolean;
+    this.CuV.ZJI = parambgc;
+    this.CuV.ZJM = parambfv;
+    this.CuV.ZIR = parambma;
+    if (paramString4 != null)
+    {
+      this.CuV.ZJJ = com.tencent.mm.bx.b.bsj(paramString4);
+      paramatz = bi.ABn;
+      bi.a(this.CuV.ZEc, p.listOf(new r(Integer.valueOf(parambui.AJo), Long.valueOf(paramLong2))));
+      paramatz = new c.a();
+      paramatz.otE = ((a)this.CuV);
+      paramString1 = new azp();
+      paramString1.setBaseResponse(new kd());
+      paramString1.getBaseResponse().akjO = new etl();
+      paramatz.otF = ((a)paramString1);
+      paramatz.uri = "/cgi-bin/micromsg-bin/findergetlivemsg";
+      paramatz.funcId = 3976;
+      paramatz.longPolling = true;
+      paramatz.longPollingTimeout = 25000;
+      c(paramatz.bEF());
+      paramatz = this.TAG;
+      paramString1 = new StringBuilder("CgiFinderGetLiveMsg init ").append(this.CuV.liveId).append(',').append(this.CuV.finderUsername).append(',').append(this.CuV.scene).append(",liveCookies is null:");
+      if (this.CuV.Ayh != null) {
+        break label468;
+      }
+    }
+    label468:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      Log.i(paramaqe, paramBoolean + ",reqVisitorRoleType:" + this.xXP);
-      AppMethodBeat.o(233965);
+      Log.i(paramatz, paramBoolean + ",reqVisitorRoleType:" + this.CuT + ", request.offline:" + this.CuV.LXS + ", uniqueId:" + this.hTs);
+      AppMethodBeat.o(371260);
       return;
+      Log.e(this.TAG, "ljd live sei is empty");
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.cgi.b
  * JD-Core Version:    0.7.0.1
  */

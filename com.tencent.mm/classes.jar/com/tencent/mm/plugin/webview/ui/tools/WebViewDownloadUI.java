@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -17,84 +16,54 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a.c.a;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.f.a.i;
-import com.tencent.mm.kernel.k;
-import com.tencent.mm.plugin.downloader.model.c;
+import com.tencent.mm.autogen.a.j;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.modelimage.r;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.m;
-import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.webview.c.c;
 import com.tencent.mm.plugin.webview.c.d;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.g;
 import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.plugin.webview.c.i;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import java.io.IOException;
 import java.util.Map;
 
-@k
+@com.tencent.mm.kernel.k
 public class WebViewDownloadUI
   extends MMActivity
 {
-  private boolean PVr;
-  private Button QcW;
-  private Button QcX;
-  private a QcY;
-  private String QcZ;
-  private int Qda;
-  private m Qdb;
+  private boolean WLY;
+  private Button WUI;
+  private Button WUJ;
+  private a WUK;
+  private String WUL;
+  private int WUM;
+  private m WUN;
   private String errMsg;
   private int fromScene;
-  private int gcB;
+  private int iiN;
   private Context mContext;
-  private long ovJ;
   private String packageName;
-  private TextView qCM;
-  private int uhG;
+  private long rzd;
+  private TextView tHK;
+  private int xnM;
   
   public WebViewDownloadUI()
   {
     AppMethodBeat.i(79818);
-    this.Qdb = new m()
+    this.WUN = new m()
     {
-      public final void Hp(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(79811);
-        Log.i("MicroMsg.WebViewDownloadUI", "onTaskRemoved id=%d", new Object[] { Long.valueOf(paramAnonymousLong) });
-        WebViewDownloadUI.this.finish();
-        AppMethodBeat.o(79811);
-      }
-      
-      public final void Hq(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(79812);
-        Log.i("MicroMsg.WebViewDownloadUI", "onTaskPaused id=%d", new Object[] { Long.valueOf(paramAnonymousLong) });
-        AppMethodBeat.o(79812);
-      }
-      
-      public final void Hr(long paramAnonymousLong) {}
-      
       public final void a(long paramAnonymousLong1, String paramAnonymousString, long paramAnonymousLong2, long paramAnonymousLong3) {}
-      
-      public final void b(long paramAnonymousLong, int paramAnonymousInt, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(79810);
-        Log.i("MicroMsg.WebViewDownloadUI", "onTaskFailed id=%d, errCode=%d, hasChangeUrl=%b", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
-        Toast.makeText(WebViewDownloadUI.this.getContext(), WebViewDownloadUI.this.getString(c.i.webview_download_ui_download_failed), 1).show();
-        WebViewDownloadUI.this.finish();
-        AppMethodBeat.o(79810);
-      }
       
       public final void b(long paramAnonymousLong, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
@@ -105,14 +74,40 @@ public class WebViewDownloadUI
         AppMethodBeat.o(79809);
       }
       
-      public final void m(long paramAnonymousLong, String paramAnonymousString)
+      public final void c(long paramAnonymousLong, int paramAnonymousInt, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(79810);
+        Log.i("MicroMsg.WebViewDownloadUI", "onTaskFailed id=%d, errCode=%d, hasChangeUrl=%b", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(paramAnonymousInt), Boolean.valueOf(paramAnonymousBoolean) });
+        Toast.makeText(WebViewDownloadUI.this.getContext(), WebViewDownloadUI.this.getString(c.i.webview_download_ui_download_failed), 1).show();
+        WebViewDownloadUI.this.finish();
+        AppMethodBeat.o(79810);
+      }
+      
+      public final void jF(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(79811);
+        Log.i("MicroMsg.WebViewDownloadUI", "onTaskRemoved id=%d", new Object[] { Long.valueOf(paramAnonymousLong) });
+        WebViewDownloadUI.this.finish();
+        AppMethodBeat.o(79811);
+      }
+      
+      public final void jG(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(79812);
+        Log.i("MicroMsg.WebViewDownloadUI", "onTaskPaused id=%d", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(79812);
+      }
+      
+      public final void jH(long paramAnonymousLong) {}
+      
+      public final void v(long paramAnonymousLong, String paramAnonymousString)
       {
         AppMethodBeat.i(79808);
         Log.i("MicroMsg.WebViewDownloadUI", "onTaskStarted id=%d, savedFilePath=%s", new Object[] { Long.valueOf(paramAnonymousLong), paramAnonymousString });
         AppMethodBeat.o(79808);
       }
       
-      public final void n(long paramAnonymousLong, String paramAnonymousString)
+      public final void w(long paramAnonymousLong, String paramAnonymousString)
       {
         AppMethodBeat.i(79813);
         Log.i("MicroMsg.WebViewDownloadUI", "onTaskResumed id=%d, savedFilePath=%s", new Object[] { Long.valueOf(paramAnonymousLong), paramAnonymousString });
@@ -125,23 +120,23 @@ public class WebViewDownloadUI
   private void a(a parama)
   {
     AppMethodBeat.i(79821);
-    Log.i("MicroMsg.WebViewDownloadUI", "setDownloadState old=%s new=%s", new Object[] { this.QcY, parama });
-    this.QcY = parama;
-    switch (5.Qdg[this.QcY.ordinal()])
+    Log.i("MicroMsg.WebViewDownloadUI", "setDownloadState old=%s new=%s", new Object[] { this.WUK, parama });
+    this.WUK = parama;
+    switch (5.WUS[this.WUK.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(79821);
       return;
-      this.QcW.setVisibility(0);
-      this.qCM.setVisibility(8);
-      this.QcX.setVisibility(8);
+      this.WUI.setVisibility(0);
+      this.tHK.setVisibility(8);
+      this.WUJ.setVisibility(8);
       AppMethodBeat.o(79821);
       return;
-      this.QcW.setVisibility(8);
-      this.QcX.setVisibility(0);
-      this.qCM.setVisibility(0);
+      this.WUI.setVisibility(8);
+      this.WUJ.setVisibility(0);
+      this.tHK.setVisibility(0);
     }
   }
   
@@ -167,15 +162,15 @@ public class WebViewDownloadUI
       }
     });
     setActionbarColor(getResources().getColor(c.c.white));
-    overridePendingTransition(MMFragmentActivity.a.rhY, MMFragmentActivity.a.rhZ);
-    this.QcW = ((Button)findViewById(c.f.download_op_btn));
-    this.QcX = ((Button)findViewById(c.f.download_cancel_btn));
+    overridePendingTransition(MMFragmentActivity.a.upU, MMFragmentActivity.a.upV);
+    this.WUI = ((Button)findViewById(c.f.download_op_btn));
+    this.WUJ = ((Button)findViewById(c.f.download_cancel_btn));
     Object localObject1 = (TextView)findViewById(c.f.download_name);
     TextView localTextView1 = (TextView)findViewById(c.f.download_version);
     TextView localTextView2 = (TextView)findViewById(c.f.download_developer);
     ImageView localImageView = (ImageView)findViewById(c.f.download_thumb);
-    this.qCM = ((TextView)findViewById(c.f.download_tips));
-    a(a.Qdh);
+    this.tHK = ((TextView)findViewById(c.f.download_tips));
+    a(a.WUT);
     final String str3 = getIntent().getStringExtra("task_name");
     final String str4 = getIntent().getStringExtra("task_url");
     final String str5 = getIntent().getStringExtra("alternative_url");
@@ -189,12 +184,12 @@ public class WebViewDownloadUI
     String str2 = getIntent().getStringExtra("title");
     final String str10 = getIntent().getStringExtra("page_url");
     final int j = getIntent().getIntExtra("task_scene", 0);
-    this.Qda = getIntent().getIntExtra("page_scene", 0);
+    this.WUM = getIntent().getIntExtra("page_scene", 0);
     this.fromScene = getIntent().getIntExtra("from_scene", 0);
-    this.gcB = getIntent().getIntExtra("task_download_type", 0);
-    Log.i("MicroMsg.WebViewDownloadUI", "onCreate: md5=%s, url=%s, extInfo=%s, fileType=%s, appId=%s, packageName=%s, taskSize=%d, thumbUrl=%s, pageScene=%s", new Object[] { str6, str4, str7, paramBundle, str8, this.packageName, Long.valueOf(l), str9, Integer.valueOf(this.Qda) });
-    com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str8, Integer.valueOf(1), str10, str4, Integer.valueOf(this.fromScene) });
-    this.uhG = Util.getInt(paramBundle, 1);
+    this.iiN = getIntent().getIntExtra("task_download_type", 0);
+    Log.i("MicroMsg.WebViewDownloadUI", "onCreate: md5=%s, url=%s, extInfo=%s, fileType=%s, appId=%s, packageName=%s, taskSize=%d, thumbUrl=%s, pageScene=%s", new Object[] { str6, str4, str7, paramBundle, str8, this.packageName, Long.valueOf(l), str9, Integer.valueOf(this.WUM) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str8, Integer.valueOf(1), str10, str4, Integer.valueOf(this.fromScene) });
+    this.xnM = Util.getInt(paramBundle, 1);
     String str1;
     String str11;
     String str12;
@@ -203,7 +198,7 @@ public class WebViewDownloadUI
       paramBundle = Util.nullAsNil(str3);
       if (!Util.isNullOrNil(paramBundle))
       {
-        ar.a(((TextView)localObject1).getPaint(), 0.8F);
+        aw.a(((TextView)localObject1).getPaint(), 0.8F);
         ((TextView)localObject1).setText(paramBundle);
         ((TextView)localObject1).setVisibility(0);
       }
@@ -281,13 +276,13 @@ public class WebViewDownloadUI
               paramBundle = String.format("<a href='" + str12 + "'>%s</a>  |  <a href='" + str11 + "'>%s</a>", new Object[] { getString(c.i.webview_download_ui_app_permission_detail), getString(c.i.webview_download_ui_app_privacy_detail) });
               localObject1 = (TextView)findViewById(c.f.app_info_extra);
               ((TextView)localObject1).setText(paramBundle);
-              l.q((TextView)localObject1, 1);
+              p.t((TextView)localObject1, 1);
               ((TextView)localObject1).setVisibility(0);
               if (i != 0) {
                 continue;
               }
-              com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str8, Integer.valueOf(7), str10, str4, Integer.valueOf(this.fromScene) });
-              if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzN, 0) != 1) {
+              com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str8, Integer.valueOf(7), str10, str4, Integer.valueOf(this.fromScene) });
+              if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(com.tencent.mm.plugin.expt.b.c.a.yNt, 1) != 1) {
                 continue;
               }
               i = 1;
@@ -320,33 +315,33 @@ public class WebViewDownloadUI
             continue;
             if (l > 0L)
             {
-              this.QcZ = Util.getSizeMB(l);
-              this.QcW.setText(getString(c.i.webview_download_ui_btn_state_to_download_size, new Object[] { this.QcZ }));
+              this.WUL = Util.getSizeMB(l);
+              this.WUI.setText(getString(c.i.webview_download_ui_btn_state_to_download_size, new Object[] { this.WUL }));
             }
             i = getResources().getDimensionPixelSize(c.d.Edge_3_5_A);
             int k = getResources().getDimensionPixelSize(c.d.Edge_18A);
             int m = getIntent().getIntExtra("icon_res_id", c.h.webview_download_thumb_unknown);
-            paramBundle = q.bml();
-            localObject1 = new c.a();
-            ((c.a)localObject1).lRP = m;
-            ((c.a)localObject1).lRC = true;
-            ((c.a)localObject1).lRX = true;
-            localObject1 = ((c.a)localObject1).dO(k, k);
-            ((c.a)localObject1).lRO = true;
-            ((c.a)localObject1).kPz = true;
-            ((c.a)localObject1).lRW = i;
-            ((c.a)localObject1).lRD = true;
-            paramBundle.a(str9, localImageView, ((c.a)localObject1).bmL());
-            this.QcW.setOnClickListener(new View.OnClickListener()
+            paramBundle = r.bKe();
+            localObject1 = new com.tencent.mm.modelimage.loader.a.c.a();
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKB = m;
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKo = true;
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKJ = true;
+            localObject1 = ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).eG(k, k);
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKA = true;
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).nrc = true;
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKI = i;
+            ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).oKp = true;
+            paramBundle.a(str9, localImageView, ((com.tencent.mm.modelimage.loader.a.c.a)localObject1).bKx());
+            this.WUI.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(79806);
-                com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                localb.bn(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/WebViewDownloadUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                b localb = new b();
+                localb.cH(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/WebViewDownloadUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
                 Log.i("MicroMsg.WebViewDownloadUI", "downloadOpBtn.onClick state=%s", new Object[] { WebViewDownloadUI.a(WebViewDownloadUI.this) });
-                switch (WebViewDownloadUI.5.Qdg[WebViewDownloadUI.a(WebViewDownloadUI.this).ordinal()])
+                switch (WebViewDownloadUI.5.WUS[WebViewDownloadUI.a(WebViewDownloadUI.this).ordinal()])
                 {
                 default: 
                   Log.e("MicroMsg.WebViewDownloadUI", "downloadOpBtn.onClick unexpected download state");
@@ -370,14 +365,14 @@ public class WebViewDownloadUI
                   }
                   else
                   {
-                    com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str8, Integer.valueOf(4), str10, str4, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
-                    com.tencent.mm.ui.base.h.a(WebViewDownloadUI.this, WebViewDownloadUI.this.getString(c.i.webview_download_ui_download_not_in_wifi_tips), WebViewDownloadUI.this.getString(c.i.webview_download_ui_download_not_in_wifi_title), WebViewDownloadUI.this.getString(c.i.webview_download_ui_btn_state_to_download), WebViewDownloadUI.this.getString(c.i.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                    com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str8, Integer.valueOf(4), str10, str4, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
+                    com.tencent.mm.ui.base.k.a(WebViewDownloadUI.this, WebViewDownloadUI.this.getString(c.i.webview_download_ui_download_not_in_wifi_tips), WebViewDownloadUI.this.getString(c.i.webview_download_ui_download_not_in_wifi_title), WebViewDownloadUI.this.getString(c.i.webview_download_ui_btn_state_to_download), WebViewDownloadUI.this.getString(c.i.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
                     {
                       public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                       {
                         AppMethodBeat.i(79804);
-                        com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { WebViewDownloadUI.2.this.val$appId, Integer.valueOf(5), WebViewDownloadUI.2.this.CBw, WebViewDownloadUI.2.this.val$url, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
-                        WebViewDownloadUI.a(WebViewDownloadUI.this, WebViewDownloadUI.2.this.val$url, WebViewDownloadUI.2.this.lQU, WebViewDownloadUI.2.this.ove, WebViewDownloadUI.2.this.val$appId, WebViewDownloadUI.2.this.Qdd, WebViewDownloadUI.2.this.CBw, WebViewDownloadUI.2.this.ovt, WebViewDownloadUI.c(WebViewDownloadUI.this), WebViewDownloadUI.2.this.Qde);
+                        com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { WebViewDownloadUI.2.this.etl, Integer.valueOf(5), WebViewDownloadUI.2.this.Ivm, WebViewDownloadUI.2.this.val$url, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
+                        WebViewDownloadUI.a(WebViewDownloadUI.this, WebViewDownloadUI.2.this.val$url, WebViewDownloadUI.2.this.oJE, WebViewDownloadUI.2.this.ryy, WebViewDownloadUI.2.this.etl, WebViewDownloadUI.2.this.WUP, WebViewDownloadUI.2.this.Ivm, WebViewDownloadUI.2.this.ryN, WebViewDownloadUI.c(WebViewDownloadUI.this), WebViewDownloadUI.2.this.WUQ);
                         paramAnonymous2DialogInterface.dismiss();
                         AppMethodBeat.o(79804);
                       }
@@ -386,7 +381,7 @@ public class WebViewDownloadUI
                       public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                       {
                         AppMethodBeat.i(79805);
-                        com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { WebViewDownloadUI.2.this.val$appId, Integer.valueOf(6), WebViewDownloadUI.2.this.CBw, WebViewDownloadUI.2.this.val$url, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
+                        com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { WebViewDownloadUI.2.this.etl, Integer.valueOf(6), WebViewDownloadUI.2.this.Ivm, WebViewDownloadUI.2.this.val$url, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
                         paramAnonymous2DialogInterface.dismiss();
                         AppMethodBeat.o(79805);
                       }
@@ -395,16 +390,16 @@ public class WebViewDownloadUI
                 }
               }
             });
-            this.QcX.setOnClickListener(new View.OnClickListener()
+            this.WUJ.setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(79807);
-                com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                localb.bn(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/WebViewDownloadUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                b localb = new b();
+                localb.cH(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/webview/ui/tools/WebViewDownloadUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
                 Log.i("MicroMsg.WebViewDownloadUI", "doCancelDownloadTask, downloadId = %d, state=%s", new Object[] { Long.valueOf(WebViewDownloadUI.e(WebViewDownloadUI.this)), WebViewDownloadUI.a(WebViewDownloadUI.this) });
-                com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str8, Integer.valueOf(3), str10, str4, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
+                com.tencent.mm.plugin.report.service.h.OAn.b(14217, new Object[] { str8, Integer.valueOf(3), str10, str4, Integer.valueOf(WebViewDownloadUI.d(WebViewDownloadUI.this)) });
                 if (WebViewDownloadUI.e(WebViewDownloadUI.this) <= 0L)
                 {
                   Log.e("MicroMsg.WebViewDownloadUI", "doCancelDownloadTask fail, unexpected branch! ");
@@ -415,7 +410,7 @@ public class WebViewDownloadUI
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/WebViewDownloadUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(79807);
                   return;
-                  int i = f.cPZ().Iw(WebViewDownloadUI.e(WebViewDownloadUI.this));
+                  int i = f.duv().kR(WebViewDownloadUI.e(WebViewDownloadUI.this));
                   Log.i("MicroMsg.WebViewDownloadUI", "doCancelDownloadTask, ret = %d", new Object[] { Integer.valueOf(i) });
                   if (i <= 0) {
                     break;
@@ -425,8 +420,8 @@ public class WebViewDownloadUI
                 }
               }
             });
-            f.cPZ();
-            c.a(this.Qdb);
+            f.duv();
+            com.tencent.mm.plugin.downloader.model.c.a(this.WUN);
             AppMethodBeat.o(79819);
             return;
             localIOException1 = localIOException1;
@@ -460,18 +455,18 @@ public class WebViewDownloadUI
   {
     AppMethodBeat.i(79820);
     super.onDestroy();
-    Log.i("MicroMsg.WebViewDownloadUI", "onDestroy hasCallback=%b", new Object[] { Boolean.valueOf(this.PVr) });
-    if (!this.PVr)
+    Log.i("MicroMsg.WebViewDownloadUI", "onDestroy hasCallback=%b", new Object[] { Boolean.valueOf(this.WLY) });
+    if (!this.WLY)
     {
-      i locali = new i();
-      locali.fuB.fuC = true;
-      locali.fuB.scene = this.Qda;
-      locali.fuB.errMsg = this.errMsg;
-      EventCenter.instance.publish(locali);
-      this.PVr = true;
+      j localj = new j();
+      localj.hyT.hyU = true;
+      localj.hyT.scene = this.WUM;
+      localj.hyT.errMsg = this.errMsg;
+      localj.publish();
+      this.WLY = true;
     }
-    f.cPZ();
-    c.b(this.Qdb);
+    f.duv();
+    com.tencent.mm.plugin.downloader.model.c.b(this.WUN);
     AppMethodBeat.o(79820);
   }
   
@@ -486,9 +481,9 @@ public class WebViewDownloadUI
     static
     {
       AppMethodBeat.i(79817);
-      Qdh = new a("TO_DOWNLOAD", 0);
-      Qdi = new a("DOWNLOADING", 1);
-      Qdj = new a[] { Qdh, Qdi };
+      WUT = new a("TO_DOWNLOAD", 0);
+      WUU = new a("DOWNLOADING", 1);
+      WUV = new a[] { WUT, WUU };
       AppMethodBeat.o(79817);
     }
     

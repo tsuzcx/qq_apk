@@ -9,23 +9,23 @@ final class AppBrandMenuHeader$3
 {
   AppBrandMenuHeader$3(AppBrandMenuHeader paramAppBrandMenuHeader, TextView paramTextView) {}
   
-  public final void alt(String paramString)
+  public final void aex(String paramString)
   {
     AppMethodBeat.i(47773);
     if (Util.isNullOrNil(paramString))
     {
-      this.qpz.setVisibility(8);
+      this.tua.setVisibility(8);
       AppMethodBeat.o(47773);
       return;
     }
-    this.qpz.setText(paramString);
-    this.qpz.setVisibility(0);
+    this.tua.setText(paramString);
+    this.tua.setVisibility(0);
     AppMethodBeat.o(47773);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandMenuHeader.3
  * JD-Core Version:    0.7.0.1
  */

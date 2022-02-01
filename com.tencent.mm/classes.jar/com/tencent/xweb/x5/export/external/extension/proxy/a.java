@@ -13,18 +13,17 @@ import org.xwalk.core.Log;
 public class a
 {
   private static final String TAG = "ProxyWebViewClientExtension";
-  IProxySuperWrapper mSuperProvider;
+  private IWebViewClientExtensionSuperWrapper mSuperWrapper;
   
   public boolean allowJavaScriptOpenWindowAutomatically(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157127);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      boolean bool = this.mSuperProvider.super_allowJavaScriptOpenWindowAutomatically(paramString1, paramString2);
+      boolean bool = this.mSuperWrapper.rf(paramString1, paramString2);
       AppMethodBeat.o(157127);
       return bool;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157127);
     return false;
   }
@@ -32,8 +31,8 @@ public class a
   public void computeScroll(View paramView)
   {
     AppMethodBeat.i(157121);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_computeScroll(paramView);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.mP(paramView);
     }
     AppMethodBeat.o(157121);
   }
@@ -41,8 +40,8 @@ public class a
   public void didFirstVisuallyNonEmptyPaint()
   {
     AppMethodBeat.i(157130);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_didFirstVisuallyNonEmptyPaint();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiW();
     }
     AppMethodBeat.o(157130);
   }
@@ -50,13 +49,12 @@ public class a
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
     AppMethodBeat.i(157117);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      boolean bool = this.mSuperProvider.super_dispatchTouchEvent(paramMotionEvent, paramView);
+      boolean bool = this.mSuperWrapper.d(paramMotionEvent, paramView);
       AppMethodBeat.o(157117);
       return bool;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157117);
     return false;
   }
@@ -64,8 +62,8 @@ public class a
   public void documentAvailableInMainFrame()
   {
     AppMethodBeat.i(157129);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_documentAvailableInMainFrame();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiX();
     }
     AppMethodBeat.o(157129);
   }
@@ -73,8 +71,8 @@ public class a
   public void handlePluginTag(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
     AppMethodBeat.i(157102);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_handlePluginTag(paramString1, paramString2, paramBoolean, paramString3);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramString1, paramString2, paramBoolean, paramString3);
     }
     AppMethodBeat.o(157102);
   }
@@ -84,8 +82,8 @@ public class a
   public void hideAddressBar()
   {
     AppMethodBeat.i(157101);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_hideAddressBar();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiS();
     }
     AppMethodBeat.o(157101);
   }
@@ -95,13 +93,12 @@ public class a
   public boolean notifyAutoAudioPlay(String paramString, JsResult paramJsResult)
   {
     AppMethodBeat.i(157124);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      boolean bool = this.mSuperProvider.super_notifyAutoAudioPlay(paramString, paramJsResult);
+      boolean bool = this.mSuperWrapper.a(paramString, paramJsResult);
       AppMethodBeat.o(157124);
       return bool;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157124);
     return false;
   }
@@ -109,13 +106,12 @@ public class a
   public boolean notifyJavaScriptOpenWindowsBlocked(String paramString, String[] paramArrayOfString, ValueCallback<Boolean> paramValueCallback, boolean paramBoolean)
   {
     AppMethodBeat.i(157128);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      paramBoolean = this.mSuperProvider.super_notifyJavaScriptOpenWindowsBlocked(paramString, paramArrayOfString, paramValueCallback, paramBoolean);
+      paramBoolean = this.mSuperWrapper.a(paramString, paramArrayOfString, paramValueCallback, paramBoolean);
       AppMethodBeat.o(157128);
       return paramBoolean;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157128);
     return false;
   }
@@ -123,8 +119,8 @@ public class a
   public void onDoubleTapStart()
   {
     AppMethodBeat.i(157103);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onDoubleTapStart();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiT();
     }
     AppMethodBeat.o(157103);
   }
@@ -132,8 +128,8 @@ public class a
   public void onFlingScrollBegin(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(157092);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onFlingScrollBegin(paramInt1, paramInt2, paramInt3);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.bK(paramInt1, paramInt2, paramInt3);
     }
     AppMethodBeat.o(157092);
   }
@@ -141,8 +137,8 @@ public class a
   public void onFlingScrollEnd()
   {
     AppMethodBeat.i(157108);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onFlingScrollEnd();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiP();
     }
     AppMethodBeat.o(157108);
   }
@@ -150,8 +146,8 @@ public class a
   public void onHideListBox()
   {
     AppMethodBeat.i(157089);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onHideListBox();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiN();
     }
     AppMethodBeat.o(157089);
   }
@@ -159,8 +155,8 @@ public class a
   public void onHistoryItemChanged()
   {
     AppMethodBeat.i(157100);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onHistoryItemChanged();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiR();
     }
     AppMethodBeat.o(157100);
   }
@@ -168,13 +164,12 @@ public class a
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
     AppMethodBeat.i(157115);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      boolean bool = this.mSuperProvider.super_onInterceptTouchEvent(paramMotionEvent, paramView);
+      boolean bool = this.mSuperWrapper.b(paramMotionEvent, paramView);
       AppMethodBeat.o(157115);
       return bool;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157115);
     return false;
   }
@@ -182,22 +177,18 @@ public class a
   public void onMetricsSavedCountReceived(String paramString1, boolean paramBoolean, long paramLong, String paramString2, int paramInt)
   {
     AppMethodBeat.i(157122);
-    if (this.mSuperProvider != null)
-    {
-      this.mSuperProvider.super_onMetricsSavedCountReceived(paramString1, paramBoolean, paramLong, paramString2, paramInt);
-      AppMethodBeat.o(157122);
-      return;
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramString1, paramBoolean, paramLong, paramString2, paramInt);
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157122);
   }
   
   public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(157112);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      paramString = this.mSuperProvider.super_onMiscCallBack(paramString, paramBundle);
+      paramString = this.mSuperWrapper.B(paramString, paramBundle);
       AppMethodBeat.o(157112);
       return paramString;
     }
@@ -208,9 +199,9 @@ public class a
   public Object onMiscCallBack(String paramString, Bundle paramBundle, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
     AppMethodBeat.i(157114);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      paramString = this.mSuperProvider.super_onMiscCallBack(paramString, paramBundle, paramObject1, paramObject2, paramObject3, paramObject4);
+      paramString = this.mSuperWrapper.a(paramString, paramBundle, paramObject1, paramObject2, paramObject3, paramObject4);
       AppMethodBeat.o(157114);
       return paramString;
     }
@@ -221,8 +212,8 @@ public class a
   public void onMissingPluginClicked(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(157088);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onMissingPluginClicked(paramString1, paramString2, paramString3, paramInt);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.m(paramString1, paramString2, paramString3, paramInt);
     }
     AppMethodBeat.o(157088);
   }
@@ -230,8 +221,8 @@ public class a
   public void onNativeCrashReport(int paramInt, String paramString)
   {
     AppMethodBeat.i(157111);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onNativeCrashReport(paramInt, paramString);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.ex(paramInt, paramString);
     }
     AppMethodBeat.o(157111);
   }
@@ -239,21 +230,17 @@ public class a
   public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
     AppMethodBeat.i(157120);
-    if (this.mSuperProvider != null)
-    {
-      this.mSuperProvider.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
-      AppMethodBeat.o(157120);
-      return;
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157120);
   }
   
   public void onPinchToZoomStart()
   {
     AppMethodBeat.i(157104);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onPinchToZoomStart();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiU();
     }
     AppMethodBeat.o(157104);
   }
@@ -261,8 +248,8 @@ public class a
   public void onPreReadFinished()
   {
     AppMethodBeat.i(157106);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onPreReadFinished();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiL();
     }
     AppMethodBeat.o(157106);
   }
@@ -270,8 +257,8 @@ public class a
   public void onPrefetchResourceHit(boolean paramBoolean)
   {
     AppMethodBeat.i(157132);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onPrefetchResourceHit(paramBoolean);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.Pa(paramBoolean);
     }
     AppMethodBeat.o(157132);
   }
@@ -279,8 +266,8 @@ public class a
   public void onPromptScaleSaved()
   {
     AppMethodBeat.i(157107);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onPromptScaleSaved();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiM();
     }
     AppMethodBeat.o(157107);
   }
@@ -288,8 +275,8 @@ public class a
   public void onReceivedSslErrorCancel()
   {
     AppMethodBeat.i(157133);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onReceivedSslErrorCancel();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiY();
     }
     AppMethodBeat.o(157133);
   }
@@ -297,8 +284,8 @@ public class a
   public void onReceivedViewSource(String paramString)
   {
     AppMethodBeat.i(157131);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onReceivedViewSource(paramString);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.bIl(paramString);
     }
     AppMethodBeat.o(157131);
   }
@@ -306,8 +293,8 @@ public class a
   public void onReportAdFilterInfo(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(157110);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onReportAdFilterInfo(paramInt1, paramInt2, paramString, paramBoolean);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.b(paramInt1, paramInt2, paramString, paramBoolean);
     }
     AppMethodBeat.o(157110);
   }
@@ -315,8 +302,8 @@ public class a
   public void onReportHtmlInfo(int paramInt, String paramString)
   {
     AppMethodBeat.i(157113);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onReportHtmlInfo(paramInt, paramString);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.ew(paramInt, paramString);
     }
     AppMethodBeat.o(157113);
   }
@@ -324,21 +311,17 @@ public class a
   public void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
   {
     AppMethodBeat.i(157126);
-    if (this.mSuperProvider != null)
-    {
-      this.mSuperProvider.super_onResponseReceived(paramWebResourceRequest, paramWebResourceResponse, paramInt);
-      AppMethodBeat.o(157126);
-      return;
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramWebResourceRequest, paramWebResourceResponse, paramInt);
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157126);
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(157093);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     AppMethodBeat.o(157093);
   }
@@ -346,21 +329,17 @@ public class a
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     AppMethodBeat.i(157119);
-    if (this.mSuperProvider != null)
-    {
-      this.mSuperProvider.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-      AppMethodBeat.o(157119);
-      return;
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157119);
   }
   
   public void onSetButtonStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(157099);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onSetButtonStatus(paramBoolean1, paramBoolean2);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.bX(paramBoolean1, paramBoolean2);
     }
     AppMethodBeat.o(157099);
   }
@@ -368,8 +347,8 @@ public class a
   public void onShowListBox(String[] paramArrayOfString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt)
   {
     AppMethodBeat.i(157090);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onShowListBox(paramArrayOfString, paramArrayOfInt1, paramArrayOfInt2, paramInt);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramArrayOfString, paramArrayOfInt1, paramArrayOfInt2, paramInt);
     }
     AppMethodBeat.o(157090);
   }
@@ -377,13 +356,12 @@ public class a
   public boolean onShowLongClickPopupMenu()
   {
     AppMethodBeat.i(157125);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      boolean bool = this.mSuperProvider.super_onShowLongClickPopupMenu();
+      boolean bool = this.mSuperWrapper.kiV();
       AppMethodBeat.o(157125);
       return bool;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157125);
     return false;
   }
@@ -391,8 +369,8 @@ public class a
   public void onShowMutilListBox(String[] paramArrayOfString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3)
   {
     AppMethodBeat.i(157091);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onShowMutilListBox(paramArrayOfString, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.a(paramArrayOfString, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfInt3);
     }
     AppMethodBeat.o(157091);
   }
@@ -400,8 +378,8 @@ public class a
   public void onSlidingTitleOffScreen(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(157105);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onSlidingTitleOffScreen(paramInt1, paramInt2);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.qg(paramInt1, paramInt2);
     }
     AppMethodBeat.o(157105);
   }
@@ -409,8 +387,8 @@ public class a
   public void onSoftKeyBoardHide(int paramInt)
   {
     AppMethodBeat.i(157098);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onSoftKeyBoardHide(paramInt);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.aJJ(paramInt);
     }
     AppMethodBeat.o(157098);
   }
@@ -418,8 +396,8 @@ public class a
   public void onSoftKeyBoardShow()
   {
     AppMethodBeat.i(157097);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onSoftKeyBoardShow();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiQ();
     }
     AppMethodBeat.o(157097);
   }
@@ -427,13 +405,12 @@ public class a
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
     AppMethodBeat.i(157116);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      boolean bool = this.mSuperProvider.super_onTouchEvent(paramMotionEvent, paramView);
+      boolean bool = this.mSuperWrapper.c(paramMotionEvent, paramView);
       AppMethodBeat.o(157116);
       return bool;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157116);
     return false;
   }
@@ -441,8 +418,8 @@ public class a
   public void onTransitionToCommitted()
   {
     AppMethodBeat.i(157094);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onTransitionToCommitted();
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.kiO();
     }
     AppMethodBeat.o(157094);
   }
@@ -450,8 +427,8 @@ public class a
   public void onUploadProgressChange(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(157096);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onUploadProgressChange(paramInt1, paramInt2, paramString);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.af(paramInt1, paramInt2, paramString);
     }
     AppMethodBeat.o(157096);
   }
@@ -459,8 +436,8 @@ public class a
   public void onUploadProgressStart(int paramInt)
   {
     AppMethodBeat.i(157095);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onUploadProgressStart(paramInt);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.aJI(paramInt);
     }
     AppMethodBeat.o(157095);
   }
@@ -468,8 +445,8 @@ public class a
   public void onUrlChange(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157109);
-    if (this.mSuperProvider != null) {
-      this.mSuperProvider.super_onUrlChange(paramString1, paramString2);
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.re(paramString1, paramString2);
     }
     AppMethodBeat.o(157109);
   }
@@ -477,20 +454,22 @@ public class a
   public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
     AppMethodBeat.i(157118);
-    if (this.mSuperProvider != null)
+    if (this.mSuperWrapper != null)
     {
-      paramBoolean = this.mSuperProvider.super_overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+      paramBoolean = this.mSuperWrapper.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
       AppMethodBeat.o(157118);
       return paramBoolean;
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157118);
     return false;
   }
   
-  public void setSuperProvider(IProxySuperWrapper paramIProxySuperWrapper)
+  public void setSuperWrapper(IWebViewClientExtensionSuperWrapper paramIWebViewClientExtensionSuperWrapper)
   {
-    this.mSuperProvider = paramIProxySuperWrapper;
+    AppMethodBeat.i(213119);
+    this.mSuperWrapper = paramIWebViewClientExtensionSuperWrapper;
+    Log.i("ProxyWebViewClientExtension", "setSuperWrapper:".concat(String.valueOf(paramIWebViewClientExtensionSuperWrapper)));
+    AppMethodBeat.o(213119);
   }
   
   public boolean shouldDiscardCurrentPage()
@@ -501,19 +480,15 @@ public class a
   public void showTranslateBubble(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(157123);
-    if (this.mSuperProvider != null)
-    {
-      this.mSuperProvider.super_showTranslateBubble(paramInt1, paramString1, paramString2, paramInt2);
-      AppMethodBeat.o(157123);
-      return;
+    if (this.mSuperWrapper != null) {
+      this.mSuperWrapper.i(paramInt1, paramString1, paramString2, paramInt2);
     }
-    Log.e("ProxyWebViewClientExtension", "mSuperProvider Is null");
     AppMethodBeat.o(157123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.xweb.x5.export.external.extension.proxy.a
  * JD-Core Version:    0.7.0.1
  */

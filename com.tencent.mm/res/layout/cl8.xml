@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/da3" android:background="@drawable/czp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/by" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/kr3" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kr4" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:src="@raw/finder_live_audio_tips" app:iconColor="@color/am" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-        <TextView android:textSize="@dimen/a4s" android:textColor="@color/am" android:id="@id/kr5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jxw" app:layout_constraintBottom_toBottomOf="@id/kr4" app:layout_constraintLeft_toRightOf="@id/kr4" app:layout_constraintTop_toTopOf="@id/kr4" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/kt2" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kt3" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c5" android:src="@raw/finder_live_audio_tips" app:iconColor="@color/am" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-        <TextView android:textSize="@dimen/a4s" android:textColor="@color/am" android:id="@id/kt4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jxw" app:layout_constraintBottom_toBottomOf="@id/kt3" app:layout_constraintRight_toLeftOf="@id/kt3" app:layout_constraintTop_toTopOf="@id/kt3" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/BW_100" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.emoji.ui.v3.EmojiStoreV3SingleProductRecyclerView android:id="@id/m7i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/cp" android:paddingEnd="@dimen/cp" />
+    <include android:id="@id/g36" android:visibility="gone" layout="@layout/cky" />
+</LinearLayout>

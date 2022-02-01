@@ -4,86 +4,79 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.i;
+import com.tencent.mm.plugin.sns.ad.j.i;
 import java.util.ArrayList;
 
 public final class c
   extends a
 {
-  protected int JMN;
-  protected int JMO;
-  
-  public c(Context paramContext, FrameLayout paramFrameLayout, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public c(Context paramContext, FrameLayout paramFrameLayout, b.a parama)
   {
-    super(paramContext, paramFrameLayout, paramBitmap, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    super(paramContext, paramFrameLayout, parama);
   }
   
-  protected final void c(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  protected final void A(View paramView, int paramInt1, int paramInt2)
   {
-    paramInt1 = 0;
-    AppMethodBeat.i(269072);
-    if (this.JMN == 0) {
-      this.JMN = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 180);
-    }
-    if (this.JMO == 0) {
-      this.JMO = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 220);
-    }
-    int i = (int)i.an(this.JMN, this.JMO);
-    int j = this.JME + this.mMaxSize * 2 - paramInt2;
-    int k = j * 1000 / i;
+    int i = 0;
+    AppMethodBeat.i(310168);
+    int j = (int)i.aR(this.Qhh, this.Qhi);
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 0.0F });
-    localObjectAnimator1.setDuration((int)i.an(0.0F, this.alM));
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, j });
+    int k = (int)i.aR(0.0F, 2000.0F);
+    localObjectAnimator1.setDuration(k);
+    k = this.Qhg.duration - k;
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, (int)(j * k / 1000.0F) });
     localObjectAnimator2.setInterpolator(new LinearInterpolator());
-    localObjectAnimator2.setDuration(k);
-    if (paramInt2 < 0) {
-      paramInt1 = Math.abs(paramInt3 / 2 + paramInt2) * 1000 / i;
+    localObjectAnimator2.setDuration(k + 100);
+    if (paramInt1 < 0) {
+      i = Math.abs(paramInt2 / 2 + paramInt1) * 1000 / j;
     }
-    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 1.0F });
-    paramView.setInterpolator(new AccelerateInterpolator());
-    paramView.setDuration(400L);
-    if (paramInt1 > 0) {
-      paramView.setStartDelay(paramInt1);
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 0.0F, 1.0F });
+    localObjectAnimator3.setInterpolator(new AccelerateInterpolator());
+    localObjectAnimator3.setDuration(400L);
+    if (i > 0) {
+      localObjectAnimator3.setStartDelay(i);
     }
+    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F });
+    paramView.setStartDelay(k - 300);
+    paramView.setDuration(300L);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.play(localObjectAnimator2).with(paramView).after(localObjectAnimator1);
+    localAnimatorSet.play(localObjectAnimator2).with(localObjectAnimator3).with(paramView).after(localObjectAnimator1);
     localAnimatorSet.start();
-    AppMethodBeat.o(269072);
+    AppMethodBeat.o(310168);
   }
   
-  protected final Rect fMj()
+  protected final Rect hdf()
   {
-    AppMethodBeat.i(269074);
+    AppMethodBeat.i(310177);
     Rect localRect = new Rect();
     int i = 0;
-    int j = (int)i.an(this.DIY, this.mMaxSize);
-    int k = (int)i.an(this.JME / 2, -this.mMaxSize * 4);
-    a(localRect, (int)i.an(j / 2, this.JMD - j / 2), k, j);
+    int j = (int)i.aR(this.Qhg.oQY, this.Qhg.maxSize);
+    int k = (int)i.aR(this.Qhg.Qhm / 2, -this.Qhg.maxSize * 4);
+    a(localRect, (int)i.aR(j / 2, this.Qhg.Qhl - j / 2), k, j);
     j = 0;
-    label78:
-    if (j < this.JMI.size()) {
-      if (!Rect.intersects((Rect)this.JMI.get(j), localRect)) {}
+    label93:
+    if (j < this.Qhj.size()) {
+      if (!Rect.intersects((Rect)this.Qhj.get(j), localRect)) {}
     }
     for (j = 1;; j = 0)
     {
       if (j == 0)
       {
-        AppMethodBeat.o(269074);
+        AppMethodBeat.o(310177);
         return localRect;
         j += 1;
-        break label78;
+        break label93;
       }
       i += 1;
-      if (i > 20)
+      if (i > 30)
       {
-        AppMethodBeat.o(269074);
+        AppMethodBeat.o(310177);
         return localRect;
       }
       break;
@@ -92,7 +85,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.a.c
  * JD-Core Version:    0.7.0.1
  */

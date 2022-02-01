@@ -1,90 +1,125 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.protocal.protobuf.deh;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.wallet_core.c.aa;
-import java.io.IOException;
-import kotlin.n.d;
+import com.tencent.mm.protocal.protobuf.adl;
+import com.tencent.mm.protocal.protobuf.dwc;
+import com.tencent.mm.protocal.protobuf.dwg;
+import com.tencent.mm.protocal.protobuf.ekd;
+import com.tencent.mm.vending.c.b;
+import com.tencent.mm.vending.g.g;
+import com.tencent.mm.vending.h.e;
 
-public final class y
+public class y
+  implements b<x>
 {
-  private static y OlL;
-  private deh OlM;
+  protected x Vak;
+  public final b Val;
+  public final a Vam;
+  public final e Van;
+  public final c Vao;
+  public final d Vap;
   
-  public static y gFD()
+  public y()
   {
-    AppMethodBeat.i(68491);
-    if (OlL == null) {
-      OlL = new y();
-    }
-    y localy = OlL;
-    AppMethodBeat.o(68491);
-    return localy;
+    this(new x());
+    AppMethodBeat.i(68489);
+    AppMethodBeat.o(68489);
   }
   
-  public final void a(deh paramdeh)
+  private y(x paramx)
   {
-    AppMethodBeat.i(68492);
-    Log.i("MicroMsg.LqtOnClickRedeemCache", "setCache OnClickRedeemRes balance %s, bank_balance %s, lq_balance %s", new Object[] { Integer.valueOf(paramdeh.dta), Integer.valueOf(paramdeh.TLQ), Integer.valueOf(paramdeh.TLP) });
-    this.OlM = paramdeh;
-    if (paramdeh != null) {}
-    try
+    AppMethodBeat.i(68490);
+    this.Val = new b();
+    this.Vam = new a();
+    this.Van = new e();
+    this.Vao = new c();
+    this.Vap = new d();
+    this.Vak = paramx;
+    AppMethodBeat.o(68490);
+  }
+  
+  public final class a
+    implements e<adl, com.tencent.mm.vending.j.c<String, Integer>>
+  {
+    public a() {}
+    
+    public final String aKh()
     {
-      paramdeh = new String(paramdeh.toByteArray(), d.ISO_8859_1);
-      ((a)h.ag(a.class)).getWalletCacheStg().set(ar.a.VtT, paramdeh);
-      if (ac.mGO)
-      {
-        this.OlM.dta = 100000000;
-        this.OlM.TLQ = 50000000;
-        this.OlM.TLP = 50000000;
-      }
-      AppMethodBeat.o(68492);
-      return;
-    }
-    catch (IOException paramdeh)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", paramdeh, "", new Object[0]);
-      }
+      return "Vending.LOGIC";
     }
   }
   
-  public final deh gFE()
+  public final class b
+    implements e<ekd, Void>
   {
-    AppMethodBeat.i(182502);
-    Object localObject;
-    if (this.OlM == null)
+    public b() {}
+    
+    public final String aKh()
     {
-      Log.d("MicroMsg.LqtOnClickRedeemCache", "cache is null");
-      localObject = (String)((a)h.ag(a.class)).getWalletCacheStg().get(ar.a.VtT, "");
-      if (Util.isNullOrNil((String)localObject)) {}
+      return "Vending.LOGIC";
     }
-    try
+    
+    public final com.tencent.mm.vending.g.c<ekd> bVq()
     {
-      this.OlM = ((deh)new deh().parseFrom(((String)localObject).getBytes(d.ISO_8859_1)));
-      localObject = this.OlM;
-      AppMethodBeat.o(182502);
-      return localObject;
+      AppMethodBeat.i(68484);
+      com.tencent.mm.vending.g.c localc = g.jJU().c(this);
+      AppMethodBeat.o(68484);
+      return localc;
     }
-    catch (IOException localIOException)
+  }
+  
+  public final class c
+    implements e<dwc, com.tencent.mm.vending.j.c<Integer, Integer>>
+  {
+    public c() {}
+    
+    public final String aKh()
     {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", localIOException, "", new Object[0]);
-      }
+      return "Vending.UI";
+    }
+    
+    public final com.tencent.mm.vending.g.c<dwc> mQ(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(68486);
+      com.tencent.mm.vending.g.c localc = g.S(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)).c(this);
+      AppMethodBeat.o(68486);
+      return localc;
+    }
+  }
+  
+  public final class d
+    implements e<dwc, String>
+  {
+    public d() {}
+    
+    public final String aKh()
+    {
+      return "Vending.LOGIC";
+    }
+  }
+  
+  public final class e
+    implements e<dwg, com.tencent.mm.vending.j.c<Integer, Integer>>
+  {
+    public e() {}
+    
+    public final String aKh()
+    {
+      return "Vending.UI";
+    }
+    
+    public final com.tencent.mm.vending.g.c<dwg> arJ(int paramInt)
+    {
+      AppMethodBeat.i(316219);
+      com.tencent.mm.vending.g.c localc = g.S(Integer.valueOf(paramInt), Integer.valueOf(1)).c(this);
+      AppMethodBeat.o(316219);
+      return localc;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.y
  * JD-Core Version:    0.7.0.1
  */

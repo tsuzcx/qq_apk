@@ -7,11 +7,11 @@ public abstract interface b
   
   public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void eOg();
+  public abstract void fWA();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.receive.b
  * JD-Core Version:    0.7.0.1
  */

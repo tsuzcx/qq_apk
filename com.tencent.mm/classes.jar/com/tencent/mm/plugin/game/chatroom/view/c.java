@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
 import androidx.recyclerview.widget.RecyclerView.l;
 import androidx.recyclerview.widget.RecyclerView.r;
-import androidx.recyclerview.widget.p;
+import androidx.recyclerview.widget.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -20,62 +20,62 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class c
   extends RecyclerView.l
 {
-  int CL;
-  private b Cyp;
-  private a Cyq;
-  private int alG;
+  private b Iqr;
+  private a Iqs;
+  int biT;
+  private int cag;
   private Context mContext;
   private int mLastState;
   private RecyclerView mRecyclerView;
   private RecyclerView.r mSmoothScroller;
-  private float pEE;
-  private int rFA;
-  private boolean rFC;
-  private LinearLayoutManager rFD;
-  private boolean rFE;
-  private int rFF;
-  private boolean rFH;
-  private boolean rFI;
-  private boolean rFJ;
-  private int rFw;
-  private int rFx;
-  private RecyclerView.r rFy;
-  private int rFz;
+  private float sJP;
+  private int uQI;
+  private int uQJ;
+  private RecyclerView.r uQK;
+  private int uQL;
+  private int uQM;
+  private boolean uQO;
+  private LinearLayoutManager uQP;
+  private boolean uQQ;
+  private int uQR;
+  private boolean uQT;
+  private boolean uQU;
+  private boolean uQV;
   
   public c()
   {
-    AppMethodBeat.i(211255);
-    this.rFx = 0;
-    this.rFz = 0;
-    this.pEE = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
-    this.Cyp = null;
-    this.alG = -1;
-    this.rFC = false;
-    this.rFE = false;
-    this.Cyq = null;
+    AppMethodBeat.i(276330);
+    this.uQJ = 0;
+    this.uQL = 0;
+    this.sJP = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
+    this.Iqr = null;
+    this.cag = -1;
+    this.uQO = false;
+    this.uQQ = false;
+    this.Iqs = null;
     this.mLastState = 0;
-    this.rFH = false;
-    this.rFI = false;
-    this.rFJ = false;
-    this.rFF = 1;
-    AppMethodBeat.o(211255);
+    this.uQT = false;
+    this.uQU = false;
+    this.uQV = false;
+    this.uQR = 1;
+    AppMethodBeat.o(276330);
   }
   
-  private int El(int paramInt)
+  private int EL(int paramInt)
   {
     if (paramInt == 0) {
       return 0;
     }
-    return this.rFA * paramInt + this.rFF;
+    return this.uQM * paramInt + this.uQR;
   }
   
-  private int Em(int paramInt)
+  private int EM(int paramInt)
   {
-    if (this.rFF != 0)
+    if (this.uQR != 0)
     {
-      int j = paramInt / this.rFA;
+      int j = paramInt / this.uQM;
       int i = j;
-      if (paramInt % this.rFA == 0)
+      if (paramInt % this.uQM == 0)
       {
         i = j;
         if (paramInt != 0) {
@@ -84,50 +84,50 @@ public final class c
       }
       return i;
     }
-    return paramInt / this.rFA;
+    return paramInt / this.uQM;
   }
   
-  private int En(int paramInt)
+  private int EN(int paramInt)
   {
     if (paramInt == 0) {
       return 0;
     }
-    return this.rFA * paramInt + 1;
+    return this.uQM * paramInt + 1;
   }
   
-  private void cqj()
+  private void cSQ()
   {
-    this.rFC = false;
-    this.rFE = false;
-    this.Cyp = null;
-    this.alG = -1;
+    this.uQO = false;
+    this.uQQ = false;
+    this.Iqr = null;
+    this.cag = -1;
   }
   
-  private void cqk()
+  private void cSR()
   {
-    AppMethodBeat.i(211263);
-    if (this.rFC)
+    AppMethodBeat.i(276344);
+    if (this.uQO)
     {
       Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollAnimationEnd");
-      cqj();
+      cSQ();
     }
-    AppMethodBeat.o(211263);
+    AppMethodBeat.o(276344);
   }
   
-  final int Ek(int paramInt)
+  final int EK(int paramInt)
   {
-    AppMethodBeat.i(211264);
-    int i = this.rFz;
+    AppMethodBeat.i(276416);
+    int i = this.uQL;
     float f = this.mRecyclerView.getWidth();
-    int k = this.rFz;
-    Log.d("GameChatRoom.CommonLineViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.rFw), Integer.valueOf(paramInt - this.rFw), Float.valueOf(f), Float.valueOf(this.pEE), Integer.valueOf(this.rFz) });
-    if (paramInt - this.rFw >= f / 2.0F)
+    int k = this.uQL;
+    Log.d("GameChatRoom.CommonLineViewPagerHelper", "alvinluo getOffsetToPosition offset: %d, mTmpOffset: %d, diff: %d, width: %s, mTouchSlop: %s, curPage: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.uQI), Integer.valueOf(paramInt - this.uQI), Float.valueOf(f), Float.valueOf(this.sJP), Integer.valueOf(this.uQL) });
+    if (paramInt - this.uQI >= f / 2.0F)
     {
-      i = Em(this.rFD.kL());
+      i = EM(this.uQP.Jw());
       int m = this.mRecyclerView.getAdapter().getItemCount();
-      int j = m / this.rFA;
+      int j = m / this.uQM;
       paramInt = j;
-      if (m % this.rFA != 0) {
+      if (m % this.uQM != 0) {
         paramInt = j + 1;
       }
       i = Math.max(Math.min(i, paramInt - 1), -1);
@@ -138,21 +138,21 @@ public final class c
     }
     for (;;)
     {
-      Log.i("GameChatRoom.CommonLineViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(En(paramInt)) });
-      paramInt = El(paramInt);
-      AppMethodBeat.o(211264);
+      Log.i("GameChatRoom.CommonLineViewPagerHelper", "[getOffsetToPosition] lastPage: %d, targetPage: %d targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(paramInt), Integer.valueOf(EN(paramInt)) });
+      paramInt = EL(paramInt);
+      AppMethodBeat.o(276416);
       return paramInt;
-      if ((paramInt - this.rFw >= 0) && (paramInt - this.rFw < this.pEE))
+      if ((paramInt - this.uQI >= 0) && (paramInt - this.uQI < this.sJP))
       {
-        Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(El(i)) });
-        paramInt = El(i);
-        AppMethodBeat.o(211264);
+        Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo [getOffsetToPosition] targetPage: %s targetPos: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(EL(i)) });
+        paramInt = EL(i);
+        AppMethodBeat.o(276416);
         return paramInt;
       }
-      if (paramInt - this.rFw > -f / 2.0F) {
+      if (paramInt - this.uQI > -f / 2.0F) {
         break;
       }
-      i = Em(this.rFD.kJ());
+      i = EM(this.uQP.Ju());
       break;
       label329:
       paramInt = i;
@@ -162,204 +162,204 @@ public final class c
     }
   }
   
-  final void W(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(211267);
-    if ((this.mRecyclerView != null) && ((this.rFI) || (paramBoolean)))
-    {
-      this.rFy.alG = paramInt;
-      this.rFJ = true;
-      this.mRecyclerView.getLayoutManager().startSmoothScroll(this.rFy);
-    }
-    AppMethodBeat.o(211267);
-  }
-  
   public final void a(Context paramContext, RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(211256);
+    AppMethodBeat.i(276386);
     this.mContext = paramContext;
     this.mRecyclerView = paramRecyclerView;
-    this.rFA = 5;
+    this.uQM = 5;
     this.mRecyclerView.b(this);
     this.mRecyclerView.a(this);
-    this.rFD = ((LinearLayoutManager)this.mRecyclerView.getLayoutManager());
-    this.mSmoothScroller = new p(this.mRecyclerView.getContext())
+    this.uQP = ((LinearLayoutManager)this.mRecyclerView.getLayoutManager());
+    this.mSmoothScroller = new o(this.mRecyclerView.getContext())
     {
-      public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      public final int JB()
+      {
+        return -1;
+      }
+      
+      public final float c(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 80.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      public final PointF cB(int paramAnonymousInt)
+      public final PointF fM(int paramAnonymousInt)
       {
-        AppMethodBeat.i(210962);
-        PointF localPointF = ((LinearLayoutManager)c.a(c.this).getLayoutManager()).cB(paramAnonymousInt);
-        AppMethodBeat.o(210962);
+        AppMethodBeat.i(276427);
+        PointF localPointF = ((LinearLayoutManager)c.a(c.this).getLayoutManager()).fM(paramAnonymousInt);
+        AppMethodBeat.o(276427);
         return localPointF;
       }
       
-      public final int cF(int paramAnonymousInt)
+      public final int fP(int paramAnonymousInt)
       {
-        AppMethodBeat.i(210961);
-        paramAnonymousInt = super.cF(paramAnonymousInt);
-        AppMethodBeat.o(210961);
+        AppMethodBeat.i(276423);
+        paramAnonymousInt = super.fP(paramAnonymousInt);
+        AppMethodBeat.o(276423);
         return paramAnonymousInt;
-      }
-      
-      public final int kQ()
-      {
-        return -1;
       }
       
       public final void onStart()
       {
-        AppMethodBeat.i(210963);
+        AppMethodBeat.i(276433);
         super.onStart();
-        AppMethodBeat.o(210963);
+        AppMethodBeat.o(276433);
       }
       
       public final void onStop()
       {
-        AppMethodBeat.i(210964);
+        AppMethodBeat.i(276439);
         super.onStop();
-        AppMethodBeat.o(210964);
+        AppMethodBeat.o(276439);
       }
     };
-    this.rFy = new p(this.mRecyclerView.getContext())
+    this.uQK = new o(this.mRecyclerView.getContext())
     {
-      public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
+      public final int JB()
+      {
+        return -1;
+      }
+      
+      public final float c(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 40.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      public final PointF cB(int paramAnonymousInt)
+      public final PointF fM(int paramAnonymousInt)
       {
-        AppMethodBeat.i(210919);
-        PointF localPointF = ((LinearLayoutManager)c.a(c.this).getLayoutManager()).cB(paramAnonymousInt);
-        AppMethodBeat.o(210919);
+        AppMethodBeat.i(276445);
+        PointF localPointF = ((LinearLayoutManager)c.a(c.this).getLayoutManager()).fM(paramAnonymousInt);
+        AppMethodBeat.o(276445);
         return localPointF;
-      }
-      
-      public final int kQ()
-      {
-        return -1;
       }
       
       public final void onStart()
       {
-        AppMethodBeat.i(210920);
+        AppMethodBeat.i(276452);
         super.onStart();
-        c.evW();
-        AppMethodBeat.o(210920);
+        c.fDu();
+        AppMethodBeat.o(276452);
       }
       
       public final void onStop()
       {
-        AppMethodBeat.i(210921);
+        AppMethodBeat.i(276460);
         super.onStop();
         Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo SmoothScrollerForFling onStop %d", new Object[] { Integer.valueOf(c.a(c.this).getScrollState()) });
         if (c.a(c.this).getScrollState() == 0) {
           c.b(c.this);
         }
-        AppMethodBeat.o(210921);
+        AppMethodBeat.o(276460);
       }
     };
-    AppMethodBeat.o(211256);
+    AppMethodBeat.o(276386);
+  }
+  
+  final void am(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(276421);
+    if ((this.mRecyclerView != null) && ((this.uQU) || (paramBoolean)))
+    {
+      this.uQK.cag = paramInt;
+      this.uQV = true;
+      this.mRecyclerView.getLayoutManager().startSmoothScroll(this.uQK);
+    }
+    AppMethodBeat.o(276421);
   }
   
   public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(211262);
+    AppMethodBeat.i(276403);
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt);
-    a.c("com/tencent/mm/plugin/game/chatroom/view/CommonLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt);
+    a.c("com/tencent/mm/plugin/game/chatroom/view/CommonLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
     super.onScrollStateChanged(paramRecyclerView, paramInt);
     Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollStateChanged newState: %d", new Object[] { Integer.valueOf(paramInt) });
     int i;
     if ((paramInt == 0) && (this.mLastState != 2))
     {
-      i = Ek(this.CL);
-      if ((this.mRecyclerView != null) && (this.rFI))
+      i = EK(this.biT);
+      if ((this.mRecyclerView != null) && (this.uQU))
       {
-        this.mSmoothScroller.alG = i;
-        this.rFJ = true;
+        this.mSmoothScroller.cag = i;
+        this.uQV = true;
         this.mRecyclerView.getLayoutManager().startSmoothScroll(this.mSmoothScroller);
       }
-      this.rFH = true;
+      this.uQT = true;
     }
     for (;;)
     {
       this.mLastState = paramInt;
       a.a(this, "com/tencent/mm/plugin/game/chatroom/view/CommonLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(211262);
+      AppMethodBeat.o(276403);
       return;
-      if ((!this.rFH) && (paramInt == 2))
+      if ((!this.uQT) && (paramInt == 2))
       {
-        this.rFH = true;
+        this.uQT = true;
       }
       else if (paramInt == 0)
       {
-        this.rFw = this.CL;
-        this.rFH = false;
-        i = this.rFz;
-        int j = this.rFD.kJ();
+        this.uQI = this.biT;
+        this.uQT = false;
+        i = this.uQL;
+        int j = this.uQP.Ju();
         Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollStateChanged firstPos: %d", new Object[] { Integer.valueOf(j) });
         if (j != -1)
         {
-          this.rFz = (j / this.rFA);
-          Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.rFz), Integer.valueOf(j) });
-          if ((i != this.rFz) && (this.Cyq != null)) {}
+          this.uQL = (j / this.uQM);
+          Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollStateChanged mCurPage: %d, firstVisible: %d", new Object[] { Integer.valueOf(this.uQL), Integer.valueOf(j) });
+          if ((i != this.uQL) && (this.Iqs != null)) {}
           label291:
-          this.rFI = false;
-          this.rFx = 0;
-          if (!this.rFE) {
+          this.uQU = false;
+          this.uQJ = 0;
+          if (!this.uQQ) {
             break label616;
           }
           Log.d("GameChatRoom.CommonLineViewPagerHelper", "alvinluo scrollMore");
-          this.mRecyclerView.getAdapter().aE(this.mRecyclerView.getAdapter().getItemCount(), 5);
-          paramRecyclerView = this.Cyp;
-          this.rFE = false;
+          this.mRecyclerView.getAdapter().by(this.mRecyclerView.getAdapter().getItemCount(), 5);
+          paramRecyclerView = this.Iqr;
+          this.uQQ = false;
           int k = this.mRecyclerView.getAdapter().getItemCount();
-          j = k / this.rFA;
+          j = k / this.uQM;
           i = j;
-          if (k % this.rFA == 0) {
+          if (k % this.uQM == 0) {
             i = j + 1;
           }
           int m = i + 1;
-          j = this.rFA * m;
+          j = this.uQM * m;
           i = j;
           if (j <= 0) {
             i = 0;
           }
           Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo smoothScrollToLastPage allCount: %d, lastPage: %d, targetPos: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i) });
-          this.Cyp = paramRecyclerView;
-          this.rFC = true;
-          j = Em(i);
-          this.alG = En(j);
-          this.rFz = Em(this.rFD.kK());
-          Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.rFz), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.alG) });
-          if (j != this.rFz) {
+          this.Iqr = paramRecyclerView;
+          this.uQO = true;
+          j = EM(i);
+          this.cag = EN(j);
+          this.uQL = EM(this.uQP.Jv());
+          Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo fastScroll curPage: %d, pos: %d, targetPage: %d, targetPos: %d", new Object[] { Integer.valueOf(this.uQL), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.cag) });
+          if (j != this.uQL) {
             break label604;
           }
-          cqk();
+          cSR();
         }
         for (;;)
         {
-          if (!this.rFJ) {
+          if (!this.uQV) {
             break label621;
           }
           Log.i("GameChatRoom.CommonLineViewPagerHelper", "alvinluo scrollBy x: -1, y: 0");
-          this.rFJ = false;
+          this.uQV = false;
           this.mRecyclerView.scrollBy(-1, 0);
           break;
-          Log.e("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.rFz) });
+          Log.e("GameChatRoom.CommonLineViewPagerHelper", "alvinluo onScrollStateChanged firstPos is -1, invalid, mCurPage: %d", new Object[] { Integer.valueOf(this.uQL) });
           break label291;
           label604:
-          W(this.alG, true);
+          am(this.cag, true);
           continue;
           label616:
-          cqk();
+          cSR();
         }
       }
       else
@@ -368,7 +368,7 @@ public final class c
         if (paramInt == 1)
         {
           Log.i("GameChatRoom.CommonLineViewPagerHelper", "SCROLL_STATE_DRAGGING");
-          this.rFI = true;
+          this.uQU = true;
         }
       }
     }
@@ -376,17 +376,17 @@ public final class c
   
   public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211259);
+    AppMethodBeat.i(276393);
     b localb = new b();
-    localb.bn(paramRecyclerView);
-    localb.sg(paramInt1);
-    localb.sg(paramInt2);
-    a.c("com/tencent/mm/plugin/game/chatroom/view/CommonLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+    localb.cH(paramRecyclerView);
+    localb.sc(paramInt1);
+    localb.sc(paramInt2);
+    a.c("com/tencent/mm/plugin/game/chatroom/view/CommonLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aYj());
     super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    this.rFx += paramInt1;
-    this.CL += paramInt1;
+    this.uQJ += paramInt1;
+    this.biT += paramInt1;
     a.a(this, "com/tencent/mm/plugin/game/chatroom/view/CommonLineViewPagerHelper", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-    AppMethodBeat.o(211259);
+    AppMethodBeat.o(276393);
   }
   
   public static abstract interface a {}
@@ -395,7 +395,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.view.c
  * JD-Core Version:    0.7.0.1
  */

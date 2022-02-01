@@ -1,133 +1,155 @@
 package androidx.recyclerview.widget;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class y
-  extends RecyclerView.f
+class y
 {
-  public boolean amD = true;
+  final b cbQ;
+  a cbR;
   
-  public final void A(RecyclerView.v paramv)
+  y(b paramb)
   {
-    I(paramv);
-    q(paramv);
+    AppMethodBeat.i(194898);
+    this.cbQ = paramb;
+    this.cbR = new a();
+    AppMethodBeat.o(194898);
   }
   
-  public final void B(RecyclerView.v paramv)
+  final boolean bO(View paramView)
   {
-    q(paramv);
+    AppMethodBeat.i(194922);
+    this.cbR.setBounds(this.cbQ.Ky(), this.cbQ.Kz(), this.cbQ.bF(paramView), this.cbQ.bG(paramView));
+    this.cbR.cbS = 0;
+    this.cbR.gh(24579);
+    boolean bool = this.cbR.Lr();
+    AppMethodBeat.o(194922);
+    return bool;
   }
   
-  public final void C(RecyclerView.v paramv)
+  final View s(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    q(paramv);
-  }
-  
-  public final void D(RecyclerView.v paramv)
-  {
-    F(paramv);
-  }
-  
-  public final void E(RecyclerView.v paramv)
-  {
-    H(paramv);
-  }
-  
-  public void F(RecyclerView.v paramv) {}
-  
-  public void G(RecyclerView.v paramv) {}
-  
-  public void H(RecyclerView.v paramv) {}
-  
-  public void I(RecyclerView.v paramv) {}
-  
-  public abstract boolean a(RecyclerView.v paramv);
-  
-  public abstract boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
-  {
-    int k = paramc1.left;
-    int m = paramc1.top;
-    int i;
-    if (paramv2.mb()) {
-      i = paramc1.left;
-    }
-    for (int j = paramc1.top;; j = paramc2.top)
+    AppMethodBeat.i(194911);
+    int j = this.cbQ.Ky();
+    int k = this.cbQ.Kz();
+    if (paramInt2 > paramInt1) {}
+    Object localObject;
+    View localView;
+    for (int i = 1;; i = -1)
     {
-      return a(paramv1, paramv2, k, m, i, j);
-      i = paramc2.left;
+      localObject = null;
+      if (paramInt1 == paramInt2) {
+        break label184;
+      }
+      localView = this.cbQ.getChildAt(paramInt1);
+      int m = this.cbQ.bF(localView);
+      int n = this.cbQ.bG(localView);
+      this.cbR.setBounds(j, k, m, n);
+      if (paramInt3 == 0) {
+        break;
+      }
+      this.cbR.cbS = 0;
+      this.cbR.gh(paramInt3);
+      if (!this.cbR.Lr()) {
+        break;
+      }
+      AppMethodBeat.o(194911);
+      return localView;
     }
-  }
-  
-  public abstract boolean b(RecyclerView.v paramv);
-  
-  public boolean d(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
-  {
-    int k = paramc1.left;
-    int m = paramc1.top;
-    paramc1 = paramv.amk;
-    int i;
-    if (paramc2 == null)
+    if (paramInt4 != 0)
     {
-      i = paramc1.getLeft();
-      if (paramc2 != null) {
-        break label103;
+      this.cbR.cbS = 0;
+      this.cbR.gh(paramInt4);
+      if (this.cbR.Lr()) {
+        localObject = localView;
       }
     }
-    label103:
-    for (int j = paramc1.getTop();; j = paramc2.top)
+    for (;;)
     {
-      if ((paramv.isRemoved()) || ((k == i) && (m == j))) {
-        break label112;
-      }
-      paramc1.layout(i, j, paramc1.getWidth() + i, paramc1.getHeight() + j);
-      return a(paramv, k, m, i, j);
-      i = paramc2.left;
+      paramInt1 += i;
       break;
+      label184:
+      AppMethodBeat.o(194911);
+      return localObject;
     }
-    label112:
-    return a(paramv);
   }
   
-  public boolean e(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  static final class a
   {
-    if ((paramc1 != null) && ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top))) {
-      return a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
+    int cbS = 0;
+    int cbT;
+    int cbU;
+    int cbV;
+    int cbW;
+    
+    private static int compare(int paramInt1, int paramInt2)
+    {
+      if (paramInt1 > paramInt2) {
+        return 1;
+      }
+      if (paramInt1 == paramInt2) {
+        return 2;
+      }
+      return 4;
     }
-    return b(paramv);
-  }
-  
-  public boolean f(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
-  {
-    if ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top)) {
-      return a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
+    
+    final boolean Lr()
+    {
+      AppMethodBeat.i(195241);
+      if (((this.cbS & 0x7) != 0) && ((this.cbS & compare(this.cbV, this.cbT) << 0) == 0))
+      {
+        AppMethodBeat.o(195241);
+        return false;
+      }
+      if (((this.cbS & 0x70) != 0) && ((this.cbS & compare(this.cbV, this.cbU) << 4) == 0))
+      {
+        AppMethodBeat.o(195241);
+        return false;
+      }
+      if (((this.cbS & 0x700) != 0) && ((this.cbS & compare(this.cbW, this.cbT) << 8) == 0))
+      {
+        AppMethodBeat.o(195241);
+        return false;
+      }
+      if (((this.cbS & 0x7000) != 0) && ((this.cbS & compare(this.cbW, this.cbU) << 12) == 0))
+      {
+        AppMethodBeat.o(195241);
+        return false;
+      }
+      AppMethodBeat.o(195241);
+      return true;
     }
-    A(paramv);
-    return false;
+    
+    final void gh(int paramInt)
+    {
+      this.cbS |= paramInt;
+    }
+    
+    final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      this.cbT = paramInt1;
+      this.cbU = paramInt2;
+      this.cbV = paramInt3;
+      this.cbW = paramInt4;
+    }
   }
   
-  public final void mu()
+  static abstract interface b
   {
-    this.amD = false;
-  }
-  
-  public boolean s(RecyclerView.v paramv)
-  {
-    return (!this.amD) || (paramv.isInvalid());
-  }
-  
-  public final void z(RecyclerView.v paramv)
-  {
-    G(paramv);
-    q(paramv);
+    public abstract int Ky();
+    
+    public abstract int Kz();
+    
+    public abstract int bF(View paramView);
+    
+    public abstract int bG(View paramView);
+    
+    public abstract View getChildAt(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.recyclerview.widget.y
  * JD-Core Version:    0.7.0.1
  */

@@ -8,32 +8,32 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ba.f;
 import com.tencent.mm.plugin.appbrand.widget.input.ah;
 import com.tencent.mm.plugin.secdata.ui.MMSecDataFragmentActivity;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.t;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.base.k.c;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.y;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public abstract class AppBrandContainerFragmentActivity
   extends MMSecDataFragmentActivity
-  implements ah, h.c
+  implements ah, k.c
 {
   private View mContentView;
-  protected a rhW = new a();
-  private ArrayList<Dialog> rhX;
+  protected a upS = new a();
+  private ArrayList<Dialog> upT;
   
   static
   {
-    w.initLanguage(MMApplicationContext.getContext());
+    y.initLanguage(MMApplicationContext.getContext());
   }
   
-  private boolean de(View paramView)
+  private boolean dO(View paramView)
   {
     if (paramView == null) {
       return false;
@@ -61,11 +61,11 @@ public abstract class AppBrandContainerFragmentActivity
   public static void e(Activity paramActivity, int paramInt)
   {
     if ((paramActivity.isFinishing()) || (paramActivity.isDestroyed()) || (paramActivity.getWindow() == null)) {}
-    while ((Build.VERSION.SDK_INT < 26) || (t.hHy())) {
+    while ((Build.VERSION.SDK_INT < 26) || (y.jjW())) {
       return;
     }
     paramActivity.getWindow().setNavigationBarColor(paramInt);
-    boolean bool = au.auk(paramInt);
+    boolean bool = bb.aAF(paramInt);
     paramActivity = paramActivity.getWindow().getDecorView();
     paramInt = paramActivity.getSystemUiVisibility();
     if (bool) {
@@ -79,11 +79,6 @@ public abstract class AppBrandContainerFragmentActivity
     }
   }
   
-  public final void De(int paramInt)
-  {
-    e(this, paramInt);
-  }
-  
   public void addDialog(Dialog paramDialog)
   {
     if (paramDialog == null) {
@@ -94,10 +89,10 @@ public abstract class AppBrandContainerFragmentActivity
       paramDialog.dismiss();
       return;
     }
-    if (this.rhX == null) {
-      this.rhX = new ArrayList();
+    if (this.upT == null) {
+      this.upT = new ArrayList();
     }
-    this.rhX.add(paramDialog);
+    this.upT.add(paramDialog);
   }
   
   public final View getContentView()
@@ -117,16 +112,16 @@ public abstract class AppBrandContainerFragmentActivity
   
   public final void hideVKB(View paramView)
   {
-    de(paramView);
+    dO(paramView);
   }
   
   public final boolean hideVKBHavingResult()
   {
     View localView = getCurrentFocus();
     if (localView == null) {
-      return de(this.mContentView);
+      return dO(this.mContentView);
     }
-    return de(localView);
+    return dO(localView);
   }
   
   public final boolean initNavigationSwipeBack()
@@ -157,6 +152,7 @@ public abstract class AppBrandContainerFragmentActivity
     paramBundle = new a(this);
     this.mContentView = paramBundle;
     setContentView(paramBundle);
+    this.mContentView.setId(ba.f.app_brand_activity_container_view);
   }
   
   protected void onCreateBeforeSetContentView()
@@ -168,9 +164,9 @@ public abstract class AppBrandContainerFragmentActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.rhX != null)
+    if (this.upT != null)
     {
-      Iterator localIterator = this.rhX.iterator();
+      Iterator localIterator = this.upT.iterator();
       while (localIterator.hasNext())
       {
         Dialog localDialog = (Dialog)localIterator.next();
@@ -178,8 +174,8 @@ public abstract class AppBrandContainerFragmentActivity
           localDialog.dismiss();
         }
       }
-      this.rhX.clear();
-      this.rhX = null;
+      this.upT.clear();
+      this.upT = null;
     }
   }
   
@@ -191,20 +187,20 @@ public abstract class AppBrandContainerFragmentActivity
   
   public final void showVKB()
   {
-    w.showVKB(this);
+    y.showVKB(this);
   }
   
   public static final class a
   {
-    public int rhY = MMFragmentActivity.a.rhY;
-    public int rhZ = MMFragmentActivity.a.rhZ;
-    public int ria = MMFragmentActivity.a.ria;
-    public int rib = MMFragmentActivity.a.rib;
+    public int upU = MMFragmentActivity.a.upU;
+    public int upV = MMFragmentActivity.a.upV;
+    public int upW = MMFragmentActivity.a.upW;
+    public int upX = MMFragmentActivity.a.upX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.wxa_container.AppBrandContainerFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

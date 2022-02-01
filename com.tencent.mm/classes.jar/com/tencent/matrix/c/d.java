@@ -1,109 +1,91 @@
 package com.tencent.matrix.c;
 
-import android.database.Cursor;
-import com.tencent.matrix.b;
-import com.tencent.mm.plugin.report.e.c;
+import com.tencent.matrix.a.a.a.b;
+import com.tencent.matrix.a.a.a.b.a;
+import com.tencent.matrix.a.a.a.m.a.a;
+import com.tencent.matrix.a.a.c;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.j.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.sqlitelint.ISQLiteExecutionDelegate;
-import com.tencent.sqlitelint.SQLiteLint.InstallEnv;
-import com.tencent.sqlitelint.SQLiteLint.Options.Builder;
-import com.tencent.sqlitelint.SQLiteLintPlugin;
-import com.tencent.sqlitelint.config.SQLiteLintConfig.ConcernDb;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.List;
 
 public final class d
+  extends b
 {
-  private static Map<String, Boolean> cZs = new HashMap();
-  private static SQLiteLintPlugin cZt;
+  private com.tencent.matrix.report.d eWp;
   
-  public static void a(SQLiteDatabase paramSQLiteDatabase, String paramString, long paramLong)
+  public final void a(int paramInt, String paramString, long paramLong)
   {
-    if (!b.Vt()) {}
-    do
-    {
-      do
-      {
-        return;
-        if (cZt != null) {
-          break;
-        }
-        localObject1 = (SQLiteLintPlugin)b.Vu().Y(SQLiteLintPlugin.class);
-        cZt = (SQLiteLintPlugin)localObject1;
-      } while (localObject1 == null);
-    } while (!cZt.isPluginStarted());
-    Log.v("Matrix.MatrixSQLiteLintManager", "onSQLExecuted  String sql:%s,  timeCost:%d", new Object[] { paramString, Long.valueOf(paramLong) });
-    Object localObject1 = paramSQLiteDatabase.getPath();
-    Object localObject2;
-    if (!cZs.containsKey(localObject1))
-    {
-      paramSQLiteDatabase = new SQLiteLint.InstallEnv((String)localObject1, new a(paramSQLiteDatabase));
-      localObject2 = new SQLiteLint.Options.Builder();
-      ((SQLiteLint.Options.Builder)localObject2).setReportBehaviour(true);
-      ((SQLiteLint.Options.Builder)localObject2).setAlertBehaviour(false);
-      paramSQLiteDatabase = new SQLiteLintConfig.ConcernDb(paramSQLiteDatabase, ((SQLiteLint.Options.Builder)localObject2).build());
-      paramSQLiteDatabase.enableAvoidAutoIncrementChecker();
-      paramSQLiteDatabase.enableAvoidSelectAllChecker();
-      paramSQLiteDatabase.enableExplainQueryPlanChecker();
-      paramSQLiteDatabase.enableRedundantIndexChecker();
-      paramSQLiteDatabase.enableWithoutRowIdBetterChecker();
-      paramSQLiteDatabase.enablePreparedStatementBetterChecker();
-      localObject2 = paramSQLiteDatabase.getInstallEnv().getConcernedDbPath();
-      if (!((String)localObject2).endsWith("EnMicroMsg.db")) {
-        break label231;
-      }
-      paramSQLiteDatabase.setWhiteListXml(e.c.enmicromsg_sqlite_lint_whitelist);
+    if (a.aym()) {
+      Log.i("Matrix.battery.IpcPoolJiffies", "#onStatTask, tid = " + paramInt + ", stamp = " + paramLong + ", key = " + paramString);
     }
-    for (;;)
-    {
-      cZt.addConcernedDB(paramSQLiteDatabase);
-      cZs.put(localObject1, Boolean.TRUE);
-      cZt.notifySqlExecution((String)localObject1, paramString, (int)paramLong);
-      return;
-      label231:
-      if (((String)localObject2).endsWith("AppBrandComm.db")) {
-        paramSQLiteDatabase.setWhiteListXml(e.c.appbrandcomm_sqlite_lint_whitelist);
-      } else if (((String)localObject2).endsWith("SnsMicroMsg.db")) {
-        paramSQLiteDatabase.setWhiteListXml(e.c.snsmicromsg_sqlite_lint_whitelist);
-      }
+    super.a(paramInt, paramString, paramLong);
+  }
+  
+  public final void awI()
+  {
+    super.awI();
+    if (MMApplicationContext.isMainProcess()) {
+      j.a(new j.b()
+      {
+        public final void b(Runnable paramAnonymousRunnable, String paramAnonymousString)
+        {
+          Log.i("Matrix.battery.IpcPoolJiffies", "IpcPool onTaskStart: " + paramAnonymousString + ", " + paramAnonymousRunnable);
+          d.a(d.this, paramAnonymousString, paramAnonymousRunnable.hashCode());
+        }
+        
+        public final void c(Runnable paramAnonymousRunnable, String paramAnonymousString)
+        {
+          Log.i("Matrix.battery.IpcPoolJiffies", "IpcPool onTaskFinish: " + paramAnonymousString + ", " + paramAnonymousRunnable);
+          d.b(d.this, paramAnonymousString, paramAnonymousRunnable.hashCode());
+        }
+      });
     }
   }
   
-  static final class a
-    implements ISQLiteExecutionDelegate
+  public final void awJ()
   {
-    private final SQLiteDatabase mDb;
-    
-    a(SQLiteDatabase paramSQLiteDatabase)
-    {
-      this.mDb = paramSQLiteDatabase;
+    super.awJ();
+  }
+  
+  public final int awQ()
+  {
+    return 0;
+  }
+  
+  public final boolean b(m.a.a<b.a> parama)
+  {
+    if (a.aym()) {
+      return true;
     }
-    
-    public final void execSQL(String paramString)
-    {
-      if (!this.mDb.isOpen())
-      {
-        Log.w("Matrix.MatrixSQLiteLintManager", "rawQuery db close", new Object[0]);
-        return;
-      }
-      this.mDb.execSQL(paramString);
+    return super.b(parama);
+  }
+  
+  public final void be(List<m.a.a<b.a>> paramList)
+  {
+    if (this.eWp != null) {
+      this.eWp.bi(paramList);
     }
-    
-    public final Cursor rawQuery(String paramString, String... paramVarArgs)
-    {
-      if (!this.mDb.isOpen())
-      {
-        Log.w("Matrix.MatrixSQLiteLintManager", "rawQuery db close", new Object[0]);
-        return null;
-      }
-      return this.mDb.rawQuery(paramString, paramVarArgs);
+  }
+  
+  public final void g(com.tencent.matrix.a.a.d paramd)
+  {
+    super.g(paramd);
+    paramd = paramd.ePD.ePb;
+    if ((paramd instanceof com.tencent.matrix.report.d)) {
+      this.eWp = ((com.tencent.matrix.report.d)paramd);
     }
+  }
+  
+  public final String getTag()
+  {
+    return "Matrix.battery.IpcPoolJiffies";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.c.d
  * JD-Core Version:    0.7.0.1
  */

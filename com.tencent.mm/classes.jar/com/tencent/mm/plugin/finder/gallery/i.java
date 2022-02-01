@@ -3,43 +3,41 @@ package com.tencent.mm.plugin.finder.gallery;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.view.recyclerview.e;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.view.recyclerview.f;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabFeed;", "forceDark", "", "(Z)V", "TAG", "", "getForceDark", "()Z", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryTabFeed;", "forceDark", "", "(Z)V", "TAG", "", "getForceDark", "()Z", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends e<k>
+  extends f<k>
 {
+  private final boolean Bva;
   private final String TAG;
-  private final boolean xUe;
   
   public i(boolean paramBoolean)
   {
-    this.xUe = paramBoolean;
+    this.Bva = paramBoolean;
     this.TAG = "Finder.FinderAlbumFilterConvert";
   }
   
-  public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.i parami, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
   {
-    AppMethodBeat.i(286537);
-    p.k(paramRecyclerView, "recyclerView");
-    p.k(parami, "holder");
-    paramRecyclerView = (TextView)parami.RD(b.f.topic_tv);
-    if (paramRecyclerView != null)
-    {
-      paramRecyclerView.setTextSize(1, 12.0F);
-      AppMethodBeat.o(286537);
-      return;
+    AppMethodBeat.i(334287);
+    s.u(paramRecyclerView, "recyclerView");
+    s.u(paramj, "holder");
+    paramRecyclerView = (TextView)paramj.UH(e.e.topic_tv);
+    if (paramRecyclerView != null) {
+      paramRecyclerView.setTextSize(1, 14.0F);
     }
-    AppMethodBeat.o(286537);
+    AppMethodBeat.o(334287);
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_gallery_tab_item;
+    return e.f.finder_gallery_tab_item;
   }
 }
 

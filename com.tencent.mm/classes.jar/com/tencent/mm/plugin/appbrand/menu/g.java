@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
 import com.tencent.mm.plugin.appbrand.page.ah;
 
@@ -10,21 +9,14 @@ public final class g
 {
   public g()
   {
-    super(w.qgf.ordinal());
-    AppMethodBeat.i(276877);
-    AppMethodBeat.o(276877);
-  }
-  
-  public static final class a
-    extends r
-  {
-    private static final int CTRL_INDEX = 799;
-    public static final String NAME = "onAddToFavorites";
+    super(x.tkJ.ordinal());
+    AppMethodBeat.i(323811);
+    AppMethodBeat.o(323811);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.g
  * JD-Core Version:    0.7.0.1
  */

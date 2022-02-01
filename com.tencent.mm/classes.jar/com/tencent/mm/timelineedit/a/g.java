@@ -1,235 +1,237 @@
 package com.tencent.mm.timelineedit.a;
 
 import android.graphics.Rect;
-import com.google.b.bw.a;
+import com.google.d.ce.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.timelineedit.a.a.aa;
 import com.tencent.mm.timelineedit.a.a.aa.a;
 import com.tencent.mm.timelineedit.a.a.i;
 import com.tencent.mm.timelineedit.a.a.i.a;
 import com.tencent.mm.timelineedit.a.a.o;
+import com.tencent.mm.timelineedit.a.a.p;
 import com.tencent.mm.timelineedit.a.a.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/timelineedit/model/Track;", "Lcom/tencent/mm/timelineedit/model/ProtoModel;", "Lcom/tencent/mm/timelineedit/model/pb/TrackInfoProto;", "Lcom/tencent/mm/timelineedit/model/pb/TrackInfoProto$Builder;", "()V", "value", "", "contentCrop", "getContentCrop", "()I", "setContentCrop", "(I)V", "cropInfoBuilder", "Lcom/tencent/mm/timelineedit/model/pb/CropInfoProto$Builder;", "kotlin.jvm.PlatformType", "Landroid/graphics/Rect;", "displayRect", "getDisplayRect", "()Landroid/graphics/Rect;", "setDisplayRect", "(Landroid/graphics/Rect;)V", "", "path", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "", "playRate", "getPlayRate", "()F", "setPlayRate", "(F)V", "Lcom/tencent/mm/timelineedit/model/Size;", "resolution", "getResolution", "()Lcom/tencent/mm/timelineedit/model/Size;", "setResolution", "(Lcom/tencent/mm/timelineedit/model/Size;)V", "rotate", "getRotate", "setRotate", "", "sourceDuration", "getSourceDuration", "()J", "setSourceDuration", "(J)V", "Lcom/tencent/mm/timelineedit/model/TimeRange;", "sourceRange", "getSourceRange", "()Lcom/tencent/mm/timelineedit/model/TimeRange;", "setSourceRange", "(Lcom/tencent/mm/timelineedit/model/TimeRange;)V", "trackCropRect", "getTrackCropRect", "setTrackCropRect", "trackId", "getTrackId", "setTrackId", "trackRange", "getTrackRange", "setTrackRange", "trackType", "getTrackType", "setTrackType", "volume", "getVolume", "setVolume", "parseFrom", "", "data", "", "toString", "timelinelib_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/timelineedit/model/Track;", "Lcom/tencent/mm/timelineedit/model/ProtoModel;", "Lcom/tencent/mm/timelineedit/model/pb/TrackInfoProto;", "Lcom/tencent/mm/timelineedit/model/pb/TrackInfoProto$Builder;", "()V", "value", "", "contentCrop", "getContentCrop", "()I", "setContentCrop", "(I)V", "cropInfoBuilder", "Lcom/tencent/mm/timelineedit/model/pb/CropInfoProto$Builder;", "kotlin.jvm.PlatformType", "Landroid/graphics/Rect;", "displayRect", "getDisplayRect", "()Landroid/graphics/Rect;", "setDisplayRect", "(Landroid/graphics/Rect;)V", "", "path", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "", "playRate", "getPlayRate", "()F", "setPlayRate", "(F)V", "Lcom/tencent/mm/timelineedit/model/Size;", "resolution", "getResolution", "()Lcom/tencent/mm/timelineedit/model/Size;", "setResolution", "(Lcom/tencent/mm/timelineedit/model/Size;)V", "rotate", "getRotate", "setRotate", "", "sourceDuration", "getSourceDuration", "()J", "setSourceDuration", "(J)V", "Lcom/tencent/mm/timelineedit/model/TimeRange;", "sourceRange", "getSourceRange", "()Lcom/tencent/mm/timelineedit/model/TimeRange;", "setSourceRange", "(Lcom/tencent/mm/timelineedit/model/TimeRange;)V", "trackCropRect", "getTrackCropRect", "setTrackCropRect", "trackId", "getTrackId", "setTrackId", "trackRange", "getTrackRange", "setTrackRange", "trackType", "getTrackType", "setTrackType", "volume", "getVolume", "setVolume", "parseFrom", "", "data", "", "toString", "timelinelib_release"}, k=1, mv={1, 1, 15})
 public final class g
   extends d<aa, aa.a>
 {
-  private i.a VLz;
+  private i.a adpE;
   
   public g()
   {
-    AppMethodBeat.i(262119);
-    this.VLz = i.hDz();
-    aa.a locala = aa.hEv();
-    kotlin.g.b.p.j(locala, "TrackInfoProto.newBuilder()");
-    a((bw.a)locala);
-    AppMethodBeat.o(262119);
+    AppMethodBeat.i(232073);
+    this.adpE = i.jfH();
+    aa.a locala = aa.jgH();
+    s.r(locala, "TrackInfoProto.newBuilder()");
+    a((ce.a)locala);
+    AppMethodBeat.o(232073);
   }
   
-  public final void A(Rect paramRect)
+  public final void I(Rect paramRect)
   {
-    AppMethodBeat.i(262114);
-    kotlin.g.b.p.k(paramRect, "value");
-    i.a locala = this.VLz;
-    kotlin.g.b.p.j(locala, "cropInfoBuilder");
-    locala.f(a.z(paramRect));
-    ((aa.a)hCw()).d(this.VLz.hDC());
-    AppMethodBeat.o(262114);
+    AppMethodBeat.i(232167);
+    s.t(paramRect, "value");
+    i.a locala = this.adpE;
+    s.r(locala, "cropInfoBuilder");
+    locala.f(a.H(paramRect));
+    ((aa.a)jeC()).d(this.adpE.jfL());
+    AppMethodBeat.o(232167);
   }
   
-  public final void B(Rect paramRect)
+  public final void J(Rect paramRect)
   {
-    AppMethodBeat.i(262116);
-    kotlin.g.b.p.k(paramRect, "value");
-    i.a locala = this.VLz;
-    kotlin.g.b.p.j(locala, "cropInfoBuilder");
-    locala.h(a.z(paramRect));
-    ((aa.a)hCw()).d(this.VLz.hDC());
-    AppMethodBeat.o(262116);
-  }
-  
-  public final void Vd(long paramLong)
-  {
-    AppMethodBeat.i(262090);
-    ((aa.a)hCw()).Vm(paramLong);
-    AppMethodBeat.o(262090);
-  }
-  
-  public final void Ve(long paramLong)
-  {
-    AppMethodBeat.i(262111);
-    ((aa.a)hCw()).Vr(paramLong);
-    AppMethodBeat.o(262111);
+    AppMethodBeat.i(232172);
+    s.t(paramRect, "value");
+    i.a locala = this.adpE;
+    s.r(locala, "cropInfoBuilder");
+    locala.h(a.H(paramRect));
+    ((aa.a)jeC()).d(this.adpE.jfL());
+    AppMethodBeat.o(232172);
   }
   
   public final void a(e parame)
   {
-    AppMethodBeat.i(262112);
-    kotlin.g.b.p.k(parame, "value");
-    ((aa.a)hCw()).atw(parame.width);
-    ((aa.a)hCw()).atx(parame.height);
-    AppMethodBeat.o(262112);
+    AppMethodBeat.i(232153);
+    s.t(parame, "value");
+    ((aa.a)jeC()).azM(parame.width);
+    ((aa.a)jeC()).azN(parame.height);
+    AppMethodBeat.o(232153);
   }
   
   public final void a(f paramf)
   {
-    AppMethodBeat.i(262102);
-    kotlin.g.b.p.k(paramf, "value");
-    ((aa.a)hCw()).Vn(paramf.startTimeMs);
-    ((aa.a)hCw()).Vo(paramf.endTimeMs);
-    AppMethodBeat.o(262102);
+    AppMethodBeat.i(232118);
+    s.t(paramf, "value");
+    ((aa.a)jeC()).zv(paramf.startTimeMs);
+    ((aa.a)jeC()).zw(paramf.endTimeMs);
+    AppMethodBeat.o(232118);
   }
   
-  public final void atf(int paramInt)
+  public final void azv(int paramInt)
   {
-    AppMethodBeat.i(262098);
-    aa.a locala = (aa.a)hCw();
+    AppMethodBeat.i(232099);
+    aa.a locala = (aa.a)jeC();
     o localo;
     switch (paramInt)
     {
     default: 
-      localo = o.VMD;
+      localo = o.adqI;
     }
     for (;;)
     {
       locala.b(localo);
-      AppMethodBeat.o(262098);
+      AppMethodBeat.o(232099);
       return;
-      localo = o.VMF;
+      localo = o.adqK;
       continue;
-      localo = o.VMG;
+      localo = o.adqL;
       continue;
-      localo = o.VME;
+      localo = o.adqJ;
     }
   }
   
-  public final void atg(int paramInt)
+  public final void azw(int paramInt)
   {
-    AppMethodBeat.i(262113);
-    aa.a locala = (aa.a)hCw();
-    com.tencent.mm.timelineedit.a.a.p localp;
+    AppMethodBeat.i(232159);
+    aa.a locala = (aa.a)jeC();
+    p localp;
     switch (paramInt)
     {
     default: 
-      localp = com.tencent.mm.timelineedit.a.a.p.VMN;
+      localp = p.adqS;
     }
     for (;;)
     {
       locala.b(localp);
-      AppMethodBeat.o(262113);
+      AppMethodBeat.o(232159);
       return;
-      localp = com.tencent.mm.timelineedit.a.a.p.VML;
+      localp = p.adqQ;
       continue;
-      localp = com.tencent.mm.timelineedit.a.a.p.VMM;
+      localp = p.adqR;
       continue;
-      localp = com.tencent.mm.timelineedit.a.a.p.VMK;
+      localp = p.adqP;
     }
   }
   
   public final void b(f paramf)
   {
-    AppMethodBeat.i(262104);
-    kotlin.g.b.p.k(paramf, "value");
-    ((aa.a)hCw()).Vp(paramf.startTimeMs);
-    ((aa.a)hCw()).Vq(paramf.endTimeMs);
-    AppMethodBeat.o(262104);
+    AppMethodBeat.i(232121);
+    s.t(paramf, "value");
+    ((aa.a)jeC()).zx(paramf.startTimeMs);
+    ((aa.a)jeC()).zy(paramf.endTimeMs);
+    AppMethodBeat.o(232121);
   }
   
-  public final void dg(byte[] paramArrayOfByte)
+  public final void dj(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(262117);
-    kotlin.g.b.p.k(paramArrayOfByte, "data");
-    paramArrayOfByte = aa.dj(paramArrayOfByte).hEw();
-    kotlin.g.b.p.j(paramArrayOfByte, "TrackInfoProto.parseFrom(data).toBuilder()");
-    a((bw.a)paramArrayOfByte);
-    this.VLz = ((aa.a)hCw()).hEp().hDA();
-    AppMethodBeat.o(262117);
+    AppMethodBeat.i(232178);
+    s.t(paramArrayOfByte, "data");
+    paramArrayOfByte = aa.dm(paramArrayOfByte).jgI();
+    s.r(paramArrayOfByte, "TrackInfoProto.parseFrom(data).toBuilder()");
+    a((ce.a)paramArrayOfByte);
+    this.adpE = ((aa.a)jeC()).jgB().jfI();
+    AppMethodBeat.o(232178);
   }
   
   public final String getPath()
   {
-    AppMethodBeat.i(262093);
-    String str = ((aa.a)hCw()).getPath();
-    kotlin.g.b.p.j(str, "innerBuilder.path");
-    AppMethodBeat.o(262093);
+    AppMethodBeat.i(232087);
+    String str = ((aa.a)jeC()).getPath();
+    s.r(str, "innerBuilder.path");
+    AppMethodBeat.o(232087);
     return str;
   }
   
   public final long getSourceDuration()
   {
-    AppMethodBeat.i(262110);
-    long l = ((aa.a)hCw()).getSourceDuration();
-    AppMethodBeat.o(262110);
+    AppMethodBeat.i(232145);
+    long l = ((aa.a)jeC()).getSourceDuration();
+    AppMethodBeat.o(232145);
     return l;
   }
   
   public final int getTrackType()
   {
-    AppMethodBeat.i(262096);
-    o localo = ((aa.a)hCw()).hEl();
-    kotlin.g.b.p.j(localo, "innerBuilder.type");
+    AppMethodBeat.i(232095);
+    o localo = ((aa.a)jeC()).jgx();
+    s.r(localo, "innerBuilder.type");
     int i = a.a(localo);
-    AppMethodBeat.o(262096);
+    AppMethodBeat.o(232095);
     return i;
   }
   
-  public final f hCy()
+  public final f jeE()
   {
-    AppMethodBeat.i(262100);
-    f localf = new f(((aa.a)hCw()).getStartTimeMs(), ((aa.a)hCw()).getEndTimeMs());
-    AppMethodBeat.o(262100);
+    AppMethodBeat.i(232110);
+    f localf = new f(((aa.a)jeC()).getStartTimeMs(), ((aa.a)jeC()).getEndTimeMs());
+    AppMethodBeat.o(232110);
     return localf;
   }
   
   public final void setPath(String paramString)
   {
-    AppMethodBeat.i(262094);
-    kotlin.g.b.p.k(paramString, "value");
-    ((aa.a)hCw()).byd(paramString);
-    AppMethodBeat.o(262094);
+    AppMethodBeat.i(232092);
+    s.t(paramString, "value");
+    ((aa.a)jeC()).bzy(paramString);
+    AppMethodBeat.o(232092);
   }
   
   public final void setPlayRate(float paramFloat)
   {
-    AppMethodBeat.i(262105);
-    ((aa.a)hCw()).cD(paramFloat);
-    AppMethodBeat.o(262105);
+    AppMethodBeat.i(232126);
+    ((aa.a)jeC()).dP(paramFloat);
+    AppMethodBeat.o(232126);
   }
   
   public final void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(262107);
-    ((aa.a)hCw()).cC(paramFloat);
-    AppMethodBeat.o(262107);
+    AppMethodBeat.i(232134);
+    ((aa.a)jeC()).dO(paramFloat);
+    AppMethodBeat.o(232134);
   }
   
-  public final void tm(int paramInt)
+  public final void th(int paramInt)
   {
-    AppMethodBeat.i(262108);
-    ((aa.a)hCw()).aty(paramInt);
-    AppMethodBeat.o(262108);
+    AppMethodBeat.i(232138);
+    ((aa.a)jeC()).azO(paramInt);
+    AppMethodBeat.o(232138);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(262118);
-    Object localObject1 = new StringBuilder("Track(trackId:").append(((aa.a)hCw()).getId()).append(" path:").append(getPath()).append(" trackType:").append(getTrackType()).append(" source:").append(hCy()).append("  track:").append(new f(((aa.a)hCw()).hEm(), ((aa.a)hCw()).hEn())).append(" playRate:").append(((aa.a)hCw()).getPlayRate()).append(" volume:").append(((aa.a)hCw()).getVolume()).append(" rotate:").append(((aa.a)hCw()).aVr()).append(" resolution:").append(new e(((aa.a)hCw()).hEB(), ((aa.a)hCw()).hEC())).append(" contentCrop:");
-    Object localObject2 = ((aa.a)hCw()).hEs();
-    kotlin.g.b.p.j(localObject2, "innerBuilder.contentCrop");
-    localObject1 = ((StringBuilder)localObject1).append(a.a((com.tencent.mm.timelineedit.a.a.p)localObject2)).append(" displayRect:");
-    localObject2 = ((aa.a)hCw()).hEp();
-    kotlin.g.b.p.j(localObject2, "innerBuilder.cropInfo");
-    localObject2 = ((i)localObject2).hDy();
-    kotlin.g.b.p.j(localObject2, "innerBuilder.cropInfo.displayRect");
+    AppMethodBeat.i(232186);
+    Object localObject1 = new StringBuilder("Track(trackId:").append(((aa.a)jeC()).getId()).append(" path:").append(getPath()).append(" trackType:").append(getTrackType()).append(" source:").append(jeE()).append("  track:").append(new f(((aa.a)jeC()).jgy(), ((aa.a)jeC()).jgz())).append(" playRate:").append(((aa.a)jeC()).getPlayRate()).append(" volume:").append(((aa.a)jeC()).getVolume()).append(" rotate:").append(((aa.a)jeC()).hRY()).append(" resolution:").append(new e(((aa.a)jeC()).ejR(), ((aa.a)jeC()).ejS())).append(" contentCrop:");
+    Object localObject2 = ((aa.a)jeC()).jgE();
+    s.r(localObject2, "innerBuilder.contentCrop");
+    localObject1 = ((StringBuilder)localObject1).append(a.a((p)localObject2)).append(" displayRect:");
+    localObject2 = ((aa.a)jeC()).jgB();
+    s.r(localObject2, "innerBuilder.cropInfo");
+    localObject2 = ((i)localObject2).jfG();
+    s.r(localObject2, "innerBuilder.cropInfo.displayRect");
     localObject1 = a.a((q)localObject2) + ')';
-    AppMethodBeat.o(262118);
+    AppMethodBeat.o(232186);
     return localObject1;
+  }
+  
+  public final void zl(long paramLong)
+  {
+    AppMethodBeat.i(232079);
+    ((aa.a)jeC()).zu(paramLong);
+    AppMethodBeat.o(232079);
+  }
+  
+  public final void zm(long paramLong)
+  {
+    AppMethodBeat.i(232148);
+    ((aa.a)jeC()).zz(paramLong);
+    AppMethodBeat.o(232148);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.timelineedit.a.g
  * JD-Core Version:    0.7.0.1
  */

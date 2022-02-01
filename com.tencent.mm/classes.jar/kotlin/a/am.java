@@ -1,58 +1,52 @@
 package kotlin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, iBN=1)
+@Metadata(d1={""}, d2={"INT_MAX_POWER_OF_TWO", "", "build", "", "K", "V", "builder", "", "buildMapInternal", "capacity", "builderAction", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "createMapBuilder", "mapCapacity", "expectedSize", "mapOf", "pair", "Lkotlin/Pair;", "sortedMapOf", "Ljava/util/SortedMap;", "comparator", "Ljava/util/Comparator;", "pairs", "", "(Ljava/util/Comparator;[Lkotlin/Pair;)Ljava/util/SortedMap;", "", "([Lkotlin/Pair;)Ljava/util/SortedMap;", "getOrPut", "Ljava/util/concurrent/ConcurrentMap;", "key", "defaultValue", "Lkotlin/Function0;", "(Ljava/util/concurrent/ConcurrentMap;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "toProperties", "Ljava/util/Properties;", "", "toSingletonMap", "toSingletonMapOrSelf", "toSortedMap", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/collections/MapsKt")
 public class am
   extends al
 {
-  public static final <T> Set<T> B(Set<? extends T> paramSet)
+  public static final int aKi(int paramInt)
   {
-    AppMethodBeat.i(129118);
-    p.k(paramSet, "$this$optimizeReadOnlySet");
-    switch (paramSet.size())
-    {
-    default: 
-      AppMethodBeat.o(129118);
-      return paramSet;
-    case 0: 
-      paramSet = (Set)x.aaAf;
-      AppMethodBeat.o(129118);
-      return paramSet;
+    if (paramInt < 0) {
+      return paramInt;
     }
-    paramSet = ak.setOf(paramSet.iterator().next());
-    AppMethodBeat.o(129118);
-    return paramSet;
+    if (paramInt < 3) {
+      return paramInt + 1;
+    }
+    if (paramInt < 1073741824) {
+      return (int)(paramInt / 0.75F + 1.0F);
+    }
+    return 2147483647;
   }
   
-  public static final <T> HashSet<T> ai(T... paramVarArgs)
+  public static final <K, V> Map<K, V> du(Map<? extends K, ? extends V> paramMap)
   {
-    AppMethodBeat.i(218807);
-    p.k(paramVarArgs, "elements");
-    paramVarArgs = (HashSet)e.b(paramVarArgs, (Collection)new HashSet(ae.aDD(paramVarArgs.length)));
-    AppMethodBeat.o(218807);
-    return paramVarArgs;
+    AppMethodBeat.i(129009);
+    s.u(paramMap, "$this$toSingletonMap");
+    paramMap = (Map.Entry)paramMap.entrySet().iterator().next();
+    paramMap = Collections.singletonMap(paramMap.getKey(), paramMap.getValue());
+    s.s(paramMap, "with(entries.iterator().…ingletonMap(key, value) }");
+    AppMethodBeat.o(129009);
+    return paramMap;
   }
   
-  public static final <T> Set<T> setOf(T... paramVarArgs)
+  public static final <K, V> Map<K, V> l(r<? extends K, ? extends V> paramr)
   {
-    AppMethodBeat.i(129117);
-    p.k(paramVarArgs, "elements");
-    if (paramVarArgs.length > 0)
-    {
-      paramVarArgs = e.ac(paramVarArgs);
-      AppMethodBeat.o(129117);
-      return paramVarArgs;
-    }
-    paramVarArgs = (Set)x.aaAf;
-    AppMethodBeat.o(129117);
-    return paramVarArgs;
+    AppMethodBeat.i(129008);
+    s.u(paramr, "pair");
+    paramr = Collections.singletonMap(paramr.bsC, paramr.bsD);
+    s.s(paramr, "java.util.Collections.si…(pair.first, pair.second)");
+    AppMethodBeat.o(129008);
+    return paramr;
   }
 }
 

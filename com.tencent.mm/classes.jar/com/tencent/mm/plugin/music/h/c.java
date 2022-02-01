@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.music.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
-import com.tencent.mm.plugin.music.e.a;
-import com.tencent.mm.plugin.music.e.k;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.plugin.music.logic.a;
+import com.tencent.mm.plugin.music.logic.j;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static boolean U(f paramf)
+  public static boolean aa(f paramf)
   {
     AppMethodBeat.i(137450);
     if (paramf == null)
@@ -32,7 +32,7 @@ public final class c
     return false;
   }
   
-  public static boolean ZB(int paramInt)
+  public static boolean adO(int paramInt)
   {
     AppMethodBeat.i(137449);
     switch (paramInt)
@@ -43,13 +43,14 @@ public final class c
     case 7: 
     case 13: 
     default: 
-      a locala = k.fet().FQA;
-      if ((locala != null) && (locala.fee()))
+      a locala = j.gnw().LLw;
+      if ((locala != null) && (locala.gnh()))
       {
         AppMethodBeat.o(137449);
         return true;
       }
       break;
+    case 0: 
     case 1: 
     case 4: 
     case 5: 
@@ -68,7 +69,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.c
  * JD-Core Version:    0.7.0.1
  */

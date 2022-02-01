@@ -15,7 +15,12 @@ public final class p
     this.uin = ((int)(0xFFFFFFFF & paramLong));
   }
   
-  public static int fT(String paramString)
+  public static String getString(int paramInt)
+  {
+    return new p(paramInt).toString();
+  }
+  
+  public static int hw(String paramString)
   {
     try
     {
@@ -24,11 +29,6 @@ public final class p
     }
     catch (Exception paramString) {}
     return 0;
-  }
-  
-  public static String getString(int paramInt)
-  {
-    return new p(paramInt).toString();
   }
   
   public final double doubleValue()
@@ -58,7 +58,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.b.p
  * JD-Core Version:    0.7.0.1
  */

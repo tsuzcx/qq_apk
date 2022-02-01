@@ -9,24 +9,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.a.a;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public final class y
   extends i
 {
-  private View tGC;
-  private b tmU;
-  private MMActivity tmY;
+  private View wKb;
+  private b wru;
+  private MMActivity wry;
   
-  public final void cKY()
+  public final void doE()
   {
     AppMethodBeat.i(113718);
-    if (this.tGC != null) {
-      this.tGC.setVisibility(8);
+    if (this.wKb != null) {
+      this.wKb.setVisibility(8);
     }
     AppMethodBeat.o(113718);
   }
@@ -34,22 +34,22 @@ public final class y
   public final void initView()
   {
     AppMethodBeat.i(113716);
-    this.tmY = this.tFT.cIV();
+    this.wry = this.wJs.dmn();
     AppMethodBeat.o(113716);
   }
   
   public final void update()
   {
     AppMethodBeat.i(113717);
-    this.tmU = this.tFT.cIS();
-    if (this.tGC == null) {
-      this.tGC = ((ViewStub)findViewById(a.d.tdy)).inflate();
+    this.wru = this.wJs.dmk();
+    if (this.wKb == null) {
+      this.wKb = ((ViewStub)findViewById(a.d.whM)).inflate();
     }
-    if (this.tmU.cGa()) {
-      this.tGC.setBackgroundDrawable(l.Z(this.tmY, this.tmY.getResources().getColor(a.a.sZu)));
+    if (this.wru.djs()) {
+      this.wKb.setBackgroundDrawable(l.ag(this.wry, this.wry.getResources().getColor(a.a.wdD)));
     }
-    TextView localTextView = (TextView)this.tGC.findViewById(a.d.tdz);
-    if (this.tmU.cGt() == null)
+    TextView localTextView = (TextView)this.wKb.findViewById(a.d.whN);
+    if (this.wru.djL() == null)
     {
       Log.e("MicroMsg.CardStatusView", "updateState() mCardInfo.getDataInfo() == null");
       localTextView.setVisibility(8);
@@ -57,20 +57,20 @@ public final class y
       return;
     }
     localTextView.setVisibility(0);
-    localTextView.setTextColor(this.tmY.getResources().getColor(a.a.grey_background_text_color));
-    if (!TextUtils.isEmpty(this.tmU.cGs().Sgm))
+    localTextView.setTextColor(this.wry.getResources().getColor(a.a.grey_background_text_color));
+    if (!TextUtils.isEmpty(this.wru.djK().Zeh))
     {
-      localTextView.setText(this.tmU.cGs().Sgm);
+      localTextView.setText(this.wru.djK().Zeh);
       AppMethodBeat.o(113717);
       return;
     }
-    com.tencent.mm.plugin.card.d.n.h(localTextView, this.tmU.cGt().status);
+    com.tencent.mm.plugin.card.c.n.i(localTextView, this.wru.djL().status);
     AppMethodBeat.o(113717);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.y
  * JD-Core Version:    0.7.0.1
  */

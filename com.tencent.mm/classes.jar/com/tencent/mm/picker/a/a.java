@@ -7,19 +7,19 @@ import java.util.List;
 public final class a<T>
   implements b
 {
-  private List<T> lxh;
+  private List<T> bMQ;
   
   public a(List<T> paramList)
   {
-    this.lxh = paramList;
+    this.bMQ = paramList;
   }
   
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(175284);
-    if ((paramInt >= 0) && (paramInt < this.lxh.size()))
+    if ((paramInt >= 0) && (paramInt < this.bMQ.size()))
     {
-      Object localObject = this.lxh.get(paramInt);
+      Object localObject = this.bMQ.get(paramInt);
       AppMethodBeat.o(175284);
       return localObject;
     }
@@ -30,12 +30,12 @@ public final class a<T>
   public final int getItemsCount()
   {
     AppMethodBeat.i(175286);
-    int i = this.lxh.size();
+    int i = this.bMQ.size();
     AppMethodBeat.o(175286);
     return i;
   }
   
-  public final String xI(int paramInt)
+  public final String xN(int paramInt)
   {
     AppMethodBeat.i(175285);
     Object localObject2 = getItem(paramInt);
@@ -57,7 +57,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.picker.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -83,7 +83,7 @@ public class bank_remit_waiting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.bank_remit_waiting
  * JD-Core Version:    0.7.0.1
  */

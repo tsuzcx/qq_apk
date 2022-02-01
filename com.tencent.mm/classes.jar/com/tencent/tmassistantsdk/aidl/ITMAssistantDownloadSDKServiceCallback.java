@@ -58,7 +58,10 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
     
     public static boolean setDefaultImpl(ITMAssistantDownloadSDKServiceCallback paramITMAssistantDownloadSDKServiceCallback)
     {
-      if ((Proxy.sDefaultImpl == null) && (paramITMAssistantDownloadSDKServiceCallback != null))
+      if (Proxy.sDefaultImpl != null) {
+        throw new IllegalStateException("setDefaultImpl() called twice");
+      }
+      if (paramITMAssistantDownloadSDKServiceCallback != null)
       {
         Proxy.sDefaultImpl = paramITMAssistantDownloadSDKServiceCallback;
         return true;
@@ -209,7 +212,7 @@ public abstract interface ITMAssistantDownloadSDKServiceCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceCallback
  * JD-Core Version:    0.7.0.1
  */

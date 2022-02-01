@@ -6,31 +6,32 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import junit.framework.Assert;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizMsgResortTest;", "", "()V", "TAG", "", "resortTestOpen", "", "getResortTestOpen", "()I", "setResortTestOpen", "(I)V", "checkReqData", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "beginTime", "", "checkReqLimit", "reqLimit", "itemSize", "checkRespData", "isResortTestOpen", "", "onCheckFail", "errMsg", "plugin-biz_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/storage/BizMsgResortTest;", "", "()V", "TAG", "", "resortTestOpen", "", "getResortTestOpen", "()I", "setResortTestOpen", "(I)V", "checkReqData", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "beginTime", "", "checkReqLimit", "reqLimit", "itemSize", "checkRespData", "isResortTestOpen", "", "onCheckFail", "errMsg", "plugin-biz_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class w
 {
-  private static int VdB;
-  public static final w VdC;
+  public static final w acEV;
+  private static int acEW;
   
   static
   {
-    AppMethodBeat.i(205221);
-    VdC = new w();
-    VdB = -1;
-    AppMethodBeat.o(205221);
+    AppMethodBeat.i(248762);
+    acEV = new w();
+    acEW = -1;
+    AppMethodBeat.o(248762);
   }
   
-  public static void asn(int paramInt)
+  public static void ayy(int paramInt)
   {
-    VdB = paramInt;
+    acEW = paramInt;
   }
   
-  static void bvr(String paramString)
+  static void bvz(String paramString)
   {
-    AppMethodBeat.i(205219);
-    Log.e("MicroMsg.BizMsgResortTest", "onCheckFail ".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(248759);
+    Log.e("MicroMsg.BizMsgResortTest", s.X("onCheckFail ", paramString));
     if ((BuildInfo.DEBUG) || (Log.getLogLevel() <= 1))
     {
       MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleMMKV("brandService");
@@ -38,31 +39,31 @@ public final class w
       if (Math.abs(l - localMultiProcessMMKV.decodeLong("lastResortCrashTime", -1L)) > 86400000L)
       {
         localMultiProcessMMKV.encode("lastResortCrashTime", l);
-        Assert.assertTrue("onCheckFail ".concat(String.valueOf(paramString)), false);
+        Assert.assertTrue(s.X("onCheckFail ", paramString), false);
       }
     }
-    AppMethodBeat.o(205219);
+    AppMethodBeat.o(248759);
   }
   
-  static boolean hwr()
+  static boolean iXX()
   {
-    AppMethodBeat.i(205218);
-    if (VdB != -1)
+    AppMethodBeat.i(248753);
+    if (acEW != -1)
     {
-      if (VdB == 1)
+      if (acEW == 1)
       {
-        AppMethodBeat.o(205218);
+        AppMethodBeat.o(248753);
         return true;
       }
-      AppMethodBeat.o(205218);
+      AppMethodBeat.o(248753);
       return false;
     }
     if (((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger())) && (Log.getLogLevel() < 2))
     {
-      AppMethodBeat.o(205218);
+      AppMethodBeat.o(248753);
       return true;
     }
-    AppMethodBeat.o(205218);
+    AppMethodBeat.o(248753);
     return false;
   }
 }

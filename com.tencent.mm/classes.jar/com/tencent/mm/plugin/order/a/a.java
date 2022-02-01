@@ -8,12 +8,12 @@ import com.tencent.mm.plugin.order.ui.MallOrderProductListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderTransactionInfoUI;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.wallet_core.e;
 
 public class a
-  extends d
+  extends e
 {
-  public d a(Activity paramActivity, Bundle paramBundle)
+  public e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66631);
     Log.d("MicroMsg.ShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
@@ -47,7 +47,7 @@ public class a
       return;
     }
     if (((paramActivity instanceof MallOrderProductListUI)) || ((paramActivity instanceof MallOrderTransactionInfoUI))) {
-      Q(paramActivity);
+      Z(paramActivity);
     }
     AppMethodBeat.o(66632);
   }
@@ -55,7 +55,7 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66633);
-    super.bH(paramActivity);
+    super.co(paramActivity);
     AppMethodBeat.o(66633);
   }
   
@@ -64,15 +64,15 @@ public class a
     return false;
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "ShowOrdersInfoProcess";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(66634);
-    Q(paramActivity);
+    Z(paramActivity);
     AppMethodBeat.o(66634);
   }
 }

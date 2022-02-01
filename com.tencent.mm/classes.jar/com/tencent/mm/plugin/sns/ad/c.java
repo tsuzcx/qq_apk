@@ -1,131 +1,27 @@
 package com.tencent.mm.plugin.sns.ad;
 
-import android.content.Context;
-import android.text.TextUtils;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Util;
-import org.xwalk.core.Log;
+import com.tencent.mm.plugin.sns.c.e;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
+  implements e
 {
-  public static int Jxs = 0;
-  public static int Jxt = 0;
-  public static int Jxu = 0;
-  
-  public static void bK(Context paramContext, String paramString)
+  public final void a(long paramLong, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(243980);
-    Log.i("SnsAdTestConfig", "handleCmd, msg=".concat(String.valueOf(paramString)));
-    String str2;
-    String str1;
-    int i;
-    try
-    {
-      String[] arrayOfString = paramString.split(" ");
-      paramString = "";
-      String str3 = "";
-      str2 = str3;
-      str1 = paramString;
-      if (arrayOfString != null)
-      {
-        if (arrayOfString.length >= 2) {
-          paramString = arrayOfString[1].trim();
-        }
-        str2 = str3;
-        str1 = paramString;
-        if (arrayOfString.length >= 3)
-        {
-          str2 = arrayOfString[2];
-          str1 = paramString;
-        }
-      }
-      boolean bool = TextUtils.isEmpty(str1);
-      if (bool)
-      {
-        AppMethodBeat.o(243980);
-        return;
-      }
-      Log.i("SnsAdTestConfig", "handleSubCmd, subCmd=" + str1 + ", value=" + str2);
-      if (!"fullcard_online".equals(str1)) {
-        break label265;
-      }
-      i = Util.safeParseInt(str2);
-      if ((i == 0) || (i == 1) || (i == 2)) {
-        Jxs = i;
-      }
-      if (Jxs == 0)
-      {
-        Toast.makeText(paramContext, "default cfg", 1).show();
-        AppMethodBeat.o(243980);
-        return;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      Log.e("SnsAdTestConfig", "handleCmd, exp=" + paramContext.toString());
-      AppMethodBeat.o(243980);
-      return;
-    }
-    if (Jxs == 1)
-    {
-      Toast.makeText(paramContext, "force offline", 1).show();
-      AppMethodBeat.o(243980);
-      return;
-    }
-    if (Jxs == 2) {
-      Toast.makeText(paramContext, "force online", 1).show();
-    }
-    AppMethodBeat.o(243980);
-    return;
-    label265:
-    if ("fullcard_new_item".equals(str1))
-    {
-      i = Util.safeParseInt(str2);
-      if ((i == 0) || (i == 1) || (i == 2)) {
-        Jxt = i;
-      }
-      if (Jxt == 0)
-      {
-        Toast.makeText(paramContext, "default cfg", 1).show();
-        AppMethodBeat.o(243980);
-        return;
-      }
-      if (Jxt == 1)
-      {
-        Toast.makeText(paramContext, "force old item", 1).show();
-        AppMethodBeat.o(243980);
-        return;
-      }
-      if (Jxt == 2) {
-        Toast.makeText(paramContext, "force new item", 1).show();
-      }
-      AppMethodBeat.o(243980);
-      return;
-    }
-    if ("useTp".equals(str1))
-    {
-      i = Util.safeParseInt(str2);
-      if ((i == 0) || (i == 1) || (i == 2)) {
-        Jxu = i;
-      }
-      if (Jxu == 0)
-      {
-        Toast.makeText(paramContext, "default cfg", 1).show();
-        AppMethodBeat.o(243980);
-        return;
-      }
-      if (Jxu == 1)
-      {
-        Toast.makeText(paramContext, "force not thumbPlayer", 1).show();
-        AppMethodBeat.o(243980);
-        return;
-      }
-      if (Jxu == 2) {
-        Toast.makeText(paramContext, "force thumbPlayer", 1).show();
-      }
-    }
-    AppMethodBeat.o(243980);
+    AppMethodBeat.i(309640);
+    Log.i("SnsAdService", "openAdCanvasById, canvasId=" + paramLong + ", source=" + paramInt + ", adInfoXml=" + paramString1 + ", extra=" + paramString2);
+    m.a(paramLong, paramString1, paramString2, paramInt);
+    AppMethodBeat.o(309640);
+  }
+  
+  public final String aWg(String paramString)
+  {
+    AppMethodBeat.i(309646);
+    paramString = m.aWg(paramString);
+    AppMethodBeat.o(309646);
+    return paramString;
   }
 }
 

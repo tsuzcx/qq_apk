@@ -3,6 +3,7 @@ package androidx.core.graphics.drawable;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.graphics.ColorFilter;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableContainer;
@@ -16,137 +17,137 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class a
 {
-  private static Method KI;
-  private static boolean KJ;
-  private static Method KK;
-  private static boolean KL;
+  private static Method bqQ;
+  private static boolean bqR;
+  private static Method bqS;
+  private static boolean bqT;
   
   public static void a(Drawable paramDrawable, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(250807);
+    AppMethodBeat.i(196209);
     if (Build.VERSION.SDK_INT >= 21) {
       paramDrawable.setHotspot(paramFloat1, paramFloat2);
     }
-    AppMethodBeat.o(250807);
+    AppMethodBeat.o(196209);
   }
   
   public static void a(Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(250809);
+    AppMethodBeat.i(196223);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramDrawable.setTint(paramInt);
-      AppMethodBeat.o(250809);
+      AppMethodBeat.o(196223);
       return;
     }
     if ((paramDrawable instanceof e)) {
       ((e)paramDrawable).setTint(paramInt);
     }
-    AppMethodBeat.o(250809);
+    AppMethodBeat.o(196223);
   }
   
   public static void a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(250808);
+    AppMethodBeat.i(196216);
     if (Build.VERSION.SDK_INT >= 21) {
       paramDrawable.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    AppMethodBeat.o(250808);
+    AppMethodBeat.o(196216);
   }
   
   public static void a(Drawable paramDrawable, ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(250811);
+    AppMethodBeat.i(196236);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramDrawable.setTintList(paramColorStateList);
-      AppMethodBeat.o(250811);
+      AppMethodBeat.o(196236);
       return;
     }
     if ((paramDrawable instanceof e)) {
       ((e)paramDrawable).setTintList(paramColorStateList);
     }
-    AppMethodBeat.o(250811);
+    AppMethodBeat.o(196236);
   }
   
   public static void a(Drawable paramDrawable, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(250814);
+    AppMethodBeat.i(196261);
     if (Build.VERSION.SDK_INT >= 21) {
       paramDrawable.applyTheme(paramTheme);
     }
-    AppMethodBeat.o(250814);
+    AppMethodBeat.o(196261);
   }
   
   public static void a(Drawable paramDrawable, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(250819);
+    AppMethodBeat.i(196291);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
-      AppMethodBeat.o(250819);
+      AppMethodBeat.o(196291);
       return;
     }
     paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
-    AppMethodBeat.o(250819);
+    AppMethodBeat.o(196291);
   }
   
   public static void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(250812);
+    AppMethodBeat.i(196247);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramDrawable.setTintMode(paramMode);
-      AppMethodBeat.o(250812);
+      AppMethodBeat.o(196247);
       return;
     }
     if ((paramDrawable instanceof e)) {
       ((e)paramDrawable).setTintMode(paramMode);
     }
-    AppMethodBeat.o(250812);
+    AppMethodBeat.o(196247);
   }
   
   public static void b(Drawable paramDrawable, boolean paramBoolean)
   {
-    AppMethodBeat.i(250805);
+    AppMethodBeat.i(196192);
     if (Build.VERSION.SDK_INT >= 19) {
       paramDrawable.setAutoMirrored(paramBoolean);
     }
-    AppMethodBeat.o(250805);
+    AppMethodBeat.o(196192);
   }
   
   public static boolean b(Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(250824);
+    AppMethodBeat.i(196317);
     if (Build.VERSION.SDK_INT >= 23)
     {
       boolean bool = paramDrawable.setLayoutDirection(paramInt);
-      AppMethodBeat.o(250824);
+      AppMethodBeat.o(196317);
       return bool;
     }
-    if ((Build.VERSION.SDK_INT < 17) || (!KJ)) {}
+    if ((Build.VERSION.SDK_INT < 17) || (!bqR)) {}
     try
     {
       Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
-      KI = localMethod;
+      bqQ = localMethod;
       localMethod.setAccessible(true);
       label67:
-      KJ = true;
-      if (KI != null) {
+      bqR = true;
+      if (bqQ != null) {
         try
         {
-          KI.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
-          AppMethodBeat.o(250824);
+          bqQ.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
+          AppMethodBeat.o(196317);
           return true;
         }
         catch (Exception paramDrawable)
         {
-          KI = null;
+          bqQ = null;
         }
       }
-      AppMethodBeat.o(250824);
+      AppMethodBeat.o(196317);
       return false;
-      AppMethodBeat.o(250824);
+      AppMethodBeat.o(196317);
       return false;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -155,48 +156,69 @@ public final class a
     }
   }
   
-  public static boolean l(Drawable paramDrawable)
+  @Deprecated
+  public static void m(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250806);
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      boolean bool = paramDrawable.isAutoMirrored();
-      AppMethodBeat.o(250806);
-      return bool;
-    }
-    AppMethodBeat.o(250806);
-    return false;
-  }
-  
-  public static int m(Drawable paramDrawable)
-  {
-    AppMethodBeat.i(250813);
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      int i = paramDrawable.getAlpha();
-      AppMethodBeat.o(250813);
-      return i;
-    }
-    AppMethodBeat.o(250813);
-    return 0;
+    AppMethodBeat.i(196184);
+    paramDrawable.jumpToCurrentState();
+    AppMethodBeat.o(196184);
   }
   
   public static boolean n(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250815);
-    if (Build.VERSION.SDK_INT >= 21)
+    AppMethodBeat.i(196201);
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      boolean bool = paramDrawable.canApplyTheme();
-      AppMethodBeat.o(250815);
+      boolean bool = paramDrawable.isAutoMirrored();
+      AppMethodBeat.o(196201);
       return bool;
     }
-    AppMethodBeat.o(250815);
+    AppMethodBeat.o(196201);
     return false;
   }
   
-  public static void o(Drawable paramDrawable)
+  public static int o(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250817);
+    AppMethodBeat.i(196251);
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      int i = paramDrawable.getAlpha();
+      AppMethodBeat.o(196251);
+      return i;
+    }
+    AppMethodBeat.o(196251);
+    return 0;
+  }
+  
+  public static boolean p(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(196269);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      boolean bool = paramDrawable.canApplyTheme();
+      AppMethodBeat.o(196269);
+      return bool;
+    }
+    AppMethodBeat.o(196269);
+    return false;
+  }
+  
+  public static ColorFilter q(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(196274);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramDrawable = paramDrawable.getColorFilter();
+      AppMethodBeat.o(196274);
+      return paramDrawable;
+    }
+    AppMethodBeat.o(196274);
+    return null;
+  }
+  
+  public static void r(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(196283);
     while ((Build.VERSION.SDK_INT < 23) && (Build.VERSION.SDK_INT >= 21))
     {
       paramDrawable.clearColorFilter();
@@ -206,7 +228,7 @@ public final class a
       }
       else if ((paramDrawable instanceof f))
       {
-        paramDrawable = ((f)paramDrawable).gD();
+        paramDrawable = ((f)paramDrawable).DN();
       }
       else
       {
@@ -222,26 +244,26 @@ public final class a
           {
             Drawable localDrawable = paramDrawable.getChild(i);
             if (localDrawable != null) {
-              o(localDrawable);
+              r(localDrawable);
             }
             i += 1;
           }
         }
-        AppMethodBeat.o(250817);
+        AppMethodBeat.o(196283);
         return;
       }
     }
     paramDrawable.clearColorFilter();
     label128:
-    AppMethodBeat.o(250817);
+    AppMethodBeat.o(196283);
   }
   
-  public static Drawable p(Drawable paramDrawable)
+  public static Drawable s(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250821);
+    AppMethodBeat.i(196300);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      AppMethodBeat.o(250821);
+      AppMethodBeat.o(196300);
       return paramDrawable;
     }
     if (Build.VERSION.SDK_INT >= 21)
@@ -249,68 +271,68 @@ public final class a
       if (!(paramDrawable instanceof e))
       {
         paramDrawable = new h(paramDrawable);
-        AppMethodBeat.o(250821);
+        AppMethodBeat.o(196300);
         return paramDrawable;
       }
-      AppMethodBeat.o(250821);
+      AppMethodBeat.o(196300);
       return paramDrawable;
     }
     if (!(paramDrawable instanceof e))
     {
       paramDrawable = new g(paramDrawable);
-      AppMethodBeat.o(250821);
+      AppMethodBeat.o(196300);
       return paramDrawable;
     }
-    AppMethodBeat.o(250821);
+    AppMethodBeat.o(196300);
     return paramDrawable;
   }
   
-  public static <T extends Drawable> T q(Drawable paramDrawable)
+  public static <T extends Drawable> T t(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250822);
+    AppMethodBeat.i(196307);
     if ((paramDrawable instanceof f))
     {
-      paramDrawable = ((f)paramDrawable).gD();
-      AppMethodBeat.o(250822);
+      paramDrawable = ((f)paramDrawable).DN();
+      AppMethodBeat.o(196307);
       return paramDrawable;
     }
-    AppMethodBeat.o(250822);
+    AppMethodBeat.o(196307);
     return paramDrawable;
   }
   
-  public static int r(Drawable paramDrawable)
+  public static int u(Drawable paramDrawable)
   {
-    AppMethodBeat.i(250826);
+    AppMethodBeat.i(196328);
     int i;
     if (Build.VERSION.SDK_INT >= 23)
     {
       i = paramDrawable.getLayoutDirection();
-      AppMethodBeat.o(250826);
+      AppMethodBeat.o(196328);
       return i;
     }
-    if ((Build.VERSION.SDK_INT < 17) || (!KL)) {}
+    if ((Build.VERSION.SDK_INT < 17) || (!bqT)) {}
     try
     {
       Method localMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
-      KK = localMethod;
+      bqS = localMethod;
       localMethod.setAccessible(true);
       label60:
-      KL = true;
-      if (KK != null) {
+      bqT = true;
+      if (bqS != null) {
         try
         {
-          i = ((Integer)KK.invoke(paramDrawable, new Object[0])).intValue();
-          AppMethodBeat.o(250826);
+          i = ((Integer)bqS.invoke(paramDrawable, new Object[0])).intValue();
+          AppMethodBeat.o(196328);
           return i;
         }
         catch (Exception paramDrawable)
         {
-          KK = null;
+          bqS = null;
         }
       }
-      AppMethodBeat.o(250826);
+      AppMethodBeat.o(196328);
       return 0;
-      AppMethodBeat.o(250826);
+      AppMethodBeat.o(196328);
       return 0;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
@@ -321,7 +343,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.core.graphics.drawable.a
  * JD-Core Version:    0.7.0.1
  */

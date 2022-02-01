@@ -20,11 +20,11 @@ public class WXPreloadMiniProgram
     
     public Req()
     {
-      AppMethodBeat.i(254093);
+      AppMethodBeat.i(243025);
       this.path = "";
       this.miniprogramType = 0;
       this.extData = "";
-      AppMethodBeat.o(254093);
+      AppMethodBeat.o(243025);
     }
     
     public final boolean checkArgs()

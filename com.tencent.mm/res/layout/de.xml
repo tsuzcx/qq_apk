@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/b7"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center|right" android:orientation="horizontal" android:id="@id/du" android:background="@drawable/cz" android:layout_width="wrap_content" android:layout_height="@dimen/p4" android:layout_marginRight="@dimen/oq">
-        <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton android:id="@id/dy" android:background="@drawable/cv" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-        <View android:layout_gravity="center_vertical" android:id="@id/dw" android:background="@color/cv" android:layout_width="@dimen/tv" android:layout_height="@dimen/p3" />
-        <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton android:id="@id/dx" android:background="@drawable/cw" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/uq">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/ko8" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jab" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="5.0dip" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" app:iconColor="@color/Brand" />
     </LinearLayout>
-</FrameLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="@dimen/vs" android:src="@color/BW_90" />
+</LinearLayout>

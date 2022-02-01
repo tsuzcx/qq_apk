@@ -19,7 +19,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.wallet_core.d;
 
 public class MMKImageView
   extends MMKView<CdnImageView>
@@ -42,7 +42,7 @@ public class MMKImageView
   
   private void setIconColor(int paramInt, Drawable paramDrawable)
   {
-    AppMethodBeat.i(264976);
+    AppMethodBeat.i(226476);
     if (paramDrawable != null) {
       if (paramInt == 0) {
         break label65;
@@ -57,7 +57,7 @@ public class MMKImageView
       if (paramInt != 0) {
         paramDrawable.setAlpha(j);
       }
-      AppMethodBeat.o(264976);
+      AppMethodBeat.o(226476);
       return;
     }
   }
@@ -68,7 +68,8 @@ public class MMKImageView
     paramContext = new CdnImageView(paramContext);
     paramContext.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramContext.setAdjustViewBounds(true);
-    paramContext.setImgSavedPath(c.iii());
+    paramContext.setUseSdcardCache(true);
+    paramContext.setImgSavedDir(d.jOc());
     this.image.setNeedGetNetworkImageImmediately(false);
     this.defaultImage.setNeedGetNetworkImageImmediately(false);
     paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
@@ -78,9 +79,9 @@ public class MMKImageView
   
   public String getDarkModeUrl()
   {
-    AppMethodBeat.i(264975);
+    AppMethodBeat.i(226495);
     String str = this.image.getDarkUrl();
-    AppMethodBeat.o(264975);
+    AppMethodBeat.o(226495);
     return str;
   }
   
@@ -122,22 +123,23 @@ public class MMKImageView
   
   public void setCornerRadius(float paramFloat)
   {
-    AppMethodBeat.i(264977);
+    AppMethodBeat.i(226508);
     super.setCornerRadius(paramFloat);
     if (((getView() instanceof CdnImageView)) && (getWidth() > 0.0F))
     {
       ((CdnImageView)getView()).setRoundCorner(true);
       ((CdnImageView)getView()).setRoundCornerRate(paramFloat / getWidth());
     }
-    AppMethodBeat.o(264977);
+    AppMethodBeat.o(226508);
   }
   
   public void setDarkModeUrl(String paramString)
   {
-    AppMethodBeat.i(264974);
-    this.image.setDarkModeUrl(paramString);
-    setImage(this.image);
-    AppMethodBeat.o(264974);
+    AppMethodBeat.i(226491);
+    MMKImage localMMKImage = this.image.copy();
+    localMMKImage.setDarkModeUrl(paramString);
+    setImage(localMMKImage);
+    AppMethodBeat.o(226491);
   }
   
   public void setDefaultUrl(String paramString)
@@ -280,14 +282,15 @@ public class MMKImageView
   public void setUrl(String paramString)
   {
     AppMethodBeat.i(19054);
-    this.image.setSvgUrl(paramString, this.tintColor);
-    setImage(this.image);
+    MMKImage localMMKImage = this.image.copy();
+    localMMKImage.setSvgUrl(paramString, this.tintColor);
+    setImage(localMMKImage);
     AppMethodBeat.o(19054);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKImageView
  * JD-Core Version:    0.7.0.1
  */

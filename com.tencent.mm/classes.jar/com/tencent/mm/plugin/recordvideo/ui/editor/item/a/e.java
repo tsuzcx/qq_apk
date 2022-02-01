@@ -10,122 +10,147 @@ import com.tencent.mm.emoji.decode.MMGIFJNIFactory.Companion;
 import com.tencent.mm.emoji.decode.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/EmojiEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "matrix", "Landroid/graphics/Matrix;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/graphics/Matrix;)V", "TAG", "", "decoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "lastValidFrame", "Landroid/graphics/Bitmap;", "consumeTime", "", "lastFrameTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "seekTo", "timeMs", "plugin-recordvideo_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/EmojiEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "matrix", "Landroid/graphics/Matrix;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/graphics/Matrix;)V", "TAG", "", "decoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "lastValidFrame", "Landroid/graphics/Bitmap;", "consumeTime", "", "lastFrameTime", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "seekTo", "timeMs", "plugin-recordvideo_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends a
 {
-  private d Idh;
+  private d NZD;
   private final String TAG;
-  private Bitmap jFB;
-  private EmojiInfo jHh;
+  private Bitmap mfo;
+  private EmojiInfo mgK;
   
   public e(EmojiInfo paramEmojiInfo, Matrix paramMatrix)
   {
     super(paramMatrix);
-    AppMethodBeat.i(219778);
-    this.jHh = paramEmojiInfo;
+    AppMethodBeat.i(280399);
+    this.mgK = paramEmojiInfo;
     this.TAG = "MicroMsg.EmojiEditorItem";
-    AppMethodBeat.o(219778);
-  }
-  
-  public final long PE(long paramLong)
-  {
-    AppMethodBeat.i(219771);
-    Log.d(this.TAG, "request time is " + paramLong + ", curr frame is " + fyS());
-    paramLong = super.PE(paramLong);
-    AppMethodBeat.o(219771);
-    return paramLong;
+    AppMethodBeat.o(280399);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(219776);
-    d locald = this.Idh;
-    if (locald == null) {
-      p.bGy("decoder");
+    AppMethodBeat.i(280432);
+    d locald2 = this.NZD;
+    d locald1 = locald2;
+    if (locald2 == null)
+    {
+      s.bIx("decoder");
+      locald1 = null;
     }
-    locald.destroy();
-    AppMethodBeat.o(219776);
+    locald1.destroy();
+    AppMethodBeat.o(280432);
   }
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(219766);
-    p.k(paramCanvas, "canvas");
-    p.k(paramPaint, "paint");
-    if (fyU())
+    AppMethodBeat.i(280415);
+    s.u(paramCanvas, "canvas");
+    s.u(paramPaint, "paint");
+    if (gKH())
     {
       paramCanvas.save();
-      paramCanvas.concat(fyW());
-      if (this.jFB != null)
+      paramCanvas.concat(getMatrix());
+      if (this.mfo != null)
       {
-        Bitmap localBitmap = this.jFB;
-        if (localBitmap == null) {
-          p.iCn();
-        }
+        Bitmap localBitmap = this.mfo;
+        s.checkNotNull(localBitmap);
         paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
       }
       paramCanvas.restore();
     }
-    AppMethodBeat.o(219766);
+    AppMethodBeat.o(280415);
   }
   
-  public final long fyV()
+  public final long gKI()
   {
-    AppMethodBeat.i(219773);
-    d locald = this.Idh;
-    if (locald == null) {
-      p.bGy("decoder");
+    Object localObject2 = null;
+    AppMethodBeat.i(280428);
+    d locald = this.NZD;
+    Object localObject1 = locald;
+    if (locald == null)
+    {
+      s.bIx("decoder");
+      localObject1 = null;
     }
-    locald.aBh();
-    locald = this.Idh;
-    if (locald == null) {
-      p.bGy("decoder");
+    ((d)localObject1).aUe();
+    locald = this.NZD;
+    localObject1 = locald;
+    if (locald == null)
+    {
+      s.bIx("decoder");
+      localObject1 = null;
     }
-    this.jFB = locald.getFrame();
-    locald = this.Idh;
-    if (locald == null) {
-      p.bGy("decoder");
+    this.mfo = ((d)localObject1).getFrame();
+    localObject1 = this.NZD;
+    if (localObject1 == null)
+    {
+      s.bIx("decoder");
+      localObject1 = localObject2;
     }
-    long l = locald.aBj();
-    AppMethodBeat.o(219773);
-    return l;
+    for (;;)
+    {
+      long l = ((d)localObject1).aUg();
+      AppMethodBeat.o(280428);
+      return l;
+    }
   }
   
   public final void init()
   {
-    AppMethodBeat.i(219762);
-    Log.d(this.TAG, "filepath is " + this.jHh.ifh());
-    this.Idh = MMGIFJNIFactory.Companion.getDecoder(this.jHh);
-    AppMethodBeat.o(219762);
+    AppMethodBeat.i(280408);
+    Log.d(this.TAG, s.X("filepath is ", this.mgK.kMn()));
+    this.NZD = MMGIFJNIFactory.Companion.getDecoder(this.mgK);
+    AppMethodBeat.o(280408);
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(219768);
+    Object localObject2 = null;
+    AppMethodBeat.i(280420);
     super.seekTo(paramLong);
-    if (fyU())
+    Object localObject1;
+    if (gKH())
     {
-      d locald = this.Idh;
-      if (locald == null) {
-        p.bGy("decoder");
+      d locald = this.NZD;
+      localObject1 = locald;
+      if (locald == null)
+      {
+        s.bIx("decoder");
+        localObject1 = null;
       }
-      locald.seekTo(paramLong);
-      locald = this.Idh;
-      if (locald == null) {
-        p.bGy("decoder");
+      ((d)localObject1).seekTo(paramLong);
+      localObject1 = this.NZD;
+      if (localObject1 != null) {
+        break label81;
       }
-      this.jFB = locald.getFrame();
+      s.bIx("decoder");
+      localObject1 = localObject2;
     }
-    AppMethodBeat.o(219768);
+    label81:
+    for (;;)
+    {
+      this.mfo = ((d)localObject1).getFrame();
+      AppMethodBeat.o(280420);
+      return;
+    }
+  }
+  
+  public final long tE(long paramLong)
+  {
+    AppMethodBeat.i(280423);
+    Log.d(this.TAG, "request time is " + paramLong + ", curr frame is " + gKF());
+    paramLong = super.tE(paramLong);
+    AppMethodBeat.o(280423);
+    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.e
  * JD-Core Version:    0.7.0.1
  */

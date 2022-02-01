@@ -10,59 +10,59 @@ public class BaseScanRequest
   implements Parcelable
 {
   public static final Parcelable.Creator<BaseScanRequest> CREATOR;
-  public boolean IGk;
-  public boolean IGl;
-  public boolean IGm;
-  public boolean IGn;
-  public boolean IGo;
-  private Bundle IGp;
+  public boolean OMs;
+  public boolean OMt;
+  public boolean OMu;
+  public boolean OMv;
+  public boolean OMw;
+  private Bundle OMx;
   
   static
   {
-    AppMethodBeat.i(210493);
+    AppMethodBeat.i(313458);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(210493);
+    AppMethodBeat.o(313458);
   }
   
   public BaseScanRequest()
   {
-    this.IGk = false;
-    this.IGl = false;
-    this.IGm = false;
-    this.IGn = true;
-    this.IGo = true;
+    this.OMs = false;
+    this.OMt = false;
+    this.OMu = false;
+    this.OMv = true;
+    this.OMw = true;
   }
   
   public BaseScanRequest(Parcel paramParcel)
   {
-    AppMethodBeat.i(210489);
-    this.IGk = false;
-    this.IGl = false;
-    this.IGm = false;
-    this.IGn = true;
-    this.IGo = true;
+    AppMethodBeat.i(313453);
+    this.OMs = false;
+    this.OMt = false;
+    this.OMu = false;
+    this.OMv = true;
+    this.OMw = true;
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.IGk = bool1;
+      this.OMs = bool1;
       if (paramParcel.readByte() == 0) {
         break label125;
       }
       bool1 = true;
       label59:
-      this.IGl = bool1;
+      this.OMt = bool1;
       if (paramParcel.readByte() == 0) {
         break label130;
       }
       bool1 = true;
       label73:
-      this.IGm = bool1;
+      this.OMu = bool1;
       if (paramParcel.readByte() == 0) {
         break label135;
       }
       bool1 = true;
       label87:
-      this.IGn = bool1;
+      this.OMv = bool1;
       if (paramParcel.readByte() == 0) {
         break label140;
       }
@@ -72,9 +72,9 @@ public class BaseScanRequest
     label140:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.IGo = bool1;
-      this.IGp = paramParcel.readBundle();
-      AppMethodBeat.o(210489);
+      this.OMw = bool1;
+      this.OMx = paramParcel.readBundle();
+      AppMethodBeat.o(313453);
       return;
       bool1 = false;
       break;
@@ -95,62 +95,62 @@ public class BaseScanRequest
   
   public final String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210487);
-    if (this.IGp != null)
+    AppMethodBeat.i(313467);
+    if (this.OMx != null)
     {
-      paramString1 = this.IGp.getString(paramString1, paramString2);
-      AppMethodBeat.o(210487);
+      paramString1 = this.OMx.getString(paramString1, paramString2);
+      AppMethodBeat.o(313467);
       return paramString1;
     }
-    AppMethodBeat.o(210487);
+    AppMethodBeat.o(313467);
     return paramString2;
   }
   
   public final void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210486);
-    if (this.IGp == null) {
-      this.IGp = new Bundle();
+    AppMethodBeat.i(313461);
+    if (this.OMx == null) {
+      this.OMx = new Bundle();
     }
-    this.IGp.putString(paramString1, paramString2);
-    AppMethodBeat.o(210486);
+    this.OMx.putString(paramString1, paramString2);
+    AppMethodBeat.o(313461);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(210491);
-    String str = String.format("BaseScanRequest{hideBottomTab: %b, hideScanTips: %b, hideFlashSwitcher: %b, hideGalleryButton: %b, hideOptionMenu: %b}", new Object[] { Boolean.valueOf(this.IGk), Boolean.valueOf(this.IGl), Boolean.valueOf(this.IGm), Boolean.valueOf(this.IGn), Boolean.valueOf(this.IGo) });
-    AppMethodBeat.o(210491);
+    AppMethodBeat.i(313491);
+    String str = String.format("BaseScanRequest{hideBottomTab: %b, hideScanTips: %b, hideFlashSwitcher: %b, hideGalleryButton: %b, hideOptionMenu: %b}", new Object[] { Boolean.valueOf(this.OMs), Boolean.valueOf(this.OMt), Boolean.valueOf(this.OMu), Boolean.valueOf(this.OMv), Boolean.valueOf(this.OMw) });
+    AppMethodBeat.o(313491);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(210490);
-    if (this.IGk)
+    AppMethodBeat.i(313478);
+    if (this.OMs)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.IGl) {
+      if (!this.OMt) {
         break label101;
       }
       paramInt = 1;
       label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.IGm) {
+      if (!this.OMu) {
         break label106;
       }
       paramInt = 1;
       label46:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.IGn) {
+      if (!this.OMv) {
         break label111;
       }
       paramInt = 1;
       label61:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.IGo) {
+      if (!this.OMw) {
         break label116;
       }
     }
@@ -161,8 +161,8 @@ public class BaseScanRequest
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeBundle(this.IGp);
-      AppMethodBeat.o(210490);
+      paramParcel.writeBundle(this.OMx);
+      AppMethodBeat.o(313478);
       return;
       paramInt = 0;
       break;
@@ -177,7 +177,7 @@ public class BaseScanRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.BaseScanRequest
  * JD-Core Version:    0.7.0.1
  */

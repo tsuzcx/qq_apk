@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 class d
   extends b
 {
-  private boolean iF;
-  private a jI;
+  private boolean jA;
+  private a kE;
   
   d()
   {
@@ -21,35 +21,35 @@ class d
   
   d(a parama, Resources paramResources)
   {
-    AppMethodBeat.i(238888);
+    AppMethodBeat.i(199282);
     a(new a(parama, this, paramResources));
     onStateChange(getState());
-    AppMethodBeat.o(238888);
+    AppMethodBeat.o(199282);
   }
   
   protected void a(b.b paramb)
   {
-    AppMethodBeat.i(238886);
+    AppMethodBeat.i(199324);
     super.a(paramb);
     if ((paramb instanceof a)) {
-      this.jI = ((a)paramb);
+      this.kE = ((a)paramb);
     }
-    AppMethodBeat.o(238886);
+    AppMethodBeat.o(199324);
   }
   
   public void applyTheme(Resources.Theme paramTheme)
   {
-    AppMethodBeat.i(238884);
+    AppMethodBeat.i(199319);
     super.applyTheme(paramTheme);
     onStateChange(getState());
-    AppMethodBeat.o(238884);
+    AppMethodBeat.o(199319);
   }
   
-  a bp()
+  a ci()
   {
-    AppMethodBeat.i(238883);
-    a locala = new a(this.jI, this, null);
-    AppMethodBeat.o(238883);
+    AppMethodBeat.i(199311);
+    a locala = new a(this.kE, this, null);
+    AppMethodBeat.o(199311);
     return locala;
   }
   
@@ -60,121 +60,121 @@ class d
   
   public Drawable mutate()
   {
-    AppMethodBeat.i(238882);
-    if ((!this.iF) && (super.mutate() == this))
+    AppMethodBeat.i(199302);
+    if ((!this.jA) && (super.mutate() == this))
     {
-      this.jI.br();
-      this.iF = true;
+      this.kE.ck();
+      this.jA = true;
     }
-    AppMethodBeat.o(238882);
+    AppMethodBeat.o(199302);
     return this;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(238881);
+    AppMethodBeat.i(199295);
     boolean bool = super.onStateChange(paramArrayOfInt);
-    int j = this.jI.c(paramArrayOfInt);
+    int j = this.kE.f(paramArrayOfInt);
     int i = j;
     if (j < 0) {
-      i = this.jI.c(StateSet.WILD_CARD);
+      i = this.kE.f(StateSet.WILD_CARD);
     }
-    if ((Z(i)) || (bool))
+    if ((X(i)) || (bool))
     {
-      AppMethodBeat.o(238881);
+      AppMethodBeat.o(199295);
       return true;
     }
-    AppMethodBeat.o(238881);
+    AppMethodBeat.o(199295);
     return false;
   }
   
   static class a
     extends b.b
   {
-    int[][] jJ;
+    int[][] kF;
     
     a(a parama, d paramd, Resources paramResources)
     {
       super(paramd, paramResources);
-      AppMethodBeat.i(238863);
+      AppMethodBeat.i(199279);
       if (parama != null)
       {
-        this.jJ = parama.jJ;
-        AppMethodBeat.o(238863);
+        this.kF = parama.kF;
+        AppMethodBeat.o(199279);
         return;
       }
-      this.jJ = new int[this.jh.length][];
-      AppMethodBeat.o(238863);
+      this.kF = new int[this.kc.length][];
+      AppMethodBeat.o(199279);
     }
     
-    void br()
+    void ck()
     {
-      AppMethodBeat.i(238866);
-      int[][] arrayOfInt1 = new int[this.jJ.length][];
-      int i = this.jJ.length - 1;
+      AppMethodBeat.i(199287);
+      int[][] arrayOfInt1 = new int[this.kF.length][];
+      int i = this.kF.length - 1;
       if (i >= 0)
       {
-        if (this.jJ[i] != null) {}
-        for (int[] arrayOfInt = (int[])this.jJ[i].clone();; arrayOfInt = null)
+        if (this.kF[i] != null) {}
+        for (int[] arrayOfInt = (int[])this.kF[i].clone();; arrayOfInt = null)
         {
           arrayOfInt1[i] = arrayOfInt;
           i -= 1;
           break;
         }
       }
-      this.jJ = arrayOfInt1;
-      AppMethodBeat.o(238866);
+      this.kF = arrayOfInt1;
+      AppMethodBeat.o(199287);
     }
     
-    final int c(int[] paramArrayOfInt)
+    final int f(int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(238869);
-      int[][] arrayOfInt = this.jJ;
-      int j = this.ji;
+      AppMethodBeat.i(199294);
+      int[][] arrayOfInt = this.kF;
+      int j = this.kd;
       int i = 0;
       while (i < j)
       {
         if (StateSet.stateSetMatches(arrayOfInt[i], paramArrayOfInt))
         {
-          AppMethodBeat.o(238869);
+          AppMethodBeat.o(199294);
           return i;
         }
         i += 1;
       }
-      AppMethodBeat.o(238869);
+      AppMethodBeat.o(199294);
       return -1;
     }
     
-    public final void h(int paramInt1, int paramInt2)
+    public final void m(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(238872);
-      super.h(paramInt1, paramInt2);
+      AppMethodBeat.i(199326);
+      super.m(paramInt1, paramInt2);
       int[][] arrayOfInt = new int[paramInt2][];
-      System.arraycopy(this.jJ, 0, arrayOfInt, 0, paramInt1);
-      this.jJ = arrayOfInt;
-      AppMethodBeat.o(238872);
+      System.arraycopy(this.kF, 0, arrayOfInt, 0, paramInt1);
+      this.kF = arrayOfInt;
+      AppMethodBeat.o(199326);
     }
     
     public Drawable newDrawable()
     {
-      AppMethodBeat.i(238870);
+      AppMethodBeat.i(199307);
       d locald = new d(this, null);
-      AppMethodBeat.o(238870);
+      AppMethodBeat.o(199307);
       return locald;
     }
     
     public Drawable newDrawable(Resources paramResources)
     {
-      AppMethodBeat.i(238871);
+      AppMethodBeat.i(199318);
       paramResources = new d(this, paramResources);
-      AppMethodBeat.o(238871);
+      AppMethodBeat.o(199318);
       return paramResources;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.b.a.d
  * JD-Core Version:    0.7.0.1
  */

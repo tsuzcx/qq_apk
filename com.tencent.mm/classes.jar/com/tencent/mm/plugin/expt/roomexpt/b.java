@@ -48,7 +48,7 @@ public final class b
     return bool;
   }
   
-  public final Cursor dgA()
+  public final Cursor dNl()
   {
     Object localObject = null;
     AppMethodBeat.i(122423);
@@ -69,7 +69,7 @@ public final class b
   }
   
   /* Error */
-  public final java.util.List<e> dgB()
+  public final java.util.List<e> dNm()
   {
     // Byte code:
     //   0: ldc 95
@@ -181,7 +181,7 @@ public final class b
   }
   
   /* Error */
-  public final e gN(String paramString1, String paramString2)
+  public final e hw(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 132
@@ -308,7 +308,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.b
  * JD-Core Version:    0.7.0.1
  */

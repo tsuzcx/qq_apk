@@ -1,124 +1,121 @@
 package com.tencent.mm.plugin.finder.video.sticker;
 
-import androidx.recyclerview.widget.h.b;
-import androidx.recyclerview.widget.s;
+import androidx.recyclerview.widget.g.b;
+import androidx.recyclerview.widget.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqv;
+import com.tencent.mm.protocal.protobuf.dhp;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectCallbackWrapper;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDataCallback;", "historyCallback", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "moreCallback", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;)V", "getHistoryCallback", "()Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "historyList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/sticker/LensItem;", "getMoreCallback", "moreList", "onHistory", "", "lensList", "", "onMore", "Companion", "ListUpdateCallbackWrapper", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectCallbackWrapper;", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDataCallback;", "historyCallback", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "moreCallback", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;)V", "getHistoryCallback", "()Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "historyList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/sticker/LensItem;", "getMoreCallback", "moreList", "onHistory", "", "lensList", "", "onMore", "Companion", "ListUpdateCallbackWrapper", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   implements c
 {
-  private static final com.tencent.mm.sticker.c ATh;
-  public static final a ATi;
-  final d ATf;
-  final d ATg;
-  private final LinkedList<com.tencent.mm.sticker.c> uUO;
-  private final LinkedList<com.tencent.mm.sticker.c> uUP;
+  public static final f.a Gvd;
+  private static final com.tencent.mm.sticker.c Gvg;
+  final d Gve;
+  final d Gvf;
+  private final LinkedList<com.tencent.mm.sticker.c> yhx;
+  private final LinkedList<com.tencent.mm.sticker.c> yhy;
   
   static
   {
-    AppMethodBeat.i(233927);
-    ATi = new a((byte)0);
-    ATh = new com.tencent.mm.sticker.c(new cqv(), 0, 6, (byte)0);
-    AppMethodBeat.o(233927);
+    AppMethodBeat.i(335910);
+    Gvd = new f.a((byte)0);
+    Gvg = new com.tencent.mm.sticker.c(new dhp(), 0, 6, (byte)0);
+    AppMethodBeat.o(335910);
   }
   
   public f(d paramd1, d paramd2)
   {
-    AppMethodBeat.i(233925);
-    this.ATf = paramd1;
-    this.ATg = paramd2;
-    this.uUP = new LinkedList();
-    this.uUO = new LinkedList();
-    AppMethodBeat.o(233925);
+    AppMethodBeat.i(335887);
+    this.Gve = paramd1;
+    this.Gvf = paramd2;
+    this.yhy = new LinkedList();
+    this.yhx = new LinkedList();
+    AppMethodBeat.o(335887);
   }
   
-  public final void dm(final List<com.tencent.mm.sticker.c> paramList)
+  public final void fj(List<com.tencent.mm.sticker.c> paramList)
   {
-    AppMethodBeat.i(233923);
-    p.k(paramList, "lensList");
-    com.tencent.mm.ae.d.b("StickerEffectCallbackWrapper_onMore", (a)new d(this, paramList));
-    AppMethodBeat.o(233923);
+    AppMethodBeat.i(335922);
+    s.u(paramList, "lensList");
+    com.tencent.mm.ae.d.d("StickerEffectCallbackWrapper_onMore", (a)new d(paramList, this));
+    AppMethodBeat.o(335922);
   }
   
-  public final void eZ(final List<com.tencent.mm.sticker.c> paramList)
+  public final void hL(List<com.tencent.mm.sticker.c> paramList)
   {
-    AppMethodBeat.i(233922);
-    p.k(paramList, "lensList");
-    com.tencent.mm.ae.d.b("StickerEffectCallbackWrapper_onHistory", (a)new c(this, paramList));
-    AppMethodBeat.o(233922);
+    AppMethodBeat.i(335915);
+    s.u(paramList, "lensList");
+    com.tencent.mm.ae.d.d("StickerEffectCallbackWrapper_onHistory", (a)new c(paramList, this));
+    AppMethodBeat.o(335915);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectCallbackWrapper$Companion;", "", "()V", "EmptyLensItem", "Lcom/tencent/mm/sticker/LensItem;", "getEmptyLensItem", "()Lcom/tencent/mm/sticker/LensItem;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectCallbackWrapper$ListUpdateCallbackWrapper;", "Landroidx/recyclerview/widget/ListUpdateCallback;", "callback", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;)V", "getCallback", "()Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/sticker/StickerEffectCallbackWrapper$ListUpdateCallbackWrapper;", "Landroidx/recyclerview/widget/ListUpdateCallback;", "callback", "Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "(Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;)V", "getCallback", "()Lcom/tencent/mm/plugin/finder/video/sticker/StickerDiffCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-finder-publish_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements s
+    implements q
   {
-    private final d ASW;
+    private final d GuV;
     
     public b(d paramd)
     {
-      AppMethodBeat.i(289134);
-      this.ASW = paramd;
-      AppMethodBeat.o(289134);
+      AppMethodBeat.i(335861);
+      this.GuV = paramd;
+      AppMethodBeat.o(335861);
     }
     
-    public final void W(int paramInt1, int paramInt2)
+    public final void aR(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(289128);
-      this.ASW.ge(paramInt1, paramInt2);
-      AppMethodBeat.o(289128);
+      AppMethodBeat.i(335869);
+      this.GuV.gX(paramInt1, paramInt2);
+      AppMethodBeat.o(335869);
     }
     
-    public final void ac(int paramInt1, int paramInt2)
+    public final void aS(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(289130);
-      this.ASW.gf(paramInt1, paramInt2);
-      AppMethodBeat.o(289130);
+      AppMethodBeat.i(335880);
+      this.GuV.gY(paramInt1, paramInt2);
+      AppMethodBeat.o(335880);
     }
     
-    public final void ad(int paramInt1, int paramInt2)
+    public final void aW(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(289131);
-      this.ASW.gg(paramInt1, paramInt2);
-      AppMethodBeat.o(289131);
+      AppMethodBeat.i(335889);
+      this.GuV.gZ(paramInt1, paramInt2);
+      AppMethodBeat.o(335889);
     }
     
     public final void c(int paramInt1, int paramInt2, Object paramObject)
     {
-      AppMethodBeat.i(289133);
-      this.ASW.gh(paramInt1, paramInt2);
-      AppMethodBeat.o(289133);
+      AppMethodBeat.i(335901);
+      this.GuV.ha(paramInt1, paramInt2);
+      AppMethodBeat.o(335901);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    c(f paramf, List paramList)
+    c(List<com.tencent.mm.sticker.c> paramList, f paramf)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
-    d(f paramf, List paramList)
+    d(List<com.tencent.mm.sticker.c> paramList, f paramf)
     {
       super();
     }
@@ -126,7 +123,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.sticker.f
  * JD-Core Version:    0.7.0.1
  */

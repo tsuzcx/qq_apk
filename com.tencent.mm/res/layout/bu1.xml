@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cc"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/hv_" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:scaleType="fitXY" android:layout_marginEnd="6.0dip" app:radius="10.0dip" />
-    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/hva" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:shadowColor="#73000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" />
-    <TextView android:textSize="14.0dip" android:textColor="#99ffffff" android:gravity="center_vertical" android:id="@id/hv9" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:layout_marginStart="6.0dip" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/gf" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/i51" />
+    <TextView android:textColor="@color/ge" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/i52" android:layout_centerHorizontal="true" />
 </LinearLayout>

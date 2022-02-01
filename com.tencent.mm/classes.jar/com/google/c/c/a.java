@@ -1,186 +1,84 @@
 package com.google.c.c;
 
-import com.google.c.c;
-import com.google.c.c.a.e;
-import com.google.c.c.a.i;
-import com.google.c.c.a.j;
-import com.google.c.c.a.k;
-import com.google.c.c.a.l;
-import com.google.c.g;
+import com.google.c.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
+import java.lang.reflect.Type;
 
-public final class a
-  implements g
+public final class a<T>
 {
-  private static com.google.c.b.b a(e parame, k paramk)
+  final int cHb;
+  public final Type dGJ;
+  public final Class<? super T> dIb;
+  
+  protected a()
   {
-    AppMethodBeat.i(12340);
-    int i1 = paramk.JT();
-    int i2 = paramk.JU();
-    com.google.c.f.b.b localb = new com.google.c.f.b.b(paramk.JV(), paramk.JW());
-    int j = 0;
-    int i = 0;
-    int m;
-    boolean bool;
-    if (j < i2)
+    AppMethodBeat.i(107871);
+    Object localObject = getClass().getGenericSuperclass();
+    if ((localObject instanceof Class))
     {
-      if (j % paramk.cfw != 0) {
-        break label414;
-      }
-      k = 0;
-      m = 0;
-      if (k < paramk.JV())
-      {
-        if (k % 2 == 0) {}
-        for (bool = true;; bool = false)
-        {
-          localb.i(m, i, bool);
-          m += 1;
-          k += 1;
-          break;
-        }
-      }
+      localObject = new RuntimeException("Missing type parameter.");
+      AppMethodBeat.o(107871);
+      throw ((Throwable)localObject);
     }
-    label411:
-    label414:
-    for (int k = i + 1;; k = i)
-    {
-      m = 0;
-      i = 0;
-      label120:
-      if (m < i1)
-      {
-        int n = i;
-        if (m % paramk.cfv == 0)
-        {
-          localb.i(i, k, true);
-          n = i + 1;
-        }
-        if (parame.cfd[(parame.cfc * j + m)] == 1)
-        {
-          bool = true;
-          localb.i(n, k, bool);
-          i = n + 1;
-          if (m % paramk.cfv != paramk.cfv - 1) {
-            break label411;
-          }
-          if (j % 2 != 0) {
-            break label245;
-          }
-          bool = true;
-          localb.i(i, k, bool);
-          i += 1;
-        }
-      }
-      for (;;)
-      {
-        label175:
-        label216:
-        m += 1;
-        break label120;
-        bool = false;
-        break label175;
-        label245:
-        bool = false;
-        break label216;
-        m = k + 1;
-        if (j % paramk.cfw == paramk.cfw - 1)
-        {
-          i = 0;
-          k = 0;
-          while (i < paramk.JV())
-          {
-            localb.i(k, m, true);
-            k += 1;
-            i += 1;
-          }
-        }
-        for (i = m + 1;; i = m)
-        {
-          j += 1;
-          break;
-          k = localb.width;
-          m = localb.height;
-          parame = new com.google.c.b.b(k, m);
-          parame.clear();
-          i = 0;
-          while (i < k)
-          {
-            j = 0;
-            while (j < m)
-            {
-              if (localb.cg(i, j) == 1) {
-                parame.ca(i, j);
-              }
-              j += 1;
-            }
-            i += 1;
-          }
-          AppMethodBeat.o(12340);
-          return parame;
-        }
-      }
-    }
+    this.dGJ = b.b(((java.lang.reflect.ParameterizedType)localObject).getActualTypeArguments()[0]);
+    this.dIb = b.c(this.dGJ);
+    this.cHb = this.dGJ.hashCode();
+    AppMethodBeat.o(107871);
   }
   
-  public final com.google.c.b.b a(String paramString, com.google.c.a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
+  private a(Type paramType)
   {
-    AppMethodBeat.i(12339);
-    if (paramString.isEmpty())
+    AppMethodBeat.i(107872);
+    this.dGJ = b.b((Type)com.google.c.b.a.checkNotNull(paramType));
+    this.dIb = b.c(this.dGJ);
+    this.cHb = this.dGJ.hashCode();
+    AppMethodBeat.o(107872);
+  }
+  
+  public static <T> a<T> I(Class<T> paramClass)
+  {
+    AppMethodBeat.i(107876);
+    paramClass = new a(paramClass);
+    AppMethodBeat.o(107876);
+    return paramClass;
+  }
+  
+  public static a<?> h(Type paramType)
+  {
+    AppMethodBeat.i(107875);
+    paramType = new a(paramType);
+    AppMethodBeat.o(107875);
+    return paramType;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(107873);
+    if (((paramObject instanceof a)) && (b.a(this.dGJ, ((a)paramObject).dGJ)))
     {
-      paramString = new IllegalArgumentException("Found empty contents");
-      AppMethodBeat.o(12339);
-      throw paramString;
+      AppMethodBeat.o(107873);
+      return true;
     }
-    if (parama != com.google.c.a.cdd)
-    {
-      paramString = new IllegalArgumentException("Can only encode DATA_MATRIX, but got ".concat(String.valueOf(parama)));
-      AppMethodBeat.o(12339);
-      throw paramString;
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0))
-    {
-      paramString = new IllegalArgumentException("Requested dimensions are too small: " + paramInt1 + 'x' + paramInt2);
-      AppMethodBeat.o(12339);
-      throw paramString;
-    }
-    parama = l.cfA;
-    Object localObject;
-    if (paramMap != null)
-    {
-      localObject = (l)paramMap.get(c.cds);
-      if (localObject != null) {
-        parama = (com.google.c.a)localObject;
-      }
-      localObject = (com.google.c.b)paramMap.get(c.cdt);
-      if (localObject != null)
-      {
-        paramMap = (com.google.c.b)paramMap.get(c.cdu);
-        if (paramMap == null) {}
-      }
-    }
-    for (;;)
-    {
-      paramString = j.a(paramString, parama, (com.google.c.b)localObject, paramMap);
-      parama = k.a(paramString.length(), parama, (com.google.c.b)localObject, paramMap);
-      paramString = new e(i.a(paramString, parama), parama.JT(), parama.JU());
-      paramString.JL();
-      paramString = a(paramString, parama);
-      AppMethodBeat.o(12339);
-      return paramString;
-      paramMap = null;
-      continue;
-      localObject = null;
-      break;
-      paramMap = null;
-      localObject = null;
-    }
+    AppMethodBeat.o(107873);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    return this.cHb;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(107874);
+    String str = b.d(this.dGJ);
+    AppMethodBeat.o(107874);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.c.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,38 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ay;
-import com.tencent.mm.f.a.cv;
-import com.tencent.mm.f.a.ol;
-import com.tencent.mm.f.a.sk;
-import com.tencent.mm.plugin.scanner.g.e.a;
-import com.tencent.mm.plugin.scanner.util.a;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/scanner/model/CameraScanCombineActionReporter;", "", "()V", "report", "", "enterScene", "", "actionType", "actionResult", "", "tabEnterTs", "", "tabSession", "scanSession", "detectSession", "itemSource", "itemType", "cardType", "cardTitle", "preloadType", "enterSession", "errorCode", "ActionType", "CardType", "ErrorCode", "ItemSource", "plugin-scan_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
 {
-  String IKE;
-  com.tencent.mm.plugin.scanner.util.c IKF;
-  a IKG;
-  e.a IKH;
-  public IListener IKI;
-  public IListener IKJ;
-  public IListener IKK;
-  Activity mActivity;
+  public static final c ORj;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(51615);
-    this.IKH = new e.a()
-    {
-      public final void t(int paramAnonymousInt, Bundle paramAnonymousBundle)
-      {
-        AppMethodBeat.i(51612);
-        Log.i("MicroMsg.ExternRequestDealQBarStrHandler", "Deal QBar String notify, id:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        ol localol = new ol();
-        localol.fNm.fNk = paramAnonymousInt;
-        localol.fNm.activity = c.this.mActivity;
-        localol.fNm.fwI = c.this.IKE;
-        localol.fNm.fNn = paramAnonymousBundle;
-        EventCenter.instance.publish(localol);
-        AppMethodBeat.o(51612);
-      }
-    };
-    this.IKI = new IListener() {};
-    this.IKJ = new IListener() {};
-    this.IKK = new IListener() {};
-    AppMethodBeat.o(51615);
+    AppMethodBeat.i(314389);
+    ORj = new c();
+    AppMethodBeat.o(314389);
   }
   
-  public final void fCI()
+  public static void a(int paramInt1, int paramInt2, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, int paramInt3, int paramInt4, int paramInt5, String paramString5, String paramString6, int paramInt6)
   {
-    AppMethodBeat.i(51616);
-    if (this.IKF != null)
-    {
-      this.IKF.fEQ();
-      this.IKF = null;
-    }
-    this.mActivity = null;
-    this.IKE = null;
-    AppMethodBeat.o(51616);
+    AppMethodBeat.i(314383);
+    s.u(paramString1, "actionResult");
+    s.u(paramString2, "tabSession");
+    s.u(paramString3, "scanSession");
+    s.u(paramString4, "detectSession");
+    s.u(paramString5, "cardTitle");
+    s.u(paramString6, "enterSession");
+    h.OAn.b(24121, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Long.valueOf(paramLong), paramString2, paramString3, paramString4, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString5, Integer.valueOf(0), paramString6, Integer.valueOf(paramInt6) });
+    AppMethodBeat.o(314383);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.c
  * JD-Core Version:    0.7.0.1
  */

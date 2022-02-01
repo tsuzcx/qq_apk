@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/hfa" android:background="@color/afz" android:padding="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:gravity="center" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:progressDrawable="@drawable/ape" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/iow" android:paddingLeft="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c1y" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lj">
+        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/cm5" style="@style/ih" />
+        <TextView android:id="@id/cm4" style="@style/ig" />
+        <TextView android:id="@id/cm6" style="@style/ii" />
+    </LinearLayout>
 </LinearLayout>

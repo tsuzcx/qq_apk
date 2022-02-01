@@ -1,41 +1,39 @@
 package kotlin.l.b.a.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.l.b;
-import kotlin.l.b.a.b.l.j;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.b.e;
+import kotlin.l.b.a.b.b.h;
+import kotlin.l.b.a.b.b.l;
+import kotlin.l.b.a.b.f.b;
+import kotlin.l.b.a.b.j.d.a;
 
 public final class d
-  extends g
 {
-  private static final d aaFu;
-  public static final a aaFv;
-  
-  static
+  public static final boolean a(c paramc, e parame)
   {
-    AppMethodBeat.i(56655);
-    aaFv = new a((byte)0);
-    aaFu = new d((byte)0);
-    AppMethodBeat.o(56655);
+    AppMethodBeat.i(191414);
+    s.u(paramc, "<this>");
+    s.u(parame, "classDescriptor");
+    if (kotlin.l.b.a.b.j.d.u((l)parame))
+    {
+      Iterable localIterable = (Iterable)c.kmF();
+      paramc = a.d((h)parame);
+      if (paramc == null) {}
+      for (paramc = null; p.a(localIterable, paramc); paramc = paramc.kxO())
+      {
+        AppMethodBeat.o(191414);
+        return true;
+      }
+    }
+    AppMethodBeat.o(191414);
+    return false;
   }
-  
-  private d()
-  {
-    super((j)new b("DefaultBuiltIns"));
-    AppMethodBeat.i(56654);
-    iDo();
-    AppMethodBeat.o(56654);
-  }
-  
-  public static final d iDn()
-  {
-    return aaFu;
-  }
-  
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,12 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 public abstract class SearchActionVerificationClientActivity
   extends HellActivity
 {
+  public abstract Class<? extends SearchActionVerificationClientService> XO();
+  
   public final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = new Intent(this, yj());
+    paramBundle = new Intent(this, XO());
     paramBundle.putExtra("SearchActionVerificationClientExtraIntent", getIntent());
     startService(paramBundle);
     finish();
@@ -23,8 +25,6 @@ public abstract class SearchActionVerificationClientActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public abstract Class<? extends SearchActionVerificationClientService> yj();
 }
 
 

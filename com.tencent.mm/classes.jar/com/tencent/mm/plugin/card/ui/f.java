@@ -11,13 +11,13 @@ import com.tencent.mm.plugin.card.a.c;
 import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.a.f;
 import com.tencent.mm.plugin.card.a.g;
-import com.tencent.mm.plugin.card.b.e;
-import com.tencent.mm.plugin.card.d.n;
+import com.tencent.mm.plugin.card.c.n;
+import com.tencent.mm.plugin.card.mgr.d;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.plugin.card.sharecard.model.l;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.ur;
+import com.tencent.mm.protocal.protobuf.wi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
@@ -25,95 +25,95 @@ import java.util.LinkedList;
 
 public final class f
 {
-  private View jAC;
-  private View mrI;
-  private MMActivity tmY;
-  private b ttp;
-  private int txS;
-  private TextView txT;
-  private TextView txU;
-  private CdnImageView txV;
-  private ImageView[] txW;
-  private ImageView txX;
-  private ur txY;
+  private View plc;
+  private int wCo;
+  private View wCp;
+  private TextView wCq;
+  private TextView wCr;
+  private CdnImageView wCs;
+  private ImageView[] wCt;
+  private ImageView wCu;
+  private wi wCv;
+  private MMActivity wry;
+  private b wxM;
   
   public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb)
   {
     this(paramMMActivity, paramView, paramInt, paramb, null);
   }
   
-  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, ur paramur)
+  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, wi paramwi)
   {
     AppMethodBeat.i(113406);
-    this.txW = new ImageView[3];
-    this.tmY = paramMMActivity;
-    this.mrI = paramView;
-    this.txS = paramInt;
-    this.ttp = paramb;
-    this.txY = paramur;
-    this.jAC = this.mrI.findViewById(a.d.tcr);
-    this.txT = ((TextView)this.mrI.findViewById(a.d.tct));
-    this.txU = ((TextView)this.mrI.findViewById(a.d.tcs));
-    this.txV = ((CdnImageView)this.mrI.findViewById(a.d.tcu));
-    this.txW[0] = ((ImageView)this.mrI.findViewById(a.d.tco));
-    this.txW[1] = ((ImageView)this.mrI.findViewById(a.d.tcp));
-    this.txW[2] = ((ImageView)this.mrI.findViewById(a.d.tcq));
-    this.txX = ((ImageView)this.mrI.findViewById(a.d.tdl));
-    if (this.txS == 1)
+    this.wCt = new ImageView[3];
+    this.wry = paramMMActivity;
+    this.plc = paramView;
+    this.wCo = paramInt;
+    this.wxM = paramb;
+    this.wCv = paramwi;
+    this.wCp = this.plc.findViewById(a.d.wgE);
+    this.wCq = ((TextView)this.plc.findViewById(a.d.wgG));
+    this.wCr = ((TextView)this.plc.findViewById(a.d.wgF));
+    this.wCs = ((CdnImageView)this.plc.findViewById(a.d.wgH));
+    this.wCt[0] = ((ImageView)this.plc.findViewById(a.d.wgB));
+    this.wCt[1] = ((ImageView)this.plc.findViewById(a.d.wgC));
+    this.wCt[2] = ((ImageView)this.plc.findViewById(a.d.wgD));
+    this.wCu = ((ImageView)this.plc.findViewById(a.d.whz));
+    if (this.wCo == 1)
     {
-      this.txT.setText(this.tmY.getString(a.g.tkV, new Object[] { Integer.valueOf(0) }));
-      this.txV.setImageResource(a.f.card_home_member_card_icon);
+      this.wCq.setText(this.wry.getString(a.g.wpu, new Object[] { Integer.valueOf(0) }));
+      this.wCs.setImageResource(a.f.card_home_member_card_icon);
       AppMethodBeat.o(113406);
       return;
     }
-    if (this.txS == 2)
+    if (this.wCo == 2)
     {
-      this.txT.setText(a.g.tlG);
-      this.txV.setImageResource(a.f.card_home_friend_ticket_icon);
+      this.wCq.setText(a.g.wqf);
+      this.wCs.setImageResource(a.f.card_home_friend_ticket_icon);
       AppMethodBeat.o(113406);
       return;
     }
-    if (this.txS == 3)
+    if (this.wCo == 3)
     {
-      this.txT.setText(a.g.tmf);
-      this.txV.setImageResource(a.f.card_home_my_ticket_icon);
+      this.wCq.setText(a.g.wqE);
+      this.wCs.setImageResource(a.f.card_home_my_ticket_icon);
       AppMethodBeat.o(113406);
       return;
     }
-    if (this.txS == 4)
+    if (this.wCo == 4)
     {
-      if (this.txY == null)
+      if (this.wCv == null)
       {
         Log.w("MicroMsg.CardHomePageItemController", "cell element is null");
-        cJz();
+        dmQ();
       }
-      this.mrI.findViewById(a.d.tcn).setVisibility(8);
-      this.txT.setText(this.txY.Sfj);
-      this.txV.setUseSdcardCache(true);
-      this.txV.setUrl(this.txY.Sfk);
-      if (!Util.isNullOrNil(this.txY.Sfl))
+      this.plc.findViewById(a.d.wgA).setVisibility(8);
+      this.wCq.setText(this.wCv.Zde);
+      this.wCs.setUseSdcardCache(true);
+      this.wCs.setUrl(this.wCv.Zdf);
+      if (!Util.isNullOrNil(this.wCv.Zdg))
       {
-        this.txU.setText(this.txY.Sfl);
-        this.txU.setVisibility(0);
+        this.wCr.setText(this.wCv.Zdg);
+        this.wCr.setVisibility(0);
         AppMethodBeat.o(113406);
         return;
       }
-      this.txU.setVisibility(8);
+      this.wCr.setVisibility(8);
     }
     AppMethodBeat.o(113406);
   }
   
-  public final void cJz()
+  public final void dmQ()
   {
     AppMethodBeat.i(113409);
-    this.mrI.setVisibility(8);
+    this.plc.setVisibility(8);
     AppMethodBeat.o(113409);
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(113407);
-    this.jAC.setOnClickListener(paramOnClickListener);
+    this.wCp.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(113407);
   }
   
@@ -121,75 +121,75 @@ public final class f
   {
     AppMethodBeat.i(113408);
     Object localObject;
-    if (this.txS == 2)
+    if (this.wCo == 2)
     {
-      localObject = (l)am.cHx().getValue("key_share_card_layout_data");
+      localObject = (l)am.dkO().getValue("key_share_card_layout_data");
       if (localObject == null)
       {
         Log.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
         AppMethodBeat.o(113408);
         return;
       }
-      if (Util.isNullOrNil(((l)localObject).tsf)) {
-        this.txU.setVisibility(8);
+      if (Util.isNullOrNil(((l)localObject).lym)) {
+        this.wCr.setVisibility(8);
       }
-      while (Util.isNullOrNil(((l)localObject).tse))
+      while (Util.isNullOrNil(((l)localObject).wwD))
       {
         i = 0;
         while (i < 3)
         {
-          this.txW[i].setVisibility(8);
+          this.wCt[i].setVisibility(8);
           i += 1;
         }
-        this.txU.setVisibility(0);
-        this.txU.setText(((l)localObject).tsf);
+        this.wCr.setVisibility(0);
+        this.wCr.setText(((l)localObject).lym);
       }
       int i = 0;
       if (i < 3)
       {
-        if (i < ((l)localObject).tse.size())
+        if (i < ((l)localObject).wwD.size())
         {
-          this.txW[i].setVisibility(0);
-          int j = this.tmY.getResources().getDimensionPixelSize(a.b.LargerPadding);
-          n.a(this.txW[i], (String)((l)localObject).tse.get(i), j, a.c.my_card_package_defaultlogo, false);
+          this.wCt[i].setVisibility(0);
+          int j = this.wry.getResources().getDimensionPixelSize(a.b.LargerPadding);
+          n.a(this.wCt[i], (String)((l)localObject).wwD.get(i), j, a.c.my_card_package_defaultlogo, false);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.txW[i].setVisibility(8);
+          this.wCt[i].setVisibility(8);
         }
       }
-      if ((!Util.isNullOrNil(((l)localObject).tse)) && (((l)localObject).tse.size() == 1) && (((l)localObject).fUV) && (!((l)localObject).fUW))
+      if ((!Util.isNullOrNil(((l)localObject).wwD)) && (((l)localObject).wwD.size() == 1) && (((l)localObject).iaS) && (!((l)localObject).iaT))
       {
-        this.txX.setVisibility(0);
+        this.wCu.setVisibility(0);
         AppMethodBeat.o(113408);
         return;
       }
-      this.txX.setVisibility(8);
+      this.wCu.setVisibility(8);
       AppMethodBeat.o(113408);
       return;
     }
-    if (this.txS == 3)
+    if (this.wCo == 3)
     {
-      this.txT.setText(a.g.tmf);
-      this.mrI.findViewById(a.d.tcn).setVisibility(8);
-      localObject = (String)am.cHx().getValue("key_card_entrance_tips");
+      this.wCq.setText(a.g.wqE);
+      this.plc.findViewById(a.d.wgA).setVisibility(8);
+      localObject = (String)am.dkO().getValue("key_card_entrance_tips");
       if (!Util.isNullOrNil((String)localObject))
       {
-        this.txU.setText((CharSequence)localObject);
-        this.txU.setVisibility(0);
+        this.wCr.setText((CharSequence)localObject);
+        this.wCr.setVisibility(0);
         AppMethodBeat.o(113408);
         return;
       }
-      this.txU.setVisibility(8);
+      this.wCr.setVisibility(8);
     }
     AppMethodBeat.o(113408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.f
  * JD-Core Version:    0.7.0.1
  */

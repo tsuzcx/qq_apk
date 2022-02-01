@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="@drawable/bgv" android:padding="5.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/wm" android:paddingBottom="2.0dip" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@drawable/bca" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <ScrollView style="@style/o8">
+        <RelativeLayout android:id="@id/bqj" style="@style/lj">
+            <ImageView android:id="@id/f93" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:layout_marginRight="@dimen/i6" android:src="@drawable/b__" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/a_q" />
+            <TextView android:id="@id/f98" android:layout_toRightOf="@id/f93" style="@style/m4" />
+            <TextView android:id="@id/f9_" android:layout_toRightOf="@id/f93" android:layout_below="@id/f98" style="@style/m6" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/m4" android:gravity="center" android:id="@id/f99" android:background="@drawable/bxb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:layout_below="@id/f93" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:minHeight="@dimen/j1" android:layout_below="@id/f99">
+                <Button android:id="@id/f96" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/frq" android:layout_weight="1.0" style="@style/og" />
+                <View android:id="@id/f97" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
+                <Button android:id="@id/f9a" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/frt" android:layout_weight="1.0" style="@style/on" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

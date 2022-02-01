@@ -6,66 +6,66 @@ import java.util.Map;
 
 public final class a
 {
-  public long ZPA;
-  public boolean ZPB;
-  public boolean ZPC;
-  public boolean ZPD;
-  public String ZPE;
-  public boolean ZPF;
-  public final Map<String, Long> ZPz;
+  public final Map<String, Long> ahUA;
+  public long ahUB;
+  public boolean ahUC;
+  public boolean ahUD;
+  public boolean ahUE;
+  public String ahUF;
+  public boolean ahUG;
   
   public a(boolean paramBoolean)
   {
-    AppMethodBeat.i(224580);
-    this.ZPz = new HashMap();
-    this.ZPE = "";
-    this.ZPF = paramBoolean;
-    AppMethodBeat.o(224580);
+    AppMethodBeat.i(210763);
+    this.ahUA = new HashMap();
+    this.ahUF = "";
+    this.ahUG = paramBoolean;
+    AppMethodBeat.o(210763);
   }
   
-  private final void ID(boolean paramBoolean)
+  private final void setIsReuse(boolean paramBoolean)
   {
-    this.ZPB = paramBoolean;
-    this.ZPD = true;
+    this.ahUC = paramBoolean;
+    this.ahUE = true;
   }
   
-  public final void IE(boolean paramBoolean)
+  public final void OG(boolean paramBoolean)
   {
-    AppMethodBeat.i(224583);
-    this.ZPC = paramBoolean;
-    this.ZPA = System.currentTimeMillis();
-    AppMethodBeat.o(224583);
+    AppMethodBeat.i(210786);
+    this.ahUD = paramBoolean;
+    this.ahUB = System.currentTimeMillis();
+    AppMethodBeat.o(210786);
   }
   
-  public final void IF(boolean paramBoolean)
+  public final void OH(boolean paramBoolean)
   {
-    AppMethodBeat.i(224586);
-    ID(paramBoolean);
-    this.ZPz.put("configCodec", Long.valueOf(System.currentTimeMillis() - this.ZPA));
-    AppMethodBeat.o(224586);
+    AppMethodBeat.i(210794);
+    setIsReuse(paramBoolean);
+    this.ahUA.put("configCodec", Long.valueOf(System.currentTimeMillis() - this.ahUB));
+    AppMethodBeat.o(210794);
   }
   
-  public final void itl()
+  public final void kcF()
   {
-    AppMethodBeat.i(224581);
-    this.ZPE = "";
-    this.ZPz.clear();
-    this.ZPA = System.currentTimeMillis();
-    AppMethodBeat.o(224581);
+    AppMethodBeat.i(210775);
+    this.ahUF = "";
+    this.ahUA.clear();
+    this.ahUB = System.currentTimeMillis();
+    AppMethodBeat.o(210775);
   }
   
-  public final void itm()
+  public final void kcG()
   {
-    AppMethodBeat.i(224582);
-    this.ZPz.put("createCodec", Long.valueOf(System.currentTimeMillis() - this.ZPA));
-    AppMethodBeat.o(224582);
+    AppMethodBeat.i(210782);
+    this.ahUA.put("createCodec", Long.valueOf(System.currentTimeMillis() - this.ahUB));
+    AppMethodBeat.o(210782);
   }
   
-  public final void itn()
+  public final void kcH()
   {
-    AppMethodBeat.i(224589);
-    this.ZPz.put("startCodec", Long.valueOf(System.currentTimeMillis() - this.ZPA));
-    AppMethodBeat.o(224589);
+    AppMethodBeat.i(210799);
+    this.ahUA.put("startCodec", Long.valueOf(System.currentTimeMillis() - this.ahUB));
+    AppMethodBeat.o(210799);
   }
 }
 

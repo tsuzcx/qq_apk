@@ -1,61 +1,59 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.wallet_core.model.mall.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.protobuf.epb;
-import com.tencent.mm.protocal.protobuf.epc;
+import com.tencent.mm.protocal.protobuf.fka;
+import com.tencent.mm.protocal.protobuf.fkb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.j;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.wallet_core.model.j;
+import com.tencent.mm.wallet_core.model.w;
 
 public final class g
   extends w
   implements j
 {
-  public PayInfo HzF;
-  private i callback;
+  public PayInfo Nxi;
+  private h callback;
   public String mAppId;
-  private d rr;
+  private com.tencent.mm.am.c rr;
   
   public g(MallRechargeProduct paramMallRechargeProduct, String paramString)
   {
-    this(paramMallRechargeProduct.appId, paramMallRechargeProduct.nBK, paramMallRechargeProduct.productId, paramString);
+    this(paramMallRechargeProduct.appId, paramMallRechargeProduct.qBb, paramMallRechargeProduct.productId, paramString);
   }
   
   public g(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(67113);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new epb();
-    ((d.a)localObject).lBV = new epc();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/submitpayproductbuyinfo";
-    ((d.a)localObject).funcId = 498;
-    ((d.a)localObject).lBW = 230;
-    ((d.a)localObject).respCmdId = 1000000230;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (epb)d.b.b(this.rr.lBR);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fka();
+    ((c.a)localObject).otF = new fkb();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/submitpayproductbuyinfo";
+    ((c.a)localObject).funcId = 498;
+    ((c.a)localObject).otG = 230;
+    ((c.a)localObject).respCmdId = 1000000230;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (fka)c.b.b(this.rr.otB);
     Log.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "remark: %s", new Object[] { paramString4 });
     this.mAppId = paramString1;
-    ((epb)localObject).SWR = paramString1;
-    ((epb)localObject).SWQ = paramString2;
-    ((epb)localObject).TgA = paramString3;
-    ((epb)localObject).SWS = paramString4;
-    ((epb)localObject).HlB = c.gKL().bhd(paramString2);
+    ((fka)localObject).aaiI = paramString1;
+    ((fka)localObject).aaiH = paramString2;
+    ((fka)localObject).aatQ = paramString3;
+    ((fka)localObject).aaiJ = paramString4;
+    ((fka)localObject).Njp = com.tencent.mm.plugin.wallet_core.model.mall.c.ikd().bgN(paramString2);
     AppMethodBeat.o(67113);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, h paramh)
   {
     AppMethodBeat.i(67115);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(67115);
     return i;
@@ -69,25 +67,25 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(67114);
-    this.HzF = new PayInfo();
-    paramArrayOfByte = (epc)d.c.b(((d)params).lBS);
+    this.Nxi = new PayInfo();
+    paramArrayOfByte = (fkb)c.c.b(((com.tencent.mm.am.c)params).otC);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Log.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "resp.ReqKey " + paramArrayOfByte.RLK);
-      this.HzF.appId = this.mAppId;
-      this.HzF.Pjv = paramArrayOfByte.SYX;
-      this.HzF.fwv = paramArrayOfByte.RLK;
+      Log.d("MicroMsg.NetSceneSubmitPayProductBuyInfo", "resp.ReqKey " + paramArrayOfByte.YIV);
+      this.Nxi.appId = this.mAppId;
+      this.Nxi.Wan = paramArrayOfByte.aalP;
+      this.Nxi.hAT = paramArrayOfByte.YIV;
     }
     paramInt1 = paramInt3;
     if (paramInt3 == 0) {
-      paramInt1 = paramArrayOfByte.SWT;
+      paramInt1 = paramArrayOfByte.aaiK;
     }
     params = paramString;
     if (Util.isNullOrNil(paramString)) {
-      params = paramArrayOfByte.SWU;
+      params = paramArrayOfByte.aaiL;
     }
-    this.HzF.Rzh = String.valueOf(paramInt1);
-    paramArrayOfByte = this.HzF;
+    this.Nxi.YvF = String.valueOf(paramInt1);
+    paramArrayOfByte = this.Nxi;
     if (params != null) {}
     for (paramString = String.valueOf(params);; paramString = "")
     {
@@ -101,7 +99,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -4,99 +4,97 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
 import com.tencent.mm.plugin.music.a.c;
 import com.tencent.mm.plugin.music.a.d;
 import com.tencent.mm.plugin.music.a.e;
 import com.tencent.mm.plugin.music.a.g;
 import com.tencent.mm.plugin.music.a.h;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
-  extends com.tencent.mm.pluginsdk.ui.b.b
+  extends com.tencent.mm.pluginsdk.ui.a.b
 {
-  private TextView FUk;
-  private f FUl;
-  private IListener ozM;
-  private View rSI;
-  private View rSJ;
+  private TextView LPk;
+  private com.tencent.mm.aw.f LPl;
+  private IListener rDF;
+  private View vdX;
+  private View vdY;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(63196);
-    this.FUl = null;
+    this.LPl = null;
     if (this.view != null)
     {
-      this.FUk = ((TextView)this.view.findViewById(a.e.music_banner_text_view));
-      this.rSI = this.view.findViewById(a.e.music_banner_view);
-      this.rSJ = this.view.findViewById(a.e.banner_root);
-      this.FUk.setTextSize(0, com.tencent.mm.ci.a.aY(MMApplicationContext.getContext(), a.c.HintTextSize));
+      this.LPk = ((TextView)this.view.findViewById(a.e.music_banner_text_view));
+      this.vdX = this.view.findViewById(a.e.music_banner_view);
+      this.vdY = this.view.findViewById(a.e.banner_root);
+      this.LPk.setTextSize(0, com.tencent.mm.cd.a.br(MMApplicationContext.getContext(), a.c.HintTextSize));
       this.view.setOnClickListener(new a.1(this));
     }
-    this.ozM = new a.2(this);
-    EventCenter.instance.addListener(this.ozM);
+    this.rDF = new MusicBanner.2(this, com.tencent.mm.app.f.hfK);
+    this.rDF.alive();
     AppMethodBeat.o(63196);
   }
   
-  private void aSq(String paramString)
+  private void aPk(String paramString)
   {
     AppMethodBeat.i(63200);
-    if (this.FUk != null) {
-      this.FUk.setText(paramString);
+    if (this.LPk != null) {
+      this.LPk.setText(paramString);
     }
     AppMethodBeat.o(63200);
   }
   
-  private boolean ffz()
+  private boolean goN()
   {
     int i = 8;
     AppMethodBeat.i(63201);
-    f localf;
-    if ((this.isFirst) && (this.kUc))
+    com.tencent.mm.aw.f localf;
+    if ((this.isFirst) && (this.nzL))
     {
-      this.rSJ.setBackgroundResource(a.d.tips_bar_white_selector);
-      this.rSI.setBackground(null);
-      this.FUk.setBackground(null);
-      if (!com.tencent.mm.bb.a.bnx()) {
+      this.vdY.setBackgroundResource(a.d.tips_bar_white_selector);
+      this.vdX.setBackground(null);
+      this.LPk.setBackground(null);
+      if (!com.tencent.mm.aw.a.bLk()) {
         break label260;
       }
-      localf = com.tencent.mm.bb.a.bnA();
-      this.FUl = localf;
-      aSq(MMApplicationContext.getContext().getString(a.h.music_detail_playing) + MMApplicationContext.getContext().getString(a.h.music_detail_split) + localf.lVv);
-      if (!localf.lVP) {
+      localf = com.tencent.mm.aw.a.bLn();
+      this.LPl = localf;
+      aPk(MMApplicationContext.getContext().getString(a.h.music_detail_playing) + MMApplicationContext.getContext().getString(a.h.music_detail_split) + localf.oOx);
+      if (!localf.oOR) {
         break label248;
       }
     }
     for (;;)
     {
       setVisibility(i);
-      this.FUl = null;
-      if (localf.lVP) {
+      this.LPl = null;
+      if (localf.oOR) {
         break label253;
       }
       AppMethodBeat.o(63201);
       return true;
       if (this.isFirst)
       {
-        this.rSJ.setBackgroundResource(a.d.list_item_top_selector);
-        this.rSI.setBackgroundResource(a.d.list_item_top_normal);
-        this.FUk.setBackgroundResource(a.d.list_item_normal);
+        this.vdY.setBackgroundResource(a.d.list_item_top_selector);
+        this.vdX.setBackgroundResource(a.d.list_item_top_normal);
+        this.LPk.setBackgroundResource(a.d.list_item_normal);
         break;
       }
-      if (this.kUc)
+      if (this.nzL)
       {
-        this.rSJ.setBackgroundResource(a.d.list_item_top_selector);
-        this.rSI.setBackgroundResource(a.d.list_item_normal);
-        this.FUk.setBackground(null);
+        this.vdY.setBackgroundResource(a.d.list_item_top_selector);
+        this.vdX.setBackgroundResource(a.d.list_item_normal);
+        this.LPk.setBackground(null);
         break;
       }
-      this.rSJ.setBackgroundResource(a.d.list_item_top_selector);
-      this.rSI.setBackground(null);
-      this.FUk.setBackgroundResource(a.d.list_item_normal);
+      this.vdY.setBackgroundResource(a.d.list_item_top_selector);
+      this.vdX.setBackground(null);
+      this.LPk.setBackgroundResource(a.d.list_item_normal);
       break;
       label248:
       i = 0;
@@ -105,7 +103,7 @@ public final class a
     AppMethodBeat.o(63201);
     return false;
     label260:
-    if (com.tencent.mm.bb.a.bny())
+    if (com.tencent.mm.aw.a.bLl())
     {
       setVisibility(0);
       AppMethodBeat.o(63201);
@@ -116,10 +114,10 @@ public final class a
     return false;
   }
   
-  public final boolean ckL()
+  public final boolean cMa()
   {
     AppMethodBeat.i(63198);
-    boolean bool = ffz();
+    boolean bool = goN();
     AppMethodBeat.o(63198);
     return bool;
   }
@@ -127,7 +125,7 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(63199);
-    EventCenter.instance.removeListener(this.ozM);
+    this.rDF.dead();
     AppMethodBeat.o(63199);
   }
   
@@ -149,14 +147,14 @@ public final class a
       View localView = this.view.findViewById(a.e.music_banner_view);
       if (paramInt == 0)
       {
-        if (com.tencent.mm.compatible.e.b.ct(MMApplicationContext.getContext()))
+        if (com.tencent.mm.compatible.e.b.dh(MMApplicationContext.getContext()))
         {
           Log.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return true");
           localView.setVisibility(8);
-          if (com.tencent.mm.bb.a.bnx())
+          if (com.tencent.mm.aw.a.bLk())
           {
             Log.i("MicroMsg.MusicBanner", "resume music to float ball");
-            com.tencent.mm.plugin.music.model.b.x(this.FUl);
+            com.tencent.mm.plugin.music.model.b.B(this.LPl);
             AppMethodBeat.o(63197);
           }
         }
@@ -174,7 +172,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.a
  * JD-Core Version:    0.7.0.1
  */

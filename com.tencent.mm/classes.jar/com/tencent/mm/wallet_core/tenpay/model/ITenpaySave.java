@@ -14,9 +14,9 @@ public abstract interface ITenpaySave
     implements Parcelable
   {
     public static final Parcelable.Creator<RetryPayInfo> CREATOR;
-    public int UeK;
-    public int YWf;
-    public String YWg;
+    public int abvX;
+    public int agTZ;
+    public String agUa;
     
     static
     {
@@ -27,21 +27,21 @@ public abstract interface ITenpaySave
     
     public RetryPayInfo()
     {
-      this.YWf = -1;
-      this.UeK = -1;
-      this.YWg = "";
+      this.agTZ = -1;
+      this.abvX = -1;
+      this.agUa = "";
     }
     
     protected RetryPayInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(72887);
-      this.YWf = paramParcel.readInt();
-      this.UeK = paramParcel.readInt();
-      this.YWg = paramParcel.readString();
+      this.agTZ = paramParcel.readInt();
+      this.abvX = paramParcel.readInt();
+      this.agUa = paramParcel.readString();
       AppMethodBeat.o(72887);
     }
     
-    public final void bV(JSONObject paramJSONObject)
+    public final void cq(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(72889);
       if (paramJSONObject == null)
@@ -55,9 +55,9 @@ public abstract interface ITenpaySave
         AppMethodBeat.o(72889);
         return;
       }
-      this.YWf = paramJSONObject.optInt("retry_interval", -1);
-      this.UeK = paramJSONObject.optInt("max_retry_count", -1);
-      this.YWg = paramJSONObject.optString("retry_fail_wording", "");
+      this.agTZ = paramJSONObject.optInt("retry_interval", -1);
+      this.abvX = paramJSONObject.optInt("max_retry_count", -1);
+      this.agUa = paramJSONObject.optString("retry_fail_wording", "");
       AppMethodBeat.o(72889);
     }
     
@@ -66,24 +66,24 @@ public abstract interface ITenpaySave
       return 0;
     }
     
-    public final boolean fiY()
+    public final boolean gtp()
     {
-      return (this.YWf != -1) && (this.UeK != -1);
+      return (this.agTZ != -1) && (this.abvX != -1);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(72888);
-      paramParcel.writeInt(this.YWf);
-      paramParcel.writeInt(this.UeK);
-      paramParcel.writeString(this.YWg);
+      paramParcel.writeInt(this.agTZ);
+      paramParcel.writeInt(this.abvX);
+      paramParcel.writeString(this.agUa);
       AppMethodBeat.o(72888);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.ITenpaySave
  * JD-Core Version:    0.7.0.1
  */

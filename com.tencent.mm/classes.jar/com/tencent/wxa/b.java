@@ -1,30 +1,30 @@
 package com.tencent.wxa;
 
-import io.flutter.plugin.a.j;
+import io.flutter.plugin.common.MethodCall;
 
 public abstract class b
 {
-  public static a eO(Object paramObject)
+  public static a hl(Object paramObject)
   {
     return new a(true, paramObject);
   }
   
-  public static a ivs()
+  public static a keP()
   {
     return new a(false, null);
   }
   
-  public abstract a a(j paramj);
+  public abstract a a(MethodCall paramMethodCall);
   
   public static final class a
   {
-    Object ZYG;
+    Object aidk;
     boolean result;
     
     public a(boolean paramBoolean, Object paramObject)
     {
       this.result = paramBoolean;
-      this.ZYG = paramObject;
+      this.aidk = paramObject;
     }
   }
 }

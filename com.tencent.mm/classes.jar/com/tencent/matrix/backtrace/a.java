@@ -5,10 +5,10 @@ import android.os.Process;
 
 public final class a
 {
-  private static String cQP = null;
+  private static String eMg = null;
   
   /* Error */
-  private static String B(Context paramContext, int paramInt)
+  private static String E(Context paramContext, int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -180,22 +180,22 @@ public final class a
     //   150	163	247	java/lang/Exception
   }
   
-  public static String aT(Context paramContext)
+  public static String bD(Context paramContext)
   {
     try
     {
-      if (cQP == null) {
-        cQP = B(paramContext, Process.myPid());
+      if (eMg == null) {
+        eMg = E(paramContext, Process.myPid());
       }
-      paramContext = cQP;
+      paramContext = eMg;
       return paramContext;
     }
     finally {}
   }
   
-  public static boolean aU(Context paramContext)
+  public static boolean bE(Context paramContext)
   {
-    String str = aT(paramContext);
+    String str = bD(paramContext);
     return paramContext.getPackageName().equalsIgnoreCase(str);
   }
 }

@@ -41,14 +41,14 @@ public abstract class b<T extends c>
           return bool2;
         }
       }
-      catch (Throwable paramView) {}
+      finally {}
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b6v" android:paddingLeft="@dimen/cd" android:paddingTop="@dimen/df" android:paddingRight="@dimen/cd" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.chatroom.view.FixAspectRatioAndTopCropImageView android:id="@id/d_x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" app:fix_ratio="0.33" app:left_bottom_radius="@dimen/es" app:right_bottom_radius="@dimen/es" />
-        <Button android:textColor="@color/am" android:id="@id/d_w" android:background="@drawable/bdm" android:layout_width="60.0dip" android:layout_height="32.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_toLeftOf="@id/d_w" android:layout_centerVertical="true">
-            <TextView android:textSize="15.0sp" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/s9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/d_y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/s9" android:layout_alignLeft="@id/s9" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/d_z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/d_y" android:layout_alignLeft="@id/s9" />
-        </RelativeLayout>
-    </RelativeLayout>
-</FrameLayout>
+    <ImageView android:id="@id/m7u" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/m5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="111" android:maxLines="5" app:layout_constraintLeft_toRightOf="@id/m7u" app:layout_constraintTop_toTopOf="hr_" />
+</androidx.constraintlayout.widget.ConstraintLayout>

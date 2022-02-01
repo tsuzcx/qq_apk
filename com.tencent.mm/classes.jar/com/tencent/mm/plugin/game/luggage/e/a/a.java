@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.game.luggage.e.a;
 
 import android.content.Context;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.protocal.protobuf.cxc;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.protocal.protobuf.doh;
+import com.tencent.mm.ui.base.s;
 
 public abstract class a
 {
@@ -14,12 +14,12 @@ public abstract class a
     this.id = paramInt;
   }
   
-  public abstract void a(Context paramContext, g paramg, cxc paramcxc);
+  public abstract void a(Context paramContext, g paramg, doh paramdoh);
   
-  public void a(g paramg, o paramo, cxc paramcxc)
+  public void a(g paramg, s params, doh paramdoh)
   {
-    paramg = paramcxc.fwr + "__" + paramcxc.ThumbUrl;
-    paramo.d(paramcxc.RXp, paramg);
+    paramg = paramdoh.hAP + "__" + paramdoh.ThumbUrl;
+    params.c(paramdoh.YVh, paramg);
   }
 }
 

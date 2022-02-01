@@ -10,17 +10,17 @@ public abstract interface g
   
   public static final class a
   {
-    public String QTf;
-    public String QTm;
+    public String XPg;
+    public String XPn;
     public String aesKey;
     public String fileId;
-    public long mHi;
-    public String smU;
+    public long fileLength;
+    public String vyS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.g
  * JD-Core Version:    0.7.0.1
  */

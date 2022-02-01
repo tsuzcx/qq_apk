@@ -14,12 +14,12 @@ final class i$3
   {
     AppMethodBeat.i(137022);
     Log.i("MicroMsg.Audio.AudioPlayerMgr", "stopAudioDelayRunnable, run");
-    Iterator localIterator = this.FOz.FNQ.iterator();
+    Iterator localIterator = this.LJu.LIM.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (this.FOz.aRo(str) == 0) {
-        this.FOz.aRq(str);
+      if (this.LJu.aOg(str) == 0) {
+        this.LJu.aOi(str);
       }
     }
     AppMethodBeat.o(137022);
@@ -27,7 +27,7 @@ final class i$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.i.3
  * JD-Core Version:    0.7.0.1
  */

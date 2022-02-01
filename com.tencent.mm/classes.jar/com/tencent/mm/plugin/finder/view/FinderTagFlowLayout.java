@@ -15,11 +15,11 @@ import java.util.List;
 public class FinderTagFlowLayout
   extends ViewGroup
 {
-  public List<List<View>> Bai;
-  protected List<Integer> Baj;
-  protected List<Integer> Bak;
-  private List<View> Bal;
-  private int sK;
+  public List<List<View>> GCA;
+  protected List<Integer> GCB;
+  protected List<Integer> GCC;
+  private List<View> GCD;
+  private int tJ;
   
   public FinderTagFlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,11 +30,11 @@ public class FinderTagFlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168643);
-    this.Bai = new ArrayList();
-    this.Baj = new ArrayList();
-    this.Bak = new ArrayList();
-    this.Bal = new ArrayList();
-    this.sK = -1;
+    this.GCA = new ArrayList();
+    this.GCB = new ArrayList();
+    this.GCC = new ArrayList();
+    this.GCD = new ArrayList();
+    this.tJ = -1;
     AppMethodBeat.o(168643);
   }
   
@@ -65,10 +65,10 @@ public class FinderTagFlowLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(168645);
-    this.Bai.clear();
-    this.Baj.clear();
-    this.Bak.clear();
-    this.Bal.clear();
+    this.GCA.clear();
+    this.GCB.clear();
+    this.GCC.clear();
+    this.GCD.clear();
     int j = getWidth();
     paramInt1 = 0;
     paramInt2 = 0;
@@ -92,44 +92,44 @@ public class FinderTagFlowLayout
         i = paramInt1;
         if (n + paramInt1 + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin > j - getPaddingLeft() - getPaddingRight())
         {
-          this.Baj.add(Integer.valueOf(paramInt2));
-          this.Bai.add(this.Bal);
-          this.Bak.add(Integer.valueOf(paramInt1));
+          this.GCB.add(Integer.valueOf(paramInt2));
+          this.GCA.add(this.GCD);
+          this.GCC.add(Integer.valueOf(paramInt1));
           i = 0;
           paramInt4 = localMarginLayoutParams.topMargin + m + localMarginLayoutParams.bottomMargin;
-          this.Bal = new ArrayList();
+          this.GCD = new ArrayList();
         }
         paramInt1 = i + (n + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin);
         paramInt2 = localMarginLayoutParams.topMargin;
         i = Math.max(paramInt4, localMarginLayoutParams.bottomMargin + (paramInt2 + m));
-        this.Bal.add(localView);
+        this.GCD.add(localView);
         paramInt4 = paramInt1;
       }
       paramInt3 += 1;
       paramInt2 = i;
       paramInt1 = paramInt4;
     }
-    this.Baj.add(Integer.valueOf(paramInt2));
-    this.Bak.add(Integer.valueOf(paramInt1));
-    this.Bai.add(this.Bal);
+    this.GCB.add(Integer.valueOf(paramInt2));
+    this.GCC.add(Integer.valueOf(paramInt1));
+    this.GCA.add(this.GCD);
     paramInt1 = getPaddingLeft();
     paramInt2 = getPaddingTop();
-    int i = this.Bai.size();
+    int i = this.GCA.size();
     paramInt3 = 0;
     if (paramInt3 < i)
     {
-      this.Bal = ((List)this.Bai.get(paramInt3));
-      k = ((Integer)this.Baj.get(paramInt3)).intValue();
-      paramInt4 = ((Integer)this.Bak.get(paramInt3)).intValue();
-      switch (this.sK)
+      this.GCD = ((List)this.GCA.get(paramInt3));
+      k = ((Integer)this.GCB.get(paramInt3)).intValue();
+      paramInt4 = ((Integer)this.GCC.get(paramInt3)).intValue();
+      switch (this.tJ)
       {
       default: 
         label456:
         paramInt4 = 0;
         label459:
-        if (paramInt4 < this.Bal.size())
+        if (paramInt4 < this.GCD.size())
         {
-          localView = (View)this.Bal.get(paramInt4);
+          localView = (View)this.GCD.get(paramInt4);
           if (localView.getVisibility() == 8) {
             break label651;
           }
@@ -152,7 +152,7 @@ public class FinderTagFlowLayout
       paramInt1 = (j - paramInt4) / 2 + getPaddingLeft();
       break label456;
       paramInt1 = j - (paramInt4 + getPaddingLeft()) - getPaddingRight();
-      Collections.reverse(this.Bal);
+      Collections.reverse(this.GCD);
       break label456;
       paramInt3 += 1;
       paramInt2 += k;
@@ -248,7 +248,7 @@ public class FinderTagFlowLayout
   
   public void setGravity(int paramInt)
   {
-    this.sK = paramInt;
+    this.tJ = paramInt;
   }
 }
 

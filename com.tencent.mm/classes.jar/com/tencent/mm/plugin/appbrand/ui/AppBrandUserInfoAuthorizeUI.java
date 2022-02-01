@@ -2,129 +2,184 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import com.tencent.e.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.jsapi.auth.entity.MMUserAvatarInfo;
 import com.tencent.mm.plugin.appbrand.jsapi.auth.entity.a.a;
 import com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b.c;
 import com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b.c.a;
-import com.tencent.mm.plugin.appbrand.widget.dialog.h.a;
-import com.tencent.mm.plugin.appbrand.widget.dialog.h.b;
-import com.tencent.mm.plugin.appbrand.widget.dialog.h.d;
+import com.tencent.mm.plugin.appbrand.ui.a.b.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k.b;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k.d;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
-import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import com.tencent.mm.view.TouchableLayout;
-import com.tencent.mm.view.TouchableLayout.a;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.m;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "currentSelectedUserId", "", "hadShowCloseNote", "", "isOpen", "mOriginalToCompare", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mUserinfoListItems", "mainSwitch", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "userInfoList", "Landroidx/recyclerview/widget/RecyclerView;", "wxaUserInfoListOperationController", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController;", "checkUserInfoModified", "finish", "", "getLayoutId", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "processMainSwitchClick", "check", "showUserInfoPanel", "open", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "currentSelectedUserId", "", "hadShowCloseNote", "", "isOpen", "mOriginalToCompare", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mUserinfoListItems", "mainSwitch", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "userInfoList", "Landroidx/recyclerview/widget/RecyclerView;", "wxaUserInfoListOperationController", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController;", "checkUserInfoModified", "finish", "", "getLayoutId", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "processMainSwitchClick", "check", "showUserInfoPanel", "open", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AppBrandUserInfoAuthorizeUI
   extends MMActivity
 {
-  public static final AppBrandUserInfoAuthorizeUI.a qZO;
-  private HashMap _$_findViewCache;
-  private boolean gZ;
-  private s jhZ;
-  private final List<h.a> qZH;
-  private List<h.a> qZI;
-  private boolean qZJ;
-  private int qZK;
-  private MMSwitchBtn qZL;
-  private com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b qZM;
-  private RecyclerView qZN;
+  public static final AppBrandUserInfoAuthorizeUI.a ufG;
+  private boolean hU;
+  private w lKp;
+  private final List<k.a> ufH;
+  private List<k.a> ufI;
+  private boolean ufJ;
+  private int ufK;
+  private MMSwitchBtn ufL;
+  private com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b ufM;
+  private RecyclerView ufN;
   
   static
   {
     AppMethodBeat.i(180683);
-    qZO = new AppBrandUserInfoAuthorizeUI.a((byte)0);
+    ufG = new AppBrandUserInfoAuthorizeUI.a((byte)0);
     AppMethodBeat.o(180683);
   }
   
   public AppBrandUserInfoAuthorizeUI()
   {
     AppMethodBeat.i(180682);
-    this.qZH = ((List)new ArrayList());
+    this.ufH = ((List)new ArrayList());
     AppMethodBeat.o(180682);
   }
   
-  private final boolean ckr()
+  private static final void a(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI, final boolean paramBoolean)
   {
-    AppMethodBeat.i(180681);
-    Object localObject1 = this.qZI;
-    boolean bool2;
-    if ((localObject1 == null) || (((List)localObject1).size() != this.qZH.size()))
+    AppMethodBeat.i(322006);
+    s.u(paramAppBrandUserInfoAuthorizeUI, "this$0");
+    kotlin.g.a.a locala1 = (kotlin.g.a.a)new f(paramAppBrandUserInfoAuthorizeUI);
+    kotlin.g.a.a locala2 = (kotlin.g.a.a)new g(paramAppBrandUserInfoAuthorizeUI, paramBoolean);
+    if ((!paramBoolean) && (!paramAppBrandUserInfoAuthorizeUI.ufJ))
     {
-      bool2 = true;
-      AppMethodBeat.o(180681);
-      return bool2;
+      paramAppBrandUserInfoAuthorizeUI.ufJ = true;
+      b.a locala = com.tencent.mm.plugin.appbrand.ui.a.b.ugG;
+      paramAppBrandUserInfoAuthorizeUI = paramAppBrandUserInfoAuthorizeUI.getContext();
+      s.s(paramAppBrandUserInfoAuthorizeUI, "context");
+      b.a.a((Context)paramAppBrandUserInfoAuthorizeUI, new AppBrandUserInfoAuthorizeUI..ExternalSyntheticLambda2(locala2), new AppBrandUserInfoAuthorizeUI..ExternalSyntheticLambda1(locala1), new AppBrandUserInfoAuthorizeUI..ExternalSyntheticLambda0(locala1));
+      AppMethodBeat.o(322006);
+      return;
     }
-    localObject1 = ((Iterable)this.qZH).iterator();
-    boolean bool1 = false;
+    locala2.invoke();
+    AppMethodBeat.o(322006);
+  }
+  
+  private static final boolean a(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(322002);
+    s.u(paramAppBrandUserInfoAuthorizeUI, "this$0");
+    paramAppBrandUserInfoAuthorizeUI.finish();
+    AppMethodBeat.o(322002);
+    return false;
+  }
+  
+  private static final void b(kotlin.g.a.a parama, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(322022);
+    s.u(parama, "$cancelCloseAuthorize");
+    parama.invoke();
+    AppMethodBeat.o(322022);
+  }
+  
+  private static final void c(kotlin.g.a.a parama, DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(322011);
+    s.u(parama, "$doCloseAuthorize");
+    parama.invoke();
+    AppMethodBeat.o(322011);
+  }
+  
+  private final boolean cLG()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(180681);
+    Object localObject1 = this.ufI;
+    int i;
+    if ((localObject1 != null) && (((List)localObject1).size() == this.ufH.size()))
+    {
+      i = 1;
+      if (i != 0) {
+        break label55;
+      }
+    }
     for (;;)
     {
-      bool2 = bool1;
-      if (!((Iterator)localObject1).hasNext()) {
-        break;
-      }
-      h.a locala1 = (h.a)((Iterator)localObject1).next();
-      Object localObject2 = this.qZI;
-      if (localObject2 != null)
+      AppMethodBeat.o(180681);
+      return bool;
+      i = 0;
+      break;
+      label55:
+      localObject1 = ((Iterable)this.ufH).iterator();
+      bool = false;
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = ((Iterable)localObject2).iterator();
-        int i = 0;
-        for (;;)
+        k.a locala1 = (k.a)((Iterator)localObject1).next();
+        Object localObject2 = this.ufI;
+        if (localObject2 != null)
         {
-          j = i;
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          h.a locala2 = (h.a)((Iterator)localObject2).next();
-          if (locala1.oCE == locala2.oCE) {
-            i = 1;
+          localObject2 = ((Iterable)localObject2).iterator();
+          i = 0;
+          for (;;)
+          {
+            j = i;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            k.a locala2 = (k.a)((Iterator)localObject2).next();
+            if (locala1.rFX == locala2.rFX) {
+              i = 1;
+            }
           }
         }
-      }
-      int j = 0;
-      if (j == 0) {
-        bool1 = true;
+        int j = 0;
+        if (j == 0) {
+          bool = true;
+        }
       }
     }
   }
   
-  private final void jN(boolean paramBoolean)
+  private static final void d(kotlin.g.a.a parama, DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(322019);
+    s.u(parama, "$cancelCloseAuthorize");
+    parama.invoke();
+    AppMethodBeat.o(322019);
+  }
+  
+  private final void kZ(boolean paramBoolean)
   {
     AppMethodBeat.i(180679);
-    View localView = findViewById(au.f.user_info_panel);
-    p.j(localView, "this.findViewById<View>(R.id.user_info_panel)");
+    View localView = findViewById(ba.f.user_info_panel);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -134,39 +189,15 @@ public final class AppBrandUserInfoAuthorizeUI
     }
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(282743);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(282743);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(180688);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(180688);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final void finish()
   {
     AppMethodBeat.i(180680);
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_result_user_info_list_been_modified", ckr());
-    localIntent.putExtra("key_result_is_open", this.gZ);
-    localIntent.putExtra("key_result_selected_user_id", this.qZK);
+    localIntent.putExtra("key_result_user_info_list_been_modified", cLG());
+    localIntent.putExtra("key_result_is_open", this.hU);
+    localIntent.putExtra("key_result_selected_user_id", this.ufK);
     setResult(-1, localIntent);
     super.finish();
     AppMethodBeat.o(180680);
@@ -174,30 +205,22 @@ public final class AppBrandUserInfoAuthorizeUI
   
   public final int getLayoutId()
   {
-    return au.g.app_brand_user_info_authorize_ui;
+    return ba.g.app_brand_user_info_authorize_ui;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(180678);
-    p.k(paramConfiguration, "newConfig");
+    s.u(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = this.qZM;
-    if (paramConfiguration == null) {
-      p.bGy("wxaUserInfoListOperationController");
-    }
-    if (paramConfiguration != null)
+    com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b localb = this.ufM;
+    paramConfiguration = localb;
+    if (localb == null)
     {
-      paramConfiguration = paramConfiguration.oEa;
-      if (paramConfiguration != null)
-      {
-        paramConfiguration.cFD();
-        AppMethodBeat.o(180678);
-        return;
-      }
-      AppMethodBeat.o(180678);
-      return;
+      s.bIx("wxaUserInfoListOperationController");
+      paramConfiguration = null;
     }
+    paramConfiguration.cqu();
     AppMethodBeat.o(180678);
   }
   
@@ -205,125 +228,156 @@ public final class AppBrandUserInfoAuthorizeUI
   {
     AppMethodBeat.i(180676);
     super.onCreate(paramBundle);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new e(this));
-    setMMTitle(au.i.appbrand_setting_usernifo_authrize_list_title);
+    setBackBtn(new AppBrandUserInfoAuthorizeUI..ExternalSyntheticLambda3(this));
+    setMMTitle(ba.i.appbrand_setting_userinfo_authrize_title);
     paramBundle = getIntent().getExtras();
     Object localObject1;
-    final String str;
-    if (paramBundle != null)
+    Object localObject2;
+    if (paramBundle == null)
     {
-      localObject1 = (MMUserAvatarInfo)paramBundle.getParcelable("key_user_info");
+      localObject1 = null;
       paramBundle = getIntent().getExtras();
-      if (paramBundle == null) {
-        break label150;
+      if (paramBundle != null) {
+        break label129;
       }
-      str = paramBundle.getString("key_app_id");
-      label77:
+      localObject2 = null;
+      label59:
       paramBundle = getIntent().getExtras();
-      if (paramBundle == null) {
-        break label156;
+      if (paramBundle != null) {
+        break label141;
       }
-      paramBundle = Boolean.valueOf(paramBundle.getBoolean("key_is_state_open"));
-      label100:
-      if (paramBundle == null) {
-        break label161;
+      paramBundle = null;
+      label73:
+      if (paramBundle != null) {
+        break label155;
       }
     }
-    label150:
-    label156:
-    label161:
-    for (boolean bool = paramBundle.booleanValue();; bool = false)
+    label129:
+    label141:
+    label155:
+    for (boolean bool = false;; bool = paramBundle.booleanValue())
     {
-      this.gZ = bool;
-      jN(this.gZ);
-      if ((localObject1 != null) && (str != null)) {
-        break label166;
+      this.hU = bool;
+      kZ(this.hU);
+      if ((localObject1 != null) && (localObject2 != null)) {
+        break label163;
       }
-      com.tencent.d.f.h.ioq();
+      h.jXD();
       finish();
       AppMethodBeat.o(180676);
       return;
-      localObject1 = null;
+      localObject1 = (MMUserAvatarInfo)paramBundle.getParcelable("key_user_info");
       break;
-      str = null;
-      break label77;
-      paramBundle = null;
-      break label100;
+      localObject2 = paramBundle.getString("key_app_id");
+      break label59;
+      paramBundle = Boolean.valueOf(paramBundle.getBoolean("key_is_state_open"));
+      break label73;
     }
-    label166:
-    this.qZK = ((MMUserAvatarInfo)localObject1).oDQ;
-    paramBundle = findViewById(au.f.main_switch);
-    Object localObject2 = (MMSwitchBtn)paramBundle;
-    ((MMSwitchBtn)localObject2).setCheck(this.gZ);
-    ((MMSwitchBtn)localObject2).setSwitchListener((MMSwitchBtn.a)new d(this));
-    p.j(paramBundle, "this.findViewById<MMSwit…)\n            }\n        }");
-    this.qZL = ((MMSwitchBtn)paramBundle);
-    paramBundle = getIntent().getExtras();
-    if (paramBundle != null)
+    label163:
+    this.ufK = ((MMUserAvatarInfo)localObject1).rHa;
+    paramBundle = findViewById(ba.f.main_switch);
+    Object localObject3 = (MMSwitchBtn)paramBundle;
+    ((MMSwitchBtn)localObject3).setCheck(this.hU);
+    ((MMSwitchBtn)localObject3).setSwitchListener(new AppBrandUserInfoAuthorizeUI..ExternalSyntheticLambda4(this));
+    localObject3 = ah.aiuX;
+    s.s(paramBundle, "this.findViewById<MMSwit…)\n            }\n        }");
+    this.ufL = ((MMSwitchBtn)paramBundle);
+    localObject3 = (TextView)findViewById(ba.f.scope_desc);
+    if (TextUtils.isEmpty((CharSequence)((MMUserAvatarInfo)localObject1).rHg))
     {
-      paramBundle = paramBundle.getString("key_nickname");
-      if (paramBundle != null) {
-        break label658;
+      paramBundle = (CharSequence)getString(ba.i.appbrand_setting_usernifo_authrize_page_switch_title);
+      ((TextView)localObject3).setText(paramBundle);
+      TextView localTextView = (TextView)findViewById(ba.f.user_Info_desc);
+      if (!TextUtils.isEmpty((CharSequence)((MMUserAvatarInfo)localObject1).rHf)) {
+        break label680;
       }
-      paramBundle = "";
+      paramBundle = am.aixg;
+      String str = getString(ba.i.appbrand_setting_usernifo_authrize_user_info_list_desc);
+      s.s(str, "getString(R.string.appbr…rize_user_info_list_desc)");
+      paramBundle = getIntent().getExtras();
+      if (paramBundle != null) {
+        break label669;
+      }
+      paramBundle = null;
+      label329:
+      localObject3 = paramBundle;
+      if (paramBundle == null) {
+        localObject3 = "";
+      }
+      paramBundle = String.format(str, Arrays.copyOf(new Object[] { localObject3 }, 1));
+      s.s(paramBundle, "java.lang.String.format(format, *args)");
+      paramBundle = (CharSequence)paramBundle;
+      label372:
+      localTextView.setText(paramBundle);
+      localObject3 = (TextView)findViewById(ba.f.list_title);
+      if (!TextUtils.isEmpty((CharSequence)((MMUserAvatarInfo)localObject1).rHh)) {
+        break label691;
+      }
+      paramBundle = (CharSequence)getString(ba.i.appbrand_setting_usernifo_authrize_list_title);
+      label414:
+      ((TextView)localObject3).setText(paramBundle);
+      paramBundle = findViewById(ba.f.user_info_list);
+      ((RecyclerView)paramBundle).setNestedScrollingEnabled(false);
+      localObject3 = ah.aiuX;
+      s.s(paramBundle, "this.findViewById<Recycl…Enabled = false\n        }");
+      this.ufN = ((RecyclerView)paramBundle);
+      this.ufM = new com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b((Context)this, (MMUserAvatarInfo)localObject1, "", (b.c)new b(this, (String)localObject2));
+      paramBundle = this.ufM;
+      if (paramBundle != null) {
+        break label702;
+      }
+      s.bIx("wxaUserInfoListOperationController");
+      paramBundle = null;
+      label505:
+      paramBundle.rHr = ((a.a)new c(this));
+      localObject2 = new com.tencent.mm.plugin.appbrand.widget.dialog.k(this.ufH);
+      paramBundle = this.ufN;
+      if (paramBundle != null) {
+        break label705;
+      }
+      s.bIx("userInfoList");
+      paramBundle = null;
+      label550:
+      paramBundle.setAdapter((RecyclerView.a)localObject2);
+      paramBundle = this.ufN;
+      if (paramBundle != null) {
+        break label708;
+      }
+      s.bIx("userInfoList");
+      paramBundle = null;
     }
-    label658:
+    label669:
+    label680:
+    label691:
+    label702:
+    label705:
+    label708:
     for (;;)
     {
-      p.j(paramBundle, "intent.run { extras?.get…ing(KEY_NICKNAME) } ?: \"\"");
-      localObject2 = findViewById(au.f.desc);
-      p.j(localObject2, "this.findViewById<TextView>(R.id.desc)");
-      localObject2 = (TextView)localObject2;
-      Object localObject3 = af.aaBG;
-      localObject3 = getString(au.i.appbrand_setting_usernifo_authrize_desc);
-      p.j(localObject3, "getString(R.string.appbr…g_usernifo_authrize_desc)");
-      localObject3 = String.format((String)localObject3, Arrays.copyOf(new Object[] { paramBundle }, 1));
-      p.j(localObject3, "java.lang.String.format(format, *args)");
-      ((TextView)localObject2).setText((CharSequence)localObject3);
-      localObject2 = findViewById(au.f.user_Info_desc);
-      p.j(localObject2, "this.findViewById<TextView>(R.id.user_Info_desc)");
-      localObject2 = (TextView)localObject2;
-      localObject3 = af.aaBG;
-      localObject3 = getString(au.i.appbrand_setting_usernifo_authrize_user_info_list_desc);
-      p.j(localObject3, "getString(R.string.appbr…rize_user_info_list_desc)");
-      paramBundle = String.format((String)localObject3, Arrays.copyOf(new Object[] { paramBundle }, 1));
-      p.j(paramBundle, "java.lang.String.format(format, *args)");
-      ((TextView)localObject2).setText((CharSequence)paramBundle);
-      paramBundle = findViewById(au.f.user_info_list);
-      localObject2 = (RecyclerView)paramBundle;
-      p.j(localObject2, "it");
-      ((RecyclerView)localObject2).setNestedScrollingEnabled(false);
-      p.j(paramBundle, "this.findViewById<Recycl…Enabled = false\n        }");
-      this.qZN = ((RecyclerView)paramBundle);
-      this.qZM = new com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b((Context)this, (MMUserAvatarInfo)localObject1, "", (b.c)new f(this, str));
-      paramBundle = this.qZM;
-      if (paramBundle == null) {
-        p.bGy("wxaUserInfoListOperationController");
-      }
-      paramBundle.oDZ = ((a.a)new g(this));
-      paramBundle = new com.tencent.mm.plugin.appbrand.widget.dialog.h(this.qZH);
-      localObject1 = this.qZN;
-      if (localObject1 == null) {
-        p.bGy("userInfoList");
-      }
-      ((RecyclerView)localObject1).setAdapter((RecyclerView.a)paramBundle);
-      localObject1 = this.qZN;
-      if (localObject1 == null) {
-        p.bGy("userInfoList");
-      }
       getContext();
-      ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
-      localObject1 = this.qZN;
-      if (localObject1 == null) {
-        p.bGy("userInfoList");
+      paramBundle.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+      localObject1 = this.ufN;
+      paramBundle = (Bundle)localObject1;
+      if (localObject1 == null)
+      {
+        s.bIx("userInfoList");
+        paramBundle = null;
       }
-      ((RecyclerView)localObject1).setItemAnimator(null);
-      paramBundle.rsu = ((h.d)new b(this));
-      paramBundle.qcl = ((h.b)new c(this));
+      paramBundle.setItemAnimator(null);
+      ((com.tencent.mm.plugin.appbrand.widget.dialog.k)localObject2).uCV = ((k.d)new d(this));
+      ((com.tencent.mm.plugin.appbrand.widget.dialog.k)localObject2).thf = ((k.b)new e(this));
       AppMethodBeat.o(180676);
       return;
-      paramBundle = null;
+      paramBundle = (CharSequence)((MMUserAvatarInfo)localObject1).rHg;
       break;
+      paramBundle = paramBundle.getString("key_nickname");
+      break label329;
+      paramBundle = (CharSequence)((MMUserAvatarInfo)localObject1).rHf;
+      break label372;
+      paramBundle = (CharSequence)((MMUserAvatarInfo)localObject1).rHh;
+      break label414;
+      break label505;
+      break label550;
     }
   }
   
@@ -331,12 +385,9 @@ public final class AppBrandUserInfoAuthorizeUI
   {
     AppMethodBeat.i(180677);
     super.onDestroy();
-    s locals = this.jhZ;
-    if (locals != null)
-    {
-      locals.dismiss();
-      AppMethodBeat.o(180677);
-      return;
+    w localw = this.lKp;
+    if (localw != null) {
+      localw.dismiss();
     }
     AppMethodBeat.o(180677);
   }
@@ -347,214 +398,192 @@ public final class AppBrandUserInfoAuthorizeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$7$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$OnListItemLongClickListener;", "onLongClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "index", "", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "onCreateUserActionUpdate", "", "action", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener$CreateUserAction;", "onItemListChanged", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "updateAddNewAvatarEntry", "isBan", "", "reachMaxCount", "limitWording", "", "avatarWording", "goAddUserPage", "Lkotlin/Function2;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements h.d
-  {
-    b(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
-    
-    public final void a(View paramView, h.a parama, int paramInt)
-    {
-      AppMethodBeat.i(275107);
-      p.k(paramView, "v");
-      p.k(parama, "item");
-      parama = AppBrandUserInfoAuthorizeUI.e(this.qZP);
-      TouchableLayout.a locala = TouchableLayout.YOD;
-      int i = TouchableLayout.igZ();
-      locala = TouchableLayout.YOD;
-      parama.a(paramView, paramInt, i, TouchableLayout.iha());
-      AppMethodBeat.o(275107);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$7$2", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$ItemCheckedListener;", "onChecked", "", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "plugin-appbrand-integration_release"})
-  public static final class c
-    implements h.b
-  {
-    c(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
-    
-    public final void a(h.a parama)
-    {
-      AppMethodBeat.i(283827);
-      p.k(parama, "item");
-      AppBrandUserInfoAuthorizeUI.e(this.qZP).b(parama);
-      AppBrandUserInfoAuthorizeUI.a(this.qZP, parama.oCE);
-      AppMethodBeat.o(283827);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onStatusChange", "com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$3$1"})
-  static final class d
-    implements MMSwitchBtn.a
-  {
-    d(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
-    
-    public final void onStatusChange(boolean paramBoolean)
-    {
-      AppMethodBeat.i(180663);
-      AppBrandUserInfoAuthorizeUI.a(this.qZP, paramBoolean);
-      AppMethodBeat.o(180663);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class e
-    implements MenuItem.OnMenuItemClickListener
-  {
-    e(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(180664);
-      this.qZP.finish();
-      AppMethodBeat.o(180664);
-      return false;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$5", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener;", "onCreateUserActionUpdate", "", "action", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/WxaUserInfoListOperationController$WxaUserInfoEventListener$CreateUserAction;", "onItemListChanged", "items", "", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "updateAddNewAvatarEntry", "isBan", "", "reachMaxCount", "limitWording", "", "avatarWording", "goAddUserPage", "Lkotlin/Function2;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
-  public static final class f
     implements b.c
   {
-    f(String paramString) {}
+    b(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI, String paramString) {}
+    
+    private static final void a(m paramm, AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI, String paramString, View paramView)
+    {
+      AppMethodBeat.i(322037);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramm);
+      localb.cH(paramAppBrandUserInfoAuthorizeUI);
+      localb.cH(paramString);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      s.u(paramm, "$goAddUserPage");
+      s.u(paramAppBrandUserInfoAuthorizeUI, "this$0");
+      paramAppBrandUserInfoAuthorizeUI = paramAppBrandUserInfoAuthorizeUI.getContext();
+      s.s(paramAppBrandUserInfoAuthorizeUI, "context");
+      paramm.invoke(paramAppBrandUserInfoAuthorizeUI, paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(322037);
+    }
     
     public final void a(b.c.a parama)
     {
-      AppMethodBeat.i(269414);
-      p.k(parama, "action");
-      AppMethodBeat.o(269414);
+      AppMethodBeat.i(322057);
+      s.u(parama, "action");
+      AppMethodBeat.o(322057);
     }
     
-    public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, final m<? super Activity, ? super String, x> paramm)
+    public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, m<? super Activity, ? super String, ah> paramm)
     {
-      AppMethodBeat.i(269413);
-      p.k(paramString1, "limitWording");
-      p.k(paramString2, "avatarWording");
-      p.k(paramm, "goAddUserPage");
-      paramString1 = (TextView)this.qZP.findViewById(au.f.user_reach_max_count_tip);
-      paramString2 = this.qZP.findViewById(au.f.create_new_user);
+      AppMethodBeat.i(322052);
+      s.u(paramString1, "limitWording");
+      s.u(paramString2, "avatarWording");
+      s.u(paramm, "goAddUserPage");
+      paramString1 = (TextView)this.ufO.findViewById(ba.f.user_reach_max_count_tip);
+      paramString2 = this.ufO.findViewById(ba.f.create_new_user);
       if ((paramBoolean1) || (paramBoolean2)) {
         if (!paramBoolean1)
         {
-          p.j(paramString1, "userReachMaxCountTip");
           paramString1.setVisibility(0);
-          p.j(paramString2, "createNewUser");
           paramString2.setVisibility(8);
         }
       }
       for (;;)
       {
-        paramString2.setOnClickListener((View.OnClickListener)new a(this, paramm));
-        AppMethodBeat.o(269413);
+        paramString2.setOnClickListener(new AppBrandUserInfoAuthorizeUI.b..ExternalSyntheticLambda0(paramm, this.ufO, this.eug));
+        AppMethodBeat.o(322052);
         return;
-        p.j(paramString1, "userReachMaxCountTip");
         paramString1.setVisibility(8);
-        p.j(paramString2, "createNewUser");
         paramString2.setVisibility(8);
         continue;
-        p.j(paramString1, "userReachMaxCountTip");
         paramString1.setVisibility(8);
-        p.j(paramString2, "createNewUser");
         paramString2.setVisibility(0);
       }
     }
     
-    public final void bx(List<h.a> paramList)
+    public final void di(List<k.a> paramList)
     {
-      AppMethodBeat.i(269415);
-      p.k(paramList, "items");
-      if (AppBrandUserInfoAuthorizeUI.a(this.qZP) == null) {
-        AppBrandUserInfoAuthorizeUI.a(this.qZP, (List)new ArrayList((Collection)paramList));
+      AppMethodBeat.i(322061);
+      s.u(paramList, "items");
+      if (AppBrandUserInfoAuthorizeUI.a(this.ufO) == null) {
+        AppBrandUserInfoAuthorizeUI.a(this.ufO, (List)new ArrayList((Collection)paramList));
       }
-      AppBrandUserInfoAuthorizeUI.b(this.qZP).clear();
-      AppBrandUserInfoAuthorizeUI.b(this.qZP).addAll((Collection)paramList);
-      paramList = AppBrandUserInfoAuthorizeUI.c(this.qZP).getAdapter();
-      if (paramList != null)
+      AppBrandUserInfoAuthorizeUI.b(this.ufO).clear();
+      AppBrandUserInfoAuthorizeUI.b(this.ufO).addAll((Collection)paramList);
+      RecyclerView localRecyclerView = AppBrandUserInfoAuthorizeUI.c(this.ufO);
+      paramList = localRecyclerView;
+      if (localRecyclerView == null)
       {
-        paramList.notifyDataSetChanged();
-        AppMethodBeat.o(269415);
-        return;
+        s.bIx("userInfoList");
+        paramList = null;
       }
-      AppMethodBeat.o(269415);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(AppBrandUserInfoAuthorizeUI.f paramf, m paramm) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(279065);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$5$updateAddNewAvatarEntry$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        paramView = paramm;
-        localObject = this.qZQ.qZP.getContext();
-        p.j(localObject, "context");
-        paramView.invoke(localObject, this.qZQ.cBD);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$5$updateAddNewAvatarEntry$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(279065);
+      paramList = paramList.getAdapter();
+      if (paramList != null) {
+        paramList.bZE.notifyChanged();
       }
+      AppMethodBeat.o(322061);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$6", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "onResult", "", "ret", "", "onStart", "plugin-appbrand-integration_release"})
-  public static final class g
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$7", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "onResult", "", "ret", "", "onStart", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
     implements a.a
   {
-    public final void bQw()
+    c(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
+    
+    private static final void c(DialogInterface paramDialogInterface) {}
+    
+    public final void cqs()
     {
-      AppMethodBeat.i(284622);
-      s locals = AppBrandUserInfoAuthorizeUI.d(this.qZP);
-      if (locals != null)
-      {
-        locals.dismiss();
-        AppMethodBeat.o(284622);
-        return;
+      AppMethodBeat.i(322056);
+      w localw = AppBrandUserInfoAuthorizeUI.d(this.ufO);
+      if (localw != null) {
+        localw.dismiss();
       }
-      AppMethodBeat.o(284622);
+      AppMethodBeat.o(322056);
     }
     
     public final void onStart()
     {
-      AppMethodBeat.i(284621);
-      if (AppBrandUserInfoAuthorizeUI.d(this.qZP) == null)
+      AppMethodBeat.i(322049);
+      if (AppBrandUserInfoAuthorizeUI.d(this.ufO) == null)
       {
-        localObject = this.qZP;
-        Context localContext = (Context)this.qZP.getContext();
-        this.qZP.getString(au.i.app_tip);
-        AppBrandUserInfoAuthorizeUI.a((AppBrandUserInfoAuthorizeUI)localObject, com.tencent.mm.ui.base.h.a(localContext, 3, this.qZP.getString(au.i.appbrand_setting_do_delete), false, (DialogInterface.OnCancelListener)AppBrandUserInfoAuthorizeUI.g.a.qZS));
+        localObject = this.ufO;
+        Context localContext = (Context)this.ufO.getContext();
+        this.ufO.getString(ba.i.app_tip);
+        AppBrandUserInfoAuthorizeUI.a((AppBrandUserInfoAuthorizeUI)localObject, com.tencent.mm.ui.base.k.a(localContext, 3, this.ufO.getString(ba.i.appbrand_setting_do_delete), false, AppBrandUserInfoAuthorizeUI.c..ExternalSyntheticLambda0.INSTANCE));
       }
-      Object localObject = AppBrandUserInfoAuthorizeUI.d(this.qZP);
-      if (localObject != null)
-      {
-        ((s)localObject).show();
-        AppMethodBeat.o(284621);
-        return;
+      Object localObject = AppBrandUserInfoAuthorizeUI.d(this.ufO);
+      if (localObject != null) {
+        ((w)localObject).show();
       }
-      AppMethodBeat.o(284621);
+      AppMethodBeat.o(322049);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "invoke"})
-  static final class k
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$8$1", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$OnListItemLongClickListener;", "onLongClick", "", "v", "Landroid/view/View;", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "index", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements k.d
   {
-    k(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI)
+    d(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
+    
+    public final void a(View paramView, k.a parama, int paramInt)
+    {
+      AppMethodBeat.i(322042);
+      s.u(paramView, "v");
+      s.u(parama, "item");
+      Object localObject = AppBrandUserInfoAuthorizeUI.g(this.ufO);
+      parama = (k.a)localObject;
+      if (localObject == null)
+      {
+        s.bIx("wxaUserInfoListOperationController");
+        parama = null;
+      }
+      localObject = TouchableLayout.agKp;
+      int i = TouchableLayout.jMn();
+      localObject = TouchableLayout.agKp;
+      parama.a(paramView, paramInt, i, TouchableLayout.jMo());
+      AppMethodBeat.o(322042);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/ui/AppBrandUserInfoAuthorizeUI$onCreate$8$2", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$ItemCheckedListener;", "onChecked", "", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements k.b
+  {
+    e(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI) {}
+    
+    public final void a(k.a parama)
+    {
+      AppMethodBeat.i(322046);
+      s.u(parama, "item");
+      com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b localb2 = AppBrandUserInfoAuthorizeUI.g(this.ufO);
+      com.tencent.mm.plugin.appbrand.jsapi.auth.entity.b localb1 = localb2;
+      if (localb2 == null)
+      {
+        s.bIx("wxaUserInfoListOperationController");
+        localb1 = null;
+      }
+      localb1.b(parama);
+      AppBrandUserInfoAuthorizeUI.a(this.ufO, parama.rFX);
+      AppMethodBeat.o(322046);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<no name provided>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class f
+    extends u
+    implements kotlin.g.a.a<ah>
+  {
+    f(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "invoke"})
-  static final class l
-    extends q
-    implements kotlin.g.a.a<x>
+  @Metadata(d1={""}, d2={"<no name provided>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class g
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    l(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI, boolean paramBoolean)
+    g(AppBrandUserInfoAuthorizeUI paramAppBrandUserInfoAuthorizeUI, boolean paramBoolean)
     {
       super();
     }
@@ -562,7 +591,7 @@ public final class AppBrandUserInfoAuthorizeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandUserInfoAuthorizeUI
  * JD-Core Version:    0.7.0.1
  */

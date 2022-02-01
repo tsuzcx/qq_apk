@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/z" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/kfa" android:background="@drawable/cyw" android:paddingLeft="@dimen/cb" android:paddingTop="14.0dip" android:paddingRight="@dimen/ct" android:paddingBottom="14.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/ce" android:layout_marginRight="@dimen/ce" android:layout_marginBottom="@dimen/ce">
-        <TextView android:textSize="@dimen/bd" android:textColor="@color/am" android:layout_gravity="center_vertical" android:id="@id/kjn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/juw" android:alpha="0.8" />
-        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/bd" android:textColor="@color/am" android:layout_gravity="center_vertical" android:id="@id/kjo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.5" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="13.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_filled_arrow" app:iconAlpha="0.5" app:iconColor="@color/am" />
-    </LinearLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/h_2" android:background="@color/z" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/kv4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/k1b" android:alpha="0.8" />
-    </FrameLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/acq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/jry" android:background="@color/acq" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/agj" android:cacheColorHint="#00000000" android:divider="@null" android:layout_weight="1.0" />
 </LinearLayout>

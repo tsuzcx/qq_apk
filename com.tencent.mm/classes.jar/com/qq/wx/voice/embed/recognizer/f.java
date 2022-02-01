@@ -128,7 +128,7 @@ final class f
   }
   
   /* Error */
-  private static void e(String paramString1, String paramString2, String paramString3)
+  private static void j(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
     //   0: ldc 123
@@ -353,7 +353,7 @@ final class f
     //   98	110	309	java/io/IOException
   }
   
-  public final int a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public final int b(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(76749);
     if (this.a)
@@ -377,17 +377,17 @@ final class f
       ((File)localObject).mkdirs();
     }
     if (!a("libwxvoiceembed.so", paramContext)) {
-      e("libwxvoiceembed.so", paramString1, paramContext);
+      j("libwxvoiceembed.so", paramString1, paramContext);
     }
     if (!a("libwxvoiceembed.bin", paramContext)) {
-      e("libwxvoiceembed.bin", paramString1, paramContext);
+      j("libwxvoiceembed.bin", paramString1, paramContext);
     }
     try
     {
       localObject = b("libwxvoiceembed.so", paramContext);
       String str = b("libwxvoiceembed.so", paramString1);
       if (((String)localObject).compareTo(str) != 0) {
-        e("libwxvoiceembed.so", paramString1, paramContext);
+        j("libwxvoiceembed.so", paramString1, paramContext);
       }
       if (!a((String)localObject, paramString2.split(";")))
       {
@@ -405,7 +405,7 @@ final class f
       paramString2 = b("libwxvoiceembed.bin", paramContext);
       localObject = b("libwxvoiceembed.bin", paramString1);
       if (paramString2.compareTo((String)localObject) != 0) {
-        e("libwxvoiceembed.bin", paramString1, paramContext);
+        j("libwxvoiceembed.bin", paramString1, paramContext);
       }
       if (!a(paramString2, paramString3.split(";")))
       {
@@ -424,7 +424,7 @@ final class f
     return 0;
   }
   
-  public final int d(String paramString1, String paramString2, String paramString3)
+  public final int i(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(76750);
     if (this.a)
@@ -478,7 +478,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.qq.wx.voice.embed.recognizer.f
  * JD-Core Version:    0.7.0.1
  */

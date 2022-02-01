@@ -4,138 +4,133 @@ import android.content.Context;
 import androidx.recyclerview.widget.GridLayoutManager.b;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitask.ui.minusscreen.view.g;
+import com.tencent.mm.plugin.multitask.ui.minusscreen.view.e;
 import com.tencent.mm.plugin.multitask.ui.minusscreen.view.h;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutConfig;", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/IMinusScreenLayoutConfig;", "multiTaskInfo", "", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "gridSpanCount", "", "(Ljava/util/List;I)V", "TAG", "", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getGridSpanCount", "()I", "getMultiTaskInfo", "()Ljava/util/List;", "viewListener", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getIfReachBottom", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewHolder", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "setAdapter", "", "setListener", "listener", "ui-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutConfig;", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/IMinusScreenLayoutConfig;", "multiTaskInfo", "", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/data/RVMultiTaskData;", "gridSpanCount", "", "(Ljava/util/List;I)V", "TAG", "", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getGridSpanCount", "()I", "getMultiTaskInfo", "()Ljava/util/List;", "viewListener", "Lcom/tencent/mm/plugin/multitask/ui/minusscreen/listener/MinusScreenViewItemListener;", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getIfReachBottom", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "setAdapter", "", "setListener", "listener", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   implements a
 {
-  private final int Amp;
-  private com.tencent.mm.plugin.multitask.ui.minusscreen.d.a FKm;
-  private final List<com.tencent.mm.plugin.multitask.ui.minusscreen.b.a> FKn;
+  private WxRecyclerAdapter<?> ALE;
+  private final int FMi;
+  private final List<com.tencent.mm.plugin.multitask.ui.minusscreen.b.a> LFB;
+  private com.tencent.mm.plugin.multitask.ui.minusscreen.d.a LFC;
   private final String TAG;
-  private WxRecyclerAdapter<?> xnR;
   
   private c(List<com.tencent.mm.plugin.multitask.ui.minusscreen.b.a> paramList)
   {
-    AppMethodBeat.i(196394);
-    this.FKn = paramList;
-    this.Amp = 2;
+    AppMethodBeat.i(304441);
+    this.LFB = paramList;
+    this.FMi = 2;
     this.TAG = "MicroMsg.MultiTask.MinusScreenGridLayoutConfig";
-    AppMethodBeat.o(196394);
+    AppMethodBeat.o(304441);
   }
   
-  public static com.tencent.mm.view.recyclerview.e<?> dNd()
+  public static com.tencent.mm.view.recyclerview.f<?> eGS()
   {
-    AppMethodBeat.i(196393);
+    AppMethodBeat.i(304460);
     if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
     {
-      localObject = (Throwable)new RuntimeException("type invalid");
-      AppMethodBeat.o(196393);
+      localObject = new RuntimeException("type invalid");
+      AppMethodBeat.o(304460);
       throw ((Throwable)localObject);
     }
     Log.printInfoStack("FinderGridLayoutConfig", "type invalid", new Object[0]);
-    Object localObject = (com.tencent.mm.view.recyclerview.e)new b();
-    AppMethodBeat.o(196393);
+    Object localObject = (com.tencent.mm.view.recyclerview.f)new b();
+    AppMethodBeat.o(304460);
     return localObject;
   }
   
   public final void a(com.tencent.mm.plugin.multitask.ui.minusscreen.d.a parama)
   {
-    this.FKm = parama;
+    this.LFC = parama;
   }
   
-  public final com.tencent.mm.view.recyclerview.f dtg()
+  public final com.tencent.mm.view.recyclerview.g ech()
   {
-    AppMethodBeat.i(196392);
-    com.tencent.mm.view.recyclerview.f localf = (com.tencent.mm.view.recyclerview.f)new a(this);
-    AppMethodBeat.o(196392);
-    return localf;
+    AppMethodBeat.i(304504);
+    com.tencent.mm.view.recyclerview.g localg = (com.tencent.mm.view.recyclerview.g)new a(this);
+    AppMethodBeat.o(304504);
+    return localg;
   }
   
-  public final RecyclerView.LayoutManager eW(Context paramContext)
+  public final RecyclerView.LayoutManager fT(Context paramContext)
   {
-    AppMethodBeat.i(196391);
-    p.k(paramContext, "context");
-    paramContext = new MinusScreenGridLayoutManager(paramContext, this.Amp);
-    paramContext.a((GridLayoutManager.b)new b());
+    AppMethodBeat.i(304491);
+    s.u(paramContext, "context");
+    paramContext = new MinusScreenGridLayoutManager(paramContext, this.FMi);
+    paramContext.bWq = ((GridLayoutManager.b)new b());
     paramContext.setItemPrefetchEnabled(true);
     paramContext = (RecyclerView.LayoutManager)paramContext;
-    AppMethodBeat.o(196391);
+    AppMethodBeat.o(304491);
     return paramContext;
   }
   
   public final void setAdapter(WxRecyclerAdapter<?> paramWxRecyclerAdapter)
   {
-    this.xnR = paramWxRecyclerAdapter;
+    this.ALE = paramWxRecyclerAdapter;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "ui-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements com.tencent.mm.view.recyclerview.f
+    implements com.tencent.mm.view.recyclerview.g
   {
-    public final com.tencent.mm.view.recyclerview.e<?> yx(int paramInt)
+    a(c paramc) {}
+    
+    public final com.tencent.mm.view.recyclerview.f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(197322);
+      AppMethodBeat.i(304335);
       switch (paramInt)
       {
       default: 
-        localObject = this.zJM;
-        if (localObject != null)
-        {
-          com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {}
+        localObject = this.Bbh;
+        if (localObject != null) {
+          break;
         }
-        else
-        {
-          localObject = c.dNd();
-        }
-        AppMethodBeat.o(197322);
+      }
+      for (Object localObject = null; localObject == null; localObject = (com.tencent.mm.view.recyclerview.f)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt)))
+      {
+        localObject = c.eGS();
+        AppMethodBeat.o(304335);
         return localObject;
-      case 2: 
-        localObject = (com.tencent.mm.view.recyclerview.e)new h(c.a(this.FKo));
-        AppMethodBeat.o(197322);
+        localObject = (com.tencent.mm.view.recyclerview.f)new h(c.a(this.LFD));
+        AppMethodBeat.o(304335);
         return localObject;
-      case 22: 
-        localObject = (com.tencent.mm.view.recyclerview.e)new g(c.a(this.FKo));
-        AppMethodBeat.o(197322);
+        localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.g(c.a(this.LFD));
+        AppMethodBeat.o(304335);
         return localObject;
-      case 4: 
-        localObject = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.b(c.a(this.FKo));
-        AppMethodBeat.o(197322);
+        localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.b(c.a(this.LFD));
+        AppMethodBeat.o(304335);
         return localObject;
-      case 1: 
-        localObject = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.a(c.a(this.FKo));
-        AppMethodBeat.o(197322);
+        localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.a(c.a(this.LFD));
+        AppMethodBeat.o(304335);
         return localObject;
-      case 5: 
-        localObject = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.c(c.a(this.FKo));
-        AppMethodBeat.o(197322);
+        localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.c(c.a(this.LFD));
+        AppMethodBeat.o(304335);
         return localObject;
-      case 3: 
-        localObject = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.e(c.a(this.FKo));
-        AppMethodBeat.o(197322);
+        localObject = (com.tencent.mm.view.recyclerview.f)new e(c.a(this.LFD));
+        AppMethodBeat.o(304335);
+        return localObject;
+        localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.f(c.a(this.LFD));
+        AppMethodBeat.o(304335);
         return localObject;
       }
-      Object localObject = (com.tencent.mm.view.recyclerview.e)new com.tencent.mm.plugin.multitask.ui.minusscreen.view.f(c.a(this.FKo));
-      AppMethodBeat.o(197322);
+      AppMethodBeat.o(304335);
       return localObject;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutConfig$getLayoutManager$1", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "ui-multitask_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/multitask/ui/minusscreen/MinusScreenGridLayoutConfig$getLayoutManager$1", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "ui-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends GridLayoutManager.b
   {
-    public final int cx(int paramInt)
+    public final int fJ(int paramInt)
     {
       if (paramInt == 0) {
         return 2;
@@ -146,7 +141,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.minusscreen.c
  * JD-Core Version:    0.7.0.1
  */

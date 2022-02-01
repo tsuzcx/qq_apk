@@ -5,12 +5,12 @@ import java.util.concurrent.FutureTask;
 public final class e<V>
   extends FutureTask<V>
 {
-  c QLP;
+  c XFo;
   
   public e(Runnable paramRunnable, V paramV, c paramc)
   {
     super(paramRunnable, paramV);
-    this.QLP = paramc;
+    this.XFo = paramc;
   }
 }
 

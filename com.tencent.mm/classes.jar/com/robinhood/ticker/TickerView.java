@@ -27,29 +27,29 @@ import java.util.Set;
 public class TickerView
   extends View
 {
-  private static final Interpolator ciZ;
+  private static final Interpolator dZy;
   private final ValueAnimator animator;
-  private int bDm;
-  private final f ciF;
-  protected final Paint ciV;
-  private final e cja;
-  private final Rect cjb;
-  private int cjc;
-  private int cjd;
-  private long cje;
-  private long cjf;
-  private Interpolator cjg;
-  private boolean cjh;
-  private String cji;
-  private int ek;
+  private int dZA;
+  private int dZB;
+  private long dZC;
+  private long dZD;
+  private Interpolator dZE;
+  private boolean dZF;
+  private String dZG;
+  private final f dZe;
+  protected final Paint dZu;
+  private final e dZz;
+  private int dwn;
+  private int fl;
   private String text;
   private int textColor;
   private float textSize;
+  private final Rect viewBounds;
   
   static
   {
     AppMethodBeat.i(39885);
-    ciZ = new AccelerateDecelerateInterpolator();
+    dZy = new AccelerateDecelerateInterpolator();
     AppMethodBeat.o(39885);
   }
   
@@ -57,11 +57,11 @@ public class TickerView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(39866);
-    this.ciV = new TextPaint(1);
-    this.ciF = new f(this.ciV);
-    this.cja = new e(this.ciF);
+    this.dZu = new TextPaint(1);
+    this.dZe = new f(this.dZu);
+    this.dZz = new e(this.dZe);
     this.animator = ValueAnimator.ofFloat(new float[] { 1.0F });
-    this.cjb = new Rect();
+    this.viewBounds = new Rect();
     a(paramContext, paramAttributeSet, 0);
     AppMethodBeat.o(39866);
   }
@@ -70,77 +70,13 @@ public class TickerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(39867);
-    this.ciV = new TextPaint(1);
-    this.ciF = new f(this.ciV);
-    this.cja = new e(this.ciF);
+    this.dZu = new TextPaint(1);
+    this.dZe = new f(this.dZu);
+    this.dZz = new e(this.dZe);
     this.animator = ValueAnimator.ofFloat(new float[] { 1.0F });
-    this.cjb = new Rect();
+    this.viewBounds = new Rect();
     a(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(39867);
-  }
-  
-  private boolean Kt()
-  {
-    return this.cja.ciE != null;
-  }
-  
-  private void Ku()
-  {
-    int j = 1;
-    AppMethodBeat.i(39877);
-    int i;
-    if (this.cjc != Kv())
-    {
-      i = 1;
-      if (this.cjd == Kw()) {
-        break label54;
-      }
-    }
-    for (;;)
-    {
-      if ((i != 0) || (j != 0)) {
-        requestLayout();
-      }
-      AppMethodBeat.o(39877);
-      return;
-      i = 0;
-      break;
-      label54:
-      j = 0;
-    }
-  }
-  
-  private int Kv()
-  {
-    AppMethodBeat.i(39878);
-    if (this.cjh) {}
-    for (float f = this.cja.Kp();; f = this.cja.Kr())
-    {
-      int i = (int)f;
-      int j = getPaddingLeft();
-      int k = getPaddingRight();
-      AppMethodBeat.o(39878);
-      return i + j + k;
-    }
-  }
-  
-  private int Kw()
-  {
-    AppMethodBeat.i(39879);
-    int i = (int)this.ciF.ciL;
-    int j = getPaddingTop();
-    int k = getPaddingBottom();
-    AppMethodBeat.o(39879);
-    return i + j + k;
-  }
-  
-  private void Kx()
-  {
-    AppMethodBeat.i(39880);
-    this.ciF.invalidate();
-    Ku();
-    invalidate();
-    AppMethodBeat.o(39880);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -156,17 +92,17 @@ public class TickerView
       paramContext.recycle();
     }
     localb.c(paramAttributeSet);
-    this.cjg = ciZ;
-    this.cjf = paramAttributeSet.getInt(b.a.TickerView_ticker_animationDuration, 350);
-    this.cjh = paramAttributeSet.getBoolean(b.a.TickerView_ticker_animateMeasurementChange, false);
-    this.ek = localb.ek;
+    this.dZE = dZy;
+    this.dZD = paramAttributeSet.getInt(b.a.TickerView_ticker_animationDuration, 350);
+    this.dZF = paramAttributeSet.getBoolean(b.a.TickerView_ticker_animateMeasurementChange, false);
+    this.fl = localb.fl;
     if (localb.shadowColor != 0) {
-      this.ciV.setShadowLayer(localb.shadowRadius, localb.bDp, localb.bDq, localb.shadowColor);
+      this.dZu.setShadowLayer(localb.shadowRadius, localb.dwq, localb.dwr, localb.shadowColor);
     }
-    if (localb.bDm != 0)
+    if (localb.dwn != 0)
     {
-      this.bDm = localb.bDm;
-      setTypeface(this.ciV.getTypeface());
+      this.dwn = localb.dwn;
+      setTypeface(this.dZu.getTypeface());
     }
     setTextColor(localb.textColor);
     setTextSize(localb.textSize);
@@ -192,8 +128,8 @@ public class TickerView
         setCharacterLists(new String[] { "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" });
       }
     }
-    this.ciF.ciY = a.cjk;
-    if (Kt()) {
+    this.dZe.dZx = TickerView.a.dZI;
+    if (aku()) {
       setText(localb.text, false);
     }
     for (;;)
@@ -223,37 +159,101 @@ public class TickerView
       });
       AppMethodBeat.o(39868);
       return;
-      this.ciF.ciY = a.cjl;
+      this.dZe.dZx = TickerView.a.dZJ;
       break;
-      this.ciF.ciY = a.cjm;
+      this.dZe.dZx = TickerView.a.dZK;
       break;
-      this.cji = localb.text;
+      this.dZG = localb.text;
     }
+  }
+  
+  private boolean aku()
+  {
+    return this.dZz.dZd != null;
+  }
+  
+  private void akv()
+  {
+    int j = 1;
+    AppMethodBeat.i(39877);
+    int i;
+    if (this.dZA != akw())
+    {
+      i = 1;
+      if (this.dZB == akx()) {
+        break label56;
+      }
+    }
+    for (;;)
+    {
+      if ((i != 0) || (j != 0)) {
+        requestLayout();
+      }
+      AppMethodBeat.o(39877);
+      return;
+      i = 0;
+      break;
+      label56:
+      j = 0;
+    }
+  }
+  
+  private int akw()
+  {
+    AppMethodBeat.i(39878);
+    if (this.dZF) {}
+    for (float f = this.dZz.akq();; f = this.dZz.aks())
+    {
+      int i = (int)f;
+      int j = getPaddingLeft();
+      int k = getPaddingRight();
+      AppMethodBeat.o(39878);
+      return i + j + k;
+    }
+  }
+  
+  private int akx()
+  {
+    AppMethodBeat.i(39879);
+    int i = (int)this.dZe.dZk;
+    int j = getPaddingTop();
+    int k = getPaddingBottom();
+    AppMethodBeat.o(39879);
+    return i + j + k;
+  }
+  
+  private void aky()
+  {
+    AppMethodBeat.i(39880);
+    this.dZe.invalidate();
+    akv();
+    invalidate();
+    AppMethodBeat.o(39880);
   }
   
   public boolean getAnimateMeasurementChange()
   {
-    return this.cjh;
+    return this.dZF;
   }
   
   public long getAnimationDelay()
   {
-    return this.cje;
+    return this.dZC;
   }
   
   public long getAnimationDuration()
   {
-    return this.cjf;
+    return this.dZD;
   }
   
   public Interpolator getAnimationInterpolator()
   {
-    return this.cjg;
+    return this.dZE;
   }
   
   public int getGravity()
   {
-    return this.ek;
+    return this.fl;
   }
   
   public String getText()
@@ -274,7 +274,7 @@ public class TickerView
   public Typeface getTypeface()
   {
     AppMethodBeat.i(39874);
-    Typeface localTypeface = this.ciV.getTypeface();
+    Typeface localTypeface = this.dZu.getTypeface();
     AppMethodBeat.o(39874);
     return localTypeface;
   }
@@ -284,10 +284,10 @@ public class TickerView
     AppMethodBeat.i(39883);
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    float f3 = this.cja.Kp();
-    float f4 = this.ciF.ciL;
-    int i = this.ek;
-    Object localObject = this.cjb;
+    float f3 = this.dZz.akq();
+    float f4 = this.dZe.dZk;
+    int i = this.fl;
+    Object localObject = this.viewBounds;
     int j = ((Rect)localObject).width();
     int k = ((Rect)localObject).height();
     float f1;
@@ -313,24 +313,24 @@ public class TickerView
         }
         paramCanvas.translate(f1, f2);
         paramCanvas.clipRect(0.0F, 0.0F, f3, f4);
-        paramCanvas.translate(0.0F, this.ciF.ciX);
-        localObject = this.cja;
-        Paint localPaint = this.ciV;
-        j = ((e)localObject).ciT.size();
+        paramCanvas.translate(0.0F, this.dZe.dZw);
+        localObject = this.dZz;
+        Paint localPaint = this.dZu;
+        j = ((e)localObject).dZs.size();
         i = 0;
         while (i < j)
         {
-          d locald = (d)((e)localObject).ciT.get(i);
-          if (d.a(paramCanvas, localPaint, locald.ciI, locald.ciJ, locald.ciK))
+          d locald = (d)((e)localObject).dZs.get(i);
+          if (d.a(paramCanvas, localPaint, locald.dZh, locald.dZi, locald.dZj))
           {
-            if (locald.ciJ >= 0) {
-              locald.ciG = locald.ciI[locald.ciJ];
+            if (locald.dZi >= 0) {
+              locald.dZf = locald.dZh[locald.dZi];
             }
-            locald.ciQ = locald.ciK;
+            locald.dZp = locald.dZj;
           }
-          d.a(paramCanvas, localPaint, locald.ciI, locald.ciJ + 1, locald.ciK - locald.ciL);
-          d.a(paramCanvas, localPaint, locald.ciI, locald.ciJ - 1, locald.ciK + locald.ciL);
-          paramCanvas.translate(locald.Kp(), 0.0F);
+          d.a(paramCanvas, localPaint, locald.dZh, locald.dZi + 1, locald.dZj - locald.dZk);
+          d.a(paramCanvas, localPaint, locald.dZh, locald.dZi - 1, locald.dZj + locald.dZk);
+          paramCanvas.translate(locald.akq(), 0.0F);
           i += 1;
         }
         paramCanvas.restore();
@@ -343,9 +343,9 @@ public class TickerView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(39881);
-    this.cjc = Kv();
-    this.cjd = Kw();
-    setMeasuredDimension(resolveSize(this.cjc, paramInt1), resolveSize(this.cjd, paramInt2));
+    this.dZA = akw();
+    this.dZB = akx();
+    setMeasuredDimension(resolveSize(this.dZA, paramInt1), resolveSize(this.dZB, paramInt2));
     AppMethodBeat.o(39881);
   }
   
@@ -353,52 +353,52 @@ public class TickerView
   {
     AppMethodBeat.i(39882);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.cjb.set(getPaddingLeft(), getPaddingTop(), paramInt1 - getPaddingRight(), paramInt2 - getPaddingBottom());
+    this.viewBounds.set(getPaddingLeft(), getPaddingTop(), paramInt1 - getPaddingRight(), paramInt2 - getPaddingBottom());
     AppMethodBeat.o(39882);
   }
   
   public void setAnimateMeasurementChange(boolean paramBoolean)
   {
-    this.cjh = paramBoolean;
+    this.dZF = paramBoolean;
   }
   
   public void setAnimationDelay(long paramLong)
   {
-    this.cje = paramLong;
+    this.dZC = paramLong;
   }
   
   public void setAnimationDuration(long paramLong)
   {
-    this.cjf = paramLong;
+    this.dZD = paramLong;
   }
   
   public void setAnimationInterpolator(Interpolator paramInterpolator)
   {
-    this.cjg = paramInterpolator;
+    this.dZE = paramInterpolator;
   }
   
   public void setCharacterLists(String... paramVarArgs)
   {
     AppMethodBeat.i(39869);
-    e locale = this.cja;
-    locale.ciE = new c[paramVarArgs.length];
+    e locale = this.dZz;
+    locale.dZd = new c[paramVarArgs.length];
     int i = 0;
     while (i < paramVarArgs.length)
     {
-      locale.ciE[i] = new c(paramVarArgs[i]);
+      locale.dZd[i] = new c(paramVarArgs[i]);
       i += 1;
     }
-    locale.ciU = new HashSet();
+    locale.dZt = new HashSet();
     i = 0;
     while (i < paramVarArgs.length)
     {
-      locale.ciU.addAll(locale.ciE[i].ciB.keySet());
+      locale.dZt.addAll(locale.dZd[i].dZa.keySet());
       i += 1;
     }
-    if (this.cji != null)
+    if (this.dZG != null)
     {
-      setText(this.cji, false);
-      this.cji = null;
+      setText(this.dZG, false);
+      this.dZG = null;
     }
     AppMethodBeat.o(39869);
   }
@@ -406,17 +406,17 @@ public class TickerView
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(39876);
-    if (this.ek != paramInt)
+    if (this.fl != paramInt)
     {
-      this.ek = paramInt;
+      this.fl = paramInt;
       invalidate();
     }
     AppMethodBeat.o(39876);
   }
   
-  public void setPreferredScrollingDirection(a parama)
+  public void setPreferredScrollingDirection(TickerView.a parama)
   {
-    this.ciF.ciY = parama;
+    this.dZe.dZx = parama;
   }
   
   public void setText(String paramString)
@@ -443,7 +443,7 @@ public class TickerView
     if (paramString == null) {}
     for (char[] arrayOfChar = new char[0];; arrayOfChar = paramString.toCharArray())
     {
-      this.cja.b(arrayOfChar);
+      this.dZz.b(arrayOfChar);
       setContentDescription(paramString);
       if (!paramBoolean) {
         break;
@@ -451,16 +451,16 @@ public class TickerView
       if (this.animator.isRunning()) {
         this.animator.cancel();
       }
-      this.animator.setStartDelay(this.cje);
-      this.animator.setDuration(this.cjf);
-      this.animator.setInterpolator(this.cjg);
+      this.animator.setStartDelay(this.dZC);
+      this.animator.setDuration(this.dZD);
+      this.animator.setInterpolator(this.dZE);
       this.animator.start();
       AppMethodBeat.o(39871);
       return;
     }
-    this.cja.setAnimationProgress(1.0F);
-    this.cja.onAnimationEnd();
-    Ku();
+    this.dZz.setAnimationProgress(1.0F);
+    this.dZz.onAnimationEnd();
+    akv();
     invalidate();
     AppMethodBeat.o(39871);
   }
@@ -471,7 +471,7 @@ public class TickerView
     if (this.textColor != paramInt)
     {
       this.textColor = paramInt;
-      this.ciV.setColor(this.textColor);
+      this.dZu.setColor(this.textColor);
       invalidate();
     }
     AppMethodBeat.o(39872);
@@ -483,8 +483,8 @@ public class TickerView
     if (this.textSize != paramFloat)
     {
       this.textSize = paramFloat;
-      this.ciV.setTextSize(paramFloat);
-      Kx();
+      this.dZu.setTextSize(paramFloat);
+      aky();
     }
     AppMethodBeat.o(39873);
   }
@@ -493,50 +493,35 @@ public class TickerView
   {
     AppMethodBeat.i(39875);
     Typeface localTypeface;
-    if (this.bDm == 3) {
+    if (this.dwn == 3) {
       localTypeface = Typeface.create(paramTypeface, 3);
     }
     for (;;)
     {
-      this.ciV.setTypeface(localTypeface);
-      Kx();
+      this.dZu.setTypeface(localTypeface);
+      aky();
       AppMethodBeat.o(39875);
       return;
-      if (this.bDm == 1)
+      if (this.dwn == 1)
       {
         localTypeface = Typeface.create(paramTypeface, 1);
       }
       else
       {
         localTypeface = paramTypeface;
-        if (this.bDm == 2) {
+        if (this.dwn == 2) {
           localTypeface = Typeface.create(paramTypeface, 2);
         }
       }
     }
   }
   
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(39863);
-      cjk = new a("ANY", 0);
-      cjl = new a("UP", 1);
-      cjm = new a("DOWN", 2);
-      cjn = new a[] { cjk, cjl, cjm };
-      AppMethodBeat.o(39863);
-    }
-    
-    private a() {}
-  }
-  
   final class b
   {
-    int bDm;
-    float bDp;
-    float bDq;
-    int ek;
+    int dwn;
+    float dwq;
+    float dwr;
+    int fl;
     int shadowColor;
     float shadowRadius;
     String text;
@@ -548,29 +533,29 @@ public class TickerView
       AppMethodBeat.i(39864);
       this.textColor = -16777216;
       this.textSize = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
-      this.ek = 8388611;
+      this.fl = 8388611;
       AppMethodBeat.o(39864);
     }
     
     final void c(TypedArray paramTypedArray)
     {
       AppMethodBeat.i(39865);
-      this.ek = paramTypedArray.getInt(b.a.TickerView_android_gravity, this.ek);
+      this.fl = paramTypedArray.getInt(b.a.TickerView_android_gravity, this.fl);
       this.shadowColor = paramTypedArray.getColor(b.a.TickerView_android_shadowColor, this.shadowColor);
-      this.bDp = paramTypedArray.getFloat(b.a.TickerView_android_shadowDx, this.bDp);
-      this.bDq = paramTypedArray.getFloat(b.a.TickerView_android_shadowDy, this.bDq);
+      this.dwq = paramTypedArray.getFloat(b.a.TickerView_android_shadowDx, this.dwq);
+      this.dwr = paramTypedArray.getFloat(b.a.TickerView_android_shadowDy, this.dwr);
       this.shadowRadius = paramTypedArray.getFloat(b.a.TickerView_android_shadowRadius, this.shadowRadius);
       this.text = paramTypedArray.getString(b.a.TickerView_android_text);
       this.textColor = paramTypedArray.getColor(b.a.TickerView_android_textColor, this.textColor);
       this.textSize = paramTypedArray.getDimension(b.a.TickerView_android_textSize, this.textSize);
-      this.bDm = paramTypedArray.getInt(b.a.TickerView_android_textStyle, this.bDm);
+      this.dwn = paramTypedArray.getInt(b.a.TickerView_android_textStyle, this.dwn);
       AppMethodBeat.o(39865);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.robinhood.ticker.TickerView
  * JD-Core Version:    0.7.0.1
  */

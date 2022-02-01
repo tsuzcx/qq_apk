@@ -14,7 +14,14 @@ public final class b
     this.mHandler = paramHandler;
   }
   
-  public final void c(Runnable paramRunnable, long paramLong)
+  public final void Fg()
+  {
+    AppMethodBeat.i(74914);
+    this.mHandler.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(74914);
+  }
+  
+  public final void d(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(74912);
     this.mHandler.postDelayed(paramRunnable, paramLong);
@@ -29,13 +36,6 @@ public final class b
     return localLooper;
   }
   
-  public final void hC()
-  {
-    AppMethodBeat.i(74914);
-    this.mHandler.removeCallbacksAndMessages(null);
-    AppMethodBeat.o(74914);
-  }
-  
   public final void post(Runnable paramRunnable)
   {
     AppMethodBeat.i(74911);
@@ -45,7 +45,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.h.b
  * JD-Core Version:    0.7.0.1
  */

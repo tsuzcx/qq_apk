@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -37,7 +37,7 @@ import org.apache.http.message.BasicNameValuePair;
 public final class b
   extends c
 {
-  public static final String Hlb;
+  public static final String NiO;
   private HttpClient client = null;
   private HttpRequestBase httpRequest = null;
   private HttpResponse httpResponse = null;
@@ -46,17 +46,17 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(250039);
-    Hlb = "weixin/" + d.kQZ + "/0x" + Integer.toHexString(d.RAD);
-    AppMethodBeat.o(250039);
+    AppMethodBeat.i(266926);
+    NiO = "weixin/" + d.nsC + "/0x" + Integer.toHexString(d.Yxh);
+    AppMethodBeat.o(266926);
   }
   
   private static void a(c.e parame, HttpRequestBase paramHttpRequestBase)
   {
-    AppMethodBeat.i(250038);
+    AppMethodBeat.i(266922);
     if (parame.params == null)
     {
-      AppMethodBeat.o(250038);
+      AppMethodBeat.o(266922);
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -67,12 +67,12 @@ public final class b
       localArrayList.add(new BasicNameValuePair(str, (String)parame.params.get(str)));
     }
     ((HttpPost)paramHttpRequestBase).setEntity(new UrlEncodedFormEntity(localArrayList, "utf-8"));
-    AppMethodBeat.o(250038);
+    AppMethodBeat.o(266922);
   }
   
   public final c.f a(String paramString1, String paramString2, c.e parame, c.d paramd)
   {
-    AppMethodBeat.i(250036);
+    AppMethodBeat.i(266931);
     Log.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + parame);
     for (;;)
     {
@@ -85,7 +85,7 @@ public final class b
           continue;
         }
         this.httpRequest = new HttpGet(d(paramString1, paramString2, parame.params));
-        this.httpRequest.addHeader("User-Agent", Hlb);
+        this.httpRequest.addHeader("User-Agent", NiO);
         System.setProperty("http.keepAlive", "false");
         this.httpRequest.addHeader("Accept-Charset", "utf-8");
         this.httpRequest.addHeader("Accept-Encoding", "compress;q=0.5, gzip;q=1.0");
@@ -130,13 +130,13 @@ public final class b
         if (i == 0) {
           continue;
         }
-        localObject2 = Hlc;
+        localObject2 = NiP;
         StringBuilder localStringBuilder = new StringBuilder();
         if (parame.params.get("default_attach_name") != null) {
           continue;
         }
         parame = Long.valueOf(System.currentTimeMillis());
-        parame = u.e(new q((String)localObject2, parame), true);
+        parame = y.e(new u((String)localObject2, parame), true);
         localObject2 = new byte[1024];
         if (this.isCancelled) {
           continue;
@@ -147,7 +147,7 @@ public final class b
         }
         parame.write((byte[])localObject2, 0, j);
         parame.flush();
-        paramd.fsk();
+        paramd.gDS();
         continue;
       }
       catch (UnknownHostException paramString1)
@@ -229,7 +229,7 @@ public final class b
           continue;
         }
         this.client.getConnectionManager().shutdown();
-        AppMethodBeat.o(250036);
+        AppMethodBeat.o(266931);
       }
       if (i == 0)
       {
@@ -243,7 +243,7 @@ public final class b
           if (this.client != null) {
             this.client.getConnectionManager().shutdown();
           }
-          AppMethodBeat.o(250036);
+          AppMethodBeat.o(266931);
           return paramString1;
           this.httpRequest = new HttpPost(d(paramString1, paramString2, null));
           continue;
@@ -259,7 +259,7 @@ public final class b
   
   public final void cancel()
   {
-    AppMethodBeat.i(250037);
+    AppMethodBeat.i(266934);
     Log.d("MicroMsg.HttpClientUtil", "cancel conection.");
     this.isCancelled = true;
     if ((this.httpRequest != null) && (!this.httpRequest.isAborted())) {
@@ -268,12 +268,12 @@ public final class b
     if (this.client != null) {
       this.client.getConnectionManager().shutdown();
     }
-    AppMethodBeat.o(250037);
+    AppMethodBeat.o(266934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b
  * JD-Core Version:    0.7.0.1
  */

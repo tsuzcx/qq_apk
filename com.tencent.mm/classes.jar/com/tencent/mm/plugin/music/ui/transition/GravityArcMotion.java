@@ -9,19 +9,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class GravityArcMotion
   extends ArcMotion
 {
-  private static final float apl;
-  private float apm = 0.0F;
-  private float apn = 0.0F;
-  private float apo = 70.0F;
-  private float apq = 0.0F;
-  private float apr = 0.0F;
-  private float aps = apl;
+  private static final float cdV;
+  private float cdW = 0.0F;
+  private float cdX = 0.0F;
+  private float cdY = 70.0F;
+  private float cdZ = 0.0F;
+  private float cea = 0.0F;
+  private float ceb = cdV;
   
   static
   {
-    AppMethodBeat.i(259761);
-    apl = (float)Math.tan(Math.toRadians(35.0D));
-    AppMethodBeat.o(259761);
+    AppMethodBeat.i(270936);
+    cdV = (float)Math.tan(Math.toRadians(35.0D));
+    AppMethodBeat.o(270936);
   }
   
   public GravityArcMotion() {}
@@ -31,53 +31,53 @@ public class GravityArcMotion
     super(paramContext, paramAttributeSet);
   }
   
-  private static float C(float paramFloat)
+  private static float aJ(float paramFloat)
   {
-    AppMethodBeat.i(259759);
+    AppMethodBeat.i(270932);
     if ((paramFloat < 0.0F) || (paramFloat > 90.0F))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Arc must be between 0 and 90 degrees");
-      AppMethodBeat.o(259759);
+      AppMethodBeat.o(270932);
       throw localIllegalArgumentException;
     }
     paramFloat = (float)Math.tan(Math.toRadians(paramFloat / 2.0F));
-    AppMethodBeat.o(259759);
+    AppMethodBeat.o(270932);
     return paramFloat;
   }
   
   public float getMaximumAngle()
   {
-    return this.apo;
+    return this.cdY;
   }
   
   public float getMinimumHorizontalAngle()
   {
-    return this.apm;
+    return this.cdW;
   }
   
   public float getMinimumVerticalAngle()
   {
-    return this.apn;
+    return this.cdX;
   }
   
   public Path getPath(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(259760);
+    AppMethodBeat.i(270952);
     Path localPath = new Path();
     localPath.moveTo(paramFloat1, paramFloat2);
     float f1;
     if (paramFloat2 == paramFloat4) {
       f1 = (paramFloat1 + paramFloat3) / 2.0F;
     }
-    for (float f2 = paramFloat2 + this.apq * Math.abs(paramFloat3 - paramFloat1) / 2.0F;; f2 = (paramFloat2 + paramFloat4) / 2.0F)
+    for (float f2 = paramFloat2 + this.cdZ * Math.abs(paramFloat3 - paramFloat1) / 2.0F;; f2 = (paramFloat2 + paramFloat4) / 2.0F)
     {
       localPath.cubicTo((paramFloat1 + f1) / 2.0F, (paramFloat2 + f2) / 2.0F, (f1 + paramFloat3) / 2.0F, (f2 + paramFloat4) / 2.0F, paramFloat3, paramFloat4);
-      AppMethodBeat.o(259760);
+      AppMethodBeat.o(270952);
       return localPath;
       if (paramFloat1 != paramFloat3) {
         break;
       }
-      f1 = paramFloat1 + this.apr * Math.abs(paramFloat4 - paramFloat2) / 2.0F;
+      f1 = paramFloat1 + this.cea * Math.abs(paramFloat4 - paramFloat2) / 2.0F;
     }
     f2 = paramFloat3 - paramFloat1;
     label146:
@@ -98,12 +98,12 @@ public class GravityArcMotion
         break label338;
       }
       f1 = paramFloat4 + f3 / (f1 * 2.0F);
-      f3 = this.apr * f4 * this.apr;
+      f3 = this.cea * f4 * this.cea;
       f2 = paramFloat3;
       f7 = f6 - f2;
       float f8 = f5 - f1;
       f7 = f8 * f8 + f7 * f7;
-      f4 = f4 * this.aps * this.aps;
+      f4 = f4 * this.ceb * this.ceb;
       if (f7 >= f3) {
         break label370;
       }
@@ -122,7 +122,7 @@ public class GravityArcMotion
         break label146;
         label338:
         f2 = paramFloat3 + f3 / (2.0F * f2);
-        f3 = this.apq * f4 * this.apq;
+        f3 = this.cdZ * f4 * this.cdZ;
         f1 = paramFloat4;
         break label224;
         label370:
@@ -143,31 +143,31 @@ public class GravityArcMotion
   
   public void setMaximumAngle(float paramFloat)
   {
-    AppMethodBeat.i(259758);
-    this.apo = paramFloat;
-    this.aps = C(paramFloat);
-    AppMethodBeat.o(259758);
+    AppMethodBeat.i(270948);
+    this.cdY = paramFloat;
+    this.ceb = aJ(paramFloat);
+    AppMethodBeat.o(270948);
   }
   
   public void setMinimumHorizontalAngle(float paramFloat)
   {
-    AppMethodBeat.i(259756);
-    this.apm = paramFloat;
-    this.apq = C(paramFloat);
-    AppMethodBeat.o(259756);
+    AppMethodBeat.i(270939);
+    this.cdW = paramFloat;
+    this.cdZ = aJ(paramFloat);
+    AppMethodBeat.o(270939);
   }
   
   public void setMinimumVerticalAngle(float paramFloat)
   {
-    AppMethodBeat.i(259757);
-    this.apn = paramFloat;
-    this.apr = C(paramFloat);
-    AppMethodBeat.o(259757);
+    AppMethodBeat.i(270943);
+    this.cdX = paramFloat;
+    this.cea = aJ(paramFloat);
+    AppMethodBeat.o(270943);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.transition.GravityArcMotion
  * JD-Core Version:    0.7.0.1
  */

@@ -2,104 +2,102 @@ package kotlin.l.b.a.b.n.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
-import kotlin.g.b.p;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
 public final class a
 {
-  public static final String bHt(String paramString)
+  public static final String bJw(String paramString)
   {
+    int j = 0;
     AppMethodBeat.i(61336);
-    p.k(paramString, "$this$decapitalizeSmartForCompiler");
+    s.u(paramString, "<this>");
     if (((CharSequence)paramString).length() == 0) {}
-    for (int i = 1; (i != 0) || (!iB(paramString, 0)); i = 0)
+    for (int i = 1; (i != 0) || (!jN(paramString, 0)); i = 0)
     {
       AppMethodBeat.o(61336);
       return paramString;
     }
-    if ((paramString.length() == 1) || (!iB(paramString, 1)))
+    if ((paramString.length() == 1) || (!jN(paramString, 1)))
     {
-      p.k(paramString, "$this$decapitalizeAsciiOnly");
-      if (((CharSequence)paramString).length() == 0)
+      s.u(paramString, "<this>");
+      if (((CharSequence)paramString).length() == 0) {}
+      for (i = 1; i == 0; i = 0)
       {
-        i = 1;
-        if (i == 0)
+        char c = paramString.charAt(0);
+        i = j;
+        if ('A' <= c)
         {
-          c = paramString.charAt(0);
-          if ('A' <= c) {
-            break label113;
+          i = j;
+          if (c <= 'Z') {
+            i = 1;
           }
         }
-      }
-      label113:
-      while ('Z' < c)
-      {
+        if (i == 0) {
+          break;
+        }
+        c = Character.toLowerCase(c);
+        paramString = paramString.substring(1);
+        s.s(paramString, "(this as java.lang.String).substring(startIndex)");
+        paramString = String.valueOf(c) + paramString;
         AppMethodBeat.o(61336);
         return paramString;
-        i = 0;
-        break;
       }
-      char c = Character.toLowerCase(c);
-      paramString = paramString.substring(1);
-      p.j(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = String.valueOf(c) + paramString;
       AppMethodBeat.o(61336);
       return paramString;
     }
-    Object localObject2 = ((Iterable)n.bd((CharSequence)paramString)).iterator();
-    Object localObject1;
-    if (((Iterator)localObject2).hasNext())
+    Iterator localIterator = ((Iterable)n.bs((CharSequence)paramString)).iterator();
+    if (localIterator.hasNext())
     {
-      localObject1 = ((Iterator)localObject2).next();
-      if (!iB(paramString, ((Number)localObject1).intValue()))
+      localObject = localIterator.next();
+      if (!jN(paramString, ((Number)localObject).intValue()))
       {
         i = 1;
-        label216:
+        label230:
         if (i == 0) {
-          break label300;
+          break label261;
         }
       }
     }
     for (;;)
     {
-      localObject1 = (Integer)localObject1;
-      if (localObject1 == null) {
-        break label307;
+      localObject = (Integer)localObject;
+      if (localObject != null) {
+        break label269;
       }
-      i = ((Integer)localObject1).intValue() - 1;
-      localObject1 = new StringBuilder();
-      localObject2 = paramString.substring(0, i);
-      p.j(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-      localObject1 = ((StringBuilder)localObject1).append(bHu((String)localObject2));
-      paramString = paramString.substring(i);
-      p.j(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = paramString;
+      paramString = bJx(paramString);
       AppMethodBeat.o(61336);
       return paramString;
       i = 0;
-      break label216;
-      label300:
+      break label230;
+      label261:
       break;
-      localObject1 = null;
+      localObject = null;
     }
-    label307:
-    paramString = bHu(paramString);
+    label269:
+    i = ((Integer)localObject).intValue() - 1;
+    Object localObject = paramString.substring(0, i);
+    s.s(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    localObject = bJx((String)localObject);
+    paramString = paramString.substring(i);
+    s.s(paramString, "(this as java.lang.String).substring(startIndex)");
+    paramString = s.X((String)localObject, paramString);
     AppMethodBeat.o(61336);
     return paramString;
   }
   
-  private static final String bHu(String paramString)
+  private static final String bJx(String paramString)
   {
     AppMethodBeat.i(61338);
-    paramString = bHw(paramString);
+    paramString = bJz(paramString);
     AppMethodBeat.o(61338);
     return paramString;
   }
   
-  public static final String bHv(String paramString)
+  public static final String bJy(String paramString)
   {
     AppMethodBeat.i(61339);
-    p.k(paramString, "$this$capitalizeAsciiOnly");
+    s.u(paramString, "<this>");
     if (((CharSequence)paramString).length() == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
@@ -107,64 +105,84 @@ public final class a
       return paramString;
     }
     char c = paramString.charAt(0);
-    if ('a' > c) {}
-    while ('z' < c)
+    if ('a' <= c) {
+      if (c <= 'z') {
+        i = 1;
+      }
+    }
+    while (i != 0)
     {
+      c = Character.toUpperCase(c);
+      paramString = paramString.substring(1);
+      s.s(paramString, "(this as java.lang.String).substring(startIndex)");
+      paramString = String.valueOf(c) + paramString;
       AppMethodBeat.o(61339);
       return paramString;
+      i = 0;
+      continue;
+      i = 0;
     }
-    c = Character.toUpperCase(c);
-    paramString = paramString.substring(1);
-    p.j(paramString, "(this as java.lang.String).substring(startIndex)");
-    paramString = String.valueOf(c) + paramString;
     AppMethodBeat.o(61339);
     return paramString;
   }
   
-  private static String bHw(String paramString)
+  public static final String bJz(String paramString)
   {
     AppMethodBeat.i(61340);
-    p.k(paramString, "$this$toLowerCaseAsciiOnly");
+    s.u(paramString, "<this>");
     StringBuilder localStringBuilder = new StringBuilder(paramString.length());
-    int j = paramString.length();
-    int i = 0;
-    if (i < j)
+    int k = paramString.length();
+    int j = 0;
+    if (j < k)
     {
-      char c = paramString.charAt(i);
-      if ('A' > c) {}
+      char c2 = paramString.charAt(j);
+      int i;
+      if ('A' <= c2) {
+        if (c2 <= 'Z') {
+          i = 1;
+        }
+      }
       for (;;)
       {
-        localStringBuilder.append(c);
-        i += 1;
-        break;
-        if ('Z' >= c) {
-          c = Character.toLowerCase(c);
+        char c1 = c2;
+        if (i != 0) {
+          c1 = Character.toLowerCase(c2);
         }
+        localStringBuilder.append(c1);
+        j += 1;
+        break;
+        i = 0;
+        continue;
+        i = 0;
       }
     }
     paramString = localStringBuilder.toString();
-    p.j(paramString, "builder.toString()");
+    s.s(paramString, "builder.toString()");
     AppMethodBeat.o(61340);
     return paramString;
   }
   
-  private static final boolean iB(String paramString, int paramInt)
+  private static final boolean jN(String paramString, int paramInt)
   {
     AppMethodBeat.i(61337);
     paramInt = paramString.charAt(paramInt);
-    if (65 > paramInt) {}
-    while (90 < paramInt)
+    if (65 <= paramInt)
     {
+      if (paramInt <= 90)
+      {
+        AppMethodBeat.o(61337);
+        return true;
+      }
       AppMethodBeat.o(61337);
       return false;
     }
     AppMethodBeat.o(61337);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     kotlin.l.b.a.b.n.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,15 @@ public final class d
   
   public final Activity getActivity()
   {
-    AppMethodBeat.i(243319);
+    AppMethodBeat.i(262559);
     Activity localActivity = (Activity)Objects.requireNonNull(super.getActivity());
-    AppMethodBeat.o(243319);
+    AppMethodBeat.o(262559);
     return localActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.d
  * JD-Core Version:    0.7.0.1
  */

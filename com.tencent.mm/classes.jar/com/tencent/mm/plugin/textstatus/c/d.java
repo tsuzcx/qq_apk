@@ -2,42 +2,43 @@ package com.tencent.mm.plugin.textstatus.c;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.c.e.a;
-import com.tencent.mm.loader.f.g;
-import kotlin.l;
+import com.tencent.mm.loader.b.e.a;
+import com.tencent.mm.loader.cache.memory.DefaultBitmapMemoryCache;
+import com.tencent.mm.loader.e.g;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusLoader;", "", "()V", "AVATAR_MAX_WIDTH", "", "defaultOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "imageLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "Landroid/graphics/Bitmap;", "instance", "Lcom/tencent/mm/loader/Loader;", "getInstance", "()Lcom/tencent/mm/loader/Loader;", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/download/TextStatusLoader;", "", "()V", "AVATAR_MAX_WIDTH", "", "defaultOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "imageLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Lcom/tencent/mm/plugin/textstatus/download/TextStatusImage;", "Landroid/graphics/Bitmap;", "instance", "Lcom/tencent/mm/loader/Loader;", "getInstance", "()Lcom/tencent/mm/loader/Loader;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
 {
-  public static final d MAU;
-  private static final com.tencent.mm.loader.d<b> zuJ;
-  private static final com.tencent.mm.loader.c.e zuk;
-  private static final com.tencent.mm.loader.c.d<b, Bitmap> zux;
+  private static final com.tencent.mm.loader.d<b> EyH;
+  private static final com.tencent.mm.loader.b.e Eyd;
+  private static final com.tencent.mm.loader.b.d<b, Bitmap> Eyq;
+  public static final d TkB;
   
   static
   {
-    AppMethodBeat.i(232326);
-    MAU = new d();
+    AppMethodBeat.i(289660);
+    TkB = new d();
     Object localObject = new e.a();
-    ((e.a)localObject).kOp = true;
-    ((e.a)localObject).kOo = true;
-    ((e.a)localObject).kOs = 1080;
-    ((e.a)localObject).kOt = 1080;
-    zuk = ((e.a)localObject).aRT();
-    zux = new com.tencent.mm.loader.c.a().a((com.tencent.mm.loader.b.a.d)new a()).a((com.tencent.mm.loader.d.b)new c()).a((g)new com.tencent.mm.loader.e.a()).a((com.tencent.mm.loader.b.b.e)new com.tencent.mm.loader.b.b.a()).b(zuk).aRE();
-    localObject = com.tencent.mm.loader.e.kMy;
-    zuJ = com.tencent.mm.loader.e.a(zux);
-    AppMethodBeat.o(232326);
+    ((e.a)localObject).nqd = true;
+    ((e.a)localObject).nqc = true;
+    ((e.a)localObject).nqg = 1080;
+    ((e.a)localObject).nqh = 1080;
+    Eyd = ((e.a)localObject).blI();
+    Eyq = new com.tencent.mm.loader.b.a().a((com.tencent.mm.loader.cache.a.d)new a()).a((com.tencent.mm.loader.c.b)new c()).a((g)new com.tencent.mm.loader.d.a()).a((com.tencent.mm.loader.cache.memory.d)new DefaultBitmapMemoryCache()).b(Eyd).blt();
+    localObject = com.tencent.mm.loader.e.noo;
+    EyH = com.tencent.mm.loader.e.a(Eyq);
+    AppMethodBeat.o(289660);
   }
   
-  public static com.tencent.mm.loader.d<b> dJe()
+  public static com.tencent.mm.loader.d<b> eCl()
   {
-    return zuJ;
+    return EyH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public final class h
   {
     AppMethodBeat.i(174917);
     paramc = super.b(paramc, paramJSONObject);
-    if ((Util.isNullOrNil(paramc.ppA)) && (Util.isNullOrNil(paramc.ppB)))
+    if ((Util.isNullOrNil(paramc.sup)) && (Util.isNullOrNil(paramc.suq)))
     {
       Log.i("MicroMsg.JsApiShareAppMessageToSpecificContactForFakeNativeDirectly", "openid and chatroom is null");
       paramc = new JsApiShareAppMessageBase.c("openid and chatroom is null");
@@ -29,7 +29,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.h
  * JD-Core Version:    0.7.0.1
  */

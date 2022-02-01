@@ -1,137 +1,404 @@
 package com.tencent.xweb.internal;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.util.e;
-import com.tencent.xweb.util.e.a;
-import org.xwalk.core.Log;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.WebView.WebViewKind;
+import com.tencent.xweb.a;
+import com.tencent.xweb.util.l;
+import java.util.ArrayList;
+import org.xwalk.core.NetworkUtil;
+import org.xwalk.core.XWalkSharedPreferenceUtil;
 
 public final class i
 {
-  public double QHt;
-  public double aaeW;
-  public double aaeX;
-  public double[] aaeY;
+  private static i aikf = null;
+  private int aijZ;
+  private long aika;
+  private ArrayList<Long> aikb;
+  private WebView.WebViewKind aikc;
+  private long aikd;
+  private boolean aike;
   
-  public i()
+  private i(WebView.WebViewKind paramWebViewKind, String paramString)
   {
-    AppMethodBeat.i(197667);
-    this.aaeY = new double[0];
-    this.QHt = 1.0D;
-    AppMethodBeat.o(197667);
+    AppMethodBeat.i(212583);
+    this.aijZ = 0;
+    this.aika = 0L;
+    this.aikb = new ArrayList();
+    this.aikd = 0L;
+    this.aike = false;
+    this.aikc = paramWebViewKind;
+    if ((this.aikc != WebView.WebViewKind.aifK) && (("tools".equals(paramString)) || ("toolsmp".equals(paramString))))
+    {
+      paramWebViewKind = a.keX().qM("enable_err_watchdog", "tools");
+      boolean bool1 = bool2;
+      if (paramWebViewKind != null)
+      {
+        bool1 = bool2;
+        if (paramWebViewKind.trim().toLowerCase().equals("true")) {
+          bool1 = true;
+        }
+      }
+      this.aike = bool1;
+      this.aikd = XWalkSharedPreferenceUtil.getSharedPreferencesForInitLog(this.aikc).getLong("SP_KEY_NEED_SWITCH_TIME", 0L);
+      if (Math.abs(System.currentTimeMillis() - this.aikd) < 43200000L)
+      {
+        this.aijZ = 3;
+        AppMethodBeat.o(212583);
+      }
+    }
+    else
+    {
+      this.aike = false;
+    }
+    AppMethodBeat.o(212583);
   }
   
-  public static i bFx(String paramString)
+  public static void b(WebView.WebViewKind paramWebViewKind, String paramString)
   {
-    AppMethodBeat.i(197693);
-    i locali = new i();
-    paramString = paramString.replace("(", "-").replace(")", "").split("-");
-    if ((paramString == null) || (paramString.length < 2))
+    try
     {
-      Log.e("getTimeRangeItem", "length error");
-      AppMethodBeat.o(197693);
-      return null;
+      AppMethodBeat.i(212577);
+      aikf = new i(paramWebViewKind, paramString);
+      AppMethodBeat.o(212577);
+      return;
     }
-    double d = e.bFD(paramString[0]);
-    if ((d < 0.0D) || (d > 24.0D))
+    finally
     {
-      Log.e("getTimeRangeItem", "bind.rangeFrom.timeStart parse error");
-      AppMethodBeat.o(197693);
-      return null;
+      paramWebViewKind = finally;
+      throw paramWebViewKind;
     }
-    locali.aaeW = d;
-    d = e.bFD(paramString[1]);
-    if ((d < 0.0D) || (d > 24.0D))
+  }
+  
+  public static i khf()
+  {
+    try
     {
-      Log.e("getTimeRangeItem", "bind.rangeFrom.timeEnd parse error");
-      AppMethodBeat.o(197693);
-      return null;
-    }
-    locali.aaeX = d;
-    if (paramString.length == 3)
-    {
-      paramString = e.bFB(paramString[2]);
-      if (!paramString.aafP)
-      {
-        Log.e("getTimeRangeItem", "scale parse error");
-        AppMethodBeat.o(197693);
-        return null;
+      AppMethodBeat.i(156969);
+      if (aikf == null) {
+        aikf = new i(WebView.getCurWebType(), WebView.getCurStrModule());
       }
-      d = paramString.doubleValue();
-      if ((d < 0.0D) || (d > 1000000.0000999999D))
-      {
-        Log.e("getTimeRangeItem", "scale parse value error");
-        AppMethodBeat.o(197693);
-        return null;
-      }
-      locali.QHt = d;
+      i locali = aikf;
+      AppMethodBeat.o(156969);
+      return locali;
     }
+    finally {}
+  }
+  
+  private int khh()
+  {
+    try
+    {
+      int i = this.aijZ;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void kgZ()
+  {
+    try
+    {
+      AppMethodBeat.i(156972);
+      this.aika = System.currentTimeMillis();
+      AppMethodBeat.o(156972);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  /* Error */
+  public final void kha()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 138
+    //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 47	com/tencent/xweb/internal/i:aike	Z
+    //   11: ifne +11 -> 22
+    //   14: ldc 138
+    //   16: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: return
+    //   22: aload_0
+    //   23: lconst_0
+    //   24: putfield 38	com/tencent/xweb/internal/i:aika	J
+    //   27: aload_0
+    //   28: getfield 43	com/tencent/xweb/internal/i:aikb	Ljava/util/ArrayList;
+    //   31: invokevirtual 141	java/util/ArrayList:clear	()V
+    //   34: aload_0
+    //   35: lconst_0
+    //   36: putfield 45	com/tencent/xweb/internal/i:aikd	J
+    //   39: aload_0
+    //   40: iconst_0
+    //   41: putfield 36	com/tencent/xweb/internal/i:aijZ	I
+    //   44: ldc 138
+    //   46: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: goto -30 -> 19
+    //   52: astore_1
+    //   53: aload_0
+    //   54: monitorexit
+    //   55: aload_1
+    //   56: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	57	0	this	i
+    //   52	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	52	finally
+    //   22	49	52	finally
+  }
+  
+  public final void khg()
+  {
     for (;;)
     {
-      AppMethodBeat.o(197693);
-      return locali;
-      if (paramString.length > 3)
+      try
       {
-        double[] arrayOfDouble = new double[paramString.length - 2];
-        int i = 0;
-        while (i + 2 < paramString.length)
+        AppMethodBeat.i(156973);
+        if (!this.aike)
         {
-          e.a locala = e.bFB(paramString[(i + 2)]);
-          if (!locala.aafP)
-          {
-            Log.e("getTimeRangeItem", "scales parse error");
-            AppMethodBeat.o(197693);
-            return null;
-          }
-          d = locala.doubleValue();
-          if ((d < 0.0D) || (d > 1000000.0000999999D))
-          {
-            Log.e("getTimeRangeItem", "scales parse value error");
-            AppMethodBeat.o(197693);
-            return null;
-          }
-          arrayOfDouble[i] = d;
-          i += 1;
+          AppMethodBeat.o(156973);
+          return;
         }
-        locali.aaeY = arrayOfDouble;
+        if (NetworkUtil.isNetworkAvailable()) {
+          this.aikb.add(Long.valueOf(System.currentTimeMillis()));
+        }
+        if (this.aikb.size() < 3) {
+          break label151;
+        }
+        long l = ((Long)this.aikb.get(this.aikb.size() - 3)).longValue();
+        if (Math.abs(System.currentTimeMillis() - l) >= 120000L) {
+          break label151;
+        }
+        this.aijZ = 1;
+        if ((this.aikc == WebView.WebViewKind.aifI) || (this.aikc == WebView.WebViewKind.aifL))
+        {
+          l.Br(220L);
+          AppMethodBeat.o(156973);
+          continue;
+        }
+        if (this.aikc != WebView.WebViewKind.aifJ) {
+          break label151;
+        }
       }
+      finally {}
+      l.Br(226L);
+      label151:
+      AppMethodBeat.o(156973);
     }
   }
   
-  public final double J(double paramDouble)
+  public final boolean khi()
   {
-    int i = 0;
-    if ((paramDouble < this.aaeW) || (paramDouble > this.aaeX)) {
-      return 0.0D;
-    }
-    if ((this.aaeY == null) || (this.aaeY.length == 0)) {
-      return this.QHt;
-    }
-    if (this.aaeY.length == 1) {
-      return this.aaeY[0];
-    }
-    if (paramDouble == this.aaeX) {
-      return this.aaeY[(this.aaeY.length - 1)];
-    }
-    int j = this.aaeY.length - 1;
-    double d1 = (this.aaeX - this.aaeW) / j;
-    paramDouble -= this.aaeW;
-    while (i < j)
+    boolean bool = true;
+    for (;;)
     {
-      double d3 = i + 1;
-      double d2 = i;
-      if (paramDouble <= d3 * d1)
+      try
       {
-        d3 = this.aaeY[i];
-        return (this.aaeY[(i + 1)] - this.aaeY[i]) * (paramDouble - d2 * d1) / d1 + d3;
+        AppMethodBeat.i(156974);
+        if ((khh() == 3) || (khh() == 2))
+        {
+          if ((this.aikc == WebView.WebViewKind.aifI) || (this.aikc == WebView.WebViewKind.aifL)) {
+            l.Br(222L);
+          }
+        }
+        else
+        {
+          if ((khh() != 1) && (khh() != 3) && (khh() != 2)) {
+            break label108;
+          }
+          AppMethodBeat.o(156974);
+          return bool;
+        }
+        if (this.aikc != WebView.WebViewKind.aifJ) {
+          continue;
+        }
+        l.Br(228L);
+        continue;
+        bool = false;
       }
-      i += 1;
+      finally {}
+      label108:
+      AppMethodBeat.o(156974);
     }
-    return this.aaeY[(this.aaeY.length - 1)];
+  }
+  
+  /* Error */
+  public final boolean khj()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 199
+    //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 193	com/tencent/xweb/internal/i:khh	()I
+    //   11: iconst_2
+    //   12: if_icmpne +14 -> 26
+    //   15: iconst_1
+    //   16: istore_1
+    //   17: ldc 199
+    //   19: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: iload_1
+    //   25: ireturn
+    //   26: iconst_0
+    //   27: istore_1
+    //   28: ldc 199
+    //   30: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: goto -11 -> 22
+    //   36: astore_2
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_2
+    //   40: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	41	0	this	i
+    //   16	12	1	bool	boolean
+    //   36	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	36	finally
+    //   17	22	36	finally
+    //   28	33	36	finally
+  }
+  
+  /* Error */
+  public final boolean khk()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 201
+    //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 193	com/tencent/xweb/internal/i:khh	()I
+    //   11: iconst_3
+    //   12: if_icmpne +14 -> 26
+    //   15: iconst_1
+    //   16: istore_1
+    //   17: ldc 201
+    //   19: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: iload_1
+    //   25: ireturn
+    //   26: iconst_0
+    //   27: istore_1
+    //   28: ldc 201
+    //   30: invokestatic 116	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: goto -11 -> 22
+    //   36: astore_2
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_2
+    //   40: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	41	0	this	i
+    //   16	12	1	bool	boolean
+    //   36	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	15	36	finally
+    //   17	22	36	finally
+    //   28	33	36	finally
+  }
+  
+  public final void khl()
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(156978);
+        if (!this.aike)
+        {
+          AppMethodBeat.o(156978);
+          return;
+        }
+        if (1 != this.aijZ)
+        {
+          AppMethodBeat.o(156978);
+          continue;
+        }
+        if (this.aikb.size() <= 0) {
+          break label197;
+        }
+      }
+      finally {}
+      long l = ((Long)this.aikb.get(this.aikb.size() - 1)).longValue();
+      if (Math.abs(System.currentTimeMillis() - l) < 60000L)
+      {
+        if ((this.aikc == WebView.WebViewKind.aifI) || (this.aikc == WebView.WebViewKind.aifL)) {
+          l.Br(221L);
+        }
+        for (;;)
+        {
+          this.aika = 0L;
+          this.aikb.clear();
+          this.aijZ = 2;
+          this.aikd = System.currentTimeMillis();
+          XWalkSharedPreferenceUtil.getSharedPreferencesForInitLog(this.aikc).edit().putLong("SP_KEY_NEED_SWITCH_TIME", this.aikd).commit();
+          AppMethodBeat.o(156978);
+          break;
+          if (this.aikc == WebView.WebViewKind.aifJ) {
+            l.Br(227L);
+          }
+        }
+      }
+      label197:
+      this.aijZ = 0;
+      AppMethodBeat.o(156978);
+    }
+  }
+  
+  public final void khm()
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(156979);
+        if (!this.aike)
+        {
+          AppMethodBeat.o(156979);
+          return;
+        }
+        if (1 != this.aijZ)
+        {
+          AppMethodBeat.o(156979);
+          continue;
+        }
+        this.aika = 0L;
+      }
+      finally {}
+      this.aikb.clear();
+      this.aijZ = 0;
+      AppMethodBeat.o(156979);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.internal.i
  * JD-Core Version:    0.7.0.1
  */

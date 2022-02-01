@@ -3,8 +3,6 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.b.a;
 
 final class RegByMobileRegAIOUI$13
@@ -14,14 +12,10 @@ final class RegByMobileRegAIOUI$13
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(218886);
-    paramDialogInterface = new StringBuilder();
-    h.aHE();
-    paramDialogInterface = paramDialogInterface.append(b.aGR()).append(",").append(this.nic.getClass().getName()).append(",RE200_200,");
-    h.aHE();
-    a.m(false, b.MN("RE200_200") + ",2");
-    a.bkD("RE200_100");
-    AppMethodBeat.o(218886);
+    AppMethodBeat.i(305164);
+    RegByMobileRegAIOUI.w(this.qfw);
+    a.TA("RE200_250");
+    AppMethodBeat.o(305164);
   }
 }
 

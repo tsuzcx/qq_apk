@@ -5,61 +5,61 @@ import java.util.List;
 
 public final class g
 {
-  b.q ayr = null;
-  f ays = null;
-  String ayt = null;
-  h.b ayu = null;
-  h.b ayv = null;
+  b.q cug = null;
+  f cuh = null;
+  String cui = null;
+  h.b cuj = null;
+  h.b cuk = null;
   String viewId = null;
   
-  public final g k(float paramFloat1, float paramFloat2)
+  public final boolean NK()
   {
-    AppMethodBeat.i(201805);
-    this.ayv = new h.b(0.0F, 0.0F, paramFloat1, paramFloat2);
-    AppMethodBeat.o(201805);
-    return this;
-  }
-  
-  public final boolean ob()
-  {
-    AppMethodBeat.i(201804);
-    if (this.ayr != null)
+    AppMethodBeat.i(207757);
+    if (this.cug != null)
     {
-      b.q localq = this.ayr;
-      if (localq.axF != null) {}
-      for (int i = localq.axF.size(); i > 0; i = 0)
+      b.q localq = this.cug;
+      if (localq.ctt != null) {}
+      for (int i = localq.ctt.size(); i > 0; i = 0)
       {
-        AppMethodBeat.o(201804);
+        AppMethodBeat.o(207757);
         return true;
       }
     }
-    AppMethodBeat.o(201804);
+    AppMethodBeat.o(207757);
     return false;
   }
   
-  public final boolean oc()
+  public final boolean NL()
   {
-    return this.ays != null;
+    return this.cuh != null;
   }
   
-  public final boolean od()
+  public final boolean NM()
   {
     return this.viewId != null;
   }
   
-  public final boolean oe()
+  public final boolean NN()
   {
-    return this.ayu != null;
+    return this.cuj != null;
   }
   
-  public final boolean of()
+  public final boolean NO()
   {
-    return this.ayt != null;
+    return this.cui != null;
+  }
+  
+  public final g T(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(207779);
+    this.cuk = new h.b(0.0F, 0.0F, paramFloat1, paramFloat2);
+    AppMethodBeat.o(207779);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.a.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,116 +1,201 @@
 package com.tencent.mm.plugin.finder.loader;
 
-import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.utils.av;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.loader.g.a.d;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.finder.utils.bm;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.dji;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/loader/FinderDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-finder_release"})
-public final class n
-  extends com.tencent.mm.loader.b.a.a<w>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/loader/FinderImageLoadData;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "Lcom/tencent/mm/loader/model/data/ILoaderDataMatrix;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "localThumbUrl", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;Ljava/lang/String;)V", "getLocalThumbUrl", "()Ljava/lang/String;", "setLocalThumbUrl", "(Ljava/lang/String;)V", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setMediaObj", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "getType", "()Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "setType", "(Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;)V", "getDecodeKey", "getMatrix", "Landroid/graphics/Matrix;", "width", "", "height", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class n
+  implements d, r
 {
-  public final boolean a(com.tencent.mm.loader.h.a.a<w> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public static final n.a ExD;
+  private dji ExE;
+  private v ExF;
+  public String ExG;
+  private String username;
+  
+  static
   {
-    AppMethodBeat.i(166312);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    AppMethodBeat.o(166312);
-    return true;
+    AppMethodBeat.i(331744);
+    ExD = new n.a((byte)0);
+    AppMethodBeat.o(331744);
   }
   
-  public final boolean a(com.tencent.mm.loader.h.a.a<w> parama, com.tencent.mm.loader.h.f<?> paramf, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
+  private n(dji paramdji, v paramv, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(166311);
-    p.k(parama, "url");
-    p.k(paramf, "httpResponse");
-    p.k(parame, "opts");
-    p.k(paramf1, "reaper");
-    AppMethodBeat.o(166311);
-    return true;
+    AppMethodBeat.i(331735);
+    String str = z.bAM();
+    s.s(str, "getUsernameFromUserInfo()");
+    this.username = str;
+    this.ExE = paramdji;
+    this.ExF = paramv;
+    this.username = paramString1;
+    this.ExG = paramString2;
+    if (paramdji.url == null) {
+      b.e("FinderImage", s.X("mediaObj.url == null ", Util.getStack()));
+    }
+    AppMethodBeat.o(331735);
   }
   
-  public final com.tencent.mm.loader.h.b.a b(com.tencent.mm.loader.h.a.a<w> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public String aUt()
   {
-    AppMethodBeat.i(166314);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    parame = c(parama, parame, paramf);
-    Log.v("Finder.Loader", "url " + parama + " and path " + parame + " fileret " + com.tencent.mm.vfs.u.agG(parame) + " type " + ((w)parama.aSr()).dIX());
-    if (com.tencent.mm.vfs.u.agG(parame))
+    AppMethodBeat.i(331765);
+    StringBuilder localStringBuilder = new StringBuilder("finder_image_").append(this.ExF.detail).append('_');
+    if (Util.isNullOrNil(this.ExE.mediaId)) {}
+    for (String str = MD5Util.getMD5String(Util.nullAs(this.ExE.url, ""));; str = this.ExE.mediaId)
     {
-      parama = com.tencent.mm.loader.h.b.a.Ov(parame);
-      AppMethodBeat.o(166314);
-      return parama;
+      str = str;
+      AppMethodBeat.o(331765);
+      return str;
     }
-    parame = parama.aSr();
-    if (((w)parame instanceof e)) {}
-    for (;;)
+  }
+  
+  public Matrix aj(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(331793);
+    if (this.ExF == v.FKZ)
     {
-      parame = (w)parame;
-      if (parame == null) {
-        break label265;
-      }
-      if (parame != null) {
-        break;
-      }
-      parama = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.loader.FinderAvatar");
-      AppMethodBeat.o(166314);
-      throw parama;
-      parame = null;
+      AppMethodBeat.o(331793);
+      return null;
     }
-    if (((e)parame).dJc())
+    Object localObject = this.ExE.aaPl;
+    if (localObject != null)
     {
-      paramf = (e)parame;
-      StringBuilder localStringBuilder = new StringBuilder();
-      av localav = av.AJz;
-      paramf = av.egl() + paramf.dJb();
-      if (com.tencent.mm.vfs.u.agG(paramf))
-      {
-        Log.v("Finder.Loader", "exist origin url disk cache, rawUrl " + ((e)parame).fXu + " and originUrlPath " + paramf);
-        parama = com.tencent.mm.loader.h.b.a.Ov(paramf);
-        AppMethodBeat.o(166314);
-        return parama;
-      }
+      Matrix localMatrix = new Matrix();
+      localObject = new Rect((int)((bbn)localObject).left, (int)((bbn)localObject).top, (int)((bbn)localObject).right, (int)((bbn)localObject).bottom);
+      paramFloat1 = Math.max(paramFloat1 / ((Rect)localObject).width(), paramFloat2 / ((Rect)localObject).height());
+      int i = -((Rect)localObject).left;
+      int j = -((Rect)localObject).top;
+      localMatrix.postScale(paramFloat1, paramFloat1);
+      localMatrix.postTranslate(i * paramFloat1, paramFloat1 * j);
+      AppMethodBeat.o(331793);
+      return localMatrix;
     }
-    label265:
-    if (((w)parama.aSr()).dIX() == com.tencent.mm.plugin.finder.storage.u.Alz)
-    {
-      if (com.tencent.mm.vfs.u.agG(((w)parama.aSr()).aJi()))
-      {
-        parama = com.tencent.mm.loader.h.b.a.Ov(((w)parama.aSr()).aJi());
-        AppMethodBeat.o(166314);
-        return parama;
-      }
-    }
-    else if (com.tencent.mm.vfs.u.agG(((w)parama.aSr()).getUrl()))
-    {
-      parama = com.tencent.mm.loader.h.b.a.Ov(((w)parama.aSr()).getUrl());
-      AppMethodBeat.o(166314);
-      return parama;
-    }
-    AppMethodBeat.o(166314);
+    AppMethodBeat.o(331793);
     return null;
   }
   
-  public final String c(com.tencent.mm.loader.h.a.a<w> parama, com.tencent.mm.loader.c.e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  public final v eCd()
   {
-    AppMethodBeat.i(166313);
-    p.k(parama, "url");
-    p.k(parame, "opts");
-    p.k(paramf, "reaper");
-    parama = ((w)parama.aSr()).getPath();
-    AppMethodBeat.o(166313);
-    return parama;
+    return this.ExF;
+  }
+  
+  public final String eCe()
+  {
+    String str2 = this.ExE.decodeKey;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public final String eCf()
+  {
+    String str2 = this.ExE.url_token;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  public String eCg()
+  {
+    AppMethodBeat.i(331783);
+    int i;
+    if (((CharSequence)this.ExG).length() == 0) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      String str = this.ExE.thumb_url_token;
+      if (str == null)
+      {
+        AppMethodBeat.o(331783);
+        return "";
+        i = 0;
+      }
+      else
+      {
+        AppMethodBeat.o(331783);
+        return str;
+      }
+    }
+    AppMethodBeat.o(331783);
+    return "";
+  }
+  
+  public String eCi()
+  {
+    AppMethodBeat.i(331778);
+    int i;
+    if (((CharSequence)this.ExG).length() == 0)
+    {
+      i = 1;
+      if (i == 0) {
+        break label64;
+      }
+      String str2 = this.ExE.thumbUrl;
+      str1 = str2;
+      if (str2 != null) {}
+    }
+    label64:
+    for (String str1 = "";; str1 = this.ExG)
+    {
+      s.s(str1, "if (localThumbUrl.isEmpt… ?: \"\" else localThumbUrl");
+      AppMethodBeat.o(331778);
+      return str1;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final dji eCk()
+  {
+    return this.ExE;
+  }
+  
+  public final String getPath()
+  {
+    AppMethodBeat.i(331758);
+    if (((CharSequence)this.ExG).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      localObject = bm.GlZ;
+      localObject = bm.a(this);
+      AppMethodBeat.o(331758);
+      return localObject;
+    }
+    Object localObject = this.ExG;
+    AppMethodBeat.o(331758);
+    return localObject;
+  }
+  
+  public final String getUrl()
+  {
+    String str2 = this.ExE.url;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,78 @@
 package com.tencent.mm.plugin.music.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.bb.e;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.aw.e;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.z;
+import com.tencent.mm.platformtools.w;
 import com.tencent.mm.plugin.music.model.e.a;
-import com.tencent.mm.protocal.protobuf.cay;
-import com.tencent.mm.protocal.protobuf.caz;
+import com.tencent.mm.protocal.protobuf.cqh;
+import com.tencent.mm.protocal.protobuf.cqi;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends q
+  extends p
   implements m
 {
-  public a FRG;
-  public caz FSa;
-  public boolean FSb;
-  public boolean FSc;
-  private i callback;
-  private d lKU;
+  public a LMB;
+  public cqi LMV;
+  public boolean LMW;
+  public boolean LMX;
+  private h callback;
+  private c oDw;
   
   public b(a parama, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(260301);
-    this.FRG = parama;
-    this.FSb = paramBoolean1;
-    this.FSc = paramBoolean2;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cay();
-    ((d.a)localObject).lBV = new caz();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getqqmusiclyric";
-    ((d.a)localObject).funcId = 520;
-    this.lKU = ((d.a)localObject).bgN();
-    localObject = (cay)d.b.b(this.lKU.lBR);
-    ((cay)localObject).lVI = parama.field_songId;
+    AppMethodBeat.i(271271);
+    this.LMB = parama;
+    this.LMW = paramBoolean1;
+    this.LMX = paramBoolean2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cqh();
+    ((c.a)localObject).otF = new cqi();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getqqmusiclyric";
+    ((c.a)localObject).funcId = 520;
+    this.oDw = ((c.a)localObject).bEF();
+    localObject = (cqh)c.b.b(this.oDw.otB);
+    ((cqh)localObject).oOK = parama.field_songId;
     if (parama.field_songWebUrl != null) {
-      ((cay)localObject).Tjk = z.aN(parama.field_songWebUrl.getBytes());
+      ((cqh)localObject).aawN = w.aN(parama.field_songWebUrl.getBytes());
     }
     if (parama.field_songMId != null) {
-      ((cay)localObject).Tjn = z.aN(parama.field_songMId.getBytes());
+      ((cqh)localObject).aawQ = w.aN(parama.field_songMId.getBytes());
     }
-    if (e.bnH())
+    if (e.bLu())
     {
       i = 0;
-      ((cay)localObject).Tjl = i;
-      if (!e.bnG()) {
+      ((cqh)localObject).aawO = i;
+      if (!e.bLt()) {
         break label243;
       }
     }
     label243:
     for (int i = 1;; i = 0)
     {
-      ((cay)localObject).Tjm = i;
-      Log.i("MicroMsg.Music.NetSceneGetQQMusicLyric", "songId=%d, url=%s IsOutsideGFW=%d ShakeMusicGlobalSwitch=%d", new Object[] { Integer.valueOf(parama.field_songId), parama.field_songWebUrl, Integer.valueOf(((cay)localObject).Tjl), Integer.valueOf(((cay)localObject).Tjm) });
-      AppMethodBeat.o(260301);
+      ((cqh)localObject).aawP = i;
+      Log.i("MicroMsg.Music.NetSceneGetQQMusicLyric", "songId=%d, url=%s IsOutsideGFW=%d ShakeMusicGlobalSwitch=%d", new Object[] { Integer.valueOf(parama.field_songId), parama.field_songWebUrl, Integer.valueOf(((cqh)localObject).aawO), Integer.valueOf(((cqh)localObject).aawP) });
+      AppMethodBeat.o(271271);
       return;
       i = 1;
       break;
     }
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(63098);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lKU, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
     AppMethodBeat.o(63098);
     return i;
   }
@@ -92,14 +92,14 @@ public final class b
       AppMethodBeat.o(63097);
       return;
     }
-    this.FSa = ((caz)d.c.b(this.lKU.lBS));
+    this.LMV = ((cqi)c.c.b(this.oDw.otC));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(63097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.b.b
  * JD-Core Version:    0.7.0.1
  */

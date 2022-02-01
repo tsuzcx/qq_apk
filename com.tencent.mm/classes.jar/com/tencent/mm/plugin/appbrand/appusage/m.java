@@ -1,65 +1,124 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.q;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.ad;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
+@Deprecated
 public final class m
-  extends q
+  extends MAutoStorage<l>
 {
-  public static final String[] nDP;
-  public static final IAutoDBItem.MAutoDBInfo nFK;
+  public static final String[] nVW;
+  private final ISQLiteDatabase qFJ;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(44503);
-    nDP = new String[] { "username", "versionType" };
-    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[3];
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[4];
-    Object localObject2 = new StringBuilder();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "username";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("username", "TEXT");
-    ((StringBuilder)localObject2).append(" username TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "versionType";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("versionType", "INTEGER");
-    ((StringBuilder)localObject2).append(" versionType INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "updateTime";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("updateTime", "LONG");
-    ((StringBuilder)localObject2).append(" updateTime LONG");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "rowid";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    nFK = (IAutoDBItem.MAutoDBInfo)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = nDP;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = nFK;
-    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(44503);
+    AppMethodBeat.i(44511);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(l.DB_INFO, "AppBrandLocalUsageRecord") };
+    AppMethodBeat.o(44511);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public m(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return null;
+    super(paramISQLiteDatabase, l.DB_INFO, "AppBrandLocalUsageRecord", l.INDEX_CREATE);
+    this.qFJ = paramISQLiteDatabase;
+  }
+  
+  private boolean a(l paraml, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(44509);
+    if (paramBoolean)
+    {
+      paramBoolean = super.delete(paraml, paramBoolean, paramVarArgs);
+      AppMethodBeat.o(44509);
+      return paramBoolean;
+    }
+    if (!get(paraml, paramVarArgs))
+    {
+      AppMethodBeat.o(44509);
+      return false;
+    }
+    super.delete(paraml, paramBoolean, paramVarArgs);
+    if (!get(paraml, paramVarArgs))
+    {
+      AppMethodBeat.o(44509);
+      return true;
+    }
+    AppMethodBeat.o(44509);
+    return false;
+  }
+  
+  public final boolean a(String paramString, int paramInt, m.a parama)
+  {
+    AppMethodBeat.i(44507);
+    Log.i("MicroMsg.AppBrandLocalUsageStorage", "addUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(44507);
+      return false;
+    }
+    parama = new l();
+    parama.field_username = paramString;
+    parama.field_versionType = paramInt;
+    if (super.get(parama, l.qDJ))
+    {
+      parama.field_updateTime = Util.nowSecond();
+      bool = super.update(parama.systemRowid, parama, false);
+      if (bool) {
+        doNotify("single", 3, null);
+      }
+      AppMethodBeat.o(44507);
+      return bool;
+    }
+    parama.field_updateTime = Util.nowSecond();
+    super.insertNotify(parama, false);
+    boolean bool = super.get(parama, l.qDJ);
+    if (bool)
+    {
+      paramInt = AppBrandGlobalSystemConfig.ckD().qWU;
+      paramString = "delete from AppBrandLocalUsageRecord where rowid not in ( select rowid from AppBrandLocalUsageRecord order by updateTime desc  limit " + paramInt + " offset 0)";
+      this.qFJ.execSQL("AppBrandLocalUsageRecord", paramString);
+      doNotify("single", 2, null);
+    }
+    AppMethodBeat.o(44507);
+    return bool;
+  }
+  
+  final boolean b(String paramString, int paramInt, m.a parama)
+  {
+    AppMethodBeat.i(44508);
+    Log.i("MicroMsg.AppBrandLocalUsageStorage", "removeUsage, username %s, type %d, scene %s", new Object[] { paramString, Integer.valueOf(paramInt), parama });
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(44508);
+      return false;
+    }
+    l locall = new l();
+    locall.field_username = paramString;
+    locall.field_versionType = paramInt;
+    boolean bool = a(locall, false, l.qDJ);
+    if (bool) {
+      doNotify("single", 5, null);
+    }
+    if ((bool) && (m.a.qOQ == parama)) {
+      n.cfk().ca(paramString, paramInt);
+    }
+    if ((bool) && (m.a.qOQ == parama)) {
+      i.cJV().F(ad.XJ(paramString), paramInt);
+    }
+    AppMethodBeat.o(44508);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.m
  * JD-Core Version:    0.7.0.1
  */

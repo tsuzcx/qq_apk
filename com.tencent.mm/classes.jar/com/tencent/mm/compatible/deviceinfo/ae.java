@@ -2,23 +2,23 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class ae
 {
-  public boolean fXK = false;
-  public int juE = 0;
-  boolean juF = false;
+  public boolean idL = false;
+  public int lXV = 0;
+  boolean lXW = false;
   
-  public final void avr()
+  public final void aPL()
   {
-    this.juF = true;
+    this.lXW = true;
   }
   
-  public final void dT(boolean paramBoolean)
+  public final void eF(boolean paramBoolean)
   {
-    this.fXK = paramBoolean;
+    this.idL = paramBoolean;
   }
   
-  public final void qT(int paramInt)
+  public final void qZ(int paramInt)
   {
-    this.juE = paramInt;
+    this.lXV = paramInt;
   }
 }
 

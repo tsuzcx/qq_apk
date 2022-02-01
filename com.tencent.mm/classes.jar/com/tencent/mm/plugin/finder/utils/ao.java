@@ -1,493 +1,507 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import com.tencent.e.i;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.protocal.protobuf.cro;
-import com.tencent.mm.protocal.protobuf.emk;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.view.q;
+import com.tencent.mm.plugin.findersdk.a.bw;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.djg;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Lcom.tencent.mm.protocal.protobuf.djg;>;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.a.m;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LiveAnchorFlowStats;", "", "()V", "KEY_ID", "", "TAG", "", "flow", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/StatFlowTag;", "Lkotlin/collections/ArrayList;", "getFlow", "()Ljava/util/ArrayList;", "historyLog", "getHistoryLog", "()Ljava/lang/String;", "setHistoryLog", "(Ljava/lang/String;)V", "end", "", "delay", "", "logStage", "reportLinkAcceptCloseFail", "reportLinkAcceptCloseSuc", "reportLinkAcceptSdkSuc", "reportLinkAcceptSvrFail", "reportLinkAcceptSvrSuc", "tag", "stage", "extra", "Lcom/tencent/mm/protobuf/ByteString;", "isStart", "", "isEnd", "PercentConversion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/utils/FinderStyleUtil;", "", "()V", "AT", "", "getAT", "()Ljava/lang/String;", "FINDER", "getFINDER", "STYLE", "getSTYLE", "TAG", "TAG_AT_END", "TAG_AT_START", "TAG_CDATA", "TAG_FINDER_END", "TAG_FINDER_START", "TAG_STYLE_END", "TAG_STYLE_START", "TAG_TOPIC", "TAG_VALUE_COUNT", "TAG_VALUE_END", "TAG_VALUE_START", "TAG_VERSION", "TOPIC", "getTOPIC", "VALUE", "getVALUE", "VALUE_COUNT", "getVALUE_COUNT", "VERSION", "getVERSION", "linkColor", "", "version", "getVersion", "()I", "appendNormalValue", "", "xml", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "count", "appendStyleAt", "atIndexs", "appendTopicValue", "appendVersionValue", "getDescXml", "curDesc", "atContactMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderAtContact;", "Lkotlin/collections/HashMap;", "handleAt", "desc", "Landroid/text/SpannableString;", "atContactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/utils/FinderAtUtil$AtStringInfo;", "onAtClick", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "username", "handleTopic", "feedId", "", "topicInfoList", "", "Lcom/tencent/mm/plugin/finder/utils/TopicStringInfo;", "onTopicClick", "Lkotlin/Function2;", "topic", "Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "clickExtra", "parseDefatultDesc", "defaultDesc", "parseXml", "atFinderContactList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "mentionedUserList", "Lcom/tencent/mm/protocal/protobuf/FinderMentionedUser;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ao
 {
-  private static final ArrayList<emk> AGU;
-  private static String AGV;
-  private static final long AGW = 1552L;
-  public static final ao AGX;
-  private static final String TAG = "Finder.LiveAnchorFlowStats";
+  public static final ao GhZ;
+  public static final String Gia;
+  public static final String Gib;
+  public static final String Gic;
+  public static final String Gid;
+  public static final String Gie;
+  private static final String Gif;
+  private static final String Gig;
+  private static final String Gih;
+  private static final String Gii;
+  private static final String Gij;
+  private static final String Gik;
+  private static final String Gil;
+  private static final String Gim;
+  private static final String Gin;
+  private static final String Gio;
+  private static final String Gip;
+  private static final String Giq;
+  public static final String TAG;
+  public static final String VALUE;
+  public static final String VERSION;
+  private static final int linkColor;
+  private static final int version;
   
   static
   {
-    AppMethodBeat.i(223420);
-    AGX = new ao();
-    TAG = "Finder.LiveAnchorFlowStats";
-    AGU = new ArrayList();
-    AGV = "";
-    AGW = 1552L;
-    AppMethodBeat.o(223420);
+    AppMethodBeat.i(333090);
+    GhZ = new ao();
+    TAG = "Finder.FinderStyleUtil";
+    version = 1;
+    Gia = "finder";
+    Gib = "style";
+    Gic = "valuecount";
+    VALUE = "value";
+    Gid = "topic";
+    Gie = "at";
+    VERSION = "version";
+    Gif = "<" + Gia + '>';
+    Gig = "</" + Gia + '>';
+    Gih = "<" + Gib + '>';
+    Gii = "</" + Gib + '>';
+    Gij = "<" + Gie + '>';
+    Gik = "</" + Gie + '>';
+    Gil = "<![CDATA[%s]]>";
+    Gim = "<" + Gic + ">%d</" + Gic + '>';
+    Gin = "<" + VALUE + "%d>";
+    Gio = "</" + VALUE + "%d>";
+    Gip = "<" + Gid + ">%s</" + Gid + '>';
+    Giq = "<" + VERSION + ">%d</" + VERSION + '>';
+    linkColor = Color.parseColor("#DEE9FF");
+    AppMethodBeat.o(333090);
   }
   
-  private void b(String paramString, b paramb, boolean paramBoolean1, boolean paramBoolean2)
+  public static SpannableString a(String paramString, SpannableString paramSpannableString, List<bo> paramList, m<? super String, ? super f, ah> paramm, final long paramLong)
   {
-    for (;;)
+    AppMethodBeat.i(333077);
+    if (Util.isNullOrNil(paramString))
     {
+      paramString = as.GiG;
+      paramString = paramSpannableString.toString();
+      s.s(paramString, "defaultDesc.toString()");
+      paramString = ((Iterable)as.a(paramString, new ArrayList(), null)).iterator();
       Object localObject;
-      ap.a locala;
-      int i;
-      try
+      while (paramString.hasNext())
       {
-        AppMethodBeat.i(223403);
-        p.k(paramString, "stage");
-        if (paramBoolean1)
-        {
-          AGU.clear();
-          localObject = new emk();
-          ((emk)localObject).id = "";
-          ((emk)localObject).BHO = paramString;
-          ((emk)localObject).GhA = cm.bfC();
-          if (!paramBoolean1) {
-            break label321;
-          }
-          locala = ap.AIh;
-          i = ap.efd();
-          ((emk)localObject).type = i;
-          ((emk)localObject).UoX = paramb;
-          paramb = a.AHm;
-          p.k(localObject, "tag");
-          paramb = ((emk)localObject).BHO;
-          locala = ap.AIh;
-          if (!p.h(paramb, ap.efv().name)) {
-            break label339;
-          }
-          a.eeV();
-          Log.i(TAG, "reportPost");
-          AGU.add(localObject);
-          Log.i(TAG, "tag, stage:" + paramString + ", isStart:" + paramBoolean1 + ", isEnd:" + paramBoolean2);
-          if (paramBoolean2) {
-            com.tencent.e.h.ZvG.o((Runnable)b.AHn, 0L);
-          }
-          AppMethodBeat.o(223403);
-          return;
+        localObject = (bo)paramString.next();
+        int j = ((bo)localObject).start - 1;
+        int i = j;
+        if (j < 0) {
+          i = 0;
         }
-        if (AGU.isEmpty()) {
-          break label313;
-        }
-        localObject = (emk)j.lp((List)AGU);
-        if (localObject != null)
-        {
-          i = ((emk)localObject).type;
-          localObject = ap.AIh;
-          if (i != ap.efd()) {
-            break label313;
-          }
-          localObject = (emk)j.lr((List)AGU);
-          if (localObject == null) {
-            continue;
-          }
-          i = ((emk)localObject).type;
-          localObject = ap.AIh;
-          if (i != ap.efe()) {
-            continue;
-          }
-          AppMethodBeat.o(223403);
-          continue;
-        }
-        AppMethodBeat.o(223403);
+        paramList.add(new bo(i, ((bo)localObject).count + 1, s.X("#", ((bo)localObject).topic)));
       }
-      finally {}
-      continue;
-      label313:
-      AppMethodBeat.o(223403);
-      continue;
-      label321:
-      if (paramBoolean2)
+      paramString = SpannableString.valueOf((CharSequence)new SpannableStringBuilder((CharSequence)p.b(MMApplicationContext.getContext(), (CharSequence)paramSpannableString.toString())));
+      paramSpannableString = ((Iterable)paramList).iterator();
+      while (paramSpannableString.hasNext())
       {
-        locala = ap.AIh;
-        i = ap.efe();
-        continue;
-        label339:
-        locala = ap.AIh;
-        if (p.h(paramb, ap.efF().name))
+        paramList = (bo)paramSpannableString.next();
+        localObject = paramList.topic;
+        if (localObject == null)
         {
-          a.eeW();
-          Log.i(TAG, "reportCancel");
+          paramString = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(333077);
+          throw paramString;
         }
-        else
-        {
-          locala = ap.AIh;
-          if (p.h(paramb, ap.efx().name))
-          {
-            a.eeX();
-            a.a((emk)localObject);
-            Log.i(TAG, "reportFailedCreateLive");
-          }
-          else
-          {
-            locala = ap.AIh;
-            if (p.h(paramb, ap.efA().name))
-            {
-              a.eeY();
-              a.a((emk)localObject);
-              Log.i(TAG, "reportFailedJoinLive");
-            }
-            else
-            {
-              locala = ap.AIh;
-              if (p.h(paramb, ap.efC().name))
-              {
-                a.eeZ();
-                Log.i(TAG, "reportFailedEnterRoom");
-              }
-              else
-              {
-                locala = ap.AIh;
-                if (p.h(paramb, ap.efE().name))
-                {
-                  a.efa();
-                  Log.i(TAG, "reportFailedShareFeed");
-                }
-                else
-                {
-                  locala = ap.AIh;
-                  if (p.h(paramb, ap.efy().name))
-                  {
-                    a.efb();
-                    Log.i(TAG, "reportRecheckRealName");
-                  }
-                  else
-                  {
-                    locala = ap.AIh;
-                    if (p.h(paramb, ap.efG().name))
-                    {
-                      a.efc();
-                      Log.i(TAG, "reportSuccLive");
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        localObject = ((String)localObject).substring(1);
+        s.s(localObject, "(this as java.lang.String).substring(startIndex)");
+        paramString.setSpan(new q((String)localObject, linkColor, MMApplicationContext.getContext().getResources().getColor(e.b.BW_0_Alpha_0_2), true, (b)new c(paramm, paramLong)), paramList.start, paramList.start + paramList.count, 17);
       }
-      else
-      {
-        i = 0;
-      }
+      s.s(paramString, "ret");
+      AppMethodBeat.o(333077);
+      return paramString;
     }
+    AppMethodBeat.o(333077);
+    return paramSpannableString;
   }
   
-  public static ArrayList<emk> eeN()
+  public static void a(final long paramLong, SpannableString paramSpannableString, List<bo> paramList, m<? super String, ? super f, ah> paramm)
   {
-    return AGU;
-  }
-  
-  public static String eeO()
-  {
-    return AGV;
-  }
-  
-  public static void eeP()
-  {
-    AppMethodBeat.i(223409);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 60L);
-    AppMethodBeat.o(223409);
-  }
-  
-  public static void eeQ()
-  {
-    AppMethodBeat.i(223412);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 61L);
-    AppMethodBeat.o(223412);
-  }
-  
-  public static void eeR()
-  {
-    AppMethodBeat.i(223414);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 62L);
-    AppMethodBeat.o(223414);
-  }
-  
-  public static void eeS()
-  {
-    AppMethodBeat.i(223415);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 63L);
-    AppMethodBeat.o(223415);
-  }
-  
-  public static void eeT()
-  {
-    AppMethodBeat.i(223416);
-    com.tencent.mm.plugin.report.service.h.IzE.F(AGW, 64L);
-    AppMethodBeat.o(223416);
-  }
-  
-  public final void eeU()
-  {
-    int i = 0;
+    AppMethodBeat.i(333055);
+    int i;
+    int j;
+    if (((bw)com.tencent.mm.kernel.h.ax(bw.class)).aBu())
+    {
+      i = MMApplicationContext.getContext().getResources().getColor(e.b.FG_0);
+      if (!((bw)com.tencent.mm.kernel.h.ax(bw.class)).aBu()) {
+        break label137;
+      }
+      j = MMApplicationContext.getContext().getResources().getColor(e.b.transparent);
+      label68:
+      paramList = ((Iterable)paramList).iterator();
+    }
     for (;;)
     {
-      try
+      if (!paramList.hasNext()) {
+        break label222;
+      }
+      bo localbo = (bo)paramList.next();
+      String str = localbo.topic;
+      if (str == null)
       {
-        AppMethodBeat.i(223418);
-        StringBuilder localStringBuilder = new StringBuilder();
-        Object localObject1 = (emk)j.lp((List)AGU);
-        if (localObject1 != null)
+        paramSpannableString = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(333055);
+        throw paramSpannableString;
+        i = linkColor;
+        break;
+        label137:
+        j = MMApplicationContext.getContext().getResources().getColor(e.b.BW_0_Alpha_0_2);
+        break label68;
+      }
+      str = str.substring(1);
+      s.s(str, "(this as java.lang.String).substring(startIndex)");
+      paramSpannableString.setSpan(new q(str, i, j, true, (b)new b(paramm, paramLong)), localbo.start, localbo.start + localbo.count, 17);
+    }
+    label222:
+    AppMethodBeat.o(333055);
+  }
+  
+  public static void a(SpannableString paramSpannableString, ArrayList<h.a> paramArrayList, b<? super String, ah> paramb)
+  {
+    AppMethodBeat.i(333065);
+    int i;
+    int j;
+    label67:
+    label78:
+    h.a locala;
+    if (((bw)com.tencent.mm.kernel.h.ax(bw.class)).aBu())
+    {
+      i = MMApplicationContext.getContext().getResources().getColor(e.b.FG_0);
+      if (!((bw)com.tencent.mm.kernel.h.ax(bw.class)).aBu()) {
+        break label174;
+      }
+      j = MMApplicationContext.getContext().getResources().getColor(e.b.transparent);
+      Iterator localIterator = ((Iterable)paramArrayList).iterator();
+      if (!localIterator.hasNext()) {
+        break label194;
+      }
+      locala = (h.a)localIterator.next();
+      paramArrayList = locala.Ggd;
+      if (paramArrayList != null) {
+        break label191;
+      }
+      paramArrayList = "";
+    }
+    label174:
+    label191:
+    for (;;)
+    {
+      paramArrayList = new q(paramArrayList, i, j, (b)new a(paramb));
+      paramArrayList.GDh = true;
+      ah localah = ah.aiuX;
+      paramSpannableString.setSpan(paramArrayList, locala.start, locala.end, 17);
+      break label78;
+      i = linkColor;
+      break;
+      j = MMApplicationContext.getContext().getResources().getColor(e.b.BW_0_Alpha_0_2);
+      break label67;
+    }
+    label194:
+    AppMethodBeat.o(333065);
+  }
+  
+  private static void a(StringBuilder paramStringBuilder, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(333047);
+    Object localObject = am.aixg;
+    localObject = String.format(Gin, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
+    s.s(localObject, "java.lang.String.format(format, *args)");
+    paramStringBuilder.append((String)localObject);
+    localObject = am.aixg;
+    paramString = String.format(Gil, Arrays.copyOf(new Object[] { paramString }, 1));
+    s.s(paramString, "java.lang.String.format(format, *args)");
+    paramStringBuilder.append(paramString);
+    paramString = am.aixg;
+    paramString = String.format(Gio, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
+    s.s(paramString, "java.lang.String.format(format, *args)");
+    paramStringBuilder.append(paramString);
+    AppMethodBeat.o(333047);
+  }
+  
+  public static String d(String paramString, HashMap<String, djg> paramHashMap)
+  {
+    AppMethodBeat.i(333042);
+    s.u(paramString, "curDesc");
+    s.u(paramHashMap, "atContactMap");
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(333042);
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder("");
+    Object localObject2 = (List)new ArrayList();
+    Object localObject1 = new ArrayList();
+    Object localObject3 = d.FAy;
+    if (d.eRt())
+    {
+      localObject1 = h.Gga;
+      localObject1 = h.a(paramString, paramHashMap, null).bsD;
+    }
+    paramHashMap = d.FAy;
+    if (d.eRs()) {
+      paramHashMap = as.GiG;
+    }
+    for (paramHashMap = as.a(paramString, (ArrayList)localObject1, null);; paramHashMap = (HashMap<String, djg>)localObject2)
+    {
+      localStringBuilder.append(Gif);
+      if ((paramHashMap.isEmpty()) && (((ArrayList)localObject1).isEmpty()))
+      {
+        paramHashMap = am.aixg;
+        paramHashMap = String.format(Gim, Arrays.copyOf(new Object[] { Integer.valueOf(1) }, 1));
+        s.s(paramHashMap, "java.lang.String.format(format, *args)");
+        localStringBuilder.append(paramHashMap);
+        a(localStringBuilder, paramString, 0);
+        paramString = am.aixg;
+        paramString = String.format(Giq, Arrays.copyOf(new Object[] { Integer.valueOf(version) }, 1));
+        s.s(paramString, "java.lang.String.format(format, *args)");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(Gig);
+        Log.d(TAG, s.X("xml:", localStringBuilder));
+        paramString = localStringBuilder.toString();
+        s.s(paramString, "xml.toString()");
+        AppMethodBeat.o(333042);
+        return paramString;
+      }
+      int i = 0;
+      int j = 0;
+      localObject2 = "";
+      int k = 0;
+      label296:
+      int m;
+      int i1;
+      if (j < paramString.length()) {
+        if (!paramHashMap.isEmpty())
         {
-          l1 = ((emk)localObject1).GhA;
-          localObject1 = (emk)j.lr((List)AGU);
-          if (localObject1 == null) {
-            break label477;
-          }
-          l2 = ((emk)localObject1).GhA;
-          l1 = l2 - l1;
-          localObject1 = ((Iterable)AGU).iterator();
-          if (((Iterator)localObject1).hasNext())
+          m = 0;
+          i1 = paramHashMap.size() - 1;
+          if (i1 < 0) {}
+        }
+      }
+      for (;;)
+      {
+        int n = m + 1;
+        localObject3 = (bo)paramHashMap.get(m);
+        m = ((bo)localObject3).start - 1;
+        if (m == j) {}
+        for (;;)
+        {
+          if (localObject3 != null)
           {
-            localObject3 = ((Iterator)localObject1).next();
-            int j = i + 1;
-            if (i < 0) {
-              j.iBO();
-            }
-            localObject3 = (emk)localObject3;
-            if (i > 0)
+            paramHashMap.remove(localObject3);
+            n = ((bo)localObject3).start - 1;
+            m = ((bo)localObject3).count + n + 1;
+            if (n >= k)
             {
-              Object localObject4 = AGU.get(i - 1);
-              p.j(localObject4, "flow.get(index - 1)");
-              localObject4 = (emk)localObject4;
-              l2 = ((emk)localObject3).GhA;
-              long l3 = ((emk)localObject4).GhA;
-              if (l1 == 0L) {
-                break label483;
+              j = i;
+              if (n > k)
+              {
+                localObject3 = paramString.substring(k, n);
+                s.s(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+                a(localStringBuilder, (String)localObject3, i);
+                j = i + 1;
               }
-              f = (float)(l2 - l3) * 100.0F / (float)l1;
-              localObject3 = new StringBuilder().append(((emk)localObject3).BHO).append(':').append(((emk)localObject3).GhA - ((emk)localObject4).GhA).append("ms,");
-              localObject4 = af.aaBG;
-              localObject4 = String.format("%.1f", Arrays.copyOf(new Object[] { Float.valueOf(f) }, 1));
-              p.j(localObject4, "java.lang.String.format(format, *args)");
-              localStringBuilder.append((String)localObject4 + "%\n");
-              i = j;
+              localObject3 = paramString.substring(n, m);
+              s.s(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              localObject3 = s.X((String)localObject3, "#");
+              Object localObject4 = am.aixg;
+              localObject4 = String.format(Gin, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
+              s.s(localObject4, "java.lang.String.format(format, *args)");
+              localStringBuilder.append((String)localObject4);
+              localObject4 = am.aixg;
+              localObject4 = Gip;
+              am localam = am.aixg;
+              localObject3 = String.format(Gil, Arrays.copyOf(new Object[] { localObject3 }, 1));
+              s.s(localObject3, "java.lang.String.format(format, *args)");
+              localObject3 = String.format((String)localObject4, Arrays.copyOf(new Object[] { localObject3 }, 1));
+              s.s(localObject3, "java.lang.String.format(format, *args)");
+              localStringBuilder.append((String)localObject3);
+              localObject3 = am.aixg;
+              localObject3 = String.format(Gio, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
+              s.s(localObject3, "java.lang.String.format(format, *args)");
+              localStringBuilder.append((String)localObject3);
+              i = m;
+              k = m;
+              m = j + 1;
+              j = i;
+              i = m;
+              break;
+              if ((m <= j) && (n <= i1)) {
+                break label1204;
+              }
+              localObject3 = null;
               continue;
             }
-            localStringBuilder.append("Total Cost:" + l1 + "ms... start at " + ((emk)localObject3).GhA + "\n " + ((emk)localObject3).BHO + '\n');
+            Log.e(TAG, "topicStart:" + n + ", startIndex:" + k);
+          }
+        }
+        if (!((ArrayList)localObject1).isEmpty())
+        {
+          m = 0;
+          i1 = ((ArrayList)localObject1).size() - 1;
+          if (i1 < 0) {}
+        }
+        for (;;)
+        {
+          n = m + 1;
+          localObject3 = ((ArrayList)localObject1).get(m);
+          s.s(localObject3, "atContactList[atIndex]");
+          localObject3 = (h.a)localObject3;
+          m = ((h.a)localObject3).start;
+          if (m == j)
+          {
+            label793:
+            if (localObject3 == null) {
+              break label1006;
+            }
+            ((ArrayList)localObject1).remove(localObject3);
+            n = ((h.a)localObject3).start;
+            m = ((h.a)localObject3).end;
+            if (n < k) {
+              break label971;
+            }
+            if (n <= k) {
+              break label1194;
+            }
+            localObject3 = paramString.substring(k, n);
+            s.s(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            j = i + 1;
+            a(localStringBuilder, (String)localObject3, i);
             i = j;
-            continue;
           }
-          Object localObject3 = new StringBuilder("end at ");
-          localObject1 = (emk)j.lr((List)AGU);
-          if (localObject1 != null)
-          {
-            localObject1 = Long.valueOf(((emk)localObject1).GhA);
-            localStringBuilder.append(localObject1);
-            localObject1 = localStringBuilder.toString();
-            p.j(localObject1, "flowData.toString()");
-            AGV = (String)localObject1;
-            Log.i(TAG, String.valueOf(localStringBuilder));
-            AppMethodBeat.o(223418);
-            return;
-          }
-          localObject1 = null;
-          continue;
-        }
-        long l1 = 0L;
-      }
-      finally {}
-      continue;
-      label477:
-      long l2 = 0L;
-      continue;
-      label483:
-      float f = 0.0F;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/LiveAnchorFlowStats$PercentConversion;", "", "()V", "cancel", "", "failedCreateLive", "failedEnterRoom", "failedJoinLive", "failedReason1", "failedReason2", "failedReason3", "failedReason4", "failedReason5", "failedReason6", "failedShareFeed", "id", "post", "recheckRealName", "succLive", "processTag", "", "tag", "Lcom/tencent/mm/protocal/protobuf/StatFlowTag;", "reportCancel", "reportDetailError", "reportErrorCode", "extra", "Lcom/tencent/mm/protocal/protobuf/LiveFailedTagExtra;", "reportFailedCreateLive", "reportFailedEnterRoom", "reportFailedJoinLive", "reportFailedReason1", "reportFailedReason2", "reportFailedReason3", "reportFailedReason4", "reportFailedReason5", "reportFailedReason6", "reportFailedShareFeed", "reportPost", "reportRecheckRealName", "reportSuccLive", "plugin-finder_release"})
-  public static final class a
-  {
-    private static final long AGY = 10L;
-    private static final long AGZ = 11L;
-    private static final long AHa = 12L;
-    private static final long AHb = 13L;
-    private static final long AHc = 14L;
-    private static final long AHd = 15L;
-    private static final long AHe = 16L;
-    private static final long AHf = 17L;
-    private static final long AHg = 40L;
-    private static final long AHh = 41L;
-    private static final long AHi = 42L;
-    private static final long AHj = 43L;
-    private static final long AHk = 44L;
-    private static final long AHl = 45L;
-    public static final a AHm;
-    private static final long id = 1552L;
-    
-    static
-    {
-      AppMethodBeat.i(288813);
-      AHm = new a();
-      id = 1552L;
-      AGY = 10L;
-      AGZ = 11L;
-      AHa = 12L;
-      AHb = 13L;
-      AHc = 14L;
-      AHd = 15L;
-      AHe = 16L;
-      AHf = 17L;
-      AHg = 40L;
-      AHh = 41L;
-      AHi = 42L;
-      AHj = 43L;
-      AHk = 44L;
-      AHl = 45L;
-      AppMethodBeat.o(288813);
-    }
-    
-    static void a(emk paramemk)
-    {
-      AppMethodBeat.i(288811);
-      Object localObject = paramemk.UoX;
-      if (localObject != null)
-      {
-        paramemk = (a)new cro();
-        localObject = ((b)localObject).toByteArray();
-        try
-        {
-          paramemk.parseFrom((byte[])localObject);
-          paramemk = (cro)paramemk;
-          if (paramemk == null) {
-            break label253;
-          }
-          switch (paramemk.errCode)
-          {
-          default: 
-            com.tencent.mm.plugin.report.service.h.IzE.F(id, AHl);
-            AppMethodBeat.o(288811);
-            return;
-          }
-        }
-        catch (Exception paramemk)
-        {
+          label1194:
           for (;;)
           {
-            Log.printDebugStack("safeParser", "", new Object[] { paramemk });
-            paramemk = null;
+            localObject3 = paramString.substring(n, m);
+            s.s(localObject3, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+            localObject3 = s.X((String)localObject3, " ");
+            n = i + 1;
+            a(localStringBuilder, (String)localObject3, i);
+            localObject2 = (String)localObject2 + (n - 1) + ',';
+            j = m;
+            k = m;
+            i = n;
+            break label296;
+            if ((m <= j) && (n <= i1)) {
+              break label1197;
+            }
+            localObject3 = null;
+            break label793;
+            label971:
+            Log.e(TAG, "topicStart:" + n + ", startIndex:" + k);
+            label1006:
+            j += 1;
+            break label296;
+            j = i;
+            if (k < paramString.length())
+            {
+              paramString = paramString.substring(k, paramString.length());
+              s.s(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              a(localStringBuilder, paramString, i);
+              j = i + 1;
+            }
+            if (!Util.isNullOrNil((String)localObject2))
+            {
+              localStringBuilder.append(Gih);
+              localStringBuilder.append(Gij);
+              i = ((String)localObject2).length();
+              if (localObject2 == null)
+              {
+                paramString = new NullPointerException("null cannot be cast to non-null type java.lang.String");
+                AppMethodBeat.o(333042);
+                throw paramString;
+              }
+              paramString = ((String)localObject2).substring(0, i - 1);
+              s.s(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+              localStringBuilder.append(paramString);
+              localStringBuilder.append(Gik);
+              localStringBuilder.append(Gii);
+            }
+            paramString = am.aixg;
+            paramString = String.format(Gim, Arrays.copyOf(new Object[] { Integer.valueOf(j) }, 1));
+            s.s(paramString, "java.lang.String.format(format, *args)");
+            localStringBuilder.append(paramString);
+            break;
           }
-          com.tencent.mm.plugin.report.service.h.IzE.F(id, AHg);
-          AppMethodBeat.o(288811);
-          return;
+          label1197:
+          m = n;
         }
-        com.tencent.mm.plugin.report.service.h.IzE.F(id, AHh);
-        AppMethodBeat.o(288811);
-        return;
-        com.tencent.mm.plugin.report.service.h.IzE.F(id, AHi);
-        AppMethodBeat.o(288811);
-        return;
-        com.tencent.mm.plugin.report.service.h.IzE.F(id, AHj);
-        AppMethodBeat.o(288811);
-        return;
-        com.tencent.mm.plugin.report.service.h.IzE.F(id, AHk);
-        AppMethodBeat.o(288811);
-        return;
-        label253:
-        AppMethodBeat.o(288811);
-        return;
+        label1204:
+        m = n;
       }
-      AppMethodBeat.o(288811);
-    }
-    
-    public static void eeV()
-    {
-      AppMethodBeat.i(288803);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AGY);
-      AppMethodBeat.o(288803);
-    }
-    
-    public static void eeW()
-    {
-      AppMethodBeat.i(288804);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AGZ);
-      AppMethodBeat.o(288804);
-    }
-    
-    public static void eeX()
-    {
-      AppMethodBeat.i(288805);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AHa);
-      AppMethodBeat.o(288805);
-    }
-    
-    public static void eeY()
-    {
-      AppMethodBeat.i(288806);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AHb);
-      AppMethodBeat.o(288806);
-    }
-    
-    public static void eeZ()
-    {
-      AppMethodBeat.i(288807);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AHc);
-      AppMethodBeat.o(288807);
-    }
-    
-    public static void efa()
-    {
-      AppMethodBeat.i(288808);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AHd);
-      AppMethodBeat.o(288808);
-    }
-    
-    public static void efb()
-    {
-      AppMethodBeat.i(288809);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AHe);
-      AppMethodBeat.o(288809);
-    }
-    
-    public static void efc()
-    {
-      AppMethodBeat.i(288810);
-      com.tencent.mm.plugin.report.service.h.IzE.F(id, AHf);
-      AppMethodBeat.o(288810);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public static String ffA()
   {
-    public static final b AHn;
-    
-    static
+    return Gic;
+  }
+  
+  public static String ffB()
+  {
+    return VALUE;
+  }
+  
+  public static String ffC()
+  {
+    return Gid;
+  }
+  
+  public static String ffz()
+  {
+    return Gia;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "username", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements b<String, ah>
+  {
+    a(b<? super String, ah> paramb)
     {
-      AppMethodBeat.i(269818);
-      AHn = new b();
-      AppMethodBeat.o(269818);
+      super();
     }
-    
-    public final void run()
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "topic", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<String, ah>
+  {
+    b(m<? super String, ? super f, ah> paramm, long paramLong)
     {
-      AppMethodBeat.i(269817);
-      ao.AGX.eeU();
-      ao localao = ao.AGX;
-      ao.eeN().clear();
-      AppMethodBeat.o(269817);
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "topic", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements b<String, ah>
+  {
+    c(m<? super String, ? super f, ah> paramm, long paramLong)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.ao
  * JD-Core Version:    0.7.0.1
  */

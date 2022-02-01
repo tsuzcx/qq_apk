@@ -1,45 +1,80 @@
 package com.tencent.mm.vfs;
 
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 
-public abstract interface l
+final class l
+  implements k.d
 {
-  public abstract FileSystem.b bBL(String paramString);
+  static final l agxP;
+  private final LinkedHashSet<k.d> agxQ;
   
-  public abstract Pair<FileSystem.b, String> bBM(String paramString);
-  
-  public abstract Map<String, FileSystem> ifl();
-  
-  public abstract Map<String, String> ift();
-  
-  public abstract List<a> ifu();
-  
-  public static class a
+  static
   {
-    public final String YDQ;
-    public final String basePath;
-    
-    a(String paramString1, String paramString2)
+    AppMethodBeat.i(238283);
+    agxP = new l();
+    AppMethodBeat.o(238283);
+  }
+  
+  private l()
+  {
+    AppMethodBeat.i(238278);
+    this.agxQ = new LinkedHashSet();
+    AppMethodBeat.o(238278);
+  }
+  
+  final void a(k.d paramd)
+  {
+    try
     {
-      this.basePath = paramString1;
-      this.YDQ = paramString2;
+      AppMethodBeat.i(238288);
+      if (paramd != null) {
+        this.agxQ.add(paramd);
+      }
+      AppMethodBeat.o(238288);
+      return;
     }
-    
-    public String toString()
+    finally {}
+  }
+  
+  public final void bQ(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(238301);
+    try
     {
-      AppMethodBeat.i(236757);
-      String str = this.basePath + " -> " + this.YDQ;
-      AppMethodBeat.o(236757);
-      return str;
+      Iterator localIterator = this.agxQ.iterator();
+      while (localIterator.hasNext()) {
+        ((k.d)localIterator.next()).bQ(paramBoolean1, paramBoolean2);
+      }
     }
+    finally
+    {
+      AppMethodBeat.o(238301);
+    }
+    AppMethodBeat.o(238301);
+  }
+  
+  public final void jKq()
+  {
+    AppMethodBeat.i(238297);
+    try
+    {
+      Iterator localIterator = this.agxQ.iterator();
+      while (localIterator.hasNext()) {
+        ((k.d)localIterator.next()).jKq();
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(238297);
+    }
+    AppMethodBeat.o(238297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.l
  * JD-Core Version:    0.7.0.1
  */

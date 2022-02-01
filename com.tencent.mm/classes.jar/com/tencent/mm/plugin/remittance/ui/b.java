@@ -1,190 +1,224 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aos;
-import com.tencent.mm.protocal.protobuf.aot;
-import com.tencent.mm.protocal.protobuf.qv;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.protocal.protobuf.apu;
+import com.tencent.mm.protocal.protobuf.apv;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.math.BigInteger;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class b
 {
-  aos InO = null;
-  qv InP;
+  apv OkY;
+  apv OkZ;
+  boolean Ola;
+  private Context context;
   
-  private static boolean a(List<aot> paramList, aos paramaos)
+  public b()
   {
-    AppMethodBeat.i(67927);
-    if (paramaos.RZg.size() == 0)
-    {
-      AppMethodBeat.o(67927);
-      return false;
-    }
-    HashSet localHashSet = new HashSet();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localHashSet.add(Long.valueOf(((aot)paramList.next()).SBt));
-    }
-    paramList = paramaos.RZg.iterator();
-    while (paramList.hasNext()) {
-      if (!localHashSet.contains(Long.valueOf(((aot)paramList.next()).SBt)))
-      {
-        AppMethodBeat.o(67927);
-        return false;
-      }
-    }
-    AppMethodBeat.o(67927);
-    return true;
+    this.context = null;
+    this.OkY = null;
+    this.OkZ = null;
+    this.Ola = false;
   }
   
-  public final boolean a(List<aot> paramList, aot paramaot)
+  public b(Context paramContext, apv paramapv)
   {
-    AppMethodBeat.i(67926);
-    if (this.InP == null)
+    AppMethodBeat.i(289185);
+    this.context = null;
+    this.OkY = null;
+    this.OkZ = null;
+    this.Ola = false;
+    this.context = paramContext;
+    this.OkY = paramapv;
+    if (paramapv == null)
     {
-      Log.e("MicroMsg.FavorInfoPicked", "error setFavorInfoList currentFavorResp is null");
-      AppMethodBeat.o(67926);
-      return false;
-    }
-    if (paramaot != null) {}
-    for (Object localObject1 = new BigInteger(Long.toBinaryString(paramaot.SBt), 2).toString();; localObject1 = null)
-    {
-      Object localObject2 = new LinkedList();
-      Iterator localIterator = this.InP.RZh.iterator();
-      while (localIterator.hasNext())
-      {
-        aos localaos = (aos)localIterator.next();
-        if ((paramaot == null) || ((!Util.isNullOrNil((String)localObject1)) && (localaos.SBk.contains((CharSequence)localObject1)))) {
-          ((List)localObject2).add(localaos);
-        }
-      }
-      paramaot = new LinkedList();
-      localObject1 = ((List)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (aos)((Iterator)localObject1).next();
-        if (a(paramList, (aos)localObject2)) {
-          paramaot.add(localObject2);
-        }
-      }
-      if (paramaot.size() > 0)
-      {
-        Collections.sort(paramaot, new a());
-        this.InO = ((aos)paramaot.get(0));
-        AppMethodBeat.o(67926);
-        return true;
-      }
-      this.InO = null;
-      AppMethodBeat.o(67926);
-      return false;
-    }
-  }
-  
-  public final void aWM(String paramString)
-  {
-    AppMethodBeat.i(67925);
-    this.InO = null;
-    if (paramString == null)
-    {
-      this.InO = null;
-      AppMethodBeat.o(67925);
+      Log.i("MicroMsg.ExtraBuyInfoHelper", "no extra buy info");
+      AppMethodBeat.o(289185);
       return;
     }
-    if (this.InP == null)
+    Log.i("MicroMsg.ExtraBuyInfoHelper", "init. title = %s, detail count = %d", new Object[] { paramapv.title, Integer.valueOf(paramapv.Oiy.size()) });
+    paramContext = paramapv.Oiy.iterator();
+    while (paramContext.hasNext())
     {
-      Log.e("MicroMsg.FavorInfoPicked", "error setSelectFavorComposeId currentFavorResp is null");
-      this.InO = null;
-      AppMethodBeat.o(67925);
+      paramapv = (apu)paramContext.next();
+      Log.i("MicroMsg.ExtraBuyInfoHelper", "extra buy item: %d, %s", new Object[] { Long.valueOf(paramapv.Zxa), paramapv.Zxb });
+    }
+    AppMethodBeat.o(289185);
+  }
+  
+  private int gMm()
+  {
+    AppMethodBeat.i(289186);
+    Iterator localIterator = gMk().Oiy.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      if (((apu)localIterator.next()).Zxg != 0) {
+        break label56;
+      }
+      i += 1;
+    }
+    label56:
+    for (;;)
+    {
+      break;
+      AppMethodBeat.o(289186);
+      return i;
+    }
+  }
+  
+  public final void a(apv paramapv)
+  {
+    AppMethodBeat.i(289209);
+    if (paramapv == null)
+    {
+      Log.e("MicroMsg.ExtraBuyInfoHelper", "set favor resp extra buy info (null)");
+      AppMethodBeat.o(289209);
       return;
     }
-    Iterator localIterator = this.InP.RZh.iterator();
-    while (localIterator.hasNext())
+    this.OkZ = paramapv;
+    Log.i("MicroMsg.ExtraBuyInfoHelper", "set favor resp extra buy info with %d items", new Object[] { Integer.valueOf(paramapv.Oiy.size()) });
+    paramapv = paramapv.Oiy.iterator();
+    while (paramapv.hasNext())
     {
-      aos localaos = (aos)localIterator.next();
-      if (paramString.equals(localaos.SBk))
-      {
-        this.InO = localaos;
-        AppMethodBeat.o(67925);
-        return;
-      }
+      apu localapu = (apu)paramapv.next();
+      Log.i("MicroMsg.ExtraBuyInfoHelper", "item updated, id=%d. unavailable=%d, selected=%b", new Object[] { Long.valueOf(localapu.Zxa), Integer.valueOf(localapu.Zxg), Boolean.valueOf(localapu.Bvd) });
     }
-    AppMethodBeat.o(67925);
+    AppMethodBeat.o(289209);
   }
   
-  public final void fAs()
+  public final boolean gMe()
   {
-    AppMethodBeat.i(67922);
-    Log.i("MicroMsg.FavorInfoPicked", "cleanBusiF2FFavor");
-    this.InP = null;
-    this.InO = null;
-    AppMethodBeat.o(67922);
-  }
-  
-  public final List<aot> fAt()
-  {
-    AppMethodBeat.i(67923);
-    if (this.InP != null)
+    AppMethodBeat.i(289189);
+    if (gMk() == null)
     {
-      localLinkedList = this.InP.RZg;
-      AppMethodBeat.o(67923);
-      return localLinkedList;
+      AppMethodBeat.o(289189);
+      return false;
     }
-    LinkedList localLinkedList = new LinkedList();
-    AppMethodBeat.o(67923);
-    return localLinkedList;
-  }
-  
-  public final String fAu()
-  {
-    if (this.InP == null) {
-      return "";
-    }
-    return this.InP.RZk;
-  }
-  
-  public final boolean fAv()
-  {
-    return this.InP != null;
-  }
-  
-  public final boolean fAw()
-  {
-    AppMethodBeat.i(67924);
-    if ((this.InP != null) && (this.InP.RZg != null) && (this.InP.RZg.size() > 0))
+    if (gMk().Oiy.size() > 0)
     {
-      AppMethodBeat.o(67924);
+      AppMethodBeat.o(289189);
       return true;
     }
-    AppMethodBeat.o(67924);
+    AppMethodBeat.o(289189);
     return false;
   }
   
-  final class a
-    implements Comparator
+  public final boolean gMf()
   {
-    a() {}
-    
-    public final int compare(Object paramObject1, Object paramObject2)
+    AppMethodBeat.i(289191);
+    if (this.Ola)
     {
-      paramObject1 = (aos)paramObject1;
-      paramObject2 = (aos)paramObject2;
-      if (paramObject1.SBo - paramObject2.SBo > 0L) {
-        return -1;
-      }
-      return 1;
+      AppMethodBeat.o(289191);
+      return false;
     }
+    if (gMk().Oiy.size() == 1)
+    {
+      if (gMm() > 0)
+      {
+        AppMethodBeat.o(289191);
+        return true;
+      }
+      AppMethodBeat.o(289191);
+      return false;
+    }
+    AppMethodBeat.o(289191);
+    return true;
+  }
+  
+  public final boolean gMg()
+  {
+    AppMethodBeat.i(289194);
+    if (gMk().Oiy.size() > 1)
+    {
+      AppMethodBeat.o(289194);
+      return true;
+    }
+    AppMethodBeat.o(289194);
+    return false;
+  }
+  
+  public final int gMh()
+  {
+    AppMethodBeat.i(289198);
+    if (gMm() > 0)
+    {
+      i = this.context.getResources().getColor(a.c.Orange);
+      AppMethodBeat.o(289198);
+      return i;
+    }
+    int i = this.context.getResources().getColor(a.c.hint_text_color);
+    AppMethodBeat.o(289198);
+    return i;
+  }
+  
+  public final boolean gMi()
+  {
+    AppMethodBeat.i(289203);
+    boolean bool = ((apu)gMk().Oiy.getFirst()).Bvd;
+    AppMethodBeat.o(289203);
+    return bool;
+  }
+  
+  public final long gMj()
+  {
+    AppMethodBeat.i(289206);
+    if (this.OkY == null)
+    {
+      AppMethodBeat.o(289206);
+      return 0L;
+    }
+    Iterator localIterator = gMk().Oiy.iterator();
+    long l = 0L;
+    if (localIterator.hasNext())
+    {
+      apu localapu = (apu)localIterator.next();
+      if ((localapu.Zxg != 0) || (!localapu.Bvd)) {
+        break label86;
+      }
+      l += localapu.Zxd;
+    }
+    label86:
+    for (;;)
+    {
+      break;
+      AppMethodBeat.o(289206);
+      return l;
+    }
+  }
+  
+  public final apv gMk()
+  {
+    if (this.OkZ != null) {
+      return this.OkZ;
+    }
+    return this.OkY;
+  }
+  
+  public final void gMl()
+  {
+    AppMethodBeat.i(289211);
+    if (this.OkY == null)
+    {
+      AppMethodBeat.o(289211);
+      return;
+    }
+    Log.i("MicroMsg.ExtraBuyInfoHelper", "clear response info");
+    this.OkZ = null;
+    Iterator localIterator = this.OkY.Oiy.iterator();
+    while (localIterator.hasNext()) {
+      ((apu)localIterator.next()).Bvd = false;
+    }
+    AppMethodBeat.o(289211);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.b
  * JD-Core Version:    0.7.0.1
  */

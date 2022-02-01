@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/hoz" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
+    <ImageView android:id="@id/ild" android:layout_width="fill_parent" android:layout_height="153.0dip" android:src="@drawable/c4r" android:scaleType="fitCenter" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="@color/m4" android:gravity="center" android:id="@id/br7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/i3g" />
 </LinearLayout>

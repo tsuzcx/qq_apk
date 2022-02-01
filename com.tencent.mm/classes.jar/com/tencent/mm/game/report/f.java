@@ -2,11 +2,10 @@ package com.tencent.mm.game.report;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.q;
-import com.tencent.mm.game.report.c.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.z;
+import com.tencent.mm.am.z.a;
 import com.tencent.mm.ipcinvoker.c.a;
 import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
@@ -19,17 +18,17 @@ import java.util.LinkedList;
 
 final class f
 {
-  private static LinkedList<com.tencent.mm.game.report.api.b> jTl;
-  private static boolean jTm;
-  private static String jTn;
-  private static String jTo;
+  private static LinkedList<com.tencent.mm.game.report.api.b> mtD;
+  private static boolean mtE;
+  private static String mtF;
+  private static String mtG;
   
   static
   {
     AppMethodBeat.i(108259);
-    jTl = new LinkedList();
-    jTn = "log_id";
-    jTo = "log_ext";
+    mtD = new LinkedList();
+    mtF = "log_id";
+    mtG = "log_ext";
     AppMethodBeat.o(108259);
   }
   
@@ -43,60 +42,60 @@ final class f
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putInt(jTn, paramb.jTq);
-    localBundle.putString(jTo, paramb.jTr);
+    localBundle.putInt(mtF, paramb.mtI);
+    localBundle.putString(mtG, paramb.mtJ);
     j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, null);
     AppMethodBeat.o(108255);
   }
   
-  private static void aEB()
+  private static void aXF()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(108257);
-        if (jTm)
+        if (mtE)
         {
           Log.i("MicroMsg.ReportService", "tryDoScene isBusy");
           AppMethodBeat.o(108257);
           return;
         }
-        if (Util.isNullOrNil(jTl))
+        if (Util.isNullOrNil(mtD))
         {
           Log.i("MicroMsg.ReportService", "waitingList is null");
           AppMethodBeat.o(108257);
           continue;
         }
-        localb = (com.tencent.mm.game.report.api.b)jTl.remove(0);
+        localb = (com.tencent.mm.game.report.api.b)mtD.remove(0);
       }
       finally {}
       com.tencent.mm.game.report.api.b localb;
       if (localb != null)
       {
-        jTm = true;
-        d.a locala = new d.a();
+        mtE = true;
+        c.a locala = new c.a();
         locala.uri = "/cgi-bin/micromsg-bin/gamereportkv";
         locala.funcId = 427;
-        locala.lBW = 0;
+        locala.otG = 0;
         locala.respCmdId = 0;
-        c localc = new c();
-        localc.jUb = com.tencent.mm.protocal.d.RAx;
-        localc.jUc = com.tencent.mm.protocal.d.RAw;
-        localc.jUd = com.tencent.mm.protocal.d.RAz;
-        localc.jUe = com.tencent.mm.protocal.d.RAA;
-        localc.jUf = LocaleUtil.getApplicationLanguage();
-        localc.jUg = localb.jTq;
-        localc.jUh = localb.jTr;
-        locala.lBU = localc;
-        locala.lBV = new com.tencent.mm.game.report.c.d();
-        aa.a(locala.bgN(), new aa.a()
+        com.tencent.mm.game.report.c.c localc = new com.tencent.mm.game.report.c.c();
+        localc.mut = com.tencent.mm.protocal.d.Yxb;
+        localc.muu = com.tencent.mm.protocal.d.Yxa;
+        localc.muv = com.tencent.mm.protocal.d.Yxd;
+        localc.muw = com.tencent.mm.protocal.d.Yxe;
+        localc.mux = LocaleUtil.getApplicationLanguage();
+        localc.muy = localb.mtI;
+        localc.muz = localb.mtJ;
+        locala.otE = localc;
+        locala.otF = new com.tencent.mm.game.report.c.d();
+        z.a(locala.bEF(), new z.a()
         {
-          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd, q paramAnonymousq)
+          public final int callback(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.am.c paramAnonymousc, p paramAnonymousp)
           {
             AppMethodBeat.i(108253);
             Log.i("MicroMsg.ReportService", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            f.Yy();
+            f.aAs();
             f.access$100();
             AppMethodBeat.o(108253);
             return 0;
@@ -106,7 +105,7 @@ final class f
       }
       else
       {
-        aEB();
+        aXF();
         AppMethodBeat.o(108257);
       }
     }
@@ -119,7 +118,7 @@ final class f
       try
       {
         AppMethodBeat.i(108256);
-        if ((!h.aHE().aGM()) || (com.tencent.mm.kernel.b.aGE()))
+        if ((!h.baC().aZN()) || (com.tencent.mm.kernel.b.aZG()))
         {
           Log.w("MicroMsg.ReportService", "report, account not ready");
           AppMethodBeat.o(108256);
@@ -130,10 +129,10 @@ final class f
           AppMethodBeat.o(108256);
           continue;
         }
-        jTl.add(paramb);
+        mtD.add(paramb);
       }
       finally {}
-      aEB();
+      aXF();
       AppMethodBeat.o(108256);
     }
   }

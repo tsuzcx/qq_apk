@@ -7,8 +7,8 @@ import android.os.Looper;
 import androidx.b.a;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.e;
-import androidx.fragment.app.i;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -46,14 +46,14 @@ public final class zzcc
   
   public static zzcc zza(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(257066);
+    AppMethodBeat.i(210378);
     Object localObject = (WeakReference)zzla.get(paramFragmentActivity);
     if (localObject != null)
     {
       localObject = (zzcc)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        AppMethodBeat.o(257066);
+        AppMethodBeat.o(210378);
         return localObject;
       }
     }
@@ -68,16 +68,16 @@ public final class zzcc
       else
       {
         localObject = new zzcc();
-        paramFragmentActivity.getSupportFragmentManager().beginTransaction().a((Fragment)localObject, "SupportLifecycleFragmentImpl").ip();
+        paramFragmentActivity.getSupportFragmentManager().beginTransaction().a((Fragment)localObject, "SupportLifecycleFragmentImpl").FX();
       }
       zzla.put(paramFragmentActivity, new WeakReference(localObject));
-      AppMethodBeat.o(257066);
+      AppMethodBeat.o(210378);
       return localObject;
     }
     catch (ClassCastException paramFragmentActivity)
     {
       paramFragmentActivity = new IllegalStateException("Fragment with tag SupportLifecycleFragmentImpl is not a SupportLifecycleFragmentImpl", paramFragmentActivity);
-      AppMethodBeat.o(257066);
+      AppMethodBeat.o(210378);
       throw paramFragmentActivity;
     }
   }
@@ -230,7 +230,7 @@ public final class zzcc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzcc
  * JD-Core Version:    0.7.0.1
  */

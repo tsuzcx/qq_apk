@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="36.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
-        <Button android:textSize="13.0dip" android:textStyle="bold" android:textColor="#ff335eb8" android:gravity="center_vertical" android:id="@id/gnv" android:background="@drawable/agf" android:focusable="true" android:layout_width="wrap_content" android:layout_height="30.0dip" android:singleLine="true" android:drawableRight="@drawable/bhq" />
-    </FrameLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/gn3" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@id/gn4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <TextView android:id="@id/gn2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:id="@id/ec6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:id="@id/gd9" android:background="@drawable/agg" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" style="@style/a6u">
-            <ImageView android:id="@id/gd8" android:padding="5.0dip" android:paddingLeft="0.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/bho" />
-            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <TextView android:textSize="14.0sp" android:textColor="@color/a2x" android:id="@id/gd_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="240.0dip" android:singleLine="true" />
-                <TextView android:textSize="12.0sp" android:textColor="@color/tw" android:id="@id/gdb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            </LinearLayout>
-            <ProgressBar android:id="@id/gdc" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
-            <TextView android:textColor="@color/a5e" android:id="@id/gdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fng" />
-            <ImageView android:id="@id/gda" android:src="@drawable/apo" style="@style/a6q" />
-            <ImageView android:id="@id/gd7" android:padding="5.0dip" android:paddingRight="0.0dip" android:src="@drawable/agl" style="@style/a6q" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="16.0dip">
+        <SeekBar android:layout_gravity="center_vertical" android:id="@id/h0m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxHeight="@dimen/m9" android:max="100" android:progressDrawable="@drawable/akc" android:minHeight="@dimen/m9" android:thumb="@drawable/akd" android:paddingStart="@dimen/m2" android:paddingEnd="@dimen/m2" />
+        <View android:id="@id/e_e" android:background="#ff000000" android:layout_width="9.0dip" android:layout_height="@dimen/m9" android:layout_centerVertical="true" />
+        <View android:layout_gravity="center_vertical" android:background="#ff000000" android:layout_width="@dimen/m2" android:layout_height="@dimen/m9" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:alpha="0.1" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_marginTop="3.0dip">
+        <TextView android:textSize="@dimen/m3" android:gravity="center" android:id="@id/bxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.5" />
+        <TextView android:textSize="@dimen/m3" android:gravity="center" android:id="@id/cjr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:alpha="0.5" />
+    </RelativeLayout>
+</LinearLayout>

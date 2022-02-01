@@ -1,51 +1,62 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cdf;
-import com.tencent.mm.protocal.protobuf.cdg;
+import com.tencent.mm.protocal.protobuf.cfx;
+import com.tencent.mm.protocal.protobuf.cfy;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class q
-  extends com.tencent.mm.an.q
+  extends p
   implements m
 {
-  private i callback = null;
-  public d rr = null;
+  private h callback;
+  c rr;
   
-  public final int doScene(g paramg, i parami)
+  public q()
   {
-    AppMethodBeat.i(23397);
-    this.callback = parami;
-    parami = new d.a();
-    parami.lBU = new cdf();
-    parami.lBV = new cdg();
-    parami.uri = "/cgi-bin/mmbiz-bin/rank/getsportdevicelist";
-    parami.funcId = getType();
-    parami.lBW = 0;
-    parami.respCmdId = 0;
-    this.rr = parami.bgN();
+    AppMethodBeat.i(23391);
+    this.callback = null;
+    this.rr = null;
+    c.a locala = new c.a();
+    locala.otE = new cfx();
+    locala.otF = new cfy();
+    locala.uri = "/cgi-bin/micromsg-bin/getboundharddevices";
+    locala.funcId = 539;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    ((cfx)c.b.b(this.rr.otB)).crz = 1;
+    AppMethodBeat.o(23391);
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(23393);
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(23397);
+    AppMethodBeat.o(23393);
     return i;
   }
   
   public final int getType()
   {
-    return 1267;
+    return 539;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23396);
-    Log.i("MicroMsg.exdevice.NetSceneGetSportDeviceList", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    AppMethodBeat.i(23392);
+    Log.i("MicroMsg.exdevice.NetSceneGetBoundHardDevices", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(23396);
+    AppMethodBeat.o(23392);
   }
 }
 

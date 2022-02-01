@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.backgroundrunning;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import androidx.lifecycle.q;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
@@ -10,18 +11,19 @@ import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.a.b;
-import com.tencent.mm.plugin.appbrand.a.c.a;
+import com.tencent.mm.plugin.appbrand.b.b;
+import com.tencent.mm.plugin.appbrand.b.c.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent.c;
-import com.tencent.mm.plugin.appbrand.ipc.e;
 import com.tencent.mm.plugin.appbrand.jsapi.EventLocationBackgroundStateChanged;
-import com.tencent.mm.plugin.appbrand.jsapi.ai.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.j.u;
+import com.tencent.mm.plugin.appbrand.jsapi.al.c.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m.u;
+import com.tencent.mm.plugin.appbrand.jsapi.m.v;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI.AuthStateChangedByUserEvent;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -31,106 +33,162 @@ import java.util.Set;
 
 public final class AppBrandBackgroundRunningMonitor
 {
-  private static MMToClientEvent.c nSv;
-  private static f.a nSw;
-  private static IListener nSx;
-  private static Set<String> nSy;
+  private static MMToClientEvent.c qSg;
+  private static f.a qSh;
+  private static IListener qSi;
+  private static Set<String> qSj;
   
   static
   {
-    AppMethodBeat.i(270847);
-    nSx = new IListener() {};
-    nSy = new HashSet();
-    AppMethodBeat.o(270847);
+    AppMethodBeat.i(318295);
+    qSi = new IListener(com.tencent.mm.app.f.hfK) {};
+    qSj = new HashSet();
+    AppMethodBeat.o(318295);
   }
   
-  public static void a(com.tencent.mm.plugin.appbrand.t paramt, AppBrandAuthorizeUI.AuthStateChangedByUserEvent paramAuthStateChangedByUserEvent)
+  public static void A(w paramw)
   {
-    AppMethodBeat.i(270830);
-    Object localObject;
-    boolean bool1;
-    if (paramt != null)
+    AppMethodBeat.i(318184);
+    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startRuntimeStateMonitor");
+    if (!qSj.add(paramw.mAppId))
     {
-      localObject = (com.tencent.mm.plugin.appbrand.jsapi.j.t)paramt.av(com.tencent.mm.plugin.appbrand.jsapi.j.t.class);
-      if (!(localObject instanceof u))
-      {
-        Log.w("MicroMsg.AppBrandBackgroundRunningMonitor", "handleUserAuthChanged, invalid location state manager");
-        AppMethodBeat.o(270830);
-        return;
-      }
-      localObject = (u)localObject;
-      bool2 = paramAuthStateChangedByUserEvent.qTN;
-      boolean bool3 = paramAuthStateChangedByUserEvent.qTO;
-      if ((((com.tencent.mm.plugin.appbrand.jsapi.j.t)localObject).oVh) || (bool2)) {
-        break label150;
-      }
-      bool1 = true;
-      if ((!((com.tencent.mm.plugin.appbrand.jsapi.j.t)localObject).oVh) || ((bool3) && (bool2))) {
-        break label155;
-      }
-    }
-    label150:
-    label155:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "handleUserAuthChanged, should stop location foreground:%s, should stop location background:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      if ((bool1) || (bool2))
-      {
-        ((u)localObject).bSr();
-        ((u)localObject).Y(paramt);
-      }
-      if (bool2) {
-        v(paramt);
-      }
-      AppMethodBeat.o(270830);
+      Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startRuntimeStateMonitor, already start, return");
+      AppMethodBeat.o(318184);
       return;
-      bool1 = false;
-      break;
     }
+    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startListeningOperationReceivedIfNeed");
+    if (qSh == null)
+    {
+      qSh = new f.a()
+      {
+        public final void onBackgroundRunningOperationReceived(MMBackgroundRunningOperationParcel paramAnonymousMMBackgroundRunningOperationParcel)
+        {
+          AppMethodBeat.i(318109);
+          Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "onBackgroundRunningOperationReceived, operation:%s", new Object[] { paramAnonymousMMBackgroundRunningOperationParcel });
+          w localw = com.tencent.mm.plugin.appbrand.d.Uc(paramAnonymousMMBackgroundRunningOperationParcel.appId);
+          if (localw == null)
+          {
+            Log.w("MicroMsg.AppBrandBackgroundRunningMonitor", "onBackgroundRunningOperationReceived, runtime is null");
+            AppMethodBeat.o(318109);
+            return;
+          }
+          if (paramAnonymousMMBackgroundRunningOperationParcel.hAf == 2)
+          {
+            AppBrandBackgroundRunningMonitor.a(paramAnonymousMMBackgroundRunningOperationParcel, localw);
+            AppBrandBackgroundRunningMonitor.b(paramAnonymousMMBackgroundRunningOperationParcel, localw);
+            AppBrandBackgroundRunningMonitor.c(paramAnonymousMMBackgroundRunningOperationParcel, localw);
+            AppBrandBackgroundRunningMonitor.d(paramAnonymousMMBackgroundRunningOperationParcel, localw);
+          }
+          AppMethodBeat.o(318109);
+        }
+      };
+      if (h.ax(f.class) != null) {
+        ((f)h.ax(f.class)).a(qSh);
+      }
+    }
+    String str = paramw.mAppId;
+    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startListeningOperationEvent, appId:%s", new Object[] { str });
+    if (qSg == null) {
+      qSg = new MMToClientEvent.c()
+      {
+        public final void dL(Object paramAnonymousObject)
+        {
+          AppMethodBeat.i(318110);
+          if ((paramAnonymousObject instanceof MMBackgroundRunningOperationParcel))
+          {
+            Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "app received data, operation:%s", new Object[] { (MMBackgroundRunningOperationParcel)paramAnonymousObject });
+            if (h.ax(f.class) != null) {
+              ((f)h.ax(f.class)).a((MMBackgroundRunningOperationParcel)paramAnonymousObject);
+            }
+          }
+          AppMethodBeat.o(318110);
+        }
+      };
+    }
+    MMToClientEvent.a(str, qSg);
+    if (1 == qSj.size())
+    {
+      Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startRuntimeStateMonitor, first start, alive listener");
+      qSi.alive();
+    }
+    paramw.qsB.a(new c.a()
+    {
+      public final void onRunningStateChanged(String paramAnonymousString, b paramAnonymousb)
+      {
+        AppMethodBeat.i(318123);
+        if (paramAnonymousb == b.qKz)
+        {
+          Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "AppBrandRuntime state changed to destroyed");
+          if (h.ax(f.class) != null)
+          {
+            paramAnonymousb = new AppBrandBackgroundRunningOperationParcel();
+            paramAnonymousb.appId = paramAnonymousString;
+            paramAnonymousb.cIi = c.qSr.cIi;
+            paramAnonymousb.hAf = 2;
+            if (com.tencent.mm.plugin.appbrand.d.Uc(paramAnonymousString) != null)
+            {
+              w localw = com.tencent.mm.plugin.appbrand.d.Uc(paramAnonymousString);
+              if (localw != null)
+              {
+                paramAnonymousb.epc = localw.asA().epc;
+                paramAnonymousb.euz = localw.qsh.eul;
+                if (AndroidContextUtil.castActivityOrNull(localw.mContext) != null) {
+                  paramAnonymousb.qSb = AndroidContextUtil.castActivityOrNull(localw.mContext).getClass().getName();
+                }
+              }
+            }
+            ((f)h.ax(f.class)).a(paramAnonymousb);
+          }
+          if (!AppBrandBackgroundRunningMonitor.cjM().remove(paramAnonymousString))
+          {
+            Log.w("MicroMsg.AppBrandBackgroundRunningMonitor", "onRunningStateChanged, not start, return");
+            AppMethodBeat.o(318123);
+            return;
+          }
+          boolean bool = AppBrandBackgroundRunningMonitor.cjM().isEmpty();
+          if (bool) {
+            AppBrandBackgroundRunningMonitor.access$300();
+          }
+          AppBrandBackgroundRunningMonitor.au(paramAnonymousString, bool);
+          if (bool)
+          {
+            Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "onRunningStateChanged, last stop, dead listener");
+            AppBrandBackgroundRunningMonitor.cjN().dead();
+          }
+        }
+        AppMethodBeat.o(318123);
+      }
+    });
+    AppMethodBeat.o(318184);
   }
   
-  public static void a(v paramv, int paramInt1, int paramInt2)
+  private static void B(w paramw)
   {
-    AppMethodBeat.i(44781);
-    a(paramv, paramInt1, paramInt2, false);
-    AppMethodBeat.o(44781);
-  }
-  
-  private static void a(v paramv, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(270831);
-    if (h.ae(f.class) != null)
+    AppMethodBeat.i(44782);
+    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "sendRemoveLocationUsageOperation, runtime:%s", new Object[] { paramw.mAppId });
+    if (h.ax(f.class) != null)
     {
       AppBrandBackgroundRunningOperationParcel localAppBrandBackgroundRunningOperationParcel = new AppBrandBackgroundRunningOperationParcel();
-      localAppBrandBackgroundRunningOperationParcel.appId = paramv.getAppId();
-      localAppBrandBackgroundRunningOperationParcel.cBU = paramv.getRuntime().ntz.cBI;
-      localAppBrandBackgroundRunningOperationParcel.aOm = paramInt2;
-      localAppBrandBackgroundRunningOperationParcel.fvK = paramInt1;
-      localAppBrandBackgroundRunningOperationParcel.nSq = paramv.getContext().getClass().getName();
-      localAppBrandBackgroundRunningOperationParcel.jZi = MMApplicationContext.getProcessName();
-      localAppBrandBackgroundRunningOperationParcel.nSA = paramBoolean;
-      localAppBrandBackgroundRunningOperationParcel.cxa = ((AppBrandInitConfigLU)paramv.getRuntime().Sq()).cxa;
-      if (paramInt2 == c.nSD.aOm) {
-        localAppBrandBackgroundRunningOperationParcel.nSr = AppBrandAudioOfVideoBackgroundPlayNotificationLogic.class.getName();
+      localAppBrandBackgroundRunningOperationParcel.appId = paramw.mAppId;
+      localAppBrandBackgroundRunningOperationParcel.euz = paramw.qsh.eul;
+      localAppBrandBackgroundRunningOperationParcel.cIi = c.qSm.cIi;
+      localAppBrandBackgroundRunningOperationParcel.hAf = 2;
+      localAppBrandBackgroundRunningOperationParcel.epc = paramw.asA().epc;
+      if (AndroidContextUtil.castActivityOrNull(paramw.mContext) != null) {
+        localAppBrandBackgroundRunningOperationParcel.qSb = AndroidContextUtil.castActivityOrNull(paramw.mContext).getClass().getName();
       }
-      if (((paramv instanceof com.tencent.mm.plugin.appbrand.service.c)) && (paramv.getRuntime() != null) && (paramv.getRuntime().Sq() != null))
-      {
-        paramv = (AppBrandInitConfigWC)paramv.getRuntime().Sq();
-        localAppBrandBackgroundRunningOperationParcel.name = paramv.fzM;
-        localAppBrandBackgroundRunningOperationParcel.icon = paramv.iconUrl;
-        localAppBrandBackgroundRunningOperationParcel.username = paramv.username;
-      }
-      ((f)h.ae(f.class)).a(localAppBrandBackgroundRunningOperationParcel);
+      ((f)h.ax(f.class)).a(localAppBrandBackgroundRunningOperationParcel);
     }
-    AppMethodBeat.o(270831);
+    WO(paramw.mAppId);
+    AppMethodBeat.o(44782);
   }
   
-  private static void ael(String paramString)
+  private static void WO(String paramString)
   {
     AppMethodBeat.i(44783);
     if (MMApplicationContext.isMMProcess())
     {
-      al(paramString, false);
+      at(paramString, false);
       AppMethodBeat.o(44783);
       return;
     }
@@ -138,148 +196,92 @@ public final class AppBrandBackgroundRunningMonitor
     AppMethodBeat.o(44783);
   }
   
-  private static void al(String paramString, boolean paramBoolean)
+  public static void a(w paramw, AppBrandAuthorizeUI.AuthStateChangedByUserEvent paramAuthStateChangedByUserEvent)
   {
-    AppMethodBeat.i(44784);
-    e.b(paramString, new EventLocationBackgroundStateChanged(paramBoolean));
-    AppMethodBeat.o(44784);
-  }
-  
-  public static void u(com.tencent.mm.plugin.appbrand.t paramt)
-  {
-    AppMethodBeat.i(270833);
-    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startRuntimeStateMonitor");
-    if (!nSy.add(paramt.mAppId))
+    AppMethodBeat.i(318166);
+    Object localObject;
+    boolean bool1;
+    if (paramw != null)
     {
-      Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startRuntimeStateMonitor, already start, return");
-      AppMethodBeat.o(270833);
+      localObject = (u)paramw.aO(u.class);
+      if (!(localObject instanceof v))
+      {
+        Log.w("MicroMsg.AppBrandBackgroundRunningMonitor", "handleUserAuthChanged, invalid location state manager");
+        AppMethodBeat.o(318166);
+        return;
+      }
+      localObject = (v)localObject;
+      bool2 = paramAuthStateChangedByUserEvent.tYI;
+      boolean bool3 = paramAuthStateChangedByUserEvent.tYJ;
+      if ((((u)localObject).sax) || (bool2)) {
+        break label155;
+      }
+      bool1 = true;
+      if ((!((u)localObject).sax) || ((bool3) && (bool2))) {
+        break label160;
+      }
+    }
+    label155:
+    label160:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "handleUserAuthChanged, should stop location foreground:%s, should stop location background:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if ((bool1) || (bool2))
+      {
+        ((v)localObject).csw();
+        ((v)localObject).am(paramw);
+      }
+      if (bool2) {
+        B(paramw);
+      }
+      AppMethodBeat.o(318166);
       return;
+      bool1 = false;
+      break;
     }
-    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startListeningOperationReceivedIfNeed");
-    if (nSw == null)
-    {
-      nSw = new f.a()
-      {
-        public final void b(MMBackgroundRunningOperationParcel paramAnonymousMMBackgroundRunningOperationParcel)
-        {
-          AppMethodBeat.i(282969);
-          Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "onBackgroundRunningOperationReceived, operation:%s", new Object[] { paramAnonymousMMBackgroundRunningOperationParcel });
-          com.tencent.mm.plugin.appbrand.t localt = com.tencent.mm.plugin.appbrand.d.abA(paramAnonymousMMBackgroundRunningOperationParcel.appId);
-          if (localt == null)
-          {
-            Log.w("MicroMsg.AppBrandBackgroundRunningMonitor", "onBackgroundRunningOperationReceived, runtime is null");
-            AppMethodBeat.o(282969);
-            return;
-          }
-          if (paramAnonymousMMBackgroundRunningOperationParcel.fvK == 2)
-          {
-            AppBrandBackgroundRunningMonitor.a(paramAnonymousMMBackgroundRunningOperationParcel, localt);
-            AppBrandBackgroundRunningMonitor.b(paramAnonymousMMBackgroundRunningOperationParcel, localt);
-            AppBrandBackgroundRunningMonitor.c(paramAnonymousMMBackgroundRunningOperationParcel, localt);
-            AppBrandBackgroundRunningMonitor.d(paramAnonymousMMBackgroundRunningOperationParcel, localt);
-          }
-          AppMethodBeat.o(282969);
-        }
-      };
-      if (h.ae(f.class) != null) {
-        ((f)h.ae(f.class)).a(nSw);
-      }
-    }
-    String str = paramt.mAppId;
-    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startListeningOperationEvent, appId:%s", new Object[] { str });
-    if (nSv == null) {
-      nSv = new MMToClientEvent.c()
-      {
-        public final void cq(Object paramAnonymousObject)
-        {
-          AppMethodBeat.i(270261);
-          if ((paramAnonymousObject instanceof MMBackgroundRunningOperationParcel))
-          {
-            Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "app received data, operation:%s", new Object[] { (MMBackgroundRunningOperationParcel)paramAnonymousObject });
-            if (h.ae(f.class) != null) {
-              ((f)h.ae(f.class)).a((MMBackgroundRunningOperationParcel)paramAnonymousObject);
-            }
-          }
-          AppMethodBeat.o(270261);
-        }
-      };
-    }
-    MMToClientEvent.a(str, nSv);
-    if (1 == nSy.size())
-    {
-      Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "startRuntimeStateMonitor, first start, alive listener");
-      nSx.alive();
-    }
-    paramt.ntR.a(new c.a()
-    {
-      public final void a(String paramAnonymousString, b paramAnonymousb)
-      {
-        AppMethodBeat.i(273278);
-        if (paramAnonymousb == b.nKS)
-        {
-          Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "AppBrandRuntime state changed to destroyed");
-          if (h.ae(f.class) != null)
-          {
-            paramAnonymousb = new AppBrandBackgroundRunningOperationParcel();
-            paramAnonymousb.appId = paramAnonymousString;
-            paramAnonymousb.aOm = c.nSF.aOm;
-            paramAnonymousb.fvK = 2;
-            if (com.tencent.mm.plugin.appbrand.d.abA(paramAnonymousString) != null)
-            {
-              com.tencent.mm.plugin.appbrand.t localt = com.tencent.mm.plugin.appbrand.d.abA(paramAnonymousString);
-              if (localt != null)
-              {
-                paramAnonymousb.cxa = localt.Sk().cxa;
-                paramAnonymousb.cBU = localt.ntz.cBI;
-                if (AndroidContextUtil.castActivityOrNull(localt.mContext) != null) {
-                  paramAnonymousb.nSq = AndroidContextUtil.castActivityOrNull(localt.mContext).getClass().getName();
-                }
-              }
-            }
-            ((f)h.ae(f.class)).a(paramAnonymousb);
-          }
-          if (!AppBrandBackgroundRunningMonitor.bKm().remove(paramAnonymousString))
-          {
-            Log.w("MicroMsg.AppBrandBackgroundRunningMonitor", "onRunningStateChanged, not start, return");
-            AppMethodBeat.o(273278);
-            return;
-          }
-          boolean bool = AppBrandBackgroundRunningMonitor.bKm().isEmpty();
-          if (bool) {
-            AppBrandBackgroundRunningMonitor.access$300();
-          }
-          AppBrandBackgroundRunningMonitor.am(paramAnonymousString, bool);
-          if (bool)
-          {
-            Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "onRunningStateChanged, last stop, dead listener");
-            AppBrandBackgroundRunningMonitor.bKn().dead();
-          }
-        }
-        AppMethodBeat.o(273278);
-      }
-    });
-    AppMethodBeat.o(270833);
   }
   
-  private static void v(com.tencent.mm.plugin.appbrand.t paramt)
+  public static void a(y paramy, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(44782);
-    Log.i("MicroMsg.AppBrandBackgroundRunningMonitor", "sendRemoveLocationUsageOperation, runtime:%s", new Object[] { paramt.mAppId });
-    if (h.ae(f.class) != null)
+    AppMethodBeat.i(44781);
+    a(paramy, paramInt1, paramInt2, false);
+    AppMethodBeat.o(44781);
+  }
+  
+  private static void a(y paramy, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(318178);
+    if (h.ax(f.class) != null)
     {
       AppBrandBackgroundRunningOperationParcel localAppBrandBackgroundRunningOperationParcel = new AppBrandBackgroundRunningOperationParcel();
-      localAppBrandBackgroundRunningOperationParcel.appId = paramt.mAppId;
-      localAppBrandBackgroundRunningOperationParcel.cBU = paramt.ntz.cBI;
-      localAppBrandBackgroundRunningOperationParcel.aOm = c.nSB.aOm;
-      localAppBrandBackgroundRunningOperationParcel.fvK = 2;
-      localAppBrandBackgroundRunningOperationParcel.cxa = paramt.Sk().cxa;
-      if (AndroidContextUtil.castActivityOrNull(paramt.mContext) != null) {
-        localAppBrandBackgroundRunningOperationParcel.nSq = AndroidContextUtil.castActivityOrNull(paramt.mContext).getClass().getName();
+      localAppBrandBackgroundRunningOperationParcel.appId = paramy.getAppId();
+      localAppBrandBackgroundRunningOperationParcel.euz = paramy.getRuntime().qsh.eul;
+      localAppBrandBackgroundRunningOperationParcel.cIi = paramInt2;
+      localAppBrandBackgroundRunningOperationParcel.hAf = paramInt1;
+      localAppBrandBackgroundRunningOperationParcel.qSb = paramy.getContext().getClass().getName();
+      localAppBrandBackgroundRunningOperationParcel.mzg = MMApplicationContext.getProcessName();
+      localAppBrandBackgroundRunningOperationParcel.qSl = paramBoolean;
+      localAppBrandBackgroundRunningOperationParcel.epc = ((AppBrandInitConfigLU)paramy.getRuntime().asH()).epc;
+      if (paramInt2 == c.qSo.cIi) {
+        localAppBrandBackgroundRunningOperationParcel.qSc = AppBrandAudioOfVideoBackgroundPlayNotificationLogic.class.getName();
       }
-      ((f)h.ae(f.class)).a(localAppBrandBackgroundRunningOperationParcel);
+      if (((paramy instanceof com.tencent.mm.plugin.appbrand.service.c)) && (paramy.getRuntime() != null) && (paramy.getRuntime().asH() != null))
+      {
+        paramy = (AppBrandInitConfigWC)paramy.getRuntime().asH();
+        localAppBrandBackgroundRunningOperationParcel.name = paramy.hEy;
+        localAppBrandBackgroundRunningOperationParcel.icon = paramy.iconUrl;
+        localAppBrandBackgroundRunningOperationParcel.username = paramy.username;
+      }
+      ((f)h.ax(f.class)).a(localAppBrandBackgroundRunningOperationParcel);
     }
-    ael(paramt.mAppId);
-    AppMethodBeat.o(44782);
+    AppMethodBeat.o(318178);
+  }
+  
+  private static void at(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(44784);
+    com.tencent.mm.plugin.appbrand.ipc.f.b(paramString, new EventLocationBackgroundStateChanged(paramBoolean));
+    AppMethodBeat.o(44784);
   }
   
   static class NotifyLocationBackgroundChanged
@@ -287,7 +289,7 @@ public final class AppBrandBackgroundRunningMonitor
   {
     public static final Parcelable.Creator<NotifyLocationBackgroundChanged> CREATOR;
     public String appId;
-    public boolean nSz;
+    public boolean qSk;
     
     static
     {
@@ -303,7 +305,7 @@ public final class AppBrandBackgroundRunningMonitor
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.nSz = bool;
+        this.qSk = bool;
         AppMethodBeat.o(44778);
         return;
       }
@@ -312,7 +314,7 @@ public final class AppBrandBackgroundRunningMonitor
     public NotifyLocationBackgroundChanged(String paramString)
     {
       this.appId = paramString;
-      this.nSz = false;
+      this.qSk = false;
     }
     
     public int describeContents()
@@ -324,7 +326,7 @@ public final class AppBrandBackgroundRunningMonitor
     {
       AppMethodBeat.i(44779);
       paramParcel.writeString(this.appId);
-      if (this.nSz) {}
+      if (this.qSk) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
@@ -340,7 +342,7 @@ public final class AppBrandBackgroundRunningMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 public final class p
 {
-  private RandomAccessFile jso;
-  private RandomAccessFile jsp;
-  private a jsq;
-  private ArrayList<a> jsr;
+  private RandomAccessFile lVD;
+  private RandomAccessFile lVE;
+  private a lVF;
+  private ArrayList<a> lVG;
   private long pid = 0L;
   
   public p() {}
@@ -22,33 +22,33 @@ public final class p
   }
   
   /* Error */
-  private void auB()
+  private void aOU()
   {
     // Byte code:
     //   0: ldc 29
     //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 37	com/tencent/mm/compatible/deviceinfo/p:jsp	Ljava/io/RandomAccessFile;
+    //   6: getfield 37	com/tencent/mm/compatible/deviceinfo/p:lVE	Ljava/io/RandomAccessFile;
     //   9: ifnull +160 -> 169
     //   12: aload_0
-    //   13: getfield 37	com/tencent/mm/compatible/deviceinfo/p:jsp	Ljava/io/RandomAccessFile;
+    //   13: getfield 37	com/tencent/mm/compatible/deviceinfo/p:lVE	Ljava/io/RandomAccessFile;
     //   16: lconst_0
     //   17: invokevirtual 42	java/io/RandomAccessFile:seek	(J)V
     //   20: aload_0
-    //   21: getfield 37	com/tencent/mm/compatible/deviceinfo/p:jsp	Ljava/io/RandomAccessFile;
+    //   21: getfield 37	com/tencent/mm/compatible/deviceinfo/p:lVE	Ljava/io/RandomAccessFile;
     //   24: invokevirtual 46	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   27: astore 25
     //   29: aload_0
-    //   30: getfield 48	com/tencent/mm/compatible/deviceinfo/p:jso	Ljava/io/RandomAccessFile;
+    //   30: getfield 48	com/tencent/mm/compatible/deviceinfo/p:lVD	Ljava/io/RandomAccessFile;
     //   33: ifnull +552 -> 585
     //   36: aload_0
-    //   37: getfield 48	com/tencent/mm/compatible/deviceinfo/p:jso	Ljava/io/RandomAccessFile;
+    //   37: getfield 48	com/tencent/mm/compatible/deviceinfo/p:lVD	Ljava/io/RandomAccessFile;
     //   40: lconst_0
     //   41: invokevirtual 42	java/io/RandomAccessFile:seek	(J)V
     //   44: iconst_m1
     //   45: istore_1
     //   46: aload_0
-    //   47: getfield 48	com/tencent/mm/compatible/deviceinfo/p:jso	Ljava/io/RandomAccessFile;
+    //   47: getfield 48	com/tencent/mm/compatible/deviceinfo/p:lVD	Ljava/io/RandomAccessFile;
     //   50: invokevirtual 46	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   53: astore 26
     //   55: aload 26
@@ -71,7 +71,7 @@ public final class p
     //   91: iconst_m1
     //   92: if_icmpne +529 -> 621
     //   95: aload_0
-    //   96: getfield 68	com/tencent/mm/compatible/deviceinfo/p:jsq	Lcom/tencent/mm/compatible/deviceinfo/p$a;
+    //   96: getfield 68	com/tencent/mm/compatible/deviceinfo/p:lVF	Lcom/tencent/mm/compatible/deviceinfo/p$a;
     //   99: ifnonnull +19 -> 118
     //   102: aload_0
     //   103: new 6	com/tencent/mm/compatible/deviceinfo/p$a
@@ -80,12 +80,12 @@ public final class p
     //   108: aload_0
     //   109: getfield 23	com/tencent/mm/compatible/deviceinfo/p:pid	J
     //   112: invokespecial 71	com/tencent/mm/compatible/deviceinfo/p$a:<init>	(Lcom/tencent/mm/compatible/deviceinfo/p;J)V
-    //   115: putfield 68	com/tencent/mm/compatible/deviceinfo/p:jsq	Lcom/tencent/mm/compatible/deviceinfo/p$a;
+    //   115: putfield 68	com/tencent/mm/compatible/deviceinfo/p:lVF	Lcom/tencent/mm/compatible/deviceinfo/p$a;
     //   118: aload_0
-    //   119: getfield 68	com/tencent/mm/compatible/deviceinfo/p:jsq	Lcom/tencent/mm/compatible/deviceinfo/p$a;
+    //   119: getfield 68	com/tencent/mm/compatible/deviceinfo/p:lVF	Lcom/tencent/mm/compatible/deviceinfo/p$a;
     //   122: astore 28
     //   124: aload 28
-    //   126: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:jst	J
+    //   126: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:lVI	J
     //   129: lconst_0
     //   130: lcmp
     //   131: ifgt +44 -> 175
@@ -131,7 +131,7 @@ public final class p
     //   219: bipush 10
     //   221: invokestatic 105	java/lang/Long:parseLong	(Ljava/lang/String;I)J
     //   224: aload 28
-    //   226: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:jst	J
+    //   226: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:lVI	J
     //   229: lcmp
     //   230: ifne +361 -> 591
     //   233: aload 29
@@ -196,12 +196,12 @@ public final class p
     //   343: lstore 19
     //   345: lload 5
     //   347: aload 28
-    //   349: getfield 111	com/tencent/mm/compatible/deviceinfo/p$a:jss	J
+    //   349: getfield 111	com/tencent/mm/compatible/deviceinfo/p$a:lVH	J
     //   352: lsub
     //   353: lstore 21
     //   355: lload 15
     //   357: aload 28
-    //   359: getfield 114	com/tencent/mm/compatible/deviceinfo/p$a:jsu	J
+    //   359: getfield 114	com/tencent/mm/compatible/deviceinfo/p$a:lVJ	J
     //   362: lsub
     //   363: lstore 23
     //   365: aload 28
@@ -215,7 +215,7 @@ public final class p
     //   377: ldc 115
     //   379: fmul
     //   380: f2i
-    //   381: putfield 119	com/tencent/mm/compatible/deviceinfo/p$a:abL	I
+    //   381: putfield 119	com/tencent/mm/compatible/deviceinfo/p$a:bJu	I
     //   384: aload 28
     //   386: lload 23
     //   388: l2f
@@ -225,16 +225,16 @@ public final class p
     //   393: ldc 115
     //   395: fmul
     //   396: f2i
-    //   397: putfield 122	com/tencent/mm/compatible/deviceinfo/p$a:jsv	I
+    //   397: putfield 122	com/tencent/mm/compatible/deviceinfo/p$a:lVK	I
     //   400: aload 28
     //   402: lload 5
-    //   404: putfield 111	com/tencent/mm/compatible/deviceinfo/p$a:jss	J
+    //   404: putfield 111	com/tencent/mm/compatible/deviceinfo/p$a:lVH	J
     //   407: aload 28
     //   409: lload 17
     //   411: putfield 108	com/tencent/mm/compatible/deviceinfo/p$a:mLastIdle	J
     //   414: aload 28
     //   416: lload 15
-    //   418: putfield 114	com/tencent/mm/compatible/deviceinfo/p$a:jsu	J
+    //   418: putfield 114	com/tencent/mm/compatible/deviceinfo/p$a:lVJ	J
     //   421: ldc 83
     //   423: ldc 124
     //   425: bipush 14
@@ -258,13 +258,13 @@ public final class p
     //   457: dup
     //   458: iconst_3
     //   459: aload 28
-    //   461: getfield 119	com/tencent/mm/compatible/deviceinfo/p$a:abL	I
+    //   461: getfield 119	com/tencent/mm/compatible/deviceinfo/p$a:bJu	I
     //   464: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   467: aastore
     //   468: dup
     //   469: iconst_4
     //   470: aload 28
-    //   472: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:jst	J
+    //   472: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:lVI	J
     //   475: invokestatic 135	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   478: aastore
     //   479: dup
@@ -275,7 +275,7 @@ public final class p
     //   487: dup
     //   488: bipush 6
     //   490: aload 28
-    //   492: getfield 122	com/tencent/mm/compatible/deviceinfo/p$a:jsv	I
+    //   492: getfield 122	com/tencent/mm/compatible/deviceinfo/p$a:lVK	I
     //   495: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   498: aastore
     //   499: dup
@@ -332,7 +332,7 @@ public final class p
     //   599: dup
     //   600: iconst_0
     //   601: aload 28
-    //   603: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:jst	J
+    //   603: getfield 74	com/tencent/mm/compatible/deviceinfo/p$a:lVI	J
     //   606: invokestatic 135	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   609: aastore
     //   610: dup
@@ -342,20 +342,20 @@ public final class p
     //   615: invokestatic 144	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   618: goto -477 -> 141
     //   621: aload_0
-    //   622: getfield 146	com/tencent/mm/compatible/deviceinfo/p:jsr	Ljava/util/ArrayList;
+    //   622: getfield 146	com/tencent/mm/compatible/deviceinfo/p:lVG	Ljava/util/ArrayList;
     //   625: ifnonnull +14 -> 639
     //   628: aload_0
     //   629: new 148	java/util/ArrayList
     //   632: dup
     //   633: invokespecial 149	java/util/ArrayList:<init>	()V
-    //   636: putfield 146	com/tencent/mm/compatible/deviceinfo/p:jsr	Ljava/util/ArrayList;
+    //   636: putfield 146	com/tencent/mm/compatible/deviceinfo/p:lVG	Ljava/util/ArrayList;
     //   639: iload_1
     //   640: aload_0
-    //   641: getfield 146	com/tencent/mm/compatible/deviceinfo/p:jsr	Ljava/util/ArrayList;
+    //   641: getfield 146	com/tencent/mm/compatible/deviceinfo/p:lVG	Ljava/util/ArrayList;
     //   644: invokevirtual 152	java/util/ArrayList:size	()I
     //   647: if_icmpge +22 -> 669
     //   650: aload_0
-    //   651: getfield 146	com/tencent/mm/compatible/deviceinfo/p:jsr	Ljava/util/ArrayList;
+    //   651: getfield 146	com/tencent/mm/compatible/deviceinfo/p:lVG	Ljava/util/ArrayList;
     //   654: iload_1
     //   655: invokevirtual 156	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   658: checkcast 6	com/tencent/mm/compatible/deviceinfo/p$a
@@ -371,7 +371,7 @@ public final class p
     //   681: aload 27
     //   683: invokevirtual 78	com/tencent/mm/compatible/deviceinfo/p$a:g	([Ljava/lang/String;)V
     //   686: aload_0
-    //   687: getfield 146	com/tencent/mm/compatible/deviceinfo/p:jsr	Ljava/util/ArrayList;
+    //   687: getfield 146	com/tencent/mm/compatible/deviceinfo/p:lVG	Ljava/util/ArrayList;
     //   690: aload 28
     //   692: invokevirtual 163	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   695: pop
@@ -460,16 +460,16 @@ public final class p
     AppMethodBeat.i(155679);
     try
     {
-      this.jso = u.dO("/proc/stat", false);
+      this.lVD = y.eA("/proc/stat", false);
       if (this.pid > 0L) {
-        this.jsp = u.dO("/proc/" + this.pid + "/stat", false);
+        this.lVE = y.eA("/proc/" + this.pid + "/stat", false);
       }
-      auB();
-      if (this.jso != null) {
-        this.jso.close();
+      aOU();
+      if (this.lVD != null) {
+        this.lVD.close();
       }
-      if (this.jsp != null) {
-        this.jsp.close();
+      if (this.lVE != null) {
+        this.lVE.close();
       }
       AppMethodBeat.o(155679);
       return;
@@ -477,19 +477,19 @@ public final class p
     catch (Exception localException1)
     {
       Log.printErrStackTrace(" MicroMsg.CpuUsage", localException1, "update e:", new Object[0]);
-      if (this.jso == null) {}
+      if (this.lVD == null) {}
     }
     try
     {
-      this.jso.close();
+      this.lVD.close();
       label121:
-      this.jso = null;
-      if (this.jsp != null) {}
+      this.lVD = null;
+      if (this.lVE != null) {}
       try
       {
-        this.jsp.close();
+        this.lVE.close();
         label140:
-        this.jsp = null;
+        this.lVE = null;
         AppMethodBeat.o(155679);
         return;
       }
@@ -504,15 +504,15 @@ public final class p
     }
   }
   
-  public final int auC()
+  public final int aOV()
   {
-    AppMethodBeat.i(261769);
+    AppMethodBeat.i(240871);
     update();
     int i = 0;
-    if (this.jsq != null) {
-      i = this.jsq.abL;
+    if (this.lVF != null) {
+      i = this.lVF.bJu;
     }
-    AppMethodBeat.o(261769);
+    AppMethodBeat.o(240871);
     return i;
   }
   
@@ -521,27 +521,27 @@ public final class p
     AppMethodBeat.i(155684);
     update();
     Object localObject = new StringBuffer();
-    if (this.jsq != null)
+    if (this.lVF != null)
     {
       ((StringBuffer)localObject).append("Cpu Total : ");
-      ((StringBuffer)localObject).append(this.jsq.abL);
+      ((StringBuffer)localObject).append(this.lVF.bJu);
       ((StringBuffer)localObject).append("%");
       if (this.pid > 0L)
       {
         ((StringBuffer)localObject).append("pid(");
         ((StringBuffer)localObject).append(this.pid + ") :");
-        ((StringBuffer)localObject).append(this.jsq.jsv);
+        ((StringBuffer)localObject).append(this.lVF.lVK);
         ((StringBuffer)localObject).append("%");
       }
     }
-    if (this.jsr != null)
+    if (this.lVG != null)
     {
       int i = 0;
-      while (i < this.jsr.size())
+      while (i < this.lVG.size())
       {
-        a locala = (a)this.jsr.get(i);
+        a locala = (a)this.lVG.get(i);
         ((StringBuffer)localObject).append(" Cpu Core(" + i + ") : ");
-        ((StringBuffer)localObject).append(locala.abL);
+        ((StringBuffer)localObject).append(locala.bJu);
         ((StringBuffer)localObject).append("%");
         i += 1;
       }
@@ -553,26 +553,26 @@ public final class p
   
   public final class a
   {
-    int abL;
-    long jss;
-    long jst;
-    long jsu;
-    int jsv;
+    int bJu;
+    long lVH;
+    long lVI;
+    long lVJ;
+    int lVK;
     long mLastIdle;
     
     public a()
     {
-      this.abL = 0;
-      this.jss = 0L;
+      this.bJu = 0;
+      this.lVH = 0L;
       this.mLastIdle = 0L;
-      this.jst = 0L;
-      this.jsu = 0L;
-      this.jsv = 0;
+      this.lVI = 0L;
+      this.lVJ = 0L;
+      this.lVK = 0;
     }
     
     public a(long paramLong)
     {
-      this.jst = paramLong;
+      this.lVI = paramLong;
     }
     
     public final void g(String[] paramArrayOfString)
@@ -597,18 +597,18 @@ public final class p
         }
       }
       long l3 = this.mLastIdle;
-      long l4 = l1 - this.jss;
-      this.abL = ((int)((float)(l4 - (l2 - l3)) / (float)l4 * 100.0F));
-      this.jss = l1;
+      long l4 = l1 - this.lVH;
+      this.bJu = ((int)((float)(l4 - (l2 - l3)) / (float)l4 * 100.0F));
+      this.lVH = l1;
       this.mLastIdle = l2;
-      Log.i(" MicroMsg.CpuUsage", "CpuUsageInfo(" + hashCode() + ") CPU total=" + l1 + "; idle=" + l2 + "; usage=" + this.abL);
+      Log.i(" MicroMsg.CpuUsage", "CpuUsageInfo(" + hashCode() + ") CPU total=" + l1 + "; idle=" + l2 + "; usage=" + this.bJu);
       AppMethodBeat.o(155678);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.p
  * JD-Core Version:    0.7.0.1
  */

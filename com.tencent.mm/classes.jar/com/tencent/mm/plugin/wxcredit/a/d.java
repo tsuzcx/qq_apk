@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public final class d
   extends m
 {
-  public k QNZ;
+  public k XHx;
   
   public d(String paramString1, String paramString2)
   {
@@ -48,23 +48,23 @@ public final class d
       String str;
       try
       {
-        this.QNZ = new k();
-        this.QNZ.QOd = paramJSONObject.optInt("credit_state");
-        this.QNZ.QNY = (paramJSONObject.optInt("credit_amount") / 100.0D);
-        this.QNZ.QOe = (paramJSONObject.optInt("credit_usable") / 100.0D);
-        this.QNZ.QOf = (paramJSONObject.optInt("bill_amount") / 100.0D);
-        this.QNZ.QOg = paramJSONObject.optInt("bill_date");
-        this.QNZ.QOh = (paramJSONObject.optInt("repay_amount") / 100.0D);
-        this.QNZ.QOi = (paramJSONObject.optInt("repay_minimum") / 100.0D);
-        paramString = this.QNZ;
+        this.XHx = new k();
+        this.XHx.XHB = paramJSONObject.optInt("credit_state");
+        this.XHx.XHw = (paramJSONObject.optInt("credit_amount") / 100.0D);
+        this.XHx.XHC = (paramJSONObject.optInt("credit_usable") / 100.0D);
+        this.XHx.XHD = (paramJSONObject.optInt("bill_amount") / 100.0D);
+        this.XHx.XHE = paramJSONObject.optInt("bill_date");
+        this.XHx.XHF = (paramJSONObject.optInt("repay_amount") / 100.0D);
+        this.XHx.XHG = (paramJSONObject.optInt("repay_minimum") / 100.0D);
+        paramString = this.XHx;
         if (paramJSONObject.optInt("upgrade_amount") != 1) {
           break label525;
         }
-        paramString.QOj = bool;
-        this.QNZ.QOk = paramJSONObject.optInt("bill_month");
-        this.QNZ.QOl = paramJSONObject.optString("repay_url");
-        this.QNZ.QOm = paramJSONObject.optString("repay_lasttime");
-        this.QNZ.QOp = paramJSONObject.optString("lasttime");
+        paramString.XHH = bool;
+        this.XHx.XHI = paramJSONObject.optInt("bill_month");
+        this.XHx.XHJ = paramJSONObject.optString("repay_url");
+        this.XHx.XHK = paramJSONObject.optString("repay_lasttime");
+        this.XHx.XHN = paramJSONObject.optString("lasttime");
         paramString = paramJSONObject.getJSONArray("jump_url_array");
         if ((paramString == null) || (paramString.length() <= 0)) {
           break label423;
@@ -77,9 +77,9 @@ public final class d
         localJSONObject = paramString.getJSONObject(paramInt);
         str = localJSONObject.getString("jump_name");
         if ("account_rights_url".equals(str)) {
-          this.QNZ.QOo = localJSONObject.getString("jump_url");
+          this.XHx.XHM = localJSONObject.getString("jump_url");
         } else if ("bill_url".equals(str)) {
-          this.QNZ.ImN = localJSONObject.getString("jump_url");
+          this.XHx.Okd = localJSONObject.getString("jump_url");
         }
       }
       catch (Exception paramString)
@@ -90,21 +90,21 @@ public final class d
       }
       if ("card_detail_url".equals(str))
       {
-        this.QNZ.QOn = localJSONObject.getString("jump_url");
+        this.XHx.XHL = localJSONObject.getString("jump_url");
       }
       else if ("know_more_url".equals(str))
       {
-        this.QNZ.QOq = localJSONObject.getString("jump_url");
+        this.XHx.XHO = localJSONObject.getString("jump_url");
         break label518;
         label423:
         paramString = paramJSONObject.getJSONObject("appservice");
         if (paramString != null)
         {
-          this.QNZ.QOr = new j();
-          this.QNZ.QOr.QOc = paramString.getString("app_telephone");
-          this.QNZ.QOr.nickname = paramString.getString("nickname");
-          this.QNZ.QOr.username = paramString.getString("username");
-          this.QNZ.QOr.url = paramString.getString("jump_url");
+          this.XHx.XHP = new j();
+          this.XHx.XHP.XHA = paramString.getString("app_telephone");
+          this.XHx.XHP.nickname = paramString.getString("nickname");
+          this.XHx.XHP.username = paramString.getString("username");
+          this.XHx.XHP.url = paramString.getString("jump_url");
         }
         AppMethodBeat.o(72304);
         return;
@@ -119,7 +119,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.d
  * JD-Core Version:    0.7.0.1
  */

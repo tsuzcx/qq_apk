@@ -13,22 +13,22 @@ public final class b
     super(paramActivity);
   }
   
-  public final int cuS()
+  public final int cXC()
   {
     return 0;
   }
   
   public final Activity getActivity()
   {
-    AppMethodBeat.i(203599);
+    AppMethodBeat.i(271705);
     Activity localActivity = (Activity)Objects.requireNonNull(super.getActivity());
-    AppMethodBeat.o(203599);
+    AppMethodBeat.o(271705);
     return localActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

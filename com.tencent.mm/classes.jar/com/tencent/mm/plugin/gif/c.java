@@ -11,39 +11,39 @@ import java.lang.ref.WeakReference;
 
 public class c
 {
-  private static c DmP;
-  f<String, WeakReference<e>> DmQ;
-  f<String, WeakReference<b>> DmR;
+  private static c Jgz;
+  f<String, WeakReference<e>> JgA;
+  public f<String, WeakReference<b>> JgB;
   
   public c()
   {
     AppMethodBeat.i(104585);
-    this.DmQ = new com.tencent.mm.memory.a.c(10);
-    this.DmR = new com.tencent.mm.memory.a.c(new f.b() {});
+    this.JgA = new com.tencent.mm.memory.a.c(10);
+    this.JgB = new com.tencent.mm.memory.a.c(new f.b() {});
     AppMethodBeat.o(104585);
   }
   
   /* Error */
-  public static c eAV()
+  public static c fJa()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc 45
     //   5: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 47	com/tencent/mm/plugin/gif/c:DmP	Lcom/tencent/mm/plugin/gif/c;
+    //   8: getstatic 47	com/tencent/mm/plugin/gif/c:Jgz	Lcom/tencent/mm/plugin/gif/c;
     //   11: ifnonnull +25 -> 36
     //   14: ldc 2
     //   16: monitorenter
-    //   17: getstatic 47	com/tencent/mm/plugin/gif/c:DmP	Lcom/tencent/mm/plugin/gif/c;
+    //   17: getstatic 47	com/tencent/mm/plugin/gif/c:Jgz	Lcom/tencent/mm/plugin/gif/c;
     //   20: ifnonnull +13 -> 33
     //   23: new 2	com/tencent/mm/plugin/gif/c
     //   26: dup
     //   27: invokespecial 48	com/tencent/mm/plugin/gif/c:<init>	()V
-    //   30: putstatic 47	com/tencent/mm/plugin/gif/c:DmP	Lcom/tencent/mm/plugin/gif/c;
+    //   30: putstatic 47	com/tencent/mm/plugin/gif/c:Jgz	Lcom/tencent/mm/plugin/gif/c;
     //   33: ldc 2
     //   35: monitorexit
-    //   36: getstatic 47	com/tencent/mm/plugin/gif/c:DmP	Lcom/tencent/mm/plugin/gif/c;
+    //   36: getstatic 47	com/tencent/mm/plugin/gif/c:Jgz	Lcom/tencent/mm/plugin/gif/c;
     //   39: astore_0
     //   40: ldc 45
     //   42: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -77,40 +77,40 @@ public class c
     //   51	61	61	finally
   }
   
-  public final b aKR(String paramString)
+  public final b aHI(String paramString)
   {
     AppMethodBeat.i(104587);
     b localb = null;
-    if (this.DmR.get(paramString) != null) {
-      localb = (b)((WeakReference)this.DmR.get(paramString)).get();
+    if (this.JgB.get(paramString) != null) {
+      localb = (b)((WeakReference)this.JgB.get(paramString)).get();
     }
     AppMethodBeat.o(104587);
     return localb;
   }
   
-  public final b c(Resources paramResources, int paramInt)
+  public final b d(Resources paramResources, int paramInt)
   {
     AppMethodBeat.i(104589);
-    if (this.DmR.get(null) != null) {}
-    for (b localb = (b)((WeakReference)this.DmR.get(null)).get();; localb = null)
+    if (this.JgB.get(null) != null) {}
+    for (b localb = (b)((WeakReference)this.JgB.get(null)).get();; localb = null)
     {
       Object localObject = localb;
       if (localb == null)
       {
-        localObject = new d(paramResources, paramInt);
-        this.DmR.put(null, new WeakReference(localObject));
+        localObject = new d(paramResources, paramInt, false);
+        this.JgB.put(null, new WeakReference(localObject));
       }
       AppMethodBeat.o(104589);
       return localObject;
     }
   }
   
-  public final b ic(String paramString1, String paramString2)
+  public final b jj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104588);
     b localb = null;
-    if (this.DmR.get(paramString1) != null) {
-      localb = (b)((WeakReference)this.DmR.get(paramString1)).get();
+    if (this.JgB.get(paramString1) != null) {
+      localb = (b)((WeakReference)this.JgB.get(paramString1)).get();
     }
     Object localObject = localb;
     long l;
@@ -125,14 +125,14 @@ public class c
     for (paramString2 = new h(paramString2);; paramString2 = new d(paramString2))
     {
       Log.d("MicroMsg.GIF.MMAnimateDrawableCacheMgr", "new MMAnimateDrawable use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      this.DmR.put(paramString1, new WeakReference(paramString2));
+      this.JgB.put(paramString1, new WeakReference(paramString2));
       localObject = paramString2;
       AppMethodBeat.o(104588);
       return localObject;
     }
   }
   
-  public final b v(String paramString, byte[] paramArrayOfByte)
+  public final b z(String paramString, byte[] paramArrayOfByte)
   {
     b localb = null;
     AppMethodBeat.i(104590);
@@ -141,19 +141,19 @@ public class c
       AppMethodBeat.o(104590);
       return null;
     }
-    if (this.DmR.get(paramString) != null) {
-      localb = (b)((WeakReference)this.DmR.get(paramString)).get();
+    if (this.JgB.get(paramString) != null) {
+      localb = (b)((WeakReference)this.JgB.get(paramString)).get();
     }
     Object localObject = localb;
     if (localb == null) {
-      if ((!ImgUtil.isWXGF(paramArrayOfByte)) || (!((PluginEmoji)com.tencent.mm.kernel.h.ag(PluginEmoji.class)).getEmojiMgr().cUw())) {
+      if ((!ImgUtil.isWXGF(paramArrayOfByte)) || (!((PluginEmoji)com.tencent.mm.kernel.h.az(PluginEmoji.class)).getEmojiMgr().dzD())) {
         break label136;
       }
     }
     label136:
     for (paramArrayOfByte = new h(paramArrayOfByte);; paramArrayOfByte = new d(paramArrayOfByte))
     {
-      this.DmR.put(paramString, new WeakReference(paramArrayOfByte));
+      this.JgB.put(paramString, new WeakReference(paramArrayOfByte));
       localObject = paramArrayOfByte;
       if (!((b)localObject).isRunning()) {
         ((b)localObject).reset();

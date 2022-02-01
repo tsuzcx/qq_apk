@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.newtips;
 
 public final class b$e
 {
-  public static final int app_new = 2131755978;
-  public static final int tab_msg_tip_over = 2131767215;
+  public static final int default_readerapp_plugin = 2131692142;
 }
 
 

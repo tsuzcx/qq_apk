@@ -1,127 +1,127 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$ax
   extends e
 {
-  public int Zhc = 0;
-  public int Zhd = 0;
-  public int Zhe = 0;
-  public int Zhf = 0;
-  public int Zhg = 0;
-  public int Zhh = 0;
-  public int Zhi = 0;
-  public int Zhj = 0;
-  public int Zhk = 0;
-  public int Zhl = 0;
-  public int lJs = 0;
-  public int lJt = 0;
+  public int ahfD = 0;
+  public int ahfE = 0;
+  public int ahfF = 0;
+  public int ahfG = 0;
+  public int ahfH = 0;
+  public int ahfI = 0;
+  public int ahfJ = 0;
+  public int ahfK = 0;
+  public int ahfL = 0;
+  public int ahfM = 0;
+  public int oBU = 0;
+  public int oBV = 0;
   
   public a$ax()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (this.Zhc != 0) {
-      i = j + b.bM(1, this.Zhc);
-    }
-    j = i;
-    if (this.lJs != 0) {
-      j = i + b.bM(2, this.lJs);
-    }
-    i = j;
-    if (this.lJt != 0) {
-      i = j + b.bM(3, this.lJt);
-    }
-    j = i;
-    if (this.Zhd != 0) {
-      j = i + b.bM(4, this.Zhd);
-    }
-    i = j;
-    if (this.Zhe != 0) {
-      i = j + b.bM(5, this.Zhe);
-    }
-    j = i;
-    if (this.Zhf != 0) {
-      j = i + b.bM(6, this.Zhf);
-    }
-    i = j;
-    if (this.Zhg != 0) {
-      i = j + b.bM(7, this.Zhg);
-    }
-    j = i;
-    if (this.Zhh != 0) {
-      j = i + b.bM(8, this.Zhh);
-    }
-    i = j;
-    if (this.Zhi != 0) {
-      i = j + b.bM(9, this.Zhi);
-    }
-    j = i;
-    if (this.Zhj != 0) {
-      j = i + b.bM(10, this.Zhj);
-    }
-    i = j;
-    if (this.Zhk != 0) {
-      i = j + b.bM(11, this.Zhk);
-    }
-    j = i;
-    if (this.Zhl != 0) {
-      j = i + b.bM(12, this.Zhl);
-    }
-    return j;
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.Zhc != 0) {
-      paramb.bJ(1, this.Zhc);
+    if (this.ahfD != 0) {
+      paramb.cF(1, this.ahfD);
     }
-    if (this.lJs != 0) {
-      paramb.bJ(2, this.lJs);
+    if (this.oBU != 0) {
+      paramb.cF(2, this.oBU);
     }
-    if (this.lJt != 0) {
-      paramb.bJ(3, this.lJt);
+    if (this.oBV != 0) {
+      paramb.cF(3, this.oBV);
     }
-    if (this.Zhd != 0) {
-      paramb.bJ(4, this.Zhd);
+    if (this.ahfE != 0) {
+      paramb.cF(4, this.ahfE);
     }
-    if (this.Zhe != 0) {
-      paramb.bJ(5, this.Zhe);
+    if (this.ahfF != 0) {
+      paramb.cF(5, this.ahfF);
     }
-    if (this.Zhf != 0) {
-      paramb.bJ(6, this.Zhf);
+    if (this.ahfG != 0) {
+      paramb.cF(6, this.ahfG);
     }
-    if (this.Zhg != 0) {
-      paramb.bJ(7, this.Zhg);
+    if (this.ahfH != 0) {
+      paramb.cF(7, this.ahfH);
     }
-    if (this.Zhh != 0) {
-      paramb.bJ(8, this.Zhh);
+    if (this.ahfI != 0) {
+      paramb.cF(8, this.ahfI);
     }
-    if (this.Zhi != 0) {
-      paramb.bJ(9, this.Zhi);
+    if (this.ahfJ != 0) {
+      paramb.cF(9, this.ahfJ);
     }
-    if (this.Zhj != 0) {
-      paramb.bJ(10, this.Zhj);
+    if (this.ahfK != 0) {
+      paramb.cF(10, this.ahfK);
     }
-    if (this.Zhk != 0) {
-      paramb.bJ(11, this.Zhk);
+    if (this.ahfL != 0) {
+      paramb.cF(11, this.ahfL);
     }
-    if (this.Zhl != 0) {
-      paramb.bJ(12, this.Zhl);
+    if (this.ahfM != 0) {
+      paramb.cF(12, this.ahfM);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (this.ahfD != 0) {
+      i = j + b.cJ(1, this.ahfD);
+    }
+    j = i;
+    if (this.oBU != 0) {
+      j = i + b.cJ(2, this.oBU);
+    }
+    i = j;
+    if (this.oBV != 0) {
+      i = j + b.cJ(3, this.oBV);
+    }
+    j = i;
+    if (this.ahfE != 0) {
+      j = i + b.cJ(4, this.ahfE);
+    }
+    i = j;
+    if (this.ahfF != 0) {
+      i = j + b.cJ(5, this.ahfF);
+    }
+    j = i;
+    if (this.ahfG != 0) {
+      j = i + b.cJ(6, this.ahfG);
+    }
+    i = j;
+    if (this.ahfH != 0) {
+      i = j + b.cJ(7, this.ahfH);
+    }
+    j = i;
+    if (this.ahfI != 0) {
+      j = i + b.cJ(8, this.ahfI);
+    }
+    i = j;
+    if (this.ahfJ != 0) {
+      i = j + b.cJ(9, this.ahfJ);
+    }
+    j = i;
+    if (this.ahfK != 0) {
+      j = i + b.cJ(10, this.ahfK);
+    }
+    i = j;
+    if (this.ahfL != 0) {
+      i = j + b.cJ(11, this.ahfL);
+    }
+    j = i;
+    if (this.ahfM != 0) {
+      j = i + b.cJ(12, this.ahfM);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ax
  * JD-Core Version:    0.7.0.1
  */

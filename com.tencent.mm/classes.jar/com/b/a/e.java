@@ -7,15 +7,15 @@ import java.util.Locale;
 final class e
   extends m
 {
-  final h aFg;
-  final com.b.a.a.b aFh;
-  b aFi;
+  final h cAS;
+  final com.b.a.a.b cAT;
+  b cAU;
   
   public e(h paramh, com.b.a.a.b paramb)
   {
     super(paramh, paramb);
-    this.aFh = paramb;
-    this.aFg = paramh;
+    this.cAT = paramb;
+    this.cAS = paramh;
   }
   
   static String format(String paramString, Object... paramVarArgs)
@@ -26,7 +26,7 @@ final class e
     return paramString;
   }
   
-  final void a(OutputStream paramOutputStream, long paramLong)
+  final void b(OutputStream paramOutputStream, long paramLong)
   {
     AppMethodBeat.i(183565);
     byte[] arrayOfByte = new byte[8192];
@@ -43,14 +43,14 @@ final class e
     AppMethodBeat.o(183565);
   }
   
-  final void b(OutputStream paramOutputStream, long paramLong)
+  final void c(OutputStream paramOutputStream, long paramLong)
   {
     AppMethodBeat.i(183566);
-    h localh = new h(this.aFg);
+    h localh = new h(this.cAS);
     paramLong = (int)paramLong;
     try
     {
-      localh.s(paramLong);
+      localh.bF(paramLong);
       byte[] arrayOfByte = new byte[8192];
       for (;;)
       {
@@ -71,18 +71,18 @@ final class e
     AppMethodBeat.o(183566);
   }
   
-  protected final void dJ(int paramInt)
+  protected final void hd(int paramInt)
   {
     AppMethodBeat.i(183568);
-    if (this.aFi != null) {
-      this.aFi.b(this.aFh.file, paramInt);
+    if (this.cAU != null) {
+      this.cAU.c(this.cAT.file, paramInt);
     }
     AppMethodBeat.o(183568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.b.a.e
  * JD-Core Version:    0.7.0.1
  */

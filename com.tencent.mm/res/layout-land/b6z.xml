@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/b7q" />
+    <include layout="@layout/b7w" />
+    <include layout="@layout/b7h" />
+    <include layout="@layout/b7r" />
+    <include layout="@layout/b71" />
+    <include layout="@layout/b7i" />
+    <include android:id="@id/fs2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:layout_alignParentBottom="true" android:layout_alignStart="@id/fzu" layout="@layout/b70" />
+    <include android:id="@id/frm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d5" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cp" android:layout_alignParentEnd="true" layout="@layout/b6r" />
+    <include android:id="@id/fx2" android:layout_width="@dimen/d0" android:layout_height="@dimen/d0" android:layout_marginTop="@dimen/d5" android:layout_marginEnd="@dimen/cv" android:layout_toStartOf="@id/frm" layout="@layout/b7p" />
+    <include android:id="@id/fzu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d4" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/df" android:layout_toStartOf="@id/fx2" android:layout_alignParentStart="true" layout="@layout/b83" />
+    <include android:id="@id/ftk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_below="@id/fzu" android:layout_alignStart="@id/fzu" layout="@layout/b78" />
+    <include android:id="@id/fwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_below="@id/ftk" android:layout_alignStart="@id/fzu" layout="@layout/b7n" />
+    <include android:id="@id/fyk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:layout_alignParentBottom="true" android:layout_alignEnd="@id/frm" layout="@layout/b7d" />
+    <include android:id="@id/ft6" android:layout_width="fill_parent" android:layout_height="112.0dip" android:layout_marginTop="@dimen/cd" android:layout_marginBottom="@dimen/cd" android:layout_above="@id/fs2" android:layout_below="@id/fwu" android:layout_marginEnd="82.0dip" android:layout_alignStart="@id/fzu" layout="@layout/b77" />
+    <include layout="@layout/b7m" />
+    <include layout="@layout/b7k" />
+    <include layout="@layout/b7y" />
+    <include layout="@layout/b7_" />
+    <include layout="@layout/b6q" />
+    <include layout="@layout/b85" />
+    <include layout="@layout/b7a" />
+</RelativeLayout>

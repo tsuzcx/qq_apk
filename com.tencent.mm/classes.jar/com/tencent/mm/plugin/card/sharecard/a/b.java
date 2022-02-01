@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.plugin.card.a.g;
-import com.tencent.mm.plugin.card.b.e;
-import com.tencent.mm.plugin.card.d.t;
+import com.tencent.mm.plugin.card.c.t;
+import com.tencent.mm.plugin.card.mgr.d;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.c;
@@ -22,13 +22,13 @@ import com.tencent.mm.plugin.card.sharecard.model.m;
 import com.tencent.mm.plugin.card.sharecard.model.p;
 import com.tencent.mm.plugin.card.sharecard.model.r;
 import com.tencent.mm.plugin.card.sharecard.ui.b.a;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,28 +37,28 @@ import java.util.Map;
 
 public final class b
 {
-  private static boolean jJQ = false;
-  public static boolean trN = false;
+  private static boolean mjj = false;
+  public static boolean wwl = false;
   private Context mContext;
-  public b.a trM = null;
+  public b.a wwk = null;
   
   public b(Context paramContext)
   {
     this.mContext = paramContext;
-    trN = false;
+    wwl = false;
   }
   
-  public static ArrayList<String> HI(int paramInt)
+  public static ArrayList<String> Ij(int paramInt)
   {
     AppMethodBeat.i(112932);
     ArrayList localArrayList;
     if (paramInt == 1)
     {
-      localArrayList = (ArrayList)am.cHx().getValue("key_share_card_local_city_ids");
+      localArrayList = (ArrayList)am.dkO().getValue("key_share_card_local_city_ids");
       if ((localArrayList == null) || (localArrayList.size() == 0))
       {
         Log.e("MicroMsg.ShareCardDataMgr", "getCardIds() ids == null || ids.size() == 0 for showType == ".concat(String.valueOf(paramInt)));
-        localArrayList = HJ(paramInt);
+        localArrayList = Ik(paramInt);
         AppMethodBeat.o(112932);
         return localArrayList;
       }
@@ -67,11 +67,11 @@ public final class b
     }
     if (paramInt == 2)
     {
-      localArrayList = (ArrayList)am.cHx().getValue("key_share_card_other_city_ids");
+      localArrayList = (ArrayList)am.dkO().getValue("key_share_card_other_city_ids");
       if ((localArrayList == null) || (localArrayList.size() == 0))
       {
         Log.e("MicroMsg.ShareCardDataMgr", "getCardIds() ids == null || ids.size() == 0 for showType == ".concat(String.valueOf(paramInt)));
-        localArrayList = HJ(paramInt);
+        localArrayList = Ik(paramInt);
         AppMethodBeat.o(112932);
         return localArrayList;
       }
@@ -82,10 +82,10 @@ public final class b
     return null;
   }
   
-  private static ArrayList<String> HJ(int paramInt)
+  private static ArrayList<String> Ik(int paramInt)
   {
     AppMethodBeat.i(112933);
-    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.cHx().getValue("key_share_card_layout_data");
+    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.dkO().getValue("key_share_card_layout_data");
     if (locall == null)
     {
       Log.e("MicroMsg.ShareCardDataMgr", "getCardIdsByType() data == null for showType = ".concat(String.valueOf(paramInt)));
@@ -98,15 +98,15 @@ public final class b
     String str;
     if (paramInt == 1)
     {
-      if ((locall.trZ != null) && (locall.trZ.size() > 0))
+      if ((locall.wwy != null) && (locall.wwy.size() > 0))
       {
         paramInt = 0;
-        if (paramInt < locall.trZ.size())
+        if (paramInt < locall.wwy.size())
         {
-          localm = (m)locall.trZ.get(paramInt);
-          if (!localArrayList2.contains(localm.tnX))
+          localm = (m)locall.wwy.get(paramInt);
+          if (!localArrayList2.contains(localm.wsy))
           {
-            str = am.cHA().arl(localm.tnX);
+            str = am.dkR().akQ(localm.wsy);
             if ((TextUtils.isEmpty(str)) || (localArrayList1.contains(str))) {
               break label172;
             }
@@ -114,31 +114,31 @@ public final class b
           }
           for (;;)
           {
-            localArrayList2.add(localm.tnX);
+            localArrayList2.add(localm.wsy);
             paramInt += 1;
             break;
             label172:
-            if (!localArrayList1.contains(localm.fUL)) {
-              localArrayList1.add(localm.fUL);
+            if (!localArrayList1.contains(localm.iaI)) {
+              localArrayList1.add(localm.iaI);
             }
           }
         }
-        am.cHx().r("key_share_card_local_city_ids", localArrayList1);
+        am.dkO().z("key_share_card_local_city_ids", localArrayList1);
       }
       AppMethodBeat.o(112933);
       return localArrayList1;
     }
     if (paramInt == 2)
     {
-      if ((locall.tsa != null) && (locall.tsa.size() > 0))
+      if ((locall.wwz != null) && (locall.wwz.size() > 0))
       {
         paramInt = 0;
-        if (paramInt < locall.tsa.size())
+        if (paramInt < locall.wwz.size())
         {
-          localm = (m)locall.tsa.get(paramInt);
-          if (!localArrayList2.contains(localm.tnX))
+          localm = (m)locall.wwz.get(paramInt);
+          if (!localArrayList2.contains(localm.wsy))
           {
-            str = am.cHA().arl(localm.tnX);
+            str = am.dkR().akQ(localm.wsy);
             if ((TextUtils.isEmpty(str)) || (localArrayList1.contains(str))) {
               break label327;
             }
@@ -146,16 +146,16 @@ public final class b
           }
           for (;;)
           {
-            localArrayList2.add(localm.tnX);
+            localArrayList2.add(localm.wsy);
             paramInt += 1;
             break;
             label327:
-            if (!localArrayList1.contains(localm.fUL)) {
-              localArrayList1.add(localm.fUL);
+            if (!localArrayList1.contains(localm.iaI)) {
+              localArrayList1.add(localm.iaI);
             }
           }
         }
-        am.cHx().r("key_share_card_other_city_ids", localArrayList1);
+        am.dkO().z("key_share_card_other_city_ids", localArrayList1);
       }
       AppMethodBeat.o(112933);
       return localArrayList1;
@@ -164,10 +164,10 @@ public final class b
     return null;
   }
   
-  public static boolean HK(int paramInt)
+  public static boolean Il(int paramInt)
   {
     AppMethodBeat.i(112946);
-    Object localObject = (Integer)am.cHx().getValue("key_share_card_show_type");
+    Object localObject = (Integer)am.dkO().getValue("key_share_card_show_type");
     if (localObject == null)
     {
       AppMethodBeat.o(112946);
@@ -180,7 +180,7 @@ public final class b
     }
     if (paramInt == 0)
     {
-      localObject = (ArrayList)am.cHx().getValue("key_share_card_other_city_ids");
+      localObject = (ArrayList)am.dkO().getValue("key_share_card_other_city_ids");
       if ((localObject == null) || (((ArrayList)localObject).size() == 0))
       {
         AppMethodBeat.o(112946);
@@ -191,7 +191,7 @@ public final class b
     }
     if (paramInt == 10)
     {
-      localObject = (ArrayList)am.cHx().getValue("key_share_card_local_city_ids");
+      localObject = (ArrayList)am.dkO().getValue("key_share_card_local_city_ids");
       if ((localObject == null) || (((ArrayList)localObject).size() == 0))
       {
         AppMethodBeat.o(112946);
@@ -204,18 +204,32 @@ public final class b
     return false;
   }
   
-  private String P(ArrayList<String> paramArrayList)
+  public static String Nc(String paramString)
+  {
+    AppMethodBeat.i(112941);
+    Map localMap = (Map)am.dkO().getValue("key_share_card_username_map");
+    if (localMap == null)
+    {
+      AppMethodBeat.o(112941);
+      return "";
+    }
+    paramString = (String)localMap.get(paramString);
+    AppMethodBeat.o(112941);
+    return paramString;
+  }
+  
+  private String T(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(112929);
-    paramArrayList = b(this.mContext, paramArrayList);
+    paramArrayList = c(this.mContext, paramArrayList);
     AppMethodBeat.o(112929);
     return paramArrayList;
   }
   
-  private static void R(String paramString1, String paramString2, String paramString3)
+  private static void U(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(112943);
-    Object localObject = (Map)am.cHx().getValue("key_share_user_info_map");
+    Object localObject = (Map)am.dkO().getValue("key_share_user_info_map");
     if (localObject == null) {
       localObject = new HashMap();
     }
@@ -231,48 +245,34 @@ public final class b
         while (i < localArrayList.size())
         {
           r localr = (r)localArrayList.get(i);
-          if ((paramString3 != null) && (paramString3.equals(localr.tsk)))
+          if ((paramString3 != null) && (paramString3.equals(localr.wwH)))
           {
-            localr.tsm = false;
-            localr.tgE -= 1;
-            localr.tsl.remove(paramString1);
+            localr.wwJ = false;
+            localr.wld -= 1;
+            localr.wwI.remove(paramString1);
             localArrayList.set(i, localr);
           }
           i += 1;
         }
         ((Map)localObject).put(paramString2, localArrayList);
-        am.cHx().r("key_share_user_info_map", localObject);
+        am.dkO().z("key_share_user_info_map", localObject);
         AppMethodBeat.o(112943);
         return;
       }
     }
   }
   
-  public static String Vd(String paramString)
-  {
-    AppMethodBeat.i(112941);
-    Map localMap = (Map)am.cHx().getValue("key_share_card_username_map");
-    if (localMap == null)
-    {
-      AppMethodBeat.o(112941);
-      return "";
-    }
-    paramString = (String)localMap.get(paramString);
-    AppMethodBeat.o(112941);
-    return paramString;
-  }
-  
   public static void a(Context paramContext, com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(112953);
     Log.i("MicroMsg.ShareCardDataMgr", "updateShareCardData()");
-    Log.i("MicroMsg.ShareCardDataMgr", "card id:" + paramb.cGw() + " cardtpid:" + paramb.cGx());
-    fG(paramb.cGw(), paramb.cGx());
+    Log.i("MicroMsg.ShareCardDataMgr", "card id:" + paramb.djO() + " cardtpid:" + paramb.djP());
+    gf(paramb.djO(), paramb.djP());
     if (paramContext != null) {
-      al(paramContext, paramb.cGx());
+      am(paramContext, paramb.djP());
     }
-    R(paramb.cGw(), paramb.cGx(), paramb.cGy());
-    ard(paramb.cGx());
+    U(paramb.djO(), paramb.djP(), paramb.djQ());
+    akI(paramb.djP());
     AppMethodBeat.o(112953);
   }
   
@@ -285,20 +285,20 @@ public final class b
       AppMethodBeat.o(112927);
       return;
     }
-    if ((paraml1 != null) && (paraml1.tsa == null) && (paraml1.trZ == null) && (paraml2 != null) && (paraml2.tsa == null) && (paraml2.trZ == null))
+    if ((paraml1 != null) && (paraml1.wwz == null) && (paraml1.wwy == null) && (paraml2 != null) && (paraml2.wwz == null) && (paraml2.wwy == null))
     {
       Log.e("MicroMsg.ShareCardDataMgr", "don't updateCategoryType(), newData.local_city_list == null && oldData.local_city_list == null");
       AppMethodBeat.o(112927);
       return;
     }
     Log.i("MicroMsg.ShareCardDataMgr", "updateCategoryType()");
-    Object localObject1 = (ArrayList)am.cHx().getValue("key_share_card_local_city_category_info_list");
+    Object localObject1 = (ArrayList)am.dkO().getValue("key_share_card_local_city_category_info_list");
     if (localObject1 == null) {
       localObject1 = new ArrayList();
     }
     for (;;)
     {
-      ArrayList localArrayList = (ArrayList)am.cHx().getValue("key_share_card_other_city_category_info_list");
+      ArrayList localArrayList = (ArrayList)am.dkO().getValue("key_share_card_other_city_category_info_list");
       if (localArrayList == null) {
         localArrayList = new ArrayList();
       }
@@ -308,29 +308,29 @@ public final class b
         int j = 0;
         if (paramBoolean)
         {
-          am.cHA().HM(10);
+          am.dkR().In(10);
           ((ArrayList)localObject1).clear();
-          am.cHA().HM(0);
+          am.dkR().In(0);
           localArrayList.clear();
           i = 0;
         }
         for (;;)
         {
           long l1 = System.currentTimeMillis();
-          long l2 = com.tencent.mm.kernel.h.aHG().kcF.beginTransaction(Thread.currentThread().getId());
+          long l2 = com.tencent.mm.kernel.h.baE().mCN.beginTransaction(Thread.currentThread().getId());
           Object localObject2;
-          if ((paraml1 != null) && (paraml1.trZ != null) && (paraml1.trZ.size() > 0))
+          if ((paraml1 != null) && (paraml1.wwy != null) && (paraml1.wwy.size() > 0))
           {
             int k = 0;
             for (;;)
             {
-              if (k < paraml1.trZ.size())
+              if (k < paraml1.wwy.size())
               {
-                localObject2 = (m)paraml1.trZ.get(k);
-                am.cHA().Y(((m)localObject2).tnX, 10, k + j);
+                localObject2 = (m)paraml1.wwy.get(k);
+                am.dkR().ac(((m)localObject2).wsy, 10, k + j);
                 i locali = new i();
-                locali.tnX = ((m)localObject2).tnX;
-                locali.item_index = (k + j);
+                locali.wsy = ((m)localObject2).wsy;
+                locali.wwu = (k + j);
                 ((ArrayList)localObject1).add(locali);
                 k += 1;
                 continue;
@@ -338,59 +338,59 @@ public final class b
                 if (paraml2 != null)
                 {
                   j = i;
-                  if (paraml2.trZ != null)
+                  if (paraml2.wwy != null)
                   {
                     j = i;
-                    if (paraml2.trZ.size() >= 0) {
-                      j = paraml2.trZ.size();
+                    if (paraml2.wwy.size() >= 0) {
+                      j = paraml2.wwy.size();
                     }
                   }
                 }
-                if ((paraml2 == null) || (paraml2.tsa == null) || (paraml2.tsa.size() < 0)) {
+                if ((paraml2 == null) || (paraml2.wwz == null) || (paraml2.wwz.size() < 0)) {
                   break label681;
                 }
-                i = paraml2.tsa.size();
+                i = paraml2.wwz.size();
                 break;
               }
             }
-            if ((!paramBoolean) && (paraml2 != null) && (paraml2.trZ != null)) {
-              paraml1.trZ.addAll(paraml2.trZ);
+            if ((!paramBoolean) && (paraml2 != null) && (paraml2.wwy != null)) {
+              paraml1.wwy.addAll(paraml2.wwy);
             }
           }
           for (;;)
           {
-            am.cHx().r("key_share_card_local_city_category_info_list", localObject1);
-            if ((paraml1 == null) || (paraml1.tsa == null) || (paraml1.tsa.size() <= 0)) {
+            am.dkO().z("key_share_card_local_city_category_info_list", localObject1);
+            if ((paraml1 == null) || (paraml1.wwz == null) || (paraml1.wwz.size() <= 0)) {
               break label651;
             }
             j = 0;
-            while (j < paraml1.tsa.size())
+            while (j < paraml1.wwz.size())
             {
-              localObject1 = (m)paraml1.tsa.get(j);
-              am.cHA().Y(((m)localObject1).tnX, 0, j + i);
+              localObject1 = (m)paraml1.wwz.get(j);
+              am.dkR().ac(((m)localObject1).wsy, 0, j + i);
               localObject2 = new i();
-              ((i)localObject2).tnX = ((m)localObject1).tnX;
-              ((i)localObject2).item_index = (j + i);
+              ((i)localObject2).wsy = ((m)localObject1).wsy;
+              ((i)localObject2).wwu = (j + i);
               localArrayList.add(localObject2);
               j += 1;
             }
-            if ((paraml1 != null) && (!paramBoolean) && (paraml2 != null) && (paraml2.trZ != null)) {
-              paraml1.trZ = paraml2.trZ;
+            if ((paraml1 != null) && (!paramBoolean) && (paraml2 != null) && (paraml2.wwy != null)) {
+              paraml1.wwy = paraml2.wwy;
             }
           }
-          if ((!paramBoolean) && (paraml2 != null) && (paraml2.tsa != null)) {
-            paraml1.tsa.addAll(paraml2.tsa);
+          if ((!paramBoolean) && (paraml2 != null) && (paraml2.wwz != null)) {
+            paraml1.wwz.addAll(paraml2.wwz);
           }
           for (;;)
           {
-            am.cHx().r("key_share_card_other_city_category_info_list", localArrayList);
-            com.tencent.mm.kernel.h.aHG().kcF.endTransaction(l2);
+            am.dkO().z("key_share_card_other_city_category_info_list", localArrayList);
+            com.tencent.mm.kernel.h.baE().mCN.endTransaction(l2);
             Log.d("MicroMsg.ShareCardDataMgr", "updateCategoryType  >> updateCategoryInfo use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
             AppMethodBeat.o(112927);
             return;
             label651:
-            if ((paraml1 != null) && (!paramBoolean) && (paraml2 != null) && (paraml2.tsa != null)) {
-              paraml1.tsa = paraml2.tsa;
+            if ((paraml1 != null) && (!paramBoolean) && (paraml2 != null) && (paraml2.wwz != null)) {
+              paraml1.wwz = paraml2.wwz;
             }
           }
           label681:
@@ -410,37 +410,37 @@ public final class b
       return;
     }
     Log.i("MicroMsg.ShareCardDataMgr", "parserShareCardListData()");
-    Object localObject1 = (Map)am.cHx().getValue("key_share_card_annoucement_map");
+    Object localObject1 = (Map)am.dkO().getValue("key_share_card_annoucement_map");
     if (localObject1 == null) {
       localObject1 = new HashMap();
     }
     for (;;)
     {
-      Object localObject2 = (Map)am.cHx().getValue("key_share_card_count_map");
+      Object localObject2 = (Map)am.dkO().getValue("key_share_card_count_map");
       if (localObject2 == null) {
         localObject2 = new HashMap();
       }
       for (;;)
       {
-        Object localObject3 = (Map)am.cHx().getValue("key_share_card_username_map");
+        Object localObject3 = (Map)am.dkO().getValue("key_share_card_username_map");
         if (localObject3 == null) {
           localObject3 = new HashMap();
         }
         for (;;)
         {
-          ArrayList localArrayList1 = (ArrayList)am.cHx().getValue("key_share_card_local_city_ids");
+          ArrayList localArrayList1 = (ArrayList)am.dkO().getValue("key_share_card_local_city_ids");
           if (localArrayList1 == null) {
             localArrayList1 = new ArrayList();
           }
           for (;;)
           {
-            ArrayList localArrayList2 = (ArrayList)am.cHx().getValue("key_share_card_other_city_ids");
+            ArrayList localArrayList2 = (ArrayList)am.dkO().getValue("key_share_card_other_city_ids");
             if (localArrayList2 == null) {
               localArrayList2 = new ArrayList();
             }
             for (;;)
             {
-              ArrayList localArrayList3 = (ArrayList)am.cHx().getValue("key_share_card_other_city_top_info_list");
+              ArrayList localArrayList3 = (ArrayList)am.dkO().getValue("key_share_card_other_city_top_info_list");
               if (localArrayList3 == null) {
                 localArrayList3 = new ArrayList();
               }
@@ -457,21 +457,21 @@ public final class b
                 m localm;
                 int j;
                 Object localObject4;
-                if ((paraml.trZ != null) && (paraml.trZ.size() > 0))
+                if ((paraml.wwy != null) && (paraml.wwy.size() > 0))
                 {
                   i = 0;
-                  if (i < paraml.trZ.size())
+                  if (i < paraml.wwy.size())
                   {
-                    localm = (m)paraml.trZ.get(i);
+                    localm = (m)paraml.wwy.get(i);
                     if (!TextUtils.isEmpty(localm.announcement)) {
-                      ((Map)localObject1).put(localm.tnX, localm.announcement);
+                      ((Map)localObject1).put(localm.wsy, localm.announcement);
                     }
-                    j = am.cHA().ark(localm.tnX);
-                    ((Map)localObject2).put(localm.tnX, Integer.valueOf(j));
-                    ((Map)localObject3).put(localm.tnX, P(am.cHA().arj(localm.tnX)));
-                    if (!localArrayList4.contains(localm.tnX))
+                    j = am.dkR().akP(localm.wsy);
+                    ((Map)localObject2).put(localm.wsy, Integer.valueOf(j));
+                    ((Map)localObject3).put(localm.wsy, T(am.dkR().akO(localm.wsy)));
+                    if (!localArrayList4.contains(localm.wsy))
                     {
-                      localObject4 = am.cHA().arl(localm.tnX);
+                      localObject4 = am.dkR().akQ(localm.wsy);
                       if ((TextUtils.isEmpty((CharSequence)localObject4)) || (localArrayList1.contains(localObject4))) {
                         break label464;
                       }
@@ -479,36 +479,36 @@ public final class b
                     }
                     for (;;)
                     {
-                      localArrayList4.add(localm.tnX);
+                      localArrayList4.add(localm.wsy);
                       localObject4 = new p();
-                      ((p)localObject4).tnX = localm.tnX;
+                      ((p)localObject4).wsy = localm.wsy;
                       ((p)localObject4).top = localm.top;
                       localArrayList3.add(localObject4);
                       i += 1;
                       break;
                       label464:
-                      if (!localArrayList1.contains(localm.fUL)) {
-                        localArrayList1.add(localm.fUL);
+                      if (!localArrayList1.contains(localm.iaI)) {
+                        localArrayList1.add(localm.iaI);
                       }
                     }
                   }
                 }
                 localArrayList4.clear();
-                if ((paraml.tsa != null) && (paraml.tsa.size() > 0))
+                if ((paraml.wwz != null) && (paraml.wwz.size() > 0))
                 {
                   i = 0;
-                  if (i < paraml.tsa.size())
+                  if (i < paraml.wwz.size())
                   {
-                    localm = (m)paraml.tsa.get(i);
+                    localm = (m)paraml.wwz.get(i);
                     if (!TextUtils.isEmpty(localm.announcement)) {
-                      ((Map)localObject1).put(localm.tnX, localm.announcement);
+                      ((Map)localObject1).put(localm.wsy, localm.announcement);
                     }
-                    j = am.cHA().ark(localm.tnX);
-                    ((Map)localObject2).put(localm.tnX, Integer.valueOf(j));
-                    ((Map)localObject3).put(localm.tnX, P(am.cHA().arj(localm.tnX)));
-                    if (!localArrayList4.contains(localm.tnX))
+                    j = am.dkR().akP(localm.wsy);
+                    ((Map)localObject2).put(localm.wsy, Integer.valueOf(j));
+                    ((Map)localObject3).put(localm.wsy, T(am.dkR().akO(localm.wsy)));
+                    if (!localArrayList4.contains(localm.wsy))
                     {
-                      localObject4 = am.cHA().arl(localm.tnX);
+                      localObject4 = am.dkR().akQ(localm.wsy);
                       if ((TextUtils.isEmpty((CharSequence)localObject4)) || (localArrayList2.contains(localObject4))) {
                         break label734;
                       }
@@ -516,27 +516,27 @@ public final class b
                     }
                     for (;;)
                     {
-                      localArrayList4.add(localm.tnX);
+                      localArrayList4.add(localm.wsy);
                       localObject4 = new p();
-                      ((p)localObject4).tnX = localm.tnX;
+                      ((p)localObject4).wsy = localm.wsy;
                       ((p)localObject4).top = localm.top;
                       localArrayList3.add(localObject4);
                       i += 1;
                       break;
                       label734:
-                      if (!localArrayList2.contains(localm.fUL)) {
-                        localArrayList2.add(localm.fUL);
+                      if (!localArrayList2.contains(localm.iaI)) {
+                        localArrayList2.add(localm.iaI);
                       }
                     }
                   }
                 }
-                am.cHx().r("key_share_card_annoucement_map", localObject1);
-                am.cHx().r("key_share_card_count_map", localObject2);
-                am.cHx().r("key_share_card_username_map", localObject3);
-                am.cHx().r("key_share_card_local_city", paraml.tsb);
-                am.cHx().r("key_share_card_local_city_ids", localArrayList1);
-                am.cHx().r("key_share_card_other_city_ids", localArrayList2);
-                am.cHx().r("key_share_card_other_city_top_info_list", localArrayList3);
+                am.dkO().z("key_share_card_annoucement_map", localObject1);
+                am.dkO().z("key_share_card_count_map", localObject2);
+                am.dkO().z("key_share_card_username_map", localObject3);
+                am.dkO().z("key_share_card_local_city", paraml.wwA);
+                am.dkO().z("key_share_card_local_city_ids", localArrayList1);
+                am.dkO().z("key_share_card_other_city_ids", localArrayList2);
+                am.dkO().z("key_share_card_other_city_top_info_list", localArrayList3);
                 AppMethodBeat.o(112926);
                 return;
               }
@@ -547,31 +547,7 @@ public final class b
     }
   }
   
-  public static void al(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(112945);
-    Log.i("MicroMsg.ShareCardDataMgr", "updateCardCountbyCardTpId() card_tp_id:".concat(String.valueOf(paramString)));
-    Object localObject1 = (Map)am.cHx().getValue("key_share_card_count_map");
-    if (localObject1 == null) {
-      localObject1 = new HashMap();
-    }
-    for (;;)
-    {
-      Map localMap = (Map)am.cHx().getValue("key_share_card_username_map");
-      Object localObject2 = localMap;
-      if (localMap == null) {
-        localObject2 = new HashMap();
-      }
-      ((Map)localObject1).put(paramString, Integer.valueOf(am.cHA().ark(paramString)));
-      ((Map)localObject2).put(paramString, b(paramContext, am.cHA().arj(paramString)));
-      am.cHx().r("key_share_card_count_map", localObject1);
-      am.cHx().r("key_share_card_username_map", localObject2);
-      AppMethodBeat.o(112945);
-      return;
-    }
-  }
-  
-  public static void ard(String paramString)
+  public static void akI(String paramString)
   {
     AppMethodBeat.i(112931);
     Log.i("MicroMsg.ShareCardDataMgr", "updateShareUserInfo()");
@@ -588,8 +564,8 @@ public final class b
         Object localObject1 = null;
         AppMethodBeat.i(112921);
         Log.i("MicroMsg.ShareCardDataMgr", "begin to getShareUserInfo()");
-        Object localObject2 = am.cHA();
-        Object localObject3 = this.trO;
+        Object localObject2 = am.dkR();
+        Object localObject3 = b.this;
         Log.i("MicroMsg.ShareCardInfoStorage", "getShareUserInfo()");
         Object localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append(" where ( status=0) ");
@@ -626,11 +602,11 @@ public final class b
             if (!((ArrayList)localObject4).contains(localShareCardInfo.field_from_username))
             {
               localObject1 = new r();
-              ((r)localObject1).tnX = localShareCardInfo.field_card_tp_id;
-              ((r)localObject1).tsk = localShareCardInfo.field_from_username;
-              ((r)localObject1).tsl = new ArrayList();
-              ((r)localObject1).tsl.add(localShareCardInfo.field_card_id);
-              ((r)localObject1).tgE = 1;
+              ((r)localObject1).wsy = localShareCardInfo.field_card_tp_id;
+              ((r)localObject1).wwH = localShareCardInfo.field_from_username;
+              ((r)localObject1).wwI = new ArrayList();
+              ((r)localObject1).wwI.add(localShareCardInfo.field_card_id);
+              ((r)localObject1).wld = 1;
               ((ArrayList)localObject2).add(localObject1);
               ((ArrayList)localObject4).add(localShareCardInfo.field_from_username);
               continue;
@@ -641,15 +617,15 @@ public final class b
               break label445;
             }
             localObject1 = (r)((ArrayList)localObject2).get(i);
-            if ((localShareCardInfo.field_from_username == null) || (!localShareCardInfo.field_from_username.equals(((r)localObject1).tsk))) {}
+            if ((localShareCardInfo.field_from_username == null) || (!localShareCardInfo.field_from_username.equals(((r)localObject1).wwH))) {}
           }
           for (;;)
           {
             if (localObject1 == null) {
               break label448;
             }
-            ((r)localObject1).tsl.add(0, localShareCardInfo.field_card_id);
-            ((r)localObject1).tgE += 1;
+            ((r)localObject1).wwI.add(0, localShareCardInfo.field_card_id);
+            ((r)localObject1).wld += 1;
             ((ArrayList)localObject2).set(i, localObject1);
             break label181;
             i += 1;
@@ -658,24 +634,10 @@ public final class b
             localObject1 = localObject2;
             break;
             if (((ArrayList)localObject1).get(0) != null) {
-              ((r)((ArrayList)localObject1).get(0)).tsm = true;
+              ((r)((ArrayList)localObject1).get(0)).wwJ = true;
             }
             Log.i("MicroMsg.ShareCardDataMgr", "end to getShareUserInfo(), 2");
-            this.trP.post(new Runnable()
-            {
-              public final void run()
-              {
-                AppMethodBeat.i(112920);
-                Map localMap = (Map)am.cHx().getValue("key_share_user_info_map");
-                Object localObject = localMap;
-                if (localMap == null) {
-                  localObject = new HashMap();
-                }
-                ((Map)localObject).put(b.1.this.trO, this.trQ);
-                am.cHx().r("key_share_user_info_map", localObject);
-                AppMethodBeat.o(112920);
-              }
-            });
+            this.wwn.post(new b.1.1(this, (ArrayList)localObject1));
             AppMethodBeat.o(112921);
             return;
             i = 0;
@@ -686,10 +648,10 @@ public final class b
     AppMethodBeat.o(112931);
   }
   
-  public static String are(String paramString)
+  public static String akJ(String paramString)
   {
     AppMethodBeat.i(112939);
-    Map localMap = (Map)am.cHx().getValue("key_share_card_annoucement_map");
+    Map localMap = (Map)am.dkO().getValue("key_share_card_annoucement_map");
     if (localMap == null)
     {
       AppMethodBeat.o(112939);
@@ -700,10 +662,10 @@ public final class b
     return paramString;
   }
   
-  public static int arf(String paramString)
+  public static int akK(String paramString)
   {
     AppMethodBeat.i(112940);
-    Map localMap = (Map)am.cHx().getValue("key_share_card_count_map");
+    Map localMap = (Map)am.dkO().getValue("key_share_card_count_map");
     if (localMap == null)
     {
       AppMethodBeat.o(112940);
@@ -720,10 +682,10 @@ public final class b
     return i;
   }
   
-  public static ArrayList<r> arg(String paramString)
+  public static ArrayList<r> akL(String paramString)
   {
     AppMethodBeat.i(112942);
-    Map localMap = (Map)am.cHx().getValue("key_share_user_info_map");
+    Map localMap = (Map)am.dkO().getValue("key_share_user_info_map");
     Object localObject = localMap;
     if (localMap == null) {
       localObject = new HashMap();
@@ -739,7 +701,7 @@ public final class b
     return paramString;
   }
   
-  public static boolean arh(String paramString)
+  public static boolean akM(String paramString)
   {
     AppMethodBeat.i(112947);
     if (TextUtils.isEmpty(paramString))
@@ -747,7 +709,7 @@ public final class b
       AppMethodBeat.o(112947);
       return false;
     }
-    Object localObject2 = (ArrayList)am.cHx().getValue("key_share_card_other_city_top_info_list");
+    Object localObject2 = (ArrayList)am.dkO().getValue("key_share_card_other_city_top_info_list");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ArrayList();
@@ -756,7 +718,7 @@ public final class b
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (p)((Iterator)localObject1).next();
-      if ((localObject2 != null) && (paramString.equals(((p)localObject2).tnX)) && (((p)localObject2).top == 1))
+      if ((localObject2 != null) && (paramString.equals(((p)localObject2).wsy)) && (((p)localObject2).top == 1))
       {
         AppMethodBeat.o(112947);
         return true;
@@ -766,7 +728,7 @@ public final class b
     return false;
   }
   
-  public static void ari(String paramString)
+  public static void akN(String paramString)
   {
     AppMethodBeat.i(112948);
     if (TextUtils.isEmpty(paramString))
@@ -774,7 +736,7 @@ public final class b
       AppMethodBeat.o(112948);
       return;
     }
-    ArrayList localArrayList = (ArrayList)am.cHx().getValue("key_share_card_other_city_top_info_list");
+    ArrayList localArrayList = (ArrayList)am.dkO().getValue("key_share_card_other_city_top_info_list");
     if (localArrayList == null) {
       localArrayList = new ArrayList();
     }
@@ -784,11 +746,11 @@ public final class b
       while (i < localArrayList.size())
       {
         p localp = (p)localArrayList.get(i);
-        if ((localp != null) && (paramString.equals(localp.tnX)) && (localp.top == 1))
+        if ((localp != null) && (paramString.equals(localp.wsy)) && (localp.top == 1))
         {
-          localp.tsj = true;
+          localp.wwG = true;
           localArrayList.set(i, localp);
-          am.cHx().r("key_share_card_other_city_top_info_list", localArrayList);
+          am.dkO().z("key_share_card_other_city_top_info_list", localArrayList);
           AppMethodBeat.o(112948);
           return;
         }
@@ -799,7 +761,31 @@ public final class b
     }
   }
   
-  private static String b(Context paramContext, ArrayList<String> paramArrayList)
+  public static void am(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(112945);
+    Log.i("MicroMsg.ShareCardDataMgr", "updateCardCountbyCardTpId() card_tp_id:".concat(String.valueOf(paramString)));
+    Object localObject1 = (Map)am.dkO().getValue("key_share_card_count_map");
+    if (localObject1 == null) {
+      localObject1 = new HashMap();
+    }
+    for (;;)
+    {
+      Map localMap = (Map)am.dkO().getValue("key_share_card_username_map");
+      Object localObject2 = localMap;
+      if (localMap == null) {
+        localObject2 = new HashMap();
+      }
+      ((Map)localObject1).put(paramString, Integer.valueOf(am.dkR().akP(paramString)));
+      ((Map)localObject2).put(paramString, c(paramContext, am.dkR().akO(paramString)));
+      am.dkO().z("key_share_card_count_map", localObject1);
+      am.dkO().z("key_share_card_username_map", localObject2);
+      AppMethodBeat.o(112945);
+      return;
+    }
+  }
+  
+  private static String c(Context paramContext, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(112930);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
@@ -815,8 +801,8 @@ public final class b
       if (i != 0) {
         localStringBuilder.append("、");
       }
-      String str1 = aa.PK((String)paramArrayList.get(i));
-      String str2 = aa.PJ((String)paramArrayList.get(i));
+      String str1 = aa.IE((String)paramArrayList.get(i));
+      String str2 = aa.getDisplayName((String)paramArrayList.get(i));
       if (!TextUtils.isEmpty(str1)) {
         localStringBuilder.append(str1);
       }
@@ -835,20 +821,20 @@ public final class b
     }
     if ((paramArrayList.size() == 1) || (paramArrayList.size() == 2))
     {
-      paramContext = paramContext.getString(a.g.tlI, new Object[] { localStringBuilder.toString() });
+      paramContext = paramContext.getString(a.g.wqh, new Object[] { localStringBuilder.toString() });
       AppMethodBeat.o(112930);
       return paramContext;
     }
-    paramContext = paramContext.getString(a.g.tlu, new Object[] { localStringBuilder.toString(), Integer.valueOf(paramArrayList.size()) });
+    paramContext = paramContext.getString(a.g.wpT, new Object[] { localStringBuilder.toString(), Integer.valueOf(paramArrayList.size()) });
     AppMethodBeat.o(112930);
     return paramContext;
   }
   
-  public static int cHX()
+  public static int dlo()
   {
     int i = 0;
     AppMethodBeat.i(112924);
-    Object localObject1 = am.cHs();
+    Object localObject1 = am.dkJ();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(" where (status=0 OR status=5) AND ").append("card_type=10");
     localObject2 = "select count(*) from UserCardInfo" + ((StringBuilder)localObject2).toString();
@@ -866,19 +852,19 @@ public final class b
     return i;
   }
   
-  public static void cHY()
+  public static void dlp()
   {
     AppMethodBeat.i(112928);
     long l1 = System.currentTimeMillis();
-    long l2 = com.tencent.mm.kernel.h.aHG().kcF.beginTransaction(Thread.currentThread().getId());
+    long l2 = com.tencent.mm.kernel.h.baE().mCN.beginTransaction(Thread.currentThread().getId());
     Log.i("MicroMsg.ShareCardDataMgr", "updateShareCardCategory()");
-    Object localObject = (ArrayList)am.cHx().getValue("key_share_card_local_city_category_info_list");
+    Object localObject = (ArrayList)am.dkO().getValue("key_share_card_local_city_category_info_list");
     if (localObject == null) {
       localObject = new ArrayList();
     }
     for (;;)
     {
-      ArrayList localArrayList = (ArrayList)am.cHx().getValue("key_share_card_other_city_category_info_list");
+      ArrayList localArrayList = (ArrayList)am.dkO().getValue("key_share_card_other_city_category_info_list");
       if (localArrayList == null) {
         localArrayList = new ArrayList();
       }
@@ -888,17 +874,17 @@ public final class b
         while (i < ((ArrayList)localObject).size())
         {
           i locali = (i)((ArrayList)localObject).get(i);
-          am.cHA().Y(locali.tnX, 10, locali.item_index);
+          am.dkR().ac(locali.wsy, 10, locali.wwu);
           i += 1;
         }
         i = 0;
         while (i < localArrayList.size())
         {
           localObject = (i)localArrayList.get(i);
-          am.cHA().Y(((i)localObject).tnX, 0, ((i)localObject).item_index);
+          am.dkR().ac(((i)localObject).wsy, 0, ((i)localObject).wwu);
           i += 1;
         }
-        com.tencent.mm.kernel.h.aHG().kcF.endTransaction(l2);
+        com.tencent.mm.kernel.h.baE().mCN.endTransaction(l2);
         Log.i("MicroMsg.ShareCardDataMgr", "updateShareCardCategory  >> updateCategoryInfo use time %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
         AppMethodBeat.o(112928);
         return;
@@ -906,17 +892,17 @@ public final class b
     }
   }
   
-  public static int cHZ()
+  public static int dlq()
   {
     AppMethodBeat.i(112936);
-    if (cIb())
+    if (dls())
     {
       AppMethodBeat.o(112936);
       return 1;
     }
-    if (cIa())
+    if (dlr())
     {
-      if (trN)
+      if (wwl)
       {
         AppMethodBeat.o(112936);
         return 3;
@@ -928,10 +914,10 @@ public final class b
     return 0;
   }
   
-  public static boolean cIa()
+  public static boolean dlr()
   {
     AppMethodBeat.i(112937);
-    ArrayList localArrayList = (ArrayList)am.cHx().getValue("key_share_card_other_city_ids");
+    ArrayList localArrayList = (ArrayList)am.dkO().getValue("key_share_card_other_city_ids");
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       AppMethodBeat.o(112937);
@@ -941,10 +927,10 @@ public final class b
     return false;
   }
   
-  public static boolean cIb()
+  public static boolean dls()
   {
     AppMethodBeat.i(112938);
-    ArrayList localArrayList = (ArrayList)am.cHx().getValue("key_share_card_local_city_ids");
+    ArrayList localArrayList = (ArrayList)am.dkO().getValue("key_share_card_local_city_ids");
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       AppMethodBeat.o(112938);
@@ -954,7 +940,7 @@ public final class b
     return false;
   }
   
-  public static void cIc()
+  public static void dlt()
   {
     AppMethodBeat.i(112944);
     Log.i("MicroMsg.ShareCardDataMgr", "delelteAllIllegalStatusCard()");
@@ -964,7 +950,7 @@ public final class b
       {
         AppMethodBeat.i(112922);
         Log.i("MicroMsg.ShareCardDataMgr", "begin to delelteAllIllegalStatusCard()");
-        Object localObject1 = am.cHA();
+        Object localObject1 = am.dkR();
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(" where (status=1 OR status=2 OR status").append("=3 OR status=4 OR status=6)");
         localObject2 = "delete from ShareCardInfo" + ((StringBuilder)localObject2).toString();
@@ -983,45 +969,45 @@ public final class b
     AppMethodBeat.o(112944);
   }
   
-  public static boolean cId()
+  public static boolean dlu()
   {
     AppMethodBeat.i(112950);
-    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.cHx().getValue("key_share_card_layout_data");
+    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.dkO().getValue("key_share_card_layout_data");
     if (locall == null)
     {
       AppMethodBeat.o(112950);
       return true;
     }
-    boolean bool = locall.tsc;
+    boolean bool = locall.wwB;
     AppMethodBeat.o(112950);
     return bool;
   }
   
-  public static boolean cIe()
+  public static boolean dlv()
   {
     AppMethodBeat.i(112951);
-    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.cHx().getValue("key_share_card_layout_data");
+    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.dkO().getValue("key_share_card_layout_data");
     if (locall == null)
     {
       AppMethodBeat.o(112951);
       return true;
     }
-    boolean bool = locall.tsd;
+    boolean bool = locall.wwC;
     AppMethodBeat.o(112951);
     return bool;
   }
   
-  public static boolean cIf()
+  public static boolean dlw()
   {
     AppMethodBeat.i(112952);
-    Object localObject = (Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vij, Integer.valueOf(0));
+    Object localObject = (Integer)com.tencent.mm.kernel.h.baE().ban().get(at.a.acJD, Integer.valueOf(0));
     if ((localObject != null) && (((Integer)localObject).intValue() == 1))
     {
       AppMethodBeat.o(112952);
       return false;
     }
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vij, Integer.valueOf(1));
-    localObject = am.cHs().a(n.a.tpR);
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acJD, Integer.valueOf(1));
+    localObject = am.dkJ().a(n.a.wuq);
     if ((localObject != null) && (((Cursor)localObject).getCount() > 0))
     {
       ((Cursor)localObject).moveToFirst();
@@ -1031,7 +1017,7 @@ public final class b
         localCardInfo.convertFrom((Cursor)localObject);
         if (localCardInfo.field_card_type == -1)
         {
-          if (localCardInfo.cGs() != null) {
+          if (localCardInfo.djK() != null) {
             break label147;
           }
           Log.e("MicroMsg.ShareCardDataMgr", "updateCardType fail , info.getCardTpInfo() == null");
@@ -1041,8 +1027,8 @@ public final class b
           ((Cursor)localObject).moveToNext();
           break;
           label147:
-          localCardInfo.field_card_type = localCardInfo.cGs().qJt;
-          if (!am.cHs().update(localCardInfo, new String[0])) {
+          localCardInfo.field_card_type = localCardInfo.djK().tNW;
+          if (!am.dkJ().update(localCardInfo, new String[0])) {
             Log.e("MicroMsg.ShareCardDataMgr", "updateCardType fail , cardId = %s", new Object[] { localCardInfo.field_card_id });
           }
         }
@@ -1059,78 +1045,78 @@ public final class b
     return false;
   }
   
-  public static void fG(String paramString1, String paramString2)
+  public static void gf(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112934);
-    if (jJQ)
+    if (mjj)
     {
       Log.i("MicroMsg.ShareCardDataMgr", "is isUpdating data, don't do updateCardIdsListByCardId");
       AppMethodBeat.o(112934);
       return;
     }
     Log.i("MicroMsg.ShareCardDataMgr", "do updateCardIdsListByCardId");
-    jJQ = true;
-    ArrayList localArrayList = HI(1);
+    mjj = true;
+    ArrayList localArrayList = Ij(1);
     if ((localArrayList != null) && (localArrayList.contains(paramString1)))
     {
       localArrayList.remove(paramString1);
-      String str = am.cHA().fJ(paramString1, paramString2);
+      String str = am.dkR().gi(paramString1, paramString2);
       if (!TextUtils.isEmpty(str)) {
         localArrayList.add(str);
       }
-      am.cHx().r("key_share_card_local_city_ids", localArrayList);
+      am.dkO().z("key_share_card_local_city_ids", localArrayList);
     }
-    localArrayList = HI(2);
+    localArrayList = Ij(2);
     if ((localArrayList != null) && (localArrayList.contains(paramString1)))
     {
       localArrayList.remove(paramString1);
-      paramString1 = am.cHA().fJ(paramString1, paramString2);
+      paramString1 = am.dkR().gi(paramString1, paramString2);
       if (!TextUtils.isEmpty(paramString1)) {
         localArrayList.add(paramString1);
       }
-      am.cHx().r("key_share_card_other_city_ids", localArrayList);
+      am.dkO().z("key_share_card_other_city_ids", localArrayList);
     }
-    jJQ = false;
+    mjj = false;
     AppMethodBeat.o(112934);
   }
   
-  public static void fH(String paramString1, String paramString2)
+  public static void gg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112935);
     Log.i("MicroMsg.ShareCardDataMgr", "addCardIdsListByCardId card_id:" + paramString1 + ", card_tp_id:" + paramString2);
-    ArrayList localArrayList1 = HI(1);
+    ArrayList localArrayList1 = Ij(1);
     if ((localArrayList1 != null) && (localArrayList1.contains(paramString1)))
     {
       AppMethodBeat.o(112935);
       return;
     }
-    ArrayList localArrayList2 = HI(2);
+    ArrayList localArrayList2 = Ij(2);
     if ((localArrayList2 != null) && (localArrayList2.contains(paramString1)))
     {
       AppMethodBeat.o(112935);
       return;
     }
-    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.cHx().getValue("key_share_card_layout_data");
+    com.tencent.mm.plugin.card.sharecard.model.l locall = (com.tencent.mm.plugin.card.sharecard.model.l)am.dkO().getValue("key_share_card_layout_data");
     if (locall == null)
     {
       Log.e("MicroMsg.ShareCardDataMgr", "addCardIdsListByCardId data == null");
       AppMethodBeat.o(112935);
       return;
     }
-    int j = am.cHA().ark(paramString2);
-    int k = arf(paramString2);
+    int j = am.dkR().akP(paramString2);
+    int k = akK(paramString2);
     Log.e("MicroMsg.ShareCardDataMgr", "addCardIdsListByCardId realCount:" + j + " cacheCount:" + k);
     int i;
-    if ((locall.trZ != null) && (locall.trZ.size() > 0) && ((k <= 0) || (j == 1))) {
+    if ((locall.wwy != null) && (locall.wwy.size() > 0) && ((k <= 0) || (j == 1))) {
       i = 0;
     }
-    while (i < locall.trZ.size())
+    while (i < locall.wwy.size())
     {
-      m localm = (m)locall.trZ.get(i);
-      if ((paramString2 != null) && (paramString2.contains(localm.tnX)))
+      m localm = (m)locall.wwy.get(i);
+      if ((paramString2 != null) && (paramString2.contains(localm.wsy)))
       {
         localArrayList1.add(paramString1);
-        am.cHx().r("key_share_card_local_city_ids", localArrayList1);
+        am.dkO().z("key_share_card_local_city_ids", localArrayList1);
         Log.i("MicroMsg.ShareCardDataMgr", "addCardIdsListByCardId add for local ids, card id is ".concat(String.valueOf(paramString1)));
         AppMethodBeat.o(112935);
         return;
@@ -1142,7 +1128,7 @@ public final class b
     if ((localArrayList2 != null) && ((k <= 0) || (j == 1)))
     {
       localArrayList2.add(paramString1);
-      am.cHx().r("key_share_card_other_city_ids", localArrayList2);
+      am.dkO().z("key_share_card_other_city_ids", localArrayList2);
       Log.i("MicroMsg.ShareCardDataMgr", "addCardIdsListByCardId add for other ids, card id is ".concat(String.valueOf(paramString1)));
       AppMethodBeat.o(112935);
       return;
@@ -1151,19 +1137,19 @@ public final class b
     AppMethodBeat.o(112935);
   }
   
-  public static String fI(String paramString1, String paramString2)
+  public static String gh(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112949);
     Log.i("MicroMsg.ShareCardDataMgr", "initShareUserCardId()");
     if (paramString2 != null)
     {
-      paramString2 = arg(paramString2);
+      paramString2 = akL(paramString2);
       if ((paramString2 != null) && (paramString2.size() > 0))
       {
         paramString2 = (r)paramString2.get(0);
-        if ((paramString2 != null) && (paramString2.tsl != null) && (paramString2.tsl.size() > 0) && (!paramString1.equals(paramString2.tsl.get(0))))
+        if ((paramString2 != null) && (paramString2.wwI != null) && (paramString2.wwI.size() > 0) && (!paramString1.equals(paramString2.wwI.get(0))))
         {
-          paramString1 = (String)paramString2.tsl.get(0);
+          paramString1 = (String)paramString2.wwI.get(0);
           Log.i("MicroMsg.ShareCardDataMgr", "initShareUserCardId(), mCardId is not first!, reset it");
         }
       }
@@ -1180,7 +1166,7 @@ public final class b
     }
   }
   
-  public final void aO(String paramString, boolean paramBoolean)
+  public final void ba(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(112925);
     if (TextUtils.isEmpty(paramString))
@@ -1190,37 +1176,37 @@ public final class b
       return;
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = t.asa(paramString);
-    Object localObject2 = (com.tencent.mm.plugin.card.sharecard.model.l)am.cHx().getValue("key_share_card_layout_data");
+    Object localObject1 = t.alE(paramString);
+    Object localObject2 = (com.tencent.mm.plugin.card.sharecard.model.l)am.dkO().getValue("key_share_card_layout_data");
     if (localObject1 == null)
     {
       Log.e("MicroMsg.ShareCardDataMgr", "updateGetShareLayoutData data == null");
       a((com.tencent.mm.plugin.card.sharecard.model.l)localObject1, (com.tencent.mm.plugin.card.sharecard.model.l)localObject2, paramBoolean);
-      am.cHx().r("key_share_card_layout_data", localObject1);
+      am.dkO().z("key_share_card_layout_data", localObject1);
       AppMethodBeat.o(112925);
       return;
     }
     if (paramBoolean) {
-      com.tencent.mm.plugin.card.d.l.arS(paramString);
+      com.tencent.mm.plugin.card.c.l.alw(paramString);
     }
     a((com.tencent.mm.plugin.card.sharecard.model.l)localObject1, paramBoolean);
     a((com.tencent.mm.plugin.card.sharecard.model.l)localObject1, (com.tencent.mm.plugin.card.sharecard.model.l)localObject2, paramBoolean);
-    am.cHx().r("key_share_card_layout_data", localObject1);
+    am.dkO().z("key_share_card_layout_data", localObject1);
     int j = 0;
     int i = j;
-    if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).trZ != null)
+    if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).wwy != null)
     {
       i = j;
-      if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).trZ.size() > 0) {
-        i = ((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).trZ.size();
+      if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).wwy.size() > 0) {
+        i = ((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).wwy.size();
       }
     }
     j = i;
-    if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).tsa != null)
+    if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).wwz != null)
     {
       j = i;
-      if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).tsa.size() > 0) {
-        j = i + ((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).tsa.size();
+      if (((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).wwz.size() > 0) {
+        j = i + ((com.tencent.mm.plugin.card.sharecard.model.l)localObject1).wwz.size();
       }
     }
     if (j > 0)
@@ -1247,7 +1233,7 @@ public final class b
       paramString.add(localObject2);
       paramString.add(localIDKey1);
       paramString.add(localIDKey2);
-      com.tencent.mm.plugin.report.service.h.IzE.b(paramString, true);
+      com.tencent.mm.plugin.report.service.h.OAn.b(paramString, true);
     }
     AppMethodBeat.o(112925);
   }
@@ -1255,21 +1241,21 @@ public final class b
   public final void init()
   {
     AppMethodBeat.i(112923);
-    if ((com.tencent.mm.plugin.card.sharecard.model.l)am.cHx().getValue("key_share_card_layout_data") == null)
+    if ((com.tencent.mm.plugin.card.sharecard.model.l)am.dkO().getValue("key_share_card_layout_data") == null)
     {
       Log.e("MicroMsg.ShareCardDataMgr", "initShareCardLayoutData, data cache is empty!, load data from db!");
-      Object localObject = com.tencent.mm.plugin.card.d.l.cLk();
+      Object localObject = com.tencent.mm.plugin.card.c.l.doS();
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
         Log.e("MicroMsg.ShareCardDataMgr", "initShareCardLayoutData, json is empty");
         AppMethodBeat.o(112923);
         return;
       }
-      localObject = t.asa((String)localObject);
+      localObject = t.alE((String)localObject);
       if (localObject != null)
       {
         Log.i("MicroMsg.ShareCardDataMgr", "load share card layout data success!");
-        am.cHx().r("key_share_card_layout_data", localObject);
+        am.dkO().z("key_share_card_layout_data", localObject);
         a((com.tencent.mm.plugin.card.sharecard.model.l)localObject, true);
         AppMethodBeat.o(112923);
         return;
@@ -1284,7 +1270,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.a.b
  * JD-Core Version:    0.7.0.1
  */

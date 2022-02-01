@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.game.chatroom.b;
 
-import com.tencent.mm.plugin.game.chatroom.b.a;
+import com.tencent.mm.plugin.game.chatroom.b.c;
 
-public abstract interface a<T extends com.tencent.mm.cd.a>
+public abstract interface a<T extends com.tencent.mm.bx.a>
 {
-  public abstract void a(b.a parama, T paramT);
+  public abstract void a(b.c paramc, T paramT);
 }
 
 

@@ -3,32 +3,32 @@ package com.tencent.mm.videocomposition.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tavkit.composition.audio.TAVAudioProcessorNode;
 import com.tencent.tavkit.composition.audio.TAVAudioProcessorNode.TAVAudioProcessorEffect;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/audio/AudioResampleProcessor;", "Lcom/tencent/mm/videocomposition/audio/IAudioProcessorFactory;", "resampleFactory", "Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "(Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;)V", "getResampleFactory", "()Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "createAudioProcessorNode", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/audio/AudioResampleProcessor;", "Lcom/tencent/mm/videocomposition/audio/IAudioProcessorFactory;", "resampleFactory", "Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "(Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;)V", "getResampleFactory", "()Lcom/tencent/mm/videocomposition/audio/IAudioResampleFactory;", "createAudioProcessorNode", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode;", "track", "Lcom/tencent/mm/videocomposition/CompositionTrack;", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class a
   implements b
 {
-  final c YIw;
+  final c agEe;
   
   public a(c paramc)
   {
-    AppMethodBeat.i(248059);
-    this.YIw = paramc;
-    AppMethodBeat.o(248059);
+    AppMethodBeat.i(233479);
+    this.agEe = paramc;
+    AppMethodBeat.o(233479);
   }
   
   public final TAVAudioProcessorNode h(final com.tencent.mm.videocomposition.b paramb)
   {
-    AppMethodBeat.i(248055);
-    p.k(paramb, "track");
+    AppMethodBeat.i(233485);
+    s.t(paramb, "track");
     paramb = (TAVAudioProcessorNode)new a(this, paramb);
-    AppMethodBeat.o(248055);
+    AppMethodBeat.o(233485);
     return paramb;
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"com/tencent/mm/videocomposition/audio/AudioResampleProcessor$createAudioProcessorNode$1", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode;", "createAudioProcessor", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "getIdentifier", "", "video_composition_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mm/videocomposition/audio/AudioResampleProcessor$createAudioProcessorNode$1", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode;", "createAudioProcessor", "Lcom/tencent/tavkit/composition/audio/TAVAudioProcessorNode$TAVAudioProcessorEffect;", "getIdentifier", "", "video_composition_release"}, k=1, mv={1, 1, 15})
   public static final class a
     implements TAVAudioProcessorNode
   {
@@ -36,9 +36,9 @@ public final class a
     
     public final TAVAudioProcessorNode.TAVAudioProcessorEffect createAudioProcessor()
     {
-      AppMethodBeat.i(248052);
-      TAVAudioProcessorNode.TAVAudioProcessorEffect localTAVAudioProcessorEffect = this.YIx.YIw.a(paramb);
-      AppMethodBeat.o(248052);
+      AppMethodBeat.i(233496);
+      TAVAudioProcessorNode.TAVAudioProcessorEffect localTAVAudioProcessorEffect = this.agEf.agEe.b(paramb);
+      AppMethodBeat.o(233496);
       return localTAVAudioProcessorEffect;
     }
     
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.videocomposition.a.a
  * JD-Core Version:    0.7.0.1
  */

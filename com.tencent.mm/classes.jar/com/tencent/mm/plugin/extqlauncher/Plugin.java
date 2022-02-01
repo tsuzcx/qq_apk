@@ -20,9 +20,9 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(24547);
-    b localb = new b();
+    SubCoreExtQLauncher localSubCoreExtQLauncher = new SubCoreExtQLauncher();
     AppMethodBeat.o(24547);
-    return localb;
+    return localSubCoreExtQLauncher;
   }
   
   public c getContactWidgetFactory()
@@ -32,7 +32,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.extqlauncher.Plugin
  * JD-Core Version:    0.7.0.1
  */

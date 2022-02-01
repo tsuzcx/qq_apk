@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import android.os.Build.VERSION;
-import com.facebook.device.yearclass.YearClass;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.plugin.game.api.b;
 import com.tencent.mm.plugin.game.api.b.a;
 import com.tencent.mm.plugin.game.protobuf.GetGameCenterGlobalSettingResponse;
-import com.tencent.mm.plugin.game.protobuf.bj;
+import com.tencent.mm.plugin.game.protobuf.bk;
 import com.tencent.mm.plugin.game.protobuf.f;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
@@ -22,45 +19,45 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  private final d jTk;
+  private h callback;
+  private final com.tencent.mm.am.c mtC;
   
   public c(int paramInt)
   {
-    AppMethodBeat.i(188504);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bj();
-    ((d.a)localObject).lBV = new GetGameCenterGlobalSettingResponse();
-    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecenterglobalsetting";
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.jTk = ((d.a)localObject).bgN();
-    bj localbj = (bj)d.b.b(this.jTk.lBR);
-    localbj.CPt = LocaleUtil.getApplicationLanguage();
-    String str = b.a.evu().evi();
+    AppMethodBeat.i(275336);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new bk();
+    ((c.a)localObject).otF = new GetGameCenterGlobalSettingResponse();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecenterglobalsetting";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    bk localbk = (bk)c.b.b(this.mtC.otB);
+    localbk.IJD = LocaleUtil.getApplicationLanguage();
+    String str = b.a.fCn().fCa();
     localObject = str;
     if (Util.isNullOrNil(str)) {
       localObject = Util.getSimCountryCode(MMApplicationContext.getContext());
     }
-    localbj.mVH = ((String)localObject);
-    localbj.CPu = ChannelUtil.channelId;
-    localbj.CPv = new f();
-    localbj.CPv.CMM = Build.VERSION.SDK_INT;
-    localbj.CPv.CMN = YearClass.get(MMApplicationContext.getContext());
-    localbj.CPw = paramInt;
-    Log.i("MicroMsg.NetSceneGetGameGlobalConfig", "lang=%s, country=%s, releaseChannel=%s, osVersion = %d, deviceLevel = %d, scene:%d", new Object[] { localbj.CPt, localbj.mVH, Integer.valueOf(localbj.CPu), Integer.valueOf(localbj.CPv.CMM), Integer.valueOf(localbj.CPv.CMN), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(188504);
+    localbk.pSo = ((String)localObject);
+    localbk.IJE = ChannelUtil.channelId;
+    localbk.IJF = new f();
+    localbk.IJF.IGR = Build.VERSION.SDK_INT;
+    localbk.IJF.IGS = com.c.a.b.aH(MMApplicationContext.getContext());
+    localbk.IJG = paramInt;
+    Log.i("MicroMsg.NetSceneGetGameGlobalConfig", "lang=%s, country=%s, releaseChannel=%s, osVersion = %d, deviceLevel = %d, scene:%d", new Object[] { localbk.IJD, localbk.pSo, Integer.valueOf(localbk.IJE), Integer.valueOf(localbk.IJF.IGR), Integer.valueOf(localbk.IJF.IGS), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(275336);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(89936);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(89936);
     return i;
   }
@@ -98,7 +95,7 @@ public final class c
     //   49: iload_3
     //   50: ifeq +23 -> 73
     //   53: aload_0
-    //   54: getfield 175	com/tencent/mm/plugin/game/commlib/c:callback	Lcom/tencent/mm/an/i;
+    //   54: getfield 175	com/tencent/mm/plugin/game/commlib/c:callback	Lcom/tencent/mm/am/h;
     //   57: iload_2
     //   58: iload_3
     //   59: aload 4
@@ -108,15 +105,15 @@ public final class c
     //   69: invokestatic 169	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: return
     //   73: aload 5
-    //   75: checkcast 65	com/tencent/mm/an/d
-    //   78: getfield 218	com/tencent/mm/an/d:lBS	Lcom/tencent/mm/an/d$c;
-    //   81: invokestatic 223	com/tencent/mm/an/d$c:b	(Lcom/tencent/mm/an/d$c;)Lcom/tencent/mm/cd/a;
+    //   75: checkcast 65	com/tencent/mm/am/c
+    //   78: getfield 218	com/tencent/mm/am/c:otC	Lcom/tencent/mm/am/c$c;
+    //   81: invokestatic 223	com/tencent/mm/am/c$c:b	(Lcom/tencent/mm/am/c$c;)Lcom/tencent/mm/bx/a;
     //   84: checkcast 33	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse
     //   87: astore 5
     //   89: aload 5
     //   91: ifnonnull +23 -> 114
     //   94: aload_0
-    //   95: getfield 175	com/tencent/mm/plugin/game/commlib/c:callback	Lcom/tencent/mm/an/i;
+    //   95: getfield 175	com/tencent/mm/plugin/game/commlib/c:callback	Lcom/tencent/mm/am/h;
     //   98: iload_2
     //   99: iload_3
     //   100: aload 4
@@ -142,55 +139,55 @@ public final class c
     //   144: dup
     //   145: iconst_0
     //   146: aload 5
-    //   148: invokestatic 247	com/tencent/mm/ae/g:bN	(Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   148: invokestatic 247	com/tencent/mm/ae/f:dg	(Ljava/lang/Object;)Lorg/json/JSONObject;
     //   151: aastore
     //   152: invokestatic 166	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   155: aload 5
-    //   157: putstatic 253	com/tencent/mm/plugin/game/commlib/a:Czb	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
+    //   157: putstatic 253	com/tencent/mm/plugin/game/commlib/a:IsN	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
     //   160: aload 5
-    //   162: getfield 257	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:downloaderApp	Lcom/tencent/mm/plugin/game/protobuf/z;
+    //   162: getfield 257	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:downloaderApp	Lcom/tencent/mm/plugin/game/protobuf/aa;
     //   165: ifnull +27 -> 192
-    //   168: invokestatic 263	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
-    //   171: invokevirtual 269	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
-    //   174: getstatic 275	com/tencent/mm/storage/ar$a:VvG	Lcom/tencent/mm/storage/ar$a;
-    //   177: getstatic 253	com/tencent/mm/plugin/game/commlib/a:Czb	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
-    //   180: getfield 257	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:downloaderApp	Lcom/tencent/mm/plugin/game/protobuf/z;
-    //   183: getfield 281	com/tencent/mm/plugin/game/protobuf/z:COc	Z
+    //   168: invokestatic 263	com/tencent/mm/kernel/h:baE	()Lcom/tencent/mm/kernel/f;
+    //   171: invokevirtual 269	com/tencent/mm/kernel/f:ban	()Lcom/tencent/mm/storage/aq;
+    //   174: getstatic 275	com/tencent/mm/storage/at$a:acXp	Lcom/tencent/mm/storage/at$a;
+    //   177: getstatic 253	com/tencent/mm/plugin/game/commlib/a:IsN	Lcom/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse;
+    //   180: getfield 257	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:downloaderApp	Lcom/tencent/mm/plugin/game/protobuf/aa;
+    //   183: getfield 281	com/tencent/mm/plugin/game/protobuf/aa:IIm	Z
     //   186: invokestatic 286	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   189: invokevirtual 292	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
-    //   192: new 294	com/tencent/mm/vfs/q
+    //   189: invokevirtual 292	com/tencent/mm/storage/aq:set	(Lcom/tencent/mm/storage/at$a;Ljava/lang/Object;)V
+    //   192: new 294	com/tencent/mm/vfs/u
     //   195: dup
-    //   196: invokestatic 299	com/tencent/mm/plugin/game/commlib/e/c:ewp	()Ljava/lang/String;
-    //   199: invokespecial 300	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   196: invokestatic 299	com/tencent/mm/plugin/game/commlib/e/c:fEg	()Ljava/lang/String;
+    //   199: invokespecial 300	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
     //   202: astore 6
     //   204: aload 6
-    //   206: invokevirtual 304	com/tencent/mm/vfs/q:ifE	()Z
+    //   206: invokevirtual 304	com/tencent/mm/vfs/u:jKS	()Z
     //   209: ifeq +11 -> 220
     //   212: aload 6
-    //   214: invokevirtual 307	com/tencent/mm/vfs/q:isDirectory	()Z
+    //   214: invokevirtual 307	com/tencent/mm/vfs/u:isDirectory	()Z
     //   217: ifne +9 -> 226
     //   220: aload 6
-    //   222: invokevirtual 310	com/tencent/mm/vfs/q:ifL	()Z
+    //   222: invokevirtual 310	com/tencent/mm/vfs/u:jKY	()Z
     //   225: pop
     //   226: aload 5
     //   228: invokevirtual 314	com/tencent/mm/plugin/game/protobuf/GetGameCenterGlobalSettingResponse:toByteArray	()[B
     //   231: astore 6
-    //   233: new 316	com/tencent/mm/vfs/w
+    //   233: new 316	com/tencent/mm/vfs/aa
     //   236: dup
-    //   237: invokestatic 319	com/tencent/mm/plugin/game/commlib/a:evZ	()Ljava/lang/String;
-    //   240: invokespecial 320	com/tencent/mm/vfs/w:<init>	(Ljava/lang/String;)V
+    //   237: invokestatic 319	com/tencent/mm/plugin/game/commlib/a:fDP	()Ljava/lang/String;
+    //   240: invokespecial 320	com/tencent/mm/vfs/aa:<init>	(Ljava/lang/String;)V
     //   243: astore 5
     //   245: aload 5
     //   247: aload 6
-    //   249: invokevirtual 324	com/tencent/mm/vfs/w:write	([B)V
+    //   249: invokevirtual 324	com/tencent/mm/vfs/aa:write	([B)V
     //   252: aload 5
     //   254: ifnull +8 -> 262
     //   257: aload 5
-    //   259: invokevirtual 327	com/tencent/mm/vfs/w:close	()V
-    //   262: invokestatic 332	com/tencent/mm/plugin/game/commlib/e:ewn	()V
-    //   265: invokestatic 337	com/tencent/mm/plugin/game/commlib/d/a:dRf	()V
+    //   259: invokevirtual 327	com/tencent/mm/vfs/aa:close	()V
+    //   262: invokestatic 332	com/tencent/mm/plugin/game/commlib/e:fEc	()V
+    //   265: invokestatic 337	com/tencent/mm/plugin/game/commlib/d/a:eGV	()V
     //   268: aload_0
-    //   269: getfield 175	com/tencent/mm/plugin/game/commlib/c:callback	Lcom/tencent/mm/an/i;
+    //   269: getfield 175	com/tencent/mm/plugin/game/commlib/c:callback	Lcom/tencent/mm/am/h;
     //   272: iload_2
     //   273: iload_3
     //   274: aload 4

@@ -5,7 +5,7 @@ import android.os.Build.VERSION;
 import android.os.PowerManager;
 import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.d;
+import com.tencent.mm.plugin.appbrand.af.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,16 +16,16 @@ import java.util.Map;
 @Deprecated
 public final class a
 {
-  public static WebResourceResponse se(boolean paramBoolean)
+  public static WebResourceResponse wj(boolean paramBoolean)
   {
-    AppMethodBeat.i(231833);
+    AppMethodBeat.i(276940);
     Log.i("MicroMsg.GameScriptManager", "getGameScriptResponse");
     if (Build.VERSION.SDK_INT < 21)
     {
-      AppMethodBeat.o(231833);
+      AppMethodBeat.o(276940);
       return null;
     }
-    Object localObject1 = d.anc("game.js");
+    Object localObject1 = d.ags("game.js");
     if (!Util.isNullOrNil((String)localObject1))
     {
       localObject1 = ((String)localObject1).replaceFirst("#__usewepkg__#", String.valueOf(paramBoolean));
@@ -34,13 +34,13 @@ public final class a
       if ((localObject2 != null) && (Build.VERSION.SDK_INT >= 21))
       {
         paramBoolean = ((PowerManager)localObject2).isPowerSaveMode();
-        localObject2 = ((String)localObject1).replaceFirst("#__lowPowerMode__#", String.valueOf(paramBoolean)).replaceFirst("#__lowPower__#", String.valueOf(com.tencent.mm.plugin.webview.ui.tools.game.a.Czo));
-        if (com.tencent.mm.plugin.game.luggage.i.a.exd() == null) {
+        localObject2 = ((String)localObject1).replaceFirst("#__lowPowerMode__#", String.valueOf(paramBoolean)).replaceFirst("#__lowPower__#", String.valueOf(com.tencent.mm.plugin.webview.ui.tools.game.a.Itd));
+        if (com.tencent.mm.plugin.game.luggage.h.a.fFa() == null) {
           break label305;
         }
         localStringBuilder = new StringBuilder("\"");
-        localObject1 = com.tencent.mm.plugin.game.luggage.i.a.exd();
-        switch (com.tencent.mm.plugin.game.luggage.i.a.8.CDA[localObject1.CDu.ordinal()])
+        localObject1 = com.tencent.mm.plugin.game.luggage.h.a.fFa();
+        switch (com.tencent.mm.plugin.game.luggage.h.a.8.IxF[localObject1.Ixz.ordinal()])
         {
         default: 
           localObject1 = "none";
@@ -58,7 +58,7 @@ public final class a
           ((HashMap)localObject2).put("Expires", "0");
           ((WebResourceResponse)localObject1).setResponseHeaders((Map)localObject2);
           Log.i("MicroMsg.GameScriptManager", "getGameScriptResponse end");
-          AppMethodBeat.o(231833);
+          AppMethodBeat.o(276940);
           return localObject1;
         }
         catch (Exception localException)
@@ -80,7 +80,7 @@ public final class a
         break label171;
       }
     }
-    AppMethodBeat.o(231833);
+    AppMethodBeat.o(276940);
     return null;
   }
 }

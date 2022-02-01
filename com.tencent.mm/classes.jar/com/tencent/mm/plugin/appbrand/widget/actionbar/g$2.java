@@ -16,13 +16,13 @@ final class g$2
   {
     AppMethodBeat.i(49380);
     b localb = new b();
-    localb.bn(paramView);
-    localb.sg(paramInt);
-    localb.bn(paramKeyEvent);
-    a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/MMPopupWindowWithMask$2", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
+    localb.cH(paramView);
+    localb.sc(paramInt);
+    localb.cH(paramKeyEvent);
+    a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/MMPopupWindowWithMask$2", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aYj());
     if (paramInt == 4)
     {
-      this.roZ.dismiss();
+      this.uzk.dismiss();
       a.a(true, this, "com/tencent/mm/plugin/appbrand/widget/actionbar/MMPopupWindowWithMask$2", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
       AppMethodBeat.o(49380);
       return true;
@@ -34,7 +34,7 @@ final class g$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.g.2
  * JD-Core Version:    0.7.0.1
  */

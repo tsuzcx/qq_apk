@@ -6,10 +6,10 @@ import java.util.Map;
 
 public final class k
 {
-  public static void Mq(String paramString)
+  public static void EY(String paramString)
   {
     AppMethodBeat.i(158750);
-    if (e.aFo().Ml(paramString))
+    if (e.aYp().ET(paramString))
     {
       AppMethodBeat.o(158750);
       return;
@@ -19,25 +19,25 @@ public final class k
       public final void run()
       {
         AppMethodBeat.i(158748);
-        e locale = e.aFo();
-        String str = this.jYz;
-        if (i.Mo(str))
+        e locale = e.aYp();
+        String str = k.this;
+        if (i.EW(str))
         {
           com.tencent.mm.ipcinvoker.h.c.i("IPC.IPCBridgeManager", "the same process(%s), do not need to build IPCBridge.", new Object[] { str });
           AppMethodBeat.o(158748);
           return;
         }
-        locale.Mk(str);
+        locale.ES(str);
         AppMethodBeat.o(158748);
       }
     });
     AppMethodBeat.o(158750);
   }
   
-  public static void Mr(String paramString)
+  public static void EZ(String paramString)
   {
     AppMethodBeat.i(158751);
-    if (e.aFo().Ml(paramString))
+    if (e.aYp().ET(paramString))
     {
       AppMethodBeat.o(158751);
       return;
@@ -47,7 +47,7 @@ public final class k
       public final void run()
       {
         AppMethodBeat.i(158749);
-        e.aFo().Mn(this.jYz);
+        e.aYp().EV(k.this);
         AppMethodBeat.o(158749);
       }
     });

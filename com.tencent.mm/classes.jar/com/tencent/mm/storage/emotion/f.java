@@ -6,13 +6,15 @@ import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.i.b;
-import com.tencent.mm.protocal.protobuf.aji;
+import com.tencent.mm.emoji.c.m;
+import com.tencent.mm.plugin.emoji.g;
+import com.tencent.mm.plugin.emoji.g.d;
+import com.tencent.mm.protocal.protobuf.amn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -34,14 +36,14 @@ public final class f
   extends MAutoStorage<EmojiInfo>
 {
   public static final String[] SQL_CREATE;
-  private static int[] VIE;
+  private static int[] admA;
   public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(105104);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(EmojiInfo.info, "EmojiInfo"), "CREATE INDEX IF NOT EXISTS emojiinfogrouptempindex  on EmojiInfo  (  groupId,temp )", "CREATE INDEX IF NOT EXISTS emojiinfogatalogindex  on EmojiInfo  (  catalog )" };
-    VIE = new int[] { 2, 4, 8 };
+    admA = new int[] { 2, 4, 8 };
     AppMethodBeat.o(105104);
   }
   
@@ -53,26 +55,26 @@ public final class f
   
   private EmojiInfo a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt4)
   {
-    AppMethodBeat.i(230342);
+    AppMethodBeat.i(248975);
     if ((paramString1 == null) || (paramString1.length() <= 0))
     {
       Log.f("MicroMsg.emoji.EmojiInfoStorage", "create assertion!, invalid md5");
-      AppMethodBeat.o(230342);
+      AppMethodBeat.o(248975);
       return null;
     }
-    EmojiInfo localEmojiInfo2 = bxK(paramString1);
+    EmojiInfo localEmojiInfo2 = bza(paramString1);
     EmojiInfo localEmojiInfo1 = localEmojiInfo2;
     if (localEmojiInfo2 == null)
     {
-      com.tencent.mm.plugin.emoji.h.cTw();
-      localEmojiInfo1 = new EmojiInfo(com.tencent.mm.plugin.emoji.h.cTx());
+      g.dxR();
+      localEmojiInfo1 = new EmojiInfo(g.dxS());
       localEmojiInfo1.field_catalog = paramInt1;
     }
     localEmojiInfo1.field_md5 = paramString1;
     localEmojiInfo1.field_svrid = paramString2;
     localEmojiInfo1.field_type = paramInt2;
     localEmojiInfo1.field_size = paramInt3;
-    localEmojiInfo1.field_state = EmojiInfo.ZuD;
+    localEmojiInfo1.field_state = EmojiInfo.aklS;
     localEmojiInfo1.field_reserved1 = paramString3;
     localEmojiInfo1.field_reserved2 = paramString4;
     localEmojiInfo1.field_app_id = paramString5;
@@ -81,7 +83,7 @@ public final class f
     if (!TextUtils.isEmpty(paramString6)) {
       localEmojiInfo1.field_groupId = paramString6;
     }
-    AppMethodBeat.o(230342);
+    AppMethodBeat.o(248975);
     return localEmojiInfo1;
   }
   
@@ -112,11 +114,11 @@ public final class f
               k = 0;
               if (k < localNodeList2.getLength())
               {
-                com.tencent.mm.plugin.emoji.h.cTw();
-                EmojiInfo localEmojiInfo = new EmojiInfo(com.tencent.mm.plugin.emoji.h.cTx());
+                g.dxR();
+                EmojiInfo localEmojiInfo = new EmojiInfo(g.dxS());
                 localObject = (Element)localNodeList2.item(k);
                 localEmojiInfo.field_md5 = ((Element)localObject).getAttribute("md5");
-                if (!localEmojiInfo.gRk()) {
+                if (!localEmojiInfo.iqu()) {
                   break label364;
                 }
                 localEmojiInfo.field_catalog = m;
@@ -158,7 +160,7 @@ public final class f
     }
   }
   
-  private int asP(int paramInt)
+  private int aze(int paramInt)
   {
     j = 0;
     i = 0;
@@ -216,312 +218,118 @@ public final class f
     return i;
   }
   
-  public final boolean A(int paramInt, List<String> paramList)
+  private List<EmojiInfo> cB(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(105090);
-    Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] begin topCustomEmojiByMd5");
-    long l2 = System.currentTimeMillis();
-    if ((paramList == null) || (paramList.size() <= 0))
+    AppMethodBeat.i(105074);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("select * from EmojiInfo where catalog = ").append(paramInt);
+    if (!paramBoolean) {
+      ((StringBuilder)localObject).append(" and state != ").append(EmojiInfo.aklV);
+    }
+    ((StringBuilder)localObject).append(" order by reserved3 asc ");
+    localObject = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
+    if (localObject != null)
     {
-      Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] topCustomEmojiByMd5 failed. list is null");
-      AppMethodBeat.o(105090);
+      if (((Cursor)localObject).moveToFirst()) {
+        do
+        {
+          EmojiInfo localEmojiInfo = new EmojiInfo();
+          localEmojiInfo.convertFrom((Cursor)localObject);
+          localArrayList.add(localEmojiInfo);
+        } while (((Cursor)localObject).moveToNext());
+      }
+      ((Cursor)localObject).close();
+    }
+    AppMethodBeat.o(105074);
+    return localArrayList;
+  }
+  
+  private List<EmojiInfo> jdD()
+  {
+    AppMethodBeat.i(248980);
+    List localList = cB(EmojiGroupInfo.aklE, false);
+    if (localList.size() > 0)
+    {
+      m localm = m.mhY;
+      m.fj(false);
+    }
+    AppMethodBeat.o(248980);
+    return localList;
+  }
+  
+  public final boolean J(List<EmojiInfo> paramList, String paramString)
+  {
+    AppMethodBeat.i(105091);
+    if (paramList.size() <= 0)
+    {
+      Log.i("MicroMsg.emoji.EmojiInfoStorage", "insert emoji list faild. list is null or size is 0.");
+      AppMethodBeat.o(105091);
       return false;
     }
-    Object localObject1 = asQ(paramInt);
+    Log.i("MicroMsg.emoji.EmojiInfoStorage", "insertEmojiList groupId:%s size:%d", new Object[] { paramString, Integer.valueOf(paramList.size()) });
     com.tencent.mm.storagebase.h localh = null;
     if ((this.db instanceof com.tencent.mm.storagebase.h)) {
       localh = (com.tencent.mm.storagebase.h)this.db;
     }
-    for (long l1 = localh.beginTransaction(Thread.currentThread().getId());; l1 = -1L)
+    for (long l = localh.beginTransaction(Thread.currentThread().getId());; l = -1L)
     {
-      Object localObject2 = paramList.iterator();
-      int j;
-      for (int i = 1; ((Iterator)localObject2).hasNext(); i = j)
+      Object localObject = aoh(paramString);
+      paramString = new HashMap();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Object localObject3 = (String)((Iterator)localObject2).next();
-        EmojiInfo localEmojiInfo = bxK((String)localObject3);
-        j = i;
-        if (localEmojiInfo != null)
-        {
-          j = i;
-          if (!Util.isNullOrNil(localEmojiInfo.getMd5()))
-          {
-            if (paramInt == 1) {
-              if (localEmojiInfo.hBB() == EmojiInfo.a.VIi) {
-                localEmojiInfo.field_idx = i;
-              }
-            }
-            for (;;)
-            {
-              if (!((List)localObject1).isEmpty()) {
-                ((List)localObject1).remove(localObject3);
-              }
-              j = i + 1;
-              localObject3 = localEmojiInfo.convertTo();
-              if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject3) >= 0L) {
-                break;
-              }
-              if (localh != null) {
-                localh.endTransaction(l1);
-              }
-              Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end topCustomEmojiByMd5 user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-              AppMethodBeat.o(105090);
-              return false;
-              localEmojiInfo.field_idx = 0;
-              continue;
-              localEmojiInfo.field_reserved3 = i;
-            }
-          }
-        }
+        EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
+        paramString.put(localEmojiInfo.getMd5(), localEmojiInfo);
       }
-      if (!((List)localObject1).isEmpty())
+      int i = 0;
+      while (i < paramList.size())
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = bxK((String)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (!Util.isNullOrNil(((EmojiInfo)localObject2).getMd5())))
-          {
-            if (paramInt == 1) {
-              if (((EmojiInfo)localObject2).hBB() == EmojiInfo.a.VIi) {
-                ((EmojiInfo)localObject2).field_idx = i;
-              }
-            }
-            for (;;)
-            {
-              i += 1;
-              localObject2 = ((EmojiInfo)localObject2).convertTo();
-              if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject2) >= 0L) {
-                break;
-              }
-              if (localh != null) {
-                localh.endTransaction(l1);
-              }
-              Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end topCustomEmojiByMd5 user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-              AppMethodBeat.o(105090);
-              return false;
-              ((EmojiInfo)localObject2).field_idx = 0;
-              continue;
-              ((EmojiInfo)localObject2).field_reserved3 = i;
-            }
-          }
-        }
+        localObject = (EmojiInfo)paramList.get(i);
+        ((EmojiInfo)localObject).field_temp = 0;
+        this.db.replace("EmojiInfo", "md5", ((EmojiInfo)localObject).convertTo());
+        paramString.remove(((EmojiInfo)localObject).getMd5());
+        i += 1;
+      }
+      paramList = paramString.entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (Map.Entry)paramList.next();
+        paramString = (String)((Map.Entry)localObject).getKey();
+        localObject = (EmojiInfo)((Map.Entry)localObject).getValue();
+        ((EmojiInfo)localObject).field_temp = 1;
+        this.db.update("EmojiInfo", ((EmojiInfo)localObject).convertTo(), "md5=?", new String[] { paramString });
+        Log.d("MicroMsg.emoji.EmojiInfoStorage", "jacks modify excess emoji to %s", new Object[] { ((EmojiInfo)localObject).field_groupId });
       }
       if (localh != null) {
-        localh.endTransaction(l1);
+        localh.endTransaction(l);
       }
-      l1 = System.currentTimeMillis();
-      if (paramList == null) {}
-      for (paramInt = 0;; paramInt = paramList.size())
-      {
-        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end topCustomEmojiByMd5 user time:%d succes. size:%d", new Object[] { Long.valueOf(l1 - l2), Integer.valueOf(paramInt) });
-        doNotify("event_update_emoji");
-        AppMethodBeat.o(105090);
-        return true;
-      }
+      AppMethodBeat.o(105091);
+      return true;
     }
   }
   
-  public final boolean B(int paramInt, List<EmojiInfo> paramList)
+  public final EmojiInfo K(EmojiInfo paramEmojiInfo)
   {
-    for (;;)
+    AppMethodBeat.i(105059);
+    if ((paramEmojiInfo == null) || (Util.isNullOrNil(paramEmojiInfo.getMd5())) || (paramEmojiInfo.getMd5().length() <= 0))
     {
-      long l2;
-      boolean bool;
-      int i;
-      Object localObject;
-      try
-      {
-        AppMethodBeat.i(105094);
-        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] begin preparedDownloadCustomEmojiList %s, %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
-        l2 = System.currentTimeMillis();
-        if ((paramList == null) || (paramList.size() <= 0))
-        {
-          Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] perparedDownloadCustomEmojiList failed. list is null");
-          bool = false;
-          AppMethodBeat.o(105094);
-          return bool;
-        }
-        if (!(this.db instanceof com.tencent.mm.storagebase.h)) {
-          break label533;
-        }
-        localh = (com.tencent.mm.storagebase.h)this.db;
-        l1 = localh.beginTransaction(Thread.currentThread().getId());
-        Iterator localIterator = paramList.iterator();
-        i = 1;
-        if (!localIterator.hasNext()) {
-          break label457;
-        }
-        EmojiInfo localEmojiInfo = (EmojiInfo)localIterator.next();
-        String str = localEmojiInfo.getMd5();
-        localObject = bxK(str);
-        if ((localObject == null) || (Util.isNullOrNil(((EmojiInfo)localObject).getMd5())))
-        {
-          localObject = new EmojiInfo();
-          ((EmojiInfo)localObject).field_md5 = str;
-          ((EmojiInfo)localObject).field_source = EmojiInfo.ZuJ;
-          ((EmojiInfo)localObject).field_lastUseTime = System.currentTimeMillis();
-          if (paramInt != 1) {
-            break label429;
-          }
-          if (((EmojiInfo)localObject).field_catalog != EmojiInfo.YCD) {
-            ((EmojiInfo)localObject).field_catalog = EmojiInfo.YCx;
-          }
-          ((EmojiInfo)localObject).field_groupId = "capture";
-          ((EmojiInfo)localObject).field_idx = i;
-          if (!((EmojiInfo)localObject).hBo()) {
-            break label446;
-          }
-          ((EmojiInfo)localObject).field_reserved4 |= EmojiInfo.ZuM;
-          ((EmojiInfo)localObject).field_state = EmojiInfo.ZuF;
-          ((EmojiInfo)localObject).field_size = ((int)u.bBQ(((EmojiInfo)localObject).ifh()));
-          b.a(localEmojiInfo, (EmojiInfo)localObject);
-          Log.i("MicroMsg.emoji.EmojiInfoStorage", "preparedDownloadCustomEmojiList: %s, %s, %s", new Object[] { ((EmojiInfo)localObject).getMd5(), Integer.valueOf(((EmojiInfo)localObject).field_state), Integer.valueOf(((EmojiInfo)localObject).field_size) });
-          localObject = ((EmojiInfo)localObject).convertTo();
-          if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject) >= 0L) {
-            break label544;
-          }
-          if (localh != null) {
-            localh.endTransaction(l1);
-          }
-          Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomEmojiList user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-          bool = false;
-          AppMethodBeat.o(105094);
-          continue;
-        }
-        ((EmojiInfo)localObject).field_source = EmojiInfo.ZuJ;
-      }
-      finally {}
-      continue;
-      label429:
-      ((EmojiInfo)localObject).field_catalog = EmojiInfo.YCD;
-      ((EmojiInfo)localObject).field_reserved3 = i;
-      continue;
-      label446:
-      ((EmojiInfo)localObject).field_state = EmojiInfo.ZuG;
-      continue;
-      label457:
-      if (localh != null) {
-        localh.endTransaction(l1);
-      }
-      long l1 = System.currentTimeMillis();
-      if (paramList == null) {}
-      for (paramInt = 0;; paramInt = paramList.size())
-      {
-        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomEmojiList user time:%d succes. size:%d", new Object[] { Long.valueOf(l1 - l2), Integer.valueOf(paramInt) });
-        bool = true;
-        AppMethodBeat.o(105094);
-        break;
-      }
-      label533:
-      l1 = -1L;
-      com.tencent.mm.storagebase.h localh = null;
-      continue;
-      label544:
-      i += 1;
+      Log.f("MicroMsg.emoji.EmojiInfoStorage", "create assertion!, invalid md5");
+      AppMethodBeat.o(105059);
+      return null;
     }
+    Log.i("MicroMsg.emoji.EmojiInfoStorage", "create: %s", new Object[] { paramEmojiInfo.field_md5 });
+    if (L(paramEmojiInfo))
+    {
+      doNotify("create_emoji_info_notify");
+      AppMethodBeat.o(105059);
+      return paramEmojiInfo;
+    }
+    AppMethodBeat.o(105059);
+    return null;
   }
   
-  public final List<String> C(int paramInt, List<String> paramList)
-  {
-    for (;;)
-    {
-      long l2;
-      int i;
-      Object localObject;
-      try
-      {
-        AppMethodBeat.i(230395);
-        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] begin preparedDownloadCustomMd5List %s, %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
-        LinkedList localLinkedList = new LinkedList();
-        l2 = System.currentTimeMillis();
-        if (paramList.size() <= 0)
-        {
-          Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] preparedDownloadCustomMd5List failed. list is null");
-          AppMethodBeat.o(230395);
-          return localLinkedList;
-        }
-        if (!(this.db instanceof com.tencent.mm.storagebase.h)) {
-          break label544;
-        }
-        localh = (com.tencent.mm.storagebase.h)this.db;
-        l1 = localh.beginTransaction(Thread.currentThread().getId());
-        Iterator localIterator = paramList.iterator();
-        i = 1;
-        if (!localIterator.hasNext()) {
-          break label471;
-        }
-        String str = (String)localIterator.next();
-        localObject = bxK(str);
-        if ((localObject == null) || (Util.isNullOrNil(((EmojiInfo)localObject).getMd5())))
-        {
-          localObject = new EmojiInfo();
-          ((EmojiInfo)localObject).field_md5 = str;
-          ((EmojiInfo)localObject).field_source = EmojiInfo.ZuJ;
-          ((EmojiInfo)localObject).field_lastUseTime = System.currentTimeMillis();
-          if (paramInt == 1)
-          {
-            if (((EmojiInfo)localObject).field_catalog != EmojiInfo.YCD) {
-              ((EmojiInfo)localObject).field_catalog = EmojiInfo.YCx;
-            }
-            ((EmojiInfo)localObject).field_groupId = "capture";
-            ((EmojiInfo)localObject).field_idx = i;
-            if (!((EmojiInfo)localObject).hBo()) {
-              break label460;
-            }
-            ((EmojiInfo)localObject).field_reserved4 |= EmojiInfo.ZuM;
-            ((EmojiInfo)localObject).field_state = EmojiInfo.ZuF;
-            ((EmojiInfo)localObject).field_size = ((int)u.bBQ(((EmojiInfo)localObject).ifh()));
-            if ((!b.avc(str)) && (Util.isNullOrNil(((EmojiInfo)localObject).field_cdnUrl))) {
-              localLinkedList.add(str);
-            }
-            Log.i("MicroMsg.emoji.EmojiInfoStorage", "preparedDownloadCustomMd5List: %s, %s, %s", new Object[] { ((EmojiInfo)localObject).getMd5(), Integer.valueOf(((EmojiInfo)localObject).field_state), Integer.valueOf(((EmojiInfo)localObject).field_size) });
-            localObject = ((EmojiInfo)localObject).convertTo();
-            if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject) >= 0L) {
-              break label555;
-            }
-            if (localh != null) {
-              localh.endTransaction(l1);
-            }
-            Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomMd5List user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
-            AppMethodBeat.o(230395);
-          }
-        }
-        else
-        {
-          ((EmojiInfo)localObject).field_source = EmojiInfo.ZuJ;
-          continue;
-        }
-        ((EmojiInfo)localObject).field_catalog = EmojiInfo.YCD;
-      }
-      finally {}
-      ((EmojiInfo)localObject).field_reserved3 = i;
-      continue;
-      label460:
-      ((EmojiInfo)localObject).field_state = EmojiInfo.ZuG;
-      continue;
-      label471:
-      if (localh != null) {
-        localh.endTransaction(l1);
-      }
-      long l1 = System.currentTimeMillis();
-      if (paramList == null) {}
-      for (paramInt = 0;; paramInt = paramList.size())
-      {
-        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomMd5List user time:%d succes. size:%d", new Object[] { Long.valueOf(l1 - l2), Integer.valueOf(paramInt) });
-        AppMethodBeat.o(230395);
-        break;
-      }
-      label544:
-      l1 = -1L;
-      com.tencent.mm.storagebase.h localh = null;
-      continue;
-      label555:
-      i += 1;
-    }
-  }
-  
-  public final int EU(boolean paramBoolean)
+  public final int KE(boolean paramBoolean)
   {
     k = 0;
     j = 0;
@@ -591,44 +399,10 @@ public final class f
     }
   }
   
-  public final boolean J(List<String> paramList, int paramInt)
-  {
-    AppMethodBeat.i(105087);
-    if (paramInt == 1)
-    {
-      bool = jS(paramList);
-      AppMethodBeat.o(105087);
-      return bool;
-    }
-    boolean bool = jR(paramList);
-    AppMethodBeat.o(105087);
-    return bool;
-  }
-  
-  public final EmojiInfo K(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(105059);
-    if ((paramEmojiInfo == null) || (Util.isNullOrNil(paramEmojiInfo.getMd5())) || (paramEmojiInfo.getMd5().length() <= 0))
-    {
-      Log.f("MicroMsg.emoji.EmojiInfoStorage", "create assertion!, invalid md5");
-      AppMethodBeat.o(105059);
-      return null;
-    }
-    Log.i("MicroMsg.emoji.EmojiInfoStorage", "create: %s", new Object[] { paramEmojiInfo.field_md5 });
-    if (L(paramEmojiInfo))
-    {
-      doNotify("create_emoji_info_notify");
-      AppMethodBeat.o(105059);
-      return paramEmojiInfo;
-    }
-    AppMethodBeat.o(105059);
-    return null;
-  }
-  
   public final boolean L(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105065);
-    if ((paramEmojiInfo == null) || (!paramEmojiInfo.gRk()))
+    if ((paramEmojiInfo == null) || (!paramEmojiInfo.iqu()))
     {
       Log.f("MicroMsg.emoji.EmojiInfoStorage", "insert assertion!, invalid emojiInfo");
       AppMethodBeat.o(105065);
@@ -650,7 +424,7 @@ public final class f
   public final boolean M(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105066);
-    if ((paramEmojiInfo == null) || (!paramEmojiInfo.gRk()))
+    if ((paramEmojiInfo == null) || (!paramEmojiInfo.iqu()))
     {
       Log.f("MicroMsg.emoji.EmojiInfoStorage", "insert assertion!, invalid emojiInfo");
       AppMethodBeat.o(105066);
@@ -674,7 +448,7 @@ public final class f
   public final boolean N(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105067);
-    if ((paramEmojiInfo == null) || (!paramEmojiInfo.gRk()))
+    if ((paramEmojiInfo == null) || (!paramEmojiInfo.iqu()))
     {
       Log.f("MicroMsg.emoji.EmojiInfoStorage", "insert assertion!, invalid emojiInfo");
       AppMethodBeat.o(105067);
@@ -689,164 +463,309 @@ public final class f
     return false;
   }
   
-  /* Error */
-  public final EmojiInfo UX(long paramLong)
+  public final boolean V(int paramInt, List<String> paramList)
   {
-    // Byte code:
-    //   0: ldc_w 549
-    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: lload_1
-    //   7: lconst_0
-    //   8: lcmp
-    //   9: ifne +11 -> 20
-    //   12: ldc_w 549
-    //   15: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   18: aconst_null
-    //   19: areturn
-    //   20: aload_0
-    //   21: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   24: ldc 30
-    //   26: aconst_null
-    //   27: ldc_w 551
-    //   30: iconst_1
-    //   31: anewarray 22	java/lang/String
-    //   34: dup
-    //   35: iconst_0
-    //   36: lload_1
-    //   37: invokestatic 554	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   40: aastore
-    //   41: aconst_null
-    //   42: aconst_null
-    //   43: aconst_null
-    //   44: iconst_2
-    //   45: invokeinterface 558 9 0
-    //   50: astore 4
-    //   52: aload 4
-    //   54: ifnull +162 -> 216
-    //   57: aload 4
-    //   59: astore 5
-    //   61: aload 4
-    //   63: invokeinterface 284 1 0
-    //   68: ifeq +148 -> 216
-    //   71: aload 4
-    //   73: astore 5
-    //   75: invokestatic 80	com/tencent/mm/plugin/emoji/h:cTw	()Lcom/tencent/mm/plugin/emoji/h;
-    //   78: pop
-    //   79: aload 4
-    //   81: astore 5
-    //   83: new 24	com/tencent/mm/storage/emotion/EmojiInfo
-    //   86: dup
-    //   87: invokestatic 84	com/tencent/mm/plugin/emoji/h:cTx	()Ljava/lang/String;
-    //   90: invokespecial 87	com/tencent/mm/storage/emotion/EmojiInfo:<init>	(Ljava/lang/String;)V
-    //   93: astore_3
-    //   94: aload 4
-    //   96: astore 5
-    //   98: aload_3
-    //   99: aload 4
-    //   101: invokevirtual 562	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
-    //   104: aload_3
-    //   105: astore 5
-    //   107: aload 4
-    //   109: ifnull +13 -> 122
-    //   112: aload 4
-    //   114: invokeinterface 290 1 0
-    //   119: aload_3
-    //   120: astore 5
-    //   122: ldc_w 549
-    //   125: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: aload 5
-    //   130: areturn
-    //   131: astore 6
-    //   133: aconst_null
-    //   134: astore 4
-    //   136: aconst_null
-    //   137: astore_3
-    //   138: aload 4
-    //   140: astore 5
-    //   142: ldc 62
-    //   144: aload 6
-    //   146: ldc 246
-    //   148: iconst_0
-    //   149: anewarray 294	java/lang/Object
-    //   152: invokestatic 566	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   155: aload_3
-    //   156: astore 5
-    //   158: aload 4
-    //   160: ifnull -38 -> 122
-    //   163: aload 4
-    //   165: invokeinterface 290 1 0
-    //   170: aload_3
-    //   171: astore 5
-    //   173: goto -51 -> 122
-    //   176: astore_3
-    //   177: aconst_null
-    //   178: astore 5
-    //   180: aload 5
-    //   182: ifnull +10 -> 192
-    //   185: aload 5
-    //   187: invokeinterface 290 1 0
-    //   192: ldc_w 549
-    //   195: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   198: aload_3
-    //   199: athrow
-    //   200: astore_3
-    //   201: goto -21 -> 180
-    //   204: astore 6
-    //   206: aconst_null
-    //   207: astore_3
-    //   208: goto -70 -> 138
-    //   211: astore 6
-    //   213: goto -75 -> 138
-    //   216: aconst_null
-    //   217: astore_3
-    //   218: goto -114 -> 104
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	221	0	this	f
-    //   0	221	1	paramLong	long
-    //   93	78	3	localEmojiInfo	EmojiInfo
-    //   176	23	3	localObject1	Object
-    //   200	1	3	localObject2	Object
-    //   207	11	3	localObject3	Object
-    //   50	114	4	localCursor	Cursor
-    //   59	127	5	localObject4	Object
-    //   131	14	6	localException1	Exception
-    //   204	1	6	localException2	Exception
-    //   211	1	6	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   20	52	131	java/lang/Exception
-    //   20	52	176	finally
-    //   61	71	200	finally
-    //   75	79	200	finally
-    //   83	94	200	finally
-    //   98	104	200	finally
-    //   142	155	200	finally
-    //   61	71	204	java/lang/Exception
-    //   75	79	204	java/lang/Exception
-    //   83	94	204	java/lang/Exception
-    //   98	104	211	java/lang/Exception
-  }
-  
-  public final boolean UY(long paramLong)
-  {
-    AppMethodBeat.i(105081);
-    if (paramLong == 0L)
+    AppMethodBeat.i(105090);
+    Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] begin topCustomEmojiByMd5");
+    long l2 = System.currentTimeMillis();
+    if ((paramList == null) || (paramList.size() <= 0))
     {
-      AppMethodBeat.o(105081);
+      Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] topCustomEmojiByMd5 failed. list is null");
+      AppMethodBeat.o(105090);
       return false;
     }
-    int i = this.db.delete("EmojiInfo", "captureEnterTime=".concat(String.valueOf(paramLong)), null);
-    if (i > 0) {
-      doNotify("event_update_emoji");
+    Object localObject1 = azf(paramInt);
+    com.tencent.mm.storagebase.h localh = null;
+    if ((this.db instanceof com.tencent.mm.storagebase.h)) {
+      localh = (com.tencent.mm.storagebase.h)this.db;
     }
-    if (i > 0)
+    for (long l1 = localh.beginTransaction(Thread.currentThread().getId());; l1 = -1L)
     {
-      AppMethodBeat.o(105081);
-      return true;
+      Object localObject2 = paramList.iterator();
+      int j;
+      for (int i = 1; ((Iterator)localObject2).hasNext(); i = j)
+      {
+        Object localObject3 = (String)((Iterator)localObject2).next();
+        EmojiInfo localEmojiInfo = bza((String)localObject3);
+        j = i;
+        if (localEmojiInfo != null)
+        {
+          j = i;
+          if (!Util.isNullOrNil(localEmojiInfo.getMd5()))
+          {
+            if (paramInt == 1) {
+              if (localEmojiInfo.kMj() == EmojiInfo.a.adme) {
+                localEmojiInfo.field_idx = i;
+              }
+            }
+            for (;;)
+            {
+              if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
+                ((List)localObject1).remove(localObject3);
+              }
+              j = i + 1;
+              localObject3 = localEmojiInfo.convertTo();
+              if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject3) >= 0L) {
+                break;
+              }
+              if (localh != null) {
+                localh.endTransaction(l1);
+              }
+              Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end topCustomEmojiByMd5 user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+              AppMethodBeat.o(105090);
+              return false;
+              localEmojiInfo.field_idx = 0;
+              continue;
+              localEmojiInfo.field_reserved3 = i;
+            }
+          }
+        }
+      }
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = bza((String)((Iterator)localObject1).next());
+          if ((localObject2 != null) && (!Util.isNullOrNil(((EmojiInfo)localObject2).getMd5())))
+          {
+            if (paramInt == 1) {
+              if (((EmojiInfo)localObject2).kMj() == EmojiInfo.a.adme) {
+                ((EmojiInfo)localObject2).field_idx = i;
+              }
+            }
+            for (;;)
+            {
+              i += 1;
+              localObject2 = ((EmojiInfo)localObject2).convertTo();
+              if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject2) >= 0L) {
+                break;
+              }
+              if (localh != null) {
+                localh.endTransaction(l1);
+              }
+              Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end topCustomEmojiByMd5 user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+              AppMethodBeat.o(105090);
+              return false;
+              ((EmojiInfo)localObject2).field_idx = 0;
+              continue;
+              ((EmojiInfo)localObject2).field_reserved3 = i;
+            }
+          }
+        }
+      }
+      if (localh != null) {
+        localh.endTransaction(l1);
+      }
+      l1 = System.currentTimeMillis();
+      if (paramList == null) {}
+      for (paramInt = 0;; paramInt = paramList.size())
+      {
+        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end topCustomEmojiByMd5 user time:%d succes. size:%d", new Object[] { Long.valueOf(l1 - l2), Integer.valueOf(paramInt) });
+        doNotify("event_update_emoji");
+        AppMethodBeat.o(105090);
+        return true;
+      }
     }
-    AppMethodBeat.o(105081);
-    return false;
+  }
+  
+  public final boolean W(int paramInt, List<EmojiInfo> paramList)
+  {
+    for (;;)
+    {
+      long l2;
+      boolean bool;
+      int i;
+      Object localObject;
+      try
+      {
+        AppMethodBeat.i(105094);
+        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] begin preparedDownloadCustomEmojiList %s, %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
+        l2 = System.currentTimeMillis();
+        if ((paramList == null) || (paramList.size() <= 0))
+        {
+          Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] perparedDownloadCustomEmojiList failed. list is null");
+          bool = false;
+          AppMethodBeat.o(105094);
+          return bool;
+        }
+        if (!(this.db instanceof com.tencent.mm.storagebase.h)) {
+          break label533;
+        }
+        localh = (com.tencent.mm.storagebase.h)this.db;
+        l1 = localh.beginTransaction(Thread.currentThread().getId());
+        Iterator localIterator = paramList.iterator();
+        i = 1;
+        if (!localIterator.hasNext()) {
+          break label457;
+        }
+        EmojiInfo localEmojiInfo = (EmojiInfo)localIterator.next();
+        String str = localEmojiInfo.getMd5();
+        localObject = bza(str);
+        if ((localObject == null) || (Util.isNullOrNil(((EmojiInfo)localObject).getMd5())))
+        {
+          localObject = new EmojiInfo();
+          ((EmojiInfo)localObject).field_md5 = str;
+          ((EmojiInfo)localObject).field_source = EmojiInfo.aklY;
+          ((EmojiInfo)localObject).field_lastUseTime = System.currentTimeMillis();
+          if (paramInt != 1) {
+            break label429;
+          }
+          if (((EmojiInfo)localObject).field_catalog != EmojiInfo.aklM) {
+            ((EmojiInfo)localObject).field_catalog = EmojiInfo.aklG;
+          }
+          ((EmojiInfo)localObject).field_groupId = "capture";
+          ((EmojiInfo)localObject).field_idx = i;
+          if (!((EmojiInfo)localObject).kLY()) {
+            break label446;
+          }
+          ((EmojiInfo)localObject).field_reserved4 |= EmojiInfo.akmb;
+          ((EmojiInfo)localObject).field_state = EmojiInfo.aklU;
+          ((EmojiInfo)localObject).field_size = ((int)y.bEl(((EmojiInfo)localObject).kMn()));
+          d.a(localEmojiInfo, (EmojiInfo)localObject);
+          Log.i("MicroMsg.emoji.EmojiInfoStorage", "preparedDownloadCustomEmojiList: %s, %s, %s", new Object[] { ((EmojiInfo)localObject).getMd5(), Integer.valueOf(((EmojiInfo)localObject).field_state), Integer.valueOf(((EmojiInfo)localObject).field_size) });
+          localObject = ((EmojiInfo)localObject).convertTo();
+          if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject) >= 0L) {
+            break label544;
+          }
+          if (localh != null) {
+            localh.endTransaction(l1);
+          }
+          Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomEmojiList user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+          bool = false;
+          AppMethodBeat.o(105094);
+          continue;
+        }
+        ((EmojiInfo)localObject).field_source = EmojiInfo.aklY;
+      }
+      finally {}
+      continue;
+      label429:
+      ((EmojiInfo)localObject).field_catalog = EmojiInfo.aklM;
+      ((EmojiInfo)localObject).field_reserved3 = i;
+      continue;
+      label446:
+      ((EmojiInfo)localObject).field_state = EmojiInfo.aklV;
+      continue;
+      label457:
+      if (localh != null) {
+        localh.endTransaction(l1);
+      }
+      long l1 = System.currentTimeMillis();
+      if (paramList == null) {}
+      for (paramInt = 0;; paramInt = paramList.size())
+      {
+        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomEmojiList user time:%d succes. size:%d", new Object[] { Long.valueOf(l1 - l2), Integer.valueOf(paramInt) });
+        bool = true;
+        AppMethodBeat.o(105094);
+        break;
+      }
+      label533:
+      l1 = -1L;
+      com.tencent.mm.storagebase.h localh = null;
+      continue;
+      label544:
+      i += 1;
+    }
+  }
+  
+  public final List<String> X(int paramInt, List<String> paramList)
+  {
+    for (;;)
+    {
+      long l2;
+      int i;
+      Object localObject;
+      try
+      {
+        AppMethodBeat.i(249079);
+        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] begin preparedDownloadCustomMd5List %s, %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramList.size()) });
+        LinkedList localLinkedList = new LinkedList();
+        l2 = System.currentTimeMillis();
+        if (paramList.size() <= 0)
+        {
+          Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] preparedDownloadCustomMd5List failed. list is null");
+          AppMethodBeat.o(249079);
+          return localLinkedList;
+        }
+        if (!(this.db instanceof com.tencent.mm.storagebase.h)) {
+          break label544;
+        }
+        localh = (com.tencent.mm.storagebase.h)this.db;
+        l1 = localh.beginTransaction(Thread.currentThread().getId());
+        Iterator localIterator = paramList.iterator();
+        i = 1;
+        if (!localIterator.hasNext()) {
+          break label471;
+        }
+        String str = (String)localIterator.next();
+        localObject = bza(str);
+        if ((localObject == null) || (Util.isNullOrNil(((EmojiInfo)localObject).getMd5())))
+        {
+          localObject = new EmojiInfo();
+          ((EmojiInfo)localObject).field_md5 = str;
+          ((EmojiInfo)localObject).field_source = EmojiInfo.aklY;
+          ((EmojiInfo)localObject).field_lastUseTime = System.currentTimeMillis();
+          if (paramInt == 1)
+          {
+            if (((EmojiInfo)localObject).field_catalog != EmojiInfo.aklM) {
+              ((EmojiInfo)localObject).field_catalog = EmojiInfo.aklG;
+            }
+            ((EmojiInfo)localObject).field_groupId = "capture";
+            ((EmojiInfo)localObject).field_idx = i;
+            if (!((EmojiInfo)localObject).kLY()) {
+              break label460;
+            }
+            ((EmojiInfo)localObject).field_reserved4 |= EmojiInfo.akmb;
+            ((EmojiInfo)localObject).field_state = EmojiInfo.aklU;
+            ((EmojiInfo)localObject).field_size = ((int)y.bEl(((EmojiInfo)localObject).kMn()));
+            if ((!d.apc(str)) && (Util.isNullOrNil(((EmojiInfo)localObject).field_cdnUrl))) {
+              localLinkedList.add(str);
+            }
+            Log.i("MicroMsg.emoji.EmojiInfoStorage", "preparedDownloadCustomMd5List: %s, %s, %s", new Object[] { ((EmojiInfo)localObject).getMd5(), Integer.valueOf(((EmojiInfo)localObject).field_state), Integer.valueOf(((EmojiInfo)localObject).field_size) });
+            localObject = ((EmojiInfo)localObject).convertTo();
+            if (this.db.replace("EmojiInfo", "md5", (ContentValues)localObject) >= 0L) {
+              break label555;
+            }
+            if (localh != null) {
+              localh.endTransaction(l1);
+            }
+            Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomMd5List user time:%d faild ", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+            AppMethodBeat.o(249079);
+          }
+        }
+        else
+        {
+          ((EmojiInfo)localObject).field_source = EmojiInfo.aklY;
+          continue;
+        }
+        ((EmojiInfo)localObject).field_catalog = EmojiInfo.aklM;
+      }
+      finally {}
+      ((EmojiInfo)localObject).field_reserved3 = i;
+      continue;
+      label460:
+      ((EmojiInfo)localObject).field_state = EmojiInfo.aklV;
+      continue;
+      label471:
+      if (localh != null) {
+        localh.endTransaction(l1);
+      }
+      long l1 = System.currentTimeMillis();
+      if (paramList == null) {}
+      for (paramInt = 0;; paramInt = paramList.size())
+      {
+        Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] end preparedDownloadCustomMd5List user time:%d succes. size:%d", new Object[] { Long.valueOf(l1 - l2), Integer.valueOf(paramInt) });
+        AppMethodBeat.o(249079);
+        break;
+      }
+      label544:
+      l1 = -1L;
+      com.tencent.mm.storagebase.h localh = null;
+      continue;
+      label555:
+      i += 1;
+    }
   }
   
   public final EmojiInfo a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4)
@@ -859,22 +778,22 @@ public final class f
   
   public final EmojiInfo a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(230340);
+    AppMethodBeat.i(249005);
     if ((paramString1 == null) || (paramString1.length() <= 0))
     {
       Log.f("MicroMsg.emoji.EmojiInfoStorage", "create assertion!, invalid md5");
-      AppMethodBeat.o(230340);
+      AppMethodBeat.o(249005);
       return null;
     }
     paramString1 = a(paramString1, paramString2, paramInt1, paramInt2, paramInt3, null, null, paramString5, paramString6, 1);
-    paramString1.field_state = EmojiInfo.ZuF;
+    paramString1.field_state = EmojiInfo.aklU;
     if (L(paramString1))
     {
       doNotify("create_emoji_info_notify");
-      AppMethodBeat.o(230340);
+      AppMethodBeat.o(249005);
       return paramString1;
     }
-    AppMethodBeat.o(230340);
+    AppMethodBeat.o(249005);
     return null;
   }
   
@@ -883,7 +802,7 @@ public final class f
     AppMethodBeat.i(105083);
     Object localObject;
     Context localContext;
-    if ((paramEmojiInfo.field_catalog == EmojiInfo.YCz) || (paramEmojiInfo.field_catalog == EmojiInfo.YCC) || (paramEmojiInfo.field_catalog == EmojiInfo.YCB))
+    if ((paramEmojiInfo.field_catalog == EmojiInfo.aklI) || (paramEmojiInfo.field_catalog == EmojiInfo.aklL) || (paramEmojiInfo.field_catalog == EmojiInfo.aklK))
     {
       localObject = null;
       localContext = null;
@@ -892,7 +811,7 @@ public final class f
     {
       try
       {
-        paramContext = EmojiInfo.cH(paramContext, paramEmojiInfo.getName());
+        paramContext = EmojiInfo.cS(paramContext, paramEmojiInfo.getName());
         if (paramContext == null) {
           break label260;
         }
@@ -958,7 +877,7 @@ public final class f
           Log.e("MicroMsg.emoji.EmojiInfoStorage", "exception:%s", new Object[] { Util.stackTraceToString(paramEmojiInfo) });
         }
       }
-      int i = (int)u.bBQ(paramEmojiInfo.ifh());
+      int i = (int)y.bEl(paramEmojiInfo.kMn());
       continue;
       label255:
       i = 0;
@@ -968,7 +887,84 @@ public final class f
     }
   }
   
-  public final List<String> asQ(int paramInt)
+  public final boolean ab(List<String> paramList, int paramInt)
+  {
+    AppMethodBeat.i(105087);
+    if (paramInt == 1)
+    {
+      bool = ng(paramList);
+      AppMethodBeat.o(105087);
+      return bool;
+    }
+    boolean bool = nf(paramList);
+    AppMethodBeat.o(105087);
+    return bool;
+  }
+  
+  public final List<EmojiInfo> aoh(String paramString)
+  {
+    AppMethodBeat.i(105086);
+    ArrayList localArrayList = new ArrayList();
+    localObject = null;
+    str = null;
+    try
+    {
+      paramString = this.db.rawQuery("select * from EmojiInfo where groupId=? and temp=? order by idx asc", new String[] { paramString, "0" }, 2);
+      if (paramString != null)
+      {
+        str = paramString;
+        localObject = paramString;
+        if (paramString.moveToFirst())
+        {
+          boolean bool;
+          do
+          {
+            str = paramString;
+            localObject = paramString;
+            g.dxR();
+            str = paramString;
+            localObject = paramString;
+            EmojiInfo localEmojiInfo = new EmojiInfo(g.dxS());
+            str = paramString;
+            localObject = paramString;
+            localEmojiInfo.convertFrom(paramString);
+            str = paramString;
+            localObject = paramString;
+            localArrayList.add(localEmojiInfo);
+            str = paramString;
+            localObject = paramString;
+            bool = paramString.moveToNext();
+          } while (bool);
+        }
+      }
+      if (paramString != null) {
+        paramString.close();
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        localObject = str;
+        Log.w("MicroMsg.emoji.EmojiInfoStorage", "[getEmojiListByGroupId] Exception:%s", new Object[] { paramString.toString() });
+        if (str != null) {
+          str.close();
+        }
+      }
+    }
+    finally
+    {
+      if (localObject == null) {
+        break label202;
+      }
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(105086);
+    }
+    AppMethodBeat.o(105086);
+    return localArrayList;
+  }
+  
+  public final List<String> azf(int paramInt)
   {
     localObject3 = null;
     localObject1 = null;
@@ -1025,11 +1021,11 @@ public final class f
       }
       AppMethodBeat.o(105076);
       return localArrayList;
-      ((StringBuilder)localObject4).append(" where catalog = ").append(EmojiGroupInfo.YCw).append(" order by reserved3 asc ");
+      ((StringBuilder)localObject4).append(" where catalog = ").append(EmojiGroupInfo.aklF).append(" order by reserved3 asc ");
     }
   }
   
-  public final List<String> asR(int paramInt)
+  public final List<String> azg(int paramInt)
   {
     localObject3 = null;
     localObject1 = null;
@@ -1042,8 +1038,8 @@ public final class f
     }
     for (;;)
     {
-      ((StringBuilder)localObject4).append(" and state in (").append(EmojiInfo.ZuF);
-      ((StringBuilder)localObject4).append(" , ").append(EmojiInfo.ZuG);
+      ((StringBuilder)localObject4).append(" and state in (").append(EmojiInfo.aklU);
+      ((StringBuilder)localObject4).append(" , ").append(EmojiInfo.aklV);
       ((StringBuilder)localObject4).append(" ) ");
       localObject4 = ((StringBuilder)localObject4).toString();
       try
@@ -1092,11 +1088,11 @@ public final class f
       }
       AppMethodBeat.o(105077);
       return localArrayList;
-      ((StringBuilder)localObject4).append(" where catalog = ").append(EmojiInfo.YCD);
+      ((StringBuilder)localObject4).append(" where catalog = ").append(EmojiInfo.aklM);
     }
   }
   
-  public final Cursor asS(int paramInt)
+  public final Cursor azh(int paramInt)
   {
     AppMethodBeat.i(105078);
     Cursor localCursor = this.db.query("EmojiInfo", null, "catalog=? and temp=?", new String[] { String.valueOf(paramInt), "0" }, null, null, null);
@@ -1104,7 +1100,7 @@ public final class f
     return localCursor;
   }
   
-  public final boolean asT(int paramInt)
+  public final boolean azi(int paramInt)
   {
     AppMethodBeat.i(105082);
     if (this.db.delete("EmojiInfo", "catalog=?", new String[] { String.valueOf(paramInt) }) >= 0)
@@ -1116,97 +1112,7 @@ public final class f
     return false;
   }
   
-  public final List<EmojiInfo> aug(String paramString)
-  {
-    AppMethodBeat.i(105086);
-    ArrayList localArrayList = new ArrayList();
-    localObject = null;
-    str = null;
-    try
-    {
-      paramString = this.db.rawQuery("select * from EmojiInfo where groupId=? and temp=? order by idx asc", new String[] { paramString, "0" }, 2);
-      if (paramString != null)
-      {
-        str = paramString;
-        localObject = paramString;
-        if (paramString.moveToFirst())
-        {
-          boolean bool;
-          do
-          {
-            str = paramString;
-            localObject = paramString;
-            com.tencent.mm.plugin.emoji.h.cTw();
-            str = paramString;
-            localObject = paramString;
-            EmojiInfo localEmojiInfo = new EmojiInfo(com.tencent.mm.plugin.emoji.h.cTx());
-            str = paramString;
-            localObject = paramString;
-            localEmojiInfo.convertFrom(paramString);
-            str = paramString;
-            localObject = paramString;
-            localArrayList.add(localEmojiInfo);
-            str = paramString;
-            localObject = paramString;
-            bool = paramString.moveToNext();
-          } while (bool);
-        }
-      }
-      if (paramString != null) {
-        paramString.close();
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        localObject = str;
-        Log.w("MicroMsg.emoji.EmojiInfoStorage", "[getEmojiListByGroupId] Exception:%s", new Object[] { paramString.toString() });
-        if (str != null) {
-          str.close();
-        }
-      }
-    }
-    finally
-    {
-      if (localObject == null) {
-        break label202;
-      }
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(105086);
-    }
-    AppMethodBeat.o(105086);
-    return localArrayList;
-  }
-  
-  public final List<EmojiInfo> bR(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105074);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("select * from EmojiInfo where catalog = ").append(paramInt);
-    if (!paramBoolean) {
-      ((StringBuilder)localObject).append(" and state != ").append(EmojiInfo.ZuG);
-    }
-    ((StringBuilder)localObject).append(" order by reserved3 asc ");
-    localObject = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
-    if (localObject != null)
-    {
-      if (((Cursor)localObject).moveToFirst()) {
-        do
-        {
-          EmojiInfo localEmojiInfo = new EmojiInfo();
-          localEmojiInfo.convertFrom((Cursor)localObject);
-          localArrayList.add(localEmojiInfo);
-        } while (((Cursor)localObject).moveToNext());
-      }
-      ((Cursor)localObject).close();
-    }
-    AppMethodBeat.o(105074);
-    return localArrayList;
-  }
-  
-  public final int bl(boolean paramBoolean1, boolean paramBoolean2)
+  public final int bI(boolean paramBoolean1, boolean paramBoolean2)
   {
     k = 0;
     j = 0;
@@ -1220,8 +1126,8 @@ public final class f
       {
         str = "select count(*) from EmojiInfo where catalog IN (?,?)";
         localObject1 = new String[2];
-        localObject1[0] = String.valueOf(EmojiGroupInfo.YCv);
-        localObject1[1] = String.valueOf(EmojiGroupInfo.YCw);
+        localObject1[0] = String.valueOf(EmojiGroupInfo.aklE);
+        localObject1[1] = String.valueOf(EmojiGroupInfo.aklF);
       }
     }
     for (;;)
@@ -1275,25 +1181,25 @@ public final class f
       return j;
       str = "select count(*) from EmojiInfo where catalog IN (?,?) AND captureStatus=0";
       localObject1 = new String[2];
-      localObject1[0] = String.valueOf(EmojiGroupInfo.YCv);
-      localObject1[1] = String.valueOf(EmojiGroupInfo.YCw);
+      localObject1[0] = String.valueOf(EmojiGroupInfo.aklE);
+      localObject1[1] = String.valueOf(EmojiGroupInfo.aklF);
       continue;
       if (!paramBoolean2)
       {
         str = "select count(*) from EmojiInfo where catalog=?";
         localObject1 = new String[1];
-        localObject1[0] = EmojiGroupInfo.YCw;
+        localObject1[0] = EmojiGroupInfo.aklF;
       }
       else
       {
         str = "select count(*) from EmojiInfo where catalog=? AND captureStatus=0";
         localObject1 = new String[1];
-        localObject1[0] = EmojiGroupInfo.YCw;
+        localObject1[0] = EmojiGroupInfo.aklF;
       }
     }
   }
   
-  public final int bxD(String paramString)
+  public final int byU(String paramString)
   {
     AppMethodBeat.i(105071);
     long l = System.currentTimeMillis();
@@ -1355,28 +1261,28 @@ public final class f
   }
   
   /* Error */
-  public final EmojiInfo bxK(String paramString)
+  public final EmojiInfo bza(String paramString)
   {
     // Byte code:
-    //   0: ldc_w 715
+    //   0: ldc_w 751
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 362	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   7: invokestatic 472	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   10: ifne +12 -> 22
     //   13: aload_1
     //   14: invokevirtual 60	java/lang/String:length	()I
     //   17: bipush 32
     //   19: if_icmpeq +27 -> 46
     //   22: ldc 62
-    //   24: ldc_w 717
+    //   24: ldc_w 753
     //   27: iconst_1
     //   28: anewarray 294	java/lang/Object
     //   31: dup
     //   32: iconst_0
     //   33: aload_1
     //   34: aastore
-    //   35: invokestatic 401	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   38: ldc_w 715
+    //   35: invokestatic 371	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   38: ldc_w 751
     //   41: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: aconst_null
     //   45: areturn
@@ -1384,7 +1290,7 @@ public final class f
     //   47: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   50: ldc 30
     //   52: aconst_null
-    //   53: ldc_w 540
+    //   53: ldc_w 449
     //   56: iconst_1
     //   57: anewarray 22	java/lang/String
     //   60: dup
@@ -1395,7 +1301,7 @@ public final class f
     //   65: aconst_null
     //   66: aconst_null
     //   67: iconst_2
-    //   68: invokeinterface 558 9 0
+    //   68: invokeinterface 756 9 0
     //   73: astore_2
     //   74: aload_2
     //   75: ifnull +144 -> 219
@@ -1406,20 +1312,20 @@ public final class f
     //   86: ifeq +133 -> 219
     //   89: aload_2
     //   90: astore_3
-    //   91: invokestatic 80	com/tencent/mm/plugin/emoji/h:cTw	()Lcom/tencent/mm/plugin/emoji/h;
+    //   91: invokestatic 80	com/tencent/mm/plugin/emoji/g:dxR	()Lcom/tencent/mm/plugin/emoji/g;
     //   94: pop
     //   95: aload_2
     //   96: astore_3
     //   97: new 24	com/tencent/mm/storage/emotion/EmojiInfo
     //   100: dup
-    //   101: invokestatic 84	com/tencent/mm/plugin/emoji/h:cTx	()Ljava/lang/String;
+    //   101: invokestatic 84	com/tencent/mm/plugin/emoji/g:dxS	()Ljava/lang/String;
     //   104: invokespecial 87	com/tencent/mm/storage/emotion/EmojiInfo:<init>	(Ljava/lang/String;)V
     //   107: astore_1
     //   108: aload_2
     //   109: astore_3
     //   110: aload_1
     //   111: aload_2
-    //   112: invokevirtual 562	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   112: invokevirtual 329	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
     //   115: aload_1
     //   116: astore_3
     //   117: aload_2
@@ -1428,7 +1334,7 @@ public final class f
     //   122: invokeinterface 290 1 0
     //   127: aload_1
     //   128: astore_3
-    //   129: ldc_w 715
+    //   129: ldc_w 751
     //   132: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: aload_3
     //   136: areturn
@@ -1440,13 +1346,13 @@ public final class f
     //   143: aload_2
     //   144: astore_3
     //   145: ldc 62
-    //   147: ldc_w 719
+    //   147: ldc_w 758
     //   150: iconst_1
     //   151: anewarray 294	java/lang/Object
     //   154: dup
     //   155: iconst_0
     //   156: aload 4
-    //   158: invokevirtual 508	java/lang/Exception:toString	()Ljava/lang/String;
+    //   158: invokevirtual 495	java/lang/Exception:toString	()Ljava/lang/String;
     //   161: aastore
     //   162: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   165: aload_1
@@ -1465,7 +1371,7 @@ public final class f
     //   186: ifnull +9 -> 195
     //   189: aload_3
     //   190: invokeinterface 290 1 0
-    //   195: ldc_w 715
+    //   195: ldc_w 751
     //   198: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   201: aload_1
     //   202: athrow
@@ -1504,23 +1410,38 @@ public final class f
     //   110	115	214	java/lang/Exception
   }
   
-  public final boolean bxL(String paramString)
+  public final boolean bzb(String paramString)
   {
-    AppMethodBeat.i(293023);
-    boolean bool = du(paramString, true);
-    AppMethodBeat.o(293023);
-    return bool;
+    AppMethodBeat.i(249039);
+    if ((paramString == null) || (paramString.length() != 32))
+    {
+      Log.f("MicroMsg.emoji.EmojiInfoStorage", "delete by md5 assertion");
+      AppMethodBeat.o(249039);
+      return false;
+    }
+    Log.i("MicroMsg.emoji.EmojiInfoStorage", "deleteByMd5: %s", new Object[] { paramString });
+    int i = this.db.delete("EmojiInfo", "md5=?", new String[] { String.valueOf(paramString) });
+    if (i > 0) {
+      doNotify("event_update_emoji");
+    }
+    if (i > 0)
+    {
+      AppMethodBeat.o(249039);
+      return true;
+    }
+    AppMethodBeat.o(249039);
+    return false;
   }
   
   /* Error */
-  public final EmojiInfo bxM(String paramString)
+  public final EmojiInfo bzc(String paramString)
   {
     // Byte code:
-    //   0: ldc_w 727
+    //   0: ldc_w 769
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   10: ldc_w 729
+    //   10: ldc_w 771
     //   13: iconst_2
     //   14: anewarray 22	java/lang/String
     //   17: dup
@@ -1541,20 +1462,20 @@ public final class f
     //   42: ifeq +139 -> 181
     //   45: aload_2
     //   46: astore_3
-    //   47: invokestatic 80	com/tencent/mm/plugin/emoji/h:cTw	()Lcom/tencent/mm/plugin/emoji/h;
+    //   47: invokestatic 80	com/tencent/mm/plugin/emoji/g:dxR	()Lcom/tencent/mm/plugin/emoji/g;
     //   50: pop
     //   51: aload_2
     //   52: astore_3
     //   53: new 24	com/tencent/mm/storage/emotion/EmojiInfo
     //   56: dup
-    //   57: invokestatic 84	com/tencent/mm/plugin/emoji/h:cTx	()Ljava/lang/String;
+    //   57: invokestatic 84	com/tencent/mm/plugin/emoji/g:dxS	()Ljava/lang/String;
     //   60: invokespecial 87	com/tencent/mm/storage/emotion/EmojiInfo:<init>	(Ljava/lang/String;)V
     //   63: astore_1
     //   64: aload_2
     //   65: astore_3
     //   66: aload_1
     //   67: aload_2
-    //   68: invokevirtual 562	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   68: invokevirtual 329	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
     //   71: aload_1
     //   72: astore_3
     //   73: aload_2
@@ -1563,7 +1484,7 @@ public final class f
     //   78: invokeinterface 290 1 0
     //   83: aload_1
     //   84: astore_3
-    //   85: ldc_w 727
+    //   85: ldc_w 769
     //   88: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_3
     //   92: areturn
@@ -1577,7 +1498,7 @@ public final class f
     //   101: ldc 62
     //   103: new 248	java/lang/StringBuilder
     //   106: dup
-    //   107: ldc_w 731
+    //   107: ldc_w 773
     //   110: invokespecial 251	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   113: aload 4
     //   115: invokevirtual 254	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -1600,7 +1521,7 @@ public final class f
     //   148: ifnull +9 -> 157
     //   151: aload_3
     //   152: invokeinterface 290 1 0
-    //   157: ldc_w 727
+    //   157: ldc_w 769
     //   160: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: aload_1
     //   164: athrow
@@ -1639,7 +1560,7 @@ public final class f
     //   66	71	176	java/lang/Exception
   }
   
-  public final boolean bxN(String paramString)
+  public final boolean bzd(String paramString)
   {
     bool3 = false;
     bool2 = false;
@@ -1693,7 +1614,7 @@ public final class f
     return bool2;
   }
   
-  public final boolean bxO(String paramString)
+  public final boolean bze(String paramString)
   {
     AppMethodBeat.i(105093);
     if (!TextUtils.isEmpty(paramString))
@@ -1718,7 +1639,7 @@ public final class f
     return false;
   }
   
-  public final boolean ci(LinkedList<String> paramLinkedList)
+  public final boolean cw(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(105097);
     if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
@@ -1727,7 +1648,7 @@ public final class f
       AppMethodBeat.o(105097);
       return false;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.p(164L, 12L, 1L);
+    com.tencent.mm.plugin.report.service.h.OAn.p(164L, 12L, 1L);
     Log.i("MicroMsg.emoji.EmojiInfoStorage", "[cpan] updateNeedUploadEmojiList list size :%d.", new Object[] { Integer.valueOf(paramLinkedList.size()) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UPDATE");
@@ -1735,7 +1656,7 @@ public final class f
     localStringBuilder.append(" SET ");
     localStringBuilder.append("needupload");
     localStringBuilder.append("=");
-    localStringBuilder.append(EmojiInfo.ZuL);
+    localStringBuilder.append(EmojiInfo.akma);
     localStringBuilder.append(" where ");
     localStringBuilder.append("md5");
     localStringBuilder.append(" IN (");
@@ -1763,29 +1684,6 @@ public final class f
     return paramString1;
   }
   
-  public final boolean du(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105080);
-    if ((paramString == null) || (paramString.length() != 32))
-    {
-      Log.f("MicroMsg.emoji.EmojiInfoStorage", "delete by md5 assertion");
-      AppMethodBeat.o(105080);
-      return false;
-    }
-    Log.i("MicroMsg.emoji.EmojiInfoStorage", "deleteByMd5: %s", new Object[] { paramString });
-    int i = this.db.delete("EmojiInfo", "md5=?", new String[] { String.valueOf(paramString) });
-    if ((paramBoolean) && (i > 0)) {
-      doNotify("event_update_emoji");
-    }
-    if (i > 0)
-    {
-      AppMethodBeat.o(105080);
-      return true;
-    }
-    AppMethodBeat.o(105080);
-    return false;
-  }
-  
   public final EmojiInfo e(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
   {
     AppMethodBeat.i(105062);
@@ -1798,16 +1696,16 @@ public final class f
   public final String getKey()
   {
     // Byte code:
-    //   0: ldc_w 812
+    //   0: ldc_w 842
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   10: ldc_w 814
+    //   10: ldc_w 844
     //   13: iconst_1
     //   14: anewarray 22	java/lang/String
     //   17: dup
     //   18: iconst_0
-    //   19: ldc_w 816
+    //   19: ldc_w 846
     //   22: aastore
     //   23: iconst_2
     //   24: invokeinterface 279 4 0
@@ -1823,25 +1721,25 @@ public final class f
     //   46: astore_1
     //   47: aload_2
     //   48: iconst_0
-    //   49: invokeinterface 625 2 0
+    //   49: invokeinterface 694 2 0
     //   54: astore_3
     //   55: aload_2
     //   56: astore_1
     //   57: ldc 62
     //   59: new 248	java/lang/StringBuilder
     //   62: dup
-    //   63: ldc_w 818
+    //   63: ldc_w 848
     //   66: invokespecial 251	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   69: aload_3
-    //   70: invokestatic 821	com/tencent/mm/sdk/platformtools/Util:secPrint	(Ljava/lang/String;)Ljava/lang/String;
+    //   70: invokestatic 851	com/tencent/mm/sdk/platformtools/Util:secPrint	(Ljava/lang/String;)Ljava/lang/String;
     //   73: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aload_2
     //   83: ifnull +9 -> 92
     //   86: aload_2
     //   87: invokeinterface 290 1 0
-    //   92: ldc_w 812
+    //   92: ldc_w 842
     //   95: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   98: aload_3
     //   99: areturn
@@ -1849,40 +1747,40 @@ public final class f
     //   101: ifnull +9 -> 110
     //   104: aload_2
     //   105: invokeinterface 290 1 0
-    //   110: invokestatic 827	com/tencent/mm/kernel/h:aHE	()Lcom/tencent/mm/kernel/b;
+    //   110: invokestatic 857	com/tencent/mm/kernel/h:baC	()Lcom/tencent/mm/kernel/b;
     //   113: pop
-    //   114: invokestatic 832	com/tencent/mm/kernel/b:getUin	()I
-    //   117: invokestatic 835	com/tencent/mm/b/p:getString	(I)Ljava/lang/String;
+    //   114: invokestatic 862	com/tencent/mm/kernel/b:getUin	()I
+    //   117: invokestatic 865	com/tencent/mm/b/p:getString	(I)Ljava/lang/String;
     //   120: astore_1
     //   121: ldc 62
-    //   123: ldc_w 837
+    //   123: ldc_w 867
     //   126: iconst_1
     //   127: anewarray 294	java/lang/Object
     //   130: dup
     //   131: iconst_0
     //   132: aload_1
     //   133: aastore
-    //   134: invokestatic 401	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   134: invokestatic 371	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   137: aload_1
-    //   138: invokestatic 362	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   138: invokestatic 472	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   141: ifne +130 -> 271
     //   144: aload_1
-    //   145: invokevirtual 841	java/lang/String:getBytes	()[B
-    //   148: invokestatic 847	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
+    //   145: invokevirtual 871	java/lang/String:getBytes	()[B
+    //   148: invokestatic 877	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
     //   151: astore_1
     //   152: ldc 62
     //   154: new 248	java/lang/StringBuilder
     //   157: dup
-    //   158: ldc_w 849
+    //   158: ldc_w 879
     //   161: invokespecial 251	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   164: aload_1
-    //   165: invokestatic 821	com/tencent/mm/sdk/platformtools/Util:secPrint	(Ljava/lang/String;)Ljava/lang/String;
+    //   165: invokestatic 851	com/tencent/mm/sdk/platformtools/Util:secPrint	(Ljava/lang/String;)Ljava/lang/String;
     //   168: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   174: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   177: new 24	com/tencent/mm/storage/emotion/EmojiInfo
     //   180: dup
-    //   181: invokespecial 424	com/tencent/mm/storage/emotion/EmojiInfo:<init>	()V
+    //   181: invokespecial 325	com/tencent/mm/storage/emotion/EmojiInfo:<init>	()V
     //   184: astore_2
     //   185: aload_2
     //   186: aload_1
@@ -1892,9 +1790,9 @@ public final class f
     //   194: putfield 91	com/tencent/mm/storage/emotion/EmojiInfo:field_catalog	I
     //   197: aload_0
     //   198: aload_2
-    //   199: invokevirtual 527	com/tencent/mm/storage/emotion/f:L	(Lcom/tencent/mm/storage/emotion/EmojiInfo;)Z
+    //   199: invokevirtual 478	com/tencent/mm/storage/emotion/f:L	(Lcom/tencent/mm/storage/emotion/EmojiInfo;)Z
     //   202: ifeq +82 -> 284
-    //   205: ldc_w 812
+    //   205: ldc_w 842
     //   208: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   211: aload_1
     //   212: areturn
@@ -1904,7 +1802,7 @@ public final class f
     //   216: aload_2
     //   217: astore_1
     //   218: ldc 62
-    //   220: ldc_w 851
+    //   220: ldc_w 881
     //   223: iconst_1
     //   224: anewarray 294	java/lang/Object
     //   227: dup
@@ -1925,16 +1823,16 @@ public final class f
     //   254: ifnull +9 -> 263
     //   257: aload_1
     //   258: invokeinterface 290 1 0
-    //   263: ldc_w 812
+    //   263: ldc_w 842
     //   266: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   269: aload_2
     //   270: athrow
-    //   271: ldc_w 853
-    //   274: invokevirtual 841	java/lang/String:getBytes	()[B
-    //   277: invokestatic 847	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
+    //   271: ldc_w 883
+    //   274: invokevirtual 871	java/lang/String:getBytes	()[B
+    //   277: invokestatic 877	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
     //   280: astore_1
     //   281: goto -129 -> 152
-    //   284: ldc_w 812
+    //   284: ldc_w 842
     //   287: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   290: aconst_null
     //   291: areturn
@@ -1970,16 +1868,465 @@ public final class f
     return "EmojiInfo";
   }
   
-  public final List<String> hBF()
+  /* Error */
+  public final boolean init(Context paramContext)
+  {
+    // Byte code:
+    //   0: ldc_w 887
+    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 62
+    //   8: ldc_w 889
+    //   11: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: ldc_w 891
+    //   18: invokevirtual 74	com/tencent/mm/storage/emotion/f:bza	(Ljava/lang/String;)Lcom/tencent/mm/storage/emotion/EmojiInfo;
+    //   21: astore 7
+    //   23: aload_0
+    //   24: ldc_w 893
+    //   27: invokevirtual 74	com/tencent/mm/storage/emotion/f:bza	(Ljava/lang/String;)Lcom/tencent/mm/storage/emotion/EmojiInfo;
+    //   30: astore 8
+    //   32: aload_0
+    //   33: getstatic 896	com/tencent/mm/storage/emotion/EmojiInfo:aklJ	I
+    //   36: invokespecial 898	com/tencent/mm/storage/emotion/f:aze	(I)I
+    //   39: istore_2
+    //   40: ldc 62
+    //   42: ldc_w 900
+    //   45: iconst_1
+    //   46: anewarray 294	java/lang/Object
+    //   49: dup
+    //   50: iconst_0
+    //   51: iload_2
+    //   52: invokestatic 369	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   55: aastore
+    //   56: invokestatic 371	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: aload 7
+    //   61: ifnonnull +24 -> 85
+    //   64: aload 8
+    //   66: ifnull +14 -> 80
+    //   69: aload 8
+    //   71: invokevirtual 903	com/tencent/mm/storage/emotion/EmojiInfo:getContent	()Ljava/lang/String;
+    //   74: invokevirtual 60	java/lang/String:length	()I
+    //   77: ifeq +8 -> 85
+    //   80: iload_2
+    //   81: iconst_2
+    //   82: if_icmpgt +35 -> 117
+    //   85: ldc 62
+    //   87: ldc_w 905
+    //   90: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   93: aload_0
+    //   94: getstatic 643	com/tencent/mm/storage/emotion/EmojiInfo:aklI	I
+    //   97: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   100: pop
+    //   101: aload_0
+    //   102: getstatic 646	com/tencent/mm/storage/emotion/EmojiInfo:aklL	I
+    //   105: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   108: pop
+    //   109: aload_0
+    //   110: getstatic 649	com/tencent/mm/storage/emotion/EmojiInfo:aklK	I
+    //   113: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   116: pop
+    //   117: aload_0
+    //   118: ldc_w 909
+    //   121: invokevirtual 74	com/tencent/mm/storage/emotion/f:bza	(Ljava/lang/String;)Lcom/tencent/mm/storage/emotion/EmojiInfo;
+    //   124: astore 7
+    //   126: aload 7
+    //   128: ifnull +46 -> 174
+    //   131: aload 7
+    //   133: getfield 91	com/tencent/mm/storage/emotion/EmojiInfo:field_catalog	I
+    //   136: getstatic 643	com/tencent/mm/storage/emotion/EmojiInfo:aklI	I
+    //   139: if_icmpne +35 -> 174
+    //   142: ldc 62
+    //   144: ldc_w 911
+    //   147: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: aload_0
+    //   151: getstatic 643	com/tencent/mm/storage/emotion/EmojiInfo:aklI	I
+    //   154: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   157: pop
+    //   158: aload_0
+    //   159: getstatic 646	com/tencent/mm/storage/emotion/EmojiInfo:aklL	I
+    //   162: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   165: pop
+    //   166: aload_0
+    //   167: getstatic 649	com/tencent/mm/storage/emotion/EmojiInfo:aklK	I
+    //   170: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   173: pop
+    //   174: aload_1
+    //   175: ldc_w 913
+    //   178: invokestatic 656	com/tencent/mm/storage/emotion/EmojiInfo:cS	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/InputStream;
+    //   181: astore 7
+    //   183: aload 7
+    //   185: ifnull +35 -> 220
+    //   188: ldc 62
+    //   190: ldc_w 915
+    //   193: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   196: aload_0
+    //   197: getstatic 643	com/tencent/mm/storage/emotion/EmojiInfo:aklI	I
+    //   200: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   203: pop
+    //   204: aload_0
+    //   205: getstatic 646	com/tencent/mm/storage/emotion/EmojiInfo:aklL	I
+    //   208: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   211: pop
+    //   212: aload_0
+    //   213: getstatic 649	com/tencent/mm/storage/emotion/EmojiInfo:aklK	I
+    //   216: invokevirtual 907	com/tencent/mm/storage/emotion/f:azi	(I)Z
+    //   219: pop
+    //   220: aload 7
+    //   222: ifnull +8 -> 230
+    //   225: aload 7
+    //   227: invokevirtual 662	java/io/InputStream:close	()V
+    //   230: aload_0
+    //   231: getstatic 643	com/tencent/mm/storage/emotion/EmojiInfo:aklI	I
+    //   234: invokespecial 898	com/tencent/mm/storage/emotion/f:aze	(I)I
+    //   237: ifeq +11 -> 248
+    //   240: ldc_w 887
+    //   243: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   246: iconst_1
+    //   247: ireturn
+    //   248: aconst_null
+    //   249: astore 10
+    //   251: aconst_null
+    //   252: astore 9
+    //   254: aload 9
+    //   256: astore 8
+    //   258: aload 10
+    //   260: astore 7
+    //   262: ldc 62
+    //   264: ldc_w 917
+    //   267: invokestatic 364	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   270: aload 9
+    //   272: astore 8
+    //   274: aload 10
+    //   276: astore 7
+    //   278: invokestatic 523	java/lang/System:currentTimeMillis	()J
+    //   281: lstore_3
+    //   282: aload 9
+    //   284: astore 8
+    //   286: aload 10
+    //   288: astore 7
+    //   290: aload_1
+    //   291: invokevirtual 923	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   294: ldc_w 925
+    //   297: invokevirtual 931	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   300: astore_1
+    //   301: aload_1
+    //   302: astore 8
+    //   304: aload_1
+    //   305: astore 7
+    //   307: iconst_1
+    //   308: anewarray 658	java/io/InputStream
+    //   311: dup
+    //   312: iconst_0
+    //   313: aload_1
+    //   314: aastore
+    //   315: invokestatic 933	com/tencent/mm/storage/emotion/f:a	([Ljava/io/InputStream;)Ljava/util/List;
+    //   318: astore 10
+    //   320: aload_1
+    //   321: astore 8
+    //   323: aload_1
+    //   324: astore 7
+    //   326: ldc 62
+    //   328: ldc_w 935
+    //   331: iconst_1
+    //   332: anewarray 294	java/lang/Object
+    //   335: dup
+    //   336: iconst_0
+    //   337: invokestatic 523	java/lang/System:currentTimeMillis	()J
+    //   340: lload_3
+    //   341: lsub
+    //   342: invokestatic 507	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   345: aastore
+    //   346: invokestatic 371	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   349: aload_1
+    //   350: astore 8
+    //   352: aload_1
+    //   353: astore 7
+    //   355: invokestatic 523	java/lang/System:currentTimeMillis	()J
+    //   358: lstore 5
+    //   360: aload 10
+    //   362: ifnull +40 -> 402
+    //   365: aload_1
+    //   366: astore 8
+    //   368: aload_1
+    //   369: astore 7
+    //   371: aload 10
+    //   373: invokeinterface 346 1 0
+    //   378: ifle +24 -> 402
+    //   381: aload 10
+    //   383: ifnull +19 -> 402
+    //   386: aload_1
+    //   387: astore 8
+    //   389: aload_1
+    //   390: astore 7
+    //   392: aload 10
+    //   394: invokeinterface 346 1 0
+    //   399: ifgt +63 -> 462
+    //   402: aload_1
+    //   403: astore 8
+    //   405: aload_1
+    //   406: astore 7
+    //   408: ldc 62
+    //   410: ldc_w 937
+    //   413: iconst_1
+    //   414: anewarray 294	java/lang/Object
+    //   417: dup
+    //   418: iconst_0
+    //   419: invokestatic 523	java/lang/System:currentTimeMillis	()J
+    //   422: lload 5
+    //   424: lsub
+    //   425: invokestatic 507	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   428: aastore
+    //   429: invokestatic 371	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   432: aload_1
+    //   433: astore 8
+    //   435: aload_1
+    //   436: astore 7
+    //   438: ldc 62
+    //   440: ldc_w 939
+    //   443: invokestatic 833	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   446: aload_1
+    //   447: ifnull +7 -> 454
+    //   450: aload_1
+    //   451: invokevirtual 662	java/io/InputStream:close	()V
+    //   454: ldc_w 887
+    //   457: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   460: iconst_1
+    //   461: ireturn
+    //   462: ldc2_w 463
+    //   465: lstore_3
+    //   466: aload_1
+    //   467: astore 8
+    //   469: aload_1
+    //   470: astore 7
+    //   472: aload_0
+    //   473: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   476: instanceof 373
+    //   479: ifeq +294 -> 773
+    //   482: aload_1
+    //   483: astore 8
+    //   485: aload_1
+    //   486: astore 7
+    //   488: aload_0
+    //   489: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   492: checkcast 373	com/tencent/mm/storagebase/h
+    //   495: astore 9
+    //   497: aload_1
+    //   498: astore 8
+    //   500: aload_1
+    //   501: astore 7
+    //   503: aload 9
+    //   505: invokestatic 379	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   508: invokevirtual 383	java/lang/Thread:getId	()J
+    //   511: invokevirtual 387	com/tencent/mm/storagebase/h:beginTransaction	(J)J
+    //   514: lstore_3
+    //   515: aload_1
+    //   516: astore 8
+    //   518: aload_1
+    //   519: astore 7
+    //   521: aload 10
+    //   523: invokeinterface 398 1 0
+    //   528: astore 10
+    //   530: aload_1
+    //   531: astore 8
+    //   533: aload_1
+    //   534: astore 7
+    //   536: aload 10
+    //   538: invokeinterface 403 1 0
+    //   543: ifeq +137 -> 680
+    //   546: aload_1
+    //   547: astore 8
+    //   549: aload_1
+    //   550: astore 7
+    //   552: aload 10
+    //   554: invokeinterface 407 1 0
+    //   559: checkcast 24	com/tencent/mm/storage/emotion/EmojiInfo
+    //   562: invokevirtual 424	com/tencent/mm/storage/emotion/EmojiInfo:convertTo	()Landroid/content/ContentValues;
+    //   565: astore 11
+    //   567: aload_1
+    //   568: astore 8
+    //   570: aload_1
+    //   571: astore 7
+    //   573: aload_0
+    //   574: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   577: ldc 30
+    //   579: ldc 200
+    //   581: aload 11
+    //   583: invokeinterface 428 4 0
+    //   588: lconst_0
+    //   589: lcmp
+    //   590: ifge -60 -> 530
+    //   593: aload 9
+    //   595: ifnull -193 -> 402
+    //   598: aload_1
+    //   599: astore 8
+    //   601: aload_1
+    //   602: astore 7
+    //   604: aload 9
+    //   606: lload_3
+    //   607: invokevirtual 462	com/tencent/mm/storagebase/h:endTransaction	(J)I
+    //   610: pop
+    //   611: goto -209 -> 402
+    //   614: astore_1
+    //   615: aload 8
+    //   617: astore 7
+    //   619: ldc 62
+    //   621: new 248	java/lang/StringBuilder
+    //   624: dup
+    //   625: ldc_w 941
+    //   628: invokespecial 251	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   631: aload_1
+    //   632: invokevirtual 942	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   635: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   638: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   641: invokestatic 264	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   644: aload 8
+    //   646: ifnull -192 -> 454
+    //   649: aload 8
+    //   651: invokevirtual 662	java/io/InputStream:close	()V
+    //   654: goto -200 -> 454
+    //   657: astore_1
+    //   658: ldc 62
+    //   660: ldc_w 292
+    //   663: iconst_1
+    //   664: anewarray 294	java/lang/Object
+    //   667: dup
+    //   668: iconst_0
+    //   669: aload_1
+    //   670: invokestatic 300	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   673: aastore
+    //   674: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   677: goto -223 -> 454
+    //   680: aload 9
+    //   682: ifnull -280 -> 402
+    //   685: aload_1
+    //   686: astore 8
+    //   688: aload_1
+    //   689: astore 7
+    //   691: aload 9
+    //   693: lload_3
+    //   694: invokevirtual 462	com/tencent/mm/storagebase/h:endTransaction	(J)I
+    //   697: pop
+    //   698: goto -296 -> 402
+    //   701: astore_1
+    //   702: aload 7
+    //   704: ifnull +8 -> 712
+    //   707: aload 7
+    //   709: invokevirtual 662	java/io/InputStream:close	()V
+    //   712: ldc_w 887
+    //   715: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   718: aload_1
+    //   719: athrow
+    //   720: astore_1
+    //   721: ldc 62
+    //   723: ldc_w 292
+    //   726: iconst_1
+    //   727: anewarray 294	java/lang/Object
+    //   730: dup
+    //   731: iconst_0
+    //   732: aload_1
+    //   733: invokestatic 300	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   736: aastore
+    //   737: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   740: goto -286 -> 454
+    //   743: astore 7
+    //   745: ldc 62
+    //   747: ldc_w 292
+    //   750: iconst_1
+    //   751: anewarray 294	java/lang/Object
+    //   754: dup
+    //   755: iconst_0
+    //   756: aload 7
+    //   758: invokestatic 300	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   761: aastore
+    //   762: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   765: goto -53 -> 712
+    //   768: astore 7
+    //   770: goto -540 -> 230
+    //   773: aconst_null
+    //   774: astore 9
+    //   776: goto -261 -> 515
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	779	0	this	f
+    //   0	779	1	paramContext	Context
+    //   39	44	2	i	int
+    //   281	413	3	l1	long
+    //   358	65	5	l2	long
+    //   21	687	7	localObject1	Object
+    //   743	14	7	localException1	Exception
+    //   768	1	7	localException2	Exception
+    //   30	657	8	localObject2	Object
+    //   252	523	9	localh	com.tencent.mm.storagebase.h
+    //   249	304	10	localObject3	Object
+    //   565	17	11	localContentValues	ContentValues
+    // Exception table:
+    //   from	to	target	type
+    //   262	270	614	java/io/IOException
+    //   278	282	614	java/io/IOException
+    //   290	301	614	java/io/IOException
+    //   307	320	614	java/io/IOException
+    //   326	349	614	java/io/IOException
+    //   355	360	614	java/io/IOException
+    //   371	381	614	java/io/IOException
+    //   392	402	614	java/io/IOException
+    //   408	432	614	java/io/IOException
+    //   438	446	614	java/io/IOException
+    //   472	482	614	java/io/IOException
+    //   488	497	614	java/io/IOException
+    //   503	515	614	java/io/IOException
+    //   521	530	614	java/io/IOException
+    //   536	546	614	java/io/IOException
+    //   552	567	614	java/io/IOException
+    //   573	593	614	java/io/IOException
+    //   604	611	614	java/io/IOException
+    //   691	698	614	java/io/IOException
+    //   649	654	657	java/lang/Exception
+    //   262	270	701	finally
+    //   278	282	701	finally
+    //   290	301	701	finally
+    //   307	320	701	finally
+    //   326	349	701	finally
+    //   355	360	701	finally
+    //   371	381	701	finally
+    //   392	402	701	finally
+    //   408	432	701	finally
+    //   438	446	701	finally
+    //   472	482	701	finally
+    //   488	497	701	finally
+    //   503	515	701	finally
+    //   521	530	701	finally
+    //   536	546	701	finally
+    //   552	567	701	finally
+    //   573	593	701	finally
+    //   604	611	701	finally
+    //   619	644	701	finally
+    //   691	698	701	finally
+    //   450	454	720	java/lang/Exception
+    //   707	712	743	java/lang/Exception
+    //   225	230	768	java/lang/Exception
+  }
+  
+  public final List<EmojiInfo> jdE()
+  {
+    AppMethodBeat.i(249031);
+    ArrayList localArrayList = new ArrayList();
+    List localList = jdD();
+    localArrayList.addAll(cB(EmojiGroupInfo.aklF, true));
+    localArrayList.addAll(localList);
+    AppMethodBeat.o(249031);
+    return localArrayList;
+  }
+  
+  public final List<String> jdF()
   {
     localObject3 = null;
     localObject1 = null;
-    AppMethodBeat.i(230396);
+    AppMethodBeat.i(249082);
     ArrayList localArrayList = new ArrayList();
     Object localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append(" select md5 from EmojiInfo");
-    ((StringBuilder)localObject4).append(" where catalog = ").append(EmojiInfo.YCD);
-    ((StringBuilder)localObject4).append(" and state = ").append(EmojiInfo.ZuG);
+    ((StringBuilder)localObject4).append(" where catalog = ").append(EmojiInfo.aklM);
+    ((StringBuilder)localObject4).append(" and state = ").append(EmojiInfo.aklV);
     try
     {
       localObject4 = this.db.rawQuery(((StringBuilder)localObject4).toString(), null, 2);
@@ -2022,20 +2369,20 @@ public final class f
         break label215;
       }
       localObject3.close();
-      AppMethodBeat.o(230396);
+      AppMethodBeat.o(249082);
     }
-    AppMethodBeat.o(230396);
+    AppMethodBeat.o(249082);
     return localArrayList;
   }
   
-  public final ArrayList<String> hBG()
+  public final ArrayList<String> jdG()
   {
     AppMethodBeat.i(105098);
     ArrayList localArrayList = new ArrayList();
     localObject3 = null;
     localObject1 = null;
-    int i = EmojiInfo.ZuL;
-    int j = EmojiGroupInfo.YCw;
+    int i = EmojiInfo.akma;
+    int j = EmojiGroupInfo.aklF;
     try
     {
       Cursor localCursor = this.db.rawQuery("select md5 from EmojiInfo where needupload=? and catalog=?", new String[] { String.valueOf(i), String.valueOf(j) }, 2);
@@ -2084,14 +2431,14 @@ public final class f
     return localArrayList;
   }
   
-  public final int hBH()
+  public final int jdH()
   {
     k = 0;
     j = 0;
     AppMethodBeat.i(105099);
     localObject3 = null;
     localObject1 = null;
-    int i = EmojiGroupInfo.YCw;
+    int i = EmojiGroupInfo.aklF;
     try
     {
       Cursor localCursor = this.db.rawQuery("select reserved3 from EmojiInfo where catalog=? order by reserved3 desc limit 1", new String[] { String.valueOf(i) }, 2);
@@ -2142,18 +2489,18 @@ public final class f
   }
   
   /* Error */
-  public final ArrayList<EmojiInfo> hBI()
+  public final ArrayList<EmojiInfo> jdI()
   {
     // Byte code:
-    //   0: ldc_w 879
+    //   0: ldc_w 977
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 635	com/tencent/mm/storage/emotion/EmojiGroupInfo:YCw	I
+    //   6: getstatic 699	com/tencent/mm/storage/emotion/EmojiGroupInfo:aklF	I
     //   9: istore_1
-    //   10: getstatic 880	com/tencent/mm/storage/emotion/EmojiGroupInfo:YCx	I
+    //   10: getstatic 978	com/tencent/mm/storage/emotion/EmojiGroupInfo:aklG	I
     //   13: istore_2
     //   14: aload_0
     //   15: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   18: ldc_w 882
+    //   18: ldc_w 980
     //   21: iconst_2
     //   22: anewarray 22	java/lang/String
     //   25: dup
@@ -2186,31 +2533,31 @@ public final class f
     //   81: astore 4
     //   83: new 24	com/tencent/mm/storage/emotion/EmojiInfo
     //   86: dup
-    //   87: invokespecial 424	com/tencent/mm/storage/emotion/EmojiInfo:<init>	()V
+    //   87: invokespecial 325	com/tencent/mm/storage/emotion/EmojiInfo:<init>	()V
     //   90: astore 7
     //   92: aload 5
     //   94: astore 4
     //   96: aload 7
     //   98: aload 5
-    //   100: invokevirtual 562	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   100: invokevirtual 329	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
     //   103: aload 5
     //   105: astore 4
     //   107: aload 7
     //   109: getfield 125	com/tencent/mm/storage/emotion/EmojiInfo:field_reserved4	I
-    //   112: getstatic 448	com/tencent/mm/storage/emotion/EmojiInfo:ZuM	I
+    //   112: getstatic 581	com/tencent/mm/storage/emotion/EmojiInfo:akmb	I
     //   115: iand
-    //   116: getstatic 448	com/tencent/mm/storage/emotion/EmojiInfo:ZuM	I
+    //   116: getstatic 581	com/tencent/mm/storage/emotion/EmojiInfo:akmb	I
     //   119: if_icmpeq +15 -> 134
     //   122: aload 5
     //   124: astore 4
     //   126: aload 6
     //   128: aload 7
-    //   130: invokevirtual 868	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   130: invokevirtual 966	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   133: pop
     //   134: aload 5
     //   136: astore 4
     //   138: aload 5
-    //   140: invokeinterface 628 1 0
+    //   140: invokeinterface 332 1 0
     //   145: istore_3
     //   146: iload_3
     //   147: ifne -68 -> 79
@@ -2218,7 +2565,7 @@ public final class f
     //   152: ifnull +10 -> 162
     //   155: aload 5
     //   157: invokeinterface 290 1 0
-    //   162: ldc_w 879
+    //   162: ldc_w 977
     //   165: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   168: aload 6
     //   170: areturn
@@ -2226,7 +2573,7 @@ public final class f
     //   173: ifnull +10 -> 183
     //   176: aload 5
     //   178: invokeinterface 290 1 0
-    //   183: ldc_w 879
+    //   183: ldc_w 977
     //   186: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aconst_null
     //   190: areturn
@@ -2236,7 +2583,7 @@ public final class f
     //   196: aload 5
     //   198: astore 4
     //   200: ldc 62
-    //   202: ldc_w 884
+    //   202: ldc_w 982
     //   205: iconst_1
     //   206: anewarray 294	java/lang/Object
     //   209: dup
@@ -2257,7 +2604,7 @@ public final class f
     //   242: ifnull +10 -> 252
     //   245: aload 4
     //   247: invokeinterface 290 1 0
-    //   252: ldc_w 879
+    //   252: ldc_w 977
     //   255: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   258: aload 5
     //   260: athrow
@@ -2300,440 +2647,7 @@ public final class f
     //   138	146	266	java/lang/Exception
   }
   
-  /* Error */
-  public final boolean init(Context paramContext)
-  {
-    // Byte code:
-    //   0: ldc_w 888
-    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 62
-    //   8: ldc_w 890
-    //   11: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: ldc_w 892
-    //   18: invokevirtual 74	com/tencent/mm/storage/emotion/f:bxK	(Ljava/lang/String;)Lcom/tencent/mm/storage/emotion/EmojiInfo;
-    //   21: astore 7
-    //   23: aload_0
-    //   24: ldc_w 894
-    //   27: invokevirtual 74	com/tencent/mm/storage/emotion/f:bxK	(Ljava/lang/String;)Lcom/tencent/mm/storage/emotion/EmojiInfo;
-    //   30: astore 8
-    //   32: aload_0
-    //   33: getstatic 897	com/tencent/mm/storage/emotion/EmojiInfo:YCA	I
-    //   36: invokespecial 899	com/tencent/mm/storage/emotion/f:asP	(I)I
-    //   39: istore_2
-    //   40: ldc 62
-    //   42: ldc_w 901
-    //   45: iconst_1
-    //   46: anewarray 294	java/lang/Object
-    //   49: dup
-    //   50: iconst_0
-    //   51: iload_2
-    //   52: invokestatic 409	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   55: aastore
-    //   56: invokestatic 401	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   59: aload 7
-    //   61: ifnonnull +24 -> 85
-    //   64: aload 8
-    //   66: ifnull +14 -> 80
-    //   69: aload 8
-    //   71: invokevirtual 904	com/tencent/mm/storage/emotion/EmojiInfo:getContent	()Ljava/lang/String;
-    //   74: invokevirtual 60	java/lang/String:length	()I
-    //   77: ifeq +8 -> 85
-    //   80: iload_2
-    //   81: iconst_2
-    //   82: if_icmpgt +35 -> 117
-    //   85: ldc 62
-    //   87: ldc_w 906
-    //   90: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   93: aload_0
-    //   94: getstatic 593	com/tencent/mm/storage/emotion/EmojiInfo:YCz	I
-    //   97: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   100: pop
-    //   101: aload_0
-    //   102: getstatic 596	com/tencent/mm/storage/emotion/EmojiInfo:YCC	I
-    //   105: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   108: pop
-    //   109: aload_0
-    //   110: getstatic 599	com/tencent/mm/storage/emotion/EmojiInfo:YCB	I
-    //   113: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   116: pop
-    //   117: aload_0
-    //   118: ldc_w 910
-    //   121: invokevirtual 74	com/tencent/mm/storage/emotion/f:bxK	(Ljava/lang/String;)Lcom/tencent/mm/storage/emotion/EmojiInfo;
-    //   124: astore 7
-    //   126: aload 7
-    //   128: ifnull +46 -> 174
-    //   131: aload 7
-    //   133: getfield 91	com/tencent/mm/storage/emotion/EmojiInfo:field_catalog	I
-    //   136: getstatic 593	com/tencent/mm/storage/emotion/EmojiInfo:YCz	I
-    //   139: if_icmpne +35 -> 174
-    //   142: ldc 62
-    //   144: ldc_w 912
-    //   147: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   150: aload_0
-    //   151: getstatic 593	com/tencent/mm/storage/emotion/EmojiInfo:YCz	I
-    //   154: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   157: pop
-    //   158: aload_0
-    //   159: getstatic 596	com/tencent/mm/storage/emotion/EmojiInfo:YCC	I
-    //   162: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   165: pop
-    //   166: aload_0
-    //   167: getstatic 599	com/tencent/mm/storage/emotion/EmojiInfo:YCB	I
-    //   170: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   173: pop
-    //   174: aload_1
-    //   175: ldc_w 914
-    //   178: invokestatic 606	com/tencent/mm/storage/emotion/EmojiInfo:cH	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/InputStream;
-    //   181: astore 7
-    //   183: aload 7
-    //   185: ifnull +35 -> 220
-    //   188: ldc 62
-    //   190: ldc_w 916
-    //   193: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   196: aload_0
-    //   197: getstatic 593	com/tencent/mm/storage/emotion/EmojiInfo:YCz	I
-    //   200: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   203: pop
-    //   204: aload_0
-    //   205: getstatic 596	com/tencent/mm/storage/emotion/EmojiInfo:YCC	I
-    //   208: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   211: pop
-    //   212: aload_0
-    //   213: getstatic 599	com/tencent/mm/storage/emotion/EmojiInfo:YCB	I
-    //   216: invokevirtual 908	com/tencent/mm/storage/emotion/f:asT	(I)Z
-    //   219: pop
-    //   220: aload 7
-    //   222: ifnull +8 -> 230
-    //   225: aload 7
-    //   227: invokevirtual 612	java/io/InputStream:close	()V
-    //   230: aload_0
-    //   231: getstatic 593	com/tencent/mm/storage/emotion/EmojiInfo:YCz	I
-    //   234: invokespecial 899	com/tencent/mm/storage/emotion/f:asP	(I)I
-    //   237: ifeq +11 -> 248
-    //   240: ldc_w 888
-    //   243: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   246: iconst_1
-    //   247: ireturn
-    //   248: aconst_null
-    //   249: astore 10
-    //   251: aconst_null
-    //   252: astore 9
-    //   254: aload 9
-    //   256: astore 8
-    //   258: aload 10
-    //   260: astore 7
-    //   262: ldc 62
-    //   264: ldc_w 918
-    //   267: invokestatic 312	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   270: aload 9
-    //   272: astore 8
-    //   274: aload 10
-    //   276: astore 7
-    //   278: invokestatic 318	java/lang/System:currentTimeMillis	()J
-    //   281: lstore_3
-    //   282: aload 9
-    //   284: astore 8
-    //   286: aload 10
-    //   288: astore 7
-    //   290: aload_1
-    //   291: invokevirtual 924	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   294: ldc_w 926
-    //   297: invokevirtual 932	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   300: astore_1
-    //   301: aload_1
-    //   302: astore 8
-    //   304: aload_1
-    //   305: astore 7
-    //   307: iconst_1
-    //   308: anewarray 608	java/io/InputStream
-    //   311: dup
-    //   312: iconst_0
-    //   313: aload_1
-    //   314: aastore
-    //   315: invokestatic 934	com/tencent/mm/storage/emotion/f:a	([Ljava/io/InputStream;)Ljava/util/List;
-    //   318: astore 10
-    //   320: aload_1
-    //   321: astore 8
-    //   323: aload_1
-    //   324: astore 7
-    //   326: ldc 62
-    //   328: ldc_w 936
-    //   331: iconst_1
-    //   332: anewarray 294	java/lang/Object
-    //   335: dup
-    //   336: iconst_0
-    //   337: invokestatic 318	java/lang/System:currentTimeMillis	()J
-    //   340: lload_3
-    //   341: lsub
-    //   342: invokestatic 399	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   345: aastore
-    //   346: invokestatic 401	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   349: aload_1
-    //   350: astore 8
-    //   352: aload_1
-    //   353: astore 7
-    //   355: invokestatic 318	java/lang/System:currentTimeMillis	()J
-    //   358: lstore 5
-    //   360: aload_1
-    //   361: astore 8
-    //   363: aload_1
-    //   364: astore 7
-    //   366: aload 10
-    //   368: invokeinterface 321 1 0
-    //   373: ifle +168 -> 541
-    //   376: aload_1
-    //   377: astore 8
-    //   379: aload_1
-    //   380: astore 7
-    //   382: aload 10
-    //   384: invokeinterface 321 1 0
-    //   389: ifle +152 -> 541
-    //   392: ldc2_w 415
-    //   395: lstore_3
-    //   396: aload_1
-    //   397: astore 8
-    //   399: aload_1
-    //   400: astore 7
-    //   402: aload_0
-    //   403: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   406: instanceof 329
-    //   409: ifeq +351 -> 760
-    //   412: aload_1
-    //   413: astore 8
-    //   415: aload_1
-    //   416: astore 7
-    //   418: aload_0
-    //   419: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   422: checkcast 329	com/tencent/mm/storagebase/h
-    //   425: astore 9
-    //   427: aload_1
-    //   428: astore 8
-    //   430: aload_1
-    //   431: astore 7
-    //   433: aload 9
-    //   435: invokestatic 335	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   438: invokevirtual 338	java/lang/Thread:getId	()J
-    //   441: invokevirtual 342	com/tencent/mm/storagebase/h:beginTransaction	(J)J
-    //   444: lstore_3
-    //   445: aload_1
-    //   446: astore 8
-    //   448: aload_1
-    //   449: astore 7
-    //   451: aload 10
-    //   453: invokeinterface 346 1 0
-    //   458: astore 10
-    //   460: aload_1
-    //   461: astore 8
-    //   463: aload_1
-    //   464: astore 7
-    //   466: aload 10
-    //   468: invokeinterface 351 1 0
-    //   473: ifeq +128 -> 601
-    //   476: aload_1
-    //   477: astore 8
-    //   479: aload_1
-    //   480: astore 7
-    //   482: aload 10
-    //   484: invokeinterface 355 1 0
-    //   489: checkcast 24	com/tencent/mm/storage/emotion/EmojiInfo
-    //   492: invokevirtual 384	com/tencent/mm/storage/emotion/EmojiInfo:convertTo	()Landroid/content/ContentValues;
-    //   495: astore 11
-    //   497: aload_1
-    //   498: astore 8
-    //   500: aload_1
-    //   501: astore 7
-    //   503: aload_0
-    //   504: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   507: ldc 30
-    //   509: ldc 200
-    //   511: aload 11
-    //   513: invokeinterface 388 4 0
-    //   518: lconst_0
-    //   519: lcmp
-    //   520: ifge -60 -> 460
-    //   523: aload 9
-    //   525: ifnull +16 -> 541
-    //   528: aload_1
-    //   529: astore 8
-    //   531: aload_1
-    //   532: astore 7
-    //   534: aload 9
-    //   536: lload_3
-    //   537: invokevirtual 392	com/tencent/mm/storagebase/h:endTransaction	(J)I
-    //   540: pop
-    //   541: aload_1
-    //   542: astore 8
-    //   544: aload_1
-    //   545: astore 7
-    //   547: ldc 62
-    //   549: ldc_w 938
-    //   552: iconst_1
-    //   553: anewarray 294	java/lang/Object
-    //   556: dup
-    //   557: iconst_0
-    //   558: invokestatic 318	java/lang/System:currentTimeMillis	()J
-    //   561: lload 5
-    //   563: lsub
-    //   564: invokestatic 399	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   567: aastore
-    //   568: invokestatic 401	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   571: aload_1
-    //   572: astore 8
-    //   574: aload_1
-    //   575: astore 7
-    //   577: ldc 62
-    //   579: ldc_w 940
-    //   582: invokestatic 794	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   585: aload_1
-    //   586: ifnull +7 -> 593
-    //   589: aload_1
-    //   590: invokevirtual 612	java/io/InputStream:close	()V
-    //   593: ldc_w 888
-    //   596: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   599: iconst_1
-    //   600: ireturn
-    //   601: aload 9
-    //   603: ifnull -62 -> 541
-    //   606: aload_1
-    //   607: astore 8
-    //   609: aload_1
-    //   610: astore 7
-    //   612: aload 9
-    //   614: lload_3
-    //   615: invokevirtual 392	com/tencent/mm/storagebase/h:endTransaction	(J)I
-    //   618: pop
-    //   619: goto -78 -> 541
-    //   622: astore_1
-    //   623: aload 8
-    //   625: astore 7
-    //   627: ldc 62
-    //   629: new 248	java/lang/StringBuilder
-    //   632: dup
-    //   633: ldc_w 942
-    //   636: invokespecial 251	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   639: aload_1
-    //   640: invokevirtual 943	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   643: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   646: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   649: invokestatic 264	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   652: aload 8
-    //   654: ifnull -61 -> 593
-    //   657: aload 8
-    //   659: invokevirtual 612	java/io/InputStream:close	()V
-    //   662: goto -69 -> 593
-    //   665: astore_1
-    //   666: ldc 62
-    //   668: ldc_w 292
-    //   671: iconst_1
-    //   672: anewarray 294	java/lang/Object
-    //   675: dup
-    //   676: iconst_0
-    //   677: aload_1
-    //   678: invokestatic 300	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   681: aastore
-    //   682: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   685: goto -92 -> 593
-    //   688: astore_1
-    //   689: ldc 62
-    //   691: ldc_w 292
-    //   694: iconst_1
-    //   695: anewarray 294	java/lang/Object
-    //   698: dup
-    //   699: iconst_0
-    //   700: aload_1
-    //   701: invokestatic 300	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   704: aastore
-    //   705: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   708: goto -115 -> 593
-    //   711: astore_1
-    //   712: aload 7
-    //   714: ifnull +8 -> 722
-    //   717: aload 7
-    //   719: invokevirtual 612	java/io/InputStream:close	()V
-    //   722: ldc_w 888
-    //   725: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   728: aload_1
-    //   729: athrow
-    //   730: astore 7
-    //   732: ldc 62
-    //   734: ldc_w 292
-    //   737: iconst_1
-    //   738: anewarray 294	java/lang/Object
-    //   741: dup
-    //   742: iconst_0
-    //   743: aload 7
-    //   745: invokestatic 300	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   748: aastore
-    //   749: invokestatic 303	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   752: goto -30 -> 722
-    //   755: astore 7
-    //   757: goto -527 -> 230
-    //   760: aconst_null
-    //   761: astore 9
-    //   763: goto -318 -> 445
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	766	0	this	f
-    //   0	766	1	paramContext	Context
-    //   39	44	2	i	int
-    //   281	334	3	l1	long
-    //   358	204	5	l2	long
-    //   21	697	7	localObject1	Object
-    //   730	14	7	localException1	Exception
-    //   755	1	7	localException2	Exception
-    //   30	628	8	localObject2	Object
-    //   252	510	9	localh	com.tencent.mm.storagebase.h
-    //   249	234	10	localObject3	Object
-    //   495	17	11	localContentValues	ContentValues
-    // Exception table:
-    //   from	to	target	type
-    //   262	270	622	java/io/IOException
-    //   278	282	622	java/io/IOException
-    //   290	301	622	java/io/IOException
-    //   307	320	622	java/io/IOException
-    //   326	349	622	java/io/IOException
-    //   355	360	622	java/io/IOException
-    //   366	376	622	java/io/IOException
-    //   382	392	622	java/io/IOException
-    //   402	412	622	java/io/IOException
-    //   418	427	622	java/io/IOException
-    //   433	445	622	java/io/IOException
-    //   451	460	622	java/io/IOException
-    //   466	476	622	java/io/IOException
-    //   482	497	622	java/io/IOException
-    //   503	523	622	java/io/IOException
-    //   534	541	622	java/io/IOException
-    //   547	571	622	java/io/IOException
-    //   577	585	622	java/io/IOException
-    //   612	619	622	java/io/IOException
-    //   657	662	665	java/lang/Exception
-    //   589	593	688	java/lang/Exception
-    //   262	270	711	finally
-    //   278	282	711	finally
-    //   290	301	711	finally
-    //   307	320	711	finally
-    //   326	349	711	finally
-    //   355	360	711	finally
-    //   366	376	711	finally
-    //   382	392	711	finally
-    //   402	412	711	finally
-    //   418	427	711	finally
-    //   433	445	711	finally
-    //   451	460	711	finally
-    //   466	476	711	finally
-    //   482	497	711	finally
-    //   503	523	711	finally
-    //   534	541	711	finally
-    //   547	571	711	finally
-    //   577	585	711	finally
-    //   612	619	711	finally
-    //   627	652	711	finally
-    //   717	722	730	java/lang/Exception
-    //   225	230	755	java/lang/Exception
-  }
-  
-  public final boolean jR(List<String> paramList)
+  public final boolean nf(List<String> paramList)
   {
     AppMethodBeat.i(105088);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -2747,15 +2661,15 @@ public final class f
     localStringBuilder.append(" SET ");
     localStringBuilder.append("catalog");
     localStringBuilder.append("=");
-    localStringBuilder.append(EmojiInfo.YCx);
+    localStringBuilder.append(EmojiInfo.aklG);
     localStringBuilder.append(",");
     localStringBuilder.append("source");
     localStringBuilder.append("=");
-    localStringBuilder.append(EmojiInfo.ZuI);
+    localStringBuilder.append(EmojiInfo.aklX);
     localStringBuilder.append(",");
     localStringBuilder.append("needupload");
     localStringBuilder.append("=");
-    localStringBuilder.append(EmojiInfo.ZuK);
+    localStringBuilder.append(EmojiInfo.aklZ);
     localStringBuilder.append(" where ");
     localStringBuilder.append("md5");
     localStringBuilder.append(" IN (");
@@ -2777,7 +2691,7 @@ public final class f
     return true;
   }
   
-  public final boolean jS(List<String> paramList)
+  public final boolean ng(List<String> paramList)
   {
     AppMethodBeat.i(105089);
     if ((paramList == null) || (paramList.size() <= 0))
@@ -2813,7 +2727,7 @@ public final class f
     return true;
   }
   
-  public final boolean jT(List<aji> paramList)
+  public final boolean nh(List<amn> paramList)
   {
     AppMethodBeat.i(105102);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -2826,17 +2740,17 @@ public final class f
     int i = 0;
     while (i < paramList.size())
     {
-      aji localaji = (aji)paramList.get(i);
-      EmojiInfo localEmojiInfo2 = bxK(localaji.Md5);
+      amn localamn = (amn)paramList.get(i);
+      EmojiInfo localEmojiInfo2 = bza(localamn.Md5);
       EmojiInfo localEmojiInfo1 = localEmojiInfo2;
       if (localEmojiInfo2 == null)
       {
         localEmojiInfo1 = new EmojiInfo();
-        localEmojiInfo1.field_md5 = localaji.Md5;
-        localEmojiInfo1.field_catalog = EmojiInfo.YCx;
+        localEmojiInfo1.field_md5 = localamn.Md5;
+        localEmojiInfo1.field_catalog = EmojiInfo.aklG;
         Log.i("MicroMsg.emoji.EmojiInfoStorage", "new emoji as received when updateEmoji url");
       }
-      b.a(localaji, localEmojiInfo1);
+      d.a(localamn, localEmojiInfo1);
       N(localEmojiInfo1);
       i += 1;
     }
@@ -2844,55 +2758,143 @@ public final class f
     return true;
   }
   
-  public final boolean t(List<EmojiInfo> paramList, String paramString)
+  /* Error */
+  public final EmojiInfo zf(long paramLong)
   {
-    AppMethodBeat.i(105091);
-    if (paramList.size() <= 0)
-    {
-      Log.i("MicroMsg.emoji.EmojiInfoStorage", "insert emoji list faild. list is null or size is 0.");
-      AppMethodBeat.o(105091);
-      return false;
-    }
-    Log.i("MicroMsg.emoji.EmojiInfoStorage", "insertEmojiList groupId:%s size:%d", new Object[] { paramString, Integer.valueOf(paramList.size()) });
-    com.tencent.mm.storagebase.h localh = null;
-    if ((this.db instanceof com.tencent.mm.storagebase.h)) {
-      localh = (com.tencent.mm.storagebase.h)this.db;
-    }
-    for (long l = localh.beginTransaction(Thread.currentThread().getId());; l = -1L)
-    {
-      Object localObject = aug(paramString);
-      paramString = new HashMap();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        EmojiInfo localEmojiInfo = (EmojiInfo)((Iterator)localObject).next();
-        paramString.put(localEmojiInfo.getMd5(), localEmojiInfo);
-      }
-      int i = 0;
-      while (i < paramList.size())
-      {
-        localObject = (EmojiInfo)paramList.get(i);
-        ((EmojiInfo)localObject).field_temp = 0;
-        this.db.replace("EmojiInfo", "md5", ((EmojiInfo)localObject).convertTo());
-        paramString.remove(((EmojiInfo)localObject).getMd5());
-        i += 1;
-      }
-      paramList = paramString.entrySet().iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (Map.Entry)paramList.next();
-        paramString = (String)((Map.Entry)localObject).getKey();
-        localObject = (EmojiInfo)((Map.Entry)localObject).getValue();
-        ((EmojiInfo)localObject).field_temp = 1;
-        this.db.update("EmojiInfo", ((EmojiInfo)localObject).convertTo(), "md5=?", new String[] { paramString });
-        Log.d("MicroMsg.emoji.EmojiInfoStorage", "jacks modify excess emoji to %s", new Object[] { ((EmojiInfo)localObject).field_groupId });
-      }
-      if (localh != null) {
-        localh.endTransaction(l);
-      }
-      AppMethodBeat.o(105091);
-      return true;
-    }
+    // Byte code:
+    //   0: ldc_w 1022
+    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: lload_1
+    //   7: lconst_0
+    //   8: lcmp
+    //   9: ifne +11 -> 20
+    //   12: ldc_w 1022
+    //   15: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: aconst_null
+    //   19: areturn
+    //   20: aload_0
+    //   21: getfield 53	com/tencent/mm/storage/emotion/f:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   24: ldc 30
+    //   26: aconst_null
+    //   27: ldc_w 1024
+    //   30: iconst_1
+    //   31: anewarray 22	java/lang/String
+    //   34: dup
+    //   35: iconst_0
+    //   36: lload_1
+    //   37: invokestatic 1027	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   40: aastore
+    //   41: aconst_null
+    //   42: aconst_null
+    //   43: aconst_null
+    //   44: iconst_2
+    //   45: invokeinterface 756 9 0
+    //   50: astore 4
+    //   52: aload 4
+    //   54: ifnull +162 -> 216
+    //   57: aload 4
+    //   59: astore 5
+    //   61: aload 4
+    //   63: invokeinterface 284 1 0
+    //   68: ifeq +148 -> 216
+    //   71: aload 4
+    //   73: astore 5
+    //   75: invokestatic 80	com/tencent/mm/plugin/emoji/g:dxR	()Lcom/tencent/mm/plugin/emoji/g;
+    //   78: pop
+    //   79: aload 4
+    //   81: astore 5
+    //   83: new 24	com/tencent/mm/storage/emotion/EmojiInfo
+    //   86: dup
+    //   87: invokestatic 84	com/tencent/mm/plugin/emoji/g:dxS	()Ljava/lang/String;
+    //   90: invokespecial 87	com/tencent/mm/storage/emotion/EmojiInfo:<init>	(Ljava/lang/String;)V
+    //   93: astore_3
+    //   94: aload 4
+    //   96: astore 5
+    //   98: aload_3
+    //   99: aload 4
+    //   101: invokevirtual 329	com/tencent/mm/storage/emotion/EmojiInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   104: aload_3
+    //   105: astore 5
+    //   107: aload 4
+    //   109: ifnull +13 -> 122
+    //   112: aload 4
+    //   114: invokeinterface 290 1 0
+    //   119: aload_3
+    //   120: astore 5
+    //   122: ldc_w 1022
+    //   125: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: aload 5
+    //   130: areturn
+    //   131: astore 6
+    //   133: aconst_null
+    //   134: astore 4
+    //   136: aconst_null
+    //   137: astore_3
+    //   138: aload 4
+    //   140: astore 5
+    //   142: ldc 62
+    //   144: aload 6
+    //   146: ldc 246
+    //   148: iconst_0
+    //   149: anewarray 294	java/lang/Object
+    //   152: invokestatic 1031	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   155: aload_3
+    //   156: astore 5
+    //   158: aload 4
+    //   160: ifnull -38 -> 122
+    //   163: aload 4
+    //   165: invokeinterface 290 1 0
+    //   170: aload_3
+    //   171: astore 5
+    //   173: goto -51 -> 122
+    //   176: astore_3
+    //   177: aconst_null
+    //   178: astore 5
+    //   180: aload 5
+    //   182: ifnull +10 -> 192
+    //   185: aload 5
+    //   187: invokeinterface 290 1 0
+    //   192: ldc_w 1022
+    //   195: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   198: aload_3
+    //   199: athrow
+    //   200: astore_3
+    //   201: goto -21 -> 180
+    //   204: astore 6
+    //   206: aconst_null
+    //   207: astore_3
+    //   208: goto -70 -> 138
+    //   211: astore 6
+    //   213: goto -75 -> 138
+    //   216: aconst_null
+    //   217: astore_3
+    //   218: goto -114 -> 104
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	221	0	this	f
+    //   0	221	1	paramLong	long
+    //   93	78	3	localEmojiInfo	EmojiInfo
+    //   176	23	3	localObject1	Object
+    //   200	1	3	localObject2	Object
+    //   207	11	3	localObject3	Object
+    //   50	114	4	localCursor	Cursor
+    //   59	127	5	localObject4	Object
+    //   131	14	6	localException1	Exception
+    //   204	1	6	localException2	Exception
+    //   211	1	6	localException3	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   20	52	131	java/lang/Exception
+    //   20	52	176	finally
+    //   61	71	200	finally
+    //   75	79	200	finally
+    //   83	94	200	finally
+    //   98	104	200	finally
+    //   142	155	200	finally
+    //   61	71	204	java/lang/Exception
+    //   75	79	204	java/lang/Exception
+    //   83	94	204	java/lang/Exception
+    //   98	104	211	java/lang/Exception
   }
 }
 

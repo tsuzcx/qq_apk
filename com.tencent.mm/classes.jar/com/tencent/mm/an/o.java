@@ -1,155 +1,490 @@
 package com.tencent.mm.an;
 
-import com.tencent.mm.compatible.deviceinfo.q;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.c;
+import com.tencent.mm.b.g;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.j.e;
-import com.tencent.mm.protocal.j.e.a;
-import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.e;
+import com.tencent.mm.network.d;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class o
-  implements s
+public final class o
 {
-  private static final String TAG = "MicroMsg.MMReqRespBase";
-  private boolean isSingleSession = true;
-  private boolean isUserCmd = false;
-  private l.d req;
-  
-  public static void fillBaseReq(l.d paramd, o paramo)
+  public static Bitmap MR(String paramString)
   {
-    paramd.setDeviceID(q.auM());
-    paramd.setDeviceType(d.kQZ);
-    paramd.setClientVersion(d.RAD);
-    paramd.setUin(j.e.a.RBn.beM());
-    if (h.aHB())
+    boolean bool = false;
+    AppMethodBeat.i(124113);
+    if ((Util.isNullOrNil(paramString)) || (!h.baE().isSDCardAvailable()) || (!h.baC().aZN()))
     {
-      int j = paramo.getType();
-      boolean bool;
-      int k;
-      int i;
-      if (((a)h.ae(a.class)).axc().getInt("UseAesGcmSessionKeySwitch", 1) == 0)
+      AppMethodBeat.o(124113);
+      return null;
+    }
+    Bitmap localBitmap = af.bHr().MS(paramString);
+    if (localBitmap == null) {
+      bool = true;
+    }
+    Log.i("MicroMsg.BrandLogic", "get verify user icon = %s, is null ? %s", new Object[] { paramString, String.valueOf(bool) });
+    AppMethodBeat.o(124113);
+    return localBitmap;
+  }
+  
+  static String bw(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(124116);
+    if ((paramString1 == null) || (!h.baC().aZN()))
+    {
+      AppMethodBeat.o(124116);
+      return null;
+    }
+    paramString1 = af.bHf().Mn(paramString1);
+    if ((paramString1 != null) && (paramString1.field_brandIconURL != null))
+    {
+      paramString1 = paramString1.field_brandIconURL;
+      AppMethodBeat.o(124116);
+      return paramString1;
+    }
+    AppMethodBeat.o(124116);
+    return paramString2;
+  }
+  
+  public static Bitmap n(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(239451);
+    if (!h.baE().isSDCardAvailable())
+    {
+      paramString1 = vS(paramInt);
+      AppMethodBeat.o(239451);
+      return paramString1;
+    }
+    if ((paramString1 == null) || (!h.baC().aZN()))
+    {
+      AppMethodBeat.o(239451);
+      return null;
+    }
+    final String str = paramString2;
+    if (paramString2 == null)
+    {
+      paramString2 = bw(paramString1, null);
+      str = paramString2;
+      if (paramString2 == null)
       {
-        bool = true;
-        Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] accHasReady openSwitch[%s] ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
-        if (bool)
+        AppMethodBeat.o(239451);
+        return null;
+      }
+    }
+    paramString2 = af.bHr();
+    Object localObject;
+    if (paramString2.owG.containsKey(paramString1))
+    {
+      localObject = (Bitmap)((WeakReference)paramString2.owG.get(paramString1)).get();
+      if ((localObject == null) || (((Bitmap)localObject).isRecycled()))
+      {
+        localObject = bw(paramString1, str);
+        localObject = BitmapUtil.getBitmapNative(a.MT(paramString1 + (String)localObject));
+        if (localObject == null)
         {
-          paramd = ((a)h.ae(a.class)).axc().getValue("UseAesGcmSessionKeyCgiList");
-          if (!Util.isNullOrNil(paramd))
-          {
-            Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi list[%s]", new Object[] { paramd });
-            paramd = paramd.trim().split(",");
-            if (paramd.length > 0)
-            {
-              k = paramd.length;
-              i = 0;
-            }
+          Log.i("MicroMsg.BrandLogic", "not found brand icon local");
+          paramString2 = null;
+          label170:
+          if (paramString2 == null) {
+            break label276;
           }
+          AppMethodBeat.o(239451);
+          return paramString2;
+        }
+        paramString2.f(paramString1, (Bitmap)localObject);
+      }
+    }
+    for (;;)
+    {
+      paramString2 = (WeakReference)paramString2.owG.get(paramString1);
+      if (paramString2 == null) {
+        break;
+      }
+      paramString2 = (Bitmap)paramString2.get();
+      break label170;
+      localObject = bw(paramString1, str);
+      localObject = BitmapUtil.getBitmapNative(a.MT(paramString1 + (String)localObject));
+      if (localObject == null)
+      {
+        Log.i("MicroMsg.BrandLogic", "not found brand icon local");
+        break;
+      }
+      paramString2.f(paramString1, (Bitmap)localObject);
+    }
+    label276:
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(124105);
+        o.a locala = af.bHr();
+        String str1 = o.this;
+        String str2 = str;
+        if ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)))
+        {
+          Log.e("MicroMsg.BrandLogic", "pushing for brand " + str1 + ", url " + str2);
+          AppMethodBeat.o(124105);
+          return;
+        }
+        if (Util.secondsToNow(Util.nullAsNil((Integer)locala.owF.get(str1))) < 300L)
+        {
+          Log.i("MicroMsg.BrandLogic", "downloading interval less than 5 mins for ".concat(String.valueOf(str1)));
+          AppMethodBeat.o(124105);
+          return;
+        }
+        locala.owF.put(str1, Integer.valueOf((int)Util.nowSecond()));
+        if ((locala.owH == null) || (locala.owH.isDead())) {
+          locala.owH = new QueueWorkerThread(1, "brand-logic");
+        }
+        str2 = o.bw(str1, str2);
+        locala.owH.add(new o.b(str1, str2));
+        AppMethodBeat.o(124105);
+      }
+    });
+    AppMethodBeat.o(239451);
+    return null;
+  }
+  
+  /* Error */
+  private static Bitmap vS(int paramInt)
+  {
+    // Byte code:
+    //   0: ldc 171
+    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: iload_0
+    //   6: ifgt +10 -> 16
+    //   9: ldc 171
+    //   11: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: aconst_null
+    //   15: areturn
+    //   16: new 173	android/graphics/BitmapFactory$Options
+    //   19: dup
+    //   20: invokespecial 174	android/graphics/BitmapFactory$Options:<init>	()V
+    //   23: astore_2
+    //   24: aload_2
+    //   25: invokestatic 178	com/tencent/mm/sdk/platformtools/BitmapUtil:bindlowMemeryOption	(Landroid/graphics/BitmapFactory$Options;)V
+    //   28: invokestatic 184	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   31: invokevirtual 190	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   34: iload_0
+    //   35: invokevirtual 196	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   38: astore_1
+    //   39: aload_1
+    //   40: aconst_null
+    //   41: aload_2
+    //   42: invokestatic 202	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   45: astore_2
+    //   46: aload_1
+    //   47: ifnull +7 -> 54
+    //   50: aload_1
+    //   51: invokevirtual 207	java/io/InputStream:close	()V
+    //   54: aload_2
+    //   55: astore_1
+    //   56: aload_2
+    //   57: ifnull +16 -> 73
+    //   60: aload_2
+    //   61: iconst_0
+    //   62: aload_2
+    //   63: invokevirtual 211	android/graphics/Bitmap:getWidth	()I
+    //   66: iconst_1
+    //   67: ishr
+    //   68: i2f
+    //   69: invokestatic 215	com/tencent/mm/sdk/platformtools/BitmapUtil:getRoundedCornerBitmap	(Landroid/graphics/Bitmap;ZF)Landroid/graphics/Bitmap;
+    //   72: astore_1
+    //   73: ldc 171
+    //   75: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: aload_1
+    //   79: areturn
+    //   80: astore_1
+    //   81: ldc 62
+    //   83: aload_1
+    //   84: ldc 217
+    //   86: iconst_0
+    //   87: anewarray 4	java/lang/Object
+    //   90: invokestatic 221	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   93: goto -39 -> 54
+    //   96: astore_2
+    //   97: aconst_null
+    //   98: astore_1
+    //   99: aload_1
+    //   100: ifnull +7 -> 107
+    //   103: aload_1
+    //   104: invokevirtual 207	java/io/InputStream:close	()V
+    //   107: ldc 171
+    //   109: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   112: aload_2
+    //   113: athrow
+    //   114: astore_1
+    //   115: ldc 62
+    //   117: aload_1
+    //   118: ldc 217
+    //   120: iconst_0
+    //   121: anewarray 4	java/lang/Object
+    //   124: invokestatic 221	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   127: goto -20 -> 107
+    //   130: astore_2
+    //   131: goto -32 -> 99
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	paramInt	int
+    //   38	41	1	localObject1	Object
+    //   80	4	1	localIOException1	java.io.IOException
+    //   98	6	1	localObject2	Object
+    //   114	4	1	localIOException2	java.io.IOException
+    //   23	40	2	localObject3	Object
+    //   96	17	2	localObject4	Object
+    //   130	1	2	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   50	54	80	java/io/IOException
+    //   28	39	96	finally
+    //   103	107	114	java/io/IOException
+    //   39	46	130	finally
+  }
+  
+  public static final class a
+  {
+    List<Object> owE;
+    Map<String, Integer> owF;
+    Map<String, WeakReference<Bitmap>> owG;
+    QueueWorkerThread owH;
+    
+    public a()
+    {
+      AppMethodBeat.i(124106);
+      this.owE = new ArrayList();
+      this.owF = new HashMap();
+      this.owG = new HashMap();
+      this.owH = null;
+      AppMethodBeat.o(124106);
+    }
+    
+    public static String MT(String paramString)
+    {
+      AppMethodBeat.i(124109);
+      if (h.baC().aZN())
+      {
+        paramString = ((q)h.ax(q.class)).bzU() + "/brand_" + g.getMessageDigest(paramString.getBytes());
+        AppMethodBeat.o(124109);
+        return paramString;
+      }
+      AppMethodBeat.o(124109);
+      return "";
+    }
+    
+    final Bitmap MS(String paramString)
+    {
+      AppMethodBeat.i(124108);
+      String str = String.format("%s%f", new Object[] { paramString, Float.valueOf(1.5F) });
+      Bitmap localBitmap1;
+      if (this.owG.containsKey(str))
+      {
+        Bitmap localBitmap2 = (Bitmap)((WeakReference)this.owG.get(str)).get();
+        if (localBitmap2 != null)
+        {
+          localBitmap1 = localBitmap2;
+          if (!localBitmap2.isRecycled()) {}
+        }
+        else
+        {
+          localBitmap1 = BackwardSupportUtil.BitmapFactory.decodeFile(paramString, 1.5F);
+          this.owG.remove(str);
+          this.owG.put(str, new WeakReference(localBitmap1));
         }
       }
       for (;;)
       {
-        if (i < k)
-        {
-          String str = paramd[i];
-          if (j == Util.getInt(str, 0))
-          {
-            paramo.setSingleSession(false);
-            Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi list found cgi[%s] singleSession[%s]", new Object[] { str, Boolean.valueOf(paramo.isSingleSession()) });
-          }
-        }
-        else
-        {
-          return;
-          bool = false;
-          break;
-        }
-        i += 1;
+        AppMethodBeat.o(124108);
+        return localBitmap1;
+        localBitmap1 = BackwardSupportUtil.BitmapFactory.decodeFile(paramString, 1.5F);
+        this.owG.put(str, new WeakReference(localBitmap1));
       }
     }
-    Log.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] USE_ECDH[%s] accHasReady[%s] ", new Object[] { Integer.valueOf(paramd.getCmdId()), Boolean.valueOf(com.tencent.mm.protocal.f.RAO), Boolean.valueOf(h.aHB()) });
-  }
-  
-  public boolean getIsLongPolling()
-  {
-    return false;
-  }
-  
-  public boolean getIsUserCmd()
-  {
-    return this.isUserCmd;
-  }
-  
-  public int getLongPollingTimeout()
-  {
-    return 0;
-  }
-  
-  public int getNewExtFlags()
-  {
-    return 0;
-  }
-  
-  public int getOptions()
-  {
-    return 0;
-  }
-  
-  public boolean getPush()
-  {
-    return false;
-  }
-  
-  public final l.d getReqObj()
-  {
-    if (this.req == null)
+    
+    public final void bGW()
     {
-      this.req = getReqObjImp();
-      fillBaseReq(this.req, this);
+      AppMethodBeat.i(124107);
+      this.owE.clear();
+      AppMethodBeat.o(124107);
     }
-    return this.req;
+    
+    final void f(String paramString, Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(124110);
+      Bitmap localBitmap1;
+      if (this.owG.containsKey(paramString)) {
+        localBitmap1 = (Bitmap)((WeakReference)this.owG.get(paramString)).get();
+      }
+      for (;;)
+      {
+        Bitmap localBitmap3;
+        if (localBitmap1 != null)
+        {
+          localBitmap3 = localBitmap1;
+          if (!localBitmap1.isRecycled()) {
+            break label110;
+          }
+        }
+        try
+        {
+          localBitmap1 = Bitmap.createScaledBitmap(paramBitmap, 128, 128, true);
+          localBitmap1 = BitmapUtil.getRoundedCornerBitmap(localBitmap1, true, localBitmap1.getWidth() >> 1);
+          this.owG.remove(paramString);
+          this.owG.put(paramString, new WeakReference(localBitmap1));
+          localBitmap3 = localBitmap1;
+          label110:
+          if (localBitmap3 == paramBitmap)
+          {
+            AppMethodBeat.o(124110);
+            return;
+            localBitmap1 = null;
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            Bitmap localBitmap2 = paramBitmap;
+          }
+          Log.i("MicroMsg.BrandLogic", "recycle bitmap:%s", new Object[] { paramBitmap.toString() });
+          paramBitmap.recycle();
+          AppMethodBeat.o(124110);
+        }
+      }
+    }
   }
   
-  protected abstract l.d getReqObjImp();
-  
-  public int getTimeOut()
+  static final class b
+    implements QueueWorkerThread.ThreadObject
   {
-    return 0;
-  }
-  
-  public byte[] getTransHeader()
-  {
-    return null;
-  }
-  
-  public boolean isSingleSession()
-  {
-    return this.isSingleSession;
-  }
-  
-  public boolean keepAlive()
-  {
-    return false;
-  }
-  
-  public void setConnectionInfo(String paramString) {}
-  
-  public void setIsUserCmd(boolean paramBoolean)
-  {
-    this.isUserCmd = paramBoolean;
-  }
-  
-  void setSingleSession(boolean paramBoolean)
-  {
-    this.isSingleSession = paramBoolean;
+    private final String brand;
+    public byte[] orX = null;
+    private final String url;
+    
+    public b(String paramString1, String paramString2)
+    {
+      this.brand = paramString1;
+      this.url = paramString2;
+    }
+    
+    public final boolean doInBackground()
+    {
+      AppMethodBeat.i(124111);
+      if ((Util.isNullOrNil(this.brand)) || (Util.isNullOrNil(this.url)))
+      {
+        AppMethodBeat.o(124111);
+        return false;
+      }
+      Object localObject1;
+      Object localObject2;
+      try
+      {
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+        localObject1 = d.A(this.url, 3000, 5000);
+        if (localObject1 == null)
+        {
+          AppMethodBeat.o(124111);
+          return false;
+        }
+        localObject2 = new byte[1024];
+        for (;;)
+        {
+          int i = ((InputStream)localObject1).read((byte[])localObject2);
+          if (i == -1) {
+            break;
+          }
+          localByteArrayOutputStream.write((byte[])localObject2, 0, i);
+        }
+        ((InputStream)localObject1).close();
+      }
+      catch (Exception localException1)
+      {
+        Log.e("MicroMsg.BrandLogic", "exception:%s", new Object[] { Util.stackTraceToString(localException1) });
+        Log.e("MicroMsg.BrandLogic", "get url:" + this.url + " failed.");
+        this.orX = null;
+        AppMethodBeat.o(124111);
+        return false;
+      }
+      this.orX = localException1.toByteArray();
+      localException1.close();
+      if (Util.isNullOrNil(this.orX))
+      {
+        Log.e("MicroMsg.BrandLogic", "imgBuff null brand:" + this.brand);
+        AppMethodBeat.o(124111);
+        return false;
+      }
+      o.a locala;
+      String str;
+      if (h.baC().aZN())
+      {
+        az.a.okQ.eB(this.orX.length, 0);
+        locala = af.bHr();
+        localObject1 = this.brand;
+        str = this.url;
+        localObject2 = this.orX;
+      }
+      try
+      {
+        str = (String)localObject1 + str;
+        localObject2 = BitmapUtil.decodeByteArray((byte[])localObject2);
+        BitmapUtil.saveBitmapToImage((Bitmap)localObject2, 100, Bitmap.CompressFormat.PNG, o.a.MT(str), false);
+        locala.f((String)localObject1, (Bitmap)localObject2);
+        Log.i("MicroMsg.BrandLogic", "update brand icon for  " + (String)localObject1 + ", done");
+        locala.owF.remove(localObject1);
+        AppMethodBeat.o(124111);
+        return true;
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.BrandLogic", "exception:%s", new Object[] { Util.stackTraceToString(localException2) });
+        }
+      }
+    }
+    
+    public final boolean onPostExecute()
+    {
+      AppMethodBeat.i(124112);
+      o.a locala = af.bHr();
+      int i = 0;
+      try
+      {
+        while (i < locala.owE.size())
+        {
+          locala.owE.get(i);
+          i += 1;
+        }
+        return false;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.BrandLogic", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+        AppMethodBeat.o(124112);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.an.o
  * JD-Core Version:    0.7.0.1
  */

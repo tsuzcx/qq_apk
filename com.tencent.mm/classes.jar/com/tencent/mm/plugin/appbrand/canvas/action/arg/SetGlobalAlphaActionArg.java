@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -68,10 +68,10 @@ public class SetGlobalAlphaActionArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145176);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.alpha = paramParcel.readInt();
     AppMethodBeat.o(145176);
   }
@@ -80,7 +80,7 @@ public class SetGlobalAlphaActionArg
   {
     AppMethodBeat.i(145177);
     super.parse(paramJSONObject);
-    this.alpha = g.c(paramJSONObject.optJSONArray("data"), 0);
+    this.alpha = i.c(paramJSONObject.optJSONArray("data"), 0);
     AppMethodBeat.o(145177);
   }
   
@@ -94,7 +94,7 @@ public class SetGlobalAlphaActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetGlobalAlphaActionArg
  * JD-Core Version:    0.7.0.1
  */

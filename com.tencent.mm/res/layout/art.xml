@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:text="@string/dqy" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/dqx" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bub" android:layout_width="@dimen/cd" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:src="@drawable/biy" android:scaleType="centerInside" />
+<LinearLayout android:orientation="vertical" android:background="@color/aav" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/b9">
+        <LinearLayout android:orientation="horizontal" android:id="@id/a2y" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b5" android:contentDescription="@string/e4" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/a30" android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentEnd="true" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b5" android:contentDescription="@string/e4" />
+        </LinearLayout>
+        <com.tencent.mm.view.HardTouchableLayout android:id="@id/kcu" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_centerVertical="true" android:layout_toStartOf="@id/a30" android:layout_toEndOf="@id/a2y">
+            <com.tencent.mm.plugin.finder.view.tabcomp.FinderTabLayout android:layout_gravity="center" android:id="@id/kct" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ahb" app:tabGravity="ayg" app:tabIndicator="@color/a7b" app:tabIndicatorColor="@color/a7b" app:tabIndicatorHeight="2.0dip" app:tabMode="e_s" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/a7b" app:tabTextColor="@color/m4" />
+        </com.tencent.mm.view.HardTouchableLayout>
+    </RelativeLayout>
+    <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/l8k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

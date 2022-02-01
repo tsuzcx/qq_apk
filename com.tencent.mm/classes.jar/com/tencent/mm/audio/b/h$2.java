@@ -13,11 +13,11 @@ final class h$2
   
   public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(227317);
-    s.a(h.c(this.ftm), this.ftm);
-    o.brB().run();
-    Log.d("MicroMsg.SceneVoice.Recorder", "Start Send fileName :" + h.c(this.ftm));
-    AppMethodBeat.o(227317);
+    AppMethodBeat.i(236220);
+    s.a(h.c(this.hxB), this.hxB);
+    o.bPh().run();
+    Log.d("MicroMsg.SceneVoice.Recorder", "Start Send fileName :" + h.c(this.hxB));
+    AppMethodBeat.o(236220);
     return false;
   }
 }

@@ -1,10 +1,10 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
 import kotlin.g.a.a;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 final class e$f
   implements Runnable
 {
@@ -13,8 +13,8 @@ final class e$f
   public final void run()
   {
     AppMethodBeat.i(140090);
-    al localal = (al)this.cMo.invoke();
-    this.cMn.nativeBindTo(this.cMn.mNativeInst, localal.cNm, localal.cNn, localal.cNo);
+    an localan = (an)this.eHI.invoke();
+    this.eHH.nativeBindTo(this.eHH.mNativeInst, localan.eIH, localan.eII, localan.eIJ);
     AppMethodBeat.o(140090);
   }
 }

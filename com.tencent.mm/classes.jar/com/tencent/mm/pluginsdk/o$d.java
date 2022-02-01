@@ -1,14 +1,8 @@
 package com.tencent.mm.pluginsdk;
 
-import com.tencent.mm.plugin.sns.b.i;
-import com.tencent.mm.plugin.sns.b.p;
-
 public final class o$d
 {
-  public static i hfO()
-  {
-    return p.JPi;
-  }
+  public static o.c.a XNU;
 }
 
 

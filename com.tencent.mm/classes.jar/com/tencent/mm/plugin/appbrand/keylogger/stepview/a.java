@@ -4,7 +4,7 @@ import com.tencent.luggage.a.d;
 
 public final class a
 {
-  public static int BE(int paramInt)
+  public static int BS(int paramInt)
   {
     switch (paramInt)
     {
@@ -22,7 +22,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.a
  * JD-Core Version:    0.7.0.1
  */

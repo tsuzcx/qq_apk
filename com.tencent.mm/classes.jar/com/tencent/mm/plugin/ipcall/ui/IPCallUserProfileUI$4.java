@@ -15,9 +15,9 @@ final class IPCallUserProfileUI$4
   {
     AppMethodBeat.i(25997);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    IPCallUserProfileUI.a(this.DZi, this.DZj);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    IPCallUserProfileUI.a(this.JQq, this.JQr);
     a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25997);
   }

@@ -16,10 +16,10 @@ import com.tencent.mm.R.i;
 public class JsonItemView
   extends LinearLayout
 {
-  public static int XLe = 12;
-  private TextView XLf;
-  private TextView XLg;
-  private ImageView XLh;
+  public static int afxT = 12;
+  private TextView afxU;
+  private TextView afxV;
+  private ImageView afxW;
   private Context mContext;
   
   public JsonItemView(Context paramContext)
@@ -38,20 +38,20 @@ public class JsonItemView
     AppMethodBeat.i(38898);
     this.mContext = paramContext;
     setOrientation(1);
-    LayoutInflater.from(this.mContext).inflate(R.i.eij, this, true);
-    this.XLf = ((TextView)findViewById(R.h.dYh));
-    this.XLg = ((TextView)findViewById(R.h.dYn));
-    this.XLh = ((ImageView)findViewById(R.h.iv_icon));
+    LayoutInflater.from(this.mContext).inflate(R.i.gle, this, true);
+    this.afxU = ((TextView)findViewById(R.h.gaS));
+    this.afxV = ((TextView)findViewById(R.h.gbb));
+    this.afxW = ((ImageView)findViewById(R.h.iv_icon));
     AppMethodBeat.o(38898);
   }
   
-  public final void GY(boolean paramBoolean)
+  public final void MQ(boolean paramBoolean)
   {
     AppMethodBeat.i(38905);
-    this.XLh.setVisibility(0);
-    ImageView localImageView = this.XLh;
+    this.afxW.setVisibility(0);
+    ImageView localImageView = this.afxW;
     if (paramBoolean) {}
-    for (int i = R.g.dnI;; i = R.g.dnH)
+    for (int i = R.g.fnX;; i = R.g.fnW)
     {
       localImageView.setImageResource(i);
       AppMethodBeat.o(38905);
@@ -59,20 +59,20 @@ public class JsonItemView
     }
   }
   
-  public final void aJ(CharSequence paramCharSequence)
+  public final void aX(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(38901);
-    this.XLf.setVisibility(0);
-    this.XLf.setText(paramCharSequence);
+    this.afxU.setVisibility(0);
+    this.afxU.setText(paramCharSequence);
     AppMethodBeat.o(38901);
   }
   
-  public final void aK(CharSequence paramCharSequence)
+  public final void aY(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(38902);
-    this.XLg.setVisibility(0);
+    this.afxV.setVisibility(0);
     if (paramCharSequence != null) {
-      this.XLg.setText(paramCharSequence);
+      this.afxV.setText(paramCharSequence);
     }
     AppMethodBeat.o(38902);
   }
@@ -80,26 +80,26 @@ public class JsonItemView
   public CharSequence getRightText()
   {
     AppMethodBeat.i(38903);
-    CharSequence localCharSequence = this.XLg.getText();
+    CharSequence localCharSequence = this.afxV.getText();
     AppMethodBeat.o(38903);
     return localCharSequence;
   }
   
-  public final void hXA()
+  public final void jBK()
   {
     AppMethodBeat.i(38900);
-    this.XLf.setVisibility(8);
+    this.afxU.setVisibility(8);
     AppMethodBeat.o(38900);
   }
   
-  public final void hXB()
+  public final void jBL()
   {
     AppMethodBeat.i(38904);
-    this.XLh.setVisibility(8);
+    this.afxW.setVisibility(8);
     AppMethodBeat.o(38904);
   }
   
-  public final void iB(View paramView)
+  public final void lY(View paramView)
   {
     AppMethodBeat.i(38907);
     Object localObject2 = paramView.getLayoutParams();
@@ -122,14 +122,14 @@ public class JsonItemView
   public void setIconClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(38906);
-    this.XLh.setOnClickListener(paramOnClickListener);
+    this.afxW.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(38906);
   }
   
   public void setRightColor(int paramInt)
   {
     AppMethodBeat.i(38899);
-    this.XLg.setTextColor(paramInt);
+    this.afxV.setTextColor(paramInt);
     AppMethodBeat.o(38899);
   }
   
@@ -137,7 +137,7 @@ public class JsonItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.recyclerview.JsonItemView
  * JD-Core Version:    0.7.0.1
  */

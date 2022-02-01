@@ -261,7 +261,7 @@ public class WaveWriter
       AppMethodBeat.o(76429);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("WaveWriter", localThrowable);
       AppMethodBeat.o(76429);
@@ -288,7 +288,7 @@ public class WaveWriter
       AppMethodBeat.o(76430);
       return true;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("WaveWriter", localThrowable);
       AppMethodBeat.o(76430);
@@ -363,7 +363,7 @@ public class WaveWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.WaveWriter
  * JD-Core Version:    0.7.0.1
  */

@@ -3,59 +3,64 @@ package com.tencent.mm.plugin.finder.viewmodel.component;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
 import com.tencent.mm.plugin.finder.view.FinderLikeDrawer;
 import com.tencent.mm.ui.component.UIComponent;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;)V", "onBackPressed", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "drawer$delegate", "Lkotlin/Lazy;", "onBackPressed", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class r
   extends UIComponent
 {
-  public static final a BjS;
-  FinderLikeDrawer BjR;
+  public static final a GPf;
+  private final j GPg;
   
   static
   {
-    AppMethodBeat.i(275412);
-    BjS = new a((byte)0);
-    AppMethodBeat.o(275412);
+    AppMethodBeat.i(337688);
+    GPf = new a((byte)0);
+    AppMethodBeat.o(337688);
   }
   
   public r(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(275411);
-    AppMethodBeat.o(275411);
+    AppMethodBeat.i(337680);
+    this.GPg = k.cm((a)new b(paramAppCompatActivity));
+    AppMethodBeat.o(337680);
+  }
+  
+  public final FinderLikeDrawer fny()
+  {
+    AppMethodBeat.i(337698);
+    FinderLikeDrawer localFinderLikeDrawer = (FinderLikeDrawer)this.GPg.getValue();
+    AppMethodBeat.o(337698);
+    return localFinderLikeDrawer;
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(275408);
-    if (this.BjR == null) {
-      this.BjR = ((FinderLikeDrawer)getActivity().findViewById(b.f.finder_feed_friend_like_drawer));
-    }
-    if (this.BjR == null)
+    AppMethodBeat.i(337711);
+    if (fny() == null)
     {
-      AppMethodBeat.o(275408);
+      AppMethodBeat.o(337711);
       return false;
     }
-    FinderLikeDrawer localFinderLikeDrawer = this.BjR;
-    if (localFinderLikeDrawer == null) {
-      p.iCn();
-    }
-    if (localFinderLikeDrawer.eis())
+    FinderLikeDrawer localFinderLikeDrawer = fny();
+    s.checkNotNull(localFinderLikeDrawer);
+    if (localFinderLikeDrawer.fkp())
     {
-      localFinderLikeDrawer = this.BjR;
-      if (localFinderLikeDrawer == null) {
-        p.iCn();
-      }
-      localFinderLikeDrawer.eir();
-      AppMethodBeat.o(275408);
+      localFinderLikeDrawer = fny();
+      s.checkNotNull(localFinderLikeDrawer);
+      localFinderLikeDrawer.fdh();
+      AppMethodBeat.o(337711);
       return true;
     }
-    AppMethodBeat.o(275408);
+    AppMethodBeat.o(337711);
     return false;
   }
   
@@ -65,20 +70,31 @@ public final class r
   
   public final void onPause()
   {
-    AppMethodBeat.i(275410);
+    AppMethodBeat.i(337725);
     super.onPause();
-    AppMethodBeat.o(275410);
+    AppMethodBeat.o(337725);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(275409);
+    AppMethodBeat.i(337718);
     super.onResume();
-    AppMethodBeat.o(275409);
+    AppMethodBeat.o(337718);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFeedFriendLikeDrawerUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/view/FinderLikeDrawer;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements a<FinderLikeDrawer>
+  {
+    b(AppCompatActivity paramAppCompatActivity)
+    {
+      super();
+    }
+  }
 }
 
 

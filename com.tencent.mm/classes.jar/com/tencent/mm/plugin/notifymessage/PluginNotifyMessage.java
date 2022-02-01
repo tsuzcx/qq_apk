@@ -13,8 +13,8 @@ import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.cf;
+import com.tencent.mm.storage.cc;
+import com.tencent.mm.storage.cg;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,51 +22,51 @@ import java.util.Iterator;
 
 public class PluginNotifyMessage
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.a, c, a
+  implements com.tencent.mm.kernel.api.a, c, com.tencent.mm.message.b.b
 {
-  private cf GBi;
-  private final i.a GBj;
+  private cg Mxr;
+  private final i.a Mxs;
   private MMHandler mHandler;
-  private com.tencent.mm.vending.b.b nDk;
+  private com.tencent.mm.vending.b.b qDd;
   
   public PluginNotifyMessage()
   {
-    AppMethodBeat.i(274603);
-    this.nDk = null;
+    AppMethodBeat.i(260354);
+    this.qDd = null;
     this.mHandler = null;
-    this.GBj = new i.a()
+    this.Mxs = new i.a()
     {
       public final void onNotifyChange(i paramAnonymousi, i.c paramAnonymousc)
       {
-        AppMethodBeat.i(276377);
+        AppMethodBeat.i(260358);
         if (CrashReportFactory.isBackupMerge())
         {
-          AppMethodBeat.o(276377);
+          AppMethodBeat.o(260358);
           return;
         }
-        if ((paramAnonymousi != null) && (paramAnonymousc.kvM != null))
+        com.tencent.mm.message.b.a locala = PluginNotifyMessage.this.getNotifyMessageRecordStorage();
+        if (locala == null)
         {
-          paramAnonymousi = paramAnonymousc.kvM.iterator();
+          Log.e("MicroMsg.PluginNotifyMessage", "get message notify storage return null");
+          AppMethodBeat.o(260358);
+          return;
+        }
+        if ((paramAnonymousi != null) && (paramAnonymousc.mZo != null) && (!paramAnonymousc.mZo.isEmpty()))
+        {
+          paramAnonymousi = paramAnonymousc.mZo.iterator();
           while (paramAnonymousi.hasNext())
           {
-            ca localca = (ca)paramAnonymousi.next();
-            if ((localca != null) && ("notifymessage".equals(paramAnonymousc.talker)))
+            cc localcc = (cc)paramAnonymousi.next();
+            if ((localcc != null) && ("notifymessage".equals(paramAnonymousc.talker)))
             {
-              cf localcf = PluginNotifyMessage.this.getNotifyMessageRecordStorage();
-              if (localcf == null)
-              {
-                Log.e("MicroMsg.PluginNotifyMessage", "get message notify storage return null");
-                AppMethodBeat.o(276377);
-                return;
-              }
-              String str2 = cf.bv(localca);
-              String str1 = cf.bw(localca);
-              label129:
+              String str2 = locala.z(localcc);
+              String str1 = locala.A(localcc);
+              label147:
               int i;
               if (Util.isNullOrNil(str2))
               {
                 Log.i("MicroMsg.PluginNotifyMessage", "username is null or nil");
-                str2 = paramAnonymousc.EVM;
+                str2 = paramAnonymousc.KRm;
                 i = -1;
                 switch (str2.hashCode())
                 {
@@ -79,10 +79,10 @@ public class PluginNotifyMessage
                 default: 
                   break;
                 case 0: 
-                  localcf.g(localca, str1);
+                  locala.a(localcc, str1);
                   break;
-                  localca.Jm(str2);
-                  break label129;
+                  localcc.BS(str2);
+                  break label147;
                   if (str2.equals("insert"))
                   {
                     i = 0;
@@ -99,87 +99,72 @@ public class PluginNotifyMessage
                   break;
                 }
               }
-              localcf.bu(localca);
+              locala.y(localcc);
               continue;
-              localcf.h(localca, str1);
+              locala.b(localcc, str1);
             }
           }
+          AppMethodBeat.o(260358);
+          return;
         }
-        AppMethodBeat.o(276377);
+        if (("delete".equals(paramAnonymousc.KRm)) && ("notifymessage".equals(paramAnonymousc.talker)) && (((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().aLW(paramAnonymousc.talker) == 0))
+        {
+          Log.i("MicroMsg.PluginNotifyMessage", "clear service notify record");
+          locala.bwy();
+        }
+        AppMethodBeat.o(260358);
       }
     };
-    AppMethodBeat.o(274603);
+    AppMethodBeat.o(260354);
   }
   
   private void checkNotifyRecord()
   {
-    AppMethodBeat.i(274614);
+    AppMethodBeat.i(260357);
     Log.i("MicroMsg.PluginNotifyMessage", "check record");
-    final cf localcf = getNotifyMessageRecordStorage();
-    if (localcf == null)
+    final com.tencent.mm.message.b.a locala = getNotifyMessageRecordStorage();
+    if (locala == null)
     {
       Log.e("MicroMsg.PluginNotifyMessage", "get message notify storage return null");
-      AppMethodBeat.o(274614);
+      AppMethodBeat.o(260357);
       return;
     }
-    if (localcf.hAx() != localcf.hAy()) {}
-    for (boolean bool = true;; bool = false)
+    if (locala.bwv())
     {
-      Log.i("MicroMsg.NotifyMessageRecordStorage", "need sync record: %b", new Object[] { Boolean.valueOf(bool) });
-      if (bool)
-      {
-        if (this.mHandler == null) {
-          this.mHandler = new MMHandler("PluginNotifyMessage#syncRecord");
-        }
-        Log.i("MicroMsg.PluginNotifyMessage", "pre sync");
-        this.mHandler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(290094);
-            Log.i("MicroMsg.PluginNotifyMessage", "before sync");
-            long l1 = Util.currentTicks();
-            cf localcf = localcf;
-            boolean bool;
-            if (cf.VHr)
-            {
-              Log.e("MicroMsg.NotifyMessageRecordStorage", "sync is running");
-              bool = false;
-            }
-            for (;;)
-            {
-              l1 = Util.ticksToNow(l1);
-              Log.i("MicroMsg.PluginNotifyMessage", "syncNotifyRecord finish, ret: %b, cost: %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1) });
-              PluginNotifyMessage.access$000(PluginNotifyMessage.this, l1);
-              AppMethodBeat.o(290094);
-              return;
-              Log.i("MicroMsg.NotifyMessageRecordStorage", "syncRecord");
-              long l2 = Util.currentTicks();
-              cf.VHr = true;
-              bool = localcf.hAz();
-              Log.i("MicroMsg.NotifyMessageRecordStorage", "handle msg info done, cost: %d", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
-              cf.VHr = false;
-            }
-          }
-        });
+      if (this.mHandler == null) {
+        this.mHandler = new MMHandler("PluginNotifyMessage#syncRecord");
       }
-      AppMethodBeat.o(274614);
-      return;
+      Log.i("MicroMsg.PluginNotifyMessage", "pre sync");
+      this.mHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(260360);
+          Log.i("MicroMsg.PluginNotifyMessage", "before sync");
+          long l = Util.currentTicks();
+          boolean bool = locala.bwx();
+          l = Util.ticksToNow(l);
+          Log.i("MicroMsg.PluginNotifyMessage", "syncNotifyRecord finish, ret: %b, cost: %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
+          PluginNotifyMessage.access$000(PluginNotifyMessage.this, l);
+          AppMethodBeat.o(260360);
+        }
+      });
     }
+    AppMethodBeat.o(260357);
   }
   
   private void reportTimeCost(long paramLong)
   {
-    AppMethodBeat.i(274615);
-    com.tencent.mm.plugin.report.service.h.IzE.p(1584L, 0L, paramLong);
-    com.tencent.mm.plugin.report.service.h.IzE.p(1584L, 1L, 1L);
+    AppMethodBeat.i(260359);
+    com.tencent.mm.plugin.report.service.h.OAn.p(1584L, 0L, paramLong);
+    com.tencent.mm.plugin.report.service.h.OAn.p(1584L, 1L, 1L);
     paramLong /= 1000L;
     int i;
     if (paramLong >= 600L)
     {
       i = 32;
-      com.tencent.mm.plugin.report.service.h.IzE.p(1584L, i, 1L);
-      AppMethodBeat.o(274615);
+      com.tencent.mm.plugin.report.service.h.OAn.p(1584L, i, 1L);
+      AppMethodBeat.o(260359);
       return;
     }
     int k = 21;
@@ -201,57 +186,57 @@ public class PluginNotifyMessage
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(274606);
+    AppMethodBeat.i(260365);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf("NotifyMessageRecord".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return cf.SQL_CREATE;
+        return cg.SQL_CREATE;
       }
     });
-    AppMethodBeat.o(274606);
+    AppMethodBeat.o(260365);
     return localHashMap;
   }
   
   public void execute(g paramg) {}
   
-  public cf getNotifyMessageRecordStorage()
+  public com.tencent.mm.message.b.a getNotifyMessageRecordStorage()
   {
-    AppMethodBeat.i(274611);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    if (this.GBi == null)
+    AppMethodBeat.i(260369);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    if (this.Mxr == null)
     {
-      com.tencent.mm.kernel.h.aHH();
-      this.GBi = new cf(com.tencent.mm.kernel.h.aHG().kcF);
+      com.tencent.mm.kernel.h.baF();
+      this.Mxr = new cg(com.tencent.mm.kernel.h.baE().mCN);
     }
-    cf localcf = this.GBi;
-    AppMethodBeat.o(274611);
-    return localcf;
+    cg localcg = this.Mxr;
+    AppMethodBeat.o(260369);
+    return localcg;
   }
   
   public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(274607);
+    AppMethodBeat.i(260366);
     Log.d("MicroMsg.PluginNotifyMessage", "onAccountInitialized");
-    Log.i("MicroMsg.PluginNotifyMessage", "onAccountPostReset updated %b", new Object[] { Boolean.valueOf(paramc.kcX) });
+    Log.i("MicroMsg.PluginNotifyMessage", "onAccountPostReset updated %b", new Object[] { Boolean.valueOf(paramc.mDg) });
     getNotifyMessageRecordStorage();
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(this.GBj, Looper.getMainLooper());
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().a(this.Mxs, Looper.getMainLooper());
     checkNotifyRecord();
-    AppMethodBeat.o(274607);
+    AppMethodBeat.o(260366);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(274609);
+    AppMethodBeat.i(260368);
     Log.d("MicroMsg.PluginNotifyMessage", "onAccountRelease");
-    if (this.nDk != null)
+    if (this.qDd != null)
     {
-      this.nDk.dead();
-      this.nDk = null;
+      this.qDd.dead();
+      this.qDd = null;
     }
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(this.GBj);
-    AppMethodBeat.o(274609);
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().a(this.Mxs);
+    AppMethodBeat.o(260368);
   }
 }
 

@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.game.protobuf.bk;
 import com.tencent.mm.plugin.game.protobuf.bl;
+import com.tencent.mm.plugin.game.protobuf.bm;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class am
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d jTk;
+  private h callback;
+  public final c mtC;
   
   public am(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(41598);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new bk();
-    ((d.a)localObject).lBV = new bl();
-    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetgamedetail";
-    ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.jTk = ((d.a)localObject).bgN();
-    localObject = (bk)d.b.b(this.jTk.lBR);
-    ((bk)localObject).CPt = paramString1;
-    ((bk)localObject).jUi = paramString2;
-    ((bk)localObject).CPx = paramBoolean;
-    ((bk)localObject).CPz = true;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new bl();
+    ((c.a)localObject).otF = new bm();
+    ((c.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetgamedetail";
+    ((c.a)localObject).funcId = getType();
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.mtC = ((c.a)localObject).bEF();
+    localObject = (bl)c.b.b(this.mtC.otB);
+    ((bl)localObject).IJD = paramString1;
+    ((bl)localObject).muA = paramString2;
+    ((bl)localObject).IJH = paramBoolean;
+    ((bl)localObject).IJJ = true;
     AppMethodBeat.o(41598);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(41599);
-    this.callback = parami;
-    int i = dispatch(paramg, this.jTk, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.mtC, this);
     AppMethodBeat.o(41599);
     return i;
   }
@@ -63,7 +63,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.am
  * JD-Core Version:    0.7.0.1
  */

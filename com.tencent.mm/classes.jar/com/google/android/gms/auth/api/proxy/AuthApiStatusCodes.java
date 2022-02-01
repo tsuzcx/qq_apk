@@ -1,10 +1,8 @@
 package com.google.android.gms.auth.api.proxy;
 
-import com.google.android.gms.common.annotation.KeepForSdkWithMembers;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@KeepForSdkWithMembers
 public class AuthApiStatusCodes
   extends CommonStatusCodes
 {
@@ -50,7 +48,7 @@ public class AuthApiStatusCodes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.proxy.AuthApiStatusCodes
  * JD-Core Version:    0.7.0.1
  */

@@ -4,74 +4,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class h
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public com.tencent.mm.cd.b rVk;
-  public int rWu;
-  public c vhI;
+  public com.tencent.mm.bx.b vgA;
+  public int vhJ;
+  public c ytJ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23492);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.vhI == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ytJ == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: BasePush");
+        paramVarArgs = new i.a.a.b("Not all required fields were included: BasePush");
         AppMethodBeat.o(23492);
         throw paramVarArgs;
       }
-      if (this.rVk == null)
+      if (this.vgA == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: Data");
+        paramVarArgs = new i.a.a.b("Not all required fields were included: Data");
         AppMethodBeat.o(23492);
         throw paramVarArgs;
       }
-      if (this.vhI != null)
+      if (this.ytJ != null)
       {
-        paramVarArgs.oE(1, this.vhI.computeSize());
-        this.vhI.writeFields(paramVarArgs);
+        paramVarArgs.qD(1, this.ytJ.computeSize());
+        this.ytJ.writeFields(paramVarArgs);
       }
-      if (this.rVk != null) {
-        paramVarArgs.c(2, this.rVk);
+      if (this.vgA != null) {
+        paramVarArgs.d(2, this.vgA);
       }
-      paramVarArgs.aY(3, this.rWu);
+      paramVarArgs.bS(3, this.vhJ);
       AppMethodBeat.o(23492);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.vhI == null) {
-        break label501;
+      if (this.ytJ == null) {
+        break label497;
       }
     }
-    label501:
-    for (paramInt = g.a.a.a.oD(1, this.vhI.computeSize()) + 0;; paramInt = 0)
+    label497:
+    for (paramInt = i.a.a.a.qC(1, this.ytJ.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.rVk != null) {
-        i = paramInt + g.a.a.b.b.a.b(2, this.rVk);
+      if (this.vgA != null) {
+        i = paramInt + i.a.a.b.b.a.c(2, this.vgA);
       }
-      paramInt = g.a.a.b.b.a.bM(3, this.rWu);
+      paramInt = i.a.a.b.b.a.cJ(3, this.vhJ);
       AppMethodBeat.o(23492);
       return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.vhI == null)
+        if (this.ytJ == null)
         {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: BasePush");
+          paramVarArgs = new i.a.a.b("Not all required fields were included: BasePush");
           AppMethodBeat.o(23492);
           throw paramVarArgs;
         }
-        if (this.rVk == null)
+        if (this.vgA == null)
         {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: Data");
+          paramVarArgs = new i.a.a.b("Not all required fields were included: Data");
           AppMethodBeat.o(23492);
           throw paramVarArgs;
         }
@@ -80,7 +80,7 @@ public final class h
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         h localh = (h)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -89,7 +89,7 @@ public final class h
           AppMethodBeat.o(23492);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -99,17 +99,17 @@ public final class h
             if ((localObject != null) && (localObject.length > 0)) {
               localc.parseFrom((byte[])localObject);
             }
-            localh.vhI = localc;
+            localh.ytJ = localc;
             paramInt += 1;
           }
           AppMethodBeat.o(23492);
           return 0;
         case 2: 
-          localh.rVk = ((g.a.a.a.a)localObject).abFh.iUw();
+          localh.vgA = ((i.a.a.a.a)localObject).ajGk.kFX();
           AppMethodBeat.o(23492);
           return 0;
         }
-        localh.rWu = ((g.a.a.a.a)localObject).abFh.AK();
+        localh.vhJ = ((i.a.a.a.a)localObject).ajGk.aar();
         AppMethodBeat.o(23492);
         return 0;
       }
@@ -120,7 +120,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.h
  * JD-Core Version:    0.7.0.1
  */

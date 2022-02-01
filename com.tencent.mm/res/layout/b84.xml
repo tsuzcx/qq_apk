@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:id="@id/d8f" android:layout_width="fill_parent" android:layout_height="50.0dip" android:minHeight="50.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/fz2" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:layout_gravity="center" android:id="@id/d8v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/ekc" />
-</LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/fzx" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RCConstraintLayout android:id="@id/m3s" android:visibility="gone" android:layout_width="78.0dip" android:layout_height="44.0dip" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <ImageView android:id="@id/m87" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/cbn" />
+    </com.tencent.mm.view.RCConstraintLayout>
+    <com.tencent.mm.view.RCRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <com.tencent.mm.live.core.view.LiveVideoView android:id="@id/fzw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RCRelativeLayout>
+    <View android:id="@id/m3t" android:background="@drawable/car" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" android:alpha="0.0" app:layout_constraintBottom_toBottomOf="@id/m3s" app:layout_constraintLeft_toLeftOf="@id/m3s" app:layout_constraintRight_toRightOf="@id/m3s" app:layout_constraintTop_toTopOf="@id/m3s" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/m3r" android:visibility="gone" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginRight="@dimen/cd" android:src="@raw/icons_outlined_switch_window" app:iconColor="@color/az" app:layout_constraintBottom_toBottomOf="@id/m3s" app:layout_constraintRight_toRightOf="hr_" app:layout_constraintTop_toTopOf="@id/m3s" />
+</androidx.constraintlayout.widget.ConstraintLayout>

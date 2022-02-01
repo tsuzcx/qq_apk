@@ -6,9 +6,9 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class i
 {
-  public static String Qpg;
-  public static String fUj;
-  public static int gco;
+  public static String Xhu;
+  public static String iag;
+  public static int iiA;
   
   public i(Intent paramIntent)
   {
@@ -18,9 +18,9 @@ public final class i
       AppMethodBeat.o(80955);
       return;
     }
-    fUj = Util.nullAsNil(paramIntent.getStringExtra("KPublisherId"));
-    Qpg = Util.nullAsNil(paramIntent.getStringExtra("geta8key_username"));
-    gco = Util.nullAsNil(Integer.valueOf(paramIntent.getIntExtra("geta8key_scene", 0)));
+    iag = Util.nullAsNil(paramIntent.getStringExtra("KPublisherId"));
+    Xhu = Util.nullAsNil(paramIntent.getStringExtra("geta8key_username"));
+    iiA = Util.nullAsNil(Integer.valueOf(paramIntent.getIntExtra("geta8key_scene", 0)));
     AppMethodBeat.o(80955);
   }
 }

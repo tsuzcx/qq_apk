@@ -21,10 +21,10 @@ public class TAVAudioTapProcessor
   
   public TAVAudioTapProcessor(List<TAVAudioConfigurationSegment> paramList)
   {
-    AppMethodBeat.i(211819);
+    AppMethodBeat.i(218765);
     this.audioTapProcessorHashMap = new HashMap();
     this.audioConfigurationSegmentList = paramList;
-    AppMethodBeat.o(211819);
+    AppMethodBeat.o(218765);
   }
   
   public AudioInfo getDestAudioInfo()
@@ -34,7 +34,7 @@ public class TAVAudioTapProcessor
   
   public ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(211820);
+    AppMethodBeat.i(218779);
     this.destAudioInfo = paramAudioInfo;
     Iterator localIterator1 = this.audioConfigurationSegmentList.iterator();
     Object localObject = paramByteBuffer;
@@ -72,25 +72,25 @@ public class TAVAudioTapProcessor
         }
       }
     }
-    AppMethodBeat.o(211820);
+    AppMethodBeat.o(218779);
     return localObject;
   }
   
   public void release()
   {
-    AppMethodBeat.i(211822);
+    AppMethodBeat.i(218793);
     Iterator localIterator = this.audioTapProcessorHashMap.values().iterator();
     while (localIterator.hasNext()) {
       ((AudioTapProcessor)localIterator.next()).release();
     }
-    AppMethodBeat.o(211822);
+    AppMethodBeat.o(218793);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(211824);
+    AppMethodBeat.i(218798);
     String str = "TAVAudioTapProcessor{audioConfigurationSegmentList=" + this.audioConfigurationSegmentList + ", audioTapProcessorHashMap=" + this.audioTapProcessorHashMap + '}';
-    AppMethodBeat.o(211824);
+    AppMethodBeat.o(218798);
     return str;
   }
 }

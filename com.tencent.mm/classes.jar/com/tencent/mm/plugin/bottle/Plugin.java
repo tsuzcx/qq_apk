@@ -9,14 +9,14 @@ import com.tencent.mm.pluginsdk.n;
 public final class Plugin
   implements com.tencent.mm.pluginsdk.c.d
 {
-  private c smX;
+  private c vyV;
   
   public Plugin()
   {
     AppMethodBeat.i(22640);
-    this.smX = new c()
+    this.vyV = new c()
     {
-      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a al(Context paramAnonymousContext, String paramAnonymousString)
       {
         return null;
       }
@@ -42,7 +42,7 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.smX;
+    return this.vyV;
   }
 }
 

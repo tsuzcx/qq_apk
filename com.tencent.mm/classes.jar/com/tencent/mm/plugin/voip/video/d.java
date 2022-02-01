@@ -8,25 +8,25 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends View
 {
-  public int NYn;
-  public int NYo;
-  public int NYp;
-  private int NYq;
-  private int NYr;
-  private int NYs;
-  private int NYt;
-  private boolean NYu;
-  private int NYv;
-  private Matrix aqj;
+  public int UMk;
+  public int UMl;
+  public int UMm;
+  private int UMn;
+  private int UMo;
+  private int UMp;
+  private int UMq;
+  private boolean UMr;
+  private int UMs;
+  private Matrix avQ;
   public int bZ;
   private Paint mPaint;
-  private RectF raG;
+  private RectF ugw;
   
   public d(Context paramContext)
   {
@@ -36,11 +36,11 @@ public final class d
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setColor(-65536);
     this.mPaint.setStrokeWidth(a.fromDPToPix(getContext(), 3));
-    this.aqj = new Matrix();
+    this.avQ = new Matrix();
     AppMethodBeat.o(115580);
   }
   
-  private static int kT(int paramInt1, int paramInt2)
+  private static int mF(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       paramInt1 = 0;
@@ -57,11 +57,11 @@ public final class d
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(115582);
-    if (this.raG != null)
+    if (this.ugw != null)
     {
       paramCanvas.save();
       paramCanvas.rotate(0.0F);
-      paramCanvas.drawRect(this.raG, this.mPaint);
+      paramCanvas.drawRect(this.ugw, this.mPaint);
       paramCanvas.restore();
     }
     AppMethodBeat.o(115582);
@@ -78,21 +78,21 @@ public final class d
     int j;
     if (paramArrayOfInt != null)
     {
-      this.NYq = paramArrayOfInt[0];
-      this.NYr = paramArrayOfInt[1];
-      this.NYs = paramArrayOfInt[2];
-      this.NYt = paramArrayOfInt[3];
-      if ((this.NYo != 0) && (this.NYp != 0) && (this.bZ != 0) && (this.NYn != 0))
+      this.UMn = paramArrayOfInt[0];
+      this.UMo = paramArrayOfInt[1];
+      this.UMp = paramArrayOfInt[2];
+      this.UMq = paramArrayOfInt[3];
+      if ((this.UMl != 0) && (this.UMm != 0) && (this.bZ != 0) && (this.UMk != 0))
       {
-        m = this.NYs;
-        n = this.NYq;
-        i1 = this.NYt;
-        i2 = this.NYr;
-        Log.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.NYq), Integer.valueOf(this.NYr), Integer.valueOf(this.NYs), Integer.valueOf(this.NYs) });
-        Log.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.NYo), Integer.valueOf(this.NYp), Boolean.valueOf(this.NYu), Integer.valueOf(this.NYv) });
-        i = (this.NYs + this.NYq) / 2;
-        j = (this.NYt + this.NYr) / 2;
-        if ((this.NYv != 90) && (this.NYv != 270)) {
+        m = this.UMp;
+        n = this.UMn;
+        i1 = this.UMq;
+        i2 = this.UMo;
+        Log.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.UMn), Integer.valueOf(this.UMo), Integer.valueOf(this.UMp), Integer.valueOf(this.UMp) });
+        Log.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.UMl), Integer.valueOf(this.UMm), Boolean.valueOf(this.UMr), Integer.valueOf(this.UMs) });
+        i = (this.UMp + this.UMn) / 2;
+        j = (this.UMq + this.UMo) / 2;
+        if ((this.UMs != 90) && (this.UMs != 270)) {
           break label552;
         }
       }
@@ -101,25 +101,25 @@ public final class d
     {
       Log.d("MicroMsg.FaceRectView", "centerX:%d, centerY:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       float f2;
-      if ((this.NYv == 90) || (this.NYv == 270)) {
-        f2 = this.bZ / this.NYo;
+      if ((this.UMs == 90) || (this.UMs == 270)) {
+        f2 = this.bZ / this.UMl;
       }
-      for (float f1 = this.NYn / this.NYp;; f1 = this.bZ / this.NYp)
+      for (float f1 = this.UMk / this.UMm;; f1 = this.bZ / this.UMm)
       {
         f1 = Math.max(f2, f1);
         f2 = (int)((m - n) * f1);
         float f3 = (int)((i1 - i2) * f1);
         j = (int)(j * f1);
         i = (int)(i * f1);
-        this.NYq = kT((int)(j - f2 / 2.0F), this.NYn);
-        this.NYr = kT((int)(i - f3 / 2.0F), this.bZ);
-        this.NYs = kT((int)(j + f2 / 2.0F), this.NYn);
-        this.NYt = kT((int)(i + f3 / 2.0F), this.bZ);
-        this.raG = new RectF(this.NYq, this.NYr, this.NYs, this.NYt);
-        Log.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.raG.left), Float.valueOf(this.raG.top), Float.valueOf(this.raG.right), Float.valueOf(this.raG.bottom) });
+        this.UMn = mF((int)(j - f2 / 2.0F), this.UMk);
+        this.UMo = mF((int)(i - f3 / 2.0F), this.bZ);
+        this.UMp = mF((int)(j + f2 / 2.0F), this.UMk);
+        this.UMq = mF((int)(i + f3 / 2.0F), this.bZ);
+        this.ugw = new RectF(this.UMn, this.UMo, this.UMp, this.UMq);
+        Log.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.ugw.left), Float.valueOf(this.ugw.top), Float.valueOf(this.ugw.right), Float.valueOf(this.ugw.bottom) });
         AppMethodBeat.o(115581);
         return;
-        f2 = this.NYn / this.NYo;
+        f2 = this.UMk / this.UMl;
       }
       label552:
       int k = i;
@@ -130,12 +130,12 @@ public final class d
   
   public final void setMirror(boolean paramBoolean)
   {
-    this.NYu = paramBoolean;
+    this.UMr = paramBoolean;
   }
   
   public final void setRotateAngle(int paramInt)
   {
-    this.NYv = paramInt;
+    this.UMs = paramInt;
   }
 }
 

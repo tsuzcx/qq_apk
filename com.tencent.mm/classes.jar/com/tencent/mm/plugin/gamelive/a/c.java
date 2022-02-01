@@ -14,63 +14,63 @@ import java.util.List;
 
 public final class c
 {
-  boolean Deu;
-  short DlL;
-  int DlM;
-  short DlN;
-  private int DlO;
-  private List<ByteBuffer> DlP;
-  private ByteBuffer DlQ;
-  private FileOutputStream DlR;
-  private FileOutputStream DlS;
-  private long DlT;
-  private boolean DlU;
-  private long DlV;
-  private FileOutputStream bqA;
+  boolean IYL;
+  short JeU;
+  int JeV;
+  short JeW;
+  private int JeX;
+  private List<ByteBuffer> JeY;
+  private ByteBuffer JeZ;
+  private FileOutputStream Jfa;
+  private FileOutputStream Jfb;
+  private long Jfc;
+  private boolean Jfd;
+  private long Jfe;
+  private FileOutputStream dke;
   
   public c(short paramShort)
   {
-    AppMethodBeat.i(208362);
-    this.DlL = 0;
-    this.Deu = false;
-    this.DlM = 0;
-    this.DlN = 0;
-    this.DlO = 0;
-    this.DlP = new ArrayList();
-    this.DlQ = null;
-    this.DlR = null;
-    this.DlS = null;
-    this.bqA = null;
-    this.DlT = System.currentTimeMillis();
-    this.DlU = true;
-    this.DlV = 0L;
-    this.DlL = paramShort;
-    Log.i("MicroMsg.GameAudioStream", "[hilive] create GameAudioStream sessionId: " + this.DlL);
-    if (((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {
+    AppMethodBeat.i(277509);
+    this.JeU = 0;
+    this.IYL = false;
+    this.JeV = 0;
+    this.JeW = 0;
+    this.JeX = 0;
+    this.JeY = new ArrayList();
+    this.JeZ = null;
+    this.Jfa = null;
+    this.Jfb = null;
+    this.dke = null;
+    this.Jfc = System.currentTimeMillis();
+    this.Jfd = true;
+    this.Jfe = 0L;
+    this.JeU = paramShort;
+    Log.i("MicroMsg.GameAudioStream", "[hilive] create GameAudioStream sessionId: " + this.JeU);
+    if (((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {
       try
       {
-        this.DlR = new FileOutputStream(new File("/sdcard/pcm/in-" + this.DlL + ".pcm"));
-        this.DlS = new FileOutputStream(new File("/sdcard/pcm/sl-" + this.DlL + ".pcm"));
-        this.bqA = new FileOutputStream(new File("/sdcard/pcm/ou-" + this.DlL + ".pcm"));
-        AppMethodBeat.o(208362);
+        this.Jfa = new FileOutputStream(new File("/sdcard/pcm/in-" + this.JeU + ".pcm"));
+        this.Jfb = new FileOutputStream(new File("/sdcard/pcm/sl-" + this.JeU + ".pcm"));
+        this.dke = new FileOutputStream(new File("/sdcard/pcm/ou-" + this.JeU + ".pcm"));
+        AppMethodBeat.o(277509);
         return;
       }
       catch (FileNotFoundException localFileNotFoundException) {}
     }
-    AppMethodBeat.o(208362);
+    AppMethodBeat.o(277509);
   }
   
   public final void a(short paramShort, int paramInt, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(208370);
-    c(paramShort, paramInt);
-    if (((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {}
+    AppMethodBeat.i(277533);
+    d(paramShort, paramInt);
+    if (((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {}
     try
     {
-      this.DlR.write(paramArrayOfByte);
+      this.Jfa.write(paramArrayOfByte);
       label33:
-      if (((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {
-        Log.v("MicroMsg.GameAudioStream", "[hilive] putData short sessionId: " + this.DlL + " channel: " + this.DlN + " samplerate: " + this.DlM + " data: " + paramArrayOfByte.length + " tmp: " + this.DlQ.capacity() + " buffs: " + this.DlP.size() + " mark: " + paramLong);
+      if (((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {
+        Log.v("MicroMsg.GameAudioStream", "[hilive] putData short sessionId: " + this.JeU + " channel: " + this.JeW + " samplerate: " + this.JeV + " data: " + paramArrayOfByte.length + " tmp: " + this.JeZ.capacity() + " buffs: " + this.JeY.size() + " mark: " + paramLong);
       }
       paramInt = 0;
       for (;;)
@@ -79,32 +79,32 @@ public final class c
         ByteBuffer localByteBuffer1;
         if (paramInt < paramArrayOfByte.length)
         {
-          i = Math.min(paramArrayOfByte.length - paramInt, this.DlQ.capacity() - this.DlQ.position());
-          this.DlQ.put(paramArrayOfByte, paramInt, i);
-          if (this.DlQ.position() >= this.DlQ.capacity())
+          i = Math.min(paramArrayOfByte.length - paramInt, this.JeZ.capacity() - this.JeZ.position());
+          this.JeZ.put(paramArrayOfByte, paramInt, i);
+          if (this.JeZ.position() >= this.JeZ.capacity())
           {
-            if (this.DlP.size() >= 100)
+            if (this.JeY.size() >= 100)
             {
-              this.DlP.remove(0);
-              Log.w("MicroMsg.GameAudioStream", "[hilive] buffer full, discard sessionId: " + this.DlL);
+              this.JeY.remove(0);
+              Log.w("MicroMsg.GameAudioStream", "[hilive] buffer full, discard sessionId: " + this.JeU);
             }
-            ByteBuffer localByteBuffer2 = this.DlQ;
+            ByteBuffer localByteBuffer2 = this.JeZ;
             localByteBuffer1 = ByteBuffer.allocate(localByteBuffer2.capacity());
             localByteBuffer2.rewind();
             localByteBuffer1.put(localByteBuffer2);
             localByteBuffer2.rewind();
-            if (!((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {}
+            if (!((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {}
           }
         }
         try
         {
-          this.DlS.write(localByteBuffer1.array());
+          this.Jfb.write(localByteBuffer1.array());
           label319:
-          this.DlP.add(localByteBuffer1);
-          this.DlQ.clear();
+          this.JeY.add(localByteBuffer1);
+          this.JeZ.clear();
           paramInt = i + paramInt;
           continue;
-          AppMethodBeat.o(208370);
+          AppMethodBeat.o(277533);
           return;
         }
         catch (IOException localIOException2)
@@ -119,70 +119,70 @@ public final class c
     }
   }
   
-  final void c(short paramShort, int paramInt)
+  final void d(short paramShort, int paramInt)
   {
-    AppMethodBeat.i(208364);
-    if ((!this.Deu) || (this.DlN != paramShort) || (this.DlM != paramInt))
+    AppMethodBeat.i(277516);
+    if ((!this.IYL) || (this.JeW != paramShort) || (this.JeV != paramInt))
     {
-      this.Deu = true;
-      this.DlM = paramInt;
-      this.DlN = paramShort;
-      this.DlO = b.a(paramShort, paramInt);
-      this.DlQ = ByteBuffer.allocate(this.DlO);
-      Log.i("MicroMsg.GameAudioStream", "[hilive] onReady, sessionId: " + this.DlL + " channel: " + paramShort + " samplerate: " + paramInt + " samplesize: " + this.DlO);
+      this.IYL = true;
+      this.JeV = paramInt;
+      this.JeW = paramShort;
+      this.JeX = b.b(paramShort, paramInt);
+      this.JeZ = ByteBuffer.allocate(this.JeX);
+      Log.i("MicroMsg.GameAudioStream", "[hilive] onReady, sessionId: " + this.JeU + " channel: " + paramShort + " samplerate: " + paramInt + " samplesize: " + this.JeX);
     }
-    AppMethodBeat.o(208364);
+    AppMethodBeat.o(277516);
   }
   
   public final byte[] getData()
   {
-    AppMethodBeat.i(208372);
+    AppMethodBeat.i(277545);
     Object localObject1;
     Object localObject3;
-    if (!this.DlP.isEmpty())
+    if (!this.JeY.isEmpty())
     {
-      this.DlU = false;
-      localObject1 = ((ByteBuffer)this.DlP.get(0)).array();
-      this.DlP.remove(0);
+      this.Jfd = false;
+      localObject1 = ((ByteBuffer)this.JeY.get(0)).array();
+      this.JeY.remove(0);
       localObject3 = localObject1;
-      if (((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug())
+      if (((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug())
       {
-        Log.v("MicroMsg.GameAudioStream", "[hilive] getData sessionId: " + this.DlL + " channel: " + this.DlN + " sampleRate: " + this.DlM + " got data 0: " + localObject1[0] + " 10: " + localObject1[10] + " 100: " + localObject1[100]);
+        Log.v("MicroMsg.GameAudioStream", "[hilive] getData sessionId: " + this.JeU + " channel: " + this.JeW + " sampleRate: " + this.JeV + " got data 0: " + localObject1[0] + " 10: " + localObject1[10] + " 100: " + localObject1[100]);
         localObject3 = localObject1;
       }
     }
     for (;;)
     {
-      this.DlT = System.currentTimeMillis();
-      if (((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {}
+      this.Jfc = System.currentTimeMillis();
+      if (((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {}
       try
       {
-        this.bqA.write((byte[])localObject3);
+        this.dke.write((byte[])localObject3);
         label180:
-        AppMethodBeat.o(208372);
+        AppMethodBeat.o(277545);
         return localObject3;
-        if (this.DlQ.position() == 0)
+        if (this.JeZ.position() == 0)
         {
-          this.DlU = true;
-          localObject1 = new byte[this.DlO];
+          this.Jfd = true;
+          localObject1 = new byte[this.JeX];
         }
         for (;;)
         {
           localObject3 = localObject1;
-          if (!((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {
+          if (!((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {
             break;
           }
-          Log.v("MicroMsg.GameAudioStream", "[hilive] getData default data sessionId: " + this.DlL + " channel: " + this.DlN + " sampleRate: " + this.DlM + "remain: " + this.DlQ.position());
+          Log.v("MicroMsg.GameAudioStream", "[hilive] getData default data sessionId: " + this.JeU + " channel: " + this.JeW + " sampleRate: " + this.JeV + "remain: " + this.JeZ.position());
           localObject3 = localObject1;
           break;
-          this.DlQ.rewind();
-          localObject3 = this.DlQ.array();
-          this.DlQ.clear();
+          this.JeZ.rewind();
+          localObject3 = this.JeZ.array();
+          this.JeZ.clear();
           localObject1 = localObject3;
-          if (((PluginGameLive)h.ag(PluginGameLive.class)).getEnableAudioDebug()) {
+          if (((PluginGameLive)h.az(PluginGameLive.class)).getEnableAudioDebug()) {
             try
             {
-              this.DlS.write((byte[])localObject3);
+              this.Jfb.write((byte[])localObject3);
               localObject1 = localObject3;
             }
             catch (IOException localIOException1)
@@ -201,25 +201,25 @@ public final class c
   
   public final void onStop()
   {
-    AppMethodBeat.i(208366);
-    Log.i("MicroMsg.GameAudioStream", "[hilive] onStop, sessionId: " + this.DlL + " samplesize: " + this.DlO + " remainBuffer: " + this.DlP.size());
+    AppMethodBeat.i(277521);
+    Log.i("MicroMsg.GameAudioStream", "[hilive] onStop, sessionId: " + this.JeU + " samplesize: " + this.JeX + " remainBuffer: " + this.JeY.size());
     try
     {
-      if (this.DlR != null) {
-        this.DlR.close();
+      if (this.Jfa != null) {
+        this.Jfa.close();
       }
-      if (this.DlS != null) {
-        this.DlS.close();
+      if (this.Jfb != null) {
+        this.Jfb.close();
       }
-      if (this.bqA != null) {
-        this.bqA.close();
+      if (this.dke != null) {
+        this.dke.close();
       }
-      AppMethodBeat.o(208366);
+      AppMethodBeat.o(277521);
       return;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(208366);
+      AppMethodBeat.o(277521);
     }
   }
 }

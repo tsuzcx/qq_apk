@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.Service;
 import android.content.Context;
@@ -17,9 +16,8 @@ import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import androidx.core.app.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.webview.ui.tools.e;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.i;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.j;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.ArrayList;
@@ -29,9 +27,9 @@ public class WebViewStubTempUI
   extends MMActivity
   implements a.a, MMActivity.a
 {
-  private int Qax = 0;
-  private boolean Qay = false;
-  private Dialog Qaz = null;
+  private int WRH = 0;
+  private boolean WRI = false;
+  private Dialog WRJ = null;
   
   public static void a(Context paramContext, f paramf, String paramString1, String paramString2, String paramString3, String paramString4, final DialogInterface.OnClickListener paramOnClickListener1, final DialogInterface.OnClickListener paramOnClickListener2)
   {
@@ -48,7 +46,7 @@ public class WebViewStubTempUI
     localIntent.putExtra("key_alert_no", paramString4);
     localIntent.putExtra("key_alert_result_receiver", new ResultReceiver(new Handler(Looper.getMainLooper()))
     {
-      protected final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(79412);
         switch (paramAnonymousInt)
@@ -65,7 +63,7 @@ public class WebViewStubTempUI
         }
       }
     });
-    e.a(localIntent.getExtras(), "webview", ".stub.WebViewStubTempUI", paramf, null);
+    com.tencent.mm.plugin.webview.ui.tools.f.a(localIntent.getExtras(), "webview", ".stub.WebViewStubTempUI", paramf, null);
     AppMethodBeat.o(79423);
   }
   
@@ -78,16 +76,16 @@ public class WebViewStubTempUI
     }
     localIntent.putExtra("key_action_code", 2);
     StartActivityForResultTask localStartActivityForResultTask = new StartActivityForResultTask();
-    localStartActivityForResultTask.BCt = paramString1;
-    localStartActivityForResultTask.fEX = paramString2;
-    localStartActivityForResultTask.QaE = paramIntent;
-    localStartActivityForResultTask.requestCode = 15;
-    localStartActivityForResultTask.QaF = false;
-    localStartActivityForResultTask.QaG = paramInt;
+    localStartActivityForResultTask.HjZ = paramString1;
+    localStartActivityForResultTask.hJP = paramString2;
+    localStartActivityForResultTask.WRO = paramIntent;
+    localStartActivityForResultTask.hPm = 15;
+    localStartActivityForResultTask.WRP = false;
+    localStartActivityForResultTask.WRQ = paramInt;
     localIntent.putExtra("key_activity_result_task", localStartActivityForResultTask);
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aFh(), "com/tencent/mm/plugin/webview/stub/WebViewStubTempUI", "startActivityForResult", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.sf(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aYi(), "com/tencent/mm/plugin/webview/stub/WebViewStubTempUI", "startActivityForResult", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/webview/stub/WebViewStubTempUI", "startActivityForResult", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(79420);
   }
@@ -120,28 +118,28 @@ public class WebViewStubTempUI
     paramContext.putStringArray("key_permission_types", (String[])localArrayList.toArray(new String[localArrayList.size()]));
     paramContext.putInt("key_permission_request_code", paramInt1);
     paramContext.putInt("key_binder_id", paramInt2);
-    e.a(paramContext, "webview", ".stub.WebViewStubTempUI", paramf, null);
+    com.tencent.mm.plugin.webview.ui.tools.f.a(paramContext, "webview", ".stub.WebViewStubTempUI", paramf, null);
     AppMethodBeat.o(79424);
     return false;
-  }
-  
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(79428);
-    if (this.Qay)
-    {
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.h localh = i.aoU(this.Qax);
-      if (localh != null) {
-        localh.d(paramInt1, paramInt2, paramIntent);
-      }
-    }
-    finish();
-    AppMethodBeat.o(79428);
   }
   
   public int getLayoutId()
   {
     return -1;
+  }
+  
+  public void mmOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(79428);
+    if (this.WRI)
+    {
+      j localj = com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(this.WRH);
+      if (localj != null) {
+        localj.mmOnActivityResult(paramInt1, paramInt2, paramIntent);
+      }
+    }
+    finish();
+    AppMethodBeat.o(79428);
   }
   
   public void onCreate(final Bundle paramBundle)
@@ -162,7 +160,7 @@ public class WebViewStubTempUI
         AppMethodBeat.o(79425);
         return;
       }
-      this.Qaz = com.tencent.mm.ui.base.h.a(this, getIntent().getBooleanExtra("key_alert_cancelable", false), getIntent().getStringExtra("key_alert_message"), getIntent().getStringExtra("key_alert_title"), getIntent().getStringExtra("key_alert_yes"), getIntent().getStringExtra("key_alert_no"), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      this.WRJ = com.tencent.mm.ui.base.k.a(this, getIntent().getBooleanExtra("key_alert_cancelable", false), getIntent().getStringExtra("key_alert_message"), getIntent().getStringExtra("key_alert_title"), getIntent().getStringExtra("key_alert_yes"), getIntent().getStringExtra("key_alert_no"), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -181,7 +179,7 @@ public class WebViewStubTempUI
           AppMethodBeat.o(79414);
         }
       });
-      this.Qaz.setOnCancelListener(new DialogInterface.OnCancelListener()
+      this.WRJ.setOnCancelListener(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -198,10 +196,10 @@ public class WebViewStubTempUI
       return;
     }
     paramBundle = (StartActivityForResultTask)getIntent().getParcelableExtra("key_activity_result_task");
-    this.Qax = paramBundle.QaG;
-    this.Qay = true;
+    this.WRH = paramBundle.WRQ;
+    this.WRI = true;
     mmSetOnActivityResultCallback(this);
-    c.a(this, paramBundle.BCt, paramBundle.fEX, paramBundle.QaE, paramBundle.requestCode, paramBundle.QaF);
+    c.a(this, paramBundle.HjZ, paramBundle.hJP, paramBundle.WRO, paramBundle.hPm, paramBundle.WRP);
     AppMethodBeat.o(79425);
   }
   
@@ -209,8 +207,8 @@ public class WebViewStubTempUI
   {
     AppMethodBeat.i(79426);
     super.onDestroy();
-    if (this.Qaz != null) {
-      this.Qaz.dismiss();
+    if (this.WRJ != null) {
+      this.WRJ.dismiss();
     }
     AppMethodBeat.o(79426);
   }
@@ -228,9 +226,9 @@ public class WebViewStubTempUI
       AppMethodBeat.o(79427);
       return;
       if (paramArrayOfInt[0] == 0) {
-        i.aoU(i).d(paramInt, -1, null);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(i).mmOnActivityResult(paramInt, -1, null);
       } else {
-        i.aoU(i).d(paramInt, 0, null);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.k.auP(i).mmOnActivityResult(paramInt, 0, null);
       }
     }
   }
@@ -245,12 +243,12 @@ public class WebViewStubTempUI
     implements Parcelable
   {
     public static final Parcelable.Creator<StartActivityForResultTask> CREATOR;
-    String BCt;
-    Intent QaE;
-    boolean QaF;
-    int QaG;
-    String fEX;
-    int requestCode;
+    String HjZ;
+    Intent WRO;
+    boolean WRP;
+    int WRQ;
+    String hJP;
+    int hPm;
     
     static
     {
@@ -264,15 +262,15 @@ public class WebViewStubTempUI
     StartActivityForResultTask(Parcel paramParcel)
     {
       AppMethodBeat.i(79418);
-      this.BCt = paramParcel.readString();
-      this.fEX = paramParcel.readString();
-      this.QaE = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
-      this.requestCode = paramParcel.readInt();
+      this.HjZ = paramParcel.readString();
+      this.hJP = paramParcel.readString();
+      this.WRO = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
+      this.hPm = paramParcel.readInt();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.QaF = bool;
-        this.QaG = paramParcel.readInt();
+        this.WRP = bool;
+        this.WRQ = paramParcel.readInt();
         AppMethodBeat.o(79418);
         return;
       }
@@ -286,15 +284,15 @@ public class WebViewStubTempUI
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(79417);
-      paramParcel.writeString(this.BCt);
-      paramParcel.writeString(this.fEX);
-      paramParcel.writeParcelable(this.QaE, paramInt);
-      paramParcel.writeInt(this.requestCode);
-      if (this.QaF) {}
+      paramParcel.writeString(this.HjZ);
+      paramParcel.writeString(this.hJP);
+      paramParcel.writeParcelable(this.WRO, paramInt);
+      paramParcel.writeInt(this.hPm);
+      if (this.WRP) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeInt(this.QaG);
+        paramParcel.writeInt(this.WRQ);
         AppMethodBeat.o(79417);
         return;
       }

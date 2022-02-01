@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="top" android:background="@color/lx" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/br" android:layout_marginRight="@dimen/br" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
-        <TextView android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cb" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb">
-            <ImageView android:id="@id/dt6" android:visibility="gone" android:layout_width="@dimen/kf" android:layout_height="@dimen/kf" android:layout_marginRight="@dimen/ct" />
-            <ImageView android:id="@id/dt7" android:visibility="gone" android:layout_width="@dimen/kf" android:layout_height="@dimen/kf" android:layout_marginRight="@dimen/ct" />
-            <ImageView android:id="@id/dt8" android:visibility="gone" android:layout_width="@dimen/kf" android:layout_height="@dimen/kf" />
-            <ImageView android:id="@id/dt9" android:visibility="gone" android:layout_width="@dimen/kf" android:layout_height="@dimen/kf" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textSize="@dimen/m3" android:id="@id/ko8" android:layout_width="@dimen/bx" style="@style/mf" />
+    <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/m3" android:id="@id/cd6" style="@style/me" />
+</merge>

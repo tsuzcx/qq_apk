@@ -16,11 +16,11 @@ import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.d.n;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.c.n;
 import com.tencent.mm.plugin.card.model.CardInfo;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.aek;
+import com.tencent.mm.protocal.protobuf.ws;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -30,22 +30,22 @@ public final class a
   extends BaseAdapter
 {
   Context mContext;
-  List<CardInfo> tup;
-  HashMap<String, Integer> tuq;
+  List<CardInfo> wyM;
+  HashMap<String, Integer> wyN;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(113145);
-    this.tup = new ArrayList();
-    this.tuq = new HashMap();
+    this.wyM = new ArrayList();
+    this.wyN = new HashMap();
     this.mContext = paramContext;
     AppMethodBeat.o(113145);
   }
   
-  public final CardInfo HQ(int paramInt)
+  public final CardInfo Ir(int paramInt)
   {
     AppMethodBeat.i(113147);
-    CardInfo localCardInfo = (CardInfo)this.tup.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.wyM.get(paramInt);
     AppMethodBeat.o(113147);
     return localCardInfo;
   }
@@ -53,7 +53,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(113146);
-    int i = this.tup.size();
+    int i = this.wyM.size();
     AppMethodBeat.o(113146);
     return i;
   }
@@ -66,68 +66,68 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113148);
-    CardInfo localCardInfo = HQ(paramInt);
+    CardInfo localCardInfo = Ir(paramInt);
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, a.e.thI, null);
+      paramView = View.inflate(this.mContext, a.e.wmh, null);
       paramViewGroup = new a();
-      paramViewGroup.tuf = ((RelativeLayout)paramView.findViewById(a.d.tbI));
-      paramViewGroup.tur = ((LinearLayout)paramView.findViewById(a.d.tdG));
-      paramViewGroup.tug = ((ImageView)paramView.findViewById(a.d.tcw));
-      paramViewGroup.tuh = ((TextView)paramView.findViewById(a.d.duY));
-      paramViewGroup.tui = ((TextView)paramView.findViewById(a.d.tcV));
-      paramViewGroup.tuj = ((TextView)paramView.findViewById(a.d.subtitle));
-      paramViewGroup.tul = ((TextView)paramView.findViewById(a.d.tcW));
-      paramViewGroup.tus = ((ImageView)paramView.findViewById(a.d.tcO));
-      paramViewGroup.tut = ((TextView)paramView.findViewById(a.d.tbJ));
-      paramViewGroup.tuu = ((TextView)paramView.findViewById(a.d.tdx));
+      paramViewGroup.wyC = ((RelativeLayout)paramView.findViewById(a.d.wfV));
+      paramViewGroup.wyO = ((LinearLayout)paramView.findViewById(a.d.whU));
+      paramViewGroup.wyD = ((ImageView)paramView.findViewById(a.d.wgJ));
+      paramViewGroup.wyE = ((TextView)paramView.findViewById(a.d.fvq));
+      paramViewGroup.wyF = ((TextView)paramView.findViewById(a.d.whj));
+      paramViewGroup.wyG = ((TextView)paramView.findViewById(a.d.subtitle));
+      paramViewGroup.wyI = ((TextView)paramView.findViewById(a.d.whk));
+      paramViewGroup.wyP = ((ImageView)paramView.findViewById(a.d.whc));
+      paramViewGroup.wyQ = ((TextView)paramView.findViewById(a.d.wfW));
+      paramViewGroup.wyR = ((TextView)paramView.findViewById(a.d.whL));
       paramView.setTag(paramViewGroup);
-      if (!localCardInfo.cGd()) {
+      if (!localCardInfo.djv()) {
         break label979;
       }
-      paramViewGroup.tug.setVisibility(0);
-      paramViewGroup.tui.setVisibility(0);
-      paramViewGroup.tuj.setVisibility(0);
-      paramViewGroup.tul.setVisibility(8);
-      paramViewGroup.tuh.setVisibility(0);
-      paramViewGroup.tuh.setText(localCardInfo.cGs().jEi);
-      if (!localCardInfo.cGa()) {
+      paramViewGroup.wyD.setVisibility(0);
+      paramViewGroup.wyF.setVisibility(0);
+      paramViewGroup.wyG.setVisibility(0);
+      paramViewGroup.wyI.setVisibility(8);
+      paramViewGroup.wyE.setVisibility(0);
+      paramViewGroup.wyE.setText(localCardInfo.djK().mee);
+      if (!localCardInfo.djs()) {
         break label743;
       }
-      if ((localCardInfo.cGs().SfP == null) || (localCardInfo.cGs().SfP.size() != 1)) {
+      if ((localCardInfo.djK().ZdK == null) || (localCardInfo.djK().ZdK.size() != 1)) {
         break label628;
       }
-      paramViewGroup.tui.setText(((acg)localCardInfo.cGs().SfP.get(0)).title);
+      paramViewGroup.wyF.setText(((aek)localCardInfo.djK().ZdK.get(0)).title);
       label317:
-      if (localCardInfo.cGs().Sgn != 1) {
+      if (localCardInfo.djK().Zei != 1) {
         break label763;
       }
-      paramViewGroup.tus.setVisibility(0);
+      paramViewGroup.wyP.setVisibility(0);
       label339:
       long l = ((CardInfo)localCardInfo).field_begin_time;
       if ((localCardInfo.getEndTime() <= 0L) || (l <= 0L)) {
         break label775;
       }
-      paramViewGroup.tuj.setText(this.mContext.getString(a.g.tmh, new Object[] { l.GN(l) + "  -  " + l.GN(localCardInfo.getEndTime()) }));
-      paramViewGroup.tuj.setVisibility(0);
+      paramViewGroup.wyG.setText(this.mContext.getString(a.g.wqG, new Object[] { l.iY(l) + "  -  " + l.iY(localCardInfo.getEndTime()) }));
+      paramViewGroup.wyG.setVisibility(0);
       label436:
-      paramInt = this.mContext.getResources().getDimensionPixelSize(a.b.sZN);
-      n.a(paramViewGroup.tug, localCardInfo.cGs().llI, paramInt, a.c.my_card_package_defaultlogo, true);
-      if (localCardInfo.cGs().Sgl != 1) {
+      paramInt = this.mContext.getResources().getDimensionPixelSize(a.b.wdU);
+      n.a(paramViewGroup.wyD, localCardInfo.djK().nQG, paramInt, a.c.my_card_package_defaultlogo, true);
+      if (localCardInfo.djK().Zeg != 1) {
         break label854;
       }
-      paramViewGroup.tug.setAlpha(255);
-      paramViewGroup.tuu.setVisibility(8);
-      paramViewGroup.tui.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.sZt));
-      paramViewGroup.tuh.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.sZt));
-      paramViewGroup.tuj.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      paramViewGroup.wyD.setAlpha(255);
+      paramViewGroup.wyR.setVisibility(8);
+      paramViewGroup.wyF.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.wdC));
+      paramViewGroup.wyE.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.wdC));
+      paramViewGroup.wyG.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
       label565:
-      paramInt = ((Integer)this.tuq.get(localCardInfo.cGx())).intValue();
+      paramInt = ((Integer)this.wyN.get(localCardInfo.djP())).intValue();
       if (paramInt != 1) {
         break label951;
       }
-      paramViewGroup.tut.setText("");
-      paramViewGroup.tut.setVisibility(8);
+      paramViewGroup.wyQ.setText("");
+      paramViewGroup.wyQ.setVisibility(8);
     }
     for (;;)
     {
@@ -136,75 +136,75 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label628:
-      if ((localCardInfo.cGs().SfP == null) || (localCardInfo.cGs().SfP.size() != 2)) {
+      if ((localCardInfo.djK().ZdK == null) || (localCardInfo.djK().ZdK.size() != 2)) {
         break label317;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((acg)localCardInfo.cGs().SfP.get(0)).title);
+      localStringBuilder.append(((aek)localCardInfo.djK().ZdK.get(0)).title);
       localStringBuilder.append("-");
-      localStringBuilder.append(((acg)localCardInfo.cGs().SfP.get(1)).title);
-      paramViewGroup.tui.setText(localStringBuilder.toString());
+      localStringBuilder.append(((aek)localCardInfo.djK().ZdK.get(1)).title);
+      paramViewGroup.wyF.setText(localStringBuilder.toString());
       break label317;
       label743:
-      paramViewGroup.tui.setText(localCardInfo.cGs().title);
+      paramViewGroup.wyF.setText(localCardInfo.djK().title);
       break label317;
       label763:
-      paramViewGroup.tus.setVisibility(8);
+      paramViewGroup.wyP.setVisibility(8);
       break label339;
       label775:
       if (localCardInfo.getEndTime() > 0L)
       {
-        paramViewGroup.tuj.setText(this.mContext.getString(a.g.card_validate_to, new Object[] { l.GN(localCardInfo.getEndTime()) }));
-        paramViewGroup.tuj.setVisibility(0);
+        paramViewGroup.wyG.setText(this.mContext.getString(a.g.card_validate_to, new Object[] { l.iY(localCardInfo.getEndTime()) }));
+        paramViewGroup.wyG.setVisibility(0);
         break label436;
       }
-      paramViewGroup.tuj.setText("");
-      paramViewGroup.tuj.setVisibility(8);
+      paramViewGroup.wyG.setText("");
+      paramViewGroup.wyG.setVisibility(8);
       break label436;
       label854:
-      paramViewGroup.tuu.setText(localCardInfo.cGs().Sgm);
-      paramViewGroup.tug.setAlpha(90);
-      paramViewGroup.tuu.setVisibility(0);
-      paramViewGroup.tui.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
-      paramViewGroup.tuh.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
-      paramViewGroup.tuj.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      paramViewGroup.wyR.setText(localCardInfo.djK().Zeh);
+      paramViewGroup.wyD.setAlpha(90);
+      paramViewGroup.wyR.setVisibility(0);
+      paramViewGroup.wyF.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      paramViewGroup.wyE.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      paramViewGroup.wyG.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
       break label565;
       label951:
-      paramViewGroup.tut.setText("x".concat(String.valueOf(paramInt)));
-      paramViewGroup.tut.setVisibility(0);
+      paramViewGroup.wyQ.setText("x".concat(String.valueOf(paramInt)));
+      paramViewGroup.wyQ.setVisibility(0);
       continue;
       label979:
-      paramViewGroup.tug.setVisibility(8);
-      paramViewGroup.tui.setVisibility(8);
-      paramViewGroup.tuh.setVisibility(8);
-      paramViewGroup.tuj.setVisibility(8);
-      paramViewGroup.tuu.setVisibility(8);
-      paramViewGroup.tut.setVisibility(8);
-      paramViewGroup.tul.setVisibility(0);
-      paramViewGroup.tuf.setBackgroundColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.sZx));
-      paramViewGroup.tul.setText(this.mContext.getResources().getString(a.g.card_not_support_card_type));
+      paramViewGroup.wyD.setVisibility(8);
+      paramViewGroup.wyF.setVisibility(8);
+      paramViewGroup.wyE.setVisibility(8);
+      paramViewGroup.wyG.setVisibility(8);
+      paramViewGroup.wyR.setVisibility(8);
+      paramViewGroup.wyQ.setVisibility(8);
+      paramViewGroup.wyI.setVisibility(0);
+      paramViewGroup.wyC.setBackgroundColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.wdG));
+      paramViewGroup.wyI.setText(this.mContext.getResources().getString(a.g.card_not_support_card_type));
     }
   }
   
   public final class a
   {
-    public RelativeLayout tuf;
-    public ImageView tug;
-    public TextView tuh;
-    public TextView tui;
-    public TextView tuj;
-    public TextView tul;
-    public LinearLayout tur;
-    public ImageView tus;
-    public TextView tut;
-    public TextView tuu;
+    public RelativeLayout wyC;
+    public ImageView wyD;
+    public TextView wyE;
+    public TextView wyF;
+    public TextView wyG;
+    public TextView wyI;
+    public LinearLayout wyO;
+    public ImageView wyP;
+    public TextView wyQ;
+    public TextView wyR;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a
  * JD-Core Version:    0.7.0.1
  */

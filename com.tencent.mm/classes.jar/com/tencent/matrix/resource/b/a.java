@@ -4,43 +4,46 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static final long dcA = TimeUnit.MINUTES.toMillis(1L);
-  private static final long dcB = TimeUnit.MINUTES.toMillis(20L);
-  private static final b dcC = b.dcK;
-  private final com.tencent.b.a.a cYC;
-  public final b dcD;
-  public final boolean dcE;
-  public final String dcF;
+  private static final long fba = TimeUnit.MINUTES.toMillis(1L);
+  private static final long fbb = TimeUnit.MINUTES.toMillis(20L);
+  private static final b fbc = b.fbl;
+  private final com.tencent.b.a.a eVt;
+  public final b fbd;
+  public final boolean fbe;
+  public final String fbf;
+  public final String fbg;
   
-  private a(com.tencent.b.a.a parama, b paramb, boolean paramBoolean, String paramString)
+  private a(com.tencent.b.a.a parama, b paramb, boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.cYC = parama;
-    this.dcD = paramb;
-    this.dcE = paramBoolean;
-    this.dcF = paramString;
+    this.eVt = parama;
+    this.fbd = paramb;
+    this.fbe = paramBoolean;
+    this.fbf = paramString1;
+    this.fbg = paramString2;
   }
   
-  public final long XE()
+  public final long azk()
   {
-    return this.cYC.m(com.tencent.b.a.a.a.ZbY.name(), dcA);
+    return this.eVt.n(com.tencent.b.a.a.a.ahaF.name(), fba);
   }
   
-  public final long XF()
+  public final long azl()
   {
-    return this.cYC.m(com.tencent.b.a.a.a.ZbZ.name(), dcB);
+    return this.eVt.n(com.tencent.b.a.a.a.ahaG.name(), fbb);
   }
   
-  public final int XG()
+  public final int azm()
   {
-    return this.cYC.D(com.tencent.b.a.a.a.Zca.name(), 10);
+    return this.eVt.L(com.tencent.b.a.a.a.ahaH.name(), 10);
   }
   
   public static final class a
   {
-    public boolean dcE = false;
-    public String dcF;
-    public a.b dcG = a.XH();
-    public com.tencent.b.a.a dcH;
+    public boolean fbe = false;
+    public String fbf;
+    public String fbg;
+    public a.b fbh = a.azn();
+    public com.tencent.b.a.a fbi;
   }
   
   public static enum b
@@ -50,7 +53,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.resource.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 
 public class AAQueryListLoadingMoreView
   extends LinearLayout
@@ -38,7 +38,7 @@ public class AAQueryListLoadingMoreView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63507);
-    ad.kS(paramContext).inflate(a.g.aa_record_list_loading_more, this, true);
+    af.mU(paramContext).inflate(a.g.aa_record_list_loading_more, this, true);
     AppMethodBeat.o(63507);
   }
 }

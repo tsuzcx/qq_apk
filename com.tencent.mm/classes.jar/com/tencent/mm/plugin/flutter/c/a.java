@@ -5,35 +5,31 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a BCF;
-  private static final String TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
+  public static final a Hkw;
+  private static final String TAG;
   
   static
   {
-    AppMethodBeat.i(220927);
-    BCF = new a();
+    AppMethodBeat.i(263304);
+    Hkw = new a();
     TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
-    AppMethodBeat.o(220927);
+    AppMethodBeat.o(263304);
   }
   
-  public static void b(Map<String, ? extends Object> paramMap, boolean paramBoolean)
+  public static void c(Map<String, ? extends Object> paramMap, boolean paramBoolean)
   {
-    AppMethodBeat.i(220925);
-    p.k(paramMap, "crashInfoMap");
+    AppMethodBeat.i(263297);
+    s.u(paramMap, "crashInfoMap");
     Object localObject = (Map)paramMap.get("customParameters");
-    if (localObject == null) {
-      p.iCn();
-    }
+    s.checkNotNull(localObject);
     String str;
-    label271:
-    label302:
+    label253:
     h localh;
     if (((Map)localObject).containsKey("WxaLiteApp"))
     {
@@ -44,13 +40,13 @@ public final class a
         int i;
         if (paramBoolean)
         {
-          i = ((MultiProcessMMKV)localObject).getInt("count_".concat(String.valueOf(str)), 0);
-          long l1 = ((MultiProcessMMKV)localObject).getLong("time_".concat(String.valueOf(str)), 0L);
+          i = ((MultiProcessMMKV)localObject).getInt(s.X("count_", str), 0);
+          long l1 = ((MultiProcessMMKV)localObject).getLong(s.X("time_", str), 0L);
           long l2 = System.currentTimeMillis();
           if (l2 - l1 > 3600000L)
           {
-            ((MultiProcessMMKV)localObject).putInt("count_".concat(String.valueOf(str)), 1);
-            ((MultiProcessMMKV)localObject).putLong("time_".concat(String.valueOf(str)), l2);
+            ((MultiProcessMMKV)localObject).putInt(s.X("count_", str), 1);
+            ((MultiProcessMMKV)localObject).putLong(s.X("time_", str), l2);
             Log.i(TAG, "WxaLiteApp handle crash. version:%s count%d time:%s now:%s", new Object[] { str, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2) });
             ((MultiProcessMMKV)localObject).commit();
           }
@@ -59,48 +55,43 @@ public final class a
         {
           paramMap = paramMap.get("error");
           if (paramMap != null) {
-            break label271;
+            break label253;
           }
-          paramMap = new t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(220925);
+          paramMap = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(263297);
           throw paramMap;
-          ((MultiProcessMMKV)localObject).putInt("count_".concat(String.valueOf(str)), i + 1);
+          ((MultiProcessMMKV)localObject).putInt(s.X("count_", str), i + 1);
           break;
           Log.i(TAG, "WxaLiteApp handle state error . version:%s", new Object[] { str });
         }
         paramMap = (String)paramMap;
         if (paramMap.length() >= 10) {
-          break label347;
+          break label329;
         }
         if (!paramBoolean) {
-          break label385;
+          break label346;
         }
-        h.IzE.p(1293L, 103L, 1L);
-        localh = h.IzE;
+        h.OAn.p(1293L, 103L, 1L);
+        label284:
+        localh = h.OAn;
         if (!paramBoolean) {
-          break label401;
+          break label362;
         }
       }
     }
-    label385:
-    label401:
+    label329:
+    label346:
+    label362:
     for (localObject = "crash";; localObject = "bad state only")
     {
-      localh.a(20315, new Object[] { str, localObject, paramMap });
-      AppMethodBeat.o(220925);
+      localh.b(20315, new Object[] { str, localObject, paramMap });
+      AppMethodBeat.o(263297);
       return;
-      label347:
-      if (paramMap == null)
-      {
-        paramMap = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(220925);
-        throw paramMap;
-      }
       paramMap = paramMap.substring(0, 10);
-      p.j(paramMap, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      s.s(paramMap, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       break;
-      h.IzE.p(1293L, 104L, 1L);
-      break label302;
+      h.OAn.p(1293L, 104L, 1L);
+      break label284;
     }
   }
 }

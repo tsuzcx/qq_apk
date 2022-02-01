@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.welab.d.a;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.eg;
+import com.tencent.mm.autogen.b.eu;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,221 +18,31 @@ import java.util.List;
 import java.util.Map;
 
 public class a
-  extends eg
+  extends eu
 {
-  private static final List<String> QFp;
+  private static final List<String> XyN;
   public static IAutoDBItem.MAutoDBInfo info;
-  private Map<String, Field> QFo;
+  private Map<String, Field> XyM;
   
   static
   {
     AppMethodBeat.i(146269);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[46];
-    localMAutoDBInfo.columns = new String[47];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "LabsAppId";
-    localMAutoDBInfo.colsMap.put("LabsAppId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" LabsAppId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "LabsAppId";
-    localMAutoDBInfo.columns[1] = "expId";
-    localMAutoDBInfo.colsMap.put("expId", "TEXT default '' ");
-    localStringBuilder.append(" expId TEXT default '' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[2] = "Type";
-    localMAutoDBInfo.colsMap.put("Type", "INTEGER default '0' ");
-    localStringBuilder.append(" Type INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[3] = "BizType";
-    localMAutoDBInfo.colsMap.put("BizType", "INTEGER default '0' ");
-    localStringBuilder.append(" BizType INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "Switch";
-    localMAutoDBInfo.colsMap.put("Switch", "INTEGER default '0' ");
-    localStringBuilder.append(" Switch INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[5] = "AllVer";
-    localMAutoDBInfo.colsMap.put("AllVer", "INTEGER default '0' ");
-    localStringBuilder.append(" AllVer INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[6] = "DetailURL";
-    localMAutoDBInfo.colsMap.put("DetailURL", "TEXT");
-    localStringBuilder.append(" DetailURL TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[7] = "WeAppUser";
-    localMAutoDBInfo.colsMap.put("WeAppUser", "TEXT");
-    localStringBuilder.append(" WeAppUser TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[8] = "WeAppPath";
-    localMAutoDBInfo.colsMap.put("WeAppPath", "TEXT");
-    localStringBuilder.append(" WeAppPath TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[9] = "Pos";
-    localMAutoDBInfo.colsMap.put("Pos", "INTEGER default '0' ");
-    localStringBuilder.append(" Pos INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[10] = "TitleKey_android";
-    localMAutoDBInfo.colsMap.put("TitleKey_android", "TEXT");
-    localStringBuilder.append(" TitleKey_android TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[11] = "Title_cn";
-    localMAutoDBInfo.colsMap.put("Title_cn", "TEXT");
-    localStringBuilder.append(" Title_cn TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[12] = "Title_hk";
-    localMAutoDBInfo.colsMap.put("Title_hk", "TEXT");
-    localStringBuilder.append(" Title_hk TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[13] = "Title_tw";
-    localMAutoDBInfo.colsMap.put("Title_tw", "TEXT");
-    localStringBuilder.append(" Title_tw TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[14] = "Title_en";
-    localMAutoDBInfo.colsMap.put("Title_en", "TEXT");
-    localStringBuilder.append(" Title_en TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[15] = "Desc_cn";
-    localMAutoDBInfo.colsMap.put("Desc_cn", "TEXT");
-    localStringBuilder.append(" Desc_cn TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[16] = "Desc_hk";
-    localMAutoDBInfo.colsMap.put("Desc_hk", "TEXT");
-    localStringBuilder.append(" Desc_hk TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[17] = "Desc_tw";
-    localMAutoDBInfo.colsMap.put("Desc_tw", "TEXT");
-    localStringBuilder.append(" Desc_tw TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[18] = "Desc_en";
-    localMAutoDBInfo.colsMap.put("Desc_en", "TEXT");
-    localStringBuilder.append(" Desc_en TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[19] = "Introduce_cn";
-    localMAutoDBInfo.colsMap.put("Introduce_cn", "TEXT");
-    localStringBuilder.append(" Introduce_cn TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[20] = "Introduce_hk";
-    localMAutoDBInfo.colsMap.put("Introduce_hk", "TEXT");
-    localStringBuilder.append(" Introduce_hk TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[21] = "Introduce_tw";
-    localMAutoDBInfo.colsMap.put("Introduce_tw", "TEXT");
-    localStringBuilder.append(" Introduce_tw TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[22] = "Introduce_en";
-    localMAutoDBInfo.colsMap.put("Introduce_en", "TEXT");
-    localStringBuilder.append(" Introduce_en TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[23] = "starttime";
-    localMAutoDBInfo.colsMap.put("starttime", "LONG");
-    localStringBuilder.append(" starttime LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[24] = "endtime";
-    localMAutoDBInfo.colsMap.put("endtime", "LONG");
-    localStringBuilder.append(" endtime LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[25] = "sequence";
-    localMAutoDBInfo.colsMap.put("sequence", "LONG");
-    localStringBuilder.append(" sequence LONG");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[26] = "prioritylevel";
-    localMAutoDBInfo.colsMap.put("prioritylevel", "INTEGER");
-    localStringBuilder.append(" prioritylevel INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[27] = "status";
-    localMAutoDBInfo.colsMap.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[28] = "ThumbUrl_cn";
-    localMAutoDBInfo.colsMap.put("ThumbUrl_cn", "TEXT");
-    localStringBuilder.append(" ThumbUrl_cn TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[29] = "ThumbUrl_hk";
-    localMAutoDBInfo.colsMap.put("ThumbUrl_hk", "TEXT");
-    localStringBuilder.append(" ThumbUrl_hk TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[30] = "ThumbUrl_tw";
-    localMAutoDBInfo.colsMap.put("ThumbUrl_tw", "TEXT");
-    localStringBuilder.append(" ThumbUrl_tw TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[31] = "ThumbUrl_en";
-    localMAutoDBInfo.colsMap.put("ThumbUrl_en", "TEXT");
-    localStringBuilder.append(" ThumbUrl_en TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[32] = "ImgUrl_android_cn";
-    localMAutoDBInfo.colsMap.put("ImgUrl_android_cn", "TEXT");
-    localStringBuilder.append(" ImgUrl_android_cn TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[33] = "ImgUrl_android_hk";
-    localMAutoDBInfo.colsMap.put("ImgUrl_android_hk", "TEXT");
-    localStringBuilder.append(" ImgUrl_android_hk TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[34] = "ImgUrl_android_tw";
-    localMAutoDBInfo.colsMap.put("ImgUrl_android_tw", "TEXT");
-    localStringBuilder.append(" ImgUrl_android_tw TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[35] = "ImgUrl_android_en";
-    localMAutoDBInfo.colsMap.put("ImgUrl_android_en", "TEXT");
-    localStringBuilder.append(" ImgUrl_android_en TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[36] = "RedPoint";
-    localMAutoDBInfo.colsMap.put("RedPoint", "INTEGER");
-    localStringBuilder.append(" RedPoint INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[37] = "WeAppDebugMode";
-    localMAutoDBInfo.colsMap.put("WeAppDebugMode", "INTEGER");
-    localStringBuilder.append(" WeAppDebugMode INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[38] = "idkey";
-    localMAutoDBInfo.colsMap.put("idkey", "INTEGER");
-    localStringBuilder.append(" idkey INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[39] = "idkeyValue";
-    localMAutoDBInfo.colsMap.put("idkeyValue", "INTEGER");
-    localStringBuilder.append(" idkeyValue INTEGER");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[40] = "Icon";
-    localMAutoDBInfo.colsMap.put("Icon", "TEXT");
-    localStringBuilder.append(" Icon TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[41] = "ImgUrl_cn";
-    localMAutoDBInfo.colsMap.put("ImgUrl_cn", "TEXT");
-    localStringBuilder.append(" ImgUrl_cn TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[42] = "ImgUrl_hk";
-    localMAutoDBInfo.colsMap.put("ImgUrl_hk", "TEXT");
-    localStringBuilder.append(" ImgUrl_hk TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[43] = "ImgUrl_tw";
-    localMAutoDBInfo.colsMap.put("ImgUrl_tw", "TEXT");
-    localStringBuilder.append(" ImgUrl_tw TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[44] = "ImgUrl_en";
-    localMAutoDBInfo.colsMap.put("ImgUrl_en", "TEXT");
-    localStringBuilder.append(" ImgUrl_en TEXT");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[45] = "bItemFromXExpt";
-    localMAutoDBInfo.colsMap.put("bItemFromXExpt", "INTEGER");
-    localStringBuilder.append(" bItemFromXExpt INTEGER");
-    localMAutoDBInfo.columns[46] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    info = localMAutoDBInfo;
-    QFp = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
+    info = eu.aJm();
+    XyN = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
     AppMethodBeat.o(146269);
   }
   
   public a()
   {
     AppMethodBeat.i(146255);
-    this.QFo = new HashMap();
+    this.XyM = new HashMap();
     AppMethodBeat.o(146255);
   }
   
-  private String anv(String paramString)
+  private String agT(String paramString)
   {
     AppMethodBeat.i(146265);
-    Object localObject = (Field)this.QFo.get(paramString);
+    Object localObject = (Field)this.XyM.get(paramString);
     if (localObject == null) {
       try
       {
@@ -246,7 +56,7 @@ public class a
         {
           try
           {
-            this.QFo.put(paramString, localObject);
+            this.XyM.put(paramString, localObject);
             if (localObject == null) {
               continue;
             }
@@ -274,14 +84,14 @@ public class a
     }
   }
   
-  private String bnI(String paramString)
+  private String bnw(String paramString)
   {
     AppMethodBeat.i(146264);
-    Iterator localIterator = QFp.iterator();
+    Iterator localIterator = XyN.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      str = anv(paramString + str);
+      str = agT(paramString + str);
       if (!TextUtils.isEmpty(str))
       {
         AppMethodBeat.o(146264);
@@ -292,24 +102,36 @@ public class a
     return "";
   }
   
-  private String mQ(String paramString1, String paramString2)
+  private String oG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146263);
-    paramString2 = anv(paramString1 + paramString2);
+    paramString2 = agT(paramString1 + paramString2);
     if (!TextUtils.isEmpty(paramString2))
     {
       AppMethodBeat.o(146263);
       return paramString2;
     }
-    paramString1 = bnI(paramString1);
+    paramString1 = bnw(paramString1);
     AppMethodBeat.o(146263);
     return paramString1;
   }
   
-  public final String bnH(String paramString)
+  public final boolean MX()
+  {
+    AppMethodBeat.i(146267);
+    if ((isRunning()) && ((this.field_Switch == 2) || (this.field_Switch == 1)))
+    {
+      AppMethodBeat.o(146267);
+      return true;
+    }
+    AppMethodBeat.o(146267);
+    return false;
+  }
+  
+  public final String bnv(String paramString)
   {
     AppMethodBeat.i(146262);
-    String str1 = anv(paramString + "Key_android");
+    String str1 = agT(paramString + "Key_android");
     if (!TextUtils.isEmpty(str1))
     {
       String str2 = MMApplicationContext.getPackageName();
@@ -324,23 +146,23 @@ public class a
     str1 = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     if (LocaleUtil.isSimplifiedChineseAppLang())
     {
-      paramString = mQ(paramString, "_cn");
+      paramString = oG(paramString, "_cn");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_HK".equals(str1))
     {
-      paramString = mQ(paramString, "_hk");
+      paramString = oG(paramString, "_hk");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_TW".equals(str1))
     {
-      paramString = mQ(paramString, "_tw");
+      paramString = oG(paramString, "_tw");
       AppMethodBeat.o(146262);
       return paramString;
     }
-    paramString = mQ(paramString, "_en");
+    paramString = oG(paramString, "_en");
     AppMethodBeat.o(146262);
     return paramString;
   }
@@ -376,24 +198,12 @@ public class a
     return i;
   }
   
-  public final boolean hdb()
-  {
-    AppMethodBeat.i(146267);
-    if ((isRunning()) && ((this.field_Switch == 2) || (this.field_Switch == 1)))
-    {
-      AppMethodBeat.o(146267);
-      return true;
-    }
-    AppMethodBeat.o(146267);
-    return false;
-  }
-  
-  public final boolean hdc()
+  public final boolean iDJ()
   {
     return this.field_bItemFromXExpt == 1;
   }
   
-  public final boolean hdd()
+  public final boolean iDK()
   {
     return this.field_status == 1;
   }
@@ -450,7 +260,7 @@ public class a
   {
     AppMethodBeat.i(146268);
     if ((this.field_idkey > 0) && (this.field_idkeyValue >= 0)) {
-      h.IzE.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
+      h.OAn.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
     }
     AppMethodBeat.o(146268);
   }
@@ -465,7 +275,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a.a
  * JD-Core Version:    0.7.0.1
  */

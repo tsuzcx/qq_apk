@@ -12,16 +12,16 @@ final class InvoiceQrcodeTextView$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(271165);
-    InvoiceQrcodeTextView.a(this.nml, (int)paramMotionEvent.getRawX());
-    InvoiceQrcodeTextView.b(this.nml, (int)paramMotionEvent.getRawY());
-    AppMethodBeat.o(271165);
+    AppMethodBeat.i(267173);
+    InvoiceQrcodeTextView.a(this.qju, (int)paramMotionEvent.getRawX());
+    InvoiceQrcodeTextView.b(this.qju, (int)paramMotionEvent.getRawY());
+    AppMethodBeat.o(267173);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceQrcodeTextView.1
  * JD-Core Version:    0.7.0.1
  */

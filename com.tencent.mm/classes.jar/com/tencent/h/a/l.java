@@ -1,47 +1,48 @@
 package com.tencent.h.a;
 
 import android.content.Context;
-import android.os.Handler;
+import com.tencent.h.a.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class l
   extends com.tencent.h.a.b.b.a
 {
-  com.tencent.h.a.e.a ZSg;
-  private final com.tencent.g.a.a ZSh;
+  com.tencent.h.a.e.a ahWD;
+  private final com.tencent.g.a.a ahWE;
   
   public l(Context paramContext, m paramm)
   {
     super(paramContext, paramm);
-    AppMethodBeat.i(207427);
-    this.ZSh = new com.tencent.g.a.a()
+    AppMethodBeat.i(212077);
+    this.ahWE = new com.tencent.g.a.a()
     {
-      public final void byO()
+      public final void bXC()
       {
-        AppMethodBeat.i(207677);
+        AppMethodBeat.i(212109);
         com.tencent.g.c.i.i("sensor_TuringSMIImpl", "[method: mTimeOutRunnable ] ");
         l locall = l.this;
-        i.a locala = i.itE();
-        locala.ZSa = false;
+        i.a locala = i.kcZ();
+        locala.ahWx = false;
         locall.b(locala);
-        AppMethodBeat.o(207677);
+        AppMethodBeat.o(212109);
       }
     };
-    this.ZSg = new com.tencent.h.a.e.a(itK().mAppContext);
-    AppMethodBeat.o(207427);
+    this.ahWD = new com.tencent.h.a.e.a(kdg().mAppContext);
+    AppMethodBeat.o(212077);
   }
   
   public final boolean a(final h.a parama, final e parame)
   {
-    AppMethodBeat.i(207428);
+    AppMethodBeat.i(212094);
     parame = new com.tencent.h.a.c.a()
     {
       public final void a(int paramAnonymousInt, com.tencent.h.a.c.b.a paramAnonymousa)
       {
-        AppMethodBeat.i(207809);
+        AppMethodBeat.i(212105);
         if (parame == null)
         {
-          AppMethodBeat.o(207809);
+          AppMethodBeat.o(212105);
           return;
         }
         com.tencent.h.a.e.a locala;
@@ -49,13 +50,13 @@ public final class l
         if ((paramAnonymousInt != 0) || (paramAnonymousa == null))
         {
           paramAnonymousa = l.a(l.this, null);
-          locala = l.this.ZSg;
-          if (parama.ZRU != c.ZRQ) {
+          locala = l.this.ahWD;
+          if (parama.ahWr != c.ahWn) {
             break label116;
           }
           str1 = "TeenyProto";
           label60:
-          if (parama.ZRU != c.ZRQ) {
+          if (parama.ahWr != c.ahWn) {
             break label122;
           }
         }
@@ -64,8 +65,8 @@ public final class l
         for (String str2 = "teenyProtoCheckWup";; str2 = "ownerRecoV2Wup")
         {
           paramAnonymousa = locala.a(str1, str2, paramAnonymousa);
-          parame.cm(paramAnonymousa);
-          AppMethodBeat.o(207809);
+          parame.cn(paramAnonymousa);
+          AppMethodBeat.o(212105);
           return;
           paramAnonymousa = l.a(l.this, paramAnonymousa);
           break;
@@ -74,86 +75,90 @@ public final class l
         }
       }
     };
-    itK().ZSt.a(this.ZSh);
+    kdg().ahWR.a(this.ahWE);
     boolean bool = a(parama, parame);
     if (bool)
     {
       com.tencent.g.c.i.i("sensor_TuringSMIImpl", "[method: start ] post mTimeOutRunnable");
-      parama = itK().ZSt;
-      parame = this.ZSh;
+      parama = kdg().ahWR;
+      parame = this.ahWE;
       if (parame != null) {
-        parama.ZQg.postDelayed(parame, 1200000L);
+        parama.ahWW.postDelayed(parame, 1200000L);
       }
     }
-    AppMethodBeat.o(207428);
+    AppMethodBeat.o(212094);
     return bool;
   }
   
   public final boolean a(i.a parama)
   {
-    AppMethodBeat.i(207430);
+    AppMethodBeat.i(212100);
     bool1 = false;
     try
     {
       bool2 = b(parama);
       bool1 = bool2;
-      itK().ZSt.a(this.ZSh);
+      if (kdg().ahWR != null)
+      {
+        bool1 = bool2;
+        kdg().ahWR.a(this.ahWE);
+      }
       bool1 = bool2;
       com.tencent.g.c.i.i("sensor_TuringSMIImpl", "[method: stop ] remove mTimeOutRunnable");
     }
-    catch (Throwable parama)
+    finally
     {
       for (;;)
       {
         boolean bool2 = bool1;
-        if (itK() != null)
+        if (kdg() != null)
         {
           bool2 = bool1;
-          if (itK().ZSs != null)
+          if (kdg().ahWQ != null)
           {
-            itK().ZSs.b(parama, "stop");
+            kdg().ahWQ.b(parama, "stop");
             bool2 = bool1;
           }
         }
       }
     }
-    AppMethodBeat.o(207430);
+    AppMethodBeat.o(212100);
     return bool2;
   }
   
   final boolean b(i.a parama)
   {
-    AppMethodBeat.i(207431);
+    AppMethodBeat.i(212107);
     bool1 = false;
     try
     {
-      bool2 = itV().a(parama);
+      bool2 = kdr().a(parama);
       bool1 = bool2;
       com.tencent.g.c.i.i("sensor_TuringSMIImpl", "[method: stopMasterEngine ] ");
     }
-    catch (Throwable parama)
+    finally
     {
       for (;;)
       {
         boolean bool2 = bool1;
-        if (itK() != null)
+        if (kdg() != null)
         {
           bool2 = bool1;
-          if (itK().ZSs != null)
+          if (kdg().ahWQ != null)
           {
-            itK().ZSs.b(parama, "stop");
+            kdg().ahWQ.b(parama, "stop");
             bool2 = bool1;
           }
         }
       }
     }
-    AppMethodBeat.o(207431);
+    AppMethodBeat.o(212107);
     return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.l
  * JD-Core Version:    0.7.0.1
  */

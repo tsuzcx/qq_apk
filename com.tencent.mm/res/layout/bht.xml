@@ -1,36 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout android:padding="0.0dip" style="@style/lz">
-            <LinearLayout android:orientation="vertical" android:id="@id/ihs" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textColor="@color/tx" android:paddingLeft="@dimen/cb" android:text="@string/fqq" style="@style/or" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4">
-                    <TextView android:gravity="center|left" android:id="@id/hzq" android:background="@drawable/b9w" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:minHeight="@dimen/k4" android:text="@string/fpv" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
-                    <LinearLayout android:background="@drawable/b9w" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="fill_parent">
-                        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/hzp" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" app:iconColor="@color/Brand" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b6a" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4">
-                    <TextView android:gravity="center|left" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:text="@string/fq_" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
-                    <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center|right" android:layout_gravity="center|right" android:id="@id/ihp" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cb" android:src="@raw/icons_outlined_done" app:iconColor="@color/Brand" />
-                </LinearLayout>
-                <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_50" android:gravity="bottom|center|left" android:id="@id/ihq" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/g" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ce" android:visibility="visible" android:minHeight="@dimen/bm" android:text="@string/fqa" style="@style/m0" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:id="@id/g0r" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textColor="@color/tx" android:id="@id/g0s" android:paddingLeft="@dimen/cb" android:text="@string/fq8" style="@style/or" />
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g0p" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4">
-                    <TextView android:gravity="center|left" android:id="@id/g0u" android:background="@drawable/b6_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:minHeight="@dimen/k4" android:text="@string/h97" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
-                    <LinearLayout android:background="@drawable/b6_" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="fill_parent">
-                        <include android:gravity="center|right" android:layout_gravity="right" android:id="@id/g0t" layout="@layout/b8r" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hwu" android:background="@drawable/b6_" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4">
-                    <TextView android:gravity="center|left" android:id="@id/g11" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/k4" android:text="@string/h57" android:maxLines="2" android:singleLine="false" android:layout_weight="1.0" style="@style/mi" />
-                    <include android:gravity="center|right" android:layout_gravity="right" android:id="@id/g10" layout="@layout/b8r" />
-                </LinearLayout>
-                <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_50" android:gravity="bottom|center|left" android:id="@id/g0q" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/g" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ce" android:visibility="gone" android:minHeight="@dimen/bm" android:text="@string/h9_" style="@style/m0" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bhp" />
+    <include android:id="@id/h42" layout="@layout/bhr" />
+    <include android:id="@id/kh4" layout="@layout/bho" />
+    <TextView android:id="@id/f4e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cl" android:text="@string/fn6" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/oi" />
+    <RelativeLayout android:id="@id/i2_" android:background="@drawable/b05" android:visibility="gone" android:layout_width="@dimen/d1" android:layout_height="@dimen/d1" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cc6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cc5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/ccm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView android:id="@id/cc4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cch" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/cd2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/a9w" android:id="@id/l5k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</merge>

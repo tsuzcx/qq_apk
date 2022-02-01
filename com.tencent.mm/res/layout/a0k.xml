@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/ca2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/hs">
-        <EditText android:textColor="@color/a2x" android:textColorHint="@color/ui" android:gravity="top" android:id="@id/be9" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="130.0dip" android:singleLine="false" android:layout_weight="1.0" style="@style/mb" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_gravity="bottom|center|right" android:id="@id/joi" android:padding="@dimen/kb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_gravity="bottom" android:background="@drawable/b08" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bem" android:padding="@dimen/cp" android:layout_width="@dimen/da" android:layout_height="@dimen/da" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_100_Alpha_0_8" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <ImageView android:id="@id/blq" android:padding="@dimen/cp" android:layout_width="@dimen/da" android:layout_height="@dimen/da" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintTop_toTopOf="hr_" />
+    <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kcb" app:layout_constraintBottom_toBottomOf="@id/bem" app:layout_constraintEnd_toStartOf="@id/blq" app:layout_constraintStart_toEndOf="@id/bem" app:layout_constraintTop_toTopOf="@id/bem" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/iiw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:paddingStart="13.0dip" android:paddingEnd="13.0dip" app:layout_constraintTop_toBottomOf="@id/bem" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/xp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d5" android:layout_marginBottom="@dimen/cw" android:layout_marginStart="@dimen/cv" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toBottomOf="@id/iiw">
+        <ImageView android:id="@id/xq" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/cd1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kc8" android:layout_marginStart="6.0dip" />
     </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:gravity="center" android:id="@id/ciw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cg" app:layout_constraintTop_toBottomOf="@id/bem">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ProgressBar android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" style="@style/a76" />
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/kc9" />
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

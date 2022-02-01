@@ -1,31 +1,31 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.a.e;
-import com.tencent.mm.ao.a.k;
-import com.tencent.mm.ao.a.l;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ao.g;
-import com.tencent.mm.ay.a.a.c;
-import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.an.a.e;
+import com.tencent.mm.an.a.k;
+import com.tencent.mm.an.a.l;
+import com.tencent.mm.an.af;
+import com.tencent.mm.an.g;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
 import com.tencent.mm.plugin.biz.b.e;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
   implements x
 {
-  public final boolean bra(String paramString)
+  public final boolean bqO(String paramString)
   {
     AppMethodBeat.i(124373);
-    boolean bool = g.KI(paramString);
+    boolean bool = g.Dn(paramString);
     AppMethodBeat.o(124373);
     return bool;
   }
   
-  public final Object brb(String paramString)
+  public final Object bqP(String paramString)
   {
     AppMethodBeat.i(124374);
-    k localk2 = af.bjz().gm(paramString);
+    k localk2 = af.bHj().hM(paramString);
     k localk1;
     if ((localk2 != null) && (!Util.isNullOrNil(localk2.field_userId)))
     {
@@ -41,30 +41,30 @@ public final class d
     return localk1;
   }
   
-  public final c brc(String paramString)
+  public final c bqQ(String paramString)
   {
     AppMethodBeat.i(124375);
     c.a locala = new c.a();
-    locala.prefixPath = e.Vj(paramString);
-    locala.lRD = true;
-    locala.kOl = true;
-    locala.lRP = b.e.default_avatar;
-    paramString = locala.bmL();
+    locala.prefixPath = e.Ni(paramString);
+    locala.oKp = true;
+    locala.nqa = true;
+    locala.oKB = b.e.default_avatar;
+    paramString = locala.bKx();
     AppMethodBeat.o(124375);
     return paramString;
   }
   
-  public final String eb(Object paramObject)
+  public final String gx(Object paramObject)
   {
     return ((k)paramObject).field_userName;
   }
   
-  public final String ec(Object paramObject)
+  public final String gy(Object paramObject)
   {
     return ((k)paramObject).field_headImageUrl;
   }
   
-  public final String ed(Object paramObject)
+  public final String gz(Object paramObject)
   {
     return ((k)paramObject).field_userId;
   }

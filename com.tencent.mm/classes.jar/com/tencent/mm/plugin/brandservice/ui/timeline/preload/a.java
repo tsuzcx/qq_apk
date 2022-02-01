@@ -4,74 +4,91 @@ import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.mapsdk.rastercore.tools.IO;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.plugin.appbrand.m.i;
-import com.tencent.mm.plugin.av.c.a;
-import com.tencent.mm.plugin.av.e;
-import com.tencent.mm.plugin.av.j;
-import com.tencent.mm.plugin.av.k;
-import com.tencent.mm.plugin.aw.c;
-import com.tencent.mm.plugin.aw.c.b;
-import com.tencent.mm.plugin.webcanvas.m;
+import com.tencent.mm.plugin.appbrand.appcache.r;
+import com.tencent.mm.plugin.appbrand.n.g;
+import com.tencent.mm.plugin.appbrand.n.i;
+import com.tencent.mm.plugin.ax.c.a;
+import com.tencent.mm.plugin.ay.c.b;
+import com.tencent.mm.plugin.webview.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.r;
-import com.tencent.mm.storage.z;
 import java.io.Closeable;
 import java.util.HashMap;
-import kotlin.f;
-import kotlin.l;
-import kotlin.x;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor;", "Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngineInterceptor;", "()V", "bizAppId", "", "getBizAppId", "()Ljava/lang/String;", "setBizAppId", "(Ljava/lang/String;)V", "kvSlot", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "bizPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "configPreFetcher", "", "id", "onCompleted", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "configWxPrefetcherClient", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "appId", "dispatchEvent", "", "url", "event", "data", "onConfigClient", "Companion", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor;", "Lcom/tencent/mm/plugin/webprefetcher/WebPrefetcherJsEngineInterceptor;", "()V", "bizAppId", "", "getBizAppId", "()Ljava/lang/String;", "setBizAppId", "(Ljava/lang/String;)V", "kvSlot", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "bizPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "configPreFetcher", "", "id", "onCompleted", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "configWxPrefetcherClient", "jsRuntime", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJsRuntime;", "appId", "dispatchEvent", "", "url", "event", "data", "onConfigClient", "Companion", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends com.tencent.mm.plugin.ax.d
+  extends com.tencent.mm.plugin.az.d
 {
-  private static final f sFt;
-  public static final a sKl;
-  private String mpE;
-  private final MMKVSlotManager sFn;
+  private static final kotlin.j<String> vKZ;
+  public static final a vQl;
+  private String pjl;
+  private final MMKVSlotManager vKT;
   
   static
   {
-    AppMethodBeat.i(267079);
-    sKl = new a((byte)0);
-    sFt = kotlin.g.ar((kotlin.g.a.a)b.sKm);
-    AppMethodBeat.o(267079);
+    AppMethodBeat.i(303137);
+    vQl = new a((byte)0);
+    vKZ = kotlin.k.cm((kotlin.g.a.a)b.vQm);
+    AppMethodBeat.o(303137);
   }
   
   public a()
   {
-    AppMethodBeat.i(267078);
-    this.mpE = "wxa06c02b5c00ff39b";
+    AppMethodBeat.i(303109);
+    this.pjl = "wxa06c02b5c00ff39b";
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("__WebJsEngineLocalData__");
-    kotlin.g.b.p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV…_WebJsEngineLocalData__\")");
-    this.sFn = new MMKVSlotManager(localMultiProcessMMKV, 15552000L);
-    AppMethodBeat.o(267078);
+    s.s(localMultiProcessMMKV, "getMMKV(\"__WebJsEngineLocalData__\")");
+    this.vKT = new MMKVSlotManager(localMultiProcessMMKV, 15552000L);
+    AppMethodBeat.o(303109);
   }
   
-  private final void c(i parami, final String paramString)
+  private static final void a(a parama, String paramString1, g paramg, b paramb, com.tencent.mm.plugin.appbrand.appcache.q paramq, String paramString2)
   {
-    AppMethodBeat.i(267074);
-    new com.tencent.mm.plugin.av.p((com.tencent.mm.plugin.av.q)new e(this, paramString)).h(parami);
-    AppMethodBeat.o(267074);
+    AppMethodBeat.i(303124);
+    s.u(parama, "this$0");
+    s.u(paramString1, "$id");
+    s.u(paramb, "$onCompleted");
+    s.u(paramq, "$pkg");
+    ((Map)parama.ipt()).put(paramString1, Integer.valueOf(paramg.czh()));
+    s.s(paramg, "this@apply");
+    paramb.invoke(paramg);
+    if ((paramq instanceof Closeable)) {}
+    for (parama = (Closeable)paramq;; parama = null)
+    {
+      IO.safeClose(parama);
+      AppMethodBeat.o(303124);
+      return;
+    }
   }
   
-  public final com.tencent.mm.plugin.appbrand.appcache.p cBu()
+  private final void c(i parami, String paramString)
+  {
+    AppMethodBeat.i(303114);
+    new com.tencent.mm.plugin.ax.p((com.tencent.mm.plugin.ax.q)new d(paramString, this)).l(parami);
+    AppMethodBeat.o(303114);
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.appcache.q deF()
   {
     boolean bool = true;
-    AppMethodBeat.i(267072);
-    Object localObject = c.Pwj;
-    localObject = m.PuL;
-    if (m.gPr() == 1) {}
+    AppMethodBeat.i(303151);
+    Object localObject = com.tencent.mm.plugin.ay.c.Wmq;
+    localObject = com.tencent.mm.plugin.webcanvas.k.WkZ;
+    if (com.tencent.mm.plugin.webcanvas.k.hBF() == 1) {}
     for (;;)
     {
-      localObject = c.Pwj;
-      localObject = c.b.a(c.b.a("prefetcher/bizAd.wspkg", bool, c.b.biz(this.mpE), this.mpE), (kotlin.g.a.q)new c(this), null, false, 12);
-      AppMethodBeat.o(267072);
+      localObject = com.tencent.mm.plugin.ay.c.Wmq;
+      localObject = c.b.a(c.b.b("prefetcher/bizAd.wspkg", bool, c.b.bih(this.pjl), this.pjl), (kotlin.g.a.q)new c(this), null, false, 12);
+      AppMethodBeat.o(303151);
       return localObject;
       bool = false;
     }
@@ -79,91 +96,89 @@ public final class a
   
   public final boolean o(final String paramString1, final String paramString2, final String paramString3, String paramString4)
   {
-    AppMethodBeat.i(267076);
-    kotlin.g.b.p.k(paramString3, "event");
+    AppMethodBeat.i(303158);
+    s.u(paramString3, "event");
     if (paramString1 == null)
     {
-      AppMethodBeat.o(267076);
+      AppMethodBeat.o(303158);
       return false;
     }
-    if (!Util.isEqual(this.mpE, paramString1))
+    if (!Util.isEqual(this.pjl, paramString1))
     {
-      AppMethodBeat.o(267076);
+      AppMethodBeat.o(303158);
       return false;
     }
     paramString2 = (CharSequence)paramString4;
     int i;
-    if ((paramString2 == null) || (kotlin.n.n.ba(paramString2)))
+    if ((paramString2 == null) || (n.bp(paramString2)))
     {
       i = 1;
       if (i == 0) {
-        break label183;
+        break label344;
       }
       paramString2 = "";
-      label68:
-      if (gQc().containsKey(paramString1)) {
-        break label388;
+      label69:
+      if (ipt().containsKey(paramString1)) {
+        break label381;
       }
-      paramString2 = (kotlin.g.a.b)new f(this, paramString3, paramString1, paramString2);
-      kotlin.g.b.p.k(paramString1, "id");
-      kotlin.g.b.p.k(paramString2, "onCompleted");
+      paramString2 = (b)new e(this, paramString3, paramString1, paramString2);
+      s.u(paramString1, "id");
+      s.u(paramString2, "onCompleted");
     }
     for (;;)
     {
       try
       {
-        paramString3 = gQb().bYV();
-        kotlin.g.b.p.j(paramString3, "this");
+        paramString3 = ips().sSV.czj();
+        s.s(paramString3, "this");
         c((i)paramString3, paramString1);
-        c.a(gQb(), paramString3, "AdWebPrefetcherManifest#".concat(String.valueOf(paramString1)), "manifest", null, md("manifest", this.mpE), 8);
-        paramString3 = cBu();
-        if (paramString3 != null) {
-          continue;
+        com.tencent.mm.plugin.ay.c.a(ips(), paramString3, s.X("AdWebPrefetcherManifest#", paramString1), "manifest", null, nP("manifest", this.pjl), 8);
+        paramString3 = deF();
+        if (paramString3 != null)
+        {
+          paramString4 = ips().sSV.czj();
+          s.s(paramString4, "this");
+          i locali = (i)paramString4;
+          c(locali, paramString1);
+          new com.tencent.mm.plugin.ax.j((com.tencent.mm.plugin.ax.k)new f(this)).l(locali);
+          new com.tencent.mm.plugin.ax.d((com.tencent.mm.plugin.ax.e)new a.g()).l(locali);
+          com.tencent.mm.plugin.ay.c.a(ips(), paramString4, s.X("AdWebPrefetcher#", paramString1), "prefetcher", null, nP("prefetcher", this.pjl), 8);
+          Log.i("MicroMsg.AdWebPrefetcherJsEngineInterceptor", s.X("configPreFetcher ", "/prefetcher.js"));
+          paramString4.evaluateJavascript(r.a(paramString3, "/prefetcher.js"), new a..ExternalSyntheticLambda0(this, paramString1, paramString4, paramString2, paramString3));
         }
       }
       catch (Exception paramString2)
       {
-        label183:
-        i locali;
-        Log.printErrStackTrace("MicroMsg.AdWebPrefetcherJsEngineInterceptor", (Throwable)paramString2, "configPreFetcher id=".concat(String.valueOf(paramString1)), new Object[0]);
+        label344:
+        Log.printErrStackTrace("MicroMsg.AdWebPrefetcherJsEngineInterceptor", (Throwable)paramString2, s.X("configPreFetcher id=", paramString1), new Object[0]);
         continue;
       }
-      AppMethodBeat.o(267076);
+      AppMethodBeat.o(303158);
       return true;
       i = 0;
       break;
-      paramString2 = ",".concat(String.valueOf(paramString4));
-      break label68;
-      paramString4 = gQb().bYV();
-      kotlin.g.b.p.j(paramString4, "this");
-      locali = (i)paramString4;
-      c(locali, paramString1);
-      new j((k)new g(this)).h(locali);
-      new com.tencent.mm.plugin.av.d((e)new h()).h(locali);
-      c.a(gQb(), paramString4, "AdWebPrefetcher#".concat(String.valueOf(paramString1)), "prefetcher", null, md("prefetcher", this.mpE), 8);
-      Log.i("MicroMsg.AdWebPrefetcherJsEngineInterceptor", "configPreFetcher ".concat(String.valueOf("/prefetcher.js")));
-      paramString4.evaluateJavascript(com.tencent.mm.plugin.webview.l.a.a(paramString3, "/prefetcher.js"), (ValueCallback)new d(paramString4, this, paramString1, paramString3, paramString2));
-      continue;
-      label388:
-      c.a.a(gQb(), paramString3, "{target:'" + paramString1 + '\'' + paramString2 + '}', null, 4);
+      paramString2 = s.X(",", paramString4);
+      break label69;
+      label381:
+      c.a.a((com.tencent.mm.plugin.ax.c)ips(), paramString3, "{target:'" + paramString1 + '\'' + paramString2 + '}', null, 4);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$Companion;", "", "()V", "TAG", "", "cgiAllowList", "getCgiAllowList", "()Ljava/lang/String;", "cgiAllowList$delegate", "Lkotlin/Lazy;", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$Companion;", "", "()V", "TAG", "", "cgiAllowList", "getCgiAllowList", "()Ljava/lang/String;", "cgiAllowList$delegate", "Lkotlin/Lazy;", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends kotlin.g.b.q
+    extends u
     implements kotlin.g.a.a<String>
   {
-    public static final b sKm;
+    public static final b vQm;
     
     static
     {
-      AppMethodBeat.i(257317);
-      sKm = new b();
-      AppMethodBeat.o(257317);
+      AppMethodBeat.i(302879);
+      vQm = new b();
+      AppMethodBeat.o(302879);
     }
     
     b()
@@ -172,10 +187,10 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "assetsVersion", "", "resVersion", "resPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "assetsVersion", "", "resVersion", "resPkg", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkg;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<Integer, Integer, com.tencent.mm.plugin.appbrand.appcache.p, Boolean>
+    extends u
+    implements kotlin.g.a.q<Integer, Integer, com.tencent.mm.plugin.appbrand.appcache.q, Boolean>
   {
     c(a parama)
     {
@@ -183,31 +198,26 @@ public final class a
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onReceiveValue", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$configPreFetcher$2$1"})
-  static final class d<T>
-    implements ValueCallback<String>
-  {
-    d(com.tencent.mm.plugin.appbrand.m.g paramg, a parama, String paramString, com.tencent.mm.plugin.appbrand.appcache.p paramp, kotlin.g.a.b paramb) {}
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$configWxPrefetcherClient$1", "Lcom/tencent/mm/plugin/webjsapi/WxPrefetcherClientContext;", "id", "", "getId", "()Ljava/lang/String;", "dispatch", "", "eventType", "event", "cb", "Landroid/webkit/ValueCallback;", "setMinBizPkgVersion", "version", "", "plugin-brandservice_release"})
-  public static final class e
-    implements com.tencent.mm.plugin.av.q
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$configWxPrefetcherClient$1", "Lcom/tencent/mm/plugin/webjsapi/WxPrefetcherClientContext;", "id", "", "getId", "()Ljava/lang/String;", "dispatch", "", "eventType", "event", "cb", "Landroid/webkit/ValueCallback;", "setMinBizPkgVersion", "version", "", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    implements com.tencent.mm.plugin.ax.q
   {
     private final String id;
     
-    e(String paramString)
+    d(String paramString, a parama)
     {
-      this.id = localObject;
+      AppMethodBeat.i(302881);
+      this.id = this.vQo;
+      AppMethodBeat.o(302881);
     }
     
     public final void b(String paramString1, String paramString2, ValueCallback<String> paramValueCallback)
     {
-      AppMethodBeat.i(257589);
-      kotlin.g.b.p.k(paramString1, "eventType");
-      kotlin.g.b.p.k(paramString2, "event");
-      this.sKn.gQb().b(paramString1, paramString2, paramValueCallback);
-      AppMethodBeat.o(257589);
+      AppMethodBeat.i(302890);
+      s.u(paramString1, "eventType");
+      s.u(paramString2, "event");
+      jdField_this.ips().b(paramString1, paramString2, paramValueCallback);
+      AppMethodBeat.o(302890);
     }
     
     public final String getId()
@@ -218,97 +228,97 @@ public final class a
     public final void setMinBizPkgVersion(int paramInt) {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "cxt", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<com.tencent.mm.plugin.appbrand.m.g, x>
+  @Metadata(d1={""}, d2={"<anonymous>", "", "cxt", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandJSContext;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
+    implements b<g, ah>
   {
-    f(a parama, String paramString1, String paramString2, String paramString3)
+    e(a parama, String paramString1, String paramString2, String paramString3)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$onConfigClient$1", "Lcom/tencent/mm/plugin/webjsapi/WxJsEngineContextAPIContext;", "basePkgVersion", "", "getBasePkgVersion", "()I", "bizPkgVersion", "getBizPkgVersion", "jsApiHandler", "Lcom/tencent/mm/plugin/webview/jsapi/IWebCanvasJsApiHandler;", "getJsApiHandler", "()Lcom/tencent/mm/plugin/webview/jsapi/IWebCanvasJsApiHandler;", "dispatch", "", "eventType", "", "event", "cb", "Landroid/webkit/ValueCallback;", "getLocalData", "key", "onInvoke", "func", "message", "setLocalData", "data", "validCgi", "", "cmdId", "cgiUrl", "plugin-brandservice_release"})
-  public static final class g
-    implements k
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$onConfigClient$1", "Lcom/tencent/mm/plugin/webjsapi/WxJsEngineContextAPIContext;", "basePkgVersion", "", "getBasePkgVersion", "()I", "bizPkgVersion", "getBizPkgVersion", "jsApiHandler", "Lcom/tencent/mm/plugin/webview/jsapi/IWebCanvasJsApiHandler;", "getJsApiHandler", "()Lcom/tencent/mm/plugin/webview/jsapi/IWebCanvasJsApiHandler;", "dispatch", "", "eventType", "", "event", "cb", "Landroid/webkit/ValueCallback;", "getLocalData", "key", "onInvoke", "func", "message", "setLocalData", "data", "validCgi", "", "cmdId", "cgiUrl", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements com.tencent.mm.plugin.ax.k
   {
-    public final boolean aF(int paramInt, String paramString)
+    f(a parama) {}
+    
+    public final boolean aS(int paramInt, String paramString)
     {
-      AppMethodBeat.i(259794);
-      kotlin.g.b.p.k(paramString, "cgiUrl");
-      Object localObject = a.sKl;
-      localObject = a.cBv();
-      a.a locala = a.sKl;
-      if (!kotlin.n.n.a((CharSequence)((f)localObject).getValue(), (CharSequence)paramString, false))
+      AppMethodBeat.i(302907);
+      s.u(paramString, "cgiUrl");
+      a.a locala = a.vQl;
+      if (!n.a((CharSequence)a.deG().getValue(), (CharSequence)paramString, false))
       {
         Log.i("MicroMsg.AdWebPrefetcherJsEngineInterceptor", "do cgi cmdId=" + paramInt + ", cgiUrl=" + paramString + " not allowed!!");
-        AppMethodBeat.o(259794);
+        AppMethodBeat.o(302907);
         return false;
       }
-      AppMethodBeat.o(259794);
+      AppMethodBeat.o(302907);
       return true;
     }
     
     public final void b(String paramString1, String paramString2, ValueCallback<String> paramValueCallback)
     {
-      AppMethodBeat.i(259802);
-      kotlin.g.b.p.k(paramString1, "eventType");
-      kotlin.g.b.p.k(paramString2, "event");
-      this.sKn.gQb().b(paramString1, paramString2, paramValueCallback);
-      AppMethodBeat.o(259802);
+      AppMethodBeat.i(302957);
+      s.u(paramString1, "eventType");
+      s.u(paramString2, "event");
+      this.vQn.ips().b(paramString1, paramString2, paramValueCallback);
+      AppMethodBeat.o(302957);
     }
     
-    public final com.tencent.mm.plugin.webview.d.d cAI()
+    public final f ddL()
     {
-      AppMethodBeat.i(259798);
-      com.tencent.mm.plugin.webview.d.d locald = (com.tencent.mm.plugin.webview.d.d)new a();
-      AppMethodBeat.o(259798);
-      return locald;
+      AppMethodBeat.i(302945);
+      f localf = (f)new a();
+      AppMethodBeat.o(302945);
+      return localf;
     }
     
-    public final void fs(String paramString1, String paramString2)
+    public final void fM(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(259799);
-      kotlin.g.b.p.k(paramString1, "func");
-      kotlin.g.b.p.k(paramString2, "message");
-      AppMethodBeat.o(259799);
+      AppMethodBeat.i(302951);
+      s.u(paramString1, "func");
+      s.u(paramString2, "message");
+      AppMethodBeat.o(302951);
     }
     
     public final int getBasePkgVersion()
     {
-      AppMethodBeat.i(259788);
-      int i = com.tencent.mm.plugin.webview.l.a.b(this.sKn.gQb().gPi());
-      AppMethodBeat.o(259788);
+      AppMethodBeat.i(302891);
+      int i = com.tencent.mm.plugin.webview.l.a.h(this.vQn.ips().iox());
+      AppMethodBeat.o(302891);
       return i;
     }
     
     public final int getBizPkgVersion()
     {
-      AppMethodBeat.i(259791);
-      com.tencent.mm.plugin.appbrand.appcache.p localp2 = this.sKn.cBu();
-      if (localp2 != null)
+      AppMethodBeat.i(302898);
+      Object localObject = this.vQn.deF();
+      if (localObject == null)
       {
-        int i = com.tencent.mm.plugin.webview.l.a.b(localp2);
-        com.tencent.mm.plugin.appbrand.appcache.p localp1 = localp2;
-        if (!(localp2 instanceof Closeable)) {
-          localp1 = null;
-        }
-        IO.safeClose((Closeable)localp1);
-        AppMethodBeat.o(259791);
+        AppMethodBeat.o(302898);
+        return 0;
+      }
+      int i = com.tencent.mm.plugin.webview.l.a.h((com.tencent.mm.plugin.appbrand.appcache.q)localObject);
+      if ((localObject instanceof Closeable)) {}
+      for (localObject = (Closeable)localObject;; localObject = null)
+      {
+        IO.safeClose((Closeable)localObject);
+        AppMethodBeat.o(302898);
         return i;
       }
-      AppMethodBeat.o(259791);
-      return 0;
     }
     
     public final String getLocalData(String paramString)
     {
-      AppMethodBeat.i(259797);
-      kotlin.g.b.p.k(paramString, "key");
+      AppMethodBeat.i(302926);
+      s.u(paramString, "key");
       try
       {
-        String str = a.a(this.sKn).decodeString(paramString, "");
+        String str = a.a(this.vQn).decodeString(paramString, "");
         Log.d("MicroMsg.AdWebPrefetcherJsEngineInterceptor", "getLocalData:" + paramString + ", " + str);
         paramString = str;
       }
@@ -316,91 +326,40 @@ public final class a
       {
         for (;;)
         {
-          Log.printErrStackTrace("MicroMsg.AdWebPrefetcherJsEngineInterceptor", (Throwable)localException, "getLocalData:".concat(String.valueOf(paramString)), new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AdWebPrefetcherJsEngineInterceptor", (Throwable)localException, s.X("getLocalData:", paramString), new Object[0]);
           paramString = null;
         }
       }
-      AppMethodBeat.o(259797);
+      AppMethodBeat.o(302926);
       return paramString;
     }
     
     public final void setLocalData(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(259796);
-      kotlin.g.b.p.k(paramString1, "key");
-      kotlin.g.b.p.k(paramString2, "data");
+      AppMethodBeat.i(302916);
+      s.u(paramString1, "key");
+      s.u(paramString2, "data");
       try
       {
-        ((MultiProcessMMKV)a.a(this.sKn).getSlotForWrite()).encode(paramString1, paramString2);
+        ((MultiProcessMMKV)a.a(this.vQn).getSlotForWrite()).encode(paramString1, paramString2);
         Log.d("MicroMsg.AdWebPrefetcherJsEngineInterceptor", "setLocalData:" + paramString1 + ", " + paramString2);
-        AppMethodBeat.o(259796);
+        AppMethodBeat.o(302916);
         return;
       }
       catch (Exception localException)
       {
         Log.printErrStackTrace("MicroMsg.AdWebPrefetcherJsEngineInterceptor", (Throwable)localException, "setLocalData:" + paramString1 + ", " + paramString2, new Object[0]);
-        AppMethodBeat.o(259796);
+        AppMethodBeat.o(302916);
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$onConfigClient$1$jsApiHandler$1", "Lcom/tencent/mm/plugin/webview/jsapi/IWebCanvasJsApiHandler;", "dealMsg", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "callbackHandler", "Lcom/tencent/mm/plugin/webview/jsapi/ICallbackHandler;", "setJsEngineContext", "ct", "Landroid/content/Context;", "plugin-brandservice_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$onConfigClient$1$jsApiHandler$1", "Lcom/tencent/mm/plugin/webview/jsapi/IWebCanvasJsApiHandler;", "dealMsg", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "callbackHandler", "Lcom/tencent/mm/plugin/webview/jsapi/ICallbackHandler;", "setJsEngineContext", "ct", "Landroid/content/Context;", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
-      implements com.tencent.mm.plugin.webview.d.d
+      implements f
     {
-      public final void a(com.tencent.mm.plugin.webview.d.n paramn, com.tencent.mm.plugin.webview.d.b paramb) {}
+      public final void a(com.tencent.mm.plugin.webview.jsapi.p paramp, com.tencent.mm.plugin.webview.jsapi.c paramc) {}
       
-      public final void eU(Context paramContext) {}
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/AdWebPrefetcherJsEngineInterceptor$onConfigClient$2", "Lcom/tencent/mm/plugin/webjsapi/WxAdAPIContext;", "deleteAd", "", "msgId", "", "forceDelete", "", "getAdContext", "from", "", "getInfo", "key", "replaceAdData", "data", "plugin-brandservice_release"})
-  public static final class h
-    implements e
-  {
-    public final void deleteAd(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(259351);
-      kotlin.g.b.p.k(paramString, "msgId");
-      long l = Util.safeParseLong(paramString);
-      if (l == 0L)
-      {
-        AppMethodBeat.o(259351);
-        return;
-      }
-      if (paramBoolean)
-      {
-        af.bjB().UI(l);
-        AppMethodBeat.o(259351);
-        return;
-      }
-      paramString = af.bjB().Uw(l);
-      if (paramString != null)
-      {
-        if (paramString.field_isRead != 1) {
-          af.bjB().UI(l);
-        }
-        AppMethodBeat.o(259351);
-        return;
-      }
-      AppMethodBeat.o(259351);
-    }
-    
-    public final String getAdContext(int paramInt)
-    {
-      AppMethodBeat.i(259348);
-      Object localObject = r.VcW;
-      localObject = r.asl(paramInt);
-      AppMethodBeat.o(259348);
-      return localObject;
-    }
-    
-    public final void replaceAdData(String paramString)
-    {
-      AppMethodBeat.i(259346);
-      kotlin.g.b.p.k(paramString, "data");
-      r localr = r.VcW;
-      r.replaceAdData(paramString);
-      AppMethodBeat.o(259346);
+      public final void fR(Context paramContext) {}
     }
   }
 }

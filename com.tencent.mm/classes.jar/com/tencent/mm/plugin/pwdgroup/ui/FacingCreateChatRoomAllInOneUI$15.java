@@ -1,67 +1,31 @@
 package com.tencent.mm.plugin.pwdgroup.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.pwdgroup.ui.widget.MMKeyBoardView.a;
-import com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class FacingCreateChatRoomAllInOneUI$15
-  implements MMKeyBoardView.a
+  implements View.OnClickListener
 {
   FacingCreateChatRoomAllInOneUI$15(FacingCreateChatRoomAllInOneUI paramFacingCreateChatRoomAllInOneUI) {}
   
-  public final void aVa(String paramString)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(27636);
-    if (FacingCreateChatRoomAllInOneUI.g(this.Hjr) != null)
-    {
-      if ((FacingCreateChatRoomAllInOneUI.h(this.Hjr)) || (FacingCreateChatRoomAllInOneUI.i(this.Hjr)))
-      {
-        MMPwdInputView localMMPwdInputView = FacingCreateChatRoomAllInOneUI.g(this.Hjr);
-        localMMPwdInputView.bJQ();
-        localMMPwdInputView.aVa(paramString);
-        FacingCreateChatRoomAllInOneUI.a(this.Hjr, FacingCreateChatRoomAllInOneUI.a.Hjw);
-        AppMethodBeat.o(27636);
-        return;
-      }
-      FacingCreateChatRoomAllInOneUI.g(this.Hjr).aVa(paramString);
-    }
-    AppMethodBeat.o(27636);
-  }
-  
-  public final void bJQ()
-  {
-    AppMethodBeat.i(27637);
-    if (FacingCreateChatRoomAllInOneUI.g(this.Hjr) != null) {
-      FacingCreateChatRoomAllInOneUI.g(this.Hjr).bJQ();
-    }
-    AppMethodBeat.o(27637);
-  }
-  
-  public final void frW()
-  {
-    AppMethodBeat.i(27638);
-    if (FacingCreateChatRoomAllInOneUI.g(this.Hjr) != null)
-    {
-      if ((FacingCreateChatRoomAllInOneUI.h(this.Hjr)) || (FacingCreateChatRoomAllInOneUI.i(this.Hjr)))
-      {
-        FacingCreateChatRoomAllInOneUI.g(this.Hjr).bJQ();
-        FacingCreateChatRoomAllInOneUI.a(this.Hjr, FacingCreateChatRoomAllInOneUI.a.Hjw);
-        AppMethodBeat.o(27638);
-        return;
-      }
-      MMPwdInputView localMMPwdInputView = FacingCreateChatRoomAllInOneUI.g(this.Hjr);
-      if (localMMPwdInputView.wCv > 0) {
-        localMMPwdInputView.jlE.deleteCharAt(localMMPwdInputView.wCv - 1);
-      }
-      localMMPwdInputView.djb();
-      localMMPwdInputView.frX();
-    }
-    AppMethodBeat.o(27638);
+    AppMethodBeat.i(27635);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/pwdgroup/ui/FacingCreateChatRoomAllInOneUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    FacingCreateChatRoomAllInOneUI.f(this.Nhe);
+    FacingCreateChatRoomAllInOneUI.d(this.Nhe);
+    a.a(this, "com/tencent/mm/plugin/pwdgroup/ui/FacingCreateChatRoomAllInOneUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(27635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.15
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,10 @@ package com.google.android.gms.common.data;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@VisibleForTesting
 public final class ConcatenatedDataBuffer<T>
   implements DataBuffer<T>, ExclusionFilterable, TextFilterable
 {
@@ -56,69 +54,69 @@ public final class ConcatenatedDataBuffer<T>
   {
     // Byte code:
     //   0: sipush 11516
-    //   3: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: ifnonnull +10 -> 17
     //   10: sipush 11516
-    //   13: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   13: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: return
     //   17: aload_0
     //   18: monitorenter
     //   19: aload_0
-    //   20: getfield 36	com/google/android/gms/common/data/ConcatenatedDataBuffer:zznf	Ljava/util/ArrayList;
-    //   23: invokevirtual 64	java/util/ArrayList:isEmpty	()Z
+    //   20: getfield 35	com/google/android/gms/common/data/ConcatenatedDataBuffer:zznf	Ljava/util/ArrayList;
+    //   23: invokevirtual 63	java/util/ArrayList:isEmpty	()Z
     //   26: ifeq +40 -> 66
     //   29: aload_0
-    //   30: new 66	android/os/Bundle
+    //   30: new 65	android/os/Bundle
     //   33: dup
-    //   34: invokespecial 67	android/os/Bundle:<init>	()V
-    //   37: putfield 69	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
+    //   34: invokespecial 66	android/os/Bundle:<init>	()V
+    //   37: putfield 68	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
     //   40: aload_1
-    //   41: invokeinterface 73 1 0
+    //   41: invokeinterface 72 1 0
     //   46: astore_2
     //   47: aload_2
     //   48: ifnull +18 -> 66
     //   51: aload_0
-    //   52: getfield 69	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
-    //   55: ldc 75
+    //   52: getfield 68	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
+    //   55: ldc 74
     //   57: aload_2
-    //   58: ldc 75
-    //   60: invokevirtual 79	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   63: invokevirtual 83	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: ldc 74
+    //   60: invokevirtual 78	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   63: invokevirtual 82	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   66: aload_0
-    //   67: getfield 36	com/google/android/gms/common/data/ConcatenatedDataBuffer:zznf	Ljava/util/ArrayList;
+    //   67: getfield 35	com/google/android/gms/common/data/ConcatenatedDataBuffer:zznf	Ljava/util/ArrayList;
     //   70: aload_1
-    //   71: invokevirtual 87	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   71: invokevirtual 86	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   74: pop
     //   75: aload_0
-    //   76: invokevirtual 90	com/google/android/gms/common/data/ConcatenatedDataBuffer:computeCounts	()V
+    //   76: invokevirtual 89	com/google/android/gms/common/data/ConcatenatedDataBuffer:computeCounts	()V
     //   79: aload_1
-    //   80: invokeinterface 73 1 0
+    //   80: invokeinterface 72 1 0
     //   85: astore_1
     //   86: aload_1
     //   87: ifnull +27 -> 114
     //   90: aload_0
-    //   91: getfield 69	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
-    //   94: ldc 92
+    //   91: getfield 68	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
+    //   94: ldc 91
     //   96: aload_1
-    //   97: ldc 92
-    //   99: invokevirtual 79	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   102: invokevirtual 83	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   97: ldc 91
+    //   99: invokevirtual 78	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   102: invokevirtual 82	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   105: aload_0
     //   106: monitorexit
     //   107: sipush 11516
-    //   110: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   110: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: return
     //   114: aload_0
-    //   115: getfield 69	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
-    //   118: ldc 92
-    //   120: invokevirtual 96	android/os/Bundle:remove	(Ljava/lang/String;)V
+    //   115: getfield 68	com/google/android/gms/common/data/ConcatenatedDataBuffer:mBundle	Landroid/os/Bundle;
+    //   118: ldc 91
+    //   120: invokevirtual 95	android/os/Bundle:remove	(Ljava/lang/String;)V
     //   123: goto -18 -> 105
     //   126: astore_1
     //   127: aload_0
     //   128: monitorexit
     //   129: sipush 11516
-    //   132: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: aload_1
     //   136: athrow
     // Local variable table:
@@ -370,7 +368,7 @@ public final class ConcatenatedDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.ConcatenatedDataBuffer
  * JD-Core Version:    0.7.0.1
  */

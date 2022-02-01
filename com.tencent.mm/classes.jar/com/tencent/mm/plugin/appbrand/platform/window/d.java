@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract interface d
 {
-  public abstract void O(View paramView, int paramInt);
+  public abstract void T(View paramView, int paramInt);
   
   public abstract void a(WebChromeClient.CustomViewCallback paramCustomViewCallback);
   
@@ -15,29 +15,29 @@ public abstract interface d
   
   public abstract void b(b paramb);
   
-  public abstract boolean bEz();
+  public abstract boolean cHN();
   
-  public abstract boolean cgP();
+  public abstract boolean cdL();
   
   public abstract void release();
   
-  public abstract void yS(int paramInt);
+  public abstract void zb(int paramInt);
   
   public static final class a
   {
-    public static int CC(int paramInt)
+    public static int CT(int paramInt)
     {
-      AppMethodBeat.i(242764);
+      AppMethodBeat.i(317499);
       new a();
-      int i = a.CD(paramInt);
+      int i = a.CU(paramInt);
       Log.i("Luggage.WXA.WindowFullscreenHandler.Factory", "convertActivityOrientation2Direction [%d]->[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      AppMethodBeat.o(242764);
+      AppMethodBeat.o(317499);
       return i;
     }
     
     final class a
     {
-      static int CD(int paramInt)
+      static int CU(int paramInt)
       {
         switch (paramInt)
         {

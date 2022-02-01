@@ -4,50 +4,50 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 
 public final class g
   extends d
 {
-  public g(String paramString, c paramc, v paramv)
+  public g(String paramString, c paramc, y paramy)
   {
-    super(paramString, paramc, paramv);
+    super(paramString, paramc, paramy);
   }
   
-  public final void cqr()
+  public final void cSY()
   {
     AppMethodBeat.i(135546);
-    if (this.rGO != null) {
-      b.bhh().a(new b.k()
+    if (this.uSe != null) {
+      b.bEY().a(new b.k()
       {
-        public final void G(Bitmap paramAnonymousBitmap)
-        {
-          AppMethodBeat.i(135544);
-          g.this.V(paramAnonymousBitmap);
-          AppMethodBeat.o(135544);
-        }
+        public final void bFg() {}
         
-        public final void bhq() {}
-        
-        public final void bhr()
+        public final void bFh()
         {
           AppMethodBeat.i(135545);
-          g.this.rGP.a("Failed to load icon via network", g.this);
+          g.this.uSf.a("Failed to load icon via network", g.this);
           AppMethodBeat.o(135545);
         }
         
         public final String key()
         {
-          return g.this.rGO;
+          return g.this.uSe;
         }
-      }, this.rGO, null);
+        
+        public final void onBitmapLoaded(Bitmap paramAnonymousBitmap)
+        {
+          AppMethodBeat.i(135544);
+          g.this.ae(paramAnonymousBitmap);
+          AppMethodBeat.o(135544);
+        }
+      }, this.uSe, null);
     }
     AppMethodBeat.o(135546);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.g
  * JD-Core Version:    0.7.0.1
  */

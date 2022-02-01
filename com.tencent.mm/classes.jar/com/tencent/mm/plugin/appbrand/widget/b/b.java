@@ -1,15 +1,22 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
-import android.content.Context;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.appbrand.widget.i;
+import com.tencent.mm.plugin.appbrand.widget.o;
+import com.tencent.mm.plugin.appbrand.widget.u;
 
 public abstract interface b
-  extends com.tencent.luggage.a.b
+  extends a
 {
-  public abstract a ec(Context paramContext);
+  public abstract o cfe();
+  
+  public abstract u cfi();
+  
+  public abstract i cfo();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,12 @@
 package com.tencent.mm.plugin.profile.ui.tab;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.ap;
-import com.tencent.mm.sdk.event.IListener;
-import java.lang.ref.WeakReference;
+import kotlin.Metadata;
 
-final class c$a
-  extends IListener<ap>
-{
-  private WeakReference<c> Hgy;
-  
-  public c$a(c paramc)
-  {
-    AppMethodBeat.i(272575);
-    this.Hgy = new WeakReference(paramc);
-    this.__eventId = ap.class.getName().hashCode();
-    AppMethodBeat.o(272575);
-  }
-}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/profile/ui/tab/ContactBizHeaderLiveNoticeLogic$Companion;", "", "()V", "TAG", "", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class c$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.c.a
  * JD-Core Version:    0.7.0.1
  */

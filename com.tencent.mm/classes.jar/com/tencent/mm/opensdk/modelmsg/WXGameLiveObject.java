@@ -13,9 +13,9 @@ public class WXGameLiveObject
   
   public WXGameLiveObject()
   {
-    AppMethodBeat.i(254543);
+    AppMethodBeat.i(242988);
     this.extraInfoMap = new HashMap();
-    AppMethodBeat.o(254543);
+    AppMethodBeat.o(242988);
   }
   
   public boolean checkArgs()
@@ -25,7 +25,7 @@ public class WXGameLiveObject
   
   public String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(254547);
+    AppMethodBeat.i(243003);
     HashMap localHashMap = this.extraInfoMap;
     if (localHashMap != null)
     {
@@ -36,9 +36,9 @@ public class WXGameLiveObject
     }
     for (;;)
     {
-      AppMethodBeat.o(254547);
+      AppMethodBeat.o(243003);
       return paramString2;
-      AppMethodBeat.o(254547);
+      AppMethodBeat.o(243003);
       return null;
       label41:
       paramString2 = paramString1;
@@ -47,24 +47,24 @@ public class WXGameLiveObject
   
   public void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(254546);
+    AppMethodBeat.i(242999);
     if (this.extraInfoMap == null) {
       this.extraInfoMap = new HashMap();
     }
     if (!b.b(paramString1)) {
       this.extraInfoMap.put(paramString1, paramString2);
     }
-    AppMethodBeat.o(254546);
+    AppMethodBeat.o(242999);
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(254544);
+    AppMethodBeat.i(242990);
     HashMap localHashMap = this.extraInfoMap;
     if (localHashMap != null) {
       paramBundle.putSerializable("_wxgame_extrainfo", localHashMap);
     }
-    AppMethodBeat.o(254544);
+    AppMethodBeat.o(242990);
   }
   
   public int type()
@@ -74,9 +74,9 @@ public class WXGameLiveObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(254545);
+    AppMethodBeat.i(242993);
     this.extraInfoMap = ((HashMap)paramBundle.getSerializable("_wxgame_extrainfo"));
-    AppMethodBeat.o(254545);
+    AppMethodBeat.o(242993);
   }
 }
 

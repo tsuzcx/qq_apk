@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <include layout="@layout/a8t" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/cc2" style="@style/j4" />
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/e_">
-                    <TextView android:id="@id/cdm" android:text="{title}" style="@style/ja" />
-                    <TextView android:id="@id/cbo" android:layout_marginTop="@dimen/ej" android:text="{detail}" style="@style/j8" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cv" android:paddingEnd="@dimen/cv"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/y" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/ge" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 </LinearLayout>

@@ -5,16 +5,16 @@ import android.text.Layout.Alignment;
 
 public class a
 {
-  public final CharSequence LV;
+  public final CharSequence bba;
   public final Bitmap bitmap;
-  public final Layout.Alignment bjC;
-  public final float bjD;
-  public final int bjE;
-  public final float bjF;
-  public final int bjG;
-  public final float bjH;
-  public final boolean bjI;
-  public final int bjJ;
+  public final int ddA;
+  public final float ddB;
+  public final boolean ddC;
+  public final int ddD;
+  public final Layout.Alignment ddw;
+  public final float ddx;
+  public final int ddy;
+  public final float ddz;
   public final int lineType;
   public final float size;
   
@@ -40,18 +40,18 @@ public class a
   
   private a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, Bitmap paramBitmap, float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, float paramFloat4, boolean paramBoolean, int paramInt4)
   {
-    this.LV = paramCharSequence;
-    this.bjC = paramAlignment;
+    this.bba = paramCharSequence;
+    this.ddw = paramAlignment;
     this.bitmap = paramBitmap;
-    this.bjD = paramFloat1;
+    this.ddx = paramFloat1;
     this.lineType = paramInt1;
-    this.bjE = paramInt2;
-    this.bjF = paramFloat2;
-    this.bjG = paramInt3;
+    this.ddy = paramInt2;
+    this.ddz = paramFloat2;
+    this.ddA = paramInt3;
     this.size = paramFloat3;
-    this.bjH = paramFloat4;
-    this.bjI = paramBoolean;
-    this.bjJ = paramInt4;
+    this.ddB = paramFloat4;
+    this.ddC = paramBoolean;
+    this.ddD = paramInt4;
   }
 }
 

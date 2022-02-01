@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<LinearLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:id="@id/ik7" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/nw" />
-    <TextView android:textColor="@color/a2x" android:gravity="right" android:id="@id/i50" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+    <com.tencent.mm.plugin.game.ui.chat_tab.CustomTabActionBar android:id="@id/eo2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.game.chatroom.view.ChatRoomListView android:id="@id/eo3" android:background="@color/a" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
 </LinearLayout>

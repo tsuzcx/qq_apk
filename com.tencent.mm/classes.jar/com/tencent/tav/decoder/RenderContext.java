@@ -56,7 +56,7 @@ public class RenderContext
   
   public RenderContext(int paramInt1, int paramInt2, Surface paramSurface, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(191187);
+    AppMethodBeat.i(216025);
     this.eglSurface = EGL14.EGL_NO_SURFACE;
     this.isSharedContext = false;
     this.released = false;
@@ -71,12 +71,12 @@ public class RenderContext
     this.height = paramInt2;
     eglSetup(paramEGLContext);
     makeCurrent();
-    AppMethodBeat.o(191187);
+    AppMethodBeat.o(216025);
   }
   
   public static boolean checkEglActionSuccess(String paramString)
   {
-    AppMethodBeat.i(191240);
+    AppMethodBeat.i(216078);
     StringBuilder localStringBuilder = new StringBuilder("");
     for (int i = 0;; i = 1)
     {
@@ -92,32 +92,32 @@ public class RenderContext
     }
     if (i == 0)
     {
-      AppMethodBeat.o(191240);
+      AppMethodBeat.o(216078);
       return true;
     }
-    AppMethodBeat.o(191240);
+    AppMethodBeat.o(216078);
     return false;
   }
   
   public static void checkEglError(String paramString)
   {
-    AppMethodBeat.i(191236);
+    AppMethodBeat.i(216068);
     checkEglActionSuccess(paramString);
-    AppMethodBeat.o(191236);
+    AppMethodBeat.o(216068);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(191218);
+    AppMethodBeat.i(216058);
     if (this.threadId != Thread.currentThread().getId()) {
       Logger.e("RenderContext", "线程不对，注意EGL相关的泄露问题！threadId = " + this.threadId + ", Thread.currentThread() name = " + Thread.currentThread().getName(), new RuntimeException());
     }
-    AppMethodBeat.o(191218);
+    AppMethodBeat.o(216058);
   }
   
   private void createEGLSurface()
   {
-    AppMethodBeat.i(191214);
+    AppMethodBeat.i(216047);
     if (this.eglSurface != EGL14.EGL_NO_SURFACE)
     {
       EGL14.eglDestroySurface(this.eglDisplay, this.eglSurface);
@@ -126,18 +126,18 @@ public class RenderContext
     if (this.surface != null)
     {
       this.eglSurface = EGL14.eglCreateWindowSurface(this.eglDisplay, this.eglConfig, this.surface, new int[] { 12344 }, 0);
-      AppMethodBeat.o(191214);
+      AppMethodBeat.o(216047);
       return;
     }
     int i = this.width;
     int j = this.height;
     this.eglSurface = EGL14.eglCreatePbufferSurface(this.eglDisplay, this.eglConfig, new int[] { 12375, i, 12374, j, 12344 }, 0);
-    AppMethodBeat.o(191214);
+    AppMethodBeat.o(216047);
   }
   
   public static int createTexture(int paramInt)
   {
-    AppMethodBeat.i(191259);
+    AppMethodBeat.i(216117);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     int i = arrayOfInt[0];
@@ -148,7 +148,7 @@ public class RenderContext
     GLES20.glTexParameteri(paramInt, 10242, 33071);
     GLES20.glTexParameteri(paramInt, 10243, 33071);
     checkEglError("glTexParameter");
-    AppMethodBeat.o(191259);
+    AppMethodBeat.o(216117);
     return i;
   }
   
@@ -436,10 +436,10 @@ public class RenderContext
     {
       try
       {
-        AppMethodBeat.i(191244);
+        AppMethodBeat.i(216089);
         if (this.released)
         {
-          AppMethodBeat.o(191244);
+          AppMethodBeat.o(216089);
           paramInt = j;
           return paramInt;
         }
@@ -455,7 +455,7 @@ public class RenderContext
           Logger.e("RenderContext", " " + GLES20.glGetShaderInfoLog(j));
           GLES20.glDeleteShader(j);
           paramInt = i;
-          AppMethodBeat.o(191244);
+          AppMethodBeat.o(216089);
         }
         else
         {
@@ -518,7 +518,7 @@ public class RenderContext
   
   private void releaseReleadingSurface()
   {
-    AppMethodBeat.i(191251);
+    AppMethodBeat.i(216098);
     checkThread();
     int i = 0;
     while (i < this.releasingSurfaceCache.size())
@@ -526,7 +526,7 @@ public class RenderContext
       release((Surface)this.releasingSurfaceCache.remove(i));
       i += 1;
     }
-    AppMethodBeat.o(191251);
+    AppMethodBeat.o(216098);
   }
   
   public Surface createOutputSurface(int paramInt1, int paramInt2, int paramInt3)
@@ -536,12 +536,12 @@ public class RenderContext
       String str;
       try
       {
-        AppMethodBeat.i(191248);
+        AppMethodBeat.i(216262);
         Surface localSurface1;
         if (this.released)
         {
           localSurface1 = null;
-          AppMethodBeat.o(191248);
+          AppMethodBeat.o(216262);
           return localSurface1;
         }
         checkThread();
@@ -553,7 +553,7 @@ public class RenderContext
           if (localSurface1 != null)
           {
             this.activeSurfaceCache.put(localSurface1, str);
-            AppMethodBeat.o(191248);
+            AppMethodBeat.o(216262);
             continue;
           }
         }
@@ -565,7 +565,7 @@ public class RenderContext
       Surface localSurface2 = new Surface(localVideoTexture.surfaceTexture());
       this.videoTextureMap.put(localSurface2, localVideoTexture);
       this.activeSurfaceCache.put(localSurface2, str);
-      AppMethodBeat.o(191248);
+      AppMethodBeat.o(216262);
     }
   }
   
@@ -641,20 +641,20 @@ public class RenderContext
   
   public long getEglSurfaceHandle()
   {
-    AppMethodBeat.i(191223);
+    AppMethodBeat.i(216206);
     if (this.eglSurface != null)
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
         l = this.eglSurface.getNativeHandle();
-        AppMethodBeat.o(191223);
+        AppMethodBeat.o(216206);
         return l;
       }
       long l = this.eglSurface.getHandle();
-      AppMethodBeat.o(191223);
+      AppMethodBeat.o(216206);
       return l;
     }
-    AppMethodBeat.o(191223);
+    AppMethodBeat.o(216206);
     return 0L;
   }
   
@@ -678,53 +678,49 @@ public class RenderContext
     return this.pBufferEnable;
   }
   
-  /* Error */
   public void makeCurrent()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 423
-    //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: invokespecial 325	com/tencent/tav/decoder/RenderContext:checkThread	()V
-    //   12: aload_0
-    //   13: getfield 77	com/tencent/tav/decoder/RenderContext:released	Z
-    //   16: ifeq +12 -> 28
-    //   19: ldc_w 423
-    //   22: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: return
-    //   28: aload_0
-    //   29: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
-    //   32: aload_0
-    //   33: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   36: aload_0
-    //   37: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   40: aload_0
-    //   41: getfield 265	com/tencent/tav/decoder/RenderContext:_eglContext	Landroid/opengl/EGLContext;
-    //   44: invokestatic 427	android/opengl/EGL14:eglMakeCurrent	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;Landroid/opengl/EGLSurface;Landroid/opengl/EGLContext;)Z
-    //   47: ifne +9 -> 56
-    //   50: ldc_w 429
-    //   53: invokestatic 219	com/tencent/tav/decoder/RenderContext:checkEglError	(Ljava/lang/String;)V
-    //   56: ldc_w 423
-    //   59: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   62: goto -37 -> 25
-    //   65: astore_1
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload_1
-    //   69: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	70	0	this	RenderContext
-    //   65	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	25	65	finally
-    //   28	56	65	finally
-    //   56	62	65	finally
+    try
+    {
+      AppMethodBeat.i(216223);
+      makeCurrent(false);
+      AppMethodBeat.o(216223);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void makeCurrent(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(216234);
+        checkThread();
+        if (this.released)
+        {
+          AppMethodBeat.o(216234);
+          return;
+        }
+        if (!EGL14.eglMakeCurrent(this.eglDisplay, this.eglSurface, this.eglSurface, this._eglContext))
+        {
+          checkEglError("eglMakeCurrent failed");
+          if (paramBoolean)
+          {
+            RuntimeException localRuntimeException = new RuntimeException("eglMakeCurrent failed");
+            AppMethodBeat.o(216234);
+            throw localRuntimeException;
+          }
+        }
+      }
+      finally {}
+      AppMethodBeat.o(216234);
+    }
   }
   
   public void release()
@@ -733,11 +729,11 @@ public class RenderContext
     {
       try
       {
-        AppMethodBeat.i(191258);
+        AppMethodBeat.i(216291);
         checkThread();
         if (this.released)
         {
-          AppMethodBeat.o(191258);
+          AppMethodBeat.o(216291);
           return;
         }
         makeCurrent();
@@ -788,7 +784,7 @@ public class RenderContext
       this._eglContext = null;
       this.eglSurface = null;
       this.surface = null;
-      AppMethodBeat.o(191258);
+      AppMethodBeat.o(216291);
     }
   }
   
@@ -808,12 +804,12 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 478
+    //   2: ldc_w 482
     //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 77	com/tencent/tav/decoder/RenderContext:released	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 478
+    //   15: ldc_w 482
     //   18: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
@@ -825,12 +821,12 @@ public class RenderContext
     //   32: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
     //   35: aload_0
     //   36: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   39: ldc2_w 479
+    //   39: ldc2_w 483
     //   42: lload_1
     //   43: lmul
-    //   44: invokestatic 486	android/opengl/EGLExt:eglPresentationTimeANDROID	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;J)Z
+    //   44: invokestatic 490	android/opengl/EGLExt:eglPresentationTimeANDROID	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;J)Z
     //   47: pop
-    //   48: ldc_w 478
+    //   48: ldc_w 482
     //   51: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: goto -33 -> 21
     //   57: astore_3
@@ -852,11 +848,11 @@ public class RenderContext
   
   public void setSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(191190);
+    AppMethodBeat.i(216142);
     this.surface = paramSurface;
     createEGLSurface();
     makeCurrent();
-    AppMethodBeat.o(191190);
+    AppMethodBeat.o(216142);
   }
   
   public void setWidth(int paramInt)
@@ -870,7 +866,7 @@ public class RenderContext
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 491
+    //   2: ldc_w 495
     //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: invokespecial 325	com/tencent/tav/decoder/RenderContext:checkThread	()V
@@ -879,7 +875,7 @@ public class RenderContext
     //   16: ifeq +15 -> 31
     //   19: iconst_0
     //   20: istore_1
-    //   21: ldc_w 491
+    //   21: ldc_w 495
     //   24: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   27: aload_0
     //   28: monitorexit
@@ -889,9 +885,9 @@ public class RenderContext
     //   32: getfield 189	com/tencent/tav/decoder/RenderContext:eglDisplay	Landroid/opengl/EGLDisplay;
     //   35: aload_0
     //   36: getfield 73	com/tencent/tav/decoder/RenderContext:eglSurface	Landroid/opengl/EGLSurface;
-    //   39: invokestatic 494	android/opengl/EGL14:eglSwapBuffers	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
+    //   39: invokestatic 498	android/opengl/EGL14:eglSwapBuffers	(Landroid/opengl/EGLDisplay;Landroid/opengl/EGLSurface;)Z
     //   42: istore_1
-    //   43: ldc_w 491
+    //   43: ldc_w 495
     //   46: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -22 -> 27
     //   52: astore_2
@@ -913,40 +909,40 @@ public class RenderContext
   
   public String toString()
   {
-    AppMethodBeat.i(191260);
+    AppMethodBeat.i(216302);
     String str = "RenderContext{_eglContext=" + this._eglContext + ", isSharedContext=" + this.isSharedContext + ", released=" + this.released + '}';
-    AppMethodBeat.o(191260);
+    AppMethodBeat.o(216302);
     return str;
   }
   
   public void updateViewport(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(191200);
+    AppMethodBeat.i(216180);
     makeCurrent();
     GLES20.glViewport(paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(191200);
+    AppMethodBeat.o(216180);
   }
   
   public void updateViewport(CGRect paramCGRect)
   {
-    AppMethodBeat.i(191198);
+    AppMethodBeat.i(216172);
     if ((paramCGRect == null) || (paramCGRect.origin == null) || (paramCGRect.size == null))
     {
-      AppMethodBeat.o(191198);
+      AppMethodBeat.o(216172);
       return;
     }
     this.glViewportRect = paramCGRect;
     updateViewport((int)paramCGRect.origin.x, (int)paramCGRect.origin.y, (int)paramCGRect.size.width, (int)paramCGRect.size.height);
-    AppMethodBeat.o(191198);
+    AppMethodBeat.o(216172);
   }
   
   public VideoTexture videoTextureForSurface(Surface paramSurface)
   {
     try
     {
-      AppMethodBeat.i(191256);
+      AppMethodBeat.i(216280);
       paramSurface = (VideoTexture)this.videoTextureMap.get(paramSurface);
-      AppMethodBeat.o(191256);
+      AppMethodBeat.o(216280);
       return paramSurface;
     }
     finally

@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ezu;
-import com.tencent.mm.protocal.protobuf.ezv;
+import com.tencent.mm.protocal.protobuf.fvy;
+import com.tencent.mm.protocal.protobuf.fvz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class af
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d lKU;
+  private h callback;
+  public final c oDw;
   
   public af(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(78940);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ezu();
-    ((d.a)localObject).lBV = new ezv();
-    ((d.a)localObject).uri = "/cgi-bin/mmo2o-bin/verifybeaconjspermission";
-    ((d.a)localObject).funcId = 1702;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.lKU = ((d.a)localObject).bgN();
-    localObject = (ezu)d.b.b(this.lKU.lBR);
-    ((ezu)localObject).Url = paramString1;
-    ((ezu)localObject).appid = paramString2;
-    ((ezu)localObject).fAo = paramString3;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new fvy();
+    ((c.a)localObject).otF = new fvz();
+    ((c.a)localObject).uri = "/cgi-bin/mmo2o-bin/verifybeaconjspermission";
+    ((c.a)localObject).funcId = 1702;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.oDw = ((c.a)localObject).bEF();
+    localObject = (fvy)c.b.b(this.oDw.otB);
+    ((fvy)localObject).Url = paramString1;
+    ((fvy)localObject).appid = paramString2;
+    ((fvy)localObject).hFb = paramString3;
     AppMethodBeat.o(78940);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(78941);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lKU, this);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.oDw, this);
     AppMethodBeat.o(78941);
     return i;
   }

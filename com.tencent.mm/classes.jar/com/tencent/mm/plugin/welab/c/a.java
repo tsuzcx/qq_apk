@@ -5,16 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.pj;
+import com.tencent.mm.autogen.a.qw;
+import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.ak;
-import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.al;
+import com.tencent.mm.plugin.websearch.api.as;
 import com.tencent.mm.plugin.websearch.api.i;
 import com.tencent.mm.plugin.welab.a.a.b;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,18 +22,18 @@ import org.json.JSONObject;
 public final class a
   implements b
 {
-  public final String hcY()
+  public final String iDG()
   {
     AppMethodBeat.i(30250);
-    String str = ak.biP("discoverRecommendEntry").optString("labIcon");
+    String str = al.bix("discoverRecommendEntry").optString("labIcon");
     AppMethodBeat.o(30250);
     return str;
   }
   
-  public final String hcZ()
+  public final String iDH()
   {
     AppMethodBeat.i(30251);
-    String str = ak.biP("discoverRecommendEntry").optString("wording");
+    String str = al.bix("discoverRecommendEntry").optString("wording");
     if (Util.isNullOrNil(str))
     {
       str = MMApplicationContext.getContext().getString(R.l.find_friends_look);
@@ -46,42 +44,42 @@ public final class a
     return str;
   }
   
-  public final void m(final Activity paramActivity, final String paramString)
+  public final void p(final Activity paramActivity, final String paramString)
   {
     AppMethodBeat.i(30249);
-    if (!ai.ang(0))
+    if (!aj.asX(0))
     {
       Log.e("MicroMsg.FTS.LookOneLookOpener", "fts h5 template not avail");
       AppMethodBeat.o(30249);
       return;
     }
-    paramString = ak.biP("discoverRecommendEntry").optString("wording");
+    paramString = al.bix("discoverRecommendEntry").optString("wording");
     if (Util.isNullOrNil(paramString))
     {
       Log.e("MicroMsg.FTS.LookOneLookOpener", "empty query");
       AppMethodBeat.o(30249);
       return;
     }
-    ((i)h.ae(i.class)).a(MMApplicationContext.getContext(), new Runnable()
+    ((i)h.ax(i.class)).a(MMApplicationContext.getContext(), new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(30248);
-        Intent localIntent = ai.gQI();
+        Intent localIntent = aj.ipS();
         localIntent.putExtra("ftsbizscene", 21);
         localIntent.putExtra("ftsQuery", paramString);
         localIntent.putExtra("title", paramString);
         localIntent.putExtra("isWebwx", paramString);
         localIntent.putExtra("ftscaneditable", false);
-        Object localObject = ai.j(21, false, 2);
+        Object localObject = aj.r(21, false, 2);
         ((Map)localObject).put("query", paramString);
         ((Map)localObject).put("sceneActionType", "2");
-        localIntent.putExtra("rawUrl", ai.g((Map)localObject, 1));
-        localObject = new pj();
-        ((pj)localObject).fOb.scene = 0;
-        EventCenter.instance.publish((IEvent)localObject);
+        localIntent.putExtra("rawUrl", aj.h((Map)localObject, 1));
+        localObject = new qw();
+        ((qw)localObject).hTT.scene = 0;
+        ((qw)localObject).publish();
         c.b(paramActivity, "webview", ".ui.tools.fts.FTSWebViewUI", localIntent);
-        ar.cO(21, paramString);
+        as.dE(21, paramString);
         AppMethodBeat.o(30248);
       }
     });

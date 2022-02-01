@@ -16,10 +16,10 @@ final class l$4
   {
     AppMethodBeat.i(128294);
     paramDialogInterface = new StringBuilder();
-    h.aHE();
-    paramDialogInterface = paramDialogInterface.append(b.aGR()).append(",").append(getClass().getName()).append(",R200_200,");
-    h.aHE();
-    a.m(true, b.MN("R200_200") + ",2");
+    h.baC();
+    paramDialogInterface = paramDialogInterface.append(b.aZR()).append(",").append(getClass().getName()).append(",R200_200,");
+    h.baC();
+    a.z(true, b.Fw("R200_200") + ",2");
     AppMethodBeat.o(128294);
   }
 }

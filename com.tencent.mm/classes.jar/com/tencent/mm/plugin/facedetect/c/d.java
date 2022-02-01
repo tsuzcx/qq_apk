@@ -8,29 +8,29 @@ public final class d
   extends a
 {
   private String appId;
-  private boolean isRetry;
-  private String jsonString;
-  private String wwr;
-  private float wws;
-  private boolean wwt;
+  private String hTL;
+  private boolean vBn;
+  private String zSx;
+  private float zSy;
+  private boolean zSz;
   
   d(Context paramContext, f paramf, int paramInt, Bundle paramBundle)
   {
     super(paramContext, paramf, paramInt, 0);
-    AppMethodBeat.i(195766);
-    this.isRetry = false;
-    this.wwn = true;
+    AppMethodBeat.i(271870);
+    this.vBn = false;
+    this.zSt = true;
     this.appId = paramBundle.getString("appId", null);
-    this.jsonString = paramBundle.getString("request_verify_pre_info", null);
-    this.wwr = paramBundle.getString("feedbackUrl", null);
-    this.wws = paramBundle.getFloat("key_current_light", 0.0F);
-    this.wwt = paramBundle.getBoolean("key_upload_video", false);
-    AppMethodBeat.o(195766);
+    this.hTL = paramBundle.getString("request_verify_pre_info", null);
+    this.zSx = paramBundle.getString("feedbackUrl", null);
+    this.zSy = paramBundle.getFloat("key_current_light", 0.0F);
+    this.zSz = paramBundle.getBoolean("key_upload_video", false);
+    AppMethodBeat.o(271870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.c.d
  * JD-Core Version:    0.7.0.1
  */

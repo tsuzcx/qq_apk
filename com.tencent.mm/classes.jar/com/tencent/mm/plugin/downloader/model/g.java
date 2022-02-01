@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.downloader.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.c.b.a;
+import com.tencent.mm.plugin.downloader.b.b.a;
 import java.util.LinkedList;
 
 public final class g
@@ -12,175 +12,165 @@ public final class g
   long mFileSize = 0L;
   String mPackageName = "";
   int mScene = 0;
-  public String nGR = "";
-  String ovF;
-  public boolean owW = false;
-  boolean oyA = true;
-  String uhE = "";
-  String uhF = "";
-  int uhG = 1;
-  public boolean uhH = false;
-  public boolean uhI = false;
-  boolean uhJ = false;
-  private boolean uhK = false;
-  public boolean uhL = false;
-  boolean uhM = false;
-  boolean uhN = false;
-  boolean uhO = false;
-  boolean uhP = false;
-  int uhQ = 0;
-  int uhR = 0;
-  int uhS = 0;
-  LinkedList<a> uhT;
-  public String uhU;
-  boolean uhV;
-  String uhW;
-  String uhX;
+  public String qGJ = "";
+  public boolean rAz = false;
+  boolean rCs = true;
+  String ryZ;
+  String xnK = "";
+  String xnL = "";
+  int xnM = 1;
+  public boolean xnN = false;
+  public boolean xnO = false;
+  boolean xnP = false;
+  private boolean xnQ = false;
+  public boolean xnR = false;
+  boolean xnS = false;
+  boolean xnT = false;
+  boolean xnU = false;
+  public boolean xnV = false;
+  int xnW = 0;
+  int xnX = 0;
+  int xnY = 0;
+  LinkedList<a> xnZ;
+  public String xoa;
+  boolean xob;
+  String xoc;
+  String xod;
   
   public static final class a
   {
-    public g uhY;
+    public g xoe;
     
     public a()
     {
       AppMethodBeat.i(89007);
-      this.uhY = new g((byte)0);
+      this.xoe = new g((byte)0);
       AppMethodBeat.o(89007);
     }
     
-    public final void IS(int paramInt)
+    public final void JA(int paramInt)
     {
-      this.uhY.uhG = paramInt;
+      this.xoe.xnM = paramInt;
     }
     
-    public final void IT(int paramInt)
+    public final void JB(int paramInt)
     {
-      this.uhY.uhQ = paramInt;
+      this.xoe.xnW = paramInt;
     }
     
-    public final void IU(int paramInt)
+    public final void JC(int paramInt)
     {
-      this.uhY.uhS = paramInt;
+      this.xoe.xnY = paramInt;
     }
     
-    public final void IV(int paramInt)
+    public final void JD(int paramInt)
     {
-      this.uhY.uhR = paramInt;
+      this.xoe.xnX = paramInt;
     }
     
-    public final void IW(int paramInt)
+    public final void JE(int paramInt)
     {
-      this.uhY.mDownloadType = paramInt;
+      this.xoe.mDownloadType = paramInt;
     }
     
-    public final void T(LinkedList<a> paramLinkedList)
+    public final void QX(String paramString)
     {
-      this.uhY.uhT = paramLinkedList;
+      this.xoe.ryZ = paramString;
     }
     
-    public final void YS(String paramString)
+    public final void V(LinkedList<a> paramLinkedList)
     {
-      this.uhY.ovF = paramString;
+      this.xoe.xnZ = paramLinkedList;
     }
     
-    public final void atc(String paramString)
+    public final void amR(String paramString)
     {
-      this.uhY.nGR = paramString;
+      this.xoe.qGJ = paramString;
     }
     
-    public final void atd(String paramString)
+    public final void amS(String paramString)
     {
-      this.uhY.uhE = paramString;
+      this.xoe.xnK = paramString;
     }
     
-    public final void ate(String paramString)
+    public final void amT(String paramString)
     {
-      this.uhY.mFileName = paramString;
+      this.xoe.mFileName = paramString;
     }
     
-    public final void atf(String paramString)
+    public final void amU(String paramString)
     {
-      this.uhY.uhU = paramString;
+      this.xoe.xoa = paramString;
     }
     
-    public final void atg(String paramString)
+    public final void amV(String paramString)
     {
-      this.uhY.uhW = paramString;
+      this.xoe.xoc = paramString;
     }
     
-    public final void ath(String paramString)
+    public final void amW(String paramString)
     {
-      this.uhY.uhX = paramString;
+      this.xoe.xod = paramString;
     }
     
-    public final void cQh()
+    public final void duD()
     {
-      this.uhY.uhM = true;
+      this.xoe.xnS = true;
     }
     
-    public final void cQi()
+    public final void duE()
     {
-      this.uhY.uhO = true;
+      this.xoe.xnU = true;
     }
     
-    public final void cQj()
+    public final void duF()
     {
-      this.uhY.uhP = true;
+      this.xoe.xob = true;
     }
     
-    public final g cQk()
+    public final void nA(boolean paramBoolean)
     {
-      return this.uhY;
+      this.xoe.xnN = paramBoolean;
     }
     
-    public final void cQl()
+    public final void nB(boolean paramBoolean)
     {
-      this.uhY.uhV = true;
+      this.xoe.rCs = paramBoolean;
     }
     
-    public final void me(boolean paramBoolean)
+    public final void nC(boolean paramBoolean)
     {
-      this.uhY.uhH = paramBoolean;
+      this.xoe.xnP = paramBoolean;
     }
     
-    public final void mf(boolean paramBoolean)
+    public final void nD(boolean paramBoolean)
     {
-      this.uhY.oyA = paramBoolean;
-    }
-    
-    public final void mg(boolean paramBoolean)
-    {
-      this.uhY.uhJ = paramBoolean;
-    }
-    
-    public final void mh(boolean paramBoolean)
-    {
-      this.uhY.owW = paramBoolean;
+      this.xoe.rAz = paramBoolean;
     }
     
     public final void setAppId(String paramString)
     {
-      this.uhY.mAppId = paramString;
+      this.xoe.mAppId = paramString;
     }
     
     public final void setFileMD5(String paramString)
     {
-      this.uhY.uhF = paramString;
+      this.xoe.xnL = paramString;
     }
     
     public final void setFileSize(long paramLong)
     {
-      this.uhY.mFileSize = paramLong;
+      this.xoe.mFileSize = paramLong;
     }
     
     public final void setPackageName(String paramString)
     {
-      this.uhY.mPackageName = paramString;
+      this.xoe.mPackageName = paramString;
     }
     
     public final void setScene(int paramInt)
     {
-      this.uhY.mScene = paramInt;
+      this.xoe.mScene = paramInt;
     }
   }
 }

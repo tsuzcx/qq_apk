@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.mv.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"toLowerSec", "", "toRoundSec", "toUpperSec", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"toLowerSec", "", "toRoundSec", "toUpperSec", "plugin-mv_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  public static final int ZI(int paramInt)
+  public static final int adV(int paramInt)
   {
-    AppMethodBeat.i(242040);
+    AppMethodBeat.i(288168);
     paramInt = (int)(float)Math.ceil(paramInt / 1000.0F);
-    AppMethodBeat.o(242040);
+    AppMethodBeat.o(288168);
     return paramInt;
   }
   
-  public static final int ZJ(int paramInt)
+  public static final int adW(int paramInt)
   {
-    AppMethodBeat.i(242041);
+    AppMethodBeat.i(288173);
     paramInt = (int)(float)Math.floor(paramInt / 1000.0F);
-    AppMethodBeat.o(242041);
+    AppMethodBeat.o(288173);
     return paramInt;
   }
   
-  public static final int ZK(int paramInt)
+  public static final int adX(int paramInt)
   {
-    AppMethodBeat.i(242042);
+    AppMethodBeat.i(288180);
     paramInt = (int)(float)Math.rint(paramInt / 1000.0F);
-    AppMethodBeat.o(242042);
+    AppMethodBeat.o(288180);
     return paramInt;
   }
 }

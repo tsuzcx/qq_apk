@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:scrollbars="none" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lz">
-        <ImageView android:id="@id/hg9" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/accounts_warning_icon" android:contentDescription="@string/hb" />
-        <TextView android:gravity="center" android:id="@id/hg_" android:text="@string/gaa" style="@style/m0" />
-        <Button android:id="@id/g4w" android:layout_marginTop="15.0dip" android:text="@string/gai" style="@style/ou" />
-        <Button android:id="@id/b44" android:visibility="gone" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/gac" style="@style/p1" />
-    </LinearLayout>
-</ScrollView>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/arl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:gravity="center_vertical" android:id="@id/bpi" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/r" android:layout_marginRight="@dimen/ig" android:maxWidth="@dimen/cl" android:minWidth="@dimen/f9" style="@style/nx" />
+    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:layout_marginRight="@dimen/cp" android:layout_marginBottom="@dimen/j6" android:maxWidth="@dimen/cj" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/it7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cp" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+</LinearLayout>

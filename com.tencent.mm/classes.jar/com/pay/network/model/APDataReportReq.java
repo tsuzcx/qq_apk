@@ -12,39 +12,39 @@ public class APDataReportReq
 {
   public APDataReportReq()
   {
-    AppMethodBeat.i(253765);
+    AppMethodBeat.i(207462);
     String str = APPluginDataInterface.singleton().getOfferId();
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(253765);
+      AppMethodBeat.o(207462);
       return;
     }
     setReportUrl(String.format("/cgi-bin/log_data.fcg?offer_id=%s", new Object[] { str }), String.format("/cgi-bin/log_data.fcg?offer_id=%s", new Object[] { str }), String.format("/cgi-bin/log_data.fcg?offer_id=%s", new Object[] { str }));
-    AppMethodBeat.o(253765);
+    AppMethodBeat.o(207462);
   }
   
   public void startService(String paramString)
   {
-    AppMethodBeat.i(253769);
+    AppMethodBeat.i(207475);
     if (paramString.equals(""))
     {
-      AppMethodBeat.o(253769);
+      AppMethodBeat.o(207475);
       return;
     }
     if (TextUtils.isEmpty(APPluginDataInterface.singleton().getOfferId()))
     {
-      AppMethodBeat.o(253769);
+      AppMethodBeat.o(207475);
       return;
     }
     this.httpParam.reqParam.clear();
     this.httpParam.reqParam.put(paramString, "");
     startRequest();
-    AppMethodBeat.o(253769);
+    AppMethodBeat.o(207475);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.pay.network.model.APDataReportReq
  * JD-Core Version:    0.7.0.1
  */

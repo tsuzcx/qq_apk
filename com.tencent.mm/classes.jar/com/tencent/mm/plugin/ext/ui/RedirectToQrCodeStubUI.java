@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.cv;
+import com.tencent.mm.autogen.a.df;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class RedirectToQrCodeStubUI
@@ -20,13 +19,13 @@ public class RedirectToQrCodeStubUI
     paramBundle = getIntent().getStringExtra("K_STR");
     int i = getIntent().getIntExtra("K_TYPE", -1);
     int j = getIntent().getIntExtra("K_VERSION", -1);
-    cv localcv = new cv();
-    localcv.fyr.activity = this;
-    localcv.fyr.fwI = paramBundle;
-    localcv.fyr.fys = i;
-    localcv.fyr.fyt = j;
-    localcv.fyr.scene = 47;
-    EventCenter.instance.publish(localcv);
+    df localdf = new df();
+    localdf.hDa.activity = this;
+    localdf.hDa.hBi = paramBundle;
+    localdf.hDa.hDb = i;
+    localdf.hDa.hDc = j;
+    localdf.hDa.scene = 47;
+    localdf.publish();
     finish();
     AppMethodBeat.o(24516);
   }

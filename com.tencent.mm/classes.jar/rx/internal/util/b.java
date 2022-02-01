@@ -8,29 +8,17 @@ public final class b
   extends AtomicLong
   implements f
 {
-  boolean abNP;
-  final a abQt;
+  boolean akaI;
+  final a akdl;
   Throwable exception;
   public volatile boolean terminated;
   
   public b(a parama)
   {
-    this.abQt = parama;
+    this.akdl = parama;
   }
   
-  public final void W(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90199);
-    if (!this.terminated)
-    {
-      this.exception = paramThrowable;
-      this.terminated = true;
-      iVZ();
-    }
-    AppMethodBeat.o(90199);
-  }
-  
-  public final void XM(long paramLong)
+  public final void Cp(long paramLong)
   {
     AppMethodBeat.i(90200);
     if (paramLong == 0L)
@@ -66,7 +54,7 @@ public final class b
         }
         j = i;
         if (j != 0) {
-          iVZ();
+          kKw();
         }
         AppMethodBeat.o(90200);
         return;
@@ -81,8 +69,20 @@ public final class b
     }
   }
   
+  public final void an(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(90199);
+    if (!this.terminated)
+    {
+      this.exception = paramThrowable;
+      this.terminated = true;
+      kKw();
+    }
+    AppMethodBeat.o(90199);
+  }
+  
   /* Error */
-  public final void iVZ()
+  public final void kKw()
   {
     // Byte code:
     //   0: ldc 57
@@ -90,30 +90,30 @@ public final class b
     //   5: aload_0
     //   6: monitorenter
     //   7: aload_0
-    //   8: getfield 59	rx/internal/util/b:abNP	Z
+    //   8: getfield 59	rx/internal/util/b:akaI	Z
     //   11: ifeq +11 -> 22
     //   14: aload_0
     //   15: monitorexit
     //   16: ldc 57
-    //   18: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: return
     //   22: aload_0
     //   23: iconst_1
-    //   24: putfield 59	rx/internal/util/b:abNP	Z
+    //   24: putfield 59	rx/internal/util/b:akaI	Z
     //   27: aload_0
-    //   28: getfield 35	rx/internal/util/b:terminated	Z
+    //   28: getfield 54	rx/internal/util/b:terminated	Z
     //   31: istore 4
     //   33: aload_0
     //   34: monitorexit
     //   35: aload_0
-    //   36: invokevirtual 50	rx/internal/util/b:get	()J
+    //   36: invokevirtual 40	rx/internal/util/b:get	()J
     //   39: lstore 6
     //   41: iconst_0
     //   42: istore_3
     //   43: iload_3
     //   44: istore_1
     //   45: aload_0
-    //   46: getfield 23	rx/internal/util/b:abQt	Lrx/internal/util/b$a;
+    //   46: getfield 23	rx/internal/util/b:akdl	Lrx/internal/util/b$a;
     //   49: astore 10
     //   51: goto +302 -> 353
     //   54: iload 4
@@ -127,16 +127,16 @@ public final class b
     //   72: istore_1
     //   73: aload 10
     //   75: aload_0
-    //   76: getfield 37	rx/internal/util/b:exception	Ljava/lang/Throwable;
+    //   76: getfield 56	rx/internal/util/b:exception	Ljava/lang/Throwable;
     //   79: invokeinterface 66 2 0
     //   84: ldc 57
-    //   86: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: return
     //   90: astore 10
     //   92: aload_0
     //   93: monitorexit
     //   94: ldc 57
-    //   96: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   96: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload 10
     //   101: athrow
     //   102: lload 6
@@ -159,7 +159,7 @@ public final class b
     //   138: iload 5
     //   140: ifeq +9 -> 149
     //   143: ldc 57
-    //   145: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   148: return
     //   149: lload 6
     //   151: lconst_1
@@ -175,7 +175,7 @@ public final class b
     //   164: aload_0
     //   165: monitorenter
     //   166: aload_0
-    //   167: getfield 35	rx/internal/util/b:terminated	Z
+    //   167: getfield 54	rx/internal/util/b:terminated	Z
     //   170: istore 4
     //   172: aload 10
     //   174: invokeinterface 63 1 0
@@ -183,10 +183,10 @@ public final class b
     //   182: iconst_1
     //   183: istore_1
     //   184: aload_0
-    //   185: invokevirtual 50	rx/internal/util/b:get	()J
+    //   185: invokevirtual 40	rx/internal/util/b:get	()J
     //   188: lstore 6
     //   190: lload 6
-    //   192: ldc2_w 51
+    //   192: ldc2_w 41
     //   195: lcmp
     //   196: ifne +65 -> 261
     //   199: iload_1
@@ -195,16 +195,16 @@ public final class b
     //   205: ifne +21 -> 226
     //   208: aload_0
     //   209: iconst_0
-    //   210: putfield 59	rx/internal/util/b:abNP	Z
+    //   210: putfield 59	rx/internal/util/b:akaI	Z
     //   213: aload_0
     //   214: monitorexit
     //   215: ldc 57
-    //   217: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   217: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   220: return
     //   221: iconst_0
     //   222: istore_1
     //   223: goto -39 -> 184
-    //   226: ldc2_w 51
+    //   226: ldc2_w 41
     //   229: lstore 6
     //   231: iload_3
     //   232: istore_1
@@ -218,11 +218,11 @@ public final class b
     //   245: monitorenter
     //   246: aload_0
     //   247: iconst_0
-    //   248: putfield 59	rx/internal/util/b:abNP	Z
+    //   248: putfield 59	rx/internal/util/b:akaI	Z
     //   251: aload_0
     //   252: monitorexit
     //   253: ldc 57
-    //   255: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   255: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   258: aload 10
     //   260: athrow
     //   261: iload_2
@@ -249,11 +249,11 @@ public final class b
     //   299: ifeq -68 -> 231
     //   302: aload_0
     //   303: iconst_0
-    //   304: putfield 59	rx/internal/util/b:abNP	Z
+    //   304: putfield 59	rx/internal/util/b:akaI	Z
     //   307: aload_0
     //   308: monitorexit
     //   309: ldc 57
-    //   311: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   311: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   314: return
     //   315: astore 10
     //   317: iconst_0
@@ -261,7 +261,7 @@ public final class b
     //   319: aload_0
     //   320: monitorexit
     //   321: ldc 57
-    //   323: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   323: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   326: aload 10
     //   328: athrow
     //   329: astore 10
@@ -270,7 +270,7 @@ public final class b
     //   336: aload_0
     //   337: monitorexit
     //   338: ldc 57
-    //   340: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   340: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   343: aload 10
     //   345: athrow
     //   346: iconst_1
@@ -326,9 +326,9 @@ public final class b
   
   public static abstract interface a
   {
-    public abstract void U(Throwable paramThrowable);
+    public abstract void al(Throwable paramThrowable);
     
-    public abstract boolean V(Object paramObject);
+    public abstract boolean be(Object paramObject);
     
     public abstract Object peek();
     
@@ -337,7 +337,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     rx.internal.util.b
  * JD-Core Version:    0.7.0.1
  */

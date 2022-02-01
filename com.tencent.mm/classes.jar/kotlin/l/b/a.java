@@ -3,55 +3,56 @@ package kotlin.l.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.l.b;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.ai;
+import kotlin.g.b.s;
+import kotlin.l.b.a.aa;
 import kotlin.l.b.a.b.b.e;
 import kotlin.l.b.a.b.b.f;
 import kotlin.l.b.a.b.b.h;
-import kotlin.l.b.a.b.m.at;
-import kotlin.l.b.a.w;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.ax;
 import kotlin.l.c;
+import kotlin.l.d;
 import kotlin.l.u;
-import kotlin.l.v;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"jvmErasure", "Lkotlin/reflect/KClass;", "Lkotlin/reflect/KClassifier;", "getJvmErasure", "(Lkotlin/reflect/KClassifier;)Lkotlin/reflect/KClass;", "Lkotlin/reflect/KType;", "jvmErasure$annotations", "(Lkotlin/reflect/KType;)V", "(Lkotlin/reflect/KType;)Lkotlin/reflect/KClass;", "kotlin-reflection"})
+@Metadata(d1={""}, d2={"jvmErasure", "Lkotlin/reflect/KClass;", "Lkotlin/reflect/KClassifier;", "getJvmErasure", "(Lkotlin/reflect/KClassifier;)Lkotlin/reflect/KClass;", "Lkotlin/reflect/KType;", "getJvmErasure$annotations", "(Lkotlin/reflect/KType;)V", "(Lkotlin/reflect/KType;)Lkotlin/reflect/KClass;", "kotlin-reflection"}, k=2, mv={1, 5, 1})
 public final class a
 {
-  public static final b<?> a(c paramc)
+  public static final c<?> a(d paramd)
   {
     AppMethodBeat.i(56267);
-    p.k(paramc, "$this$jvmErasure");
-    if ((paramc instanceof b))
+    s.u(paramd, "$this$jvmErasure");
+    if ((paramd instanceof c))
     {
-      paramc = (b)paramc;
+      paramd = (c)paramd;
       AppMethodBeat.o(56267);
-      return paramc;
+      return paramd;
     }
-    if ((paramc instanceof v))
+    if ((paramd instanceof kotlin.l.v))
     {
-      List localList = ((v)paramc).iCz();
+      List localList = ((kotlin.l.v)paramd).klF();
       Iterator localIterator = ((Iterable)localList).iterator();
       Object localObject;
       int i;
       if (localIterator.hasNext())
       {
         localObject = localIterator.next();
-        paramc = (u)localObject;
-        if (paramc == null)
+        paramd = (u)localObject;
+        if (paramd == null)
         {
-          paramc = new kotlin.t("null cannot be cast to non-null type kotlin.reflect.jvm.internal.KTypeImpl");
+          paramd = new NullPointerException("null cannot be cast to non-null type kotlin.reflect.jvm.internal.KTypeImpl");
           AppMethodBeat.o(56267);
-          throw paramc;
+          throw paramd;
         }
-        h localh = ((kotlin.l.b.a.t)paramc).aaEm.iOU().iEf();
-        paramc = localh;
+        h localh = ((kotlin.l.b.a.v)paramd).aiAd.kzm().knA();
+        paramd = localh;
         if (!(localh instanceof e)) {
-          paramc = null;
+          paramd = null;
         }
-        paramc = (e)paramc;
-        if ((paramc != null) && (paramc.iDN() != f.aaJZ) && (paramc.iDN() != f.aaKc))
+        paramd = (e)paramd;
+        if ((paramd != null) && (paramd.kna() != f.aiGu) && (paramd.kna() != f.aiGx))
         {
           i = 1;
           label166:
@@ -60,50 +61,50 @@ public final class a
           }
         }
       }
-      for (paramc = (c)localObject;; paramc = null)
+      for (paramd = (d)localObject;; paramd = null)
       {
-        localObject = (u)paramc;
-        paramc = (c)localObject;
+        localObject = (u)paramd;
+        paramd = (d)localObject;
         if (localObject == null) {
-          paramc = (u)j.lp(localList);
+          paramd = (u)p.oL(localList);
         }
-        if (paramc != null)
+        if (paramd != null)
         {
-          paramc = a(paramc);
-          if (paramc != null) {
+          paramd = c(paramd);
+          if (paramd != null) {
             break label255;
           }
         }
-        paramc = kotlin.g.b.ab.bO(Object.class);
+        paramd = ai.cz(Object.class);
         AppMethodBeat.o(56267);
-        return paramc;
+        return paramd;
         i = 0;
         break label166;
         label221:
         break;
       }
     }
-    paramc = (Throwable)new w("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramc)));
+    paramd = (Throwable)new aa("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramd)));
     AppMethodBeat.o(56267);
-    throw paramc;
+    throw paramd;
     label255:
     AppMethodBeat.o(56267);
-    return paramc;
+    return paramd;
   }
   
-  private static b<?> a(u paramu)
+  public static final c<?> c(u paramu)
   {
     AppMethodBeat.i(56266);
-    p.k(paramu, "$this$jvmErasure");
-    Object localObject = paramu.iCy();
+    s.u(paramu, "$this$jvmErasure");
+    Object localObject = paramu.klQ();
     if (localObject != null)
     {
-      localObject = a((c)localObject);
+      localObject = a((d)localObject);
       if (localObject != null) {}
     }
     else
     {
-      paramu = (Throwable)new w("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramu)));
+      paramu = (Throwable)new aa("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramu)));
       AppMethodBeat.o(56266);
       throw paramu;
     }
@@ -113,7 +114,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a
  * JD-Core Version:    0.7.0.1
  */

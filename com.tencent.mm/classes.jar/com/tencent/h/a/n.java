@@ -6,61 +6,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class n
 {
-  private static l ZSn;
+  private static l ahWK;
   
   public static void a(Context paramContext, m paramm)
   {
-    AppMethodBeat.i(207509);
-    if (ZSn == null) {
+    AppMethodBeat.i(212076);
+    if (ahWK == null) {
       try
       {
-        if (ZSn == null)
+        if (ahWK == null)
         {
           paramContext = new l(paramContext, paramm);
-          paramContext.itW();
-          ZSn = paramContext;
+          paramContext.kds();
+          ahWK = paramContext;
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(207509);
+        AppMethodBeat.o(212076);
       }
     }
-    AppMethodBeat.o(207509);
+    AppMethodBeat.o(212076);
   }
   
   public static boolean a(h.a parama, e parame)
   {
-    AppMethodBeat.i(207510);
-    if ((TextUtils.isEmpty(parama.ELa)) || (itH() == null))
+    AppMethodBeat.i(212082);
+    if ((TextUtils.isEmpty(parama.KFd)) || (kdc() == null))
     {
-      AppMethodBeat.o(207510);
+      AppMethodBeat.o(212082);
       return false;
     }
-    boolean bool = itH().a(parama, parame);
-    AppMethodBeat.o(207510);
+    boolean bool = kdc().a(parama, parame);
+    AppMethodBeat.o(212082);
     return bool;
   }
   
   public static boolean a(i.a parama)
   {
-    AppMethodBeat.i(207511);
-    if (itH() == null)
+    AppMethodBeat.i(212088);
+    if (kdc() == null)
     {
-      AppMethodBeat.o(207511);
+      AppMethodBeat.o(212088);
       return false;
     }
-    boolean bool = itH().a(parama);
-    AppMethodBeat.o(207511);
+    boolean bool = kdc().a(parama);
+    AppMethodBeat.o(212088);
     return bool;
   }
   
-  private static l itH()
+  private static l kdc()
   {
     try
     {
-      l locall = ZSn;
+      l locall = ahWK;
       return locall;
     }
     finally
@@ -72,7 +72,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.n
  * JD-Core Version:    0.7.0.1
  */

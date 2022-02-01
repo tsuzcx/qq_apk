@@ -16,7 +16,7 @@ class CIImageFilter
   
   CIImageFilter()
   {
-    AppMethodBeat.i(211192);
+    AppMethodBeat.i(218561);
     this.TAG = ("CIImageFilter@" + Integer.toHexString(hashCode()));
     if (this.rgbFilter == null) {
       this.rgbFilter = new TextureFilter();
@@ -24,47 +24,47 @@ class CIImageFilter
     if (this.oesFilter == null) {
       this.oesFilter = new TextureFilter();
     }
-    AppMethodBeat.o(211192);
+    AppMethodBeat.o(218561);
   }
   
   private TextureInfo tryApplyOESFilter(TextureInfo paramTextureInfo, Matrix paramMatrix1, Matrix paramMatrix2, float paramFloat, CGRect paramCGRect)
   {
-    AppMethodBeat.i(211197);
+    AppMethodBeat.i(218569);
     paramTextureInfo = this.oesFilter.applyFilter(paramTextureInfo, paramMatrix1, paramMatrix2, paramFloat, paramCGRect);
-    AppMethodBeat.o(211197);
+    AppMethodBeat.o(218569);
     return paramTextureInfo;
   }
   
   private TextureInfo tryApplyRGBFilter(TextureInfo paramTextureInfo, Matrix paramMatrix1, Matrix paramMatrix2, float paramFloat, CGRect paramCGRect)
   {
-    AppMethodBeat.i(211198);
+    AppMethodBeat.i(218573);
     paramTextureInfo = this.rgbFilter.applyFilter(paramTextureInfo, paramMatrix1, paramMatrix2, paramFloat, paramCGRect);
-    AppMethodBeat.o(211198);
+    AppMethodBeat.o(218573);
     return paramTextureInfo;
   }
   
   public TextureInfo applyFilter(TextureInfo paramTextureInfo, Matrix paramMatrix1, Matrix paramMatrix2, float paramFloat, CGRect paramCGRect)
   {
-    AppMethodBeat.i(211196);
+    AppMethodBeat.i(218599);
     if (paramTextureInfo != null)
     {
       if (paramTextureInfo.textureType == 36197)
       {
         paramTextureInfo = tryApplyOESFilter(paramTextureInfo, paramMatrix1, paramMatrix2, paramFloat, paramCGRect);
-        AppMethodBeat.o(211196);
+        AppMethodBeat.o(218599);
         return paramTextureInfo;
       }
       paramTextureInfo = tryApplyRGBFilter(paramTextureInfo, paramMatrix1, paramMatrix2, paramFloat, paramCGRect);
-      AppMethodBeat.o(211196);
+      AppMethodBeat.o(218599);
       return paramTextureInfo;
     }
-    AppMethodBeat.o(211196);
+    AppMethodBeat.o(218599);
     return null;
   }
   
   public void clearBufferBuffer(int paramInt)
   {
-    AppMethodBeat.i(211193);
+    AppMethodBeat.i(218580);
     this.clearColor = paramInt;
     if (this.oesFilter != null) {
       this.oesFilter.clearBufferBuffer(paramInt);
@@ -72,24 +72,24 @@ class CIImageFilter
     if (this.rgbFilter != null) {
       this.rgbFilter.clearBufferBuffer(paramInt);
     }
-    AppMethodBeat.o(211193);
+    AppMethodBeat.o(218580);
   }
   
   public void release()
   {
-    AppMethodBeat.i(211195);
+    AppMethodBeat.i(218593);
     if (this.oesFilter != null) {
       this.oesFilter.release();
     }
     if (this.rgbFilter != null) {
       this.rgbFilter.release();
     }
-    AppMethodBeat.o(211195);
+    AppMethodBeat.o(218593);
   }
   
   public void setOutputTextureInfo(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(211194);
+    AppMethodBeat.i(218586);
     this.destTextureInfo = paramTextureInfo;
     if (this.oesFilter != null) {
       this.oesFilter.setOutputTextureInfo(paramTextureInfo);
@@ -97,14 +97,14 @@ class CIImageFilter
     if (this.rgbFilter != null) {
       this.rgbFilter.setOutputTextureInfo(paramTextureInfo);
     }
-    AppMethodBeat.o(211194);
+    AppMethodBeat.o(218586);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(211199);
+    AppMethodBeat.i(218605);
     String str = "CIImageFilter{program=" + this.program + ", clearColor=" + this.clearColor + ", destTextureInfo=" + this.destTextureInfo + '}';
-    AppMethodBeat.o(211199);
+    AppMethodBeat.o(218605);
     return str;
   }
 }

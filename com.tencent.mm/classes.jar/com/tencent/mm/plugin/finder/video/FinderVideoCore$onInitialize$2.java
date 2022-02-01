@@ -4,87 +4,94 @@ import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.app.o;
-import com.tencent.mm.plugin.finder.live.n;
 import com.tencent.mm.plugin.finder.music.FinderImgFeedMusicTag;
 import com.tencent.mm.plugin.finder.music.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.au;
+import com.tencent.mm.plugin.finder.viewmodel.component.bi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.MMFragmentActivity;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.g.b.p;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderVideoCore$onInitialize$2", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderVideoCore$onInitialize$2", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "hasBlockPauseAction", "", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderVideoCore$onInitialize$2
   implements com.tencent.mm.plugin.finder.life.b
 {
-  FinderVideoCore$onInitialize$2(AppCompatActivity paramAppCompatActivity) {}
+  private boolean Gqd;
   
-  public final void onCreate(androidx.lifecycle.l paraml)
+  FinderVideoCore$onInitialize$2(l paraml, AppCompatActivity paramAppCompatActivity) {}
+  
+  public final void onCreate(androidx.lifecycle.q paramq)
   {
-    AppMethodBeat.i(257590);
-    p.k(paraml, "var1");
-    AppMethodBeat.o(257590);
+    AppMethodBeat.i(335792);
+    s.u(paramq, "var1");
+    AppMethodBeat.o(335792);
   }
   
-  public final void onDestroy(androidx.lifecycle.l paraml)
+  public final void onDestroy(androidx.lifecycle.q paramq)
   {
-    AppMethodBeat.i(257597);
-    p.k(paraml, "var1");
-    AppForegroundDelegate.fby.b((o)this.ANG);
-    this.ANG.ehm().clear();
-    AppMethodBeat.o(257597);
+    AppMethodBeat.i(335821);
+    s.u(paramq, "var1");
+    AppForegroundDelegate.heY.b((com.tencent.mm.app.q)this.Gqe);
+    this.Gqe.fjq().clearAll();
+    AppMethodBeat.o(335821);
   }
   
-  public final void onPause(androidx.lifecycle.l paraml)
+  public final void onPause(androidx.lifecycle.q paramq)
   {
-    AppMethodBeat.i(257595);
-    p.k(paraml, "var1");
-    this.ANG.ehl().gb((Context)this.zQu);
-    paraml = ((Map)this.ANG.ehm().zBX).entrySet().iterator();
-    while (paraml.hasNext())
+    AppMethodBeat.i(335811);
+    s.u(paramq, "var1");
+    if (l.b((MMFragmentActivity)this.AIx))
     {
-      Map.Entry localEntry = (Map.Entry)paraml.next();
-      if (((FinderImgFeedMusicTag)localEntry.getKey()).zBZ)
-      {
-        ((FinderImgFeedMusicTag)localEntry.getKey()).setShouldMusicResume(((a)localEntry.getValue()).isPlaying());
-        ((FinderImgFeedMusicTag)localEntry.getKey()).bnt();
-      }
+      Log.i("FinderVideoCore", "onPause return for isBlockOnPauseAction true");
+      this.Gqd = true;
+      AppMethodBeat.o(335811);
+      return;
     }
-    this.ANG.ehn().MX(this.ANG.fEH);
-    AppMethodBeat.o(257595);
+    this.Gqd = false;
+    this.Gqe.fjp().hw((Context)this.AIx);
+    this.Gqe.fjq().eDQ();
+    AppMethodBeat.o(335811);
   }
   
-  public final void onResume(androidx.lifecycle.l paraml)
+  public final void onResume(androidx.lifecycle.q paramq)
   {
-    AppMethodBeat.i(257594);
-    p.k(paraml, "var1");
-    this.ANG.ehl().gc((Context)this.zQu);
-    paraml = ((Map)this.ANG.ehm().zBX).entrySet().iterator();
-    while (paraml.hasNext())
+    AppMethodBeat.i(335805);
+    s.u(paramq, "var1");
+    this.Gqd = false;
+    this.Gqe.fjp().hx((Context)this.AIx);
+    paramq = ((Map)this.Gqe.fjq().EEK).entrySet().iterator();
+    while (paramq.hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)paraml.next();
-      if ((((FinderImgFeedMusicTag)localEntry.getKey()).zBZ) && (((FinderImgFeedMusicTag)localEntry.getKey()).getShouldMusicResume())) {
+      Map.Entry localEntry = (Map.Entry)paramq.next();
+      if ((((FinderImgFeedMusicTag)localEntry.getKey()).EEN) && (((FinderImgFeedMusicTag)localEntry.getKey()).getShouldMusicResume())) {
         ((a)localEntry.getValue()).play();
       }
     }
-    this.ANG.ehn().MW(this.ANG.fEH);
-    AppMethodBeat.o(257594);
+    AppMethodBeat.o(335805);
   }
   
-  public final void onStart(androidx.lifecycle.l paraml)
+  public final void onStart(androidx.lifecycle.q paramq)
   {
-    AppMethodBeat.i(257591);
-    p.k(paraml, "var1");
-    AppMethodBeat.o(257591);
+    AppMethodBeat.i(335796);
+    s.u(paramq, "var1");
+    AppMethodBeat.o(335796);
   }
   
-  public final void onStop(androidx.lifecycle.l paraml)
+  public final void onStop(androidx.lifecycle.q paramq)
   {
-    AppMethodBeat.i(257596);
-    p.k(paraml, "var1");
-    AppMethodBeat.o(257596);
+    AppMethodBeat.i(335817);
+    s.u(paramq, "var1");
+    if (this.Gqd)
+    {
+      Log.i("FinderVideoCore", "onStop hasBlockPauseAction true, pause focus video again");
+      this.Gqe.fjp().hw((Context)this.AIx);
+      this.Gqe.fjq().eDQ();
+    }
+    AppMethodBeat.o(335817);
   }
 }
 

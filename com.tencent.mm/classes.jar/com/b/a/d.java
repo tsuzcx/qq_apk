@@ -11,16 +11,16 @@ import java.util.regex.Pattern;
 final class d
 {
   private static final Pattern RANGE_HEADER_PATTERN;
-  private static final Pattern aFd;
-  public final long aFe;
-  public final boolean aFf;
+  private static final Pattern cAP;
+  public final long cAQ;
+  public final boolean cAR;
   public final String uri;
   
   static
   {
     AppMethodBeat.i(183564);
     RANGE_HEADER_PATTERN = Pattern.compile("[R,r]ange:[ ]?bytes=(\\d*)-");
-    aFd = Pattern.compile("GET /(.*) HTTP");
+    cAP = Pattern.compile("GET /(.*) HTTP");
     AppMethodBeat.o(183564);
   }
   
@@ -33,7 +33,7 @@ final class d
     if (localMatcher.find())
     {
       l = Long.parseLong(localMatcher.group(1));
-      this.aFe = Math.max(0L, l);
+      this.cAQ = Math.max(0L, l);
       if (l < 0L) {
         break label105;
       }
@@ -41,8 +41,8 @@ final class d
     label105:
     for (boolean bool = true;; bool = false)
     {
-      this.aFf = bool;
-      localMatcher = aFd.matcher(paramString);
+      this.cAR = bool;
+      localMatcher = cAP.matcher(paramString);
       if (!localMatcher.find()) {
         break label111;
       }
@@ -58,7 +58,7 @@ final class d
     throw paramString;
   }
   
-  public static d e(InputStream paramInputStream)
+  public static d o(InputStream paramInputStream)
   {
     AppMethodBeat.i(183562);
     paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream, "UTF-8"));
@@ -79,14 +79,14 @@ final class d
   public final String toString()
   {
     AppMethodBeat.i(183563);
-    String str = "GetRequest{rangeOffset=" + this.aFe + ", partial=" + this.aFf + ", uri='" + this.uri + '\'' + '}';
+    String str = "GetRequest{rangeOffset=" + this.cAQ + ", partial=" + this.cAR + ", uri='" + this.uri + '\'' + '}';
     AppMethodBeat.o(183563);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.b.a.d
  * JD-Core Version:    0.7.0.1
  */

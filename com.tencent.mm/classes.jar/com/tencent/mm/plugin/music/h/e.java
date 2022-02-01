@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.f;
+import com.tencent.mm.aw.f;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,22 +18,22 @@ import org.json.JSONObject;
 
 public final class e
 {
-  private static final String[] FWj;
-  private static String FWk;
-  private static String FWl;
-  private static final Pattern oiE;
+  private static final String[] LRh;
+  private static String LRi;
+  private static String LRj;
+  private static final Pattern rmg;
   
   static
   {
     AppMethodBeat.i(137462);
-    FWj = new String[] { "#", "?", "&" };
-    FWk = null;
-    FWl = null;
-    oiE = Pattern.compile("songid=([0-9]+)");
+    LRh = new String[] { "#", "?", "&" };
+    LRi = null;
+    LRj = null;
+    rmg = Pattern.compile("songid=([0-9]+)");
     AppMethodBeat.o(137462);
   }
   
-  private static int M(char paramChar)
+  private static int F(char paramChar)
   {
     int j = 0;
     int i;
@@ -52,129 +52,6 @@ public final class e
     return paramChar - 'A' + 10;
   }
   
-  public static String W(f paramf)
-  {
-    AppMethodBeat.i(256886);
-    if (paramf == null)
-    {
-      AppMethodBeat.o(256886);
-      return null;
-    }
-    if (!Util.isNullOrNil(paramf.lVz))
-    {
-      paramf = paramf.lVz;
-      AppMethodBeat.o(256886);
-      return paramf;
-    }
-    if (!Util.isNullOrNil(paramf.lVB))
-    {
-      paramf = paramf.lVB;
-      AppMethodBeat.o(256886);
-      return paramf;
-    }
-    if (!Util.isNullOrNil(paramf.lVA))
-    {
-      paramf = paramf.lVA;
-      AppMethodBeat.o(256886);
-      return paramf;
-    }
-    AppMethodBeat.o(256886);
-    return null;
-  }
-  
-  private static String X(f paramf)
-  {
-    AppMethodBeat.i(137460);
-    if (W(paramf) == null)
-    {
-      AppMethodBeat.o(137460);
-      return null;
-    }
-    String str = aSx(paramf.lVz);
-    if (str != null)
-    {
-      AppMethodBeat.o(137460);
-      return str;
-    }
-    str = aSx(paramf.lVB);
-    if (str != null)
-    {
-      AppMethodBeat.o(137460);
-      return str;
-    }
-    paramf = aSx(paramf.lVA);
-    AppMethodBeat.o(137460);
-    return paramf;
-  }
-  
-  public static f Y(f paramf)
-  {
-    AppMethodBeat.i(137461);
-    if (paramf != null)
-    {
-      paramf.lVI = aSz(paramf.lVz);
-      if (paramf.lVI <= 0)
-      {
-        paramf.lVI = aSz(paramf.lVB);
-        if (paramf.lVI <= 0) {
-          paramf.lVI = aSz(paramf.lVA);
-        }
-      }
-    }
-    if ((paramf == null) || (X(paramf) == null))
-    {
-      AppMethodBeat.o(137461);
-      return paramf;
-    }
-    long l = System.currentTimeMillis();
-    Object localObject = X(paramf);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(137461);
-      return paramf;
-    }
-    Log.d("MicroMsg.Music.MusicUrlUtil", "bcdUrl: %s", new Object[] { localObject });
-    String str = new String(aSy((String)localObject));
-    int i = str.indexOf("{");
-    localObject = str;
-    if (i != -1) {
-      localObject = str.substring(i);
-    }
-    try
-    {
-      localObject = new JSONObject((String)localObject);
-      paramf.lVI = ((JSONObject)localObject).optInt("song_ID");
-      if (Util.isNullOrNil(paramf.lVv)) {
-        paramf.lVv = ((JSONObject)localObject).optString("song_Name");
-      }
-      if (Util.isNullOrNil(paramf.lVA)) {
-        paramf.lVA = ((JSONObject)localObject).optString("song_WapLiveURL");
-      }
-      if (Util.isNullOrNil(paramf.lVz)) {
-        paramf.lVz = ((JSONObject)localObject).optString("song_WifiURL");
-      }
-      if (Util.isNullOrNil(paramf.lVx)) {
-        paramf.lVx = ((JSONObject)localObject).optString("song_Album");
-      }
-      if (Util.isNullOrNil(paramf.lVw)) {
-        paramf.lVw = ((JSONObject)localObject).optString("song_Singer");
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", localException, "", new Object[0]);
-      }
-    }
-    if (paramf.lVI == 0) {
-      paramf.lVI = aSz(FWk);
-    }
-    Log.i("MicroMsg.Music.MusicUrlUtil", "parseBCDForMusicWrapper %s: expend: %d %d", new Object[] { paramf.lVt, Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(paramf.lVI) });
-    AppMethodBeat.o(137461);
-    return paramf;
-  }
-  
   public static String a(String paramString1, String paramString2, boolean paramBoolean, PBool paramPBool)
   {
     AppMethodBeat.i(137455);
@@ -186,7 +63,7 @@ public final class e
     }
     PString localPString = new PString();
     Log.i("MicroMsg.Music.MusicUrlUtil", "url[%s], lowBandUrl[%s], isWifi[%B]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
-    paramString1 = aSx(str);
+    paramString1 = aPr(str);
     if (paramString1 != null) {
       if (a(paramString1, paramBoolean, localPString)) {
         paramPBool.value = paramBoolean;
@@ -208,7 +85,7 @@ public final class e
   private static boolean a(String paramString, boolean paramBoolean, PString paramPString)
   {
     AppMethodBeat.i(137457);
-    Object localObject2 = new String(aSy(paramString));
+    Object localObject2 = new String(aPs(paramString));
     int i = ((String)localObject2).indexOf("{");
     Object localObject1 = localObject2;
     if (i != -1) {
@@ -239,47 +116,7 @@ public final class e
     }
   }
   
-  public static String aSA(String paramString)
-  {
-    AppMethodBeat.i(256887);
-    if (paramString == null) {}
-    for (int i = -1; i < 0; i = paramString.indexOf("songmid="))
-    {
-      AppMethodBeat.o(256887);
-      return null;
-    }
-    paramString = paramString.substring(i + 8);
-    if ((paramString != null) && (paramString.contains("&")))
-    {
-      paramString = paramString.substring(0, paramString.indexOf("&"));
-      AppMethodBeat.o(256887);
-      return paramString;
-    }
-    AppMethodBeat.o(256887);
-    return paramString;
-  }
-  
-  public static String aSB(String paramString)
-  {
-    AppMethodBeat.i(256888);
-    if (paramString == null) {}
-    for (int i = -1; i < 0; i = paramString.indexOf("songid="))
-    {
-      AppMethodBeat.o(256888);
-      return null;
-    }
-    paramString = paramString.substring(i + 7);
-    if ((paramString != null) && (paramString.contains("&")))
-    {
-      paramString = paramString.substring(0, paramString.indexOf("&"));
-      AppMethodBeat.o(256888);
-      return paramString;
-    }
-    AppMethodBeat.o(256888);
-    return paramString;
-  }
-  
-  public static boolean aSw(String paramString)
+  public static boolean aPq(String paramString)
   {
     AppMethodBeat.i(137453);
     if (Util.isNullOrNil(paramString))
@@ -307,7 +144,7 @@ public final class e
     }
   }
   
-  private static String aSx(String paramString)
+  private static String aPr(String paramString)
   {
     AppMethodBeat.i(137456);
     if (Util.isNullOrNil(paramString))
@@ -315,14 +152,14 @@ public final class e
       AppMethodBeat.o(137456);
       return null;
     }
-    if ((FWk != null) && (paramString.equals(FWk)))
+    if ((LRi != null) && (paramString.equals(LRi)))
     {
-      paramString = FWl;
+      paramString = LRj;
       AppMethodBeat.o(137456);
       return paramString;
     }
     Object localObject2 = "";
-    String[] arrayOfString = FWj;
+    String[] arrayOfString = LRh;
     int j = arrayOfString.length;
     int i = 0;
     Object localObject1 = null;
@@ -359,7 +196,7 @@ public final class e
       return null;
     }
     localObject1 = localObject4.substring(((String)localObject3).length() + i);
-    Object localObject3 = FWj;
+    Object localObject3 = LRh;
     j = localObject3.length;
     i = 0;
     while (i < j)
@@ -374,14 +211,14 @@ public final class e
     }
     if (localObject1 != null)
     {
-      FWk = paramString;
-      FWl = (String)localObject1;
+      LRi = paramString;
+      LRj = (String)localObject1;
     }
     AppMethodBeat.o(137456);
     return localObject1;
   }
   
-  private static byte[] aSy(String paramString)
+  private static byte[] aPs(String paramString)
   {
     AppMethodBeat.i(137458);
     byte[] arrayOfByte = new byte[paramString.length() / 2 + paramString.length() % 2];
@@ -394,12 +231,12 @@ public final class e
         if (i < paramString.length())
         {
           k = i + 1;
-          int n = M(paramString.charAt(i));
+          int n = F(paramString.charAt(i));
           if (k >= paramString.length()) {
-            break label106;
+            break label103;
           }
           i = k + 1;
-          k = M(paramString.charAt(k));
+          k = F(paramString.charAt(k));
           arrayOfByte[j] = ((byte)(k | n << 4));
           j += 1;
           continue;
@@ -412,14 +249,14 @@ public final class e
         return null;
       }
       return arrayOfByte;
-      label106:
+      label103:
       int m = 0;
       i = k;
       int k = m;
     }
   }
   
-  private static int aSz(String paramString)
+  private static int aPt(String paramString)
   {
     AppMethodBeat.i(137459);
     if (Util.isNullOrNil(paramString))
@@ -427,7 +264,7 @@ public final class e
       AppMethodBeat.o(137459);
       return 0;
     }
-    paramString = oiE.matcher(paramString);
+    paramString = rmg.matcher(paramString);
     if (paramString.find())
     {
       paramString = paramString.group(1);
@@ -448,7 +285,170 @@ public final class e
     return 0;
   }
   
-  public static String hE(Context paramContext)
+  public static String aPu(String paramString)
+  {
+    AppMethodBeat.i(270854);
+    if (paramString == null) {}
+    for (int i = -1; i < 0; i = paramString.indexOf("songmid="))
+    {
+      AppMethodBeat.o(270854);
+      return null;
+    }
+    paramString = paramString.substring(i + 8);
+    if ((paramString != null) && (paramString.contains("&")))
+    {
+      paramString = paramString.substring(0, paramString.indexOf("&"));
+      AppMethodBeat.o(270854);
+      return paramString;
+    }
+    AppMethodBeat.o(270854);
+    return paramString;
+  }
+  
+  public static String aPv(String paramString)
+  {
+    AppMethodBeat.i(270855);
+    if (paramString == null) {}
+    for (int i = -1; i < 0; i = paramString.indexOf("songid="))
+    {
+      AppMethodBeat.o(270855);
+      return null;
+    }
+    paramString = paramString.substring(i + 7);
+    if ((paramString != null) && (paramString.contains("&")))
+    {
+      paramString = paramString.substring(0, paramString.indexOf("&"));
+      AppMethodBeat.o(270855);
+      return paramString;
+    }
+    AppMethodBeat.o(270855);
+    return paramString;
+  }
+  
+  public static String ac(f paramf)
+  {
+    AppMethodBeat.i(270852);
+    if (paramf == null)
+    {
+      AppMethodBeat.o(270852);
+      return null;
+    }
+    if (!Util.isNullOrNil(paramf.oOB))
+    {
+      paramf = paramf.oOB;
+      AppMethodBeat.o(270852);
+      return paramf;
+    }
+    if (!Util.isNullOrNil(paramf.oOD))
+    {
+      paramf = paramf.oOD;
+      AppMethodBeat.o(270852);
+      return paramf;
+    }
+    if (!Util.isNullOrNil(paramf.oOC))
+    {
+      paramf = paramf.oOC;
+      AppMethodBeat.o(270852);
+      return paramf;
+    }
+    AppMethodBeat.o(270852);
+    return null;
+  }
+  
+  private static String ad(f paramf)
+  {
+    AppMethodBeat.i(137460);
+    if (ac(paramf) == null)
+    {
+      AppMethodBeat.o(137460);
+      return null;
+    }
+    String str = aPr(paramf.oOB);
+    if (str != null)
+    {
+      AppMethodBeat.o(137460);
+      return str;
+    }
+    str = aPr(paramf.oOD);
+    if (str != null)
+    {
+      AppMethodBeat.o(137460);
+      return str;
+    }
+    paramf = aPr(paramf.oOC);
+    AppMethodBeat.o(137460);
+    return paramf;
+  }
+  
+  public static f ae(f paramf)
+  {
+    AppMethodBeat.i(137461);
+    if (paramf != null)
+    {
+      paramf.oOK = aPt(paramf.oOB);
+      if (paramf.oOK <= 0)
+      {
+        paramf.oOK = aPt(paramf.oOD);
+        if (paramf.oOK <= 0) {
+          paramf.oOK = aPt(paramf.oOC);
+        }
+      }
+    }
+    if ((paramf == null) || (ad(paramf) == null))
+    {
+      AppMethodBeat.o(137461);
+      return paramf;
+    }
+    long l = System.currentTimeMillis();
+    Object localObject = ad(paramf);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(137461);
+      return paramf;
+    }
+    Log.d("MicroMsg.Music.MusicUrlUtil", "bcdUrl: %s", new Object[] { localObject });
+    String str = new String(aPs((String)localObject));
+    int i = str.indexOf("{");
+    localObject = str;
+    if (i != -1) {
+      localObject = str.substring(i);
+    }
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+      paramf.oOK = ((JSONObject)localObject).optInt("song_ID");
+      if (Util.isNullOrNil(paramf.oOx)) {
+        paramf.oOx = ((JSONObject)localObject).optString("song_Name");
+      }
+      if (Util.isNullOrNil(paramf.oOC)) {
+        paramf.oOC = ((JSONObject)localObject).optString("song_WapLiveURL");
+      }
+      if (Util.isNullOrNil(paramf.oOB)) {
+        paramf.oOB = ((JSONObject)localObject).optString("song_WifiURL");
+      }
+      if (Util.isNullOrNil(paramf.oOz)) {
+        paramf.oOz = ((JSONObject)localObject).optString("song_Album");
+      }
+      if (Util.isNullOrNil(paramf.oOy)) {
+        paramf.oOy = ((JSONObject)localObject).optString("song_Singer");
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", localException, "", new Object[0]);
+      }
+    }
+    if (paramf.oOK == 0) {
+      paramf.oOK = aPt(LRi);
+    }
+    Log.i("MicroMsg.Music.MusicUrlUtil", "parseBCDForMusicWrapper %s: expend: %d %d", new Object[] { paramf.oOv, Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(paramf.oOK) });
+    AppMethodBeat.o(137461);
+    return paramf;
+  }
+  
+  public static String jf(Context paramContext)
   {
     AppMethodBeat.i(137454);
     String str = "";

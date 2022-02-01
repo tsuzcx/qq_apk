@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:key="backup_move_to_device" android:layout="@layout/b8j" android:title="@string/a74" />
-    <Preference android:key="backup_to_pc" android:layout="@layout/b8j" android:title="@string/a9n" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:key="room_name" android:layout="@layout/bdi" android:title="@string/atk" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="room_placed_to_the_top" android:layout="@layout/bdi" android:title="@string/atl" />
+    <CheckBoxPreference android:key="room_notify_new_msg" android:layout="@layout/bdi" android:title="@string/atj" />
+    <CheckBoxPreference android:key="room_save_to_contact" android:layout="@layout/bdi" android:title="@string/arf" />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_del_quit" android:layout="@layout/b93" android:title="@string/ati" />
+    <PreferenceCategory />
 </PreferenceScreen>

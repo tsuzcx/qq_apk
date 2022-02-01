@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/a2k" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
-    <include android:id="@id/c20" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a2i" />
-    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@android:id/list" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:layout_below="@id/c20" dslv:collapsed_height="2.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/c1z" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="g3u" dslv:float_alpha="0.4" dslv:max_drag_scroll_speed="0.5" dslv:remove_enabled="false" dslv:remove_mode="d67" dslv:slide_shuffle_speed="0.3" dslv:sort_enabled="true" dslv:track_drag_sort="false" dslv:use_default_controller="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:padding="@dimen/k" android:layout_width="@dimen/a47" android:layout_height="@dimen/a47"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.emoji.ui.SquareImageView android:layout_gravity="center" android:id="@id/c3n" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
+</LinearLayout>

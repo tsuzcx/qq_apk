@@ -10,30 +10,30 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  private int MI;
-  boolean MU;
-  float MZ;
-  float Na;
-  float Nb;
-  float Nc;
-  boolean XsN;
-  boolean XsO;
-  boolean XsP;
-  float XsQ;
-  float XsR;
-  float XsS;
-  float XsT;
-  private a XsU;
+  boolean afeo;
+  boolean afep;
+  boolean afeq;
+  float afer;
+  float afes;
+  float afet;
+  float afeu;
+  private a afev;
+  private int bsL;
+  boolean bsW;
+  float btb;
+  float btc;
+  float btd;
+  float bte;
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(102845);
-    this.MU = true;
-    this.XsN = false;
-    this.XsO = true;
-    this.XsP = false;
-    dbH();
+    this.bsW = true;
+    this.afeo = false;
+    this.afep = true;
+    this.afeq = false;
+    initConfig();
     AppMethodBeat.o(102845);
   }
   
@@ -41,26 +41,26 @@ public class LabelContainerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(102844);
-    this.MU = true;
-    this.XsN = false;
-    this.XsO = true;
-    this.XsP = false;
-    dbH();
+    this.bsW = true;
+    this.afeo = false;
+    this.afep = true;
+    this.afeq = false;
+    initConfig();
     AppMethodBeat.o(102844);
   }
   
-  private void dbH()
+  private void initConfig()
   {
     AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.MI = (i * i);
+    this.bsL = (i * i);
     AppMethodBeat.o(102847);
   }
   
-  public final void cWP()
+  public final void dCv()
   {
     AppMethodBeat.i(102850);
-    this.XsU.cWP();
+    this.afev.dCv();
     AppMethodBeat.o(102850);
   }
   
@@ -125,22 +125,22 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.XsO = true;
-      this.XsR = f2;
-      this.XsQ = f2;
-      this.XsT = f1;
-      this.XsS = f1;
-      this.XsP = true;
+      this.afep = true;
+      this.afes = f2;
+      this.afer = f2;
+      this.afeu = f1;
+      this.afet = f1;
+      this.afeq = true;
       continue;
-      i = (int)(f2 - this.XsQ);
-      j = (int)(f1 - this.XsS);
-      if (j * j + i * i > this.MI)
+      i = (int)(f2 - this.afer);
+      j = (int)(f1 - this.afet);
+      if (j * j + i * i > this.bsL)
       {
-        this.XsO = false;
+        this.afep = false;
         AppMethodBeat.o(102846);
         return true;
-        this.XsO = true;
-        this.XsP = false;
+        this.afep = true;
+        this.afeq = false;
       }
     }
   }
@@ -198,50 +198,50 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.MU = true;
-      this.MZ = f2;
-      this.Nb = f2;
-      this.Na = f1;
-      this.Nc = f1;
-      this.XsN = true;
+      this.bsW = true;
+      this.btb = f2;
+      this.btd = f2;
+      this.btc = f1;
+      this.bte = f1;
+      this.afeo = true;
       continue;
-      if (!this.XsN)
+      if (!this.afeo)
       {
-        this.MU = true;
-        this.MZ = f2;
-        this.Nb = f2;
-        this.Na = f1;
-        this.Nc = f1;
-        this.XsN = true;
+        this.bsW = true;
+        this.btb = f2;
+        this.btd = f2;
+        this.btc = f1;
+        this.bte = f1;
+        this.afeo = true;
       }
-      if (this.XsU != null) {
-        this.XsU.cWQ();
+      if (this.afev != null) {
+        this.afev.dCw();
       }
-      i = (int)(f2 - this.Nb);
-      j = (int)(f1 - this.Nc);
-      if (j * j + i * i > this.MI)
+      i = (int)(f2 - this.btd);
+      j = (int)(f1 - this.bte);
+      if (j * j + i * i > this.bsL)
       {
-        this.MU = false;
+        this.bsW = false;
         continue;
-        if (((this.MU) || (!this.XsN)) && (this.XsU != null)) {
-          this.XsU.cWP();
+        if (((this.bsW) || (!this.afeo)) && (this.afev != null)) {
+          this.afev.dCv();
         }
-        this.MU = true;
-        this.XsN = false;
+        this.bsW = true;
+        this.afeo = false;
       }
     }
   }
   
   public void setOnLabelContainerListener(a parama)
   {
-    this.XsU = parama;
+    this.afev = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cWP();
+    public abstract void dCv();
     
-    public abstract void cWQ();
+    public abstract void dCw();
   }
 }
 

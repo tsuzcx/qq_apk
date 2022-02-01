@@ -8,150 +8,146 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.findersdk.a.ak;
-import com.tencent.mm.plugin.recordvideo.plugin.f;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.plugin.findersdk.a.cn;
+import com.tencent.mm.plugin.recordvideo.plugin.g;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.a.c;
 import com.tencent.mm.plugin.vlog.a.f;
 import com.tencent.mm.plugin.vlog.ui.timelineeditor.view.TimelineEditorDragRectView;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "alwaysCropMode", "", "getAlwaysCropMode", "()Z", "setAlwaysCropMode", "(Z)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "value", "Landroid/graphics/RectF;", "halfRect", "setHalfRect", "(Landroid/graphics/RectF;)V", "halfScreenHeader", "Landroid/view/View;", "halfScreenRectView", "Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/view/TimelineEditorDragRectView;", "halfScreenSelectBtn", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "validRect", "setValidRect", "getFirstMediaRatio", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getHalfRectF", "getValidRectF", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "onBackPress", "onClick", "view", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "alwaysCropMode", "", "getAlwaysCropMode", "()Z", "setAlwaysCropMode", "(Z)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "value", "Landroid/graphics/RectF;", "halfRect", "setHalfRect", "(Landroid/graphics/RectF;)V", "halfScreenHeader", "Landroid/view/View;", "halfScreenRectView", "Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/view/TimelineEditorDragRectView;", "halfScreenSelectBtn", "validRect", "setValidRect", "getFirstMediaRatio", "", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getHalfRectF", "getValidRectF", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "onBackPress", "onClick", "view", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends com.tencent.mm.plugin.recordvideo.plugin.a
   implements View.OnClickListener
 {
-  public static final a NEd;
-  d APl;
-  public final TimelineEditorDragRectView NEb;
-  public RectF NEc;
-  private final View NvA;
-  private final View Nvz;
+  public static final e.a Uqx;
+  private final View UiO;
+  private final View UiP;
+  public final TimelineEditorDragRectView Uqy;
+  public RectF Uqz;
   public final Context context;
-  public RectF vav;
+  public RectF ymw;
   
   static
   {
-    AppMethodBeat.i(224465);
-    NEd = new a((byte)0);
-    AppMethodBeat.o(224465);
+    AppMethodBeat.i(282290);
+    Uqx = new e.a((byte)0);
+    AppMethodBeat.o(282290);
   }
   
-  public e(ViewGroup paramViewGroup, d paramd)
+  public e(ViewGroup paramViewGroup, com.tencent.mm.plugin.recordvideo.plugin.parent.a parama)
   {
-    super(paramd, (byte)0);
-    AppMethodBeat.i(224464);
-    this.APl = paramd;
-    paramd = paramViewGroup.findViewById(a.f.half_screen_select_btn);
-    p.j(paramd, "parent.findViewById(R.id.half_screen_select_btn)");
-    this.Nvz = paramd;
-    paramd = paramViewGroup.findViewById(a.f.crop_ope_layout);
-    p.j(paramd, "parent.findViewById(R.id.crop_ope_layout)");
-    this.NEb = ((TimelineEditorDragRectView)paramd);
+    super(parama);
+    AppMethodBeat.i(282260);
+    View localView = paramViewGroup.findViewById(a.f.half_screen_select_btn);
+    s.s(localView, "parent.findViewById(R.id.half_screen_select_btn)");
+    this.UiO = localView;
+    localView = paramViewGroup.findViewById(a.f.crop_ope_layout);
+    s.s(localView, "parent.findViewById(R.id.crop_ope_layout)");
+    this.Uqy = ((TimelineEditorDragRectView)localView);
     this.context = paramViewGroup.getContext();
     paramViewGroup = paramViewGroup.findViewById(a.f.half_screen_header);
-    p.j(paramViewGroup, "parent.findViewById(R.id.half_screen_header)");
-    this.NvA = paramViewGroup;
-    this.vav = new RectF(0.0F, 0.0F, com.tencent.mm.ci.a.kr(this.context) * 1.0F, com.tencent.mm.ci.a.ks(this.context) * 1.0F);
-    this.NEc = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.Nvz.setOnClickListener((View.OnClickListener)this);
-    paramViewGroup = this.NEb.findViewById(a.f.timeline_editor_crop_rect_close);
-    p.j(paramViewGroup, "halfScreenRectView.findV…e_editor_crop_rect_close)");
-    new f((ImageView)paramViewGroup, this.APl).aVU("HalfScreenBack");
-    this.NEb.findViewById(a.f.editor_mix_fullscreen).setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(228130);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        com.tencent.d.f.h.ioq();
-        this.NEe.onBackPress();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(228130);
-      }
-    });
-    this.NvA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(230725);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        d.b.a(this.NEe.APl, d.c.HTI);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(230725);
-      }
-    });
-    paramViewGroup = com.tencent.mm.kernel.h.ag(ak.class);
-    p.j(paramViewGroup, "MMKernel.plugin(IPluginFinder::class.java)");
-    boolean bool = ((ak)paramViewGroup).isDisablePostHalfScreen();
-    "enableSetHalfPosition:".concat(String.valueOf(bool));
-    com.tencent.d.f.h.ioq();
+    s.s(paramViewGroup, "parent.findViewById(R.id.half_screen_header)");
+    this.UiP = paramViewGroup;
+    this.ymw = new RectF(0.0F, 0.0F, com.tencent.mm.cd.a.ms(this.context) * 1.0F, com.tencent.mm.cd.a.mt(this.context) * 1.0F);
+    this.Uqz = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.UiO.setOnClickListener((View.OnClickListener)this);
+    paramViewGroup = this.Uqy.findViewById(a.f.timeline_editor_crop_rect_close);
+    s.s(paramViewGroup, "halfScreenRectView.findV…e_editor_crop_rect_close)");
+    new g((ImageView)paramViewGroup, parama).aTb("HalfScreenBack");
+    this.Uqy.findViewById(a.f.editor_mix_fullscreen).setOnClickListener(new e..ExternalSyntheticLambda1(this));
+    this.UiP.setOnClickListener(new e..ExternalSyntheticLambda0(parama));
+    boolean bool = ((cn)com.tencent.mm.kernel.h.az(cn.class)).isDisablePostHalfScreen();
+    s.X("enableSetHalfPosition:", Boolean.valueOf(bool));
+    com.tencent.e.f.h.jXD();
     if (!bool) {
-      this.Nvz.setVisibility(8);
+      this.UiO.setVisibility(8);
     }
-    AppMethodBeat.o(224464);
+    AppMethodBeat.o(282260);
+  }
+  
+  private static final void a(e parame, View paramView)
+  {
+    AppMethodBeat.i(282271);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parame);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parame, "this$0");
+    com.tencent.e.f.h.jXD();
+    parame.onBackPress();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282271);
+  }
+  
+  private static final void b(com.tencent.mm.plugin.recordvideo.plugin.parent.a parama, View paramView)
+  {
+    AppMethodBeat.i(282280);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "$status");
+    a.b.a(parama, a.c.NQo);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(282280);
   }
   
   public final boolean onBackPress()
   {
-    AppMethodBeat.i(224447);
-    if ((this.NEb.getVisibility() == 0) && (this.NvA.getVisibility() == 0))
+    AppMethodBeat.i(282312);
+    if ((this.Uqy.getVisibility() == 0) && (this.UiP.getVisibility() == 0))
     {
-      this.NEb.setVisibility(4);
-      this.Nvz.setVisibility(0);
-      d.b.a(this.APl, d.c.HTy);
-      AppMethodBeat.o(224447);
+      this.Uqy.setVisibility(4);
+      this.UiO.setVisibility(0);
+      a.b.a(this.GrC, a.c.NQe);
+      AppMethodBeat.o(282312);
       return true;
     }
     boolean bool = super.onBackPress();
-    AppMethodBeat.o(224447);
+    AppMethodBeat.o(282312);
     return bool;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(224451);
+    AppMethodBeat.i(282321);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.getId());
+      paramView = null;
       i = a.f.half_screen_select_btn;
       if (paramView != null) {
-        break label85;
+        break label79;
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(224451);
+      AppMethodBeat.o(282321);
       return;
-      paramView = null;
+      paramView = Integer.valueOf(paramView.getId());
       break;
-      label85:
+      label79:
       if (paramView.intValue() == i)
       {
-        d.b.a(this.APl, d.c.HTx);
-        this.Nvz.setVisibility(4);
-        this.NEb.setVisibility(0);
+        a.b.a(this.GrC, a.c.NQd);
+        this.UiO.setVisibility(4);
+        this.Uqy.setVisibility(0);
       }
     }
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/TimelineEditorHalfScreenPlugin$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.e
  * JD-Core Version:    0.7.0.1
  */

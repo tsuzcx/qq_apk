@@ -7,9 +7,9 @@ import com.tencent.mars.Mars;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.mars.cdn.CdnLogic.CdnTaskStateInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g;
-import com.tencent.mm.i.g.a;
+import com.tencent.mm.g.d;
+import com.tencent.mm.g.g;
+import com.tencent.mm.g.g.a;
 import com.tencent.mm.ipcinvoker.wx_extension.c.b.a;
 import com.tencent.mm.plugin.cdndownloader.a.a.a;
 import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskInfo;
@@ -23,16 +23,16 @@ public class CDNDownloadService
   extends Service
   implements com.tencent.mm.ipcinvoker.wx_extension.c.a
 {
-  private static g.a tLH;
-  private static com.tencent.mm.plugin.cdndownloader.a.b tLv;
-  private final a.a tLG;
+  private static com.tencent.mm.plugin.cdndownloader.a.b wOK;
+  private static g.a wOW;
+  private final a.a wOV;
   
   static
   {
     AppMethodBeat.i(120789);
-    tLH = new g.a()
+    wOW = new g.a()
     {
-      public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
+      public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.g.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(120780);
         String str1;
@@ -60,13 +60,13 @@ public class CDNDownloadService
         if (paramAnonymousInt != 0)
         {
           Log.e("MicroMsg.CDNDownloadService", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          CDNDownloadService.Z(paramAnonymousString, 4, paramAnonymousInt);
+          CDNDownloadService.ad(paramAnonymousString, 4, paramAnonymousInt);
           AppMethodBeat.o(120780);
           return 0;
         }
         if (paramAnonymousc != null)
         {
-          CDNDownloadService.x(paramAnonymousString, paramAnonymousc.field_finishedLength, paramAnonymousc.field_toltalLength);
+          CDNDownloadService.B(paramAnonymousString, paramAnonymousc.field_finishedLength, paramAnonymousc.field_toltalLength);
           AppMethodBeat.o(120780);
           return 0;
         }
@@ -76,7 +76,7 @@ public class CDNDownloadService
             break label225;
           }
           Log.e("MicroMsg.CDNDownloadService", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
-          CDNDownloadService.Z(paramAnonymousString, 4, paramAnonymousd.field_retCode);
+          CDNDownloadService.ad(paramAnonymousString, 4, paramAnonymousd.field_retCode);
         }
         for (;;)
         {
@@ -84,13 +84,13 @@ public class CDNDownloadService
           return 0;
           label225:
           Log.i("MicroMsg.CDNDownloadService", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
-          CDNDownloadService.Z(paramAnonymousString, 3, 0);
+          CDNDownloadService.ad(paramAnonymousString, 3, 0);
         }
       }
       
       public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
       
-      public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
+      public final byte[] h(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
         return new byte[0];
       }
@@ -101,9 +101,9 @@ public class CDNDownloadService
   public CDNDownloadService()
   {
     AppMethodBeat.i(120781);
-    this.tLG = new a.a()
+    this.wOV = new a.a()
     {
-      public final void Is(int paramAnonymousInt)
+      public final void IV(int paramAnonymousInt)
       {
         AppMethodBeat.i(120777);
         Log.i("MicroMsg.CDNDownloadService", "notifyNetworkChange: ".concat(String.valueOf(paramAnonymousInt)));
@@ -119,18 +119,18 @@ public class CDNDownloadService
         Log.i("MicroMsg.CDNDownloadService", "addDownloadTask: %s filepath:%s", new Object[] { paramAnonymousCDNTaskInfo.downloadUrl, paramAnonymousCDNTaskInfo.filePath });
         g localg = new g();
         localg.taskName = "task_CDNDownloadService_1";
-        localg.iUP = paramAnonymousCDNTaskInfo.iUP;
+        localg.lwU = paramAnonymousCDNTaskInfo.lwU;
         localg.field_mediaId = paramAnonymousCDNTaskInfo.mediaId;
         localg.field_fullpath = paramAnonymousCDNTaskInfo.filePath;
-        localg.iUJ = com.tencent.mm.plugin.downloader.a.c.asQ(paramAnonymousCDNTaskInfo.downloadUrl);
-        localg.iUQ = com.tencent.mm.plugin.downloader.a.c.asQ(paramAnonymousCDNTaskInfo.tLy);
-        localg.iUG = CDNDownloadService.cMB();
-        localg.iUK = paramAnonymousCDNTaskInfo.tLA;
-        localg.iUL = paramAnonymousCDNTaskInfo.tLB;
-        localg.allow_mobile_net_download = paramAnonymousCDNTaskInfo.tLC;
-        localg.iUO = paramAnonymousCDNTaskInfo.tLD;
-        CDNDownloadService.a(localg, paramAnonymousCDNTaskInfo.tLz);
-        int i = com.tencent.mm.plugin.cdndownloader.c.a.cMu().h(localg);
+        localg.lwO = com.tencent.mm.plugin.downloader.a.c.amF(paramAnonymousCDNTaskInfo.downloadUrl);
+        localg.lwV = com.tencent.mm.plugin.downloader.a.c.amF(paramAnonymousCDNTaskInfo.wON);
+        localg.lwL = CDNDownloadService.dqf();
+        localg.lwP = paramAnonymousCDNTaskInfo.wOP;
+        localg.lwQ = paramAnonymousCDNTaskInfo.wOQ;
+        localg.allow_mobile_net_download = paramAnonymousCDNTaskInfo.wOR;
+        localg.lwT = paramAnonymousCDNTaskInfo.wOS;
+        CDNDownloadService.a(localg, paramAnonymousCDNTaskInfo.wOO);
+        int i = com.tencent.mm.plugin.cdndownloader.c.a.dpY().i(localg);
         Log.i("MicroMsg.CDNDownloadService", "addDownloadTask: ".concat(String.valueOf(i)));
         AppMethodBeat.o(120770);
         return i;
@@ -144,25 +144,25 @@ public class CDNDownloadService
         AppMethodBeat.o(120775);
       }
       
-      public final boolean asf(String paramAnonymousString)
+      public final boolean alJ(String paramAnonymousString)
       {
         AppMethodBeat.i(120772);
-        com.tencent.mm.plugin.cdndownloader.c.a.cMu().Vz(paramAnonymousString);
-        Log.i("MicroMsg.CDNDownloadService", "pauseDownloadTask: true");
+        boolean bool = com.tencent.mm.plugin.cdndownloader.c.a.dpY().Nz(paramAnonymousString);
+        Log.i("MicroMsg.CDNDownloadService", "pauseDownloadTask: ".concat(String.valueOf(bool)));
         AppMethodBeat.o(120772);
-        return true;
+        return bool;
       }
       
-      public final boolean asg(String paramAnonymousString)
+      public final boolean alK(String paramAnonymousString)
       {
         AppMethodBeat.i(120773);
-        com.tencent.mm.plugin.cdndownloader.c.a.cMu().asi(paramAnonymousString);
-        Log.i("MicroMsg.CDNDownloadService", "removeDownloadTask: true");
+        boolean bool = com.tencent.mm.plugin.cdndownloader.c.a.dpY().alM(paramAnonymousString);
+        Log.i("MicroMsg.CDNDownloadService", "removeDownloadTask: ".concat(String.valueOf(bool)));
         AppMethodBeat.o(120773);
-        return true;
+        return bool;
       }
       
-      public final CDNTaskState ash(String paramAnonymousString)
+      public final CDNTaskState alL(String paramAnonymousString)
       {
         AppMethodBeat.i(120774);
         paramAnonymousString = CdnLogic.httpMultiSocketDownloadTaskState(paramAnonymousString);
@@ -183,19 +183,19 @@ public class CDNDownloadService
         Log.i("MicroMsg.CDNDownloadService", "resumeDownloadTask: %s", new Object[] { paramAnonymousCDNTaskInfo.downloadUrl });
         g localg = new g();
         localg.taskName = "task_CDNDownloadService_2";
-        localg.iUP = paramAnonymousCDNTaskInfo.iUP;
+        localg.lwU = paramAnonymousCDNTaskInfo.lwU;
         localg.field_mediaId = paramAnonymousCDNTaskInfo.mediaId;
         localg.field_fullpath = paramAnonymousCDNTaskInfo.filePath;
-        localg.iUJ = com.tencent.mm.plugin.downloader.a.c.asQ(paramAnonymousCDNTaskInfo.downloadUrl);
-        localg.iUQ = com.tencent.mm.plugin.downloader.a.c.asQ(paramAnonymousCDNTaskInfo.tLy);
-        localg.iUG = CDNDownloadService.cMB();
-        localg.iUK = paramAnonymousCDNTaskInfo.tLA;
-        localg.iUL = paramAnonymousCDNTaskInfo.tLB;
-        localg.iUO = paramAnonymousCDNTaskInfo.tLD;
-        localg.allow_mobile_net_download = paramAnonymousCDNTaskInfo.tLC;
+        localg.lwO = com.tencent.mm.plugin.downloader.a.c.amF(paramAnonymousCDNTaskInfo.downloadUrl);
+        localg.lwV = com.tencent.mm.plugin.downloader.a.c.amF(paramAnonymousCDNTaskInfo.wON);
+        localg.lwL = CDNDownloadService.dqf();
+        localg.lwP = paramAnonymousCDNTaskInfo.wOP;
+        localg.lwQ = paramAnonymousCDNTaskInfo.wOQ;
+        localg.lwT = paramAnonymousCDNTaskInfo.wOS;
+        localg.allow_mobile_net_download = paramAnonymousCDNTaskInfo.wOR;
         localg.is_resume_task = true;
-        CDNDownloadService.a(localg, paramAnonymousCDNTaskInfo.tLz);
-        int i = com.tencent.mm.plugin.cdndownloader.c.a.cMu().i(localg);
+        CDNDownloadService.a(localg, paramAnonymousCDNTaskInfo.wOO);
+        int i = com.tencent.mm.plugin.cdndownloader.c.a.dpY().j(localg);
         Log.i("MicroMsg.CDNDownloadService", "resumeDownloadTask: ".concat(String.valueOf(i)));
         AppMethodBeat.o(120771);
         return i;
@@ -208,26 +208,26 @@ public class CDNDownloadService
         AppMethodBeat.o(120776);
       }
       
-      public final void cMp()
+      public final void dpT()
       {
         AppMethodBeat.i(120778);
-        if (!b.a.aFK().c(CDNDownloadService.this))
+        if (!b.a.aYK().c(CDNDownloadService.this))
         {
           Log.i("MicroMsg.CDNDownloadService", "addIPCTaskMarker");
-          b.a.aFK().a(CDNDownloadService.this);
+          b.a.aYK().a(CDNDownloadService.this);
         }
         AppMethodBeat.o(120778);
       }
       
-      public final void cMq()
+      public final void dpU()
       {
         AppMethodBeat.i(120779);
         Log.i("MicroMsg.CDNDownloadService", "removeIPCTaskMarker");
-        b.a.aFK().b(CDNDownloadService.this);
+        b.a.aYK().b(CDNDownloadService.this);
         AppMethodBeat.o(120779);
       }
       
-      public final void cMr() {}
+      public final void dpV() {}
     };
     AppMethodBeat.o(120781);
   }
@@ -236,7 +236,7 @@ public class CDNDownloadService
   {
     AppMethodBeat.i(120782);
     Log.i("MicroMsg.CDNDownloadService", "onBind");
-    paramIntent = this.tLG;
+    paramIntent = this.wOV;
     AppMethodBeat.o(120782);
     return paramIntent;
   }
@@ -254,8 +254,8 @@ public class CDNDownloadService
     AppMethodBeat.i(120785);
     super.onDestroy();
     Log.i("MicroMsg.CDNDownloadService", "onDestroy");
-    b.a.aFK().b(this);
-    h.IzE.idkeyStat(710L, 1L, 1L, false);
+    b.a.aYK().b(this);
+    h.OAn.idkeyStat(710L, 1L, 1L, false);
     AppMethodBeat.o(120785);
   }
   

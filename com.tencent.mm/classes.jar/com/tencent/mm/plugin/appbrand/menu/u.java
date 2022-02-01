@@ -1,56 +1,80 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import com.huawei.easygo.sdk.EasyGo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.menu.a.a;
 import com.tencent.mm.plugin.appbrand.page.ah;
-import com.tencent.mm.plugin.expt.h.d;
+import com.tencent.mm.plugin.appbrand.w;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_TradeComplaint;", "Lcom/tencent/mm/plugin/appbrand/menu/base/BaseMenuDelegate;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "attachTo", "", "context", "Landroid/content/Context;", "pageView", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "appId", "", "performItemClick", "menuInfo", "Lcom/tencent/mm/plugin/appbrand/menu/MenuInfo;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class u
-  extends a<ah>
+  extends com.tencent.mm.plugin.appbrand.menu.a.a<ah>
 {
-  private static Boolean qfz = null;
-  private EasyGo easyGoManager;
+  public static final a tkd;
+  
+  static
+  {
+    AppMethodBeat.i(323870);
+    tkd = new a((byte)0);
+    AppMethodBeat.o(323870);
+  }
   
   public u()
   {
-    super(w.qfF.ordinal());
-    AppMethodBeat.i(269624);
-    this.easyGoManager = null;
-    AppMethodBeat.o(269624);
+    super(x.tkP.ordinal());
+    AppMethodBeat.i(323859);
+    AppMethodBeat.o(323859);
   }
   
-  private static boolean cbz()
+  public static final y i(ah paramah)
   {
-    AppMethodBeat.i(269627);
-    if (qfz == null) {}
-    try
+    AppMethodBeat.i(323865);
+    paramah = a.i(paramah);
+    AppMethodBeat.o(323865);
+    return paramah;
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/menu/MenuDelegate_TradeComplaint$Companion;", "", "()V", "TAG", "", "TRADE_COMPLAINT_FAKE_NATIVE_APP_ENTER_PATH_FORMAT", "TRADE_COMPLAINT_FAKE_NATIVE_APP_USER_NAME", "getState", "Lcom/tencent/mm/plugin/appbrand/menu/MenuState;", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static y i(ah paramah)
     {
-      if (Util.getInt(d.dgX().a("clicfg_fold_appbrand_split_screen", "1", false, true), 1) > 0) {
-        Log.i("MicroMsg.MenuDelegate_splitScreen", "isOpenSplitScreen!!");
+      int j = 0;
+      AppMethodBeat.i(323897);
+      int i;
+      if (paramah == null) {
+        i = j;
       }
-      for (qfz = Boolean.TRUE;; qfz = Boolean.FALSE)
-      {
-        boolean bool = qfz.booleanValue();
-        AppMethodBeat.o(269627);
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.MenuDelegate_splitScreen", localException, "isOpenSplitScreen", new Object[0]);
-        qfz = Boolean.FALSE;
+        Log.i("MicroMsg.AppBrand.MenuDelegate_TradeComplaint", s.X("getState, controlByte: ", Integer.valueOf(i)));
+        if (i != 1) {
+          break;
+        }
+        paramah = y.tkS;
+        AppMethodBeat.o(323897);
+        return paramah;
+        paramah = paramah.getRuntime();
+        i = j;
+        if (paramah != null)
+        {
+          paramah = paramah.ccM();
+          i = j;
+          if (paramah != null) {
+            i = com.tencent.mm.plugin.appbrand.config.a.a(com.tencent.mm.plugin.appbrand.config.a.qVx, paramah);
+          }
+        }
       }
+      paramah = y.tkR;
+      AppMethodBeat.o(323897);
+      return paramah;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.u
  * JD-Core Version:    0.7.0.1
  */

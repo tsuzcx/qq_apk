@@ -1,38 +1,36 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.protocal.protobuf.dvm;
-import com.tencent.mm.protocal.protobuf.dvn;
-import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.protocal.protobuf.ekc;
+import com.tencent.mm.protocal.protobuf.ekd;
+import com.tencent.mm.wallet_core.model.z;
 
 public final class p
-  extends c<dvn>
-  implements j
+  extends z<ekd>
 {
-  public p(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3)
+  private ekc UZJ;
+  private c nao;
+  
+  public p()
   {
-    AppMethodBeat.i(68452);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new dvm();
-    ((d.a)localObject).lBV = new dvn();
-    ((d.a)localObject).funcId = 1338;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/redeemfund";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).bgN();
-    dvm localdvm = (dvm)d.b.b(((d)localObject).lBR);
-    localdvm.TUS = paramInt1;
-    localdvm.SnA = paramString1;
-    localdvm.TUX = paramString2;
-    localdvm.DgI = paramInt2;
-    localdvm.TUW = paramString3;
-    localdvm.OmF = ah.gFF();
-    c((d)localObject);
-    AppMethodBeat.o(68452);
+    AppMethodBeat.i(68451);
+    this.UZJ = null;
+    c.a locala = new c.a();
+    locala.otE = new ekc();
+    locala.otF = new ekd();
+    locala.funcId = 1211;
+    locala.uri = "/cgi-bin/mmpay-bin/qryusrfunddetail";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.nao = locala.bEF();
+    this.UZJ = ((ekc)c.b.b(this.nao.otB));
+    this.UZJ.time_stamp = ((int)System.currentTimeMillis());
+    this.UZJ.Vbl = ai.ieD();
+    c(locala.bEF());
+    AppMethodBeat.o(68451);
   }
 }
 

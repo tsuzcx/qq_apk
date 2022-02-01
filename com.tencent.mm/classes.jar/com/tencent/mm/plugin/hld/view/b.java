@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.hld.view;
 
 import android.view.View;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/view/IImeCheckBoxCallback;", "", "onCheck", "", "v", "Landroid/view/View;", "checked", "", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/view/IImeCheckBoxCallback;", "", "onCheck", "", "v", "Landroid/view/View;", "checked", "", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
 {
-  public abstract void t(View paramView, boolean paramBoolean);
+  public abstract void z(View paramView, boolean paramBoolean);
 }
 
 

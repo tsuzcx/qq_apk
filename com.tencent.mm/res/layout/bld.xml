@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <RelativeLayout android:orientation="vertical" android:id="@id/gup" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/afp" android:gravity="center_horizontal" android:id="@id/guo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iq7" android:layout_centerVertical="true" />
-            <View android:id="@id/guq" android:background="@color/afv" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:orientation="vertical" android:id="@id/gut" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/aeq" android:gravity="center_horizontal" android:id="@id/gus" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iq8" android:layout_centerVertical="true" />
-            <View android:id="@id/guu" android:background="@color/afv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-    </LinearLayout>
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
-    <RelativeLayout android:id="@id/gv7" android:layout_width="fill_parent" android:layout_height="400.0dip">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:id="@id/gun" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ipt" android:layout_centerInParent="true" />
-        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/gur" android:background="@null" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/axy" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" android:headerDividersEnabled="true" style="@style/rj" />
-        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/guv" android:background="@null" android:focusable="true" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/axy" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" android:headerDividersEnabled="true" style="@style/rj" />
-    </RelativeLayout>
-</LinearLayout>
+    <View android:id="@id/ktb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" android:contentDescription="@null" android:importantForAccessibility="no" />
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/gsu" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="bottom|center" android:id="@id/gsv" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

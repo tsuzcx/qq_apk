@@ -14,49 +14,49 @@ import java.util.Map;
 
 public final class f
 {
-  private Map<String, h> QMq;
-  private int tDg;
+  private Map<String, h> XFO;
+  private int wHj;
   
   public f()
   {
     AppMethodBeat.i(110678);
-    this.QMq = new HashMap();
-    this.tDg = 1;
+    this.XFO = new HashMap();
+    this.wHj = 1;
     AppMethodBeat.o(110678);
   }
   
-  public final void boA(String paramString)
+  public final void boo(String paramString)
   {
     AppMethodBeat.i(110679);
-    if (this.tDg > 3)
+    if (this.wHj > 3)
     {
       Log.i("MicroMsg.Wepkg.SupportIframe", "more than 3 wepkgs");
       AppMethodBeat.o(110679);
       return;
     }
-    String str = d.boN(paramString);
-    if ((!Util.isNullOrNil(str)) && (this.QMq.get(str) == null))
+    String str = d.boB(paramString);
+    if ((!Util.isNullOrNil(str)) && (this.XFO.get(str) == null))
     {
-      this.tDg += 1;
-      h localh = e.boc(str);
+      this.wHj += 1;
+      h localh = e.bnQ(str);
       if (localh != null)
       {
-        this.QMq.put(str, localh);
+        this.XFO.put(str, localh);
         AppMethodBeat.o(110679);
         return;
       }
-      localh = e.di(paramString, true);
-      if ((localh != null) && (localh.QMA != null))
+      localh = e.dS(paramString, true);
+      if ((localh != null) && (localh.XFY != null))
       {
-        this.QMq.put(str, localh);
-        a.b("EnterWeb", paramString, localh.QMA.jTB, localh.QMA.version, 1L, 0L, null);
+        this.XFO.put(str, localh);
+        a.b("EnterWeb", paramString, localh.XFY.mtT, localh.XFY.version, 1L, 0L, null);
         Log.i("MicroMsg.Wepkg.SupportIframe", "load wepkg: %s", new Object[] { str });
       }
     }
     AppMethodBeat.o(110679);
   }
   
-  public final WebResourceResponse boB(String paramString)
+  public final WebResourceResponse bop(String paramString)
   {
     AppMethodBeat.i(110680);
     if (Util.isNullOrNil(paramString))
@@ -64,10 +64,10 @@ public final class f
       AppMethodBeat.o(110680);
       return null;
     }
-    Iterator localIterator = this.QMq.values().iterator();
+    Iterator localIterator = this.XFO.values().iterator();
     while (localIterator.hasNext())
     {
-      WebResourceResponse localWebResourceResponse = ((h)localIterator.next()).boB(paramString);
+      WebResourceResponse localWebResourceResponse = ((h)localIterator.next()).bop(paramString);
       if (localWebResourceResponse != null)
       {
         Log.i("MicroMsg.Wepkg.SupportIframe", "hit rid: %s", new Object[] { paramString });

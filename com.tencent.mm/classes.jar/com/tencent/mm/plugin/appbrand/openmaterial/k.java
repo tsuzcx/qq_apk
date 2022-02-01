@@ -1,10 +1,29 @@
 package com.tencent.mm.plugin.appbrand.openmaterial;
 
-import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
+import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
 public abstract interface k
 {
-  public abstract void a(boolean paramBoolean, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection);
+  public static final k trz = new k()
+  {
+    public final void an(Runnable paramAnonymousRunnable)
+    {
+      AppMethodBeat.i(323650);
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        paramAnonymousRunnable.run();
+        AppMethodBeat.o(323650);
+        return;
+      }
+      h.ahAA.bk(paramAnonymousRunnable);
+      AppMethodBeat.o(323650);
+    }
+  };
+  
+  public abstract void an(Runnable paramRunnable);
 }
 
 

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/fg1" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+        <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/fg0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/j6" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/j6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d_">
+                <TextView android:textSize="@dimen/hr" android:textColor="@color/a7b" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/g6o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_" android:text="@string/gty" />
+                <TextView android:textSize="@dimen/q" android:textColor="@color/a7b" android:layout_gravity="center_horizontal" android:id="@id/iks" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_" android:text="@string/gu0" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:gravity="center" android:id="@id/gwd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/m2" android:text="@string/hy6" />
+                <LinearLayout android:orientation="vertical" android:id="@id/bu_" android:background="@drawable/p5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/m2" android:paddingRight="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m1">
+                        <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:id="@id/ko8" android:layout_height="wrap_content" android:text="@string/hya" android:maxLines="2" android:singleLine="false" style="@style/mf" />
+                        <TextView android:textSize="@dimen/j7" android:gravity="left" android:id="@id/bub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ig" />
+                    </LinearLayout>
+                    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
+                </LinearLayout>
+                <com.tencent.mm.plugin.account.sdk.MMImeFormInputView android:id="@id/gwg" android:focusableInTouchMode="false" android:visibility="gone" form:form_hint="@string/gtw" form:form_layout="@layout/bd8" form:form_title="@string/gcc" style="@style/mg" />
+                <com.tencent.mm.plugin.account.sdk.MMImeFormInputView android:id="@id/jda" android:focusableInTouchMode="false" android:visibility="gone" form:form_hint="@string/gdo" form:form_layout="@layout/bd9" form:form_title="@string/gdh" style="@style/mg" />
+                <com.tencent.mm.ui.base.MMFormVerifyCodeInputView android:id="@id/jo8" android:focusableInTouchMode="false" form:form_btn_title="@string/gu1" form:form_hint="@string/gdu" form:form_layout="@layout/bd3" form:form_title="@string/gtx" style="@style/mg" />
+                <Button android:textSize="@dimen/j7" android:textColor="@color/a1c" android:id="@id/g64" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/i9" android:layout_marginBottom="@dimen/i9" android:text="@string/gda" />
+            </LinearLayout>
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ik5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv">
+                <CheckBox android:id="@id/ikb" android:padding="@dimen/bv" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/bv" android:layout_marginRight="@dimen/bv" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bv" android:text="@string/g5b" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/a1c" android:ellipsize="end" android:id="@id/ika" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g5d" android:singleLine="true" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/xo" android:layout_gravity="center_horizontal" android:id="@id/l3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cv" android:text="@string/gdj" />
+            <Button android:layout_gravity="center_horizontal" android:id="@id/hfl" android:visibility="gone" android:text="@string/gd7" style="@style/oh" />
+            <Button android:textSize="@dimen/j7" android:textColor="@color/a1c" android:layout_gravity="bottom|center" android:id="@id/g5q" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" android:text="@string/gc1" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/agf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d_" android:layout_marginBottom="@dimen/cv">
+                <Button android:textSize="@dimen/hq" android:textColor="@color/a1c" android:id="@id/g6b" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hvq" />
+                <ImageView android:background="@color/c4" android:layout_width="@dimen/bo" android:layout_height="@dimen/i9" android:layout_marginLeft="@dimen/k" android:layout_marginRight="@dimen/k" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ef5" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <Button android:textSize="@dimen/hq" android:textColor="@color/a1c" android:id="@id/g6c" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gd3" />
+                    <ImageView android:background="@color/c4" android:layout_width="@dimen/bo" android:layout_height="@dimen/i9" android:layout_marginLeft="@dimen/k" android:layout_marginRight="@dimen/k" />
+                </LinearLayout>
+                <Button android:textSize="@dimen/hq" android:textColor="@color/a1c" android:id="@id/g6h" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lit" />
+            </LinearLayout>
+        </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+    </ScrollView>
+</LinearLayout>

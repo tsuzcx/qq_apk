@@ -1,42 +1,30 @@
 package com.tencent.mm.ae;
 
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
-import kotlin.g.a.a;
-import kotlin.g.b.aa.d;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "T", "invoke", "()Ljava/lang/Object;"})
+@Metadata(d1={""}, d2={"com/tencent/mm/kt/CommonKt$afterDelayLayout$stateListener$1", "Landroid/view/View$OnAttachStateChangeListener;", "onViewAttachedToWindow", "", "p0", "Landroid/view/View;", "onViewDetachedFromWindow", "libktcomm_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d$b
-  extends q
-  implements a<T>
+  implements View.OnAttachStateChangeListener
 {
-  public d$b(aa.d paramd, List paramList)
-  {
-    super(0);
-  }
+  public d$b(d.a parama, View paramView) {}
   
-  public final T invoke()
+  public final void onViewAttachedToWindow(View paramView) {}
+  
+  public final void onViewDetachedFromWindow(View paramView)
   {
-    AppMethodBeat.i(153446);
-    if ((this.khh.aaBA < 0) || (this.khh.aaBA >= this.khi.size()))
-    {
-      AppMethodBeat.o(153446);
-      return null;
-    }
-    Object localObject = this.khi;
-    aa.d locald = this.khh;
-    int i = locald.aaBA;
-    locald.aaBA = (i + 1);
-    localObject = ((List)localObject).get(i);
-    AppMethodBeat.o(153446);
-    return localObject;
+    AppMethodBeat.i(233417);
+    this.mHB.onLayoutChange(null, 0, 0, 0, 0, 0, 0, 0, 0);
+    this.mHz.removeOnLayoutChangeListener((View.OnLayoutChangeListener)this.mHB);
+    AppMethodBeat.o(233417);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ae.d.b
  * JD-Core Version:    0.7.0.1
  */

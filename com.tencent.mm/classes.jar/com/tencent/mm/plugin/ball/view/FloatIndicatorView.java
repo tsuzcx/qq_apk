@@ -25,15 +25,15 @@ import com.tencent.mm.plugin.ball.f.e;
 public class FloatIndicatorView
   extends FrameLayout
 {
-  private Vibrator rqC;
-  private ImageView seg;
-  private ImageView seh;
-  private TextView sei;
-  private c sej;
-  private Animator sek;
-  private Animator sel;
-  private a sem;
-  private boolean sen;
+  private Vibrator uAL;
+  private ImageView vpW;
+  private ImageView vpX;
+  private TextView vpY;
+  private c vpZ;
+  private Animator vqa;
+  private Animator vqb;
+  private a vqc;
+  private boolean vqd;
   
   public FloatIndicatorView(Context paramContext)
   {
@@ -50,50 +50,50 @@ public class FloatIndicatorView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106480);
     View.inflate(paramContext, a.f.layout_float_indicator_view, this);
-    this.seg = ((ImageView)findViewById(a.e.backgroundImageView));
-    this.seh = ((ImageView)findViewById(a.e.indicatorImageView));
-    this.sei = ((TextView)findViewById(a.e.indicatorTextView));
-    this.rqC = ((Vibrator)paramContext.getSystemService("vibrator"));
-    this.sej = new c(this);
-    float f = e.saR;
+    this.vpW = ((ImageView)findViewById(a.e.backgroundImageView));
+    this.vpX = ((ImageView)findViewById(a.e.indicatorImageView));
+    this.vpY = ((TextView)findViewById(a.e.indicatorTextView));
+    this.uAL = ((Vibrator)paramContext.getSystemService("vibrator"));
+    this.vpZ = new c(this);
+    float f = e.vmj;
     paramContext = new AnimatorSet();
-    paramAttributeSet = ObjectAnimator.ofFloat(this.seg, "scaleX", new float[] { f, 1.0F });
+    paramAttributeSet = ObjectAnimator.ofFloat(this.vpW, "scaleX", new float[] { f, 1.0F });
     paramAttributeSet.setDuration(200L);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.seg, "scaleY", new float[] { f, 1.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.vpW, "scaleY", new float[] { f, 1.0F });
     localObjectAnimator.setDuration(200L);
     paramContext.playTogether(new Animator[] { paramAttributeSet, localObjectAnimator });
-    this.sek = paramContext;
-    f = e.saR;
+    this.vqa = paramContext;
+    f = e.vmj;
     paramContext = new AnimatorSet();
-    paramAttributeSet = ObjectAnimator.ofFloat(this.seg, "scaleX", new float[] { 1.0F, f });
+    paramAttributeSet = ObjectAnimator.ofFloat(this.vpW, "scaleX", new float[] { 1.0F, f });
     paramAttributeSet.setDuration(200L);
-    localObjectAnimator = ObjectAnimator.ofFloat(this.seg, "scaleY", new float[] { 1.0F, f });
+    localObjectAnimator = ObjectAnimator.ofFloat(this.vpW, "scaleY", new float[] { 1.0F, f });
     localObjectAnimator.setDuration(200L);
     paramContext.playTogether(new Animator[] { paramAttributeSet, localObjectAnimator });
-    this.sel = paramContext;
+    this.vqb = paramContext;
     AppMethodBeat.o(106480);
   }
   
-  public final void Gf(int paramInt)
+  public final void GE(int paramInt)
   {
     AppMethodBeat.i(106482);
     if (paramInt >= 5)
     {
       b.i("MicroMsg.FloatIndicatorView", "onFloatBallInfoCountChanged, float ball full, count:%s", new Object[] { Integer.valueOf(paramInt) });
-      this.sen = true;
-      this.sei.setText(a.h.float_ball_full);
-      this.sei.setTextColor(androidx.core.content.a.w(getContext(), a.b.float_ball_corner_full_text_color));
-      this.seg.setImageResource(a.d.background_float_indicator_full_view);
-      this.seh.setImageDrawable(com.tencent.mm.svg.a.a.h(getResources(), a.g.float_indicator_full_icon));
+      this.vqd = true;
+      this.vpY.setText(a.h.float_ball_full);
+      this.vpY.setTextColor(androidx.core.content.a.w(getContext(), a.b.float_ball_corner_full_text_color));
+      this.vpW.setImageResource(a.d.background_float_indicator_full_view);
+      this.vpX.setImageDrawable(com.tencent.mm.svg.a.a.i(getResources(), a.g.float_indicator_full_icon));
       AppMethodBeat.o(106482);
       return;
     }
     b.i("MicroMsg.FloatIndicatorView", "onFloatBallInfoCountChanged, float ball not full, count:%s", new Object[] { Integer.valueOf(paramInt) });
-    this.sen = false;
-    this.sei.setText(a.h.enter_float_ball);
-    this.sei.setTextColor(androidx.core.content.a.w(getContext(), a.b.float_ball_corner_text_color));
-    this.seg.setImageResource(a.d.background_float_indicator_view);
-    this.seh.setImageDrawable(com.tencent.mm.svg.a.a.h(getResources(), a.g.float_indicator_icon));
+    this.vqd = false;
+    this.vpY.setText(a.h.enter_float_ball);
+    this.vpY.setTextColor(androidx.core.content.a.w(getContext(), a.b.float_ball_corner_text_color));
+    this.vpW.setImageResource(a.d.background_float_indicator_view);
+    this.vpX.setImageDrawable(com.tencent.mm.svg.a.a.i(getResources(), a.g.float_indicator_icon));
     AppMethodBeat.o(106482);
   }
   
@@ -102,9 +102,9 @@ public class FloatIndicatorView
     AppMethodBeat.i(106481);
     super.onConfigurationChanged(paramConfiguration);
     a locala;
-    if ((this.sem != null) && (paramConfiguration != null))
+    if ((this.vqc != null) && (paramConfiguration != null))
     {
-      locala = this.sem;
+      locala = this.vqc;
       if (paramConfiguration.orientation != 2) {
         break label49;
       }
@@ -112,7 +112,7 @@ public class FloatIndicatorView
     label49:
     for (boolean bool = true;; bool = false)
     {
-      locala.lj(bool);
+      locala.mw(bool);
       AppMethodBeat.o(106481);
       return;
     }
@@ -120,17 +120,17 @@ public class FloatIndicatorView
   
   public void setOnOrientationChangedListener(a parama)
   {
-    this.sem = parama;
+    this.vqc = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void lj(boolean paramBoolean);
+    public abstract void mw(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.FloatIndicatorView
  * JD-Core Version:    0.7.0.1
  */

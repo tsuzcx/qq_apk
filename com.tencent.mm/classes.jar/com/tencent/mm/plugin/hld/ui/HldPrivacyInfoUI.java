@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.hld.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,7 +9,6 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,7 +17,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
+import com.tencent.mm.ce.d;
 import com.tencent.mm.plugin.hld.a.a;
 import com.tencent.mm.plugin.hld.a.c;
 import com.tencent.mm.plugin.hld.a.f;
@@ -27,67 +26,95 @@ import com.tencent.mm.plugin.hld.a.h;
 import com.tencent.mm.plugin.hld.a.j;
 import com.tencent.mm.plugin.hld.b.e;
 import com.tencent.mm.plugin.hld.b.e.a;
-import com.tencent.mm.plugin.hld.model.k;
+import com.tencent.mm.plugin.hld.f.l;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.CustomScrollView;
-import com.tencent.mm.ui.base.CustomScrollView.a;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 import kotlin.n.n;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI;", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/view/View$OnClickListener;", "()V", "continueBt", "Landroid/widget/LinearLayout;", "getContinueBt", "()Landroid/widget/LinearLayout;", "continueBt$delegate", "Lkotlin/Lazy;", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "scrollView", "Lcom/tencent/mm/ui/base/CustomScrollView;", "getScrollView", "()Lcom/tencent/mm/ui/base/CustomScrollView;", "scrollView$delegate", "getLayoutId", "", "initView", "", "onClick", "v", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI;", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/view/View$OnClickListener;", "()V", "continueBt", "Landroid/widget/LinearLayout;", "getContinueBt", "()Landroid/widget/LinearLayout;", "continueBt$delegate", "Lkotlin/Lazy;", "finishBt", "Landroid/widget/Button;", "getFinishBt", "()Landroid/widget/Button;", "finishBt$delegate", "scrollView", "Lcom/tencent/mm/ui/base/CustomScrollView;", "getScrollView", "()Lcom/tencent/mm/ui/base/CustomScrollView;", "scrollView$delegate", "getLayoutId", "", "initView", "", "onClick", "v", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class HldPrivacyInfoUI
   extends MMActivity
   implements View.OnClickListener
 {
-  public static final a DGq;
-  private final f DGp;
-  private final f Dzq;
-  private final f yOH;
+  public static final HldPrivacyInfoUI.a JxP;
+  private final j ETc;
+  private final j Jst;
+  private final j JxQ;
   
   static
   {
-    AppMethodBeat.i(215772);
-    DGq = new a((byte)0);
-    AppMethodBeat.o(215772);
+    AppMethodBeat.i(312267);
+    JxP = new HldPrivacyInfoUI.a((byte)0);
+    AppMethodBeat.o(312267);
   }
   
   public HldPrivacyInfoUI()
   {
-    AppMethodBeat.i(215771);
-    this.yOH = g.ar((kotlin.g.a.a)new g(this));
-    this.Dzq = g.ar((kotlin.g.a.a)new c(this));
-    this.DGp = g.ar((kotlin.g.a.a)new b(this));
-    AppMethodBeat.o(215771);
+    AppMethodBeat.i(312229);
+    this.ETc = kotlin.k.cm((kotlin.g.a.a)new e(this));
+    this.Jst = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.JxQ = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    AppMethodBeat.o(312229);
   }
   
-  private final CustomScrollView eFG()
+  private static final void a(HldPrivacyInfoUI paramHldPrivacyInfoUI, ScrollView paramScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(215759);
-    CustomScrollView localCustomScrollView = (CustomScrollView)this.yOH.getValue();
-    AppMethodBeat.o(215759);
-    return localCustomScrollView;
+    AppMethodBeat.i(312262);
+    s.u(paramHldPrivacyInfoUI, "this$0");
+    paramInt1 = paramScrollView.getChildAt(paramScrollView.getChildCount() - 1).getBottom() - (paramScrollView.getHeight() + paramScrollView.getScrollY());
+    Log.d("WxIme.HldPrivacyInfoUI", s.X("diff:", Integer.valueOf(paramInt1)));
+    if (paramInt1 == 0)
+    {
+      paramHldPrivacyInfoUI.getFinishBt().setVisibility(0);
+      paramHldPrivacyInfoUI.fNB().setVisibility(8);
+    }
+    AppMethodBeat.o(312262);
   }
   
-  private final LinearLayout eFH()
+  private static final boolean a(HldPrivacyInfoUI paramHldPrivacyInfoUI, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(215763);
-    LinearLayout localLinearLayout = (LinearLayout)this.DGp.getValue();
-    AppMethodBeat.o(215763);
-    return localLinearLayout;
+    AppMethodBeat.i(312251);
+    s.u(paramHldPrivacyInfoUI, "this$0");
+    paramHldPrivacyInfoUI.finish();
+    AppMethodBeat.o(312251);
+    return true;
+  }
+  
+  private final CustomScrollView fNA()
+  {
+    AppMethodBeat.i(312235);
+    Object localObject = this.ETc.getValue();
+    s.s(localObject, "<get-scrollView>(...)");
+    localObject = (CustomScrollView)localObject;
+    AppMethodBeat.o(312235);
+    return localObject;
+  }
+  
+  private final LinearLayout fNB()
+  {
+    AppMethodBeat.i(312246);
+    Object localObject = this.JxQ.getValue();
+    s.s(localObject, "<get-continueBt>(...)");
+    localObject = (LinearLayout)localObject;
+    AppMethodBeat.o(312246);
+    return localObject;
   }
   
   private final Button getFinishBt()
   {
-    AppMethodBeat.i(215761);
-    Button localButton = (Button)this.Dzq.getValue();
-    AppMethodBeat.o(215761);
-    return localButton;
+    AppMethodBeat.i(312241);
+    Object localObject = this.Jst.getValue();
+    s.s(localObject, "<get-finishBt>(...)");
+    localObject = (Button)localObject;
+    AppMethodBeat.o(312241);
+    return localObject;
   }
   
   public final int getLayoutId()
@@ -97,91 +124,89 @@ public final class HldPrivacyInfoUI
   
   public final void initView()
   {
-    AppMethodBeat.i(215767);
+    AppMethodBeat.i(312311);
     super.initView();
     setMMTitle(a.j.ime_privacy_info_title);
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.c.BW_93));
     setBackGroundColorResource(a.c.BW_93);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
+    setBackBtn(new HldPrivacyInfoUI..ExternalSyntheticLambda0(this));
     Object localObject = getResources();
-    if ((localObject instanceof com.tencent.mm.cj.b)) {}
-    for (localObject = ((com.tencent.mm.cj.b)localObject).hrw().getText(a.j.ime_privacy_info_detail);; localObject = ((Resources)localObject).getText(a.j.ime_privacy_info_detail))
+    if ((localObject instanceof d)) {}
+    for (localObject = ((d)localObject).mResources.getText(a.j.ime_privacy_info_detail);; localObject = ((Resources)localObject).getText(a.j.ime_privacy_info_detail))
     {
-      p.j(localObject, "if(resources is MMResour….ime_privacy_info_detail)");
+      s.s(localObject, "if(resources is MMResour….ime_privacy_info_detail)");
       String str = getString(a.j.ime_privacy_info_url);
-      p.j(str, "getString(R.string.ime_privacy_info_url)");
+      s.s(str, "getString(R.string.ime_privacy_info_url)");
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject);
       int i = n.a((CharSequence)localObject, str, 0, false, 6);
-      localSpannableStringBuilder.setSpan(new e(this), i, localSpannableStringBuilder.length(), 34);
+      localSpannableStringBuilder.setSpan(new d(this), i, localSpannableStringBuilder.length(), 34);
       localObject = (TextView)findViewById(a.f.detail_tv);
       ((TextView)localObject).setMovementMethod(LinkMovementMethod.getInstance());
       ((TextView)localObject).setHighlightColor(0);
       ((TextView)localObject).setText((CharSequence)localSpannableStringBuilder);
-      ((CustomScrollView)findViewById(a.f.body_sv)).setOnScrollChangeListener((CustomScrollView.a)new f(this));
+      ((CustomScrollView)findViewById(a.f.body_sv)).setOnScrollChangeListener(new HldPrivacyInfoUI..ExternalSyntheticLambda1(this));
       getFinishBt().setOnClickListener((View.OnClickListener)this);
-      eFH().setOnClickListener((View.OnClickListener)this);
-      AppMethodBeat.o(215767);
+      fNB().setOnClickListener((View.OnClickListener)this);
+      AppMethodBeat.o(312311);
       return;
     }
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(215770);
+    AppMethodBeat.i(312323);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
     int i;
-    if (paramView != null)
+    if (paramView == null)
     {
-      paramView = Integer.valueOf(paramView.getId());
+      paramView = null;
       i = a.f.finish_bt;
       if (paramView != null) {
         break label95;
       }
-      label59:
+      label53:
       i = a.f.continue_bt;
       if (paramView != null) {
-        break label176;
+        break label167;
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(215770);
+      AppMethodBeat.o(312323);
       return;
-      paramView = null;
+      paramView = Integer.valueOf(paramView.getId());
       break;
       label95:
       if (paramView.intValue() != i) {
-        break label59;
+        break label53;
       }
-      paramView = k.DDb;
-      paramView = getContext();
-      p.j(paramView, "context");
-      k.hL(8, paramView.getIntent().getIntExtra("ime_enter_scene", 6));
-      paramView = com.tencent.mm.plugin.hld.f.l.DHK;
-      com.tencent.mm.plugin.hld.f.l.eHl();
-      paramView = e.Dvq;
-      e.a.a(com.tencent.mm.plugin.hld.model.b.DBq, 0L, null, 6);
+      paramView = com.tencent.mm.plugin.hld.model.k.JvH;
+      com.tencent.mm.plugin.hld.model.k.jp(8, getContext().getIntent().getIntExtra("ime_enter_scene", 6));
+      paramView = l.JyV;
+      l.fOU();
+      paramView = e.JoK;
+      e.a.a(com.tencent.mm.plugin.hld.model.b.Jup, 0L, null, 6);
       setResult(-1, new Intent());
       finish();
       continue;
-      label176:
+      label167:
       if (paramView.intValue() == i) {
-        eFG().smoothScrollBy(0, eFG().getHeight());
+        fNA().smoothScrollBy(0, fNA().getHeight());
       }
     }
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(215764);
+    AppMethodBeat.i(312296);
     super.onCreate(paramBundle);
     initView();
     overridePendingTransition(a.a.slide_right_in, a.a.slide_left_out);
-    AppMethodBeat.o(215764);
+    AppMethodBeat.o(312296);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -190,12 +215,9 @@ public final class HldPrivacyInfoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI$Companion;", "", "()V", "TAG", "", "plugin-hld_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/LinearLayout;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<LinearLayout>
   {
     b(HldPrivacyInfoUI paramHldPrivacyInfoUI)
@@ -204,9 +226,9 @@ public final class HldPrivacyInfoUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/Button;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<Button>
   {
     c(HldPrivacyInfoUI paramHldPrivacyInfoUI)
@@ -215,78 +237,40 @@ public final class HldPrivacyInfoUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class d
-    implements MenuItem.OnMenuItemClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI$initView$2", "Landroid/text/style/ClickableSpan;", "onClick", "", "widget", "Landroid/view/View;", "updateDrawState", "ds", "Landroid/text/TextPaint;", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
+    extends ClickableSpan
   {
     d(HldPrivacyInfoUI paramHldPrivacyInfoUI) {}
     
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(213446);
-      this.DGr.finish();
-      AppMethodBeat.o(213446);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/hld/ui/HldPrivacyInfoUI$initView$2", "Landroid/text/style/ClickableSpan;", "onClick", "", "widget", "Landroid/view/View;", "updateDrawState", "ds", "Landroid/text/TextPaint;", "plugin-hld_release"})
-  public static final class e
-    extends ClickableSpan
-  {
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(217789);
-      p.k(paramView, "widget");
+      AppMethodBeat.i(312330);
+      s.u(paramView, "widget");
       paramView = new Intent();
-      String str = MMApplicationContext.getResources().getString(a.j.license_read_url, new Object[] { LocaleUtil.getCurrentLanguage((Context)this.DGr.getContext()), LocaleUtil.getCurrentCountryCode(), "setting", Integer.valueOf(0), Integer.valueOf(0) });
-      p.j(str, "MMApplicationContext.get…yCode(), \"setting\", 0, 0)");
+      String str = MMApplicationContext.getResources().getString(a.j.license_read_url, new Object[] { LocaleUtil.getCurrentLanguage((Context)this.JxR.getContext()), LocaleUtil.getCurrentCountryCode(), "setting", Integer.valueOf(0), Integer.valueOf(0) });
+      s.s(str, "getResources().getString…yCode(), \"setting\", 0, 0)");
       paramView.putExtra("rawUrl", str);
       paramView.putExtra("forceHideShare", true);
-      c.b((Context)this.DGr.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
-      AppMethodBeat.o(217789);
+      c.b((Context)this.JxR.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+      AppMethodBeat.o(312330);
     }
     
     public final void updateDrawState(TextPaint paramTextPaint)
     {
-      AppMethodBeat.i(217791);
-      p.k(paramTextPaint, "ds");
-      AppCompatActivity localAppCompatActivity = this.DGr.getContext();
-      p.j(localAppCompatActivity, "context");
-      paramTextPaint.setColor(localAppCompatActivity.getResources().getColor(a.c.link_color));
-      AppMethodBeat.o(217791);
+      AppMethodBeat.i(312339);
+      s.u(paramTextPaint, "ds");
+      paramTextPaint.setColor(this.JxR.getContext().getResources().getColor(a.c.link_color));
+      AppMethodBeat.o(312339);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "scrollView", "Landroid/widget/ScrollView;", "kotlin.jvm.PlatformType", "x", "", "y", "oldx", "oldy", "onScrollChange"})
-  static final class f
-    implements CustomScrollView.a
-  {
-    f(HldPrivacyInfoUI paramHldPrivacyInfoUI) {}
-    
-    public final void a(ScrollView paramScrollView, int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(217498);
-      p.j(paramScrollView, "scrollView");
-      View localView = paramScrollView.getChildAt(paramScrollView.getChildCount() - 1);
-      p.j(localView, "view");
-      paramInt1 = localView.getBottom() - (paramScrollView.getHeight() + paramScrollView.getScrollY());
-      Log.d("WxIme.HldPrivacyInfoUI", "diff:".concat(String.valueOf(paramInt1)));
-      if (paramInt1 == 0)
-      {
-        HldPrivacyInfoUI.a(this.DGr).setVisibility(0);
-        HldPrivacyInfoUI.b(this.DGr).setVisibility(8);
-      }
-      AppMethodBeat.o(217498);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/base/CustomScrollView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class g
-    extends q
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/base/CustomScrollView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class e
+    extends u
     implements kotlin.g.a.a<CustomScrollView>
   {
-    g(HldPrivacyInfoUI paramHldPrivacyInfoUI)
+    e(HldPrivacyInfoUI paramHldPrivacyInfoUI)
     {
       super();
     }

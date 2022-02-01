@@ -1,86 +1,86 @@
 package com.tencent.matrix.a.a;
 
 import com.tencent.matrix.a.a.a.d.b;
-import com.tencent.matrix.a.a.a.f;
-import com.tencent.matrix.a.a.a.f.d;
-import com.tencent.matrix.a.a.a.j.a;
-import com.tencent.matrix.a.a.a.j.a.c.b;
-import com.tencent.matrix.a.b.k.c;
-import com.tencent.matrix.a.b.k.c.a;
-import com.tencent.matrix.a.c;
+import com.tencent.matrix.a.a.a.h;
+import com.tencent.matrix.a.a.a.h.d;
+import com.tencent.matrix.a.a.a.m.a;
+import com.tencent.matrix.a.a.a.m.a.c.b;
+import com.tencent.matrix.a.b.b;
+import com.tencent.matrix.a.b.o.c;
+import com.tencent.matrix.a.b.o.c.a;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class a
 {
-  public long cSL;
-  public int cSN;
-  public int cSO;
-  public int cSP;
-  public int cSQ;
-  public int cSR;
-  public int cSS;
-  public int cST;
-  public String cSU = "";
-  public int cSV;
-  public String cSW = "";
-  public int cSX;
-  public boolean cSY = false;
-  AtomicBoolean cSZ;
+  public boolean clZ = false;
+  public long eOb;
+  public int eOd;
+  public int eOe;
+  public int eOf;
+  public int eOg;
+  public int eOh;
+  public int eOi;
+  public int eOj;
+  public String eOk = "";
+  public int eOl;
+  public String eOm = "";
+  public int eOn;
+  private AtomicBoolean eOo;
   
-  public static a VQ()
+  public static a awA()
   {
-    if (com.tencent.matrix.b.Vt())
+    if (com.tencent.matrix.c.isInstalled())
     {
-      Object localObject = (c)com.tencent.matrix.b.Vu().Y(c.class);
+      Object localObject = (com.tencent.matrix.a.c)com.tencent.matrix.c.avW().ai(com.tencent.matrix.a.c.class);
       if (localObject != null)
       {
-        localObject = new a(((c)localObject).cSM);
-        ((a)localObject).cSY = true;
+        localObject = new a(((com.tencent.matrix.a.c)localObject).eOc);
+        ((a)localObject).clZ = true;
         return localObject;
       }
     }
-    return bl(1L);
+    return dD(1L);
   }
   
-  public static a bl(long paramLong)
+  public static a dD(long paramLong)
   {
     if (paramLong > 0L) {}
     for (;;)
     {
       a locala = new a();
-      locala.cSL = paramLong;
-      Object localObject1 = (com.tencent.matrix.a.a.a.d)com.tencent.matrix.a.a.Z(com.tencent.matrix.a.a.a.d.class);
+      locala.eOb = paramLong;
+      Object localObject1 = (com.tencent.matrix.a.a.a.d)com.tencent.matrix.a.a.aj(com.tencent.matrix.a.a.a.d.class);
       if (localObject1 != null)
       {
-        Object localObject2 = ((com.tencent.matrix.a.a.a.d)localObject1).bn(paramLong);
-        if (((j.a)localObject2).cWl)
+        Object localObject2 = ((com.tencent.matrix.a.a.a.d)localObject1).dF(paramLong);
+        if (((m.a)localObject2).eSe)
         {
-          locala.cSN = ((Long)((d.b)localObject2).cVi.cWu).intValue();
-          locala.cSO = ((Long)((d.b)localObject2).cVj.cWu).intValue();
-          locala.cSP = ((Long)((d.b)localObject2).cVk.cWu).intValue();
-          localObject1 = ((com.tencent.matrix.a.a.a.d)localObject1).bo(paramLong);
-          localObject2 = ((k.c)localObject1).WH();
+          locala.eOd = ((Long)((d.b)localObject2).eQI.eSn).intValue();
+          locala.eOe = ((Long)((d.b)localObject2).eQJ.eSn).intValue();
+          locala.eOf = ((Long)((d.b)localObject2).eQK.eSn).intValue();
+          localObject1 = ((com.tencent.matrix.a.a.a.d)localObject1).dG(paramLong);
+          localObject2 = ((o.c)localObject1).axE();
           if (localObject2 != null)
           {
-            locala.cSU = ((k.c.a)localObject2).key;
-            locala.cSV = ((k.c.a)localObject2).ratio;
-            localObject1 = ((k.c)localObject1).WI();
+            locala.eOk = ((o.c.a)localObject2).key;
+            locala.eOl = ((o.c.a)localObject2).ratio;
+            localObject1 = ((o.c)localObject1).axF();
             if (localObject1 != null)
             {
-              locala.cSW = ((k.c.a)localObject1).key;
-              locala.cSX = ((k.c.a)localObject1).ratio;
+              locala.eOm = ((o.c.a)localObject1).key;
+              locala.eOn = ((o.c.a)localObject1).ratio;
             }
-            localObject1 = (f)com.tencent.matrix.a.a.Z(f.class);
+            localObject1 = (h)com.tencent.matrix.a.a.aj(h.class);
             if (localObject1 != null)
             {
-              localObject1 = ((f)localObject1).bp(paramLong);
-              if (((j.a)localObject1).cWl)
+              localObject1 = ((h)localObject1).dH(paramLong);
+              if (((m.a)localObject1).eSe)
               {
-                locala.cSQ = ((Long)((f.d)localObject1).cVH.cWu).intValue();
-                locala.cSR = ((Long)((f.d)localObject1).cVI.cWu).intValue();
-                locala.cSS = ((Long)((f.d)localObject1).cVJ.cWu).intValue();
-                locala.cST = ((Long)((f.d)localObject1).cVK.cWu).intValue();
-                locala.cSY = true;
+                locala.eOg = ((Long)((h.d)localObject1).eRy.eSn).intValue();
+                locala.eOh = ((Long)((h.d)localObject1).eRz.eSn).intValue();
+                locala.eOi = ((Long)((h.d)localObject1).eRA.eSn).intValue();
+                locala.eOj = ((Long)((h.d)localObject1).eRB.eSn).intValue();
+                locala.clZ = true;
               }
             }
           }
@@ -91,36 +91,36 @@ public class a
     }
   }
   
-  public long VM()
+  public long aww()
   {
-    return Math.max(1L, this.cSL / 60000L);
+    return Math.max(1L, this.eOb / 60000L);
   }
   
-  public boolean VN()
+  public boolean awx()
   {
-    return VO() == 3;
+    return awy() == 3;
   }
   
-  public int VO()
+  public int awy()
   {
-    if (this.cSN >= 50) {
+    if (this.eOd >= 50) {
       return 1;
     }
-    if (this.cSP >= 50) {
+    if (this.eOf >= 50) {
       return 3;
     }
     return 2;
   }
   
-  public int VP()
+  public int awz()
   {
-    if (this.cSQ >= 50) {
+    if (this.eOg >= 50) {
       return 1;
     }
-    if (this.cSS >= 50) {
+    if (this.eOi >= 50) {
       return 3;
     }
-    if (this.cST >= 50) {
+    if (this.eOj >= 50) {
       return 4;
     }
     return 2;
@@ -128,16 +128,16 @@ public class a
   
   public boolean isCharging()
   {
-    return VP() == 1;
+    return awz() == 1;
   }
   
   public boolean isForeground()
   {
     boolean bool = true;
-    if (this.cSZ != null) {
-      bool = this.cSZ.get();
+    if (this.eOo != null) {
+      bool = this.eOo.get();
     }
-    while (VO() == 1) {
+    while (awy() == 1) {
       return bool;
     }
     return false;
@@ -145,53 +145,53 @@ public class a
   
   public String toString()
   {
-    return "AppStats{appFgRatio=" + this.cSN + ", appBgRatio=" + this.cSO + ", appFgSrvRatio=" + this.cSP + ", devChargingRatio=" + this.cSQ + ", devUnChargingRatio=" + this.cSR + ", devSceneOffRatio=" + this.cSS + ", devLowEnergyRatio=" + this.cST + ", sceneTop1='" + this.cSU + '\'' + ", sceneTop1Ratio=" + this.cSV + ", sceneTop2='" + this.cSW + '\'' + ", sceneTop2Ratio=" + this.cSX + ", isValid=" + this.cSY + ", duringMillis=" + this.cSL + ", foregroundOverride=" + this.cSZ + '}';
+    return "AppStats{appFgRatio=" + this.eOd + ", appBgRatio=" + this.eOe + ", appFgSrvRatio=" + this.eOf + ", devChargingRatio=" + this.eOg + ", devUnChargingRatio=" + this.eOh + ", devSceneOffRatio=" + this.eOi + ", devLowEnergyRatio=" + this.eOj + ", sceneTop1='" + this.eOk + '\'' + ", sceneTop1Ratio=" + this.eOl + ", sceneTop2='" + this.eOm + '\'' + ", sceneTop2Ratio=" + this.eOn + ", isValid=" + this.clZ + ", duringMillis=" + this.eOb + ", foregroundOverride=" + this.eOo + '}';
   }
   
   static final class a
     extends a
   {
-    final d cSI;
+    final d eNY;
     
     a(d paramd)
     {
-      this.cSI = paramd;
+      this.eNY = paramd;
     }
     
-    public final long VM()
+    public final long aww()
     {
       return 0L;
     }
     
-    public final boolean VN()
+    public final boolean awx()
     {
-      return com.tencent.matrix.a.b.b.br(d.getContext());
+      return b.cc(d.getContext());
     }
     
-    public final int VO()
+    public final int awy()
     {
-      return com.tencent.matrix.a.b.b.k(d.getContext(), this.cSI.cUh);
+      return b.k(d.getContext(), this.eNY.ePI);
     }
     
-    public final int VP()
+    public final int awz()
     {
-      return com.tencent.matrix.a.b.b.bl(d.getContext());
+      return b.bW(d.getContext());
     }
     
     public final boolean isCharging()
     {
-      return com.tencent.matrix.a.b.b.bo(d.getContext());
+      return b.bZ(d.getContext());
     }
     
     public final boolean isForeground()
     {
-      return this.cSI.cUh;
+      return this.eNY.ePI;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.a.a.a
  * JD-Core Version:    0.7.0.1
  */

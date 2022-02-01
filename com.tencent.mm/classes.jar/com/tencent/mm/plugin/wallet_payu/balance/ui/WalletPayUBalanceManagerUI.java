@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.wallet_payu.balance.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI;
 import com.tencent.mm.plugin.wallet_core.c.b.a;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 
 public class WalletPayUBalanceManagerUI
   extends WalletBalanceManagerUI
 {
-  public final void gFR()
+  public final void ieQ()
   {
     AppMethodBeat.i(71966);
-    s.gGL();
-    if (s.gGM().OnP == null) {}
+    com.tencent.mm.plugin.wallet.model.p.ifO();
+    if (com.tencent.mm.plugin.wallet.model.p.ifP().VcF == null) {}
     for (boolean bool = true;; bool = false)
     {
       doSceneProgress(new a(), bool);
@@ -25,7 +22,7 @@ public class WalletPayUBalanceManagerUI
     }
   }
   
-  public final void gFS()
+  public final void ieR()
   {
     AppMethodBeat.i(71968);
     startActivity(WalletPayUBalanceSaveUI.class);
@@ -39,11 +36,11 @@ public class WalletPayUBalanceManagerUI
     AppMethodBeat.o(71965);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     AppMethodBeat.i(71967);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof a))) {
-      jq(false);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramp instanceof a))) {
+      kD(false);
     }
     AppMethodBeat.o(71967);
     return false;
@@ -57,7 +54,7 @@ public class WalletPayUBalanceManagerUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.ui.WalletPayUBalanceManagerUI
  * JD-Core Version:    0.7.0.1
  */

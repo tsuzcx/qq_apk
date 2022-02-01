@@ -1,40 +1,37 @@
 package com.tencent.mm.plugin.gamelife.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.dc;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import kotlin.l;
+import com.tencent.mm.loader.c.b.b;
+import com.tencent.mm.loader.e.g;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessage;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "Companion", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/gamelife/loader/GameLifeAvatarData;", "()V", "downloader", "Lcom/tencent/mm/loader/impr/DefaultImageDownloader;", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends MAutoStorage<a>
+  extends com.tencent.mm.loader.c.b<a>
 {
-  public static final a DhP;
-  private static final String[] SQL_CREATE;
+  private final com.tencent.mm.loader.d.b mgg;
   
-  static
+  public c()
   {
-    AppMethodBeat.i(203058);
-    DhP = new a((byte)0);
-    a.a locala = a.DhN;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.access$getInfo$cp(), "AppMessage") };
-    AppMethodBeat.o(203058);
+    AppMethodBeat.i(268134);
+    this.mgg = new com.tencent.mm.loader.d.b();
+    AppMethodBeat.o(268134);
   }
   
-  public c(ISQLiteDatabase paramISQLiteDatabase)
+  public final void a(com.tencent.mm.loader.g.a.a<a> parama, g paramg, b.b paramb)
   {
-    super(paramISQLiteDatabase, a.access$getInfo$cp(), "AppMessage", dc.INDEX_CREATE);
-    AppMethodBeat.i(203056);
-    AppMethodBeat.o(203056);
+    AppMethodBeat.i(268144);
+    s.u(parama, "url");
+    s.u(paramg, "fileNameCreator");
+    s.u(paramb, "callback");
+    this.mgg.a(new com.tencent.mm.loader.g.a.a(((a)parama.bmg()).url), paramg, paramb);
+    AppMethodBeat.o(268144);
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "plugin-gamelife_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.g.c
  * JD-Core Version:    0.7.0.1
  */

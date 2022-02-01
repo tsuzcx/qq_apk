@@ -1,367 +1,395 @@
 package com.tencent.mm.plugin.finder.live.util;
 
+import com.tencent.d.a.a.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.model.d;
+import com.tencent.mm.plugin.finder.utils.aw;
+import com.tencent.mm.plugin.findersdk.storage.config.base.b;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Collection;
 import java.util.Iterator;
-import kotlin.l;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/util/LiveStatisticsUtil;", "", "()V", "TAG", "", "cdnStatistics", "Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;", "getCdnStatistics", "()Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;", "setCdnStatistics", "(Lcom/tencent/mm/plugin/finder/live/util/CDNStatistics;)V", "trtcStatistics", "Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;", "getTrtcStatistics", "()Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;", "setTrtcStatistics", "(Lcom/tencent/mm/plugin/finder/live/util/TrtcStatistics;)V", "doStatistic", "", "value", "", "cache", "Lcom/tencent/mm/plugin/finder/live/util/StatisticsCache;", "reset", "statisticCDN", "qosInfo", "Lcom/tencent/mm/live/core/core/model/LiveQosInfo;", "statisticTRTC", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/GiftQueueImpl;", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue;", "()V", "TAG", "", "clientMsgIdSet", "", "incrementMsgId", "Ljava/util/concurrent/atomic/AtomicLong;", "list", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftShowInfo;", "lock", "", "observerSet", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftAddingObserver;", "addAll", "", "collection", "", "clear", "", "getNextGiftType", "Lcom/tencent/mm/plugin/finder/live/util/IGiftQueue$GiftType;", "hasNext", "notifyGiftAdding", "giftType", "offer", "giftShowInfo", "peek", "peekByComboId", "comboId", "peekByTargetUserName", "targetUserName", "peekNonPrecious", "poll", "pollByComboId", "pollByTargetUserName", "pollNonPrecious", "registerObserver", "observer", "remove", "resetMsgIdList", "size", "", "unregisterObserver", "Companion", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
+  implements s
 {
-  private static final String TAG = "Finder.LiveStatisticsUtil";
-  private static z yQP;
-  private static h yQQ;
-  public static final q yQR;
+  public static final a DJf;
+  private static final int DJj;
+  private static final int MAX_SIZE;
+  private final Set<s.a> DJg;
+  private AtomicLong DJh;
+  private final Set<String> DJi;
+  private final String TAG;
+  private LinkedList<s.b> lPK;
+  private final Object lock;
   
   static
   {
-    AppMethodBeat.i(258966);
-    yQR = new q();
-    TAG = "Finder.LiveStatisticsUtil";
-    AppMethodBeat.o(258966);
+    AppMethodBeat.i(351292);
+    DJf = new a((byte)0);
+    a locala = a.ahiX;
+    MAX_SIZE = ((Number)a.jSv().bmg()).intValue();
+    locala = a.ahiX;
+    DJj = ((Number)a.jSw().bmg()).intValue();
+    AppMethodBeat.o(351292);
   }
   
-  private static void a(int paramInt, x paramx)
+  public q()
   {
-    AppMethodBeat.i(258964);
-    if (paramx == null)
+    AppMethodBeat.i(351271);
+    this.DJh = new AtomicLong(1L);
+    this.TAG = kotlin.g.b.s.X("Finder.GiftQueueImpl@", Integer.valueOf(hashCode()));
+    this.lPK = new LinkedList();
+    this.lock = new byte[0];
+    this.DJg = ((Set)new CopyOnWriteArraySet());
+    this.DJi = ((Set)new CopyOnWriteArraySet());
+    Log.i(this.TAG, "MAX_SIZE:" + MAX_SIZE + ",COMBOID_LIVE_TIME:" + DJj);
+    AppMethodBeat.o(351271);
+  }
+  
+  private s.b axP(String paramString)
+  {
+    AppMethodBeat.i(351275);
+    kotlin.g.b.s.u(paramString, "comboId");
+    synchronized (this.lock)
     {
-      AppMethodBeat.o(258964);
-      return;
-    }
-    paramx.yQV.value = paramInt;
-    if (!paramx.xcp)
-    {
-      AppMethodBeat.o(258964);
-      return;
-    }
-    Object localObject = paramx.yQW;
-    if (localObject != null)
-    {
-      if ((((e)localObject).mgw >= 2147483647) || (((e)localObject).yPF + paramInt >= 9223372036854775807L)) {
-        break label174;
+      Iterator localIterator = ((Iterable)this.lPK).iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject1 = localIterator.next();
+        if (paramString.equals(((s.b)localObject1).Dbx))
+        {
+          paramString = localObject1;
+          paramString = (s.b)paramString;
+          AppMethodBeat.o(351275);
+          return paramString;
+        }
       }
-      ((e)localObject).mgw += 1;
-      ((e)localObject).yPF += paramInt;
-      ((e)localObject).yPG = (((e)localObject).yPF / ((e)localObject).mgw);
+      paramString = null;
+    }
+  }
+  
+  private final void b(s.c paramc)
+  {
+    AppMethodBeat.i(351281);
+    Iterator localIterator = ((Iterable)this.DJg).iterator();
+    while (localIterator.hasNext()) {
+      ((s.a)localIterator.next()).a(paramc);
+    }
+    AppMethodBeat.o(351281);
+  }
+  
+  public final void a(s.a parama)
+  {
+    AppMethodBeat.i(351420);
+    kotlin.g.b.s.u(parama, "observer");
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("registerObserver ").append(parama).append("  ").append(this.DJg.size()).append(' ');
+    aw localaw = aw.Gjk;
+    Log.i(str, aw.fgr());
+    this.DJg.add(parama);
+    AppMethodBeat.o(351420);
+  }
+  
+  public final boolean addAll(Collection<s.b> paramCollection)
+  {
+    AppMethodBeat.i(351378);
+    if ((paramCollection == null) || (paramCollection.isEmpty())) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(351378);
+      return false;
+    }
+    ??? = paramCollection.iterator();
+    Object localObject2;
+    while (((Iterator)???).hasNext())
+    {
+      localObject2 = (s.b)((Iterator)???).next();
+      if (!Util.isNullOrNil(((s.b)localObject2).DJk.Tro)) {
+        if (p.a((Iterable)this.DJi, ((s.b)localObject2).DJk.Tro))
+        {
+          Log.i(this.TAG, kotlin.g.b.s.X("addAll: duplicate client_msg_id:", ((s.b)localObject2).DJk.Tro));
+          ((Iterator)???).remove();
+        }
+        else
+        {
+          localObject2 = ((s.b)localObject2).DJk.Tro;
+          if (localObject2 != null) {
+            this.DJi.add(localObject2);
+          }
+        }
+      }
     }
     for (;;)
     {
-      localObject = paramx.yQX;
-      if (localObject == null) {
-        break label199;
-      }
-      localObject = ((Iterable)localObject).iterator();
-      i locali;
-      do
+      synchronized (this.lock)
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
+        Log.i(this.TAG, "addAll: incrementMsgId = " + this.DJh + ", list size = " + this.lPK.size() + ", collection size = " + paramCollection.size() + ", observerSetSize:" + this.DJg.size());
+        if (paramCollection.size() > MAX_SIZE)
+        {
+          Log.i(this.TAG, kotlin.g.b.s.X("addAll: oversize, drop origin collection:", p.ag(p.p((Iterable)paramCollection), paramCollection.size() - MAX_SIZE)));
+          paramCollection = p.c((Iterable)paramCollection, MAX_SIZE);
+          if (this.lPK.size() + paramCollection.size() > MAX_SIZE)
+          {
+            Log.i(this.TAG, kotlin.g.b.s.X("offer: oversize, drop list:", p.ag((List)this.lPK, this.lPK.size() + paramCollection.size() - MAX_SIZE)));
+            this.lPK = new LinkedList((Collection)p.af((List)this.lPK, this.lPK.size() + paramCollection.size() - MAX_SIZE));
+          }
+          localObject2 = ((Iterable)paramCollection).iterator();
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          ((s.b)((Iterator)localObject2).next()).DJm = this.DJh.getAndIncrement();
         }
-        locali = (i)((Iterator)localObject).next();
-      } while (paramInt >= locali.value);
-      if (locali.mgw >= 2147483647) {
-        break;
       }
-      locali.mgw += 1;
-      AppMethodBeat.o(258964);
-      return;
-      label174:
-      paramx.xcp = false;
+      paramCollection = p.p((Iterable)paramCollection);
     }
-    paramx.xcp = false;
-    AppMethodBeat.o(258964);
-    return;
-    AppMethodBeat.o(258964);
-    return;
-    label199:
-    AppMethodBeat.o(258964);
+    this.lPK.addAll((Collection)paramCollection);
+    p.N((List)this.lPK);
+    paramCollection = ah.aiuX;
+    paramCollection = euw();
+    if (paramCollection != null) {
+      b(paramCollection);
+    }
+    AppMethodBeat.o(351378);
+    return true;
   }
   
-  public static void a(d paramd)
+  public final s.b axN(String paramString)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(258961);
-    if (paramd != null)
+    AppMethodBeat.i(351333);
+    kotlin.g.b.s.u(paramString, "targetUserName");
+    for (;;)
     {
-      if (yQP == null) {
-        yQP = new z();
-      }
-      int i = (int)paramd.kmb;
-      Object localObject1 = yQP;
-      if (localObject1 != null)
+      Object localObject1;
+      int i;
+      synchronized (this.lock)
       {
-        localObject1 = ((z)localObject1).yPN;
-        a(i, (x)localObject1);
-        i = paramd.klX;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label304;
+        Iterator localIterator = ((Iterable)this.lPK).iterator();
+        if (localIterator.hasNext())
+        {
+          localObject1 = localIterator.next();
+          s.b localb = (s.b)localObject1;
+          if ((!localb.DJp) && (paramString.equals(localb.DbG)))
+          {
+            i = 1;
+            break label123;
+            paramString = (s.b)paramString;
+            AppMethodBeat.o(351333);
+            return paramString;
+          }
+          else
+          {
+            i = 0;
+          }
         }
-        localObject1 = ((z)localObject1).yQY;
-        label69:
-        a(i, (x)localObject1);
-        i = paramd.upLoss;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label309;
-        }
-        localObject1 = ((z)localObject1).yQZ;
-        label92:
-        a(i, (x)localObject1);
-        i = paramd.downLoss;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label314;
-        }
-        localObject1 = ((z)localObject1).yRa;
-        label115:
-        a(i, (x)localObject1);
-        i = (int)(paramd.sendBytes / 1000L);
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label319;
-        }
-        localObject1 = ((z)localObject1).yRb;
-        label143:
-        a(i, (x)localObject1);
-        i = (int)(paramd.receiveBytes / 1000L);
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label324;
-        }
-        localObject1 = ((z)localObject1).yRc;
-        label171:
-        a(i, (x)localObject1);
-        i = paramd.width;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label329;
-        }
-        localObject1 = ((z)localObject1).yPR;
-        label194:
-        a(i, (x)localObject1);
-        i = paramd.height;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label334;
-        }
-        localObject1 = ((z)localObject1).yPS;
-        label217:
-        a(i, (x)localObject1);
-        i = paramd.klF;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label339;
-        }
-        localObject1 = ((z)localObject1).yPQ;
-        label240:
-        a(i, (x)localObject1);
-        i = paramd.klH;
-        localObject1 = yQP;
-        if (localObject1 == null) {
-          break label344;
+        else
+        {
+          paramString = null;
         }
       }
-      label304:
-      label309:
-      label314:
-      label319:
-      label324:
-      label329:
-      label334:
-      label339:
-      label344:
-      for (localObject1 = ((z)localObject1).yPO;; localObject1 = null)
+      label123:
+      if (i != 0) {
+        paramString = localObject1;
+      }
+    }
+  }
+  
+  public final s.b axO(String paramString)
+  {
+    AppMethodBeat.i(351338);
+    kotlin.g.b.s.u(paramString, "targetUserName");
+    synchronized (this.lock)
+    {
+      Iterator localIterator = ((Iterable)this.lPK).iterator();
+      while (localIterator.hasNext())
       {
-        a(i, (x)localObject1);
-        i = paramd.klI;
-        localObject1 = yQP;
-        paramd = localObject2;
-        if (localObject1 != null) {
-          paramd = ((z)localObject1).yPP;
+        Object localObject1 = localIterator.next();
+        if (paramString.equals(((s.b)localObject1).DbG))
+        {
+          paramString = localObject1;
+          paramString = (s.b)paramString;
+          AppMethodBeat.o(351338);
+          return paramString;
         }
-        a(i, paramd);
-        AppMethodBeat.o(258961);
+      }
+      paramString = null;
+    }
+  }
+  
+  public final s.b axQ(String paramString)
+  {
+    AppMethodBeat.i(351346);
+    kotlin.g.b.s.u(paramString, "comboId");
+    synchronized (this.lock)
+    {
+      paramString = axP(paramString);
+      if (paramString != null) {
+        this.lPK.remove(paramString);
+      }
+      AppMethodBeat.o(351346);
+      return paramString;
+    }
+  }
+  
+  public final void b(s.a parama)
+  {
+    AppMethodBeat.i(351430);
+    kotlin.g.b.s.u(parama, "observer");
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("unregisterObserver ").append(parama).append("  ").append(this.DJg.size()).append(' ');
+    aw localaw = aw.Gjk;
+    Log.i(str, aw.fgr());
+    this.DJg.remove(parama);
+    AppMethodBeat.o(351430);
+  }
+  
+  public final boolean b(s.b paramb)
+  {
+    AppMethodBeat.i(351359);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(351359);
+      return false;
+    }
+    if (!Util.isNullOrNil(paramb.DJk.Tro))
+    {
+      if (p.a((Iterable)this.DJi, paramb.DJk.Tro))
+      {
+        Log.i(this.TAG, kotlin.g.b.s.X("offer: duplicate client_msg_id:", paramb.DJk.Tro));
+        AppMethodBeat.o(351359);
+        return false;
+      }
+      ??? = paramb.DJk.Tro;
+      if (??? != null) {
+        this.DJi.add(???);
+      }
+    }
+    synchronized (this.lock)
+    {
+      Log.i(this.TAG, "offer: incrementMsgId = " + this.DJh + ", size = " + this.lPK.size());
+      if ((this.lPK.size() >= MAX_SIZE) && (MAX_SIZE > 0))
+      {
+        Log.i(this.TAG, kotlin.g.b.s.X("offer: oversize, drop:", p.ag((List)this.lPK, this.lPK.size() - MAX_SIZE + 1)));
+        this.lPK = new LinkedList((Collection)p.c((Iterable)this.lPK, MAX_SIZE - 1));
+      }
+      paramb.DJm = this.DJh.getAndIncrement();
+      this.lPK.offerLast(paramb);
+      p.N((List)this.lPK);
+      paramb = ah.aiuX;
+      paramb = euw();
+      if (paramb != null) {
+        b(paramb);
+      }
+      AppMethodBeat.o(351359);
+      return true;
+    }
+  }
+  
+  public final boolean c(s.b paramb)
+  {
+    AppMethodBeat.i(351389);
+    kotlin.g.b.s.u(paramb, "giftShowInfo");
+    synchronized (this.lock)
+    {
+      boolean bool = this.lPK.remove(paramb);
+      AppMethodBeat.o(351389);
+      return bool;
+    }
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(351399);
+    Object localObject2 = this.TAG;
+    ??? = aw.Gjk;
+    if (aw.bgV()) {
+      ??? = Util.getStack().toString();
+    }
+    for (;;)
+    {
+      Log.i((String)localObject2, kotlin.g.b.s.X("clear observer ", ???));
+      synchronized (this.lock)
+      {
+        this.lPK.clear();
+        localObject2 = ah.aiuX;
+        this.DJg.clear();
+        AppMethodBeat.o(351399);
         return;
-        localObject1 = null;
-        break;
-        localObject1 = null;
-        break label69;
-        localObject1 = null;
-        break label92;
-        localObject1 = null;
-        break label115;
-        localObject1 = null;
-        break label143;
-        localObject1 = null;
-        break label171;
-        localObject1 = null;
-        break label194;
-        localObject1 = null;
-        break label217;
-        localObject1 = null;
-        break label240;
+        ??? = "";
       }
     }
-    AppMethodBeat.o(258961);
   }
   
-  public static void b(d paramd)
+  public final s.c euw()
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(258963);
-    int i;
-    if (paramd != null)
+    AppMethodBeat.i(351315);
+    synchronized (this.lock)
     {
-      if (yQQ == null) {
-        yQQ = new h();
+      Object localObject1 = (s.b)this.lPK.peekFirst();
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        AppMethodBeat.o(351315);
+        return localObject1;
       }
-      i = (int)paramd.kmb;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label312;
-      }
-      localObject1 = ((h)localObject1).yPN;
-      a(i, (x)localObject1);
-      i = paramd.width;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label317;
-      }
-      localObject1 = ((h)localObject1).yPR;
-      label69:
-      a(i, (x)localObject1);
-      i = paramd.height;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label322;
-      }
-      localObject1 = ((h)localObject1).yPS;
-      label92:
-      a(i, (x)localObject1);
-      i = paramd.klF;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label327;
-      }
-      localObject1 = ((h)localObject1).yPQ;
-      label115:
-      a(i, (x)localObject1);
-      i = paramd.klH;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label332;
-      }
-      localObject1 = ((h)localObject1).yPO;
-      label138:
-      a(i, (x)localObject1);
-      i = paramd.klI;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label337;
-      }
-      localObject1 = ((h)localObject1).yPP;
-      label161:
-      a(i, (x)localObject1);
-      i = paramd.klJ;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label342;
-      }
-      localObject1 = ((h)localObject1).yPT;
-      label184:
-      a(i, (x)localObject1);
-      i = paramd.klQ;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label347;
-      }
-      localObject1 = ((h)localObject1).yPU;
-      label207:
-      a(i, (x)localObject1);
-      i = paramd.klO;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label352;
-      }
-      localObject1 = ((h)localObject1).yPV;
-      label230:
-      a(i, (x)localObject1);
-      i = paramd.klN;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label357;
-      }
-      localObject1 = ((h)localObject1).yPW;
-      label253:
-      a(i, (x)localObject1);
-      i = paramd.klK;
-      localObject1 = yQQ;
-      if (localObject1 == null) {
-        break label362;
-      }
+      localObject1 = ((s.b)localObject1).DJl;
     }
-    label312:
-    label317:
-    label322:
-    label327:
-    label332:
-    label337:
-    label342:
-    label347:
-    label352:
-    label357:
-    label362:
-    for (Object localObject1 = ((h)localObject1).yPX;; localObject1 = null)
+  }
+  
+  public final s.b eux()
+  {
+    AppMethodBeat.i(351326);
+    synchronized (this.lock)
     {
-      a(i, (x)localObject1);
-      i = paramd.klM;
-      localObject1 = yQQ;
-      paramd = localObject2;
-      if (localObject1 != null) {
-        paramd = ((h)localObject1).yPY;
-      }
-      a(i, paramd);
-      AppMethodBeat.o(258963);
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-      break label69;
-      localObject1 = null;
-      break label92;
-      localObject1 = null;
-      break label115;
-      localObject1 = null;
-      break label138;
-      localObject1 = null;
-      break label161;
-      localObject1 = null;
-      break label184;
-      localObject1 = null;
-      break label207;
-      localObject1 = null;
-      break label230;
-      localObject1 = null;
-      break label253;
+      s.b localb = (s.b)this.lPK.pollFirst();
+      AppMethodBeat.o(351326);
+      return localb;
     }
   }
   
-  public static h dEx()
+  public final boolean hasNext()
   {
-    return yQQ;
+    AppMethodBeat.i(351304);
+    synchronized (this.lock)
+    {
+      boolean bool = ((Collection)this.lPK).isEmpty();
+      if (!bool)
+      {
+        bool = true;
+        AppMethodBeat.o(351304);
+        return bool;
+      }
+      bool = false;
+    }
   }
   
-  public static void reset()
+  public final int size()
   {
-    yQP = null;
-    yQQ = null;
+    AppMethodBeat.i(351408);
+    synchronized (this.lock)
+    {
+      int i = this.lPK.size();
+      AppMethodBeat.o(351408);
+      return i;
+    }
   }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/util/GiftQueueImpl$Companion;", "", "()V", "COMBOID_LIVE_TIME", "", "getCOMBOID_LIVE_TIME", "()I", "MAX_SIZE", "getMAX_SIZE", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.util.q
  * JD-Core Version:    0.7.0.1
  */

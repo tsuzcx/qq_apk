@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.storage.cc;
 
 public abstract interface ae
 {
-  public abstract void a(ca paramca, db paramdb);
+  public abstract void a(cc paramcc, dl paramdl);
   
-  public abstract void dKq();
+  public abstract void dir();
 }
 
 

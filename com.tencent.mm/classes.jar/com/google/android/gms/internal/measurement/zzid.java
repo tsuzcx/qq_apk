@@ -1,6 +1,5 @@
 package com.google.android.gms.internal.measurement;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.text.TextUtils;
 import com.google.android.gms.common.util.Clock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(14)
 final class zzid
   implements Application.ActivityLifecycleCallbacks
 {
@@ -127,7 +125,7 @@ final class zzid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzid
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import android.view.View.OnFocusChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.b.a;
+import com.tencent.mm.au.b.a;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.plugin.wxpay.a.f;
@@ -36,15 +36,15 @@ import java.util.Map;
 public class WalletPhoneInputView
   extends LinearLayout
 {
-  private WalletFormView PfF;
-  public WalletFormView PfG;
-  private TenpaySecureEditText PfH;
-  private TextView PfI;
-  private Map<String, b.a> PfJ;
-  private String PfK;
-  private String PfL;
-  private boolean PfM;
-  public String PfN;
+  private boolean VWA;
+  public String VWB;
+  private WalletFormView VWt;
+  public WalletFormView VWu;
+  private TenpaySecureEditText VWv;
+  private TextView VWw;
+  private Map<String, b.a> VWx;
+  private String VWy;
+  private String VWz;
   private int mMode;
   
   public WalletPhoneInputView(Context paramContext, AttributeSet paramAttributeSet)
@@ -52,9 +52,9 @@ public class WalletPhoneInputView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71521);
     this.mMode = 0;
-    this.PfK = "";
-    this.PfL = "";
-    this.PfM = true;
+    this.VWy = "";
+    this.VWz = "";
+    this.VWA = true;
     init(paramContext);
     c(paramContext, paramAttributeSet, -1);
     AppMethodBeat.o(71521);
@@ -65,9 +65,9 @@ public class WalletPhoneInputView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71522);
     this.mMode = 0;
-    this.PfK = "";
-    this.PfL = "";
-    this.PfM = true;
+    this.VWy = "";
+    this.VWz = "";
+    this.VWA = true;
     init(paramContext);
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(71522);
@@ -81,32 +81,32 @@ public class WalletPhoneInputView
     if (paramInt != 0)
     {
       String str = paramContext.getString(paramInt);
-      this.PfG.setHint(str);
+      this.VWu.setHint(str);
     }
     paramInt = paramAttributeSet.getResourceId(a.k.WalletPhoneInputViewAttrs_phoneTitle, 0);
     if (paramInt != 0)
     {
       paramContext = paramContext.getString(paramInt);
-      this.PfG.setTitleText(paramContext);
+      this.VWu.setTitleText(paramContext);
     }
     AppMethodBeat.o(71524);
   }
   
-  private void gMx()
+  private void ilL()
   {
     AppMethodBeat.i(71527);
-    this.PfF.setText(this.PfK);
-    this.PfH.setText(this.PfL);
+    this.VWt.setText(this.VWy);
+    this.VWv.setText(this.VWz);
     AppMethodBeat.o(71527);
   }
   
-  private void gMy()
+  private void ilM()
   {
     AppMethodBeat.i(71528);
-    b.a locala = (b.a)this.PfJ.get("86");
-    this.PfL = locala.lSy;
-    this.PfK = locala.lSz;
-    gMx();
+    b.a locala = (b.a)this.VWx.get("86");
+    this.VWz = locala.oLk;
+    this.VWy = locala.oLl;
+    ilL();
     AppMethodBeat.o(71528);
   }
   
@@ -114,17 +114,17 @@ public class WalletPhoneInputView
   {
     AppMethodBeat.i(71523);
     inflate(paramContext, a.g.wallet_phone_input_view_layout, this);
-    this.PfF = ((WalletFormView)findViewById(a.f.phone_area_code_et));
-    this.PfG = ((WalletFormView)findViewById(a.f.phone_number_et));
-    this.PfI = ((TextView)findViewById(a.f.plus_prefix_tv));
-    this.PfF.setOnClickListener(new View.OnClickListener()
+    this.VWt = ((WalletFormView)findViewById(a.f.phone_area_code_et));
+    this.VWu = ((WalletFormView)findViewById(a.f.phone_number_et));
+    this.VWw = ((TextView)findViewById(a.f.plus_prefix_tv));
+    this.VWt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71515);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletPhoneInputView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletPhoneInputView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         Log.d("MicroMsg.WalletPhoneInputView", "click area");
         paramAnonymousView = new Intent();
         paramAnonymousView.setClassName(WalletPhoneInputView.this.getContext(), "com.tencent.mm.ui.tools.CountryCodeUI");
@@ -133,28 +133,28 @@ public class WalletPhoneInputView
         AppMethodBeat.o(71515);
       }
     });
-    this.PfH = ((TenpaySecureEditText)this.PfG.findViewById(a.f.prefix_input_et));
+    this.VWv = ((TenpaySecureEditText)this.VWu.findViewById(a.f.prefix_input_et));
     if ((getContext() instanceof MMActivity))
     {
-      this.PfG.setOnInfoIvClickListener(new View.OnClickListener()
+      this.VWu.setOnInfoIvClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71516);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletPhoneInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletPhoneInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           WalletPhoneInputView.a(WalletPhoneInputView.this, WalletPhoneInputView.a(WalletPhoneInputView.this));
           a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/WalletPhoneInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(71516);
         }
       });
-      this.PfG.setLogicDelegate(new com.tencent.mm.wallet_core.ui.formview.a.b()
+      this.VWu.setLogicDelegate(new com.tencent.mm.wallet_core.ui.formview.a.b()
       {
         public final boolean a(WalletFormView paramAnonymousWalletFormView)
         {
           AppMethodBeat.i(71517);
-          if (WalletPhoneInputView.this.gMz())
+          if (WalletPhoneInputView.this.ilN())
           {
             boolean bool = paramAnonymousWalletFormView.isPhoneNum();
             AppMethodBeat.o(71517);
@@ -184,73 +184,67 @@ public class WalletPhoneInputView
           return null;
         }
         
-        public final boolean ful()
+        public final boolean gGa()
         {
           return false;
         }
       });
     }
     getContext();
-    paramContext = com.tencent.mm.az.b.WC(getContext().getString(a.i.country_code));
-    this.PfJ = new HashMap();
+    paramContext = com.tencent.mm.au.b.OB(getContext().getString(a.i.country_code));
+    this.VWx = new HashMap();
     paramContext = paramContext.iterator();
     while (paramContext.hasNext())
     {
       b.a locala = (b.a)paramContext.next();
-      this.PfJ.put(locala.lSy, locala);
+      this.VWx.put(locala.oLk, locala);
     }
     AppMethodBeat.o(71523);
   }
   
-  public final boolean g(int paramInt1, int paramInt2, Intent paramIntent)
+  public String getCountryCode()
   {
-    AppMethodBeat.i(71526);
-    if (paramInt1 == 65521)
+    AppMethodBeat.i(71525);
+    if (ilN())
     {
-      if (paramInt2 == 100)
-      {
-        String str = paramIntent.getStringExtra("country_name");
-        paramIntent = paramIntent.getStringExtra("couttry_code");
-        Log.i("MicroMsg.WalletPhoneInputView", "countryName: %s, countryCode: %s", new Object[] { this.PfK, this.PfL });
-        if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramIntent)))
-        {
-          Log.i("MicroMsg.WalletPhoneInputView", "cancel pick");
-          AppMethodBeat.o(71526);
-          return true;
-        }
-        this.PfK = str;
-        this.PfL = paramIntent;
-        this.PfM = false;
-        gMx();
-        this.PfH.clearFocus();
-      }
-      AppMethodBeat.o(71526);
-      return true;
+      AppMethodBeat.o(71525);
+      return "86";
     }
-    AppMethodBeat.o(71526);
-    return false;
+    String str = this.VWv.getText().toString();
+    AppMethodBeat.o(71525);
+    return str;
   }
   
-  public final void gMA()
+  public WalletFormView getPhoneNumberEt()
+  {
+    return this.VWu;
+  }
+  
+  public final boolean ilN()
+  {
+    return this.mMode == 0;
+  }
+  
+  public final void ilO()
   {
     AppMethodBeat.i(71529);
     this.mMode = 0;
-    gMy();
-    this.PfF.setVisibility(8);
-    this.PfH.setVisibility(8);
-    this.PfI.setVisibility(8);
+    ilM();
+    this.VWt.setVisibility(8);
+    this.VWv.setVisibility(8);
+    this.VWw.setVisibility(8);
     AppMethodBeat.o(71529);
   }
   
-  public final void gMB()
+  public final void ilP()
   {
     AppMethodBeat.i(71530);
     this.mMode = 1;
-    gMy();
-    this.PfF.setVisibility(0);
-    this.PfH.setVisibility(0);
-    this.PfI.setVisibility(0);
-    this.PfH.addTextChangedListener(new TextWatcher()
+    ilM();
+    this.VWt.setVisibility(0);
+    this.VWv.setVisibility(0);
+    this.VWw.setVisibility(0);
+    this.VWv.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -276,15 +270,15 @@ public class WalletPhoneInputView
         Log.d("MicroMsg.WalletPhoneInputView", "cCode: %s, s: %s", new Object[] { locala, paramAnonymousEditable.toString() });
         if (locala != null)
         {
-          WalletPhoneInputView.b(WalletPhoneInputView.this, locala.lSy);
-          WalletPhoneInputView.c(WalletPhoneInputView.this, locala.lSz);
-          WalletPhoneInputView.e(WalletPhoneInputView.this).setText(locala.lSz);
+          WalletPhoneInputView.b(WalletPhoneInputView.this, locala.oLk);
+          WalletPhoneInputView.c(WalletPhoneInputView.this, locala.oLl);
+          WalletPhoneInputView.e(WalletPhoneInputView.this).setText(locala.oLl);
           WalletPhoneInputView.e(WalletPhoneInputView.this).setContentTextColorRes(a.c.normal_text_color);
           WalletPhoneInputView.f(WalletPhoneInputView.this).setTextColor(WalletPhoneInputView.this.getResources().getColor(a.c.normal_text_color));
         }
         for (;;)
         {
-          WalletPhoneInputView.d(WalletPhoneInputView.this).getInputValidChangeListener().onInputValidChange(WalletPhoneInputView.d(WalletPhoneInputView.this).bAz());
+          WalletPhoneInputView.d(WalletPhoneInputView.this).getInputValidChangeListener().onInputValidChange(WalletPhoneInputView.d(WalletPhoneInputView.this).bZp());
           AppMethodBeat.o(71519);
           return;
           WalletPhoneInputView.b(WalletPhoneInputView.this, "");
@@ -297,7 +291,7 @@ public class WalletPhoneInputView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.PfH.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.VWv.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -320,32 +314,38 @@ public class WalletPhoneInputView
     AppMethodBeat.o(71530);
   }
   
-  public final boolean gMz()
+  public final boolean j(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return this.mMode == 0;
-  }
-  
-  public String getCountryCode()
-  {
-    AppMethodBeat.i(71525);
-    if (gMz())
+    AppMethodBeat.i(71526);
+    if (paramInt1 == 65521)
     {
-      AppMethodBeat.o(71525);
-      return "86";
+      if (paramInt2 == 100)
+      {
+        String str = paramIntent.getStringExtra("country_name");
+        paramIntent = paramIntent.getStringExtra("couttry_code");
+        Log.i("MicroMsg.WalletPhoneInputView", "countryName: %s, countryCode: %s", new Object[] { this.VWy, this.VWz });
+        if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramIntent)))
+        {
+          Log.i("MicroMsg.WalletPhoneInputView", "cancel pick");
+          AppMethodBeat.o(71526);
+          return true;
+        }
+        this.VWy = str;
+        this.VWz = paramIntent;
+        this.VWA = false;
+        ilL();
+        this.VWv.clearFocus();
+      }
+      AppMethodBeat.o(71526);
+      return true;
     }
-    String str = this.PfH.getText().toString();
-    AppMethodBeat.o(71525);
-    return str;
-  }
-  
-  public WalletFormView getPhoneNumberEt()
-  {
-    return this.PfG;
+    AppMethodBeat.o(71526);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletPhoneInputView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:interpolator="@android:anim/accelerate_decelerate_interpolator" android:shareInterpolator="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha android:duration="150" android:fromAlpha="0.0" android:toAlpha="1.0" />
+    <scale android:duration="150" android:pivotX="95.00001%" android:pivotY="0.0" android:fromXScale="0.5" android:toXScale="1.0" android:fromYScale="0.0" android:toYScale="1.0" />
+</set>

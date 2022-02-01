@@ -1,61 +1,61 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.c;
+import com.google.d.a.e;
 
 public final class a$y
   extends e
 {
-  private static volatile y[] Zgn;
-  public String Zgo = "";
-  public String wDN = "";
+  private static volatile y[] aheP;
+  public String eqS = "";
+  public String zZY = "";
   
   public a$y()
   {
-    this.ccR = -1;
+    this.dXv = -1;
   }
   
-  public static y[] ikO()
+  public static y[] jRf()
   {
-    if (Zgn == null) {}
-    synchronized (c.ccQ)
+    if (aheP == null) {}
+    synchronized (c.dXu)
     {
-      if (Zgn == null) {
-        Zgn = new y[0];
+      if (aheP == null) {
+        aheP = new y[0];
       }
-      return Zgn;
+      return aheP;
     }
-  }
-  
-  public final int JG()
-  {
-    int j = super.JG();
-    int i = j;
-    if (!this.wDN.equals("")) {
-      i = j + b.g(1, this.wDN);
-    }
-    j = i;
-    if (!this.Zgo.equals("")) {
-      j = i + b.g(2, this.Zgo);
-    }
-    return j;
   }
   
   public final void a(b paramb)
   {
-    if (!this.wDN.equals("")) {
-      paramb.f(1, this.wDN);
+    if (!this.zZY.equals("")) {
+      paramb.g(1, this.zZY);
     }
-    if (!this.Zgo.equals("")) {
-      paramb.f(2, this.Zgo);
+    if (!this.eqS.equals("")) {
+      paramb.g(2, this.eqS);
     }
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    int j = super.akc();
+    int i = j;
+    if (!this.zZY.equals("")) {
+      i = j + b.h(1, this.zZY);
+    }
+    j = i;
+    if (!this.eqS.equals("")) {
+      j = i + b.h(2, this.eqS);
+    }
+    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.y
  * JD-Core Version:    0.7.0.1
  */

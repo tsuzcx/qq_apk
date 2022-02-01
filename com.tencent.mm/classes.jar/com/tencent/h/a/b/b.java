@@ -6,39 +6,39 @@ import java.util.HashMap;
 
 public abstract class b
 {
-  public a ZSH = new a();
+  public a ahXh = new a();
   
   public b()
   {
-    itS();
+    kdo();
   }
   
-  protected abstract void itS();
+  protected abstract void kdo();
   
   public final class a
   {
-    public HashMap<Integer, d> BCY;
+    public HashMap<Integer, d> HlG;
     
     public a()
     {
-      AppMethodBeat.i(208766);
-      this.BCY = new HashMap();
-      AppMethodBeat.o(208766);
+      AppMethodBeat.i(212123);
+      this.HlG = new HashMap();
+      AppMethodBeat.o(212123);
     }
     
     public final void a(d paramd)
     {
-      AppMethodBeat.i(208767);
-      if (!this.BCY.containsKey(paramd)) {
-        this.BCY.put(Integer.valueOf(paramd.getTaskId()), paramd);
+      AppMethodBeat.i(212128);
+      if (!this.HlG.containsKey(paramd)) {
+        this.HlG.put(Integer.valueOf(paramd.getTaskId()), paramd);
       }
-      AppMethodBeat.o(208767);
+      AppMethodBeat.o(212128);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.h.a.b.b
  * JD-Core Version:    0.7.0.1
  */

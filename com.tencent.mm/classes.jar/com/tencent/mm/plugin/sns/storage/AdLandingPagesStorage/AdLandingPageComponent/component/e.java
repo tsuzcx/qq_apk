@@ -17,98 +17,98 @@ import android.webkit.GeolocationPermissions.Callback;
 import android.webkit.ValueCallback;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.legacy.widget.Space;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.aa;
-import com.tencent.mm.by.c;
+import com.tencent.mm.api.ab;
+import com.tencent.mm.app.f;
+import com.tencent.mm.autogen.a.yc;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.f.a.wj;
-import com.tencent.mm.plugin.ay.a.a;
-import com.tencent.mm.plugin.sns.data.t;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.ba.a.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout;
 import com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout.a;
 import com.tencent.mm.plugin.sns.ui.widget.ad.ScrollableLayout.b;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.core.j;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.plugin.webview.k.p;
+import com.tencent.mm.plugin.webview.core.l;
+import com.tencent.mm.plugin.webview.e.g;
+import com.tencent.mm.plugin.webview.jsapi.j;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.mm.ui.widget.MMWebView.c;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.x;
-import com.tencent.xweb.x.a;
+import com.tencent.xweb.z;
+import com.tencent.xweb.z.a;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 public final class e
-  extends m
+  extends n
   implements ScrollableLayout.a, ScrollableLayout.b
 {
-  private BaseWebViewController KpA;
-  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e KpB;
-  private a KpC;
-  private boolean KpD;
-  private com.tencent.mm.plugin.webview.stub.b KpE;
-  private ScrollableLayout Kpy;
-  private View Kpz;
-  private MMWebView lxa;
-  private IListener<wj> lxs;
+  private ScrollableLayout QNF;
+  private View QNG;
+  private BaseWebViewController QNH;
+  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e QNI;
+  private a QNJ;
+  private boolean QNK;
+  private com.tencent.mm.plugin.webview.stub.b QNL;
+  private IListener<yc> ooQ;
+  private MMWebView ooz;
   
   public e(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
     super(paramContext, parame, paramViewGroup);
-    AppMethodBeat.i(269876);
-    this.KpD = false;
-    this.KpE = new com.tencent.mm.plugin.webview.stub.b()
+    AppMethodBeat.i(307083);
+    this.QNK = false;
+    this.QNL = new com.tencent.mm.plugin.webview.stub.b()
     {
       public final boolean a(final String paramAnonymousString1, final String paramAnonymousString2, final Bundle paramAnonymousBundle, final boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(196032);
+        AppMethodBeat.i(306911);
         Object localObject = e.a(e.this);
         if (localObject == null)
         {
-          AppMethodBeat.o(196032);
+          AppMethodBeat.o(306911);
           return false;
         }
         try
         {
           localObject = ((BaseWebViewController)localObject).getJsapi();
-          com.tencent.e.h.ZvG.bc(new Runnable()
+          com.tencent.threadpool.h.ahAA.bk(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(268213);
+              AppMethodBeat.i(307061);
               try
               {
-                if (this.KpG != null) {
-                  this.KpG.a(paramAnonymousString1, paramAnonymousString2, n.aJ(paramAnonymousBundle), paramAnonymousBoolean);
+                if (this.QNN != null) {
+                  this.QNN.a(paramAnonymousString1, paramAnonymousString2, p.bm(paramAnonymousBundle), paramAnonymousBoolean);
                 }
-                AppMethodBeat.o(268213);
+                AppMethodBeat.o(307061);
                 return;
               }
-              catch (Throwable localThrowable)
+              finally
               {
                 Log.e("AdLandingFloatWebView", "In jsapi onHandleEnd method, it happens something unwanted!");
-                AppMethodBeat.o(268213);
+                AppMethodBeat.o(307061);
               }
             }
           });
-          AppMethodBeat.o(196032);
+          AppMethodBeat.o(306911);
           return false;
         }
-        catch (Throwable paramAnonymousString1)
+        finally
         {
           for (;;)
           {
@@ -117,112 +117,112 @@ public final class e
         }
       }
       
-      public final String bXN()
+      public final String cxY()
       {
-        AppMethodBeat.i(196030);
+        AppMethodBeat.i(306910);
         try
         {
-          Object localObject = e.a(e.this);
-          if (localObject != null)
+          Object localObject1 = e.a(e.this);
+          if (localObject1 != null)
           {
-            localObject = ((BaseWebViewController)localObject).PFN;
-            AppMethodBeat.o(196030);
-            return localObject;
+            localObject1 = ((BaseWebViewController)localObject1).Wwz;
+            AppMethodBeat.o(306910);
+            return localObject1;
           }
         }
-        catch (Throwable localThrowable)
+        finally
         {
           Log.e("AdLandingFloatWebView", "callback: getCommitUrl failed");
-          AppMethodBeat.o(196030);
+          AppMethodBeat.o(306910);
         }
         return "";
       }
       
       public final String getCurrentUrl()
       {
-        AppMethodBeat.i(196028);
+        AppMethodBeat.i(306909);
         try
         {
-          Object localObject = e.a(e.this);
-          if (localObject != null)
+          Object localObject1 = e.a(e.this);
+          if (localObject1 != null)
           {
-            localObject = ((BaseWebViewController)localObject).getCurrentUrl();
-            AppMethodBeat.o(196028);
-            return localObject;
+            localObject1 = ((BaseWebViewController)localObject1).getCurrentUrl();
+            AppMethodBeat.o(306909);
+            return localObject1;
           }
         }
-        catch (Throwable localThrowable)
+        finally
         {
           Log.e("AdLandingFloatWebView", "callback: getCurrentUrl failed");
-          AppMethodBeat.o(196028);
+          AppMethodBeat.o(306909);
         }
         return "";
       }
       
-      public final boolean h(int paramAnonymousInt, final Bundle paramAnonymousBundle)
+      public final boolean i(int paramAnonymousInt, final Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(196040);
+        AppMethodBeat.i(306913);
         try
         {
           Object localObject = e.a(e.this);
           if (localObject == null)
           {
-            AppMethodBeat.o(196040);
+            AppMethodBeat.o(306913);
             return true;
           }
-          final com.tencent.mm.plugin.webview.d.h localh = ((BaseWebViewController)localObject).getJsapi();
-          localObject = ((BaseWebViewController)localObject).pGD;
+          final j localj = ((BaseWebViewController)localObject).getJsapi();
+          localObject = ((BaseWebViewController)localObject).sLD;
           switch (paramAnonymousInt)
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(196040);
+            AppMethodBeat.o(306913);
             return true;
-            com.tencent.e.h.ZvG.bc(new Runnable()
+            com.tencent.threadpool.h.ahAA.bk(new Runnable()
             {
               public final void run()
               {
                 boolean bool = true;
-                AppMethodBeat.i(224376);
+                AppMethodBeat.i(307064);
                 try
                 {
-                  if ((!paramAnonymousBundle.containsKey("jsapi_preverify_fun_list")) || (this.KpM == null)) {
-                    if (this.KpM != null) {
+                  if ((!paramAnonymousBundle.containsKey("jsapi_preverify_fun_list")) || (this.QNT == null)) {
+                    if (this.QNT != null) {
                       Log.e("AdLandingFloatWebView", "has JSAPI_CONTROL_BYTES wvPerm %b", new Object[] { Boolean.valueOf(bool) });
                     }
                   }
                   for (;;)
                   {
-                    localh.gTS();
-                    AppMethodBeat.o(224376);
+                    localj.itz();
+                    AppMethodBeat.o(307064);
                     return;
                     bool = false;
                     break;
-                    this.KpM.aN(paramAnonymousBundle);
+                    this.QNT.br(paramAnonymousBundle);
                   }
                   return;
                 }
-                catch (Throwable localThrowable)
+                finally
                 {
                   Log.e("AdLandingFloatWebView", "In onCallback method, it happens something unwanted!");
-                  AppMethodBeat.o(224376);
+                  AppMethodBeat.o(307064);
                 }
               }
             });
           }
           return true;
         }
-        catch (Throwable paramAnonymousBundle)
+        finally
         {
           Log.e("AdLandingFloatWebView", "In callback method, it happens something unwanted!");
-          AppMethodBeat.o(196040);
+          AppMethodBeat.o(306913);
         }
       }
       
-      public final Bundle l(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final Bundle m(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(196037);
+        AppMethodBeat.i(306912);
         Bundle localBundle = new Bundle();
         Object localObject = e.this.context;
         switch (paramAnonymousInt)
@@ -230,7 +230,7 @@ public final class e
         }
         do
         {
-          AppMethodBeat.o(196037);
+          AppMethodBeat.o(306912);
           return localBundle;
         } while ((localObject == null) || (paramAnonymousBundle == null));
         for (;;)
@@ -247,9 +247,10 @@ public final class e
               break label140;
             }
             paramAnonymousBundle = (Bundle)localObject;
-            c.b(localContext, str1, str2, localIntent.putExtras(paramAnonymousBundle));
+            com.tencent.mm.br.c.b(localContext, str1, str2, localIntent.putExtras(paramAnonymousBundle));
+            break;
           }
-          catch (Throwable paramAnonymousBundle)
+          finally
           {
             Log.e("AdLandingFloatWebView", "In invokeAsResult method, it happens something unwanted!");
           }
@@ -261,99 +262,39 @@ public final class e
     };
     try
     {
-      this.KpB = parame;
-      if (this.lxs == null)
+      this.QNI = parame;
+      if (this.ooQ == null)
       {
-        this.lxs = new IListener()
-        {
-          private boolean a(wj paramAnonymouswj)
-          {
-            AppMethodBeat.i(269626);
-            try
-            {
-              e.a(e.this, paramAnonymouswj);
-              AppMethodBeat.o(269626);
-              return true;
-            }
-            catch (Throwable paramAnonymouswj)
-            {
-              for (;;)
-              {
-                Log.w("AdLandingFloatWebView", "resizing layout has wrong!");
-              }
-            }
-          }
-        };
-        this.lxs.alive();
+        this.ooQ = new AdLandingFloatWebViewComponent.3(this, f.hfK);
+        this.ooQ.alive();
       }
-      AppMethodBeat.o(269876);
       return;
     }
-    catch (Throwable paramContext)
+    finally
     {
-      AppMethodBeat.o(269876);
+      AppMethodBeat.o(307083);
     }
   }
   
-  static boolean aP(Activity paramActivity)
+  static String aZt(String paramString)
   {
-    AppMethodBeat.i(269884);
-    if ((paramActivity != null) && (!paramActivity.isFinishing()) && (!paramActivity.isDestroyed()))
-    {
-      AppMethodBeat.o(269884);
-      return true;
-    }
-    AppMethodBeat.o(269884);
-    return false;
-  }
-  
-  private int agk(int paramInt)
-  {
-    AppMethodBeat.i(269886);
-    try
-    {
-      int j = ao.ib(this.context)[1];
-      i = paramInt;
-      if (paramInt == j)
-      {
-        i = paramInt;
-        if (ar.aN(this.context))
-        {
-          i = ar.aM(this.context);
-          i = j - i;
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        int i = paramInt;
-      }
-    }
-    AppMethodBeat.o(269886);
-    return i;
-  }
-  
-  static String baS(String paramString)
-  {
-    AppMethodBeat.i(269885);
+    AppMethodBeat.i(307090);
     if (("user".equalsIgnoreCase(paramString)) || ("environment".equalsIgnoreCase(paramString)))
     {
-      AppMethodBeat.o(269885);
+      AppMethodBeat.o(307090);
       return "true";
     }
-    AppMethodBeat.o(269885);
+    AppMethodBeat.o(307090);
     return paramString;
   }
   
-  private String baT(String paramString)
+  private String aZu(String paramString)
   {
-    AppMethodBeat.i(269887);
+    AppMethodBeat.i(307098);
     localObject1 = paramString;
     try
     {
-      ai localai = fRp();
+      ai localai = hjn();
       localObject2 = paramString;
       if (localai != null)
       {
@@ -362,7 +303,7 @@ public final class e
         if (!TextUtils.isEmpty(paramString))
         {
           localObject1 = paramString;
-          localObject2 = localai.fQE();
+          localObject2 = localai.hiC();
           Object localObject3 = localObject2;
           localObject1 = paramString;
           if (TextUtils.isEmpty((CharSequence)localObject2))
@@ -375,14 +316,14 @@ public final class e
           if (!TextUtils.isEmpty((CharSequence)localObject3))
           {
             localObject1 = paramString;
-            localObject2 = t.kw(paramString, (String)localObject3);
+            localObject2 = com.tencent.mm.plugin.sns.data.t.lY(paramString, (String)localObject3);
           }
           localObject1 = localObject2;
-          localObject2 = com.tencent.mm.plugin.sns.ad.c.a.a.aYo((String)localObject2);
+          localObject2 = com.tencent.mm.plugin.sns.ad.c.a.a.aWj((String)localObject2);
         }
       }
     }
-    catch (Throwable paramString)
+    finally
     {
       for (;;)
       {
@@ -390,116 +331,181 @@ public final class e
         Object localObject2 = localObject1;
       }
     }
-    AppMethodBeat.o(269887);
+    AppMethodBeat.o(307098);
     return localObject2;
   }
   
-  public final void bb(int paramInt, boolean paramBoolean)
+  private int alc(int paramInt)
   {
-    AppMethodBeat.i(269882);
+    AppMethodBeat.i(307092);
+    try
+    {
+      int j = ar.jR(this.context)[1];
+      i = paramInt;
+      if (paramInt == j)
+      {
+        i = paramInt;
+        if (aw.bx(this.context))
+        {
+          i = aw.bw(this.context);
+          i = j - i;
+        }
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        int i = paramInt;
+      }
+    }
+    AppMethodBeat.o(307092);
+    return i;
+  }
+  
+  static boolean br(Activity paramActivity)
+  {
+    AppMethodBeat.i(307086);
+    if ((paramActivity != null) && (!paramActivity.isFinishing()) && (!paramActivity.isDestroyed()))
+    {
+      AppMethodBeat.o(307086);
+      return true;
+    }
+    AppMethodBeat.o(307086);
+    return false;
+  }
+  
+  public final void Gs()
+  {
+    AppMethodBeat.i(307132);
+    super.Gs();
+    if (!this.QNK)
+    {
+      this.QNK = true;
+      try
+      {
+        Object localObject1 = this.contentView;
+        if (localObject1 != null)
+        {
+          localObject1 = ((View)localObject1).getViewTreeObserver();
+          if (((ViewTreeObserver)localObject1).isAlive()) {
+            ((ViewTreeObserver)localObject1).addOnGlobalLayoutListener(new b());
+          }
+        }
+        AppMethodBeat.o(307132);
+        return;
+      }
+      finally {}
+    }
+    AppMethodBeat.o(307132);
+  }
+  
+  public final void bI(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(307150);
     if (paramInt == 0) {}
     try
     {
-      androidx.h.a.a locala = androidx.h.a.a.V(this.context);
+      androidx.i.a.a locala = androidx.i.a.a.al(this.context);
       Intent localIntent = new Intent("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
       if (paramBoolean) {}
       for (paramInt = 1;; paramInt = 2)
       {
         localIntent.putExtra("TRY_PAUSE_OR_RESUME", paramInt);
         localIntent.putExtra("identity", this.context.hashCode());
-        locala.c(localIntent);
-        AppMethodBeat.o(269882);
+        locala.d(localIntent);
+        AppMethodBeat.o(307150);
         return;
       }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.w("AdLandingFloatWebView", "onScrollChanged method has something wrong");
-      AppMethodBeat.o(269882);
+      AppMethodBeat.o(307150);
     }
   }
   
-  protected final void fKe()
+  protected final void had()
   {
-    AppMethodBeat.i(269877);
+    AppMethodBeat.i(307128);
     try
     {
-      if (this.KpA == null)
+      if (this.QNH == null)
       {
-        String str = baT(this.KpB.Klf);
+        String str = aZu(this.QNI.QJm);
         Intent localIntent = new Intent();
         localIntent.putExtra("rawUrl", str);
         localIntent.putExtra("useJs", true);
         localIntent.putExtra("type", -255);
         localIntent.putExtra("geta8key_scene", 2);
-        this.KpA = ((aa)com.tencent.mm.kernel.h.ae(aa.class)).a(this.lxa);
-        this.KpA.a(new j()
+        this.QNH = ((ab)com.tencent.mm.kernel.h.ax(ab.class)).a(this.ooz);
+        this.QNH.a(new l()
         {
-          public final void bXM()
+          public final void cxX()
           {
-            AppMethodBeat.i(222267);
+            AppMethodBeat.i(306907);
             try
             {
-              e.a(e.this).pGC.a(e.b(e.this), e.a(e.this).gSo());
-              AppMethodBeat.o(222267);
+              e.a(e.this).sLC.a(e.b(e.this), e.a(e.this).irL());
+              AppMethodBeat.o(306907);
               return;
             }
-            catch (Throwable localThrowable)
+            finally
             {
               Log.e("AdLandingFloatWebView", "bind webview callback failed");
-              AppMethodBeat.o(222267);
+              AppMethodBeat.o(306907);
             }
           }
         });
-        this.lxa.setWebChromeClient(new MMWebView.c(new c((Activity)this.context, this.KpA.pGD, this.KpC)));
-        this.KpA.init();
-        this.KpA.bj(localIntent);
+        this.ooz.setWebChromeClient(new MMWebView.c(new c((Activity)this.context, this.QNH.sLD, this.QNJ)));
+        this.QNH.init();
+        this.QNH.bJ(localIntent);
         Log.d("AdLandingFloatWebView", "url is ".concat(String.valueOf(str)));
       }
-      AppMethodBeat.o(269877);
+      AppMethodBeat.o(307128);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.e("AdLandingFloatWebView", "bind webview callback failed");
-      AppMethodBeat.o(269877);
+      AppMethodBeat.o(307128);
     }
   }
   
-  protected final View fKj()
+  protected final View ham()
   {
-    AppMethodBeat.i(269879);
+    AppMethodBeat.i(307139);
     for (;;)
     {
       try
       {
-        this.Kpy = new ScrollableLayout(this.context);
-        localObject2 = this.KpB.Klf;
+        this.QNF = new ScrollableLayout(this.context);
+        localObject4 = this.QNI.QJm;
         localObject1 = null;
-        if (p.bno((String)localObject2)) {
-          localObject1 = MMWebView.a.lG(this.context);
+        if (com.tencent.mm.plugin.webview.k.t.bnb((String)localObject4)) {
+          localObject1 = MMWebView.a.nK(this.context);
         }
-        localObject2 = localObject1;
+        localObject4 = localObject1;
         if (localObject1 == null) {
-          localObject2 = MMWebView.a.lH(this.context);
+          localObject4 = MMWebView.a.nL(this.context);
         }
-        this.lxa = ((MMWebView)localObject2);
+        this.ooz = ((MMWebView)localObject4);
         localObject1 = new LinearLayout.LayoutParams(-1, -1);
-        this.Kpz = new Space(this.context);
-        this.Kpz.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.Kpy.addView(this.Kpz);
-        this.KpC = new a();
-        this.Kpy.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        this.Kpy.setDescendantScrollStatusHunter(this);
-        this.Kpy.setOnScrollStatusListener(this);
+        this.QNG = new Space(this.context);
+        this.QNG.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.QNF.addView(this.QNG);
+        this.QNJ = new a();
+        this.QNF.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        this.QNF.setDescendantScrollStatusHunter(this);
+        this.QNF.setOnScrollStatusListener(this);
         localObject1 = new LinearLayout.LayoutParams(-1, -1);
-        localObject2 = this.Kpy;
-        localMMWebView = this.lxa;
+        localObject4 = this.QNF;
+        localMMWebView = this.ooz;
       }
-      catch (Throwable localThrowable2)
+      finally
       {
-        Object localObject2;
+        Object localObject4;
         Object localObject1;
         MMWebView localMMWebView;
         Log.w("AdLandingFloatWebView", "the customLayout method has something wrong");
@@ -507,76 +513,51 @@ public final class e
       }
       try
       {
-        ((ScrollableLayout)localObject2).addView(localMMWebView, (ViewGroup.LayoutParams)localObject1);
-        ((ScrollableLayout)localObject2).LuI = localMMWebView;
-        localObject1 = this.Kpy;
-        AppMethodBeat.o(269879);
+        ((ScrollableLayout)localObject4).addView(localMMWebView, (ViewGroup.LayoutParams)localObject1);
+        ((ScrollableLayout)localObject4).RYj = localMMWebView;
+        localObject1 = this.QNF;
+        AppMethodBeat.o(307139);
         return localObject1;
       }
-      catch (Throwable localThrowable1)
+      finally
       {
         Log.w("ScrollLinearLayout", "the addView has something wrong!");
       }
     }
   }
   
-  public final void fKo()
+  public final void has()
   {
-    AppMethodBeat.i(269881);
-    super.fKo();
+    AppMethodBeat.i(307146);
+    super.has();
     try
     {
       Log.i("AdLandingFloatWebView", "the view is going to destroy");
-      if (this.lxs != null) {
-        this.lxs.dead();
+      if (this.ooQ != null) {
+        this.ooQ.dead();
       }
-      if (this.KpA != null) {
-        this.KpA.onDestroy();
+      if (this.QNH != null) {
+        this.QNH.onDestroy();
       }
-      if (this.lxa != null) {
-        this.lxa.destroy();
+      if (this.ooz != null) {
+        this.ooz.destroy();
       }
-      AppMethodBeat.o(269881);
+      AppMethodBeat.o(307146);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.w("AdLandingFloatWebView", "the destroy method has something wrong");
-      AppMethodBeat.o(269881);
+      AppMethodBeat.o(307146);
     }
-  }
-  
-  public final void fKp()
-  {
-    AppMethodBeat.i(269878);
-    super.fKp();
-    if (!this.KpD)
-    {
-      this.KpD = true;
-      try
-      {
-        Object localObject = this.contentView;
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).getViewTreeObserver();
-          if (((ViewTreeObserver)localObject).isAlive()) {
-            ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(new b());
-          }
-        }
-        AppMethodBeat.o(269878);
-        return;
-      }
-      catch (Throwable localThrowable) {}
-    }
-    AppMethodBeat.o(269878);
   }
   
   static final class a
   {
-    ValueCallback<Uri> KpN;
-    ValueCallback<Uri[]> KpO;
-    String KpP;
-    String KpQ;
+    ValueCallback<Uri> QNU;
+    ValueCallback<Uri[]> QNV;
+    String QNW;
+    String QNX;
   }
   
   final class b
@@ -586,7 +567,7 @@ public final class e
     
     public final void onGlobalLayout()
     {
-      AppMethodBeat.i(256763);
+      AppMethodBeat.i(307008);
       try
       {
         Log.i("AdLandingFloatWebView", "viewTreeObserver OnGlobalLayoutListener is called");
@@ -594,11 +575,11 @@ public final class e
         if ((localObject1 != null) && (((View)localObject1).getViewTreeObserver().isAlive()))
         {
           ((View)localObject1).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-          Object localObject2 = ((View)localObject1).getRootView();
-          if (localObject2 == null) {}
+          Object localObject3 = ((View)localObject1).getRootView();
+          if (localObject3 == null) {}
           for (;;)
           {
-            localObject1 = ((View)localObject1).findViewById(i.f.vertical_viewpager);
+            localObject1 = ((View)localObject1).findViewById(b.f.vertical_viewpager);
             if ((!(localObject1 instanceof ViewGroup)) || (((ViewGroup)localObject1).getChildCount() <= 0)) {
               break label156;
             }
@@ -606,74 +587,72 @@ public final class e
             if (localObject1 != null) {
               break;
             }
-            AppMethodBeat.o(256763);
             return;
-            localObject1 = localObject2;
+            localObject1 = localObject3;
           }
-          localObject1 = ((View)localObject1).findViewById(i.f.content_list);
+          localObject1 = ((View)localObject1).findViewById(b.f.content_list);
           if (((localObject1 instanceof ViewGroup)) && (((ViewGroup)localObject1).getChildCount() > 0))
           {
             localObject1 = ((ViewGroup)localObject1).getChildAt(0);
             if (localObject1 != null)
             {
-              localObject2 = e.this;
+              localObject3 = e.this;
               ((View)localObject1).getWidth();
-              e.a((e)localObject2, ((View)localObject1).getHeight());
+              e.a((e)localObject3, ((View)localObject1).getHeight());
             }
           }
         }
         label156:
-        AppMethodBeat.o(256763);
         return;
       }
-      catch (Throwable localThrowable)
+      finally
       {
-        AppMethodBeat.o(256763);
+        AppMethodBeat.o(307008);
       }
     }
   }
   
   static final class c
-    extends x
+    extends z
   {
-    private Reference<Activity> JDu;
-    private final e.a KpC;
-    private com.tencent.mm.plugin.webview.f.g KpR;
+    private Reference<Activity> PUt;
+    private final e.a QNJ;
+    private g QNY;
     
-    protected c(Activity paramActivity, com.tencent.mm.plugin.webview.f.g paramg, e.a parama)
+    protected c(Activity paramActivity, g paramg, e.a parama)
     {
-      AppMethodBeat.i(230622);
-      this.JDu = new WeakReference(paramActivity);
-      this.KpR = paramg;
-      this.KpC = parama;
-      AppMethodBeat.o(230622);
+      AppMethodBeat.i(307012);
+      this.PUt = new WeakReference(paramActivity);
+      this.QNY = paramg;
+      this.QNJ = parama;
+      AppMethodBeat.o(307012);
     }
     
     public final void a(WebView paramWebView, int paramInt)
     {
-      AppMethodBeat.i(230623);
+      AppMethodBeat.i(307015);
       Log.d("AdLandingFloatWebView", "onProgressChanged %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(230623);
+      AppMethodBeat.o(307015);
     }
     
-    public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, x.a parama)
+    public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, z.a parama)
     {
       Object localObject2 = null;
       Object localObject1 = null;
-      AppMethodBeat.i(230632);
+      AppMethodBeat.i(307034);
       Activity localActivity;
       String str1;
       for (;;)
       {
         try
         {
-          localActivity = (Activity)this.JDu.get();
-          if (((e.aP(localActivity)) && (parama.getMode() == 0)) || (parama.getMode() == 1))
+          localActivity = (Activity)this.PUt.get();
+          if (((e.br(localActivity)) && (parama.getMode() == 0)) || (parama.getMode() == 1))
           {
             if ((parama.getAcceptTypes() == null) || (parama.getAcceptTypes().length <= 0))
             {
               Log.i("AdLandingFloatWebView", "onShowFileChooser, mode = MODE_OPEN, but params.getAcceptTypes is null");
-              AppMethodBeat.o(230632);
+              AppMethodBeat.o(307034);
               return true;
             }
             str1 = parama.getAcceptTypes()[0];
@@ -687,13 +666,13 @@ public final class e
             }
             else
             {
-              parama = this.KpC;
-              localObject3 = this.KpR;
-              if (e.aP(localActivity)) {
+              parama = this.QNJ;
+              localObject3 = this.QNY;
+              if (e.br(localActivity)) {
                 continue;
               }
               Log.i("AdLandingFloatWebView", "activity is finished.");
-              AppMethodBeat.o(230632);
+              AppMethodBeat.o(307034);
               return true;
             }
             paramWebView = (WebView)localObject3;
@@ -708,25 +687,25 @@ public final class e
             Log.e("AdLandingFloatWebView", "openFileChooser fail, wvPerm is null");
             continue;
           }
-          if (((com.tencent.mm.plugin.webview.f.g)localObject3).gWI().so(56)) {
+          if (((g)localObject3).iwo().sk(56)) {
             break;
           }
         }
-        catch (Throwable paramWebView)
+        finally
         {
           Log.e("AdLandingFloatWebView", "onShowFileChooser has something wrong");
-          AppMethodBeat.o(230632);
+          AppMethodBeat.o(307034);
           return false;
         }
         label192:
         Log.e("AdLandingFloatWebView", "open file chooser failed, permission fail");
       }
-      parama.KpN = null;
-      parama.KpO = paramValueCallback;
-      parama.KpP = str1;
-      parama.KpQ = String.valueOf(System.currentTimeMillis());
-      Object localObject3 = e.baS(paramWebView);
-      String str2 = parama.KpQ;
+      parama.QNU = null;
+      parama.QNV = paramValueCallback;
+      parama.QNW = str1;
+      parama.QNX = String.valueOf(System.currentTimeMillis());
+      Object localObject3 = e.aZt(paramWebView);
+      String str2 = parama.QNX;
       parama = new Intent("android.intent.action.GET_CONTENT");
       parama.addCategory("android.intent.category.OPENABLE");
       label285:
@@ -741,7 +720,7 @@ public final class e
           break label416;
         }
         paramWebView = new Intent[1];
-        paramWebView[0] = com.tencent.mm.plugin.webview.k.g.bkR(str2);
+        paramWebView[0] = com.tencent.mm.plugin.webview.k.i.bkA(str2);
         i = 0;
       }
       for (;;)
@@ -753,12 +732,12 @@ public final class e
           {
             paramValueCallback = new Intent("android.intent.action.CHOOSER");
             paramValueCallback.putExtra("android.intent.extra.INITIAL_INTENTS", paramWebView);
-            paramValueCallback.putExtra("android.intent.extra.TITLE", MMApplicationContext.getContext().getString(a.a.webview_select_file_alert_title));
+            paramValueCallback.putExtra("android.intent.extra.TITLE", MMApplicationContext.getContext().getString(a.e.webview_select_file_alert_title));
             paramValueCallback.putExtra("android.intent.extra.INTENT", parama);
           }
           for (paramWebView = paramValueCallback;; paramWebView = paramWebView[0])
           {
-            if (com.tencent.mm.pluginsdk.permission.b.o(localActivity, "android.permission.CAMERA")) {
+            if (com.tencent.mm.pluginsdk.permission.b.s(localActivity, "android.permission.CAMERA")) {
               break label652;
             }
             com.tencent.mm.pluginsdk.permission.b.b(localActivity, "android.permission.CAMERA", 119);
@@ -770,14 +749,14 @@ public final class e
             if ("camcorder".equalsIgnoreCase((String)localObject3))
             {
               paramWebView = new Intent[1];
-              paramWebView[0] = com.tencent.mm.plugin.webview.k.g.gVS();
+              paramWebView[0] = com.tencent.mm.plugin.webview.k.i.ivA();
               i = 0;
               break label319;
             }
             if ("microphone".equalsIgnoreCase((String)localObject3))
             {
               paramWebView = new Intent[1];
-              paramWebView[0] = com.tencent.mm.plugin.webview.k.g.gVT();
+              paramWebView[0] = com.tencent.mm.plugin.webview.k.i.ivB();
               i = 0;
               break label319;
             }
@@ -785,28 +764,28 @@ public final class e
             {
               paramValueCallback = localObject2;
               if (!"false".equalsIgnoreCase((String)localObject3)) {
-                break label684;
+                break label719;
               }
             }
             if (str1.equalsIgnoreCase("image/*"))
             {
               paramWebView = new Intent[1];
-              paramWebView[0] = com.tencent.mm.plugin.webview.k.g.bkR(str2);
+              paramWebView[0] = com.tencent.mm.plugin.webview.k.i.bkA(str2);
             }
             for (;;)
             {
               if ("false".equalsIgnoreCase((String)localObject3)) {
-                break label692;
+                break label727;
               }
               paramValueCallback = paramWebView;
               if (!"*".equalsIgnoreCase((String)localObject3)) {
                 break;
               }
-              break label692;
+              break label727;
               if (str1.equalsIgnoreCase("audio/*"))
               {
                 paramWebView = new Intent[1];
-                paramWebView[0] = com.tencent.mm.plugin.webview.k.g.gVT();
+                paramWebView[0] = com.tencent.mm.plugin.webview.k.i.ivB();
               }
               else
               {
@@ -814,25 +793,25 @@ public final class e
                 if (str1.equalsIgnoreCase("video/*"))
                 {
                   paramWebView = new Intent[1];
-                  paramWebView[0] = com.tencent.mm.plugin.webview.k.g.gVS();
+                  paramWebView[0] = com.tencent.mm.plugin.webview.k.i.ivA();
                 }
               }
             }
             label606:
             paramValueCallback = localObject2;
-            if (!d.qW(16)) {
-              break label684;
+            if (!d.rc(16)) {
+              break label719;
             }
             Log.i("MicroMsg.WebJSSDKUtil", "android API version is below 16.");
             paramWebView = new Intent[1];
-            paramWebView[0] = com.tencent.mm.plugin.webview.k.g.bkR(str2);
+            paramWebView[0] = com.tencent.mm.plugin.webview.k.i.bkA(str2);
             i = 0;
             break label319;
           }
           try
           {
             label652:
-            localActivity.startActivityForResult(paramWebView, 2003);
+            com.tencent.mm.hellhoundlib.a.a.a(localActivity, com.tencent.mm.hellhoundlib.b.c.a(2003, new com.tencent.mm.hellhoundlib.b.a()).cG(paramWebView).aYi(), "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/AdLandingFloatWebViewComponent$FileChooser", "doOpenFileChooser", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/webview/permission/WebViewPermission;Landroid/webkit/ValueCallback;Landroid/webkit/ValueCallback;Ljava/lang/String;Ljava/lang/String;)V", "android/app/Activity", "startActivityForResult", "(Landroid/content/Intent;I)V");
           }
           catch (Exception paramWebView)
           {
@@ -840,11 +819,11 @@ public final class e
           }
         }
         break;
-        label684:
+        label719:
         i = 0;
         paramWebView = paramValueCallback;
         continue;
-        label692:
+        label727:
         i = 1;
       }
     }
@@ -856,79 +835,79 @@ public final class e
     
     public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
     {
-      AppMethodBeat.i(230635);
+      AppMethodBeat.i(307041);
       Log.d("AdLandingFloatWebView", "onJsConfirm");
       boolean bool = super.b(paramWebView, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(230635);
+      AppMethodBeat.o(307041);
       return bool;
     }
     
     public final void onGeolocationPermissionsShowPrompt(final String paramString, final GeolocationPermissions.Callback paramCallback)
     {
-      AppMethodBeat.i(230627);
+      AppMethodBeat.i(307020);
       Log.i("AdLandingFloatWebView", "onGeolocationPermissionsShowPrompt, origin = %s", new Object[] { paramString });
       try
       {
-        final Activity localActivity = (Activity)this.JDu.get();
-        if ((!e.aP(localActivity)) || (paramCallback == null))
+        final Activity localActivity = (Activity)this.PUt.get();
+        if ((!e.br(localActivity)) || (paramCallback == null))
         {
           Log.w("AdLandingFloatWebView", "the activity is finished.");
-          AppMethodBeat.o(230627);
+          AppMethodBeat.o(307020);
           return;
         }
-        if (com.tencent.mm.pluginsdk.permission.b.o(localActivity, "android.permission.ACCESS_FINE_LOCATION"))
+        if (com.tencent.mm.pluginsdk.permission.b.s(localActivity, "android.permission.ACCESS_FINE_LOCATION"))
         {
-          com.tencent.mm.ui.base.h.a(localActivity, false, localActivity.getString(i.j.webview_get_location_msg, new Object[] { paramString }), localActivity.getString(i.j.webview_get_location_title), localActivity.getString(i.j.app_ok), localActivity.getString(i.j.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          k.a(localActivity, false, localActivity.getString(b.j.webview_get_location_msg, new Object[] { paramString }), localActivity.getString(b.j.webview_get_location_title), localActivity.getString(b.j.app_ok), localActivity.getString(b.j.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(194593);
+              AppMethodBeat.i(306953);
               Log.i("AdLandingFloatWebView", "onGeolocationPermissionsShowPrompt ok");
               try
               {
                 paramCallback.invoke(paramString, true, true);
-                ao.aQ(localActivity);
-                AppMethodBeat.o(194593);
+                ar.bs(localActivity);
+                AppMethodBeat.o(306953);
                 return;
               }
-              catch (Throwable paramAnonymousDialogInterface)
+              finally
               {
                 Log.e("AdLandingFloatWebView", "GeolocationPermissions.Callback has something wrong!");
-                AppMethodBeat.o(194593);
+                AppMethodBeat.o(306953);
               }
             }
           }, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(266909);
+              AppMethodBeat.i(306946);
               Log.i("AdLandingFloatWebView", "onGeolocationPermissionsShowPrompt cancel");
               try
               {
                 paramCallback.invoke(paramString, false, false);
-                ao.aQ(localActivity);
-                AppMethodBeat.o(266909);
+                ar.bs(localActivity);
+                AppMethodBeat.o(306946);
                 return;
               }
-              catch (Throwable paramAnonymousDialogInterface)
+              finally
               {
                 Log.e("AdLandingFloatWebView", "GeolocationPermissions.Callback has something wrong!");
-                AppMethodBeat.o(266909);
+                AppMethodBeat.o(306946);
               }
             }
           });
-          AppMethodBeat.o(230627);
+          AppMethodBeat.o(307020);
           return;
         }
       }
-      catch (Throwable paramString)
+      finally
       {
         Log.w("AdLandingFloatWebView", "the application has no geo permission.");
-        AppMethodBeat.o(230627);
+        AppMethodBeat.o(307020);
         return;
       }
       Log.w("AdLandingFloatWebView", "the application has no geo permission.");
-      AppMethodBeat.o(230627);
+      AppMethodBeat.o(307020);
     }
   }
 }

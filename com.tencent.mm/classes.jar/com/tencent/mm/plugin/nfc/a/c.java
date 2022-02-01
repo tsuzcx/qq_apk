@@ -2,63 +2,47 @@ package com.tencent.mm.plugin.nfc.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.c.a;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
 public final class c
   implements Serializable
 {
-  public byte[] GwX;
+  public byte[] MsX;
   
   public c(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26648);
+    AppMethodBeat.i(26649);
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new IllegalArgumentException("apdu is null");
-      AppMethodBeat.o(26648);
+      AppMethodBeat.o(26649);
       throw paramArrayOfByte;
     }
     paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-    cl(paramArrayOfByte);
-    this.GwX = paramArrayOfByte;
-    AppMethodBeat.o(26648);
-  }
-  
-  private static void cl(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(26649);
     if (paramArrayOfByte.length < 2)
     {
       paramArrayOfByte = new IllegalArgumentException("apdu must be at least 2 bytes long");
       AppMethodBeat.o(26649);
       throw paramArrayOfByte;
     }
+    this.MsX = paramArrayOfByte;
     AppMethodBeat.o(26649);
-  }
-  
-  private void readObject(ObjectInputStream paramObjectInputStream)
-  {
-    AppMethodBeat.i(26655);
-    this.GwX = ((byte[])(byte[])paramObjectInputStream.readUnshared());
-    cl(this.GwX);
-    AppMethodBeat.o(26655);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(26652);
-    int j = this.GwX.length;
-    this.GwX = Arrays.copyOf(this.GwX, this.GwX.length + paramc.GwX.length - 2);
+    int j = this.MsX.length;
+    this.MsX = Arrays.copyOf(this.MsX, this.MsX.length + paramc.MsX.length - 2);
     j -= 2;
-    paramc = (byte[])paramc.GwX.clone();
+    paramc = (byte[])paramc.MsX.clone();
     int m = paramc.length;
     int k = 0;
     while (k < m)
     {
       int i = paramc[k];
-      this.GwX[j] = i;
+      this.MsX[j] = i;
       k += 1;
       j += 1;
     }
@@ -79,25 +63,25 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = Arrays.equals(this.GwX, paramObject.GwX);
+    boolean bool = Arrays.equals(this.MsX, paramObject.MsX);
     AppMethodBeat.o(26653);
     return bool;
   }
   
-  public final short fiW()
+  public final short gtn()
   {
-    return (short)(this.GwX[(this.GwX.length - 2)] & 0xFF);
+    return (short)(this.MsX[(this.MsX.length - 2)] & 0xFF);
   }
   
-  public final short fiX()
+  public final short gto()
   {
-    return (short)(this.GwX[(this.GwX.length - 1)] & 0xFF);
+    return (short)(this.MsX[(this.MsX.length - 1)] & 0xFF);
   }
   
-  public final boolean fiY()
+  public final boolean gtp()
   {
     AppMethodBeat.i(26650);
-    if ((short)(fiW() << 8 | fiX()) == -28672)
+    if ((short)(gtn() << 8 | gto()) == -28672)
     {
       AppMethodBeat.o(26650);
       return true;
@@ -109,7 +93,7 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(26654);
-    int i = Arrays.hashCode(this.GwX);
+    int i = Arrays.hashCode(this.MsX);
     AppMethodBeat.o(26654);
     return i;
   }
@@ -117,7 +101,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(26651);
-    String str = a.byteArrayToHexString(this.GwX);
+    String str = a.byteArrayToHexString(this.MsX);
     AppMethodBeat.o(26651);
     return str;
   }

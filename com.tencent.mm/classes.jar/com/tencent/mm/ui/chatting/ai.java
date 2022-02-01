@@ -1,48 +1,27 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.od;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.platformtools.Log;
+import android.os.Bundle;
+import com.tencent.mm.ui.chatting.view.MMChattingListView;
 
-public final class ai
+public abstract interface ai
 {
-  private static ai WDG;
-  int WDH = 0;
-  private int WDI = 0;
+  public abstract void aBP(int paramInt);
   
-  public static ai hNu()
-  {
-    AppMethodBeat.i(34840);
-    if (WDG == null) {
-      WDG = new ai();
-    }
-    ai localai = WDG;
-    AppMethodBeat.o(34840);
-    return localai;
-  }
+  public abstract void bV(Bundle paramBundle);
   
-  public final void avq(int paramInt)
-  {
-    AppMethodBeat.i(34841);
-    if (this.WDH > 0)
-    {
-      this.WDH -= 1;
-      AppMethodBeat.o(34841);
-      return;
-    }
-    if (paramInt != this.WDI)
-    {
-      Log.i("MicroMsg.OrzChattingLifecycle", "notifyChattingStatus [%d]", new Object[] { Integer.valueOf(paramInt) });
-      od localod = new od();
-      localod.fMX.fMY = paramInt;
-      EventCenter.instance.publish(localod);
-    }
-    if ((paramInt == 1) || (paramInt == 4)) {
-      this.WDI = paramInt;
-    }
-    AppMethodBeat.o(34841);
-  }
+  public abstract void bW(Bundle paramBundle);
+  
+  public abstract void jpM();
+  
+  public abstract void jpN();
+  
+  public abstract void jpO();
+  
+  public abstract void jpP();
+  
+  public abstract MMChattingListView jpR();
+  
+  public abstract void setIsBottomShowAll(boolean paramBoolean);
 }
 
 

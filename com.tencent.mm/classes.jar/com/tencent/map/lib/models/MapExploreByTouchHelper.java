@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import androidx.core.g.a.d;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import androidx.customview.a.a;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public abstract class MapExploreByTouchHelper
 {
   protected static final int MAP_ACTION_CLICKED = 1;
   protected static final int NO_ITEM = -1;
-  protected List<AccessibleTouchItem> accessibleTouchItems = new ArrayList();
+  public List<AccessibleTouchItem> accessibleTouchItems = new ArrayList();
   
   public MapExploreByTouchHelper(View paramView)
   {
@@ -73,7 +73,7 @@ public abstract class MapExploreByTouchHelper
     if (paramInt >= this.accessibleTouchItems.size())
     {
       paramd.setText("");
-      paramd.f(new Rect());
+      paramd.k(new Rect());
       return;
     }
     AccessibleTouchItem localAccessibleTouchItem = (AccessibleTouchItem)this.accessibleTouchItems.get(paramInt);
@@ -81,23 +81,23 @@ public abstract class MapExploreByTouchHelper
       throw new IllegalArgumentException("Invalid virtual view id");
     }
     paramd.setText(localAccessibleTouchItem.getContentDescription());
-    paramd.f(localAccessibleTouchItem.getBounds());
-    paramd.bA(16);
+    paramd.k(localAccessibleTouchItem.getBounds());
+    paramd.eu(16);
   }
   
   public void onTalkBackActivate(View paramView)
   {
-    w.a(paramView, this);
+    z.a(paramView, this);
   }
   
   public void onTalkBackDeActivate(View paramView)
   {
-    w.a(paramView, null);
+    z.a(paramView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.map.lib.models.MapExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

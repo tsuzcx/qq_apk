@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <rotate android:fromDegrees="45.0" android:pivotX="134.99756%" android:pivotY="14.999998%">
-            <shape android:shape="rectangle">
-                <size android:height="@dimen/cb" android:width="@dimen/cb" />
-                <solid android:color="@color/am" />
-            </shape>
-        </rotate>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a78" />
+            <solid android:color="@color/BW_100_Alpha_0_8" />
+        </shape>
     </item>
-</layer-list>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a78" />
+            <solid android:color="@color/al6" />
+        </shape>
+    </item>
+</selector>

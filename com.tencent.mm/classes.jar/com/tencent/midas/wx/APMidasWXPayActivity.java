@@ -16,24 +16,24 @@ public class APMidasWXPayActivity
   
   private void handleIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(253217);
+    AppMethodBeat.i(216975);
     APLog.d("APMidasWXPayActivity", "handleIntent get called!");
     try
     {
       APPluginInterfaceManager.initPluginInterface(this, APMidasPayHelper.MIDAS_PLUGIN_NAME, APMidasPayHelper.PKG_DISTRIBUTE, APMidasPayHelper.MED_DISTRIBUTE_HANDLE_WX_INTENT, new Object[] { this, paramIntent });
-      AppMethodBeat.o(253217);
+      AppMethodBeat.o(216975);
       return;
     }
     catch (Exception paramIntent)
     {
       APLog.e("APMidasWXPayActivity", "handleIntent got exception = " + paramIntent.toString());
-      AppMethodBeat.o(253217);
+      AppMethodBeat.o(216975);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(253213);
+    AppMethodBeat.i(216981);
     super.onCreate(paramBundle);
     try
     {
@@ -46,18 +46,16 @@ public class APMidasWXPayActivity
       {
         requestWindowFeature(1);
         handleIntent(getIntent());
-        finish();
-        AppMethodBeat.o(253213);
         return;
       }
-      catch (Throwable paramBundle)
+      finally
       {
         finish();
-        AppMethodBeat.o(253213);
+        AppMethodBeat.o(216981);
       }
       paramBundle = paramBundle;
       finish();
-      AppMethodBeat.o(253213);
+      AppMethodBeat.o(216981);
       return;
     }
   }
@@ -70,7 +68,7 @@ public class APMidasWXPayActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.wx.APMidasWXPayActivity
  * JD-Core Version:    0.7.0.1
  */

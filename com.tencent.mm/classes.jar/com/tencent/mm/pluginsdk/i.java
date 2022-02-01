@@ -10,10 +10,12 @@ public abstract interface i
   public abstract w a(Context paramContext, String paramString, int paramInt, v paramv, a parama);
   
   public abstract w a(Context paramContext, String paramString, v paramv);
+  
+  public abstract w a(Context paramContext, String paramString, v paramv, a parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.i
  * JD-Core Version:    0.7.0.1
  */

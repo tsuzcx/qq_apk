@@ -8,11 +8,9 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import androidx.core.g.ae;
-import androidx.core.g.ae.e;
+import androidx.core.g.ah;
 import androidx.core.g.s;
-import androidx.core.g.w;
-import androidx.core.graphics.c;
+import androidx.core.g.z;
 import com.google.android.material.a.j;
 import com.google.android.material.a.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -20,9 +18,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScrimInsetsFrameLayout
   extends FrameLayout
 {
-  Drawable bCR;
-  Rect bCS;
-  private Rect bCT;
+  private Rect aQJ;
+  Drawable dvT;
+  Rect dvU;
   
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,93 +30,89 @@ public class ScrimInsetsFrameLayout
   public ScrimInsetsFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(238113);
-    this.bCT = new Rect();
+    AppMethodBeat.i(209379);
+    this.aQJ = new Rect();
     paramContext = k.a(paramContext, paramAttributeSet, a.k.ScrimInsetsFrameLayout, paramInt, a.j.Widget_Design_ScrimInsetsFrameLayout, new int[0]);
-    this.bCR = paramContext.getDrawable(a.k.ScrimInsetsFrameLayout_insetForeground);
+    this.dvT = paramContext.getDrawable(a.k.ScrimInsetsFrameLayout_insetForeground);
     paramContext.recycle();
     setWillNotDraw(true);
-    w.a(this, new s()
+    z.a(this, new s()
     {
-      public final ae a(View paramAnonymousView, ae paramAnonymousae)
+      public final ah a(View paramAnonymousView, ah paramAnonymousah)
       {
-        boolean bool = false;
-        AppMethodBeat.i(238090);
-        if (ScrimInsetsFrameLayout.this.bCS == null) {
-          ScrimInsetsFrameLayout.this.bCS = new Rect();
+        AppMethodBeat.i(209255);
+        if (ScrimInsetsFrameLayout.this.dvU == null) {
+          ScrimInsetsFrameLayout.this.dvU = new Rect();
         }
-        ScrimInsetsFrameLayout.this.bCS.set(paramAnonymousae.hc(), paramAnonymousae.hd(), paramAnonymousae.he(), paramAnonymousae.hf());
-        ScrimInsetsFrameLayout.this.b(paramAnonymousae);
+        ScrimInsetsFrameLayout.this.dvU.set(paramAnonymousah.Em(), paramAnonymousah.En(), paramAnonymousah.Eo(), paramAnonymousah.Ep());
+        ScrimInsetsFrameLayout.this.c(paramAnonymousah);
         paramAnonymousView = ScrimInsetsFrameLayout.this;
-        if (!paramAnonymousae.Oa.hp().equals(c.Kn)) {}
-        for (int i = 1;; i = 0)
+        if ((!paramAnonymousah.Eq()) || (ScrimInsetsFrameLayout.this.dvT == null)) {}
+        for (boolean bool = true;; bool = false)
         {
-          if ((i == 0) || (ScrimInsetsFrameLayout.this.bCR == null)) {
-            bool = true;
-          }
           paramAnonymousView.setWillNotDraw(bool);
-          w.G(ScrimInsetsFrameLayout.this);
-          paramAnonymousView = paramAnonymousae.Oa.hl();
-          AppMethodBeat.o(238090);
+          z.Q(ScrimInsetsFrameLayout.this);
+          paramAnonymousView = paramAnonymousah.Es();
+          AppMethodBeat.o(209255);
           return paramAnonymousView;
         }
       }
     });
-    AppMethodBeat.o(238113);
+    AppMethodBeat.o(209379);
   }
   
-  protected void b(ae paramae) {}
+  protected void c(ah paramah) {}
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(238115);
+    AppMethodBeat.i(209394);
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    if ((this.bCS != null) && (this.bCR != null))
+    if ((this.dvU != null) && (this.dvT != null))
     {
       int k = paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.bCT.set(0, 0, i, this.bCS.top);
-      this.bCR.setBounds(this.bCT);
-      this.bCR.draw(paramCanvas);
-      this.bCT.set(0, j - this.bCS.bottom, i, j);
-      this.bCR.setBounds(this.bCT);
-      this.bCR.draw(paramCanvas);
-      this.bCT.set(0, this.bCS.top, this.bCS.left, j - this.bCS.bottom);
-      this.bCR.setBounds(this.bCT);
-      this.bCR.draw(paramCanvas);
-      this.bCT.set(i - this.bCS.right, this.bCS.top, i, j - this.bCS.bottom);
-      this.bCR.setBounds(this.bCT);
-      this.bCR.draw(paramCanvas);
+      this.aQJ.set(0, 0, i, this.dvU.top);
+      this.dvT.setBounds(this.aQJ);
+      this.dvT.draw(paramCanvas);
+      this.aQJ.set(0, j - this.dvU.bottom, i, j);
+      this.dvT.setBounds(this.aQJ);
+      this.dvT.draw(paramCanvas);
+      this.aQJ.set(0, this.dvU.top, this.dvU.left, j - this.dvU.bottom);
+      this.dvT.setBounds(this.aQJ);
+      this.dvT.draw(paramCanvas);
+      this.aQJ.set(i - this.dvU.right, this.dvU.top, i, j - this.dvU.bottom);
+      this.dvT.setBounds(this.aQJ);
+      this.dvT.draw(paramCanvas);
       paramCanvas.restoreToCount(k);
     }
-    AppMethodBeat.o(238115);
+    AppMethodBeat.o(209394);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(238116);
+    AppMethodBeat.i(209405);
     super.onAttachedToWindow();
-    if (this.bCR != null) {
-      this.bCR.setCallback(this);
+    if (this.dvT != null) {
+      this.dvT.setCallback(this);
     }
-    AppMethodBeat.o(238116);
+    AppMethodBeat.o(209405);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(238117);
+    AppMethodBeat.i(209414);
     super.onDetachedFromWindow();
-    if (this.bCR != null) {
-      this.bCR.setCallback(null);
+    if (this.dvT != null) {
+      this.dvT.setCallback(null);
     }
-    AppMethodBeat.o(238117);
+    AppMethodBeat.o(209414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.internal.ScrimInsetsFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.teenmode.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -8,21 +7,26 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.autogen.a.jt;
 import com.tencent.mm.kernel.f;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.teenmode.a.a;
 import com.tencent.mm.plugin.teenmode.a.d;
 import com.tencent.mm.plugin.teenmode.a.e;
 import com.tencent.mm.plugin.teenmode.a.g;
-import com.tencent.mm.protocal.protobuf.erb;
+import com.tencent.mm.plugin.teenmode.a.d;
+import com.tencent.mm.plugin.teenmode.b.j;
+import com.tencent.mm.protocal.protobuf.fmh;
+import com.tencent.mm.protocal.protobuf.gol;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import org.json.JSONException;
@@ -31,17 +35,16 @@ import org.json.JSONObject;
 public class SettingsTeenModeMainFinder
   extends MMActivity
 {
-  private WeImageView MtY;
-  private WeImageView MtZ;
-  private WeImageView Mua;
-  private LinearLayout Mub;
-  private int Muc = 0;
+  private WeImageView TaP;
+  private WeImageView TaR;
+  private LinearLayout TaS;
+  private int TaT = 2;
   
-  private static String d(b.a parama, String paramString)
+  private static String d(c.a parama, String paramString)
   {
-    AppMethodBeat.i(259630);
+    AppMethodBeat.i(279373);
     String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    parama = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(parama, "");
+    parama = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(parama, "");
     try
     {
       JSONObject localJSONObject = new JSONObject(parama);
@@ -59,15 +62,15 @@ public class SettingsTeenModeMainFinder
       }
     }
     Log.i("MicroMsg.SettingsTeenModeMainFinder", "[getServerConfigTitle] title=%s", new Object[] { parama });
-    AppMethodBeat.o(259630);
+    AppMethodBeat.o(279373);
     return parama;
   }
   
-  private static String e(b.a parama, String paramString)
+  private static String e(c.a parama, String paramString)
   {
-    AppMethodBeat.i(259632);
+    AppMethodBeat.i(279384);
     String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    parama = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(parama, "");
+    parama = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(parama, "");
     try
     {
       JSONObject localJSONObject = new JSONObject(parama);
@@ -85,69 +88,69 @@ public class SettingsTeenModeMainFinder
       }
     }
     Log.i("MicroMsg.SettingsTeenModeMainFinder", "[getServerConfigTitle] title=%s", new Object[] { parama });
-    AppMethodBeat.o(259632);
+    AppMethodBeat.o(279384);
     return parama;
   }
   
-  public static String gkA()
+  private void hFa()
   {
-    AppMethodBeat.i(259627);
-    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.Mts);
-    String str = d(b.a.vJG, (String)localObject);
+    AppMethodBeat.i(279356);
+    Log.d("MicroMsg.SettingsTeenModeMainFinder", "doSaveConfig: %s", new Object[] { Integer.valueOf(this.TaT) });
+    com.tencent.mm.kernel.h.baE().ban().set(at.a.acQu, Integer.valueOf(this.TaT));
+    AppMethodBeat.o(279356);
+  }
+  
+  public static String hFb()
+  {
+    AppMethodBeat.i(279361);
+    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.SXP);
+    String str = d(c.a.zac, (String)localObject);
     if (Util.isNullOrNil(str)) {}
     for (;;)
     {
-      AppMethodBeat.o(259627);
+      AppMethodBeat.o(279361);
       return localObject;
       localObject = str;
     }
   }
   
-  private static String gkB()
+  public static String hFc()
   {
-    AppMethodBeat.i(259631);
-    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.Mtf);
-    String str = e(b.a.vJH, (String)localObject);
+    AppMethodBeat.i(279365);
+    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.SXQ);
+    String str = d(c.a.yZY, (String)localObject);
     if (Util.isNullOrNil(str)) {}
     for (;;)
     {
-      AppMethodBeat.o(259631);
+      AppMethodBeat.o(279365);
       return localObject;
       localObject = str;
     }
   }
   
-  private void gkx()
+  private static String hFd()
   {
-    AppMethodBeat.i(259621);
-    Log.d("MicroMsg.SettingsTeenModeMainFinder", "doSaveConfig: %s", new Object[] { Integer.valueOf(this.Muc) });
-    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VoY, Integer.valueOf(this.Muc));
-    AppMethodBeat.o(259621);
-  }
-  
-  public static String gky()
-  {
-    AppMethodBeat.i(259623);
-    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.Mtr);
-    String str = d(b.a.vJJ, (String)localObject);
+    AppMethodBeat.i(279375);
+    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.SXC);
+    String str = e(c.a.yZZ, (String)localObject);
     if (Util.isNullOrNil(str)) {}
     for (;;)
     {
-      AppMethodBeat.o(259623);
+      AppMethodBeat.o(279375);
       return localObject;
       localObject = str;
     }
   }
   
-  public static String gkz()
+  private static String hFe()
   {
-    AppMethodBeat.i(259625);
-    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.Mte);
-    String str = d(b.a.vJF, (String)localObject);
+    AppMethodBeat.i(279379);
+    Object localObject = MMApplicationContext.getContext().getResources().getString(a.g.SXB);
+    String str = e(c.a.zaa, (String)localObject);
     if (Util.isNullOrNil(str)) {}
     for (;;)
     {
-      AppMethodBeat.o(259625);
+      AppMethodBeat.o(279379);
       return localObject;
       localObject = str;
     }
@@ -155,40 +158,34 @@ public class SettingsTeenModeMainFinder
   
   private void updateStatus()
   {
-    AppMethodBeat.i(259619);
-    TextView localTextView1 = (TextView)findViewById(a.d.Msw);
-    TextView localTextView2 = (TextView)findViewById(a.d.MsA);
-    TextView localTextView3 = (TextView)findViewById(a.d.Msy);
-    TextView localTextView4 = (TextView)findViewById(a.d.Msf);
-    localTextView4.setContentDescription(gkB());
-    localTextView4.setText(gkB());
-    localTextView1.setContentDescription(gky());
-    localTextView1.setText(gky());
-    localTextView2.setContentDescription(gkz());
-    localTextView2.setText(gkz());
-    localTextView3.setContentDescription(getString(a.g.Mts));
-    localTextView3.setText(gkA());
-    this.MtY.setVisibility(8);
-    this.MtZ.setVisibility(8);
-    this.Mua.setVisibility(8);
-    this.Mub.setVisibility(4);
-    switch (this.Muc)
+    AppMethodBeat.i(279303);
+    TextView localTextView1 = (TextView)findViewById(a.d.SWc);
+    TextView localTextView2 = (TextView)findViewById(a.d.SWe);
+    TextView localTextView3 = (TextView)findViewById(a.d.SVF);
+    localTextView1.setContentDescription(hFb());
+    localTextView1.setText(hFb());
+    localTextView2.setContentDescription(getString(a.g.SXQ));
+    localTextView2.setText(hFc());
+    this.TaP.setVisibility(8);
+    this.TaR.setVisibility(8);
+    this.TaS.setVisibility(4);
+    switch (this.TaT)
     {
     }
     for (;;)
     {
-      gkx();
-      AppMethodBeat.o(259619);
+      hFa();
+      AppMethodBeat.o(279303);
       return;
-      this.MtY.setVisibility(0);
-      localTextView1.setContentDescription(getString(a.g.Mtd) + gky());
+      this.TaP.setVisibility(0);
+      localTextView3.setContentDescription(hFd());
+      localTextView3.setText(hFd());
+      localTextView1.setContentDescription(getString(a.g.SXz) + hFb());
       continue;
-      this.MtZ.setVisibility(0);
-      this.Mub.setVisibility(0);
-      localTextView2.setContentDescription(getString(a.g.Mtd) + gkz());
-      continue;
-      this.Mua.setVisibility(0);
-      localTextView3.setContentDescription(getString(a.g.Mtd) + gkA());
+      this.TaR.setVisibility(0);
+      localTextView3.setContentDescription(hFe());
+      localTextView3.setText(hFe());
+      localTextView2.setContentDescription(getString(a.g.SXz) + hFc());
     }
   }
   
@@ -199,54 +196,59 @@ public class SettingsTeenModeMainFinder
   
   public int getLayoutId()
   {
-    return a.e.MsG;
+    return a.e.SWq;
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(259616);
+    AppMethodBeat.i(279415);
     super.onBackPressed();
-    AppMethodBeat.o(259616);
+    AppMethodBeat.o(279415);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(259611);
+    AppMethodBeat.i(279400);
     super.onCreate(paramBundle);
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(a.a.white));
-    this.MtY = ((WeImageView)findViewById(a.d.Msv));
-    this.MtZ = ((WeImageView)findViewById(a.d.Msz));
-    this.Mua = ((WeImageView)findViewById(a.d.Msx));
-    this.Mub = ((LinearLayout)findViewById(a.d.Msc));
-    this.Muc = ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).dYS();
+    this.TaP = ((WeImageView)findViewById(a.d.SWb));
+    this.TaR = ((WeImageView)findViewById(a.d.SWd));
+    this.TaS = ((LinearLayout)findViewById(a.d.SVB));
+    this.TaT = ((d)com.tencent.mm.kernel.h.ax(d.class)).eZD();
     updateStatus();
-    ((View)this.MtY.getParent()).setOnClickListener(new SettingsTeenModeMainFinder.1(this));
-    ((View)this.MtZ.getParent()).setOnClickListener(new SettingsTeenModeMainFinder.2(this));
-    ((View)this.Mua.getParent()).setOnClickListener(new SettingsTeenModeMainFinder.3(this));
-    this.Mub.setOnClickListener(new SettingsTeenModeMainFinder.4(this));
-    setBackBtn(new SettingsTeenModeMainFinder.5(this));
-    AppMethodBeat.o(259611);
+    ((View)this.TaP.getParent()).setOnClickListener(new SettingsTeenModeMainFinder.1(this));
+    ((View)this.TaR.getParent()).setOnClickListener(new SettingsTeenModeMainFinder.2(this));
+    this.TaS.setOnClickListener(new SettingsTeenModeMainFinder.3(this));
+    setBackBtn(new SettingsTeenModeMainFinder.4(this));
+    AppMethodBeat.o(279400);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(259615);
-    Log.d("MicroMsg.SettingsTeenModeMainFinder", "doLog: %s", new Object[] { Integer.valueOf(this.Muc) });
-    erb localerb = new erb();
-    localerb.Utn = this.Muc;
-    ((n)com.tencent.mm.kernel.h.ae(n.class)).eRY().b(new k.a(223, localerb));
-    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gkt();
+    AppMethodBeat.i(279409);
+    Log.d("MicroMsg.SettingsTeenModeMainFinder", "doLog: %s", new Object[] { Integer.valueOf(this.TaT) });
+    fmh localfmh = new fmh();
+    localfmh.abMB = this.TaT;
+    if (j.hEy().hFb != null)
+    {
+      localfmh.aajK = new gol();
+      localfmh.aajK.df(j.hEy().hFb.getBytes());
+    }
+    localfmh.aajL = j.hEy().qfP;
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).gaT().b(new k.a(223, localfmh));
+    ((d)com.tencent.mm.kernel.h.ax(d.class)).hEs();
+    new jt().publish();
     super.onDestroy();
-    AppMethodBeat.o(259615);
+    AppMethodBeat.o(279409);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(259613);
+    AppMethodBeat.i(279404);
     super.onPause();
-    AppMethodBeat.o(259613);
+    AppMethodBeat.o(279404);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -257,7 +259,7 @@ public class SettingsTeenModeMainFinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.teenmode.ui.SettingsTeenModeMainFinder
  * JD-Core Version:    0.7.0.1
  */

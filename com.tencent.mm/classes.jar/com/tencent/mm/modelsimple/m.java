@@ -1,52 +1,88 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.p;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aoa;
+import com.tencent.mm.protocal.protobuf.aob;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends q
+  extends p
   implements com.tencent.mm.network.m
 {
-  private i callback;
-  private final s lCW;
+  private h callback;
+  private final c rr;
   
-  public m()
+  public m(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(134154);
-    this.lCW = new p();
-    AppMethodBeat.o(134154);
+    this(paramString1, paramInt, paramString2, null, 0);
   }
   
-  public final int doScene(g paramg, i parami)
+  public m(String paramString1, int paramInt1, String paramString2, byte[] paramArrayOfByte, int paramInt2)
   {
-    AppMethodBeat.i(134155);
-    this.callback = parami;
-    int i = dispatch(paramg, this.lCW, this);
-    AppMethodBeat.o(134155);
+    AppMethodBeat.i(236733);
+    Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s, %d", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2) });
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new aoa();
+    ((c.a)localObject).otF = new aob();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/entertempsession";
+    ((c.a)localObject).funcId = 1066;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    if (paramString2 != null)
+    {
+      localObject = paramString2;
+      if (paramString2.length() > 32)
+      {
+        localObject = paramString2;
+        if (paramInt1 == 19) {}
+      }
+    }
+    for (localObject = paramString2.substring(0, 32);; localObject = "")
+    {
+      paramString2 = (aoa)c.b.b(this.rr.otB);
+      paramString2.YRs = paramString1;
+      paramString2.IcB = paramInt1;
+      paramString2.ZvE = b.bsj((String)localObject);
+      if (paramArrayOfByte == null) {}
+      for (paramString2.ZqS = b.cX(new byte[0]);; paramString2.ZqS = b.cX(paramArrayOfByte))
+      {
+        paramString2.ZvF = paramInt2;
+        Log.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramString2.ZqS.Op.length) });
+        AppMethodBeat.o(236733);
+        return;
+      }
+    }
+  }
+  
+  public final int doScene(g paramg, h paramh)
+  {
+    AppMethodBeat.i(20618);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(20618);
     return i;
   }
   
   public final int getType()
   {
-    return 381;
-  }
-  
-  public final boolean needCheckCallback()
-  {
-    return false;
+    return 1066;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(134156);
-    Log.d("MicroMsg.NetSceneGetCert", "dkcert onGYNetEnd [%d,%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(20619);
+    Log.i("MicroMsg.NetSceneEnterTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(134156);
+    AppMethodBeat.o(20619);
   }
 }
 

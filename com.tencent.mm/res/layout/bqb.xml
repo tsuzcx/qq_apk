@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ah0" android:layout_width="fill_parent" android:layout_height="50.0dip" android:minHeight="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/qa" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/wo" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/ka" android:textColor="@color/ag2" android:id="@id/h5q" android:background="@drawable/k7" android:paddingLeft="@dimen/ib" android:paddingTop="@dimen/i2" android:paddingRight="@dimen/ib" android:paddingBottom="@dimen/i2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fhc" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ipq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:singleLine="true" android:layout_toLeftOf="@id/h5q" android:layout_toRightOf="@id/wo" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <TextView android:id="@id/ie0" android:paddingLeft="20.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/ma" />
+    <CheckBox android:id="@id/idz" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" />
 </LinearLayout>

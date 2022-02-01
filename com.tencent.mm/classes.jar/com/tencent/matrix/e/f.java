@@ -41,7 +41,7 @@ public final class f
     }
   }
   
-  public static <T> T b(Object paramObject, String paramString, T paramT)
+  public static <T> T c(Object paramObject, String paramString, T paramT)
   {
     if (paramObject == null) {
       return paramT;
@@ -70,7 +70,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.e.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,50 @@
 package kotlin.l.b.a.b.m;
 
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.b.a.g;
+import java.util.List;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.j.g.h;
 
 public abstract class o
-  extends n
+  extends al
 {
-  private final aj aaWM;
+  public abstract o c(al paramal);
   
-  public o(aj paramaj)
+  public al j(kotlin.l.b.a.b.m.a.g paramg)
   {
-    this.aaWM = paramaj;
+    s.u(paramg, "kotlinTypeRefiner");
+    return (al)c((al)paramg.aD((ad)ksx()));
   }
   
-  private o i(g paramg)
+  public final List<az> klR()
   {
-    p.k(paramg, "newAnnotations");
-    if (paramg != iDY()) {
-      return (o)new i((aj)this, paramg);
-    }
-    return this;
+    return ksx().klR();
   }
   
-  public final aj Jn(boolean paramBoolean)
+  public final h knP()
   {
-    if (paramBoolean == iIu()) {
-      return (aj)this;
-    }
-    return this.aaWM.Jn(paramBoolean).d(iDY());
+    return ksx().knP();
   }
   
-  protected final aj iIq()
+  public kotlin.l.b.a.b.b.a.g knl()
   {
-    return this.aaWM;
+    return ksx().knl();
+  }
+  
+  public boolean ksB()
+  {
+    return ksx().ksB();
+  }
+  
+  protected abstract al ksx();
+  
+  public final ax kzm()
+  {
+    return ksx().kzm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.o
  * JD-Core Version:    0.7.0.1
  */

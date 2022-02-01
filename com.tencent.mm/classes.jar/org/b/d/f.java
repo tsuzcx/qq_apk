@@ -15,14 +15,14 @@ import org.b.b.b;
 
 class f
 {
-  private String Tsy;
-  private j abLH;
-  private e abLI;
-  private e abLJ;
-  private byte[] abLK;
-  private boolean abLL;
-  private Long abLM;
-  private Long abLN;
+  private String aaGI;
+  private j ajYA;
+  private e ajYB;
+  private e ajYC;
+  private byte[] ajYD;
+  private boolean ajYE;
+  private Long ajYF;
+  private Long ajYG;
   private String charset;
   private HttpURLConnection connection;
   private Map<String, String> headers;
@@ -31,20 +31,20 @@ class f
   public f(j paramj, String paramString)
   {
     AppMethodBeat.i(40519);
-    this.Tsy = null;
-    this.abLK = null;
-    this.abLL = false;
-    this.abLM = null;
-    this.abLN = null;
-    this.abLH = paramj;
+    this.aaGI = null;
+    this.ajYD = null;
+    this.ajYE = false;
+    this.ajYF = null;
+    this.ajYG = null;
+    this.ajYA = paramj;
     this.url = paramString;
-    this.abLI = new e();
-    this.abLJ = new e();
+    this.ajYB = new e();
+    this.ajYC = new e();
     this.headers = new HashMap();
     AppMethodBeat.o(40519);
   }
   
-  private void h(HttpURLConnection paramHttpURLConnection)
+  private void g(HttpURLConnection paramHttpURLConnection)
   {
     AppMethodBeat.i(40522);
     Iterator localIterator = this.headers.keySet().iterator();
@@ -60,26 +60,26 @@ class f
     }
   }
   
-  private byte[] iVt()
+  private byte[] kJR()
   {
     AppMethodBeat.i(40527);
-    if (this.abLK != null)
+    if (this.ajYD != null)
     {
-      localObject = this.abLK;
+      localObject = this.ajYD;
       AppMethodBeat.o(40527);
       return localObject;
     }
-    if (this.Tsy != null) {}
-    for (Object localObject = this.Tsy;; localObject = this.abLJ.iVs()) {
+    if (this.aaGI != null) {}
+    for (Object localObject = this.aaGI;; localObject = this.ajYC.kJQ()) {
       try
       {
-        localObject = ((String)localObject).getBytes(iVn());
+        localObject = ((String)localObject).getBytes(kJL());
         AppMethodBeat.o(40527);
         return localObject;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        b localb = new b("Unsupported Charset: " + iVn(), localUnsupportedEncodingException);
+        b localb = new b("Unsupported Charset: " + kJL(), localUnsupportedEncodingException);
         AppMethodBeat.o(40527);
         throw localb;
       }
@@ -91,14 +91,14 @@ class f
     return this.url;
   }
   
-  public e iVk()
+  public e kJI()
   {
     AppMethodBeat.i(40525);
     try
     {
       e locale = new e();
-      locale.bIC(new URL(this.url).getQuery());
-      locale.a(this.abLI);
+      locale.bLy(new URL(this.url).getQuery());
+      locale.a(this.ajYB);
       AppMethodBeat.o(40525);
       return locale;
     }
@@ -110,18 +110,18 @@ class f
     }
   }
   
-  public j iVl()
+  public j kJJ()
   {
-    return this.abLH;
+    return this.ajYA;
   }
   
-  public String iVm()
+  public String kJK()
   {
     AppMethodBeat.i(40521);
-    Object localObject2 = this.abLI;
+    Object localObject2 = this.ajYB;
     Object localObject1 = this.url;
-    org.b.g.d.n(localObject1, "Cannot append to null URL");
-    localObject2 = ((e)localObject2).iVs();
+    org.b.g.d.x(localObject1, "Cannot append to null URL");
+    localObject2 = ((e)localObject2).kJQ();
     if (((String)localObject2).equals(""))
     {
       AppMethodBeat.o(40521);
@@ -137,7 +137,7 @@ class f
     }
   }
   
-  public String iVn()
+  public String kJL()
   {
     AppMethodBeat.i(40528);
     if (this.charset == null)
@@ -152,19 +152,19 @@ class f
   }
   
   /* Error */
-  public g iVo()
+  public g kJM()
   {
     // Byte code:
     //   0: ldc 213
     //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 215	org/b/d/f:iVm	()Ljava/lang/String;
+    //   6: invokevirtual 215	org/b/d/f:kJK	()Ljava/lang/String;
     //   9: astore_2
     //   10: aload_0
     //   11: getfield 217	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   14: ifnonnull +38 -> 52
     //   17: aload_0
-    //   18: getfield 43	org/b/d/f:abLL	Z
+    //   18: getfield 43	org/b/d/f:ajYE	Z
     //   21: ifeq +195 -> 216
     //   24: ldc 219
     //   26: astore_1
@@ -183,46 +183,46 @@ class f
     //   52: aload_0
     //   53: getfield 217	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   56: aload_0
-    //   57: getfield 49	org/b/d/f:abLH	Lorg/b/d/j;
+    //   57: getfield 49	org/b/d/f:ajYA	Lorg/b/d/j;
     //   60: invokevirtual 234	org/b/d/j:name	()Ljava/lang/String;
     //   63: invokevirtual 237	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   66: aload_0
-    //   67: getfield 45	org/b/d/f:abLM	Ljava/lang/Long;
+    //   67: getfield 45	org/b/d/f:ajYF	Ljava/lang/Long;
     //   70: ifnull +17 -> 87
     //   73: aload_0
     //   74: getfield 217	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   77: aload_0
-    //   78: getfield 45	org/b/d/f:abLM	Ljava/lang/Long;
+    //   78: getfield 45	org/b/d/f:ajYF	Ljava/lang/Long;
     //   81: invokevirtual 243	java/lang/Long:intValue	()I
     //   84: invokevirtual 246	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   87: aload_0
-    //   88: getfield 47	org/b/d/f:abLN	Ljava/lang/Long;
+    //   88: getfield 47	org/b/d/f:ajYG	Ljava/lang/Long;
     //   91: ifnull +17 -> 108
     //   94: aload_0
     //   95: getfield 217	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   98: aload_0
-    //   99: getfield 47	org/b/d/f:abLN	Ljava/lang/Long;
+    //   99: getfield 47	org/b/d/f:ajYG	Ljava/lang/Long;
     //   102: invokevirtual 243	java/lang/Long:intValue	()I
     //   105: invokevirtual 249	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   108: aload_0
     //   109: aload_0
     //   110: getfield 217	org/b/d/f:connection	Ljava/net/HttpURLConnection;
-    //   113: invokespecial 251	org/b/d/f:h	(Ljava/net/HttpURLConnection;)V
+    //   113: invokespecial 251	org/b/d/f:g	(Ljava/net/HttpURLConnection;)V
     //   116: aload_0
-    //   117: getfield 49	org/b/d/f:abLH	Lorg/b/d/j;
-    //   120: getstatic 254	org/b/d/j:abLU	Lorg/b/d/j;
+    //   117: getfield 49	org/b/d/f:ajYA	Lorg/b/d/j;
+    //   120: getstatic 254	org/b/d/j:ajYO	Lorg/b/d/j;
     //   123: invokevirtual 255	org/b/d/j:equals	(Ljava/lang/Object;)Z
     //   126: ifne +16 -> 142
     //   129: aload_0
-    //   130: getfield 49	org/b/d/f:abLH	Lorg/b/d/j;
-    //   133: getstatic 258	org/b/d/j:abLT	Lorg/b/d/j;
+    //   130: getfield 49	org/b/d/f:ajYA	Lorg/b/d/j;
+    //   133: getstatic 258	org/b/d/j:ajYN	Lorg/b/d/j;
     //   136: invokevirtual 255	org/b/d/j:equals	(Ljava/lang/Object;)Z
     //   139: ifeq +58 -> 197
     //   142: aload_0
     //   143: getfield 217	org/b/d/f:connection	Ljava/net/HttpURLConnection;
     //   146: astore_1
     //   147: aload_0
-    //   148: invokespecial 260	org/b/d/f:iVt	()[B
+    //   148: invokespecial 260	org/b/d/f:kJR	()[B
     //   151: astore_2
     //   152: aload_1
     //   153: ldc_w 262
@@ -287,12 +287,12 @@ class f
     //   197	209	223	java/lang/Exception
   }
   
-  public e iVp()
+  public e kJN()
   {
-    return this.abLJ;
+    return this.ajYC;
   }
   
-  public String iVq()
+  public String kJO()
   {
     AppMethodBeat.i(40526);
     String str = this.url.replaceAll("\\?.*", "").replace("\\:\\d{4}", "");
@@ -300,14 +300,14 @@ class f
     return str;
   }
   
-  public void pH(String paramString1, String paramString2)
+  public void rL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40524);
-    this.abLI.abLG.add(new d(paramString1, paramString2));
+    this.ajYB.ajYz.add(new d(paramString1, paramString2));
     AppMethodBeat.o(40524);
   }
   
-  public void pI(String paramString1, String paramString2)
+  public void rM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40523);
     this.headers.put(paramString1, paramString2);
@@ -317,14 +317,14 @@ class f
   public String toString()
   {
     AppMethodBeat.i(40529);
-    String str = String.format("@Request(%s %s)", new Object[] { iVl(), getUrl() });
+    String str = String.format("@Request(%s %s)", new Object[] { kJJ(), getUrl() });
     AppMethodBeat.o(40529);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.b.d.f
  * JD-Core Version:    0.7.0.1
  */

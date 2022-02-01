@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/hw" android:paddingRight="@dimen/hs" style="@style/rj"
+<FrameLayout android:id="@id/hjs" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/gyy" android:background="@drawable/t7" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.base.MMAutoCompleteTextView android:id="@id/gyx" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/fxt" android:dropDownSelector="#00000000" android:popupBackground="@null" android:inputType="textEmailAddress" style="@style/nn" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/aij" android:paddingLeft="@dimen/ir" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/fxs" android:singleLine="false" style="@style/nn" />
-    </FrameLayout>
-    <FrameLayout android:background="@drawable/t7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hv">
-        <com.tencent.mm.ui.base.MMClearEditText android:id="@id/gz4" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/fy5" style="@style/nm" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/aij" android:paddingLeft="10.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/fy4" android:singleLine="false" android:imeOptions="actionNext" style="@style/nn" />
-    </FrameLayout>
-    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/hv" style="@style/nl">
-        <CheckBox android:textSize="13.0dip" android:textColor="@color/a2x" android:id="@id/i_" android:paddingLeft="25.0dip" android:checked="true" android:text="@string/ee1" style="@style/t0" />
-        <Button android:textSize="13.0dip" android:id="@id/i9" android:paddingLeft="5.0dip" android:paddingRight="0.0dip" android:paddingBottom="5.0dip" android:text="@string/ee3" style="@style/t1" />
+    <include android:layout_width="@dimen/amb" android:layout_height="@dimen/ama" layout="@layout/bm9" />
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/amb">
+        <LinearLayout android:orientation="horizontal" android:id="@id/hjz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ama">
+            <FrameLayout android:id="@id/hjy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_weight="1.0" android:layout_marginEnd="8.0dip" />
+            <FrameLayout android:id="@id/iu8" android:paddingTop="@dimen/amf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="8.0dip">
+                <ViewStub android:layout_gravity="end|center|top" android:id="@id/kkt" android:visibility="gone" android:layout="@layout/bmd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ViewStub android:layout_gravity="end|center|top" android:id="@id/bcw" android:visibility="gone" android:layout="@layout/bmc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textAppearance="@style/wa" android:layout_gravity="end|bottom|center" android:id="@id/f6y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:singleLine="true" />
+            </FrameLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/e8" android:background="#29000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/g1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="-8.0dip" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

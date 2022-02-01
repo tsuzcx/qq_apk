@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.hld.model;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hld.WxHldService;
 import com.tencent.mm.plugin.hld.f.f;
-import com.tencent.mm.protocal.protobuf.cli;
-import com.tencent.mm.protocal.protobuf.clm;
-import com.tencent.mm.protocal.protobuf.clo;
+import com.tencent.mm.plugin.hld.f.l;
+import com.tencent.mm.protocal.protobuf.dbq;
+import com.tencent.mm.protocal.protobuf.dbu;
+import com.tencent.mm.protocal.protobuf.dbw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import com.tencent.wxhld.WxhldApi;
 import com.tencent.wxhld.WxhldApi.WxhldEventListener;
 import com.tencent.wxhld.WxhldApi.WxhldLoginStatusListener;
@@ -28,1600 +28,1501 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.r;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/model/WxEngineMgr;", "Lcom/tencent/wxhld/WxhldApi$WxhldEventListener;", "Lcom/tencent/wxhld/WxhldApi$WxhldLoginStatusListener;", "()V", "TAG", "", "TAG_CANDIDATE", "lastImeKeyParam", "Lcom/tencent/mm/plugin/hld/api/ImeKeyParam;", "mCandidateIterator", "", "mCandidateList", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Candidate;", "Lkotlin/collections/ArrayList;", "mCandidateType", "", "mContext", "Landroid/content/Context;", "mCurrentKeyboardType", "mHasMoreCandidate", "", "mICandidateDataListeners", "Lcom/tencent/mm/plugin/hld/candidate/ICandidateDataListener;", "mIPendingInputDataListeners", "Lcom/tencent/mm/plugin/hld/candidate/IPendingInputDataListener;", "mISyllableListDataListeners", "Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "mInitializeNetworkSuccess", "mInitializeSuccess", "mInitializeWait", "mPendingInputContent", "", "mPendingInputCurSorIndex", "mSession", "mSyllables", "Lcom/tencent/wxhld/info/Syllable;", "needReInitDict", "needReInitEngine", "OnCandidateListUpdate", "", "session_id", "new_iterator", "type", "OnCandidateSelected", "OnEmitInputToScreen", "text", "OnLoginComplete", "errCode", "OnLogouted", "OnPendingInputUpdate", "pending_input", "OnPendingInputUpdateV2", "pendingInputs", "", "Lcom/tencent/wxhld/info/PendingInput;", "(J[Lcom/tencent/wxhld/info/PendingInput;)V", "OnSessionExpired", "OnSyllableListUpdate", "syllables", "(J[Lcom/tencent/wxhld/info/Syllable;)V", "addICandidateDataListener", "listener", "addIPendingInputDataListener", "addISyllableListDataListener", "candidateGetOnce", "iterator", "clearUserDictPath", "createSession", "destroySession", "doThirdAppSimpleAuth", "dropLastChar", "fetchMoreCandidateList", "finalize1", "getCommonSymbols", "()[Ljava/lang/String;", "getCurrentKeyboardType", "getEngineCommitTime", "getEngineVersion", "getFirstCandidate", "getOriEngineVersion", "getPendingInput", "getPendingInputCursorIndex", "getSecondClassSymbols", "getThirdClassSymbols", "initializeEngine", "context", "initializeEngineImp", "dictInfos", "Lcom/tencent/wxhld/info/DictInfo;", "([Lcom/tencent/wxhld/info/DictInfo;)V", "initializeEngineNetWorkImp", "authCode", "", "sessionType", "initializeEngineNullNetWorkImp", "isCandidateNull", "isInitializeSuccess", "isLoginStatusOk", "isNeedReInitDict", "isNoSession", "isPendingInputNull", "loadContactData", "contacts", "([Ljava/lang/String;)Z", "loadUserDict", "path", "onSelectCandidate", "id", "suffix", "fromCandidateArea", "pressTime", "forceResetInput", "onSelectPinyin", "syllable", "onWindowHidden", "removeICandidateDataListener", "removeIPendingInputDataListener", "removeISyllableListDataListener", "reportNoTransEngineStr", "reset", "resetCursorIndex", "resetInput", "resetNeedReInitDict", "resetNeedReInitEngine", "setCursorIndex", "cursorIndex", "setNeedReInitDict", "reInit", "setNeedReInitEngine", "setSingleWord", "single", "setTextAroundCursor", "transToEngine", "processType", "Lcom/tencent/mm/plugin/hld/model/ImeProcessInputType;", "keyParam", "triggerAssociate", "plugin-hld_release"})
-@SuppressLint({"StaticFieldLeak"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/model/WxEngineMgr;", "Lcom/tencent/wxhld/WxhldApi$WxhldEventListener;", "Lcom/tencent/wxhld/WxhldApi$WxhldLoginStatusListener;", "()V", "TAG", "", "TAG_CANDIDATE", "lastImeKeyParam", "Lcom/tencent/mm/plugin/hld/api/ImeKeyParam;", "mCandidateIterator", "", "mCandidateList", "Ljava/util/ArrayList;", "Lcom/tencent/wxhld/info/Candidate;", "Lkotlin/collections/ArrayList;", "mCandidateType", "", "mContext", "Landroid/content/Context;", "mCurrentKeyboardType", "mHasMoreCandidate", "", "mICandidateDataListeners", "Lcom/tencent/mm/plugin/hld/candidate/ICandidateDataListener;", "mIPendingInputDataListeners", "Lcom/tencent/mm/plugin/hld/candidate/IPendingInputDataListener;", "mISyllableListDataListeners", "Lcom/tencent/mm/plugin/hld/alternative/ISyllableListDataListener;", "mInitializeNetworkSuccess", "mInitializeSuccess", "mInitializeWait", "mPendingInputContent", "", "mPendingInputCurSorIndex", "mSession", "mSyllables", "Lcom/tencent/wxhld/info/Syllable;", "needReInitDict", "needReInitEngine", "OnCandidateListUpdate", "", "session_id", "new_iterator", "type", "OnCandidateSelected", "OnEmitInputToScreen", "text", "OnLoginComplete", "errCode", "OnLogouted", "OnPendingInputUpdate", "pending_input", "OnPendingInputUpdateV2", "pendingInputs", "", "Lcom/tencent/wxhld/info/PendingInput;", "(J[Lcom/tencent/wxhld/info/PendingInput;)V", "OnSessionExpired", "OnSyllableListUpdate", "syllables", "(J[Lcom/tencent/wxhld/info/Syllable;)V", "addICandidateDataListener", "listener", "addIPendingInputDataListener", "addISyllableListDataListener", "candidateGetOnce", "iterator", "clearUserDictPath", "createSession", "destroySession", "doThirdAppSimpleAuth", "dropLastChar", "fetchMoreCandidateList", "finalize1", "getCommonSymbols", "()[Ljava/lang/String;", "getCurrentKeyboardType", "getEngineCommitTime", "getEngineVersion", "getFirstCandidate", "getOriEngineVersion", "getPendingInput", "getPendingInputCursorIndex", "getSecondClassSymbols", "getThirdClassSymbols", "initializeEngine", "context", "initializeEngineImp", "dictInfos", "Lcom/tencent/wxhld/info/DictInfo;", "([Lcom/tencent/wxhld/info/DictInfo;)V", "initializeEngineNetWorkImp", "authCode", "", "sessionType", "initializeEngineNullNetWorkImp", "isCandidateNull", "isInitializeSuccess", "isLoginStatusOk", "isNeedReInitDict", "isNoSession", "isPendingInputNull", "loadContactData", "contacts", "([Ljava/lang/String;)Z", "loadUserDict", "path", "onSelectCandidate", "id", "suffix", "fromCandidateArea", "pressTime", "forceResetInput", "onSelectPinyin", "syllable", "onWindowHidden", "removeICandidateDataListener", "removeIPendingInputDataListener", "removeISyllableListDataListener", "reportNoTransEngineStr", "reset", "resetCursorIndex", "resetInput", "resetNeedReInitDict", "resetNeedReInitEngine", "setCursorIndex", "cursorIndex", "setNeedReInitDict", "reInit", "setNeedReInitEngine", "setSingleWord", "single", "setTextAroundCursor", "transToEngine", "processType", "Lcom/tencent/mm/plugin/hld/model/ImeProcessInputType;", "keyParam", "triggerAssociate", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
   implements WxhldApi.WxhldEventListener, WxhldApi.WxhldLoginStatusListener
 {
-  public static long DDY;
-  private static final ArrayList<com.tencent.mm.plugin.hld.candidate.a> DDZ;
-  private static ArrayList<com.tencent.mm.plugin.hld.candidate.b> DEa;
-  private static ArrayList<com.tencent.mm.plugin.hld.alternative.a> DEb;
-  private static CharSequence DEc;
-  private static int DEd;
-  private static final ArrayList<Candidate> DEe;
-  private static long DEf;
-  private static boolean DEg;
-  private static int DEh;
-  static volatile boolean DEi;
-  private static boolean DEj;
-  private static boolean DEk;
-  public static boolean DEl;
-  private static int DEm;
-  public static final n DEn;
-  private static final ArrayList<Syllable> DtM;
-  static boolean Dva;
-  private static com.tencent.mm.plugin.hld.a.g DxI;
-  static Context mContext;
+  private static final ArrayList<Syllable> Jno;
+  private static boolean Jox;
+  private static com.tencent.mm.plugin.hld.a.g JqO;
+  public static final n JvW;
+  public static long JvX;
+  private static final ArrayList<com.tencent.mm.plugin.hld.candidate.a> JvY;
+  private static ArrayList<com.tencent.mm.plugin.hld.candidate.b> JvZ;
+  private static ArrayList<com.tencent.mm.plugin.hld.alternative.a> Jwa;
+  private static CharSequence Jwb;
+  private static int Jwc;
+  private static final ArrayList<Candidate> Jwd;
+  private static long Jwe;
+  private static boolean Jwf;
+  private static int Jwg;
+  private static volatile boolean Jwh;
+  private static boolean Jwi;
+  private static boolean Jwj;
+  public static boolean Jwk;
+  private static int Jwl;
+  private static Context mContext;
   
   static
   {
-    AppMethodBeat.i(216951);
-    DEn = new n();
-    DDZ = new ArrayList();
-    DEa = new ArrayList();
-    DEb = new ArrayList();
-    DEc = (CharSequence)"";
-    DEe = new ArrayList();
-    DEh = 1;
-    DtM = new ArrayList();
-    AppMethodBeat.o(216951);
+    AppMethodBeat.i(312374);
+    JvW = new n();
+    JvY = new ArrayList();
+    JvZ = new ArrayList();
+    Jwa = new ArrayList();
+    Jwb = (CharSequence)"";
+    Jwd = new ArrayList();
+    Jwg = 1;
+    Jno = new ArrayList();
+    AppMethodBeat.o(312374);
   }
   
-  public static boolean K(String[] paramArrayOfString)
+  private static final void O(long paramLong, String paramString)
   {
-    AppMethodBeat.i(216940);
-    p.k(paramArrayOfString, "contacts");
-    if (!Dva)
+    AppMethodBeat.i(312345);
+    Object localObject = k.JvH;
+    k.aL(paramLong, System.currentTimeMillis() - paramLong);
+    localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    if (localObject != null)
     {
-      Log.i("WxIme.WxEngineMgr", "loadUContactData mInitializeNetworkSuccess:" + DEj);
-      AppMethodBeat.o(216940);
-      return false;
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.hld.a.b)localObject).c((CharSequence)paramString, true);
+      }
     }
-    long l = System.currentTimeMillis();
-    WxhldApi.refresh_local_contacts(paramArrayOfString);
-    paramArrayOfString = k.DDb;
-    k.NX(System.currentTimeMillis() - l);
-    AppMethodBeat.o(216940);
-    return true;
+    AppMethodBeat.o(312345);
+  }
+  
+  private static final void X(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(312268);
+    s.u(paramArrayOfByte, "$authCode");
+    Log.i("WxIme.WxEngineMgr", "initializeEngineNetWorkImp authCode:" + paramArrayOfByte.length + " sessionType:" + paramInt);
+    NetworkInfo localNetworkInfo = new NetworkInfo(paramArrayOfByte.length);
+    localNetworkInfo.authCode = paramArrayOfByte;
+    localNetworkInfo.sessionType = paramInt;
+    localNetworkInfo.lkid = com.tencent.mm.plugin.normsg.a.d.MtP.gtL();
+    localNetworkInfo.useDefaultDebugIp = false;
+    WxhldApi.network_login(localNetworkInfo);
+    AppMethodBeat.o(312268);
+  }
+  
+  private static final void a(long paramLong1, long paramLong2, String paramString)
+  {
+    AppMethodBeat.i(312304);
+    s.u(paramString, "$text");
+    Object localObject = k.JvH;
+    k.aL(paramLong1, System.currentTimeMillis() - paramLong2);
+    localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.hld.a.b)localObject).c((CharSequence)paramString, true);
+      }
+    }
+    AppMethodBeat.o(312304);
+  }
+  
+  private static final void a(long paramLong1, long paramLong2, String paramString1, boolean paramBoolean, String paramString2, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(312295);
+    s.u(paramString1, "$text");
+    s.u(paramCharSequence, "$lastPendingInput");
+    Object localObject = k.JvH;
+    k.aK(paramLong1, System.currentTimeMillis() - paramLong2);
+    localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    StringBuilder localStringBuilder;
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if (localObject != null)
+      {
+        localStringBuilder = new StringBuilder().append(paramString1);
+        if (!paramBoolean) {
+          break label145;
+        }
+      }
+    }
+    label145:
+    for (paramString1 = " ";; paramString1 = "")
+    {
+      localStringBuilder = localStringBuilder.append(paramString1);
+      paramString1 = paramString2;
+      if (Util.isNullOrNil(paramString2)) {
+        paramString1 = "";
+      }
+      ((com.tencent.mm.plugin.hld.a.b)localObject).a((CharSequence)paramString1, paramCharSequence);
+      AppMethodBeat.o(312295);
+      return;
+    }
+  }
+  
+  private static final void a(long paramLong1, long paramLong2, ArrayList paramArrayList, int paramInt)
+  {
+    AppMethodBeat.i(312313);
+    s.u(paramArrayList, "$candidates");
+    Log.d("WxIme.WxEngineMgr", s.X("OnCandidateListUpdate size:", Integer.valueOf(JvY.size())));
+    k localk = k.JvH;
+    k.n(paramLong1, System.currentTimeMillis() - paramLong1 - paramLong2, paramLong2);
+    Jwd.clear();
+    Jwd.addAll((Collection)paramArrayList);
+    Jwg = paramInt;
+    paramArrayList = JvY.iterator();
+    while (paramArrayList.hasNext()) {
+      ((com.tencent.mm.plugin.hld.candidate.a)paramArrayList.next()).a(Jwd, Jwg, true, Jwf);
+    }
+    AppMethodBeat.o(312313);
   }
   
   public static void a(com.tencent.mm.plugin.hld.alternative.a parama)
   {
-    AppMethodBeat.i(216913);
-    p.k(parama, "listener");
-    if (!DEb.contains(parama))
+    AppMethodBeat.i(312118);
+    s.u(parama, "listener");
+    if (!Jwa.contains(parama))
     {
-      DEb.add(parama);
-      parama.aB(DtM);
+      Jwa.add(parama);
+      parama.aQ(Jno);
     }
-    AppMethodBeat.o(216913);
+    AppMethodBeat.o(312118);
   }
   
   public static void a(com.tencent.mm.plugin.hld.candidate.a parama)
   {
-    AppMethodBeat.i(216906);
-    p.k(parama, "listener");
-    if (!DDZ.contains(parama))
+    AppMethodBeat.i(312092);
+    s.u(parama, "listener");
+    if (!JvY.contains(parama))
     {
-      DDZ.add(parama);
-      parama.a(DEe, DEh, true, DEg);
+      JvY.add(parama);
+      parama.a(Jwd, Jwg, true, Jwf);
     }
-    AppMethodBeat.o(216906);
+    AppMethodBeat.o(312092);
   }
   
   public static void a(com.tencent.mm.plugin.hld.candidate.b paramb)
   {
-    AppMethodBeat.i(216910);
-    p.k(paramb, "listener");
-    if (!DEa.contains(paramb)) {
-      DEa.add(paramb);
+    AppMethodBeat.i(312108);
+    s.u(paramb, "listener");
+    if (!JvZ.contains(paramb)) {
+      JvZ.add(paramb);
     }
-    AppMethodBeat.o(216910);
+    AppMethodBeat.o(312108);
   }
   
   public static void a(h paramh, com.tencent.mm.plugin.hld.a.g paramg)
   {
-    AppMethodBeat.i(216903);
-    p.k(paramh, "processType");
-    Log.i("WxIme.WxEngineMgr", "transToEngine " + paramh.value);
-    if (paramg != null)
+    Object localObject = null;
+    String str = null;
+    AppMethodBeat.i(312076);
+    s.u(paramh, "processType");
+    Log.i("WxIme.WxEngineMgr", s.X("transToEngine ", paramh.value));
+    if (paramg == null) {}
+    for (paramh = str;; paramh = ah.aiuX)
     {
-      Object localObject = paramg.text;
-      if (localObject != null)
+      if (paramh == null) {
+        Log.e("WxIme.WxEngineMgr", "transToEngine keyParam is null");
+      }
+      AppMethodBeat.o(312076);
+      return;
+      str = paramg.text;
+      if (str != null) {
+        break;
+      }
+      paramh = (h)localObject;
+      if (paramh == null) {
+        Log.e("WxIme.WxEngineMgr", "transToEngine text is null");
+      }
+    }
+    if (fNa())
+    {
+      if (paramh == h.Jvz)
       {
-        if (eEX())
-        {
-          if (paramh == h.DCQ)
-          {
-            paramh = com.tencent.mm.plugin.hld.f.l.DHK;
-            paramh = mContext;
-            if (paramh == null) {
-              p.iCn();
-            }
-            com.tencent.mm.plugin.hld.f.l.hb(paramh);
-          }
-          AppMethodBeat.o(216903);
-          return;
-        }
-        if (DxI == null)
-        {
-          int i = eEM().length();
-          if (((String)localObject).length() + i > 60)
-          {
-            Log.w("WxIme.WxEngineMgr", "transToEngine exceed limit num");
-            AppMethodBeat.o(216903);
-            return;
-          }
-        }
-        switch (o.$EnumSwitchMapping$0[paramh.ordinal()])
-        {
-        }
-        for (;;)
-        {
-          long l = DDY;
-          localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-          WxhldApi.process_input(l, com.tencent.mm.plugin.hld.f.l.b(paramh, paramg));
-          AppMethodBeat.o(216903);
-          return;
-          DxI = paramg;
-          continue;
-          DxI = null;
-          continue;
-          DxI = null;
-          localObject = g.DCm;
-          if (g.eEh())
-          {
-            localObject = com.tencent.mm.plugin.hld.f.l.DHK;
-            if ((com.tencent.mm.plugin.hld.f.l.eGY()) && (!eEE())) {
-              DEn.eEO();
-            }
-          }
-          localObject = k.DDb;
-          k.X(paramg.Dui, paramg.keyType);
+        paramh = l.JyV;
+        paramh = mContext;
+        s.checkNotNull(paramh);
+        l.iw(paramh);
+      }
+      AppMethodBeat.o(312076);
+      return;
+    }
+    if (JqO == null)
+    {
+      int i = fMP().length();
+      if (str.length() + i > 60)
+      {
+        Log.w("WxIme.WxEngineMgr", "transToEngine exceed limit num");
+        AppMethodBeat.o(312076);
+        return;
+      }
+    }
+    switch (a.$EnumSwitchMapping$0[paramh.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      long l = JvX;
+      localObject = l.JyV;
+      WxhldApi.process_input(l, l.b(paramh, paramg));
+      paramh = ah.aiuX;
+      break;
+      JqO = paramg;
+      continue;
+      JqO = null;
+      continue;
+      JqO = null;
+      localObject = g.JuL;
+      if (g.fMj())
+      {
+        localObject = l.JyV;
+        if ((l.fOH()) && (!fMH())) {
+          JvW.fMR();
         }
       }
-      Log.e("WxIme.WxEngineMgr", "transToEngine text is null");
-      AppMethodBeat.o(216903);
-      return;
+      localObject = k.JvH;
+      k.an(paramg.JnG, paramg.keyType);
     }
-    Log.e("WxIme.WxEngineMgr", "transToEngine keyParam is null");
-    AppMethodBeat.o(216903);
   }
   
-  public static void aLz(String paramString)
+  private static final void a(DictInfo[] paramArrayOfDictInfo, n paramn)
   {
-    AppMethodBeat.i(216926);
-    p.k(paramString, "text");
-    Log.d("WxIme.WxEngineMgr", "reportNoTransEngineStr");
-    g localg = g.DCm;
-    if (g.b(com.tencent.mm.plugin.hld.keyboard.c.Dyr))
+    AppMethodBeat.i(312260);
+    s.u(paramn, "this$0");
+    long l2 = System.currentTimeMillis();
+    Object localObject = com.tencent.mm.plugin.hld.f.i.JyA;
+    boolean bool = com.tencent.mm.plugin.hld.f.i.fOo();
+    Log.i("WxIme.WxEngineMgr", "wxIme start initialize(isSafetyMode:" + bool + ')');
+    if (paramArrayOfDictInfo != null)
     {
-      paramString = g.DCm;
-      g.eEi();
-      AppMethodBeat.o(216926);
+      com.tencent.mm.plugin.hld.model.a.a.JwD.startMonitor();
+      WxhldApi.getInstance().init(mContext);
+      localObject = com.tencent.mm.plugin.hld.f.e.Jym;
+      WxhldApi.set_debug_console_log(com.tencent.mm.plugin.hld.f.e.fNY());
+      long l3 = System.currentTimeMillis();
+      localObject = l.JyV;
+      localObject = s.X(l.fOC(), "/net");
+      if (!y.ZC((String)localObject)) {
+        y.bDX((String)localObject);
+      }
+      WxhldApi.init_network((String)localObject);
+      long l4 = System.currentTimeMillis();
+      long l1 = 0L;
+      localObject = f.Jyn;
+      Log.i("WxIme.WxEngineMgr", s.X("initializeEngineImp ", f.fOi()));
+      long l5 = System.currentTimeMillis();
+      localObject = f.Jyn;
+      WxhldApi.config_dict(paramArrayOfDictInfo, f.fOi());
+      long l6 = System.currentTimeMillis();
+      paramArrayOfDictInfo = f.Jyn;
+      paramArrayOfDictInfo = f.fOf();
+      if (paramArrayOfDictInfo != null)
+      {
+        l1 = System.currentTimeMillis();
+        int j = paramArrayOfDictInfo.length;
+        i = 0;
+        if (i < j)
+        {
+          localObject = paramArrayOfDictInfo[i];
+          if (localObject != null)
+          {
+            if (!y.ZC(((DictInfo)localObject).path)) {
+              break label245;
+            }
+            WxhldApi.add_cell_dict(((DictInfo)localObject).path, ((DictInfo)localObject).id);
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            label245:
+            Log.i("WxIme.WxEngineMgr", "add_cell_dict " + ((DictInfo)localObject).path + ' ' + ((DictInfo)localObject).id + " no exist");
+          }
+        }
+        l1 = System.currentTimeMillis() - l1;
+      }
+      WxhldApi.getInstance().SetWxhldLoginStatusListener((WxhldApi.WxhldLoginStatusListener)paramn);
+      paramArrayOfDictInfo = new InitInfo();
+      localObject = l.JyV;
+      localObject = s.X(l.fOC(), "/engine");
+      if (!y.ZC((String)localObject)) {
+        y.bDX((String)localObject);
+      }
+      paramArrayOfDictInfo.workDir = ((String)localObject);
+      paramArrayOfDictInfo.safeMode = bool;
+      long l7 = System.currentTimeMillis();
+      WxhldApi.initialize(paramArrayOfDictInfo);
+      long l8 = System.currentTimeMillis();
+      WxhldApi.getInstance().SetWxhldEventListener((WxhldApi.WxhldEventListener)paramn);
+      Jox = true;
+      Jwk = false;
+      paramArrayOfDictInfo = com.tencent.mm.plugin.hld.c.a.JoL;
+      com.tencent.mm.plugin.hld.c.a.fKX();
+      paramArrayOfDictInfo = l.JyV;
+      if (l.bGa())
+      {
+        paramArrayOfDictInfo = com.tencent.mm.plugin.hld.f.c.Jyj;
+        com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda8(new byte[0], 0));
+      }
+      com.tencent.mm.plugin.hld.model.a.a.JwD.fNl();
+      Log.i("WxIme.WxEngineMgr", "wxIme initialize successfully!，" + (System.currentTimeMillis() - l2) + ' ');
+      fMI();
+      fMG();
+      paramArrayOfDictInfo = k.JvH;
+      k.c(l8 - l7, l6 - l5, l1, l4 - l3);
+      paramArrayOfDictInfo = g.JuL;
+      paramn = g.Jvd;
+      if ((paramn != null) && (paramn.getVisibility() == 0)) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          paramArrayOfDictInfo.fLY();
+        }
+        AppMethodBeat.o(312260);
+        return;
+      }
+    }
+    Jwh = true;
+    paramArrayOfDictInfo = l.JyV;
+    l.fOR();
+    g.JuL.fLY();
+    Log.e("WxIme.WxEngineMgr", "cloud dict is null，" + (System.currentTimeMillis() - l2) + ' ');
+    AppMethodBeat.o(312260);
+  }
+  
+  private static final void a(PendingInput[] paramArrayOfPendingInput, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(312352);
+    s.u(paramCharSequence, "$lastPendingInputContent");
+    Iterator localIterator = JvZ.iterator();
+    while (localIterator.hasNext()) {
+      ((com.tencent.mm.plugin.hld.candidate.b)localIterator.next()).a(paramArrayOfPendingInput, paramCharSequence, Jwc);
+    }
+    if (fMH()) {
+      fMT();
+    }
+    AppMethodBeat.o(312352);
+  }
+  
+  private static final void a(Syllable[] paramArrayOfSyllable)
+  {
+    AppMethodBeat.i(312356);
+    Jno.clear();
+    if (paramArrayOfSyllable != null) {
+      p.a((Collection)Jno, paramArrayOfSyllable);
+    }
+    paramArrayOfSyllable = Jwa.iterator();
+    while (paramArrayOfSyllable.hasNext()) {
+      ((com.tencent.mm.plugin.hld.alternative.a)paramArrayOfSyllable.next()).aQ(Jno);
+    }
+    AppMethodBeat.o(312356);
+  }
+  
+  public static void aIq(String paramString)
+  {
+    AppMethodBeat.i(312154);
+    s.u(paramString, "text");
+    Log.d("WxIme.WxEngineMgr", "reportNoTransEngineStr");
+    g localg = g.JuL;
+    if (g.b(com.tencent.mm.plugin.hld.keyboard.c.Jrv))
+    {
+      paramString = g.JuL;
+      g.fMk();
+      AppMethodBeat.o(312154);
       return;
     }
-    com.tencent.e.h.ZvG.be((Runnable)new l(paramString));
-    AppMethodBeat.o(216926);
+    com.tencent.threadpool.h.ahAA.bm(new n..ExternalSyntheticLambda6(paramString));
+    AppMethodBeat.o(312154);
+  }
+  
+  private static final void aIr(String paramString)
+  {
+    AppMethodBeat.i(312367);
+    s.u(paramString, "$text");
+    PunctToScreenEvent localPunctToScreenEvent = new PunctToScreenEvent();
+    localPunctToScreenEvent.input = paramString;
+    localPunctToScreenEvent.currentSessionId = JvX;
+    paramString = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    if (paramString != null)
+    {
+      paramString = paramString.fKG();
+      if (paramString != null)
+      {
+        com.tencent.mm.plugin.hld.a.e locale = paramString.Yk(50);
+        if (locale != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder("reportNoTransEngineStr before:");
+          paramString = locale.JnB;
+          if (paramString != null) {
+            break label191;
+          }
+          paramString = "";
+          localStringBuilder = localStringBuilder.append(Util.secPrint(paramString)).append(" after:");
+          paramString = locale.JnD;
+          if (paramString != null) {
+            break label209;
+          }
+          paramString = "";
+          label126:
+          Log.d("WxIme.WxEngineMgr", Util.secPrint(paramString));
+          paramString = locale.JnB;
+          if (paramString != null) {
+            break label227;
+          }
+          paramString = "";
+          label157:
+          localPunctToScreenEvent.textBeforeCursor = paramString;
+          paramString = locale.JnD;
+          if (paramString != null) {
+            break label245;
+          }
+          paramString = "";
+        }
+      }
+    }
+    for (;;)
+    {
+      localPunctToScreenEvent.textAfterCursor = paramString;
+      WxhldApi.report_punct_input_to_screen(localPunctToScreenEvent);
+      AppMethodBeat.o(312367);
+      return;
+      label191:
+      String str = paramString.toString();
+      paramString = str;
+      if (str != null) {
+        break;
+      }
+      paramString = "";
+      break;
+      label209:
+      str = paramString.toString();
+      paramString = str;
+      if (str != null) {
+        break label126;
+      }
+      paramString = "";
+      break label126;
+      label227:
+      str = paramString.toString();
+      paramString = str;
+      if (str != null) {
+        break label157;
+      }
+      paramString = "";
+      break label157;
+      label245:
+      str = paramString.toString();
+      paramString = str;
+      if (str == null) {
+        paramString = "";
+      }
+    }
+  }
+  
+  private static final void aR(ArrayList paramArrayList)
+  {
+    AppMethodBeat.i(312329);
+    s.u(paramArrayList, "$candidates");
+    Log.d("WxIme.WxEngineMgr", s.X("OnCandidateListUpdate size:", Integer.valueOf(JvY.size())));
+    Jwd.addAll((Collection)paramArrayList);
+    paramArrayList = JvY.iterator();
+    while (paramArrayList.hasNext()) {
+      ((com.tencent.mm.plugin.hld.candidate.a)paramArrayList.next()).a(Jwd, Jwg, false, Jwf);
+    }
+    AppMethodBeat.o(312329);
   }
   
   public static void b(com.tencent.mm.plugin.hld.alternative.a parama)
   {
-    AppMethodBeat.i(216914);
-    p.k(parama, "listener");
-    DEb.remove(parama);
-    AppMethodBeat.o(216914);
+    AppMethodBeat.i(312122);
+    s.u(parama, "listener");
+    Jwa.remove(parama);
+    AppMethodBeat.o(312122);
   }
   
   public static void b(com.tencent.mm.plugin.hld.candidate.a parama)
   {
-    AppMethodBeat.i(216908);
-    p.k(parama, "listener");
-    DDZ.remove(parama);
-    AppMethodBeat.o(216908);
+    AppMethodBeat.i(312100);
+    s.u(parama, "listener");
+    JvY.remove(parama);
+    AppMethodBeat.o(312100);
   }
   
   public static void b(com.tencent.mm.plugin.hld.candidate.b paramb)
   {
-    AppMethodBeat.i(216911);
-    p.k(paramb, "listener");
-    DEa.remove(paramb);
-    AppMethodBeat.o(216911);
+    AppMethodBeat.i(312113);
+    s.u(paramb, "listener");
+    JvZ.remove(paramb);
+    AppMethodBeat.o(312113);
   }
   
   public static void b(Syllable paramSyllable, long paramLong)
   {
-    AppMethodBeat.i(216902);
-    Log.d("WxIme.WxEngineMgr", "onSelectPinyin ".concat(String.valueOf(paramSyllable)));
+    AppMethodBeat.i(312063);
+    Log.d("WxIme.WxEngineMgr", s.X("onSelectPinyin ", paramSyllable));
     if (paramSyllable == null)
     {
-      WxhldApi.session_set_syllable_hint(DDY, null, 0, "");
-      AppMethodBeat.o(216902);
+      WxhldApi.session_set_syllable_hint(JvX, null, 0, "");
+      AppMethodBeat.o(312063);
       return;
     }
-    k localk = k.DDb;
-    k.X(paramLong, 4);
-    WxhldApi.session_set_syllable_hint(DDY, paramSyllable.id, paramSyllable.id_len, paramSyllable.syllable);
-    AppMethodBeat.o(216902);
+    k localk = k.JvH;
+    k.an(paramLong, 4);
+    WxhldApi.session_set_syllable_hint(JvX, paramSyllable.id, paramSyllable.id_len, paramSyllable.syllable);
+    AppMethodBeat.o(312063);
   }
   
-  public static boolean eEB()
+  public static boolean fMF()
   {
-    return Dva;
+    return Jox;
   }
   
-  private static void eED()
+  private static void fMG()
   {
-    AppMethodBeat.i(216889);
-    com.tencent.e.h.ZvG.bc((Runnable)i.DEy);
-    AppMethodBeat.o(216889);
+    AppMethodBeat.i(311971);
+    com.tencent.threadpool.h.ahAA.bk(n..ExternalSyntheticLambda14.INSTANCE);
+    AppMethodBeat.o(311971);
   }
   
-  public static boolean eEE()
+  public static boolean fMH()
   {
-    AppMethodBeat.i(216891);
-    if (eEX())
+    AppMethodBeat.i(311977);
+    if (fNa())
     {
-      AppMethodBeat.o(216891);
+      AppMethodBeat.o(311977);
       return true;
     }
-    boolean bool = Util.isNullOrNil(DEc);
-    AppMethodBeat.o(216891);
+    boolean bool = Util.isNullOrNil(Jwb);
+    AppMethodBeat.o(311977);
     return bool;
   }
   
-  public static void eEF()
+  public static void fMI()
   {
+    Object localObject1 = null;
     boolean bool = true;
-    AppMethodBeat.i(216895);
-    Object localObject1 = new SessionConfig();
-    Object localObject2 = g.DCm;
-    int j = g.eEg();
-    ((SessionConfig)localObject1).enable_auto_most_likely = true;
-    localObject2 = com.tencent.mm.plugin.hld.f.e.DGW;
-    ((SessionConfig)localObject1).enable_pre_input = com.tencent.mm.plugin.hld.f.e.eGn();
-    localObject2 = com.tencent.mm.plugin.hld.f.i.DHq;
-    ((SessionConfig)localObject1).safe_mode = com.tencent.mm.plugin.hld.f.i.eGC();
-    int i;
-    if (j == com.tencent.mm.plugin.hld.keyboard.c.Dyl.ordinal()) {
-      i = 1;
-    }
-    for (;;)
+    AppMethodBeat.i(311998);
+    SessionConfig localSessionConfig = new SessionConfig();
+    Object localObject2 = g.JuL;
+    int j = g.fMi();
+    localSessionConfig.enable_auto_most_likely = true;
+    localObject2 = com.tencent.mm.plugin.hld.f.e.Jym;
+    localSessionConfig.enable_pre_input = com.tencent.mm.plugin.hld.f.e.fNZ();
+    localObject2 = com.tencent.mm.plugin.hld.f.i.JyA;
+    localSessionConfig.safe_mode = com.tencent.mm.plugin.hld.f.i.fOo();
+    if (j == com.tencent.mm.plugin.hld.keyboard.c.Jrp.ordinal())
     {
-      ((SessionConfig)localObject1).key_board_type = i;
-      DEm = ((SessionConfig)localObject1).key_board_type;
-      localObject2 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject2 != null)
+      i = 1;
+      localSessionConfig.key_board_type = i;
+      Jwl = localSessionConfig.key_board_type;
+      localObject2 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+      if (localObject2 == null) {
+        break label549;
+      }
+      localObject2 = ((com.tencent.mm.plugin.hld.a.d)localObject2).fKG();
+      if ((localObject2 == null) || (((com.tencent.mm.plugin.hld.a.b)localObject2).fKy() != true)) {
+        break label549;
+      }
+    }
+    label549:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        localSessionConfig.use_wechat_internal_emoji = true;
+      }
+      localSessionConfig.enable_shift_key_correction = false;
+      localObject2 = com.tencent.mm.plugin.hld.f.e.Jym;
+      if (!com.tencent.mm.plugin.hld.f.e.fNQ())
       {
-        localObject2 = ((com.tencent.mm.plugin.hld.a.d)localObject2).eCD();
-        if ((localObject2 != null) && (((com.tencent.mm.plugin.hld.a.b)localObject2).eCv() == true)) {
-          ((SessionConfig)localObject1).use_wechat_internal_emoji = true;
+        localObject2 = com.tencent.mm.plugin.hld.f.e.Jym;
+        localSessionConfig.enable_exchange = com.tencent.mm.plugin.hld.f.e.fNR();
+        localObject2 = com.tencent.mm.plugin.hld.f.e.Jym;
+        localSessionConfig.enable_insert_at_middle = com.tencent.mm.plugin.hld.f.e.fNS();
+        localObject2 = com.tencent.mm.plugin.hld.f.e.Jym;
+        localSessionConfig.enable_skip = com.tencent.mm.plugin.hld.f.e.fNT();
+      }
+      localObject2 = com.tencent.mm.plugin.hld.f.e.Jym;
+      if (!com.tencent.mm.plugin.hld.f.e.fNU())
+      {
+        localSessionConfig.enable_nl = false;
+        localSessionConfig.enable_rl = false;
+        localSessionConfig.enable_hf = false;
+        localSessionConfig.enable_gk = false;
+        localSessionConfig.enable_ang = false;
+        localSessionConfig.enable_iang = false;
+        localSessionConfig.enable_uang = false;
+        localSessionConfig.enable_retroflex = false;
+        localSessionConfig.enable_hui_fei = false;
+        localSessionConfig.enable_eng = false;
+        localSessionConfig.enable_ing = false;
+        localSessionConfig.enable_ong = false;
+        localSessionConfig.enable_huang_wang = false;
+        localSessionConfig.enable_un_ong = false;
+        localSessionConfig.enable_un_iong = false;
+        localSessionConfig.enable_an_ai = false;
+        localSessionConfig.enable_eng_ong = false;
+      }
+      localObject2 = g.JuL;
+      if (g.b(com.tencent.mm.plugin.hld.keyboard.c.Jrp)) {
+        localSessionConfig.enable_keyboard_neighbour = false;
+      }
+      Log.i("WxIme.WxEngineMgr", "createSession " + Jox + ' ' + j);
+      if (Jox)
+      {
+        if (!fNa()) {
+          fMJ();
+        }
+        if (Jwj)
+        {
+          localObject2 = mContext;
+          if (localObject2 != null) {
+            break label554;
+          }
+          localObject1 = null;
+          bool = false;
+          if (localObject1 == null) {
+            Log.e("WxIme.WxEngineMgr", "createSession mContext is null");
+          }
+          Jwj = false;
+          localObject1 = com.tencent.mm.plugin.hld.c.a.JoL;
+          com.tencent.mm.plugin.hld.c.a.fKX();
+          Log.i("WxIme.WxEngineMgr", s.X("use new cloud dicts, reInit:", Boolean.valueOf(bool)));
+        }
+        long l = System.currentTimeMillis();
+        JvX = WxhldApi.create_session(localSessionConfig);
+        localObject1 = k.JvH;
+        k.ao(System.currentTimeMillis() - l, localSessionConfig.key_board_type);
+        fMO();
+        fMT();
+        localObject1 = com.tencent.mm.plugin.hld.f.c.Jyj;
+        if (!Jwi) {
+          fMG();
         }
       }
-      ((SessionConfig)localObject1).enable_shift_key_correction = false;
-      localObject2 = com.tencent.mm.plugin.hld.f.e.DGW;
-      localObject2 = com.tencent.mm.plugin.hld.f.e.DGW;
-      ((SessionConfig)localObject1).enable_nl = false;
-      ((SessionConfig)localObject1).enable_rl = false;
-      ((SessionConfig)localObject1).enable_hf = false;
-      ((SessionConfig)localObject1).enable_gk = false;
-      ((SessionConfig)localObject1).enable_ang = false;
-      ((SessionConfig)localObject1).enable_iang = false;
-      ((SessionConfig)localObject1).enable_uang = false;
-      ((SessionConfig)localObject1).enable_retroflex = false;
-      ((SessionConfig)localObject1).enable_hui_fei = false;
-      ((SessionConfig)localObject1).enable_eng = false;
-      ((SessionConfig)localObject1).enable_ing = false;
-      ((SessionConfig)localObject1).enable_ong = false;
-      ((SessionConfig)localObject1).enable_huang_wang = false;
-      ((SessionConfig)localObject1).enable_un_ong = false;
-      ((SessionConfig)localObject1).enable_un_iong = false;
-      ((SessionConfig)localObject1).enable_an_ai = false;
-      ((SessionConfig)localObject1).enable_eng_ong = false;
-      localObject2 = g.DCm;
-      if (g.b(com.tencent.mm.plugin.hld.keyboard.c.Dyl)) {
-        ((SessionConfig)localObject1).enable_keyboard_neighbour = false;
-      }
-      Log.i("WxIme.WxEngineMgr", "createSession " + Dva + ' ' + j);
-      if (!Dva) {
-        break label565;
-      }
-      if (!eEX()) {
-        eEG();
-      }
-      if (!DEk) {
-        break label512;
-      }
-      localObject2 = mContext;
-      if (localObject2 == null) {
-        break label586;
-      }
-      f localf = f.DGX;
-      localObject2 = f.gS((Context)localObject2);
-      if (localObject2 == null) {
-        break label572;
-      }
-      com.tencent.mm.plugin.hld.model.a.a.DEX.startMonitor();
-      localf = f.DGX;
-      WxhldApi.config_dict((DictInfo[])localObject2, f.eGu());
-      localObject2 = f.DGX;
-      localObject2 = f.eGs();
-      if (localObject2 == null) {
+      AppMethodBeat.o(311998);
+      return;
+      if (j == com.tencent.mm.plugin.hld.keyboard.c.Jrq.ordinal())
+      {
+        i = 0;
         break;
       }
-      j = localObject2.length;
-      i = 0;
-      while (i < j)
-      {
-        localf = localObject2[i];
-        if (localf != null) {
-          WxhldApi.add_cell_dict(localf.path, localf.id);
-        }
-        i += 1;
-      }
-      if (j == com.tencent.mm.plugin.hld.keyboard.c.Dym.ordinal())
-      {
-        i = 0;
-      }
-      else if (j == com.tencent.mm.plugin.hld.keyboard.c.Dyn.ordinal())
+      if (j == com.tencent.mm.plugin.hld.keyboard.c.Jrr.ordinal())
       {
         i = 2;
+        break;
       }
-      else
-      {
-        Log.e("WxIme.WxEngineMgr", "createSession why here? ".concat(String.valueOf(j)));
-        i = 0;
-      }
+      Log.e("WxIme.WxEngineMgr", s.X("createSession why here? ", Integer.valueOf(j)));
+      i = 0;
+      break;
     }
-    com.tencent.mm.plugin.hld.model.a.a.DEX.eFu();
+    label554:
+    f localf = f.Jyn;
+    localObject2 = f.io((Context)localObject2);
+    if (localObject2 == null) {
+      bool = false;
+    }
     for (;;)
     {
-      DEk = false;
-      localObject2 = com.tencent.mm.plugin.hld.c.a.DvH;
-      com.tencent.mm.plugin.hld.c.a.eCW();
-      Log.i("WxIme.WxEngineMgr", "use new cloud dicts, reInit:".concat(String.valueOf(bool)));
-      label512:
-      long l = System.currentTimeMillis();
-      DDY = WxhldApi.create_session((SessionConfig)localObject1);
-      localObject2 = k.DDb;
-      k.Y(System.currentTimeMillis() - l, ((SessionConfig)localObject1).key_board_type);
-      eEL();
-      eEQ();
-      localObject1 = com.tencent.mm.plugin.hld.f.c.DGO;
-      com.tencent.mm.plugin.hld.f.c.eFY();
-      if (!DEj) {
-        eED();
+      if (localObject1 == null) {
+        Log.e("WxIme.WxEngineMgr", "createSession BaseDictInfos is null");
       }
-      label565:
-      AppMethodBeat.o(216895);
-      return;
-      label572:
-      Log.e("WxIme.WxEngineMgr", "createSession BaseDictInfos is null");
-      bool = false;
-      continue;
-      label586:
-      Log.e("WxIme.WxEngineMgr", "createSession mContext is null");
-      bool = false;
-    }
-  }
-  
-  public static void eEG()
-  {
-    AppMethodBeat.i(216896);
-    Log.i("WxIme.WxEngineMgr", "destroySession");
-    if (eEX())
-    {
-      AppMethodBeat.o(216896);
-      return;
-    }
-    WxhldApi.destroy_session(DDY);
-    DDY = 0L;
-    DEc = (CharSequence)"";
-    DEd = 0;
-    DEe.clear();
-    DtM.clear();
-    AppMethodBeat.o(216896);
-  }
-  
-  public static void eEH()
-  {
-    AppMethodBeat.i(216897);
-    Log.i("WxIme.WxEngineMgr", "setNeedReInitDict reInit:true mInitializeWait:" + DEi);
-    DEk = true;
-    if (DEi)
-    {
-      Context localContext = mContext;
-      if (localContext != null)
+      localObject1 = ah.aiuX;
+      break;
+      com.tencent.mm.plugin.hld.model.a.a.JwD.startMonitor();
+      localObject1 = f.Jyn;
+      WxhldApi.config_dict((DictInfo[])localObject2, f.fOi());
+      localObject1 = f.Jyn;
+      localObject1 = f.fOf();
+      if (localObject1 != null)
       {
-        gR(localContext);
-        AppMethodBeat.o(216897);
-        return;
+        j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject2 = localObject1[i];
+          if (localObject2 != null) {
+            WxhldApi.add_cell_dict(((DictInfo)localObject2).path, ((DictInfo)localObject2).id);
+          }
+          i += 1;
+        }
       }
-      Log.e("WxIme.WxEngineMgr", "setNeedReInitDict mContext is null??");
+      com.tencent.mm.plugin.hld.model.a.a.JwD.fNl();
+      localObject1 = ah.aiuX;
     }
-    AppMethodBeat.o(216897);
   }
   
-  public static void eEI()
+  public static void fMJ()
   {
-    DEl = false;
-  }
-  
-  public static void eEJ()
-  {
-    AppMethodBeat.i(216898);
-    Log.i("WxIme.WxEngineMgr", "resetCursorIndex " + DDY + ' ' + eEM().length());
-    if (eEX())
+    AppMethodBeat.i(312007);
+    Log.i("WxIme.WxEngineMgr", "destroySession");
+    if (fNa())
     {
-      AppMethodBeat.o(216898);
+      AppMethodBeat.o(312007);
       return;
     }
-    WxhldApi.session_set_internal_cursor(DDY, 0);
-    AppMethodBeat.o(216898);
+    WxhldApi.destroy_session(JvX);
+    JvX = 0L;
+    Jwb = (CharSequence)"";
+    Jwc = 0;
+    Jwd.clear();
+    Jno.clear();
+    AppMethodBeat.o(312007);
   }
   
-  public static void eEK()
+  public static void fMK()
   {
-    AppMethodBeat.i(216899);
+    AppMethodBeat.i(312011);
+    Log.i("WxIme.WxEngineMgr", "setNeedReInitDict reInit:true mInitializeWait:" + Jwh);
+    Jwj = true;
+    if (Jwh)
+    {
+      localObject = mContext;
+      if (localObject != null) {
+        break label71;
+      }
+    }
+    for (Object localObject = null;; localObject = ah.aiuX)
+    {
+      if (localObject == null) {
+        Log.e("WxIme.WxEngineMgr", "setNeedReInitDict mContext is null??");
+      }
+      AppMethodBeat.o(312011);
+      return;
+      label71:
+      im((Context)localObject);
+    }
+  }
+  
+  public static void fML()
+  {
+    AppMethodBeat.i(312022);
+    Log.i("WxIme.WxEngineMgr", "setNeedReInitEngine reInit:true mInitializeWait:" + Jwh + " mInitializeSuccess:" + Jox);
+    Jwk = true;
+    Object localObject;
+    if (Jwh)
+    {
+      localObject = mContext;
+      if (localObject == null) {}
+      for (localObject = null; localObject == null; localObject = ah.aiuX)
+      {
+        Log.e("WxIme.WxEngineMgr", "setNeedReInitEngine mContext is null??");
+        AppMethodBeat.o(312022);
+        return;
+        im((Context)localObject);
+      }
+      AppMethodBeat.o(312022);
+      return;
+    }
+    if (Jox)
+    {
+      localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+      if (localObject == null) {
+        break label157;
+      }
+      localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).fKG();
+      if ((localObject == null) || (((com.tencent.mm.plugin.hld.a.b)localObject).fKu())) {
+        break label157;
+      }
+    }
+    label157:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        finalize1();
+      }
+      AppMethodBeat.o(312022);
+      return;
+    }
+  }
+  
+  public static void fMM()
+  {
+    AppMethodBeat.i(312033);
+    Log.i("WxIme.WxEngineMgr", "resetCursorIndex " + JvX + ' ' + fMP().length());
+    if (fNa())
+    {
+      AppMethodBeat.o(312033);
+      return;
+    }
+    WxhldApi.session_set_internal_cursor(JvX, 0);
+    AppMethodBeat.o(312033);
+  }
+  
+  public static void fMN()
+  {
+    AppMethodBeat.i(312041);
     Log.d("WxIme.WxEngineMgr", "dropLastChar");
-    WxhldApi.drop_last(DDY);
-    AppMethodBeat.o(216899);
+    WxhldApi.drop_last(JvX);
+    AppMethodBeat.o(312041);
   }
   
-  public static void eEL()
+  public static void fMO()
   {
-    AppMethodBeat.i(216900);
-    if (eEX())
+    AppMethodBeat.i(312047);
+    if (fNa())
     {
-      AppMethodBeat.o(216900);
+      AppMethodBeat.o(312047);
       return;
     }
-    com.tencent.e.h.ZvG.be((Runnable)m.DEC);
-    AppMethodBeat.o(216900);
+    com.tencent.threadpool.h.ahAA.bm(n..ExternalSyntheticLambda13.INSTANCE);
+    AppMethodBeat.o(312047);
   }
   
-  public static CharSequence eEM()
+  public static CharSequence fMP()
   {
-    AppMethodBeat.i(216904);
-    if (eEX())
+    AppMethodBeat.i(312085);
+    if (fNa())
     {
       localCharSequence = (CharSequence)"";
-      AppMethodBeat.o(216904);
+      AppMethodBeat.o(312085);
       return localCharSequence;
     }
-    CharSequence localCharSequence = DEc;
-    AppMethodBeat.o(216904);
+    CharSequence localCharSequence = Jwb;
+    AppMethodBeat.o(312085);
     return localCharSequence;
   }
   
-  public static void eEN()
+  public static void fMQ()
   {
-    AppMethodBeat.i(216918);
-    com.tencent.e.h.ZvG.d((Runnable)e.DEv, "TAG_CANDIDATE");
-    AppMethodBeat.o(216918);
+    AppMethodBeat.i(312129);
+    com.tencent.threadpool.h.ahAA.g(n..ExternalSyntheticLambda12.INSTANCE, "TAG_CANDIDATE");
+    AppMethodBeat.o(312129);
   }
   
-  public static Candidate eEP()
+  public static Candidate fMS()
   {
-    AppMethodBeat.i(216936);
-    if (DEe.isEmpty())
+    AppMethodBeat.i(312178);
+    if (Jwd.isEmpty())
     {
       localCandidate = new Candidate(0);
       localCandidate.text = "";
-      AppMethodBeat.o(216936);
+      AppMethodBeat.o(312178);
       return localCandidate;
     }
-    Candidate localCandidate = (Candidate)j.lo((List)DEe);
-    AppMethodBeat.o(216936);
+    Candidate localCandidate = (Candidate)p.oK((List)Jwd);
+    AppMethodBeat.o(312178);
     return localCandidate;
   }
   
-  public static void eEQ()
+  public static void fMT()
   {
-    AppMethodBeat.i(216937);
-    Log.d("WxIme.WxEngineMgr", "triggerAssociate " + Util.getStack());
-    if (eEX())
+    AppMethodBeat.i(312184);
+    Log.d("WxIme.WxEngineMgr", s.X("triggerAssociate ", Util.getStack()));
+    if (fNa())
     {
-      AppMethodBeat.o(216937);
+      AppMethodBeat.o(312184);
       return;
     }
-    AppMethodBeat.o(216937);
+    AppMethodBeat.o(312184);
   }
   
-  public static String[] eER()
+  public static String[] fMU()
   {
-    AppMethodBeat.i(216942);
+    AppMethodBeat.i(312189);
     String[] arrayOfString = WxhldApi.get_puncts_classification(2);
-    p.j(arrayOfString, "WxhldApi.get_puncts_clas….WxhldPunctType.CLASS_II)");
-    AppMethodBeat.o(216942);
+    s.s(arrayOfString, "get_puncts_classificatio….WxhldPunctType.CLASS_II)");
+    AppMethodBeat.o(312189);
     return arrayOfString;
   }
   
-  public static String[] eES()
+  public static String[] fMV()
   {
-    AppMethodBeat.i(216944);
+    AppMethodBeat.i(312196);
     String[] arrayOfString = WxhldApi.get_puncts_classification(3);
-    p.j(arrayOfString, "WxhldApi.get_puncts_clas…WxhldPunctType.CLASS_III)");
-    AppMethodBeat.o(216944);
+    s.s(arrayOfString, "get_puncts_classificatio…WxhldPunctType.CLASS_III)");
+    AppMethodBeat.o(312196);
     return arrayOfString;
   }
   
-  public static String eET()
+  public static String fMW()
   {
-    AppMethodBeat.i(216945);
+    AppMethodBeat.i(312202);
     String str = WxhldApi.get_version();
-    p.j(str, "oriVersion");
+    s.s(str, "oriVersion");
     Object localObject = kotlin.n.n.a((CharSequence)str, new String[] { "." });
     if (((List)localObject).size() >= 3) {}
     for (localObject = (String)((List)localObject).get(0) + '.' + (String)((List)localObject).get(1) + '.' + (String)((List)localObject).get(2);; localObject = str)
     {
-      Log.i("WxIme.WxEngineMgr", "getEngineVersion oriVersion:" + str + " version:" + (String)localObject);
-      p.j(localObject, "version");
-      AppMethodBeat.o(216945);
+      Log.i("WxIme.WxEngineMgr", "getEngineVersion oriVersion:" + str + " version:" + localObject);
+      s.s(localObject, "version");
+      AppMethodBeat.o(312202);
       return localObject;
     }
   }
   
-  public static String eEU()
+  public static String fMX()
   {
-    AppMethodBeat.i(216946);
+    AppMethodBeat.i(312207);
     String str = WxhldApi.get_version();
-    p.j(str, "WxhldApi.get_version()");
-    AppMethodBeat.o(216946);
+    s.s(str, "get_version()");
+    AppMethodBeat.o(312207);
     return str;
   }
   
-  public static String eEV()
+  public static String fMY()
   {
-    AppMethodBeat.i(216947);
+    AppMethodBeat.i(312215);
     long l = WxhldApi.get_commit_time();
-    AppMethodBeat.o(216947);
+    AppMethodBeat.o(312215);
     return String.valueOf(l);
   }
   
-  public static int eEW()
+  public static int fMZ()
   {
-    return DEm;
+    return Jwl;
   }
   
-  public static boolean eEX()
+  public static boolean fNa()
   {
-    return DDY == 0L;
+    return JvX == 0L;
+  }
+  
+  private static final void fNb()
+  {
+    AppMethodBeat.i(312278);
+    Log.i("WxIme.WxEngineMgr", "initializeEngineNullNetWorkImp");
+    WxhldApi.network_login(new NetworkInfo(0));
+    AppMethodBeat.o(312278);
+  }
+  
+  private static final void fNc()
+  {
+    AppMethodBeat.i(312285);
+    Object localObject1 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+    Object localObject3;
+    label102:
+    long l;
+    label138:
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((com.tencent.mm.plugin.hld.a.d)localObject1).fKG();
+      if (localObject1 != null)
+      {
+        localObject3 = ((com.tencent.mm.plugin.hld.a.b)localObject1).Yk(50);
+        if (localObject3 != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder("setTextAroundCursor ");
+          localObject1 = ((com.tencent.mm.plugin.hld.a.e)localObject3).JnB;
+          if (localObject1 != null) {
+            break label165;
+          }
+          localObject1 = "";
+          localStringBuilder = localStringBuilder.append(Util.secPrint((String)localObject1)).append(' ');
+          localObject1 = ((com.tencent.mm.plugin.hld.a.e)localObject3).JnD;
+          if (localObject1 != null) {
+            break label183;
+          }
+          localObject1 = "";
+          Log.d("WxIme.WxEngineMgr", Util.secPrint((String)localObject1));
+          l = JvX;
+          localObject1 = ((com.tencent.mm.plugin.hld.a.e)localObject3).JnB;
+          if (localObject1 != null) {
+            break label201;
+          }
+          localObject1 = "";
+          localObject2 = ((com.tencent.mm.plugin.hld.a.e)localObject3).JnD;
+          if (localObject2 != null) {
+            break label219;
+          }
+          localObject2 = "";
+        }
+      }
+    }
+    for (;;)
+    {
+      WxhldApi.set_text_around_cursor(l, (String)localObject1, (String)localObject2);
+      AppMethodBeat.o(312285);
+      return;
+      label165:
+      localObject2 = localObject1.toString();
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = "";
+      break;
+      label183:
+      localObject2 = localObject1.toString();
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label102;
+      }
+      localObject1 = "";
+      break label102;
+      label201:
+      localObject2 = localObject1.toString();
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break label138;
+      }
+      localObject1 = "";
+      break label138;
+      label219:
+      localObject3 = localObject2.toString();
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+    }
+  }
+  
+  private static final void fNd()
+  {
+    AppMethodBeat.i(312336);
+    Log.i("WxIme.WxEngineMgr", "fetchMoreCandidateList");
+    ArrayList localArrayList;
+    if (Jwe != 0L)
+    {
+      localArrayList = rV(Jwe);
+      if (localArrayList.size() < 100) {
+        break label83;
+      }
+    }
+    label83:
+    for (boolean bool = true;; bool = false)
+    {
+      Jwf = bool;
+      if (!bool)
+      {
+        WxhldApi.delete_candidate_iterator(Jwe);
+        Jwe = 0L;
+      }
+      com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda7(localArrayList));
+      AppMethodBeat.o(312336);
+      return;
+    }
   }
   
   public static void finalize1()
   {
-    AppMethodBeat.i(216934);
-    Log.i("WxIme.WxEngineMgr", "finalize1 " + Dva);
-    if (!Dva)
+    AppMethodBeat.i(312170);
+    Log.i("WxIme.WxEngineMgr", s.X("finalize1 ", Boolean.valueOf(Jox)));
+    if (!Jox)
     {
-      AppMethodBeat.o(216934);
+      AppMethodBeat.o(312170);
       return;
     }
-    if (!eEX()) {
-      WxhldApi.destroy_session(DDY);
+    if (!fNa()) {
+      WxhldApi.destroy_session(JvX);
     }
-    DDY = 0L;
-    DEc = (CharSequence)"";
-    DEd = 0;
-    DEe.clear();
-    DEf = 0L;
-    DEg = false;
-    DtM.clear();
-    Object localObject = DDZ.iterator();
+    JvX = 0L;
+    Jwb = (CharSequence)"";
+    Jwc = 0;
+    Jwd.clear();
+    Jwe = 0L;
+    Jwf = false;
+    Jno.clear();
+    Object localObject = JvY.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((com.tencent.mm.plugin.hld.candidate.a)((Iterator)localObject).next()).a(DEe, DEh, true, DEg);
+      ((com.tencent.mm.plugin.hld.candidate.a)((Iterator)localObject).next()).a(Jwd, Jwg, true, Jwf);
     }
-    localObject = DEa.iterator();
+    localObject = JvZ.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((com.tencent.mm.plugin.hld.candidate.b)((Iterator)localObject).next()).a(new PendingInput[0], null, 0);
+      ((com.tencent.mm.plugin.hld.candidate.b)((Iterator)localObject).next()).a((PendingInput[])new PendingInput[0], null, 0);
     }
-    localObject = DEb.iterator();
+    localObject = Jwa.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((com.tencent.mm.plugin.hld.alternative.a)((Iterator)localObject).next()).aB(new ArrayList());
+      ((com.tencent.mm.plugin.hld.alternative.a)((Iterator)localObject).next()).aQ(new ArrayList());
     }
     WxhldApi.finalize1();
     localObject = mContext;
-    if (localObject != null)
+    if (localObject == null) {}
+    for (localObject = null;; localObject = ah.aiuX)
     {
-      gR((Context)localObject);
-      AppMethodBeat.o(216934);
+      if (localObject == null) {
+        Log.e("WxIme.WxEngineMgr", "finalize1 mContext is null");
+      }
+      AppMethodBeat.o(312170);
       return;
+      im((Context)localObject);
     }
-    Log.e("WxIme.WxEngineMgr", "finalize1 mContext is null");
-    AppMethodBeat.o(216934);
   }
   
-  public static void gR(Context paramContext)
+  public static void im(Context paramContext)
   {
-    AppMethodBeat.i(216882);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(311961);
+    s.u(paramContext, "context");
     Log.i("WxIme.WxEngineMgr", "initializeEngine");
     mContext = paramContext;
-    com.tencent.e.h.ZvG.be((Runnable)new f(paramContext));
-    AppMethodBeat.o(216882);
+    com.tencent.threadpool.h.ahAA.bm(new n..ExternalSyntheticLambda5(paramContext));
+    AppMethodBeat.o(311961);
+  }
+  
+  private static final void in(Context paramContext)
+  {
+    int j = 0;
+    AppMethodBeat.i(312245);
+    s.u(paramContext, "$context");
+    Log.i("WxIme.WxEngineMgr", "wxIme get WximeInitInfo");
+    Object localObject1 = l.JyV;
+    int i;
+    boolean bool;
+    label162:
+    dbu localdbu;
+    Object localObject2;
+    if (!l.fKH())
+    {
+      localObject1 = com.tencent.mm.plugin.hld.f.e.Jym;
+      if (com.tencent.mm.plugin.hld.f.e.fOc())
+      {
+        localObject1 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.hld.a.d.class);
+        if ((localObject1 != null) && (((com.tencent.mm.plugin.hld.a.d)localObject1).fKF() == true)) {}
+        for (i = 1; i == 0; i = 0)
+        {
+          Log.i("WxIme.WxEngineMgr", "no finish first cloud res download");
+          paramContext = l.JyV;
+          l.fOR();
+          Jwh = true;
+          AppMethodBeat.o(312245);
+          return;
+        }
+      }
+      localObject1 = com.tencent.mm.plugin.hld.model.a.a.JwD;
+      if (com.tencent.mm.plugin.hld.model.a.a.JwE == null)
+      {
+        localObject1 = l.JyV;
+        localObject1 = l.getKV();
+        if (localObject1 == null)
+        {
+          localObject1 = null;
+          com.tencent.mm.plugin.hld.model.a.a.JwE = (Integer)localObject1;
+        }
+      }
+      else
+      {
+        localObject1 = l.JyV;
+        localObject1 = l.getKV();
+        if (localObject1 != null) {
+          break label465;
+        }
+        bool = true;
+        Log.i("WxIme.ImeDictRecovery", "initRecovery isFirstLevel:" + bool + " engineCrashNum:" + com.tencent.mm.plugin.hld.model.a.a.JwE);
+        if (!bool) {
+          break label598;
+        }
+        localObject1 = com.tencent.mm.plugin.hld.model.a.a.JwE;
+        s.checkNotNull(localObject1);
+        if (((Integer)localObject1).intValue() <= 3) {
+          break label593;
+        }
+        localObject1 = l.JyV;
+        localObject1 = l.getKV();
+        if (localObject1 != null) {
+          ((MultiProcessMMKV)localObject1).putBoolean("ime_engine_init_recovery_first_level", false);
+        }
+        localObject1 = l.JyV;
+        localObject1 = l.getKV();
+        if (localObject1 != null) {
+          ((MultiProcessMMKV)localObject1).putInt("ime_engine_init_native_crash_num", 0);
+        }
+        localObject1 = l.JyV;
+        localObject1 = l.getKV();
+        if (localObject1 == null) {
+          break label676;
+        }
+        localdbu = new dbu();
+        localObject2 = ((MultiProcessMMKV)localObject1).decodeBytes("ime_engine_init_recovery_data");
+        if (localObject2 != null) {
+          localdbu.parseFrom((byte[])localObject2);
+        }
+        if (localdbu.aaHl == null) {
+          break label671;
+        }
+        localObject2 = localdbu.aaHl.aaHc;
+        s.s(localObject2, "successBase.baseDicts.cloudDicts");
+        if (((Collection)localObject2).isEmpty()) {
+          break label478;
+        }
+        i = 1;
+        label358:
+        if (i == 0) {
+          break label671;
+        }
+        i = 1;
+        label364:
+        ((MultiProcessMMKV)localObject1).encode("key_current_cloud_dicts", localdbu.aaHl.toByteArray());
+      }
+    }
+    for (;;)
+    {
+      if (i == 0)
+      {
+        Log.i("WxIme.ImeDictRecovery", "initRecovery no success data!");
+        com.tencent.mm.plugin.hld.model.a.a.reset();
+        i = j;
+        label399:
+        if (i != 0) {
+          break label630;
+        }
+        Log.e("WxIme.WxEngineMgr", "repeatedly crash, switch to another ime!!");
+        paramContext = WxHldService.Jnb;
+        paramContext = WxHldService.fKD();
+        if (!(paramContext instanceof WxHldService)) {
+          break label625;
+        }
+      }
+      label465:
+      label478:
+      label625:
+      for (paramContext = (WxHldService)paramContext;; paramContext = null)
+      {
+        if (paramContext != null) {
+          paramContext.Jnc = true;
+        }
+        AppMethodBeat.o(312245);
+        return;
+        localObject1 = Integer.valueOf(((MultiProcessMMKV)localObject1).getInt("ime_engine_init_native_crash_num", 0));
+        break;
+        bool = ((MultiProcessMMKV)localObject1).getBoolean("ime_engine_init_recovery_first_level", true);
+        break label162;
+        i = 0;
+        break label358;
+        localObject1 = l.JyV;
+        if (l.bGa())
+        {
+          localObject1 = l.JyV;
+          localObject1 = l.fPk();
+          if (localObject1 != null)
+          {
+            localdbu = new dbu();
+            localObject2 = ((MultiProcessMMKV)localObject1).decodeBytes("ime_engine_init_recovery_data");
+            if (localObject2 != null) {
+              localdbu.parseFrom((byte[])localObject2);
+            }
+            localObject2 = new dbw();
+            ((dbw)localObject2).aaHn = localdbu.aaHn;
+            ((dbw)localObject2).aaHm = localdbu.aaHm;
+            ((MultiProcessMMKV)localObject1).encode("key_current_cloud_dicts", ((dbw)localObject2).toByteArray());
+          }
+        }
+        Log.i("WxIme.ImeDictRecovery", "initRecovery success reset data!");
+        do
+        {
+          i = 1;
+          break;
+          localObject1 = com.tencent.mm.plugin.hld.model.a.a.JwE;
+          s.checkNotNull(localObject1);
+        } while (((Integer)localObject1).intValue() <= 3);
+        com.tencent.mm.plugin.hld.model.a.a.reset();
+        i = j;
+        break label399;
+      }
+      label593:
+      label598:
+      label630:
+      localObject1 = f.Jyn;
+      paramContext = f.io(paramContext);
+      localObject1 = JvW;
+      com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda9(paramContext, (n)localObject1));
+      AppMethodBeat.o(312245);
+      return;
+      label671:
+      i = 0;
+      break label364;
+      label676:
+      i = 0;
+    }
+  }
+  
+  private static final void m(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(312321);
+    if (Jwe != 0L) {
+      WxhldApi.delete_candidate_iterator(Jwe);
+    }
+    Jwe = paramLong1;
+    ArrayList localArrayList = rV(paramLong1);
+    if (localArrayList.size() >= 100) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Jwf = bool;
+      if (!bool)
+      {
+        WxhldApi.delete_candidate_iterator(Jwe);
+        Jwe = 0L;
+      }
+      paramLong1 = System.currentTimeMillis();
+      Log.i("WxIme.WxEngineMgr", s.X("OnCandidateListUpdate ", Integer.valueOf(Jwd.size())));
+      com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda3(paramLong2, paramLong1 - paramLong2, localArrayList, paramInt));
+      AppMethodBeat.o(312321);
+      return;
+    }
+  }
+  
+  private static ArrayList<Candidate> rV(long paramLong)
+  {
+    AppMethodBeat.i(312138);
+    long l = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    Candidate[] arrayOfCandidate = WxhldApi.candidate_get_n(paramLong, 100);
+    Collection localCollection = (Collection)localArrayList;
+    s.s(arrayOfCandidate, "tempArray");
+    p.a(localCollection, (Object[])arrayOfCandidate);
+    Log.i("WxIme.WxEngineMgr", s.X("candidateGetOnce getCandidateTime ", Long.valueOf(System.currentTimeMillis() - l)));
+    AppMethodBeat.o(312138);
+    return localArrayList;
   }
   
   public static void reset()
   {
-    AppMethodBeat.i(216931);
-    DDZ.clear();
-    DEa.clear();
-    DEb.clear();
-    AppMethodBeat.o(216931);
+    AppMethodBeat.i(312160);
+    JvY.clear();
+    JvZ.clear();
+    Jwa.clear();
+    AppMethodBeat.o(312160);
   }
   
-  public static void sS(boolean paramBoolean)
+  public static void wY(boolean paramBoolean)
   {
-    AppMethodBeat.i(216925);
+    AppMethodBeat.i(312146);
     Log.d("WxIme.WxEngineMgr", "setSingleWord");
-    long l = DDY;
+    long l = JvX;
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       WxhldApi.session_set_bool_option(l, 0, paramBoolean);
-      AppMethodBeat.o(216925);
+      AppMethodBeat.o(312146);
       return;
     }
   }
   
-  public final void OnCandidateListUpdate(long paramLong1, long paramLong2, final int paramInt)
+  public final void OnCandidateListUpdate(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(216916);
+    AppMethodBeat.i(312517);
     Log.i("WxIme.WxEngineMgr", "OnCandidateListUpdate " + paramLong1 + ' ' + paramLong2 + ' ' + paramInt);
     paramLong1 = System.currentTimeMillis();
-    com.tencent.e.h.ZvG.d((Runnable)new a(paramLong2, paramLong1, paramInt), "TAG_CANDIDATE");
-    AppMethodBeat.o(216916);
+    com.tencent.threadpool.h.ahAA.g(new n..ExternalSyntheticLambda0(paramLong2, paramLong1, paramInt), "TAG_CANDIDATE");
+    AppMethodBeat.o(312517);
   }
   
   public final void OnCandidateSelected(long paramLong)
   {
-    AppMethodBeat.i(216919);
-    Log.i("WxIme.WxEngineMgr", "OnCandidateSelected ".concat(String.valueOf(paramLong)));
-    AppMethodBeat.o(216919);
+    AppMethodBeat.i(312525);
+    Log.i("WxIme.WxEngineMgr", s.X("OnCandidateSelected ", Long.valueOf(paramLong)));
+    AppMethodBeat.o(312525);
   }
   
   public final void OnEmitInputToScreen(long paramLong, String paramString)
   {
-    AppMethodBeat.i(216920);
+    AppMethodBeat.i(312532);
     long l = System.currentTimeMillis();
-    Log.i("WxIme.WxEngineMgr", "OnEmitInputToScreen ".concat(String.valueOf(paramLong)));
-    com.tencent.e.h.ZvG.bc((Runnable)new b(l, paramString));
-    AppMethodBeat.o(216920);
+    Log.i("WxIme.WxEngineMgr", s.X("OnEmitInputToScreen ", Long.valueOf(paramLong)));
+    com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda4(l, paramString));
+    AppMethodBeat.o(312532);
   }
   
   public final void OnLoginComplete(int paramInt)
   {
-    AppMethodBeat.i(216948);
-    Log.i("WxIme.WxEngineMgr", "OnLoginComplete ".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(216948);
+    AppMethodBeat.i(312574);
+    Log.i("WxIme.WxEngineMgr", s.X("OnLoginComplete ", Integer.valueOf(paramInt)));
+    AppMethodBeat.o(312574);
   }
   
   public final void OnLogouted()
   {
-    AppMethodBeat.i(216950);
+    AppMethodBeat.i(312588);
     Log.i("WxIme.WxEngineMgr", "OnLogouted");
-    AppMethodBeat.o(216950);
+    AppMethodBeat.o(312588);
   }
   
   public final void OnPendingInputUpdate(long paramLong, String paramString)
   {
-    AppMethodBeat.i(216922);
-    Log.d("WxIme.WxEngineMgr", "OnPendingInputUpdate ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(216922);
+    AppMethodBeat.i(312543);
+    Log.d("WxIme.WxEngineMgr", s.X("OnPendingInputUpdate ", paramString));
+    AppMethodBeat.o(312543);
   }
   
   public final void OnPendingInputUpdateV2(long paramLong, PendingInput[] paramArrayOfPendingInput)
   {
     int i = 0;
-    AppMethodBeat.i(216923);
-    Log.i("WxIme.WxEngineMgr", "OnPendingInputUpdateV2 session_id:" + paramLong + ", mSession:" + DDY);
-    if (paramLong != DDY)
+    AppMethodBeat.i(312554);
+    Log.i("WxIme.WxEngineMgr", "OnPendingInputUpdateV2 session_id:" + paramLong + ", mSession:" + JvX);
+    if (paramLong != JvX)
     {
-      AppMethodBeat.o(216923);
+      AppMethodBeat.o(312554);
       return;
     }
-    final CharSequence localCharSequence = DEc;
-    Object localObject1 = com.tencent.mm.plugin.hld.f.h.DHl;
-    localObject1 = mContext;
-    if (localObject1 == null) {
-      p.iCn();
-    }
-    localObject1 = com.tencent.mm.plugin.hld.f.h.a((Context)localObject1, paramArrayOfPendingInput);
-    DEc = (CharSequence)((o)localObject1).Mx;
-    DEd = ((Number)((o)localObject1).My).intValue();
-    localObject1 = new StringBuilder("OnPendingInputUpdateV2: ").append(DEc.length()).append(", ");
-    if (paramArrayOfPendingInput == null) {}
-    for (boolean bool = true;; bool = false)
+    CharSequence localCharSequence = Jwb;
+    Object localObject = com.tencent.mm.plugin.hld.f.h.Jyy;
+    localObject = mContext;
+    s.checkNotNull(localObject);
+    localObject = com.tencent.mm.plugin.hld.f.h.a((Context)localObject, paramArrayOfPendingInput);
+    Jwb = (CharSequence)((r)localObject).bsC;
+    Jwc = ((Number)((r)localObject).bsD).intValue();
+    localObject = new StringBuilder("OnPendingInputUpdateV2: ").append(Jwb.length()).append(", ");
+    boolean bool;
+    if (paramArrayOfPendingInput == null)
     {
-      localObject1 = ((StringBuilder)localObject1).append(bool).append(", ");
+      bool = true;
+      localObject = ((StringBuilder)localObject).append(bool).append(", ");
       if (paramArrayOfPendingInput != null) {
-        i = paramArrayOfPendingInput.length;
+        break label260;
       }
-      Log.i("WxIme.WxEngineMgr", i + ", " + DEd);
-      localObject1 = new StringBuilder("DebugPendingInputText: ");
-      Object localObject2 = com.tencent.mm.plugin.hld.f.h.DHl;
-      localObject2 = mContext;
-      if (localObject2 == null) {
-        p.iCn();
-      }
-      Log.d("WxIme.WxEngineMgr", com.tencent.mm.plugin.hld.f.h.b((Context)localObject2, paramArrayOfPendingInput));
-      com.tencent.e.h.ZvG.bc((Runnable)new c(paramArrayOfPendingInput, localCharSequence));
-      AppMethodBeat.o(216923);
+    }
+    for (;;)
+    {
+      Log.i("WxIme.WxEngineMgr", i + ", " + Jwc);
+      localObject = com.tencent.mm.plugin.hld.f.h.Jyy;
+      localObject = mContext;
+      s.checkNotNull(localObject);
+      Log.d("WxIme.WxEngineMgr", s.X("DebugPendingInputText: ", com.tencent.mm.plugin.hld.f.h.b((Context)localObject, paramArrayOfPendingInput)));
+      com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda10(paramArrayOfPendingInput, localCharSequence));
+      AppMethodBeat.o(312554);
       return;
+      bool = false;
+      break;
+      label260:
+      i = paramArrayOfPendingInput.length;
     }
   }
   
   public final void OnSessionExpired()
   {
-    AppMethodBeat.i(216949);
+    AppMethodBeat.i(312581);
     Log.i("WxIme.WxEngineMgr", "OnSessionExpired");
-    AppMethodBeat.o(216949);
+    AppMethodBeat.o(312581);
   }
   
   public final void OnSyllableListUpdate(long paramLong, Syllable[] paramArrayOfSyllable)
   {
-    AppMethodBeat.i(216924);
+    AppMethodBeat.i(312562);
     StringBuilder localStringBuilder = new StringBuilder("OnSyllableListUpdate ").append(paramLong).append(' ');
-    if (paramArrayOfSyllable != null) {}
-    for (int i = paramArrayOfSyllable.length;; i = -1)
+    if (paramArrayOfSyllable == null) {}
+    for (int i = -1;; i = paramArrayOfSyllable.length)
     {
       Log.i("WxIme.WxEngineMgr", i);
-      com.tencent.e.h.ZvG.bc((Runnable)new d(paramArrayOfSyllable));
-      AppMethodBeat.o(216924);
+      com.tencent.threadpool.h.ahAA.bk(new n..ExternalSyntheticLambda11(paramArrayOfSyllable));
+      AppMethodBeat.o(312562);
       return;
     }
   }
   
-  public final void eEO()
+  public final void fMR()
   {
-    AppMethodBeat.i(216929);
-    if (eEX())
+    AppMethodBeat.i(312570);
+    if (fNa())
     {
-      AppMethodBeat.o(216929);
+      AppMethodBeat.o(312570);
       return;
     }
     Log.d("WxIme.WxEngineMgr", "resetInput");
-    DDY = 0L;
+    JvX = 0L;
     WxhldApi.destroy_session(0L);
-    DEc = (CharSequence)"";
-    DEd = 0;
-    DEe.clear();
-    DEf = 0L;
-    DEg = false;
-    DtM.clear();
-    Iterator localIterator = DDZ.iterator();
+    Jwb = (CharSequence)"";
+    Jwc = 0;
+    Jwd.clear();
+    Jwe = 0L;
+    Jwf = false;
+    Jno.clear();
+    Iterator localIterator = JvY.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.hld.candidate.a)localIterator.next()).a(DEe, DEh, true, DEg);
+      ((com.tencent.mm.plugin.hld.candidate.a)localIterator.next()).a(Jwd, Jwg, true, Jwf);
     }
-    localIterator = DEa.iterator();
+    localIterator = JvZ.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.hld.candidate.b)localIterator.next()).a(new PendingInput[0], null, 0);
+      ((com.tencent.mm.plugin.hld.candidate.b)localIterator.next()).a((PendingInput[])new PendingInput[0], null, 0);
     }
-    localIterator = DEb.iterator();
+    localIterator = Jwa.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.plugin.hld.alternative.a)localIterator.next()).aB(new ArrayList());
+      ((com.tencent.mm.plugin.hld.alternative.a)localIterator.next()).aQ(new ArrayList());
     }
-    eEF();
-    AppMethodBeat.o(216929);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(long paramLong1, long paramLong2, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209839);
-      Object localObject1 = n.DEn;
-      if (n.eFe() != 0L)
-      {
-        localObject1 = n.DEn;
-        WxhldApi.delete_candidate_iterator(n.eFe());
-      }
-      localObject1 = n.DEn;
-      n.NY(this.DEo);
-      localObject1 = n.DEn;
-      localObject1 = n.NZ(n.eFe());
-      Object localObject2 = n.DEn;
-      if (((ArrayList)localObject1).size() >= 100) {}
-      for (boolean bool = true;; bool = false)
-      {
-        n.sT(bool);
-        localObject2 = n.DEn;
-        if (!n.eFf())
-        {
-          localObject2 = n.DEn;
-          WxhldApi.delete_candidate_iterator(n.eFe());
-          localObject2 = n.DEn;
-          n.NY(0L);
-        }
-        long l1 = System.currentTimeMillis();
-        long l2 = paramInt;
-        localObject2 = new StringBuilder("OnCandidateListUpdate ");
-        n localn = n.DEn;
-        Log.i("WxIme.WxEngineMgr", n.eFg().size());
-        com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(217162);
-            Object localObject1 = new StringBuilder("OnCandidateListUpdate size:");
-            Object localObject2 = n.DEn;
-            Log.d("WxIme.WxEngineMgr", n.eFh().size());
-            localObject1 = k.DDb;
-            k.n(this.DEq.DEp, System.currentTimeMillis() - this.DEq.DEp - this.DDp, this.DDp);
-            localObject1 = n.DEn;
-            n.eFg().clear();
-            localObject1 = n.DEn;
-            n.eFg().addAll((Collection)this.DEr);
-            localObject1 = n.DEn;
-            n.UE(this.DEq.cPi);
-            localObject1 = n.DEn;
-            localObject1 = n.eFh().iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (com.tencent.mm.plugin.hld.candidate.a)((Iterator)localObject1).next();
-              Object localObject3 = n.DEn;
-              localObject3 = n.eFg();
-              n localn = n.DEn;
-              int i = n.eFi();
-              localn = n.DEn;
-              ((com.tencent.mm.plugin.hld.candidate.a)localObject2).a((ArrayList)localObject3, i, true, n.eFf());
-            }
-            AppMethodBeat.o(217162);
-          }
-        });
-        AppMethodBeat.o(209839);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(long paramLong, String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(214216);
-      Object localObject = k.DDb;
-      k.ag(this.DEp, System.currentTimeMillis() - this.DEp);
-      localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-        if (localObject != null)
-        {
-          ((com.tencent.mm.plugin.hld.a.b)localObject).c((CharSequence)this.uXe, true);
-          AppMethodBeat.o(214216);
-          return;
-        }
-      }
-      AppMethodBeat.o(214216);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(PendingInput[] paramArrayOfPendingInput, CharSequence paramCharSequence) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(214050);
-      Object localObject = n.DEn;
-      localObject = n.eFj().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        com.tencent.mm.plugin.hld.candidate.b localb = (com.tencent.mm.plugin.hld.candidate.b)((Iterator)localObject).next();
-        PendingInput[] arrayOfPendingInput = this.DEs;
-        CharSequence localCharSequence = localCharSequence;
-        n localn = n.DEn;
-        localb.a(arrayOfPendingInput, localCharSequence, n.eFk());
-      }
-      localObject = n.DEn;
-      if (n.eEE())
-      {
-        localObject = n.DEn;
-        n.eEQ();
-      }
-      AppMethodBeat.o(214050);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
-  {
-    d(Syllable[] paramArrayOfSyllable) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209137);
-      Object localObject = n.DEn;
-      n.eFl().clear();
-      if (this.DEu != null)
-      {
-        localObject = n.DEn;
-        j.a((Collection)n.eFl(), this.DEu);
-      }
-      localObject = n.DEn;
-      localObject = n.eFm().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        com.tencent.mm.plugin.hld.alternative.a locala = (com.tencent.mm.plugin.hld.alternative.a)((Iterator)localObject).next();
-        n localn = n.DEn;
-        locala.aB(n.eFl());
-      }
-      AppMethodBeat.o(209137);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    public static final e DEv;
-    
-    static
-    {
-      AppMethodBeat.i(209908);
-      DEv = new e();
-      AppMethodBeat.o(209908);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209906);
-      Log.i("WxIme.WxEngineMgr", "fetchMoreCandidateList");
-      Object localObject = n.DEn;
-      n localn;
-      if (n.eFe() != 0L)
-      {
-        localObject = n.DEn;
-        localObject = n.NZ(n.eFe());
-        localn = n.DEn;
-        if (((ArrayList)localObject).size() < 100) {
-          break label108;
-        }
-      }
-      label108:
-      for (boolean bool = true;; bool = false)
-      {
-        n.sT(bool);
-        localn = n.DEn;
-        if (!n.eFf())
-        {
-          localn = n.DEn;
-          WxhldApi.delete_candidate_iterator(n.eFe());
-          localn = n.DEn;
-          n.NY(0L);
-        }
-        com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(217503);
-            Object localObject1 = new StringBuilder("OnCandidateListUpdate size:");
-            Object localObject2 = n.DEn;
-            Log.d("WxIme.WxEngineMgr", n.eFh().size());
-            localObject1 = n.DEn;
-            n.eFg().addAll((Collection)this.DEr);
-            localObject1 = n.DEn;
-            localObject1 = n.eFh().iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (com.tencent.mm.plugin.hld.candidate.a)((Iterator)localObject1).next();
-              Object localObject3 = n.DEn;
-              localObject3 = n.eFg();
-              n localn = n.DEn;
-              int i = n.eFi();
-              localn = n.DEn;
-              ((com.tencent.mm.plugin.hld.candidate.a)localObject2).a((ArrayList)localObject3, i, false, n.eFf());
-            }
-            AppMethodBeat.o(217503);
-          }
-        });
-        AppMethodBeat.o(209906);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class f
-    implements Runnable
-  {
-    f(Context paramContext) {}
-    
-    public final void run()
-    {
-      int j = 0;
-      AppMethodBeat.i(216614);
-      Log.i("WxIme.WxEngineMgr", "wxIme get WximeInitInfo");
-      Object localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      boolean bool;
-      label153:
-      Object localObject2;
-      Object localObject3;
-      if (!com.tencent.mm.plugin.hld.f.l.eCE())
-      {
-        localObject1 = com.tencent.mm.plugin.hld.f.e.DGW;
-        localObject1 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-        if ((localObject1 == null) || (((com.tencent.mm.plugin.hld.a.d)localObject1).eCC() != true))
-        {
-          Log.i("WxIme.WxEngineMgr", "no finish first cloud res download");
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          com.tencent.mm.plugin.hld.f.l.eHi();
-          localObject1 = n.DEn;
-          n.eEY();
-          AppMethodBeat.o(216614);
-          return;
-        }
-        localObject1 = com.tencent.mm.plugin.hld.model.a.a.DEX;
-        if (com.tencent.mm.plugin.hld.model.a.a.DEU == null)
-        {
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          localObject1 = com.tencent.mm.plugin.hld.f.l.getKV();
-          if (localObject1 != null)
-          {
-            localObject1 = Integer.valueOf(((MultiProcessMMKV)localObject1).getInt("ime_engine_init_native_crash_num", 0));
-            com.tencent.mm.plugin.hld.model.a.a.DEU = (Integer)localObject1;
-          }
-        }
-        else
-        {
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          localObject1 = com.tencent.mm.plugin.hld.f.l.getKV();
-          if (localObject1 == null) {
-            break label449;
-          }
-          bool = ((MultiProcessMMKV)localObject1).getBoolean("ime_engine_init_recovery_first_level", true);
-          Log.i("WxIme.ImeDictRecovery", "initRecovery isFirstLevel:" + bool + " engineCrashNum:" + com.tencent.mm.plugin.hld.model.a.a.DEU);
-          if (!bool) {
-            break label575;
-          }
-          localObject1 = com.tencent.mm.plugin.hld.model.a.a.DEU;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          if (((Integer)localObject1).intValue() <= 3) {
-            break label570;
-          }
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          localObject1 = com.tencent.mm.plugin.hld.f.l.getKV();
-          if (localObject1 != null) {
-            ((MultiProcessMMKV)localObject1).putBoolean("ime_engine_init_recovery_first_level", false);
-          }
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          localObject1 = com.tencent.mm.plugin.hld.f.l.getKV();
-          if (localObject1 != null) {
-            ((MultiProcessMMKV)localObject1).putInt("ime_engine_init_native_crash_num", 0);
-          }
-          localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-          localObject1 = com.tencent.mm.plugin.hld.f.l.getKV();
-          if (localObject1 == null) {
-            break label459;
-          }
-          localObject2 = new clm();
-          localObject3 = ((MultiProcessMMKV)localObject1).decodeBytes("ime_engine_init_recovery_data");
-          if (localObject3 != null) {
-            ((clm)localObject2).parseFrom((byte[])localObject3);
-          }
-          if (((clm)localObject2).Tta == null) {
-            break label641;
-          }
-          localObject3 = ((clm)localObject2).Tta.TsR;
-          p.j(localObject3, "successBase.baseDicts.cloudDicts");
-          if (((Collection)localObject3).isEmpty()) {
-            break label454;
-          }
-          i = 1;
-          label345:
-          if (i == 0) {
-            break label641;
-          }
-        }
-      }
-      label641:
-      for (int i = 1;; i = 0)
-      {
-        ((MultiProcessMMKV)localObject1).encode("key_current_cloud_dicts", ((clm)localObject2).Tta.toByteArray());
-        label367:
-        if (i == 0)
-        {
-          Log.i("WxIme.ImeDictRecovery", "initRecovery no success data!");
-          com.tencent.mm.plugin.hld.model.a.a.reset();
-          i = j;
-        }
-        for (;;)
-        {
-          if (i == 0)
-          {
-            Log.e("WxIme.WxEngineMgr", "repeatedly crash, switch to another ime!!");
-            localObject1 = WxHldService.DtA;
-            localObject2 = WxHldService.eCA();
-            localObject1 = localObject2;
-            if (!(localObject2 instanceof WxHldService)) {
-              localObject1 = null;
-            }
-            localObject1 = (WxHldService)localObject1;
-            if (localObject1 != null)
-            {
-              ((WxHldService)localObject1).Dtv = true;
-              AppMethodBeat.o(216614);
-              return;
-              localObject1 = null;
-              break;
-              label449:
-              bool = true;
-              break label153;
-              label454:
-              i = 0;
-              break label345;
-              label459:
-              i = 0;
-              break label367;
-              localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-              if (com.tencent.mm.plugin.hld.f.l.biq())
-              {
-                localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-                localObject1 = com.tencent.mm.plugin.hld.f.l.eHB();
-                if (localObject1 != null)
-                {
-                  localObject2 = new clm();
-                  localObject3 = ((MultiProcessMMKV)localObject1).decodeBytes("ime_engine_init_recovery_data");
-                  if (localObject3 != null) {
-                    ((clm)localObject2).parseFrom((byte[])localObject3);
-                  }
-                  localObject3 = new clo();
-                  ((clo)localObject3).Ttc = ((clm)localObject2).Ttc;
-                  ((clo)localObject3).Ttb = ((clm)localObject2).Ttb;
-                  ((MultiProcessMMKV)localObject1).encode("key_current_cloud_dicts", ((clo)localObject3).toByteArray());
-                }
-              }
-              Log.i("WxIme.ImeDictRecovery", "initRecovery success reset data!");
-              label570:
-              label575:
-              do
-              {
-                i = 1;
-                break;
-                localObject1 = com.tencent.mm.plugin.hld.model.a.a.DEU;
-                if (localObject1 == null) {
-                  p.iCn();
-                }
-              } while (((Integer)localObject1).intValue() <= 3);
-              com.tencent.mm.plugin.hld.model.a.a.reset();
-              i = j;
-              continue;
-            }
-            AppMethodBeat.o(216614);
-            return;
-          }
-        }
-        localObject1 = f.DGX;
-        localObject1 = f.gS(this.$context);
-        localObject2 = n.DEn;
-        n.a((DictInfo[])localObject1);
-        AppMethodBeat.o(216614);
-        return;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(DictInfo[] paramArrayOfDictInfo) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216777);
-      long l6 = System.currentTimeMillis();
-      Object localObject1 = com.tencent.mm.plugin.hld.f.i.DHq;
-      boolean bool = com.tencent.mm.plugin.hld.f.i.eGC();
-      Log.i("WxIme.WxEngineMgr", "wxIme start initialize(isSafetyMode:" + bool + ')');
-      if (this.DEw != null)
-      {
-        com.tencent.mm.plugin.hld.model.a.a.DEX.startMonitor();
-        localObject1 = WxhldApi.getInstance();
-        Object localObject2 = n.DEn;
-        ((WxhldApi)localObject1).init(n.eEZ());
-        localObject1 = com.tencent.mm.plugin.hld.f.e.DGW;
-        WxhldApi.set_debug_console_log(com.tencent.mm.plugin.hld.f.e.eGm());
-        long l2 = System.currentTimeMillis();
-        localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-        localObject1 = com.tencent.mm.plugin.hld.f.l.eGU() + "/net";
-        if (!u.agG((String)localObject1)) {
-          u.bBD((String)localObject1);
-        }
-        WxhldApi.init_network((String)localObject1);
-        long l3 = System.currentTimeMillis();
-        long l1 = 0L;
-        localObject1 = f.DGX;
-        Log.i("WxIme.WxEngineMgr", "initializeEngineImp ".concat(String.valueOf(f.eGu())));
-        long l4 = System.currentTimeMillis();
-        localObject1 = this.DEw;
-        localObject2 = f.DGX;
-        WxhldApi.config_dict((DictInfo[])localObject1, f.eGu());
-        long l5 = System.currentTimeMillis();
-        localObject1 = f.DGX;
-        localObject1 = f.eGs();
-        if (localObject1 != null)
-        {
-          l1 = System.currentTimeMillis();
-          int j = localObject1.length;
-          int i = 0;
-          if (i < j)
-          {
-            localObject2 = localObject1[i];
-            if (localObject2 != null)
-            {
-              if (!u.agG(((DictInfo)localObject2).path)) {
-                break label270;
-              }
-              WxhldApi.add_cell_dict(((DictInfo)localObject2).path, ((DictInfo)localObject2).id);
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              label270:
-              Log.i("WxIme.WxEngineMgr", "add_cell_dict " + ((DictInfo)localObject2).path + ' ' + ((DictInfo)localObject2).id + " no exist");
-            }
-          }
-          l1 = System.currentTimeMillis() - l1;
-        }
-        WxhldApi.getInstance().SetWxhldLoginStatusListener((WxhldApi.WxhldLoginStatusListener)n.DEn);
-        localObject1 = new InitInfo();
-        localObject2 = com.tencent.mm.plugin.hld.f.l.DHK;
-        localObject2 = com.tencent.mm.plugin.hld.f.l.eGU() + "/engine";
-        if (!u.agG((String)localObject2)) {
-          u.bBD((String)localObject2);
-        }
-        ((InitInfo)localObject1).workDir = ((String)localObject2);
-        ((InitInfo)localObject1).safeMode = bool;
-        long l7 = System.currentTimeMillis();
-        WxhldApi.initialize((InitInfo)localObject1);
-        long l8 = System.currentTimeMillis();
-        WxhldApi.getInstance().SetWxhldEventListener((WxhldApi.WxhldEventListener)n.DEn);
-        localObject1 = n.DEn;
-        n.eFa();
-        localObject1 = n.DEn;
-        n.eEI();
-        localObject1 = com.tencent.mm.plugin.hld.c.a.DvH;
-        com.tencent.mm.plugin.hld.c.a.eCW();
-        localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-        if (com.tencent.mm.plugin.hld.f.l.biq())
-        {
-          localObject1 = com.tencent.mm.plugin.hld.f.c.DGO;
-          com.tencent.mm.plugin.hld.f.c.eFX();
-          localObject1 = n.DEn;
-          n.eEC();
-        }
-        com.tencent.mm.plugin.hld.model.a.a.DEX.eFu();
-        Log.i("WxIme.WxEngineMgr", "wxIme initialize successfully!，" + (System.currentTimeMillis() - l6) + ' ');
-        localObject1 = n.DEn;
-        n.eEF();
-        localObject1 = n.DEn;
-        n.eFb();
-        localObject1 = n.DEn;
-        n.eFc();
-        localObject1 = k.DDb;
-        if (!k.eEz())
-        {
-          l6 = System.currentTimeMillis();
-          com.tencent.e.h.ZvG.d((Runnable)new k.k(l8 - l7, l5 - l4, l1, l3 - l2, l6), "WxIme.ImeReporter");
-        }
-        localObject1 = g.DCm;
-        localObject2 = g.DCd;
-        if (localObject2 != null)
-        {
-          if (((View)localObject2).getVisibility() == 0) {
-            ((g)localObject1).eDW();
-          }
-          AppMethodBeat.o(216777);
-          return;
-        }
-        AppMethodBeat.o(216777);
-        return;
-      }
-      localObject1 = n.DEn;
-      n.eEY();
-      localObject1 = com.tencent.mm.plugin.hld.f.l.DHK;
-      com.tencent.mm.plugin.hld.f.l.eHi();
-      g.DCm.eDW();
-      Log.e("WxIme.WxEngineMgr", "cloud dict is null，" + (System.currentTimeMillis() - l6) + ' ');
-      AppMethodBeat.o(216777);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class h
-    implements Runnable
-  {
-    h(byte[] paramArrayOfByte) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(215962);
-      Log.i("WxIme.WxEngineMgr", "initializeEngineNetWorkImp authCode:" + this.DEx.length + " sessionType:" + this.DDz);
-      NetworkInfo localNetworkInfo = new NetworkInfo(this.DEx.length);
-      localNetworkInfo.authCode = this.DEx;
-      localNetworkInfo.sessionType = this.DDz;
-      localNetworkInfo.lkid = com.tencent.mm.plugin.normsg.a.d.GxJ.fju();
-      localNetworkInfo.useDefaultDebugIp = false;
-      WxhldApi.network_login(localNetworkInfo);
-      AppMethodBeat.o(215962);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class i
-    implements Runnable
-  {
-    public static final i DEy;
-    
-    static
-    {
-      AppMethodBeat.i(211451);
-      DEy = new i();
-      AppMethodBeat.o(211451);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(211450);
-      Log.i("WxIme.WxEngineMgr", "initializeEngineNullNetWorkImp");
-      WxhldApi.network_login(new NetworkInfo(0));
-      AppMethodBeat.o(211450);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class j
-    implements Runnable
-  {
-    j(long paramLong1, long paramLong2, String paramString1, boolean paramBoolean, String paramString2, CharSequence paramCharSequence) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216726);
-      Object localObject = k.DDb;
-      k.a(this.DDm, 0L, System.currentTimeMillis() - this.DEp, 0L, 2L, 0);
-      localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject != null)
-      {
-        com.tencent.mm.plugin.hld.a.b localb = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-        if (localb != null)
-        {
-          StringBuilder localStringBuilder = new StringBuilder().append(this.uXe);
-          if (this.DEz)
-          {
-            localObject = " ";
-            localStringBuilder = localStringBuilder.append((String)localObject);
-            if (!Util.isNullOrNil(this.DEA)) {
-              break label131;
-            }
-          }
-          label131:
-          for (localObject = "";; localObject = this.DEA)
-          {
-            localb.a((CharSequence)localObject, this.DEB);
-            AppMethodBeat.o(216726);
-            return;
-            localObject = "";
-            break;
-          }
-        }
-      }
-      AppMethodBeat.o(216726);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class k
-    implements Runnable
-  {
-    k(long paramLong1, long paramLong2, String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(209423);
-      Object localObject = k.DDb;
-      k.ag(this.DDm, System.currentTimeMillis() - this.DEp);
-      localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-        if (localObject != null)
-        {
-          ((com.tencent.mm.plugin.hld.a.b)localObject).c((CharSequence)this.uXe, true);
-          AppMethodBeat.o(209423);
-          return;
-        }
-      }
-      AppMethodBeat.o(209423);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class l
-    implements Runnable
-  {
-    l(String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(216157);
-      PunctToScreenEvent localPunctToScreenEvent = new PunctToScreenEvent();
-      localPunctToScreenEvent.input = this.uXe;
-      Object localObject = n.DEn;
-      localPunctToScreenEvent.currentSessionId = n.eFd();
-      localObject = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.hld.a.d)localObject).eCD();
-        if (localObject != null)
-        {
-          com.tencent.mm.plugin.hld.a.e locale = ((com.tencent.mm.plugin.hld.a.b)localObject).Uo(50);
-          if (locale != null)
-          {
-            StringBuilder localStringBuilder = new StringBuilder("reportNoTransEngineStr before:");
-            localObject = locale.Dud;
-            String str;
-            if (localObject != null)
-            {
-              str = localObject.toString();
-              localObject = str;
-              if (str != null) {}
-            }
-            else
-            {
-              localObject = "";
-            }
-            localStringBuilder = localStringBuilder.append(Util.secPrint((String)localObject)).append(" after:");
-            localObject = locale.Duf;
-            if (localObject != null)
-            {
-              str = localObject.toString();
-              localObject = str;
-              if (str != null) {}
-            }
-            else
-            {
-              localObject = "";
-            }
-            Log.d("WxIme.WxEngineMgr", Util.secPrint((String)localObject));
-            localObject = locale.Dud;
-            if (localObject != null)
-            {
-              str = localObject.toString();
-              localObject = str;
-              if (str != null) {}
-            }
-            else
-            {
-              localObject = "";
-            }
-            localPunctToScreenEvent.textBeforeCursor = ((String)localObject);
-            localObject = locale.Duf;
-            if (localObject != null)
-            {
-              str = localObject.toString();
-              localObject = str;
-              if (str != null) {}
-            }
-            else
-            {
-              localObject = "";
-            }
-            localPunctToScreenEvent.textAfterCursor = ((String)localObject);
-          }
-        }
-      }
-      WxhldApi.report_punct_input_to_screen(localPunctToScreenEvent);
-      AppMethodBeat.o(216157);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class m
-    implements Runnable
-  {
-    public static final m DEC;
-    
-    static
-    {
-      AppMethodBeat.i(217512);
-      DEC = new m();
-      AppMethodBeat.o(217512);
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(217510);
-      Object localObject1 = (com.tencent.mm.plugin.hld.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.hld.a.d.class);
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.plugin.hld.a.d)localObject1).eCD();
-        if (localObject1 != null)
-        {
-          Object localObject3 = ((com.tencent.mm.plugin.hld.a.b)localObject1).Uo(50);
-          if (localObject3 != null)
-          {
-            StringBuilder localStringBuilder = new StringBuilder("setTextAroundCursor ");
-            localObject1 = ((com.tencent.mm.plugin.hld.a.e)localObject3).Dud;
-            if (localObject1 != null)
-            {
-              localObject2 = localObject1.toString();
-              localObject1 = localObject2;
-              if (localObject2 != null) {}
-            }
-            else
-            {
-              localObject1 = "";
-            }
-            localStringBuilder = localStringBuilder.append(Util.secPrint((String)localObject1)).append(' ');
-            localObject1 = ((com.tencent.mm.plugin.hld.a.e)localObject3).Duf;
-            if (localObject1 != null)
-            {
-              localObject2 = localObject1.toString();
-              localObject1 = localObject2;
-              if (localObject2 != null) {}
-            }
-            else
-            {
-              localObject1 = "";
-            }
-            Log.d("WxIme.WxEngineMgr", Util.secPrint((String)localObject1));
-            localObject1 = n.DEn;
-            long l = n.eFd();
-            localObject1 = ((com.tencent.mm.plugin.hld.a.e)localObject3).Dud;
-            if (localObject1 != null)
-            {
-              localObject2 = localObject1.toString();
-              localObject1 = localObject2;
-              if (localObject2 != null) {}
-            }
-            else
-            {
-              localObject1 = "";
-            }
-            Object localObject2 = ((com.tencent.mm.plugin.hld.a.e)localObject3).Duf;
-            if (localObject2 != null)
-            {
-              localObject3 = localObject2.toString();
-              localObject2 = localObject3;
-              if (localObject3 != null) {}
-            }
-            else
-            {
-              localObject2 = "";
-            }
-            WxhldApi.set_text_around_cursor(l, (String)localObject1, (String)localObject2);
-            AppMethodBeat.o(217510);
-            return;
-          }
-          AppMethodBeat.o(217510);
-          return;
-        }
-      }
-      AppMethodBeat.o(217510);
-    }
+    fMI();
+    AppMethodBeat.o(312570);
   }
 }
 

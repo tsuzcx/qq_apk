@@ -2,28 +2,31 @@ package com.tencent.mm.plugin.appbrand.xweb_ext.video;
 
 import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.l;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.i;
-import com.tencent.mm.plugin.appbrand.utils.c;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.c.q;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.j;
+import com.tencent.mm.plugin.appbrand.utils.d;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class e$a
-  implements com.tencent.mm.plugin.appbrand.jsapi.ai.e.h
+  implements com.tencent.mm.plugin.appbrand.jsapi.al.e.h
 {
-  private static a rJp;
+  private static a uUF;
   
-  public static a cqZ()
+  public static a cTG()
   {
     AppMethodBeat.i(50048);
-    if (rJp == null) {}
+    if (uUF == null) {}
     try
     {
-      if (rJp == null) {
-        rJp = new a();
+      if (uUF == null) {
+        uUF = new a();
       }
-      a locala = rJp;
+      a locala = uUF;
       AppMethodBeat.o(50048);
       return locala;
     }
@@ -33,23 +36,19 @@ public class e$a
     }
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.video.e.e a(com.tencent.luggage.xweb_ext.extendplugin.a parama, Handler paramHandler)
+  public final g a(com.tencent.luggage.xweb_ext.extendplugin.a parama, final Handler paramHandler)
   {
-    int n = 30000;
-    int i1 = 15000;
-    int m = 2500;
-    AppMethodBeat.i(282432);
+    int i = 15000;
+    AppMethodBeat.i(317164);
     Object localObject2 = null;
-    int i = c.cmd();
+    int j = d.cNu();
     Object localObject1 = localObject2;
-    if (-1 != i) {
+    if (-1 != j) {
       localObject1 = localObject2;
     }
-    label162:
-    int j;
-    label210:
+    label202:
     int k;
-    switch (i)
+    switch (j)
     {
     default: 
       localObject1 = localObject2;
@@ -57,27 +56,27 @@ public class e$a
       localObject2 = localObject1;
       if ((parama instanceof com.tencent.mm.plugin.appbrand.h.b))
       {
-        parama = parama.QK();
+        parama = parama.aqX();
         localObject2 = localObject1;
         if (parama != null)
         {
           localObject2 = localObject1;
           if ("wxfe02ecfe70800f46".equalsIgnoreCase(parama.getAppId()))
           {
-            if (com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class) == null) {
-              break label564;
+            if (com.tencent.mm.kernel.h.ax(c.class) != null)
+            {
+              i = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yPX, 15000);
+              Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoWeishiMinBufferMS, expt is %s", new Object[] { Integer.valueOf(i) });
             }
-            i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBQ, 15000);
-            Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoWeishiMinBufferMS, expt is %s", new Object[] { Integer.valueOf(i) });
-            if (com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class) == null) {
-              break label571;
+            if (com.tencent.mm.kernel.h.ax(c.class) == null) {
+              break label409;
             }
-            j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBR, 30000);
+            j = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yPY, 30000);
             Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoWeishiMaxBufferMS, expt is %s", new Object[] { Integer.valueOf(j) });
-            if (com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class) == null) {
-              break label579;
+            if (com.tencent.mm.kernel.h.ax(c.class) == null) {
+              break label417;
             }
-            k = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBS, 2500);
+            k = ((c)com.tencent.mm.kernel.h.ax(c.class)).a(c.a.yPZ, 2500);
             Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoWeishiBufferForPlaybackMS, expt is %s", new Object[] { Integer.valueOf(k) });
           }
         }
@@ -87,53 +86,37 @@ public class e$a
     for (;;)
     {
       Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "createMediaPlayer, weishi use weishi exo media player, minBufferMs:%s, maxBufferMs:%s, bufferForPlaybackMs:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-      localObject2 = new l(paramHandler, i, j, k);
+      localObject2 = new q(paramHandler, i, j, k);
       parama = (com.tencent.luggage.xweb_ext.extendplugin.a)localObject2;
-      if (localObject2 == null)
-      {
-        i = i1;
-        if (com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class) != null)
-        {
-          i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBN, 15000);
-          Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoMinBufferDuration, expt is %s", new Object[] { Integer.valueOf(i) });
-        }
-        j = n;
-        if (com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class) != null)
-        {
-          j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBO, 30000);
-          Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoMaxBufferMS, expt is %s", new Object[] { Integer.valueOf(j) });
-        }
-        k = m;
-        if (com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class) != null)
-        {
-          k = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vBP, 2500);
-          Log.i("MicroMsg.SameLayer.AppBrandAVABTests", "getXWebVideoBufferForPlaybackMS, expt is %s", new Object[] { Integer.valueOf(k) });
-        }
-        Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "createMediaPlayer, use exo media player, minBufferMs:%s, maxBufferMs:%s, bufferForPlaybackMs:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-        parama = new com.tencent.mm.plugin.appbrand.jsapi.video.e.b.a(paramHandler, i, j, k);
+      if (localObject2 == null) {
+        parama = new com.tencent.mm.plugin.appbrand.ag.b.a(new kotlin.g.a.a()new kotlin.g.a.a {}, new kotlin.g.a.a() {});
       }
-      AppMethodBeat.o(282432);
+      AppMethodBeat.o(317164);
       return parama;
       Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "createMediaPlayer, use MediaPlayer");
-      localObject1 = new i();
+      localObject1 = new j();
       break;
       Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "createMediaPlayer, use AppBrandThumbMediaPlayer");
-      localObject1 = new com.tencent.mm.plugin.appbrand.ae.a(MMApplicationContext.getContext());
-      break;
-      label564:
-      i = 15000;
-      break label162;
-      label571:
+      localObject2 = com.tencent.mm.plugin.appbrand.ag.c.b.b(MMApplicationContext.getContext(), paramHandler.getLooper());
+      localObject1 = localObject2;
+      if (localObject2 != null) {
+        break;
+      }
+      Log.i("MicroMsg.SameLayer.AppBrandXWebVideoStrategy", "createMediaPlayer, use SystemMediaPlayer fallback");
+      parama = new j();
+      AppMethodBeat.o(317164);
+      return parama;
+      label409:
       j = 30000;
-      break label210;
-      label579:
+      break label202;
+      label417:
       k = 2500;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.video.e.a
  * JD-Core Version:    0.7.0.1
  */

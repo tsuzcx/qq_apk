@@ -1,69 +1,69 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.protocal.protobuf.csv;
-import com.tencent.mm.protocal.protobuf.csw;
+import com.tencent.mm.protocal.protobuf.crq;
+import com.tencent.mm.protocal.protobuf.crr;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class s
-  extends q
+  extends p
   implements m
 {
-  private i callback;
-  public final d rr;
+  private com.tencent.mm.am.h callback;
+  public final c omC;
   
   public s()
   {
-    AppMethodBeat.i(150937);
-    d.a locala = new d.a();
-    locala.lBU = new csv();
-    locala.lBV = new csw();
-    locala.uri = "/cgi-bin/micromsg-bin/logout";
-    locala.funcId = 282;
-    locala.lBW = 0;
+    AppMethodBeat.i(20638);
+    c.a locala = new c.a();
+    locala.otE = new crq();
+    locala.otF = new crr();
+    locala.uri = "/cgi-bin/micromsg-bin/getresourcecontrolinfo";
+    locala.funcId = 725;
+    locala.otG = 0;
     locala.respCmdId = 0;
-    this.rr = locala.bgN();
-    ((csv)d.b.b(this.rr.lBR)).CPw = 0;
-    AppMethodBeat.o(150937);
+    this.omC = locala.bEF();
+    ((crq)c.b.b(this.omC.otB)).vhJ = 0;
+    Log.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate GetResourceControlInfo type[%d], stack[%s]", new Object[] { Integer.valueOf(0), Util.getStack() });
+    AppMethodBeat.o(20638);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
   {
-    AppMethodBeat.i(150938);
-    Log.d("MicroMsg.NetSceneLogout", "doScene");
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(150938);
+    AppMethodBeat.i(20640);
+    this.callback = paramh;
+    com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(405L, 1L, 1L, true);
+    int i = dispatch(paramg, this.omC, this);
+    AppMethodBeat.o(20640);
     return i;
   }
   
   public final int getType()
   {
-    return 282;
+    return 725;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(150939);
-    if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      Log.d("MicroMsg.NetSceneLogout", "logout Error. ");
+    AppMethodBeat.i(20639);
+    Log.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate GetResourceControlInfo onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(405L, 2L, 1L, true);
     }
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(150939);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(20639);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelsimple.s
  * JD-Core Version:    0.7.0.1
  */

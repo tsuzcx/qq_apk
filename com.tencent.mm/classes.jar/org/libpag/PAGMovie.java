@@ -8,10 +8,10 @@ public class PAGMovie
 {
   static
   {
-    AppMethodBeat.i(195144);
+    AppMethodBeat.i(187374);
     b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(195144);
+    AppMethodBeat.o(187374);
   }
   
   private PAGMovie(long paramLong)
@@ -21,43 +21,43 @@ public class PAGMovie
   
   public static PAGMovie FromComposition(PAGComposition paramPAGComposition)
   {
-    AppMethodBeat.i(195132);
+    AppMethodBeat.i(187331);
     long l = MakeFromComposition(paramPAGComposition);
     if (l == 0L)
     {
-      AppMethodBeat.o(195132);
+      AppMethodBeat.o(187331);
       return null;
     }
     paramPAGComposition = new PAGMovie(l);
-    AppMethodBeat.o(195132);
+    AppMethodBeat.o(187331);
     return paramPAGComposition;
   }
   
   public static PAGMovie FromVideoPath(String paramString)
   {
-    AppMethodBeat.i(195137);
+    AppMethodBeat.i(187336);
     long l = MakeFromVideoPath(paramString);
     if (l == 0L)
     {
-      AppMethodBeat.o(195137);
+      AppMethodBeat.o(187336);
       return null;
     }
     paramString = new PAGMovie(l);
-    AppMethodBeat.o(195137);
+    AppMethodBeat.o(187336);
     return paramString;
   }
   
   public static PAGMovie FromVideoPath(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(195139);
+    AppMethodBeat.i(187341);
     paramLong1 = MakeFromVideoPath(paramString, paramLong1, paramLong2);
     if (paramLong1 == 0L)
     {
-      AppMethodBeat.o(195139);
+      AppMethodBeat.o(187341);
       return null;
     }
     paramString = new PAGMovie(paramLong1);
-    AppMethodBeat.o(195139);
+    AppMethodBeat.o(187341);
     return paramString;
   }
   
@@ -73,7 +73,7 @@ public class PAGMovie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.libpag.PAGMovie
  * JD-Core Version:    0.7.0.1
  */

@@ -2,55 +2,57 @@ package com.tencent.mm.plugin.finder.video;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.animation.PropertyValuesHolder;
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.annotation.SuppressLint;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
-import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import com.tencent.e.i;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.f.e;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.loader.w;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.loader.d.b.g;
+import com.tencent.mm.plugin.finder.e.b;
+import com.tencent.mm.plugin.finder.e.c;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
+import com.tencent.mm.plugin.finder.loader.p;
+import com.tencent.mm.plugin.finder.loader.p.a;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.report.am;
+import com.tencent.mm.plugin.finder.report.bb;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.storage.v;
+import com.tencent.mm.plugin.finder.upload.action.l;
+import com.tencent.mm.plugin.finder.view.FinderViewPager.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bfz;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.protocal.protobuf.brk;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.dji;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.component.k.b;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.threadpool.i;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -58,311 +60,510 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.o;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.am;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.n.n;
+import kotlin.r;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout;", "Landroid/widget/FrameLayout;", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "allSec", "allTimeLongTv", "Landroid/widget/TextView;", "getAllTimeLongTv", "()Landroid/widget/TextView;", "allTimeLongTv$delegate", "Lkotlin/Lazy;", "allTimeTv", "getAllTimeTv", "allTimeTv$delegate", "awesomePrivateLayout", "Landroid/view/View;", "getAwesomePrivateLayout", "()Landroid/view/View;", "awesomePrivateLayout$delegate", "currentTimeTv", "getCurrentTimeTv", "currentTimeTv$delegate", "excludeIDs", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "floatPlayIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "hidePrivateLike", "", "getHidePrivateLike", "()Z", "setHidePrivateLike", "(Z)V", "hideSeekbarTask", "Lcom/tencent/threadpool/runnable/FutureEx;", "getHideSeekbarTask", "()Lcom/tencent/threadpool/runnable/FutureEx;", "setHideSeekbarTask", "(Lcom/tencent/threadpool/runnable/FutureEx;)V", "isFinderSelfScene", "isInHeadsetStateChangePauseState", "isPendingExitMode", "isPlaying", "isPlayingCallback", "Lkotlin/Function0;", "()Lkotlin/jvm/functions/Function0;", "setPlayingCallback", "(Lkotlin/jvm/functions/Function0;)V", "isPrivateAwesome", "isSeekBarTrackingTouch", "isSeekMode", "longVideoLayout", "getLongVideoLayout", "longVideoLayout$delegate", "onLongVideoBtnClickListener", "", "getOnLongVideoBtnClickListener", "setOnLongVideoBtnClickListener", "onPauseClickListener", "getOnPauseClickListener", "setOnPauseClickListener", "onPrivateLikeClickListener", "getOnPrivateLikeClickListener", "setOnPrivateLikeClickListener", "onResumePlayListener", "getOnResumePlayListener", "setOnResumePlayListener", "pauseClickByUser", "pauseIcon", "getPauseIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "pauseIcon$delegate", "privateAwesomeIcon", "getPrivateAwesomeIcon", "privateAwesomeIcon$delegate", "seekBar", "Landroid/widget/SeekBar;", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBar$delegate", "seekBarCallback", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar$SeekBarCallback;", "seekLayout", "Landroid/view/ViewGroup;", "getSeekLayout", "()Landroid/view/ViewGroup;", "seekLayout$delegate", "tmpMaxProgress", "checkShowGroupLikeTips", "dismissGroupLikeTips", "dismissProgressBar", "enterOnHeadsetStateChangePauseState", "enterSeekMode", "exitOnHeadsetStateChangePauseState", "exitSeekMode", "reason", "", "formatSecToMin", "second", "getCurrentProgress", "getMaxProgress", "getSeekPercent", "", "hideAwesomePrivateLayout", "isShow", "hideGroupLikeTips", "hideSeekLayout", "isInSeekMode", "isSeekingMode", "isShownSeekBar", "onAttachedToWindow", "onDetachedFromWindow", "onProgressChanged", "progress", "fromUser", "onStartTrackingTouch", "onStopTrackingTouch", "refreshAwesome", "refreshFinderFeed", "item", "reportPauseClick", "setExcludeIDs", "set", "", "setFinderFeed", "setFloatPlayIcon", "icon", "setPlayingStatus", "setProgress", "target", "setSeekBarCallback", "callback", "showProgressBar", "isShowThumb", "showSeekLayout", "toggleSeekMode", "updateAllTime", "offsetSec", "updateCurrentTime", "updateProgressMs", "percent", "offsetMs", "", "allMs", "updateProgressSec", "updateSeekTime", "Companion", "plugin-finder_release"})
-@SuppressLint({"ResourceType"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout;", "Landroid/widget/FrameLayout;", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar;", "Lcom/tencent/mm/plugin/finder/view/FinderViewPager$CheckScrollHorizontally;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "ENLARGE_OFFSET", "allSec", "allTimeLongTv", "Landroid/widget/TextView;", "getAllTimeLongTv", "()Landroid/widget/TextView;", "allTimeLongTv$delegate", "Lkotlin/Lazy;", "allTimeTv", "getAllTimeTv", "allTimeTv$delegate", "awesomePrivateLayout", "Landroid/view/View;", "getAwesomePrivateLayout", "()Landroid/view/View;", "awesomePrivateLayout$delegate", "currentTimeTv", "getCurrentTimeTv", "currentTimeTv$delegate", "enlargeSeekBarListener", "Landroid/view/View$OnTouchListener;", "excludeIDs", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "fakeFloatPlayIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "floatPlayIcon", "hideHorizontalHintTask", "Ljava/lang/Runnable;", "hidePrivateLike", "", "getHidePrivateLike", "()Z", "setHidePrivateLike", "(Z)V", "hideSeekbarTask", "Lcom/tencent/threadpool/runnable/FutureEx;", "getHideSeekbarTask", "()Lcom/tencent/threadpool/runnable/FutureEx;", "setHideSeekbarTask", "(Lcom/tencent/threadpool/runnable/FutureEx;)V", "horizontalHint", "kotlin.jvm.PlatformType", "getHorizontalHint", "horizontalHint$delegate", "isDraggingSeekBar", "isFinderSelfScene", "isInHeadsetStateChangePauseState", "isPendingExitMode", "isPlaying", "isPlayingCallback", "Lkotlin/Function0;", "()Lkotlin/jvm/functions/Function0;", "setPlayingCallback", "(Lkotlin/jvm/functions/Function0;)V", "isPrivateAwesome", "isSeekBarTrackingTouch", "isSeekMode", "lastProgress", "getLastProgress", "()I", "setLastProgress", "(I)V", "longVideoLayout", "getLongVideoLayout", "longVideoLayout$delegate", "miniWindowBtn", "getMiniWindowBtn", "miniWindowBtn$delegate", "onLongVideoBtnClickListener", "", "getOnLongVideoBtnClickListener", "setOnLongVideoBtnClickListener", "onPauseClickListener", "getOnPauseClickListener", "setOnPauseClickListener", "onPrivateLikeClickListener", "getOnPrivateLikeClickListener", "setOnPrivateLikeClickListener", "onResumePlayListener", "getOnResumePlayListener", "setOnResumePlayListener", "pauseClickByUser", "pauseIcon", "getPauseIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "pauseIcon$delegate", "playCtrlBtn", "getPlayCtrlBtn", "playCtrlBtn$delegate", "privateAweSomeTv", "getPrivateAweSomeTv", "privateAweSomeTv$delegate", "privateAwesomeIcon", "getPrivateAwesomeIcon", "privateAwesomeIcon$delegate", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "seekBar", "Landroid/widget/SeekBar;", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBar$delegate", "seekBarCallback", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoSeekBar$SeekBarCallback;", "seekLayout", "Landroid/view/ViewGroup;", "getSeekLayout", "()Landroid/view/ViewGroup;", "seekLayout$delegate", "seekRect", "Landroid/graphics/Rect;", "tmpMaxProgress", "canScrollHorizontally", "direction", "parent", "x", "", "y", "checkBelongSeekBar", "v", "event", "Landroid/view/MotionEvent;", "checkShowGroupLikeTips", "checkShowHorizontalHint", "dismissGroupLikeTips", "dismissProgressBar", "dispatchTouchEvent", "ev", "enterOnHeadsetStateChangePauseState", "enterSeekMode", "exitOnHeadsetStateChangePauseState", "exitSeekMode", "reason", "", "formatSecToMin", "second", "getCurrentProgress", "getMaxProgress", "getSeekPercent", "hideAwesomePrivateLayout", "isShow", "hideGroupLikeTips", "hideHorizontalHint", "needAnimate", "hideSeekLayout", "isInSeekMode", "isNewsObject", "item", "isSeekingMode", "isShownSeekBar", "onAttachedToWindow", "onDetachedFromWindow", "onHalfEnjoy", "onInterceptTouchEvent", "onProgressChanged", "progress", "fromUser", "onStartTrackingTouch", "onStopTrackingTouch", "onTouchEvent", "refreshAwesome", "refreshFinderFeed", "reportPauseClick", "setExcludeIDs", "set", "", "setFakeFloatPlayIcon", "icon", "setFinderFeed", "setFloatPlayIcon", "setIconState", "view", "setPlayIconState", "setPlayingStatus", "setProgress", "target", "setRecyclerView", "setSeekBarCallback", "callback", "showProgressBar", "isShowThumb", "showSeekLayout", "toggleSeekMode", "updateAllTime", "offsetSec", "updateCurrentTime", "updateProgressMs", "percent", "offsetMs", "", "allMs", "updateProgressSec", "updateSeekTime", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderFullSeekBarLayout
   extends FrameLayout
-  implements SeekBar.OnSeekBarChangeListener, r
+  implements SeekBar.OnSeekBarChangeListener, s, FinderViewPager.a
 {
-  private static final int AKB;
-  private static final int AKC;
-  private static final int AKD;
-  private static final HashMap<Long, Integer> AKE;
-  public static final a AKF;
-  private final HashSet<Integer> AKA;
-  private kotlin.g.a.a<kotlin.x> AKa;
-  private kotlin.g.a.a<Boolean> AKb;
-  private kotlin.g.a.a<Boolean> AKc;
-  private kotlin.g.a.a<Boolean> AKd;
-  private kotlin.g.a.a<kotlin.x> AKe;
-  private final kotlin.f AKf;
-  private final kotlin.f AKg;
-  private final kotlin.f AKh;
-  private final kotlin.f AKi;
-  private final kotlin.f AKj;
-  private final kotlin.f AKk;
-  private boolean AKl;
-  private final kotlin.f AKm;
-  private final kotlin.f AKn;
-  private WeImageView AKo;
-  private boolean AKp;
-  private boolean AKq;
-  private boolean AKr;
-  private boolean AKs;
-  private boolean AKt;
-  private r.a AKu;
-  public boolean AKv;
-  private com.tencent.e.i.d<?> AKw;
-  private int AKx;
-  private int AKy;
-  public boolean AKz;
-  private final kotlin.f AsO;
-  public boolean fGh;
-  public BaseFinderFeed xxO;
+  public static final FinderFullSeekBarLayout.a GmL;
+  private static final HashMap<Long, Integer> GnA;
+  private static final int Gnx;
+  private static final int Gny;
+  private static final int Gnz;
+  public BaseFinderFeed AUZ;
+  private final j FSi;
+  private kotlin.g.a.a<ah> GmM;
+  private kotlin.g.a.a<Boolean> GmN;
+  private kotlin.g.a.a<Boolean> GmO;
+  private kotlin.g.a.a<Boolean> GmP;
+  private kotlin.g.a.a<ah> GmQ;
+  private final j GmR;
+  private final j GmS;
+  private final j GmT;
+  private final j GmU;
+  private final j GmV;
+  private final j GmW;
+  private final j GmX;
+  private final j GmY;
+  public final Runnable GmZ;
+  private final j Gna;
+  private boolean Gnb;
+  private final j Gnc;
+  private final j Gnd;
+  private final j Gne;
+  private WeImageView Gnf;
+  private boolean Gng;
+  private boolean Gnh;
+  private WeImageView Gni;
+  private boolean Gnj;
+  private boolean Gnk;
+  private boolean Gnl;
+  private s.a Gnm;
+  public boolean Gnn;
+  public com.tencent.threadpool.i.d<?> Gno;
+  private int Gnp;
+  private int Gnq;
+  public boolean Gnr;
+  private final HashSet<Integer> Gns;
+  private final Rect Gnt;
+  private boolean Gnu;
+  private final int Gnv;
+  private final View.OnTouchListener Gnw;
+  public boolean hLy;
+  private RecyclerView mkw;
+  private int xmM;
   
   static
   {
-    AppMethodBeat.i(286627);
-    AKF = new a((byte)0);
-    Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    AKB = (int)localContext.getResources().getDimension(b.d.Edge_5A);
-    localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    AKC = (int)localContext.getResources().getDimension(b.d.Edge_4A);
-    localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    AKD = (int)localContext.getResources().getDimension(b.d.Edge_1_5_A);
-    AKE = new HashMap();
-    AppMethodBeat.o(286627);
+    AppMethodBeat.i(335329);
+    GmL = new FinderFullSeekBarLayout.a((byte)0);
+    Gnx = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.Edge_5A);
+    Gny = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.Edge_4A);
+    Gnz = (int)MMApplicationContext.getContext().getResources().getDimension(e.c.Edge_1_5_A);
+    GnA = new HashMap();
+    AppMethodBeat.o(335329);
   }
   
   public FinderFullSeekBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(286625);
-    this.AsO = kotlin.g.ar((kotlin.g.a.a)new w(this));
-    this.AKa = ((kotlin.g.a.a)q.AKV);
-    this.AKb = ((kotlin.g.a.a)p.AKU);
-    this.AKc = ((kotlin.g.a.a)o.AKT);
-    this.AKd = ((kotlin.g.a.a)l.AKQ);
-    this.AKe = ((kotlin.g.a.a)n.AKS);
-    this.AKf = kotlin.g.ar((kotlin.g.a.a)new x(this));
-    this.AKg = kotlin.g.ar((kotlin.g.a.a)new f(this));
-    this.AKh = kotlin.g.ar((kotlin.g.a.a)new c(this));
-    this.AKi = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.AKj = kotlin.g.ar((kotlin.g.a.a)new m(this));
-    this.AKk = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    this.AKl = true;
-    this.AKm = kotlin.g.ar((kotlin.g.a.a)new s(this));
-    this.AKn = kotlin.g.ar((kotlin.g.a.a)new t(this));
-    this.AKx = -1;
-    this.AKA = new HashSet();
-    AppMethodBeat.o(286625);
+    AppMethodBeat.i(335090);
+    this.FSi = kotlin.k.cm((kotlin.g.a.a)new y(this));
+    this.GmM = ((kotlin.g.a.a)FinderFullSeekBarLayout.s.GnJ);
+    this.GmN = ((kotlin.g.a.a)FinderFullSeekBarLayout.r.GnI);
+    this.GmO = ((kotlin.g.a.a)FinderFullSeekBarLayout.q.GnH);
+    this.GmP = ((kotlin.g.a.a)FinderFullSeekBarLayout.m.GnF);
+    this.GmQ = ((kotlin.g.a.a)FinderFullSeekBarLayout.p.GnG);
+    this.xmM = -1;
+    this.GmR = kotlin.k.cm((kotlin.g.a.a)new z(this));
+    this.GmS = kotlin.k.cm((kotlin.g.a.a)new f(this));
+    this.GmT = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.GmU = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.GmV = kotlin.k.cm((kotlin.g.a.a)new n(this));
+    this.GmW = kotlin.k.cm((kotlin.g.a.a)new o(this));
+    this.GmX = kotlin.k.cm((kotlin.g.a.a)new u(this));
+    this.GmY = kotlin.k.cm((kotlin.g.a.a)new l(this));
+    this.GmZ = new FinderFullSeekBarLayout..ExternalSyntheticLambda5(this);
+    this.Gna = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.Gnb = true;
+    this.Gnc = kotlin.k.cm((kotlin.g.a.a)new t(this));
+    this.Gnd = kotlin.k.cm((kotlin.g.a.a)new w(this));
+    this.Gne = kotlin.k.cm((kotlin.g.a.a)new v(this));
+    this.Gnp = -1;
+    this.Gns = new HashSet();
+    this.Gnt = new Rect();
+    this.Gnv = 80;
+    this.Gnw = new FinderFullSeekBarLayout..ExternalSyntheticLambda0(this);
+    AppMethodBeat.o(335090);
   }
   
   public FinderFullSeekBarLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(286626);
-    this.AsO = kotlin.g.ar((kotlin.g.a.a)new w(this));
-    this.AKa = ((kotlin.g.a.a)q.AKV);
-    this.AKb = ((kotlin.g.a.a)p.AKU);
-    this.AKc = ((kotlin.g.a.a)o.AKT);
-    this.AKd = ((kotlin.g.a.a)l.AKQ);
-    this.AKe = ((kotlin.g.a.a)n.AKS);
-    this.AKf = kotlin.g.ar((kotlin.g.a.a)new x(this));
-    this.AKg = kotlin.g.ar((kotlin.g.a.a)new f(this));
-    this.AKh = kotlin.g.ar((kotlin.g.a.a)new c(this));
-    this.AKi = kotlin.g.ar((kotlin.g.a.a)new b(this));
-    this.AKj = kotlin.g.ar((kotlin.g.a.a)new m(this));
-    this.AKk = kotlin.g.ar((kotlin.g.a.a)new d(this));
-    this.AKl = true;
-    this.AKm = kotlin.g.ar((kotlin.g.a.a)new s(this));
-    this.AKn = kotlin.g.ar((kotlin.g.a.a)new t(this));
-    this.AKx = -1;
-    this.AKA = new HashSet();
-    AppMethodBeat.o(286626);
+    AppMethodBeat.i(335096);
+    this.FSi = kotlin.k.cm((kotlin.g.a.a)new y(this));
+    this.GmM = ((kotlin.g.a.a)FinderFullSeekBarLayout.s.GnJ);
+    this.GmN = ((kotlin.g.a.a)FinderFullSeekBarLayout.r.GnI);
+    this.GmO = ((kotlin.g.a.a)FinderFullSeekBarLayout.q.GnH);
+    this.GmP = ((kotlin.g.a.a)FinderFullSeekBarLayout.m.GnF);
+    this.GmQ = ((kotlin.g.a.a)FinderFullSeekBarLayout.p.GnG);
+    this.xmM = -1;
+    this.GmR = kotlin.k.cm((kotlin.g.a.a)new z(this));
+    this.GmS = kotlin.k.cm((kotlin.g.a.a)new f(this));
+    this.GmT = kotlin.k.cm((kotlin.g.a.a)new c(this));
+    this.GmU = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.GmV = kotlin.k.cm((kotlin.g.a.a)new n(this));
+    this.GmW = kotlin.k.cm((kotlin.g.a.a)new o(this));
+    this.GmX = kotlin.k.cm((kotlin.g.a.a)new u(this));
+    this.GmY = kotlin.k.cm((kotlin.g.a.a)new l(this));
+    this.GmZ = new FinderFullSeekBarLayout..ExternalSyntheticLambda5(this);
+    this.Gna = kotlin.k.cm((kotlin.g.a.a)new d(this));
+    this.Gnb = true;
+    this.Gnc = kotlin.k.cm((kotlin.g.a.a)new t(this));
+    this.Gnd = kotlin.k.cm((kotlin.g.a.a)new w(this));
+    this.Gne = kotlin.k.cm((kotlin.g.a.a)new v(this));
+    this.Gnp = -1;
+    this.Gns = new HashSet();
+    this.Gnt = new Rect();
+    this.Gnv = 80;
+    this.Gnw = new FinderFullSeekBarLayout..ExternalSyntheticLambda0(this);
+    AppMethodBeat.o(335096);
   }
   
-  private final void Rr(int paramInt)
+  private final void Uz(int paramInt)
   {
-    AppMethodBeat.i(286619);
+    AppMethodBeat.i(335210);
     getCurrentTimeTv().setText((CharSequence)formatSecToMin(paramInt));
-    AppMethodBeat.o(286619);
+    AppMethodBeat.o(335210);
   }
   
-  private final void egG()
+  private static final void a(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
   {
-    AppMethodBeat.i(286594);
+    AppMethodBeat.i(335242);
+    kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+    paramFinderFullSeekBarLayout.uz(true);
+    AppMethodBeat.o(335242);
+  }
+  
+  private static final void a(FinderFullSeekBarLayout paramFinderFullSeekBarLayout, Rect paramRect, View paramView, int paramInt, final ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(335270);
+    kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+    kotlin.g.b.s.u(paramRect, "$rect");
+    kotlin.g.b.s.u(paramViewGroup, "$parent");
+    if (!paramFinderFullSeekBarLayout.Gnn)
+    {
+      AppMethodBeat.o(335270);
+      return;
+    }
+    View localView = paramFinderFullSeekBarLayout.getAwesomePrivateLayout();
+    if (localView != null) {
+      localView.getGlobalVisibleRect(paramRect);
+    }
+    float f1 = paramRect.centerX();
+    float f2 = paramView.getWidth() / 2.0F;
+    float f3 = paramRect.centerY();
+    float f4 = paramView.getHeight() / 2.0F;
+    float f5 = paramFinderFullSeekBarLayout.getContext().getResources().getDimension(e.c.Edge_8A);
+    paramView.setTranslationX(f1 - f2);
+    paramView.setTranslationY(f3 - f4 - f5);
+    paramFinderFullSeekBarLayout = paramFinderFullSeekBarLayout.AUZ;
+    if (paramFinderFullSeekBarLayout == null) {}
+    for (long l = 0L;; l = paramFinderFullSeekBarLayout.bZA())
+    {
+      paramRect = (Integer)GnA.get(Long.valueOf(l));
+      paramFinderFullSeekBarLayout = paramRect;
+      if (paramRect == null) {
+        paramFinderFullSeekBarLayout = Integer.valueOf(0);
+      }
+      int i = ((Number)paramFinderFullSeekBarLayout).intValue();
+      if (i == 0)
+      {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.acZG, Integer.valueOf(paramInt + 1));
+        ((Map)GnA).put(Long.valueOf(l), Integer.valueOf(1));
+        Log.i("Finder.FullSeekBarLayout", kotlin.g.b.s.X("[checkShowGroupLikeTips] record count=", Integer.valueOf(paramInt + 1)));
+      }
+      ((Map)GnA).put(Long.valueOf(l), Integer.valueOf(i + 1));
+      if (i < 3) {
+        paramView.animate().setStartDelay(0L).setDuration(200L).alpha(1.0F).setListener((Animator.AnimatorListener)new e(paramView, paramViewGroup)).start();
+      }
+      AppMethodBeat.o(335270);
+      return;
+    }
+  }
+  
+  private static final void a(WeImageView paramWeImageView, FinderFullSeekBarLayout paramFinderFullSeekBarLayout, com.tencent.mm.loader.g.a.a parama, g paramg, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(335249);
+    kotlin.g.b.s.u(paramWeImageView, "$icon");
+    kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+    paramWeImageView.setIconColor(paramFinderFullSeekBarLayout.getContext().getResources().getColor(e.b.Red_90));
+    AppMethodBeat.o(335249);
+  }
+  
+  private static final boolean a(FinderFullSeekBarLayout paramFinderFullSeekBarLayout, View paramView, MotionEvent paramMotionEvent)
+  {
+    float f1 = 0.0F;
+    AppMethodBeat.i(335283);
+    kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+    float f3;
+    float f4;
+    float f2;
+    if ((paramFinderFullSeekBarLayout.Gnn) && (paramFinderFullSeekBarLayout.f(paramView, paramMotionEvent)))
+    {
+      f3 = paramFinderFullSeekBarLayout.Gnt.top;
+      f4 = paramFinderFullSeekBarLayout.Gnt.height() / 2.0F;
+      f2 = paramMotionEvent.getX() - paramFinderFullSeekBarLayout.Gnt.left;
+      if (f2 >= 0.0F) {}
+    }
+    for (;;)
+    {
+      paramView = MotionEvent.obtain(paramMotionEvent.getDownTime(), paramMotionEvent.getEventTime(), paramMotionEvent.getAction(), f1, f3 + f4, paramMotionEvent.getMetaState());
+      paramFinderFullSeekBarLayout.getSeekBar().onTouchEvent(paramView);
+      for (boolean bool = true;; bool = false)
+      {
+        if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
+          paramFinderFullSeekBarLayout.Gnu = false;
+        }
+        if (!paramFinderFullSeekBarLayout.Gnu) {
+          paramFinderFullSeekBarLayout.getParent().requestDisallowInterceptTouchEvent(false);
+        }
+        AppMethodBeat.o(335283);
+        return bool;
+        if (f2 <= paramFinderFullSeekBarLayout.Gnt.width()) {
+          break label197;
+        }
+        f1 = paramFinderFullSeekBarLayout.Gnt.width();
+        break;
+        paramFinderFullSeekBarLayout.Gnu = false;
+      }
+      label197:
+      f1 = f2;
+    }
+  }
+  
+  private static final void b(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+  {
+    AppMethodBeat.i(335260);
+    kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+    paramFinderFullSeekBarLayout.aCk("onStopTrackingTouch");
+    paramFinderFullSeekBarLayout.Gnh = false;
+    AppMethodBeat.o(335260);
+  }
+  
+  private static final void b(WeImageView paramWeImageView, final FinderFullSeekBarLayout paramFinderFullSeekBarLayout, com.tencent.mm.loader.g.a.a parama, g paramg, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(335258);
+    kotlin.g.b.s.u(paramWeImageView, "$icon");
+    kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+    if (paramBitmap != null) {
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new x(paramWeImageView, paramFinderFullSeekBarLayout));
+    }
+    AppMethodBeat.o(335258);
+  }
+  
+  private static final void d(View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(335276);
+    kotlin.g.b.s.u(paramView, "$it");
+    paramView.animate().cancel();
+    paramViewGroup.removeView(paramView);
+    AppMethodBeat.o(335276);
+  }
+  
+  private final boolean f(View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(335235);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(335235);
+      return false;
+    }
+    if (paramMotionEvent == null)
+    {
+      AppMethodBeat.o(335235);
+      return false;
+    }
+    if (!this.Gnn)
+    {
+      AppMethodBeat.o(335235);
+      return false;
+    }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (!kotlin.g.b.s.p(paramView, getSeekLayout())) {
+        break label190;
+      }
+      getSeekBar().getHitRect(this.Gnt);
+    }
+    for (;;)
+    {
+      if ((!this.Gnu) && (paramMotionEvent.getAction() == 0) && (paramMotionEvent.getY() >= this.Gnt.top - this.Gnv) && (paramMotionEvent.getY() <= this.Gnt.bottom + this.Gnv) && (paramMotionEvent.getX() >= this.Gnt.left) && (paramMotionEvent.getX() <= this.Gnt.right))
+      {
+        this.Gnu = true;
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
+      boolean bool = this.Gnu;
+      AppMethodBeat.o(335235);
+      return bool;
+      label190:
+      getSeekBar().getGlobalVisibleRect(this.Gnt);
+    }
+  }
+  
+  private final void fiD()
+  {
+    AppMethodBeat.i(335127);
     String str;
     BaseFinderFeed localBaseFinderFeed;
-    if (this.AKl)
+    if (this.Gnb)
     {
       str = "pause_by_icon";
-      localBaseFinderFeed = this.xxO;
-      if (localBaseFinderFeed == null) {
-        break label94;
-      }
-      localObject = am.zZN;
-      localObject = aj.Bnu;
-      localObject = getContext();
-      p.j(localObject, "context");
-      localObject = aj.a.fZ((Context)localObject);
-      if (localObject == null) {
-        break label89;
+      localBaseFinderFeed = this.AUZ;
+      if (localBaseFinderFeed != null)
+      {
+        localObject = bb.FuK;
+        localObject = as.GSQ;
+        localObject = getContext();
+        kotlin.g.b.s.s(localObject, "context");
+        localObject = as.a.hu((Context)localObject);
+        if (localObject != null) {
+          break label86;
+        }
       }
     }
-    label89:
-    for (Object localObject = ((aj)localObject).ekY();; localObject = null)
+    label86:
+    for (Object localObject = null;; localObject = ((as)localObject).fou())
     {
-      am.a((bid)localObject, str, false, localBaseFinderFeed.mf());
-      AppMethodBeat.o(286594);
+      bb.a((bui)localObject, str, false, localBaseFinderFeed.bZA());
+      AppMethodBeat.o(335127);
       return;
-      this.AKl = true;
+      this.Gnb = true;
       str = "pause_by_clckscreen";
       break;
     }
-    label94:
-    AppMethodBeat.o(286594);
   }
   
-  private final void egM()
+  private final void fiJ()
   {
-    AppMethodBeat.i(286615);
+    AppMethodBeat.i(335157);
     Object localObject = getParent();
     if (localObject == null)
     {
-      localObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(286615);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(335157);
       throw ((Throwable)localObject);
     }
     localObject = (ViewGroup)localObject;
-    View localView = ((ViewGroup)localObject).findViewById(b.f.finder_feed_full_group_like_tips_layout);
-    if (localView != null)
-    {
+    View localView = ((ViewGroup)localObject).findViewById(e.e.finder_feed_full_group_like_tips_layout);
+    if (localView != null) {
       ((ViewGroup)localObject).removeView(localView);
-      AppMethodBeat.o(286615);
-      return;
     }
-    AppMethodBeat.o(286615);
+    AppMethodBeat.o(335157);
   }
   
-  private final void egN()
+  private final void fiK()
   {
-    AppMethodBeat.i(286617);
-    Object localObject1 = this.xxO;
+    AppMethodBeat.i(335201);
+    Object localObject1 = this.AUZ;
+    label78:
+    label107:
+    int k;
     if (localObject1 != null)
     {
       localObject1 = ((BaseFinderFeed)localObject1).feedObject;
       if ((localObject1 != null) && (((FinderItem)localObject1).isLongVideo() == true))
       {
-        localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-        if (((Number)com.tencent.mm.plugin.finder.storage.d.dXx().aSr()).intValue() != 0)
-        {
-          localObject1 = this.xxO;
-          if (localObject1 != null)
-          {
-            localObject1 = ((BaseFinderFeed)localObject1).feedObject;
-            if ((localObject1 == null) || (((FinderItem)localObject1).isPostFinish() != true)) {}
-          }
+        i = 1;
+        if (i == 0) {
+          break label543;
         }
-        else
+        localObject1 = this.AUZ;
+        if (localObject1 == null) {
+          break label538;
+        }
+        localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+        if ((localObject1 == null) || (((FinderItem)localObject1).isPostFinish() != true)) {
+          break label538;
+        }
+        i = 1;
+        if (i == 0) {
+          break label543;
+        }
+        getAllTimeTv().setVisibility(8);
+        getLongVideoLayout().setVisibility(0);
+        getPlayCtrlBtn().setVisibility(0);
+        uz(false);
+        localObject1 = (ViewGroup)getSeekLayout().findViewById(e.e.part_top_layout);
+        k = ((ViewGroup)localObject1).getChildCount();
+        if (k <= 0) {}
+      }
+    }
+    int j;
+    for (int i = 0;; i = j)
+    {
+      j = i + 1;
+      Object localObject2 = ((ViewGroup)localObject1).getChildAt(i);
+      if ((((View)localObject2).getId() != e.e.horizontal_hint_layout) && (((View)localObject2).getId() != e.e.full_long_video_layout))
+      {
+        Object localObject3 = this.AUZ;
+        if (localObject3 == null) {
+          break label572;
+        }
+        localObject3 = ((BaseFinderFeed)localObject3).feedObject;
+        if ((localObject3 == null) || (((FinderItem)localObject3).isLongVideo())) {
+          break label572;
+        }
+        i = 1;
+        label206:
+        if (((i != 0) || (((View)localObject2).getId() != getAllTimeTv().getId())) && (((View)localObject2).getVisibility() != 0))
         {
-          getAllTimeTv().setVisibility(8);
-          getLongVideoLayout().setVisibility(0);
+          localObject3 = ((View)localObject2).animate();
+          if (localObject3 != null) {
+            ((ViewPropertyAnimator)localObject3).cancel();
+          }
+          ((View)localObject2).setVisibility(0);
+          ((View)localObject2).setAlpha(0.0F);
+          ((View)localObject2).animate().alpha(1.0F).setDuration(130L).setListener(null).start();
         }
       }
-    }
-    Object localObject2;
-    for (;;)
-    {
-      localObject1 = (ViewGroup)getSeekLayout().findViewById(b.f.part_top_layout);
-      p.j(localObject1, "partTopLayout");
-      int j = ((ViewGroup)localObject1).getChildCount();
-      int i = 0;
-      while (i < j)
+      if (j >= k)
       {
-        localObject2 = ((ViewGroup)localObject1).getChildAt(i);
-        p.j(localObject2, "child");
-        if (((View)localObject2).getId() != b.f.full_long_video_layout)
+        localObject1 = getSeekLayout().findViewById(e.e.part_bottom_layout);
+        if ((localObject1 != null) && (((View)localObject1).getVisibility() != 0))
         {
-          Object localObject3 = this.xxO;
-          if (localObject3 != null)
-          {
-            localObject3 = ((BaseFinderFeed)localObject3).feedObject;
-            if ((localObject3 != null) && (!((FinderItem)localObject3).isLongVideo())) {
-              break label216;
-            }
+          localObject2 = ((View)localObject1).animate();
+          if (localObject2 != null) {
+            ((ViewPropertyAnimator)localObject2).cancel();
           }
-          label216:
-          if ((((View)localObject2).getId() != getAllTimeTv().getId()) && (((View)localObject2).getVisibility() != 0))
-          {
-            localObject3 = ((View)localObject2).animate();
-            if (localObject3 != null) {
-              ((ViewPropertyAnimator)localObject3).cancel();
-            }
-            ((View)localObject2).setVisibility(0);
-            ((View)localObject2).setAlpha(0.0F);
-            ((View)localObject2).animate().alpha(1.0F).setDuration(130L).setListener(null).start();
-          }
+          ((View)localObject1).setVisibility(0);
+          ((View)localObject1).setAlpha(0.0F);
+          ((View)localObject1).animate().alpha(1.0F).setDuration(130L).setListener((Animator.AnimatorListener)new ab(this)).start();
         }
-        i += 1;
-      }
-      getLongVideoLayout().setVisibility(8);
-      getAllTimeTv().setVisibility(0);
-    }
-    localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dXx().aSr()).intValue() == 1)
-    {
-      localObject1 = this.xxO;
-      if ((localObject1 != null) && (((BaseFinderFeed)localObject1).bAQ() == 4))
-      {
-        localObject1 = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("offset", new float[] { 0.0F, 1.0F }) });
-        p.j(localObject1, "animator");
-        ((ValueAnimator)localObject1).setInterpolator((TimeInterpolator)new LinearInterpolator());
-        ((ValueAnimator)localObject1).setDuration(200L);
-        ((ValueAnimator)localObject1).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new z(this));
-        ((ValueAnimator)localObject1).start();
-      }
-    }
-    localObject1 = getSeekLayout().findViewById(b.f.part_bottom_layout);
-    if ((localObject1 != null) && (((View)localObject1).getVisibility() != 0))
-    {
-      localObject2 = ((View)localObject1).animate();
-      if (localObject2 != null) {
-        ((ViewPropertyAnimator)localObject2).cancel();
-      }
-      ((View)localObject1).setVisibility(0);
-      ((View)localObject1).setAlpha(0.0F);
-      ((View)localObject1).animate().alpha(1.0F).setDuration(130L).setListener((Animator.AnimatorListener)new y(this)).start();
-    }
-    localObject1 = this.xxO;
-    if (localObject1 != null)
-    {
-      localObject1 = ((BaseFinderFeed)localObject1).feedObject;
-      if (localObject1 != null)
-      {
-        localObject1 = ((FinderItem)localObject1).getFeedObject();
+        localObject1 = this.AUZ;
         if (localObject1 != null)
         {
-          localObject2 = com.tencent.mm.plugin.finder.upload.action.l.ACj;
-          localObject1 = com.tencent.mm.plugin.finder.upload.action.l.ecG().r((FinderObject)localObject1);
-          bool1 = ((Boolean)((o)localObject1).Mx).booleanValue();
-          boolean bool2 = ((Boolean)((o)localObject1).My).booleanValue();
-          if ((!bool1) || (!bool2)) {
-            break label665;
+          localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+          if (localObject1 != null)
+          {
+            localObject1 = ((FinderItem)localObject1).getFeedObject();
+            if (localObject1 != null)
+            {
+              localObject2 = l.Gdj;
+              localObject1 = l.fek().u((FinderObject)localObject1);
+              bool1 = ((Boolean)((r)localObject1).bsC).booleanValue();
+              boolean bool2 = ((Boolean)((r)localObject1).bsD).booleanValue();
+              if ((!bool1) || (!bool2)) {
+                break label577;
+              }
+            }
           }
         }
-      }
-    }
-    label665:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      qV(bool1);
-      if ((((Boolean)this.AKd.invoke()).booleanValue()) || (this.AKz))
-      {
-        this.AKl = false;
-        if (((Boolean)this.AKc.invoke()).booleanValue()) {
-          egG();
+        label538:
+        label543:
+        label572:
+        label577:
+        for (boolean bool1 = true;; bool1 = false)
+        {
+          uw(bool1);
+          if ((((Boolean)this.GmP.invoke()).booleanValue()) || (this.Gnr))
+          {
+            this.Gnb = false;
+            if (((Boolean)this.GmO.invoke()).booleanValue()) {
+              fiD();
+            }
+          }
+          fiM();
+          AppMethodBeat.o(335201);
+          return;
+          i = 0;
+          break;
+          i = 0;
+          break label78;
+          getLongVideoLayout().setVisibility(8);
+          getAllTimeTv().setVisibility(0);
+          getPlayCtrlBtn().setVisibility(8);
+          break label107;
+          i = 0;
+          break label206;
         }
       }
-      egP();
-      AppMethodBeat.o(286617);
-      return;
     }
   }
   
-  private final void egO()
+  private final void fiL()
   {
-    AppMethodBeat.i(286618);
-    egQ();
-    Object localObject1 = getSeekLayout().findViewById(b.f.part_bottom_layout);
+    AppMethodBeat.i(335205);
+    fiN();
+    Object localObject1 = getSeekLayout().findViewById(e.e.part_bottom_layout);
     Object localObject2;
     if ((localObject1 != null) && (((View)localObject1).getVisibility() == 0))
     {
@@ -372,289 +573,354 @@ public final class FinderFullSeekBarLayout
       }
       ((View)localObject1).animate().alpha(0.0F).setDuration(130L).setListener((Animator.AnimatorListener)new i((View)localObject1)).start();
     }
-    localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
-    if (((Number)com.tencent.mm.plugin.finder.storage.d.dXx().aSr()).intValue() == 1)
+    localObject1 = (ViewGroup)getSeekLayout().findViewById(e.e.part_top_layout);
+    int k = ((ViewGroup)localObject1).getChildCount();
+    if (k > 0) {}
+    int j;
+    for (int i = 0;; i = j)
     {
-      localObject1 = this.xxO;
-      if ((localObject1 != null) && (((BaseFinderFeed)localObject1).bAQ() == 4))
-      {
-        localObject1 = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("offset", new float[] { 1.0F, 0.0F }) });
-        p.j(localObject1, "animator");
-        ((ValueAnimator)localObject1).setInterpolator((TimeInterpolator)new LinearInterpolator());
-        ((ValueAnimator)localObject1).setDuration(200L);
-        ((ValueAnimator)localObject1).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new j(this));
-        ((ValueAnimator)localObject1).start();
-      }
-    }
-    localObject1 = (ViewGroup)getSeekLayout().findViewById(b.f.part_top_layout);
-    p.j(localObject1, "partTopLayout");
-    int j = ((ViewGroup)localObject1).getChildCount();
-    int i = 0;
-    while (i < j)
-    {
+      j = i + 1;
       localObject2 = ((ViewGroup)localObject1).getChildAt(i);
-      p.j(localObject2, "child");
-      if ((((View)localObject2).getId() != b.f.full_long_video_layout) && (((View)localObject2).getVisibility() == 0) && (((View)localObject2).getVisibility() == 0))
+      if ((((View)localObject2).getId() != e.e.horizontal_hint_layout) && (((View)localObject2).getId() != e.e.full_long_video_layout) && (((View)localObject2).getVisibility() == 0) && (((View)localObject2).getVisibility() == 0))
       {
         ViewPropertyAnimator localViewPropertyAnimator = ((View)localObject2).animate();
         if (localViewPropertyAnimator != null) {
           localViewPropertyAnimator.cancel();
         }
-        ((View)localObject2).animate().alpha(0.0F).setDuration(130L).setListener((Animator.AnimatorListener)new k((View)localObject2)).start();
+        ((View)localObject2).animate().alpha(0.0F).setDuration(130L).setListener((Animator.AnimatorListener)new j((View)localObject2)).start();
       }
-      i += 1;
-    }
-    if (!((Boolean)this.AKd.invoke()).booleanValue())
-    {
-      this.AKl = false;
-      if (((Boolean)this.AKc.invoke()).booleanValue()) {
-        egG();
+      if (j >= k)
+      {
+        if (getPlayCtrlBtn().getVisibility() == 0) {
+          getPlayCtrlBtn().animate().alpha(0.0F).setDuration(130L).setListener((Animator.AnimatorListener)new k(this)).start();
+        }
+        if (!((Boolean)this.GmP.invoke()).booleanValue())
+        {
+          this.Gnb = false;
+          if (((Boolean)this.GmO.invoke()).booleanValue())
+          {
+            fiD();
+            AppMethodBeat.o(335205);
+          }
+        }
+        else
+        {
+          Log.i("Finder.FullSeekBarLayout", "isPlayingCallback false.");
+        }
+        AppMethodBeat.o(335205);
+        return;
       }
     }
-    AppMethodBeat.o(286618);
   }
   
-  private final void egP()
+  private final void fiM()
   {
-    int i = 1;
-    AppMethodBeat.i(286622);
-    if (!this.AKs)
+    int j = 1;
+    AppMethodBeat.i(335231);
+    if (!this.Gnk)
     {
-      localObject = this.xxO;
-      if (((localObject == null) || (((BaseFinderFeed)localObject).isPreview != true)) && (!this.AKt)) {}
+      localObject = this.AUZ;
+      if ((localObject == null) || (((BaseFinderFeed)localObject).isPreview != true)) {
+        break label55;
+      }
     }
-    else
+    label55:
+    for (int i = 1; (i != 0) || (this.Gnl); i = 0)
     {
-      AppMethodBeat.o(286622);
+      AppMethodBeat.o(335231);
       return;
     }
-    if (this.AKr)
+    if (this.Gnj)
     {
-      AppMethodBeat.o(286622);
+      AppMethodBeat.o(335231);
       return;
     }
     Object localObject = getAwesomePrivateLayout();
-    if (localObject != null)
+    if ((localObject != null) && (((View)localObject).getVisibility() == 0)) {}
+    for (i = 1; i == 0; i = 0)
     {
-      if (((View)localObject).getVisibility() != 0) {
-        AppMethodBeat.o(286622);
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(286622);
+      AppMethodBeat.o(335231);
       return;
     }
-    localObject = com.tencent.mm.kernel.h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    final int j = ((com.tencent.mm.kernel.f)localObject).aHp().getInt(ar.a.VxS, 0);
-    if (j < 3)
+    int k = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.acZG, 0);
+    if (k < 3)
     {
       localObject = getParent();
       if (localObject == null)
       {
-        localObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(286622);
+        localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(335231);
         throw ((Throwable)localObject);
       }
       localObject = (ViewGroup)localObject;
-      if (((ViewGroup)localObject).findViewById(b.f.finder_feed_full_group_like_tips_layout) != null) {}
-      while (i != 0)
+      if (((ViewGroup)localObject).findViewById(e.e.finder_feed_full_group_like_tips_layout) != null) {}
+      for (i = j; i != 0; i = 0)
       {
-        AppMethodBeat.o(286622);
+        AppMethodBeat.o(335231);
         return;
-        i = 0;
       }
-      final Rect localRect = new Rect();
-      final View localView = ad.kS(getContext()).inflate(b.g.finder_group_like_tips_layout, (ViewGroup)localObject, false);
-      p.j(localView, "tipsLayout");
+      Rect localRect = new Rect();
+      View localView = af.mU(getContext()).inflate(e.f.finder_group_like_tips_layout, (ViewGroup)localObject, false);
       localView.setAlpha(0.0F);
       ((ViewGroup)localObject).addView(localView);
-      localView.postDelayed((Runnable)new e(this, localRect, localView, j, (ViewGroup)localObject), 600L);
+      localView.postDelayed(new FinderFullSeekBarLayout..ExternalSyntheticLambda6(this, localRect, localView, k, (ViewGroup)localObject), 600L);
     }
-    AppMethodBeat.o(286622);
-  }
-  
-  private final void egQ()
-  {
-    AppMethodBeat.i(286623);
-    Log.i("Finder.FullSeekBarLayout", "[dismissGroupLikeTips]");
-    Object localObject2 = getParent();
-    Object localObject1 = localObject2;
-    if (!(localObject2 instanceof ViewGroup)) {
-      localObject1 = null;
-    }
-    localObject1 = (ViewGroup)localObject1;
-    if (localObject1 != null)
-    {
-      localObject2 = ((ViewGroup)localObject1).findViewById(b.f.finder_feed_full_group_like_tips_layout);
-      if (localObject2 != null)
-      {
-        ((View)localObject2).post((Runnable)new g((View)localObject2, (ViewGroup)localObject1));
-        AppMethodBeat.o(286623);
-        return;
-      }
-    }
-    AppMethodBeat.o(286623);
+    AppMethodBeat.o(335231);
   }
   
   private static String formatSecToMin(int paramInt)
   {
-    AppMethodBeat.i(286621);
-    Object localObject = af.aaBG;
+    AppMethodBeat.i(335223);
+    Object localObject = am.aixg;
     localObject = String.format("%02d:%02d", Arrays.copyOf(new Object[] { Long.valueOf(paramInt / 60L), Long.valueOf(paramInt % 60L) }, 2));
-    p.j(localObject, "java.lang.String.format(format, *args)");
-    AppMethodBeat.o(286621);
+    kotlin.g.b.s.s(localObject, "java.lang.String.format(format, *args)");
+    AppMethodBeat.o(335223);
     return localObject;
   }
   
   private final TextView getAllTimeLongTv()
   {
-    AppMethodBeat.i(286591);
-    TextView localTextView = (TextView)this.AKi.getValue();
-    AppMethodBeat.o(286591);
-    return localTextView;
+    AppMethodBeat.i(335109);
+    Object localObject = this.GmU.getValue();
+    kotlin.g.b.s.s(localObject, "<get-allTimeLongTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(335109);
+    return localObject;
   }
   
   private final TextView getAllTimeTv()
   {
-    AppMethodBeat.i(286590);
-    TextView localTextView = (TextView)this.AKh.getValue();
-    AppMethodBeat.o(286590);
-    return localTextView;
+    AppMethodBeat.i(335107);
+    Object localObject = this.GmT.getValue();
+    kotlin.g.b.s.s(localObject, "<get-allTimeTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(335107);
+    return localObject;
   }
   
   private final View getAwesomePrivateLayout()
   {
-    AppMethodBeat.i(286593);
-    View localView = (View)this.AKk.getValue();
-    AppMethodBeat.o(286593);
+    AppMethodBeat.i(335120);
+    View localView = (View)this.Gna.getValue();
+    AppMethodBeat.o(335120);
     return localView;
   }
   
   private final TextView getCurrentTimeTv()
   {
-    AppMethodBeat.i(286589);
-    TextView localTextView = (TextView)this.AKg.getValue();
-    AppMethodBeat.o(286589);
-    return localTextView;
+    AppMethodBeat.i(335102);
+    Object localObject = this.GmS.getValue();
+    kotlin.g.b.s.s(localObject, "<get-currentTimeTv>(...)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(335102);
+    return localObject;
   }
   
   private final View getLongVideoLayout()
   {
-    AppMethodBeat.i(286592);
-    View localView = (View)this.AKj.getValue();
-    AppMethodBeat.o(286592);
-    return localView;
+    AppMethodBeat.i(335114);
+    Object localObject = this.GmV.getValue();
+    kotlin.g.b.s.s(localObject, "<get-longVideoLayout>(...)");
+    localObject = (View)localObject;
+    AppMethodBeat.o(335114);
+    return localObject;
   }
   
   private final WeImageView getPauseIcon()
   {
-    AppMethodBeat.i(286595);
-    WeImageView localWeImageView = (WeImageView)this.AKm.getValue();
-    AppMethodBeat.o(286595);
+    AppMethodBeat.i(335133);
+    WeImageView localWeImageView = (WeImageView)this.Gnc.getValue();
+    AppMethodBeat.o(335133);
     return localWeImageView;
+  }
+  
+  private final TextView getPrivateAweSomeTv()
+  {
+    AppMethodBeat.i(335142);
+    TextView localTextView = (TextView)this.Gne.getValue();
+    AppMethodBeat.o(335142);
+    return localTextView;
   }
   
   private final WeImageView getPrivateAwesomeIcon()
   {
-    AppMethodBeat.i(286596);
-    WeImageView localWeImageView = (WeImageView)this.AKn.getValue();
-    AppMethodBeat.o(286596);
+    AppMethodBeat.i(335139);
+    WeImageView localWeImageView = (WeImageView)this.Gnd.getValue();
+    AppMethodBeat.o(335139);
     return localWeImageView;
   }
   
   private final SeekBar getSeekBar()
   {
-    AppMethodBeat.i(286582);
-    SeekBar localSeekBar = (SeekBar)this.AsO.getValue();
-    AppMethodBeat.o(286582);
-    return localSeekBar;
-  }
-  
-  private final ViewGroup getSeekLayout()
-  {
-    AppMethodBeat.i(286588);
-    ViewGroup localViewGroup = (ViewGroup)this.AKf.getValue();
-    AppMethodBeat.o(286588);
-    return localViewGroup;
+    AppMethodBeat.i(335099);
+    Object localObject = this.FSi.getValue();
+    kotlin.g.b.s.s(localObject, "<get-seekBar>(...)");
+    localObject = (SeekBar)localObject;
+    AppMethodBeat.o(335099);
+    return localObject;
   }
   
   private final float getSeekPercent()
   {
-    AppMethodBeat.i(286613);
+    AppMethodBeat.i(335148);
     SeekBar localSeekBar = getSeekBar();
     if (localSeekBar == null)
     {
-      AppMethodBeat.o(286613);
+      AppMethodBeat.o(335148);
       return 0.0F;
     }
     float f = 1.0F * localSeekBar.getProgress() / localSeekBar.getMax();
-    AppMethodBeat.o(286613);
+    AppMethodBeat.o(335148);
     return f;
   }
   
-  private final void hf(int paramInt1, int paramInt2)
+  private final void ix(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(286620);
+    AppMethodBeat.i(335215);
     Object localObject = formatSecToMin(paramInt2);
     getAllTimeTv().setText((CharSequence)localObject);
     getAllTimeLongTv().setText((CharSequence)formatSecToMin(paramInt2 - paramInt1));
-    localObject = this.xxO;
-    if (localObject != null)
-    {
+    localObject = this.AUZ;
+    if (localObject != null) {
       ((BaseFinderFeed)localObject).isHasLongVideoTimeBack = true;
-      AppMethodBeat.o(286620);
-      return;
     }
-    AppMethodBeat.o(286620);
+    AppMethodBeat.o(335215);
   }
   
-  private final void qX(boolean paramBoolean)
+  private final void setPlayIconState(boolean paramBoolean)
   {
-    AppMethodBeat.i(286616);
-    Object localObject = this.xxO;
-    if (((localObject == null) || (((BaseFinderFeed)localObject).isPreview != true)) && (!this.AKs))
+    AppMethodBeat.i(335174);
+    if (this.Gni != null)
     {
-      localObject = this.xxO;
-      if (localObject != null)
+      u((View)this.Gni, paramBoolean);
+      AppMethodBeat.o(335174);
+      return;
+    }
+    u((View)this.Gnf, paramBoolean);
+    AppMethodBeat.o(335174);
+  }
+  
+  private final void u(View paramView, boolean paramBoolean)
+  {
+    AppMethodBeat.i(335185);
+    if (paramView != null)
+    {
+      ViewPropertyAnimator localViewPropertyAnimator;
+      if (paramBoolean)
       {
-        localObject = ((BaseFinderFeed)localObject).feedObject;
-        if ((localObject != null) && (((FinderItem)localObject).isPostFinish() == true) && (!this.AKt)) {
-          break label129;
+        localViewPropertyAnimator = paramView.animate();
+        if (localViewPropertyAnimator != null) {
+          localViewPropertyAnimator.cancel();
+        }
+        paramView.setVisibility(0);
+        paramView.setAlpha(0.0F);
+        paramView = paramView.animate();
+        if (paramView != null)
+        {
+          paramView = paramView.alpha(1.0F);
+          if (paramView != null)
+          {
+            paramView = paramView.setDuration(200L);
+            if (paramView != null)
+            {
+              paramView = paramView.setListener(null);
+              if (paramView != null)
+              {
+                paramView.start();
+                AppMethodBeat.o(335185);
+              }
+            }
+          }
+        }
+      }
+      else
+      {
+        localViewPropertyAnimator = paramView.animate();
+        if (localViewPropertyAnimator != null) {
+          localViewPropertyAnimator.cancel();
+        }
+        paramView.setAlpha(1.0F);
+        paramView = paramView.animate();
+        if (paramView != null)
+        {
+          paramView = paramView.alpha(0.0F);
+          if (paramView != null)
+          {
+            paramView = paramView.setDuration(200L);
+            if (paramView != null)
+            {
+              paramView = paramView.setListener((Animator.AnimatorListener)new aa(this));
+              if (paramView != null) {
+                paramView.start();
+              }
+            }
+          }
         }
       }
     }
-    localObject = getAwesomePrivateLayout();
-    if (localObject != null)
+    AppMethodBeat.o(335185);
+  }
+  
+  private final void uy(boolean paramBoolean)
+  {
+    int j = 1;
+    AppMethodBeat.i(335169);
+    Object localObject = this.AUZ;
+    if ((localObject != null) && (((BaseFinderFeed)localObject).isPreview == true))
     {
-      localObject = ((View)localObject).animate();
-      if (localObject != null) {
-        ((ViewPropertyAnimator)localObject).cancel();
+      i = 1;
+      if ((i == 0) && (!this.Gnk))
+      {
+        localObject = this.AUZ;
+        if (localObject == null) {
+          break label182;
+        }
+        localObject = ((BaseFinderFeed)localObject).feedObject;
+        if ((localObject == null) || (((FinderItem)localObject).isPostFinish() != true)) {
+          break label182;
+        }
       }
     }
-    localObject = getAwesomePrivateLayout();
-    if (localObject != null) {
-      ((View)localObject).setTag(Boolean.FALSE);
-    }
-    localObject = getAwesomePrivateLayout();
-    if (localObject != null)
+    label182:
+    for (int i = j;; i = 0)
     {
-      ((View)localObject).setVisibility(4);
-      AppMethodBeat.o(286616);
+      if ((i != 0) && (!this.Gnl))
+      {
+        localObject = com.tencent.mm.plugin.finder.storage.d.FAy;
+        if (((Number)com.tencent.mm.plugin.finder.storage.d.eXL().bmg()).intValue() != 0) {
+          break label187;
+        }
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null)
+      {
+        localObject = ((View)localObject).animate();
+        if (localObject != null) {
+          ((ViewPropertyAnimator)localObject).cancel();
+        }
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null) {
+        ((View)localObject).setTag(Boolean.FALSE);
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null) {
+        ((View)localObject).setVisibility(4);
+      }
+      AppMethodBeat.o(335169);
       return;
+      i = 0;
+      break;
     }
-    AppMethodBeat.o(286616);
-    return;
-    label129:
+    label187:
     localObject = getParent();
     if (localObject == null)
     {
-      localObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(286616);
+      localObject = new NullPointerException("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(335169);
       throw ((Throwable)localObject);
     }
-    localObject = ((ViewGroup)localObject).findViewById(b.f.image_banner_indicator);
+    localObject = ((ViewGroup)localObject).findViewById(e.e.image_banner_indicator);
     if (localObject != null)
     {
       if (paramBoolean) {
@@ -664,68 +930,64 @@ public final class FinderFullSeekBarLayout
     else
     {
       localObject = getAwesomePrivateLayout();
-      if (localObject == null) {
-        break label347;
+      if (localObject != null) {
+        break label443;
       }
-      localObject = ((View)localObject).getTag();
     }
-    for (;;)
+    label443:
+    for (localObject = null;; localObject = ((View)localObject).getTag())
     {
-      if ((paramBoolean) && ((p.h(localObject, Boolean.TRUE) ^ true)))
-      {
-        localObject = getAwesomePrivateLayout();
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).animate();
-          if (localObject != null) {
-            ((ViewPropertyAnimator)localObject).cancel();
-          }
-        }
-        localObject = getAwesomePrivateLayout();
-        if (localObject != null) {
-          ((View)localObject).setVisibility(0);
-        }
-        localObject = getAwesomePrivateLayout();
-        if (localObject != null) {
-          ((View)localObject).setAlpha(0.0F);
-        }
-        localObject = getAwesomePrivateLayout();
-        if (localObject != null) {
-          ((View)localObject).setTag(Boolean.TRUE);
-        }
-        localObject = getAwesomePrivateLayout();
-        if (localObject != null)
-        {
-          localObject = ((View)localObject).animate();
-          if (localObject != null)
-          {
-            localObject = ((ViewPropertyAnimator)localObject).alpha(1.0F);
-            if (localObject != null)
-            {
-              localObject = ((ViewPropertyAnimator)localObject).setDuration(200L);
-              if (localObject != null)
-              {
-                localObject = ((ViewPropertyAnimator)localObject).setListener(null);
-                if (localObject != null)
-                {
-                  ((ViewPropertyAnimator)localObject).start();
-                  AppMethodBeat.o(286616);
-                  return;
-                  ((View)localObject).setVisibility(0);
-                  break;
-                  label347:
-                  localObject = null;
-                  continue;
-                }
-              }
-            }
-          }
-        }
-        AppMethodBeat.o(286616);
-        return;
+      if ((!paramBoolean) || (kotlin.g.b.s.p(localObject, Boolean.TRUE))) {
+        break label453;
       }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null)
+      {
+        localObject = ((View)localObject).animate();
+        if (localObject != null) {
+          ((ViewPropertyAnimator)localObject).cancel();
+        }
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null) {
+        ((View)localObject).setVisibility(0);
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null) {
+        ((View)localObject).setAlpha(0.0F);
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject != null) {
+        ((View)localObject).setTag(Boolean.TRUE);
+      }
+      localObject = getAwesomePrivateLayout();
+      if (localObject == null) {
+        break label611;
+      }
+      localObject = ((View)localObject).animate();
+      if (localObject == null) {
+        break label611;
+      }
+      localObject = ((ViewPropertyAnimator)localObject).alpha(1.0F);
+      if (localObject == null) {
+        break label611;
+      }
+      localObject = ((ViewPropertyAnimator)localObject).setDuration(200L);
+      if (localObject == null) {
+        break label611;
+      }
+      localObject = ((ViewPropertyAnimator)localObject).setListener(null);
+      if (localObject == null) {
+        break label611;
+      }
+      ((ViewPropertyAnimator)localObject).start();
+      AppMethodBeat.o(335169);
+      return;
+      ((View)localObject).setVisibility(0);
+      break;
     }
-    if ((!paramBoolean) && ((p.h(localObject, Boolean.FALSE) ^ true)))
+    label453:
+    if ((!paramBoolean) && (!kotlin.g.b.s.p(localObject, Boolean.FALSE)))
     {
       localObject = getAwesomePrivateLayout();
       if (localObject != null)
@@ -755,476 +1017,746 @@ public final class FinderFullSeekBarLayout
             localObject = ((ViewPropertyAnimator)localObject).setDuration(200L);
             if (localObject != null)
             {
-              localObject = ((ViewPropertyAnimator)localObject).setListener((Animator.AnimatorListener)new h(this));
-              if (localObject != null)
-              {
+              localObject = ((ViewPropertyAnimator)localObject).setListener((Animator.AnimatorListener)new g(this));
+              if (localObject != null) {
                 ((ViewPropertyAnimator)localObject).start();
-                AppMethodBeat.o(286616);
-                return;
               }
             }
           }
         }
       }
     }
-    AppMethodBeat.o(286616);
+    label611:
+    AppMethodBeat.o(335169);
   }
   
-  public final void aGh(String paramString)
+  private final void uz(boolean paramBoolean)
   {
-    AppMethodBeat.i(286610);
-    p.k(paramString, "reason");
-    this.AKx = -1;
-    if (!this.AKv)
+    AppMethodBeat.i(335190);
+    if (paramBoolean)
     {
-      AppMethodBeat.o(286610);
+      getHorizontalHint().setAlpha(1.0F);
+      getHorizontalHint().animate().alpha(0.0F).setDuration(300L).setListener((Animator.AnimatorListener)new h(this)).start();
+      AppMethodBeat.o(335190);
       return;
     }
-    Log.i("Finder.FullSeekBarLayout", "[exitSeekMode] reason=".concat(String.valueOf(paramString)));
-    this.AKv = false;
-    egO();
-    qX(false);
-    egM();
-    getSeekLayout().setClickable(false);
-    this.AKq = false;
-    AppMethodBeat.o(286610);
+    getHorizontalHint().animate().cancel();
+    getHorizontalHint().removeCallbacks(this.GmZ);
+    getHorizontalHint().setVisibility(8);
+    AppMethodBeat.o(335190);
   }
   
-  public final void b(boolean paramBoolean, BaseFinderFeed paramBaseFinderFeed)
+  public final void a(boolean paramBoolean, BaseFinderFeed paramBaseFinderFeed)
   {
-    AppMethodBeat.i(286599);
-    this.AKs = paramBoolean;
-    this.xxO = paramBaseFinderFeed;
+    int i = 1;
+    AppMethodBeat.i(335568);
+    this.Gnk = paramBoolean;
+    this.AUZ = paramBaseFinderFeed;
     getAllTimeTv().setVisibility(8);
+    uz(false);
+    getPlayCtrlBtn().setVisibility(8);
     if (paramBaseFinderFeed != null)
     {
       FinderItem localFinderItem = paramBaseFinderFeed.feedObject;
       if ((localFinderItem != null) && (localFinderItem.isLongVideo() == true))
       {
+        if (i == 0) {
+          break label123;
+        }
         getLongVideoLayout().setVisibility(0);
-        hf(0, ((csg)paramBaseFinderFeed.feedObject.getLongVideoMediaList().getFirst()).videoDuration);
-        AppMethodBeat.o(286599);
-        return;
+        ix(0, ((dji)paramBaseFinderFeed.feedObject.getLongVideoMediaList().getFirst()).videoDuration);
+        getAllTimeLongTv().setTranslationX(0.0F);
       }
     }
-    getLongVideoLayout().setVisibility(8);
-    AppMethodBeat.o(286599);
+    for (;;)
+    {
+      this.xmM = -1;
+      AppMethodBeat.o(335568);
+      return;
+      i = 0;
+      break;
+      label123:
+      getLongVideoLayout().setVisibility(8);
+    }
   }
   
-  public final void bk(float paramFloat)
+  public final boolean a(int paramInt, ViewGroup paramViewGroup, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(286609);
-    setProgress(kotlin.h.a.dm(getSeekBar().getMax() * paramFloat));
-    AppMethodBeat.o(286609);
+    AppMethodBeat.i(335758);
+    kotlin.g.b.s.u(paramViewGroup, "parent");
+    if (this.Gnn)
+    {
+      if (this.Gnt.isEmpty()) {
+        getSeekBar().getGlobalVisibleRect(this.Gnt);
+      }
+      if ((paramFloat2 >= this.Gnt.top - this.Gnv) && (paramFloat2 <= this.Gnt.bottom + this.Gnv) && (paramFloat1 >= this.Gnt.left) && (paramFloat1 <= this.Gnt.right))
+      {
+        AppMethodBeat.o(335758);
+        return true;
+      }
+    }
+    AppMethodBeat.o(335758);
+    return false;
   }
   
-  public final void egH() {}
+  public final void aCk(String paramString)
+  {
+    AppMethodBeat.i(335704);
+    kotlin.g.b.s.u(paramString, "reason");
+    this.Gnp = -1;
+    this.Gnu = false;
+    if (!this.Gnn)
+    {
+      AppMethodBeat.o(335704);
+      return;
+    }
+    Log.i("Finder.FullSeekBarLayout", kotlin.g.b.s.X("[exitSeekMode] reason=", paramString));
+    this.Gnn = false;
+    fiL();
+    uy(false);
+    fiJ();
+    getSeekLayout().setClickable(false);
+    this.Gnh = false;
+    if ((n.U(paramString, "onSingleTapUp", false)) && (this.xmM != -1) && (this.xmM != getSeekBar().getProgress()))
+    {
+      paramString = this.Gnm;
+      if (paramString != null) {
+        paramString.cq(getSeekPercent());
+      }
+    }
+    this.xmM = -1;
+    AppMethodBeat.o(335704);
+  }
   
-  public final boolean egI()
+  public final void co(float paramFloat)
+  {
+    AppMethodBeat.i(335693);
+    setProgress(kotlin.h.a.eH(getSeekBar().getMax() * paramFloat));
+    AppMethodBeat.o(335693);
+  }
+  
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(335481);
+    if (f((View)this, paramMotionEvent))
+    {
+      super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(335481);
+      return true;
+    }
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(335481);
+    return bool;
+  }
+  
+  public final void fiE() {}
+  
+  public final boolean fiF()
   {
     return true;
   }
   
-  public final boolean egJ()
+  public final boolean fiG()
   {
-    return this.AKp;
+    return this.Gng;
   }
   
-  public final void egK()
+  public final void fiH()
   {
-    AppMethodBeat.i(286611);
-    if ((this.AKv) && (!this.AKq))
+    AppMethodBeat.i(335715);
+    if ((this.Gnn) && (!this.Gnh))
     {
-      AppMethodBeat.o(286611);
+      AppMethodBeat.o(335715);
       return;
     }
-    this.AKv = true;
+    this.Gnn = true;
     setPlayingStatus(false);
-    egN();
+    fiK();
     getSeekLayout().setClickable(true);
-    AppMethodBeat.o(286611);
+    this.xmM = getSeekBar().getProgress();
+    AppMethodBeat.o(335715);
   }
   
-  public final void egL()
+  public final void fiI()
   {
-    AppMethodBeat.i(286612);
-    Context localContext = getContext();
-    Object localObject = localContext;
-    if (!(localContext instanceof MMActivity)) {
-      localObject = null;
-    }
-    localObject = (MMActivity)localObject;
-    if ((localObject != null) && (((MMActivity)localObject).isPaused() == true))
+    AppMethodBeat.i(335726);
+    Object localObject = getContext();
+    if ((localObject instanceof MMActivity))
     {
+      localObject = (MMActivity)localObject;
+      if ((localObject == null) || (((MMActivity)localObject).isPaused() != true)) {
+        break label62;
+      }
+    }
+    label62:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label67;
+      }
       Log.w("Finder.FullSeekBarLayout", "[toggleSeekMode] Activity is paused!");
-      AppMethodBeat.o(286612);
+      AppMethodBeat.o(335726);
       return;
+      localObject = null;
+      break;
     }
-    localObject = this.AKw;
+    label67:
+    localObject = this.Gno;
     if (localObject != null) {
-      ((com.tencent.e.i.d)localObject).cancel(false);
+      ((com.tencent.threadpool.i.d)localObject).cancel(false);
     }
-    if ((this.AKv) && (!this.AKq)) {
-      aGh("onSingleTapUp#isClickable=" + getSeekLayout().isClickable());
+    if ((this.Gnn) && (!this.Gnh))
+    {
+      aCk(kotlin.g.b.s.X("onSingleTapUp#isClickable=", Boolean.valueOf(getSeekLayout().isClickable())));
+      if (this.Gnn) {
+        break label161;
+      }
+      announceForAccessibility((CharSequence)getContext().getString(e.h.finder_resumed));
     }
     for (;;)
     {
-      this.AKq = false;
-      AppMethodBeat.o(286612);
+      this.Gnh = false;
+      AppMethodBeat.o(335726);
       return;
-      egK();
+      fiH();
+      break;
+      label161:
+      announceForAccessibility((CharSequence)getContext().getString(e.h.finder_paused));
+    }
+  }
+  
+  public final void fiN()
+  {
+    AppMethodBeat.i(335742);
+    Log.i("Finder.FullSeekBarLayout", "[dismissGroupLikeTips]");
+    Object localObject = getParent();
+    if ((localObject instanceof ViewGroup)) {}
+    for (localObject = (ViewGroup)localObject;; localObject = null)
+    {
+      if (localObject != null)
+      {
+        View localView = ((ViewGroup)localObject).findViewById(e.e.finder_feed_full_group_like_tips_layout);
+        if (localView != null) {
+          localView.post(new FinderFullSeekBarLayout..ExternalSyntheticLambda3(localView, (ViewGroup)localObject));
+        }
+      }
+      AppMethodBeat.o(335742);
+      return;
     }
   }
   
   public final int getCurrentProgress()
   {
-    AppMethodBeat.i(286605);
+    AppMethodBeat.i(335650);
     int i = getSeekBar().getProgress();
-    AppMethodBeat.o(286605);
+    AppMethodBeat.o(335650);
     return i;
   }
   
   public final boolean getHidePrivateLike()
   {
-    return this.AKt;
+    return this.Gnl;
   }
   
-  public final com.tencent.e.i.d<?> getHideSeekbarTask()
+  public final com.tencent.threadpool.i.d<?> getHideSeekbarTask()
   {
-    return this.AKw;
+    return this.Gno;
+  }
+  
+  public final View getHorizontalHint()
+  {
+    AppMethodBeat.i(335466);
+    View localView = (View)this.GmY.getValue();
+    AppMethodBeat.o(335466);
+    return localView;
+  }
+  
+  public final int getLastProgress()
+  {
+    return this.xmM;
   }
   
   public final int getMaxProgress()
   {
-    AppMethodBeat.i(286606);
+    AppMethodBeat.i(335657);
     int i = getSeekBar().getMax();
-    AppMethodBeat.o(286606);
+    AppMethodBeat.o(335657);
     return i;
   }
   
-  public final kotlin.g.a.a<kotlin.x> getOnLongVideoBtnClickListener()
+  public final View getMiniWindowBtn()
   {
-    return this.AKe;
+    AppMethodBeat.i(335451);
+    Object localObject = this.GmW.getValue();
+    kotlin.g.b.s.s(localObject, "<get-miniWindowBtn>(...)");
+    localObject = (View)localObject;
+    AppMethodBeat.o(335451);
+    return localObject;
+  }
+  
+  public final kotlin.g.a.a<ah> getOnLongVideoBtnClickListener()
+  {
+    return this.GmQ;
   }
   
   public final kotlin.g.a.a<Boolean> getOnPauseClickListener()
   {
-    return this.AKc;
+    return this.GmO;
   }
   
   public final kotlin.g.a.a<Boolean> getOnPrivateLikeClickListener()
   {
-    return this.AKb;
+    return this.GmN;
   }
   
-  public final kotlin.g.a.a<kotlin.x> getOnResumePlayListener()
+  public final kotlin.g.a.a<ah> getOnResumePlayListener()
   {
-    return this.AKa;
+    return this.GmM;
   }
   
-  public final void he(int paramInt1, int paramInt2)
+  public final View getPlayCtrlBtn()
   {
-    AppMethodBeat.i(286608);
-    this.AKy = paramInt2;
+    AppMethodBeat.i(335460);
+    Object localObject = this.GmX.getValue();
+    kotlin.g.b.s.s(localObject, "<get-playCtrlBtn>(...)");
+    localObject = (View)localObject;
+    AppMethodBeat.o(335460);
+    return localObject;
+  }
+  
+  public final ViewGroup getSeekLayout()
+  {
+    AppMethodBeat.i(335444);
+    Object localObject = this.GmR.getValue();
+    kotlin.g.b.s.s(localObject, "<get-seekLayout>(...)");
+    localObject = (ViewGroup)localObject;
+    AppMethodBeat.o(335444);
+    return localObject;
+  }
+  
+  public final void iw(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(335683);
+    this.Gnq = paramInt2;
     if (paramInt1 <= 1) {
-      this.AKx = -1;
+      this.Gnp = -1;
     }
-    hf(paramInt1, paramInt2);
-    Rr(paramInt1);
-    AppMethodBeat.o(286608);
+    ix(paramInt1, paramInt2);
+    Uz(paramInt1);
+    Object localObject = com.tencent.mm.ui.component.k.aeZF;
+    localObject = getContext();
+    kotlin.g.b.s.s(localObject, "context");
+    localObject = (com.tencent.mm.plugin.finder.viewmodel.component.s)com.tencent.mm.ui.component.k.nq((Context)localObject).cp(com.tencent.mm.plugin.finder.viewmodel.component.s.class);
+    if (localObject != null) {
+      ((com.tencent.mm.plugin.finder.viewmodel.component.s)localObject).GPo.put(Long.valueOf(((com.tencent.mm.plugin.finder.viewmodel.component.s)localObject).GPk), Integer.valueOf(paramInt1));
+    }
+    AppMethodBeat.o(335683);
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(286597);
+    AppMethodBeat.i(335501);
     super.onAttachedToWindow();
     getAllTimeLongTv().setTextSize(1, 14.0F);
     getAllTimeTv().setTextSize(1, 14.0F);
     getCurrentTimeTv().setTextSize(1, 14.0F);
-    AppMethodBeat.o(286597);
+    AppMethodBeat.o(335501);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(286624);
+    AppMethodBeat.i(335749);
     super.onDetachedFromWindow();
-    egQ();
-    if (this.AKq)
+    fiN();
+    if (this.Gnh)
     {
-      com.tencent.e.i.d locald = this.AKw;
+      com.tencent.threadpool.i.d locald = this.Gno;
       if (locald != null) {
         locald.cancel(false);
       }
-      aGh("hideSeekbarTask");
+      aCk("hideSeekbarTask");
     }
-    AppMethodBeat.o(286624);
+    AppMethodBeat.o(335749);
+  }
+  
+  public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(335472);
+    if ((this.Gnu) || (super.onInterceptTouchEvent(paramMotionEvent)))
+    {
+      AppMethodBeat.o(335472);
+      return true;
+    }
+    AppMethodBeat.o(335472);
+    return false;
   }
   
   public final void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(286602);
-    p.k(paramSeekBar, "seekBar");
+    AppMethodBeat.i(335607);
+    kotlin.g.b.s.u(paramSeekBar, "seekBar");
     if (paramBoolean)
     {
-      paramInt = this.AKy;
+      paramInt = this.Gnq;
       float f1 = getSeekBar().getProgress() / getSeekBar().getMax();
       float f2 = paramInt;
-      Rr((int)androidx.core.b.a.c(f1 * f2, 0.0F, f2 - 1.0F));
+      Uz((int)androidx.core.b.a.g(f1 * f2, 0.0F, f2 - 1.0F));
     }
-    AppMethodBeat.o(286602);
+    AppMethodBeat.o(335607);
   }
   
   public final void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    AppMethodBeat.i(286601);
-    p.k(paramSeekBar, "seekBar");
-    this.AKp = true;
-    paramSeekBar = this.AKu;
+    AppMethodBeat.i(335598);
+    kotlin.g.b.s.u(paramSeekBar, "seekBar");
+    this.Gng = true;
+    paramSeekBar = this.Gnm;
     if (paramSeekBar != null) {
-      paramSeekBar.ehv();
+      paramSeekBar.fjz();
     }
-    paramSeekBar = this.AKw;
-    if (paramSeekBar != null)
-    {
+    paramSeekBar = this.Gno;
+    if (paramSeekBar != null) {
       paramSeekBar.cancel(false);
-      AppMethodBeat.o(286601);
-      return;
     }
-    AppMethodBeat.o(286601);
+    fiN();
+    AppMethodBeat.o(335598);
   }
   
   public final void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    AppMethodBeat.i(286603);
-    p.k(paramSeekBar, "seekBar");
-    this.AKp = false;
-    this.AKx = paramSeekBar.getProgress();
-    this.AKq = true;
-    paramSeekBar = this.AKu;
+    AppMethodBeat.i(335615);
+    kotlin.g.b.s.u(paramSeekBar, "seekBar");
+    this.Gng = false;
+    this.Gnp = paramSeekBar.getProgress();
+    this.Gnh = true;
+    paramSeekBar = this.Gnm;
     if (paramSeekBar != null) {
-      paramSeekBar.bl(getSeekPercent());
+      paramSeekBar.cq(getSeekPercent());
     }
-    this.AKa.invoke();
-    paramSeekBar = this.AKo;
+    this.xmM = -1;
+    this.GmM.invoke();
+    paramSeekBar = this.Gnf;
     if (paramSeekBar != null) {
       paramSeekBar.setVisibility(8);
     }
-    paramSeekBar = this.AKw;
+    paramSeekBar = this.Gno;
     if (paramSeekBar != null) {
       paramSeekBar.cancel(false);
     }
-    this.AKw = com.tencent.e.h.ZvG.n((Runnable)new r(this), 3000L);
-    AppMethodBeat.o(286603);
+    this.Gno = com.tencent.threadpool.h.ahAA.o(new FinderFullSeekBarLayout..ExternalSyntheticLambda4(this), 3000L);
+    AppMethodBeat.o(335615);
   }
   
-  public final void qV(final boolean paramBoolean)
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(335490);
+    if ((this.Gnw.onTouch((View)this, paramMotionEvent)) || (super.onTouchEvent(paramMotionEvent)))
+    {
+      AppMethodBeat.o(335490);
+      return true;
+    }
+    AppMethodBeat.o(335490);
+    return false;
+  }
+  
+  public final void setExcludeIDs(Set<Integer> paramSet)
+  {
+    AppMethodBeat.i(335734);
+    kotlin.g.b.s.u(paramSet, "set");
+    this.Gns.addAll((Collection)paramSet);
+    AppMethodBeat.o(335734);
+  }
+  
+  public final void setFakeFloatPlayIcon(WeImageView paramWeImageView)
+  {
+    this.Gni = paramWeImageView;
+  }
+  
+  public final void setFloatPlayIcon(WeImageView paramWeImageView)
+  {
+    this.Gnf = paramWeImageView;
+  }
+  
+  public final void setHidePrivateLike(boolean paramBoolean)
+  {
+    this.Gnl = paramBoolean;
+  }
+  
+  public final void setHideSeekbarTask(com.tencent.threadpool.i.d<?> paramd)
+  {
+    this.Gno = paramd;
+  }
+  
+  public final void setLastProgress(int paramInt)
+  {
+    this.xmM = paramInt;
+  }
+  
+  public final void setOnLongVideoBtnClickListener(kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(335424);
+    kotlin.g.b.s.u(parama, "<set-?>");
+    this.GmQ = parama;
+    AppMethodBeat.o(335424);
+  }
+  
+  public final void setOnPauseClickListener(kotlin.g.a.a<Boolean> parama)
+  {
+    AppMethodBeat.i(335403);
+    kotlin.g.b.s.u(parama, "<set-?>");
+    this.GmO = parama;
+    AppMethodBeat.o(335403);
+  }
+  
+  public final void setOnPrivateLikeClickListener(kotlin.g.a.a<Boolean> parama)
+  {
+    AppMethodBeat.i(335392);
+    kotlin.g.b.s.u(parama, "<set-?>");
+    this.GmN = parama;
+    AppMethodBeat.o(335392);
+  }
+  
+  public final void setOnResumePlayListener(kotlin.g.a.a<ah> parama)
+  {
+    AppMethodBeat.i(335387);
+    kotlin.g.b.s.u(parama, "<set-?>");
+    this.GmM = parama;
+    AppMethodBeat.o(335387);
+  }
+  
+  public final void setPlayingCallback(kotlin.g.a.a<Boolean> parama)
+  {
+    AppMethodBeat.i(335410);
+    kotlin.g.b.s.u(parama, "<set-?>");
+    this.GmP = parama;
+    AppMethodBeat.o(335410);
+  }
+  
+  public final void setPlayingStatus(boolean paramBoolean)
+  {
+    AppMethodBeat.i(335579);
+    this.hLy = paramBoolean;
+    if (!paramBoolean)
+    {
+      localWeImageView = getPauseIcon();
+      if (localWeImageView != null) {
+        localWeImageView.setImageResource(e.g.icons_filled_play);
+      }
+      setPlayIconState(true);
+      uy(true);
+      AppMethodBeat.o(335579);
+      return;
+    }
+    WeImageView localWeImageView = getPauseIcon();
+    if (localWeImageView != null) {
+      localWeImageView.setImageResource(e.g.icons_filled_pause);
+    }
+    setPlayIconState(false);
+    uy(false);
+    AppMethodBeat.o(335579);
+  }
+  
+  public final void setProgress(int paramInt)
+  {
+    AppMethodBeat.i(335631);
+    if (paramInt <= 1) {
+      this.Gnp = -1;
+    }
+    getSeekBar().setProgress(Math.max(this.Gnp, paramInt));
+    AppMethodBeat.o(335631);
+  }
+  
+  public final void setRecyclerView(RecyclerView paramRecyclerView)
+  {
+    AppMethodBeat.i(335507);
+    kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+    this.mkw = paramRecyclerView;
+    AppMethodBeat.o(335507);
+  }
+  
+  public final void setSeekBarCallback(s.a parama)
+  {
+    AppMethodBeat.i(335668);
+    kotlin.g.b.s.u(parama, "callback");
+    this.Gnm = parama;
+    AppMethodBeat.o(335668);
+  }
+  
+  public final void uw(boolean paramBoolean)
   {
     int j = 0;
-    AppMethodBeat.i(286598);
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.g.AnT;
-    localObject1 = this.xxO;
+    AppMethodBeat.i(335541);
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.h.FNM;
+    localObject1 = this.AUZ;
     int i;
-    if (localObject1 != null)
+    label40:
+    Object localObject2;
+    if (localObject1 == null)
     {
-      localObject1 = ((BaseFinderFeed)localObject1).feedObject;
-      if (localObject1 != null)
-      {
-        localObject1 = ((FinderItem)localObject1).getFeedObject();
-        if (localObject1 != null)
-        {
-          i = ((FinderObject)localObject1).objectType;
-          localObject1 = com.tencent.mm.plugin.finder.storage.logic.g.Qt(i);
-          if (localObject1 == null) {
-            break label221;
-          }
-        }
-      }
-    }
-    WeImageView localWeImageView;
-    Object localObject3;
-    label221:
-    for (localObject1 = ((bfz)localObject1).SQP;; localObject1 = null)
-    {
-      this.AKr = paramBoolean;
-      Log.i("Finder.FullSeekBarLayout", "[refreshAwesome] isLike=" + paramBoolean + " groupLikeIconUrl=" + (String)localObject1);
-      localWeImageView = getPrivateAwesomeIcon();
-      if (localWeImageView == null) {
-        break label427;
-      }
-      if (!paramBoolean) {
-        break label272;
-      }
-      if (localObject1 == null) {
-        break label227;
-      }
-      localWeImageView.setLayerPaint(null);
-      localObject2 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      localObject2 = com.tencent.mm.plugin.finder.loader.t.dJe().bQ(new com.tencent.mm.plugin.finder.loader.x((String)localObject1, u.Aly));
-      localObject3 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      ((com.tencent.mm.loader.a.b)localObject2).a(com.tencent.mm.plugin.finder.loader.t.a(t.a.ztU)).a((e)new u(localWeImageView, this, paramBoolean, (String)localObject1)).c((ImageView)localWeImageView);
-      AppMethodBeat.o(286598);
-      return;
       i = 0;
-      break;
+      localObject1 = com.tencent.mm.plugin.finder.storage.logic.h.TA(i);
+      if (localObject1 != null) {
+        break label308;
+      }
+      localObject1 = null;
+      this.Gnj = paramBoolean;
+      Log.i("Finder.FullSeekBarLayout", "[refreshAwesome] isLike=" + paramBoolean + " groupLikeIconUrl=" + localObject1);
+      localObject3 = getPrivateAweSomeTv();
+      if (localObject3 != null)
+      {
+        localObject2 = this.AUZ;
+        if (localObject2 == null) {
+          break label318;
+        }
+        localObject2 = ((BaseFinderFeed)localObject2).feedObject;
+        if (localObject2 == null) {
+          break label318;
+        }
+        localObject2 = ((FinderItem)localObject2).getFeedObject();
+        if ((localObject2 == null) || (((FinderObject)localObject2).objectType != 1)) {
+          break label318;
+        }
+        i = 1;
+        label136:
+        if (i == 0) {
+          break label323;
+        }
+        localObject2 = (CharSequence)getResources().getString(e.h.finder_awesome_ground_title_news);
+        label155:
+        ((TextView)localObject3).setText((CharSequence)localObject2);
+      }
+      localObject2 = getPrivateAwesomeIcon();
+      if (localObject2 != null)
+      {
+        if (!paramBoolean) {
+          break label370;
+        }
+        if (localObject1 == null) {
+          break label341;
+        }
+        ((WeImageView)localObject2).setLayerPaint(null);
+        localObject3 = p.ExI;
+        localObject1 = p.eCl().dk(new com.tencent.mm.plugin.finder.loader.s((String)localObject1, v.FKY));
+        localObject3 = p.ExI;
+        ((com.tencent.mm.loader.a.b)localObject1).a(p.a(p.a.ExJ)).a(new FinderFullSeekBarLayout..ExternalSyntheticLambda2((WeImageView)localObject2, this)).d((ImageView)localObject2);
+      }
     }
-    label227:
-    localWeImageView.setImageResource(b.i.icons_filled_like_group);
-    localObject1 = getContext();
-    p.j(localObject1, "context");
-    localWeImageView.setIconColor(((Context)localObject1).getResources().getColor(b.c.Red_90));
-    AppMethodBeat.o(286598);
-    return;
-    label272:
-    Object localObject2 = (CharSequence)localObject1;
-    if (localObject2 != null)
+    for (;;)
+    {
+      fiN();
+      AppMethodBeat.o(335541);
+      return;
+      localObject1 = ((BaseFinderFeed)localObject1).feedObject;
+      if (localObject1 == null)
+      {
+        i = 0;
+        break;
+      }
+      localObject1 = ((FinderItem)localObject1).getFeedObject();
+      if (localObject1 == null)
+      {
+        i = 0;
+        break;
+      }
+      i = ((FinderObject)localObject1).objectType;
+      break;
+      label308:
+      localObject1 = ((brk)localObject1).ZZC;
+      break label40;
+      label318:
+      i = 0;
+      break label136;
+      label323:
+      localObject2 = (CharSequence)getResources().getString(e.h.finder_awesome_ground_title);
+      break label155;
+      label341:
+      ((WeImageView)localObject2).setImageResource(e.g.icons_filled_like_group);
+      ((WeImageView)localObject2).setIconColor(getContext().getResources().getColor(e.b.Red_90));
+    }
+    label370:
+    Object localObject3 = (CharSequence)localObject1;
+    if (localObject3 != null)
     {
       i = j;
-      if (((CharSequence)localObject2).length() != 0) {}
+      if (((CharSequence)localObject3).length() != 0) {}
     }
     else
     {
       i = 1;
     }
     if (i != 0) {
-      localWeImageView.setImageResource(b.i.icons_filled_like_group);
+      ((WeImageView)localObject2).setImageResource(e.g.icons_filled_like_group);
     }
     for (;;)
     {
-      localObject1 = getContext();
-      p.j(localObject1, "context");
-      localWeImageView.setIconColor(((Context)localObject1).getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_8));
-      AppMethodBeat.o(286598);
-      return;
-      localWeImageView.setLayerPaint(null);
-      localObject2 = com.tencent.mm.plugin.finder.loader.t.ztT;
-      localObject2 = com.tencent.mm.plugin.finder.loader.t.dJe();
-      localObject3 = new com.tencent.mm.plugin.finder.loader.x((String)localObject1, u.Aly);
-      com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
-      ((com.tencent.mm.loader.d)localObject2).a(localObject3, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztU)).a((e)new v(localWeImageView, this, paramBoolean, (String)localObject1)).c((ImageView)localWeImageView);
+      ((WeImageView)localObject2).setIconColor(getContext().getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_8));
+      break;
+      ((WeImageView)localObject2).setLayerPaint(null);
+      localObject3 = p.ExI;
+      localObject3 = p.eCl();
+      localObject1 = new com.tencent.mm.plugin.finder.loader.s((String)localObject1, v.FKY);
+      p localp = p.ExI;
+      ((com.tencent.mm.loader.d)localObject3).a(localObject1, p.a(p.a.ExJ)).a(new FinderFullSeekBarLayout..ExternalSyntheticLambda1((WeImageView)localObject2, this)).d((ImageView)localObject2);
     }
-    label427:
-    AppMethodBeat.o(286598);
   }
   
-  public final void qW(boolean paramBoolean) {}
+  public final void ux(boolean paramBoolean) {}
   
-  public final void setExcludeIDs(Set<Integer> paramSet)
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$setIconState$1$1", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class aa
+    extends com.tencent.mm.plugin.finder.animation.a
   {
-    AppMethodBeat.i(286614);
-    p.k(paramSet, "set");
-    this.AKA.addAll((Collection)paramSet);
-    AppMethodBeat.o(286614);
-  }
-  
-  public final void setFloatPlayIcon(WeImageView paramWeImageView)
-  {
-    this.AKo = paramWeImageView;
-  }
-  
-  public final void setHidePrivateLike(boolean paramBoolean)
-  {
-    this.AKt = paramBoolean;
-  }
-  
-  public final void setHideSeekbarTask(com.tencent.e.i.d<?> paramd)
-  {
-    this.AKw = paramd;
-  }
-  
-  public final void setOnLongVideoBtnClickListener(kotlin.g.a.a<kotlin.x> parama)
-  {
-    AppMethodBeat.i(286587);
-    p.k(parama, "<set-?>");
-    this.AKe = parama;
-    AppMethodBeat.o(286587);
-  }
-  
-  public final void setOnPauseClickListener(kotlin.g.a.a<Boolean> parama)
-  {
-    AppMethodBeat.i(286585);
-    p.k(parama, "<set-?>");
-    this.AKc = parama;
-    AppMethodBeat.o(286585);
-  }
-  
-  public final void setOnPrivateLikeClickListener(kotlin.g.a.a<Boolean> parama)
-  {
-    AppMethodBeat.i(286584);
-    p.k(parama, "<set-?>");
-    this.AKb = parama;
-    AppMethodBeat.o(286584);
-  }
-  
-  public final void setOnResumePlayListener(kotlin.g.a.a<kotlin.x> parama)
-  {
-    AppMethodBeat.i(286583);
-    p.k(parama, "<set-?>");
-    this.AKa = parama;
-    AppMethodBeat.o(286583);
-  }
-  
-  public final void setPlayingCallback(kotlin.g.a.a<Boolean> parama)
-  {
-    AppMethodBeat.i(286586);
-    p.k(parama, "<set-?>");
-    this.AKd = parama;
-    AppMethodBeat.o(286586);
-  }
-  
-  public final void setPlayingStatus(boolean paramBoolean)
-  {
-    AppMethodBeat.i(286600);
-    this.fGh = paramBoolean;
-    if (!paramBoolean)
+    aa(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
     {
-      localWeImageView = getPauseIcon();
-      if (localWeImageView != null) {
-        localWeImageView.setImageResource(b.i.icons_filled_play);
+      AppMethodBeat.i(335799);
+      paramAnimator = FinderFullSeekBarLayout.f(this.GnB);
+      if (paramAnimator != null) {
+        paramAnimator.setVisibility(4);
       }
-      localWeImageView = this.AKo;
-      if (localWeImageView != null) {
-        localWeImageView.setVisibility(0);
+      AppMethodBeat.o(335799);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$showSeekLayout$1$1", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class ab
+    extends com.tencent.mm.plugin.finder.animation.a
+  {
+    ab(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(335800);
+      BaseFinderFeed localBaseFinderFeed = FinderFullSeekBarLayout.g(this.GnB);
+      Object localObject;
+      if (localBaseFinderFeed != null)
+      {
+        paramAnimator = this.GnB;
+        localObject = as.GSQ;
+        paramAnimator = paramAnimator.getContext();
+        kotlin.g.b.s.s(paramAnimator, "context");
+        paramAnimator = as.a.hu(paramAnimator);
+        if (paramAnimator != null) {
+          break label84;
+        }
       }
-      qX(true);
-      AppMethodBeat.o(286600);
-      return;
+      label84:
+      for (paramAnimator = null;; paramAnimator = paramAnimator.fou())
+      {
+        localObject = bb.FuK;
+        bb.a(paramAnimator, "pause_by_icon", true, localBaseFinderFeed.bZA());
+        localObject = bb.FuK;
+        bb.a(paramAnimator, "private_like", true, localBaseFinderFeed.bZA());
+        AppMethodBeat.o(335800);
+        return;
+      }
     }
-    WeImageView localWeImageView = getPauseIcon();
-    if (localWeImageView != null) {
-      localWeImageView.setImageResource(b.i.icons_filled_pause);
-    }
-    localWeImageView = this.AKo;
-    if (localWeImageView != null) {
-      localWeImageView.setVisibility(8);
-    }
-    qX(false);
-    AppMethodBeat.o(286600);
   }
   
-  public final void setProgress(int paramInt)
-  {
-    AppMethodBeat.i(286604);
-    if (paramInt <= 1) {
-      this.AKx = -1;
-    }
-    getSeekBar().setProgress(Math.max(this.AKx, paramInt));
-    AppMethodBeat.o(286604);
-  }
-  
-  public final void setSeekBarCallback(r.a parama)
-  {
-    AppMethodBeat.i(286607);
-    p.k(parama, "callback");
-    this.AKu = parama;
-    AppMethodBeat.o(286607);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$Companion;", "", "()V", "ANIMATION_DURATION", "", "ANIMATION_SEEK_LAYOUT_DURATION", "TAG", "", "_1_5_A_PADDING", "", "get_1_5_A_PADDING", "()I", "_4A_PADDING", "get_4A_PADDING", "_6A_PADDING", "get_6A_PADDING", "showGroupTipsSet", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getShowGroupTipsSet", "()Ljava/util/HashMap;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     b(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
@@ -1233,9 +1765,9 @@ public final class FinderFullSeekBarLayout
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     c(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
@@ -1244,9 +1776,9 @@ public final class FinderFullSeekBarLayout
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<View>
   {
     d(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
@@ -1254,191 +1786,121 @@ public final class FinderFullSeekBarLayout
       super();
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$awesomePrivateLayout$2$1$1"})
-    static final class a
-      implements View.OnClickListener
+    private static final void a(boolean[] paramArrayOfBoolean, FinderFullSeekBarLayout paramFinderFullSeekBarLayout, View paramView)
     {
-      a(FinderFullSeekBarLayout.d paramd) {}
-      
-      public final void onClick(View paramView)
+      AppMethodBeat.i(334881);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramArrayOfBoolean);
+      localb.cH(paramFinderFullSeekBarLayout);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$awesomePrivateLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(paramArrayOfBoolean, "$likeOnTouchDownCalled");
+      kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+      if (paramArrayOfBoolean[0] != 0)
       {
-        AppMethodBeat.i(265667);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$awesomePrivateLayout$2$$special$$inlined$also$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        boolean bool = ((Boolean)this.AKH.AKG.getOnPrivateLikeClickListener().invoke()).booleanValue();
-        FinderFullSeekBarLayout.e(this.AKH.AKG);
-        this.AKH.AKG.qV(bool);
+        paramArrayOfBoolean[0] = false;
+        boolean bool = ((Boolean)paramFinderFullSeekBarLayout.getOnPrivateLikeClickListener().invoke()).booleanValue();
+        paramFinderFullSeekBarLayout.fiN();
+        paramFinderFullSeekBarLayout.uw(bool);
         if (bool)
         {
-          localObject = FinderFullSeekBarLayout.d(this.AKH.AKG);
-          if (localObject != null)
+          paramView = FinderFullSeekBarLayout.g(paramFinderFullSeekBarLayout);
+          if (paramView != null)
           {
-            paramView = am.zZN;
-            paramView = aj.Bnu;
-            paramView = this.AKH.AKG.getContext();
-            p.j(paramView, "context");
-            paramView = aj.a.fZ(paramView);
-            if (paramView == null) {
-              break label267;
+            paramArrayOfBoolean = bb.FuK;
+            paramArrayOfBoolean = as.GSQ;
+            paramArrayOfBoolean = paramFinderFullSeekBarLayout.getContext();
+            kotlin.g.b.s.s(paramArrayOfBoolean, "context");
+            paramArrayOfBoolean = as.a.hu(paramArrayOfBoolean);
+            if (paramArrayOfBoolean != null) {
+              break label295;
             }
           }
-        }
-        label267:
-        for (paramView = paramView.ekY();; paramView = null)
-        {
-          am.a(paramView, "private_like", false, ((BaseFinderFeed)localObject).mf());
-          this.AKH.AKG.getOnResumePlayListener().invoke();
-          paramView = FinderFullSeekBarLayout.f(this.AKH.AKG);
-          if (paramView != null) {
-            paramView.setVisibility(8);
-          }
-          FinderFullSeekBarLayout.a(this.AKH.AKG, true);
-          paramView = this.AKH.AKG.getHideSeekbarTask();
-          if (paramView != null) {
-            paramView.cancel(false);
-          }
-          this.AKH.AKG.setHideSeekbarTask(com.tencent.e.h.ZvG.n((Runnable)new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(270241);
-              this.AKI.AKH.AKG.aGh("hideSeekbarTask");
-              FinderFullSeekBarLayout.a(this.AKI.AKH.AKG, false);
-              AppMethodBeat.o(270241);
-            }
-          }, 3000L));
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$awesomePrivateLayout$2$$special$$inlined$also$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(265667);
-          return;
         }
       }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(FinderFullSeekBarLayout paramFinderFullSeekBarLayout, Rect paramRect, View paramView, int paramInt, ViewGroup paramViewGroup) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(287696);
-      if (!this.AKG.AKv)
+      label295:
+      for (paramArrayOfBoolean = null;; paramArrayOfBoolean = paramArrayOfBoolean.fou())
       {
-        AppMethodBeat.o(287696);
+        bb.a(paramArrayOfBoolean, "private_like", false, paramView.bZA());
+        paramFinderFullSeekBarLayout.getOnResumePlayListener().invoke();
+        paramArrayOfBoolean = FinderFullSeekBarLayout.f(paramFinderFullSeekBarLayout);
+        if (paramArrayOfBoolean != null) {
+          paramArrayOfBoolean.setVisibility(8);
+        }
+        FinderFullSeekBarLayout.a(paramFinderFullSeekBarLayout, true);
+        paramArrayOfBoolean = paramFinderFullSeekBarLayout.getHideSeekbarTask();
+        if (paramArrayOfBoolean != null) {
+          paramArrayOfBoolean.cancel(false);
+        }
+        paramFinderFullSeekBarLayout.setHideSeekbarTask(com.tencent.threadpool.h.ahAA.o(new FinderFullSeekBarLayout.d..ExternalSyntheticLambda2(paramFinderFullSeekBarLayout), 3000L));
+        com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$awesomePrivateLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(334881);
         return;
-      }
-      Object localObject = FinderFullSeekBarLayout.a(this.AKG);
-      if (localObject != null) {
-        ((View)localObject).getGlobalVisibleRect(localRect);
-      }
-      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-      int i;
-      float f1;
-      float f2;
-      if (((Number)com.tencent.mm.plugin.finder.storage.d.dXx().aSr()).intValue() == 1)
-      {
-        i = localRect.left;
-        localObject = localView;
-        p.j(localObject, "tipsLayout");
-        f1 = i - ((View)localObject).getWidth();
-        localObject = this.AKG.getContext();
-        p.j(localObject, "context");
-        f1 -= ((Context)localObject).getResources().getDimension(b.d.Edge_A);
-        localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
-        if (((Number)com.tencent.mm.plugin.finder.storage.d.dXx().aSr()).intValue() != 1) {
-          break label501;
-        }
-        f2 = localRect.centerY();
-        localObject = this.AKG.getContext();
-        p.j(localObject, "context");
-        f2 -= ((Context)localObject).getResources().getDimension(b.d.Edge_3A);
-        label188:
-        localObject = localView;
-        p.j(localObject, "tipsLayout");
-        ((View)localObject).setTranslationX(f1);
-        localObject = localView;
-        p.j(localObject, "tipsLayout");
-        ((View)localObject).setTranslationY(f2);
-        localObject = FinderFullSeekBarLayout.d(this.AKG);
-        if (localObject == null) {
-          break label567;
-        }
-      }
-      label567:
-      for (long l = ((BaseFinderFeed)localObject).mf();; l = 0L)
-      {
-        localObject = FinderFullSeekBarLayout.AKF;
-        Integer localInteger = (Integer)FinderFullSeekBarLayout.egU().get(Long.valueOf(l));
-        localObject = localInteger;
-        if (localInteger == null) {
-          localObject = Integer.valueOf(0);
-        }
-        p.j(localObject, "showGroupTipsSet[feedId] ?: 0");
-        i = ((Integer)localObject).intValue();
-        if (i == 0)
-        {
-          localObject = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject).aHp().set(ar.a.VxS, Integer.valueOf(j + 1));
-          localObject = FinderFullSeekBarLayout.AKF;
-          ((Map)FinderFullSeekBarLayout.egU()).put(Long.valueOf(l), Integer.valueOf(1));
-          Log.i("Finder.FullSeekBarLayout", "[checkShowGroupLikeTips] record count=" + (j + 1));
-        }
-        localObject = FinderFullSeekBarLayout.AKF;
-        ((Map)FinderFullSeekBarLayout.egU()).put(Long.valueOf(l), Integer.valueOf(i + 1));
-        if (i < 3) {
-          localView.animate().setStartDelay(0L).setDuration(200L).alpha(1.0F).setListener((Animator.AnimatorListener)new com.tencent.mm.plugin.finder.animation.a()
-          {
-            public final void onAnimationEnd(Animator paramAnonymousAnimator)
-            {
-              AppMethodBeat.i(269974);
-              p.k(paramAnonymousAnimator, "animation");
-              Log.i("Finder.FullSeekBarLayout", "[onAnimationEnd]");
-              this.AKM.AKK.postDelayed((Runnable)new a(this), 5000L);
-              AppMethodBeat.o(269974);
-            }
-            
-            @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-            static final class a
-              implements Runnable
-            {
-              a(FinderFullSeekBarLayout.e.1 param1) {}
-              
-              public final void run()
-              {
-                AppMethodBeat.i(287093);
-                this.AKN.AKM.kJH.removeView(this.AKN.AKM.AKK);
-                AppMethodBeat.o(287093);
-              }
-            }
-          }).start();
-        }
-        AppMethodBeat.o(287696);
-        return;
-        f1 = localRect.centerX();
-        localObject = localView;
-        p.j(localObject, "tipsLayout");
-        f1 -= ((View)localObject).getWidth() / 2.0F;
+        com.tencent.mm.plugin.normsg.a.d.MtP.kI("ce_feed_like", "<FeedLike>");
+        paramArrayOfBoolean = MotionEvent.obtain(0L, 0L, 1, 0.0F, 0.0F, 65535);
+        com.tencent.mm.plugin.normsg.a.d.MtP.a("ce_feed_like", paramArrayOfBoolean);
+        com.tencent.mm.plugin.normsg.a.d.MtP.aQm("ce_feed_like");
         break;
-        label501:
-        f2 = localRect.centerY();
-        localObject = localView;
-        p.j(localObject, "tipsLayout");
-        float f3 = ((View)localObject).getHeight() / 2.0F;
-        localObject = this.AKG.getContext();
-        p.j(localObject, "context");
-        f2 = f2 - f3 - ((Context)localObject).getResources().getDimension(b.d.Edge_8A);
-        break label188;
       }
+    }
+    
+    private static final boolean e(boolean[] paramArrayOfBoolean, View paramView, MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(334865);
+      kotlin.g.b.s.u(paramArrayOfBoolean, "$likeOnTouchDownCalled");
+      switch (paramMotionEvent.getAction())
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(334865);
+        return false;
+        paramArrayOfBoolean[0] = true;
+        com.tencent.mm.plugin.normsg.a.d.MtP.kI("ce_feed_like", "<FeedLike>");
+        continue;
+        com.tencent.mm.plugin.normsg.a.d.MtP.a("ce_feed_like", paramMotionEvent);
+        com.tencent.mm.plugin.normsg.a.d.MtP.aQm("ce_feed_like");
+      }
+    }
+    
+    private static final void i(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    {
+      AppMethodBeat.i(334868);
+      kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+      paramFinderFullSeekBarLayout.aCk("hideSeekbarTask");
+      FinderFullSeekBarLayout.a(paramFinderFullSeekBarLayout, false);
+      AppMethodBeat.o(334868);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$checkShowGroupLikeTips$1$1", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    extends com.tencent.mm.plugin.finder.animation.a
+  {
+    e(View paramView, ViewGroup paramViewGroup) {}
+    
+    private static final void d(ViewGroup paramViewGroup, View paramView)
+    {
+      AppMethodBeat.i(334844);
+      kotlin.g.b.s.u(paramViewGroup, "$parent");
+      paramViewGroup.removeView(paramView);
+      AppMethodBeat.o(334844);
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(334855);
+      kotlin.g.b.s.u(paramAnimator, "animation");
+      Log.i("Finder.FullSeekBarLayout", "[onAnimationEnd]");
+      this.GnC.postDelayed(new FinderFullSeekBarLayout.e..ExternalSyntheticLambda0(paramViewGroup, this.GnC), 5000L);
+      AppMethodBeat.o(334855);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class f
-    extends q
+    extends u
     implements kotlin.g.a.a<TextView>
   {
     f(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
@@ -1447,40 +1909,40 @@ public final class FinderFullSeekBarLayout
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$dismissGroupLikeTips$1$1"})
-  static final class g
-    implements Runnable
-  {
-    g(View paramView, ViewGroup paramViewGroup) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(280835);
-      this.kJS.animate().cancel();
-      this.AKO.removeView(this.kJS);
-      AppMethodBeat.o(280835);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideAwesomePrivateLayout$2", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
-  public static final class h
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideAwesomePrivateLayout$2", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class g
     extends com.tencent.mm.plugin.finder.animation.a
   {
+    g(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
+    
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(274687);
-      paramAnimator = FinderFullSeekBarLayout.a(this.AKG);
-      if (paramAnimator != null)
-      {
+      AppMethodBeat.i(334890);
+      paramAnimator = FinderFullSeekBarLayout.c(this.GnB);
+      if (paramAnimator != null) {
         paramAnimator.setVisibility(4);
-        AppMethodBeat.o(274687);
-        return;
       }
-      AppMethodBeat.o(274687);
+      AppMethodBeat.o(334890);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideSeekLayout$1$1", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideHorizontalHint$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
+    extends AnimatorListenerAdapter
+  {
+    h(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(334899);
+      super.onAnimationEnd(paramAnimator);
+      FinderFullSeekBarLayout.d(this.GnB).setVisibility(8);
+      FinderFullSeekBarLayout.d(this.GnB).removeCallbacks(FinderFullSeekBarLayout.e(this.GnB));
+      AppMethodBeat.o(334899);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideSeekLayout$1$1", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class i
     extends com.tencent.mm.plugin.finder.animation.a
   {
@@ -1488,230 +1950,99 @@ public final class FinderFullSeekBarLayout
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(290873);
-      this.kJS.setVisibility(4);
-      this.kJS.setAlpha(1.0F);
-      AppMethodBeat.o(290873);
+      AppMethodBeat.i(334869);
+      this.DjW.setVisibility(4);
+      this.DjW.setAlpha(1.0F);
+      AppMethodBeat.o(334869);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class j
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    j(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(262227);
-      paramValueAnimator = paramValueAnimator.getAnimatedValue("offset");
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(262227);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)paramValueAnimator).floatValue();
-      if (FinderFullSeekBarLayout.b(this.AKG)) {
-        paramValueAnimator = FinderFullSeekBarLayout.AKF;
-      }
-      for (int i = FinderFullSeekBarLayout.egS();; i = FinderFullSeekBarLayout.egR())
-      {
-        paramValueAnimator = FinderFullSeekBarLayout.c(this.AKG).getLayoutParams();
-        if (paramValueAnimator != null) {
-          break;
-        }
-        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(262227);
-        throw paramValueAnimator;
-        paramValueAnimator = FinderFullSeekBarLayout.AKF;
-      }
-      paramValueAnimator = (FrameLayout.LayoutParams)paramValueAnimator;
-      float f2 = i;
-      FinderFullSeekBarLayout.a locala = FinderFullSeekBarLayout.AKF;
-      paramValueAnimator.bottomMargin = kotlin.h.a.dm(f2 * f1 + FinderFullSeekBarLayout.egT());
-      FinderFullSeekBarLayout.c(this.AKG).requestLayout();
-      AppMethodBeat.o(262227);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideSeekLayout$3", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
-  public static final class k
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideSeekLayout$2", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class j
     extends com.tencent.mm.plugin.finder.animation.a
   {
-    k(View paramView) {}
+    j(View paramView) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(221143);
-      paramAnimator = this.AKP;
-      p.j(paramAnimator, "child");
-      paramAnimator.setVisibility(4);
-      paramAnimator = this.AKP;
-      p.j(paramAnimator, "child");
-      paramAnimator.setAlpha(1.0F);
-      AppMethodBeat.o(221143);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class l
-    extends q
-    implements kotlin.g.a.a<Boolean>
-  {
-    public static final l AKQ;
-    
-    static
-    {
-      AppMethodBeat.i(282011);
-      AKQ = new l();
-      AppMethodBeat.o(282011);
-    }
-    
-    l()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class m
-    extends q
-    implements kotlin.g.a.a<View>
-  {
-    m(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
-    {
-      super();
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$longVideoLayout$2$1$1"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(FinderFullSeekBarLayout.m paramm) {}
-      
-      public final void onClick(View paramView)
+      AppMethodBeat.i(334874);
+      paramAnimator = this.GnE;
+      if (this.GnE.getId() == e.e.video_current_tv) {}
+      for (int i = 8;; i = 4)
       {
-        AppMethodBeat.i(269573);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$longVideoLayout$2$$special$$inlined$also$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        this.AKR.AKG.getOnLongVideoBtnClickListener().invoke();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$longVideoLayout$2$$special$$inlined$also$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(269573);
+        paramAnimator.setVisibility(i);
+        this.GnE.setAlpha(1.0F);
+        AppMethodBeat.o(334874);
+        return;
       }
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$hideSeekLayout$3", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class k
+    extends com.tencent.mm.plugin.finder.animation.a
+  {
+    k(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(334821);
+      this.GnB.getPlayCtrlBtn().setVisibility(8);
+      this.GnB.getPlayCtrlBtn().setAlpha(1.0F);
+      AppMethodBeat.o(334821);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class l
+    extends u
+    implements kotlin.g.a.a<View>
+  {
+    l(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class n
-    extends q
-    implements kotlin.g.a.a<kotlin.x>
+    extends u
+    implements kotlin.g.a.a<View>
   {
-    public static final n AKS;
-    
-    static
-    {
-      AppMethodBeat.i(265326);
-      AKS = new n();
-      AppMethodBeat.o(265326);
-    }
-    
-    n()
+    n(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
     {
       super();
     }
+    
+    private static final void a(FinderFullSeekBarLayout paramFinderFullSeekBarLayout, View paramView)
+    {
+      AppMethodBeat.i(334806);
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.cH(paramFinderFullSeekBarLayout);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$longVideoLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+      paramFinderFullSeekBarLayout.getOnLongVideoBtnClickListener().invoke();
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$longVideoLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(334806);
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class o
-    extends q
-    implements kotlin.g.a.a<Boolean>
+    extends u
+    implements kotlin.g.a.a<View>
   {
-    public static final o AKT;
-    
-    static
-    {
-      AppMethodBeat.i(270666);
-      AKT = new o();
-      AppMethodBeat.o(270666);
-    }
-    
-    o()
+    o(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class p
-    extends q
-    implements kotlin.g.a.a<Boolean>
-  {
-    public static final p AKU;
-    
-    static
-    {
-      AppMethodBeat.i(280614);
-      AKU = new p();
-      AppMethodBeat.o(280614);
-    }
-    
-    p()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class q
-    extends q
-    implements kotlin.g.a.a<kotlin.x>
-  {
-    public static final q AKV;
-    
-    static
-    {
-      AppMethodBeat.i(279930);
-      AKV = new q();
-      AppMethodBeat.o(279930);
-    }
-    
-    q()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class r
-    implements Runnable
-  {
-    r(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(290469);
-      this.AKG.aGh("onStopTrackingTouch");
-      FinderFullSeekBarLayout.a(this.AKG, false);
-      AppMethodBeat.o(290469);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class s
-    extends q
-    implements kotlin.g.a.a<WeImageView>
-  {
-    s(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class t
-    extends q
+    extends u
     implements kotlin.g.a.a<WeImageView>
   {
     t(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
@@ -1720,24 +2051,32 @@ public final class FinderFullSeekBarLayout
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete", "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$refreshAwesome$1$1"})
-  static final class u<T, R>
-    implements e<w, Bitmap>
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class u
+    extends u
+    implements kotlin.g.a.a<View>
   {
-    u(WeImageView paramWeImageView, FinderFullSeekBarLayout paramFinderFullSeekBarLayout, boolean paramBoolean, String paramString) {}
+    u(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    {
+      super();
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "kotlin.jvm.PlatformType", "view", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "resource", "Landroid/graphics/Bitmap;", "onImageLoadComplete", "com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$refreshAwesome$1$2"})
-  static final class v<T, R>
-    implements e<w, Bitmap>
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/TextView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class v
+    extends u
+    implements kotlin.g.a.a<TextView>
   {
-    v(WeImageView paramWeImageView, FinderFullSeekBarLayout paramFinderFullSeekBarLayout, boolean paramBoolean, String paramString) {}
+    v(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    {
+      super();
+    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class w
-    extends q
-    implements kotlin.g.a.a<SeekBar>
+    extends u
+    implements kotlin.g.a.a<WeImageView>
   {
     w(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
     {
@@ -1745,85 +2084,45 @@ public final class FinderFullSeekBarLayout
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class x
-    extends q
-    implements kotlin.g.a.a<ViewGroup>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    x(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    x(WeImageView paramWeImageView, FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    {
+      super();
+    }
+    
+    private static final void a(WeImageView paramWeImageView, FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
+    {
+      AppMethodBeat.i(334769);
+      kotlin.g.b.s.u(paramWeImageView, "$icon");
+      kotlin.g.b.s.u(paramFinderFullSeekBarLayout, "this$0");
+      paramWeImageView.setIconColor(paramFinderFullSeekBarLayout.getContext().getResources().getColor(e.b.hot_tab_BW_100_Alpha_0_8));
+      AppMethodBeat.o(334769);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class y
+    extends u
+    implements kotlin.g.a.a<SeekBar>
+  {
+    y(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
     {
       super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderFullSeekBarLayout$showSeekLayout$2$1", "Lcom/tencent/mm/plugin/finder/animation/AnimatorEndListener;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-finder_release"})
-  public static final class y
-    extends com.tencent.mm.plugin.finder.animation.a
-  {
-    y(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(271037);
-      BaseFinderFeed localBaseFinderFeed = FinderFullSeekBarLayout.d(this.AKG);
-      if (localBaseFinderFeed != null)
-      {
-        paramAnimator = aj.Bnu;
-        paramAnimator = this.AKG.getContext();
-        p.j(paramAnimator, "context");
-        paramAnimator = aj.a.fZ(paramAnimator);
-        if (paramAnimator != null) {}
-        for (paramAnimator = paramAnimator.ekY();; paramAnimator = null)
-        {
-          am localam = am.zZN;
-          am.a(paramAnimator, "pause_by_icon", true, localBaseFinderFeed.mf());
-          localam = am.zZN;
-          am.a(paramAnimator, "private_like", true, localBaseFinderFeed.mf());
-          AppMethodBeat.o(271037);
-          return;
-        }
-      }
-      AppMethodBeat.o(271037);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/ViewGroup;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class z
-    implements ValueAnimator.AnimatorUpdateListener
+    extends u
+    implements kotlin.g.a.a<ViewGroup>
   {
-    z(FinderFullSeekBarLayout paramFinderFullSeekBarLayout) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    z(FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
     {
-      AppMethodBeat.i(289324);
-      paramValueAnimator = paramValueAnimator.getAnimatedValue("offset");
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(289324);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)paramValueAnimator).floatValue();
-      if (FinderFullSeekBarLayout.b(this.AKG)) {
-        paramValueAnimator = FinderFullSeekBarLayout.AKF;
-      }
-      for (int i = FinderFullSeekBarLayout.egS();; i = FinderFullSeekBarLayout.egR())
-      {
-        paramValueAnimator = FinderFullSeekBarLayout.c(this.AKG).getLayoutParams();
-        if (paramValueAnimator != null) {
-          break;
-        }
-        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(289324);
-        throw paramValueAnimator;
-        paramValueAnimator = FinderFullSeekBarLayout.AKF;
-      }
-      paramValueAnimator = (FrameLayout.LayoutParams)paramValueAnimator;
-      float f2 = i;
-      FinderFullSeekBarLayout.a locala = FinderFullSeekBarLayout.AKF;
-      paramValueAnimator.bottomMargin = kotlin.h.a.dm(f2 * f1 + FinderFullSeekBarLayout.egT());
-      FinderFullSeekBarLayout.c(this.AKG).requestLayout();
-      AppMethodBeat.o(289324);
+      super();
     }
   }
 }

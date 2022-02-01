@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <IconPreference android:key="share_micromsg_qzone" android:title="@string/gjk" />
-    <IconPreference android:key="share_micromsg_to_sina" android:title="@string/gjl" />
-    <IconPreference android:key="share_micromsg_to_fuckbook" android:title="@string/gjj" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="black_contact_list_pref" android:layout="@layout/bdi" android:summary="@string/cgc" />
 </PreferenceScreen>

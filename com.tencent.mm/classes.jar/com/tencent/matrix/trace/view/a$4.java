@@ -10,30 +10,30 @@ final class a$4
   
   public final void run()
   {
-    FloatFrameView.LineChartView localLineChartView = this.dix.dhu;
-    FloatFrameView.LineChartView.a locala = new FloatFrameView.LineChartView.a(localLineChartView, (int)this.diz, this.diA);
-    if (localLineChartView.dhK.size() >= 50) {
-      localLineChartView.dhK.removeLast();
+    FloatFrameView.LineChartView localLineChartView = this.fij.fhj;
+    FloatFrameView.LineChartView.a locala = new FloatFrameView.LineChartView.a(localLineChartView, (int)this.fil, this.fim);
+    if (localLineChartView.fhz.size() >= 50) {
+      localLineChartView.fhz.removeLast();
     }
-    localLineChartView.dhK.addFirst(locala);
+    localLineChartView.fhz.addFirst(locala);
     localLineChartView.invalidate();
-    this.dix.dht.setText(this.diB);
-    this.dix.dht.setTextColor(this.diA);
-    this.dix.dhF.setText(this.diC);
-    this.dix.dhv.setText(this.diD);
-    this.dix.dhw.setText(this.diE);
-    this.dix.dhx.setText(this.diF);
-    this.dix.dhy.setText(this.diG);
-    this.dix.dhG.setText(this.diH);
-    this.dix.dhz.setText(this.diI);
-    this.dix.dhA.setText(this.diJ);
-    this.dix.dhB.setText(this.diK);
-    this.dix.dhC.setText(this.diL);
+    this.fij.fhi.setText(this.fin);
+    this.fij.fhi.setTextColor(this.fim);
+    this.fij.fhu.setText(this.fio);
+    this.fij.fhk.setText(this.fip);
+    this.fij.fhl.setText(this.fiq);
+    this.fij.fhm.setText(this.fir);
+    this.fij.fhn.setText(this.fit);
+    this.fij.fhv.setText(this.fiu);
+    this.fij.fho.setText(this.fiv);
+    this.fij.fhp.setText(this.fiw);
+    this.fij.fhq.setText(this.fix);
+    this.fij.fhr.setText(this.fiy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.matrix.trace.view.a.4
  * JD-Core Version:    0.7.0.1
  */

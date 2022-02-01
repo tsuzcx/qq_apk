@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static String avC()
+  public static String aPW()
   {
     AppMethodBeat.i(155882);
     String str = new java.lang.Throwable().getStackTrace()[1].toString();
@@ -12,7 +12,7 @@ public final class f
     return str;
   }
   
-  public static String avD()
+  public static String aPX()
   {
     AppMethodBeat.i(155883);
     Object localObject = new java.lang.Throwable().getStackTrace()[1];
@@ -32,7 +32,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.util.f
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.e;
 import com.tencent.mm.plugin.game.d.d;
-import com.tencent.mm.plugin.game.protobuf.aq;
 import com.tencent.mm.plugin.game.protobuf.ar;
 import com.tencent.mm.plugin.game.protobuf.as;
 import com.tencent.mm.plugin.game.protobuf.at;
 import com.tencent.mm.plugin.game.protobuf.au;
-import com.tencent.mm.plugin.game.protobuf.ay;
-import com.tencent.mm.plugin.game.protobuf.bp;
-import com.tencent.mm.plugin.game.protobuf.cm;
-import com.tencent.mm.plugin.game.protobuf.eh;
+import com.tencent.mm.plugin.game.protobuf.av;
+import com.tencent.mm.plugin.game.protobuf.az;
+import com.tencent.mm.plugin.game.protobuf.bq;
+import com.tencent.mm.plugin.game.protobuf.co;
+import com.tencent.mm.plugin.game.protobuf.el;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
@@ -20,31 +20,31 @@ import java.io.IOException;
 public final class ac
   extends x
 {
-  private bp CLj;
-  public cm CLk;
-  public a CLl;
-  public at CLm;
-  public eh CLn;
-  public ay CLo;
+  private bq IFq;
+  public co IFr;
+  public a IFs;
+  public au IFt;
+  public el IFu;
+  public az IFv;
   
-  public ac(bp parambp)
+  public ac(bq parambq)
   {
     AppMethodBeat.i(41537);
-    if (parambp == null)
+    if (parambq == null)
     {
-      this.CLj = new bp();
+      this.IFq = new bq();
       AppMethodBeat.o(41537);
       return;
     }
-    this.CLj = parambp;
-    sk(true);
+    this.IFq = parambq;
+    wq(true);
     AppMethodBeat.o(41537);
   }
   
   public ac(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41538);
-    this.CLj = new bp();
+    this.IFq = new bq();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41538);
@@ -52,8 +52,8 @@ public final class ac
     }
     try
     {
-      this.CLj.parseFrom(paramArrayOfByte);
-      sk(false);
+      this.IFq.parseFrom(paramArrayOfByte);
+      wq(false);
       AppMethodBeat.o(41538);
       return;
     }
@@ -66,72 +66,72 @@ public final class ac
     }
   }
   
-  private void eyX()
+  private void fGT()
   {
     AppMethodBeat.i(41541);
-    if (this.CLj == null)
+    if (this.IFq == null)
     {
       AppMethodBeat.o(41541);
       return;
     }
-    this.CLk = this.CLj.CPV;
-    if ((this.CLj.CPS != null) && (this.CLj.CPS.CME != null))
+    this.IFr = this.IFq.IKf;
+    if ((this.IFq.IKc != null) && (this.IFq.IKc.IGJ != null))
     {
-      this.CLl = new a();
-      this.CLl.CLp = a(this.CLj.CPS.CME);
-      if (this.CLl.CLp != null)
+      this.IFs = new a();
+      this.IFs.IFw = a(this.IFq.IKc.IGJ);
+      if (this.IFs.IFw != null)
       {
-        this.CLl.CLp.CHW = this.CLj.CPS.CMB;
-        this.CLl.CLp.scene = 10;
-        this.CLl.CLp.fSl = 1002;
-        this.CLl.CLp.position = 1;
+        this.IFs.IFw.ICg = this.IFq.IKc.IGG;
+        this.IFs.IFw.scene = 10;
+        this.IFs.IFw.hYi = 1002;
+        this.IFs.IFw.position = 1;
       }
-      this.CLl.CLq = this.CLj.CPS.COJ;
-      this.CLl.CLr = this.CLj.CPS.COI;
-      this.CLl.desc = this.CLj.CPS.CMB;
-      this.CLl.CLs = this.CLj.CPU;
+      this.IFs.IFx = this.IFq.IKc.IIT;
+      this.IFs.IFy = this.IFq.IKc.IIS;
+      this.IFs.desc = this.IFq.IKc.IGG;
+      this.IFs.IFz = this.IFq.IKe;
     }
-    this.CLm = this.CLj.CPT;
-    this.CLn = this.CLj.CPW;
-    this.CLo = this.CLj.CPX;
+    this.IFt = this.IFq.IKd;
+    this.IFu = this.IFq.IKg;
+    this.IFv = this.IFq.IKh;
     AppMethodBeat.o(41541);
   }
   
-  private void sk(boolean paramBoolean)
+  private void wq(boolean paramBoolean)
   {
     AppMethodBeat.i(41539);
-    eyX();
-    sl(paramBoolean);
+    fGT();
+    wr(paramBoolean);
     AppMethodBeat.o(41539);
   }
   
-  private void sl(boolean paramBoolean)
+  private void wr(boolean paramBoolean)
   {
     AppMethodBeat.i(41540);
-    if ((this.CLj == null) || (!paramBoolean))
+    if ((this.IFq == null) || (!paramBoolean))
     {
       AppMethodBeat.o(41540);
       return;
     }
-    if ((this.CLj.CPS != null) && (this.CLj.CPS.CME != null)) {
-      d.c(a(this.CLj.CPS.CME));
+    if ((this.IFq.IKc != null) && (this.IFq.IKc.IGJ != null)) {
+      d.c(a(this.IFq.IKc.IGJ));
     }
-    ((e)h.ae(e.class)).evm().init(MMApplicationContext.getContext());
+    ((e)h.ax(e.class)).fCf().init(MMApplicationContext.getContext());
     AppMethodBeat.o(41540);
   }
   
   public static final class a
   {
-    public c CLp;
-    public ar CLq;
-    public as CLr;
-    public au CLs;
+    public c IFw;
+    public as IFx;
+    public at IFy;
+    public av IFz;
     public String desc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ac
  * JD-Core Version:    0.7.0.1
  */

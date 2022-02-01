@@ -1,14 +1,13 @@
 package com.tencent.mm.plugin.multi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.a.a;
 import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.VoiceEngineConf;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class talk
 {
-  public static int FlJ;
+  public static int LhL;
   public static int VOICE_FRAME_DURATION;
   public static int VOICE_SAMPLERATE;
   public byte[] field_capInfo = null;
@@ -30,21 +29,33 @@ public class talk
     AppMethodBeat.i(62794);
     VOICE_SAMPLERATE = 8000;
     VOICE_FRAME_DURATION = 20;
-    FlJ = 9;
+    LhL = 9;
     try
     {
-      if ((a.ZdM) && (a.Zed))
+      if ((com.tencent.pb.common.a.a.ahcq) && (com.tencent.pb.common.a.a.ahcH))
       {
-        System.loadLibrary("stlport_shared");
-        System.loadLibrary("wechatxlog");
-        System.loadLibrary("voipMain");
+        com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("stlport_shared");
+        Object localObject2 = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala.aYi(), "com/tencent/mm/plugin/multi/talk", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)locala.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/multi/talk", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatxlog");
+        localObject2 = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala.aYi(), "com/tencent/mm/plugin/multi/talk", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)locala.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/multi/talk", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        locala = new com.tencent.mm.hellhoundlib.b.a().cG("voipMain");
+        localObject2 = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject2, locala.aYi(), "com/tencent/mm/plugin/multi/talk", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+        System.loadLibrary((String)locala.sb(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/multi/talk", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       }
       AppMethodBeat.o(62794);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      b.w("loadLibrary: ", new Object[] { localThrowable });
+      b.w("loadLibrary: ", new Object[] { localObject1 });
       AppMethodBeat.o(62794);
     }
   }
@@ -122,7 +133,7 @@ public class talk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.plugin.multi.talk
  * JD-Core Version:    0.7.0.1
  */

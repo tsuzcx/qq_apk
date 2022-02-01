@@ -80,7 +80,7 @@ public enum NativeLibs
       boolean bool2 = AudioPlayerConfigure.getSoLibraryLoader().load(paramString);
       bool1 = bool2;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
@@ -123,7 +123,7 @@ public enum NativeLibs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.NativeLibs
  * JD-Core Version:    0.7.0.1
  */

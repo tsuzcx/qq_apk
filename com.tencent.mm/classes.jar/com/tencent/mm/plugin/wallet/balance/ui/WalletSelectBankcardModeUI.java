@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,11 +15,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.h;
@@ -34,24 +30,24 @@ import java.util.Iterator;
 public class WalletSelectBankcardModeUI
   extends WalletBaseUI
 {
-  private int ARl;
-  private ArrayList<Bankcard> OmN;
-  private Bankcard OmO;
-  private String OmP;
-  private int OmZ;
-  private TextView Oov;
-  private b Oow;
-  private ListView Xc;
-  private int jaR;
-  private ArrayList<a> mData;
+  private int Fjh;
+  private int VbN;
+  private ArrayList<Bankcard> Vbt;
+  private Bankcard Vbu;
+  private String Vbv;
+  private TextView Vdn;
+  private b Vdo;
+  private ListView bEw;
+  private int lCR;
+  private ArrayList<a> mlK;
   
   public WalletSelectBankcardModeUI()
   {
     AppMethodBeat.i(68732);
-    this.jaR = 0;
-    this.OmZ = 0;
-    this.mData = new ArrayList();
-    this.ARl = -1;
+    this.lCR = 0;
+    this.VbN = 0;
+    this.mlK = new ArrayList();
+    this.Fjh = -1;
     AppMethodBeat.o(68732);
   }
   
@@ -85,30 +81,30 @@ public class WalletSelectBankcardModeUI
         return true;
       }
     });
-    this.Oov = ((TextView)findViewById(a.f.wallet_select_tips));
+    this.Vdn = ((TextView)findViewById(a.f.wallet_select_tips));
     Object localObject;
     label205:
     int i;
     label259:
     Bankcard localBankcard;
     a locala;
-    if (this.jaR == 0)
+    if (this.lCR == 0)
     {
-      this.Oov.setText(a.i.wallet_select_tips_for_fetch);
-      this.Xc = ((ListView)findViewById(a.f.wallet_bankcard_list));
-      this.Oow = new b();
-      this.Xc.setAdapter(this.Oow);
-      this.Xc.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.Vdn.setText(a.i.wallet_select_tips_for_fetch);
+      this.bEw = ((ListView)findViewById(a.f.wallet_bankcard_list));
+      this.Vdo = new b();
+      this.bEw.setAdapter(this.Vdo);
+      this.bEw.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(68728);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bn(paramAnonymousAdapterView);
-          localb.bn(paramAnonymousView);
-          localb.sg(paramAnonymousInt);
-          localb.Fs(paramAnonymousLong);
-          a.c("com/tencent/mm/plugin/wallet/balance/ui/WalletSelectBankcardModeUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+          localb.cH(paramAnonymousAdapterView);
+          localb.cH(paramAnonymousView);
+          localb.sc(paramAnonymousInt);
+          localb.hB(paramAnonymousLong);
+          a.c("com/tencent/mm/plugin/wallet/balance/ui/WalletSelectBankcardModeUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aYj());
           WalletSelectBankcardModeUI.a(WalletSelectBankcardModeUI.this, paramAnonymousInt);
           WalletSelectBankcardModeUI.a(WalletSelectBankcardModeUI.this).notifyDataSetChanged();
           paramAnonymousAdapterView = new Intent();
@@ -120,25 +116,25 @@ public class WalletSelectBankcardModeUI
           AppMethodBeat.o(68728);
         }
       });
-      this.mData.clear();
-      this.OmP = getString(a.i.wallet_balance_save_bind_new_card_to_fetch);
-      if (this.jaR != 0) {
+      this.mlK.clear();
+      this.Vbv = getString(a.i.wallet_balance_save_bind_new_card_to_fetch);
+      if (this.lCR != 0) {
         break label569;
       }
-      s.gGL();
-      localObject = s.gGM();
-      this.OmN = ((ao)localObject).gKm();
-      this.OmO = ((ao)localObject).a(this.OmN, null, false, true);
-      if (((ao)localObject).OUa == null) {
+      com.tencent.mm.plugin.wallet.model.p.ifO();
+      localObject = com.tencent.mm.plugin.wallet.model.p.ifP();
+      this.Vbt = ((am)localObject).ijD();
+      this.Vbu = ((am)localObject).a(this.Vbt, null, false, true);
+      if (((am)localObject).VKg == null) {
         break label402;
       }
-      this.OmZ = ((ao)localObject).OUa.OmZ;
-      Log.e("MicroMsg.WalletSelectBankcardModeUI", "is_show_charge is " + this.OmZ);
-      if ((this.OmN == null) || (this.OmN.size() <= 0)) {
+      this.VbN = ((am)localObject).VKg.VbN;
+      Log.e("MicroMsg.WalletSelectBankcardModeUI", "is_show_charge is " + this.VbN);
+      if ((this.Vbt == null) || (this.Vbt.size() <= 0)) {
         break label582;
       }
-      Log.i("MicroMsg.WalletSelectBankcardModeUI", "mBankcardList size is " + this.OmN.size());
-      localObject = this.OmN.iterator();
+      Log.i("MicroMsg.WalletSelectBankcardModeUI", "mBankcardList size is " + this.Vbt.size());
+      localObject = this.Vbt.iterator();
       i = 0;
       if (!((Iterator)localObject).hasNext()) {
         break label516;
@@ -146,49 +142,49 @@ public class WalletSelectBankcardModeUI
       localBankcard = (Bankcard)((Iterator)localObject).next();
       locala = new a((byte)0);
       locala.title = localBankcard.field_desc;
-      if ((localBankcard.field_fetch_charge_rate <= 0.0D) || (this.OmZ != 1)) {
+      if ((localBankcard.field_fetch_charge_rate <= 0.0D) || (this.VbN != 1)) {
         break label462;
       }
       if (TextUtils.isEmpty(localBankcard.field_fetch_charge_info)) {
         break label417;
       }
-      locala.tsf = localBankcard.field_fetch_charge_info;
+      locala.lym = localBankcard.field_fetch_charge_info;
     }
     for (;;)
     {
-      this.mData.add(locala);
-      if ((this.ARl == -1) && (this.OmO != null) && (this.OmO.equals(localBankcard))) {
-        this.ARl = i;
+      this.mlK.add(locala);
+      if ((this.Fjh == -1) && (this.Vbu != null) && (this.Vbu.equals(localBankcard))) {
+        this.Fjh = i;
       }
       i += 1;
       break label259;
-      if (this.jaR != 1) {
+      if (this.lCR != 1) {
         break;
       }
-      this.Oov.setText(a.i.wallet_select_tips_for_save);
+      this.Vdn.setText(a.i.wallet_select_tips_for_save);
       break;
       label402:
-      this.OmZ = 0;
+      this.VbN = 0;
       Log.e("MicroMsg.WalletSelectBankcardModeUI", "userInfo.getBalanceFetchInfo() is null");
       break label205;
       label417:
-      locala.tsf = (getString(a.i.wallet_balance_fetch_charge_rate_tips_for_select) + localBankcard.field_fetch_charge_rate * 100.0D + "%");
+      locala.lym = (getString(a.i.wallet_balance_fetch_charge_rate_tips_for_select) + localBankcard.field_fetch_charge_rate * 100.0D + "%");
       continue;
       label462:
-      Log.i("MicroMsg.WalletSelectBankcardModeUI", "the bank " + localBankcard.field_desc + " field_fetch_charge_rate is " + localBankcard.field_fetch_charge_rate + " is_show_charge is " + this.OmZ);
+      Log.i("MicroMsg.WalletSelectBankcardModeUI", "the bank " + localBankcard.field_desc + " field_fetch_charge_rate is " + localBankcard.field_fetch_charge_rate + " is_show_charge is " + this.VbN);
     }
     label516:
-    if ((this.ARl == -1) && (this.OmO == null)) {
-      this.ARl = i;
+    if ((this.Fjh == -1) && (this.Vbu == null)) {
+      this.Fjh = i;
     }
     for (;;)
     {
       localObject = new a((byte)0);
-      ((a)localObject).title = this.OmP;
-      ((a)localObject).tsf = "";
-      this.mData.add(localObject);
+      ((a)localObject).title = this.Vbv;
+      ((a)localObject).lym = "";
+      this.mlK.add(localObject);
       label569:
-      this.Oow.notifyDataSetChanged();
+      this.Vdo.notifyDataSetChanged();
       AppMethodBeat.o(68734);
       return;
       label582:
@@ -201,9 +197,9 @@ public class WalletSelectBankcardModeUI
     AppMethodBeat.i(68733);
     super.onCreate(paramBundle);
     setResult(0);
-    this.jaR = getIntent().getIntExtra("key_scene_select_bankcard_mode_ui", 0);
-    this.ARl = getIntent().getIntExtra("key_select_index", -1);
-    Log.i("MicroMsg.WalletSelectBankcardModeUI", "onCreate() mFromScene is " + this.jaR);
+    this.lCR = getIntent().getIntExtra("key_scene_select_bankcard_mode_ui", 0);
+    this.Fjh = getIntent().getIntExtra("key_select_index", -1);
+    Log.i("MicroMsg.WalletSelectBankcardModeUI", "onCreate() mFromScene is " + this.lCR);
     initView();
     AppMethodBeat.o(68733);
   }
@@ -221,7 +217,7 @@ public class WalletSelectBankcardModeUI
     return bool;
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
     return false;
   }
@@ -234,11 +230,10 @@ public class WalletSelectBankcardModeUI
   
   static final class a
   {
+    public String lym = "";
     public String title = "";
-    public String tsf = "";
   }
   
-  @SuppressLint({"ViewHolder"})
   final class b
     extends BaseAdapter
   {
@@ -266,10 +261,10 @@ public class WalletSelectBankcardModeUI
       TextView localTextView2 = (TextView)paramView.findViewById(a.f.bankcard_tips);
       ImageView localImageView = (ImageView)paramView.findViewById(a.f.selected_icon);
       localTextView1.setText(paramViewGroup.title);
-      if (!TextUtils.isEmpty(paramViewGroup.tsf))
+      if (!TextUtils.isEmpty(paramViewGroup.lym))
       {
         localTextView2.setVisibility(0);
-        localTextView2.setText(paramViewGroup.tsf);
+        localTextView2.setText(paramViewGroup.lym);
         if (WalletSelectBankcardModeUI.c(WalletSelectBankcardModeUI.this) != paramInt) {
           break label138;
         }
@@ -289,7 +284,7 @@ public class WalletSelectBankcardModeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletSelectBankcardModeUI
  * JD-Core Version:    0.7.0.1
  */

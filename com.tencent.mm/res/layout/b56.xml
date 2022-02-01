@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/iwt" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/ebz" android:background="#ffefeff4" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/FG_1" android:gravity="center|left" android:id="@id/f6y" android:background="@drawable/agv" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="39.0dip" />
-    <View android:id="@id/brt" android:background="@color/a2s" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/f6z" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/f_f" android:background="@drawable/ago" android:layout_width="fill_parent" android:layout_height="39.0dip">
-        <TextView android:textColor="@color/x0" android:id="@id/f_g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/evw" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f_e" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/x0" />
-        <View android:id="@id/fka" android:background="@drawable/b1a" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="5.0dip" />
-    </LinearLayout>
-    <View android:id="@id/aal" android:background="@color/zd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="8.0dip" />
-</LinearLayout>
+    <ListView android:id="@id/bth" android:background="@color/al2" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" style="@style/na" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/cj1" android:paddingTop="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_" app:layout_constraintEnd_toEndOf="hr_" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_" app:layout_constraintVertical_bias="0.3" style="@style/m3" />
+</androidx.constraintlayout.widget.ConstraintLayout>

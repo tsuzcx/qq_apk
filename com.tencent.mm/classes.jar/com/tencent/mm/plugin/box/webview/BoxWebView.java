@@ -6,12 +6,13 @@ import android.view.View;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.pluginsdk.ui.tools.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
+import com.tencent.xweb.ao;
 import java.io.File;
 import java.lang.reflect.Field;
 
@@ -47,7 +48,7 @@ public class BoxWebView
     AppMethodBeat.o(76346);
   }
   
-  private void cdf()
+  private void cDC()
   {
     AppMethodBeat.i(76348);
     if (getIsX5Kernel())
@@ -55,7 +56,7 @@ public class BoxWebView
       AppMethodBeat.o(76348);
       return;
     }
-    if (d.qV(19))
+    if (d.rb(19))
     {
       AppMethodBeat.o(76348);
       return;
@@ -96,36 +97,36 @@ public class BoxWebView
   {
     AppMethodBeat.i(76347);
     Log.i("MicroMsg.Flight.FlightWebView", "init FlightWebView");
-    this.jvb = true;
-    lF(this.context);
-    cdf();
+    this.lYs = true;
+    nJ(this.context);
+    cDC();
     AppMethodBeat.o(76347);
   }
   
   public final void a(a parama, c paramc)
   {
     AppMethodBeat.i(76349);
-    getSettings().iwC();
+    getSettings().kfS();
     getSettings().setJavaScriptEnabled(true);
     getSettings().setPluginsEnabled(true);
     getSettings().setBuiltInZoomControls(false);
     getSettings().setMediaPlaybackRequiresUserGesture(true);
-    getSettings().iwE();
-    getSettings().setUserAgentString(ab.cC(getContext(), getSettings().getUserAgentString()));
+    getSettings().kfU();
+    getSettings().setUserAgentString(aa.cN(getContext(), getSettings().getUserAgentString()));
     getSettings().setUseWideViewPort(true);
     getSettings().setLoadWithOverviewMode(true);
-    getSettings().iwx();
-    getSettings().iww();
+    getSettings().kfN();
+    getSettings().kfM();
     getSettings().setGeolocationEnabled(true);
     getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    getSettings().iwE();
-    getSettings().iwA();
+    getSettings().kfU();
+    getSettings().kfQ();
     getSettings().setAppCachePath(this.context.getDir("webviewcache", 0).getAbsolutePath());
-    getSettings().iwz();
-    getSettings().iwB();
-    getSettings().setDatabasePath(com.tencent.mm.loader.j.b.aSC() + "databases/");
-    com.tencent.xweb.c.ivX().ivY();
-    com.tencent.xweb.c.ivX().f(this);
+    getSettings().kfP();
+    getSettings().kfR();
+    getSettings().setDatabasePath(com.tencent.mm.loader.i.b.bmq() + "databases/");
+    ao.kfp();
+    ao.g(this);
     getView().setHorizontalScrollBarEnabled(false);
     getView().setVerticalScrollBarEnabled(true);
     setConfigCallback((WindowManager)MMApplicationContext.getContext().getSystemService("window"));
@@ -137,7 +138,7 @@ public class BoxWebView
     }
     Log.i("MicroMsg.Flight.FlightWebView", "Is the current broswer kernel X5, " + getIsX5Kernel());
     setBackgroundColor(-1);
-    hZN();
+    jEU();
     AppMethodBeat.o(76349);
   }
   

@@ -4,82 +4,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class os
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public ach RWQ;
-  public boolean RWR;
+  public LinkedList<or> YRS;
+  
+  public os()
+  {
+    AppMethodBeat.i(124419);
+    this.YRS = new LinkedList();
+    AppMethodBeat.o(124419);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(207311);
+    AppMethodBeat.i(124420);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.RWQ != null)
-      {
-        paramVarArgs.oE(1, this.RWQ.computeSize());
-        this.RWQ.writeFields(paramVarArgs);
-      }
-      paramVarArgs.co(2, this.RWR);
-      AppMethodBeat.o(207311);
+      ((i.a.a.c.a)paramVarArgs[0]).e(1, 8, this.YRS);
+      AppMethodBeat.o(124420);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.RWQ == null) {
-        break label332;
-      }
-    }
-    label332:
-    for (paramInt = g.a.a.a.oD(1, this.RWQ.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.gL(2);
-      AppMethodBeat.o(207311);
-      return paramInt + (i + 1);
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
-          }
-        }
-        AppMethodBeat.o(207311);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
-        os localos = (os)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(207311);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject = (byte[])paramVarArgs.get(paramInt);
-            ach localach = new ach();
-            if ((localObject != null) && (localObject.length > 0)) {
-              localach.parseFrom((byte[])localObject);
-            }
-            localos.RWQ = localach;
-            paramInt += 1;
-          }
-          AppMethodBeat.o(207311);
-          return 0;
-        }
-        localos.RWR = ((g.a.a.a.a)localObject).abFh.AB();
-        AppMethodBeat.o(207311);
-        return 0;
-      }
-      AppMethodBeat.o(207311);
-      return -1;
+      paramInt = i.a.a.a.c(1, 8, this.YRS);
+      AppMethodBeat.o(124420);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.YRS.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.kFT();
+        }
+      }
+      AppMethodBeat.o(124420);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
+      os localos = (os)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(124420);
+        return -1;
+      }
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        or localor = new or();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localor.parseFrom((byte[])localObject);
+        }
+        localos.YRS.add(localor);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(124420);
+      return 0;
+    }
+    AppMethodBeat.o(124420);
+    return -1;
   }
 }
 

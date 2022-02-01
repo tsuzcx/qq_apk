@@ -4,25 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="DeviceMetaDataCreator")
 public class DeviceMetaData
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<DeviceMetaData> CREATOR;
-  @SafeParcelable.Field(getter="isLockScreenSolved", id=2)
   private boolean zzcc;
-  @SafeParcelable.Field(getter="getMinAgeOfLockScreen", id=3)
   private long zzcd;
-  @SafeParcelable.Field(getter="isChallengeAllowed", id=4)
   private final boolean zzce;
-  @SafeParcelable.VersionField(id=1)
   private final int zzy;
   
   static
@@ -32,8 +22,7 @@ public class DeviceMetaData
     AppMethodBeat.o(10650);
   }
   
-  @SafeParcelable.Constructor
-  DeviceMetaData(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) boolean paramBoolean1, @SafeParcelable.Param(id=3) long paramLong, @SafeParcelable.Param(id=4) boolean paramBoolean2)
+  DeviceMetaData(int paramInt, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
     this.zzy = paramInt;
     this.zzcc = paramBoolean1;
@@ -70,7 +59,7 @@ public class DeviceMetaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.DeviceMetaData
  * JD-Core Version:    0.7.0.1
  */

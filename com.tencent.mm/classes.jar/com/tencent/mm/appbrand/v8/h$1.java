@@ -4,8 +4,11 @@ import android.content.Context;
 import com.eclipsesource.mmv8.MultiContextNodeJS.IGetTmpFileDirectory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.e;
+import com.tencent.mm.b.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.ah;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 
 final class h$1
@@ -17,14 +20,14 @@ final class h$1
     Object localObject = MMApplicationContext.getContext();
     localObject = ((Context)localObject).getFilesDir().getParentFile().getAbsolutePath() + "/MicroMsg/tmp/";
     e.d(new String[] { localObject });
-    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q((String)localObject);
-    if (!localq.ifE())
+    u localu = new u((String)localObject);
+    if (!localu.jKS())
     {
       Log.e("MicroMsg.NodeJSRuntime", "try mkdirs again");
-      localq.ifL();
+      localu.jKY();
     }
-    Log.i("MicroMsg.NodeJSRuntime", "tmpDir:%s exist:%b", new Object[] { localObject, Boolean.valueOf(localq.ifE()) });
-    localObject = new File(com.tencent.mm.b.q.n(localq.bOF(), true));
+    Log.i("MicroMsg.NodeJSRuntime", "tmpDir:%s exist:%b", new Object[] { localObject, Boolean.valueOf(localu.jKS()) });
+    localObject = new File(q.n(ah.v(localu.jKT()), true));
     AppMethodBeat.o(144017);
     return localObject;
   }

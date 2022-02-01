@@ -3,40 +3,40 @@ package com.tencent.mm.plugin.exdevice.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int vht;
-  public String vhu;
+  public int ytv;
+  public String ytw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23489);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.vht);
-      if (this.vhu != null) {
-        paramVarArgs.f(2, this.vhu);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ytv);
+      if (this.ytw != null) {
+        paramVarArgs.g(2, this.ytw);
       }
       AppMethodBeat.o(23489);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.vht) + 0;
+      int i = i.a.a.b.b.a.cJ(1, this.ytv) + 0;
       paramInt = i;
-      if (this.vhu != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.vhu);
+      if (this.ytw != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.ytw);
       }
       AppMethodBeat.o(23489);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
       AppMethodBeat.o(23489);
@@ -44,7 +44,7 @@ public final class e
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
       e locale = (e)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -52,11 +52,11 @@ public final class e
         AppMethodBeat.o(23489);
         return -1;
       case 1: 
-        locale.vht = locala.abFh.AK();
+        locale.ytv = locala.ajGk.aar();
         AppMethodBeat.o(23489);
         return 0;
       }
-      locale.vhu = locala.abFh.readString();
+      locale.ytw = locala.ajGk.readString();
       AppMethodBeat.o(23489);
       return 0;
     }
@@ -66,7 +66,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,29 +4,29 @@ import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cache.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/artists/FilterArtist;", "Lcom/tencent/mm/artists/BaseArtist;", "Lcom/tencent/mm/cache/FilterCache;", "()V", "TAG", "", "getType", "Lcom/tencent/mm/artists/ArtistType;", "onAlive", "", "onDeadDraw", "canvas", "Landroid/graphics/Canvas;", "onDraw", "onUndo", "select", "index", "", "colorWeight", "", "plugin-photoedit-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/artists/FilterArtist;", "Lcom/tencent/mm/artists/BaseArtist;", "Lcom/tencent/mm/cache/FilterCache;", "()V", "TAG", "", "getType", "Lcom/tencent/mm/artists/ArtistType;", "onAlive", "", "onDeadDraw", "canvas", "Landroid/graphics/Canvas;", "onDraw", "onUndo", "select", "index", "", "colorWeight", "", "plugin-photoedit-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   extends b<e>
 {
   private final String TAG = "MicroMsg.FilterArtist";
   
-  public final a acy()
+  public final a aEy()
   {
-    return a.fkC;
+    return a.hoP;
   }
   
-  public final void acz() {}
+  public final void aEz() {}
   
-  public final void e(Canvas paramCanvas)
+  public final void h(Canvas paramCanvas)
   {
     AppMethodBeat.i(163141);
-    p.k(paramCanvas, "canvas");
-    e locale = (e)acA();
+    s.u(paramCanvas, "canvas");
+    e locale = (e)aEA();
     if (locale != null) {
-      locale.a(paramCanvas, false);
+      locale.b(paramCanvas, false);
     }
     Log.i(this.TAG, "lxl artist onDeadDraw");
     AppMethodBeat.o(163141);
@@ -36,14 +36,9 @@ public final class f
   {
     AppMethodBeat.i(163139);
     super.onAlive();
-    e locale = (e)acA();
-    if (locale != null)
-    {
-      com.tencent.mm.ca.b localb = getPresenter();
-      p.j(localb, "presenter");
-      locale.iTM = localb.hoy();
-      AppMethodBeat.o(163139);
-      return;
+    e locale = (e)aEA();
+    if (locale != null) {
+      locale.lvS = this.hoR.iPu();
     }
     AppMethodBeat.o(163139);
   }
@@ -51,10 +46,10 @@ public final class f
   public final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(163140);
-    p.k(paramCanvas, "canvas");
-    e locale = (e)acA();
+    s.u(paramCanvas, "canvas");
+    e locale = (e)aEA();
     if (locale != null) {
-      locale.a(paramCanvas, false);
+      locale.b(paramCanvas, false);
     }
     Log.i(this.TAG, "lxl artist draw");
     AppMethodBeat.o(163140);
@@ -62,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.e.f
  * JD-Core Version:    0.7.0.1
  */

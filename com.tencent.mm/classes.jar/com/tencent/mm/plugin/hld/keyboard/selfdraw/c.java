@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.hld.keyboard.selfdraw;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardMode;", "", "(Ljava/lang/String;I)V", "Normal", "Land", "Night", "plugin-hld_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/hld/keyboard/selfdraw/KeyboardMode;", "", "(Ljava/lang/String;I)V", "Normal", "Land", "Night", "plugin-hld_release"}, k=1, mv={1, 5, 1}, xi=48)
 public enum c
 {
   static
   {
-    AppMethodBeat.i(211067);
-    c localc1 = new c("Normal", 0);
-    DzX = localc1;
-    c localc2 = new c("Land", 1);
-    DzY = localc2;
-    c localc3 = new c("Night", 2);
-    DzZ = localc3;
-    DAa = new c[] { localc1, localc2, localc3 };
-    AppMethodBeat.o(211067);
+    AppMethodBeat.i(313021);
+    JsY = new c("Normal", 0);
+    JsZ = new c("Land", 1);
+    Jta = new c("Night", 2);
+    Jtb = new c[] { JsY, JsZ, Jta };
+    AppMethodBeat.o(313021);
   }
   
   private c() {}

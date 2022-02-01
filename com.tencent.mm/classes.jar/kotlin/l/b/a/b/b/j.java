@@ -1,37 +1,29 @@
 package kotlin.l.b.a.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l.b.a.b.a.g;
-import kotlin.l.b.a.b.a.m;
-import kotlin.l.b.a.b.m.ab;
-import kotlin.l.b.a.b.m.bc;
+import kotlin.g.b.s;
+import kotlin.l.b.a.b.a.h;
+import kotlin.l.b.a.b.a.o;
+import kotlin.l.b.a.b.m.ad;
+import kotlin.l.b.a.b.m.bg;
 
 public final class j
 {
-  public static final j aaKf;
+  public static final j aiGA;
   
   static
   {
     AppMethodBeat.i(56849);
-    aaKf = new j();
+    aiGA = new j();
     AppMethodBeat.o(56849);
   }
   
-  public static final boolean F(ab paramab)
+  public static final boolean y(ad paramad)
   {
     AppMethodBeat.i(56848);
-    p.k(paramab, "type");
-    p.k(paramab, "$this$canBeUsedForConstVal");
-    if (!g.o(paramab))
-    {
-      m localm = m.aaIi;
-      if (!m.E(paramab)) {
-        break label42;
-      }
-    }
-    label42:
-    if ((!bc.aE(paramab)) || (g.D(paramab)))
+    s.u(paramad, "type");
+    s.u(paramad, "<this>");
+    if (((!h.p(paramad)) && (!o.x(paramad))) || ((!bg.aw(paramad)) || (h.w(paramad))))
     {
       AppMethodBeat.o(56848);
       return true;
@@ -42,7 +34,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.j
  * JD-Core Version:    0.7.0.1
  */

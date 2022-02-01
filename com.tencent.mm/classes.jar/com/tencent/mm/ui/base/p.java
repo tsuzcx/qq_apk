@@ -1,370 +1,115 @@
 package com.tencent.mm.ui.base;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils.TruncateAt;
-import android.view.ActionProvider;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
-import android.view.MenuItem.OnActionExpandListener;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.SubMenu;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.c;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.view.MaxHeightScrollView;
+import org.xwalk.core.Log;
 
 public final class p
-  implements MenuItem
+  extends j
 {
-  public CharSequence BOZ;
-  public boolean HhK;
-  private CharSequence Ig;
-  private Drawable Qjf;
-  public boolean WkQ;
-  public TextUtils.TruncateAt WkR;
-  private int WkS;
-  public boolean WkT;
-  public ContextMenu.ContextMenuInfo WkU;
-  private MenuItem.OnMenuItemClickListener WkV;
-  public boolean WkW;
-  public q.d WkX;
-  public q.h WkY;
-  public boolean fUV;
-  public int iconColor;
-  private Intent intent;
-  private int ka;
-  private int kh;
-  private Context mContext;
-  public String ozt;
-  public boolean qfB;
-  private int zDq;
+  private TextView adRk;
+  private MaxHeightScrollView adRm;
+  public boolean adRn;
+  private Button lDJ;
+  private Button njI;
+  public TextView qjr;
+  private TextView titleTv;
   
-  public p(Context paramContext, int paramInt1, int paramInt2)
+  public p(Context paramContext)
   {
-    AppMethodBeat.i(159237);
-    this.HhK = false;
-    this.BOZ = null;
-    this.qfB = false;
-    this.WkT = true;
-    this.WkW = false;
-    this.WkX = null;
-    this.WkY = null;
-    this.mContext = paramContext;
-    this.kh = paramInt1;
-    this.ka = paramInt2;
-    this.iconColor = paramContext.getResources().getColor(a.c.FG_0);
-    AppMethodBeat.o(159237);
-  }
-  
-  public final MenuItem FO(boolean paramBoolean)
-  {
-    this.qfB = paramBoolean;
-    return this;
-  }
-  
-  public final void a(ContextMenu.ContextMenuInfo paramContextMenuInfo)
-  {
-    this.WkU = paramContextMenuInfo;
-  }
-  
-  public final void a(q.h paramh)
-  {
-    this.WkY = paramh;
-  }
-  
-  public final boolean collapseActionView()
-  {
-    return false;
-  }
-  
-  public final boolean expandActionView()
-  {
-    return false;
-  }
-  
-  public final MenuItem f(Drawable paramDrawable, int paramInt)
-  {
-    AppMethodBeat.i(251869);
-    this.Qjf = paramDrawable;
-    this.iconColor = paramInt;
-    if (this.WkX != null) {
-      this.WkX.a(this);
-    }
-    AppMethodBeat.o(251869);
-    return this;
-  }
-  
-  public final ActionProvider getActionProvider()
-  {
-    return null;
-  }
-  
-  public final View getActionView()
-  {
-    return null;
-  }
-  
-  public final char getAlphabeticShortcut()
-  {
-    return '\000';
-  }
-  
-  public final int getGroupId()
-  {
-    return this.ka;
-  }
-  
-  public final Drawable getIcon()
-  {
-    AppMethodBeat.i(159239);
-    if (this.Qjf == null)
+    super(paramContext);
+    AppMethodBeat.i(251347);
+    this.adRn = false;
+    aFf(a.h.half_bottom_tips_double_dlg_layout);
+    this.titleTv = ((TextView)this.rootView.findViewById(a.g.tips_title));
+    this.qjr = ((TextView)this.rootView.findViewById(a.g.tips_hint));
+    this.lDJ = ((Button)this.rootView.findViewById(a.g.next_btn));
+    this.njI = ((Button)this.rootView.findViewById(a.g.cancel_btn));
+    this.adRk = ((TextView)this.rootView.findViewById(a.g.tips_hint_entry3));
+    this.adRm = ((MaxHeightScrollView)this.rootView.findViewById(a.g.scroll));
+    if (this.adRm != null)
     {
-      if ((this.WkS != 0) && (this.mContext != null))
+      if ((this.adRm.getContext() instanceof Activity))
       {
-        localDrawable = this.mContext.getResources().getDrawable(this.WkS);
-        AppMethodBeat.o(159239);
-        return localDrawable;
+        paramContext = this.adRm.getContext().getResources().getDisplayMetrics();
+        if (paramContext != null)
+        {
+          this.adRm.setMaxHeight((int)(paramContext.heightPixels * 0.45F));
+          Log.i("MicroMsg.MMHalfBottomTipsDoubleBtnDialog", "displayMetrics.heightPixels = " + paramContext.heightPixels);
+          AppMethodBeat.o(251347);
+          return;
+        }
+        Log.i("MicroMsg.MMHalfBottomTipsDoubleBtnDialog", "displayMetrics is null");
+        AppMethodBeat.o(251347);
+        return;
       }
-      AppMethodBeat.o(159239);
-      return null;
+      Log.i("MicroMsg.MMHalfBottomTipsDoubleBtnDialog", "display is null");
     }
-    Drawable localDrawable = this.Qjf;
-    AppMethodBeat.o(159239);
-    return localDrawable;
+    AppMethodBeat.o(251347);
   }
   
-  public final Intent getIntent()
+  public final p bAe(String paramString)
   {
-    return this.intent;
-  }
-  
-  public final int getItemId()
-  {
-    return this.kh;
-  }
-  
-  public final ContextMenu.ContextMenuInfo getMenuInfo()
-  {
-    return this.WkU;
-  }
-  
-  public final char getNumericShortcut()
-  {
-    return '\000';
-  }
-  
-  public final int getOrder()
-  {
-    return 0;
-  }
-  
-  public final SubMenu getSubMenu()
-  {
-    return null;
-  }
-  
-  public final CharSequence getTitle()
-  {
-    AppMethodBeat.i(159238);
-    if (this.Ig == null)
-    {
-      if ((this.zDq != 0) && (this.mContext != null))
-      {
-        localObject = this.mContext.getString(this.zDq);
-        AppMethodBeat.o(159238);
-        return localObject;
-      }
-      AppMethodBeat.o(159238);
-      return null;
-    }
-    Object localObject = this.Ig;
-    AppMethodBeat.o(159238);
-    return localObject;
-  }
-  
-  public final CharSequence getTitleCondensed()
-  {
-    return null;
-  }
-  
-  public final CharSequence hJQ()
-  {
-    return this.BOZ;
-  }
-  
-  public final boolean hasSubMenu()
-  {
-    return false;
-  }
-  
-  public final boolean isActionViewExpanded()
-  {
-    return false;
-  }
-  
-  public final boolean isCheckable()
-  {
-    return false;
-  }
-  
-  public final boolean isChecked()
-  {
-    return false;
-  }
-  
-  public final boolean isEnabled()
-  {
-    return true;
-  }
-  
-  public final boolean isVisible()
-  {
-    return true;
-  }
-  
-  public final MenuItem mo(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(251875);
-    this.WkS = paramInt1;
-    this.iconColor = paramInt2;
-    if (this.WkX != null) {
-      this.WkX.a(this);
-    }
-    AppMethodBeat.o(251875);
+    AppMethodBeat.i(251349);
+    this.titleTv.setText(paramString);
+    AppMethodBeat.o(251349);
     return this;
   }
   
-  public final boolean performClick()
+  public final p bAf(String paramString)
   {
-    AppMethodBeat.i(159240);
-    if (this.WkV != null)
-    {
-      boolean bool = this.WkV.onMenuItemClick(this);
-      AppMethodBeat.o(159240);
-      return bool;
-    }
-    AppMethodBeat.o(159240);
-    return false;
-  }
-  
-  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
-  {
-    return null;
-  }
-  
-  public final MenuItem setActionView(int paramInt)
-  {
-    return null;
-  }
-  
-  public final MenuItem setActionView(View paramView)
-  {
-    return null;
-  }
-  
-  public final MenuItem setAlphabeticShortcut(char paramChar)
-  {
+    AppMethodBeat.i(251351);
+    this.qjr.setText(paramString);
+    AppMethodBeat.o(251351);
     return this;
   }
   
-  public final MenuItem setCheckable(boolean paramBoolean)
+  public final p bAg(String paramString)
   {
+    AppMethodBeat.i(251359);
+    this.lDJ.setText(paramString);
+    AppMethodBeat.o(251359);
     return this;
   }
   
-  public final MenuItem setChecked(boolean paramBoolean)
+  public final p j(View.OnClickListener paramOnClickListener)
   {
+    AppMethodBeat.i(251352);
+    this.lDJ.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(251352);
     return this;
   }
   
-  public final MenuItem setEnabled(boolean paramBoolean)
+  public final p jmq()
   {
+    AppMethodBeat.i(251362);
+    this.adRk.setVisibility(8);
+    AppMethodBeat.o(251362);
     return this;
   }
   
-  public final MenuItem setIcon(int paramInt)
+  public final p k(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(251871);
-    this.WkS = paramInt;
-    if (this.WkX != null) {
-      this.WkX.a(this);
-    }
-    AppMethodBeat.o(251871);
-    return this;
-  }
-  
-  public final MenuItem setIcon(Drawable paramDrawable)
-  {
-    AppMethodBeat.i(251865);
-    this.Qjf = paramDrawable;
-    if (this.WkX != null) {
-      this.WkX.a(this);
-    }
-    AppMethodBeat.o(251865);
-    return this;
-  }
-  
-  public final MenuItem setIntent(Intent paramIntent)
-  {
-    this.intent = paramIntent;
-    return this;
-  }
-  
-  public final MenuItem setNumericShortcut(char paramChar)
-  {
-    return this;
-  }
-  
-  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
-  {
-    return null;
-  }
-  
-  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
-  {
-    this.WkV = paramOnMenuItemClickListener;
-    return this;
-  }
-  
-  public final MenuItem setShortcut(char paramChar1, char paramChar2)
-  {
-    return this;
-  }
-  
-  public final void setShowAsAction(int paramInt) {}
-  
-  public final MenuItem setShowAsActionFlags(int paramInt)
-  {
-    return null;
-  }
-  
-  public final MenuItem setTitle(int paramInt)
-  {
-    this.zDq = paramInt;
-    return this;
-  }
-  
-  public final MenuItem setTitle(CharSequence paramCharSequence)
-  {
-    this.Ig = paramCharSequence;
-    return this;
-  }
-  
-  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
-  {
-    return this;
-  }
-  
-  public final MenuItem setVisible(boolean paramBoolean)
-  {
+    AppMethodBeat.i(251354);
+    this.njI.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(251354);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.p
  * JD-Core Version:    0.7.0.1
  */

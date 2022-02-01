@@ -1,80 +1,85 @@
 package com.tencent.mm.plugin.gamelife.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.de;
+import com.tencent.mm.autogen.b.dn;
+import com.tencent.mm.plugin.gamelife.b.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import com.tencent.mm.storage.au;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversation;", "Lcom/tencent/mm/autogen/table/BaseGameLifeConversation;", "()V", "contact", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "getContact", "()Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "setContact", "(Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;)V", "nickname", "", "getNickname", "()Ljava/lang/String;", "setNickname", "(Ljava/lang/String;)V", "nicknameSpan", "", "getNicknameSpan", "()Ljava/lang/CharSequence;", "setNicknameSpan", "(Ljava/lang/CharSequence;)V", "bindContact", "", "equals", "", "other", "", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getDigestSpan", "getReportSessionType", "", "hashCode", "", "isHistory", "toString", "Companion", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "Lcom/tencent/mm/autogen/table/BaseGameLifeContact;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "()V", "isValid", "", "getAccountType", "", "getAvatarUrl", "", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getNickname", "getProfileJumpInfo", "getTag", "getUsername", "print", "setIsValid", "", "toString", "toWxContact", "Lcom/tencent/mm/storage/Contact;", "Companion", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends de
+  extends dn
+  implements com.tencent.mm.plugin.gamelife.a.a
 {
-  public static final a.a DhB;
+  public static final a.a Jbe;
+  private static final int Jbf;
+  private static final int Jbg;
+  private static final int Jbh;
+  private static final int Jbi;
   private static final IAutoDBItem.MAutoDBInfo info;
-  public com.tencent.mm.plugin.gamelife.d.a DhA;
-  String nickname;
-  public CharSequence xgc;
+  boolean clZ = true;
   
   static
   {
-    AppMethodBeat.i(203391);
-    DhB = new a.a((byte)0);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = de.aoY();
-    p.j(localMAutoDBInfo, "initAutoDBInfo(GameLifeConversation::class.java)");
+    AppMethodBeat.i(268029);
+    Jbe = new a.a((byte)0);
+    Jbf = 1;
+    Jbg = 2;
+    Jbh = 4;
+    Jbi = 8;
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = dn.aJm();
+    s.s(localMAutoDBInfo, "initAutoDBInfo(GameLifeContact::class.java)");
     info = localMAutoDBInfo;
-    AppMethodBeat.o(203391);
+    AppMethodBeat.o(268029);
   }
   
-  public final long eAr()
+  public final String amx()
   {
-    AppMethodBeat.i(203377);
-    if (eAs())
-    {
-      AppMethodBeat.o(203377);
-      return 103L;
-    }
-    AppMethodBeat.o(203377);
-    return 101L;
+    return this.field_avatarURL;
   }
   
-  public final boolean eAs()
+  public final au bSb()
   {
-    AppMethodBeat.i(203379);
-    boolean bool = p.h(this.field_sessionId, "@gamelifehistory");
-    AppMethodBeat.o(203379);
-    return bool;
+    AppMethodBeat.i(268042);
+    au localau = new au();
+    if (!this.clZ) {
+      this.field_nickname = this.field_username;
+    }
+    localau.setNickname(this.field_nickname);
+    localau.acDG = ((CharSequence)p.b(MMApplicationContext.getContext(), (CharSequence)this.field_nickname));
+    localau.setUsername(this.field_username);
+    localau.maN = localau.systemRowid;
+    AppMethodBeat.o(268042);
+    return localau;
   }
   
-  public final boolean equals(Object paramObject)
+  public final String fIg()
   {
-    AppMethodBeat.i(203383);
-    if ((a)this == paramObject)
+    AppMethodBeat.i(268090);
+    Object localObject = this.field_jumpInfo;
+    if (localObject == null)
     {
-      AppMethodBeat.o(203383);
-      return true;
+      AppMethodBeat.o(268090);
+      return "";
     }
-    Class localClass2 = getClass();
-    if (paramObject != null) {}
-    for (Class localClass1 = paramObject.getClass(); (p.h(localClass2, localClass1) ^ true); localClass1 = null)
+    if (((l)localObject).jump_type == com.tencent.mm.plugin.gamelife.a.IYU)
     {
-      AppMethodBeat.o(203383);
-      return false;
+      localObject = ((l)localObject).jump_url;
+      s.s(localObject, "jumpInfo.jump_url");
+      AppMethodBeat.o(268090);
+      return localObject;
     }
-    if (paramObject == null)
-    {
-      paramObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.gamelife.conversation.GameLifeConversation");
-      AppMethodBeat.o(203383);
-      throw paramObject;
-    }
-    if ((p.h(this.field_sessionId, ((a)paramObject).field_sessionId) ^ true))
-    {
-      AppMethodBeat.o(203383);
-      return false;
-    }
-    AppMethodBeat.o(203383);
-    return true;
+    AppMethodBeat.o(268090);
+    return "";
+  }
+  
+  public final int fIh()
+  {
+    return this.field_accountType;
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -82,31 +87,49 @@ public final class a
     return info;
   }
   
-  public final int hashCode()
+  public final String getNickname()
   {
-    AppMethodBeat.i(203386);
-    String str = this.field_sessionId;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(203386);
-      return i;
-    }
-    AppMethodBeat.o(203386);
-    return 0;
+    return this.field_nickname;
+  }
+  
+  public final String getTag()
+  {
+    return this.field_tag;
+  }
+  
+  public final String getUsername()
+  {
+    AppMethodBeat.i(268063);
+    String str = this.field_username;
+    s.s(str, "field_username");
+    AppMethodBeat.o(268063);
+    return str;
+  }
+  
+  public final boolean isValid()
+  {
+    return this.clZ;
+  }
+  
+  public final String print()
+  {
+    AppMethodBeat.i(268049);
+    String str = s.X("username: ", this.field_username);
+    AppMethodBeat.o(268049);
+    return str;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(203389);
-    String str = "GameLifeConversation(talker:" + this.field_talker + " sessionId:" + this.field_sessionId + " self:" + this.field_selfUserName + " nickname:" + this.nickname + ')';
-    AppMethodBeat.o(203389);
+    AppMethodBeat.i(268101);
+    String str = "username: " + this.field_username + " nickname: " + this.field_nickname;
+    AppMethodBeat.o(268101);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.e.a
  * JD-Core Version:    0.7.0.1
  */

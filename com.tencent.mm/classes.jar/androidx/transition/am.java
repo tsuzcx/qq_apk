@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class am
 {
-  private float[] atr;
+  private float[] cia;
   
   public void a(View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(193310);
+    AppMethodBeat.i(201621);
     Object localObject = paramView.getParent();
     if ((localObject instanceof View))
     {
@@ -23,12 +23,12 @@ class am
     if (!paramView.isIdentity()) {
       paramMatrix.preConcat(paramView);
     }
-    AppMethodBeat.o(193310);
+    AppMethodBeat.o(201621);
   }
   
   public void b(View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(193313);
+    AppMethodBeat.i(201631);
     Object localObject = paramView.getParent();
     if ((localObject instanceof View))
     {
@@ -45,45 +45,12 @@ class am
         paramMatrix.postConcat((Matrix)localObject);
       }
     }
-    AppMethodBeat.o(193313);
-  }
-  
-  public float bO(View paramView)
-  {
-    AppMethodBeat.i(193301);
-    Float localFloat = (Float)paramView.getTag(m.a.save_non_transition_alpha);
-    if (localFloat != null)
-    {
-      f = paramView.getAlpha() / localFloat.floatValue();
-      AppMethodBeat.o(193301);
-      return f;
-    }
-    float f = paramView.getAlpha();
-    AppMethodBeat.o(193301);
-    return f;
-  }
-  
-  public void bP(View paramView)
-  {
-    AppMethodBeat.i(193303);
-    if (paramView.getTag(m.a.save_non_transition_alpha) == null) {
-      paramView.setTag(m.a.save_non_transition_alpha, Float.valueOf(paramView.getAlpha()));
-    }
-    AppMethodBeat.o(193303);
-  }
-  
-  public void bQ(View paramView)
-  {
-    AppMethodBeat.i(193306);
-    if (paramView.getVisibility() == 0) {
-      paramView.setTag(m.a.save_non_transition_alpha, null);
-    }
-    AppMethodBeat.o(193306);
+    AppMethodBeat.o(201631);
   }
   
   public void c(View paramView, Matrix paramMatrix)
   {
-    AppMethodBeat.i(193328);
+    AppMethodBeat.i(201641);
     if ((paramMatrix == null) || (paramMatrix.isIdentity()))
     {
       paramView.setPivotX(paramView.getWidth() / 2);
@@ -93,15 +60,15 @@ class am
       paramView.setScaleX(1.0F);
       paramView.setScaleY(1.0F);
       paramView.setRotation(0.0F);
-      AppMethodBeat.o(193328);
+      AppMethodBeat.o(201641);
       return;
     }
-    float[] arrayOfFloat2 = this.atr;
+    float[] arrayOfFloat2 = this.cia;
     float[] arrayOfFloat1 = arrayOfFloat2;
     if (arrayOfFloat2 == null)
     {
       arrayOfFloat1 = new float[9];
-      this.atr = arrayOfFloat1;
+      this.cia = arrayOfFloat1;
     }
     paramMatrix.getValues(arrayOfFloat1);
     float f1 = arrayOfFloat1[3];
@@ -122,38 +89,71 @@ class am
       paramView.setRotation(f1);
       paramView.setScaleX(f2);
       paramView.setScaleY(f3);
-      AppMethodBeat.o(193328);
+      AppMethodBeat.o(201641);
       return;
     }
+  }
+  
+  public float ci(View paramView)
+  {
+    AppMethodBeat.i(201600);
+    Float localFloat = (Float)paramView.getTag(m.a.save_non_transition_alpha);
+    if (localFloat != null)
+    {
+      f = paramView.getAlpha() / localFloat.floatValue();
+      AppMethodBeat.o(201600);
+      return f;
+    }
+    float f = paramView.getAlpha();
+    AppMethodBeat.o(201600);
+    return f;
+  }
+  
+  public void cj(View paramView)
+  {
+    AppMethodBeat.i(201607);
+    if (paramView.getTag(m.a.save_non_transition_alpha) == null) {
+      paramView.setTag(m.a.save_non_transition_alpha, Float.valueOf(paramView.getAlpha()));
+    }
+    AppMethodBeat.o(201607);
+  }
+  
+  public void ck(View paramView)
+  {
+    AppMethodBeat.i(201614);
+    if (paramView.getVisibility() == 0) {
+      paramView.setTag(m.a.save_non_transition_alpha, null);
+    }
+    AppMethodBeat.o(201614);
   }
   
   public void j(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(193329);
+    AppMethodBeat.i(201646);
     paramView.setLeft(paramInt1);
     paramView.setTop(paramInt2);
     paramView.setRight(paramInt3);
     paramView.setBottom(paramInt4);
-    AppMethodBeat.o(193329);
+    AppMethodBeat.o(201646);
   }
   
-  public void n(View paramView, float paramFloat)
+  public void o(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(193298);
+    AppMethodBeat.i(201594);
     Float localFloat = (Float)paramView.getTag(m.a.save_non_transition_alpha);
     if (localFloat != null)
     {
       paramView.setAlpha(localFloat.floatValue() * paramFloat);
-      AppMethodBeat.o(193298);
+      AppMethodBeat.o(201594);
       return;
     }
     paramView.setAlpha(paramFloat);
-    AppMethodBeat.o(193298);
+    AppMethodBeat.o(201594);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     androidx.transition.am
  * JD-Core Version:    0.7.0.1
  */

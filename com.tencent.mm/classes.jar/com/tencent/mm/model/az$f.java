@@ -2,15 +2,15 @@ package com.tencent.mm.model;
 
 public abstract interface az$f
 {
-  public abstract boolean Gj(long paramLong);
-  
-  public abstract void RE(String paramString);
+  public abstract void JC(String paramString);
   
   public abstract void a(az.d paramd);
   
   public abstract void b(az.d paramd);
   
-  public abstract void beu();
+  public abstract void bCm();
+  
+  public abstract boolean it(long paramLong);
 }
 
 

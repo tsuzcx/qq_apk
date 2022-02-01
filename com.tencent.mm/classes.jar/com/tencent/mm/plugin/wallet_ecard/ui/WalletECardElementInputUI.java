@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.wallet_ecard.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI;
@@ -16,42 +15,42 @@ import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 public class WalletECardElementInputUI
   extends WalletECardBaseUI
 {
-  private ElementQuery OJG;
-  private WalletFormView OXn;
-  private Button jbJ;
+  private WalletFormView VNB;
+  private ElementQuery Vzs;
+  private Button lDJ;
   
   private void updateView()
   {
     AppMethodBeat.i(71776);
-    if (this.OJG == null) {
-      this.OJG = new ElementQuery();
+    if (this.Vzs == null) {
+      this.Vzs = new ElementQuery();
     }
-    if (Util.isNullOrNil(this.OJG.DNV))
+    if (Util.isNullOrNil(this.Vzs.JFk))
     {
-      this.OXn.setText("");
+      this.VNB.setText("");
       AppMethodBeat.o(71776);
       return;
     }
-    if (!Util.isNullOrNil(this.OJG.OPm))
+    if (!Util.isNullOrNil(this.Vzs.VFg))
     {
-      this.OXn.setText(this.OJG.DNV + " " + this.OJG.OPm);
+      this.VNB.setText(this.Vzs.JFk + " " + this.Vzs.VFg);
       AppMethodBeat.o(71776);
       return;
     }
-    if (2 == this.OJG.OPl)
+    if (2 == this.Vzs.VFf)
     {
-      this.OXn.setText(this.OJG.DNV + " " + getString(a.i.wallet_credit_card));
+      this.VNB.setText(this.Vzs.JFk + " " + getString(a.i.wallet_credit_card));
       AppMethodBeat.o(71776);
       return;
     }
-    this.OXn.setText(this.OJG.DNV + " " + getString(a.i.wallet_deposit_card));
+    this.VNB.setText(this.Vzs.JFk + " " + getString(a.i.wallet_deposit_card));
     AppMethodBeat.o(71776);
   }
   
@@ -63,42 +62,42 @@ public class WalletECardElementInputUI
   public void initView()
   {
     AppMethodBeat.i(71775);
-    this.OXn = ((WalletFormView)findViewById(a.f.wallet_card_type));
-    this.OXn.setOnClickListener(new View.OnClickListener()
+    this.VNB = ((WalletFormView)findViewById(a.f.wallet_card_type));
+    this.VNB.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71772);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardElementInputUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardElementInputUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         paramAnonymousView = new Bundle();
         paramAnonymousView.putInt("key_support_bankcard", WalletECardElementInputUI.this.getInput().getInt("key_support_bankcard", 3));
         paramAnonymousView.putInt("key_bind_scene", WalletECardElementInputUI.this.getInput().getInt("key_bind_scene", -1));
         if (!Util.isNullOrNil(WalletECardElementInputUI.a(WalletECardElementInputUI.this).getText()))
         {
-          paramAnonymousView.putString("key_bank_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).fvP);
-          paramAnonymousView.putInt("key_bankcard_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).OPl);
+          paramAnonymousView.putString("key_bank_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).hAk);
+          paramAnonymousView.putInt("key_bankcard_type", WalletECardElementInputUI.b(WalletECardElementInputUI.this).VFf);
         }
-        localObject = com.tencent.mm.wallet_core.a.bF(WalletECardElementInputUI.this);
+        localObject = com.tencent.mm.wallet_core.a.cm(WalletECardElementInputUI.this);
         if (localObject != null) {
-          ((d)localObject).a(WalletECardElementInputUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
+          ((e)localObject).a(WalletECardElementInputUI.this, WalletCardSelectUI.class, paramAnonymousView, 1);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardElementInputUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71772);
       }
     });
-    this.jbJ = ((Button)findViewById(a.f.next_btn));
-    this.jbJ.setOnClickListener(new View.OnClickListener()
+    this.lDJ = ((Button)findViewById(a.f.next_btn));
+    this.lDJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71773);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardElementInputUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        Log.i("MicroMsg.WalletECardElementInputUI", "goto next: %s", new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this).fvP });
-        WalletECardElementInputUI.this.getNetController().r(new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this) });
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardElementInputUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        Log.i("MicroMsg.WalletECardElementInputUI", "goto next: %s", new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this).hAk });
+        WalletECardElementInputUI.this.getNetController().t(new Object[] { WalletECardElementInputUI.b(WalletECardElementInputUI.this) });
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardElementInputUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71773);
       }
@@ -122,7 +121,7 @@ public class WalletECardElementInputUI
       AppMethodBeat.o(71777);
       return;
     }
-    this.OJG = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
+    this.Vzs = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
     updateView();
     AppMethodBeat.o(71777);
   }
@@ -137,7 +136,7 @@ public class WalletECardElementInputUI
     AppMethodBeat.o(71774);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return false;
   }
@@ -150,7 +149,7 @@ public class WalletECardElementInputUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.ui.WalletECardElementInputUI
  * JD-Core Version:    0.7.0.1
  */

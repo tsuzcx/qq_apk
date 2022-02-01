@@ -22,12 +22,12 @@ public final class h
   public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121324);
-    parama = parama.aGj();
+    parama = parama.aZk();
     b localb = new b();
     localb.id = parama.getString("__page_view_id", "");
-    localb.fXM = paramJSONObject.optString("eventId", "");
-    localb.oij = paramJSONObject.optBoolean("hasHandler");
-    localb.oik = paramJSONObject.optBoolean("res");
+    localb.eventId = paramJSONObject.optString("eventId", "");
+    localb.rlL = paramJSONObject.optBoolean("hasHandler");
+    localb.rlM = paramJSONObject.optBoolean("res");
     XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), localb, a.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(121324);
   }
@@ -39,22 +39,22 @@ public final class h
   public static final class b
     implements com.tencent.mm.ipcinvoker.extension.f
   {
-    String fXM;
+    String eventId;
     String id;
-    boolean oij;
-    boolean oik;
+    boolean rlL;
+    boolean rlM;
     
-    public final void e(Parcel paramParcel)
+    public final void g(Parcel paramParcel)
     {
       int j = 1;
       AppMethodBeat.i(121322);
       paramParcel.writeString(this.id);
-      if (this.oij)
+      if (this.rlL)
       {
         i = 1;
         paramParcel.writeInt(i);
-        paramParcel.writeString(this.fXM);
-        if (!this.oik) {
+        paramParcel.writeString(this.eventId);
+        if (!this.rlM) {
           break label62;
         }
       }
@@ -77,8 +77,8 @@ public final class h
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.oij = bool1;
-        this.fXM = paramParcel.readString();
+        this.rlL = bool1;
+        this.eventId = paramParcel.readString();
         if (paramParcel.readInt() != 1) {
           break label64;
         }
@@ -86,7 +86,7 @@ public final class h
       label64:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.oik = bool1;
+        this.rlM = bool1;
         AppMethodBeat.o(121323);
         return;
         bool1 = false;
@@ -97,7 +97,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.h
  * JD-Core Version:    0.7.0.1
  */

@@ -9,24 +9,24 @@ import android.view.Window;
 import androidx.appcompat.app.e;
 import com.tencent.mm.plugin.webview.c.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "initContentView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateDialogView", "Landroid/view/View;", "release", "Companion", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "initContentView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateDialogView", "Landroid/view/View;", "release", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class a
   extends e
 {
-  public static final a Qji = new a((byte)0);
+  public static final a Xbe = new a((byte)0);
   
   public a(Context paramContext)
   {
     super(paramContext, c.j.BrowserDialog);
   }
   
-  public abstract View gZK();
+  public abstract View izN();
   
   public void onCreate(Bundle paramBundle)
   {
+    Object localObject1 = null;
     super.onCreate(paramBundle);
     Log.i("MicroMsg.BrowseChooseDialog", "alvinluo BrowserDialog onCreate");
     paramBundle = getWindow();
@@ -46,32 +46,28 @@ public abstract class a
       paramBundle.setWindowAnimations(c.j.BottomToTopSlowAnimation);
     }
     paramBundle = getWindow();
-    Object localObject;
+    View localView;
     if (paramBundle != null)
     {
-      paramBundle = paramBundle.getDecorView();
-      if (paramBundle != null)
+      localView = paramBundle.getDecorView();
+      if (localView != null)
       {
-        p.j(paramBundle, "this");
-        localObject = paramBundle.getContext();
-        if (localObject == null) {
-          break label187;
+        paramBundle = localView.getContext();
+        if (paramBundle != null) {
+          break label180;
         }
-        localObject = ((Context)localObject).getResources();
-        if (localObject == null) {
-          break label187;
-        }
-        localObject = ((Resources)localObject).getDisplayMetrics();
-        if (localObject == null) {
-          break label187;
+        paramBundle = localObject1;
+        if (paramBundle != null) {
+          break label219;
         }
       }
     }
-    label187:
-    for (int i = ((DisplayMetrics)localObject).widthPixels;; i = com.tencent.mm.ci.a.kr(paramBundle.getContext()))
+    label180:
+    label219:
+    for (int i = com.tencent.mm.cd.a.ms(localView.getContext());; i = paramBundle.intValue())
     {
-      paramBundle.setMinimumWidth(i);
-      paramBundle.setPadding(0, 0, 0, 0);
+      localView.setMinimumWidth(i);
+      localView.setPadding(0, 0, 0, 0);
       paramBundle = getWindow();
       if (paramBundle != null)
       {
@@ -83,12 +79,24 @@ public abstract class a
           paramBundle.gravity = 80;
         }
       }
-      setContentView(gZK());
+      setContentView(izN());
       return;
+      Object localObject2 = paramBundle.getResources();
+      paramBundle = localObject1;
+      if (localObject2 == null) {
+        break;
+      }
+      localObject2 = ((Resources)localObject2).getDisplayMetrics();
+      paramBundle = localObject1;
+      if (localObject2 == null) {
+        break;
+      }
+      paramBundle = Integer.valueOf(((DisplayMetrics)localObject2).widthPixels);
+      break;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

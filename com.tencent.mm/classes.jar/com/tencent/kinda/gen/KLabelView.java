@@ -11,6 +11,8 @@ public abstract interface KLabelView
   
   public abstract FontStyle getFontStyle();
   
+  public abstract float getLineSpacingFactor();
+  
   public abstract int getLines();
   
   public abstract int getMaxLength();
@@ -33,6 +35,8 @@ public abstract interface KLabelView
   
   public abstract void setFontStyle(FontStyle paramFontStyle);
   
+  public abstract void setLineSpacingFactor(float paramFloat);
+  
   public abstract void setLines(int paramInt);
   
   public abstract void setMaxLength(int paramInt);
@@ -49,7 +53,7 @@ public abstract interface KLabelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KLabelView
  * JD-Core Version:    0.7.0.1
  */

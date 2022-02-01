@@ -17,6 +17,7 @@ public class WxhldApi
 {
   private static final String TAG = "WXHLD_JNI";
   private static final Singleton<WxhldApi> sSingleton;
+  private byte _hellAccFlag_;
   private Context mContext;
   private Handler mHandler;
   WxhldEventListener mWxhldEventListener = null;
@@ -24,27 +25,63 @@ public class WxhldApi
   
   static
   {
-    AppMethodBeat.i(244066);
+    AppMethodBeat.i(212325);
     sSingleton = new Singleton()
     {
       protected final WxhldApi createInstance()
       {
-        AppMethodBeat.i(244043);
+        AppMethodBeat.i(212291);
         WxhldApi localWxhldApi = new WxhldApi();
-        AppMethodBeat.o(244043);
+        AppMethodBeat.o(212291);
         return localWxhldApi;
       }
     };
-    System.loadLibrary("c++_shared");
-    System.loadLibrary("wechatxlog");
-    System.loadLibrary("private_protobuf");
-    System.loadLibrary("ilink_xlog");
-    System.loadLibrary("linkid");
-    System.loadLibrary("ilink_network");
-    System.loadLibrary("ilink_tdi");
-    System.loadLibrary("wxhld");
-    System.loadLibrary("wxhld_jni");
-    AppMethodBeat.o(244066);
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("c++_shared");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatxlog");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("private_protobuf");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("ilink_xlog");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("linkid");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("ilink_network");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("ilink_tdi");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("wxhld");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("wxhld_jni");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/wxhld/WxhldApi", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    AppMethodBeat.o(212325);
   }
   
   public static native void add_cell_dict(String paramString, int paramInt);
@@ -75,9 +112,9 @@ public class WxhldApi
   
   public static WxhldApi getInstance()
   {
-    AppMethodBeat.i(244054);
+    AppMethodBeat.i(212296);
     WxhldApi localWxhldApi = (WxhldApi)sSingleton.getInstance();
-    AppMethodBeat.o(244054);
+    AppMethodBeat.o(212296);
     return localWxhldApi;
   }
   
@@ -105,39 +142,39 @@ public class WxhldApi
   
   private static void onCandidateListUpdate(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(244059);
+    AppMethodBeat.i(212315);
     new StringBuilder("onCandidateListUpdate session is ").append(paramLong1).append(", new_iterator is ").append(paramLong2);
     if (getInstance().mWxhldEventListener != null) {
       getInstance().mWxhldEventListener.OnCandidateListUpdate(paramLong1, paramLong2, paramInt);
     }
-    AppMethodBeat.o(244059);
+    AppMethodBeat.o(212315);
   }
   
   private static void onCandidateSelected(long paramLong)
   {
-    AppMethodBeat.i(244060);
+    AppMethodBeat.i(212316);
     if (getInstance().mWxhldEventListener != null) {
       getInstance().mWxhldEventListener.OnCandidateSelected(paramLong);
     }
-    AppMethodBeat.o(244060);
+    AppMethodBeat.o(212316);
   }
   
   private static void onEmitInputToScreen(long paramLong, String paramString)
   {
-    AppMethodBeat.i(244061);
+    AppMethodBeat.i(212318);
     new StringBuilder("onEmitInputToScreen session is ").append(paramLong).append(", text is ").append(paramString);
     if (getInstance().mWxhldEventListener != null) {
       getInstance().mWxhldEventListener.OnEmitInputToScreen(paramLong, paramString);
     }
-    AppMethodBeat.o(244061);
+    AppMethodBeat.o(212318);
   }
   
   private static void onLoginStatusEvent(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(244065);
+    AppMethodBeat.i(212324);
     if (getInstance().mWxhldLoginStatusListener == null)
     {
-      AppMethodBeat.o(244065);
+      AppMethodBeat.o(212324);
       return;
     }
     switch (paramInt1)
@@ -145,13 +182,13 @@ public class WxhldApi
     }
     for (;;)
     {
-      AppMethodBeat.o(244065);
+      AppMethodBeat.o(212324);
       return;
       getInstance().mWxhldLoginStatusListener.OnLoginComplete(paramInt2);
-      AppMethodBeat.o(244065);
+      AppMethodBeat.o(212324);
       return;
       getInstance().mWxhldLoginStatusListener.OnLogouted();
-      AppMethodBeat.o(244065);
+      AppMethodBeat.o(212324);
       return;
       getInstance().mWxhldLoginStatusListener.OnSessionExpired();
     }
@@ -160,30 +197,30 @@ public class WxhldApi
   @Deprecated
   private static void onPendingInputUpdate(long paramLong, String paramString)
   {
-    AppMethodBeat.i(244062);
+    AppMethodBeat.i(212319);
     new StringBuilder("onPendingInputUpdate session is ").append(paramLong).append(", pending_input is ").append(paramString);
     if (getInstance().mWxhldEventListener != null) {
       getInstance().mWxhldEventListener.OnPendingInputUpdate(paramLong, paramString);
     }
-    AppMethodBeat.o(244062);
+    AppMethodBeat.o(212319);
   }
   
   private static void onPendingInputUpdateV2(long paramLong, PendingInput[] paramArrayOfPendingInput)
   {
-    AppMethodBeat.i(244064);
+    AppMethodBeat.i(212322);
     if (getInstance().mWxhldEventListener != null) {
       getInstance().mWxhldEventListener.OnPendingInputUpdateV2(paramLong, paramArrayOfPendingInput);
     }
-    AppMethodBeat.o(244064);
+    AppMethodBeat.o(212322);
   }
   
   private static void onSyllableListUpdate(long paramLong, Syllable[] paramArrayOfSyllable)
   {
-    AppMethodBeat.i(244063);
+    AppMethodBeat.i(212321);
     if (getInstance().mWxhldEventListener != null) {
       getInstance().mWxhldEventListener.OnSyllableListUpdate(paramLong, paramArrayOfSyllable);
     }
-    AppMethodBeat.o(244063);
+    AppMethodBeat.o(212321);
   }
   
   public static native void process_input(long paramLong, String paramString);
@@ -224,16 +261,16 @@ public class WxhldApi
   
   public void init(Context paramContext)
   {
-    AppMethodBeat.i(244055);
+    AppMethodBeat.i(212327);
     if (this.mContext != null)
     {
-      AppMethodBeat.o(244055);
+      AppMethodBeat.o(212327);
       return;
     }
     this.mHandler = new Handler(paramContext.getMainLooper());
     this.mContext = paramContext.getApplicationContext();
     PlatformComm.init(this.mContext, this.mHandler);
-    AppMethodBeat.o(244055);
+    AppMethodBeat.o(212327);
   }
   
   public static abstract class Singleton<T>

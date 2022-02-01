@@ -5,7 +5,12 @@ import java.security.MessageDigest;
 
 public final class n
 {
-  public static String bytesToHex(byte[] paramArrayOfByte)
+  public static String W(byte[] paramArrayOfByte)
+  {
+    return bytesToHex(MessageDigest.getInstance("SHA1").digest(paramArrayOfByte));
+  }
+  
+  private static String bytesToHex(byte[] paramArrayOfByte)
   {
     char[] arrayOfChar1 = new char[16];
     char[] tmp8_6 = arrayOfChar1;
@@ -56,7 +61,7 @@ public final class n
     return new String(arrayOfChar2);
   }
   
-  public static String fS(String paramString)
+  public static String hv(String paramString)
   {
     MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();

@@ -11,21 +11,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class a
 {
-  protected static long fqA = 120L;
-  protected static long fqB = 240L;
-  protected static volatile AtomicInteger fqG = new AtomicInteger(0);
-  protected static volatile AtomicInteger fqH = new AtomicInteger(0);
-  protected static volatile AtomicInteger fqI = new AtomicInteger(0);
-  protected volatile AudioTrack aOO;
-  protected int bPt = 0;
+  protected static long huJ = 120L;
+  protected static long huK = 240L;
+  protected static volatile AtomicInteger huP = new AtomicInteger(0);
+  protected static volatile AtomicInteger huQ = new AtomicInteger(0);
+  protected static volatile AtomicInteger huR = new AtomicInteger(0);
   protected byte[] byteBuffer;
+  protected volatile AudioTrack cIK;
   protected int channels = 0;
-  protected long clF = -1L;
-  protected d fnt;
-  protected int fqC = 0;
-  protected int fqD = 0;
-  protected double fqE = 0.0D;
-  protected f fqF;
+  protected int dIY = 0;
+  protected long ebZ = -1L;
+  protected d hrE;
+  protected int huL = 0;
+  protected int huM = 0;
+  protected double huN = 0.0D;
+  protected f huO;
   protected int sampleRate = 0;
   protected float volume = 1.0F;
   
@@ -33,11 +33,11 @@ public abstract class a
   {
     this.sampleRate = paramInt1;
     this.channels = paramInt2;
-    this.fnt = paramd;
-    this.fqF = paramf;
+    this.hrE = paramd;
+    this.huO = paramf;
   }
   
-  public void aeC() {}
+  public void aGA() {}
   
   public void af(byte[] paramArrayOfByte) {}
   
@@ -49,20 +49,20 @@ public abstract class a
     long l1 = l2;
     try
     {
-      if (this.aOO != null)
+      if (this.cIK != null)
       {
         l1 = l2;
-        if (this.aOO.getState() != 0)
+        if (this.cIK.getState() != 0)
         {
           l1 = l2;
-          l2 = Math.round(this.aOO.getPlaybackHeadPosition() / this.aOO.getSampleRate() * 1000.0D);
+          l2 = Math.round(this.cIK.getPlaybackHeadPosition() / this.cIK.getSampleRate() * 1000.0D);
           l1 = l2;
-          this.clF = l2;
+          this.ebZ = l2;
           return l2;
         }
       }
       l1 = l2;
-      l2 = this.clF;
+      l2 = this.ebZ;
       return l2;
     }
     catch (Exception localException)
@@ -72,65 +72,34 @@ public abstract class a
     return l1;
   }
   
-  public final void i(double paramDouble)
-  {
-    this.fqE = paramDouble;
-  }
-  
-  public final void j(double paramDouble)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      b.i("MicroMsg.Mix.AudioPcmBasePlayComponent", "setPlaybackRate:%f", new Object[] { Double.valueOf(paramDouble) });
-    }
-    try
-    {
-      if ((this.aOO != null) && ((this.aOO.getState() == 1) || (this.aOO.getState() == 2)))
-      {
-        PlaybackParams localPlaybackParams = this.aOO.getPlaybackParams();
-        localPlaybackParams.setSpeed((float)paramDouble);
-        this.aOO.setPlaybackParams(localPlaybackParams);
-      }
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      b.printErrStackTrace("MicroMsg.Mix.AudioPcmBasePlayComponent", localIllegalStateException, "setPlaybackRate", new Object[0]);
-      return;
-    }
-    catch (Exception localException)
-    {
-      b.printErrStackTrace("MicroMsg.Mix.AudioPcmBasePlayComponent", localException, "setPlaybackRate", new Object[0]);
-    }
-  }
-  
   public void pause() {}
   
   public final void release()
   {
     releaseAudioTrack();
-    this.fqF = null;
-    this.fnt = null;
+    this.huO = null;
+    this.hrE = null;
     this.byteBuffer = null;
-    this.fqC = 0;
-    this.fqD = 0;
+    this.huL = 0;
+    this.huM = 0;
   }
   
   protected final void releaseAudioTrack()
   {
     try
     {
-      if (this.aOO != null) {
-        fqI.decrementAndGet();
+      if (this.cIK != null) {
+        huR.decrementAndGet();
       }
-      if ((this.aOO != null) && (this.aOO.getState() != 0))
+      if ((this.cIK != null) && (this.cIK.getState() != 0))
       {
-        this.aOO.stop();
-        this.aOO.flush();
+        this.cIK.stop();
+        this.cIK.flush();
       }
-      if (this.aOO != null)
+      if (this.cIK != null)
       {
-        this.aOO.release();
-        this.aOO = null;
+        this.cIK.release();
+        this.cIK = null;
       }
       return;
     }
@@ -142,8 +111,8 @@ public abstract class a
   
   public void reset()
   {
-    this.fqC = 0;
-    this.fqD = 0;
+    this.huL = 0;
+    this.huM = 0;
     if (this.byteBuffer != null) {
       Arrays.fill(this.byteBuffer, 0, this.byteBuffer.length, (byte)0);
     }
@@ -153,16 +122,16 @@ public abstract class a
   
   public final void seek(int paramInt)
   {
-    b.i("MicroMsg.Mix.AudioPcmBasePlayComponent", "seek startPos:%d", new Object[] { Integer.valueOf(this.bPt) });
-    this.bPt = paramInt;
+    b.i("MicroMsg.Mix.AudioPcmBasePlayComponent", "seek startPos:%d", new Object[] { Integer.valueOf(this.dIY) });
+    this.dIY = paramInt;
   }
   
   public final void setVolume(float paramFloat1, float paramFloat2)
   {
     try
     {
-      if ((this.aOO != null) && ((this.aOO.getState() == 1) || (this.aOO.getState() == 2))) {
-        this.aOO.setStereoVolume(paramFloat1, paramFloat2);
+      if ((this.cIK != null) && ((this.cIK.getState() == 1) || (this.cIK.getState() == 2))) {
+        this.cIK.setStereoVolume(paramFloat1, paramFloat2);
       }
     }
     catch (IllegalStateException localIllegalStateException)
@@ -180,6 +149,37 @@ public abstract class a
       }
     }
     this.volume = paramFloat1;
+  }
+  
+  public final void y(double paramDouble)
+  {
+    this.huN = paramDouble;
+  }
+  
+  public final void z(double paramDouble)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      b.i("MicroMsg.Mix.AudioPcmBasePlayComponent", "setPlaybackRate:%f", new Object[] { Double.valueOf(paramDouble) });
+    }
+    try
+    {
+      if ((this.cIK != null) && ((this.cIK.getState() == 1) || (this.cIK.getState() == 2)))
+      {
+        PlaybackParams localPlaybackParams = this.cIK.getPlaybackParams();
+        localPlaybackParams.setSpeed((float)paramDouble);
+        this.cIK.setPlaybackParams(localPlaybackParams);
+      }
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      b.printErrStackTrace("MicroMsg.Mix.AudioPcmBasePlayComponent", localIllegalStateException, "setPlaybackRate", new Object[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      b.printErrStackTrace("MicroMsg.Mix.AudioPcmBasePlayComponent", localException, "setPlaybackRate", new Object[0]);
+    }
   }
 }
 

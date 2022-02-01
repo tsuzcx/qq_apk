@@ -20,64 +20,63 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.a;
 import kotlin.g.a.b;
-import kotlin.g.b.aa.c;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.t;
-import kotlin.x;
+import kotlin.g.b.ah.c;
+import kotlin.g.b.s;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "centerAnimator", "Landroid/animation/Animator;", "clickListener", "Landroid/view/View$OnClickListener;", "getClickListener", "()Landroid/view/View$OnClickListener;", "setClickListener", "(Landroid/view/View$OnClickListener;)V", "contentBaseRect", "Landroid/graphics/Rect;", "getContentBaseRect", "()Landroid/graphics/Rect;", "setContentBaseRect", "(Landroid/graphics/Rect;)V", "contentCenterRect", "getContentCenterRect", "setContentCenterRect", "contentOriginalRect", "getContentOriginalRect", "contentRect", "getContentRect", "contentRectF", "Landroid/graphics/RectF;", "getContentRectF", "()Landroid/graphics/RectF;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "setContentView", "(Landroid/view/View;)V", "cropLayoutTouchListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "getCropLayoutTouchListener", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "setCropLayoutTouchListener", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;)V", "edgeAnimation", "fixTrans", "", "flingAnimator", "hasMorePoint", "", "initFinish", "Lkotlin/Function1;", "Landroid/graphics/Matrix;", "Lkotlin/ParameterName;", "name", "matrix", "getInitFinish", "()Lkotlin/jvm/functions/Function1;", "setInitFinish", "(Lkotlin/jvm/functions/Function1;)V", "initScale", "", "isChangeToOverHorizontal", "isChangeToOverVertical", "isFirstCancelOrUp", "()Z", "setFirstCancelOrUp", "(Z)V", "isHasHaptic", "isLastOverHorizontal", "isLastOverVertical", "isShouldCalculateMatrix", "isShouldLayout", "setShouldLayout", "lastFocusX", "lastFocusY", "mainMatrix", "getMainMatrix", "()Landroid/graphics/Matrix;", "setMainMatrix", "(Landroid/graphics/Matrix;)V", "maxScaleFactor", "getMaxScaleFactor", "()F", "setMaxScaleFactor", "(F)V", "maxScaleValue", "getMaxScaleValue", "setMaxScaleValue", "minScaleFactor", "getMinScaleFactor", "setMinScaleFactor", "minScaleValue", "getMinScaleValue", "setMinScaleValue", "onChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getOnChangeListener", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "setOnChangeListener", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;)V", "point", "revertAnimator", "scaleType", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "getScaleType", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "setScaleType", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;)V", "tmpArray", "tmpMatrix", "tmpRectF", "getTmpRectF", "values", "visibilityRect", "getVisibilityRect", "widgetRect", "getWidgetRect", "alignStart", "", "widget", "isWithAnimation", "calculateLayout", "changed", "left", "top", "right", "bottom", "centerCrop", "centerInside", "checkMatrixValues", "fixOverTrans", "distanceX", "distanceY", "getContentViewScale", "getContentViewTrans", "getMatrixValues", "getRotate", "getRotateDegrees", "isOverEdgeHorizontal", "isOverEdgeVertical", "isOverHorizontal", "isOverVertical", "mapMatrix", "onChangeVisibilityRect", "rectF", "isHard", "onDown", "e", "Landroid/view/MotionEvent;", "onFling", "e1", "e2", "offsetX", "offsetY", "onLayout", "onRevertRotate", "onRotate", "degrees", "onRotateImpl", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleImpl", "scaleFactor", "focusX", "focusY", "onScroll", "onScrollImpl", "source", "onSingleTapUp", "onTouch", "v", "event", "onTouchCancel", "removeContentView", "isNeedReset", "reset", "view", "width", "height", "startCenterAnim", "startEdgeAnimation", "listener", "Landroid/animation/Animator$AnimatorListener;", "startRevertAnimation", "onAnimationEnd", "Lkotlin/Function0;", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "transformScale", "transformScroll", "transX", "transY", "transformScrollAtom", "Companion", "CropLayoutTouchListener", "OnChangeListener", "OnChangeStartEndListener", "ScaleType", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "centerAnimator", "Landroid/animation/Animator;", "clickListener", "Landroid/view/View$OnClickListener;", "getClickListener", "()Landroid/view/View$OnClickListener;", "setClickListener", "(Landroid/view/View$OnClickListener;)V", "contentBaseRect", "Landroid/graphics/Rect;", "getContentBaseRect", "()Landroid/graphics/Rect;", "setContentBaseRect", "(Landroid/graphics/Rect;)V", "contentCenterRect", "getContentCenterRect", "setContentCenterRect", "contentOriginalRect", "getContentOriginalRect", "contentRect", "getContentRect", "contentRectF", "Landroid/graphics/RectF;", "getContentRectF", "()Landroid/graphics/RectF;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "setContentView", "(Landroid/view/View;)V", "cropLayoutTouchListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "getCropLayoutTouchListener", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "setCropLayoutTouchListener", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;)V", "edgeAnimation", "fixTrans", "", "flingAnimator", "hasMorePoint", "", "initFinish", "Lkotlin/Function1;", "Landroid/graphics/Matrix;", "Lkotlin/ParameterName;", "name", "matrix", "getInitFinish", "()Lkotlin/jvm/functions/Function1;", "setInitFinish", "(Lkotlin/jvm/functions/Function1;)V", "initScale", "", "isChangeToOverHorizontal", "isChangeToOverVertical", "isFirstCancelOrUp", "()Z", "setFirstCancelOrUp", "(Z)V", "isHasHaptic", "isLastOverHorizontal", "isLastOverVertical", "isShouldCalculateMatrix", "isShouldLayout", "setShouldLayout", "lastFocusX", "lastFocusY", "mainMatrix", "getMainMatrix", "()Landroid/graphics/Matrix;", "setMainMatrix", "(Landroid/graphics/Matrix;)V", "maxScaleFactor", "getMaxScaleFactor", "()F", "setMaxScaleFactor", "(F)V", "maxScaleValue", "getMaxScaleValue", "setMaxScaleValue", "minScaleFactor", "getMinScaleFactor", "setMinScaleFactor", "minScaleValue", "getMinScaleValue", "setMinScaleValue", "onChangeListener", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "getOnChangeListener", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "setOnChangeListener", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;)V", "point", "revertAnimator", "scaleType", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "getScaleType", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "setScaleType", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;)V", "tmpArray", "tmpMatrix", "tmpRectF", "getTmpRectF", "values", "visibilityRect", "getVisibilityRect", "widgetRect", "getWidgetRect", "alignStart", "", "widget", "isWithAnimation", "calculateLayout", "changed", "left", "top", "right", "bottom", "centerCrop", "centerInside", "checkMatrixValues", "fixOverTrans", "distanceX", "distanceY", "getContentViewScale", "getContentViewTrans", "getMatrixValues", "getRotate", "getRotateDegrees", "isOverEdgeHorizontal", "isOverEdgeVertical", "isOverHorizontal", "isOverVertical", "mapMatrix", "onChangeVisibilityRect", "rectF", "isHard", "onDown", "e", "Landroid/view/MotionEvent;", "onFling", "e1", "e2", "offsetX", "offsetY", "onLayout", "onRevertRotate", "onRotate", "degrees", "onRotateImpl", "onScale", "detector", "Landroid/view/ScaleGestureDetector;", "onScaleImpl", "scaleFactor", "focusX", "focusY", "onScroll", "onScrollImpl", "source", "onSingleTapUp", "onTouch", "v", "event", "onTouchCancel", "removeContentView", "isNeedReset", "reset", "view", "width", "height", "startCenterAnim", "startEdgeAnimation", "listener", "Landroid/animation/Animator$AnimatorListener;", "startRevertAnimation", "onAnimationEnd", "Lkotlin/Function0;", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "transformScale", "transformScroll", "transX", "transY", "transformScrollAtom", "Companion", "CropLayoutTouchListener", "OnChangeListener", "OnChangeStartEndListener", "ScaleType", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class CropLayout
   extends BaseCropLayout
 {
-  public static final a Ylu;
-  private Rect BZw;
-  private float BZx;
-  private final RectF HVY;
-  private c NuA;
-  private b YkR;
-  private float YkS;
-  private float YkT;
-  private float YkU;
-  private float YkV;
-  private boolean YkW;
-  private boolean YkX;
-  private final Rect YkY;
-  private final Rect YkZ;
-  private final RectF Yla;
-  private Rect Ylb;
-  private e Ylc;
-  private boolean Yld;
-  private boolean Yle;
-  private boolean Ylf;
-  private boolean Ylg;
-  private float Ylh;
-  private float Yli;
-  private boolean Ylj;
-  private final float[] Ylk;
-  private Animator Yll;
-  private final float[] Ylm;
-  private boolean Yln;
-  private boolean Ylo;
-  private Animator Ylp;
-  private Animator Ylq;
-  private Animator Ylr;
-  private b<? super Matrix, Boolean> Yls;
-  private final float[] Ylt;
-  private final Matrix bAX;
-  private final RectF bGR;
+  public static final CropLayout.a agcP;
+  private Rect HLr;
+  private float HLs;
+  private final RectF NSM;
+  private c UhU;
+  private b agcQ;
+  private float agcR;
+  private float agcS;
+  private float agcT;
+  private float agcU;
+  private boolean agcV;
+  private boolean agcW;
+  private final Rect agcX;
+  private final Rect agcY;
+  private final RectF agcZ;
+  private Rect agda;
+  private e agdb;
+  private boolean agdc;
+  private boolean agdd;
+  private boolean agde;
+  private boolean agdf;
+  private float agdg;
+  private float agdh;
+  private boolean agdi;
+  private final float[] agdj;
+  private Animator agdk;
+  private final float[] agdl;
+  private boolean agdm;
+  private boolean agdn;
+  private Animator agdo;
+  private Animator agdp;
+  private Animator agdq;
+  private b<? super Matrix, Boolean> agdr;
+  private final float[] agds;
   private View contentView;
-  private View.OnClickListener dig;
-  private Matrix eYD;
-  private float[] fkN;
-  private final Rect vcr;
+  private final Matrix dtZ;
+  private final RectF dzQ;
+  private View.OnClickListener fhU;
+  private Matrix hcd;
+  private float[] hpa;
+  private final Rect yok;
   
   static
   {
     AppMethodBeat.i(164441);
-    Ylu = new a((byte)0);
+    agcP = new CropLayout.a((byte)0);
     AppMethodBeat.o(164441);
   }
   
@@ -85,32 +84,30 @@ public class CropLayout
   {
     super(paramContext);
     AppMethodBeat.i(164438);
-    this.eYD = new Matrix();
-    this.YkS = 0.25F;
-    this.YkT = 5.0F;
-    this.YkU = 1.0F;
-    this.YkV = 1.0F;
-    this.YkW = true;
-    this.BZx = 1.0F;
-    this.HVY = new RectF();
-    this.YkY = new Rect();
-    this.YkZ = new Rect();
-    this.vcr = new Rect();
-    this.Yla = new RectF();
-    this.Ylb = new Rect();
-    this.BZw = new Rect();
-    this.Ylc = e.Ylv;
-    this.Yld = true;
-    paramContext = getContext();
-    p.j(paramContext, "context");
-    setBackgroundColor(paramContext.getResources().getColor(17170444));
-    this.bAX = new Matrix();
-    this.Ylk = new float[2];
-    this.Ylm = new float[2];
-    this.Yls = ((b)f.Ylz);
-    this.bGR = new RectF();
-    this.Ylt = new float[2];
-    this.fkN = new float[9];
+    this.hcd = new Matrix();
+    this.agcR = 0.25F;
+    this.agcS = 5.0F;
+    this.agcT = 1.0F;
+    this.agcU = 1.0F;
+    this.agcV = true;
+    this.HLs = 1.0F;
+    this.NSM = new RectF();
+    this.agcX = new Rect();
+    this.agcY = new Rect();
+    this.yok = new Rect();
+    this.agcZ = new RectF();
+    this.agda = new Rect();
+    this.HLr = new Rect();
+    this.agdb = e.agdt;
+    this.agdc = true;
+    setBackgroundColor(getContext().getResources().getColor(17170444));
+    this.dtZ = new Matrix();
+    this.agdj = new float[2];
+    this.agdl = new float[2];
+    this.agdr = ((b)CropLayout.g.agdx);
+    this.dzQ = new RectF();
+    this.agds = new float[2];
+    this.hpa = new float[9];
     AppMethodBeat.o(164438);
   }
   
@@ -118,32 +115,30 @@ public class CropLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164439);
-    this.eYD = new Matrix();
-    this.YkS = 0.25F;
-    this.YkT = 5.0F;
-    this.YkU = 1.0F;
-    this.YkV = 1.0F;
-    this.YkW = true;
-    this.BZx = 1.0F;
-    this.HVY = new RectF();
-    this.YkY = new Rect();
-    this.YkZ = new Rect();
-    this.vcr = new Rect();
-    this.Yla = new RectF();
-    this.Ylb = new Rect();
-    this.BZw = new Rect();
-    this.Ylc = e.Ylv;
-    this.Yld = true;
-    paramContext = getContext();
-    p.j(paramContext, "context");
-    setBackgroundColor(paramContext.getResources().getColor(17170444));
-    this.bAX = new Matrix();
-    this.Ylk = new float[2];
-    this.Ylm = new float[2];
-    this.Yls = ((b)f.Ylz);
-    this.bGR = new RectF();
-    this.Ylt = new float[2];
-    this.fkN = new float[9];
+    this.hcd = new Matrix();
+    this.agcR = 0.25F;
+    this.agcS = 5.0F;
+    this.agcT = 1.0F;
+    this.agcU = 1.0F;
+    this.agcV = true;
+    this.HLs = 1.0F;
+    this.NSM = new RectF();
+    this.agcX = new Rect();
+    this.agcY = new Rect();
+    this.yok = new Rect();
+    this.agcZ = new RectF();
+    this.agda = new Rect();
+    this.HLr = new Rect();
+    this.agdb = e.agdt;
+    this.agdc = true;
+    setBackgroundColor(getContext().getResources().getColor(17170444));
+    this.dtZ = new Matrix();
+    this.agdj = new float[2];
+    this.agdl = new float[2];
+    this.agdr = ((b)CropLayout.g.agdx);
+    this.dzQ = new RectF();
+    this.agds = new float[2];
+    this.hpa = new float[9];
     AppMethodBeat.o(164439);
   }
   
@@ -151,81 +146,240 @@ public class CropLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164440);
-    this.eYD = new Matrix();
-    this.YkS = 0.25F;
-    this.YkT = 5.0F;
-    this.YkU = 1.0F;
-    this.YkV = 1.0F;
-    this.YkW = true;
-    this.BZx = 1.0F;
-    this.HVY = new RectF();
-    this.YkY = new Rect();
-    this.YkZ = new Rect();
-    this.vcr = new Rect();
-    this.Yla = new RectF();
-    this.Ylb = new Rect();
-    this.BZw = new Rect();
-    this.Ylc = e.Ylv;
-    this.Yld = true;
-    paramContext = getContext();
-    p.j(paramContext, "context");
-    setBackgroundColor(paramContext.getResources().getColor(17170444));
-    this.bAX = new Matrix();
-    this.Ylk = new float[2];
-    this.Ylm = new float[2];
-    this.Yls = ((b)f.Ylz);
-    this.bGR = new RectF();
-    this.Ylt = new float[2];
-    this.fkN = new float[9];
+    this.hcd = new Matrix();
+    this.agcR = 0.25F;
+    this.agcS = 5.0F;
+    this.agcT = 1.0F;
+    this.agcU = 1.0F;
+    this.agcV = true;
+    this.HLs = 1.0F;
+    this.NSM = new RectF();
+    this.agcX = new Rect();
+    this.agcY = new Rect();
+    this.yok = new Rect();
+    this.agcZ = new RectF();
+    this.agda = new Rect();
+    this.HLr = new Rect();
+    this.agdb = e.agdt;
+    this.agdc = true;
+    setBackgroundColor(getContext().getResources().getColor(17170444));
+    this.dtZ = new Matrix();
+    this.agdj = new float[2];
+    this.agdl = new float[2];
+    this.agdr = ((b)CropLayout.g.agdx);
+    this.dzQ = new RectF();
+    this.agds = new float[2];
+    this.hpa = new float[9];
     AppMethodBeat.o(164440);
   }
   
-  private final void aJ(float paramFloat1, float paramFloat2)
+  private final void A(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    AppMethodBeat.i(164432);
+    if (this.agcZ.isEmpty())
+    {
+      AppMethodBeat.o(164432);
+      return;
+    }
+    float f1 = (paramFloat2 - this.agcZ.left) / this.agcZ.width();
+    float f2 = (paramFloat3 - this.agcZ.top) / this.agcZ.height();
+    ei(paramFloat1);
+    b localb = this.agcQ;
+    if (localb != null) {
+      localb.s(paramFloat1, paramFloat2, paramFloat3);
+    }
+    paramFloat1 = this.agcZ.left;
+    float f3 = this.agcZ.width();
+    float f4 = this.agcZ.top;
+    float f5 = this.agcZ.height();
+    this.hcd.postTranslate(paramFloat2 - (f1 * f3 + paramFloat1), paramFloat3 - (f2 * f5 + f4));
+    jHx();
+    AppMethodBeat.o(164432);
+  }
+  
+  private static final void a(CropLayout paramCropLayout, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(252633);
+    s.u(paramCropLayout, "this$0");
+    Object localObject = paramValueAnimator.getAnimatedValue("scale");
+    if (localObject == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252633);
+      throw paramCropLayout;
+    }
+    float f3 = ((Float)localObject).floatValue();
+    localObject = paramValueAnimator.getAnimatedValue("transX");
+    if (localObject == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252633);
+      throw paramCropLayout;
+    }
+    float f1 = ((Float)localObject).floatValue();
+    paramValueAnimator = paramValueAnimator.getAnimatedValue("transY");
+    if (paramValueAnimator == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252633);
+      throw paramCropLayout;
+    }
+    float f2 = ((Float)paramValueAnimator).floatValue();
+    paramCropLayout.getMatrixValues();
+    paramCropLayout.ei(f3 * 1.0F / paramCropLayout.getContentViewScale()[0]);
+    f3 = paramCropLayout.getContentRectF().centerX();
+    float f4 = paramCropLayout.getContentRectF().centerY();
+    paramCropLayout.bn(-(f1 - f3), -(f2 - f4));
+    AppMethodBeat.o(252633);
+  }
+  
+  private static final void a(CropLayout paramCropLayout, ah.c paramc, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(252614);
+    s.u(paramCropLayout, "this$0");
+    s.u(paramc, "$lastRotate");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue("rotate");
+    if (paramValueAnimator == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252614);
+      throw paramCropLayout;
+    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    paramCropLayout.eh(f - paramc.aixa);
+    paramc.aixa = f;
+    AppMethodBeat.o(252614);
+  }
+  
+  private static final void a(CropLayout paramCropLayout, boolean paramBoolean1, boolean paramBoolean2, ah.c paramc1, ah.c paramc2, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(252628);
+    s.u(paramCropLayout, "this$0");
+    s.u(paramc1, "$lastEdgeX");
+    s.u(paramc2, "$lastEdgeY");
+    if (((paramCropLayout.getScaleType() == e.agdu) && (!paramBoolean1) && (!paramBoolean2)) || ((paramCropLayout.getScaleType() == e.agdt) && ((!paramBoolean1) || (!paramBoolean2))))
+    {
+      localObject = paramValueAnimator.getAnimatedValue("scale");
+      if (localObject == null)
+      {
+        paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(252628);
+        throw paramCropLayout;
+      }
+      paramCropLayout.A(((Float)localObject).floatValue() * 1.0F / paramCropLayout.getContentViewScale()[0], paramCropLayout.getContentRectF().centerX(), paramCropLayout.getContentRectF().centerY());
+    }
+    Object localObject = paramValueAnimator.getAnimatedValue("transX");
+    if (localObject == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252628);
+      throw paramCropLayout;
+    }
+    float f1 = ((Float)localObject).floatValue();
+    localObject = paramValueAnimator.getAnimatedValue("transY");
+    if (localObject == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252628);
+      throw paramCropLayout;
+    }
+    float f2 = ((Float)localObject).floatValue();
+    localObject = paramValueAnimator.getAnimatedValue("edgeX");
+    if (localObject == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252628);
+      throw paramCropLayout;
+    }
+    float f3 = ((Float)localObject).floatValue();
+    paramValueAnimator = paramValueAnimator.getAnimatedValue("edgeY");
+    if (paramValueAnimator == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252628);
+      throw paramCropLayout;
+    }
+    float f4 = ((Float)paramValueAnimator).floatValue();
+    float f7 = paramc1.aixa;
+    float f5 = paramc2.aixa;
+    float f8 = paramCropLayout.getContentRectF().centerX();
+    float f6 = paramCropLayout.getContentRectF().centerY();
+    if (paramBoolean2)
+    {
+      f1 = -(f3 - f7);
+      if (!paramBoolean1) {
+        break label403;
+      }
+    }
+    label403:
+    for (f2 = -(f4 - f5);; f2 = -(f2 - f6))
+    {
+      paramCropLayout.bn(f1, f2);
+      paramc1.aixa = f3;
+      paramc2.aixa = f4;
+      AppMethodBeat.o(252628);
+      return;
+      f1 = -(f1 - f8);
+      break;
+    }
+  }
+  
+  private static final void b(CropLayout paramCropLayout, ah.c paramc, ValueAnimator paramValueAnimator)
+  {
+    AppMethodBeat.i(252622);
+    s.u(paramCropLayout, "this$0");
+    s.u(paramc, "$lastRotate");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue("rotate");
+    if (paramValueAnimator == null)
+    {
+      paramCropLayout = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+      AppMethodBeat.o(252622);
+      throw paramCropLayout;
+    }
+    float f = ((Float)paramValueAnimator).floatValue();
+    paramCropLayout.eh(f - paramc.aixa);
+    paramc.aixa = f;
+    AppMethodBeat.o(252622);
+  }
+  
+  private final void bn(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(164433);
-    b localb = this.YkR;
+    b localb = this.agcQ;
     if (localb != null) {
       localb.onScroll(-paramFloat1, -paramFloat2);
     }
-    this.eYD.postTranslate(-paramFloat1, -paramFloat2);
-    icj();
+    this.hcd.postTranslate(-paramFloat1, -paramFloat2);
+    jHx();
     AppMethodBeat.o(164433);
   }
   
-  private final void cU(float paramFloat)
-  {
-    AppMethodBeat.i(212141);
-    this.eYD.postScale(paramFloat, paramFloat, 0.0F, 0.0F);
-    icj();
-    AppMethodBeat.o(212141);
-  }
-  
-  private final void f(float paramFloat1, float paramFloat2, int paramInt)
+  private final void e(float paramFloat1, float paramFloat2, int paramInt)
   {
     AppMethodBeat.i(164415);
     if (paramInt == 4)
     {
-      aJ(paramFloat1, paramFloat2);
+      bn(paramFloat1, paramFloat2);
       AppMethodBeat.o(164415);
       return;
     }
     float f;
-    if (ice())
+    if (jHs())
     {
       f = paramFloat1;
-      if (icg()) {
+      if (jHu()) {
         f = paramFloat1 * 0.4F;
       }
-      if (!icf()) {
+      if (!jHt()) {
         break label90;
       }
       paramFloat1 = paramFloat2;
-      if (!ich()) {}
+      if (!jHv()) {}
     }
     label90:
     for (paramFloat1 = paramFloat2 * 0.4F;; paramFloat1 = 0.0F)
     {
-      aJ(f, paramFloat1);
+      bn(f, paramFloat1);
       AppMethodBeat.o(164415);
       return;
       f = 0.0F;
@@ -233,11 +387,50 @@ public class CropLayout
     }
   }
   
+  private final void eh(float paramFloat)
+  {
+    AppMethodBeat.i(252534);
+    this.dtZ.reset();
+    Object localObject = this.contentView;
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).getMatrix();
+      if (localObject != null) {
+        ((Matrix)localObject).invert(this.dtZ);
+      }
+    }
+    this.agdj[0] = this.NSM.centerX();
+    this.agdj[1] = this.NSM.centerY();
+    this.dtZ.mapPoints(this.agdj);
+    this.dtZ.getValues(this.hpa);
+    this.hcd.postRotate(paramFloat);
+    jHx();
+    localObject = this.contentView;
+    if (localObject != null)
+    {
+      localObject = ((View)localObject).getMatrix();
+      if (localObject != null) {
+        ((Matrix)localObject).mapPoints(this.agdj);
+      }
+    }
+    this.hcd.postTranslate(this.NSM.centerX() - this.agdj[0], this.NSM.centerY() - this.agdj[1]);
+    jHx();
+    AppMethodBeat.o(252534);
+  }
+  
+  private final void ei(float paramFloat)
+  {
+    AppMethodBeat.i(252597);
+    this.hcd.postScale(paramFloat, paramFloat, 0.0F, 0.0F);
+    jHx();
+    AppMethodBeat.o(252597);
+  }
+  
   private final float[] getMatrixValues()
   {
     AppMethodBeat.i(164437);
-    this.eYD.getValues(this.fkN);
-    float[] arrayOfFloat = this.fkN;
+    this.hcd.getValues(this.hpa);
+    float[] arrayOfFloat = this.hpa;
     int k = arrayOfFloat.length;
     int j = 0;
     int i = 0;
@@ -247,13 +440,13 @@ public class CropLayout
       {
         if (Float.isNaN(arrayOfFloat[j]))
         {
-          new StringBuilder("MatrixValues Error! index=").append(i).append(" value=").append(this.fkN[i]);
-          this.fkN[i] = 1.0F;
+          new StringBuilder("MatrixValues Error! index=").append(i).append(" value=").append(this.hpa[i]);
+          this.hpa[i] = 1.0F;
         }
       }
       else
       {
-        arrayOfFloat = this.fkN;
+        arrayOfFloat = this.hpa;
         AppMethodBeat.o(164437);
         return arrayOfFloat;
       }
@@ -270,10 +463,10 @@ public class CropLayout
     {
       localObject = ((View)localObject).getMatrix();
       if (localObject != null) {
-        ((Matrix)localObject).getValues(this.fkN);
+        ((Matrix)localObject).getValues(this.hpa);
       }
     }
-    float f = -(float)Math.round(Math.atan2(this.fkN[1], this.fkN[0]) * 57.295779513082323D);
+    float f = -(float)Math.round(Math.atan2(this.hpa[1], this.hpa[0]) * 57.295779513082323D);
     AppMethodBeat.o(164419);
     return f;
   }
@@ -281,156 +474,155 @@ public class CropLayout
   private final float getRotateDegrees()
   {
     AppMethodBeat.i(164418);
-    this.eYD.getValues(this.fkN);
-    float f = -(float)Math.round(Math.atan2(this.fkN[1], this.fkN[0]) * 57.295779513082323D);
+    this.hcd.getValues(this.hpa);
+    float f = -(float)Math.round(Math.atan2(this.hpa[1], this.hpa[0]) * 57.295779513082323D);
     AppMethodBeat.o(164418);
     return f;
   }
   
-  private boolean ice()
+  private boolean jHs()
   {
     AppMethodBeat.i(164421);
-    if (this.Yla.width() > this.HVY.width()) {}
+    if (this.agcZ.width() > this.NSM.width()) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((bool) && (this.Yln != true)) {
-        this.Ylf = true;
+      if ((bool) && (this.agdm != true)) {
+        this.agde = true;
       }
-      this.Yln = bool;
+      this.agdm = bool;
       AppMethodBeat.o(164421);
       return bool;
     }
   }
   
-  private final boolean icg()
+  private final boolean jHu()
   {
-    return (this.HVY.left < this.Yla.left) || (this.HVY.right > this.Yla.right);
+    return (this.NSM.left < this.agcZ.left) || (this.NSM.right > this.agcZ.right);
   }
   
-  private boolean ich()
+  private boolean jHv()
   {
-    return (this.HVY.top < this.Yla.top) || (this.HVY.bottom > this.Yla.bottom);
+    return (this.NSM.top < this.agcZ.top) || (this.NSM.bottom > this.agcZ.bottom);
   }
   
-  private void ici()
+  private void jHw()
   {
     AppMethodBeat.i(164423);
-    Object localObject = this.Ylp;
+    Object localObject = this.agdo;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    if (icm())
+    if (jHA())
     {
       AppMethodBeat.o(164423);
       return;
     }
-    int i = (int)(this.Yla.left - this.HVY.left);
-    int j = (int)(this.Yla.top - this.HVY.top);
-    int m = (int)(this.HVY.right - this.Yla.right);
-    int k = (int)(this.HVY.bottom - this.Yla.bottom);
-    if ((icg()) && (i > 0)) {
-      if (ice())
+    int i = (int)(this.agcZ.left - this.NSM.left);
+    int j = (int)(this.agcZ.top - this.NSM.top);
+    int m = (int)(this.NSM.right - this.agcZ.right);
+    int k = (int)(this.NSM.bottom - this.agcZ.bottom);
+    if ((jHu()) && (i > 0)) {
+      if (jHs())
       {
-        if ((!ich()) || (j <= 0)) {
-          break label287;
+        if ((!jHv()) || (j <= 0)) {
+          break label280;
         }
-        if (!icf()) {
-          break label267;
+        if (!jHt()) {
+          break label260;
+        }
+        label141:
+        if ((i != 0) || (j != 0)) {
+          break label335;
+        }
+        localObject = this.UhU;
+        if (!(localObject instanceof d)) {
+          break label329;
         }
       }
     }
-    for (;;)
+    label260:
+    label280:
+    label329:
+    for (localObject = (d)localObject;; localObject = null)
     {
-      if ((i == 0) && (j == 0))
-      {
-        c localc = this.NuA;
-        localObject = localc;
-        if (!(localc instanceof d)) {
-          localObject = null;
-        }
-        localObject = (d)localObject;
-        if (localObject != null)
-        {
-          ((d)localObject).gvj();
-          AppMethodBeat.o(164423);
-          return;
-          i = (int)(this.Yla.centerX() - this.HVY.centerX());
-          break;
-          if ((icg()) && (m > 0))
-          {
-            if (ice())
-            {
-              i = -m;
-              break;
-            }
-            i = (int)(this.Yla.centerX() - this.HVY.centerX());
-            break;
-          }
-          i = 0;
-          break;
-          label267:
-          j = (int)(this.Yla.centerY() - this.HVY.centerY());
-          continue;
-          label287:
-          if ((ich()) && (k > 0))
-          {
-            if (icf())
-            {
-              j = -k;
-              continue;
-            }
-            j = (int)(this.Yla.centerY() - this.HVY.centerY());
-            continue;
-          }
-          j = 0;
-          continue;
-        }
-        AppMethodBeat.o(164423);
-        return;
+      if (localObject != null) {
+        ((d)localObject).hSZ();
       }
+      AppMethodBeat.o(164423);
+      return;
+      i = (int)(this.agcZ.centerX() - this.NSM.centerX());
+      break;
+      if ((jHu()) && (m > 0))
+      {
+        if (jHs())
+        {
+          i = -m;
+          break;
+        }
+        i = (int)(this.agcZ.centerX() - this.NSM.centerX());
+        break;
+      }
+      i = 0;
+      break;
+      j = (int)(this.agcZ.centerY() - this.NSM.centerY());
+      break label141;
+      if ((jHv()) && (k > 0))
+      {
+        if (jHt())
+        {
+          j = -k;
+          break label141;
+        }
+        j = (int)(this.agcZ.centerY() - this.NSM.centerY());
+        break label141;
+      }
+      j = 0;
+      break label141;
     }
+    label335:
     localObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("transX", new int[] { 0, i }), PropertyValuesHolder.ofInt("transY", new int[] { 0, j }) });
-    ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new o(this, null));
-    ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new p(this, null));
+    ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new m(this));
+    ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new n(null, this));
     ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
     ((ValueAnimator)localObject).setDuration(160L);
     ((ValueAnimator)localObject).start();
-    this.Ylp = ((Animator)localObject);
+    ah localah = ah.aiuX;
+    this.agdo = ((Animator)localObject);
     AppMethodBeat.o(164423);
   }
   
   private void k(RectF paramRectF)
   {
-    AppMethodBeat.i(212134);
-    p.k(paramRectF, "widget");
-    float f3 = Math.max(paramRectF.width() * 1.0F / this.Ylb.width(), paramRectF.height() * 1.0F / this.Ylb.height());
+    AppMethodBeat.i(252570);
+    s.u(paramRectF, "widget");
+    float f3 = Math.max(paramRectF.width() * 1.0F / this.agda.width(), paramRectF.height() * 1.0F / this.agda.height());
     float f2;
     float f1;
-    if (this.Yla.height() > this.HVY.height())
+    if (this.agcZ.height() > this.NSM.height())
     {
-      f2 = this.Yla.centerX() - this.HVY.centerX();
-      f1 = this.Yla.top - this.HVY.top;
+      f2 = this.agcZ.centerX() - this.NSM.centerX();
+      f1 = this.agcZ.top - this.NSM.top;
     }
     for (;;)
     {
-      this.BZx = f3;
-      this.YkU = (this.YkS * this.BZx);
-      this.YkV = (this.YkT * this.BZx);
-      aJ(f2, f1);
-      v(f3, this.HVY.centerX(), this.HVY.centerY());
-      this.Yla.round(this.BZw);
-      new StringBuilder("[alignStart] scale=").append(f3).append(" offsetX=").append(f2).append(" offsetY=").append(f1).append(" contentBaseRect=").append(this.Ylb).append(" contentRect=").append(this.vcr);
-      AppMethodBeat.o(212134);
+      this.HLs = f3;
+      this.agcT = (this.agcR * this.HLs);
+      this.agcU = (this.agcS * this.HLs);
+      bn(f2, f1);
+      A(f3, this.NSM.centerX(), this.NSM.centerY());
+      this.agcZ.round(this.HLr);
+      new StringBuilder("[alignStart] scale=").append(f3).append(" offsetX=").append(f2).append(" offsetY=").append(f1).append(" contentBaseRect=").append(this.agda).append(" contentRect=").append(this.yok);
+      AppMethodBeat.o(252570);
       return;
-      if (this.Yla.width() > this.HVY.width())
+      if (this.agcZ.width() > this.NSM.width())
       {
-        f2 = this.Yla.left - this.HVY.left;
-        f1 = this.Yla.centerY() - this.HVY.centerY();
+        f2 = this.agcZ.left - this.NSM.left;
+        f1 = this.agcZ.centerY() - this.NSM.centerY();
       }
       else
       {
-        f2 = this.Yla.centerX() - this.HVY.centerX();
-        f1 = this.Yla.centerY() - this.HVY.centerY();
+        f2 = this.agcZ.centerX() - this.NSM.centerX();
+        f1 = this.agcZ.centerY() - this.NSM.centerY();
       }
     }
   }
@@ -438,62 +630,38 @@ public class CropLayout
   private void l(RectF paramRectF)
   {
     AppMethodBeat.i(164426);
-    p.k(paramRectF, "widget");
-    float f1 = Math.max(paramRectF.width() * 1.0F / this.Ylb.width(), paramRectF.height() * 1.0F / this.Ylb.height());
-    float f2 = this.Yla.centerX() - this.HVY.centerX();
-    float f3 = this.Yla.centerY() - this.HVY.centerY();
-    this.BZx = f1;
-    this.YkU = (this.YkS * this.BZx);
-    this.YkV = (this.YkT * this.BZx);
-    aJ(f2, f3);
-    v(f1, this.HVY.centerX(), this.HVY.centerY());
-    this.Yla.round(this.BZw);
-    new StringBuilder("[centerCrop] scale=").append(f1).append(" offsetX=").append(f2).append(" offsetY=").append(f3).append(" contentBaseRect=").append(this.Ylb).append(" contentRect=").append(this.vcr);
+    s.u(paramRectF, "widget");
+    float f1 = Math.max(paramRectF.width() * 1.0F / this.agda.width(), paramRectF.height() * 1.0F / this.agda.height());
+    float f2 = this.agcZ.centerX() - this.NSM.centerX();
+    float f3 = this.agcZ.centerY() - this.NSM.centerY();
+    this.HLs = f1;
+    this.agcT = (this.agcR * this.HLs);
+    this.agcU = (this.agcS * this.HLs);
+    bn(f2, f3);
+    A(f1, this.NSM.centerX(), this.NSM.centerY());
+    this.agcZ.round(this.HLr);
+    new StringBuilder("[centerCrop] scale=").append(f1).append(" offsetX=").append(f2).append(" offsetY=").append(f3).append(" contentBaseRect=").append(this.agda).append(" contentRect=").append(this.yok);
     AppMethodBeat.o(164426);
   }
   
   private void m(RectF paramRectF)
   {
     AppMethodBeat.i(164427);
-    p.k(paramRectF, "widget");
-    float f1 = Math.min(paramRectF.width() * 1.0F / this.Ylb.width(), paramRectF.height() * 1.0F / this.Ylb.height());
-    float f2 = this.Yla.centerX() - this.HVY.centerX();
-    float f3 = this.Yla.centerY() - this.HVY.centerY();
-    this.BZx = f1;
-    this.YkU = (this.YkS * this.BZx);
-    this.YkV = (this.YkT * this.BZx);
-    aJ(f2, f3);
-    v(f1, this.HVY.centerX(), this.HVY.centerY());
-    this.Yla.round(this.BZw);
-    new StringBuilder("[centerInside] scale=").append(f1).append(" offsetX=").append(f2).append(" offsetY=").append(f3).append(" contentBaseRect=").append(this.Ylb).append(" contentRect=").append(this.vcr);
+    s.u(paramRectF, "widget");
+    float f1 = Math.min(paramRectF.width() * 1.0F / this.agda.width(), paramRectF.height() * 1.0F / this.agda.height());
+    float f2 = this.agcZ.centerX() - this.NSM.centerX();
+    float f3 = this.agcZ.centerY() - this.NSM.centerY();
+    this.HLs = f1;
+    this.agcT = (this.agcR * this.HLs);
+    this.agcU = (this.agcS * this.HLs);
+    bn(f2, f3);
+    A(f1, this.NSM.centerX(), this.NSM.centerY());
+    this.agcZ.round(this.HLr);
+    new StringBuilder("[centerInside] scale=").append(f1).append(" offsetX=").append(f2).append(" offsetY=").append(f3).append(" contentBaseRect=").append(this.agda).append(" contentRect=").append(this.yok);
     AppMethodBeat.o(164427);
   }
   
-  private final void v(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    AppMethodBeat.i(164432);
-    if (this.Yla.isEmpty())
-    {
-      AppMethodBeat.o(164432);
-      return;
-    }
-    float f1 = (paramFloat2 - this.Yla.left) / this.Yla.width();
-    float f2 = (paramFloat3 - this.Yla.top) / this.Yla.height();
-    cU(paramFloat1);
-    b localb = this.YkR;
-    if (localb != null) {
-      localb.p(paramFloat1, paramFloat2, paramFloat3);
-    }
-    paramFloat1 = this.Yla.left;
-    float f3 = this.Yla.width();
-    float f4 = this.Yla.top;
-    float f5 = this.Yla.height();
-    this.eYD.postTranslate(paramFloat2 - (f1 * f3 + paramFloat1), paramFloat3 - (f2 * f5 + f4));
-    icj();
-    AppMethodBeat.o(164432);
-  }
-  
-  public final void HA(boolean paramBoolean)
+  public final void Nw(boolean paramBoolean)
   {
     AppMethodBeat.i(164430);
     View localView = this.contentView;
@@ -503,9 +671,7 @@ public class CropLayout
       if (paramBoolean) {
         reset();
       }
-      this.contentView = null;
-      AppMethodBeat.o(164430);
-      return;
+      setContentView(null);
     }
     AppMethodBeat.o(164430);
   }
@@ -513,199 +679,204 @@ public class CropLayout
   public final void a(View paramView, int paramInt1, int paramInt2, Matrix paramMatrix, e parame, b<? super Matrix, Boolean> paramb)
   {
     AppMethodBeat.i(164428);
-    p.k(paramView, "view");
-    p.k(paramMatrix, "matrix");
-    p.k(parame, "scaleType");
-    p.k(paramb, "initFinish");
-    this.YkZ.set(0, 0, paramInt1, paramInt2);
-    this.Yls = paramb;
+    s.u(paramView, "view");
+    s.u(paramMatrix, "matrix");
+    s.u(parame, "scaleType");
+    s.u(paramb, "initFinish");
+    this.agcY.set(0, 0, paramInt1, paramInt2);
+    this.agdr = paramb;
     this.contentView = paramView;
-    this.eYD = paramMatrix;
-    this.YkW = paramMatrix.isIdentity();
-    this.YkX = true;
-    this.Ylc = parame;
+    this.hcd = paramMatrix;
+    this.agcV = paramMatrix.isIdentity();
+    this.agcW = true;
+    this.agdb = parame;
     removeView(paramView);
     addView(paramView, 0, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(paramInt1, paramInt2));
     AppMethodBeat.o(164428);
   }
   
-  public final void a(final a<x> parama, final ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
+  public final void a(a<ah> parama, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
     AppMethodBeat.i(164425);
-    p.k(parama, "onAnimationEnd");
-    Object localObject = this.Ylq;
+    s.u(parama, "onAnimationEnd");
+    Object localObject = this.agdp;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
     getMatrixValues();
     float f1 = getContentViewScale()[0];
-    float f2 = this.Yla.centerX();
-    float f3 = this.Yla.centerY();
-    float f4 = this.BZw.exactCenterX();
-    float f5 = this.BZw.exactCenterY();
-    localObject = PropertyValuesHolder.ofFloat("scale", new float[] { f1, this.BZx });
+    float f2 = this.agcZ.centerX();
+    float f3 = this.agcZ.centerY();
+    float f4 = this.HLr.exactCenterX();
+    float f5 = this.HLr.exactCenterY();
+    localObject = PropertyValuesHolder.ofFloat("scale", new float[] { f1, this.HLs });
     localObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("percent", new float[] { 0.0F, 1.0F }), localObject, PropertyValuesHolder.ofFloat("transX", new float[] { f2, f4 }), PropertyValuesHolder.ofFloat("transY", new float[] { f3, f5 }) });
-    ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new q(this, parama, paramAnimatorUpdateListener));
+    ((ValueAnimator)localObject).addUpdateListener(new CropLayout..ExternalSyntheticLambda0(this));
     ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
     ((ValueAnimator)localObject).setDuration(300L);
-    ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new r(this, parama, paramAnimatorUpdateListener));
-    ((ValueAnimator)localObject).addUpdateListener(paramAnimatorUpdateListener);
+    ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new CropLayout.o(this, parama));
+    if (paramAnimatorUpdateListener != null) {
+      ((ValueAnimator)localObject).addUpdateListener(paramAnimatorUpdateListener);
+    }
     ((ValueAnimator)localObject).start();
-    this.Ylr = ((Animator)localObject);
+    parama = ah.aiuX;
+    this.agdq = ((Animator)localObject);
     AppMethodBeat.o(164425);
   }
   
-  public void am(final MotionEvent paramMotionEvent)
+  public void ap(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164412);
-    p.k(paramMotionEvent, "e1");
-    super.am(paramMotionEvent);
-    this.Ylf = false;
-    this.Ylg = false;
-    this.Yld = false;
-    paramMotionEvent = this.Yll;
+    s.u(paramMotionEvent, "e1");
+    super.ap(paramMotionEvent);
+    this.agde = false;
+    this.agdf = false;
+    this.agdc = false;
+    paramMotionEvent = this.agdk;
     boolean bool1;
     int i;
-    if (paramMotionEvent != null)
+    if (paramMotionEvent == null)
     {
-      bool1 = paramMotionEvent.isStarted();
+      bool1 = false;
       if (!bool1) {
-        break label98;
+        break label110;
       }
       i = 1;
-      label56:
-      if (!icm()) {
-        break label104;
+      label53:
+      if (!jHA()) {
+        break label116;
       }
       i = 0;
+      label63:
+      if (i != 0) {
+        break label718;
+      }
+      s.X("onTouchCancel startCenterAnim == false isFling=", Boolean.valueOf(bool1));
+      if (!bool1) {
+        jHw();
+      }
     }
-    label98:
-    label104:
-    final boolean bool2;
-    final boolean bool3;
     for (;;)
     {
-      if ((i == 0) && (!bool1)) {
-        ici();
-      }
-      this.Ylj = false;
+      this.agdi = false;
       AppMethodBeat.o(164412);
       return;
-      bool1 = false;
+      bool1 = paramMotionEvent.isStarted();
       break;
+      label110:
       i = 0;
-      break label56;
+      break label53;
+      label116:
       if (i == 1)
       {
         i = 0;
+        break label63;
       }
-      else
+      boolean bool2 = jHs();
+      boolean bool3 = jHt();
+      if ((bool3) && (bool2))
       {
-        bool2 = ice();
-        bool3 = icf();
-        if ((!bool3) || (!bool2)) {
-          break label144;
-        }
         i = 0;
+        break label63;
       }
-    }
-    label144:
-    paramMotionEvent = this.Yll;
-    if (paramMotionEvent != null) {
-      paramMotionEvent.cancel();
-    }
-    paramMotionEvent = this.Ylq;
-    if (paramMotionEvent != null) {
-      paramMotionEvent.cancel();
-    }
-    float f2 = this.Yla.centerX();
-    float f3 = this.Yla.centerY();
-    float f4 = this.HVY.centerX();
-    float f5 = this.HVY.centerY();
-    float f6 = getContentViewScale()[0];
-    float f1 = this.HVY.width() / this.Yla.width();
-    float f7 = this.HVY.height() / this.Yla.height();
-    label263:
-    Object localObject;
-    PropertyValuesHolder localPropertyValuesHolder1;
-    PropertyValuesHolder localPropertyValuesHolder2;
-    label376:
-    PropertyValuesHolder localPropertyValuesHolder3;
-    if (this.Ylc == e.Ylv)
-    {
-      f1 = Math.max(f7, f1);
-      localObject = PropertyValuesHolder.ofFloat("scale", new float[] { f6, f1 * f6 });
-      localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat("transX", new float[] { f2, f4 });
-      localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat("transY", new float[] { f3, f5 });
-      f2 = this.HVY.right - this.Yla.right;
-      f3 = this.HVY.left - this.Yla.left;
-      if ((f3 >= 0.0F) || (f2 >= 0.0F)) {
-        break label675;
+      paramMotionEvent = this.agdk;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.cancel();
       }
-      f1 = f3;
-      localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat("edgeX", new float[] { 0.0F, f1 });
-      f4 = this.HVY.bottom - this.Yla.bottom;
-      f5 = this.HVY.top - this.Yla.top;
-      if ((f5 >= 0.0F) || (f4 >= 0.0F)) {
-        break label698;
+      paramMotionEvent = this.agdp;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.cancel();
       }
-      f1 = f5;
-    }
-    for (;;)
-    {
-      PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofFloat("edgeY", new float[] { 0.0F, f1 });
-      new StringBuilder("[startCenterAnim] source=0 edgeLeft=").append(f3).append(" edgeRight=").append(f2).append(" edgeTop=").append(f5).append(" edgeBottom=").append(f4);
-      paramMotionEvent = new aa.c();
-      paramMotionEvent.aaBz = 0.0F;
-      final aa.c localc = new aa.c();
-      localc.aaBz = 0.0F;
-      localObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { localObject, localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3, localPropertyValuesHolder4 });
-      ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new m(this, bool3, bool2, paramMotionEvent, localc));
-      ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new n(this, bool3, bool2, paramMotionEvent, localc));
-      ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
-      ((ValueAnimator)localObject).setDuration(160L);
-      ((ValueAnimator)localObject).start();
-      this.Ylq = ((Animator)localObject);
-      i = 1;
-      break;
-      f1 = Math.min(f7, f1);
-      break label263;
-      label675:
-      if ((f3 > 0.0F) && (f2 > 0.0F))
+      float f2 = this.agcZ.centerX();
+      float f3 = this.agcZ.centerY();
+      float f4 = this.NSM.centerX();
+      float f5 = this.NSM.centerY();
+      float f6 = getContentViewScale()[0];
+      float f1 = this.NSM.width() / this.agcZ.width();
+      float f7 = this.NSM.height() / this.agcZ.height();
+      label275:
+      Object localObject;
+      PropertyValuesHolder localPropertyValuesHolder1;
+      PropertyValuesHolder localPropertyValuesHolder2;
+      label388:
+      PropertyValuesHolder localPropertyValuesHolder3;
+      if (this.agdb == e.agdt)
       {
-        f1 = f2;
-        break label376;
+        f1 = Math.max(f7, f1);
+        localObject = PropertyValuesHolder.ofFloat("scale", new float[] { f6, f1 * f6 });
+        localPropertyValuesHolder1 = PropertyValuesHolder.ofFloat("transX", new float[] { f2, f4 });
+        localPropertyValuesHolder2 = PropertyValuesHolder.ofFloat("transY", new float[] { f3, f5 });
+        f2 = this.NSM.right - this.agcZ.right;
+        f3 = this.NSM.left - this.agcZ.left;
+        if ((f3 >= 0.0F) || (f2 >= 0.0F)) {
+          break label670;
+        }
+        f1 = f3;
+        localPropertyValuesHolder3 = PropertyValuesHolder.ofFloat("edgeX", new float[] { 0.0F, f1 });
+        f4 = this.NSM.bottom - this.agcZ.bottom;
+        f5 = this.NSM.top - this.agcZ.top;
+        if ((f5 >= 0.0F) || (f4 >= 0.0F)) {
+          break label693;
+        }
+        f1 = f5;
       }
-      f1 = 0.0F;
-      break label376;
-      label698:
-      if ((f5 > 0.0F) && (f4 > 0.0F)) {
-        f1 = f4;
-      } else {
+      for (;;)
+      {
+        PropertyValuesHolder localPropertyValuesHolder4 = PropertyValuesHolder.ofFloat("edgeY", new float[] { 0.0F, f1 });
+        new StringBuilder("[startCenterAnim] source=0 edgeLeft=").append(f3).append(" edgeRight=").append(f2).append(" edgeTop=").append(f5).append(" edgeBottom=").append(f4);
+        paramMotionEvent = new ah.c();
+        ah.c localc = new ah.c();
+        localObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { localObject, localPropertyValuesHolder1, localPropertyValuesHolder2, localPropertyValuesHolder3, localPropertyValuesHolder4 });
+        ((ValueAnimator)localObject).addUpdateListener(new CropLayout..ExternalSyntheticLambda3(this, bool3, bool2, paramMotionEvent, localc));
+        ((ValueAnimator)localObject).addListener((Animator.AnimatorListener)new l(this));
+        ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
+        ((ValueAnimator)localObject).setDuration(160L);
+        ((ValueAnimator)localObject).start();
+        paramMotionEvent = ah.aiuX;
+        this.agdp = ((Animator)localObject);
+        i = 1;
+        break;
+        f1 = Math.min(f7, f1);
+        break label275;
+        label670:
+        if ((f3 > 0.0F) && (f2 > 0.0F))
+        {
+          f1 = f2;
+          break label388;
+        }
         f1 = 0.0F;
+        break label388;
+        label693:
+        if ((f5 > 0.0F) && (f4 > 0.0F)) {
+          f1 = f4;
+        } else {
+          f1 = 0.0F;
+        }
       }
+      label718:
+      s.X("onTouchCancel startCenterAnim == true isFling=", Boolean.valueOf(bool1));
     }
   }
   
   public void b(RectF paramRectF, boolean paramBoolean)
   {
-    AppMethodBeat.i(212084);
-    p.k(paramRectF, "rectF");
-    float f1 = this.HVY.bottom - this.Yla.bottom;
-    float f2 = this.HVY.top;
-    float f3 = this.Yla.top;
+    AppMethodBeat.i(252742);
+    s.u(paramRectF, "rectF");
+    float f1 = this.NSM.bottom - this.agcZ.bottom;
+    float f2 = this.NSM.top;
+    float f3 = this.agcZ.top;
     if ((f1 > 0.0F) && (f1 <= f2 - f3)) {
-      f(0.0F, -f1, 4);
+      e(0.0F, -f1, 4);
     }
     for (;;)
     {
-      this.HVY.set(paramRectF);
-      AppMethodBeat.o(212084);
+      this.NSM.set(paramRectF);
+      AppMethodBeat.o(252742);
       return;
-      if ((this.Yla.height() <= this.HVY.height()) || (paramBoolean))
+      if ((this.agcZ.height() <= this.NSM.height()) || (paramBoolean))
       {
-        u(1.0F * this.HVY.height() / this.Yla.height(), this.Yla.centerX(), this.Yla.bottom);
-        f(0.0F, -(this.HVY.bottom - this.Yla.bottom), 4);
+        z(1.0F * this.NSM.height() / this.agcZ.height(), this.agcZ.centerX(), this.agcZ.bottom);
+        e(0.0F, -(this.NSM.bottom - this.agcZ.bottom), 4);
       }
     }
   }
@@ -713,104 +884,101 @@ public class CropLayout
   public void e(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(164409);
-    if (this.HVY.isEmpty()) {
-      this.HVY.set(0.0F, 0.0F, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    if (this.NSM.isEmpty()) {
+      this.NSM.set(0.0F, 0.0F, paramInt3 - paramInt1, paramInt4 - paramInt2);
     }
     Object localObject = this.contentView;
-    if (localObject != null)
-    {
-      if (this.YkX)
+    if (localObject != null) {
+      if (this.agcW)
       {
-        this.YkX = false;
-        if (this.YkW) {
-          this.eYD.reset();
+        setShouldLayout(false);
+        if (this.agcV) {
+          getMainMatrix().reset();
         }
-        this.Ylb.set(((View)localObject).getLeft(), ((View)localObject).getTop(), ((View)localObject).getRight(), ((View)localObject).getBottom());
-        ((View)localObject).setPivotX(this.Ylb.exactCenterX());
-        ((View)localObject).setPivotY(this.Ylb.exactCenterY());
-        this.bGR.set(this.Ylb);
-        this.eYD.mapRect(this.bGR);
-        this.bGR.round(this.vcr);
-        this.Yla.set(this.bGR);
-        if (this.YkW)
+        getContentBaseRect().set(((View)localObject).getLeft(), ((View)localObject).getTop(), ((View)localObject).getRight(), ((View)localObject).getBottom());
+        ((View)localObject).setPivotX(getContentBaseRect().exactCenterX());
+        ((View)localObject).setPivotY(getContentBaseRect().exactCenterY());
+        getTmpRectF().set(getContentBaseRect());
+        getMainMatrix().mapRect(getTmpRectF());
+        getTmpRectF().round(getContentRect());
+        getContentRectF().set(getTmpRectF());
+        if (this.agcV)
         {
-          this.eYD.reset();
-          localObject = this.Ylc;
-          switch (a.$EnumSwitchMapping$0[localObject.ordinal()])
+          getMainMatrix().reset();
+          localObject = getScaleType();
+          switch (f.$EnumSwitchMapping$0[localObject.ordinal()])
           {
           }
-          while (((Boolean)this.Yls.invoke(this.eYD)).booleanValue())
+          while (((Boolean)getInitFinish().invoke(getMainMatrix())).booleanValue())
           {
-            icj();
-            this.Yla.round(this.BZw);
+            jHx();
+            getContentRectF().round(getContentCenterRect());
             AppMethodBeat.o(164409);
             return;
-            m(this.HVY);
+            m(getVisibilityRect());
             continue;
-            l(this.HVY);
+            l(getVisibilityRect());
             continue;
-            k(this.HVY);
+            k(getVisibilityRect());
           }
         }
-        if (((Boolean)this.Yls.invoke(this.eYD)).booleanValue())
+        if (((Boolean)getInitFinish().invoke(getMainMatrix())).booleanValue())
         {
-          icj();
-          this.Yla.round(this.BZw);
-        }
-        AppMethodBeat.o(164409);
-        return;
-      }
-      if (paramBoolean)
-      {
-        localObject = this.Ylc;
-        switch (a.jLJ[localObject.ordinal()])
-        {
+          jHx();
+          getContentRectF().round(getContentCenterRect());
+          AppMethodBeat.o(164409);
         }
       }
-      for (;;)
+      else if (paramBoolean)
       {
-        AppMethodBeat.o(164409);
-        return;
-        m(this.HVY);
-        AppMethodBeat.o(164409);
-        return;
-        l(this.HVY);
-        AppMethodBeat.o(164409);
-        return;
-        k(this.HVY);
+        localObject = getScaleType();
+        switch (f.$EnumSwitchMapping$0[localObject.ordinal()])
+        {
+        }
       }
     }
-    AppMethodBeat.o(164409);
+    for (;;)
+    {
+      AppMethodBeat.o(164409);
+      return;
+      m(getVisibilityRect());
+      AppMethodBeat.o(164409);
+      return;
+      l(getVisibilityRect());
+      AppMethodBeat.o(164409);
+      return;
+      k(getVisibilityRect());
+    }
   }
   
   public final View.OnClickListener getClickListener()
   {
-    return this.dig;
+    return this.fhU;
   }
   
   protected final Rect getContentBaseRect()
   {
-    return this.Ylb;
+    return this.agda;
   }
   
   public final Rect getContentCenterRect()
   {
-    return this.BZw;
+    return this.HLr;
   }
   
   public final Rect getContentOriginalRect()
   {
-    return this.YkZ;
+    return this.agcY;
   }
   
   public final Rect getContentRect()
   {
-    return this.vcr;
+    return this.yok;
   }
   
   public final RectF getContentRectF()
   {
-    return this.Yla;
+    return this.agcZ;
   }
   
   protected final View getContentView()
@@ -822,8 +990,8 @@ public class CropLayout
   {
     AppMethodBeat.i(164436);
     getMatrixValues();
-    float f1 = this.fkN[0];
-    float f2 = this.fkN[3];
+    float f1 = this.hpa[0];
+    float f2 = this.hpa[3];
     double d1 = f1 * f1;
     double d2 = f2;
     f1 = (float)Math.sqrt(f2 * d2 + d1);
@@ -834,168 +1002,181 @@ public class CropLayout
   public final float[] getContentViewTrans()
   {
     AppMethodBeat.i(164435);
-    this.eYD.getValues(this.fkN);
-    float f1 = this.fkN[2];
-    float f2 = this.fkN[5];
-    this.Ylt[0] = f1;
-    this.Ylt[1] = f2;
-    float[] arrayOfFloat = this.Ylt;
+    this.hcd.getValues(this.hpa);
+    float f1 = this.hpa[2];
+    float f2 = this.hpa[5];
+    this.agds[0] = f1;
+    this.agds[1] = f2;
+    float[] arrayOfFloat = this.agds;
     AppMethodBeat.o(164435);
     return arrayOfFloat;
   }
   
   public final b getCropLayoutTouchListener()
   {
-    return this.YkR;
+    return this.agcQ;
   }
   
   protected final b<Matrix, Boolean> getInitFinish()
   {
-    return this.Yls;
+    return this.agdr;
   }
   
   public final Matrix getMainMatrix()
   {
-    return this.eYD;
+    return this.hcd;
   }
   
   public final float getMaxScaleFactor()
   {
-    return this.YkT;
+    return this.agcS;
   }
   
   public final float getMaxScaleValue()
   {
-    return this.YkV;
+    return this.agcU;
   }
   
   public final float getMinScaleFactor()
   {
-    return this.YkS;
+    return this.agcR;
   }
   
   public final float getMinScaleValue()
   {
-    return this.YkU;
+    return this.agcT;
   }
   
   public final c getOnChangeListener()
   {
-    return this.NuA;
+    return this.UhU;
   }
   
   public final e getScaleType()
   {
-    return this.Ylc;
+    return this.agdb;
   }
   
   protected final RectF getTmpRectF()
   {
-    return this.bGR;
+    return this.dzQ;
   }
   
   public final RectF getVisibilityRect()
   {
-    return this.HVY;
+    return this.NSM;
   }
   
   public final Rect getWidgetRect()
   {
-    return this.YkY;
+    return this.agcX;
   }
   
-  protected final boolean ica()
+  protected final boolean jHo()
   {
-    return this.YkX;
+    return this.agcW;
   }
   
-  protected final boolean icb()
+  protected final boolean jHp()
   {
-    return this.Yld;
+    return this.agdc;
   }
   
-  public final void icc()
+  public final void jHq()
   {
-    AppMethodBeat.i(212110);
+    AppMethodBeat.i(252778);
     ValueAnimator localValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("rotate", new float[] { 0.0F, -90.0F }) });
-    aa.c localc = new aa.c();
-    localc.aaBz = 0.0F;
-    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new j(localc, this));
+    localValueAnimator.addUpdateListener(new CropLayout..ExternalSyntheticLambda1(this, new ah.c()));
     localValueAnimator.setDuration((110.0F * (Math.abs(-90.0F) / 90.0F)));
     localValueAnimator.start();
-    AppMethodBeat.o(212110);
+    AppMethodBeat.o(252778);
   }
   
-  public final void icd()
+  public final void jHr()
   {
-    AppMethodBeat.i(212113);
-    final float f = -getRotateDegrees();
-    if (f == 0.0F)
+    AppMethodBeat.i(252783);
+    float f = -getRotateDegrees();
+    s.X("[onRevertRotate] currentDegrees=", Float.valueOf(f));
+    if (f == 0.0F) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(212113);
+      AppMethodBeat.o(252783);
       return;
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("rotate", new float[] { 0.0F, f }) });
-    aa.c localc = new aa.c();
-    localc.aaBz = 0.0F;
-    localValueAnimator.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new i(localc, this, f));
+    localValueAnimator.addUpdateListener(new CropLayout..ExternalSyntheticLambda2(this, new ah.c()));
     localValueAnimator.setDuration((110.0F * (Math.abs(f) / 90.0F)));
     localValueAnimator.start();
-    AppMethodBeat.o(212113);
+    AppMethodBeat.o(252783);
   }
   
-  protected final boolean icf()
+  protected final boolean jHt()
   {
     AppMethodBeat.i(164422);
-    if (this.Yla.height() > this.HVY.height()) {}
+    if (this.agcZ.height() > this.NSM.height()) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((bool) && (this.Ylo != true)) {
-        this.Ylg = true;
+      if ((bool) && (this.agdn != true)) {
+        this.agdf = true;
       }
-      this.Ylo = bool;
+      this.agdn = bool;
       AppMethodBeat.o(164422);
       return bool;
     }
   }
   
-  protected final void icj()
+  protected final void jHx()
   {
+    int j = 1;
     AppMethodBeat.i(164434);
     Object localObject = this.contentView;
     float[] arrayOfFloat;
     float f;
+    int i;
     if (localObject != null)
     {
       arrayOfFloat = getMatrixValues();
       f = getContentViewScale()[0];
-      kotlin.g.b.l locall = kotlin.g.b.l.aaBt;
-      if (f != kotlin.g.b.l.iCm())
+      if (f != (1.0F / -1.0F)) {
+        break label160;
+      }
+      i = 1;
+      if (i == 0)
       {
-        locall = kotlin.g.b.l.aaBt;
-        if ((f != kotlin.g.b.l.iCl()) && (!Float.isNaN(f))) {
-          break label136;
+        if (f != (1.0F / 1.0F)) {
+          break label165;
+        }
+        i = j;
+        label56:
+        if ((i == 0) && (!Float.isNaN(f))) {
+          break label170;
         }
       }
+      s.X("return apply scale is ", Float.valueOf(f));
     }
     for (;;)
     {
       localObject = this.contentView;
       if (localObject != null)
       {
-        this.bGR.set(this.Ylb);
-        ((View)localObject).getMatrix().mapRect(this.bGR);
-        this.Yla.set(this.bGR);
-        this.bGR.round(this.vcr);
+        getTmpRectF().set(getContentBaseRect());
+        ((View)localObject).getMatrix().mapRect(getTmpRectF());
+        getContentRectF().set(getTmpRectF());
+        getTmpRectF().round(getContentRect());
       }
-      localObject = this.NuA;
-      if (localObject == null) {
-        break;
+      localObject = this.UhU;
+      if (localObject != null) {
+        ((c)localObject).onChange();
       }
-      ((c)localObject).onChange();
       AppMethodBeat.o(164434);
       return;
-      label136:
+      label160:
+      i = 0;
+      break;
+      label165:
+      i = 0;
+      break label56;
+      label170:
       ((View)localObject).setRotation(getRotateDegrees());
       ((View)localObject).setPivotX(0.0F);
       ((View)localObject).setPivotY(0.0F);
@@ -1004,64 +1185,62 @@ public class CropLayout
       ((View)localObject).setTranslationX(arrayOfFloat[2]);
       ((View)localObject).setTranslationY(arrayOfFloat[5]);
     }
-    AppMethodBeat.o(164434);
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164411);
     super.onDown(paramMotionEvent);
-    c localc = this.NuA;
-    paramMotionEvent = localc;
-    if (!(localc instanceof d)) {
-      paramMotionEvent = null;
+    paramMotionEvent = this.UhU;
+    if ((paramMotionEvent instanceof d)) {}
+    for (paramMotionEvent = (d)paramMotionEvent;; paramMotionEvent = null)
+    {
+      if (paramMotionEvent != null) {
+        paramMotionEvent.hSY();
+      }
+      paramMotionEvent = this.agdk;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.cancel();
+      }
+      paramMotionEvent = this.agdo;
+      if (paramMotionEvent != null) {
+        paramMotionEvent.cancel();
+      }
+      AppMethodBeat.o(164411);
+      return true;
     }
-    paramMotionEvent = (d)paramMotionEvent;
-    if (paramMotionEvent != null) {
-      paramMotionEvent.gvi();
-    }
-    paramMotionEvent = this.Yll;
-    if (paramMotionEvent != null) {
-      paramMotionEvent.cancel();
-    }
-    paramMotionEvent = this.Ylp;
-    if (paramMotionEvent != null) {
-      paramMotionEvent.cancel();
-    }
-    AppMethodBeat.o(164411);
-    return true;
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(164420);
-    p.k(paramMotionEvent1, "e1");
-    p.k(paramMotionEvent2, "e2");
-    if (!icl())
+    s.u(paramMotionEvent1, "e1");
+    s.u(paramMotionEvent2, "e2");
+    if (!jHz())
     {
       AppMethodBeat.o(164420);
       return false;
     }
     float f2 = 0.5F * paramFloat1;
     float f1 = 0.5F * paramFloat2;
-    if ((this.Yle) || ((Math.abs(f2) < 1000.0F) && (Math.abs(f1) < 1000.0F)))
+    if ((this.agdd) || ((Math.abs(f2) < 1000.0F) && (Math.abs(f1) < 1000.0F)))
     {
       AppMethodBeat.o(164420);
       return false;
     }
-    boolean bool1 = icg();
-    boolean bool2 = ich();
-    boolean bool3 = ice();
-    boolean bool4 = icf();
+    boolean bool1 = jHu();
+    boolean bool2 = jHv();
+    boolean bool3 = jHs();
+    boolean bool4 = jHt();
     if ((bool1) && (bool2))
     {
       AppMethodBeat.o(164420);
       return false;
     }
-    if ((this.Yla.left < this.HVY.left) || (f2 <= 0.0F))
+    if ((this.agcZ.left < this.NSM.left) || (f2 <= 0.0F))
     {
       paramFloat1 = f2;
-      if (this.Yla.right <= this.HVY.left)
+      if (this.agcZ.right <= this.NSM.left)
       {
         paramFloat1 = f2;
         if (f2 >= 0.0F) {}
@@ -1069,17 +1248,17 @@ public class CropLayout
     }
     else
     {
-      if ((this.Ylc == e.Ylv) || (this.Ylc == e.Ylx))
+      if ((this.agdb == e.agdt) || (this.agdb == e.agdv))
       {
         AppMethodBeat.o(164420);
         return false;
       }
       paramFloat1 = 0.0F;
     }
-    if ((this.Yla.top < this.HVY.top) || (f1 <= 0.0F))
+    if ((this.agcZ.top < this.NSM.top) || (f1 <= 0.0F))
     {
       paramFloat2 = f1;
-      if (this.Yla.bottom <= this.HVY.bottom)
+      if (this.agcZ.bottom <= this.NSM.bottom)
       {
         paramFloat2 = f1;
         if (f1 >= 0.0F) {}
@@ -1087,52 +1266,53 @@ public class CropLayout
     }
     else
     {
-      if ((this.Ylc == e.Ylv) || (this.Ylc == e.Ylx))
+      if ((this.agdb == e.agdt) || (this.agdb == e.agdv))
       {
         AppMethodBeat.o(164420);
         return false;
       }
       paramFloat2 = 0.0F;
     }
-    paramMotionEvent1 = this.Yll;
+    paramMotionEvent1 = this.agdk;
     if (paramMotionEvent1 != null) {
       paramMotionEvent1.cancel();
     }
-    this.Ylm[0] = 0.0F;
-    this.Ylm[1] = 0.0F;
-    f1 = this.Yla.right;
-    f2 = this.HVY.right;
-    float f3 = this.HVY.left;
-    float f4 = this.Yla.left;
+    this.agdl[0] = 0.0F;
+    this.agdl[1] = 0.0F;
+    f1 = this.agcZ.right;
+    f2 = this.NSM.right;
+    float f3 = this.NSM.left;
+    float f4 = this.agcZ.left;
     if (paramFloat1 < 0.0F)
     {
-      this.Ylm[0] = (-Math.min(Math.abs(paramFloat1), Math.abs(f1 - f2)));
-      f1 = this.Yla.bottom;
-      f2 = this.HVY.bottom;
-      f3 = this.HVY.top;
-      f4 = this.Yla.top;
+      this.agdl[0] = (-Math.min(Math.abs(paramFloat1), Math.abs(f1 - f2)));
+      f1 = this.agcZ.bottom;
+      f2 = this.NSM.bottom;
+      f3 = this.NSM.top;
+      f4 = this.agcZ.top;
       if (paramFloat2 >= 0.0F) {
-        break label710;
+        break label714;
       }
-      this.Ylm[1] = (-Math.min(Math.abs(paramFloat2), Math.abs(f1 - f2)));
+      this.agdl[1] = (-Math.min(Math.abs(paramFloat2), Math.abs(f1 - f2)));
     }
     for (;;)
     {
-      paramMotionEvent1 = this.Ylm;
+      paramMotionEvent1 = this.agdl;
       new StringBuilder("[onFling] velocityX=").append(paramFloat1).append(" velocityY=").append(paramFloat2).append("  fixTransX=").append(paramMotionEvent1[0]).append(" fixTransY=").append(paramMotionEvent1[1]).append(" isOverEdgeHorizontal=").append(bool1).append(" isOverEdgeVertical=").append(bool2).append(" isOverHorizontal=").append(bool3).append(" isOverVertical=").append(bool4);
       paramMotionEvent1 = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("transX", new float[] { 0.0F, paramMotionEvent1[0] }), PropertyValuesHolder.ofFloat("transY", new float[] { 0.0F, paramMotionEvent1[1] }) });
-      paramMotionEvent1.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new g(this));
-      paramMotionEvent1.addListener((Animator.AnimatorListener)new h(this));
+      paramMotionEvent1.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new h(this));
+      paramMotionEvent1.addListener((Animator.AnimatorListener)new CropLayout.i(this));
       paramMotionEvent1.setInterpolator((TimeInterpolator)new DecelerateInterpolator());
       paramMotionEvent1.setDuration(400L);
       paramMotionEvent1.start();
-      this.Yll = ((Animator)paramMotionEvent1);
+      paramMotionEvent2 = ah.aiuX;
+      this.agdk = ((Animator)paramMotionEvent1);
       AppMethodBeat.o(164420);
       return true;
-      this.Ylm[0] = Math.min(Math.abs(paramFloat1), Math.abs(f3 - f4));
+      this.agdl[0] = Math.min(Math.abs(paramFloat1), Math.abs(f3 - f4));
       break;
-      label710:
-      this.Ylm[1] = Math.min(Math.abs(paramFloat2), Math.abs(f3 - f4));
+      label714:
+      this.agdl[1] = Math.min(Math.abs(paramFloat2), Math.abs(f3 - f4));
     }
   }
   
@@ -1142,8 +1322,8 @@ public class CropLayout
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean)
     {
-      this.YkY.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      this.YkX = true;
+      this.agcX.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.agcW = true;
     }
     e(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(164407);
@@ -1152,8 +1332,8 @@ public class CropLayout
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(164416);
-    p.k(paramScaleGestureDetector, "detector");
-    u(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+    s.u(paramScaleGestureDetector, "detector");
+    z(paramScaleGestureDetector.getScaleFactor(), paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
     AppMethodBeat.o(164416);
     return true;
   }
@@ -1161,10 +1341,10 @@ public class CropLayout
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(164413);
-    p.k(paramMotionEvent1, "e1");
-    p.k(paramMotionEvent2, "e2");
-    if (icn()) {
-      f(paramFloat1, paramFloat2, 0);
+    s.u(paramMotionEvent1, "e1");
+    s.u(paramMotionEvent2, "e2");
+    if (jHB()) {
+      e(paramFloat1, paramFloat2, 0);
     }
     AppMethodBeat.o(164413);
     return true;
@@ -1172,27 +1352,27 @@ public class CropLayout
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(212090);
-    p.k(paramMotionEvent, "e");
-    View.OnClickListener localOnClickListener = this.dig;
+    AppMethodBeat.i(252750);
+    s.u(paramMotionEvent, "e");
+    View.OnClickListener localOnClickListener = this.fhU;
     if (localOnClickListener != null) {
       localOnClickListener.onClick((View)this);
     }
     boolean bool = super.onSingleTapUp(paramMotionEvent);
-    AppMethodBeat.o(212090);
+    AppMethodBeat.o(252750);
     return bool;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164414);
-    p.k(paramView, "v");
-    p.k(paramMotionEvent, "event");
+    s.u(paramView, "v");
+    s.u(paramMotionEvent, "event");
     if (paramMotionEvent.getAction() == 0) {
-      this.Yle = false;
+      this.agdd = false;
     }
     if (paramMotionEvent.getPointerCount() > 1) {
-      this.Yle = true;
+      this.agdd = true;
     }
     boolean bool = super.onTouch(paramView, paramMotionEvent);
     AppMethodBeat.o(164414);
@@ -1202,48 +1382,48 @@ public class CropLayout
   public final void reset()
   {
     AppMethodBeat.i(164406);
-    this.HVY.setEmpty();
-    this.vcr.setEmpty();
-    this.Yla.setEmpty();
-    this.BZw.setEmpty();
-    this.Ylb.setEmpty();
-    this.bGR.setEmpty();
-    this.eYD = new Matrix();
-    this.BZx = 1.0F;
-    this.YkU = 1.0F;
-    this.YkV = 1.0F;
-    this.YkT = 5.0F;
-    this.YkS = 0.25F;
-    this.Ylh = 0.0F;
-    this.Yli = 0.0F;
-    this.Ylt[0] = 0.0F;
-    this.Ylt[1] = 0.0F;
-    this.YkW = true;
-    this.YkX = false;
-    this.Yld = true;
-    this.Yls = ((b)k.YlE);
-    this.fkN = new float[9];
+    this.NSM.setEmpty();
+    this.yok.setEmpty();
+    this.agcZ.setEmpty();
+    this.HLr.setEmpty();
+    this.agda.setEmpty();
+    this.dzQ.setEmpty();
+    this.hcd = new Matrix();
+    this.HLs = 1.0F;
+    this.agcT = 1.0F;
+    this.agcU = 1.0F;
+    this.agcS = 5.0F;
+    this.agcR = 0.25F;
+    this.agdg = 0.0F;
+    this.agdh = 0.0F;
+    this.agds[0] = 0.0F;
+    this.agds[1] = 0.0F;
+    this.agcV = true;
+    this.agcW = false;
+    this.agdc = true;
+    this.agdr = ((b)CropLayout.j.agdz);
+    this.hpa = new float[9];
     AppMethodBeat.o(164406);
   }
   
   public final void setClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.dig = paramOnClickListener;
+    this.fhU = paramOnClickListener;
   }
   
   protected final void setContentBaseRect(Rect paramRect)
   {
-    AppMethodBeat.i(212054);
-    p.k(paramRect, "<set-?>");
-    this.Ylb = paramRect;
-    AppMethodBeat.o(212054);
+    AppMethodBeat.i(252715);
+    s.u(paramRect, "<set-?>");
+    this.agda = paramRect;
+    AppMethodBeat.o(252715);
   }
   
   public final void setContentCenterRect(Rect paramRect)
   {
     AppMethodBeat.i(164404);
-    p.k(paramRect, "<set-?>");
-    this.BZw = paramRect;
+    s.u(paramRect, "<set-?>");
+    this.HLr = paramRect;
     AppMethodBeat.o(164404);
   }
   
@@ -1254,204 +1434,186 @@ public class CropLayout
   
   public final void setCropLayoutTouchListener(b paramb)
   {
-    this.YkR = paramb;
+    this.agcQ = paramb;
   }
   
   protected final void setFirstCancelOrUp(boolean paramBoolean)
   {
-    this.Yld = paramBoolean;
+    this.agdc = paramBoolean;
   }
   
   protected final void setInitFinish(b<? super Matrix, Boolean> paramb)
   {
-    AppMethodBeat.i(212137);
-    p.k(paramb, "<set-?>");
-    this.Yls = paramb;
-    AppMethodBeat.o(212137);
+    AppMethodBeat.i(252807);
+    s.u(paramb, "<set-?>");
+    this.agdr = paramb;
+    AppMethodBeat.o(252807);
   }
   
   public final void setMainMatrix(Matrix paramMatrix)
   {
     AppMethodBeat.i(164403);
-    p.k(paramMatrix, "<set-?>");
-    this.eYD = paramMatrix;
+    s.u(paramMatrix, "<set-?>");
+    this.hcd = paramMatrix;
     AppMethodBeat.o(164403);
   }
   
   public final void setMaxScaleFactor(float paramFloat)
   {
-    this.YkT = paramFloat;
+    this.agcS = paramFloat;
   }
   
   public final void setMaxScaleValue(float paramFloat)
   {
-    this.YkV = paramFloat;
+    this.agcU = paramFloat;
   }
   
   public final void setMinScaleFactor(float paramFloat)
   {
-    this.YkS = paramFloat;
+    this.agcR = paramFloat;
   }
   
   public final void setMinScaleValue(float paramFloat)
   {
-    this.YkU = paramFloat;
+    this.agcT = paramFloat;
   }
   
   public final void setOnChangeListener(c paramc)
   {
-    this.NuA = paramc;
+    this.UhU = paramc;
   }
   
   public final void setScaleType(e parame)
   {
     AppMethodBeat.i(164405);
-    p.k(parame, "<set-?>");
-    this.Ylc = parame;
+    s.u(parame, "<set-?>");
+    this.agdb = parame;
     AppMethodBeat.o(164405);
   }
   
   protected final void setShouldLayout(boolean paramBoolean)
   {
-    this.YkX = paramBoolean;
+    this.agcW = paramBoolean;
   }
   
-  protected final void u(float paramFloat1, float paramFloat2, float paramFloat3)
+  protected final void z(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(164417);
-    if ((getContentViewScale()[0] * paramFloat1 < this.YkU) || (getContentViewScale()[0] * paramFloat1 > this.YkV))
+    if ((getContentViewScale()[0] * paramFloat1 < this.agcT) || (getContentViewScale()[0] * paramFloat1 > this.agcU))
     {
-      if (!this.Ylj)
+      if (!this.agdi)
       {
         performHapticFeedback(0, 2);
-        this.Ylj = true;
+        this.agdi = true;
       }
       AppMethodBeat.o(164417);
       return;
     }
     if (this.contentView != null)
     {
-      v(paramFloat1, paramFloat2, paramFloat3);
-      this.Ylh = paramFloat2;
-      this.Yli = paramFloat3;
+      A(paramFloat1, paramFloat2, paramFloat3);
+      this.agdg = paramFloat2;
+      this.agdh = paramFloat3;
     }
     AppMethodBeat.o(164417);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$Companion;", "", "()V", "DEFAULT_MAX_SCALE", "", "DEFAULT_MIN_SCALE", "EDGE_DURATION", "", "FLING_DAMPING", "FLING_DURATION", "OVER_SCROLL_DAMPING", "REVERT_DURATION", "ROTATE_DURATION", "TAG", "", "TYPE_VISIBILITY_RECT_CHANGE", "", "libmmui_release"})
-  public static final class a {}
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "", "onScale", "", "scaleFactor", "", "focusX", "focusY", "onScroll", "distanceX", "distanceY", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$CropLayoutTouchListener;", "", "onScale", "", "scaleFactor", "", "focusX", "focusY", "onScroll", "distanceX", "distanceY", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface b
   {
     public abstract void onScroll(float paramFloat1, float paramFloat2);
     
-    public abstract void p(float paramFloat1, float paramFloat2, float paramFloat3);
+    public abstract void s(float paramFloat1, float paramFloat2, float paramFloat3);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "", "onChange", "", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "", "onChange", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface c
   {
     public abstract void onChange();
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeStartEndListener;", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "onChangeEnd", "", "onChangeStart", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeStartEndListener;", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "onChangeEnd", "", "onChangeStart", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface d
     extends CropLayout.c
   {
-    public abstract void gvi();
+    public abstract void hSY();
     
-    public abstract void gvj();
+    public abstract void hSZ();
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "", "(Ljava/lang/String;I)V", "CENTER_CROP", "CENTER_INSIDE", "ALIGN_START", "libmmui_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "", "(Ljava/lang/String;I)V", "CENTER_CROP", "CENTER_INSIDE", "ALIGN_START", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum e
   {
     static
     {
       AppMethodBeat.i(164380);
-      e locale1 = new e("CENTER_CROP", 0);
-      Ylv = locale1;
-      e locale2 = new e("CENTER_INSIDE", 1);
-      Ylw = locale2;
-      e locale3 = new e("ALIGN_START", 2);
-      Ylx = locale3;
-      Yly = new e[] { locale1, locale2, locale3 };
+      agdt = new e("CENTER_CROP", 0);
+      agdu = new e("CENTER_INSIDE", 1);
+      agdv = new e("ALIGN_START", 2);
+      agdw = new e[] { agdt, agdu, agdv };
       AppMethodBeat.o(164380);
     }
     
     private e() {}
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
-  static final class f
-    extends q
-    implements b<Matrix, Boolean>
-  {
-    public static final f Ylz;
-    
-    static
-    {
-      AppMethodBeat.i(164385);
-      Ylz = new f();
-      AppMethodBeat.o(164385);
-    }
-    
-    f()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/cropview/CropLayout$onFling$1$1", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "lastX", "", "getLastX", "()F", "setLastX", "(F)V", "lastY", "getLastY", "setLastY", "onAnimationUpdate", "", "it", "Landroid/animation/ValueAnimator;", "libmmui_release"})
-  public static final class g
+  @Metadata(d1={""}, d2={"com/tencent/mm/ui/widget/cropview/CropLayout$onFling$1$1", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "lastX", "", "getLastX", "()F", "setLastX", "(F)V", "lastY", "getLastY", "setLastY", "onAnimationUpdate", "", "it", "Landroid/animation/ValueAnimator;", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class h
     implements ValueAnimator.AnimatorUpdateListener
   {
-    private float aCa;
-    private float aCb;
+    private float cxM;
+    private float cxN;
     
-    g(CropLayout paramCropLayout) {}
+    h(CropLayout paramCropLayout) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(164386);
-      p.k(paramValueAnimator, "it");
+      AppMethodBeat.i(252505);
+      s.u(paramValueAnimator, "it");
       Object localObject = paramValueAnimator.getAnimatedValue("transX");
       if (localObject == null)
       {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164386);
+        paramValueAnimator = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(252505);
         throw paramValueAnimator;
       }
       float f1 = ((Float)localObject).floatValue();
       paramValueAnimator = paramValueAnimator.getAnimatedValue("transY");
       if (paramValueAnimator == null)
       {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164386);
+        paramValueAnimator = new NullPointerException("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(252505);
         throw paramValueAnimator;
       }
       float f2 = ((Float)paramValueAnimator).floatValue();
-      CropLayout.a(this.YlA, this.aCa - f1, this.aCb - f2);
-      this.aCa = f1;
-      this.aCb = f2;
-      AppMethodBeat.o(164386);
+      CropLayout.a(this.agdy, this.cxM - f1, this.cxN - f2);
+      this.cxM = f1;
+      this.cxN = f2;
+      AppMethodBeat.o(252505);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/cropview/CropLayout$onFling$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "libmmui_release"})
-  public static final class h
+  @Metadata(d1={""}, d2={"com/tencent/mm/ui/widget/cropview/CropLayout$startCenterAnim$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class l
     implements Animator.AnimatorListener
   {
-    h(CropLayout paramCropLayout) {}
+    l(CropLayout paramCropLayout) {}
     
     public final void onAnimationCancel(Animator paramAnimator) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(164387);
-      CropLayout.a(this.YlA);
-      AppMethodBeat.o(164387);
+      AppMethodBeat.i(252532);
+      paramAnimator = this.agdy.getOnChangeListener();
+      if ((paramAnimator instanceof CropLayout.d)) {}
+      for (paramAnimator = (CropLayout.d)paramAnimator;; paramAnimator = null)
+      {
+        if (paramAnimator != null) {
+          paramAnimator.hSZ();
+        }
+        AppMethodBeat.o(252532);
+        return;
+      }
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -1459,384 +1621,105 @@ public class CropLayout
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/ui/widget/cropview/CropLayout$onRevertRotate$1$1"})
-  static final class i
+  @Metadata(d1={""}, d2={"com/tencent/mm/ui/widget/cropview/CropLayout$startEdgeAnimation$1$1", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "lastX", "", "getLastX", "()I", "setLastX", "(I)V", "lastY", "getLastY", "setLastY", "onAnimationUpdate", "", "it", "Landroid/animation/ValueAnimator;", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class m
     implements ValueAnimator.AnimatorUpdateListener
   {
-    i(aa.c paramc, CropLayout paramCropLayout, float paramFloat) {}
+    private int EHM;
+    private int Grf;
+    
+    m(CropLayout paramCropLayout) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(164388);
-      paramValueAnimator = paramValueAnimator.getAnimatedValue("rotate");
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164388);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      CropLayout.a(jdField_this, f - this.YlB.aaBz);
-      this.YlB.aaBz = f;
-      AppMethodBeat.o(164388);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/ui/widget/cropview/CropLayout$onRotate$1$1"})
-  static final class j
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    j(aa.c paramc, CropLayout paramCropLayout) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(164389);
-      paramValueAnimator = paramValueAnimator.getAnimatedValue("rotate");
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164389);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      CropLayout.a(jdField_this, f - this.YlB.aaBz);
-      this.YlB.aaBz = f;
-      AppMethodBeat.o(164389);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
-  static final class k
-    extends q
-    implements b<Matrix, Boolean>
-  {
-    public static final k YlE;
-    
-    static
-    {
-      AppMethodBeat.i(164391);
-      YlE = new k();
-      AppMethodBeat.o(164391);
-    }
-    
-    k()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
-  static final class l
-    extends q
-    implements b<Matrix, Boolean>
-  {
-    public static final l YlF;
-    
-    static
-    {
-      AppMethodBeat.i(164393);
-      YlF = new l();
-      AppMethodBeat.o(164393);
-    }
-    
-    l()
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/ui/widget/cropview/CropLayout$startCenterAnim$1$1"})
-  static final class m
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    m(CropLayout paramCropLayout, boolean paramBoolean1, boolean paramBoolean2, aa.c paramc1, aa.c paramc2) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(164394);
-      if (((this.YlA.getScaleType() == CropLayout.e.Ylw) && (!bool3) && (!bool2)) || ((this.YlA.getScaleType() == CropLayout.e.Ylv) && ((!bool3) || (!bool2))))
-      {
-        localObject = paramValueAnimator.getAnimatedValue("scale");
-        if (localObject == null)
-        {
-          paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-          AppMethodBeat.o(164394);
-          throw paramValueAnimator;
-        }
-        f1 = ((Float)localObject).floatValue() * 1.0F / this.YlA.getContentViewScale()[0];
-        CropLayout.a(this.YlA, f1, this.YlA.getContentRectF().centerX(), this.YlA.getContentRectF().centerY());
-      }
+      AppMethodBeat.i(252527);
+      s.u(paramValueAnimator, "it");
       Object localObject = paramValueAnimator.getAnimatedValue("transX");
       if (localObject == null)
       {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164394);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)localObject).floatValue();
-      localObject = paramValueAnimator.getAnimatedValue("transY");
-      if (localObject == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164394);
-        throw paramValueAnimator;
-      }
-      float f2 = ((Float)localObject).floatValue();
-      localObject = paramValueAnimator.getAnimatedValue("edgeX");
-      if (localObject == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164394);
-        throw paramValueAnimator;
-      }
-      float f3 = ((Float)localObject).floatValue();
-      paramValueAnimator = paramValueAnimator.getAnimatedValue("edgeY");
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164394);
-        throw paramValueAnimator;
-      }
-      float f4 = ((Float)paramValueAnimator).floatValue();
-      float f7 = paramMotionEvent.aaBz;
-      float f5 = localc.aaBz;
-      float f8 = this.YlA.getContentRectF().centerX();
-      float f6 = this.YlA.getContentRectF().centerY();
-      paramValueAnimator = this.YlA;
-      if (bool2)
-      {
-        f1 = -(f3 - f7);
-        if (!bool3) {
-          break label407;
-        }
-      }
-      label407:
-      for (f2 = -(f4 - f5);; f2 = -(f2 - f6))
-      {
-        CropLayout.b(paramValueAnimator, f1, f2);
-        paramMotionEvent.aaBz = f3;
-        localc.aaBz = f4;
-        AppMethodBeat.o(164394);
-        return;
-        f1 = -(f1 - f8);
-        break;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/cropview/CropLayout$startCenterAnim$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "libmmui_release"})
-  public static final class n
-    implements Animator.AnimatorListener
-  {
-    n(CropLayout paramCropLayout, boolean paramBoolean1, boolean paramBoolean2, aa.c paramc1, aa.c paramc2) {}
-    
-    public final void onAnimationCancel(Animator paramAnimator) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(204667);
-      CropLayout.c localc = this.YlA.getOnChangeListener();
-      paramAnimator = localc;
-      if (!(localc instanceof CropLayout.d)) {
-        paramAnimator = null;
-      }
-      paramAnimator = (CropLayout.d)paramAnimator;
-      if (paramAnimator != null)
-      {
-        paramAnimator.gvj();
-        AppMethodBeat.o(204667);
-        return;
-      }
-      AppMethodBeat.o(204667);
-    }
-    
-    public final void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public final void onAnimationStart(Animator paramAnimator) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/cropview/CropLayout$startEdgeAnimation$1$1", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "lastX", "", "getLastX", "()I", "setLastX", "(I)V", "lastY", "getLastY", "setLastY", "onAnimationUpdate", "", "it", "Landroid/animation/ValueAnimator;", "libmmui_release"})
-  public static final class o
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    private int AOM;
-    private int zDE;
-    
-    o(CropLayout paramCropLayout, Animator.AnimatorListener paramAnimatorListener) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(164395);
-      p.k(paramValueAnimator, "it");
-      Object localObject = paramValueAnimator.getAnimatedValue("transX");
-      if (localObject == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(164395);
+        paramValueAnimator = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(252527);
         throw paramValueAnimator;
       }
       int i = ((Integer)localObject).intValue();
       paramValueAnimator = paramValueAnimator.getAnimatedValue("transY");
       if (paramValueAnimator == null)
       {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(164395);
+        paramValueAnimator = new NullPointerException("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(252527);
         throw paramValueAnimator;
       }
       int j = ((Integer)paramValueAnimator).intValue();
-      CropLayout.b(this.YlA, i - this.AOM, j - this.zDE);
-      this.AOM = i;
-      this.zDE = j;
-      AppMethodBeat.o(164395);
+      CropLayout.b(this.agdy, i - this.Grf, j - this.EHM);
+      this.Grf = i;
+      this.EHM = j;
+      AppMethodBeat.o(252527);
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/cropview/CropLayout$startEdgeAnimation$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "libmmui_release"})
-  public static final class p
+  @Metadata(d1={""}, d2={"com/tencent/mm/ui/widget/cropview/CropLayout$startEdgeAnimation$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class n
     implements Animator.AnimatorListener
   {
-    p(CropLayout paramCropLayout, Animator.AnimatorListener paramAnimatorListener) {}
+    n(Animator.AnimatorListener paramAnimatorListener, CropLayout paramCropLayout) {}
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(164398);
-      p.k(paramAnimator, "animation");
-      Animator.AnimatorListener localAnimatorListener = this.YlK;
-      if (localAnimatorListener != null)
-      {
+      AppMethodBeat.i(252546);
+      s.u(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.agdB;
+      if (localAnimatorListener != null) {
         localAnimatorListener.onAnimationCancel(paramAnimator);
-        AppMethodBeat.o(164398);
-        return;
       }
-      AppMethodBeat.o(164398);
+      AppMethodBeat.o(252546);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(164397);
-      p.k(paramAnimator, "animation");
-      Object localObject = this.YlK;
-      if (localObject != null) {
-        ((Animator.AnimatorListener)localObject).onAnimationEnd(paramAnimator);
+      AppMethodBeat.i(252542);
+      s.u(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.agdB;
+      if (localAnimatorListener != null) {
+        localAnimatorListener.onAnimationEnd(paramAnimator);
       }
-      localObject = this.YlA.getOnChangeListener();
-      paramAnimator = (Animator)localObject;
-      if (!(localObject instanceof CropLayout.d)) {
-        paramAnimator = null;
-      }
-      paramAnimator = (CropLayout.d)paramAnimator;
-      if (paramAnimator != null)
+      paramAnimator = jdField_this.getOnChangeListener();
+      if ((paramAnimator instanceof CropLayout.d)) {}
+      for (paramAnimator = (CropLayout.d)paramAnimator;; paramAnimator = null)
       {
-        paramAnimator.gvj();
-        AppMethodBeat.o(164397);
+        if (paramAnimator != null) {
+          paramAnimator.hSZ();
+        }
+        AppMethodBeat.o(252542);
         return;
       }
-      AppMethodBeat.o(164397);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator)
     {
-      AppMethodBeat.i(164396);
-      p.k(paramAnimator, "animation");
-      Animator.AnimatorListener localAnimatorListener = this.YlK;
-      if (localAnimatorListener != null)
-      {
+      AppMethodBeat.i(252536);
+      s.u(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.agdB;
+      if (localAnimatorListener != null) {
         localAnimatorListener.onAnimationRepeat(paramAnimator);
-        AppMethodBeat.o(164396);
-        return;
       }
-      AppMethodBeat.o(164396);
+      AppMethodBeat.o(252536);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(164399);
-      p.k(paramAnimator, "animation");
-      Animator.AnimatorListener localAnimatorListener = this.YlK;
-      if (localAnimatorListener != null)
-      {
+      AppMethodBeat.i(252550);
+      s.u(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.agdB;
+      if (localAnimatorListener != null) {
         localAnimatorListener.onAnimationStart(paramAnimator);
-        AppMethodBeat.o(164399);
-        return;
       }
-      AppMethodBeat.o(164399);
+      AppMethodBeat.o(252550);
     }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/ui/widget/cropview/CropLayout$startRevertAnimation$2$1"})
-  static final class q
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    q(CropLayout paramCropLayout, a parama, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(164400);
-      Object localObject = paramValueAnimator.getAnimatedValue("scale");
-      if (localObject == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164400);
-        throw paramValueAnimator;
-      }
-      float f3 = ((Float)localObject).floatValue();
-      localObject = paramValueAnimator.getAnimatedValue("transX");
-      if (localObject == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164400);
-        throw paramValueAnimator;
-      }
-      float f1 = ((Float)localObject).floatValue();
-      paramValueAnimator = paramValueAnimator.getAnimatedValue("transY");
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(164400);
-        throw paramValueAnimator;
-      }
-      float f2 = ((Float)paramValueAnimator).floatValue();
-      CropLayout.c(this.YlA);
-      f3 = f3 * 1.0F / this.YlA.getContentViewScale()[0];
-      CropLayout.b(this.YlA, f3);
-      f3 = this.YlA.getContentRectF().centerX();
-      float f4 = this.YlA.getContentRectF().centerY();
-      CropLayout.b(this.YlA, -(f1 - f3), -(f2 - f4));
-      AppMethodBeat.o(164400);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/ui/widget/cropview/CropLayout$startRevertAnimation$2$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "libmmui_release"})
-  public static final class r
-    implements Animator.AnimatorListener
-  {
-    r(CropLayout paramCropLayout, a parama, ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener) {}
-    
-    public final void onAnimationCancel(Animator paramAnimator) {}
-    
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(164402);
-      this.YlA.post((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(164401);
-          this.YlM.Goj.invoke();
-          AppMethodBeat.o(164401);
-        }
-      });
-      AppMethodBeat.o(164402);
-    }
-    
-    public final void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public final void onAnimationStart(Animator paramAnimator) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cropview.CropLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.browser.f;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog;", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mBrowserList", "", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "mDialogClickListener", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "mDialogView", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialogView;", "onCreateDialogView", "Landroid/view/View;", "release", "", "setBrowserClickListener", "listener", "setBrowserList", "list", "Companion", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog;", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mBrowserList", "", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserItemInfo;", "mDialogClickListener", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/listener/BrowserChooseDialogClickListener;", "mDialogView", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialogView;", "onCreateDialogView", "Landroid/view/View;", "release", "", "setBrowserClickListener", "listener", "setBrowserList", "list", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   extends a
 {
-  public static final a Qjl;
-  public List<f> QiA;
-  private BrowserChooseDialogView Qjj;
-  public com.tencent.mm.plugin.webview.ui.tools.browser.listener.a Qjk;
+  public static final a Xbf;
+  private List<f> XaG;
+  private BrowserChooseDialogView Xbg;
+  public com.tencent.mm.plugin.webview.ui.tools.browser.listener.a Xbh;
   
   static
   {
-    AppMethodBeat.i(249188);
-    Qjl = new a((byte)0);
-    AppMethodBeat.o(249188);
+    AppMethodBeat.i(296604);
+    Xbf = new a((byte)0);
+    AppMethodBeat.o(296604);
   }
   
   public b(Context paramContext)
@@ -29,37 +29,43 @@ public final class b
     super(paramContext);
   }
   
-  public final View gZK()
+  public final View izN()
   {
-    AppMethodBeat.i(249184);
+    AppMethodBeat.i(296612);
     Object localObject = getContext();
-    p.j(localObject, "context");
-    this.Qjj = new BrowserChooseDialogView((Context)localObject);
-    localObject = this.Qjj;
+    s.s(localObject, "context");
+    this.Xbg = new BrowserChooseDialogView((Context)localObject);
+    localObject = this.Xbg;
     if (localObject != null)
     {
       a locala = (a)this;
-      p.k(locala, "dialog");
-      ((BrowserChooseDialogView)localObject).Qjp = locala;
+      s.u(locala, "dialog");
+      ((BrowserChooseDialogView)localObject).Xbl = locala;
     }
-    localObject = this.Qjj;
+    localObject = this.Xbg;
     if (localObject != null) {
-      ((BrowserChooseDialogView)localObject).setBrowserClickListener(this.Qjk);
+      ((BrowserChooseDialogView)localObject).setBrowserClickListener(this.Xbh);
     }
-    localObject = this.Qjj;
+    localObject = this.Xbg;
     if (localObject != null) {
-      ((BrowserChooseDialogView)localObject).setBrowserList(this.QiA);
+      ((BrowserChooseDialogView)localObject).setBrowserList(this.XaG);
     }
-    localObject = this.Qjj;
-    if (localObject == null) {
-      p.iCn();
-    }
+    localObject = this.Xbg;
+    s.checkNotNull(localObject);
     localObject = (View)localObject;
-    AppMethodBeat.o(249184);
+    AppMethodBeat.o(296612);
     return localObject;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
+  public final void setBrowserList(List<f> paramList)
+  {
+    AppMethodBeat.i(296618);
+    s.u(paramList, "list");
+    this.XaG = paramList;
+    AppMethodBeat.o(296618);
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BrowserChooseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

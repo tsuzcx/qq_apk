@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <rotate android:duration="1000" android:drawable="@raw/brand_100_loading_60_60" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/Brand_Alpha_0_1" />
+            <corners android:radius="@dimen/cp" />
+        </shape>
     </item>
-</layer-list>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/Brand_Alpha_0_1" />
+            <corners android:radius="@dimen/cp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/Brand_Alpha_0_1" />
+            <corners android:radius="@dimen/cp" />
+        </shape>
+    </item>
+</selector>

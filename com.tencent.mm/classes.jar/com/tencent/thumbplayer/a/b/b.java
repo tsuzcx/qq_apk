@@ -6,11 +6,11 @@ import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 public abstract class b
   implements a
 {
-  protected com.tencent.thumbplayer.a.b.a.a ZBb;
+  protected com.tencent.thumbplayer.a.b.a.a ahGe;
   
   public b(com.tencent.thumbplayer.a.b.a.a parama)
   {
-    this.ZBb = parama;
+    this.ahGe = parama;
   }
   
   static boolean b(com.tencent.thumbplayer.a.b paramb)
@@ -26,7 +26,7 @@ public abstract class b
   public int a(com.tencent.thumbplayer.a.b paramb)
   {
     int i = 2;
-    switch (this.ZBb.ZBf)
+    switch (this.ahGe.ahGi)
     {
     default: 
       i = 0;
@@ -59,15 +59,67 @@ public abstract class b
   
   public int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1)
   {
-    if (paramb1.ZBh == 0) {
-      return a(paramb);
+    int j = 0;
+    int k = this.ahGe.ahGi;
+    int i;
+    if (paramb1.ahGk == 0) {
+      i = a(paramb);
     }
-    return 0;
+    label144:
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return i;
+                    i = j;
+                  } while (!kaa());
+                  i = j;
+                  switch (k)
+                  {
+                  case 1: 
+                  case 3: 
+                  default: 
+                    return 0;
+                  case 0: 
+                    if (paramb1.ahGk != 1) {
+                      break label144;
+                    }
+                    i = j;
+                  }
+                } while (!b(paramb));
+                return 2;
+                i = j;
+              } while (paramb1.ahGk != 2);
+              i = j;
+            } while (!c(paramb));
+            return 1;
+            i = j;
+          } while (paramb1.ahGk != 1);
+          i = j;
+        } while (!b(paramb));
+        return 2;
+        i = j;
+      } while (paramb1.ahGk != 2);
+      i = j;
+    } while (!c(paramb));
+    return 1;
   }
   
-  public int[] iqE()
+  public int[] jZZ()
   {
-    switch (this.ZBb.ZBe)
+    switch (this.ahGe.ahGh)
     {
     default: 
       return null;
@@ -82,10 +134,15 @@ public abstract class b
     }
     return new int[] { 102, 101 };
   }
+  
+  protected boolean kaa()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b.b
  * JD-Core Version:    0.7.0.1
  */

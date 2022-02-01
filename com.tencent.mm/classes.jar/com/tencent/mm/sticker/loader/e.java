@@ -2,289 +2,274 @@ package com.tencent.mm.sticker.loader;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.g.j;
-import com.tencent.mm.protocal.protobuf.cqv;
-import com.tencent.mm.protocal.protobuf.cqx;
+import com.tencent.mm.protocal.protobuf.dhp;
+import com.tencent.mm.protocal.protobuf.dhr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sticker.f.a;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/StickerFileManager;", "", "()V", "TAG", "", "callback", "com/tencent/mm/sticker/loader/StickerFileManager$callback$1", "Lcom/tencent/mm/sticker/loader/StickerFileManager$callback$1;", "maxPackageCount", "", "getMaxPackageCount", "()I", "processTaskMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "Lkotlin/collections/HashMap;", "stickerDir", "getStickerDir", "()Ljava/lang/String;", "stickerPackage", "getStickerPackage", "stickerTemp", "getStickerTemp", "stickerThumb", "getStickerThumb", "taskQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "checkLocal", "", "lensId", "cleanDir", "", "dir", "maxCount", "cleanFile", "getPackById", "loadByFileId", "Lcom/tencent/mm/loader/loader/WorkStatus;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "loadByInfo", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "loadByUrl", "url", "loadFromRemote", "Lkotlin/Function1;", "notifyProcessTask", "taskKey", "success", "register", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "unregister", "plugin-sticker_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sticker/loader/StickerFileManager;", "", "()V", "TAG", "", "callback", "com/tencent/mm/sticker/loader/StickerFileManager$callback$1", "Lcom/tencent/mm/sticker/loader/StickerFileManager$callback$1;", "maxPackageCount", "", "getMaxPackageCount", "()I", "processTaskMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "Lkotlin/collections/HashMap;", "stickerDir", "getStickerDir", "()Ljava/lang/String;", "stickerPackage", "getStickerPackage", "stickerTemp", "getStickerTemp", "stickerThumb", "getStickerThumb", "taskQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "checkLocal", "", "lensId", "cleanDir", "", "dir", "maxCount", "cleanFile", "getPackById", "loadByFileId", "Lcom/tencent/mm/loader/loader/WorkStatus;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "loadByInfo", "info", "Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "loadByUrl", "url", "loadFromRemote", "Lkotlin/Function1;", "notifyProcessTask", "taskKey", "success", "register", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "unregister", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
 {
-  private static final String TAG = "MicroMsg.StickerFileManager";
-  private static final String Vbq;
-  private static final String Vbr;
-  private static final String Vbs;
-  private static final String Vbt;
-  private static final int Vbu = 50;
-  private static final HashMap<String, g> Vbv;
-  private static final a Vbw;
-  public static final e Vbx;
-  private static final com.tencent.mm.loader.g.d<g> jGF;
+  private static final String TAG;
+  public static final e acCJ;
+  private static final String acCK;
+  private static final String acCL;
+  private static final String acCM;
+  private static final String acCN;
+  private static final int acCO;
+  private static final HashMap<String, g> acCP;
+  private static final a acCQ;
+  private static final com.tencent.mm.loader.f.d<g> mgn;
   
   static
   {
     AppMethodBeat.i(105939);
-    Vbx = new e();
+    acCJ = new e();
     TAG = "MicroMsg.StickerFileManager";
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = MMApplicationContext.getContext();
-    p.j(localObject, "MMApplicationContext.getContext()");
-    localObject = ((Context)localObject).getCacheDir();
-    p.j(localObject, "MMApplicationContext.getContext().cacheDir");
-    Vbq = ((File)localObject).getAbsolutePath() + "/sticker/";
-    Vbr = Vbq + "package/";
-    Vbs = Vbq + "temp/";
-    Vbt = Vbq + "thumb/";
-    Vbu = 50;
-    jGF = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new com.tencent.mm.loader.g.a.a((byte)0), new com.tencent.mm.loader.g.a.g(1, (byte)0), 1, "StickerTask"));
-    Vbv = new HashMap();
-    Vbw = new a();
-    u.bBD(Vbq);
-    u.bBX(Vbq);
-    jGF.a((com.tencent.mm.loader.g.f)Vbw);
+    String str = s.X(MMApplicationContext.getContext().getCacheDir().getAbsolutePath(), "/sticker/");
+    acCK = str;
+    acCL = s.X(str, "package/");
+    acCM = s.X(acCK, "temp/");
+    acCN = s.X(acCK, "thumb/");
+    acCO = 50;
+    mgn = new com.tencent.mm.loader.f.d((com.tencent.mm.loader.f.a.d)new com.tencent.mm.loader.f.a.f((com.tencent.mm.loader.f.a.c)new com.tencent.mm.loader.f.a.a((byte)0), new com.tencent.mm.loader.f.a.g(1, (byte)0), 1, "StickerTask"));
+    acCP = new HashMap();
+    acCQ = new a();
+    y.bDX(acCK);
+    y.bEr(acCK);
+    mgn.a((com.tencent.mm.loader.f.e)acCQ);
     AppMethodBeat.o(105939);
   }
   
-  public static void a(com.tencent.mm.loader.g.f<g> paramf)
+  public static void a(com.tencent.mm.loader.f.e<g> parame)
   {
     AppMethodBeat.i(105930);
-    p.k(paramf, "callback");
-    jGF.a(paramf);
+    s.u(parame, "callback");
+    mgn.a(parame);
     AppMethodBeat.o(105930);
   }
   
   private static void a(StickerLoadInfo paramStickerLoadInfo)
   {
     AppMethodBeat.i(105936);
-    p.k(paramStickerLoadInfo, "info");
-    if (Vbv.containsKey(paramStickerLoadInfo.key()))
+    s.u(paramStickerLoadInfo, "info");
+    if (acCP.containsKey(paramStickerLoadInfo.key()))
     {
       Log.i(TAG, "loadByInfo: " + paramStickerLoadInfo.key() + " waiting in queue");
       AppMethodBeat.o(105936);
       return;
     }
-    Object localObject = com.tencent.mm.kernel.h.aHD().aHf();
-    p.j(localObject, "MMKernel.process().current()");
-    if (((com.tencent.mm.kernel.b.h)localObject).aIE()) {
+    if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.baB().bad()).bbA()) {
       if (paramStickerLoadInfo.type == 1) {
         paramStickerLoadInfo = (g)new i(paramStickerLoadInfo);
       }
     }
     for (;;)
     {
-      jGF.b((com.tencent.mm.loader.g.c)paramStickerLoadInfo);
+      mgn.c((com.tencent.mm.loader.f.c)paramStickerLoadInfo);
       AppMethodBeat.o(105936);
       return;
       paramStickerLoadInfo = (g)new d(paramStickerLoadInfo);
       continue;
-      localObject = new f(paramStickerLoadInfo);
-      ((Map)Vbv).put(paramStickerLoadInfo.key(), localObject);
-      paramStickerLoadInfo = (g)localObject;
+      f localf = new f(paramStickerLoadInfo);
+      ((Map)acCP).put(paramStickerLoadInfo.key(), localf);
+      paramStickerLoadInfo = (g)localf;
     }
   }
   
-  public static void a(StickerLoadInfo paramStickerLoadInfo, b<? super Boolean, x> paramb)
+  public static void a(StickerLoadInfo paramStickerLoadInfo, b<? super Boolean, ah> paramb)
   {
-    AppMethodBeat.i(232519);
-    p.k(paramStickerLoadInfo, "info");
-    Log.i(TAG, "loadFromRemote: " + paramStickerLoadInfo.key());
+    AppMethodBeat.i(233911);
+    s.u(paramStickerLoadInfo, "info");
+    Log.i(TAG, s.X("loadFromRemote: ", paramStickerLoadInfo.key()));
     if (paramStickerLoadInfo.type == 1) {}
     for (g localg = (g)new i(paramStickerLoadInfo);; localg = (g)new d(paramStickerLoadInfo))
     {
-      if ((paramb != null) && (!localg.VbD.contains(paramb))) {
-        localg.VbD.add(paramb);
+      if (!localg.acCV.contains(paramb)) {
+        localg.acCV.add(paramb);
       }
-      ((Map)Vbv).put(paramStickerLoadInfo.key(), localg);
-      jGF.b((com.tencent.mm.loader.g.c)localg);
-      AppMethodBeat.o(232519);
+      ((Map)acCP).put(paramStickerLoadInfo.key(), localg);
+      mgn.c((com.tencent.mm.loader.f.c)localg);
+      AppMethodBeat.o(233911);
       return;
     }
   }
   
-  public static void b(com.tencent.mm.loader.g.f<g> paramf)
+  public static void b(com.tencent.mm.loader.f.e<g> parame)
   {
     AppMethodBeat.i(105931);
-    p.k(paramf, "callback");
-    jGF.b(paramf);
+    s.u(parame, "callback");
+    mgn.b(parame);
     AppMethodBeat.o(105931);
   }
   
-  public static void buM(String paramString)
+  public static void buT(String paramString)
   {
     AppMethodBeat.i(105932);
-    p.k(paramString, "url");
-    Object localObject = StickerLoadInfo.Vbz;
-    p.k(paramString, "url");
+    s.u(paramString, "url");
+    Object localObject = StickerLoadInfo.acCS;
+    s.u(paramString, "url");
     localObject = new StickerLoadInfo(1);
-    p.k(paramString, "<set-?>");
+    s.u(paramString, "<set-?>");
     ((StickerLoadInfo)localObject).url = paramString;
     a((StickerLoadInfo)localObject);
     AppMethodBeat.o(105932);
   }
   
-  public static String buN(String paramString)
+  public static String buU(String paramString)
   {
     AppMethodBeat.i(105934);
-    p.k(paramString, "lensId");
-    paramString = Vbr + paramString + '/';
+    s.u(paramString, "lensId");
+    paramString = acCL + paramString + '/';
     AppMethodBeat.o(105934);
     return paramString;
   }
   
-  public static boolean buO(String paramString)
+  public static boolean buV(String paramString)
   {
     AppMethodBeat.i(105935);
-    p.k(paramString, "lensId");
-    paramString = buN(paramString);
-    f.a locala = com.tencent.mm.sticker.f.Vbg;
-    boolean bool = f.a.buL(paramString);
+    s.u(paramString, "lensId");
+    paramString = buU(paramString);
+    f.a locala = com.tencent.mm.sticker.f.acCu;
+    boolean bool = f.a.buR(paramString);
     AppMethodBeat.o(105935);
     return bool;
   }
   
-  public static j d(cqv paramcqv)
+  public static com.tencent.mm.loader.f.i d(dhp paramdhp)
   {
     AppMethodBeat.i(105933);
-    p.k(paramcqv, "lensInfo");
-    Log.i(TAG, "loadByFileId: " + paramcqv.LensId);
-    if (Util.isNullOrNil(paramcqv.LensId))
+    s.u(paramdhp, "lensInfo");
+    Log.i(TAG, s.X("loadByFileId: ", paramdhp.LensId));
+    if (Util.isNullOrNil(paramdhp.LensId))
     {
-      paramcqv = j.kQe;
+      paramdhp = com.tencent.mm.loader.f.i.nrH;
       AppMethodBeat.o(105933);
-      return paramcqv;
+      return paramdhp;
     }
-    Object localObject = paramcqv.LensId;
-    p.j(localObject, "lensInfo.LensId");
-    if (buO((String)localObject))
+    Object localObject = paramdhp.LensId;
+    s.s(localObject, "lensInfo.LensId");
+    if (buV((String)localObject))
     {
-      paramcqv = j.kQd;
+      paramdhp = com.tencent.mm.loader.f.i.nrG;
       AppMethodBeat.o(105933);
-      return paramcqv;
+      return paramdhp;
     }
-    localObject = StickerLoadInfo.Vbz;
-    p.k(paramcqv, "lensInfo");
+    localObject = StickerLoadInfo.acCS;
+    s.u(paramdhp, "lensInfo");
     StickerLoadInfo localStickerLoadInfo = new StickerLoadInfo();
-    String str = paramcqv.LensId;
+    String str = paramdhp.LensId;
     localObject = str;
     if (str == null) {
       localObject = "";
     }
-    p.k(localObject, "<set-?>");
-    localStickerLoadInfo.uTz = ((String)localObject);
-    localObject = paramcqv.Tyn;
-    if (localObject != null)
-    {
-      str = ((cqx)localObject).RNi;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
+    s.u(localObject, "<set-?>");
+    localStickerLoadInfo.ygo = ((String)localObject);
+    localObject = paramdhp.aaMU;
+    if (localObject == null)
     {
       localObject = "";
-    }
-    p.k(localObject, "<set-?>");
-    localStickerLoadInfo.fileId = ((String)localObject);
-    localObject = paramcqv.Tyn;
-    if (localObject != null)
-    {
-      str = ((cqx)localObject).AesKey;
-      localObject = str;
-      if (str != null) {}
-    }
-    else
-    {
+      s.u(localObject, "<set-?>");
+      localStickerLoadInfo.fileId = ((String)localObject);
+      localObject = paramdhp.aaMU;
+      if (localObject != null) {
+        break label234;
+      }
       localObject = "";
+      label169:
+      s.u(localObject, "<set-?>");
+      localStickerLoadInfo.aesKey = ((String)localObject);
+      paramdhp = paramdhp.aaMU;
+      if (paramdhp != null) {
+        break label252;
+      }
     }
-    p.k(localObject, "<set-?>");
-    localStickerLoadInfo.aesKey = ((String)localObject);
-    paramcqv = paramcqv.Tyn;
-    if (paramcqv != null) {}
-    for (int i = paramcqv.HlG;; i = 0)
+    label234:
+    label252:
+    for (int i = 0;; i = paramdhp.Nju)
     {
-      localStickerLoadInfo.nEz = i;
+      localStickerLoadInfo.qEw = i;
       a(localStickerLoadInfo);
-      paramcqv = j.kQg;
+      paramdhp = com.tencent.mm.loader.f.i.nrJ;
       AppMethodBeat.o(105933);
-      return paramcqv;
+      return paramdhp;
+      str = ((dhr)localObject).YKw;
+      localObject = str;
+      if (str != null) {
+        break;
+      }
+      localObject = "";
+      break;
+      str = ((dhr)localObject).AesKey;
+      localObject = str;
+      if (str != null) {
+        break label169;
+      }
+      localObject = "";
+      break label169;
     }
   }
   
-  public static void ds(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105938);
-    p.k(paramString, "taskKey");
-    Log.i(TAG, "notifyProcessTask: ".concat(String.valueOf(paramString)));
-    paramString = (g)Vbv.remove(paramString);
-    if (paramString != null)
-    {
-      paramString.ep(paramBoolean);
-      AppMethodBeat.o(105938);
-      return;
-    }
-    AppMethodBeat.o(105938);
-  }
-  
-  public static void hqw()
+  public static void fio()
   {
     AppMethodBeat.i(105929);
-    com.tencent.mm.ae.d.b("StickerFileManager_cleanFile", (kotlin.g.a.a)c.Vby);
+    com.tencent.mm.ae.d.d("StickerFileManager_cleanFile", (kotlin.g.a.a)c.acCR);
     AppMethodBeat.o(105929);
   }
   
-  public static String huX()
+  public static String iWA()
   {
-    return Vbq;
+    return acCL;
   }
   
-  public static String huY()
+  public static String iWB()
   {
-    return Vbr;
+    return acCM;
   }
   
-  public static String huZ()
+  public static String iWC()
   {
-    return Vbs;
+    return acCN;
   }
   
-  public static String hva()
+  public static int iWD()
   {
-    return Vbt;
+    return acCO;
   }
   
-  public static int hvb()
+  public static String iWz()
   {
-    return Vbu;
+    return acCK;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/sticker/loader/StickerFileManager$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-sticker_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/sticker/loader/StickerFileManager$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-sticker_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements com.tencent.mm.loader.g.f<g>
+    implements com.tencent.mm.loader.f.e<g>
   {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    public static final c Vby;
+    public static final c acCR;
     
     static
     {
       AppMethodBeat.i(105928);
-      Vby = new c();
+      acCR = new c();
       AppMethodBeat.o(105928);
     }
     
@@ -296,7 +281,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.e
  * JD-Core Version:    0.7.0.1
  */

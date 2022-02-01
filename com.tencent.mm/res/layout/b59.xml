@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="58.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bfi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="58.0dip">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/fe5" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bca" />
-            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_weight="1.0">
-                <TextView android:textSize="@dimen/t" android:textColor="@color/fq" android:id="@id/fe7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{dddd}" />
-                <TextView android:textSize="@dimen/bd" android:textColor="@color/fp" android:id="@id/fe3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{dddd}" />
-            </LinearLayout>
-            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fe6" android:layout_width="@dimen/kj" android:layout_height="@dimen/kg" />
-        </LinearLayout>
-        <View android:id="@id/fe2" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignLeft="@id/bfi" android:layout_alignTop="@id/bfi" android:layout_alignRight="@id/bfi" android:layout_alignBottom="@id/bfi" android:alpha="0.7" />
-    </RelativeLayout>
-    <View android:id="@id/fe4" android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="40.0dip" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/j1o" android:layout_width="fill_parent" android:layout_height="48.0dip" android:src="@drawable/c59" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/h_5" android:background="@drawable/aq8" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/i9" android:layout_marginBottom="@dimen/i_" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="@string/idf">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/j6" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/my_qr_code" app:iconColor="@color/BW_100_Alpha_0_9" />
+    </LinearLayout>
+    <ImageView android:id="@id/eez" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/h33" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/hn" android:textColor="#b3ffffff" android:id="@id/h37" android:visibility="invisible" android:text="@string/idc" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/tl" />
+    <ImageView android:id="@id/j29" android:padding="@dimen/j6" android:visibility="gone" android:layout_width="@dimen/apf" android:layout_height="@dimen/apf" android:src="@raw/scan_success_mark_dot" android:contentDescription="@string/gxt" />
+</merge>

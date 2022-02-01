@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.location.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -16,9 +15,9 @@ import com.tencent.mm.ui.base.MMImageButton;
 public class ShareHeader
   extends LinearLayout
 {
-  private MMImageButton EmA;
-  private ViewGroup Emy;
-  private MMImageButton Emz;
+  private ViewGroup Kfh;
+  private MMImageButton Kfi;
+  private MMImageButton Kfj;
   private Context mContext;
   private TextView titleTv;
   
@@ -31,7 +30,6 @@ public class ShareHeader
     AppMethodBeat.o(55886);
   }
   
-  @TargetApi(11)
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -45,29 +43,29 @@ public class ShareHeader
   {
     AppMethodBeat.i(55887);
     View localView = View.inflate(this.mContext, a.f.share_header, this);
-    this.Emy = ((ViewGroup)localView.findViewById(a.e.header_bar));
-    this.Emz = ((MMImageButton)localView.findViewById(a.e.title_left_button));
-    this.EmA = ((MMImageButton)localView.findViewById(a.e.title_right_button));
+    this.Kfh = ((ViewGroup)localView.findViewById(a.e.header_bar));
+    this.Kfi = ((MMImageButton)localView.findViewById(a.e.title_left_button));
+    this.Kfj = ((MMImageButton)localView.findViewById(a.e.title_right_button));
     this.titleTv = ((TextView)localView.findViewById(a.e.title));
     AppMethodBeat.o(55887);
   }
   
   public ViewGroup getHeaderBar()
   {
-    return this.Emy;
+    return this.Kfh;
   }
   
   public void setOnLeftClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55888);
-    this.Emz.setOnClickListener(paramOnClickListener);
+    this.Kfi.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55888);
   }
   
   public void setOnRightClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55889);
-    this.EmA.setOnClickListener(paramOnClickListener);
+    this.Kfj.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55889);
   }
   
@@ -87,7 +85,7 @@ public class ShareHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.ShareHeader
  * JD-Core Version:    0.7.0.1
  */

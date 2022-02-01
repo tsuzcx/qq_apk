@@ -1,32 +1,32 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.d.a.b;
+import com.google.d.a.e;
 
 public final class a$s
   extends e
 {
-  public int ZfM = 0;
+  public int aheo = 0;
   
   public a$s()
   {
-    this.ccR = -1;
-  }
-  
-  public final int JG()
-  {
-    return super.JG() + b.bN(1, this.ZfM);
+    this.dXv = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bK(1, this.ZfM);
+    paramb.cG(1, this.aheo);
     super.a(paramb);
+  }
+  
+  public final int akc()
+  {
+    return super.akc() + b.cK(1, this.aheo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.s
  * JD-Core Version:    0.7.0.1
  */

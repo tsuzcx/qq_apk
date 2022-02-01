@@ -15,16 +15,16 @@ public class ParcelableSparseArray
   
   static
   {
-    AppMethodBeat.i(238061);
+    AppMethodBeat.i(209282);
     CREATOR = new Parcelable.ClassLoaderCreator() {};
-    AppMethodBeat.o(238061);
+    AppMethodBeat.o(209282);
   }
   
   public ParcelableSparseArray() {}
   
   public ParcelableSparseArray(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(238055);
+    AppMethodBeat.i(209271);
     int j = paramParcel.readInt();
     int[] arrayOfInt = new int[j];
     paramParcel.readIntArray(arrayOfInt);
@@ -35,7 +35,7 @@ public class ParcelableSparseArray
       put(arrayOfInt[i], paramParcel[i]);
       i += 1;
     }
-    AppMethodBeat.o(238055);
+    AppMethodBeat.o(209271);
   }
   
   public int describeContents()
@@ -45,7 +45,7 @@ public class ParcelableSparseArray
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(238059);
+    AppMethodBeat.i(209304);
     int j = size();
     int[] arrayOfInt = new int[j];
     Parcelable[] arrayOfParcelable = new Parcelable[j];
@@ -59,12 +59,12 @@ public class ParcelableSparseArray
     paramParcel.writeInt(j);
     paramParcel.writeIntArray(arrayOfInt);
     paramParcel.writeParcelableArray(arrayOfParcelable, paramInt);
-    AppMethodBeat.o(238059);
+    AppMethodBeat.o(209304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.material.internal.ParcelableSparseArray
  * JD-Core Version:    0.7.0.1
  */

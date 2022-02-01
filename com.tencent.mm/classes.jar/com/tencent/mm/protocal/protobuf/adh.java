@@ -1,79 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class adh
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int SoO;
-  public String openid;
-  public int status;
+  public int ZlT;
+  public LinkedList<adg> ZlU;
+  
+  public adh()
+  {
+    AppMethodBeat.i(145669);
+    this.ZlU = new LinkedList();
+    AppMethodBeat.o(145669);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(90961);
+    AppMethodBeat.i(145670);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.SoO);
-      if (this.openid != null) {
-        paramVarArgs.f(2, this.openid);
-      }
-      paramVarArgs.aY(3, this.status);
-      AppMethodBeat.o(90961);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bS(1, this.ZlT);
+      paramVarArgs.e(2, 8, this.ZlU);
+      AppMethodBeat.o(145670);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.SoO) + 0;
-      paramInt = i;
-      if (this.openid != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.openid);
-      }
-      i = g.a.a.b.b.a.bM(3, this.status);
-      AppMethodBeat.o(90961);
-      return paramInt + i;
+      paramInt = i.a.a.b.b.a.cJ(1, this.ZlT);
+      i = i.a.a.a.c(2, 8, this.ZlU);
+      AppMethodBeat.o(145670);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.ZlU.clear();
+      paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(90961);
+      AppMethodBeat.o(145670);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       adh localadh = (adh)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(90961);
+        AppMethodBeat.o(145670);
         return -1;
       case 1: 
-        localadh.SoO = locala.abFh.AK();
-        AppMethodBeat.o(90961);
-        return 0;
-      case 2: 
-        localadh.openid = locala.abFh.readString();
-        AppMethodBeat.o(90961);
+        localadh.ZlT = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(145670);
         return 0;
       }
-      localadh.status = locala.abFh.AK();
-      AppMethodBeat.o(90961);
+      paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        adg localadg = new adg();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localadg.parseFrom((byte[])localObject);
+        }
+        localadh.ZlU.add(localadg);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(145670);
       return 0;
     }
-    AppMethodBeat.o(90961);
+    AppMethodBeat.o(145670);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.adh
  * JD-Core Version:    0.7.0.1
  */

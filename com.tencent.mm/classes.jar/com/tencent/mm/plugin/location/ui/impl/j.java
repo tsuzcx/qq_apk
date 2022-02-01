@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,28 +20,26 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.f.a.hi;
-import com.tencent.mm.f.a.hi.b;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.f;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.autogen.a.ht;
+import com.tencent.mm.autogen.a.ht.b;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.location.model.LocationInfo;
 import com.tencent.mm.plugin.location.ui.NewMyLocationButton;
+import com.tencent.mm.plugin.location.ui.e;
 import com.tencent.mm.plugin.location.ui.j.a;
 import com.tencent.mm.plugin.map.a.b;
 import com.tencent.mm.plugin.map.a.d;
 import com.tencent.mm.plugin.map.a.e;
 import com.tencent.mm.plugin.map.a.i;
-import com.tencent.mm.plugin.q.d;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.p.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,34 +48,34 @@ import java.util.Map;
 public final class j
   extends k
 {
-  private static final String ErK;
-  private NewMyLocationButton ErD;
-  private com.tencent.mm.plugin.location.ui.e ErE;
-  private View ErF;
-  private com.tencent.mm.ui.widget.a.e ErG;
-  private int ErH;
-  private com.tencent.mm.plugin.location.model.j ErI;
-  private View ErJ;
-  private HashMap<String, Integer> ErL;
-  private com.tencent.mm.plugin.location.ui.k Ero;
-  private com.tencent.mm.plugin.location.ui.j Erq;
-  private Map<String, String> oUU;
+  private static final String Kkq;
+  private com.tencent.mm.plugin.location.ui.k KjU;
+  private com.tencent.mm.plugin.location.ui.j KjW;
+  private NewMyLocationButton Kkj;
+  private e Kkk;
+  private View Kkl;
+  private com.tencent.mm.ui.widget.a.f Kkm;
+  private int Kkn;
+  private com.tencent.mm.plugin.location.model.j Kko;
+  private View Kkp;
+  private HashMap<String, Integer> Kkr;
+  private Map<String, String> sah;
   
   static
   {
-    AppMethodBeat.i(244865);
-    ErK = "https://" + WeChatHosts.domainString(a.i.host_3gimg_qq_com) + "/tencentMapTouch/app/download/apkForWXAndroidConf.json";
-    AppMethodBeat.o(244865);
+    AppMethodBeat.i(264978);
+    Kkq = "https://" + WeChatHosts.domainString(a.i.host_3gimg_qq_com) + "/tencentMapTouch/app/download/apkForWXAndroidConf.json";
+    AppMethodBeat.o(264978);
   }
   
   public j(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(56168);
-    this.ErL = new HashMap();
-    h.aGY().a(1913, this);
-    this.ErI = new com.tencent.mm.plugin.location.model.j();
-    h.aGY().a(this.ErI, 0);
+    this.Kkr = new HashMap();
+    h.aZW().a(1913, this);
+    this.Kko = new com.tencent.mm.plugin.location.model.j();
+    h.aZW().a(this.Kko, 0);
     AppMethodBeat.o(56168);
   }
   
@@ -91,10 +90,38 @@ public final class j
     return bool;
   }
   
-  final void eNb()
+  public final void fVM()
+  {
+    AppMethodBeat.i(56172);
+    super.fVM();
+    AppMethodBeat.o(56172);
+  }
+  
+  public final void fVP()
+  {
+    AppMethodBeat.i(56173);
+    super.fVP();
+    Log.i("MicroMsg.TrackMapUI", "onDown");
+    AppMethodBeat.o(56173);
+  }
+  
+  protected final void fVQ()
+  {
+    AppMethodBeat.i(56174);
+    l locall = l.fVZ();
+    ArrayList localArrayList = new ArrayList(8);
+    localArrayList.addAll(locall.Kcn);
+    this.Kkm = new com.tencent.mm.ui.widget.a.f(this.activity, 1, false);
+    this.Kkm.Vtg = new j.10(this, localArrayList);
+    this.Kkm.GAC = new j.2(this);
+    this.Kkm.dDn();
+    AppMethodBeat.o(56174);
+  }
+  
+  final void fVu()
   {
     AppMethodBeat.i(56170);
-    super.eNb();
+    super.fVu();
     ((TextView)findViewById(a.e.mm_action_bar_mmtitle)).setText(a.i.location_info);
     findViewById(a.e.title_search_icon).setVisibility(8);
     Object localObject1 = (ViewStub)findViewById(a.e.location_info_stub);
@@ -113,7 +140,7 @@ public final class j
         AppMethodBeat.o(56147);
       }
     });
-    this.ErF = ((ViewStub)localObject1).inflate();
+    this.Kkl = ((ViewStub)localObject1).inflate();
     findViewById(a.e.locate_to_my_position).setVisibility(8);
     this.activity.getWindow().getDecorView().post(new Runnable()
     {
@@ -138,30 +165,30 @@ public final class j
         AppMethodBeat.o(56149);
       }
     });
-    this.Ero = new com.tencent.mm.plugin.location.ui.k(this.activity, this.EoO.ElK, false);
-    this.Ero.Eob = false;
-    this.Ero.Eoc = false;
-    localObject1 = this.Ero;
-    ((com.tencent.mm.plugin.location.ui.k)localObject1).EnZ = true;
-    if (((com.tencent.mm.plugin.location.ui.k)localObject1).EnS != null)
+    this.KjU = new com.tencent.mm.plugin.location.ui.k(this.activity, this.Khu.Ket, false);
+    this.KjU.KgH = false;
+    this.KjU.KgI = false;
+    localObject1 = this.KjU;
+    ((com.tencent.mm.plugin.location.ui.k)localObject1).KgF = true;
+    if (((com.tencent.mm.plugin.location.ui.k)localObject1).Kgz != null)
     {
-      ((com.tencent.mm.plugin.location.ui.k)localObject1).EnS.setOnAvatarOnClickListener(null);
-      ((com.tencent.mm.plugin.location.ui.k)localObject1).EnS.setOnLocationOnClickListener(null);
-      ((com.tencent.mm.plugin.location.ui.k)localObject1).EnS.eNz();
+      ((com.tencent.mm.plugin.location.ui.k)localObject1).Kgz.setOnAvatarOnClickListener(null);
+      ((com.tencent.mm.plugin.location.ui.k)localObject1).Kgz.setOnLocationOnClickListener(null);
+      ((com.tencent.mm.plugin.location.ui.k)localObject1).Kgz.fVS();
     }
-    this.Ero.EnW = false;
-    this.Erq = new com.tencent.mm.plugin.location.ui.j(this.activity, new j.a()
+    this.KjU.KgD = false;
+    this.KjW = new com.tencent.mm.plugin.location.ui.j(this.activity, new j.a()
     {
-      public final void VH(int paramAnonymousInt) {}
+      public final void ZD(int paramAnonymousInt) {}
       
-      public final void eMR() {}
+      public final void fVk() {}
       
-      public final void eMS() {}
+      public final void fVl() {}
     });
     findViewById(a.e.start_share).setVisibility(8);
-    this.EoO.kCv.setOnClickListener(new j.6(this));
-    this.ErD = ((NewMyLocationButton)this.ErF.findViewById(a.e.new_locate_to_my_position));
-    localObject1 = this.Ero;
+    this.Khu.nfU.setOnClickListener(new j.6(this));
+    this.Kkj = ((NewMyLocationButton)this.Kkl.findViewById(a.e.new_locate_to_my_position));
+    localObject1 = this.KjU;
     Object localObject2 = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -172,87 +199,87 @@ public final class j
         return false;
       }
     };
-    if (((com.tencent.mm.plugin.location.ui.k)localObject1).Elz != null) {
-      ((com.tencent.mm.plugin.location.ui.k)localObject1).Elz.setMapViewOnTouchListener((View.OnTouchListener)localObject2);
+    if (((com.tencent.mm.plugin.location.ui.k)localObject1).Kei != null) {
+      ((com.tencent.mm.plugin.location.ui.k)localObject1).Kei.setMapViewOnTouchListener((View.OnTouchListener)localObject2);
     }
-    this.ErD.setOnClickListener(new View.OnClickListener()
+    this.Kkj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(56153);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        j.c(j.this).a(j.this.EoO.ElK);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        j.c(j.this).a(j.this.Khu.Ket);
         j.b(j.this).setSelected(true);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/location/ui/impl/TrackMapUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(56153);
       }
     });
     localObject1 = this.activity.getIntent().getStringExtra("kPoi_url");
-    if (Util.isNullOrNil((String)localObject1)) {
-      this.EoO.wrQ.setVisibility(8);
-    }
-    for (;;)
+    int i;
+    if (Util.isNullOrNil((String)localObject1))
     {
-      localObject1 = this.Esj;
-      int i = a.d.location_current_marker;
-      ((com.tencent.mm.plugin.location.ui.l)localObject1).EoF.setImageResource(i);
-      this.ErE = new com.tencent.mm.plugin.location.ui.e(this.EoO.ElK, this.activity);
-      if (this.oUV.eMa())
+      this.Khu.zNW.setVisibility(8);
+      localObject1 = this.KkP;
+      if (!com.tencent.mm.ce.b.iRp()) {
+        break label554;
+      }
+      i = a.d.location_current_marker_easy_mode;
+      label354:
+      ((com.tencent.mm.plugin.location.ui.l)localObject1).Khl.setImageResource(i);
+      this.Kkk = new e(this.Khu.Ket, this.activity);
+      if (this.sai.fUt())
       {
         if ((this.poiName != null) && (!this.poiName.equals(""))) {
-          this.ErE.poiName = this.poiName;
+          this.Kkk.poiName = this.poiName;
         }
-        this.ErE.setText(this.Esj.getPreText() + this.oUV.Ejq);
+        if (!TextUtils.isEmpty(this.sai.KbZ)) {
+          break label561;
+        }
       }
+    }
+    label554:
+    label561:
+    for (localObject1 = "";; localObject1 = this.sai.KbZ)
+    {
+      this.Kkk.setText(this.KkP.getPreText() + (String)localObject1);
       localObject1 = new j.4(this);
-      localObject2 = this.ErE;
-      ((com.tencent.mm.plugin.location.ui.e)localObject2).ElN.setOnClickListener((View.OnClickListener)localObject1);
-      ((com.tencent.mm.plugin.location.ui.e)localObject2).ElN.setVisibility(0);
-      this.ErJ = findViewById(a.e.download_info_loading);
+      localObject2 = this.Kkk;
+      ((e)localObject2).Kew.setOnClickListener((View.OnClickListener)localObject1);
+      ((e)localObject2).Kew.setVisibility(0);
+      this.Kkp = findViewById(a.e.download_info_loading);
       AppMethodBeat.o(56170);
       return;
-      this.EoO.wrQ.setVisibility(0);
-      this.EoO.wrQ.setOnClickListener(new j.9(this, (String)localObject1));
+      this.Khu.zNW.setVisibility(0);
+      this.Khu.zNW.setOnClickListener(new j.9(this, (String)localObject1));
+      break;
+      i = a.d.location_current_marker;
+      break label354;
     }
   }
   
-  public final void eNt()
+  public final void onBusinessPermissionDenied(String paramString)
   {
-    AppMethodBeat.i(56172);
-    super.eNt();
-    AppMethodBeat.o(56172);
+    AppMethodBeat.i(264982);
+    this.activity.finish();
+    AppMethodBeat.o(264982);
   }
   
-  public final void eNw()
+  public final void onBusinessPermissionGranted(String paramString)
   {
-    AppMethodBeat.i(56173);
-    super.eNw();
-    Log.i("MicroMsg.TrackMapUI", "onDown");
-    AppMethodBeat.o(56173);
-  }
-  
-  protected final void eNx()
-  {
-    AppMethodBeat.i(56174);
-    l locall = l.eNG();
-    ArrayList localArrayList = new ArrayList(8);
-    localArrayList.addAll(locall.EjE);
-    this.ErG = new com.tencent.mm.ui.widget.a.e(this.activity, 1, false);
-    this.ErG.ODT = new j.10(this, localArrayList);
-    this.ErG.ODU = new j.2(this);
-    this.ErG.eik();
-    AppMethodBeat.o(56174);
+    AppMethodBeat.i(264981);
+    this.activity.recreate();
+    AppMethodBeat.o(264981);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(56169);
     super.onCreate(paramBundle);
-    this.ErH = ((Integer)h.aHG().aHp().get(ar.a.VpX, Integer.valueOf(0))).intValue();
-    Log.i("MicroMsg.TrackMapUI", "count: %s", new Object[] { Integer.valueOf(this.ErH) });
-    this.oUV.Eju = this.activity.getIntent().getStringExtra("kPoiid");
+    this.Kkn = ((Integer)h.baE().ban().get(at.a.acRz, Integer.valueOf(0))).intValue();
+    Log.i("MicroMsg.TrackMapUI", "count: %s", new Object[] { Integer.valueOf(this.Kkn) });
+    this.sai.Kcd = this.activity.getIntent().getStringExtra("kPoiid");
     setActionbarColor(MMApplicationContext.getResources().getColor(a.b.normal_actionbar_color));
     AppMethodBeat.o(56169);
   }
@@ -261,13 +288,13 @@ public final class j
   {
     AppMethodBeat.i(56175);
     super.onDestroy();
-    if (this.Ero != null) {
-      this.Ero.destroy();
+    if (this.KjU != null) {
+      this.KjU.destroy();
     }
-    if (this.ErI != null) {
-      h.aGY().a(this.ErI);
+    if (this.Kko != null) {
+      h.aZW().a(this.Kko);
     }
-    h.aGY().b(1913, this);
+    h.aZW().b(1913, this);
     AppMethodBeat.o(56175);
   }
   
@@ -275,8 +302,8 @@ public final class j
   {
     AppMethodBeat.i(56177);
     super.onPause();
-    if (this.Ero != null) {
-      this.Ero.onPause();
+    if (this.KjU != null) {
+      this.KjU.onPause();
     }
     AppMethodBeat.o(56177);
   }
@@ -285,36 +312,36 @@ public final class j
   {
     AppMethodBeat.i(56176);
     super.onResume();
-    if (this.Ero != null) {
-      this.Ero.onResume();
+    if (this.KjU != null) {
+      this.KjU.onResume();
     }
-    hi localhi;
+    ht localht;
     if (this.type == 2)
     {
-      localhi = new hi();
-      localhi.fEb.fyE = this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L);
-      localhi.fEb.type = 4;
-      EventCenter.instance.publish(localhi);
-      if (localhi.fEc.biI != null)
+      localht = new ht();
+      localht.hIR.hDn = this.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L);
+      localht.hIR.type = 4;
+      localht.publish();
+      if (localht.hIS.dcC != null)
       {
-        if (this.EoT != null) {
-          break label133;
+        if (this.Khz != null) {
+          break label130;
         }
-        this.EoT = new ArrayList();
+        this.Khz = new ArrayList();
       }
     }
     for (;;)
     {
-      this.EoT.addAll(localhi.fEc.biI);
-      eMX();
+      this.Khz.addAll(localht.hIS.dcC);
+      fVq();
       AppMethodBeat.o(56176);
       return;
-      label133:
-      this.EoT.clear();
+      label130:
+      this.Khz.clear();
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(56178);
     Log.i("MicroMsg.TrackMapUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
@@ -323,22 +350,22 @@ public final class j
       AppMethodBeat.o(56178);
       return;
     }
-    if (1913 == paramq.getType())
+    if (1913 == paramp.getType())
     {
-      Object localObject = (com.tencent.mm.plugin.location.model.j)paramq;
-      paramString = l.eNG();
-      paramq = new ArrayList(8);
-      paramq.addAll(((com.tencent.mm.plugin.location.model.j)localObject).EjE);
+      Object localObject = (com.tencent.mm.plugin.location.model.j)paramp;
+      paramString = l.fVZ();
+      paramp = new ArrayList(8);
+      paramp.addAll(((com.tencent.mm.plugin.location.model.j)localObject).Kcn);
       localObject = new ArrayList(8);
-      ((List)localObject).addAll(paramq);
-      paramString.EjE = ((List)localObject);
+      ((List)localObject).addAll(paramp);
+      paramString.Kcn = ((List)localObject);
     }
     AppMethodBeat.o(56178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.j
  * JD-Core Version:    0.7.0.1
  */

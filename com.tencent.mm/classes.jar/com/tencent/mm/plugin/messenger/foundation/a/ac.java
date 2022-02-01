@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.cd.a;
+import com.tencent.mm.bx.a;
 
 public abstract interface ac<T extends a>
 {
@@ -10,7 +10,7 @@ public abstract interface ac<T extends a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.ac
  * JD-Core Version:    0.7.0.1
  */

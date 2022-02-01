@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ball.a;
 
 public abstract interface f$b
 {
-  public abstract void eG(boolean paramBoolean);
+  public abstract void onComplete(boolean paramBoolean);
 }
 
 

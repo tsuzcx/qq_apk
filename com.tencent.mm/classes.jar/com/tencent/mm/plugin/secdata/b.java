@@ -4,79 +4,88 @@ import android.content.ComponentName;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/secdata/ActivityNamesSecData;", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lcom/tencent/mm/plugin/secdata/ISecData;", "activityNameList", "", "", "clazz", "Ljava/lang/Class;", "type", "", "reuse", "", "(Ljava/util/List;Ljava/lang/Class;IZ)V", "getActivityNameList", "()Ljava/util/List;", "getClazz", "()Ljava/lang/Class;", "data", "getData", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "data$delegate", "Lkotlin/Lazy;", "check", "intent", "Landroid/content/Intent;", "getTransformData", "getType", "plugin-sec-data_release"})
-public class b<T extends com.tencent.mm.cd.a>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/secdata/ActivityNamesSecData;", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lcom/tencent/mm/plugin/secdata/ISecData;", "activityNameList", "", "", "clazz", "Ljava/lang/Class;", "type", "", "reuse", "", "(Ljava/util/List;Ljava/lang/Class;IZ)V", "getActivityNameList", "()Ljava/util/List;", "getClazz", "()Ljava/lang/Class;", "data", "kotlin.jvm.PlatformType", "getData", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;", "data$delegate", "Lkotlin/Lazy;", "check", "intent", "Landroid/content/Intent;", "getTransformData", "getType", "plugin-sec-data_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class b<T extends com.tencent.mm.bx.a>
   implements h<T>
 {
-  private final f JbC;
-  private final List<String> JbD;
-  private final boolean JbE;
-  final Class<T> aFS;
+  private final List<String> Plt;
+  private final boolean Plu;
+  private final j Plv;
+  final Class<T> clazz;
   private final int type;
   
   public b(List<String> paramList, Class<T> paramClass, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(197936);
-    this.JbD = paramList;
-    this.aFS = paramClass;
+    AppMethodBeat.i(261422);
+    this.Plt = paramList;
+    this.clazz = paramClass;
     this.type = paramInt;
-    this.JbE = paramBoolean;
-    this.JbC = g.ar((kotlin.g.a.a)new a(this));
-    AppMethodBeat.o(197936);
+    this.Plu = paramBoolean;
+    this.Plv = k.cm((kotlin.g.a.a)new a(this));
+    AppMethodBeat.o(261422);
   }
   
-  public final boolean aR(Intent paramIntent)
+  public final boolean bp(Intent paramIntent)
   {
-    AppMethodBeat.i(197929);
+    AppMethodBeat.i(261432);
     if (paramIntent != null)
     {
       paramIntent = paramIntent.getComponent();
-      if (paramIntent != null)
+      if (paramIntent == null) {
+        paramIntent = "";
+      }
+      for (;;)
       {
+        boolean bool = this.Plt.contains(paramIntent);
+        AppMethodBeat.o(261432);
+        return bool;
         paramIntent = paramIntent.getClassName();
-        if (paramIntent != null)
+        if (paramIntent == null)
+        {
+          paramIntent = "";
+        }
+        else
         {
           paramIntent = n.a((CharSequence)paramIntent, new String[] { "." });
-          if (paramIntent != null)
+          if (paramIntent == null)
           {
-            String str = (String)j.lr(paramIntent);
+            paramIntent = "";
+          }
+          else
+          {
+            String str = (String)p.oN(paramIntent);
             paramIntent = str;
-            if (str != null) {
-              break label65;
+            if (str == null) {
+              paramIntent = "";
             }
           }
         }
       }
-      paramIntent = "";
-      label65:
-      boolean bool = this.JbD.contains(paramIntent);
-      AppMethodBeat.o(197929);
-      return bool;
     }
-    AppMethodBeat.o(197929);
+    AppMethodBeat.o(261432);
     return false;
   }
   
-  public final T fFn()
+  public final T gUv()
   {
-    AppMethodBeat.i(197932);
-    com.tencent.mm.cd.a locala = (com.tencent.mm.cd.a)this.JbC.getValue();
-    p.j(locala, "data");
-    AppMethodBeat.o(197932);
+    AppMethodBeat.i(261442);
+    com.tencent.mm.bx.a locala = (com.tencent.mm.bx.a)this.Plv.getValue();
+    s.s(locala, "data");
+    AppMethodBeat.o(261442);
     return locala;
   }
   
-  public final boolean fFo()
+  public final boolean gUw()
   {
-    return this.JbE;
+    return this.Plu;
   }
   
   public final int getType()
@@ -84,12 +93,12 @@ public class b<T extends com.tencent.mm.cd.a>
     return this.type;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "T", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "invoke", "()Lcom/tencent/mm/protobuf/BaseProtoBuf;"})
+  @Metadata(d1={""}, d2={"<anonymous>", "T", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/protobuf/BaseProtoBuf;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.a<T>
   {
-    a(b paramb)
+    a(b<T> paramb)
     {
       super();
     }
@@ -97,7 +106,7 @@ public class b<T extends com.tencent.mm.cd.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.secdata.b
  * JD-Core Version:    0.7.0.1
  */

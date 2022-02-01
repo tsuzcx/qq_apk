@@ -1,37 +1,24 @@
 package com.tencent.mm.vfs;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.util.Pair;
+import java.util.List;
 import java.util.Map;
 
-public final class o
+public abstract interface o
 {
-  static final o YEk;
-  final FileSystem YEi;
-  final a YEj;
-  final String jsP;
+  public abstract FileSystem.b bEh(String paramString);
   
-  static
-  {
-    AppMethodBeat.i(236797);
-    YEk = new o(null, null, null);
-    AppMethodBeat.o(236797);
-  }
+  public abstract Pair<FileSystem.b, String> bEi(String paramString);
   
-  public o(FileSystem paramFileSystem, String paramString, a parama)
-  {
-    this.YEi = paramFileSystem;
-    this.jsP = paramString;
-    this.YEj = parama;
-  }
+  public abstract Map<String, Object> jKI();
   
-  public static abstract interface a
-  {
-    public abstract void a(String paramString, FileSystem paramFileSystem, int paramInt, Map<String, Object> paramMap);
-  }
+  public abstract List<o.a> jKJ();
+  
+  public abstract Map<String, FileSystem> jKz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vfs.o
  * JD-Core Version:    0.7.0.1
  */

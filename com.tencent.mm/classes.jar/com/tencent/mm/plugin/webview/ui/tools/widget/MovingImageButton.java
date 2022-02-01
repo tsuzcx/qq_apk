@@ -8,27 +8,27 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MovingImageButton
   extends ImageView
 {
-  private int QyA = 0;
-  private ViewGroup.MarginLayoutParams QyB;
-  private final int QyC = 100;
-  private int QyD;
-  private boolean QyE = false;
-  private boolean QyF = true;
-  private int Qyx;
-  private int Qyy;
-  private int Qyz = 0;
-  private int bvH;
+  private int Xri;
+  private int Xrj;
+  private int Xrk = 0;
+  private int Xrl = 0;
+  private ViewGroup.MarginLayoutParams Xrm;
+  private final int Xrn = 100;
+  private int Xro;
+  private boolean Xrp = false;
+  private boolean Xrq = true;
+  private int doK;
   private Context mContext;
-  private int pEj;
-  private int pEk;
-  private int qtC;
-  private int qtD;
+  private int pvg;
+  private int sJv;
+  private int tyh;
+  private int tyi;
   private int x;
   private int y;
   
@@ -48,29 +48,29 @@ public class MovingImageButton
   {
     AppMethodBeat.i(82287);
     super.onFinishInflate();
-    this.QyD = a.fromDPToPix(this.mContext, 100);
-    this.pEj = a.kr(this.mContext);
-    this.pEk = a.ks(this.mContext);
-    this.bvH = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    this.Xro = a.fromDPToPix(this.mContext, 100);
+    this.sJv = a.ms(this.mContext);
+    this.pvg = a.mt(this.mContext);
+    this.doK = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
     AppMethodBeat.o(82287);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(82288);
-    if (!this.QyF)
+    if (!this.Xrq)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(82288);
       return bool;
     }
-    if ((this.Qyz == 0) || (this.QyA == 0))
+    if ((this.Xrk == 0) || (this.Xrl == 0))
     {
       Rect localRect = new Rect();
       getWindowVisibleDisplayFrame(localRect);
-      this.Qyz = (localRect.right - localRect.left);
-      this.QyA = (localRect.bottom - localRect.top);
-      Log.d("MicroMsg.MovingImageButton", "right = %d, top = %d, left = %d, bottom = %d, screenX = %d, screenY = %d", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.top), Integer.valueOf(localRect.left), Integer.valueOf(localRect.bottom), Integer.valueOf(this.Qyz), Integer.valueOf(this.QyA) });
+      this.Xrk = (localRect.right - localRect.left);
+      this.Xrl = (localRect.bottom - localRect.top);
+      Log.d("MicroMsg.MovingImageButton", "right = %d, top = %d, left = %d, bottom = %d, screenX = %d, screenY = %d", new Object[] { Integer.valueOf(localRect.right), Integer.valueOf(localRect.top), Integer.valueOf(localRect.left), Integer.valueOf(localRect.bottom), Integer.valueOf(this.Xrk), Integer.valueOf(this.Xrl) });
     }
     this.x = ((int)paramMotionEvent.getRawX());
     this.y = ((int)paramMotionEvent.getRawY());
@@ -79,61 +79,61 @@ public class MovingImageButton
     }
     for (;;)
     {
-      this.qtC = this.x;
-      this.qtD = this.y;
+      this.tyh = this.x;
+      this.tyi = this.y;
       AppMethodBeat.o(82288);
       return true;
-      this.Qyx = this.x;
-      this.Qyy = this.y;
+      this.Xri = this.x;
+      this.Xrj = this.y;
       continue;
-      int i = this.x - this.qtC;
-      int j = this.y - this.qtD;
+      int i = this.x - this.tyh;
+      int j = this.y - this.tyi;
       if ((i != 0) || (j != 0))
       {
-        this.QyB = ((ViewGroup.MarginLayoutParams)getLayoutParams());
-        paramMotionEvent = this.QyB;
+        this.Xrm = ((ViewGroup.MarginLayoutParams)getLayoutParams());
+        paramMotionEvent = this.Xrm;
         int k = paramMotionEvent.rightMargin;
         paramMotionEvent.rightMargin = (-i + k);
-        paramMotionEvent = this.QyB;
+        paramMotionEvent = this.Xrm;
         paramMotionEvent.topMargin += j;
-        if (this.QyB.rightMargin < 0)
+        if (this.Xrm.rightMargin < 0)
         {
-          this.QyB.rightMargin = 0;
+          this.Xrm.rightMargin = 0;
           label346:
-          if (this.QyB.topMargin >= 0) {
+          if (this.Xrm.topMargin >= 0) {
             break label409;
           }
-          this.QyB.topMargin = 0;
+          this.Xrm.topMargin = 0;
         }
         for (;;)
         {
           requestLayout();
           break;
-          if (this.QyB.rightMargin <= this.Qyz - getWidth()) {
+          if (this.Xrm.rightMargin <= this.Xrk - getWidth()) {
             break label346;
           }
-          this.QyB.rightMargin = (this.Qyz - getWidth());
+          this.Xrm.rightMargin = (this.Xrk - getWidth());
           break label346;
           label409:
-          if (this.QyB.topMargin > this.QyA - getHeight()) {
-            this.QyB.topMargin = (this.QyA - getHeight());
+          if (this.Xrm.topMargin > this.Xrl - getHeight()) {
+            this.Xrm.topMargin = (this.Xrl - getHeight());
           }
         }
-        if (Math.abs(this.Qyx - this.x) + Math.abs(this.Qyy - this.y) > this.bvH)
+        if (Math.abs(this.Xri - this.x) + Math.abs(this.Xrj - this.y) > this.doK)
         {
-          if (this.y < this.QyD) {
-            this.QyB.topMargin = 0;
+          if (this.y < this.Xro) {
+            this.Xrm.topMargin = 0;
           }
           for (;;)
           {
             requestLayout();
             break;
-            if (this.y > this.QyA - this.QyD) {
-              this.QyB.topMargin = (this.QyA - getHeight());
-            } else if (this.x > this.Qyz / 2) {
-              this.QyB.rightMargin = 0;
+            if (this.y > this.Xrl - this.Xro) {
+              this.Xrm.topMargin = (this.Xrl - getHeight());
+            } else if (this.x > this.Xrk / 2) {
+              this.Xrm.rightMargin = 0;
             } else {
-              this.QyB.rightMargin = (this.Qyz - getWidth());
+              this.Xrm.rightMargin = (this.Xrk - getWidth());
             }
           }
         }
@@ -144,7 +144,7 @@ public class MovingImageButton
   
   public void setCanMove(boolean paramBoolean)
   {
-    this.QyF = paramBoolean;
+    this.Xrq = paramBoolean;
   }
 }
 

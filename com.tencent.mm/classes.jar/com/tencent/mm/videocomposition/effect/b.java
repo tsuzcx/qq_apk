@@ -3,69 +3,83 @@ package com.tencent.mm.videocomposition.effect;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.xeffect.LayoutInfo;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.a.v;
+import kotlin.Metadata;
+import kotlin.a.ab;
+import kotlin.ah;
 import kotlin.g.a.a;
-import kotlin.g.b.n;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.e;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController;", "Lcom/tencent/mm/videocomposition/effect/EffectRenderControllerBase;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "externInputTexture", "Lcom/tencent/mm/videocomposition/effect/EffectRenderController$ExternInputTextureInfo;", "externInputTextureSurface", "Landroid/graphics/SurfaceTexture;", "logFrameUdpate", "", "needCreateExteranInputTexture", "renderPts", "", "scaleType", "", "value", "Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;", "surfaceCallback", "getSurfaceCallback", "()Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;", "setSurfaceCallback", "(Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;)V", "collectInputTextures", "", "Lcom/tencent/mm/xeffect/InputTexture;", "pts", "createExternInputTexture", "", "destroyEGL", "initEGL", "onExternTextureInputUpdate", "surfaceTexture", "setInputBitmap", "bitmap", "Landroid/graphics/Bitmap;", "setInputContentInfo", "width", "height", "rotate", "Companion", "EffectRenderSurfaceCallback", "ExternInputTextureInfo", "ScaleType", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController;", "Lcom/tencent/mm/videocomposition/effect/EffectRenderControllerBase;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "externInputTexture", "Lcom/tencent/mm/videocomposition/effect/EffectRenderController$ExternInputTextureInfo;", "externInputTextureSurface", "Landroid/graphics/SurfaceTexture;", "logFrameUdpate", "", "needCreateExteranInputTexture", "renderPts", "", "scaleType", "", "value", "Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;", "surfaceCallback", "getSurfaceCallback", "()Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;", "setSurfaceCallback", "(Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;)V", "collectInputTextures", "", "Lcom/tencent/mm/xeffect/InputTexture;", "pts", "createExternInputTexture", "", "destroyEGL", "initEGL", "onExternTextureInputUpdate", "surfaceTexture", "render", "setInputBitmap", "bitmap", "Landroid/graphics/Bitmap;", "setInputContentInfo", "width", "height", "rotate", "setScaleType", "Companion", "EffectRenderSurfaceCallback", "ExternInputTextureInfo", "ScaleType", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class b
   extends d
 {
-  public static final a YIG;
-  private long MQt;
-  final String TAG;
-  c YIB;
-  private SurfaceTexture YIC;
-  volatile boolean YID;
-  private boolean YIE;
-  b YIF;
-  private int kYn;
+  public static final b.a agEn;
+  public final String TAG;
+  private long TCX;
+  private c agEi;
+  private SurfaceTexture agEj;
+  private volatile boolean agEk;
+  private boolean agEl;
+  b agEm;
+  public int nDl;
   
   static
   {
-    AppMethodBeat.i(248186);
-    YIG = new a((byte)0);
-    AppMethodBeat.o(248186);
+    AppMethodBeat.i(233684);
+    agEn = new b.a((byte)0);
+    AppMethodBeat.o(233684);
   }
   
   public b()
   {
-    AppMethodBeat.i(248183);
+    AppMethodBeat.i(233670);
     this.TAG = ("EffectRenderController@" + hashCode());
-    this.YIB = new c((byte)0);
-    this.kYn = 1;
-    AppMethodBeat.o(248183);
+    this.agEi = new c((byte)0);
+    this.nDl = 1;
+    AppMethodBeat.o(233670);
   }
   
-  public final void bg(int paramInt1, int paramInt2, int paramInt3)
+  protected final void AO(long paramLong)
   {
-    AppMethodBeat.i(248175);
-    com.tencent.mm.videocomposition.c.b.i(this.TAG, "setInputContentInfo, size:[" + paramInt1 + ',' + paramInt2 + "], rotate:" + paramInt3, new Object[0]);
-    this.YIB.width = paramInt1;
-    this.YIB.height = paramInt2;
-    this.YIB.fSM = paramInt3;
+    AppMethodBeat.i(233759);
+    super.AO(paramLong);
+    if ((this.width <= 0) || (this.height <= 0))
+    {
+      com.tencent.mm.videocomposition.d.b.s("render with size error " + this.width + ", " + this.height, new Object[0]);
+      AppMethodBeat.o(233759);
+      return;
+    }
+    com.tencent.mm.videocomposition.d.c.uiThread((a)new j(this));
+    AppMethodBeat.o(233759);
+  }
+  
+  public final void bH(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(233752);
+    com.tencent.mm.videocomposition.d.b.i(this.TAG, "setInputContentInfo, size:[" + paramInt1 + ',' + paramInt2 + "], rotate:" + paramInt3, new Object[0]);
+    this.agEi.width = paramInt1;
+    this.agEi.height = paramInt2;
+    this.agEi.hYK = paramInt3;
     try
     {
-      SurfaceTexture localSurfaceTexture = this.YIC;
+      SurfaceTexture localSurfaceTexture = this.agEj;
       if (localSurfaceTexture != null)
       {
         localSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-        AppMethodBeat.o(248175);
+        AppMethodBeat.o(233752);
         return;
       }
-      AppMethodBeat.o(248175);
+      AppMethodBeat.o(233752);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.videocomposition.c.b.printErrStackTrace(this.TAG, (Throwable)localException, "setDefaultBufferSize error:" + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(248175);
+      com.tencent.mm.videocomposition.d.b.printErrStackTrace(this.TAG, (Throwable)localException, "setDefaultBufferSize error:" + localException.getMessage(), new Object[0]);
+      AppMethodBeat.o(233752);
     }
   }
   
@@ -74,97 +88,122 @@ public final class b
     return this.TAG;
   }
   
-  protected final void igL()
+  protected final void jMa()
   {
-    AppMethodBeat.i(248177);
-    super.igL();
-    j((a)new i(this));
-    AppMethodBeat.o(248177);
+    AppMethodBeat.i(233757);
+    super.jMa();
+    K((a)new h(this));
+    AppMethodBeat.o(233757);
   }
   
-  public final List<com.tencent.mm.xeffect.c> igM()
+  public final List<com.tencent.mm.xeffect.c> jMb()
   {
-    AppMethodBeat.i(248180);
+    int j = 3;
+    boolean bool = true;
+    AppMethodBeat.i(233758);
     Object localObject;
-    if ((this.YIB.textureId <= 0) || (this.YIB.width <= 0) || (this.YIB.height <= 0))
+    if ((this.agEi.textureId <= 0) || (this.agEi.width <= 0) || (this.agEi.height <= 0))
     {
-      com.tencent.mm.videocomposition.c.b.r("error externInput id:" + this.YIB.textureId + " width:" + this.YIB.width + " height:" + this.YIB.height, new Object[0]);
-      localObject = (List)v.aaAd;
-      AppMethodBeat.o(248180);
+      com.tencent.mm.videocomposition.d.b.s("error externInput id:" + this.agEi.textureId + " width:" + this.agEi.width + " height:" + this.agEi.height, new Object[0]);
+      localObject = (List)ab.aivy;
+      AppMethodBeat.o(233758);
       return localObject;
     }
     int i;
-    switch (this.YIB.fSM)
+    switch (this.agEi.hYK)
     {
     default: 
       i = 0;
+      localObject = new com.tencent.mm.xeffect.c(this.agEi.textureId, this.agEi.width, this.agEi.height, this.agEi.agEo, i);
+      ((com.tencent.mm.xeffect.c)localObject).agXv.centerX = (this.width / 2);
+      ((com.tencent.mm.xeffect.c)localObject).agXv.centerY = (this.height / 2);
+      LayoutInfo localLayoutInfo = ((com.tencent.mm.xeffect.c)localObject).agXv;
+      i = j;
+      switch (this.nDl)
+      {
+      default: 
+        i = 1;
+      case 3: 
+        label274:
+        localLayoutInfo.agXz = i;
+        if (this.nDl == 1) {}
+        break;
+      }
+      break;
     }
     for (;;)
     {
-      localObject = new com.tencent.mm.xeffect.c(this.YIB.textureId, this.YIB.width, this.YIB.height, this.YIB.YIH, i);
-      ((com.tencent.mm.xeffect.c)localObject).YZk.centerX = (this.width / 2);
-      ((com.tencent.mm.xeffect.c)localObject).YZk.centerY = (this.height / 2);
-      ((com.tencent.mm.xeffect.c)localObject).YZk.YZo = 1;
-      ((com.tencent.mm.xeffect.c)localObject).YZh = false;
-      com.tencent.mm.videocomposition.c.c.uiThread((a)new d(this));
-      localObject = j.listOf(localObject);
-      AppMethodBeat.o(248180);
+      ((com.tencent.mm.xeffect.c)localObject).agXs = bool;
+      localObject = kotlin.a.p.listOf(localObject);
+      AppMethodBeat.o(233758);
       return localObject;
       i = 0;
-      continue;
+      break;
       i = 1;
-      continue;
+      break;
       i = 2;
-      continue;
+      break;
       i = 3;
+      break;
+      i = 4;
+      break label274;
+      bool = false;
     }
   }
   
-  public final void igN()
+  public final void jMc()
   {
-    AppMethodBeat.i(248182);
-    j((a)new g(this));
-    super.igN();
-    com.tencent.mm.videocomposition.c.c.uiThread((a)new h(this));
-    AppMethodBeat.o(248182);
+    AppMethodBeat.i(233760);
+    K((a)new f(this));
+    super.jMc();
+    com.tencent.mm.videocomposition.d.c.uiThread((a)new g(this));
+    AppMethodBeat.o(233760);
   }
   
   public final void setInputBitmap(final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(248176);
-    p.k(paramBitmap, "bitmap");
-    com.tencent.mm.videocomposition.c.b.i(this.TAG, "setInputBitmap: " + paramBitmap + ", size:[" + paramBitmap.getWidth() + ',' + paramBitmap.getHeight() + ']', new Object[0]);
-    if (this.YIB.textureId > 0)
+    AppMethodBeat.i(233755);
+    s.t(paramBitmap, "bitmap");
+    com.tencent.mm.videocomposition.d.b.i(this.TAG, "setInputBitmap: " + paramBitmap + ", size:[" + paramBitmap.getWidth() + ',' + paramBitmap.getHeight() + ']', new Object[0]);
+    if (this.agEi.textureId > 0)
     {
-      com.tencent.mm.videocomposition.c.b.i(this.TAG, "already set a inputTexture, will override the old one", new Object[0]);
-      SurfaceTexture localSurfaceTexture = this.YIC;
+      com.tencent.mm.videocomposition.d.b.i(this.TAG, "already set a inputTexture, will override the old one", new Object[0]);
+      SurfaceTexture localSurfaceTexture = this.agEj;
       if (localSurfaceTexture != null) {
         localSurfaceTexture.setOnFrameAvailableListener(null);
       }
     }
-    this.MQt = 0L;
-    j((a)new k(this, paramBitmap));
-    AppMethodBeat.o(248176);
+    this.TCX = 0L;
+    K((a)new k(this, paramBitmap));
+    AppMethodBeat.o(233755);
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController$Companion;", "", "()V", "SCALE_TYPE_CENTER_CROP", "", "SCALE_TYPE_CENTER_INSIDE", "SCALE_TYPE_DEFAULT", "video_composition_release"})
-  public static final class a {}
+  public final void setSurfaceCallback(b paramb)
+  {
+    AppMethodBeat.i(233743);
+    this.agEm = paramb;
+    this.agEk = true;
+    if ((this.agEu) && (this.agEi.textureId <= 0)) {
+      K((a)new l(this));
+    }
+    AppMethodBeat.o(233743);
+  }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;", "", "onSurfaceAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceDestroy", "onSurfaceSizeChanged", "onSurfaceUpdate", "video_composition_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController$EffectRenderSurfaceCallback;", "", "onSurfaceAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceDestroy", "onSurfaceSizeChanged", "onSurfaceUpdate", "video_composition_release"}, k=1, mv={1, 1, 15})
   public static abstract interface b
   {
     public abstract void b(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2);
     
-    public abstract void l(SurfaceTexture paramSurfaceTexture);
+    public abstract void k(SurfaceTexture paramSurfaceTexture);
     
-    public abstract void m(SurfaceTexture paramSurfaceTexture);
+    public abstract void l(SurfaceTexture paramSurfaceTexture);
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController$ExternInputTextureInfo;", "", "textureId", "", "isOES", "", "width", "height", "rotate", "(IZIII)V", "getHeight", "()I", "setHeight", "(I)V", "()Z", "setOES", "(Z)V", "getRotate", "setRotate", "getTextureId", "setTextureId", "getWidth", "setWidth", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "video_composition_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/effect/EffectRenderController$ExternInputTextureInfo;", "", "textureId", "", "isOES", "", "width", "height", "rotate", "(IZIII)V", "getHeight", "()I", "setHeight", "(I)V", "()Z", "setOES", "(Z)V", "getRotate", "setRotate", "getTextureId", "setTextureId", "getWidth", "setWidth", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "video_composition_release"}, k=1, mv={1, 1, 15})
   static final class c
   {
-    boolean YIH = false;
-    int fSM = 0;
+    boolean agEo = false;
+    int hYK = 0;
     int height = 0;
     int textureId = 0;
     int width = 0;
@@ -188,7 +227,7 @@ public final class b
         if (i == 0) {
           break label125;
         }
-        if (this.YIH != paramObject.YIH) {
+        if (this.agEo != paramObject.agEo) {
           break label132;
         }
         i = 1;
@@ -215,7 +254,7 @@ public final class b
         if (i == 0) {
           break label125;
         }
-        if (this.fSM != paramObject.fSM) {
+        if (this.hYK != paramObject.hYK) {
           break label147;
         }
       }
@@ -250,28 +289,28 @@ public final class b
     
     public final String toString()
     {
-      AppMethodBeat.i(248118);
-      String str = "ExternInputTextureInfo(textureId=" + this.textureId + ", isOES=" + this.YIH + ", width=" + this.width + ", height=" + this.height + ", rotate=" + this.fSM + ")";
-      AppMethodBeat.o(248118);
+      AppMethodBeat.i(233619);
+      String str = "ExternInputTextureInfo(textureId=" + this.textureId + ", isOES=" + this.agEo + ", width=" + this.width + ", height=" + this.height + ", rotate=" + this.hYK + ")";
+      AppMethodBeat.o(233619);
       return str;
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends q
-    implements a<x>
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
+  static final class e
+    extends u
+    implements a<ah>
   {
-    d(b paramb)
+    e(b paramb)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class f
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     f(b paramb)
     {
@@ -279,10 +318,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class g
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     g(b paramb)
     {
@@ -290,10 +329,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class h
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     h(b paramb)
     {
@@ -301,10 +340,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class i
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     i(b paramb)
     {
@@ -312,10 +351,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class j
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     j(b paramb)
     {
@@ -323,10 +362,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class k
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     k(b paramb, Bitmap paramBitmap)
     {
@@ -334,10 +373,10 @@ public final class b
     }
   }
   
-  @l(iBK={1, 1, 15}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "invoke"}, k=3, mv={1, 1, 15})
   static final class l
-    extends q
-    implements a<x>
+    extends u
+    implements a<ah>
   {
     l(b paramb)
     {
@@ -347,7 +386,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.videocomposition.effect.b
  * JD-Core Version:    0.7.0.1
  */

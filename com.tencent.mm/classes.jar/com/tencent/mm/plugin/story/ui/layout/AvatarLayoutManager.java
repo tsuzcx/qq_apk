@@ -6,65 +6,67 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView.n;
 import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.cd.a;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "alphaStartOffset", "canScrollVertically", "", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollToPositionWithOffset", "position", "offset", "updateChild", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/layout/AvatarLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "(Landroid/content/Context;I)V", "alphaStartOffset", "canScrollVertically", "", "onLayoutChildren", "", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollToPositionWithOffset", "position", "offset", "updateChild", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class AvatarLayoutManager
   extends LinearLayoutManager
 {
-  private final int Gfo;
+  private final int MaH;
   
   public AvatarLayoutManager(Context paramContext)
   {
     super(1, false);
     AppMethodBeat.i(119918);
-    this.Gfo = a.fromDPToPix(paramContext, 0);
+    this.MaH = a.fromDPToPix(paramContext, 0);
     AppMethodBeat.o(119918);
   }
   
-  private final void cWY()
+  private final void dDo()
   {
     AppMethodBeat.i(119917);
-    int j = getChildCount();
-    int i = 0;
-    if (i < j)
+    int k = getChildCount();
+    if (k > 0) {}
+    int j;
+    label156:
+    label162:
+    for (int i = 0;; i = j)
     {
+      j = i + 1;
       View localView = getChildAt(i);
-      if (localView == null) {
-        p.iCn();
-      }
-      p.j(localView, "getChildAt(i)!!");
-      int k = (localView.getTop() + localView.getBottom()) / 2;
+      s.checkNotNull(localView);
+      s.s(localView, "getChildAt(i)!!");
+      i = (localView.getTop() + localView.getBottom()) / 2;
       int m = getHeight() / 2;
       int n = localView.getMeasuredHeight();
-      if (n - Math.abs(k - m) > this.Gfo)
+      if (n - Math.abs(i - m) > this.MaH)
       {
-        localView.setAlpha(Math.min(1.0F - Math.abs(k - m) / (n - this.Gfo), 1.0F));
-        label113:
+        localView.setAlpha(Math.min(1.0F - Math.abs(i - m) / (n - this.MaH), 1.0F));
         if (1.0F - localView.getAlpha() >= 0.1F) {
-          break label152;
+          break label156;
         }
       }
-      label152:
       for (boolean bool = true;; bool = false)
       {
         localView.setSelected(bool);
-        i += 1;
-        break;
+        if (j < k) {
+          break label162;
+        }
+        AppMethodBeat.o(119917);
+        return;
         localView.setAlpha(0.0F);
-        break label113;
+        break;
       }
     }
-    AppMethodBeat.o(119917);
   }
   
-  public final void au(int paramInt1, int paramInt2)
+  public final void bo(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(119916);
-    super.au(paramInt1, paramInt2);
-    cWY();
+    super.bo(paramInt1, paramInt2);
+    dDo();
     AppMethodBeat.o(119916);
   }
   
@@ -75,10 +77,10 @@ public final class AvatarLayoutManager
   
   public final void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(223478);
+    AppMethodBeat.i(367220);
     super.onLayoutChildren(paramn, params);
-    cWY();
-    AppMethodBeat.o(223478);
+    dDo();
+    AppMethodBeat.o(367220);
   }
 }
 

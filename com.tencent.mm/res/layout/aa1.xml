@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.view.TouchableLayout android:id="@id/d92" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/wi" android:paddingTop="@dimen/bv" android:paddingBottom="@dimen/bv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/a6w" android:paddingEnd="@dimen/df">
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/d94" android:background="@drawable/wj" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" app:cornerRadius="2.0dip">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/d8z" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_centerVertical="true" />
+            <ImageView android:layout_gravity="center" android:id="@id/d93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/yf" android:gravity="start|center" android:id="@id/d95" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/el6" android:includeFontPadding="false" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+</com.tencent.mm.view.TouchableLayout>

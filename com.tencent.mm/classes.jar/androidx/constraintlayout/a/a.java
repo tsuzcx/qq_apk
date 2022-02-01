@@ -5,101 +5,101 @@ import java.util.Arrays;
 
 public final class a
 {
-  final c Aa;
-  private int Ab;
-  private h Ac;
-  int[] Ad;
-  int[] Ae;
-  float[] Af;
-  int Ag;
-  private int Ah;
-  private boolean Ai;
-  int zY;
-  final b zZ;
+  int bgg;
+  final b bgh;
+  final c bgi;
+  private int bgj;
+  private h bgk;
+  int[] bgl;
+  int[] bgm;
+  float[] bgn;
+  int bgo;
+  private int bgp;
+  private boolean bgq;
   
   a(b paramb, c paramc)
   {
-    AppMethodBeat.i(229871);
-    this.zY = 0;
-    this.Ab = 8;
-    this.Ac = null;
-    this.Ad = new int[this.Ab];
-    this.Ae = new int[this.Ab];
-    this.Af = new float[this.Ab];
-    this.Ag = -1;
-    this.Ah = -1;
-    this.Ai = false;
-    this.zZ = paramb;
-    this.Aa = paramc;
-    AppMethodBeat.o(229871);
+    AppMethodBeat.i(193959);
+    this.bgg = 0;
+    this.bgj = 8;
+    this.bgk = null;
+    this.bgl = new int[this.bgj];
+    this.bgm = new int[this.bgj];
+    this.bgn = new float[this.bgj];
+    this.bgo = -1;
+    this.bgp = -1;
+    this.bgq = false;
+    this.bgh = paramb;
+    this.bgi = paramc;
+    AppMethodBeat.o(193959);
   }
   
   static boolean a(h paramh)
   {
-    return paramh.AT <= 1;
+    return paramh.bhb <= 1;
   }
   
   public final float a(h paramh, boolean paramBoolean)
   {
-    AppMethodBeat.i(229888);
-    if (this.Ac == paramh) {
-      this.Ac = null;
+    AppMethodBeat.i(194042);
+    if (this.bgk == paramh) {
+      this.bgk = null;
     }
-    if (this.Ag == -1)
+    if (this.bgo == -1)
     {
-      AppMethodBeat.o(229888);
+      AppMethodBeat.o(194042);
       return 0.0F;
     }
-    int i = this.Ag;
+    int i = this.bgo;
     int j = 0;
     int k = -1;
-    while ((i != -1) && (j < this.zY))
+    while ((i != -1) && (j < this.bgg))
     {
-      if (this.Ad[i] == paramh.id)
+      if (this.bgl[i] == paramh.id)
       {
-        if (i == this.Ag) {
-          this.Ag = this.Ae[i];
+        if (i == this.bgo) {
+          this.bgo = this.bgm[i];
         }
         for (;;)
         {
           if (paramBoolean) {
-            paramh.e(this.zZ);
+            paramh.e(this.bgh);
           }
-          paramh.AT -= 1;
-          this.zY -= 1;
-          this.Ad[i] = -1;
-          if (this.Ai) {
-            this.Ah = i;
+          paramh.bhb -= 1;
+          this.bgg -= 1;
+          this.bgl[i] = -1;
+          if (this.bgq) {
+            this.bgp = i;
           }
-          float f = this.Af[i];
-          AppMethodBeat.o(229888);
+          float f = this.bgn[i];
+          AppMethodBeat.o(194042);
           return f;
-          int[] arrayOfInt = this.Ae;
+          int[] arrayOfInt = this.bgm;
           arrayOfInt[k] = arrayOfInt[i];
         }
       }
-      int m = this.Ae[i];
+      int m = this.bgm[i];
       j += 1;
       k = i;
       i = m;
     }
-    AppMethodBeat.o(229888);
+    AppMethodBeat.o(194042);
     return 0.0F;
   }
   
   final h a(boolean[] paramArrayOfBoolean, h paramh)
   {
-    int j = this.Ag;
+    int j = this.bgo;
     Object localObject1 = null;
     float f1 = 0.0F;
     int i = 0;
-    while ((j != -1) && (i < this.zY))
+    while ((j != -1) && (i < this.bgg))
     {
       float f2 = f1;
       Object localObject2 = localObject1;
-      if (this.Af[j] < 0.0F)
+      if (this.bgn[j] < 0.0F)
       {
-        h localh = this.Aa.Aq[this.Ad[j]];
+        h localh = this.bgi.bgy[this.bgl[j]];
         if (paramArrayOfBoolean != null)
         {
           f2 = f1;
@@ -111,15 +111,15 @@ public final class a
           f2 = f1;
           localObject2 = localObject1;
           if (localh != paramh) {
-            if (localh.AQ != h.a.AW)
+            if (localh.bgY != h.a.bhe)
             {
               f2 = f1;
               localObject2 = localObject1;
-              if (localh.AQ != h.a.AX) {}
+              if (localh.bgY != h.a.bhf) {}
             }
             else
             {
-              float f3 = this.Af[j];
+              float f3 = this.bgn[j];
               f2 = f1;
               localObject2 = localObject1;
               if (f3 < f1)
@@ -131,7 +131,7 @@ public final class a
           }
         }
       }
-      j = this.Ae[j];
+      j = this.bgm[j];
       i += 1;
       f1 = f2;
       localObject1 = localObject2;
@@ -141,144 +141,144 @@ public final class a
   
   final void a(b paramb1, b paramb2)
   {
-    AppMethodBeat.i(229895);
-    int j = this.Ag;
+    AppMethodBeat.i(194070);
+    int j = this.bgo;
     int i = 0;
-    while ((j != -1) && (i < this.zY)) {
-      if (this.Ad[j] == paramb2.Aj.id)
+    while ((j != -1) && (i < this.bgg)) {
+      if (this.bgl[j] == paramb2.bgr.id)
       {
-        float f = this.Af[j];
-        a(paramb2.Aj, false);
-        a locala = (a)paramb2.Am;
-        j = locala.Ag;
+        float f = this.bgn[j];
+        a(paramb2.bgr, false);
+        a locala = (a)paramb2.bgu;
+        j = locala.bgo;
         i = 0;
-        while ((j != -1) && (i < locala.zY))
+        while ((j != -1) && (i < locala.bgg))
         {
-          a(this.Aa.Aq[locala.Ad[j]], locala.Af[j] * f, false);
-          j = locala.Ae[j];
+          a(this.bgi.bgy[locala.bgl[j]], locala.bgn[j] * f, false);
+          j = locala.bgm[j];
           i += 1;
         }
-        paramb1.Ak += paramb2.Ak * f;
-        j = this.Ag;
+        paramb1.bgs += paramb2.bgs * f;
+        j = this.bgo;
         i = 0;
       }
       else
       {
-        j = this.Ae[j];
+        j = this.bgm[j];
         i += 1;
       }
     }
-    AppMethodBeat.o(229895);
+    AppMethodBeat.o(194070);
   }
   
   final void a(b paramb, b[] paramArrayOfb)
   {
-    AppMethodBeat.i(229898);
-    int j = this.Ag;
+    AppMethodBeat.i(194084);
+    int j = this.bgo;
     int i = 0;
-    while ((j != -1) && (i < this.zY))
+    while ((j != -1) && (i < this.bgg))
     {
-      Object localObject = this.Aa.Aq[this.Ad[j]];
-      if (((h)localObject).AM != -1)
+      Object localObject = this.bgi.bgy[this.bgl[j]];
+      if (((h)localObject).bgU != -1)
       {
-        float f = this.Af[j];
+        float f = this.bgn[j];
         a((h)localObject, true);
-        localObject = paramArrayOfb[localObject.AM];
-        if (!((b)localObject).An)
+        localObject = paramArrayOfb[localObject.bgU];
+        if (!((b)localObject).bgv)
         {
-          a locala = (a)((b)localObject).Am;
-          j = locala.Ag;
+          a locala = (a)((b)localObject).bgu;
+          j = locala.bgo;
           i = 0;
-          while ((j != -1) && (i < locala.zY))
+          while ((j != -1) && (i < locala.bgg))
           {
-            a(this.Aa.Aq[locala.Ad[j]], locala.Af[j] * f, true);
-            j = locala.Ae[j];
+            a(this.bgi.bgy[locala.bgl[j]], locala.bgn[j] * f, true);
+            j = locala.bgm[j];
             i += 1;
           }
         }
-        paramb.Ak += ((b)localObject).Ak * f;
-        ((b)localObject).Aj.e(paramb);
-        j = this.Ag;
+        paramb.bgs += ((b)localObject).bgs * f;
+        ((b)localObject).bgr.e(paramb);
+        j = this.bgo;
         i = 0;
       }
       else
       {
-        j = this.Ae[j];
+        j = this.bgm[j];
         i += 1;
       }
     }
-    AppMethodBeat.o(229898);
+    AppMethodBeat.o(194084);
   }
   
   public final void a(h paramh, float paramFloat)
   {
-    AppMethodBeat.i(229880);
+    AppMethodBeat.i(194000);
     if (paramFloat == 0.0F)
     {
       a(paramh, true);
-      AppMethodBeat.o(229880);
+      AppMethodBeat.o(194000);
       return;
     }
-    if (this.Ag == -1)
+    if (this.bgo == -1)
     {
-      this.Ag = 0;
-      this.Af[this.Ag] = paramFloat;
-      this.Ad[this.Ag] = paramh.id;
-      this.Ae[this.Ag] = -1;
-      paramh.AT += 1;
-      paramh.d(this.zZ);
-      this.zY += 1;
-      if (!this.Ai)
+      this.bgo = 0;
+      this.bgn[this.bgo] = paramFloat;
+      this.bgl[this.bgo] = paramh.id;
+      this.bgm[this.bgo] = -1;
+      paramh.bhb += 1;
+      paramh.d(this.bgh);
+      this.bgg += 1;
+      if (!this.bgq)
       {
-        this.Ah += 1;
-        if (this.Ah >= this.Ad.length)
+        this.bgp += 1;
+        if (this.bgp >= this.bgl.length)
         {
-          this.Ai = true;
-          this.Ah = (this.Ad.length - 1);
+          this.bgq = true;
+          this.bgp = (this.bgl.length - 1);
         }
       }
-      AppMethodBeat.o(229880);
+      AppMethodBeat.o(194000);
       return;
     }
-    int i = this.Ag;
+    int i = this.bgo;
     int j = 0;
     int m = -1;
-    while ((i != -1) && (j < this.zY))
+    while ((i != -1) && (j < this.bgg))
     {
-      if (this.Ad[i] == paramh.id)
+      if (this.bgl[i] == paramh.id)
       {
-        this.Af[i] = paramFloat;
-        AppMethodBeat.o(229880);
+        this.bgn[i] = paramFloat;
+        AppMethodBeat.o(194000);
         return;
       }
-      if (this.Ad[i] < paramh.id) {
+      if (this.bgl[i] < paramh.id) {
         m = i;
       }
-      i = this.Ae[i];
+      i = this.bgm[i];
       j += 1;
     }
-    i = this.Ah + 1;
+    i = this.bgp + 1;
     int k;
-    if (this.Ai)
+    if (this.bgq)
     {
-      if (this.Ad[this.Ah] == -1) {
-        i = this.Ah;
+      if (this.bgl[this.bgp] == -1) {
+        i = this.bgp;
       }
     }
     else
     {
       j = i;
-      if (i >= this.Ad.length)
+      if (i >= this.bgl.length)
       {
         j = i;
-        if (this.zY < this.Ad.length)
+        if (this.bgg < this.bgl.length)
         {
           k = 0;
           label294:
           j = i;
-          if (k < this.Ad.length)
+          if (k < this.bgl.length)
           {
-            if (this.Ad[k] != -1) {
+            if (this.bgl[k] != -1) {
               break label559;
             }
             j = k;
@@ -286,145 +286,145 @@ public final class a
         }
       }
       i = j;
-      if (j >= this.Ad.length)
+      if (j >= this.bgl.length)
       {
-        i = this.Ad.length;
-        this.Ab *= 2;
-        this.Ai = false;
-        this.Ah = (i - 1);
-        this.Af = Arrays.copyOf(this.Af, this.Ab);
-        this.Ad = Arrays.copyOf(this.Ad, this.Ab);
-        this.Ae = Arrays.copyOf(this.Ae, this.Ab);
+        i = this.bgl.length;
+        this.bgj *= 2;
+        this.bgq = false;
+        this.bgp = (i - 1);
+        this.bgn = Arrays.copyOf(this.bgn, this.bgj);
+        this.bgl = Arrays.copyOf(this.bgl, this.bgj);
+        this.bgm = Arrays.copyOf(this.bgm, this.bgj);
       }
-      this.Ad[i] = paramh.id;
-      this.Af[i] = paramFloat;
+      this.bgl[i] = paramh.id;
+      this.bgn[i] = paramFloat;
       if (m == -1) {
         break label568;
       }
-      int[] arrayOfInt = this.Ae;
+      int[] arrayOfInt = this.bgm;
       arrayOfInt[i] = arrayOfInt[m];
-      this.Ae[m] = i;
+      this.bgm[m] = i;
     }
     for (;;)
     {
-      paramh.AT += 1;
-      paramh.d(this.zZ);
-      this.zY += 1;
-      if (!this.Ai) {
-        this.Ah += 1;
+      paramh.bhb += 1;
+      paramh.d(this.bgh);
+      this.bgg += 1;
+      if (!this.bgq) {
+        this.bgp += 1;
       }
-      if (this.zY >= this.Ad.length) {
-        this.Ai = true;
+      if (this.bgg >= this.bgl.length) {
+        this.bgq = true;
       }
-      if (this.Ah >= this.Ad.length)
+      if (this.bgp >= this.bgl.length)
       {
-        this.Ai = true;
-        this.Ah = (this.Ad.length - 1);
+        this.bgq = true;
+        this.bgp = (this.bgl.length - 1);
       }
-      AppMethodBeat.o(229880);
+      AppMethodBeat.o(194000);
       return;
-      i = this.Ad.length;
+      i = this.bgl.length;
       break;
       label559:
       k += 1;
       break label294;
       label568:
-      this.Ae[i] = this.Ag;
-      this.Ag = i;
+      this.bgm[i] = this.bgo;
+      this.bgo = i;
     }
   }
   
   final void a(h paramh, float paramFloat, boolean paramBoolean)
   {
-    AppMethodBeat.i(229886);
+    AppMethodBeat.i(194026);
     if (paramFloat == 0.0F)
     {
-      AppMethodBeat.o(229886);
+      AppMethodBeat.o(194026);
       return;
     }
-    if (this.Ag == -1)
+    if (this.bgo == -1)
     {
-      this.Ag = 0;
-      this.Af[this.Ag] = paramFloat;
-      this.Ad[this.Ag] = paramh.id;
-      this.Ae[this.Ag] = -1;
-      paramh.AT += 1;
-      paramh.d(this.zZ);
-      this.zY += 1;
-      if (!this.Ai)
+      this.bgo = 0;
+      this.bgn[this.bgo] = paramFloat;
+      this.bgl[this.bgo] = paramh.id;
+      this.bgm[this.bgo] = -1;
+      paramh.bhb += 1;
+      paramh.d(this.bgh);
+      this.bgg += 1;
+      if (!this.bgq)
       {
-        this.Ah += 1;
-        if (this.Ah >= this.Ad.length)
+        this.bgp += 1;
+        if (this.bgp >= this.bgl.length)
         {
-          this.Ai = true;
-          this.Ah = (this.Ad.length - 1);
+          this.bgq = true;
+          this.bgp = (this.bgl.length - 1);
         }
       }
-      AppMethodBeat.o(229886);
+      AppMethodBeat.o(194026);
       return;
     }
-    int i = this.Ag;
+    int i = this.bgo;
     int j = 0;
     int m = -1;
     Object localObject;
-    while ((i != -1) && (j < this.zY))
+    while ((i != -1) && (j < this.bgg))
     {
-      if (this.Ad[i] == paramh.id)
+      if (this.bgl[i] == paramh.id)
       {
-        localObject = this.Af;
+        localObject = this.bgn;
         localObject[i] += paramFloat;
-        if (this.Af[i] == 0.0F)
+        if (this.bgn[i] == 0.0F)
         {
-          if (i != this.Ag) {
+          if (i != this.bgo) {
             break label284;
           }
-          this.Ag = this.Ae[i];
+          this.bgo = this.bgm[i];
         }
         for (;;)
         {
           if (paramBoolean) {
-            paramh.e(this.zZ);
+            paramh.e(this.bgh);
           }
-          if (this.Ai) {
-            this.Ah = i;
+          if (this.bgq) {
+            this.bgp = i;
           }
-          paramh.AT -= 1;
-          this.zY -= 1;
-          AppMethodBeat.o(229886);
+          paramh.bhb -= 1;
+          this.bgg -= 1;
+          AppMethodBeat.o(194026);
           return;
           label284:
-          localObject = this.Ae;
+          localObject = this.bgm;
           localObject[m] = localObject[i];
         }
       }
-      if (this.Ad[i] < paramh.id) {
+      if (this.bgl[i] < paramh.id) {
         m = i;
       }
-      i = this.Ae[i];
+      i = this.bgm[i];
       j += 1;
     }
-    i = this.Ah + 1;
+    i = this.bgp + 1;
     int k;
-    if (this.Ai)
+    if (this.bgq)
     {
-      if (this.Ad[this.Ah] == -1) {
-        i = this.Ah;
+      if (this.bgl[this.bgp] == -1) {
+        i = this.bgp;
       }
     }
     else
     {
       j = i;
-      if (i >= this.Ad.length)
+      if (i >= this.bgl.length)
       {
         j = i;
-        if (this.zY < this.Ad.length)
+        if (this.bgg < this.bgl.length)
         {
           k = 0;
           label406:
           j = i;
-          if (k < this.Ad.length)
+          if (k < this.bgl.length)
           {
-            if (this.Ad[k] != -1) {
+            if (this.bgl[k] != -1) {
               break label663;
             }
             j = k;
@@ -432,91 +432,61 @@ public final class a
         }
       }
       i = j;
-      if (j >= this.Ad.length)
+      if (j >= this.bgl.length)
       {
-        i = this.Ad.length;
-        this.Ab *= 2;
-        this.Ai = false;
-        this.Ah = (i - 1);
-        this.Af = Arrays.copyOf(this.Af, this.Ab);
-        this.Ad = Arrays.copyOf(this.Ad, this.Ab);
-        this.Ae = Arrays.copyOf(this.Ae, this.Ab);
+        i = this.bgl.length;
+        this.bgj *= 2;
+        this.bgq = false;
+        this.bgp = (i - 1);
+        this.bgn = Arrays.copyOf(this.bgn, this.bgj);
+        this.bgl = Arrays.copyOf(this.bgl, this.bgj);
+        this.bgm = Arrays.copyOf(this.bgm, this.bgj);
       }
-      this.Ad[i] = paramh.id;
-      this.Af[i] = paramFloat;
+      this.bgl[i] = paramh.id;
+      this.bgn[i] = paramFloat;
       if (m == -1) {
         break label672;
       }
-      localObject = this.Ae;
+      localObject = this.bgm;
       localObject[i] = localObject[m];
-      this.Ae[m] = i;
+      this.bgm[m] = i;
     }
     for (;;)
     {
-      paramh.AT += 1;
-      paramh.d(this.zZ);
-      this.zY += 1;
-      if (!this.Ai) {
-        this.Ah += 1;
+      paramh.bhb += 1;
+      paramh.d(this.bgh);
+      this.bgg += 1;
+      if (!this.bgq) {
+        this.bgp += 1;
       }
-      if (this.Ah >= this.Ad.length)
+      if (this.bgp >= this.bgl.length)
       {
-        this.Ai = true;
-        this.Ah = (this.Ad.length - 1);
+        this.bgq = true;
+        this.bgp = (this.bgl.length - 1);
       }
-      AppMethodBeat.o(229886);
+      AppMethodBeat.o(194026);
       return;
-      i = this.Ad.length;
+      i = this.bgl.length;
       break;
       label663:
       k += 1;
       break label406;
       label672:
-      this.Ae[i] = this.Ag;
-      this.Ag = i;
+      this.bgm[i] = this.bgo;
+      this.bgo = i;
     }
-  }
-  
-  final h aR(int paramInt)
-  {
-    int j = this.Ag;
-    int i = 0;
-    while ((j != -1) && (i < this.zY))
-    {
-      if (i == paramInt) {
-        return this.Aa.Aq[this.Ad[j]];
-      }
-      j = this.Ae[j];
-      i += 1;
-    }
-    return null;
-  }
-  
-  final float aS(int paramInt)
-  {
-    int j = this.Ag;
-    int i = 0;
-    while ((j != -1) && (i < this.zY))
-    {
-      if (i == paramInt) {
-        return this.Af[j];
-      }
-      j = this.Ae[j];
-      i += 1;
-    }
-    return 0.0F;
   }
   
   public final float b(h paramh)
   {
-    int j = this.Ag;
+    int j = this.bgo;
     int i = 0;
-    while ((j != -1) && (i < this.zY))
+    while ((j != -1) && (i < this.bgg))
     {
-      if (this.Ad[j] == paramh.id) {
-        return this.Af[j];
+      if (this.bgl[j] == paramh.id) {
+        return this.bgn[j];
       }
-      j = this.Ae[j];
+      j = this.bgm[j];
       i += 1;
     }
     return 0.0F;
@@ -524,46 +494,76 @@ public final class a
   
   public final void clear()
   {
-    AppMethodBeat.i(229891);
-    int j = this.Ag;
+    AppMethodBeat.i(194052);
+    int j = this.bgo;
     int i = 0;
-    while ((j != -1) && (i < this.zY))
+    while ((j != -1) && (i < this.bgg))
     {
-      h localh = this.Aa.Aq[this.Ad[j]];
+      h localh = this.bgi.bgy[this.bgl[j]];
       if (localh != null) {
-        localh.e(this.zZ);
+        localh.e(this.bgh);
       }
-      j = this.Ae[j];
+      j = this.bgm[j];
       i += 1;
     }
-    this.Ag = -1;
-    this.Ah = -1;
-    this.Ai = false;
-    this.zY = 0;
-    AppMethodBeat.o(229891);
+    this.bgo = -1;
+    this.bgp = -1;
+    this.bgq = false;
+    this.bgg = 0;
+    AppMethodBeat.o(194052);
+  }
+  
+  final h dH(int paramInt)
+  {
+    int j = this.bgo;
+    int i = 0;
+    while ((j != -1) && (i < this.bgg))
+    {
+      if (i == paramInt) {
+        return this.bgi.bgy[this.bgl[j]];
+      }
+      j = this.bgm[j];
+      i += 1;
+    }
+    return null;
+  }
+  
+  final float dI(int paramInt)
+  {
+    int j = this.bgo;
+    int i = 0;
+    while ((j != -1) && (i < this.bgg))
+    {
+      if (i == paramInt) {
+        return this.bgn[j];
+      }
+      j = this.bgm[j];
+      i += 1;
+    }
+    return 0.0F;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(229906);
+    AppMethodBeat.i(194141);
     String str = "";
-    int j = this.Ag;
+    int j = this.bgo;
     int i = 0;
-    while ((j != -1) && (i < this.zY))
+    while ((j != -1) && (i < this.bgg))
     {
       str = str + " -> ";
-      str = str + this.Af[j] + " : ";
-      str = str + this.Aa.Aq[this.Ad[j]];
-      j = this.Ae[j];
+      str = str + this.bgn[j] + " : ";
+      str = str + this.bgi.bgy[this.bgl[j]];
+      j = this.bgm[j];
       i += 1;
     }
-    AppMethodBeat.o(229906);
+    AppMethodBeat.o(194141);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a
  * JD-Core Version:    0.7.0.1
  */

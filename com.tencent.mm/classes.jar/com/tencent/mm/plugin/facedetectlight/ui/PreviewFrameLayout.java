@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PreviewFrameLayout
   extends RelativeLayout
 {
-  private double wFy = 1.333333333333333D;
+  private double AbH = 1.333333333333333D;
   
   public PreviewFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -17,7 +17,7 @@ public class PreviewFrameLayout
   
   public double getmAspectRatio()
   {
-    return this.wFy;
+    return this.AbH;
   }
   
   public void setAspectRatio(double paramDouble)
@@ -29,9 +29,9 @@ public class PreviewFrameLayout
       AppMethodBeat.o(104329);
       throw localIllegalArgumentException;
     }
-    if (this.wFy != paramDouble)
+    if (this.AbH != paramDouble)
     {
-      this.wFy = paramDouble;
+      this.AbH = paramDouble;
       requestLayout();
     }
     AppMethodBeat.o(104329);
@@ -39,7 +39,7 @@ public class PreviewFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout
  * JD-Core Version:    0.7.0.1
  */

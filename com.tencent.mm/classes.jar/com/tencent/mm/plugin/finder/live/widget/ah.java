@@ -1,309 +1,263 @@
 package com.tencent.mm.plugin.finder.live.widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.live.viewmodel.i;
-import com.tencent.mm.plugin.finder.upload.postui.c;
-import com.tencent.mm.pluginsdk.location.a.a;
-import com.tencent.mm.pluginsdk.location.b;
-import com.tencent.mm.protocal.protobuf.bdm;
-import com.tencent.mm.protocal.protobuf.cqf;
-import com.tencent.mm.protocal.protobuf.cqg;
-import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.g;
+import com.tencent.mm.plugin.finder.live.p.h;
+import com.tencent.mm.plugin.finder.view.aa;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.protocal.protobuf.cbr;
+import com.tencent.mm.protocal.protobuf.cca;
+import com.tencent.mm.protocal.protobuf.des;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.g;
-import com.tencent.mm.ui.component.g.a;
-import java.util.Collection;
+import com.tencent.mm.ui.bb;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.o;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.a.m;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLivePostLocationWidget;", "Lcom/tencent/mm/pluginsdk/location/IGetLocationService$IGetLocationCallback;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "root", "Landroid/view/View;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/View;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "isDestroy", "", "isIgnoreDefaultPoiRequest", "locationWidget", "Lcom/tencent/mm/plugin/finder/upload/postui/FinderLocationWidget;", "getLocationWidget", "()Lcom/tencent/mm/plugin/finder/upload/postui/FinderLocationWidget;", "setLocationWidget", "(Lcom/tencent/mm/plugin/finder/upload/postui/FinderLocationWidget;)V", "getRoot", "()Landroid/view/View;", "getLocation", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "initLocation", "", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onDestroy", "onGetLbsLifes", "city", "", "lifeList", "", "Lcom/tencent/mm/protocal/protobuf/LbsLife;", "requestLocationLikeByUser", "setIsCanSelectNone", "isCanSelectNone", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostTeamWidget;", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "gameTeamLayout", "Landroid/view/ViewGroup;", "gameTeamInfo", "Lcom/tencent/mm/protocal/protobuf/GameLiveJoinTeamSettingInfo;", "lastSelectValue", "", "lastSelectCoinValue", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/ViewGroup;Lcom/tencent/mm/protocal/protobuf/GameLiveJoinTeamSettingInfo;II)V", "TAG", "", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "<set-?>", "Lcom/tencent/mm/plugin/finder/view/GameTeamConditionBottomSheet;", "bottomSheet", "getBottomSheet", "()Lcom/tencent/mm/plugin/finder/view/GameTeamConditionBottomSheet;", "descTv", "Landroid/widget/TextView;", "getGameTeamInfo", "()Lcom/tencent/mm/protocal/protobuf/GameLiveJoinTeamSettingInfo;", "getGameTeamLayout", "()Landroid/view/ViewGroup;", "getLastSelectCoinValue", "()I", "setLastSelectCoinValue", "(I)V", "getLastSelectValue", "setLastSelectValue", "buildCoinTipText", "", "value", "getLastSelectTeamIndex", "getLastSelectTeamInfo", "Lcom/tencent/mm/protocal/protobuf/JoinTeamQualificationsInfo;", "getSelectCoinSettingForPost", "Lcom/tencent/mm/protocal/protobuf/GameTeamUpPaymentSetting;", "getSelectValueForPost", "updateTips", "", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class ah
-  implements a.a
 {
-  public static final a zqq;
-  final MMActivity activity;
-  private final View jac;
-  public c yOK;
-  public boolean zqo;
-  private boolean zqp;
+  private final ViewGroup EqL;
+  private final cbr EqM;
+  public int EqN;
+  int EqO;
+  public aa EqP;
+  final String TAG;
+  private final MMActivity activity;
+  private final TextView descTv;
   
-  static
+  public ah(MMActivity paramMMActivity, ViewGroup paramViewGroup, cbr paramcbr, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(273818);
-    zqq = new a((byte)0);
-    AppMethodBeat.o(273818);
-  }
-  
-  public ah(MMActivity paramMMActivity, View paramView)
-  {
-    AppMethodBeat.i(273817);
+    AppMethodBeat.i(361606);
     this.activity = paramMMActivity;
-    this.jac = paramView;
-    this.activity.getIntent().putExtra("saveLocation", false);
-    this.activity.getIntent().putExtra("is_force_dark_mode", true);
-    this.activity.getIntent().putExtra("show_city", false);
-    this.activity.getIntent().putExtra("poi_show_none", true);
-    this.activity.getIntent().putExtra("can_show_create_poi_tips", false);
-    paramMMActivity = this.activity;
-    paramView = this.jac.findViewById(b.f.post_location_view);
-    p.j(paramView, "root.findViewById<Finder…(R.id.post_location_view)");
-    this.yOK = new c(paramMMActivity, (b)paramView, null, null);
-    paramMMActivity = this.yOK;
-    paramView = this.activity.getIntent();
-    p.j(paramView, "activity.intent");
-    paramMMActivity.c(paramView, new Bundle());
-    paramMMActivity = this.yOK.ACB;
-    paramView = this.jac.getContext();
-    p.j(paramView, "root.context");
-    paramMMActivity.setIconColor(paramView.getResources().getColor(b.c.White));
-    paramMMActivity = this.yOK.ACB;
-    paramView = this.jac.getContext();
-    p.j(paramView, "root.context");
-    paramMMActivity.setTextColor(paramView.getResources().getColor(b.c.White));
-    paramMMActivity = this.yOK.ACB;
-    paramView = this.jac.getContext();
-    p.j(paramView, "root.context");
-    paramMMActivity.setDefaultStateIconColor(paramView.getResources().getColor(b.c.BW_100_Alpha_0_8));
-    paramMMActivity = this.yOK.ACB;
-    paramView = this.jac.getContext();
-    p.j(paramView, "root.context");
-    paramMMActivity.setDefaultStateTextColor(paramView.getResources().getColor(b.c.White));
-    paramMMActivity = this.yOK.ACB;
-    paramView = this.jac.getContext();
-    p.j(paramView, "root.context");
-    paramMMActivity.setDefaultLoadingPBarColor(paramView.getResources().getColor(b.c.White));
-    paramMMActivity = this.yOK.ACB;
-    paramView = this.jac.getContext();
-    p.j(paramView, "root.context");
-    paramMMActivity.setDefaultLoadingTipColor(paramView.getResources().getColor(b.c.White));
-    this.yOK.ACB.NM(b.i.finder_live_icon_location_loading);
-    d.h((kotlin.g.a.a)new b(this));
-    AppMethodBeat.o(273817);
+    this.EqL = paramViewGroup;
+    this.EqM = paramcbr;
+    this.EqN = paramInt1;
+    this.EqO = paramInt2;
+    this.TAG = "Finder.FinderLiveGamePostTeamWidget";
+    this.descTv = ((TextView)this.EqL.findViewById(p.e.BVp));
+    eAS();
+    this.EqL.setOnClickListener(new ah..ExternalSyntheticLambda0(this));
+    Log.i(this.TAG, "init size:" + this.EqM.aakZ.size() + ", last:" + this.EqN);
+    AppMethodBeat.o(361606);
   }
   
-  public final void dIA()
+  private final CharSequence Qj(int paramInt)
   {
-    final cqg localcqg = null;
-    AppMethodBeat.i(273814);
-    Object localObject = g.Xox;
-    g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.a.class);
-    if (!com.tencent.mm.plugin.finder.viewmodel.a.ejZ())
+    AppMethodBeat.i(361633);
+    Object localObject1 = (Context)this.activity;
+    CharSequence localCharSequence1 = (CharSequence)this.activity.getString(p.h.Chm);
+    CharSequence localCharSequence2 = (CharSequence)String.valueOf(paramInt);
+    Object localObject2 = this.descTv;
+    if (localObject2 == null) {}
+    for (float f = 0.0F;; f = ((TextView)localObject2).getTextSize())
     {
-      Log.i("Finder.FinderLivePostLocationWidget", "#requestLocationLikeByUser no permission");
-      AppMethodBeat.o(273814);
-      return;
+      localObject2 = bb.m((Context)this.activity, p.g.coin_icon, this.activity.getResources().getColor(p.b.UN_Brand));
+      ((Drawable)localObject2).setBounds(0, 0, com.tencent.mm.cd.a.bs((Context)this.activity, p.c.Edge_2A), com.tencent.mm.cd.a.bs((Context)this.activity, p.c.Edge_2A));
+      kotlin.ah localah = kotlin.ah.aiuX;
+      localObject1 = p.a((Context)localObject1, localCharSequence1, localCharSequence2, f, (Drawable)localObject2, false);
+      kotlin.g.b.s.s(localObject1, "insertSpanIconAtMedium(\n… }, true, false\n        )");
+      localObject1 = (CharSequence)localObject1;
+      AppMethodBeat.o(361633);
+      return localObject1;
     }
-    localObject = this.yOK.ACz;
-    if (localObject != null) {}
-    for (localObject = ((bdm)localObject).poiName;; localObject = null)
+  }
+  
+  private static final void a(ah paramah, View paramView)
+  {
+    AppMethodBeat.i(361660);
+    Object localObject1 = new Object();
+    Object localObject2 = new b();
+    ((b)localObject2).cH(paramah);
+    ((b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostTeamWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((b)localObject2).aYj());
+    kotlin.g.b.s.u(paramah, "this$0");
+    paramView = com.tencent.mm.plugin.finder.utils.s.GgL;
+    if (com.tencent.mm.plugin.finder.utils.s.feR() == 18L)
     {
-      if (Util.isNullOrNil((String)localObject))
+      paramView = com.tencent.mm.plugin.finder.utils.s.GgL;
+      com.tencent.mm.plugin.finder.utils.s.TU(4);
+    }
+    paramah.EqP = new aa((m)new a(paramah));
+    paramView = paramah.EqP;
+    if (paramView != null)
+    {
+      localObject1 = paramah.activity.getString(p.h.CgX);
+      kotlin.g.b.s.s(localObject1, "activity.getString(R.str…ive_team_condition_title)");
+      localObject2 = paramah.EqM.aakZ;
+      kotlin.g.b.s.s(localObject2, "gameTeamInfo.qualifications_infos");
+      paramView.c((String)localObject1, (List)localObject2, paramah.eAU());
+    }
+    paramView = paramah.EqP;
+    if (paramView != null) {
+      paramView.FyH = true;
+    }
+    paramView = paramah.EqP;
+    if (paramView != null) {
+      paramView.hs((Context)paramah.activity);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/live/widget/FinderLiveGamePostTeamWidget", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(361660);
+  }
+  
+  private final void eAS()
+  {
+    AppMethodBeat.i(361618);
+    TextView localTextView;
+    Object localObject;
+    if (this.EqN == 7)
+    {
+      localTextView = this.descTv;
+      if (localTextView != null) {
+        localObject = Qj(this.EqO);
+      }
+    }
+    for (;;)
+    {
+      localTextView.setText((CharSequence)localObject);
+      do
       {
-        bdm localbdm = this.yOK.ACz;
-        localObject = localcqg;
-        if (localbdm != null) {
-          localObject = localbdm.city;
-        }
-        if (Util.isNullOrNil((String)localObject)) {
-          break;
+        AppMethodBeat.o(361618);
+        return;
+        localTextView = this.descTv;
+      } while (localTextView == null);
+      localObject = eAT();
+      if (localObject == null)
+      {
+        localObject = (CharSequence)"";
+      }
+      else
+      {
+        localObject = ((des)localObject).lym;
+        if (localObject == null) {
+          localObject = (CharSequence)"";
+        } else {
+          localObject = (CharSequence)localObject;
         }
       }
-      Log.i("Finder.FinderLivePostLocationWidget", "#requestLocationLikeByUser poi exist");
-      AppMethodBeat.o(273814);
-      return;
     }
-    Log.i("Finder.FinderLivePostLocationWidget", "#requestLocationLikeByUser begin");
-    localObject = g.Xox;
-    localObject = ((com.tencent.mm.plugin.finder.viewmodel.a)g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.a.class)).dnl();
-    localcqg = new cqg();
-    localcqg.ScO = ((Number)((o)localObject).Mx).floatValue();
-    localcqg.ScP = ((Number)((o)localObject).My).floatValue();
-    localcqg.Sxw = 0;
-    localcqg.Sxt = 1;
-    ((com.tencent.mm.pluginsdk.location.a)h.ae(com.tencent.mm.pluginsdk.location.a.class)).a(localcqg, (a.a)new c(this, localcqg));
-    AppMethodBeat.o(273814);
   }
   
-  public final bdm getLocation()
+  private final des eAT()
   {
-    AppMethodBeat.i(273816);
-    Object localObject2 = this.yOK.ACz;
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    AppMethodBeat.i(361643);
+    Object localObject = this.EqM.aakZ;
+    kotlin.g.b.s.s(localObject, "gameTeamInfo.qualifications_infos");
+    Iterator localIterator = ((Iterable)localObject).iterator();
+    int i;
+    if (localIterator.hasNext())
     {
-      localObject1 = new bdm();
-      localObject2 = g.Xox;
-      localObject2 = ((com.tencent.mm.plugin.finder.viewmodel.a)g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.a.class)).dnl();
-      ((bdm)localObject1).latitude = ((Number)((o)localObject2).My).floatValue();
-      ((bdm)localObject1).longitude = ((Number)((o)localObject2).Mx).floatValue();
+      localObject = localIterator.next();
+      if (((des)localObject).value == this.EqN)
+      {
+        i = 1;
+        label63:
+        if (i == 0) {
+          break label83;
+        }
+      }
     }
-    AppMethodBeat.o(273816);
-    return localObject1;
-  }
-  
-  public final void pK(boolean paramBoolean)
-  {
-    AppMethodBeat.i(273811);
-    Log.i("Finder.FinderLivePostLocationWidget", "#setIsCanSelectNone isCanSelectNone=".concat(String.valueOf(paramBoolean)));
-    this.activity.getIntent().putExtra("poi_show_none", paramBoolean);
-    AppMethodBeat.o(273811);
-  }
-  
-  public final void t(String paramString, List<cqf> paramList)
-  {
-    AppMethodBeat.i(273815);
-    if ((this.zqo) || (this.zqp))
+    for (;;)
     {
-      Log.i("Finder.FinderLivePostLocationWidget", "#onGetLbsLifes isDestroy=" + this.zqo + " ignore=" + this.zqp);
-      AppMethodBeat.o(273815);
-      return;
+      localObject = (des)localObject;
+      AppMethodBeat.o(361643);
+      return localObject;
+      i = 0;
+      break label63;
+      label83:
+      break;
+      localObject = null;
     }
-    Object localObject = (Collection)paramList;
-    if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      localObject = i.zcP;
-      Log.i(i.access$getTAG$cp(), "get lbsLife success");
-      this.yOK.a(paramString, (cqf)j.lo(paramList));
-      this.yOK.dFd();
-      AppMethodBeat.o(273815);
-      return;
-    }
-    paramString = i.zcP;
-    Log.i(i.access$getTAG$cp(), "get lbsLife fail");
-    this.yOK.dFd();
-    AppMethodBeat.o(273815);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/widget/FinderLivePostLocationWidget$Companion;", "", "()V", "REQUEST_CODE_PICK_LOCATION", "", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
+  private final int eAU()
   {
-    b(ah paramah)
+    AppMethodBeat.i(361647);
+    Object localObject = this.EqM.aakZ;
+    kotlin.g.b.s.s(localObject, "gameTeamInfo.qualifications_infos");
+    localObject = ((List)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      if (((des)((Iterator)localObject).next()).value == this.EqN) {}
+      for (int j = 1; j != 0; j = 0)
+      {
+        AppMethodBeat.o(361647);
+        return i;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(361647);
+    return -1;
+  }
+  
+  public final cca eAV()
+  {
+    AppMethodBeat.i(361679);
+    Object localObject = this.EqM.aakZ;
+    kotlin.g.b.s.s(localObject, "gameTeamInfo.qualifications_infos");
+    Iterator localIterator = ((Iterable)localObject).iterator();
+    int i;
+    if (localIterator.hasNext())
+    {
+      localObject = localIterator.next();
+      if (((des)localObject).value == 7)
+      {
+        i = 1;
+        label61:
+        if (i == 0) {
+          break label85;
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject = (des)localObject;
+      if (localObject != null) {
+        break label92;
+      }
+      AppMethodBeat.o(361679);
+      return null;
+      i = 0;
+      break label61;
+      label85:
+      break;
+      localObject = null;
+    }
+    label92:
+    localObject = ((des)localObject).ZGd;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(361679);
+      return null;
+    }
+    ((cca)localObject).aalq = this.EqO;
+    AppMethodBeat.o(361679);
+    return localObject;
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/JoinTeamQualificationsInfo;", "setValue", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class a
+    extends u
+    implements m<des, Integer, kotlin.ah>
+  {
+    a(ah paramah)
     {
       super();
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "argCity", "", "kotlin.jvm.PlatformType", "argLife", "", "Lcom/tencent/mm/protocal/protobuf/LbsLife;", "", "onGetLbsLifes"})
-  static final class c
-    implements a.a
-  {
-    c(ah paramah, cqg paramcqg) {}
-    
-    public final void t(String paramString, List<cqf> paramList)
-    {
-      AppMethodBeat.i(269498);
-      if ((ah.a(this.zqr)) || (paramList == null))
-      {
-        AppMethodBeat.o(269498);
-        return;
-      }
-      paramList = (cqf)j.lp(paramList);
-      if (paramList != null)
-      {
-        Log.i("Finder.FinderLivePostLocationWidget", "#requestLocationLikeByUser ready to save: " + paramString + ' ' + paramList.fwr + ' ' + paramList.GtI + ' ' + "long=" + localcqg.ScO + " lat=" + localcqg.ScP);
-        ah.b(this.zqr);
-        c localc = this.zqr.yOK;
-        float f1 = localcqg.ScO;
-        float f2 = localcqg.ScP;
-        p.k(paramList, "i");
-        Intent localIntent = localc.intent;
-        if (localIntent == null) {
-          p.bGy("intent");
-        }
-        localIntent.putExtra("saveLocation", true);
-        localIntent = localc.intent;
-        if (localIntent == null) {
-          p.bGy("intent");
-        }
-        localIntent.putExtra("get_poi_name", Util.nullAs(paramList.fwr, ""));
-        localIntent = localc.intent;
-        if (localIntent == null) {
-          p.bGy("intent");
-        }
-        localIntent.putExtra("get_city", Util.nullAs(paramString, ""));
-        paramString = localc.intent;
-        if (paramString == null) {
-          p.bGy("intent");
-        }
-        paramString.putExtra("get_lat", f2);
-        paramString = localc.intent;
-        if (paramString == null) {
-          p.bGy("intent");
-        }
-        paramString.putExtra("get_lng", f1);
-        localIntent = localc.intent;
-        if (localIntent == null) {
-          p.bGy("intent");
-        }
-        paramString = paramList.GtN;
-        if (paramString != null)
-        {
-          paramString = (eaf)j.lp((List)paramString);
-          if (paramString != null)
-          {
-            paramString = paramString.toString();
-            localIntent.putExtra("get_poi_address", Util.nullAsNil(paramString));
-            paramString = localc.intent;
-            if (paramString == null) {
-              p.bGy("intent");
-            }
-            paramString.putExtra("get_poi_classify_id", Util.nullAsNil(paramList.GtI));
-            this.zqr.yOK.ecH();
-            paramString = this.zqr.yOK.ACz;
-            if (paramString == null) {
-              break label467;
-            }
-            paramString = paramString.poiName;
-            label411:
-            if (Util.isNullOrNil(paramString))
-            {
-              paramString = this.zqr.yOK.ACz;
-              if (paramString == null) {
-                break label472;
-              }
-            }
-          }
-        }
-        label467:
-        label472:
-        for (paramString = paramString.city;; paramString = null)
-        {
-          if (Util.isNullOrNil(paramString)) {
-            this.zqr.yOK.ACz = null;
-          }
-          AppMethodBeat.o(269498);
-          return;
-          paramString = null;
-          break;
-          paramString = null;
-          break label411;
-        }
-      }
-      AppMethodBeat.o(269498);
     }
   }
 }

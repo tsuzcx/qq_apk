@@ -16,9 +16,9 @@ class ClipbroadHelperImplBelow30
   
   public CharSequence getText(Context paramContext)
   {
-    AppMethodBeat.i(263134);
+    AppMethodBeat.i(243480);
     paramContext = ((ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard")).getText();
-    AppMethodBeat.o(263134);
+    AppMethodBeat.o(243480);
     return paramContext;
   }
   
@@ -31,23 +31,23 @@ class ClipbroadHelperImplBelow30
   
   public void setText(Context paramContext, CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    AppMethodBeat.i(263132);
+    AppMethodBeat.i(243472);
     ((ClipboardManager)MMApplicationContext.getContext().getSystemService("clipboard")).setText(paramCharSequence2);
-    AppMethodBeat.o(263132);
+    AppMethodBeat.o(243472);
   }
   
   public void setText(Context paramContext, CharSequence paramCharSequence1, CharSequence paramCharSequence2, String paramString)
   {
-    AppMethodBeat.i(263133);
+    AppMethodBeat.i(243478);
     setText(paramContext, paramCharSequence1, paramCharSequence2);
-    AppMethodBeat.o(263133);
+    AppMethodBeat.o(243478);
   }
   
   public void setUri(Context paramContext, CharSequence paramCharSequence, Uri paramUri) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ClipbroadHelperImplBelow30
  * JD-Core Version:    0.7.0.1
  */

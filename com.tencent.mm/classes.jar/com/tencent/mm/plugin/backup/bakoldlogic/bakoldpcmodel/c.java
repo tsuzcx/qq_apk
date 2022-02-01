@@ -6,39 +6,39 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public int ltN;
-  public int rTq;
-  public int rTr;
-  private int rTs;
-  int rTt;
-  int rTu;
-  int rTv;
-  public int rTw;
+  public int olm;
+  public int veG;
+  public int veH;
+  private int veI;
+  int veJ;
+  int veK;
+  int veL;
+  public int veM;
   
   private String getString()
   {
     AppMethodBeat.i(21884);
-    String str = String.format("%d,%d,%d,%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(this.rTq), Integer.valueOf(this.rTr), Integer.valueOf(this.ltN), Integer.valueOf(this.rTs), Integer.valueOf(this.rTt), Integer.valueOf(this.rTu), Integer.valueOf(this.rTv), Integer.valueOf(this.rTw) });
+    String str = String.format("%d,%d,%d,%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(this.veG), Integer.valueOf(this.veH), Integer.valueOf(this.olm), Integer.valueOf(this.veI), Integer.valueOf(this.veJ), Integer.valueOf(this.veK), Integer.valueOf(this.veL), Integer.valueOf(this.veM) });
     AppMethodBeat.o(21884);
     return str;
   }
   
   private void reset()
   {
-    this.rTq = 0;
-    this.rTr = 0;
-    this.ltN = 0;
-    this.rTs = 0;
-    this.rTt = 0;
-    this.rTu = 0;
-    this.rTv = 0;
-    this.rTw = 0;
+    this.veG = 0;
+    this.veH = 0;
+    this.olm = 0;
+    this.veI = 0;
+    this.veJ = 0;
+    this.veK = 0;
+    this.veL = 0;
+    this.veM = 0;
   }
   
-  public final void bfq()
+  public final void bDh()
   {
     AppMethodBeat.i(21883);
-    if (this.rTq == 0)
+    if (this.veG == 0)
     {
       reset();
       AppMethodBeat.o(21883);
@@ -46,14 +46,14 @@ public final class c
     }
     String str = getString();
     Log.i("MicroMsg.BakPCReportor", "report: %s", new Object[] { str });
-    h.IzE.kvStat(11103, str);
+    h.OAn.kvStat(11103, str);
     reset();
     AppMethodBeat.o(21883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.c
  * JD-Core Version:    0.7.0.1
  */

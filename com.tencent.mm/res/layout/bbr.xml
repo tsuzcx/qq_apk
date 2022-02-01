@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/fiu" android:background="?gw" android:paddingLeft="4.0dip" android:paddingTop="@dimen/k5" android:paddingRight="4.0dip" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/jj" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_emoji" android:minWidth="0.0dip" android:contentDescription="@string/auf" style="@style/os" />
+    <TextView android:id="@id/gpk" style="@style/a72" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gpa" android:background="@drawable/n5" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/m2" android:paddingRight="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m2" android:layout_marginBottom="@dimen/m2">
+        <TextView android:id="@id/gpb" style="@style/a70" />
+        <TextView android:id="@id/gpe" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/m2" style="@style/a70" />
+        <View style="@style/a71" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k">
+            <TextView android:id="@id/gpc" style="@style/hg" />
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@id/gpj" android:background="@drawable/nm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ad" android:drawableRight="@raw/chatto_voice_playing" />
+                <com.tencent.mm.ui.base.AnimImageView android:layout_gravity="right" android:id="@id/gpi" android:paddingRight="17.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/ad" />
+            </FrameLayout>
+        </LinearLayout>
+        <View style="@style/a71" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/gp_" style="@style/a6z" />
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/htl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

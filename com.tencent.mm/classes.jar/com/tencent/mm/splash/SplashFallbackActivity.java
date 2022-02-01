@@ -10,29 +10,29 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 public class SplashFallbackActivity
   extends HellActivity
 {
-  private Runnable UZJ;
+  private Runnable acBb;
   private Handler mHandler;
   
   public SplashFallbackActivity()
   {
     AppMethodBeat.i(40668);
-    this.UZJ = new Runnable()
+    this.acBb = new Runnable()
     {
-      private long UZK = -1L;
+      private long acBc = -1L;
       
       public final void run()
       {
         AppMethodBeat.i(40667);
-        if (this.UZK == -1L) {
-          this.UZK = System.currentTimeMillis();
+        if (this.acBc == -1L) {
+          this.acBc = System.currentTimeMillis();
         }
-        if (!SplashFallbackActivity.huv())
+        if (!SplashFallbackActivity.iVY())
         {
-          if (System.currentTimeMillis() - this.UZK >= 80000L)
+          if (System.currentTimeMillis() - this.acBc >= 80000L)
           {
             i.g("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
             SplashFallbackActivity.this.finish();
-            SplashFallbackActivity.this.overridePendingTransition(h.a.UZk, h.a.UZi);
+            SplashFallbackActivity.this.overridePendingTransition(h.a.acAC, h.a.acAA);
             AppMethodBeat.o(40667);
             return;
           }
@@ -42,7 +42,7 @@ public class SplashFallbackActivity
         }
         i.g("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
         SplashFallbackActivity.this.finish();
-        SplashFallbackActivity.this.overridePendingTransition(h.a.UZk, h.a.UZi);
+        SplashFallbackActivity.this.overridePendingTransition(h.a.acAC, h.a.acAA);
         AppMethodBeat.o(40667);
       }
     };
@@ -64,7 +64,7 @@ public class SplashFallbackActivity
     paramBundle = new HandlerThread("splash-activity");
     paramBundle.start();
     this.mHandler = new Handler(paramBundle.getLooper());
-    this.mHandler.postDelayed(this.UZJ, 100L);
+    this.mHandler.postDelayed(this.acBb, 100L);
     AppMethodBeat.o(40669);
   }
   
@@ -76,7 +76,7 @@ public class SplashFallbackActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.splash.SplashFallbackActivity
  * JD-Core Version:    0.7.0.1
  */

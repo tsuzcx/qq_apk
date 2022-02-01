@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.mmsight.ui;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.u;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.api.w;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 final class TestVideoEditUI$2
-  implements u
+  implements w
 {
   TestVideoEditUI$2(TestVideoEditUI paramTestVideoEditUI) {}
   
-  public final void a(Bitmap paramBitmap, boolean paramBoolean)
+  public final void b(Bitmap paramBitmap, boolean paramBoolean)
   {
     AppMethodBeat.i(94746);
     Log.i("MicroMsg.TestVideoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
-    String str = b.aSU() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), "png" });
+    String str = b.bmI() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), "png" });
     try
     {
       BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
@@ -31,7 +31,7 @@ final class TestVideoEditUI$2
     }
   }
   
-  public final void onError(Exception paramException) {}
+  public final void f(Exception paramException) {}
 }
 
 

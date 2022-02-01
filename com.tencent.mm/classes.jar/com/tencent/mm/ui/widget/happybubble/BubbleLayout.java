@@ -16,34 +16,34 @@ import android.view.MotionEvent;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.m;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 
 public class BubbleLayout
   extends FrameLayout
 {
-  private Paint YoU;
-  private Path YoV;
-  private a YoW;
-  private int YoX;
-  private int YoY;
-  private int YoZ;
-  private int Ypa;
-  private int Ypb;
-  private int Ypc;
-  private int Ypd;
-  private int Ype;
-  private b Ypf;
-  private Region Ypg;
-  private int aob;
-  private int apP;
-  private int apQ;
-  private Path auD;
+  private Paint aghh;
+  private Path aghi;
+  private a aghj;
+  private int aghk;
+  private int aghl;
+  private int aghm;
+  private int aghn;
+  private int agho;
+  private int aghp;
+  private int aghq;
+  private int aghr;
+  private b aghs;
+  private Region aght;
+  private int ccL;
+  private int cey;
+  private int cez;
+  private Path cja;
   private int mHeight;
   private Paint mPaint;
   private int mWidth;
-  private int raH;
-  private int tF;
-  private int tG;
+  private int uE;
+  private int uF;
+  private int ugx;
   
   public BubbleLayout(Context paramContext)
   {
@@ -59,97 +59,97 @@ public class BubbleLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143546);
-    this.Ypg = new Region();
+    this.aght = new Region();
     setLayerType(1, null);
     setWillNotDraw(false);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.BubbleLayout, paramInt, 0);
-    this.YoW = a.ayw(paramContext.getInt(a.m.BubbleLayout_lookAt, a.Ypl.value));
-    this.YoY = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_lookPosition, 0);
-    this.YoZ = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_lookWidth, a.fromDPToPix(getContext(), 17.0F));
-    this.Ypa = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_lookLength, a.fromDPToPix(getContext(), 17.0F));
-    this.aob = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_shadowRadius, a.fromDPToPix(getContext(), 3.3F));
-    this.Ypb = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_shadowX, a.fromDPToPix(getContext(), 1.0F));
-    this.Ypc = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_shadowY, a.fromDPToPix(getContext(), 1.0F));
-    this.Ypd = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_bubbleRadius, a.fromDPToPix(getContext(), 7.0F));
-    this.YoX = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_bubblePadding, a.fromDPToPix(getContext(), 8.0F));
-    this.raH = paramContext.getColor(a.m.BubbleLayout_shadowColor, -7829368);
-    this.Ype = paramContext.getColor(a.m.BubbleLayout_bubbleColor, -1);
+    this.aghj = a.aFg(paramContext.getInt(a.m.BubbleLayout_lookAt, a.aghy.value));
+    this.aghl = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_lookPosition, 0);
+    this.aghm = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_lookWidth, a.fromDPToPix(getContext(), 17.0F));
+    this.aghn = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_lookLength, a.fromDPToPix(getContext(), 17.0F));
+    this.ccL = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_shadowRadius, a.fromDPToPix(getContext(), 3.3F));
+    this.agho = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_shadowX, a.fromDPToPix(getContext(), 1.0F));
+    this.aghp = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_shadowY, a.fromDPToPix(getContext(), 1.0F));
+    this.aghq = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_bubbleRadius, a.fromDPToPix(getContext(), 7.0F));
+    this.aghk = paramContext.getDimensionPixelOffset(a.m.BubbleLayout_bubblePadding, a.fromDPToPix(getContext(), 8.0F));
+    this.ugx = paramContext.getColor(a.m.BubbleLayout_shadowColor, -7829368);
+    this.aghr = paramContext.getColor(a.m.BubbleLayout_bubbleColor, -1);
     paramContext.recycle();
     this.mPaint = new Paint(5);
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.YoU = new Paint(5);
-    this.YoU.setStyle(Paint.Style.FILL);
-    this.auD = new Path();
-    this.YoV = new Path();
-    icS();
+    this.aghh = new Paint(5);
+    this.aghh.setStyle(Paint.Style.FILL);
+    this.cja = new Path();
+    this.aghi = new Path();
+    jIe();
     AppMethodBeat.o(143546);
   }
   
-  private void ata()
+  private void aNi()
   {
     int j = 0;
     AppMethodBeat.i(143551);
-    this.mPaint.setPathEffect(new CornerPathEffect(this.Ypd));
-    this.mPaint.setShadowLayer(this.aob, this.Ypb, this.Ypc, this.raH);
-    int k = this.YoX;
+    this.mPaint.setPathEffect(new CornerPathEffect(this.aghq));
+    this.mPaint.setShadowLayer(this.ccL, this.agho, this.aghp, this.ugx);
+    int k = this.aghk;
     int i;
-    if (this.YoW == a.Ypi)
+    if (this.aghj == a.aghv)
     {
-      i = this.Ypa;
-      this.tF = (i + k);
-      k = this.YoX;
-      if (this.YoW != a.Ypj) {
+      i = this.aghn;
+      this.uE = (i + k);
+      k = this.aghk;
+      if (this.aghj != a.aghw) {
         break label361;
       }
-      i = this.Ypa;
+      i = this.aghn;
       label100:
-      this.apP = (i + k);
+      this.cey = (i + k);
       k = this.mWidth;
-      int m = this.YoX;
-      if (this.YoW != a.Ypk) {
+      int m = this.aghk;
+      if (this.aghj != a.aghx) {
         break label366;
       }
-      i = this.Ypa;
+      i = this.aghn;
       label133:
-      this.tG = (k - m - i);
+      this.uF = (k - m - i);
       k = this.mHeight;
-      m = this.YoX;
+      m = this.aghk;
       i = j;
-      if (this.YoW == a.Ypl) {
-        i = this.Ypa;
+      if (this.aghj == a.aghy) {
+        i = this.aghn;
       }
-      this.apQ = (k - m - i);
-      this.mPaint.setColor(this.Ype);
-      this.YoU.setColor(this.Ype);
-      this.auD.reset();
-      this.YoV.reset();
-      j = this.YoY;
+      this.cez = (k - m - i);
+      this.mPaint.setColor(this.aghr);
+      this.aghh.setColor(this.aghr);
+      this.cja.reset();
+      this.aghi.reset();
+      j = this.aghl;
       i = j;
-      if (this.Ypa + j > this.apQ) {
-        i = this.apQ - this.YoZ;
+      if (this.aghn + j > this.cez) {
+        i = this.cez - this.aghm;
       }
-      if (i <= this.YoX) {
+      if (i <= this.aghk) {
         break label371;
       }
       j = i;
       label257:
-      k = this.YoY;
+      k = this.aghl;
       i = k;
-      if (this.Ypa + k > this.tG) {
-        i = this.tG - this.YoZ;
+      if (this.aghn + k > this.uF) {
+        i = this.uF - this.aghm;
       }
-      if (i <= this.YoX) {
+      if (i <= this.aghk) {
         break label379;
       }
       label295:
-      switch (1.Yph[this.YoW.ordinal()])
+      switch (1.aghu[this.aghj.ordinal()])
       {
       }
     }
     for (;;)
     {
-      this.auD.close();
-      this.YoV.close();
+      this.cja.close();
+      this.aghi.close();
       AppMethodBeat.o(143551);
       return;
       i = 0;
@@ -161,86 +161,86 @@ public class BubbleLayout
       i = 0;
       break label133;
       label371:
-      j = this.YoX;
+      j = this.aghk;
       break label257;
       label379:
-      i = this.YoX;
+      i = this.aghk;
       break label295;
-      this.auD.moveTo(this.tF, j);
-      this.YoV.moveTo(this.tF, j);
-      this.YoV.rLineTo(-this.Ypa, this.YoZ / 2);
-      this.YoV.rLineTo(this.Ypa, this.YoZ / 2);
-      this.YoV.lineTo(this.tF, j);
-      this.auD.lineTo(this.tF, this.apQ);
-      this.auD.lineTo(this.tG, this.apQ);
-      this.auD.lineTo(this.tG, this.apP);
-      this.auD.lineTo(this.tF, this.apP);
+      this.cja.moveTo(this.uE, j);
+      this.aghi.moveTo(this.uE, j);
+      this.aghi.rLineTo(-this.aghn, this.aghm / 2);
+      this.aghi.rLineTo(this.aghn, this.aghm / 2);
+      this.aghi.lineTo(this.uE, j);
+      this.cja.lineTo(this.uE, this.cez);
+      this.cja.lineTo(this.uF, this.cez);
+      this.cja.lineTo(this.uF, this.cey);
+      this.cja.lineTo(this.uE, this.cey);
       continue;
-      this.auD.moveTo(i, this.apP);
-      this.YoV.moveTo(i, this.apP);
-      this.YoV.rLineTo(this.YoZ / 2, -this.Ypa);
-      this.YoV.rLineTo(this.YoZ / 2, this.Ypa);
-      this.YoV.lineTo(i, this.apP);
-      this.auD.lineTo(this.tG, this.apP);
-      this.auD.lineTo(this.tG, this.apQ);
-      this.auD.lineTo(this.tF, this.apQ);
-      this.auD.lineTo(this.tF, this.apP);
+      this.cja.moveTo(i, this.cey);
+      this.aghi.moveTo(i, this.cey);
+      this.aghi.rLineTo(this.aghm / 2, -this.aghn);
+      this.aghi.rLineTo(this.aghm / 2, this.aghn);
+      this.aghi.lineTo(i, this.cey);
+      this.cja.lineTo(this.uF, this.cey);
+      this.cja.lineTo(this.uF, this.cez);
+      this.cja.lineTo(this.uE, this.cez);
+      this.cja.lineTo(this.uE, this.cey);
       continue;
-      this.auD.moveTo(this.tG, j);
-      this.YoV.moveTo(this.tG, j);
-      this.YoV.rLineTo(this.Ypa, this.YoZ / 2);
-      this.YoV.rLineTo(-this.Ypa, this.YoZ / 2);
-      this.YoV.lineTo(this.tG, j);
-      this.auD.lineTo(this.tG, this.apQ);
-      this.auD.lineTo(this.tF, this.apQ);
-      this.auD.lineTo(this.tF, this.apP);
-      this.auD.lineTo(this.tG, this.apP);
+      this.cja.moveTo(this.uF, j);
+      this.aghi.moveTo(this.uF, j);
+      this.aghi.rLineTo(this.aghn, this.aghm / 2);
+      this.aghi.rLineTo(-this.aghn, this.aghm / 2);
+      this.aghi.lineTo(this.uF, j);
+      this.cja.lineTo(this.uF, this.cez);
+      this.cja.lineTo(this.uE, this.cez);
+      this.cja.lineTo(this.uE, this.cey);
+      this.cja.lineTo(this.uF, this.cey);
       continue;
-      this.auD.moveTo(i, this.apQ);
-      this.YoV.moveTo(i, this.apQ);
-      this.YoV.rLineTo(this.YoZ / 2, this.Ypa);
-      this.YoV.rLineTo(this.YoZ / 2, -this.Ypa);
-      this.YoV.lineTo(i, this.apQ);
-      this.auD.lineTo(this.tG, this.apQ);
-      this.auD.lineTo(this.tG, this.apP);
-      this.auD.lineTo(this.tF, this.apP);
-      this.auD.lineTo(this.tF, this.apQ);
+      this.cja.moveTo(i, this.cez);
+      this.aghi.moveTo(i, this.cez);
+      this.aghi.rLineTo(this.aghm / 2, this.aghn);
+      this.aghi.rLineTo(this.aghm / 2, -this.aghn);
+      this.aghi.lineTo(i, this.cez);
+      this.cja.lineTo(this.uF, this.cez);
+      this.cja.lineTo(this.uF, this.cey);
+      this.cja.lineTo(this.uE, this.cey);
+      this.cja.lineTo(this.uE, this.cez);
     }
   }
   
   public int getBubbleColor()
   {
-    return this.Ype;
+    return this.aghr;
   }
   
   public int getBubblePadding()
   {
-    return this.YoX;
+    return this.aghk;
   }
   
   public int getBubbleRadius()
   {
-    return this.Ypd;
+    return this.aghq;
   }
   
   public a getLook()
   {
-    return this.YoW;
+    return this.aghj;
   }
   
   public int getLookLength()
   {
-    return this.Ypa;
+    return this.aghn;
   }
   
   public int getLookPosition()
   {
-    return this.YoY;
+    return this.aghl;
   }
   
   public int getLookWidth()
   {
-    return this.YoZ;
+    return this.aghm;
   }
   
   public Paint getPaint()
@@ -250,69 +250,69 @@ public class BubbleLayout
   
   public Path getPath()
   {
-    return this.auD;
+    return this.cja;
   }
   
   public int getShadowColor()
   {
-    return this.raH;
+    return this.ugx;
   }
   
   public int getShadowRadius()
   {
-    return this.aob;
+    return this.ccL;
   }
   
   public int getShadowX()
   {
-    return this.Ypb;
+    return this.agho;
   }
   
   public int getShadowY()
   {
-    return this.Ypc;
+    return this.aghp;
   }
   
-  public final void icS()
+  public void invalidate()
+  {
+    AppMethodBeat.i(143549);
+    aNi();
+    super.invalidate();
+    AppMethodBeat.o(143549);
+  }
+  
+  public final void jIe()
   {
     AppMethodBeat.i(143547);
-    int i = this.YoX * 2;
-    switch (1.Yph[this.YoW.ordinal()])
+    int i = this.aghk * 2;
+    switch (1.aghu[this.aghj.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(143547);
       return;
-      setPadding(i, i, i, this.Ypa + i);
+      setPadding(i, i, i, this.aghn + i);
       AppMethodBeat.o(143547);
       return;
-      setPadding(i, this.Ypa + i, i, i);
+      setPadding(i, this.aghn + i, i, i);
       AppMethodBeat.o(143547);
       return;
-      setPadding(this.Ypa + i, i, i, i);
+      setPadding(this.aghn + i, i, i, i);
       AppMethodBeat.o(143547);
       return;
-      setPadding(i, i, this.Ypa + i, i);
+      setPadding(i, i, this.aghn + i, i);
     }
-  }
-  
-  public void invalidate()
-  {
-    AppMethodBeat.i(143549);
-    ata();
-    super.invalidate();
-    AppMethodBeat.o(143549);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(143552);
     super.onDraw(paramCanvas);
-    this.mPaint.setPathEffect(new CornerPathEffect(this.Ypd));
-    paramCanvas.drawPath(this.auD, this.mPaint);
+    this.mPaint.setPathEffect(new CornerPathEffect(this.aghq));
+    paramCanvas.drawPath(this.cja, this.mPaint);
     this.mPaint.setPathEffect(null);
-    paramCanvas.drawPath(this.YoV, this.YoU);
+    paramCanvas.drawPath(this.aghi, this.aghh);
     AppMethodBeat.o(143552);
   }
   
@@ -322,20 +322,20 @@ public class BubbleLayout
     if ((paramParcelable instanceof Bundle))
     {
       paramParcelable = (Bundle)paramParcelable;
-      this.YoY = paramParcelable.getInt("mLookPosition");
-      this.YoZ = paramParcelable.getInt("mLookWidth");
-      this.Ypa = paramParcelable.getInt("mLookLength");
-      this.raH = paramParcelable.getInt("mShadowColor");
-      this.aob = paramParcelable.getInt("mShadowRadius");
-      this.Ypb = paramParcelable.getInt("mShadowX");
-      this.Ypc = paramParcelable.getInt("mShadowY");
-      this.Ypd = paramParcelable.getInt("mBubbleRadius");
+      this.aghl = paramParcelable.getInt("mLookPosition");
+      this.aghm = paramParcelable.getInt("mLookWidth");
+      this.aghn = paramParcelable.getInt("mLookLength");
+      this.ugx = paramParcelable.getInt("mShadowColor");
+      this.ccL = paramParcelable.getInt("mShadowRadius");
+      this.agho = paramParcelable.getInt("mShadowX");
+      this.aghp = paramParcelable.getInt("mShadowY");
+      this.aghq = paramParcelable.getInt("mBubbleRadius");
       this.mWidth = paramParcelable.getInt("mWidth");
       this.mHeight = paramParcelable.getInt("mHeight");
-      this.tF = paramParcelable.getInt("mLeft");
-      this.apP = paramParcelable.getInt("mTop");
-      this.tG = paramParcelable.getInt("mRight");
-      this.apQ = paramParcelable.getInt("mBottom");
+      this.uE = paramParcelable.getInt("mLeft");
+      this.cey = paramParcelable.getInt("mTop");
+      this.uF = paramParcelable.getInt("mRight");
+      this.cez = paramParcelable.getInt("mBottom");
       super.onRestoreInstanceState(paramParcelable.getParcelable("instanceState"));
       AppMethodBeat.o(143557);
       return;
@@ -349,20 +349,20 @@ public class BubbleLayout
     AppMethodBeat.i(143556);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("instanceState", super.onSaveInstanceState());
-    localBundle.putInt("mLookPosition", this.YoY);
-    localBundle.putInt("mLookWidth", this.YoZ);
-    localBundle.putInt("mLookLength", this.Ypa);
-    localBundle.putInt("mShadowColor", this.raH);
-    localBundle.putInt("mShadowRadius", this.aob);
-    localBundle.putInt("mShadowX", this.Ypb);
-    localBundle.putInt("mShadowY", this.Ypc);
-    localBundle.putInt("mBubbleRadius", this.Ypd);
+    localBundle.putInt("mLookPosition", this.aghl);
+    localBundle.putInt("mLookWidth", this.aghm);
+    localBundle.putInt("mLookLength", this.aghn);
+    localBundle.putInt("mShadowColor", this.ugx);
+    localBundle.putInt("mShadowRadius", this.ccL);
+    localBundle.putInt("mShadowX", this.agho);
+    localBundle.putInt("mShadowY", this.aghp);
+    localBundle.putInt("mBubbleRadius", this.aghq);
     localBundle.putInt("mWidth", this.mWidth);
     localBundle.putInt("mHeight", this.mHeight);
-    localBundle.putInt("mLeft", this.tF);
-    localBundle.putInt("mTop", this.apP);
-    localBundle.putInt("mRight", this.tG);
-    localBundle.putInt("mBottom", this.apQ);
+    localBundle.putInt("mLeft", this.uE);
+    localBundle.putInt("mTop", this.cey);
+    localBundle.putInt("mRight", this.uF);
+    localBundle.putInt("mBottom", this.cez);
     AppMethodBeat.o(143556);
     return localBundle;
   }
@@ -373,7 +373,7 @@ public class BubbleLayout
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    ata();
+    aNi();
     AppMethodBeat.o(143548);
   }
   
@@ -383,10 +383,10 @@ public class BubbleLayout
     if (paramMotionEvent.getAction() == 0)
     {
       RectF localRectF = new RectF();
-      this.auD.computeBounds(localRectF, true);
-      this.Ypg.setPath(this.auD, new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
-      if ((!this.Ypg.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) && (this.Ypf != null)) {
-        this.Ypf.icR();
+      this.cja.computeBounds(localRectF, true);
+      this.aght.setPath(this.cja, new Region((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom));
+      if ((!this.aght.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())) && (this.aghs != null)) {
+        this.aghs.jId();
       }
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -397,70 +397,70 @@ public class BubbleLayout
   public void postInvalidate()
   {
     AppMethodBeat.i(143550);
-    ata();
+    aNi();
     super.postInvalidate();
     AppMethodBeat.o(143550);
   }
   
   public void setBubbleColor(int paramInt)
   {
-    this.Ype = paramInt;
+    this.aghr = paramInt;
   }
   
   public void setBubbleRadius(int paramInt)
   {
-    this.Ypd = paramInt;
+    this.aghq = paramInt;
   }
   
   public void setLook(a parama)
   {
     AppMethodBeat.i(143554);
-    this.YoW = parama;
-    icS();
+    this.aghj = parama;
+    jIe();
     AppMethodBeat.o(143554);
   }
   
   public void setLookLength(int paramInt)
   {
     AppMethodBeat.i(143555);
-    this.Ypa = paramInt;
-    icS();
+    this.aghn = paramInt;
+    jIe();
     AppMethodBeat.o(143555);
   }
   
   public void setLookPosition(int paramInt)
   {
-    this.YoY = paramInt;
+    this.aghl = paramInt;
   }
   
   public void setLookWidth(int paramInt)
   {
-    this.YoZ = paramInt;
+    this.aghm = paramInt;
   }
   
   public void setOnClickEdgeListener(b paramb)
   {
-    this.Ypf = paramb;
+    this.aghs = paramb;
   }
   
   public void setShadowColor(int paramInt)
   {
-    this.raH = paramInt;
+    this.ugx = paramInt;
   }
   
   public void setShadowRadius(int paramInt)
   {
-    this.aob = paramInt;
+    this.ccL = paramInt;
   }
   
   public void setShadowX(int paramInt)
   {
-    this.Ypb = paramInt;
+    this.agho = paramInt;
   }
   
   public void setShadowY(int paramInt)
   {
-    this.Ypc = paramInt;
+    this.aghp = paramInt;
   }
   
   public static enum a
@@ -470,11 +470,11 @@ public class BubbleLayout
     static
     {
       AppMethodBeat.i(143545);
-      Ypi = new a("LEFT", 0, 1);
-      Ypj = new a("TOP", 1, 2);
-      Ypk = new a("RIGHT", 2, 3);
-      Ypl = new a("BOTTOM", 3, 4);
-      Ypm = new a[] { Ypi, Ypj, Ypk, Ypl };
+      aghv = new a("LEFT", 0, 1);
+      aghw = new a("TOP", 1, 2);
+      aghx = new a("RIGHT", 2, 3);
+      aghy = new a("BOTTOM", 3, 4);
+      aghz = new a[] { aghv, aghw, aghx, aghy };
       AppMethodBeat.o(143545);
     }
     
@@ -483,32 +483,32 @@ public class BubbleLayout
       this.value = paramInt;
     }
     
-    public static a ayw(int paramInt)
+    public static a aFg(int paramInt)
     {
-      a locala = Ypl;
+      a locala = aghy;
       switch (paramInt)
       {
       default: 
         return locala;
       case 1: 
-        return Ypi;
+        return aghv;
       case 2: 
-        return Ypj;
+        return aghw;
       case 3: 
-        return Ypk;
+        return aghx;
       }
-      return Ypl;
+      return aghy;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void icR();
+    public abstract void jId();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.BubbleLayout
  * JD-Core Version:    0.7.0.1
  */

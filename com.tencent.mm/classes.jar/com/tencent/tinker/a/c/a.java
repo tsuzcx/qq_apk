@@ -3,11 +3,11 @@ package com.tencent.tinker.a.c;
 public final class a
   implements Cloneable
 {
-  private static final boolean[] ZKe = new boolean[0];
-  private static final int[] bZR = new int[0];
-  private boolean[] ZKf = new boolean[10];
+  private static final boolean[] ahPg = new boolean[0];
+  private static final int[] dTZ = new int[0];
+  private int[] Sk = new int[10];
+  private boolean[] ahPh = new boolean[10];
   private int mSize = 0;
-  private int[] zX = new int[10];
   
   public a()
   {
@@ -41,7 +41,7 @@ public final class a
     return i;
   }
   
-  private static int bq(int paramInt)
+  private static int ef(int paramInt)
   {
     if (paramInt <= 4) {
       return 8;
@@ -49,7 +49,7 @@ public final class a
     return (paramInt >> 1) + paramInt;
   }
   
-  private a isA()
+  private a kca()
   {
     try
     {
@@ -60,8 +60,8 @@ public final class a
     {
       try
       {
-        locala.zX = ((int[])this.zX.clone());
-        locala.ZKf = ((boolean[])this.ZKf.clone());
+        locala.Sk = ((int[])this.Sk.clone());
+        locala.ahPh = ((boolean[])this.ahPh.clone());
         return locala;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -70,16 +70,16 @@ public final class a
     }
   }
   
-  public final void aBR(int paramInt)
+  public final void aIE(int paramInt)
   {
-    int i = a(this.zX, this.mSize, paramInt);
+    int i = a(this.Sk, this.mSize, paramInt);
     if (i >= 0)
     {
-      this.ZKf[i] = true;
+      this.ahPh[i] = true;
       return;
     }
     i ^= 0xFFFFFFFF;
-    Object localObject1 = this.zX;
+    Object localObject1 = this.Sk;
     int j = this.mSize;
     if (j > localObject1.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + localObject1.length + " currentSize: " + j);
@@ -92,14 +92,14 @@ public final class a
     Object localObject2;
     for (;;)
     {
-      this.zX = ((int[])localObject1);
-      localObject1 = this.ZKf;
+      this.Sk = ((int[])localObject1);
+      localObject1 = this.ahPh;
       paramInt = this.mSize;
       if (paramInt <= localObject1.length) {
         break;
       }
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + localObject1.length + " currentSize: " + paramInt);
-      localObject2 = new int[bq(j)];
+      localObject2 = new int[ef(j)];
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       localObject2[i] = paramInt;
       System.arraycopy(localObject1, i, localObject2, i + 1, localObject1.length - i);
@@ -112,10 +112,10 @@ public final class a
     }
     for (;;)
     {
-      this.ZKf = ((boolean[])localObject1);
+      this.ahPh = ((boolean[])localObject1);
       this.mSize += 1;
       return;
-      localObject2 = new boolean[bq(paramInt)];
+      localObject2 = new boolean[ef(paramInt)];
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       localObject2[i] = 1;
       System.arraycopy(localObject1, i, localObject2, i + 1, localObject1.length - i);
@@ -123,9 +123,9 @@ public final class a
     }
   }
   
-  public final boolean iM(int paramInt)
+  public final boolean bp(int paramInt)
   {
-    return a(this.zX, this.mSize, paramInt) >= 0;
+    return a(this.Sk, this.mSize, paramInt) >= 0;
   }
   
   public final String toString()
@@ -141,9 +141,9 @@ public final class a
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.zX[i]);
+      localStringBuilder.append(this.Sk[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.ZKf[i]);
+      localStringBuilder.append(this.ahPh[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -152,7 +152,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.c.a
  * JD-Core Version:    0.7.0.1
  */

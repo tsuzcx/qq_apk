@@ -1,55 +1,67 @@
 package kotlin.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.b.ao;
-import kotlin.l.b.a.b.f.a;
-import kotlin.l.b.a.b.f.b;
-import kotlin.l.b.a.b.k.a.t;
+import kotlin.g.b.s;
 
 public final class r
-  implements kotlin.l.b.a.b.k.a.b.f
 {
-  public final p aaYF;
-  private final t<kotlin.l.b.a.b.e.c.a.f> aaYx;
-  private final boolean aaYy;
+  public static final r.a aiXc;
+  final String signature;
   
-  public r(p paramp, t<kotlin.l.b.a.b.e.c.a.f> paramt, boolean paramBoolean)
+  static
   {
-    AppMethodBeat.i(58231);
-    this.aaYF = paramp;
-    this.aaYx = paramt;
-    this.aaYy = paramBoolean;
-    AppMethodBeat.o(58231);
+    AppMethodBeat.i(58237);
+    aiXc = new r.a((byte)0);
+    AppMethodBeat.o(58237);
   }
   
-  public final ao iFJ()
+  private r(String paramString)
   {
-    AppMethodBeat.i(58229);
-    ao localao = ao.aaKF;
-    kotlin.g.b.p.j(localao, "SourceFile.NO_SOURCE_FILE");
-    AppMethodBeat.o(58229);
-    return localao;
+    this.signature = paramString;
   }
   
-  public final String iIF()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(58228);
-    String str = "Class '" + this.aaYF.iCJ().iNx().qu() + '\'';
-    AppMethodBeat.o(58228);
-    return str;
+    AppMethodBeat.i(58240);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(58240);
+      return true;
+    }
+    if (!(paramObject instanceof r))
+    {
+      AppMethodBeat.o(58240);
+      return false;
+    }
+    paramObject = (r)paramObject;
+    if (!s.p(this.signature, paramObject.signature))
+    {
+      AppMethodBeat.o(58240);
+      return false;
+    }
+    AppMethodBeat.o(58240);
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(58239);
+    int i = this.signature.hashCode();
+    AppMethodBeat.o(58239);
+    return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(58230);
-    String str = getClass().getSimpleName() + ": " + this.aaYF;
-    AppMethodBeat.o(58230);
+    AppMethodBeat.i(58238);
+    String str = "MemberSignature(signature=" + this.signature + ')';
+    AppMethodBeat.o(58238);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.r
  * JD-Core Version:    0.7.0.1
  */

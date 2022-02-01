@@ -13,27 +13,27 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ah.a.g;
 import com.tencent.mm.ah.a.h;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 
 public class IconSummaryPreference
   extends Preference
 {
-  private ImageView EPM;
-  private String GRG;
-  private int GRH;
-  public int GRI;
-  private int VQS;
-  private Bitmap VVp;
-  private int WqZ;
-  private TextView WrA;
-  private int WrB;
-  private int Wra;
-  private ViewGroup Wrc;
-  RelativeLayout.LayoutParams Wrg;
-  private int Wrl;
-  private View Wrn;
-  private int Wrz;
+  private ImageView KKj;
+  private String MPk;
+  private int MPl;
+  public int MPm;
+  private int adYA;
+  private View adYC;
+  private int adYP;
+  private TextView adYQ;
+  private int adYR;
+  private int adYo;
+  private int adYp;
+  private ViewGroup adYr;
+  RelativeLayout.LayoutParams adYv;
+  private int adva;
+  private Bitmap adzN;
   private Context context;
   private Drawable drawable;
   private int height;
@@ -47,58 +47,58 @@ public class IconSummaryPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142560);
-    this.GRG = "";
-    this.GRH = -1;
-    this.GRI = 8;
-    this.VVp = null;
-    this.VQS = -1;
-    this.Wrl = 8;
-    this.WqZ = 0;
-    this.Wra = 8;
-    this.Wrz = 8;
-    this.EPM = null;
-    this.Wrc = null;
-    this.Wrn = null;
-    this.WrA = null;
-    this.WrB = -1;
+    this.MPk = "";
+    this.MPl = -1;
+    this.MPm = 8;
+    this.adzN = null;
+    this.adva = -1;
+    this.adYA = 8;
+    this.adYo = 0;
+    this.adYp = 8;
+    this.adYP = 8;
+    this.KKj = null;
+    this.adYr = null;
+    this.adYC = null;
+    this.adYQ = null;
+    this.adYR = -1;
     this.height = -1;
     this.context = paramContext;
     setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(142560);
   }
   
-  public final void aF(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(142562);
-    super.aF(paramCharSequence);
-    if ((this.WrA != null) && (fqw() != null) && (fqw().length() > 0)) {
-      this.WrA.setText(fqw());
-    }
-    AppMethodBeat.o(142562);
-  }
-  
-  public final void auI(int paramInt)
+  public final void aBk(int paramInt)
   {
     AppMethodBeat.i(142563);
-    super.auI(paramInt);
-    if ((this.WrA != null) && (fqw() != null) && (fqw().length() > 0)) {
-      this.WrA.setText(fqw());
+    super.aBk(paramInt);
+    if ((this.adYQ != null) && (gBR() != null) && (gBR().length() > 0)) {
+      this.adYQ.setText(gBR());
     }
     AppMethodBeat.o(142563);
   }
   
-  public final void fC(String paramString, int paramInt)
+  public final void aS(CharSequence paramCharSequence)
   {
-    this.GRG = paramString;
-    this.GRH = paramInt;
+    AppMethodBeat.i(142562);
+    super.aS(paramCharSequence);
+    if ((this.adYQ != null) && (gBR() != null) && (gBR().length() > 0)) {
+      this.adYQ.setText(gBR());
+    }
+    AppMethodBeat.o(142562);
   }
   
-  public final void hKL()
+  public final void gv(String paramString, int paramInt)
+  {
+    this.MPk = paramString;
+    this.MPl = paramInt;
+  }
+  
+  public final void jno()
   {
     AppMethodBeat.i(142564);
-    this.Wrz = 0;
-    if (this.WrA != null) {
-      this.WrA.setVisibility(this.Wrz);
+    this.adYP = 0;
+    if (this.adYQ != null) {
+      this.adYQ.setVisibility(this.adYP);
     }
     AppMethodBeat.o(142564);
   }
@@ -126,46 +126,46 @@ public class IconSummaryPreference
       localObject = (TextView)paramView.findViewById(a.g.text_tv_one);
       if (localObject != null)
       {
-        ((TextView)localObject).setVisibility(this.GRI);
-        ((TextView)localObject).setText(this.GRG);
-        if (this.GRH != -1) {
-          ((TextView)localObject).setBackgroundDrawable(a.m(this.context, this.GRH));
+        ((TextView)localObject).setVisibility(this.MPm);
+        ((TextView)localObject).setText(this.MPk);
+        if (this.MPl != -1) {
+          ((TextView)localObject).setBackgroundDrawable(a.m(this.context, this.MPl));
         }
       }
-      if (this.EPM == null) {
-        this.EPM = ((ImageView)paramView.findViewById(a.g.image_right_iv));
+      if (this.KKj == null) {
+        this.KKj = ((ImageView)paramView.findViewById(a.g.image_right_iv));
       }
-      if (this.Wrc == null) {
-        this.Wrc = ((ViewGroup)paramView.findViewById(a.g.right_rl));
+      if (this.adYr == null) {
+        this.adYr = ((ViewGroup)paramView.findViewById(a.g.right_rl));
       }
-      if (this.Wrn == null) {
-        this.Wrn = paramView.findViewById(a.g.right_prospect);
+      if (this.adYC == null) {
+        this.adYC = paramView.findViewById(a.g.right_prospect);
       }
-      this.Wrn.setVisibility(this.Wra);
-      if (this.VVp == null) {
+      this.adYC.setVisibility(this.adYp);
+      if (this.adzN == null) {
         break label432;
       }
-      this.EPM.setImageBitmap(this.VVp);
+      this.KKj.setImageBitmap(this.adzN);
     }
     for (;;)
     {
-      this.EPM.setVisibility(this.Wrl);
-      this.Wrc.setVisibility(this.WqZ);
-      if (this.Wrg != null) {
-        this.EPM.setLayoutParams(this.Wrg);
+      this.KKj.setVisibility(this.adYA);
+      this.adYr.setVisibility(this.adYo);
+      if (this.adYv != null) {
+        this.KKj.setLayoutParams(this.adYv);
       }
-      this.WrA = ((TextView)paramView.findViewById(a.g.right_summary));
-      if ((this.WrA != null) && (fqw() != null) && (fqw().length() > 0))
+      this.adYQ = ((TextView)paramView.findViewById(a.g.right_summary));
+      if ((this.adYQ != null) && (gBR() != null) && (gBR().length() > 0))
       {
-        this.WrA.setText(fqw());
-        this.WrA.setVisibility(this.Wrz);
+        this.adYQ.setText(gBR());
+        this.adYQ.setVisibility(this.adYP);
       }
-      if ((this.WrA != null) && (this.WrB != -1))
+      if ((this.adYQ != null) && (this.adYR != -1))
       {
-        this.WrA.setCompoundDrawablesWithIntrinsicBounds(this.WrB, 0, 0, 0);
+        this.adYQ.setCompoundDrawablesWithIntrinsicBounds(this.adYR, 0, 0, 0);
         int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 2.0F);
-        this.WrA.setCompoundDrawablePadding(i);
-        this.WrA.setVisibility(this.Wrz);
+        this.adYQ.setCompoundDrawablePadding(i);
+        this.adYQ.setVisibility(this.adYP);
       }
       AppMethodBeat.o(142565);
       return;
@@ -175,15 +175,15 @@ public class IconSummaryPreference
         ((ImageView)localObject).setVisibility(0);
         break;
       }
-      if (cMV() == 0) {
+      if (dqA() == 0) {
         break;
       }
-      ((ImageView)localObject).setImageResource(cMV());
+      ((ImageView)localObject).setImageResource(dqA());
       ((ImageView)localObject).setVisibility(0);
       break;
       label432:
-      if (this.VQS != -1) {
-        this.EPM.setImageResource(this.VQS);
+      if (this.adva != -1) {
+        this.KKj.setImageResource(this.adva);
       }
     }
   }
@@ -201,7 +201,7 @@ public class IconSummaryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconSummaryPreference
  * JD-Core Version:    0.7.0.1
  */

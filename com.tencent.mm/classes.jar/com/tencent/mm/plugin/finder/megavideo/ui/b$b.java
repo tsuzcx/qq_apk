@@ -5,112 +5,94 @@ import android.content.Intent;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.e.e;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.megavideo.loader.BaseMegaVideoLoader;
 import com.tencent.mm.plugin.finder.megavideo.loader.FinderFavMegaVideoLoader;
-import com.tencent.mm.plugin.finder.model.bs;
-import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.ca;
+import com.tencent.mm.plugin.finder.model.cc;
 import com.tencent.mm.plugin.finder.utils.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "rootView", "Landroid/view/View;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/View;)V", "getActivity", "getEmptyView", "kotlin.jvm.PlatformType", "getHeaderView", "", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "position", "", "onItemDelete", "requestLoadMore", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderBaseMegaVideoUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "rootView", "Landroid/view/View;", "(Lcom/tencent/mm/ui/MMActivity;Landroid/view/View;)V", "getActivity", "getEmptyView", "kotlin.jvm.PlatformType", "getHeaderView", "", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "position", "", "onItemDelete", "requestLoadMore", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$b
   extends a.b
 {
-  public static final a zxn;
+  public static final a EAf;
   
   static
   {
-    AppMethodBeat.i(281587);
-    zxn = new a((byte)0);
-    AppMethodBeat.o(281587);
+    AppMethodBeat.i(341893);
+    EAf = new a((byte)0);
+    AppMethodBeat.o(341893);
   }
   
   public b$b(MMActivity paramMMActivity, View paramView)
   {
     super(paramMMActivity, paramView);
-    AppMethodBeat.i(281586);
-    AppMethodBeat.o(281586);
+    AppMethodBeat.i(341886);
+    AppMethodBeat.o(341886);
   }
   
   public final void b(RecyclerView.a<?> parama, View paramView, int paramInt)
   {
-    AppMethodBeat.i(281583);
-    p.k(parama, "adapter");
-    p.k(paramView, "view");
-    Log.i("FinderFavMegaVideoUIContract.ViewCallback", "onItemClick: position=".concat(String.valueOf(paramInt)));
-    paramInt -= ((h)parama).YSk.size();
-    if ((paramInt >= 0) && (paramInt < dJS().zxg.getSize()))
+    AppMethodBeat.i(341915);
+    s.u(parama, "adapter");
+    s.u(paramView, "view");
+    Log.i("FinderFavMegaVideoUIContract.ViewCallback", s.X("onItemClick: position=", Integer.valueOf(paramInt)));
+    paramInt -= ((i)parama).agOb.size();
+    if ((paramInt >= 0) && (paramInt < eCN().EzZ.getSize()))
     {
-      parama = (bu)dJS().zxg.getDataListJustForAdapter().get(paramInt);
-      if (!(parama instanceof bs))
+      parama = (cc)eCN().EzZ.getDataListJustForAdapter().get(paramInt);
+      if (!(parama instanceof ca))
       {
-        AppMethodBeat.o(281583);
+        AppMethodBeat.o(341915);
         return;
       }
-      Log.i("FinderFavMegaVideoUIContract.ViewCallback", "onItemClick " + paramInt + " id:" + parama.mf() + ", pos:" + paramInt);
+      Log.i("FinderFavMegaVideoUIContract.ViewCallback", "onItemClick " + paramInt + " id:" + parama.bZA() + ", pos:" + paramInt);
       parama = new Intent();
       parama.putExtra("KEY_ROUTER_UI", 1);
-      BaseFeedLoader.saveCache$default(dJS().zxg, parama, paramInt, null, 4, null);
-      Object localObject = aj.Bnu;
-      aj.a.a((Context)dlC(), parama, 0L, 0, false, 124);
-      localObject = a.ACH;
+      BaseFeedLoader.saveCache$default((BaseFeedLoader)eCN().EzZ, parama, paramInt, null, 4, null);
+      Object localObject = as.GSQ;
+      as.a.a((Context)dSs(), parama, 0L, 0, false, 124);
+      localObject = a.GfO;
       paramView = paramView.getContext();
-      p.j(paramView, "view.context");
-      a.am(paramView, parama);
+      s.s(paramView, "view.context");
+      a.at(paramView, parama);
     }
-    AppMethodBeat.o(281583);
+    AppMethodBeat.o(341915);
   }
   
-  public final void dsL()
+  public final void dUO()
   {
-    AppMethodBeat.i(281582);
-    if (dJR().zxg.getSize() <= 9)
-    {
-      localObject = dJR().zxg;
-      if (localObject == null)
-      {
-        localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.megavideo.loader.FinderFavMegaVideoLoader");
-        AppMethodBeat.o(281582);
-        throw ((Throwable)localObject);
-      }
-      if (((FinderFavMegaVideoLoader)localObject).hasMore) {
-        RefreshLoadMoreLayout.c(this.xvJ);
-      }
+    AppMethodBeat.i(341900);
+    if ((eCN().EzZ.getSize() <= 9) && (((FinderFavMegaVideoLoader)eCN().EzZ).hasMore)) {
+      RefreshLoadMoreLayout.d(this.ATx);
     }
-    Object localObject = dJR().zxg;
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.megavideo.loader.FinderFavMegaVideoLoader");
-      AppMethodBeat.o(281582);
-      throw ((Throwable)localObject);
-    }
-    localObject = (FinderFavMegaVideoLoader)localObject;
-    ((FinderFavMegaVideoLoader)localObject).jlf -= 1;
-    ((FinderFavMegaVideoLoader)localObject).xGy -= 1;
-    AppMethodBeat.o(281582);
+    FinderFavMegaVideoLoader localFinderFavMegaVideoLoader = (FinderFavMegaVideoLoader)eCN().EzZ;
+    localFinderFavMegaVideoLoader.lNX -= 1;
+    localFinderFavMegaVideoLoader.BfD -= 1;
+    AppMethodBeat.o(341900);
   }
   
   public final View getEmptyView()
   {
-    AppMethodBeat.i(281584);
-    View localView = getRootView().findViewById(b.f.empty_view);
-    AppMethodBeat.o(281584);
+    AppMethodBeat.i(341923);
+    View localView = getRootView().findViewById(e.e.empty_view);
+    AppMethodBeat.o(341923);
     return localView;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$ViewCallback$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract$ViewCallback$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

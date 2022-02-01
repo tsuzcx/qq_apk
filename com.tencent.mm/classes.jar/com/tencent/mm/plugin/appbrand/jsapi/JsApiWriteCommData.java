@@ -18,10 +18,10 @@ public final class JsApiWriteCommData
   public static final int CTRL_INDEX = 445;
   public static final String NAME = "writeCommData";
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(139854);
-    new WriteCommDataTask(this, parame, paramInt, paramJSONObject).bsM();
+    new WriteCommDataTask(this, paramf, paramInt, paramJSONObject).bQt();
     AppMethodBeat.o(139854);
   }
   
@@ -29,13 +29,13 @@ public final class JsApiWriteCommData
     extends MainProcessTask
   {
     public static final Parcelable.Creator<WriteCommDataTask> CREATOR;
-    private int cqA;
+    private int eit;
     private String mData;
     private String mPackageName;
-    private e nNw;
-    private boolean ovH;
-    private String ovI;
-    private o ovz;
+    private f qNp;
+    private p ryT;
+    private boolean rzb;
+    private String rzc;
     
     static
     {
@@ -47,23 +47,23 @@ public final class JsApiWriteCommData
     public WriteCommDataTask(Parcel paramParcel)
     {
       AppMethodBeat.i(139848);
-      f(paramParcel);
+      h(paramParcel);
       AppMethodBeat.o(139848);
     }
     
-    public WriteCommDataTask(o paramo, e parame, int paramInt, JSONObject paramJSONObject)
+    public WriteCommDataTask(p paramp, f paramf, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(139847);
-      this.ovz = paramo;
-      this.nNw = parame;
-      this.cqA = paramInt;
+      this.ryT = paramp;
+      this.qNp = paramf;
+      this.eit = paramInt;
       this.mPackageName = paramJSONObject.optString("packageName");
       this.mData = paramJSONObject.optString("data");
-      this.ovH = true;
+      this.rzb = true;
       AppMethodBeat.o(139847);
     }
     
-    public final void RW()
+    public final void asn()
     {
       boolean bool = false;
       AppMethodBeat.i(139849);
@@ -72,34 +72,34 @@ public final class JsApiWriteCommData
       }
       for (;;)
       {
-        bPt();
+        cpA();
         AppMethodBeat.o(139849);
         return;
         if (!MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getPackageName() + "_comm_preferences", 0).edit().putString(this.mPackageName, this.mData).commit()) {
           bool = true;
         }
-        this.ovH = bool;
+        this.rzb = bool;
       }
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(139850);
-      if (this.ovH)
+      if (this.rzb)
       {
-        if (Util.isNullOrNil(this.ovI)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ovI }))
+        if (Util.isNullOrNil(this.rzc)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.rzc }))
         {
-          this.nNw.j(this.cqA, this.ovz.h(str, null));
+          this.qNp.callback(this.eit, this.ryT.ZP(str));
           AppMethodBeat.o(139850);
           return;
         }
       }
-      this.nNw.j(this.cqA, this.ovz.h("ok", null));
+      this.qNp.callback(this.eit, this.ryT.ZP("ok"));
       AppMethodBeat.o(139850);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       boolean bool = true;
       AppMethodBeat.i(139851);
@@ -108,8 +108,8 @@ public final class JsApiWriteCommData
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.ovH = bool;
-        this.ovI = paramParcel.readString();
+        this.rzb = bool;
+        this.rzc = paramParcel.readString();
         AppMethodBeat.o(139851);
         return;
         bool = false;
@@ -121,11 +121,11 @@ public final class JsApiWriteCommData
       AppMethodBeat.i(139852);
       paramParcel.writeString(this.mPackageName);
       paramParcel.writeString(this.mData);
-      if (this.ovH) {}
+      if (this.rzb) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.ovI);
+        paramParcel.writeString(this.rzc);
         AppMethodBeat.o(139852);
         return;
       }

@@ -8,7 +8,7 @@ public class Api
 {
   public static Bitmap[] a(String paramString, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(250041);
+    AppMethodBeat.i(231032);
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
     localMediaMetadataRetriever.setDataSource(paramString);
     long l = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
@@ -20,7 +20,7 @@ public class Api
       i += 1;
     }
     localMediaMetadataRetriever.release();
-    AppMethodBeat.o(250041);
+    AppMethodBeat.o(231032);
     return paramString;
   }
   
@@ -34,7 +34,7 @@ public class Api
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.gogcv.Api
  * JD-Core Version:    0.7.0.1
  */

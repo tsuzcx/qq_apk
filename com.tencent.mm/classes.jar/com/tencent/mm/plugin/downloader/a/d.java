@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.downloader.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.downloader.g.b;
+import com.tencent.mm.plugin.downloader.f.b;
 
-@com.tencent.mm.kernel.b.e(gf=e.class)
+@com.tencent.mm.kernel.b.e(Dr=e.class)
 public abstract interface d
   extends a
 {
-  public abstract b bbS();
+  public abstract b bzH();
   
-  public abstract void md(boolean paramBoolean);
+  public abstract void nz(boolean paramBoolean);
 }
 
 

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/gs"
+<LinearLayout style="@style/h1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/qp" style="@style/go" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/auf" android:background="@drawable/mv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="0.0dip" style="@style/gt">
-        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/azc" android:background="@raw/voip_voicecall" style="@style/h7" />
-        <TextView android:id="@id/azd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:includeFontPadding="false" style="@style/zz" />
+    <include android:layout_marginTop="5.0dip" layout="@layout/qi" style="@style/gx" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b47" android:background="@drawable/lu" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/h2">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/bi8" style="@style/hf" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/a7b" android:gravity="center" android:id="@id/b_0" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kh3" />
     </LinearLayout>
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/ayb" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/k5" android:src="@drawable/b1a" />
 </LinearLayout>

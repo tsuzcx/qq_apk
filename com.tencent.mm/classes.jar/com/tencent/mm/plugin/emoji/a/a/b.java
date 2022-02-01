@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.pluginsdk.model.m;
-import com.tencent.mm.pluginsdk.model.m.a;
-import com.tencent.mm.pluginsdk.model.u;
-import com.tencent.mm.protocal.protobuf.akh;
+import com.tencent.mm.pluginsdk.model.o;
+import com.tencent.mm.pluginsdk.model.o.a;
+import com.tencent.mm.pluginsdk.model.w;
+import com.tencent.mm.protocal.protobuf.cjb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bj;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class b
 {
-  private static boolean Jy(int paramInt)
+  private static boolean Kg(int paramInt)
   {
     return paramInt == 7;
   }
   
-  private static boolean Jz(int paramInt)
+  private static boolean Kh(int paramInt)
   {
     return paramInt == 6;
   }
   
-  public static void a(c paramc, m.a parama)
+  public static void a(c paramc, o.a parama)
   {
     AppMethodBeat.i(108350);
-    if (!z.bdp())
+    if (!z.bBh())
     {
       AppMethodBeat.o(108350);
       return;
@@ -43,32 +43,32 @@ public final class b
     while (localIterator.hasNext())
     {
       Object localObject = (f)localIterator.next();
-      if ((localObject != null) && (((f)localObject).uAZ != f.a.uBi))
+      if ((localObject != null) && (((f)localObject).xHD != f.a.xHN))
       {
-        localObject = ((f)localObject).uBa;
-        boolean bool1 = e.b((akh)localObject);
-        boolean bool2 = e.a((akh)localObject);
+        localObject = ((f)localObject).xHE;
+        boolean bool1 = e.b((cjb)localObject);
+        boolean bool2 = e.a((cjb)localObject);
         if ((!bool1) && (!bool2))
         {
-          localArrayList.add(((akh)localObject).ProductID);
-          localObject = paramc.atY(((akh)localObject).ProductID);
+          localArrayList.add(((cjb)localObject).ProductID);
+          localObject = paramc.anQ(((cjb)localObject).ProductID);
           if (localObject != null) {
-            ((bh)localObject).VFq = 11;
+            ((bj)localObject).adjd = 11;
           }
         }
       }
     }
     paramc = MMApplicationContext.getContext();
     if (localArrayList.size() > 0) {
-      m.a(paramc, (String[])localArrayList.toArray(new String[localArrayList.size()]), parama);
+      o.a(paramc, (String[])localArrayList.toArray(new String[localArrayList.size()]), parama);
     }
     AppMethodBeat.o(108350);
   }
   
-  public static void a(ArrayList<u> paramArrayList, c paramc)
+  public static void a(ArrayList<w> paramArrayList, c paramc)
   {
     AppMethodBeat.i(108351);
-    if (!z.bdp())
+    if (!z.bBh())
     {
       AppMethodBeat.o(108351);
       return;
@@ -82,31 +82,31 @@ public final class b
     label251:
     while (paramArrayList.hasNext())
     {
-      u localu = (u)paramArrayList.next();
-      if (localu != null)
+      w localw = (w)paramArrayList.next();
+      if (localw != null)
       {
-        Log.i("MicroMsg.EmojiGoogleMarketTool", "endSeachGoogleMarket: %s", new Object[] { localu });
-        bh localbh = paramc.atY(localu.productId);
-        if (localbh != null)
+        Log.i("MicroMsg.EmojiGoogleMarketTool", "endSeachGoogleMarket: %s", new Object[] { localw });
+        bj localbj = paramc.anQ(localw.productId);
+        if (localbj != null)
         {
           int i;
-          if (localu.QVB == 10232)
+          if (localw.XRy == 10232)
           {
-            localbh.VFu = localu.QVy;
-            localbh.VFs = localu.QVz;
-            localbh.VFt = new BigDecimal(localu.QVA).divide(new BigDecimal(1000000)).toString();
-            localbh.VFq = 12;
-            i = localbh.VFo;
-            if ((!Jy(i)) && (!Jz(i))) {
-              localbh.asG(4);
+            localbj.adjh = localw.XRv;
+            localbj.adjf = localw.XRw;
+            localbj.adjg = new BigDecimal(localw.XRx).divide(new BigDecimal(1000000)).toString();
+            localbj.adjd = 12;
+            i = localbj.adjb;
+            if ((!Kg(i)) && (!Kh(i))) {
+              localbj.ayW(4);
             }
           }
           else
           {
-            localbh.VFq = 10;
-            localbh.VFr = localu.QVB;
-            i = localbh.VFo;
-            if ((!Jy(i)) && (!Jz(i)))
+            localbj.adjd = 10;
+            localbj.adje = localw.XRy;
+            i = localbj.adjb;
+            if ((!Kg(i)) && (!Kh(i)))
             {
               if (i == 3) {}
               for (i = 1;; i = 0)
@@ -114,7 +114,7 @@ public final class b
                 if (i != 0) {
                   break label251;
                 }
-                localbh.asG(10);
+                localbj.ayW(10);
                 break;
               }
             }

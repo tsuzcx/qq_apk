@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.menu.v;
 import com.tencent.mm.plugin.appbrand.menu.w;
+import com.tencent.mm.plugin.appbrand.menu.x;
 import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.plugin.appbrand.report.j;
 import com.tencent.mm.plugin.appbrand.service.c;
@@ -27,16 +27,16 @@ public final class d
   {
     AppMethodBeat.i(174884);
     paramc = super.a(paramc, paramJSONObject);
-    paramJSONObject = paramc.ppq.Cp(w.qfG.ordinal()).ozJ;
-    ad.b localb = paramc.ppq.Cp(w.qgg.ordinal()).ozJ;
-    if ((!paramJSONObject.Rq("user_clicked_share_btn")) && (!localb.Rq("user_clicked_share_btn")))
+    paramJSONObject = paramc.sue.CF(x.tkk.ordinal()).rDC;
+    ad.b localb = paramc.sue.CF(x.tkK.ordinal()).rDC;
+    if ((!paramJSONObject.Jp("user_clicked_share_btn")) && (!localb.Jp("user_clicked_share_btn")))
     {
       paramc = new JsApiShareAppMessageBase.c("not allow to share");
       AppMethodBeat.o(174884);
       throw paramc;
     }
-    paramJSONObject.J("user_clicked_share_btn", false);
-    localb.J("user_clicked_share_btn", false);
+    paramJSONObject.N("user_clicked_share_btn", false);
+    localb.N("user_clicked_share_btn", false);
     AppMethodBeat.o(174884);
     return paramc;
   }
@@ -48,7 +48,7 @@ public final class d
     if (paramd.withShareTicket) {}
     for (int i = 16;; i = 2)
     {
-      a(paramd.appId, paramd.fve, i, "", 2, -1);
+      a(paramd.appId, paramd.hzy, i, "", 2, -1);
       AppMethodBeat.o(174886);
       return;
     }
@@ -59,7 +59,7 @@ public final class d
     AppMethodBeat.i(174885);
     super.a(paramd, paramInt);
     String str1 = paramd.appId;
-    String str2 = paramd.fve;
+    String str2 = paramd.hzy;
     if (paramd.withShareTicket) {}
     for (int i = 16;; i = 2)
     {
@@ -81,22 +81,22 @@ public final class d
       if (paramString.toLowerCase().endsWith("@chatroom")) {
         i = 15;
       }
-      a(paramd.appId, paramd.fve, i, str, 1, -1);
+      a(paramd.appId, paramd.hzy, i, str, 1, -1);
     }
     for (;;)
     {
-      paramd.ppu.b(paramd);
+      paramd.sui.b(paramd);
       AppMethodBeat.o(174887);
       return;
       i = 2;
       if (paramString.toLowerCase().endsWith("@chatroom")) {
         i = 9;
       }
-      a(paramd.appId, paramd.fve, i, "", 1, -1);
+      a(paramd.appId, paramd.hzy, i, "", 1, -1);
     }
   }
   
-  protected final JsApiShareAppMessageBase.d bUr()
+  protected final JsApiShareAppMessageBase.d cuF()
   {
     AppMethodBeat.i(174888);
     JsApiShareAppMessageBase.d locald = new JsApiShareAppMessageBase.d();
@@ -106,7 +106,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:padding="@dimen/cd" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/bfe" android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="@dimen/az" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/e" android:text="@string/f_" android:singleLine="true" style="@style/mp" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/f6q" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:text="@string/f3d" android:layout_weight="1.0" style="@style/qg" />
+                <View android:layout_width="@dimen/cp" android:layout_height="wrap_content" />
+                <Button android:id="@id/i2v" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:text="@string/f3e" android:layout_weight="1.0" style="@style/qg" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/i2x" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:text="@string/f3g" android:layout_weight="1.0" style="@style/qg" />
+                <View android:layout_width="@dimen/cp" android:layout_height="wrap_content" />
+                <Button android:id="@id/i2w" android:layout_width="0.0dip" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:text="@string/f3f" android:layout_weight="1.0" style="@style/qg" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/a7b" android:id="@id/f79" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

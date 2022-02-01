@@ -1,32 +1,35 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
-import com.tencent.mm.ui.base.i;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.appbrand.w;
 
-public final class h$1
-  implements DialogInterface.OnCancelListener
+final class h$1
+  implements View.OnClickListener
 {
-  public h$1(Context paramContext, i parami) {}
+  h$1(w paramw) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(48654);
-    paramDialogInterface = AndroidContextUtil.castActivityOrNull(this.val$context);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.finish();
-    }
-    this.qVA.setOnCancelListener(null);
-    AppMethodBeat.o(48654);
+    AppMethodBeat.i(321991);
+    b localb = new b();
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashFactory$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    k.a(this.qrd.mAppId, k.d.qrG);
+    this.qrd.finish();
+    a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandLoadingSplashFactory$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(321991);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.h.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package androidx.cardview;
 
 public final class a$e
 {
-  public static final int[] CardView = { 16843071, 16843072, 2130968741, 2130968742, 2130968743, 2130968744, 2130968745, 2130968746, 2130968891, 2130968892, 2130968893, 2130968894, 2130968895 };
+  public static final int[] CardView = { 16843071, 16843072, 2130968748, 2130968749, 2130968750, 2130968751, 2130968752, 2130968753, 2130968901, 2130968902, 2130968903, 2130968904, 2130968905 };
   public static final int CardView_android_minHeight = 1;
   public static final int CardView_android_minWidth = 0;
   public static final int CardView_cardBackgroundColor = 2;

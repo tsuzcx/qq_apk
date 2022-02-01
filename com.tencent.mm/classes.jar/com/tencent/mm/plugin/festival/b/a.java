@@ -1,90 +1,71 @@
 package com.tencent.mm.plugin.festival.b;
 
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.vfs.j;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
 import java.util.Iterator;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/festival/model/FestivalExpiredResourcesCleaner;", "", "()V", "execute", "", "plugin-festival_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/festival/model/FestivalExpiredResourcesCleaner;", "", "()V", "execute", "", "plugin-festival_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a wUv;
+  public static final a Are;
   
   static
   {
-    AppMethodBeat.i(258532);
-    wUv = new a();
-    AppMethodBeat.o(258532);
+    AppMethodBeat.i(260904);
+    Are = new a();
+    AppMethodBeat.o(260904);
+  }
+  
+  private static final void dTm()
+  {
+    int i = 0;
+    AppMethodBeat.i(260897);
+    for (;;)
+    {
+      if (i < 4) {}
+      try
+      {
+        localObject = new String[] { "", ".ini", "-shm", "-wal" }[i];
+        y.deleteFile(com.tencent.mm.kernel.h.baE().cachePath + "Festival2021.db" + (String)localObject);
+        i += 1;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        AppMethodBeat.o(260897);
+        return;
+      }
+    }
+    y.ew(s.X(b.bmr(), "festival2021/"), true);
+    localObject = y.eB(s.X(b.bmq(), "files/mmkv/"), false);
+    if (localObject != null)
+    {
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        j localj = (j)((Iterator)localObject).next();
+        String str = localj.name;
+        s.s(str, "it.name");
+        if (n.U(str, "FestivalProcessSharedMMKV", false)) {
+          localj.NP(true);
+        }
+      }
+    }
+    AppMethodBeat.o(260897);
   }
   
   public static void execute()
   {
-    AppMethodBeat.i(258529);
-    com.tencent.e.h.ZvG.f((Runnable)a.wUw, "FestivalExpiredResourcesCleaner");
-    AppMethodBeat.o(258529);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    public static final a wUw;
-    
-    static
-    {
-      AppMethodBeat.i(258539);
-      wUw = new a();
-      AppMethodBeat.o(258539);
-    }
-    
-    public final void run()
-    {
-      int i = 0;
-      AppMethodBeat.i(258538);
-      for (;;)
-      {
-        if (i < 4) {}
-        try
-        {
-          localObject1 = new String[] { "", ".ini", "-shm", "-wal" }[i];
-          localObject2 = new StringBuilder();
-          localObject3 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject3, "storage()");
-          u.deleteFile(((com.tencent.mm.kernel.f)localObject3).aHl() + "Festival2021.db" + (String)localObject1);
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          Object localObject1;
-          Object localObject2;
-          Object localObject3;
-          AppMethodBeat.o(258538);
-          return;
-        }
-      }
-      u.dK(b.aSD() + "festival2021/", true);
-      localObject1 = u.dP(b.aSC() + "files/mmkv/", false);
-      if (localObject1 != null)
-      {
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (com.tencent.mm.vfs.f)((Iterator)localObject1).next();
-          localObject3 = ((com.tencent.mm.vfs.f)localObject2).name;
-          p.j(localObject3, "it.name");
-          if (n.M((String)localObject3, "FestivalProcessSharedMMKV", false)) {
-            ((com.tencent.mm.vfs.f)localObject2).cFq();
-          }
-        }
-        AppMethodBeat.o(258538);
-        return;
-      }
-      AppMethodBeat.o(258538);
-    }
+    AppMethodBeat.i(260886);
+    com.tencent.threadpool.h.ahAA.i(a..ExternalSyntheticLambda0.INSTANCE, "FestivalExpiredResourcesCleaner");
+    AppMethodBeat.o(260886);
   }
 }
 

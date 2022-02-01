@@ -2,66 +2,88 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer;", "T", "A", "", "policy", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;", "name", "", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;Ljava/lang/String;)V", "buffer", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$PageData;", "empty", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "length", "", "getLength", "()I", "setLength", "(I)V", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "clear", "", "makeList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "offer", "page", "take", "count", "expiredTimeMs", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Callback;", "Callback", "Companion", "PageData", "Policy", "plugin-finder-base_release"})
-public final class o<T, A>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/MergeResult;", "", "insertIndex", "", "insertCount", "changeIndex", "Ljava/util/LinkedList;", "isRemoveBeforeInsert", "", "dataReplace", "(IILjava/util/LinkedList;ZZ)V", "getChangeIndex", "()Ljava/util/LinkedList;", "getDataReplace", "()Z", "setDataReplace", "(Z)V", "getInsertCount", "()I", "setInsertCount", "(I)V", "getInsertIndex", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class o
 {
-  public static final a xKV;
-  private final ReentrantLock eYl;
-  private final String name;
-  private final Condition xKS;
-  private final LinkedList<Object<T, A>> xKT;
-  private final b xKU;
+  final int BkC;
+  final LinkedList<Integer> BkD;
+  final boolean BkE;
+  public boolean BkF;
+  public int apS;
   
-  static
+  public o(int paramInt1, int paramInt2, LinkedList<Integer> paramLinkedList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(259408);
-    xKV = new a((byte)0);
-    AppMethodBeat.o(259408);
+    AppMethodBeat.i(366518);
+    this.BkC = paramInt1;
+    this.apS = paramInt2;
+    this.BkD = paramLinkedList;
+    this.BkE = paramBoolean1;
+    this.BkF = paramBoolean2;
+    AppMethodBeat.o(366518);
   }
   
-  public o()
+  public final boolean equals(Object paramObject)
   {
-    this(null, null, 3);
-  }
-  
-  private o(b paramb, String paramString)
-  {
-    AppMethodBeat.i(259405);
-    this.xKU = paramb;
-    this.name = paramString;
-    this.eYl = new ReentrantLock();
-    this.xKS = this.eYl.newCondition();
-    this.xKT = new LinkedList();
-    AppMethodBeat.o(259405);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;", "", "(Ljava/lang/String;I)V", "GREEDY", "NORMAL", "plugin-finder-base_release"})
-  public static enum b
-  {
-    static
+    AppMethodBeat.i(366539);
+    if (this == paramObject)
     {
-      AppMethodBeat.i(262428);
-      b localb1 = new b("GREEDY", 0);
-      xKW = localb1;
-      b localb2 = new b("NORMAL", 1);
-      xKX = localb2;
-      xKY = new b[] { localb1, localb2 };
-      AppMethodBeat.o(262428);
+      AppMethodBeat.o(366539);
+      return true;
     }
-    
-    private b() {}
+    if (!(paramObject instanceof o))
+    {
+      AppMethodBeat.o(366539);
+      return false;
+    }
+    paramObject = (o)paramObject;
+    if (this.BkC != paramObject.BkC)
+    {
+      AppMethodBeat.o(366539);
+      return false;
+    }
+    if (this.apS != paramObject.apS)
+    {
+      AppMethodBeat.o(366539);
+      return false;
+    }
+    if (!s.p(this.BkD, paramObject.BkD))
+    {
+      AppMethodBeat.o(366539);
+      return false;
+    }
+    if (this.BkE != paramObject.BkE)
+    {
+      AppMethodBeat.o(366539);
+      return false;
+    }
+    if (this.BkF != paramObject.BkF)
+    {
+      AppMethodBeat.o(366539);
+      return false;
+    }
+    AppMethodBeat.o(366539);
+    return true;
+  }
+  
+  public final int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(366524);
+    String str = "MergeResult(insertIndex=" + this.BkC + ", insertCount=" + this.apS + ", changeIndex=" + this.BkD + ", isRemoveBeforeInsert=" + this.BkE + ", dataReplace=" + this.BkF + ')';
+    AppMethodBeat.o(366524);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.o
  * JD-Core Version:    0.7.0.1
  */

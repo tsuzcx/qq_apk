@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.remittance.model.ai;
-import com.tencent.mm.plugin.remittance.model.u;
+import com.tencent.mm.plugin.remittance.model.aj;
+import com.tencent.mm.plugin.remittance.model.v;
 import com.tencent.mm.pluginsdk.wallet.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.wallet_core.c.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 @com.tencent.mm.ui.base.a(7)
 public class RemittanceOSRedirect
   extends WalletBaseUI
 {
-  public String iSn = "";
+  public String luk = "";
   private int mScene;
   
   public int getLayoutId()
@@ -34,7 +33,7 @@ public class RemittanceOSRedirect
     super.onCreate(paramBundle);
     setTitleVisibility(8);
     this.mScene = getIntent().getIntExtra("scene", 0);
-    this.iSn = getIntent().getStringExtra("receiver_name");
+    this.luk = getIntent().getStringExtra("receiver_name");
     if (this.mScene == 0)
     {
       Log.e("MicroMsg.RemittanceOSRedirect", "error scene: %s", new Object[] { Integer.valueOf(this.mScene) });
@@ -45,14 +44,14 @@ public class RemittanceOSRedirect
     if (this.mScene == 5)
     {
       this.mNetSceneMgr.addSceneEndListener(1574);
-      doSceneProgress(new ai(z.bdg()));
+      doSceneProgress(new aj(z.bAV()));
       AppMethodBeat.o(68254);
       return;
     }
     if (this.mScene == 6)
     {
       this.mNetSceneMgr.addSceneEndListener(1301);
-      doSceneProgress(new u(this.iSn), true);
+      doSceneProgress(new v(this.luk), true);
     }
     AppMethodBeat.o(68254);
   }
@@ -73,64 +72,64 @@ public class RemittanceOSRedirect
     AppMethodBeat.o(68256);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp, boolean paramBoolean)
   {
     AppMethodBeat.i(68255);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramq instanceof ai))
+      if ((paramp instanceof aj))
       {
-        paramString = (ai)paramq;
-        Log.i("MicroMsg.RemittanceOSRedirect", "indexScene  %s", new Object[] { paramString.InC });
-        paramq = getIntent();
-        if (paramString.tVx == 1) {
-          f.a(this, 2, this.iSn, 11, null);
+        paramString = (aj)paramp;
+        Log.i("MicroMsg.RemittanceOSRedirect", "indexScene  %s", new Object[] { paramString.OkQ });
+        paramp = getIntent();
+        if (paramString.wYR == 1) {
+          f.a(this, 2, this.luk, 11, null);
         }
         for (;;)
         {
           finish();
           AppMethodBeat.o(68255);
           return;
-          paramq.setClass(this, RemittanceOSUI.class);
-          paramq.putExtra("os_currency", paramString.tVx);
-          paramq.putExtra("os_currencyuint", paramString.InC);
-          paramq.putExtra("os_currencywording", paramString.InD);
-          paramq.putExtra("os_notice", paramString.mKL);
-          paramq.putExtra("os_notice_url", paramString.mKM);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramq);
-          com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/remittance/ui/RemittanceOSRedirect", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramString.sf(0));
+          paramp.setClass(this, RemittanceOSUI.class);
+          paramp.putExtra("os_currency", paramString.wYR);
+          paramp.putExtra("os_currencyuint", paramString.OkQ);
+          paramp.putExtra("os_currencywording", paramString.OkR);
+          paramp.putExtra("os_notice", paramString.pHt);
+          paramp.putExtra("os_notice_url", paramString.pHu);
+          paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramp);
+          com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aYi(), "com/tencent/mm/plugin/remittance/ui/RemittanceOSRedirect", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramString.sb(0));
           com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/remittance/ui/RemittanceOSRedirect", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
-      if ((paramq instanceof u))
+      if ((paramp instanceof v))
       {
-        paramString = (u)paramq;
-        paramq = new Intent();
-        paramq.setClass(this, RemittanceHKUI.class);
-        this.iSn = paramString.IlR;
-        paramq.putExtra("scene", this.mScene);
-        paramq.putExtra("fee", paramString.gbJ / 100.0D);
-        paramq.putExtra("desc", paramString.desc);
-        paramq.putExtra("scan_remittance_id", paramString.IlT);
-        paramq.putExtra("receiver_name", paramString.IlR);
-        paramq.putExtra("receiver_true_name", paramString.tVz);
-        paramq.putExtra("receiver_nick_name", paramString.IlS);
-        paramq.putExtra("hk_currency", paramString.tVx);
-        paramq.putExtra("hk_currencyuint", paramString.tVy);
-        paramq.putExtra("hk_notice", paramString.mKL);
-        paramq.putExtra("hk_notice_url", paramString.mKM);
-        paramq.putExtra("recv_headimgurl", paramString.IlU);
-        paramInt2 = paramString.tVA;
+        paramString = (v)paramp;
+        paramp = new Intent();
+        paramp.setClass(this, RemittanceHKUI.class);
+        this.luk = paramString.Oji;
+        paramp.putExtra("scene", this.mScene);
+        paramp.putExtra("fee", paramString.ihV / 100.0D);
+        paramp.putExtra("desc", paramString.desc);
+        paramp.putExtra("scan_remittance_id", paramString.Ojk);
+        paramp.putExtra("receiver_name", paramString.Oji);
+        paramp.putExtra("receiver_true_name", paramString.wYT);
+        paramp.putExtra("receiver_nick_name", paramString.Ojj);
+        paramp.putExtra("hk_currency", paramString.wYR);
+        paramp.putExtra("hk_currencyuint", paramString.wYS);
+        paramp.putExtra("hk_notice", paramString.pHt);
+        paramp.putExtra("hk_notice_url", paramString.pHu);
+        paramp.putExtra("recv_headimgurl", paramString.Ojl);
+        paramInt2 = paramString.wYU;
         paramInt1 = 32;
         Log.i("MicroMsg.RemittanceOSRedirect", "setAmount: %d", new Object[] { Integer.valueOf(paramInt2) });
         if (paramInt2 == 1) {
           paramInt1 = 33;
         }
-        paramq.putExtra("pay_scene", paramInt1);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramq);
-        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/remittance/ui/RemittanceOSRedirect", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramString.sf(0));
+        paramp.putExtra("pay_scene", paramInt1);
+        paramString = new com.tencent.mm.hellhoundlib.b.a().cG(paramp);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aYi(), "com/tencent/mm/plugin/remittance/ui/RemittanceOSRedirect", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/remittance/ui/RemittanceOSRedirect", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         finish();
         AppMethodBeat.o(68255);
@@ -138,10 +137,10 @@ public class RemittanceOSRedirect
     }
     else
     {
-      if ((paramq instanceof ai))
+      if ((paramp instanceof aj))
       {
         Log.i("MicroMsg.RemittanceOSRedirect", "indexScene  errMsg %s", new Object[] { paramString });
-        h.d(this, paramString, "", new DialogInterface.OnClickListener()
+        k.d(this, paramString, "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -153,8 +152,8 @@ public class RemittanceOSRedirect
         AppMethodBeat.o(68255);
         return;
       }
-      if ((paramq instanceof u)) {
-        h.d(this, paramString, "", new DialogInterface.OnClickListener()
+      if ((paramp instanceof v)) {
+        k.d(this, paramString, "", new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -168,7 +167,7 @@ public class RemittanceOSRedirect
     AppMethodBeat.o(68255);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     return true;
   }
@@ -181,7 +180,7 @@ public class RemittanceOSRedirect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceOSRedirect
  * JD-Core Version:    0.7.0.1
  */

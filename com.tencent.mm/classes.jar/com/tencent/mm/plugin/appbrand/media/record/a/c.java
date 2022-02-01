@@ -6,25 +6,34 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class c
   implements d
 {
-  int qeA = 0;
-  byte[] qeB;
-  int qeC = 0;
-  String qew = "audio/mp4a-latm";
-  String qex = "audio/mpeg";
-  d.a qey = null;
-  int qez = 0;
+  int rfg = 0;
+  String tjl = "audio/mp4a-latm";
+  String tjm = "audio/mpeg";
+  d.a tjn = null;
+  int tjo = 0;
+  int tjp = 0;
+  byte[] tjq;
   
-  public final void Ca(int paramInt)
+  public final void Cp(int paramInt)
   {
     AppMethodBeat.i(146342);
-    Log.i("MicroMsg.Record.AudioEncoder", "mMinBufferSize:%d", new Object[] { Integer.valueOf(this.qez) });
-    this.qez = paramInt;
+    Log.i("MicroMsg.Record.AudioEncoder", "mMinBufferSize:%d", new Object[] { Integer.valueOf(this.tjo) });
+    this.tjo = paramInt;
     AppMethodBeat.o(146342);
+  }
+  
+  public final void I(double paramDouble)
+  {
+    AppMethodBeat.i(146343);
+    this.tjp = ((int)(1024.0D * paramDouble));
+    Log.i("MicroMsg.Record.AudioEncoder", "setEncodeBuffFrameSize frameKbSize:%b frameByteSize:%d", new Object[] { Double.valueOf(paramDouble), Integer.valueOf(this.tjp) });
+    this.tjq = new byte[this.tjp];
+    AppMethodBeat.o(146343);
   }
   
   public final void a(d.a parama)
   {
-    this.qey = parama;
+    this.tjn = parama;
   }
   
   public boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
@@ -37,52 +46,52 @@ public class c
   public final void d(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(146344);
-    if (this.qey == null)
+    if (this.tjn == null)
     {
       Log.e("MicroMsg.Record.AudioEncoder", "mEncodeListener is null, return");
       AppMethodBeat.o(146344);
       return;
     }
-    if (this.qeA == 0.0D)
+    if (this.tjp == 0.0D)
     {
       Log.e("MicroMsg.Record.AudioEncoder", "no frameSize, return");
       AppMethodBeat.o(146344);
       return;
     }
-    if (paramInt > this.qeA) {
-      Log.w("MicroMsg.Record.AudioEncoder", "buffSize:%d frameSize:%d, buffSize > frameSize ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.qeA) });
+    if (paramInt > this.tjp) {
+      Log.w("MicroMsg.Record.AudioEncoder", "buffSize:%d frameSize:%d, buffSize > frameSize ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.tjp) });
     }
-    Log.d("MicroMsg.Record.AudioEncoder", "bufferedSize:%d, buffSize:%d", new Object[] { Integer.valueOf(this.qeC), Integer.valueOf(paramInt) });
-    int i = this.qeC + paramInt;
-    if ((i >= this.qeA) && (paramArrayOfByte != null))
+    Log.d("MicroMsg.Record.AudioEncoder", "bufferedSize:%d, buffSize:%d", new Object[] { Integer.valueOf(this.rfg), Integer.valueOf(paramInt) });
+    int i = this.rfg + paramInt;
+    if ((i >= this.tjp) && (paramArrayOfByte != null))
     {
       Log.d("MicroMsg.Record.AudioEncoder", "flush all, currentBufferedSize:%d", new Object[] { Integer.valueOf(i) });
-      if (i > this.qeB.length)
+      if (i > this.tjq.length)
       {
         Log.i("MicroMsg.Record.AudioEncoder", "expand the end codeBuffer:%d", new Object[] { Integer.valueOf(i) });
-        byte[] arrayOfByte = this.qeB;
-        this.qeB = new byte[i];
-        System.arraycopy(arrayOfByte, 0, this.qeB, 0, this.qeC);
+        byte[] arrayOfByte = this.tjq;
+        this.tjq = new byte[i];
+        System.arraycopy(arrayOfByte, 0, this.tjq, 0, this.rfg);
       }
-      System.arraycopy(paramArrayOfByte, 0, this.qeB, this.qeC, paramInt);
-      this.qey.c(this.qeB, i, false);
-      this.qeC = 0;
+      System.arraycopy(paramArrayOfByte, 0, this.tjq, this.rfg, paramInt);
+      this.tjn.c(this.tjq, i, false);
+      this.rfg = 0;
     }
     for (;;)
     {
       if (paramBoolean)
       {
-        Log.i("MicroMsg.Record.AudioEncoder", "isEnd is true, flush the buffer, bufferedSize:%d", new Object[] { Integer.valueOf(this.qeC) });
-        this.qey.c(this.qeB, this.qeC, paramBoolean);
-        this.qeC = 0;
+        Log.i("MicroMsg.Record.AudioEncoder", "isEnd is true, flush the buffer, bufferedSize:%d", new Object[] { Integer.valueOf(this.rfg) });
+        this.tjn.c(this.tjq, this.rfg, paramBoolean);
+        this.rfg = 0;
       }
       AppMethodBeat.o(146344);
       return;
       if (paramArrayOfByte != null)
       {
-        System.arraycopy(paramArrayOfByte, 0, this.qeB, this.qeC, paramInt);
-        this.qeC = i;
-        Log.d("MicroMsg.Record.AudioEncoder", "append buff, currentBufferedSize:%d", new Object[] { Integer.valueOf(this.qeC) });
+        System.arraycopy(paramArrayOfByte, 0, this.tjq, this.rfg, paramInt);
+        this.rfg = i;
+        Log.d("MicroMsg.Record.AudioEncoder", "append buff, currentBufferedSize:%d", new Object[] { Integer.valueOf(this.rfg) });
       }
     }
   }
@@ -92,15 +101,6 @@ public class c
   public boolean j(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     return false;
-  }
-  
-  public final void r(double paramDouble)
-  {
-    AppMethodBeat.i(146343);
-    this.qeA = ((int)(1024.0D * paramDouble));
-    Log.i("MicroMsg.Record.AudioEncoder", "setEncodeBuffFrameSize frameKbSize:%b frameByteSize:%d", new Object[] { Double.valueOf(paramDouble), Integer.valueOf(this.qeA) });
-    this.qeB = new byte[this.qeA];
-    AppMethodBeat.o(146343);
   }
 }
 

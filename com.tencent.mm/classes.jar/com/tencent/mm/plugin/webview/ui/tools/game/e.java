@@ -12,16 +12,54 @@ import java.util.TreeMap;
 
 public final class e
 {
-  private static final Map<String, Map<Integer, Object>> QnJ;
+  private static final Map<String, Map<Integer, Object>> XfX;
   
   static
   {
     AppMethodBeat.i(80872);
-    QnJ = new HashMap();
+    XfX = new HashMap();
     AppMethodBeat.o(80872);
   }
   
-  public static void U(String paramString, Map<Integer, Object> paramMap)
+  public static void a(String paramString, f paramf)
+  {
+    AppMethodBeat.i(297016);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(297016);
+      return;
+    }
+    TreeMap localTreeMap = new TreeMap(new Comparator() {});
+    if (paramf != null)
+    {
+      Map localMap = paramf.fEU();
+      if (localMap != null) {
+        localTreeMap.putAll(localMap);
+      }
+      paramf = paramf.fEV();
+      if (paramf != null) {
+        localTreeMap.putAll(paramf);
+      }
+    }
+    paramf = (Map)XfX.remove(paramString);
+    paramString = localTreeMap;
+    if (paramf != null)
+    {
+      paramf.putAll(localTreeMap);
+      paramString = paramf;
+    }
+    if (paramString.containsKey(Integer.valueOf(b.Xgi))) {}
+    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.Xgi))).booleanValue();; bool = true)
+    {
+      paramString = cq(paramString);
+      Log.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
+      h.OAn.b(16142, paramString, bool, false);
+      AppMethodBeat.o(297016);
+      return;
+    }
+  }
+  
+  public static void ad(String paramString, Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80869);
     if (Util.isNullOrNil(paramString))
@@ -29,50 +67,18 @@ public final class e
       AppMethodBeat.o(80869);
       return;
     }
-    Map localMap = (Map)QnJ.get(paramString);
+    Map localMap = (Map)XfX.get(paramString);
     if (localMap != null)
     {
       localMap.putAll(paramMap);
       AppMethodBeat.o(80869);
       return;
     }
-    QnJ.put(paramString, paramMap);
+    XfX.put(paramString, paramMap);
     AppMethodBeat.o(80869);
   }
   
-  public static void a(String paramString, f paramf)
-  {
-    AppMethodBeat.i(257973);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(257973);
-      return;
-    }
-    TreeMap localTreeMap = new TreeMap(new Comparator() {});
-    if (paramf != null)
-    {
-      localTreeMap.putAll(paramf.ewY());
-      localTreeMap.putAll(paramf.ewZ());
-    }
-    paramf = (Map)QnJ.remove(paramString);
-    paramString = localTreeMap;
-    if (paramf != null)
-    {
-      paramf.putAll(localTreeMap);
-      paramString = paramf;
-    }
-    if (paramString.containsKey(Integer.valueOf(b.QnU))) {}
-    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.QnU))).booleanValue();; bool = true)
-    {
-      paramString = bW(paramString);
-      Log.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
-      h.IzE.b(16142, paramString, bool, false);
-      AppMethodBeat.o(257973);
-      return;
-    }
-  }
-  
-  public static String bW(Map<Integer, Object> paramMap)
+  public static String cq(Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80871);
     if ((paramMap == null) || (paramMap.isEmpty()))
@@ -103,41 +109,41 @@ public final class e
   
   public static enum a
   {
-    public static int QnK = 21;
-    public static int QnL = 22;
-    public static int QnM = 23;
-    public static int QnN = 24;
-    public static int QnO = 25;
-    public static int QnP = 26;
-    public static int QnQ = 27;
-    public static int QnR = 28;
-    public static int QnS = 29;
+    public static int XfY = 21;
+    public static int XfZ = 22;
+    public static int Xga = 23;
+    public static int Xgb = 24;
+    public static int Xgc = 25;
+    public static int Xgd = 26;
+    public static int Xge = 27;
+    public static int Xgf = 28;
+    public static int Xgg = 29;
   }
   
   public static enum b
   {
-    public static int QnU = 1000;
-    public static int QnV = 30;
-    public static int QnW = 31;
-    public static int QnX = 32;
-    public static int QnY = 33;
-    public static int QnZ = 34;
-    public static int Qoa = 38;
-    public static int Qob = 39;
-    public static int Qoc = 40;
-    public static int Qod = 41;
-    public static int Qoe = 42;
-    public static int Qof = 43;
-    public static int Qog = 44;
-    public static int Qoh = 45;
-    public static int Qoi = 49;
-    public static int Qoj = 50;
-    public static int Qok = 51;
-    public static int Qol = 52;
-    public static int Qom = 53;
-    public static int Qon = 54;
-    public static int Qoo = 55;
-    public static int Qop = 56;
+    public static int XgA = 53;
+    public static int XgB = 54;
+    public static int XgC = 55;
+    public static int XgD = 56;
+    public static int Xgi = 1000;
+    public static int Xgj = 30;
+    public static int Xgk = 31;
+    public static int Xgl = 32;
+    public static int Xgm = 33;
+    public static int Xgn = 34;
+    public static int Xgo = 38;
+    public static int Xgp = 39;
+    public static int Xgq = 40;
+    public static int Xgr = 41;
+    public static int Xgs = 42;
+    public static int Xgt = 43;
+    public static int Xgu = 44;
+    public static int Xgv = 45;
+    public static int Xgw = 49;
+    public static int Xgx = 50;
+    public static int Xgy = 51;
+    public static int Xgz = 52;
   }
 }
 

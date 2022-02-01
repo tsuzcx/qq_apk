@@ -1,210 +1,103 @@
 package com.tencent.mm.an;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cqt;
+import com.tencent.mm.protocal.protobuf.cqu;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vending.e.a;
-import com.tencent.mm.vending.e.b;
 
 public final class aa
+  extends p
+  implements m
 {
-  public static aa.b lDv = null;
+  private h callback;
+  private cqu owP;
+  private a<aa> owQ;
+  private final c rr;
   
-  public static d a(d paramd, a parama)
+  public aa()
   {
-    AppMethodBeat.i(132492);
-    a(paramd, parama, false, null);
-    AppMethodBeat.o(132492);
-    return paramd;
+    AppMethodBeat.i(239429);
+    Log.i("MicroMsg.NetSceneGetReceiptAssisPluginMenu", "NetSceneGetReceiptAssisPluginMenu begin");
+    c.a locala = new c.a();
+    locala.funcId = 1769;
+    locala.uri = "/cgi-bin/mmpay-bin/getreceiptassismenu";
+    cqt localcqt = new cqt();
+    localcqt.timestamp = cn.bDv();
+    locala.otE = localcqt;
+    locala.otF = new cqu();
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bEF();
+    AppMethodBeat.o(239429);
   }
   
-  public static q a(d paramd, a parama, boolean paramBoolean)
+  public aa(a<aa> parama)
   {
-    AppMethodBeat.i(292884);
-    paramd = a(paramd, parama, paramBoolean, null);
-    AppMethodBeat.o(292884);
-    return paramd;
+    this();
+    this.owQ = parama;
   }
   
-  public static q a(d paramd, a parama, boolean paramBoolean, b paramb)
+  public final cqu bHa()
   {
-    AppMethodBeat.i(132494);
-    c localc = new c(parama);
-    if (parama == null) {
-      localc = null;
+    AppMethodBeat.i(239437);
+    if (this.owP == null)
+    {
+      localcqu = new cqu();
+      AppMethodBeat.o(239437);
+      return localcqu;
     }
-    if ((paramb != null) && (localc != null)) {
-      paramb.keep(localc);
-    }
-    paramd = b(paramd, localc, paramBoolean);
-    AppMethodBeat.o(132494);
-    return paramd;
+    cqu localcqu = this.owP;
+    AppMethodBeat.o(239437);
+    return localcqu;
   }
   
-  public static void a(q paramq)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(132490);
-    if (lDv == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: MMCore Not init interface IGetNetSceneQueue.");
-      AppMethodBeat.o(132490);
-      return;
-    }
-    if (lDv.aGZ() == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: Get NetscneQueue is null.");
-      AppMethodBeat.o(132490);
-      return;
-    }
-    if (paramq == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: Param scene  == null.");
-      AppMethodBeat.o(132490);
-      return;
-    }
-    lDv.aGZ().a(paramq);
-    AppMethodBeat.o(132490);
+    AppMethodBeat.i(239432);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(239432);
+    return i;
   }
   
-  private static q b(d paramd, final a parama, final boolean paramBoolean)
+  public final int getType()
   {
-    AppMethodBeat.i(201287);
-    if (lDv == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: MMCore Not init interface IGetNetSceneQueue.");
-      AppMethodBeat.o(201287);
-      return null;
-    }
-    if (lDv.aGZ() == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: Get NetscneQueue is null.");
-      AppMethodBeat.o(201287);
-      return null;
-    }
-    if (paramd == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: Param CommReqResp is null");
-      AppMethodBeat.o(201287);
-      return null;
-    }
-    paramd = new q()
-    {
-      private i jxB;
-      private m lBP;
-      private final q lDw;
-      int lDx;
-      MTimerHandler lDy;
-      private final long startTime;
-      
-      public final int doScene(g paramAnonymousg, i paramAnonymousi)
-      {
-        AppMethodBeat.i(132484);
-        this.jxB = paramAnonymousi;
-        int i = dispatch(paramAnonymousg, this.lDz, this.lBP);
-        Log.i("MicroMsg.RunCgi", "Start doScene:%d func:%d netid:%d time:%d", new Object[] { Integer.valueOf(this.lDw.hashCode()), Integer.valueOf(getType()), Integer.valueOf(i), Long.valueOf(Util.nowMilliSecond() - this.startTime) });
-        if (parama != null)
-        {
-          if (i >= 0) {
-            break label121;
-          }
-          aa.a(paramBoolean, parama, 3, -1, "", this.lDz, this.lDw);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(132484);
-          return i;
-          label121:
-          this.lDy.startTimer(60000L);
-        }
-      }
-      
-      public final int getType()
-      {
-        AppMethodBeat.i(132483);
-        int i = this.lDz.getType();
-        AppMethodBeat.o(132483);
-        return i;
-      }
-    };
-    if (lDv.aGZ().a(paramd, 0))
-    {
-      AppMethodBeat.o(201287);
-      return paramd;
-    }
-    AppMethodBeat.o(201287);
-    return null;
+    return 1769;
   }
   
-  public static boolean biN()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(132489);
-    if (lDv == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: MMCore Not init interface IGetNetSceneQueue.");
-      AppMethodBeat.o(132489);
-      return false;
+    AppMethodBeat.i(239433);
+    Log.w("MicroMsg.NetSceneGetReceiptAssisPluginMenu", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.owP = ((cqu)c.c.b(((c)params).otC));
     }
-    if (lDv.aGZ() == null)
-    {
-      Log.e("MicroMsg.RunCgi", "ERROR: Get NetscneQueue is null.");
-      AppMethodBeat.o(132489);
-      return false;
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(132489);
-    return true;
+    if (this.owQ != null) {
+      this.owQ.onNetSceneEndCallback(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(239433);
   }
   
-  public static d d(d paramd)
+  public static abstract interface a<T extends p>
   {
-    AppMethodBeat.i(132491);
-    a(paramd, null, false, null);
-    AppMethodBeat.o(132491);
-    return paramd;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract int a(int paramInt1, int paramInt2, String paramString, d paramd, q paramq);
-  }
-  
-  static final class c
-    implements aa.a, a
-  {
-    private aa.a lDE;
-    
-    public c(aa.a parama)
-    {
-      this.lDE = parama;
-    }
-    
-    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, q paramq)
-    {
-      AppMethodBeat.i(132488);
-      if (this.lDE != null)
-      {
-        paramInt1 = this.lDE.a(paramInt1, paramInt2, paramString, paramd, paramq);
-        AppMethodBeat.o(132488);
-        return paramInt1;
-      }
-      AppMethodBeat.o(132488);
-      return -100000;
-    }
-    
-    public final void dead()
-    {
-      this.lDE = null;
-    }
+    public abstract void onNetSceneEndCallback(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.an.aa
  * JD-Core Version:    0.7.0.1
  */

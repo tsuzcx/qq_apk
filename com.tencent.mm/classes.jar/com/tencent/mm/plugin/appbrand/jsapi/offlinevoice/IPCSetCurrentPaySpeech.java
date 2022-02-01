@@ -14,11 +14,11 @@ public class IPCSetCurrentPaySpeech
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCSetCurrentPaySpeechParam> CREATOR;
-    private boolean phA;
-    private String phB;
-    private String phx;
-    private String phy;
-    private String phz;
+    private String smQ;
+    private String smR;
+    private String smS;
+    private boolean smT;
+    private String smU;
     private String version;
     
     static
@@ -33,14 +33,14 @@ public class IPCSetCurrentPaySpeech
     protected IPCSetCurrentPaySpeechParam(Parcel paramParcel)
     {
       AppMethodBeat.i(46654);
-      this.phx = paramParcel.readString();
-      this.phy = paramParcel.readString();
-      this.phz = paramParcel.readString();
+      this.smQ = paramParcel.readString();
+      this.smR = paramParcel.readString();
+      this.smS = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.phA = bool;
-        this.phB = paramParcel.readString();
+        this.smT = bool;
+        this.smU = paramParcel.readString();
         this.version = paramParcel.readString();
         AppMethodBeat.o(46654);
         return;
@@ -49,11 +49,11 @@ public class IPCSetCurrentPaySpeech
     
     public IPCSetCurrentPaySpeechParam(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5)
     {
-      this.phx = paramString1;
-      this.phy = paramString2;
-      this.phz = paramString3;
-      this.phA = paramBoolean;
-      this.phB = paramString4;
+      this.smQ = paramString1;
+      this.smR = paramString2;
+      this.smS = paramString3;
+      this.smT = paramBoolean;
+      this.smU = paramString4;
       this.version = paramString5;
     }
     
@@ -65,14 +65,14 @@ public class IPCSetCurrentPaySpeech
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46653);
-      paramParcel.writeString(this.phx);
-      paramParcel.writeString(this.phy);
-      paramParcel.writeString(this.phz);
-      if (this.phA) {}
+      paramParcel.writeString(this.smQ);
+      paramParcel.writeString(this.smR);
+      paramParcel.writeString(this.smS);
+      if (this.smT) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.phB);
+        paramParcel.writeString(this.smU);
         paramParcel.writeString(this.version);
         AppMethodBeat.o(46653);
         return;

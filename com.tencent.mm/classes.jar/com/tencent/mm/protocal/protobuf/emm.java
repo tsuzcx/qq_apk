@@ -1,187 +1,125 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import java.util.LinkedList;
 
 public final class emm
-  extends com.tencent.mm.cd.a
+  extends erp
 {
-  public String UoZ;
-  public String Upa;
-  public String Upb;
-  public String Upc;
-  public int mbo;
-  public int mbp;
-  public int mbq;
-  public int opType;
-  public int page;
-  public long timeStamp;
+  public String VCP;
+  public String VxX;
+  public int abqP;
+  public String hMy;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125841);
+    AppMethodBeat.i(174536);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.UoZ == null)
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Upa == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
+      if (this.VxX != null) {
+        paramVarArgs.g(2, this.VxX);
       }
-      if (this.Upb == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
+      if (this.VCP != null) {
+        paramVarArgs.g(3, this.VCP);
       }
-      if (this.Upc == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
+      paramVarArgs.bS(4, this.abqP);
+      if (this.hMy != null) {
+        paramVarArgs.g(5, this.hMy);
       }
-      paramVarArgs.aY(1, this.opType);
-      paramVarArgs.aY(2, this.page);
-      paramVarArgs.aY(3, this.mbo);
-      paramVarArgs.bm(4, this.timeStamp);
-      paramVarArgs.aY(5, this.mbp);
-      paramVarArgs.aY(6, this.mbq);
-      if (this.UoZ != null) {
-        paramVarArgs.f(7, this.UoZ);
-      }
-      if (this.Upa != null) {
-        paramVarArgs.f(8, this.Upa);
-      }
-      if (this.Upb != null) {
-        paramVarArgs.f(9, this.Upb);
-      }
-      if (this.Upc != null) {
-        paramVarArgs.f(10, this.Upc);
-      }
-      AppMethodBeat.o(125841);
+      AppMethodBeat.o(174536);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.opType) + 0 + g.a.a.b.b.a.bM(2, this.page) + g.a.a.b.b.a.bM(3, this.mbo) + g.a.a.b.b.a.p(4, this.timeStamp) + g.a.a.b.b.a.bM(5, this.mbp) + g.a.a.b.b.a.bM(6, this.mbq);
-      paramInt = i;
-      if (this.UoZ != null) {
-        paramInt = i + g.a.a.b.b.a.g(7, this.UoZ);
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label508;
       }
-      i = paramInt;
-      if (this.Upa != null) {
-        i = paramInt + g.a.a.b.b.a.g(8, this.Upa);
-      }
-      paramInt = i;
-      if (this.Upb != null) {
-        paramInt = i + g.a.a.b.b.a.g(9, this.Upb);
-      }
-      i = paramInt;
-      if (this.Upc != null) {
-        i = paramInt + g.a.a.b.b.a.g(10, this.Upc);
-      }
-      AppMethodBeat.o(125841);
-      return i;
     }
-    if (paramInt == 2)
+    label508:
+    for (int i = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+      paramInt = i;
+      if (this.VxX != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.VxX);
+      }
+      i = paramInt;
+      if (this.VCP != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.VCP);
+      }
+      i += i.a.a.b.b.a.cJ(4, this.abqP);
+      paramInt = i;
+      if (this.hMy != null) {
+        paramInt = i + i.a.a.b.b.a.h(5, this.hMy);
+      }
+      AppMethodBeat.o(174536);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
         }
+        AppMethodBeat.o(174536);
+        return 0;
       }
-      if (this.UoZ == null)
+      if (paramInt == 3)
       {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
+        emm localemm = (emm)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(174536);
+          return -1;
+        case 1: 
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
+            }
+            localemm.BaseRequest = localkc;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(174536);
+          return 0;
+        case 2: 
+          localemm.VxX = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(174536);
+          return 0;
+        case 3: 
+          localemm.VCP = ((i.a.a.a.a)localObject).ajGk.readString();
+          AppMethodBeat.o(174536);
+          return 0;
+        case 4: 
+          localemm.abqP = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(174536);
+          return 0;
+        }
+        localemm.hMy = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(174536);
+        return 0;
       }
-      if (this.Upa == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
-      }
-      if (this.Upb == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
-      }
-      if (this.Upc == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
-        AppMethodBeat.o(125841);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(125841);
-      return 0;
+      AppMethodBeat.o(174536);
+      return -1;
     }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      emm localemm = (emm)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(125841);
-        return -1;
-      case 1: 
-        localemm.opType = locala.abFh.AK();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 2: 
-        localemm.page = locala.abFh.AK();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 3: 
-        localemm.mbo = locala.abFh.AK();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 4: 
-        localemm.timeStamp = locala.abFh.AN();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 5: 
-        localemm.mbp = locala.abFh.AK();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 6: 
-        localemm.mbq = locala.abFh.AK();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 7: 
-        localemm.UoZ = locala.abFh.readString();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 8: 
-        localemm.Upa = locala.abFh.readString();
-        AppMethodBeat.o(125841);
-        return 0;
-      case 9: 
-        localemm.Upb = locala.abFh.readString();
-        AppMethodBeat.o(125841);
-        return 0;
-      }
-      localemm.Upc = locala.abFh.readString();
-      AppMethodBeat.o(125841);
-      return 0;
-    }
-    AppMethodBeat.o(125841);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.emm
  * JD-Core Version:    0.7.0.1
  */

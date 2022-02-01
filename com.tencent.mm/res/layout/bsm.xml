@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@null" android:paddingTop="@dimen/ib" android:paddingBottom="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/v3" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip">
-        <ImageView android:id="@id/v2" android:layout_width="@dimen/k3" android:layout_height="@dimen/ip" android:src="@raw/sight_icon_mention" android:scaleType="fitCenter" />
-        <TextView android:id="@id/v4" android:visibility="gone" android:layout_marginRight="@dimen/k_" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/ae" />
-    </RelativeLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/ix2" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:hint="rotate:" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/kug" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="translation:" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/j1f" android:layout_width="fill_parent" android:layout_height="@dimen/d6" android:layout_marginTop="@dimen/cp" android:hint="scale:" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/hls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="Start" style="@style/oh" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/ir5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp" android:text="Reset" style="@style/oh" />
+    <View android:layout_gravity="center_horizontal" android:id="@id/qc" android:background="@color/a9w" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/bx" />
+</LinearLayout>

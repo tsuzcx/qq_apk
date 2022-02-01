@@ -21,19 +21,19 @@ class AudioInfo
   
   CompositionTrackSegment getCurrentSegmentBy()
   {
-    AppMethodBeat.i(211886);
+    AppMethodBeat.i(218827);
     int i = 0;
     while (i < this.compositionTrack.getSegments().size())
     {
       CompositionTrackSegment localCompositionTrackSegment = (CompositionTrackSegment)this.compositionTrack.getSegments().get(i);
       if (localCompositionTrackSegment.getTimeMapping().getTarget().equals(this.audio.getTimeRange()))
       {
-        AppMethodBeat.o(211886);
+        AppMethodBeat.o(218827);
         return localCompositionTrackSegment;
       }
       i += 1;
     }
-    AppMethodBeat.o(211886);
+    AppMethodBeat.o(218827);
     return null;
   }
 }

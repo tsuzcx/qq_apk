@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.mv.ui.view;
 
 import android.content.Context;
-import android.graphics.Rect;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import androidx.recyclerview.widget.RecyclerView.h;
 import androidx.recyclerview.widget.RecyclerView.l;
-import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.g.a;
+import androidx.recyclerview.widget.g.b;
+import androidx.recyclerview.widget.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -26,482 +29,828 @@ import com.tencent.mm.plugin.music.model.m;
 import com.tencent.mm.plugin.mv.b.e;
 import com.tencent.mm.plugin.mv.b.f;
 import com.tencent.mm.plugin.mv.b.h;
-import com.tencent.mm.protocal.protobuf.dbj;
+import com.tencent.mm.protocal.protobuf.dta;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.h.c;
-import com.tencent.mm.view.recyclerview.h.d;
+import com.tencent.mm.view.recyclerview.i.c;
+import com.tencent.mm.view.recyclerview.i.d;
+import com.tencent.mm.view.recyclerview.j;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.g.b.am;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConvertData;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "liveRoomListener", "Lcom/tencent/mm/plugin/mv/ui/uic/callback/OnChattingViewEventListener;", "readCount", "buildFakeMsgPack", "Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;", "random", "hideNewCommentTip", "", "initFakeData", "isLandscape", "", "onDestroy", "onLongClicked", "songId", "", "commentId", "", "text", "isMyPost", "feedId", "nonceId", "(Ljava/lang/String;JLjava/lang/String;ZLjava/lang/Long;Ljava/lang/String;)V", "onMsgUpdated", "lstConvertData", "onPause", "onResume", "prepareViews", "setMaxWidth", "maxWidth", "setViewEventListener", "listener", "showNewCommentTip", "count", "smoothScrollToLastPosition", "Companion", "MusicCommentConvertData", "MusicCommentConverter", "MusicCommentItemData", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConvertData;", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "liveRoomListener", "Lcom/tencent/mm/plugin/mv/ui/uic/callback/OnChattingViewEventListener;", "readCount", "buildFakeMsgPack", "Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;", "random", "commentScrollToEnd", "", "isSmooth", "", "(Ljava/lang/Boolean;)V", "hideNewCommentTip", "ifReachLast", "initFakeData", "isLandscape", "onDestroy", "onLongClicked", "songId", "", "commentId", "", "text", "isMyPost", "feedId", "nonceId", "(Ljava/lang/String;JLjava/lang/String;ZLjava/lang/Long;Ljava/lang/String;)V", "onMsgUpdated", "lstConvertData", "onPause", "onResume", "prepareViews", "setMaxWidth", "maxWidth", "setViewEventListener", "listener", "showNewCommentTip", "count", "smoothScrollToLastPosition", "updateCommentListImpl", "newList", "updateComments", "Companion", "MusicCommentConvertData", "MusicCommentConverter", "MusicCommentItemData", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MusicMvCommentView
   extends RelativeLayout
 {
-  private static final int Gou;
-  public static final a Gov;
-  private com.tencent.mm.plugin.mv.ui.uic.a.a Got;
-  private HashMap _$_findViewCache;
-  private ArrayList<b> mXB;
+  public static final MusicMvCommentView.a Mim;
+  private static final int Mio;
+  private WxRecyclerAdapter<b> ALE;
+  private com.tencent.mm.plugin.mv.ui.uic.a.a Min;
+  private ArrayList<b> pUj;
   private int readCount;
-  private WxRecyclerAdapter<b> xnR;
   
   static
   {
-    AppMethodBeat.i(241277);
-    Gov = new a((byte)0);
-    Gou = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 4);
-    AppMethodBeat.o(241277);
+    AppMethodBeat.i(287203);
+    Mim = new MusicMvCommentView.a((byte)0);
+    Mio = com.tencent.mm.cd.a.fromDPToPix(MMApplicationContext.getContext(), 4);
+    AppMethodBeat.o(287203);
   }
   
   public MusicMvCommentView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(241276);
-    AppMethodBeat.o(241276);
+    AppMethodBeat.i(287078);
+    AppMethodBeat.o(287078);
   }
   
   public MusicMvCommentView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(241275);
-    this.mXB = new ArrayList();
-    View.inflate(paramContext, b.f.FZu, (ViewGroup)this);
-    this.xnR = new WxRecyclerAdapter((f)new g(this), this.mXB, true);
-    paramContext = (WxRecyclerView)_$_findCachedViewById(b.e.FXu);
-    if (paramContext != null)
+    AppMethodBeat.i(287072);
+    this.pUj = new ArrayList();
+    View.inflate(paramContext, b.f.LVr, (ViewGroup)this);
+    this.ALE = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.g)new e(this), this.pUj, true);
+    WxRecyclerView localWxRecyclerView = (WxRecyclerView)findViewById(b.e.LSU);
+    if (localWxRecyclerView != null)
     {
-      paramAttributeSet = this.xnR;
-      if (paramAttributeSet == null) {
-        p.bGy("adapter");
+      paramAttributeSet = this.ALE;
+      paramContext = paramAttributeSet;
+      if (paramAttributeSet == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramContext = null;
       }
-      paramContext.setAdapter((RecyclerView.a)paramAttributeSet);
+      localWxRecyclerView.setAdapter((RecyclerView.a)paramContext);
     }
-    paramContext = (WxRecyclerView)_$_findCachedViewById(b.e.FXu);
+    paramContext = (WxRecyclerView)findViewById(b.e.LSU);
     if (paramContext != null)
     {
       getContext();
       paramContext.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
     }
-    paramContext = (WxRecyclerView)_$_findCachedViewById(b.e.FXu);
+    paramContext = (WxRecyclerView)findViewById(b.e.LSU);
     if (paramContext != null) {
-      paramContext.b((RecyclerView.h)new h());
+      paramContext.a((RecyclerView.h)new MusicMvCommentView.f());
     }
-    paramContext = this.xnR;
-    if (paramContext == null) {
-      p.bGy("adapter");
+    paramContext = this.ALE;
+    if (paramContext == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      paramContext = null;
+      paramContext.agOe = ((i.c)new g(this));
+      paramContext = this.ALE;
+      if (paramContext != null) {
+        break label302;
+      }
+      kotlin.g.b.s.bIx("adapter");
+      paramContext = localObject;
     }
-    if (paramContext != null) {
-      paramContext.YSn = ((h.c)new i(this));
+    label302:
+    for (;;)
+    {
+      paramContext.agOd = ((i.d)new h(this));
+      ((WxRecyclerView)findViewById(b.e.LSU)).a((RecyclerView.l)new i(this));
+      ((RelativeLayout)findViewById(b.e.LUg)).setOnClickListener(new MusicMvCommentView..ExternalSyntheticLambda0(this));
+      setTag(this);
+      AppMethodBeat.o(287072);
+      return;
+      break;
     }
-    paramContext = this.xnR;
-    if (paramContext == null) {
-      p.bGy("adapter");
-    }
-    if (paramContext != null) {
-      paramContext.YSm = ((h.d)new j(this));
-    }
-    ((WxRecyclerView)_$_findCachedViewById(b.e.FXu)).a((RecyclerView.l)new k(this));
-    ((RelativeLayout)_$_findCachedViewById(b.e.FYC)).setOnClickListener((View.OnClickListener)new l(this));
-    setTag(this);
-    AppMethodBeat.o(241275);
   }
   
-  private final void dsP()
+  private static final void a(MusicMvCommentView paramMusicMvCommentView, View paramView)
   {
-    AppMethodBeat.i(241270);
-    Object localObject = this.xnR;
-    if (localObject == null) {
-      p.bGy("adapter");
+    AppMethodBeat.i(287161);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramMusicMvCommentView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    kotlin.g.b.s.u(paramMusicMvCommentView, "this$0");
+    paramMusicMvCommentView.bjj();
+    if (paramMusicMvCommentView.pUj.size() > 0) {
+      paramMusicMvCommentView.t(Boolean.TRUE);
     }
-    if (localObject != null)
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(287161);
+  }
+  
+  private static final void a(MusicMvCommentView paramMusicMvCommentView, boolean paramBoolean, com.tencent.mm.ui.base.s params)
+  {
+    AppMethodBeat.i(287135);
+    kotlin.g.b.s.u(paramMusicMvCommentView, "this$0");
+    if (params.jmw())
+    {
+      params.a(1, (CharSequence)paramMusicMvCommentView.getContext().getString(b.h.music_main_mv_chatting_copy), 0);
+      if (!paramBoolean) {
+        params.a(2, (CharSequence)paramMusicMvCommentView.getContext().getString(b.h.music_main_mv_expose), 0);
+      }
+    }
+    AppMethodBeat.o(287135);
+  }
+  
+  private static final void a(String paramString1, MusicMvCommentView paramMusicMvCommentView, Long paramLong, String paramString2, long paramLong1, String paramString3, MenuItem paramMenuItem, int paramInt)
+  {
+    AppMethodBeat.i(287154);
+    kotlin.g.b.s.u(paramString1, "$text");
+    kotlin.g.b.s.u(paramMusicMvCommentView, "this$0");
+    kotlin.g.b.s.u(paramString3, "$songId");
+    switch (paramMenuItem.getItemId())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(287154);
+      return;
+      ClipboardHelper.setText((CharSequence)paramString1);
+      Toast.makeText(paramMusicMvCommentView.getContext(), b.h.app_copy_ok, 0).show();
+      paramString1 = paramMusicMvCommentView.Min;
+      if (paramString1 != null)
+      {
+        paramString1.a(paramLong, paramString2, paramLong1);
+        AppMethodBeat.o(287154);
+        return;
+        m.M(paramMusicMvCommentView.getContext(), paramString3, d.hF(paramLong1));
+        paramString1 = paramMusicMvCommentView.Min;
+        if (paramString1 != null) {
+          paramString1.b(paramLong, paramString2, paramLong1);
+        }
+      }
+    }
+  }
+  
+  private final void aem(int paramInt)
+  {
+    AppMethodBeat.i(287093);
+    if (paramInt > 0)
+    {
+      ((RelativeLayout)findViewById(b.e.LUg)).setVisibility(0);
+      TextView localTextView = (TextView)findViewById(b.e.LUh);
+      Object localObject = am.aixg;
+      localObject = getContext().getResources().getString(b.h.music_live_new_comment_tip);
+      kotlin.g.b.s.s(localObject, "context.resources.getStr…sic_live_new_comment_tip)");
+      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Integer.valueOf(paramInt) }, 1));
+      kotlin.g.b.s.s(localObject, "java.lang.String.format(format, *args)");
+      localTextView.setText((CharSequence)localObject);
+      AppMethodBeat.o(287093);
+      return;
+    }
+    bjj();
+    AppMethodBeat.o(287093);
+  }
+  
+  private static final void b(MusicMvCommentView paramMusicMvCommentView)
+  {
+    AppMethodBeat.i(287165);
+    kotlin.g.b.s.u(paramMusicMvCommentView, "this$0");
+    paramMusicMvCommentView.t(Boolean.TRUE);
+    AppMethodBeat.o(287165);
+  }
+  
+  private final void bg(ArrayList<b> paramArrayList)
+  {
+    AppMethodBeat.i(287105);
+    boolean bool = epP();
+    int i = paramArrayList.size() - this.readCount;
+    int j = this.pUj.size();
+    bh(paramArrayList);
+    WxRecyclerAdapter localWxRecyclerAdapter = this.ALE;
+    paramArrayList = localWxRecyclerAdapter;
+    if (localWxRecyclerAdapter == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      paramArrayList = null;
+    }
+    if (paramArrayList.getItemCount() > 0)
+    {
+      if ((!bool) && (j != 0)) {
+        break label114;
+      }
+      ((WxRecyclerView)findViewById(b.e.LSU)).post(new MusicMvCommentView..ExternalSyntheticLambda3(this));
+    }
+    for (;;)
+    {
+      if ((i <= 0) || (bool)) {
+        bjj();
+      }
+      AppMethodBeat.o(287105);
+      return;
+      label114:
+      if (i > 0) {
+        aem(i);
+      }
+    }
+  }
+  
+  private final void bh(final ArrayList<b> paramArrayList)
+  {
+    AppMethodBeat.i(287129);
+    if (!((WxRecyclerView)findViewById(b.e.LSU)).isShown())
+    {
+      Log.i("MicroMsg.MusicMvCommentView", "[updateComments] liveCommentListRV is invisible, return");
+      AppMethodBeat.o(287129);
+      return;
+    }
+    Log.i("MicroMsg.MusicMvCommentView", "updateComments  before size:" + this.pUj.size() + " afterSize:" + paramArrayList.size());
+    g.b localb = androidx.recyclerview.widget.g.a((g.a)new k(this, paramArrayList), false);
+    kotlin.g.b.s.s(localb, "private fun updateCommen…       }\n        })\n    }");
+    localb.a((q)new j(this, paramArrayList));
+    AppMethodBeat.o(287129);
+  }
+  
+  private final void bjj()
+  {
+    AppMethodBeat.i(287099);
+    ((RelativeLayout)findViewById(b.e.LUg)).setVisibility(8);
+    AppMethodBeat.o(287099);
+  }
+  
+  private final void ebR()
+  {
+    AppMethodBeat.i(287089);
+    Object localObject = this.ALE;
+    if (localObject == null)
+    {
+      kotlin.g.b.s.bIx("adapter");
+      localObject = null;
+    }
+    for (;;)
     {
       if (((WxRecyclerAdapter)localObject).getItemCount() > 0)
       {
-        WxRecyclerView localWxRecyclerView = (WxRecyclerView)_$_findCachedViewById(b.e.FXu);
+        WxRecyclerView localWxRecyclerView = (WxRecyclerView)findViewById(b.e.LSU);
         localObject = c.a(((WxRecyclerAdapter)localObject).getItemCount() - 1, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.b(localWxRecyclerView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-        localWxRecyclerView.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.b(localWxRecyclerView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+        localWxRecyclerView.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.c(localWxRecyclerView, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "smoothScrollToLastPosition", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
       }
-      AppMethodBeat.o(241270);
+      AppMethodBeat.o(287089);
       return;
     }
-    AppMethodBeat.o(241270);
   }
   
-  public final View _$_findCachedViewById(int paramInt)
+  private final boolean epP()
   {
-    AppMethodBeat.i(241284);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    Object localObject2 = null;
+    AppMethodBeat.i(287120);
+    WxRecyclerAdapter localWxRecyclerAdapter = this.ALE;
+    Object localObject1 = localWxRecyclerAdapter;
+    if (localWxRecyclerAdapter == null)
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      kotlin.g.b.s.bIx("adapter");
+      localObject1 = null;
     }
-    AppMethodBeat.o(241284);
-    return localView1;
-  }
-  
-  public final void aL(ArrayList<b> paramArrayList)
-  {
-    AppMethodBeat.i(241268);
-    p.k(paramArrayList, "lstConvertData");
-    if (!((Collection)paramArrayList).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if (((WxRecyclerAdapter)localObject1).getItemCount() != 0)
     {
-      if (i != 0)
+      localObject1 = ((WxRecyclerView)findViewById(b.e.LSU)).getLayoutManager();
+      if (localObject1 == null)
       {
-        Object localObject = this.xnR;
-        if (localObject == null) {
-          p.bGy("adapter");
-        }
-        if (localObject != null)
-        {
-          localObject = (List)((WxRecyclerAdapter)localObject).data;
-          if (localObject != null) {
-            ((List)localObject).clear();
-          }
-        }
-        localObject = this.xnR;
-        if (localObject == null) {
-          p.bGy("adapter");
-        }
-        if (localObject != null)
-        {
-          localObject = (List)((WxRecyclerAdapter)localObject).data;
-          if (localObject != null) {
-            ((List)localObject).addAll((Collection)paramArrayList);
-          }
-        }
-        paramArrayList = this.xnR;
-        if (paramArrayList == null) {
-          p.bGy("adapter");
-        }
-        if (paramArrayList != null) {
-          paramArrayList.notifyDataSetChanged();
-        }
-        dsP();
+        localObject1 = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(287120);
+        throw ((Throwable)localObject1);
       }
-      AppMethodBeat.o(241268);
-      return;
+      int i = ((LinearLayoutManager)localObject1).Jw();
+      localObject1 = this.ALE;
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = localObject2;
+      }
+      while (i == ((WxRecyclerAdapter)localObject1).getItemCount() - 1)
+      {
+        AppMethodBeat.o(287120);
+        return true;
+      }
     }
+    AppMethodBeat.o(287120);
+    return false;
+  }
+  
+  private final void t(Boolean paramBoolean)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(287111);
+    WxRecyclerView localWxRecyclerView;
+    WxRecyclerAdapter localWxRecyclerAdapter;
+    if (kotlin.g.b.s.p(paramBoolean, Boolean.TRUE))
+    {
+      localWxRecyclerView = (WxRecyclerView)findViewById(b.e.LSU);
+      localWxRecyclerAdapter = this.ALE;
+      paramBoolean = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramBoolean = null;
+      }
+      paramBoolean = c.a(k.qu(paramBoolean.getItemCount() - 1, 0), new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.b(localWxRecyclerView, paramBoolean.aYi(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "commentScrollToEnd", "(Ljava/lang/Boolean;)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      localWxRecyclerView.smoothScrollToPosition(((Integer)paramBoolean.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localWxRecyclerView, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "commentScrollToEnd", "(Ljava/lang/Boolean;)V", "Undefined", "smoothScrollToPosition", "(I)V");
+      paramBoolean = this.ALE;
+      if (paramBoolean != null) {
+        break label294;
+      }
+      kotlin.g.b.s.bIx("adapter");
+      paramBoolean = localObject;
+    }
+    label294:
+    for (;;)
+    {
+      this.readCount = ((List)paramBoolean.data).size();
+      AppMethodBeat.o(287111);
+      return;
+      localWxRecyclerView = (WxRecyclerView)findViewById(b.e.LSU);
+      localWxRecyclerAdapter = this.ALE;
+      paramBoolean = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramBoolean = null;
+      }
+      paramBoolean = c.a(k.qu(paramBoolean.getItemCount() - 1, 0), new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.b(localWxRecyclerView, paramBoolean.aYi(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "commentScrollToEnd", "(Ljava/lang/Boolean;)V", "Undefined", "scrollToPosition", "(I)V");
+      localWxRecyclerView.scrollToPosition(((Integer)paramBoolean.sb(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localWxRecyclerView, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView", "commentScrollToEnd", "(Ljava/lang/Boolean;)V", "Undefined", "scrollToPosition", "(I)V");
+      break;
+    }
+  }
+  
+  public final void a(String paramString1, long paramLong, String paramString2, boolean paramBoolean, Long paramLong1, String paramString3)
+  {
+    AppMethodBeat.i(287254);
+    kotlin.g.b.s.u(paramString1, "songId");
+    kotlin.g.b.s.u(paramString2, "text");
+    com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f(getContext(), 1, false);
+    localf.Vtg = new MusicMvCommentView..ExternalSyntheticLambda1(this, paramBoolean);
+    localf.GAC = new MusicMvCommentView..ExternalSyntheticLambda2(paramString2, this, paramLong1, paramString3, paramLong, paramString1);
+    localf.dDn();
+    AppMethodBeat.o(287254);
+  }
+  
+  public final void bf(ArrayList<b> paramArrayList)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(287235);
+    kotlin.g.b.s.u(paramArrayList, "lstConvertData");
+    if (paramArrayList.isEmpty())
+    {
+      WxRecyclerAdapter localWxRecyclerAdapter = this.ALE;
+      Object localObject1 = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      localObject1 = (List)((WxRecyclerAdapter)localObject1).data;
+      if (localObject1 != null) {
+        ((List)localObject1).clear();
+      }
+      localWxRecyclerAdapter = this.ALE;
+      localObject1 = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      localObject1 = (List)((WxRecyclerAdapter)localObject1).data;
+      if (localObject1 != null) {
+        ((List)localObject1).addAll((Collection)paramArrayList);
+      }
+      paramArrayList = this.ALE;
+      if (paramArrayList == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramArrayList = localObject2;
+      }
+      for (;;)
+      {
+        paramArrayList.bZE.notifyChanged();
+        ebR();
+        this.readCount = 0;
+        bjj();
+        AppMethodBeat.o(287235);
+        return;
+      }
+    }
+    bg(paramArrayList);
+    AppMethodBeat.o(287235);
   }
   
   public final void setMaxWidth(int paramInt)
   {
-    AppMethodBeat.i(241272);
+    AppMethodBeat.i(287241);
     if (paramInt > 0)
     {
-      Object localObject = (FrameLayout)_$_findCachedViewById(b.e.FXt);
-      p.j(localObject, "liveCommentArea");
-      localObject = ((FrameLayout)localObject).getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = ((FrameLayout)findViewById(b.e.LST)).getLayoutParams();
       if (paramInt > 0) {
-        ((ViewGroup.LayoutParams)localObject).width = paramInt;
+        localLayoutParams.width = paramInt;
       }
     }
-    AppMethodBeat.o(241272);
+    AppMethodBeat.o(287241);
   }
   
   public final void setViewEventListener(com.tencent.mm.plugin.mv.ui.uic.a.a parama)
   {
-    AppMethodBeat.i(241266);
-    p.k(parama, "listener");
-    this.Got = parama;
-    AppMethodBeat.o(241266);
+    AppMethodBeat.i(287226);
+    kotlin.g.b.s.u(parama, "listener");
+    this.Min = parama;
+    AppMethodBeat.o(287226);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$Companion;", "", "()V", "MENU_ID_COPY", "", "MENU_ID_EXPOSE", "PADDING_EDGE_HEIGHT", "TAG", "", "plugin-mv_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "commentItemData", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;)V", "getCommentItemData", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;", "getItemId", "", "getItemType", "", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "commentItemData", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;)V", "getCommentItemData", "()Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;", "getItemId", "", "getItemType", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     implements com.tencent.mm.view.recyclerview.a
   {
-    final MusicMvCommentView.d Gow;
+    final MusicMvCommentView.d Mip;
     
     public b(MusicMvCommentView.d paramd)
     {
-      AppMethodBeat.i(226291);
-      this.Gow = paramd;
-      AppMethodBeat.o(226291);
+      AppMethodBeat.i(286931);
+      this.Mip = paramd;
+      AppMethodBeat.o(286931);
     }
     
-    public final int bAQ()
+    public final long bZA()
+    {
+      AppMethodBeat.i(286933);
+      long l = this.Mip.hashCode();
+      AppMethodBeat.o(286933);
+      return l;
+    }
+    
+    public final int bZB()
     {
       return 2;
     }
-    
-    public final long mf()
-    {
-      AppMethodBeat.i(226290);
-      long l = this.Gow.hashCode();
-      AppMethodBeat.o(226290);
-      return l;
-    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConvertData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView;)V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "updateNickname", "nickname", "", "referInfoTv", "Landroid/widget/TextView;", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConvertData;", "(Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView;)V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "updateNickname", "nickname", "", "referInfoTv", "Landroid/widget/TextView;", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class c
-    extends e<MusicMvCommentView.b>
+    extends com.tencent.mm.view.recyclerview.f<MusicMvCommentView.b>
   {
-    public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.i parami, int paramInt)
+    public c()
     {
-      AppMethodBeat.i(232116);
-      p.k(paramRecyclerView, "recyclerView");
-      p.k(parami, "holder");
-      AppMethodBeat.o(232116);
+      AppMethodBeat.i(286935);
+      AppMethodBeat.o(286935);
+    }
+    
+    private static final void a(MusicMvCommentView.b paramb, MusicMvCommentView paramMusicMvCommentView, View paramView)
+    {
+      AppMethodBeat.i(286947);
+      Object localObject = new Object();
+      b localb = new b();
+      localb.cH(paramb);
+      localb.cH(paramMusicMvCommentView);
+      localb.cH(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConverter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+      kotlin.g.b.s.u(paramb, "$item");
+      kotlin.g.b.s.u(paramMusicMvCommentView, "this$0");
+      long l = paramb.Mip.Mir.aaYB;
+      paramView = paramb.Mip.Mir.mdD;
+      paramb = paramView;
+      if (paramView == null) {
+        paramb = "";
+      }
+      paramMusicMvCommentView = MusicMvCommentView.c(paramMusicMvCommentView);
+      if (paramMusicMvCommentView != null) {
+        paramMusicMvCommentView.X(l, paramb);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConverter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(286947);
+    }
+    
+    public final void a(RecyclerView paramRecyclerView, j paramj, int paramInt)
+    {
+      AppMethodBeat.i(286962);
+      kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+      kotlin.g.b.s.u(paramj, "holder");
+      AppMethodBeat.o(286962);
     }
     
     public final int getLayoutId()
     {
-      return b.f.FZt;
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(MusicMvCommentView.c paramc, MusicMvCommentView.b paramb) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(227179);
-        Object localObject = new b();
-        ((b)localObject).bn(paramView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConverter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-        long l = this.Goz.Gow.GoA.TIL;
-        localObject = this.Goz.Gow.GoA.jDI;
-        paramView = (View)localObject;
-        if (localObject == null) {
-          paramView = "";
-        }
-        p.j(paramView, "item.commentItemData.msgPack.nonce_id ?: \"\"");
-        localObject = MusicMvCommentView.b(this.Goy.Gox);
-        if (localObject != null) {
-          ((com.tencent.mm.plugin.mv.ui.uic.a.a)localObject).J(l, paramView);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentConverter$onBindViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(227179);
-      }
+      return b.f.LVq;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;", "", "msgPack", "Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;", "(Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;)V", "getMsgPack", "()Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;", "setMsgPack", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$MusicCommentItemData;", "", "msgPack", "Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;", "(Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;)V", "getMsgPack", "()Lcom/tencent/mm/protocal/protobuf/MusicLiveMsgPack;", "setMsgPack", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class d
   {
-    dbj GoA;
+    dta Mir;
     
-    public d(dbj paramdbj)
+    public d(dta paramdta)
     {
-      AppMethodBeat.i(231336);
-      this.GoA = paramdbj;
-      AppMethodBeat.o(231336);
+      AppMethodBeat.i(286948);
+      this.Mir = paramdta;
+      AppMethodBeat.o(286948);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class e
-    implements q.f
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    implements com.tencent.mm.view.recyclerview.g
   {
-    e(MusicMvCommentView paramMusicMvCommentView, boolean paramBoolean) {}
+    e(MusicMvCommentView paramMusicMvCommentView) {}
     
-    public final void onCreateMMMenu(o paramo)
+    public final com.tencent.mm.view.recyclerview.f<?> yF(int paramInt)
     {
-      AppMethodBeat.i(234733);
-      p.j(paramo, "menu");
-      if (paramo.hJO())
-      {
-        paramo.b(1, (CharSequence)this.Gox.getContext().getString(b.h.music_main_mv_chatting_copy), 0);
-        if (!this.GoB) {
-          paramo.b(2, (CharSequence)this.Gox.getContext().getString(b.h.music_main_mv_expose), 0);
-        }
-      }
-      AppMethodBeat.o(234733);
+      AppMethodBeat.i(286945);
+      Log.i("MicroMsg.MusicMvCommentView", kotlin.g.b.s.X("getItemConvert, type:", Integer.valueOf(paramInt)));
+      com.tencent.mm.view.recyclerview.f localf = (com.tencent.mm.view.recyclerview.f)new MusicMvCommentView.c(this.Miq);
+      AppMethodBeat.o(286945);
+      return localf;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class f
-    implements q.g
-  {
-    f(MusicMvCommentView paramMusicMvCommentView, String paramString1, Long paramLong, String paramString2, long paramLong1, String paramString3) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
-      AppMethodBeat.i(240940);
-      p.j(paramMenuItem, "menuItem");
-      switch (paramMenuItem.getItemId())
-      {
-      }
-      do
-      {
-        AppMethodBeat.o(240940);
-        return;
-        ClipboardHelper.setText((CharSequence)this.uXe);
-        Toast.makeText(this.Gox.getContext(), b.h.app_copy_ok, 0).show();
-        paramMenuItem = MusicMvCommentView.b(this.Gox);
-        if (paramMenuItem != null)
-        {
-          paramMenuItem.a(this.GoC, this.wWl, this.AdA);
-          AppMethodBeat.o(240940);
-          return;
-        }
-        AppMethodBeat.o(240940);
-        return;
-        m.L(this.Gox.getContext(), this.xoA, d.Fw(this.AdA));
-        paramMenuItem = MusicMvCommentView.b(this.Gox);
-      } while (paramMenuItem == null);
-      paramMenuItem.b(this.GoC, this.wWl, this.AdA);
-      AppMethodBeat.o(240940);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class g
-    implements f
+    implements i.c<j>
   {
-    public final e<?> yx(int paramInt)
-    {
-      AppMethodBeat.i(231377);
-      Log.i("MicroMsg.MusicMvCommentView", "getItemConvert, type:".concat(String.valueOf(paramInt)));
-      e locale = (e)new MusicMvCommentView.c(this.Gox);
-      AppMethodBeat.o(231377);
-      return locale;
-    }
+    g(MusicMvCommentView paramMusicMvCommentView) {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$2", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$4", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemLongClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemLongClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class h
-    extends RecyclerView.h
+    implements i.d<j>
   {
-    public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
-    {
-      AppMethodBeat.i(229080);
-      p.k(paramRect, "outRect");
-      p.k(paramView, "view");
-      p.k(paramRecyclerView, "parent");
-      p.k(params, "state");
-      int j = RecyclerView.bh(paramView);
-      paramView = paramRecyclerView.getAdapter();
-      if (paramView != null) {}
-      for (int i = paramView.getItemCount(); j < i; i = -1)
-      {
-        paramRect.top = MusicMvCommentView.fhK();
-        AppMethodBeat.o(229080);
-        return;
-      }
-      paramRect.top = 0;
-      AppMethodBeat.o(229080);
-    }
+    h(MusicMvCommentView paramMusicMvCommentView) {}
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class i
-    implements h.c<com.tencent.mm.view.recyclerview.i>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$4", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemLongClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemLongClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-mv_release"})
-  public static final class j
-    implements h.d<com.tencent.mm.view.recyclerview.i>
-  {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-mv_release"})
-  public static final class k
     extends RecyclerView.l
   {
+    i(MusicMvCommentView paramMusicMvCommentView) {}
+    
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(225896);
+      AppMethodBeat.i(286930);
       b localb = new b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      localb.cH(paramRecyclerView);
+      localb.sc(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aYj());
       super.onScrollStateChanged(paramRecyclerView, paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
-      AppMethodBeat.o(225896);
+      AppMethodBeat.o(286930);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(225891);
-      b localb = new b();
-      localb.bn(paramRecyclerView);
-      localb.sg(paramInt1);
-      localb.sg(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
-      p.k(paramRecyclerView, "recyclerView");
-      paramRecyclerView = (WxRecyclerView)this.Gox._$_findCachedViewById(b.e.FXu);
-      p.j(paramRecyclerView, "liveCommentListRV");
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      Object localObject1 = null;
+      AppMethodBeat.i(286922);
+      Object localObject2 = new b();
+      ((b)localObject2).cH(paramRecyclerView);
+      ((b)localObject2).sc(paramInt1);
+      ((b)localObject2).sc(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((b)localObject2).aYj());
+      kotlin.g.b.s.u(paramRecyclerView, "recyclerView");
+      paramRecyclerView = ((WxRecyclerView)this.Miq.findViewById(b.e.LSU)).getLayoutManager();
       if (paramRecyclerView == null)
       {
-        paramRecyclerView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
-        AppMethodBeat.o(225891);
+        paramRecyclerView = new NullPointerException("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(286922);
         throw paramRecyclerView;
       }
-      paramInt1 = ((LinearLayoutManager)paramRecyclerView).kL();
-      paramRecyclerView = this.Gox;
-      MusicMvCommentView.a(paramRecyclerView, kotlin.k.i.ov(paramInt1, MusicMvCommentView.c(paramRecyclerView)));
-      if (paramInt1 == MusicMvCommentView.d(this.Gox).getItemCount() - 1) {}
-      for (paramInt1 = 1;; paramInt1 = 0)
+      paramInt1 = ((LinearLayoutManager)paramRecyclerView).Jw();
+      paramRecyclerView = this.Miq;
+      MusicMvCommentView.a(paramRecyclerView, k.qu(paramInt1, MusicMvCommentView.d(paramRecyclerView)));
+      localObject2 = MusicMvCommentView.e(this.Miq);
+      paramRecyclerView = (RecyclerView)localObject2;
+      if (localObject2 == null)
       {
-        if (paramInt1 != 0) {
-          MusicMvCommentView.e(this.Gox);
+        kotlin.g.b.s.bIx("adapter");
+        paramRecyclerView = null;
+      }
+      if (paramInt1 == paramRecyclerView.getItemCount() - 1)
+      {
+        paramInt1 = 1;
+        if (paramInt1 == 0) {
+          break label229;
         }
+        MusicMvCommentView.f(this.Miq);
+        localObject2 = this.Miq;
+        paramRecyclerView = MusicMvCommentView.e(this.Miq);
+        if (paramRecyclerView != null) {
+          break label226;
+        }
+        kotlin.g.b.s.bIx("adapter");
+        paramRecyclerView = localObject1;
+        label194:
+        MusicMvCommentView.a((MusicMvCommentView)localObject2, paramRecyclerView.getItemCount());
+      }
+      for (;;)
+      {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$5", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
-        AppMethodBeat.o(225891);
+        AppMethodBeat.o(286922);
+        return;
+        paramInt1 = 0;
+        break;
+        label226:
+        break label194;
+        label229:
+        paramInt1 = MusicMvCommentView.g(this.Miq).size();
+        paramInt2 = MusicMvCommentView.d(this.Miq);
+        MusicMvCommentView.b(this.Miq, paramInt1 - paramInt2);
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$updateComments$1", "Landroidx/recyclerview/widget/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class j
+    implements q
+  {
+    j(MusicMvCommentView paramMusicMvCommentView, ArrayList<MusicMvCommentView.b> paramArrayList) {}
+    
+    public final void aR(int paramInt1, int paramInt2)
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(286968);
+      WxRecyclerAdapter localWxRecyclerAdapter = MusicMvCommentView.e(this.Miq);
+      Object localObject1 = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      ((List)((WxRecyclerAdapter)localObject1).data).clear();
+      localWxRecyclerAdapter = MusicMvCommentView.e(this.Miq);
+      localObject1 = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      ((List)((WxRecyclerAdapter)localObject1).data).addAll((Collection)paramArrayList);
+      localObject1 = MusicMvCommentView.e(this.Miq);
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        ((WxRecyclerAdapter)localObject1).bA(paramInt1, paramInt2);
+        AppMethodBeat.o(286968);
+        return;
+      }
+    }
+    
+    public final void aS(int paramInt1, int paramInt2)
+    {
+      Object localObject2 = null;
+      AppMethodBeat.i(286977);
+      WxRecyclerAdapter localWxRecyclerAdapter = MusicMvCommentView.e(this.Miq);
+      Object localObject1 = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      ((List)((WxRecyclerAdapter)localObject1).data).clear();
+      localWxRecyclerAdapter = MusicMvCommentView.e(this.Miq);
+      localObject1 = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = null;
+      }
+      ((List)((WxRecyclerAdapter)localObject1).data).addAll((Collection)paramArrayList);
+      localObject1 = MusicMvCommentView.e(this.Miq);
+      if (localObject1 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        ((WxRecyclerAdapter)localObject1).bB(paramInt1, paramInt2);
+        AppMethodBeat.o(286977);
+        return;
+      }
+    }
+    
+    public final void aW(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(286958);
+      WxRecyclerAdapter localWxRecyclerAdapter2 = MusicMvCommentView.e(this.Miq);
+      WxRecyclerAdapter localWxRecyclerAdapter1 = localWxRecyclerAdapter2;
+      if (localWxRecyclerAdapter2 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localWxRecyclerAdapter1 = null;
+      }
+      localWxRecyclerAdapter1.bz(paramInt1, paramInt2);
+      AppMethodBeat.o(286958);
+    }
+    
+    public final void c(int paramInt1, int paramInt2, Object paramObject)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(286950);
+      WxRecyclerAdapter localWxRecyclerAdapter = MusicMvCommentView.e(this.Miq);
+      paramObject = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramObject = null;
+      }
+      ((List)paramObject.data).clear();
+      localWxRecyclerAdapter = MusicMvCommentView.e(this.Miq);
+      paramObject = localWxRecyclerAdapter;
+      if (localWxRecyclerAdapter == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramObject = null;
+      }
+      ((List)paramObject.data).addAll((Collection)paramArrayList);
+      paramObject = MusicMvCommentView.e(this.Miq);
+      if (paramObject == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        paramObject = localObject;
+      }
+      for (;;)
+      {
+        paramObject.by(paramInt1, paramInt2);
+        AppMethodBeat.o(286950);
         return;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class l
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$updateComments$result$1", "Landroidx/recyclerview/widget/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class k
+    extends g.a
   {
-    l(MusicMvCommentView paramMusicMvCommentView) {}
+    k(MusicMvCommentView paramMusicMvCommentView, ArrayList<MusicMvCommentView.b> paramArrayList) {}
     
-    public final void onClick(View paramView)
+    public final int If()
     {
-      AppMethodBeat.i(234294);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      MusicMvCommentView.e(this.Gox);
-      if (MusicMvCommentView.f(this.Gox).size() > 0)
+      AppMethodBeat.i(286827);
+      WxRecyclerAdapter localWxRecyclerAdapter2 = MusicMvCommentView.e(this.Miq);
+      WxRecyclerAdapter localWxRecyclerAdapter1 = localWxRecyclerAdapter2;
+      if (localWxRecyclerAdapter2 == null)
       {
-        paramView = (WxRecyclerView)this.Gox._$_findCachedViewById(b.e.FXu);
-        localObject = c.a(MusicMvCommentView.f(this.Gox).size() - 1, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$6", "onClick", "(Landroid/view/View;)V", "Undefined", "smoothScrollToPosition", "(I)V");
-        paramView.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$6", "onClick", "(Landroid/view/View;)V", "Undefined", "smoothScrollToPosition", "(I)V");
+        kotlin.g.b.s.bIx("adapter");
+        localWxRecyclerAdapter1 = null;
       }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentView$prepareViews$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(234294);
+      int i = ((List)localWxRecyclerAdapter1.data).size();
+      AppMethodBeat.o(286827);
+      return i;
+    }
+    
+    public final int Ig()
+    {
+      AppMethodBeat.i(286831);
+      int i = paramArrayList.size();
+      AppMethodBeat.o(286831);
+      return i;
+    }
+    
+    public final boolean aU(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(286837);
+      WxRecyclerAdapter localWxRecyclerAdapter2 = MusicMvCommentView.e(this.Miq);
+      WxRecyclerAdapter localWxRecyclerAdapter1 = localWxRecyclerAdapter2;
+      if (localWxRecyclerAdapter2 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localWxRecyclerAdapter1 = null;
+      }
+      boolean bool = kotlin.g.b.s.p(p.ae((List)localWxRecyclerAdapter1.data, paramInt1), p.ae((List)paramArrayList, paramInt2));
+      AppMethodBeat.o(286837);
+      return bool;
+    }
+    
+    public final boolean aV(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(286843);
+      WxRecyclerAdapter localWxRecyclerAdapter2 = MusicMvCommentView.e(this.Miq);
+      WxRecyclerAdapter localWxRecyclerAdapter1 = localWxRecyclerAdapter2;
+      if (localWxRecyclerAdapter2 == null)
+      {
+        kotlin.g.b.s.bIx("adapter");
+        localWxRecyclerAdapter1 = null;
+      }
+      boolean bool = kotlin.g.b.s.p(p.ae((List)localWxRecyclerAdapter1.data, paramInt1), p.ae((List)paramArrayList, paramInt2));
+      AppMethodBeat.o(286843);
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.MusicMvCommentView
  * JD-Core Version:    0.7.0.1
  */

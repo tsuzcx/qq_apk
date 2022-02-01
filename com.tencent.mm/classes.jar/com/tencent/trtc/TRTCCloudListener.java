@@ -130,10 +130,15 @@ public abstract class TRTCCloudListener
     
     public abstract int onProcessVideoFrame(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame1, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame2);
   }
+  
+  public static abstract interface TRTCVideoRenderListener
+  {
+    public abstract void onRenderVideoFrame(String paramString, int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudListener
  * JD-Core Version:    0.7.0.1
  */

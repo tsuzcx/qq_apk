@@ -20,9 +20,9 @@ public class Plugin
   public be createSubCore()
   {
     AppMethodBeat.i(24333);
-    b localb = new b();
+    SubCoreExt localSubCoreExt = new SubCoreExt();
     AppMethodBeat.o(24333);
-    return localb;
+    return localSubCoreExt;
   }
   
   public c getContactWidgetFactory()

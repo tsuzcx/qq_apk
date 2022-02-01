@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.dialog;
 import android.content.Context;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
@@ -37,17 +38,19 @@ final class a
     label89:
     for (paramInt2 = 173;; paramInt2 = 24)
     {
-      paramInt2 = com.tencent.mm.ci.a.fromDPToPix(localContext, paramInt2);
+      paramInt2 = com.tencent.mm.cd.a.fromDPToPix(localContext, paramInt2);
       i = View.MeasureSpec.makeMeasureSpec(((View)getParent()).getMeasuredHeight() - paramInt2, -2147483648);
       super.onMeasure(paramInt1, i);
       AppMethodBeat.o(131475);
       return;
     }
   }
+  
+  public final void setOnClickListener(View.OnClickListener paramOnClickListener) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.a
  * JD-Core Version:    0.7.0.1
  */

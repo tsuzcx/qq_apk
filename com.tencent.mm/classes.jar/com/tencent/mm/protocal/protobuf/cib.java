@@ -4,130 +4,114 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cib
-  extends dyl
+  extends erp
 {
-  public String RDy;
-  public int Tpc;
-  public eae Tpd;
-  public String scope;
+  public int Zdy;
+  public int Zdz;
+  public double latitude;
+  public double longitude;
+  public int offset;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(265296);
+    AppMethodBeat.i(258866);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.Tpc);
-      if (this.RDy != null) {
-        paramVarArgs.f(3, this.RDy);
-      }
-      if (this.Tpd != null)
-      {
-        paramVarArgs.oE(4, this.Tpd.computeSize());
-        this.Tpd.writeFields(paramVarArgs);
-      }
-      if (this.scope != null) {
-        paramVarArgs.f(5, this.scope);
-      }
-      AppMethodBeat.o(265296);
+      paramVarArgs.bS(2, this.offset);
+      paramVarArgs.bS(3, this.Zdz);
+      paramVarArgs.d(4, this.latitude);
+      paramVarArgs.d(5, this.longitude);
+      paramVarArgs.bS(6, this.scene);
+      paramVarArgs.bS(7, this.Zdy);
+      AppMethodBeat.o(258866);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label586;
+        break label566;
       }
     }
-    label586:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label566:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bM(2, this.Tpc);
-      paramInt = i;
-      if (this.RDy != null) {
-        paramInt = i + g.a.a.b.b.a.g(3, this.RDy);
-      }
-      i = paramInt;
-      if (this.Tpd != null) {
-        i = paramInt + g.a.a.a.oD(4, this.Tpd.computeSize());
-      }
-      paramInt = i;
-      if (this.scope != null) {
-        paramInt = i + g.a.a.b.b.a.g(5, this.scope);
-      }
-      AppMethodBeat.o(265296);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.offset);
+      int j = i.a.a.b.b.a.cJ(3, this.Zdz);
+      int k = i.a.a.b.b.a.ko(4);
+      int m = i.a.a.b.b.a.ko(5);
+      int n = i.a.a.b.b.a.cJ(6, this.scene);
+      int i1 = i.a.a.b.b.a.cJ(7, this.Zdy);
+      AppMethodBeat.o(258866);
+      return paramInt + i + j + (k + 8) + (m + 8) + n + i1;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(265296);
+        AppMethodBeat.o(258866);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cib localcib = (cib)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(265296);
+          AppMethodBeat.o(258866);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new jg();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((jg)localObject2).parseFrom((byte[])localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kc localkc = new kc();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkc.parseFrom((byte[])localObject);
             }
-            localcib.BaseRequest = ((jg)localObject2);
+            localcib.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(265296);
+          AppMethodBeat.o(258866);
           return 0;
         case 2: 
-          localcib.Tpc = ((g.a.a.a.a)localObject1).abFh.AK();
-          AppMethodBeat.o(265296);
+          localcib.offset = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(258866);
           return 0;
         case 3: 
-          localcib.RDy = ((g.a.a.a.a)localObject1).abFh.readString();
-          AppMethodBeat.o(265296);
+          localcib.Zdz = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(258866);
           return 0;
         case 4: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject1 = (byte[])paramVarArgs.get(paramInt);
-            localObject2 = new eae();
-            if ((localObject1 != null) && (localObject1.length > 0)) {
-              ((eae)localObject2).dd((byte[])localObject1);
-            }
-            localcib.Tpd = ((eae)localObject2);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(265296);
+          localcib.latitude = Double.longBitsToDouble(((i.a.a.a.a)localObject).ajGk.aay());
+          AppMethodBeat.o(258866);
+          return 0;
+        case 5: 
+          localcib.longitude = Double.longBitsToDouble(((i.a.a.a.a)localObject).ajGk.aay());
+          AppMethodBeat.o(258866);
+          return 0;
+        case 6: 
+          localcib.scene = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(258866);
           return 0;
         }
-        localcib.scope = ((g.a.a.a.a)localObject1).abFh.readString();
-        AppMethodBeat.o(265296);
+        localcib.Zdy = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(258866);
         return 0;
       }
-      AppMethodBeat.o(265296);
+      AppMethodBeat.o(258866);
       return -1;
     }
   }

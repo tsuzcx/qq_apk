@@ -1,67 +1,76 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class blx
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int SWY;
-  public String text;
+  public FinderJumpInfo ZNl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113999);
+    AppMethodBeat.i(259095);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.text != null) {
-        paramVarArgs.f(1, this.text);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ZNl != null)
+      {
+        paramVarArgs.qD(1, this.ZNl.computeSize());
+        this.ZNl.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.SWY);
-      AppMethodBeat.o(113999);
+      AppMethodBeat.o(259095);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.text == null) {
-        break label258;
+      if (this.ZNl == null) {
+        break label284;
       }
     }
-    label258:
-    for (paramInt = g.a.a.b.b.a.g(1, this.text) + 0;; paramInt = 0)
+    label284:
+    for (paramInt = i.a.a.a.qC(1, this.ZNl.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.SWY);
-      AppMethodBeat.o(113999);
-      return paramInt + i;
+      AppMethodBeat.o(259095);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(113999);
+        AppMethodBeat.o(259095);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         blx localblx = (blx)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(113999);
+          AppMethodBeat.o(259095);
           return -1;
-        case 1: 
-          localblx.text = locala.abFh.readString();
-          AppMethodBeat.o(113999);
-          return 0;
         }
-        localblx.SWY = locala.abFh.AK();
-        AppMethodBeat.o(113999);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          FinderJumpInfo localFinderJumpInfo = new FinderJumpInfo();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localFinderJumpInfo.parseFrom((byte[])localObject);
+          }
+          localblx.ZNl = localFinderJumpInfo;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(259095);
         return 0;
       }
-      AppMethodBeat.o(113999);
+      AppMethodBeat.o(259095);
       return -1;
     }
   }

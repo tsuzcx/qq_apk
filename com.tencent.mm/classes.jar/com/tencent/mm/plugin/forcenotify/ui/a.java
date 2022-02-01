@@ -2,98 +2,198 @@ package com.tencent.mm.plugin.forcenotify.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.os.PowerManager;
+import android.view.LayoutInflater;
 import android.view.View;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.LayoutManager;
-import androidx.recyclerview.widget.RecyclerView.h;
-import androidx.recyclerview.widget.RecyclerView.s;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.forcenotify.a.b;
-import com.tencent.mm.ui.ar;
-import kotlin.g.b.p;
-import kotlin.l;
+import android.view.View.OnKeyListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyItemDecoration;", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "dividerHeight", "", "(Landroid/content/Context;I)V", "bounds", "Landroid/graphics/Rect;", "getContext", "()Landroid/content/Context;", "getDividerHeight", "()I", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "getItemOffsets", "", "outRect", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "onDrawOver", "canvas", "Landroid/graphics/Canvas;", "plugin-force-notify_release"})
-public final class a
-  extends RecyclerView.h
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/forcenotify/ui/BaseWindow;", "Landroid/view/View$OnKeyListener;", "()V", "TAG", "", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "isDarkWindow", "", "()Z", "setDarkWindow", "(Z)V", "isHiding", "setHiding", "powerManager", "Landroid/os/PowerManager;", "getPowerManager", "()Landroid/os/PowerManager;", "powerManager$delegate", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "shown", "getShown", "setShown", "windowManager", "Landroid/view/WindowManager;", "getWindowManager", "()Landroid/view/WindowManager;", "windowManager$delegate", "findViewById", "T", "id", "", "(I)Landroid/view/View;", "getLayoutId", "hide", "", "onHideWindow", "onInflateView", "onScrollUpHide", "onShowWindow", "playPopupAnimation", "show", "plugin-force-notify_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class a
+  implements View.OnKeyListener
 {
-  private final Rect byi;
-  private final Context context;
-  private final int jau;
-  private final Paint paint;
+  private final j ATU = k.cm((kotlin.g.a.a)a.a.HoE);
+  final j Fzi = k.cm((kotlin.g.a.a)new b(this));
+  private boolean HoC;
+  private boolean HoD;
+  private final String TAG = "ForceNotify.BaseWindow";
+  private final j rfk = k.cm((kotlin.g.a.a)new c(this));
+  private View rootView;
   
-  public a(Context paramContext, int paramInt)
+  private static final void a(a parama)
   {
-    AppMethodBeat.i(253918);
-    this.context = paramContext;
-    this.jau = paramInt;
-    this.byi = new Rect();
-    paramContext = new Paint();
-    if (ar.isDarkMode()) {}
-    for (paramInt = this.context.getResources().getColor(a.b.force_notify_divider_white_10);; paramInt = this.context.getResources().getColor(a.b.force_notify_divider_dark_10))
+    s.u(parama, "this$0");
+    Object localObject;
+    int i;
+    if (!parama.HoC)
     {
-      paramContext.setColor(paramInt);
-      paramContext.setAntiAlias(true);
-      this.paint = paramContext;
-      AppMethodBeat.o(253918);
-      return;
+      parama.HoD = aw.isDarkMode();
+      parama.rootView = af.mU(parama.getContext()).inflate(parama.getLayoutId(), null);
+      localObject = parama.rootView;
+      s.checkNotNull(localObject);
+      parama.hq((View)localObject);
+      localObject = new WindowManager.LayoutParams();
+      if (!d.rb(26)) {
+        break label178;
+      }
+      i = 2038;
     }
-  }
-  
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
-  {
-    AppMethodBeat.i(253915);
-    p.k(paramRect, "outRect");
-    p.k(paramView, "view");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
-    super.a(paramRect, paramView, paramRecyclerView, params);
-    if (RecyclerView.bh(paramView) != 0) {
-      paramRect.top = this.jau;
-    }
-    AppMethodBeat.o(253915);
-  }
-  
-  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
-  {
-    AppMethodBeat.i(253913);
-    p.k(paramCanvas, "canvas");
-    p.k(paramRecyclerView, "parent");
-    p.k(params, "state");
-    super.b(paramCanvas, paramRecyclerView, params);
-    paramCanvas.save();
-    int j = paramRecyclerView.getChildCount();
-    if (j > 1)
+    for (;;)
     {
-      int i = 0;
-      while (i < j)
+      ((WindowManager.LayoutParams)localObject).type = i;
+      ((WindowManager.LayoutParams)localObject).format = -2;
+      ((WindowManager.LayoutParams)localObject).packageName = parama.getContext().getPackageName();
+      ((WindowManager.LayoutParams)localObject).gravity = 48;
+      ((WindowManager.LayoutParams)localObject).flags = 1064;
+      ((WindowManager.LayoutParams)localObject).horizontalMargin = parama.getContext().getResources().getDimensionPixelSize(com.tencent.mm.plugin.forcenotify.a.c.Edge_A);
+      ((WindowManager.LayoutParams)localObject).width = -1;
+      ((WindowManager.LayoutParams)localObject).height = -2;
+      View localView = parama.rootView;
+      if (localView != null) {
+        localView.setVisibility(0);
+      }
+      try
       {
-        params = paramRecyclerView.getChildAt(i);
-        if (RecyclerView.bh(params) != 0)
+        parama.getWindowManager().addView(parama.rootView, (ViewGroup.LayoutParams)localObject);
+        parama.fwS();
+        parama.HoC = true;
+        return;
+        label178:
+        i = 2002;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
         {
-          RecyclerView.LayoutManager localLayoutManager = paramRecyclerView.getLayoutManager();
-          if (localLayoutManager != null) {
-            localLayoutManager.getDecoratedBoundsWithMargins(params, this.byi);
-          }
-          int k = this.byi.top;
-          int m = this.byi.top;
-          int n = this.jau;
-          int i1 = paramRecyclerView.getRight();
-          paramCanvas.drawRect(paramRecyclerView.getLeft(), k, i1, m + n, this.paint);
+          Log.e(parama.TAG, "attach to window failed!");
         }
-        i += 1;
       }
     }
-    paramCanvas.restore();
-    AppMethodBeat.o(253913);
+  }
+  
+  private static final void b(a parama)
+  {
+    s.u(parama, "this$0");
+    if (parama.HoC)
+    {
+      parama.HoC = false;
+      View localView = parama.rootView;
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+    }
+    try
+    {
+      parama.getWindowManager().removeView(parama.rootView);
+      parama.fwT();
+      parama.rootView = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e(parama.TAG, "detach from window failed");
+      }
+    }
+  }
+  
+  private WindowManager getWindowManager()
+  {
+    return (WindowManager)this.rfk.getValue();
+  }
+  
+  protected final <T extends View> T findViewById(int paramInt)
+  {
+    View localView = this.rootView;
+    if (localView == null) {
+      return null;
+    }
+    return localView.findViewById(paramInt);
+  }
+  
+  protected final boolean fwR()
+  {
+    return this.HoD;
+  }
+  
+  public void fwS()
+  {
+    View localView = this.rootView;
+    if (localView != null) {
+      localView.setFocusableInTouchMode(true);
+    }
+    localView = this.rootView;
+    if (localView != null) {
+      localView.setOnKeyListener((View.OnKeyListener)this);
+    }
+  }
+  
+  public void fwT() {}
+  
+  protected final Context getContext()
+  {
+    Object localObject = this.ATU.getValue();
+    s.s(localObject, "<get-context>(...)");
+    return (Context)localObject;
+  }
+  
+  public abstract int getLayoutId();
+  
+  public final void hide()
+  {
+    h.ahAA.bk(new a..ExternalSyntheticLambda1(this));
+  }
+  
+  public abstract void hq(View paramView);
+  
+  public final void show()
+  {
+    com.tencent.mm.plugin.forcenotify.e.a locala = com.tencent.mm.plugin.forcenotify.e.a.HpI;
+    if (!com.tencent.mm.plugin.forcenotify.e.a.hE(getContext())) {
+      return;
+    }
+    h.ahAA.bk(new a..ExternalSyntheticLambda0(this));
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/os/PowerManager;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<PowerManager>
+  {
+    b(a parama)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/WindowManager;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<WindowManager>
+  {
+    c(a parama)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.a
  * JD-Core Version:    0.7.0.1
  */

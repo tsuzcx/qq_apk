@@ -5,13 +5,13 @@ import com.google.android.exoplayer2.k;
 
 public abstract interface n
 {
-  public abstract void ab(long paramLong);
+  public abstract void ST();
   
   public abstract int b(k paramk, e parame, boolean paramBoolean);
   
-  public abstract boolean isReady();
+  public abstract void cp(long paramLong);
   
-  public abstract void tq();
+  public abstract boolean isReady();
 }
 
 

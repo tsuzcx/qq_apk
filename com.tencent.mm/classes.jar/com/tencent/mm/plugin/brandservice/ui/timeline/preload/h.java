@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import com.tencent.mm.protocal.protobuf.boo;
+import com.tencent.mm.protocal.protobuf.cda;
 
 public final class h
-  extends boo
+  extends cda
 {
   public String extInfo = "";
-  public int kqZ = -1;
-  public int svw = -1;
+  public int mUU = -1;
+  public String vAY = "";
+  public int vBa = -1;
 }
 
 

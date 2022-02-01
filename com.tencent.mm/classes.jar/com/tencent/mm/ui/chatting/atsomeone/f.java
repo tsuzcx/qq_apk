@@ -1,174 +1,155 @@
 package com.tencent.mm.ui.chatting.atsomeone;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.g;
-import com.tencent.mm.plugin.fts.a.a.h;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.plugin.ac.a.a.a;
+import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.d;
-import com.tencent.mm.plugin.livelist.b;
-import com.tencent.mm.plugin.p.a.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ah;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.au;
 import java.util.Locale;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneLiveItem;", "Lcom/tencent/mm/plugin/livelist/BaseMMLiveListItem;", "orderId", "", "contact", "Lcom/tencent/mm/storage/Contact;", "type", "chatroomMember", "Lcom/tencent/mm/storage/ChatRoomMember;", "(ILcom/tencent/mm/storage/Contact;ILcom/tencent/mm/storage/ChatRoomMember;)V", "getChatroomMember", "()Lcom/tencent/mm/storage/ChatRoomMember;", "compareContent", "", "getCompareContent", "()Ljava/lang/String;", "setCompareContent", "(Ljava/lang/String;)V", "getContact", "()Lcom/tencent/mm/storage/Contact;", "ftsQuery", "Lcom/tencent/mm/plugin/fts/api/model/FTSQuery;", "getFtsQuery", "()Lcom/tencent/mm/plugin/fts/api/model/FTSQuery;", "setFtsQuery", "(Lcom/tencent/mm/plugin/fts/api/model/FTSQuery;)V", "matchInfo", "Lcom/tencent/mm/plugin/fts/api/model/FTSMemberMatch;", "getMatchInfo", "()Lcom/tencent/mm/plugin/fts/api/model/FTSMemberMatch;", "setMatchInfo", "(Lcom/tencent/mm/plugin/fts/api/model/FTSMemberMatch;)V", "getOrderId", "()I", "showHead", "", "getShowHead", "()Z", "setShowHead", "(Z)V", "showHeadCode", "getShowHeadCode", "setShowHeadCode", "(I)V", "showHeadDisplay", "getShowHeadDisplay", "setShowHeadDisplay", "getType", "clone", "Lcom/tencent/mm/plugin/livelist/IMMLiveListItem;", "compareTo", "other", "getAtSomeoneDisplayShowHead", "getItemType", "getUniqueId", "isSameContent", "app_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/atsomeone/AtSomeoneLiveItem;", "Lcom/tencent/mm/plugin/mvvmlist/BaseMvvmListItem;", "orderId", "", "contact", "Lcom/tencent/mm/storage/Contact;", "type", "chatroomMember", "Lcom/tencent/mm/storage/ChatRoomMember;", "(ILcom/tencent/mm/storage/Contact;ILcom/tencent/mm/storage/ChatRoomMember;)V", "getChatroomMember", "()Lcom/tencent/mm/storage/ChatRoomMember;", "compareContent", "", "getCompareContent", "()Ljava/lang/String;", "setCompareContent", "(Ljava/lang/String;)V", "getContact", "()Lcom/tencent/mm/storage/Contact;", "ftsQuery", "Lcom/tencent/mm/plugin/fts/api/model/FTSQuery;", "getFtsQuery", "()Lcom/tencent/mm/plugin/fts/api/model/FTSQuery;", "setFtsQuery", "(Lcom/tencent/mm/plugin/fts/api/model/FTSQuery;)V", "matchInfo", "Lcom/tencent/mm/plugin/fts/api/model/FTSMemberMatch;", "getMatchInfo", "()Lcom/tencent/mm/plugin/fts/api/model/FTSMemberMatch;", "setMatchInfo", "(Lcom/tencent/mm/plugin/fts/api/model/FTSMemberMatch;)V", "getOrderId", "()I", "showHead", "", "getShowHead", "()Z", "setShowHead", "(Z)V", "showHeadCode", "getShowHeadCode", "setShowHeadCode", "(I)V", "showHeadDisplay", "getShowHeadDisplay", "setShowHeadDisplay", "getType", "compareTo", "other", "getAtSomeoneDisplayShowHead", "getItemType", "getUniqueId", "isSameContent", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends com.tencent.mm.plugin.livelist.a
+  extends com.tencent.mm.plugin.mvvmlist.a<f>
 {
-  h BHY;
-  private final int GdZ;
-  private final ah WFW;
-  g WGk;
-  boolean WGl;
-  private int WGm;
-  String WGn;
-  private String WGo;
-  final as contact;
+  private final int FWs;
+  j FWt;
+  boolean FWu;
+  private int FWv;
+  String FWw;
+  private String FWx;
+  private final aj HuK;
+  i aenF;
+  final au contact;
   final int type;
   
-  public f(int paramInt1, as paramas, int paramInt2, ah paramah)
+  public f(int paramInt1, au paramau, int paramInt2, aj paramaj)
   {
-    AppMethodBeat.i(289629);
-    this.GdZ = paramInt1;
-    this.contact = paramas;
+    AppMethodBeat.i(254176);
+    this.FWs = paramInt1;
+    this.contact = paramau;
     this.type = paramInt2;
-    this.WFW = paramah;
-    this.WGm = 127;
-    this.WGn = "";
-    this.WGo = "";
+    this.HuK = paramaj;
+    this.FWv = 127;
+    this.FWw = "";
+    this.FWx = "";
     if (this.type == 2)
     {
-      if (!Util.isNullOrNil(this.contact.apg())) {
-        paramas = this.contact.apg();
+      if (Util.isNullOrNil(this.contact.field_conRemark)) {
+        break label258;
       }
-      for (;;)
+      paramau = this.contact.field_conRemark;
+      paramaj = paramau;
+      if (Util.isNullOrNil(paramau)) {
+        paramaj = this.contact.aSU();
+      }
+      if (paramaj != null) {
+        break label287;
+      }
+      paramau = "";
+      label113:
+      paramaj = d.aEj(paramau);
+      if (paramaj != null) {
+        break label323;
+      }
+      paramaj = locala;
+      label128:
+      if (paramaj == null)
       {
-        paramah = paramas;
-        if (Util.isNullOrNil(paramas)) {
-          paramah = this.contact.ayr();
-        }
-        if (paramah == null) {
-          break label185;
-        }
-        paramas = Locale.getDefault();
-        p.j(paramas, "Locale.getDefault()");
-        if (paramah != null) {
-          break;
-        }
-        paramas = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(289629);
-        throw paramas;
-        paramas = this.WFW;
-        if (paramas != null) {
-          paramas = paramas.PJ(this.contact.getUsername());
-        } else {
-          paramas = null;
-        }
+        paramaj = (f)this;
+        paramaj.aBe(s.X(paramau, ""));
+        locala = com.tencent.mm.plugin.ac.a.a.MnU;
+        paramaj.FWv = a.a.aPL(paramau);
       }
-      paramas = paramah.toUpperCase(paramas);
-      p.j(paramas, "(this as java.lang.String).toUpperCase(locale)");
-      if (paramas != null) {
-        break label453;
+      this.FWx = s.X(this.FWx, paramau);
+      paramInt1 = this.FWv;
+      if ((paramInt1 < 65) || (paramInt1 > 90)) {
+        break label393;
       }
-      label185:
-      paramas = "";
     }
-    label446:
-    label453:
-    for (;;)
+    label258:
+    label393:
+    for (paramaj = String.valueOf((char)paramInt1);; paramaj = "#")
     {
-      paramah = d.aHL(paramas);
-      Object localObject;
-      if (paramah != null)
+      this.FWw = paramaj;
+      Log.i("jiaminchen.AtSomeone", "uiDisplayName:" + paramau + " showHeadCode:" + (char)this.FWv + " compareContent:" + this.FWx);
+      AppMethodBeat.o(254176);
+      return;
+      paramau = this.HuK;
+      if (paramau == null)
       {
-        localObject = Locale.getDefault();
-        p.j(localObject, "Locale.getDefault()");
-        if (paramah == null)
-        {
-          paramas = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(289629);
-          throw paramas;
-        }
-        paramah = paramah.toUpperCase((Locale)localObject);
-        p.j(paramah, "(this as java.lang.String).toUpperCase(locale)");
-        if (paramah != null)
-        {
-          this.WGo = (paramah + '');
-          localObject = com.tencent.mm.plugin.p.a.a.Ejf;
-          this.WGm = a.a.aNg(paramah);
-          this.WGo += paramas;
-          paramInt1 = this.WGm;
-          if ((paramInt1 < 65) || (paramInt1 > 90)) {
-            break label446;
-          }
-        }
-      }
-      for (paramah = String.valueOf((char)paramInt1);; paramah = "#")
-      {
-        this.WGn = paramah;
-        Log.i("jiaminchen.AtSomeone", "uiDisplayName:" + paramas + " showHeadCode:" + (char)this.WGm + " compareContent:" + this.WGo);
-        AppMethodBeat.o(289629);
-        return;
-        paramah = (f)this;
-        paramah.WGo = (paramas + '');
-        localObject = com.tencent.mm.plugin.p.a.a.Ejf;
-        paramah.WGm = a.a.aNg(paramas);
+        paramau = null;
         break;
       }
+      paramau = paramau.getDisplayName(this.contact.field_username);
+      break;
+      label287:
+      paramau = Locale.getDefault();
+      s.s(paramau, "getDefault()");
+      paramau = paramaj.toUpperCase(paramau);
+      s.s(paramau, "(this as java.lang.String).toUpperCase(locale)");
+      if (paramau == null)
+      {
+        paramau = "";
+        break label113;
+      }
+      break label113;
+      label323:
+      Object localObject = Locale.getDefault();
+      s.s(localObject, "getDefault()");
+      localObject = paramaj.toUpperCase((Locale)localObject);
+      s.s(localObject, "(this as java.lang.String).toUpperCase(locale)");
+      paramaj = locala;
+      if (localObject == null) {
+        break label128;
+      }
+      aBe(s.X((String)localObject, ""));
+      paramaj = com.tencent.mm.plugin.ac.a.a.MnU;
+      this.FWv = a.a.aPL((String)localObject);
+      paramaj = ah.aiuX;
+      break label128;
     }
   }
   
-  public final int bAQ()
+  private void aBe(String paramString)
+  {
+    AppMethodBeat.i(254188);
+    s.u(paramString, "<set-?>");
+    this.FWx = paramString;
+    AppMethodBeat.o(254188);
+  }
+  
+  public final int bZB()
   {
     return this.type;
   }
   
-  public final boolean c(b paramb)
+  public final Object clone()
   {
-    AppMethodBeat.i(289625);
-    p.k(paramb, "other");
-    if ((paramb instanceof f))
-    {
-      if ((p.h(this.contact, ((f)paramb).contact)) && (p.h(this.BHY, ((f)paramb).BHY)) && (this.WGl == ((f)paramb).WGl))
-      {
-        AppMethodBeat.o(289625);
-        return true;
-      }
-      AppMethodBeat.o(289625);
-      return false;
-    }
-    AppMethodBeat.o(289625);
-    return false;
-  }
-  
-  public final b eLO()
-  {
-    AppMethodBeat.i(289626);
-    Object localObject = new f(this.GdZ, this.contact, this.type);
-    ((f)localObject).WGk = this.WGk;
-    ((f)localObject).BHY = this.BHY;
-    ((f)localObject).WGl = this.WGl;
-    ((f)localObject).WGn = this.WGn;
-    localObject = (b)localObject;
-    AppMethodBeat.o(289626);
+    AppMethodBeat.i(254199);
+    Object localObject = super.clone();
+    AppMethodBeat.o(254199);
     return localObject;
   }
   
-  public final String eLP()
+  public final String fcs()
   {
-    AppMethodBeat.i(289624);
-    String str = this.contact.getUsername() + '-' + this.type;
-    AppMethodBeat.o(289624);
+    AppMethodBeat.i(254193);
+    String str = this.contact.field_username + '-' + this.type;
+    AppMethodBeat.o(254193);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.atsomeone.f
  * JD-Core Version:    0.7.0.1
  */

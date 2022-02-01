@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/kkj" android:background="@drawable/amk" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.view.HardTouchableLayout android:id="@id/ig6" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m">
-        <com.google.android.material.tabs.TabLayout android:id="@id/igb" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicatorHeight="0.0dip" app:tabMaxWidth="@dimen/bu" app:tabMinWidth="@dimen/cf" app:tabMode="hcu" app:tabPaddingEnd="@dimen/bt" app:tabPaddingStart="@dimen/bt" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
-    </com.tencent.mm.view.HardTouchableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+<com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:id="@id/gvd" android:tag="radio_on" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/radio_on" app:iconColor="@color/Brand_100"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

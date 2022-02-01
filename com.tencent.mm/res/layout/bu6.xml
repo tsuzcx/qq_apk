@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView android:id="@id/hwc" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView android:id="@id/hwb" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-</FrameLayout>
+    <TextView android:textSize="@dimen/j7" android:textColor="@color/xo" android:gravity="center_horizontal" android:id="@id/hgw" android:background="@color/a" android:paddingTop="@dimen/ic" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/xh" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/g3l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="46.0dip">
+        <ProgressBar android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginEnd="@dimen/ig" style="@style/a85" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/xo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jpx" />
+    </LinearLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iva" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/df" android:layout_marginStart="@dimen/df" android:layout_marginEnd="@dimen/df" />
+</LinearLayout>

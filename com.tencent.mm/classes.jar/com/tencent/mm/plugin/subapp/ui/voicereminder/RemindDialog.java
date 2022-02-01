@@ -9,18 +9,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.ab;
 import com.tencent.mm.model.ay;
 import com.tencent.mm.model.az.d;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.subapp.b;
+import com.tencent.mm.plugin.subapp.modelvoiceremind.d;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -29,19 +30,19 @@ import java.util.List;
 public class RemindDialog
   extends HellActivity
 {
-  private static List<String> Mhy;
-  private static boolean fxt;
-  private List<String> Mhx;
-  private az.d Mhz;
+  private static List<String> SIV;
+  private static boolean hBY;
+  private List<String> SIU;
+  private az.d SIW;
   private MMHandler handler;
-  private com.tencent.mm.ui.widget.a.d mUO;
+  private e pRv;
   private String talker;
   
   static
   {
     AppMethodBeat.i(29261);
-    Mhy = new ArrayList();
-    fxt = false;
+    SIV = new ArrayList();
+    hBY = false;
     AppMethodBeat.o(29261);
   }
   
@@ -49,11 +50,11 @@ public class RemindDialog
   {
     AppMethodBeat.i(29254);
     this.talker = "";
-    this.Mhx = new ArrayList();
+    this.SIU = new ArrayList();
     this.handler = new MMHandler();
-    this.Mhz = new az.d()
+    this.SIW = new az.d()
     {
-      public final void y(String paramAnonymousString, long paramAnonymousLong)
+      public final void C(String paramAnonymousString, long paramAnonymousLong)
       {
         AppMethodBeat.i(29249);
         Log.d("MicroMsg.RemindDialog", "onVoiceRemind ".concat(String.valueOf(paramAnonymousString)));
@@ -65,28 +66,28 @@ public class RemindDialog
     AppMethodBeat.o(29254);
   }
   
-  public static void S(Context paramContext, String paramString1, String paramString2)
+  public static void T(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(29259);
-    Log.d("MicroMsg.RemindDialog", "show " + fxt + " remind " + paramString2);
-    if (fxt)
+    Log.d("MicroMsg.RemindDialog", "show " + hBY + " remind " + paramString2);
+    if (hBY)
     {
-      Mhy.add(paramString2);
+      SIV.add(paramString2);
       AppMethodBeat.o(29259);
       return;
     }
-    Mhy.clear();
-    fxt = true;
-    if (bh.aGY().foreground)
+    SIV.clear();
+    hBY = true;
+    if (bh.aZW().foreground)
     {
       localIntent = new Intent(paramContext, RemindDialog.class);
       localIntent.putExtra("_RemindDialog_User", paramString1);
       localIntent.putExtra("_RemindDialog_Remind", paramString2);
       localIntent.setFlags(603979776);
       localIntent.addFlags(268435456);
-      paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aFh(), "com/tencent/mm/plugin/subapp/ui/voicereminder/RemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString1.sf(0));
+      paramString1 = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aYi(), "com/tencent/mm/plugin/subapp/ui/voicereminder/RemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString1.sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/subapp/ui/voicereminder/RemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(29259);
       return;
@@ -96,14 +97,14 @@ public class RemindDialog
     localIntent.putExtra("_RemindDialog_Remind", paramString2);
     localIntent.setFlags(604012544);
     localIntent.addFlags(268435456);
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aFh(), "com/tencent/mm/plugin/subapp/ui/voicereminder/RemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.sf(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aYi(), "com/tencent/mm/plugin/subapp/ui/voicereminder/RemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/subapp/ui/voicereminder/RemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(29259);
   }
   
-  private void cBf()
+  private void deo()
   {
     AppMethodBeat.i(29256);
     this.handler.post(new Runnable()
@@ -136,43 +137,43 @@ public class RemindDialog
     AppMethodBeat.i(29255);
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    paramBundle = new d.a(this);
-    paramBundle.ayc(R.l.eVn);
-    paramBundle.bBd(" ");
-    paramBundle.ayj(R.l.eVk).c(new DialogInterface.OnClickListener()
+    paramBundle = new e.a(this);
+    paramBundle.aEK(R.l.gYr);
+    paramBundle.bDw(" ");
+    paramBundle.aER(R.l.gYo).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(29250);
-        paramAnonymousDialogInterface = com.tencent.mm.plugin.subapp.d.d.ghF();
+        paramAnonymousDialogInterface = d.hAY();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.RE(RemindDialog.c(RemindDialog.this));
+          paramAnonymousDialogInterface.JC(RemindDialog.c(RemindDialog.this));
         }
-        if (ab.QJ(bh.getNotification().aqX()))
+        if (au.bwn(bh.getNotification().aKU()))
         {
           RemindDialog.this.finish();
           AppMethodBeat.o(29250);
           return;
         }
-        b.mIG.d(new Intent().putExtra("Chat_User", RemindDialog.c(RemindDialog.this)), RemindDialog.this);
+        com.tencent.mm.plugin.subapp.a.pFn.d(new Intent().putExtra("Chat_User", RemindDialog.c(RemindDialog.this)), RemindDialog.this);
         RemindDialog.this.finish();
         AppMethodBeat.o(29250);
       }
     });
-    paramBundle.ayk(R.l.eVm).d(new DialogInterface.OnClickListener()
+    paramBundle.aES(R.l.gYq).d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(29251);
-        paramAnonymousDialogInterface = com.tencent.mm.plugin.subapp.d.d.ghF();
+        paramAnonymousDialogInterface = d.hAY();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.RE(RemindDialog.c(RemindDialog.this));
+          paramAnonymousDialogInterface.JC(RemindDialog.c(RemindDialog.this));
         }
         RemindDialog.this.finish();
         AppMethodBeat.o(29251);
       }
     });
-    paramBundle.a(new DialogInterface.OnDismissListener()
+    paramBundle.c(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -183,28 +184,28 @@ public class RemindDialog
     });
     this.talker = getIntent().getStringExtra("_RemindDialog_User");
     Object localObject = getIntent().getStringExtra("_RemindDialog_Remind");
-    this.Mhx.clear();
-    this.Mhx.add(localObject);
-    localObject = Mhy.iterator();
+    this.SIU.clear();
+    this.SIU.add(localObject);
+    localObject = SIV.iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      this.Mhx.add(str);
+      this.SIU.add(str);
     }
-    this.mUO = paramBundle.icu();
-    this.mUO.setCanceledOnTouchOutside(false);
-    this.mUO.show();
-    cBf();
+    this.pRv = paramBundle.jHH();
+    this.pRv.setCanceledOnTouchOutside(false);
+    this.pRv.show();
+    deo();
     AppMethodBeat.o(29255);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(29258);
-    fxt = false;
-    com.tencent.mm.plugin.subapp.d.d locald = com.tencent.mm.plugin.subapp.d.d.ghF();
+    hBY = false;
+    d locald = d.hAY();
     if (locald != null) {
-      locald.b(this.Mhz);
+      locald.b(this.SIW);
     }
     super.onPause();
     AppMethodBeat.o(29258);
@@ -213,10 +214,10 @@ public class RemindDialog
   public void onResume()
   {
     AppMethodBeat.i(29257);
-    fxt = true;
-    com.tencent.mm.plugin.subapp.d.d locald = com.tencent.mm.plugin.subapp.d.d.ghF();
+    hBY = true;
+    d locald = d.hAY();
     if (locald != null) {
-      locald.a(this.Mhz);
+      locald.a(this.SIW);
     }
     super.onResume();
     AppMethodBeat.o(29257);

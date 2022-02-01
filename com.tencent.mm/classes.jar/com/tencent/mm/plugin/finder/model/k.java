@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.view.recyclerview.h.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.i.b;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FeedLbsBarData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "()V", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FeedLbsBarData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "()V", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class k
-  extends h.b
+  extends i.b
   implements com.tencent.mm.plugin.finder.feed.model.internal.k
 {
   public final int a(com.tencent.mm.plugin.finder.feed.model.internal.k paramk)
   {
-    AppMethodBeat.i(278152);
-    p.k(paramk, "obj");
-    AppMethodBeat.o(278152);
+    AppMethodBeat.i(332197);
+    s.u(paramk, "obj");
+    AppMethodBeat.o(332197);
     return 0;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    return 2012;
+    AppMethodBeat.i(332205);
+    long l = hashCode();
+    AppMethodBeat.o(332205);
+    return l;
   }
   
-  public final long mf()
+  public final int bZB()
   {
-    AppMethodBeat.i(278154);
-    long l = hashCode();
-    AppMethodBeat.o(278154);
-    return l;
+    return 2012;
   }
 }
 

@@ -2,18 +2,50 @@ package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.channel.a.a;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.utils.Log;
 
 public final class SendAuth
 {
+  public static class Options
+  {
+    public static final int INVALID_FLAGS = -1;
+    public String callbackClassName;
+    public int callbackFlags;
+    
+    public Options()
+    {
+      AppMethodBeat.i(242956);
+      this.callbackFlags = -1;
+      AppMethodBeat.o(242956);
+    }
+    
+    public void fromBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(242964);
+      this.callbackClassName = a.a(paramBundle, "_wxapi_sendauth_options_callback_classname");
+      this.callbackFlags = a.a(paramBundle, "_wxapi_sendauth_options_callback_flags", -1);
+      AppMethodBeat.o(242964);
+    }
+    
+    public void toBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(242959);
+      paramBundle.putString("_wxapi_sendauth_options_callback_classname", this.callbackClassName);
+      paramBundle.putInt("_wxapi_sendauth_options_callback_flags", this.callbackFlags);
+      AppMethodBeat.o(242959);
+    }
+  }
+  
   public static class Req
     extends BaseReq
   {
     private static final int LENGTH_LIMIT = 1024;
     private static final String TAG = "MicroMsg.SDK.SendAuth.Req";
     public String extData;
+    public SendAuth.Options options;
     public String scope;
     public String state;
     
@@ -54,6 +86,9 @@ public final class SendAuth
       this.scope = paramBundle.getString("_wxapi_sendauth_req_scope");
       this.state = paramBundle.getString("_wxapi_sendauth_req_state");
       this.extData = paramBundle.getString("_wxapi_sendauth_req_ext_data");
+      SendAuth.Options localOptions = new SendAuth.Options();
+      this.options = localOptions;
+      localOptions.fromBundle(paramBundle);
       AppMethodBeat.o(3950);
     }
     
@@ -69,6 +104,10 @@ public final class SendAuth
       paramBundle.putString("_wxapi_sendauth_req_scope", this.scope);
       paramBundle.putString("_wxapi_sendauth_req_state", this.state);
       paramBundle.putString("_wxapi_sendauth_req_ext_data", this.extData);
+      SendAuth.Options localOptions = this.options;
+      if (localOptions != null) {
+        localOptions.toBundle(paramBundle);
+      }
       AppMethodBeat.o(3951);
     }
   }
@@ -88,9 +127,9 @@ public final class SendAuth
     
     public Resp()
     {
-      AppMethodBeat.i(254900);
+      AppMethodBeat.i(243012);
       this.authResult = false;
-      AppMethodBeat.o(254900);
+      AppMethodBeat.o(243012);
     }
     
     public Resp(Bundle paramBundle)

@@ -1,287 +1,158 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.i;
-import com.tencent.mm.contact.d;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.autogen.a.ly;
+import com.tencent.mm.ay.l;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
-import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ah;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.PreferenceCategory;
-import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
-import com.tencent.mm.ui.base.preference.f;
-import junit.framework.Assert;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.by;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.x;
 
 public final class h
-  implements com.tencent.mm.pluginsdk.c.a
+  extends n
+  implements MStorageEx.IOnStorageChange
 {
-  private boolean GXw;
-  private boolean GXx;
-  private int GZr;
-  ContactListExpandPreference GZs;
-  private as contact;
-  Context context;
-  ah iXp;
-  private int mXL;
-  private String roomId;
-  private f screen;
-  
   public h(Context paramContext)
   {
-    AppMethodBeat.i(27148);
-    this.context = paramContext;
-    this.GZs = new ContactListExpandPreference(paramContext, 0);
-    AppMethodBeat.o(27148);
+    super(paramContext, new s(paramContext));
+    AppMethodBeat.i(27137);
+    new ly().publish();
+    AppMethodBeat.o(27137);
   }
   
-  public final boolean a(f paramf, as paramas, boolean paramBoolean, int paramInt)
+  public static void clearData()
   {
-    AppMethodBeat.i(27150);
-    boolean bool1;
-    label34:
-    label46:
-    boolean bool2;
-    int i;
-    if (paramas != null)
+    AppMethodBeat.i(27138);
+    bh.bCz();
+    com.tencent.mm.model.c.bzD().aLO("feedsapp");
+    bh.bCz();
+    com.tencent.mm.model.c.bzG().bxK("feedsapp");
+    AppMethodBeat.o(27138);
+  }
+  
+  protected final void Av(boolean paramBoolean)
+  {
+    AppMethodBeat.i(27140);
+    Context localContext = this.context;
+    if (paramBoolean) {}
+    for (String str = localContext.getString(R.l.settings_plugins_installing);; str = localContext.getString(R.l.settings_plugins_uninstalling))
     {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if (Util.nullAsNil(paramas.field_username).length() <= 0) {
-        break label417;
-      }
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if (paramf == null) {
-        break label423;
-      }
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      this.screen = paramf;
-      this.contact = paramas;
-      this.GXw = paramBoolean;
-      this.mXL = paramInt;
-      this.GXx = ((Activity)this.context).getIntent().getBooleanExtra("User_Verify", false);
-      this.GZr = ((Activity)this.context).getIntent().getIntExtra("Kdel_from", -1);
-      this.roomId = paramas.field_username;
-      bh.beI();
-      this.iXp = c.bbV().Rx(this.roomId);
-      this.screen.removeAll();
-      paramf = new PreferenceSmallCategory(this.context);
-      this.screen.b(paramf);
-      this.GZs.setKey("roominfo_contact_anchor");
-      this.screen.b(this.GZs);
-      paramf = new PreferenceCategory(this.context);
-      this.screen.b(paramf);
-      paramf = new NormalUserFooterPreference(this.context);
-      paramf.setLayoutResource(R.i.efj);
-      paramf.setKey("contact_info_footer_normal");
-      paramas = this.contact;
-      bool2 = this.GXw;
-      bool1 = this.GXx;
-      paramInt = this.mXL;
-      i = this.GZr;
-      paramf.cQX();
-      if (paramas == null) {
-        break label429;
-      }
-      paramBoolean = true;
-      label280:
-      Assert.assertTrue(paramBoolean);
-      if (Util.nullAsNil(paramas.field_username).length() <= 0) {
-        break label434;
-      }
-    }
-    label417:
-    label423:
-    label429:
-    label434:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      Assert.assertTrue(paramBoolean);
-      if (!as.bvW(z.bcZ()).equals(paramas.field_username)) {
-        break label439;
-      }
-      paramInt = 0;
-      if (paramInt != 0) {
-        this.screen.b(paramf);
-      }
-      this.GZs.a(this.screen, this.GZs.mKey);
-      paramf = v.Ps(this.roomId);
-      this.GZs.DZ(false).Ea(false);
-      this.GZs.s(this.roomId, paramf);
-      this.GZs.a(new ContactListExpandPreference.a()
+      localContext.getString(R.l.app_tip);
+      new MTimerHandler(new MTimerHandler.CallBack()
       {
-        public final void asG() {}
-        
-        public final void e(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
+        public final boolean onTimerExpired()
         {
-          AppMethodBeat.i(275601);
-          if (h.this.GZs.aqp(paramAnonymousInt))
-          {
-            Object localObject = h.this.GZs.aqq(paramAnonymousInt);
-            if (Util.isNullOrNil((String)localObject))
-            {
-              AppMethodBeat.o(275601);
-              return;
-            }
-            paramAnonymousViewGroup = new Intent();
-            paramAnonymousViewGroup.setClass(h.this.context, ContactInfoUI.class);
-            paramAnonymousViewGroup.putExtra("Contact_User", (String)localObject);
-            paramAnonymousViewGroup.putExtra("Contact_RoomNickname", h.this.iXp.PJ((String)localObject));
-            localObject = h.this.context;
-            paramAnonymousViewGroup = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousViewGroup);
-            com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousViewGroup.aFh(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            ((Context)localObject).startActivity((Intent)paramAnonymousViewGroup.sf(0));
-            com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard$1", "onItemNormalClick", "(Landroid/view/ViewGroup;Landroid/view/View;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.i(27135);
+          int i = z.bBf();
+          if (this.xve) {
+            i &= 0xFFFF7FFF;
           }
-          AppMethodBeat.o(275601);
+          for (;;)
+          {
+            bh.bCz();
+            com.tencent.mm.model.c.ban().B(34, Integer.valueOf(i));
+            bh.bCz();
+            com.tencent.mm.model.c.bzz().d(new l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.xve) {
+              h.clearData();
+            }
+            if (this.KNw != null) {
+              this.KNw.onNotifyChange(null, null);
+            }
+            if (this.xin != null) {
+              this.xin.dismiss();
+            }
+            AppMethodBeat.o(27135);
+            return true;
+            i |= 0x8000;
+          }
         }
-        
-        public final void qv(int paramAnonymousInt) {}
-        
-        public final void qw(int paramAnonymousInt) {}
-      });
-      AppMethodBeat.o(27150);
-      return true;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label34;
-      bool1 = false;
-      break label46;
-      paramBoolean = false;
-      break label280;
-    }
-    label439:
-    paramf.contact = paramas;
-    paramf.BLy = "";
-    paramf.GXw = bool2;
-    paramf.mXL = paramInt;
-    paramf.GZr = i;
-    paramf.HaV = Util.nullAs(Boolean.valueOf(ab.Qj(paramas.field_username)), false);
-    paramf.GWK = false;
-    paramf.HaS = false;
-    paramf.GZN = 0L;
-    paramf.HaT = "";
-    paramf.Hbp = false;
-    if (paramas.field_deleteFlag == 1)
-    {
-      paramBoolean = true;
-      label522:
-      paramf.HaU = paramBoolean;
-      paramf.Hbo = paramf.iXq.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
-      paramf.GYZ = paramf.iXq.getIntent().getIntExtra("add_more_friend_search_scene", 0);
-      paramf.HaW = paramf.iXq.getIntent().getBooleanExtra("Contact_IsLbsChattingProfile", false);
-      paramf.HaX = paramf.iXq.getIntent().getBooleanExtra("Contact_IsLbsGotoChatting", false);
-      paramf.she = paramf.iXq.getIntent().getStringExtra("lbs_ticket");
-      if (!z.PD(paramas.field_username))
-      {
-        bh.beI();
-        if (!c.bbU().has(paramas.field_username)) {
-          break label677;
-        }
-      }
-      paramf.HaY = new NormalUserFooterPreference.c(paramf);
-      paramf.Hbp = true;
-    }
-    for (;;)
-    {
-      paramf.initView();
-      paramInt = 1;
-      break;
-      paramBoolean = false;
-      break label522;
-      label677:
-      if (as.bvH(paramas.field_username))
-      {
-        paramf.HaY = new NormalUserFooterPreference.h(paramf);
-      }
-      else if (ab.Qy(paramas.field_username))
-      {
-        paramf.HaY = new NormalUserFooterPreference.d(paramf);
-      }
-      else if (ab.Qj(paramas.field_username))
-      {
-        paramf.HaY = new NormalUserFooterPreference.g(paramf);
-      }
-      else if (as.bvI(paramas.field_username))
-      {
-        paramf.HaY = new NormalUserFooterPreference.f(paramf);
-      }
-      else if ((d.rk(paramas.field_type)) && (!as.PY(paramas.field_username)))
-      {
-        paramf.HaY = new NormalUserFooterPreference.c(paramf);
-        paramf.Hbp = true;
-      }
-      else if (bool1)
-      {
-        paramf.HaY = new NormalUserFooterPreference.j(paramf);
-        paramf.Hbp = true;
-      }
-      else if (as.PY(paramas.field_username))
-      {
-        paramf.HaY = new NormalUserFooterPreference.b(paramf);
-      }
-      else
-      {
-        paramf.HaY = new NormalUserFooterPreference.c(paramf);
-        paramf.Hbp = true;
-      }
+      }, false).startTimer(1500L);
+      AppMethodBeat.o(27140);
+      return;
     }
   }
   
-  public final boolean atw(String paramString)
+  public final boolean anl(String paramString)
   {
-    AppMethodBeat.i(27149);
-    Log.d("MicroMsg.ContactWidgetGroupCard", "handleEvent ".concat(String.valueOf(paramString)));
-    bh.beI();
-    Object localObject = c.bbL().RG(paramString);
-    if ((localObject == null) || ((int)((d)localObject).jxt <= 0))
+    AppMethodBeat.i(27142);
+    if ("contact_info_plugin_view".equals(paramString))
     {
-      AppMethodBeat.o(27149);
+      paramString = new Intent();
+      paramString.putExtra("sns_timeline_NeedFirstLoadint", true);
+      com.tencent.mm.br.c.b(this.context, "sns", ".ui.SnsTimeLineUI", paramString);
+      AppMethodBeat.o(27142);
       return true;
     }
-    paramString = new Intent();
-    paramString.setClass(this.context, ContactInfoUI.class);
-    paramString.putExtra("Contact_User", ((ax)localObject).field_username);
-    localObject = this.context;
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
-    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramString.aFh(), "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Context)localObject).startActivity((Intent)paramString.sf(0));
-    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/profile/ui/ContactWidgetGroupCard", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(27149);
-    return true;
-  }
-  
-  public final boolean cQX()
-  {
-    AppMethodBeat.i(27151);
-    NormalUserFooterPreference localNormalUserFooterPreference = (NormalUserFooterPreference)this.screen.byG("contact_info_footer_normal");
-    if (localNormalUserFooterPreference != null) {
-      localNormalUserFooterPreference.cQX();
+    Intent localIntent;
+    if ("contact_info_plugin_outsize".equals(paramString))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("k_sns_tag_id", 4L);
+      com.tencent.mm.br.c.b(this.context, "sns", ".ui.SnsBlackDetailUI", localIntent);
     }
-    AppMethodBeat.o(27151);
-    return true;
+    if ("contact_info_plugin_black".equals(paramString))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("k_sns_tag_id", 5L);
+      com.tencent.mm.br.c.b(this.context, "sns", ".ui.SnsTagDetailUI", localIntent);
+    }
+    if (paramString.equals("contact_info_plugin_uninstall"))
+    {
+      k.b(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint_by_sns), "", this.context.getString(R.l.app_stop), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(27136);
+          h.this.Av(false);
+          AppMethodBeat.o(27136);
+        }
+      }, null);
+      AppMethodBeat.o(27142);
+      return true;
+    }
+    boolean bool = super.anl(paramString);
+    AppMethodBeat.o(27142);
+    return bool;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  protected final void clear()
+  {
+    AppMethodBeat.i(27139);
+    clearData();
+    AppMethodBeat.o(27139);
+  }
+  
+  protected final boolean gBD()
+  {
+    AppMethodBeat.i(27141);
+    if ((z.bBf() & 0x8000) == 0)
+    {
+      AppMethodBeat.o(27141);
+      return true;
+    }
+    AppMethodBeat.o(27141);
+    return false;
+  }
+  
+  protected final int getResourceId()
+  {
+    return R.o.haN;
+  }
 }
 
 

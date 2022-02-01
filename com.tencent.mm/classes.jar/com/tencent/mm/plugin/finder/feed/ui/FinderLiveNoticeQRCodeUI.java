@@ -1,69 +1,67 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import androidx.fragment.app.FragmentActivity;
+import android.view.Window;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.k;
-import com.tencent.mm.plugin.finder.live.component.z;
+import com.tencent.mm.plugin.finder.live.component.an;
+import com.tencent.mm.plugin.finder.live.p.b;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.c;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.statusbar.d;
-import java.util.HashMap;
+import com.tencent.mm.ui.y;
 import java.util.Set;
-import kotlin.a.ak;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ar;
+import kotlin.g.b.s;
 
-@a(7)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveNoticeQRCodeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@a(32)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveNoticeQRCodeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveNoticeQRCodeUI
   extends MMFinderUI
 {
-  private HashMap _$_findViewCache;
-  
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(245955);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(245955);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(245954);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(245954);
-    return localView1;
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(245953);
-    Set localSet = ak.setOf(z.class);
-    AppMethodBeat.o(245953);
+    AppMethodBeat.i(365523);
+    Set localSet = ar.setOf(an.class);
+    AppMethodBeat.o(365523);
     return localSet;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245952);
-    setTheme(b.k.MMTheme_NoTitleTranslucent);
+    AppMethodBeat.i(365513);
+    supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
-    d.e(getWindow());
-    AppMethodBeat.o(245952);
+    paramBundle = getWindow().getDecorView();
+    s.s(paramBundle, "window.decorView");
+    paramBundle.setSystemUiVisibility(1280);
+    c.h((Activity)this, false);
+    paramBundle = getSupportActionBar();
+    if (paramBundle != null)
+    {
+      paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
+      paramBundle.hide();
+    }
+    getWindow().setStatusBarColor(0);
+    getController().s((Activity)this, getResources().getColor(p.b.transparent));
+    paramBundle = getWindow();
+    if (!aw.isDarkMode()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aw.c(paramBundle, bool);
+      AppMethodBeat.o(365513);
+      return;
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -74,7 +72,7 @@ public final class FinderLiveNoticeQRCodeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLiveNoticeQRCodeUI
  * JD-Core Version:    0.7.0.1
  */

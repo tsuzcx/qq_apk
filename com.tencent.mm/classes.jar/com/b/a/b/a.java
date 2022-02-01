@@ -7,7 +7,7 @@ import java.util.Map;
 public final class a
   implements b
 {
-  public final Map<String, String> pt()
+  public final Map<String, String> Pa()
   {
     AppMethodBeat.i(183629);
     HashMap localHashMap = new HashMap();
@@ -17,7 +17,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.b.a.b.a
  * JD-Core Version:    0.7.0.1
  */

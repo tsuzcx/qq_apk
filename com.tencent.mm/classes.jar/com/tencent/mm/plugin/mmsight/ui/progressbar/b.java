@@ -13,22 +13,22 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  float FjA;
-  float FjB;
-  Path FjC;
-  private Paint FjD;
-  a Fjo;
-  a Fjp;
-  boolean Fjq;
-  public a Fjr;
-  PointF Fjs;
-  PointF Fjt;
-  PointF Fju;
-  PointF Fjv;
-  PointF Fjw;
-  PointF Fjx;
-  float Fjy;
-  float Fjz;
+  a LeL;
+  a LeM;
+  boolean LeN;
+  public a LeO;
+  PointF LeP;
+  PointF LeQ;
+  PointF LeR;
+  PointF LeS;
+  PointF LeT;
+  PointF LeU;
+  float LeV;
+  float LeW;
+  float LeX;
+  float LeY;
+  Path LeZ;
+  private Paint Lfa;
   ValueAnimator animator;
   float progress;
   
@@ -36,21 +36,21 @@ public final class b
   {
     AppMethodBeat.i(94797);
     this.progress = 0.0F;
-    this.Fjq = false;
-    this.Fjy = 0.0F;
-    this.Fjz = 0.0F;
-    this.FjA = 0.0F;
-    this.FjB = 0.0F;
-    this.FjD = null;
-    this.Fjo = parama1;
-    this.Fjp = parama2;
-    this.Fjr = parama;
-    this.Fjz = (MMSightProgressBar.vqY * 2.0F);
-    this.FjA = (-MMSightProgressBar.vqY * 0.5F);
-    this.FjC = new Path();
-    this.FjD = new Paint();
-    this.FjD.setAntiAlias(true);
-    this.FjD.setStyle(Paint.Style.FILL);
+    this.LeN = false;
+    this.LeV = 0.0F;
+    this.LeW = 0.0F;
+    this.LeX = 0.0F;
+    this.LeY = 0.0F;
+    this.Lfa = null;
+    this.LeL = parama1;
+    this.LeM = parama2;
+    this.LeO = parama;
+    this.LeW = (MMSightProgressBar.yDp * 2.0F);
+    this.LeX = (-MMSightProgressBar.yDp * 0.5F);
+    this.LeZ = new Path();
+    this.Lfa = new Paint();
+    this.Lfa.setAntiAlias(true);
+    this.Lfa.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(94797);
   }
   
@@ -58,12 +58,12 @@ public final class b
   {
     public abstract void a(a parama);
     
-    public abstract void eUO();
+    public abstract void gdA();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.progressbar.b
  * JD-Core Version:    0.7.0.1
  */

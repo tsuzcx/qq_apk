@@ -32,18 +32,18 @@ public final class b
     AppMethodBeat.o(107300);
   }
   
-  public final boolean aOg()
+  public final boolean bhU()
   {
     AppMethodBeat.i(107297);
-    boolean bool = super.aOg();
+    boolean bool = super.bhU();
     AppMethodBeat.o(107297);
     return bool;
   }
   
-  public final ViewGroup cuR()
+  public final ViewGroup cXB()
   {
     AppMethodBeat.i(107295);
-    ViewGroup localViewGroup = super.cuR();
+    ViewGroup localViewGroup = super.cXB();
     AppMethodBeat.o(107295);
     return localViewGroup;
   }
@@ -72,16 +72,16 @@ public final class b
     return localIntent;
   }
   
-  public final void hS(boolean paramBoolean)
+  public final void iR(boolean paramBoolean)
   {
     AppMethodBeat.i(107299);
-    super.hS(paramBoolean);
+    super.iR(paramBoolean);
     AppMethodBeat.o(107299);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

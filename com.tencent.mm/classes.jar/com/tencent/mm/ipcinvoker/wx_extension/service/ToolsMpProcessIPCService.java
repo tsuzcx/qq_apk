@@ -11,9 +11,9 @@ public class ToolsMpProcessIPCService
   
   static
   {
-    AppMethodBeat.i(205369);
+    AppMethodBeat.i(235715);
     PROCESS_NAME = MMApplicationContext.getPackageName() + ":toolsmp";
-    AppMethodBeat.o(205369);
+    AppMethodBeat.o(235715);
   }
   
   public final String getProcessName()

@@ -18,10 +18,10 @@ public class WalletWXCreditDetailFooterPreference
   extends Preference
   implements View.OnClickListener
 {
-  View.OnClickListener Fms;
-  private TextView QOV;
-  private TextView QOW;
+  private TextView XIt;
+  private TextView XIu;
   private LayoutInflater mInflater;
+  View.OnClickListener tyA;
   
   public WalletWXCreditDetailFooterPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,10 +41,10 @@ public class WalletWXCreditDetailFooterPreference
   {
     AppMethodBeat.i(72359);
     super.onBindView(paramView);
-    this.QOV = ((TextView)paramView.findViewById(a.f.wallet_wxcredit_detail_username_tv));
-    this.QOW = ((TextView)paramView.findViewById(a.f.wallet_wxcredit_detail_help_tv));
-    this.QOV.setOnClickListener(this);
-    this.QOW.setOnClickListener(this);
+    this.XIt = ((TextView)paramView.findViewById(a.f.wallet_wxcredit_detail_username_tv));
+    this.XIu = ((TextView)paramView.findViewById(a.f.wallet_wxcredit_detail_help_tv));
+    this.XIt.setOnClickListener(this);
+    this.XIu.setOnClickListener(this);
     AppMethodBeat.o(72359);
   }
   
@@ -52,10 +52,10 @@ public class WalletWXCreditDetailFooterPreference
   {
     AppMethodBeat.i(72360);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    if (this.Fms != null) {
-      this.Fms.onClick(paramView);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    if (this.tyA != null) {
+      this.tyA.onClick(paramView);
     }
     a.a(this, "com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditDetailFooterPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(72360);
@@ -74,7 +74,7 @@ public class WalletWXCreditDetailFooterPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailFooterPreference
  * JD-Core Version:    0.7.0.1
  */

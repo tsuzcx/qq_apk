@@ -16,37 +16,17 @@ public final class h
   implements b
 {
   private Map<String, CollectSession> mMap;
-  private Map<String, Set<CollectSession>> nVw;
+  private Map<String, Set<CollectSession>> qVg;
   
   public h()
   {
     AppMethodBeat.i(146110);
     this.mMap = new a();
-    this.nVw = new a();
+    this.qVg = new a();
     AppMethodBeat.o(146110);
   }
   
-  private boolean a(String paramString, CollectSession paramCollectSession)
-  {
-    AppMethodBeat.i(146111);
-    if ((paramString == null) || (paramString.length() == 0) || (paramCollectSession == null))
-    {
-      AppMethodBeat.o(146111);
-      return false;
-    }
-    Set localSet = (Set)this.nVw.get(paramString);
-    Object localObject = localSet;
-    if (localSet == null)
-    {
-      localObject = new LinkedHashSet();
-      this.nVw.put(paramString, localObject);
-    }
-    boolean bool = ((Set)localObject).add(paramCollectSession);
-    AppMethodBeat.o(146111);
-    return bool;
-  }
-  
-  private Set<CollectSession> aeE(String paramString)
+  private Set<CollectSession> Xh(String paramString)
   {
     AppMethodBeat.i(146112);
     if ((paramString == null) || (paramString.length() == 0))
@@ -54,12 +34,12 @@ public final class h
       AppMethodBeat.o(146112);
       return null;
     }
-    paramString = (Set)this.nVw.get(paramString);
+    paramString = (Set)this.qVg.get(paramString);
     AppMethodBeat.o(146112);
     return paramString;
   }
   
-  private CollectSession aeF(String paramString)
+  private CollectSession Xi(String paramString)
   {
     AppMethodBeat.i(146114);
     CollectSession localCollectSession2 = (CollectSession)this.mMap.get(paramString);
@@ -71,6 +51,116 @@ public final class h
     }
     AppMethodBeat.o(146114);
     return localCollectSession1;
+  }
+  
+  private boolean a(String paramString, CollectSession paramCollectSession)
+  {
+    AppMethodBeat.i(146111);
+    if ((paramString == null) || (paramString.length() == 0) || (paramCollectSession == null))
+    {
+      AppMethodBeat.o(146111);
+      return false;
+    }
+    Set localSet = (Set)this.qVg.get(paramString);
+    Object localObject = localSet;
+    if (localSet == null)
+    {
+      localObject = new LinkedHashSet();
+      this.qVg.put(paramString, localObject);
+    }
+    boolean bool = ((Set)localObject).add(paramCollectSession);
+    AppMethodBeat.o(146111);
+    return bool;
+  }
+  
+  public final CollectSession WY(String paramString)
+  {
+    AppMethodBeat.i(146119);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(146119);
+      return null;
+    }
+    paramString = (CollectSession)this.mMap.get(paramString);
+    AppMethodBeat.o(146119);
+    return paramString;
+  }
+  
+  public final CollectSession WZ(String paramString)
+  {
+    AppMethodBeat.i(146120);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(146120);
+      return null;
+    }
+    paramString = (CollectSession)this.mMap.remove(paramString);
+    AppMethodBeat.o(146120);
+    return paramString;
+  }
+  
+  public final void Xa(String paramString)
+  {
+    AppMethodBeat.i(146122);
+    CollectSession localCollectSession = (CollectSession)this.mMap.get(paramString);
+    if (localCollectSession == null)
+    {
+      Log.i("MicroMsg.SumCostTimeCollector", "print failed, session(%s) is null", new Object[] { paramString });
+      AppMethodBeat.o(146122);
+      return;
+    }
+    TimePoint localTimePoint = localCollectSession.qUW;
+    if (localTimePoint == null)
+    {
+      Log.i("MicroMsg.SumCostTimeCollector", "print failed, the session(%s) do not have any point.", new Object[] { paramString });
+      AppMethodBeat.o(146122);
+      return;
+    }
+    paramString = e.a(localTimePoint);
+    paramString.insert(0, String.format("session : %s\n", new Object[] { localCollectSession.id }));
+    Log.i("MicroMsg.SumCostTimeCollector", "%s", new Object[] { paramString.toString() });
+    AppMethodBeat.o(146122);
+  }
+  
+  public final StringBuilder Xb(String paramString)
+  {
+    AppMethodBeat.i(146123);
+    Object localObject = Xh(paramString);
+    if ((localObject == null) || (((Set)localObject).isEmpty()))
+    {
+      Log.i("MicroMsg.SumCostTimeCollector", "printAverage failed, set(%s) is empty.", new Object[] { paramString });
+      paramString = new StringBuilder().append(String.format("GroupId : %s, size : 0\n", new Object[] { paramString }));
+      AppMethodBeat.o(146123);
+      return paramString;
+    }
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet((Collection)localObject);
+    TimePoint localTimePoint2 = new TimePoint();
+    Iterator localIterator = localLinkedHashSet.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (CollectSession)localIterator.next();
+      if ((((CollectSession)localObject).qUX == null) || ((((CollectSession)localObject).qUZ != null) && (!((CollectSession)localObject).qUX.name.equals(((CollectSession)localObject).qUZ))))
+      {
+        Log.e("MicroMsg.SumCostTimeCollector", "error(%s), incorrect point count", new Object[] { ((CollectSession)localObject).id });
+      }
+      else
+      {
+        TimePoint localTimePoint1 = ((CollectSession)localObject).qUW;
+        for (localObject = localTimePoint2; localTimePoint1 != null; localObject = (TimePoint)((TimePoint)localObject).qVj.get())
+        {
+          ((TimePoint)localObject).qVi.set((((TimePoint)localObject).qVi.get() * ((TimePoint)localObject).qVh.get() + localTimePoint1.qVi.get()) / ((TimePoint)localObject).qVh.incrementAndGet());
+          ((TimePoint)localObject).name = localTimePoint1.name;
+          localTimePoint1 = (TimePoint)localTimePoint1.qVj.get();
+          if ((((TimePoint)localObject).qVj.get() == null) && (localTimePoint1 != null)) {
+            ((TimePoint)localObject).qVj.set(new TimePoint());
+          }
+        }
+      }
+    }
+    localObject = e.a(localTimePoint2);
+    ((StringBuilder)localObject).insert(0, String.format("GroupId : %s, size : %d\n", new Object[] { paramString, Integer.valueOf(localLinkedHashSet.size()) }));
+    AppMethodBeat.o(146123);
+    return localObject;
   }
   
   public final void a(CollectSession paramCollectSession)
@@ -85,136 +175,46 @@ public final class h
       AppMethodBeat.o(146115);
       return;
     }
-    Object localObject = paramCollectSession.nVm;
+    Object localObject = paramCollectSession.qUW;
     paramCollectSession = (CollectSession)localObject;
-    if (localCollectSession.nVm == null)
+    if (localCollectSession.qUW == null)
     {
-      localCollectSession.nVm = ((TimePoint)localObject);
+      localCollectSession.qUW = ((TimePoint)localObject);
       AppMethodBeat.o(146115);
       return;
     }
     if (paramCollectSession != null)
     {
       localObject = paramCollectSession.name;
-      long l = paramCollectSession.nVy.get();
+      long l = paramCollectSession.qVi.get();
       if ((str == null) || (str.length() == 0)) {}
       for (;;)
       {
-        paramCollectSession = (TimePoint)paramCollectSession.nVz.get();
+        paramCollectSession = (TimePoint)paramCollectSession.qVj.get();
         break;
-        localCollectSession = aeF(str);
-        if (localCollectSession.nVm == null)
+        localCollectSession = Xi(str);
+        if (localCollectSession.qUW == null)
         {
-          localCollectSession.aet((String)localObject);
-          localCollectSession.nVm.nVy.set(l);
+          localCollectSession.WW((String)localObject);
+          localCollectSession.qUW.qVi.set(l);
         }
         else
         {
-          TimePoint localTimePoint = (TimePoint)localCollectSession.nVo.get(localObject);
+          TimePoint localTimePoint = (TimePoint)localCollectSession.qUY.get(localObject);
           if (localTimePoint == null)
           {
-            localCollectSession.aeu((String)localObject);
-            localCollectSession.nVn.nVy.set(l);
+            localCollectSession.WX((String)localObject);
+            localCollectSession.qUX.qVi.set(l);
           }
           else
           {
-            localTimePoint.nVy.set((l + localTimePoint.nVy.get() * localTimePoint.nVx.get()) / (localTimePoint.nVx.get() + 1));
-            localTimePoint.nVx.getAndIncrement();
+            localTimePoint.qVi.set((l + localTimePoint.qVi.get() * localTimePoint.qVh.get()) / (localTimePoint.qVh.get() + 1));
+            localTimePoint.qVh.getAndIncrement();
           }
         }
       }
     }
     AppMethodBeat.o(146115);
-  }
-  
-  public final CollectSession aev(String paramString)
-  {
-    AppMethodBeat.i(146119);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(146119);
-      return null;
-    }
-    paramString = (CollectSession)this.mMap.get(paramString);
-    AppMethodBeat.o(146119);
-    return paramString;
-  }
-  
-  public final CollectSession aew(String paramString)
-  {
-    AppMethodBeat.i(146120);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(146120);
-      return null;
-    }
-    paramString = (CollectSession)this.mMap.remove(paramString);
-    AppMethodBeat.o(146120);
-    return paramString;
-  }
-  
-  public final void aex(String paramString)
-  {
-    AppMethodBeat.i(146122);
-    CollectSession localCollectSession = (CollectSession)this.mMap.get(paramString);
-    if (localCollectSession == null)
-    {
-      Log.i("MicroMsg.SumCostTimeCollector", "print failed, session(%s) is null", new Object[] { paramString });
-      AppMethodBeat.o(146122);
-      return;
-    }
-    TimePoint localTimePoint = localCollectSession.nVm;
-    if (localTimePoint == null)
-    {
-      Log.i("MicroMsg.SumCostTimeCollector", "print failed, the session(%s) do not have any point.", new Object[] { paramString });
-      AppMethodBeat.o(146122);
-      return;
-    }
-    paramString = e.a(localTimePoint);
-    paramString.insert(0, String.format("session : %s\n", new Object[] { localCollectSession.id }));
-    Log.i("MicroMsg.SumCostTimeCollector", "%s", new Object[] { paramString.toString() });
-    AppMethodBeat.o(146122);
-  }
-  
-  public final StringBuilder aey(String paramString)
-  {
-    AppMethodBeat.i(146123);
-    Object localObject = aeE(paramString);
-    if ((localObject == null) || (((Set)localObject).isEmpty()))
-    {
-      Log.i("MicroMsg.SumCostTimeCollector", "printAverage failed, set(%s) is empty.", new Object[] { paramString });
-      paramString = new StringBuilder().append(String.format("GroupId : %s, size : 0\n", new Object[] { paramString }));
-      AppMethodBeat.o(146123);
-      return paramString;
-    }
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet((Collection)localObject);
-    TimePoint localTimePoint2 = new TimePoint();
-    Iterator localIterator = localLinkedHashSet.iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = (CollectSession)localIterator.next();
-      if ((((CollectSession)localObject).nVn == null) || ((((CollectSession)localObject).nVp != null) && (!((CollectSession)localObject).nVn.name.equals(((CollectSession)localObject).nVp))))
-      {
-        Log.e("MicroMsg.SumCostTimeCollector", "error(%s), incorrect point count", new Object[] { ((CollectSession)localObject).id });
-      }
-      else
-      {
-        TimePoint localTimePoint1 = ((CollectSession)localObject).nVm;
-        for (localObject = localTimePoint2; localTimePoint1 != null; localObject = (TimePoint)((TimePoint)localObject).nVz.get())
-        {
-          ((TimePoint)localObject).nVy.set((((TimePoint)localObject).nVy.get() * ((TimePoint)localObject).nVx.get() + localTimePoint1.nVy.get()) / ((TimePoint)localObject).nVx.incrementAndGet());
-          ((TimePoint)localObject).name = localTimePoint1.name;
-          localTimePoint1 = (TimePoint)localTimePoint1.nVz.get();
-          if ((((TimePoint)localObject).nVz.get() == null) && (localTimePoint1 != null)) {
-            ((TimePoint)localObject).nVz.set(new TimePoint());
-          }
-        }
-      }
-    }
-    localObject = e.a(localTimePoint2);
-    ((StringBuilder)localObject).insert(0, String.format("GroupId : %s, size : %d\n", new Object[] { paramString, Integer.valueOf(localLinkedHashSet.size()) }));
-    AppMethodBeat.o(146123);
-    return localObject;
   }
   
   public final void c(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -237,20 +237,28 @@ public final class h
       AppMethodBeat.o(146118);
       return;
     }
-    paramString2 = aeF(paramString2);
-    if (paramString2.nVm == null)
+    paramString2 = Xi(paramString2);
+    if (paramString2.qUW == null)
     {
       paramString2.groupId = paramString1;
       a(paramString1, paramString2);
-      paramString2.aet(paramString3);
+      paramString2.WW(paramString3);
       AppMethodBeat.o(146118);
       return;
     }
-    paramString2.aeu(paramString3);
+    paramString2.WX(paramString3);
     AppMethodBeat.o(146118);
   }
   
-  public final CollectSession cY(String paramString1, String paramString2)
+  public final void clear()
+  {
+    AppMethodBeat.i(146113);
+    this.mMap.clear();
+    this.qVg.clear();
+    AppMethodBeat.o(146113);
+  }
+  
+  public final CollectSession dp(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146116);
     if ((paramString1 == null) || (paramString1.length() == 0))
@@ -259,19 +267,19 @@ public final class h
       AppMethodBeat.o(146116);
       return null;
     }
-    paramString1 = aeF(paramString1);
-    if (paramString1.nVm == null) {
-      paramString1.aet(paramString2);
+    paramString1 = Xi(paramString1);
+    if (paramString1.qUW == null) {
+      paramString1.WW(paramString2);
     }
     for (;;)
     {
       AppMethodBeat.o(146116);
       return paramString1;
-      paramString1.aeu(paramString2);
+      paramString1.WX(paramString2);
     }
   }
   
-  public final void cZ(String paramString1, String paramString2)
+  public final void dq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146121);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0))
@@ -287,22 +295,14 @@ public final class h
       AppMethodBeat.o(146121);
       return;
     }
-    localCollectSession.nVp = paramString2;
+    localCollectSession.qUZ = paramString2;
     AppMethodBeat.o(146121);
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(146113);
-    this.mMap.clear();
-    this.nVw.clear();
-    AppMethodBeat.o(146113);
-  }
-  
-  public final int da(String paramString1, String paramString2)
+  public final int dr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146124);
-    Set localSet = aeE(paramString1);
+    Set localSet = Xh(paramString1);
     if ((localSet == null) || (localSet.isEmpty()))
     {
       Log.i("MicroMsg.SumCostTimeCollector", "printAverage failed, set(%s) is empty.", new Object[] { paramString1 });
@@ -314,7 +314,7 @@ public final class h
     int j = 0;
     while (paramString1.hasNext())
     {
-      int k = ((CollectSession)paramString1.next()).fHg.getInt(paramString2);
+      int k = ((CollectSession)paramString1.next()).hMD.getInt(paramString2);
       if (k != 0)
       {
         j += k;
@@ -331,7 +331,7 @@ public final class h
     return i;
   }
   
-  public final void k(String paramString1, String paramString2, boolean paramBoolean)
+  public final void o(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(146117);
     if (!paramBoolean)
@@ -345,20 +345,20 @@ public final class h
       AppMethodBeat.o(146117);
       return;
     }
-    paramString1 = aeF(paramString1);
-    if (paramString1.nVm == null)
+    paramString1 = Xi(paramString1);
+    if (paramString1.qUW == null)
     {
-      paramString1.aet(paramString2);
+      paramString1.WW(paramString2);
       AppMethodBeat.o(146117);
       return;
     }
-    paramString1.aeu(paramString2);
+    paramString1.WX(paramString2);
     AppMethodBeat.o(146117);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/c0p" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/cr" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" />
-    <View android:id="@id/c0o" android:background="@drawable/emoji_panel_delete_btn" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:layout_marginBottom="20.0dip" android:layout_marginEnd="@dimen/ct" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/c0u" app:layout_goneMarginEnd="@dimen/c5" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c0n" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:src="@raw/icons_outlined_emoji_del" android:scaleType="fitCenter" android:contentDescription="@string/tf" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" app:layout_constraintBottom_toBottomOf="@id/c0o" app:layout_constraintEnd_toEndOf="@id/c0o" app:layout_constraintStart_toStartOf="@id/c0o" app:layout_constraintTop_toTopOf="@id/c0o" />
-    <Button android:id="@id/c0u" android:background="@drawable/emoji_panel_send_btn" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:text="@string/yq" android:layout_marginEnd="@dimen/c5" app:layout_constraintBottom_toBottomOf="@id/c0n" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="@id/c0n" app:layout_goneMarginEnd="@dimen/bt" style="@style/ow" />
-</merge>
+<LinearLayout android:paddingLeft="@dimen/ls" android:paddingRight="@dimen/ls" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="bottom|center|left" android:id="@android:id/title" style="@style/oc" />
+</LinearLayout>

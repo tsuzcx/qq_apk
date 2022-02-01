@@ -3,77 +3,101 @@ package com.tencent.mm.plugin.game.autogen.chatroom;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class Color
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
   public String dark_color;
+  public String h5_dark_color;
+  public String h5_light_color;
   public String light_color;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194731);
+    AppMethodBeat.i(275461);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.light_color != null) {
-        paramVarArgs.f(1, this.light_color);
+        paramVarArgs.g(1, this.light_color);
       }
       if (this.dark_color != null) {
-        paramVarArgs.f(2, this.dark_color);
+        paramVarArgs.g(2, this.dark_color);
       }
-      AppMethodBeat.o(194731);
+      if (this.h5_light_color != null) {
+        paramVarArgs.g(3, this.h5_light_color);
+      }
+      if (this.h5_dark_color != null) {
+        paramVarArgs.g(4, this.h5_dark_color);
+      }
+      AppMethodBeat.o(275461);
       return 0;
     }
     if (paramInt == 1) {
       if (this.light_color == null) {
-        break label274;
+        break label390;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.g(1, this.light_color) + 0;; paramInt = 0)
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.light_color) + 0;; i = 0)
     {
-      int i = paramInt;
+      paramInt = i;
       if (this.dark_color != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.dark_color);
+        paramInt = i + i.a.a.b.b.a.h(2, this.dark_color);
       }
-      AppMethodBeat.o(194731);
-      return i;
+      i = paramInt;
+      if (this.h5_light_color != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.h5_light_color);
+      }
+      paramInt = i;
+      if (this.h5_dark_color != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.h5_dark_color);
+      }
+      AppMethodBeat.o(275461);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(194731);
+        AppMethodBeat.o(275461);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         Color localColor = (Color)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(194731);
+          AppMethodBeat.o(275461);
           return -1;
         case 1: 
-          localColor.light_color = locala.abFh.readString();
-          AppMethodBeat.o(194731);
+          localColor.light_color = locala.ajGk.readString();
+          AppMethodBeat.o(275461);
+          return 0;
+        case 2: 
+          localColor.dark_color = locala.ajGk.readString();
+          AppMethodBeat.o(275461);
+          return 0;
+        case 3: 
+          localColor.h5_light_color = locala.ajGk.readString();
+          AppMethodBeat.o(275461);
           return 0;
         }
-        localColor.dark_color = locala.abFh.readString();
-        AppMethodBeat.o(194731);
+        localColor.h5_dark_color = locala.ajGk.readString();
+        AppMethodBeat.o(275461);
         return 0;
       }
-      AppMethodBeat.o(194731);
+      AppMethodBeat.o(275461);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.autogen.chatroom.Color
  * JD-Core Version:    0.7.0.1
  */

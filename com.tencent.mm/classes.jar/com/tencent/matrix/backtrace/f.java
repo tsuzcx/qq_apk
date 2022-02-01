@@ -6,7 +6,6 @@ import com.tencent.matrix.e.c;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,7 +13,7 @@ import java.util.Set;
 
 final class f
 {
-  static String G(String paramString, int paramInt)
+  static String O(String paramString, int paramInt)
   {
     return paramString + ":" + paramInt;
   }
@@ -26,7 +25,7 @@ final class f
   
   static void a(Context paramContext, Map<String, Integer> paramMap)
   {
-    paramContext = ba(paramContext);
+    paramContext = bK(paramContext);
     StringBuffer localStringBuffer = new StringBuffer();
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -61,36 +60,36 @@ final class f
     }
   }
   
-  static File aX(Context paramContext)
+  static String b(g.a parama)
+  {
+    if (c(parama)) {
+      return parama.eMi;
+    }
+    return a(parama);
+  }
+  
+  static File bH(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir().getAbsolutePath() + "/wechat-backtrace/clean-up.timestamp");
     paramContext.getParentFile().mkdirs();
     return paramContext;
   }
   
-  static File aY(Context paramContext)
+  static File bI(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir().getAbsolutePath() + "/wechat-backtrace/warmed-up");
     paramContext.getParentFile().mkdirs();
     return paramContext;
   }
   
-  private static File aZ(Context paramContext)
+  private static File bJ(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir().getAbsolutePath() + "/wechat-backtrace/disk-usage.timestamp");
     paramContext.getParentFile().mkdirs();
     return paramContext;
   }
   
-  static String b(g.a parama)
-  {
-    if (c(parama)) {
-      return parama.cQR;
-    }
-    return a(parama);
-  }
-  
-  static File ba(Context paramContext)
+  static File bK(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir().getAbsolutePath() + "/wechat-backtrace/unfinished");
     paramContext.getParentFile().mkdirs();
@@ -107,45 +106,129 @@ final class f
     return paramContext;
   }
   
-  static Map<String, Integer> bb(Context paramContext)
+  /* Error */
+  static Map<String, Integer> bL(Context paramContext)
   {
-    HashMap localHashMap = new HashMap();
-    paramContext = ba(paramContext);
-    String str = c(paramContext, 512000);
-    if (str == null)
-    {
-      c.w("Matrix.Backtrace.WarmUp", "Read unfinished maps file failed, file size %s", new Object[] { Long.valueOf(paramContext.length()) });
-      if (paramContext.length() > 512000L) {
-        paramContext.delete();
-      }
-      return localHashMap;
-    }
-    paramContext = str.split("\n");
-    int j = paramContext.length;
-    int i = 0;
-    while (i < j)
-    {
-      str = paramContext[i];
-      int k = str.lastIndexOf("|");
-      if (k >= 0) {}
-      try
-      {
-        localHashMap.put(str.substring(0, k), Integer.valueOf(Integer.parseInt(str.substring(k + 1))));
-        i += 1;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          c.printErrStackTrace("Matrix.Backtrace.WarmUp", localThrowable, "", new Object[0]);
-        }
-      }
-    }
+    // Byte code:
+    //   0: new 180	java/util/HashMap
+    //   3: dup
+    //   4: invokespecial 181	java/util/HashMap:<init>	()V
+    //   7: astore 4
+    //   9: aload_0
+    //   10: invokestatic 54	com/tencent/matrix/backtrace/f:bK	(Landroid/content/Context;)Ljava/io/File;
+    //   13: astore_0
+    //   14: aload_0
+    //   15: ldc 182
+    //   17: invokestatic 186	com/tencent/matrix/backtrace/f:d	(Ljava/io/File;I)Ljava/lang/String;
+    //   20: astore 5
+    //   22: aload 5
+    //   24: ifnonnull +43 -> 67
+    //   27: ldc 168
+    //   29: ldc 188
+    //   31: iconst_1
+    //   32: anewarray 4	java/lang/Object
+    //   35: dup
+    //   36: iconst_0
+    //   37: aload_0
+    //   38: invokevirtual 192	java/io/File:length	()J
+    //   41: invokestatic 198	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   44: aastore
+    //   45: invokestatic 202	com/tencent/matrix/e/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: aload_0
+    //   49: invokevirtual 192	java/io/File:length	()J
+    //   52: ldc2_w 203
+    //   55: lcmp
+    //   56: ifle +8 -> 64
+    //   59: aload_0
+    //   60: invokevirtual 207	java/io/File:delete	()Z
+    //   63: pop
+    //   64: aload 4
+    //   66: areturn
+    //   67: aload 5
+    //   69: ldc 96
+    //   71: invokevirtual 211	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   74: astore_0
+    //   75: aload_0
+    //   76: arraylength
+    //   77: istore_2
+    //   78: iconst_0
+    //   79: istore_1
+    //   80: iload_1
+    //   81: iload_2
+    //   82: if_icmpge -18 -> 64
+    //   85: aload_0
+    //   86: iload_1
+    //   87: aaload
+    //   88: astore 5
+    //   90: aload 5
+    //   92: ldc 88
+    //   94: invokevirtual 215	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   97: istore_3
+    //   98: iload_3
+    //   99: iflt +30 -> 129
+    //   102: aload 4
+    //   104: aload 5
+    //   106: iconst_0
+    //   107: iload_3
+    //   108: invokevirtual 219	java/lang/String:substring	(II)Ljava/lang/String;
+    //   111: aload 5
+    //   113: iload_3
+    //   114: iconst_1
+    //   115: iadd
+    //   116: invokevirtual 222	java/lang/String:substring	(I)Ljava/lang/String;
+    //   119: invokestatic 227	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   122: invokestatic 230	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   125: invokevirtual 234	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   128: pop
+    //   129: iload_1
+    //   130: iconst_1
+    //   131: iadd
+    //   132: istore_1
+    //   133: goto -53 -> 80
+    //   136: astore 5
+    //   138: ldc 168
+    //   140: aload 5
+    //   142: ldc 170
+    //   144: iconst_0
+    //   145: anewarray 4	java/lang/Object
+    //   148: invokestatic 176	com/tencent/matrix/e/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   151: goto -22 -> 129
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	154	0	paramContext	Context
+    //   79	54	1	i	int
+    //   77	6	2	j	int
+    //   97	19	3	k	int
+    //   7	96	4	localHashMap	java.util.HashMap
+    //   20	92	5	str	String
+    //   136	5	5	localThrowable	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   102	129	136	finally
   }
   
-  static boolean bc(Context paramContext)
+  static boolean bM(Context paramContext)
   {
-    paramContext = aX(paramContext);
+    paramContext = bH(paramContext);
+    if (!paramContext.exists()) {}
+    while (System.currentTimeMillis() - paramContext.lastModified() < 172800000L) {
+      try
+      {
+        paramContext.createNewFile();
+        return false;
+      }
+      catch (IOException paramContext)
+      {
+        c.printErrStackTrace("Matrix.Backtrace.WarmUp", paramContext, "", new Object[0]);
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  static boolean bN(Context paramContext)
+  {
+    paramContext = bJ(paramContext);
     if (!paramContext.exists()) {}
     while (System.currentTimeMillis() - paramContext.lastModified() < 259200000L) {
       try
@@ -162,28 +245,9 @@ final class f
     return true;
   }
   
-  static boolean bd(Context paramContext)
+  static void bO(Context paramContext)
   {
-    paramContext = aZ(paramContext);
-    if (!paramContext.exists()) {}
-    while (System.currentTimeMillis() - paramContext.lastModified() < 259200000L) {
-      try
-      {
-        paramContext.createNewFile();
-        return false;
-      }
-      catch (IOException paramContext)
-      {
-        c.printErrStackTrace("Matrix.Backtrace.WarmUp", paramContext, "", new Object[0]);
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  static void be(Context paramContext)
-  {
-    paramContext = aZ(paramContext);
+    paramContext = bJ(paramContext);
     try
     {
       paramContext.createNewFile();
@@ -196,22 +260,43 @@ final class f
     }
   }
   
+  private static boolean c(g.a parama)
+  {
+    if (parama.eMi == null) {
+      return false;
+    }
+    File localFile = new File(parama.eMi);
+    try
+    {
+      if (localFile.getCanonicalPath().startsWith(parama.mContext.getFilesDir().getParentFile().getCanonicalFile().getAbsolutePath())) {
+        return true;
+      }
+      c.e("Matrix.Backtrace.WarmUp", "Saving path should under private storage path %s", new Object[] { parama.mContext.getFilesDir().getParentFile().getAbsolutePath() });
+      return false;
+    }
+    catch (IOException parama)
+    {
+      c.printErrStackTrace("Matrix.Backtrace.WarmUp", parama, "", new Object[0]);
+    }
+    return false;
+  }
+  
   /* Error */
-  static String c(File paramFile, int paramInt)
+  static String d(File paramFile, int paramInt)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 264	java/io/File:isFile	()Z
+    //   1: invokevirtual 280	java/io/File:isFile	()Z
     //   4: ifeq +81 -> 85
     //   7: new 11	java/lang/StringBuilder
     //   10: dup
     //   11: sipush 4096
-    //   14: invokespecial 267	java/lang/StringBuilder:<init>	(I)V
+    //   14: invokespecial 283	java/lang/StringBuilder:<init>	(I)V
     //   17: astore 5
-    //   19: new 269	java/io/FileReader
+    //   19: new 285	java/io/FileReader
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 272	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   24: invokespecial 288	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   27: astore 4
     //   29: aload 4
     //   31: astore_0
@@ -224,7 +309,7 @@ final class f
     //   43: astore_0
     //   44: aload 4
     //   46: aload 6
-    //   48: invokevirtual 276	java/io/FileReader:read	([C)I
+    //   48: invokevirtual 292	java/io/FileReader:read	([C)I
     //   51: istore_3
     //   52: iload_3
     //   53: ifle +49 -> 102
@@ -234,7 +319,7 @@ final class f
     //   61: aload 6
     //   63: iconst_0
     //   64: iload_3
-    //   65: invokevirtual 279	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 295	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: iload_2
     //   70: iload_3
@@ -246,7 +331,7 @@ final class f
     //   76: iload_1
     //   77: if_icmple -36 -> 41
     //   80: aload 4
-    //   82: invokevirtual 282	java/io/FileReader:close	()V
+    //   82: invokevirtual 298	java/io/FileReader:close	()V
     //   85: aconst_null
     //   86: areturn
     //   87: astore_0
@@ -264,7 +349,7 @@ final class f
     //   107: invokevirtual 28	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   110: astore 5
     //   112: aload 4
-    //   114: invokevirtual 282	java/io/FileReader:close	()V
+    //   114: invokevirtual 298	java/io/FileReader:close	()V
     //   117: aload 5
     //   119: areturn
     //   120: astore_0
@@ -290,7 +375,7 @@ final class f
     //   157: aload 4
     //   159: ifnull -74 -> 85
     //   162: aload 4
-    //   164: invokevirtual 282	java/io/FileReader:close	()V
+    //   164: invokevirtual 298	java/io/FileReader:close	()V
     //   167: aconst_null
     //   168: areturn
     //   169: astore_0
@@ -308,7 +393,7 @@ final class f
     //   188: aload_0
     //   189: ifnull +7 -> 196
     //   192: aload_0
-    //   193: invokevirtual 282	java/io/FileReader:close	()V
+    //   193: invokevirtual 298	java/io/FileReader:close	()V
     //   196: aload 4
     //   198: athrow
     //   199: astore_0
@@ -355,27 +440,6 @@ final class f
     //   105	112	220	java/lang/Exception
   }
   
-  private static boolean c(g.a parama)
-  {
-    if (parama.cQR == null) {
-      return false;
-    }
-    File localFile = new File(parama.cQR);
-    try
-    {
-      if (localFile.getCanonicalPath().startsWith(parama.mContext.getFilesDir().getParentFile().getCanonicalFile().getAbsolutePath())) {
-        return true;
-      }
-      c.e("Matrix.Backtrace.WarmUp", "Saving path should under private storage path %s", new Object[] { parama.mContext.getFilesDir().getParentFile().getAbsolutePath() });
-      return false;
-    }
-    catch (IOException parama)
-    {
-      c.printErrStackTrace("Matrix.Backtrace.WarmUp", parama, "", new Object[0]);
-    }
-    return false;
-  }
-  
   /* Error */
   static boolean f(File paramFile, String paramString)
   {
@@ -385,20 +449,20 @@ final class f
     //   2: iload_3
     //   3: istore_2
     //   4: aload_0
-    //   5: invokevirtual 264	java/io/File:isFile	()Z
+    //   5: invokevirtual 280	java/io/File:isFile	()Z
     //   8: ifeq +29 -> 37
-    //   11: new 299	java/io/FileWriter
+    //   11: new 300	java/io/FileWriter
     //   14: dup
     //   15: aload_0
-    //   16: invokespecial 300	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   16: invokespecial 301	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   19: astore 4
     //   21: aload 4
     //   23: astore_0
     //   24: aload 4
     //   26: aload_1
-    //   27: invokevirtual 303	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   27: invokevirtual 304	java/io/FileWriter:write	(Ljava/lang/String;)V
     //   30: aload 4
-    //   32: invokevirtual 304	java/io/FileWriter:close	()V
+    //   32: invokevirtual 305	java/io/FileWriter:close	()V
     //   35: iconst_1
     //   36: istore_2
     //   37: iload_2
@@ -427,7 +491,7 @@ final class f
     //   76: aload_1
     //   77: ifnull -40 -> 37
     //   80: aload_1
-    //   81: invokevirtual 304	java/io/FileWriter:close	()V
+    //   81: invokevirtual 305	java/io/FileWriter:close	()V
     //   84: iconst_0
     //   85: ireturn
     //   86: astore_0
@@ -445,7 +509,7 @@ final class f
     //   104: aload_0
     //   105: ifnull +7 -> 112
     //   108: aload_0
-    //   109: invokevirtual 304	java/io/FileWriter:close	()V
+    //   109: invokevirtual 305	java/io/FileWriter:close	()V
     //   112: aload_1
     //   113: athrow
     //   114: astore_0
@@ -485,14 +549,14 @@ final class f
   
   static final class a
   {
-    static Map<String, Integer> cSa;
+    static Map<String, Integer> eNr;
     
-    static int p(Context paramContext, String paramString)
+    static int t(Context paramContext, String paramString)
     {
-      if (cSa == null) {
-        cSa = f.bb(paramContext);
+      if (eNr == null) {
+        eNr = f.bL(paramContext);
       }
-      paramContext = (Integer)cSa.get(paramString);
+      paramContext = (Integer)eNr.get(paramString);
       if (paramContext != null) {
         return paramContext.intValue();
       }
@@ -502,7 +566,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.backtrace.f
  * JD-Core Version:    0.7.0.1
  */

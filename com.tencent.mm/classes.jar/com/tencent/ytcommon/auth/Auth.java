@@ -8,11 +8,11 @@ import java.io.InputStream;
 
 public class Auth
 {
-  private static String aalB = "";
+  private static String airo = "";
   
-  public static int aj(Context paramContext, String paramString1, String paramString2)
+  public static int ao(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(251301);
+    AppMethodBeat.i(210533);
     boolean bool2 = true;
     boolean bool1;
     if (Build.VERSION.SDK_INT >= 29) {
@@ -27,7 +27,7 @@ public class Auth
         if (localInputStream != null) {
           break;
         }
-        AppMethodBeat.o(251301);
+        AppMethodBeat.o(210533);
         return -10;
         bool1 = bool2;
         if (Build.VERSION.SDK_INT >= 23)
@@ -40,12 +40,12 @@ public class Auth
       }
       localInputStream.close();
       int i = nativeInitN(paramContext, 0, paramString1, paramContext.getAssets(), paramString1, bool1, paramString2);
-      AppMethodBeat.o(251301);
+      AppMethodBeat.o(210533);
       return i;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(251301);
+      AppMethodBeat.o(210533);
     }
     return -10;
   }

@@ -1,147 +1,63 @@
 package com.tencent.mm.ui.a;
 
-import android.annotation.TargetApi;
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeProvider;
-import android.widget.EditText;
-import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig;
+import com.tencent.mm.accessibility.base.MMBaseAccessibilityConfig.ConfigHelper;
+import com.tencent.mm.accessibility.base.ViewSetter;
+import kotlin.Metadata;
+import kotlin.g.a.b;
+import kotlin.g.b.u;
 
-@TargetApi(14)
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/accessibility/ChattingUIAccessibility;", "Lcom/tencent/mm/accessibility/base/MMBaseAccessibilityConfig;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "initConfig", "", "Companion", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  extends View.AccessibilityDelegate
+  extends MMBaseAccessibilityConfig
 {
-  private boolean Wfy;
+  public static final d.a adLr;
   
-  private d()
+  static
   {
-    AppMethodBeat.i(141503);
-    this.Wfy = false;
-    this.Wfy = a.a.hJg().hJf();
-    AppMethodBeat.o(141503);
+    AppMethodBeat.i(250105);
+    adLr = new d.a((byte)0);
+    AppMethodBeat.o(250105);
   }
   
-  public static View.AccessibilityDelegate hJh()
+  public d(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(205897);
-    if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vLg, 1) == 1) {}
-    for (int i = 1; (i != 0) && (com.tencent.mm.compatible.util.d.qV(30)) && (a.a.hJg().hJd()); i = 0)
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(250099);
+    AppMethodBeat.o(250099);
+  }
+  
+  public final void initConfig()
+  {
+    AppMethodBeat.i(250109);
+    root(R.i.ggR).view(R.h.fTY).descFormat(R.l.msg_quote_ll).valueByView(R.h.fwZ).valueByKey("quote_img");
+    MMBaseAccessibilityConfig.ConfigHelper localConfigHelper = root(R.i.ggn);
+    localConfigHelper.view(R.h.chatting_click_area).desc(R.h.fZY);
+    localConfigHelper.view(R.h.fMO).desc(R.l.avatar_desc);
+    root(R.i.actionbar_custom_area_center).view(R.h.title_area_ll).desc((b)new b(this));
+    AppMethodBeat.o(250109);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements b<View, String>
+  {
+    b(d paramd)
     {
-      com.tencent.mm.plugin.report.service.h.IzE.el(1624, 11);
-      localObject = new c();
-      AppMethodBeat.o(205897);
-      return localObject;
-    }
-    Object localObject = new d();
-    AppMethodBeat.o(205897);
-    return localObject;
-  }
-  
-  public final boolean dispatchPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    return false;
-  }
-  
-  public final AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
-  {
-    return null;
-  }
-  
-  public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent) {}
-  
-  public final void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo) {}
-  
-  public final void onPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent) {}
-  
-  public final boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    return true;
-  }
-  
-  public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    return true;
-  }
-  
-  public final void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(141504);
-    if (!a.a.hJg().hJd())
-    {
-      AppMethodBeat.o(141504);
-      return;
-    }
-    Log.i("MicroMsg.MMSecureAccessibilityDelegate", "sendAccessibilityEvent shouldSpeakPassWord: %s, eventType: %s", new Object[] { Boolean.valueOf(this.Wfy), Integer.valueOf(paramInt) });
-    if (!this.Wfy)
-    {
-      if ((paramView != null) && ((paramInt == 128) || (paramInt == 1))) {
-        a.a.hJg().hD(paramView);
-      }
-      AppMethodBeat.o(141504);
-      return;
-    }
-    Object localObject;
-    if ((paramView != null) && ((paramInt == 128) || (paramInt == 1))) {
-      if ((paramView instanceof EditText))
-      {
-        localObject = (EditText)paramView;
-        if (!Util.isNullOrNil(((EditText)localObject).getText())) {
-          localObject = ((EditText)localObject).getText();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (Util.isNullOrNil((CharSequence)localObject))
-      {
-        AppMethodBeat.o(141504);
-        return;
-        if (!Util.isNullOrNil(((EditText)localObject).getContentDescription()))
-        {
-          localObject = ((EditText)localObject).getContentDescription();
-          continue;
-        }
-        if (((EditText)localObject).getHint() != null)
-        {
-          localObject = ((EditText)localObject).getHint();
-          continue;
-          if ((paramView instanceof TextView))
-          {
-            if (Util.isNullOrNil(paramView.getContentDescription()))
-            {
-              localObject = ((TextView)paramView).getText();
-              continue;
-            }
-            localObject = paramView.getContentDescription();
-            continue;
-          }
-          localObject = paramView.getContentDescription();
-        }
-      }
-      else
-      {
-        a.a.hJg().j(paramView, ((CharSequence)localObject).toString());
-        AppMethodBeat.o(141504);
-        return;
-      }
-      localObject = null;
+      super();
     }
   }
-  
-  public final void sendAccessibilityEventUnchecked(View paramView, AccessibilityEvent paramAccessibilityEvent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,81 +4,91 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bif
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public int SSG;
-  public LinkedList<String> SSH;
-  public String path;
-  
-  public bif()
-  {
-    AppMethodBeat.i(197454);
-    this.SSH = new LinkedList();
-    AppMethodBeat.o(197454);
-  }
+  public String ZRm;
+  public int status;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(197459);
+    AppMethodBeat.i(257404);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.path != null) {
-        paramVarArgs.f(1, this.path);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      paramVarArgs.aY(2, this.SSG);
-      paramVarArgs.e(3, 1, this.SSH);
-      AppMethodBeat.o(197459);
+      paramVarArgs.bS(2, this.status);
+      if (this.ZRm != null) {
+        paramVarArgs.g(3, this.ZRm);
+      }
+      AppMethodBeat.o(257404);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.path == null) {
-        break label318;
+      if (this.BaseResponse == null) {
+        break label388;
       }
     }
-    label318:
-    for (paramInt = g.a.a.b.b.a.g(1, this.path) + 0;; paramInt = 0)
+    label388:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.SSG);
-      int j = g.a.a.a.c(3, 1, this.SSH);
-      AppMethodBeat.o(197459);
-      return paramInt + i + j;
+      int i = paramInt + i.a.a.b.b.a.cJ(2, this.status);
+      paramInt = i;
+      if (this.ZRm != null) {
+        paramInt = i + i.a.a.b.b.a.h(3, this.ZRm);
+      }
+      AppMethodBeat.o(257404);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.SSH.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(197459);
+        AppMethodBeat.o(257404);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         bif localbif = (bif)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(197459);
+          AppMethodBeat.o(257404);
           return -1;
         case 1: 
-          localbif.path = locala.abFh.readString();
-          AppMethodBeat.o(197459);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localbif.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(257404);
           return 0;
         case 2: 
-          localbif.SSG = locala.abFh.AK();
-          AppMethodBeat.o(197459);
+          localbif.status = ((i.a.a.a.a)localObject).ajGk.aar();
+          AppMethodBeat.o(257404);
           return 0;
         }
-        localbif.SSH.add(locala.abFh.readString());
-        AppMethodBeat.o(197459);
+        localbif.ZRm = ((i.a.a.a.a)localObject).ajGk.readString();
+        AppMethodBeat.o(257404);
         return 0;
       }
-      AppMethodBeat.o(197459);
+      AppMethodBeat.o(257404);
       return -1;
     }
   }

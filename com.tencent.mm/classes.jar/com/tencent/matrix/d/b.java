@@ -2,13 +2,13 @@ package com.tencent.matrix.d;
 
 import android.app.Application;
 import com.tencent.matrix.e.d;
-import com.tencent.matrix.report.f;
-import com.tencent.matrix.report.g.a;
+import com.tencent.matrix.report.g;
+import com.tencent.matrix.report.h.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class b
-  implements com.tencent.matrix.b.a, g.a
+  implements com.tencent.matrix.b.a, h.a
 {
   public static final int PLUGIN_CREATE = 0;
   public static final int PLUGIN_DESTROYED = 8;
@@ -64,12 +64,12 @@ public abstract class b
     this.status = 1;
     this.application = paramApplication;
     this.pluginListener = paramc;
-    com.tencent.matrix.a.cQs.a(this);
+    com.tencent.matrix.a.eLw.a(this);
   }
   
   public boolean isForeground()
   {
-    return com.tencent.matrix.a.cQs.cQt;
+    return com.tencent.matrix.a.eLw.eLx;
   }
   
   public boolean isPluginDestroyed()
@@ -92,20 +92,20 @@ public abstract class b
     return this.isSupported;
   }
   
-  public void onDetectIssue(f paramf)
+  public void onDetectIssue(g paramg)
   {
-    if (paramf.tag == null) {
-      paramf.tag = getTag();
+    if (paramg.tag == null) {
+      paramg.tag = getTag();
     }
-    paramf.daa = this;
-    JSONObject localJSONObject = paramf.cZZ;
+    paramg.eYA = this;
+    JSONObject localJSONObject = paramg.eYz;
     try
     {
-      if (paramf.tag != null) {
-        localJSONObject.put("tag", paramf.tag);
+      if (paramg.tag != null) {
+        localJSONObject.put("tag", paramg.tag);
       }
-      if (paramf.type != 0) {
-        localJSONObject.put("type", paramf.type);
+      if (paramg.type != 0) {
+        localJSONObject.put("type", paramg.type);
       }
       localJSONObject.put("process", d.getProcessName(this.application));
       localJSONObject.put("time", System.currentTimeMillis());
@@ -117,7 +117,7 @@ public abstract class b
         com.tencent.matrix.e.c.e("Matrix.Plugin", "json error", new Object[] { localJSONException });
       }
     }
-    this.pluginListener.a(paramf);
+    this.pluginListener.a(paramg);
   }
   
   public void onForeground(boolean paramBoolean) {}
@@ -159,7 +159,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.d.b
  * JD-Core Version:    0.7.0.1
  */

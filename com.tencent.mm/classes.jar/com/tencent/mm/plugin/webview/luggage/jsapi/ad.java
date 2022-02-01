@@ -1,87 +1,65 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import org.json.JSONException;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ad
-  extends bs
+  extends bw<g>
 {
-  public final void a(Context paramContext, String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
+  
+  public final void b(final b<g>.a paramb)
   {
-    AppMethodBeat.i(78569);
-    try
+    AppMethodBeat.i(78565);
+    final JSONObject localJSONObject = paramb.eiZ.eif;
+    if (localJSONObject == null)
     {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("tousername");
-      String str1 = ((JSONObject)localObject).optString("extmsg");
-      Log.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
-      String str2 = ((JSONObject)localObject).optString("currentUrl");
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("toUserName", paramString);
-      ((Intent)localObject).putExtra("extInfo", str1);
-      ((Intent)localObject).putExtra("fromURL", str2);
-      ((Intent)localObject).putExtra("source", 2);
-      paramString = new MMActivity.a()
-      {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-        {
-          AppMethodBeat.i(78568);
-          if (paramAnonymousInt1 == (ad.this.hashCode() & 0xFFFF)) {
-            Log.i("MicroMsg.JsApiJumpToBizProfile", "request jumpToBizProfile, resultCode = ".concat(String.valueOf(paramAnonymousInt2)));
-          }
-          switch (paramAnonymousInt2)
-          {
-          case 1: 
-          default: 
-            parama.i("fail", null);
-            Log.e("MicroMsg.JsApiJumpToBizProfile", "unknown resultCode");
-            AppMethodBeat.o(78568);
-            return;
-          case -1: 
-            parama.i(null, null);
-            AppMethodBeat.o(78568);
-            return;
-          case 0: 
-            parama.i("cancel", null);
-            AppMethodBeat.o(78568);
-            return;
-          }
-          parama.i("check_fail", null);
-          AppMethodBeat.o(78568);
-        }
-      };
-      a.mIG.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
-      AppMethodBeat.o(78569);
+      paramb.a("invalid_params", null);
+      AppMethodBeat.o(78565);
       return;
     }
-    catch (JSONException paramContext)
+    Object localObject = localJSONObject.optJSONArray("urls");
+    if ((localObject == null) || (((JSONArray)localObject).length() == 0))
     {
-      Log.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
-      parama.i("fail", null);
-      AppMethodBeat.o(78569);
+      Log.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
+      paramb.a("invalid_url", null);
+      AppMethodBeat.o(78565);
+      return;
     }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("current", localJSONObject.optString("current"));
+    com.tencent.mm.plugin.webview.modeltools.k.a((Map)localObject, ((g)paramb.eiY).WFO);
+    j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(localJSONObject.toString()), a.class, new f() {});
+    AppMethodBeat.o(78565);
   }
   
-  public final void b(b.a parama) {}
-  
-  public final int cDj()
+  public final int dgI()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "jumpToBizProfile";
+    return "imagePreview";
   }
+  
+  static class a
+    implements d<IPCString, Bundle>
+  {}
 }
 
 

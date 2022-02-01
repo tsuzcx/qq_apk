@@ -2,13 +2,13 @@ package androidx.appcompat.view;
 
 public abstract interface c
 {
-  public abstract void bB();
+  public abstract void cu();
   
-  public abstract void bC();
+  public abstract void cv();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.view.c
  * JD-Core Version:    0.7.0.1
  */

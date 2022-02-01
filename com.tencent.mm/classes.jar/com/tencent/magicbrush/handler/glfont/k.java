@@ -7,15 +7,15 @@ import java.util.List;
 
 final class k
 {
-  static final k cOt;
-  boolean cOA;
-  int cOB = 1;
-  float cOu;
-  float cOv;
-  float cOw;
-  float cOx;
-  float cOy;
-  float cOz;
+  static final k eJO;
+  float eJP;
+  float eJQ;
+  float eJR;
+  float eJS;
+  float eJT;
+  float eJU;
+  boolean eJV;
+  int eJW = 1;
   float height;
   float width;
   
@@ -23,8 +23,8 @@ final class k
   {
     AppMethodBeat.i(140056);
     k localk = new k();
-    cOt = localk;
-    localk.Vn();
+    eJO = localk;
+    localk.avQ();
     AppMethodBeat.o(140056);
   }
   
@@ -42,11 +42,11 @@ final class k
       k localk = (k)paramList.next();
       if (localk != null)
       {
-        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localk.cOu).put(localk.cOv).put(localk.width).put(localk.height).put(localk.cOw).put(localk.cOx).put(localk.cOy).put(localk.cOz);
-        if (localk.cOA) {}
+        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localk.eJP).put(localk.eJQ).put(localk.width).put(localk.height).put(localk.eJR).put(localk.eJS).put(localk.eJT).put(localk.eJU);
+        if (localk.eJV) {}
         for (float f = 1.0F;; f = 0.0F)
         {
-          localFloatBuffer.put(f).put(localk.cOB);
+          localFloatBuffer.put(f).put(localk.eJW);
           break;
         }
       }
@@ -54,40 +54,40 @@ final class k
     AppMethodBeat.o(140054);
   }
   
-  public final void Vn()
+  public final void ac(float paramFloat1, float paramFloat2)
+  {
+    this.width = paramFloat1;
+    this.height = paramFloat2;
+  }
+  
+  public final void avQ()
   {
     this.height = 0.0F;
     this.width = 0.0F;
-    this.cOv = 0.0F;
-    this.cOu = 0.0F;
-    this.cOz = 0.0F;
-    this.cOy = 0.0F;
-    this.cOx = 0.0F;
-    this.cOw = 0.0F;
-    this.cOB = 1;
-    this.cOA = false;
+    this.eJQ = 0.0F;
+    this.eJP = 0.0F;
+    this.eJU = 0.0F;
+    this.eJT = 0.0F;
+    this.eJS = 0.0F;
+    this.eJR = 0.0F;
+    this.eJW = 1;
+    this.eJV = false;
   }
   
-  public final void l(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void n(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.cOw = paramFloat1;
-    this.cOx = paramFloat2;
-    this.cOy = paramFloat3;
-    this.cOz = paramFloat4;
+    this.eJR = paramFloat1;
+    this.eJS = paramFloat2;
+    this.eJT = paramFloat3;
+    this.eJU = paramFloat4;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(140055);
-    String str = "glyph(" + this.cOu + ", " + this.cOv + ", [" + this.width + ", " + this.height + "], [" + this.cOw + ", " + this.cOx + ", " + this.cOy + ", " + this.cOz + ", " + this.cOA + "])";
+    String str = "glyph(" + this.eJP + ", " + this.eJQ + ", [" + this.width + ", " + this.height + "], [" + this.eJR + ", " + this.eJS + ", " + this.eJT + ", " + this.eJU + ", " + this.eJV + "])";
     AppMethodBeat.o(140055);
     return str;
-  }
-  
-  public final void w(float paramFloat1, float paramFloat2)
-  {
-    this.width = paramFloat1;
-    this.height = paramFloat2;
   }
 }
 

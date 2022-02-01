@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.appbrand.pip;
 
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import kotlin.l;
+import android.graphics.Point;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/pip/SetStablePosTask;", "Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePos;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
-final class p
-  extends q
-  implements d<PipStablePos, IPCVoid>
-{}
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "", "get", "Landroid/graphics/Point;", "appId", "", "set", "", "point", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+abstract interface p
+{
+  public abstract void a(String paramString, Point paramPoint);
+  
+  public abstract Point afJ(String paramString);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.p
  * JD-Core Version:    0.7.0.1
  */

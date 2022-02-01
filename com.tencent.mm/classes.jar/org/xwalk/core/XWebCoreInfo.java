@@ -3,27 +3,27 @@ package org.xwalk.core;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.util.h;
+import com.tencent.xweb.util.b;
+import com.tencent.xweb.util.l;
 
 public class XWebCoreInfo
 {
+  public static final int INVALID_VERSION = -1;
+  private static final String STR_TAG_VERSION = "version";
+  private static final String STR_TAG_VERSION_DETAIL = "versionDetail";
   private static final String TAG = "XWebCoreInfo";
   public String strAbi;
   public int ver;
   public String verDetail;
   
-  public static XWebCoreInfo getBackupCoreInfo(String paramString)
+  public XWebCoreInfo() {}
+  
+  public XWebCoreInfo(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(157335);
-    XWebCoreInfo localXWebCoreInfo = new XWebCoreInfo();
-    localXWebCoreInfo.strAbi = paramString;
-    SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForVersionInfo();
-    localXWebCoreInfo.ver = localSharedPreferences.getInt(getBackupKey(paramString, "version"), -1);
-    localXWebCoreInfo.verDetail = localSharedPreferences.getString(getBackupKey(paramString, "versionDetail"), "");
-    AppMethodBeat.o(157335);
-    return localXWebCoreInfo;
+    this.ver = paramInt;
+    this.verDetail = paramString1;
+    this.strAbi = paramString2;
   }
   
   private static String getBackupKey(String paramString1, String paramString2)
@@ -34,82 +34,86 @@ public class XWebCoreInfo
     return paramString1;
   }
   
-  public static int getCurAbiInstalledNewestVersion(Context paramContext)
+  public static int getInstalledNewestVersionForCurAbi(Context paramContext)
   {
-    AppMethodBeat.i(157338);
+    AppMethodBeat.i(187569);
     if (paramContext == null)
     {
-      AppMethodBeat.o(157338);
-      return -5;
+      Log.w("XWebCoreInfo", "getInstalledNewestVersionForCurAbi, context is null, return -1");
+      AppMethodBeat.o(187569);
+      return -1;
     }
     if (XWalkEnvironment.getApplicationContext() == null) {
       XWalkEnvironment.init(paramContext);
     }
-    int i = XWalkEnvironment.getSharedPreferencesForVersionInfo().getInt(getBackupKey(XWalkEnvironment.getRuntimeAbi(), "version"), -1);
-    AppMethodBeat.o(157338);
+    int i = XWalkSharedPreferenceUtil.getSharedPreferencesForVersionInfo().getInt(getBackupKey(b.khw(), "version"), -1);
+    AppMethodBeat.o(187569);
     return i;
   }
   
-  private static boolean isValidAbi(String paramString)
+  public static XWebCoreInfo getVersionInfoForAbi(String paramString)
   {
-    AppMethodBeat.i(157340);
-    if (!TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(157340);
-      return true;
-    }
-    AppMethodBeat.o(157340);
-    return false;
+    AppMethodBeat.i(187557);
+    XWebCoreInfo localXWebCoreInfo = new XWebCoreInfo();
+    SharedPreferences localSharedPreferences = XWalkSharedPreferenceUtil.getSharedPreferencesForVersionInfo();
+    localXWebCoreInfo.strAbi = paramString;
+    localXWebCoreInfo.ver = localSharedPreferences.getInt(getBackupKey(paramString, "version"), -1);
+    localXWebCoreInfo.verDetail = localSharedPreferences.getString(getBackupKey(paramString, "versionDetail"), "");
+    AppMethodBeat.o(187557);
+    return localXWebCoreInfo;
   }
   
-  public static boolean setVersionForAbi(int paramInt, String paramString1, String paramString2)
+  public static boolean setVersionInfo(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(157336);
-    SharedPreferences.Editor localEditor = XWalkEnvironment.getSharedPreferencesForVersionInfo().edit();
+    AppMethodBeat.i(187560);
+    SharedPreferences.Editor localEditor = XWalkSharedPreferenceUtil.getSharedPreferencesForVersionInfo().edit();
     localEditor.putInt(getBackupKey(paramString2, "version"), paramInt);
     localEditor.putString(getBackupKey(paramString2, "versionDetail"), paramString1);
     boolean bool = localEditor.commit();
-    if ((bool) && (paramInt > 0) && (!XWalkEnvironment.getRuntimeAbi().equalsIgnoreCase(paramString2)))
+    if ((bool) && (paramInt > 0) && (!b.khw().equalsIgnoreCase(paramString2)))
     {
       if (!"armeabi-v7a".equalsIgnoreCase(paramString2)) {
         break label136;
       }
-      h.u(577L, 238L, 1L);
+      l.y(577L, 238L, 1L);
     }
     for (;;)
     {
-      XWalkEnvironment.addXWalkInitializeLog("XWebCoreInfo", "set xwalk version to " + paramInt + " suc = " + bool + " abi = " + paramString2);
-      AppMethodBeat.o(157336);
+      XWalkEnvironment.addXWalkInitializeLog("XWebCoreInfo", "setVersionInfo, version:" + paramInt + ", abi:" + paramString2 + ", detail:" + paramString1);
+      AppMethodBeat.o(187560);
       return bool;
       label136:
       if ("arm64-v8a".equalsIgnoreCase(paramString2)) {
-        h.u(577L, 239L, 1L);
+        l.y(577L, 239L, 1L);
       }
     }
   }
   
-  public static boolean setVersionForAbi(XWebCoreInfo paramXWebCoreInfo)
+  public static boolean setVersionInfo(XWebCoreInfo paramXWebCoreInfo)
   {
-    AppMethodBeat.i(157337);
+    AppMethodBeat.i(187564);
     if (paramXWebCoreInfo == null)
     {
-      Log.e("XWebCoreInfo", "setVersionForAbi info is null");
-      AppMethodBeat.o(157337);
+      Log.w("XWebCoreInfo", "setVersionInfo, info is null");
+      AppMethodBeat.o(187564);
       return false;
     }
-    boolean bool = setVersionForAbi(paramXWebCoreInfo.ver, paramXWebCoreInfo.verDetail, paramXWebCoreInfo.strAbi);
-    AppMethodBeat.o(157337);
+    boolean bool = setVersionInfo(paramXWebCoreInfo.ver, paramXWebCoreInfo.verDetail, paramXWebCoreInfo.strAbi);
+    AppMethodBeat.o(187564);
     return bool;
   }
   
-  public boolean isValid()
+  public String toString()
   {
-    return this.ver > 0;
+    AppMethodBeat.i(187577);
+    String str = "XWebCoreInfo{ver=" + this.ver + ", verDetail='" + this.verDetail + '\'' + ", strAbi='" + this.strAbi + '\'' + '}';
+    AppMethodBeat.o(187577);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWebCoreInfo
  * JD-Core Version:    0.7.0.1
  */

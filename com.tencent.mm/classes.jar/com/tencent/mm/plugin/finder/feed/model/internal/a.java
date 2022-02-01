@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.plugin.finder.feed.model.o;
-import kotlin.l;
+import com.tencent.mm.model.cn;
+import com.tencent.mm.plugin.finder.feed.model.q;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache;", "Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "cacheId", "", "(J)V", "createTime", "getCreateTime", "()J", "expireLimit", "getExpireLimit", "setExpireLimit", "id", "isValid", "", "Companion", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache;", "Lcom/tencent/mm/plugin/finder/feed/model/IFinderCache;", "cacheId", "", "(J)V", "createTime", "getCreateTime", "()J", "expireLimit", "getExpireLimit", "setExpireLimit", "id", "isValid", "", "Companion", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class a
-  implements o
+  implements q
 {
-  public static final a xKd;
+  public static final a BjO;
+  private final long BjP;
+  private long BjQ;
   private final long createTime;
-  private long xKb;
-  private final long xKc;
   
   static
   {
-    AppMethodBeat.i(260385);
-    xKd = new a((byte)0);
-    AppMethodBeat.o(260385);
+    AppMethodBeat.i(366563);
+    BjO = new a((byte)0);
+    AppMethodBeat.o(366563);
   }
   
   public a(long paramLong)
   {
-    AppMethodBeat.i(260382);
-    this.xKc = paramLong;
-    this.createTime = cm.bfE();
-    this.xKb = 259200000L;
-    AppMethodBeat.o(260382);
+    AppMethodBeat.i(366558);
+    this.BjP = paramLong;
+    this.createTime = cn.bDw();
+    this.BjQ = 259200000L;
+    AppMethodBeat.o(366558);
   }
   
-  public final long dux()
+  public final long id()
   {
-    return this.xKc;
+    return this.BjP;
   }
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(260380);
-    if (cm.bfE() - this.createTime < this.xKb)
+    AppMethodBeat.i(366574);
+    if (cn.bDw() - this.createTime < this.BjQ)
     {
-      AppMethodBeat.o(260380);
+      AppMethodBeat.o(366574);
       return true;
     }
-    AppMethodBeat.o(260380);
+    AppMethodBeat.o(366574);
     return false;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache$Companion;", "", "()V", "EXPIRE_LIMIT", "", "plugin-finder-base_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/AdCache$Companion;", "", "()V", "EXPIRE_LIMIT", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

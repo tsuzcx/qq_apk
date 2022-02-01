@@ -1,77 +1,243 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.c.a.a;
-import com.tencent.mm.model.d;
+import com.tencent.mm.live.core.core.f.a.a;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.b.a;
-import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.conv.t;
+import com.tencent.mm.plugin.finder.e.a;
+import com.tencent.mm.plugin.finder.e.f;
 import com.tencent.mm.plugin.finder.feed.model.FinderTimelineFeedLoader;
-import com.tencent.mm.plugin.finder.report.n;
-import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.report.m;
+import com.tencent.mm.plugin.finder.report.m.a;
+import com.tencent.mm.plugin.finder.report.z;
 import com.tencent.mm.plugin.finder.storage.data.k.a;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.plugin.finder.upload.action.f.b;
 import com.tencent.mm.plugin.finder.upload.action.f.c;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderHomeUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.aa;
-import com.tencent.mm.plugin.finder.viewmodel.component.ac;
-import com.tencent.mm.plugin.finder.viewmodel.component.ah;
-import com.tencent.mm.plugin.finder.viewmodel.component.ai;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.af;
 import com.tencent.mm.plugin.finder.viewmodel.component.al;
-import com.tencent.mm.plugin.finder.viewmodel.component.an;
+import com.tencent.mm.plugin.finder.viewmodel.component.aq;
 import com.tencent.mm.plugin.finder.viewmodel.component.as;
-import com.tencent.mm.plugin.finder.viewmodel.component.r;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.av;
+import com.tencent.mm.plugin.finder.viewmodel.component.ay;
+import com.tencent.mm.plugin.finder.viewmodel.component.az;
+import com.tencent.mm.plugin.finder.viewmodel.component.bd;
+import com.tencent.mm.plugin.finder.viewmodel.component.be;
+import com.tencent.mm.plugin.finder.viewmodel.component.bf;
+import com.tencent.mm.plugin.finder.viewmodel.component.i;
+import com.tencent.mm.plugin.finder.viewmodel.d.a;
+import com.tencent.mm.plugin.findersdk.a.ap;
+import com.tencent.mm.protocal.protobuf.FinderJumpInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.component.k.b;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import kotlin.Metadata;
 import kotlin.a.ak;
-import kotlin.g.b.ab;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.a.p;
+import kotlin.g.b.ai;
+import kotlin.g.b.u;
+import kotlin.v;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "backToFindPage", "", "checkJumpFollow", "intent", "Landroid/content/Intent;", "checkJumpFriend", "checkJumpHot", "checkRoute", "finish", "getCommentScene", "", "getLayoutId", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "isHideStatusBar", "", "jumpFinderPersonCenter", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "onPause", "onResume", "Companion", "plugin-finder_release"})
-public final class FinderHomeUI
-  extends MMFinderUI
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderFeedDetailUI;", "()V", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "isFinishBySwipe", "", "backToFindPage", "", "backToMainPage", "checkAppPush", "intent", "Landroid/content/Intent;", "checkJumpFollow", "checkJumpFriend", "fromNewIntent", "checkJumpHot", "checkRoute", "checkShareToTimeline", "finish", "getCommentScene", "", "getLayoutId", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "isHideStatusBar", "jumpFinderPersonCenter", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "onPause", "onResume", "onSwipeBack", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+public class FinderHomeUI
+  extends MMFinderFeedDetailUI
 {
-  public static final a Arp;
-  private HashMap _$_findViewCache;
-  private final d kKI;
+  public static final a FQS;
+  private boolean FQT;
+  private final com.tencent.mm.model.d nmW;
   
   static
   {
-    AppMethodBeat.i(235678);
-    Arp = new a((byte)0);
-    AppMethodBeat.o(235678);
+    AppMethodBeat.i(346970);
+    FQS = new a((byte)0);
+    AppMethodBeat.o(346970);
   }
   
   public FinderHomeUI()
   {
-    AppMethodBeat.i(235677);
-    this.kKI = d.bcs();
-    AppMethodBeat.o(235677);
+    AppMethodBeat.i(346905);
+    this.nmW = new com.tencent.mm.model.d();
+    AppMethodBeat.o(346905);
   }
   
-  private final void as(Intent paramIntent)
+  private static final void a(FinderHomeUIC paramFinderHomeUIC)
   {
-    AppMethodBeat.i(235656);
-    if (paramIntent != null) {}
-    for (boolean bool = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_FRIEND_TAB", false);; bool = false)
+    Object localObject1 = null;
+    AppMethodBeat.i(346957);
+    kotlin.g.b.s.u(paramFinderHomeUIC, "$this_apply");
+    Object localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcR;
+    paramFinderHomeUIC = paramFinderHomeUIC.fragments;
+    kotlin.g.b.s.u(paramFinderHomeUIC, "fragments");
+    if (com.tencent.mm.plugin.finder.upload.action.f.feg())
+    {
+      Log.i("Finder.FeedCleaner", "cleanTimeline return for record empty");
+      AppMethodBeat.o(346957);
+      return;
+    }
+    com.tencent.mm.plugin.finder.upload.action.f.fef();
+    Iterator localIterator = ((Iterable)paramFinderHomeUIC).iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject3 = (FinderHomeTabFragment)localIterator.next();
+      paramFinderHomeUIC = com.tencent.mm.ui.component.k.aeZF;
+      FinderTimelineFeedLoader localFinderTimelineFeedLoader = ((bd)com.tencent.mm.ui.component.k.y((Fragment)localObject3).q(bd.class)).fpq();
+      paramFinderHomeUIC = com.tencent.mm.plugin.finder.upload.action.f.GcR;
+      int i = ((FinderHomeTabFragment)localObject3).hJx;
+      label125:
+      List localList;
+      if (localFinderTimelineFeedLoader == null)
+      {
+        paramFinderHomeUIC = null;
+        localList = (List)paramFinderHomeUIC;
+        if (com.tencent.mm.plugin.finder.upload.action.f.TN(i)) {
+          break label238;
+        }
+        Log.i("Finder.FeedCleaner", "cleanFeed: " + i + " return");
+      }
+      for (;;)
+      {
+        if (localFinderTimelineFeedLoader != null)
+        {
+          paramFinderHomeUIC = localFinderTimelineFeedLoader.dispatcher();
+          if (paramFinderHomeUIC != null) {
+            paramFinderHomeUIC.onChanged();
+          }
+        }
+        paramFinderHomeUIC = com.tencent.mm.plugin.finder.upload.action.f.GcR;
+        i = ((FinderHomeTabFragment)localObject3).hJx;
+        if (com.tencent.mm.plugin.finder.upload.action.f.TN(i)) {
+          break label457;
+        }
+        Log.i("Finder.FeedCleaner", "cleanTimelinePage: " + i + " return");
+        break;
+        paramFinderHomeUIC = localFinderTimelineFeedLoader.getDataList();
+        break label125;
+        label238:
+        localObject2 = new StringBuilder("cleanFeed: ").append(i).append(" size: ");
+        if (localList == null) {}
+        for (paramFinderHomeUIC = null;; paramFinderHomeUIC = Integer.valueOf(localList.size()))
+        {
+          Log.i("Finder.FeedCleaner", paramFinderHomeUIC);
+          StringBuilder localStringBuilder = new StringBuilder("followRecorder size: ");
+          localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcS;
+          paramFinderHomeUIC = (FinderHomeUIC)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("followRecorder");
+            paramFinderHomeUIC = null;
+          }
+          localStringBuilder = localStringBuilder.append(paramFinderHomeUIC.Gda.size()).append(" noSeeAuthorRecorder:");
+          localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcT;
+          paramFinderHomeUIC = (FinderHomeUIC)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("noSeeAuthorRecorder");
+            paramFinderHomeUIC = null;
+          }
+          Log.i("Finder.FeedCleaner", paramFinderHomeUIC.Gda.size());
+          switch (i)
+          {
+          case 2: 
+          default: 
+            break;
+          case 1: 
+          case 4: 
+            if (localList == null) {
+              break;
+            }
+            p.e(localList, (kotlin.g.a.b)f.c.GcZ);
+            break;
+          }
+        }
+        if (localList != null) {
+          p.e(localList, (kotlin.g.a.b)f.b.GcY);
+        }
+      }
+      label457:
+      Log.i("Finder.FeedCleaner", kotlin.g.b.s.X("cleanTimelinePage: ", Integer.valueOf(i)));
+      switch (i)
+      {
+      case 2: 
+      default: 
+        break;
+      case 1: 
+      case 4: 
+        if (i != 1) {}
+      case 3: 
+        for (i = 5;; i = 8)
+        {
+          localObject3 = com.tencent.mm.plugin.finder.storage.data.k.FNg;
+          localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcT;
+          paramFinderHomeUIC = (FinderHomeUIC)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("noSeeAuthorRecorder");
+            paramFinderHomeUIC = null;
+          }
+          k.a.a((k.a)localObject3, i, p.p((Iterable)paramFinderHomeUIC.Gda));
+          break;
+          localObject3 = new HashSet();
+          localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcS;
+          paramFinderHomeUIC = (FinderHomeUIC)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("followRecorder");
+            paramFinderHomeUIC = null;
+          }
+          ((HashSet)localObject3).addAll((Collection)paramFinderHomeUIC.Gda);
+          localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcT;
+          paramFinderHomeUIC = (FinderHomeUIC)localObject2;
+          if (localObject2 == null)
+          {
+            kotlin.g.b.s.bIx("noSeeAuthorRecorder");
+            paramFinderHomeUIC = null;
+          }
+          ((HashSet)localObject3).addAll((Collection)paramFinderHomeUIC.Gda);
+          k.a.a(com.tencent.mm.plugin.finder.storage.data.k.FNg, 7, p.p((Iterable)localObject3));
+          break;
+        }
+      }
+    }
+    localObject2 = com.tencent.mm.plugin.finder.upload.action.f.GcS;
+    paramFinderHomeUIC = (FinderHomeUIC)localObject2;
+    if (localObject2 == null)
+    {
+      kotlin.g.b.s.bIx("followRecorder");
+      paramFinderHomeUIC = null;
+    }
+    paramFinderHomeUIC.clear();
+    paramFinderHomeUIC = com.tencent.mm.plugin.finder.upload.action.f.GcT;
+    if (paramFinderHomeUIC == null)
+    {
+      kotlin.g.b.s.bIx("noSeeAuthorRecorder");
+      paramFinderHomeUIC = localObject1;
+    }
+    for (;;)
+    {
+      paramFinderHomeUIC.clear();
+      AppMethodBeat.o(346957);
+      return;
+    }
+  }
+  
+  private final void aK(Intent paramIntent)
+  {
+    AppMethodBeat.i(346915);
+    if (paramIntent == null) {}
+    for (boolean bool = false;; bool = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_FRIEND_TAB", false))
     {
       paramIntent = getIntent();
       if (paramIntent != null) {
@@ -79,26 +245,27 @@ public final class FinderHomeUI
       }
       if (bool)
       {
-        paramIntent = com.tencent.mm.ui.component.g.Xox;
-        ((as)com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(as.class)).elA();
-        paramIntent = com.tencent.mm.ui.component.g.Xox;
-        paramIntent = com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(FinderHomeUIC.class);
-        p.j(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        ((be)com.tencent.mm.ui.component.k.cn(PluginFinder.class).q(be.class)).fps();
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        paramIntent = com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(FinderHomeUIC.class);
+        kotlin.g.b.s.s(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
         paramIntent = (FinderHomeUIC)paramIntent;
         Bundle localBundle = new Bundle();
         localBundle.putInt("Source", 0);
-        paramIntent.r(1, localBundle);
+        kotlin.ah localah = kotlin.ah.aiuX;
+        paramIntent.u(1, localBundle);
       }
-      AppMethodBeat.o(235656);
+      AppMethodBeat.o(346915);
       return;
     }
   }
   
-  private final void at(Intent paramIntent)
+  private final void aL(Intent paramIntent)
   {
-    AppMethodBeat.i(235659);
-    if (paramIntent != null) {}
-    for (boolean bool = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_FOLLOW_TAB", false);; bool = false)
+    AppMethodBeat.i(346920);
+    if (paramIntent == null) {}
+    for (boolean bool = false;; bool = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_FOLLOW_TAB", false))
     {
       paramIntent = getIntent();
       if (paramIntent != null) {
@@ -106,41 +273,42 @@ public final class FinderHomeUI
       }
       if (bool)
       {
-        paramIntent = com.tencent.mm.ui.component.g.Xox;
-        ((as)com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(as.class)).elA();
-        paramIntent = com.tencent.mm.ui.component.g.Xox;
-        paramIntent = com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(FinderHomeUIC.class);
-        p.j(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        ((be)com.tencent.mm.ui.component.k.cn(PluginFinder.class).q(be.class)).fps();
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        paramIntent = com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(FinderHomeUIC.class);
+        kotlin.g.b.s.s(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
         paramIntent = (FinderHomeUIC)paramIntent;
         Bundle localBundle = new Bundle();
         localBundle.putInt("Source", 0);
-        paramIntent.r(3, localBundle);
+        kotlin.ah localah = kotlin.ah.aiuX;
+        paramIntent.u(3, localBundle);
       }
-      AppMethodBeat.o(235659);
+      AppMethodBeat.o(346920);
       return;
     }
   }
   
-  private final void au(Intent paramIntent)
+  private final void aM(Intent paramIntent)
   {
-    AppMethodBeat.i(235664);
+    AppMethodBeat.i(346925);
     boolean bool1;
     boolean bool2;
-    if (paramIntent != null)
+    if (paramIntent == null)
     {
-      bool1 = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_HOT_TAB", false);
-      if (paramIntent == null) {
-        break label147;
+      bool1 = false;
+      if (paramIntent != null) {
+        break label148;
       }
-      bool2 = paramIntent.getBooleanExtra("KEY_FINDER_JUMP_HOT_TAB_WITH_ANIM", true);
-      label30:
-      if (paramIntent == null) {
-        break label153;
+      bool2 = false;
+      label19:
+      if (paramIntent != null) {
+        break label161;
       }
     }
-    label147:
-    label153:
-    for (int i = paramIntent.getIntExtra("Source", 0);; i = 0)
+    label148:
+    label161:
+    for (int i = 0;; i = paramIntent.getIntExtra("Source", 0))
     {
       paramIntent = getIntent();
       if (paramIntent != null) {
@@ -148,228 +316,414 @@ public final class FinderHomeUI
       }
       if (bool1)
       {
-        paramIntent = com.tencent.mm.ui.component.g.Xox;
-        ((as)com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(as.class)).elA();
-        paramIntent = com.tencent.mm.ui.component.g.Xox;
-        paramIntent = com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(FinderHomeUIC.class);
-        p.j(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        ((be)com.tencent.mm.ui.component.k.cn(PluginFinder.class).q(be.class)).fps();
+        paramIntent = com.tencent.mm.ui.component.k.aeZF;
+        paramIntent = com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(FinderHomeUIC.class);
+        kotlin.g.b.s.s(paramIntent, "UICProvider.of(this).get…inderHomeUIC::class.java)");
         paramIntent = (FinderHomeUIC)paramIntent;
         Bundle localBundle = new Bundle();
         localBundle.putInt("Source", i);
+        kotlin.ah localah = kotlin.ah.aiuX;
         paramIntent.a(bool2, localBundle);
       }
-      AppMethodBeat.o(235664);
+      AppMethodBeat.o(346925);
       return;
-      bool1 = false;
+      bool1 = paramIntent.getBooleanExtra("KEY_FINDER_POST_FINISH_JUMP_HOT_TAB", false);
       break;
-      bool2 = false;
-      break label30;
+      bool2 = paramIntent.getBooleanExtra("KEY_FINDER_JUMP_HOT_TAB_WITH_ANIM", true);
+      break label19;
     }
   }
   
-  private final void av(Intent paramIntent)
+  private final void aN(Intent paramIntent)
   {
-    AppMethodBeat.i(235667);
-    if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getStringExtra("KEY_ROUTE_TO_PAGE");; paramIntent = null)
+    boolean bool = false;
+    AppMethodBeat.i(346930);
+    Object localObject;
+    if (paramIntent == null)
     {
-      Log.i("Finder.HomeUI", "checkRoute ".concat(String.valueOf(paramIntent)));
-      if (p.h(ab.bO(FinderSelfUI.class).iCe(), paramIntent)) {
-        eau();
+      localObject = null;
+      if (paramIntent != null) {
+        break label113;
       }
-      AppMethodBeat.o(235667);
+    }
+    for (;;)
+    {
+      Log.i("Finder.HomeUI", "checkRoute " + localObject + ' ' + bool);
+      if (kotlin.g.b.s.p(ai.cz(FinderSelfUI.class).klt(), localObject)) {
+        fbj();
+      }
+      if (bool)
+      {
+        localObject = com.tencent.mm.plugin.finder.feed.jumper.r.Bej;
+        com.tencent.mm.plugin.finder.feed.jumper.r.a(paramIntent, (kotlin.g.a.b)new b(this));
+      }
+      AppMethodBeat.o(346930);
       return;
+      localObject = paramIntent.getStringExtra("KEY_ROUTE_TO_PAGE");
+      break;
+      label113:
+      bool = paramIntent.getBooleanExtra("KEY_ROUTE_TO_TOPIC", false);
     }
   }
   
-  private final void eau()
+  private final void fbj()
   {
-    AppMethodBeat.i(235671);
+    AppMethodBeat.i(346934);
     Log.i("Finder.HomeUI", "jumpFinderPersonCenter");
     Intent localIntent = new Intent();
-    Object localObject = FinderSelfUI.Avb;
-    localIntent.putExtra(FinderSelfUI.eaU(), true);
-    localObject = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-    aj.a.a((Context)this, localIntent, 0L, 0, false, 124);
-    localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
+    localIntent.putExtra("RED_DOT_EXIST_ON_ENTER", true);
+    Object localObject = as.GSQ;
+    as.a.a((Context)this, localIntent, 0L, 0, false, 124);
+    localObject = com.tencent.mm.plugin.finder.utils.a.GfO;
     com.tencent.mm.plugin.finder.utils.a.enterFinderSelfUI((Context)this, localIntent);
-    AppMethodBeat.o(235671);
+    AppMethodBeat.o(346934);
   }
   
-  public final void _$_clearFindViewByIdCache()
+  private final void fbk()
   {
-    AppMethodBeat.i(235680);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(235680);
+    AppMethodBeat.i(346941);
+    Intent localIntent = new Intent();
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("preferred_tab", 2);
+    com.tencent.mm.br.c.g((Context)this, ".ui.LauncherUI", localIntent);
+    overridePendingTransition(e.a.slide_left_in, e.a.slide_right_out);
+    AppMethodBeat.o(346941);
   }
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(235679);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(235679);
-    return localView1;
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public final int duR()
+  public final int edC()
   {
     return 1;
   }
   
-  public final void finish()
+  public void finish()
   {
-    AppMethodBeat.i(235654);
-    Object localObject = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-    localObject = aj.a.fZ((Context)this);
+    AppMethodBeat.i(347032);
+    Object localObject = as.GSQ;
+    localObject = as.a.hu((Context)this);
     if (localObject != null)
     {
-      localObject = com.tencent.mm.plugin.finder.viewmodel.component.aj.c((com.tencent.mm.plugin.finder.viewmodel.component.aj)localObject);
-      if ((localObject != null) && ((localObject instanceof com.tencent.mm.plugin.finder.report.s)))
+      localObject = as.a((as)localObject);
+      if ((localObject != null) && ((localObject instanceof com.tencent.mm.plugin.finder.report.ae)))
       {
-        localObject = (com.tencent.mm.plugin.finder.report.s)localObject;
-        com.tencent.mm.plugin.finder.report.g.a locala = com.tencent.mm.plugin.finder.report.g.zUU;
-        ((com.tencent.mm.plugin.finder.report.s)localObject).aEe(com.tencent.mm.plugin.finder.report.g.a.aa(kotlin.a.ae.d(kotlin.s.M("feedActionType", Integer.valueOf(5)))));
+        localObject = (com.tencent.mm.plugin.finder.report.ae)localObject;
+        m.a locala = m.Fpx;
+        ((com.tencent.mm.plugin.finder.report.ae)localObject).azV(m.a.aj(ak.l(v.Y("feedActionType", Integer.valueOf(5)))));
       }
     }
-    if (getIntent().getBooleanExtra("KEY_FROM_SHARE_REL", false))
+    int i = getIntent().getIntExtra("FROM_SCENE_KEY", 0);
+    if (i == 5)
     {
-      localObject = new Intent();
-      ((Intent)localObject).addFlags(67108864);
-      ((Intent)localObject).putExtra("preferred_tab", 2);
-      com.tencent.mm.by.c.f((Context)this, ".ui.LauncherUI", (Intent)localObject);
-      overridePendingTransition(b.a.slide_left_in, b.a.slide_right_out);
-      AppMethodBeat.o(235654);
-      return;
+      if (!getContext().getIntent().getBooleanExtra("KEY_PUSH_FAIL_RETURN_READY", false))
+      {
+        fbk();
+        AppMethodBeat.o(347032);
+        return;
+      }
+      localObject = getIntent().getStringExtra("KEY_TASK_ID");
+      com.tencent.mm.plugin.report.service.h.OAn.b(23669, new Object[] { localObject, "fail_return_to", Long.valueOf(System.currentTimeMillis()), "", Integer.valueOf(1), Integer.valueOf(1) });
+      i = getIntent().getIntExtra("KEY_PUSH_RETURN_TO", -1);
+      localObject = t.AHw;
+      if (i == t.dXt())
+      {
+        localObject = new Intent();
+        ((Intent)localObject).addFlags(67108864);
+        ((Intent)localObject).putExtra("preferred_tab", 0);
+        com.tencent.mm.br.c.g((Context)this, ".ui.LauncherUI", (Intent)localObject);
+        overridePendingTransition(e.a.slide_left_in, e.a.slide_right_out);
+      }
     }
-    super.finish();
-    AppMethodBeat.o(235654);
+    for (;;)
+    {
+      com.tencent.mm.ae.d.a(0L, (kotlin.g.a.a)new c(this));
+      AppMethodBeat.o(347032);
+      return;
+      localObject = t.AHw;
+      if (i == t.dXu())
+      {
+        fbk();
+      }
+      else
+      {
+        super.finish();
+        AppMethodBeat.o(347032);
+        return;
+        if ((getIntent().getBooleanExtra("KEY_FROM_SHARE_REL", false)) || (i == 4))
+        {
+          fbk();
+        }
+        else
+        {
+          localObject = com.tencent.mm.ui.component.k.aeZF;
+          if ((!((com.tencent.mm.plugin.finder.viewmodel.component.w)com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(com.tencent.mm.plugin.finder.viewmodel.component.w.class)).AEE) && (!this.FQT) && (i != 6)) {
+            fbk();
+          }
+        }
+      }
+    }
   }
   
   public final int getCommentScene()
   {
-    AppMethodBeat.i(235647);
-    Object localObject = n.zWF;
-    localObject = com.tencent.mm.ui.component.g.Xox;
-    int i = n.Pz(((FinderHomeUIC)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(FinderHomeUIC.class)).ekL());
-    AppMethodBeat.o(235647);
+    AppMethodBeat.i(346996);
+    Object localObject = z.FrZ;
+    localObject = com.tencent.mm.ui.component.k.aeZF;
+    int i = z.SD(((FinderHomeUIC)com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(FinderHomeUIC.class)).fnX());
+    AppMethodBeat.o(346996);
     return i;
   }
   
-  public final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.g.finder_home_ui;
+    return e.f.finder_home_ui;
   }
   
-  public final Set<Class<? extends UIComponent>> importUIComponents()
+  public Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(235643);
-    Set localSet = ak.setOf(new Class[] { FinderHomeUIC.class, aa.class, com.tencent.mm.plugin.finder.viewmodel.component.j.class, r.class, com.tencent.mm.plugin.finder.viewmodel.component.ae.class, com.tencent.mm.plugin.finder.preload.c.class, com.tencent.mm.plugin.finder.viewmodel.component.aj.class, ah.class, ac.class, an.class, ai.class, al.class });
-    AppMethodBeat.o(235643);
+    AppMethodBeat.i(346984);
+    Set localSet = kotlin.a.ar.setOf(new Class[] { FinderHomeUIC.class, af.class, i.class, com.tencent.mm.plugin.finder.viewmodel.component.r.class, al.class, com.tencent.mm.plugin.finder.preload.f.class, as.class, aq.class, com.tencent.mm.plugin.finder.viewmodel.component.ah.class, az.class, com.tencent.mm.plugin.finder.viewmodel.component.ar.class, av.class, com.tencent.mm.plugin.finder.viewmodel.teenmode.b.class, av.class, ay.class, com.tencent.mm.plugin.finder.accessibility.s.class, com.tencent.mm.plugin.finder.viewmodel.component.w.class, com.tencent.mm.ui.component.l.a(ai.cz(ap.class)), bf.class, com.tencent.mm.plugin.finder.viewmodel.component.ae.class });
+    AppMethodBeat.o(346984);
     return localSet;
   }
   
-  public final boolean isHideStatusBar()
+  public boolean isHideStatusBar()
   {
     return true;
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public void onBackPressed()
   {
-    AppMethodBeat.i(235652);
+    AppMethodBeat.i(347049);
+    super.onBackPressed();
+    if (getContext().getIntent().getBooleanExtra("KEY_POST_DIRECTLY_FROM_SNS", false))
+    {
+      com.tencent.mm.br.c.b((Context)getContext(), "sns", ".ui.SnsTimeLineUI", getIntent());
+      overridePendingTransition(e.a.slide_left_in, e.a.slide_right_out);
+    }
+    AppMethodBeat.o(347049);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(347024);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.report.f.Iyx.idkeyStat(1279L, 41L, 1L, false);
+    com.tencent.mm.plugin.report.f.Ozc.idkeyStat(1279L, 41L, 1L, false);
+    Object localObject;
     if (getIntent().getBooleanExtra("key_form_sns", false))
     {
-      paramBundle = com.tencent.mm.plugin.finder.utils.a.ACH;
+      paramBundle = com.tencent.mm.plugin.finder.utils.a.GfO;
       paramBundle = (Context)this;
-      Intent localIntent = new Intent();
-      FinderSelfUI.a locala = FinderSelfUI.Avb;
-      localIntent.putExtra(FinderSelfUI.eaV(), true);
-      com.tencent.mm.plugin.finder.utils.a.enterFinderSelfUI(paramBundle, localIntent);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("key_from_sns_post", true);
+      kotlin.ah localah = kotlin.ah.aiuX;
+      com.tencent.mm.plugin.finder.utils.a.enterFinderSelfUI(paramBundle, (Intent)localObject);
     }
-    at(getIntent());
-    as(getIntent());
-    au(getIntent());
-    av(getIntent());
-    AppMethodBeat.o(235652);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(235676);
-    super.onDestroy();
-    if (!com.tencent.mm.q.a.q(null, false))
+    aL(getIntent());
+    aK(getIntent());
+    aM(getIntent());
+    aN(getIntent());
+    paramBundle = getIntent();
+    if (paramBundle == null)
     {
-      Object localObject = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.T(true, true);
-      localObject = com.tencent.mm.live.core.core.c.a.kqk;
-      a.a.clear();
-    }
-    AppMethodBeat.o(235676);
-  }
-  
-  public final void onNewIntent(Intent paramIntent)
-  {
-    AppMethodBeat.i(235651);
-    super.onNewIntent(paramIntent);
-    at(paramIntent);
-    as(paramIntent);
-    au(paramIntent);
-    av(paramIntent);
-    if (paramIntent != null)
-    {
-      getIntent().putExtra("KEY_POST_DIRECTLY_FROM_SNS", paramIntent.getBooleanExtra("KEY_POST_DIRECTLY_FROM_SNS", false));
-      getIntent().putExtra("key_finder_post_local_id", paramIntent.getLongExtra("key_finder_post_local_id", -1L));
-      AppMethodBeat.o(235651);
-      return;
-    }
-    AppMethodBeat.o(235651);
-  }
-  
-  public final void onPause()
-  {
-    AppMethodBeat.i(235672);
-    super.onPause();
-    this.kKI.avz();
-    AppMethodBeat.o(235672);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(235675);
-    super.onResume();
-    Object localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-    if (!com.tencent.mm.plugin.finder.utils.aj.isAnyHomeTabEnableFullScreenEnjoy())
-    {
-      localObject = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      localObject = getWindow();
-      p.j(localObject, "window");
-      if (com.tencent.mm.ui.ar.isDarkMode()) {
-        break label104;
+      paramBundle = null;
+      boolean bool = kotlin.g.b.s.p(paramBundle, "appPush");
+      paramBundle = com.tencent.mm.ui.component.k.aeZF;
+      if ((((com.tencent.mm.plugin.finder.viewmodel.d)com.tencent.mm.ui.component.k.cn(PluginFinder.class).q(com.tencent.mm.plugin.finder.viewmodel.d.class)).UV(4).GKD) && (!bool))
+      {
+        paramBundle = com.tencent.mm.plugin.finder.report.w.FrV;
+        paramBundle = as.GSQ;
+        paramBundle = as.a.hu((Context)this);
+        if (paramBundle != null) {
+          break label303;
+        }
+        paramBundle = "";
+        label186:
+        com.tencent.mm.plugin.finder.report.w.azS(paramBundle);
+      }
+      if (bool) {
+        overridePendingTransition(e.a.slide_right_in, e.a.slide_left_out);
+      }
+      paramBundle = getIntent();
+      if ((paramBundle == null) || (paramBundle.getIntExtra("FROM_SCENE_KEY", 2) != 6)) {
+        break label324;
       }
     }
-    label104:
-    for (boolean bool = true;; bool = false)
+    label303:
+    label324:
+    for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.finder.utils.aj.b((Window)localObject, bool);
-      localObject = com.tencent.mm.ui.component.g.Xox;
-      localObject = (FinderHomeUIC)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(FinderHomeUIC.class);
-      ((FinderHomeUIC)localObject).getRootView().post((Runnable)new b((FinderHomeUIC)localObject));
-      d.a(this.kKI, "Finder.HomeUI");
-      AppMethodBeat.o(235675);
+      if (i != 0) {
+        overridePendingTransition(e.a.slide_right_in, e.a.slide_left_out);
+      }
+      paramBundle = com.tencent.mm.plugin.finder.storage.d.FAy;
+      if (!com.tencent.mm.plugin.finder.storage.d.eXD())
+      {
+        Log.i("Finder.HomeUI", "onCreate: multi task is close, clear all finder task");
+        paramBundle = com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.l.class);
+        kotlin.g.b.s.s(paramBundle, "service(IFinderMultiTaskService::class.java)");
+        ((com.tencent.mm.plugin.l)paramBundle).hG(false);
+      }
+      AppMethodBeat.o(347024);
       return;
+      paramBundle = paramBundle.getStringExtra("KEY_FROM_PATH");
+      break;
+      localObject = paramBundle.zIO;
+      paramBundle = (Bundle)localObject;
+      if (localObject != null) {
+        break label186;
+      }
+      paramBundle = "";
+      break label186;
     }
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(347043);
+    super.onDestroy();
+    if (!com.tencent.mm.n.a.q(null, false))
+    {
+      ((com.tencent.mm.plugin.g)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.g.class)).bUs();
+      localObject = com.tencent.mm.live.core.core.f.a.mUf;
+      a.a.clear();
+    }
+    Object localObject = com.tencent.mm.plugin.finder.report.r.Fqi;
+    com.tencent.mm.plugin.finder.report.r.clearData();
+    localObject = com.tencent.mm.plugin.finder.live.fluent.g.CCu;
+    com.tencent.mm.plugin.finder.live.fluent.g.release();
+    AppMethodBeat.o(347043);
+  }
+  
+  public void onNewIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(347016);
+    super.onNewIntent(paramIntent);
+    int i;
+    Object localObject;
+    as localas;
+    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_need_change_reporter", false) == true))
+    {
+      i = 1;
+      if (i != 0)
+      {
+        localObject = as.GSQ;
+        localas = as.a.hu((Context)this);
+        if (localas != null)
+        {
+          localObject = paramIntent.getStringExtra("key_context_id");
+          if (localObject != null)
+          {
+            if (((CharSequence)localObject).length() != 0) {
+              break label280;
+            }
+            i = 1;
+            label77:
+            if (i != 0) {
+              break label285;
+            }
+            i = 1;
+            label83:
+            if (i == 0) {
+              break label290;
+            }
+            label87:
+            if (localObject != null)
+            {
+              localas.zIO = ((String)localObject);
+              getIntent().putExtra("key_context_id", (String)localObject);
+            }
+          }
+          localObject = paramIntent.getStringExtra("key_extra_info");
+          if (localObject != null)
+          {
+            if (((CharSequence)localObject).length() != 0) {
+              break label295;
+            }
+            i = 1;
+            label135:
+            if (i != 0) {
+              break label300;
+            }
+            i = 1;
+            label141:
+            if (i == 0) {
+              break label305;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (localObject != null)
+      {
+        localas.extraInfo = ((String)localObject);
+        getIntent().putExtra("key_extra_info", (String)localObject);
+      }
+      aL(paramIntent);
+      aK(paramIntent);
+      aM(paramIntent);
+      aN(paramIntent);
+      if (paramIntent != null)
+      {
+        getIntent().putExtra("KEY_POST_DIRECTLY_FROM_SNS", paramIntent.getBooleanExtra("KEY_POST_DIRECTLY_FROM_SNS", false));
+        getIntent().putExtra("key_finder_post_local_id", paramIntent.getLongExtra("key_finder_post_local_id", -1L));
+        getIntent().putExtra("KEY_PUSH_RETURN_TO", paramIntent.getIntExtra("KEY_PUSH_RETURN_TO", -1));
+        getIntent().putExtra("KEY_TASK_ID", paramIntent.getStringExtra("KEY_TASK_ID"));
+      }
+      AppMethodBeat.o(347016);
+      return;
+      i = 0;
+      break;
+      label280:
+      i = 0;
+      break label77;
+      label285:
+      i = 0;
+      break label83;
+      label290:
+      localObject = null;
+      break label87;
+      label295:
+      i = 0;
+      break label135;
+      label300:
+      i = 0;
+      break label141;
+      label305:
+      localObject = null;
+    }
+  }
+  
+  public void onPause()
+  {
+    AppMethodBeat.i(347035);
+    super.onPause();
+    this.nmW.gR(false);
+    AppMethodBeat.o(347035);
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(347039);
+    super.onResume();
+    Object localObject = com.tencent.mm.ui.component.k.aeZF;
+    localObject = (FinderHomeUIC)com.tencent.mm.ui.component.k.d((AppCompatActivity)this).q(FinderHomeUIC.class);
+    ((FinderHomeUIC)localObject).getRootView().post(new FinderHomeUI..ExternalSyntheticLambda0((FinderHomeUIC)localObject));
+    com.tencent.mm.model.d.a(this.nmW, "Finder.HomeUI");
+    AppMethodBeat.o(347039);
+  }
+  
+  public void onSwipeBack()
+  {
+    AppMethodBeat.i(347026);
+    this.FQT = true;
+    super.onSwipeBack();
+    AppMethodBeat.o(347026);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -378,148 +732,28 @@ public final class FinderHomeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/ui/FinderHomeUI$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderJumpInfo;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements Runnable
+    extends u
+    implements kotlin.g.a.b<FinderJumpInfo, kotlin.ah>
   {
-    b(FinderHomeUIC paramFinderHomeUIC) {}
-    
-    public final void run()
+    b(FinderHomeUI paramFinderHomeUI)
     {
-      AppMethodBeat.i(290223);
-      Object localObject1 = com.tencent.mm.plugin.finder.upload.action.f.ABS;
-      localObject1 = this.Arq.fragments;
-      p.k(localObject1, "fragments");
-      if (com.tencent.mm.plugin.finder.upload.action.f.ecA())
-      {
-        Log.i("Finder.FeedCleaner", "cleanTimeline return for record empty");
-        AppMethodBeat.o(290223);
-        return;
-      }
-      com.tencent.mm.plugin.finder.upload.action.f.ecz();
-      Iterator localIterator = ((Iterable)localObject1).iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (FinderHomeTabFragment)localIterator.next();
-        localObject1 = com.tencent.mm.ui.component.g.Xox;
-        FinderTimelineFeedLoader localFinderTimelineFeedLoader = ((com.tencent.mm.plugin.finder.viewmodel.component.ar)com.tencent.mm.ui.component.g.h((Fragment)localObject2).i(com.tencent.mm.plugin.finder.viewmodel.component.ar.class)).elz();
-        localObject1 = com.tencent.mm.plugin.finder.upload.action.f.ABS;
-        int i = ((FinderHomeTabFragment)localObject2).fEH;
-        label121:
-        List localList;
-        if (localFinderTimelineFeedLoader != null)
-        {
-          localObject1 = localFinderTimelineFeedLoader.getDataList();
-          localList = (List)localObject1;
-          if (com.tencent.mm.plugin.finder.upload.action.f.QE(i)) {
-            break label230;
-          }
-          Log.i("Finder.FeedCleaner", "cleanFeed: " + i + " return");
-        }
-        for (;;)
-        {
-          if (localFinderTimelineFeedLoader != null)
-          {
-            localObject1 = localFinderTimelineFeedLoader.dispatcher();
-            if (localObject1 != null) {
-              ((com.tencent.mm.plugin.finder.feed.model.internal.f)localObject1).onChanged();
-            }
-          }
-          localObject1 = com.tencent.mm.plugin.finder.upload.action.f.ABS;
-          i = ((FinderHomeTabFragment)localObject2).fEH;
-          if (com.tencent.mm.plugin.finder.upload.action.f.QE(i)) {
-            break label440;
-          }
-          Log.i("Finder.FeedCleaner", "cleanTimelinePage: " + i + " return");
-          break;
-          localObject1 = null;
-          break label121;
-          label230:
-          Object localObject3 = new StringBuilder("cleanFeed: ").append(i).append(" size: ");
-          if (localList != null) {}
-          for (localObject1 = Integer.valueOf(localList.size());; localObject1 = null)
-          {
-            Log.i("Finder.FeedCleaner", localObject1);
-            localObject1 = new StringBuilder("followRecorder size: ");
-            localObject3 = com.tencent.mm.plugin.finder.upload.action.f.ABN;
-            if (localObject3 == null) {
-              p.bGy("followRecorder");
-            }
-            localObject1 = ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.finder.upload.action.g)localObject3).ABW.size()).append(" noSeeAuthorRecorder:");
-            localObject3 = com.tencent.mm.plugin.finder.upload.action.f.ABO;
-            if (localObject3 == null) {
-              p.bGy("noSeeAuthorRecorder");
-            }
-            Log.i("Finder.FeedCleaner", ((com.tencent.mm.plugin.finder.upload.action.g)localObject3).ABW.size());
-            switch (i)
-            {
-            case 2: 
-            default: 
-              break;
-            case 1: 
-            case 4: 
-              if (localList == null) {
-                break;
-              }
-              kotlin.a.j.c(localList, (kotlin.g.a.b)f.c.ABV);
-              break;
-            }
-          }
-          if (localList != null) {
-            kotlin.a.j.c(localList, (kotlin.g.a.b)f.b.ABU);
-          }
-        }
-        label440:
-        Log.i("Finder.FeedCleaner", "cleanTimelinePage: ".concat(String.valueOf(i)));
-        switch (i)
-        {
-        case 2: 
-        default: 
-          break;
-        case 1: 
-        case 4: 
-          if (i != 1) {}
-        case 3: 
-          for (i = 5;; i = 8)
-          {
-            localObject1 = k.Anu;
-            localObject1 = com.tencent.mm.plugin.finder.upload.action.f.ABO;
-            if (localObject1 == null) {
-              p.bGy("noSeeAuthorRecorder");
-            }
-            k.a.p(i, kotlin.a.j.p((Iterable)((com.tencent.mm.plugin.finder.upload.action.g)localObject1).ABW));
-            break;
-            localObject1 = new HashSet();
-            localObject2 = com.tencent.mm.plugin.finder.upload.action.f.ABN;
-            if (localObject2 == null) {
-              p.bGy("followRecorder");
-            }
-            ((HashSet)localObject1).addAll((Collection)((com.tencent.mm.plugin.finder.upload.action.g)localObject2).ABW);
-            localObject2 = com.tencent.mm.plugin.finder.upload.action.f.ABO;
-            if (localObject2 == null) {
-              p.bGy("noSeeAuthorRecorder");
-            }
-            ((HashSet)localObject1).addAll((Collection)((com.tencent.mm.plugin.finder.upload.action.g)localObject2).ABW);
-            localObject2 = k.Anu;
-            k.a.p(7, kotlin.a.j.p((Iterable)localObject1));
-            break;
-          }
-        }
-      }
-      localObject1 = com.tencent.mm.plugin.finder.upload.action.f.ABN;
-      if (localObject1 == null) {
-        p.bGy("followRecorder");
-      }
-      ((com.tencent.mm.plugin.finder.upload.action.g)localObject1).clear();
-      localObject1 = com.tencent.mm.plugin.finder.upload.action.f.ABO;
-      if (localObject1 == null) {
-        p.bGy("noSeeAuthorRecorder");
-      }
-      ((com.tencent.mm.plugin.finder.upload.action.g)localObject1).clear();
-      AppMethodBeat.o(290223);
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<kotlin.ah>
+  {
+    c(FinderHomeUI paramFinderHomeUI)
+    {
+      super();
     }
   }
 }

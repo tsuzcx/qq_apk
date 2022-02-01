@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public final class b
   extends a
 {
-  private String BrW;
-  public int XVL = 0;
-  public int XVM = 0;
-  public int XVN = 0;
-  private a XVO;
+  private String GYs;
+  public int afMa = 0;
+  public int afMb = 0;
+  public int afMc = 0;
+  private a afMd;
   private int mHeight = 2048;
   public int mSize = 104857600;
   private int mWidth = 2048;
   
   private b(String paramString)
   {
-    this.BrW = paramString;
+    this.GYs = paramString;
   }
   
-  public static b bAJ(String paramString)
+  public static b bCH(String paramString)
   {
     AppMethodBeat.i(143300);
     paramString = new b(paramString);
@@ -35,34 +35,34 @@ public final class b
   public final void a(a parama)
   {
     AppMethodBeat.i(143301);
-    this.XVO = parama;
-    euX();
+    this.afMd = parama;
+    fBQ();
     AppMethodBeat.o(143301);
   }
   
-  public final b axw(int paramInt)
+  public final b aEf(int paramInt)
   {
     this.mWidth = paramInt;
     this.mHeight = paramInt;
     return this;
   }
   
-  protected final int bNF()
+  protected final int cnU()
   {
     AppMethodBeat.i(143302);
-    if (Util.isNullOrNil(this.BrW)) {
+    if (Util.isNullOrNil(this.GYs)) {
       Log.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
     }
-    this.XVL = ((int)u.bBQ(this.BrW));
-    String str = this.BrW;
+    this.afMa = ((int)y.bEl(this.GYs));
+    String str = this.GYs;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     MMBitmapFactory.decodeFile(str, localOptions);
-    this.XVM = localOptions.outWidth;
-    this.XVN = localOptions.outHeight;
-    if (this.XVL <= this.mSize)
+    this.afMb = localOptions.outWidth;
+    this.afMc = localOptions.outHeight;
+    if (this.afMa <= this.mSize)
     {
-      if (this.XVL < 0)
+      if (this.afMa < 0)
       {
         i = 1;
         if (i == 0) {
@@ -71,14 +71,14 @@ public final class b
       }
     }
     else {
-      Log.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.XVL) });
+      Log.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.afMa) });
     }
     label206:
     for (int i = 0;; i = 1)
     {
-      if ((this.XVM > this.mWidth) || (this.XVN > this.mHeight))
+      if ((this.afMb > this.mWidth) || (this.afMc > this.mHeight))
       {
-        Log.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.XVM), Integer.valueOf(this.XVN) });
+        Log.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.afMb), Integer.valueOf(this.afMc) });
         i = 0;
       }
       if (i != 0)
@@ -94,26 +94,26 @@ public final class b
     }
   }
   
-  protected final void euX()
+  protected final void fBQ()
   {
     AppMethodBeat.i(143303);
-    if (this.XVO == null)
+    if (this.afMd == null)
     {
       Log.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
       AppMethodBeat.o(143303);
       return;
     }
-    switch (bNF())
+    switch (cnU())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(143303);
       return;
-      this.XVO.a(this);
+      this.afMd.a(this);
       AppMethodBeat.o(143303);
       return;
-      this.XVO.cVR();
+      this.afMd.dBw();
     }
   }
   
@@ -121,7 +121,7 @@ public final class b
   {
     public abstract void a(b paramb);
     
-    public abstract void cVR();
+    public abstract void dBw();
   }
 }
 

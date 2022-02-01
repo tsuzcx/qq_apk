@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.plugin.sns.storage.t;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.ekw;
-import com.tencent.mm.protocal.protobuf.ekz;
-import com.tencent.mm.protocal.protobuf.ela;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.sns.storage.ac;
+import com.tencent.mm.plugin.sns.storage.ad;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.ffe;
+import com.tencent.mm.protocal.protobuf.ffh;
+import com.tencent.mm.protocal.protobuf.ffi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -21,13 +23,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class x
-  extends q
+  extends p
   implements m
 {
-  private long JWb;
-  public i callback;
-  private int fCN;
-  private d rr;
+  private long Qtc;
+  public h callback;
+  private int hHC;
+  private c rr;
   private int scene;
   
   public x(int paramInt1, long paramLong, String paramString, int paramInt2, List<String> paramList, int paramInt3)
@@ -35,39 +37,39 @@ public final class x
     AppMethodBeat.i(95655);
     this.scene = 0;
     Log.d("MicroMsg.NetSceneSnsTagMemberOption", "opCode " + paramInt1 + " tagName " + paramString + " memberList " + paramList.size() + " scene " + paramInt3);
-    this.fCN = paramInt1;
-    this.JWb = paramLong;
+    this.hHC = paramInt1;
+    this.Qtc = paramLong;
     this.scene = paramInt3;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ekz();
-    ((d.a)localObject).lBV = new ela();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnstagmemberoption";
-    ((d.a)localObject).funcId = 291;
-    ((d.a)localObject).lBW = 115;
-    ((d.a)localObject).respCmdId = 1000000115;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (ekz)d.b.b(this.rr.lBR);
-    ((ekz)localObject).RLe = paramInt1;
-    ((ekz)localObject).UmL = paramLong;
-    ((ekz)localObject).CQx = paramString;
-    ((ekz)localObject).rVx = paramInt2;
-    ((ekz)localObject).CPw = this.scene;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new ffh();
+    ((c.a)localObject).otF = new ffi();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnstagmemberoption";
+    ((c.a)localObject).funcId = 291;
+    ((c.a)localObject).otG = 115;
+    ((c.a)localObject).respCmdId = 1000000115;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (ffh)c.b.b(this.rr.otB);
+    ((ffh)localObject).YIq = paramInt1;
+    ((ffh)localObject).abES = paramLong;
+    ((ffh)localObject).IKH = paramString;
+    ((ffh)localObject).vgN = paramInt2;
+    ((ffh)localObject).IJG = this.scene;
     paramString = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      paramString.add(new eaf().btQ(str));
+      paramString.add(new etl().btH(str));
     }
-    ((ekz)localObject).rVy = paramString;
+    ((ffh)localObject).vgO = paramString;
     Log.d("MicroMsg.NetSceneSnsTagMemberOption", "rr.req.rImpl " + localObject.toString());
     AppMethodBeat.o(95655);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(95656);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(95656);
     return i;
@@ -78,7 +80,7 @@ public final class x
     return 291;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95657);
     Log.d("MicroMsg.NetSceneSnsTagMemberOption", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
@@ -88,28 +90,32 @@ public final class x
       AppMethodBeat.o(95657);
       return;
     }
-    params = ((ela)d.c.b(((d)params).lBS)).UmN;
-    Log.d("MicroMsg.NetSceneSnsTagMemberOption", "Resp.rImpl " + params.toString());
-    paramArrayOfByte = aj.fOO().Rf(params.UmL);
-    paramArrayOfByte.field_tagId = params.UmL;
-    paramArrayOfByte.field_tagName = Util.nullAs(params.CQx, "");
-    switch (this.fCN)
+    ffe localffe = ((ffi)c.c.b(((c)params).otC)).abEU;
+    Log.d("MicroMsg.NetSceneSnsTagMemberOption", "Resp.rImpl " + localffe.toString());
+    paramArrayOfByte = al.hgI().vl(localffe.abES);
+    params = paramArrayOfByte;
+    if (paramArrayOfByte == null) {
+      params = new ac();
+    }
+    params.field_tagId = localffe.abES;
+    params.field_tagName = Util.nullAs(localffe.IKH, "");
+    switch (this.hHC)
     {
     }
     for (;;)
     {
-      aj.fOO().a(paramArrayOfByte);
+      al.hgI().a(params);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95657);
       return;
-      paramArrayOfByte.field_count = params.rVx;
-      paramArrayOfByte.hF(params.rVy);
+      params.field_count = localffe.vgN;
+      params.kG(localffe.vgO);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.x
  * JD-Core Version:    0.7.0.1
  */

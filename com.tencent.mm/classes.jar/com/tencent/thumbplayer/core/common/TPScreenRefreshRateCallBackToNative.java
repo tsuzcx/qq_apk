@@ -15,34 +15,31 @@ public class TPScreenRefreshRateCallBackToNative
   
   private native void _onScreenRefreshRateChanged(float paramFloat);
   
-  @TPMethodCalledByNative
   private long getNativeContext()
   {
     return this.mNativeContext;
   }
   
-  @TPMethodCalledByNative
   private void registerCallback()
   {
-    AppMethodBeat.i(223022);
+    AppMethodBeat.i(227782);
     TPScreenRefreshRateDetector.addListener(this);
-    AppMethodBeat.o(223022);
+    AppMethodBeat.o(227782);
   }
   
-  @TPMethodCalledByNative
   private void unregisterCallback()
   {
-    AppMethodBeat.i(223024);
+    AppMethodBeat.i(227787);
     TPScreenRefreshRateDetector.removeListener(this);
-    AppMethodBeat.o(223024);
+    AppMethodBeat.o(227787);
   }
   
   public void onScreenRefreshRateChanged(float paramFloat)
   {
-    AppMethodBeat.i(223028);
+    AppMethodBeat.i(227797);
     TPNativeLog.printLog(2, "TPScreenRefreshRateCallBack", "onScreenRefreshRateChanged refreshRate:".concat(String.valueOf(paramFloat)));
     _onScreenRefreshRateChanged(paramFloat);
-    AppMethodBeat.o(223028);
+    AppMethodBeat.o(227797);
   }
 }
 

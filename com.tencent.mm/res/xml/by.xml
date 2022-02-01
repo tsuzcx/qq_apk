@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="settings_room_size" android:layout="@layout/b8j" android:title="@string/gth" />
-    <Preference android:key="room_right_max_tip" android:layout="@layout/b_7" android:title="@string/g94" />
-    <PreferenceCategory />
-    <com.tencent.mm.chatroom.ui.RoomGrantPreference android:key="settings_room_grant" android:layout="@layout/b8j" android:title="@string/gte" />
-    <PreferenceCategory />
-    <Preference android:key="room_grant_to_friend" android:layout="@layout/atm" android:title="@string/g90" />
-    <PreferenceCategory />
-    <Preference android:key="room_right_grant_tip" android:layout="@layout/b_7" android:title="@string/g91" />
+    <CheckBoxPreference android:key="settings_need_verify" android:layout="@layout/bdi" android:title="@string/iv9" />
+    <CheckBoxPreference android:key="settings_recommend_mobilefriends_to_me" android:summary="@string/ixl" android:title="@string/bq0" />
+    <CheckBoxPreference android:key="settings_find_google_contact" android:summary="@string/ixk" android:title="@string/isf" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_add_me_way" android:layout="@layout/bdi" android:title="@string/iq6" />
+    <PreferenceTitleCategory android:key="settings_add_friends_timeline_tip" android:title="@string/iwe" />
+    <Preference android:key="setting_privacy_chatting_item" android:title="@string/inr" />
+    <Preference android:key="setting_privacy_sns_item" android:title="@string/ins" />
+    <Preference android:key="setting_privacy_video_item" android:title="@string/int" />
+    <Preference android:key="setting_privacy_watch_item" android:title="@string/inu" />
+    <Preference android:key="setting_privacy_wx_sport_item" android:title="@string/inv" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_about_blacklist" android:layout="@layout/bdi" android:title="@string/ixg" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

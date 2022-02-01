@@ -3,56 +3,60 @@ package kotlin.l.b.a.b.d.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.Iterator;
-import kotlin.g.b.q;
-import kotlin.l.b.a.b.a.g.a;
+import kotlin.a.p;
+import kotlin.g.a.b;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.l.b.a.b.a.k.a;
 import kotlin.l.b.a.b.b.a.g.b;
 import kotlin.l.b.a.b.d.a.e.a;
+import kotlin.l.b.a.b.d.a.e.d;
+import kotlin.l.b.a.b.l.m;
 import kotlin.m.f;
-import kotlin.m.i;
-import kotlin.m.l.b;
-import kotlin.m.l.c;
+import kotlin.m.k;
+import kotlin.m.n.b;
+import kotlin.m.n.c;
+import kotlin.m.r;
 
 public final class e
   implements kotlin.l.b.a.b.b.a.g
 {
-  private final kotlin.l.b.a.b.l.d<a, kotlin.l.b.a.b.b.a.c> aaUg;
-  private final h aaUh;
-  private final kotlin.l.b.a.b.d.a.e.d aaUi;
+  private final h aiSh;
+  private final d aiSi;
+  private final boolean aiSj;
+  private final kotlin.l.b.a.b.l.g<a, kotlin.l.b.a.b.b.a.c> aiSk;
   
-  public e(h paramh, kotlin.l.b.a.b.d.a.e.d paramd)
+  public e(h paramh, d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(57751);
-    this.aaUh = paramh;
-    this.aaUi = paramd;
-    this.aaUg = this.aaUh.aaUp.aaFH.al((kotlin.g.a.b)new a(this));
-    AppMethodBeat.o(57751);
+    AppMethodBeat.i(192124);
+    this.aiSh = paramh;
+    this.aiSi = paramd;
+    this.aiSj = paramBoolean;
+    this.aiSk = this.aiSh.aiSp.aiBu.be((b)new a(this));
+    AppMethodBeat.o(192124);
   }
   
-  public final kotlin.l.b.a.b.b.a.c g(kotlin.l.b.a.b.f.b paramb)
+  public final kotlin.l.b.a.b.b.a.c h(kotlin.l.b.a.b.f.c paramc)
   {
     AppMethodBeat.i(57748);
-    kotlin.g.b.p.k(paramb, "fqName");
-    Object localObject = this.aaUi.l(paramb);
-    if (localObject != null)
+    s.u(paramc, "fqName");
+    Object localObject = this.aiSi.m(paramc);
+    if (localObject == null) {}
+    for (localObject = null; localObject == null; localObject = (kotlin.l.b.a.b.b.a.c)((b)this.aiSk).invoke(localObject))
     {
-      kotlin.l.b.a.b.b.a.c localc = (kotlin.l.b.a.b.b.a.c)((kotlin.g.a.b)this.aaUg).invoke(localObject);
-      localObject = localc;
-      if (localc != null) {}
-    }
-    else
-    {
-      localObject = kotlin.l.b.a.b.d.a.a.c.aaSY;
-      localObject = kotlin.l.b.a.b.d.a.a.c.a(paramb, this.aaUi, this.aaUh);
+      localObject = kotlin.l.b.a.b.d.a.a.c.aiQU;
+      paramc = kotlin.l.b.a.b.d.a.a.c.a(paramc, this.aiSi, this.aiSh);
+      AppMethodBeat.o(57748);
+      return paramc;
     }
     AppMethodBeat.o(57748);
     return localObject;
   }
   
-  public final boolean h(kotlin.l.b.a.b.f.b paramb)
+  public final boolean i(kotlin.l.b.a.b.f.c paramc)
   {
     AppMethodBeat.i(57752);
-    kotlin.g.b.p.k(paramb, "fqName");
-    boolean bool = g.b.b(this, paramb);
+    boolean bool = g.b.b(this, paramc);
     AppMethodBeat.o(57752);
     return bool;
   }
@@ -60,7 +64,7 @@ public final class e
   public final boolean isEmpty()
   {
     AppMethodBeat.i(57750);
-    if (this.aaUi.iHj().isEmpty())
+    if ((this.aiSi.kqz().isEmpty()) && (!this.aiSi.kqA()))
     {
       AppMethodBeat.o(57750);
       return true;
@@ -72,31 +76,29 @@ public final class e
   public final Iterator<kotlin.l.b.a.b.b.a.c> iterator()
   {
     AppMethodBeat.i(57749);
-    Object localObject1 = i.d(kotlin.a.j.z((Iterable)this.aaUi.iHj()), (kotlin.g.a.b)this.aaUg);
-    Object localObject2 = kotlin.l.b.a.b.d.a.a.c.aaSY;
-    localObject2 = kotlin.l.b.a.b.a.g.aaFI.aaGj;
-    kotlin.g.b.p.j(localObject2, "KotlinBuiltIns.FQ_NAMES.deprecated");
-    localObject2 = kotlin.l.b.a.b.d.a.a.c.a((kotlin.l.b.a.b.f.b)localObject2, this.aaUi, this.aaUh);
-    kotlin.g.b.p.k(localObject1, "$this$plus");
-    localObject2 = i.an(new kotlin.m.h[] { localObject1, i.an(new Object[] { localObject2 }) });
-    kotlin.g.b.p.k(localObject2, "$this$flatten");
-    localObject1 = (kotlin.g.a.b)l.b.abvi;
-    if ((localObject2 instanceof kotlin.m.p))
+    Object localObject1 = k.d(p.A((Iterable)this.aiSi.kqz()), (b)this.aiSk);
+    Object localObject2 = kotlin.l.b.a.b.d.a.a.c.aiQU;
+    localObject2 = kotlin.l.b.a.b.d.a.a.c.a(k.a.aiCV, this.aiSi, this.aiSh);
+    s.u(localObject1, "$this$plus");
+    localObject2 = k.as(new kotlin.m.h[] { localObject1, k.as(new Object[] { localObject2 }) });
+    s.u(localObject2, "$this$flatten");
+    localObject1 = (b)n.b.ajuq;
+    if ((localObject2 instanceof r))
     {
-      localObject2 = (kotlin.m.p)localObject2;
-      kotlin.g.b.p.k(localObject1, "iterator");
+      localObject2 = (r)localObject2;
+      s.u(localObject1, "iterator");
     }
-    for (localObject1 = (kotlin.m.h)new f(((kotlin.m.p)localObject2).abuS, ((kotlin.m.p)localObject2).abva, (kotlin.g.a.b)localObject1);; localObject1 = (kotlin.m.h)new f((kotlin.m.h)localObject2, (kotlin.g.a.b)l.c.abvj, (kotlin.g.a.b)localObject1))
+    for (localObject1 = (kotlin.m.h)new f(((r)localObject2).ajtX, ((r)localObject2).ajuf, (b)localObject1);; localObject1 = (kotlin.m.h)new f((kotlin.m.h)localObject2, (b)n.c.ajur, (b)localObject1))
     {
-      localObject1 = i.b((kotlin.m.h)localObject1).iterator();
+      localObject1 = k.c((kotlin.m.h)localObject1).iterator();
       AppMethodBeat.o(57749);
       return localObject1;
     }
   }
   
   static final class a
-    extends q
-    implements kotlin.g.a.b<a, kotlin.l.b.a.b.b.a.c>
+    extends u
+    implements b<a, kotlin.l.b.a.b.b.a.c>
   {
     a(e parame)
     {
@@ -106,7 +108,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.e
  * JD-Core Version:    0.7.0.1
  */

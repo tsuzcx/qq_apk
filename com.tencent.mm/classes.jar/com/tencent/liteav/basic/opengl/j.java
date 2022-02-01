@@ -46,7 +46,7 @@ public class j
   
   public j(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(237397);
+    AppMethodBeat.i(230255);
     this.u = false;
     this.v = -1;
     this.w = null;
@@ -68,15 +68,15 @@ public class j
     this.i = ByteBuffer.allocateDirect(m.a.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.k = m.a(l.a, false, true);
     this.i.put(this.k).position(0);
-    AppMethodBeat.o(237397);
+    AppMethodBeat.o(230255);
   }
   
   private static float[] a(FloatBuffer paramFloatBuffer)
   {
-    AppMethodBeat.i(237407);
+    AppMethodBeat.i(230262);
     if (paramFloatBuffer.limit() <= 0)
     {
-      AppMethodBeat.o(237407);
+      AppMethodBeat.o(230262);
       return null;
     }
     float[] arrayOfFloat = new float[paramFloatBuffer.limit()];
@@ -86,24 +86,24 @@ public class j
       arrayOfFloat[i1] = paramFloatBuffer.get(i1);
       i1 += 1;
     }
-    AppMethodBeat.o(237407);
+    AppMethodBeat.o(230262);
     return arrayOfFloat;
   }
   
   public int a(int paramInt)
   {
-    AppMethodBeat.i(237414);
+    AppMethodBeat.i(230363);
     paramInt = b(paramInt, this.h, this.i);
-    AppMethodBeat.o(237414);
+    AppMethodBeat.o(230363);
     return paramInt;
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(237416);
+    AppMethodBeat.i(230383);
     if (!this.g)
     {
-      AppMethodBeat.o(237416);
+      AppMethodBeat.o(230383);
       return -1;
     }
     GLES20.glBindFramebuffer(36160, paramInt2);
@@ -112,31 +112,31 @@ public class j
       this.l.a(paramInt3);
     }
     GLES20.glBindFramebuffer(36160, 0);
-    AppMethodBeat.o(237416);
+    AppMethodBeat.o(230383);
     return paramInt3;
   }
   
   public void a(final int paramInt, final float paramFloat)
   {
-    AppMethodBeat.i(237423);
+    AppMethodBeat.i(230452);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(235841);
+        AppMethodBeat.i(230312);
         GLES20.glUniform1f(paramInt, paramFloat);
-        AppMethodBeat.o(235841);
+        AppMethodBeat.o(230312);
       }
     });
-    AppMethodBeat.o(237423);
+    AppMethodBeat.o(230452);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(237409);
+    AppMethodBeat.i(230331);
     if ((this.f == paramInt2) && (this.e == paramInt1))
     {
-      AppMethodBeat.o(237409);
+      AppMethodBeat.o(230331);
       return;
     }
     this.e = paramInt1;
@@ -154,12 +154,12 @@ public class j
       GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.n, 0);
       GLES20.glBindFramebuffer(36160, 0);
     }
-    AppMethodBeat.o(237409);
+    AppMethodBeat.o(230331);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat, float paramFloat, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(237420);
+    AppMethodBeat.i(230423);
     float[] arrayOfFloat = paramArrayOfFloat;
     if (paramArrayOfFloat == null) {
       arrayOfFloat = m.a(l.a, false, true);
@@ -246,7 +246,7 @@ public class j
       for (;;)
       {
         a((float[])m.e.clone(), arrayOfFloat);
-        AppMethodBeat.o(237420);
+        AppMethodBeat.o(230423);
         return;
         if (paramBoolean2)
         {
@@ -271,7 +271,7 @@ public class j
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer)
   {
-    AppMethodBeat.i(237421);
+    AppMethodBeat.i(230430);
     if (paramFloatBuffer == null) {}
     for (paramFloatBuffer = m.a(l.a, false, true);; paramFloatBuffer = a(paramFloatBuffer))
     {
@@ -293,17 +293,17 @@ public class j
       }
     }
     a((float[])m.e.clone(), paramFloatBuffer);
-    AppMethodBeat.o(237421);
+    AppMethodBeat.o(230430);
   }
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    AppMethodBeat.i(237410);
+    AppMethodBeat.i(230340);
     GLES20.glUseProgram(this.a);
     k();
     if (!this.g)
     {
-      AppMethodBeat.o(237410);
+      AppMethodBeat.o(230340);
       return;
     }
     paramFloatBuffer1.position(0);
@@ -335,28 +335,28 @@ public class j
         break;
       }
       GLES20.glBindTexture(36197, 0);
-      AppMethodBeat.o(237410);
+      AppMethodBeat.o(230340);
       return;
       label193:
       GLES20.glBindTexture(3553, paramInt);
     }
     GLES20.glBindTexture(3553, 0);
-    AppMethodBeat.o(237410);
+    AppMethodBeat.o(230340);
   }
   
   public void a(final int paramInt, final float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(237424);
+    AppMethodBeat.i(230458);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(237440);
+        AppMethodBeat.i(230313);
         GLES20.glUniform2fv(paramInt, 1, FloatBuffer.wrap(paramArrayOfFloat));
-        AppMethodBeat.o(237440);
+        AppMethodBeat.o(230313);
       }
     });
-    AppMethodBeat.o(237424);
+    AppMethodBeat.o(230458);
   }
   
   public void a(a parama)
@@ -372,11 +372,11 @@ public class j
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(237427);
+    AppMethodBeat.i(230478);
     synchronized (this.r)
     {
       this.r.addLast(paramRunnable);
-      AppMethodBeat.o(237427);
+      AppMethodBeat.o(230478);
       return;
     }
   }
@@ -393,26 +393,26 @@ public class j
   
   public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    AppMethodBeat.i(237418);
+    AppMethodBeat.i(230403);
     this.j = paramArrayOfFloat1;
     this.h = ByteBuffer.allocateDirect(m.e.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.h.put(paramArrayOfFloat1).position(0);
     this.k = paramArrayOfFloat2;
     this.i = ByteBuffer.allocateDirect(m.a.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.i.put(paramArrayOfFloat2).position(0);
-    AppMethodBeat.o(237418);
+    AppMethodBeat.o(230403);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(237399);
+    AppMethodBeat.i(230272);
     this.a = TXCOpenGlUtils.a(this.s, this.t);
     if ((this.a != 0) && (b())) {}
     for (this.g = true;; this.g = false)
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(237399);
+      AppMethodBeat.o(230272);
       return bool;
     }
   }
@@ -420,7 +420,7 @@ public class j
   public float[] a(int paramInt1, int paramInt2, FloatBuffer paramFloatBuffer, a parama, int paramInt3)
   {
     int i1 = 0;
-    AppMethodBeat.i(237419);
+    AppMethodBeat.i(230413);
     float f2;
     float f4;
     if (paramFloatBuffer == null) {
@@ -469,80 +469,80 @@ public class j
       paramFloatBuffer[paramInt2] -= f4;
     }
     label225:
-    AppMethodBeat.o(237419);
+    AppMethodBeat.o(230413);
     return paramFloatBuffer;
   }
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(237417);
+    AppMethodBeat.i(230389);
     paramInt = a(paramInt, this.m, this.n);
-    AppMethodBeat.o(237417);
+    AppMethodBeat.o(230389);
     return paramInt;
   }
   
   public int b(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    AppMethodBeat.i(237413);
+    AppMethodBeat.i(230361);
     if (!this.g)
     {
-      AppMethodBeat.o(237413);
+      AppMethodBeat.o(230361);
       return -1;
     }
     a(paramInt, paramFloatBuffer1, paramFloatBuffer2);
     if ((this.l instanceof a)) {
       this.l.a(paramInt);
     }
-    AppMethodBeat.o(237413);
+    AppMethodBeat.o(230361);
     return 1;
   }
   
   public void b(final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(237422);
+    AppMethodBeat.i(230448);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(237186);
+        AppMethodBeat.i(230315);
         GLES20.glUniform1i(paramInt1, paramInt2);
-        AppMethodBeat.o(237186);
+        AppMethodBeat.o(230315);
       }
     });
-    AppMethodBeat.o(237422);
+    AppMethodBeat.o(230448);
   }
   
   public void b(final int paramInt, final float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(237425);
+    AppMethodBeat.i(230465);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(237308);
+        AppMethodBeat.i(230326);
         GLES20.glUniform3fv(paramInt, 1, FloatBuffer.wrap(paramArrayOfFloat));
-        AppMethodBeat.o(237308);
+        AppMethodBeat.o(230326);
       }
     });
-    AppMethodBeat.o(237425);
+    AppMethodBeat.o(230465);
   }
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(237402);
+    AppMethodBeat.i(230286);
     this.p = paramBoolean;
     TXCLog.i("TXCGPUFilter", "set Nearest model ".concat(String.valueOf(paramBoolean)));
-    AppMethodBeat.o(237402);
+    AppMethodBeat.o(230286);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(237403);
+    AppMethodBeat.i(230300);
     this.b = GLES20.glGetAttribLocation(this.a, "position");
     this.c = GLES20.glGetUniformLocation(this.a, "inputImageTexture");
     this.v = GLES20.glGetUniformLocation(this.a, "textureTransform");
     this.d = GLES20.glGetAttribLocation(this.a, "inputTextureCoordinate");
-    AppMethodBeat.o(237403);
+    AppMethodBeat.o(230300);
     return true;
   }
   
@@ -550,40 +550,40 @@ public class j
   
   public void c(final int paramInt, final float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(237426);
+    AppMethodBeat.i(230470);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(237260);
+        AppMethodBeat.i(230308);
         GLES20.glUniform4fv(paramInt, 1, FloatBuffer.wrap(paramArrayOfFloat));
-        AppMethodBeat.o(237260);
+        AppMethodBeat.o(230308);
       }
     });
-    AppMethodBeat.o(237426);
+    AppMethodBeat.o(230470);
   }
   
   public void d()
   {
-    AppMethodBeat.i(237404);
+    AppMethodBeat.i(230309);
     GLES20.glDeleteProgram(this.a);
     e();
     this.g = false;
-    AppMethodBeat.o(237404);
+    AppMethodBeat.o(230309);
   }
   
   public void e()
   {
-    AppMethodBeat.i(237406);
+    AppMethodBeat.i(230317);
     f();
     this.f = -1;
     this.e = -1;
-    AppMethodBeat.o(237406);
+    AppMethodBeat.o(230317);
   }
   
   public void f()
   {
-    AppMethodBeat.i(237408);
+    AppMethodBeat.i(230324);
     if (this.m != -1)
     {
       GLES20.glDeleteFramebuffers(1, new int[] { this.m }, 0);
@@ -594,12 +594,12 @@ public class j
       GLES20.glDeleteTextures(1, new int[] { this.n }, 0);
       this.n = -1;
     }
-    AppMethodBeat.o(237408);
+    AppMethodBeat.o(230324);
   }
   
   public void g()
   {
-    AppMethodBeat.i(237411);
+    AppMethodBeat.i(230351);
     if (this.k != null)
     {
       int i1 = 0;
@@ -609,15 +609,15 @@ public class j
         i1 += 2;
       }
     }
-    AppMethodBeat.o(237411);
+    AppMethodBeat.o(230351);
     return;
     a(this.j, this.k);
-    AppMethodBeat.o(237411);
+    AppMethodBeat.o(230351);
   }
   
   public void h()
   {
-    AppMethodBeat.i(237412);
+    AppMethodBeat.i(230353);
     if (this.k != null)
     {
       int i1 = 1;
@@ -627,10 +627,10 @@ public class j
         i1 += 2;
       }
     }
-    AppMethodBeat.o(237412);
+    AppMethodBeat.o(230353);
     return;
     a(this.j, this.k);
-    AppMethodBeat.o(237412);
+    AppMethodBeat.o(230353);
   }
   
   protected void i() {}
@@ -639,11 +639,11 @@ public class j
   
   protected void k()
   {
-    AppMethodBeat.i(237415);
+    AppMethodBeat.i(230377);
     while (!this.r.isEmpty()) {
       ((Runnable)this.r.removeFirst()).run();
     }
-    AppMethodBeat.o(237415);
+    AppMethodBeat.o(230377);
   }
   
   public int l()
@@ -683,7 +683,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.basic.opengl.j
  * JD-Core Version:    0.7.0.1
  */

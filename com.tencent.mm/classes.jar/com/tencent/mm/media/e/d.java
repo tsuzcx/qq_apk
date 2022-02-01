@@ -11,42 +11,45 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync;", "Lcom/tencent/mm/media/encoder/IAudioEncoder;", "mediaFormat", "Landroid/media/MediaFormat;", "frameEncodeCallback", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "farmat", "", "frameEncodeEndCallback", "Lkotlin/Function0;", "(Landroid/media/MediaFormat;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function0;)V", "aacCallback", "com/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1", "Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1;", "encoderStart", "", "inputDataSource", "", "Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$EncoderData;", "kotlin.jvm.PlatformType", "", "isInputEnd", "stopEncoderTask", "checkDelayFinishEncoder", "sendDataToEncoder", "pcmData", "", "pts", "", "isLast", "startEncoder", "Companion", "EncoderData", "plugin-mediaeditor_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync;", "Lcom/tencent/mm/media/encoder/IAudioEncoder;", "mediaFormat", "Landroid/media/MediaFormat;", "frameEncodeCallback", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "farmat", "", "frameEncodeEndCallback", "Lkotlin/Function0;", "(Landroid/media/MediaFormat;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function0;)V", "aacCallback", "com/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1", "Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1;", "availableIndex", "", "", "kotlin.jvm.PlatformType", "", "encoderStart", "", "inputDataSource", "Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$EncoderData;", "isInputEnd", "stopEncoderTask", "checkDelayFinishEncoder", "sendDataToEncoder", "pcmData", "", "pts", "", "isLast", "startEncoder", "Companion", "EncoderData", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends a
 {
-  public static final a kUb;
-  private List<b> kTW;
-  private boolean kTX;
-  private boolean kTY;
-  private c kTZ;
-  private final kotlin.g.a.a<x> kUa;
+  public static final d.a nzE;
+  private List<d.b> nzF;
+  private List<Integer> nzG;
+  private boolean nzH;
+  private boolean nzI;
+  private c nzJ;
+  private final kotlin.g.a.a<ah> nzK;
   
   static
   {
     AppMethodBeat.i(93636);
-    kUb = new a((byte)0);
+    nzE = new d.a((byte)0);
     AppMethodBeat.o(93636);
   }
   
-  public d(MediaFormat paramMediaFormat, kotlin.g.a.q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, x> paramq, kotlin.g.a.a<x> parama)
+  public d(MediaFormat paramMediaFormat, q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, ah> paramq, kotlin.g.a.a<ah> parama)
   {
     super(paramMediaFormat, paramq, parama);
     AppMethodBeat.i(93635);
-    this.kTW = Collections.synchronizedList((List)new ArrayList());
-    this.kTZ = new c(this);
+    this.nzF = Collections.synchronizedList((List)new ArrayList());
+    this.nzG = Collections.synchronizedList((List)new ArrayList());
+    this.nzJ = new c(this);
     try
     {
-      this.kTH.a((MediaCodec.Callback)this.kTZ);
-      this.kUa = ((kotlin.g.a.a)new d(this));
+      this.nzs.setCallback((MediaCodec.Callback)this.nzJ);
+      this.nzK = ((kotlin.g.a.a)new d(this));
       AppMethodBeat.o(93635);
       return;
     }
@@ -59,83 +62,62 @@ public final class d
     }
   }
   
+  private static final void V(kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(236968);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(236968);
+  }
+  
+  private static final void W(kotlin.g.a.a parama)
+  {
+    AppMethodBeat.i(236971);
+    s.u(parama, "$tmp0");
+    parama.invoke();
+    AppMethodBeat.o(236971);
+  }
+  
   public final void b(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(93634);
-    p.k(paramArrayOfByte, "data");
+    s.u(paramArrayOfByte, "data");
     if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = new b(paramArrayOfByte, paramLong, paramBoolean);
-      this.kTW.add(paramArrayOfByte);
-      if (!this.kTY)
+      paramArrayOfByte = new d.b(paramArrayOfByte, paramLong, paramBoolean);
+      this.nzF.add(paramArrayOfByte);
+      if (this.nzG.size() > 0)
       {
-        this.kTH.start();
-        this.kTY = true;
+        paramArrayOfByte = this.nzG;
+        s.s(paramArrayOfByte, "availableIndex");
+        paramArrayOfByte = (Integer)p.oK(paramArrayOfByte);
+        this.nzG.remove(paramArrayOfByte);
+        c localc = this.nzJ;
+        MediaCodec localMediaCodec = this.nzs.lXj;
+        s.s(localMediaCodec, "encoder.mediaCodecImpl");
+        s.s(paramArrayOfByte, "index");
+        localc.onInputBufferAvailable(localMediaCodec, paramArrayOfByte.intValue());
+      }
+      if (!this.nzI)
+      {
+        this.nzs.start();
+        this.nzI = true;
       }
     }
     AppMethodBeat.o(93634);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$EncoderData;", "", "pcmData", "", "pts", "", "isLast", "", "([BJZ)V", "()Z", "setLast", "(Z)V", "getPcmData", "()[B", "setPcmData", "([B)V", "getPts", "()J", "setPts", "(J)V", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
-  public static final class b
-  {
-    byte[] fmy;
-    boolean kUc;
-    long pts;
-    
-    public b(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
-    {
-      this.fmy = paramArrayOfByte;
-      this.pts = paramLong;
-      this.kUc = paramBoolean;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(93629);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.h(this.fmy, paramObject.fmy)) || (this.pts != paramObject.pts) || (this.kUc != paramObject.kUc)) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(93629);
-        return true;
-      }
-      AppMethodBeat.o(93629);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(93627);
-      String str = "EncoderData(pcmData=" + Arrays.toString(this.fmy) + ", pts=" + this.pts + ", isLast=" + this.kUc + ")";
-      AppMethodBeat.o(93627);
-      return str;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "info", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/media/encoder/MediaCodecAACEncoderAsync$aacCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "info", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
     extends MediaCodec.Callback
   {
+    c(d paramd) {}
+    
     public final void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
     {
       AppMethodBeat.i(93633);
-      p.k(paramMediaCodec, "codec");
-      p.k(paramCodecException, "e");
+      s.u(paramMediaCodec, "codec");
+      s.u(paramCodecException, "e");
       Log.e("MicroMsg.MediaCodecAACEncoderAsync", "onError, e:" + paramCodecException.getMessage() + ", " + paramCodecException);
       AppMethodBeat.o(93633);
     }
@@ -143,87 +125,90 @@ public final class d
     public final void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
     {
       AppMethodBeat.i(93631);
-      p.k(paramMediaCodec, "codec");
-      try
+      s.u(paramMediaCodec, "codec");
+      d.b localb;
+      byte[] arrayOfByte;
+      long l;
+      boolean bool;
+      do
       {
-        Log.i("MicroMsg.MediaCodecAACEncoderAsync", "has input buffer ".concat(String.valueOf(paramInt)));
-        if (d.a(this.kUd).size() == 0)
+        try
         {
-          Log.i("MicroMsg.MediaCodecAACEncoderAsync", "current data is null");
-          this.kUd.kTH.a(paramInt, 0, 0L, 0);
-          AppMethodBeat.o(93631);
-          return;
-        }
-        Log.i("MicroMsg.MediaCodecAACEncoderAsync", "has input buffer avaiable".concat(String.valueOf(paramInt)));
-        if (!this.kUd.kSa) {
-          break label126;
-        }
-        Log.i("MicroMsg.MediaCodecAACEncoderAsync", "sendDataToEncoder end now");
-        AppMethodBeat.o(93631);
-        return;
-      }
-      catch (Exception paramMediaCodec)
-      {
-        Log.printErrStackTrace("MicroMsg.MediaCodecAACEncoderAsync", (Throwable)paramMediaCodec, "onInputBufferAvailable error", new Object[0]);
-      }
-      AppMethodBeat.o(93631);
-      return;
-      label126:
-      this.kUd.kTJ = Util.currentTicks();
-      if (paramInt < 0)
-      {
-        Log.d("MicroMsg.MediaCodecAACEncoderAsync", "encoder no input buffer available, drain first");
-        AppMethodBeat.o(93631);
-        return;
-      }
-      paramMediaCodec = d.a(this.kUd);
-      p.j(paramMediaCodec, "inputDataSource");
-      d.b localb = (d.b)j.lo(paramMediaCodec);
-      byte[] arrayOfByte = localb.fmy;
-      long l = localb.pts;
-      boolean bool = localb.kUc;
-      StringBuilder localStringBuilder = new StringBuilder("encode data, pts:").append(l).append(", isLast:").append(bool).append(", pcmData:");
-      if (arrayOfByte != null) {}
-      for (paramMediaCodec = Integer.valueOf(arrayOfByte.length);; paramMediaCodec = null)
-      {
-        Log.i("MicroMsg.MediaCodecAACEncoderAsync", paramMediaCodec + ", inputDataSource.size:" + d.a(this.kUd).size());
-        if (arrayOfByte == null)
-        {
-          AppMethodBeat.o(93631);
-          return;
-        }
-        if (paramInt < 0) {
-          break;
-        }
-        paramMediaCodec = this.kUd.kTH.getInputBuffer(paramInt);
-        if (paramMediaCodec != null) {
-          paramMediaCodec.clear();
-        }
-        if (paramMediaCodec != null) {
-          paramMediaCodec.position(0);
-        }
-        if (paramMediaCodec != null) {
-          paramMediaCodec.put(arrayOfByte);
-        }
-        if (bool) {
-          Log.i("MicroMsg.MediaCodecAACEncoderAsync", "last, send EOS and try delay stop encoder");
-        }
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0)
+          Log.i("MicroMsg.MediaCodecAACEncoderAsync", s.X("has input buffer ", Integer.valueOf(paramInt)));
+          if (d.a(this.nzM).size() == 0)
           {
-            d.b(this.kUd);
-            Log.i("MicroMsg.MediaCodecAACEncoderAsync", "EOS received in sendAudioToEncoder");
-            this.kUd.kTH.a(paramInt, arrayOfByte.length, l, 4);
-            d.c(this.kUd);
-          }
-          for (;;)
-          {
-            d.a(this.kUd).remove(localb);
+            Log.i("MicroMsg.MediaCodecAACEncoderAsync", "current data is null");
+            d.b(this.nzM).add(Integer.valueOf(paramInt));
             AppMethodBeat.o(93631);
             return;
-            this.kUd.kTH.a(paramInt, arrayOfByte.length, l, 0);
           }
+          Log.i("MicroMsg.MediaCodecAACEncoderAsync", s.X("has input buffer avaiable", Integer.valueOf(paramInt)));
+          if (this.nzM.nxG)
+          {
+            Log.i("MicroMsg.MediaCodecAACEncoderAsync", "sendDataToEncoder end now");
+            AppMethodBeat.o(93631);
+            return;
+          }
+        }
+        catch (Exception paramMediaCodec)
+        {
+          Log.printErrStackTrace("MicroMsg.MediaCodecAACEncoderAsync", (Throwable)paramMediaCodec, "onInputBufferAvailable error", new Object[0]);
+          AppMethodBeat.o(93631);
+          return;
+        }
+        this.nzM.nzu = Util.currentTicks();
+        if (paramInt < 0)
+        {
+          Log.d("MicroMsg.MediaCodecAACEncoderAsync", "encoder no input buffer available, drain first");
+          AppMethodBeat.o(93631);
+          return;
+        }
+        paramMediaCodec = d.a(this.nzM);
+        s.s(paramMediaCodec, "inputDataSource");
+        localb = (d.b)p.oK(paramMediaCodec);
+        arrayOfByte = localb.hqJ;
+        l = localb.pts;
+        bool = localb.nzL;
+        StringBuilder localStringBuilder = new StringBuilder("encode data, pts:").append(l).append(", isLast:").append(bool).append(", pcmData:");
+        if (arrayOfByte == null) {}
+        for (paramMediaCodec = null;; paramMediaCodec = Integer.valueOf(arrayOfByte.length))
+        {
+          Log.i("MicroMsg.MediaCodecAACEncoderAsync", paramMediaCodec + ", inputDataSource.size:" + d.a(this.nzM).size());
+          if (arrayOfByte != null) {
+            break;
+          }
+          AppMethodBeat.o(93631);
+          return;
+        }
+      } while (paramInt < 0);
+      paramMediaCodec = this.nzM.nzs.getInputBuffer(paramInt);
+      if (paramMediaCodec != null) {
+        paramMediaCodec.clear();
+      }
+      if (paramMediaCodec != null) {
+        paramMediaCodec.position(0);
+      }
+      if (paramMediaCodec != null) {
+        paramMediaCodec.put(arrayOfByte);
+      }
+      if (bool) {
+        Log.i("MicroMsg.MediaCodecAACEncoderAsync", "last, send EOS and try delay stop encoder");
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0)
+        {
+          d.c(this.nzM);
+          Log.i("MicroMsg.MediaCodecAACEncoderAsync", "EOS received in sendAudioToEncoder");
+          this.nzM.nzs.a(paramInt, arrayOfByte.length, l, 4);
+          d.d(this.nzM);
+        }
+        for (;;)
+        {
+          d.a(this.nzM).remove(localb);
+          AppMethodBeat.o(93631);
+          return;
+          this.nzM.nzs.a(paramInt, arrayOfByte.length, l, 0);
         }
       }
     }
@@ -231,73 +216,73 @@ public final class d
     public final void onOutputBufferAvailable(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
     {
       AppMethodBeat.i(93630);
-      p.k(paramMediaCodec, "codec");
-      p.k(paramBufferInfo, "info");
-      try
+      s.u(paramMediaCodec, "codec");
+      s.u(paramBufferInfo, "info");
+      do
       {
-        Log.d("MicroMsg.MediaCodecAACEncoderAsync", "encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(paramInt) });
-        if (paramInt == -1)
+        try
         {
-          Log.d("MicroMsg.MediaCodecAACEncoderAsync", "no output available, break");
+          Log.d("MicroMsg.MediaCodecAACEncoderAsync", "encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(paramInt) });
+          if (paramInt == -1)
+          {
+            Log.d("MicroMsg.MediaCodecAACEncoderAsync", "no output available, break");
+            AppMethodBeat.o(93630);
+            return;
+          }
+          if (paramInt == -2)
+          {
+            paramMediaCodec = this.nzM;
+            paramBufferInfo = this.nzM.nzs.getOutputFormat();
+            s.s(paramBufferInfo, "encoder.outputFormat");
+            paramMediaCodec.d(paramBufferInfo);
+            Log.i("MicroMsg.MediaCodecAACEncoderAsync", "dstMediaFormat change: %s", new Object[] { this.nzM.nzt });
+            AppMethodBeat.o(93630);
+            return;
+          }
+        }
+        catch (Exception paramMediaCodec)
+        {
+          Log.printErrStackTrace("MicroMsg.MediaCodecAACEncoderAsync", (Throwable)paramMediaCodec, "drainEncoder error: %s", new Object[] { paramMediaCodec.getMessage() });
           AppMethodBeat.o(93630);
           return;
         }
-        if (paramInt == -2)
+        if (paramInt < 0)
         {
-          paramMediaCodec = this.kUd;
-          paramBufferInfo = this.kUd.kTH.avi();
-          p.j(paramBufferInfo, "encoder.outputFormat");
-          paramMediaCodec.d(paramBufferInfo);
-          Log.i("MicroMsg.MediaCodecAACEncoderAsync", "dstMediaFormat change: %s", new Object[] { this.kUd.kTI });
+          Log.e("MicroMsg.MediaCodecAACEncoderAsync", "unexpected encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(paramInt) });
           AppMethodBeat.o(93630);
           return;
         }
-      }
-      catch (Exception paramMediaCodec)
-      {
-        Log.printErrStackTrace("MicroMsg.MediaCodecAACEncoderAsync", (Throwable)paramMediaCodec, "drainEncoder error: %s", new Object[] { paramMediaCodec.getMessage() });
-        AppMethodBeat.o(93630);
-        return;
-      }
-      if (paramInt < 0)
-      {
-        Log.e("MicroMsg.MediaCodecAACEncoderAsync", "unexpected encoderOutputBufferIndex: %s", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(93630);
-        return;
-      }
-      if ((paramBufferInfo.flags & 0x2) != 0)
-      {
-        Log.v("MicroMsg.MediaCodecAACEncoderAsync", "ignoring BUFFER_FLAG_CODEC_CONFIG,size: %s, %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Boolean.TRUE });
-        paramBufferInfo.size = 0;
-      }
-      Log.v("MicroMsg.MediaCodecAACEncoderAsync", "perform encoding");
-      paramMediaCodec = this.kUd.kTH.getOutputBuffer(paramInt);
-      this.kUd.f(paramMediaCodec, paramBufferInfo);
-      this.kUd.kTH.releaseOutputBuffer(paramInt, false);
-      if ((paramBufferInfo.flags & 0x4) != 0)
-      {
-        Log.i("MicroMsg.MediaCodecAACEncoderAsync", "receive EOS!");
-        this.kUd.aUy();
-        AppMethodBeat.o(93630);
-        return;
-      }
+        if ((paramBufferInfo.flags & 0x2) != 0)
+        {
+          Log.v("MicroMsg.MediaCodecAACEncoderAsync", "ignoring BUFFER_FLAG_CODEC_CONFIG,size: %s, %s", new Object[] { Integer.valueOf(paramBufferInfo.size), Boolean.valueOf(d.boY()) });
+          if (d.boY()) {
+            paramBufferInfo.size = 0;
+          }
+        }
+        Log.v("MicroMsg.MediaCodecAACEncoderAsync", "perform encoding");
+        paramMediaCodec = this.nzM.nzs.getOutputBuffer(paramInt);
+        this.nzM.f(paramMediaCodec, paramBufferInfo);
+        this.nzM.nzs.releaseOutputBuffer(paramInt, false);
+      } while ((paramBufferInfo.flags & 0x4) == 0);
+      Log.i("MicroMsg.MediaCodecAACEncoderAsync", "receive EOS!");
+      this.nzM.bpa();
       AppMethodBeat.o(93630);
     }
     
     public final void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
     {
       AppMethodBeat.i(93632);
-      p.k(paramMediaCodec, "codec");
-      p.k(paramMediaFormat, "format");
-      Log.i("MicroMsg.MediaCodecAACEncoderAsync", "onOutputFormatChanged: ".concat(String.valueOf(paramMediaFormat)));
+      s.u(paramMediaCodec, "codec");
+      s.u(paramMediaFormat, "format");
+      Log.i("MicroMsg.MediaCodecAACEncoderAsync", s.X("onOutputFormatChanged: ", paramMediaFormat));
       AppMethodBeat.o(93632);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements kotlin.g.a.a<ah>
   {
     d(d paramd)
     {
@@ -307,7 +292,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.e.d
  * JD-Core Version:    0.7.0.1
  */

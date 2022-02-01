@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.webview.core;
 
-import android.content.Intent;
-import kotlin.l;
+import android.os.Bundle;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/IWebViewUI;", "", "currentURL", "", "getCurrentURL", "()Ljava/lang/String;", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "rawUrl", "getRawUrl", "getCachedAppId", "url", "getTransText", "", "content", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/core/IWebViewJsApiContext;", "", "closeWindow", "", "data", "Landroid/os/Bundle;", "disableBounceScroll", "doSetBounceBackground", "color", "", "handleSetNavigationBarColor", "setFontSize", "fontSize", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface b
 {
-  public abstract String bju(String paramString);
+  public abstract void atr(int paramInt);
   
-  public abstract void bjx(String paramString);
+  public abstract void ats(int paramInt);
   
-  public abstract String cDu();
+  public abstract void bl(Bundle paramBundle);
   
-  public abstract String elY();
+  public abstract void isg();
   
-  public abstract Intent getIntent();
+  public abstract void ish();
 }
 
 

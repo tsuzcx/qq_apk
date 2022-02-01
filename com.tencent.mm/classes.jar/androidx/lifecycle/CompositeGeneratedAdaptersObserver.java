@@ -3,20 +3,20 @@ package androidx.lifecycle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class CompositeGeneratedAdaptersObserver
-  implements j
+  implements o
 {
-  private final f[] ZD;
+  private final h[] bGW;
   
-  CompositeGeneratedAdaptersObserver(f[] paramArrayOff)
+  CompositeGeneratedAdaptersObserver(h[] paramArrayOfh)
   {
-    this.ZD = paramArrayOff;
+    this.bGW = paramArrayOfh;
   }
   
-  public final void a(l paraml, h.a parama)
+  public void onStateChanged(q paramq, j.a parama)
   {
-    AppMethodBeat.i(213328);
-    new q();
-    AppMethodBeat.o(213328);
+    AppMethodBeat.i(194316);
+    new w();
+    AppMethodBeat.o(194316);
   }
 }
 

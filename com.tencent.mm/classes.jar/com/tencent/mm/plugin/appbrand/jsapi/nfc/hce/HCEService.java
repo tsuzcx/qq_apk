@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc.hce;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-@TargetApi(19)
 public class HCEService
   extends HostApduService
 {
@@ -29,11 +27,11 @@ public class HCEService
   {
     AppMethodBeat.i(136159);
     Log.i("MicroMsg.HCEService", "alvinluo HCEService onDeactivated reason: %d", new Object[] { Integer.valueOf(paramInt) });
-    b.pfL.pfF = false;
-    b.pfL.pfG = false;
+    b.slg.sla = false;
+    b.slg.slb = false;
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_on_deactivated_reason", paramInt);
-    b.pfL.b(this.mAppId, 41, localBundle);
+    b.slg.b(this.mAppId, 41, localBundle);
     AppMethodBeat.o(136159);
   }
   
@@ -42,7 +40,7 @@ public class HCEService
     AppMethodBeat.i(136156);
     super.onDestroy();
     Log.i("MicroMsg.HCEService", "alvinluo HCEService onDestroy");
-    b.pfL.bTC();
+    b.slg.ctH();
     AppMethodBeat.o(136156);
   }
   
@@ -60,32 +58,32 @@ public class HCEService
     }
     try
     {
-      b localb = b.pfL;
+      b localb = b.slg;
       Object localObject = (ResultReceiver)paramIntent.getParcelableExtra("HCE_Result_Receiver");
       Log.i("MicroMsg.HCEServiceMgr", "alvinluo setHceService");
-      localb.pfK = this;
+      localb.slf = this;
       localb.dK = ((ResultReceiver)localObject);
       this.mAppId = paramIntent.getStringExtra("key_appid");
-      localb = b.pfL;
-      localb.pfm = paramIntent.getIntExtra("key_time_limit", 1500);
-      if (localb.pfm < 1500)
+      localb = b.slg;
+      localb.skF = paramIntent.getIntExtra("key_time_limit", 1500);
+      if (localb.skF < 1500)
       {
-        Log.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d smaller than: %d and set a valid value", new Object[] { Integer.valueOf(localb.pfm), Integer.valueOf(1500) });
-        localb.pfm = 1500;
+        Log.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d smaller than: %d and set a valid value", new Object[] { Integer.valueOf(localb.skF), Integer.valueOf(1500) });
+        localb.skF = 1500;
       }
-      if (localb.pfm > 60000)
+      if (localb.skF > 60000)
       {
-        Log.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d, bigger than: %d and set a valid value", new Object[] { Integer.valueOf(localb.pfm), Integer.valueOf(60000) });
-        localb.pfm = 60000;
+        Log.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService timeLimit: %d, bigger than: %d and set a valid value", new Object[] { Integer.valueOf(localb.skF), Integer.valueOf(60000) });
+        localb.skF = 60000;
       }
-      Log.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService valid timeLimit: %d", new Object[] { Integer.valueOf(localb.pfm) });
-      localb = b.pfL;
+      Log.i("MicroMsg.HCEServiceMgr", "alvinluo HCEService valid timeLimit: %d", new Object[] { Integer.valueOf(localb.skF) });
+      localb = b.slg;
       localObject = this.mAppId;
       ArrayList localArrayList = paramIntent.getStringArrayListExtra("key_aid_list");
       localb.mAppId = ((String)localObject);
-      localb.pfC = localArrayList;
-      b.pfL.bTB();
-      b.pfL.pfD = false;
+      localb.skX = localArrayList;
+      b.slg.ctG();
+      b.slg.skY = false;
       long l2 = System.currentTimeMillis();
       Log.i("MicroMsg.HCEService", "alvinluo HCEService onStartCommand end: %d, total: %d", new Object[] { Long.valueOf(l2), Long.valueOf(l2 - l1) });
     }
@@ -108,14 +106,14 @@ public class HCEService
     paramArrayOfByte = Base64.encode(paramArrayOfByte, 2);
     paramBundle = new Bundle();
     paramBundle.putString("key_apdu_command", new String(paramArrayOfByte, StandardCharsets.UTF_8));
-    b.pfL.a(31, this.mAppId, paramBundle);
+    b.slg.a(31, this.mAppId, paramBundle);
     AppMethodBeat.o(136158);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCEService
  * JD-Core Version:    0.7.0.1
  */

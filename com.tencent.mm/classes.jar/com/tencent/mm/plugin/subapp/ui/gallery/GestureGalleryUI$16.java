@@ -13,13 +13,14 @@ final class GestureGalleryUI$16
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(271392);
+    AppMethodBeat.i(292153);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.MfO.cJs();
-    a.a(this, "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(271392);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    GestureGalleryUI.f(this.SHm, 4);
+    GestureGalleryUI.w(this.SHm);
+    a.a(this, "com/tencent/mm/plugin/subapp/ui/gallery/GestureGalleryUI$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(292153);
   }
 }
 

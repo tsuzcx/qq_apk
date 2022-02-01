@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
@@ -15,11 +16,11 @@ import java.util.List;
 
 public final class e
 {
-  static g.a nSK;
+  static g.a qSw;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.e
  * JD-Core Version:    0.7.0.1
  */

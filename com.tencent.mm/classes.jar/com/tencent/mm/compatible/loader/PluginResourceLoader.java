@@ -17,17 +17,17 @@ import java.util.zip.ZipFile;
 public class PluginResourceLoader
   extends Resources
 {
-  public Resources jve;
-  private Method jvf;
-  private Method jvg;
-  private HashMap<String, ZipFile> jvh;
+  public Resources lYv;
+  private Method lYw;
+  private Method lYx;
+  private HashMap<String, ZipFile> lYy;
   
   private Drawable a(TypedValue paramTypedValue, int paramInt)
   {
     AppMethodBeat.i(155838);
     try
     {
-      Drawable localDrawable1 = (Drawable)this.jvf.invoke(this.jve, new Object[] { paramTypedValue, Integer.valueOf(paramInt) });
+      Drawable localDrawable1 = (Drawable)this.lYw.invoke(this.lYv, new Object[] { paramTypedValue, Integer.valueOf(paramInt) });
       AppMethodBeat.o(155838);
       return localDrawable1;
     }
@@ -47,7 +47,7 @@ public class PluginResourceLoader
       }
       catch (Exception localException1)
       {
-        Iterator localIterator = this.jvh.entrySet().iterator();
+        Iterator localIterator = this.lYy.entrySet().iterator();
         while (localIterator.hasNext())
         {
           ((Map.Entry)localIterator.next()).getValue();
@@ -99,7 +99,7 @@ public class PluginResourceLoader
     AppMethodBeat.i(155834);
     try
     {
-      paramString1 = (XmlResourceParser)this.jvg.invoke(this.jve, new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
+      paramString1 = (XmlResourceParser)this.lYx.invoke(this.lYv, new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString2 });
       AppMethodBeat.o(155834);
       return paramString1;
     }
@@ -137,7 +137,7 @@ public class PluginResourceLoader
       InputStream localInputStream1 = super.openRawResource(paramInt, paramTypedValue);
       if (localInputStream1 == null)
       {
-        Iterator localIterator = this.jvh.entrySet().iterator();
+        Iterator localIterator = this.lYy.entrySet().iterator();
         localInputStream1 = localInputStream2;
         while (localIterator.hasNext())
         {
@@ -162,7 +162,7 @@ public class PluginResourceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.PluginResourceLoader
  * JD-Core Version:    0.7.0.1
  */

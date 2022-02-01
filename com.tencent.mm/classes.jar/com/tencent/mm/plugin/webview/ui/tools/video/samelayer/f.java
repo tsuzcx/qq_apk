@@ -5,132 +5,119 @@ import android.os.Bundle;
 import com.tencent.luggage.xweb_ext.extendplugin.a;
 import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.jsapi.e;
+import com.tencent.mm.plugin.webview.jsapi.h;
+import com.tencent.mm.plugin.webview.jsapi.p;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.n.n;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewExtendPluginInvokeContext;", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext;", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;)V", "getEnv", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getMsg", "()Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "addLifecycleListener", "", "listener", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext$LifecycleListener;", "callbackResult", "", "result", "map", "", "", "getAppId", "getAsyncHandler", "Landroid/os/Handler;", "getComponent", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "getContext", "Landroid/content/Context;", "getCurrentUrl", "getInvokeData", "Lorg/json/JSONObject;", "getInvokeName", "getJsApi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "getWebComptName", "isCreatePluginInvoke", "", "isSyncInvoke", "removeLifecycleListener", "Companion", "plugin-webview_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewExtendPluginInvokeContext;", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext;", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;)V", "getEnv", "()Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getMsg", "()Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "addLifecycleListener", "", "listener", "Lcom/tencent/luggage/xweb_ext/extendplugin/IExtendPluginInvokeContext$LifecycleListener;", "callbackResult", "", "result", "map", "", "", "getAppId", "getAsyncHandler", "Landroid/os/Handler;", "getComponent", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "getContext", "Landroid/content/Context;", "getCurrentUrl", "getInvokeData", "Lorg/json/JSONObject;", "getInvokeName", "getJsApi", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiHandler;", "getWebComptName", "isCreatePluginInvoke", "", "isSyncInvoke", "removeLifecycleListener", "Companion", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
   implements a
 {
-  public static final a QvX;
-  private final com.tencent.mm.plugin.webview.d.n Qqe;
-  final com.tencent.mm.plugin.webview.d.f QvF;
+  public static final a Xor;
+  private final p Xit;
+  final h Xnu;
   
   static
   {
-    AppMethodBeat.i(231976);
-    QvX = new a((byte)0);
-    AppMethodBeat.o(231976);
+    AppMethodBeat.i(297118);
+    Xor = new a((byte)0);
+    AppMethodBeat.o(297118);
   }
   
-  public f(com.tencent.mm.plugin.webview.d.f paramf, com.tencent.mm.plugin.webview.d.n paramn)
+  public f(h paramh, p paramp)
   {
-    AppMethodBeat.i(231975);
-    this.QvF = paramf;
-    this.Qqe = paramn;
-    AppMethodBeat.o(231975);
-  }
-  
-  public final e QK()
-  {
-    return null;
-  }
-  
-  public final boolean SQ()
-  {
-    return false;
-  }
-  
-  public final JSONObject SR()
-  {
-    AppMethodBeat.i(231964);
-    JSONObject localJSONObject = this.Qqe.POv;
-    p.j(localJSONObject, "msg.rawParams");
-    AppMethodBeat.o(231964);
-    return localJSONObject;
-  }
-  
-  public final String SS()
-  {
-    AppMethodBeat.i(231966);
-    String str = this.Qqe.function;
-    p.j(str, "msg.function");
-    AppMethodBeat.o(231966);
-    return str;
-  }
-  
-  public final void ST() {}
-  
-  public final boolean SU()
-  {
-    AppMethodBeat.i(231974);
-    Object localObject = SR();
-    if (localObject != null)
-    {
-      localObject = ((JSONObject)localObject).optString("action", "");
-      if (localObject != null)
-      {
-        boolean bool = kotlin.n.n.M((String)localObject, "insert", false);
-        AppMethodBeat.o(231974);
-        return bool;
-      }
-    }
-    AppMethodBeat.o(231974);
-    return false;
+    AppMethodBeat.i(297115);
+    this.Xnu = paramh;
+    this.Xit = paramp;
+    AppMethodBeat.o(297115);
   }
   
   public final void a(a.a parama)
   {
-    AppMethodBeat.i(231970);
-    if ((this.QvF.context instanceof d))
-    {
-      Context localContext = this.QvF.context;
-      if (localContext == null)
-      {
-        parama = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.video.samelayer.IWebViewUILifeCycle");
-        AppMethodBeat.o(231970);
-        throw parama;
-      }
-      ((d)localContext).c(parama);
+    AppMethodBeat.i(297162);
+    if ((this.Xnu.context instanceof d)) {
+      ((d)this.Xnu.context).c(parama);
     }
-    AppMethodBeat.o(231970);
+    AppMethodBeat.o(297162);
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.jsapi.f aqX()
+  {
+    return null;
+  }
+  
+  public final boolean atv()
+  {
+    return false;
+  }
+  
+  public final JSONObject atw()
+  {
+    AppMethodBeat.i(297136);
+    JSONObject localJSONObject = this.Xit.WEI;
+    s.s(localJSONObject, "msg.rawParams");
+    AppMethodBeat.o(297136);
+    return localJSONObject;
+  }
+  
+  public final String atx()
+  {
+    AppMethodBeat.i(297141);
+    String str = this.Xit.function;
+    s.s(str, "msg.function");
+    AppMethodBeat.o(297141);
+    return str;
+  }
+  
+  public final void aty() {}
+  
+  public final boolean atz()
+  {
+    AppMethodBeat.i(297182);
+    Object localObject = atw();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(297182);
+      return false;
+    }
+    localObject = ((JSONObject)localObject).optString("action", "");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(297182);
+      return false;
+    }
+    boolean bool = n.U((String)localObject, "insert", false);
+    AppMethodBeat.o(297182);
+    return bool;
   }
   
   public final void b(a.a parama)
   {
-    AppMethodBeat.i(231972);
-    if (((this.QvF.context instanceof d)) && (parama != null))
-    {
-      Context localContext = this.QvF.context;
-      if (localContext == null)
-      {
-        parama = new t("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.video.samelayer.IWebViewUILifeCycle");
-        AppMethodBeat.o(231972);
-        throw parama;
-      }
-      ((d)localContext).d(parama);
+    AppMethodBeat.i(297171);
+    if (((this.Xnu.context instanceof d)) && (parama != null)) {
+      ((d)this.Xnu.context).d(parama);
     }
-    AppMethodBeat.o(231972);
+    AppMethodBeat.o(297171);
   }
   
   public final String e(String paramString, Map<String, ? extends Object> paramMap)
   {
-    AppMethodBeat.i(231969);
-    this.QvF.PNo.h(this.Qqe.POu, this.Qqe.function + ':' + paramString, paramMap);
-    AppMethodBeat.o(231969);
+    AppMethodBeat.i(297155);
+    this.Xnu.WDy.doCallback(this.Xit.WEH, this.Xit.function + ':' + paramString, paramMap);
+    AppMethodBeat.o(297155);
     return null;
   }
   
-  public final String er(String paramString)
+  public final String fO(String paramString)
   {
-    AppMethodBeat.i(231967);
-    this.QvF.PNo.h(this.Qqe.POu, this.Qqe.function + ':' + paramString, null);
-    AppMethodBeat.o(231967);
+    AppMethodBeat.i(297146);
+    this.Xnu.WDy.doCallback(this.Xit.WEH, this.Xit.function + ':' + paramString, null);
+    AppMethodBeat.o(297146);
     return null;
   }
   
@@ -141,31 +128,31 @@ public final class f
   
   public final Context getContext()
   {
-    return this.QvF.context;
+    return this.Xnu.context;
   }
   
   public final String getCurrentUrl()
   {
-    AppMethodBeat.i(231960);
-    String str = (String)this.Qqe.params.get("url");
-    AppMethodBeat.o(231960);
+    AppMethodBeat.i(297129);
+    String str = (String)this.Xit.params.get("url");
+    AppMethodBeat.o(297129);
     return str;
   }
   
-  public final String hbC()
+  public final String iBP()
   {
-    AppMethodBeat.i(231958);
-    if ((this.Qqe.PNI != null) && (this.Qqe.PNI.containsKey("name")))
+    AppMethodBeat.i(297125);
+    if ((this.Xit.WDU != null) && (this.Xit.WDU.containsKey("name")))
     {
-      String str = (String)this.Qqe.PNI.get("name");
-      AppMethodBeat.o(231958);
+      String str = (String)this.Xit.WDU.get("name");
+      AppMethodBeat.o(297125);
       return str;
     }
-    AppMethodBeat.o(231958);
+    AppMethodBeat.o(297125);
     return null;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewExtendPluginInvokeContext$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/ui/tools/video/samelayer/WebViewExtendPluginInvokeContext$Companion;", "", "()V", "TAG", "", "plugin-webview_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 

@@ -18,7 +18,7 @@ public class Util4NativeCommon
       AppMethodBeat.o(114164);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("Util4NativeCommon", localThrowable);
       AppMethodBeat.o(114164);
@@ -29,7 +29,7 @@ public class Util4NativeCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.Util4NativeCommon
  * JD-Core Version:    0.7.0.1
  */

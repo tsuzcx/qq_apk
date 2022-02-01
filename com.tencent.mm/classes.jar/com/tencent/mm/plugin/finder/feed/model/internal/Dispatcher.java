@@ -2,20 +2,19 @@ package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.view.j;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/Dispatcher;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "()V", "dispatcher", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DispatcherMachine;", "merger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getMerger", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "viewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/IViewActionCallback;", "createDataMerger", "onAlive", "", "onDead", "register", "callback", "unregister", "STATUS", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/model/internal/Dispatcher;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataStore;", "()V", "dispatcher", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DispatcherMachine;", "merger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getMerger", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "viewCallbacks", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/IViewActionCallback;", "createDataMerger", "onAlive", "", "onDead", "register", "callback", "unregister", "STATUS", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract class Dispatcher<T extends k>
   extends DataStore<T>
 {
   private final f<T> dispatcher = new f(this.viewCallbacks);
   private final d<T> merger = createDataMerger();
-  private final LinkedList<j> viewCallbacks = new LinkedList();
+  private final LinkedList<com.tencent.mm.view.k> viewCallbacks = new LinkedList();
   
   public abstract d<T> createDataMerger();
   
@@ -33,32 +32,32 @@ public abstract class Dispatcher<T extends k>
   
   public abstract void onDead();
   
-  public final void register(j paramj)
+  public final void register(com.tencent.mm.view.k paramk)
   {
-    p.k(paramj, "callback");
-    this.viewCallbacks.add(paramj);
-    Log.i(getTAG(), "register callback " + paramj + " size:" + this.viewCallbacks.size());
+    s.u(paramk, "callback");
+    this.viewCallbacks.add(paramk);
+    Log.i(getTAG(), "register callback " + paramk + " size:" + this.viewCallbacks.size());
     if (this.viewCallbacks.size() == 1) {
       onAlive();
     }
   }
   
-  public final void unregister(j paramj)
+  public final void unregister(com.tencent.mm.view.k paramk)
   {
-    p.k(paramj, "callback");
+    s.u(paramk, "callback");
     synchronized ((Iterable)this.viewCallbacks)
     {
       localObject = ???.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        j localj = (j)((Iterator)localObject).next();
-        if (p.h(localj, paramj)) {
-          this.viewCallbacks.remove(localj);
+        com.tencent.mm.view.k localk = (com.tencent.mm.view.k)((Iterator)localObject).next();
+        if (s.p(localk, paramk)) {
+          this.viewCallbacks.remove(localk);
         }
       }
     }
-    Object localObject = x.aazN;
-    Log.i(getTAG(), "unregister callback " + paramj + " size " + this.viewCallbacks.size() + " from " + Util.getStack() + '}');
+    Object localObject = ah.aiuX;
+    Log.i(getTAG(), "unregister callback " + paramk + " size " + this.viewCallbacks.size() + " from " + Util.getStack() + '}');
     if (this.viewCallbacks.size() == 0) {
       onDead();
     }

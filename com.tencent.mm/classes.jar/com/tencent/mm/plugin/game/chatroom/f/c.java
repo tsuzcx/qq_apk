@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.game.chatroom.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d.b.b;
-import com.tencent.mm.loader.f.g;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.autogen.b.du;
+import com.tencent.mm.plugin.game.chatroom.d.d;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/chatroom/loader/ChatRoomAvatarDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/game/chatroom/loader/ChatRoomAvatarData;", "()V", "downloader", "Lcom/tencent/mm/loader/impr/DefaultImageDownloader;", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "game-chatroom_release"})
 public final class c
-  extends com.tencent.mm.loader.d.b<a>
+  extends du
 {
-  private final com.tencent.mm.loader.e.b jGz;
+  public static final IAutoDBItem.MAutoDBInfo nVV;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(210854);
-    this.jGz = new com.tencent.mm.loader.e.b();
-    AppMethodBeat.o(210854);
+    AppMethodBeat.i(275679);
+    nVV = du.aJm();
+    AppMethodBeat.o(275679);
   }
   
-  public final void a(com.tencent.mm.loader.h.a.a<a> parama, g paramg, b.b paramb)
+  public final d fCH()
   {
-    AppMethodBeat.i(210852);
-    p.k(parama, "url");
-    p.k(paramg, "fileNameCreator");
-    p.k(paramb, "callback");
-    this.jGz.a(new com.tencent.mm.loader.h.a.a(((a)parama.aSr()).url), paramg, paramb);
-    AppMethodBeat.o(210852);
+    AppMethodBeat.i(275690);
+    d locald = new d(this.field_userName, this.field_nickName, this.field_avatarURL);
+    AppMethodBeat.o(275690);
+    return locald;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return nVV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.chatroom.f.c
  * JD-Core Version:    0.7.0.1
  */

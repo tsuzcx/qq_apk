@@ -3,127 +3,134 @@ package com.tencent.mm.plugin.finder.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.k;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.h;
+import com.tencent.mm.plugin.finder.storage.i;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bdp;
-import com.tencent.mm.protocal.protobuf.bds;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.protocal.protobuf.boo;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderDraftInfoData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "draftItem", "Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;)V", "getDraftItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "createTime", "", "getDraftTitle", "", "getItemId", "getItemType", "isMusicTag", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/model/FinderDraftInfoData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "draftItem", "Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;)V", "getDraftItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "createTime", "", "getDraftTitle", "", "getItemId", "getItemType", "isMusicTag", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class q
-  implements bu
+  implements cc
 {
-  public final h zAj;
+  public final i ABX;
   
-  public q(h paramh)
+  public q(i parami)
   {
-    AppMethodBeat.i(265906);
-    this.zAj = paramh;
-    AppMethodBeat.o(265906);
+    AppMethodBeat.i(332207);
+    this.ABX = parami;
+    AppMethodBeat.o(332207);
   }
   
   public final int a(k paramk)
   {
-    AppMethodBeat.i(265899);
-    p.k(paramk, "obj");
-    if (!(paramk instanceof q)) {
-      paramk = null;
-    }
-    for (;;)
-    {
+    AppMethodBeat.i(332223);
+    s.u(paramk, "obj");
+    if ((paramk instanceof q)) {
       paramk = (q)paramk;
-      if (paramk != null)
-      {
-        if ((paramk.zAj.field_localId > 0L) && (this.zAj.field_localId > 0L) && (paramk.zAj.field_localId == this.zAj.field_localId))
-        {
-          AppMethodBeat.o(265899);
-          return 0;
-        }
-        AppMethodBeat.o(265899);
-        return -1;
-      }
-      AppMethodBeat.o(265899);
-      return -1;
     }
+    while (paramk != null) {
+      if ((paramk.ABX.field_localId > 0L) && (this.ABX.field_localId > 0L) && (paramk.ABX.field_localId == this.ABX.field_localId))
+      {
+        AppMethodBeat.o(332223);
+        return 0;
+        paramk = null;
+      }
+      else if ((this.ABX.field_objectId != 0L) && (paramk.ABX.field_objectId != 0L) && (this.ABX.field_objectId == paramk.ABX.field_objectId))
+      {
+        AppMethodBeat.o(332223);
+        return 0;
+      }
+    }
+    AppMethodBeat.o(332223);
+    return -1;
   }
   
-  public final int bAQ()
+  public final long bZA()
   {
-    AppMethodBeat.i(265898);
+    if (this.ABX.field_localId != 0L) {
+      return this.ABX.field_localId;
+    }
+    return this.ABX.field_objectId;
+  }
+  
+  public final int bZB()
+  {
+    AppMethodBeat.i(332218);
     int i = q.class.getName().hashCode();
-    AppMethodBeat.o(265898);
+    AppMethodBeat.o(332218);
     return i;
   }
   
-  public final String dKt()
+  public final String eDh()
   {
-    AppMethodBeat.i(265902);
-    if (dKu())
+    AppMethodBeat.i(332230);
+    if (eDi())
     {
-      localObject1 = this.zAj.dYm().getFeedObject().objectDesc;
-      if (localObject1 != null)
-      {
-        localObject1 = ((FinderObjectDesc)localObject1).mvInfo;
-        if (localObject1 == null) {}
+      localObject = this.ABX.eYK().getFeedObject().objectDesc;
+      if (localObject == null) {
+        localObject = null;
       }
-      for (localObject1 = ((bdp)localObject1).GaB;; localObject1 = null)
+      for (;;)
       {
-        if (localObject1 == null) {
-          break label196;
+        if (localObject == null) {
+          break label206;
         }
-        if (!Util.isNullOrNil(((bds)localObject1).ozs)) {
+        if (!Util.isNullOrNil(((boo)localObject).rDl)) {
+          break label92;
+        }
+        localObject = ((boo)localObject).songName;
+        if (localObject != null) {
           break;
         }
-        localObject2 = ((bds)localObject1).HLH;
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          break label152;
-        }
-        AppMethodBeat.o(265902);
+        AppMethodBeat.o(332230);
         return "";
+        localObject = ((FinderObjectDesc)localObject).mvInfo;
+        if (localObject == null) {
+          localObject = null;
+        } else {
+          localObject = ((bol)localObject).LWI;
+        }
       }
-      if (Util.isNullOrNil(((bds)localObject1).HLH))
+      AppMethodBeat.o(332230);
+      return localObject;
+      label92:
+      if (Util.isNullOrNil(((boo)localObject).songName))
       {
-        localObject1 = String.valueOf(((bds)localObject1).ozs);
-        AppMethodBeat.o(265902);
-        return localObject1;
+        localObject = String.valueOf(((boo)localObject).rDl);
+        AppMethodBeat.o(332230);
+        return localObject;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      String str = ((bds)localObject1).HLH;
-      Object localObject2 = str;
-      if (str == null) {
-        localObject2 = "";
+      String str2 = ((boo)localObject).songName;
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = "";
       }
-      localObject1 = (String)localObject2 + '-' + ((bds)localObject1).ozs;
-      label152:
-      AppMethodBeat.o(265902);
-      return localObject1;
+      localObject = str1 + '-' + ((boo)localObject).rDl;
+      AppMethodBeat.o(332230);
+      return localObject;
     }
-    Object localObject1 = this.zAj.dYm().getFeedObject().objectDesc;
-    if (localObject1 != null)
+    Object localObject = this.ABX.eYK().getFeedObject().objectDesc;
+    if (localObject == null)
     {
-      localObject1 = ((FinderObjectDesc)localObject1).description;
-      AppMethodBeat.o(265902);
-      return localObject1;
+      AppMethodBeat.o(332230);
+      return null;
     }
-    AppMethodBeat.o(265902);
-    return null;
-    label196:
-    AppMethodBeat.o(265902);
+    localObject = ((FinderObjectDesc)localObject).description;
+    AppMethodBeat.o(332230);
+    return localObject;
+    label206:
+    AppMethodBeat.o(332230);
     return "";
   }
   
-  public final boolean dKu()
+  public final boolean eDi()
   {
-    return this.zAj.field_objectType == 2;
-  }
-  
-  public final long mf()
-  {
-    return this.zAj.field_localId;
+    return this.ABX.field_objectType == 2;
   }
 }
 

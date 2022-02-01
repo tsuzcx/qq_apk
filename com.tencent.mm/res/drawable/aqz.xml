@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<ripple android:color="@color/a8l"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/aqy" />
-    <item android:state_selected="true" android:drawable="@drawable/aqy" />
-    <item android:drawable="@drawable/aqx" />
-</selector>
+    <item android:id="@android:id/mask">
+        <color android:color="@color/al2" />
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/ahb" />
+        </shape>
+    </item>
+</ripple>

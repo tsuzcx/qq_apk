@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.game.autogen.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.kc;
 import java.util.LinkedList;
 
 public class GetChatroomMemberInfoRequest
-  extends dyl
+  extends erp
 {
   public LinkedList<String> username_list;
   
   public GetChatroomMemberInfoRequest()
   {
-    AppMethodBeat.i(195190);
+    AppMethodBeat.i(275557);
     this.username_list = new LinkedList();
-    AppMethodBeat.o(195190);
+    AppMethodBeat.o(275557);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195196);
+    AppMethodBeat.i(275573);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        paramVarArgs.qD(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
       paramVarArgs.e(2, 1, this.username_list);
-      AppMethodBeat.o(195196);
+      AppMethodBeat.o(275573);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label348;
+        break label344;
       }
     }
-    label348:
-    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.a.c(2, 1, this.username_list);
-      AppMethodBeat.o(195196);
+      int i = i.a.a.a.c(2, 1, this.username_list);
+      AppMethodBeat.o(275573);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
         this.username_list.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = erp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = erp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(195196);
+        AppMethodBeat.o(275573);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         GetChatroomMemberInfoRequest localGetChatroomMemberInfoRequest = (GetChatroomMemberInfoRequest)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(195196);
+          AppMethodBeat.o(275573);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             localObject = (byte[])paramVarArgs.get(paramInt);
-            jg localjg = new jg();
+            kc localkc = new kc();
             if ((localObject != null) && (localObject.length > 0)) {
-              localjg.parseFrom((byte[])localObject);
+              localkc.parseFrom((byte[])localObject);
             }
-            localGetChatroomMemberInfoRequest.BaseRequest = localjg;
+            localGetChatroomMemberInfoRequest.BaseRequest = localkc;
             paramInt += 1;
           }
-          AppMethodBeat.o(195196);
+          AppMethodBeat.o(275573);
           return 0;
         }
-        localGetChatroomMemberInfoRequest.username_list.add(((g.a.a.a.a)localObject).abFh.readString());
-        AppMethodBeat.o(195196);
+        localGetChatroomMemberInfoRequest.username_list.add(((i.a.a.a.a)localObject).ajGk.readString());
+        AppMethodBeat.o(275573);
         return 0;
       }
-      AppMethodBeat.o(195196);
+      AppMethodBeat.o(275573);
       return -1;
     }
   }

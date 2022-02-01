@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet.pay.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.al;
+import com.tencent.mm.plugin.wallet_core.model.aj;
 import com.tencent.mm.plugin.wallet_core.model.d;
 import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wxpay.a.i;
@@ -20,8 +20,8 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public String GHz;
-  public double Imy;
+  public String MEq;
+  public double OjO;
   public String desc;
   
   public c(String paramString)
@@ -53,15 +53,15 @@ public final class c
     AppMethodBeat.i(69263);
     if (paramInt == 0)
     {
-      this.GHz = paramJSONObject.optString("fee_type");
-      this.Imy = (paramJSONObject.optDouble("total_fee") / 100.0D);
+      this.MEq = paramJSONObject.optString("fee_type");
+      this.OjO = (paramJSONObject.optDouble("total_fee") / 100.0D);
       paramString = paramJSONObject.optJSONArray("Array");
       if ((paramString != null) && (paramString.length() > 0)) {
         this.desc = ((JSONObject)paramString.opt(0)).optString("desc");
       }
-      al localal = u.gJp();
+      aj localaj = u.iiD();
       paramJSONObject = paramJSONObject.optJSONObject("bindqueryresp");
-      localal.OTP.clear();
+      localaj.VJV.clear();
       if (paramJSONObject == null)
       {
         Log.e("MicroMsg.WalletRepaymentBankcardMgr", "parse from json error,json is null");
@@ -75,7 +75,7 @@ public final class c
         paramString = paramJSONObject.optJSONObject("user_info");
         if (paramString != null)
         {
-          localal.OTQ = paramString.optString("last_card_bind_serialno");
+          localaj.VJW = paramString.optString("last_card_bind_serialno");
           AppMethodBeat.o(69263);
         }
       }
@@ -84,17 +84,17 @@ public final class c
         paramInt = 0;
         while (paramInt < localJSONArray.length())
         {
-          d locald = d.gIN();
+          d locald = d.iib();
           try
           {
             paramString = (JSONObject)localJSONArray.get(paramInt);
             if (paramString != null)
             {
-              paramString = locald.bL(paramString);
-              if (paramString.gIH())
+              paramString = locald.cg(paramString);
+              if (paramString.ihV())
               {
                 paramString.field_desc = paramString.field_bankName;
-                localal.OTP.add(paramString);
+                localaj.VJV.add(paramString);
               }
             }
             else
@@ -109,9 +109,9 @@ public final class c
               Log.printErrStackTrace("MicroMsg.WalletRepaymentBankcardMgr", paramString, "", new Object[0]);
               paramString = null;
               continue;
-              if (paramString.gIJ()) {
+              if (paramString.ihX()) {
                 paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_credit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
-              } else if (paramString.gIG()) {
+              } else if (paramString.ihU()) {
                 paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_wxcredit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
               } else {
                 paramString.field_desc = MMApplicationContext.getContext().getString(a.i.wallet_deposit_card_desc, new Object[] { paramString.field_bankName, paramString.field_bankcardTail });
@@ -127,7 +127,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.c
  * JD-Core Version:    0.7.0.1
  */

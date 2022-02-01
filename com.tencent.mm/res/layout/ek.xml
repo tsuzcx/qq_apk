@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/afz" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView style="@style/hx" />
-        <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/gax" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
-        <TextView android:textColor="@color/Link" android:gravity="center_vertical" android:id="@id/gao" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/a2h" />
-        <ImageView android:id="@id/gaw" style="@style/hx" />
-        <TextView android:textColor="@color/l4" android:gravity="center" android:id="@id/gap" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/a2i" />
-    </LinearLayout>
-    <TextView android:textColor="@color/l4" android:gravity="center" android:id="@id/gav" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" />
+    <Button android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/rb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="160.0dip" android:minHeight="40.0dip" android:layout_centerInParent="true" style="@style/op" />
+    <TextView android:textSize="@dimen/p" android:textColor="@color/a7b" android:gravity="center" android:id="@id/rd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:text="@string/gk9" android:layout_above="@id/rb" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/rc" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginBottom="24.0dip" android:scaleType="fitCenter" android:layout_above="@id/rd" android:layout_centerHorizontal="true" />
 </RelativeLayout>

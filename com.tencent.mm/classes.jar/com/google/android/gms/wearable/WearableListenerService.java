@@ -205,58 +205,57 @@ public class WearableListenerService
     }
     
     /* Error */
-    @android.annotation.SuppressLint({"UntrackedBindService"})
     private final void zzb()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 44
+      //   2: ldc 41
       //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 46	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
+      //   8: getfield 43	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
       //   11: ifeq +11 -> 22
-      //   14: ldc 44
+      //   14: ldc 41
       //   16: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   19: aload_0
       //   20: monitorexit
       //   21: return
-      //   22: ldc 48
+      //   22: ldc 45
       //   24: iconst_2
-      //   25: invokestatic 54	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
+      //   25: invokestatic 51	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
       //   28: ifeq +41 -> 69
       //   31: aload_0
       //   32: getfield 17	com/google/android/gms/wearable/WearableListenerService$zzc:zzak	Lcom/google/android/gms/wearable/WearableListenerService;
-      //   35: invokestatic 58	com/google/android/gms/wearable/WearableListenerService:zza	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/ComponentName;
-      //   38: invokestatic 64	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   35: invokestatic 55	com/google/android/gms/wearable/WearableListenerService:zza	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/ComponentName;
+      //   38: invokestatic 61	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
       //   41: astore_1
-      //   42: new 66	java/lang/StringBuilder
+      //   42: new 63	java/lang/StringBuilder
       //   45: dup
       //   46: aload_1
-      //   47: invokestatic 64	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   50: invokevirtual 70	java/lang/String:length	()I
+      //   47: invokestatic 61	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   50: invokevirtual 67	java/lang/String:length	()I
       //   53: bipush 13
       //   55: iadd
-      //   56: invokespecial 72	java/lang/StringBuilder:<init>	(I)V
-      //   59: ldc 74
-      //   61: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   56: invokespecial 69	java/lang/StringBuilder:<init>	(I)V
+      //   59: ldc 71
+      //   61: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   64: aload_1
-      //   65: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   65: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   68: pop
       //   69: aload_0
       //   70: getfield 17	com/google/android/gms/wearable/WearableListenerService$zzc:zzak	Lcom/google/android/gms/wearable/WearableListenerService;
       //   73: aload_0
       //   74: getfield 17	com/google/android/gms/wearable/WearableListenerService$zzc:zzak	Lcom/google/android/gms/wearable/WearableListenerService;
-      //   77: invokestatic 81	com/google/android/gms/wearable/WearableListenerService:zzb	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/Intent;
+      //   77: invokestatic 78	com/google/android/gms/wearable/WearableListenerService:zzb	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/Intent;
       //   80: aload_0
       //   81: getfield 34	com/google/android/gms/wearable/WearableListenerService$zzc:zzal	Lcom/google/android/gms/wearable/WearableListenerService$zzb;
       //   84: iconst_1
-      //   85: invokevirtual 85	com/google/android/gms/wearable/WearableListenerService:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+      //   85: invokevirtual 82	com/google/android/gms/wearable/WearableListenerService:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
       //   88: pop
       //   89: aload_0
       //   90: iconst_1
-      //   91: putfield 46	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
-      //   94: ldc 44
+      //   91: putfield 43	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
+      //   94: ldc 41
       //   96: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   99: goto -80 -> 19
       //   102: astore_1
@@ -277,61 +276,60 @@ public class WearableListenerService
     }
     
     /* Error */
-    @android.annotation.SuppressLint({"UntrackedBindService"})
     private final void zzb(String paramString)
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 90
+      //   2: ldc 86
       //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 46	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
+      //   8: getfield 43	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
       //   11: ifne +11 -> 22
-      //   14: ldc 90
+      //   14: ldc 86
       //   16: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   19: aload_0
       //   20: monitorexit
       //   21: return
-      //   22: ldc 48
+      //   22: ldc 45
       //   24: iconst_2
-      //   25: invokestatic 54	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
+      //   25: invokestatic 51	android/util/Log:isLoggable	(Ljava/lang/String;I)Z
       //   28: ifeq +58 -> 86
       //   31: aload_0
       //   32: getfield 17	com/google/android/gms/wearable/WearableListenerService$zzc:zzak	Lcom/google/android/gms/wearable/WearableListenerService;
-      //   35: invokestatic 58	com/google/android/gms/wearable/WearableListenerService:zza	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/ComponentName;
-      //   38: invokestatic 64	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   35: invokestatic 55	com/google/android/gms/wearable/WearableListenerService:zza	(Lcom/google/android/gms/wearable/WearableListenerService;)Landroid/content/ComponentName;
+      //   38: invokestatic 61	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
       //   41: astore_2
-      //   42: new 66	java/lang/StringBuilder
+      //   42: new 63	java/lang/StringBuilder
       //   45: dup
       //   46: aload_1
-      //   47: invokestatic 64	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   50: invokevirtual 70	java/lang/String:length	()I
+      //   47: invokestatic 61	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   50: invokevirtual 67	java/lang/String:length	()I
       //   53: bipush 17
       //   55: iadd
       //   56: aload_2
-      //   57: invokestatic 64	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   60: invokevirtual 70	java/lang/String:length	()I
+      //   57: invokestatic 61	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   60: invokevirtual 67	java/lang/String:length	()I
       //   63: iadd
-      //   64: invokespecial 72	java/lang/StringBuilder:<init>	(I)V
-      //   67: ldc 92
-      //   69: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   64: invokespecial 69	java/lang/StringBuilder:<init>	(I)V
+      //   67: ldc 88
+      //   69: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   72: aload_1
-      //   73: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   76: ldc 94
-      //   78: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   73: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   76: ldc 90
+      //   78: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   81: aload_2
-      //   82: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   82: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   85: pop
       //   86: aload_0
       //   87: getfield 17	com/google/android/gms/wearable/WearableListenerService$zzc:zzak	Lcom/google/android/gms/wearable/WearableListenerService;
       //   90: aload_0
       //   91: getfield 34	com/google/android/gms/wearable/WearableListenerService$zzc:zzal	Lcom/google/android/gms/wearable/WearableListenerService$zzb;
-      //   94: invokevirtual 98	com/google/android/gms/wearable/WearableListenerService:unbindService	(Landroid/content/ServiceConnection;)V
+      //   94: invokevirtual 94	com/google/android/gms/wearable/WearableListenerService:unbindService	(Landroid/content/ServiceConnection;)V
       //   97: aload_0
       //   98: iconst_0
-      //   99: putfield 46	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
-      //   102: ldc 90
+      //   99: putfield 43	com/google/android/gms/wearable/WearableListenerService$zzc:started	Z
+      //   102: ldc 86
       //   104: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   107: goto -88 -> 19
       //   110: astore_1
@@ -513,7 +511,7 @@ public class WearableListenerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.WearableListenerService
  * JD-Core Version:    0.7.0.1
  */

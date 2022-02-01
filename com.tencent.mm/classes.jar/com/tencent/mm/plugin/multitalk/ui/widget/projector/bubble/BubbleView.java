@@ -19,136 +19,136 @@ import com.tencent.mm.plugin.multitalk.a.b;
 import com.tencent.mm.plugin.multitalk.a.i;
 import com.tencent.mm.plugin.multitalk.ui.widget.f;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bb;
+import com.tencent.mm.ui.bd;
 
 public class BubbleView
   extends RelativeLayout
   implements Runnable
 {
-  protected a FDW;
-  protected float FDX;
-  protected RelativeLayout FDY;
-  protected ImageView FDZ;
-  protected int FEa;
-  protected int FEb;
-  float FEc;
-  float FEd;
-  float FEe;
+  protected int FfJ;
+  protected a LzG;
+  protected float LzH;
+  protected RelativeLayout LzI;
+  protected ImageView LzJ;
+  protected int LzK;
+  float LzL;
+  float LzM;
+  float LzN;
   int arrowRes;
   protected int backgroundColor;
-  private TextView iXU;
+  private TextView lzO;
   protected Context mContext;
   
   public BubbleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(202095);
-    this.FEc = 0.0F;
-    this.FEd = 0.0F;
-    this.FEe = 0.0F;
+    AppMethodBeat.i(285873);
+    this.LzL = 0.0F;
+    this.LzM = 0.0F;
+    this.LzN = 0.0F;
     this.arrowRes = -1;
     d(paramContext, paramAttributeSet);
-    AppMethodBeat.o(202095);
+    AppMethodBeat.o(285873);
   }
   
   public BubbleView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(202097);
-    this.FEc = 0.0F;
-    this.FEd = 0.0F;
-    this.FEe = 0.0F;
+    AppMethodBeat.i(285879);
+    this.LzL = 0.0F;
+    this.LzM = 0.0F;
+    this.LzN = 0.0F;
     this.arrowRes = -1;
     d(paramContext, paramAttributeSet);
-    AppMethodBeat.o(202097);
+    AppMethodBeat.o(285879);
   }
   
   private void a(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, String paramString)
   {
-    AppMethodBeat.i(202115);
-    this.FDY = new RelativeLayout(this.mContext);
-    this.FDY.setId(View.generateViewId());
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, (int)this.FEe);
+    AppMethodBeat.i(285915);
+    this.LzI = new RelativeLayout(this.mContext);
+    this.LzI.setId(View.generateViewId());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, (int)this.LzN);
     Object localObject = new a(paramInt1, paramFloat1);
-    this.FDY.setBackground((Drawable)localObject);
+    this.LzI.setBackground((Drawable)localObject);
     a(paramInt2, paramFloat2, paramString);
-    this.FDZ = new ImageView(this.mContext);
-    this.FDZ.setId(View.generateViewId());
-    paramString = new RelativeLayout.LayoutParams((int)this.FEc, (int)this.FEd);
-    switch (1.FEf[this.FDW.ordinal()])
+    this.LzJ = new ImageView(this.mContext);
+    this.LzJ.setId(View.generateViewId());
+    paramString = new RelativeLayout.LayoutParams((int)this.LzL, (int)this.LzM);
+    switch (1.LzO[this.LzG.ordinal()])
     {
     default: 
       paramInt1 = 270;
-      paramString.addRule(17, this.FDY.getId());
+      paramString.addRule(17, this.LzI.getId());
     }
     for (;;)
     {
-      localObject = new BitmapDrawable(BitmapUtil.rotate(b(au.o(this.mContext, this.arrowRes, this.mContext.getResources().getColor(a.b.White)), this.FEc, this.FEd), paramInt1));
-      this.FDZ.setImageDrawable((Drawable)localObject);
-      addView(this.FDZ, paramString);
-      addView(this.FDY, localLayoutParams);
-      this.FDY.post(this);
+      localObject = new BitmapDrawable(BitmapUtil.rotate(b(bb.m(this.mContext, this.arrowRes, this.mContext.getResources().getColor(a.b.White)), this.LzL, this.LzM), paramInt1));
+      this.LzJ.setImageDrawable((Drawable)localObject);
+      addView(this.LzJ, paramString);
+      addView(this.LzI, localLayoutParams);
+      this.LzI.post(this);
       setClickable(true);
-      AppMethodBeat.o(202115);
+      AppMethodBeat.o(285915);
       return;
       paramInt1 = 90;
-      localLayoutParams.addRule(17, this.FDZ.getId());
+      localLayoutParams.addRule(17, this.LzJ.getId());
       continue;
       paramInt1 = 180;
-      localLayoutParams.addRule(3, this.FDZ.getId());
+      localLayoutParams.addRule(3, this.LzJ.getId());
       continue;
       paramInt1 = 0;
-      paramString.addRule(3, this.FDY.getId());
+      paramString.addRule(3, this.LzI.getId());
     }
   }
   
   private void a(int paramInt, float paramFloat, String paramString)
   {
-    AppMethodBeat.i(202120);
+    AppMethodBeat.i(285934);
     b(paramInt, paramFloat, paramString);
-    this.FDY.addView(this.iXU);
-    AppMethodBeat.o(202120);
+    this.LzI.addView(this.lzO);
+    AppMethodBeat.o(285934);
   }
   
   private static Bitmap b(Drawable paramDrawable, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(202118);
+    AppMethodBeat.i(285926);
     Bitmap localBitmap = Bitmap.createBitmap((int)paramFloat1, (int)paramFloat2, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     paramDrawable.setBounds(0, 0, (int)paramFloat1, (int)paramFloat2);
     paramDrawable.draw(localCanvas);
-    AppMethodBeat.o(202118);
+    AppMethodBeat.o(285926);
     return localBitmap;
   }
   
   private void b(int paramInt, float paramFloat, String paramString)
   {
-    AppMethodBeat.i(202127);
-    this.iXU = new TextView(this.mContext);
-    this.iXU.setId(View.generateViewId());
+    AppMethodBeat.i(285940);
+    this.lzO = new TextView(this.mContext);
+    this.lzO.setId(View.generateViewId());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(17);
-    localLayoutParams.setMarginStart(f.FxG);
-    localLayoutParams.setMarginEnd(f.FxG);
-    localLayoutParams.topMargin = f.FxG;
-    localLayoutParams.bottomMargin = f.FxG;
-    this.iXU.setLayoutParams(localLayoutParams);
-    this.iXU.setTextColor(paramInt);
-    this.iXU.setTextSize(aw.H(this.mContext, (int)paramFloat));
-    this.iXU.setText(paramString);
-    AppMethodBeat.o(202127);
+    localLayoutParams.setMarginStart(f.LtS);
+    localLayoutParams.setMarginEnd(f.LtS);
+    localLayoutParams.topMargin = f.LtS;
+    localLayoutParams.bottomMargin = f.LtS;
+    this.lzO.setLayoutParams(localLayoutParams);
+    this.lzO.setTextColor(paramInt);
+    this.lzO.setTextSize(bd.K(this.mContext, (int)paramFloat));
+    this.lzO.setText(paramString);
+    AppMethodBeat.o(285940);
   }
   
   private void d(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(202102);
+    AppMethodBeat.i(285889);
     this.mContext = paramContext;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.i.BubbleTextView);
     float f1 = paramContext.getDimension(a.i.BubbleTextView_bubbleCornerRadius, 0.0F);
     this.backgroundColor = paramContext.getColor(a.i.BubbleTextView_bubbleBackgroundColor, 0);
-    this.FEc = paramContext.getDimension(a.i.BubbleTextView_arrowWidth, 0.0F);
-    this.FEd = paramContext.getDimension(a.i.BubbleTextView_arrowHeight, 0.0F);
+    this.LzL = paramContext.getDimension(a.i.BubbleTextView_arrowWidth, 0.0F);
+    this.LzM = paramContext.getDimension(a.i.BubbleTextView_arrowHeight, 0.0F);
     int i = paramContext.getColor(a.i.BubbleTextView_bubbleTextColor, 0);
     float f2 = paramContext.getDimension(a.i.BubbleTextView_bubbleTextSize, 0.0F);
     paramAttributeSet = paramContext.getString(a.i.BubbleTextView_bubbleText);
@@ -156,10 +156,10 @@ public class BubbleView
     setCurDirection(paramContext.getInt(a.i.BubbleTextView_bubbleArrowDirection, 3));
     setRelativePosition(paramContext.getFraction(a.i.BubbleTextView_relativePosition, 1, 1, 0.3F));
     setCurThemeStyle(i);
-    this.FEe = paramContext.getDimension(a.i.BubbleTextView_contentHeight, 0.0F);
+    this.LzN = paramContext.getDimension(a.i.BubbleTextView_contentHeight, 0.0F);
     paramContext.recycle();
     a(f1, this.backgroundColor, i, f2, paramAttributeSet);
-    AppMethodBeat.o(202102);
+    AppMethodBeat.o(285889);
   }
   
   private void setCurDirection(int paramInt)
@@ -169,76 +169,76 @@ public class BubbleView
     default: 
       return;
     case 1: 
-      this.FDW = a.FEg;
+      this.LzG = a.LzP;
       return;
     case 2: 
-      this.FDW = a.FEh;
+      this.LzG = a.LzQ;
       return;
     case 3: 
-      this.FDW = a.FEi;
+      this.LzG = a.LzR;
       return;
     }
-    this.FDW = a.FEj;
+    this.LzG = a.LzS;
   }
   
   private void setRelativePosition(float paramFloat)
   {
     if (paramFloat < 0.2F)
     {
-      this.FDX = 0.2F;
+      this.LzH = 0.2F;
       return;
     }
     if (paramFloat > 0.8F)
     {
-      this.FDX = 0.8F;
+      this.LzH = 0.8F;
       return;
     }
-    this.FDX = paramFloat;
+    this.LzH = paramFloat;
   }
   
   public float getRelative()
   {
-    return this.FDX;
+    return this.LzH;
   }
   
   public void run()
   {
-    AppMethodBeat.i(202133);
-    int i = this.FDY.getWidth();
-    int j = this.FDY.getHeight();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.FDZ.getLayoutParams();
-    switch (1.FEf[this.FDW.ordinal()])
+    AppMethodBeat.i(285948);
+    int i = this.LzI.getWidth();
+    int j = this.LzI.getHeight();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.LzJ.getLayoutParams();
+    switch (1.LzO[this.LzG.ordinal()])
     {
     default: 
-      this.FEa = ((int)(j * this.FDX - this.FDZ.getHeight() / 2));
-      localLayoutParams.setMargins(0, this.FEa, 0, 0);
+      this.LzK = ((int)(j * this.LzH - this.LzJ.getHeight() / 2));
+      localLayoutParams.setMargins(0, this.LzK, 0, 0);
     }
     for (;;)
     {
-      this.FDZ.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(202133);
+      this.LzJ.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(285948);
       return;
-      this.FEa = ((int)(i * this.FDX - this.FDZ.getWidth() / 2));
-      localLayoutParams.setMargins(this.FEa, 0, 0, 0);
+      this.LzK = ((int)(i * this.LzH - this.LzJ.getWidth() / 2));
+      localLayoutParams.setMargins(this.LzK, 0, 0, 0);
     }
   }
   
   public void setCurThemeStyle(int paramInt)
   {
-    this.FEb = 3;
+    this.FfJ = 3;
   }
   
   public static enum a
   {
     static
     {
-      AppMethodBeat.i(204250);
-      FEg = new a("LEFT", 0);
-      FEh = new a("TOP", 1);
-      FEi = new a("RIGHT", 2);
-      FEj = new a("BOTTOM", 3);
-      FEk = new a[] { FEg, FEh, FEi, FEj };
-      AppMethodBeat.o(204250);
+      AppMethodBeat.i(285882);
+      LzP = new a("LEFT", 0);
+      LzQ = new a("TOP", 1);
+      LzR = new a("RIGHT", 2);
+      LzS = new a("BOTTOM", 3);
+      LzT = new a[] { LzP, LzQ, LzR, LzS };
+      AppMethodBeat.o(285882);
     }
     
     private a() {}

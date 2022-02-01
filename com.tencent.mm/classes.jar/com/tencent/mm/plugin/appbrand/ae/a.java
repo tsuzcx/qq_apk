@@ -1,86 +1,119 @@
 package com.tencent.mm.plugin.appbrand.ae;
 
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.luggage.a.e;
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.e.c;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
-import com.tencent.mm.plugin.appbrand.jsapi.video.f;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoDBFieldAnnotation;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/video/AppBrandThumbMediaPlayer;", "Lcom/tencent/mm/plugin/appbrand/video/player/thumb/ThumbMediaPlayer;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "setDataSource", "", "path", "", "referrer", "setDataSourceAsync", "onDataSourceSetListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IMediaPlayer$OnDataSourceSetListener;", "Companion", "plugin-appbrand-integration_release"})
 public final class a
-  extends com.tencent.mm.plugin.appbrand.ae.a.a.a
+  extends MAutoStorage<a>
 {
-  public static final a.a rjS;
+  public static final String[] nVW;
   
   static
   {
-    AppMethodBeat.i(282325);
-    rjS = new a.a((byte)0);
-    AppMethodBeat.o(282325);
+    AppMethodBeat.i(48359);
+    nVW = new String[] { MAutoStorage.getCreateSQLs(a.DB_INFO, "AppBrandCommonKVBinaryData") };
+    AppMethodBeat.o(48359);
   }
   
-  public a(Context paramContext)
+  public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramContext);
-    AppMethodBeat.i(282323);
-    AppMethodBeat.o(282323);
+    super(paramISQLiteDatabase, a.DB_INFO, "AppBrandCommonKVBinaryData", null);
   }
   
-  public final void a(final String paramString1, final String paramString2, final e.c paramc)
+  public final void clear(String paramString)
   {
-    AppMethodBeat.i(282322);
-    g localg = g.pzQ;
-    if (g.bWm())
+    AppMethodBeat.i(48355);
+    a locala = new a();
+    locala.field_key = paramString;
+    locala.field_value = new byte[0];
+    super.replace(locala);
+    AppMethodBeat.o(48355);
+  }
+  
+  public final byte[] get(String paramString)
+  {
+    AppMethodBeat.i(48357);
+    if (Util.isNullOrNil(paramString))
     {
-      h.ZvG.be((Runnable)new b(this, paramString1, paramString2, paramc));
-      AppMethodBeat.o(282322);
+      AppMethodBeat.o(48357);
+      return null;
+    }
+    a locala = new a();
+    locala.field_key = paramString;
+    if (super.get(locala, new String[0]))
+    {
+      paramString = locala.field_value;
+      AppMethodBeat.o(48357);
+      return paramString;
+    }
+    AppMethodBeat.o(48357);
+    return null;
+  }
+  
+  public final void n(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(48356);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(48356);
       return;
     }
-    super.a(paramString1, paramString2, paramc);
-    AppMethodBeat.o(282322);
+    a locala = new a();
+    locala.field_key = paramString;
+    locala.field_value = paramArrayOfByte;
+    super.replace(locala);
+    AppMethodBeat.o(48356);
   }
   
-  public final void ef(String paramString1, String paramString2)
+  static final class a
+    extends IAutoDBItem
   {
-    AppMethodBeat.i(282321);
-    p.k(paramString1, "path");
-    g localg = g.pzQ;
-    int i = g.a((f)e.K(f.class), Uri.parse(paramString1));
-    Log.i("MicroMsg.AppBrandThumbMediaPlayer", "setDataSource, path: " + paramString1 + ", type: " + i);
-    if (2 == i)
-    {
-      m(paramString1, paramString2, false);
-      AppMethodBeat.o(282321);
-      return;
-    }
-    super.m(paramString1, paramString2, true);
-    AppMethodBeat.o(282321);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(a parama, String paramString1, String paramString2, e.c paramc) {}
+    static final IAutoDBItem.MAutoDBInfo DB_INFO;
+    @MAutoDBFieldAnnotation(defValue="$$invalid", primaryKey=1)
+    public String field_key;
+    public byte[] field_value;
     
-    public final void run()
+    static
     {
-      AppMethodBeat.i(279340);
-      a.a(this.rjT, paramString1, paramString2, paramc);
-      AppMethodBeat.o(279340);
+      AppMethodBeat.i(48354);
+      DB_INFO = initAutoDBInfo(a.class);
+      AppMethodBeat.o(48354);
+    }
+    
+    public final void convertFrom(Cursor paramCursor)
+    {
+      AppMethodBeat.i(48352);
+      this.field_key = paramCursor.getString(0);
+      this.field_value = paramCursor.getBlob(1);
+      AppMethodBeat.o(48352);
+    }
+    
+    public final ContentValues convertTo()
+    {
+      AppMethodBeat.i(48353);
+      ContentValues localContentValues = new ContentValues(2);
+      localContentValues.put("key", this.field_key);
+      localContentValues.put("value", this.field_value);
+      AppMethodBeat.o(48353);
+      return localContentValues;
+    }
+    
+    public final IAutoDBItem.MAutoDBInfo getDBInfo()
+    {
+      return DB_INFO;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ae.a
  * JD-Core Version:    0.7.0.1
  */

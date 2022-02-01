@@ -25,10 +25,9 @@ public class SnsUnScaleTextView
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(99503);
       return i;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(99503);
     }
@@ -41,10 +40,9 @@ public class SnsUnScaleTextView
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(99502);
       return;
     }
-    catch (Throwable paramCanvas)
+    finally
     {
       AppMethodBeat.o(99502);
     }
@@ -56,10 +54,9 @@ public class SnsUnScaleTextView
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(99501);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(99501);
     }
@@ -71,10 +68,9 @@ public class SnsUnScaleTextView
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(99504);
       return bool;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(99504);
     }
@@ -83,7 +79,7 @@ public class SnsUnScaleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUnScaleTextView
  * JD-Core Version:    0.7.0.1
  */

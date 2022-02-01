@@ -1,6 +1,5 @@
 package com.tencent.rtmp.video;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +10,6 @@ import com.tencent.liteav.screencapture.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
-@TargetApi(21)
 public class TXScreenCapture$TXScreenCaptureAssistantActivity
   extends HellActivity
 {
@@ -54,10 +52,10 @@ public class TXScreenCapture$TXScreenCaptureAssistantActivity
   
   public void onDestroy()
   {
-    AppMethodBeat.i(218814);
+    AppMethodBeat.i(218479);
     super.onDestroy();
     TXCLog.i("TXScreenCaptureAssistantActivity", "onDestroy ".concat(String.valueOf(this)));
-    AppMethodBeat.o(218814);
+    AppMethodBeat.o(218479);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -68,7 +66,7 @@ public class TXScreenCapture$TXScreenCaptureAssistantActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.video.TXScreenCapture.TXScreenCaptureAssistantActivity
  * JD-Core Version:    0.7.0.1
  */

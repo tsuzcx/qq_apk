@@ -1,57 +1,76 @@
 package kotlin.l.b.a.b.m;
 
-import java.util.List;
-import kotlin.g.b.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.b.s;
 import kotlin.l.b.a.b.b.a.g;
-import kotlin.l.b.a.b.j.f.h;
-import kotlin.l.b.a.b.m.a.i;
-import kotlin.t;
 
-public abstract class n
-  extends aj
+public class n
+  extends bc
 {
-  public abstract n b(aj paramaj);
+  private final bc aiKL;
   
-  public aj i(i parami)
+  public n(bc parambc)
   {
-    p.k(parami, "kotlinTypeRefiner");
-    parami = parami.aK((ab)iIq());
-    if (parami == null) {
-      throw new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
-    }
-    return (aj)b((aj)parami);
+    AppMethodBeat.i(60638);
+    this.aiKL = parambc;
+    AppMethodBeat.o(60638);
   }
   
-  public g iDY()
+  public az G(ad paramad)
   {
-    return iIq().iDY();
+    AppMethodBeat.i(60632);
+    s.u(paramad, "key");
+    paramad = this.aiKL.G(paramad);
+    AppMethodBeat.o(60632);
+    return paramad;
   }
   
-  public final h iEC()
+  public final ad a(ad paramad, bl parambl)
   {
-    return iIq().iEC();
+    AppMethodBeat.i(60633);
+    s.u(paramad, "topLevelType");
+    s.u(parambl, "position");
+    paramad = this.aiKL.a(paramad, parambl);
+    AppMethodBeat.o(60633);
+    return paramad;
   }
   
-  protected abstract aj iIq();
-  
-  public boolean iIu()
+  public final g h(g paramg)
   {
-    return iIq().iIu();
+    AppMethodBeat.i(60637);
+    s.u(paramg, "annotations");
+    paramg = this.aiKL.h(paramg);
+    AppMethodBeat.o(60637);
+    return paramg;
   }
   
-  public final List<av> iOR()
+  public final boolean isEmpty()
   {
-    return iIq().iOR();
+    AppMethodBeat.i(60634);
+    boolean bool = this.aiKL.isEmpty();
+    AppMethodBeat.o(60634);
+    return bool;
   }
   
-  public final at iOU()
+  public final boolean kAD()
   {
-    return iIq().iOU();
+    AppMethodBeat.i(60635);
+    boolean bool = this.aiKL.kAD();
+    AppMethodBeat.o(60635);
+    return bool;
+  }
+  
+  public boolean kzo()
+  {
+    AppMethodBeat.i(60636);
+    boolean bool = this.aiKL.kzo();
+    AppMethodBeat.o(60636);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.m.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,64 @@
 package com.tencent.mm.view.recyclerview;
 
-import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.LinkedList;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxRVListener;", "", "onScrollStatsChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "data", "Lcom/tencent/mm/view/recyclerview/WxRVData;", "Companion", "libmmui_release"})
-public abstract interface m
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/recyclerview/WxRVData;", "", "state", "", "(I)V", "acrossDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getAcrossDataList", "()Ljava/util/LinkedList;", "setAcrossDataList", "(Ljava/util/LinkedList;)V", "diffInvisibleDataList", "getDiffInvisibleDataList", "setDiffInvisibleDataList", "diffVisibleDataList", "getDiffVisibleDataList", "setDiffVisibleDataList", "firstExposeList", "getFirstExposeList", "setFirstExposeList", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getState", "visibleDataList", "getVisibleDataList", "setVisibleDataList", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class m
 {
-  public static final a YSQ = a.YSS;
+  public int AOr;
+  public int AOt;
+  public LinkedList<n> agOB;
+  public LinkedList<n> agOC;
+  LinkedList<n> agOD;
+  public LinkedList<n> agOE;
+  public LinkedList<n> agOF;
+  public final int state;
+  public int vIj;
+  public int vIk;
   
-  public abstract void a(RecyclerView paramRecyclerView, k paramk);
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxRVListener$Companion;", "", "()V", "DataHandleThreadName", "", "getDataHandleThreadName", "()Ljava/lang/String;", "SCROLL_DRAGGING", "", "SCROLL_STATE_ATTACHED", "SCROLL_STATE_DATA_CHANGE", "SCROLL_STATE_DRAGGING", "SCROLL_STATE_FIRST_TERM_CHANGE", "SCROLL_STATE_IDLE", "SCROLL_STATE_ON_FOCUS_VIEW", "SCROLL_STATE_ON_RESUME", "SCROLL_STATE_SETTLING", "libmmui_release"})
-  public static final class a
+  public m(int paramInt)
   {
-    private static final String YSR = "WxDataRecyclerView.DataHandle";
-    
-    static
+    AppMethodBeat.i(234905);
+    this.state = paramInt;
+    this.vIj = -1;
+    this.vIk = -1;
+    this.AOr = -1;
+    this.AOt = -1;
+    this.agOB = new LinkedList();
+    this.agOC = new LinkedList();
+    this.agOD = new LinkedList();
+    this.agOE = new LinkedList();
+    this.agOF = new LinkedList();
+    AppMethodBeat.o(234905);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      AppMethodBeat.i(203478);
-      YSS = new a();
-      YSR = "WxDataRecyclerView.DataHandle";
-      AppMethodBeat.o(203478);
-    }
-    
-    public static String ihY()
-    {
-      return YSR;
-    }
+      return true;
+      if (!(paramObject instanceof m)) {
+        return false;
+      }
+      paramObject = (m)paramObject;
+    } while (this.state == paramObject.state);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    return this.state;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(234907);
+    String str = "WxRVData(state=" + this.state + ')';
+    AppMethodBeat.o(234907);
+    return str;
   }
 }
 

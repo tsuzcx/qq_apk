@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/cdf" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/pv" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/p5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/v9" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <ImageView android:id="@id/cd5" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" android:src="@raw/fav_list_error" />
-        <TextView android:textSize="@dimen/ka" android:textColor="@color/p1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/cco" android:layout_weight="1.0" />
-        <TextView android:textColor="@color/p1" android:id="@id/cde" android:background="@null" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ccp" />
-    </LinearLayout>
+    <RelativeLayout android:id="@id/l88" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/ehq" android:background="@color/g_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.fav.ui.widget.FavVideoView android:id="@id/l89" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <include layout="@layout/a6g" />
+    </RelativeLayout>
 </LinearLayout>

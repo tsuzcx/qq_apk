@@ -1,93 +1,113 @@
 package com.tencent.mm.plugin.story.h;
 
-import android.text.TextUtils;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.lx;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.plugin.story.f.j;
-import com.tencent.mm.plugin.story.f.j.b;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.autogen.b.ff;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil;", "", "()V", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
+  extends MAutoStorage<h>
+  implements MStorage.IOnStorageChange
 {
-  public static final a LOK;
+  private static final String[] SQL_CREATE;
+  private static final String Stb;
+  public static final i.a Std;
+  private static final String TAG;
+  public static final String ptT;
+  public final ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(119467);
-    LOK = new a((byte)0);
-    AppMethodBeat.o(119467);
+    AppMethodBeat.i(119529);
+    Std = new i.a((byte)0);
+    TAG = "MicroMsg.StoryHistoryInfoStorage";
+    ptT = "MMStoryHistoryItem";
+    h.a locala = h.Stc;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.access$getInfo$cp(), ptT) };
+    Stb = "select * from " + ptT + ' ';
+    AppMethodBeat.o(119529);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil$Companion;", "", "()V", "getContactType", "", "userName", "", "getEnterScene", "", "pageType", "plugin-story_release"})
-  public static final class a
+  public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    public static long ais(int paramInt)
-    {
-      AppMethodBeat.i(119466);
-      switch (paramInt)
-      {
-      case 1: 
-      case 2: 
-      case 3: 
-      default: 
-        AppMethodBeat.o(119466);
-        return 0L;
-      case 0: 
-        AppMethodBeat.o(119466);
-        return 7L;
-      case 4: 
-        AppMethodBeat.o(119466);
-        return 8L;
-      case 6: 
-        AppMethodBeat.o(119466);
-        return 9L;
-      }
-      h localh = h.LOJ;
-      long l = h.geE().amS();
-      AppMethodBeat.o(119466);
-      return l;
-    }
-    
-    public static int bdu(String paramString)
-    {
-      AppMethodBeat.i(119465);
-      p.k(paramString, "userName");
-      if (TextUtils.isEmpty((CharSequence)paramString))
-      {
-        AppMethodBeat.o(119465);
-        return 0;
-      }
-      j.b localb = j.LGA;
-      if (p.h(j.b.fOo(), paramString))
-      {
-        AppMethodBeat.o(119465);
-        return 1;
-      }
-      paramString = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramString);
-      p.j(paramString, "ct");
-      if (paramString.ayh())
-      {
-        AppMethodBeat.o(119465);
-        return 3;
-      }
-      if (paramString.axZ())
-      {
-        AppMethodBeat.o(119465);
-        return 4;
-      }
-      AppMethodBeat.o(119465);
-      return 5;
-    }
+    super(paramISQLiteDatabase, h.access$getInfo$cp(), ptT, ff.INDEX_CREATE);
+    AppMethodBeat.i(119528);
+    this.db = paramISQLiteDatabase;
+    AppMethodBeat.o(119528);
   }
+  
+  private boolean b(h paramh)
+  {
+    AppMethodBeat.i(119527);
+    s.u(paramh, "info");
+    boolean bool = super.replace((IAutoDBItem)paramh);
+    AppMethodBeat.o(119527);
+    return bool;
+  }
+  
+  private boolean bcn(String paramString)
+  {
+    AppMethodBeat.i(119525);
+    s.u(paramString, "date");
+    paramString = Stb + " WHERE " + ptT + ".date = '" + paramString + '\'';
+    paramString = this.db.rawQuery(paramString, null);
+    int i = paramString.getCount();
+    paramString.close();
+    if (i > 0)
+    {
+      AppMethodBeat.o(119525);
+      return true;
+    }
+    AppMethodBeat.o(119525);
+    return false;
+  }
+  
+  public final boolean a(h paramh)
+  {
+    AppMethodBeat.i(119524);
+    s.u(paramh, "storyHistoryInfo");
+    if (bcn(paramh.hzq()))
+    {
+      bool = update((IAutoDBItem)paramh, new String[] { "date" });
+      AppMethodBeat.o(119524);
+      return bool;
+    }
+    boolean bool = b(paramh);
+    AppMethodBeat.o(119524);
+    return bool;
+  }
+  
+  public final h bco(String paramString)
+  {
+    AppMethodBeat.i(119526);
+    s.u(paramString, "date");
+    paramString = Stb + " WHERE " + ptT + ".date = '" + paramString + '\'';
+    paramString = this.db.rawQuery(paramString, null);
+    if (paramString.moveToFirst())
+    {
+      h localh = new h();
+      localh.convertFrom(paramString);
+      paramString.close();
+      AppMethodBeat.o(119526);
+      return localh;
+    }
+    paramString.close();
+    AppMethodBeat.o(119526);
+    return null;
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.i
  * JD-Core Version:    0.7.0.1
  */

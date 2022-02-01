@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.pin.PinnedHeaderRecyclerView android:gravity="center" android:id="@id/gqd" android:paddingTop="@dimen/j9" android:paddingBottom="@dimen/j9" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+    <ListView android:id="@id/d0m" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ahb" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <View android:id="@id/j6m" android:background="@color/UN_BW_0_Alpha_0_3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/xo" android:layout_gravity="center_horizontal" android:id="@id/d0g" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/cup" />
+    <com.tencent.mm.pluginsdk.ui.tools.DropdownListView android:id="@id/ca6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/d0v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a74" />
+</FrameLayout>

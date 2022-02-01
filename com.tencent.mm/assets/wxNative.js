@@ -62,6 +62,14 @@ if (typeof wx !== 'undefined') {
         _invokeMethod("jumpRedPacketEnvelopePreview", args);
       };
 
+      var _phoneBindCardEntry = function (args) {
+          _invokeMethod("phoneBindCardEntry", args);
+      };
+
+      var _requestSnsPayment = function (args) {
+          _invokeMethod("requestSnsPayment", args);
+      };
+
       function transWxmlToHtml(url) {
         if (typeof url !== 'string') {
           return url;
@@ -124,6 +132,10 @@ if (typeof wx !== 'undefined') {
           _invokeMethod("checkStrangerContactListIsFriend", args)
       }
 
+      var _openTextStateMessage = function(args) {
+          _invokeMethod("openTextStateMessage", args)
+      }
+
       var _openChannelsPostPage = function(args) {
           _invokeMethod("openChannelsPostPage", args)
       }
@@ -131,6 +143,11 @@ if (typeof wx !== 'undefined') {
       var _openChannelsCreateContact = function(args) {
           _invokeMethod("openChannelsCreateContact", args)
       }
+
+      var _recordOperateUserDataInWa = function(args) {
+          _invokeMethod("recordOperateUserDataInWa", args)
+      }
+
 
       /**** Add JsApi Here ****/
 
@@ -159,7 +176,11 @@ if (typeof wx !== 'undefined') {
         sendRedCoverAppMsg: _sendRedCoverAppMsg,
         jumpRedPacketEnvelopeList: _jumpRedPacketEnvelopeList,
         jumpRedPacketEnvelopePreview: _jumpRedPacketEnvelopePreview,
-        checkStrangerContactListIsFriend: _checkStrangerContactListIsFriend
+        openTextStateMessage: _openTextStateMessage,
+        checkStrangerContactListIsFriend: _checkStrangerContactListIsFriend,
+        phoneBindCardEntry: _phoneBindCardEntry,
+        requestSnsPayment: _requestSnsPayment,
+        recordOperateUserDataInWa : _recordOperateUserDataInWa,
       };
       /**** Add JsApiEvent Here ****/
 

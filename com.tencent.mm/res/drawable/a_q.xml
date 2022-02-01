@@ -1,42 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="61" android:drawable="@drawable/aat" />
-    <item android:duration="62" android:drawable="@drawable/aau" />
-    <item android:duration="61" android:drawable="@drawable/aav" />
-    <item android:duration="62" android:drawable="@drawable/aaw" />
-    <item android:duration="61" android:drawable="@drawable/aax" />
-    <item android:duration="62" android:drawable="@drawable/aay" />
-    <item android:duration="61" android:drawable="@drawable/aaz" />
-    <item android:duration="62" android:drawable="@drawable/ab0" />
-    <item android:duration="61" android:drawable="@drawable/ab1" />
-    <item android:duration="62" android:drawable="@drawable/ab2" />
-    <item android:duration="61" android:drawable="@drawable/ab3" />
-    <item android:duration="62" android:drawable="@drawable/ab4" />
-    <item android:duration="61" android:drawable="@drawable/ab5" />
-    <item android:duration="62" android:drawable="@drawable/ab6" />
-    <item android:duration="61" android:drawable="@drawable/ab7" />
-    <item android:duration="62" android:drawable="@drawable/ab8" />
-    <item android:duration="61" android:drawable="@drawable/ab9" />
-    <item android:duration="62" android:drawable="@drawable/ab_" />
-    <item android:duration="61" android:drawable="@drawable/aba" />
-    <item android:duration="62" android:drawable="@drawable/abb" />
-    <item android:duration="61" android:drawable="@drawable/abc" />
-    <item android:duration="62" android:drawable="@drawable/abd" />
-    <item android:duration="61" android:drawable="@drawable/abe" />
-    <item android:duration="62" android:drawable="@drawable/abf" />
-    <item android:duration="61" android:drawable="@drawable/abg" />
-    <item android:duration="62" android:drawable="@drawable/abh" />
-    <item android:duration="61" android:drawable="@drawable/abi" />
-    <item android:duration="62" android:drawable="@drawable/abj" />
-    <item android:duration="61" android:drawable="@drawable/abk" />
-    <item android:duration="62" android:drawable="@drawable/abl" />
-    <item android:duration="61" android:drawable="@drawable/abm" />
-    <item android:duration="62" android:drawable="@drawable/abn" />
-    <item android:duration="61" android:drawable="@drawable/abo" />
-    <item android:duration="62" android:drawable="@drawable/abp" />
-    <item android:duration="61" android:drawable="@drawable/abq" />
-    <item android:duration="62" android:drawable="@drawable/abr" />
-    <item android:duration="61" android:drawable="@drawable/abs" />
-    <item android:duration="62" android:drawable="@drawable/abt" />
-</animation-list>
+    <item android:state_pressed="true" android:drawable="@drawable/a_s" />
+    <item android:state_selected="true" android:drawable="@drawable/a_s" />
+    <item android:drawable="@drawable/a_r" />
+</selector>

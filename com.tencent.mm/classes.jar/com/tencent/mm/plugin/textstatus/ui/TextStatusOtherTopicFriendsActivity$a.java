@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.textstatus.ui;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusOtherTopicFriendsActivity$Companion;", "", "()V", "KEY_EXCLUDE_TOPIC_ID", "", "KEY_SOURCE", "SOURCE_ME", "", "SOURCE_SAME_RECOMMEND", "SOURCE_UNKNOWN", "TAG", "start", "", "context", "Landroid/content/Context;", "excludeTopicId", "source", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/TextStatusOtherTopicFriendsActivity$Companion;", "", "()V", "KEY_EXCLUDE_TOPIC_ID", "", "KEY_SOURCE", "REQUEST_CODE_GO_CARD_FEEDS", "", "REQUEST_CODE_SET_TEXT_STATUS", "SOURCE_ICON_ME", "SOURCE_ICON_OTHERS", "SOURCE_ME_NO_STATUS", "SOURCE_SAME_RECOMMEND", "SOURCE_UNKNOWN", "TAG", "start", "", "context", "Landroid/content/Context;", "excludeTopicId", "source", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusOtherTopicFriendsActivity$a
 {
-  public static void p(Context paramContext, String paramString, int paramInt)
+  private static void r(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(233882);
-    p.k(paramContext, "context");
+    AppMethodBeat.i(291708);
+    s.u(paramContext, "context");
     Intent localIntent = new Intent(paramContext, TextStatusOtherTopicFriendsActivity.class);
     localIntent.putExtra("exclude_topic_id", paramString);
     localIntent.putExtra("key_source", paramInt);
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aFh(), "com/tencent/mm/plugin/textstatus/ui/TextStatusOtherTopicFriendsActivity$Companion", "start", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.sf(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString.aYi(), "com/tencent/mm/plugin/textstatus/ui/TextStatusOtherTopicFriendsActivity$Companion", "start", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/textstatus/ui/TextStatusOtherTopicFriendsActivity$Companion", "start", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(233882);
+    AppMethodBeat.o(291708);
   }
 }
 

@@ -11,7 +11,7 @@ import java.util.Map;
 final class c
   extends d
 {
-  long aNk = -9223372036854775807L;
+  long cHg = -9223372036854775807L;
   
   public c()
   {
@@ -87,7 +87,7 @@ final class c
     AppMethodBeat.i(91987);
     int i = paramm.readUnsignedShort();
     int j = paramm.position;
-    paramm.fu(i);
+    paramm.iH(i);
     paramm = new String(paramm.data, j, i);
     AppMethodBeat.o(91987);
     return paramm;
@@ -96,7 +96,7 @@ final class c
   private static ArrayList<Object> e(m paramm)
   {
     AppMethodBeat.i(91988);
-    int j = paramm.vo();
+    int j = paramm.UN();
     ArrayList localArrayList = new ArrayList(j);
     int i = 0;
     while (i < j)
@@ -128,7 +128,7 @@ final class c
   private static HashMap<String, Object> g(m paramm)
   {
     AppMethodBeat.i(91990);
-    int j = paramm.vo();
+    int j = paramm.UN();
     HashMap localHashMap = new HashMap(j);
     int i = 0;
     while (i < j)
@@ -144,7 +144,7 @@ final class c
   {
     AppMethodBeat.i(91991);
     Date localDate = new Date(c(paramm).doubleValue());
-    paramm.fu(2);
+    paramm.iH(2);
     AppMethodBeat.o(91991);
     return localDate;
   }
@@ -173,7 +173,7 @@ final class c
     {
       double d = ((Double)paramm.get("duration")).doubleValue();
       if (d > 0.0D) {
-        this.aNk = ((d * 1000000.0D));
+        this.cHg = ((d * 1000000.0D));
       }
     }
     AppMethodBeat.o(91984);
@@ -186,7 +186,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.statusbar;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,7 +11,7 @@ import com.tencent.mm.ui.widget.SwipeBackLayout;
 public class DrawStatusBarPreference
   extends MMPreference
 {
-  private b XMm = null;
+  private b afCA = null;
   
   public int getResourceId()
   {
@@ -27,10 +26,10 @@ public class DrawStatusBarPreference
     {
       View localView = getSwipeBackLayout().getChildAt(0);
       getSwipeBackLayout().removeView(localView);
-      this.XMm = new b(this);
-      this.XMm.addView(localView, new FrameLayout.LayoutParams(-1, -1));
-      getSwipeBackLayout().addView(this.XMm);
-      getSwipeBackLayout().setContentView(this.XMm);
+      this.afCA = new b(this);
+      this.afCA.addView(localView, new FrameLayout.LayoutParams(-1, -1));
+      getSwipeBackLayout().addView(this.afCA);
+      getSwipeBackLayout().setContentView(this.afCA);
     }
     AppMethodBeat.o(142985);
   }
@@ -48,7 +47,7 @@ public class DrawStatusBarPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.statusbar.DrawStatusBarPreference
  * JD-Core Version:    0.7.0.1
  */

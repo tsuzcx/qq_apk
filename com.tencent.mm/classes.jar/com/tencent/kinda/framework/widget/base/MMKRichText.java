@@ -20,16 +20,17 @@ import com.tencent.kinda.gen.KText;
 import com.tencent.kinda.gen.LinkStyle;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.appbrand.widget.i.c;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.appbrand.widget.j.c;
 import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.pluginsdk.ui.span.t;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class MMKRichText
   implements KText
 {
   public boolean hasLinkAndCanCallback;
+  public VoidCallback linkCallback;
   private SpannableStringBuilder spanText;
   
   public MMKRichText()
@@ -48,6 +49,7 @@ public class MMKRichText
       paramKLink = (MMKLink)paramKLink;
       this.spanText.append(paramKLink.get());
       this.hasLinkAndCanCallback = paramKLink.hasCallBack;
+      this.linkCallback = paramKLink.clickCallback;
     }
     AppMethodBeat.o(19111);
   }
@@ -56,7 +58,7 @@ public class MMKRichText
   {
     AppMethodBeat.i(19110);
     if (paramString != null) {
-      this.spanText.append(l.c(MMApplicationContext.getContext(), paramString));
+      this.spanText.append(p.b(MMApplicationContext.getContext(), paramString));
     }
     AppMethodBeat.o(19110);
   }
@@ -106,7 +108,7 @@ public class MMKRichText
         if (this.bgColor != null)
         {
           long l = ColorUtil.getColorByMode(this.bgColor);
-          int i = a.fromDPToPix(MMApplicationContext.getContext(), 4);
+          int i = a.fromDPToPix(MMApplicationContext.getContext(), 8);
           localSpannableString.setSpan(new c(this.text, i, i, (int)this.textSize, this.linkColor, (int)l, this.bgRadius), 0, localSpannableString.length(), 33);
         }
         if ((!TextUtils.isEmpty(this.textFontName)) || (this.fontStyle != FontStyle.REGULAR)) {
@@ -119,10 +121,10 @@ public class MMKRichText
     
     public void setBackground(DynamicColor paramDynamicColor, int paramInt)
     {
-      AppMethodBeat.i(264924);
+      AppMethodBeat.i(226571);
       this.bgColor = paramDynamicColor;
       this.bgRadius = a.fromDPToPix(MMApplicationContext.getContext(), paramInt);
-      AppMethodBeat.o(264924);
+      AppMethodBeat.o(226571);
     }
     
     public void setFontStyle(FontStyle paramFontStyle)
@@ -164,13 +166,13 @@ public class MMKRichText
     
     public void setTextSize(float paramFloat)
     {
-      AppMethodBeat.i(264925);
+      AppMethodBeat.i(226572);
       this.textSize = a.fromDPToPix(MMApplicationContext.getContext(), paramFloat);
-      AppMethodBeat.o(264925);
+      AppMethodBeat.o(226572);
     }
     
     static class LinkClickableSpan
-      extends p
+      extends t
     {
       private VoidCallback clickCallback;
       private int linkColor;
@@ -199,7 +201,7 @@ public class MMKRichText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKRichText
  * JD-Core Version:    0.7.0.1
  */

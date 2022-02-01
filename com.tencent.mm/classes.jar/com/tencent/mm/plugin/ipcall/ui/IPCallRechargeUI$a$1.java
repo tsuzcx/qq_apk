@@ -10,8 +10,8 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.ipcall.a.c.1;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.a;
 
 final class IPCallRechargeUI$a$1
   implements View.OnClickListener
@@ -22,15 +22,15 @@ final class IPCallRechargeUI$a$1
   {
     AppMethodBeat.i(25883);
     Object localObject = new b();
-    ((b)localObject).bn(paramView);
-    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallRechargeUI$RechargeAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-    localObject = IPCallRechargeUI.a.a(this.DXD);
+    ((b)localObject).cH(paramView);
+    a.c("com/tencent/mm/plugin/ipcall/ui/IPCallRechargeUI$RechargeAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
+    localObject = IPCallRechargeUI.a.a(this.JOM);
     if (!ChannelUtil.isGPVersion())
     {
-      localObject = new d.a((Context)localObject);
-      ((d.a)localObject).ayg(R.l.eJX);
-      ((d.a)localObject).ayj(R.l.app_i_known).c(new c.1());
-      ((d.a)localObject).icu().show();
+      localObject = new e.a((Context)localObject);
+      ((e.a)localObject).aEO(R.l.gLE);
+      ((e.a)localObject).aER(R.l.app_i_known).c(new c.1());
+      ((e.a)localObject).jHH().show();
     }
     for (int i = 1; i != 0; i = 0)
     {
@@ -39,7 +39,7 @@ final class IPCallRechargeUI$a$1
       AppMethodBeat.o(25883);
       return;
     }
-    IPCallRechargeUI.b(IPCallRechargeUI.a.a(this.DXD), ((Integer)paramView.getTag()).intValue());
+    IPCallRechargeUI.b(IPCallRechargeUI.a.a(this.JOM), ((Integer)paramView.getTag()).intValue());
     a.a(this, "com/tencent/mm/plugin/ipcall/ui/IPCallRechargeUI$RechargeAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25883);
   }

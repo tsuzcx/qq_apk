@@ -12,7 +12,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.i;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.webview.c.d;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.g;
@@ -24,23 +24,23 @@ public class WebViewSmileyPanel
   extends LinearLayout
   implements ViewPager.OnPageChangeListener, WebViewSmileyViewPager.a
 {
-  private c Qzm;
-  private a Qzv;
-  private WebViewSmileyViewPager Qzw;
-  private boolean Qzx;
+  private c Xsf;
+  private a Xsp;
+  private WebViewSmileyViewPager Xsq;
+  private boolean Xsr;
   private View mContentView;
-  public boolean rwW;
-  private MMActivity tmY;
-  private MMDotView uLP;
+  public boolean uIa;
+  private MMActivity wry;
+  private MMDotView xUq;
   
   public WebViewSmileyPanel(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(82349);
-    this.rwW = false;
+    this.uIa = false;
     this.mContentView = null;
-    this.Qzw = null;
-    this.Qzx = true;
+    this.Xsq = null;
+    this.Xsr = true;
     init();
     AppMethodBeat.o(82349);
   }
@@ -49,90 +49,90 @@ public class WebViewSmileyPanel
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(82350);
-    this.rwW = false;
+    this.uIa = false;
     this.mContentView = null;
-    this.Qzw = null;
-    this.Qzx = true;
+    this.Xsq = null;
+    this.Xsr = true;
     init();
     AppMethodBeat.o(82350);
   }
   
-  private void hcn()
+  private void iCO()
   {
     AppMethodBeat.i(82353);
-    if (this.uLP == null)
+    if (this.xUq == null)
     {
       AppMethodBeat.o(82353);
       return;
     }
-    boolean bool = i.isPortOrientation(getContext());
+    boolean bool = j.isPortOrientation(getContext());
     RelativeLayout.LayoutParams localLayoutParams;
-    if (bool != this.Qzx)
+    if (bool != this.Xsr)
     {
       if (!bool) {
         break label108;
       }
-      this.uLP.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(c.d.MiddlePadding));
-      localLayoutParams = (RelativeLayout.LayoutParams)this.uLP.getLayoutParams();
+      this.xUq.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(c.d.MiddlePadding));
+      localLayoutParams = (RelativeLayout.LayoutParams)this.xUq.getLayoutParams();
       localLayoutParams.bottomMargin = getContext().getResources().getDimensionPixelSize(c.d.emoji_panel_tab_height);
-      this.uLP.setLayoutParams(localLayoutParams);
+      this.xUq.setLayoutParams(localLayoutParams);
     }
     for (;;)
     {
-      this.Qzx = bool;
+      this.Xsr = bool;
       AppMethodBeat.o(82353);
       return;
       label108:
-      this.uLP.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(c.d.LittlePadding));
-      localLayoutParams = (RelativeLayout.LayoutParams)this.uLP.getLayoutParams();
+      this.xUq.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(c.d.LittlePadding));
+      localLayoutParams = (RelativeLayout.LayoutParams)this.xUq.getLayoutParams();
       localLayoutParams.bottomMargin = 0;
-      this.uLP.setLayoutParams(localLayoutParams);
+      this.xUq.setLayoutParams(localLayoutParams);
     }
   }
   
   private void init()
   {
     AppMethodBeat.i(82351);
-    this.tmY = ((MMActivity)getContext());
-    this.Qzm = new c();
-    this.Qzm.uEJ = getContext();
-    this.Qzm.QzA = this.Qzv;
+    this.wry = ((MMActivity)getContext());
+    this.Xsf = new c();
+    this.Xsf.xNl = getContext();
+    this.Xsf.Xsu = this.Xsp;
     AppMethodBeat.o(82351);
   }
   
-  public final void cpz()
+  public final void cSc()
   {
-    AppMethodBeat.i(233011);
+    AppMethodBeat.i(298104);
     if (this.mContentView != null) {
       this.mContentView.setVisibility(0);
     }
-    AppMethodBeat.o(233011);
+    AppMethodBeat.o(298104);
   }
   
   protected final c getManager()
   {
-    return this.Qzm;
+    return this.Xsf;
   }
   
-  public final void hcm()
+  public final void iCN()
   {
     AppMethodBeat.i(82346);
-    if (this.Qzw == null)
+    if (this.Xsq == null)
     {
       AppMethodBeat.o(82346);
       return;
     }
-    this.Qzm.Qzx = i.isPortOrientation(getContext());
-    WebViewSmileyViewPager.b localb = (WebViewSmileyViewPager.b)this.Qzw.getAdapter();
+    this.Xsf.Xsr = j.isPortOrientation(getContext());
+    WebViewSmileyViewPager.b localb = (WebViewSmileyViewPager.b)this.Xsq.getAdapter();
     if (localb != null)
     {
-      localb.QzH.clear();
-      localb.Qzm = this.Qzm;
+      localb.XsB.clear();
+      localb.Xsf = this.Xsf;
       localb.notifyDataSetChanged();
     }
     for (;;)
     {
-      this.Qzw.post(new Runnable()
+      this.Xsq.post(new Runnable()
       {
         public final void run()
         {
@@ -144,35 +144,35 @@ public class WebViewSmileyPanel
       AppMethodBeat.o(82346);
       return;
       localb = new WebViewSmileyViewPager.b();
-      localb.Qzm = this.Qzm;
-      this.Qzw.setAdapter(localb);
+      localb.Xsf = this.Xsf;
+      this.Xsq.setAdapter(localb);
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(233009);
-    this.Qzm.onDestroy();
+    AppMethodBeat.i(298101);
+    this.Xsf.onDestroy();
     if (this.mContentView != null)
     {
       ((ViewGroup)this.mContentView.getParent()).removeView(this.mContentView);
       ((ViewGroup)this.mContentView).removeAllViews();
       this.mContentView = null;
     }
-    this.tmY = null;
-    AppMethodBeat.o(233009);
+    this.wry = null;
+    AppMethodBeat.o(298101);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(82348);
-    if (this.rwW)
+    if (this.uIa)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, -2147483648));
       AppMethodBeat.o(82348);
       return;
     }
-    i.isPortOrientation(getContext());
+    j.isPortOrientation(getContext());
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(82348);
   }
@@ -184,18 +184,18 @@ public class WebViewSmileyPanel
   public void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(82345);
-    a locala = this.Qzm.hco();
+    a locala = this.Xsf.iCP();
     int i = locala.getPageCount();
-    int j = locala.rFF;
+    int j = locala.uQR;
     if (i <= 1)
     {
-      this.uLP.setVisibility(4);
+      this.xUq.setVisibility(4);
       AppMethodBeat.o(82345);
       return;
     }
-    this.uLP.setVisibility(0);
-    this.uLP.setDotCount(i);
-    this.uLP.setSelectedDot(paramInt - j);
+    this.xUq.setVisibility(0);
+    this.xUq.setDotCount(i);
+    this.xUq.setSelectedDot(paramInt - j);
     AppMethodBeat.o(82345);
   }
   
@@ -203,27 +203,27 @@ public class WebViewSmileyPanel
   {
     AppMethodBeat.i(82347);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    hcn();
+    iCO();
     AppMethodBeat.o(82347);
   }
   
   public void setOnTextOperationListener(a parama)
   {
-    this.Qzv = parama;
-    this.Qzm.QzA = this.Qzv;
+    this.Xsp = parama;
+    this.Xsf.Xsu = this.Xsp;
   }
   
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(82352);
     if (paramInt == 0) {}
-    for (this.rwW = false;; this.rwW = true)
+    for (this.uIa = false;; this.uIa = true)
     {
       super.setVisibility(paramInt);
-      if (this.rwW) {
+      if (this.uIa) {
         break label180;
       }
-      this.tmY.hideVKB();
+      this.wry.hideVKB();
       if ((this.mContentView == null) || (getChildCount() <= 0)) {
         break;
       }
@@ -236,13 +236,13 @@ public class WebViewSmileyPanel
     }
     for (;;)
     {
-      this.Qzw = ((WebViewSmileyViewPager)this.mContentView.findViewById(c.f.smiley_panel_view_pager));
-      this.Qzw.setOnPageChangeListener(this);
-      this.Qzw.setPanelManager(this.Qzm);
-      this.Qzw.setOnSizeChangedListener(this);
-      this.uLP = ((MMDotView)this.mContentView.findViewById(c.f.smiley_panel_dot));
-      this.uLP.setDotCount(1);
-      hcn();
+      this.Xsq = ((WebViewSmileyViewPager)this.mContentView.findViewById(c.f.smiley_panel_view_pager));
+      this.Xsq.setOnPageChangeListener(this);
+      this.Xsq.setPanelManager(this.Xsf);
+      this.Xsq.setOnSizeChangedListener(this);
+      this.xUq = ((MMDotView)this.mContentView.findViewById(c.f.smiley_panel_dot));
+      this.xUq.setDotCount(1);
+      iCO();
       addView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
       label180:
       AppMethodBeat.o(82352);
@@ -255,14 +255,14 @@ public class WebViewSmileyPanel
   
   public static abstract interface a
   {
-    public abstract void aDO();
+    public abstract void aWM();
     
     public abstract void append(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyPanel
  * JD-Core Version:    0.7.0.1
  */

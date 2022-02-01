@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
-import com.tencent.mm.plugin.finder.model.s;
+import com.tencent.mm.plugin.finder.model.t;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "", "onClose", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "", "onClose", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface CommentDrawerContract$CloseDrawerCallback
 {
-  public abstract void i(int paramInt, List<? extends s> paramList);
+  public abstract void z(int paramInt, List<? extends t> paramList);
 }
 
 

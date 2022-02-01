@@ -8,9 +8,9 @@ public class TPP2PProxyFactory
 {
   public static ITPPreloadProxy createPreloadManager(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(220021);
+    AppMethodBeat.i(228434);
     paramContext = new e(paramContext, paramInt);
-    AppMethodBeat.o(220021);
+    AppMethodBeat.o(228434);
     return paramContext;
   }
 }

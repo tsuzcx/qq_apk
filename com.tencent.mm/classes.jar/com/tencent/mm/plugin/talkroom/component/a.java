@@ -17,11 +17,11 @@ public abstract interface a
   
   public abstract d a(b paramb);
   
-  public abstract byte[] e(int[] paramArrayOfInt, String paramString);
+  public abstract byte[] f(int[] paramArrayOfInt, String paramString);
   
-  public abstract int gid();
+  public abstract int hCe();
   
-  public abstract c gie();
+  public abstract c hCf();
   
   public abstract int uninitLive();
   
@@ -34,7 +34,7 @@ public abstract interface a
       attachInterface(this, "com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
     }
     
-    public static a G(IBinder paramIBinder)
+    public static a L(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -46,9 +46,9 @@ public abstract interface a
       return new a(paramIBinder);
     }
     
-    public static a gif()
+    public static a hCg()
     {
-      return a.MiU;
+      return a.SMq;
     }
     
     public IBinder asBinder()
@@ -68,7 +68,7 @@ public abstract interface a
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-        paramInt1 = gid();
+        paramInt1 = hCe();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -80,7 +80,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-        paramInt1 = a(ILiveConEngineCallback_AIDL.a.H(paramParcel1.readStrongBinder()), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.createIntArray(), paramParcel1.createIntArray(), paramParcel1.readInt(), paramParcel1.createStringArray());
+        paramInt1 = a(ILiveConEngineCallback_AIDL.a.M(paramParcel1.readStrongBinder()), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong(), paramParcel1.createIntArray(), paramParcel1.createIntArray(), paramParcel1.readInt(), paramParcel1.createStringArray());
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -102,7 +102,7 @@ public abstract interface a
         if (paramInt1 < 0) {}
         for (localObject = null;; localObject = new int[paramInt1])
         {
-          paramParcel1 = e((int[])localObject, paramParcel1.readString());
+          paramParcel1 = f((int[])localObject, paramParcel1.readString());
           paramParcel2.writeNoException();
           paramParcel2.writeByteArray(paramParcel1);
           paramParcel2.writeIntArray((int[])localObject);
@@ -136,7 +136,7 @@ public abstract interface a
         }
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-      paramParcel1 = gie();
+      paramParcel1 = hCf();
       paramParcel2.writeNoException();
       if (paramParcel1 != null) {}
       for (paramParcel1 = paramParcel1.asBinder();; paramParcel1 = null)
@@ -149,7 +149,7 @@ public abstract interface a
     static final class a
       implements a
     {
-      public static a MiU;
+      public static a SMq;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -165,9 +165,9 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (a.a.gif() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (a.a.hCg() != null))
           {
-            i = a.a.gif().Close();
+            i = a.a.hCg().Close();
             return i;
           }
           localParcel2.readException();
@@ -191,9 +191,9 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
           localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.gif() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.hCg() != null))
           {
-            paramInt = a.a.gif().SetCurrentMicId(paramInt);
+            paramInt = a.a.hCg().SetCurrentMicId(paramInt);
             return paramInt;
           }
           localParcel2.readException();
@@ -228,10 +228,10 @@ public abstract interface a
             localParcel1.writeIntArray(paramArrayOfInt2);
             localParcel1.writeInt(paramInt4);
             localParcel1.writeStringArray(paramArrayOfString);
-            if ((this.mRemote.transact(3, localParcel1, localParcel2, 0)) || (a.a.gif() == null)) {
+            if ((this.mRemote.transact(3, localParcel1, localParcel2, 0)) || (a.a.hCg() == null)) {
               break;
             }
-            paramInt1 = a.a.gif().a(paramILiveConEngineCallback_AIDL, paramInt1, paramInt2, paramInt3, paramLong, paramArrayOfInt1, paramArrayOfInt2, paramInt4, paramArrayOfString);
+            paramInt1 = a.a.hCg().a(paramILiveConEngineCallback_AIDL, paramInt1, paramInt2, paramInt3, paramLong, paramArrayOfInt1, paramArrayOfInt2, paramInt4, paramArrayOfString);
             return paramInt1;
           }
           localParcel2.readException();
@@ -258,14 +258,14 @@ public abstract interface a
           for (IBinder localIBinder = paramb.asBinder();; localIBinder = null)
           {
             localParcel1.writeStrongBinder(localIBinder);
-            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (a.a.gif() == null)) {
+            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (a.a.hCg() == null)) {
               break;
             }
-            paramb = a.a.gif().a(paramb);
+            paramb = a.a.hCg().a(paramb);
             return paramb;
           }
           localParcel2.readException();
-          paramb = d.a.J(localParcel2.readStrongBinder());
+          paramb = d.a.O(localParcel2.readStrongBinder());
           return paramb;
         }
         finally
@@ -281,7 +281,7 @@ public abstract interface a
         return this.mRemote;
       }
       
-      public final byte[] e(int[] paramArrayOfInt, String paramString)
+      public final byte[] f(int[] paramArrayOfInt, String paramString)
       {
         AppMethodBeat.i(29378);
         Parcel localParcel1 = Parcel.obtain();
@@ -295,10 +295,10 @@ public abstract interface a
           for (;;)
           {
             localParcel1.writeString(paramString);
-            if ((this.mRemote.transact(6, localParcel1, localParcel2, 0)) || (a.a.gif() == null)) {
+            if ((this.mRemote.transact(6, localParcel1, localParcel2, 0)) || (a.a.hCg() == null)) {
               break;
             }
-            paramArrayOfInt = a.a.gif().e(paramArrayOfInt, paramString);
+            paramArrayOfInt = a.a.hCg().f(paramArrayOfInt, paramString);
             return paramArrayOfInt;
             localParcel1.writeInt(paramArrayOfInt.length);
           }
@@ -318,7 +318,7 @@ public abstract interface a
         return paramString;
       }
       
-      public final int gid()
+      public final int hCe()
       {
         AppMethodBeat.i(29373);
         Parcel localParcel1 = Parcel.obtain();
@@ -326,9 +326,9 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.gif() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.hCg() != null))
           {
-            i = a.a.gif().gid();
+            i = a.a.hCg().hCe();
             return i;
           }
           localParcel2.readException();
@@ -343,7 +343,7 @@ public abstract interface a
         }
       }
       
-      public final c gie()
+      public final c hCf()
       {
         AppMethodBeat.i(29380);
         Parcel localParcel1 = Parcel.obtain();
@@ -351,13 +351,13 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.gif() != null))
+          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.hCg() != null))
           {
-            localc = a.a.gif().gie();
+            localc = a.a.hCg().hCf();
             return localc;
           }
           localParcel2.readException();
-          c localc = c.a.I(localParcel2.readStrongBinder());
+          c localc = c.a.N(localParcel2.readStrongBinder());
           return localc;
         }
         finally
@@ -376,9 +376,9 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.IEngine_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.gif() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.hCg() != null))
           {
-            i = a.a.gif().uninitLive();
+            i = a.a.hCg().uninitLive();
             return i;
           }
           localParcel2.readException();
@@ -397,7 +397,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.a
  * JD-Core Version:    0.7.0.1
  */

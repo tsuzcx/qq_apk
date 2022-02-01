@@ -7,10 +7,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.q;
-import com.tencent.mm.plugin.emoji.e.e;
-import com.tencent.mm.plugin.emoji.i.c;
-import com.tencent.mm.protocal.protobuf.akc;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.emoji.h.c;
+import com.tencent.mm.plugin.emoji.mgr.e;
+import com.tencent.mm.protocal.protobuf.cix;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -21,12 +21,12 @@ import java.util.LinkedList;
 public class DonorsAvatarView
   extends LinearLayout
 {
-  private int mMaxCount;
-  private int uMT;
-  private int uMU;
-  private int uMV;
-  private int uMW;
-  private LinearLayout.LayoutParams uMX;
+  private int sfk;
+  private LinearLayout.LayoutParams xVA;
+  private int xVw;
+  private int xVx;
+  private int xVy;
+  private int xVz;
   
   public DonorsAvatarView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -48,19 +48,19 @@ public class DonorsAvatarView
   {
     AppMethodBeat.i(109132);
     setOrientation(0);
-    this.uMT = com.tencent.mm.ci.a.kr(getContext());
-    this.uMU = com.tencent.mm.ci.a.aY(getContext(), i.c.emoji_donors_avatar_size);
-    this.uMV = com.tencent.mm.ci.a.aY(getContext(), i.c.BasicPaddingSize);
-    this.uMW = com.tencent.mm.ci.a.aY(getContext(), i.c.NormalPadding);
-    this.uMX = new LinearLayout.LayoutParams(this.uMU, this.uMU);
-    this.uMX.leftMargin = this.uMV;
-    this.uMX.rightMargin = this.uMV;
-    this.mMaxCount = ((this.uMT - this.uMW * 2) / (this.uMU + this.uMV * 2));
-    Log.i("MicroMsg.emoji.DonorsAvatarView", "max count:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
+    this.xVw = com.tencent.mm.cd.a.ms(getContext());
+    this.xVx = com.tencent.mm.cd.a.br(getContext(), h.c.emoji_donors_avatar_size);
+    this.xVy = com.tencent.mm.cd.a.br(getContext(), h.c.BasicPaddingSize);
+    this.xVz = com.tencent.mm.cd.a.br(getContext(), h.c.NormalPadding);
+    this.xVA = new LinearLayout.LayoutParams(this.xVx, this.xVx);
+    this.xVA.leftMargin = this.xVy;
+    this.xVA.rightMargin = this.xVy;
+    this.sfk = ((this.xVw - this.xVz * 2) / (this.xVx + this.xVy * 2));
+    Log.i("MicroMsg.emoji.DonorsAvatarView", "max count:%d", new Object[] { Integer.valueOf(this.sfk) });
     AppMethodBeat.o(109132);
   }
   
-  public final void d(String paramString, LinkedList<akc> paramLinkedList)
+  public final void d(String paramString, LinkedList<cix> paramLinkedList)
   {
     AppMethodBeat.i(109133);
     removeAllViews();
@@ -70,22 +70,22 @@ public class DonorsAvatarView
       int j;
       label39:
       ImageView localImageView;
-      if (paramLinkedList.size() > this.mMaxCount)
+      if (paramLinkedList.size() > this.sfk)
       {
-        i = this.mMaxCount;
+        i = this.sfk;
         j = 0;
         if (j >= i) {
           break label187;
         }
-        akc localakc = (akc)paramLinkedList.get(j);
-        if (localakc != null)
+        cix localcix = (cix)paramLinkedList.get(j);
+        if (localcix != null)
         {
           localImageView = new ImageView(getContext());
-          localImageView.setLayoutParams(this.uMX);
-          if (Util.isNullOrNil(localakc.SuR)) {
+          localImageView.setLayoutParams(this.xVA);
+          if (Util.isNullOrNil(localcix.ZuK)) {
             break label143;
           }
-          q.bml().a(localakc.SuR, localImageView, e.m(paramString, localakc.SuR, new Object[0]));
+          r.bKe().a(localcix.ZuK, localImageView, e.n(paramString, localcix.ZuK, new Object[0]));
         }
       }
       for (;;)
@@ -98,7 +98,7 @@ public class DonorsAvatarView
         try
         {
           label143:
-          localImageView.setImageBitmap(BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.ci.a.getDensity(null)));
+          localImageView.setImageBitmap(BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cd.a.getDensity(null)));
         }
         catch (IOException localIOException)
         {
@@ -112,7 +112,7 @@ public class DonorsAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.DonorsAvatarView
  * JD-Core Version:    0.7.0.1
  */

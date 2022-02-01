@@ -1,28 +1,25 @@
 package kotlin.l.b.a.b.b;
 
-import java.util.Collection;
-import java.util.List;
-import kotlin.l.b.a.b.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l.b.a.b.f.f;
+import kotlin.l.b.a.b.m.c.k;
 
-public abstract interface y
-  extends l
+public final class y<Type extends k>
 {
-  public abstract <T> T a(y.a<T> parama);
+  public final f aiGV;
+  public final Type aiGW;
   
-  public abstract Collection<kotlin.l.b.a.b.f.b> a(kotlin.l.b.a.b.f.b paramb, kotlin.g.a.b<? super f, Boolean> paramb1);
-  
-  public abstract boolean a(y paramy);
-  
-  public abstract ad e(kotlin.l.b.a.b.f.b paramb);
-  
-  public abstract g iFv();
-  
-  public abstract List<y> iFw();
+  public y(f paramf, Type paramType)
+  {
+    AppMethodBeat.i(191770);
+    this.aiGV = paramf;
+    this.aiGW = paramType;
+    AppMethodBeat.o(191770);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.y
  * JD-Core Version:    0.7.0.1
  */

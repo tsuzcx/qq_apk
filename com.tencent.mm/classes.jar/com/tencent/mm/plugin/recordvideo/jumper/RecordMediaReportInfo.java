@@ -13,7 +13,7 @@ public class RecordMediaReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<RecordMediaReportInfo> CREATOR;
-  private HashMap uDm;
+  private HashMap xLE;
   
   static
   {
@@ -25,19 +25,39 @@ public class RecordMediaReportInfo
   public RecordMediaReportInfo()
   {
     AppMethodBeat.i(101508);
-    this.uDm = new HashMap();
+    this.xLE = new HashMap();
     AppMethodBeat.o(101508);
   }
   
   protected RecordMediaReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(101512);
-    this.uDm = new HashMap();
-    this.uDm = ((HashMap)paramParcel.readSerializable());
+    this.xLE = new HashMap();
+    this.xLE = ((HashMap)paramParcel.readSerializable());
     AppMethodBeat.o(101512);
   }
   
-  public final void aVT(String paramString)
+  public final void I(String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(101509);
+    this.xLE.put(paramString, paramObject);
+    AppMethodBeat.o(101509);
+  }
+  
+  public final <T> T J(String paramString, T paramT)
+  {
+    AppMethodBeat.i(101510);
+    if (this.xLE.get(paramString) != null)
+    {
+      paramString = this.xLE.get(paramString);
+      AppMethodBeat.o(101510);
+      return paramString;
+    }
+    AppMethodBeat.o(101510);
+    return paramT;
+  }
+  
+  public final void aTa(String paramString)
   {
     AppMethodBeat.i(101514);
     if (paramString == null)
@@ -52,7 +72,7 @@ public class RecordMediaReportInfo
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        this.uDm.put(str, paramString.get(str));
+        this.xLE.put(str, paramString.get(str));
       }
       AppMethodBeat.o(101514);
     }
@@ -68,44 +88,24 @@ public class RecordMediaReportInfo
     return 0;
   }
   
-  public final String fvY()
+  public final String gHG()
   {
     AppMethodBeat.i(101513);
-    String str = new JSONObject(this.uDm).toString();
+    String str = new JSONObject(this.xLE).toString();
     AppMethodBeat.o(101513);
     return str;
-  }
-  
-  public final void w(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(101509);
-    this.uDm.put(paramString, paramObject);
-    AppMethodBeat.o(101509);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101511);
-    paramParcel.writeSerializable(this.uDm);
+    paramParcel.writeSerializable(this.xLE);
     AppMethodBeat.o(101511);
-  }
-  
-  public final <T> T x(String paramString, T paramT)
-  {
-    AppMethodBeat.i(101510);
-    if (this.uDm.get(paramString) != null)
-    {
-      paramString = this.uDm.get(paramString);
-      AppMethodBeat.o(101510);
-      return paramString;
-    }
-    AppMethodBeat.o(101510);
-    return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo
  * JD-Core Version:    0.7.0.1
  */

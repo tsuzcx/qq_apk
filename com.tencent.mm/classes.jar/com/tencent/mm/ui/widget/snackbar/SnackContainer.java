@@ -17,24 +17,24 @@ import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.a.a;
-import com.tencent.mm.cr.a.f;
+import com.tencent.mm.ck.a.a;
+import com.tencent.mm.ck.a.f;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class SnackContainer
   extends FrameLayout
 {
-  private AnimationSet WKh;
-  Queue<a> Yum;
-  private AnimationSet Yun;
+  private AnimationSet aesl;
+  Queue<a> agmF;
+  private AnimationSet agmG;
   private final Runnable mHideRunnable;
   
   public SnackContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159724);
-    this.Yum = new LinkedList();
+    this.agmF = new LinkedList();
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -54,7 +54,7 @@ public class SnackContainer
   {
     super(paramViewGroup.getContext());
     AppMethodBeat.i(159725);
-    this.Yum = new LinkedList();
+    this.agmF = new LinkedList();
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -76,10 +76,10 @@ public class SnackContainer
   private static void b(a parama)
   {
     AppMethodBeat.i(159732);
-    if (parama.Yut != null)
+    if (parama.agmM != null)
     {
-      b.HQ(false);
-      parama.Yut.onHide();
+      b.NL(false);
+      parama.agmM.onHide();
     }
     AppMethodBeat.o(159732);
   }
@@ -87,10 +87,10 @@ public class SnackContainer
   private static void c(a parama)
   {
     AppMethodBeat.i(159733);
-    if (parama.Yut != null)
+    if (parama.agmM != null)
     {
-      b.HQ(true);
-      parama.Yut.onShow();
+      b.NL(true);
+      parama.agmM.onShow();
     }
     AppMethodBeat.o(159733);
   }
@@ -98,19 +98,19 @@ public class SnackContainer
   private void init()
   {
     AppMethodBeat.i(159726);
-    this.WKh = new AnimationSet(false);
+    this.aesl = new AnimationSet(false);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 1.0F, 1, 0.0F);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.WKh.setInterpolator(new DecelerateInterpolator(1.5F));
-    this.WKh.addAnimation(localTranslateAnimation);
-    this.WKh.addAnimation(localAlphaAnimation);
-    this.Yun = new AnimationSet(false);
+    this.aesl.setInterpolator(new DecelerateInterpolator(1.5F));
+    this.aesl.addAnimation(localTranslateAnimation);
+    this.aesl.addAnimation(localAlphaAnimation);
+    this.agmG = new AnimationSet(false);
     localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 0.0F, 1, 1.0F);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.Yun.addAnimation(localTranslateAnimation);
-    this.Yun.addAnimation(localAlphaAnimation);
-    this.Yun.setDuration(300L);
-    this.Yun.setAnimationListener(new Animation.AnimationListener()
+    this.agmG.addAnimation(localTranslateAnimation);
+    this.agmG.addAnimation(localAlphaAnimation);
+    this.agmG.setDuration(300L);
+    this.agmG.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -134,10 +134,10 @@ public class SnackContainer
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(159720);
-        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).Yut != null))
+        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).agmM != null))
         {
-          b.HQ(false);
-          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).Yut.bPL();
+          b.NL(false);
+          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).agmM.cpT();
         }
         AppMethodBeat.o(159720);
       }
@@ -150,26 +150,26 @@ public class SnackContainer
     AppMethodBeat.i(159731);
     setVisibility(0);
     c(parama);
-    addView(parama.Yuq);
-    parama.bEG.setText(parama.Yus.mMessage);
-    if (parama.Yus.YtZ != null)
+    addView(parama.agmJ);
+    parama.dxG.setText(parama.agmL.mMessage);
+    if (parama.agmL.agms != null)
     {
-      parama.Yur.setVisibility(0);
-      parama.Yur.setText(parama.Yus.YtZ);
+      parama.agmK.setVisibility(0);
+      parama.agmK.setText(parama.agmL.agms);
     }
     for (;;)
     {
-      this.WKh.setDuration(500L);
+      this.aesl.setDuration(500L);
       Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.fast_faded_in);
       localAnimation.setDuration(500L);
-      startAnimation(this.WKh);
+      startAnimation(this.aesl);
       localAnimation.setStartOffset(200L);
-      parama.Yur.startAnimation(localAnimation);
-      parama.bEG.startAnimation(localAnimation);
-      if (parama.Yus.Yuc > 0) {
-        postDelayed(this.mHideRunnable, parama.Yus.Yuc);
+      parama.agmK.startAnimation(localAnimation);
+      parama.dxG.startAnimation(localAnimation);
+      if (parama.agmL.agmv > 0) {
+        postDelayed(this.mHideRunnable, parama.agmL.agmv);
       }
-      parama.Yuq.setOnTouchListener(new View.OnTouchListener()
+      parama.agmJ.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -192,7 +192,7 @@ public class SnackContainer
       });
       AppMethodBeat.o(159731);
       return;
-      parama.Yur.setVisibility(8);
+      parama.agmK.setVisibility(8);
     }
   }
   
@@ -207,7 +207,7 @@ public class SnackContainer
   public final boolean isEmpty()
   {
     AppMethodBeat.i(159728);
-    boolean bool = this.Yum.isEmpty();
+    boolean bool = this.agmF.isEmpty();
     AppMethodBeat.o(159728);
     return bool;
   }
@@ -215,7 +215,7 @@ public class SnackContainer
   public final boolean isShowing()
   {
     AppMethodBeat.i(159729);
-    if (!this.Yum.isEmpty())
+    if (!this.agmF.isEmpty())
     {
       AppMethodBeat.o(159729);
       return true;
@@ -228,10 +228,10 @@ public class SnackContainer
   {
     AppMethodBeat.i(159727);
     super.onDetachedFromWindow();
-    this.WKh.cancel();
-    this.Yun.cancel();
+    this.aesl.cancel();
+    this.agmG.cancel();
     removeCallbacks(this.mHideRunnable);
-    this.Yum.clear();
+    this.agmF.clear();
     AppMethodBeat.o(159727);
   }
   
@@ -242,17 +242,17 @@ public class SnackContainer
     if (8 == paramInt)
     {
       removeAllViews();
-      if (!this.Yum.isEmpty()) {
-        b((a)this.Yum.poll());
+      if (!this.agmF.isEmpty()) {
+        b((a)this.agmF.poll());
       }
       if (isEmpty()) {
         break label83;
       }
-      a((a)this.Yum.peek());
+      a((a)this.agmF.peek());
     }
     for (;;)
     {
-      b.HQ(false);
+      b.NL(false);
       AppMethodBeat.o(159734);
       return;
       label83:
@@ -262,27 +262,27 @@ public class SnackContainer
   
   static final class a
   {
-    final View Yuq;
-    final TextView Yur;
-    final Snack Yus;
-    final a.c Yut;
-    final TextView bEG;
+    final View agmJ;
+    final TextView agmK;
+    final Snack agmL;
+    final a.c agmM;
+    final TextView dxG;
     
     private a(Snack paramSnack, View paramView, a.c paramc)
     {
       AppMethodBeat.i(159723);
-      this.Yuq = paramView;
-      this.Yur = ((TextView)paramView.findViewById(a.f.snackButton));
-      this.bEG = ((TextView)paramView.findViewById(a.f.snackMessage));
-      this.Yus = paramSnack;
-      this.Yut = paramc;
+      this.agmJ = paramView;
+      this.agmK = ((TextView)paramView.findViewById(a.f.snackButton));
+      this.dxG = ((TextView)paramView.findViewById(a.f.snackMessage));
+      this.agmL = paramSnack;
+      this.agmM = paramc;
       AppMethodBeat.o(159723);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.SnackContainer
  * JD-Core Version:    0.7.0.1
  */

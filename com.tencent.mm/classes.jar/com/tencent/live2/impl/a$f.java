@@ -17,15 +17,15 @@ public class a$f
   
   public String toString()
   {
-    AppMethodBeat.i(215233);
+    AppMethodBeat.i(211545);
     String str = "[qualityIndex:" + this.a + "][enableAdjRes:" + this.b + "][enableAdjBitrate:" + this.c + "]";
-    AppMethodBeat.o(215233);
+    AppMethodBeat.o(211545);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.live2.impl.a.f
  * JD-Core Version:    0.7.0.1
  */

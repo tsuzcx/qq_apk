@@ -18,23 +18,23 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class TipSayingWidget
   extends LinearLayout
 {
-  private ImageView EnL;
-  private Chronometer EnM;
-  private int EnN;
+  private ImageView Kgt;
+  private Chronometer Kgu;
+  private int Kgv;
   private Context context;
-  private String iRj;
-  private TextView jiw;
+  private TextView lKQ;
+  private String ltf;
   
   public TipSayingWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55954);
-    this.EnN = 0;
+    this.Kgv = 0;
     this.context = paramContext;
     paramContext = View.inflate(this.context, a.f.tips_saying, this);
-    this.EnL = ((ImageView)paramContext.findViewById(a.e.saying_iv));
-    this.jiw = ((TextView)paramContext.findViewById(a.e.sayint_tips));
-    this.EnM = ((Chronometer)findViewById(a.e.chronometer));
+    this.Kgt = ((ImageView)paramContext.findViewById(a.e.saying_iv));
+    this.lKQ = ((TextView)paramContext.findViewById(a.e.sayint_tips));
+    this.Kgu = ((Chronometer)findViewById(a.e.chronometer));
     AppMethodBeat.o(55954);
   }
   
@@ -48,25 +48,25 @@ public class TipSayingWidget
       return;
     }
     setVisibility(0);
-    a.b.C(this.EnL, paramString);
-    if (Util.isNullOrNil(this.iRj)) {
-      this.iRj = z.bcZ();
+    a.b.C(this.Kgt, paramString);
+    if (Util.isNullOrNil(this.ltf)) {
+      this.ltf = z.bAM();
     }
-    if (this.iRj.equals(paramString))
+    if (this.ltf.equals(paramString))
     {
-      this.jiw.setText(this.context.getString(a.i.track_somebody_saying, new Object[] { paramString }));
-      this.EnM.setVisibility(0);
+      this.lKQ.setText(this.context.getString(a.i.track_somebody_saying, new Object[] { paramString }));
+      this.Kgu.setVisibility(0);
       AppMethodBeat.o(55955);
       return;
     }
-    this.jiw.setText(this.context.getString(a.i.track_somebody_saying, new Object[] { paramString }));
-    this.EnM.setVisibility(8);
+    this.lKQ.setText(this.context.getString(a.i.track_somebody_saying, new Object[] { paramString }));
+    this.Kgu.setVisibility(8);
     AppMethodBeat.o(55955);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.TipSayingWidget
  * JD-Core Version:    0.7.0.1
  */

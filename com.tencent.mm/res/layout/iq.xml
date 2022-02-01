@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/ed2" android:background="@color/f0" android:scrollbars="none" android:overScrollMode="never" style="@style/np" />
-        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/hrg" android:layout_width="@dimen/e" android:layout_height="fill_parent" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:layout_gravity="center_horizontal" android:id="@id/a1w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/i8b" />
-    </FrameLayout>
+    <ScrollView android:scrollbars="none" android:fillViewport="true" style="@style/o8">
+        <RelativeLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/br" android:paddingTop="@dimen/d6" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/jdt" android:paddingBottom="@dimen/i_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/hp" android:textColor="@color/a7b" android:gravity="center" android:id="@id/jdr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i6" android:maxLines="4" android:singleLine="false" android:layout_below="@id/jdt" android:lineSpacingExtra="4.0dip" style="@style/nx" />
+            <TextView android:textSize="@dimen/l" android:textColor="@color/xo" android:gravity="center" android:id="@id/jdq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_" android:maxLines="4" android:singleLine="false" android:layout_below="@id/jdr" android:lineSpacingExtra="4.0dip" style="@style/nx" />
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/jdq" android:layout_alignParentBottom="true">
+                <Button android:id="@id/jdp" android:layout_marginBottom="@dimen/i6" style="@style/oh" />
+                <Button android:id="@id/jds" android:layout_marginBottom="@dimen/i6" style="@style/oq" />
+                <TextView android:textSize="@dimen/m3" android:id="@id/jdo" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d5" android:layout_marginBottom="@dimen/cv" android:text="@string/ak7" style="@style/ko" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

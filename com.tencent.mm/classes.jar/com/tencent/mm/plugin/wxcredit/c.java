@@ -3,33 +3,32 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.p;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.expt.b.c.a;
 import com.tencent.mm.plugin.wallet_core.c.x;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.i;
+import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.wallet_core.e;
 
 public class c
-  extends d
+  extends e
 {
-  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public final g a(MMActivity paramMMActivity, com.tencent.mm.wallet_core.c.i parami)
   {
     AppMethodBeat.i(72257);
     if ((paramMMActivity instanceof WalletCheckPwdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean A(Object... paramAnonymousVarArgs)
+        public final boolean D(Object... paramAnonymousVarArgs)
         {
           return false;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(72251);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -43,11 +42,11 @@ public class c
           return false;
         }
         
-        public final boolean r(Object... paramAnonymousVarArgs)
+        public final boolean t(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72252);
           c.b(c.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.YVX.a(new x((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
+          this.agTR.a(new x((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
           AppMethodBeat.o(72252);
           return true;
         }
@@ -60,7 +59,7 @@ public class c
     return paramMMActivity;
   }
   
-  public final d a(Activity paramActivity, Bundle paramBundle)
+  public final e a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72253);
     Log.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditCheckPwdProcess");
@@ -74,7 +73,7 @@ public class c
     AppMethodBeat.i(72254);
     if ((paramActivity instanceof WalletCheckPwdUI))
     {
-      com.tencent.mm.wallet_core.ui.g.p(paramActivity, paramBundle.getString("key_url"), false);
+      com.tencent.mm.wallet_core.ui.i.p(paramActivity, paramBundle.getString("key_url"), false);
       AppMethodBeat.o(72254);
       return;
     }
@@ -85,15 +84,15 @@ public class c
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72256);
-    boolean bool = ((b)h.ae(b.class)).a(b.a.vHh, true);
+    boolean bool = ((com.tencent.mm.plugin.expt.b.c)h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yXg, true);
     Log.i("MicroMsg.WXCreditChangeAmountProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      h(paramActivity, "mall", ".ui.MallIndexUIv2");
+      g(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(72256);
       return;
     }
-    h(paramActivity, "mall", ".ui.MallIndexUI");
+    g(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(72256);
   }
   
@@ -102,15 +101,15 @@ public class c
     return false;
   }
   
-  public final String epb()
+  public final String fud()
   {
     return "WXCreditCheckPwdProcess";
   }
   
-  public final void h(Activity paramActivity, int paramInt)
+  public final void i(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72255);
-    Q(paramActivity);
+    Z(paramActivity);
     AppMethodBeat.o(72255);
   }
 }

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveWeCoinHotConstract
 {
-  public static final FinderLiveWeCoinHotConstract zNY;
+  public static final FinderLiveWeCoinHotConstract EYO;
   
   static
   {
-    AppMethodBeat.i(284711);
-    zNY = new FinderLiveWeCoinHotConstract();
-    AppMethodBeat.o(284711);
+    AppMethodBeat.i(343511);
+    EYO = new FinderLiveWeCoinHotConstract();
+    AppMethodBeat.o(343511);
   }
 }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public final class b
 {
-  public static void gpP()
+  public static void hML()
   {
     AppMethodBeat.i(91001);
     try
@@ -23,11 +23,10 @@ public final class b
       localIDKey2.SetKey(1);
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      h.IzE.b(localArrayList, false);
-      AppMethodBeat.o(91001);
+      h.OAn.b(localArrayList, false);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       AppMethodBeat.o(91001);
     }

@@ -13,10 +13,10 @@ import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 public class CheckBoxWithTipIconPreference
   extends CheckBoxPreference
 {
-  private int OAB;
-  private String OAC;
-  private int OAD;
-  private TextView OEk;
+  private int VpO;
+  private String VpP;
+  private int VpQ;
+  private TextView Vtv;
   
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,35 +27,35 @@ public class CheckBoxWithTipIconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69843);
-    this.OAB = -1;
-    this.OAC = "";
-    this.OAD = 8;
+    this.VpO = -1;
+    this.VpP = "";
+    this.VpQ = 8;
     setLayoutResource(a.g.mm_preference_summary_icontip_checkbox);
     AppMethodBeat.o(69843);
   }
   
-  public final void amm(int paramInt)
+  public final void arW(int paramInt)
   {
     AppMethodBeat.i(69846);
-    this.OAD = paramInt;
-    if (this.OEk != null) {
-      this.OEk.setVisibility(paramInt);
+    this.VpQ = paramInt;
+    if (this.Vtv != null) {
+      this.Vtv.setVisibility(paramInt);
     }
     AppMethodBeat.o(69846);
   }
   
-  public final void gI(String paramString, int paramInt)
+  public final void hF(String paramString, int paramInt)
   {
     AppMethodBeat.i(69845);
-    this.OAB = paramInt;
-    this.OAC = paramString;
-    if (this.OEk != null)
+    this.VpO = paramInt;
+    this.VpP = paramString;
+    if (this.Vtv != null)
     {
-      if (this.OAB > 0) {
-        this.OEk.setBackgroundResource(this.OAB);
+      if (this.VpO > 0) {
+        this.Vtv.setBackgroundResource(this.VpO);
       }
-      if (!TextUtils.isEmpty(this.OAC)) {
-        this.OEk.setText(this.OAC);
+      if (!TextUtils.isEmpty(this.VpP)) {
+        this.Vtv.setText(this.VpP);
       }
     }
     AppMethodBeat.o(69845);
@@ -65,9 +65,9 @@ public class CheckBoxWithTipIconPreference
   {
     AppMethodBeat.i(69844);
     super.onBindView(paramView);
-    this.OEk = ((TextView)paramView.findViewById(a.f.tipicon));
-    gI(this.OAC, this.OAB);
-    amm(this.OAD);
+    this.Vtv = ((TextView)paramView.findViewById(a.f.tipicon));
+    hF(this.VpP, this.VpO);
+    arW(this.VpQ);
     AppMethodBeat.o(69844);
   }
 }

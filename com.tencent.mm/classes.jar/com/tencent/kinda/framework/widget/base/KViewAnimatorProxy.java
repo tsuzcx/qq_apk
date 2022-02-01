@@ -2,7 +2,6 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.animate.KindaGlobalAnimator;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.Align;
@@ -15,6 +14,7 @@ import com.tencent.kinda.gen.KViewOnClickCallback;
 import com.tencent.kinda.gen.KViewOnLongClickCallback;
 import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
+import com.tencent.kinda.gen.TraitsType;
 import com.tencent.kinda.gen.Visible;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.kinda.gen.VoidKRectCallback;
@@ -31,6 +31,10 @@ public class KViewAnimatorProxy
     this.mKView = paramKView;
   }
   
+  public void accessibilityClickFrom(KView paramKView) {}
+  
+  public void accessibilityTraitsType(TraitsType paramTraitsType) {}
+  
   public void addBlurEffect(int paramInt) {}
   
   public KPoint convertPointToScreen(KPoint paramKPoint)
@@ -42,6 +46,8 @@ public class KViewAnimatorProxy
   {
     return null;
   }
+  
+  public void expandHitSize(float paramFloat1, float paramFloat2) {}
   
   public String getAccessibilityString()
   {
@@ -175,9 +181,9 @@ public class KViewAnimatorProxy
   
   public float getMarginBottom()
   {
-    AppMethodBeat.i(263352);
+    AppMethodBeat.i(226606);
     float f = this.mKView.getMarginBottom();
-    AppMethodBeat.o(263352);
+    AppMethodBeat.o(226606);
     return f;
   }
   
@@ -201,9 +207,9 @@ public class KViewAnimatorProxy
   
   public float getMarginRight()
   {
-    AppMethodBeat.i(263350);
+    AppMethodBeat.i(226600);
     float f = this.mKView.getMarginRight();
-    AppMethodBeat.o(263350);
+    AppMethodBeat.o(226600);
     return f;
   }
   
@@ -214,9 +220,9 @@ public class KViewAnimatorProxy
   
   public float getMarginTop()
   {
-    AppMethodBeat.i(263348);
+    AppMethodBeat.i(226595);
     float f = this.mKView.getMarginTop();
-    AppMethodBeat.o(263348);
+    AppMethodBeat.o(226595);
     return f;
   }
   
@@ -290,6 +296,11 @@ public class KViewAnimatorProxy
     return null;
   }
   
+  public String getReportId()
+  {
+    return null;
+  }
+  
   public float getRight()
   {
     return 0.0F;
@@ -333,6 +344,11 @@ public class KViewAnimatorProxy
   public float getShadowRadius()
   {
     return 0.0F;
+  }
+  
+  public boolean getSupportDynamicSize()
+  {
+    return false;
   }
   
   public float getTop()
@@ -414,18 +430,7 @@ public class KViewAnimatorProxy
   {
     AppMethodBeat.i(18815);
     paramDynamicColor = ValueAnimator.ofFloat(new float[] { (float)ColorUtil.getColorByMode(this.mKView.getBackgroundColor()), (float)ColorUtil.getColorByMode(paramDynamicColor) });
-    paramDynamicColor.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-    {
-      public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-      {
-        AppMethodBeat.i(18808);
-        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        paramAnonymousValueAnimator = new DynamicColor(f, 0L);
-        KViewAnimatorProxy.this.mKView.setBackgroundColor(paramAnonymousValueAnimator);
-        Log.d("base_MMKView", "已经给背景颜色设置动画KView：" + KViewAnimatorProxy.this.mKView + "，value：" + Long.toHexString(ColorUtil.absColor(f)));
-        AppMethodBeat.o(18808);
-      }
-    });
+    paramDynamicColor.addUpdateListener(new KViewAnimatorProxy.1(this));
     KindaGlobalAnimator.addAnimator(paramDynamicColor);
     AppMethodBeat.o(18815);
   }
@@ -491,11 +496,11 @@ public class KViewAnimatorProxy
   
   public void setMarginBottom(float paramFloat)
   {
-    AppMethodBeat.i(263351);
+    AppMethodBeat.i(226604);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginBottom", new float[] { this.mKView.getMarginBottom(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(263351);
+    AppMethodBeat.o(226604);
   }
   
   public void setMarginBottomPercent(float paramFloat) {}
@@ -513,22 +518,22 @@ public class KViewAnimatorProxy
   
   public void setMarginRight(float paramFloat)
   {
-    AppMethodBeat.i(263349);
+    AppMethodBeat.i(226597);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginRight", new float[] { this.mKView.getMarginRight(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(263349);
+    AppMethodBeat.o(226597);
   }
   
   public void setMarginRightPercent(float paramFloat) {}
   
   public void setMarginTop(float paramFloat)
   {
-    AppMethodBeat.i(263347);
+    AppMethodBeat.i(226592);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginTop", new float[] { this.mKView.getMarginTop(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(263347);
+    AppMethodBeat.o(226592);
   }
   
   public void setMarginTopPercent(float paramFloat) {}
@@ -564,6 +569,8 @@ public class KViewAnimatorProxy
   public void setPaddingTopPercent(float paramFloat) {}
   
   public void setPositionType(PositionType paramPositionType) {}
+  
+  public void setReportId(String paramString) {}
   
   public void setRight(float paramFloat)
   {
@@ -612,6 +619,8 @@ public class KViewAnimatorProxy
   public void setShadowOffset(float paramFloat) {}
   
   public void setShadowRadius(float paramFloat) {}
+  
+  public void setSupportDynamicSize(boolean paramBoolean) {}
   
   public void setTop(float paramFloat)
   {
@@ -663,7 +672,7 @@ public class KViewAnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KViewAnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

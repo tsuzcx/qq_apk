@@ -1,0 +1,13 @@
+{
+    "id": "400002",
+    "type": "FaceContour",
+    "name_cn": "修容美颜原子能力",
+    "name_en": "highlight_shadow_beauty",
+    "version": 1.0,
+    "thumbnail": "thumbnail.jpg",
+    "params": {
+        "face_model": 0,
+        "alpha": 1.0,
+        "path": "mask.png"
+    }
+}

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/e22" android:background="@color/afz" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/a29"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/e2f" android:padding="@dimen/ir" android:layout_width="@dimen/a2a" android:layout_height="@dimen/a2a" android:scaleType="fitXY" />
-    <ImageView android:id="@id/e2c" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/a2a" android:layout_height="@dimen/a2a" />
-    <TextView android:textSize="@dimen/ka" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/e40" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="wrap_content" android:layout_height="@dimen/a27" android:maxWidth="@dimen/a2a" android:layout_below="@id/e2f" android:layout_centerHorizontal="true" style="@style/mp" />
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/c6i" android:background="@drawable/az8" android:paddingBottom="@dimen/if" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="left" android:id="@id/c6h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_50" />
+    <FrameLayout android:layout_width="@dimen/a5n" android:layout_height="@dimen/a5n">
+        <com.tencent.mm.emoji.view.EmojiStatusView android:gravity="center_horizontal" android:id="@id/c6o" android:layout_width="@dimen/a5n" android:layout_height="@dimen/a5n" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/c6q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

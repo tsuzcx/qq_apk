@@ -19,6 +19,7 @@ import com.tencent.kinda.framework.app.KindaPlatformUtil;
 import com.tencent.kinda.framework.app.KindaRealNameManagerImpl;
 import com.tencent.kinda.framework.app.KindaRealNameServiceImpl;
 import com.tencent.kinda.framework.app.KindaShakeCheckingManager;
+import com.tencent.kinda.framework.app.KindaTextStatusSetupManagerImpl;
 import com.tencent.kinda.framework.app.KindaTimerService;
 import com.tencent.kinda.framework.app.KindaUtilityServiceImpl;
 import com.tencent.kinda.framework.app.MMKindaFaceRegManagerImpl;
@@ -34,6 +35,7 @@ import com.tencent.kinda.framework.module.impl.KindaNotifyImpl;
 import com.tencent.kinda.framework.module.impl.KindaResultImpl;
 import com.tencent.kinda.framework.module.impl.KindaScanWidgetImpl;
 import com.tencent.kinda.framework.module.impl.KindaSecureCtrItemImpl;
+import com.tencent.kinda.framework.module.impl.KindaThirdPayService;
 import com.tencent.kinda.framework.module.impl.KindaUUIDService;
 import com.tencent.kinda.framework.module.impl.KindaWalletMixManagerImpl;
 import com.tencent.kinda.framework.module.impl.KindaWebServiceImpl;
@@ -83,6 +85,7 @@ public class KindaBaseServiceModule
     registerNativeModule("KJSEvent", KindaJSEvent.class);
     registerNativeModule("KindaOpenBiometricVerifyManager", KindaOpenBiometricVerifyManagerImpl.class);
     registerNativeModule("KindaJumpRemindManager", KindaJumpRemindManagerImpl.class);
+    registerNativeModule("KindaTextStatusSetupManager", KindaTextStatusSetupManagerImpl.class);
     registerNativeModule("KindaLocationManager", KindaLocationManagerImpl.class);
     registerNativeModule("KOfflinePayService", KOfflinePayServiceImpl.class);
     registerNativeModule("KWCPayService", KWCPayServiceImpl.class);
@@ -96,6 +99,7 @@ public class KindaBaseServiceModule
     registerNativeModule("KUtilityService", KindaUtilityServiceImpl.class);
     registerNativeModule("KindaWebService", KindaWebServiceImpl.class);
     registerNativeModule("KPaySettingsService", KPaySettingsServiceImpl.class);
+    registerNativeModule("KThirdPayService", KindaThirdPayService.class);
     AppMethodBeat.o(18618);
   }
   
@@ -103,7 +107,7 @@ public class KindaBaseServiceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.module.base.KindaBaseServiceModule
  * JD-Core Version:    0.7.0.1
  */

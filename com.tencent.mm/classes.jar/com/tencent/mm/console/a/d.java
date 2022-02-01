@@ -3,10 +3,9 @@ package com.tencent.mm.console.a;
 import android.content.Context;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.hi;
+import com.tencent.mm.autogen.a.ht;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
@@ -59,22 +58,22 @@ public final class d
       }
       i = 1;
       break label75;
-      paramContext = new hi();
-      paramContext.fEb.type = 39;
-      paramContext.fEb.fEk = paramArrayOfString[2];
-      paramContext.fEb.fEl = paramArrayOfString[3];
-      EventCenter.instance.asyncPublish(paramContext, Looper.getMainLooper());
+      paramContext = new ht();
+      paramContext.hIR.type = 39;
+      paramContext.hIR.hJa = paramArrayOfString[2];
+      paramContext.hIR.hJb = paramArrayOfString[3];
+      paramContext.asyncPublish(Looper.getMainLooper());
       continue;
-      paramContext = new hi();
-      paramContext.fEb.type = 38;
-      paramContext.fEb.fEk = paramArrayOfString[2];
-      EventCenter.instance.asyncPublish(paramContext, Looper.getMainLooper());
+      paramContext = new ht();
+      paramContext.hIR.type = 38;
+      paramContext.hIR.hJa = paramArrayOfString[2];
+      paramContext.asyncPublish(Looper.getMainLooper());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.console.a.d
  * JD-Core Version:    0.7.0.1
  */

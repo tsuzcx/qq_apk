@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/g68" android:background="@color/a2h" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:focusable="true" android:transcriptMode="disabled" style="@style/np" />
-</LinearLayout>
+<FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:custom="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="bottom|center" android:id="@id/lck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/we" custom:iconBg="@drawable/b17" custom:iconDrawable="@raw/icon_filled_hangup" custom:iconText="@string/we" />
+    <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="bottom|center" android:id="@id/ld1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/kgw" custom:iconBg="@drawable/b17" custom:iconDrawable="@raw/icon_filled_hangup" custom:iconText="@string/kgw" />
+    <LinearLayout android:layout_gravity="bottom|center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="center" android:id="@id/ldg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:contentDescription="@string/kib" android:layout_marginEnd="@dimen/d6" custom:iconBg="@drawable/b17" custom:iconDrawable="@raw/icon_filled_hangup" custom:iconText="@string/kib" />
+        <com.tencent.mm.plugin.voip.widget.VoIPFuncIconLayout android:layout_gravity="center" android:id="@id/lcg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:contentDescription="@string/kef" android:layout_marginStart="@dimen/d6" custom:iconBg="@drawable/b16" custom:iconDrawable="@raw/icon_filled_voice_call" custom:iconText="@string/kef" />
+    </LinearLayout>
+</FrameLayout>

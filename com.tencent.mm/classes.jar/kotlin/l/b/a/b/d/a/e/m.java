@@ -1,18 +1,17 @@
 package kotlin.l.b.a.b.d.a.e;
 
-import kotlin.l.b.a.b.f.a;
 import kotlin.l.b.a.b.f.f;
 
 public abstract interface m
   extends b
 {
-  public abstract a iHs();
+  public abstract kotlin.l.b.a.b.f.b kqZ();
   
-  public abstract f iHt();
+  public abstract f kra();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.e.m
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,12 @@ import android.content.res.Configuration;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputConnection;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.m.a.f;
 import com.tencent.mm.plugin.m.a.g;
 import com.tencent.mm.plugin.m.a.h;
@@ -24,212 +22,208 @@ import com.tencent.mm.pluginsdk.ui.chat.e.b;
 import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 
 public class EmojiPanelInputComponent
   extends InputPanelLinearLayout
 {
-  private static final int jPM;
+  private static final int moC;
   private Context context;
-  private ChatFooterPanel jPN;
-  private com.tencent.mm.ui.widget.cedit.api.c jPO;
-  private ImageButton jPP;
-  private int jPQ;
-  private int jPR;
-  private int jPS;
-  private boolean jPT;
-  private a jPU;
+  private ChatFooterPanel moD;
+  private com.tencent.mm.ui.widget.cedit.api.c moE;
+  private ImageButton moF;
+  private int moG;
+  private int moH;
+  private int moI;
+  private boolean moJ;
+  private a moK;
   
   static
   {
-    AppMethodBeat.i(233390);
-    jPM = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 50);
-    AppMethodBeat.o(233390);
+    AppMethodBeat.i(242519);
+    moC = a.fromDPToPix(MMApplicationContext.getContext(), 50);
+    AppMethodBeat.o(242519);
   }
   
   public EmojiPanelInputComponent(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(233343);
-    this.jPO = null;
-    this.jPQ = -1;
-    this.jPR = -1;
-    this.jPS = 0;
-    this.jPT = true;
+    AppMethodBeat.i(242494);
+    this.moE = null;
+    this.moG = -1;
+    this.moH = -1;
+    this.moI = 0;
+    this.moJ = true;
     this.context = paramContext;
-    ad.kS(this.context).inflate(a.h.emoji_panel_input_component, this);
-    if (e.RnO == null)
+    af.mU(this.context).inflate(a.h.emoji_panel_input_component, this);
+    if (e.Ykf == null)
     {
-      this.jPN = new d(this.context);
-      AppMethodBeat.o(233343);
+      this.moD = new d(this.context);
+      AppMethodBeat.o(242494);
       return;
     }
-    this.jPP = ((ImageButton)findViewById(a.g.mode_iv));
-    this.jPP.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(232302);
-        b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/emoji/view/EmojiPanelInputComponent$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        EmojiPanelInputComponent.a(EmojiPanelInputComponent.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/emoji/view/EmojiPanelInputComponent$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(232302);
-      }
-    });
-    this.jPN = e.RnO.fd(getContext());
-    this.jPN.setEntranceScene(ChatFooterPanel.Rcg);
-    this.jPN.setVisibility(4);
+    this.moF = ((ImageButton)findViewById(a.g.mode_iv));
+    this.moF.setOnClickListener(new EmojiPanelInputComponent.2(this));
+    this.moD = e.Ykf.fZ(getContext());
+    this.moD.setEntranceScene(ChatFooterPanel.XYl);
+    this.moD.setVisibility(4);
     paramContext = (LinearLayout)findViewById(a.g.root);
     paramContext.setOnClickListener(null);
-    this.jPS = KeyBoardUtil.getValidPanelHeight(getContext());
-    paramContext.addView(this.jPN, -1, this.jPS);
-    this.jPN.hjp();
-    aDM();
-    this.jPN.onResume();
-    this.jPN.setOnTextOperationListener(new ChatFooterPanel.a()
+    this.moI = KeyBoardUtil.getValidPanelHeight(getContext());
+    paramContext.addView(this.moD, -1, this.moI);
+    this.moD.iKh();
+    aWK();
+    this.moD.onResume();
+    this.moD.setOnTextOperationListener(new ChatFooterPanel.a()
     {
-      public final void aDN() {}
+      public final void aWL() {}
       
-      public final void aDO()
+      public final void aWM()
       {
-        AppMethodBeat.i(228997);
+        AppMethodBeat.i(242514);
         EmojiPanelInputComponent.b(EmojiPanelInputComponent.this).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
         EmojiPanelInputComponent.b(EmojiPanelInputComponent.this).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
-        AppMethodBeat.o(228997);
+        AppMethodBeat.o(242514);
       }
       
       public final void append(String paramAnonymousString)
       {
-        AppMethodBeat.i(229000);
+        AppMethodBeat.i(242517);
         try
         {
-          EmojiPanelInputComponent.b(EmojiPanelInputComponent.this).bBa(paramAnonymousString);
-          AppMethodBeat.o(229000);
+          EmojiPanelInputComponent.b(EmojiPanelInputComponent.this).bDt(paramAnonymousString);
+          AppMethodBeat.o(242517);
           return;
         }
         catch (Exception paramAnonymousString)
         {
           Log.printErrStackTrace("MicroMsg.EmojiPanelInputComponent", paramAnonymousString, "", new Object[0]);
-          AppMethodBeat.o(229000);
+          AppMethodBeat.o(242517);
         }
       }
       
-      public final void eE(boolean paramAnonymousBoolean) {}
+      public final void fp(boolean paramAnonymousBoolean) {}
     });
-    AppMethodBeat.o(233343);
+    AppMethodBeat.o(242494);
   }
   
-  private void aDL()
+  private void aWJ()
   {
-    AppMethodBeat.i(233365);
-    this.jPN.onPause();
+    AppMethodBeat.i(242497);
+    this.moD.onPause();
     if (KeyBoardUtil.isPortOrientation(getContext()))
     {
-      getInputPanelHelper().aW(new Runnable()
+      getInputPanelHelper().be(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(230688);
+          AppMethodBeat.i(242492);
           EmojiPanelInputComponent.c(EmojiPanelInputComponent.this).setVisibility(4);
-          AppMethodBeat.o(230688);
+          AppMethodBeat.o(242492);
         }
       });
-      AppMethodBeat.o(233365);
+      AppMethodBeat.o(242497);
       return;
     }
-    this.jPN.setVisibility(4);
-    AppMethodBeat.o(233365);
+    this.moD.setVisibility(4);
+    AppMethodBeat.o(242497);
   }
   
-  private void aDM()
+  private void aWK()
   {
-    AppMethodBeat.i(233369);
-    setBottomPanelHeight(this.jPS);
-    AppMethodBeat.o(233369);
+    AppMethodBeat.i(242507);
+    setBottomPanelHeight(this.moI);
+    AppMethodBeat.o(242507);
   }
   
   private void setBottomPanelHeight(int paramInt)
   {
-    AppMethodBeat.i(233373);
+    AppMethodBeat.i(242510);
     Log.i("MicroMsg.EmojiPanelInputComponent", "setBottomPanelHeight: %s", new Object[] { Integer.valueOf(paramInt) });
-    ViewGroup.LayoutParams localLayoutParams = this.jPN.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.moD.getLayoutParams();
     if ((localLayoutParams != null) && (localLayoutParams.height != paramInt))
     {
       localLayoutParams.height = paramInt;
-      this.jPN.requestLayout();
+      this.moD.requestLayout();
     }
-    AppMethodBeat.o(233373);
+    AppMethodBeat.o(242510);
   }
   
-  public final void aDG()
+  public final void aWF()
   {
-    AppMethodBeat.i(233345);
+    AppMethodBeat.i(242521);
     setVisibility(0);
-    this.jPP.setImageResource(a.f.chatting_setmode_biaoqing_btn);
-    this.jPP.setTag("keyboard");
-    AppMethodBeat.o(233345);
+    this.moF.setImageResource(a.f.chatting_setmode_biaoqing_btn);
+    this.moF.setTag("keyboard");
+    AppMethodBeat.o(242521);
   }
   
-  public final void aDH()
+  public final boolean aWG()
   {
-    AppMethodBeat.i(233347);
-    setVisibility(4);
-    AppMethodBeat.o(233347);
-  }
-  
-  public final boolean aDI()
-  {
-    AppMethodBeat.i(233352);
-    if ((aDJ()) || (getVisibility() == 0))
+    AppMethodBeat.i(242524);
+    if ((aWH()) || (getVisibility() == 0))
     {
-      AppMethodBeat.o(233352);
+      AppMethodBeat.o(242524);
       return true;
     }
-    AppMethodBeat.o(233352);
+    AppMethodBeat.o(242524);
     return false;
   }
   
-  public final boolean aDJ()
+  public final boolean aWH()
   {
-    AppMethodBeat.i(233355);
-    if (this.jPN.getVisibility() == 0)
+    AppMethodBeat.i(242525);
+    if (this.moD.getVisibility() == 0)
     {
-      AppMethodBeat.o(233355);
+      AppMethodBeat.o(242525);
       return true;
     }
-    AppMethodBeat.o(233355);
+    AppMethodBeat.o(242525);
     return false;
   }
   
-  public final void aDK()
+  public final void aWI()
   {
-    AppMethodBeat.i(233358);
-    aDL();
+    AppMethodBeat.i(242526);
+    aWJ();
     setVisibility(8);
-    AppMethodBeat.o(233358);
+    AppMethodBeat.o(242526);
   }
   
-  public final void h(boolean paramBoolean, int paramInt)
+  public ChatFooterPanel getSmileyPanel()
+  {
+    return this.moD;
+  }
+  
+  protected void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(242527);
+    super.onConfigurationChanged(paramConfiguration);
+    if (this.moD != null) {
+      aWK();
+    }
+    AppMethodBeat.o(242527);
+  }
+  
+  public void onInputPanelChange(boolean paramBoolean, int paramInt)
   {
     boolean bool = true;
-    AppMethodBeat.i(233367);
+    AppMethodBeat.i(242530);
     Log.i("MicroMsg.EmojiPanelInputComponent", "onInputPanelChange: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    super.h(paramBoolean, paramInt);
-    if ((this.jPS != paramInt) && (paramInt != 0))
+    super.onInputPanelChange(paramBoolean, paramInt);
+    if ((this.moI != paramInt) && (paramInt != 0))
     {
-      this.jPS = paramInt;
+      this.moI = paramInt;
       setBottomPanelHeight(paramInt);
     }
     a locala;
     if (paramBoolean)
     {
-      aDG();
-      if (this.jPU != null)
+      aWF();
+      if (this.moK != null)
       {
-        locala = this.jPU;
+        locala = this.moK;
         if (getVisibility() != 0) {
           break label148;
         }
@@ -238,12 +232,12 @@ public class EmojiPanelInputComponent
     label148:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      locala.h(paramBoolean, jPM + paramInt);
-      AppMethodBeat.o(233367);
+      locala.onInputPanelChange(paramBoolean, moC + paramInt);
+      AppMethodBeat.o(242530);
       return;
-      if ("emoji".equals(this.jPP.getTag()))
+      if ("emoji".equals(this.moF.getTag()))
       {
-        this.jPP.setImageResource(a.f.chatting_setmode_keyboard_btn);
+        this.moF.setImageResource(a.f.chatting_setmode_keyboard_btn);
         break;
       }
       setVisibility(4);
@@ -251,68 +245,58 @@ public class EmojiPanelInputComponent
     }
   }
   
-  protected void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(233362);
-    super.onConfigurationChanged(paramConfiguration);
-    if (this.jPN != null) {
-      aDM();
-    }
-    AppMethodBeat.o(233362);
-  }
-  
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(233379);
+    AppMethodBeat.i(242533);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jPQ < paramInt4) {}
-    for (paramInt1 = paramInt4;; paramInt1 = this.jPQ)
+    if (this.moG < paramInt4) {}
+    for (paramInt1 = paramInt4;; paramInt1 = this.moG)
     {
-      this.jPQ = paramInt1;
-      this.jPR = paramInt4;
-      AppMethodBeat.o(233379);
+      this.moG = paramInt1;
+      this.moH = paramInt4;
+      AppMethodBeat.o(242533);
       return;
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(233375);
-    this.jPU = null;
-    if (this.jPN != null)
+    AppMethodBeat.i(242532);
+    this.moK = null;
+    if (this.moD != null)
     {
-      this.jPN.hjm();
-      this.jPN.destroy();
+      this.moD.iKg();
+      this.moD.destroy();
     }
-    AppMethodBeat.o(233375);
+    AppMethodBeat.o(242532);
   }
   
   public void setInputComponentListener(a parama)
   {
-    this.jPU = parama;
+    this.moK = parama;
   }
   
   public void setMMEditText(com.tencent.mm.ui.widget.cedit.api.c paramc)
   {
-    AppMethodBeat.i(233349);
-    this.jPO = paramc;
+    AppMethodBeat.i(242523);
+    this.moE = paramc;
     paramc.a(new com.tencent.mm.ui.widget.cedit.api.c.a()
     {
-      public final boolean rQ(int paramAnonymousInt)
+      public final boolean rR(int paramAnonymousInt)
       {
         return false;
       }
     });
-    AppMethodBeat.o(233349);
+    AppMethodBeat.o(242523);
   }
   
   public void setSmileySendButtonEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(233363);
-    if (this.jPN != null) {
-      this.jPN.setSendButtonEnable(paramBoolean);
+    AppMethodBeat.i(242529);
+    if (this.moD != null) {
+      this.moD.setSendButtonEnable(paramBoolean);
     }
-    AppMethodBeat.o(233363);
+    AppMethodBeat.o(242529);
   }
   
   public static abstract interface a
@@ -325,7 +309,7 @@ public class EmojiPanelInputComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.emoji.view.EmojiPanelInputComponent
  * JD-Core Version:    0.7.0.1
  */

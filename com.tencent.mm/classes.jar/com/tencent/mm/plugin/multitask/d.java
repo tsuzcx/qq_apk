@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.plugin.multitask.ui.c;
-import com.tencent.mm.protocal.protobuf.daq;
-import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.dry;
+import com.tencent.mm.protocal.protobuf.drz;
 import java.util.List;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/IPluginMultiTask;", "Lcom/tencent/mm/kernel/plugin/IAlias;", "addTaskInfo", "", "id", "", "type", "", "showData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskShowData;", "data", "", "reportdata", "Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "addTaskInfoByBitmap", "bitmap", "Landroid/graphics/Bitmap;", "getMultiTaskFloatBallPosition", "Landroid/graphics/Point;", "getMultiTaskInfoList", "callback", "Lcom/tencent/mm/plugin/multitask/listener/OnGetMultiTaskInfoListCallback;", "getMultiTaskItemPosition", "curPos", "way", "getTaskInfoById", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getTaskInfoByType", "", "hasTaskInfo", "", "multiTaskInfo", "isDataEmpty", "isMultiTaskMode", "registerMultiTaskUIC", "clazz", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "removeTaskInfoAndCoverImg", "reportMultiTaskInfo", "reportType", "multiTaskReportData", "sendMultiTaskEvent", "eventType", "updateTaskInfoByBitmap", "updateTaskInfoByTitle", "Companion", "plugin-multitask_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/multitask/IPluginMultiTask;", "Lcom/tencent/mm/kernel/plugin/IAlias;", "addTaskInfo", "", "id", "", "type", "", "showData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskShowData;", "data", "", "reportdata", "Lcom/tencent/mm/protocal/protobuf/MultiTaskReportData;", "addTaskInfoByBitmap", "bitmap", "Landroid/graphics/Bitmap;", "getMultiTaskFloatBallPosition", "Landroid/graphics/Point;", "getMultiTaskInfoList", "callback", "Lcom/tencent/mm/plugin/multitask/listener/OnGetMultiTaskInfoListCallback;", "getMultiTaskItemPosition", "curPos", "way", "getTaskInfoById", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getTaskInfoByType", "", "hasTaskInfo", "", "multiTaskInfo", "isDataEmpty", "isMultiTaskMode", "registerMultiTaskUIC", "clazz", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "removeTaskInfoAndCoverImg", "reportMultiTaskInfo", "reportType", "multiTaskReportData", "sendMultiTaskEvent", "eventType", "updateTaskInfoByBitmap", "updateTaskInfoByTitle", "Companion", "plugin-multitask_release"}, k=1, mv={1, 5, 1}, xi=48)
 public abstract interface d
   extends com.tencent.mm.kernel.b.a
 {
-  public static final d.a FER = d.a.FES;
+  public static final d.a LAT = d.a.LAU;
   
-  public abstract void addTaskInfo(String paramString, int paramInt, dar paramdar, byte[] paramArrayOfByte, daq paramdaq);
+  public abstract void addTaskInfo(String paramString, int paramInt, drz paramdrz, byte[] paramArrayOfByte, dry paramdry);
   
-  public abstract void addTaskInfoByBitmap(String paramString, int paramInt, dar paramdar, Bitmap paramBitmap, byte[] paramArrayOfByte, daq paramdaq);
+  public abstract void addTaskInfoByBitmap(String paramString, int paramInt, drz paramdrz, Bitmap paramBitmap, byte[] paramArrayOfByte, dry paramdry);
   
   public abstract Point getMultiTaskFloatBallPosition();
   
@@ -39,20 +39,20 @@ public abstract interface d
   
   public abstract void removeTaskInfoAndCoverImg(String paramString);
   
-  public abstract void reportMultiTaskInfo(int paramInt, daq paramdaq);
+  public abstract void reportMultiTaskInfo(int paramInt, dry paramdry);
   
   public abstract void sendMultiTaskEvent(int paramInt1, String paramString, int paramInt2);
   
-  public abstract void updateTaskInfoByBitmap(String paramString, int paramInt, dar paramdar, Bitmap paramBitmap, byte[] paramArrayOfByte);
+  public abstract void updateTaskInfoByBitmap(String paramString, int paramInt, drz paramdrz, Bitmap paramBitmap, byte[] paramArrayOfByte);
   
-  public abstract void updateTaskInfoByTitle(String paramString, int paramInt, dar paramdar, byte[] paramArrayOfByte);
+  public abstract void updateTaskInfoByTitle(String paramString, int paramInt, drz paramdrz, byte[] paramArrayOfByte);
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.d
  * JD-Core Version:    0.7.0.1
  */

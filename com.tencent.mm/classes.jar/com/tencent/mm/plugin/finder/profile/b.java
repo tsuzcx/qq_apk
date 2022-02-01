@@ -1,81 +1,116 @@
 package com.tencent.mm.plugin.finder.profile;
 
-import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.br;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bkr;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import kotlin.a.j;
-import kotlin.g.a.m;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.search.FTSSearchView;
+import com.tencent.mm.view.RefreshLoadMoreLayout;
+import com.tencent.mm.view.drawer.RecyclerViewDrawer;
+import com.tencent.mm.view.drawer.RecyclerViewDrawerSquares.c;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterContract;", "", "context", "Landroid/app/Activity;", "outerDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "Lkotlin/collections/ArrayList;", "username", "", "type", "", "(Landroid/app/Activity;Ljava/util/ArrayList;Ljava/lang/String;I)V", "TAG", "getContext", "()Landroid/app/Activity;", "dataList", "Lcom/tencent/mm/plugin/finder/model/FinderTopicInfoFeed;", "getDataList", "()Ljava/util/ArrayList;", "getOuterDataList", "selectListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "selected", "", "getSelectListener", "()Lkotlin/jvm/functions/Function2;", "setSelectListener", "(Lkotlin/jvm/functions/Function2;)V", "getType", "()I", "getUsername", "()Ljava/lang/String;", "view", "Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterView;", "getView", "()Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterView;", "setView", "(Lcom/tencent/mm/plugin/finder/profile/FinderTopicFilterView;)V", "genView", "Landroid/view/View;", "refresh", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawerBuilder;", "Lcom/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawer$Builder;", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawerSquares$OnOpenDrawerListener;", "()V", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "drawer", "Lcom/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawer;)V", "header", "Landroid/view/View;", "getHeader", "()Landroid/view/View;", "setHeader", "(Landroid/view/View;)V", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "setRecyclerView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "onBuildDrawerBody", "", "onBuildDrawerHeader", "headerLayout", "Landroid/widget/FrameLayout;", "onBuildLoading", "loadingLayout", "onDrawerCreated", "Lcom/tencent/mm/view/drawer/RecyclerViewDrawer;", "onDrawerDetach", "onDrawerOpen", "isOpen", "", "isBegin", "onDrawerTranslation", "percent", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
+  implements RecyclerViewDrawerSquares.c
 {
-  private final String TAG;
-  private final Activity fDf;
-  final ArrayList<br> mXB;
-  private final int type;
-  private final String username;
-  public FinderTopicFilterView zPH;
-  public m<? super bkr, ? super Boolean, x> zPI;
-  private final ArrayList<bkr> zPJ;
+  public RefreshLoadMoreLayout ATx;
+  public FinderProfilePoiDrawer Faf;
+  public View Fag;
+  public Context context;
+  public RecyclerView mkw;
   
-  public b(Activity paramActivity, ArrayList<bkr> paramArrayList, String paramString, int paramInt)
+  private static final void a(b paramb, View paramView)
   {
-    AppMethodBeat.i(228888);
-    this.fDf = paramActivity;
-    this.zPJ = paramArrayList;
-    this.username = paramString;
-    this.type = paramInt;
-    this.TAG = "Finder.FinderTopicFilterContract";
-    this.mXB = new ArrayList();
-    AppMethodBeat.o(228888);
+    AppMethodBeat.i(348198);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramb);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawerBuilder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramb, "this$0");
+    RecyclerViewDrawer.b((RecyclerViewDrawer)paramb.eIt());
+    a.a(new Object(), "com/tencent/mm/plugin/finder/profile/FinderProfilePoiDrawerBuilder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(348198);
   }
   
-  public final void bfU()
+  public static void c(Context paramContext, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(228882);
-    boolean bool = this.mXB.isEmpty();
-    this.mXB.clear();
-    Object localObject1 = this.mXB;
-    Object localObject2 = (Iterable)this.zPJ;
-    Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-    localObject2 = ((Iterable)localObject2).iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      localCollection.add(new br((bkr)((Iterator)localObject2).next(), this.type));
-    }
-    ((ArrayList)localObject1).addAll((Collection)localCollection);
-    if (this.mXB.isEmpty())
-    {
-      localObject1 = this.zPH;
-      if (localObject1 != null) {
-        ((FinderTopicFilterView)localObject1).setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      localObject1 = this.zPH;
-      if (localObject1 != null) {
-        ((FinderTopicFilterView)localObject1).bfU();
-      }
-      Log.i(this.TAG, "refresh, dataList size:" + this.mXB.size());
-      if ((bool) && (!this.mXB.isEmpty())) {
-        h.IzE.kvStat(21570, this.username + ",1,");
-      }
-      AppMethodBeat.o(228882);
-      return;
-      localObject1 = this.zPH;
-      if (localObject1 != null) {
-        ((FinderTopicFilterView)localObject1).setVisibility(0);
-      }
-    }
+    AppMethodBeat.i(348185);
+    s.u(paramContext, "context");
+    s.u(paramFrameLayout, "loadingLayout");
+    AppMethodBeat.o(348185);
   }
+  
+  private FinderProfilePoiDrawer eIt()
+  {
+    AppMethodBeat.i(348177);
+    FinderProfilePoiDrawer localFinderProfilePoiDrawer = this.Faf;
+    if (localFinderProfilePoiDrawer != null)
+    {
+      AppMethodBeat.o(348177);
+      return localFinderProfilePoiDrawer;
+    }
+    s.bIx("drawer");
+    AppMethodBeat.o(348177);
+    return null;
+  }
+  
+  public final void ak(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public final void b(Context paramContext, FrameLayout paramFrameLayout)
+  {
+    AppMethodBeat.i(348226);
+    s.u(paramContext, "context");
+    s.u(paramFrameLayout, "headerLayout");
+    paramContext = af.mU(paramContext).inflate(e.f.finder_profile_poi_list_header, (ViewGroup)paramFrameLayout);
+    s.s(paramContext, "getInflater(context).inf…ist_header, headerLayout)");
+    s.u(paramContext, "<set-?>");
+    this.Fag = paramContext;
+    paramContext = eIu().findViewById(e.e.close_area_layout);
+    if (paramContext != null) {
+      paramContext.setOnClickListener(new b..ExternalSyntheticLambda0(this));
+    }
+    if (paramContext != null) {
+      eIt().mA(paramContext);
+    }
+    paramContext = (LinearLayout)eIu().findViewById(e.e.drawer_top_search_layout);
+    paramFrameLayout = eIt();
+    s.s(paramContext, "topSearchLayout");
+    paramFrameLayout.mA((View)paramContext);
+    paramContext = (FTSSearchView)eIu().findViewById(e.e.drawer_header_search);
+    paramFrameLayout = eIt();
+    s.s(paramContext, "searchView");
+    paramFrameLayout.mA((View)paramContext);
+    AppMethodBeat.o(348226);
+  }
+  
+  public final void cm(float paramFloat) {}
+  
+  public final View eIu()
+  {
+    AppMethodBeat.i(348213);
+    View localView = this.Fag;
+    if (localView != null)
+    {
+      AppMethodBeat.o(348213);
+      return localView;
+    }
+    s.bIx("header");
+    AppMethodBeat.o(348213);
+    return null;
+  }
+  
+  public final void eIv() {}
 }
 
 

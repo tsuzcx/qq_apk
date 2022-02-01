@@ -1,70 +1,36 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.cjf;
+import com.tencent.mm.protocal.protobuf.cjg;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/model/CgiGetEmojiWordList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "()V", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
+  extends b<cjg>
 {
-  private static c jNo;
-  public boolean jKk;
-  public long jNp;
-  public int jNq;
-  public int jNr;
-  public int scene;
-  
-  public static c aDb()
+  public c()
   {
-    AppMethodBeat.i(104481);
-    if (jNo == null) {
-      jNo = new c();
-    }
-    c localc = jNo;
-    AppMethodBeat.o(104481);
-    return localc;
-  }
-  
-  public final void Fn(long paramLong)
-  {
-    AppMethodBeat.i(104482);
-    Log.i("EmojiClickReport", "panelShow");
-    this.jNp = paramLong;
-    this.jNq = 1;
-    AppMethodBeat.o(104482);
-  }
-  
-  public final void b(String paramString, boolean paramBoolean, int paramInt)
-  {
-    int j = 1;
-    AppMethodBeat.i(104483);
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jNp;
-    h localh = h.IzE;
-    int k = this.scene;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (!this.jKk) {
-        break label183;
-      }
-    }
-    for (;;)
-    {
-      localh.a(13470, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(this.jNr), Integer.valueOf(this.jNq), Long.valueOf(l1 - l2), Long.valueOf(l1), Long.valueOf(this.jNp) });
-      this.jNq += 1;
-      AppMethodBeat.o(104483);
-      return;
-      i = 0;
-      break;
-      label183:
-      j = 0;
-    }
+    AppMethodBeat.i(242654);
+    cjf localcjf = new cjf();
+    cjg localcjg = new cjg();
+    c.a locala = new c.a();
+    locala.otE = ((a)localcjf);
+    locala.otF = ((a)localcjg);
+    locala.uri = "/cgi-bin/micromsg-bin/getemotionwordlist";
+    locala.funcId = 3628;
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    c(locala.bEF());
+    AppMethodBeat.o(242654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.emoji.c.c
  * JD-Core Version:    0.7.0.1
  */

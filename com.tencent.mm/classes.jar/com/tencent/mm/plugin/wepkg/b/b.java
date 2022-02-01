@@ -11,49 +11,49 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class b
   extends MAutoStorage<a>
 {
-  private static b QLn;
   public static final String[] SQL_CREATE;
+  private static b XEM;
   private static final Object lock;
-  private ISQLiteDatabase nFQ;
+  private ISQLiteDatabase qFJ;
   
   static
   {
     AppMethodBeat.i(110561);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.lqK, "WePkgDiffPackage") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.nVV, "WePkgDiffPackage") };
     lock = new Object();
     AppMethodBeat.o(110561);
   }
   
   private b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, a.lqK, "WePkgDiffPackage", a.INDEX_CREATE);
-    this.nFQ = paramISQLiteDatabase;
+    super(paramISQLiteDatabase, a.nVV, "WePkgDiffPackage", a.INDEX_CREATE);
+    this.qFJ = paramISQLiteDatabase;
   }
   
-  private boolean bLz()
+  private boolean ckW()
   {
-    return this.nFQ != null;
+    return this.qFJ != null;
   }
   
-  public static b heu()
+  public static b iFc()
   {
     AppMethodBeat.i(110558);
-    if (QLn == null) {}
+    if (XEM == null) {}
     synchronized (lock)
     {
-      if ((QLn == null) || (!QLn.bLz())) {
-        QLn = new b(h.aHG().kcF);
+      if ((XEM == null) || (!XEM.ckW())) {
+        XEM = new b(h.baE().mCN);
       }
-      ??? = QLn;
+      ??? = XEM;
       AppMethodBeat.o(110558);
       return ???;
     }
   }
   
-  public final a boj(String paramString)
+  public final a bnX(String paramString)
   {
     AppMethodBeat.i(110559);
-    if ((!bLz()) || (Util.isNullOrNil(paramString)))
+    if ((!ckW()) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110559);
       return null;
@@ -77,10 +77,10 @@ public final class b
     return null;
   }
   
-  public final boolean ho(String paramString)
+  public final boolean iP(String paramString)
   {
     AppMethodBeat.i(110560);
-    if ((!bLz()) || (Util.isNullOrNil(paramString)))
+    if ((!ckW()) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110560);
       return false;

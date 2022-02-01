@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface ar
 {
-  public abstract boolean ceX();
+  public abstract boolean cFM();
 }
 
 

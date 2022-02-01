@@ -15,23 +15,31 @@ import org.json.JSONObject;
 
 public final class g
 {
-  public static void S(String paramString, Map<Integer, Object> paramMap)
+  public static Map<Integer, Object> cI(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(80874);
-    if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
+    AppMethodBeat.i(80876);
+    HashMap localHashMap = new HashMap();
+    if (paramJSONObject == null)
     {
-      e.U(paramString, paramMap);
-      AppMethodBeat.o(80874);
-      return;
+      AppMethodBeat.o(80876);
+      return localHashMap;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("report_data", bT(paramMap).toString());
-    localBundle.putString("page_key", paramString);
-    ToolsProcessIPCService.a(localBundle, a.class, null);
-    AppMethodBeat.o(80874);
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      int i = Util.getInt(str, -1);
+      if (i == -1) {
+        Log.i("MicroMsg.GameWebReportUtil", "reportData key error");
+      } else {
+        localHashMap.put(Integer.valueOf(i), paramJSONObject.opt(str));
+      }
+    }
+    AppMethodBeat.o(80876);
+    return localHashMap;
   }
   
-  private static JSONObject bT(Map<Integer, Object> paramMap)
+  private static JSONObject cm(Map<Integer, Object> paramMap)
   {
     AppMethodBeat.i(80875);
     localJSONObject = new JSONObject();
@@ -56,28 +64,20 @@ public final class g
     }
   }
   
-  public static Map<Integer, Object> cn(JSONObject paramJSONObject)
+  public static void w(String paramString, Map<Integer, Object> paramMap)
   {
-    AppMethodBeat.i(80876);
-    HashMap localHashMap = new HashMap();
-    if (paramJSONObject == null)
+    AppMethodBeat.i(80874);
+    if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
     {
-      AppMethodBeat.o(80876);
-      return localHashMap;
+      e.ad(paramString, paramMap);
+      AppMethodBeat.o(80874);
+      return;
     }
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      int i = Util.getInt(str, -1);
-      if (i == -1) {
-        Log.i("MicroMsg.GameWebReportUtil", "reportData key error");
-      } else {
-        localHashMap.put(Integer.valueOf(i), paramJSONObject.opt(str));
-      }
-    }
-    AppMethodBeat.o(80876);
-    return localHashMap;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("report_data", cm(paramMap).toString());
+    localBundle.putString("page_key", paramString);
+    ToolsProcessIPCService.a(localBundle, a.class, null);
+    AppMethodBeat.o(80874);
   }
   
   public static class a

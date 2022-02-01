@@ -5,13 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class LuggageNativeViewJni
 {
   private static String TAG;
-  private long cwE = -1L;
+  private long eoE = -1L;
   
   static
   {
     AppMethodBeat.i(140472);
     TAG = "LuggageNativeViewJni";
-    System.loadLibrary("wechatlv");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatlv");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/luggage/natives/LuggageNativeViewJni", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/luggage/natives/LuggageNativeViewJni", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(140472);
   }
   

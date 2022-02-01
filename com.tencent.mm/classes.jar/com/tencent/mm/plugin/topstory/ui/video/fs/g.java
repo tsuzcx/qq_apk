@@ -13,92 +13,92 @@ public class g
   extends h
   implements a
 {
-  public e NbK;
-  public FrameLayout NbL;
+  public e TOt;
+  public FrameLayout TOu;
   
   public g(View paramView, b paramb)
   {
     super(paramView, paramb);
   }
   
-  public final void Ah(boolean paramBoolean)
+  public final void FD(boolean paramBoolean)
   {
     AppMethodBeat.i(126324);
-    super.Ah(paramBoolean);
-    this.MZd.ajB(md());
-    if (this.NbK.aL(paramBoolean, false))
+    super.FD(paramBoolean);
+    this.TLM.aoU(KJ());
+    if (this.TOt.bi(paramBoolean, false))
     {
-      gqv();
-      gqu();
+      hNu();
+      hNt();
     }
     AppMethodBeat.o(126324);
   }
   
-  public final void ajL(int paramInt)
+  public final void ape(int paramInt)
   {
     AppMethodBeat.i(126328);
-    a(this.MZd, this.MZd.eOa(), this.NbK, paramInt);
+    a(this.TLM, this.TLM.fWt(), this.TOt, paramInt);
     AppMethodBeat.o(126328);
   }
   
   public final View getWowView()
   {
     AppMethodBeat.i(126327);
-    View localView = this.NbK.getControlBar().getWowView();
+    View localView = this.TOt.getControlBar().getWowView();
     AppMethodBeat.o(126327);
     return localView;
   }
   
-  public final int gqw()
+  public final int hNv()
   {
-    AppMethodBeat.i(292762);
-    int i = md();
-    AppMethodBeat.o(292762);
+    AppMethodBeat.i(369748);
+    int i = KJ();
+    AppMethodBeat.o(369748);
     return i;
   }
   
-  public void gri()
+  public void hOh()
   {
     AppMethodBeat.i(126325);
-    if (this.NbK == null)
+    if (this.TOt == null)
     {
-      if (!this.MZd.gqI()) {
+      if (!this.TLM.hNH()) {
         break label133;
       }
-      this.NbK = new k(this.MZd.eOa(), this.MZd, this);
-      this.NbL.removeAllViews();
-      if (!this.MZd.gqI()) {
+      this.TOt = new k(this.TLM.fWt(), this.TLM, this);
+      this.TOu.removeAllViews();
+      if (!this.TLM.hNH()) {
         break label161;
       }
     }
     label133:
     label161:
-    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.MZd.dpI().x, this.MZd.dpI().y);; localLayoutParams = new FrameLayout.LayoutParams(this.MZd.dpI().y, this.MZd.dpI().x))
+    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.TLM.dXX().x, this.TLM.dXX().y);; localLayoutParams = new FrameLayout.LayoutParams(this.TLM.dXX().y, this.TLM.dXX().x))
     {
-      this.NbL.addView(this.NbK, localLayoutParams);
-      this.NbK.a(this.MWs, gqw());
+      this.TOu.addView(this.TOt, localLayoutParams);
+      this.TOt.a(this.TIW, hNv());
       AppMethodBeat.o(126325);
       return;
-      this.NbK = new e(this.MZd.eOa(), this.MZd, this);
+      this.TOt = new e(this.TLM.fWt(), this.TLM, this);
       break;
     }
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f grj()
+  public final com.tencent.mm.plugin.topstory.ui.video.f hOi()
   {
-    return this.NbK;
+    return this.TOt;
   }
   
-  public final void hd(View paramView)
+  public final void ko(View paramView)
   {
     AppMethodBeat.i(126323);
-    this.NbL = ((FrameLayout)paramView.findViewById(c.d.video_view_container));
+    this.TOu = ((FrameLayout)paramView.findViewById(c.d.video_view_container));
     AppMethodBeat.o(126323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.g
  * JD-Core Version:    0.7.0.1
  */

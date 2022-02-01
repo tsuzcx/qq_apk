@@ -2,7 +2,7 @@ package com.tencent.mm.ui.matrix;
 
 abstract interface MatrixSettingSeekBarPreference$a
 {
-  public abstract void axp(int paramInt);
+  public abstract void aDZ(int paramInt);
 }
 
 

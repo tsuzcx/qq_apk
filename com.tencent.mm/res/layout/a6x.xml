@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cbf" android:background="@drawable/b6d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip"
+<FrameLayout android:id="@id/cvi" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0dip" android:textColor="#ffaaaaaa" android:id="@id/cbe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <Button android:textSize="@dimen/hc" android:id="@id/cbd" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/tf" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/oy" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/f1" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jf">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/cvg" android:src="@raw/fav_list_img_default" style="@style/je" />
+            <include layout="@layout/a6w" />
+            <include layout="@layout/a6v" />
+        </LinearLayout>
+        <include layout="@layout/a6t" />
+    </LinearLayout>
+</FrameLayout>

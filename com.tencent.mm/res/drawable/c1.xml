@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:right="3.0dip">
-        <bitmap android:src="@drawable/bx9" />
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@drawable/axn" />
+    <item android:drawable="@color/ahb" />
+</selector>

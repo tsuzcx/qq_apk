@@ -4,18 +4,19 @@ public final class a
 {
   public static final class a
   {
-    public static final int brand_text_color = 2131100077;
+    public static final int brand_text_color = 2131100175;
   }
   
   public static final class c
   {
-    public static final int dialog_successful_icon = 2131690088;
+    public static final int dialog_successful_icon = 2131690134;
   }
   
   public static final class d
   {
-    public static final int app_cancel = 2131755823;
-    public static final int confirm_dialog_share = 2131757869;
+    public static final int app_cancel = 2131755870;
+    public static final int confirm_dialog_share = 2131758143;
+    public static final int mp_pay_content = 2131765497;
   }
 }
 

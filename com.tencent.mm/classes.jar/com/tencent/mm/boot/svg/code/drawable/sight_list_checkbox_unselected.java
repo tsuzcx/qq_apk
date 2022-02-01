@@ -79,7 +79,7 @@ public class sight_list_checkbox_unselected
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.sight_list_checkbox_unselected
  * JD-Core Version:    0.7.0.1
  */

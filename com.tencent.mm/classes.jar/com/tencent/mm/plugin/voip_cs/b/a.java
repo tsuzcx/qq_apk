@@ -1,76 +1,64 @@
 package com.tencent.mm.plugin.voip_cs.b;
 
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.aan;
-import com.tencent.mm.f.a.aan.a;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.voip_cs.c.c;
-import com.tencent.mm.plugin.voip_cs.c.e;
-import com.tencent.mm.protocal.protobuf.fdn;
-import com.tencent.mm.protocal.protobuf.fdu;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.voip_cs.model.c;
+import com.tencent.mm.plugin.voip_cs.model.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.io.IOException;
 
 public final class a
-  extends IListener<aan>
+  extends com.tencent.mm.plugin.voip.video.camera.prev.a
 {
   public a()
   {
-    AppMethodBeat.i(161685);
-    this.__eventId = aan.class.getName().hashCode();
-    AppMethodBeat.o(161685);
+    super(640, 480);
   }
   
-  private static boolean a(aan paramaan)
+  public final void ies()
   {
-    AppMethodBeat.i(125336);
-    e locale;
-    Object localObject;
-    if ((paramaan instanceof aan))
-    {
-      if (!h.aHB())
-      {
-        AppMethodBeat.o(125336);
-        return false;
-      }
-      locale = c.gEW();
-      localObject = paramaan.fZG.fZH;
-      if ((localObject != null) && (localObject.length != 0))
-      {
-        paramaan = new byte[localObject.length - 1];
-        System.arraycopy(localObject, 1, paramaan, 0, paramaan.length);
-        localObject = new fdn();
-      }
-    }
+    AppMethodBeat.i(125487);
     try
     {
-      ((fdn)localObject).parseFrom(paramaan);
-      Log.i("MicroMsg.voipcs.VoipCSService", "notify status = " + ((fdn)localObject).UDA + ",notifySeq = " + locale.Ojq);
-      paramaan = new fdu();
-      paramaan.Urf = ((fdn)localObject).Urf;
-      paramaan.Svv = ((fdn)localObject).Svv;
-      paramaan.UDy = ((fdn)localObject).UDy;
-      paramaan.UDA = ((fdn)localObject).UDA;
-      paramaan.UDB = ((fdn)localObject).UDB;
-      paramaan.UDC = ((fdn)localObject).UDC;
-      paramaan.UDz = ((fdn)localObject).UDz;
-      locale.a(paramaan);
-      AppMethodBeat.o(125336);
-      return false;
-    }
-    catch (IOException paramaan)
-    {
-      for (;;)
+      Camera.Size localSize;
+      d locald;
+      if (this.LpP != null)
       {
-        Log.e("MicroMsg.voipcs.VoipCSService", "csNotify.parseFrom content error!", new Object[] { paramaan });
+        localSize = this.LpP.getPreviewSize();
+        locald = c.idY();
+        if (!this.LpS) {
+          break label112;
+        }
       }
+      label112:
+      for (int i = 1;; i = 0)
+      {
+        this.LpP.getPreviewFrameRate();
+        int j = this.Lqb;
+        int k = this.Lqc;
+        int m = localSize.width;
+        int n = localSize.height;
+        Log.d("MicroMsg.VoipCSReportHelper", "setCameraInfo");
+        locald.UXd = i;
+        locald.UWZ = j;
+        locald.UXa = k;
+        locald.UXb = m;
+        locald.UXc = n;
+        AppMethodBeat.o(125487);
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.CSCaptureRender", "getCameraDataForVoipCS failed" + localException.getMessage());
+      AppMethodBeat.o(125487);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.b.a
  * JD-Core Version:    0.7.0.1
  */

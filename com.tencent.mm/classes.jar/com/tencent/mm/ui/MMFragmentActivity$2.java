@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class MMFragmentActivity$2
-  extends MMFragmentActivity.d
+  extends MMFragmentActivity.f
 {
   MMFragmentActivity$2(MMFragmentActivity paramMMFragmentActivity, Runnable paramRunnable) {}
   
   public final void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    AppMethodBeat.i(211797);
+    AppMethodBeat.i(249134);
     if ((paramString.equals("gprs_alert")) && (!paramSharedPreferences.getBoolean("gprs_alert", true)))
     {
       Log.i("MicroMsg.MMFragmentActivity", "onSharedPreferenceChanged");
-      this.WaV.run();
-      if ((!this.WaU.isPaused()) && (MMFragmentActivity.access$000(this.WaU) != null)) {
-        MMFragmentActivity.access$000(this.WaU).onResume();
+      this.adFq.run();
+      if ((!this.adFp.isPaused()) && (MMFragmentActivity.access$000(this.adFp) != null)) {
+        MMFragmentActivity.access$000(this.adFp).onResume();
       }
       dead();
     }
-    AppMethodBeat.o(211797);
+    AppMethodBeat.o(249134);
   }
 }
 

@@ -32,7 +32,7 @@ public class SignaturePreference
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.e.content);
     localViewGroup.removeAllViews();
     localViewGroup.setPadding(0, 0, 0, 0);
-    View.inflate(this.mContext, a.f.jef, localViewGroup);
+    View.inflate(this.mContext, a.f.lGp, localViewGroup);
     AppMethodBeat.o(13017);
     return paramViewGroup;
   }

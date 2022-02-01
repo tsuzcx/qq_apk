@@ -5,12 +5,6 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,17 +12,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="FieldMappingDictionaryCreator")
 public class FieldMappingDictionary
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<FieldMappingDictionary> CREATOR;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
   private final HashMap<String, Map<String, FastJsonResponse.Field<?, ?>>> zzxk;
-  @SafeParcelable.Field(getter="getSerializedDictionary", id=2)
   private final ArrayList<Entry> zzxl;
-  @SafeParcelable.Field(getter="getRootClassName", id=3)
   private final String zzxm;
   
   static
@@ -38,8 +28,7 @@ public class FieldMappingDictionary
     AppMethodBeat.o(12066);
   }
   
-  @SafeParcelable.Constructor
-  FieldMappingDictionary(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<Entry> paramArrayList, @SafeParcelable.Param(id=3) String paramString)
+  FieldMappingDictionary(int paramInt, ArrayList<Entry> paramArrayList, String paramString)
   {
     AppMethodBeat.i(12056);
     this.zzal = paramInt;
@@ -99,7 +88,6 @@ public class FieldMappingDictionary
     AppMethodBeat.o(12058);
   }
   
-  @VisibleForTesting
   public Map<String, FastJsonResponse.Field<?, ?>> getFieldMapping(Class<? extends FastJsonResponse> paramClass)
   {
     AppMethodBeat.i(12061);
@@ -193,16 +181,12 @@ public class FieldMappingDictionary
     AppMethodBeat.o(12065);
   }
   
-  @SafeParcelable.Class(creator="FieldMappingDictionaryEntryCreator")
   public static class Entry
     extends AbstractSafeParcelable
   {
     public static final Parcelable.Creator<Entry> CREATOR;
-    @SafeParcelable.Field(id=2)
     final String className;
-    @SafeParcelable.VersionField(id=1)
     private final int versionCode;
-    @SafeParcelable.Field(id=3)
     final ArrayList<FieldMappingDictionary.FieldMapPair> zzxn;
     
     static
@@ -212,8 +196,7 @@ public class FieldMappingDictionary
       AppMethodBeat.o(12053);
     }
     
-    @SafeParcelable.Constructor
-    Entry(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) ArrayList<FieldMappingDictionary.FieldMapPair> paramArrayList)
+    Entry(int paramInt, String paramString, ArrayList<FieldMappingDictionary.FieldMapPair> paramArrayList)
     {
       this.versionCode = paramInt;
       this.className = paramString;
@@ -255,16 +238,12 @@ public class FieldMappingDictionary
     }
   }
   
-  @SafeParcelable.Class(creator="FieldMapPairCreator")
   public static class FieldMapPair
     extends AbstractSafeParcelable
   {
     public static final Parcelable.Creator<FieldMapPair> CREATOR;
-    @SafeParcelable.VersionField(id=1)
     private final int versionCode;
-    @SafeParcelable.Field(id=2)
     final String zzxo;
-    @SafeParcelable.Field(id=3)
     final FastJsonResponse.Field<?, ?> zzxp;
     
     static
@@ -274,8 +253,7 @@ public class FieldMappingDictionary
       AppMethodBeat.o(12055);
     }
     
-    @SafeParcelable.Constructor
-    FieldMapPair(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) FastJsonResponse.Field<?, ?> paramField)
+    FieldMapPair(int paramInt, String paramString, FastJsonResponse.Field<?, ?> paramField)
     {
       this.versionCode = paramInt;
       this.zzxo = paramString;
@@ -303,7 +281,7 @@ public class FieldMappingDictionary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FieldMappingDictionary
  * JD-Core Version:    0.7.0.1
  */

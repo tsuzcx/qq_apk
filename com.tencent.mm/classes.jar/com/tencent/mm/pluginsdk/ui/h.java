@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk.ui;
 
 public abstract interface h
 {
-  public abstract void AS(int paramInt);
+  public abstract void Bh(int paramInt);
   
   public abstract int getVideoTotalTime();
   
-  public abstract void iF(boolean paramBoolean);
+  public abstract void jJ(boolean paramBoolean);
   
   public abstract void setVideoTotalTime(int paramInt);
 }

@@ -4,394 +4,623 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.am.k;
-import com.tencent.mm.loader.g.c;
-import com.tencent.mm.loader.g.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.live.cgi.k.a;
-import com.tencent.mm.plugin.finder.loader.e;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.modelavatar.j;
+import com.tencent.mm.modelavatar.q;
+import com.tencent.mm.plugin.finder.live.cgi.u.a;
+import com.tencent.mm.plugin.finder.live.p.b;
+import com.tencent.mm.plugin.finder.live.p.c;
+import com.tencent.mm.plugin.finder.live.p.d;
+import com.tencent.mm.plugin.finder.live.p.e;
+import com.tencent.mm.plugin.finder.live.p.f;
+import com.tencent.mm.plugin.finder.live.p.g;
+import com.tencent.mm.plugin.finder.loader.p;
+import com.tencent.mm.plugin.finder.loader.p.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.upload.g;
 import com.tencent.mm.plugin.finder.upload.m;
 import com.tencent.mm.plugin.findersdk.a.a;
-import com.tencent.mm.protocal.protobuf.axc;
-import com.tencent.mm.protocal.protobuf.bcn;
+import com.tencent.mm.pluginsdk.ui.tools.t;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.protocal.protobuf.bmp;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.tools.h;
-import com.tencent.mm.ui.tools.i;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.bf;
 import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.ui.widget.a.f.c;
-import java.util.HashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
 @com.tencent.mm.ui.base.a(32)
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "REQUEST_CODE_CROP_AVATAR", "", "REQUEST_CODE_SELECT_AVATAR", "TAG", "", "getTAG", "()Ljava/lang/String;", "avatarChoose", "Landroid/widget/ImageView;", "avatarGroup", "Landroid/view/View;", "avatarIv", "avatarPath", "avatarUrl", "confirmBtn", "Landroid/widget/Button;", "confirmBtnBottomMargin", "curAvatarUrl", "curNickname", "filterMyAvatarUrl", "", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "maxNickNameLength", "mySelfAvatarUrl", "nickNameStr", "nicknameClear", "nicknameEt", "Lcom/tencent/mm/ui/widget/MMEditText;", "sourceType", "splitLine3", "adjustConfirmBtn", "", "show", "height", "continuePost", "getLayoutId", "getReportTag", "initConfigValue", "initConfirmBtnConfig", "initLayout", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onResume", "parseIntent", "setAvatar", "path", "setConfirmBtnStatus", "enable", "showAlertDialog", "title", "content", "buttonTitle", "plugin-finder-live_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "REQUEST_CODE_CROP_AVATAR", "", "REQUEST_CODE_SELECT_AVATAR", "TAG", "", "getTAG", "()Ljava/lang/String;", "avatarChoose", "Landroid/widget/ImageView;", "avatarGroup", "Landroid/view/View;", "avatarIv", "avatarPath", "avatarUrl", "confirmBtn", "Landroid/widget/Button;", "confirmBtnBottomMargin", "curAvatarUrl", "curNickname", "filterMyAvatarUrl", "", "keyboardHeightProvider", "Lcom/tencent/mm/ui/tools/KeyboardHeightProvider;", "maxNickNameLength", "mySelfAvatarUrl", "nickNameStr", "nicknameClear", "nicknameEt", "Lcom/tencent/mm/ui/widget/MMEditText;", "sourceType", "splitLine3", "adjustConfirmBtn", "", "show", "height", "continuePost", "getLayoutId", "getReportTag", "initConfigValue", "initConfirmBtnConfig", "initLayout", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "onResume", "parseIntent", "setAvatar", "path", "setConfirmBtnStatus", "enable", "showAlertDialog", "title", "content", "buttonTitle", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderLiveCreateVisitorModeUI
   extends MMFinderUI
 {
+  private String AmC;
+  private final int BoG = 1000;
+  private final int BoH = 1001;
+  private View BoI;
+  private ImageView BoJ;
+  private MMEditText BoK;
+  private ImageView BoL;
+  private View BoM;
+  private boolean BoN = true;
+  private String BoO;
+  private String BoP;
+  private String BoQ;
+  private String BoR;
+  private int BoS = 28;
+  private int BoT;
   final String TAG = "FinderLiveCreateVisitorModeUI";
-  private HashMap _$_findViewCache;
-  private i jij;
-  private ImageView jiu;
-  private String nfY;
-  private Button raT;
+  private ImageView lKK;
+  private com.tencent.mm.ui.tools.i lKz;
+  private String nVM;
   private int sourceType;
-  private String wQa;
-  private final int xOK = 1000;
-  private final int xOL = 1001;
-  private View xOM;
-  private ImageView xON;
-  private MMEditText xOO;
-  private ImageView xOP;
-  private View xOQ;
-  private boolean xOR = true;
-  private String xOS;
-  private String xOT;
-  private String xOU;
-  private String xOV;
-  private int xOW = 28;
-  private int xOX;
+  private Button ugK;
   
-  private final void ox(boolean paramBoolean)
+  private static final void a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI)
   {
-    AppMethodBeat.i(233047);
-    Button localButton = this.raT;
+    AppMethodBeat.i(364503);
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    if (paramFinderLiveCreateVisitorModeUI.lKz == null)
+    {
+      paramFinderLiveCreateVisitorModeUI.lKz = new com.tencent.mm.ui.tools.i((Activity)paramFinderLiveCreateVisitorModeUI);
+      com.tencent.mm.ui.tools.i locali = paramFinderLiveCreateVisitorModeUI.lKz;
+      if (locali != null) {
+        locali.afIL = new FinderLiveCreateVisitorModeUI..ExternalSyntheticLambda4(paramFinderLiveCreateVisitorModeUI);
+      }
+    }
+    paramFinderLiveCreateVisitorModeUI = paramFinderLiveCreateVisitorModeUI.lKz;
+    if (paramFinderLiveCreateVisitorModeUI != null) {
+      paramFinderLiveCreateVisitorModeUI.start();
+    }
+    AppMethodBeat.o(364503);
+  }
+  
+  private static final void a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, int paramInt, boolean paramBoolean)
+  {
+    int j = 1;
+    ViewGroup localViewGroup = null;
+    AppMethodBeat.i(364495);
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    Log.i(paramFinderLiveCreateVisitorModeUI.TAG, "onKeyboardHeightChanged, height:" + paramInt + ", isResized:" + paramBoolean);
+    int i;
+    Object localObject1;
+    label69:
+    label84:
+    int m;
+    int k;
+    label131:
+    int n;
+    if (paramInt > 0)
+    {
+      i = 1;
+      localObject1 = paramFinderLiveCreateVisitorModeUI.ugK;
+      if (localObject1 != null) {
+        break label363;
+      }
+      localObject1 = null;
+      if (!(localObject1 instanceof RelativeLayout.LayoutParams)) {
+        break label373;
+      }
+      localObject1 = (RelativeLayout.LayoutParams)localObject1;
+      m = MMApplicationContext.getContext().getResources().getDimensionPixelOffset(p.c.Edge_8A);
+      if (localObject1 != null)
+      {
+        if (i == 0) {
+          break label469;
+        }
+        k = bf.bf(MMApplicationContext.getContext()).y;
+        localObject2 = paramFinderLiveCreateVisitorModeUI.ugK;
+        if (localObject2 != null) {
+          break label379;
+        }
+        i = 0;
+        localObject2 = new int[2];
+        View localView = paramFinderLiveCreateVisitorModeUI.BoM;
+        if (localView != null) {
+          localView.getLocationOnScreen((int[])localObject2);
+        }
+        n = localObject2[1];
+        localObject2 = paramFinderLiveCreateVisitorModeUI.BoM;
+        if (localObject2 != null) {
+          break label388;
+        }
+        label171:
+        Log.i(paramFinderLiveCreateVisitorModeUI.TAG, "adjustConfirmBtn screenHeight:" + k + ",confirmBtnContainerH:" + i + ",descContainerY:" + n + ",itemHeight:" + j + ",height:" + paramInt);
+        if ((i != 0) && (n != 0) && (k - m - i - (n + j) > paramInt)) {
+          break label398;
+        }
+        localObject2 = paramFinderLiveCreateVisitorModeUI.BoM;
+        if (localObject2 != null)
+        {
+          paramInt = ((View)localObject2).getId();
+          ((RelativeLayout.LayoutParams)localObject1).removeRule(12);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(3, paramInt);
+          ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
+        }
+        label301:
+        localObject2 = paramFinderLiveCreateVisitorModeUI.ugK;
+        if (localObject2 != null) {
+          break label494;
+        }
+      }
+    }
+    label363:
+    label494:
+    for (Object localObject2 = null;; localObject2 = ((Button)localObject2).getParent())
+    {
+      if ((localObject2 instanceof ViewGroup)) {
+        localViewGroup = (ViewGroup)localObject2;
+      }
+      if (localViewGroup != null) {
+        localViewGroup.updateViewLayout((View)paramFinderLiveCreateVisitorModeUI.ugK, (ViewGroup.LayoutParams)localObject1);
+      }
+      AppMethodBeat.o(364495);
+      return;
+      i = 0;
+      break;
+      localObject1 = ((Button)localObject1).getLayoutParams();
+      break label69;
+      label373:
+      localObject1 = null;
+      break label84;
+      label379:
+      i = ((Button)localObject2).getHeight();
+      break label131;
+      j = ((View)localObject2).getHeight();
+      break label171;
+      m = MMApplicationContext.getContext().getResources().getDimensionPixelOffset(p.c.Edge_8A);
+      int i1 = MMApplicationContext.getContext().getResources().getDimensionPixelOffset(p.c.Edge_6A);
+      ((RelativeLayout.LayoutParams)localObject1).removeRule(3);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(12);
+      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = (kotlin.k.k.qv(m, k - paramInt - (j + n) - i - i1) + paramInt);
+      break label301;
+      ((RelativeLayout.LayoutParams)localObject1).removeRule(3);
+      ((RelativeLayout.LayoutParams)localObject1).addRule(12);
+      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = paramFinderLiveCreateVisitorModeUI.BoT;
+      break label301;
+    }
+  }
+  
+  private static final void a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, View paramView)
+  {
+    AppMethodBeat.i(364516);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCreateVisitorModeUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    paramView = paramFinderLiveCreateVisitorModeUI.BoK;
+    if (paramView != null) {
+      paramView.setText((CharSequence)"");
+    }
+    paramFinderLiveCreateVisitorModeUI = paramFinderLiveCreateVisitorModeUI.BoL;
+    if (paramFinderLiveCreateVisitorModeUI != null) {
+      paramFinderLiveCreateVisitorModeUI.setVisibility(4);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(364516);
+  }
+  
+  private static final void a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(364550);
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    Log.i(paramFinderLiveCreateVisitorModeUI.TAG, s.X("showAlertDialog click bOk:", Boolean.valueOf(paramBoolean)));
+    AppMethodBeat.o(364550);
+  }
+  
+  private static final boolean a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(364480);
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    paramFinderLiveCreateVisitorModeUI.hideVKB();
+    paramFinderLiveCreateVisitorModeUI.finish();
+    AppMethodBeat.o(364480);
+    return true;
+  }
+  
+  private static final void b(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, View paramView)
+  {
+    AppMethodBeat.i(364529);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(paramFinderLiveCreateVisitorModeUI);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    t.a((Activity)paramFinderLiveCreateVisitorModeUI, paramFinderLiveCreateVisitorModeUI.BoG, 1, 5, null, false);
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(364529);
+  }
+  
+  private static final void c(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, View paramView)
+  {
+    AppMethodBeat.i(364541);
+    Object localObject1 = new Object();
+    Object localObject2 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramFinderLiveCreateVisitorModeUI);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject2).cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject1, ((com.tencent.mm.hellhoundlib.b.b)localObject2).aYj());
+    s.u(paramFinderLiveCreateVisitorModeUI, "this$0");
+    paramFinderLiveCreateVisitorModeUI.qc(false);
+    paramView = paramFinderLiveCreateVisitorModeUI.AmC;
+    localObject1 = (CharSequence)paramView;
+    int i;
+    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
+    {
+      i = 1;
+      if (i != 0) {
+        break label175;
+      }
+      localObject1 = ((com.tencent.mm.plugin.finder.publish.c)h.az(com.tencent.mm.plugin.finder.publish.c.class)).finderPostManager();
+      localObject2 = z.bAW();
+      s.s(localObject2, "getMyFinderUsername()");
+      ((com.tencent.mm.plugin.finder.publish.b)localObject1).h(paramView, (String)localObject2, new c(paramFinderLiveCreateVisitorModeUI));
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(364541);
+      return;
+      i = 0;
+      break;
+      label175:
+      paramFinderLiveCreateVisitorModeUI.efh();
+    }
+  }
+  
+  private final void efh()
+  {
+    AppMethodBeat.i(364471);
+    Object localObject1 = (CharSequence)this.BoR;
+    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.i(this.TAG, "continuePost nickNameStr:" + this.BoR + " is empty!");
+      qc(true);
+      AppMethodBeat.o(364471);
+      return;
+    }
+    localObject1 = this.nVM;
+    Object localObject2 = (CharSequence)this.nVM;
+    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
+    {
+      i = 1;
+      if ((i != 0) || (!s.p(this.nVM, this.BoQ)) || (!this.BoN)) {
+        break label228;
+      }
+      localObject1 = this.nVM;
+      if (localObject1 != null) {
+        break label204;
+      }
+      localObject1 = null;
+    }
+    label147:
+    label160:
+    label204:
+    label225:
+    label228:
+    for (;;)
+    {
+      localObject2 = this.BoR;
+      if (localObject2 == null)
+      {
+        localObject2 = "";
+        if (localObject1 != null) {
+          break label225;
+        }
+        localObject1 = "";
+      }
+      for (;;)
+      {
+        new com.tencent.mm.plugin.finder.live.cgi.u((String)localObject2, (String)localObject1, (u.a)new a(this)).bFJ();
+        AppMethodBeat.o(364471);
+        return;
+        i = 0;
+        break;
+        localObject2 = a.a.Hbu;
+        localObject1 = n.d((String)localObject1, (CharSequence)a.a.fqY());
+        break label147;
+        break label160;
+      }
+    }
+  }
+  
+  private final void qc(boolean paramBoolean)
+  {
+    AppMethodBeat.i(364461);
+    Button localButton = this.ugK;
     if (localButton != null) {
       localButton.setEnabled(paramBoolean);
     }
-    AppCompatActivity localAppCompatActivity;
     if (paramBoolean)
     {
-      if (ar.isDarkMode())
+      if (aw.isDarkMode())
       {
-        localButton = this.raT;
+        localButton = this.ugK;
         if (localButton != null)
         {
-          localAppCompatActivity = getContext();
-          p.j(localAppCompatActivity, "context");
-          localButton.setTextColor(localAppCompatActivity.getResources().getColor(b.c.BW_100_Alpha_0_8));
-          AppMethodBeat.o(233047);
-          return;
+          localButton.setTextColor(getContext().getResources().getColor(p.b.BW_100_Alpha_0_8));
+          AppMethodBeat.o(364461);
         }
-        AppMethodBeat.o(233047);
-        return;
       }
-      localButton = this.raT;
+      else
+      {
+        localButton = this.ugK;
+        if (localButton != null)
+        {
+          localButton.setTextColor(getContext().getResources().getColor(p.b.White));
+          AppMethodBeat.o(364461);
+        }
+      }
+    }
+    else if (aw.isDarkMode())
+    {
+      localButton = this.ugK;
       if (localButton != null)
       {
-        localAppCompatActivity = getContext();
-        p.j(localAppCompatActivity, "context");
-        localButton.setTextColor(localAppCompatActivity.getResources().getColor(b.c.White));
-        AppMethodBeat.o(233047);
-        return;
+        localButton.setTextColor(getContext().getResources().getColor(p.b.BW_100_Alpha_0_2));
+        AppMethodBeat.o(364461);
       }
-      AppMethodBeat.o(233047);
-      return;
     }
-    if (ar.isDarkMode())
+    else
     {
-      localButton = this.raT;
-      if (localButton != null)
-      {
-        localAppCompatActivity = getContext();
-        p.j(localAppCompatActivity, "context");
-        localButton.setTextColor(localAppCompatActivity.getResources().getColor(b.c.BW_100_Alpha_0_2));
-        AppMethodBeat.o(233047);
-        return;
+      localButton = this.ugK;
+      if (localButton != null) {
+        localButton.setTextColor(getContext().getResources().getColor(p.b.BW_0_Alpha_0_2));
       }
-      AppMethodBeat.o(233047);
-      return;
     }
-    localButton = this.raT;
-    if (localButton != null)
-    {
-      localAppCompatActivity = getContext();
-      p.j(localAppCompatActivity, "context");
-      localButton.setTextColor(localAppCompatActivity.getResources().getColor(b.c.BW_0_Alpha_0_2));
-      AppMethodBeat.o(233047);
-      return;
-    }
-    AppMethodBeat.o(233047);
+    AppMethodBeat.o(364461);
   }
   
-  public final void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(233077);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(233077);
-  }
+  public final void _$_clearFindViewByIdCache() {}
   
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(233076);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(233076);
-    return localView1;
-  }
-  
-  public final String dvl()
+  public final String efe()
   {
     return this.TAG;
   }
   
   public final int getLayoutId()
   {
-    return b.g.finder_live_create_visitor_role_ui;
+    return p.f.Cdx;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(233055);
-    if (paramInt1 == this.xOK)
+    AppMethodBeat.i(364705);
+    if (paramInt1 == this.BoG)
     {
       if ((paramIntent != null) && (paramInt2 == -1))
       {
         setIntent(new Intent());
-        paramIntent = com.tencent.mm.ui.tools.b.h((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.bbW());
+        paramIntent = com.tencent.mm.ui.tools.b.i((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.bzL());
         getIntent().putExtra("key_source_img_path", paramIntent);
-        paramIntent = com.tencent.mm.plugin.finder.utils.a.ACH;
-        com.tencent.mm.plugin.finder.utils.a.c((Activity)this, getIntent(), this.xOL);
-        AppMethodBeat.o(233055);
+        ((com.tencent.mm.plugin.finder.publish.c)h.az(com.tencent.mm.plugin.finder.publish.c.class)).publishRouterApi().d((Activity)this, getIntent(), this.BoH);
+        AppMethodBeat.o(364705);
       }
     }
-    else if ((paramInt1 == this.xOL) && (paramIntent != null) && (paramInt2 == -1))
+    else if ((paramInt1 == this.BoH) && (paramIntent != null) && (paramInt2 == -1))
     {
-      this.wQa = paramIntent.getStringExtra("key_result_img_path");
-      Log.i(this.TAG, "avatar path %s file length %d KB", new Object[] { this.wQa, Long.valueOf(com.tencent.mm.vfs.u.bBQ(this.wQa) / 1024L) });
-      paramIntent = this.wQa;
+      this.AmC = paramIntent.getStringExtra("key_result_img_path");
+      Log.i(this.TAG, "avatar path %s file length %d KB", new Object[] { this.AmC, Long.valueOf(y.bEl(this.AmC) / 1024L) });
+      paramIntent = this.AmC;
       if (!Util.isNullOrNil(paramIntent))
       {
         paramIntent = BitmapUtil.extractThumbNail(paramIntent, 256, 256, false);
         if (paramIntent != null)
         {
-          ImageView localImageView = this.jiu;
-          if (localImageView != null)
-          {
+          ImageView localImageView = this.lKK;
+          if (localImageView != null) {
             localImageView.setImageBitmap(paramIntent);
-            AppMethodBeat.o(233055);
-            return;
           }
-          AppMethodBeat.o(233055);
-          return;
         }
       }
     }
-    AppMethodBeat.o(233055);
+    AppMethodBeat.o(364705);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    int k = 1;
     int j = 0;
-    AppMethodBeat.i(233039);
+    AppMethodBeat.i(364677);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.c.a.a.a.a.a.Zlt;
-    int i = ((Number)com.tencent.c.a.a.a.a.a.imi().aSr()).intValue();
+    paramBundle = com.tencent.d.a.a.a.a.a.ahiX;
+    int i = ((Number)com.tencent.d.a.a.a.a.a.jSL().bmg()).intValue();
     if ((i > 0) && (i < 2147483647)) {
-      this.xOW = i;
+      this.BoS = i;
     }
-    setBackBtn((MenuItem.OnMenuItemClickListener)new f(this), b.i.icons_filled_back);
-    paramBundle = com.tencent.c.a.a.a.a.a.Zlt;
+    setMMTitle("");
+    setActionbarColor(getContext().getResources().getColor(p.b.white_color));
+    setBackBtn(new FinderLiveCreateVisitorModeUI..ExternalSyntheticLambda0(this), p.g.icons_filled_back);
+    paramBundle = com.tencent.d.a.a.a.a.a.ahiX;
     boolean bool;
-    Object localObject;
-    if (((Number)com.tencent.c.a.a.a.a.a.imj().aSr()).intValue() == 0)
+    label144:
+    label160:
+    label176:
+    Object localObject1;
+    if (((Number)com.tencent.d.a.a.a.a.a.jSM().bmg()).intValue() == 0)
     {
       bool = true;
-      this.xOR = bool;
-      Log.i(this.TAG, "initConfigValue filterMyAvatarUrl:" + this.xOR);
+      this.BoN = bool;
+      Log.i(this.TAG, s.X("initConfigValue filterMyAvatarUrl:", Boolean.valueOf(this.BoN)));
       paramBundle = getIntent();
-      if (paramBundle == null) {
-        break label764;
+      if (paramBundle != null) {
+        break label690;
       }
-      localObject = a.a.BuJ;
-      paramBundle = paramBundle.getStringExtra(a.a.emM());
-      label144:
-      this.xOT = paramBundle;
+      paramBundle = null;
+      this.BoP = paramBundle;
       paramBundle = getIntent();
-      if (paramBundle == null) {
-        break label769;
+      if (paramBundle != null) {
+        break label706;
       }
-      localObject = a.a.BuJ;
-      paramBundle = paramBundle.getStringExtra(a.a.emN());
-      label171:
-      this.xOS = paramBundle;
+      paramBundle = null;
+      this.BoO = paramBundle;
       paramBundle = getIntent();
-      if (paramBundle == null) {
-        break label774;
+      if (paramBundle != null) {
+        break label722;
       }
-      i = paramBundle.getIntExtra("KEY_SOURCE", 0);
-      label194:
+      i = 0;
       this.sourceType = i;
-      this.xOM = findViewById(b.f.avatar_group);
-      this.jiu = ((ImageView)findViewById(b.f.avatar_iv));
-      this.xON = ((ImageView)findViewById(b.f.visitor_choose_iv));
-      this.xOO = ((MMEditText)findViewById(b.f.nickname_input_et));
-      localObject = this.xOO;
-      if (localObject != null)
+      this.BoI = findViewById(p.e.BBK);
+      this.lKK = ((ImageView)findViewById(p.e.avatar_iv));
+      this.BoJ = ((ImageView)findViewById(p.e.CbV));
+      this.BoK = ((MMEditText)findViewById(p.e.BYA));
+      Object localObject2 = this.BoK;
+      if (localObject2 != null)
       {
-        paramBundle = this.xOT;
-        if (paramBundle == null) {
-          break label779;
+        localObject1 = this.BoP;
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 == null) {
+          paramBundle = "";
         }
-        paramBundle = (CharSequence)paramBundle;
-        label277:
-        ((MMEditText)localObject).setText(paramBundle);
+        ((MMEditText)localObject2).setText((CharSequence)paramBundle);
       }
-      this.xOP = ((ImageView)findViewById(b.f.nickname_clear_iv));
-      paramBundle = this.xOP;
+      this.BoL = ((ImageView)findViewById(p.e.BYz));
+      paramBundle = this.BoL;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new b(this));
+        paramBundle.setOnClickListener(new FinderLiveCreateVisitorModeUI..ExternalSyntheticLambda3(this));
       }
-      this.raT = ((Button)findViewById(b.f.confirm_btn));
-      paramBundle = com.tencent.mm.am.q.bhP().TS(z.bcZ());
-      p.j(paramBundle, "SubCoreAvatar.getImgFlag…etUsernameFromUserInfo())");
-      this.xOU = paramBundle.bhI();
-      paramBundle = (CharSequence)this.xOS;
-      i = k;
-      if (paramBundle != null)
-      {
-        if (paramBundle.length() != 0) {
-          break label789;
-        }
-        i = k;
+      this.ugK = ((Button)findViewById(p.e.confirm_btn));
+      paramBundle = q.bFE().LS(z.bAM());
+      if (paramBundle != null) {
+        break label734;
       }
-      label387:
+      paramBundle = "";
+      label339:
+      this.BoQ = paramBundle;
+      paramBundle = (CharSequence)this.BoO;
+      if ((paramBundle != null) && (paramBundle.length() != 0)) {
+        break label755;
+      }
+      i = 1;
+      label367:
       if (i == 0) {
-        break label794;
+        break label760;
       }
-      paramBundle = this.xOU;
-      label396:
-      this.nfY = paramBundle;
-      paramBundle = this.jiu;
+      paramBundle = this.BoQ;
+      label376:
+      this.nVM = paramBundle;
+      paramBundle = this.lKK;
       if (paramBundle != null)
       {
-        localObject = t.ztT;
-        localObject = t.dJi();
-        e locale = new e(this.nfY);
-        t localt = t.ztT;
-        ((com.tencent.mm.loader.d)localObject).a(locale, paramBundle, t.a(t.a.ztZ));
+        localObject1 = p.ExI;
+        localObject1 = p.eCq();
+        localObject2 = new com.tencent.mm.plugin.finder.loader.b(this.nVM);
+        p localp = p.ExI;
+        ((com.tencent.mm.loader.d)localObject1).a(localObject2, paramBundle, p.a(p.a.ExO));
       }
-      paramBundle = this.xOM;
+      paramBundle = this.BoI;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new c(this));
+        paramBundle.setOnClickListener(new FinderLiveCreateVisitorModeUI..ExternalSyntheticLambda1(this));
       }
-      i = this.xOW / 2;
+      i = this.BoS / 2;
       if (i > 0) {
-        break label826;
+        break label808;
       }
-      i = this.xOW;
+      i = this.BoS;
     }
-    label769:
-    label774:
-    label779:
-    label789:
-    label794:
-    label826:
+    label547:
+    label808:
     for (;;)
     {
-      paramBundle = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      com.tencent.mm.plugin.finder.live.utils.a.a((EditText)this.xOO, null, this.xOW, i, (kotlin.g.a.a)new d(this));
-      this.xOQ = findViewById(b.f.spilt_line_3);
-      ox(false);
-      paramBundle = this.raT;
+      paramBundle = com.tencent.mm.plugin.finder.live.utils.a.DJT;
+      com.tencent.mm.plugin.finder.live.utils.a.a((EditText)this.BoK, this.BoS, i, (kotlin.g.a.a)new b(this));
+      this.BoM = findViewById(p.e.Cbp);
+      qc(false);
+      paramBundle = this.ugK;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new e(this));
+        paramBundle.setOnClickListener(new FinderLiveCreateVisitorModeUI..ExternalSyntheticLambda2(this));
       }
-      paramBundle = this.raT;
-      if (paramBundle != null)
+      paramBundle = this.ugK;
+      if (paramBundle == null)
       {
-        paramBundle = paramBundle.getLayoutParams();
-        label577:
-        localObject = paramBundle;
+        paramBundle = null;
         if (!(paramBundle instanceof ViewGroup.MarginLayoutParams)) {
-          localObject = null;
+          break label776;
         }
-        paramBundle = (ViewGroup.MarginLayoutParams)localObject;
-        i = j;
+        paramBundle = (ViewGroup.MarginLayoutParams)paramBundle;
+        label559:
         if (paramBundle != null) {
-          i = paramBundle.bottomMargin;
+          break label781;
         }
-        this.xOX = i;
-        if (this.xOX <= 0)
-        {
-          paramBundle = MMApplicationContext.getContext();
-          p.j(paramBundle, "MMApplicationContext.getContext()");
-          this.xOX = paramBundle.getResources().getDimensionPixelOffset(b.d.Edge_8A);
+        i = j;
+        label565:
+        this.BoT = i;
+        if (this.BoT <= 0) {
+          this.BoT = MMApplicationContext.getContext().getResources().getDimensionPixelOffset(p.c.Edge_8A);
         }
-        switch (this.sourceType)
-        {
-        default: 
-          paramBundle = this.raT;
-          if (paramBundle != null) {
-            paramBundle.setBackgroundResource(b.e.finder_live_btn_green_selector);
-          }
-          break;
+        if (this.sourceType != 1) {
+          break label789;
+        }
+        paramBundle = this.ugK;
+        if (paramBundle != null) {
+          paramBundle.setBackgroundResource(p.d.finder_live_lottery_btn_bg);
         }
       }
       for (;;)
       {
-        Log.i(this.TAG, "initConfirmBtnConfig:" + this.xOX + ", sourceType:" + this.sourceType);
-        Log.i(this.TAG, "maxNickNameLength:" + this.xOW);
-        AppMethodBeat.o(233039);
+        Log.i(this.TAG, "initConfirmBtnConfig:" + this.BoT + ", sourceType:" + this.sourceType);
+        Log.i(this.TAG, s.X("maxNickNameLength:", Integer.valueOf(this.BoS)));
+        AppMethodBeat.o(364677);
         return;
         bool = false;
         break;
-        label764:
-        paramBundle = null;
+        label690:
+        localObject1 = a.a.Hbu;
+        paramBundle = paramBundle.getStringExtra(a.a.fqV());
         break label144;
-        paramBundle = null;
-        break label171;
+        label706:
+        localObject1 = a.a.Hbu;
+        paramBundle = paramBundle.getStringExtra(a.a.fqW());
+        break label160;
+        label722:
+        i = paramBundle.getIntExtra("KEY_SOURCE", 0);
+        break label176;
+        label734:
+        localObject1 = paramBundle.bFx();
+        paramBundle = (Bundle)localObject1;
+        if (localObject1 != null) {
+          break label339;
+        }
+        paramBundle = "";
+        break label339;
+        label755:
         i = 0;
-        break label194;
-        paramBundle = (CharSequence)"";
-        break label277;
-        i = 0;
-        break label387;
-        paramBundle = this.xOS;
-        break label396;
+        break label367;
+        label760:
+        paramBundle = this.BoO;
+        break label376;
+        paramBundle = paramBundle.getLayoutParams();
+        break label547;
         paramBundle = null;
-        break label577;
-        paramBundle = this.raT;
+        break label559;
+        i = paramBundle.bottomMargin;
+        break label565;
+        paramBundle = this.ugK;
         if (paramBundle != null) {
-          paramBundle.setBackgroundResource(b.e.finder_live_lottery_btn_bg);
+          paramBundle.setBackgroundResource(p.d.BzO);
         }
       }
     }
@@ -399,34 +628,28 @@ public final class FinderLiveCreateVisitorModeUI
   
   public final void onPause()
   {
-    AppMethodBeat.i(233044);
+    AppMethodBeat.i(364688);
     super.onPause();
-    i locali = this.jij;
-    if (locali != null)
-    {
+    com.tencent.mm.ui.tools.i locali = this.lKz;
+    if (locali != null) {
       locali.close();
-      AppMethodBeat.o(233044);
-      return;
     }
-    AppMethodBeat.o(233044);
+    AppMethodBeat.o(364688);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(233042);
+    AppMethodBeat.i(364683);
     super.onResume();
     Object localObject = getWindow();
     if (localObject != null)
     {
       localObject = ((Window)localObject).getDecorView();
-      if (localObject != null)
-      {
-        ((View)localObject).post((Runnable)new g(this));
-        AppMethodBeat.o(233042);
-        return;
+      if (localObject != null) {
+        ((View)localObject).post(new FinderLiveCreateVisitorModeUI..ExternalSyntheticLambda6(this));
       }
     }
-    AppMethodBeat.o(233042);
+    AppMethodBeat.o(364683);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -435,272 +658,148 @@ public final class FinderLiveCreateVisitorModeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$continuePost$1", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveSetSockPuppetAttr$CallBack;", "onFail", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSetSockPuppetAttrResponse;", "plugin-finder-live_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$continuePost$1", "Lcom/tencent/mm/plugin/finder/live/cgi/CgiFinderLiveSetSockPuppetAttr$CallBack;", "onFail", "", "errType", "", "errCode", "errMsg", "", "onSuccess", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveSetSockPuppetAttrResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements k.a
+    implements u.a
   {
-    public final void a(bcn parambcn)
+    a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
+    
+    public final void a(bmp parambmp)
     {
-      AppMethodBeat.i(233023);
-      p.k(parambcn, "resp");
-      Log.i(this.xOY.TAG, "save alias nickName:" + FinderLiveCreateVisitorModeUI.e(this.xOY) + ",avatar:" + FinderLiveCreateVisitorModeUI.g(this.xOY));
-      FinderLiveCreateVisitorModeUI localFinderLiveCreateVisitorModeUI = this.xOY;
+      AppMethodBeat.i(365080);
+      s.u(parambmp, "resp");
+      Log.i(this.BoU.TAG, "save alias nickName:" + FinderLiveCreateVisitorModeUI.c(this.BoU) + ",avatar:" + FinderLiveCreateVisitorModeUI.e(this.BoU));
+      FinderLiveCreateVisitorModeUI localFinderLiveCreateVisitorModeUI1 = this.BoU;
       Intent localIntent = new Intent();
-      Object localObject = a.a.BuJ;
-      String str2 = a.a.emM();
-      String str1 = parambcn.SNO.nickname;
-      localObject = str1;
-      if (str1 == null) {
-        localObject = FinderLiveCreateVisitorModeUI.e(this.xOY);
+      FinderLiveCreateVisitorModeUI localFinderLiveCreateVisitorModeUI2 = this.BoU;
+      Object localObject1 = a.a.Hbu;
+      String str = a.a.fqV();
+      localObject1 = parambmp.ZVf;
+      Object localObject2;
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = FinderLiveCreateVisitorModeUI.c(localFinderLiveCreateVisitorModeUI2);
+        }
+        localIntent.putExtra(str, (String)localObject2);
+        localObject1 = a.a.Hbu;
+        str = a.a.fqW();
+        localObject1 = parambmp.ZVf;
+        if (localObject1 != null) {
+          break label250;
+        }
+        localObject1 = null;
+        label140:
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = FinderLiveCreateVisitorModeUI.e(localFinderLiveCreateVisitorModeUI2);
+        }
+        localIntent.putExtra(str, (String)localObject2);
+        localObject1 = a.a.Hbu;
+        localObject2 = a.a.fqX();
+        parambmp = parambmp.ZVf;
+        if (parambmp != null) {
+          break label258;
+        }
       }
-      localIntent.putExtra(str2, (String)localObject);
-      localObject = a.a.BuJ;
-      str2 = a.a.emN();
-      str1 = parambcn.SNO.ueX;
-      localObject = str1;
-      if (str1 == null) {
-        localObject = FinderLiveCreateVisitorModeUI.g(this.xOY);
+      label258:
+      for (parambmp = null;; parambmp = parambmp.ZNJ)
+      {
+        localObject1 = parambmp;
+        if (parambmp == null) {
+          localObject1 = FinderLiveCreateVisitorModeUI.e(localFinderLiveCreateVisitorModeUI2);
+        }
+        localIntent.putExtra((String)localObject2, (String)localObject1);
+        parambmp = ah.aiuX;
+        localFinderLiveCreateVisitorModeUI1.setResult(-1, localIntent);
+        com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this.BoU));
+        this.BoU.finish();
+        AppMethodBeat.o(365080);
+        return;
+        localObject1 = ((bcz)localObject1).nickname;
+        break;
+        label250:
+        localObject1 = ((bcz)localObject1).xkY;
+        break label140;
       }
-      localIntent.putExtra(str2, (String)localObject);
-      localObject = a.a.BuJ;
-      str1 = a.a.emO();
-      localObject = parambcn.SNO.SJz;
-      parambcn = (bcn)localObject;
-      if (localObject == null) {
-        parambcn = FinderLiveCreateVisitorModeUI.g(this.xOY);
-      }
-      localIntent.putExtra(str1, parambcn);
-      localFinderLiveCreateVisitorModeUI.setResult(-1, localIntent);
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this));
-      this.xOY.finish();
-      AppMethodBeat.o(233023);
     }
     
-    public final void aY(final int paramInt, final String paramString)
+    public final void bu(final int paramInt, final String paramString)
     {
-      AppMethodBeat.i(233024);
-      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this, paramInt, paramString));
-      AppMethodBeat.o(233024);
+      AppMethodBeat.i(365087);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this.BoU, paramInt, paramString));
+      AppMethodBeat.o(365087);
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      a(FinderLiveCreateVisitorModeUI.a parama, int paramInt, String paramString)
+      a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI, int paramInt, String paramString)
       {
         super();
       }
     }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
     static final class b
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      b(FinderLiveCreateVisitorModeUI.a parama)
+      b(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI)
       {
         super();
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    implements View.OnClickListener
+    extends kotlin.g.b.u
+    implements kotlin.g.a.a<ah>
   {
-    b(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(232860);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      paramView = FinderLiveCreateVisitorModeUI.b(this.xOY);
-      if (paramView != null) {
-        paramView.setText((CharSequence)"");
-      }
-      paramView = FinderLiveCreateVisitorModeUI.c(this.xOY);
-      if (paramView != null) {
-        paramView.setVisibility(4);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(232860);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
-    implements View.OnClickListener
-  {
-    c(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(233293);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      com.tencent.mm.pluginsdk.ui.tools.u.a((Activity)this.xOY, FinderLiveCreateVisitorModeUI.d(this.xOY), 1, 5, null, false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(233293);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    d(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI)
+    b(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI)
     {
       super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class e
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$5$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements com.tencent.mm.loader.f.e<com.tencent.mm.loader.f.c>
   {
-    e(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
+    c(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
     
-    public final void onClick(View paramView)
+    public final void a(com.tencent.mm.loader.f.c paramc, com.tencent.mm.loader.f.i parami)
     {
-      AppMethodBeat.i(232917);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-      FinderLiveCreateVisitorModeUI.a(this.xOY, false);
-      paramView = FinderLiveCreateVisitorModeUI.f(this.xOY);
-      localObject = (CharSequence)paramView;
-      int i;
-      if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+      AppMethodBeat.i(365109);
+      s.u(paramc, "task");
+      s.u(parami, "status");
+      if ((parami == com.tencent.mm.loader.f.i.nrG) && (!Util.isNullOrNil(((m)paramc).resultUrl)))
       {
-        i = 1;
-        if (i != 0) {
-          break label135;
-        }
-        localObject = g.AAk;
-        localObject = g.ecj();
-        String str = z.bdh();
-        p.j(str, "ConfigStorageLogic.getMyFinderUsername()");
-        ((g)localObject).a(paramView, str, (f)new f()
-        {
-          public final void a(c paramAnonymousc, com.tencent.mm.loader.g.j paramAnonymousj)
-          {
-            AppMethodBeat.i(233273);
-            p.k(paramAnonymousc, "task");
-            p.k(paramAnonymousj, "status");
-            if ((paramAnonymousj == com.tencent.mm.loader.g.j.kQd) && (!Util.isNullOrNil(((m)paramAnonymousc).resultUrl)))
-            {
-              FinderLiveCreateVisitorModeUI.b(this.xPa.xOY, ((m)paramAnonymousc).resultUrl);
-              FinderLiveCreateVisitorModeUI.h(this.xPa.xOY);
-              AppMethodBeat.o(233273);
-              return;
-            }
-            Log.e(this.xPa.xOY.TAG, "upload avatar fail,status:".concat(String.valueOf(paramAnonymousj)));
-            FinderLiveCreateVisitorModeUI.a(this.xPa.xOY, true);
-            com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this));
-            AppMethodBeat.o(233273);
-          }
-          
-          @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-          static final class a
-            extends kotlin.g.b.q
-            implements kotlin.g.a.a<x>
-          {
-            a(FinderLiveCreateVisitorModeUI.e.1 param1)
-            {
-              super();
-            }
-          }
-        });
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderLiveCreateVisitorModeUI$initLayout$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(232917);
-        return;
-        i = 0;
-        break;
-        label135:
-        FinderLiveCreateVisitorModeUI.h(this.xOY);
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class f
-    implements MenuItem.OnMenuItemClickListener
-  {
-    f(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(233248);
-      this.xOY.hideVKB();
-      this.xOY.finish();
-      AppMethodBeat.o(233248);
-      return true;
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(233403);
-      if (FinderLiveCreateVisitorModeUI.a(this.xOY) == null)
-      {
-        FinderLiveCreateVisitorModeUI.a(this.xOY, new i((Activity)this.xOY));
-        locali = FinderLiveCreateVisitorModeUI.a(this.xOY);
-        if (locali != null) {
-          locali.setKeyboardHeightObserver((h)new h()
-          {
-            public final void A(int paramAnonymousInt, boolean paramAnonymousBoolean)
-            {
-              AppMethodBeat.i(233909);
-              Log.i(this.xPc.xOY.TAG, "onKeyboardHeightChanged, height:" + paramAnonymousInt + ", isResized:" + paramAnonymousBoolean);
-              FinderLiveCreateVisitorModeUI localFinderLiveCreateVisitorModeUI = this.xPc.xOY;
-              if (paramAnonymousInt > 0) {}
-              for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
-              {
-                FinderLiveCreateVisitorModeUI.a(localFinderLiveCreateVisitorModeUI, paramAnonymousBoolean, paramAnonymousInt);
-                AppMethodBeat.o(233909);
-                return;
-              }
-            }
-          });
-        }
-      }
-      i locali = FinderLiveCreateVisitorModeUI.a(this.xOY);
-      if (locali != null)
-      {
-        locali.start();
-        AppMethodBeat.o(233403);
+        FinderLiveCreateVisitorModeUI.b(this.BoU, ((m)paramc).resultUrl);
+        FinderLiveCreateVisitorModeUI.f(this.BoU);
+        AppMethodBeat.o(365109);
         return;
       }
-      AppMethodBeat.o(233403);
+      Log.e(this.BoU.TAG, s.X("upload avatar fail,status:", parami));
+      FinderLiveCreateVisitorModeUI.a(this.BoU, true);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this.BoU));
+      AppMethodBeat.o(365109);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
-  static final class h
-    implements f.c
-  {
-    h(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI) {}
     
-    public final void g(boolean paramBoolean, String paramString)
+    @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+    static final class a
+      extends kotlin.g.b.u
+      implements kotlin.g.a.a<ah>
     {
-      AppMethodBeat.i(233263);
-      Log.i(this.xOY.TAG, "showAlertDialog click bOk:".concat(String.valueOf(paramBoolean)));
-      AppMethodBeat.o(233263);
+      a(FinderLiveCreateVisitorModeUI paramFinderLiveCreateVisitorModeUI)
+      {
+        super();
+      }
     }
   }
 }

@@ -2,17 +2,14 @@ package com.tencent.mm.plugin.account.model;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.f.a.ng;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.account.friend.a.ad;
-import com.tencent.mm.plugin.account.friend.a.ao;
-import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.am.p;
+import com.tencent.mm.am.s;
+import com.tencent.mm.app.f;
+import com.tencent.mm.plugin.account.friend.model.aa;
+import com.tencent.mm.plugin.account.friend.model.al;
+import com.tencent.mm.plugin.account.friend.model.i;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -22,21 +19,21 @@ import java.util.List;
 import java.util.Set;
 
 public final class a
-  implements i
+  implements com.tencent.mm.am.h
 {
-  private com.tencent.mm.plugin.account.sdk.a.b lKY;
-  private Set<String> mZF;
-  IListener mZG;
-  private MMHandler mZH;
-  private boolean maL;
+  private com.tencent.mm.plugin.account.sdk.a.b oDA;
+  private boolean oTC;
+  private Set<String> pWo;
+  IListener pWp;
+  private MMHandler pWq;
   
   public a()
   {
     AppMethodBeat.i(127810);
-    this.mZF = Collections.synchronizedSet(new HashSet());
-    this.maL = false;
-    this.mZG = new IListener() {};
-    this.mZH = new MMHandler()
+    this.pWo = Collections.synchronizedSet(new HashSet());
+    this.oTC = false;
+    this.pWp = new ContactsAutoSyncLogic.1(this, f.hfK);
+    this.pWq = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -57,9 +54,9 @@ public final class a
         }
       }
     };
-    this.lKY = new com.tencent.mm.plugin.account.sdk.a.b()
+    this.oDA = new com.tencent.mm.plugin.account.sdk.a.b()
     {
-      public final void gr(boolean paramAnonymousBoolean)
+      public final void hi(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(127809);
         Log.i("MicroMsg.ContactsAutoSyncLogic ", "performSync end, succ:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
@@ -68,19 +65,20 @@ public final class a
           AppMethodBeat.o(127809);
           return;
         }
-        if (l.byr().size() > 0)
+        Object localObject = i.bXe();
+        if ((localObject != null) && (((List)localObject).size() > 0))
         {
           Log.i("MicroMsg.ContactsAutoSyncLogic ", "start to upload mobile list");
-          h.aGY().a(133, a.this);
+          com.tencent.mm.kernel.h.aZW().a(133, a.this);
           System.currentTimeMillis();
-          l.byn();
-          localObject = new ao(l.byr(), l.byq());
-          h.aGY().a((q)localObject, 0);
+          i.bXa();
+          localObject = new al(i.bXe(), i.bXd());
+          com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
           AppMethodBeat.o(127809);
           return;
         }
         Log.i("MicroMsg.ContactsAutoSyncLogic ", "update mobile friend list");
-        Object localObject = (String[])a.b(a.this).toArray(new String[0]);
+        localObject = (String[])a.b(a.this).toArray(new String[0]);
         a.b(a.this).clear();
         ArrayList localArrayList = new ArrayList();
         int j = localObject.length;
@@ -88,11 +86,11 @@ public final class a
         if (i < j)
         {
           String str = localObject[i];
-          com.tencent.mm.plugin.account.friend.a.a locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(str);
-          if ((locala != null) && (!Util.isNullOrNil(locala.bxY())))
+          com.tencent.mm.plugin.account.friend.model.a locala = com.tencent.mm.plugin.account.b.getAddrUploadStg().SR(str);
+          if ((locala != null) && (!Util.isNullOrNil(locala.bWN())))
           {
-            localArrayList.add(locala.bxY());
-            Log.i("MicroMsg.ContactsAutoSyncLogic ", "find mobile %s username %s", new Object[] { locala.bxY(), str });
+            localArrayList.add(locala.bWN());
+            Log.i("MicroMsg.ContactsAutoSyncLogic ", "find mobile %s username %s", new Object[] { locala.bWN(), str });
           }
           for (;;)
           {
@@ -101,56 +99,54 @@ public final class a
             Log.i("MicroMsg.ContactsAutoSyncLogic ", "not find mobile username %s", new Object[] { str });
           }
         }
-        h.aGY().a(32, a.this);
+        com.tencent.mm.kernel.h.aZW().a(32, a.this);
         if (localArrayList.size() == 0)
         {
           Log.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is zero");
-          localObject = new ad();
-          h.aGY().a((q)localObject, 0);
+          localObject = new aa();
+          com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
           AppMethodBeat.o(127809);
           return;
         }
         Log.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is %d", new Object[] { Integer.valueOf(localArrayList.size()) });
-        localObject = new ad(localArrayList, null);
-        h.aGY().a((q)localObject, 0);
+        localObject = new aa(localArrayList, null);
+        com.tencent.mm.kernel.h.aZW().a((p)localObject, 0);
         AppMethodBeat.o(127809);
       }
     };
-    EventCenter.instance.addListener(this.mZG);
     AppMethodBeat.o(127810);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(127811);
-    if (paramq.getType() == 133)
+    if (paramp.getType() == 133)
     {
-      h.aGY().b(133, this);
+      com.tencent.mm.kernel.h.aZW().b(133, this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         break label137;
       }
       Log.e("MicroMsg.ContactsAutoSyncLogic ", "MMFunc_UploadMContact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
-      this.maL = false;
+      this.oTC = false;
     }
-    while (paramq.getType() == 32)
+    while (paramp.getType() == 32)
     {
-      this.maL = false;
-      h.aGY().b(32, this);
+      this.oTC = false;
+      com.tencent.mm.kernel.h.aZW().b(32, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.ContactsAutoSyncLogic ", "rtGETMFRIEND onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
         AppMethodBeat.o(127811);
         return;
         label137:
-        h.aGY().a(32, this);
-        paramString = (ao)paramq;
-        paramString = new ad(paramString.mWZ, paramString.mXa);
-        h.aGY().a(paramString, 0);
+        com.tencent.mm.kernel.h.aZW().a(32, this);
+        paramString = (al)paramp;
+        paramString = new aa(paramString.pTH, paramString.pTI);
+        com.tencent.mm.kernel.h.aZW().a(paramString, 0);
       }
       else
       {
         Log.i("MicroMsg.ContactsAutoSyncLogic ", "update All Contact");
-        com.tencent.mm.platformtools.t.dq(MMApplicationContext.getContext());
       }
     }
     AppMethodBeat.o(127811);
@@ -158,7 +154,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.i;
 import com.tencent.mm.ui.widget.QDisFadeImageView;
 import com.tencent.mm.ui.widget.QImageView.a;
 import java.util.ArrayList;
@@ -20,56 +20,51 @@ import java.util.List;
 public final class c
   extends RecyclerView.a<b>
 {
-  List<a.d> Lhy;
-  a Lhz;
+  List<a.d> RHN;
+  c.a RHO;
   
   public c()
   {
     AppMethodBeat.i(99872);
-    this.Lhy = new ArrayList();
-    this.Lhz = null;
+    this.RHN = new ArrayList();
+    this.RHO = null;
     AppMethodBeat.o(99872);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(99873);
-    int i = this.Lhy.size();
+    int i = this.RHN.size();
     AppMethodBeat.o(99873);
     return i;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void cx(int paramInt, String paramString);
   }
   
   final class b
     extends RecyclerView.v
   {
-    public QDisFadeImageView LhA;
-    public ImageView bwJ;
+    public QDisFadeImageView RHP;
+    public ImageView dpM;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(99871);
-      this.LhA = null;
-      this.bwJ = null;
-      this.LhA = ((QDisFadeImageView)paramView.findViewById(i.f.sns_album_item_media_img));
-      this.bwJ = ((ImageView)paramView.findViewById(i.f.sns_album_item_media_play_icon));
-      this.bwJ.setImageDrawable(this.bwJ.getContext().getResources().getDrawable(i.i.shortvideo_play_btn));
-      this.LhA.setScaleType(QImageView.a.Ydm);
-      this.LhA.setOnClickListener(new View.OnClickListener()
+      this.RHP = null;
+      this.dpM = null;
+      this.RHP = ((QDisFadeImageView)paramView.findViewById(b.f.sns_album_item_media_img));
+      this.dpM = ((ImageView)paramView.findViewById(b.f.sns_album_item_media_play_icon));
+      this.dpM.setImageDrawable(this.dpM.getContext().getResources().getDrawable(b.i.shortvideo_play_btn));
+      this.RHP.setScaleType(QImageView.a.afVc);
+      this.RHP.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(99870);
           b localb = new b();
-          localb.bn(paramAnonymousView);
-          a.c("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          localb.cH(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
           if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof c.c)) && (c.a(c.this) != null)) {
-            c.a(c.this).cx(((c.c)paramAnonymousView.getTag()).fWh, ((c.c)paramAnonymousView.getTag()).mediaId);
+            c.a(c.this).dk(((c.c)paramAnonymousView.getTag()).icg, ((c.c)paramAnonymousView.getTag()).mediaId);
           }
           a.a(this, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumItemAdapter$SnsAlbumItemViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(99870);
@@ -81,7 +76,7 @@ public final class c
   
   final class c
   {
-    public int fWh;
+    public int icg;
     public String mediaId;
     
     c() {}
@@ -89,7 +84,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.album.c
  * JD-Core Version:    0.7.0.1
  */

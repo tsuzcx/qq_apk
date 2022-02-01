@@ -1,17 +1,25 @@
 package com.tencent.mm.plugin.lite;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
+import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.DisplayMetrics;
+import android.util.SparseArray;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.liteapp.b.a;
 import com.tencent.liteapp.c.h;
-import com.tencent.liteapp.jsapi.a;
+import com.tencent.liteapp.d.f;
+import com.tencent.liteapp.storage.WxaLiteAppBaselibInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ext.ui.e;
+import com.tencent.wxa.c;
+import com.tencent.wxa.c.1;
+import com.tencent.wxa.c.b;
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,40 +34,74 @@ import org.json.JSONObject;
 
 public abstract class LiteAppCenter
 {
+  public static final String FRAMEWORK_TYPE_BASE = "base";
+  public static final String FRAMEWORK_TYPE_NONE = "none";
+  public static final String FRAMEWORK_TYPE_VUE = "Vue";
+  public static final String FRAMEWORK_TYPE_VUE3 = "Vue3";
   public static final String LITE_APP_BASE_LIB = "wxalitebaselibrary";
   private static final String TAG = "WxaLiteApp.LiteAppCenter";
+  public static float fontScale = 1.0F;
+  public static boolean fontScaleFollowSystem = false;
   private static String lastPath = "";
   public static IWxaLiteAppCallback mCallback;
   public static Map<Long, ILiteAppUICallback> mUICallback;
   private static long pageId;
   private static HashMap<Long, PageInfo> pageInfos;
-  private static Map<String, Map<String, Class<? extends a>>> sAppLevelApi;
-  private static Map<String, Class<? extends a>> sCommApi;
+  private static Map<String, Map<String, Class<? extends com.tencent.liteapp.jsapi.a>>> sAppLevelApi;
+  private static Map<String, Class<? extends com.tencent.liteapp.jsapi.a>> sCommApi;
+  private static Map<String, com.tencent.liteapp.jsapi.a> sWxaLiteAppJsApiMap;
   private static HashMap<Long, SystemInfoChangeCallbackInfo> systemInfoChangeCallback;
+  private byte _hellAccFlag_;
   
   static
   {
-    System.loadLibrary("mmv8");
-    System.loadLibrary("flutter");
-    System.loadLibrary("wechatlv");
-    System.loadLibrary("wxajs");
-    System.loadLibrary("wcwss");
-    System.loadLibrary("owl");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("mmv8");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("flutter");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("wechatlv");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("wxajs");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("wcwss");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    locala = new com.tencent.mm.hellhoundlib.b.a().cG("owl");
+    localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/lite/LiteAppCenter", "<clinit>", "()V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     systemInfoChangeCallback = new HashMap();
     pageInfos = new HashMap();
     pageId = -1L;
     sCommApi = new ConcurrentHashMap();
     sAppLevelApi = new ConcurrentHashMap();
+    sWxaLiteAppJsApiMap = new ConcurrentHashMap();
     mUICallback = new ConcurrentHashMap();
   }
   
-  private static native PageInfo _showIndexView(String paramString1, String paramString2, String paramString3, String paramString4);
-  
-  private static native PageInfo _showView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5);
-  
   private static native void addJsApi(String paramString);
   
-  public static void addJsApi(String paramString, Class<? extends a> paramClass)
+  public static void addJsApi(String paramString, com.tencent.liteapp.jsapi.a parama)
+  {
+    sWxaLiteAppJsApiMap.put(paramString, parama);
+  }
+  
+  public static void addJsApi(String paramString, Class<? extends com.tencent.liteapp.jsapi.a> paramClass)
   {
     if (sCommApi.containsKey(paramString)) {
       throw new RuntimeException(paramString + " has been exists");
@@ -70,7 +112,7 @@ public abstract class LiteAppCenter
   
   private static native void addJsApi(String paramString1, String paramString2);
   
-  public static void addJsApi(String paramString1, String paramString2, Class<? extends a> paramClass)
+  public static void addJsApi(String paramString1, String paramString2, Class<? extends com.tencent.liteapp.jsapi.a> paramClass)
   {
     Map localMap = (Map)sAppLevelApi.get(paramString1);
     Object localObject = localMap;
@@ -92,11 +134,16 @@ public abstract class LiteAppCenter
     while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (!a.class.isAssignableFrom((Class)localEntry.getValue())) {
+      if (!com.tencent.liteapp.jsapi.a.class.isAssignableFrom((Class)localEntry.getValue())) {
         throw new RuntimeException(paramString + ":api must be subclass of WxaLiteAppJsApi");
       }
       addJsApi(paramString, (String)localEntry.getKey(), (Class)localEntry.getValue());
     }
+  }
+  
+  public static void addJsApi(HashMap<String, com.tencent.liteapp.jsapi.a> paramHashMap)
+  {
+    sWxaLiteAppJsApiMap.putAll(paramHashMap);
   }
   
   public static void addJsApi(Map<String, Class> paramMap)
@@ -105,12 +152,25 @@ public abstract class LiteAppCenter
     while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (!a.class.isAssignableFrom((Class)localEntry.getValue())) {
+      if (!com.tencent.liteapp.jsapi.a.class.isAssignableFrom((Class)localEntry.getValue())) {
         throw new RuntimeException("api must be subclass of WxaLiteAppJsApi");
       }
       addJsApi((String)localEntry.getKey(), (Class)localEntry.getValue());
     }
   }
+  
+  public static native int checkBaseLib(String paramString);
+  
+  public static native int checkLiteAppPkg(String paramString);
+  
+  public static void closeWindow(long paramLong, Intent paramIntent)
+  {
+    if (mUICallback.containsKey(Long.valueOf(paramLong))) {
+      ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong))).closeWindow(paramIntent);
+    }
+  }
+  
+  public static native void createStore(String paramString1, String paramString2, String paramString3, int paramInt);
   
   private static void dataReporting(String paramString1, String paramString2)
   {
@@ -121,7 +181,7 @@ public abstract class LiteAppCenter
   
   private static void dispatchCmdNoRet(String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3)
   {
-    i = -1;
+    int i = -1;
     switch (paramString2.hashCode())
     {
     default: 
@@ -130,53 +190,74 @@ public abstract class LiteAppCenter
       }
       break;
     }
-    do
-    {
-      do
-      {
-        return;
-        if (!paramString2.equals("vibrateLong")) {
-          break;
-        }
-        i = 0;
-        break;
-        if (!paramString2.equals("vibrateShort")) {
-          break;
-        }
-        i = 1;
-        break;
-      } while (!mUICallback.containsKey(Long.valueOf(paramLong1)));
-      ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong1))).vibrateLong(400L);
-      return;
-    } while (!mUICallback.containsKey(Long.valueOf(paramLong1)));
     for (;;)
     {
-      try
-      {
-        paramString1 = new JSONObject(paramString3);
-        if (!paramString1.has("type")) {
-          continue;
-        }
-        paramString1 = paramString1.getString("type");
-        bool = "heavy".equals(paramString1);
-        if (!bool) {
-          continue;
-        }
-        i = 255;
-      }
-      catch (JSONException paramString1)
-      {
-        boolean bool;
-        i = 192;
-        continue;
-      }
-      ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong1))).vibrateShort(15L, i);
       return;
-      bool = "light".equals(paramString1);
-      if (bool) {
-        i = 128;
-      } else {
-        i = 192;
+      if (!paramString2.equals("vibrateLong")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!paramString2.equals("vibrateShort")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramString2.equals("setKeepScreenOn")) {
+        break;
+      }
+      i = 2;
+      break;
+      if (mUICallback.containsKey(Long.valueOf(paramLong1)))
+      {
+        ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong1))).vibrateLong(400L);
+        return;
+        if (mUICallback.containsKey(Long.valueOf(paramLong1)))
+        {
+          boolean bool;
+          for (;;)
+          {
+            try
+            {
+              paramString1 = new JSONObject(paramString3);
+              if (!paramString1.has("type")) {
+                continue;
+              }
+              paramString1 = paramString1.getString("type");
+              bool = "heavy".equals(paramString1);
+              if (!bool) {
+                continue;
+              }
+              i = 255;
+            }
+            catch (JSONException paramString1)
+            {
+              i = 192;
+              continue;
+            }
+            ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong1))).vibrateShort(15L, i);
+            return;
+            bool = "light".equals(paramString1);
+            if (bool) {
+              i = 128;
+            } else {
+              i = 192;
+            }
+          }
+          if (mUICallback.containsKey(Long.valueOf(paramLong1))) {
+            try
+            {
+              paramString1 = new JSONObject(paramString3);
+              if (paramString1.has("on"))
+              {
+                bool = paramString1.getBoolean("on");
+                ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong1))).setKeepScreenOn(bool);
+                return;
+              }
+            }
+            catch (JSONException paramString1) {}
+          }
+        }
       }
     }
   }
@@ -186,16 +267,16 @@ public abstract class LiteAppCenter
     return "";
   }
   
-  public static native void dispatchStore(String paramString1, String paramString2, String paramString3);
+  public static native int dispatchStore(String paramString1, String paramString2, String paramString3);
   
   private static String getAppFilePath()
   {
     if (mCallback != null) {
       return mCallback.getLiteAppRoot();
     }
-    Object localObject = h.coW;
+    Object localObject = h.egi;
     localObject = new StringBuilder();
-    b.a locala = com.tencent.liteapp.b.cox;
+    b.a locala = com.tencent.liteapp.b.efD;
     return b.a.getAppContext().getFilesDir() + "/liteapp";
   }
   
@@ -223,14 +304,24 @@ public abstract class LiteAppCenter
   
   public static native String getBaseLibBuildTypeByString(String paramString);
   
+  public static native String getBaseLibMajorVersion();
+  
+  public static native String getBaseLibMajorVersionByPath(String paramString);
+  
   public static native String getBaseLibVersionByPath(String paramString);
   
   public static native String getBaseLibVersionByString(String paramString);
+  
+  public static native int getBaseLibVersionNumber(String paramString);
   
   public static String getLastPath()
   {
     return lastPath;
   }
+  
+  public static native String getLiteAppMinBaseLibMajorVersion(String paramString1, String paramString2, String paramString3);
+  
+  public static native String getLiteAppMinLiteAppBaseLib(String paramString1, String paramString2, String paramString3);
   
   public static native String getLiteAppVersion(String paramString1, String paramString2, String paramString3);
   
@@ -241,6 +332,18 @@ public abstract class LiteAppCenter
     }
     return "";
   }
+  
+  public static native int getSdkMaxBaseLibVersionNumber();
+  
+  public static native int getSdkMaxVersionNumber();
+  
+  public static native String getSdkMinBaseLibVersion();
+  
+  public static native int getSdkMinBaseLibVersionNumber();
+  
+  public static native String getSdkVersion();
+  
+  public static native int getSdkVersionNumber();
   
   private static String getSystemInfo()
   {
@@ -281,6 +384,10 @@ public abstract class LiteAppCenter
     }
   }
   
+  private static native PageInfo innerShowIndexView(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt);
+  
+  private static native PageInfo innerShowView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt);
+  
   private static void invokeJsApi(JsApi paramJsApi)
   {
     com.tencent.liteapp.b.b.i("WxaLiteApp.LiteAppCenter", "invokeJsApi:%s", new Object[] { paramJsApi.toString() });
@@ -307,35 +414,73 @@ public abstract class LiteAppCenter
       {
         jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, errMsg:\"exception\" data: {}}", false, paramJsApi.isFromView);
         return;
-        Object localObject = null;
-        if (sAppLevelApi.containsKey(paramJsApi.appId)) {
-          localObject = (Class)((Map)sAppLevelApi.get(paramJsApi.appId)).get(paramJsApi.method);
-        }
-        if (localObject == null) {
-          localObject = (Class)sCommApi.get(paramJsApi.method);
-        }
-        for (;;)
+        if (sAppLevelApi.containsKey(paramJsApi.appId)) {}
+        for (Object localObject1 = (Class)((Map)sAppLevelApi.get(paramJsApi.appId)).get(paramJsApi.method);; localObject1 = null)
         {
-          if (localObject == null)
-          {
-            com.tencent.liteapp.b.b.e("WxaLiteApp.LiteAppCenter", "not found api ", new Object[0]);
-            if (paramJsApi.callbackId <= 0L) {
-              break;
-            }
-            jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, errMsg:\"not found\" ,data: {}}", false, paramJsApi.isFromView);
-            return;
+          Object localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = (Class)sCommApi.get(paramJsApi.method);
           }
-          com.tencent.liteapp.jsapi.b localb = new com.tencent.liteapp.jsapi.b(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, paramJsApi.isFromView);
-          localObject = (a)((Class)localObject).getConstructor(new Class[0]).newInstance(new Object[0]);
-          ((a)localObject).a(localb);
-          ((a)localObject).b(paramJsApi.appId, new JSONObject(paramJsApi.param), paramJsApi.isFromView);
-          return;
+          if (localObject2 != null) {
+            localObject1 = (com.tencent.liteapp.jsapi.a)((Class)localObject2).getConstructor(new Class[0]).newInstance(new Object[0]);
+          }
+          for (;;)
+          {
+            if (localObject1 == null)
+            {
+              com.tencent.liteapp.b.b.e("WxaLiteApp.LiteAppCenter", "not found api ", new Object[0]);
+              if (paramJsApi.callbackId <= 0L) {
+                break;
+              }
+              jsApiCallback(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, "{result: false, errMsg:\"not found\" ,data: {}}", false, paramJsApi.isFromView);
+              return;
+              if (sWxaLiteAppJsApiMap.containsKey(paramJsApi.method)) {
+                localObject1 = (com.tencent.liteapp.jsapi.a)sWxaLiteAppJsApiMap.get(paramJsApi.method);
+              }
+            }
+            else
+            {
+              ((com.tencent.liteapp.jsapi.a)localObject1).efV = paramJsApi.method;
+              ((com.tencent.liteapp.jsapi.a)localObject1).a(new com.tencent.liteapp.jsapi.b(paramJsApi.appId, paramJsApi.appPtr, paramJsApi.pageId, paramJsApi.callbackId, paramJsApi.isFromView));
+              ((com.tencent.liteapp.jsapi.a)localObject1).b(paramJsApi.appId, new JSONObject(paramJsApi.param), paramJsApi.isFromView);
+              return;
+            }
+            localObject1 = null;
+          }
         }
       }
     }
   }
   
   public static native void jsApiCallback(String paramString1, long paramLong1, long paramLong2, long paramLong3, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  private static boolean loadBaseLibByMajorVersion(String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = getLiteAppMinBaseLibMajorVersion(paramString1, paramString2, paramString3);
+    if (paramString1.length() == 0) {
+      return true;
+    }
+    if (paramString1.equals(getBaseLibMajorVersion())) {
+      return true;
+    }
+    if (mCallback != null)
+    {
+      paramString2 = mCallback.getLiteAppBaselibInfo(paramString1);
+      paramString1 = new HostInfo();
+      if (mCallback != null) {
+        paramString1 = mCallback.getHostInfo();
+      }
+      lastPath = paramString2.path;
+      if (setPath(paramString2.path, paramString1, "Vue") == 0) {
+        return true;
+      }
+    }
+    else
+    {
+      return false;
+    }
+    return false;
+  }
   
   private static void navigateBack(long paramLong, boolean paramBoolean)
   {
@@ -358,6 +503,49 @@ public abstract class LiteAppCenter
   
   public static native void onEventTriggered(String paramString1, String paramString2);
   
+  private static void onReleaseLiteApp(String paramString, long paramLong, int paramInt)
+  {
+    paramString = c.keQ();
+    com.tencent.wxa.c.a.i("WxaRouter.WxaRouter", "releaseEngine %d by wechat lv.", new Object[] { Integer.valueOf(paramInt) });
+    c.b localb;
+    if (paramString.aidr.indexOfKey(paramInt) >= 0)
+    {
+      localb = (c.b)paramString.aidr.get(paramInt);
+      if (localb.flutterEngine == paramString.aidp)
+      {
+        com.tencent.wxa.c.a.i("WxaRouter.WxaRouter", "default engine ignore.", new Object[0]);
+        paramString.aidt = Boolean.FALSE;
+      }
+    }
+    else
+    {
+      return;
+    }
+    paramString.aidr.remove(paramInt);
+    paramString.handler.post(new c.1(paramString, localb));
+  }
+  
+  private static void onShowPageTimeStamp(long paramLong1, long paramLong2, long paramLong3)
+  {
+    if (mUICallback.containsKey(Long.valueOf(paramLong1))) {
+      ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong1))).onShowPageTimeStamp(paramLong2, paramLong3);
+    }
+  }
+  
+  private static void onStoreSendResult(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    if (mCallback != null) {
+      mCallback.onStoreSendResult(paramString1, paramInt, paramString2, paramString3);
+    }
+  }
+  
+  private static void onStoreSetData(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    if (mCallback != null) {
+      mCallback.onStoreSetData(paramString, paramArrayOfString1, paramArrayOfString2);
+    }
+  }
+  
   private static void onSystemInfoChange(String paramString, long paramLong1, long paramLong2, long paramLong3)
   {
     systemInfoChangeCallback.put(Long.valueOf(paramLong2), new SystemInfoChangeCallbackInfo(paramString, paramLong1, paramLong2, paramLong3));
@@ -370,13 +558,17 @@ public abstract class LiteAppCenter
     }
   }
   
-  public static native void preloadIndexView(String paramString1, String paramString2, String paramString3);
+  public static native void preloadIndexView(String paramString1, String paramString2, String paramString3, int paramInt);
   
-  public static native void preloadView(String paramString1, String paramString2, String paramString3, String paramString4);
+  public static native void preloadView(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt);
   
-  private static native void preloadViewBaseLib(int paramInt);
+  private static native void preloadViewBaseLib(int paramInt, String paramString);
+  
+  public static native int prepareCppEngineId();
   
   public static native void publishGlobalEvent(long paramLong1, long paramLong2, String paramString);
+  
+  public static native void publishGlobalEventToTopPage(long paramLong, String paramString1, String paramString2);
   
   public static native void release();
   
@@ -385,6 +577,8 @@ public abstract class LiteAppCenter
     systemInfoChangeCallback.remove(Long.valueOf(paramLong2));
     pageInfos.remove(Long.valueOf(paramLong2));
   }
+  
+  public static native void releaseStore(String paramString);
   
   private static void reloadDebug(String paramString1, long paramLong, int paramInt, String paramString2)
   {
@@ -431,26 +625,39 @@ public abstract class LiteAppCenter
     }
   }
   
+  private static native void setFontScale(float paramFloat);
+  
+  public static native void setForceUseSyncCall(boolean paramBoolean);
+  
+  public static native void setLocale(String paramString1, String paramString2);
+  
   private static void setPageInfo(long paramLong1, long paramLong2, PageInfo paramPageInfo)
   {
     pageInfos.put(Long.valueOf(paramLong2), paramPageInfo);
   }
   
-  public static void setPath(String paramString)
+  private static void setPageOrientation(long paramLong, int paramInt)
   {
-    lastPath = paramString;
+    if (mUICallback.containsKey(Long.valueOf(paramLong))) {
+      ((ILiteAppUICallback)mUICallback.get(Long.valueOf(paramLong))).setPageOrientation(paramInt);
+    }
+  }
+  
+  public static native int setPath(String paramString1, HostInfo paramHostInfo, String paramString2);
+  
+  public static void setPath(String paramString1, String paramString2)
+  {
+    lastPath = paramString1;
     HostInfo localHostInfo = new HostInfo();
     if (mCallback != null) {
       localHostInfo = mCallback.getHostInfo();
     }
-    setPath(paramString, localHostInfo);
+    setPath(paramString1, localHostInfo, paramString2);
   }
   
-  public static native void setPath(String paramString, HostInfo paramHostInfo);
-  
-  public static void setPath(String paramString, Map<String, String> paramMap)
+  public static void setPath(String paramString1, Map<String, String> paramMap, String paramString2)
   {
-    lastPath = paramString;
+    lastPath = paramString1;
     HostInfo localHostInfo = new HostInfo();
     if (mCallback != null) {
       localHostInfo = mCallback.getHostInfo();
@@ -467,7 +674,7 @@ public abstract class LiteAppCenter
           localHostInfo.otherExtends.put(localEntry.getKey(), localEntry.getValue());
         }
       }
-      setPath(paramString, localHostInfo);
+      setPath(paramString1, localHostInfo, paramString2);
       return;
     }
   }
@@ -486,9 +693,9 @@ public abstract class LiteAppCenter
     mCallback = paramIWxaLiteAppCallback;
   }
   
-  public static PageInfo showIndexView(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static PageInfo showIndexView(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    paramString1 = _showIndexView(paramString1, paramString2, paramString3, paramString4);
+    paramString1 = innerShowIndexView(paramString1, paramString2, paramString3, paramString4, paramInt);
     pageInfos.put(Long.valueOf(paramString1.pageId), paramString1);
     pageId = paramString1.pageId;
     return paramString1;
@@ -505,13 +712,17 @@ public abstract class LiteAppCenter
     }
   }
   
-  public static PageInfo showView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static PageInfo showView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    paramString1 = _showView(paramString1, paramString2, paramString3, paramString4, paramString5);
+    paramString1 = innerShowView(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt);
     pageInfos.put(Long.valueOf(paramString1.pageId), paramString1);
     pageId = paramString1.pageId;
     return paramString1;
   }
+  
+  public static native boolean storeIsAlive(String paramString);
+  
+  public static native int subscribeStore(String paramString, String[] paramArrayOfString);
   
   private static void systemInfoChange(String paramString)
   {
@@ -522,6 +733,8 @@ public abstract class LiteAppCenter
       jsApiCallback(localSystemInfoChangeCallbackInfo.appId, localSystemInfoChangeCallbackInfo.appPtr, localSystemInfoChangeCallbackInfo.pageId, localSystemInfoChangeCallbackInfo.callbackId, paramString, true, true);
     }
   }
+  
+  public static native int unSubscribeStore(String paramString, String[] paramArrayOfString);
   
   public static void unsetUICallback(long paramLong, ILiteAppUICallback paramILiteAppUICallback)
   {
@@ -538,18 +751,23 @@ public abstract class LiteAppCenter
   
   public static void updateDisplayParam(Context paramContext, long paramLong)
   {
-    Point localPoint = com.tencent.mm.ext.ui.e.au(paramContext);
+    Point localPoint = e.bf(paramContext);
     Object localObject = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((Display)localObject).getMetrics(localDisplayMetrics);
     int i = localPoint.x;
     int j = localPoint.y;
     localObject = Float.valueOf(localDisplayMetrics.density);
-    int k = com.tencent.liteapp.d.e.at(paramContext);
-    int m = com.tencent.liteapp.d.e.aB(paramContext);
-    float f = 48.0F * ((Float)localObject).floatValue();
+    int k = f.be(paramContext);
+    int m = f.bk(paramContext);
+    float f = f.anV() * ((Float)localObject).floatValue();
     setDisplayParams(paramLong, i / ((Float)localObject).floatValue(), j / ((Float)localObject).floatValue(), localPoint.x / ((Float)localObject).floatValue(), localPoint.y / ((Float)localObject).floatValue(), localDisplayMetrics.densityDpi, ((Float)localObject).floatValue(), f / ((Float)localObject).floatValue(), k / ((Float)localObject).floatValue(), m / ((Float)localObject).floatValue());
     com.tencent.liteapp.b.b.i("WxaLiteApp.LiteAppCenter", "updateLvCppDisplayParams w=%d h=%d screen=%d,%d densityDpi=%d density=%f statusBarHeight:%d navigationBarHeight:%d actionBarHeight:%f", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y), Integer.valueOf(localDisplayMetrics.densityDpi), localObject, Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) });
+  }
+  
+  public static void updateFontScale(float paramFloat)
+  {
+    setFontScale(paramFloat);
   }
   
   public static boolean versionGreater(String paramString1, String paramString2)
@@ -612,13 +830,21 @@ public abstract class LiteAppCenter
   
   public static abstract interface ILiteAppUICallback
   {
+    public abstract void closeWindow(Intent paramIntent);
+    
     public abstract boolean hasCutOut();
     
     public abstract void navigateBack(boolean paramBoolean);
     
     public abstract void onCheckSumFail(String paramString, List<String> paramList);
     
+    public abstract void onShowPageTimeStamp(long paramLong1, long paramLong2);
+    
     public abstract void setFlags(int paramInt);
+    
+    public abstract void setKeepScreenOn(boolean paramBoolean);
+    
+    public abstract void setPageOrientation(int paramInt);
     
     public abstract void showPage(LiteAppCenter.PageInfo paramPageInfo);
     
@@ -635,6 +861,8 @@ public abstract class LiteAppCenter
     
     public abstract LiteAppCenter.HostInfo getHostInfo();
     
+    public abstract WxaLiteAppBaselibInfo getLiteAppBaselibInfo(String paramString);
+    
     public abstract String getLiteAppRoot();
     
     public abstract String getOfflineResource(String paramString1, String paramString2, String paramString3);
@@ -646,6 +874,10 @@ public abstract class LiteAppCenter
     public abstract String getUserAgent();
     
     public abstract void hideKeyboard();
+    
+    public abstract void onStoreSendResult(String paramString1, int paramInt, String paramString2, String paramString3);
+    
+    public abstract void onStoreSetData(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2);
     
     public abstract void openPage(String paramString1, String paramString2, String paramString3, String paramString4);
     
@@ -679,11 +911,11 @@ public abstract class LiteAppCenter
     
     public String toString()
     {
-      AppMethodBeat.i(259095);
+      AppMethodBeat.i(271285);
       Object localObject = new StringBuffer();
       ((StringBuffer)localObject).append("appid:").append(this.appId).append(" appPtr:").append(this.appPtr).append(" pageId:").append(this.pageId).append(" method:").append(this.method).append(" param:").append(this.param).append(" callback:").append(this.callbackId).append(" isFromView:").append(this.isFromView);
       localObject = ((StringBuffer)localObject).toString();
-      AppMethodBeat.o(259095);
+      AppMethodBeat.o(271285);
       return localObject;
     }
   }
@@ -698,20 +930,21 @@ public abstract class LiteAppCenter
     public String basePath;
     public int flags;
     public long pageId;
+    public int pageOrientation;
     public String pageUrl;
     public long renderId;
-    public boolean success;
+    public int success;
     
     static
     {
-      AppMethodBeat.i(259104);
+      AppMethodBeat.i(271298);
       CREATOR = new Parcelable.Creator()
       {
         public final LiteAppCenter.PageInfo createFromParcel(Parcel paramAnonymousParcel)
         {
-          AppMethodBeat.i(259096);
+          AppMethodBeat.i(271287);
           paramAnonymousParcel = new LiteAppCenter.PageInfo(paramAnonymousParcel);
-          AppMethodBeat.o(259096);
+          AppMethodBeat.o(271287);
           return paramAnonymousParcel;
         }
         
@@ -720,39 +953,36 @@ public abstract class LiteAppCenter
           return new LiteAppCenter.PageInfo[paramAnonymousInt];
         }
       };
-      AppMethodBeat.o(259104);
+      AppMethodBeat.o(271298);
     }
     
-    protected PageInfo(Parcel paramParcel)
+    public PageInfo(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString1, String paramString2, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(259101);
-      if (paramParcel.readByte() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.success = bool;
-        this.appUuid = paramParcel.readLong();
-        this.appPtr = paramParcel.readLong();
-        this.pageId = paramParcel.readLong();
-        this.renderId = paramParcel.readLong();
-        this.basePath = paramParcel.readString();
-        this.pageUrl = paramParcel.readString();
-        this.flags = paramParcel.readInt();
-        this.appId = paramParcel.readString();
-        AppMethodBeat.o(259101);
-        return;
-      }
-    }
-    
-    public PageInfo(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString1, String paramString2, int paramInt)
-    {
-      this.success = paramBoolean;
+      this.success = paramInt1;
       this.appUuid = paramLong1;
       this.appPtr = paramLong2;
       this.pageId = paramLong3;
       this.renderId = paramLong4;
       this.basePath = paramString1;
       this.pageUrl = paramString2;
-      this.flags = paramInt;
+      this.flags = paramInt2;
+      this.pageOrientation = paramInt3;
+    }
+    
+    protected PageInfo(Parcel paramParcel)
+    {
+      AppMethodBeat.i(271293);
+      this.success = paramParcel.readInt();
+      this.appUuid = paramParcel.readLong();
+      this.appPtr = paramParcel.readLong();
+      this.pageId = paramParcel.readLong();
+      this.renderId = paramParcel.readLong();
+      this.basePath = paramParcel.readString();
+      this.pageUrl = paramParcel.readString();
+      this.flags = paramParcel.readInt();
+      this.pageOrientation = paramParcel.readInt();
+      this.appId = paramParcel.readString();
+      AppMethodBeat.o(271293);
     }
     
     public int describeContents()
@@ -762,30 +992,26 @@ public abstract class LiteAppCenter
     
     public String toString()
     {
-      AppMethodBeat.i(259102);
-      String str = "PageInfo{success=" + this.success + ", uuid=" + this.appUuid + ", appPtr=" + this.appPtr + ", pageId=" + this.pageId + ", renderId=" + this.renderId + ", basePath='" + this.basePath + '\'' + ", pageUrl='" + this.pageUrl + '\'' + ", flags=" + this.flags + '}';
-      AppMethodBeat.o(259102);
+      AppMethodBeat.i(271306);
+      String str = "PageInfo{success=" + this.success + ", uuid=" + this.appUuid + ", appPtr=" + this.appPtr + ", pageId=" + this.pageId + ", renderId=" + this.renderId + ", basePath='" + this.basePath + '\'' + ", pageUrl='" + this.pageUrl + '\'' + ", flags=" + this.flags + ", pageOrientation=" + this.pageOrientation + '}';
+      AppMethodBeat.o(271306);
       return str;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(259103);
-      if (this.success) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeInt(paramInt);
-        paramParcel.writeLong(this.appUuid);
-        paramParcel.writeLong(this.appPtr);
-        paramParcel.writeLong(this.pageId);
-        paramParcel.writeLong(this.renderId);
-        paramParcel.writeString(this.basePath);
-        paramParcel.writeString(this.pageUrl);
-        paramParcel.writeInt(this.flags);
-        paramParcel.writeString(this.appId);
-        AppMethodBeat.o(259103);
-        return;
-      }
+      AppMethodBeat.i(271318);
+      paramParcel.writeInt(this.success);
+      paramParcel.writeLong(this.appUuid);
+      paramParcel.writeLong(this.appPtr);
+      paramParcel.writeLong(this.pageId);
+      paramParcel.writeLong(this.renderId);
+      paramParcel.writeString(this.basePath);
+      paramParcel.writeString(this.pageUrl);
+      paramParcel.writeInt(this.flags);
+      paramParcel.writeInt(this.pageOrientation);
+      paramParcel.writeString(this.appId);
+      AppMethodBeat.o(271318);
     }
   }
   
@@ -806,7 +1032,7 @@ public abstract class LiteAppCenter
     
     public String toJasonString()
     {
-      AppMethodBeat.i(259107);
+      AppMethodBeat.i(271273);
       Object localObject = new JSONObject();
       try
       {
@@ -823,7 +1049,7 @@ public abstract class LiteAppCenter
         ((JSONObject)localObject).put("titleBarHeight", this.titleBarHeight);
         ((JSONObject)localObject).put("darkMode", this.darkMode);
         localObject = ((JSONObject)localObject).toString();
-        AppMethodBeat.o(259107);
+        AppMethodBeat.o(271273);
         return localObject;
       }
       catch (JSONException localJSONException)

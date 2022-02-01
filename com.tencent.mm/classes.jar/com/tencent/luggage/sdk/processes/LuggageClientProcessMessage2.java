@@ -4,20 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/processes/LuggageClientProcessMessage2;", "Landroid/os/Parcelable;", "()V", "describeContents", "", "runOnClientProcess", "", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "luggage-wechat-full-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/luggage/sdk/processes/LuggageClientProcessMessage2;", "Landroid/os/Parcelable;", "()V", "describeContents", "", "runOnClientProcess", "", "writeToParcel", "parcel", "Landroid/os/Parcel;", "flags", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 class LuggageClientProcessMessage2
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
+  public static final Parcelable.Creator<LuggageClientProcessMessage2> CREATOR;
   
   static
   {
-    AppMethodBeat.i(242448);
-    CREATOR = new a();
-    AppMethodBeat.o(242448);
+    AppMethodBeat.i(220417);
+    CREATOR = (Parcelable.Creator)new a();
+    AppMethodBeat.o(220417);
   }
   
   public int describeContents()
@@ -27,39 +27,20 @@ class LuggageClientProcessMessage2
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(242446);
-    p.k(paramParcel, "parcel");
+    AppMethodBeat.i(220433);
+    s.u(paramParcel, "out");
     paramParcel.writeInt(1);
-    AppMethodBeat.o(242446);
+    AppMethodBeat.o(220433);
   }
   
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(246526);
-      p.k(paramParcel, "in");
-      if (paramParcel.readInt() != 0)
-      {
-        paramParcel = new LuggageClientProcessMessage2();
-        AppMethodBeat.o(246526);
-        return paramParcel;
-      }
-      AppMethodBeat.o(246526);
-      return null;
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new LuggageClientProcessMessage2[paramInt];
-    }
-  }
+    implements Parcelable.Creator<LuggageClientProcessMessage2>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.processes.LuggageClientProcessMessage2
  * JD-Core Version:    0.7.0.1
  */

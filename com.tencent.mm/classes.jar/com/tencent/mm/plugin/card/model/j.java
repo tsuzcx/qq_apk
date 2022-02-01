@@ -23,7 +23,7 @@ public final class j
     this.db = paramISQLiteDatabase;
   }
   
-  public final i aqY(String paramString)
+  public final i akD(String paramString)
   {
     AppMethodBeat.i(112782);
     i locali = new i();

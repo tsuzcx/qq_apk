@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/anl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.299988dip" />
-        <ViewStub android:id="@id/ao4" android:layout="@layout/o7" android:inflatedId="@id/ao4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <LinearLayout android:orientation="vertical" android:id="@id/fcj" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="bottom" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/amt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.699982dip" android:layout_marginBottom="@dimen/g">
-                <ImageView android:layout_gravity="center" android:id="@id/an1" android:layout_width="22.0dip" android:layout_height="16.299988dip" android:layout_marginLeft="16.699982dip" android:src="@raw/card_home_member_card_icon" android:scaleType="fitXY" />
-                <TextView android:textSize="16.0dip" android:textColor="@color/hm" android:ellipsize="end" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" android:layout_marginRight="@dimen/ib" android:text="@string/ar8" android:singleLine="true" android:layout_weight="1.0" />
-                <TextView android:textSize="@dimen/ka" android:textColor="@color/x3" android:ellipsize="end" android:layout_gravity="center" android:id="@id/fck" android:paddingLeft="@dimen/ib" android:paddingRight="@dimen/ib" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/at3" android:singleLine="true" />
-            </LinearLayout>
-            <com.tencent.mm.ui.base.MaxListView android:id="@android:id/list" android:background="@null" android:focusable="true" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginRight="17.0dip" android:transcriptMode="disabled" style="@style/g2" />
-            <include android:id="@id/ao1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/vd" android:layout_marginTop="@dimen/i2" android:layout_marginRight="@dimen/vd" layout="@layout/n4" />
-        </LinearLayout>
-        <include android:id="@id/apd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ib" layout="@layout/n4" />
-        <LinearLayout android:orientation="vertical" android:id="@id/alj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-</ScrollView>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/be2" android:background="@drawable/kf" android:paddingTop="@dimen/cv" android:paddingBottom="@dimen/cv" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/be1" android:background="@color/ahb" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/cp" android:importantForAccessibility="no" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7b" android:id="@id/be3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cd" android:text="{invo}" android:layout_weight="1.0" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/be0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{invo}" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="16.0dip" android:src="@raw/icons_outlined_arrow" android:importantForAccessibility="no" app:iconColor="@color/FG_2" />
+</LinearLayout>

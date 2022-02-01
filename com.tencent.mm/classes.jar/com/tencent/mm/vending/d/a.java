@@ -17,7 +17,7 @@ public final class a
     AppMethodBeat.o(74872);
   }
   
-  public final ArrayList<String> bBu(String paramString)
+  public final ArrayList<String> bDO(String paramString)
   {
     AppMethodBeat.i(74875);
     if (this.mExtras == null)
@@ -58,7 +58,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.d.a
  * JD-Core Version:    0.7.0.1
  */

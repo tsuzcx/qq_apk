@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.backup.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.backup.f.h.a;
 import com.tencent.mm.plugin.backup.i.af;
 import com.tencent.mm.plugin.backup.i.ag;
@@ -14,49 +14,49 @@ import java.util.Set;
 public final class l
   extends b
 {
-  private af rSn;
-  private ag rSo;
-  private a rSp;
+  private af vdD;
+  private ag vdE;
+  private a vdF;
   
   public l(String paramString, HashMap<Long, h.a> paramHashMap, a parama)
   {
     AppMethodBeat.i(21740);
-    this.rSn = new af();
-    this.rSo = new ag();
-    this.rSp = parama;
-    this.rSn.rVv = paramString;
+    this.vdD = new af();
+    this.vdE = new ag();
+    this.vdF = parama;
+    this.vdD.vgL = paramString;
     Log.i("MicroMsg.BackupSvrIdScene", "init sessionName:%s", new Object[] { paramString });
-    this.rSn.rWQ = new LinkedList();
-    this.rSn.rWR = new LinkedList();
-    this.rSn.rWS = new LinkedList();
+    this.vdD.vih = new LinkedList();
+    this.vdD.vii = new LinkedList();
+    this.vdD.vij = new LinkedList();
     paramString = paramHashMap.keySet().iterator();
     while (paramString.hasNext())
     {
       parama = (h.a)paramHashMap.get((Long)paramString.next());
-      this.rSn.rWQ.add(Long.valueOf(parama.rPF));
-      this.rSn.rWR.add(parama.rPG);
-      this.rSn.rWS.add(parama.md5);
+      this.vdD.vih.add(Long.valueOf(parama.vaU));
+      this.vdD.vii.add(parama.vaV);
+      this.vdD.vij.add(parama.md5);
     }
     AppMethodBeat.o(21740);
   }
   
-  public final void EN(int paramInt)
+  public final void Fo(int paramInt)
   {
     AppMethodBeat.i(21741);
     Log.i("MicroMsg.BackupSvrIdScene", "onSceneEnd");
-    r(0, 0, "success");
-    this.rSp.F(this.rSo.rWQ);
+    u(0, 0, "success");
+    this.vdF.I(this.vdE.vih);
     AppMethodBeat.o(21741);
   }
   
-  public final a ctC()
+  public final a cWm()
   {
-    return this.rSo;
+    return this.vdE;
   }
   
-  public final a ctD()
+  public final a cWn()
   {
-    return this.rSn;
+    return this.vdD;
   }
   
   public final int getType()
@@ -66,12 +66,12 @@ public final class l
   
   public static abstract interface a
   {
-    public abstract void F(LinkedList<Long> paramLinkedList);
+    public abstract void I(LinkedList<Long> paramLinkedList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.l
  * JD-Core Version:    0.7.0.1
  */

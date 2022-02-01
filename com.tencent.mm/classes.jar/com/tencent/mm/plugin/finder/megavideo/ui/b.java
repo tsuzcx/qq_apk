@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.finder.megavideo.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/megavideo/ui/FinderFavMegaVideoUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b zxm;
+  public static final b EAe;
   
   static
   {
-    AppMethodBeat.i(290456);
-    zxm = new b();
-    AppMethodBeat.o(290456);
+    AppMethodBeat.i(342059);
+    EAe = new b();
+    AppMethodBeat.o(342059);
   }
 }
 

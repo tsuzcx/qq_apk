@@ -13,11 +13,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.k;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.record.b.u;
-import com.tencent.mm.plugin.record.b.u.a;
+import com.tencent.mm.plugin.record.model.u;
+import com.tencent.mm.plugin.record.model.u.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.base.aa;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,24 +25,24 @@ public class RecordVoiceBaseView
   extends TextView
   implements u.a
 {
-  private u HEH;
+  private u NCj;
+  private boolean Uz;
   private Context context;
   public int duration;
-  public int fEi;
-  private boolean isRunning;
+  public int hIY;
   public String path;
-  private AlphaAnimation uwn;
-  private AnimationDrawable uwo;
+  private AlphaAnimation xCM;
+  private AnimationDrawable xCN;
   
   public RecordVoiceBaseView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27982);
-    this.isRunning = false;
+    this.Uz = false;
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    buR();
+    bTa();
     AppMethodBeat.o(27982);
   }
   
@@ -50,54 +50,54 @@ public class RecordVoiceBaseView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27983);
-    this.isRunning = false;
+    this.Uz = false;
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    buR();
+    bTa();
     AppMethodBeat.o(27983);
   }
   
-  private void buR()
+  private void bTa()
   {
     AppMethodBeat.i(27984);
-    this.uwn = new AlphaAnimation(0.1F, 1.0F);
-    this.uwn.setDuration(1000L);
-    this.uwn.setRepeatCount(-1);
-    this.uwn.setRepeatMode(2);
-    this.uwo = new com.tencent.mm.ui.g.a();
+    this.xCM = new AlphaAnimation(0.1F, 1.0F);
+    this.xCM.setDuration(1000L);
+    this.xCM.setRepeatCount(-1);
+    this.xCM.setRepeatMode(2);
+    this.xCN = new com.tencent.mm.ui.g.a();
     Drawable localDrawable = getResources().getDrawable(R.k.chatfrom_voice_playing_new_f1);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
+    this.xCN.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(R.k.chatfrom_voice_playing_new_f2);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
+    this.xCN.addFrame(localDrawable, 300);
     localDrawable = getResources().getDrawable(R.k.chatfrom_voice_playing_new_f3);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.uwo.addFrame(localDrawable, 300);
-    this.uwo.setOneShot(false);
-    this.uwo.setVisible(true, true);
+    this.xCN.addFrame(localDrawable, 300);
+    this.xCN.setOneShot(false);
+    this.xCN.setVisible(true, true);
     AppMethodBeat.o(27984);
   }
   
-  private void cTg()
+  private void dxz()
   {
     AppMethodBeat.i(27985);
-    if ((this.uwn != null) && (this.uwn.isInitialized())) {
+    if ((this.xCM != null) && (this.xCM.isInitialized())) {
       setAnimation(null);
     }
-    this.isRunning = false;
+    this.Uz = false;
     setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.k.chatfrom_voice_playing_new), null, null, null);
-    this.uwo.stop();
+    this.xCN.stop();
     AppMethodBeat.o(27985);
   }
   
-  public final void aVA(String paramString)
+  public final void aSI(String paramString)
   {
     AppMethodBeat.i(27989);
     Log.d("MicroMsg.RecordVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
     if (!Util.nullAs(paramString, "").equals(this.path)) {
-      cTg();
+      dxz();
     }
     AppMethodBeat.o(27989);
   }
@@ -119,18 +119,18 @@ public class RecordVoiceBaseView
       {
         AppMethodBeat.i(27981);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/record/ui/RecordVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        Log.d("MicroMsg.RecordVoiceBaseView", "clicked path %s, isPlay %s", new Object[] { RecordVoiceBaseView.a(RecordVoiceBaseView.this), Boolean.valueOf(RecordVoiceBaseView.b(RecordVoiceBaseView.this).cTl()) });
-        if ((com.tencent.mm.q.a.cy(RecordVoiceBaseView.c(RecordVoiceBaseView.this))) || (com.tencent.mm.q.a.cw(RecordVoiceBaseView.c(RecordVoiceBaseView.this))) || (com.tencent.mm.q.a.cB(RecordVoiceBaseView.c(RecordVoiceBaseView.this))))
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/record/ui/RecordVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        Log.d("MicroMsg.RecordVoiceBaseView", "clicked path %s, isPlay %s", new Object[] { RecordVoiceBaseView.a(RecordVoiceBaseView.this), Boolean.valueOf(RecordVoiceBaseView.b(RecordVoiceBaseView.this).dxE()) });
+        if ((com.tencent.mm.n.a.dm(RecordVoiceBaseView.c(RecordVoiceBaseView.this))) || (com.tencent.mm.n.a.dl(RecordVoiceBaseView.c(RecordVoiceBaseView.this))) || (com.tencent.mm.n.a.dp(RecordVoiceBaseView.c(RecordVoiceBaseView.this))))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/record/ui/RecordVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27981);
           return;
         }
-        if ((!e.avA()) && (!Util.isNullOrNil(RecordVoiceBaseView.a(RecordVoiceBaseView.this))))
+        if ((!e.aPU()) && (!Util.isNullOrNil(RecordVoiceBaseView.a(RecordVoiceBaseView.this))))
         {
-          w.g(paramAnonymousView.getContext(), null);
+          aa.j(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/record/ui/RecordVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27981);
           return;
@@ -143,7 +143,7 @@ public class RecordVoiceBaseView
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/record/ui/RecordVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27981);
           return;
-          if (RecordVoiceBaseView.b(RecordVoiceBaseView.this).cTl()) {
+          if (RecordVoiceBaseView.b(RecordVoiceBaseView.this).dxE()) {
             RecordVoiceBaseView.this.stopPlay();
           } else if (!RecordVoiceBaseView.e(RecordVoiceBaseView.this)) {
             RecordVoiceBaseView.d(RecordVoiceBaseView.this);
@@ -157,9 +157,9 @@ public class RecordVoiceBaseView
   public void setVoiceHelper(u paramu)
   {
     AppMethodBeat.i(27987);
-    this.HEH = paramu;
-    paramu = this.HEH;
-    Iterator localIterator = paramu.callbacks.iterator();
+    this.NCj = paramu;
+    paramu = this.NCj;
+    Iterator localIterator = paramu.bPE.iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -170,7 +170,7 @@ public class RecordVoiceBaseView
     {
       AppMethodBeat.o(27987);
       return;
-      paramu.callbacks.add(this);
+      paramu.bPE.add(this);
     }
   }
   
@@ -178,14 +178,14 @@ public class RecordVoiceBaseView
   {
     AppMethodBeat.i(27988);
     Log.d("MicroMsg.RecordVoiceBaseView", "stop play");
-    cTg();
-    this.HEH.stopPlay();
+    dxz();
+    this.NCj.stopPlay();
     AppMethodBeat.o(27988);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.RecordVoiceBaseView
  * JD-Core Version:    0.7.0.1
  */

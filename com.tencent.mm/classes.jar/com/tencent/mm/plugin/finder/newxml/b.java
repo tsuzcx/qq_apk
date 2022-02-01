@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.finder.newxml;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cn;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.extension.reddot.f;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.protocal.protobuf.bhk;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bhx;
-import com.tencent.mm.protocal.protobuf.bkn;
-import com.tencent.mm.protocal.protobuf.cxp;
-import com.tencent.mm.protocal.protobuf.dix;
-import com.tencent.mm.protocal.protobuf.fmo;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.protocal.protobuf.bti;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.btx;
+import com.tencent.mm.protocal.protobuf.bxq;
+import com.tencent.mm.protocal.protobuf.dou;
+import com.tencent.mm.protocal.protobuf.ebh;
+import com.tencent.mm.protocal.protobuf.gjg;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,99 +23,129 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.k.i;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/newxml/FinderPromotionConsumer;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlConsumer;", "()V", "consumeNewXml", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgReturn;", "subType", "", "values", "", "p2", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "dealWithPromotion", "", "msgType", "", "dealWithRedPackFinder", "dealWithRedPackWx", "getRedDotTitleFinder", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "promotion", "Lcom/tencent/mm/protocal/protobuf/FinderPromotionMsg;", "posArray", "", "transXmlToFinderPromotionMsg", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/newxml/FinderPromotionConsumer;", "Lcom/tencent/mm/plugin/messenger/foundation/api/INewXmlConsumer;", "()V", "consumeNewXml", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgReturn;", "subType", "", "values", "", "p2", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "dealWithPromotion", "", "msgType", "", "dealWithRedPackFinder", "dealWithRedPackWx", "getRedDotTitleFinder", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "promotion", "Lcom/tencent/mm/protocal/protobuf/FinderPromotionMsg;", "posArray", "", "transXmlToFinderPromotionMsg", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  implements s
+  implements com.tencent.mm.plugin.messenger.foundation.a.s
 {
-  public static final a zKb;
+  public static final a ESa;
   
   static
   {
-    AppMethodBeat.i(275343);
-    zKb = new a((byte)0);
-    AppMethodBeat.o(275343);
+    AppMethodBeat.i(329948);
+    ESa = new a((byte)0);
+    AppMethodBeat.o(329948);
   }
   
-  private static bhk Z(Map<String, String> paramMap)
+  private static final String a(gjg paramgjg)
   {
-    AppMethodBeat.i(275338);
-    bhk localbhk = new bhk();
-    localbhk.priority = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.priority"));
-    localbhk.SRY = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_action"));
-    localbhk.SRZ = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.start_time"));
-    localbhk.end_time = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.end_time"));
-    localbhk.msg_type = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_type"));
-    localbhk.SSa = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_ext"));
-    Object localObject = new cxp();
-    ((cxp)localObject).TFY = ((String)paramMap.get(".sysmsg.msg.miniapp_msg.miniapp_name"));
-    ((cxp)localObject).RFo = ((String)paramMap.get(".sysmsg.msg.miniapp_msg.miniapp_path"));
-    ((cxp)localObject).RFq = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.miniapp_msg.miniapp_scene"));
-    localbhk.SSb = ((cxp)localObject);
-    localObject = ".sysmsg.msg.path_info";
-    LinkedList localLinkedList = new LinkedList();
-    int i = 1;
-    while (paramMap.containsKey(localObject))
-    {
-      fmo localfmo = new fmo();
-      localfmo.ULm = ((String)paramMap.get((String)localObject + ".wording.zh_cn"));
-      localfmo.ULn = ((String)paramMap.get((String)localObject + ".wording.zh_tw"));
-      localfmo.RJK = ((String)paramMap.get((String)localObject + ".wording.en"));
-      dix localdix = new dix();
-      localdix.TQr = localfmo;
-      localdix.TQq = Util.safeParseInt((String)paramMap.get((String)localObject + ".msg_position"));
-      localLinkedList.add(localdix);
-      localObject = (String)localObject + i;
-      i += 1;
+    AppMethodBeat.i(329944);
+    if (paramgjg == null) {
+      paramgjg = null;
     }
-    localbhk.SSc = localLinkedList;
-    AppMethodBeat.o(275338);
-    return localbhk;
+    while (paramgjg == null)
+    {
+      AppMethodBeat.o(329944);
+      return "";
+      if (!LocaleUtil.isSimplifiedChineseAppLang())
+      {
+        if (LocaleUtil.isTraditionalChineseAppLang())
+        {
+          paramgjg = paramgjg.acfA;
+          continue;
+        }
+        if (!LocaleUtil.isChineseAppLang())
+        {
+          paramgjg = paramgjg.YHe;
+          continue;
+        }
+      }
+      paramgjg = paramgjg.acfz;
+    }
+    AppMethodBeat.o(329944);
+    return paramgjg;
   }
   
-  private final ArrayList<String> a(bhk parambhk, int[] paramArrayOfInt)
+  private static ArrayList<String> a(bti parambti, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(275340);
+    AppMethodBeat.i(329939);
     HashMap localHashMap = new HashMap();
-    parambhk = parambhk.SSc;
-    p.j(parambhk, "promotion.path_infos");
-    Iterator localIterator = ((Iterable)parambhk).iterator();
+    parambti = parambti.aabp;
+    kotlin.g.b.s.s(parambti, "promotion.path_infos");
+    Iterator localIterator = ((Iterable)parambti).iterator();
     while (localIterator.hasNext())
     {
-      parambhk = (dix)localIterator.next();
+      parambti = (ebh)localIterator.next();
       Map localMap = (Map)localHashMap;
-      i = parambhk.TQq;
-      fmo localfmo = parambhk.TQr;
-      parambhk = localfmo;
-      if (localfmo == null) {
-        parambhk = new fmo();
+      i = parambti.abgP;
+      gjg localgjg = parambti.abgQ;
+      parambti = localgjg;
+      if (localgjg == null) {
+        parambti = new gjg();
       }
-      localMap.put(Integer.valueOf(i), parambhk);
+      localMap.put(Integer.valueOf(i), parambti);
     }
-    parambhk = new ArrayList();
-    new b(this);
+    parambti = new ArrayList();
     int j = paramArrayOfInt.length;
     int i = 0;
     while (i < j)
     {
-      parambhk.add(b.a((fmo)localHashMap.get(Integer.valueOf(paramArrayOfInt[i]))));
+      parambti.add(a((gjg)localHashMap.get(Integer.valueOf(paramArrayOfInt[i]))));
       i += 1;
     }
-    AppMethodBeat.o(275340);
-    return parambhk;
+    AppMethodBeat.o(329939);
+    return parambti;
   }
   
-  public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
+  private static bti am(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(275335);
-    p.k(paramMap, "values");
-    p.k(parama, "p2");
-    if (p.h(paramString, "FinderPromotion"))
+    AppMethodBeat.i(329931);
+    bti localbti = new bti();
+    localbti.priority = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.priority"));
+    localbti.aabm = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_action"));
+    localbti.start_time = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.start_time"));
+    localbti.end_time = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.end_time"));
+    localbti.msg_type = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_type"));
+    localbti.aabn = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_ext"));
+    Object localObject1 = new dou();
+    ((dou)localObject1).aaVE = ((String)paramMap.get(".sysmsg.msg.miniapp_msg.miniapp_name"));
+    ((dou)localObject1).YBQ = ((String)paramMap.get(".sysmsg.msg.miniapp_msg.miniapp_path"));
+    ((dou)localObject1).YBS = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.miniapp_msg.miniapp_scene"));
+    Object localObject2 = ah.aiuX;
+    localbti.aabo = ((dou)localObject1);
+    localObject2 = new LinkedList();
+    localObject1 = ".sysmsg.msg.path_info";
+    int i = 1;
+    while (paramMap.containsKey(localObject1))
+    {
+      gjg localgjg = new gjg();
+      localgjg.acfz = ((String)paramMap.get(kotlin.g.b.s.X((String)localObject1, ".wording.zh_cn")));
+      localgjg.acfA = ((String)paramMap.get(kotlin.g.b.s.X((String)localObject1, ".wording.zh_tw")));
+      localgjg.YHe = ((String)paramMap.get(kotlin.g.b.s.X((String)localObject1, ".wording.en")));
+      Object localObject3 = ah.aiuX;
+      localObject3 = new ebh();
+      ((ebh)localObject3).abgQ = localgjg;
+      ((ebh)localObject3).abgP = Util.safeParseInt((String)paramMap.get(kotlin.g.b.s.X((String)localObject1, ".msg_position")));
+      ((LinkedList)localObject2).add(localObject3);
+      localObject1 = kotlin.g.b.s.X(".sysmsg.msg.path_info", Integer.valueOf(i));
+      i += 1;
+    }
+    paramMap = ah.aiuX;
+    localbti.aabp = ((LinkedList)localObject2);
+    AppMethodBeat.o(329931);
+    return localbti;
+  }
+  
+  public final g.b a(String paramString, Map<String, String> paramMap, g.a parama)
+  {
+    AppMethodBeat.i(329956);
+    kotlin.g.b.s.u(paramMap, "values");
+    kotlin.g.b.s.u(parama, "p2");
+    if (kotlin.g.b.s.p(paramString, "FinderPromotion"))
     {
       Log.i("Finder.FinderPromotionConsumer", "[FinderPromotionConsumer]");
       switch (Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_type")))
@@ -125,160 +154,120 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(275335);
+      AppMethodBeat.o(329956);
       return null;
       int i = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_action"));
-      Log.i("Finder.FinderPromotionConsumer", "[dealWithRedPackFinder] msgAction:".concat(String.valueOf(i)));
+      Log.i("Finder.FinderPromotionConsumer", kotlin.g.b.s.X("[dealWithRedPackFinder] msgAction:", Integer.valueOf(i)));
       Object localObject;
-      f localf;
-      bhw localbhw;
+      i locali;
+      btw localbtw;
       switch (i)
       {
       default: 
         break;
       case 1: 
-        parama = Z(paramMap);
+        parama = am(paramMap);
         localObject = a(parama, new int[] { 2, 3 });
-        localf = ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager();
-        localbhw = new bhw();
-        localbhw.SQm = String.valueOf(cm.bfE());
-        localbhw.priority = 0;
-        localbhw.type = 1015;
-        paramMap = new bhx();
-        paramMap.SSt = 1;
-        paramString = parama.SSb;
-        if (paramString != null) {}
-        for (paramString = paramString.toByteArray();; paramString = null)
+        locali = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager();
+        localbtw = new btw();
+        localbtw.ZYN = String.valueOf(cn.bDw());
+        localbtw.priority = 0;
+        localbtw.type = 1015;
+        paramMap = new btx();
+        paramMap.aabI = 1;
+        paramString = parama.aabo;
+        if (paramString == null) {}
+        for (paramString = null;; paramString = paramString.toByteArray())
         {
-          paramMap.SSu = new com.tencent.mm.cd.b(paramString);
-          localbhw.SSl = new com.tencent.mm.cd.b(paramMap.toByteArray());
-          localbhw.SRZ = parama.SRZ;
-          localbhw.tnN = i.ov(parama.end_time - cm.bfF(), 0);
-          bkn localbkn1 = new bkn();
-          localbkn1.CKC = 3;
-          paramMap = (String)j.M((List)localObject, 0);
+          paramMap.aabJ = new com.tencent.mm.bx.b(paramString);
+          paramString = ah.aiuX;
+          localbtw.aabz = new com.tencent.mm.bx.b(paramMap.toByteArray());
+          localbtw.start_time = parama.start_time;
+          localbtw.wso = k.qu(parama.end_time - cn.getSyncServerTimeSecond(), 0);
+          bxq localbxq1 = new bxq();
+          localbxq1.show_type = 3;
+          paramMap = (String)p.ae((List)localObject, 0);
           paramString = paramMap;
           if (paramMap == null) {
             paramString = "";
           }
-          localbkn1.title = paramString;
-          localbkn1.SVs = 1;
-          localbkn1.path = "ProfileEntrance";
-          localbhw.MFx.add(localbkn1);
-          bkn localbkn2 = new bkn();
-          localbkn2.CKC = 20;
-          paramMap = (String)j.M((List)localObject, 1);
+          localbxq1.title = paramString;
+          localbxq1.aagq = 1;
+          localbxq1.path = "ProfileEntrance";
+          localbtw.aabA.add(localbxq1);
+          bxq localbxq2 = new bxq();
+          localbxq2.show_type = 20;
+          paramMap = (String)p.ae((List)localObject, 1);
           paramString = paramMap;
           if (paramMap == null) {
             paramString = "";
           }
-          localbkn2.title = paramString;
-          localbkn2.SVs = 1;
-          localbkn2.path = "FinderProfileBanner";
-          localbkn2.HpB = "ProfileEntrance";
-          localbhw.MFx.add(localbkn2);
-          f.a(localf, localbhw, "checkFinderRedPackRedDot", null, true, null, null, 52);
-          Log.i("Finder.FinderPromotionConsumer", "[dealWithRedPackFinder] starttime" + localbhw.SRZ + ", endtime" + parama.end_time + ", title1:" + localbkn1.title + " ,title2:" + localbkn2.title + ", expire_time" + localbhw.tnN);
+          localbxq2.title = paramString;
+          localbxq2.aagq = 1;
+          localbxq2.path = "FinderProfileBanner";
+          localbxq2.Nnp = "ProfileEntrance";
+          localbtw.aabA.add(localbxq2);
+          i.a(locali, localbtw, "checkFinderRedPackRedDot", null, true, null, null, 0L, 116);
+          Log.i("Finder.FinderPromotionConsumer", "[dealWithRedPackFinder] starttime" + localbtw.start_time + ", endtime" + parama.end_time + ", title1:" + localbxq1.title + " ,title2:" + localbxq2.title + ", expire_time" + localbtw.wso);
           break;
         }
       case 2: 
-        ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager().Mp(1015);
+        ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().Nv(1015);
         continue;
         i = Util.safeParseInt((String)paramMap.get(".sysmsg.msg.msg_action"));
-        Log.i("Finder.FinderPromotionConsumer", "[dealWithRedPackWx] msgAction:".concat(String.valueOf(i)));
+        Log.i("Finder.FinderPromotionConsumer", kotlin.g.b.s.X("[dealWithRedPackWx] msgAction:", Integer.valueOf(i)));
         switch (i)
         {
         default: 
           break;
         case 1: 
-          parama = Z(paramMap);
+          parama = am(paramMap);
           paramMap = a(parama, new int[] { 1 });
-          localf = ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager();
-          localbhw = new bhw();
-          localbhw.SQm = String.valueOf(cm.bfE());
-          localbhw.priority = parama.priority;
-          localbhw.type = 1016;
-          localObject = new bhx();
-          ((bhx)localObject).SSt = 1;
-          paramString = parama.SSb;
-          if (paramString != null) {}
-          for (paramString = paramString.toByteArray();; paramString = null)
+          locali = ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager();
+          localbtw = new btw();
+          localbtw.ZYN = String.valueOf(cn.bDw());
+          localbtw.priority = parama.priority;
+          localbtw.type = 1016;
+          localObject = new btx();
+          ((btx)localObject).aabI = 1;
+          paramString = parama.aabo;
+          if (paramString == null) {}
+          for (paramString = null;; paramString = paramString.toByteArray())
           {
-            ((bhx)localObject).SSu = new com.tencent.mm.cd.b(paramString);
-            localbhw.SSl = new com.tencent.mm.cd.b(((bhx)localObject).toByteArray());
-            localbhw.SRZ = parama.SRZ;
-            localbhw.tnN = i.ov(parama.end_time - cm.bfF(), 0);
-            localObject = new bkn();
-            ((bkn)localObject).CKC = 20;
-            paramMap = (String)j.M((List)paramMap, 0);
+            ((btx)localObject).aabJ = new com.tencent.mm.bx.b(paramString);
+            paramString = ah.aiuX;
+            localbtw.aabz = new com.tencent.mm.bx.b(((btx)localObject).toByteArray());
+            localbtw.start_time = parama.start_time;
+            localbtw.wso = k.qu(parama.end_time - cn.getSyncServerTimeSecond(), 0);
+            localObject = new bxq();
+            ((bxq)localObject).show_type = 20;
+            paramMap = (String)p.ae((List)paramMap, 0);
             paramString = paramMap;
             if (paramMap == null) {
               paramString = "";
             }
-            ((bkn)localObject).title = paramString;
-            ((bkn)localObject).SVs = 1;
-            ((bkn)localObject).path = "CreateFinderEntrance";
-            localbhw.MFx.add(localObject);
-            f.a(localf, localbhw, "checkFinderRedPackRedDot", null, true, null, null, 52);
-            Log.i("Finder.FinderPromotionConsumer", "[dealWithRedPackFinder] starttime" + localbhw.SRZ + ", endtime" + parama.end_time + ", title:" + ((bkn)localObject).title + ", expire_time" + localbhw.tnN);
+            ((bxq)localObject).title = paramString;
+            ((bxq)localObject).aagq = 1;
+            ((bxq)localObject).path = "CreateFinderEntrance";
+            localbtw.aabA.add(localObject);
+            i.a(locali, localbtw, "checkFinderRedPackRedDot", null, true, null, null, 0L, 116);
+            Log.i("Finder.FinderPromotionConsumer", "[dealWithRedPackFinder] starttime" + localbtw.start_time + ", endtime" + parama.end_time + ", title:" + ((bxq)localObject).title + ", expire_time" + localbtw.wso);
             break;
           }
         case 2: 
-          ((PluginFinder)h.ag(PluginFinder.class)).getRedDotManager().Mp(1016);
+          ((PluginFinder)h.az(PluginFinder.class)).getRedDotManager().Nv(1016);
         }
         break;
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/newxml/FinderPromotionConsumer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/newxml/FinderPromotionConsumer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"getWordingAcLocale", "", "wording", "Lcom/tencent/mm/protocal/protobuf/Wording;", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.b<fmo, String>
-  {
-    b(b paramb)
-    {
-      super();
-    }
-    
-    public static String a(fmo paramfmo)
-    {
-      AppMethodBeat.i(282514);
-      if (paramfmo != null)
-      {
-        if (LocaleUtil.isSimplifiedChineseAppLang()) {
-          break label56;
-        }
-        if (!LocaleUtil.isTraditionalChineseAppLang()) {
-          break label42;
-        }
-        paramfmo = paramfmo.ULn;
-      }
-      for (;;)
-      {
-        Object localObject = paramfmo;
-        if (paramfmo == null) {
-          localObject = "";
-        }
-        AppMethodBeat.o(282514);
-        return localObject;
-        label42:
-        if (!LocaleUtil.isChineseAppLang()) {
-          paramfmo = paramfmo.RJK;
-        } else {
-          label56:
-          paramfmo = paramfmo.ULm;
-        }
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.newxml.b
  * JD-Core Version:    0.7.0.1
  */

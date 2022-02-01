@@ -64,6 +64,7 @@ public class TXLiveConstants
   public static final String NET_STATUS_CPU_USAGE = "CPU_USAGE";
   public static final String NET_STATUS_NET_JITTER = "NET_JITTER";
   public static final String NET_STATUS_NET_SPEED = "NET_SPEED";
+  public static final String NET_STATUS_P2P_MODE = "IS_P2P";
   public static final String NET_STATUS_QUALITY_LEVEL = "NET_QUALITY_LEVEL";
   public static final String NET_STATUS_SERVER_IP = "SERVER_IP";
   public static final String NET_STATUS_VIDEO_BITRATE = "VIDEO_BITRATE";
@@ -96,6 +97,7 @@ public class TXLiveConstants
   public static final int PLAY_EVT_PLAY_END = 2006;
   public static final int PLAY_EVT_PLAY_LOADING = 2007;
   public static final int PLAY_EVT_PLAY_PROGRESS = 2005;
+  public static final int PLAY_EVT_PLAY_VIEW_CHANGED_FIRST_I_FRAME = 2032;
   public static final int PLAY_EVT_RCV_FIRST_AUDIO_FRAME = 2026;
   public static final int PLAY_EVT_RCV_FIRST_I_FRAME = 2003;
   public static final int PLAY_EVT_RTMP_STREAM_BEGIN = 2002;
@@ -147,7 +149,9 @@ public class TXLiveConstants
   public static final int PUSH_EVT_START_VIDEO_ENCODER = 1008;
   public static final int PUSH_WARNING_BEAUTYSURFACE_VIEW_INIT_FAIL = 1105;
   public static final int PUSH_WARNING_DNS_FAIL = 3001;
+  public static final int PUSH_WARNING_HEVC_ENCODE_NOT_SUPPORT = -2311;
   public static final int PUSH_WARNING_HW_ACCELERATION_FAIL = 1103;
+  public static final int PUSH_WARNING_MICROPHONE_DEVICE_ABNORMAL = 1204;
   public static final int PUSH_WARNING_NET_BUSY = 1101;
   public static final int PUSH_WARNING_READ_WRITE_FAIL = 3005;
   public static final int PUSH_WARNING_RECONNECT = 1102;
@@ -228,7 +232,7 @@ public class TXLiveConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveConstants
  * JD-Core Version:    0.7.0.1
  */

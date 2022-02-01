@@ -1,67 +1,76 @@
 package com.tencent.mm.plugin.websearch.webview;
 
+import android.webkit.ConsoleMessage;
+import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Arrays;
-import kotlin.g.a.a;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.xweb.z;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchJSApiNotifier;", "", "()V", "TAG", "", "notifyJsEvent", "", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "funcName", "params", "ui-websearch_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchChromeClient;", "Lcom/tencent/xweb/WebChromeClient;", "()V", "TAG", "", "onConsoleMessage", "", "consoleMessage", "Landroid/webkit/ConsoleMessage;", "ui-websearch_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
+  extends z
 {
-  public static final i PBA;
-  private static final String TAG = "MicroMsg.WebSearch.WebSearchJSApiNotifier";
+  private final String TAG = "MicroMsg.WebSearch.WebSearchChromeClient";
   
-  static
+  public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    AppMethodBeat.i(198825);
-    PBA = new i();
-    TAG = "MicroMsg.WebSearch.WebSearchJSApiNotifier";
-    AppMethodBeat.o(198825);
-  }
-  
-  public static void a(WebSearchWebView paramWebSearchWebView, final String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(198824);
-    p.k(paramWebSearchWebView, "webView");
-    p.k(paramString1, "funcName");
-    p.k(paramString2, "params");
-    try
+    String str2 = null;
+    AppMethodBeat.i(315235);
+    String str3 = this.TAG;
+    Integer localInteger;
+    Object localObject;
+    label28:
+    String str1;
+    if (paramConsoleMessage == null)
     {
-      Log.i(TAG, "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
-      af localaf = af.aaBG;
-      paramString1 = String.format("javascript:window['%s'] && %s(%s)", Arrays.copyOf(new Object[] { paramString1, paramString1, paramString2 }, 3));
-      p.j(paramString1, "java.lang.String.format(format, *args)");
-      d.uiThread((a)new a(paramWebSearchWebView, paramString1));
-      AppMethodBeat.o(198824);
-      return;
+      localInteger = null;
+      if (paramConsoleMessage != null) {
+        break label94;
+      }
+      localObject = "";
+      if (paramConsoleMessage != null) {
+        break label129;
+      }
+      str1 = null;
+      label35:
+      if (paramConsoleMessage != null) {
+        break label138;
+      }
     }
-    catch (Exception paramWebSearchWebView)
+    for (;;)
     {
-      Log.printErrStackTrace(TAG, (Throwable)paramWebSearchWebView, "notifyJsEvent", new Object[0]);
-      AppMethodBeat.o(198824);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<x>
-  {
-    a(WebSearchWebView paramWebSearchWebView, String paramString)
-    {
-      super();
+      Log.i(str3, "onConsoleMessage %d %s %s %s", new Object[] { localInteger, localObject, str1, str2 });
+      boolean bool = super.onConsoleMessage(paramConsoleMessage);
+      AppMethodBeat.o(315235);
+      return bool;
+      localInteger = Integer.valueOf(paramConsoleMessage.lineNumber());
+      break;
+      label94:
+      localObject = paramConsoleMessage.messageLevel();
+      if (localObject == null)
+      {
+        localObject = "";
+        break label28;
+      }
+      str1 = ((ConsoleMessage.MessageLevel)localObject).name();
+      localObject = str1;
+      if (str1 != null) {
+        break label28;
+      }
+      localObject = "";
+      break label28;
+      label129:
+      str1 = paramConsoleMessage.message();
+      break label35;
+      label138:
+      str2 = paramConsoleMessage.sourceId();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.webview.i
  * JD-Core Version:    0.7.0.1
  */

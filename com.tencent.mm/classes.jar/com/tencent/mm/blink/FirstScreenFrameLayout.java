@@ -11,7 +11,7 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public class FirstScreenFrameLayout
   extends FrameLayout
 {
-  public FirstScreenFrameLayout.a iPb;
+  public FirstScreenFrameLayout.a lqX;
   
   public FirstScreenFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,7 +27,7 @@ public class FirstScreenFrameLayout
   {
     AppMethodBeat.i(131834);
     super.dispatchDraw(paramCanvas);
-    if (this.iPb != null) {
+    if (this.lqX != null) {
       new MMHandler(Looper.getMainLooper()).postAtFrontOfQueue(new Runnable()
       {
         public final void run()
@@ -35,7 +35,7 @@ public class FirstScreenFrameLayout
           AppMethodBeat.i(131833);
           if (FirstScreenFrameLayout.a(FirstScreenFrameLayout.this) != null)
           {
-            FirstScreenFrameLayout.a(FirstScreenFrameLayout.this).aqk();
+            FirstScreenFrameLayout.a(FirstScreenFrameLayout.this).aKi();
             FirstScreenFrameLayout.b(FirstScreenFrameLayout.this);
           }
           AppMethodBeat.o(131833);
@@ -54,7 +54,7 @@ public class FirstScreenFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.blink.FirstScreenFrameLayout
  * JD-Core Version:    0.7.0.1
  */

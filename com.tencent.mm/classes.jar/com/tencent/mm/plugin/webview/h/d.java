@@ -1,62 +1,30 @@
 package com.tencent.mm.plugin.webview.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import kotlin.Metadata;
 
-public final class d
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/reporter/PrefetchReportNewAction;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "isBindConnected", "", "isMainAction", "isMainActionForStart", "None", "OnCreateUI", "StartLoad", "PageStart", "PageCommit", "PageFinish", "OnConnect", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public enum d
 {
-  public int PZp = 0;
-  public int PZq = 0;
-  public int PZr = 0;
-  public long endTime;
-  public int jGL = 0;
-  public int scene;
-  public long startTime;
+  public final int value;
   
-  public final void anY(int paramInt)
+  static
   {
-    this.PZr += paramInt;
+    AppMethodBeat.i(294704);
+    WQB = new d("None", 0, 0);
+    WQC = new d("OnCreateUI", 1, 11);
+    WQD = new d("StartLoad", 2, 12);
+    WQE = new d("PageStart", 3, 13);
+    WQF = new d("PageCommit", 4, 14);
+    WQG = new d("PageFinish", 5, 15);
+    WQH = new d("OnConnect", 6, 21);
+    WQI = new d[] { WQB, WQC, WQD, WQE, WQF, WQG, WQH };
+    AppMethodBeat.o(294704);
   }
   
-  public final void gWL()
+  private d(int paramInt)
   {
-    this.PZp += 1;
-  }
-  
-  public final void gWM()
-  {
-    this.PZq += 1;
-  }
-  
-  public final void report()
-  {
-    AppMethodBeat.i(103135);
-    long l = this.endTime - this.startTime;
-    String str;
-    if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
-      str = "wifi";
-    }
-    for (;;)
-    {
-      Log.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.jGL), Integer.valueOf(this.PZp), Integer.valueOf(this.PZq), Long.valueOf(l), Integer.valueOf(this.PZr), str });
-      h.IzE.a(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.jGL), Integer.valueOf(this.PZp), Integer.valueOf(this.PZq), Long.valueOf(l), Integer.valueOf(this.PZr), str });
-      AppMethodBeat.o(103135);
-      return;
-      if (NetStatusUtil.is5G(MMApplicationContext.getContext())) {
-        str = "5g";
-      } else if (NetStatusUtil.is4G(MMApplicationContext.getContext())) {
-        str = "4g";
-      } else if (NetStatusUtil.is3G(MMApplicationContext.getContext())) {
-        str = "3g";
-      } else if (NetStatusUtil.is2G(MMApplicationContext.getContext())) {
-        str = "2g";
-      } else {
-        str = "none";
-      }
-    }
+    this.value = paramInt;
   }
 }
 

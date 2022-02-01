@@ -16,63 +16,64 @@ import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ao.af;
-import com.tencent.mm.ao.e;
-import com.tencent.mm.ao.f;
-import com.tencent.mm.ao.g;
-import com.tencent.mm.f.c.ax;
-import com.tencent.mm.f.c.bb;
-import com.tencent.mm.f.c.et;
+import com.tencent.mm.am.s;
+import com.tencent.mm.an.af;
+import com.tencent.mm.an.e;
+import com.tencent.mm.an.f;
+import com.tencent.mm.an.g;
+import com.tencent.mm.autogen.b.az;
+import com.tencent.mm.autogen.b.bd;
+import com.tencent.mm.autogen.b.fi;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
+import com.tencent.mm.model.br;
+import com.tencent.mm.model.br.a;
+import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.aft;
-import com.tencent.mm.protocal.protobuf.cxu;
-import com.tencent.mm.protocal.protobuf.dsk;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.epo;
-import com.tencent.mm.protocal.protobuf.epp;
+import com.tencent.mm.protocal.protobuf.aig;
+import com.tencent.mm.protocal.protobuf.doz;
+import com.tencent.mm.protocal.protobuf.elf;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.fkn;
+import com.tencent.mm.protocal.protobuf.fko;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bx;
+import com.tencent.mm.storage.by;
 import com.tencent.mm.storage.u;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.bizchat.BizChatConversationUI;
 import com.tencent.mm.ui.conversation.BaseConversationUI;
-import com.tencent.mm.ui.conversation.m.a;
+import com.tencent.mm.ui.conversation.o.a;
 
 public final class c
-  implements com.tencent.mm.an.i, d
+  implements com.tencent.mm.am.h, d
 {
-  private final a XGs;
+  private final a afuD;
   private boolean isDeleteCancel;
-  private String lEm;
-  private s tipDialog;
+  private String ovT;
+  private w tipDialog;
   private BaseConversationUI ui;
   
   public c(BaseConversationUI paramBaseConversationUI, String paramString)
   {
-    AppMethodBeat.i(223309);
+    AppMethodBeat.i(256946);
     this.isDeleteCancel = false;
-    this.XGs = new a();
+    this.afuD = new a();
     this.ui = paramBaseConversationUI;
-    this.lEm = paramString;
-    AppMethodBeat.o(223309);
+    this.ovT = paramString;
+    AppMethodBeat.o(256946);
   }
   
   private void a(com.tencent.mm.api.c paramc, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(223337);
-    com.tencent.mm.ao.d locald = af.bjF().Uj(this.lEm);
+    AppMethodBeat.i(256956);
+    com.tencent.mm.an.d locald = af.bHq().Mi(this.ovT);
     long l1;
     long l2;
     if (locald != null)
@@ -95,11 +96,11 @@ public final class c
     label182:
     label188:
     label193:
-    for (long l3 = 0L;; l3 = paramc.Zc())
+    for (long l3 = 0L;; l3 = paramc.aAU())
     {
-      com.tencent.mm.plugin.report.service.h.IzE.a(14507, new Object[] { Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Integer.valueOf(1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      com.tencent.mm.plugin.report.service.h.OAn.b(14507, new Object[] { Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Integer.valueOf(1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
       Log.d("EnterpriseConversationPresenter", "enter biz enterprise sub barnd report: %s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Integer.valueOf(1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(223337);
+      AppMethodBeat.o(256956);
       return;
       l1 = 0L;
       break;
@@ -112,84 +113,85 @@ public final class c
   
   private void asyncDelMsg(String paramString)
   {
-    AppMethodBeat.i(223355);
-    bh.beI();
-    Object localObject = com.tencent.mm.model.c.bbO().aOG(paramString);
-    aft localaft = new aft();
-    localaft.SrH = new eaf().btQ(Util.nullAsNil(paramString));
-    localaft.HlH = ((et)localObject).field_msgSvrId;
-    bh.beI();
-    com.tencent.mm.model.c.bbK().d(new k.a(8, localaft));
+    AppMethodBeat.i(256966);
+    bh.bCz();
+    Object localObject = com.tencent.mm.model.c.bzD().aLF(paramString);
+    aig localaig = new aig();
+    localaig.ZqL = new etl().btH(Util.nullAsNil(paramString));
+    localaig.Njv = ((fi)localObject).field_msgSvrId;
+    bh.bCz();
+    com.tencent.mm.model.c.bzz().d(new k.a(8, localaig));
     this.isDeleteCancel = false;
     localObject = this.ui;
     getString(R.l.app_tip);
-    bq.a(paramString, new bq.a()
+    br.a(paramString, new br.a()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(232971);
+        AppMethodBeat.i(256912);
         c.a(c.this);
-        AppMethodBeat.o(232971);
+        AppMethodBeat.o(256912);
       }
     }
     {
-      public final boolean asH()
+      public final boolean aMJ()
       {
-        AppMethodBeat.i(208722);
+        AppMethodBeat.i(256881);
         boolean bool = c.b(c.this);
-        AppMethodBeat.o(208722);
+        AppMethodBeat.o(256881);
         return bool;
       }
       
-      public final void asI()
+      public final void aMK()
       {
-        AppMethodBeat.i(208725);
-        if (this.iYO != null) {
-          this.iYO.dismiss();
+        AppMethodBeat.i(256887);
+        if (this.lAK != null) {
+          this.lAK.dismiss();
         }
-        AppMethodBeat.o(208725);
+        AppMethodBeat.o(256887);
       }
     });
-    AppMethodBeat.o(223355);
+    ac.aY(paramString, 15);
+    AppMethodBeat.o(256966);
   }
   
   private String getString(int paramInt)
   {
-    AppMethodBeat.i(223357);
+    AppMethodBeat.i(256971);
     String str = this.ui.getString(paramInt);
-    AppMethodBeat.o(223357);
+    AppMethodBeat.o(256971);
     return str;
   }
   
-  public final void a(m.a parama)
+  public final void a(o.a parama)
   {
-    AppMethodBeat.i(223317);
-    az localaz = parama.conversation;
-    if (localaz == null)
+    AppMethodBeat.i(257008);
+    bb localbb = parama.conversation;
+    if (localbb == null)
     {
-      AppMethodBeat.o(223317);
+      AppMethodBeat.o(257008);
       return;
     }
     Object localObject;
-    if (g.KI(localaz.field_username))
+    if (g.Dn(localbb.field_username))
     {
       parama = new Intent(this.ui, BizChatConversationUI.class);
-      parama.putExtra("Contact_User", localaz.field_username);
+      parama.putExtra("Contact_User", localbb.field_username);
       parama.putExtra("biz_chat_from_scene", 7);
       parama.addFlags(67108864);
       localObject = this.ui;
-      parama = new com.tencent.mm.hellhoundlib.b.a().bm(parama);
-      com.tencent.mm.hellhoundlib.a.a.b(localObject, parama.aFh(), "com/tencent/mm/ui/conversation/presenter/EnterpriseConversationPresenter", "onItemClick", "(Lcom/tencent/mm/ui/conversation/MergeBizChatConversationAdapter$BizChatConversationHolder;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((BaseConversationUI)localObject).startActivity((Intent)parama.sf(0));
+      parama = new com.tencent.mm.hellhoundlib.b.a().cG(parama);
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, parama.aYi(), "com/tencent/mm/ui/conversation/presenter/EnterpriseConversationPresenter", "onItemClick", "(Lcom/tencent/mm/ui/conversation/MergeBizChatConversationAdapter$BizChatConversationHolder;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((BaseConversationUI)localObject).startActivity((Intent)parama.sb(0));
       com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/ui/conversation/presenter/EnterpriseConversationPresenter", "onItemClick", "(Lcom/tencent/mm/ui/conversation/MergeBizChatConversationAdapter$BizChatConversationHolder;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(223317);
+      AppMethodBeat.o(257008);
       return;
     }
-    if (g.UD(localaz.field_username))
+    if (g.MC(localbb.field_username))
     {
-      com.tencent.mm.api.c localc = g.gu(localaz.field_username);
+      com.tencent.mm.api.c localc = g.hU(localbb.field_username);
       if (localc == null) {}
-      for (parama = null;; parama = localc.Zb())
+      for (parama = null;; parama = localc.aAT())
       {
         localObject = parama;
         if (parama == null) {
@@ -198,147 +200,147 @@ public final class c
         parama = new Intent();
         parama.putExtra("rawUrl", (String)localObject);
         parama.putExtra("useJs", true);
-        parama.putExtra("srcUsername", localaz.field_username);
+        parama.putExtra("srcUsername", localbb.field_username);
         parama.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
         parama.putExtra("geta8key_scene", 51);
         parama.addFlags(67108864);
-        com.tencent.mm.by.c.b(this.ui, "webview", ".ui.tools.WebViewUI", parama);
-        a(localc, 2, localaz.field_unReadCount);
-        AppMethodBeat.o(223317);
+        com.tencent.mm.br.c.b(this.ui, "webview", ".ui.tools.WebViewUI", parama);
+        a(localc, 2, localbb.field_unReadCount);
+        AppMethodBeat.o(257008);
         return;
       }
     }
     parama = new Bundle();
     parama.putBoolean("key_is_biz_chat", false);
-    this.ui.startChatting(localaz.field_username, parama, true);
-    a(g.gu(localaz.field_username), 1, localaz.field_unReadCount);
-    AppMethodBeat.o(223317);
+    this.ui.startChatting(localbb.field_username, parama, true);
+    a(g.hU(localbb.field_username), 1, localbb.field_unReadCount);
+    AppMethodBeat.o(257008);
   }
   
-  public final boolean a(View paramView, Point paramPoint, int paramInt, long paramLong, m.a parama)
+  public final boolean a(View paramView, Point paramPoint, int paramInt, long paramLong, o.a parama)
   {
-    AppMethodBeat.i(223323);
-    a.a(this.XGs);
-    a.a(this.XGs, paramView, paramPoint.x, paramPoint.y, paramInt, paramLong, parama.conversation);
-    AppMethodBeat.o(223323);
+    AppMethodBeat.i(257010);
+    a.a(this.afuD);
+    a.a(this.afuD, paramView, paramPoint.x, paramPoint.y, paramInt, paramLong, parama.conversation);
+    AppMethodBeat.o(257010);
     return true;
   }
   
   public final void delConversationAndMsg(String paramString)
   {
-    AppMethodBeat.i(223350);
+    AppMethodBeat.i(257018);
     if (Util.isNullOrNil(paramString))
     {
       Log.e("EnterpriseConversationPresenter", "Delete Conversation and messages fail because username is null or nil.");
-      AppMethodBeat.o(223350);
+      AppMethodBeat.o(257018);
       return;
     }
     asyncDelMsg(paramString);
-    bh.beI();
-    com.tencent.mm.model.c.bbR().bwv(paramString);
-    paramString = af.bjv().Uo(paramString);
-    bh.beI();
-    com.tencent.mm.model.c.bbQ().bvi(paramString.field_enterpriseFather);
-    AppMethodBeat.o(223350);
+    bh.bCz();
+    com.tencent.mm.model.c.bzG().bxK(paramString);
+    paramString = af.bHf().Mn(paramString);
+    bh.bCz();
+    com.tencent.mm.model.c.bzF().bvq(paramString.field_enterpriseFather);
+    AppMethodBeat.o(257018);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.p paramp)
   {
-    AppMethodBeat.i(223348);
+    AppMethodBeat.i(257016);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      AppMethodBeat.o(223348);
+      AppMethodBeat.o(257016);
       return;
     }
-    if (paramq.getType() == 1394)
+    if (paramp.getType() == 1394)
     {
-      paramString = ((com.tencent.mm.plugin.profile.b.d)paramq).fpS();
-      Object localObject = ((com.tencent.mm.plugin.profile.b.d)paramq).fpR();
-      if ((localObject == null) || (((epp)localObject).RUv == null) || (((epp)localObject).RUv.ret != 0))
+      paramString = ((com.tencent.mm.plugin.profile.a.d)paramp).gBg();
+      Object localObject = ((com.tencent.mm.plugin.profile.a.d)paramp).gBf();
+      if ((localObject == null) || (((fko)localObject).YRW == null) || (((fko)localObject).YRW.ret != 0))
       {
-        if ((localObject != null) && (((epp)localObject).RUv != null))
+        if ((localObject != null) && (((fko)localObject).YRW != null))
         {
-          Log.w("EnterpriseConversationPresenter", "chuangchen onSceneEnd type:%s, err:code:%s", new Object[] { Integer.valueOf(paramq.getType()), Integer.valueOf(((epp)localObject).RUv.ret) });
-          AppMethodBeat.o(223348);
+          Log.w("EnterpriseConversationPresenter", "chuangchen onSceneEnd type:%s, err:code:%s", new Object[] { Integer.valueOf(paramp.getType()), Integer.valueOf(((fko)localObject).YRW.ret) });
+          AppMethodBeat.o(257016);
           return;
         }
-        Log.w("EnterpriseConversationPresenter", "chuangchen onSceneEnd type:%s, err:resp == null", new Object[] { Integer.valueOf(paramq.getType()) });
-        AppMethodBeat.o(223348);
+        Log.w("EnterpriseConversationPresenter", "chuangchen onSceneEnd type:%s, err:resp == null", new Object[] { Integer.valueOf(paramp.getType()) });
+        AppMethodBeat.o(257016);
         return;
       }
-      if (!paramString.qfB)
+      if (!paramString.disable)
       {
-        AppMethodBeat.o(223348);
+        AppMethodBeat.o(257016);
         return;
       }
-      paramq = g.gu(paramString.RUp);
-      paramq.field_brandFlag |= 0x1;
-      localObject = new cxu();
-      ((cxu)localObject).mVM = paramq.field_brandFlag;
-      ((cxu)localObject).UserName = paramString.RUp;
-      bh.beI();
-      com.tencent.mm.model.c.bbK().d(new k.a(47, (com.tencent.mm.cd.a)localObject));
-      af.bjv().update(paramq, new String[0]);
-      bh.beI();
-      com.tencent.mm.model.c.bbR().bwv(paramq.field_username);
-      bh.beI();
-      if (com.tencent.mm.model.c.bbR().bwI(paramq.field_enterpriseFather) <= 0)
+      paramp = g.hU(paramString.YRQ);
+      paramp.field_brandFlag |= 0x1;
+      localObject = new doz();
+      ((doz)localObject).pSt = paramp.field_brandFlag;
+      ((doz)localObject).UserName = paramString.YRQ;
+      bh.bCz();
+      com.tencent.mm.model.c.bzz().d(new k.a(47, (com.tencent.mm.bx.a)localObject));
+      af.bHf().update(paramp, new String[0]);
+      bh.bCz();
+      com.tencent.mm.model.c.bzG().bxK(paramp.field_username);
+      bh.bCz();
+      if (com.tencent.mm.model.c.bzG().byb(paramp.field_enterpriseFather) <= 0)
       {
-        bh.beI();
-        com.tencent.mm.model.c.bbR().bwv(paramq.field_enterpriseFather);
-        AppMethodBeat.o(223348);
+        bh.bCz();
+        com.tencent.mm.model.c.bzG().bxK(paramp.field_enterpriseFather);
+        AppMethodBeat.o(257016);
         return;
       }
-      bh.beI();
-      com.tencent.mm.model.c.bbQ().bvi(paramq.field_enterpriseFather);
+      bh.bCz();
+      com.tencent.mm.model.c.bzF().bvq(paramp.field_enterpriseFather);
     }
-    AppMethodBeat.o(223348);
+    AppMethodBeat.o(257016);
   }
   
   final class a
     implements View.OnCreateContextMenuListener
   {
-    private com.tencent.mm.ui.widget.b.a XGv;
-    private q.g sBv;
-    private String syk = "";
+    private com.tencent.mm.ui.widget.b.a afuG;
+    private String vDR = "";
+    private u.i vGU;
     
     a() {}
     
     public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
     {
-      AppMethodBeat.i(280190);
-      bh.beI();
-      as localas = com.tencent.mm.model.c.bbL().RG(this.syk);
-      if (localas == null)
+      AppMethodBeat.i(256975);
+      bh.bCz();
+      au localau = com.tencent.mm.model.c.bzA().JE(this.vDR);
+      if (localau == null)
       {
-        Log.e("EnterpriseConversationPresenter", "onCreateContextMenu, contact is null, talker = " + this.syk);
-        AppMethodBeat.o(280190);
+        Log.e("EnterpriseConversationPresenter", "onCreateContextMenu, contact is null, talker = " + this.vDR);
+        AppMethodBeat.o(256975);
         return;
       }
-      String str = localas.ays();
+      String str = localau.aSV();
       paramView = str;
       if (str.toLowerCase().endsWith("@chatroom"))
       {
         paramView = str;
-        if (Util.isNullOrNil(localas.field_nickname)) {
-          paramView = c.a(c.this, R.l.ewS);
+        if (Util.isNullOrNil(localau.field_nickname)) {
+          paramView = c.a(c.this, R.l.gzv);
         }
       }
       paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-      paramContextMenu.setHeaderTitle(l.c(c.c(c.this), paramView));
-      if (localas.ayn()) {
-        paramContextMenu.add(paramContextMenuInfo.position, 3, 0, R.l.eLm);
+      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.span.p.b(c.c(c.this), paramView));
+      if (localau.aSQ()) {
+        paramContextMenu.add(paramContextMenuInfo.position, 3, 0, R.l.gNg);
       }
       for (;;)
       {
-        paramContextMenu.add(paramContextMenuInfo.position, 2, 1, R.l.eCv);
+        paramContextMenu.add(paramContextMenuInfo.position, 2, 1, R.l.enterprise_longclick_disable_sub);
         paramContextMenu.add(paramContextMenuInfo.position, 1, 2, R.l.main_delete);
-        AppMethodBeat.o(280190);
+        AppMethodBeat.o(256975);
         return;
-        paramContextMenu.add(paramContextMenuInfo.position, 3, 0, R.l.eCx);
+        paramContextMenu.add(paramContextMenuInfo.position, 3, 0, R.l.enterprise_sub_placetop);
       }
     }
   }

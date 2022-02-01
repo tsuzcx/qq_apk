@@ -5,7 +5,7 @@ import android.content.Context;
 import com.tencent.matrix.d.b;
 import com.tencent.matrix.d.c;
 import com.tencent.matrix.e.a;
-import com.tencent.matrix.report.f;
+import com.tencent.matrix.report.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.sqlitelint.behaviour.report.IssueReportBehaviour.IReportDelegate;
 import com.tencent.sqlitelint.config.SQLiteLintConfig;
@@ -36,13 +36,13 @@ public class SQLiteLintPlugin
       AppMethodBeat.o(52874);
       return;
     }
-    f localf = new f(paramSQLiteLintIssue.type);
-    localf.key = paramSQLiteLintIssue.id;
+    g localg = new g(paramSQLiteLintIssue.type);
+    localg.key = paramSQLiteLintIssue.id;
     JSONObject localJSONObject = new JSONObject();
-    localf.cZZ = localJSONObject;
+    localg.eYz = localJSONObject;
     try
     {
-      localJSONObject.put("machine", a.bx(getApplication()));
+      localJSONObject.put("machine", a.ck(getApplication()));
       localJSONObject.put("id", paramSQLiteLintIssue.id);
       localJSONObject.put("dbPath", paramSQLiteLintIssue.dbPath);
       localJSONObject.put("level", paramSQLiteLintIssue.level);
@@ -55,7 +55,7 @@ public class SQLiteLintPlugin
       localJSONObject.put("stack", paramSQLiteLintIssue.extInfo);
       localJSONObject.put("sqlTimeCost", paramSQLiteLintIssue.sqlTimeCost);
       localJSONObject.put("isInMainThread", paramSQLiteLintIssue.isInMainThread);
-      onDetectIssue(localf);
+      onDetectIssue(localg);
       AppMethodBeat.o(52874);
       return;
     }
@@ -184,7 +184,7 @@ public class SQLiteLintPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintPlugin
  * JD-Core Version:    0.7.0.1
  */

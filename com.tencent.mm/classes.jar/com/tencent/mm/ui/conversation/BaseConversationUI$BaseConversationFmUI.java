@@ -12,7 +12,7 @@ import com.tencent.mm.ui.MMFragment;
 public class BaseConversationUI$BaseConversationFmUI
   extends MMFragment
 {
-  private BaseConversationUI.a fmStatus = BaseConversationUI.a.XzB;
+  private BaseConversationUI.a fmStatus = BaseConversationUI.a.afmj;
   public BaseConversationUI ui;
   
   public void finish()
@@ -35,7 +35,7 @@ public class BaseConversationUI$BaseConversationFmUI
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     AppMethodBeat.i(38185);
-    this.fmStatus = BaseConversationUI.a.XzB;
+    this.fmStatus = BaseConversationUI.a.afmj;
     this.ui = ((BaseConversationUI)thisActivity());
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     AppMethodBeat.o(38185);
@@ -45,7 +45,7 @@ public class BaseConversationUI$BaseConversationFmUI
   public void onDestroy()
   {
     AppMethodBeat.i(38190);
-    if (this.fmStatus != BaseConversationUI.a.XzD)
+    if (this.fmStatus != BaseConversationUI.a.afml)
     {
       Log.w("MicroMsg.BaseConversationUI", "fmStatus != ActivityStatus.ACTIVITY_PAUSE when fm onDestroy");
       onPause();
@@ -58,7 +58,7 @@ public class BaseConversationUI$BaseConversationFmUI
   {
     AppMethodBeat.i(38189);
     super.onPause();
-    this.fmStatus = BaseConversationUI.a.XzD;
+    this.fmStatus = BaseConversationUI.a.afml;
     AppMethodBeat.o(38189);
   }
   
@@ -66,8 +66,17 @@ public class BaseConversationUI$BaseConversationFmUI
   {
     AppMethodBeat.i(38188);
     super.onResume();
-    this.fmStatus = BaseConversationUI.a.XzC;
+    this.fmStatus = BaseConversationUI.a.afmk;
     AppMethodBeat.o(38188);
+  }
+  
+  public void setMMTitle(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(256753);
+    if (this.ui != null) {
+      this.ui.setCustomTitle(paramCharSequence);
+    }
+    AppMethodBeat.o(256753);
   }
   
   public void setMMTitle(String paramString)
@@ -81,7 +90,7 @@ public class BaseConversationUI$BaseConversationFmUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.BaseConversationUI.BaseConversationFmUI
  * JD-Core Version:    0.7.0.1
  */

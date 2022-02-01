@@ -1,8 +1,8 @@
 package kotlin.h;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"}, iBN=1)
+@Metadata(d1={"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"}, k=4, mv={1, 5, 1}, xi=1)
 public final class a
   extends c
 {}

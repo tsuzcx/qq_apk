@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Collections;
@@ -14,33 +14,33 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static volatile Set<String> qzl;
+  private static volatile Set<String> tEh;
   
   static
   {
     AppMethodBeat.i(147598);
     HashSet localHashSet = new HashSet();
-    qzl = localHashSet;
+    tEh = localHashSet;
     localHashSet.add("operateLivePlayer");
-    qzl.add("operateLivePusher");
-    qzl.add("operateXWebLivePlayer");
-    qzl.add("operateXWebLivePusher");
-    Collections.addAll(qzl, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
+    tEh.add("operateLivePusher");
+    tEh.add("operateXWebLivePlayer");
+    tEh.add("operateXWebLivePusher");
+    Collections.addAll(tEh, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
     AppMethodBeat.o(147598);
   }
   
-  public static void amg(String paramString)
+  public static void afo(String paramString)
   {
     AppMethodBeat.i(169512);
-    qzl.add(paramString);
+    tEh.add(paramString);
     AppMethodBeat.o(169512);
   }
   
-  static int e(e parame, String paramString1, String paramString2)
+  static int e(f paramf, String paramString1, String paramString2)
   {
     AppMethodBeat.i(147597);
-    if ((parame instanceof ad)) {}
-    for (boolean bool = true; !bool; bool = qzl.contains(paramString1))
+    if ((paramf instanceof ad)) {}
+    for (boolean bool = true; !bool; bool = tEh.contains(paramString1))
     {
       AppMethodBeat.o(147597);
       return -2147483648;
@@ -67,15 +67,15 @@ public final class c
         return -2147483648;
       }
     }
-    catch (Exception parame)
+    catch (Exception paramf)
     {
-      Log.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { parame.getMessage() });
+      Log.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramf.getMessage() });
       AppMethodBeat.o(147597);
       return -2147483648;
     }
     int i;
-    if ((parame instanceof v)) {
-      switch (1.nLn[((v)parame).getRuntime().ntR.nKU.bIg().ordinal()])
+    if ((paramf instanceof y)) {
+      switch (1.qKW[((y)paramf).getRuntime().qsB.qKC.chD().ordinal()])
       {
       default: 
         i = paramString2.optInt(0, -2147483648);
@@ -96,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.c
  * JD-Core Version:    0.7.0.1
  */

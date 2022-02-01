@@ -17,26 +17,26 @@ public class b
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(232260);
+    AppMethodBeat.i(229768);
     float f = Math.min(1.0F, 360.0F / Math.min(paramInt1, paramInt2));
     this.r = Math.round(paramInt1 * f);
     this.s = Math.round(f * paramInt2);
     super.a(this.r, this.s);
-    AppMethodBeat.o(232260);
+    AppMethodBeat.o(229768);
   }
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(232261);
+    AppMethodBeat.i(229776);
     GLES20.glViewport(0, 0, this.r, this.s);
     paramInt = super.a(paramInt, this.m, this.n);
-    AppMethodBeat.o(232261);
+    AppMethodBeat.o(229776);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c.b
  * JD-Core Version:    0.7.0.1
  */

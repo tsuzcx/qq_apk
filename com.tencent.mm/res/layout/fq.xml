@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="30.0dip" android:layout_height="18.0dip" android:src="@drawable/byb" android:scaleType="fitCenter" />
-</FrameLayout>
+    <ListView android:id="@id/fpj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/byx" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

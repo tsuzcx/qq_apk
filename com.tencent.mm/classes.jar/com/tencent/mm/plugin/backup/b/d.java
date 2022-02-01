@@ -10,80 +10,80 @@ public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean kbA = false;
-  private static int rKO = 0;
-  private static byte[] rKP = "key".getBytes();
-  private static SharedPreferences rKR;
-  public String rKK = "id";
-  public String rKL = "hello";
-  public String rKM = "ok";
-  public e rKN;
-  public byte[] rKQ;
+  private static boolean mBG = false;
+  private static int uWc = 0;
+  private static byte[] uWd = "key".getBytes();
+  private static SharedPreferences uWf;
+  public String uVY = "id";
+  public String uVZ = "hello";
+  public String uWa = "ok";
+  public e uWb;
+  public byte[] uWe;
   
-  public static void EC(int paramInt)
+  public static void Fd(int paramInt)
   {
-    rKO = paramInt;
+    uWc = paramInt;
   }
   
   public static void bf(byte[] paramArrayOfByte)
   {
-    rKP = paramArrayOfByte;
+    uWd = paramArrayOfByte;
   }
   
-  public static int csc()
+  public static int cUM()
   {
-    return rKO;
+    return uWc;
   }
   
-  public static byte[] csd()
+  public static byte[] cUN()
   {
-    return rKP;
+    return uWd;
   }
   
-  public static SharedPreferences cse()
+  public static SharedPreferences cUO()
   {
-    if (rKR == null) {
-      rKR = MMApplicationContext.getContext().getSharedPreferences("BACKUP_CONFIG", g.avK());
+    if (uWf == null) {
+      uWf = MMApplicationContext.getContext().getSharedPreferences("BACKUP_CONFIG", g.aQe());
     }
-    return rKR;
+    return uWf;
   }
   
-  public static void csf()
+  public static void cUP()
   {
     Log.i(TAG, "holdReset");
-    kbA = true;
+    mBG = true;
   }
   
-  public static boolean csg()
+  public static boolean cUQ()
   {
-    return kbA;
+    return mBG;
   }
   
-  public static void csh()
+  public static void cUR()
   {
-    rKP = "key".getBytes();
-    rKO = 0;
-    rKR = null;
-    kbA = false;
+    uWd = "key".getBytes();
+    uWc = 0;
+    uWf = null;
+    mBG = false;
   }
   
-  public final e crZ()
+  public final e cUJ()
   {
-    if (this.rKN == null) {
-      this.rKN = new e();
+    if (this.uWb == null) {
+      this.uWb = new e();
     }
-    return this.rKN;
+    return this.uWb;
   }
   
-  public abstract void csa();
+  public abstract void cUK();
   
-  public abstract void csb();
+  public abstract void cUL();
   
-  public abstract void n(Object... paramVarArgs);
+  public abstract void p(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.d
  * JD-Core Version:    0.7.0.1
  */

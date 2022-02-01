@@ -9,14 +9,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class e
   extends d
 {
-  private Object fnq;
-  private a fop;
+  private Object hrB;
+  private a hsz;
   
   public e(com.tencent.mm.audio.mix.f.d paramd, com.tencent.mm.audio.mix.g.c paramc)
   {
     super(paramd, paramc);
     AppMethodBeat.i(136810);
-    this.fnq = new Object();
+    this.hrB = new Object();
     AppMethodBeat.o(136810);
   }
   
@@ -27,82 +27,69 @@ public final class e
     AppMethodBeat.o(136818);
   }
   
-  public final void adE()
+  public final void aFC()
   {
     AppMethodBeat.i(136813);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "pauseOnBackground");
-    ku(5);
-    this.fnZ.set(true);
-    this.fob.set(false);
-    adL();
+    ob(5);
+    this.hsk.set(true);
+    this.hsm.set(false);
+    aFK();
     AppMethodBeat.o(136813);
   }
   
-  public final void adF() {}
+  public final void aFD() {}
   
-  protected final void adQ()
+  protected final void aFP()
   {
     AppMethodBeat.i(136815);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "playBefore");
-    super.adQ();
-    synchronized (this.fnq)
+    super.aFP();
+    synchronized (this.hrB)
     {
-      if (this.fop != null) {
-        this.fop.reset();
+      if (this.hsz != null) {
+        this.hsz.reset();
       }
       AppMethodBeat.o(136815);
       return;
     }
   }
   
-  protected final void adR()
+  protected final void aFQ()
   {
     AppMethodBeat.i(136817);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "playAfter");
-    super.adR();
-    if (this.fop != null)
+    super.aFQ();
+    if (this.hsz != null)
     {
-      this.fop.aeC();
-      if ((this.fop instanceof com.tencent.mm.audio.mix.f.a.b)) {
+      this.hsz.aGA();
+      if ((this.hsz instanceof com.tencent.mm.audio.mix.f.a.b)) {
         do
         {
-          boolean bool = this.fnY.get();
-          adK();
-          if (this.fnZ.get()) {
+          boolean bool = this.hsj.get();
+          aFJ();
+          if (this.hsk.get()) {
             break;
           }
           if (bool)
           {
             com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "need resume if not stop");
-            this.fop.resume();
+            this.hsz.resume();
           }
-        } while ((!this.fnZ.get()) && (this.fnY.get()));
+        } while ((!this.hsk.get()) && (this.hsj.get()));
       }
     }
     AppMethodBeat.o(136817);
   }
   
-  public final void adS()
-  {
-    AppMethodBeat.i(136820);
-    synchronized (this.fnq)
-    {
-      if (this.fop != null) {
-        this.fop.setVolume(0.0F, 0.0F);
-      }
-      AppMethodBeat.o(136820);
-      return;
-    }
-  }
-  
   protected final void b(com.tencent.mm.audio.mix.a.d paramd)
   {
     AppMethodBeat.i(136819);
-    if (this.fnT != null) {
-      this.fnT.ady();
+    if (this.hse != null) {
+      this.hse.aFx();
     }
     c(paramd);
-    paramd.ph();
+    paramd.GK();
     AppMethodBeat.o(136819);
   }
   
@@ -111,31 +98,31 @@ public final class e
     AppMethodBeat.i(136816);
     byte[] arrayOfByte;
     com.tencent.mm.audio.mix.a.d locald;
-    if (adJ().fmC)
+    if (aFI().hqN)
     {
       this.sampleRate = 44100;
       this.channels = 2;
-      arrayOfByte = parame.fmy;
-      if (!this.fnW.get()) {
-        if (this.fop == null)
+      arrayOfByte = parame.hqJ;
+      if (!this.hsh.get()) {
+        if (this.hsz == null)
         {
-          locald = adJ();
-          if ((!locald.awf) || (locald.duration > 2000L)) {
+          locald = aFI();
+          if ((!locald.ckB) || (locald.duration > 2000L)) {
             break label183;
           }
         }
       }
     }
     label183:
-    for (this.fop = new com.tencent.mm.audio.mix.f.a.b(this.sampleRate, this.channels, locald, this);; this.fop = new com.tencent.mm.audio.mix.f.a.c(this.sampleRate, this.channels, locald, this))
+    for (this.hsz = new com.tencent.mm.audio.mix.f.a.b(this.sampleRate, this.channels, locald, this);; this.hsz = new com.tencent.mm.audio.mix.f.a.c(this.sampleRate, this.channels, locald, this))
     {
-      this.fop.i(this.fnS.lzL);
-      this.fop.setVolume((float)this.fnS.lzK, (float)this.fnS.lzK);
-      if (this.fop != null) {
-        this.fop.af(arrayOfByte);
+      this.hsz.y(this.hsd.orm);
+      this.hsz.setVolume((float)this.hsd.orl, (float)this.hsd.orl);
+      if (this.hsz != null) {
+        this.hsz.af(arrayOfByte);
       }
-      if (parame.fmJ) {
-        com.tencent.mm.audio.mix.b.d.ado().b(parame);
+      if (parame.hqU) {
+        com.tencent.mm.audio.mix.b.d.aFn().b(parame);
       }
       AppMethodBeat.o(136816);
       return;
@@ -148,11 +135,11 @@ public final class e
   public final long getCurrentPosition()
   {
     AppMethodBeat.i(177344);
-    synchronized (this.fnq)
+    synchronized (this.hrB)
     {
-      if (this.fop != null)
+      if (this.hsz != null)
       {
-        long l = this.fop.getCurrentPosition();
+        long l = this.hsz.getCurrentPosition();
         AppMethodBeat.o(177344);
         return l;
       }
@@ -166,12 +153,12 @@ public final class e
     AppMethodBeat.i(136811);
     super.onRelease();
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecoderMediaCodecPlay", "releasePlayComponent");
-    synchronized (this.fnq)
+    synchronized (this.hrB)
     {
-      if (this.fop != null)
+      if (this.hsz != null)
       {
-        this.fop.release();
-        this.fop = null;
+        this.hsz.release();
+        this.hsz = null;
       }
       AppMethodBeat.o(136811);
       return;
@@ -182,10 +169,10 @@ public final class e
   {
     AppMethodBeat.i(136812);
     super.pause();
-    synchronized (this.fnq)
+    synchronized (this.hrB)
     {
-      if (this.fop != null) {
-        this.fop.pause();
+      if (this.hsz != null) {
+        this.hsz.pause();
       }
       AppMethodBeat.o(136812);
       return;
@@ -196,12 +183,25 @@ public final class e
   {
     AppMethodBeat.i(136814);
     super.seek(paramInt);
-    synchronized (this.fnq)
+    synchronized (this.hrB)
     {
-      if (this.fop != null) {
-        this.fop.seek(paramInt);
+      if (this.hsz != null) {
+        this.hsz.seek(paramInt);
       }
       AppMethodBeat.o(136814);
+      return;
+    }
+  }
+  
+  public final void setVolume(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(236230);
+    synchronized (this.hrB)
+    {
+      if (this.hsz != null) {
+        this.hsz.setVolume(paramFloat1, paramFloat2);
+      }
+      AppMethodBeat.o(236230);
       return;
     }
   }

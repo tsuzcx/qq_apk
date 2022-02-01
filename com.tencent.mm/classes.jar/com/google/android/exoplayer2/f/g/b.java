@@ -9,18 +9,18 @@ import java.util.Collections;
 public final class b
   extends com.google.android.exoplayer2.f.b
 {
-  private static final int bmX;
-  private static final int bmY;
-  private static final int bmZ;
-  private final m aZO;
-  private final e.a bna;
+  private static final int dgS;
+  private static final int dgT;
+  private static final int dgU;
+  private final m cTJ;
+  private final e.a dgV;
   
   static
   {
     AppMethodBeat.i(92887);
-    bmX = x.bU("payl");
-    bmY = x.bU("sttg");
-    bmZ = x.bU("vttc");
+    dgS = x.du("payl");
+    dgT = x.du("sttg");
+    dgU = x.du("vttc");
     AppMethodBeat.o(92887);
   }
   
@@ -28,8 +28,8 @@ public final class b
   {
     super("Mp4WebvttDecoder");
     AppMethodBeat.i(92884);
-    this.aZO = new m();
-    this.bna = new e.a();
+    this.cTJ = new m();
+    this.dgV = new e.a();
     AppMethodBeat.o(92884);
   }
   
@@ -49,9 +49,9 @@ public final class b
       int j = paramm.readInt();
       i -= 8;
       String str = new String(paramm.data, paramm.position, i);
-      paramm.fu(i);
+      paramm.iH(i);
       i = paramInt - 8 - i;
-      if (j == bmY)
+      if (j == dgT)
       {
         f.a(str, parama);
         paramInt = i;
@@ -59,14 +59,14 @@ public final class b
       else
       {
         paramInt = i;
-        if (j == bmX)
+        if (j == dgS)
         {
           f.a(null, str.trim(), parama, Collections.emptyList());
           paramInt = i;
         }
       }
     }
-    paramm = parama.uw();
+    paramm = parama.TZ();
     AppMethodBeat.o(92885);
     return paramm;
   }

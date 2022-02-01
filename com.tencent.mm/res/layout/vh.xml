@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/b87" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:indeterminate="true" android:indeterminateOnly="true" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/hq" android:textColor="@color/Red_80" android:id="@id/ly7" android:background="@color/BW_0_Alpha_0_5" android:padding="@dimen/bv" android:layout_width="200.0dip" android:layout_height="255.0dip" android:layout_margin="@dimen/cp" android:layout_alignParentTop="true" android:lineSpacingExtra="@dimen/bv" android:layout_alignParentEnd="true" />
 </RelativeLayout>

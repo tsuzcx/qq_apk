@@ -1,29 +1,30 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.topstory.ui.c.e;
+import com.tencent.mm.plugin.secdata.ui.MMSecDataActivity;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity;
 
 public class TopStoryTabHomeUI
-  extends MMActivity
+  extends MMSecDataActivity
 {
-  private c MYg;
+  private c TKO;
   
   public TopStoryTabHomeUI()
   {
     AppMethodBeat.i(126028);
-    this.MYg = new c(this);
+    this.TKO = new c(this);
     AppMethodBeat.o(126028);
   }
   
   public int getLayoutId()
   {
-    return c.e.top_story_home_ui;
+    AppMethodBeat.i(271781);
+    int i = c.getLayoutId();
+    AppMethodBeat.o(271781);
+    return i;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -31,14 +32,14 @@ public class TopStoryTabHomeUI
     AppMethodBeat.i(126029);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.MYg.onCreate(paramBundle);
+    this.TKO.onCreate(paramBundle);
     AppMethodBeat.o(126029);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(126033);
-    this.MYg.onDestroy();
+    this.TKO.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(126033);
   }
@@ -46,7 +47,7 @@ public class TopStoryTabHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(126030);
-    if (this.MYg.ajx(paramInt))
+    if (this.TKO.aoP(paramInt))
     {
       AppMethodBeat.o(126030);
       return true;
@@ -59,7 +60,7 @@ public class TopStoryTabHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(126034);
-    this.MYg.onNewIntent(paramIntent);
+    this.TKO.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(126034);
   }
@@ -67,7 +68,7 @@ public class TopStoryTabHomeUI
   public void onPause()
   {
     AppMethodBeat.i(126032);
-    this.MYg.onPause();
+    this.TKO.onPause();
     super.onPause();
     AppMethodBeat.o(126032);
   }
@@ -76,7 +77,7 @@ public class TopStoryTabHomeUI
   {
     AppMethodBeat.i(126031);
     super.onResume();
-    this.MYg.onResume();
+    this.TKO.onResume();
     AppMethodBeat.o(126031);
   }
   
@@ -84,7 +85,7 @@ public class TopStoryTabHomeUI
   {
     AppMethodBeat.i(126035);
     super.onSaveInstanceState(paramBundle);
-    this.MYg.onSaveInstanceState(paramBundle);
+    this.TKO.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(126035);
   }
   

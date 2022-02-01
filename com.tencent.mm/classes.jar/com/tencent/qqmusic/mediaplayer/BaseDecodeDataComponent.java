@@ -151,7 +151,7 @@ abstract class BaseDecodeDataComponent
       PcmConvertionUtil.convertByteBufferToFloatBuffer(paramBufferInfo, paramFloatBufferInfo, this.mInformation.getBitDepth());
       return;
     }
-    catch (Throwable paramBufferInfo)
+    finally
     {
       Logger.e("BaseDecodeDataComponent", paramBufferInfo);
     }
@@ -191,7 +191,7 @@ abstract class BaseDecodeDataComponent
       i = MAX_PLAY_SAMPLE_RATE;
       return i;
     }
-    catch (Throwable localThrowable1)
+    finally
     {
       try
       {
@@ -202,7 +202,7 @@ abstract class BaseDecodeDataComponent
         int i = MAX_PLAY_SAMPLE_RATE;
         return i;
       }
-      catch (Throwable localThrowable2)
+      finally
       {
         Logger.i("BaseDecodeDataComponent", axiliary("can't reflect max sample rate, use default sample rate"));
         if (Build.VERSION.SDK_INT < 21) {
@@ -274,7 +274,7 @@ abstract class BaseDecodeDataComponent
       PcmConvertionUtil.convertBitDepthTo16(paramBufferInfo1, paramBufferInfo2, this.mInformation.getBitDepth());
       return;
     }
-    catch (Throwable paramBufferInfo1)
+    finally
     {
       Logger.e("BaseDecodeDataComponent", paramBufferInfo1);
     }
@@ -287,7 +287,7 @@ abstract class BaseDecodeDataComponent
       PcmConvertionUtil.reSample(paramBufferInfo1, paramBufferInfo2, this.mInformation.getSampleRate(), this.mTargetPlaySample, this.mTargetBitDepth);
       return;
     }
-    catch (Throwable paramBufferInfo1)
+    finally
     {
       Logger.e("BaseDecodeDataComponent", paramBufferInfo1);
     }
@@ -458,63 +458,93 @@ abstract class BaseDecodeDataComponent
     }
   }
   
+  /* Error */
   void release()
   {
-    if (this.mAudioTrack != null) {}
-    try
-    {
-      this.mAudioTrack.stop();
-    }
-    catch (Throwable localThrowable3)
-    {
-      try
-      {
-        this.mAudioTrack.flush();
-      }
-      catch (Throwable localThrowable3)
-      {
-        try
-        {
-          this.mAudioTrack.release();
-        }
-        catch (Throwable localThrowable3)
-        {
-          try
-          {
-            for (;;)
-            {
-              destroyAudioListeners();
-              setAudioTrack(null);
-              Logger.d("BaseDecodeDataComponent", axiliary("finally release audioTrack"));
-              if (!this.mCorePlayer.mIsExit)
-              {
-                if (!this.mStateRunner.isEqual(new Integer[] { Integer.valueOf(7) })) {
-                  break;
-                }
-                this.mCallback.playerEnded(this.mCorePlayer);
-              }
-              return;
-              localThrowable1 = localThrowable1;
-              Logger.e("BaseDecodeDataComponent", localThrowable1);
-              continue;
-              localThrowable2 = localThrowable2;
-              Logger.e("BaseDecodeDataComponent", localThrowable2);
-              continue;
-              localThrowable3 = localThrowable3;
-              Logger.e("BaseDecodeDataComponent", localThrowable3);
-            }
-          }
-          catch (Throwable localThrowable4)
-          {
-            for (;;)
-            {
-              Logger.i("BaseDecodeDataComponent", "[run] failed to destroyAudioListeners!", localThrowable4);
-            }
-            this.mCallback.playerStopped(this.mCorePlayer);
-          }
-        }
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 362	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mAudioTrack	Landroid/media/AudioTrack;
+    //   4: ifnull +45 -> 49
+    //   7: aload_0
+    //   8: getfield 362	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mAudioTrack	Landroid/media/AudioTrack;
+    //   11: invokevirtual 464	android/media/AudioTrack:stop	()V
+    //   14: aload_0
+    //   15: getfield 362	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mAudioTrack	Landroid/media/AudioTrack;
+    //   18: invokevirtual 466	android/media/AudioTrack:flush	()V
+    //   21: aload_0
+    //   22: getfield 362	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mAudioTrack	Landroid/media/AudioTrack;
+    //   25: invokevirtual 468	android/media/AudioTrack:release	()V
+    //   28: aload_0
+    //   29: invokespecial 470	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:destroyAudioListeners	()V
+    //   32: aload_0
+    //   33: aconst_null
+    //   34: invokevirtual 474	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:setAudioTrack	(Landroid/media/AudioTrack;)V
+    //   37: ldc 18
+    //   39: aload_0
+    //   40: ldc_w 476
+    //   43: invokevirtual 265	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:axiliary	(Ljava/lang/String;)Ljava/lang/String;
+    //   46: invokestatic 269	com/tencent/qqmusic/mediaplayer/util/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   49: aload_0
+    //   50: getfield 114	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mCorePlayer	Lcom/tencent/qqmusic/mediaplayer/CorePlayer;
+    //   53: getfield 481	com/tencent/qqmusic/mediaplayer/CorePlayer:mIsExit	Z
+    //   56: ifne +38 -> 94
+    //   59: aload_0
+    //   60: getfield 116	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mStateRunner	Lcom/tencent/qqmusic/mediaplayer/PlayerStateRunner;
+    //   63: iconst_1
+    //   64: anewarray 356	java/lang/Integer
+    //   67: dup
+    //   68: iconst_0
+    //   69: bipush 7
+    //   71: invokestatic 414	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   74: aastore
+    //   75: invokevirtual 418	com/tencent/qqmusic/mediaplayer/PlayerStateRunner:isEqual	([Ljava/lang/Integer;)Z
+    //   78: ifeq +60 -> 138
+    //   81: aload_0
+    //   82: getfield 120	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
+    //   85: aload_0
+    //   86: getfield 114	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mCorePlayer	Lcom/tencent/qqmusic/mediaplayer/CorePlayer;
+    //   89: invokeinterface 485 2 0
+    //   94: return
+    //   95: astore_1
+    //   96: ldc 18
+    //   98: aload_1
+    //   99: invokestatic 285	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   102: goto -88 -> 14
+    //   105: astore_1
+    //   106: ldc 18
+    //   108: aload_1
+    //   109: invokestatic 285	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   112: goto -91 -> 21
+    //   115: astore_1
+    //   116: ldc 18
+    //   118: aload_1
+    //   119: invokestatic 285	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   122: goto -94 -> 28
+    //   125: astore_1
+    //   126: ldc 18
+    //   128: ldc_w 487
+    //   131: aload_1
+    //   132: invokestatic 489	com/tencent/qqmusic/mediaplayer/util/Logger:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   135: goto -103 -> 32
+    //   138: aload_0
+    //   139: getfield 120	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mCallback	Lcom/tencent/qqmusic/mediaplayer/PlayerCallback;
+    //   142: aload_0
+    //   143: getfield 114	com/tencent/qqmusic/mediaplayer/BaseDecodeDataComponent:mCorePlayer	Lcom/tencent/qqmusic/mediaplayer/CorePlayer;
+    //   146: invokeinterface 492 2 0
+    //   151: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	152	0	this	BaseDecodeDataComponent
+    //   95	4	1	localThrowable1	java.lang.Throwable
+    //   105	4	1	localThrowable2	java.lang.Throwable
+    //   115	4	1	localThrowable3	java.lang.Throwable
+    //   125	7	1	localThrowable4	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   7	14	95	finally
+    //   14	21	105	finally
+    //   21	28	115	finally
+    //   28	32	125	finally
   }
   
   void releaseNotify()
@@ -603,7 +633,7 @@ abstract class BaseDecodeDataComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.BaseDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

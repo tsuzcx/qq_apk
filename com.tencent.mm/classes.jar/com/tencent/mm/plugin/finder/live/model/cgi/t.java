@@ -1,68 +1,74 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ao;
-import com.tencent.mm.protocal.protobuf.axe;
-import com.tencent.mm.protocal.protobuf.ayw;
-import com.tencent.mm.protocal.protobuf.ayx;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.cgi.bi;
+import com.tencent.mm.protocal.protobuf.bfq;
+import com.tencent.mm.protocal.protobuf.bfr;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import java.util.LinkedList;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCloseBattle;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveCloseBattleResponse;", "liveId", "", "objectId", "objectNonceId", "", "liveCookie", "", "scene", "", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "(JJLjava/lang/String;[BILcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveCloseBattleRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMusicInfo;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMusicInfoResponse;", "liveId", "", "liveCookies", "", "finderUsername", "", "objectId", "scene", "", "songIdList", "Ljava/util/LinkedList;", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMusicInfo$CallBack;", "(J[BLjava/lang/String;JILjava/util/LinkedList;Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMusicInfo$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMusicInfoRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class t
-  extends n<ayx>
+  extends o<bfr>
 {
+  private a CJt;
+  private bfq CJu;
   private final String TAG;
-  private ayw yjr;
   
-  public t(long paramLong1, long paramLong2, String paramString, byte[] paramArrayOfByte, int paramInt, axe paramaxe)
+  public t(long paramLong1, byte[] paramArrayOfByte, String paramString, long paramLong2, int paramInt, LinkedList<Integer> paramLinkedList, a parama)
   {
-    AppMethodBeat.i(280350);
-    this.TAG = "Finder.CgiFinderLiveCloseBattle";
-    this.yjr = new ayw();
-    this.yjr.klE = paramLong1;
-    ayw localayw = this.yjr;
-    ao localao = ao.xcj;
-    localayw.RLM = ao.dnO();
-    this.yjr.object_id = paramLong2;
-    this.yjr.object_nonce_id = paramString;
-    this.yjr.RLO = com.tencent.mm.cd.b.cU(paramArrayOfByte);
-    this.yjr.RLN = z.bdh();
-    this.yjr.scene = paramInt;
-    this.yjr.yet = paramaxe;
-    paramString = new d.a();
-    paramString.c((a)this.yjr);
-    paramArrayOfByte = new ayx();
-    paramArrayOfByte.setBaseResponse(new jh());
-    paramArrayOfByte.getBaseResponse().Tef = new eaf();
-    paramString.d((a)paramArrayOfByte);
-    paramString.TW("/cgi-bin/micromsg-bin/finderliveclosebattle");
-    paramString.vD(4262);
-    paramString = paramString.bgN();
-    Log.i(this.TAG, "liveId:" + this.yjr.klE + " objectId:" + this.yjr.object_id + " nonceId:" + this.yjr.object_nonce_id + " username:" + this.yjr.RLN + " scene:" + this.yjr.scene);
-    c(paramString);
-    AppMethodBeat.o(280350);
+    AppMethodBeat.i(360257);
+    this.TAG = "Finder.CgiFinderLiveBatchGetMusicInfo";
+    this.CJt = parama;
+    this.CJu = new bfq();
+    parama = this.CJu;
+    bi localbi = bi.ABn;
+    parama.YIY = bi.dVu();
+    this.CJu.mMJ = paramLong1;
+    this.CJu.YJa = com.tencent.mm.bx.b.cX(paramArrayOfByte);
+    this.CJu.YIZ = paramString;
+    this.CJu.object_id = paramLong2;
+    this.CJu.scene = paramInt;
+    this.CJu.ZPo = paramLinkedList;
+    paramArrayOfByte = new c.a();
+    paramArrayOfByte.otE = ((a)this.CJu);
+    paramString = new bfr();
+    paramString.setBaseResponse(new kd());
+    paramString.getBaseResponse().akjO = new etl();
+    paramArrayOfByte.otF = ((a)paramString);
+    paramArrayOfByte.uri = "/cgi-bin/micromsg-bin/finderlivebatchgetmusicinfo";
+    paramArrayOfByte.funcId = 6887;
+    c(paramArrayOfByte.bEF());
+    paramArrayOfByte = this.TAG;
+    paramString = new StringBuilder("CgiFinderLiveBatchGetMusicInfo init ").append(this.CJu.mMJ).append(',').append(this.CJu.YIZ).append(',').append(this.CJu.scene).append(",liveCookies is null:");
+    if (this.CJu.YJa == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i(paramArrayOfByte, bool);
+      AppMethodBeat.o(360257);
+      return;
+    }
   }
   
-  public final com.tencent.mm.plugin.findersdk.b.a.b dnF()
+  public final com.tencent.mm.plugin.findersdk.b.a.b dVi()
   {
-    return com.tencent.mm.plugin.findersdk.b.a.b.BvU;
+    return com.tencent.mm.plugin.findersdk.b.a.b.Hde;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveCloseBattle$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveCloseBattleResponse;", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveBatchGetMusicInfo$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBatchGetMusicInfoResponse;", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static abstract interface a
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, ayx paramayx);
+    public abstract void a(int paramInt1, int paramInt2, bfr parambfr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.t
  * JD-Core Version:    0.7.0.1
  */

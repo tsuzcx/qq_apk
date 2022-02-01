@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.webwx.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,7 +10,7 @@ import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.by.c;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
@@ -19,26 +18,26 @@ import com.tencent.mm.ui.MMActivity;
 public class WebWeiXinIntroductionUI
   extends MMActivity
 {
-  private Button QEB;
+  private Button XxX;
   
   public int getLayoutId()
   {
-    return R.i.emc;
+    return R.i.gpg;
   }
   
   public void initView()
   {
     AppMethodBeat.i(30247);
     setMMTitle("");
-    this.QEB = ((Button)findViewById(R.h.eaC));
-    this.QEB.setOnClickListener(new View.OnClickListener()
+    this.XxX = ((Button)findViewById(R.h.gdm));
+    this.XxX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30244);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/webwx/ui/WebWeiXinIntroductionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/webwx/ui/WebWeiXinIntroductionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("BaseScanUI_select_scan_mode", 1);
         paramAnonymousView.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);

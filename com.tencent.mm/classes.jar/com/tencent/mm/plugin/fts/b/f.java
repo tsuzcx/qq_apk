@@ -1,180 +1,163 @@
 package com.tencent.mm.plugin.fts.b;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.av;
-import com.tencent.mm.model.b;
-import com.tencent.mm.plugin.fts.PluginFTS;
-import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.plugin.fts.d;
+import com.tencent.mm.message.b.b;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.wcdb.database.SQLiteException;
+import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.ArrayList;
 
 public final class f
-  implements av
+  extends com.tencent.mm.plugin.fts.a.a
 {
-  public final void Gi(long paramLong)
+  private SQLiteStatement HwF;
+  
+  public static Cursor c(j paramj)
   {
-    AppMethodBeat.i(52764);
-    Object localObject;
-    if (!h.aHB())
-    {
-      localObject = new b();
-      AppMethodBeat.o(52764);
-      throw ((Throwable)localObject);
+    AppMethodBeat.i(265424);
+    paramj = paramj.Hte;
+    paramj = ((b)com.tencent.mm.kernel.h.az(b.class)).getNotifyMessageRecordStorage().Ho(paramj);
+    AppMethodBeat.o(265424);
+    return paramj;
+  }
+  
+  public final Cursor a(j paramj, String paramString)
+  {
+    AppMethodBeat.i(265445);
+    paramj = paramj.fxx();
+    String str1 = fxn();
+    String str2 = fxo();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SELECT ").append(str1).append(".docid, type, subtype, entity_id, aux_index, timestamp, talker FROM ").append(str1).append(" JOIN ").append(str2).append(" ON (").append(str1).append(".docid = ").append(str2).append(".rowid) WHERE ").append(str2).append(" MATCH '").append(paramj).append("' AND aux_index = 'notifymessage' AND status >= 0 ");
+    if (!Util.isNullOrNil(paramString)) {
+      localStringBuilder.append("AND talker = ? ");
     }
+    localStringBuilder.append("ORDER BY timestamp desc;");
+    paramj = null;
+    if (!Util.isNullOrNil(paramString))
+    {
+      paramj = new String[1];
+      paramj[0] = paramString;
+    }
+    paramj = this.HqR.rawQuery(localStringBuilder.toString(), paramj);
+    AppMethodBeat.o(265445);
+    return paramj;
+  }
+  
+  public final void a(int paramInt, long paramLong1, String paramString1, long paramLong2, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(265456);
     try
     {
-      localObject = ((PluginFTS)h.ag(PluginFTS.class)).getFTSIndexDB();
-      if (localObject != null)
-      {
-        ((d)localObject).deleteMsgById(paramLong);
-        AppMethodBeat.o(52764);
-        return;
-      }
-      ((PluginFTS)h.ag(PluginFTS.class)).getFTSTaskDaemon().a(65536, new b(paramLong));
-      Log.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteSingleMsg post task to fts task daemon %d", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(52764);
+      fxq().bindString(1, paramString2);
+      fxq().execute();
+      this.HwF.bindLong(1, 524288L);
+      this.HwF.bindLong(2, paramInt);
+      this.HwF.bindLong(3, paramLong1);
+      this.HwF.bindString(4, paramString1);
+      this.HwF.bindLong(5, paramLong2);
+      this.HwF.bindString(6, paramString3);
+      this.HwF.execute();
+      AppMethodBeat.o(265456);
       return;
     }
-    catch (Exception localException)
+    catch (SQLiteException paramString2)
     {
-      Log.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", localException, "syncDeleteSingleMsg", new Object[0]);
-      AppMethodBeat.o(52764);
-    }
-  }
-  
-  public final void beq()
-  {
-    AppMethodBeat.i(176905);
-    Log.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete all msg");
-    if (!h.aHB())
-    {
-      b localb = new b();
-      AppMethodBeat.o(176905);
-      throw localb;
-    }
-    ((PluginFTS)h.ag(PluginFTS.class)).getFTSTaskDaemon().a(-131072, new a((byte)0));
-    Log.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteAllMsg post task to fts task daemon");
-    AppMethodBeat.o(176905);
-  }
-  
-  public final void x(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(52765);
-    Log.i("MicroMsg.FTS.FTSDeleteMsgLogic", "start to delete fts talker msg %s %s", new Object[] { paramString, com.tencent.mm.pluginsdk.j.f.formatTime("yyyy-MM-dd HH:mm:ss", paramLong / 1000L) });
-    if (!h.aHB())
-    {
-      paramString = new b();
-      AppMethodBeat.o(52765);
-      throw paramString;
-    }
-    try
-    {
-      d locald = ((PluginFTS)h.ag(PluginFTS.class)).getFTSIndexDB();
-      if (locald != null)
-      {
-        locald.au(paramString, paramLong);
-        AppMethodBeat.o(52765);
-        return;
+      Log.e("MicroMsg.FTS.FTS5ServiceNotifyStorage", String.format("Failed inserting index: 0x%x, %d, %d, %s, %d", new Object[] { Integer.valueOf(524288), Integer.valueOf(paramInt), Long.valueOf(paramLong1), paramString1, Long.valueOf(paramLong2) }));
+      paramString1 = fxp().simpleQueryForString();
+      if ((paramString1 != null) && (paramString1.length() > 0)) {
+        Log.e("MicroMsg.FTS.FTS5ServiceNotifyStorage", ">> ".concat(String.valueOf(paramString1)));
       }
-      ((PluginFTS)h.ag(PluginFTS.class)).getFTSTaskDaemon().a(65536, new c(paramString, paramLong));
-      Log.i("MicroMsg.FTS.FTSDeleteMsgLogic", "syncDeleteTalkerMsg post task to fts task daemon %s %s", new Object[] { paramString, Long.valueOf(paramLong) });
-      AppMethodBeat.o(52765);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.printErrStackTrace("MicroMsg.FTS.FTSDeleteMsgLogic", paramString, "syncDeleteTalkerMsg", new Object[0]);
-      AppMethodBeat.o(52765);
+      AppMethodBeat.o(265456);
+      throw paramString2;
     }
   }
   
-  final class a
-    extends a
+  public final void a(int[] paramArrayOfInt, long paramLong1, long paramLong2)
   {
-    private a() {}
-    
-    public final boolean aEv()
+    AppMethodBeat.i(265442);
+    ArrayList localArrayList = new ArrayList(4);
+    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.G(paramArrayOfInt) + " AND entity_id=? AND timestamp=?;", new Object[] { fxn() });
+    paramArrayOfInt = this.HqR.rawQuery(paramArrayOfInt, new String[] { Long.toString(paramLong1), Long.toString(paramLong2) });
+    while (paramArrayOfInt.moveToNext()) {
+      localArrayList.add(Long.valueOf(paramArrayOfInt.getLong(0)));
+    }
+    paramArrayOfInt.close();
+    hP(localArrayList);
+    AppMethodBeat.o(265442);
+  }
+  
+  public final void aXv()
+  {
+    AppMethodBeat.i(265428);
+    if (aXw())
     {
-      AppMethodBeat.i(176904);
-      d locald = ((PluginFTS)h.ag(PluginFTS.class)).getFTSIndexDB();
-      if (locald != null)
-      {
-        long l = System.currentTimeMillis();
-        locald.execSQL(String.format("Delete From %s;", new Object[] { "FTS5MetaMessage" }));
-        locald.execSQL(String.format("Delete From %s;", new Object[] { "FTS5IndexMessage" }));
-        Log.i("MicroMsg.FTS.FTSIndexDB", "deleteAllMsg use time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      }
-      AppMethodBeat.o(176904);
+      this.HqR.aG(-111L, 1L);
+      this.HqR.aG(-201L, 9223372036854775807L);
+    }
+    this.HqR.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_timestamp ON %s(timestamp);", new Object[] { fxn(), fxn() }));
+    this.HqR.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_talker ON %s(talker);", new Object[] { fxn(), fxn() }));
+    String str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, talker) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?);", new Object[] { fxn() });
+    this.HwF = this.HqR.compileStatement(str);
+    AppMethodBeat.o(265428);
+  }
+  
+  public final boolean aXw()
+  {
+    AppMethodBeat.i(265448);
+    if (!iV(-111, 1))
+    {
+      AppMethodBeat.o(265448);
       return true;
     }
-    
-    public final String getName()
-    {
-      return "FTSDeleteMsgLogic.DeleteAllMsgTask";
-    }
+    AppMethodBeat.o(265448);
+    return false;
   }
   
-  final class b
-    extends a
+  public final boolean aXx()
   {
-    private long msgId;
-    
-    b(long paramLong)
-    {
-      this.msgId = paramLong;
-    }
-    
-    public final boolean aEv()
-    {
-      AppMethodBeat.i(52762);
-      d locald = ((PluginFTS)h.ag(PluginFTS.class)).getFTSIndexDB();
-      if (locald != null) {
-        locald.deleteMsgById(this.msgId);
-      }
-      AppMethodBeat.o(52762);
-      return true;
-    }
-    
-    public final String getName()
-    {
-      return "FTSDeleteMsgLogic.DeleteSingleMsgTask";
-    }
+    AppMethodBeat.i(265432);
+    this.HwF.close();
+    boolean bool = super.aXx();
+    AppMethodBeat.o(265432);
+    return bool;
   }
   
-  final class c
-    extends a
+  public final String dRh()
   {
-    private long BLt;
-    private String talker;
-    
-    c(String paramString, long paramLong)
-    {
-      this.talker = paramString;
-      this.BLt = paramLong;
-    }
-    
-    public final boolean aEv()
-    {
-      AppMethodBeat.i(52763);
-      d locald = ((PluginFTS)h.ag(PluginFTS.class)).getFTSIndexDB();
-      if (locald != null) {
-        locald.au(this.talker, this.BLt);
-      }
-      AppMethodBeat.o(52763);
-      return true;
-    }
-    
-    public final String getName()
-    {
-      return "FTSDeleteMsgLogic.DeleteTalkerMsgByTimestamp";
-    }
+    AppMethodBeat.i(265452);
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, talker TEXT);", new Object[] { fxn() });
+    AppMethodBeat.o(265452);
+    return str;
+  }
+  
+  public final String getName()
+  {
+    return "FTS5NotifyServiceStorage";
+  }
+  
+  public final int getPriority()
+  {
+    return 1536;
+  }
+  
+  public final String getTableName()
+  {
+    return "ServiceNotify";
+  }
+  
+  public final int getType()
+  {
+    return 1536;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.f
  * JD-Core Version:    0.7.0.1
  */

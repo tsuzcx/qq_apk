@@ -10,133 +10,128 @@ import java.util.Set;
 public final class b
   implements j.a, j.b
 {
-  public final j.a RbJ;
-  private final HashMap<String, j.a> jvh;
+  public final j.a XXP;
+  private final HashMap<String, j.a> lYy;
   
   public b(j.a parama)
   {
-    AppMethodBeat.i(199697);
-    this.jvh = new HashMap();
-    this.RbJ = parama;
-    AppMethodBeat.o(199697);
+    AppMethodBeat.i(245054);
+    this.lYy = new HashMap();
+    this.XXP = parama;
+    AppMethodBeat.o(245054);
   }
   
-  private j.a bqN(String paramString)
+  private j.a bqC(String paramString)
   {
-    AppMethodBeat.i(199711);
+    AppMethodBeat.i(245058);
     if (paramString == null)
     {
-      paramString = this.RbJ;
-      AppMethodBeat.o(199711);
+      paramString = this.XXP;
+      AppMethodBeat.o(245058);
       return paramString;
     }
-    synchronized (this.jvh)
+    synchronized (this.lYy)
     {
-      Iterator localIterator = this.jvh.entrySet().iterator();
+      Iterator localIterator = this.lYy.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         if (paramString.endsWith((String)localEntry.getKey()))
         {
           paramString = (j.a)localEntry.getValue();
-          AppMethodBeat.o(199711);
+          AppMethodBeat.o(245058);
           return paramString;
         }
       }
-      paramString = this.RbJ;
-      AppMethodBeat.o(199711);
+      paramString = this.XXP;
+      AppMethodBeat.o(245058);
       return paramString;
     }
   }
   
   public final void a(j paramj)
   {
-    AppMethodBeat.i(199710);
-    bqN(paramj.getTag()).a(paramj);
-    this.RbJ.a(paramj);
-    AppMethodBeat.o(199710);
+    AppMethodBeat.i(245073);
+    bqC(paramj.getTag()).a(paramj);
+    this.XXP.a(paramj);
+    AppMethodBeat.o(245073);
   }
   
   public final boolean a(String paramString, j.a parama)
   {
-    AppMethodBeat.i(199698);
-    synchronized (this.jvh)
+    AppMethodBeat.i(245061);
+    synchronized (this.lYy)
     {
-      if (this.jvh.put(paramString, parama) == null)
+      if (this.lYy.put(paramString, parama) == null)
       {
         bool = true;
-        AppMethodBeat.o(199698);
+        AppMethodBeat.o(245061);
         return bool;
       }
       boolean bool = false;
     }
   }
   
-  public final boolean aDn(String paramString)
+  public final Bitmap aCj()
   {
-    AppMethodBeat.i(199712);
-    j.a locala = bqN(paramString);
-    if ((locala instanceof j.b))
-    {
-      boolean bool = ((j.b)locala).aDn(paramString);
-      AppMethodBeat.o(199712);
-      return bool;
-    }
-    AppMethodBeat.o(199712);
-    return true;
+    AppMethodBeat.i(245070);
+    Bitmap localBitmap = this.XXP.aCj();
+    AppMethodBeat.o(245070);
+    return localBitmap;
   }
   
-  public final Bitmap aaC()
+  public final boolean ayI(String paramString)
   {
-    AppMethodBeat.i(199709);
-    Bitmap localBitmap = this.RbJ.aaC();
-    AppMethodBeat.o(199709);
-    return localBitmap;
+    AppMethodBeat.i(245074);
+    j.a locala = bqC(paramString);
+    if ((locala instanceof j.b))
+    {
+      boolean bool = ((j.b)locala).ayI(paramString);
+      AppMethodBeat.o(245074);
+      return bool;
+    }
+    AppMethodBeat.o(245074);
+    return true;
   }
   
   public final Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(199703);
-    paramString = bqN(paramString).b(paramString, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(199703);
+    AppMethodBeat.i(245063);
+    paramString = bqC(paramString).b(paramString, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(245063);
     return paramString;
   }
   
-  public final void bqM(String paramString)
+  public final void bqB(String paramString)
   {
-    AppMethodBeat.i(199700);
-    synchronized (this.jvh)
+    AppMethodBeat.i(245062);
+    synchronized (this.lYy)
     {
-      this.jvh.remove(paramString);
-      AppMethodBeat.o(199700);
+      this.lYy.remove(paramString);
+      AppMethodBeat.o(245062);
       return;
     }
   }
   
-  public final Bitmap gJ(String paramString)
+  public final Bitmap ik(String paramString)
   {
-    AppMethodBeat.i(199705);
-    paramString = bqN(paramString).gJ(paramString);
-    AppMethodBeat.o(199705);
+    AppMethodBeat.i(245067);
+    paramString = bqC(paramString).ik(paramString);
+    AppMethodBeat.o(245067);
     return paramString;
   }
   
-  public final Bitmap gK(String paramString)
+  public final Bitmap loadBitmap(String paramString)
   {
-    AppMethodBeat.i(199707);
-    paramString = bqN(paramString).gK(paramString);
-    AppMethodBeat.o(199707);
+    AppMethodBeat.i(245066);
+    paramString = bqC(paramString).loadBitmap(paramString);
+    AppMethodBeat.o(245066);
     return paramString;
-  }
-  
-  public final j.a hjg()
-  {
-    return this.RbJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.b
  * JD-Core Version:    0.7.0.1
  */

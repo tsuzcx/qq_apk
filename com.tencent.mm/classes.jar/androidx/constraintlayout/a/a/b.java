@@ -8,46 +8,150 @@ import java.util.ArrayList;
 public final class b
   extends j
 {
-  public int Ba;
-  private ArrayList<m> Bb;
-  public boolean Bc;
+  public int bhi;
+  private ArrayList<m> bhj;
+  public boolean bhk;
   
   public b()
   {
-    AppMethodBeat.i(229228);
-    this.Ba = 0;
-    this.Bb = new ArrayList(4);
-    this.Bc = true;
-    AppMethodBeat.o(229228);
+    AppMethodBeat.i(194089);
+    this.bhi = 0;
+    this.bhj = new ArrayList(4);
+    this.bhk = true;
+    AppMethodBeat.o(194089);
+  }
+  
+  public final void CA()
+  {
+    AppMethodBeat.i(194104);
+    super.CA();
+    this.bhj.clear();
+    AppMethodBeat.o(194104);
+  }
+  
+  public final void CB()
+  {
+    float f = 3.4028235E+38F;
+    AppMethodBeat.i(194132);
+    m localm1;
+    switch (this.bhi)
+    {
+    default: 
+      AppMethodBeat.o(194132);
+      return;
+    case 0: 
+      localm1 = this.biw.bhA;
+    }
+    int i;
+    m localm2;
+    m localm3;
+    for (;;)
+    {
+      int j = this.bhj.size();
+      i = 0;
+      localm2 = null;
+      if (i >= j) {
+        break label216;
+      }
+      localm3 = (m)this.bhj.get(i);
+      if (localm3.state == 1) {
+        break;
+      }
+      AppMethodBeat.o(194132);
+      return;
+      localm1 = this.biy.bhA;
+      f = 0.0F;
+      continue;
+      localm1 = this.bix.bhA;
+      continue;
+      localm1 = this.biA.bhA;
+      f = 0.0F;
+    }
+    if ((this.bhi == 0) || (this.bhi == 2))
+    {
+      if (localm3.bkt >= f) {
+        break label366;
+      }
+      f = localm3.bkt;
+      localm2 = localm3.bks;
+    }
+    label216:
+    label366:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (localm3.bkt > f)
+      {
+        f = localm3.bkt;
+        localm2 = localm3.bks;
+        continue;
+        if (androidx.constraintlayout.a.e.Cs() != null)
+        {
+          androidx.constraintlayout.a.e.Cs();
+          AppMethodBeat.o(194132);
+          throw null;
+        }
+        localm1.bks = localm2;
+        localm1.bkt = f;
+        localm1.De();
+        switch (this.bhi)
+        {
+        default: 
+          AppMethodBeat.o(194132);
+          return;
+        case 0: 
+          this.biy.bhA.a(localm2, f);
+          AppMethodBeat.o(194132);
+          return;
+        case 1: 
+          this.biw.bhA.a(localm2, f);
+          AppMethodBeat.o(194132);
+          return;
+        case 2: 
+          this.biA.bhA.a(localm2, f);
+          AppMethodBeat.o(194132);
+          return;
+        }
+        this.bix.bhA.a(localm2, f);
+        AppMethodBeat.o(194132);
+        return;
+      }
+    }
+  }
+  
+  public final boolean Cz()
+  {
+    return true;
   }
   
   public final void a(androidx.constraintlayout.a.e parame)
   {
-    AppMethodBeat.i(229258);
-    this.Cx[0] = this.Cp;
-    this.Cx[2] = this.Cq;
-    this.Cx[1] = this.Cr;
-    this.Cx[3] = this.Cs;
+    AppMethodBeat.i(194143);
+    this.biF[0] = this.biw;
+    this.biF[2] = this.bix;
+    this.biF[1] = this.biy;
+    this.biF[3] = this.biA;
     int i = 0;
-    while (i < this.Cx.length)
+    while (i < this.biF.length)
     {
-      this.Cx[i].BB = parame.s(this.Cx[i]);
+      this.biF[i].bhJ = parame.ar(this.biF[i]);
       i += 1;
     }
     e locale;
     Object localObject1;
-    if ((this.Ba >= 0) && (this.Ba < 4))
+    if ((this.bhi >= 0) && (this.bhi < 4))
     {
-      locale = this.Cx[this.Ba];
+      locale = this.biF[this.bhi];
       i = 0;
-      if (i >= this.Bl) {
+      if (i >= this.bht) {
         break label744;
       }
-      localObject1 = this.Eg[i];
-      if ((!this.Bc) && (!((f)localObject1).fq())) {
+      localObject1 = this.bko[i];
+      if ((!this.bhk) && (!((f)localObject1).Cz())) {
         break label392;
       }
-      if (((this.Ba != 0) && (this.Ba != 1)) || (((f)localObject1).fM() != f.a.Dq)) {
+      if (((this.bhi != 0) && (this.bhi != 1)) || (((f)localObject1).CV() != f.a.bjy)) {
         break label360;
       }
       i = 1;
@@ -61,30 +165,30 @@ public final class b
       Object localObject2;
       androidx.constraintlayout.a.b localb;
       h localh;
-      if ((this.Ba == 0) || (this.Ba == 1))
+      if ((this.bhi == 0) || (this.bhi == 1))
       {
-        if (this.CA.fM() == f.a.Dp) {
+        if (this.biI.CV() == f.a.bjx) {
           i = 0;
         }
         j = 0;
-        if (j >= this.Bl) {
+        if (j >= this.bht) {
           break label489;
         }
-        localObject2 = this.Eg[j];
-        if ((this.Bc) || (((f)localObject2).fq()))
+        localObject2 = this.bko[j];
+        if ((this.bhk) || (((f)localObject2).Cz()))
         {
-          localObject1 = parame.s(localObject2.Cx[this.Ba]);
-          localObject2.Cx[this.Ba].BB = ((h)localObject1);
-          if ((this.Ba != 0) && (this.Ba != 2)) {
+          localObject1 = parame.ar(localObject2.biF[this.bhi]);
+          localObject2.biF[this.bhi].bhJ = ((h)localObject1);
+          if ((this.bhi != 0) && (this.bhi != 2)) {
             break label417;
           }
-          localObject2 = locale.BB;
-          localb = parame.fm();
-          localh = parame.fn();
-          localh.AN = 0;
+          localObject2 = locale.bhJ;
+          localb = parame.Cv();
+          localh = parame.Cw();
+          localh.bgV = 0;
           localb.b((h)localObject2, (h)localObject1, localh, 0);
           if (i != 0) {
-            parame.a(localb, (int)(localb.Am.b(localh) * -1.0F), 1);
+            parame.a(localb, (int)(localb.bgu.b(localh) * -1.0F), 1);
           }
           parame.b(localb);
         }
@@ -93,10 +197,10 @@ public final class b
       {
         j += 1;
         break label201;
-        AppMethodBeat.o(229258);
+        AppMethodBeat.o(194143);
         return;
         label360:
-        if (((this.Ba == 2) || (this.Ba == 3)) && (((f)localObject1).fN() == f.a.Dq))
+        if (((this.bhi == 2) || (this.bhi == 3)) && (((f)localObject1).CW() == f.a.bjy))
         {
           i = 1;
           break label169;
@@ -104,101 +208,101 @@ public final class b
         label392:
         i += 1;
         break;
-        if (this.CA.fN() != f.a.Dp) {
+        if (this.biI.CW() != f.a.bjx) {
           break label199;
         }
         i = 0;
         break label199;
         label417:
-        localObject2 = locale.BB;
-        localb = parame.fm();
-        localh = parame.fn();
-        localh.AN = 0;
+        localObject2 = locale.bhJ;
+        localb = parame.Cv();
+        localh = parame.Cw();
+        localh.bgV = 0;
         localb.a((h)localObject2, (h)localObject1, localh, 0);
         if (i != 0) {
-          parame.a(localb, (int)(localb.Am.b(localh) * -1.0F), 1);
+          parame.a(localb, (int)(localb.bgu.b(localh) * -1.0F), 1);
         }
         parame.b(localb);
       }
       label489:
-      if (this.Ba == 0)
+      if (this.bhi == 0)
       {
-        parame.c(this.Cr.BB, this.Cp.BB, 0, 6);
+        parame.c(this.biy.bhJ, this.biw.bhJ, 0, 6);
         if (i == 0)
         {
-          parame.c(this.Cp.BB, this.CA.Cr.BB, 0, 5);
-          AppMethodBeat.o(229258);
+          parame.c(this.biw.bhJ, this.biI.biy.bhJ, 0, 5);
+          AppMethodBeat.o(194143);
         }
       }
-      else if (this.Ba == 1)
+      else if (this.bhi == 1)
       {
-        parame.c(this.Cp.BB, this.Cr.BB, 0, 6);
+        parame.c(this.biw.bhJ, this.biy.bhJ, 0, 6);
         if (i == 0)
         {
-          parame.c(this.Cp.BB, this.CA.Cp.BB, 0, 5);
-          AppMethodBeat.o(229258);
+          parame.c(this.biw.bhJ, this.biI.biw.bhJ, 0, 5);
+          AppMethodBeat.o(194143);
         }
       }
-      else if (this.Ba == 2)
+      else if (this.bhi == 2)
       {
-        parame.c(this.Cs.BB, this.Cq.BB, 0, 6);
+        parame.c(this.biA.bhJ, this.bix.bhJ, 0, 6);
         if (i == 0)
         {
-          parame.c(this.Cq.BB, this.CA.Cs.BB, 0, 5);
-          AppMethodBeat.o(229258);
+          parame.c(this.bix.bhJ, this.biI.biA.bhJ, 0, 5);
+          AppMethodBeat.o(194143);
         }
       }
-      else if (this.Ba == 3)
+      else if (this.bhi == 3)
       {
-        parame.c(this.Cq.BB, this.Cs.BB, 0, 6);
+        parame.c(this.bix.bhJ, this.biA.bhJ, 0, 6);
         if (i == 0) {
-          parame.c(this.Cq.BB, this.CA.Cq.BB, 0, 5);
+          parame.c(this.bix.bhJ, this.biI.bix.bhJ, 0, 5);
         }
       }
-      AppMethodBeat.o(229258);
+      AppMethodBeat.o(194143);
       return;
       label744:
       i = 0;
     }
   }
   
-  public final void aU(int paramInt)
+  public final void dK(int paramInt)
   {
-    AppMethodBeat.i(229240);
-    if (this.CA == null)
+    AppMethodBeat.i(194119);
+    if (this.biI == null)
     {
-      AppMethodBeat.o(229240);
+      AppMethodBeat.o(194119);
       return;
     }
-    if (!((g)this.CA).aY(2))
+    if (!((g)this.biI).dO(2))
     {
-      AppMethodBeat.o(229240);
+      AppMethodBeat.o(194119);
       return;
     }
     m localm;
     label130:
     label139:
     Object localObject;
-    switch (this.Ba)
+    switch (this.bhi)
     {
     default: 
-      AppMethodBeat.o(229240);
+      AppMethodBeat.o(194119);
       return;
     case 0: 
-      localm = this.Cp.Bs;
+      localm = this.biw.bhA;
       localm.type = 5;
-      if ((this.Ba == 0) || (this.Ba == 1))
+      if ((this.bhi == 0) || (this.bhi == 1))
       {
-        this.Cq.Bs.a(null, 0.0F);
-        this.Cs.Bs.a(null, 0.0F);
-        this.Bb.clear();
+        this.bix.bhA.a(null, 0.0F);
+        this.biA.bhA.a(null, 0.0F);
+        this.bhj.clear();
         paramInt = 0;
-        if (paramInt >= this.Bl) {
+        if (paramInt >= this.bht) {
           break label335;
         }
-        localObject = this.Eg[paramInt];
-        if ((this.Bc) || (((f)localObject).fq())) {
-          switch (this.Ba)
+        localObject = this.bko[paramInt];
+        if ((this.bhk) || (((f)localObject).Cz())) {
+          switch (this.bhi)
           {
           default: 
             localObject = null;
@@ -211,139 +315,35 @@ public final class b
     {
       if (localObject != null)
       {
-        this.Bb.add(localObject);
+        this.bhj.add(localObject);
         ((m)localObject).a(localm);
       }
       paramInt += 1;
       break label139;
-      localm = this.Cr.Bs;
+      localm = this.biy.bhA;
       break;
-      localm = this.Cq.Bs;
+      localm = this.bix.bhA;
       break;
-      localm = this.Cs.Bs;
+      localm = this.biA.bhA;
       break;
-      this.Cp.Bs.a(null, 0.0F);
-      this.Cr.Bs.a(null, 0.0F);
+      this.biw.bhA.a(null, 0.0F);
+      this.biy.bhA.a(null, 0.0F);
       break label130;
-      localObject = ((f)localObject).Cp.Bs;
+      localObject = ((f)localObject).biw.bhA;
       continue;
-      localObject = ((f)localObject).Cr.Bs;
+      localObject = ((f)localObject).biy.bhA;
       continue;
-      localObject = ((f)localObject).Cq.Bs;
+      localObject = ((f)localObject).bix.bhA;
       continue;
-      localObject = ((f)localObject).Cs.Bs;
+      localObject = ((f)localObject).biA.bhA;
     }
     label335:
-    AppMethodBeat.o(229240);
-  }
-  
-  public final boolean fq()
-  {
-    return true;
-  }
-  
-  public final void fr()
-  {
-    AppMethodBeat.i(229230);
-    super.fr();
-    this.Bb.clear();
-    AppMethodBeat.o(229230);
-  }
-  
-  public final void fs()
-  {
-    float f = 3.4028235E+38F;
-    AppMethodBeat.i(229244);
-    m localm1;
-    switch (this.Ba)
-    {
-    default: 
-      AppMethodBeat.o(229244);
-      return;
-    case 0: 
-      localm1 = this.Cp.Bs;
-    }
-    int i;
-    m localm2;
-    m localm3;
-    for (;;)
-    {
-      int j = this.Bb.size();
-      i = 0;
-      localm2 = null;
-      if (i >= j) {
-        break label216;
-      }
-      localm3 = (m)this.Bb.get(i);
-      if (localm3.state == 1) {
-        break;
-      }
-      AppMethodBeat.o(229244);
-      return;
-      localm1 = this.Cr.Bs;
-      f = 0.0F;
-      continue;
-      localm1 = this.Cq.Bs;
-      continue;
-      localm1 = this.Cs.Bs;
-      f = 0.0F;
-    }
-    if ((this.Ba == 0) || (this.Ba == 2))
-    {
-      if (localm3.El >= f) {
-        break label366;
-      }
-      f = localm3.El;
-      localm2 = localm3.Ek;
-    }
-    label216:
-    label366:
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (localm3.El > f)
-      {
-        f = localm3.El;
-        localm2 = localm3.Ek;
-        continue;
-        if (androidx.constraintlayout.a.e.fi() != null)
-        {
-          androidx.constraintlayout.a.e.fi();
-          AppMethodBeat.o(229244);
-          throw null;
-        }
-        localm1.Ek = localm2;
-        localm1.El = f;
-        localm1.fV();
-        switch (this.Ba)
-        {
-        default: 
-          AppMethodBeat.o(229244);
-          return;
-        case 0: 
-          this.Cr.Bs.a(localm2, f);
-          AppMethodBeat.o(229244);
-          return;
-        case 1: 
-          this.Cp.Bs.a(localm2, f);
-          AppMethodBeat.o(229244);
-          return;
-        case 2: 
-          this.Cs.Bs.a(localm2, f);
-          AppMethodBeat.o(229244);
-          return;
-        }
-        this.Cq.Bs.a(localm2, f);
-        AppMethodBeat.o(229244);
-        return;
-      }
-    }
+    AppMethodBeat.o(194119);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     androidx.constraintlayout.a.a.b
  * JD-Core Version:    0.7.0.1
  */

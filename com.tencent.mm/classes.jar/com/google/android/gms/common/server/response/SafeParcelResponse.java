@@ -10,16 +10,10 @@ import com.google.android.gms.common.internal.safeparcel.SafeParcelReader;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelReader.ParseException;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.gms.common.util.Base64Utils;
 import com.google.android.gms.common.util.JsonUtils;
 import com.google.android.gms.common.util.MapUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -30,18 +24,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-@SafeParcelable.Class(creator="SafeParcelResponseCreator")
-@VisibleForTesting
 public class SafeParcelResponse
   extends FastSafeParcelableJsonResponse
 {
   public static final Parcelable.Creator<SafeParcelResponse> CREATOR;
   private final String mClassName;
-  @SafeParcelable.VersionField(getter="getVersionCode", id=1)
   private final int zzal;
-  @SafeParcelable.Field(getter="getFieldMappingDictionary", id=3)
   private final FieldMappingDictionary zzwn;
-  @SafeParcelable.Field(getter="getParcel", id=2)
   private final Parcel zzxq;
   private final int zzxr;
   private int zzxs;
@@ -54,8 +43,7 @@ public class SafeParcelResponse
     AppMethodBeat.o(12114);
   }
   
-  @SafeParcelable.Constructor
-  SafeParcelResponse(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) Parcel paramParcel, @SafeParcelable.Param(id=3) FieldMappingDictionary paramFieldMappingDictionary)
+  SafeParcelResponse(int paramInt, Parcel paramParcel, FieldMappingDictionary paramFieldMappingDictionary)
   {
     AppMethodBeat.i(12081);
     this.zzal = paramInt;
@@ -871,7 +859,7 @@ public class SafeParcelResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.SafeParcelResponse
  * JD-Core Version:    0.7.0.1
  */

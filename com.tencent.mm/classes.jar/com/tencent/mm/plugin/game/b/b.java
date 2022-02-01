@@ -3,44 +3,94 @@ package com.tencent.mm.plugin.game.b;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Build;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.aa;
-import com.tencent.mm.an.aa.a;
-import com.tencent.mm.an.d.a;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.z;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.game.autogen.a.e;
-import com.tencent.mm.plugin.game.g.i;
+import com.tencent.mm.plugin.game.h.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
+import com.tencent.threadpool.i;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/game/download/GameResourceDownloadManager;", "", "()V", "TAG", "", "checkTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "cancelDownloadTask", "", "packageName", "checkResourceDownload", "appInfo", "Lcom/tencent/mm/pluginsdk/model/app/AppInfo;", "downloadStage", "", "response", "Lcom/tencent/mm/plugin/game/autogen/download/GetGameResourceDownloadInfoResponse;", "getValidDir", "dirName", "isDownloadTaskExist", "", "downloadPath", "otherPathList", "", "loopDownload", "performNextDownload", "resetCheckTimer", "tryDownload", "appId", "ControlFlagEnum", "DownloadStageEnum", "plugin-game_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/game/download/GameResourceDownloadManager;", "", "()V", "TAG", "", "checkTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "cancelDownloadTask", "", "packageName", "checkResourceDownload", "appInfo", "Lcom/tencent/mm/pluginsdk/model/app/AppInfo;", "downloadStage", "", "response", "Lcom/tencent/mm/plugin/game/autogen/download/GetGameResourceDownloadInfoResponse;", "getValidDir", "dirName", "isDownloadTaskExist", "", "downloadPath", "otherPathList", "", "loopDownload", "performNextDownload", "resetCheckTimer", "tryDownload", "appId", "ControlFlagEnum", "DownloadStageEnum", "plugin-game_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
 {
-  public static final b CzF;
-  private static MTimerHandler pEb;
+  public static final b Itw;
+  private static MTimerHandler sJn;
   
   static
   {
-    AppMethodBeat.i(195857);
-    CzF = new b();
-    pEb = new MTimerHandler("GameResourceDownloadManager", (MTimerHandler.CallBack)a.CzG, true);
-    AppMethodBeat.o(195857);
+    AppMethodBeat.i(275384);
+    Itw = new b();
+    sJn = new MTimerHandler("GameResourceDownloadManager", b..ExternalSyntheticLambda1.INSTANCE, true);
+    AppMethodBeat.o(275384);
+  }
+  
+  private static boolean C(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(275348);
+    Object localObject = y.eB(paramString, false);
+    if (localObject != null)
+    {
+      localObject = ((Iterable)localObject).iterator();
+      if (((Iterator)localObject).hasNext())
+      {
+        ((Iterator)localObject).next();
+        Log.i("MicroMsg.GameResourceDownloadManager", s.X("download task exists in path:", paramString));
+        AppMethodBeat.o(275348);
+        return true;
+      }
+    }
+    if (paramList != null)
+    {
+      paramString = ((Iterable)paramList).iterator();
+      while (paramString.hasNext())
+      {
+        paramList = (String)paramString.next();
+        localObject = y.eB(aFP(paramList), false);
+        if (localObject != null)
+        {
+          localObject = ((Iterable)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
+          {
+            ((Iterator)localObject).next();
+            Log.i("MicroMsg.GameResourceDownloadManager", s.X("download task exists in path:", paramList));
+            AppMethodBeat.o(275348);
+            return true;
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(275348);
+    return false;
+  }
+  
+  private static final int a(com.tencent.mm.pluginsdk.model.app.g paramg, ah.f paramf, int paramInt1, int paramInt2, String paramString, com.tencent.mm.am.c paramc, com.tencent.mm.am.p paramp)
+  {
+    AppMethodBeat.i(275370);
+    s.u(paramg, "$this_apply");
+    s.u(paramf, "$request");
+    Log.i("MicroMsg.GameResourceDownloadManager", "tryDownload, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      com.tencent.threadpool.h.ahAA.g(new b..ExternalSyntheticLambda2(paramg, paramf, paramc), "GameResourceDownloadRequest_callback");
+    }
+    AppMethodBeat.o(275370);
+    return 0;
   }
   
   private final void a(com.tencent.mm.pluginsdk.model.app.g paramg, int paramInt, com.tencent.mm.plugin.game.autogen.a.f paramf)
@@ -53,75 +103,71 @@ public final class b
     {
       try
       {
-        AppMethodBeat.i(195834);
-        if (paramf == null) {
-          break;
-        }
-        Log.i("MicroMsg.GameResourceDownloadManager", "response, PackageName:" + paramf.CqB + ", ControlFlag:" + paramf.CqN + ", IntervalSeconds:" + paramf.CqO + ", expiredTime:" + paramf.CqP + ", downloadStage:" + paramInt);
-        localObject1 = (CharSequence)paramf.CqB;
-        if (localObject1 == null) {
-          break label1017;
-        }
-        if (((CharSequence)localObject1).length() == 0)
+        AppMethodBeat.i(275332);
+        if (paramf != null)
         {
-          break label1017;
-          if (i != 0) {
-            AppMethodBeat.o(195834);
+          Log.i("MicroMsg.GameResourceDownloadManager", "response, PackageName:" + paramf.IcK + ", ControlFlag:" + paramf.IcW + ", IntervalSeconds:" + paramf.IcX + ", expiredTime:" + paramf.IcY + ", downloadStage:" + paramInt);
+          localObject1 = (CharSequence)paramf.IcK;
+          if (localObject1 == null) {
+            break label976;
+          }
+          if (((CharSequence)localObject1).length() == 0)
+          {
+            break label976;
+            if (i != 0) {
+              AppMethodBeat.o(275332);
+            }
+          }
+          else
+          {
+            i = 0;
+            continue;
           }
         }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        switch (paramf.CqN)
+        switch (paramf.IcW)
         {
         case 1: 
-          AppMethodBeat.o(195834);
+          AppMethodBeat.o(275332);
           break;
         case 0: 
           label156:
-          localObject1 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
+          localObject1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
         }
       }
       finally {}
-      p.j(localObject1, "MMKernel.service(IGameStorage::class.java)");
-      localObject1 = ((com.tencent.mm.plugin.game.api.f)localObject1).evt();
-      localObject2 = paramf.CqB;
-      p.j(localObject2, "PackageName");
-      label541:
-      if (((d)localObject1).aJg((String)localObject2) != null)
+      localObject2 = paramf.IcK;
+      s.s(localObject2, "PackageName");
+      label529:
+      if (((d)localObject1).aFS((String)localObject2) != null)
       {
-        paramg = (Collection)paramf.CqM;
+        paramg = (Collection)paramf.IcV;
         if (paramg == null) {
-          break label1026;
+          break label985;
         }
         if (!paramg.isEmpty()) {
-          break label1032;
+          break label991;
         }
-        break label1026;
-        label242:
+        break label985;
+        label232:
         if ((i != 0) && (paramInt != 2))
         {
           Log.i("MicroMsg.GameResourceDownloadManager", "packageInfoList is empty");
-          paramg = paramf.CqB;
-          p.j(paramg, "PackageName");
+          paramg = paramf.IcK;
+          s.s(paramg, "PackageName");
           cancelDownloadTask(paramg);
-          AppMethodBeat.o(195834);
+          AppMethodBeat.o(275332);
         }
         else
         {
-          paramg = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-          p.j(paramg, "MMKernel.service(IGameStorage::class.java)");
-          paramg = ((com.tencent.mm.plugin.game.api.f)paramg).evt();
-          localObject1 = paramf.CqB;
-          p.j(localObject1, "PackageName");
-          paramInt = paramf.CqO;
+          paramg = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
+          localObject1 = paramf.IcK;
+          s.s(localObject1, "PackageName");
+          paramInt = paramf.IcX;
           long l = Util.nowSecond();
-          i = paramf.CqP;
-          p.k(localObject1, "packageName");
-          Log.i("MicroMsg.GameResourceDownloadStorage", "updateItemTime, packageName:".concat(String.valueOf(localObject1)));
-          paramf = paramg.aJg((String)localObject1);
+          i = paramf.IcY;
+          s.u(localObject1, "packageName");
+          Log.i("MicroMsg.GameResourceDownloadStorage", s.X("updateItemTime, packageName:", localObject1));
+          paramf = paramg.aFS((String)localObject1);
           if (paramf != null)
           {
             paramf.field_checkCgiTime = l;
@@ -129,89 +175,89 @@ public final class b
             paramf.field_expiredSeconds = i;
             paramg.update((IAutoDBItem)paramf, new String[0]);
           }
-          ewq();
-          AppMethodBeat.o(195834);
+          fEh();
+          AppMethodBeat.o(275332);
         }
       }
       else
       {
-        localObject1 = (CharSequence)paramf.CqK;
+        localObject1 = (CharSequence)paramf.IcT;
         if (localObject1 == null) {
-          break label1038;
+          break label997;
         }
         if (((CharSequence)localObject1).length() != 0) {
-          break label1043;
+          break label1002;
         }
-        break label1038;
-        label434:
+        break label997;
+        label419:
         if (paramInt != 0)
         {
           Log.i("MicroMsg.GameResourceDownloadManager", "response path is null");
-          AppMethodBeat.o(195834);
+          AppMethodBeat.o(275332);
         }
         else
         {
-          localObject1 = paramf.CqK;
-          p.j(localObject1, "this.Path");
-          localObject2 = aJd((String)localObject1);
-          localObject1 = paramf.CqL;
-          p.j(localObject1, "this.OtherPathList");
-          if (y((String)localObject2, (List)localObject1))
+          localObject1 = paramf.IcT;
+          s.s(localObject1, "this.Path");
+          localObject2 = aFP((String)localObject1);
+          localObject1 = paramf.IcU;
+          s.s(localObject1, "this.OtherPathList");
+          if (C((String)localObject2, (List)localObject1))
           {
-            AppMethodBeat.o(195834);
+            AppMethodBeat.o(275332);
           }
           else
           {
             localObject1 = new com.tencent.mm.plugin.game.autogen.a.d();
             paramInt = 1;
-            Object localObject3 = paramf.CqM;
+            Object localObject3 = paramf.IcV;
             if (localObject3 != null)
             {
               localObject3 = ((Iterable)localObject3).iterator();
               if (((Iterator)localObject3).hasNext())
               {
                 com.tencent.mm.plugin.game.autogen.a.g localg = (com.tencent.mm.plugin.game.autogen.a.g)((Iterator)localObject3).next();
-                Log.i("MicroMsg.GameResourceDownloadManager", "checkResourceDownload url:" + localg.Url + ", type:" + localg.rWu);
+                Log.i("MicroMsg.GameResourceDownloadManager", "checkResourceDownload url:" + localg.Url + ", type:" + localg.vhJ);
                 Object localObject4 = (CharSequence)localg.Url;
                 if (localObject4 == null) {
-                  break label1048;
+                  break label1007;
                 }
                 if (((CharSequence)localObject4).length() != 0) {
-                  break label1057;
+                  break label1016;
                 }
-                break label1048;
-                label631:
+                break label1007;
+                label619:
                 if (i != 0) {
-                  break label1014;
+                  break;
                 }
-                if (!j.listOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) }).contains(Integer.valueOf(localg.rWu))) {
-                  break label1014;
+                if (!kotlin.a.p.listOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) }).contains(Integer.valueOf(localg.vhJ))) {
+                  break;
                 }
-                localObject4 = MMApplicationContext.getResources().getString(g.i.CpG, new Object[] { paramg.field_appName, Integer.valueOf(paramInt) });
-                p.j(localObject4, "MMApplicationContext.get…nfo.field_appName, index)");
+                localObject4 = MMApplicationContext.getResources().getString(h.i.IbO, new Object[] { paramg.field_appName, Integer.valueOf(paramInt) });
+                s.s(localObject4, "getResources().getString…nfo.field_appName, index)");
                 String str1 = paramg.field_appId + "_gameres_" + paramInt;
-                String str2 = (String)localObject2 + localg.CqQ;
+                String str2 = s.X((String)localObject2, localg.IcZ);
                 com.tencent.mm.plugin.game.autogen.a.c localc = new com.tencent.mm.plugin.game.autogen.a.c();
-                localc.Cqt = localg.Url;
-                localc.Cqz = localg.Cqz;
-                localc.CqA = ((String)localObject4);
+                localc.IcC = localg.Url;
+                localc.IcI = localg.IcI;
+                localc.IcJ = ((String)localObject4);
                 localc.Md5 = localg.Md5;
-                localc.lVG = str1;
-                localc.CqB = paramf.CqB;
-                localc.CqC = str2;
-                ((com.tencent.mm.plugin.game.autogen.a.d)localObject1).CqD.add(localc);
+                localc.oOI = str1;
+                localc.IcK = paramf.IcK;
+                localc.IcL = str2;
+                ((com.tencent.mm.plugin.game.autogen.a.d)localObject1).IcM.add(localc);
                 paramInt += 1;
-                break label1054;
+                break;
               }
             }
-            localObject2 = (Collection)((com.tencent.mm.plugin.game.autogen.a.d)localObject1).CqD;
+            localObject2 = (Collection)((com.tencent.mm.plugin.game.autogen.a.d)localObject1).IcM;
             if (localObject2 == null) {
-              break label1063;
+              break label1022;
             }
             if (!((Collection)localObject2).isEmpty()) {
-              break label1068;
+              break label1027;
             }
-            break label1063;
+            break label1022;
           }
         }
       }
@@ -221,448 +267,365 @@ public final class b
       if (paramInt != 0)
       {
         Log.i("MicroMsg.GameResourceDownloadManager", "checkResourceDownload, DownloadItemList is empty");
-        AppMethodBeat.o(195834);
+        AppMethodBeat.o(275332);
         break label117;
       }
-      localObject2 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-      p.j(localObject2, "MMKernel.service(IGameStorage::class.java)");
-      ((com.tencent.mm.plugin.game.api.f)localObject2).evt();
-      localObject2 = paramf.CqB;
-      p.j(localObject2, "PackageName");
+      ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
+      localObject2 = paramf.IcK;
+      s.s(localObject2, "PackageName");
       paramg = paramg.field_appId;
-      p.j(paramg, "appInfo.field_appId");
-      d.a((String)localObject2, paramg, paramf.CqO, paramf.CqP, (com.tencent.mm.plugin.game.autogen.a.d)localObject1);
-      paramg = paramf.CqB;
-      p.j(paramg, "PackageName");
-      aJc(paramg);
-      AppMethodBeat.o(195834);
+      s.s(paramg, "appInfo.field_appId");
+      d.a((String)localObject2, paramg, paramf.IcX, paramf.IcY, (com.tencent.mm.plugin.game.autogen.a.d)localObject1);
+      paramg = paramf.IcK;
+      s.s(paramg, "PackageName");
+      aFO(paramg);
+      AppMethodBeat.o(275332);
       break label117;
-      paramg = paramf.CqB;
-      p.j(paramg, "PackageName");
+      paramg = paramf.IcK;
+      s.s(paramg, "PackageName");
       cancelDownloadTask(paramg);
       break label156;
-      AppMethodBeat.o(195834);
-      break label117;
-      label1014:
-      break label1054;
-      label1017:
+      break label1013;
+      label976:
       i = 1;
       break;
       break label156;
-      label1026:
+      label985:
       i = 1;
-      break label242;
-      label1032:
+      break label232;
+      label991:
       i = 0;
-      break label242;
-      label1038:
+      break label232;
+      label997:
       paramInt = 1;
-      break label434;
-      label1043:
+      break label419;
+      label1002:
       paramInt = 0;
-      break label434;
-      label1048:
+      break label419;
+      label1007:
       i = 1;
-      break label631;
-      label1054:
-      break label541;
-      label1057:
+      break label619;
+      label1013:
+      break label529;
+      label1016:
       i = 0;
-      break label631;
-      label1063:
+      break label619;
+      label1022:
       paramInt = 1;
       continue;
-      label1068:
+      label1027:
       paramInt = 0;
     }
   }
   
-  public static void aJb(String paramString)
+  private static final void a(com.tencent.mm.pluginsdk.model.app.g paramg, ah.f paramf, com.tencent.mm.am.c paramc)
   {
-    AppMethodBeat.i(195805);
-    p.k(paramString, "appId");
+    AppMethodBeat.i(275364);
+    s.u(paramg, "$this_apply");
+    s.u(paramf, "$request");
+    b localb = Itw;
+    int i = ((e)paramf.aqH).IcS;
+    paramf = c.c.b(paramc.otC);
+    if (paramf == null)
+    {
+      paramg = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.plugin.game.autogen.download.GetGameResourceDownloadInfoResponse");
+      AppMethodBeat.o(275364);
+      throw paramg;
+    }
+    localb.a(paramg, i, (com.tencent.mm.plugin.game.autogen.a.f)paramf);
+    AppMethodBeat.o(275364);
+  }
+  
+  public static void aFN(String paramString)
+  {
+    AppMethodBeat.i(275326);
+    s.u(paramString, "appId");
     if (Util.isNullOrNil(paramString))
     {
       Log.i("MicroMsg.GameResourceDownloadManager", "appId is null");
-      AppMethodBeat.o(195805);
+      AppMethodBeat.o(275326);
       return;
     }
-    Log.i("MicroMsg.GameResourceDownloadManager", "tryDownload, appId:".concat(String.valueOf(paramString)));
-    com.tencent.e.h.ZvG.d((Runnable)new c(paramString), "GameResourceDownloadRequest_tryDownload");
-    AppMethodBeat.o(195805);
+    Log.i("MicroMsg.GameResourceDownloadManager", s.X("tryDownload, appId:", paramString));
+    com.tencent.threadpool.h.ahAA.g(new b..ExternalSyntheticLambda3(paramString), "GameResourceDownloadRequest_tryDownload");
+    AppMethodBeat.o(275326);
   }
   
-  public static void aJc(String paramString)
+  public static void aFO(String paramString)
   {
-    AppMethodBeat.i(195842);
-    p.k(paramString, "packageName");
-    Object localObject1 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-    p.j(localObject1, "MMKernel.service(IGameStorage::class.java)");
-    paramString = ((com.tencent.mm.plugin.game.api.f)localObject1).evt().aJg(paramString);
-    if (paramString != null)
+    AppMethodBeat.i(275337);
+    s.u(paramString, "packageName");
+    paramString = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm().aFS(paramString);
+    com.tencent.mm.plugin.game.autogen.a.d locald;
+    if (paramString != null) {
+      locald = new com.tencent.mm.plugin.game.autogen.a.d();
+    }
+    try
     {
-      localObject1 = new com.tencent.mm.plugin.game.autogen.a.d();
-      try
+      locald.parseFrom(paramString.field_downloadItemList);
+      Object localObject1 = locald.IcM;
+      if (localObject1 != null)
       {
-        ((com.tencent.mm.plugin.game.autogen.a.d)localObject1).parseFrom(paramString.field_downloadItemList);
-        Object localObject2 = ((com.tencent.mm.plugin.game.autogen.a.d)localObject1).CqD;
-        if (localObject2 != null)
+        localObject1 = ((Iterable)localObject1).iterator();
+        long l;
+        do
         {
-          localObject2 = ((Iterable)localObject2).iterator();
-          long l;
+          com.tencent.mm.plugin.game.autogen.a.c localc;
           do
           {
-            com.tencent.mm.plugin.game.autogen.a.c localc;
-            do
-            {
-              if (!((Iterator)localObject2).hasNext()) {
-                break;
-              }
-              localc = (com.tencent.mm.plugin.game.autogen.a.c)((Iterator)localObject2).next();
-            } while (localc.Cqy);
-            Object localObject3 = new g.a();
-            ((g.a)localObject3).atc(localc.Cqt);
-            ((g.a)localObject3).setFileSize(localc.Cqz);
-            ((g.a)localObject3).ath(localc.CqA);
-            ((g.a)localObject3).setFileMD5(localc.Md5);
-            ((g.a)localObject3).setAppId(localc.lVG);
-            ((g.a)localObject3).setPackageName(localc.CqB);
-            ((g.a)localObject3).me(false);
-            ((g.a)localObject3).IS(3);
-            ((g.a)localObject3).mh(true);
-            ((g.a)localObject3).cQj();
-            ((g.a)localObject3).atg(localc.CqC);
-            localObject3 = ((g.a)localObject3).cQk();
-            com.tencent.mm.plugin.downloader.model.d.asV(localc.Cqt);
-            l = com.tencent.mm.plugin.downloader.model.f.cPZ().b((com.tencent.mm.plugin.downloader.model.g)localObject3);
-            Log.i("MicroMsg.GameResourceDownloadManager", "add download task[packageName:" + localc.CqB + ", downloadUrl:" + localc.Cqt + ", downloadPath:" + localc.CqC + "], size:" + localc.Cqz + ", md5:" + localc.Md5 + ", downloadId:" + l);
-            localc.Cqx = l;
-            localc.Cqy = true;
-          } while (l <= 0L);
-        }
-        paramString.field_downloadItemList = ((com.tencent.mm.plugin.game.autogen.a.d)localObject1).toByteArray();
-        localObject1 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-        p.j(localObject1, "MMKernel.service(IGameStorage::class.java)");
-        Log.i("MicroMsg.GameResourceDownloadManager", "performNextDownload, updateRet:".concat(String.valueOf(((com.tencent.mm.plugin.game.api.f)localObject1).evt().update((IAutoDBItem)paramString, new String[0]))));
-        AppMethodBeat.o(195842);
-        return;
+            if (!((Iterator)localObject1).hasNext()) {
+              break;
+            }
+            localc = (com.tencent.mm.plugin.game.autogen.a.c)((Iterator)localObject1).next();
+          } while (localc.IcH);
+          Object localObject2 = new g.a();
+          ((g.a)localObject2).amR(localc.IcC);
+          ((g.a)localObject2).setFileSize(localc.IcI);
+          ((g.a)localObject2).amW(localc.IcJ);
+          ((g.a)localObject2).setFileMD5(localc.Md5);
+          ((g.a)localObject2).setAppId(localc.oOI);
+          ((g.a)localObject2).setPackageName(localc.IcK);
+          ((g.a)localObject2).nA(false);
+          ((g.a)localObject2).JA(3);
+          ((g.a)localObject2).nD(true);
+          ((g.a)localObject2).xoe.xnV = true;
+          ((g.a)localObject2).amV(localc.IcL);
+          localObject2 = ((g.a)localObject2).xoe;
+          com.tencent.mm.plugin.downloader.model.d.amK(localc.IcC);
+          l = com.tencent.mm.plugin.downloader.model.f.duv().b((com.tencent.mm.plugin.downloader.model.g)localObject2);
+          Log.i("MicroMsg.GameResourceDownloadManager", "add download task[packageName:" + localc.IcK + ", downloadUrl:" + localc.IcC + ", downloadPath:" + localc.IcL + "], size:" + localc.IcI + ", md5:" + localc.Md5 + ", downloadId:" + l);
+          localc.IcG = l;
+          localc.IcH = true;
+        } while (l <= 0L);
       }
-      catch (Exception paramString)
-      {
-        Log.i("MicroMsg.GameResourceDownloadManager", "performNextDownload, catch err:" + paramString.getMessage());
-        AppMethodBeat.o(195842);
-        return;
-      }
+      paramString.field_downloadItemList = locald.toByteArray();
+      Log.i("MicroMsg.GameResourceDownloadManager", s.X("performNextDownload, updateRet:", Boolean.valueOf(((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm().update((IAutoDBItem)paramString, new String[0]))));
+      AppMethodBeat.o(275337);
+      return;
     }
-    AppMethodBeat.o(195842);
+    catch (Exception paramString)
+    {
+      Log.i("MicroMsg.GameResourceDownloadManager", s.X("performNextDownload, catch err:", paramString.getMessage()));
+      AppMethodBeat.o(275337);
+    }
   }
   
-  private static String aJd(String paramString)
+  private static String aFP(String paramString)
   {
-    AppMethodBeat.i(195844);
-    paramString = com.tencent.mm.loader.j.b.aSG() + "/" + paramString + "/";
-    AppMethodBeat.o(195844);
+    AppMethodBeat.i(275339);
+    paramString = com.tencent.mm.loader.i.b.bmu() + '/' + paramString + '/';
+    AppMethodBeat.o(275339);
     return paramString;
+  }
+  
+  private static final void aFQ(String paramString)
+  {
+    AppMethodBeat.i(275379);
+    s.u(paramString, "$appId");
+    paramString = com.tencent.mm.pluginsdk.model.app.h.dV(paramString, false);
+    if (paramString != null)
+    {
+      Object localObject1 = (CharSequence)paramString.field_packageName;
+      if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(275379);
+        return;
+      }
+      Log.i("MicroMsg.GameResourceDownloadManager", s.X("tryDownload, packageName:", paramString.field_packageName));
+      localObject1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
+      Object localObject2 = paramString.field_packageName;
+      s.s(localObject2, "field_packageName");
+      s.u(localObject2, "packageName");
+      Log.i("MicroMsg.GameResourceDownloadStorage", "allowCleanPkg(" + (String)localObject2 + ')');
+      localObject1 = ((d)localObject1).aFS((String)localObject2);
+      if ((localObject1 != null) && (Math.abs(Util.nowSecond() - ((a)localObject1).field_finishDownloadTime) > ((a)localObject1).field_expiredSeconds)) {}
+      for (i = 1; i != 0; i = 0)
+      {
+        Log.i("MicroMsg.GameResourceDownloadManager", s.X("tryDownload, allowCleanPkg:", Boolean.TRUE));
+        paramString = paramString.field_packageName;
+        s.s(paramString, "field_packageName");
+        cancelDownloadTask(paramString);
+        AppMethodBeat.o(275379);
+        return;
+      }
+      localObject1 = new ah.f();
+      ((ah.f)localObject1).aqH = new e();
+      ((e)((ah.f)localObject1).aqH).vgX = q.aPo();
+      ((e)((ah.f)localObject1).aqH).vhx = Build.MANUFACTURER;
+      ((e)((ah.f)localObject1).aqH).IcN = "";
+      ((e)((ah.f)localObject1).aqH).IcO = q.aPk();
+      ((e)((ah.f)localObject1).aqH).IcP = q.eD(false);
+      ((e)((ah.f)localObject1).aqH).IcK = paramString.field_packageName;
+      ((e)((ah.f)localObject1).aqH).oOI = paramString.field_appId;
+      ((e)((ah.f)localObject1).aqH).IcQ = String.valueOf(com.tencent.mm.plugin.game.d.c.aHj(((e)((ah.f)localObject1).aqH).IcK));
+      ((e)((ah.f)localObject1).aqH).IcR = com.tencent.mm.plugin.game.d.c.aHk(((e)((ah.f)localObject1).aqH).IcK);
+      localObject2 = (e)((ah.f)localObject1).aqH;
+      d locald = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
+      String str = ((e)((ah.f)localObject1).aqH).IcK;
+      s.s(str, "request.PackageName");
+      ((e)localObject2).IcS = locald.aFT(str);
+      Log.i("MicroMsg.GameResourceDownloadManager", s.X("download stage:", Integer.valueOf(((e)((ah.f)localObject1).aqH).IcS)));
+      localObject2 = new c.a();
+      ((c.a)localObject2).uri = "/cgi-bin/mmgame-bin/getgameresourcedownloadinfo";
+      ((c.a)localObject2).funcId = 4218;
+      ((c.a)localObject2).otG = 0;
+      ((c.a)localObject2).respCmdId = 0;
+      ((c.a)localObject2).otE = ((com.tencent.mm.bx.a)((ah.f)localObject1).aqH);
+      ((c.a)localObject2).otF = ((com.tencent.mm.bx.a)new com.tencent.mm.plugin.game.autogen.a.f());
+      z.a(((c.a)localObject2).bEF(), new b..ExternalSyntheticLambda0(paramString, (ah.f)localObject1));
+    }
+    AppMethodBeat.o(275379);
   }
   
   private static void cancelDownloadTask(String paramString)
   {
-    AppMethodBeat.i(195851);
+    AppMethodBeat.i(275345);
     Object localObject1 = (CharSequence)paramString;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(195851);
+      AppMethodBeat.o(275345);
       return;
     }
-    localObject1 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-    p.j(localObject1, "MMKernel.service(IGameStorage::class.java)");
-    localObject1 = ((com.tencent.mm.plugin.game.api.f)localObject1).evt().aJg(paramString);
+    localObject1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm().aFS(paramString);
     if (localObject1 != null)
     {
-      localObject3 = new com.tencent.mm.plugin.game.autogen.a.d();
+      localObject2 = new com.tencent.mm.plugin.game.autogen.a.d();
       try
       {
-        ((com.tencent.mm.plugin.game.autogen.a.d)localObject3).parseFrom(((a)localObject1).field_downloadItemList);
-        localObject1 = ((com.tencent.mm.plugin.game.autogen.a.d)localObject3).CqD;
+        ((com.tencent.mm.plugin.game.autogen.a.d)localObject2).parseFrom(((a)localObject1).field_downloadItemList);
+        localObject1 = ((com.tencent.mm.plugin.game.autogen.a.d)localObject2).IcM;
         if (localObject1 != null)
         {
           localObject1 = ((Iterable)localObject1).iterator();
           while (((Iterator)localObject1).hasNext())
           {
-            localObject3 = (com.tencent.mm.plugin.game.autogen.a.c)((Iterator)localObject1).next();
-            i = com.tencent.mm.plugin.downloader.model.f.cPZ().Iw(((com.tencent.mm.plugin.game.autogen.a.c)localObject3).Cqx);
-            Log.i("MicroMsg.GameResourceDownloadManager", "cancelDownloadTask, downloadId:" + ((com.tencent.mm.plugin.game.autogen.a.c)localObject3).Cqx + " ret:" + i);
+            localObject2 = (com.tencent.mm.plugin.game.autogen.a.c)((Iterator)localObject1).next();
+            i = com.tencent.mm.plugin.downloader.model.f.duv().kR(((com.tencent.mm.plugin.game.autogen.a.c)localObject2).IcG);
+            Log.i("MicroMsg.GameResourceDownloadManager", "cancelDownloadTask, downloadId:" + ((com.tencent.mm.plugin.game.autogen.a.c)localObject2).IcG + " ret:" + i);
           }
         }
-        localObject2 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
+        locald = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
       }
       catch (Exception localException)
       {
-        Log.i("MicroMsg.GameResourceDownloadManager", "cancelDownloadTask, catch err:" + localException.getMessage());
+        Log.i("MicroMsg.GameResourceDownloadManager", s.X("cancelDownloadTask, catch err:", localException.getMessage()));
       }
     }
-    p.j(localObject2, "MMKernel.service(IGameStorage::class.java)");
-    Object localObject2 = ((com.tencent.mm.plugin.game.api.f)localObject2).evt();
-    p.k(paramString, "packageName");
-    Object localObject3 = "delete from GameResourceDownload where packageName=\"" + paramString + '"';
-    boolean bool = ((d)localObject2).execSQL("GameResourceDownload", (String)localObject3);
-    Log.i("MicroMsg.GameResourceDownloadStorage", "delDownloadInfo, sql:" + (String)localObject3 + ", ret:" + bool);
-    ewq();
+    d locald;
+    s.u(paramString, "packageName");
+    Object localObject2 = "delete from GameResourceDownload where packageName=\"" + paramString + '"';
+    boolean bool = locald.execSQL("GameResourceDownload", (String)localObject2);
+    Log.i("MicroMsg.GameResourceDownloadStorage", "delDownloadInfo, sql:" + (String)localObject2 + ", ret:" + bool);
+    fEh();
     Log.i("MicroMsg.GameResourceDownloadManager", "cancelDownloadTask, packageName:" + paramString + ", delDownloadInfo: " + bool);
-    AppMethodBeat.o(195851);
+    AppMethodBeat.o(275345);
   }
   
-  public static void ewq()
+  public static void fEh()
   {
-    AppMethodBeat.i(195802);
-    com.tencent.e.h.ZvG.d((Runnable)b.CzH, "GameResourceDownloadRequest_resetCheckTimer");
-    AppMethodBeat.o(195802);
+    AppMethodBeat.i(275322);
+    com.tencent.threadpool.h.ahAA.g(b..ExternalSyntheticLambda4.INSTANCE, "GameResourceDownloadRequest_resetCheckTimer");
+    AppMethodBeat.o(275322);
   }
   
-  private static boolean y(String paramString, List<String> paramList)
+  private static void fEi()
   {
-    AppMethodBeat.i(195855);
-    Object localObject = u.dP(paramString, false);
-    if (localObject != null)
+    AppMethodBeat.i(275341);
+    Object localObject2 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm().rawQuery("select * from GameResourceDownload", new String[0]);
+    if (localObject2 == null) {}
+    for (Object localObject1 = null; localObject1 != null; localObject1 = (List)localObject2)
     {
-      localObject = ((Iterable)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        ((Iterator)localObject).next();
-        Log.i("MicroMsg.GameResourceDownloadManager", "download task exists in path:".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(195855);
-        return true;
+        localObject2 = (a)((Iterator)localObject1).next();
+        Log.i("MicroMsg.GameResourceDownloadManager", s.X("loopDownload, appId:", ((a)localObject2).field_appId));
+        localObject2 = ((a)localObject2).field_appId;
+        s.s(localObject2, "it.field_appId");
+        aFN((String)localObject2);
       }
-    }
-    if (paramList != null)
-    {
-      paramString = ((Iterable)paramList).iterator();
-      while (paramString.hasNext())
-      {
-        paramList = (String)paramString.next();
-        localObject = u.dP(aJd(paramList), false);
-        if (localObject != null)
+      localObject1 = new ArrayList();
+      if (((Cursor)localObject2).moveToFirst()) {
+        do
         {
-          localObject = ((Iterable)localObject).iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            ((Iterator)localObject).next();
-            Log.i("MicroMsg.GameResourceDownloadManager", "download task exists in path:".concat(String.valueOf(paramList)));
-            AppMethodBeat.o(195855);
-            return true;
-          }
+          localObject3 = new a();
+          ((a)localObject3).convertFrom((Cursor)localObject2);
+          ((ArrayList)localObject1).add(localObject3);
+        } while (((Cursor)localObject2).moveToNext());
+      }
+      ((Cursor)localObject2).close();
+      localObject2 = new ArrayList();
+      Object localObject3 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        a locala = (a)((Iterator)localObject3).next();
+        if (Math.abs(Util.nowSecond() - locala.field_checkCgiTime) >= locala.field_intervalSeconds) {
+          ((ArrayList)localObject2).add(locala);
         }
       }
+      Log.i("MicroMsg.GameResourceDownloadStorage", "getNeedCheckItems, allItemsSize:" + ((ArrayList)localObject1).size() + ", needCheckItemsSize:" + ((ArrayList)localObject2).size());
     }
-    AppMethodBeat.o(195855);
-    return false;
+    AppMethodBeat.o(275341);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
-  static final class a
-    implements MTimerHandler.CallBack
+  private static final boolean fEj()
   {
-    public static final a CzG;
-    
-    static
-    {
-      AppMethodBeat.i(196485);
-      CzG = new a();
-      AppMethodBeat.o(196485);
-    }
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(196484);
-      b localb = b.CzF;
-      b.ews();
-      AppMethodBeat.o(196484);
-      return true;
-    }
+    AppMethodBeat.i(275352);
+    fEi();
+    AppMethodBeat.o(275352);
+    return true;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  private static final void fEk()
   {
-    public static final b CzH;
-    
-    static
+    Object localObject2 = null;
+    AppMethodBeat.i(275359);
+    Object localObject1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.f.class)).fCm();
+    Object localObject3 = "select intervalSeconds - abs(" + Util.nowSecond() + " - checkCgiTime) as diffTime from GameResourceDownload order by diffTime asc";
+    Log.i("MicroMsg.GameResourceDownloadStorage", s.X("getMinCheckInterval, sql: ", localObject3));
+    localObject3 = ((d)localObject1).rawQuery((String)localObject3, new String[0]);
+    if (localObject3 == null)
     {
-      AppMethodBeat.i(199754);
-      CzH = new b();
-      AppMethodBeat.o(199754);
+      localObject1 = null;
+      if (localObject1 == null)
+      {
+        localObject1 = localObject2;
+        if (localObject1 == null) {
+          sJn.stopTimer();
+        }
+        AppMethodBeat.o(275359);
+      }
     }
-    
-    public final void run()
+    else
     {
-      Object localObject1 = null;
-      AppMethodBeat.i(199751);
-      Object localObject2 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-      p.j(localObject2, "MMKernel.service(IGameStorage::class.java)");
-      localObject2 = ((com.tencent.mm.plugin.game.api.f)localObject2).evt();
-      String str = "select intervalSeconds - abs(" + Util.nowSecond() + " - checkCgiTime) as diffTime from GameResourceDownload order by diffTime asc";
-      Log.i("MicroMsg.GameResourceDownloadStorage", "getMinCheckInterval, sql: ".concat(String.valueOf(str)));
-      localObject2 = ((d)localObject2).rawQuery(str, new String[0]);
-      long l;
-      if (localObject2 == null)
-      {
-        if (localObject1 != null)
-        {
-          l = ((Number)localObject1).longValue();
-          Log.i("MicroMsg.GameResourceDownloadManager", "resetCheckTimer, interval:".concat(String.valueOf(l)));
-          localObject2 = b.CzF;
-          b.ewr().stopTimer();
-          if (l > 0L) {
-            break label198;
-          }
-          localObject2 = b.CzF;
-          b.ews();
-          label142:
-          if (localObject1 != null) {}
-        }
-        else
-        {
-          localObject1 = b.CzF;
-          b.ewr().stopTimer();
-          localObject1 = x.aazN;
-        }
-        AppMethodBeat.o(199751);
+      if (!((Cursor)localObject3).moveToNext()) {
+        break label192;
       }
-      else
-      {
-        if (!((Cursor)localObject2).moveToNext()) {
-          break label217;
-        }
+    }
+    label192:
+    for (localObject1 = Long.valueOf(((Cursor)localObject3).getLong(0));; localObject1 = null)
+    {
+      ((Cursor)localObject3).close();
+      break;
+      long l = ((Number)localObject1).longValue();
+      Log.i("MicroMsg.GameResourceDownloadManager", s.X("resetCheckTimer, interval:", Long.valueOf(l)));
+      sJn.stopTimer();
+      if (l <= 0L) {
+        fEi();
       }
-      label198:
-      label217:
-      for (localObject1 = Long.valueOf(((Cursor)localObject2).getLong(0));; localObject1 = null)
+      for (;;)
       {
-        ((Cursor)localObject2).close();
         break;
-        localObject2 = b.CzF;
-        b.ewr().startTimer(l * 1000L);
-        break label142;
-      }
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
-  {
-    c(String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(194880);
-      Object localObject1 = com.tencent.mm.pluginsdk.model.app.h.dl(this.cBD, false);
-      if (localObject1 != null)
-      {
-        Object localObject2 = (CharSequence)((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName;
-        if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          AppMethodBeat.o(194880);
-          return;
-        }
-        Log.i("MicroMsg.GameResourceDownloadManager", "tryDownload, packageName:" + ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName);
-        localObject2 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-        p.j(localObject2, "MMKernel.service(IGameStorage::class.java)");
-        localObject2 = ((com.tencent.mm.plugin.game.api.f)localObject2).evt();
-        Object localObject3 = ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName;
-        p.j(localObject3, "field_packageName");
-        p.k(localObject3, "packageName");
-        Log.i("MicroMsg.GameResourceDownloadStorage", "allowCleanPkg(" + (String)localObject3 + ')');
-        localObject2 = ((d)localObject2).aJg((String)localObject3);
-        if ((localObject2 != null) && (Math.abs(Util.nowSecond() - ((a)localObject2).field_finishDownloadTime) > ((a)localObject2).field_expiredSeconds)) {}
-        for (i = 1; i != 0; i = 0)
-        {
-          Log.i("MicroMsg.GameResourceDownloadManager", "tryDownload, allowCleanPkg:true");
-          localObject2 = b.CzF;
-          localObject1 = ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName;
-          p.j(localObject1, "field_packageName");
-          b.aJe((String)localObject1);
-          AppMethodBeat.o(194880);
-          return;
-        }
-        localObject2 = new aa.f();
-        ((aa.f)localObject2).aaBC = new e();
-        ((e)((aa.f)localObject2).aaBC).rVH = Build.MODEL;
-        ((e)((aa.f)localObject2).aaBC).rWh = Build.MANUFACTURER;
-        ((e)((aa.f)localObject2).aaBC).CqE = "";
-        ((e)((aa.f)localObject2).aaBC).CqF = com.tencent.mm.compatible.deviceinfo.q.auQ();
-        ((e)((aa.f)localObject2).aaBC).CqG = com.tencent.mm.compatible.deviceinfo.q.dR(false);
-        ((e)((aa.f)localObject2).aaBC).CqB = ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_packageName;
-        ((e)((aa.f)localObject2).aaBC).lVG = ((com.tencent.mm.pluginsdk.model.app.g)localObject1).field_appId;
-        ((e)((aa.f)localObject2).aaBC).CqH = String.valueOf(com.tencent.mm.plugin.game.d.c.aKt(((e)((aa.f)localObject2).aaBC).CqB));
-        ((e)((aa.f)localObject2).aaBC).CqI = com.tencent.mm.plugin.game.d.c.aKu(((e)((aa.f)localObject2).aaBC).CqB);
-        localObject3 = (e)((aa.f)localObject2).aaBC;
-        Object localObject4 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class);
-        p.j(localObject4, "MMKernel.service(IGameStorage::class.java)");
-        localObject4 = ((com.tencent.mm.plugin.game.api.f)localObject4).evt();
-        String str = ((e)((aa.f)localObject2).aaBC).CqB;
-        p.j(str, "request.PackageName");
-        ((e)localObject3).CqJ = ((d)localObject4).aJh(str);
-        Log.i("MicroMsg.GameResourceDownloadManager", "download stage:" + ((e)((aa.f)localObject2).aaBC).CqJ);
-        localObject3 = new d.a();
-        ((d.a)localObject3).TW("/cgi-bin/mmgame-bin/getgameresourcedownloadinfo");
-        ((d.a)localObject3).vD(4218);
-        ((d.a)localObject3).vF(0);
-        ((d.a)localObject3).vG(0);
-        ((d.a)localObject3).c((com.tencent.mm.cd.a)((aa.f)localObject2).aaBC);
-        ((d.a)localObject3).d((com.tencent.mm.cd.a)new com.tencent.mm.plugin.game.autogen.a.f());
-        aa.a(((d.a)localObject3).bgN(), (aa.a)new a((com.tencent.mm.pluginsdk.model.app.g)localObject1, (aa.f)localObject2));
-        AppMethodBeat.o(194880);
-        return;
-      }
-      AppMethodBeat.o(194880);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
-    static final class a
-      implements aa.a
-    {
-      a(com.tencent.mm.pluginsdk.model.app.g paramg, aa.f paramf) {}
-      
-      public final int a(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.d paramd, com.tencent.mm.an.q paramq)
-      {
-        AppMethodBeat.i(208080);
-        Log.i("MicroMsg.GameResourceDownloadManager", "tryDownload, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        if ((paramInt1 == 0) && (paramInt2 == 0)) {
-          com.tencent.e.h.ZvG.d((Runnable)new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(195549);
-              Object localObject1 = b.CzF;
-              com.tencent.mm.pluginsdk.model.app.g localg = this.CzK.CzI;
-              int i = ((e)this.CzK.CzJ.aaBC).CqJ;
-              Object localObject2 = paramd;
-              p.j(localObject2, "rr");
-              localObject2 = ((com.tencent.mm.an.d)localObject2).bhY();
-              if (localObject2 == null)
-              {
-                localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.game.autogen.download.GetGameResourceDownloadInfoResponse");
-                AppMethodBeat.o(195549);
-                throw ((Throwable)localObject1);
-              }
-              b.a((b)localObject1, localg, i, (com.tencent.mm.plugin.game.autogen.a.f)localObject2);
-              AppMethodBeat.o(195549);
-            }
-          }, "GameResourceDownloadRequest_callback");
-        }
-        AppMethodBeat.o(208080);
-        return 0;
+        sJn.startTimer(l * 1000L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.b.b
  * JD-Core Version:    0.7.0.1
  */

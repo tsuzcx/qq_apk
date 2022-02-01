@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.topstory.ui.debug;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Process;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -11,16 +11,16 @@ import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.plugin.topstory.ui.c.d;
 import com.tencent.mm.plugin.topstory.ui.c.e;
 import com.tencent.mm.plugin.topstory.ui.c.g;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.at;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.au;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ab;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.vfs.y;
 
 public class TopStoryDebugUI
   extends MMActivity
 {
-  private TextView MWW;
+  private TextView TJy;
   
   public int getLayoutId()
   {
@@ -32,31 +32,31 @@ public class TopStoryDebugUI
     AppMethodBeat.i(125896);
     super.onCreate(paramBundle);
     setMMTitle(c.g.top_story_debug_title);
-    setBackBtn(new ab()
+    setBackBtn(new ad()
     {
-      public final void atf()
+      public final void d(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(125893);
+        AppMethodBeat.i(271673);
         TopStoryDebugUI.this.finish();
-        AppMethodBeat.o(125893);
+        AppMethodBeat.o(271673);
       }
     });
-    paramBundle = ai.anf(1);
-    this.MWW = ((TextView)findViewById(c.d.version_tv));
-    this.MWW.setText(getString(c.g.top_story_debug_h5_verison, new Object[] { String.valueOf(paramBundle.bkM()) }));
+    paramBundle = aj.asW(1);
+    this.TJy = ((TextView)findViewById(c.d.version_tv));
+    this.TJy.setText(getString(c.g.top_story_debug_h5_verison, new Object[] { String.valueOf(paramBundle.bIG()) }));
     findViewById(c.d.clear_template_btn).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(125894);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
-        u.deleteDir(paramBundle.gRd());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aYj());
+        y.ew(paramBundle.iqp(), true);
         paramAnonymousView = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
         localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aFh(), "com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$2", "onClick", "(Landroid/view/View;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)paramAnonymousView.sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aYi(), "com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$2", "onClick", "(Landroid/view/View;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)paramAnonymousView.sb(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$2", "onClick", "(Landroid/view/View;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(125894);
@@ -68,12 +68,12 @@ public class TopStoryDebugUI
       {
         AppMethodBeat.i(125895);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         try
         {
-          paramAnonymousView = u.bBS(com.tencent.mm.loader.j.b.aSL() + "topstory/trace.info");
-          TopStoryDebugUI.bR(TopStoryDebugUI.this, paramAnonymousView);
+          paramAnonymousView = y.bEn(com.tencent.mm.loader.i.b.bmz() + "topstory/trace.info");
+          TopStoryDebugUI.cc(TopStoryDebugUI.this, paramAnonymousView);
           label67:
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/topstory/ui/debug/TopStoryDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(125895);

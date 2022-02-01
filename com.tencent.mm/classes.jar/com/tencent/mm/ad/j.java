@@ -79,43 +79,43 @@ public final class j
     }
     if ((paramObject instanceof Integer))
     {
-      paramb.dP(((Integer)paramObject).intValue());
+      paramb.hf(((Integer)paramObject).intValue());
       AppMethodBeat.o(158632);
       return;
     }
     if ((paramObject instanceof String))
     {
-      paramb.bd((String)paramObject);
+      paramb.cq((String)paramObject);
       AppMethodBeat.o(158632);
       return;
     }
     if ((paramObject instanceof Boolean))
     {
-      paramb.aK(((Boolean)paramObject).booleanValue());
+      paramb.bt(((Boolean)paramObject).booleanValue());
       AppMethodBeat.o(158632);
       return;
     }
     if ((paramObject instanceof Long))
     {
-      paramb.v(((Long)paramObject).longValue());
+      paramb.bI(((Long)paramObject).longValue());
       AppMethodBeat.o(158632);
       return;
     }
     if ((paramObject instanceof Float))
     {
-      paramb.O(((Float)paramObject).floatValue());
+      paramb.aP(((Float)paramObject).floatValue());
       AppMethodBeat.o(158632);
       return;
     }
     if ((paramObject instanceof Integer))
     {
-      paramb.dP(((Integer)paramObject).intValue());
+      paramb.hf(((Integer)paramObject).intValue());
       AppMethodBeat.o(158632);
       return;
     }
     if ((paramObject instanceof Double))
     {
-      paramb.d(((Double)paramObject).doubleValue());
+      paramb.s(((Double)paramObject).doubleValue());
       AppMethodBeat.o(158632);
       return;
     }
@@ -142,13 +142,13 @@ public final class j
     }
     if ((paramObject instanceof Integer))
     {
-      parame.m(paramString, ((Integer)paramObject).intValue());
+      parame.t(paramString, ((Integer)paramObject).intValue());
       AppMethodBeat.o(158633);
       return;
     }
     if ((paramObject instanceof String))
     {
-      parame.j(paramString, (String)paramObject);
+      parame.q(paramString, (String)paramObject);
       AppMethodBeat.o(158633);
       return;
     }
@@ -166,7 +166,7 @@ public final class j
     }
     if ((paramObject instanceof Float))
     {
-      parame.a(paramString, ((Float)paramObject).floatValue());
+      parame.b(paramString, ((Float)paramObject).floatValue());
       AppMethodBeat.o(158633);
       return;
     }
@@ -182,13 +182,13 @@ public final class j
     AppMethodBeat.o(158633);
   }
   
-  public static b e(Collection paramCollection)
+  public static b t(Collection paramCollection)
   {
-    AppMethodBeat.i(201849);
+    AppMethodBeat.i(230948);
     b localb = new b();
     if (paramCollection == null)
     {
-      AppMethodBeat.o(201849);
+      AppMethodBeat.o(230948);
       return localb;
     }
     paramCollection = new ArrayList(paramCollection);
@@ -198,11 +198,11 @@ public final class j
       a(localb, paramCollection.get(i));
       i += 1;
     }
-    AppMethodBeat.o(201849);
+    AppMethodBeat.o(230948);
     return localb;
   }
   
-  public static e o(Map paramMap)
+  public static e v(Map paramMap)
   {
     AppMethodBeat.i(158629);
     e locale = new e();
@@ -224,7 +224,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ad.j
  * JD-Core Version:    0.7.0.1
  */

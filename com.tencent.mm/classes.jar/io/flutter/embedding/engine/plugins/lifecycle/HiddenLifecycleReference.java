@@ -1,26 +1,24 @@
 package io.flutter.embedding.engine.plugins.lifecycle;
 
-import androidx.annotation.Keep;
-import androidx.lifecycle.h;
+import androidx.lifecycle.j;
 
-@Keep
 public class HiddenLifecycleReference
 {
-  private final h lifecycle;
+  private final j lifecycle;
   
-  public HiddenLifecycleReference(h paramh)
+  public HiddenLifecycleReference(j paramj)
   {
-    this.lifecycle = paramh;
+    this.lifecycle = paramj;
   }
   
-  public h getLifecycle()
+  public j getLifecycle()
   {
     return this.lifecycle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     io.flutter.embedding.engine.plugins.lifecycle.HiddenLifecycleReference
  * JD-Core Version:    0.7.0.1
  */

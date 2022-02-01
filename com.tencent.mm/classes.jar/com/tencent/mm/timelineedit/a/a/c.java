@@ -1,23 +1,25 @@
 package com.tencent.mm.timelineedit.a.a;
 
-import com.google.b.aj.a;
-import com.google.b.aj.f;
-import com.google.b.ap;
-import com.google.b.bb;
-import com.google.b.bb.a;
-import com.google.b.bb.b;
-import com.google.b.bb.e;
-import com.google.b.be;
-import com.google.b.bf;
-import com.google.b.bt;
-import com.google.b.bw;
-import com.google.b.ci;
-import com.google.b.co;
-import com.google.b.cs;
-import com.google.b.da;
-import com.google.b.da.a;
-import com.google.b.h;
-import com.google.b.i;
+import com.google.d.am.a;
+import com.google.d.am.f;
+import com.google.d.am.j;
+import com.google.d.at;
+import com.google.d.bg;
+import com.google.d.bg.a;
+import com.google.d.bg.b;
+import com.google.d.bg.e;
+import com.google.d.bg.f;
+import com.google.d.bj;
+import com.google.d.bk;
+import com.google.d.cb;
+import com.google.d.ce;
+import com.google.d.cs;
+import com.google.d.da;
+import com.google.d.df;
+import com.google.d.dn;
+import com.google.d.dn.a;
+import com.google.d.i;
+import com.google.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,50 +27,50 @@ import java.util.Collections;
 import java.util.List;
 
 public final class c
-  extends bb
+  extends bg
   implements d
 {
-  private static final c VLL;
-  private static final ci<c> bRf;
-  private q VLH;
-  private List<a> VLI;
-  boolean VLJ;
-  private q VLK;
-  private byte bRd;
+  private static final cs<c> PARSER;
+  private static final c adpQ;
+  private q adpM;
+  private List<a> adpN;
+  boolean adpO;
+  private q adpP;
+  private byte memoizedIsInitialized;
   
   static
   {
-    AppMethodBeat.i(260154);
-    VLL = new c();
-    bRf = new com.google.b.c() {};
-    AppMethodBeat.o(260154);
+    AppMethodBeat.i(232203);
+    adpQ = new c();
+    PARSER = new com.google.d.c() {};
+    AppMethodBeat.o(232203);
   }
   
   private c()
   {
-    AppMethodBeat.i(260126);
-    this.bRd = -1;
-    this.VLI = Collections.emptyList();
-    AppMethodBeat.o(260126);
+    AppMethodBeat.i(232107);
+    this.memoizedIsInitialized = -1;
+    this.adpN = Collections.emptyList();
+    AppMethodBeat.o(232107);
   }
   
-  private c(bb.a<?> parama)
+  private c(bg.a<?> parama)
   {
     super(parama);
-    this.bRd = -1;
+    this.memoizedIsInitialized = -1;
   }
   
-  private c(h paramh, ap paramap)
+  private c(i parami, at paramat)
   {
     this();
-    AppMethodBeat.i(260129);
-    if (paramap == null)
+    AppMethodBeat.i(232123);
+    if (paramat == null)
     {
-      paramh = new NullPointerException();
-      AppMethodBeat.o(260129);
-      throw paramh;
+      parami = new NullPointerException();
+      AppMethodBeat.o(232123);
+      throw parami;
     }
-    da.a locala1 = da.Jj();
+    dn.a locala1 = dn.ajE();
     int k = 0;
     int i = 0;
     for (;;)
@@ -88,14 +90,14 @@ public final class c
       {
         try
         {
-          j = paramh.Av();
+          j = parami.aac();
           switch (j)
           {
           case 10: 
             n = i;
             i1 = i;
             m = i;
-            if (a(paramh, locala1, paramap, j)) {
+            if (parseUnknownField(parami, locala1, paramat, j)) {
               break label570;
             }
             j = 1;
@@ -103,48 +105,48 @@ public final class c
             n = i;
             i1 = i;
             m = i;
-            if (this.VLH == null) {
+            if (this.adpM == null) {
               break label583;
             }
             n = i;
             i1 = i;
             m = i;
-            locala = this.VLH.hDL();
+            locala = this.adpM.jfT();
             n = i;
             i1 = i;
             m = i;
-            this.VLH = ((q)paramh.a(q.hCD(), paramap));
+            this.adpM = ((q)parami.a(q.parser(), paramat));
             if (locala == null) {
               break label570;
             }
             n = i;
             i1 = i;
             m = i;
-            locala.l(this.VLH);
+            locala.l(this.adpM);
             n = i;
             i1 = i;
             m = i;
-            this.VLH = locala.hDP();
+            this.adpM = locala.jfY();
             break label38;
           }
         }
-        catch (bf paramh)
+        catch (bk parami)
         {
           try
           {
-            paramh.bZj = this;
-            AppMethodBeat.o(260129);
-            throw paramh;
+            parami.dST = this;
+            AppMethodBeat.o(232123);
+            throw parami;
           }
           finally
           {
             m = n;
             if ((m & 0x1) != 0) {
-              this.VLI = Collections.unmodifiableList(this.VLI);
+              this.adpN = Collections.unmodifiableList(this.adpN);
             }
-            this.bVW = locala1.Jm();
-            HZ();
-            AppMethodBeat.o(260129);
+            this.unknownFields = locala1.ajH();
+            makeExtensionsImmutable();
+            AppMethodBeat.o(232123);
           }
           j = i;
           if ((i & 0x1) == 0)
@@ -152,26 +154,26 @@ public final class c
             n = i;
             i1 = i;
             m = i;
-            this.VLI = new ArrayList();
+            this.adpN = new ArrayList();
             j = i | 0x1;
           }
           n = j;
           i1 = j;
           m = j;
-          this.VLI.add(paramh.a(a.hCD(), paramap));
+          this.adpN.add(parami.a(a.parser(), paramat));
           i = j;
           break;
         }
-        catch (IOException paramh)
+        catch (IOException parami)
         {
           m = i1;
-          paramh = new bf(paramh);
+          parami = new bk(parami);
           m = i1;
-          paramh.bZj = this;
+          parami.dST = this;
           m = i1;
-          AppMethodBeat.o(260129);
+          AppMethodBeat.o(232123);
           m = i1;
-          throw paramh;
+          throw parami;
         }
         finally
         {
@@ -179,41 +181,41 @@ public final class c
           n = i;
           i1 = i;
           m = i;
-          this.VLJ = paramh.AB();
+          this.adpO = parami.aai();
         }
         break;
         n = i;
         i1 = i;
         m = i;
-        if (this.VLK != null)
+        if (this.adpP != null)
         {
           n = i;
           i1 = i;
           m = i;
         }
-        for (q.a locala = this.VLK.hDL();; locala = null)
+        for (q.a locala = this.adpP.jfT();; locala = null)
         {
           n = i;
           i1 = i;
           m = i;
-          this.VLK = ((q)paramh.a(q.hCD(), paramap));
+          this.adpP = ((q)parami.a(q.parser(), paramat));
           if (locala != null)
           {
             n = i;
             i1 = i;
             m = i;
-            locala.l(this.VLK);
+            locala.l(this.adpP);
             n = i;
             i1 = i;
             m = i;
-            this.VLK = locala.hDP();
+            this.adpP = locala.jfY();
             break;
             if ((i & 0x1) != 0) {
-              this.VLI = Collections.unmodifiableList(this.VLI);
+              this.adpN = Collections.unmodifiableList(this.adpN);
             }
-            this.bVW = locala1.Jm();
-            HZ();
-            AppMethodBeat.o(260129);
+            this.unknownFields = locala1.ajH();
+            makeExtensionsImmutable();
+            AppMethodBeat.o(232123);
             return;
           }
           label570:
@@ -232,345 +234,329 @@ public final class c
   
   public static a a(c paramc)
   {
-    AppMethodBeat.i(260142);
-    paramc = VLL.hCL().d(paramc);
-    AppMethodBeat.o(260142);
+    AppMethodBeat.i(232130);
+    paramc = adpQ.jeR().d(paramc);
+    AppMethodBeat.o(232130);
     return paramc;
   }
   
-  public static ci<c> hCD()
+  public static c jeS()
   {
-    return bRf;
+    return adpQ;
   }
   
-  public static c hCM()
+  public static cs<c> parser()
   {
-    return VLL;
+    return PARSER;
   }
   
-  public final int Ad()
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(232303);
+    if (paramObject == this)
+    {
+      AppMethodBeat.o(232303);
+      return true;
+    }
+    if (!(paramObject instanceof c))
+    {
+      boolean bool = super.equals(paramObject);
+      AppMethodBeat.o(232303);
+      return bool;
+    }
+    paramObject = (c)paramObject;
+    if (jeN() != paramObject.jeN())
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    if ((jeN()) && (!jeO().equals(paramObject.jeO())))
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    if (!this.adpN.equals(paramObject.adpN))
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    if (this.adpO != paramObject.adpO)
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    if (jeP() != paramObject.jeP())
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    if ((jeP()) && (!jeQ().equals(paramObject.jeQ())))
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    if (!this.unknownFields.equals(paramObject.unknownFields))
+    {
+      AppMethodBeat.o(232303);
+      return false;
+    }
+    AppMethodBeat.o(232303);
+    return true;
+  }
+  
+  public final cs<c> getParserForType()
+  {
+    return PARSER;
+  }
+  
+  public final int getSerializedSize()
   {
     int j = 0;
-    AppMethodBeat.i(260138);
-    int i = this.bOZ;
+    AppMethodBeat.i(232289);
+    int i = this.memoizedSize;
     if (i != -1)
     {
-      AppMethodBeat.o(260138);
+      AppMethodBeat.o(232289);
       return i;
     }
-    if (this.VLH != null) {
-      i = i.c(1, hCI()) + 0;
+    if (this.adpM != null) {
+      i = k.c(1, jeO()) + 0;
     }
     for (;;)
     {
-      if (j < this.VLI.size())
+      if (j < this.adpN.size())
       {
-        int k = i.c(2, (bw)this.VLI.get(j));
+        int k = k.c(2, (ce)this.adpN.get(j));
         j += 1;
         i = k + i;
       }
       else
       {
         j = i;
-        if (this.VLJ) {
-          j = i + i.gK(3);
+        if (this.adpO) {
+          j = i + k.kn(3);
         }
         i = j;
-        if (this.VLK != null) {
-          i = j + i.c(4, hCK());
+        if (this.adpP != null) {
+          i = j + k.c(4, jeQ());
         }
-        i = this.bVW.Ad() + i;
-        this.bOZ = i;
-        AppMethodBeat.o(260138);
+        i = this.unknownFields.getSerializedSize() + i;
+        this.memoizedSize = i;
+        AppMethodBeat.o(232289);
         return i;
         i = 0;
       }
     }
   }
   
-  public final da Ca()
+  public final dn getUnknownFields()
   {
-    return this.bVW;
-  }
-  
-  public final bb.e Cb()
-  {
-    AppMethodBeat.i(260130);
-    bb.e locale = ae.VOl.b(c.class, a.class);
-    AppMethodBeat.o(260130);
-    return locale;
-  }
-  
-  public final ci<c> Co()
-  {
-    return bRf;
-  }
-  
-  public final void a(i parami)
-  {
-    AppMethodBeat.i(260137);
-    if (this.VLH != null) {
-      parami.a(1, hCI());
-    }
-    int i = 0;
-    while (i < this.VLI.size())
-    {
-      parami.a(2, (bw)this.VLI.get(i));
-      i += 1;
-    }
-    if (this.VLJ) {
-      parami.t(3, this.VLJ);
-    }
-    if (this.VLK != null) {
-      parami.a(4, hCK());
-    }
-    this.bVW.a(parami);
-    AppMethodBeat.o(260137);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(260139);
-    if (paramObject == this)
-    {
-      AppMethodBeat.o(260139);
-      return true;
-    }
-    if (!(paramObject instanceof c))
-    {
-      boolean bool = super.equals(paramObject);
-      AppMethodBeat.o(260139);
-      return bool;
-    }
-    paramObject = (c)paramObject;
-    if (hCH() != paramObject.hCH())
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    if ((hCH()) && (!hCI().equals(paramObject.hCI())))
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    if (!this.VLI.equals(paramObject.VLI))
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    if (this.VLJ != paramObject.VLJ)
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    if (hCJ() != paramObject.hCJ())
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    if ((hCJ()) && (!hCK().equals(paramObject.hCK())))
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    if (!this.bVW.equals(paramObject.bVW))
-    {
-      AppMethodBeat.o(260139);
-      return false;
-    }
-    AppMethodBeat.o(260139);
-    return true;
-  }
-  
-  public final boolean hCH()
-  {
-    return this.VLH != null;
-  }
-  
-  public final q hCI()
-  {
-    AppMethodBeat.i(260133);
-    if (this.VLH == null)
-    {
-      localq = q.hDM();
-      AppMethodBeat.o(260133);
-      return localq;
-    }
-    q localq = this.VLH;
-    AppMethodBeat.o(260133);
-    return localq;
-  }
-  
-  public final boolean hCJ()
-  {
-    return this.VLK != null;
-  }
-  
-  public final q hCK()
-  {
-    AppMethodBeat.i(260135);
-    if (this.VLK == null)
-    {
-      localq = q.hDM();
-      AppMethodBeat.o(260135);
-      return localq;
-    }
-    q localq = this.VLK;
-    AppMethodBeat.o(260135);
-    return localq;
-  }
-  
-  public final a hCL()
-  {
-    AppMethodBeat.i(260143);
-    if (this == VLL)
-    {
-      locala = new a((byte)0);
-      AppMethodBeat.o(260143);
-      return locala;
-    }
-    a locala = new a((byte)0).d(this);
-    AppMethodBeat.o(260143);
-    return locala;
+    return this.unknownFields;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(260141);
-    if (this.bPa != 0)
+    AppMethodBeat.i(232315);
+    if (this.memoizedHashCode != 0)
     {
-      i = this.bPa;
-      AppMethodBeat.o(260141);
+      i = this.memoizedHashCode;
+      AppMethodBeat.o(232315);
       return i;
     }
-    int j = ae.VOk.hashCode() + 779;
+    int j = ae.adsp.hashCode() + 779;
     int i = j;
-    if (hCH()) {
-      i = (j * 37 + 1) * 53 + hCI().hashCode();
+    if (jeN()) {
+      i = (j * 37 + 1) * 53 + jeO().hashCode();
     }
     j = i;
-    if (this.VLI.size() > 0) {
-      j = (i * 37 + 2) * 53 + this.VLI.hashCode();
+    if (this.adpN.size() > 0) {
+      j = (i * 37 + 2) * 53 + this.adpN.hashCode();
     }
-    j = (j * 37 + 3) * 53 + be.bS(this.VLJ);
+    j = (j * 37 + 3) * 53 + bj.hashBoolean(this.adpO);
     i = j;
-    if (hCJ()) {
-      i = (j * 37 + 4) * 53 + hCK().hashCode();
+    if (jeP()) {
+      i = (j * 37 + 4) * 53 + jeQ().hashCode();
     }
-    i = i * 29 + this.bVW.hashCode();
-    this.bPa = i;
-    AppMethodBeat.o(260141);
+    i = i * 29 + this.unknownFields.hashCode();
+    this.memoizedHashCode = i;
+    AppMethodBeat.o(232315);
     return i;
+  }
+  
+  public final bg.e internalGetFieldAccessorTable()
+  {
+    AppMethodBeat.i(232224);
+    bg.e locale = ae.adsq.b(c.class, a.class);
+    AppMethodBeat.o(232224);
+    return locale;
   }
   
   public final boolean isInitialized()
   {
-    int i = this.bRd;
+    int i = this.memoizedIsInitialized;
     if (i == 1) {
       return true;
     }
     if (i == 0) {
       return false;
     }
-    this.bRd = 1;
+    this.memoizedIsInitialized = 1;
     return true;
   }
   
+  public final boolean jeN()
+  {
+    return this.adpM != null;
+  }
+  
+  public final q jeO()
+  {
+    AppMethodBeat.i(232240);
+    if (this.adpM == null)
+    {
+      localq = q.jfU();
+      AppMethodBeat.o(232240);
+      return localq;
+    }
+    q localq = this.adpM;
+    AppMethodBeat.o(232240);
+    return localq;
+  }
+  
+  public final boolean jeP()
+  {
+    return this.adpP != null;
+  }
+  
+  public final q jeQ()
+  {
+    AppMethodBeat.i(232255);
+    if (this.adpP == null)
+    {
+      localq = q.jfU();
+      AppMethodBeat.o(232255);
+      return localq;
+    }
+    q localq = this.adpP;
+    AppMethodBeat.o(232255);
+    return localq;
+  }
+  
+  public final a jeR()
+  {
+    AppMethodBeat.i(232327);
+    if (this == adpQ)
+    {
+      locala = new a((byte)0);
+      AppMethodBeat.o(232327);
+      return locala;
+    }
+    a locala = new a((byte)0).d(this);
+    AppMethodBeat.o(232327);
+    return locala;
+  }
+  
+  public final Object newInstance(bg.f paramf)
+  {
+    AppMethodBeat.i(232210);
+    paramf = new c();
+    AppMethodBeat.o(232210);
+    return paramf;
+  }
+  
+  public final void writeTo(k paramk)
+  {
+    AppMethodBeat.i(232276);
+    if (this.adpM != null) {
+      paramk.a(1, jeO());
+    }
+    int i = 0;
+    while (i < this.adpN.size())
+    {
+      paramk.a(2, (ce)this.adpN.get(i));
+      i += 1;
+    }
+    if (this.adpO) {
+      paramk.I(3, this.adpO);
+    }
+    if (this.adpP != null) {
+      paramk.a(4, jeQ());
+    }
+    this.unknownFields.writeTo(paramk);
+    AppMethodBeat.o(232276);
+  }
+  
   public static final class a
-    extends bb.a<a>
+    extends bg.a<a>
     implements d
   {
-    private q VLH;
-    private List<a> VLI;
-    private boolean VLJ;
-    private q VLK;
-    private cs<q, q.a, r> VLM;
-    private co<a, a.a, b> VLN;
-    private cs<q, q.a, r> VLO;
-    private int bQS;
+    private q adpM;
+    private List<a> adpN;
+    private boolean adpO;
+    private q adpP;
+    private df<q, q.a, r> adpR;
+    private da<a, a.a, b> adpS;
+    private df<q, q.a, r> adpT;
+    private int bitField0_;
     
     private a()
     {
-      AppMethodBeat.i(260033);
-      this.VLI = Collections.emptyList();
-      Cu();
-      AppMethodBeat.o(260033);
+      AppMethodBeat.i(232520);
+      this.adpN = Collections.emptyList();
+      maybeForceBuilderInitialization();
+      AppMethodBeat.o(232520);
     }
     
-    private a(bb.b paramb)
+    private a(bg.b paramb)
     {
       super();
-      AppMethodBeat.i(260034);
-      this.VLI = Collections.emptyList();
-      Cu();
-      AppMethodBeat.o(260034);
+      AppMethodBeat.i(232528);
+      this.adpN = Collections.emptyList();
+      maybeForceBuilderInitialization();
+      AppMethodBeat.o(232528);
     }
     
-    private void Cu()
+    private a K(am.f paramf, int paramInt, Object paramObject)
     {
-      AppMethodBeat.i(260035);
-      if (c.bXS) {
-        hCS();
-      }
-      AppMethodBeat.o(260035);
-    }
-    
-    private a EY(boolean paramBoolean)
-    {
-      AppMethodBeat.i(260061);
-      this.VLJ = paramBoolean;
-      onChanged();
-      AppMethodBeat.o(260061);
-      return this;
-    }
-    
-    private a N(bt parambt)
-    {
-      AppMethodBeat.i(260045);
-      if ((parambt instanceof c))
-      {
-        parambt = d((c)parambt);
-        AppMethodBeat.o(260045);
-        return parambt;
-      }
-      super.a(parambt);
-      AppMethodBeat.o(260045);
-      return this;
+      AppMethodBeat.i(232576);
+      paramf = (a)super.setRepeatedField(paramf, paramInt, paramObject);
+      AppMethodBeat.o(232576);
+      return paramf;
     }
     
     /* Error */
-    private a O(h paramh, ap paramap)
+    private a K(i parami, at paramat)
     {
       // Byte code:
-      //   0: ldc 93
+      //   0: ldc 72
       //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: invokestatic 97	com/tencent/mm/timelineedit/a/a/c:hCO	()Lcom/google/b/ci;
+      //   7: invokestatic 76	com/tencent/mm/timelineedit/a/a/c:jeU	()Lcom/google/d/cs;
       //   10: aload_1
       //   11: aload_2
-      //   12: invokeinterface 102 3 0
+      //   12: invokeinterface 82 3 0
       //   17: checkcast 9	com/tencent/mm/timelineedit/a/a/c
       //   20: astore_1
       //   21: aload_1
       //   22: ifnull +9 -> 31
       //   25: aload_0
       //   26: aload_1
-      //   27: invokevirtual 85	com/tencent/mm/timelineedit/a/a/c$a:d	(Lcom/tencent/mm/timelineedit/a/a/c;)Lcom/tencent/mm/timelineedit/a/a/c$a;
+      //   27: invokevirtual 86	com/tencent/mm/timelineedit/a/a/c$a:d	(Lcom/tencent/mm/timelineedit/a/a/c;)Lcom/tencent/mm/timelineedit/a/a/c$a;
       //   30: pop
-      //   31: ldc 93
+      //   31: ldc 72
       //   33: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   36: aload_0
       //   37: areturn
       //   38: astore_1
       //   39: aload_1
-      //   40: getfield 106	com/google/b/bf:bZj	Lcom/google/b/bw;
+      //   40: getfield 90	com/google/d/bk:dST	Lcom/google/d/ce;
       //   43: checkcast 9	com/tencent/mm/timelineedit/a/a/c
       //   46: astore_2
       //   47: aload_1
-      //   48: invokevirtual 110	com/google/b/bf:Im	()Ljava/io/IOException;
+      //   48: invokevirtual 94	com/google/d/bk:aii	()Ljava/io/IOException;
       //   51: astore_1
-      //   52: ldc 93
+      //   52: ldc 72
       //   54: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   57: aload_1
       //   58: athrow
@@ -579,9 +565,9 @@ public final class c
       //   61: ifnull +9 -> 70
       //   64: aload_0
       //   65: aload_2
-      //   66: invokevirtual 85	com/tencent/mm/timelineedit/a/a/c$a:d	(Lcom/tencent/mm/timelineedit/a/a/c;)Lcom/tencent/mm/timelineedit/a/a/c$a;
+      //   66: invokevirtual 86	com/tencent/mm/timelineedit/a/a/c$a:d	(Lcom/tencent/mm/timelineedit/a/a/c;)Lcom/tencent/mm/timelineedit/a/a/c$a;
       //   69: pop
-      //   70: ldc 93
+      //   70: ldc 72
       //   72: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   75: aload_1
       //   76: athrow
@@ -592,255 +578,338 @@ public final class c
       // Local variable table:
       //   start	length	slot	name	signature
       //   0	83	0	this	a
-      //   0	83	1	paramh	h
-      //   0	83	2	paramap	ap
+      //   0	83	1	parami	i
+      //   0	83	2	paramat	at
       //   6	73	3	localObject	Object
       // Exception table:
       //   from	to	target	type
-      //   7	21	38	com/google/b/bf
+      //   7	21	38	com/google/d/bk
       //   47	59	59	finally
       //   7	21	77	finally
       //   39	47	77	finally
     }
     
-    private a aA(aj.f paramf, Object paramObject)
+    private a KI(boolean paramBoolean)
     {
-      AppMethodBeat.i(260040);
-      paramf = (a)super.d(paramf, paramObject);
-      AppMethodBeat.o(260040);
+      AppMethodBeat.i(232622);
+      this.adpO = paramBoolean;
+      onChanged();
+      AppMethodBeat.o(232622);
+      return this;
+    }
+    
+    private a L(cb paramcb)
+    {
+      AppMethodBeat.i(232589);
+      if ((paramcb instanceof c))
+      {
+        paramcb = d((c)paramcb);
+        AppMethodBeat.o(232589);
+        return paramcb;
+      }
+      super.mergeFrom(paramcb);
+      AppMethodBeat.o(232589);
+      return this;
+    }
+    
+    private a O(am.j paramj)
+    {
+      AppMethodBeat.i(232570);
+      paramj = (a)super.clearOneof(paramj);
+      AppMethodBeat.o(232570);
+      return paramj;
+    }
+    
+    private a S(am.f paramf)
+    {
+      AppMethodBeat.i(232566);
+      paramf = (a)super.clearField(paramf);
+      AppMethodBeat.o(232566);
       return paramf;
     }
     
-    private a aB(aj.f paramf, Object paramObject)
+    private a aw(am.f paramf, Object paramObject)
     {
-      AppMethodBeat.i(260043);
-      paramf = (a)super.c(paramf, paramObject);
-      AppMethodBeat.o(260043);
+      AppMethodBeat.i(232558);
+      paramf = (a)super.setField(paramf, paramObject);
+      AppMethodBeat.o(232558);
       return paramf;
     }
     
-    private a aC(da paramda)
+    private a ax(am.f paramf, Object paramObject)
     {
-      AppMethodBeat.i(260066);
-      paramda = (a)super.e(paramda);
-      AppMethodBeat.o(260066);
-      return paramda;
+      AppMethodBeat.i(232583);
+      paramf = (a)super.addRepeatedField(paramf, paramObject);
+      AppMethodBeat.o(232583);
+      return paramf;
     }
     
-    private a aD(da paramda)
+    private a ay(dn paramdn)
     {
-      AppMethodBeat.i(260068);
-      paramda = (a)super.d(paramda);
-      AppMethodBeat.o(260068);
-      return paramda;
+      AppMethodBeat.i(232632);
+      paramdn = (a)super.setUnknownFields(paramdn);
+      AppMethodBeat.o(232632);
+      return paramdn;
+    }
+    
+    private a az(dn paramdn)
+    {
+      AppMethodBeat.i(232635);
+      paramdn = (a)super.mergeUnknownFields(paramdn);
+      AppMethodBeat.o(232635);
+      return paramdn;
     }
     
     private a b(q paramq)
     {
-      AppMethodBeat.i(260054);
-      if (this.VLM == null) {
-        if (this.VLH != null)
+      AppMethodBeat.i(232606);
+      if (this.adpR == null) {
+        if (this.adpM != null)
         {
-          this.VLH = q.j(this.VLH).l(paramq).hDP();
+          this.adpM = q.j(this.adpM).l(paramq).jfY();
           onChanged();
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(260054);
+        AppMethodBeat.o(232606);
         return this;
-        this.VLH = paramq;
+        this.adpM = paramq;
         break;
-        this.VLM.c(paramq);
+        this.adpR.c(paramq);
       }
     }
     
     private a c(q paramq)
     {
-      AppMethodBeat.i(260063);
-      if (this.VLO == null) {
-        if (this.VLK != null)
+      AppMethodBeat.i(232627);
+      if (this.adpT == null) {
+        if (this.adpP != null)
         {
-          this.VLK = q.j(this.VLK).l(paramq).hDP();
+          this.adpP = q.j(this.adpP).l(paramq).jfY();
           onChanged();
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(260063);
+        AppMethodBeat.o(232627);
         return this;
-        this.VLK = paramq;
+        this.adpP = paramq;
         break;
-        this.VLO.c(paramq);
+        this.adpT.c(paramq);
       }
     }
     
-    private c hCP()
+    private a jeV()
     {
-      AppMethodBeat.i(260036);
-      Object localObject = hCQ();
+      AppMethodBeat.i(232546);
+      super.clear();
+      if (this.adpR == null)
+      {
+        this.adpM = null;
+        if (this.adpS != null) {
+          break label84;
+        }
+        this.adpN = Collections.emptyList();
+        this.bitField0_ &= 0xFFFFFFFE;
+        label47:
+        this.adpO = false;
+        if (this.adpT != null) {
+          break label94;
+        }
+        this.adpP = null;
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(232546);
+        return this;
+        this.adpM = null;
+        this.adpR = null;
+        break;
+        label84:
+        this.adpS.clear();
+        break label47;
+        label94:
+        this.adpP = null;
+        this.adpT = null;
+      }
+    }
+    
+    private c jeW()
+    {
+      AppMethodBeat.i(232552);
+      Object localObject = jeX();
       if (!((c)localObject).isInitialized())
       {
-        localObject = b((bt)localObject);
-        AppMethodBeat.o(260036);
+        localObject = newUninitializedMessageException((cb)localObject);
+        AppMethodBeat.o(232552);
         throw ((Throwable)localObject);
       }
-      AppMethodBeat.o(260036);
+      AppMethodBeat.o(232552);
       return localObject;
     }
     
-    private void hCR()
+    private void jeY()
     {
-      AppMethodBeat.i(260057);
-      if ((this.bQS & 0x1) == 0)
+      AppMethodBeat.i(232612);
+      if ((this.bitField0_ & 0x1) == 0)
       {
-        this.VLI = new ArrayList(this.VLI);
-        this.bQS |= 0x1;
+        this.adpN = new ArrayList(this.adpN);
+        this.bitField0_ |= 0x1;
       }
-      AppMethodBeat.o(260057);
+      AppMethodBeat.o(232612);
     }
     
-    private co<a, a.a, b> hCS()
+    private da<a, a.a, b> jeZ()
     {
-      AppMethodBeat.i(260059);
+      AppMethodBeat.i(232617);
       Object localObject;
-      if (this.VLN == null)
+      if (this.adpS == null)
       {
-        localObject = this.VLI;
-        if ((this.bQS & 0x1) == 0) {
+        localObject = this.adpN;
+        if ((this.bitField0_ & 0x1) == 0) {
           break label66;
         }
       }
       label66:
       for (boolean bool = true;; bool = false)
       {
-        this.VLN = new co((List)localObject, bool, Ie(), Ic());
-        this.VLI = null;
-        localObject = this.VLN;
-        AppMethodBeat.o(260059);
+        this.adpS = new da((List)localObject, bool, getParentForChildren(), isClean());
+        this.adpN = null;
+        localObject = this.adpS;
+        AppMethodBeat.o(232617);
         return localObject;
       }
     }
     
-    public final bb.e Cb()
+    private void maybeForceBuilderInitialization()
     {
-      AppMethodBeat.i(260031);
-      bb.e locale = ae.VOl.b(c.class, a.class);
-      AppMethodBeat.o(260031);
-      return locale;
-    }
-    
-    public final aj.a Cv()
-    {
-      return ae.VOk;
+      AppMethodBeat.i(232535);
+      if (c.ayB()) {
+        jeZ();
+      }
+      AppMethodBeat.o(232535);
     }
     
     public final a d(c paramc)
     {
-      co localco = null;
-      AppMethodBeat.i(260048);
-      if (paramc == c.hCM())
+      da localda = null;
+      AppMethodBeat.i(232714);
+      if (paramc == c.jeS())
       {
-        AppMethodBeat.o(260048);
+        AppMethodBeat.o(232714);
         return this;
       }
-      if (paramc.hCH()) {
-        b(paramc.hCI());
+      if (paramc.jeN()) {
+        b(paramc.jeO());
       }
-      if (this.VLN == null) {
+      if (this.adpS == null) {
         if (!c.b(paramc).isEmpty())
         {
-          if (!this.VLI.isEmpty()) {
+          if (!this.adpN.isEmpty()) {
             break label146;
           }
-          this.VLI = c.b(paramc);
-          this.bQS &= 0xFFFFFFFE;
+          this.adpN = c.b(paramc);
+          this.bitField0_ &= 0xFFFFFFFE;
           onChanged();
         }
       }
       for (;;)
       {
-        if (paramc.VLJ) {
-          EY(paramc.VLJ);
+        if (paramc.adpO) {
+          KI(paramc.adpO);
         }
-        if (paramc.hCJ()) {
-          c(paramc.hCK());
+        if (paramc.jeP()) {
+          c(paramc.jeQ());
         }
-        aD(c.c(paramc));
+        az(c.c(paramc));
         onChanged();
-        AppMethodBeat.o(260048);
+        AppMethodBeat.o(232714);
         return this;
         label146:
-        hCR();
-        this.VLI.addAll(c.b(paramc));
+        jeY();
+        this.adpN.addAll(c.b(paramc));
         break;
         if (!c.b(paramc).isEmpty()) {
-          if (this.VLN.isEmpty())
+          if (this.adpS.isEmpty())
           {
-            this.VLN.cat = null;
-            this.VLN = null;
-            this.VLI = c.b(paramc);
-            this.bQS &= 0xFFFFFFFE;
-            if (c.hCN()) {
-              localco = hCS();
+            this.adpS.dUC = null;
+            this.adpS = null;
+            this.adpN = c.b(paramc);
+            this.bitField0_ &= 0xFFFFFFFE;
+            if (c.jeT()) {
+              localda = jeZ();
             }
-            this.VLN = localco;
+            this.adpS = localda;
           }
           else
           {
-            this.VLN.a(c.b(paramc));
+            this.adpS.a(c.b(paramc));
           }
         }
       }
     }
     
-    public final c hCQ()
+    public final am.a getDescriptorForType()
     {
-      AppMethodBeat.i(260038);
-      c localc = new c(this, (byte)0);
-      if (this.VLM == null)
-      {
-        c.a(localc, this.VLH);
-        if (this.VLN != null) {
-          break label134;
-        }
-        if ((this.bQS & 0x1) != 0)
-        {
-          this.VLI = Collections.unmodifiableList(this.VLI);
-          this.bQS &= 0xFFFFFFFE;
-        }
-        c.a(localc, this.VLI);
-        label79:
-        c.a(localc, this.VLJ);
-        if (this.VLO != null) {
-          break label149;
-        }
-        c.b(localc, this.VLK);
-      }
-      for (;;)
-      {
-        Ib();
-        AppMethodBeat.o(260038);
-        return localc;
-        c.a(localc, (q)this.VLM.IV());
-        break;
-        label134:
-        c.a(localc, this.VLN.build());
-        break label79;
-        label149:
-        c.b(localc, (q)this.VLO.IV());
-      }
+      return ae.adsp;
+    }
+    
+    public final bg.e internalGetFieldAccessorTable()
+    {
+      AppMethodBeat.i(232690);
+      bg.e locale = ae.adsq.b(c.class, a.class);
+      AppMethodBeat.o(232690);
+      return locale;
     }
     
     public final boolean isInitialized()
     {
       return true;
     }
+    
+    public final c jeX()
+    {
+      AppMethodBeat.i(232702);
+      c localc = new c(this, (byte)0);
+      if (this.adpR == null)
+      {
+        c.a(localc, this.adpM);
+        if (this.adpS != null) {
+          break label134;
+        }
+        if ((this.bitField0_ & 0x1) != 0)
+        {
+          this.adpN = Collections.unmodifiableList(this.adpN);
+          this.bitField0_ &= 0xFFFFFFFE;
+        }
+        c.a(localc, this.adpN);
+        label79:
+        c.a(localc, this.adpO);
+        if (this.adpT != null) {
+          break label149;
+        }
+        c.b(localc, this.adpP);
+      }
+      for (;;)
+      {
+        onBuilt();
+        AppMethodBeat.o(232702);
+        return localc;
+        c.a(localc, (q)this.adpR.ajn());
+        break;
+        label134:
+        c.a(localc, this.adpS.build());
+        break label79;
+        label149:
+        c.b(localc, (q)this.adpT.ajn());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.timelineedit.a.a.c
  * JD-Core Version:    0.7.0.1
  */

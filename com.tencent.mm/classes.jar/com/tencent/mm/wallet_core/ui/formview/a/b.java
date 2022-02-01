@@ -12,11 +12,11 @@ public abstract interface b
   
   public abstract String c(WalletFormView paramWalletFormView, String paramString);
   
-  public abstract boolean ful();
+  public abstract boolean gGa();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.formview.a.b
  * JD-Core Version:    0.7.0.1
  */

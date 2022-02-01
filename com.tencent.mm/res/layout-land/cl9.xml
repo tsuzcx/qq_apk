@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/kow" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.finder.view.StrokeTextView android:textSize="@dimen/hd" android:textColor="@color/am" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/kov" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" app:finderStrokeWidth="7.0" />
-</FrameLayout>

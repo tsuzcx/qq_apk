@@ -7,17 +7,17 @@ public final class a
 {
   public static boolean e(Class<?> paramClass, Class<? extends Annotation> paramClass1)
   {
-    AppMethodBeat.i(214829);
+    AppMethodBeat.i(235654);
     for (;;)
     {
       if (paramClass == null)
       {
-        AppMethodBeat.o(214829);
+        AppMethodBeat.o(235654);
         return false;
       }
       if (paramClass.isAnnotationPresent(paramClass1))
       {
-        AppMethodBeat.o(214829);
+        AppMethodBeat.o(235654);
         return true;
       }
       Class[] arrayOfClass = paramClass.getInterfaces();
@@ -27,7 +27,7 @@ public final class a
       {
         if (arrayOfClass[i].isAnnotationPresent(paramClass1))
         {
-          AppMethodBeat.o(214829);
+          AppMethodBeat.o(235654);
           return true;
         }
         i += 1;
@@ -37,7 +37,7 @@ public final class a
       }
       paramClass = paramClass.getSuperclass();
     }
-    AppMethodBeat.o(214829);
+    AppMethodBeat.o(235654);
     return false;
   }
 }

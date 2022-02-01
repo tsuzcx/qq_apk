@@ -13,54 +13,54 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class b
 {
-  private static b iON;
-  private final Queue<a> iOO;
-  private boolean iOP;
-  private volatile boolean iOQ;
-  private boolean iOR;
-  private volatile com.tencent.mm.vending.g.c iOS;
-  private AtomicBoolean iOT;
-  private MMHandler iOU;
+  private static b lqJ;
+  private final Queue<a> lqK;
+  private boolean lqL;
+  private volatile boolean lqM;
+  private boolean lqN;
+  private volatile com.tencent.mm.vending.g.c lqO;
+  private AtomicBoolean lqP;
+  private MMHandler lqQ;
   
   static
   {
     AppMethodBeat.i(131832);
-    iON = new b();
+    lqJ = new b();
     AppMethodBeat.o(131832);
   }
   
   public b()
   {
     AppMethodBeat.i(131823);
-    this.iOO = new LinkedList();
-    this.iOP = false;
-    this.iOQ = false;
-    this.iOR = true;
-    this.iOS = g.ieN();
-    this.iOT = new AtomicBoolean(false);
-    this.iOU = new MMHandler("pending-stage");
+    this.lqK = new LinkedList();
+    this.lqL = false;
+    this.lqM = false;
+    this.lqN = true;
+    this.lqO = g.jJU();
+    this.lqP = new AtomicBoolean(false);
+    this.lqQ = new MMHandler("pending-stage");
     AppMethodBeat.o(131823);
   }
   
-  public static b aqa()
+  public static b aJY()
   {
-    return iON;
+    return lqJ;
   }
   
   /* Error */
-  private boolean aqf()
+  private boolean aKd()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 56	com/tencent/mm/blink/b:iOP	Z
+    //   3: getfield 56	com/tencent/mm/blink/b:lqL	Z
     //   6: ifeq +10 -> 16
     //   9: aload_0
-    //   10: getfield 60	com/tencent/mm/blink/b:iOR	Z
+    //   10: getfield 60	com/tencent/mm/blink/b:lqN	Z
     //   13: ifeq +18 -> 31
     //   16: aload_0
-    //   17: getfield 58	com/tencent/mm/blink/b:iOQ	Z
+    //   17: getfield 58	com/tencent/mm/blink/b:lqM	Z
     //   20: istore_1
     //   21: iload_1
     //   22: ifeq +9 -> 31
@@ -89,31 +89,31 @@ public final class b
     //   16	21	36	finally
   }
   
-  private void aqg()
+  private void aKe()
   {
     AppMethodBeat.i(131827);
-    a(b.iOZ);
-    aqh();
+    a(b.lqV);
+    aKf();
     AppMethodBeat.o(131827);
   }
   
-  private void aqh()
+  private void aKf()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(131828);
-        if (!aqf())
+        if (!aKd())
         {
           AppMethodBeat.o(131828);
           return;
         }
-        a locala = (a)this.iOO.poll();
+        a locala = (a)this.lqK.poll();
         if (locala != null)
         {
           Log.i("MicroMsg.FirstScreenArrangement", "FirstScreenArrangement tryConsumingWaitingQueue runnable %s, %s", new Object[] { a.a(locala), a.b(locala).getType() });
-          this.iOS.c(locala);
+          this.lqO.c(locala);
         }
         else
         {
@@ -127,16 +127,16 @@ public final class b
   public final void a(final b paramb)
   {
     AppMethodBeat.i(131829);
-    if (this.iOT.compareAndSet(false, true))
+    if (this.lqP.compareAndSet(false, true))
     {
-      if (paramb == b.iOX)
+      if (paramb == b.lqT)
       {
         Log.i("MicroMsg.FirstScreenArrangement", "initialize pending plugins from %s", new Object[] { paramb });
-        com.tencent.mm.kernel.a.c.aHV().aIa();
+        com.tencent.mm.kernel.a.c.baR().baV();
         try
         {
-          this.iOQ = true;
-          aqh();
+          this.lqM = true;
+          aKf();
           return;
         }
         finally
@@ -144,16 +144,16 @@ public final class b
           AppMethodBeat.o(131829);
         }
       }
-      h localh = new h(new com.tencent.mm.cw.d(this.iOU), "pending-stage");
+      h localh = new h(new com.tencent.mm.cp.d(this.lqQ), "pending-stage");
       try
       {
-        this.iOS.b(localh).c(new a()
+        this.lqO.b(localh).c(new a()
         {
-          private Object aqi()
+          private Object aKg()
           {
             AppMethodBeat.i(131815);
             Log.i("MicroMsg.FirstScreenArrangement", "initialize pending plugins from %s", new Object[] { paramb });
-            com.tencent.mm.kernel.a.c.aHV().aIa();
+            com.tencent.mm.kernel.a.c.baR().baV();
             try
             {
               b.a(b.this);
@@ -176,11 +176,11 @@ public final class b
     AppMethodBeat.o(131829);
   }
   
-  public final void aqb()
+  public final void aJZ()
   {
     try
     {
-      this.iOP = true;
+      this.lqL = true;
       return;
     }
     finally
@@ -190,14 +190,14 @@ public final class b
     }
   }
   
-  public final void aqc()
+  public final void aKa()
   {
     try
     {
       AppMethodBeat.i(131824);
-      this.iOR = true;
-      if (this.iOP) {
-        aqg();
+      this.lqN = true;
+      if (this.lqL) {
+        aKe();
       }
       AppMethodBeat.o(131824);
       return;
@@ -205,11 +205,11 @@ public final class b
     finally {}
   }
   
-  public final void aqd()
+  public final void aKb()
   {
     try
     {
-      this.iOR = false;
+      this.lqN = false;
       return;
     }
     finally
@@ -219,15 +219,15 @@ public final class b
     }
   }
   
-  public final void aqe()
+  public final void aKc()
   {
     try
     {
       AppMethodBeat.i(131825);
-      if (this.iOP)
+      if (this.lqL)
       {
-        this.iOP = false;
-        aqg();
+        this.lqL = false;
+        aKe();
       }
       AppMethodBeat.o(131825);
       return;
@@ -253,7 +253,7 @@ public final class b
     //   22: aload_2
     //   23: invokestatic 197	com/tencent/mm/vending/h/g:a	(Ljava/lang/String;Lcom/tencent/mm/vending/h/d;)V
     //   26: aload_0
-    //   27: invokespecial 106	com/tencent/mm/blink/b:aqf	()Z
+    //   27: invokespecial 106	com/tencent/mm/blink/b:aKd	()Z
     //   30: ifne +78 -> 108
     //   33: ldc 114
     //   35: ldc 199
@@ -262,29 +262,29 @@ public final class b
     //   41: dup
     //   42: iconst_0
     //   43: aload_0
-    //   44: getfield 56	com/tencent/mm/blink/b:iOP	Z
+    //   44: getfield 56	com/tencent/mm/blink/b:lqL	Z
     //   47: invokestatic 205	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   50: aastore
     //   51: dup
     //   52: iconst_1
     //   53: aload_0
-    //   54: getfield 60	com/tencent/mm/blink/b:iOR	Z
+    //   54: getfield 60	com/tencent/mm/blink/b:lqN	Z
     //   57: invokestatic 205	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   60: aastore
     //   61: dup
     //   62: iconst_2
     //   63: aload_0
-    //   64: getfield 58	com/tencent/mm/blink/b:iOQ	Z
+    //   64: getfield 58	com/tencent/mm/blink/b:lqM	Z
     //   67: invokestatic 205	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   70: aastore
     //   71: dup
     //   72: iconst_3
     //   73: aload_0
-    //   74: getfield 54	com/tencent/mm/blink/b:iOO	Ljava/util/Queue;
+    //   74: getfield 54	com/tencent/mm/blink/b:lqK	Ljava/util/Queue;
     //   77: aastore
     //   78: invokestatic 133	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   81: aload_0
-    //   82: getfield 54	com/tencent/mm/blink/b:iOO	Ljava/util/Queue;
+    //   82: getfield 54	com/tencent/mm/blink/b:lqK	Ljava/util/Queue;
     //   85: new 10	com/tencent/mm/blink/b$a
     //   88: dup
     //   89: aload_1
@@ -307,7 +307,7 @@ public final class b
     //   119: aastore
     //   120: invokestatic 133	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   123: aload_0
-    //   124: getfield 68	com/tencent/mm/blink/b:iOS	Lcom/tencent/mm/vending/g/c;
+    //   124: getfield 68	com/tencent/mm/blink/b:lqO	Lcom/tencent/mm/vending/g/c;
     //   127: new 10	com/tencent/mm/blink/b$a
     //   130: dup
     //   131: aload_1
@@ -347,7 +347,7 @@ public final class b
       this.mScheduler = paramd;
     }
     
-    public final String aqj()
+    public final String aKh()
     {
       AppMethodBeat.i(131819);
       if ((this.mScheduler instanceof com.tencent.mm.vending.h.c))
@@ -430,10 +430,10 @@ public final class b
     static
     {
       AppMethodBeat.i(131822);
-      iOX = new b("Now", 0);
-      iOY = new b("Timeout", 1);
-      iOZ = new b("FirstScreen", 2);
-      iPa = new b[] { iOX, iOY, iOZ };
+      lqT = new b("Now", 0);
+      lqU = new b("Timeout", 1);
+      lqV = new b("FirstScreen", 2);
+      lqW = new b[] { lqT, lqU, lqV };
       AppMethodBeat.o(131822);
     }
     
@@ -442,7 +442,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.blink.b
  * JD-Core Version:    0.7.0.1
  */

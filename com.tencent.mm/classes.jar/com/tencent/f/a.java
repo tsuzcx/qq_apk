@@ -6,32 +6,32 @@ import java.util.HashMap;
 public final class a
   implements com.tencent.f.b.a
 {
-  private g ZQt;
-  private boolean aji = true;
+  private boolean Nl = true;
+  private g ahUR;
   
   protected a(g paramg)
   {
-    this.ZQt = paramg;
+    this.ahUR = paramg;
   }
   
-  public final void F(String paramString, Object paramObject)
+  public final void W(String paramString, Object paramObject)
   {
     AppMethodBeat.i(62811);
-    if (!this.aji)
+    if (!this.Nl)
     {
       AppMethodBeat.o(62811);
       return;
     }
-    f localf = f.itv();
+    f localf = f.kcN();
     if (paramObject == null)
     {
       paramString = new h("TpfServiceCenter|registerService|name or service should not be null");
       AppMethodBeat.o(62811);
       throw paramString;
     }
-    synchronized (localf.ZQz)
+    synchronized (localf.ahUX)
     {
-      localf.ZQx.put(paramString, paramObject);
+      localf.ahUV.put(paramString, paramObject);
       AppMethodBeat.o(62811);
       return;
     }
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.f.a
  * JD-Core Version:    0.7.0.1
  */

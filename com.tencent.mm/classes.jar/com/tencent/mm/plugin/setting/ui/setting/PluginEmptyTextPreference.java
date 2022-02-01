@@ -14,22 +14,22 @@ public final class PluginEmptyTextPreference
   extends Preference
 {
   private Context context;
-  private TextView jiw;
+  private TextView lKQ;
   private String text;
   
   public PluginEmptyTextPreference(Context paramContext, int paramInt)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(263852);
+    AppMethodBeat.i(298890);
     this.text = paramContext.getString(paramInt);
-    AppMethodBeat.o(263852);
+    AppMethodBeat.o(298890);
   }
   
   public PluginEmptyTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73907);
-    this.jiw = null;
+    this.lKQ = null;
     this.context = paramContext;
     setLayoutResource(b.g.plugin_text2_preference);
     AppMethodBeat.o(73907);
@@ -39,8 +39,8 @@ public final class PluginEmptyTextPreference
   {
     AppMethodBeat.i(73909);
     super.onBindView(paramView);
-    this.jiw = ((TextView)paramView.findViewById(b.f.empty_tv));
-    this.jiw.setText(this.text);
+    this.lKQ = ((TextView)paramView.findViewById(b.f.empty_tv));
+    this.lKQ.setText(this.text);
     AppMethodBeat.o(73909);
   }
   

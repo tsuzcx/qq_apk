@@ -2,13 +2,9 @@ package androidx.appcompat.widget;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Paint.FontMetricsInt;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.text.TextDirectionHeuristic;
-import android.text.TextDirectionHeuristics;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.ActionMode.Callback;
 import android.view.inputmethod.EditorInfo;
@@ -16,20 +12,20 @@ import android.view.inputmethod.InputConnection;
 import android.widget.TextView;
 import androidx.core.e.c;
 import androidx.core.e.c.a;
-import androidx.core.g.u;
+import androidx.core.g.x;
 import androidx.core.widget.b;
-import androidx.core.widget.i;
+import androidx.core.widget.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class AppCompatTextView
   extends TextView
-  implements u, b
+  implements x, b
 {
   private final d mBackgroundTintHelper;
   private final k mTextHelper;
-  private Future<c> rG;
+  private Future<c> sF;
   
   public AppCompatTextView(Context paramContext)
   {
@@ -44,30 +40,30 @@ public class AppCompatTextView
   public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(z.L(paramContext), paramAttributeSet, paramInt);
-    AppMethodBeat.i(241089);
+    AppMethodBeat.i(199397);
     this.mBackgroundTintHelper = new d(this);
     this.mBackgroundTintHelper.a(paramAttributeSet, paramInt);
     this.mTextHelper = new k(this);
     this.mTextHelper.a(paramAttributeSet, paramInt);
-    this.mTextHelper.du();
-    AppMethodBeat.o(241089);
+    this.mTextHelper.et();
+    AppMethodBeat.o(199397);
   }
   
-  private void dw()
+  private void ev()
   {
-    AppMethodBeat.i(241128);
-    if (this.rG != null) {}
+    AppMethodBeat.i(199407);
+    if (this.sF != null) {}
     try
     {
-      Future localFuture = this.rG;
-      this.rG = null;
-      i.a(this, (c)localFuture.get());
-      AppMethodBeat.o(241128);
+      Future localFuture = this.sF;
+      this.sF = null;
+      j.a(this, (c)localFuture.get());
+      AppMethodBeat.o(199407);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(241128);
+      AppMethodBeat.o(199407);
       return;
     }
     catch (ExecutionException localExecutionException)
@@ -79,435 +75,388 @@ public class AppCompatTextView
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(241100);
+    AppMethodBeat.i(199476);
     super.drawableStateChanged();
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dm();
+      this.mBackgroundTintHelper.el();
     }
     if (this.mTextHelper != null) {
-      this.mTextHelper.du();
+      this.mTextHelper.et();
     }
-    AppMethodBeat.o(241100);
+    AppMethodBeat.o(199476);
   }
   
   public int getAutoSizeMaxTextSize()
   {
-    AppMethodBeat.i(241111);
+    AppMethodBeat.i(199583);
     int i;
-    if (PX)
+    if (bwp)
     {
       i = super.getAutoSizeMaxTextSize();
-      AppMethodBeat.o(241111);
+      AppMethodBeat.o(199583);
       return i;
     }
     if (this.mTextHelper != null)
     {
-      i = Math.round(this.mTextHelper.rB.rN);
-      AppMethodBeat.o(241111);
+      i = Math.round(this.mTextHelper.sA.sM);
+      AppMethodBeat.o(199583);
       return i;
     }
-    AppMethodBeat.o(241111);
+    AppMethodBeat.o(199583);
     return -1;
   }
   
   public int getAutoSizeMinTextSize()
   {
-    AppMethodBeat.i(241110);
+    AppMethodBeat.i(199572);
     int i;
-    if (PX)
+    if (bwp)
     {
       i = super.getAutoSizeMinTextSize();
-      AppMethodBeat.o(241110);
+      AppMethodBeat.o(199572);
       return i;
     }
     if (this.mTextHelper != null)
     {
-      i = Math.round(this.mTextHelper.rB.rM);
-      AppMethodBeat.o(241110);
+      i = Math.round(this.mTextHelper.sA.sL);
+      AppMethodBeat.o(199572);
       return i;
     }
-    AppMethodBeat.o(241110);
+    AppMethodBeat.o(199572);
     return -1;
   }
   
   public int getAutoSizeStepGranularity()
   {
-    AppMethodBeat.i(241109);
+    AppMethodBeat.i(199563);
     int i;
-    if (PX)
+    if (bwp)
     {
       i = super.getAutoSizeStepGranularity();
-      AppMethodBeat.o(241109);
+      AppMethodBeat.o(199563);
       return i;
     }
     if (this.mTextHelper != null)
     {
-      i = Math.round(this.mTextHelper.rB.rL);
-      AppMethodBeat.o(241109);
+      i = Math.round(this.mTextHelper.sA.sK);
+      AppMethodBeat.o(199563);
       return i;
     }
-    AppMethodBeat.o(241109);
+    AppMethodBeat.o(199563);
     return -1;
   }
   
   public int[] getAutoSizeTextAvailableSizes()
   {
-    AppMethodBeat.i(241113);
+    AppMethodBeat.i(199591);
     int[] arrayOfInt;
-    if (PX)
+    if (bwp)
     {
       arrayOfInt = super.getAutoSizeTextAvailableSizes();
-      AppMethodBeat.o(241113);
+      AppMethodBeat.o(199591);
       return arrayOfInt;
     }
     if (this.mTextHelper != null)
     {
-      arrayOfInt = this.mTextHelper.rB.rO;
-      AppMethodBeat.o(241113);
+      arrayOfInt = this.mTextHelper.sA.sN;
+      AppMethodBeat.o(199591);
       return arrayOfInt;
     }
-    AppMethodBeat.o(241113);
+    AppMethodBeat.o(199591);
     return new int[0];
   }
   
   public int getAutoSizeTextType()
   {
-    AppMethodBeat.i(241107);
-    if (PX)
+    AppMethodBeat.i(199552);
+    if (bwp)
     {
       if (super.getAutoSizeTextType() == 1)
       {
-        AppMethodBeat.o(241107);
+        AppMethodBeat.o(199552);
         return 1;
       }
-      AppMethodBeat.o(241107);
+      AppMethodBeat.o(199552);
       return 0;
     }
     if (this.mTextHelper != null)
     {
-      int i = this.mTextHelper.rB.rJ;
-      AppMethodBeat.o(241107);
+      int i = this.mTextHelper.sA.sI;
+      AppMethodBeat.o(199552);
       return i;
     }
-    AppMethodBeat.o(241107);
+    AppMethodBeat.o(199552);
     return 0;
   }
   
   public int getFirstBaselineToTopHeight()
   {
-    AppMethodBeat.i(241118);
-    int i = getPaddingTop();
-    int j = getPaint().getFontMetricsInt().top;
-    AppMethodBeat.o(241118);
-    return i - j;
+    AppMethodBeat.i(199632);
+    int i = j.d(this);
+    AppMethodBeat.o(199632);
+    return i;
   }
   
   public int getLastBaselineToBottomHeight()
   {
-    AppMethodBeat.i(241120);
-    int i = getPaddingBottom();
-    int j = getPaint().getFontMetricsInt().bottom;
-    AppMethodBeat.o(241120);
-    return i + j;
+    AppMethodBeat.i(199642);
+    int i = j.e(this);
+    AppMethodBeat.o(199642);
+    return i;
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    AppMethodBeat.i(241094);
+    AppMethodBeat.i(199437);
     if (this.mBackgroundTintHelper != null)
     {
       ColorStateList localColorStateList = this.mBackgroundTintHelper.getSupportBackgroundTintList();
-      AppMethodBeat.o(241094);
+      AppMethodBeat.o(199437);
       return localColorStateList;
     }
-    AppMethodBeat.o(241094);
+    AppMethodBeat.o(199437);
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    AppMethodBeat.i(241098);
+    AppMethodBeat.i(199456);
     if (this.mBackgroundTintHelper != null)
     {
       PorterDuff.Mode localMode = this.mBackgroundTintHelper.getSupportBackgroundTintMode();
-      AppMethodBeat.o(241098);
+      AppMethodBeat.o(199456);
       return localMode;
     }
-    AppMethodBeat.o(241098);
+    AppMethodBeat.o(199456);
     return null;
   }
   
   public CharSequence getText()
   {
-    AppMethodBeat.i(241130);
-    dw();
+    AppMethodBeat.i(199696);
+    ev();
     CharSequence localCharSequence = super.getText();
-    AppMethodBeat.o(241130);
+    AppMethodBeat.o(199696);
     return localCharSequence;
   }
   
   public c.a getTextMetricsParamsCompat()
   {
-    AppMethodBeat.i(241124);
-    c.a locala = i.d(this);
-    AppMethodBeat.o(241124);
+    AppMethodBeat.i(199668);
+    c.a locala = j.f(this);
+    AppMethodBeat.o(199668);
     return locala;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    AppMethodBeat.i(241115);
+    AppMethodBeat.i(199604);
     paramEditorInfo = g.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
-    AppMethodBeat.o(241115);
+    AppMethodBeat.o(199604);
     return paramEditorInfo;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(241101);
+    AppMethodBeat.i(199487);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.mTextHelper != null) {
-      this.mTextHelper.dv();
+      this.mTextHelper.eu();
     }
-    AppMethodBeat.o(241101);
+    AppMethodBeat.o(199487);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241133);
-    dw();
+    AppMethodBeat.i(199712);
+    ev();
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(241133);
+    AppMethodBeat.o(199712);
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(241103);
+    AppMethodBeat.i(199510);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if ((this.mTextHelper != null) && (!PX) && (this.mTextHelper.rB.dB())) {
-      this.mTextHelper.rB.dz();
+    if ((this.mTextHelper != null) && (!bwp) && (this.mTextHelper.sA.eA())) {
+      this.mTextHelper.sA.ey();
     }
-    AppMethodBeat.o(241103);
+    AppMethodBeat.o(199510);
   }
   
   public void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(241105);
-    if (PX)
+    AppMethodBeat.i(199533);
+    if (bwp)
     {
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(241105);
+      AppMethodBeat.o(199533);
       return;
     }
     if (this.mTextHelper != null) {
       this.mTextHelper.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    AppMethodBeat.o(241105);
+    AppMethodBeat.o(199533);
   }
   
   public void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    AppMethodBeat.i(241106);
-    if (PX)
+    AppMethodBeat.i(199542);
+    if (bwp)
     {
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
-      AppMethodBeat.o(241106);
+      AppMethodBeat.o(199542);
       return;
     }
     if (this.mTextHelper != null) {
       this.mTextHelper.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
     }
-    AppMethodBeat.o(241106);
+    AppMethodBeat.o(199542);
   }
   
   public void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    AppMethodBeat.i(241104);
-    if (PX)
+    AppMethodBeat.i(199522);
+    if (bwp)
     {
       super.setAutoSizeTextTypeWithDefaults(paramInt);
-      AppMethodBeat.o(241104);
+      AppMethodBeat.o(199522);
       return;
     }
     if (this.mTextHelper != null) {
       this.mTextHelper.setAutoSizeTextTypeWithDefaults(paramInt);
     }
-    AppMethodBeat.o(241104);
+    AppMethodBeat.o(199522);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(241091);
+    AppMethodBeat.i(199421);
     super.setBackgroundDrawable(paramDrawable);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dl();
+      this.mBackgroundTintHelper.ek();
     }
-    AppMethodBeat.o(241091);
+    AppMethodBeat.o(199421);
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(241090);
+    AppMethodBeat.i(199414);
     super.setBackgroundResource(paramInt);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.ar(paramInt);
+      this.mBackgroundTintHelper.ap(paramInt);
     }
-    AppMethodBeat.o(241090);
+    AppMethodBeat.o(199414);
   }
   
   public void setCustomSelectionActionModeCallback(ActionMode.Callback paramCallback)
   {
-    AppMethodBeat.i(241123);
-    super.setCustomSelectionActionModeCallback(i.a(this, paramCallback));
-    AppMethodBeat.o(241123);
+    AppMethodBeat.i(199662);
+    super.setCustomSelectionActionModeCallback(j.a(this, paramCallback));
+    AppMethodBeat.o(199662);
   }
   
   public void setFirstBaselineToTopHeight(int paramInt)
   {
-    AppMethodBeat.i(241116);
+    AppMethodBeat.i(199615);
     if (Build.VERSION.SDK_INT >= 28)
     {
       super.setFirstBaselineToTopHeight(paramInt);
-      AppMethodBeat.o(241116);
+      AppMethodBeat.o(199615);
       return;
     }
-    i.b(this, paramInt);
-    AppMethodBeat.o(241116);
+    j.c(this, paramInt);
+    AppMethodBeat.o(199615);
   }
   
   public void setLastBaselineToBottomHeight(int paramInt)
   {
-    AppMethodBeat.i(241117);
+    AppMethodBeat.i(199625);
     if (Build.VERSION.SDK_INT >= 28)
     {
       super.setLastBaselineToBottomHeight(paramInt);
-      AppMethodBeat.o(241117);
+      AppMethodBeat.o(199625);
       return;
     }
-    i.c(this, paramInt);
-    AppMethodBeat.o(241117);
+    j.d(this, paramInt);
+    AppMethodBeat.o(199625);
   }
   
   public void setLineHeight(int paramInt)
   {
-    AppMethodBeat.i(241121);
-    i.d(this, paramInt);
-    AppMethodBeat.o(241121);
+    AppMethodBeat.i(199651);
+    j.e(this, paramInt);
+    AppMethodBeat.o(199651);
   }
   
   public void setPrecomputedText(c paramc)
   {
-    AppMethodBeat.i(241126);
-    i.a(this, paramc);
-    AppMethodBeat.o(241126);
+    AppMethodBeat.i(199685);
+    j.a(this, paramc);
+    AppMethodBeat.o(199685);
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(241093);
+    AppMethodBeat.i(199429);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
     }
-    AppMethodBeat.o(241093);
+    AppMethodBeat.o(199429);
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(241096);
+    AppMethodBeat.i(199447);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
     }
-    AppMethodBeat.o(241096);
+    AppMethodBeat.o(199447);
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(241099);
+    AppMethodBeat.i(199466);
     super.setTextAppearance(paramContext, paramInt);
     if (this.mTextHelper != null) {
       this.mTextHelper.s(paramContext, paramInt);
     }
-    AppMethodBeat.o(241099);
+    AppMethodBeat.o(199466);
   }
   
   public void setTextFuture(Future<c> paramFuture)
   {
-    AppMethodBeat.i(241132);
-    this.rG = paramFuture;
+    AppMethodBeat.i(199706);
+    this.sF = paramFuture;
     requestLayout();
-    AppMethodBeat.o(241132);
+    AppMethodBeat.o(199706);
   }
   
   public void setTextMetricsParamsCompat(c.a parama)
   {
-    AppMethodBeat.i(241125);
-    TextDirectionHeuristic localTextDirectionHeuristic;
-    int i;
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      localTextDirectionHeuristic = parama.Mg;
-      if ((localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) || (localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR)) {
-        break label175;
-      }
-      if (localTextDirectionHeuristic != TextDirectionHeuristics.ANYRTL_LTR) {
-        break label108;
-      }
-      i = 2;
-    }
-    label175:
-    for (;;)
-    {
-      setTextDirection(i);
-      if (Build.VERSION.SDK_INT >= 23) {
-        break;
-      }
-      float f = parama.Mf.getTextScaleX();
-      getPaint().set(parama.Mf);
-      if (f == getTextScaleX()) {
-        setTextScaleX(f / 2.0F + 1.0F);
-      }
-      setTextScaleX(f);
-      AppMethodBeat.o(241125);
-      return;
-      label108:
-      if (localTextDirectionHeuristic == TextDirectionHeuristics.LTR) {
-        i = 3;
-      } else if (localTextDirectionHeuristic == TextDirectionHeuristics.RTL) {
-        i = 4;
-      } else if (localTextDirectionHeuristic == TextDirectionHeuristics.LOCALE) {
-        i = 5;
-      } else if (localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR) {
-        i = 6;
-      } else if (localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) {
-        i = 7;
-      } else {
-        i = 1;
-      }
-    }
-    getPaint().set(parama.Mf);
-    setBreakStrategy(parama.Mh);
-    setHyphenationFrequency(parama.Mi);
-    AppMethodBeat.o(241125);
+    AppMethodBeat.i(199678);
+    j.a(this, parama);
+    AppMethodBeat.o(199678);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(241102);
-    if (PX)
+    AppMethodBeat.i(199497);
+    if (bwp)
     {
       super.setTextSize(paramInt, paramFloat);
-      AppMethodBeat.o(241102);
+      AppMethodBeat.o(199497);
       return;
     }
     if (this.mTextHelper != null) {
       this.mTextHelper.setTextSize(paramInt, paramFloat);
     }
-    AppMethodBeat.o(241102);
+    AppMethodBeat.o(199497);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.AppCompatTextView
  * JD-Core Version:    0.7.0.1
  */

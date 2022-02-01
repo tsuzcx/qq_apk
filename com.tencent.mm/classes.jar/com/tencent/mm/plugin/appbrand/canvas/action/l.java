@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.a.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
@@ -18,12 +18,12 @@ public final class l
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(144897);
-    Paint.FontMetrics localFontMetrics = paramd.nTw.getFontMetrics();
+    Paint.FontMetrics localFontMetrics = paramd.qTi.getFontMetrics();
     float f;
-    if (paramd.nTw.nUt == a.a.nUA)
+    if (paramd.qTi.qUd == a.a.qUk)
     {
       f = paramFloat2 + Math.abs(localFontMetrics.ascent);
-      paramd = paramd.nTx;
+      paramd = paramd.qTj;
       paramFloat2 = paramd.measureText(paramString);
       if ((paramFloat3 <= 0.0F) || (paramFloat3 >= paramFloat2)) {
         break label189;
@@ -39,13 +39,13 @@ public final class l
     {
       AppMethodBeat.o(144897);
       return true;
-      if (paramd.nTw.nUt == a.a.nUC)
+      if (paramd.qTi.qUd == a.a.qUm)
       {
         f = paramFloat2 + Math.abs((-localFontMetrics.ascent + localFontMetrics.descent) / 2.0F - localFontMetrics.descent);
         break;
       }
       f = paramFloat2;
-      if (paramd.nTw.nUt != a.a.nUB) {
+      if (paramd.qTi.qUd != a.a.qUl) {
         break;
       }
       f = paramFloat2 - Math.abs(localFontMetrics.descent);
@@ -77,12 +77,12 @@ public final class l
       AppMethodBeat.o(144896);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, paramJSONArray.optString(0), g.f(paramJSONArray, 1), g.f(paramJSONArray, 2), g.f(paramJSONArray, 3));
+    boolean bool = a(paramd, paramCanvas, paramJSONArray.optString(0), i.f(paramJSONArray, 1), i.f(paramJSONArray, 2), i.f(paramJSONArray, 3));
     AppMethodBeat.o(144896);
     return bool;
   }
   
-  public final BaseDrawActionArg bKy()
+  public final BaseDrawActionArg cjY()
   {
     AppMethodBeat.i(144895);
     DrawTextActionArg localDrawTextActionArg = new DrawTextActionArg();
@@ -97,7 +97,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.l
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,30 @@ import java.util.Map;
 public abstract class h
   implements TencentLocationListener
 {
-  private final Map<String, Integer> lMi = new HashMap();
+  private final Map<String, Integer> oEO = new HashMap();
   
   public h()
   {
-    this.lMi.put("gps", Integer.valueOf(0));
-    this.lMi.put("network", Integer.valueOf(1));
+    this.oEO.put("gps", Integer.valueOf(0));
+    this.oEO.put("network", Integer.valueOf(1));
   }
   
   public void a(boolean paramBoolean, double paramDouble1, double paramDouble2, int paramInt1, double paramDouble3, double paramDouble4, double paramDouble5, String paramString1, String paramString2, int paramInt2) {}
   
   public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
   {
+    if (paramTencentLocation == null)
+    {
+      a(false, 0.0D, 0.0D, 0, 0.0D, 0.0D, 0.0D, null, null, 0);
+      return;
+    }
     Log.i("MicroMsg.SLocationListenerWgs84", "lat=%f, lng=%f, accuracy=%f errcode=%d, areastat=%d, speed=%f, bearing=%f, reason=%s, provider=%s", new Object[] { Double.valueOf(paramTencentLocation.getLatitude()), Double.valueOf(paramTencentLocation.getLongitude()), Float.valueOf(paramTencentLocation.getAccuracy()), Integer.valueOf(paramInt), paramTencentLocation.getAreaStat(), Float.valueOf(paramTencentLocation.getSpeed()), Float.valueOf(paramTencentLocation.getBearing()), paramString, paramTencentLocation.getProvider() });
     if (paramInt == 0)
     {
-      a(true, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.lMi.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
+      a(true, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.oEO.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
       return;
     }
-    a(false, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.lMi.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
+    a(false, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.oEO.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
   }
   
   public void onStatusUpdate(String paramString1, int paramInt, String paramString2)

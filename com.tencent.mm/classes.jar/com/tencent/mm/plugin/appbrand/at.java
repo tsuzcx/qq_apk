@@ -1,49 +1,21 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/PreRenderIDKeyReport;", "", "()V", "ID", "", "KEY_TASK_COMPLETE", "KEY_TASK_FAIL_ALREADY_ALIVE", "KEY_TASK_FAIL_BIND_REMOTE_SERVICE_FAIL", "KEY_TASK_FAIL_CREATE_RUNTIME_FAILED", "KEY_TASK_FAIL_GET_ATTRS_FAIL", "KEY_TASK_FAIL_INVALID_PARAMS", "KEY_TASK_FAIL_REMOTE_SERVICE_DIED", "KEY_TASK_FAIL_RESOURCE_PREPARE_FAIL", "KEY_TASK_FAIL_UNSUPPORTED", "KEY_TASK_START", "codeToKey", "code", "plugin-appbrand-integration_release"})
 public final class at
 {
-  public static final at nyS;
+  private static volatile Boolean qxV = null;
   
-  static
+  public static boolean cdw()
   {
-    AppMethodBeat.i(271343);
-    nyS = new at();
-    AppMethodBeat.o(271343);
-  }
-  
-  public static int yO(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 10000;
-    case 0: 
-      return 1;
-    case -1: 
-      return 2;
-    case -2: 
-      return 3;
-    case -3: 
-      return 4;
-    case -4: 
-      return 5;
-    case -5: 
-      return 6;
-    case -6: 
-      return 7;
-    case -7: 
-      return 8;
-    }
-    return 9;
+    AppMethodBeat.i(43978);
+    AppMethodBeat.o(43978);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.at
  * JD-Core Version:    0.7.0.1
  */

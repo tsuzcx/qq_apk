@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/jz4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/b3o" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" app:layout_constraintBottom_toTopOf="@id/bei" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/bei" android:background="@drawable/a_h" android:layout_width="fill_parent" android:layout_height="@dimen/a4x" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_bias="1.0">
-        <TextView android:textSize="17.0dip" android:textColor="@color/am" android:gravity="center" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/cl" android:layout_marginRight="@dimen/ci" android:text="@string/jcm" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/bmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/ci" android:text="@string/jck" android:layout_below="@id/ipm" android:layout_centerHorizontal="true" />
-        <RelativeLayout android:id="@id/jsw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cr" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-            <Button android:textSize="17.0dip" android:textColor="@color/am" android:id="@id/jtt" android:background="@drawable/cup" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:text="@string/jcj" />
-            <Button android:textSize="17.0dip" android:textColor="@color/am" android:id="@id/jzr" android:background="@drawable/a01" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:layout_marginLeft="@dimen/cb" android:text="@string/jcl" android:layout_toRightOf="@id/jtt" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/az8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:paddingBottom="12.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
+        <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/cgp" />
         </RelativeLayout>
-    </com.tencent.mm.live.view.LiveBottomSheetPanel>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c9a" />
+</LinearLayout>

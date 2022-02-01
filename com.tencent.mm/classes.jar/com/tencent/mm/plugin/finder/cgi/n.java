@@ -1,59 +1,72 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.asv;
-import com.tencent.mm.protocal.protobuf.asw;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.finder.report.z;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.axh;
+import com.tencent.mm.protocal.protobuf.axi;
+import com.tencent.mm.protocal.protobuf.bui;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.r;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFileDump;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderFileDumpResponse;", "clientId", "", "remoteUrl", "appId", "paramsJson", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "TAG", "getAppId", "()Ljava/lang/String;", "getClientId", "getParamsJson", "getRemoteUrl", "request", "Lcom/tencent/mm/protocal/protobuf/FinderFileDumpRequest;", "initCommReqResp", "", "onCgiBack", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFeedBack;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderFeedbackResponse;", "feedId", "", "objectNonceId", "", "feedbackType", "", "subType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;IILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class n
-  extends c<asw>
+  extends c<axi>
 {
-  private final String TAG;
-  private final String appId;
-  private final String clientId;
-  private asv xaK;
-  private final String xaL;
-  private final String xaM;
+  public static final a AyR;
   
-  public n(String paramString1, String paramString2, String paramString3, String paramString4)
+  static
   {
-    AppMethodBeat.i(275839);
-    this.clientId = paramString1;
-    this.xaL = paramString2;
-    this.appId = paramString3;
-    this.xaM = paramString4;
-    this.TAG = "Finder.CgiFinderFileDump";
-    paramString1 = new asv();
-    paramString1.username = z.bdh();
-    paramString1.clientId = this.clientId;
-    paramString1.url = this.xaL;
-    paramString1.SFX = this.appId;
-    paramString1.SFY = this.xaM;
-    this.xaK = paramString1;
-    Log.i(this.TAG, "CgiFinderFileDump clientId:" + this.clientId);
-    paramString1 = new d.a();
-    paramString1.c((a)this.xaK);
-    paramString2 = new asw();
-    paramString2.setBaseResponse(new jh());
-    paramString2.getBaseResponse().Tef = new eaf();
-    paramString1.d((a)paramString2);
-    paramString1.TW("/cgi-bin/micromsg-bin/finderfiledump");
-    paramString1.vD(4659);
-    c(paramString1.bgN());
-    AppMethodBeat.o(275839);
+    AppMethodBeat.i(165162);
+    AyR = new a((byte)0);
+    AppMethodBeat.o(165162);
   }
+  
+  public n(long paramLong, String paramString, bui parambui)
+  {
+    super(parambui);
+    AppMethodBeat.i(336450);
+    c.a locala = new c.a();
+    axh localaxh = new axh();
+    localaxh.id = paramLong;
+    localaxh.objectNonceId = paramString;
+    localaxh.ZIu = 1;
+    localaxh.ZIv = 2;
+    paramString = bi.ABn;
+    localaxh.CJv = bi.a(parambui);
+    if (parambui == null) {}
+    for (int i = 0;; i = parambui.AJo)
+    {
+      paramString = z.FrZ;
+      localaxh.sessionBuffer = z.p(paramLong, i);
+      paramString = bi.ABn;
+      bi.a(localaxh.CJv, p.listOf(new r(Integer.valueOf(i), Long.valueOf(paramLong))));
+      locala.otE = ((a)localaxh);
+      paramString = new axi();
+      paramString.setBaseResponse(new kd());
+      paramString.getBaseResponse().akjO = new etl();
+      locala.otF = ((a)paramString);
+      locala.uri = "/cgi-bin/micromsg-bin/finderfeedback";
+      locala.funcId = 3912;
+      c(locala.bEF());
+      Log.i("CgiFinderFeedBack", "[CgiFinderFeedBack] feedId=" + paramLong + " feedbackType=1 subType=2");
+      AppMethodBeat.o(336450);
+      return;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderFeedBack$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cr"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/arh" android:background="@color/ac_" android:focusable="false" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@drawable/bca" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/a4u" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb">
-        <TextView android:textSize="@dimen/l" android:textColor="@color/l4" android:id="@id/ars" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/huf" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0" android:layout_toLeftOf="@id/ars" android:layout_centerVertical="true" xmlns:app="http://schemas.android.com/apk/res-auto">
-            <TableRow>
-                <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/arp" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:includeFontPadding="false" />
-                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center_vertical" android:id="@id/arr" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ct" android:includeFontPadding="false" />
-            </TableRow>
-        </TableLayout>
-    </RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar android:id="@id/l7z" android:background="@color/ahb" android:layout_width="fill_parent" android:layout_height="@dimen/avr" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginTop="12.0dip">
+        <Button android:textSize="@dimen/l" android:textColor="@color/c8" android:gravity="center" android:id="@id/cb8" android:background="@android:color/transparent" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/we" android:layout_marginStart="32.0dip" />
+        <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <Button android:textSize="@dimen/l" android:textColor="@color/al4" android:gravity="center" android:id="@id/cbb" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/z9" android:layout_marginEnd="32.0dip" style="@style/oi" />
+    </LinearLayout>
 </LinearLayout>

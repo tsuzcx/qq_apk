@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <com.tencent.mm.plugin.profile.ui.NormalProfileHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/xx" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:key="room_name" android:layout="@layout/b8j" android:title="@string/am0" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_signature" android:layout="@layout/bdi" android:title="@string/br0" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:key="room_placed_to_the_top" android:layout="@layout/b8j" android:title="@string/am1" />
-    <CheckBoxPreference android:key="room_notify_new_msg" android:layout="@layout/b8j" android:title="@string/alz" />
-    <CheckBoxPreference android:key="room_save_to_contact" android:layout="@layout/b8j" android:title="@string/ajw" />
-    <PreferenceSmallCategory />
-    <Preference android:key="room_del_quit" android:layout="@layout/b2o" android:title="@string/aly" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/bqh" android:key="contact_profile_say_hi" android:layout="@layout/bdi" android:title_color="@color/aks" />
     <PreferenceCategory />
+    <com.tencent.mm.plugin.profile.ui.MultiButtonPreference android:key="contact_profile_multi_button" />
 </PreferenceScreen>

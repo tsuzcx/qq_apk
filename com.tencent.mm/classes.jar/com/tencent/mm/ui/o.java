@@ -2,25 +2,23 @@ package com.tencent.mm.ui;
 
 public abstract interface o
 {
-  public abstract void gkE();
+  public abstract void jjf();
   
-  public abstract void gkF();
+  public abstract void jjg();
   
-  public abstract void hFi();
+  public abstract void jjh();
   
-  public abstract void hFj();
+  public abstract void jji();
   
-  public abstract void hFk();
+  public abstract void jjj();
   
-  public abstract void hFl();
+  public abstract void jjk();
   
-  public abstract void hFm();
-  
-  public abstract void hFo();
+  public abstract void jjl();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.o
  * JD-Core Version:    0.7.0.1
  */

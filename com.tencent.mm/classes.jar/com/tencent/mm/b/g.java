@@ -1,12 +1,12 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.InputStream;
 import java.security.MessageDigest;
 
 public final class g
 {
-  public static final byte[] V(byte[] paramArrayOfByte)
+  public static final byte[] U(byte[] paramArrayOfByte)
   {
     try
     {
@@ -20,7 +20,7 @@ public final class g
   }
   
   /* Error */
-  public static String a(q paramq, int paramInt)
+  public static String a(u paramu, int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -28,21 +28,21 @@ public final class g
     //   4: iload_1
     //   5: ifle +10 -> 15
     //   8: aload_0
-    //   9: invokevirtual 35	com/tencent/mm/vfs/q:ifE	()Z
+    //   9: invokevirtual 35	com/tencent/mm/vfs/u:jKS	()Z
     //   12: ifne +7 -> 19
     //   15: aconst_null
     //   16: astore_0
     //   17: aload_0
     //   18: areturn
     //   19: aload_0
-    //   20: invokestatic 41	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   20: invokestatic 41	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   23: astore 4
     //   25: iload_1
     //   26: i2l
     //   27: lstore_2
     //   28: lload_2
     //   29: aload_0
-    //   30: invokevirtual 45	com/tencent/mm/vfs/q:length	()J
+    //   30: invokevirtual 45	com/tencent/mm/vfs/u:length	()J
     //   33: lcmp
     //   34: ifgt +40 -> 74
     //   37: iload_1
@@ -51,7 +51,7 @@ public final class g
     //   40: aload 4
     //   42: lload_2
     //   43: l2i
-    //   44: invokestatic 49	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   44: invokestatic 49	com/tencent/mm/b/g:e	(Ljava/io/InputStream;I)Ljava/lang/String;
     //   47: astore 5
     //   49: aload 4
     //   51: invokevirtual 55	java/io/InputStream:close	()V
@@ -67,7 +67,7 @@ public final class g
     //   71: aload 5
     //   73: areturn
     //   74: aload_0
-    //   75: invokevirtual 45	com/tencent/mm/vfs/q:length	()J
+    //   75: invokevirtual 45	com/tencent/mm/vfs/u:length	()J
     //   78: lstore_2
     //   79: goto -39 -> 40
     //   82: astore_0
@@ -100,7 +100,7 @@ public final class g
     //   128: goto -43 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	131	0	paramq	q
+    //   0	131	0	paramu	u
     //   0	131	1	paramInt	int
     //   27	52	2	l	long
     //   23	82	4	localInputStream	InputStream
@@ -121,27 +121,22 @@ public final class g
     //   74	79	124	java/lang/Exception
   }
   
-  public static final String a(InputStream paramInputStream, int paramInt1, int paramInt2)
-  {
-    return b(paramInputStream, 0, 256);
-  }
-  
   /* Error */
-  private static String b(q paramq)
+  private static String b(u paramu)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 35	com/tencent/mm/vfs/q:ifE	()Z
+    //   1: invokevirtual 35	com/tencent/mm/vfs/u:jKS	()Z
     //   4: ifne +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: invokestatic 41	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
+    //   10: invokestatic 41	com/tencent/mm/vfs/y:ao	(Lcom/tencent/mm/vfs/u;)Ljava/io/InputStream;
     //   13: astore_0
     //   14: aload_0
     //   15: iconst_0
     //   16: sipush 256
-    //   19: invokestatic 61	com/tencent/mm/b/g:a	(Ljava/io/InputStream;II)Ljava/lang/String;
+    //   19: invokestatic 60	com/tencent/mm/b/g:b	(Ljava/io/InputStream;II)Ljava/lang/String;
     //   22: astore_1
     //   23: aload_0
     //   24: invokevirtual 55	java/io/InputStream:close	()V
@@ -182,7 +177,7 @@ public final class g
     //   79: goto -39 -> 40
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	82	0	paramq	q
+    //   0	82	0	paramu	u
     //   22	14	1	str	String
     //   53	12	1	localObject1	Object
     //   74	1	1	localObject2	Object
@@ -198,40 +193,12 @@ public final class g
     //   14	27	78	java/lang/Exception
   }
   
-  public static final String b(InputStream paramInputStream, int paramInt)
+  public static final String b(InputStream paramInputStream, int paramInt1, int paramInt2)
   {
-    int i = 0;
-    if ((paramInputStream == null) || (paramInt <= 0)) {
-      return null;
-    }
-    try
-    {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      StringBuilder localStringBuilder = new StringBuilder(32);
-      byte[] arrayOfByte = new byte[paramInt];
-      for (;;)
-      {
-        paramInt = paramInputStream.read(arrayOfByte);
-        if (paramInt == -1) {
-          break;
-        }
-        localMessageDigest.update(arrayOfByte, 0, paramInt);
-      }
-      paramInputStream = localMessageDigest.digest();
-      paramInt = i;
-      while (paramInt < paramInputStream.length)
-      {
-        localStringBuilder.append(Integer.toString((paramInputStream[paramInt] & 0xFF) + 256, 16).substring(1));
-        paramInt += 1;
-      }
-      paramInputStream = localStringBuilder.toString();
-      return paramInputStream;
-    }
-    catch (Exception paramInputStream) {}
-    return null;
+    return c(paramInputStream, 0, 256);
   }
   
-  private static String b(InputStream paramInputStream, int paramInt1, int paramInt2)
+  private static String c(InputStream paramInputStream, int paramInt1, int paramInt2)
   {
     int i = 0;
     if ((paramInputStream == null) || (paramInt1 < 0) || (paramInt2 <= 0)) {}
@@ -280,15 +247,37 @@ public final class g
     return null;
   }
   
-  public static String fR(String paramString)
+  public static final String e(InputStream paramInputStream, int paramInt)
   {
-    if (paramString == null) {}
-    do
-    {
+    int i = 0;
+    if ((paramInputStream == null) || (paramInt <= 0)) {
       return null;
-      paramString = new q(paramString);
-    } while (!paramString.ifE());
-    return b(paramString);
+    }
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      StringBuilder localStringBuilder = new StringBuilder(32);
+      byte[] arrayOfByte = new byte[paramInt];
+      for (;;)
+      {
+        paramInt = paramInputStream.read(arrayOfByte);
+        if (paramInt == -1) {
+          break;
+        }
+        localMessageDigest.update(arrayOfByte, 0, paramInt);
+      }
+      paramInputStream = localMessageDigest.digest();
+      paramInt = i;
+      while (paramInt < paramInputStream.length)
+      {
+        localStringBuilder.append(Integer.toString((paramInputStream[paramInt] & 0xFF) + 256, 16).substring(1));
+        paramInt += 1;
+      }
+      paramInputStream = localStringBuilder.toString();
+      return paramInputStream;
+    }
+    catch (Exception paramInputStream) {}
+    return null;
   }
   
   public static String getMD5(String paramString)
@@ -297,8 +286,8 @@ public final class g
     do
     {
       return null;
-      paramString = new q(paramString);
-    } while (!paramString.ifE());
+      paramString = new u(paramString);
+    } while (!paramString.jKS());
     return a(paramString, 102400);
   }
   
@@ -370,6 +359,17 @@ public final class g
         j = m + 1;
       }
     }
+  }
+  
+  public static String hu(String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      paramString = new u(paramString);
+    } while (!paramString.jKS());
+    return b(paramString);
   }
 }
 

@@ -1,73 +1,103 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
+import java.util.LinkedList;
 
 public final class cpr
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int RXp;
-  public int TwX;
-  public String TwY;
+  public int IJG;
+  public gol YGU;
+  public int ZtX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(146308);
+    AppMethodBeat.i(104810);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.TwX);
-      if (this.TwY != null) {
-        paramVarArgs.f(2, this.TwY);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.YGU == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ReqBuf");
+        AppMethodBeat.o(104810);
+        throw paramVarArgs;
       }
-      paramVarArgs.aY(3, this.RXp);
-      AppMethodBeat.o(146308);
+      paramVarArgs.bS(1, this.ZtX);
+      if (this.YGU != null)
+      {
+        paramVarArgs.qD(2, this.YGU.computeSize());
+        this.YGU.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bS(3, this.IJG);
+      AppMethodBeat.o(104810);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bM(1, this.TwX) + 0;
+      i = i.a.a.b.b.a.cJ(1, this.ZtX) + 0;
       paramInt = i;
-      if (this.TwY != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.TwY);
+      if (this.YGU != null) {
+        paramInt = i + i.a.a.a.qC(2, this.YGU.computeSize());
       }
-      i = g.a.a.b.b.a.bM(3, this.RXp);
-      AppMethodBeat.o(146308);
+      i = i.a.a.b.b.a.cJ(3, this.IJG);
+      AppMethodBeat.o(104810);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
+          paramVarArgs.kFT();
         }
       }
-      AppMethodBeat.o(146308);
+      if (this.YGU == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ReqBuf");
+        AppMethodBeat.o(104810);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(104810);
       return 0;
     }
     if (paramInt == 3)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      Object localObject = (i.a.a.a.a)paramVarArgs[0];
       cpr localcpr = (cpr)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(146308);
+        AppMethodBeat.o(104810);
         return -1;
       case 1: 
-        localcpr.TwX = locala.abFh.AK();
-        AppMethodBeat.o(146308);
+        localcpr.ZtX = ((i.a.a.a.a)localObject).ajGk.aar();
+        AppMethodBeat.o(104810);
         return 0;
       case 2: 
-        localcpr.TwY = locala.abFh.readString();
-        AppMethodBeat.o(146308);
+        paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          gol localgol = new gol();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localgol.dg((byte[])localObject);
+          }
+          localcpr.YGU = localgol;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(104810);
         return 0;
       }
-      localcpr.RXp = locala.abFh.AK();
-      AppMethodBeat.o(146308);
+      localcpr.IJG = ((i.a.a.a.a)localObject).ajGk.aar();
+      AppMethodBeat.o(104810);
       return 0;
     }
-    AppMethodBeat.o(146308);
+    AppMethodBeat.o(104810);
     return -1;
   }
 }

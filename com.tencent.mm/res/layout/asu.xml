@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingTop="@dimen/cp" android:paddingBottom="@dimen/cp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a27" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@drawable/b__" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0dip" android:textColor="@color/ul" android:ellipsize="end" android:id="@id/kpx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" android:layout_marginStart="@dimen/df" />
+                <ImageView android:id="@id/a0h" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:scaleType="fitXY" android:layout_marginStart="@dimen/bv" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/lrj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginStart="@dimen/df" />
+            </LinearLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/lrh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:maxEms="60" android:layout_marginStart="@dimen/df" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

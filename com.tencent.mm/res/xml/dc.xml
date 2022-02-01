@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_realtime" android:title="@string/ibx" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_2h" android:title="@string/ibw" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_24h" android:title="@string/ibv" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:key="wallet_modify_password" android:layout="@layout/bdi" android:title="@string/l36" />
+    <Preference android:key="wallet_forget_password" android:layout="@layout/bdi" android:title="@string/l30" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="wallet_open_gesture_password" android:layout="@layout/bdi" android:title="@string/l37" />
+    <Preference android:key="wallet_modify_gesture_password" android:layout="@layout/bdi" android:title="@string/l35" />
+    <PreferenceCategory />
 </PreferenceScreen>

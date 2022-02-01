@@ -4,6 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPVideoCropInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPVideoSeiInfo;
 import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPSurfaceRenderInfo;
@@ -15,10 +16,12 @@ import com.tencent.thumbplayer.core.common.TPSubtitleFrame;
 import com.tencent.thumbplayer.core.common.TPVideoFrame;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.MediaCodecInfo;
 import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoCropInfo;
+import com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback.VideoSeiInfo;
 import com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo;
 import com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo.TPVideoCropInfo;
 import com.tencent.thumbplayer.utils.d;
 import com.tencent.thumbplayer.utils.g;
+import java.util.Arrays;
 
 public final class c
 {
@@ -26,14 +29,14 @@ public final class c
   
   public static TPAudioFrameBuffer a(TPAudioFrame paramTPAudioFrame)
   {
-    AppMethodBeat.i(219639);
+    AppMethodBeat.i(228737);
     if (paramTPAudioFrame == null)
     {
-      AppMethodBeat.o(219639);
+      AppMethodBeat.o(228737);
       return null;
     }
     TPAudioFrameBuffer localTPAudioFrameBuffer = new TPAudioFrameBuffer();
-    localTPAudioFrameBuffer.format = d.aBt(paramTPAudioFrame.format);
+    localTPAudioFrameBuffer.format = d.aIf(paramTPAudioFrame.format);
     localTPAudioFrameBuffer.data = paramTPAudioFrame.data;
     localTPAudioFrameBuffer.size = paramTPAudioFrame.linesize;
     localTPAudioFrameBuffer.sampleRate = paramTPAudioFrame.sampleRate;
@@ -41,16 +44,16 @@ public final class c
     localTPAudioFrameBuffer.ptsMs = (paramTPAudioFrame.ptsUs / 1000L);
     localTPAudioFrameBuffer.nbSamples = paramTPAudioFrame.nbSamples;
     localTPAudioFrameBuffer.channels = paramTPAudioFrame.channels;
-    AppMethodBeat.o(219639);
+    AppMethodBeat.o(228737);
     return localTPAudioFrameBuffer;
   }
   
   public static TPPlayerMsg.TPMediaCodecInfo a(ITPNativePlayerMessageCallback.MediaCodecInfo paramMediaCodecInfo)
   {
-    AppMethodBeat.i(219657);
+    AppMethodBeat.i(228779);
     if (paramMediaCodecInfo == null)
     {
-      AppMethodBeat.o(219657);
+      AppMethodBeat.o(228779);
       return null;
     }
     TPPlayerMsg.TPMediaCodecInfo localTPMediaCodecInfo = new TPPlayerMsg.TPMediaCodecInfo();
@@ -68,7 +71,7 @@ public final class c
     for (;;)
     {
       localTPMediaCodecInfo.msg = paramMediaCodecInfo.msg;
-      AppMethodBeat.o(219657);
+      AppMethodBeat.o(228779);
       return localTPMediaCodecInfo;
       localTPMediaCodecInfo.mediaType = TPPlayerMsg.TPMediaCodecInfo.TP_DEC_MEDIA_TYPE_VIDEO;
       break;
@@ -82,10 +85,10 @@ public final class c
   
   public static TPPlayerMsg.TPVideoCropInfo a(ITPNativePlayerMessageCallback.VideoCropInfo paramVideoCropInfo)
   {
-    AppMethodBeat.i(219629);
+    AppMethodBeat.i(228713);
     if (paramVideoCropInfo == null)
     {
-      AppMethodBeat.o(219629);
+      AppMethodBeat.o(228713);
       return null;
     }
     TPPlayerMsg.TPVideoCropInfo localTPVideoCropInfo = new TPPlayerMsg.TPVideoCropInfo();
@@ -95,17 +98,34 @@ public final class c
     localTPVideoCropInfo.cropRight = paramVideoCropInfo.cropRight;
     localTPVideoCropInfo.cropTop = paramVideoCropInfo.cropTop;
     localTPVideoCropInfo.cropBottom = paramVideoCropInfo.cropBottom;
-    AppMethodBeat.o(219629);
+    AppMethodBeat.o(228713);
     return localTPVideoCropInfo;
+  }
+  
+  public static TPPlayerMsg.TPVideoSeiInfo a(ITPNativePlayerMessageCallback.VideoSeiInfo paramVideoSeiInfo)
+  {
+    AppMethodBeat.i(228783);
+    if (paramVideoSeiInfo == null)
+    {
+      AppMethodBeat.o(228783);
+      return null;
+    }
+    TPPlayerMsg.TPVideoSeiInfo localTPVideoSeiInfo = new TPPlayerMsg.TPVideoSeiInfo();
+    localTPVideoSeiInfo.videoCodecType = paramVideoSeiInfo.videoCodecType;
+    localTPVideoSeiInfo.videoSeiType = paramVideoSeiInfo.videoSeiType;
+    localTPVideoSeiInfo.seiDataSize = paramVideoSeiInfo.dataSize;
+    localTPVideoSeiInfo.seiData = Arrays.copyOf(paramVideoSeiInfo.data, paramVideoSeiInfo.dataSize);
+    AppMethodBeat.o(228783);
+    return localTPVideoSeiInfo;
   }
   
   public static TPPostProcessFrameBuffer a(TPPostProcessFrame paramTPPostProcessFrame)
   {
     int i = 2;
-    AppMethodBeat.i(219650);
+    AppMethodBeat.i(228766);
     if (paramTPPostProcessFrame == null)
     {
-      AppMethodBeat.o(219650);
+      AppMethodBeat.o(228766);
       return null;
     }
     TPPostProcessFrameBuffer localTPPostProcessFrameBuffer = new TPPostProcessFrameBuffer();
@@ -118,7 +138,7 @@ public final class c
         if (localTPPostProcessFrameBuffer.mediaType != 0) {
           break label220;
         }
-        localTPPostProcessFrameBuffer.format = d.aBs(paramTPPostProcessFrame.format);
+        localTPPostProcessFrameBuffer.format = d.aIe(paramTPPostProcessFrame.format);
       }
     }
     for (;;)
@@ -136,7 +156,7 @@ public final class c
       localTPPostProcessFrameBuffer.sampleAspectRatioDen = paramTPPostProcessFrame.sampleAspectRatioDen;
       localTPPostProcessFrameBuffer.rotation = paramTPPostProcessFrame.rotation;
       localTPPostProcessFrameBuffer.perfData = paramTPPostProcessFrame.perfData;
-      AppMethodBeat.o(219650);
+      AppMethodBeat.o(228766);
       return localTPPostProcessFrameBuffer;
       if (1 == j)
       {
@@ -160,7 +180,7 @@ public final class c
       break;
       label220:
       if (localTPPostProcessFrameBuffer.mediaType == 1) {
-        localTPPostProcessFrameBuffer.format = d.aBt(paramTPPostProcessFrame.format);
+        localTPPostProcessFrameBuffer.format = d.aIf(paramTPPostProcessFrame.format);
       }
     }
   }
@@ -168,10 +188,10 @@ public final class c
   public static TPSubtitleFrameBuffer a(TPSubtitleFrame paramTPSubtitleFrame)
   {
     int i = 26;
-    AppMethodBeat.i(219643);
+    AppMethodBeat.i(228763);
     if (paramTPSubtitleFrame == null)
     {
-      AppMethodBeat.o(219643);
+      AppMethodBeat.o(228763);
       return null;
     }
     TPSubtitleFrameBuffer localTPSubtitleFrameBuffer = new TPSubtitleFrameBuffer();
@@ -188,7 +208,7 @@ public final class c
       localTPSubtitleFrameBuffer.dstWidth = paramTPSubtitleFrame.width;
       localTPSubtitleFrameBuffer.rotation = paramTPSubtitleFrame.rotation;
       localTPSubtitleFrameBuffer.ptsMs = (paramTPSubtitleFrame.ptsUs / 1000L);
-      AppMethodBeat.o(219643);
+      AppMethodBeat.o(228763);
       return localTPSubtitleFrameBuffer;
       i = -1;
     }
@@ -197,10 +217,10 @@ public final class c
   public static TPSurfaceRenderInfo a(TPNativePlayerSurfaceRenderInfo paramTPNativePlayerSurfaceRenderInfo)
   {
     Object localObject = null;
-    AppMethodBeat.i(219661);
+    AppMethodBeat.i(228789);
     if (paramTPNativePlayerSurfaceRenderInfo == null)
     {
-      AppMethodBeat.o(219661);
+      AppMethodBeat.o(228789);
       return null;
     }
     TPSurfaceRenderInfo localTPSurfaceRenderInfo = new TPSurfaceRenderInfo();
@@ -213,7 +233,7 @@ public final class c
     for (;;)
     {
       localTPSurfaceRenderInfo.videoCropInfo = paramTPNativePlayerSurfaceRenderInfo;
-      AppMethodBeat.o(219661);
+      AppMethodBeat.o(228789);
       return localTPSurfaceRenderInfo;
       paramTPNativePlayerSurfaceRenderInfo = new TPSurfaceRenderInfo.TPVideoCropInfo();
       paramTPNativePlayerSurfaceRenderInfo.cropLeft = localTPVideoCropInfo.cropLeft;
@@ -227,11 +247,11 @@ public final class c
   
   public static TPVideoFrameBuffer a(TPVideoFrame paramTPVideoFrame)
   {
-    AppMethodBeat.i(219633);
+    AppMethodBeat.i(228731);
     TPVideoFrameBuffer localTPVideoFrameBuffer = new TPVideoFrameBuffer();
     localTPVideoFrameBuffer.data = paramTPVideoFrame.data;
     localTPVideoFrameBuffer.lineSize = paramTPVideoFrame.linesize;
-    localTPVideoFrameBuffer.format = d.aBs(paramTPVideoFrame.format);
+    localTPVideoFrameBuffer.format = d.aIe(paramTPVideoFrame.format);
     localTPVideoFrameBuffer.srcHeight = paramTPVideoFrame.height;
     localTPVideoFrameBuffer.srcWidth = paramTPVideoFrame.width;
     localTPVideoFrameBuffer.dstHeight = paramTPVideoFrame.height;
@@ -241,13 +261,13 @@ public final class c
     }
     localTPVideoFrameBuffer.rotation = paramTPVideoFrame.rotation;
     localTPVideoFrameBuffer.ptsMs = (paramTPVideoFrame.ptsUs / 1000L);
-    AppMethodBeat.o(219633);
+    AppMethodBeat.o(228731);
     return localTPVideoFrameBuffer;
   }
   
-  public static int aAM(int paramInt)
+  public static int aHy(int paramInt)
   {
-    AppMethodBeat.i(219630);
+    AppMethodBeat.i(228720);
     switch (paramInt)
     {
     default: 
@@ -256,7 +276,7 @@ public final class c
     }
     for (;;)
     {
-      AppMethodBeat.o(219630);
+      AppMethodBeat.o(228720);
       return paramInt;
       paramInt = 1;
       continue;
@@ -272,10 +292,10 @@ public final class c
   {
     int k = 1;
     int j = -1;
-    AppMethodBeat.i(219655);
+    AppMethodBeat.i(228773);
     if (paramTPPostProcessFrameBuffer == null)
     {
-      AppMethodBeat.o(219655);
+      AppMethodBeat.o(228773);
       return null;
     }
     TPPostProcessFrame localTPPostProcessFrame = new TPPostProcessFrame();
@@ -318,7 +338,7 @@ public final class c
         localTPPostProcessFrame.sampleAspectRatioDen = paramTPPostProcessFrameBuffer.sampleAspectRatioDen;
         localTPPostProcessFrame.rotation = paramTPPostProcessFrameBuffer.rotation;
         localTPPostProcessFrame.perfData = paramTPPostProcessFrameBuffer.perfData;
-        AppMethodBeat.o(219655);
+        AppMethodBeat.o(228773);
         return localTPPostProcessFrame;
         if (1 == i)
         {
@@ -400,7 +420,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.b.c
  * JD-Core Version:    0.7.0.1
  */

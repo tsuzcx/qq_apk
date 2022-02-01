@@ -1,55 +1,76 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.appcache.predownload.c;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.plugin.appbrand.y;
+import com.tencent.mm.protocal.protobuf.fwg;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskCallPredownload;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
-final class df
-  implements d<TaskParamsCallPredownload, IPCVoid>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiVerifyPlugin;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class df
+  extends c<y>
 {
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<x>
+  @Deprecated
+  public static final int CTRL_INDEX = 313;
+  @Deprecated
+  public static final String NAME = "verifyPlugin";
+  private static final a rBs;
+  
+  static
   {
-    public static final a oyn;
-    
-    static
+    AppMethodBeat.i(147901);
+    rBs = new a((byte)0);
+    AppMethodBeat.o(147901);
+  }
+  
+  private static final void a(String paramString, y paramy, int paramInt, df paramdf, fwg paramfwg)
+  {
+    AppMethodBeat.i(325494);
+    s.u(paramString, "$commLogStr");
+    s.u(paramy, "$service");
+    s.u(paramdf, "this$0");
+    if (paramfwg == null)
     {
-      AppMethodBeat.i(50420);
-      oyn = new a();
-      AppMethodBeat.o(50420);
+      Log.e("Luggage.WXA.FULLSDK.JsApiVerifyPlugin", s.X(paramString, " null response"));
+      paramy.callback(paramInt, paramdf.ZP("fail:internal error"));
+      AppMethodBeat.o(325494);
+      return;
     }
-    
-    a()
+    if (paramfwg.BaseResponse.Idd != 0)
     {
-      super();
+      Log.e("Luggage.WXA.FULLSDK.JsApiVerifyPlugin", s.X(paramString, " cgi failed, errCode = %d, errMsg = %s"), new Object[] { Integer.valueOf(paramfwg.BaseResponse.Idd), paramfwg.BaseResponse.akjO });
+      paramy.callback(paramInt, paramdf.ZP(s.X("fail cgi fail Ret=", Integer.valueOf(paramfwg.BaseResponse.Idd))));
+      AppMethodBeat.o(325494);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    try
+    {
+      Log.i("Luggage.WXA.FULLSDK.JsApiVerifyPlugin", paramString + " cgi ok, dataSize[" + paramfwg.ZJq.length() + ']');
+      ((Map)localHashMap).put("data", new JSONObject(paramfwg.ZJq));
+      paramy.callback(paramInt, paramdf.m("ok", (Map)localHashMap));
+      AppMethodBeat.o(325494);
+      return;
+    }
+    catch (Exception paramfwg)
+    {
+      Log.e("Luggage.WXA.FULLSDK.JsApiVerifyPlugin", paramString + " cgi ok but get exception[" + paramfwg + ']');
+      paramy.callback(paramInt, paramdf.ZP(s.X("fail:internal error ", paramfwg)));
+      AppMethodBeat.o(325494);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(String paramString1, String paramString2, int paramInt) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(50421);
-      c.a(new c(this.kyF, this.oyo, this.$scene), true, 2);
-      AppMethodBeat.o(50421);
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiVerifyPlugin$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-wechat-full-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.df
  * JD-Core Version:    0.7.0.1
  */

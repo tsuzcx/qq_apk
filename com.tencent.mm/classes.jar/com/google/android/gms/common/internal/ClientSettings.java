@@ -7,7 +7,6 @@ import androidx.b.b;
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient.Builder;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.signin.SignInOptions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
@@ -16,9 +15,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-@VisibleForTesting
 public final class ClientSettings
 {
   public static final String KEY_CLIENT_SESSION_ID = "com.google.android.gms.common.internal.ClientSettings.sessionId";
@@ -69,14 +66,12 @@ public final class ClientSettings
     return paramContext;
   }
   
-  @Nullable
   public final Account getAccount()
   {
     return this.zzs;
   }
   
   @Deprecated
-  @Nullable
   public final String getAccountName()
   {
     if (this.zzs != null) {
@@ -120,7 +115,6 @@ public final class ClientSettings
     return localHashSet;
   }
   
-  @Nullable
   public final Integer getClientSessionId()
   {
     return this.zzsc;
@@ -136,13 +130,11 @@ public final class ClientSettings
     return this.zzsa;
   }
   
-  @Nullable
   public final String getRealClientClassName()
   {
     return this.zzda;
   }
   
-  @Nullable
   public final String getRealClientPackageName()
   {
     return this.zzcz;
@@ -153,13 +145,11 @@ public final class ClientSettings
     return this.zzcv;
   }
   
-  @Nullable
   public final SignInOptions getSignInOptions()
   {
     return this.zzsb;
   }
   
-  @Nullable
   public final View getViewForPopups()
   {
     return this.zzcy;
@@ -269,7 +259,7 @@ public final class ClientSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ClientSettings
  * JD-Core Version:    0.7.0.1
  */

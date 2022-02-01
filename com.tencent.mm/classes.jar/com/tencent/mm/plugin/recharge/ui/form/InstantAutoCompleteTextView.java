@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class InstantAutoCompleteTextView
   extends AutoCompleteTextView
 {
-  private boolean HBs;
+  private boolean NyV;
   
   public InstantAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,7 +32,7 @@ public class InstantAutoCompleteTextView
   public boolean enoughToFilter()
   {
     AppMethodBeat.i(67273);
-    if ((this.HBs) || (super.enoughToFilter()))
+    if ((this.NyV) || (super.enoughToFilter()))
     {
       AppMethodBeat.o(67273);
       return true;
@@ -43,12 +43,12 @@ public class InstantAutoCompleteTextView
   
   public void setShowAlways(boolean paramBoolean)
   {
-    this.HBs = paramBoolean;
+    this.NyV = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.form.InstantAutoCompleteTextView
  * JD-Core Version:    0.7.0.1
  */

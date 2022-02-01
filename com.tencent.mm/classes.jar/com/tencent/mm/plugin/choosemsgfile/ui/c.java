@@ -32,18 +32,18 @@ public final class c
     AppMethodBeat.o(123463);
   }
   
-  public final boolean aOg()
+  public final boolean bhU()
   {
     AppMethodBeat.i(123460);
-    boolean bool = super.aOg();
+    boolean bool = super.bhU();
     AppMethodBeat.o(123460);
     return bool;
   }
   
-  public final ViewGroup cuR()
+  public final ViewGroup cXB()
   {
     AppMethodBeat.i(123458);
-    ViewGroup localViewGroup = super.cuR();
+    ViewGroup localViewGroup = super.cXB();
     AppMethodBeat.o(123458);
     return localViewGroup;
   }
@@ -72,16 +72,16 @@ public final class c
     return localIntent;
   }
   
-  public final void hS(boolean paramBoolean)
+  public final void iR(boolean paramBoolean)
   {
     AppMethodBeat.i(123462);
-    super.hS(paramBoolean);
+    super.iR(paramBoolean);
     AppMethodBeat.o(123462);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.c
  * JD-Core Version:    0.7.0.1
  */

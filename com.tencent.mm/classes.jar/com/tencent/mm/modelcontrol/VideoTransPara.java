@@ -15,83 +15,83 @@ public class VideoTransPara
   public int duration;
   public int fps;
   public int height;
-  public int kSl;
-  public int kSm;
-  public int kXt;
-  public int lJA;
-  public int lJB;
-  public int lJC;
-  public int lJD;
-  public int lJE;
-  public int lJF;
-  public int lJG;
-  public int lJH;
-  public int lJI;
-  public int lJJ;
-  public int lJK;
-  public int lJL;
-  public int lJm;
-  public int lJn;
-  public boolean lJx;
-  public int lJy;
-  public int lJz;
   public int minDuration;
+  public int nCd;
+  public int nxU;
+  public int nxV;
+  public int oBO;
+  public int oBP;
+  public boolean oBZ;
+  public int oCa;
+  public int oCb;
+  public int oCc;
+  public float oCd;
+  public float oCe;
+  public int oCf;
+  public int oCg;
+  public int oCh;
+  public int oCi;
+  public int oCj;
+  public int oCk;
+  public int oCl;
+  public int oCm;
+  public int oCn;
   public int videoBitrate;
   public int width;
   
   static
   {
     AppMethodBeat.i(133565);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new VideoTransPara.1();
     AppMethodBeat.o(133565);
   }
   
   public VideoTransPara()
   {
     this.audioChannelCount = 1;
-    this.lJy = 0;
-    this.lJK = 0;
-    this.lJL = 0;
+    this.oCa = 0;
+    this.oCm = 0;
+    this.oCn = 0;
   }
   
   protected VideoTransPara(Parcel paramParcel)
   {
     AppMethodBeat.i(133561);
     this.audioChannelCount = 1;
-    this.lJy = 0;
-    this.lJK = 0;
-    this.lJL = 0;
+    this.oCa = 0;
+    this.oCm = 0;
+    this.oCn = 0;
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
     this.fps = paramParcel.readInt();
     this.videoBitrate = paramParcel.readInt();
     this.duration = paramParcel.readInt();
-    this.kXt = paramParcel.readInt();
+    this.nCd = paramParcel.readInt();
     this.audioBitrate = paramParcel.readInt();
     this.audioSampleRate = paramParcel.readInt();
-    this.lJm = paramParcel.readInt();
-    this.lJn = paramParcel.readInt();
+    this.oBO = paramParcel.readInt();
+    this.oBP = paramParcel.readInt();
     if (paramParcel.readInt() > 0) {}
     for (;;)
     {
-      this.lJx = bool;
-      this.lJy = paramParcel.readInt();
-      this.lJz = paramParcel.readInt();
-      this.lJA = paramParcel.readInt();
-      this.lJB = paramParcel.readInt();
-      this.lJC = paramParcel.readInt();
-      this.lJD = paramParcel.readInt();
-      this.lJE = paramParcel.readInt();
-      this.lJF = paramParcel.readInt();
-      this.lJG = paramParcel.readInt();
-      this.lJH = paramParcel.readInt();
-      this.kSl = paramParcel.readInt();
-      this.kSm = paramParcel.readInt();
-      this.lJI = paramParcel.readInt();
-      this.lJJ = paramParcel.readInt();
+      this.oBZ = bool;
+      this.oCa = paramParcel.readInt();
+      this.oCb = paramParcel.readInt();
+      this.oCc = paramParcel.readInt();
+      this.oCd = paramParcel.readFloat();
+      this.oCe = paramParcel.readFloat();
+      this.oCf = paramParcel.readInt();
+      this.oCg = paramParcel.readInt();
+      this.oCh = paramParcel.readInt();
+      this.oCi = paramParcel.readInt();
+      this.oCj = paramParcel.readInt();
+      this.nxU = paramParcel.readInt();
+      this.nxV = paramParcel.readInt();
+      this.oCk = paramParcel.readInt();
+      this.oCl = paramParcel.readInt();
       this.audioChannelCount = paramParcel.readInt();
-      this.lJK = paramParcel.readInt();
-      this.lJL = paramParcel.readInt();
+      this.oCm = paramParcel.readInt();
+      this.oCn = paramParcel.readInt();
       this.minDuration = paramParcel.readInt();
       AppMethodBeat.o(133561);
       return;
@@ -102,37 +102,37 @@ public class VideoTransPara
   public VideoTransPara(VideoTransPara paramVideoTransPara)
   {
     this.audioChannelCount = 1;
-    this.lJy = 0;
-    this.lJK = 0;
-    this.lJL = 0;
+    this.oCa = 0;
+    this.oCm = 0;
+    this.oCn = 0;
     this.width = paramVideoTransPara.width;
     this.height = paramVideoTransPara.height;
     this.fps = paramVideoTransPara.fps;
     this.videoBitrate = paramVideoTransPara.videoBitrate;
     this.duration = paramVideoTransPara.duration;
-    this.kXt = paramVideoTransPara.kXt;
+    this.nCd = paramVideoTransPara.nCd;
     this.audioBitrate = paramVideoTransPara.audioBitrate;
     this.audioSampleRate = paramVideoTransPara.audioSampleRate;
-    this.lJm = paramVideoTransPara.lJm;
-    this.lJn = paramVideoTransPara.lJn;
-    this.lJx = paramVideoTransPara.lJx;
-    this.lJy = paramVideoTransPara.lJy;
-    this.lJz = paramVideoTransPara.lJz;
-    this.lJA = paramVideoTransPara.lJA;
-    this.lJB = paramVideoTransPara.lJB;
-    this.lJC = paramVideoTransPara.lJC;
-    this.lJD = paramVideoTransPara.lJD;
-    this.lJE = paramVideoTransPara.lJE;
-    this.lJF = paramVideoTransPara.lJF;
-    this.lJG = paramVideoTransPara.lJG;
-    this.lJH = paramVideoTransPara.lJH;
-    this.kSl = paramVideoTransPara.kSl;
-    this.kSm = paramVideoTransPara.kSm;
-    this.lJI = paramVideoTransPara.lJI;
-    this.lJJ = paramVideoTransPara.lJJ;
+    this.oBO = paramVideoTransPara.oBO;
+    this.oBP = paramVideoTransPara.oBP;
+    this.oBZ = paramVideoTransPara.oBZ;
+    this.oCa = paramVideoTransPara.oCa;
+    this.oCb = paramVideoTransPara.oCb;
+    this.oCc = paramVideoTransPara.oCc;
+    this.oCd = paramVideoTransPara.oCd;
+    this.oCe = paramVideoTransPara.oCe;
+    this.oCf = paramVideoTransPara.oCf;
+    this.oCg = paramVideoTransPara.oCg;
+    this.oCh = paramVideoTransPara.oCh;
+    this.oCi = paramVideoTransPara.oCi;
+    this.oCj = paramVideoTransPara.oCj;
+    this.nxU = paramVideoTransPara.nxU;
+    this.nxV = paramVideoTransPara.nxV;
+    this.oCk = paramVideoTransPara.oCk;
+    this.oCl = paramVideoTransPara.oCl;
     this.audioChannelCount = paramVideoTransPara.audioChannelCount;
-    this.lJK = paramVideoTransPara.lJK;
-    this.lJL = paramVideoTransPara.lJL;
+    this.oCm = paramVideoTransPara.oCm;
+    this.oCn = paramVideoTransPara.oCn;
     this.minDuration = paramVideoTransPara.minDuration;
   }
   
@@ -152,7 +152,7 @@ public class VideoTransPara
   public String toString()
   {
     AppMethodBeat.i(133563);
-    String str = "[isDefault " + this.lJx + " width " + this.width + " height " + this.height + " fps " + this.fps + " video bitrate " + this.videoBitrate + " iFrame " + this.kXt + " audio bitrate " + this.audioBitrate + " audioSampleRate " + this.audioSampleRate + "audioChannelCount " + this.audioChannelCount + " duration " + this.duration + " profile index " + this.lJm + " preset index " + this.lJn + " thumbSize " + this.lJy + " abaSwitch " + this.lJz + " qpSwitch " + this.lJA + " abaUpgear " + this.lJB + " abaDowngear " + this.lJC + " ceilingVideoBR " + this.lJD + " flooringVideoBR " + this.lJE + " isEnableHEVCEncode " + this.lJF + " isEnable720p " + this.lJG + " maxVideoSize " + this.lJH + " minQP " + this.kSl + " maxQP " + this.kSm + " takePhotosVideoBR " + this.lJI + " remuxScene " + this.lJJ + " hwEnableHevc " + this.lJK + " swEnableHevc " + this.lJL + "]";
+    String str = "[isDefault " + this.oBZ + " width " + this.width + " height " + this.height + " fps " + this.fps + " video bitrate " + this.videoBitrate + " iFrame " + this.nCd + " audio bitrate " + this.audioBitrate + " audioSampleRate " + this.audioSampleRate + "audioChannelCount " + this.audioChannelCount + " duration " + this.duration + " profile index " + this.oBO + " preset index " + this.oBP + " thumbSize " + this.oCa + " abaSwitch " + this.oCb + " qpSwitch " + this.oCc + " swHevcRatio " + this.oCd + " hwHevcRatio " + this.oCe + " ceilingVideoBR " + this.oCf + " flooringVideoBR " + this.oCg + " isEnableHEVCEncode " + this.oCh + " isEnable1080p " + this.oCi + " maxVideoSize " + this.oCj + " minQP " + this.nxU + " maxQP " + this.nxV + " takePhotosVideoBR " + this.oCk + " remuxScene " + this.oCl + " hwEnableHevc " + this.oCm + " swEnableHevc " + this.oCn + "]";
     AppMethodBeat.o(133563);
     return str;
   }
@@ -165,32 +165,32 @@ public class VideoTransPara
     paramParcel.writeInt(this.fps);
     paramParcel.writeInt(this.videoBitrate);
     paramParcel.writeInt(this.duration);
-    paramParcel.writeInt(this.kXt);
+    paramParcel.writeInt(this.nCd);
     paramParcel.writeInt(this.audioBitrate);
     paramParcel.writeInt(this.audioSampleRate);
-    paramParcel.writeInt(this.lJm);
-    paramParcel.writeInt(this.lJn);
-    if (this.lJx) {}
+    paramParcel.writeInt(this.oBO);
+    paramParcel.writeInt(this.oBP);
+    if (this.oBZ) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.lJy);
-      paramParcel.writeInt(this.lJz);
-      paramParcel.writeInt(this.lJA);
-      paramParcel.writeInt(this.lJB);
-      paramParcel.writeInt(this.lJC);
-      paramParcel.writeInt(this.lJD);
-      paramParcel.writeInt(this.lJE);
-      paramParcel.writeInt(this.lJF);
-      paramParcel.writeInt(this.lJG);
-      paramParcel.writeInt(this.lJH);
-      paramParcel.writeInt(this.kSl);
-      paramParcel.writeInt(this.kSm);
-      paramParcel.writeInt(this.lJI);
-      paramParcel.writeInt(this.lJJ);
+      paramParcel.writeInt(this.oCa);
+      paramParcel.writeInt(this.oCb);
+      paramParcel.writeInt(this.oCc);
+      paramParcel.writeFloat(this.oCd);
+      paramParcel.writeFloat(this.oCe);
+      paramParcel.writeInt(this.oCf);
+      paramParcel.writeInt(this.oCg);
+      paramParcel.writeInt(this.oCh);
+      paramParcel.writeInt(this.oCi);
+      paramParcel.writeInt(this.oCj);
+      paramParcel.writeInt(this.nxU);
+      paramParcel.writeInt(this.nxV);
+      paramParcel.writeInt(this.oCk);
+      paramParcel.writeInt(this.oCl);
       paramParcel.writeInt(this.audioChannelCount);
-      paramParcel.writeInt(this.lJK);
-      paramParcel.writeInt(this.lJL);
+      paramParcel.writeInt(this.oCm);
+      paramParcel.writeInt(this.oCn);
       paramParcel.writeInt(this.minDuration);
       AppMethodBeat.o(133562);
       return;
@@ -199,7 +199,7 @@ public class VideoTransPara
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.VideoTransPara
  * JD-Core Version:    0.7.0.1
  */

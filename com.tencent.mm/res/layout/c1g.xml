@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/iud" android:background="#ff1d1e1d" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:background="@drawable/boy" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="43.0dip">
-        <Button android:id="@id/dy1" android:background="@drawable/ayj" android:visibility="invisible" android:layout_width="39.0dip" android:layout_height="39.0dip" android:contentDescription="@string/hl2" />
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/uj" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:shadowColor="#ff222222" style="@style/a7o" />
-        </LinearLayout>
-        <Button android:id="@id/j0c" android:background="@drawable/ayk" android:layout_width="39.0dip" android:layout_height="39.0dip" android:contentDescription="@string/hl3" />
-    </LinearLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="114.0dip">
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/boe" android:paddingLeft="3.0dip" android:paddingTop="6.0dip" android:paddingRight="3.0dip" android:paddingBottom="6.0dip" android:layout_width="290.0dip" android:layout_height="103.0dip" android:layout_marginTop="5.0dip">
-            <com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame android:layout_gravity="center_horizontal" android:id="@id/wx" android:layout_width="290.0dip" android:layout_height="58.0dip" android:layout_marginTop="6.0dip" />
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="27.0dip">
-                <ImageView android:id="@id/dt4" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/box" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-                <TextView android:textSize="13.0sp" android:id="@id/bgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:singleLine="true" android:layout_toRightOf="@id/dt4" android:layout_centerVertical="true" style="@style/a7o" />
-                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/ab1" android:id="@id/feb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hkp" android:singleLine="true" android:shadowColor="#ff222222" android:layout_centerInParent="true" style="@style/a7o" />
-                <Chronometer android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/Brand" android:id="@id/b2u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </LinearLayout>
-        <View android:layout_gravity="center_horizontal" android:background="@drawable/bof" android:layout_width="320.0dip" android:layout_height="114.0dip" />
-    </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="58.0dip">
-        <com.tencent.mm.plugin.talkroom.ui.TalkRoomVolumeMeter android:layout_gravity="center" android:id="@id/jcr" android:layout_width="320.0dip" android:layout_height="58.0dip" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <FrameLayout android:layout_gravity="center" android:layout_width="245.0dip" android:layout_height="252.0dip">
-            <ImageView android:layout_gravity="center|right|top" android:id="@id/ea2" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/boo" android:scaleType="fitXY" android:contentDescription="@null" />
-        </FrameLayout>
-        <ImageButton android:layout_gravity="center" android:id="@id/fea" android:background="@null" android:layout_width="245.0dip" android:layout_height="252.0dip" android:scaleType="fitXY" android:contentDescription="@string/hl6" />
-    </FrameLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hw" android:background="@drawable/ati" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:layout_marginBottom="@dimen/m2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/hx" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    <com.tencent.mm.plugin.sns.ui.SnsTextView android:textSize="15.0dip" android:textColor="@color/ad4" android:id="@id/hy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
+    <ImageView android:id="@id/hv" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:scaleType="fitXY" />
 </LinearLayout>

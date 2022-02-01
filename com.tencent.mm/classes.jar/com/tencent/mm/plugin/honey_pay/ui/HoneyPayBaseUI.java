@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,19 +11,19 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public abstract class HoneyPayBaseUI
   extends WalletBaseUI
 {
-  protected int BkW = a.c.white;
+  protected int GRg = a.c.white;
   protected final String TAG = "MicroMsg." + getClass().getSimpleName();
   
-  protected void eHM()
+  protected void fPx()
   {
-    setActionbarColor(getResources().getColor(this.BkW));
+    setActionbarColor(getResources().getColor(this.GRg));
     hideActionbarLine();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    eHM();
+    fPx();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -47,7 +46,7 @@ public abstract class HoneyPayBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayBaseUI
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ final class g$a
     AppMethodBeat.o(183577);
   }
   
-  public final void b(File paramFile, int paramInt)
+  public final void c(File paramFile, int paramInt)
   {
     AppMethodBeat.i(183578);
     Message localMessage = obtainMessage();
@@ -39,14 +39,14 @@ final class g$a
     AppMethodBeat.i(183579);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).b((File)paramMessage.obj, paramMessage.arg1);
+      ((b)localIterator.next()).c((File)paramMessage.obj, paramMessage.arg1);
     }
     AppMethodBeat.o(183579);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.b.a.g.a
  * JD-Core Version:    0.7.0.1
  */

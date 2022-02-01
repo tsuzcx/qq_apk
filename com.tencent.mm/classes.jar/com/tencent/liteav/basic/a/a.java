@@ -10,14 +10,14 @@ public class a
   
   public a()
   {
-    AppMethodBeat.i(239190);
+    AppMethodBeat.i(229910);
     this.a = new LinkedList();
-    AppMethodBeat.o(239190);
+    AppMethodBeat.o(229910);
   }
   
   public void a()
   {
-    AppMethodBeat.i(239196);
+    AppMethodBeat.i(229924);
     Object localObject1 = null;
     synchronized (this.a)
     {
@@ -34,16 +34,16 @@ public class a
         }
       }
     }
-    AppMethodBeat.o(239196);
+    AppMethodBeat.o(229924);
   }
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(239193);
+    AppMethodBeat.i(229916);
     synchronized (this.a)
     {
       this.a.add(paramRunnable);
-      AppMethodBeat.o(239193);
+      AppMethodBeat.o(229916);
       return;
     }
   }

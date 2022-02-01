@@ -1,67 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import i.a.a.b;
 
 public final class fgt
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int ffF;
-  public String lpy;
+  public String ip;
+  public int port;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32505);
+    AppMethodBeat.i(133197);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aY(1, this.ffF);
-      if (this.lpy != null) {
-        paramVarArgs.f(2, this.lpy);
-      }
-      AppMethodBeat.o(32505);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bM(1, this.ffF) + 0;
-      paramInt = i;
-      if (this.lpy != null) {
-        paramInt = i + g.a.a.b.b.a.g(2, this.lpy);
-      }
-      AppMethodBeat.o(32505);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.iUs();
-        }
-      }
-      AppMethodBeat.o(32505);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      fgt localfgt = (fgt)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.ip == null)
       {
-      default: 
-        AppMethodBeat.o(32505);
-        return -1;
-      case 1: 
-        localfgt.ffF = locala.abFh.AK();
-        AppMethodBeat.o(32505);
+        paramVarArgs = new b("Not all required fields were included: ip");
+        AppMethodBeat.o(133197);
+        throw paramVarArgs;
+      }
+      if (this.ip != null) {
+        paramVarArgs.g(1, this.ip);
+      }
+      paramVarArgs.bS(2, this.port);
+      AppMethodBeat.o(133197);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.ip == null) {
+        break label302;
+      }
+    }
+    label302:
+    for (paramInt = i.a.a.b.b.a.h(1, this.ip) + 0;; paramInt = 0)
+    {
+      int i = i.a.a.b.b.a.cJ(2, this.port);
+      AppMethodBeat.o(133197);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.kFT();
+          }
+        }
+        if (this.ip == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ip");
+          AppMethodBeat.o(133197);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(133197);
         return 0;
       }
-      localfgt.lpy = locala.abFh.readString();
-      AppMethodBeat.o(32505);
-      return 0;
+      if (paramInt == 3)
+      {
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
+        fgt localfgt = (fgt)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(133197);
+          return -1;
+        case 1: 
+          localfgt.ip = locala.ajGk.readString();
+          AppMethodBeat.o(133197);
+          return 0;
+        }
+        localfgt.port = locala.ajGk.aar();
+        AppMethodBeat.o(133197);
+        return 0;
+      }
+      AppMethodBeat.o(133197);
+      return -1;
     }
-    AppMethodBeat.o(32505);
-    return -1;
   }
 }
 

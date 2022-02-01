@@ -17,44 +17,44 @@ import com.tencent.mm.plugin.wxpay.a.g;
 public class MallProductSelectAmountView
   extends LinearLayout
 {
-  private ImageView GVh;
-  private ImageView GVi;
-  private int GVj;
-  private int GVk;
-  private int GVl;
-  private int GVm;
-  private a GVn;
-  private TextView mMc;
+  private ImageView MSJ;
+  private ImageView MSK;
+  private int MSL;
+  private int MSM;
+  private int MSN;
+  private int MSO;
+  private a MSP;
+  private TextView pIK;
   
   public MallProductSelectAmountView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67003);
-    this.mMc = null;
-    this.GVh = null;
-    this.GVi = null;
-    this.GVj = 2147483647;
-    this.GVk = 1;
-    this.GVl = 1;
-    this.GVm = this.GVl;
-    this.GVn = null;
+    this.pIK = null;
+    this.MSJ = null;
+    this.MSK = null;
+    this.MSL = 2147483647;
+    this.MSM = 1;
+    this.MSN = 1;
+    this.MSO = this.MSN;
+    this.MSP = null;
     paramContext = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a.g.product_select_amount, this, true);
-    this.mMc = ((TextView)paramContext.findViewById(a.f.mall_product_select_sku_count));
-    this.GVh = ((ImageView)paramContext.findViewById(a.f.mall_product_select_sku_add));
-    this.GVi = ((ImageView)paramContext.findViewById(a.f.mall_product_select_sku_remove));
-    this.mMc.setText(this.GVm);
-    this.GVh.setOnClickListener(new View.OnClickListener()
+    this.pIK = ((TextView)paramContext.findViewById(a.f.mall_product_select_sku_count));
+    this.MSJ = ((ImageView)paramContext.findViewById(a.f.mall_product_select_sku_add));
+    this.MSK = ((ImageView)paramContext.findViewById(a.f.mall_product_select_sku_remove));
+    this.pIK.setText(this.MSO);
+    this.MSJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67001);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (MallProductSelectAmountView.a(MallProductSelectAmountView.this) + 1 > MallProductSelectAmountView.b(MallProductSelectAmountView.this))
         {
           if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-            MallProductSelectAmountView.c(MallProductSelectAmountView.this).iT(MallProductSelectAmountView.a(MallProductSelectAmountView.this), MallProductSelectAmountView.d(MallProductSelectAmountView.this));
+            MallProductSelectAmountView.c(MallProductSelectAmountView.this).kz(MallProductSelectAmountView.a(MallProductSelectAmountView.this), MallProductSelectAmountView.d(MallProductSelectAmountView.this));
           }
           a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(67001);
@@ -65,24 +65,24 @@ public class MallProductSelectAmountView
           MallProductSelectAmountView.g(MallProductSelectAmountView.this).setText(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-          MallProductSelectAmountView.c(MallProductSelectAmountView.this).kp(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
+          MallProductSelectAmountView.c(MallProductSelectAmountView.this).onChange(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67001);
       }
     });
-    this.GVi.setOnClickListener(new View.OnClickListener()
+    this.MSK.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67002);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (MallProductSelectAmountView.a(MallProductSelectAmountView.this) - 1 < MallProductSelectAmountView.h(MallProductSelectAmountView.this))
         {
           if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-            MallProductSelectAmountView.c(MallProductSelectAmountView.this).iT(MallProductSelectAmountView.a(MallProductSelectAmountView.this), 2);
+            MallProductSelectAmountView.c(MallProductSelectAmountView.this).kz(MallProductSelectAmountView.a(MallProductSelectAmountView.this), 2);
           }
           a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(67002);
@@ -94,7 +94,7 @@ public class MallProductSelectAmountView
         }
         MallProductSelectAmountView.f(MallProductSelectAmountView.this);
         if (MallProductSelectAmountView.c(MallProductSelectAmountView.this) != null) {
-          MallProductSelectAmountView.c(MallProductSelectAmountView.this).kp(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
+          MallProductSelectAmountView.c(MallProductSelectAmountView.this).onChange(MallProductSelectAmountView.a(MallProductSelectAmountView.this));
         }
         a.a(this, "com/tencent/mm/plugin/product/ui/MallProductSelectAmountView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67002);
@@ -103,81 +103,81 @@ public class MallProductSelectAmountView
     AppMethodBeat.o(67003);
   }
   
-  private boolean fpw()
+  private boolean gAB()
   {
     AppMethodBeat.i(67005);
-    if (this.GVm > this.GVj)
+    if (this.MSO > this.MSL)
     {
-      this.GVm = this.GVj;
-      if (this.GVn != null) {
-        this.GVn.kp(this.GVm);
+      this.MSO = this.MSL;
+      if (this.MSP != null) {
+        this.MSP.onChange(this.MSO);
       }
-      if (this.GVn != null) {
-        this.GVn.iT(this.GVm, this.GVk);
+      if (this.MSP != null) {
+        this.MSP.kz(this.MSO, this.MSM);
       }
-      this.mMc.setText(this.GVm);
+      this.pIK.setText(this.MSO);
       AppMethodBeat.o(67005);
       return false;
     }
-    if (this.GVm > this.GVl) {
-      this.GVi.setEnabled(true);
+    if (this.MSO > this.MSN) {
+      this.MSK.setEnabled(true);
     }
     for (;;)
     {
       AppMethodBeat.o(67005);
       return true;
-      if (this.GVm != this.GVl) {
+      if (this.MSO != this.MSN) {
         break;
       }
-      this.GVi.setEnabled(false);
+      this.MSK.setEnabled(false);
     }
-    this.GVi.setEnabled(false);
-    this.GVm = this.GVl;
-    if (this.GVn != null) {
-      this.GVn.kp(this.GVm);
+    this.MSK.setEnabled(false);
+    this.MSO = this.MSN;
+    if (this.MSP != null) {
+      this.MSP.onChange(this.MSO);
     }
-    if (this.GVn != null) {
-      this.GVn.iT(this.GVm, 2);
+    if (this.MSP != null) {
+      this.MSP.kz(this.MSO, 2);
     }
-    this.mMc.setText(this.GVm);
+    this.pIK.setText(this.MSO);
     AppMethodBeat.o(67005);
     return false;
   }
   
-  public final void iS(int paramInt1, int paramInt2)
+  public final void ky(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(67008);
     if (paramInt1 > paramInt2) {
-      this.GVk = 3;
+      this.MSM = 3;
     }
-    for (this.GVj = paramInt2;; this.GVj = paramInt1)
+    for (this.MSL = paramInt2;; this.MSL = paramInt1)
     {
-      fpw();
-      if (this.GVn != null) {
-        this.GVn.kp(this.GVm);
+      gAB();
+      if (this.MSP != null) {
+        this.MSP.onChange(this.MSO);
       }
       AppMethodBeat.o(67008);
       return;
-      this.GVk = 1;
+      this.MSM = 1;
     }
   }
   
   public void setAddEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(67006);
-    this.GVh.setEnabled(paramBoolean);
+    this.MSJ.setEnabled(paramBoolean);
     AppMethodBeat.o(67006);
   }
   
   public void setAmount(int paramInt)
   {
     AppMethodBeat.i(67004);
-    this.GVm = paramInt;
-    if (fpw())
+    this.MSO = paramInt;
+    if (gAB())
     {
-      this.mMc.setText(this.GVm);
-      if (this.GVn != null) {
-        this.GVn.kp(this.GVm);
+      this.pIK.setText(this.MSO);
+      if (this.MSP != null) {
+        this.MSP.onChange(this.MSO);
       }
     }
     AppMethodBeat.o(67004);
@@ -186,33 +186,33 @@ public class MallProductSelectAmountView
   public void setMinAmount(int paramInt)
   {
     AppMethodBeat.i(67009);
-    this.GVl = paramInt;
-    fpw();
+    this.MSN = paramInt;
+    gAB();
     AppMethodBeat.o(67009);
   }
   
   public void setOnAmountChangeListener(a parama)
   {
-    this.GVn = parama;
+    this.MSP = parama;
   }
   
   public void setRemoveEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(67007);
-    this.GVi.setEnabled(paramBoolean);
+    this.MSK.setEnabled(paramBoolean);
     AppMethodBeat.o(67007);
   }
   
   public static abstract interface a
   {
-    public abstract void iT(int paramInt1, int paramInt2);
+    public abstract void kz(int paramInt1, int paramInt2);
     
-    public abstract void kp(int paramInt);
+    public abstract void onChange(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductSelectAmountView
  * JD-Core Version:    0.7.0.1
  */

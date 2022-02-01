@@ -21,8 +21,8 @@ public final class a
       paramString2 = Util.nullAsNil(paramString2);
       Log.i("MicroMsg.TopStory.TopStoryJsEventNotifier", "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
       paramString1 = String.format("javascript:window['%s'] && %s(%s)", new Object[] { paramString1, paramString1, paramString2 });
-      if ((parame != null) && (parame.Ndj != null)) {
-        parame.Ndj.evaluateJavascript(paramString1, null);
+      if ((parame != null) && (parame.TPU != null)) {
+        parame.TPU.evaluateJavascript(paramString1, null);
       }
       AppMethodBeat.o(126548);
       return;

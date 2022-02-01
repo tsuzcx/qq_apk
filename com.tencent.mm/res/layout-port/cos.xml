@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/mbe" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.tabs.TabLayout android:id="@id/kdb" android:layout_width="fill_parent" android:layout_height="@dimen/d4" android:layout_alignParentStart="true" app:tabBackground="@color/ahb" app:tabIndicatorColor="@color/al5" app:tabIndicatorHeight="2.0dip" app:tabMode="j4k" app:tabRippleColor="@color/ahb" app:tabSelectedTextColor="@color/al5" app:tabTextColor="@color/al5" />
+    <com.tencent.mm.plugin.finder.live.gala.viewpager.FinderLiveBoxViewPager android:orientation="horizontal" android:id="@id/man" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_below="@id/kdb" />
+</RelativeLayout>

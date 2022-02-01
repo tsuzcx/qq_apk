@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ln;
-import com.tencent.mm.protocal.protobuf.lo;
+import com.tencent.mm.protocal.protobuf.mo;
+import com.tencent.mm.protocal.protobuf.mp;
 
 public final class e
-  extends q
+  extends p
   implements m
 {
-  public static int mZR = 1;
-  public static int mZS = 2;
-  private i callback;
-  private d rr;
+  public static int pWA = 1;
+  public static int pWB = 2;
+  private h callback;
+  private c rr;
   
   public e(int paramInt, String paramString)
   {
     AppMethodBeat.i(127829);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ln();
-    ((d.a)localObject).lBV = new lo();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/bindemail";
-    ((d.a)localObject).funcId = 256;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (ln)d.b.b(this.rr.lBR);
-    ((ln)localObject).RLe = paramInt;
-    ((ln)localObject).RQx = paramString;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new mo();
+    ((c.a)localObject).otF = new mp();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/bindemail";
+    ((c.a)localObject).funcId = 256;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (mo)c.b.b(this.rr.otB);
+    ((mo)localObject).YIq = paramInt;
+    ((mo)localObject).YNN = paramString;
     AppMethodBeat.o(127829);
   }
   
-  public final int ZB()
+  public final int bIO()
   {
-    AppMethodBeat.i(220049);
-    int i = ((ln)d.b.b(this.rr.lBR)).RLe;
-    AppMethodBeat.o(220049);
+    AppMethodBeat.i(304868);
+    int i = ((mo)c.b.b(this.rr.otB)).YIq;
+    AppMethodBeat.o(304868);
     return i;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(127830);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(127830);
     return i;

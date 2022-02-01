@@ -11,24 +11,19 @@ public abstract interface i
   
   public abstract void g(View paramView);
   
-  public abstract View.OnClickListener gbx();
+  public abstract void hj(String paramString, int paramInt);
   
-  public abstract void gp(String paramString, int paramInt);
+  public abstract View.OnClickListener huQ();
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   
   public abstract void setShowStoryHint(boolean paramBoolean);
   
   public abstract void setWeakContext(Context paramContext);
-  
-  public static abstract interface a
-  {
-    public abstract boolean gby();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.i
  * JD-Core Version:    0.7.0.1
  */

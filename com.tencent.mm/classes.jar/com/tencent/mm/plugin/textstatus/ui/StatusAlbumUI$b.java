@@ -1,84 +1,76 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.cd.b;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.textstatus.g.g;
-import com.tencent.mm.plugin.textstatus.proto.aa;
-import com.tencent.mm.plugin.textstatus.proto.r;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.textstatus.proto.ag;
+import com.tencent.mm.plugin.textstatus.proto.an;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$HistoryItemLoader;", "", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "refreahLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "continueFlag", "", "lastLoadContext", "Lcom/tencent/mm/protobuf/ByteString;", "onSceneEnd", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getRefreahLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "hasMoreData", "loadNextPage", "", "release", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/textstatus/ui/StatusAlbumUI$HistoryItemLoader;", "", "adapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "refreahLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "(Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getAdapter", "()Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "continueFlag", "", "lastLoadContext", "Lcom/tencent/mm/protobuf/ByteString;", "onSceneEnd", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getRefreahLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "hasMoreData", "loadNextPage", "", "release", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 final class StatusAlbumUI$b
 {
-  b MKx;
-  final RefreshLoadMoreLayout MKy;
-  final i jxB;
-  boolean xcp;
-  final WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> xnR;
+  boolean ABD;
+  private final WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> ALE;
+  private final RefreshLoadMoreLayout TwH;
+  private b TwI;
+  final com.tencent.mm.am.h maV;
   
   public StatusAlbumUI$b(WxRecyclerAdapter<com.tencent.mm.view.recyclerview.a> paramWxRecyclerAdapter, RefreshLoadMoreLayout paramRefreshLoadMoreLayout)
   {
-    AppMethodBeat.i(232691);
-    this.xnR = paramWxRecyclerAdapter;
-    this.MKy = paramRefreshLoadMoreLayout;
-    this.jxB = ((i)new a(this));
-    h.aGY().a(4245, this.jxB);
-    AppMethodBeat.o(232691);
+    AppMethodBeat.i(291540);
+    this.ALE = paramWxRecyclerAdapter;
+    this.TwH = paramRefreshLoadMoreLayout;
+    this.maV = new StatusAlbumUI.b..ExternalSyntheticLambda0(this);
+    com.tencent.mm.kernel.h.aZW().a(4245, this.maV);
+    AppMethodBeat.o(291540);
   }
   
-  public final void eZs()
+  private static final void a(b paramb, int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(232686);
-    g localg = new g(this.MKx);
-    h.aGY().b((q)localg);
-    AppMethodBeat.o(232686);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "netSceneBase", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSceneEnd"})
-  static final class a
-    implements i
-  {
-    a(StatusAlbumUI.b paramb) {}
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    AppMethodBeat.i(291547);
+    kotlin.g.b.s.u(paramb, "this$0");
+    kotlin.g.b.s.u(paramp, "netSceneBase");
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      AppMethodBeat.i(232315);
-      p.k(paramq, "netSceneBase");
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      paramString = ((com.tencent.mm.plugin.textstatus.h.h)paramp).TmP;
+      if (paramString != null)
       {
-        paramString = ((g)paramq).MDk;
+        paramb.TwI = paramString.TpC;
+        paramb.ABD = paramString.TpE;
+        paramString = paramString.TpD;
         if (paramString != null)
         {
-          this.MKz.MKx = paramString.MFp;
-          this.MKz.xcp = paramString.MFr;
-          paramString = paramString.MFq;
-          if (paramString != null)
+          paramString = ((Iterable)paramString).iterator();
+          while (paramString.hasNext())
           {
-            paramString = ((Iterable)paramString).iterator();
-            while (paramString.hasNext())
+            paramp = (an)paramString.next();
+            if (paramp != null)
             {
-              paramq = (aa)paramString.next();
-              if (paramq != null) {
-                ((List)this.MKz.xnR.data).add(new com.tencent.mm.plugin.textstatus.g.a.a(paramq));
-              }
+              List localList = (List)paramb.ALE.data;
+              kotlin.g.b.s.s(paramp, "it");
+              localList.add(new com.tencent.mm.plugin.textstatus.h.a.a(paramp));
             }
           }
-          Log.i("MicroMsg.TextStatus.StatusAlbumUI", "data size = " + ((List)this.MKz.xnR.data).size() + ", continueFlag: " + this.MKz.xcp);
         }
+        Log.i("MicroMsg.TextStatus.StatusAlbumUI", "data size = " + ((List)paramb.ALE.data).size() + ", continueFlag: " + paramb.ABD);
       }
-      this.MKz.MKy.azs(0);
-      AppMethodBeat.o(232315);
     }
+    paramb.TwH.aFW(0);
+    AppMethodBeat.o(291547);
+  }
+  
+  public final void gir()
+  {
+    AppMethodBeat.i(291559);
+    com.tencent.mm.plugin.textstatus.h.h localh = new com.tencent.mm.plugin.textstatus.h.h(this.TwI);
+    com.tencent.mm.kernel.h.aZW().a((p)localh, 0);
+    AppMethodBeat.o(291559);
   }
 }
 

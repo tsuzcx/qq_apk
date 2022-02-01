@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/ab6" android:background="@drawable/xf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ab3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ab1" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/aih" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
-        <TextView android:textSize="@dimen/u4" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/aii" android:background="@drawable/b6c" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:text="@string/amc" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/dm0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/c4">
+        <FrameLayout android:id="@id/eol" android:visibility="gone" android:layout_width="@dimen/c4" android:layout_height="@dimen/c4" />
+        <ImageView android:id="@id/dlz" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:layout_margin="@dimen/cp" android:layout_centerInParent="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ff522b23" android:id="@id/dm1" android:background="@drawable/zl" android:paddingLeft="8.0dip" android:paddingTop="3.0dip" android:paddingRight="8.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveGameWelfareTaskProgressView android:id="@id/dm3" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" />
+</RelativeLayout>

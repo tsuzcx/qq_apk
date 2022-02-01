@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/g4h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/g4f" android:background="@drawable/b1e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
-            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/g4i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            <FrameLayout android:id="@id/g4g" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout style="@style/r8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/j40" android:scrollbars="none" style="@style/o8">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/i6" android:paddingTop="@dimen/i6" android:paddingRight="@dimen/i6" android:paddingBottom="@dimen/i6" android:fadingEdge="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/j7" android:gravity="center" android:id="@id/a9y" style="@style/n_" />
+            <TextView android:textSize="@dimen/ia" android:textStyle="bold" android:textColor="@color/a7b" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/a9v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6" android:maxLines="2" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/j6">
+                <com.tencent.mm.ui.base.MMFormInputView android:id="@id/a9x" android:layout_height="wrap_content" android:minHeight="58.0dip" form:form_hint="@string/akc" form:form_layout="@layout/bd1" form:form_title="@string/a40" style="@style/mg" />
+                <TextView android:textSize="@dimen/hq" android:textColor="@color/a1c" android:layout_gravity="center_horizontal" android:id="@id/gxv" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/i6" android:text="@string/guz" style="@style/n_" />
+                <TextView android:textColor="@color/m4" android:layout_gravity="center_horizontal" android:id="@id/gxu" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/m2" android:text="@string/guz" style="@style/n_" />
+                <Button android:id="@id/hfl" android:layout_marginTop="@dimen/i_" android:text="@string/a12" style="@style/og" />
+            </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
-</merge>
+    </ScrollView>
+</LinearLayout>

@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.gamelife.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,36 +15,69 @@ import com.tencent.mm.plugin.gamelife.d.d;
 import com.tencent.mm.plugin.gamelife.d.e;
 import com.tencent.mm.plugin.gamelife.d.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider;", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider;", "delegate", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;)V", "isFirst", "", "viewHolder", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$ConversationViewHolder;", "getExtInfo", "", "unreadCount", "", "(Ljava/lang/Integer;)Ljava/lang/String;", "onBindViewHolder", "", "holder", "pos", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "refreshView", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider;", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider;", "delegate", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;", "(Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationViewProvider$Delegate;)V", "isFirst", "", "viewHolder", "Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$ConversationViewHolder;", "getExtInfo", "", "unreadCount", "", "(Ljava/lang/Integer;)Ljava/lang/String;", "onBindViewHolder", "", "holder", "pos", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "refreshView", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
   extends f
 {
-  b.b Did;
+  b.b JbU;
   private boolean isFirst;
   
   public g(f.a parama)
   {
     super(parama);
-    AppMethodBeat.i(203439);
+    AppMethodBeat.i(267899);
     this.isFirst = true;
-    AppMethodBeat.o(203439);
+    AppMethodBeat.o(267899);
   }
   
-  public static String o(Integer paramInteger)
+  private static final void a(View paramView1, g paramg, View paramView2)
   {
-    AppMethodBeat.i(203437);
-    int i;
-    if (paramInteger != null)
+    AppMethodBeat.i(267926);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramView1);
+    localb.cH(paramg);
+    localb.cH(paramView2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramView1, "$this_apply");
+    s.u(paramg, "this$0");
+    paramg = new Intent();
+    paramg.putExtra("game_msg_center_tab_type", 2);
+    com.tencent.mm.br.c.b(paramView1.getContext(), "game", ".ui.message.GameMsgCenterUI", paramg);
+    paramView1 = paramView2.getTag();
+    if (paramView1 == null)
     {
-      i = paramInteger.intValue();
+      paramView1 = null;
+      paramg = MMApplicationContext.getContext();
+      paramView2 = com.tencent.mm.plugin.gamelife.j.a.JbN;
+      com.tencent.mm.game.report.g.a(paramg, 21, 2101, 2, 6, (int)com.tencent.mm.plugin.gamelife.j.a.fIw(), v(paramView1));
+      com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(267926);
+      return;
+    }
+    if ((paramView1 instanceof Integer)) {}
+    for (int i = ((Number)paramView1).intValue();; i = 0)
+    {
+      paramView1 = Integer.valueOf(i);
+      break;
+    }
+  }
+  
+  private static String v(Integer paramInteger)
+  {
+    AppMethodBeat.i(267911);
+    int i;
+    if (paramInteger == null)
+    {
+      i = 0;
       paramInteger = new HashMap();
       if (i <= 0) {
         break label82;
@@ -56,134 +87,74 @@ public final class g
     for (;;)
     {
       ((Map)paramInteger).put("TotalNum", String.valueOf(i));
-      paramInteger = com.tencent.mm.game.report.g.l((Map)paramInteger);
-      p.j(paramInteger, "Report_12909.genExtInfo(map)");
-      AppMethodBeat.o(203437);
+      paramInteger = com.tencent.mm.game.report.g.s((Map)paramInteger);
+      s.s(paramInteger, "genExtInfo(map)");
+      AppMethodBeat.o(267911);
       return paramInteger;
-      i = 0;
+      i = paramInteger.intValue();
       break;
       label82:
       ((Map)paramInteger).put("RedDot", "2");
     }
   }
   
-  public final b.b E(ViewGroup paramViewGroup)
+  public final b.b O(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(203428);
-    p.k(paramViewGroup, "parent");
-    paramViewGroup = ad.kS(paramViewGroup.getContext()).inflate(d.d.Dgg, paramViewGroup, false);
-    p.j(paramViewGroup, "MMLayoutInflater.getInfl…rmal_item, parent, false)");
-    this.Did = new b.b(paramViewGroup);
-    paramViewGroup = this.Did;
-    if (paramViewGroup == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203428);
+    AppMethodBeat.i(267942);
+    s.u(paramViewGroup, "parent");
+    paramViewGroup = af.mU(paramViewGroup.getContext()).inflate(d.d.Jab, paramViewGroup, false);
+    s.s(paramViewGroup, "getInflater(parent.conte…rmal_item, parent, false)");
+    this.JbU = new b.b(paramViewGroup);
+    paramViewGroup = this.JbU;
+    s.checkNotNull(paramViewGroup);
+    AppMethodBeat.o(267942);
     return paramViewGroup;
   }
   
   public final void a(b.b paramb, int paramInt)
   {
-    AppMethodBeat.i(203433);
-    p.k(paramb, "holder");
-    Object localObject1 = paramb.amk;
-    p.j(localObject1, "holder.itemView");
-    Object localObject2 = paramb.amk;
-    ((View)localObject2).setOnClickListener((View.OnClickListener)new a((View)localObject2, this));
-    if (ar.isDarkMode()) {
-      ((ImageView)((View)localObject1).findViewById(d.c.avatarIv)).setImageResource(d.e.ic_filled_bell_dark);
+    AppMethodBeat.i(267981);
+    s.u(paramb, "holder");
+    Object localObject = paramb.caK;
+    s.s(localObject, "holder.itemView");
+    View localView = paramb.caK;
+    localView.setOnClickListener(new g..ExternalSyntheticLambda0(localView, this));
+    if (aw.isDarkMode()) {
+      ((ImageView)((View)localObject).findViewById(d.c.avatarIv)).setImageResource(d.e.ic_filled_bell_dark);
     }
     for (;;)
     {
-      ((View)localObject1).setBackgroundResource(d.b.comm_list_item_selector);
-      ((TextView)((View)localObject1).findViewById(d.c.conversationName)).setText(d.f.DgE);
-      localObject2 = (TextView)((View)localObject1).findViewById(d.c.descTv);
-      p.j(localObject2, "itemView.descTv");
-      ((TextView)localObject2).setVisibility(0);
-      localObject2 = (TextView)((View)localObject1).findViewById(d.c.timeTv);
-      p.j(localObject2, "itemView.timeTv");
-      ((TextView)localObject2).setVisibility(8);
-      localObject2 = (TextView)((View)localObject1).findViewById(d.c.tipCountTv);
-      p.j(localObject2, "itemView.tipCountTv");
-      ((TextView)localObject2).setVisibility(8);
-      localObject2 = (TextView)((View)localObject1).findViewById(d.c.tipNomalTv);
-      p.j(localObject2, "itemView.tipNomalTv");
-      ((TextView)localObject2).setVisibility(8);
-      localObject2 = (WeImageView)((View)localObject1).findViewById(d.c.DfW);
-      p.j(localObject2, "itemView.rightArrow");
-      ((WeImageView)localObject2).setVisibility(0);
-      localObject2 = ((View)localObject1).findViewById(d.c.DfJ);
-      p.j(localObject2, "itemView.divider_2px");
-      ((View)localObject2).setVisibility(8);
-      localObject2 = ((View)localObject1).findViewById(d.c.DfK);
-      p.j(localObject2, "itemView.divider_8dp");
-      ((View)localObject2).setVisibility(0);
-      paramInt = ((com.tencent.mm.plugin.game.api.c)h.ae(com.tencent.mm.plugin.game.api.c.class)).Tn(2);
-      paramb = paramb.amk;
-      p.j(paramb, "holder.itemView");
-      paramb.setTag(Integer.valueOf(paramInt));
-      if (paramInt > 0)
-      {
-        paramb = (TextView)((View)localObject1).findViewById(d.c.tipNomalTv);
-        p.j(paramb, "itemView.tipNomalTv");
-        paramb.setVisibility(0);
+      ((View)localObject).setBackgroundResource(d.b.comm_list_item_selector);
+      ((TextView)((View)localObject).findViewById(d.c.conversationName)).setText(d.f.Jay);
+      ((TextView)((View)localObject).findViewById(d.c.descTv)).setVisibility(0);
+      ((TextView)((View)localObject).findViewById(d.c.timeTv)).setVisibility(8);
+      ((TextView)((View)localObject).findViewById(d.c.tipCountTv)).setVisibility(8);
+      ((TextView)((View)localObject).findViewById(d.c.tipNomalTv)).setVisibility(8);
+      ((WeImageView)((View)localObject).findViewById(d.c.IZR)).setVisibility(0);
+      ((View)localObject).findViewById(d.c.IZE).setVisibility(8);
+      ((View)localObject).findViewById(d.c.IZF).setVisibility(0);
+      paramInt = ((com.tencent.mm.plugin.game.api.c)h.ax(com.tencent.mm.plugin.game.api.c.class)).WY(2);
+      paramb.caK.setTag(Integer.valueOf(paramInt));
+      if (paramInt > 0) {
+        ((TextView)((View)localObject).findViewById(d.c.tipNomalTv)).setVisibility(0);
       }
-      paramb = (TextView)((View)localObject1).findViewById(d.c.descTv);
-      p.j(paramb, "itemView.descTv");
-      paramb.setText((CharSequence)((com.tencent.mm.plugin.game.api.c)h.ae(com.tencent.mm.plugin.game.api.c.class)).To(2));
+      ((TextView)((View)localObject).findViewById(d.c.descTv)).setText((CharSequence)((com.tencent.mm.plugin.game.api.c)h.ax(com.tencent.mm.plugin.game.api.c.class)).WZ(2));
       if (this.isFirst)
       {
         this.isFirst = false;
         paramb = MMApplicationContext.getContext();
-        localObject1 = com.tencent.mm.plugin.gamelife.i.a.DhX;
-        com.tencent.mm.game.report.g.a(paramb, 21, 2101, 2, 1, (int)com.tencent.mm.plugin.gamelife.i.a.eAv(), o(Integer.valueOf(paramInt)));
+        localObject = com.tencent.mm.plugin.gamelife.j.a.JbN;
+        com.tencent.mm.game.report.g.a(paramb, 21, 2101, 2, 1, (int)com.tencent.mm.plugin.gamelife.j.a.fIw(), v(Integer.valueOf(paramInt)));
       }
-      AppMethodBeat.o(203433);
+      AppMethodBeat.o(267981);
       return;
-      ((ImageView)((View)localObject1).findViewById(d.c.avatarIv)).setImageResource(d.e.ic_filled_bell);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider$onBindViewHolder$1$1"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(View paramView, g paramg) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(203400);
-      Object localObject = new b();
-      ((b)localObject).bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider$onBindViewHolder$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("game_msg_center_tab_type", 2);
-      com.tencent.mm.by.c.b(this.xkv.getContext(), "game", ".ui.message.GameMsgCenterUI", (Intent)localObject);
-      p.j(paramView, "view");
-      paramView = paramView.getTag();
-      if (paramView != null) {
-        if ((paramView instanceof Integer)) {
-          paramView = Integer.valueOf(((Number)paramView).intValue());
-        }
-      }
-      for (;;)
-      {
-        localObject = MMApplicationContext.getContext();
-        com.tencent.mm.plugin.gamelife.i.a locala = com.tencent.mm.plugin.gamelife.i.a.DhX;
-        com.tencent.mm.game.report.g.a((Context)localObject, 21, 2101, 2, 6, (int)com.tencent.mm.plugin.gamelife.i.a.eAv(), g.o(paramView));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/GameServiceNotifyMsgViewProvider$onBindViewHolder$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(203400);
-        return;
-        paramView = Integer.valueOf(0);
-        continue;
-        paramView = null;
-      }
+      ((ImageView)((View)localObject).findViewById(d.c.avatarIv)).setImageResource(d.e.ic_filled_bell);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.ui.g
  * JD-Core Version:    0.7.0.1
  */

@@ -15,9 +15,9 @@ final class BaseActivity$5
   {
     AppMethodBeat.i(159090);
     b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
-    boolean bool = BaseActivity.a(paramView, this.VRb);
+    localb.cH(paramView);
+    a.c("com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aYj());
+    boolean bool = BaseActivity.a(paramView, this.advj);
     a.a(bool, this, "com/tencent/mm/ui/BaseActivity$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(159090);
     return bool;

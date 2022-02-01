@@ -10,33 +10,33 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.sns.b.c;
 
 public class ViewPagerControlView
   extends LinearLayout
 {
-  protected int LuR;
-  private float LuS;
-  private float LuT;
-  private Paint LuU;
-  private Paint LuV;
-  private Paint LuW;
-  private Paint LuX;
-  private int LuY;
-  private float LuZ;
-  private int Lva;
-  private float Lvb;
-  private float Lvc;
+  private float RYA;
+  private int RYB;
+  private float RYC;
+  private float RYD;
+  protected int RYs;
+  private float RYt;
+  private float RYu;
+  private Paint RYv;
+  private Paint RYw;
+  private Paint RYx;
+  private Paint RYy;
+  private int RYz;
   private boolean autoCarousel;
   protected Context context;
   protected int count;
   private float height;
   private float left;
-  private Paint opm;
-  private int pEj;
   float progress;
   private float radius;
+  private Paint rsU;
+  private int sJv;
   private float width;
   
   public ViewPagerControlView(Context paramContext)
@@ -52,43 +52,43 @@ public class ViewPagerControlView
   public ViewPagerControlView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(263901);
+    AppMethodBeat.i(309270);
     this.autoCarousel = false;
     this.context = paramContext;
-    this.pEj = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao.ib(this.context)[0];
+    this.sJv = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ar.jR(this.context)[0];
     this.width = a.fromDPToPix(this.context, 28);
     this.height = a.fromDPToPix(this.context, 7);
     this.radius = (this.height / 2.0F);
-    this.LuT = (this.width - this.height);
-    this.LuU = new Paint();
-    this.LuU.setFlags(1);
-    this.LuU.setColor(this.context.getResources().getColor(i.c.sns_ad_gallery_control_view_point_color));
-    this.LuV = new Paint();
-    this.LuV.setStyle(Paint.Style.STROKE);
-    this.LuV.setStrokeWidth(0.5F);
-    this.LuV.setFlags(1);
-    this.LuV.setColor(this.context.getResources().getColor(i.c.sns_ad_gallery_control_view_border_color));
-    this.LuW = new Paint();
-    this.LuW.setFlags(1);
-    this.LuW.setColor(this.context.getResources().getColor(i.c.sns_ad_gallery_control_view_point_color));
-    this.LuX = new Paint();
-    this.LuX.setFlags(1);
-    this.LuX.setColor(-1);
-    this.LuX.setAlpha(0);
-    this.opm = new Paint();
-    this.opm.setFlags(1);
-    this.opm.setColor(-1);
-    this.opm.setAlpha(0);
-    this.opm.setStyle(Paint.Style.STROKE);
-    this.opm.setStrokeWidth(this.height);
-    this.opm.setStrokeCap(Paint.Cap.ROUND);
+    this.RYu = (this.width - this.height);
+    this.RYv = new Paint();
+    this.RYv.setFlags(1);
+    this.RYv.setColor(this.context.getResources().getColor(b.c.sns_ad_gallery_control_view_point_color));
+    this.RYw = new Paint();
+    this.RYw.setStyle(Paint.Style.STROKE);
+    this.RYw.setStrokeWidth(0.5F);
+    this.RYw.setFlags(1);
+    this.RYw.setColor(this.context.getResources().getColor(b.c.sns_ad_gallery_control_view_border_color));
+    this.RYx = new Paint();
+    this.RYx.setFlags(1);
+    this.RYx.setColor(this.context.getResources().getColor(b.c.sns_ad_gallery_control_view_point_color));
+    this.RYy = new Paint();
+    this.RYy.setFlags(1);
+    this.RYy.setColor(-1);
+    this.RYy.setAlpha(0);
+    this.rsU = new Paint();
+    this.rsU.setFlags(1);
+    this.rsU.setColor(-1);
+    this.rsU.setAlpha(0);
+    this.rsU.setStyle(Paint.Style.STROKE);
+    this.rsU.setStrokeWidth(this.height);
+    this.rsU.setStrokeCap(Paint.Cap.ROUND);
     setWillNotDraw(false);
-    AppMethodBeat.o(263901);
+    AppMethodBeat.o(309270);
   }
   
-  private void e(Canvas paramCanvas, boolean paramBoolean)
+  private void f(Canvas paramCanvas, boolean paramBoolean)
   {
-    AppMethodBeat.i(263909);
+    AppMethodBeat.i(309278);
     float f2;
     float f3;
     float f4;
@@ -99,40 +99,40 @@ public class ViewPagerControlView
     if (paramBoolean)
     {
       f2 = this.width;
-      f3 = this.LuZ;
-      f4 = this.LuT;
-      if (this.LuZ <= 0.3F)
+      f3 = this.RYA;
+      f4 = this.RYu;
+      if (this.RYA <= 0.3F)
       {
-        f1 = 1.0F - this.LuZ * 10.0F / 3.0F;
+        f1 = 1.0F - this.RYA * 10.0F / 3.0F;
         f2 -= f3 * f4;
         i = (int)(f1 * 255.0F);
         f1 = this.left + f2;
         localRectF = new RectF(this.left, 0.0F, f1, this.height);
-        paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.LuU);
+        paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.RYv);
         if (!paramBoolean) {
           break label288;
         }
-        this.opm.setAlpha(i);
-        f3 = this.Lvb;
+        this.rsU.setAlpha(i);
+        f3 = this.RYC;
         f4 = this.radius;
-        f5 = this.Lvb;
-        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.opm);
+        f5 = this.RYC;
+        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.rsU);
       }
     }
     for (;;)
     {
-      paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.LuV);
+      paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.RYw);
       this.left = (this.height + f1);
-      this.Lvb = (this.left + this.radius);
-      AppMethodBeat.o(263909);
+      this.RYC = (this.left + this.radius);
+      AppMethodBeat.o(309278);
       return;
       f1 = 0.0F;
       break;
-      f2 = this.LuZ;
-      f3 = this.LuT;
+      f2 = this.RYA;
+      f3 = this.RYu;
       f4 = this.height;
-      if (this.LuZ >= 0.7F) {}
-      for (f1 = (this.LuZ - 0.7F) * 10.0F / 3.0F;; f1 = 0.0F)
+      if (this.RYA >= 0.7F) {}
+      for (f1 = (this.RYA - 0.7F) * 10.0F / 3.0F;; f1 = 0.0F)
       {
         f2 = f4 + f2 * f3;
         break;
@@ -140,104 +140,104 @@ public class ViewPagerControlView
       label288:
       if (!this.autoCarousel)
       {
-        this.opm.setAlpha(i);
-        f3 = this.Lvb;
+        this.rsU.setAlpha(i);
+        f3 = this.RYC;
         f4 = this.radius;
-        f5 = this.Lvb;
-        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.opm);
+        f5 = this.RYC;
+        paramCanvas.drawLine(f3, f4, (f2 - this.radius * 2.0F) * this.progress + f5, this.radius, this.rsU);
       }
       else
       {
-        this.LuX.setAlpha(i);
-        paramCanvas.drawCircle(this.Lvb, this.Lvc, this.radius, this.LuX);
+        this.RYy.setAlpha(i);
+        paramCanvas.drawCircle(this.RYC, this.RYD, this.radius, this.RYy);
       }
     }
   }
   
-  private void y(Canvas paramCanvas)
+  private void t(Canvas paramCanvas)
   {
-    AppMethodBeat.i(263908);
-    paramCanvas.drawCircle(this.Lvb, this.Lvc, this.radius, this.LuW);
-    paramCanvas.drawCircle(this.Lvb, this.Lvc, this.radius, this.LuV);
+    AppMethodBeat.i(309273);
+    paramCanvas.drawCircle(this.RYC, this.RYD, this.radius, this.RYx);
+    paramCanvas.drawCircle(this.RYC, this.RYD, this.radius, this.RYw);
     this.left += 2.0F * this.height;
-    this.Lvb = (this.left + this.radius);
-    AppMethodBeat.o(263908);
+    this.RYC = (this.left + this.radius);
+    AppMethodBeat.o(309273);
   }
   
-  public final void bi(int paramInt, boolean paramBoolean)
+  public final void bQ(int paramInt, boolean paramBoolean)
   {
     this.count = paramInt;
-    this.LuR = (paramInt - 2);
-    this.LuS = ((this.pEj - (this.LuR - 1) * 2 * this.height - this.width) / 2.0F);
+    this.RYs = (paramInt - 2);
+    this.RYt = ((this.sJv - (this.RYs - 1) * 2 * this.height - this.width) / 2.0F);
     this.autoCarousel = paramBoolean;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = 2;
-    AppMethodBeat.i(263907);
+    AppMethodBeat.i(309291);
     super.onDraw(paramCanvas);
-    this.left = this.LuS;
-    this.Lvb = (this.left + this.radius);
-    this.Lvc = this.radius;
-    if ((this.Lva == 1) || (this.Lva == 2))
+    this.left = this.RYt;
+    this.RYC = (this.left + this.radius);
+    this.RYD = this.radius;
+    if ((this.RYB == 1) || (this.RYB == 2))
     {
-      e(paramCanvas, false);
-      while (i <= this.LuR - 1)
+      f(paramCanvas, false);
+      while (i <= this.RYs - 1)
       {
-        y(paramCanvas);
+        t(paramCanvas);
         i += 1;
       }
-      e(paramCanvas, true);
-      AppMethodBeat.o(263907);
+      f(paramCanvas, true);
+      AppMethodBeat.o(309291);
       return;
     }
     i = 1;
-    while (i < this.LuY)
+    while (i < this.RYz)
     {
-      y(paramCanvas);
+      t(paramCanvas);
       i += 1;
     }
-    e(paramCanvas, true);
-    e(paramCanvas, false);
-    i = this.LuY + 2;
-    while (i <= this.LuR)
+    f(paramCanvas, true);
+    f(paramCanvas, false);
+    i = this.RYz + 2;
+    while (i <= this.RYs)
     {
-      y(paramCanvas);
+      t(paramCanvas);
       i += 1;
     }
-    AppMethodBeat.o(263907);
+    AppMethodBeat.o(309291);
   }
   
-  public final void w(int paramInt, float paramFloat)
+  public final void z(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(263905);
-    if (paramInt > this.LuR)
+    AppMethodBeat.i(309285);
+    if (paramInt > this.RYs)
     {
-      AppMethodBeat.o(263905);
+      AppMethodBeat.o(309285);
       return;
     }
     if (paramInt <= 0) {
-      this.Lva = 1;
+      this.RYB = 1;
     }
     for (;;)
     {
-      this.LuY = paramInt;
-      this.LuZ = paramFloat;
+      this.RYz = paramInt;
+      this.RYA = paramFloat;
       invalidate();
-      AppMethodBeat.o(263905);
+      AppMethodBeat.o(309285);
       return;
-      if (paramInt == this.LuR) {
-        this.Lva = 2;
+      if (paramInt == this.RYs) {
+        this.RYB = 2;
       } else {
-        this.Lva = 0;
+        this.RYB = 0;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.ad.ViewPagerControlView
  * JD-Core Version:    0.7.0.1
  */

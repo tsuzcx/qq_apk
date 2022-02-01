@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@drawable/arm" android:paddingLeft="@dimen/jc" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mk"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/faz" android:background="@drawable/p6" android:paddingTop="@dimen/m2" android:paddingBottom="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j5">
+        <ImageView android:id="@id/ju6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ary" android:layout_marginRight="@dimen/arz" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <ImageView android:id="@id/ju9" android:layout_width="@dimen/as3" android:layout_height="@dimen/as0" android:layout_marginLeft="@dimen/as1" android:layout_marginRight="@dimen/as2" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/al6" android:id="@id/juc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g" android:layout_toLeftOf="@id/ju9" android:layout_toRightOf="@id/ju6" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/hq" android:textColor="@color/ad0" android:ellipsize="end" android:id="@id/jub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/ju9" android:layout_toRightOf="@id/ju6" android:layout_below="@id/juc" />
+        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true">
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/ad4" android:id="@id/jua" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/je1" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/adi" android:ellipsize="end" android:id="@id/ju_" android:paddingRight="60.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:layout_below="@id/jua" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,23 +1,18 @@
 package com.tencent.mm.loader.e;
 
-import com.tencent.mm.loader.f.e;
-import com.tencent.mm.loader.h.a.a;
+import com.tencent.mm.loader.g.a.a;
+import kotlin.Metadata;
 
-public final class g<T, R>
-  implements e<T, R>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "", "createFileName", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "createTmpWriteFileName", "libimageloader_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract interface g
 {
-  private e<T, R> kOS = null;
+  public abstract String e(a<?> parama);
   
-  public final void a(a<T> parama, com.tencent.mm.loader.e.b.g<?> paramg, R paramR)
-  {
-    if (this.kOS != null) {
-      this.kOS.a(parama, paramg, paramR);
-    }
-  }
+  public abstract String f(a<?> parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.e.g
  * JD-Core Version:    0.7.0.1
  */

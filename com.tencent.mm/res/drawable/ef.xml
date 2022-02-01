@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="200" android:drawable="@drawable/ba5" />
-    <item android:duration="200" android:drawable="@drawable/ba6" />
-    <item android:duration="200" android:drawable="@drawable/ba7" />
-</animation-list>
+    <item android:state_pressed="true" android:drawable="@drawable/b7k" />
+    <item android:drawable="@drawable/b7j" />
+</selector>

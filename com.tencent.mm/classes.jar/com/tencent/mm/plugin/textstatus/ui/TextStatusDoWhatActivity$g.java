@@ -1,56 +1,33 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.GridLayoutManager.b;
-import androidx.recyclerview.widget.RecyclerView.a;
+import android.graphics.Rect;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.view.recyclerview.WxRecyclerView;
-import kotlin.g.b.aa.f;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.ah.c;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onCreate$2", "Landroidx/recyclerview/widget/GridLayoutManager$SpanSizeLookup;", "getSpanSize", "", "position", "plugin-textstatus_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/textstatus/ui/TextStatusDoWhatActivity$onCreate$3", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-textstatus_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class TextStatusDoWhatActivity$g
-  extends GridLayoutManager.b
+  extends RecyclerView.h
 {
-  TextStatusDoWhatActivity$g(aa.f paramf) {}
+  TextStatusDoWhatActivity$g(ah.c paramc) {}
   
-  public final int cx(int paramInt)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(236251);
-    Object localObject = this.MLa.vnF;
-    if (localObject != null)
-    {
-      localObject = ((WxRecyclerView)localObject).getAdapter();
-      if (localObject != null)
-      {
-        localObject = Integer.valueOf(((RecyclerView.a)localObject).getItemViewType(paramInt));
-        if (localObject != null) {
-          break label55;
-        }
-        label39:
-        if (localObject != null) {
-          break label84;
-        }
-      }
-    }
-    label55:
-    label84:
-    while (((Integer)localObject).intValue() != 1)
-    {
-      AppMethodBeat.o(236251);
-      return 1;
-      localObject = null;
-      break;
-      if (((Integer)localObject).intValue() != -1) {
-        break label39;
-      }
-      paramInt = ((GridLayoutManager)this.MLd.aaBC).ku();
-      AppMethodBeat.o(236251);
-      return paramInt;
-    }
-    paramInt = ((GridLayoutManager)this.MLd.aaBC).ku();
-    AppMethodBeat.o(236251);
-    return paramInt;
+    AppMethodBeat.i(291149);
+    s.u(paramRect, "outRect");
+    s.u(paramView, "view");
+    s.u(paramRecyclerView, "parent");
+    s.u(params, "state");
+    super.a(paramRect, paramView, paramRecyclerView, params);
+    paramRect.bottom = ((int)this.Txy.aixa);
+    paramRect.left = ((int)this.Txy.aixa / 2);
+    paramRect.right = ((int)this.Txy.aixa / 2);
+    AppMethodBeat.o(291149);
   }
 }
 

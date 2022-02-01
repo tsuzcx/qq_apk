@@ -2,6 +2,8 @@ package com.tencent.kinda.gen;
 
 public abstract interface IUIPagePlatformFuncDelegate
 {
+  public abstract void addReportInfo(ViewReportStruct paramViewReportStruct);
+  
   public abstract void beginIgnoringInteractionEvents();
   
   public abstract void closeUI(boolean paramBoolean);
@@ -33,10 +35,12 @@ public abstract interface IUIPagePlatformFuncDelegate
   public abstract void startLoading(String paramString, boolean paramBoolean);
   
   public abstract void stopLoading();
+  
+  public abstract void triggerReport(ReportEvent paramReportEvent, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIPagePlatformFuncDelegate
  * JD-Core Version:    0.7.0.1
  */

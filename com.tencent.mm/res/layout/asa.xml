@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="@dimen/df" android:paddingRight="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView android:id="@id/eal" android:layout_width="fill_parent" android:layout_height="wrap_content" app:cardCornerRadius="@dimen/cd">
+        <ImageView android:id="@id/hjt" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/hk9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        <ImageView android:id="@id/hk0" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d1" android:layout_marginBottom="@dimen/cr">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cp">
+                <ImageView android:layout_gravity="start|center" android:id="@id/hjr" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:src="@drawable/c2x" android:importantForAccessibility="no" android:layout_marginStart="@dimen/cr" android:layout_marginEnd="@dimen/df" />
+                <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:importantForAccessibility="noHideDescendants">
+                    <TextView android:textSize="@dimen/cp" android:textColor="@color/u1" android:ellipsize="end" android:id="@id/hk8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="user" android:maxLines="2" />
+                    <TextView android:textSize="@dimen/ce" android:textColor="@color/u2" android:ellipsize="end" android:id="@id/hk6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:maxLines="1" android:importantForAccessibility="no" />
+                </LinearLayout>
+                <ImageButton android:layout_gravity="center_vertical" android:id="@id/hk4" android:background="@drawable/ap5" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:contentDescription="@string/kib" android:layout_marginStart="@dimen/cr" android:layout_marginEnd="@dimen/d0" />
+                <ImageButton android:layout_gravity="center_vertical" android:id="@id/hjq" android:background="@drawable/b0" android:layout_width="@dimen/d4" android:layout_height="@dimen/d4" android:contentDescription="@string/kef" android:layout_marginEnd="@dimen/cp" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/cd" android:textColor="@color/u2" android:id="@id/hk2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cr" />
+            <GridLayout android:id="@id/hk3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aa3" android:layout_marginTop="@dimen/bv" android:layout_marginRight="@dimen/aa3" android:useDefaultMargins="false" android:importantForAccessibility="noHideDescendants" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

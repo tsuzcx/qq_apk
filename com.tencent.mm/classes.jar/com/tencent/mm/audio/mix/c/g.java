@@ -11,15 +11,15 @@ public final class g
   {
     AppMethodBeat.i(136780);
     b.i("MicroMsg.Mix.AudioVariableConvertProcess", "AudioVariableConvertProcess src:%s, srcSampleRate:%d, srcChannels:%d, srcBitDepth:%d, desSampleRate:%d, desChannels:%d, desBitDepth:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
-    this.fna = paramString;
-    this.fnn = a.jdMethod_if(paramString);
-    c.adw();
+    this.hrl = paramString;
+    this.hry = a.jG(paramString);
+    c.aFv();
     int i;
     if (paramInt4 <= 0)
     {
       i = 0;
       if (i != 0) {
-        this.fnh = paramInt4;
+        this.hrs = paramInt4;
       }
       if (paramInt5 > 0) {
         break label169;
@@ -27,7 +27,7 @@ public final class g
       i = 0;
       label118:
       if (i != 0) {
-        this.fni = paramInt5;
+        this.hrt = paramInt5;
       }
       if (paramInt4 > 0) {
         break label175;
@@ -38,9 +38,9 @@ public final class g
     for (paramInt4 = j;; paramInt4 = 1)
     {
       if (paramInt4 != 0) {
-        this.fnj = paramInt6;
+        this.hru = paramInt6;
       }
-      J(paramInt1, paramInt2, paramInt3);
+      Z(paramInt1, paramInt2, paramInt3);
       AppMethodBeat.o(136780);
       return;
       i = 1;

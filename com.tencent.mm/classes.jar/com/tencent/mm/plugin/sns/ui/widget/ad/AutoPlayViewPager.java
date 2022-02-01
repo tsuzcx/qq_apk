@@ -40,14 +40,14 @@ public class AutoPlayViewPager
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(195486);
+    AppMethodBeat.i(309302);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(195486);
+      AppMethodBeat.o(309302);
       return bool;
       pauseAutoPlay();
       continue;
@@ -57,26 +57,26 @@ public class AutoPlayViewPager
   
   public void pauseAutoPlay()
   {
-    AppMethodBeat.i(195482);
+    AppMethodBeat.i(309299);
     if (this.autoCarousel)
     {
       if (this.animator != null)
       {
         this.animator.pause();
-        AppMethodBeat.o(195482);
+        AppMethodBeat.o(309299);
         return;
       }
       Log.e("AutoPlayViewPager", "animator is null when pauseAutoPlay");
     }
-    AppMethodBeat.o(195482);
+    AppMethodBeat.o(309299);
   }
   
   public void scrollToNextPage()
   {
-    AppMethodBeat.i(195472);
+    AppMethodBeat.i(309287);
     if (isFakeDragging())
     {
-      AppMethodBeat.o(195472);
+      AppMethodBeat.o(309287);
       return;
     }
     beginFakeDrag();
@@ -86,21 +86,21 @@ public class AutoPlayViewPager
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(204084);
+        AppMethodBeat.i(309260);
         if (AutoPlayViewPager.this.isFakeDragging())
         {
           int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
           AutoPlayViewPager.this.fakeDragBy(AutoPlayViewPager.this.mLastOffset - i);
           AutoPlayViewPager.this.mLastOffset = i;
         }
-        AppMethodBeat.o(204084);
+        AppMethodBeat.o(309260);
       }
     });
     localValueAnimator.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(265502);
+        AppMethodBeat.i(309258);
         super.onAnimationEnd(paramAnonymousAnimator);
         if (AutoPlayViewPager.this.isFakeDragging())
         {
@@ -108,11 +108,11 @@ public class AutoPlayViewPager
           AutoPlayViewPager.this.mLastOffset = 0;
           AutoPlayViewPager.this.startAutoPlay();
         }
-        AppMethodBeat.o(265502);
+        AppMethodBeat.o(309258);
       }
     });
     localValueAnimator.start();
-    AppMethodBeat.o(195472);
+    AppMethodBeat.o(309287);
   }
   
   public void setScrollTime(int paramInt)
@@ -127,7 +127,7 @@ public class AutoPlayViewPager
   
   public void startAutoPlay()
   {
-    AppMethodBeat.i(195480);
+    AppMethodBeat.i(309297);
     if (this.autoCarousel)
     {
       if (this.animator == null)
@@ -138,36 +138,36 @@ public class AutoPlayViewPager
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            AppMethodBeat.i(266004);
+            AppMethodBeat.i(309266);
             float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
             AutoPlayViewPager.this.pagerControlView.progress = f;
             AutoPlayViewPager.this.pagerControlView.invalidate();
-            AppMethodBeat.o(266004);
+            AppMethodBeat.o(309266);
           }
         });
         this.animator.addListener(new AnimatorListenerAdapter()
         {
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(204874);
+            AppMethodBeat.i(309261);
             super.onAnimationEnd(paramAnonymousAnimator);
             AutoPlayViewPager.this.scrollToNextPage();
-            AppMethodBeat.o(204874);
+            AppMethodBeat.o(309261);
           }
         });
       }
       this.animator.start();
-      AppMethodBeat.o(195480);
+      AppMethodBeat.o(309297);
       return;
     }
     this.pagerControlView.progress = 1.0F;
     this.pagerControlView.invalidate();
-    AppMethodBeat.o(195480);
+    AppMethodBeat.o(309297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.ad.AutoPlayViewPager
  * JD-Core Version:    0.7.0.1
  */

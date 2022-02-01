@@ -9,30 +9,31 @@ import java.util.HashSet;
 public final class b
   implements Runnable
 {
-  private static final b dfq = new b();
-  public long cQd = 16666666L;
+  private static final b feE = new b();
+  public static boolean feF;
   public Choreographer choreographer;
-  public com.tencent.matrix.trace.a.b deV;
-  private long[] dfA = null;
-  private volatile boolean dfl = false;
-  private long[] dfm = new long[4];
-  private final HashSet<com.tencent.matrix.trace.e.c> dfn = new HashSet();
-  private volatile long dfo = 0L;
-  private boolean dfp = false;
-  public Object dfr;
-  public Object[] dfs;
-  public Method dft;
-  public Method dfu;
-  public Method dfv;
-  public Object dfw;
-  private int[] dfx = new int[3];
-  private boolean[] dfy = new boolean[3];
-  private long[] dfz = new long[3];
+  public long eLi = 16666666L;
+  public com.tencent.matrix.trace.a.b fdU;
+  private long[] feA = new long[4];
+  private final HashSet<com.tencent.matrix.trace.e.c> feB = new HashSet();
+  private volatile long feC = 0L;
+  private boolean feD = false;
+  public Object feG;
+  public Object[] feH;
+  public Method feI;
+  public Method feJ;
+  public Method feK;
+  public Object feL;
+  private int[] feM = new int[3];
+  private boolean[] feN = new boolean[3];
+  private long[] feO = new long[3];
+  private long[] feP = null;
+  private volatile boolean fez = false;
   public boolean isInit = false;
   
-  public static b Ya()
+  public static b azL()
   {
-    return dfq;
+    return feE;
   }
   
   private void b(int paramInt, Runnable paramRunnable)
@@ -40,26 +41,26 @@ public final class b
     Method localMethod = null;
     try
     {
-      if (this.dfy[paramInt] != 0) {
+      if (this.feN[paramInt] != 0) {
         com.tencent.matrix.e.c.w("Matrix.UIThreadMonitor", "[addFrameCallback] this type %s callback has exist! isAddHeader:%s", new Object[] { Integer.valueOf(paramInt), Boolean.TRUE });
       }
       for (;;)
       {
         return;
-        if ((!this.dfl) && (paramInt == 0)) {
+        if ((!this.fez) && (paramInt == 0)) {
           com.tencent.matrix.e.c.w("Matrix.UIThreadMonitor", "[addFrameCallback] UIThreadMonitor is not alive!", new Object[0]);
         } else {
           try
           {
-            localObject = this.dfr;
+            localObject = this.feG;
             switch (paramInt)
             {
             default: 
               if (localMethod != null) {}
               try
               {
-                localMethod.invoke(this.dfs[paramInt], new Object[] { Long.valueOf(-1L), paramRunnable, null });
-                this.dfy[paramInt] = true;
+                localMethod.invoke(this.feH[paramInt], new Object[] { Long.valueOf(-1L), paramRunnable, null });
+                this.feN[paramInt] = true;
               }
               finally {}
             }
@@ -75,19 +76,19 @@ public final class b
     for (;;)
     {
       Object localObject;
-      localMethod = this.dfu;
+      localMethod = this.feJ;
       continue;
-      localMethod = this.dfv;
+      localMethod = this.feK;
       continue;
-      localMethod = this.dft;
+      localMethod = this.feI;
     }
   }
   
-  private long bt(long paramLong)
+  private long dO(long paramLong)
   {
     try
     {
-      long l = ((Long)f.b(this.dfw, "mTimestampNanos", Long.valueOf(paramLong))).longValue();
+      long l = ((Long)f.c(this.feL, "mTimestampNanos", Long.valueOf(paramLong))).longValue();
       return l;
     }
     catch (Exception localException)
@@ -97,19 +98,19 @@ public final class b
     return paramLong;
   }
   
-  private void jH(int paramInt)
+  private void nw(int paramInt)
   {
-    this.dfx[paramInt] = 1;
-    this.dfz[paramInt] = System.nanoTime();
+    this.feM[paramInt] = 1;
+    this.feO[paramInt] = System.nanoTime();
   }
   
-  private void jI(int paramInt)
+  private void nx(int paramInt)
   {
-    this.dfx[paramInt] = 2;
-    this.dfz[paramInt] = (System.nanoTime() - this.dfz[paramInt]);
+    this.feM[paramInt] = 2;
+    this.feO[paramInt] = (System.nanoTime() - this.feO[paramInt]);
     try
     {
-      this.dfy[paramInt] = false;
+      this.feN[paramInt] = false;
       return;
     }
     finally
@@ -121,22 +122,22 @@ public final class b
   
   public final void a(com.tencent.matrix.trace.e.c paramc)
   {
-    if (!this.dfl) {
+    if (!this.fez) {
       onStart();
     }
-    synchronized (this.dfn)
+    synchronized (this.feB)
     {
-      this.dfn.add(paramc);
+      this.feB.add(paramc);
       return;
     }
   }
   
   public final void b(com.tencent.matrix.trace.e.c paramc)
   {
-    synchronized (this.dfn)
+    synchronized (this.feB)
     {
-      this.dfn.remove(paramc);
-      if (this.dfn.isEmpty()) {
+      this.feB.remove(paramc);
+      if (this.feB.isEmpty()) {
         onStop();
       }
       return;
@@ -150,10 +151,10 @@ public final class b
       if (!this.isInit) {
         com.tencent.matrix.e.c.e("Matrix.UIThreadMonitor", "[onStart] is never init.", new Object[0]);
       }
-      while (this.dfl) {
+      while (this.fez) {
         return;
       }
-      this.dfl = true;
+      this.fez = true;
     }
     finally
     {
@@ -161,11 +162,14 @@ public final class b
       {
         for (;;)
         {
-          com.tencent.matrix.e.c.i("Matrix.UIThreadMonitor", "[onStart] callbackExist:%s %s", new Object[] { Arrays.toString(this.dfy), com.tencent.matrix.trace.g.b.getStack() });
-          this.dfy = new boolean[3];
-          this.dfx = new int[3];
-          this.dfz = new long[3];
-          b(0, this);
+          com.tencent.matrix.e.c.i("Matrix.UIThreadMonitor", "[onStart] callbackExist:%s %s", new Object[] { Arrays.toString(this.feN), com.tencent.matrix.trace.f.c.getStack() });
+          this.feN = new boolean[3];
+          if (!feF)
+          {
+            this.feM = new int[3];
+            this.feO = new long[3];
+            b(0, this);
+          }
         }
       }
       finally {}
@@ -180,37 +184,37 @@ public final class b
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 81	com/tencent/matrix/trace/core/b:isInit	Z
+    //   3: getfield 82	com/tencent/matrix/trace/core/b:isInit	Z
     //   6: ifne +18 -> 24
-    //   9: ldc 98
-    //   11: ldc_w 272
+    //   9: ldc 99
+    //   11: ldc_w 291
     //   14: iconst_0
     //   15: anewarray 4	java/lang/Object
-    //   18: invokestatic 144	com/tencent/matrix/e/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   18: invokestatic 145	com/tencent/matrix/e/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: aload_0
-    //   25: getfield 58	com/tencent/matrix/trace/core/b:dfl	Z
+    //   25: getfield 59	com/tencent/matrix/trace/core/b:fez	Z
     //   28: ifeq -7 -> 21
     //   31: aload_0
     //   32: iconst_0
-    //   33: putfield 58	com/tencent/matrix/trace/core/b:dfl	Z
-    //   36: ldc 98
-    //   38: ldc_w 288
+    //   33: putfield 59	com/tencent/matrix/trace/core/b:fez	Z
+    //   36: ldc 99
+    //   38: ldc_w 307
     //   41: iconst_2
     //   42: anewarray 4	java/lang/Object
     //   45: dup
     //   46: iconst_0
     //   47: aload_0
-    //   48: getfield 77	com/tencent/matrix/trace/core/b:dfy	[Z
-    //   51: invokestatic 279	java/util/Arrays:toString	([Z)Ljava/lang/String;
+    //   48: getfield 78	com/tencent/matrix/trace/core/b:feN	[Z
+    //   51: invokestatic 298	java/util/Arrays:toString	([Z)Ljava/lang/String;
     //   54: aastore
     //   55: dup
     //   56: iconst_1
-    //   57: invokestatic 284	com/tencent/matrix/trace/g/b:getStack	()Ljava/lang/String;
+    //   57: invokestatic 303	com/tencent/matrix/trace/f/c:getStack	()Ljava/lang/String;
     //   60: aastore
-    //   61: invokestatic 286	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   61: invokestatic 305	com/tencent/matrix/e/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   64: goto -43 -> 21
     //   67: astore_1
     //   68: aload_0
@@ -232,9 +236,9 @@ public final class b
     long l1 = System.nanoTime();
     try
     {
-      long l2 = this.dfo;
-      this.dfp = true;
-      jH(0);
+      long l2 = this.feC;
+      this.feD = true;
+      nw(0);
       b(1, new Runnable()
       {
         public final void run()
@@ -255,26 +259,26 @@ public final class b
     }
     finally
     {
-      if (this.deV.deR) {
+      if (this.fdU.fdK) {
         com.tencent.matrix.e.c.d("Matrix.UIThreadMonitor", "[UIThreadMonitor#run] inner cost:%sns", new Object[] { Long.valueOf(System.nanoTime() - l1) });
       }
     }
   }
   
-  public final long t(int paramInt, long paramLong)
+  public final long x(int paramInt, long paramLong)
   {
-    if (paramLong != this.dfo) {
+    if (paramLong != this.feC) {
       return -1L;
     }
-    if (this.dfx[paramInt] == 2) {
-      return this.dfz[paramInt];
+    if (this.feM[paramInt] == 2) {
+      return this.feO[paramInt];
     }
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.matrix.trace.core.b
  * JD-Core Version:    0.7.0.1
  */

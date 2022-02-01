@@ -8,25 +8,25 @@ public class ExtractorDelegateFactory
   
   static
   {
-    AppMethodBeat.i(192370);
+    AppMethodBeat.i(215016);
     extractorDelegateCreator = new IExtractorDelegateCreator()
     {
       public final IExtractorDelegate createExtractorDelegate()
       {
-        AppMethodBeat.i(192357);
+        AppMethodBeat.i(215063);
         ApiExtractorDelegate localApiExtractorDelegate = new ApiExtractorDelegate();
-        AppMethodBeat.o(192357);
+        AppMethodBeat.o(215063);
         return localApiExtractorDelegate;
       }
     };
-    AppMethodBeat.o(192370);
+    AppMethodBeat.o(215016);
   }
   
   public static IExtractorDelegate createDelegate()
   {
-    AppMethodBeat.i(192367);
+    AppMethodBeat.i(215008);
     IExtractorDelegate localIExtractorDelegate = extractorDelegateCreator.createExtractorDelegate();
-    AppMethodBeat.o(192367);
+    AppMethodBeat.o(215008);
     return localIExtractorDelegate;
   }
   
@@ -42,7 +42,7 @@ public class ExtractorDelegateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.extractor.ExtractorDelegateFactory
  * JD-Core Version:    0.7.0.1
  */

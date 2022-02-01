@@ -11,15 +11,17 @@ public final class NavigationBarConfig
   public String mRightButtonColor;
   public String mRightButtonImage;
   public String mRightButtonTitle;
+  public DynamicColor mTitleColor;
   public boolean mUseBlackStatusbar;
   
   public NavigationBarConfig() {}
   
-  public NavigationBarConfig(DynamicColor paramDynamicColor, boolean paramBoolean, String paramString1, LeftBarButtonType paramLeftBarButtonType, String paramString2, String paramString3, String paramString4, String paramString5)
+  public NavigationBarConfig(DynamicColor paramDynamicColor1, boolean paramBoolean, String paramString1, DynamicColor paramDynamicColor2, LeftBarButtonType paramLeftBarButtonType, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.mBackgroundColor = paramDynamicColor;
+    this.mBackgroundColor = paramDynamicColor1;
     this.mUseBlackStatusbar = paramBoolean;
     this.mBarTitle = paramString1;
+    this.mTitleColor = paramDynamicColor2;
     this.mLeftBarButtonType = paramLeftBarButtonType;
     this.mLeftButtonColor = paramString2;
     this.mRightButtonTitle = paramString3;
@@ -62,6 +64,11 @@ public final class NavigationBarConfig
     return this.mRightButtonTitle;
   }
   
+  public final DynamicColor getTitleColor()
+  {
+    return this.mTitleColor;
+  }
+  
   public final boolean getUseBlackStatusbar()
   {
     return this.mUseBlackStatusbar;
@@ -70,14 +77,14 @@ public final class NavigationBarConfig
   public final String toString()
   {
     AppMethodBeat.i(135957);
-    String str = "NavigationBarConfig{mBackgroundColor=" + this.mBackgroundColor + ",mUseBlackStatusbar=" + this.mUseBlackStatusbar + ",mBarTitle=" + this.mBarTitle + ",mLeftBarButtonType=" + this.mLeftBarButtonType + ",mLeftButtonColor=" + this.mLeftButtonColor + ",mRightButtonTitle=" + this.mRightButtonTitle + ",mRightButtonImage=" + this.mRightButtonImage + ",mRightButtonColor=" + this.mRightButtonColor + "}";
+    String str = "NavigationBarConfig{mBackgroundColor=" + this.mBackgroundColor + ",mUseBlackStatusbar=" + this.mUseBlackStatusbar + ",mBarTitle=" + this.mBarTitle + ",mTitleColor=" + this.mTitleColor + ",mLeftBarButtonType=" + this.mLeftBarButtonType + ",mLeftButtonColor=" + this.mLeftButtonColor + ",mRightButtonTitle=" + this.mRightButtonTitle + ",mRightButtonImage=" + this.mRightButtonImage + ",mRightButtonColor=" + this.mRightButtonColor + "}";
     AppMethodBeat.o(135957);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.gen.NavigationBarConfig
  * JD-Core Version:    0.7.0.1
  */

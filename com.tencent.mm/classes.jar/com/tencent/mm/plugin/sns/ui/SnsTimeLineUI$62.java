@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTimeLineUI$62
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   SnsTimeLineUI$62(SnsTimeLineUI paramSnsTimeLineUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(99353);
-    SnsTimeLineUI.c(this.Lao, false);
-    AppMethodBeat.o(99353);
+    AppMethodBeat.i(99351);
+    AppMethodBeat.o(99351);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.62
  * JD-Core Version:    0.7.0.1
  */

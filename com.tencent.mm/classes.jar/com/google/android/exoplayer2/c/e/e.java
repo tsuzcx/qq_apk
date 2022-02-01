@@ -9,31 +9,31 @@ import java.io.EOFException;
 
 final class e
 {
-  private static final int aYP;
-  private final m aRR;
-  public int aUk;
-  public int aYQ;
-  public long aYR;
-  public long aYS;
-  public long aYT;
-  public long aYU;
-  public int aYV;
-  public int aYW;
-  public final int[] aYX;
+  private static final int cSK;
+  private final m cLN;
+  public int cOg;
+  public int cSL;
+  public long cSM;
+  public long cSN;
+  public long cSO;
+  public long cSP;
+  public int cSQ;
+  public int cSR;
+  public final int[] cSS;
   public int type;
   
   static
   {
     AppMethodBeat.i(92159);
-    aYP = x.bU("OggS");
+    cSK = x.du("OggS");
     AppMethodBeat.o(92159);
   }
   
   e()
   {
     AppMethodBeat.i(92157);
-    this.aYX = new int['ÿ'];
-    this.aRR = new m(255);
+    this.cSS = new int['ÿ'];
+    this.cLN = new m(255);
     AppMethodBeat.o(92157);
   }
   
@@ -41,12 +41,12 @@ final class e
   {
     int j = 0;
     AppMethodBeat.i(92158);
-    this.aRR.reset();
+    this.cLN.reset();
     reset();
-    if ((paramf.sr() == -1L) || (paramf.sr() - paramf.sq() >= 27L)) {
+    if ((paramf.RU() == -1L) || (paramf.RU() - paramf.RT() >= 27L)) {
       i = 1;
     }
-    while ((i == 0) || (!paramf.b(this.aRR.data, 0, 27, true))) {
+    while ((i == 0) || (!paramf.b(this.cLN.data, 0, 27, true))) {
       if (paramBoolean)
       {
         AppMethodBeat.o(92158);
@@ -60,7 +60,7 @@ final class e
         throw paramf;
       }
     }
-    if (this.aRR.ii() != aYP)
+    if (this.cLN.FT() != cSK)
     {
       if (paramBoolean)
       {
@@ -71,8 +71,8 @@ final class e
       AppMethodBeat.o(92158);
       throw paramf;
     }
-    this.aYQ = this.aRR.readUnsignedByte();
-    if (this.aYQ != 0)
+    this.cSL = this.cLN.readUnsignedByte();
+    if (this.cSL != 0)
     {
       if (paramBoolean)
       {
@@ -83,20 +83,20 @@ final class e
       AppMethodBeat.o(92158);
       throw paramf;
     }
-    this.type = this.aRR.readUnsignedByte();
-    this.aYR = this.aRR.vm();
-    this.aYS = this.aRR.vk();
-    this.aYT = this.aRR.vk();
-    this.aYU = this.aRR.vk();
-    this.aYV = this.aRR.readUnsignedByte();
-    this.aUk = (this.aYV + 27);
-    this.aRR.reset();
-    paramf.b(this.aRR.data, 0, this.aYV);
+    this.type = this.cLN.readUnsignedByte();
+    this.cSM = this.cLN.UL();
+    this.cSN = this.cLN.UJ();
+    this.cSO = this.cLN.UJ();
+    this.cSP = this.cLN.UJ();
+    this.cSQ = this.cLN.readUnsignedByte();
+    this.cOg = (this.cSQ + 27);
+    this.cLN.reset();
+    paramf.b(this.cLN.data, 0, this.cSQ);
     int i = j;
-    while (i < this.aYV)
+    while (i < this.cSQ)
     {
-      this.aYX[i] = this.aRR.readUnsignedByte();
-      this.aYW += this.aYX[i];
+      this.cSS[i] = this.cLN.readUnsignedByte();
+      this.cSR += this.cSS[i];
       i += 1;
     }
     AppMethodBeat.o(92158);
@@ -105,20 +105,20 @@ final class e
   
   public final void reset()
   {
-    this.aYQ = 0;
+    this.cSL = 0;
     this.type = 0;
-    this.aYR = 0L;
-    this.aYS = 0L;
-    this.aYT = 0L;
-    this.aYU = 0L;
-    this.aYV = 0;
-    this.aUk = 0;
-    this.aYW = 0;
+    this.cSM = 0L;
+    this.cSN = 0L;
+    this.cSO = 0L;
+    this.cSP = 0L;
+    this.cSQ = 0;
+    this.cOg = 0;
+    this.cSR = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.e
  * JD-Core Version:    0.7.0.1
  */

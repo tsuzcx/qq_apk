@@ -1,96 +1,220 @@
 package com.tencent.mm.plugin.webview.l;
 
+import android.content.Context;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.h;
-import com.tencent.mm.plugin.brandservice.a.c;
-import com.tencent.mm.protocal.protobuf.cnf;
+import com.tencent.mm.pluginsdk.cmd.a;
+import com.tencent.mm.pluginsdk.cmd.b;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import java.net.URL;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import kotlin.g.b.p;
-import kotlin.l;
-import org.json.JSONArray;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.n.n;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptCache;", "", "()V", "TAG", "", "jsapiWebComptMap", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "addJSAPIWebCompt", "", "url", "webCompts", "getJSAPIWebComptList", "list", "Lorg/json/JSONArray;", "getUrlKey", "webview-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
+  implements a
 {
-  private static Map<String, LinkedList<cnf>> QDu;
-  public static final f QDv;
+  public static final a Xwq;
   
   static
   {
-    AppMethodBeat.i(210484);
-    QDv = new f();
-    QDu = (Map)new ConcurrentHashMap();
-    AppMethodBeat.o(210484);
+    AppMethodBeat.i(82929);
+    Xwq = new a((byte)0);
+    AppMethodBeat.o(82929);
   }
   
-  private static String apf(String paramString)
+  public static final void aoW()
   {
-    AppMethodBeat.i(210481);
-    if (!((c)h.ae(c.class)).isMpUrl(paramString))
-    {
-      AppMethodBeat.o(210481);
-      return paramString;
-    }
-    paramString = ((c)h.ae(c.class)).apf(paramString);
-    AppMethodBeat.o(210481);
+    AppMethodBeat.i(82930);
+    b.a((a)new f(), new String[] { "//webcompt" });
+    AppMethodBeat.o(82930);
+  }
+  
+  public static final String bnj(String paramString)
+  {
+    AppMethodBeat.i(82931);
+    paramString = a.bnj(paramString);
+    AppMethodBeat.o(82931);
     return paramString;
   }
   
-  public static LinkedList<cnf> c(String paramString, JSONArray paramJSONArray)
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(210479);
-    p.k(paramString, "url");
-    p.k(paramJSONArray, "list");
-    Object localObject = apf(paramString);
-    paramString = new LinkedList();
-    localObject = (LinkedList)QDu.get(localObject);
-    if (localObject != null)
+    AppMethodBeat.i(82928);
+    s.u(paramContext, "context");
+    s.u(paramArrayOfString, "args");
+    s.u(paramString, "username");
+    if (!g.gTR())
     {
-      localObject = ((Iterable)localObject).iterator();
-      label131:
-      while (((Iterator)localObject).hasNext())
+      AppMethodBeat.o(82928);
+      return false;
+    }
+    paramContext = kotlin.g.b.c.ao(paramArrayOfString);
+    if (!s.p(paramContext.next(), "//webcompt"))
+    {
+      AppMethodBeat.o(82928);
+      return false;
+    }
+    paramArrayOfString = (String)paramContext.next();
+    switch (paramArrayOfString.hashCode())
+    {
+    default: 
+    case 95458899: 
+      do
       {
-        cnf localcnf = (cnf)((Iterator)localObject).next();
-        int j = paramJSONArray.length();
-        int i = 0;
-        for (;;)
+        AppMethodBeat.o(82928);
+        return false;
+      } while (!paramArrayOfString.equals("debug"));
+      paramArrayOfString = g.cTb();
+      if ((paramContext.hasNext()) && (s.p(paramContext.next(), "false"))) {
+        break;
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      paramArrayOfString.putBoolean("debug", bool);
+      g.bnl(s.X("webcompt set debug:", Boolean.valueOf(a.getDebug())));
+      for (;;)
+      {
+        AppMethodBeat.o(82928);
+        return true;
+        if (!paramArrayOfString.equals("clear")) {
+          break;
+        }
+        if ((paramContext.hasNext()) && (s.p(paramContext.next(), "sd")))
         {
-          if (i >= j) {
-            break label131;
-          }
-          if (Util.isEqual((String)paramJSONArray.get(i), localcnf.name))
+          if (paramContext.hasNext())
           {
-            paramString.add(localcnf);
-            break;
+            paramContext = (String)paramContext.next();
+            if (s.p(paramContext, "jsapi"))
+            {
+              paramContext = c.XuL;
+              c.b.f(false, false, 1);
+              paramContext = ah.aiuX;
+              g.bnl("webcompt clear sdcard jsapi files");
+              continue;
+              if (!paramArrayOfString.equals("debugJS")) {
+                break;
+              }
+              g.cTb().putBoolean("debug", true).putString("debugJS", (String)paramContext.next());
+              g.bnl("webcompt set debugJS");
+              continue;
+              if (!paramArrayOfString.equals("debugA8Key")) {
+                break;
+              }
+              g.cTb().putBoolean("debug", true).putString("debugA8Key", (String)paramContext.next());
+              g.bnl("webcompt set debugA8Key");
+              continue;
+              if (!paramArrayOfString.equals("mock")) {
+                break;
+              }
+              paramArrayOfString = (String)paramContext.next();
+              g.cTb().putString(s.X("mock_", paramContext.next()), paramArrayOfString);
+              g.bnl("webcompt mock");
+              continue;
+            }
+            if (!s.p(paramContext, "app")) {
+              continue;
+            }
+            paramContext = c.XuL;
+            c.b.f(false, false, 2);
+            paramContext = ah.aiuX;
+            g.bnl("webcompt clear sdcard app files");
+            continue;
           }
-          i += 1;
+          paramContext = c.XuL;
+          c.b.f(false, false, 3);
+          paramContext = ah.aiuX;
+          g.bnl("webcompt clear all sdcard files");
+          continue;
+        }
+        g.cTb().clear();
+        g.bnl("webcompt clear all commands");
+      }
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptCommand$Companion;", "", "()V", "command", "", "debug", "", "getDebug", "()Z", "debugA8Key", "getDebugA8Key", "()Ljava/lang/String;", "debugJS", "getDebugJS", "mockHost", "url", "register", "", "webview-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a
+  {
+    public static String bnj(String paramString)
+    {
+      AppMethodBeat.i(295465);
+      s.u(paramString, "url");
+      if (getDebug()) {
+        try
+        {
+          Object localObject1 = ((Iterable)n.a((CharSequence)n.rw(paramString, "#"), new String[] { "&" })).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            Object localObject2 = n.a((CharSequence)((Iterator)localObject1).next(), new String[] { "=" });
+            if ((((List)localObject2).size() == 2) && (s.p(((List)localObject2).get(0), "mock")))
+            {
+              localObject1 = (String)((List)localObject2).get(1);
+              localObject2 = new URL(paramString);
+              localObject1 = ((URL)localObject2).getProtocol() + "://" + (String)localObject1 + ((URL)localObject2).getFile() + d((URL)localObject2);
+              AppMethodBeat.o(295465);
+              return localObject1;
+            }
+          }
+          localObject1 = new URL(paramString);
+          if (g.cTb().containsKey(s.X("mock_", ((URL)localObject1).getHost())))
+          {
+            localObject1 = ((URL)localObject1).getProtocol() + "://" + g.cTb().getString(s.X("mock_", ((URL)localObject1).getHost()), ((URL)localObject1).getHost()) + ((URL)localObject1).getFile() + d((URL)localObject1);
+            AppMethodBeat.o(295465);
+            return localObject1;
+          }
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("WebComptCommand", (Throwable)localException, "mockHost", new Object[0]);
         }
       }
+      AppMethodBeat.o(295465);
+      return paramString;
     }
-    AppMethodBeat.o(210479);
-    return paramString;
-  }
-  
-  public static final void h(String paramString, LinkedList<cnf> paramLinkedList)
-  {
-    AppMethodBeat.i(210476);
-    p.k(paramString, "url");
-    if (paramLinkedList != null)
+    
+    private static final String d(URL paramURL)
     {
-      paramString = apf(paramString);
-      Log.i("MicroMsg.WebComptCache", "addJSAPIWebCompt " + paramLinkedList.size());
-      if (paramString != null) {
-        QDu.put(paramString, paramLinkedList);
+      AppMethodBeat.i(295467);
+      String str = paramURL.getRef();
+      s.s(str, "ref");
+      if (!n.bp((CharSequence)str)) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        paramURL = s.X("#", paramURL.getRef());
+        AppMethodBeat.o(295467);
+        return paramURL;
       }
-      AppMethodBeat.o(210476);
-      return;
+      paramURL = paramURL.getRef();
+      s.s(paramURL, "ref");
+      AppMethodBeat.o(295467);
+      return paramURL;
     }
-    AppMethodBeat.o(210476);
+    
+    public static boolean getDebug()
+    {
+      AppMethodBeat.i(82927);
+      if (g.cTb().containsKey("debug"))
+      {
+        boolean bool = g.cTb().getBoolean("debug", false);
+        AppMethodBeat.o(82927);
+        return bool;
+      }
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
+      {
+        AppMethodBeat.o(82927);
+        return true;
+      }
+      AppMethodBeat.o(82927);
+      return false;
+    }
   }
 }
 

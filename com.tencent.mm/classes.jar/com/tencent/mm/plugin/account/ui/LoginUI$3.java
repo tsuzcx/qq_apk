@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.ui.base.u.i;
 
 final class LoginUI$3
-  implements View.OnClickListener
+  implements u.i
 {
-  LoginUI$3(LoginUI paramLoginUI, e parame) {}
+  LoginUI$3(LoginUI paramLoginUI) {}
   
-  public final void onClick(View paramView)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(128204);
-    b localb = new b();
-    localb.bn(paramView);
-    a.c("com/tencent/mm/plugin/account/ui/LoginUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    this.nel.eik();
-    a.a(this, "com/tencent/mm/plugin/account/ui/LoginUI$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(128204);
+    AppMethodBeat.i(304903);
+    switch (paramMenuItem.getItemId())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(304903);
+      return;
+      LoginUI.b(this.qbD);
+      AppMethodBeat.o(304903);
+      return;
+      LoginUI.X(this.qbD, this.qbD.getString(r.j.wechat_help_center_url) + LocaleUtil.getApplicationLanguage());
+    }
   }
 }
 

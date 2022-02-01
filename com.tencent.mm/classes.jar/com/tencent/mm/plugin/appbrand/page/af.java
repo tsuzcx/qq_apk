@@ -11,27 +11,27 @@ import java.util.Map;
 public abstract interface af
   extends c
 {
-  public abstract bh PU();
-  
-  public abstract void PV();
-  
-  public abstract void PW();
-  
-  public abstract void PY();
-  
-  public abstract <T> T R(Class<T> paramClass);
-  
   public abstract View a(LayoutInflater paramLayoutInflater);
   
-  public abstract void a(Map<String, Object> paramMap, ca paramca);
+  public abstract void a(Map<String, Object> paramMap, cb paramcb);
+  
+  public abstract <T> T aa(Class<T> paramClass);
+  
+  public abstract bh aqd();
+  
+  public abstract void aqe();
+  
+  public abstract void aqf();
+  
+  public abstract boolean aqg();
+  
+  public abstract void aqi();
   
   public abstract void b(b paramb);
   
-  public abstract boolean b(String paramString, ca paramca);
+  public abstract boolean b(String paramString, cb paramcb);
   
-  public abstract void ct(View paramView);
-  
-  public abstract RelativeLayout.LayoutParams cu(View paramView);
+  public abstract RelativeLayout.LayoutParams cP(View paramView);
   
   public abstract void dispatchConfigurationChanged(Configuration paramConfiguration);
   
@@ -40,10 +40,12 @@ public abstract interface af
   public abstract void dispatchStart();
   
   public abstract ap getCustomViewContainer();
+  
+  public abstract void onViewCreated(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.af
  * JD-Core Version:    0.7.0.1
  */

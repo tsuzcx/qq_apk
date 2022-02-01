@@ -1,136 +1,63 @@
 package com.tencent.mm.ui.widget;
 
+import android.os.Build.VERSION;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/widget/PostCompactHelper;", "", "view", "Landroid/view/View;", "(Landroid/view/View;)V", "attached", "", "getAttached", "()Z", "setAttached", "(Z)V", "postQueue", "", "Ljava/lang/Runnable;", "getPostQueue", "()Ljava/util/List;", "setPostQueue", "(Ljava/util/List;)V", "getView", "()Landroid/view/View;", "isNeedCompactPost", "onAttachedToWindow", "", "onDetachedFromWindow", "post", "action", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  private static LinkedList<WeakReference<a>> jRe;
+  boolean afUA;
+  private List<Runnable> afUz;
+  private final View view;
   
-  static
+  public j(View paramView)
   {
-    AppMethodBeat.i(143472);
-    jRe = new LinkedList();
-    AppMethodBeat.o(143472);
+    AppMethodBeat.i(251548);
+    this.view = paramView;
+    this.afUz = ((List)new ArrayList());
+    AppMethodBeat.o(251548);
   }
   
-  public static void a(a parama)
+  private static boolean jEX()
   {
-    AppMethodBeat.i(143468);
-    Log.d("MicroMsg.SwipeBackHelper", "pushCallback size %d, %s", new Object[] { Integer.valueOf(jRe.size()), parama });
-    parama = new WeakReference(parama);
-    jRe.add(0, parama);
-    AppMethodBeat.o(143468);
+    return Build.VERSION.SDK_INT <= 23;
   }
   
-  public static void ap(float paramFloat)
+  public final void onAttachedToWindow()
   {
-    AppMethodBeat.i(143470);
-    if (jRe.size() <= 0)
+    AppMethodBeat.i(251555);
+    this.afUA = true;
+    Iterator localIterator = ((Iterable)this.afUz).iterator();
+    while (localIterator.hasNext())
     {
-      Log.w("MicroMsg.SwipeBackHelper", "notifySwipe callback stack empty!, scrollParent:%f", new Object[] { Float.valueOf(paramFloat) });
-      AppMethodBeat.o(143470);
-      return;
+      Runnable localRunnable = (Runnable)localIterator.next();
+      this.view.post(localRunnable);
     }
-    a locala = (a)((WeakReference)jRe.get(0)).get();
-    if (locala == null)
-    {
-      Log.w("MicroMsg.SwipeBackHelper", "notifySwipe null, scrollParent:%f", new Object[] { Float.valueOf(paramFloat) });
-      AppMethodBeat.o(143470);
-      return;
-    }
-    locala.onSwipe(paramFloat);
-    Log.v("MicroMsg.SwipeBackHelper", "notifySwipe scrollParent:%f, callback:%s ", new Object[] { Float.valueOf(paramFloat), locala });
-    AppMethodBeat.o(143470);
+    this.afUz.clear();
+    AppMethodBeat.o(251555);
   }
   
-  public static boolean b(a parama)
+  public final boolean post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(143469);
-    int j = jRe.size();
-    Log.d("MicroMsg.SwipeBackHelper", "popCallback size %d, %s", new Object[] { Integer.valueOf(j), parama });
-    if (parama == null)
+    AppMethodBeat.i(251558);
+    if ((jEX()) && (!this.afUA))
     {
-      AppMethodBeat.o(143469);
+      this.afUz.add(paramRunnable);
+      AppMethodBeat.o(251558);
       return true;
     }
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    for (;;)
-    {
-      if (i < jRe.size())
-      {
-        if (parama == ((WeakReference)jRe.get(i)).get())
-        {
-          jRe.remove(i);
-          Log.d("MicroMsg.SwipeBackHelper", "popCallback directly, index %d", new Object[] { Integer.valueOf(i) });
-        }
-      }
-      else
-      {
-        if ((parama.forceRemoveNoMatchOnPath()) || (localLinkedList.size() != j)) {
-          break;
-        }
-        Log.d("MicroMsg.SwipeBackHelper", "popCallback Fail! Maybe Top Activity");
-        AppMethodBeat.o(143469);
-        return false;
-      }
-      localLinkedList.add(0, Integer.valueOf(i));
-      i += 1;
-    }
-    Iterator localIterator = localLinkedList.iterator();
-    if (localIterator.hasNext())
-    {
-      parama = (Integer)localIterator.next();
-      parama = (WeakReference)jRe.remove(parama.intValue());
-      if (parama != null) {}
-      for (parama = parama.get();; parama = "NULL-CALLBACK")
-      {
-        Log.d("MicroMsg.SwipeBackHelper", "popCallback, popup %s", new Object[] { parama });
-        break;
-      }
-    }
-    boolean bool = localLinkedList.isEmpty();
-    AppMethodBeat.o(143469);
-    return bool;
-  }
-  
-  public static void j(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(143471);
-    if (jRe.size() <= 0)
-    {
-      Log.w("MicroMsg.SwipeBackHelper", "notifySettle callback stack empty!, open:%B, speed:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143471);
-      return;
-    }
-    a locala = (a)((WeakReference)jRe.get(0)).get();
-    if (locala == null)
-    {
-      Log.w("MicroMsg.SwipeBackHelper", "notifySettle null, open:%B, speed:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143471);
-      return;
-    }
-    locala.onSettle(paramBoolean, paramInt);
-    Log.v("MicroMsg.SwipeBackHelper", "notifySettle, open:%B speed:%d callback:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), locala });
-    AppMethodBeat.o(143471);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract boolean forceRemoveNoMatchOnPath();
-    
-    public abstract void onSettle(boolean paramBoolean, int paramInt);
-    
-    public abstract void onSwipe(float paramFloat);
+    AppMethodBeat.o(251558);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.j
  * JD-Core Version:    0.7.0.1
  */

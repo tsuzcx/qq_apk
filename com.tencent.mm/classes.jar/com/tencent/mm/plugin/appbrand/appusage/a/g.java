@@ -1,76 +1,65 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.c;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.kernel.f;
-import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.cbk;
-import com.tencent.mm.protocal.protobuf.cbl;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import com.tencent.mm.plugin.appbrand.utils.l;
+import com.tencent.mm.protocal.protobuf.acz;
+import com.tencent.mm.protocal.protobuf.crb;
+import com.tencent.mm.protocal.protobuf.crc;
+import com.tencent.mm.protocal.protobuf.wy;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import java.util.concurrent.TimeUnit;
 
 public class g
-  extends c<cbl>
+  extends b<crc>
 {
-  public g()
+  public g(int paramInt1, acz paramacz, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(44677);
-    Log.i("MicroMsg.Recommend.CgiGetRecallInfo", "CgiGetRecallInfo");
-    d.a locala = new d.a();
-    locala.lBU = new cbk();
-    locala.lBV = new cbl();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getrecallinfo";
-    locala.funcId = 2572;
-    c(locala.bgN());
-    AppMethodBeat.o(44677);
+    AppMethodBeat.i(44681);
+    Log.i("MicroMsg.Recommend.CgiGetRecommendWxa", "pageNum:%d, filterType:%d, sessionId:%d, strategy:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(5), Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+    c.a locala = new c.a();
+    crb localcrb = new crb();
+    localcrb.aaxJ = paramInt1;
+    localcrb.aaxK = 5;
+    localcrb.aaxL = new wy();
+    localcrb.aaxM = paramLong;
+    localcrb.aaxN = paramacz;
+    localcrb.aaxO = paramInt2;
+    locala.otE = localcrb;
+    locala.otF = new crc();
+    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getrecommendwxa";
+    locala.funcId = 2778;
+    c(locala.bEF());
+    AppMethodBeat.o(44681);
   }
   
-  public static void hy(boolean paramBoolean)
+  public static void a(int paramInt1, final acz paramacz, final long paramLong, final a parama, int paramInt2)
   {
-    AppMethodBeat.i(44678);
-    int j = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vuj, 0);
-    if (j == 1) {}
-    for (int i = 1; i == 0; i = 0)
+    AppMethodBeat.i(44682);
+    final long l = System.currentTimeMillis() / 1000L;
+    l.cNm().postToWorker(new Runnable()
     {
-      Log.e("MicroMsg.Recommend.CgiGetRecallInfo", "ABTestShowRecommend is not open, labValue:%d", new Object[] { Integer.valueOf(j) });
-      AppMethodBeat.o(44678);
-      return;
-    }
-    long l1 = AppBrandGlobalSystemConfig.bLe().nXy;
-    long l4 = ((Long)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vmn, Long.valueOf(0L))).longValue();
-    long l2 = Util.nowSecond();
-    long l3 = TimeUnit.DAYS.toSeconds(1L);
-    l4 = l2 - l4;
-    Log.i("MicroMsg.Recommend.CgiGetRecallInfo", "weUseRecallInterval:%d, internalTime:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l4) });
-    if ((paramBoolean) || ((l1 > 0L) && (l4 >= l1)) || ((l1 <= 0L) && (l4 >= l3)))
-    {
-      Log.i("MicroMsg.Recommend.CgiGetRecallInfo", "force or It's time to do getRecallInfo");
-      com.tencent.mm.plugin.appbrand.utils.h.clV().postToWorker(new Runnable()
+      public final void run()
       {
-        public final void run()
-        {
-          AppMethodBeat.i(44676);
-          new g() {}.bhW();
-          AppMethodBeat.o(44676);
-        }
-      });
-      AppMethodBeat.o(44678);
-      return;
-    }
-    Log.i("MicroMsg.Recommend.CgiGetRecallInfo", "time is not exceed one day, not to getRecallInfo");
-    AppMethodBeat.o(44678);
+        AppMethodBeat.i(44680);
+        new g(this.qRt, paramacz, paramLong, l) {}.bFJ();
+        AppMethodBeat.o(44680);
+      }
+    });
+    AppMethodBeat.o(44682);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(crc paramcrc);
+    
+    public abstract void cjC();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.g
  * JD-Core Version:    0.7.0.1
  */

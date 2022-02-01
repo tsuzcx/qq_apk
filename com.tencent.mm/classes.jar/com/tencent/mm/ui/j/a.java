@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.j;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
@@ -15,16 +14,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static b XIr;
-  private static b XIs;
+  private static b afvX;
+  private static b afvY;
   
-  @TargetApi(11)
-  public static void c(Activity paramActivity, View paramView)
+  public static void d(Activity paramActivity, View paramView)
   {
     AppMethodBeat.i(142857);
     View localView = paramActivity.getWindow().getDecorView();
-    XIr = b.lx(paramActivity);
-    XIs = b.lx(paramActivity);
+    afvX = b.nz(paramActivity);
+    afvY = b.nz(paramActivity);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -32,30 +30,30 @@ public final class a
     int i = localRect.top;
     int j = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
     int k = arrayOfInt[1];
-    XIr.setHeight(k - i - j);
+    afvX.setHeight(k - i - j);
     k = getScreenWH(paramActivity)[1];
     int m = arrayOfInt[1];
     int n = paramView.getHeight();
-    XIs.setHeight(k - m - n);
-    XIr.showAtLocation(localView, 48, 0, j + i);
-    XIs.showAtLocation(localView, 80, 0, 0);
+    afvY.setHeight(k - m - n);
+    afvX.showAtLocation(localView, 48, 0, j + i);
+    afvY.showAtLocation(localView, 80, 0, 0);
     AppMethodBeat.o(142857);
   }
   
   public static void dismiss()
   {
     AppMethodBeat.i(142858);
-    if (XIr != null)
+    if (afvX != null)
     {
-      XIr.setAnimationStyle(-1);
-      XIr.dismiss();
-      XIr = null;
+      afvX.setAnimationStyle(-1);
+      afvX.dismiss();
+      afvX = null;
     }
-    if (XIs != null)
+    if (afvY != null)
     {
-      XIs.setAnimationStyle(-1);
-      XIs.dismiss();
-      XIs = null;
+      afvY.setAnimationStyle(-1);
+      afvY.dismiss();
+      afvY = null;
     }
     AppMethodBeat.o(142858);
   }
@@ -83,7 +81,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.j.a
  * JD-Core Version:    0.7.0.1
  */

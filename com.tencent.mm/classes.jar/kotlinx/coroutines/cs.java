@@ -1,19 +1,51 @@
 package kotlinx.coroutines;
 
-import kotlin.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Metadata;
+import kotlin.Result;
+import kotlin.Result.Companion;
+import kotlin.ResultKt;
+import kotlin.d.d;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/SupervisorJobImpl;", "Lkotlinx/coroutines/JobImpl;", "parent", "Lkotlinx/coroutines/Job;", "(Lkotlinx/coroutines/Job;)V", "childCancelled", "", "cause", "", "kotlinx-coroutines-core"})
-final class cs
-  extends cb
+@Metadata(d1={""}, d2={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "kotlinx-coroutines-core"}, k=1, mv={1, 5, 1}, xi=48)
+final class cs<T>
+  extends ch
 {
-  public cs(by paramby)
+  private final q<T> ajwM;
+  
+  public cs(q<? super T> paramq)
   {
-    super(null);
+    this.ajwM = paramq;
   }
   
-  public final boolean B(Throwable paramThrowable)
+  public final void N(Throwable paramThrowable)
   {
-    return false;
+    AppMethodBeat.i(118266);
+    Object localObject = kCx().kCy();
+    if (au.ASSERTIONS_ENABLED)
+    {
+      if (!(localObject instanceof bw)) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        paramThrowable = new AssertionError();
+        AppMethodBeat.o(118266);
+        throw paramThrowable;
+      }
+    }
+    if ((localObject instanceof ae))
+    {
+      paramThrowable = (d)this.ajwM;
+      localObject = ((ae)localObject).cause;
+      localCompanion = Result.Companion;
+      paramThrowable.resumeWith(Result.constructor-impl(ResultKt.createFailure((Throwable)localObject)));
+      AppMethodBeat.o(118266);
+      return;
+    }
+    paramThrowable = (d)this.ajwM;
+    localObject = cj.iN(localObject);
+    Result.Companion localCompanion = Result.Companion;
+    paramThrowable.resumeWith(Result.constructor-impl(localObject));
+    AppMethodBeat.o(118266);
   }
 }
 

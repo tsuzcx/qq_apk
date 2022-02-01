@@ -1,10 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,16 +14,16 @@ import com.tencent.mm.R.g;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.t;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.model.bh;
-import com.tencent.mm.plugin.exdevice.model.ae;
-import com.tencent.mm.protocal.protobuf.cdg;
-import com.tencent.mm.protocal.protobuf.ezk;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c.a;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.plugin.exdevice.model.ah;
+import com.tencent.mm.protocal.protobuf.csu;
+import com.tencent.mm.protocal.protobuf.fvn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
@@ -35,26 +32,26 @@ import java.util.List;
 
 public class ExdeviceRankDataSourceUI
   extends MMActivity
-  implements i
+  implements h
 {
   private ListView mListView;
-  private b vpQ;
+  private b yCh;
   
   public int getLayoutId()
   {
-    return R.i.egI;
+    return R.i.gjE;
   }
   
   public void initView()
   {
     AppMethodBeat.i(24197);
     this.mListView = ((ListView)findViewById(R.h.listview));
-    View localView1 = View.inflate(this, R.i.egK, null);
-    View localView2 = View.inflate(this, R.i.egJ, null);
+    View localView1 = View.inflate(this, R.i.gjG, null);
+    View localView2 = View.inflate(this, R.i.gjF, null);
     this.mListView.addHeaderView(localView1, null, false);
     this.mListView.addFooterView(localView2, null, false);
-    this.vpQ = new b();
-    this.mListView.setAdapter(this.vpQ);
+    this.yCh = new b();
+    this.mListView.setAdapter(this.yCh);
     ((ScrollView)findViewById(R.h.scrollview)).scrollTo(0, 0);
     localView2.setOnClickListener(new ExdeviceRankDataSourceUI.2(this));
     AppMethodBeat.o(24197);
@@ -74,34 +71,34 @@ public class ExdeviceRankDataSourceUI
         AppMethodBeat.o(24200);
         return;
       }
-      paramIntent = com.tencent.mm.plugin.exdevice.k.b.Jx(l);
+      paramIntent = com.tencent.mm.plugin.exdevice.k.b.lO(l);
       if (paramIntent == null)
       {
         Log.e("MicroMsg.ExdeviceRankDataSourceUI", "invalid mac(%s).", new Object[] { paramIntent });
         AppMethodBeat.o(24200);
         return;
       }
-      if (this.vpQ.avS(paramIntent) != null)
+      if (this.yCh.apS(paramIntent) != null)
       {
         Log.i("MicroMsg.ExdeviceRankDataSourceUI", "The device has been added, now switch it to be the main device.");
         AppMethodBeat.o(24200);
         return;
       }
-      paramIntent = ae.cZx().Jw(l);
+      paramIntent = ah.dFO().lM(l);
       if (paramIntent == null)
       {
         Log.w("MicroMsg.ExdeviceRankDataSourceUI", "hard device info is null.(mac : %s)", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(24200);
         return;
       }
-      if (this.vpQ.gt(paramIntent.field_deviceID, paramIntent.field_deviceType) != null)
+      if (this.yCh.gX(paramIntent.field_deviceID, paramIntent.field_deviceType) != null)
       {
         Log.i("MicroMsg.ExdeviceRankDataSourceUI", "The device has been added, now switch it to be the main device.");
         AppMethodBeat.o(24200);
         return;
       }
-      bh.aGY().a(1267, this);
-      bh.aGY().a(new com.tencent.mm.plugin.exdevice.model.q(), 0);
+      bh.aZW().a(1267, this);
+      bh.aZW().a(new com.tencent.mm.plugin.exdevice.model.s(), 0);
     }
     AppMethodBeat.o(24200);
   }
@@ -117,20 +114,11 @@ public class ExdeviceRankDataSourceUI
   {
     AppMethodBeat.i(24196);
     super.onCreate(paramBundle);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(24186);
-        ExdeviceRankDataSourceUI.a(ExdeviceRankDataSourceUI.this);
-        AppMethodBeat.o(24186);
-        return true;
-      }
-    });
-    setMMTitle(R.l.eyV);
-    bh.aGY().a(1267, this);
+    setBackBtn(new ExdeviceRankDataSourceUI.1(this));
+    setMMTitle(R.l.gBN);
+    bh.aZW().a(1267, this);
     initView();
-    bh.aGY().a(new com.tencent.mm.plugin.exdevice.model.q(), 0);
+    bh.aZW().a(new com.tencent.mm.plugin.exdevice.model.s(), 0);
     AppMethodBeat.o(24196);
   }
   
@@ -138,32 +126,32 @@ public class ExdeviceRankDataSourceUI
   {
     AppMethodBeat.i(24199);
     super.onDestroy();
-    bh.aGY().b(1267, this);
+    bh.aZW().b(1267, this);
     AppMethodBeat.o(24199);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(24201);
-    if (paramq == null)
+    if (paramp == null)
     {
       Log.e("MicroMsg.ExdeviceRankDataSourceUI", "onSceneEnd, scene is null.");
       AppMethodBeat.o(24201);
       return;
     }
-    if ((paramq instanceof com.tencent.mm.plugin.exdevice.model.q))
+    if ((paramp instanceof com.tencent.mm.plugin.exdevice.model.s))
     {
-      bh.aGY().b(1267, this);
+      bh.aZW().b(1267, this);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (cdg)d.c.b(((com.tencent.mm.plugin.exdevice.model.q)paramq).rr.lBS);
-        if (paramString.TbY == null) {
+        paramString = (csu)c.c.b(((com.tencent.mm.plugin.exdevice.model.s)paramp).rr.otC);
+        if (paramString.aapk == null) {
           break label127;
         }
       }
     }
     label127:
-    for (paramInt1 = paramString.TbY.size();; paramInt1 = 0)
+    for (paramInt1 = paramString.aapk.size();; paramInt1 = 0)
     {
       Log.d("MicroMsg.ExdeviceRankDataSourceUI", "onSceneEnd, get sport device list succ.(size : %d)", new Object[] { Integer.valueOf(paramInt1) });
       runOnUiThread(new Runnable()
@@ -172,8 +160,8 @@ public class ExdeviceRankDataSourceUI
         {
           AppMethodBeat.i(24188);
           ExdeviceRankDataSourceUI.b localb = ExdeviceRankDataSourceUI.b(ExdeviceRankDataSourceUI.this);
-          Object localObject = this.vpS;
-          localb.vpV.clear();
+          Object localObject = this.yCj;
+          localb.yCm.clear();
           if ((localObject == null) || (((List)localObject).size() == 0)) {}
           for (;;)
           {
@@ -183,9 +171,9 @@ public class ExdeviceRankDataSourceUI
             localObject = ((List)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
-              ezk localezk = (ezk)((Iterator)localObject).next();
-              if (localezk != null) {
-                localb.vpV.add(ExdeviceRankDataSourceUI.a(localezk));
+              fvn localfvn = (fvn)((Iterator)localObject).next();
+              if (localfvn != null) {
+                localb.yCm.add(ExdeviceRankDataSourceUI.a(localfvn));
               }
             }
           }
@@ -205,36 +193,36 @@ public class ExdeviceRankDataSourceUI
   static final class a
   {
     String mac;
-    ezk vpT;
-    com.tencent.mm.plugin.exdevice.i.b vpU;
+    fvn yCk;
+    com.tencent.mm.plugin.exdevice.i.b yCl;
   }
   
   static final class b
     extends BaseAdapter
   {
-    private com.tencent.mm.ay.a.a.c vle;
-    List<ExdeviceRankDataSourceUI.a> vpV;
+    List<ExdeviceRankDataSourceUI.a> yCm;
+    private com.tencent.mm.modelimage.loader.a.c yxG;
     
     public b()
     {
       AppMethodBeat.i(24189);
-      this.vpV = new LinkedList();
+      this.yCm = new LinkedList();
       c.a locala = new c.a();
-      locala.lRP = R.g.dnu;
-      this.vle = locala.bmL();
+      locala.oKB = R.g.fnI;
+      this.yxG = locala.bKx();
       AppMethodBeat.o(24189);
     }
     
-    private ExdeviceRankDataSourceUI.a Kr(int paramInt)
+    private ExdeviceRankDataSourceUI.a Lq(int paramInt)
     {
       AppMethodBeat.i(24193);
-      ExdeviceRankDataSourceUI.a locala = (ExdeviceRankDataSourceUI.a)this.vpV.get(paramInt);
+      ExdeviceRankDataSourceUI.a locala = (ExdeviceRankDataSourceUI.a)this.yCm.get(paramInt);
       AppMethodBeat.o(24193);
       return locala;
     }
     
     /* Error */
-    public final ExdeviceRankDataSourceUI.a avS(String paramString)
+    public final ExdeviceRankDataSourceUI.a apS(String paramString)
     {
       // Byte code:
       //   0: aload_0
@@ -245,7 +233,7 @@ public class ExdeviceRankDataSourceUI
       //   9: invokestatic 70	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
       //   12: ifne +55 -> 67
       //   15: aload_0
-      //   16: getfield 30	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$b:vpV	Ljava/util/List;
+      //   16: getfield 30	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$b:yCm	Ljava/util/List;
       //   19: invokeinterface 74 1 0
       //   24: astore_3
       //   25: aload_3
@@ -291,48 +279,8 @@ public class ExdeviceRankDataSourceUI
       //   69	75	78	finally
     }
     
-    public final int getCount()
-    {
-      AppMethodBeat.i(24192);
-      int i = this.vpV.size();
-      AppMethodBeat.o(24192);
-      return i;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      AppMethodBeat.i(24194);
-      ExdeviceRankDataSourceUI.a locala = Kr(paramInt);
-      Object localObject;
-      if (paramView == null)
-      {
-        paramView = new a((byte)0);
-        localObject = View.inflate(paramViewGroup.getContext(), R.i.egH, null);
-        paramView.mYd = ((TextView)((View)localObject).findViewById(R.h.dNd));
-        paramView.qps = ((ImageView)((View)localObject).findViewById(R.h.dIy));
-        ((View)localObject).setTag(paramView);
-        paramViewGroup = paramView;
-        paramView = (View)localObject;
-      }
-      for (;;)
-      {
-        localObject = ExdeviceRankDataSourceUI.a(locala);
-        Log.d("MicroMsg.ExdeviceRankDataSourceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), localObject, locala.mac });
-        paramViewGroup.mYd.setText((CharSequence)localObject);
-        com.tencent.mm.ay.q.bml().a(locala.vpT.CNj, paramViewGroup.qps, this.vle);
-        AppMethodBeat.o(24194);
-        return paramView;
-        paramViewGroup = (a)paramView.getTag();
-      }
-    }
-    
     /* Error */
-    public final ExdeviceRankDataSourceUI.a gt(String paramString1, String paramString2)
+    public final ExdeviceRankDataSourceUI.a gX(String paramString1, String paramString2)
     {
       // Byte code:
       //   0: aload_0
@@ -340,7 +288,7 @@ public class ExdeviceRankDataSourceUI
       //   2: sipush 24191
       //   5: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   8: aload_0
-      //   9: getfield 30	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$b:vpV	Ljava/util/List;
+      //   9: getfield 30	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$b:yCm	Ljava/util/List;
       //   12: invokeinterface 74 1 0
       //   17: astore 4
       //   19: aload 4
@@ -355,8 +303,8 @@ public class ExdeviceRankDataSourceUI
       //   44: aload_1
       //   45: aload_2
       //   46: aload_3
-      //   47: getfield 189	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$a:vpT	Lcom/tencent/mm/protocal/protobuf/ezk;
-      //   50: invokestatic 207	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/ezk;)Z
+      //   47: getfield 100	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI$a:yCk	Lcom/tencent/mm/protocal/protobuf/fvn;
+      //   50: invokestatic 103	com/tencent/mm/plugin/exdevice/ui/ExdeviceRankDataSourceUI:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/fvn;)Z
       //   53: ifeq -34 -> 19
       //   56: sipush 24191
       //   59: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -391,16 +339,56 @@ public class ExdeviceRankDataSourceUI
       //   70	76	79	finally
     }
     
+    public final int getCount()
+    {
+      AppMethodBeat.i(24192);
+      int i = this.yCm.size();
+      AppMethodBeat.o(24192);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(24194);
+      ExdeviceRankDataSourceUI.a locala = Lq(paramInt);
+      Object localObject;
+      if (paramView == null)
+      {
+        paramView = new a((byte)0);
+        localObject = View.inflate(paramViewGroup.getContext(), R.i.gjD, null);
+        paramView.pUL = ((TextView)((View)localObject).findViewById(R.h.fOX));
+        paramView.ttT = ((ImageView)((View)localObject).findViewById(R.h.iconIV));
+        ((View)localObject).setTag(paramView);
+        paramViewGroup = paramView;
+        paramView = (View)localObject;
+      }
+      for (;;)
+      {
+        localObject = ExdeviceRankDataSourceUI.a(locala);
+        Log.d("MicroMsg.ExdeviceRankDataSourceUI", "position(%s), name(%s), mac(%s).", new Object[] { Integer.valueOf(paramInt), localObject, locala.mac });
+        paramViewGroup.pUL.setText((CharSequence)localObject);
+        r.bKe().a(locala.yCk.IHo, paramViewGroup.ttT, this.yxG);
+        AppMethodBeat.o(24194);
+        return paramView;
+        paramViewGroup = (a)paramView.getTag();
+      }
+    }
+    
     static final class a
     {
-      TextView mYd;
-      ImageView qps;
+      TextView pUL;
+      ImageView ttT;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankDataSourceUI
  * JD-Core Version:    0.7.0.1
  */

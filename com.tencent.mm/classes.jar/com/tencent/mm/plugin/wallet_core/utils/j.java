@@ -1,77 +1,143 @@
 package com.tencent.mm.plugin.wallet_core.utils;
 
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.ao;
-import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.wallet_core.a;
-import com.tencent.mm.wallet_core.d;
+import com.tencent.mm.protocal.protobuf.dcm;
+import com.tencent.mm.protocal.protobuf.dfc;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
 
 public final class j
 {
-  public static long PhA = 0L;
-  public static int PhB = 2;
-  public static int PhC = 1;
-  public static int PhD = 2;
+  public boolean VYj = false;
+  MMActivity activity;
   
-  public static void a(Activity paramActivity, Bundle paramBundle, int paramInt)
+  public j(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(71647);
-    paramActivity = a.bF(paramActivity);
-    if ((!u.gJo().gJQ()) && (paramActivity != null) && (paramActivity.iim()))
+    this.activity = paramMMActivity;
+  }
+  
+  public static boolean a(c paramc)
+  {
+    if (paramc == null) {}
+    while (paramc.VXS == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(dcm paramdcm)
+  {
+    if (paramdcm == null) {}
+    while (paramdcm.VXS == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public final void a(final c paramc, final a parama)
+  {
+    AppMethodBeat.i(301435);
+    if (paramc.VXS == 1)
     {
-      paramActivity = (PayInfo)paramBundle.getParcelable("key_pay_info");
-      paramBundle = (Orders)paramBundle.getParcelable("key_orders");
-      if ((paramActivity != null) && (paramBundle != null)) {
-        h.IzE.a(10725, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramActivity.fOY), Integer.valueOf((int)(paramBundle.fwy * 100.0D)), paramBundle.GHz });
-      }
-      AppMethodBeat.o(71647);
+      k.a(this.activity, paramc.wording, "", paramc.VXQ.wording, false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(301452);
+          parama.a(paramc.VXQ);
+          j.a(j.this, paramc.VXQ);
+          AppMethodBeat.o(301452);
+        }
+      });
+      AppMethodBeat.o(301435);
       return;
     }
-    if ((!u.gJo().gJQ()) && (paramBundle != null) && (paramBundle.getBoolean("key_is_bind_reg_process", false))) {
-      h.IzE.a(10932, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBundle.getInt("key_bind_scene", 0)) });
+    if (paramc.VXS == 2) {
+      k.a(this.activity, paramc.wording, "", paramc.VXR.wording, paramc.VXQ.wording, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(301451);
+          parama.a(paramc.VXR);
+          j.a(j.this, paramc.VXR);
+          AppMethodBeat.o(301451);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(301446);
+          parama.a(paramc.VXQ);
+          j.a(j.this, paramc.VXQ);
+          AppMethodBeat.o(301446);
+        }
+      });
     }
-    AppMethodBeat.o(71647);
+    AppMethodBeat.o(301435);
   }
   
-  public static void a(PayInfo paramPayInfo, Orders paramOrders)
+  public final void a(final dcm paramdcm, final a parama)
   {
-    AppMethodBeat.i(71649);
-    if ((!u.gJo().gJQ()) && (paramPayInfo != null) && (paramOrders != null)) {
-      h.IzE.a(10725, new Object[] { Integer.valueOf(1), Integer.valueOf(paramPayInfo.fOY), Integer.valueOf((int)(paramOrders.fwy * 100.0D)), paramOrders.GHz });
+    AppMethodBeat.i(301437);
+    if (paramdcm.VXS == 1)
+    {
+      k.a(this.activity, paramdcm.wording, "", paramdcm.VXQ.wording, false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(301447);
+          parama.a(paramdcm.VXQ);
+          j.a(j.this, paramdcm.VXQ);
+          AppMethodBeat.o(301447);
+        }
+      });
+      AppMethodBeat.o(301437);
+      return;
     }
-    AppMethodBeat.o(71649);
+    if (paramdcm.VXS == 2) {
+      k.a(this.activity, paramdcm.wording, "", paramdcm.VXR.wording, paramdcm.VXQ.wording, false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(301448);
+          parama.a(paramdcm.VXQ);
+          j.a(j.this, paramdcm.VXR);
+          AppMethodBeat.o(301448);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(301449);
+          parama.a(paramdcm.VXQ);
+          j.a(j.this, paramdcm.VXQ);
+          AppMethodBeat.o(301449);
+        }
+      });
+    }
+    AppMethodBeat.o(301437);
   }
   
-  public static void gMO()
+  public final void b(c paramc)
   {
-    AppMethodBeat.i(71645);
-    PhA = System.currentTimeMillis();
-    AppMethodBeat.o(71645);
+    AppMethodBeat.i(301430);
+    a(paramc, new a()
+    {
+      public final void a(dfc paramAnonymousdfc) {}
+    });
+    AppMethodBeat.o(301430);
   }
   
-  public static int gMP()
+  public static abstract interface a
   {
-    AppMethodBeat.i(71646);
-    int i = (int)((System.currentTimeMillis() - PhA) / 1000L);
-    AppMethodBeat.o(71646);
-    return i;
-  }
-  
-  public static void ll(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(71648);
-    h.IzE.a(10932, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-    AppMethodBeat.o(71648);
+    public abstract void a(dfc paramdfc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.j
  * JD-Core Version:    0.7.0.1
  */

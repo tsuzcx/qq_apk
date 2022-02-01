@@ -102,16 +102,16 @@ public class b
   
   private void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(229480);
+    AppMethodBeat.i(229550);
     if (this.d == null)
     {
-      AppMethodBeat.o(229480);
+      AppMethodBeat.o(229550);
       return;
     }
     com.tencent.liteav.basic.c.b localb = (com.tencent.liteav.basic.c.b)this.d.get();
     if (localb == null)
     {
-      AppMethodBeat.o(229480);
+      AppMethodBeat.o(229550);
       return;
     }
     Bundle localBundle = new Bundle();
@@ -122,7 +122,7 @@ public class b
     localBundle.putInt("EVT_PARAM1", paramInt2);
     localBundle.putInt("EVT_STREAM_TYPE", paramInt3);
     localb.onNotifyEvent(paramInt1, localBundle);
-    AppMethodBeat.o(229480);
+    AppMethodBeat.o(229550);
   }
   
   private boolean a(Queue<Runnable> paramQueue)
@@ -162,7 +162,7 @@ public class b
   
   private void h()
   {
-    AppMethodBeat.i(229476);
+    AppMethodBeat.i(229543);
     if (this.h != null)
     {
       this.h.cancel();
@@ -171,17 +171,17 @@ public class b
     if (this.i != null) {
       this.i = null;
     }
-    AppMethodBeat.o(229476);
+    AppMethodBeat.o(229543);
   }
   
   private void i()
   {
-    AppMethodBeat.i(229482);
+    AppMethodBeat.i(229557);
     a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(229092);
+        AppMethodBeat.i(14821);
         b.a(b.this, 1107, "Switches from software encoding to hardware encoding");
         if (b.d(b.this) != null)
         {
@@ -205,11 +205,11 @@ public class b
           b.d(b.this).setBitrate(b.f(b.this));
         }
         b.d(b.this).setID(b.this.getID());
-        AppMethodBeat.o(229092);
+        AppMethodBeat.o(14821);
       }
     });
     TXCLog.w("TXCVideoEncoder", "switchSWToHW");
-    AppMethodBeat.o(229482);
+    AppMethodBeat.o(229557);
   }
   
   public int a(TXSVideoEncoderParam paramTXSVideoEncoderParam)
@@ -496,31 +496,14 @@ public class b
   
   public void a(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(229458);
+    AppMethodBeat.i(229703);
     this.d = new WeakReference(paramb);
-    AppMethodBeat.o(229458);
-  }
-  
-  public void a(final com.tencent.liteav.basic.structs.c paramc)
-  {
-    AppMethodBeat.i(229470);
-    a(new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(14821);
-        if (b.d(b.this) != null) {
-          b.d(b.this).setThreadPriority(paramc);
-        }
-        AppMethodBeat.o(14821);
-      }
-    });
-    AppMethodBeat.o(229470);
+    AppMethodBeat.o(229703);
   }
   
   public void a(e parame)
   {
-    AppMethodBeat.i(229461);
+    AppMethodBeat.i(229707);
     this.c = parame;
     a(new Runnable()
     {
@@ -533,7 +516,7 @@ public class b
         AppMethodBeat.o(14819);
       }
     });
-    AppMethodBeat.o(229461);
+    AppMethodBeat.o(229707);
   }
   
   protected void a(Runnable paramRunnable)
@@ -549,29 +532,29 @@ public class b
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(229445);
+    AppMethodBeat.i(229687);
     if (this.b != null) {
       this.b.setXMirror(paramBoolean);
     }
-    AppMethodBeat.o(229445);
+    AppMethodBeat.o(229687);
   }
   
   public void b()
   {
-    AppMethodBeat.i(229456);
+    AppMethodBeat.i(229701);
     if (this.b != null) {
       this.b.restartIDR();
     }
-    AppMethodBeat.o(229456);
+    AppMethodBeat.o(229701);
   }
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(229447);
+    AppMethodBeat.i(229692);
     if (this.b != null) {
       this.b.setGLFinishedTextureNeed(paramBoolean);
     }
-    AppMethodBeat.o(229447);
+    AppMethodBeat.o(229692);
   }
   
   public boolean b(int paramInt)
@@ -603,12 +586,12 @@ public class b
   
   public double c()
   {
-    AppMethodBeat.i(229472);
+    AppMethodBeat.i(229719);
     double d1 = 0.0D;
     if (this.b != null) {
       d1 = this.b.getRealFPS();
     }
-    AppMethodBeat.o(229472);
+    AppMethodBeat.o(229719);
     return d1;
   }
   
@@ -632,12 +615,12 @@ public class b
   
   public long d()
   {
-    AppMethodBeat.i(229473);
+    AppMethodBeat.i(229723);
     long l1 = 0L;
     if (this.b != null) {
       l1 = this.b.getRealBitrate();
     }
-    AppMethodBeat.o(229473);
+    AppMethodBeat.o(229723);
     return l1;
   }
   
@@ -656,12 +639,12 @@ public class b
   
   public int e()
   {
-    AppMethodBeat.i(229474);
+    AppMethodBeat.i(229724);
     int i1 = 0;
     if (this.b != null) {
       i1 = this.b.getEncodeCost();
     }
-    AppMethodBeat.o(229474);
+    AppMethodBeat.o(229724);
     return i1;
   }
   
@@ -699,13 +682,13 @@ public class b
     
     static
     {
-      AppMethodBeat.i(229167);
+      AppMethodBeat.i(229536);
       a = new a("HW_ENCODER_H264", 0, 1);
       b = new a("SW_ENCODER_H264", 1, 2);
       c = new a("HW_ENCODER_H265", 2, 3);
       d = new a("SW_ENCODER_H265", 3, 4);
       e = new a[] { a, b, c, d };
-      AppMethodBeat.o(229167);
+      AppMethodBeat.o(229536);
     }
     
     private a(int paramInt)
@@ -726,23 +709,23 @@ public class b
     
     public b(b paramb)
     {
-      AppMethodBeat.i(229332);
+      AppMethodBeat.i(229532);
       this.a = new WeakReference(paramb);
-      AppMethodBeat.o(229332);
+      AppMethodBeat.o(229532);
     }
     
     public void run()
     {
-      AppMethodBeat.i(229341);
+      AppMethodBeat.i(229540);
       if (this.a == null)
       {
-        AppMethodBeat.o(229341);
+        AppMethodBeat.o(229540);
         return;
       }
       b localb = (b)this.a.get();
       if (localb == null)
       {
-        AppMethodBeat.o(229341);
+        AppMethodBeat.o(229540);
         return;
       }
       if (b.i(localb) < b.j(localb))
@@ -753,7 +736,7 @@ public class b
         float f = b.m(localb);
         b.b(localb, arrayOfInt[1] / 10 + f);
         b.c(localb, (float)(b.n(localb) + localb.c() * 100.0D / b.g(localb).fps));
-        AppMethodBeat.o(229341);
+        AppMethodBeat.o(229540);
         return;
       }
       if ((com.tencent.liteav.basic.d.c.a().a(b.l(localb) / b.j(localb), b.m(localb) / b.j(localb), b.n(localb) / b.j(localb))) && (com.tencent.liteav.basic.d.c.a().d() != 0))
@@ -762,13 +745,13 @@ public class b
         b.o(localb);
       }
       b.p(localb);
-      AppMethodBeat.o(229341);
+      AppMethodBeat.o(229540);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.b
  * JD-Core Version:    0.7.0.1
  */

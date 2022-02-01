@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="@dimen/a_6" />
-    <LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:id="@id/e3g" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:minHeight="@dimen/k4">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/zj" android:gravity="center|left" android:id="@id/e3h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/ir" android:lineSpacingExtra="3.0dip" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/a8w" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/al6" android:id="@id/a8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:shadowColor="#28000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="2.0" android:layout_below="@id/a8w" android:layout_centerInParent="true" />
+</RelativeLayout>

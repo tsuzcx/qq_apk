@@ -1,60 +1,52 @@
 package kotlin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/IndexedValue;", "T", "", "index", "", "value", "(ILjava/lang/Object;)V", "getIndex", "()I", "getValue", "()Ljava/lang/Object;", "Ljava/lang/Object;", "component1", "component2", "copy", "(ILjava/lang/Object;)Lkotlin/collections/IndexedValue;", "equals", "", "other", "hashCode", "toString", "", "kotlin-stdlib"})
-public final class y<T>
+@Metadata(d1={""}, d2={"filterIsInstance", "", "R", "", "klass", "Ljava/lang/Class;", "filterIsInstanceTo", "C", "", "destination", "(Ljava/lang/Iterable;Ljava/util/Collection;Ljava/lang/Class;)Ljava/util/Collection;", "reverse", "", "T", "", "sumOf", "Ljava/math/BigDecimal;", "selector", "Lkotlin/Function1;", "sumOfBigDecimal", "Ljava/math/BigInteger;", "sumOfBigInteger", "toSortedSet", "Ljava/util/SortedSet;", "", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "kotlin-stdlib"}, k=5, mv={1, 5, 1}, xi=1, xs="kotlin/collections/CollectionsKt")
+public class y
+  extends x
 {
-  public final int index;
-  public final T value;
-  
-  public y(int paramInt, T paramT)
+  public static final <C extends Collection<? super R>, R> C a(Iterable<?> paramIterable, C paramC, Class<R> paramClass)
   {
-    this.index = paramInt;
-    this.value = paramT;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(129129);
-    if (this != paramObject)
+    AppMethodBeat.i(191027);
+    s.u(paramIterable, "$this$filterIsInstanceTo");
+    s.u(paramC, "destination");
+    s.u(paramClass, "klass");
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext())
     {
-      if ((paramObject instanceof y))
-      {
-        paramObject = (y)paramObject;
-        if ((this.index != paramObject.index) || (!p.h(this.value, paramObject.value))) {}
+      Object localObject = paramIterable.next();
+      if (paramClass.isInstance(localObject)) {
+        paramC.add(localObject);
       }
     }
-    else
-    {
-      AppMethodBeat.o(129129);
-      return true;
-    }
-    AppMethodBeat.o(129129);
-    return false;
+    AppMethodBeat.o(191027);
+    return paramC;
   }
   
-  public final int hashCode()
+  public static final <R> List<R> a(Iterable<?> paramIterable, Class<R> paramClass)
   {
-    AppMethodBeat.i(129128);
-    int j = this.index;
-    Object localObject = this.value;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      AppMethodBeat.o(129128);
-      return i + j * 31;
-    }
+    AppMethodBeat.i(191019);
+    s.u(paramIterable, "$this$filterIsInstance");
+    s.u(paramClass, "klass");
+    paramIterable = (List)p.a(paramIterable, (Collection)new ArrayList(), paramClass);
+    AppMethodBeat.o(191019);
+    return paramIterable;
   }
   
-  public final String toString()
+  public static final <T> void oJ(List<T> paramList)
   {
-    AppMethodBeat.i(129127);
-    String str = "IndexedValue(index=" + this.index + ", value=" + this.value + ")";
-    AppMethodBeat.o(129127);
-    return str;
+    AppMethodBeat.i(129225);
+    s.u(paramList, "$this$reverse");
+    Collections.reverse(paramList);
+    AppMethodBeat.o(129225);
   }
 }
 

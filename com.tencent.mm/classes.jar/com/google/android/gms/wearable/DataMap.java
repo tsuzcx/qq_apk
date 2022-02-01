@@ -2,7 +2,6 @@ package com.google.android.gms.wearable;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.internal.wearable.zze;
 import com.google.android.gms.internal.wearable.zzf;
 import com.google.android.gms.internal.wearable.zzg;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-@VisibleForTesting
 public class DataMap
 {
   public static final String TAG = "DataMap";
@@ -1016,7 +1014,7 @@ public class DataMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataMap
  * JD-Core Version:    0.7.0.1
  */

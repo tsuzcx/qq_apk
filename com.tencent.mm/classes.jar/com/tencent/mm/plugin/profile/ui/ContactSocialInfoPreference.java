@@ -12,47 +12,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.f;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactSocialInfoPreference
   extends Preference
 {
-  private ImageView GXY;
-  private ImageView GXZ;
-  private ImageView GYa;
-  private ImageView GYb;
-  private ImageView GYc;
-  private ImageView GYd;
-  private int GYe;
-  private int GYf;
-  private int GYg;
-  private int GYh;
-  private int GYi;
-  private int GYj;
-  private TextView txT;
+  private ImageView MWb;
+  private ImageView MWc;
+  private ImageView MWd;
+  private ImageView MWe;
+  private ImageView MWf;
+  private ImageView MWg;
+  private int MWh;
+  private int MWi;
+  private int MWj;
+  private int MWk;
+  private int MWl;
+  private int MWm;
+  private TextView wCq;
   
   public ContactSocialInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.GYe = 8;
-    this.GYf = 8;
-    this.GYg = 8;
-    this.GYh = 8;
-    this.GYi = 8;
-    this.GYj = 8;
+    this.MWh = 8;
+    this.MWi = 8;
+    this.MWj = 8;
+    this.MWk = 8;
+    this.MWl = 8;
+    this.MWm = 8;
   }
   
   public ContactSocialInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27047);
-    this.GYe = 8;
-    this.GYf = 8;
-    this.GYg = 8;
-    this.GYh = 8;
-    this.GYi = 8;
-    this.GYj = 8;
+    this.MWh = 8;
+    this.MWi = 8;
+    this.MWj = 8;
+    this.MWk = 8;
+    this.MWl = 8;
+    this.MWm = 8;
     setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(27047);
   }
@@ -60,36 +60,36 @@ public class ContactSocialInfoPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27049);
-    this.GXY = ((ImageView)paramView.findViewById(R.h.dIP));
-    this.GXZ = ((ImageView)paramView.findViewById(R.h.dIT));
-    this.GYa = ((ImageView)paramView.findViewById(R.h.dIO));
-    this.GYb = ((ImageView)paramView.findViewById(R.h.dIE));
-    this.GYc = ((ImageView)paramView.findViewById(R.h.dIK));
-    this.GYd = ((ImageView)paramView.findViewById(R.h.dIW));
-    this.txT = ((TextView)paramView.findViewById(R.h.title));
-    if (this.GXY != null) {
-      this.GXY.setVisibility(this.GYe);
+    this.MWb = ((ImageView)paramView.findViewById(R.h.fKk));
+    this.MWc = ((ImageView)paramView.findViewById(R.h.fKo));
+    this.MWd = ((ImageView)paramView.findViewById(R.h.fKj));
+    this.MWe = ((ImageView)paramView.findViewById(R.h.fJZ));
+    this.MWf = ((ImageView)paramView.findViewById(R.h.fKf));
+    this.MWg = ((ImageView)paramView.findViewById(R.h.fKr));
+    this.wCq = ((TextView)paramView.findViewById(R.h.title));
+    if (this.MWb != null) {
+      this.MWb.setVisibility(this.MWh);
     }
-    if (this.GXZ != null) {
-      this.GXZ.setVisibility(this.GYf);
+    if (this.MWc != null) {
+      this.MWc.setVisibility(this.MWi);
     }
-    if (this.GYa != null) {
-      this.GYa.setVisibility(this.GYg);
+    if (this.MWd != null) {
+      this.MWd.setVisibility(this.MWj);
     }
-    if (this.GYb != null) {
-      this.GYb.setVisibility(this.GYh);
+    if (this.MWe != null) {
+      this.MWe.setVisibility(this.MWk);
     }
-    if (this.GYc != null) {
-      this.GYc.setVisibility(this.GYi);
+    if (this.MWf != null) {
+      this.MWf.setVisibility(this.MWl);
     }
-    if (this.txT != null)
+    if (this.wCq != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.txT.getLayoutParams();
-      localLayoutParams.width = a.aY(this.mContext, R.f.FixedTitleWidth);
-      this.txT.setLayoutParams(localLayoutParams);
+      ViewGroup.LayoutParams localLayoutParams = this.wCq.getLayoutParams();
+      localLayoutParams.width = a.br(this.mContext, R.f.FixedTitleWidth);
+      this.wCq.setLayoutParams(localLayoutParams);
     }
-    if (this.GYd != null) {
-      this.GYd.setVisibility(this.GYj);
+    if (this.MWg != null) {
+      this.MWg.setVisibility(this.MWm);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27049);
@@ -102,14 +102,14 @@ public class ContactSocialInfoPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.eiZ, localViewGroup);
+    localLayoutInflater.inflate(R.i.glZ, localViewGroup);
     AppMethodBeat.o(27048);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactSocialInfoPreference
  * JD-Core Version:    0.7.0.1
  */

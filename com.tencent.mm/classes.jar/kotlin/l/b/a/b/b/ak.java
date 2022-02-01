@@ -1,18 +1,18 @@
 package kotlin.l.b.a.b.b;
 
-import kotlin.l.b.a.b.j.f.a.e;
-import kotlin.l.b.a.b.m.ba;
+import java.util.Collection;
+import kotlin.l.b.a.b.f.c;
 
 public abstract interface ak
-  extends ae
+  extends ai
 {
-  public abstract ak e(ba paramba);
+  public abstract void a(c paramc, Collection<ah> paramCollection);
   
-  public abstract e iFI();
+  public abstract boolean g(c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.b.ak
  * JD-Core Version:    0.7.0.1
  */

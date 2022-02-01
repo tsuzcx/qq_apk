@@ -3,51 +3,51 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.jsapi.ae.c.b;
-import com.tencent.mm.plugin.appbrand.jsapi.az;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.ah.c.b;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import java.util.HashMap;
 
 final class b
-  extends az
+  extends bc
   implements c.b
 {
   private static final int CTRL_INDEX = 678;
   public static final String NAME = "onImageViewLoad";
-  private final ad.b oPO;
-  private final g oPP;
+  private final ad.b rTC;
+  private final h rTD;
   
-  b(int paramInt, ad.b paramb, g paramg)
+  b(int paramInt, ad.b paramb, h paramh)
   {
-    AppMethodBeat.i(205910);
-    o("viewId", Integer.valueOf(paramInt));
-    this.oPO = paramb;
-    this.oPP = paramg;
-    AppMethodBeat.o(205910);
+    AppMethodBeat.i(327337);
+    w("viewId", Integer.valueOf(paramInt));
+    this.rTC = paramb;
+    this.rTD = paramh;
+    AppMethodBeat.o(327337);
   }
   
   public final void c(final BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(205911);
+    AppMethodBeat.i(327340);
     if (paramOptions != null)
     {
-      o("errMsg", "ok");
-      o("size", new HashMap() {});
+      w("errMsg", "ok");
+      w("size", new HashMap() {});
     }
-    while ((this.oPO != null) && ("webview".equals(this.oPO.getString("sendTo", null))))
+    while ((this.rTC != null) && ("webview".equals(this.rTC.getString("sendTo", null))))
     {
-      this.oPP.a(this);
-      AppMethodBeat.o(205911);
+      this.rTD.a(this);
+      AppMethodBeat.o(327340);
       return;
-      o("errMsg", "fail");
+      w("errMsg", "fail");
     }
-    this.oPP.a(this, null);
-    AppMethodBeat.o(205911);
+    this.rTD.a(this, null);
+    AppMethodBeat.o(327340);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.b
  * JD-Core Version:    0.7.0.1
  */

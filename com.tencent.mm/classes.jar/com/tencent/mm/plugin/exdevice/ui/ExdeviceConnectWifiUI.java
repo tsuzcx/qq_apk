@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,8 +36,9 @@ import com.tencent.mm.model.bh;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
-import com.tencent.mm.plugin.exdevice.model.j;
-import com.tencent.mm.plugin.exdevice.model.j.a;
+import com.tencent.mm.plugin.exdevice.model.l;
+import com.tencent.mm.plugin.exdevice.model.l.a;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -46,50 +46,51 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.vfs.y;
 import java.util.LinkedList;
 
 public class ExdeviceConnectWifiUI
   extends MMActivity
 {
-  private EditText ndD;
-  private String uFv;
-  private TextWatcher uY;
-  private boolean vmA;
-  private boolean vmB;
-  private int vmC;
-  private byte[] vmD;
-  private int vmE;
-  private int vmF;
-  private int vmG;
-  private String vmH;
-  private int vmI;
-  private long vmJ;
-  boolean vmK;
-  private com.tencent.mm.plugin.exdevice.e.b vmL;
-  private b vmM;
-  private p vmN;
-  private j.a vmO;
-  private WifiManager.MulticastLock vmP;
-  private Runnable vmQ;
-  private boolean vmR;
-  private View vms;
-  private TextView vmt;
-  private View vmu;
-  private View vmv;
-  private s vmw;
-  private String vmx;
-  private com.tencent.mm.plugin.exdevice.e.a vmy;
-  private boolean vmz;
+  private EditText qaR;
+  private TextWatcher vU;
+  private String xNX;
+  private View yyU;
+  private TextView yyV;
+  private View yyW;
+  private View yyX;
+  private w yyY;
+  private String yyZ;
+  private com.tencent.mm.plugin.exdevice.e.a yza;
+  private boolean yzb;
+  private boolean yzc;
+  private boolean yzd;
+  private int yze;
+  private byte[] yzf;
+  private int yzg;
+  private int yzh;
+  private int yzi;
+  private String yzj;
+  private int yzk;
+  private long yzl;
+  boolean yzm;
+  private com.tencent.mm.plugin.exdevice.e.b yzn;
+  private b yzo;
+  private p yzp;
+  private l.a yzq;
+  private WifiManager.MulticastLock yzr;
+  private Runnable yzs;
+  private boolean yzt;
   
   public ExdeviceConnectWifiUI()
   {
     AppMethodBeat.i(23964);
-    this.vmH = "";
-    this.uFv = "";
-    this.vmK = false;
-    this.vmQ = new Runnable()
+    this.yzj = "";
+    this.xNX = "";
+    this.yzm = false;
+    this.yzs = new Runnable()
     {
       public final void run()
       {
@@ -100,7 +101,7 @@ public class ExdeviceConnectWifiUI
           AppMethodBeat.o(23939);
           return;
         }
-        ExdeviceConnectWifiUI.c(ExdeviceConnectWifiUI.this).setText(ExdeviceConnectWifiUI.b(ExdeviceConnectWifiUI.this).vhh);
+        ExdeviceConnectWifiUI.c(ExdeviceConnectWifiUI.this).setText(ExdeviceConnectWifiUI.b(ExdeviceConnectWifiUI.this).ytj);
         Editable localEditable = ExdeviceConnectWifiUI.c(ExdeviceConnectWifiUI.this).getText();
         if (localEditable != null) {
           Selection.setSelection(localEditable, localEditable.length());
@@ -108,39 +109,39 @@ public class ExdeviceConnectWifiUI
         AppMethodBeat.o(23939);
       }
     };
-    this.vmR = true;
+    this.yzt = true;
     AppMethodBeat.o(23964);
   }
   
-  private void Kl(int paramInt)
+  private void Lk(int paramInt)
   {
     AppMethodBeat.i(23970);
     long l = 0L;
     if (paramInt == 4) {
-      l = System.currentTimeMillis() - this.vmJ;
+      l = System.currentTimeMillis() - this.yzl;
     }
-    com.tencent.mm.plugin.report.service.h.IzE.a(13503, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.vmG), Long.valueOf(l), this.vmH, this.uFv, Integer.valueOf(this.vmI) });
+    h.OAn.b(13503, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.yzi), Long.valueOf(l), this.yzj, this.xNX, Integer.valueOf(this.yzk) });
     AppMethodBeat.o(23970);
   }
   
-  private com.tencent.mm.plugin.exdevice.e.a aR(int paramInt, String paramString)
+  private com.tencent.mm.plugin.exdevice.e.a bk(int paramInt, String paramString)
   {
     AppMethodBeat.i(23971);
-    if ((Util.isNullOrNil(paramString)) || (this.vmL == null))
+    if ((Util.isNullOrNil(paramString)) || (this.yzn == null))
     {
       Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "ssid or wifiInfoList is null or nil.");
       AppMethodBeat.o(23971);
       return null;
     }
     int i = 0;
-    if (i < this.vmL.vhi.size())
+    if (i < this.yzn.ytk.size())
     {
-      com.tencent.mm.plugin.exdevice.e.a locala = (com.tencent.mm.plugin.exdevice.e.a)this.vmL.vhi.get(i);
+      com.tencent.mm.plugin.exdevice.e.a locala = (com.tencent.mm.plugin.exdevice.e.a)this.yzn.ytk.get(i);
       int j;
       if (locala == null)
       {
-        this.vmL.vhi.remove(i);
-        this.vmz = true;
+        this.yzn.ytk.remove(i);
+        this.yzb = true;
         j = i - 1;
       }
       do
@@ -150,9 +151,9 @@ public class ExdeviceConnectWifiUI
           i = j + 1;
           break;
           j = i;
-        } while (locala.vhf != paramInt);
+        } while (locala.yth != paramInt);
         j = i;
-      } while (!paramString.equals(locala.vhg));
+      } while (!paramString.equals(locala.yti));
       AppMethodBeat.o(23971);
       return locala;
     }
@@ -160,7 +161,7 @@ public class ExdeviceConnectWifiUI
     return null;
   }
   
-  private void daq()
+  private void dGL()
   {
     AppMethodBeat.i(23977);
     runOnUiThread(new Runnable()
@@ -174,39 +175,39 @@ public class ExdeviceConnectWifiUI
         AppMethodBeat.o(179591);
       }
     });
-    if (this.vmP.isHeld()) {
-      this.vmP.release();
+    if (this.yzr.isHeld()) {
+      this.yzr.release();
     }
     AppMethodBeat.o(23977);
   }
   
-  private void dat()
+  private void dGO()
   {
     AppMethodBeat.i(23972);
-    this.vmy.vhh = "";
-    this.vmy.vhg = "";
-    String str = this.vmx;
-    com.tencent.mm.plugin.exdevice.e.a locala = aR(this.vmC, str);
+    this.yza.ytj = "";
+    this.yza.yti = "";
+    String str = this.yyZ;
+    com.tencent.mm.plugin.exdevice.e.a locala = bk(this.yze, str);
     if ((locala == null) || (Util.isNullOrNil(str)))
     {
       AppMethodBeat.o(23972);
       return;
     }
-    if (Util.isNullOrNil(locala.vhh))
+    if (Util.isNullOrNil(locala.ytj))
     {
       Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Do not have a local password to fill for the current wifi.");
-      this.vmL.vhi.remove(locala);
-      this.vmz = true;
+      this.yzn.ytk.remove(locala);
+      this.yzb = true;
       AppMethodBeat.o(23972);
       return;
     }
-    this.vmy.vhh = com.tencent.mm.plugin.base.model.b.fk(locala.vhh, ExdeviceConnectWifiUI.a.aS(this.vmC, locala.vhg));
-    this.vmy.vhg = locala.vhg;
-    MMHandlerThread.postToMainThread(this.vmQ);
+    this.yza.ytj = com.tencent.mm.plugin.base.model.b.fB(locala.ytj, ExdeviceConnectWifiUI.a.bl(this.yze, locala.yti));
+    this.yza.yti = locala.yti;
+    MMHandlerThread.postToMainThread(this.yzs);
     AppMethodBeat.o(23972);
   }
   
-  private void dau()
+  private void dGP()
   {
     AppMethodBeat.i(23976);
     runOnUiThread(new Runnable()
@@ -217,13 +218,13 @@ public class ExdeviceConnectWifiUI
         ExdeviceConnectWifiUI localExdeviceConnectWifiUI = ExdeviceConnectWifiUI.this;
         AppCompatActivity localAppCompatActivity = ExdeviceConnectWifiUI.this.getContext();
         ExdeviceConnectWifiUI.this.getString(R.l.app_tip);
-        ExdeviceConnectWifiUI.a(localExdeviceConnectWifiUI, com.tencent.mm.ui.base.h.a(localAppCompatActivity, ExdeviceConnectWifiUI.this.getString(R.l.eEc), true, new DialogInterface.OnCancelListener()
+        ExdeviceConnectWifiUI.a(localExdeviceConnectWifiUI, k.a(localAppCompatActivity, ExdeviceConnectWifiUI.this.getString(R.l.gGS), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(179590);
             Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "On progress cancel, stop airkiss");
-            if (ExdeviceConnectWifiUI.d(ExdeviceConnectWifiUI.this) != ExdeviceConnectWifiUI.b.vne) {
+            if (ExdeviceConnectWifiUI.d(ExdeviceConnectWifiUI.this) != ExdeviceConnectWifiUI.b.yzG) {
               ExdeviceConnectWifiUI.r(ExdeviceConnectWifiUI.this);
             }
             AppMethodBeat.o(179590);
@@ -238,9 +239,9 @@ public class ExdeviceConnectWifiUI
   private String getPassword()
   {
     AppMethodBeat.i(23973);
-    if (this.ndD.getText() != null)
+    if (this.qaR.getText() != null)
     {
-      String str = this.ndD.getText().toString();
+      String str = this.qaR.getText().toString();
       AppMethodBeat.o(23973);
       return str;
     }
@@ -251,7 +252,7 @@ public class ExdeviceConnectWifiUI
   private void h(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(23978);
-    View localView = this.vms;
+    View localView = this.yyU;
     int i;
     if (paramBoolean1)
     {
@@ -260,19 +261,19 @@ public class ExdeviceConnectWifiUI
       if (!paramBoolean2) {
         break label66;
       }
-      dau();
+      dGP();
     }
     for (;;)
     {
       if (paramBoolean3) {
-        Toast.makeText(getContext(), R.l.eDi, 0).show();
+        Toast.makeText(getContext(), R.l.gFW, 0).show();
       }
       AppMethodBeat.o(23978);
       return;
       i = 8;
       break;
       label66:
-      daq();
+      dGL();
     }
   }
   
@@ -282,26 +283,26 @@ public class ExdeviceConnectWifiUI
     b localb;
     if (paramBoolean)
     {
-      localb = b.vnb;
+      localb = b.yzD;
       if (NetStatusUtil.getNetType(this) == 0) {
         break label45;
       }
-      localb = b.vnc;
+      localb = b.yzE;
     }
     for (;;)
     {
       a(localb);
       AppMethodBeat.o(23974);
       return;
-      localb = this.vmM;
+      localb = this.yzo;
       break;
       label45:
-      this.vmx = ConnectivityCompat.Companion.getFormattedWiFiSsid();
-      Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Get SSID(%s)", new Object[] { this.vmx });
-      if (!Util.isNullOrNil(this.vmx)) {
-        this.vmt.setText(this.vmx);
+      this.yyZ = ConnectivityCompat.Companion.getFormattedWiFiSsid();
+      Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Get SSID(%s)", new Object[] { this.yyZ });
+      if (!Util.isNullOrNil(this.yyZ)) {
+        this.yyV.setText(this.yyZ);
       } else {
-        this.vmt.setText("");
+        this.yyV.setText("");
       }
     }
   }
@@ -319,13 +320,13 @@ public class ExdeviceConnectWifiUI
           AppMethodBeat.o(23975);
           return;
         }
-        this.vmM = paramb;
-        switch (10.vmX[paramb.ordinal()])
+        this.yzo = paramb;
+        switch (10.yzz[paramb.ordinal()])
         {
         case 1: 
-          if (paramb != b.vnb)
+          if (paramb != b.yzD)
           {
-            this.ndD.clearFocus();
+            this.qaR.clearFocus();
             hideVKB();
           }
           AppMethodBeat.o(23975);
@@ -339,18 +340,18 @@ public class ExdeviceConnectWifiUI
       continue;
       h(false, false, false);
       continue;
-      Kl(5);
-      this.vmB = true;
+      Lk(5);
+      this.yzd = true;
       setResult(1);
       for (;;)
       {
         finish();
         break;
-        Kl(4);
+        Lk(4);
         h(true, false, true);
-        this.vmB = true;
+        this.yzd = true;
         setResult(-1);
-        bh.aHJ().postToWorker(new Runnable()
+        bh.baH().postToWorker(new Runnable()
         {
           public final void run()
           {
@@ -372,7 +373,7 @@ public class ExdeviceConnectWifiUI
           localIntent.putExtra("device_category_id", getIntent().getStringExtra("device_category_id"));
           localIntent.putExtra("device_brand_name", getIntent().getStringExtra("device_brand_name"));
           localIntent.putExtra("bind_ticket", getIntent().getStringExtra("bind_ticket"));
-          com.tencent.mm.by.c.b(getContext(), "exdevice", ".ui.ExdeviceBindDeviceUI", localIntent);
+          com.tencent.mm.br.c.b(getContext(), "exdevice", ".ui.ExdeviceBindDeviceUI", localIntent);
         }
       }
     }
@@ -380,13 +381,13 @@ public class ExdeviceConnectWifiUI
   
   public int getLayoutId()
   {
-    return R.i.egp;
+    return R.i.gji;
   }
   
   public void initView()
   {
     AppMethodBeat.i(23969);
-    setMMTitle(R.l.egp);
+    setMMTitle(R.l.gji);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -395,7 +396,7 @@ public class ExdeviceConnectWifiUI
         if (!ExdeviceConnectWifiUI.h(ExdeviceConnectWifiUI.this))
         {
           paramAnonymousMenuItem = new Intent();
-          if (ExdeviceConnectWifiUI.d(ExdeviceConnectWifiUI.this) == ExdeviceConnectWifiUI.b.vnc) {
+          if (ExdeviceConnectWifiUI.d(ExdeviceConnectWifiUI.this) == ExdeviceConnectWifiUI.b.yzE) {
             break label69;
           }
         }
@@ -410,12 +411,12 @@ public class ExdeviceConnectWifiUI
         }
       }
     });
-    this.vms = findViewById(R.h.dTP);
-    this.vmt = ((TextView)findViewById(R.h.dNd));
-    this.vmu = findViewById(R.h.dqO);
-    this.ndD = ((EditText)findViewById(R.h.dQV));
-    this.vmv = findViewById(R.h.dAC);
-    this.uY = new TextWatcher()
+    this.yyU = findViewById(R.h.fVX);
+    this.yyV = ((TextView)findViewById(R.h.fOX));
+    this.yyW = findViewById(R.h.frc);
+    this.qaR = ((EditText)findViewById(R.h.fTb));
+    this.yyX = findViewById(R.h.fBz);
+    this.vU = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -436,7 +437,7 @@ public class ExdeviceConnectWifiUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.vms.setOnTouchListener(new View.OnTouchListener()
+    this.yyU.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -447,23 +448,23 @@ public class ExdeviceConnectWifiUI
         return false;
       }
     });
-    this.vmv.setOnClickListener(new View.OnClickListener()
+    this.yyX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(179599);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "onClick connectBtn.");
         ExdeviceConnectWifiUI.k(ExdeviceConnectWifiUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(179599);
       }
     });
-    this.ndD.setTransformationMethod(new PasswordTransformationMethod());
-    this.ndD.addTextChangedListener(this.uY);
-    this.ndD.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.qaR.setTransformationMethod(new PasswordTransformationMethod());
+    this.qaR.addTextChangedListener(this.vU);
+    this.qaR.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -479,16 +480,16 @@ public class ExdeviceConnectWifiUI
         return false;
       }
     });
-    this.ndD.setOnKeyListener(new View.OnKeyListener()
+    this.qaR.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(179588);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.bn(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$10", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        localb.sc(paramAnonymousInt);
+        localb.cH(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$10", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aYj());
         if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
         {
           ExdeviceConnectWifiUI.k(ExdeviceConnectWifiUI.this);
@@ -501,7 +502,7 @@ public class ExdeviceConnectWifiUI
         return false;
       }
     });
-    this.ndD.requestFocus();
+    this.qaR.requestFocus();
     AppMethodBeat.o(23969);
   }
   
@@ -509,30 +510,30 @@ public class ExdeviceConnectWifiUI
   {
     AppMethodBeat.i(23965);
     super.onCreate(paramBundle);
-    if ((com.tencent.mm.compatible.util.d.qX(28)) || (Build.VERSION.CODENAME.equals("Q"))) {}
+    if ((com.tencent.mm.compatible.util.d.rd(28)) || (Build.VERSION.CODENAME.equals("Q"))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        if (this.vmR)
+        if (this.yzt)
         {
-          boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, new String[] { "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION" }, 77, null, null);
+          boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, new String[] { "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION" }, 77, null);
           Log.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
           if (!bool) {}
         }
-        else if ((com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.ACCESS_FINE_LOCATION")) && (!com.tencent.mm.modelgeo.d.blr()))
+        else if ((com.tencent.mm.pluginsdk.permission.b.s(this, "android.permission.ACCESS_FINE_LOCATION")) && (!com.tencent.mm.modelgeo.d.bJm()))
         {
-          com.tencent.mm.ui.base.h.a(this, getString(R.l.gps_disable_tip), getString(R.l.app_tip), getString(R.l.jump_to_settings), getString(R.l.app_cancel), false, new DialogInterface.OnClickListener()
+          k.a(this, getString(R.l.gps_disable_tip), getString(R.l.app_tip), getString(R.l.jump_to_settings), getString(R.l.app_cancel), false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(179595);
-              com.tencent.mm.modelgeo.d.cW(ExdeviceConnectWifiUI.this);
+              com.tencent.mm.modelgeo.d.dP(ExdeviceConnectWifiUI.this);
               AppMethodBeat.o(179595);
             }
           }, null);
         }
       }
-      this.vmN = new p.a()
+      this.yzp = new p.a()
       {
         public final void onNetworkChange(int paramAnonymousInt)
         {
@@ -542,7 +543,7 @@ public class ExdeviceConnectWifiUI
             public final void run()
             {
               AppMethodBeat.i(23948);
-              if (ExdeviceConnectWifiUI.d(ExdeviceConnectWifiUI.this) != ExdeviceConnectWifiUI.b.vne) {
+              if (ExdeviceConnectWifiUI.d(ExdeviceConnectWifiUI.this) != ExdeviceConnectWifiUI.b.yzG) {
                 ExdeviceConnectWifiUI.e(ExdeviceConnectWifiUI.this);
               }
               AppMethodBeat.o(23948);
@@ -551,37 +552,37 @@ public class ExdeviceConnectWifiUI
           AppMethodBeat.o(23949);
         }
       };
-      this.vmM = b.vnb;
-      if (bh.aHB()) {
+      this.yzo = b.yzD;
+      if (bh.baz()) {
         break;
       }
       finish();
       AppMethodBeat.o(23965);
       return;
     }
-    this.vmL = new com.tencent.mm.plugin.exdevice.e.b();
-    this.vmy = new com.tencent.mm.plugin.exdevice.e.a();
-    bh.beI();
-    this.vmC = com.tencent.mm.model.c.getUin();
+    this.yzn = new com.tencent.mm.plugin.exdevice.e.b();
+    this.yza = new com.tencent.mm.plugin.exdevice.e.a();
+    bh.bCz();
+    this.yze = com.tencent.mm.model.c.getUin();
     paramBundle = getIntent().getStringExtra("encryptKey");
-    this.vmE = getIntent().getIntExtra("procInterval", 0);
-    this.vmF = getIntent().getIntExtra("dataInterval", 0);
-    Log.d("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Process interval:" + this.vmE + " Data interval:" + this.vmF);
+    this.yzg = getIntent().getIntExtra("procInterval", 0);
+    this.yzh = getIntent().getIntExtra("dataInterval", 0);
+    Log.d("MicroMsg.exdevice.ExdeviceConnectWifiUI", "Process interval:" + this.yzg + " Data interval:" + this.yzh);
     if (!Util.isNullOrNil(paramBundle))
     {
-      this.vmD = Base64.decode(paramBundle, 0);
-      this.vmI = 1;
+      this.yzf = Base64.decode(paramBundle, 0);
+      this.yzk = 1;
     }
-    this.vmK = false;
-    this.vmG = getIntent().getExtras().getInt("exdevice_airkiss_open_type");
-    if (this.vmG == 2)
+    this.yzm = false;
+    this.yzi = getIntent().getExtras().getInt("exdevice_airkiss_open_type");
+    if (this.yzi == 2)
     {
-      this.vmH = getIntent().getStringExtra("device_brand_name");
-      this.uFv = getIntent().getStringExtra("device_category_id");
+      this.yzj = getIntent().getStringExtra("device_brand_name");
+      this.xNX = getIntent().getStringExtra("device_category_id");
     }
-    this.vmO = new j.a()
+    this.yzq = new l.a()
     {
-      public final void g(int paramAnonymousInt, Object... paramAnonymousVarArgs)
+      public final void h(int paramAnonymousInt, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(23953);
         if ((paramAnonymousInt != 0) || (paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length < 2) || (!(paramAnonymousVarArgs[0] instanceof Integer)) || (!(paramAnonymousVarArgs[1] instanceof Integer)))
@@ -602,7 +603,7 @@ public class ExdeviceConnectWifiUI
             public final void run()
             {
               AppMethodBeat.i(23950);
-              ExdeviceConnectWifiUI.this.a(ExdeviceConnectWifiUI.b.vne);
+              ExdeviceConnectWifiUI.this.a(ExdeviceConnectWifiUI.b.yzG);
               AppMethodBeat.o(23950);
             }
           });
@@ -617,12 +618,12 @@ public class ExdeviceConnectWifiUI
             if (ExdeviceConnectWifiUI.g(ExdeviceConnectWifiUI.this) != null) {
               ExdeviceConnectWifiUI.g(ExdeviceConnectWifiUI.this).dismiss();
             }
-            com.tencent.mm.ui.base.h.a(ExdeviceConnectWifiUI.this.getContext(), ExdeviceConnectWifiUI.this.getContext().getString(R.l.eCF), "", ExdeviceConnectWifiUI.this.getContext().getString(R.l.eDe), "", false, new DialogInterface.OnClickListener()
+            k.a(ExdeviceConnectWifiUI.this.getContext(), ExdeviceConnectWifiUI.this.getContext().getString(R.l.gFt), "", ExdeviceConnectWifiUI.this.getContext().getString(R.l.gFS), "", false, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
               {
                 AppMethodBeat.i(23951);
-                ExdeviceConnectWifiUI.this.a(ExdeviceConnectWifiUI.b.vnf);
+                ExdeviceConnectWifiUI.this.a(ExdeviceConnectWifiUI.b.yzH);
                 AppMethodBeat.o(23951);
               }
             }, null).show();
@@ -632,9 +633,9 @@ public class ExdeviceConnectWifiUI
         AppMethodBeat.o(23953);
       }
     };
-    j.cZo().a(0, this.vmO);
+    l.dFF().a(0, this.yzq);
     initView();
-    bh.aHJ().postToWorker(new Runnable()
+    bh.baH().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -642,8 +643,8 @@ public class ExdeviceConnectWifiUI
         try
         {
           Object localObject = new StringBuilder();
-          bh.beI();
-          localObject = u.aY(com.tencent.mm.model.c.getAccPath() + "exdevice_wifi_infos", 0, 2147483647);
+          bh.bCz();
+          localObject = y.bi(com.tencent.mm.model.c.getAccPath() + "exdevice_wifi_infos", 0, 2147483647);
           if (localObject != null)
           {
             ExdeviceConnectWifiUI.o(ExdeviceConnectWifiUI.this).parseFrom((byte[])localObject);
@@ -670,8 +671,8 @@ public class ExdeviceConnectWifiUI
         AppMethodBeat.o(23943);
       }
     });
-    Kl(1);
-    this.vmP = ((WifiManager)getApplicationContext().getSystemService("wifi")).createMulticastLock("localWifi");
+    Lk(1);
+    this.yzr = ((WifiManager)getApplicationContext().getSystemService("wifi")).createMulticastLock("localWifi");
     AppMethodBeat.o(23965);
   }
   
@@ -679,10 +680,10 @@ public class ExdeviceConnectWifiUI
   {
     AppMethodBeat.i(23967);
     super.onDestroy();
-    if (!this.vmK) {
-      Kl(2);
+    if (!this.yzm) {
+      Lk(2);
     }
-    j.cZo().b(0, this.vmO);
+    l.dFF().b(0, this.yzq);
     AppMethodBeat.o(23967);
   }
   
@@ -705,18 +706,13 @@ public class ExdeviceConnectWifiUI
       return;
       if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == -1))
       {
-        this.vmR = false;
-        com.tencent.mm.ui.base.h.a(this, getString(R.l.permission_location_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        this.yzt = false;
+        k.a(this, getString(R.l.permission_location_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(179592);
-            paramAnonymousDialogInterface = ExdeviceConnectWifiUI.this;
-            Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$16", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
-            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/plugin/exdevice/ui/ExdeviceConnectWifiUI$16", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            com.tencent.mm.pluginsdk.permission.b.lx(ExdeviceConnectWifiUI.this.getContext());
             ExdeviceConnectWifiUI.this.finish();
             AppMethodBeat.o(179592);
           }
@@ -738,11 +734,11 @@ public class ExdeviceConnectWifiUI
     AppMethodBeat.i(23966);
     super.onResume();
     refresh(false);
-    bh.a(this.vmN);
-    if (this.vmA)
+    bh.a(this.yzp);
+    if (this.yzc)
     {
-      dat();
-      this.vmA = false;
+      dGO();
+      this.yzc = false;
     }
     AppMethodBeat.o(23966);
   }
@@ -751,7 +747,7 @@ public class ExdeviceConnectWifiUI
   {
     AppMethodBeat.i(23968);
     super.onStop();
-    bh.b(this.vmN);
+    bh.b(this.yzp);
     AppMethodBeat.o(23968);
   }
   
@@ -766,12 +762,12 @@ public class ExdeviceConnectWifiUI
     static
     {
       AppMethodBeat.i(23963);
-      vnb = new b("NORMAL", 0);
-      vnc = new b("NO_WIFI_CONNECTED", 1);
-      vnd = new b("SETTING", 2);
-      vne = new b("FINISH", 3);
-      vnf = new b("TIMEOUT", 4);
-      vng = new b[] { vnb, vnc, vnd, vne, vnf };
+      yzD = new b("NORMAL", 0);
+      yzE = new b("NO_WIFI_CONNECTED", 1);
+      yzF = new b("SETTING", 2);
+      yzG = new b("FINISH", 3);
+      yzH = new b("TIMEOUT", 4);
+      yzI = new b[] { yzD, yzE, yzF, yzG, yzH };
       AppMethodBeat.o(23963);
     }
     
@@ -780,7 +776,7 @@ public class ExdeviceConnectWifiUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectWifiUI
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static boolean ad(String paramString, long paramLong)
+  public static boolean ah(String paramString, long paramLong)
   {
     AppMethodBeat.i(23775);
     Log.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "isItemInSharedPreferences, key = %s, device id = %d", new Object[] { paramString, Long.valueOf(paramLong) });
@@ -29,8 +29,8 @@ public final class a
       AppMethodBeat.o(23775);
       return false;
     }
-    b(localSharedPreferences);
-    if (!b.gu(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String())))
+    c(localSharedPreferences);
+    if (!b.gY(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String())))
     {
       AppMethodBeat.o(23775);
       return false;
@@ -39,7 +39,7 @@ public final class a
     return true;
   }
   
-  public static boolean ae(String paramString, long paramLong)
+  public static boolean ai(String paramString, long paramLong)
   {
     AppMethodBeat.i(23776);
     Log.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "addToSharedPreferences, key = %s, deviceId = %d", new Object[] { paramString, Long.valueOf(paramLong) });
@@ -56,8 +56,8 @@ public final class a
       AppMethodBeat.o(23776);
       return false;
     }
-    b(localSharedPreferences);
-    String str = b.gv(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String()));
+    c(localSharedPreferences);
+    String str = b.gZ(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String()));
     if (str == null)
     {
       Log.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "addDeviceToDeviceList failed!!!");
@@ -75,7 +75,7 @@ public final class a
     return true;
   }
   
-  public static boolean af(String paramString, long paramLong)
+  public static boolean aj(String paramString, long paramLong)
   {
     AppMethodBeat.i(23777);
     Log.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "removeFromSharedPreferences, key = %s, deviceId = %d", new Object[] { paramString, Long.valueOf(paramLong) });
@@ -92,8 +92,8 @@ public final class a
       AppMethodBeat.o(23777);
       return false;
     }
-    b(localSharedPreferences);
-    String str = b.gw(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String()));
+    c(localSharedPreferences);
+    String str = b.ha(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String()));
     if (str == null)
     {
       Log.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "remove device from device list failed!!!");
@@ -112,7 +112,7 @@ public final class a
     return true;
   }
   
-  public static long[] avG(String paramString)
+  public static long[] apG(String paramString)
   {
     AppMethodBeat.i(23778);
     Log.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "getListFromSharedPreferences, key = %s", new Object[] { paramString });
@@ -129,7 +129,7 @@ public final class a
       AppMethodBeat.o(23778);
       return null;
     }
-    b((SharedPreferences)localObject);
+    c((SharedPreferences)localObject);
     try
     {
       localObject = ((SharedPreferences)localObject).getString(paramString, new String()).split("\\|");
@@ -195,7 +195,7 @@ public final class a
     return arrayOfLong;
   }
   
-  private static void b(SharedPreferences paramSharedPreferences)
+  private static void c(SharedPreferences paramSharedPreferences)
   {
     int i = 0;
     AppMethodBeat.i(23774);
@@ -241,7 +241,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.a
  * JD-Core Version:    0.7.0.1
  */

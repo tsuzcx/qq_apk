@@ -16,9 +16,9 @@ import java.util.concurrent.atomic.AtomicReference;
 public final class c
   extends e
 {
-  private static final int[] bnH = new int[0];
-  private final f.a bnI;
-  private final AtomicReference<b> bnJ;
+  private static final int[] dhB = new int[0];
+  private final f.a dhC;
+  private final AtomicReference<b> dhD;
   
   public c()
   {
@@ -28,9 +28,15 @@ public final class c
   public c(f.a parama)
   {
     AppMethodBeat.i(92933);
-    this.bnI = parama;
-    this.bnJ = new AtomicReference(new b());
+    this.dhC = parama;
+    this.dhD = new AtomicReference(new b());
     AppMethodBeat.o(92933);
+  }
+  
+  private static boolean D(int paramInt, boolean paramBoolean)
+  {
+    paramInt &= 0x7;
+    return (paramInt == 4) || ((paramBoolean) && (paramInt == 3));
   }
   
   private static int a(q paramq, int[] paramArrayOfInt, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, List<Integer> paramList)
@@ -41,7 +47,7 @@ public final class c
     if (j < paramList.size())
     {
       int k = ((Integer)paramList.get(j)).intValue();
-      if (!a(paramq.bgf[k], paramString, paramArrayOfInt[k], paramInt1, paramInt2, paramInt3, paramInt4)) {
+      if (!a(paramq.cZY[k], paramString, paramArrayOfInt[k], paramInt1, paramInt2, paramInt3, paramInt4)) {
         break label88;
       }
       i += 1;
@@ -63,7 +69,7 @@ public final class c
     int i = 0;
     if (j < paramq.length)
     {
-      if (!a(paramq.bgf[j], paramArrayOfInt[j], parama)) {
+      if (!a(paramq.cZY[j], paramArrayOfInt[j], parama)) {
         break label57;
       }
       i += 1;
@@ -100,7 +106,7 @@ public final class c
     {
       if (paramInt3 * paramInt1 >= paramInt4 * paramInt2)
       {
-        localPoint = new Point(paramInt2, x.bq(paramInt2 * paramInt4, paramInt3));
+        localPoint = new Point(paramInt2, x.cl(paramInt2 * paramInt4, paramInt3));
         AppMethodBeat.o(92946);
         return localPoint;
         i = 0;
@@ -109,7 +115,7 @@ public final class c
         j = 0;
         break label26;
       }
-      Point localPoint = new Point(x.bq(paramInt1 * paramInt3, paramInt4), paramInt1);
+      Point localPoint = new Point(x.cl(paramInt1 * paramInt3, paramInt4), paramInt1);
       AppMethodBeat.o(92946);
       return localPoint;
       label107:
@@ -130,8 +136,8 @@ public final class c
     int m = 0;
     while (m < paramr.length)
     {
-      q localq = paramr.bgK[m];
-      List localList = a(localq, paramb.bnQ, paramb.bnR, paramb.bnS);
+      q localq = paramr.daE[m];
+      List localList = a(localq, paramb.dhK, paramb.dhL, paramb.dhM);
       int[] arrayOfInt = paramArrayOfInt[m];
       int j = 0;
       if (j < localq.length)
@@ -147,10 +153,10 @@ public final class c
         int i;
         label244:
         int k;
-        if (p(arrayOfInt[j], paramb.bnV))
+        if (D(arrayOfInt[j], paramb.dhP))
         {
-          localFormat = localq.bgf[j];
-          if ((!localList.contains(Integer.valueOf(j))) || ((localFormat.width != -1) && (localFormat.width > paramb.bnM)) || ((localFormat.height != -1) && (localFormat.height > paramb.bnN)) || ((localFormat.bitrate != -1) && (localFormat.bitrate > paramb.bnO))) {
+          localFormat = localq.cZY[j];
+          if ((!localList.contains(Integer.valueOf(j))) || ((localFormat.width != -1) && (localFormat.width > paramb.dhG)) || ((localFormat.height != -1) && (localFormat.height > paramb.dhH)) || ((localFormat.bitrate != -1) && (localFormat.bitrate > paramb.dhI))) {
             break label402;
           }
           i4 = 1;
@@ -161,7 +167,7 @@ public final class c
             i6 = i1;
             i5 = n;
             localObject2 = localObject1;
-            if (!paramb.bnP) {}
+            if (!paramb.dhJ) {}
           }
           else
           {
@@ -169,7 +175,7 @@ public final class c
               break label408;
             }
             i = 2;
-            boolean bool = p(arrayOfInt[j], false);
+            boolean bool = D(arrayOfInt[j], false);
             k = i;
             if (bool) {
               k = i + 1000;
@@ -181,10 +187,10 @@ public final class c
             label279:
             if (k == i1)
             {
-              if (localFormat.rp() == i3) {
+              if (localFormat.QR() == i3) {
                 break label418;
               }
-              i = bn(localFormat.rp(), i3);
+              i = ci(localFormat.QR(), i3);
               label307:
               if ((!bool) || (i4 == 0)) {
                 break label437;
@@ -206,7 +212,7 @@ public final class c
           if (i != 0)
           {
             i7 = localFormat.bitrate;
-            i8 = localFormat.rp();
+            i8 = localFormat.QR();
             i5 = j;
             localObject2 = localq;
             i6 = k;
@@ -228,7 +234,7 @@ public final class c
           i = 0;
           break label279;
           label418:
-          i = bn(localFormat.bitrate, i2);
+          i = ci(localFormat.bitrate, i2);
           break label307;
           label432:
           i = 0;
@@ -265,7 +271,7 @@ public final class c
     int i;
     while (j < paramr.length)
     {
-      localq = paramr.bgK[j];
+      localq = paramr.daE[j];
       arrayOfInt = paramArrayOfInt[j];
       k = 0;
       int i1 = m;
@@ -274,12 +280,12 @@ public final class c
         int i4 = i2;
         int i3 = i1;
         i = n;
-        if (p(arrayOfInt[k], paramb.bnV))
+        if (D(arrayOfInt[k], paramb.dhP))
         {
-          Format localFormat = localq.bgf[k];
+          Format localFormat = localq.cZY[k];
           i3 = arrayOfInt[k];
-          String str = paramb.bnK;
-          if ((localFormat.aNd & 0x1) == 0) {
+          String str = paramb.dhE;
+          if ((localFormat.cGZ & 0x1) == 0) {
             break label212;
           }
           i = 1;
@@ -295,7 +301,7 @@ public final class c
         for (;;)
         {
           m = i;
-          if (p(i3, false)) {
+          if (D(i3, false)) {
             m = i + 1000;
           }
           i4 = i2;
@@ -334,18 +340,18 @@ public final class c
       AppMethodBeat.o(92939);
       return null;
     }
-    q localq = paramr.bgK[n];
+    q localq = paramr.daE[n];
     if (parama != null)
     {
       arrayOfInt = paramArrayOfInt[n];
-      boolean bool = paramb.bnT;
+      boolean bool = paramb.dhN;
       i = 0;
       paramr = null;
       paramb = new HashSet();
       j = 0;
       if (j < localq.length)
       {
-        paramArrayOfInt = localq.bgf[j];
+        paramArrayOfInt = localq.cZY[j];
         k = paramArrayOfInt.channelCount;
         n = paramArrayOfInt.sampleRate;
         if (bool)
@@ -370,7 +376,7 @@ public final class c
     {
       j += 1;
       break;
-      paramArrayOfInt = paramArrayOfInt.aMQ;
+      paramArrayOfInt = paramArrayOfInt.cGN;
       break label346;
       if (i > 1)
       {
@@ -380,7 +386,7 @@ public final class c
         while (i < localq.length)
         {
           k = j;
-          if (a(localq.bgf[i], arrayOfInt[i], paramr))
+          if (a(localq.cZY[i], arrayOfInt[i], paramr))
           {
             paramArrayOfInt[j] = i;
             k = j + 1;
@@ -389,7 +395,7 @@ public final class c
           j = k;
         }
       }
-      for (paramr = paramArrayOfInt; paramr.length > 0; paramr = bnH)
+      for (paramr = paramArrayOfInt; paramr.length > 0; paramr = dhB)
       {
         paramr = parama.a(localq, paramr);
         AppMethodBeat.o(92939);
@@ -420,7 +426,7 @@ public final class c
     i = 2147483647;
     if (j < paramq.length)
     {
-      Format localFormat = paramq.bgf[j];
+      Format localFormat = paramq.cZY[j];
       if ((localFormat.width <= 0) || (localFormat.height <= 0)) {
         break label273;
       }
@@ -442,7 +448,7 @@ public final class c
         while (paramInt1 >= 0)
         {
           paramInt2 = ((Integer)localArrayList.get(paramInt1)).intValue();
-          paramInt2 = paramq.bgf[paramInt2].rp();
+          paramInt2 = paramq.cZY[paramInt2].QR();
           if ((paramInt2 == -1) || (paramInt2 > i)) {
             localArrayList.remove(paramInt1);
           }
@@ -457,7 +463,7 @@ public final class c
   private static boolean a(Format paramFormat, int paramInt, c.a parama)
   {
     AppMethodBeat.i(92941);
-    if ((p(paramInt, false)) && (paramFormat.channelCount == parama.channelCount) && (paramFormat.sampleRate == parama.sampleRate) && ((parama.mimeType == null) || (TextUtils.equals(parama.mimeType, paramFormat.aMQ))))
+    if ((D(paramInt, false)) && (paramFormat.channelCount == parama.channelCount) && (paramFormat.sampleRate == parama.sampleRate) && ((parama.mimeType == null) || (TextUtils.equals(parama.mimeType, paramFormat.cGN))))
     {
       AppMethodBeat.o(92941);
       return true;
@@ -469,7 +475,7 @@ public final class c
   private static boolean a(Format paramFormat, String paramString)
   {
     AppMethodBeat.i(92944);
-    if ((paramString != null) && (TextUtils.equals(paramString, x.bQ(paramFormat.language))))
+    if ((paramString != null) && (TextUtils.equals(paramString, x.dq(paramFormat.language))))
     {
       AppMethodBeat.o(92944);
       return true;
@@ -481,7 +487,7 @@ public final class c
   private static boolean a(Format paramFormat, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(92937);
-    if ((p(paramInt1, false)) && ((paramInt1 & paramInt2) != 0) && ((paramString == null) || (x.h(paramFormat.aMQ, paramString))) && ((paramFormat.width == -1) || (paramFormat.width <= paramInt3)) && ((paramFormat.height == -1) || (paramFormat.height <= paramInt4)) && ((paramFormat.bitrate == -1) || (paramFormat.bitrate <= paramInt5)))
+    if ((D(paramInt1, false)) && ((paramInt1 & paramInt2) != 0) && ((paramString == null) || (x.p(paramFormat.cGN, paramString))) && ((paramFormat.width == -1) || (paramFormat.width <= paramInt3)) && ((paramFormat.height == -1) || (paramFormat.height <= paramInt4)) && ((paramFormat.bitrate == -1) || (paramFormat.bitrate <= paramInt5)))
     {
       AppMethodBeat.o(92937);
       return true;
@@ -499,7 +505,7 @@ public final class c
     int m = 0;
     while (m < paramr.length)
     {
-      q localq = paramr.bgK[m];
+      q localq = paramr.daE[m];
       int[] arrayOfInt = paramArrayOfInt[m];
       int j = 0;
       if (j < localq.length)
@@ -510,19 +516,19 @@ public final class c
         Format localFormat;
         label103:
         int k;
-        if (p(arrayOfInt[j], paramb.bnV))
+        if (D(arrayOfInt[j], paramb.dhP))
         {
-          localFormat = localq.bgf[j];
-          if ((localFormat.aNd & 0x1) == 0) {
+          localFormat = localq.cZY[j];
+          if ((localFormat.cGZ & 0x1) == 0) {
             break label206;
           }
           i = 1;
-          if ((localFormat.aNd & 0x2) == 0) {
+          if ((localFormat.cGZ & 0x2) == 0) {
             break label211;
           }
           k = 1;
           label116:
-          if (!a(localFormat, paramb.bnL)) {
+          if (!a(localFormat, paramb.dhF)) {
             break label232;
           }
           if (i == 0) {
@@ -534,7 +540,7 @@ public final class c
         {
           label135:
           k = i;
-          if (p(arrayOfInt[j], false)) {
+          if (D(arrayOfInt[j], false)) {
             k = i + 1000;
           }
           i2 = i1;
@@ -577,7 +583,7 @@ public final class c
             i = n;
             localObject2 = localObject1;
           } while (k == 0);
-          if (a(localFormat, paramb.bnK)) {
+          if (a(localFormat, paramb.dhE)) {
             i = 2;
           } else {
             i = 1;
@@ -603,29 +609,12 @@ public final class c
     while (i >= 0)
     {
       int j = ((Integer)paramList.get(i)).intValue();
-      if (!a(paramq.bgf[j], paramString, paramArrayOfInt[j], paramInt1, paramInt2, paramInt3, paramInt4)) {
+      if (!a(paramq.cZY[j], paramString, paramArrayOfInt[j], paramInt1, paramInt2, paramInt3, paramInt4)) {
         paramList.remove(i);
       }
       i -= 1;
     }
     AppMethodBeat.o(92936);
-  }
-  
-  private static int bn(int paramInt1, int paramInt2)
-  {
-    int i = -1;
-    if (paramInt1 == -1)
-    {
-      paramInt1 = i;
-      if (paramInt2 == -1) {
-        paramInt1 = 0;
-      }
-      return paramInt1;
-    }
-    if (paramInt2 == -1) {
-      return 1;
-    }
-    return paramInt1 - paramInt2;
   }
   
   private static f c(r paramr, int[][] paramArrayOfInt, b paramb)
@@ -642,15 +631,15 @@ public final class c
     int m;
     if (n < paramr.length)
     {
-      q localq = paramr.bgK[n];
+      q localq = paramr.daE[n];
       int[] arrayOfInt = paramArrayOfInt[n];
       i = 0;
       if (i < localq.length)
       {
-        if (!p(arrayOfInt[i], paramb.bnV)) {
+        if (!D(arrayOfInt[i], paramb.dhP)) {
           break label195;
         }
-        if ((localq.bgf[i].aNd & 0x1) != 0)
+        if ((localq.cZY[i].cGZ & 0x1) != 0)
         {
           k = 1;
           if (k == 0) {
@@ -659,7 +648,7 @@ public final class c
           m = 2;
           label93:
           k = m;
-          if (p(arrayOfInt[i], false)) {
+          if (D(arrayOfInt[i], false)) {
             k = m + 1000;
           }
           if (k <= j) {
@@ -695,10 +684,21 @@ public final class c
     }
   }
   
-  private static boolean p(int paramInt, boolean paramBoolean)
+  private static int ci(int paramInt1, int paramInt2)
   {
-    paramInt &= 0x7;
-    return (paramInt == 4) || ((paramBoolean) && (paramInt == 3));
+    int i = -1;
+    if (paramInt1 == -1)
+    {
+      paramInt1 = i;
+      if (paramInt2 == -1) {
+        paramInt1 = 0;
+      }
+      return paramInt1;
+    }
+    if (paramInt2 == -1) {
+      return 1;
+    }
+    return paramInt1 - paramInt2;
   }
   
   protected final f[] a(s[] paramArrayOfs, r[] paramArrayOfr, int[][][] paramArrayOfInt)
@@ -706,7 +706,7 @@ public final class c
     AppMethodBeat.i(92934);
     int i4 = paramArrayOfs.length;
     f[] arrayOff = new f[i4];
-    b localb = (b)this.bnJ.get();
+    b localb = (b)this.dhD.get();
     int j = 0;
     int k = 0;
     int m = 0;
@@ -736,14 +736,14 @@ public final class c
         localObject2 = paramArrayOfs[m];
         localObject3 = paramArrayOfr[m];
         int[][] arrayOfInt = paramArrayOfInt[m];
-        f.a locala = this.bnI;
+        f.a locala = this.dhC;
         localObject1 = null;
         if (locala != null)
         {
-          if (localb.bnU)
+          if (localb.dhO)
           {
             k = 24;
-            if ((!localb.bnT) || ((((s)localObject2).qR() & k) == 0)) {
+            if ((!localb.dhN) || ((((s)localObject2).Qt() & k) == 0)) {
               break label318;
             }
             n = 1;
@@ -751,18 +751,18 @@ public final class c
             if (i1 >= ((r)localObject3).length) {
               break label533;
             }
-            localq = localObject3.bgK[i1];
+            localq = localObject3.daE[i1];
             arrayOfInt1 = arrayOfInt[i1];
-            i5 = localb.bnM;
-            i6 = localb.bnN;
-            i7 = localb.bnO;
-            i = localb.bnQ;
-            i2 = localb.bnR;
-            bool = localb.bnS;
+            i5 = localb.dhG;
+            i6 = localb.dhH;
+            i7 = localb.dhI;
+            i = localb.dhK;
+            i2 = localb.dhL;
+            bool = localb.dhM;
             if (localq.length >= 2) {
               break label324;
             }
-            localObject1 = bnH;
+            localObject1 = dhB;
             label221:
             if (localObject1.length <= 0) {
               break label524;
@@ -809,7 +809,7 @@ public final class c
       List localList = a(localq, i, i2, bool);
       if (localList.size() < 2)
       {
-        localObject1 = bnH;
+        localObject1 = dhB;
         break label221;
       }
       localObject1 = null;
@@ -821,7 +821,7 @@ public final class c
         while (i2 < localList.size())
         {
           int i3 = ((Integer)localList.get(i2)).intValue();
-          localObject2 = localq.bgf[i3].aMQ;
+          localObject2 = localq.cZY[i3].cGN;
           if (!localHashSet.add(localObject2)) {
             break label815;
           }
@@ -840,10 +840,10 @@ public final class c
         b(localq, arrayOfInt1, k, (String)localObject1, i5, i6, i7, localList);
         if (localList.size() < 2)
         {
-          localObject1 = bnH;
+          localObject1 = dhB;
           break label221;
         }
-        localObject1 = x.t(localList);
+        localObject1 = x.am(localList);
         break label221;
         label524:
         i1 += 1;
@@ -899,7 +899,7 @@ public final class c
             {
               i1 = m;
               break;
-              localObject1 = this.bnI;
+              localObject1 = this.dhC;
               break label698;
             }
             i = n;
@@ -927,18 +927,18 @@ public final class c
   
   public static final class b
   {
-    public final String bnK = null;
-    public final String bnL = null;
-    public final int bnM = 2147483647;
-    public final int bnN = 2147483647;
-    public final int bnO = 2147483647;
-    public final boolean bnP = true;
-    public final int bnQ = 2147483647;
-    public final int bnR = 2147483647;
-    public final boolean bnS = true;
-    public final boolean bnT = false;
-    public final boolean bnU = true;
-    public final boolean bnV = true;
+    public final String dhE = null;
+    public final String dhF = null;
+    public final int dhG = 2147483647;
+    public final int dhH = 2147483647;
+    public final int dhI = 2147483647;
+    public final boolean dhJ = true;
+    public final int dhK = 2147483647;
+    public final int dhL = 2147483647;
+    public final boolean dhM = true;
+    public final boolean dhN = false;
+    public final boolean dhO = true;
+    public final boolean dhP = true;
     
     public b()
     {
@@ -961,7 +961,7 @@ public final class c
         return false;
       }
       paramObject = (b)paramObject;
-      if ((this.bnT == paramObject.bnT) && (this.bnU == paramObject.bnU) && (this.bnM == paramObject.bnM) && (this.bnN == paramObject.bnN) && (this.bnP == paramObject.bnP) && (this.bnV == paramObject.bnV) && (this.bnS == paramObject.bnS) && (this.bnQ == paramObject.bnQ) && (this.bnR == paramObject.bnR) && (this.bnO == paramObject.bnO) && (TextUtils.equals(this.bnK, paramObject.bnK)) && (TextUtils.equals(this.bnL, paramObject.bnL)))
+      if ((this.dhN == paramObject.dhN) && (this.dhO == paramObject.dhO) && (this.dhG == paramObject.dhG) && (this.dhH == paramObject.dhH) && (this.dhJ == paramObject.dhJ) && (this.dhP == paramObject.dhP) && (this.dhM == paramObject.dhM) && (this.dhK == paramObject.dhK) && (this.dhL == paramObject.dhL) && (this.dhI == paramObject.dhI) && (TextUtils.equals(this.dhE, paramObject.dhE)) && (TextUtils.equals(this.dhF, paramObject.dhF)))
       {
         AppMethodBeat.o(92931);
         return true;
@@ -974,8 +974,8 @@ public final class c
     {
       int n = 1;
       AppMethodBeat.i(92932);
-      int i1 = this.bnK.hashCode();
-      int i2 = this.bnL.hashCode();
+      int i1 = this.dhE.hashCode();
+      int i2 = this.dhF.hashCode();
       int i;
       int j;
       label44:
@@ -985,33 +985,33 @@ public final class c
       int k;
       label71:
       int m;
-      if (this.bnT)
+      if (this.dhN)
       {
         i = 1;
-        if (!this.bnU) {
+        if (!this.dhO) {
           break label176;
         }
         j = 1;
-        i3 = this.bnM;
-        i4 = this.bnN;
-        i5 = this.bnO;
-        if (!this.bnP) {
+        i3 = this.dhG;
+        i4 = this.dhH;
+        i5 = this.dhI;
+        if (!this.dhJ) {
           break label181;
         }
         k = 1;
-        if (!this.bnV) {
+        if (!this.dhP) {
           break label186;
         }
         m = 1;
         label81:
-        if (!this.bnS) {
+        if (!this.dhM) {
           break label192;
         }
       }
       for (;;)
       {
-        int i6 = this.bnQ;
-        int i7 = this.bnR;
+        int i6 = this.dhK;
+        int i7 = this.dhL;
         AppMethodBeat.o(92932);
         return (((m + (k + ((((j + (i + (i1 * 31 + i2) * 31) * 31) * 31 + i3) * 31 + i4) * 31 + i5) * 31) * 31) * 31 + n) * 31 + i6) * 31 + i7;
         i = 0;

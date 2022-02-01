@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ewd;
-import com.tencent.mm.protocal.protobuf.ewe;
+import com.tencent.mm.protocal.protobuf.frs;
+import com.tencent.mm.protocal.protobuf.frt;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
-  extends q
+  extends p
   implements m
 {
-  private i callback;
+  private h callback;
   public String coverUrl;
-  private d rr;
-  public String vhX;
+  private c rr;
+  public String ytY;
   
   public n(String paramString1, String paramString2)
   {
@@ -28,25 +28,25 @@ public final class n
     this.callback = null;
     this.rr = null;
     this.coverUrl = paramString1;
-    this.vhX = paramString2;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new ewd();
-    ((d.a)localObject).lBV = new ewe();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/updatecover";
-    ((d.a)localObject).funcId = 1040;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (ewd)d.b.b(this.rr.lBR);
-    ((ewd)localObject).Tmm = paramString1;
-    ((ewd)localObject).vhX = paramString2;
+    this.ytY = paramString2;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new frs();
+    ((c.a)localObject).otF = new frt();
+    ((c.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/updatecover";
+    ((c.a)localObject).funcId = 1040;
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (frs)c.b.b(this.rr.otB);
+    ((frs)localObject).aaAt = paramString1;
+    ((frs)localObject).ytY = paramString2;
     AppMethodBeat.o(23537);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
     AppMethodBeat.i(23538);
-    this.callback = parami;
+    this.callback = paramh;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(23538);
     return i;
@@ -67,7 +67,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.n
  * JD-Core Version:    0.7.0.1
  */

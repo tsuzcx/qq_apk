@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="start|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/fqo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
-    <com.tencent.mm.plugin.music.ui.view.MarqueeLyricView android:textSize="@dimen/k6" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="none" android:id="@id/fq8" android:fadingEdge="horizontal" android:fadingEdgeLength="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" android:singleLine="true" android:includeFontPadding="false" android:requiresFadingEdge="horizontal" />
+<LinearLayout android:orientation="vertical" android:background="@color/a2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/kox" android:layout_width="fill_parent" android:layout_height="@dimen/d5" app:layout_constraintLeft_toLeftOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/aq9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cp" android:text="@string/e9z" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eas" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/az" android:gravity="center" android:layout_gravity="center|right" android:id="@id/e_9" android:background="@drawable/a2n" android:paddingLeft="@dimen/cd" android:paddingRight="@dimen/cd" android:layout_width="wrap_content" android:layout_height="@dimen/d0" android:layout_marginRight="@dimen/cp" android:text="@string/e_1" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/lq2" android:background="@color/a4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/lq3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cp" android:layout_marginEnd="@dimen/cp" />
+    </LinearLayout>
 </LinearLayout>

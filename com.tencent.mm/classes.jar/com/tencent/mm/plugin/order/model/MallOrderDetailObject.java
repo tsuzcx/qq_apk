@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.order.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -11,27 +14,27 @@ import org.json.JSONObject;
 
 public final class MallOrderDetailObject
 {
-  public MallTransactionObject GGW;
-  public b GGX;
-  public ArrayList<ProductSectionItem> GGY;
-  public List<a> GGZ;
-  public List<MallOrderDetailObject.HelpCenter> GHa;
-  int GHb;
-  public String GHc;
-  public String GHd;
-  public int GHe;
+  public MallTransactionObject MDN;
+  public b MDO;
+  public ArrayList<ProductSectionItem> MDP;
+  public List<a> MDQ;
+  public List<HelpCenter> MDR;
+  int MDS;
+  public String MDT;
+  public String MDU;
+  public int MDV;
   public String appUserName;
-  public String voL;
+  public String yBh;
   
   public MallOrderDetailObject()
   {
     AppMethodBeat.i(66651);
-    this.GHa = new LinkedList();
-    this.GHb = -1;
+    this.MDR = new LinkedList();
+    this.MDS = -1;
     AppMethodBeat.o(66651);
   }
   
-  static ArrayList<ProductSectionItem> bm(JSONObject paramJSONObject)
+  static ArrayList<ProductSectionItem> bD(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66652);
     paramJSONObject = paramJSONObject.getJSONObject("product_section");
@@ -58,11 +61,11 @@ public final class MallOrderDetailObject
         localProductSectionItem.name = localJSONObject.optString("name");
         try
         {
-          localProductSectionItem.GIK = bn(localJSONObject);
+          localProductSectionItem.MFA = bE(localJSONObject);
           localProductSectionItem.count = localJSONObject.optInt("count");
           localProductSectionItem.price = localJSONObject.optString("price");
           localProductSectionItem.jumpUrl = localJSONObject.optString("jump_url");
-          localProductSectionItem.GIL = localJSONObject.optString("pid");
+          localProductSectionItem.ycW = localJSONObject.optString("pid");
           localProductSectionItem.scene = localJSONObject.optInt("scene");
           localArrayList.add(localProductSectionItem);
           i += 1;
@@ -87,7 +90,7 @@ public final class MallOrderDetailObject
     return localArrayList;
   }
   
-  private static List<ProductSectionItem.Skus> bn(JSONObject paramJSONObject)
+  private static List<ProductSectionItem.Skus> bE(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66653);
     paramJSONObject = paramJSONObject.getJSONArray("skus");
@@ -111,28 +114,79 @@ public final class MallOrderDetailObject
     return localArrayList;
   }
   
+  public static class HelpCenter
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<HelpCenter> CREATOR;
+    public boolean hBY;
+    public String name;
+    public String url;
+    
+    static
+    {
+      AppMethodBeat.i(66650);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(66650);
+    }
+    
+    protected HelpCenter() {}
+    
+    protected HelpCenter(Parcel paramParcel)
+    {
+      AppMethodBeat.i(66648);
+      this.name = paramParcel.readString();
+      this.url = paramParcel.readString();
+      if (paramParcel.readByte() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.hBY = bool;
+        AppMethodBeat.o(66648);
+        return;
+      }
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(66649);
+      paramParcel.writeString(this.name);
+      paramParcel.writeString(this.url);
+      if (this.hBY) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramParcel.writeByte((byte)paramInt);
+        AppMethodBeat.o(66649);
+        return;
+      }
+    }
+  }
+  
   public static final class a
   {
     public int jumpType;
     public String jumpUrl;
     public String name;
-    public boolean toi;
     public int type = 0;
     public String value;
+    public boolean wsJ;
   }
   
   public static final class b
   {
-    public String CMD;
-    public String GHf;
-    public String GHg;
+    public String IGI;
+    public String MDW;
+    public String MDX;
     public String thumbUrl;
     public int time;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.MallOrderDetailObject
  * JD-Core Version:    0.7.0.1
  */

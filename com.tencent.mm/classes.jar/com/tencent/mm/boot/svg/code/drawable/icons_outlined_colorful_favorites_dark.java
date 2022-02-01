@@ -123,7 +123,7 @@ public class icons_outlined_colorful_favorites_dark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.icons_outlined_colorful_favorites_dark
  * JD-Core Version:    0.7.0.1
  */

@@ -1,185 +1,113 @@
 package com.tencent.mm.az;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.p;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.w;
+import com.tencent.mm.protocal.protobuf.cqj;
+import com.tencent.mm.protocal.protobuf.cqk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.io.UnsupportedEncodingException;
+import com.tencent.mm.storage.aq;
 
 public final class a
+  extends p
+  implements m
 {
-  public static int WA(String paramString)
+  private com.tencent.mm.am.h callback;
+  public String oRm;
+  public String oRn;
+  public byte[] oRo;
+  private final c rr;
+  
+  public a()
   {
-    k = 0;
-    AppMethodBeat.i(43007);
-    if ((paramString == null) || (paramString.length() <= 0))
+    this(z.bAM(), Util.nullAsNil((Integer)com.tencent.mm.kernel.h.baE().ban().d(66561, null)), 0);
+    AppMethodBeat.i(150870);
+    AppMethodBeat.o(150870);
+  }
+  
+  public a(String paramString, int paramInt)
+  {
+    this(paramString, paramInt, 0);
+  }
+  
+  public a(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(150871);
+    this.callback = null;
+    this.oRm = null;
+    this.oRn = null;
+    this.oRo = null;
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cqj();
+    ((c.a)localObject).otF = new cqk();
+    ((c.a)localObject).uri = "/cgi-bin/micromsg-bin/getqrcode";
+    ((c.a)localObject).funcId = 168;
+    ((c.a)localObject).otG = 67;
+    ((c.a)localObject).respCmdId = 1000000067;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cqj)c.b.b(this.rr.otB);
+    ((cqj)localObject).ZqL = w.Sk(paramString);
+    ((cqj)localObject).bcb = paramInt1;
+    ((cqj)localObject).YIq = paramInt2;
+    Log.i("MicroMsg.NetSceneGetQRCode", "username:%s, style:%d, opcode:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(150871);
+  }
+  
+  public final int doScene(g paramg, com.tencent.mm.am.h paramh)
+  {
+    AppMethodBeat.i(150872);
+    this.callback = paramh;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(150872);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 168;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150873);
+    Log.d("MicroMsg.NetSceneGetQRCode", "onGYNetEnd errType:" + paramInt2 + " errCode" + paramInt3);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Log.e("Big5Util", "getStrokesCount buffer is empty");
-      AppMethodBeat.o(43007);
-      return 0;
-    }
-    for (;;)
-    {
-      try
+      paramArrayOfByte = (cqj)c.b.b(this.rr.otB);
+      params = (cqk)c.c.b(this.rr.otC);
+      paramArrayOfByte = w.a(paramArrayOfByte.ZqL);
+      this.oRo = w.a(params.aauw, new byte[0]);
+      this.oRm = params.aawU;
+      Log.i("MicroMsg.NetSceneGetQRCode", "expiredWording:%s, revokeId:%s, revokeWording:%s", new Object[] { this.oRm, params.aawV, params.aawW });
+      if (z.bAM().equals(paramArrayOfByte))
       {
-        paramString = paramString.getBytes("big5");
-        if ((paramString != null) && (paramString.length >= 2)) {
-          continue;
-        }
-        Log.e("Big5Util", "byteToShort");
-        j = 0;
-        if ((j < 42048) || (j > 42049)) {
-          continue;
-        }
-        i = 1;
-      }
-      catch (UnsupportedEncodingException paramString)
-      {
-        int j;
-        Log.e("Big5Util", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
-        int i = k;
-        continue;
-      }
-      AppMethodBeat.o(43007);
-      return i;
-      i = 0;
-      j = 0;
-      if (i < 2)
-      {
-        j = (short)((short)(j << 8) | paramString[i] & 0xFF);
-        i += 1;
-      }
-      else
-      {
-        j = 0xFFFF & j;
-        continue;
-        if (((j >= 42050) && (j <= 42067)) || ((j >= 51520) && (j <= 51524)))
+        paramArrayOfByte = params.aawV;
+        String str = (String)com.tencent.mm.kernel.h.baE().ban().d(66563, "");
+        if ((paramArrayOfByte != null) && (!str.equals(paramArrayOfByte)))
         {
-          i = 2;
+          com.tencent.mm.kernel.h.baE().ban().B(66563, paramArrayOfByte);
+          this.oRn = params.aawW;
         }
-        else if (((j >= 42068) && (j <= 42110)) || ((j >= 51525) && (j <= 51532)))
-        {
-          i = 3;
-        }
-        else if (((j >= 42145) && (j <= 42237)) || ((j >= 51533) && (j <= 51548)))
-        {
-          i = 4;
-        }
-        else if (((j >= 42238) && (j <= 42463)) || ((j >= 51549) && (j <= 51626)))
-        {
-          i = 5;
-        }
-        else if (((j >= 42464) && (j <= 42729)) || ((j >= 51627) && (j <= 51545)))
-        {
-          i = 6;
-        }
-        else if (((j >= 42730) && (j <= 43202)) || ((j >= 51802) && (j <= 52144)))
-        {
-          i = 7;
-        }
-        else if (((j >= 43203) && (j <= 43844)) || ((j >= 52145) && (j <= 52700)))
-        {
-          i = 8;
-        }
-        else if (((j >= 43845) && (j <= 44475)) || ((j >= 52701) && (j <= 53447)) || (j == 63962))
-        {
-          i = 9;
-        }
-        else if (((j >= 44476) && (j <= 45229)) || ((j >= 53448) && (j <= 54346)))
-        {
-          i = 10;
-        }
-        else if (((j >= 45230) && (j <= 46018)) || ((j >= 54347) && (j <= 55376)))
-        {
-          i = 11;
-        }
-        else if (((j >= 46019) && (j <= 46787)) || ((j >= 55377) && (j <= 56496)) || (j == 63963))
-        {
-          i = 12;
-        }
-        else if (((j >= 46788) && (j <= 47531)) || ((j >= 56497) && (j <= 57583)) || ((j >= 63958) && (j <= 63960)))
-        {
-          i = 13;
-        }
-        else if (((j >= 47532) && (j <= 48116)) || ((j >= 57584) && (j <= 58597)))
-        {
-          i = 14;
-        }
-        else if (((j >= 48117) && (j <= 48806)) || ((j >= 58598) && (j <= 59635)) || (j == 63964))
-        {
-          i = 15;
-        }
-        else if (((j >= 48807) && (j <= 49268)) || ((j >= 59636) && (j <= 60600)) || (j == 63961))
-        {
-          i = 16;
-        }
-        else if (((j >= 49269) && (j <= 49742)) || ((j >= 60601) && (j <= 61366)))
-        {
-          i = 17;
-        }
-        else if (((j >= 49743) && (j <= 50014)) || ((j >= 61367) && (j <= 61930)))
-        {
-          i = 18;
-        }
-        else if (((j >= 50015) && (j <= 50260)) || ((j >= 61931) && (j <= 62460)))
-        {
-          i = 19;
-        }
-        else if (((j >= 50261) && (j <= 50390)) || ((j >= 62461) && (j <= 62911)))
-        {
-          i = 20;
-        }
-        else if (((j >= 50135) && (j <= 50538)) || ((j >= 62912) && (j <= 63189)))
-        {
-          i = 21;
-        }
-        else if (((j >= 50539) && (j <= 50631)) || ((j >= 63190) && (j <= 63439)))
-        {
-          i = 22;
-        }
-        else if (((j >= 50632) && (j <= 50672)) || ((j >= 63440) && (j <= 63652)))
-        {
-          i = 23;
-        }
-        else if (((j >= 50673) && (j <= 50772)) || ((j >= 63653) && (j <= 63725)))
-        {
-          i = 24;
-        }
-        else if (((j >= 50773) && (j <= 50788)) || ((j >= 63721) && (j <= 63850)))
-        {
-          i = 25;
-        }
-        else if (((j >= 50789) && (j <= 50795)) || ((j >= 63906) && (j <= 63905)))
-        {
-          i = 26;
-        }
-        else if (((j >= 50796) && (j <= 50805)) || ((j >= 63190) && (j <= 63929)))
-        {
-          i = 27;
-        }
-        else if (((j >= 50806) && (j <= 50810)) || ((j >= 63930) && (j <= 63941)))
-        {
-          i = 28;
-        }
-        else if ((j < 50811) || (j > 50814))
-        {
-          i = k;
-          if (j >= 63942)
-          {
-            i = k;
-            if (j > 63957) {}
-          }
-        }
-        else
-        {
-          i = 29;
-        }
+        com.tencent.mm.kernel.h.baE().ban().B(66561, Integer.valueOf(params.bcb));
       }
     }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(150873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.az.a
  * JD-Core Version:    0.7.0.1
  */

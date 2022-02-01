@@ -15,7 +15,7 @@ final class LoginIndepPass$11
     AppMethodBeat.i(128155);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      LoginIndepPass.a(this.nes);
+      LoginIndepPass.a(this.qbg);
       AppMethodBeat.o(128155);
       return true;
     }

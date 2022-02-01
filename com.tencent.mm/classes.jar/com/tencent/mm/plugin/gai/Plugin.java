@@ -20,7 +20,7 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(25273);
-    boolean bool = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.avK()).getBoolean("already_report_googleaid", false);
+    boolean bool = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.aQe()).getBoolean("already_report_googleaid", false);
     Log.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool) {
       try
@@ -50,7 +50,7 @@ public class Plugin
           int i = 9;
         }
         Log.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
-        MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.avK()).edit().putBoolean("already_report_googleaid", true).commit();
+        MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_google_aid", g.aQe()).edit().putBoolean("already_report_googleaid", true).commit();
       }
     }
     AppMethodBeat.o(25273);

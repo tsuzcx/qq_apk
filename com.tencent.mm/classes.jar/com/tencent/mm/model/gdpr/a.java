@@ -5,29 +5,29 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public enum a
 {
-  public final String lwR;
-  public final int lwS;
+  public final String ooq;
+  public final int oor;
   
   static
   {
     AppMethodBeat.i(40081);
-    lwO = new a("MINI_PROGRAM", 0, "miniProgram", 1);
-    lwP = new a("BIZ", 1, "officialAccount", 0);
-    lwQ = new a("OPENSDK", 2, "OPENSDK", 2);
-    lwT = new a[] { lwO, lwP, lwQ };
+    oon = new a("MINI_PROGRAM", 0, "miniProgram", 1);
+    ooo = new a("BIZ", 1, "officialAccount", 0);
+    oop = new a("OPENSDK", 2, "OPENSDK", 2);
+    oos = new a[] { oon, ooo, oop };
     AppMethodBeat.o(40081);
   }
   
   private a(String paramString, int paramInt)
   {
-    this.lwR = paramString;
-    this.lwS = paramInt;
+    this.ooq = paramString;
+    this.oor = paramInt;
   }
   
-  public static boolean Ss(String paramString)
+  public static boolean Ku(String paramString)
   {
     AppMethodBeat.i(40079);
-    if (St(paramString) != null)
+    if (Kv(paramString) != null)
     {
       AppMethodBeat.o(40079);
       return true;
@@ -36,7 +36,7 @@ public enum a
     return false;
   }
   
-  public static a St(String paramString)
+  public static a Kv(String paramString)
   {
     AppMethodBeat.i(40080);
     if (Util.isNullOrNil(paramString))
@@ -50,7 +50,7 @@ public enum a
     while (i < j)
     {
       a locala = arrayOfa[i];
-      if (paramString.equals(locala.lwR))
+      if (paramString.equals(locala.ooq))
       {
         AppMethodBeat.o(40080);
         return locala;

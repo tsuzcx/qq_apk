@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.w;
 
 public final class a$a
 {
-  public static final int sight_slide_bottom_out = 2130772160;
+  public static final int sight_slide_bottom_out = 2130772165;
 }
 
 

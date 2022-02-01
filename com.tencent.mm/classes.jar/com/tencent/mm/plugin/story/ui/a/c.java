@@ -7,42 +7,42 @@ import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.a.d;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "()V", "onDateClick", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "date", "", "getOnDateClick", "()Lkotlin/jvm/functions/Function1;", "setOnDateClick", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "GalleryDateViewHolder", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "()V", "onDateClick", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "date", "", "getOnDateClick", "()Lkotlin/jvm/functions/Function1;", "setOnDateClick", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "GalleryDateViewHolder", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
   extends d<a>
 {
   public final int getItemCount()
   {
     AppMethodBeat.i(119725);
-    int i = this.mXB.size();
+    int i = this.pUj.size();
     AppMethodBeat.o(119725);
     return i;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;Landroid/view/View;)V", "arrowIv", "Landroid/widget/ImageView;", "getArrowIv", "()Landroid/widget/ImageView;", "bg", "getBg", "()Landroid/view/View;", "dateTv", "Landroid/widget/TextView;", "getDateTv", "()Landroid/widget/TextView;", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;Landroid/view/View;)V", "arrowIv", "Landroid/widget/ImageView;", "getArrowIv", "()Landroid/widget/ImageView;", "bg", "getBg", "()Landroid/view/View;", "dateTv", "Landroid/widget/TextView;", "getDateTv", "()Landroid/widget/TextView;", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public final class a
     extends RecyclerView.v
   {
-    final ImageView EoF;
-    final View LRK;
-    final TextView mMb;
+    final View EJx;
+    final ImageView Khl;
+    final TextView pIJ;
     
     public a()
     {
       super();
       AppMethodBeat.i(119724);
-      this$1 = localObject.findViewById(a.d.LBC);
-      p.j(c.this, "itemView.findViewById(R.…y_gallery_header_date_ll)");
-      this.LRK = c.this;
+      this$1 = localObject.findViewById(a.d.Sfn);
+      s.s(c.this, "itemView.findViewById(R.…y_gallery_header_date_ll)");
+      this.EJx = c.this;
       this$1 = localObject.findViewById(a.d.date_tv);
-      p.j(c.this, "itemView.findViewById(R.id.date_tv)");
-      this.mMb = ((TextView)c.this);
+      s.s(c.this, "itemView.findViewById(R.id.date_tv)");
+      this.pIJ = ((TextView)c.this);
       this$1 = localObject.findViewById(a.d.arrow);
-      p.j(c.this, "itemView.findViewById(R.id.arrow)");
-      this.EoF = ((ImageView)c.this);
+      s.s(c.this, "itemView.findViewById(R.id.arrow)");
+      this.Khl = ((ImageView)c.this);
       AppMethodBeat.o(119724);
     }
   }

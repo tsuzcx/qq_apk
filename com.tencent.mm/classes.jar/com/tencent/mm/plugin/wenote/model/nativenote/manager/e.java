@@ -7,19 +7,19 @@ import java.io.Serializable;
 public class e
   implements Serializable
 {
-  public int tH;
-  public int tI;
+  public int uG;
+  public int uH;
   
   public e(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30459);
-    this.tH = paramInt1;
-    this.tI = paramInt2;
-    if (this.tH > this.tI)
+    this.uG = paramInt1;
+    this.uH = paramInt2;
+    if (this.uG > this.uH)
     {
-      paramInt1 = this.tI;
-      this.tI = this.tH;
-      this.tH = paramInt1;
+      paramInt1 = this.uH;
+      this.uH = this.uG;
+      this.uG = paramInt1;
     }
     AppMethodBeat.o(30459);
   }
@@ -33,14 +33,14 @@ public class e
   
   public final boolean isEmpty()
   {
-    return this.tH == this.tI;
+    return this.uG == this.uH;
   }
   
-  public final e lN(int paramInt1, int paramInt2)
+  public final e nx(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30461);
-    this.tH = Math.max(0, this.tH - paramInt1);
-    this.tI += paramInt2;
+    this.uG = Math.max(0, this.uG - paramInt1);
+    this.uH += paramInt2;
     AppMethodBeat.o(30461);
     return this;
   }
@@ -48,14 +48,14 @@ public class e
   public String toString()
   {
     AppMethodBeat.i(30462);
-    String str = "[" + this.tH + ", " + this.tI + "]";
+    String str = "[" + this.uG + ", " + this.uH + "]";
     AppMethodBeat.o(30462);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.e
  * JD-Core Version:    0.7.0.1
  */

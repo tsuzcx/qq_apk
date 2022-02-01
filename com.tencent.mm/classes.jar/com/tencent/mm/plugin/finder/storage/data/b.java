@@ -2,23 +2,24 @@ package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.d;
-import com.tencent.mm.plugin.finder.utils.aj;
-import com.tencent.mm.protocal.protobuf.asn;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.protocal.protobuf.axc;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.u;
-import kotlin.l;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage;", "Lcom/tencent/mm/platformtools/BaseProtoPage;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "filename", "", "(Ljava/lang/String;)V", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage;", "Lcom/tencent/mm/platformtools/BaseProtoPage;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "filename", "", "(Ljava/lang/String;)V", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends d<asn>
+  extends d<axc>
 {
-  public static final a AmP;
-  private static final String TAG = "Finder.FansContactPage";
+  public static final a FMJ;
+  private static final String TAG;
   
   static
   {
     AppMethodBeat.i(167044);
-    AmP = new a((byte)0);
+    FMJ = new a((byte)0);
     TAG = "Finder.FansContactPage";
     AppMethodBeat.o(167044);
   }
@@ -26,23 +27,22 @@ public final class b
   public b(String paramString)
   {
     AppMethodBeat.i(167043);
-    StringBuilder localStringBuilder = new StringBuilder();
-    aj localaj = aj.AGc;
-    super.ZI(aj.QO(3) + paramString);
+    av localav = av.GiL;
+    super.RY(s.X(av.Ub(3), paramString));
     AppMethodBeat.o(167043);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage$Companion;", "", "()V", "TAG", "", "clearAll", "", "plugin-finder_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/storage/data/FansContactPage$Companion;", "", "()V", "TAG", "", "clearAll", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
     public static void clearAll()
     {
       AppMethodBeat.i(167042);
       Log.i(b.access$getTAG$cp(), "clearAll");
-      Object localObject = aj.AGc;
-      localObject = aj.QO(3);
-      if (u.agG((String)localObject)) {
-        u.dK((String)localObject, true);
+      Object localObject = av.GiL;
+      localObject = av.Ub(3);
+      if (y.ZC((String)localObject)) {
+        y.ew((String)localObject, true);
       }
       AppMethodBeat.o(167042);
     }
@@ -50,7 +50,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.b
  * JD-Core Version:    0.7.0.1
  */

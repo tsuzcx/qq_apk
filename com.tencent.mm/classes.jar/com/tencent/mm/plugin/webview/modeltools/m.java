@@ -1,63 +1,119 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 
 public final class m
-  extends MAutoStorage<h>
 {
-  public static final String[] SQL_CREATE;
-  private final ISQLiteDatabase db;
+  public HashMap<String, a> WOD;
+  public HashMap<String, a> WOE;
+  private HashSet<Integer> WOF;
+  public HashMap<String, b> WOG;
   
-  static
+  public m()
   {
-    AppMethodBeat.i(79224);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.info, "WebViewHostsFilter") };
-    AppMethodBeat.o(79224);
+    AppMethodBeat.i(79218);
+    this.WOD = new HashMap();
+    this.WOE = new HashMap();
+    this.WOF = new HashSet();
+    this.WOG = new HashMap();
+    AppMethodBeat.o(79218);
   }
   
-  public m(ISQLiteDatabase paramISQLiteDatabase)
+  public final void a(String paramString, a parama)
   {
-    this(paramISQLiteDatabase, h.info, "WebViewHostsFilter", null);
+    AppMethodBeat.i(295818);
+    this.WOD.put(paramString, parama);
+    AppMethodBeat.o(295818);
   }
   
-  public m(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  public final boolean atL(int paramInt)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
-    this.db = paramISQLiteDatabase;
+    AppMethodBeat.i(79222);
+    boolean bool = this.WOF.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(79222);
+    return bool;
   }
   
-  public final Set<String> gWD()
+  public final void b(String paramString, a parama)
   {
-    AppMethodBeat.i(79223);
-    long l = Util.nowSecond();
-    Log.d("MicroMsg.WebViewStorage", "webview hijack deleteExpiredItem now = ".concat(String.valueOf(l)));
-    Log.i("MicroMsg.WebViewStorage", "delete expired items request  : [%b]", new Object[] { Boolean.valueOf(execSQL("WebViewHostsFilter", "delete from WebViewHostsFilter where expireTime < ".concat(String.valueOf(l)))) });
-    Cursor localCursor = this.db.query(getTableName(), new String[] { "host" }, null, null, null, null, null, 2);
-    HashSet localHashSet = new HashSet();
-    if ((localCursor != null) && (localCursor.moveToFirst())) {
-      do
-      {
-        String str = localCursor.getString(0);
-        if (!Util.isNullOrNil(str))
-        {
-          localHashSet.add(str);
-          Log.d("MicroMsg.WebViewStorage", "webview hijack gethost = ".concat(String.valueOf(str)));
-        }
-      } while (localCursor.moveToNext());
+    AppMethodBeat.i(295822);
+    this.WOE.put(paramString, parama);
+    AppMethodBeat.o(295822);
+  }
+  
+  public final boolean bkV(String paramString)
+  {
+    AppMethodBeat.i(79219);
+    if ((this.WOG.containsKey(paramString)) && (this.WOG.get(paramString) != null))
+    {
+      AppMethodBeat.o(79219);
+      return true;
     }
-    if (localCursor != null) {
-      localCursor.close();
+    AppMethodBeat.o(79219);
+    return false;
+  }
+  
+  public final a bkW(String paramString)
+  {
+    AppMethodBeat.i(295827);
+    paramString = (a)this.WOD.get(paramString);
+    AppMethodBeat.o(295827);
+    return paramString;
+  }
+  
+  public final a bkX(String paramString)
+  {
+    AppMethodBeat.i(295833);
+    paramString = (a)this.WOE.get(paramString);
+    AppMethodBeat.o(295833);
+    return paramString;
+  }
+  
+  public final b bkY(String paramString)
+  {
+    AppMethodBeat.i(79220);
+    paramString = (b)this.WOG.get(paramString);
+    AppMethodBeat.o(79220);
+    return paramString;
+  }
+  
+  public final void dL(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(79221);
+    if (Util.getBoolean(paramString, false))
+    {
+      this.WOF.add(Integer.valueOf(paramInt));
+      AppMethodBeat.o(79221);
+      return;
     }
-    AppMethodBeat.o(79223);
-    return localHashSet;
+    this.WOF.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(79221);
+  }
+  
+  public static final class a
+  {
+    public String ADt;
+    public String desc;
+    public String link;
+    public String title;
+  }
+  
+  public static final class b
+  {
+    public boolean WOH;
+    public boolean WOI;
+    public boolean WOJ;
+    public String displayName;
+    public int duration;
+    public int nQm;
+    public int nQp;
+    public String userName;
+    public String vid;
+    public int videoHeight;
+    public int videoWidth;
   }
 }
 

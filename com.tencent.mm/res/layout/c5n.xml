@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/j67" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <SurfaceView android:id="@id/iep" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </LinearLayout>
-    <RelativeLayout android:id="@id/j65" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/j66" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/j69" android:background="@drawable/bi_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs">
-            <ImageView android:id="@id/j6_" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_margin="@dimen/k5" android:src="@drawable/b1a" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/j68" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" />
-        </LinearLayout>
-        <ImageButton android:id="@id/j74" android:background="@null" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/hv" android:src="@drawable/bpl" />
-        <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw">
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/j79" android:background="@drawable/bi_" android:padding="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hv" />
-            <LinearLayout android:gravity="center" android:id="@id/j63" android:background="@drawable/bi_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hv">
-                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/j64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/k5" />
-                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/j6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" />
-            </LinearLayout>
-            <ImageButton android:id="@id/j76" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bpt" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageButton android:id="@id/j5n" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bps" />
-    </LinearLayout>
-</FrameLayout>
+<RelativeLayout android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/iiu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

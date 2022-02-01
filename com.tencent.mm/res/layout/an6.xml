@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/rs" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="@dimen/bz" android:layout_height="@dimen/d4"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/hee" style="@style/oo">
-        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/e1" android:layout_height="@dimen/e1" android:layout_marginRight="@dimen/cb" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:background="@drawable/b9w" android:paddingLeft="@dimen/k_" android:paddingRight="@dimen/cb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghk" style="@style/mp" />
-            <TextView android:textColor="@color/l4" android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/mo" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:textSize="@dimen/hn" android:textColor="@color/m4" android:ellipsize="end" android:gravity="center" android:id="@id/kd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_centerVertical="true" android:layout_marginStart="@dimen/df" />
+    <View android:id="@id/e89" android:background="@color/g_" android:visibility="invisible" android:layout_width="0.100000024dip" android:layout_height="fill_parent" android:layout_marginStart="@dimen/df" android:layout_toEndOf="@id/kd0" />
+    <TextView android:textSize="@dimen/m_" android:textColor="@color/t7" android:ellipsize="end" android:gravity="center" android:id="@id/kcy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_centerVertical="true" android:layout_toEndOf="@id/kd0" />
 </RelativeLayout>

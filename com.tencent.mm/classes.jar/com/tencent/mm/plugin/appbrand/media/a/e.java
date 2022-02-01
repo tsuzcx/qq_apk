@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.LruCache;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -15,37 +15,37 @@ import java.io.RandomAccessFile;
 public final class e
   implements com.tencent.mm.al.e
 {
-  private static LruCache<String, Integer> qdf;
-  private static LruCache<String, Integer> qdg;
-  private static LruCache<String, Integer> qdh;
+  private static LruCache<String, Integer> thT;
+  private static LruCache<String, Integer> thU;
+  private static LruCache<String, Integer> thV;
   private long currentPosition;
   private String filePath;
-  private int nEy;
   private String pkgPath;
-  private int qdi;
+  private int qEv;
   public RandomAccessFile randomAccessFile;
+  private int thW;
   
   static
   {
     AppMethodBeat.i(145799);
-    qdf = new LruCache(50);
-    qdg = new LruCache(50);
-    qdh = new LruCache(50);
+    thT = new LruCache(50);
+    thU = new LruCache(50);
+    thV = new LruCache(50);
     AppMethodBeat.o(145799);
   }
   
   public e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(145792);
-    this.qdi = -1;
-    this.nEy = -1;
+    this.thW = -1;
+    this.qEv = -1;
     this.filePath = paramString1;
     this.pkgPath = paramString2;
-    this.randomAccessFile = eF(paramString1, paramString2);
-    if ((qdf.check(paramString1)) && (qdg.check(paramString1)))
+    this.randomAccessFile = eW(paramString1, paramString2);
+    if ((thT.check(paramString1)) && (thU.check(paramString1)))
     {
-      this.qdi = ((Integer)qdf.get(paramString1)).intValue();
-      this.nEy = ((Integer)qdg.get(paramString1)).intValue();
+      this.thW = ((Integer)thT.get(paramString1)).intValue();
+      this.qEv = ((Integer)thU.get(paramString1)).intValue();
       AppMethodBeat.o(145792);
       return;
     }
@@ -56,14 +56,14 @@ public final class e
       return;
     }
     paramString2 = new WxaPkg(paramString2);
-    if (!paramString2.nEb)
+    if (!paramString2.qDW)
     {
       paramString2.close();
       Log.e("MicroMsg.WxaAudioDataSourceBelow19", "pkg invalid");
       AppMethodBeat.o(145792);
       return;
     }
-    if (!paramString2.bGl())
+    if (!paramString2.cfK())
     {
       paramString2.close();
       Log.e("MicroMsg.WxaAudioDataSourceBelow19", "pkg readInfo failed");
@@ -78,22 +78,22 @@ public final class e
       AppMethodBeat.o(145792);
       return;
     }
-    if ((localInfo.nEz <= 0) || (localInfo.nEy <= 0))
+    if ((localInfo.qEw <= 0) || (localInfo.qEv <= 0))
     {
       paramString2.close();
       Log.e("MicroMsg.WxaAudioDataSourceBelow19", "info.resLength or info.fileOffset, err");
       AppMethodBeat.o(145792);
       return;
     }
-    this.qdi = localInfo.nEz;
-    this.nEy = localInfo.nEy;
-    qdf.put(paramString1, Integer.valueOf(this.qdi));
-    qdg.put(paramString1, Integer.valueOf(this.nEy));
+    this.thW = localInfo.qEw;
+    this.qEv = localInfo.qEv;
+    thT.put(paramString1, Integer.valueOf(this.thW));
+    thU.put(paramString1, Integer.valueOf(this.qEv));
     paramString2.close();
     AppMethodBeat.o(145792);
   }
   
-  private RandomAccessFile eF(String paramString1, String paramString2)
+  private RandomAccessFile eW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(145794);
     if (Util.isNullOrNil(paramString2))
@@ -102,16 +102,16 @@ public final class e
       AppMethodBeat.o(145794);
       return null;
     }
-    Log.i("MicroMsg.WxaAudioDataSourceBelow19", "filePath:%s, resLength:%d, fileOffset:%d", new Object[] { paramString1, Integer.valueOf(this.qdi), Integer.valueOf(this.nEy) });
+    Log.i("MicroMsg.WxaAudioDataSourceBelow19", "filePath:%s, resLength:%d, fileOffset:%d", new Object[] { paramString1, Integer.valueOf(this.thW), Integer.valueOf(this.qEv) });
     try
     {
-      if (!new q(paramString2).ifE())
+      if (!new u(paramString2).jKS())
       {
         Log.e("MicroMsg.WxaAudioDataSourceBelow19", "file pkgPath:%s isn't exist ", new Object[] { paramString2 });
         AppMethodBeat.o(145794);
         return null;
       }
-      paramString2 = u.dO(paramString2, false);
+      paramString2 = y.eA(paramString2, false);
       Log.printErrStackTrace("MicroMsg.WxaAudioDataSourceBelow19", paramString1, "", new Object[0]);
     }
     catch (FileNotFoundException paramString1)
@@ -150,15 +150,15 @@ public final class e
     }
   }
   
-  public final int bhy()
+  public final int bFo()
   {
     AppMethodBeat.i(145797);
     if (this.randomAccessFile == null) {
-      this.randomAccessFile = eF(this.filePath, this.pkgPath);
+      this.randomAccessFile = eW(this.filePath, this.pkgPath);
     }
-    if (qdh.check(this.filePath))
+    if (thV.check(this.filePath))
     {
-      int i = ((Integer)qdh.get(this.filePath)).intValue();
+      int i = ((Integer)thV.get(this.filePath)).intValue();
       AppMethodBeat.o(145797);
       return i;
     }
@@ -189,10 +189,10 @@ public final class e
     try
     {
       localObject1 = new byte[64];
-      this.randomAccessFile.seek(this.nEy);
+      this.randomAccessFile.seek(this.qEv);
       this.randomAccessFile.read((byte[])localObject1);
       localObject1 = new String((byte[])localObject1);
-      this.randomAccessFile.seek(this.nEy);
+      this.randomAccessFile.seek(this.qEv);
     }
     catch (Exception localException)
     {
@@ -200,19 +200,19 @@ public final class e
       {
         Object localObject1;
         Log.e("MicroMsg.WxaAudioDataSourceBelow19", "getAudioType", new Object[] { localException });
-        this.randomAccessFile.seek(this.nEy);
+        this.randomAccessFile.seek(this.qEv);
         Object localObject2 = null;
       }
     }
     finally
     {
-      this.randomAccessFile.seek(this.nEy);
+      this.randomAccessFile.seek(this.qEv);
       AppMethodBeat.o(145797);
     }
     if ((localObject1 != null) && (((String)localObject1).contains("ftyp")))
     {
       Log.d("MicroMsg.WxaAudioDataSourceBelow19", "[getAudioType] aac");
-      qdh.put(this.filePath, Integer.valueOf(1));
+      thV.put(this.filePath, Integer.valueOf(1));
       AppMethodBeat.o(145797);
       return 1;
     }
@@ -241,14 +241,14 @@ public final class e
       AppMethodBeat.o(145796);
       return 0L;
     }
-    long l = this.qdi;
+    long l = this.thW;
     AppMethodBeat.o(145796);
     return l;
   }
   
   public final boolean isOpen()
   {
-    return (this.randomAccessFile != null) || (this.qdi == -1) || (this.nEy == -1);
+    return (this.randomAccessFile != null) || (this.thW == -1) || (this.qEv == -1);
   }
   
   public final void open()
@@ -256,11 +256,11 @@ public final class e
     AppMethodBeat.i(145793);
     Log.i("MicroMsg.WxaAudioDataSourceBelow19", "open %d", new Object[] { Integer.valueOf(hashCode()) });
     if (this.randomAccessFile == null) {
-      this.randomAccessFile = eF(this.filePath, this.pkgPath);
+      this.randomAccessFile = eW(this.filePath, this.pkgPath);
     }
     this.currentPosition = 0L;
     if (this.randomAccessFile != null) {
-      this.randomAccessFile.seek(this.nEy);
+      this.randomAccessFile.seek(this.qEv);
     }
     AppMethodBeat.o(145793);
   }
@@ -276,7 +276,7 @@ public final class e
     }
     if (this.currentPosition != paramLong)
     {
-      this.randomAccessFile.seek(this.nEy + paramLong);
+      this.randomAccessFile.seek(this.qEv + paramLong);
       this.currentPosition = paramLong;
     }
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
@@ -297,17 +297,17 @@ public final class e
       AppMethodBeat.o(145795);
       return -1;
     }
-    if (paramLong >= this.qdi)
+    if (paramLong >= this.thW)
     {
-      Log.e("MicroMsg.WxaAudioDataSourceBelow19", "position:%d resLength:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.qdi) });
+      Log.e("MicroMsg.WxaAudioDataSourceBelow19", "position:%d resLength:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.thW) });
       AppMethodBeat.o(145795);
       return -1;
     }
     int i = paramInt2;
-    if (paramInt2 + paramLong >= this.qdi)
+    if (paramInt2 + paramLong >= this.thW)
     {
-      Log.e("MicroMsg.WxaAudioDataSourceBelow19", "position:%d, size:%d, resLength:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(this.qdi) });
-      i = (int)(this.qdi - paramLong);
+      Log.e("MicroMsg.WxaAudioDataSourceBelow19", "position:%d, size:%d, resLength:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(this.thW) });
+      i = (int)(this.thW - paramLong);
     }
     paramInt1 = this.randomAccessFile.read(paramArrayOfByte, paramInt1, i);
     if (paramInt1 >= 0) {
@@ -323,7 +323,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.e
  * JD-Core Version:    0.7.0.1
  */

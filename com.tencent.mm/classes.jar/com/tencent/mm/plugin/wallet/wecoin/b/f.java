@@ -1,27 +1,25 @@
 package com.tencent.mm.plugin.wallet.wecoin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dyl;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.protocal.protobuf.flt;
-import com.tencent.mm.protocal.protobuf.flu;
+import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.protocal.protobuf.cnj;
+import com.tencent.mm.protocal.protobuf.erp;
+import com.tencent.mm.protocal.protobuf.esc;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetRealNameAuthRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/WecoinRealNameAuthResponse;", "token", "", "requestID", "(Ljava/lang/String;Ljava/lang/String;)V", "plugin-wxpay_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetMidasSdkInfoRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetMidasSdkInfoResponse;", "()V", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class f
-  extends m<flu>
+  extends n<cnj>
 {
-  public f(String paramString1, String paramString2)
+  public f()
   {
-    AppMethodBeat.i(270820);
-    flt localflt = new flt();
-    localflt.token = paramString1;
-    localflt.request_id = paramString2;
-    paramString1 = new flu();
-    a((dyl)localflt, (dyy)paramString1, 6280, "/cgi-bin/micromsg-bin/wecoinrealnameauth");
-    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetRealNameAuthRequest: ");
-    AppMethodBeat.o(270820);
+    AppMethodBeat.i(315703);
+    cni localcni = new cni();
+    cnj localcnj = new cnj();
+    a((erp)localcni, (esc)localcnj, 6684, "/cgi-bin/micromsg-bin/getmidassdkinfo");
+    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetMidasSdkInfoRequest: ");
+    AppMethodBeat.o(315703);
   }
 }
 

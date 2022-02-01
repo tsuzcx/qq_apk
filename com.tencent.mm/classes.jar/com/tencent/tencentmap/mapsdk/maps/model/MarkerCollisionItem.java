@@ -8,17 +8,17 @@ public enum MarkerCollisionItem
 {
   static
   {
-    AppMethodBeat.i(237748);
+    AppMethodBeat.i(218012);
     POI = new MarkerCollisionItem("POI", 0);
     $VALUES = new MarkerCollisionItem[] { POI };
-    AppMethodBeat.o(237748);
+    AppMethodBeat.o(218012);
   }
   
   private MarkerCollisionItem() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MarkerCollisionItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="400.0dip"
+<merge android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/bwt" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout android:id="@id/ceh" android:layout_width="@dimen/a42" android:layout_height="@dimen/a42" android:layout_below="@id/cef" android:layout_centerHorizontal="true">
+        <FrameLayout android:id="@id/cej" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/ar6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/ar9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration android:id="@id/ar3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/cef" android:layout_width="@dimen/a42" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <TextView android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="bottom" android:id="@id/cel" android:paddingBottom="@dimen/df" android:layout_width="wrap_content" android:layout_height="@dimen/an7" android:maxLines="1" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.capture.EditorStickerView android:id="@id/cer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/a44" android:layout_above="@id/ce8" android:layout_below="@id/ceh" />
+    <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:id="@id/ce8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/wt" android:minWidth="@dimen/ajv" android:minHeight="@dimen/ajv" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/av0" />
+    <ImageView android:id="@id/ar5" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:src="@raw/flip_camera_icon_nor" android:layout_alignTop="@id/ceh" android:contentDescription="@string/jn2" android:layout_marginEnd="8.0dip" android:layout_alignEnd="@id/ceh" />
+    <ImageView android:id="@id/lak" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginBottom="12.0dip" android:src="?a7g" android:layout_alignBottom="@id/ceh" android:layout_marginEnd="12.0dip" android:layout_alignEnd="@id/ceh" />
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/a7b" android:id="@id/ceg" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/wr" android:text="@string/av0" android:layout_above="@id/ce8" android:layout_centerHorizontal="true" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ar1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/wq" android:src="@raw/close_icon_nor" android:layout_alignTop="@id/ce8" android:contentDescription="@string/bfi" android:layout_marginEnd="@dimen/wp" android:layout_toStartOf="@id/ce8" />
+</merge>

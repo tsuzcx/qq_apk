@@ -21,36 +21,36 @@ import com.tencent.mm.R.l;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class ExdeviceRankChampionInfoView
   extends LinearLayout
 {
-  private int kgV;
-  private String pRV;
-  private TextView txT;
-  private ImageView vkF;
-  private TextPaint wi;
+  private int mHo;
+  private String sWX;
+  private TextView wCq;
+  private TextPaint xe;
+  private ImageView yxi;
   
   public ExdeviceRankChampionInfoView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24183);
-    this.kgV = 0;
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.egG, this, true);
-    this.wi = new TextPaint(1);
-    this.txT = ((TextView)paramAttributeSet.findViewById(R.h.dXx));
-    this.vkF = ((ImageView)paramAttributeSet.findViewById(R.h.dsd));
-    this.vkF.setOnClickListener(new View.OnClickListener()
+    this.mHo = 0;
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.gjC, this, true);
+    this.xe = new TextPaint(1);
+    this.wCq = ((TextView)paramAttributeSet.findViewById(R.h.gac));
+    this.yxi = ((ImageView)paramAttributeSet.findViewById(R.h.avatarIV));
+    this.yxi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24180);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         if (Util.isNullOrNil(ExdeviceRankChampionInfoView.a(ExdeviceRankChampionInfoView.this)))
         {
           Log.w("MicroMsg.ExdeviceRankChampionInfoView", "username is null.");
@@ -61,22 +61,22 @@ public class ExdeviceRankChampionInfoView
         localObject = new Intent(paramContext, ExdeviceProfileUI.class);
         ((Intent)localObject).putExtra("username", ExdeviceRankChampionInfoView.a(ExdeviceRankChampionInfoView.this));
         paramAnonymousView = paramContext;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24180);
       }
     });
-    this.txT.setOnClickListener(new View.OnClickListener()
+    this.wCq.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24181);
         Object localObject = new b();
-        ((b)localObject).bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        ((b)localObject).cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aYj());
         if (Util.isNullOrNil(ExdeviceRankChampionInfoView.a(ExdeviceRankChampionInfoView.this)))
         {
           Log.w("MicroMsg.ExdeviceRankChampionInfoView", "username is null.");
@@ -87,9 +87,9 @@ public class ExdeviceRankChampionInfoView
         localObject = new Intent(paramContext, ExdeviceProfileUI.class);
         ((Intent)localObject).putExtra("username", ExdeviceRankChampionInfoView.a(ExdeviceRankChampionInfoView.this));
         paramAnonymousView = paramContext;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
         com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceRankChampionInfoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24181);
@@ -97,9 +97,9 @@ public class ExdeviceRankChampionInfoView
     });
     try
     {
-      this.kgV = paramContext.getResources().getDimensionPixelSize(R.f.dkY);
-      if (this.kgV <= 0) {
-        this.kgV = 128;
+      this.mHo = paramContext.getResources().getDimensionPixelSize(R.f.flo);
+      if (this.mHo <= 0) {
+        this.mHo = 128;
       }
     }
     catch (Exception paramContext)
@@ -107,55 +107,55 @@ public class ExdeviceRankChampionInfoView
       for (;;)
       {
         Log.printErrStackTrace("MicroMsg.ExdeviceRankChampionInfoView", paramContext, "", new Object[0]);
-        if (this.kgV <= 0) {
-          this.kgV = 128;
+        if (this.mHo <= 0) {
+          this.mHo = 128;
         }
       }
     }
     finally
     {
-      if (this.kgV > 0) {
+      if (this.mHo > 0) {
         break label203;
       }
-      this.kgV = 128;
+      this.mHo = 128;
       AppMethodBeat.o(24183);
     }
-    Log.d("MicroMsg.ExdeviceRankChampionInfoView", "ap: ellipsizewidth: %d", new Object[] { Integer.valueOf(this.kgV) });
+    Log.d("MicroMsg.ExdeviceRankChampionInfoView", "ap: ellipsizewidth: %d", new Object[] { Integer.valueOf(this.mHo) });
     AppMethodBeat.o(24183);
   }
   
-  public final void avR(String paramString)
+  public final void apR(String paramString)
   {
     AppMethodBeat.i(24184);
-    this.pRV = paramString;
-    if (this.txT != null)
+    this.sWX = paramString;
+    if (this.wCq != null)
     {
       if (Util.isNullOrNil(paramString)) {
         break label176;
       }
-      this.txT.setVisibility(0);
+      this.wCq.setVisibility(0);
       Object localObject = getContext();
-      int i = R.l.eCY;
-      String str = this.pRV;
-      int j = this.kgV;
-      localObject = ((Context)localObject).getString(i, new Object[] { TextUtils.ellipsize(l.c(getContext(), aa.PJ(str)), this.wi, j, TextUtils.TruncateAt.END) });
-      Log.d("MicroMsg.ExdeviceRankChampionInfoView", "title : %s", new Object[] { l.c(getContext(), (CharSequence)localObject) });
-      this.txT.setText(l.b(getContext(), (CharSequence)localObject, this.txT.getTextSize()));
+      int i = R.l.gFM;
+      String str = this.sWX;
+      int j = this.mHo;
+      localObject = ((Context)localObject).getString(i, new Object[] { TextUtils.ellipsize(p.b(getContext(), aa.getDisplayName(str)), this.xe, j, TextUtils.TruncateAt.END) });
+      Log.d("MicroMsg.ExdeviceRankChampionInfoView", "title : %s", new Object[] { p.b(getContext(), (CharSequence)localObject) });
+      this.wCq.setText(p.b(getContext(), (CharSequence)localObject, this.wCq.getTextSize()));
     }
-    while (this.vkF != null) {
+    while (this.yxi != null) {
       if (!Util.isNullOrNil(paramString))
       {
-        a.b.d(this.vkF, paramString);
-        this.vkF.setVisibility(0);
+        a.b.h(this.yxi, paramString);
+        this.yxi.setVisibility(0);
         AppMethodBeat.o(24184);
         return;
         label176:
-        this.txT.setVisibility(8);
-        this.txT.setText("");
+        this.wCq.setVisibility(8);
+        this.wCq.setText("");
       }
       else
       {
-        this.vkF.setVisibility(4);
+        this.yxi.setVisibility(4);
       }
     }
     AppMethodBeat.o(24184);
@@ -164,8 +164,8 @@ public class ExdeviceRankChampionInfoView
   public void setAlpha(float paramFloat)
   {
     AppMethodBeat.i(24182);
-    this.txT.setAlpha(paramFloat);
-    this.vkF.setAlpha(paramFloat);
+    this.wCq.setAlpha(paramFloat);
+    this.yxi.setAlpha(paramFloat);
     AppMethodBeat.o(24182);
   }
 }

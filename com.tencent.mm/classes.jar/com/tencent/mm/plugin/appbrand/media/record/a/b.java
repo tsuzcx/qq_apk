@@ -6,13 +6,13 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class b
 {
-  private static b qev = new b()
+  private static b tjk = new b()
   {
-    public final d akE(String paramAnonymousString)
+    public final d adK(String paramAnonymousString)
     {
       AppMethodBeat.i(146341);
       Log.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
-      if (!h.akB(paramAnonymousString))
+      if (!h.adH(paramAnonymousString))
       {
         AppMethodBeat.o(146341);
         return null;
@@ -46,16 +46,16 @@ public abstract class b
     }
   };
   
-  public static d akF(String paramString)
+  public static d adL(String paramString)
   {
-    return qev.akE(paramString);
+    return tjk.adK(paramString);
   }
   
-  public abstract d akE(String paramString);
+  public abstract d adK(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.b
  * JD-Core Version:    0.7.0.1
  */

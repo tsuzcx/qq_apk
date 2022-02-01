@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_mobile" android:layout="@layout/b8j" android:title="@string/bfq" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_qq" android:layout="@layout/b8j" android:title="@string/bfr" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_linkedin" android:layout="@layout/b8j" android:title="@string/bfp" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_facebook" android:layout="@layout/b8j" android:title="@string/bfm" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_googlecontacts" android:layout="@layout/b8j" android:title="@string/bfo" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_weishop" android:layout="@layout/b8j" android:title="@string/bft" />
+    <PreferenceTitleCategory android:title="^_^" />
 </PreferenceScreen>

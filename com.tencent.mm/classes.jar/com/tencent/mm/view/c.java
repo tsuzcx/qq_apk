@@ -1,12 +1,12 @@
 package com.tencent.mm.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/DefaultViewActionCallback;", "Lcom/tencent/mm/view/IViewActionCallback;", "()V", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "libmmui_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/view/DefaultViewActionCallback;", "Lcom/tencent/mm/view/IViewActionCallback;", "()V", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "libmmui_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class c
-  implements j
+  implements k
 {
   public void onChanged() {}
   
@@ -18,25 +18,25 @@ public class c
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2) {}
   
-  public void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramc)
+  public void onPreFinishLoadMore(RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(205008);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(205008);
+    AppMethodBeat.i(234637);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(234637);
   }
   
-  public void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramc)
+  public void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(205011);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(205011);
+    AppMethodBeat.i(234642);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(234642);
   }
   
-  public void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramc)
+  public void onPreFinishRefresh(RefreshLoadMoreLayout.d<Object> paramd)
   {
-    AppMethodBeat.i(205006);
-    p.k(paramc, "reason");
-    AppMethodBeat.o(205006);
+    AppMethodBeat.i(234634);
+    s.u(paramd, "reason");
+    AppMethodBeat.o(234634);
   }
 }
 

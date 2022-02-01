@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/de7" android:background="@color/a1q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/ddy" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/ddz" android:background="@drawable/ac2" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/ddx" android:background="@drawable/zp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/cv" android:layout_centerHorizontal="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+                    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ddw" android:layout_width="32.0dip" android:layout_height="16.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:src="@raw/icons_outlined_arrow" android:layout_centerHorizontal="true" android:rotation="90.0" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" app:iconColor="@color/BW_100_Alpha_0_8" />
+                </RelativeLayout>
+                <RelativeLayout android:id="@id/de0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_below="@id/ddx" android:layout_centerHorizontal="true">
+                    <TextView android:textSize="@dimen/hp" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/de6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/drp" android:layout_centerHorizontal="true" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/de5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:text="@string/dro" android:layout_below="@id/de6" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/d0" android:layout_marginEnd="@dimen/d0" />
+                    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/de2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c2" android:layout_marginBottom="@dimen/cp" android:layout_below="@id/de5" android:layout_marginStart="@dimen/cv" android:layout_marginEnd="@dimen/cv">
+                        <CheckBox android:id="@id/de1" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginTop="2.0dip" style="@style/ju" />
+                        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/de3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" />
+                    </LinearLayout>
+                    <TextView android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/de4" android:layout_marginBottom="@dimen/d6" android:text="@string/a17" android:layout_below="@id/de2" android:layout_centerHorizontal="true" style="@style/k0" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</LinearLayout>

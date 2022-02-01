@@ -1,53 +1,69 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.protocal.protobuf.asm;
+import com.tencent.mm.protocal.protobuf.FinderMedia;
+import com.tencent.mm.protocal.protobuf.boz;
+import com.tencent.mm.protocal.protobuf.dnv;
+import com.tencent.mm.protocal.protobuf.dnw;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.a.b;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/MegaVideoOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "remove", "id", "", "list", "Ljava/util/LinkedList;", "targetDataType", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"toFinderMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoMedia;", "Ljava/util/LinkedList;", "toFinderMediaSpec", "Lcom/tencent/mm/protocal/protobuf/FinderMediaSpec;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoMediaSpec;", "plugin-finder_release"}, k=2, mv={1, 5, 1}, xi=48)
 public final class o
 {
-  public static final o Anz;
-  
-  static
+  public static final FinderMedia b(dnv paramdnv)
   {
-    AppMethodBeat.i(288170);
-    Anz = new o();
-    AppMethodBeat.o(288170);
-  }
-  
-  public static boolean a(long paramLong, LinkedList<asm> paramLinkedList)
-  {
-    AppMethodBeat.i(288169);
-    p.k(paramLinkedList, "list");
-    aa.a locala = new aa.a();
-    locala.aaBx = false;
-    d.a(paramLinkedList, (b)new a(paramLong, locala));
-    boolean bool = locala.aaBx;
-    AppMethodBeat.o(288169);
-    return bool;
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "invoke"})
-  static final class a
-    extends q
-    implements b<asm, Boolean>
-  {
-    a(long paramLong, aa.a parama)
+    AppMethodBeat.i(339323);
+    s.u(paramdnv, "<this>");
+    FinderMedia localFinderMedia = new FinderMedia();
+    localFinderMedia.url = paramdnv.url;
+    localFinderMedia.thumbUrl = paramdnv.thumbUrl;
+    localFinderMedia.mediaType = 4;
+    localFinderMedia.videoDuration = paramdnv.aaUX;
+    localFinderMedia.width = paramdnv.width;
+    localFinderMedia.height = paramdnv.height;
+    localFinderMedia.md5sum = paramdnv.md5sum;
+    localFinderMedia.fileSize = paramdnv.fileSize;
+    localFinderMedia.bitrate = paramdnv.bitrate;
+    LinkedList localLinkedList1 = localFinderMedia.spec;
+    localLinkedList1.clear();
+    Object localObject = paramdnv.spec;
+    s.s(localObject, "spec");
+    s.u(localObject, "<this>");
+    LinkedList localLinkedList2 = new LinkedList();
+    localObject = ((Iterable)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      super();
+      dnw localdnw = (dnw)((Iterator)localObject).next();
+      s.u(localdnw, "<this>");
+      boz localboz = new boz();
+      localboz.hVy = localdnw.hVy;
+      localboz.ZMg = localdnw.ZMg;
+      localboz.ZPI = localdnw.ZPI;
+      localboz.EVK = localdnw.EVK;
+      localLinkedList2.add(localboz);
     }
+    localLinkedList1.addAll((Collection)localLinkedList2);
+    localFinderMedia.coverUrl = paramdnv.coverUrl;
+    localFinderMedia.decodeKey = paramdnv.decodeKey;
+    localFinderMedia.url_token = paramdnv.msf;
+    localFinderMedia.thumb_url_token = paramdnv.msh;
+    localFinderMedia.cover_url_token = paramdnv.aaUZ;
+    localFinderMedia.hls_spec = paramdnv.aaVa;
+    localFinderMedia.hot_flag = paramdnv.hot_flag;
+    localFinderMedia.half_rect = paramdnv.half_rect;
+    localFinderMedia.full_thumb_url = paramdnv.full_thumb_url;
+    localFinderMedia.full_thumb_url_token = paramdnv.full_thumb_url_token;
+    AppMethodBeat.o(339323);
+    return localFinderMedia;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.o
  * JD-Core Version:    0.7.0.1
  */

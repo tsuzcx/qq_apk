@@ -2,15 +2,15 @@ package com.tencent.mm.network;
 
 public abstract interface e
 {
-  public abstract byte[] TX(String paramString);
+  public abstract byte[] LW(String paramString);
   
-  public abstract byte[] TY(String paramString);
+  public abstract byte[] LX(String paramString);
   
-  public abstract byte[] TZ(String paramString);
+  public abstract byte[] LY(String paramString);
   
-  public abstract byte[] Ua(String paramString);
+  public abstract byte[] LZ(String paramString);
   
-  public abstract boolean Ub(String paramString);
+  public abstract boolean Ma(String paramString);
   
   public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
@@ -20,19 +20,19 @@ public abstract interface e
   
   public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract byte[] bip();
+  public abstract byte[] bFZ();
   
-  public abstract boolean biq();
+  public abstract boolean bGa();
   
-  public abstract byte[] bir();
+  public abstract byte[] bGb();
   
-  public abstract String bis();
+  public abstract String bGc();
   
-  public abstract byte[] bit();
+  public abstract byte[] bGd();
   
-  public abstract void biu();
+  public abstract void bGe();
   
-  public abstract void biv();
+  public abstract void bGf();
   
   public abstract int getUin();
   
@@ -40,13 +40,13 @@ public abstract interface e
   
   public abstract void i(int paramInt, byte[] paramArrayOfByte);
   
-  public abstract void i(String paramString, byte[] paramArrayOfByte);
-  
   public abstract boolean isForeground();
+  
+  public abstract void k(String paramString, byte[] paramArrayOfByte);
   
   public abstract void reset();
   
-  public abstract byte[] sE(int paramInt);
+  public abstract byte[] sA(int paramInt);
   
   public abstract void setForeground(boolean paramBoolean);
   
@@ -56,7 +56,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.e
  * JD-Core Version:    0.7.0.1
  */

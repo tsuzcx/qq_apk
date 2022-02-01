@@ -7,42 +7,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.fts.ui.o;
 import com.tencent.mm.plugin.selectcontact.a.e;
 import com.tencent.mm.plugin.selectcontact.a.f;
 
 public final class j
   extends a
 {
-  private b Xyd;
-  a Xye;
+  private b afkm;
+  a afkn;
   public String header;
   
   public j(int paramInt)
   {
     super(0, paramInt);
     AppMethodBeat.i(102960);
-    this.Xyd = new b();
-    this.Xye = new a();
+    this.afkm = new b();
+    this.afkn = new a();
     AppMethodBeat.o(102960);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b bwF()
+  public final a.b bVv()
   {
-    return this.Xyd;
+    return this.afkm;
   }
   
-  public final a.a bwG()
+  public final a.a bVw()
   {
-    return this.Xye;
+    return this.afkn;
   }
   
   public final class a
     extends a.a
   {
-    public TextView tOY;
+    public TextView wSo;
     
     public a()
     {
@@ -62,16 +62,16 @@ public final class j
     {
       AppMethodBeat.i(102958);
       paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listheaderitem, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.Xye;
-      paramViewGroup.tOY = ((TextView)paramContext.findViewById(a.e.header_tv));
+      paramViewGroup = (j.a)j.this.afkn;
+      paramViewGroup.wSo = ((TextView)paramContext.findViewById(a.e.header_tv));
       paramContext.setTag(paramViewGroup);
-      if (j.this.xUe)
+      if (j.this.Bva)
       {
         View localView = paramContext.findViewById(a.e.header_tv_root);
         if (localView != null) {
           localView.setBackgroundResource(com.tencent.mm.plugin.selectcontact.a.b.Dark_0);
         }
-        paramViewGroup.tOY.setTextColor(paramViewGroup.tOY.getContext().getResources().getColor(com.tencent.mm.plugin.selectcontact.a.b.BW_100_Alpha_0_5));
+        paramViewGroup.wSo.setTextColor(paramViewGroup.wSo.getContext().getResources().getColor(com.tencent.mm.plugin.selectcontact.a.b.BW_100_Alpha_0_5));
       }
       AppMethodBeat.o(102958);
       return paramContext;
@@ -81,7 +81,7 @@ public final class j
     {
       AppMethodBeat.i(102959);
       paramContext = (j.a)parama;
-      n.a(((j)parama1).header, paramContext.tOY);
+      o.b(((j)parama1).header, paramContext.wSo);
       AppMethodBeat.o(102959);
     }
     
@@ -93,7 +93,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.j
  * JD-Core Version:    0.7.0.1
  */

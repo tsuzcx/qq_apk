@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.ad;
 
 public abstract interface j
 {
-  public abstract void acm(String paramString);
+  public abstract void UM(String paramString);
   
-  public abstract void bEQ();
+  public abstract void ced();
   
-  public abstract void bER();
+  public abstract void cee();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.j
  * JD-Core Version:    0.7.0.1
  */

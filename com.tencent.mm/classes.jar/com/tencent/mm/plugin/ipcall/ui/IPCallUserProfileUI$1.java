@@ -12,7 +12,7 @@ final class IPCallUserProfileUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(25994);
-    this.DZi.finish();
+    this.JQq.finish();
     AppMethodBeat.o(25994);
     return true;
   }

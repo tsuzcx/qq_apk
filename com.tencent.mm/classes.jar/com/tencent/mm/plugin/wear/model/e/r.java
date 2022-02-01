@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class r
 {
-  private static AtomicInteger PsK;
+  private static AtomicInteger Wjx;
   
   static
   {
     AppMethodBeat.i(30112);
-    PsK = new AtomicInteger();
+    Wjx = new AtomicInteger();
     AppMethodBeat.o(30112);
   }
   
@@ -25,9 +25,9 @@ public final class r
     AppMethodBeat.i(30111);
     byte[] arrayOfByte = paramArrayOfByte;
     if (paramBoolean) {
-      arrayOfByte = a.gOt().cO(paramArrayOfByte);
+      arrayOfByte = a.inI().cR(paramArrayOfByte);
     }
-    int i = PsK.incrementAndGet();
+    int i = Wjx.incrementAndGet();
     paramArrayOfByte = new ByteArrayOutputStream();
     DataOutputStream localDataOutputStream = new DataOutputStream(paramArrayOfByte);
     try
@@ -42,7 +42,7 @@ public final class r
       }
       for (;;)
       {
-        a.gOt().cM(paramArrayOfByte.toByteArray());
+        a.inI().cP(paramArrayOfByte.toByteArray());
         AppMethodBeat.o(30111);
         return;
         localDataOutputStream.writeInt(0);
@@ -58,7 +58,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:paddingBottom="@dimen/df" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="#ffefeff4" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ib" />
-    <TextView android:textSize="@dimen/kc" android:textStyle="bold" android:textColor="@color/tx" android:ellipsize="end" android:id="@id/diq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/kc" android:textColor="@color/tx" android:ellipsize="end" android:id="@id/dir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cv">
+            <TextView android:textSize="@dimen/m_" android:textColor="@color/al2" android:id="@id/cyp" android:background="@drawable/a33" android:padding="@dimen/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d9r" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/hr" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/ksv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d9r" android:singleLine="true" android:includeFontPadding="false" android:layout_marginStart="@dimen/df" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp">
+            <TextView android:textSize="@dimen/a8t" android:textColor="@color/t6" android:gravity="center" android:id="@id/kss" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5个动态" android:includeFontPadding="false" android:layout_centerInParent="true" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/df" />
+        </RelativeLayout>
+        <FrameLayout android:id="@id/kst" android:background="@drawable/a36" android:paddingTop="@dimen/a6w" android:paddingBottom="@dimen/a6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0" android:layout_marginBottom="@dimen/d6" android:paddingStart="@dimen/cw" android:paddingEnd="@dimen/cw">
+            <TextView android:textSize="@dimen/m3" android:textColor="@color/al2" android:gravity="center" android:id="@id/ksu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eqm" android:includeFontPadding="false" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

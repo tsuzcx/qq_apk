@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/j6m" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/j6e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/l" android:textColor="#ccf2f2f2" android:id="@id/j4l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/j62" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/j59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a62" />
-    <ImageView android:id="@id/j7_" android:background="@raw/shortvideo_play_btn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:alpha="0.0" />
-    <TextView android:textColor="@color/a5c" android:id="@id/j6r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/ken" android:background="@drawable/cz4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.pluginsdk.ui.seekbar.HeroSeekBarView android:gravity="center" android:id="@id/kj0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_marginBottom="@dimen/cb" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <ScrollView style="@style/o8">
+        <LinearLayout style="@style/lj">
+            <EditText android:id="@id/jf6" android:inputType="textEmailAddress" style="@style/n9" />
+            <View style="@style/n5" />
+            <TextView android:id="@id/gyj" android:text="@string/iuf" android:layout_weight="1.0" style="@style/lk" />
+            <LinearLayout android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:id="@id/kzz" android:text="@string/j1d" style="@style/ok" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.sysvideo.ui.video;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
@@ -25,26 +24,26 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.AnimationHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.video.VideoView;
 
 public class VideoRecorderPreviewUI
   extends MMActivity
 {
-  private VideoView Miq;
-  private String Mir;
-  private final int Mis;
-  private MMHandler Mit;
+  private VideoView SLM;
+  private String SLN;
+  private final int SLO;
+  private MMHandler SLP;
   private long duration;
   
   public VideoRecorderPreviewUI()
   {
     AppMethodBeat.i(29325);
-    this.Mir = null;
+    this.SLN = null;
     this.duration = -1L;
-    this.Mis = 3000;
-    this.Mit = new MMHandler()
+    this.SLO = 3000;
+    this.SLP = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -60,7 +59,7 @@ public class VideoRecorderPreviewUI
   public void dealContentView(View paramView)
   {
     AppMethodBeat.i(29330);
-    ar.p(ar.a(getWindow(), null), getBodyView());
+    aw.y(aw.a(getWindow(), null), getBodyView());
     ((ViewGroup)getBodyView().getParent()).removeView(getBodyView());
     ((ViewGroup)getWindow().getDecorView()).addView(getBodyView(), 0);
     AppMethodBeat.o(29330);
@@ -68,36 +67,36 @@ public class VideoRecorderPreviewUI
   
   public int getLayoutId()
   {
-    return R.i.elK;
+    return R.i.goO;
   }
   
   public void initView()
   {
     AppMethodBeat.i(29328);
-    this.Miq = ((VideoView)findViewById(R.h.dYV));
-    this.Miq.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    this.SLM = ((VideoView)findViewById(R.h.gbJ));
+    this.SLM.setOnErrorListener(new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(29321);
-        VideoRecorderPreviewUI.a(VideoRecorderPreviewUI.this).hZo();
-        h.p(VideoRecorderPreviewUI.this, R.l.video_play_faile, R.l.video_play_err);
+        VideoRecorderPreviewUI.a(VideoRecorderPreviewUI.this).jEx();
+        k.s(VideoRecorderPreviewUI.this, R.l.video_play_faile, R.l.video_play_err);
         AppMethodBeat.o(29321);
         return false;
       }
     });
-    this.Miq.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
+    this.SLM.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
     {
       public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(29322);
-        Log.d("MicroMsg.VideoRecorderPreviewUI", f.avC() + " onPrepared");
-        Log.d("MicroMsg.VideoRecorderPreviewUI", f.avC() + " onPrepared");
+        Log.d("MicroMsg.VideoRecorderPreviewUI", f.aPW() + " onPrepared");
+        Log.d("MicroMsg.VideoRecorderPreviewUI", f.aPW() + " onPrepared");
         paramAnonymousMediaPlayer = VideoRecorderPreviewUI.a(VideoRecorderPreviewUI.this);
-        if ((paramAnonymousMediaPlayer.pzX != null) && (paramAnonymousMediaPlayer.pDh)) {
-          paramAnonymousMediaPlayer.pzX.start();
+        if ((paramAnonymousMediaPlayer.sFf != null) && (paramAnonymousMediaPlayer.sIt)) {
+          paramAnonymousMediaPlayer.sFf.start();
         }
-        for (paramAnonymousMediaPlayer.cJM = false;; paramAnonymousMediaPlayer.cJM = true)
+        for (paramAnonymousMediaPlayer.eDv = false;; paramAnonymousMediaPlayer.eDv = true)
         {
           VideoRecorderPreviewUI.b(VideoRecorderPreviewUI.this).sendEmptyMessageDelayed(0, 3000L);
           AppMethodBeat.o(29322);
@@ -105,14 +104,14 @@ public class VideoRecorderPreviewUI
         }
       }
     });
-    findViewById(R.h.dYU).setOnClickListener(new View.OnClickListener()
+    findViewById(R.h.gbI).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(29323);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderPreviewUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sysvideo/ui/video/VideoRecorderPreviewUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         VideoRecorderPreviewUI.b(VideoRecorderPreviewUI.this).removeMessages(0);
         if (VideoRecorderPreviewUI.this.isTitleShowing())
         {
@@ -131,7 +130,7 @@ public class VideoRecorderPreviewUI
         }
       }
     });
-    this.Miq.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+    this.SLM.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
@@ -141,10 +140,10 @@ public class VideoRecorderPreviewUI
         AppMethodBeat.o(29324);
       }
     });
-    if (this.Mir != null)
+    if (this.SLN != null)
     {
-      this.Miq.hZo();
-      this.Miq.setVideoURI(this.Mir);
+      this.SLM.jEx();
+      this.SLM.setVideoURI(this.SLN);
     }
     AppMethodBeat.o(29328);
   }
@@ -155,7 +154,7 @@ public class VideoRecorderPreviewUI
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     hideTitleView();
-    this.Mir = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
+    this.SLN = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
     setMMTitle(R.l.video_preview_title);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -176,17 +175,17 @@ public class VideoRecorderPreviewUI
   {
     AppMethodBeat.i(29329);
     super.onPause();
-    if (this.Miq.isPlaying())
+    if (this.SLM.isPlaying())
     {
-      VideoView localVideoView = this.Miq;
-      if ((localVideoView.pzX != null) && (localVideoView.pDh) && (localVideoView.pzX.isPlaying())) {
-        localVideoView.pzX.pause();
+      VideoView localVideoView = this.SLM;
+      if ((localVideoView.sFf != null) && (localVideoView.sIt) && (localVideoView.sFf.isPlaying())) {
+        localVideoView.sFf.pause();
       }
-      localVideoView.cJM = false;
+      localVideoView.eDv = false;
     }
     finish();
     BackwardSupportUtil.AnimationHelper.overridePendingTransition(this, 0, 0);
-    this.Mit.removeMessages(0);
+    this.SLP.removeMessages(0);
     AppMethodBeat.o(29329);
   }
   
@@ -205,7 +204,7 @@ public class VideoRecorderPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.sysvideo.ui.video.VideoRecorderPreviewUI
  * JD-Core Version:    0.7.0.1
  */

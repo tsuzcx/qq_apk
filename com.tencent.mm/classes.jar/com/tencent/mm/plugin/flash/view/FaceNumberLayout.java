@@ -7,27 +7,27 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.flash.a.a;
+import com.tencent.mm.plugin.flash.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import com.tencent.threadpool.i.d;
 
 public class FaceNumberLayout
   extends LinearLayout
 {
-  private static final int BCg;
-  private d BCh;
-  private Runnable BCi;
+  private static final int HjN;
+  private d HjO;
+  private Runnable HjP;
   private int currentIndex;
   private int total;
   
   static
   {
-    AppMethodBeat.i(191802);
-    BCg = a.epB();
-    AppMethodBeat.o(191802);
+    AppMethodBeat.i(264660);
+    HjN = c.fuD();
+    AppMethodBeat.o(264660);
   }
   
   public FaceNumberLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,53 +43,53 @@ public class FaceNumberLayout
   private FaceNumberLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(191780);
+    AppMethodBeat.i(264625);
     this.currentIndex = 0;
     this.total = 0;
-    this.BCi = new Runnable()
+    this.HjP = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(191147);
+        AppMethodBeat.i(264635);
         Log.i("MicroMsg.FaceFlashManagerNumberView", "showNumberRunnable current index:%s", new Object[] { Integer.valueOf(FaceNumberLayout.a(FaceNumberLayout.this)) });
         if (FaceNumberLayout.this.getChildAt(FaceNumberLayout.a(FaceNumberLayout.this)) != null)
         {
           FaceNumberView localFaceNumberView = (FaceNumberView)FaceNumberLayout.this.getChildAt(FaceNumberLayout.a(FaceNumberLayout.this));
           Log.i("MicroMsg.FaceFlashManagerNumberView", "show");
-          localFaceNumberView.BCk.setVisibility(4);
-          localFaceNumberView.BCl.clearAnimation();
-          localFaceNumberView.BCm.setFillAfter(true);
-          localFaceNumberView.BCm.setDuration(500L);
-          localFaceNumberView.BCl.startAnimation(localFaceNumberView.BCm);
-          localFaceNumberView.BCl.setVisibility(0);
-          FaceNumberLayout.a(FaceNumberLayout.this, FaceNumberLayout.a(FaceNumberLayout.this) + 1);
-          if (FaceNumberLayout.a(FaceNumberLayout.this) <= FaceNumberLayout.b(FaceNumberLayout.this)) {
-            FaceNumberLayout.a(FaceNumberLayout.this, h.ZvG.n(FaceNumberLayout.c(FaceNumberLayout.this), FaceNumberLayout.BCg));
+          localFaceNumberView.HjR.setVisibility(4);
+          localFaceNumberView.HjS.clearAnimation();
+          localFaceNumberView.HjT.setFillAfter(true);
+          localFaceNumberView.HjT.setDuration(500L);
+          localFaceNumberView.HjS.startAnimation(localFaceNumberView.HjT);
+          localFaceNumberView.HjS.setVisibility(0);
+          FaceNumberLayout.b(FaceNumberLayout.this);
+          if (FaceNumberLayout.a(FaceNumberLayout.this) <= FaceNumberLayout.c(FaceNumberLayout.this)) {
+            FaceNumberLayout.a(FaceNumberLayout.this, h.ahAA.o(FaceNumberLayout.d(FaceNumberLayout.this), FaceNumberLayout.HjN));
           }
         }
-        AppMethodBeat.o(191147);
+        AppMethodBeat.o(264635);
       }
     };
-    AppMethodBeat.o(191780);
+    AppMethodBeat.o(264625);
   }
   
-  public final void epT()
+  public final void fuV()
   {
-    AppMethodBeat.i(191792);
+    AppMethodBeat.i(264676);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "startShowNumber");
-    if ((this.BCh != null) && (!this.BCh.isDone()) && (!this.BCh.isCancelled())) {
-      this.BCh.cancel(true);
+    if ((this.HjO != null) && (!this.HjO.isDone()) && (!this.HjO.isCancelled())) {
+      this.HjO.cancel(true);
     }
-    this.BCh = h.ZvG.bc(this.BCi);
-    AppMethodBeat.o(191792);
+    this.HjO = h.ahAA.bk(this.HjP);
+    AppMethodBeat.o(264676);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(191795);
+    AppMethodBeat.i(264684);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "release");
-    if ((this.BCh != null) && (!this.BCh.isDone()) && (!this.BCh.isCancelled())) {
-      this.BCh.cancel(true);
+    if ((this.HjO != null) && (!this.HjO.isDone()) && (!this.HjO.isCancelled())) {
+      this.HjO.cancel(true);
     }
     int i = 0;
     while (i < getChildCount())
@@ -97,12 +97,12 @@ public class FaceNumberLayout
       ((FaceNumberView)getChildAt(i)).release();
       i += 1;
     }
-    AppMethodBeat.o(191795);
+    AppMethodBeat.o(264684);
   }
   
   public void setNumbers(String paramString)
   {
-    AppMethodBeat.i(191786);
+    AppMethodBeat.i(264668);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "setNumbers %s", new Object[] { paramString });
     this.total = paramString.length();
     this.currentIndex = getChildCount();
@@ -118,12 +118,12 @@ public class FaceNumberLayout
       addView(localFaceNumberView, localLayoutParams);
       i += 1;
     }
-    AppMethodBeat.o(191786);
+    AppMethodBeat.o(264668);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.flash.view.FaceNumberLayout
  * JD-Core Version:    0.7.0.1
  */

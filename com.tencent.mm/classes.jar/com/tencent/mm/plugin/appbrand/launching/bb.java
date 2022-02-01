@@ -1,144 +1,122 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.Intent;
-import android.content.res.Resources;
 import android.util.Pair;
-import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
+import com.tencent.luggage.sdk.launching.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.c;
-import com.tencent.mm.plugin.appbrand.app.m;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.plugin.appbrand.appcache.bm;
-import com.tencent.mm.plugin.appbrand.au.i;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.app.f;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.appcache.k.a;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
+import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
+import com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import com.tencent.mm.pointers.PBool;
+import com.tencent.mm.protocal.protobuf.dgu;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
 
-final class bb
+public class bb
+  extends aw<Pair<ak, dgu>>
 {
-  static boolean a(WxaAttributes paramWxaAttributes, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
+  final String appId;
+  final int appVersion;
+  final int enterScene;
+  final AppBrandLaunchReferrer eoV;
+  final e epm;
+  final int euz;
+  final int icZ;
+  final int launchMode;
+  final String qAF;
+  final AppBrandLaunchFromNotifyReferrer qAQ;
+  final QualitySession qYm;
+  final AppBrandRuntimeReloadReportBundle qYu;
+  final String sXS;
+  private final String sXh;
+  final ICommLibReader tca;
+  final String userName;
+  
+  bb(String paramString1, int paramInt1, WxaAttributes.WxaVersionInfo paramWxaVersionInfo, int paramInt2, int paramInt3, String paramString2, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, String paramString3, ICommLibReader paramICommLibReader, QualitySession paramQualitySession, String paramString4, AppBrandLaunchFromNotifyReferrer paramAppBrandLaunchFromNotifyReferrer, String paramString5, e parame, int paramInt4, AppBrandRuntimeReloadReportBundle paramAppBrandRuntimeReloadReportBundle)
   {
-    AppMethodBeat.i(47358);
-    if (1 == paramWxaAttributes.bLH().cwX)
+    AppMethodBeat.i(320733);
+    this.appId = paramString1;
+    this.euz = paramInt1;
+    if (k.a.zn(paramInt1)) {}
+    for (paramInt1 = paramWxaVersionInfo.appVersion;; paramInt1 = 0)
     {
-      AppBrand404PageUI.a(au.i.app_brand_launching_release_version_not_published_yet, paramActivityStarterIpcDelegate);
-      j.V(paramWxaAttributes.field_appId, 14, 1);
-      AppMethodBeat.o(47358);
-      return false;
+      this.appVersion = paramInt1;
+      this.icZ = paramInt2;
+      this.enterScene = paramInt3;
+      this.qAF = paramString2;
+      this.eoV = paramAppBrandLaunchReferrer;
+      this.sXS = paramString3;
+      this.userName = paramString4;
+      this.qAQ = paramAppBrandLaunchFromNotifyReferrer;
+      this.sXh = paramString5;
+      this.epm = parame;
+      this.launchMode = paramInt4;
+      this.qYu = paramAppBrandRuntimeReloadReportBundle;
+      this.tca = paramICommLibReader;
+      this.qYm = paramQualitySession;
+      AppMethodBeat.o(320733);
+      return;
     }
-    AppMethodBeat.o(47358);
-    return true;
   }
   
-  static boolean a(String paramString, boolean paramBoolean, y paramy)
+  public static boolean Ca(int paramInt)
   {
-    AppMethodBeat.i(281569);
-    Object localObject = new bc(paramString, akc(paramString), paramBoolean).caj();
-    int i = ((Integer)((Pair)localObject).first).intValue();
-    localObject = (String)((Pair)localObject).second;
-    Log.i("MicroMsg.AppBrand.PrepareStepOpBan", "checkDemoInfo, appId %s, ret %d, ignoreCgiError %b", new Object[] { paramString, Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
-    bc.a locala = bc.a.BM(i);
-    if (locala == null)
+    AppMethodBeat.i(47351);
+    int[] arrayOfInt = AppBrandGlobalSystemConfig.ckD().qWS;
+    if ((arrayOfInt != null) && (a.contains(arrayOfInt, paramInt)))
     {
-      switch (i)
-      {
-      default: 
-        if (paramBoolean)
-        {
-          AppMethodBeat.o(281569);
-          return true;
-        }
-        break;
-      case -13002: 
-        av.a(au.i.app_brand_demo_pkg_has_been_deleted, paramy);
-        j.V(paramString, 13, 3);
-        AppMethodBeat.o(281569);
-        return false;
-      case -13003: 
-        if (paramy.bZy()) {
-          b((String)localObject, paramy);
-        }
-        j.V(paramString, 12, 3);
-        AppMethodBeat.o(281569);
-        return false;
-      }
-      av.a(MMApplicationContext.getResources().getString(au.i.app_brand_preparing_comm_err_code, new Object[] { Integer.valueOf(3), Integer.valueOf(i) }), paramy);
-      AppMethodBeat.o(281569);
-      return false;
-    }
-    if (paramBoolean)
-    {
-      AppMethodBeat.o(281569);
+      AppMethodBeat.o(47351);
       return true;
     }
-    switch (1.pXA[locala.ordinal()])
-    {
-    default: 
-      av.a(au.i.app_brand_demo_pkg_cgi_fail, paramy);
-      j.V(paramString, 13, 3);
-      AppMethodBeat.o(281569);
-      return false;
-    case 1: 
-      AppMethodBeat.o(281569);
-      return true;
-    }
-    av.a(au.i.app_brand_demo_pkg_cgi_timeout, paramy);
-    j.V(paramString, 13, 3);
-    AppMethodBeat.o(281569);
+    AppMethodBeat.o(47351);
     return false;
   }
   
-  private static String akc(String paramString)
+  public static boolean b(ak paramak)
   {
-    AppMethodBeat.i(180317);
-    Object localObject = null;
-    bh localbh = m.bFP().c(paramString, 10001, new String[] { "versionMd5", "pkgPath" });
-    paramString = localObject;
-    if (localbh != null)
-    {
-      paramString = localObject;
-      if (!Util.isNullOrNil(localbh.field_pkgPath))
-      {
-        paramString = localObject;
-        if (u.agG(localbh.field_pkgPath))
-        {
-          paramString = localObject;
-          if (!Util.isNullOrNil(localbh.field_versionMd5))
-          {
-            paramString = localObject;
-            if (localbh.field_pkgPath.equals(u.buc(localbh.field_pkgPath))) {
-              paramString = localbh.field_versionMd5;
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(180317);
-    return paramString;
+    return (paramak != null) && (paramak.field_jsapiInfo != null);
   }
   
-  private static void b(String paramString, y paramy)
+  private boolean cAv()
   {
-    AppMethodBeat.i(281570);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(320742);
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    long l = Util.currentTicks();
+    PBool localPBool = new PBool();
+    new PrepareStepCheckLaunchInfo.2(this, f.hfK, l, localPBool, localCountDownLatch).alive();
+    try
     {
-      av.a(au.i.app_brand_demo_pkg_user_not_in_white_list, paramy);
-      AppMethodBeat.o(281570);
-      return;
+      localCountDownLatch.await();
+      boolean bool = localPBool.value;
+      AppMethodBeat.o(320742);
+      return bool;
     }
-    paramString = new Intent().putExtra("rawUrl", paramString).putExtra("forceHideShare", true);
-    c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
-    AppMethodBeat.o(281570);
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.AppBrand.PrepareStepCheckLaunchInfo", "waitForCommLibUpdated get exception:%s", new Object[] { localException });
+      AppMethodBeat.o(320742);
+    }
+    return true;
+  }
+  
+  void cda() {}
+  
+  final String getTag()
+  {
+    return "MicroMsg.AppBrand.PrepareStepCheckLaunchInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.bb
  * JD-Core Version:    0.7.0.1
  */

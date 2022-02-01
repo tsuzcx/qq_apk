@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.mv.ui.widget.RangeSliderView android:id="@id/bmi" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.mv.ui.widget.MvFrameListView android:id="@id/d9v" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.mv.ui.widget.RangeSliderView>
-    <TextView android:textSize="12.0sp" android:textColor="@android:color/holo_red_light" android:id="@id/bku" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_alignLeft="@id/bmi" android:layout_alignTop="@id/bmi" android:layout_alignRight="@id/bmi" android:layout_alignBottom="@id/bmi" android:layout_alignParentBottom="true" />
-    <View android:id="@id/vn" android:background="@drawable/d2j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/bmi" android:layout_alignTop="@id/bmi" android:layout_alignRight="@id/bmi" android:layout_alignBottom="@id/bmi" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/c_z" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center" android:id="@id/ca1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <FrameLayout android:layout_gravity="start|center" android:id="@id/be_" android:layout_width="@dimen/db" android:layout_height="@dimen/db">
+            <FrameLayout android:layout_gravity="start|center" android:id="@id/bel" android:background="@drawable/a5j" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:importantForAccessibility="noHideDescendants" android:layout_marginStart="@dimen/cd">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/bek" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_0" />
+            </FrameLayout>
+        </FrameLayout>
+    </FrameLayout>
+    <TextView android:textSize="@dimen/m3" android:textColor="@color/xo" android:layout_gravity="center_horizontal" android:id="@id/d7q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cd" android:text="@string/d3k" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/d7w" android:background="@drawable/ay6" android:visibility="gone" android:clickable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aum">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d7t" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginLeft="@dimen/cp" android:layout_marginRight="@dimen/df" android:src="@raw/icons_filled_error" app:iconColor="@color/a9w" />
+        <TextView android:textSize="@dimen/bd" android:ellipsize="end" android:gravity="center" android:id="@id/d7u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d3q" android:singleLine="true" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d7v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:layout_marginRight="@dimen/cp" android:src="@raw/arrow_right" android:tint="@color/BW_50" />
+    </LinearLayout>
+</LinearLayout>

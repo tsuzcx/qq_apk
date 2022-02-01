@@ -7,14 +7,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
 
 public class BankRemitDetailItemView
   extends LinearLayout
 {
-  private boolean Ihn;
-  private TextView mMA;
-  private TextView pPT;
+  private boolean OdQ;
+  private TextView pJi;
+  private TextView sUt;
   
   public BankRemitDetailItemView(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class BankRemitDetailItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67502);
-    this.Ihn = false;
+    this.OdQ = false;
     init();
     AppMethodBeat.o(67502);
   }
@@ -34,7 +34,7 @@ public class BankRemitDetailItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(67503);
-    this.Ihn = false;
+    this.OdQ = false;
     init();
     AppMethodBeat.o(67503);
   }
@@ -43,8 +43,8 @@ public class BankRemitDetailItemView
   {
     super(paramContext);
     AppMethodBeat.i(67501);
-    this.Ihn = false;
-    this.Ihn = paramBoolean;
+    this.OdQ = false;
+    this.OdQ = paramBoolean;
     init();
     AppMethodBeat.o(67501);
   }
@@ -52,13 +52,13 @@ public class BankRemitDetailItemView
   private void init()
   {
     AppMethodBeat.i(67504);
-    if (this.Ihn) {
+    if (this.OdQ) {
       inflate(getContext(), a.g.bank_remit_detail_item_money_layout, this);
     }
     for (;;)
     {
-      this.pPT = ((TextView)findViewById(a.f.brdi_title_tv));
-      this.mMA = ((TextView)findViewById(a.f.brdi_desc_tv));
+      this.sUt = ((TextView)findViewById(a.f.brdi_title_tv));
+      this.pJi = ((TextView)findViewById(a.f.brdi_desc_tv));
       AppMethodBeat.o(67504);
       return;
       inflate(getContext(), a.g.bank_remit_detail_item_comm_layout, this);
@@ -68,14 +68,14 @@ public class BankRemitDetailItemView
   public final void a(String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(67505);
-    this.pPT.setText(paramString);
+    this.sUt.setText(paramString);
     if (paramBoolean)
     {
-      this.mMA.setText(l.b(getContext(), paramCharSequence, this.mMA.getTextSize()));
+      this.pJi.setText(p.b(getContext(), paramCharSequence, this.pJi.getTextSize()));
       AppMethodBeat.o(67505);
       return;
     }
-    this.mMA.setText(paramCharSequence);
+    this.pJi.setText(paramCharSequence);
     AppMethodBeat.o(67505);
   }
   
@@ -88,7 +88,7 @@ public class BankRemitDetailItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitDetailItemView
  * JD-Core Version:    0.7.0.1
  */

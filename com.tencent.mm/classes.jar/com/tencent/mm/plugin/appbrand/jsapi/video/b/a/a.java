@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.b.a;
 
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.c;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 
 public abstract interface a
 {
-  public abstract f Q(String paramString, long paramLong);
+  public abstract long Uo();
   
-  public abstract f R(String paramString, long paramLong);
+  public abstract f V(String paramString, long paramLong);
   
-  public abstract q a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3);
+  public abstract f W(String paramString, long paramLong);
+  
+  public abstract u a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3);
   
   public abstract void a(f paramf);
   
-  public abstract long aiR(String paramString);
+  public abstract long abQ(String paramString);
   
-  public abstract c aiS(String paramString);
+  public abstract c abR(String paramString);
   
-  public abstract boolean aiT(String paramString);
+  public abstract boolean abS(String paramString);
   
-  public abstract long aiU(String paramString);
+  public abstract long abT(String paramString);
   
   public abstract void b(f paramf);
   
-  public abstract long uP();
-  
-  public abstract void z(q paramq);
+  public abstract void z(u paramu);
   
   public static abstract interface a
   {
@@ -36,7 +36,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.a.a
  * JD-Core Version:    0.7.0.1
  */

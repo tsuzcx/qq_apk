@@ -10,10 +10,10 @@ import java.util.concurrent.CountDownLatch;
 
 public final class a
 {
-  public static <T extends com.tencent.mm.kernel.c.a> T az(Class<T> paramClass)
+  public static <T extends com.tencent.mm.kernel.c.a> T aS(Class<T> paramClass)
   {
     AppMethodBeat.i(121518);
-    Object localObject = h.ae(paramClass);
+    Object localObject = h.ax(paramClass);
     if (localObject != null)
     {
       AppMethodBeat.o(121518);
@@ -24,45 +24,45 @@ public final class a
       AppMethodBeat.o(121518);
       return null;
     }
-    if (!h.aHH().kdc.kdw)
+    if (!h.baF().mDl.mDG)
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
       localObject = new g()
       {
-        public final void abB()
+        public final void aDv()
         {
           AppMethodBeat.i(121516);
-          this.val$latch.countDown();
+          a.this.countDown();
           AppMethodBeat.o(121516);
         }
         
-        public final void dn(boolean paramAnonymousBoolean)
+        public final void dZ(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121517);
-          this.val$latch.countDown();
+          a.this.countDown();
           AppMethodBeat.o(121517);
         }
       };
-      h.aHH().a((g)localObject);
+      h.baF().a((g)localObject);
       try
       {
         localCountDownLatch.await();
-        h.aHH().b((g)localObject);
+        h.baF().b((g)localObject);
       }
       catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
           Log.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
-          h.aHH().b((g)localObject);
+          h.baF().b((g)localObject);
         }
       }
       finally
       {
-        h.aHH().b((g)localObject);
+        h.baF().b((g)localObject);
         AppMethodBeat.o(121518);
       }
-      paramClass = h.ae(paramClass);
+      paramClass = h.ax(paramClass);
       AppMethodBeat.o(121518);
       return paramClass;
     }

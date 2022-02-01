@@ -18,7 +18,7 @@ class KindaAnimatorViewProxy$DoubleEvaluator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaAnimatorViewProxy.DoubleEvaluator
  * JD-Core Version:    0.7.0.1
  */

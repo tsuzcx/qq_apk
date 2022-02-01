@@ -1,6 +1,5 @@
 package com.google.android.exoplayer2.video;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
@@ -20,24 +19,23 @@ import com.google.android.exoplayer2.i.a;
 import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(17)
 public final class DummySurface
   extends Surface
 {
-  private static boolean brx;
-  private static boolean bry;
-  public final boolean bcB;
-  private boolean brA;
-  private final a brz;
+  private static boolean dkZ;
+  private static boolean dla;
+  public final boolean cWw;
+  private final a dlb;
+  private boolean dlc;
   
   private DummySurface(a parama, SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
   {
     super(paramSurfaceTexture);
-    this.brz = parama;
-    this.bcB = paramBoolean;
+    this.dlb = parama;
+    this.cWw = paramBoolean;
   }
   
-  public static boolean ac(Context paramContext)
+  public static boolean aN(Context paramContext)
   {
     boolean bool1 = true;
     for (;;)
@@ -46,7 +44,7 @@ public final class DummySurface
       try
       {
         AppMethodBeat.i(93263);
-        if (!bry)
+        if (!dla)
         {
           if (x.SDK_INT < 24) {
             continue;
@@ -58,17 +56,17 @@ public final class DummySurface
           if (!str.contains("EGL_EXT_protected_content"))
           {
             break label143;
-            brx = bool1;
-            bry = true;
+            dkZ = bool1;
+            dla = true;
           }
         }
         else
         {
-          bool1 = brx;
+          bool1 = dkZ;
           AppMethodBeat.o(93263);
           return bool1;
         }
-        if ((x.SDK_INT == 24) && ("samsung".equals(x.brp)))
+        if ((x.SDK_INT == 24) && ("samsung".equals(x.MANUFACTURER)))
         {
           i = 0;
         }
@@ -106,11 +104,11 @@ public final class DummySurface
       AppMethodBeat.o(93264);
       throw paramContext;
     }
-    if ((!paramBoolean) || (ac(paramContext))) {}
+    if ((!paramBoolean) || (aN(paramContext))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      paramContext = new a().aV(paramBoolean);
+      paramContext = new a().bD(paramBoolean);
       AppMethodBeat.o(93264);
       return paramContext;
     }
@@ -120,12 +118,12 @@ public final class DummySurface
   {
     AppMethodBeat.i(93265);
     super.release();
-    synchronized (this.brz)
+    synchronized (this.dlb)
     {
-      if (!this.brA)
+      if (!this.dlc)
       {
-        this.brz.handler.sendEmptyMessage(3);
-        this.brA = true;
+        this.dlb.handler.sendEmptyMessage(3);
+        this.dlc = true;
       }
       AppMethodBeat.o(93265);
       return;
@@ -136,13 +134,13 @@ public final class DummySurface
     extends HandlerThread
     implements SurfaceTexture.OnFrameAvailableListener, Handler.Callback
   {
-    private final int[] brB;
-    private EGLDisplay brC;
-    private EGLContext brD;
-    private EGLSurface brE;
-    private Error brF;
-    private RuntimeException brG;
-    private DummySurface brH;
+    private final int[] dld;
+    private EGLDisplay dle;
+    private EGLContext dlf;
+    private EGLSurface dlg;
+    private Error dlh;
+    private RuntimeException dli;
+    private DummySurface dlj;
     Handler handler;
     private SurfaceTexture surfaceTexture;
     
@@ -150,11 +148,11 @@ public final class DummySurface
     {
       super();
       AppMethodBeat.i(93259);
-      this.brB = new int[1];
+      this.dld = new int[1];
       AppMethodBeat.o(93259);
     }
     
-    public final DummySurface aV(boolean paramBoolean)
+    public final DummySurface bD(boolean paramBoolean)
     {
       int j = 0;
       AppMethodBeat.i(93260);
@@ -168,9 +166,9 @@ public final class DummySurface
         {
           ((Handler)localObject1).obtainMessage(1, i, 0).sendToTarget();
           i = j;
-          while ((this.brH == null) && (this.brG == null))
+          while ((this.dlj == null) && (this.dli == null))
           {
-            localObject1 = this.brF;
+            localObject1 = this.dlh;
             if (localObject1 != null) {
               break;
             }
@@ -187,9 +185,9 @@ public final class DummySurface
         if (i != 0) {
           Thread.currentThread().interrupt();
         }
-        if (this.brG != null)
+        if (this.dli != null)
         {
-          RuntimeException localRuntimeException = this.brG;
+          RuntimeException localRuntimeException = this.dli;
           AppMethodBeat.o(93260);
           throw localRuntimeException;
         }
@@ -198,13 +196,13 @@ public final class DummySurface
       {
         AppMethodBeat.o(93260);
       }
-      if (this.brF != null)
+      if (this.dlh != null)
       {
-        localObject3 = this.brF;
+        localObject3 = this.dlh;
         AppMethodBeat.o(93260);
         throw ((Throwable)localObject3);
       }
-      Object localObject3 = this.brH;
+      Object localObject3 = this.dlj;
       AppMethodBeat.o(93260);
       return localObject3;
     }
@@ -225,17 +223,17 @@ public final class DummySurface
           if (paramMessage.arg1 != 0)
           {
             bool1 = true;
-            this.brC = EGL14.eglGetDisplay(0);
-            if (this.brC == null) {
+            this.dle = EGL14.eglGetDisplay(0);
+            if (this.dle == null) {
               continue;
             }
             bool2 = true;
             a.checkState(bool2, "eglGetDisplay failed");
             paramMessage = new int[2];
-            a.checkState(EGL14.eglInitialize(this.brC, paramMessage, 0, paramMessage, 1), "eglInitialize failed");
+            a.checkState(EGL14.eglInitialize(this.dle, paramMessage, 0, paramMessage, 1), "eglInitialize failed");
             paramMessage = new EGLConfig[1];
             int[] arrayOfInt = new int[1];
-            if ((!EGL14.eglChooseConfig(this.brC, new int[] { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12327, 12344, 12339, 4, 12344 }, 0, paramMessage, 0, 1, arrayOfInt, 0)) || (arrayOfInt[0] <= 0) || (paramMessage[0] == null)) {
+            if ((!EGL14.eglChooseConfig(this.dle, new int[] { 12352, 4, 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12325, 0, 12327, 12344, 12339, 4, 12344 }, 0, paramMessage, 0, 1, arrayOfInt, 0)) || (arrayOfInt[0] <= 0) || (paramMessage[0] == null)) {
               continue;
             }
             bool2 = true;
@@ -256,9 +254,9 @@ public final class DummySurface
             Message tmp284_280 = tmp280_274;
             tmp284_280[4] = 12344;
             tmp284_280;
-            this.brD = EGL14.eglCreateContext(this.brC, arrayOfInt, EGL14.EGL_NO_CONTEXT, paramMessage, 0);
-            if (this.brD == null) {
-              break label868;
+            this.dlf = EGL14.eglCreateContext(this.dle, arrayOfInt, EGL14.EGL_NO_CONTEXT, paramMessage, 0);
+            if (this.dlf == null) {
+              break label855;
             }
             bool2 = true;
             a.checkState(bool2, "eglCreateContext failed");
@@ -281,17 +279,17 @@ public final class DummySurface
             Message tmp364_360 = tmp360_354;
             tmp364_360[6] = 12344;
             tmp364_360;
-            this.brE = EGL14.eglCreatePbufferSurface(this.brC, arrayOfInt, paramMessage, 0);
-            if (this.brE == null) {
+            this.dlg = EGL14.eglCreatePbufferSurface(this.dle, arrayOfInt, paramMessage, 0);
+            if (this.dlg == null) {
               continue;
             }
             bool2 = true;
             a.checkState(bool2, "eglCreatePbufferSurface failed");
-            a.checkState(EGL14.eglMakeCurrent(this.brC, this.brE, this.brE, this.brD), "eglMakeCurrent failed");
-            GLES20.glGenTextures(1, this.brB, 0);
-            this.surfaceTexture = new SurfaceTexture(this.brB[0]);
+            a.checkState(EGL14.eglMakeCurrent(this.dle, this.dlg, this.dlg, this.dlf), "eglMakeCurrent failed");
+            GLES20.glGenTextures(1, this.dld, 0);
+            this.surfaceTexture = new SurfaceTexture(this.dld[0]);
             this.surfaceTexture.setOnFrameAvailableListener(this);
-            this.brH = new DummySurface(this, this.surfaceTexture, bool1, (byte)0);
+            this.dlj = new DummySurface(this, this.surfaceTexture, bool1, (byte)0);
           }
         }
         catch (RuntimeException paramMessage)
@@ -311,7 +309,7 @@ public final class DummySurface
         }
         catch (Error paramMessage)
         {
-          this.brF = paramMessage;
+          this.dlh = paramMessage;
           try
           {
             notify();
@@ -384,53 +382,48 @@ public final class DummySurface
           if (this.surfaceTexture != null)
           {
             this.surfaceTexture.release();
-            GLES20.glDeleteTextures(1, this.brB, 0);
+            GLES20.glDeleteTextures(1, this.dld, 0);
           }
         }
         finally
         {
           label768:
-          if (this.brE != null) {
-            EGL14.eglDestroySurface(this.brC, this.brE);
+          if (this.dlg != null) {
+            EGL14.eglDestroySurface(this.dle, this.dlg);
           }
-          if (this.brD != null) {
-            EGL14.eglDestroyContext(this.brC, this.brD);
+          if (this.dlf != null) {
+            EGL14.eglDestroyContext(this.dle, this.dlf);
           }
-          this.brE = null;
-          this.brD = null;
-          this.brC = null;
-          this.brH = null;
+          this.dlg = null;
+          this.dlf = null;
+          this.dle = null;
+          this.dlj = null;
           this.surfaceTexture = null;
           AppMethodBeat.o(93262);
         }
         try
         {
-          if (this.brE != null) {
-            EGL14.eglDestroySurface(this.brC, this.brE);
+          if (this.dlg != null) {
+            EGL14.eglDestroySurface(this.dle, this.dlg);
           }
-          if (this.brD != null) {
-            EGL14.eglDestroyContext(this.brC, this.brD);
+          if (this.dlf != null) {
+            EGL14.eglDestroyContext(this.dle, this.dlf);
           }
-          this.brE = null;
-          this.brD = null;
-          this.brC = null;
-          this.brH = null;
+          this.dlg = null;
+          this.dlf = null;
+          this.dle = null;
+          this.dlj = null;
           this.surfaceTexture = null;
           quit();
-        }
-        catch (Throwable paramMessage)
-        {
-          quit();
-          break label768;
         }
         finally
         {
           quit();
-          AppMethodBeat.o(93262);
+          break label768;
         }
         AppMethodBeat.o(93262);
         return true;
-        label868:
+        label855:
         bool2 = false;
       }
     }

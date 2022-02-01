@@ -3,14 +3,11 @@ package com.google.android.gms.tasks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayDeque;
 import java.util.Queue;
-import javax.annotation.concurrent.GuardedBy;
 
 final class zzr<TResult>
 {
   private final Object mLock;
-  @GuardedBy("mLock")
   private Queue<zzq<TResult>> zzaga;
-  @GuardedBy("mLock")
   private boolean zzagb;
   
   zzr()
@@ -64,7 +61,7 @@ final class zzr<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.tasks.zzr
  * JD-Core Version:    0.7.0.1
  */

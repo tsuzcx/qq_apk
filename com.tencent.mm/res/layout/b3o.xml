@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout android:id="@id/ezj" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.luckymoney.story.EnvelopeAppBarLayout android:orientation="vertical" android:id="@id/f0i" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip" app:expanded="false" app:layout_behavior="com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryBehavior" />
-    <LinearLayout android:orientation="vertical" android:id="@id/eyw" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/ezi" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="disabled" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:overScrollMode="never" />
-            <ImageView android:layout_gravity="top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/cc9" android:scaleType="fitXY" />
-            <View android:id="@id/ez4" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
-        </FrameLayout>
-    </LinearLayout>
-    <FrameLayout android:id="@id/f0w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout>
+<RelativeLayout android:background="@color/YellowK" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent android:id="@id/eu9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ScrollView android:id="@id/j43" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_below="@id/eu9">
+        <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/f7l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d0">
+            <LinearLayout android:orientation="vertical" android:id="@id/arj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <View android:id="@id/ag5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ag4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/df" android:layout_marginBottom="@dimen/d6">
+                <com.tencent.mm.ui.MMImageView android:layout_gravity="right" android:layout_width="150.0dip" android:layout_height="140.0dip" android:layout_marginBottom="@dimen/cv" android:src="@drawable/bk3" android:layout_marginEnd="@dimen/d0" />
+                <TextView android:textColor="@color/a1a" android:gravity="center" android:id="@id/kav" android:background="@drawable/axm" android:text="@string/g0g" android:layout_centerHorizontal="true" style="@style/zn" />
+            </LinearLayout>
+        </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+    </ScrollView>
+</RelativeLayout>

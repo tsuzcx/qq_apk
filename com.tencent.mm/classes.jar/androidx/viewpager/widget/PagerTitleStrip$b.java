@@ -11,32 +11,32 @@ import java.util.Locale;
 final class PagerTitleStrip$b
   extends SingleLineTransformationMethod
 {
-  private Locale jK;
+  private Locale kG;
   
   PagerTitleStrip$b(Context paramContext)
   {
-    AppMethodBeat.i(235149);
-    this.jK = paramContext.getResources().getConfiguration().locale;
-    AppMethodBeat.o(235149);
+    AppMethodBeat.i(193296);
+    this.kG = paramContext.getResources().getConfiguration().locale;
+    AppMethodBeat.o(193296);
   }
   
   public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
-    AppMethodBeat.i(235151);
+    AppMethodBeat.i(193305);
     paramCharSequence = super.getTransformation(paramCharSequence, paramView);
     if (paramCharSequence != null)
     {
-      paramCharSequence = paramCharSequence.toString().toUpperCase(this.jK);
-      AppMethodBeat.o(235151);
+      paramCharSequence = paramCharSequence.toString().toUpperCase(this.kG);
+      AppMethodBeat.o(193305);
       return paramCharSequence;
     }
-    AppMethodBeat.o(235151);
+    AppMethodBeat.o(193305);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     androidx.viewpager.widget.PagerTitleStrip.b
  * JD-Core Version:    0.7.0.1
  */

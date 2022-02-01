@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/afz" android:padding="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/r8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:textColorHint="@color/a2x" android:ellipsize="end" android:gravity="center|left" android:id="@id/eqq" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="56.0dip" android:text="[remark]" android:hint="@string/cbs" android:maxLines="2" android:drawableLeft="@raw/icons_outlined_pencil" android:drawableRight="@raw/fav_map_right_arrow" android:drawablePadding="@dimen/k5" />
-    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/afp" android:textColorHint="@color/a2x" android:ellipsize="end" android:gravity="center|left" android:id="@id/eqv" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="56.0dip" android:text="[tags]" android:hint="@string/c9x" android:maxLines="2" android:drawableLeft="@raw/fav_tags_icon" android:drawableRight="@raw/fav_map_right_arrow" android:drawablePadding="@dimen/k5" />
+    <EditText android:id="@id/kih" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/nh" />
+    <TextView android:textColor="@color/a7b" android:gravity="right" android:id="@id/k1a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
 </LinearLayout>

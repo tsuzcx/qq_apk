@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/b4g" android:background="@drawable/a7d" android:layout_width="@dimen/cn" android:layout_height="@dimen/ce" android:layout_centerInParent="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_0" />
-    </FrameLayout>
-    <TextView android:textSize="@dimen/is" android:textColor="@color/l4" android:id="@id/h7n" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/amd" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="50.0dip">
+        <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <ImageView android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/fts_hot_article" />
+            <TextView android:textSize="@dimen/m8" android:id="@id/exq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/jd_" />
+        </LinearLayout>
+        <View android:background="@color/abn" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</LinearLayout>

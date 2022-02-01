@@ -1,88 +1,186 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public final class fjr
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public long TVZ;
-  public boolean UIN;
-  public String Username;
+  public String abKn;
+  public String abKo;
+  public String iconUrl;
+  public String uCW;
+  
+  private JSONObject toJSON()
+  {
+    AppMethodBeat.i(259513);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      com.tencent.mm.bk.a.a(localJSONObject, "subTitle", this.uCW, true);
+      com.tencent.mm.bk.a.a(localJSONObject, "iconUrl", this.iconUrl, true);
+      com.tencent.mm.bk.a.a(localJSONObject, "lightColor", this.abKn, true);
+      com.tencent.mm.bk.a.a(localJSONObject, "darkColor", this.abKo, true);
+      label57:
+      AppMethodBeat.o(259513);
+      return localJSONObject;
+    }
+    catch (Exception localException)
+    {
+      break label57;
+    }
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32540);
+    AppMethodBeat.i(259515);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Username == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Username");
-        AppMethodBeat.o(32540);
-        throw paramVarArgs;
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.uCW != null) {
+        paramVarArgs.g(1, this.uCW);
       }
-      if (this.Username != null) {
-        paramVarArgs.f(1, this.Username);
+      if (this.iconUrl != null) {
+        paramVarArgs.g(2, this.iconUrl);
       }
-      paramVarArgs.bm(2, this.TVZ);
-      paramVarArgs.co(3, this.UIN);
-      AppMethodBeat.o(32540);
+      if (this.abKn != null) {
+        paramVarArgs.g(3, this.abKn);
+      }
+      if (this.abKo != null) {
+        paramVarArgs.g(4, this.abKo);
+      }
+      AppMethodBeat.o(259515);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label363;
+      if (this.uCW == null) {
+        break label390;
       }
     }
-    label363:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Username) + 0;; paramInt = 0)
+    label390:
+    for (int i = i.a.a.b.b.a.h(1, this.uCW) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.p(2, this.TVZ);
-      int j = g.a.a.b.b.a.gL(3);
-      AppMethodBeat.o(32540);
-      return paramInt + i + (j + 1);
+      paramInt = i;
+      if (this.iconUrl != null) {
+        paramInt = i + i.a.a.b.b.a.h(2, this.iconUrl);
+      }
+      i = paramInt;
+      if (this.abKn != null) {
+        i = paramInt + i.a.a.b.b.a.h(3, this.abKn);
+      }
+      paramInt = i;
+      if (this.abKo != null) {
+        paramInt = i + i.a.a.b.b.a.h(4, this.abKo);
+      }
+      AppMethodBeat.o(259515);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        if (this.Username == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Username");
-          AppMethodBeat.o(32540);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32540);
+        AppMethodBeat.o(259515);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         fjr localfjr = (fjr)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32540);
+          AppMethodBeat.o(259515);
           return -1;
         case 1: 
-          localfjr.Username = locala.abFh.readString();
-          AppMethodBeat.o(32540);
+          localfjr.uCW = locala.ajGk.readString();
+          AppMethodBeat.o(259515);
           return 0;
         case 2: 
-          localfjr.TVZ = locala.abFh.AN();
-          AppMethodBeat.o(32540);
+          localfjr.iconUrl = locala.ajGk.readString();
+          AppMethodBeat.o(259515);
+          return 0;
+        case 3: 
+          localfjr.abKn = locala.ajGk.readString();
+          AppMethodBeat.o(259515);
           return 0;
         }
-        localfjr.UIN = locala.abFh.AB();
-        AppMethodBeat.o(32540);
+        localfjr.abKo = locala.ajGk.readString();
+        AppMethodBeat.o(259515);
         return 0;
       }
-      AppMethodBeat.o(32540);
+      AppMethodBeat.o(259515);
       return -1;
+    }
+  }
+  
+  public final com.tencent.mm.bx.a toPb(String paramString)
+  {
+    AppMethodBeat.i(259522);
+    if ((paramString == null) || ("" == paramString))
+    {
+      AppMethodBeat.o(259522);
+      return this;
+    }
+    for (;;)
+    {
+      String str;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        if (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          i = -1;
+        }
+        switch (str.hashCode())
+        {
+        case -2090050568: 
+          this.uCW = ((String)paramString.opt(str));
+          continue;
+          if (!str.equals("subTitle")) {
+            break label248;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("SubContent", paramString, "", new Object[0]);
+        AppMethodBeat.o(259522);
+        return this;
+      }
+      int i = 0;
+      break label248;
+      if (str.equals("iconUrl"))
+      {
+        i = 1;
+        break label248;
+        if (str.equals("lightColor"))
+        {
+          i = 2;
+          break label248;
+          if (str.equals("darkColor"))
+          {
+            i = 3;
+            break label248;
+            this.iconUrl = ((String)paramString.opt(str));
+            continue;
+            this.abKn = ((String)paramString.opt(str));
+            continue;
+            this.abKo = ((String)paramString.opt(str));
+            continue;
+          }
+        }
+      }
+      label248:
+      switch (i)
+      {
+      }
     }
   }
 }

@@ -4,47 +4,44 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.luggage.l.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelvoice.w;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ac.i;
-import com.tencent.mm.plugin.appbrand.ac.m.a;
-import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.af.k;
+import com.tencent.mm.plugin.appbrand.af.o.a;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.h.b;
-import com.tencent.mm.plugin.appbrand.jsapi.h.c;
-import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
 import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.a.b;
-import com.tencent.mm.plugin.appbrand.page.capsulebar.i.a;
-import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.capsulebar.m.a;
 import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.utils.h;
-import com.tencent.mm.plugin.appbrand.v;
-import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.plugin.appbrand.permission.s;
+import com.tencent.mm.plugin.appbrand.utils.l;
+import com.tencent.mm.plugin.appbrand.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiStartRecordVoice
-  extends c<v>
+  extends c<y>
 {
   public static final int CTRL_INDEX = 31;
   public static final String NAME = "startRecord";
-  static volatile String oAv = null;
-  private StartRecordVoice oAw;
-  private ad ozV;
-  private i.a ozW;
+  static volatile String rEo = null;
+  private ad rDO;
+  private m.a rDP;
+  private StartRecordVoice rEp;
   
-  private void ib(final boolean paramBoolean)
+  private void ja(final boolean paramBoolean)
   {
     AppMethodBeat.i(45990);
-    if (this.ozV == null)
+    if (this.rDO == null)
     {
       AppMethodBeat.o(45990);
       return;
@@ -65,23 +62,23 @@ public final class JsApiStartRecordVoice
     }
     if (paramBoolean)
     {
-      this.ozW = com.tencent.mm.plugin.appbrand.page.capsulebar.a.a.ah(this.ozV.getRuntime()).a(a.b.qwM);
-      s.abW(this.ozV.getAppId()).nwd = this.ozW;
+      this.rDP = com.tencent.mm.plugin.appbrand.page.capsulebar.a.a.av(this.rDO.getRuntime()).a(a.b.tBL);
+      com.tencent.mm.plugin.appbrand.u.Uy(this.rDO.getAppId()).qva = this.rDP;
       AppMethodBeat.o(45990);
       return;
     }
-    if (this.ozW != null)
+    if (this.rDP != null)
     {
-      this.ozW.dismiss();
-      this.ozW = null;
+      this.rDP.dismiss();
+      this.rDP = null;
     }
     AppMethodBeat.o(45990);
   }
   
-  public final void a(final v paramv, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final y paramy, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(45989);
-    com.tencent.mm.plugin.appbrand.permission.r.a(paramv.getAppId(), new androidx.core.app.a.a()
+    s.a(paramy.getAppId(), new androidx.core.app.a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
@@ -93,58 +90,58 @@ public final class JsApiStartRecordVoice
         }
         if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
         {
-          JsApiStartRecordVoice.this.a(paramv, paramJSONObject, paramInt);
+          JsApiStartRecordVoice.this.a(paramy, paramJSONObject, paramInt);
           AppMethodBeat.o(45976);
           return;
         }
-        paramv.j(paramInt, JsApiStartRecordVoice.this.h("fail:system permission denied", null));
+        paramy.callback(paramInt, JsApiStartRecordVoice.this.ZP("fail:system permission denied"));
         AppMethodBeat.o(45976);
       }
     });
     int k;
-    if ((paramv.getContext() instanceof Activity))
+    if ((paramy.getContext() instanceof Activity))
     {
-      localObject = (Activity)paramv.getContext();
+      localObject = (Activity)paramy.getContext();
       if (localObject != null) {
-        break label91;
+        break label89;
       }
-      paramv.j(paramInt, h("fail", null));
+      paramy.callback(paramInt, ZP("fail"));
       k = 0;
     }
     for (;;)
     {
       if (k != 0) {
-        break label129;
+        break label128;
       }
-      paramv.j(paramInt, h("fail", null));
+      paramy.callback(paramInt, ZP("fail"));
       AppMethodBeat.o(45989);
       return;
       localObject = null;
       break;
-      label91:
-      boolean bool = b.a((Activity)localObject, "android.permission.RECORD_AUDIO", 116, "", "");
+      label89:
+      boolean bool = i.a((Activity)localObject, paramy, "android.permission.RECORD_AUDIO", 116, "", "");
       k = bool;
       if (bool)
       {
-        com.tencent.mm.plugin.appbrand.permission.r.amk(paramv.getAppId());
+        s.afs(paramy.getAppId());
         k = bool;
       }
     }
-    label129:
-    Object localObject = paramv.getRuntime().bBX();
+    label128:
+    Object localObject = paramy.getRuntime().getPageContainer();
     if ((((x)localObject).getCurrentPage() == null) || (((x)localObject).getCurrentPage().getCurrentPageView() == null))
     {
-      paramv.j(paramInt, h("fail", null));
+      paramy.callback(paramInt, ZP("fail"));
       AppMethodBeat.o(45989);
       return;
     }
-    if (oAv != null)
+    if (rEo != null)
     {
-      paramv.j(paramInt, h("fail:audio is recording, don't start record again", null));
+      paramy.callback(paramInt, ZP("fail:audio is recording, don't start record again"));
       AppMethodBeat.o(45989);
       return;
     }
-    this.ozV = ((x)localObject).getCurrentPage().getCurrentPageView();
+    this.rDO = ((x)localObject).getCurrentPage().getCurrentPageView();
     int j = paramJSONObject.optInt("duration", 60);
     int i = j;
     if (j <= 0)
@@ -158,30 +155,30 @@ public final class JsApiStartRecordVoice
       Log.e("MicroMsg.JsApiStartRecordVoice", "duration is invalid, more than %d", new Object[] { Integer.valueOf(600) });
       j = 600;
     }
-    this.ozV.a(new h.b()
+    this.rDO.a(new i.b()
     {
       public final void onBackground()
       {
         AppMethodBeat.i(45973);
-        JsApiStopRecordVoice.o(paramv);
+        JsApiStopRecordVoice.o(paramy);
         JsApiStartRecordVoice.a(JsApiStartRecordVoice.this).b(this);
         AppMethodBeat.o(45973);
       }
     });
-    this.ozV.a(new h.c()
+    this.rDO.a(new i.c()
     {
       public final void onDestroy()
       {
         AppMethodBeat.i(45974);
-        JsApiStopRecordVoice.o(paramv);
+        JsApiStopRecordVoice.o(paramy);
         JsApiStartRecordVoice.a(JsApiStartRecordVoice.this).b(this);
         AppMethodBeat.o(45974);
       }
     });
-    this.oAw = new StartRecordVoice(this, paramv, j, paramInt);
-    oAv = StartRecordVoice.a(this.oAw);
-    this.oAw.bsM();
-    ib(true);
+    this.rEp = new StartRecordVoice(this, paramy, j, paramInt);
+    rEo = StartRecordVoice.a(this.rEp);
+    this.rEp.bQt();
+    ja(true);
     AppMethodBeat.o(45989);
   }
   
@@ -192,11 +189,11 @@ public final class JsApiStartRecordVoice
     private String appId;
     private int duration;
     private String filePath;
-    private v nAz;
-    private JsApiStartRecordVoice oAy;
-    private boolean oAz;
-    private int okO;
+    private y qqV;
+    private JsApiStartRecordVoice rEr;
+    private boolean rEs;
     private int result;
+    private int ror;
     
     static
     {
@@ -208,43 +205,43 @@ public final class JsApiStartRecordVoice
     StartRecordVoice(Parcel paramParcel)
     {
       AppMethodBeat.i(45981);
-      this.oAz = false;
-      f(paramParcel);
+      this.rEs = false;
+      h(paramParcel);
       AppMethodBeat.o(45981);
     }
     
-    StartRecordVoice(JsApiStartRecordVoice paramJsApiStartRecordVoice, v paramv, int paramInt1, int paramInt2)
+    StartRecordVoice(JsApiStartRecordVoice paramJsApiStartRecordVoice, y paramy, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(45980);
-      this.oAz = false;
-      this.oAy = paramJsApiStartRecordVoice;
-      this.nAz = paramv;
+      this.rEs = false;
+      this.rEr = paramJsApiStartRecordVoice;
+      this.qqV = paramy;
       this.duration = paramInt1;
-      this.okO = paramInt2;
-      this.appId = paramv.getAppId();
-      paramJsApiStartRecordVoice = w.YN(this.appId);
-      i locali = new i();
-      if (paramv.getFileSystem().a(locali) == m.nMR)
+      this.ror = paramInt2;
+      this.appId = paramy.getAppId();
+      paramJsApiStartRecordVoice = com.tencent.mm.modelvoice.w.QS(this.appId);
+      k localk = new k();
+      if (paramy.getFileSystem().a(localk) == r.qML)
       {
-        this.filePath = new q((String)locali.value, paramJsApiStartRecordVoice).bOF();
+        this.filePath = ah.v(new com.tencent.mm.vfs.u((String)localk.value, paramJsApiStartRecordVoice).jKT());
         AppMethodBeat.o(45980);
         return;
       }
-      this.filePath = new q(paramv.getContext().getCacheDir(), paramJsApiStartRecordVoice).bOF();
+      this.filePath = ah.v(new com.tencent.mm.vfs.u(paramy.getContext().getCacheDir(), paramJsApiStartRecordVoice).jKT());
       AppMethodBeat.o(45980);
     }
     
-    public final void RW()
+    public final void asn()
     {
       AppMethodBeat.i(45982);
-      h.clV().postToWorker(new Runnable()
+      l.cNm().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(45978);
           JsApiStartRecordVoice.StartRecordVoice.a(JsApiStartRecordVoice.StartRecordVoice.this, com.tencent.mm.plugin.appbrand.media.record.a.a(JsApiStartRecordVoice.StartRecordVoice.a(JsApiStartRecordVoice.StartRecordVoice.this), new com.tencent.mm.plugin.appbrand.media.record.a.a()
           {
-            public final void Ab(int paramAnonymous2Int)
+            public final void As(int paramAnonymous2Int)
             {
               AppMethodBeat.i(45977);
               JsApiStartRecordVoice.StartRecordVoice.a(JsApiStartRecordVoice.StartRecordVoice.this, paramAnonymous2Int);
@@ -261,36 +258,36 @@ public final class JsApiStartRecordVoice
       AppMethodBeat.o(45982);
     }
     
-    public final void bsK()
+    public final void bQr()
     {
       AppMethodBeat.i(45983);
       if (this.result == -1)
       {
         Log.e("MicroMsg.JsApiStartRecordVoice", "fail:record_error");
-        this.nAz.j(this.okO, this.oAy.h("fail:record_error", null));
+        this.qqV.callback(this.ror, this.rEr.ZP("fail:record_error"));
         AppMethodBeat.o(45983);
         return;
       }
       HashMap localHashMap;
-      if (this.oAz)
+      if (this.rEs)
       {
         localHashMap = new HashMap(1);
-        i locali = new i();
-        if (this.nAz.getFileSystem().a(new q(this.filePath), "silk", true, locali) == m.nMR)
+        k localk = new k();
+        if (this.qqV.getFileSystem().a(new com.tencent.mm.vfs.u(this.filePath), "silk", true, localk) == r.qML)
         {
-          localHashMap.put("tempFilePath", locali.value);
-          this.nAz.j(this.okO, this.oAy.m("ok", localHashMap));
+          localHashMap.put("tempFilePath", (String)localk.value);
+          this.qqV.callback(this.ror, this.rEr.m("ok", localHashMap));
         }
       }
       for (;;)
       {
-        Log.i("MicroMsg.JsApiStartRecordVoice", "runInClientProcess, appId = %s, startRecordOk = %b", new Object[] { this.appId, Boolean.valueOf(this.oAz) });
-        JsApiStartRecordVoice.a(this.oAy, false);
+        Log.i("MicroMsg.JsApiStartRecordVoice", "runInClientProcess, appId = %s, startRecordOk = %b", new Object[] { this.appId, Boolean.valueOf(this.rEs) });
+        JsApiStartRecordVoice.a(this.rEr, false);
         AppMethodBeat.o(45983);
         return;
         Log.e("MicroMsg.JsApiStartRecordVoice", "AppBrandLocalMediaObject obj is null");
         localHashMap.put("tempFilePath", "");
-        this.nAz.j(this.okO, this.oAy.h("fail", null));
+        this.qqV.callback(this.ror, this.rEr.ZP("fail"));
       }
     }
     
@@ -299,16 +296,16 @@ public final class JsApiStartRecordVoice
       return 0;
     }
     
-    public final void f(Parcel paramParcel)
+    public final void h(Parcel paramParcel)
     {
       AppMethodBeat.i(45984);
-      this.okO = paramParcel.readInt();
+      this.ror = paramParcel.readInt();
       this.appId = paramParcel.readString();
       this.filePath = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.oAz = bool;
+        this.rEs = bool;
         this.duration = paramParcel.readInt();
         this.result = paramParcel.readInt();
         AppMethodBeat.o(45984);
@@ -319,10 +316,10 @@ public final class JsApiStartRecordVoice
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45985);
-      paramParcel.writeInt(this.okO);
+      paramParcel.writeInt(this.ror);
       paramParcel.writeString(this.appId);
       paramParcel.writeString(this.filePath);
-      if (this.oAz) {}
+      if (this.rEs) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
@@ -336,7 +333,7 @@ public final class JsApiStartRecordVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiStartRecordVoice
  * JD-Core Version:    0.7.0.1
  */

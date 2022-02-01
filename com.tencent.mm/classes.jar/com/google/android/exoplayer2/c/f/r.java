@@ -9,19 +9,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class r
   implements v
 {
-  private int aZT;
-  private final q bbO;
-  private final m bbP;
-  private int bbQ;
-  private boolean bbR;
-  private boolean bbS;
+  private int cTO;
+  private final q cVJ;
+  private final m cVK;
+  private int cVL;
+  private boolean cVM;
+  private boolean cVN;
   
   public r(q paramq)
   {
     AppMethodBeat.i(92279);
-    this.bbO = paramq;
-    this.bbP = new m(32);
+    this.cVJ = paramq;
+    this.cVK = new m(32);
     AppMethodBeat.o(92279);
+  }
+  
+  public final void Si()
+  {
+    this.cVN = true;
   }
   
   public final void a(m paramm, boolean paramBoolean)
@@ -30,78 +35,78 @@ public final class r
     if (paramBoolean) {}
     for (int i = paramm.readUnsignedByte() + paramm.position;; i = -1)
     {
-      if (this.bbS)
+      if (this.cVN)
       {
         if (!paramBoolean)
         {
           AppMethodBeat.o(92281);
           return;
         }
-        this.bbS = false;
+        this.cVN = false;
         paramm.setPosition(i);
-        this.aZT = 0;
+        this.cTO = 0;
       }
-      while (paramm.vg() > 0) {
-        if (this.aZT < 3)
+      while (paramm.UF() > 0) {
+        if (this.cTO < 3)
         {
-          if (this.aZT == 0)
+          if (this.cTO == 0)
           {
             i = paramm.readUnsignedByte();
             paramm.setPosition(paramm.position - 1);
             if (i == 255)
             {
-              this.bbS = true;
+              this.cVN = true;
               AppMethodBeat.o(92281);
               return;
             }
           }
-          i = Math.min(paramm.vg(), 3 - this.aZT);
-          paramm.readBytes(this.bbP.data, this.aZT, i);
-          this.aZT = (i + this.aZT);
-          if (this.aZT == 3)
+          i = Math.min(paramm.UF(), 3 - this.cTO);
+          paramm.readBytes(this.cVK.data, this.cTO, i);
+          this.cTO = (i + this.cTO);
+          if (this.cTO == 3)
           {
-            this.bbP.fs(3);
-            this.bbP.fu(1);
-            i = this.bbP.readUnsignedByte();
-            int j = this.bbP.readUnsignedByte();
+            this.cVK.iF(3);
+            this.cVK.iH(1);
+            i = this.cVK.readUnsignedByte();
+            int j = this.cVK.readUnsignedByte();
             if ((i & 0x80) != 0) {}
             for (paramBoolean = true;; paramBoolean = false)
             {
-              this.bbR = paramBoolean;
-              this.bbQ = (((i & 0xF) << 8 | j) + 3);
-              if (this.bbP.vh() >= this.bbQ) {
+              this.cVM = paramBoolean;
+              this.cVL = (((i & 0xF) << 8 | j) + 3);
+              if (this.cVK.UG() >= this.cVL) {
                 break;
               }
-              byte[] arrayOfByte = this.bbP.data;
-              this.bbP.fs(Math.min(4098, Math.max(this.bbQ, arrayOfByte.length * 2)));
-              System.arraycopy(arrayOfByte, 0, this.bbP.data, 0, 3);
+              byte[] arrayOfByte = this.cVK.data;
+              this.cVK.iF(Math.min(4098, Math.max(this.cVL, arrayOfByte.length * 2)));
+              System.arraycopy(arrayOfByte, 0, this.cVK.data, 0, 3);
               break;
             }
           }
         }
         else
         {
-          i = Math.min(paramm.vg(), this.bbQ - this.aZT);
-          paramm.readBytes(this.bbP.data, this.aZT, i);
-          this.aZT = (i + this.aZT);
-          if (this.aZT == this.bbQ)
+          i = Math.min(paramm.UF(), this.cVL - this.cTO);
+          paramm.readBytes(this.cVK.data, this.cTO, i);
+          this.cTO = (i + this.cTO);
+          if (this.cTO == this.cVL)
           {
-            if (this.bbR)
+            if (this.cVM)
             {
-              if (x.m(this.bbP.data, this.bbQ, -1) != 0)
+              if (x.m(this.cVK.data, this.cVL, -1) != 0)
               {
-                this.bbS = true;
+                this.cVN = true;
                 AppMethodBeat.o(92281);
                 return;
               }
-              this.bbP.fs(this.bbQ - 4);
+              this.cVK.iF(this.cVL - 4);
             }
             for (;;)
             {
-              this.bbO.t(this.bbP);
-              this.aZT = 0;
+              this.cVJ.t(this.cVK);
+              this.cTO = 0;
               break;
-              this.bbP.fs(this.bbQ);
+              this.cVK.iF(this.cVL);
             }
           }
         }
@@ -114,19 +119,14 @@ public final class r
   public final void a(u paramu, g paramg, v.d paramd)
   {
     AppMethodBeat.i(92280);
-    this.bbO.a(paramu, paramg, paramd);
-    this.bbS = true;
+    this.cVJ.a(paramu, paramg, paramd);
+    this.cVN = true;
     AppMethodBeat.o(92280);
-  }
-  
-  public final void sF()
-  {
-    this.bbS = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.r
  * JD-Core Version:    0.7.0.1
  */

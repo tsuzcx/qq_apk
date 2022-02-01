@@ -1,73 +1,61 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.model.z;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.plugin.findersdk.b.c;
-import com.tencent.mm.protocal.protobuf.bew;
-import com.tencent.mm.protocal.protobuf.bex;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.cyn;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.jh;
-import java.util.LinkedList;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.bax;
+import com.tencent.mm.protocal.protobuf.bay;
+import com.tencent.mm.protocal.protobuf.etl;
+import com.tencent.mm.protocal.protobuf.kd;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderModMentioned;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderModMentionedResponse;", "opType", "", "objectId", "", "userName", "", "mentionList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModMentionedInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(IJLjava/lang/String;Ljava/util/LinkedList;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getObjectId", "()J", "getOpType", "()I", "getUserName", "()Ljava/lang/String;", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetShareProductInfo;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetShareProductInfoResponse;", "finderUsername", "", "objectId", "", "productId", "shareScene", "", "(Ljava/lang/String;JJI)V", "TAG", "getFinderUsername", "()Ljava/lang/String;", "getObjectId", "()J", "getProductId", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetShareProductInfoRequest;", "getShareScene", "()I", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class x
-  extends c<bex>
+  extends c<bay>
 {
-  public static final a xbl;
-  private final int opType;
-  private final String userName;
-  private final long xbk;
+  private final long Azu;
+  private bax Azv;
+  private final String TAG;
+  private final String finderUsername;
+  private final long hKN;
+  private final int shareScene;
   
-  static
+  public x(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(282996);
-    xbl = new a((byte)0);
-    AppMethodBeat.o(282996);
+    super(null);
+    AppMethodBeat.i(336484);
+    this.finderUsername = paramString;
+    this.hKN = paramLong1;
+    this.Azu = paramLong2;
+    this.shareScene = paramInt;
+    this.TAG = "Finder.CgiFinderGetShareProductInfo";
+    this.Azv = new bax();
+    paramString = this.Azv;
+    Object localObject = bi.ABn;
+    paramString.YIY = bi.a(null);
+    this.Azv.YIZ = this.finderUsername;
+    this.Azv.object_id = this.hKN;
+    this.Azv.DVk = this.Azu;
+    this.Azv.scene = this.shareScene;
+    paramString = new c.a();
+    paramString.otE = ((a)this.Azv);
+    localObject = new bay();
+    ((bay)localObject).setBaseResponse(new kd());
+    ((bay)localObject).getBaseResponse().akjO = new etl();
+    paramString.otF = ((a)localObject);
+    paramString.uri = "/cgi-bin/micromsg-bin/findergetshareproductinfo";
+    paramString.funcId = 4117;
+    c(paramString.bEF());
+    Log.i(this.TAG, "init finderUsername:" + this.finderUsername + ", objectId:" + d.hF(this.hKN) + ", productId:" + d.hF(this.Azu) + ", shareScene:" + this.shareScene);
+    AppMethodBeat.o(336484);
   }
-  
-  private x(int paramInt, long paramLong, String paramString, LinkedList<cyn> paramLinkedList, bid parambid)
-  {
-    AppMethodBeat.i(282994);
-    this.opType = paramInt;
-    this.xbk = paramLong;
-    this.userName = paramString;
-    d.a locala = new d.a();
-    bew localbew = new bew();
-    locala.c((a)localbew);
-    localbew.fSo = this.opType;
-    String str = this.userName;
-    paramString = str;
-    if (str == null) {
-      paramString = z.bdh();
-    }
-    localbew.finderUsername = paramString;
-    localbew.SPJ.add(Long.valueOf(this.xbk));
-    paramString = ao.xcj;
-    localbew.RLM = ao.a(parambid);
-    if (paramLinkedList != null) {
-      localbew.SPK = paramLinkedList;
-    }
-    paramString = new bex();
-    paramString.setBaseResponse(new jh());
-    paramString.getBaseResponse().Tef = new eaf();
-    locala.d((a)paramString);
-    locala.TW("/cgi-bin/micromsg-bin/findermodmentioned");
-    locala.vD(6205);
-    c(locala.bgN());
-    AppMethodBeat.o(282994);
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderModMentioned$Companion;", "", "()V", "OP_TYPE_ADD", "", "OP_TYPE_DELETE", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.x
  * JD-Core Version:    0.7.0.1
  */

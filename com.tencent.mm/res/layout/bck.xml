@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:MultitalkControlIconStyle="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout android:layout_gravity="start" android:id="@id/for" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="47.0dip" MultitalkControlIconStyle:forbiddenDrawable="@raw/icon_filled_mike_off" MultitalkControlIconStyle:iconBg="@drawable/ajo" MultitalkControlIconStyle:iconDrawable="@raw/icons_filled_mike" MultitalkControlIconStyle:iconText="@string/f6i" MultitalkControlIconStyle:initStatus="true" />
-    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout android:layout_gravity="center" android:id="@id/fog" android:layout_width="wrap_content" android:layout_height="wrap_content" MultitalkControlIconStyle:forbiddenDrawable="@raw/icons_filled_volume_off" MultitalkControlIconStyle:iconBg="@drawable/ajn" MultitalkControlIconStyle:iconDrawable="@raw/icons_filled_volume_up" MultitalkControlIconStyle:iconText="@string/f74" />
-    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout android:layout_gravity="end" android:id="@id/fpf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="47.0dip" MultitalkControlIconStyle:forbiddenDrawable="@raw/icon_filled_video_call_off" MultitalkControlIconStyle:iconBg="@drawable/ajn" MultitalkControlIconStyle:iconDrawable="@raw/icons_filled_video_call" MultitalkControlIconStyle:iconText="@string/f5i" />
-</LinearLayout>
+<CheckBox android:background="@drawable/agl" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:button="@null"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.cast;
 
 public final class b$a
 {
-  public static final int anim_not_change = 2130771986;
-  public static final int push_up_in = 2130772130;
+  public static final int anim_not_change = 2130771992;
+  public static final int push_up_in = 2130772142;
 }
 
 

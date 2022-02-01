@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class LibraryLoader
 {
   private static String[] sLibrarySearchPaths = null;
+  private byte _hellAccFlag_;
   
   public static String[] getLibrarySearchPaths(Context paramContext)
   {
@@ -58,11 +59,11 @@ public class LibraryLoader
   
   public static void loadLibrary(Context paramContext, String paramString)
   {
+    int i = 0;
     AppMethodBeat.i(53152);
     paramContext = getLibrarySearchPaths(paramContext);
     String str1 = System.mapLibraryName(paramString);
     int j = paramContext.length;
-    int i = 0;
     while (i < j)
     {
       String str2 = paramContext[i];
@@ -84,7 +85,11 @@ public class LibraryLoader
     }
     try
     {
-      System.loadLibrary(paramString);
+      paramContext = new com.tencent.mm.hellhoundlib.b.a().cG(paramString);
+      paramString = new Object();
+      com.tencent.mm.hellhoundlib.a.a.b(paramString, paramContext.aYi(), "com/tencent/smtt/export/external/LibraryLoader", "loadLibrary", "(Landroid/content/Context;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+      System.loadLibrary((String)paramContext.sb(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/smtt/export/external/LibraryLoader", "loadLibrary", "(Landroid/content/Context;Ljava/lang/String;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
       AppMethodBeat.o(53152);
       return;
     }
@@ -96,7 +101,7 @@ public class LibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.export.external.LibraryLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.opengl.p;
+import com.tencent.liteav.network.e;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioRawDataListener;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener;
@@ -29,6 +30,13 @@ public abstract class n
   }
   
   public abstract int a(String paramString, int paramInt);
+  
+  public abstract int a(String paramString, int paramInt, e parame);
+  
+  public int a(String paramString, e parame)
+  {
+    return -1;
+  }
   
   public abstract int a(boolean paramBoolean);
   
@@ -98,17 +106,17 @@ public abstract class n
     TXCLog.w("TXIPlayer", "autoPlay not implement");
   }
   
-  public void e(int paramInt)
-  {
-    TXCLog.w("TXIPlayer", "seek not support");
-  }
-  
   public boolean e()
   {
     return false;
   }
   
   public void f() {}
+  
+  public void f(int paramInt)
+  {
+    TXCLog.w("TXIPlayer", "seek not support");
+  }
   
   public abstract int h();
   
@@ -119,7 +127,7 @@ public abstract class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.n
  * JD-Core Version:    0.7.0.1
  */

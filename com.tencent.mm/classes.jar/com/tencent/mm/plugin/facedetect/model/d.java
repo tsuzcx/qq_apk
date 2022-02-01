@@ -9,32 +9,32 @@ import java.util.List;
 public final class d
 {
   private static final Object mLock;
-  private static volatile d wwy;
-  private List<a> wwz = null;
+  private static volatile d zSE;
+  private List<a> zSF = null;
   
   static
   {
     AppMethodBeat.i(103701);
-    wwy = null;
+    zSE = null;
     mLock = new Object();
     AppMethodBeat.o(103701);
   }
   
-  public static final d dhV()
+  public static final d dOG()
   {
     AppMethodBeat.i(103697);
-    if (wwy == null) {
+    if (zSE == null) {
       synchronized (mLock)
       {
-        if (wwy == null) {
-          wwy = new d();
+        if (zSE == null) {
+          zSE = new d();
         }
-        d locald = wwy;
+        d locald = zSE;
         AppMethodBeat.o(103697);
         return locald;
       }
     }
-    ??? = wwy;
+    ??? = zSE;
     AppMethodBeat.o(103697);
     return ???;
   }
@@ -62,7 +62,7 @@ public final class d
     //   30: aload_2
     //   31: monitorenter
     //   32: aload_0
-    //   33: getfield 39	com/tencent/mm/plugin/facedetect/model/d:wwz	Ljava/util/List;
+    //   33: getfield 39	com/tencent/mm/plugin/facedetect/model/d:zSF	Ljava/util/List;
     //   36: ifnonnull +18 -> 54
     //   39: aload_0
     //   40: new 57	java/util/ArrayList
@@ -70,9 +70,9 @@ public final class d
     //   44: iconst_5
     //   45: invokespecial 59	java/util/ArrayList:<init>	(I)V
     //   48: invokestatic 65	java/util/Collections:synchronizedList	(Ljava/util/List;)Ljava/util/List;
-    //   51: putfield 39	com/tencent/mm/plugin/facedetect/model/d:wwz	Ljava/util/List;
+    //   51: putfield 39	com/tencent/mm/plugin/facedetect/model/d:zSF	Ljava/util/List;
     //   54: aload_0
-    //   55: getfield 39	com/tencent/mm/plugin/facedetect/model/d:wwz	Ljava/util/List;
+    //   55: getfield 39	com/tencent/mm/plugin/facedetect/model/d:zSF	Ljava/util/List;
     //   58: new 6	com/tencent/mm/plugin/facedetect/model/d$a
     //   61: dup
     //   62: aload_0
@@ -117,8 +117,8 @@ public final class d
     AppMethodBeat.i(103700);
     synchronized (mLock)
     {
-      if (this.wwz != null) {
-        this.wwz.remove(new a(paramb));
+      if (this.zSF != null) {
+        this.zSF.remove(new a(paramb));
       }
       AppMethodBeat.o(103700);
       return;
@@ -131,7 +131,7 @@ public final class d
     synchronized (mLock)
     {
       Log.v("MicroMsg.FaceCameraDataCallbackHolder", "hy: publish data:".concat(String.valueOf(paramArrayOfByte)));
-      if ((this.wwz == null) || (this.wwz.size() == 0))
+      if ((this.zSF == null) || (this.zSF.size() == 0))
       {
         Log.w("MicroMsg.FaceCameraDataCallbackHolder", "hy: nothing's listening to preview data");
         AppMethodBeat.o(103699);
@@ -143,14 +143,14 @@ public final class d
         AppMethodBeat.o(103699);
         return;
       }
-      Iterator localIterator = this.wwz.iterator();
+      Iterator localIterator = this.zSF.iterator();
       if (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         int i = paramArrayOfByte.length;
-        locala.data = ((byte[])locala.wwA.dhW().h(Integer.valueOf(i)));
+        locala.data = ((byte[])locala.zSG.dOH().h(Integer.valueOf(i)));
         System.arraycopy(paramArrayOfByte, 0, locala.data, 0, i);
-        locala.wwA.bQ(locala.data);
+        locala.zSG.bQ(locala.data);
       }
     }
     AppMethodBeat.o(103699);
@@ -158,13 +158,13 @@ public final class d
   
   public final void clear()
   {
-    AppMethodBeat.i(193897);
+    AppMethodBeat.i(271886);
     synchronized (mLock)
     {
-      if (this.wwz != null) {
-        this.wwz.clear();
+      if (this.zSF != null) {
+        this.zSF.clear();
       }
-      AppMethodBeat.o(193897);
+      AppMethodBeat.o(271886);
       return;
     }
   }
@@ -172,23 +172,23 @@ public final class d
   final class a
   {
     byte[] data;
-    d.b wwA;
+    d.b zSG;
     
     a(d.b paramb)
     {
-      this.wwA = paramb;
+      this.zSG = paramb;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(194625);
+      AppMethodBeat.i(271890);
       if (!(paramObject instanceof a))
       {
-        AppMethodBeat.o(194625);
+        AppMethodBeat.o(271890);
         return false;
       }
-      boolean bool = this.wwA.equals(((a)paramObject).wwA);
-      AppMethodBeat.o(194625);
+      boolean bool = this.zSG.equals(((a)paramObject).zSG);
+      AppMethodBeat.o(271890);
       return bool;
     }
   }
@@ -197,12 +197,12 @@ public final class d
   {
     public abstract void bQ(byte[] paramArrayOfByte);
     
-    public abstract a<byte[]> dhW();
+    public abstract a<byte[]> dOH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.d
  * JD-Core Version:    0.7.0.1
  */

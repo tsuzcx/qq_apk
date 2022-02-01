@@ -382,14 +382,14 @@ public class CommonPlayer
   
   public float getSpeed()
   {
-    AppMethodBeat.i(244443);
+    AppMethodBeat.i(212362);
     float f = 1.0F;
     if (this.mAudioPlayer != null) {
       f = this.mAudioPlayer.getSpeed();
     }
     for (;;)
     {
-      AppMethodBeat.o(244443);
+      AppMethodBeat.o(212362);
       return f;
       if (this.mSpeedToSet != null) {
         f = this.mSpeedToSet.floatValue();
@@ -552,7 +552,7 @@ public class CommonPlayer
       public IDataSource createDataSource()
       {
         AppMethodBeat.i(76575);
-        CacheDataSource localCacheDataSource = CacheDataSource.Factory.createFromUriLoader(paramUriLoader);
+        CacheDataSource localCacheDataSource = CacheDataSource.Factory.createFromUriLoader(paramUriLoader, CommonPlayer.this.mCacheDir);
         AppMethodBeat.o(76575);
         return localCacheDataSource;
       }
@@ -592,14 +592,18 @@ public class CommonPlayer
     File localFile;
     try
     {
-      localFile = File.createTempFile("mediaHttpCommonPlayer", "tmp");
-      localFile.delete();
-      if (!localFile.createNewFile())
+      if ((this.mCacheDir != null) && (!this.mCacheDir.isEmpty())) {}
+      for (localFile = File.createTempFile("mediaHttpCommonPlayer", "tmp", new File(this.mCacheDir));; localFile = File.createTempFile("mediaHttpCommonPlayer", "tmp"))
       {
+        localFile.delete();
+        if (localFile.createNewFile()) {
+          break;
+        }
         onError(90, 103, 0);
         AppMethodBeat.o(76456);
         return;
       }
+      str = localFile.getAbsolutePath();
     }
     catch (IOException paramIMediaHTTPService)
     {
@@ -607,7 +611,7 @@ public class CommonPlayer
       AppMethodBeat.o(76456);
       return;
     }
-    String str = localFile.getAbsolutePath();
+    String str;
     paramIMediaHTTPService = new CacheDataSource(new HttpDataSource(paramUri, null, paramIMediaHTTPService), new FileDataSource(str), new FileDataSink(str), insureEventLooper());
     this.openedResources = new OpenedResources(null);
     OpenedResources.access$602(this.openedResources, localFile);
@@ -1016,7 +1020,7 @@ public class CommonPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.CommonPlayer
  * JD-Core Version:    0.7.0.1
  */

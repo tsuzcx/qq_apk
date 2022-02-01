@@ -12,7 +12,7 @@ final class VcardContactUI$3
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(52004);
-    this.IUw.finish();
+    this.Pdo.finish();
     AppMethodBeat.o(52004);
     return true;
   }

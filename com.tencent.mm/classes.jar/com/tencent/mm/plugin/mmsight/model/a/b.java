@@ -7,38 +7,38 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  boolean ARi;
-  byte[] FaK;
-  byte[] FaL;
-  int FaM;
-  int FaN;
-  int FaO;
-  boolean FaP;
+  boolean Gtm;
+  byte[] KWt;
+  byte[] KWu;
+  int KWv;
+  int KWw;
+  int KWx;
+  boolean KWy;
   int colorFormat;
-  int fSM;
+  int hYK;
+  int nxO;
+  int nxP;
   int srcHeight;
   int srcWidth;
-  int targetHeight;
-  int targetWidth;
   long tick;
   
   public b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean1, boolean paramBoolean2, int paramInt6, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(89471);
-    this.FaM = 0;
-    this.FaN = 0;
+    this.KWv = 0;
+    this.KWw = 0;
     this.tick = Util.currentTicks();
     this.colorFormat = paramInt3;
-    this.targetWidth = paramInt4;
-    this.targetHeight = paramInt5;
+    this.nxO = paramInt4;
+    this.nxP = paramInt5;
     this.srcWidth = paramInt1;
     this.srcHeight = paramInt2;
-    this.FaP = paramBoolean2;
-    this.ARi = paramBoolean1;
-    this.fSM = paramInt6;
-    this.FaK = paramArrayOfByte;
-    this.FaM = paramArrayOfByte.length;
-    this.FaL = j.FbH.k(Integer.valueOf(paramInt4 * paramInt5 * 3 / 2));
+    this.KWy = paramBoolean2;
+    this.Gtm = paramBoolean1;
+    this.hYK = paramInt6;
+    this.KWt = paramArrayOfByte;
+    this.KWv = paramArrayOfByte.length;
+    this.KWu = j.KXq.m(Integer.valueOf(paramInt4 * paramInt5 * 3 / 2));
     AppMethodBeat.o(89471);
   }
   

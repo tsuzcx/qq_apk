@@ -7,31 +7,31 @@ import java.util.HashMap;
 public abstract interface d<T>
   extends Cursor
 {
-  public abstract void EV(boolean paramBoolean);
+  public abstract void KF(boolean paramBoolean);
   
   public abstract void a(f.a parama);
   
   public abstract boolean a(Object paramObject, a parama);
   
-  public abstract boolean asV(int paramInt);
+  public abstract boolean azm(int paramInt);
   
-  public abstract a asW(int paramInt);
+  public abstract a azn(int paramInt);
   
-  public abstract void asX(int paramInt);
+  public abstract void fi(int paramInt);
   
-  public abstract boolean eh(Object paramObject);
+  public abstract boolean gF(Object paramObject);
   
-  public abstract a ei(Object paramObject);
+  public abstract a gG(Object paramObject);
   
-  public abstract SparseArray<T>[] hBN();
+  public abstract SparseArray<T>[] jdT();
   
-  public abstract HashMap<Object, T> hBO();
+  public abstract HashMap<Object, T> jdU();
   
-  public abstract boolean hBP();
+  public abstract boolean jdV();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.storagebase.a.d
  * JD-Core Version:    0.7.0.1
  */

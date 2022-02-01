@@ -2,247 +2,392 @@ package com.tencent.mm.plugin.gamelife;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteException;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.fq;
+import com.tencent.mm.autogen.mmdata.rpt.hl;
 import com.tencent.mm.kernel.f.c;
-import com.tencent.mm.model.af.a;
-import com.tencent.mm.model.af.b;
 import com.tencent.mm.plugin.gamelife.a.b.a;
-import com.tencent.mm.plugin.gamelife.a.b.b;
-import com.tencent.mm.plugin.gamelife.a.b.c;
-import com.tencent.mm.plugin.gamelife.a.f.a;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.model.app.l;
+import com.tencent.mm.pluginsdk.model.app.l.a;
 import com.tencent.mm.pluginsdk.model.app.l.b;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.j.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 import com.tencent.mm.sdk.storage.MStorageEventData;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bv.a;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.ui.f.e;
-import com.tencent.mm.ui.widget.a.g.a;
-import com.tencent.mm.vfs.ab;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.f.f;
+import com.tencent.mm.vfs.af;
+import com.tencent.mm.vfs.y;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import kotlin.a.ae;
-import kotlin.a.j;
-import kotlin.g.b.aa.a;
-import kotlin.g.b.aa.f;
-import kotlin.g.b.af;
-import kotlin.g.b.p;
-import kotlin.o;
-import kotlin.t;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
+import kotlin.g.b.ah.f;
+import kotlin.g.b.am;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.r;
+import kotlin.v;
 import org.json.JSONObject;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/PluginGameLife;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/gamelife/IPluginGameLife;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "Lcom/tencent/mm/kernel/api/bucket/ICollectDBFactoryBucket;", "()V", "appMessageInterceptor", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;", "getAppMessageInterceptor", "()Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;", "appMessageInterceptor$delegate", "Lkotlin/Lazy;", "appMessageStorage", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageStorage;", "avatarPath", "", "getAvatarPath", "()Ljava/lang/String;", "setAvatarPath", "(Ljava/lang/String;)V", "cacheDBPath", "contactService", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;", "getContactService", "()Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;", "contactService$delegate", "contactStorage", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactStorage;", "conversationStorage", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationStorage;", "conversationUpdateCallback", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationUpdateCallback;", "getConversationUpdateCallback", "()Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationUpdateCallback;", "conversationUpdateCallback$delegate", "dataDB", "Lcom/tencent/mm/storagebase/SqliteDB;", "gameChatUnreadState", "", "Ljava/lang/Boolean;", "getContactInterceptor", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeGetContactInterceptor;", "getGetContactInterceptor", "()Lcom/tencent/mm/plugin/gamelife/contact/GameLifeGetContactInterceptor;", "getContactInterceptor$delegate", "lock", "", "messageStorage", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeMessageStorage;", "sessionInfoStorage", "Lcom/tencent/mm/plugin/gamelife/session/GameLifeSessionInfoStorage;", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "checkSessionIdAndContact", "", "selfUsername", "talker", "scene", "", "extInfo", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sessionId", "clearDB", "collectDatabaseFactory", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "configure", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "dealBlackList", "context", "Landroid/content/Context;", "isBlackList", "Lcom/tencent/mm/plugin/appbrand/util/Pointer;", "isAssociateWithWAGame", "Lcom/tencent/mm/plugin/gamelife/IPluginGameLife$BlackListSetCallback;", "dependency", "enterChattingUI", "enterExpose", "intent", "Landroid/content/Intent;", "enterGameLifeProfileUI", "outerUserName", "enterSendGift", "execute", "getAppMessageStorage", "getContactStorage", "getConversationStorage", "getDB", "getMessageStorage", "getSessionInfoStorage", "initDB", "initGameLifeSingleChatInfoUI", "Lcom/tencent/mm/plugin/gamelife/IPluginGameLife$BlackListAssociateCallback;", "jumpToGameLifeSingleChatInfoUIReport", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "reportChattingDetail", "pos", "actionId", "", "selfUserName", "actionStatus", "reportGameChatUnreadState", "reportSingleChatInfoUIDetail", "dealWaGameAccountTogether", "accountType", "associate", "(IJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Boolean;)V", "resetDB", "showGameLifeDialog", "userName", "sessionInfo", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfo;", "testEnterChattingUI", "Companion", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/PluginGameLife;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/gamelife/IPluginGameLife;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "Lcom/tencent/mm/kernel/api/bucket/ICollectDBFactoryBucket;", "()V", "appMessageInterceptor", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;", "getAppMessageInterceptor", "()Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageInterceptor;", "appMessageInterceptor$delegate", "Lkotlin/Lazy;", "appMessageStorage", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeAppMessageStorage;", "avatarPath", "", "getAvatarPath", "()Ljava/lang/String;", "setAvatarPath", "(Ljava/lang/String;)V", "cacheDBPath", "contactService", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;", "getContactService", "()Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;", "contactService$delegate", "contactStorage", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactStorage;", "conversationStorage", "Lcom/tencent/mm/plugin/gamelife/conversation/GameLifeConversationStorage;", "dataDB", "Lcom/tencent/mm/storagebase/SqliteDB;", "gameChatUnreadState", "", "Ljava/lang/Boolean;", "lock", "", "messageStorage", "Lcom/tencent/mm/plugin/gamelife/message/GameLifeMessageStorage;", "privateMsgConfig", "Lcom/tencent/mm/plugin/gamelife/config/GameLifeMsgConfig;", "getPrivateMsgConfig", "()Lcom/tencent/mm/plugin/gamelife/config/GameLifeMsgConfig;", "privateMsgConfig$delegate", "sessionInfoStorage", "Lcom/tencent/mm/plugin/gamelife/session/GameLifeSessionInfoStorage;", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "checkSessionIdAndContact", "", "selfUsername", "talker", "scene", "", "extInfo", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "sessionId", "clearDB", "collectDatabaseFactory", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "configure", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "dealBlackList", "context", "Landroid/content/Context;", "isBlackList", "Lcom/tencent/mm/plugin/appbrand/util/Pointer;", "isAssociateWithWAGame", "Lcom/tencent/mm/plugin/gamelife/IPluginGameLife$BlackListSetCallback;", "dependency", "enterChattingUI", "enterExpose", "intent", "Landroid/content/Intent;", "enterGameLifeProfileUI", "outerUserName", "enterSendGift", "execute", "getAppMessageStorage", "getContactStorage", "getConversationStorage", "getDB", "getMessageStorage", "getSessionInfoStorage", "initDB", "initGameLifeSingleChatInfoUI", "Lcom/tencent/mm/plugin/gamelife/IPluginGameLife$BlackListAssociateCallback;", "jumpToGameLifeSingleChatInfoUIReport", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "reportChattingDetail", "pos", "actionId", "", "selfUserName", "actionStatus", "reportGameChatUnreadState", "reportSingleChatInfoUIDetail", "dealWaGameAccountTogether", "accountType", "associate", "(IJLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Boolean;)V", "resetDB", "showGameLifeDialog", "userName", "sessionInfo", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfo;", "testEnterChattingUI", "Companion", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class PluginGameLife
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.c, c
 {
-  private static final String DeS = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
-  private static final String DeT = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
-  public static final PluginGameLife.a DeU;
-  private String CrS;
-  private final MStorage.IOnStorageChange Dbi;
-  private final kotlin.f DeJ;
-  private final kotlin.f DeK;
-  private final kotlin.f DeL;
-  private com.tencent.mm.plugin.gamelife.d.c DeM;
-  private com.tencent.mm.plugin.gamelife.j.c DeN;
-  private com.tencent.mm.plugin.gamelife.e.e DeO;
-  private com.tencent.mm.plugin.gamelife.g.d DeP;
-  private com.tencent.mm.plugin.gamelife.g.c DeQ;
-  private Boolean DeR;
-  private com.tencent.mm.storagebase.h kcF;
+  public static final PluginGameLife.a IZa;
+  private static final String IZj;
+  private static final String IZk;
+  public String AmC;
+  private final kotlin.j Asq;
+  private final MStorage.IOnStorageChange IVw;
+  private final kotlin.j IZb;
+  private final kotlin.j IZc;
+  private com.tencent.mm.plugin.gamelife.e.c IZd;
+  private com.tencent.mm.plugin.gamelife.k.c IZe;
+  private com.tencent.mm.plugin.gamelife.f.e IZf;
+  private com.tencent.mm.plugin.gamelife.h.d IZg;
+  private com.tencent.mm.plugin.gamelife.h.c IZh;
+  private Boolean IZi;
+  private String Iem;
   private final byte[] lock;
-  public String wQa;
-  private final kotlin.f wVB;
+  private com.tencent.mm.storagebase.h mCN;
   
   static
   {
-    AppMethodBeat.i(203752);
-    DeU = new PluginGameLife.a((byte)0);
-    DeS = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
-    DeT = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
-    AppMethodBeat.o(203752);
+    AppMethodBeat.i(268043);
+    IZa = new PluginGameLife.a((byte)0);
+    IZj = "U1_BgAAHED13WDGBipLzICG_mkIR7gtkryaxyn7Ed4@gamelife";
+    IZk = "U1_BgAAHED13WDGBipLsjCl-jj_DtzKiu7ntwVX5oE@gamelife";
+    AppMethodBeat.o(268043);
   }
   
   public PluginGameLife()
   {
-    AppMethodBeat.i(203750);
+    AppMethodBeat.i(267757);
     this.lock = new byte[0];
-    this.DeJ = kotlin.g.ar((kotlin.g.a.a)PluginGameLife.l.Dfg);
-    this.DeK = kotlin.g.ar((kotlin.g.a.a)PluginGameLife.k.Dff);
-    this.wVB = kotlin.g.ar((kotlin.g.a.a)PluginGameLife.p.Dfp);
-    this.DeL = kotlin.g.ar((kotlin.g.a.a)PluginGameLife.b.DeV);
-    this.Dbi = ((MStorage.IOnStorageChange)new z(this));
-    AppMethodBeat.o(203750);
+    this.IZb = kotlin.k.cm((kotlin.g.a.a)c.IZm);
+    this.IZc = kotlin.k.cm((kotlin.g.a.a)PluginGameLife.b.IZl);
+    this.Asq = kotlin.k.cm((kotlin.g.a.a)PluginGameLife.g.IZx);
+    this.IVw = new PluginGameLife..ExternalSyntheticLambda6(this);
+    AppMethodBeat.o(267757);
   }
   
-  private final void checkSessionIdAndContact(String paramString1, String paramString2, int paramInt, com.tencent.mm.cd.b paramb, kotlin.g.a.b<? super String, x> paramb1)
+  private final void checkSessionIdAndContact(String paramString1, String paramString2, int paramInt, com.tencent.mm.bx.b paramb, kotlin.g.a.b<? super String, ah> paramb1)
   {
-    AppMethodBeat.i(203710);
+    AppMethodBeat.i(267784);
     AtomicInteger localAtomicInteger = new AtomicInteger(0);
     LinkedList localLinkedList = new LinkedList();
-    Runnable localRunnable = (Runnable)new PluginGameLife.e(localAtomicInteger, localLinkedList, paramb1);
-    ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).a(paramString1, paramString2, paramInt, paramb, (f.a)new PluginGameLife.c(localAtomicInteger, paramb1, localLinkedList, localRunnable));
-    ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a(j.listOf(new String[] { paramString1, paramString2 }), (b.c)new PluginGameLife.d(paramString1, paramString2, localRunnable, localAtomicInteger, paramb1));
-    AppMethodBeat.o(203710);
+    PluginGameLife..ExternalSyntheticLambda20 localExternalSyntheticLambda20 = new PluginGameLife..ExternalSyntheticLambda20(localAtomicInteger, localLinkedList, paramb1);
+    ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).a(paramString1, paramString2, paramInt, paramb, new PluginGameLife..ExternalSyntheticLambda5(localAtomicInteger, paramb1, localLinkedList, localExternalSyntheticLambda20));
+    ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a(p.listOf(new String[] { paramString1, paramString2 }), new PluginGameLife..ExternalSyntheticLambda4(paramString1, paramString2, localExternalSyntheticLambda20, localAtomicInteger, paramb1));
+    AppMethodBeat.o(267784);
   }
   
-  private final com.tencent.mm.plugin.gamelife.g.b getAppMessageInterceptor()
+  private static final void checkSessionIdAndContact$lambda-6(AtomicInteger paramAtomicInteger, LinkedList paramLinkedList, kotlin.g.a.b paramb)
   {
-    AppMethodBeat.i(203684);
-    com.tencent.mm.plugin.gamelife.g.b localb = (com.tencent.mm.plugin.gamelife.g.b)this.DeL.getValue();
-    AppMethodBeat.o(203684);
+    AppMethodBeat.i(267846);
+    s.u(paramAtomicInteger, "$finishedTask");
+    s.u(paramLinkedList, "$sessionId");
+    s.u(paramb, "$callback");
+    if (paramAtomicInteger.incrementAndGet() == 2)
+    {
+      Log.i("GameLife.PluginGameLife", s.X("checkSessionIdAndContact success: ", paramLinkedList.get(0)));
+      paramb.invoke(paramLinkedList.get(0));
+    }
+    AppMethodBeat.o(267846);
+  }
+  
+  private static final void checkSessionIdAndContact$lambda-7(AtomicInteger paramAtomicInteger, kotlin.g.a.b paramb, LinkedList paramLinkedList, Runnable paramRunnable, String paramString)
+  {
+    AppMethodBeat.i(267856);
+    s.u(paramAtomicInteger, "$finishedTask");
+    s.u(paramb, "$callback");
+    s.u(paramLinkedList, "$sessionId");
+    s.u(paramRunnable, "$whenFinish");
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      if (paramAtomicInteger.getAndSet(-1) < 0) {
+        break label115;
+      }
+      Log.e("GameLife.PluginGameLife", "checkSessionIdAndContact get session failed");
+      paramb.invoke(null);
+      AppMethodBeat.o(267856);
+      return;
+    }
+    paramLinkedList.add(paramString);
+    paramRunnable.run();
+    label115:
+    AppMethodBeat.o(267856);
+  }
+  
+  private static final void checkSessionIdAndContact$lambda-8(String paramString1, String paramString2, Runnable paramRunnable, AtomicInteger paramAtomicInteger, kotlin.g.a.b paramb, Map paramMap)
+  {
+    AppMethodBeat.i(267862);
+    s.u(paramString1, "$selfUsername");
+    s.u(paramString2, "$talker");
+    s.u(paramRunnable, "$whenFinish");
+    s.u(paramAtomicInteger, "$finishedTask");
+    s.u(paramb, "$callback");
+    paramString1 = (com.tencent.mm.plugin.gamelife.a.a)paramMap.get(paramString1);
+    if ((paramString1 != null) && (paramString1.isValid() == true))
+    {
+      i = 1;
+      if (i == 0) {
+        break label135;
+      }
+      paramString1 = (com.tencent.mm.plugin.gamelife.a.a)paramMap.get(paramString2);
+      if ((paramString1 == null) || (paramString1.isValid() != true)) {
+        break label129;
+      }
+    }
+    label129:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label135;
+      }
+      paramRunnable.run();
+      AppMethodBeat.o(267862);
+      return;
+      i = 0;
+      break;
+    }
+    label135:
+    if (paramAtomicInteger.getAndSet(-1) >= 0)
+    {
+      Log.e("GameLife.PluginGameLife", "checkSessionIdAndContact get contact failed");
+      paramb.invoke(null);
+    }
+    AppMethodBeat.o(267862);
+  }
+  
+  private static final String[] collectDatabaseFactory$lambda-20()
+  {
+    AppMethodBeat.i(267971);
+    Object localObject = com.tencent.mm.plugin.gamelife.e.c.Jbo;
+    localObject = com.tencent.mm.plugin.gamelife.e.c.dZh();
+    AppMethodBeat.o(267971);
+    return localObject;
+  }
+  
+  private static final String[] collectDatabaseFactory$lambda-21()
+  {
+    AppMethodBeat.i(267979);
+    Object localObject = com.tencent.mm.plugin.gamelife.k.c.JbS;
+    localObject = com.tencent.mm.plugin.gamelife.k.c.dZh();
+    AppMethodBeat.o(267979);
+    return localObject;
+  }
+  
+  private static final String[] collectDatabaseFactory$lambda-22()
+  {
+    AppMethodBeat.i(267987);
+    Object localObject = com.tencent.mm.plugin.gamelife.f.e.Jbw;
+    localObject = com.tencent.mm.plugin.gamelife.f.e.dZh();
+    AppMethodBeat.o(267987);
+    return localObject;
+  }
+  
+  private static final String[] collectDatabaseFactory$lambda-23()
+  {
+    AppMethodBeat.i(267993);
+    Object localObject = com.tencent.mm.plugin.gamelife.h.d.JbI;
+    localObject = com.tencent.mm.plugin.gamelife.h.d.dZh();
+    AppMethodBeat.o(267993);
+    return localObject;
+  }
+  
+  private static final String[] collectDatabaseFactory$lambda-24()
+  {
+    AppMethodBeat.i(267999);
+    Object localObject = com.tencent.mm.plugin.gamelife.h.c.JbH;
+    localObject = com.tencent.mm.plugin.gamelife.h.c.dZh();
+    AppMethodBeat.o(267999);
+    return localObject;
+  }
+  
+  private static final void enterChattingUI$lambda-5(ah.f paramf, Context paramContext)
+  {
+    AppMethodBeat.i(267842);
+    s.u(paramf, "$loadingDialog");
+    s.u(paramContext, "$context");
+    paramf.aqH = w.a(paramContext, (CharSequence)paramContext.getResources().getString(d.f.app_waiting), false, 0, PluginGameLife..ExternalSyntheticLambda0.INSTANCE);
+    AppMethodBeat.o(267842);
+  }
+  
+  private static final void enterChattingUI$lambda-5$lambda-4(DialogInterface paramDialogInterface) {}
+  
+  private final com.tencent.mm.plugin.gamelife.h.b getAppMessageInterceptor()
+  {
+    AppMethodBeat.i(267761);
+    com.tencent.mm.plugin.gamelife.h.b localb = (com.tencent.mm.plugin.gamelife.h.b)this.IZc.getValue();
+    AppMethodBeat.o(267761);
     return localb;
   }
   
-  private final com.tencent.mm.plugin.gamelife.d.b getContactService()
+  private final com.tencent.mm.plugin.gamelife.e.b getContactService()
   {
-    AppMethodBeat.i(203680);
-    com.tencent.mm.plugin.gamelife.d.b localb = (com.tencent.mm.plugin.gamelife.d.b)this.DeK.getValue();
-    AppMethodBeat.o(203680);
+    AppMethodBeat.i(267759);
+    com.tencent.mm.plugin.gamelife.e.b localb = (com.tencent.mm.plugin.gamelife.e.b)this.IZb.getValue();
+    AppMethodBeat.o(267759);
     return localb;
-  }
-  
-  private final com.tencent.mm.plugin.gamelife.e.g getConversationUpdateCallback()
-  {
-    AppMethodBeat.i(203679);
-    com.tencent.mm.plugin.gamelife.e.g localg = (com.tencent.mm.plugin.gamelife.e.g)this.DeJ.getValue();
-    AppMethodBeat.o(203679);
-    return localg;
   }
   
   private final com.tencent.mm.storagebase.h getDB()
   {
-    AppMethodBeat.i(203698);
-    com.tencent.mm.storagebase.h localh = this.kcF;
-    if (localh == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203698);
+    AppMethodBeat.i(267778);
+    com.tencent.mm.storagebase.h localh = this.mCN;
+    s.checkNotNull(localh);
+    AppMethodBeat.o(267778);
     return localh;
   }
   
-  private final com.tencent.mm.plugin.gamelife.d.d getGetContactInterceptor()
+  private final com.tencent.mm.plugin.gamelife.d.a getPrivateMsgConfig()
   {
-    AppMethodBeat.i(203682);
-    com.tencent.mm.plugin.gamelife.d.d locald = (com.tencent.mm.plugin.gamelife.d.d)this.wVB.getValue();
-    AppMethodBeat.o(203682);
-    return locald;
+    AppMethodBeat.i(267765);
+    com.tencent.mm.plugin.gamelife.d.a locala = (com.tencent.mm.plugin.gamelife.d.a)this.Asq.getValue();
+    AppMethodBeat.o(267765);
+    return locala;
   }
   
   private final void initDB()
   {
-    AppMethodBeat.i(203691);
-    Object localObject1 = new StringBuilder();
-    Object localObject2 = com.tencent.mm.kernel.h.aHG();
-    p.j(localObject2, "MMKernel.storage()");
-    this.CrS = (((com.tencent.mm.kernel.f)localObject2).aHl() + "GameLife.db");
-    localObject2 = this.kcF;
-    localObject1 = localObject2;
-    if (localObject2 == null)
+    AppMethodBeat.i(267769);
+    this.Iem = s.X(com.tencent.mm.kernel.h.baE().cachePath, "GameLife.db");
+    com.tencent.mm.storagebase.h localh = this.mCN;
+    Object localObject = localh;
+    if (localh == null)
     {
-      localObject2 = (PluginGameLife)this;
-      localObject1 = new com.tencent.mm.storagebase.h();
-      String str = ((PluginGameLife)localObject2).CrS;
-      if (str == null) {
-        p.bGy("cacheDBPath");
-      }
-      if (!((com.tencent.mm.storagebase.h)localObject1).a(str, ((PluginGameLife)localObject2).collectDatabaseFactory(), true))
+      PluginGameLife localPluginGameLife = (PluginGameLife)this;
+      localh = new com.tencent.mm.storagebase.h();
+      String str = localPluginGameLife.Iem;
+      localObject = str;
+      if (str == null)
       {
-        localObject1 = (Throwable)new SQLiteException("GameLife db init failed");
-        AppMethodBeat.o(203691);
-        throw ((Throwable)localObject1);
+        s.bIx("cacheDBPath");
+        localObject = null;
       }
+      if (!localh.a((String)localObject, localPluginGameLife.collectDatabaseFactory(), true))
+      {
+        localObject = new SQLiteException("GameLife db init failed");
+        AppMethodBeat.o(267769);
+        throw ((Throwable)localObject);
+      }
+      localObject = localh;
     }
-    this.kcF = ((com.tencent.mm.storagebase.h)localObject1);
-    AppMethodBeat.o(203691);
+    this.mCN = ((com.tencent.mm.storagebase.h)localObject);
+    AppMethodBeat.o(267769);
   }
   
-  private final void reportChattingDetail(final int paramInt, final long paramLong, String paramString1, final String paramString2, final String paramString3, String paramString4)
+  private static final void onAccountInitialized$lambda-1(PluginGameLife paramPluginGameLife)
   {
-    AppMethodBeat.i(203742);
-    com.tencent.mm.cw.g.ijP().i((com.tencent.mm.vending.c.a)new s(paramString1, paramString2, paramString3, paramInt, paramLong, paramString4)).ieF();
-    AppMethodBeat.o(203742);
+    AppMethodBeat.i(267833);
+    s.u(paramPluginGameLife, "this$0");
+    paramPluginGameLife.reportGameChatUnreadState();
+    AppMethodBeat.o(267833);
+  }
+  
+  private final void reportChattingDetail(int paramInt, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(267820);
+    com.tencent.mm.cp.g.jPX().i(new PluginGameLife..ExternalSyntheticLambda17(paramString1, paramString2, paramString3, paramInt, paramLong, paramString4)).jJM();
+    AppMethodBeat.o(267820);
+  }
+  
+  private static final Void reportChattingDetail$lambda-19(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, Void paramVoid)
+  {
+    AppMethodBeat.i(267966);
+    s.u(paramString1, "$selfUserName");
+    paramVoid = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString1);
+    if ((paramString2 != null) && (paramString3 != null))
+    {
+      com.tencent.mm.plugin.gamelife.a.a locala = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString3);
+      if (locala != null)
+      {
+        com.tencent.mm.game.report.c.a locala1 = com.tencent.mm.game.report.c.mtx;
+        com.tencent.mm.game.report.c.a.a(paramInt, paramLong, paramString2, paramVoid.fIh(), paramString1, locala.fIh(), paramString3, paramString4);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(267966);
+      return null;
+      paramString2 = com.tencent.mm.game.report.c.mtx;
+      com.tencent.mm.game.report.c.a.a(paramInt, paramLong, "", paramVoid.fIh(), paramString1, 0L, "", paramString4);
+    }
   }
   
   private final void reportGameChatUnreadState()
   {
     try
     {
-      AppMethodBeat.i(203749);
-      if (this.DeR != null) {
-        break label67;
+      AppMethodBeat.i(267829);
+      if (this.IZi != null) {
+        break label73;
       }
-      Object localObject1 = com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VgD, Boolean.FALSE);
+      Object localObject1 = com.tencent.mm.kernel.h.baE().ban().get(at.a.acHS, Boolean.FALSE);
       if (localObject1 == null)
       {
-        localObject1 = new t("null cannot be cast to non-null type kotlin.Boolean");
-        AppMethodBeat.o(203749);
+        localObject1 = new NullPointerException("null cannot be cast to non-null type kotlin.Boolean");
+        AppMethodBeat.o(267829);
         throw ((Throwable)localObject1);
       }
     }
     finally {}
-    this.DeR = ((Boolean)localObject2);
-    label67:
-    Object localObject3 = this.DeR;
-    boolean bool;
-    int i;
-    if (localObject3 != null)
+    this.IZi = Boolean.valueOf(((Boolean)localObject2).booleanValue());
+    label73:
+    Object localObject3 = this.IZi;
+    if (localObject3 == null)
     {
-      bool = ((Boolean)localObject3).booleanValue();
-      localObject3 = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.c.class);
-      p.j(localObject3, "MMKernel.service(IGameLi…ationService::class.java)");
-      i = ((com.tencent.mm.plugin.gamelife.a.c)localObject3).eAi();
-      if (i <= 0) {
-        break label176;
-      }
+      localObject3 = null;
+      this.IZi = ((Boolean)localObject3);
+      AppMethodBeat.o(267829);
+      return;
+    }
+    boolean bool = ((Boolean)localObject3).booleanValue();
+    int i = ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.c.class)).fIi();
+    if (i > 0) {
       if (!bool) {
-        break label184;
+        break label181;
       }
     }
     for (;;)
     {
       Log.i("GameLife.PluginGameLife", "the state of game chat has changed, gameChatUnreadState:%b", new Object[] { Boolean.valueOf(bool) });
-      localObject3 = com.tencent.mm.game.report.d.a.jUr;
-      com.tencent.mm.game.report.d.a.eI(bool);
+      localObject3 = com.tencent.mm.game.report.d.a.muI;
+      com.tencent.mm.game.report.d.a.fs(bool);
       localObject3 = Boolean.valueOf(bool);
-      label149:
-      this.DeR = ((Boolean)localObject3);
-      AppMethodBeat.o(203749);
-      return;
-      label176:
-      label184:
+      break;
+      label181:
       do
       {
         bool = false;
         break;
-        localObject3 = null;
-        break label149;
         do
         {
           break;
@@ -252,130 +397,164 @@ public final class PluginGameLife
     }
   }
   
-  private final void reportSingleChatInfoUIDetail(final int paramInt, final long paramLong, String paramString1, String paramString2, final String paramString3, final Boolean paramBoolean1, final Integer paramInteger, final Boolean paramBoolean2)
+  private final void reportSingleChatInfoUIDetail(int paramInt, long paramLong, String paramString1, String paramString2, String paramString3, Boolean paramBoolean1, Integer paramInteger, Boolean paramBoolean2)
   {
-    AppMethodBeat.i(203737);
-    com.tencent.mm.cw.g.ijP().i((com.tencent.mm.vending.c.a)new t(paramString2, paramString3, paramInteger, paramBoolean2, paramBoolean1, paramInt, paramLong, paramString1)).ieF();
-    AppMethodBeat.o(203737);
+    AppMethodBeat.i(267806);
+    com.tencent.mm.cp.g.jPX().i(new PluginGameLife..ExternalSyntheticLambda16(paramString2, paramString3, paramInteger, paramBoolean2, paramBoolean1, paramInt, paramLong, paramString1)).jJM();
+    AppMethodBeat.o(267806);
+  }
+  
+  private static final Void reportSingleChatInfoUIDetail$lambda-17(String paramString1, String paramString2, Integer paramInteger, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, long paramLong, String paramString3, Void paramVoid)
+  {
+    AppMethodBeat.i(267959);
+    s.u(paramString1, "$selfUserName");
+    s.u(paramString2, "$talker");
+    s.u(paramString3, "$sessionId");
+    paramVoid = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString1);
+    com.tencent.mm.plugin.gamelife.a.a locala = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString2);
+    int i = 0;
+    if (paramInteger == null)
+    {
+      if (paramInteger != null) {
+        break label311;
+      }
+      paramInteger = "";
+    }
+    for (;;)
+    {
+      paramBoolean1 = com.tencent.mm.game.report.c.mtx;
+      long l1 = paramVoid.fIh();
+      long l2 = locala.fIh();
+      paramBoolean1 = Integer.valueOf(i);
+      s.u(paramString3, "sessionId");
+      s.u(paramString1, "fromUsername");
+      s.u(paramString2, "toUsername");
+      paramBoolean2 = com.tencent.mm.game.report.c.a.a(4L, 401L, paramInt, paramLong, 401L);
+      paramBoolean2.rz(paramString3);
+      paramBoolean2.iOy = l1;
+      paramBoolean2.rx(paramString1);
+      paramBoolean2.iOA = l2;
+      paramBoolean2.ry(paramString2);
+      paramBoolean2.rw(paramInteger);
+      if ((paramBoolean1 != null) && (paramBoolean1.intValue() != 0))
+      {
+        paramString1 = new JSONObject();
+        paramString1.put("role", paramBoolean1.intValue());
+        paramBoolean2.rA(URLEncoder.encode(paramString1.toString()));
+      }
+      paramBoolean2.bMH();
+      AppMethodBeat.o(267959);
+      return null;
+      if (paramInteger.intValue() != 1) {
+        break;
+      }
+      if (paramBoolean1 != null) {
+        if (paramBoolean1.booleanValue())
+        {
+          if (paramBoolean2 != null)
+          {
+            if (paramBoolean2.booleanValue())
+            {
+              i = 3;
+              paramInteger = "1";
+              continue;
+            }
+            i = 1;
+            paramInteger = "0";
+          }
+        }
+        else
+        {
+          i = 1;
+          paramInteger = "";
+          continue;
+          label311:
+          if (paramInteger.intValue() == 2)
+          {
+            i = 2;
+            paramInteger = "";
+            continue;
+          }
+        }
+      }
+      paramInteger = "";
+    }
   }
   
   private final void resetDB()
   {
-    AppMethodBeat.i(203697);
-    com.tencent.mm.storagebase.h localh = this.kcF;
+    AppMethodBeat.i(267775);
+    com.tencent.mm.storagebase.h localh = this.mCN;
     if (localh != null) {
       localh.closeDB();
     }
-    this.kcF = null;
-    this.DeM = null;
-    this.DeN = null;
-    this.DeO = null;
-    this.DeQ = null;
-    this.DeP = null;
-    AppMethodBeat.o(203697);
+    this.mCN = null;
+    this.IZd = null;
+    this.IZe = null;
+    this.IZf = null;
+    this.IZh = null;
+    this.IZg = null;
+    AppMethodBeat.o(267775);
   }
   
-  private final void showGameLifeDialog(final Context paramContext, final String paramString, final int paramInt, final com.tencent.mm.plugin.appbrand.ac.i<Boolean> parami1, final com.tencent.mm.plugin.appbrand.ac.i<Boolean> parami2, final c.b paramb, final com.tencent.mm.plugin.gamelife.a.e parame)
+  private final void showGameLifeDialog(Context paramContext, String paramString, int paramInt, com.tencent.mm.plugin.appbrand.af.k<Boolean> paramk1, com.tencent.mm.plugin.appbrand.af.k<Boolean> paramk2, c.b paramb, com.tencent.mm.plugin.gamelife.a.e parame)
   {
-    AppMethodBeat.i(203735);
-    final com.tencent.mm.ui.widget.a.g localg = new com.tencent.mm.ui.widget.a.g(paramContext, 1, 2, false);
-    localg.ayv(d.d.Dgd);
-    Object localObject = localg.oFW.findViewById(d.c.DfO);
-    p.j(localObject, "dialog.rootView.findView…blacklist_notifymsg_text)");
+    AppMethodBeat.i(267804);
+    com.tencent.mm.ui.widget.a.j localj = new com.tencent.mm.ui.widget.a.j(paramContext, 1, 2, false);
+    localj.aFf(d.d.IZY);
+    Object localObject = localj.rootView.findViewById(d.c.IZJ);
+    s.s(localObject, "dialog.rootView.findView…blacklist_notifymsg_text)");
     TextView localTextView1 = (TextView)localObject;
-    localObject = localg.oFW.findViewById(d.c.DfP);
-    p.j(localObject, "dialog.rootView.findView…agame_blacklist_checkbox)");
+    localObject = localj.rootView.findViewById(d.c.IZK);
+    s.s(localObject, "dialog.rootView.findView…agame_blacklist_checkbox)");
     CheckBox localCheckBox = (CheckBox)localObject;
-    localObject = localg.oFW.findViewById(d.c.DfQ);
-    p.j(localObject, "dialog.rootView.findView…fe_wagame_blacklist_text)");
+    localObject = localj.rootView.findViewById(d.c.IZL);
+    s.s(localObject, "dialog.rootView.findView…fe_wagame_blacklist_text)");
     TextView localTextView2 = (TextView)localObject;
-    final com.tencent.mm.plugin.appbrand.ac.i locali = new com.tencent.mm.plugin.appbrand.ac.i();
-    locali.value = Boolean.TRUE;
-    localCheckBox.setOnCheckedChangeListener((CompoundButton.OnCheckedChangeListener)new u(locali));
-    if (parami1 != null) {}
-    for (localObject = (Boolean)parami1.value; localObject == null; localObject = null)
+    com.tencent.mm.plugin.appbrand.af.k localk = new com.tencent.mm.plugin.appbrand.af.k();
+    localk.value = Boolean.TRUE;
+    localCheckBox.setOnCheckedChangeListener(new PluginGameLife..ExternalSyntheticLambda1(localk));
+    if (paramk1 == null) {}
+    for (localObject = null; localObject == null; localObject = (Boolean)paramk1.value)
     {
       Log.e("GameLife.PluginGameLife", "showGameLifeDialog isBlackList null");
-      AppMethodBeat.o(203735);
+      AppMethodBeat.o(267804);
       return;
     }
-    localObject = parami1.value;
-    p.j(localObject, "isBlackList.value");
+    localObject = paramk1.value;
+    s.s(localObject, "isBlackList.value");
     if (((Boolean)localObject).booleanValue())
     {
-      if (paramInt == 2)
+      switch (paramInt)
       {
-        localTextView1.setText(d.f.Dgu);
-        localTextView2.setVisibility(8);
-        localCheckBox.setVisibility(8);
       }
       for (;;)
       {
-        localg.a((g.a)new v(this, paramb, parami1, localg, parami2, locali, parame, paramInt), (g.a)new w(this, localg, parami2, locali, paramString, parami1, paramContext, paramb, parame, paramInt));
-        localg.d((CharSequence)paramContext.getResources().getString(d.f.app_cancel), (CharSequence)paramContext.getResources().getString(d.f.Dgr));
-        localg.aT((CharSequence)paramContext.getResources().getString(d.f.Dgs));
-        localg.eik();
+        localj.a(new PluginGameLife..ExternalSyntheticLambda12(paramb, paramk1, localj, paramk2, localk, this, parame, paramInt), new PluginGameLife..ExternalSyntheticLambda14(localj, paramk2, localk, paramString, this, parame, paramInt, paramk1, paramContext, paramb));
+        localj.d((CharSequence)paramContext.getResources().getString(d.f.app_cancel), (CharSequence)paramContext.getResources().getString(d.f.Jal));
+        localj.bh((CharSequence)paramContext.getResources().getString(d.f.Jam));
+        localj.dDn();
         paramContext = parame.getSessionId();
-        p.j(paramContext, "sessionInfo.sessionId");
+        s.s(paramContext, "sessionInfo.sessionId");
         paramString = parame.getSelfUsername();
-        p.j(paramString, "sessionInfo.selfUsername");
-        parami1 = parame.apJ();
-        p.j(parami1, "sessionInfo.talker");
-        reportSingleChatInfoUIDetail$default(this, 7, 1L, paramContext, paramString, parami1, null, null, null, 224, null);
-        AppMethodBeat.o(203735);
+        s.s(paramString, "sessionInfo.selfUsername");
+        paramk1 = parame.aJK();
+        s.s(paramk1, "sessionInfo.talker");
+        reportSingleChatInfoUIDetail$default(this, 7, 1L, paramContext, paramString, paramk1, null, null, null, 224, null);
+        AppMethodBeat.o(267804);
         return;
-        if (paramInt == 1)
+        localTextView1.setText(d.f.Jao);
+        localTextView2.setVisibility(8);
+        localCheckBox.setVisibility(8);
+        continue;
+        localTextView1.setText(d.f.Jan);
+        if (paramk2 != null)
         {
-          localTextView1.setText(d.f.Dgt);
-          if (parami2 != null)
-          {
-            localObject = parami2.value;
-            p.j(localObject, "isAssociateWithWAGame.value");
-            if (((Boolean)localObject).booleanValue())
-            {
-              localTextView2.setText(d.f.Dgv);
-            }
-            else
-            {
-              localCheckBox.setVisibility(8);
-              localTextView2.setVisibility(8);
-            }
-          }
-        }
-      }
-    }
-    if (paramInt == 2)
-    {
-      localTextView1.setText(d.f.Dgo);
-      localCheckBox.setVisibility(8);
-    }
-    for (;;)
-    {
-      localg.a((g.a)new x(this, localg, paramb, parami1, parami2, locali, parame, paramInt), (g.a)new y(this, localg, parami2, locali, paramString, parami1, paramContext, paramb, parame, paramInt));
-      localg.ays(paramContext.getResources().getColor(d.a.normal_text_color));
-      localg.ayt(2);
-      localg.d((CharSequence)paramContext.getResources().getString(d.f.app_cancel), (CharSequence)paramContext.getResources().getString(d.f.Dgq));
-      localg.aT((CharSequence)paramContext.getResources().getString(d.f.Dgm));
-      localg.eik();
-      paramContext = parame.getSessionId();
-      p.j(paramContext, "sessionInfo.sessionId");
-      paramString = parame.getSelfUsername();
-      p.j(paramString, "sessionInfo.selfUsername");
-      parami1 = parame.apJ();
-      p.j(parami1, "sessionInfo.talker");
-      reportSingleChatInfoUIDetail$default(this, 6, 1L, paramContext, paramString, parami1, null, null, null, 224, null);
-      AppMethodBeat.o(203735);
-      return;
-      if (paramInt == 1)
-      {
-        localTextView1.setText(d.f.Dgn);
-        if (parami2 != null)
-        {
-          localObject = parami2.value;
-          p.j(localObject, "isAssociateWithWAGame.value");
+          localObject = paramk2.value;
+          s.s(localObject, "isAssociateWithWAGame.value");
           if (((Boolean)localObject).booleanValue())
           {
-            localTextView2.setText(d.f.Dgp);
+            localTextView2.setText(d.f.Jap);
           }
           else
           {
@@ -385,914 +564,800 @@ public final class PluginGameLife
         }
       }
     }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      localj.a(new PluginGameLife..ExternalSyntheticLambda15(localj, paramb, paramk1, paramk2, localk, this, parame, paramInt), new PluginGameLife..ExternalSyntheticLambda13(localj, paramk2, localk, paramString, this, parame, paramInt, paramk1, paramContext, paramb));
+      localj.aFb(paramContext.getResources().getColor(d.a.normal_text_color));
+      localj.aFd(2);
+      localj.d((CharSequence)paramContext.getResources().getString(d.f.app_cancel), (CharSequence)paramContext.getResources().getString(d.f.Jak));
+      localj.bh((CharSequence)paramContext.getResources().getString(d.f.Jag));
+      localj.dDn();
+      paramContext = parame.getSessionId();
+      s.s(paramContext, "sessionInfo.sessionId");
+      paramString = parame.getSelfUsername();
+      s.s(paramString, "sessionInfo.selfUsername");
+      paramk1 = parame.aJK();
+      s.s(paramk1, "sessionInfo.talker");
+      reportSingleChatInfoUIDetail$default(this, 6, 1L, paramContext, paramString, paramk1, null, null, null, 224, null);
+      AppMethodBeat.o(267804);
+      return;
+      localTextView1.setText(d.f.Jai);
+      localCheckBox.setVisibility(8);
+      continue;
+      localTextView1.setText(d.f.Jah);
+      if (paramk2 != null)
+      {
+        localObject = paramk2.value;
+        s.s(localObject, "isAssociateWithWAGame.value");
+        if (((Boolean)localObject).booleanValue())
+        {
+          localTextView2.setText(d.f.Jaj);
+        }
+        else
+        {
+          localCheckBox.setVisibility(8);
+          localTextView2.setVisibility(8);
+        }
+      }
+    }
+  }
+  
+  private static final void showGameLifeDialog$lambda-10(com.tencent.mm.plugin.appbrand.af.k paramk, CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    AppMethodBeat.i(267866);
+    s.u(paramk, "$dealWaGameAccountTogetherCheckBox");
+    paramk.value = Boolean.valueOf(paramBoolean);
+    AppMethodBeat.o(267866);
+  }
+  
+  private static final void showGameLifeDialog$lambda-11(c.b paramb, com.tencent.mm.plugin.appbrand.af.k paramk1, com.tencent.mm.ui.widget.a.j paramj, com.tencent.mm.plugin.appbrand.af.k paramk2, com.tencent.mm.plugin.appbrand.af.k paramk3, PluginGameLife paramPluginGameLife, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt)
+  {
+    AppMethodBeat.i(267872);
+    s.u(paramb, "$callback");
+    s.u(paramk1, "$isBlackList");
+    s.u(paramj, "$dialog");
+    s.u(paramk2, "$isAssociateWithWAGame");
+    s.u(paramk3, "$dealWaGameAccountTogetherCheckBox");
+    s.u(paramPluginGameLife, "this$0");
+    s.u(parame, "$sessionInfo");
+    paramk1 = paramk1.value;
+    s.s(paramk1, "isBlackList.value");
+    paramb.onDone(((Boolean)paramk1).booleanValue());
+    paramj.cyW();
+    paramb = paramk2.value;
+    s.s(paramb, "isAssociateWithWAGame.value");
+    if (((Boolean)paramb).booleanValue())
+    {
+      paramb = paramk3.value;
+      s.s(paramb, "dealWaGameAccountTogetherCheckBox.value");
+      if (!((Boolean)paramb).booleanValue()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      paramb = parame.getSessionId();
+      s.s(paramb, "sessionInfo.sessionId");
+      paramk1 = parame.getSelfUsername();
+      s.s(paramk1, "sessionInfo.selfUsername");
+      paramj = parame.aJK();
+      s.s(paramj, "sessionInfo.talker");
+      paramPluginGameLife.reportSingleChatInfoUIDetail(7, 4L, paramb, paramk1, paramj, Boolean.valueOf(bool), Integer.valueOf(paramInt), (Boolean)paramk2.value);
+      AppMethodBeat.o(267872);
+      return;
+    }
+  }
+  
+  private static final void showGameLifeDialog$lambda-13(com.tencent.mm.ui.widget.a.j paramj, com.tencent.mm.plugin.appbrand.af.k paramk1, com.tencent.mm.plugin.appbrand.af.k paramk2, String paramString, PluginGameLife paramPluginGameLife, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt, com.tencent.mm.plugin.appbrand.af.k paramk3, Context paramContext, c.b paramb)
+  {
+    AppMethodBeat.i(267895);
+    s.u(paramj, "$dialog");
+    s.u(paramk1, "$isAssociateWithWAGame");
+    s.u(paramk2, "$dealWaGameAccountTogetherCheckBox");
+    s.u(paramString, "$userName");
+    s.u(paramPluginGameLife, "this$0");
+    s.u(parame, "$sessionInfo");
+    s.u(paramk3, "$isBlackList");
+    s.u(paramContext, "$context");
+    s.u(paramb, "$callback");
+    paramj.cyW();
+    paramj = new ah.a();
+    Object localObject = paramk1.value;
+    s.s(localObject, "isAssociateWithWAGame.value");
+    if (((Boolean)localObject).booleanValue())
+    {
+      paramk2 = paramk2.value;
+      s.s(paramk2, "dealWaGameAccountTogetherCheckBox.value");
+      if (!((Boolean)paramk2).booleanValue()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      paramj.aiwY = bool;
+      ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, false, paramj.aiwY, new PluginGameLife..ExternalSyntheticLambda3(paramString, paramj, paramk3, paramContext, paramb));
+      paramk2 = parame.getSessionId();
+      s.s(paramk2, "sessionInfo.sessionId");
+      paramString = parame.getSelfUsername();
+      s.s(paramString, "sessionInfo.selfUsername");
+      parame = parame.aJK();
+      s.s(parame, "sessionInfo.talker");
+      paramPluginGameLife.reportSingleChatInfoUIDetail(7, 64L, paramk2, paramString, parame, Boolean.valueOf(paramj.aiwY), Integer.valueOf(paramInt), (Boolean)paramk1.value);
+      AppMethodBeat.o(267895);
+      return;
+    }
+  }
+  
+  private static final void showGameLifeDialog$lambda-13$lambda-12(String paramString, ah.a parama, com.tencent.mm.plugin.appbrand.af.k paramk, Context paramContext, c.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(267882);
+    s.u(paramString, "$userName");
+    s.u(parama, "$dealWaGameTogether");
+    s.u(paramk, "$isBlackList");
+    s.u(paramContext, "$context");
+    s.u(paramb, "$callback");
+    Log.i("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame removeBlackList userName:%s isSuccess:%b, dealWaGameTogether:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(parama.aiwY) });
+    if (paramBoolean) {
+      if (!((Boolean)paramk.value).booleanValue())
+      {
+        paramBoolean = true;
+        paramk.value = Boolean.valueOf(paramBoolean);
+      }
+    }
+    for (;;)
+    {
+      paramString = paramk.value;
+      s.s(paramString, "isBlackList.value");
+      paramb.onDone(((Boolean)paramString).booleanValue());
+      AppMethodBeat.o(267882);
+      return;
+      paramBoolean = false;
+      break;
+      Toast.makeText(paramContext, d.f.Jax, 0).show();
+    }
+  }
+  
+  private static final void showGameLifeDialog$lambda-14(com.tencent.mm.ui.widget.a.j paramj, c.b paramb, com.tencent.mm.plugin.appbrand.af.k paramk1, com.tencent.mm.plugin.appbrand.af.k paramk2, com.tencent.mm.plugin.appbrand.af.k paramk3, PluginGameLife paramPluginGameLife, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt)
+  {
+    AppMethodBeat.i(267920);
+    s.u(paramj, "$dialog");
+    s.u(paramb, "$callback");
+    s.u(paramk1, "$isBlackList");
+    s.u(paramk2, "$isAssociateWithWAGame");
+    s.u(paramk3, "$dealWaGameAccountTogetherCheckBox");
+    s.u(paramPluginGameLife, "this$0");
+    s.u(parame, "$sessionInfo");
+    paramj.cyW();
+    paramj = paramk1.value;
+    s.s(paramj, "isBlackList.value");
+    paramb.onDone(((Boolean)paramj).booleanValue());
+    paramj = paramk2.value;
+    s.s(paramj, "isAssociateWithWAGame.value");
+    if (((Boolean)paramj).booleanValue())
+    {
+      paramj = paramk3.value;
+      s.s(paramj, "dealWaGameAccountTogetherCheckBox.value");
+      if (!((Boolean)paramj).booleanValue()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      paramj = parame.getSessionId();
+      s.s(paramj, "sessionInfo.sessionId");
+      paramb = parame.getSelfUsername();
+      s.s(paramb, "sessionInfo.selfUsername");
+      paramk1 = parame.aJK();
+      s.s(paramk1, "sessionInfo.talker");
+      paramPluginGameLife.reportSingleChatInfoUIDetail(6, 4L, paramj, paramb, paramk1, Boolean.valueOf(bool), Integer.valueOf(paramInt), (Boolean)paramk2.value);
+      AppMethodBeat.o(267920);
+      return;
+    }
+  }
+  
+  private static final void showGameLifeDialog$lambda-16(com.tencent.mm.ui.widget.a.j paramj, com.tencent.mm.plugin.appbrand.af.k paramk1, com.tencent.mm.plugin.appbrand.af.k paramk2, String paramString, PluginGameLife paramPluginGameLife, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt, com.tencent.mm.plugin.appbrand.af.k paramk3, Context paramContext, c.b paramb)
+  {
+    AppMethodBeat.i(267943);
+    s.u(paramj, "$dialog");
+    s.u(paramk1, "$isAssociateWithWAGame");
+    s.u(paramk2, "$dealWaGameAccountTogetherCheckBox");
+    s.u(paramString, "$userName");
+    s.u(paramPluginGameLife, "this$0");
+    s.u(parame, "$sessionInfo");
+    s.u(paramk3, "$isBlackList");
+    s.u(paramContext, "$context");
+    s.u(paramb, "$callback");
+    paramj.cyW();
+    paramj = new ah.a();
+    Object localObject = paramk1.value;
+    s.s(localObject, "isAssociateWithWAGame.value");
+    if (((Boolean)localObject).booleanValue())
+    {
+      paramk2 = paramk2.value;
+      s.s(paramk2, "dealWaGameAccountTogetherCheckBox.value");
+      if (!((Boolean)paramk2).booleanValue()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      paramj.aiwY = bool;
+      ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, true, paramj.aiwY, new PluginGameLife..ExternalSyntheticLambda2(paramString, paramj, paramk3, paramContext, paramb));
+      paramk2 = parame.getSessionId();
+      s.s(paramk2, "sessionInfo.sessionId");
+      paramString = parame.getSelfUsername();
+      s.s(paramString, "sessionInfo.selfUsername");
+      parame = parame.aJK();
+      s.s(parame, "sessionInfo.talker");
+      paramPluginGameLife.reportSingleChatInfoUIDetail(6, 65L, paramk2, paramString, parame, Boolean.valueOf(paramj.aiwY), Integer.valueOf(paramInt), (Boolean)paramk1.value);
+      AppMethodBeat.o(267943);
+      return;
+    }
+  }
+  
+  private static final void showGameLifeDialog$lambda-16$lambda-15(String paramString, ah.a parama, com.tencent.mm.plugin.appbrand.af.k paramk, Context paramContext, c.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(267931);
+    s.u(paramString, "$userName");
+    s.u(parama, "$dealWaGameTogether");
+    s.u(paramk, "$isBlackList");
+    s.u(paramContext, "$context");
+    s.u(paramb, "$callback");
+    Log.i("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame addBlackList userName:%s isSuccess:%b, dealWaGameTogether:%b ", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(parama.aiwY) });
+    if (paramBoolean) {
+      if (!((Boolean)paramk.value).booleanValue())
+      {
+        paramBoolean = true;
+        paramk.value = Boolean.valueOf(paramBoolean);
+      }
+    }
+    for (;;)
+    {
+      paramString = paramk.value;
+      s.s(paramString, "isBlackList.value");
+      paramb.onDone(((Boolean)paramString).booleanValue());
+      AppMethodBeat.o(267931);
+      return;
+      paramBoolean = false;
+      break;
+      Toast.makeText(paramContext, d.f.Jar, 0).show();
+    }
+  }
+  
+  private static final void storageChange$lambda-26(PluginGameLife paramPluginGameLife, String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(268015);
+    s.u(paramPluginGameLife, "this$0");
+    if ((paramMStorageEventData.obj instanceof com.tencent.mm.plugin.gamelife.f.a)) {
+      com.tencent.threadpool.h.ahAA.g(new PluginGameLife..ExternalSyntheticLambda19(paramPluginGameLife), "reportGameChatUnreadState");
+    }
+    AppMethodBeat.o(268015);
+  }
+  
+  private static final void storageChange$lambda-26$lambda-25(PluginGameLife paramPluginGameLife)
+  {
+    AppMethodBeat.i(268005);
+    s.u(paramPluginGameLife, "this$0");
+    paramPluginGameLife.reportGameChatUnreadState();
+    AppMethodBeat.o(268005);
   }
   
   public final void clearDB()
   {
-    AppMethodBeat.i(203695);
-    String str = this.CrS;
-    if (str == null) {
-      p.bGy("cacheDBPath");
+    AppMethodBeat.i(268252);
+    String str2 = this.Iem;
+    String str1 = str2;
+    if (str2 == null)
+    {
+      s.bIx("cacheDBPath");
+      str1 = null;
     }
-    u.deleteFile(str);
+    y.deleteFile(str1);
     resetDB();
     initDB();
-    AppMethodBeat.o(203695);
+    AppMethodBeat.o(268252);
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(203744);
-    HashMap localHashMap = ae.g(new o[] { kotlin.s.M(Integer.valueOf("GameLifeContact".hashCode()), PluginGameLife.f.Dfa), kotlin.s.M(Integer.valueOf("GameLifeSessionInfo".hashCode()), PluginGameLife.g.Dfb), kotlin.s.M(Integer.valueOf("GameLifeConversation".hashCode()), h.Dfc), kotlin.s.M(Integer.valueOf("gamelifemessage".hashCode()), PluginGameLife.i.Dfd), kotlin.s.M(Integer.valueOf("AppMessage".hashCode()), PluginGameLife.j.Dfe) });
-    AppMethodBeat.o(203744);
+    AppMethodBeat.i(268328);
+    HashMap localHashMap = ak.g(new r[] { v.Y(Integer.valueOf("GameLifeContact".hashCode()), PluginGameLife..ExternalSyntheticLambda11.INSTANCE), v.Y(Integer.valueOf("GameLifeSessionInfo".hashCode()), PluginGameLife..ExternalSyntheticLambda8.INSTANCE), v.Y(Integer.valueOf("GameLifeConversation".hashCode()), PluginGameLife..ExternalSyntheticLambda10.INSTANCE), v.Y(Integer.valueOf("gamelifemessage".hashCode()), PluginGameLife..ExternalSyntheticLambda9.INSTANCE), v.Y(Integer.valueOf("AppMessage".hashCode()), PluginGameLife..ExternalSyntheticLambda7.INSTANCE) });
+    AppMethodBeat.o(268328);
     return localHashMap;
   }
   
   public final void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(203689);
-    ab.a("gamelife", "gamelife/avatar", 536870912L, 7776000000L, 1);
-    AppMethodBeat.o(203689);
+    AppMethodBeat.i(268249);
+    af.b("gamelife", "gamelife/avatar", 536870912L, 7776000000L, 1);
+    AppMethodBeat.o(268249);
   }
   
-  public final void dealBlackList(final Context paramContext, final String paramString, final com.tencent.mm.plugin.appbrand.ac.i<Boolean> parami1, final com.tencent.mm.plugin.appbrand.ac.i<Boolean> parami2, final c.b paramb)
+  public final void dealBlackList(final Context paramContext, final String paramString, com.tencent.mm.plugin.appbrand.af.k<Boolean> paramk1, final com.tencent.mm.plugin.appbrand.af.k<Boolean> paramk2, final c.b paramb)
   {
-    AppMethodBeat.i(203727);
-    p.k(parami1, "isBlackList");
-    p.k(parami2, "isAssociateWithWAGame");
-    p.k(paramb, "callback");
+    AppMethodBeat.i(268323);
+    s.u(paramk1, "isBlackList");
+    s.u(paramk2, "isAssociateWithWAGame");
+    s.u(paramb, "callback");
     if (paramContext == null)
     {
-      AppMethodBeat.o(203727);
+      AppMethodBeat.o(268323);
       return;
     }
-    paramString = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aKJ(paramString);
-    p.j(paramString, "sessionInfo");
-    Object localObject1 = paramString.apJ();
+    paramString = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aHz(paramString);
+    Object localObject1 = paramString.aJK();
     Object localObject2 = paramString.getSelfUsername();
     String str = paramString.getSessionId();
-    p.j(str, "sessionInfo.sessionId");
-    p.j(localObject2, "selfUserName");
-    p.j(localObject1, "talkerName");
+    s.s(str, "sessionInfo.sessionId");
+    s.s(localObject2, "selfUserName");
+    s.s(localObject1, "talkerName");
     reportSingleChatInfoUIDetail$default(this, 5, 2L, str, (String)localObject2, (String)localObject1, null, null, null, 224, null);
-    localObject1 = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).aKE((String)localObject1);
-    p.j(localObject1, "contact");
-    final int i = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).eAh();
+    localObject1 = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu((String)localObject1);
+    final int i = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).fIh();
     localObject1 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).getUsername();
     if (i <= 0)
     {
-      Toast.makeText(paramContext, d.f.Dgw, 0).show();
-      AppMethodBeat.o(203727);
+      Toast.makeText(paramContext, d.f.Jaq, 0).show();
+      AppMethodBeat.o(268323);
       return;
     }
     if (i == 2)
     {
-      if ((parami1.value != null) && (parami2.value != null))
+      if ((paramk1.value != null) && (paramk2.value != null))
       {
-        p.j(localObject1, "userName");
-        showGameLifeDialog(paramContext, (String)localObject1, i, parami1, parami2, paramb, paramString);
-        AppMethodBeat.o(203727);
+        s.s(localObject1, "userName");
+        s.s(paramString, "sessionInfo");
+        showGameLifeDialog(paramContext, (String)localObject1, i, paramk1, paramk2, paramb, paramString);
+        AppMethodBeat.o(268323);
       }
     }
     else if (i == 1)
     {
-      localObject2 = (ProgressDialog)com.tencent.mm.ui.base.s.a(paramContext, (CharSequence)paramContext.getResources().getString(d.f.app_waiting), true, 3, null);
-      if (localObject2 == null) {
-        p.iCn();
-      }
+      localObject2 = (ProgressDialog)w.a(paramContext, (CharSequence)paramContext.getResources().getString(d.f.app_waiting), true, 3, null);
+      s.checkNotNull(localObject2);
       ((ProgressDialog)localObject2).show();
-      ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a((String)localObject1, (b.a)new m(this, parami1, parami2, (String)localObject1, (ProgressDialog)localObject2, paramContext, i, paramb, paramString));
+      ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a((String)localObject1, (b.a)new d(paramk1, paramk2, (String)localObject1, (ProgressDialog)localObject2, this, paramContext, i, paramb, paramString));
     }
-    AppMethodBeat.o(203727);
+    AppMethodBeat.o(268323);
   }
   
   public final void dependency()
   {
-    AppMethodBeat.i(203748);
+    AppMethodBeat.i(268336);
     super.dependency();
     dependsOn(com.tencent.mm.plugin.byp.a.c.class);
-    AppMethodBeat.o(203748);
+    AppMethodBeat.o(268336);
   }
   
-  public final void enterChattingUI(Context paramContext, String paramString1, String paramString2, int paramInt, com.tencent.mm.cd.b paramb)
+  public final void enterChattingUI(Context paramContext, String paramString1, String paramString2, int paramInt, com.tencent.mm.bx.b paramb)
   {
-    AppMethodBeat.i(203707);
-    p.k(paramContext, "context");
-    p.k(paramString1, "selfUsername");
-    p.k(paramString2, "talker");
-    aa.f localf = new aa.f();
-    localf.aaBC = null;
-    com.tencent.e.i.d locald = com.tencent.e.h.ZvG.n((Runnable)new PluginGameLife.o(localf, paramContext), 1000L);
-    ((com.tencent.mm.plugin.gamelife.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.d.class)).eAl();
-    checkSessionIdAndContact(paramString1, paramString2, paramInt, paramb, (kotlin.g.a.b)new PluginGameLife.n(locald, localf, paramString1, paramContext));
-    AppMethodBeat.o(203707);
+    AppMethodBeat.i(268294);
+    s.u(paramContext, "context");
+    s.u(paramString1, "selfUsername");
+    s.u(paramString2, "talker");
+    ah.f localf = new ah.f();
+    com.tencent.threadpool.i.d locald = com.tencent.threadpool.h.ahAA.o(new PluginGameLife..ExternalSyntheticLambda21(localf, paramContext), 1000L);
+    ((com.tencent.mm.plugin.gamelife.a.d)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.d.class)).fIl();
+    checkSessionIdAndContact(paramString1, paramString2, paramInt, paramb, (kotlin.g.a.b)new PluginGameLife.e(locald, localf, paramString1, paramContext));
+    AppMethodBeat.o(268294);
   }
   
   public final void enterExpose(Context paramContext, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(203716);
-    p.k(paramIntent, "intent");
-    p.k(paramString, "sessionId");
-    com.tencent.mm.plugin.gamelife.a.e locale = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aKJ(paramString);
-    p.j(locale, "sessionInfo");
-    paramString = locale.apJ();
+    AppMethodBeat.i(268307);
+    s.u(paramIntent, "intent");
+    s.u(paramString, "sessionId");
+    com.tencent.mm.plugin.gamelife.a.e locale = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aHz(paramString);
+    paramString = locale.aJK();
     Log.d("GameLife.PluginGameLife", "talkerName:%s", new Object[] { paramString });
     paramIntent.putExtra("k_username", paramString);
-    Object localObject = af.aaBG;
-    localObject = f.e.VRZ;
-    p.j(localObject, "ConstantsUI.ExposeUI.KExposeGameLifeUrl");
+    Object localObject = am.aixg;
+    localObject = f.f.adwh;
+    s.s(localObject, "KExposeGameLifeUrl");
     localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { Integer.valueOf(39) }, 1));
-    p.j(localObject, "java.lang.String.format(format, *args)");
+    s.s(localObject, "java.lang.String.format(format, *args)");
     paramIntent.putExtra("rawUrl", (String)localObject);
-    com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
+    com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
     paramContext = locale.getSelfUsername();
     paramIntent = locale.getSessionId();
-    p.j(paramIntent, "sessionInfo.sessionId");
-    p.j(paramContext, "selfUserName");
-    p.j(paramString, "talkerName");
+    s.s(paramIntent, "sessionInfo.sessionId");
+    s.s(paramContext, "selfUserName");
+    s.s(paramString, "talkerName");
     reportSingleChatInfoUIDetail$default(this, 8, 40L, paramIntent, paramContext, paramString, null, null, null, 224, null);
-    AppMethodBeat.o(203716);
+    AppMethodBeat.o(268307);
   }
   
   public final void enterGameLifeProfileUI(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(203712);
+    AppMethodBeat.i(268301);
     Object localObject1 = (CharSequence)paramString;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(203712);
+      AppMethodBeat.o(268301);
       return;
     }
-    if (paramInt == a.DeF) {
-      if (as.bvR(paramString)) {
+    if (paramInt == a.IYW) {
+      if (au.bwX(paramString)) {
         reportChattingDetail(2, 7L, paramString, null, null, "1");
       }
     }
     for (;;)
     {
-      localObject1 = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).aKE(paramString);
+      localObject1 = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString);
       label107:
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).eAg();
+        localObject1 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).fIg();
         localObject2 = (CharSequence)localObject1;
         if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-          break label368;
+          break label352;
         }
       }
-      label368:
+      label352:
       for (paramInt = 1;; paramInt = 0)
       {
         if (paramInt == 0) {
-          break label373;
+          break label357;
         }
         Log.e("GameLife.PluginGameLife", "userName:%s,jumpUrl null");
-        AppMethodBeat.o(203712);
+        AppMethodBeat.o(268301);
         return;
-        localObject1 = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aKJ(paramString);
-        p.j(localObject1, "sessionInfo");
-        paramString = ((com.tencent.mm.plugin.gamelife.a.e)localObject1).apJ();
-        p.j(paramString, "sessionInfo.talker");
+        localObject1 = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aHz(paramString);
+        paramString = ((com.tencent.mm.plugin.gamelife.a.e)localObject1).aJK();
+        s.s(paramString, "sessionInfo.talker");
         localObject2 = ((com.tencent.mm.plugin.gamelife.a.e)localObject1).getSelfUsername();
-        p.j(localObject2, "sessionInfo.selfUsername");
-        reportChattingDetail(2, 7L, (String)localObject2, ((com.tencent.mm.plugin.gamelife.a.e)localObject1).getSessionId(), ((com.tencent.mm.plugin.gamelife.a.e)localObject1).apJ(), "2");
+        s.s(localObject2, "sessionInfo.selfUsername");
+        reportChattingDetail(2, 7L, (String)localObject2, ((com.tencent.mm.plugin.gamelife.a.e)localObject1).getSessionId(), ((com.tencent.mm.plugin.gamelife.a.e)localObject1).aJK(), "2");
         break;
-        if (paramInt != a.DeE) {
-          break label431;
+        if (paramInt != a.IYV) {
+          break label415;
         }
-        Object localObject3 = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aKJ(paramString);
-        p.j(localObject3, "sessionInfo");
-        paramString = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).apJ();
-        p.j(paramString, "sessionInfo.talker");
+        Object localObject3 = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aHz(paramString);
+        paramString = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).aJK();
+        s.s(paramString, "sessionInfo.talker");
         localObject1 = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).getSessionId();
-        p.j(localObject1, "sessionInfo.sessionId");
+        s.s(localObject1, "sessionInfo.sessionId");
         localObject2 = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).getSelfUsername();
-        p.j(localObject2, "sessionInfo.selfUsername");
-        localObject3 = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).apJ();
-        p.j(localObject3, "sessionInfo.talker");
+        s.s(localObject2, "sessionInfo.selfUsername");
+        localObject3 = ((com.tencent.mm.plugin.gamelife.a.e)localObject3).aJK();
+        s.s(localObject3, "sessionInfo.talker");
         reportSingleChatInfoUIDetail$default(this, 2, 7L, (String)localObject1, (String)localObject2, (String)localObject3, null, null, null, 224, null);
         break;
         localObject1 = "";
         break label107;
       }
-      label373:
+      label357:
       Log.i("GameLife.PluginGameLife", "userName:%s,jumpUrl:%s", new Object[] { paramString, localObject1 });
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject1);
-      com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
-      AppMethodBeat.o(203712);
+      com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramString);
+      AppMethodBeat.o(268301);
       return;
-      label431:
+      label415:
       paramString = "";
     }
   }
   
   public final void enterSendGift(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(203726);
-    p.k(paramContext, "context");
-    p.k(paramString, "sessionId");
+    AppMethodBeat.i(268320);
+    s.u(paramContext, "context");
+    s.u(paramString, "sessionId");
     Log.i("GameLife.PluginGameLife", "enterSendGift sessionId[%s]", new Object[] { paramString });
-    com.tencent.mm.plugin.gamelife.a.e locale = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aKJ(paramString);
+    com.tencent.mm.plugin.gamelife.a.e locale = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aHz(paramString);
     if (locale != null)
     {
-      com.tencent.mm.plugin.gamelife.a.a locala = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).aKE(locale.getSelfUsername());
-      Object localObject1 = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).aKE(locale.apJ());
+      com.tencent.mm.plugin.gamelife.a.a locala = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(locale.getSelfUsername());
+      Object localObject1 = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(locale.aJK());
       long l1;
       long l2;
       if ((locala != null) && (localObject1 != null))
       {
-        Object localObject2 = com.tencent.mm.game.report.c.jTf;
-        l1 = locala.eAh();
+        Object localObject2 = com.tencent.mm.game.report.c.mtx;
+        l1 = locala.fIh();
         Object localObject3 = locala.getUsername();
-        p.j(localObject3, "selfContact.username");
-        l2 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).eAh();
+        s.s(localObject3, "selfContact.username");
+        l2 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).fIh();
         String str = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).getUsername();
-        p.j(str, "talkerContact.username");
-        p.k(paramString, "sessionId");
-        p.k(localObject3, "fromUsername");
-        p.k(str, "toUsername");
+        s.s(str, "talkerContact.username");
+        s.u(paramString, "sessionId");
+        s.u(localObject3, "fromUsername");
+        s.u(str, "toUsername");
         localObject2 = com.tencent.mm.game.report.c.a.a(3L, 302L, 2L, 2L, 301L);
-        ((fq)localObject2).vd(paramString);
-        ((fq)localObject2).oD(l1);
-        ((fq)localObject2).vb((String)localObject3);
-        ((fq)localObject2).oE(l2);
-        ((fq)localObject2).vc(str);
+        ((hl)localObject2).rz(paramString);
+        ((hl)localObject2).iOy = l1;
+        ((hl)localObject2).rx((String)localObject3);
+        ((hl)localObject2).iOA = l2;
+        ((hl)localObject2).ry(str);
         localObject3 = new JSONObject();
         ((JSONObject)localObject3).put("ser_name", 4L);
-        ((fq)localObject2).ve(URLEncoder.encode(((JSONObject)localObject3).toString()));
-        ((fq)localObject2).bpa();
+        ((hl)localObject2).rA(URLEncoder.encode(((JSONObject)localObject3).toString()));
+        ((hl)localObject2).bMH();
       }
-      int i = ((com.tencent.mm.plugin.game.api.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.c.class)).H(paramContext, locale.getSelfUsername(), locale.apJ());
+      int i = ((com.tencent.mm.plugin.game.api.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.game.api.c.class)).H(paramContext, locale.getSelfUsername(), locale.aJK());
       if ((locala != null) && (localObject1 != null))
       {
         if (i == 40)
         {
-          paramContext = com.tencent.mm.game.report.c.jTf;
-          l1 = locala.eAh();
+          paramContext = com.tencent.mm.game.report.c.mtx;
+          l1 = locala.fIh();
           paramContext = locala.getUsername();
-          p.j(paramContext, "selfContact.username");
-          l2 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).eAh();
+          s.s(paramContext, "selfContact.username");
+          l2 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).fIh();
           localObject1 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).getUsername();
-          p.j(localObject1, "talkerContact.username");
+          s.s(localObject1, "talkerContact.username");
           com.tencent.mm.game.report.c.a.a(paramString, l1, paramContext, l2, (String)localObject1, 40L);
-          AppMethodBeat.o(203726);
+          AppMethodBeat.o(268320);
           return;
         }
-        paramContext = com.tencent.mm.game.report.c.jTf;
-        l1 = locala.eAh();
+        paramContext = com.tencent.mm.game.report.c.mtx;
+        l1 = locala.fIh();
         paramContext = locala.getUsername();
-        p.j(paramContext, "selfContact.username");
-        l2 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).eAh();
+        s.s(paramContext, "selfContact.username");
+        l2 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).fIh();
         localObject1 = ((com.tencent.mm.plugin.gamelife.a.a)localObject1).getUsername();
-        p.j(localObject1, "talkerContact.username");
+        s.s(localObject1, "talkerContact.username");
         com.tencent.mm.game.report.c.a.a(paramString, l1, paramContext, l2, (String)localObject1, 71L);
       }
-      AppMethodBeat.o(203726);
-      return;
     }
-    AppMethodBeat.o(203726);
+    AppMethodBeat.o(268320);
   }
   
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(203686);
-    p.k(paramg, "profile");
-    if (paramg.aIE())
+    AppMethodBeat.i(268240);
+    s.u(paramg, "profile");
+    if (paramg.bbA())
     {
-      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.f.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.gamelife.j.b());
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.f.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.gamelife.k.b());
       com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.b.class, (com.tencent.mm.kernel.c.a)getContactService());
-      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.c.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.gamelife.e.d());
-      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.d.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.gamelife.h.a());
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.c.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.gamelife.f.d());
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.gamelife.a.d.class, (com.tencent.mm.kernel.c.a)new com.tencent.mm.plugin.gamelife.i.a());
     }
-    AppMethodBeat.o(203686);
+    AppMethodBeat.o(268240);
   }
   
-  public final com.tencent.mm.plugin.gamelife.g.c getAppMessageStorage()
+  public final com.tencent.mm.plugin.gamelife.h.c getAppMessageStorage()
   {
-    AppMethodBeat.i(203702);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    com.tencent.mm.plugin.gamelife.g.c localc2 = this.DeQ;
-    com.tencent.mm.plugin.gamelife.g.c localc1 = localc2;
+    AppMethodBeat.i(268270);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.gamelife.h.c localc2 = this.IZh;
+    com.tencent.mm.plugin.gamelife.h.c localc1 = localc2;
     if (localc2 == null) {
-      localc1 = new com.tencent.mm.plugin.gamelife.g.c((ISQLiteDatabase)getDB());
+      localc1 = new com.tencent.mm.plugin.gamelife.h.c((ISQLiteDatabase)getDB());
     }
-    this.DeQ = localc1;
-    localc1 = this.DeQ;
-    if (localc1 == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203702);
+    this.IZh = localc1;
+    localc1 = this.IZh;
+    s.checkNotNull(localc1);
+    AppMethodBeat.o(268270);
     return localc1;
   }
   
   public final String getAvatarPath()
   {
-    AppMethodBeat.i(203676);
-    String str = this.wQa;
-    if (str == null) {
-      p.bGy("avatarPath");
+    AppMethodBeat.i(268226);
+    String str = this.AmC;
+    if (str != null)
+    {
+      AppMethodBeat.o(268226);
+      return str;
     }
-    AppMethodBeat.o(203676);
-    return str;
+    s.bIx("avatarPath");
+    AppMethodBeat.o(268226);
+    return null;
   }
   
-  public final com.tencent.mm.plugin.gamelife.d.c getContactStorage()
+  public final com.tencent.mm.plugin.gamelife.e.c getContactStorage()
   {
-    AppMethodBeat.i(203699);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    com.tencent.mm.plugin.gamelife.d.c localc2 = this.DeM;
-    com.tencent.mm.plugin.gamelife.d.c localc1 = localc2;
+    AppMethodBeat.i(268261);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.gamelife.e.c localc2 = this.IZd;
+    com.tencent.mm.plugin.gamelife.e.c localc1 = localc2;
     if (localc2 == null) {
-      localc1 = new com.tencent.mm.plugin.gamelife.d.c((ISQLiteDatabase)getDB());
+      localc1 = new com.tencent.mm.plugin.gamelife.e.c((ISQLiteDatabase)getDB());
     }
-    this.DeM = localc1;
-    localc1 = this.DeM;
-    if (localc1 == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203699);
+    this.IZd = localc1;
+    localc1 = this.IZd;
+    s.checkNotNull(localc1);
+    AppMethodBeat.o(268261);
     return localc1;
   }
   
-  public final com.tencent.mm.plugin.gamelife.e.e getConversationStorage()
+  public final com.tencent.mm.plugin.gamelife.f.e getConversationStorage()
   {
-    AppMethodBeat.i(203701);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    com.tencent.mm.plugin.gamelife.e.e locale2 = this.DeO;
-    com.tencent.mm.plugin.gamelife.e.e locale1 = locale2;
+    AppMethodBeat.i(268267);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.gamelife.f.e locale2 = this.IZf;
+    com.tencent.mm.plugin.gamelife.f.e locale1 = locale2;
     if (locale2 == null) {
-      locale1 = new com.tencent.mm.plugin.gamelife.e.e((ISQLiteDatabase)getDB());
+      locale1 = new com.tencent.mm.plugin.gamelife.f.e((ISQLiteDatabase)getDB());
     }
-    this.DeO = locale1;
-    locale1 = this.DeO;
-    if (locale1 == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203701);
+    this.IZf = locale1;
+    locale1 = this.IZf;
+    s.checkNotNull(locale1);
+    AppMethodBeat.o(268267);
     return locale1;
   }
   
-  public final com.tencent.mm.plugin.gamelife.g.d getMessageStorage()
+  public final com.tencent.mm.plugin.gamelife.h.d getMessageStorage()
   {
-    AppMethodBeat.i(203703);
-    Object localObject = com.tencent.mm.kernel.h.ae(n.class);
-    p.j(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    com.tencent.mm.plugin.messenger.foundation.a.a.i locali = ((n)localObject).eSe();
-    com.tencent.mm.plugin.gamelife.g.d locald = this.DeP;
-    localObject = locald;
-    if (locald == null)
+    AppMethodBeat.i(268291);
+    com.tencent.mm.plugin.messenger.foundation.a.a.i locali = ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ();
+    com.tencent.mm.plugin.gamelife.h.d locald2 = this.IZg;
+    com.tencent.mm.plugin.gamelife.h.d locald1 = locald2;
+    if (locald2 == null)
     {
-      p.j(locali, "msgStg");
-      localObject = new com.tencent.mm.plugin.gamelife.g.d(locali);
+      s.s(locali, "msgStg");
+      locald1 = new com.tencent.mm.plugin.gamelife.h.d(locali);
     }
-    this.DeP = ((com.tencent.mm.plugin.gamelife.g.d)localObject);
-    localObject = this.DeP;
-    if (localObject == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203703);
-    return localObject;
+    this.IZg = locald1;
+    locald1 = this.IZg;
+    s.checkNotNull(locald1);
+    AppMethodBeat.o(268291);
+    return locald1;
   }
   
-  public final com.tencent.mm.plugin.gamelife.j.c getSessionInfoStorage()
+  public final com.tencent.mm.plugin.gamelife.k.c getSessionInfoStorage()
   {
-    AppMethodBeat.i(203700);
-    com.tencent.mm.kernel.h.aHE().aGH();
-    com.tencent.mm.plugin.gamelife.j.c localc2 = this.DeN;
-    com.tencent.mm.plugin.gamelife.j.c localc1 = localc2;
+    AppMethodBeat.i(268264);
+    com.tencent.mm.kernel.h.baC().aZJ();
+    com.tencent.mm.plugin.gamelife.k.c localc2 = this.IZe;
+    com.tencent.mm.plugin.gamelife.k.c localc1 = localc2;
     if (localc2 == null) {
-      localc1 = new com.tencent.mm.plugin.gamelife.j.c((ISQLiteDatabase)getDB());
+      localc1 = new com.tencent.mm.plugin.gamelife.k.c((ISQLiteDatabase)getDB());
     }
-    this.DeN = localc1;
-    localc1 = this.DeN;
-    if (localc1 == null) {
-      p.iCn();
-    }
-    AppMethodBeat.o(203700);
+    this.IZe = localc1;
+    localc1 = this.IZe;
+    s.checkNotNull(localc1);
+    AppMethodBeat.o(268264);
     return localc1;
   }
   
-  public final void initGameLifeSingleChatInfoUI(final Context paramContext, String paramString, final c.a parama)
+  public final void initGameLifeSingleChatInfoUI(Context paramContext, String paramString, c.a parama)
   {
-    AppMethodBeat.i(203721);
+    AppMethodBeat.i(268313);
     if (paramContext == null)
     {
-      AppMethodBeat.o(203721);
+      AppMethodBeat.o(268313);
       return;
     }
-    Object localObject = com.tencent.mm.game.report.c.jTf;
-    com.tencent.mm.game.report.c.a.a(4L, 0L, 0L, 1L, 301L).bpa();
-    localObject = com.tencent.mm.ui.base.s.a(paramContext, (CharSequence)paramContext.getResources().getString(d.f.app_waiting), true, 3, null);
-    p.j(localObject, "MMProgressDialog.show(co…TLE_TRANSPARENT_BG, null)");
+    Object localObject = com.tencent.mm.game.report.c.mtx;
+    com.tencent.mm.game.report.c.a.a(4L, 0L, 0L, 1L, 301L).bMH();
+    localObject = w.a(paramContext, (CharSequence)paramContext.getResources().getString(d.f.app_waiting), true, 3, null);
+    s.s(localObject, "show(context, context.re…TLE_TRANSPARENT_BG, null)");
     localObject = (ProgressDialog)localObject;
     ((ProgressDialog)localObject).show();
-    paramString = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aED(paramString);
-    paramString = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).aKE(paramString);
-    p.j(paramString, "contact");
+    paramString = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aAw(paramString);
+    paramString = ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).aHu(paramString);
     String str = paramString.getUsername();
-    if (paramString.eAh() <= 0)
+    if (paramString.fIh() <= 0)
     {
-      Toast.makeText(paramContext, d.f.Dgw, 0).show();
-      AppMethodBeat.o(203721);
+      Toast.makeText(paramContext, d.f.Jaq, 0).show();
+      AppMethodBeat.o(268313);
       return;
     }
-    ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a(str, (b.a)new q((ProgressDialog)localObject, parama, paramContext));
-    AppMethodBeat.o(203721);
+    ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.b.class)).a(str, (b.a)new PluginGameLife.f((ProgressDialog)localObject, parama, paramContext));
+    AppMethodBeat.o(268313);
   }
   
   public final void jumpToGameLifeSingleChatInfoUIReport(String paramString)
   {
-    AppMethodBeat.i(203711);
+    AppMethodBeat.i(268297);
     Object localObject1 = (CharSequence)paramString;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.e("GameLife.PluginGameLife", "jumpToGameLifeSingleChatInfoUI sessionId null!");
-      AppMethodBeat.o(203711);
+      AppMethodBeat.o(268297);
       return;
     }
-    Object localObject2 = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.f.class)).aKJ(paramString);
-    p.j(localObject2, "sessionInfo");
-    localObject1 = ((com.tencent.mm.plugin.gamelife.a.e)localObject2).apJ();
+    Object localObject2 = ((com.tencent.mm.plugin.gamelife.a.f)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.f.class)).aHz(paramString);
+    localObject1 = ((com.tencent.mm.plugin.gamelife.a.e)localObject2).aJK();
     localObject2 = ((com.tencent.mm.plugin.gamelife.a.e)localObject2).getSelfUsername();
-    p.j(localObject2, "selfUserName");
+    s.s(localObject2, "selfUserName");
     reportChattingDetail$default(this, 1, 6L, (String)localObject2, paramString, (String)localObject1, null, 32, null);
-    AppMethodBeat.o(203711);
+    AppMethodBeat.o(268297);
   }
   
   public final void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(203688);
+    AppMethodBeat.i(268244);
     Log.i("GameLife.PluginGameLife", "Account Init");
     initDB();
-    paramc = new StringBuilder();
-    Object localObject = com.tencent.mm.kernel.h.aHG();
-    p.j(localObject, "MMKernel.storage()");
-    this.wQa = (((com.tencent.mm.kernel.f)localObject).getAccPath() + "gamelife/avatar/");
-    ((com.tencent.mm.plugin.byp.a.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.byp.a.c.class)).addBypSyncHandler(3, (com.tencent.mm.plugin.byp.a.b)new com.tencent.mm.plugin.gamelife.g.e());
-    paramc = (n)com.tencent.mm.kernel.h.ae(n.class);
-    paramc.eSe().a((com.tencent.mm.storage.e)getMessageStorage());
-    paramc.bbR().a((com.tencent.mm.plugin.messenger.foundation.a.i)getConversationUpdateCallback());
-    paramc.bbL().a((bv.a)getContactService().Dhl);
-    paramc = a.b.hjf();
-    if ((paramc instanceof com.tencent.mm.pluginsdk.ui.b))
-    {
-      localObject = new com.tencent.mm.plugin.gamelife.f.d(((com.tencent.mm.pluginsdk.ui.b)paramc).hjg());
-      ((com.tencent.mm.pluginsdk.ui.b)paramc).a("@gamelife", (j.a)localObject);
-      ((com.tencent.mm.pluginsdk.ui.b)paramc).a("@gamelifesess", (j.a)localObject);
+    setAvatarPath(s.X(com.tencent.mm.kernel.h.baE().mCJ, "gamelife/avatar/"));
+    ((n)com.tencent.mm.kernel.h.ax(n.class)).gaZ().a((com.tencent.mm.storage.e)getMessageStorage());
+    paramc = com.tencent.mm.plugin.openapi.a.gxo();
+    l.b localb = (l.b)getAppMessageInterceptor();
+    if (localb != null) {
+      paramc.XSx.XSy.put(localb, new Object());
     }
-    af.a.a((af.b)getGetContactInterceptor());
-    com.tencent.mm.plugin.ab.a.fmA().a((l.b)getAppMessageInterceptor());
-    ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.c.class)).m(this.Dbi);
-    com.tencent.e.h.ZvG.o((Runnable)new r(this), 1000L);
-    AppMethodBeat.o(203688);
+    ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.c.class)).m(this.IVw);
+    com.tencent.threadpool.h.ahAA.p(new PluginGameLife..ExternalSyntheticLambda18(this), 1000L);
+    com.tencent.mm.plugin.byp.c.f.waY.a((com.tencent.mm.plugin.byp.c.e)getPrivateMsgConfig());
+    AppMethodBeat.o(268244);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(203746);
-    ((com.tencent.mm.plugin.byp.a.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.byp.a.c.class)).removeBypSyncHandler(3);
-    com.tencent.mm.kernel.c.a locala = com.tencent.mm.kernel.h.ae(n.class);
-    p.j(locala, "MMKernel.service(IMessengerStorage::class.java)");
-    ((n)locala).bbR().b((com.tencent.mm.plugin.messenger.foundation.a.i)getConversationUpdateCallback());
-    locala = com.tencent.mm.kernel.h.ae(n.class);
-    p.j(locala, "MMKernel.service(IMessengerStorage::class.java)");
-    ((n)locala).bbL().b((bv.a)getContactService().Dhl);
-    af.a.b((af.b)getGetContactInterceptor());
-    com.tencent.mm.plugin.ab.a.fmA().b((l.b)getAppMessageInterceptor());
-    ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.c.class)).l(this.Dbi);
+    AppMethodBeat.i(268332);
+    ((com.tencent.mm.plugin.byp.a.c)com.tencent.mm.kernel.h.az(com.tencent.mm.plugin.byp.a.c.class)).removeBypSyncHandler(3);
+    l locall = com.tencent.mm.plugin.openapi.a.gxo();
+    l.b localb = (l.b)getAppMessageInterceptor();
+    locall.XSx.XSy.remove(localb);
+    ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.gamelife.a.c.class)).l(this.IVw);
     resetDB();
-    AppMethodBeat.o(203746);
+    AppMethodBeat.o(268332);
   }
   
   public final void setAvatarPath(String paramString)
   {
-    AppMethodBeat.i(203678);
-    p.k(paramString, "<set-?>");
-    this.wQa = paramString;
-    AppMethodBeat.o(203678);
+    AppMethodBeat.i(268235);
+    s.u(paramString, "<set-?>");
+    this.AmC = paramString;
+    AppMethodBeat.o(268235);
   }
   
   public final void testEnterChattingUI()
   {
-    AppMethodBeat.i(203696);
-    PluginGameLife localPluginGameLife = (PluginGameLife)com.tencent.mm.kernel.h.ag(PluginGameLife.class);
+    AppMethodBeat.i(268256);
+    PluginGameLife localPluginGameLife = (PluginGameLife)com.tencent.mm.kernel.h.az(PluginGameLife.class);
     Context localContext = MMApplicationContext.getContext();
-    p.j(localContext, "MMApplicationContext.getContext()");
-    localPluginGameLife.enterChattingUI(localContext, DeS, DeT, 0, null);
-    AppMethodBeat.o(203696);
+    s.s(localContext, "getContext()");
+    localPluginGameLife.enterChattingUI(localContext, IZj, IZk, 0, null);
+    AppMethodBeat.o(268256);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
-  static final class h
-    implements h.b
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<com.tencent.mm.plugin.gamelife.e.b>
   {
-    public static final h Dfc;
+    public static final c IZm;
     
     static
     {
-      AppMethodBeat.i(203231);
-      Dfc = new h();
-      AppMethodBeat.o(203231);
+      AppMethodBeat.i(267698);
+      IZm = new c();
+      AppMethodBeat.o(267698);
     }
     
-    public final String[] getSQLs()
+    c()
     {
-      AppMethodBeat.i(203229);
-      Object localObject = com.tencent.mm.plugin.gamelife.e.e.DhH;
-      localObject = com.tencent.mm.plugin.gamelife.e.e.dqy();
-      AppMethodBeat.o(203229);
-      return localObject;
+      super();
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/gamelife/PluginGameLife$dealBlackList$1", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListAssociateCallback;", "onDone", "", "isAssociate", "", "isOwnBlack", "onFail", "plugin-gamelife_release"})
-  public static final class m
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/gamelife/PluginGameLife$dealBlackList$1", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListAssociateCallback;", "onDone", "", "isAssociate", "", "isOwnBlack", "onFail", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class d
     implements b.a
   {
-    m(com.tencent.mm.plugin.appbrand.ac.i parami1, com.tencent.mm.plugin.appbrand.ac.i parami2, String paramString, ProgressDialog paramProgressDialog, Context paramContext, int paramInt, c.b paramb, com.tencent.mm.plugin.gamelife.a.e parame) {}
+    d(com.tencent.mm.plugin.appbrand.af.k<Boolean> paramk1, com.tencent.mm.plugin.appbrand.af.k<Boolean> paramk2, String paramString, ProgressDialog paramProgressDialog, PluginGameLife paramPluginGameLife, Context paramContext, int paramInt, c.b paramb, com.tencent.mm.plugin.gamelife.a.e parame) {}
     
-    public final void ac(boolean paramBoolean1, boolean paramBoolean2)
+    public final void au(boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(203884);
-      parami1.value = Boolean.valueOf(paramBoolean2);
-      parami2.value = Boolean.valueOf(paramBoolean1);
-      Log.i("GameLife.PluginGameLife", "isBlackListAssociateWithWAGame userName:%s,isAssociate:%b,isOwnBlack:%b", new Object[] { this.mtC, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-      if ((this.Dfk != null) && (this.Dfk.isShowing()))
+      AppMethodBeat.i(267708);
+      this.IZn.value = Boolean.valueOf(paramBoolean2);
+      paramk2.value = Boolean.valueOf(paramBoolean1);
+      Log.i("GameLife.PluginGameLife", "isBlackListAssociateWithWAGame userName:%s,isAssociate:%b,isOwnBlack:%b", new Object[] { this.pmW, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      if ((this.IZp != null) && (this.IZp.isShowing()))
       {
-        this.Dfk.dismiss();
-        PluginGameLife localPluginGameLife = this.Dfh;
+        this.IZp.dismiss();
+        PluginGameLife localPluginGameLife = jdField_this;
         Context localContext = paramContext;
-        String str = this.mtC;
-        p.j(str, "userName");
+        String str = this.pmW;
+        s.s(str, "userName");
         int i = i;
-        com.tencent.mm.plugin.appbrand.ac.i locali1 = parami1;
-        com.tencent.mm.plugin.appbrand.ac.i locali2 = parami2;
+        com.tencent.mm.plugin.appbrand.af.k localk1 = this.IZn;
+        com.tencent.mm.plugin.appbrand.af.k localk2 = paramk2;
         c.b localb = paramb;
         com.tencent.mm.plugin.gamelife.a.e locale = paramString;
-        p.j(locale, "sessionInfo");
-        PluginGameLife.access$showGameLifeDialog(localPluginGameLife, localContext, str, i, locali1, locali2, localb, locale);
+        s.s(locale, "sessionInfo");
+        PluginGameLife.access$showGameLifeDialog(localPluginGameLife, localContext, str, i, localk1, localk2, localb, locale);
       }
-      AppMethodBeat.o(203884);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/gamelife/PluginGameLife$initGameLifeSingleChatInfoUI$1", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListAssociateCallback;", "onDone", "", "isAssociate", "", "isOwnBlack", "onFail", "plugin-gamelife_release"})
-  public static final class q
-    implements b.a
-  {
-    q(ProgressDialog paramProgressDialog, c.a parama, Context paramContext) {}
-    
-    public final void ac(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      AppMethodBeat.i(204004);
-      Log.i("GameLife.PluginGameLife", "isBlackListAssociateWithWAGame isAssociate:%b,isOwnBlack:%b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-      if ((this.Dfq != null) && (this.Dfq.isShowing())) {
-        this.Dfq.dismiss();
-      }
-      c.a locala = parama;
-      if (locala != null)
-      {
-        locala.ac(paramBoolean1, paramBoolean2);
-        AppMethodBeat.o(204004);
-        return;
-      }
-      AppMethodBeat.o(204004);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class r
-    implements Runnable
-  {
-    r(PluginGameLife paramPluginGameLife) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(204399);
-      PluginGameLife.access$reportGameChatUnreadState(this.Dfh);
-      AppMethodBeat.o(204399);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
-  static final class s<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    s(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
-  static final class t<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    t(String paramString1, String paramString2, Integer paramInteger, Boolean paramBoolean1, Boolean paramBoolean2, int paramInt, long paramLong, String paramString3) {}
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "buttonView", "Landroid/widget/CompoundButton;", "kotlin.jvm.PlatformType", "isChecked", "", "onCheckedChanged"})
-  static final class u
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    u(com.tencent.mm.plugin.appbrand.ac.i parami) {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      AppMethodBeat.i(204333);
-      this.Dfy.value = Boolean.valueOf(paramBoolean);
-      AppMethodBeat.o(204333);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
-  static final class v
-    implements g.a
-  {
-    v(PluginGameLife paramPluginGameLife, c.b paramb, com.tencent.mm.plugin.appbrand.ac.i parami1, com.tencent.mm.ui.widget.a.g paramg, com.tencent.mm.plugin.appbrand.ac.i parami2, com.tencent.mm.plugin.appbrand.ac.i parami3, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(203569);
-      Object localObject1 = paramb;
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject2 = parami1.value;
-        p.j(localObject2, "isBlackList.value");
-        ((c.b)localObject1).oa(((Boolean)localObject2).booleanValue());
-      }
-      localg.bYF();
-      boolean bool;
-      if (parami2 != null)
-      {
-        localObject1 = parami2.value;
-        p.j(localObject1, "isAssociateWithWAGame.value");
-        if (((Boolean)localObject1).booleanValue())
-        {
-          localObject1 = locali.value;
-          p.j(localObject1, "dealWaGameAccountTogetherCheckBox.value");
-          if (((Boolean)localObject1).booleanValue()) {
-            bool = true;
-          }
-        }
-      }
-      for (;;)
-      {
-        localObject1 = this.Dfh;
-        localObject2 = parame.getSessionId();
-        p.j(localObject2, "sessionInfo.sessionId");
-        String str1 = parame.getSelfUsername();
-        p.j(str1, "sessionInfo.selfUsername");
-        String str2 = parame.apJ();
-        p.j(str2, "sessionInfo.talker");
-        PluginGameLife.access$reportSingleChatInfoUIDetail((PluginGameLife)localObject1, 7, 4L, (String)localObject2, str1, str2, Boolean.valueOf(bool), Integer.valueOf(paramInt), (Boolean)parami2.value);
-        AppMethodBeat.o(203569);
-        return;
-        bool = false;
-        continue;
-        Log.e("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame addBlackList isAssociateWithWAGame null hideDialog");
-        bool = false;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
-  static final class w
-    implements g.a
-  {
-    w(PluginGameLife paramPluginGameLife, com.tencent.mm.ui.widget.a.g paramg, com.tencent.mm.plugin.appbrand.ac.i parami1, com.tencent.mm.plugin.appbrand.ac.i parami2, String paramString, com.tencent.mm.plugin.appbrand.ac.i parami3, Context paramContext, c.b paramb, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(203639);
-      localg.bYF();
-      final aa.a locala = new aa.a();
-      locala.aaBx = false;
-      Object localObject;
-      boolean bool;
-      if (parami2 != null)
-      {
-        localObject = parami2.value;
-        p.j(localObject, "isAssociateWithWAGame.value");
-        if (((Boolean)localObject).booleanValue())
-        {
-          localObject = locali.value;
-          p.j(localObject, "dealWaGameAccountTogetherCheckBox.value");
-          if (((Boolean)localObject).booleanValue())
-          {
-            bool = true;
-            locala.aaBx = bool;
-          }
-        }
-      }
-      for (;;)
-      {
-        ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, false, locala.aaBx, (b.b)new b.b()
-        {
-          public final void oa(boolean paramAnonymousBoolean)
-          {
-            AppMethodBeat.i(203288);
-            Log.i("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame removeBlackList userName:%s isSuccess:%b, dealWaGameTogether:%b", new Object[] { this.Dfz.mtC, Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(locala.aaBx) });
-            Object localObject1;
-            if (paramAnonymousBoolean)
-            {
-              localObject1 = this.Dfz.Dfi;
-              if (!((Boolean)this.Dfz.Dfi.value).booleanValue())
-              {
-                paramAnonymousBoolean = true;
-                ((com.tencent.mm.plugin.appbrand.ac.i)localObject1).value = Boolean.valueOf(paramAnonymousBoolean);
-              }
-            }
-            for (;;)
-            {
-              localObject1 = this.Dfz.Dfm;
-              Object localObject2 = this.Dfz.Dfi.value;
-              p.j(localObject2, "isBlackList.value");
-              ((c.b)localObject1).oa(((Boolean)localObject2).booleanValue());
-              AppMethodBeat.o(203288);
-              return;
-              paramAnonymousBoolean = false;
-              break;
-              Toast.makeText(this.Dfz.$context, d.f.DgD, 0).show();
-            }
-          }
-        });
-        localObject = this.Dfh;
-        String str1 = parame.getSessionId();
-        p.j(str1, "sessionInfo.sessionId");
-        String str2 = parame.getSelfUsername();
-        p.j(str2, "sessionInfo.selfUsername");
-        String str3 = parame.apJ();
-        p.j(str3, "sessionInfo.talker");
-        PluginGameLife.access$reportSingleChatInfoUIDetail((PluginGameLife)localObject, 7, 64L, str1, str2, str3, Boolean.valueOf(locala.aaBx), Integer.valueOf(paramInt), (Boolean)parami2.value);
-        AppMethodBeat.o(203639);
-        return;
-        bool = false;
-        break;
-        Log.e("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame removeBlackList isAssociateWithWAGame null");
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
-  static final class x
-    implements g.a
-  {
-    x(PluginGameLife paramPluginGameLife, com.tencent.mm.ui.widget.a.g paramg, c.b paramb, com.tencent.mm.plugin.appbrand.ac.i parami1, com.tencent.mm.plugin.appbrand.ac.i parami2, com.tencent.mm.plugin.appbrand.ac.i parami3, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(202950);
-      localg.bYF();
-      Object localObject1 = paramb;
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject2 = parami1.value;
-        p.j(localObject2, "isBlackList.value");
-        ((c.b)localObject1).oa(((Boolean)localObject2).booleanValue());
-      }
-      boolean bool;
-      if (parami2 != null)
-      {
-        localObject1 = parami2.value;
-        p.j(localObject1, "isAssociateWithWAGame.value");
-        if (((Boolean)localObject1).booleanValue())
-        {
-          localObject1 = locali.value;
-          p.j(localObject1, "dealWaGameAccountTogetherCheckBox.value");
-          if (((Boolean)localObject1).booleanValue()) {
-            bool = true;
-          }
-        }
-      }
-      for (;;)
-      {
-        localObject1 = this.Dfh;
-        localObject2 = parame.getSessionId();
-        p.j(localObject2, "sessionInfo.sessionId");
-        String str1 = parame.getSelfUsername();
-        p.j(str1, "sessionInfo.selfUsername");
-        String str2 = parame.apJ();
-        p.j(str2, "sessionInfo.talker");
-        PluginGameLife.access$reportSingleChatInfoUIDetail((PluginGameLife)localObject1, 6, 4L, (String)localObject2, str1, str2, Boolean.valueOf(bool), Integer.valueOf(paramInt), (Boolean)parami2.value);
-        AppMethodBeat.o(202950);
-        return;
-        bool = false;
-        continue;
-        Log.e("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame addBlackList isAssociateWithWAGame null hideDialog");
-        bool = false;
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
-  static final class y
-    implements g.a
-  {
-    y(PluginGameLife paramPluginGameLife, com.tencent.mm.ui.widget.a.g paramg, com.tencent.mm.plugin.appbrand.ac.i parami1, com.tencent.mm.plugin.appbrand.ac.i parami2, String paramString, com.tencent.mm.plugin.appbrand.ac.i parami3, Context paramContext, c.b paramb, com.tencent.mm.plugin.gamelife.a.e parame, int paramInt) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(202679);
-      localg.bYF();
-      final aa.a locala = new aa.a();
-      locala.aaBx = false;
-      Object localObject;
-      boolean bool;
-      if (parami2 != null)
-      {
-        localObject = parami2.value;
-        p.j(localObject, "isAssociateWithWAGame.value");
-        if (((Boolean)localObject).booleanValue())
-        {
-          localObject = locali.value;
-          p.j(localObject, "dealWaGameAccountTogetherCheckBox.value");
-          if (((Boolean)localObject).booleanValue())
-          {
-            bool = true;
-            locala.aaBx = bool;
-          }
-        }
-      }
-      for (;;)
-      {
-        ((com.tencent.mm.plugin.gamelife.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, true, locala.aaBx, (b.b)new b.b()
-        {
-          public final void oa(boolean paramAnonymousBoolean)
-          {
-            AppMethodBeat.i(203890);
-            Log.i("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame addBlackList userName:%s isSuccess:%b, dealWaGameTogether:%b ", new Object[] { this.DfB.mtC, Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(locala.aaBx) });
-            Object localObject1;
-            if (paramAnonymousBoolean)
-            {
-              localObject1 = this.DfB.Dfi;
-              if (!((Boolean)this.DfB.Dfi.value).booleanValue())
-              {
-                paramAnonymousBoolean = true;
-                ((com.tencent.mm.plugin.appbrand.ac.i)localObject1).value = Boolean.valueOf(paramAnonymousBoolean);
-              }
-            }
-            for (;;)
-            {
-              localObject1 = this.DfB.Dfm;
-              Object localObject2 = this.DfB.Dfi.value;
-              p.j(localObject2, "isBlackList.value");
-              ((c.b)localObject1).oa(((Boolean)localObject2).booleanValue());
-              AppMethodBeat.o(203890);
-              return;
-              paramAnonymousBoolean = false;
-              break;
-              Toast.makeText(this.DfB.$context, d.f.Dgx, 0).show();
-            }
-          }
-        });
-        localObject = this.Dfh;
-        String str1 = parame.getSessionId();
-        p.j(str1, "sessionInfo.sessionId");
-        String str2 = parame.getSelfUsername();
-        p.j(str2, "sessionInfo.selfUsername");
-        String str3 = parame.apJ();
-        p.j(str3, "sessionInfo.talker");
-        PluginGameLife.access$reportSingleChatInfoUIDetail((PluginGameLife)localObject, 6, 65L, str1, str2, str3, Boolean.valueOf(locala.aaBx), Integer.valueOf(paramInt), (Boolean)parami2.value);
-        AppMethodBeat.o(202679);
-        return;
-        bool = false;
-        break;
-        Log.e("GameLife.PluginGameLife", "setBlackListAssociateWithWAGame addBlackList isAssociateWithWAGame null");
-      }
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
-  static final class z
-    implements MStorage.IOnStorageChange
-  {
-    z(PluginGameLife paramPluginGameLife) {}
-    
-    public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
-    {
-      AppMethodBeat.i(204505);
-      if ((paramMStorageEventData.obj instanceof com.tencent.mm.plugin.gamelife.e.a)) {
-        com.tencent.e.h.ZvG.d((Runnable)new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(203505);
-            PluginGameLife.access$reportGameChatUnreadState(this.DfC.Dfh);
-            AppMethodBeat.o(203505);
-          }
-        }, "reportGameChatUnreadState");
-      }
-      AppMethodBeat.o(204505);
+      AppMethodBeat.o(267708);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.PluginGameLife
  * JD-Core Version:    0.7.0.1
  */

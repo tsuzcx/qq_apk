@@ -1,6 +1,6 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.a.ag;
 import com.tencent.pb.common.b.a.a.a.h;
@@ -11,9 +11,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class k
   extends d
 {
-  public String CSB;
-  public int DVO;
-  public long NXM;
+  public String IMR;
+  public int JMX;
+  public long UGt;
   
   public k(String paramString1, int paramInt, long paramLong, String paramString2)
   {
@@ -23,16 +23,16 @@ public final class k
     try
     {
       localh.groupId = paramString1;
-      this.CSB = paramString1;
+      this.IMR = paramString1;
       localh.roomId = paramInt;
-      this.DVO = paramInt;
-      localh.DPJ = paramLong;
-      this.NXM = paramLong;
-      localh.jke = paramString2;
+      this.JMX = paramInt;
+      localh.Hnt = paramLong;
+      this.UGt = paramLong;
+      localh.lMI = paramString2;
       localh.timestamp = System.currentTimeMillis();
-      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.DPJ), localh.groupId, localh.jke, Long.valueOf(localh.timestamp) });
-      aAc(3);
-      aAd(c.iuI().bEi(paramString1));
+      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.Hnt), localh.groupId, localh.lMI, Long.valueOf(localh.timestamp) });
+      aGP(3);
+      aGQ(c.ked().bGH(paramString1));
       c(245, localh);
       AppMethodBeat.o(62540);
       return;
@@ -46,7 +46,7 @@ public final class k
     }
   }
   
-  public final Object dn(byte[] paramArrayOfByte)
+  public final Object dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62541);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -74,14 +74,14 @@ public final class k
     return 800;
   }
   
-  public final String ikF()
+  public final String jQW()
   {
     return "CsCmd.Cmd_V_CSSubscribeLargeVideoReq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.k
  * JD-Core Version:    0.7.0.1
  */

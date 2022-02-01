@@ -13,7 +13,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import javax.annotation.concurrent.GuardedBy;
 
 public final class Tasks
 {
@@ -268,16 +267,11 @@ public final class Tasks
   {
     private final Object mLock;
     private final zzu<Void> zzafh;
-    @GuardedBy("mLock")
     private Exception zzagh;
     private final int zzagl;
-    @GuardedBy("mLock")
     private int zzagm;
-    @GuardedBy("mLock")
     private int zzagn;
-    @GuardedBy("mLock")
     private int zzago;
-    @GuardedBy("mLock")
     private boolean zzagp;
     
     public zzc(int paramInt, zzu<Void> paramzzu)
@@ -289,7 +283,6 @@ public final class Tasks
       AppMethodBeat.o(13355);
     }
     
-    @GuardedBy("mLock")
     private final void zzdu()
     {
       AppMethodBeat.i(13359);
@@ -356,7 +349,7 @@ public final class Tasks
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.tasks.Tasks
  * JD-Core Version:    0.7.0.1
  */

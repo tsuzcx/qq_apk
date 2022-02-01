@@ -1,66 +1,73 @@
 package com.tencent.mm.plugin.finder.live.viewmodel.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ayl;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.protocal.protobuf.bfl;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUserDesc;", "", "descType", "", "badgeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;", "(ILcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;)V", "getBadgeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;", "setBadgeInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;)V", "getDescType", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-base_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/viewmodel/data/FinderLiveLinkMicUserDesc;", "", "descType", "", "badgeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;", "(ILcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;)V", "getBadgeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;", "setBadgeInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveBadgeInfo;)V", "getDescType", "()I", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder-base_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
 {
-  public final int myb;
-  public ayl zeM;
+  public bfl EbL;
+  public final int prf;
   
-  public i(int paramInt, ayl paramayl)
+  public i(int paramInt, bfl parambfl)
   {
-    this.myb = paramInt;
-    this.zeM = paramayl;
+    this.prf = paramInt;
+    this.EbL = parambfl;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(260439);
-    if (this != paramObject)
+    AppMethodBeat.i(356583);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof i))
-      {
-        paramObject = (i)paramObject;
-        if ((this.myb != paramObject.myb) || (!p.h(this.zeM, paramObject.zeM))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(260439);
+      AppMethodBeat.o(356583);
       return true;
     }
-    AppMethodBeat.o(260439);
-    return false;
+    if (!(paramObject instanceof i))
+    {
+      AppMethodBeat.o(356583);
+      return false;
+    }
+    paramObject = (i)paramObject;
+    if (this.prf != paramObject.prf)
+    {
+      AppMethodBeat.o(356583);
+      return false;
+    }
+    if (!s.p(this.EbL, paramObject.EbL))
+    {
+      AppMethodBeat.o(356583);
+      return false;
+    }
+    AppMethodBeat.o(356583);
+    return true;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(260436);
-    int j = this.myb;
-    ayl localayl = this.zeM;
-    if (localayl != null) {}
-    for (int i = localayl.hashCode();; i = 0)
+    AppMethodBeat.i(356579);
+    int j = this.prf;
+    if (this.EbL == null) {}
+    for (int i = 0;; i = this.EbL.hashCode())
     {
-      AppMethodBeat.o(260436);
+      AppMethodBeat.o(356579);
       return i + j * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(260432);
-    String str = "FinderLiveLinkMicUserDesc(descType=" + this.myb + ", badgeInfo=" + this.zeM + ")";
-    AppMethodBeat.o(260432);
+    AppMethodBeat.i(356570);
+    String str = "FinderLiveLinkMicUserDesc(descType=" + this.prf + ", badgeInfo=" + this.EbL + ')';
+    AppMethodBeat.o(356570);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.data.i
  * JD-Core Version:    0.7.0.1
  */

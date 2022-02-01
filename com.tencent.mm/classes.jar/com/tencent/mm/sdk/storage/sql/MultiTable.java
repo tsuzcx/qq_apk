@@ -1,13 +1,11 @@
 package com.tencent.mm.sdk.storage.sql;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.sql.ISqlCondition;
-import com.tencent.mm.sdk.sql.ISqlObj.TableJoinOperation;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.m;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.p;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sdk/storage/sql/MultiTable;", "Lcom/tencent/mm/sdk/storage/sql/Table;", "table1", "", "table2", "operation", "Lcom/tencent/mm/sdk/sql/ISqlObj$TableJoinOperation;", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/sdk/sql/ISqlObj$TableJoinOperation;)V", "onCondition", "Lcom/tencent/mm/sdk/sql/ISqlCondition;", "getOnCondition", "()Lcom/tencent/mm/sdk/sql/ISqlCondition;", "setOnCondition", "(Lcom/tencent/mm/sdk/sql/ISqlCondition;)V", "getOperation", "()Lcom/tencent/mm/sdk/sql/ISqlObj$TableJoinOperation;", "getTable1", "()Ljava/lang/String;", "getTable2", "on", "", "condition", "params", "", "()[Ljava/lang/String;", "toSql", "wechat-sdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/sdk/storage/sql/MultiTable;", "Lcom/tencent/mm/sdk/storage/sql/Table;", "table1", "", "table2", "operation", "Lcom/tencent/mm/sdk/storage/sql/ISqlObj$TableJoinOperation;", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/sdk/storage/sql/ISqlObj$TableJoinOperation;)V", "onCondition", "Lcom/tencent/mm/sdk/storage/sql/ISqlCondition;", "getOnCondition", "()Lcom/tencent/mm/sdk/storage/sql/ISqlCondition;", "setOnCondition", "(Lcom/tencent/mm/sdk/storage/sql/ISqlCondition;)V", "getOperation", "()Lcom/tencent/mm/sdk/storage/sql/ISqlObj$TableJoinOperation;", "getTable1", "()Ljava/lang/String;", "getTable2", "on", "condition", "params", "", "()[Ljava/lang/String;", "toSql", "wechat-sdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MultiTable
   extends Table
 {
@@ -18,11 +16,11 @@ public final class MultiTable
   
   public MultiTable(String paramString1, String paramString2, ISqlObj.TableJoinOperation paramTableJoinOperation)
   {
-    AppMethodBeat.i(186394);
+    AppMethodBeat.i(244434);
     this.table1 = paramString1;
     this.table2 = paramString2;
     this.operation = paramTableJoinOperation;
-    AppMethodBeat.o(186394);
+    AppMethodBeat.o(244434);
   }
   
   public final ISqlCondition getOnCondition()
@@ -45,26 +43,27 @@ public final class MultiTable
     return this.table2;
   }
   
-  public final void on(ISqlCondition paramISqlCondition)
+  public final MultiTable on(ISqlCondition paramISqlCondition)
   {
-    AppMethodBeat.i(186387);
-    p.k(paramISqlCondition, "condition");
+    AppMethodBeat.i(244471);
+    s.u(paramISqlCondition, "condition");
     this.onCondition = paramISqlCondition;
-    AppMethodBeat.o(186387);
+    AppMethodBeat.o(244471);
+    return this;
   }
   
   public final String[] params()
   {
-    AppMethodBeat.i(186389);
+    AppMethodBeat.i(244474);
     Object localObject = this.onCondition;
-    if (localObject != null)
+    if (localObject == null)
     {
-      localObject = ((ISqlCondition)localObject).params();
-      AppMethodBeat.o(186389);
-      return localObject;
+      AppMethodBeat.o(244474);
+      return null;
     }
-    AppMethodBeat.o(186389);
-    return null;
+    localObject = ((ISqlCondition)localObject).params();
+    AppMethodBeat.o(244474);
+    return localObject;
   }
   
   public final void setOnCondition(ISqlCondition paramISqlCondition)
@@ -74,42 +73,42 @@ public final class MultiTable
   
   public final String toSql()
   {
-    AppMethodBeat.i(186383);
+    AppMethodBeat.i(244460);
     Object localObject1 = this.onCondition;
-    if (localObject1 != null)
-    {
-      localObject2 = " ON (" + ((ISqlCondition)localObject1).toSql() + ')';
-      localObject1 = localObject2;
-      if (localObject2 != null) {}
-    }
-    else
-    {
+    if (localObject1 == null) {
       localObject1 = "";
     }
-    Object localObject2 = this.operation;
-    switch (MultiTable.WhenMappings.$EnumSwitchMapping$0[localObject2.ordinal()])
+    for (;;)
     {
-    default: 
-      localObject1 = new m();
-      AppMethodBeat.o(186383);
-      throw ((Throwable)localObject1);
-    case 1: 
-      localObject1 = this.table1 + " INNER JOIN " + this.table2 + (String)localObject1;
-      AppMethodBeat.o(186383);
-      return localObject1;
-    case 2: 
-      localObject1 = this.table1 + " LEFT JOIN " + this.table2 + (String)localObject1;
-      AppMethodBeat.o(186383);
-      return localObject1;
+      Object localObject2 = this.operation;
+      switch (WhenMappings.$EnumSwitchMapping$0[localObject2.ordinal()])
+      {
+      default: 
+        localObject1 = new p();
+        AppMethodBeat.o(244460);
+        throw ((Throwable)localObject1);
+        localObject2 = " ON (" + ((ISqlCondition)localObject1).toSql() + ')';
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        break;
+      }
     }
+    localObject1 = this.table1 + " INNER JOIN " + this.table2 + (String)localObject1;
+    AppMethodBeat.o(244460);
+    return localObject1;
+    localObject1 = this.table1 + " LEFT JOIN " + this.table2 + (String)localObject1;
+    AppMethodBeat.o(244460);
+    return localObject1;
     localObject1 = this.table1 + " RIGHT JOIN " + this.table2 + (String)localObject1;
-    AppMethodBeat.o(186383);
+    AppMethodBeat.o(244460);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.sql.MultiTable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,9 @@
 package com.tencent.mm.plugin.dbbackup;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
@@ -23,8 +20,10 @@ import com.tencent.mm.plugin.dbbackup.a.a.b;
 import com.tencent.mm.plugin.dbbackup.a.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.k;
+import com.tencent.mm.ui.widget.a.e;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -33,22 +32,22 @@ public class DBRecoveryUI
   extends MMActivity
   implements a.b
 {
-  private static final int[] ucx = { 0, 5, 60, 75, 95, 100, 100 };
+  private static final int[] xiB = { 0, 5, 60, 75, 95, 100, 100 };
   private int mScene;
-  private ProgressBar njo;
-  private View pRh;
-  private com.tencent.mm.plugin.dbbackup.a.a ucq;
-  private View ucr;
-  private TextView ucs;
-  private View uct;
-  private int ucu;
-  private boolean ucv;
-  private DialogInterface.OnClickListener ucw;
+  private ProgressBar qgC;
+  private View sVQ;
+  private DialogInterface.OnClickListener xiA;
+  private com.tencent.mm.plugin.dbbackup.a.a xiu;
+  private View xiv;
+  private TextView xiw;
+  private View xix;
+  private int xiy;
+  private boolean xiz;
   
   public DBRecoveryUI()
   {
     AppMethodBeat.i(23063);
-    this.ucw = new DialogInterface.OnClickListener()
+    this.xiA = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -60,104 +59,104 @@ public class DBRecoveryUI
           AppMethodBeat.o(23052);
           return;
         }
-        d.cPD();
+        d.dtZ();
         AppMethodBeat.o(23052);
       }
     };
     AppMethodBeat.o(23063);
   }
   
-  private void cPu()
+  private void dtP()
   {
     AppMethodBeat.i(23066);
-    if (this.ucq != null)
+    if (this.xiu != null)
     {
       Log.e("MicroMsg.DBRecoveryUI", "Recovery task has already started.");
       AppMethodBeat.o(23066);
       return;
     }
-    this.ucr.setVisibility(8);
-    this.pRh.setVisibility(0);
-    this.uct.setEnabled(true);
-    Object localObject1 = new StringBuilder().append(q.dR(true));
-    com.tencent.mm.kernel.h.aHE();
+    this.xiv.setVisibility(8);
+    this.sVQ.setVisibility(0);
+    this.xix.setEnabled(true);
+    Object localObject1 = new StringBuilder().append(q.eD(true));
+    com.tencent.mm.kernel.h.baC();
     Object localObject2 = g.getMessageDigest(com.tencent.mm.kernel.b.getUin().getBytes()).substring(0, 7).getBytes();
-    localObject1 = com.tencent.mm.kernel.h.aHG().aHk();
-    String str1 = com.tencent.mm.kernel.h.aHG().kcF.getPath();
+    localObject1 = com.tencent.mm.kernel.h.baE().bai();
+    String str1 = com.tencent.mm.kernel.h.baE().mCN.getPath();
     String str2 = str1 + "-recovery";
-    this.ucu = 0;
-    String str3 = com.tencent.mm.kernel.h.aHG().kcB + "dbback/";
+    this.xiy = 0;
+    String str3 = com.tencent.mm.kernel.h.baE().mCJ + "dbback/";
     a.a locala = new a.a();
-    locala.udE = this;
+    locala.xjH = this;
     localObject2 = locala.by((byte[])localObject2).bz((byte[])localObject2);
-    ((a.a)localObject2).udC = new a.d()
+    ((a.a)localObject2).xjF = new a.d()
     {
-      private Collection<String> ucA;
-      private int ucB;
+      private Collection<String> xiE;
+      private int xiF;
       
-      private void cPx()
+      private void dtT()
       {
         AppMethodBeat.i(23058);
-        if (this.ucA == null) {
-          this.ucA = com.tencent.mm.plugin.dbbackup.a.b.cPN();
+        if (this.xiE == null) {
+          this.xiE = com.tencent.mm.plugin.dbbackup.a.b.duk();
         }
         AppMethodBeat.o(23058);
       }
       
-      public final Collection<byte[]> cPy()
+      public final Collection<byte[]> dtU()
       {
         AppMethodBeat.i(23059);
-        cPx();
+        dtT();
         ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.ucA.iterator();
+        Iterator localIterator = this.xiE.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          localArrayList.add(g.V((str + this.ucB).getBytes()));
+          localArrayList.add(g.U((str + this.xiF).getBytes()));
         }
         AppMethodBeat.o(23059);
         return localArrayList;
       }
       
-      public final Collection<byte[]> cPz()
+      public final Collection<byte[]> dtV()
       {
         AppMethodBeat.i(23060);
-        cPx();
+        dtT();
         ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.ucA.iterator();
+        Iterator localIterator = this.xiE.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          localArrayList.add(g.getMessageDigest((str + this.ucB).getBytes()).substring(0, 7).getBytes());
+          localArrayList.add(g.getMessageDigest((str + this.xiF).getBytes()).substring(0, 7).getBytes());
         }
         AppMethodBeat.o(23060);
         return localArrayList;
       }
     };
-    ((a.a)localObject2).udu = ((String)localObject1);
-    ((a.a)localObject2).udt = str1;
-    ((a.a)localObject2).uds = str2;
-    ((a.a)localObject2).udv = (com.tencent.mm.kernel.h.aHG().cachePath + "heavyDetailInfo");
+    ((a.a)localObject2).xjx = ((String)localObject1);
+    ((a.a)localObject2).xjw = str1;
+    ((a.a)localObject2).xjv = str2;
+    ((a.a)localObject2).xjy = (com.tencent.mm.kernel.h.baE().cachePath + "heavyDetailInfo");
     if (this.mScene == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ((a.a)localObject2).udD = bool;
-      this.ucq = ((a.a)localObject2).asN((String)localObject1 + ".sm").asO((String)localObject1 + ".bak").asN(str3 + "corrupted/EnMicroMsg.db.sm").asO(str3 + "corrupted/EnMicroMsg.db.bak").asN(str3 + "EnMicroMsg.db.sm").asO(str3 + "EnMicroMsg.db.bak").cPM();
-      this.ucq.execute(new Void[0]);
-      this.ucv = true;
+      ((a.a)localObject2).xjG = bool;
+      this.xiu = ((a.a)localObject2).amC((String)localObject1 + ".sm").amD((String)localObject1 + ".bak").amC(str3 + "corrupted/EnMicroMsg.db.sm").amD(str3 + "corrupted/EnMicroMsg.db.bak").amC(str3 + "EnMicroMsg.db.sm").amD(str3 + "EnMicroMsg.db.bak").duj();
+      this.xiu.execute(new Void[0]);
+      this.xiz = true;
       AppMethodBeat.o(23066);
       return;
     }
   }
   
-  private void cPv()
+  private void dtQ()
   {
     AppMethodBeat.i(23067);
-    this.uct.setEnabled(false);
-    if (this.ucq != null)
+    this.xix.setEnabled(false);
+    if (this.xiu != null)
     {
-      this.ucq.cancel();
-      this.ucq = null;
+      this.xiu.cancel();
+      this.xiu = null;
       AppMethodBeat.o(23067);
       return;
     }
@@ -165,26 +164,26 @@ public class DBRecoveryUI
     AppMethodBeat.o(23067);
   }
   
-  private static void cPw()
+  private static void dtS()
   {
     AppMethodBeat.i(23073);
-    ao localao = com.tencent.mm.kernel.h.aHG().aHp();
-    localao.i(89, Integer.valueOf(2));
-    localao.hxT();
+    aq localaq = com.tencent.mm.kernel.h.baE().ban();
+    localaq.B(89, Integer.valueOf(2));
+    localaq.iZy();
     AppMethodBeat.o(23073);
   }
   
-  public final void O(long paramLong1, long paramLong2)
+  public final void al(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(23069);
-    this.ucv = false;
-    this.ucq = null;
-    cPw();
-    com.tencent.mm.ui.base.h.a(this, getString(R.l.eAP, new Object[] { Long.valueOf(paramLong2 / 1024L / 1024L), Long.valueOf(paramLong1 / 1024L / 1024L) }), null, false, this.ucw);
+    this.xiz = false;
+    this.xiu = null;
+    dtS();
+    k.a(this, getString(R.l.gDP, new Object[] { Long.valueOf(paramLong2 / 1024L / 1024L), Long.valueOf(paramLong1 / 1024L / 1024L) }), null, false, this.xiA);
     AppMethodBeat.o(23069);
   }
   
-  public final void Y(int paramInt1, int paramInt2, int paramInt3)
+  public final void ap(int paramInt1, int paramInt2, int paramInt3)
   {
     float f1 = 1.0F;
     AppMethodBeat.i(23068);
@@ -198,8 +197,8 @@ public class DBRecoveryUI
     float f2;
     if (paramInt3 > 0)
     {
-      i = ucx[(paramInt1 - 1)];
-      j = ucx[paramInt1];
+      i = xiB[(paramInt1 - 1)];
+      j = xiB[paramInt1];
       f2 = paramInt2 / paramInt3;
       if (f2 <= 1.0F) {
         break label163;
@@ -209,16 +208,16 @@ public class DBRecoveryUI
     {
       f2 = i;
       paramInt3 = (int)(f1 * (j - i) + f2);
-      this.njo.setProgress(paramInt3);
+      this.qgC.setProgress(paramInt3);
       for (;;)
       {
-        this.ucu = paramInt1;
-        String str = getResources().getStringArray(com.tencent.mm.R.c.djN)[(paramInt1 - 1)];
-        this.ucs.setText(String.format(str, new Object[] { Integer.valueOf(paramInt2) }));
+        this.xiy = paramInt1;
+        String str = getResources().getStringArray(com.tencent.mm.R.c.fjO)[(paramInt1 - 1)];
+        this.xiw.setText(String.format(str, new Object[] { Integer.valueOf(paramInt2) }));
         AppMethodBeat.o(23068);
         return;
-        if (this.ucu != paramInt1) {
-          this.njo.setProgress(ucx[(paramInt1 - 1)]);
+        if (this.xiy != paramInt1) {
+          this.qgC.setProgress(xiB[(paramInt1 - 1)]);
         }
       }
       label163:
@@ -226,17 +225,28 @@ public class DBRecoveryUI
     }
   }
   
+  public final void dtR()
+  {
+    AppMethodBeat.i(23072);
+    this.xiz = false;
+    this.xiu = null;
+    Log.e("MicroMsg.DBRecoveryUI", "Recovery failed.");
+    dtS();
+    k.a(this, R.l.gDN, 0, false, this.xiA);
+    AppMethodBeat.o(23072);
+  }
+  
   public int getLayoutId()
   {
-    return R.i.efQ;
+    return R.i.giP;
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(23065);
-    if (this.ucv)
+    if (this.xiz)
     {
-      cPv();
+      dtQ();
       AppMethodBeat.o(23065);
       return;
     }
@@ -247,11 +257,11 @@ public class DBRecoveryUI
   public final void onCanceled()
   {
     AppMethodBeat.i(23071);
-    this.ucv = false;
-    this.ucq = null;
+    this.xiz = false;
+    this.xiu = null;
     Log.i("MicroMsg.DBRecoveryUI", "Recovery cancelled.");
-    cPw();
-    com.tencent.mm.ui.base.h.a(this, R.l.eAM, 0, false, this.ucw);
+    dtS();
+    k.a(this, R.l.gDM, 0, false, this.xiA);
     AppMethodBeat.o(23071);
   }
   
@@ -260,38 +270,38 @@ public class DBRecoveryUI
     AppMethodBeat.i(23064);
     super.onCreate(paramBundle);
     this.mScene = getIntent().getIntExtra("scene", 2);
-    this.ucv = false;
+    this.xiz = false;
     setMMTitle(R.l.data_recovery);
-    this.ucr = findViewById(R.h.start_recover);
-    this.pRh = findViewById(R.h.dEU);
-    this.njo = ((ProgressBar)findViewById(R.h.progress_bar));
-    this.ucs = ((TextView)findViewById(R.h.dRD));
+    this.xiv = findViewById(R.h.start_recover);
+    this.sVQ = findViewById(R.h.fFY);
+    this.qgC = ((ProgressBar)findViewById(R.h.progress_bar));
+    this.xiw = ((TextView)findViewById(R.h.fTF));
     findViewById(R.h.start_btn).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(23054);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/dbbackup/DBRecoveryUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        if (com.tencent.mm.kernel.h.aHG().aHk() == null)
+        localb.cH(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/dbbackup/DBRecoveryUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+        if (com.tencent.mm.kernel.h.baE().bai() == null)
         {
-          com.tencent.mm.ui.base.h.p(DBRecoveryUI.this, R.l.eAO, 0);
+          k.s(DBRecoveryUI.this, R.l.gDO, 0);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/dbbackup/DBRecoveryUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(23054);
           return;
         }
         if (DBRecoveryUI.a(DBRecoveryUI.this) != 0) {
-          com.tencent.mm.ui.base.h.a(DBRecoveryUI.this, R.l.eAK, 0, R.l.eAR, R.l.eAL, false, new DialogInterface.OnClickListener()
+          k.a(DBRecoveryUI.this, R.l.gDK, 0, R.l.gDR, R.l.gDL, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(23053);
-              com.tencent.mm.plugin.report.f.Iyx.idkeyStat(873L, 25L, 1L, false);
+              com.tencent.mm.plugin.report.f.Ozc.idkeyStat(873L, 25L, 1L, false);
               DBRecoveryUI.d(DBRecoveryUI.this);
               AppMethodBeat.o(23053);
             }
-          }, null, R.e.dke);
+          }, null, R.e.fkf);
         }
         for (;;)
         {
@@ -302,83 +312,45 @@ public class DBRecoveryUI
         }
       }
     });
-    this.uct = findViewById(R.h.cancel_btn);
-    this.uct.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(23055);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bn(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/dbbackup/DBRecoveryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-        DBRecoveryUI.e(DBRecoveryUI.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/dbbackup/DBRecoveryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(23055);
-      }
-    });
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(23056);
-        if (DBRecoveryUI.f(DBRecoveryUI.this)) {
-          DBRecoveryUI.e(DBRecoveryUI.this);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(23056);
-          return true;
-          DBRecoveryUI.this.finish();
-        }
-      }
-    });
+    this.xix = findViewById(R.h.cancel_btn);
+    this.xix.setOnClickListener(new DBRecoveryUI.3(this));
+    setBackBtn(new DBRecoveryUI.4(this));
     if (this.mScene == 0) {
-      cPu();
+      dtP();
     }
-    com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, this.mScene + 51, 1L, true);
-    com.tencent.mm.plugin.report.f.Iyx.idkeyStat(873L, 14L, 1L, false);
+    com.tencent.mm.plugin.report.f.Ozc.idkeyStat(181L, this.mScene + 51, 1L, true);
+    com.tencent.mm.plugin.report.f.Ozc.idkeyStat(873L, 14L, 1L, false);
     if (this.mScene == 2) {
-      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(873L, 15L, 1L, false);
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(873L, 15L, 1L, false);
     }
     AppMethodBeat.o(23064);
-  }
-  
-  public final void onFailure()
-  {
-    AppMethodBeat.i(23072);
-    this.ucv = false;
-    this.ucq = null;
-    Log.e("MicroMsg.DBRecoveryUI", "Recovery failed.");
-    cPw();
-    com.tencent.mm.ui.base.h.a(this, R.l.eAN, 0, false, this.ucw);
-    AppMethodBeat.o(23072);
   }
   
   public final void onSuccess()
   {
     AppMethodBeat.i(23070);
-    this.ucv = false;
-    this.ucq = null;
+    this.xiz = false;
+    this.xiu = null;
     Log.i("MicroMsg.DBRecoveryUI", "Recovery succeeded");
-    final com.tencent.mm.ui.widget.a.d locald = com.tencent.mm.ui.base.h.a(this, R.l.eAQ, 0, false, new DialogInterface.OnClickListener()
+    final e locale = k.a(this, R.l.gDQ, 0, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(23061);
         DBRecoveryUI.this.finish();
-        d.cPD();
+        d.dtZ();
         AppMethodBeat.o(23061);
       }
     });
-    if (locald != null) {
+    if (locale != null) {
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(23062);
-          locald.dismiss();
+          locale.dismiss();
           DBRecoveryUI.this.finish();
-          d.cPD();
+          d.dtZ();
           AppMethodBeat.o(23062);
         }
       }, 5000L);
@@ -394,7 +366,7 @@ public class DBRecoveryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.DBRecoveryUI
  * JD-Core Version:    0.7.0.1
  */

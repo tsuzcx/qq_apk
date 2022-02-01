@@ -1,6 +1,5 @@
 package com.google.android.gms.internal.measurement;
 
-import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.job.JobInfo;
@@ -61,7 +60,6 @@ public final class zzjn
     return localObject;
   }
   
-  @TargetApi(24)
   private final void zzkl()
   {
     AppMethodBeat.i(1924);
@@ -77,9 +75,9 @@ public final class zzjn
     zzch();
     AlarmManager localAlarmManager = this.zzyi;
     Object localObject = zzek();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/google/android/gms/internal/measurement/zzjn", "cancel", "()V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
-    localAlarmManager.cancel((PendingIntent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/google/android/gms/internal/measurement/zzjn", "cancel", "()V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    localAlarmManager.cancel((PendingIntent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localAlarmManager, "com/google/android/gms/internal/measurement/zzjn", "cancel", "()V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
     this.zzapy.cancel();
     if (Build.VERSION.SDK_INT >= 24) {
@@ -132,9 +130,9 @@ public final class zzjn
     AppMethodBeat.i(1923);
     AlarmManager localAlarmManager = this.zzyi;
     Object localObject = zzek();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
-    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/google/android/gms/internal/measurement/zzjn", "zzhf", "()Z", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
-    localAlarmManager.cancel((PendingIntent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().cG(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localAlarmManager, ((com.tencent.mm.hellhoundlib.b.a)localObject).aYi(), "com/google/android/gms/internal/measurement/zzjn", "zzhf", "()Z", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    localAlarmManager.cancel((PendingIntent)((com.tencent.mm.hellhoundlib.b.a)localObject).sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(localAlarmManager, "com/google/android/gms/internal/measurement/zzjn", "zzhf", "()Z", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
     if (Build.VERSION.SDK_INT >= 24) {
       zzkl();
@@ -145,7 +143,7 @@ public final class zzjn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjn
  * JD-Core Version:    0.7.0.1
  */

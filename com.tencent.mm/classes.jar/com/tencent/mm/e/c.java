@@ -14,147 +14,147 @@ import android.graphics.RectF;
 import android.graphics.Region.Op;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.a.c;
+import com.tencent.mm.bo.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.view.b.a.b;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
 
 public final class c
   extends b<com.tencent.mm.cache.a>
 {
-  public Rect eYz;
-  private int fkQ;
-  private int fkR;
-  private int fkS;
-  private Matrix fkT;
-  RectF fkU;
-  RectF fkV;
-  RectF fkW;
-  RectF fkX;
-  public final Rect fkY;
-  public com.tencent.mm.ab.a fkZ;
-  boolean fla;
-  private boolean flb;
-  public com.tencent.mm.c.a flc;
-  g fld;
-  boolean fle;
-  boolean flf;
-  boolean flg;
-  boolean flh;
-  boolean fli;
-  public boolean flj;
-  float flk;
-  float fll;
-  float flm;
-  float fln;
-  float flo;
-  float flp;
-  public ValueAnimator flq;
-  public Rect flr;
-  public int fls;
-  public boolean flt;
+  public Rect hbZ;
+  float hpA;
+  float hpB;
+  float hpC;
+  public ValueAnimator hpD;
+  public Rect hpE;
+  public int hpF;
+  public boolean hpG;
+  private int hpd;
+  private int hpe;
+  private int hpf;
+  private Matrix hpg;
+  RectF hph;
+  RectF hpi;
+  RectF hpj;
+  RectF hpk;
+  public final Rect hpl;
+  public com.tencent.mm.ab.a hpm;
+  boolean hpn;
+  private boolean hpo;
+  public com.tencent.mm.c.a hpp;
+  g hpq;
+  boolean hpr;
+  boolean hps;
+  boolean hpt;
+  boolean hpu;
+  boolean hpv;
+  public boolean hpw;
+  float hpx;
+  float hpy;
+  float hpz;
   
   public c()
   {
     AppMethodBeat.i(9136);
-    this.fkQ = ((int)MMApplicationContext.getResources().getDimension(a.c.box_padding));
-    this.fkR = ((int)MMApplicationContext.getResources().getDimension(a.c.feature_select_layout_height));
-    this.fkS = ((int)MMApplicationContext.getResources().getDimension(a.c.crop_rotation_layout_height));
-    this.fkT = new Matrix();
-    this.fkY = new Rect();
-    this.fla = false;
-    this.flb = false;
-    this.fle = false;
-    this.flf = false;
-    this.flg = false;
-    this.flh = false;
-    this.fli = false;
-    this.flj = true;
-    this.flr = new Rect();
-    this.fls = 0;
-    this.flt = false;
+    this.hpd = ((int)MMApplicationContext.getResources().getDimension(a.c.box_padding));
+    this.hpe = ((int)MMApplicationContext.getResources().getDimension(a.c.feature_select_layout_height));
+    this.hpf = ((int)MMApplicationContext.getResources().getDimension(a.c.crop_rotation_layout_height));
+    this.hpg = new Matrix();
+    this.hpl = new Rect();
+    this.hpn = false;
+    this.hpo = false;
+    this.hpr = false;
+    this.hps = false;
+    this.hpt = false;
+    this.hpu = false;
+    this.hpv = false;
+    this.hpw = true;
+    this.hpE = new Rect();
+    this.hpF = 0;
+    this.hpG = false;
     AppMethodBeat.o(9136);
   }
   
-  private boolean acJ()
+  private boolean aEJ()
   {
-    return (this.flh) || (this.flf) || (this.flg) || (this.fli);
+    return (this.hpu) || (this.hps) || (this.hpt) || (this.hpv);
   }
   
-  public final void a(com.tencent.mm.ca.b paramb, Matrix paramMatrix, Rect paramRect)
+  public final void a(com.tencent.mm.bt.b paramb, Matrix paramMatrix, Rect paramRect)
   {
     AppMethodBeat.i(9137);
     super.a(paramb, paramMatrix, paramRect);
-    this.eYz = new Rect();
-    this.fkV = new RectF();
-    this.fkU = new RectF();
-    this.fkW = new RectF();
-    this.fkX = new RectF();
-    this.fkZ = new com.tencent.mm.ab.a(this.eYz);
-    this.flc = new com.tencent.mm.c.a(this);
+    this.hbZ = new Rect();
+    this.hpi = new RectF();
+    this.hph = new RectF();
+    this.hpj = new RectF();
+    this.hpk = new RectF();
+    this.hpm = new com.tencent.mm.ab.a(this.hbZ);
+    this.hpp = new com.tencent.mm.c.a(this);
     AppMethodBeat.o(9137);
   }
   
-  public final void acB()
+  public final void aEB()
   {
     AppMethodBeat.i(9139);
-    super.acB();
-    this.fkE.hou().getActionBar().setVisibility(8);
-    this.flr.setEmpty();
-    if (acA() == null)
+    super.aEB();
+    this.hoR.iPo().getActionBar().setVisibility(8);
+    this.hpE.setEmpty();
+    if (aEA() == null)
     {
       Log.e("MicroMsg.CropArtist", "[onSelected] getCache is null!");
       AppMethodBeat.o(9139);
       return;
     }
     com.tencent.mm.ab.a locala;
-    if (((com.tencent.mm.cache.a)acA()).ai(true) <= 0)
+    if (((com.tencent.mm.cache.a)aEA()).aR(true) <= 0)
     {
       locala = new com.tencent.mm.ab.a();
-      locala.aqj.set(getMainMatrix());
-      ((com.tencent.mm.cache.a)acA()).a(locala);
-      acL();
-      this.fkE.hou().getBaseBoardView().E(this.eYz);
-      this.fkE.hou().getBaseBoardView().a(new a.b()
+      locala.avQ.set(getMainMatrix());
+      ((com.tencent.mm.cache.a)aEA()).a(locala);
+      aEL();
+      this.hoR.iPo().getBaseBoardView().M(this.hbZ);
+      this.hoR.iPo().getBaseBoardView().a(new a.b()
       {
-        public final void acN()
+        public final void aEN()
         {
           AppMethodBeat.i(9119);
-          if (c.this.acA() == null)
+          if (c.this.aEA() == null)
           {
             AppMethodBeat.o(9119);
             return;
           }
-          if (((com.tencent.mm.cache.a)c.this.acA()).iTH.isIdentity())
+          if (((com.tencent.mm.cache.a)c.this.aEA()).lvN.isIdentity())
           {
-            localObject = (com.tencent.mm.cache.a)c.this.acA();
+            localObject = (com.tencent.mm.cache.a)c.this.aEA();
             Matrix localMatrix = c.this.getMainMatrix();
-            ((com.tencent.mm.cache.a)localObject).iTH.set(localMatrix);
+            ((com.tencent.mm.cache.a)localObject).lvN.set(localMatrix);
           }
           Object localObject = new Rect();
-          if (c.this.fkE.hoy() == null) {
-            ((Rect)localObject).set(0, 0, c.this.fkE.hou().getBaseBoardView().getBoardRect().width(), c.this.fkE.hou().getBaseBoardView().getBoardRect().height());
+          if (c.this.hoR.iPu() == null) {
+            ((Rect)localObject).set(0, 0, c.this.hoR.iPo().getBaseBoardView().getBoardRect().width(), c.this.hoR.iPo().getBaseBoardView().getBoardRect().height());
           }
           for (;;)
           {
-            c.this.fkE.hou().getBaseBoardView().F((Rect)localObject);
+            c.this.hoR.iPo().getBaseBoardView().N((Rect)localObject);
             c.a(c.this, 200L, true, false);
             c.a(c.this);
-            c.this.acI();
+            c.this.aEI();
             AppMethodBeat.o(9119);
             return;
-            ((Rect)localObject).set(0, 0, c.this.fkE.hoy().getWidth(), c.this.fkE.hoy().getHeight());
+            ((Rect)localObject).set(0, 0, c.this.hoR.iPu().getWidth(), c.this.hoR.iPu().getHeight());
           }
         }
         
         public final void onStart()
         {
           AppMethodBeat.i(9120);
-          c.this.fla = false;
-          c.this.flj = false;
+          c.this.hpn = false;
+          c.this.hpw = false;
           AppMethodBeat.o(9120);
         }
       }, 0.0F, false);
@@ -164,48 +164,48 @@ public final class c
       setOneFingerMoveEnable(true);
       AppMethodBeat.o(9139);
       return;
-      locala = ((com.tencent.mm.cache.a)acA()).arD();
+      locala = ((com.tencent.mm.cache.a)aEA()).aLz();
       if (locala == null)
       {
         Log.e("MicroMsg.CropArtist", "item is null!!!");
         AppMethodBeat.o(9139);
         return;
       }
-      this.eYz.set(new Rect(locala.eYz));
-      this.fkE.hou().getBaseBoardView().E(locala.eYz);
+      this.hbZ.set(new Rect(locala.hbZ));
+      this.hoR.iPo().getBaseBoardView().M(locala.hbZ);
       try
       {
-        ((com.tencent.mm.cache.a)acA()).a((com.tencent.mm.ab.a)locala.clone());
-        this.fkE.hou().getBaseBoardView().a(new a.b()
+        ((com.tencent.mm.cache.a)aEA()).a((com.tencent.mm.ab.a)locala.clone());
+        this.hoR.iPo().getBaseBoardView().a(new a.b()
         {
-          public final void acN()
+          public final void aEN()
           {
             AppMethodBeat.i(9121);
-            c.this.flj = true;
+            c.this.hpw = true;
             Rect localRect;
-            if (c.this.fkE.hoy() == null)
+            if (c.this.hoR.iPu() == null)
             {
               localRect = new Rect();
               Log.e("MicroMsg.CropArtist", "getImageBitmap is null!");
             }
             for (;;)
             {
-              c.this.fkE.hou().getBaseBoardView().F(localRect);
+              c.this.hoR.iPo().getBaseBoardView().N(localRect);
               c.a(c.this, 200L, true, false);
               c.a(c.this);
               AppMethodBeat.o(9121);
               return;
-              localRect = new Rect(0, 0, c.this.fkE.hoy().getWidth(), c.this.fkE.hoy().getHeight());
+              localRect = new Rect(0, 0, c.this.hoR.iPu().getWidth(), c.this.hoR.iPu().getHeight());
             }
           }
           
           public final void onStart()
           {
             AppMethodBeat.i(9122);
-            c.this.fla = false;
-            c.this.flj = false;
+            c.this.hpn = false;
+            c.this.hpw = false;
             c.b(c.this);
-            com.tencent.mm.ab.a.sn(282);
+            com.tencent.mm.ab.a.sj(282);
             AppMethodBeat.o(9122);
           }
         }, 0.0F, false);
@@ -220,15 +220,15 @@ public final class c
     }
   }
   
-  public final boolean acD()
+  public final boolean aED()
   {
     AppMethodBeat.i(9140);
-    if (acA() == null)
+    if (aEA() == null)
     {
       AppMethodBeat.o(9140);
       return false;
     }
-    if (!((com.tencent.mm.cache.a)acA()).iTH.equals(getMainMatrix()))
+    if (!((com.tencent.mm.cache.a)aEA()).lvN.equals(getMainMatrix()))
     {
       AppMethodBeat.o(9140);
       return true;
@@ -237,84 +237,84 @@ public final class c
     return false;
   }
   
-  public final void acK()
+  public final void aEK()
   {
     AppMethodBeat.i(9143);
-    int i = this.fkQ * 2;
-    this.fkW.set(this.eYz.left - i, this.eYz.top - i, this.eYz.left + i, this.eYz.bottom + i);
-    this.fkU.set(this.eYz.left - i, this.eYz.top - i, this.eYz.right + i, this.eYz.top + i);
-    this.fkX.set(this.eYz.right - i, this.eYz.top - i, this.eYz.right + i, this.eYz.bottom + i);
-    this.fkV.set(this.eYz.left - i, this.eYz.bottom - i, this.eYz.right + i, i + this.eYz.bottom);
+    int i = this.hpd * 2;
+    this.hpj.set(this.hbZ.left - i, this.hbZ.top - i, this.hbZ.left + i, this.hbZ.bottom + i);
+    this.hph.set(this.hbZ.left - i, this.hbZ.top - i, this.hbZ.right + i, this.hbZ.top + i);
+    this.hpk.set(this.hbZ.right - i, this.hbZ.top - i, this.hbZ.right + i, this.hbZ.bottom + i);
+    this.hpi.set(this.hbZ.left - i, this.hbZ.bottom - i, this.hbZ.right + i, i + this.hbZ.bottom);
     AppMethodBeat.o(9143);
   }
   
-  public final void acL()
+  public final void aEL()
   {
     AppMethodBeat.i(9144);
-    if (this.fkE.hoy() == null)
+    if (this.hoR.iPu() == null)
     {
       Log.w("MicroMsg.CropArtist", "[resetBoxRect] getImageBitmap is null!");
       AppMethodBeat.o(9144);
       return;
     }
-    float f1 = this.fkE.hoy().getWidth() * 1.0F / this.fkE.hoy().getHeight();
+    float f1 = this.hoR.iPu().getWidth() * 1.0F / this.hoR.iPu().getHeight();
     int i;
-    if (f1 < this.fkY.width() * 1.0F / this.fkY.height())
+    if (f1 < this.hpl.width() * 1.0F / this.hpl.height())
     {
-      float f2 = this.fkY.height();
-      i = (int)((this.fkY.width() - f1 * f2) / 2.0F);
-      this.eYz.set(this.fkY.left + i, this.fkY.top, this.fkY.right - i, this.fkY.bottom);
+      float f2 = this.hpl.height();
+      i = (int)((this.hpl.width() - f1 * f2) / 2.0F);
+      this.hbZ.set(this.hpl.left + i, this.hpl.top, this.hpl.right - i, this.hpl.bottom);
     }
     for (;;)
     {
-      acK();
+      aEK();
       AppMethodBeat.o(9144);
       return;
-      f1 = this.fkY.width() / f1;
-      i = (int)((this.fkY.height() - f1) / 2.0F);
-      this.eYz.set(this.fkY.left, this.fkY.top + i, this.fkY.right, this.fkY.bottom - i);
+      f1 = this.hpl.width() / f1;
+      i = (int)((this.hpl.height() - f1) / 2.0F);
+      this.hbZ.set(this.hpl.left, this.hpl.top + i, this.hpl.right, this.hpl.bottom - i);
     }
   }
   
-  public final void acM()
+  public final void aEM()
   {
     AppMethodBeat.i(9145);
-    this.fkE.hou().getBaseBoardView().E(this.fkE.hou().getBaseBoardView().getRawBoardRect());
-    Object localObject1 = new RectF(this.eYz);
+    this.hoR.iPo().getBaseBoardView().M(this.hoR.iPo().getBaseBoardView().getRawBoardRect());
+    Object localObject1 = new RectF(this.hbZ);
     Object localObject2 = new Matrix();
     getMainMatrix().invert((Matrix)localObject2);
     ((Matrix)localObject2).mapRect((RectF)localObject1);
     localObject2 = new Rect();
     ((RectF)localObject1).round((Rect)localObject2);
-    this.fkE.hou().getBaseBoardView().F((Rect)localObject2);
+    this.hoR.iPo().getBaseBoardView().N((Rect)localObject2);
     localObject1 = new com.tencent.mm.ab.a();
-    ((com.tencent.mm.ab.a)localObject1).eYz = new Rect(this.eYz);
-    ((com.tencent.mm.ab.a)localObject1).jZW.set((Rect)localObject2);
-    if (this.fld != null)
+    ((com.tencent.mm.ab.a)localObject1).hbZ = new Rect(this.hbZ);
+    ((com.tencent.mm.ab.a)localObject1).Qv.set((Rect)localObject2);
+    if (this.hpq != null)
     {
-      this.fkE.hou().getBaseBoardView().ihC();
+      this.hoR.iPo().getBaseBoardView().jMP();
       ((com.tencent.mm.ab.a)localObject1).setMatrix(getMainMatrix());
-      if (acA() != null)
+      if (aEA() != null)
       {
-        ((com.tencent.mm.cache.a)acA()).clear();
-        ((com.tencent.mm.cache.a)acA()).a((com.tencent.mm.ab.a)localObject1);
+        ((com.tencent.mm.cache.a)aEA()).clear();
+        ((com.tencent.mm.cache.a)aEA()).a((com.tencent.mm.ab.a)localObject1);
       }
     }
     for (;;)
     {
-      this.fkE.hou().getActionBar().setVisibility(0);
+      this.hoR.iPo().getActionBar().setVisibility(0);
       AppMethodBeat.o(9145);
       return;
-      this.fkE.hou().getBaseBoardView().a(new a.b()
+      this.hoR.iPo().getBaseBoardView().a(new a.b()
       {
-        public final void acN()
+        public final void aEN()
         {
           AppMethodBeat.i(9130);
-          this.flx.setMatrix(c.this.getMainMatrix());
-          if (c.this.acA() != null)
+          this.hpK.setMatrix(c.this.getMainMatrix());
+          if (c.this.aEA() != null)
           {
-            ((com.tencent.mm.cache.a)c.this.acA()).clear();
-            ((com.tencent.mm.cache.a)c.this.acA()).a(this.flx);
+            ((com.tencent.mm.cache.a)c.this.aEA()).clear();
+            ((com.tencent.mm.cache.a)c.this.aEA()).a(this.hpK);
           }
           AppMethodBeat.o(9130);
         }
@@ -328,202 +328,80 @@ public final class c
     }
   }
   
-  public final a acy()
+  public final a aEy()
   {
-    return a.fkA;
+    return a.hoN;
   }
   
-  public final void acz() {}
+  public final void aEz() {}
   
   public final void onAlive()
   {
     AppMethodBeat.i(9138);
     super.onAlive();
-    if (this.fkY.isEmpty()) {
-      this.fkY.set(this.fkQ, this.fkQ * 2, getBoardRect().width() - this.fkQ, getBoardRect().height() - this.fkR - this.fkS - this.fkQ * 2);
+    if (this.hpl.isEmpty()) {
+      this.hpl.set(this.hpd, this.hpd * 2, getBoardRect().width() - this.hpd, getBoardRect().height() - this.hpe - this.hpf - this.hpd * 2);
     }
-    Log.i("MicroMsg.CropArtist", "[onAlive] CROP_MAX_RECT:%s", new Object[] { this.fkY });
-    if (acA() == null)
+    Log.i("MicroMsg.CropArtist", "[onAlive] CROP_MAX_RECT:%s", new Object[] { this.hpl });
+    if (aEA() == null)
     {
       Log.i("MicroMsg.CropArtist", "[onAlive] getCache is null");
       AppMethodBeat.o(9138);
       return;
     }
-    com.tencent.mm.ab.a locala = ((com.tencent.mm.cache.a)acA()).arD();
-    if ((locala != null) && (!locala.jZW.isEmpty()))
+    com.tencent.mm.ab.a locala = ((com.tencent.mm.cache.a)aEA()).aLz();
+    if ((locala != null) && (!locala.Qv.isEmpty()))
     {
-      this.fkE.hou().getBaseBoardView().F(locala.jZW);
-      float f = b(locala.aqj);
+      this.hoR.iPo().getBaseBoardView().N(locala.Qv);
+      float f = d(locala.avQ);
       Log.i("MicroMsg.CropArtist", "[onAlive] rotation:%s", new Object[] { Float.valueOf(f) });
-      getMainMatrix().postRotate(-f, locala.jZW.centerX(), locala.jZW.centerY());
+      getMainMatrix().postRotate(-f, locala.Qv.centerX(), locala.Qv.centerY());
     }
-    if ((this.fkE != null) && (this.fkE.how() > 0.0F) && (this.fld == null)) {
-      this.fld = new g(this, this.fkE.how(), this.eYz);
+    if ((this.hoR != null) && (this.hoR.iPq() > 0.0F) && (this.hpq == null)) {
+      this.hpq = new g(this, this.hoR.iPq(), this.hbZ);
     }
     AppMethodBeat.o(9138);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(259936);
+    AppMethodBeat.i(231877);
     super.onDestroy();
-    this.fld = null;
-    AppMethodBeat.o(259936);
+    this.hpq = null;
+    AppMethodBeat.o(231877);
   }
   
-  public final void onDraw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(9141);
-    if (!this.flb) {
-      paramCanvas.setMatrix(null);
-    }
-    com.tencent.mm.ab.a locala;
-    boolean bool1;
-    boolean bool2;
-    for (;;)
-    {
-      locala = this.fkZ;
-      bool1 = this.flj;
-      bool2 = this.fla;
-      if (locala.eYz != null) {
-        break;
-      }
-      Log.e("MicroMsg.CropItem", "[draw] mBoxRect is null!");
-      AppMethodBeat.o(9141);
-      return;
-      paramCanvas.setMatrix(this.fkT);
-    }
-    if (bool1)
-    {
-      paramCanvas.save();
-      paramCanvas.clipRect(locala.eYz, Region.Op.DIFFERENCE);
-      paramCanvas.drawPaint(com.tencent.mm.ab.a.jZS);
-      paramCanvas.restore();
-    }
-    if (bool2)
-    {
-      if (!com.tencent.mm.ab.a.Si.equals(locala.eYz))
-      {
-        com.tencent.mm.ab.a.jZP.reset();
-        com.tencent.mm.ab.a.jZP.moveTo(locala.eYz.left, locala.eYz.top);
-        com.tencent.mm.ab.a.jZP.lineTo(locala.eYz.right, locala.eYz.top);
-        com.tencent.mm.ab.a.jZP.lineTo(locala.eYz.right, locala.eYz.bottom);
-        com.tencent.mm.ab.a.jZP.lineTo(locala.eYz.left, locala.eYz.bottom);
-        com.tencent.mm.ab.a.jZP.close();
-        com.tencent.mm.ab.a.jZO.reset();
-        int i = 1;
-        while (i < 3)
-        {
-          com.tencent.mm.ab.a.jZO.moveTo(locala.eYz.left + locala.eYz.width() / 3 * i, locala.eYz.top);
-          com.tencent.mm.ab.a.jZO.lineTo(locala.eYz.left + locala.eYz.width() / 3 * i, locala.eYz.bottom);
-          com.tencent.mm.ab.a.jZO.moveTo(locala.eYz.left, locala.eYz.top + locala.eYz.height() / 3 * i);
-          com.tencent.mm.ab.a.jZO.lineTo(locala.eYz.right, locala.eYz.top + locala.eYz.height() / 3 * i);
-          i += 1;
-        }
-      }
-      paramCanvas.drawRect(locala.eYz.left, locala.eYz.top, locala.eYz.right, locala.eYz.bottom, com.tencent.mm.ab.a.jZR);
-      paramCanvas.drawPath(com.tencent.mm.ab.a.jZO, com.tencent.mm.ab.a.jZT);
-      paramCanvas.drawPath(com.tencent.mm.ab.a.jZP, com.tencent.mm.ab.a.jZQ);
-      float f1 = locala.eYz.left;
-      float f2 = com.tencent.mm.ab.a.jZM;
-      float f3 = locala.eYz.top;
-      float f4 = com.tencent.mm.ab.a.jZM / 2.0F;
-      float f5 = locala.eYz.left;
-      paramCanvas.drawLine(f1 - f2, f3 - f4, com.tencent.mm.ab.a.jZN + f5, locala.eYz.top - com.tencent.mm.ab.a.jZM / 2.0F, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.right;
-      f2 = com.tencent.mm.ab.a.jZN;
-      f3 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f4 = locala.eYz.top;
-      f5 = com.tencent.mm.ab.a.jZM / 2.0F;
-      float f6 = locala.eYz.right;
-      paramCanvas.drawLine(f3 + (f1 - f2), f4 - f5, com.tencent.mm.ab.a.jZM + f6, locala.eYz.top - com.tencent.mm.ab.a.jZM / 2.0F, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.left;
-      f2 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f3 = locala.eYz.top;
-      f4 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f5 = locala.eYz.left;
-      f6 = com.tencent.mm.ab.a.jZM / 2.0F;
-      float f7 = locala.eYz.top;
-      paramCanvas.drawLine(f1 - f2, f3 - f4, f5 - f6, com.tencent.mm.ab.a.jZN + f7, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.left;
-      f2 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f3 = locala.eYz.bottom;
-      f4 = com.tencent.mm.ab.a.jZN;
-      f5 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f6 = locala.eYz.left;
-      f7 = com.tencent.mm.ab.a.jZM / 2.0F;
-      float f8 = locala.eYz.bottom;
-      paramCanvas.drawLine(f1 - f2, f5 + (f3 - f4), f6 - f7, com.tencent.mm.ab.a.jZM / 2.0F + f8, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.right;
-      f2 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f3 = locala.eYz.top;
-      f4 = locala.eYz.right;
-      f5 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f6 = locala.eYz.top;
-      paramCanvas.drawLine(f2 + f1, f3, f5 + f4, com.tencent.mm.ab.a.jZN + f6, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.right;
-      f2 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f3 = locala.eYz.bottom;
-      f4 = com.tencent.mm.ab.a.jZN;
-      f5 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f6 = locala.eYz.right;
-      f7 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f8 = locala.eYz.bottom;
-      paramCanvas.drawLine(f2 + f1, f5 + (f3 - f4), f7 + f6, com.tencent.mm.ab.a.jZM / 2.0F + f8, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.left;
-      f2 = com.tencent.mm.ab.a.jZM;
-      f3 = locala.eYz.bottom;
-      f4 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f5 = locala.eYz.left;
-      f6 = com.tencent.mm.ab.a.jZN;
-      f7 = locala.eYz.bottom;
-      paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, com.tencent.mm.ab.a.jZM / 2.0F + f7, com.tencent.mm.ab.a.jZU);
-      f1 = locala.eYz.right;
-      f2 = com.tencent.mm.ab.a.jZN;
-      f3 = locala.eYz.bottom;
-      f4 = com.tencent.mm.ab.a.jZM / 2.0F;
-      f5 = locala.eYz.right;
-      f6 = com.tencent.mm.ab.a.jZM;
-      f7 = locala.eYz.bottom;
-      paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, com.tencent.mm.ab.a.jZM / 2.0F + f7, com.tencent.mm.ab.a.jZU);
-      if (!com.tencent.mm.ab.a.Si.equals(locala.eYz)) {
-        com.tencent.mm.ab.a.Si.set(locala.eYz);
-      }
-    }
-    AppMethodBeat.o(9141);
-  }
-  
-  public final boolean q(MotionEvent paramMotionEvent)
+  public final boolean onDispatchTouch(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9142);
-    if (!acF())
+    if (!aEF())
     {
       AppMethodBeat.o(9142);
       return false;
     }
     boolean bool;
-    if (this.fld != null)
+    if (this.hpq != null)
     {
-      bool = this.fld.w(paramMotionEvent);
+      bool = this.hpq.v(paramMotionEvent);
       AppMethodBeat.o(9142);
       return bool;
     }
-    Object localObject = this.fkE.hou().getBaseBoardView().getCurImageRect();
-    this.flm = (((RectF)localObject).top - (((RectF)localObject).bottom - this.eYz.bottom));
-    this.fln = (((RectF)localObject).bottom + (this.eYz.top - ((RectF)localObject).top));
-    this.flo = (((RectF)localObject).left - (((RectF)localObject).right - this.eYz.right));
-    this.flp = (((RectF)localObject).right + (this.eYz.left - ((RectF)localObject).left));
-    if (this.flp > this.fkY.right) {
-      this.flp = this.fkY.right;
+    Object localObject = this.hoR.iPo().getBaseBoardView().getCurImageRect();
+    this.hpz = (((RectF)localObject).top - (((RectF)localObject).bottom - this.hbZ.bottom));
+    this.hpA = (((RectF)localObject).bottom + (this.hbZ.top - ((RectF)localObject).top));
+    this.hpB = (((RectF)localObject).left - (((RectF)localObject).right - this.hbZ.right));
+    this.hpC = (((RectF)localObject).right + (this.hbZ.left - ((RectF)localObject).left));
+    if (this.hpC > this.hpl.right) {
+      this.hpC = this.hpl.right;
     }
-    if (this.flo < this.fkQ) {
-      this.flo = this.fkQ;
+    if (this.hpB < this.hpd) {
+      this.hpB = this.hpd;
     }
-    if (this.fln > this.fkY.bottom) {
-      this.fln = this.fkY.bottom;
+    if (this.hpA > this.hpl.bottom) {
+      this.hpA = this.hpl.bottom;
     }
-    if (this.flm < this.fkQ) {
-      this.flm = this.fkQ;
+    if (this.hpz < this.hpd) {
+      this.hpz = this.hpd;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -539,273 +417,273 @@ public final class c
         {
           for (;;)
           {
-            bool = this.fle;
+            bool = this.hpr;
             AppMethodBeat.o(9142);
             return bool;
-            this.flh = false;
-            this.flf = false;
-            this.flg = false;
-            this.fli = false;
-            this.fle = false;
+            this.hpu = false;
+            this.hps = false;
+            this.hpt = false;
+            this.hpv = false;
+            this.hpr = false;
           }
-          this.fle = false;
-          if (this.flc != null) {
-            this.flc.cancel();
+          this.hpr = false;
+          if (this.hpp != null) {
+            this.hpp.cancel();
           }
-          if (this.fkV.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.flh = true;
+          if (this.hpi.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.hpu = true;
           }
-          if (this.fkU.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.flg = true;
+          if (this.hph.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.hpt = true;
           }
-          if (this.fkW.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.flf = true;
+          if (this.hpj.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.hps = true;
           }
-          if (this.fkX.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            this.fli = true;
+          if (this.hpk.contains(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+            this.hpv = true;
           }
-          this.flj = false;
-        } while (!acJ());
-        this.fle = true;
-        if ((this.flh) && (this.flf))
+          this.hpw = false;
+        } while (!aEJ());
+        this.hpr = true;
+        if ((this.hpu) && (this.hps))
         {
-          this.flh = true;
-          this.flf = true;
-          this.flg = false;
-          this.fli = false;
+          this.hpu = true;
+          this.hps = true;
+          this.hpt = false;
+          this.hpv = false;
         }
         for (;;)
         {
-          this.flk = paramMotionEvent.getX();
-          this.fll = paramMotionEvent.getY();
+          this.hpx = paramMotionEvent.getX();
+          this.hpy = paramMotionEvent.getY();
           break;
-          if ((this.flh) && (this.fli))
+          if ((this.hpu) && (this.hpv))
           {
-            this.flh = true;
-            this.flf = false;
-            this.flg = false;
-            this.fli = true;
+            this.hpu = true;
+            this.hps = false;
+            this.hpt = false;
+            this.hpv = true;
           }
-          else if ((this.flg) && (this.fli))
+          else if ((this.hpt) && (this.hpv))
           {
-            this.flh = false;
-            this.flf = false;
-            this.flg = true;
-            this.fli = true;
+            this.hpu = false;
+            this.hps = false;
+            this.hpt = true;
+            this.hpv = true;
           }
-          else if ((this.flg) && (this.fli))
+          else if ((this.hpt) && (this.hpv))
           {
-            this.flh = false;
-            this.flf = false;
-            this.flg = true;
-            this.fli = true;
+            this.hpu = false;
+            this.hps = false;
+            this.hpt = true;
+            this.hpv = true;
           }
         }
-      } while (!this.fle);
-      if ((paramMotionEvent.getPointerCount() == 1) && (acJ()))
+      } while (!this.hpr);
+      if ((paramMotionEvent.getPointerCount() == 1) && (aEJ()))
       {
-        if ((this.fli) && (this.eYz.right >= this.eYz.left))
+        if ((this.hpv) && (this.hbZ.right >= this.hbZ.left))
         {
-          if (this.eYz.right <= this.fkY.right)
+          if (this.hbZ.right <= this.hpl.right)
           {
-            if (paramMotionEvent.getX() - this.flk <= this.fkY.right - this.eYz.right) {
+            if (paramMotionEvent.getX() - this.hpx <= this.hpl.right - this.hbZ.right) {
               break label1926;
             }
-            this.eYz.right = this.fkY.right;
+            this.hbZ.right = this.hpl.right;
           }
           label745:
-          if (this.eYz.right < this.eYz.left + this.fkQ * 2) {
-            this.eYz.right = (this.eYz.left + this.fkQ * 2);
+          if (this.hbZ.right < this.hbZ.left + this.hpd * 2) {
+            this.hbZ.right = (this.hbZ.left + this.hpd * 2);
           }
-          if (this.eYz.right > this.fkY.right) {
-            this.eYz.right = this.fkY.right;
+          if (this.hbZ.right > this.hpl.right) {
+            this.hbZ.right = this.hpl.right;
           }
-          if (((int)((RectF)localObject).right <= (int)this.flp) && ((int)((RectF)localObject).right <= this.eYz.right))
+          if (((int)((RectF)localObject).right <= (int)this.hpC) && ((int)((RectF)localObject).right <= this.hbZ.right))
           {
-            if (paramMotionEvent.getX() - this.flk <= this.flp - ((RectF)localObject).right) {
+            if (paramMotionEvent.getX() - this.hpx <= this.hpC - ((RectF)localObject).right) {
               break label1957;
             }
-            getMainMatrix().postTranslate(this.flp - ((RectF)localObject).right, 0.0F);
+            getMainMatrix().postTranslate(this.hpC - ((RectF)localObject).right, 0.0F);
           }
           label893:
-          if ((this.eYz.width() > ((RectF)localObject).width()) && (this.eYz.right < this.fkY.right))
+          if ((this.hbZ.width() > ((RectF)localObject).width()) && (this.hbZ.right < this.hpl.right))
           {
-            f1 = this.eYz.width() / ((RectF)localObject).width();
-            getMainMatrix().postScale(f1, f1, this.eYz.left, this.eYz.centerY());
+            f1 = this.hbZ.width() / ((RectF)localObject).width();
+            getMainMatrix().postScale(f1, f1, this.hbZ.left, this.hbZ.centerY());
           }
         }
-        if ((this.flf) && (this.eYz.right >= this.eYz.left))
+        if ((this.hps) && (this.hbZ.right >= this.hbZ.left))
         {
-          if (this.eYz.left >= this.fkY.left)
+          if (this.hbZ.left >= this.hpl.left)
           {
-            if (this.flk - paramMotionEvent.getX() <= this.eYz.left - this.fkY.left) {
+            if (this.hpx - paramMotionEvent.getX() <= this.hbZ.left - this.hpl.left) {
               break label1978;
             }
-            this.eYz.left = this.fkY.left;
+            this.hbZ.left = this.hpl.left;
           }
           label1052:
-          if (this.eYz.left > this.eYz.right - this.fkQ * 2) {
-            this.eYz.left = (this.eYz.right - this.fkQ * 2);
+          if (this.hbZ.left > this.hbZ.right - this.hpd * 2) {
+            this.hbZ.left = (this.hbZ.right - this.hpd * 2);
           }
-          if (this.eYz.left < this.fkY.left) {
-            this.eYz.left = this.fkY.left;
+          if (this.hbZ.left < this.hpl.left) {
+            this.hbZ.left = this.hpl.left;
           }
-          if (((int)((RectF)localObject).left >= (int)this.flo) && ((int)((RectF)localObject).left >= this.eYz.left))
+          if (((int)((RectF)localObject).left >= (int)this.hpB) && ((int)((RectF)localObject).left >= this.hbZ.left))
           {
-            if (this.flk - paramMotionEvent.getX() <= ((RectF)localObject).left - this.flo) {
+            if (this.hpx - paramMotionEvent.getX() <= ((RectF)localObject).left - this.hpB) {
               break label2009;
             }
-            getMainMatrix().postTranslate(this.flo - ((RectF)localObject).left, 0.0F);
+            getMainMatrix().postTranslate(this.hpB - ((RectF)localObject).left, 0.0F);
           }
           label1200:
-          if ((this.eYz.width() > ((RectF)localObject).width()) && (this.eYz.left > this.fkY.left))
+          if ((this.hbZ.width() > ((RectF)localObject).width()) && (this.hbZ.left > this.hpl.left))
           {
-            f1 = this.eYz.width() / ((RectF)localObject).width();
-            getMainMatrix().postScale(f1, f1, this.eYz.right, this.eYz.centerY());
+            f1 = this.hbZ.width() / ((RectF)localObject).width();
+            getMainMatrix().postScale(f1, f1, this.hbZ.right, this.hbZ.centerY());
           }
         }
-        if ((this.flg) && (this.eYz.bottom >= this.eYz.top))
+        if ((this.hpt) && (this.hbZ.bottom >= this.hbZ.top))
         {
-          if (this.eYz.top >= this.fkY.top)
+          if (this.hbZ.top >= this.hpl.top)
           {
-            if (this.fll - paramMotionEvent.getY() <= this.eYz.top - this.fkY.top) {
+            if (this.hpy - paramMotionEvent.getY() <= this.hbZ.top - this.hpl.top) {
               break label2030;
             }
-            this.eYz.top = this.fkY.top;
+            this.hbZ.top = this.hpl.top;
           }
           label1359:
-          if (this.eYz.top > this.eYz.bottom - this.fkQ * 2) {
-            this.eYz.top = (this.eYz.bottom - this.fkQ * 2);
+          if (this.hbZ.top > this.hbZ.bottom - this.hpd * 2) {
+            this.hbZ.top = (this.hbZ.bottom - this.hpd * 2);
           }
-          if (this.eYz.top < this.fkY.top) {
-            this.eYz.top = this.fkY.top;
+          if (this.hbZ.top < this.hpl.top) {
+            this.hbZ.top = this.hpl.top;
           }
-          if (((int)((RectF)localObject).top >= (int)this.flm) && ((int)((RectF)localObject).top >= this.eYz.top))
+          if (((int)((RectF)localObject).top >= (int)this.hpz) && ((int)((RectF)localObject).top >= this.hbZ.top))
           {
-            if (this.fll - paramMotionEvent.getY() <= ((RectF)localObject).top - this.flm) {
+            if (this.hpy - paramMotionEvent.getY() <= ((RectF)localObject).top - this.hpz) {
               break label2061;
             }
-            getMainMatrix().postTranslate(0.0F, this.flm - ((RectF)localObject).top);
+            getMainMatrix().postTranslate(0.0F, this.hpz - ((RectF)localObject).top);
           }
           label1507:
-          if ((this.eYz.height() > ((RectF)localObject).height()) && (this.eYz.top > this.fkY.top))
+          if ((this.hbZ.height() > ((RectF)localObject).height()) && (this.hbZ.top > this.hpl.top))
           {
-            f1 = this.eYz.height() / ((RectF)localObject).height();
-            getMainMatrix().postScale(f1, f1, this.eYz.centerX(), this.eYz.bottom);
+            f1 = this.hbZ.height() / ((RectF)localObject).height();
+            getMainMatrix().postScale(f1, f1, this.hbZ.centerX(), this.hbZ.bottom);
           }
         }
-        if ((this.flh) && (this.eYz.bottom >= this.eYz.top))
+        if ((this.hpu) && (this.hbZ.bottom >= this.hbZ.top))
         {
-          if (this.eYz.bottom <= this.fkY.bottom)
+          if (this.hbZ.bottom <= this.hpl.bottom)
           {
-            if (paramMotionEvent.getY() - this.fll <= this.fkY.bottom - this.eYz.bottom) {
+            if (paramMotionEvent.getY() - this.hpy <= this.hpl.bottom - this.hbZ.bottom) {
               break label2082;
             }
-            this.eYz.bottom = this.fkY.bottom;
+            this.hbZ.bottom = this.hpl.bottom;
           }
           label1666:
-          if (this.eYz.bottom < this.eYz.top + this.fkQ * 2) {
-            this.eYz.bottom = (this.eYz.top + this.fkQ * 2);
+          if (this.hbZ.bottom < this.hbZ.top + this.hpd * 2) {
+            this.hbZ.bottom = (this.hbZ.top + this.hpd * 2);
           }
-          if (this.eYz.bottom > this.fkY.bottom) {
-            this.eYz.bottom = this.fkY.bottom;
+          if (this.hbZ.bottom > this.hpl.bottom) {
+            this.hbZ.bottom = this.hpl.bottom;
           }
-          if (((int)((RectF)localObject).bottom <= (int)this.fln) && ((int)((RectF)localObject).bottom <= this.eYz.bottom))
+          if (((int)((RectF)localObject).bottom <= (int)this.hpA) && ((int)((RectF)localObject).bottom <= this.hbZ.bottom))
           {
-            if (paramMotionEvent.getY() - this.fll <= this.fln - ((RectF)localObject).bottom) {
+            if (paramMotionEvent.getY() - this.hpy <= this.hpA - ((RectF)localObject).bottom) {
               break label2113;
             }
-            getMainMatrix().postTranslate(0.0F, this.fln - ((RectF)localObject).bottom);
+            getMainMatrix().postTranslate(0.0F, this.hpA - ((RectF)localObject).bottom);
           }
           label1814:
-          if ((this.eYz.height() > ((RectF)localObject).height()) && (this.eYz.bottom < this.fkY.bottom))
+          if ((this.hbZ.height() > ((RectF)localObject).height()) && (this.hbZ.bottom < this.hpl.bottom))
           {
-            f1 = this.eYz.height() / ((RectF)localObject).height();
-            getMainMatrix().postScale(f1, f1, this.eYz.centerX(), this.eYz.top);
+            f1 = this.hbZ.height() / ((RectF)localObject).height();
+            getMainMatrix().postScale(f1, f1, this.hbZ.centerX(), this.hbZ.top);
           }
         }
-        acK();
-        this.fle = true;
-        acH();
-        this.flk = paramMotionEvent.getX();
-        this.fll = paramMotionEvent.getY();
+        aEK();
+        this.hpr = true;
+        aEH();
+        this.hpx = paramMotionEvent.getX();
+        this.hpy = paramMotionEvent.getY();
       }
       for (;;)
       {
-        u(paramMotionEvent);
+        t(paramMotionEvent);
         break;
         label1926:
-        Rect localRect = this.eYz;
-        localRect.right = ((int)(localRect.right + (paramMotionEvent.getX() - this.flk)));
+        Rect localRect = this.hbZ;
+        localRect.right = ((int)(localRect.right + (paramMotionEvent.getX() - this.hpx)));
         break label745;
         label1957:
-        getMainMatrix().postTranslate(paramMotionEvent.getX() - this.flk, 0.0F);
+        getMainMatrix().postTranslate(paramMotionEvent.getX() - this.hpx, 0.0F);
         break label893;
         label1978:
-        localRect = this.eYz;
-        localRect.left = ((int)(localRect.left - (this.flk - paramMotionEvent.getX())));
+        localRect = this.hbZ;
+        localRect.left = ((int)(localRect.left - (this.hpx - paramMotionEvent.getX())));
         break label1052;
         label2009:
-        getMainMatrix().postTranslate(paramMotionEvent.getX() - this.flk, 0.0F);
+        getMainMatrix().postTranslate(paramMotionEvent.getX() - this.hpx, 0.0F);
         break label1200;
         label2030:
-        localRect = this.eYz;
-        localRect.top = ((int)(localRect.top - (this.fll - paramMotionEvent.getY())));
+        localRect = this.hbZ;
+        localRect.top = ((int)(localRect.top - (this.hpy - paramMotionEvent.getY())));
         break label1359;
         label2061:
-        getMainMatrix().postTranslate(0.0F, paramMotionEvent.getY() - this.fll);
+        getMainMatrix().postTranslate(0.0F, paramMotionEvent.getY() - this.hpy);
         break label1507;
         label2082:
-        localRect = this.eYz;
-        localRect.bottom = ((int)(localRect.bottom + (paramMotionEvent.getY() - this.fll)));
+        localRect = this.hbZ;
+        localRect.bottom = ((int)(localRect.bottom + (paramMotionEvent.getY() - this.hpy)));
         break label1666;
         label2113:
-        getMainMatrix().postTranslate(0.0F, paramMotionEvent.getY() - this.fll);
+        getMainMatrix().postTranslate(0.0F, paramMotionEvent.getY() - this.hpy);
         break label1814;
-        this.fle = false;
+        this.hpr = false;
       }
     }
-    final float f1 = this.fkY.width() * 1.0F / this.eYz.width();
-    float f2 = this.fkY.height() * 1.0F / this.eYz.height();
+    final float f1 = this.hpl.width() * 1.0F / this.hbZ.width();
+    float f2 = this.hpl.height() * 1.0F / this.hbZ.height();
     label2188:
     long l;
     if (f1 < f2)
     {
-      f2 = this.fkY.centerX();
-      float f3 = this.fkY.centerY();
-      float f4 = this.eYz.centerX();
-      float f5 = this.eYz.centerY();
-      paramMotionEvent = h.ZvG;
+      f2 = this.hpl.centerX();
+      float f3 = this.hpl.centerY();
+      float f4 = this.hbZ.centerX();
+      float f5 = this.hbZ.centerY();
+      paramMotionEvent = h.ahAA;
       localObject = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(259733);
-          c.this.flc.eYC = 1000L;
-          c.this.flc.a(f1, c.this.eYz, this.flv, this.flw);
-          c.this.flc.play();
-          AppMethodBeat.o(259733);
+          AppMethodBeat.i(231847);
+          c.this.hpp.hcc = 1000L;
+          c.this.hpp.a(f1, c.this.hbZ, this.hpI, this.hpJ);
+          c.this.hpp.play();
+          AppMethodBeat.o(231847);
         }
       };
-      if (!this.fle) {
+      if (!this.hpr) {
         break label2316;
       }
       l = 0L;
       label2261:
-      paramMotionEvent.n((Runnable)localObject, l);
-      if (!acJ()) {
+      paramMotionEvent.o((Runnable)localObject, l);
+      if (!aEJ()) {
         break label2324;
       }
     }
     label2316:
     label2324:
-    for (this.fle = true;; this.fle = false)
+    for (this.hpr = true;; this.hpr = false)
     {
-      this.flh = false;
-      this.flf = false;
-      this.flg = false;
-      this.fli = false;
-      acI();
+      this.hpu = false;
+      this.hps = false;
+      this.hpt = false;
+      this.hpv = false;
+      aEI();
       break;
       f1 = f2;
       break label2188;
@@ -813,10 +691,132 @@ public final class c
       break label2261;
     }
   }
+  
+  public final void onDraw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(9141);
+    if (!this.hpo) {
+      paramCanvas.setMatrix(null);
+    }
+    com.tencent.mm.ab.a locala;
+    boolean bool1;
+    boolean bool2;
+    for (;;)
+    {
+      locala = this.hpm;
+      bool1 = this.hpw;
+      bool2 = this.hpn;
+      if (locala.hbZ != null) {
+        break;
+      }
+      Log.e("MicroMsg.CropItem", "[draw] mBoxRect is null!");
+      AppMethodBeat.o(9141);
+      return;
+      paramCanvas.setMatrix(this.hpg);
+    }
+    if (bool1)
+    {
+      paramCanvas.save();
+      paramCanvas.clipRect(locala.hbZ, Region.Op.DIFFERENCE);
+      paramCanvas.drawPaint(com.tencent.mm.ab.a.mzW);
+      paramCanvas.restore();
+    }
+    if (bool2)
+    {
+      if (!com.tencent.mm.ab.a.byy.equals(locala.hbZ))
+      {
+        com.tencent.mm.ab.a.mzT.reset();
+        com.tencent.mm.ab.a.mzT.moveTo(locala.hbZ.left, locala.hbZ.top);
+        com.tencent.mm.ab.a.mzT.lineTo(locala.hbZ.right, locala.hbZ.top);
+        com.tencent.mm.ab.a.mzT.lineTo(locala.hbZ.right, locala.hbZ.bottom);
+        com.tencent.mm.ab.a.mzT.lineTo(locala.hbZ.left, locala.hbZ.bottom);
+        com.tencent.mm.ab.a.mzT.close();
+        com.tencent.mm.ab.a.mzS.reset();
+        int i = 1;
+        while (i < 3)
+        {
+          com.tencent.mm.ab.a.mzS.moveTo(locala.hbZ.left + locala.hbZ.width() / 3 * i, locala.hbZ.top);
+          com.tencent.mm.ab.a.mzS.lineTo(locala.hbZ.left + locala.hbZ.width() / 3 * i, locala.hbZ.bottom);
+          com.tencent.mm.ab.a.mzS.moveTo(locala.hbZ.left, locala.hbZ.top + locala.hbZ.height() / 3 * i);
+          com.tencent.mm.ab.a.mzS.lineTo(locala.hbZ.right, locala.hbZ.top + locala.hbZ.height() / 3 * i);
+          i += 1;
+        }
+      }
+      paramCanvas.drawRect(locala.hbZ.left, locala.hbZ.top, locala.hbZ.right, locala.hbZ.bottom, com.tencent.mm.ab.a.mzV);
+      paramCanvas.drawPath(com.tencent.mm.ab.a.mzS, com.tencent.mm.ab.a.mzX);
+      paramCanvas.drawPath(com.tencent.mm.ab.a.mzT, com.tencent.mm.ab.a.mzU);
+      float f1 = locala.hbZ.left;
+      float f2 = com.tencent.mm.ab.a.mzQ;
+      float f3 = locala.hbZ.top;
+      float f4 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      float f5 = locala.hbZ.left;
+      paramCanvas.drawLine(f1 - f2, f3 - f4, com.tencent.mm.ab.a.mzR + f5, locala.hbZ.top - com.tencent.mm.ab.a.mzQ / 2.0F, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.right;
+      f2 = com.tencent.mm.ab.a.mzR;
+      f3 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f4 = locala.hbZ.top;
+      f5 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      float f6 = locala.hbZ.right;
+      paramCanvas.drawLine(f3 + (f1 - f2), f4 - f5, com.tencent.mm.ab.a.mzQ + f6, locala.hbZ.top - com.tencent.mm.ab.a.mzQ / 2.0F, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.left;
+      f2 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f3 = locala.hbZ.top;
+      f4 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f5 = locala.hbZ.left;
+      f6 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      float f7 = locala.hbZ.top;
+      paramCanvas.drawLine(f1 - f2, f3 - f4, f5 - f6, com.tencent.mm.ab.a.mzR + f7, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.left;
+      f2 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f3 = locala.hbZ.bottom;
+      f4 = com.tencent.mm.ab.a.mzR;
+      f5 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f6 = locala.hbZ.left;
+      f7 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      float f8 = locala.hbZ.bottom;
+      paramCanvas.drawLine(f1 - f2, f5 + (f3 - f4), f6 - f7, com.tencent.mm.ab.a.mzQ / 2.0F + f8, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.right;
+      f2 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f3 = locala.hbZ.top;
+      f4 = locala.hbZ.right;
+      f5 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f6 = locala.hbZ.top;
+      paramCanvas.drawLine(f2 + f1, f3, f5 + f4, com.tencent.mm.ab.a.mzR + f6, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.right;
+      f2 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f3 = locala.hbZ.bottom;
+      f4 = com.tencent.mm.ab.a.mzR;
+      f5 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f6 = locala.hbZ.right;
+      f7 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f8 = locala.hbZ.bottom;
+      paramCanvas.drawLine(f2 + f1, f5 + (f3 - f4), f7 + f6, com.tencent.mm.ab.a.mzQ / 2.0F + f8, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.left;
+      f2 = com.tencent.mm.ab.a.mzQ;
+      f3 = locala.hbZ.bottom;
+      f4 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f5 = locala.hbZ.left;
+      f6 = com.tencent.mm.ab.a.mzR;
+      f7 = locala.hbZ.bottom;
+      paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, com.tencent.mm.ab.a.mzQ / 2.0F + f7, com.tencent.mm.ab.a.mzY);
+      f1 = locala.hbZ.right;
+      f2 = com.tencent.mm.ab.a.mzR;
+      f3 = locala.hbZ.bottom;
+      f4 = com.tencent.mm.ab.a.mzQ / 2.0F;
+      f5 = locala.hbZ.right;
+      f6 = com.tencent.mm.ab.a.mzQ;
+      f7 = locala.hbZ.bottom;
+      paramCanvas.drawLine(f1 - f2, f4 + f3, f6 + f5, com.tencent.mm.ab.a.mzQ / 2.0F + f7, com.tencent.mm.ab.a.mzY);
+      if (!com.tencent.mm.ab.a.byy.equals(locala.hbZ)) {
+        com.tencent.mm.ab.a.byy.set(locala.hbZ);
+      }
+    }
+    AppMethodBeat.o(9141);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,20 +10,20 @@ import com.tencent.thumbplayer.utils.g;
 final class e$c
   implements Handler.Callback
 {
-  private Handler ZAs;
+  private Handler ahFv;
   
   e$c(Handler paramHandler)
   {
-    this.ZAs = paramHandler;
+    this.ahFv = paramHandler;
   }
   
   public final boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(219158);
+    AppMethodBeat.i(228637);
     try
     {
-      this.ZAs.handleMessage(paramMessage);
-      AppMethodBeat.o(219158);
+      this.ahFv.handleMessage(paramMessage);
+      AppMethodBeat.o(228637);
       return true;
     }
     catch (Exception paramMessage)
@@ -37,7 +37,7 @@ final class e$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.a.e.c
  * JD-Core Version:    0.7.0.1
  */

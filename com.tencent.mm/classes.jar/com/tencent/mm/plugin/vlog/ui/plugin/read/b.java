@@ -1,66 +1,64 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.read;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.i;
-import com.tencent.mm.an.q;
-import com.tencent.mm.cd.a;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
+import com.tencent.mm.am.p;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bkk;
-import com.tencent.mm.protocal.protobuf.bkl;
+import com.tencent.mm.protocal.protobuf.bxn;
+import com.tencent.mm.protocal.protobuf.bxo;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/NetSceneFinderTextToSpeech;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "finderUserName", "", "inputText", "(Ljava/lang/String;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "durationMs", "", "getDurationMs", "()J", "setDurationMs", "(J)V", "getInputText", "()Ljava/lang/String;", "outputSpeech", "", "getOutputSpeech", "()[B", "setOutputSpeech", "([B)V", "reqId", "", "getReqId", "()I", "setReqId", "(I)V", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/NetSceneFinderTextToSpeech;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "finderUserName", "", "inputText", "(Ljava/lang/String;Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "durationMs", "", "getDurationMs", "()J", "setDurationMs", "(J)V", "getInputText", "()Ljava/lang/String;", "outputSpeech", "", "getOutputSpeech", "()[B", "setOutputSpeech", "([B)V", "reqId", "", "getReqId", "()I", "setReqId", "(I)V", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
-  extends q
+  extends p
   implements m
 {
-  public static final a Nzz;
-  int Nzh;
-  byte[] Nzx;
-  final String Nzy;
-  private i callback;
+  public static final a Ums;
+  int Ume;
+  final String Umt;
+  byte[] Umu;
+  private h callback;
   long durationMs;
-  private d kwO;
+  private c nao;
   
   static
   {
-    AppMethodBeat.i(250335);
-    Nzz = new a((byte)0);
-    AppMethodBeat.o(250335);
+    AppMethodBeat.i(282929);
+    Ums = new a((byte)0);
+    AppMethodBeat.o(282929);
   }
   
   public b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(250332);
-    this.Nzy = paramString2;
-    paramString2 = new d.a();
-    paramString2.TW("/cgi-bin/micromsg-bin/findertexttospeech");
-    paramString2.vD(getType());
-    bkk localbkk = new bkk();
-    localbkk.finderUsername = paramString1;
-    localbkk.Nzy = this.Nzy;
-    paramString2.c((a)localbkk);
-    paramString2.d((a)new bkl());
-    paramString1 = paramString2.bgN();
-    p.j(paramString1, "builder.buildInstance()");
-    this.kwO = paramString1;
-    AppMethodBeat.o(250332);
+    AppMethodBeat.i(282922);
+    this.Umt = paramString2;
+    paramString2 = new c.a();
+    paramString2.uri = "/cgi-bin/micromsg-bin/findertexttospeech";
+    paramString2.funcId = getType();
+    bxn localbxn = new bxn();
+    localbxn.finderUsername = paramString1;
+    localbxn.Umt = this.Umt;
+    paramString2.otE = ((a)localbxn);
+    paramString2.otF = ((a)new bxo());
+    paramString1 = paramString2.bEF();
+    kotlin.g.b.s.s(paramString1, "builder.buildInstance()");
+    this.nao = paramString1;
+    AppMethodBeat.o(282922);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(g paramg, h paramh)
   {
-    AppMethodBeat.i(250325);
+    AppMethodBeat.i(282933);
     Log.i("MicroMsg.NetSceneFinderTextToSpeech", "doScene");
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.kwO, (m)this);
-    AppMethodBeat.o(250325);
+    this.callback = paramh;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.nao, (m)this);
+    AppMethodBeat.o(282933);
     return i;
   }
   
@@ -69,44 +67,42 @@ public final class b
     return 5207;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(250330);
+    AppMethodBeat.i(282949);
     Log.i("MicroMsg.NetSceneFinderTextToSpeech", "onGYNetEnd, errType:" + paramInt2 + ", errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
       Log.e("MicroMsg.NetSceneFinderTextToSpeech", "onGYNetEnd error");
     }
-    params = this.kwO.bhY();
+    params = c.c.b(this.nao.otC);
     if (params == null)
     {
-      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderTextToSpeechResp");
-      AppMethodBeat.o(250330);
+      paramString = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderTextToSpeechResp");
+      AppMethodBeat.o(282949);
       throw paramString;
     }
-    paramArrayOfByte = (bkl)params;
-    params = paramArrayOfByte.SVq;
-    if (params != null) {}
-    for (params = params.UH;; params = null)
+    paramArrayOfByte = (bxo)params;
+    params = paramArrayOfByte.aago;
+    if (params == null) {}
+    for (params = null;; params = params.Op)
     {
-      this.Nzx = params;
+      this.Umu = params;
       this.durationMs = paramArrayOfByte.durationMs;
       params = this.callback;
-      if (params == null) {
-        break;
+      if (params != null) {
+        params.onSceneEnd(paramInt2, paramInt3, paramString, (p)this);
       }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(250330);
+      AppMethodBeat.o(282949);
       return;
     }
-    AppMethodBeat.o(250330);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/NetSceneFinderTextToSpeech$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/plugin/read/NetSceneFinderTextToSpeech$Companion;", "", "()V", "TAG", "", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.read.b
  * JD-Core Version:    0.7.0.1
  */

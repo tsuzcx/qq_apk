@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/aon" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingRight="20.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true">
-        <RelativeLayout android:gravity="center_vertical" android:id="@id/g82" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-            <com.tencent.mm.plugin.ipcall.ui.IPCallRoundUrlHeadImage android:id="@id/g83" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/g87" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g89" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/g82" android:layout_alignParentRight="true">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/g80" android:background="#ffb2b2b2" android:layout_width="@dimen/bq" android:layout_height="38.0dip" android:layout_marginRight="16.0dip" />
-            <Button android:enabled="false" android:textColor="@drawable/a8v" android:id="@id/g7x" android:background="@drawable/a8u" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="58.0dip" android:minHeight="29.0dip" android:text="@string/e8t" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/g85" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/g89" android:layout_below="@id/g82" android:layout_alignLeft="@id/g82">
-            <TextView android:textSize="38.0dip" android:textColor="@color/a2x" android:id="@id/g88" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:id="@id/g7z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:id="@id/g7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/bqz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="80.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/ba6" />
+        <TextView android:textSize="@dimen/fn" android:textColor="@color/a7b" android:id="@id/gky" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
+        <TextView android:textSize="@dimen/fn" android:textColor="@color/w0" android:id="@id/j7w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
+        <TextView android:textSize="@dimen/fx" android:textColor="@color/w0" android:id="@id/j7n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:lineSpacingExtra="4.0dip" />
+    </LinearLayout>
+</LinearLayout>

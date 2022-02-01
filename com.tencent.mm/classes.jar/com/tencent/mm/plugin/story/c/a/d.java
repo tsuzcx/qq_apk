@@ -5,26 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.plugin.story.c.b;
+import com.tencent.mm.storage.au;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import kotlin.a.ae;
-import kotlin.k.i;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.a.ak;
+import kotlin.k.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceConfig;", "()V", "checkChatterEnableStoryEntrance", "", "userName", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "ShowEntranceConfig", "ShowEntranceType", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceConfig;", "()V", "checkChatterEnableStoryEntrance", "", "userName", "", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "ShowEntranceConfig", "ShowEntranceType", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends b<d.a>
 {
-  public static final d LFe;
+  public static final d SiQ;
   
   static
   {
     AppMethodBeat.i(118605);
-    LFe = new d();
+    SiQ = new d();
     AppMethodBeat.o(118605);
   }
   
-  public static boolean bcO(String paramString)
+  public static boolean bbC(String paramString)
   {
     AppMethodBeat.i(118602);
     if (TextUtils.isEmpty((CharSequence)paramString))
@@ -32,7 +33,7 @@ public final class d
       AppMethodBeat.o(118602);
       return false;
     }
-    if ((!ab.PY(paramString)) && (!ab.Qm(paramString)) && (!ab.Qb(paramString)) && (!ab.Qi(paramString)) && (!ab.Qp(paramString)) && (!ab.Qq(paramString)) && (!ab.QQ(paramString)) && (!ab.QV(paramString)) && (!ab.QX(paramString)) && (!ab.QB(paramString)) && (!ab.PQ(paramString)) && (!ab.PP(paramString)))
+    if ((!au.bwS(paramString)) && (!ab.IS(paramString)) && (!au.bxe(paramString)) && (!ab.IP(paramString)) && (!au.bvS(paramString)) && (!au.bvT(paramString)) && (!au.bwu(paramString)) && (!au.bwA(paramString)) && (!ab.IV(paramString)) && (!au.bwf(paramString)) && (!au.bwF(paramString)) && (!au.bwG(paramString)))
     {
       AppMethodBeat.o(118602);
       return true;
@@ -41,29 +42,29 @@ public final class d
     return false;
   }
   
-  public final void aTZ()
+  public final void boD()
   {
     AppMethodBeat.i(118604);
-    ((d.a)aTX()).clear();
+    ((d.a)boB()).clear();
     if (!o.isShowStoryCheck())
     {
       AppMethodBeat.o(118604);
       return;
     }
-    ((d.a)aTX()).add(b.LFg);
-    ((d.a)aTX()).add(b.LFh);
-    ((d.a)aTX()).add(b.LFi);
-    ((d.a)aTX()).add(b.LFj);
-    ((d.a)aTX()).add(b.LFk);
-    ((d.a)aTX()).add(b.LFm);
-    ((d.a)aTX()).add(b.LFl);
+    ((d.a)boB()).add(b.SiT);
+    ((d.a)boB()).add(b.SiU);
+    ((d.a)boB()).add(b.SiV);
+    ((d.a)boB()).add(b.SiW);
+    ((d.a)boB()).add(b.SiX);
+    ((d.a)boB()).add(b.SiZ);
+    ((d.a)boB()).add(b.SiY);
     AppMethodBeat.o(118604);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "DEFAULT", "CONTACT_PAGE", "TIMELINE_LIKE", "TIMELINE_DETAIL", "TIMELINE_COMMENT", "TIMELINE_USER_HEAD", "CHATTING_ROOM", "MESSAGE_PAGE", "Companion", "plugin-story_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "DEFAULT", "CONTACT_PAGE", "TIMELINE_LIKE", "TIMELINE_DETAIL", "TIMELINE_COMMENT", "TIMELINE_USER_HEAD", "CHATTING_ROOM", "MESSAGE_PAGE", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum b
   {
-    public static final a LFo;
+    public static final d.b.a SiR;
     private static final Map<Integer, b> map;
     private final int value;
     
@@ -71,34 +72,26 @@ public final class d
     {
       int i = 0;
       AppMethodBeat.i(118599);
-      Object localObject1 = new b("DEFAULT", 0, -1);
-      LFf = (b)localObject1;
-      Object localObject2 = new b("CONTACT_PAGE", 1, 0);
-      LFg = (b)localObject2;
-      b localb1 = new b("TIMELINE_LIKE", 2, 1);
-      LFh = localb1;
-      b localb2 = new b("TIMELINE_DETAIL", 3, 2);
-      LFi = localb2;
-      b localb3 = new b("TIMELINE_COMMENT", 4, 3);
-      LFj = localb3;
-      b localb4 = new b("TIMELINE_USER_HEAD", 5, 4);
-      LFk = localb4;
-      b localb5 = new b("CHATTING_ROOM", 6, 5);
-      LFl = localb5;
-      b localb6 = new b("MESSAGE_PAGE", 7, 6);
-      LFm = localb6;
-      LFn = new b[] { localObject1, localObject2, localb1, localb2, localb3, localb4, localb5, localb6 };
-      LFo = new a((byte)0);
-      localObject1 = values();
-      localObject2 = (Map)new LinkedHashMap(i.ov(ae.aDD(localObject1.length), 16));
-      int j = localObject1.length;
+      SiS = new b("DEFAULT", 0, -1);
+      SiT = new b("CONTACT_PAGE", 1, 0);
+      SiU = new b("TIMELINE_LIKE", 2, 1);
+      SiV = new b("TIMELINE_DETAIL", 3, 2);
+      SiW = new b("TIMELINE_COMMENT", 4, 3);
+      SiX = new b("TIMELINE_USER_HEAD", 5, 4);
+      SiY = new b("CHATTING_ROOM", 6, 5);
+      SiZ = new b("MESSAGE_PAGE", 7, 6);
+      Sja = new b[] { SiS, SiT, SiU, SiV, SiW, SiX, SiY, SiZ };
+      SiR = new d.b.a((byte)0);
+      b[] arrayOfb = values();
+      Map localMap = (Map)new LinkedHashMap(k.qu(ak.aKi(arrayOfb.length), 16));
+      int j = arrayOfb.length;
       while (i < j)
       {
-        localb1 = localObject1[i];
-        ((Map)localObject2).put(Integer.valueOf(localb1.value), localb1);
+        b localb = arrayOfb[i];
+        localMap.put(Integer.valueOf(localb.value), localb);
         i += 1;
       }
-      map = (Map)localObject2;
+      map = localMap;
       AppMethodBeat.o(118599);
     }
     
@@ -106,14 +99,11 @@ public final class d
     {
       this.value = paramInt;
     }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceType$Companion;", "", "()V", "map", "", "", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryEntranceElementConfig$ShowEntranceType;", "fromInt", "type", "plugin-story_release"})
-    public static final class a {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.c.a.d
  * JD-Core Version:    0.7.0.1
  */

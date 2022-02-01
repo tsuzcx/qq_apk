@@ -3,44 +3,58 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.m.q;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
+import kotlin.Metadata;
+import kotlin.ah;
 import kotlin.g.a.b;
-import kotlin.l;
-import kotlin.x;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiOpenLocation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/lbs/JsApiOpenLocation;", "()V", "invoke", "", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "callbackId", "", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiOpenLocation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/lbs/JsApiOpenLocation;", "()V", "invoke", "", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "callbackId", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class i
-  extends com.tencent.mm.plugin.appbrand.jsapi.j.q
+  extends q
 {
-  public final void a(final e parame, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(268558);
-    if (parame != null) {}
-    for (Context localContext = parame.getContext();; localContext = null)
+    AppMethodBeat.i(320098);
+    if (paramf == null) {}
+    for (Context localContext = null;; localContext = paramf.getContext())
     {
-      d.b(localContext, (b)new a(this, parame, paramInt, paramJSONObject));
-      AppMethodBeat.o(268558);
+      d.b(localContext, (b)new a(this, paramJSONObject, paramf, paramInt));
+      AppMethodBeat.o(320098);
       return;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends kotlin.g.b.q
-    implements b<MMActivity, x>
+    extends u
+    implements b<MMActivity, ah>
   {
-    a(i parami, e parame, int paramInt, JSONObject paramJSONObject)
+    a(i parami, JSONObject paramJSONObject, f paramf, int paramInt)
     {
       super();
+    }
+    
+    private static final void a(f paramf, int paramInt1, i parami, MMActivity paramMMActivity, int paramInt2, int paramInt3, Intent paramIntent)
+    {
+      AppMethodBeat.i(320080);
+      s.u(parami, "this$0");
+      s.u(paramMMActivity, "$activity");
+      if (paramf != null) {
+        paramf.callback(paramInt1, parami.ZP("ok"));
+      }
+      paramMMActivity.finish();
+      AppMethodBeat.o(320080);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.i
  * JD-Core Version:    0.7.0.1
  */

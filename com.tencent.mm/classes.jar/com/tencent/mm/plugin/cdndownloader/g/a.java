@@ -5,26 +5,26 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class a
 {
-  private static volatile MMHandler eYn;
-  private static final Object rim;
+  private static volatile MMHandler hbN;
+  private static final Object uqi;
   
   static
   {
     AppMethodBeat.i(120817);
-    rim = new Object();
+    uqi = new Object();
     AppMethodBeat.o(120817);
   }
   
-  public static MMHandler cMC()
+  public static MMHandler dqg()
   {
     AppMethodBeat.i(184035);
-    if (eYn == null) {}
-    synchronized (rim)
+    if (hbN == null) {}
+    synchronized (uqi)
     {
-      if (eYn == null) {
-        eYn = new MMHandler("CDNDownloader#WorkThread");
+      if (hbN == null) {
+        hbN = new MMHandler("CDNDownloader#WorkThread");
       }
-      ??? = eYn;
+      ??? = hbN;
       AppMethodBeat.o(184035);
       return ???;
     }

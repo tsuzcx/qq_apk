@@ -20,15 +20,15 @@ public class NoScaleView
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(204139);
+    AppMethodBeat.i(242202);
     super.onFinishInflate();
-    a.jg(this);
-    AppMethodBeat.o(204139);
+    a.mK(this);
+    AppMethodBeat.o(242202);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.noscale.NoScaleView
  * JD-Core Version:    0.7.0.1
  */

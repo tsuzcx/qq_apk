@@ -14,15 +14,15 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public class p
-  extends bs
+  extends bw
   implements d<Bundle, Parcelable>
 {
-  public final void a(Context paramContext, String paramString, br.a parama) {}
+  public final void a(Context paramContext, String paramString, bv.a parama) {}
   
   public final void b(b.a parama)
   {
     AppMethodBeat.i(78548);
-    JSONObject localJSONObject = parama.crh.cqn;
+    JSONObject localJSONObject = parama.eiZ.eif;
     if ((localJSONObject != null) && (localJSONObject.has("liteAppInfo")))
     {
       boolean bool = MMApplicationContext.isProcessExist(MMApplicationContext.getLiteProcessName());
@@ -42,7 +42,7 @@ public class p
     AppMethodBeat.o(78548);
   }
   
-  public final int cDj()
+  public final int dgI()
   {
     return 0;
   }

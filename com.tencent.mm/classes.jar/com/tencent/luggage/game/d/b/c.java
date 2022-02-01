@@ -1,21 +1,21 @@
 package com.tencent.luggage.game.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r;
-import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.y;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
-  extends r
+  extends s
 {
   static final int CTRL_INDEX = -2;
   static final String NAME = "onKeyboardConfirm";
   
-  public final void a(String paramString, v paramv)
+  public final void a(String paramString, y paramy)
   {
     AppMethodBeat.i(130607);
-    if (!paramv.isRunning())
+    if (!paramy.isRunning())
     {
       AppMethodBeat.o(130607);
       return;
@@ -23,7 +23,7 @@ public final class c
     HashMap localHashMap = new HashMap(2);
     localHashMap.put("errMsg", "ok");
     localHashMap.put("value", paramString);
-    D(localHashMap).i(paramv).bPO();
+    K(localHashMap).h(paramy).cpV();
     AppMethodBeat.o(130607);
   }
 }

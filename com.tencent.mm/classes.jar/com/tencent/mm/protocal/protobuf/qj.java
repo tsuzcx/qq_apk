@@ -3,58 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class qj
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public String Username;
+  public int Height;
+  public String IGH;
+  public int Width;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117837);
+    AppMethodBeat.i(257976);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Username != null) {
-        paramVarArgs.f(1, this.Username);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.IGH != null) {
+        paramVarArgs.g(1, this.IGH);
       }
-      AppMethodBeat.o(117837);
+      paramVarArgs.bS(2, this.Width);
+      paramVarArgs.bS(3, this.Height);
+      AppMethodBeat.o(257976);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label213;
+      if (this.IGH == null) {
+        break label302;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.g(1, this.Username) + 0;; paramInt = 0)
+    label302:
+    for (paramInt = i.a.a.b.b.a.h(1, this.IGH) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(117837);
-      return paramInt;
+      int i = i.a.a.b.b.a.cJ(2, this.Width);
+      int j = i.a.a.b.b.a.cJ(3, this.Height);
+      AppMethodBeat.o(257976);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(117837);
+        AppMethodBeat.o(257976);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         qj localqj = (qj)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117837);
+          AppMethodBeat.o(257976);
           return -1;
+        case 1: 
+          localqj.IGH = locala.ajGk.readString();
+          AppMethodBeat.o(257976);
+          return 0;
+        case 2: 
+          localqj.Width = locala.ajGk.aar();
+          AppMethodBeat.o(257976);
+          return 0;
         }
-        localqj.Username = locala.abFh.readString();
-        AppMethodBeat.o(117837);
+        localqj.Height = locala.ajGk.aar();
+        AppMethodBeat.o(257976);
         return 0;
       }
-      AppMethodBeat.o(117837);
+      AppMethodBeat.o(257976);
       return -1;
     }
   }

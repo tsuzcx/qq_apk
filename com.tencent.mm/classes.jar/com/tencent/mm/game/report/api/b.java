@@ -5,22 +5,22 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public int jTq;
-  public String jTr;
+  public int mtI;
+  public String mtJ;
   
   public b() {}
   
   public b(int paramInt, String paramString)
   {
-    this.jTq = paramInt;
-    this.jTr = paramString;
+    this.mtI = paramInt;
+    this.mtJ = paramString;
   }
   
-  public static b d(int paramInt, Object... paramVarArgs)
+  public static b e(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(117604);
     b localb = new b();
-    localb.jTq = paramInt;
+    localb.mtI = paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
     int j = paramVarArgs.length - 1;
     int i = 0;
@@ -30,7 +30,7 @@ public final class b
       i += 1;
     }
     localStringBuilder.append(String.valueOf(paramVarArgs[j]));
-    localb.jTr = localStringBuilder.toString();
+    localb.mtJ = localStringBuilder.toString();
     Log.d("MicroMsg.GameReportInfo", "appStat logID=%d, vals.size=%d, val = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramVarArgs.length), localStringBuilder.toString() });
     AppMethodBeat.o(117604);
     return localb;

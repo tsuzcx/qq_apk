@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
+import androidx.lifecycle.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.a.mb;
+import com.tencent.mm.autogen.a.nh;
 import com.tencent.mm.sdk.event.IListener;
 
-final class OrderHandlerUI$2
-  extends IListener<mb>
+class OrderHandlerUI$2
+  extends IListener<nh>
 {
-  OrderHandlerUI$2(OrderHandlerUI paramOrderHandlerUI)
+  OrderHandlerUI$2(OrderHandlerUI paramOrderHandlerUI, q paramq)
   {
-    AppMethodBeat.i(160898);
-    this.__eventId = mb.class.getName().hashCode();
-    AppMethodBeat.o(160898);
+    super(paramq);
+    AppMethodBeat.i(263527);
+    this.__eventId = nh.class.getName().hashCode();
+    AppMethodBeat.o(263527);
   }
 }
 

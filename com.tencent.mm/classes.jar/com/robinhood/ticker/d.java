@@ -6,28 +6,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  private final c[] ciE;
-  final f ciF;
-  char ciG = '\000';
-  char ciH = '\000';
-  char[] ciI;
-  int ciJ;
-  float ciK;
-  float ciL;
-  float ciM;
-  float ciN;
-  float ciO;
-  float ciP;
-  float ciQ;
-  float ciR;
-  int ciS;
+  private final c[] dZd;
+  final f dZe;
+  char dZf = '\000';
+  char dZg = '\000';
+  char[] dZh;
+  int dZi;
+  float dZj;
+  float dZk;
+  float dZl;
+  float dZm;
+  float dZn;
+  float dZo;
+  float dZp;
+  float dZq;
+  int dZr;
   int endIndex;
   int startIndex;
   
   d(c[] paramArrayOfc, f paramf)
   {
-    this.ciE = paramArrayOfc;
-    this.ciF = paramf;
+    this.dZd = paramArrayOfc;
+    this.dZe = paramf;
   }
   
   static boolean a(Canvas paramCanvas, Paint paramPaint, char[] paramArrayOfChar, int paramInt, float paramFloat)
@@ -43,52 +43,52 @@ final class d
     return false;
   }
   
-  final float Kp()
+  final float akq()
   {
     AppMethodBeat.i(39846);
-    Kq();
-    float f = this.ciN;
+    akr();
+    float f = this.dZm;
     AppMethodBeat.o(39846);
     return f;
   }
   
-  final void Kq()
+  final void akr()
   {
     AppMethodBeat.i(39847);
-    float f = this.ciF.w(this.ciH);
-    if ((this.ciN == this.ciO) && (this.ciO != f))
+    float f = this.dZe.n(this.dZg);
+    if ((this.dZm == this.dZn) && (this.dZn != f))
     {
-      this.ciO = f;
-      this.ciN = f;
-      this.ciP = f;
+      this.dZn = f;
+      this.dZm = f;
+      this.dZo = f;
     }
     AppMethodBeat.o(39847);
   }
   
-  final void v(char paramChar)
+  final void m(char paramChar)
   {
     int m = 0;
     AppMethodBeat.i(39845);
-    this.ciH = paramChar;
-    this.ciM = this.ciN;
-    this.ciO = this.ciF.w(paramChar);
-    this.ciP = Math.max(this.ciM, this.ciO);
-    this.ciI = null;
+    this.dZg = paramChar;
+    this.dZl = this.dZm;
+    this.dZn = this.dZe.n(paramChar);
+    this.dZo = Math.max(this.dZl, this.dZn);
+    this.dZh = null;
     int k = 0;
-    while (k < this.ciE.length)
+    while (k < this.dZd.length)
     {
-      Object localObject = this.ciE[k];
-      paramChar = this.ciG;
-      char c = this.ciH;
-      TickerView.a locala = this.ciF.ciY;
-      int n = ((c)localObject).u(paramChar);
-      int i1 = ((c)localObject).u(c);
+      Object localObject = this.dZd[k];
+      paramChar = this.dZf;
+      char c = this.dZg;
+      TickerView.a locala = this.dZe.dZx;
+      int n = ((c)localObject).l(paramChar);
+      int i1 = ((c)localObject).l(c);
       if ((n < 0) || (i1 < 0))
       {
         localObject = null;
         if (localObject != null)
         {
-          this.ciI = this.ciE[k].ciA;
+          this.dZh = this.dZd[k].dYZ;
           this.startIndex = ((c.a)localObject).startIndex;
           this.endIndex = ((c.a)localObject).endIndex;
         }
@@ -97,7 +97,7 @@ final class d
       else
       {
         int j;
-        switch (c.1.ciC[locala.ordinal()])
+        switch (c.1.dZb[locala.ordinal()])
         {
         default: 
           j = n;
@@ -109,7 +109,7 @@ final class d
           break;
           if (c == 0)
           {
-            i = ((c)localObject).ciA.length;
+            i = ((c)localObject).dYZ.length;
             j = n;
           }
           else
@@ -118,14 +118,14 @@ final class d
             j = n;
             if (i1 < n)
             {
-              i = i1 + ((c)localObject).ciz;
+              i = i1 + ((c)localObject).dYY;
               j = n;
               continue;
               i = i1;
               j = n;
               if (n < i1)
               {
-                j = n + ((c)localObject).ciz;
+                j = n + ((c)localObject).dYY;
                 i = i1;
                 continue;
                 i = i1;
@@ -139,9 +139,9 @@ final class d
                     {
                       i = i1;
                       j = n;
-                      if (((c)localObject).ciz - n + i1 < n - i1)
+                      if (((c)localObject).dYY - n + i1 < n - i1)
                       {
-                        i = i1 + ((c)localObject).ciz;
+                        i = i1 + ((c)localObject).dYY;
                         j = n;
                       }
                     }
@@ -153,9 +153,9 @@ final class d
                       {
                         i = i1;
                         j = n;
-                        if (((c)localObject).ciz - i1 + n < i1 - n)
+                        if (((c)localObject).dYY - i1 + n < i1 - n)
                         {
-                          j = n + ((c)localObject).ciz;
+                          j = n + ((c)localObject).dYY;
                           i = i1;
                         }
                       }
@@ -168,11 +168,11 @@ final class d
         }
       }
     }
-    if (this.ciI == null)
+    if (this.dZh == null)
     {
-      if (this.ciG == this.ciH)
+      if (this.dZf == this.dZg)
       {
-        this.ciI = new char[] { this.ciG };
+        this.dZh = new char[] { this.dZf };
         this.endIndex = 0;
         this.startIndex = 0;
       }
@@ -190,12 +190,12 @@ final class d
     label555:
     for (int i = 1;; i = -1)
     {
-      this.ciS = i;
-      this.ciR = this.ciQ;
-      this.ciQ = 0.0F;
+      this.dZr = i;
+      this.dZq = this.dZp;
+      this.dZp = 0.0F;
       AppMethodBeat.o(39845);
       return;
-      this.ciI = new char[] { this.ciG, this.ciH };
+      this.dZh = new char[] { this.dZf, this.dZg };
       this.startIndex = 0;
       this.endIndex = 1;
       break;
@@ -204,7 +204,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.robinhood.ticker.d
  * JD-Core Version:    0.7.0.1
  */

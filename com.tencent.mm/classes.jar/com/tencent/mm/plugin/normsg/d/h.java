@@ -12,19 +12,21 @@ import java.util.List;
 
 public final class h
 {
-  public static boolean Gzz;
+  public static boolean MvH;
   
   static
   {
     AppMethodBeat.i(149094);
-    Gzz = false;
-    long l = System.nanoTime();
+    MvH = false;
+    l = System.nanoTime();
     try
     {
-      Gzz = false;
+      MvH = false;
       if (Build.VERSION.SDK_INT < 21) {}
-      for (Gzz = false;; Gzz = false)
+      for (MvH = false;; MvH = false)
       {
+        Log.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(MvH), Long.valueOf(System.nanoTime() - l) });
+        AppMethodBeat.o(149094);
         return;
         Field localField = ActivityManager.RecentTaskInfo.class.getDeclaredField("instanceId");
         localField.setAccessible(true);
@@ -34,22 +36,25 @@ public final class h
         }
       }
     }
-    catch (Throwable localThrowable)
+    finally
     {
       for (;;)
       {
-        List localList;
-        Gzz = false;
-        return;
-        if (localThrowable.getInt((ActivityManager.RecentTaskInfo)localList.get(0)) > 0) {
-          Gzz = true;
+        try
+        {
+          MvH = false;
+          return;
+        }
+        finally
+        {
+          List localList;
+          Log.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(MvH), Long.valueOf(System.nanoTime() - l) });
+          AppMethodBeat.o(149094);
+        }
+        if (localObject1.getInt((ActivityManager.RecentTaskInfo)localList.get(0)) > 0) {
+          MvH = true;
         }
       }
-    }
-    finally
-    {
-      Log.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(Gzz), Long.valueOf(System.nanoTime() - l) });
-      AppMethodBeat.o(149094);
     }
   }
 }

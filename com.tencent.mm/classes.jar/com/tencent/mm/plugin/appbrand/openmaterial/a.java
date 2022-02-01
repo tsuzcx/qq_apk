@@ -3,19 +3,17 @@ package com.tencent.mm.plugin.appbrand.openmaterial;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.os.Build.VERSION;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.au.e;
-import com.tencent.mm.plugin.appbrand.au.f;
-import com.tencent.mm.plugin.appbrand.au.g;
-import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ba.e;
+import com.tencent.mm.plugin.appbrand.ba.f;
+import com.tencent.mm.plugin.appbrand.ba.g;
+import com.tencent.mm.plugin.appbrand.ba.i;
 import com.tencent.mm.plugin.appbrand.openmaterial.a.b.a;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialDetailModel;
@@ -24,559 +22,568 @@ import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
 import com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.OpenMaterialJsBridge;
 import com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.OpenMaterialWebView;
 import com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.c;
-import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.plugin.websearch.api.at;
+import com.tencent.mm.plugin.appbrand.service.t;
+import com.tencent.mm.plugin.websearch.api.aj;
+import com.tencent.mm.plugin.websearch.api.au;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.tools.o;
+import com.tencent.mm.ui.widget.a.f;
+import com.tencent.mm.vfs.y;
 import java.util.Collection;
-import java.util.List;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.q;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "context", "Landroid/content/Context;", "bottomSheet4Config", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "openMaterialReporter", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialReporter;", "(Landroid/content/Context;Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialReporter;)V", "bottomSheet", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/IOpenMaterialBottomSheet;", "jsBridge", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/OpenMaterialJsBridge;", "listener", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet$IListener;", "buildHybridBottomSheet", "buildTitleView", "Landroid/view/View;", "dead", "", "hide", "requireBottomSheet", "setListener", "show", "showDirectly", "showInner", "tryLaunchAppBrand", "appId", "", "versionType", "", "enterPath", "configDialog", "Landroid/app/Dialog;", "loadDataAsync", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/OpenMaterialWebView;", "Companion", "plugin-appbrand-integration_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "context", "Landroid/content/Context;", "bottomSheet4Config", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "openMaterialReporter", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialReporter;", "(Landroid/content/Context;Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialReporter;)V", "bottomSheet", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/IOpenMaterialBottomSheet;", "jsBridge", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/OpenMaterialJsBridge;", "listener", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet$IListener;", "buildHybridBottomSheet", "buildTitleView", "Landroid/view/View;", "dead", "", "hide", "requireBottomSheet", "setListener", "show", "showDirectly", "showInner", "tryLaunchAppBrand", "appId", "", "versionType", "", "enterPath", "configDialog", "Landroid/app/Dialog;", "loadDataAsync", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/OpenMaterialWebView;", "Companion", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  implements h
+  implements g
 {
-  private static com.tencent.mm.plugin.appbrand.openmaterial.model.b qlY;
-  public static final a qlZ;
+  public static final a tqT;
+  private static com.tencent.mm.plugin.appbrand.openmaterial.model.b trb;
   private final Context context;
-  private com.tencent.mm.plugin.appbrand.openmaterial.ui.a qlR;
-  private OpenMaterialJsBridge qlS;
-  private h.b qlT;
-  private final e qlU;
-  private final AppBrandOpenMaterialCollection qlV;
-  private final l qlW;
-  private final i qlX;
+  private final f tqU;
+  private final AppBrandOpenMaterialCollection tqV;
+  private final k tqW;
+  private final h tqX;
+  private com.tencent.mm.plugin.appbrand.openmaterial.ui.a tqY;
+  private OpenMaterialJsBridge tqZ;
+  private g.b tra;
   
   static
   {
-    AppMethodBeat.i(282343);
-    qlZ = new a((byte)0);
-    AppMethodBeat.o(282343);
+    AppMethodBeat.i(323735);
+    tqT = new a((byte)0);
+    AppMethodBeat.o(323735);
   }
   
-  public a(Context paramContext, e parame, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, l paraml, i parami)
+  public a(Context paramContext, f paramf, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, k paramk, h paramh)
   {
-    AppMethodBeat.i(282342);
+    AppMethodBeat.i(323565);
     this.context = paramContext;
-    this.qlU = parame;
-    this.qlV = paramAppBrandOpenMaterialCollection;
-    this.qlW = paraml;
-    this.qlX = parami;
+    this.tqU = paramf;
+    this.tqV = paramAppBrandOpenMaterialCollection;
+    this.tqW = paramk;
+    this.tqX = paramh;
     if ((this.context instanceof MMFragmentActivity))
     {
       ((MMFragmentActivity)this.context).keep((com.tencent.mm.vending.e.a)this);
-      AppMethodBeat.o(282342);
+      AppMethodBeat.o(323565);
       return;
     }
     Log.e("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "<init>, context is not lifecycle keeper");
-    AppMethodBeat.o(282342);
+    AppMethodBeat.o(323565);
+  }
+  
+  private static final void a(a parama, DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(323624);
+    s.u(parama, "this$0");
+    Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "onDismiss");
+    paramDialogInterface = parama.tra;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onHidden();
+    }
+    parama.tqX.cDp();
+    AppMethodBeat.o(323624);
+  }
+  
+  private static final void a(a parama, View paramView)
+  {
+    AppMethodBeat.i(323649);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.cH(parama);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(parama, "this$0");
+    Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "iv_close#onClick");
+    parama.hide();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(323649);
+  }
+  
+  private static final void a(OpenMaterialJsBridge paramOpenMaterialJsBridge, a parama, OpenMaterialWebView paramOpenMaterialWebView)
+  {
+    int i = 0;
+    AppMethodBeat.i(323668);
+    s.u(paramOpenMaterialJsBridge, "$jsBridge");
+    s.u(parama, "this$0");
+    s.u(paramOpenMaterialWebView, "$this_loadDataAsync");
+    Object localObject = aj.asW(7);
+    if (localObject == null)
+    {
+      Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "loadDataAsync, openMaterialTemplate is null");
+      AppMethodBeat.o(323668);
+      return;
+    }
+    String str = ((au)localObject).iqp() + '/' + "app.html";
+    Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", s.X("loadDataAsync, htmlPath: ", str));
+    localObject = y.bi(str, 0, -1);
+    if (localObject != null)
+    {
+      if (localObject.length == 0) {
+        i = 1;
+      }
+      if (i == 0) {}
+    }
+    else
+    {
+      Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "loadDataAsync, rawHtmlContent is empty");
+      AppMethodBeat.o(323668);
+      return;
+    }
+    str = s.X("file://", str);
+    Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", s.X("loadDataAsync, baseUrl: ", str));
+    com.tencent.mm.plugin.appbrand.openmaterial.model.b localb = parama.tqX.cDo();
+    s.s(localb, "openMaterialReporter.openMaterialScene");
+    parama = parama.tqV.trP;
+    s.s(parama, "openMaterialCollection.a…dOpenMaterialDetailModels");
+    paramOpenMaterialJsBridge = paramOpenMaterialJsBridge.attachMyOpenMaterials2Template((byte[])localObject, localb, parama);
+    com.tencent.threadpool.h.ahAA.bk(new a..ExternalSyntheticLambda3(paramOpenMaterialWebView, str, paramOpenMaterialJsBridge));
+    AppMethodBeat.o(323668);
+  }
+  
+  private static final void a(OpenMaterialWebView paramOpenMaterialWebView, String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(323658);
+    s.u(paramOpenMaterialWebView, "$this_loadDataAsync");
+    s.u(paramString, "$baseUrl");
+    s.u(paramArrayOfByte, "$htmlContent");
+    paramOpenMaterialWebView.loadDataWithBaseURL(paramString, new String(paramArrayOfByte, kotlin.n.d.UTF_8), "text/html", "utf-8", null);
+    AppMethodBeat.o(323658);
+  }
+  
+  private static final void a(t paramt, a parama, String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(323638);
+    s.u(parama, "this$0");
+    s.u(paramString1, "$appId");
+    s.u(paramString2, "$enterPath");
+    Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "tryLaunchAppBrand, launch appBrand");
+    Context localContext = parama.context;
+    com.tencent.mm.plugin.appbrand.api.g localg = new com.tencent.mm.plugin.appbrand.api.g();
+    localg.appId = paramString1;
+    localg.euz = paramInt;
+    localg.qAF = paramString2;
+    localg.scene = 1173;
+    paramString1 = parama.tqV.trN.mimeType;
+    s.s(paramString1, "openMaterialCollection.materialModel.mimeType");
+    paramString2 = parama.tqV.trN.trT;
+    s.s(paramString2, "openMaterialCollection.materialModel.materialPath");
+    localg.qAG = ((com.tencent.mm.plugin.appbrand.api.d)new com.tencent.mm.plugin.appbrand.openmaterial.model.a(paramString1, paramString2));
+    paramString1 = ah.aiuX;
+    paramt.a(localContext, localg);
+    paramt = com.tencent.mm.plugin.appbrand.openmaterial.a.b.trG;
+    paramt = b.a.cDt();
+    parama = parama.tqV.trN;
+    s.s(parama, "openMaterialCollection.materialModel");
+    paramt.c(parama);
+    AppMethodBeat.o(323638);
   }
   
   private final void b(Dialog paramDialog)
   {
-    AppMethodBeat.i(282341);
+    Object localObject2 = null;
+    Object localObject3 = null;
+    int j = 1;
+    AppMethodBeat.i(323619);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      localObject = paramDialog.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).addFlags(-2147483648);
+      localObject1 = paramDialog.getWindow();
+      if (localObject1 != null) {
+        ((Window)localObject1).addFlags(-2147483648);
       }
     }
-    Object localObject = this.qlU;
-    if ((localObject != null) && (true == ((e)localObject).icw()) && (Build.VERSION.SDK_INT >= 23))
+    Object localObject1 = this.tqU;
+    int i;
+    if ((localObject1 != null) && (true == ((f)localObject1).GwR))
     {
-      localObject = paramDialog.getWindow();
-      if (localObject != null)
+      i = 1;
+      if ((i != 0) && (Build.VERSION.SDK_INT >= 23))
       {
-        localObject = ((Window)localObject).getDecorView();
-        if (localObject != null) {
-          ((View)localObject).setSystemUiVisibility(9216);
+        localObject1 = paramDialog.getWindow();
+        if (localObject1 != null) {
+          break label263;
+        }
+        localObject1 = null;
+        label89:
+        if (localObject1 != null) {
+          ((View)localObject1).setSystemUiVisibility(9216);
+        }
+        localObject1 = paramDialog.getWindow();
+        if (localObject1 != null) {
+          ((Window)localObject1).setStatusBarColor(0);
         }
       }
-      localObject = paramDialog.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).setStatusBarColor(0);
+      localObject1 = this.tqU;
+      if ((localObject1 == null) || (true != ((f)localObject1).sRy)) {
+        break label273;
       }
-    }
-    localObject = this.qlU;
-    if ((localObject != null) && (true == ((e)localObject).isHideStatusBar()))
-    {
-      localObject = paramDialog.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).addFlags(1024);
+      i = 1;
+      label141:
+      if (i != 0)
+      {
+        localObject1 = paramDialog.getWindow();
+        if (localObject1 != null) {
+          ((Window)localObject1).addFlags(1024);
+        }
       }
-    }
-    localObject = this.qlU;
-    if ((localObject != null) && (true == ((e)localObject).icx()))
-    {
-      localObject = paramDialog.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).setFlags(8, 8);
+      localObject1 = this.tqU;
+      if ((localObject1 == null) || (true != ((f)localObject1).sRz)) {
+        break label278;
       }
-      localObject = paramDialog.getWindow();
-      if (localObject != null) {
-        ((Window)localObject).addFlags(131200);
+      i = j;
+      label186:
+      if (i == 0) {
+        break label291;
+      }
+      localObject1 = paramDialog.getWindow();
+      if (localObject1 != null) {
+        ((Window)localObject1).setFlags(8, 8);
+      }
+      localObject1 = paramDialog.getWindow();
+      if (localObject1 != null) {
+        ((Window)localObject1).addFlags(131200);
       }
       paramDialog = paramDialog.getWindow();
-      if (paramDialog != null)
-      {
-        paramDialog = paramDialog.getDecorView();
-        if (paramDialog != null)
-        {
-          paramDialog.setSystemUiVisibility(6);
-          AppMethodBeat.o(282341);
-          return;
-        }
+      if (paramDialog != null) {
+        break label283;
       }
-      AppMethodBeat.o(282341);
+    }
+    label263:
+    label273:
+    label278:
+    label283:
+    for (paramDialog = localObject3;; paramDialog = paramDialog.getDecorView())
+    {
+      if (paramDialog == null) {
+        break label368;
+      }
+      paramDialog.setSystemUiVisibility(6);
+      AppMethodBeat.o(323619);
       return;
+      i = 0;
+      break;
+      localObject1 = ((Window)localObject1).getDecorView();
+      break label89;
+      i = 0;
+      break label141;
+      i = 0;
+      break label186;
     }
-    localObject = paramDialog.getWindow();
-    if (localObject != null) {
-      ((Window)localObject).clearFlags(8);
+    label291:
+    localObject1 = paramDialog.getWindow();
+    if (localObject1 != null) {
+      ((Window)localObject1).clearFlags(8);
     }
-    localObject = paramDialog.getWindow();
-    if (localObject != null) {
-      ((Window)localObject).clearFlags(131072);
+    localObject1 = paramDialog.getWindow();
+    if (localObject1 != null) {
+      ((Window)localObject1).clearFlags(131072);
     }
-    localObject = paramDialog.getWindow();
-    if (localObject != null) {
-      ((Window)localObject).clearFlags(128);
+    localObject1 = paramDialog.getWindow();
+    if (localObject1 != null) {
+      ((Window)localObject1).clearFlags(128);
     }
     paramDialog = paramDialog.getWindow();
-    if (paramDialog != null)
+    if (paramDialog == null) {}
+    for (paramDialog = localObject2;; paramDialog = paramDialog.getDecorView())
     {
-      paramDialog = paramDialog.getDecorView();
-      if (paramDialog != null)
-      {
+      if (paramDialog != null) {
         paramDialog.setSystemUiVisibility(0);
-        AppMethodBeat.o(282341);
-        return;
       }
+      label368:
+      AppMethodBeat.o(323619);
+      return;
     }
-    AppMethodBeat.o(282341);
   }
   
-  private final void ccG()
+  private final void cDc()
   {
-    AppMethodBeat.i(282334);
-    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = ccH();
+    AppMethodBeat.i(323573);
+    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = cDd();
     b(locala.getDialog());
     locala.show();
-    AppMethodBeat.o(282334);
+    AppMethodBeat.o(323573);
   }
   
-  private final com.tencent.mm.plugin.appbrand.openmaterial.ui.a ccH()
+  private final com.tencent.mm.plugin.appbrand.openmaterial.ui.a cDd()
   {
-    AppMethodBeat.i(282336);
-    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala2 = this.qlR;
+    AppMethodBeat.i(323581);
+    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala2 = this.tqY;
     com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = ccI();
-      locala1.setTitleView(ccJ());
-      locala1.getDialog().setOnDismissListener((DialogInterface.OnDismissListener)new f(this));
-      this.qlR = locala1;
+      locala1 = cDe();
+      locala1.setTitleView(cDf());
+      locala1.getDialog().setOnDismissListener(new a..ExternalSyntheticLambda0(this));
+      this.tqY = locala1;
     }
-    AppMethodBeat.o(282336);
+    AppMethodBeat.o(323581);
     return locala1;
   }
   
-  private final com.tencent.mm.plugin.appbrand.openmaterial.ui.a ccI()
+  private final com.tencent.mm.plugin.appbrand.openmaterial.ui.a cDe()
   {
-    AppMethodBeat.i(282338);
-    Object localObject = new com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.a(this.context, (kotlin.g.a.b)new c(this));
-    ((com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.a)localObject).a((com.tencent.mm.plugin.appbrand.openmaterial.ui.a.a)new b(this));
+    AppMethodBeat.i(323589);
+    Object localObject = new com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.a(this.context, (kotlin.g.a.b)new b(this));
+    ((com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.a)localObject).a((com.tencent.mm.plugin.appbrand.openmaterial.ui.a.a)new c(this));
     localObject = (com.tencent.mm.plugin.appbrand.openmaterial.ui.a)localObject;
-    AppMethodBeat.o(282338);
+    AppMethodBeat.o(323589);
     return localObject;
   }
   
-  private final View ccJ()
+  private final View cDf()
   {
-    AppMethodBeat.i(282340);
-    View localView = LayoutInflater.from(this.context).inflate(au.g.open_material_bottom_sheet_title, null);
-    Object localObject = (ImageView)localView.findViewById(au.f.iv_close);
+    AppMethodBeat.i(323605);
+    View localView = LayoutInflater.from(this.context).inflate(ba.g.open_material_bottom_sheet_title, null);
+    Object localObject = (ImageView)localView.findViewById(ba.f.iv_close);
     if (localObject != null) {
-      if (!ar.isDarkMode()) {
+      if (!aw.isDarkMode()) {
         break label110;
       }
     }
     label110:
-    for (int i = au.e.actionbar_icon_light_close;; i = au.e.actionbar_icon_dark_close)
+    for (int i = ba.e.actionbar_icon_light_close;; i = ba.e.actionbar_icon_dark_close)
     {
       ((ImageView)localObject).setImageResource(i);
-      ((ImageView)localObject).setOnClickListener((View.OnClickListener)new d(this));
-      com.tencent.mm.ui.tools.p.iF((View)localObject);
-      localObject = (TextView)localView.findViewById(au.f.tv_title);
+      ((ImageView)localObject).setOnClickListener(new a..ExternalSyntheticLambda1(this));
+      o.F((View)localObject, 0.7F);
+      localObject = (TextView)localView.findViewById(ba.f.tv_title);
       if (localObject != null) {
-        ((TextView)localObject).setText(au.i.app_brand_open_material_more);
+        ((TextView)localObject).setText(ba.i.app_brand_open_material_more);
       }
-      kotlin.g.b.p.j(localView, "titleView");
-      AppMethodBeat.o(282340);
+      s.s(localView, "titleView");
+      AppMethodBeat.o(323605);
       return localView;
     }
   }
   
-  public final void a(h.b paramb)
+  public final void a(g.b paramb)
   {
-    this.qlT = paramb;
+    this.tra = paramb;
   }
   
-  public final void ccF()
+  public final void cDb()
   {
-    AppMethodBeat.i(282329);
+    AppMethodBeat.i(323789);
     Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "showDirectly");
-    this.qlX.ccT();
-    ccG();
-    AppMethodBeat.o(282329);
+    this.tqX.cDr();
+    cDc();
+    AppMethodBeat.o(323789);
   }
   
   public final void dead()
   {
-    AppMethodBeat.i(282333);
-    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = this.qlR;
-    if (locala != null)
-    {
+    AppMethodBeat.i(323810);
+    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = this.tqY;
+    if (locala != null) {
       locala.dead();
-      AppMethodBeat.o(282333);
-      return;
     }
-    AppMethodBeat.o(282333);
+    AppMethodBeat.o(323810);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(282331);
-    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = this.qlR;
-    if (locala != null)
-    {
+    AppMethodBeat.i(323797);
+    com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = this.tqY;
+    if (locala != null) {
       locala.hide();
-      AppMethodBeat.o(282331);
-      return;
     }
-    AppMethodBeat.o(282331);
+    AppMethodBeat.o(323797);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(282328);
+    AppMethodBeat.i(323784);
     Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "show");
-    this.qlX.ccS();
-    ccG();
-    AppMethodBeat.o(282328);
+    this.tqX.cDq();
+    cDc();
+    AppMethodBeat.o(323784);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$Companion;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet$IFactory;", "()V", "scene", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;", "canCreate", "", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "create", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "context", "Landroid/content/Context;", "bottomSheet4Config", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "openMaterialReporter", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialReporter;", "setScene", "plugin-appbrand-integration_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$Companion;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet$IFactory;", "()V", "scene", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;", "canCreate", "", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "create", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "context", "Landroid/content/Context;", "bottomSheet4Config", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "openMaterialReporter", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialReporter;", "setScene", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
-    implements h.a
+    implements g.a
   {
-    public final h a(Context paramContext, e parame, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, l paraml, i parami)
+    public final g a(Context paramContext, f paramf, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, k paramk, h paramh)
     {
-      AppMethodBeat.i(279111);
-      kotlin.g.b.p.k(paramContext, "context");
-      kotlin.g.b.p.k(paramAppBrandOpenMaterialCollection, "openMaterialCollection");
+      AppMethodBeat.i(323610);
+      s.u(paramContext, "context");
+      s.u(paramAppBrandOpenMaterialCollection, "openMaterialCollection");
       Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "create");
-      if (!((a)this).a(paramAppBrandOpenMaterialCollection))
+      if (!a(paramAppBrandOpenMaterialCollection))
       {
         Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "create, can not create, use dummy");
-        paramContext = h.qmK;
-        kotlin.g.b.p.j(paramContext, "IAppBrandOpenMaterialBottomSheet.DUMMY");
-        AppMethodBeat.o(279111);
+        paramContext = g.trt;
+        s.s(paramContext, "{\n                Log.i(…Sheet.DUMMY\n            }");
+        AppMethodBeat.o(323610);
         return paramContext;
       }
-      if (d.ef(paramContext))
+      if (d.eZ(paramContext))
       {
-        if (paraml != null) {
-          break label164;
-        }
-        paraml = l.qmQ;
-        kotlin.g.b.p.j(paraml, "ILaunchAppBrandExecutor.DEFAULT");
-      }
-      label164:
-      for (;;)
-      {
-        if (parami == null)
+        if (paramk == null)
         {
-          parami = a.ccK();
-          if (parami == null) {
-            kotlin.g.b.p.iCn();
+          paramk = k.trz;
+          s.s(paramk, "launchAppBrandExecutor ?…hAppBrandExecutor.DEFAULT");
+          if (paramh != null) {
+            break label138;
           }
-          parami = (i)new com.tencent.mm.plugin.appbrand.openmaterial.b.a(parami, paramAppBrandOpenMaterialCollection);
+          paramh = a.cDg();
+          s.checkNotNull(paramh);
+          paramh = (h)new com.tencent.mm.plugin.appbrand.openmaterial.b.a(paramh, paramAppBrandOpenMaterialCollection);
         }
+        label138:
         for (;;)
         {
-          for (paramContext = (h)new a(paramContext, parame, paramAppBrandOpenMaterialCollection, paraml, parami);; paramContext = h.qmK)
-          {
-            kotlin.g.b.p.j(paramContext, "if (context.isValid())\n …Sheet.DUMMY\n            }");
-            AppMethodBeat.o(279111);
-            return paramContext;
-            Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "create, context is invalid, use dummy");
-          }
+          paramContext = (g)new a(paramContext, paramf, paramAppBrandOpenMaterialCollection, paramk, paramh);
+          AppMethodBeat.o(323610);
+          return paramContext;
+          break;
         }
       }
+      Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "create, context is invalid, use dummy");
+      paramContext = g.trt;
+      s.s(paramContext, "{\n                Log.i(…Sheet.DUMMY\n            }");
+      AppMethodBeat.o(323610);
+      return paramContext;
     }
     
     public final boolean a(AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection)
     {
-      AppMethodBeat.i(279108);
-      kotlin.g.b.p.k(paramAppBrandOpenMaterialCollection, "openMaterialCollection");
-      paramAppBrandOpenMaterialCollection = paramAppBrandOpenMaterialCollection.qni;
-      kotlin.g.b.p.j(paramAppBrandOpenMaterialCollection, "openMaterialCollection.a…dOpenMaterialDetailModels");
+      AppMethodBeat.i(323578);
+      s.u(paramAppBrandOpenMaterialCollection, "openMaterialCollection");
+      paramAppBrandOpenMaterialCollection = paramAppBrandOpenMaterialCollection.trP;
+      s.s(paramAppBrandOpenMaterialCollection, "openMaterialCollection.a…dOpenMaterialDetailModels");
       if (!((Collection)paramAppBrandOpenMaterialCollection).isEmpty())
       {
-        AppMethodBeat.o(279108);
+        AppMethodBeat.o(323578);
         return true;
       }
-      AppMethodBeat.o(279108);
+      AppMethodBeat.o(323578);
       return false;
     }
     
-    public final h.a b(com.tencent.mm.plugin.appbrand.openmaterial.model.b paramb)
+    public final g.a b(com.tencent.mm.plugin.appbrand.openmaterial.model.b paramb)
     {
-      AppMethodBeat.i(279109);
-      kotlin.g.b.p.k(paramb, "scene");
-      Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "setScene, scene: ".concat(String.valueOf(paramb)));
+      AppMethodBeat.i(323593);
+      s.u(paramb, "scene");
+      Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", s.X("setScene, scene: ", paramb));
       a.a(paramb);
-      paramb = (h.a)this;
-      AppMethodBeat.o(279109);
+      paramb = (g.a)this;
+      AppMethodBeat.o(323593);
       return paramb;
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$2$1", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/IOpenMaterialBottomSheet$IListener;", "onContentVisibleHeightChange", "", "height", "", "plugin-appbrand-integration_release"})
-  public static final class b
-    implements com.tencent.mm.plugin.appbrand.openmaterial.ui.a.a
+  @Metadata(d1={""}, d2={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/OpenMaterialWebView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.b<OpenMaterialWebView, ah>
   {
-    b(a parama) {}
-    
-    public final void Cm(int paramInt)
-    {
-      AppMethodBeat.i(281156);
-      OpenMaterialJsBridge localOpenMaterialJsBridge = a.e(this.qma);
-      if (localOpenMaterialJsBridge != null)
-      {
-        localOpenMaterialJsBridge.onWindowHeightChange(com.tencent.mm.plugin.appbrand.ac.g.Dh(paramInt));
-        AppMethodBeat.o(281156);
-        return;
-      }
-      AppMethodBeat.o(281156);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/OpenMaterialWebView;", "invoke"})
-  static final class c
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<OpenMaterialWebView, x>
-  {
-    c(a parama)
+    b(a parama)
     {
       super();
     }
     
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialDetailModel;", "appId", "", "versionType", "", "enterPath", "invoke", "com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$1$jsBridge$1$findOpenMaterialModel$1"})
-    static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.q<String, Integer, String, AppBrandOpenMaterialDetailModel>
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$1$jsBridge$1$1", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/ILaunchWeAppDelegate;", "launch", "", "appId", "", "versionType", "", "enterPath", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class a
+      implements c
     {
-      a(a.c paramc)
+      a(a parama, q<? super String, ? super Integer, ? super String, ? extends AppBrandOpenMaterialDetailModel> paramq) {}
+      
+      private static final void a(a parama, q paramq, String paramString1, int paramInt, String paramString2)
+      {
+        AppMethodBeat.i(323542);
+        s.u(parama, "this$0");
+        s.u(paramq, "$findOpenMaterialModel");
+        s.u(paramString1, "$appId");
+        s.u(paramString2, "$enterPath");
+        com.tencent.mm.plugin.appbrand.openmaterial.ui.a locala = a.b(parama);
+        if (locala != null) {
+          locala.hide();
+        }
+        paramq = (AppBrandOpenMaterialDetailModel)paramq.invoke(paramString1, Integer.valueOf(paramInt), paramString2);
+        if (paramq == null) {
+          Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "launch#buildHybridBottomSheet, openMaterialModel is null");
+        }
+        for (;;)
+        {
+          a.a(parama, paramString1, paramInt, paramString2);
+          AppMethodBeat.o(323542);
+          return;
+          a.c(parama).b((AppBrandOpenMaterialModel)paramq);
+        }
+      }
+      
+      public final void E(String paramString1, int paramInt, String paramString2)
+      {
+        AppMethodBeat.i(323553);
+        s.u(paramString1, "appId");
+        s.u(paramString2, "enterPath");
+        com.tencent.threadpool.h.ahAA.bk(new a.b.a..ExternalSyntheticLambda0(this.trc, this.trd, paramString1, paramInt, paramString2));
+        AppMethodBeat.o(323553);
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$1$jsBridge$1$2", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/IWeAppExposureDelegate;", "onWeAppExposure", "", "appId", "", "versionType", "", "enterPath", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+    public static final class b
+      implements com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.d
+    {
+      b(q<? super String, ? super Integer, ? super String, ? extends AppBrandOpenMaterialDetailModel> paramq, a parama) {}
+      
+      public final void F(String paramString1, int paramInt, String paramString2)
+      {
+        AppMethodBeat.i(323543);
+        s.u(paramString1, "appId");
+        s.u(paramString2, "enterPath");
+        paramString1 = (AppBrandOpenMaterialDetailModel)this.trd.invoke(paramString1, Integer.valueOf(paramInt), paramString2);
+        if (paramString1 == null)
+        {
+          Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "onWeAppExposure#buildHybridBottomSheet, openMaterialModel is null");
+          AppMethodBeat.o(323543);
+          return;
+        }
+        a.c(this.trc).c((AppBrandOpenMaterialModel)paramString1);
+        AppMethodBeat.o(323543);
+      }
+    }
+    
+    @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialDetailModel;", "appId", "", "versionType", "", "enterPath"}, k=3, mv={1, 5, 1}, xi=48)
+    static final class c
+      extends u
+      implements q<String, Integer, String, AppBrandOpenMaterialDetailModel>
+    {
+      c(a parama)
       {
         super();
       }
     }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$1$jsBridge$1$1", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/ILaunchWeAppDelegate;", "launch", "", "appId", "", "versionType", "", "enterPath", "plugin-appbrand-integration_release"})
-    public static final class b
-      implements c
-    {
-      b(kotlin.g.a.q paramq, a.c paramc) {}
-      
-      public final void C(final String paramString1, final int paramInt, final String paramString2)
-      {
-        AppMethodBeat.i(278357);
-        kotlin.g.b.p.k(paramString1, "appId");
-        kotlin.g.b.p.k(paramString2, "enterPath");
-        com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(274581);
-            Object localObject = a.d(this.qmd.qmb.qma);
-            if (localObject != null) {
-              ((com.tencent.mm.plugin.appbrand.openmaterial.ui.a)localObject).hide();
-            }
-            localObject = (AppBrandOpenMaterialDetailModel)this.qmd.qmc.c(paramString1, Integer.valueOf(paramInt), paramString2);
-            if (localObject == null) {
-              Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "launch#buildHybridBottomSheet, openMaterialModel is null");
-            }
-            for (;;)
-            {
-              a.a(this.qmd.qmb.qma, paramString1, paramInt, paramString2);
-              AppMethodBeat.o(274581);
-              return;
-              a.b(this.qmd.qmb.qma).a((AppBrandOpenMaterialModel)localObject);
-            }
-          }
-        });
-        AppMethodBeat.o(278357);
-      }
-    }
-    
-    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$1$jsBridge$1$2", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/hybrid/IWeAppExposureDelegate;", "onWeAppExposure", "", "appId", "", "versionType", "", "enterPath", "plugin-appbrand-integration_release"})
-    public static final class c
-      implements com.tencent.mm.plugin.appbrand.openmaterial.ui.hybrid.d
-    {
-      c(kotlin.g.a.q paramq, a.c paramc) {}
-      
-      public final void D(String paramString1, int paramInt, String paramString2)
-      {
-        AppMethodBeat.i(280373);
-        kotlin.g.b.p.k(paramString1, "appId");
-        kotlin.g.b.p.k(paramString2, "enterPath");
-        paramString1 = (AppBrandOpenMaterialDetailModel)this.qmc.c(paramString1, Integer.valueOf(paramInt), paramString2);
-        if (paramString1 == null)
-        {
-          Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "onWeAppExposure#buildHybridBottomSheet, openMaterialModel is null");
-          AppMethodBeat.o(280373);
-          return;
-        }
-        a.b(this.qmb.qma).b((AppBrandOpenMaterialModel)paramString1);
-        AppMethodBeat.o(280373);
-      }
-    }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildTitleView$1$1"})
-  static final class d
-    implements View.OnClickListener
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildHybridBottomSheet$2$1", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ui/IOpenMaterialBottomSheet$IListener;", "onContentVisibleHeightChange", "", "height", "", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class c
+    implements com.tencent.mm.plugin.appbrand.openmaterial.ui.a.a
   {
-    d(a parama) {}
+    c(a parama) {}
     
-    public final void onClick(View paramView)
+    public final void CB(int paramInt)
     {
-      AppMethodBeat.i(277514);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildTitleView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "iv_close#onClick");
-      this.qma.hide();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$buildTitleView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(277514);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class e
-    implements Runnable
-  {
-    e(a parama, OpenMaterialWebView paramOpenMaterialWebView, OpenMaterialJsBridge paramOpenMaterialJsBridge) {}
-    
-    public final void run()
-    {
-      int i = 0;
-      AppMethodBeat.i(279144);
-      Object localObject = ai.anf(7);
-      if (localObject == null)
-      {
-        Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "loadDataAsync, openMaterialTemplate is null");
-        AppMethodBeat.o(279144);
-        return;
+      AppMethodBeat.i(323557);
+      OpenMaterialJsBridge localOpenMaterialJsBridge = a.d(this.trc);
+      if (localOpenMaterialJsBridge != null) {
+        localOpenMaterialJsBridge.onWindowHeightChange(com.tencent.mm.plugin.appbrand.af.i.DB(paramInt));
       }
-      final String str = ((at)localObject).gRd() + '/' + at.gRj();
-      Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "loadDataAsync, htmlPath: ".concat(String.valueOf(str)));
-      localObject = u.aY(str, 0, -1);
-      if (localObject != null)
-      {
-        if (localObject.length == 0) {
-          i = 1;
-        }
-        if (i == 0) {}
-      }
-      else
-      {
-        Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "loadDataAsync, rawHtmlContent is empty");
-        AppMethodBeat.o(279144);
-        return;
-      }
-      str = "file://".concat(String.valueOf(str));
-      Log.d("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "loadDataAsync, baseUrl: ".concat(String.valueOf(str)));
-      OpenMaterialJsBridge localOpenMaterialJsBridge = this.qmf;
-      com.tencent.mm.plugin.appbrand.openmaterial.model.b localb = a.b(this.qma).ccQ();
-      kotlin.g.b.p.j(localb, "openMaterialReporter.openMaterialScene");
-      List localList = a.c(this.qma).qni;
-      kotlin.g.b.p.j(localList, "openMaterialCollection.a…dOpenMaterialDetailModels");
-      localObject = localOpenMaterialJsBridge.attachMyOpenMaterials2Template((byte[])localObject, localb, localList);
-      com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(270617);
-          this.qmg.qme.loadDataWithBaseURL(str, new String(this.qmi, kotlin.n.d.UTF_8), "text/html", "utf-8", null);
-          AppMethodBeat.o(270617);
-        }
-      });
-      AppMethodBeat.o(279144);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss", "com/tencent/mm/plugin/appbrand/openmaterial/AppBrandOpenMaterialBottomSheet$requireBottomSheet$1$1"})
-  static final class f
-    implements DialogInterface.OnDismissListener
-  {
-    f(a parama) {}
-    
-    public final void onDismiss(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(274559);
-      Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "onDismiss");
-      paramDialogInterface = a.a(this.qma);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.ccP();
-      }
-      a.b(this.qma).ccR();
-      AppMethodBeat.o(274559);
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(a parama, r paramr, String paramString1, int paramInt, String paramString2) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(266993);
-      Log.i("MicroMsg.AppBrand.AppBrandOpenMaterialBottomSheet", "tryLaunchAppBrand, launch appBrand");
-      Object localObject1 = this.qmj;
-      Object localObject2 = a.f(this.qma);
-      com.tencent.mm.plugin.appbrand.api.g localg = new com.tencent.mm.plugin.appbrand.api.g();
-      localg.appId = this.cBD;
-      localg.cBU = this.nKm;
-      localg.nBq = this.pYx;
-      localg.scene = 1173;
-      String str1 = a.c(this.qma).qng.mimeType;
-      kotlin.g.b.p.j(str1, "openMaterialCollection.materialModel.mimeType");
-      String str2 = a.c(this.qma).qng.qnl;
-      kotlin.g.b.p.j(str2, "openMaterialCollection.materialModel.materialPath");
-      localg.nBr = ((com.tencent.mm.plugin.appbrand.api.d)new com.tencent.mm.plugin.appbrand.openmaterial.model.a(str1, str2));
-      ((r)localObject1).a((Context)localObject2, localg);
-      localObject1 = com.tencent.mm.plugin.appbrand.openmaterial.a.b.qna;
-      localObject1 = b.a.ccV();
-      localObject2 = a.c(this.qma).qng;
-      kotlin.g.b.p.j(localObject2, "openMaterialCollection.materialModel");
-      ((com.tencent.mm.plugin.appbrand.openmaterial.a.b)localObject1).c((MaterialModel)localObject2);
-      AppMethodBeat.o(266993);
+      AppMethodBeat.o(323557);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.a
  * JD-Core Version:    0.7.0.1
  */

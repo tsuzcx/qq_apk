@@ -13,13 +13,13 @@ final class WalletBaseUI$10
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(72969);
-    a.b(this.YWY, null, -10000);
+    a.b(this.agUX, null, -10000);
     AppMethodBeat.o(72969);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.WalletBaseUI.10
  * JD-Core Version:    0.7.0.1
  */

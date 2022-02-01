@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.crashfix.jni;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -8,7 +7,6 @@ public class GLConsumerHook
 {
   public static native int hook();
   
-  @Keep
   public static void report(long paramLong)
   {
     AppMethodBeat.i(145625);

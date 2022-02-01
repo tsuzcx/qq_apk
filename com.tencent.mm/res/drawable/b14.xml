@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/am" />
-    <corners android:radius="8.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/voip_cs_hangup_press" />
+    <item android:state_pressed="false" android:drawable="@raw/voip_cs_hangup" />
+</selector>

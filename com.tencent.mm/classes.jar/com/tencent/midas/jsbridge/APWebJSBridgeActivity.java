@@ -44,7 +44,7 @@ public class APWebJSBridgeActivity
   
   private String constructUrl()
   {
-    AppMethodBeat.i(253207);
+    AppMethodBeat.i(217107);
     String str1;
     Object localObject;
     if (TextUtils.isEmpty(APPluginDataInterface.singleton().getDiscountUrl()))
@@ -75,7 +75,7 @@ public class APWebJSBridgeActivity
     {
       str1 = str2 + APMidasTools.map2UrlParams((HashMap)localObject);
       APLog.i("constructUrl", str1);
-      AppMethodBeat.o(253207);
+      AppMethodBeat.o(217107);
       return str1;
       str1 = APPluginDataInterface.singleton().getDiscountUrl();
       str2 = APMidasTools.getUrlParamsValue(str1, APWebProtocol.URL_KEY_HEAD_CONTROL);
@@ -88,7 +88,7 @@ public class APWebJSBridgeActivity
   
   private String getPureH5PayURLParameters(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(253192);
+    AppMethodBeat.i(217032);
     HashMap localHashMap = new HashMap();
     localHashMap.put("m", "buy");
     localHashMap.put("_version", "v3");
@@ -134,7 +134,7 @@ public class APWebJSBridgeActivity
     for (;;)
     {
       paramAPMidasBaseRequest = map2UrlParams(localHashMap);
-      AppMethodBeat.o(253192);
+      AppMethodBeat.o(217032);
       return paramAPMidasBaseRequest;
       if ("itopid".equals(paramAPMidasBaseRequest.sessionId))
       {
@@ -202,31 +202,31 @@ public class APWebJSBridgeActivity
   
   private void initUI()
   {
-    AppMethodBeat.i(253203);
+    AppMethodBeat.i(217098);
     this.webPage.initUI(this);
     this.webPage.loadUrl(constructUrl());
-    AppMethodBeat.o(253203);
+    AppMethodBeat.o(217098);
   }
   
   private void initWebPage()
   {
-    AppMethodBeat.i(253200);
+    AppMethodBeat.i(217090);
     APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.init", "", "");
     if (APX5.isX5Enabled(this))
     {
       this.webPage = new APX5WebPage();
       APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.x5", "", "");
-      AppMethodBeat.o(253200);
+      AppMethodBeat.o(217090);
       return;
     }
     this.webPage = new APSystemWebPage();
     APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.plugin.webpage.system", "", "");
-    AppMethodBeat.o(253200);
+    AppMethodBeat.o(217090);
   }
   
   public static String map2UrlParams(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(253193);
+    AppMethodBeat.i(217044);
     StringBuffer localStringBuffer = new StringBuffer();
     try
     {
@@ -245,7 +245,7 @@ public class APWebJSBridgeActivity
     catch (Exception paramHashMap) {}
     for (;;)
     {
-      AppMethodBeat.o(253193);
+      AppMethodBeat.o(217044);
       return paramHashMap;
       if (!TextUtils.isEmpty(localStringBuffer)) {
         localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
@@ -255,69 +255,69 @@ public class APWebJSBridgeActivity
   
   private static boolean startPureH5Pay(Context paramContext, APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(253198);
+    AppMethodBeat.i(217080);
     if (paramContext == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null context!");
-      AppMethodBeat.o(253198);
+      AppMethodBeat.o(217080);
       return false;
     }
     Intent localIntent = new Intent();
     localIntent.setClass(paramContext, APWebJSBridgeActivity.class);
     localIntent.putExtra("key_pure_h5_pay", "value_pure_h5_pay");
     localIntent.putExtra("key_request", paramAPMidasBaseRequest);
-    paramAPMidasBaseRequest = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramAPMidasBaseRequest.aFh(), "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramAPMidasBaseRequest.sf(0));
+    paramAPMidasBaseRequest = new com.tencent.mm.hellhoundlib.b.a().cG(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramAPMidasBaseRequest.aYi(), "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramAPMidasBaseRequest.sb(0));
     com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/midas/jsbridge/APWebJSBridgeActivity", "startPureH5Pay", "(Landroid/content/Context;Lcom/tencent/midas/api/request/APMidasBaseRequest;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(253198);
+    AppMethodBeat.o(217080);
     return true;
   }
   
   public static boolean startPureH5Pay(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(253197);
+    AppMethodBeat.i(217066);
     APLog.d("APWebJSBridgeActivity", " Calling into startPureH5Pay caller = " + java.lang.Thread.currentThread().getStackTrace()[3].toString());
     APPluginReportManager.getInstance().reportImmediatelyOneRecord("launchpay", "sdk.plugin.pureH5.error.reason", "scene=" + paramString2 + "&reason=" + paramString1);
     if (paramContext == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null context!");
-      AppMethodBeat.o(253197);
+      AppMethodBeat.o(217066);
       return false;
     }
     paramContext = APMidasPayHelper.requestObject;
     if (paramContext == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null request object!");
-      AppMethodBeat.o(253197);
+      AppMethodBeat.o(217066);
       return false;
     }
     paramString1 = APMidasPayHelper.staticActivityContext;
     if (paramString1 == null)
     {
       APLog.e("APWebJSBridgeActivity", "Cannot start pure h5 pay with null activity object!");
-      AppMethodBeat.o(253197);
+      AppMethodBeat.o(217066);
       return false;
     }
     APMidasPayHelper.staticActivityContext = null;
     boolean bool = startPureH5Pay(paramString1, paramContext);
-    AppMethodBeat.o(253197);
+    AppMethodBeat.o(217066);
     return bool;
   }
   
   private void toPureH5Pay(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(253195);
+    AppMethodBeat.i(217053);
     this.webPage.toPureH5Pay(this, paramAPMidasBaseRequest);
     paramAPMidasBaseRequest = "https://pay.qq.com/h5/index.shtml?" + getPureH5PayURLParameters(paramAPMidasBaseRequest);
     APLog.d("APWebJSBridgeActivity", "To pure h5 pay full url = ".concat(String.valueOf(paramAPMidasBaseRequest)));
     this.webPage.loadUrl(paramAPMidasBaseRequest);
-    AppMethodBeat.o(253195);
+    AppMethodBeat.o(217053);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(253191);
+    AppMethodBeat.i(217113);
     super.onCreate(paramBundle);
     try
     {
@@ -327,11 +327,11 @@ public class APWebJSBridgeActivity
       if ((paramBundle != null) && ("value_pure_h5_pay".equals(paramBundle.getStringExtra("key_pure_h5_pay"))))
       {
         toPureH5Pay((APMidasBaseRequest)paramBundle.getSerializableExtra("key_request"));
-        AppMethodBeat.o(253191);
+        AppMethodBeat.o(217113);
         return;
       }
       initUI();
-      AppMethodBeat.o(253191);
+      AppMethodBeat.o(217113);
       return;
     }
     catch (Exception paramBundle)
@@ -342,13 +342,13 @@ public class APWebJSBridgeActivity
       }
       APPluginUtils.callbackInMidasPluginWithoutCaringAboutNewProcess(this, 100, "返回");
       finish();
-      AppMethodBeat.o(253191);
+      AppMethodBeat.o(217113);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(253208);
+    AppMethodBeat.i(217132);
     if (paramInt == 4)
     {
       APLog.d("APWebJSBridgeActivity", "onKey down = back!");
@@ -359,22 +359,22 @@ public class APWebJSBridgeActivity
       finish();
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(253208);
+    AppMethodBeat.o(217132);
     return bool;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(253204);
+    AppMethodBeat.i(217120);
     super.onResume();
-    AppMethodBeat.o(253204);
+    AppMethodBeat.o(217120);
   }
   
   protected void onStart()
   {
-    AppMethodBeat.i(253206);
+    AppMethodBeat.i(217124);
     super.onStart();
-    AppMethodBeat.o(253206);
+    AppMethodBeat.o(217124);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -385,7 +385,7 @@ public class APWebJSBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APWebJSBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

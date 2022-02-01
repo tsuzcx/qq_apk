@@ -2,10 +2,10 @@ package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 final class c$b
   implements Runnable
@@ -28,24 +28,24 @@ final class c$b
       return;
     }
     Log.i("MicroMsg.AccountStorage", "MoveDataFiles :" + this.from + " to :" + this.to);
-    if (!e.avA())
+    if (!e.aPU())
     {
       AppMethodBeat.o(20247);
       return;
     }
-    if (!this.to.substring(0, b.aSL().length()).equals(b.aSL()))
+    if (!this.to.substring(0, b.bmz().length()).equals(b.bmz()))
     {
       AppMethodBeat.o(20247);
       return;
     }
-    u.or(this.from + "image/", this.to + "image/");
-    u.or(this.from + "video/", this.to + "video/");
-    u.or(this.from + "voice/", this.to + "voice/");
-    u.or(this.from + "voice2/", this.to + "voice2/");
-    u.or(this.from + "package/", this.to + "package/");
-    u.or(this.from + "emoji/", this.to + "emoji/");
-    u.or(this.from + "mailapp/", this.to + "mailapp/");
-    u.or(this.from + "brandicon/", this.to + "brandicon/");
+    y.qp(this.from + "image/", this.to + "image/");
+    y.qp(this.from + "video/", this.to + "video/");
+    y.qp(this.from + "voice/", this.to + "voice/");
+    y.qp(this.from + "voice2/", this.to + "voice2/");
+    y.qp(this.from + "package/", this.to + "package/");
+    y.qp(this.from + "emoji/", this.to + "emoji/");
+    y.qp(this.from + "mailapp/", this.to + "mailapp/");
+    y.qp(this.from + "brandicon/", this.to + "brandicon/");
     AppMethodBeat.o(20247);
   }
 }

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@drawable/se" android:layout_width="fill_parent" android:layout_height="424.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/kle" layout="@layout/bby" />
-    <include android:id="@id/kld" android:visibility="gone" layout="@layout/a5y" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/BW_0" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/cjs" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="74.0dip" android:weightSum="4.0">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/guide_ic_01" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/cjp" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/guide_ic_02" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/cjq" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="@dimen/d6" android:layout_height="@dimen/d6" android:src="@raw/guide_ic_03" />
+            <TextView android:textSize="@dimen/hq" android:textColor="@color/UN_BW_0_Alpha_0_5" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/cjr" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:textColor="@color/m" android:layout_gravity="center" android:id="@id/cq6" android:background="@drawable/azf" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/m2" android:layout_marginTop="@dimen/dc" android:text="@string/fn2" style="@style/or" />
+</LinearLayout>

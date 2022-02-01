@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@color/aa_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.base.MMViewPager android:id="@id/dci" android:background="@null" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:layout_centerHorizontal="true" android:unselectedAlpha="1.2" android:transitionGroup="true" />
-        <LinearLayout android:layout_gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.MMPageControlView android:gravity="bottom|center" android:id="@id/jne" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="20.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
+    <LinearLayout style="@style/to">
+        <ImageView android:id="@id/f1j" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/read_more_btn_icon" android:contentDescription="@string/a1o" />
+        <TextView android:textColor="@color/Link" android:id="@id/kn9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="{tip}" style="@style/ma" />
+    </LinearLayout>
 </LinearLayout>

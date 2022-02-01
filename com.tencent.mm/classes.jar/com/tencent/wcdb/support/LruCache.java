@@ -1,6 +1,5 @@
 package com.tencent.wcdb.support;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -316,7 +315,6 @@ public class LruCache<K, V>
     }
   }
   
-  @SuppressLint({"DefaultLocale"})
   public final String toString()
   {
     int i = 0;
@@ -375,7 +373,7 @@ public class LruCache<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wcdb.support.LruCache
  * JD-Core Version:    0.7.0.1
  */

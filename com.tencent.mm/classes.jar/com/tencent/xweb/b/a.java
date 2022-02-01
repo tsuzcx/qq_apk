@@ -1,81 +1,78 @@
 package com.tencent.xweb.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
+import com.tencent.xweb.ao;
+import com.tencent.xweb.util.l;
+import org.xwalk.core.XWalkEnvironment;
 
 public final class a
-  implements d
 {
-  File mFile;
+  private static String aild = null;
+  private static String aile = null;
   
-  public a(File paramFile)
+  public static void bHT(String paramString)
   {
-    this.mFile = paramFile;
+    aild = paramString;
   }
   
-  public final boolean cFq()
+  public static void bHU(String paramString)
   {
-    AppMethodBeat.i(183503);
-    boolean bool = this.mFile.delete();
-    AppMethodBeat.o(183503);
-    return bool;
+    aile = paramString;
   }
   
-  public final String getPath()
+  public static void bW(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(183499);
-    String str = this.mFile.getPath();
-    AppMethodBeat.o(183499);
-    return str;
-  }
-  
-  public final boolean ifE()
-  {
-    AppMethodBeat.i(183502);
-    boolean bool = this.mFile.exists();
-    AppMethodBeat.o(183502);
-    return bool;
-  }
-  
-  public final String[] ifI()
-  {
-    AppMethodBeat.i(183504);
-    String[] arrayOfString = this.mFile.list();
-    AppMethodBeat.o(183504);
-    return arrayOfString;
-  }
-  
-  public final boolean isDirectory()
-  {
-    AppMethodBeat.i(183500);
-    boolean bool = this.mFile.isDirectory();
-    AppMethodBeat.o(183500);
-    return bool;
-  }
-  
-  public final d[] ixa()
-  {
-    int i = 0;
-    AppMethodBeat.i(183501);
-    File[] arrayOfFile = this.mFile.listFiles();
-    if ((arrayOfFile == null) || (arrayOfFile.length == 0))
+    int j = 1;
+    AppMethodBeat.i(212530);
+    Object localObject = new StringBuilder().append(ao.kge()).append(",").append(XWalkEnvironment.getInstalledNewstVersionForCurAbi()).append(",");
+    int i;
+    label63:
+    StringBuilder localStringBuilder;
+    if (paramBoolean1)
     {
-      AppMethodBeat.o(183501);
-      return new d[0];
+      i = 1;
+      localObject = ((StringBuilder)localObject).append(i).append(",");
+      if (!paramBoolean2) {
+        break label139;
+      }
+      i = j;
+      localStringBuilder = ((StringBuilder)localObject).append(i).append(",2,");
+      if (aild == null) {
+        break label144;
+      }
+      localObject = aild;
+      label87:
+      localStringBuilder = localStringBuilder.append((String)localObject).append(",");
+      if (aile == null) {
+        break label151;
+      }
     }
-    d[] arrayOfd = new d[arrayOfFile.length];
-    while (i < arrayOfFile.length)
+    label139:
+    label144:
+    label151:
+    for (localObject = aile;; localObject = "")
     {
-      arrayOfd[i] = new a(arrayOfFile[i]);
-      i += 1;
+      l.ev(24525, (String)localObject);
+      AppMethodBeat.o(212530);
+      return;
+      i = 2;
+      break;
+      i = 2;
+      break label63;
+      localObject = "";
+      break label87;
     }
-    AppMethodBeat.o(183501);
-    return arrayOfd;
+  }
+  
+  public static void reset()
+  {
+    aild = null;
+    aile = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.b.a
  * JD-Core Version:    0.7.0.1
  */

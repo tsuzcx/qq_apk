@@ -11,110 +11,110 @@ import android.util.Size;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.d;
-import com.tencent.mm.ci.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.recordvideo.b.c;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.ui.editor.PhotoEditText;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import com.tencent.mm.xeffect.effect.IStickerDecoder;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/TextDecoder;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "context", "Landroid/content/Context;", "path", "", "(Landroid/content/Context;Ljava/lang/String;)V", "height", "", "textBitmap", "Landroid/graphics/Bitmap;", "textSize", "textView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoEditText;", "width", "commonShadow", "", "Landroid/widget/TextView;", "destroy", "duration", "", "getFrame", "seekTo", "time", "size", "Landroid/util/Size;", "Companion", "plugin-vlog_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/TextDecoder;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "context", "Landroid/content/Context;", "path", "", "(Landroid/content/Context;Ljava/lang/String;)V", "height", "", "textBitmap", "Landroid/graphics/Bitmap;", "textSize", "textView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoEditText;", "width", "commonShadow", "", "Landroid/widget/TextView;", "destroy", "duration", "", "getFrame", "seekTo", "time", "size", "Landroid/util/Size;", "Companion", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b
   implements IStickerDecoder
 {
-  public static final a NEy;
-  private Bitmap NEw;
-  private PhotoEditText NEx;
+  public static final a UqI;
+  private Bitmap UqH;
+  private PhotoEditText UqJ;
   private int height;
   private final int textSize;
   private int width;
   
   static
   {
-    AppMethodBeat.i(228193);
-    NEy = new a((byte)0);
-    AppMethodBeat.o(228193);
+    AppMethodBeat.i(282156);
+    UqI = new a((byte)0);
+    AppMethodBeat.o(282156);
   }
   
   public b(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(228191);
-    this.textSize = a.aY(paramContext, b.c.editor_text_item_text_size);
-    this.NEx = new PhotoEditText(paramContext);
+    AppMethodBeat.i(282148);
+    this.textSize = a.br(paramContext, b.c.editor_text_item_text_size);
+    this.UqJ = new PhotoEditText(paramContext);
     Bitmap localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-    p.j(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8)");
-    this.NEw = localBitmap;
+    s.s(localBitmap, "createBitmap(1, 1, Bitmap.Config.ALPHA_8)");
+    this.UqH = localBitmap;
     int j = a.fromDPToPix(paramContext, 16);
     int k = a.fromDPToPix(paramContext, 8);
-    this.NEx.setPadding(j, k, j, k);
-    this.NEx.setSingleLine(false);
-    this.NEx.setTextSize(0, this.textSize * 1.0F);
+    this.UqJ.setPadding(j, k, j, k);
+    this.UqJ.setSingleLine(false);
+    this.UqJ.setTextSize(0, this.textSize * 1.0F);
     for (;;)
     {
       try
       {
         paramContext = new JSONObject(paramString);
-        this.NEx.setTextColor(paramContext.optInt("font_color"));
-        this.NEx.setTextBackground(paramContext.optInt("bg_color"));
-        this.NEx.setText((CharSequence)paramContext.optString("text"));
+        this.UqJ.setTextColor(paramContext.optInt("font_color"));
+        this.UqJ.setTextBackground(paramContext.optInt("bg_color"));
+        this.UqJ.setText((CharSequence)paramContext.optString("text"));
         paramString = paramContext.optString("font_style");
-        p.j(paramString, "fontStyle");
+        s.s(paramString, "fontStyle");
         if (((CharSequence)paramString).length() > 0)
         {
           i = 1;
           if (i == 0) {
             break label492;
           }
-          if (u.agG(paramString))
+          if (y.ZC(paramString))
           {
-            this.NEx.setTypeface(Typeface.createFromFile(paramString));
+            this.UqJ.setTypeface(Typeface.createFromFile(paramString));
             if ((paramContext.optInt("bg_color") == 0) && (paramContext.optInt("font_color") != -16777216)) {
-              d.g((TextView)this.NEx);
+              d.h((TextView)this.UqJ);
             }
-            paramContext = e.HGz;
-            i = e.fuV().width();
+            paramContext = e.NDU;
+            i = e.gGL().width();
             if (i > 0) {
-              this.NEx.setMaxWidth(i);
+              this.UqJ.setMaxWidth(i);
             }
-            this.NEx.measure(0, 0);
-            if (this.NEx.getMeasuredWidth() > 0)
+            this.UqJ.measure(0, 0);
+            if (this.UqJ.getMeasuredWidth() > 0)
             {
-              i = this.NEx.getMeasuredWidth();
-              paramContext = e.HGz;
-              if (i <= e.fuV().width()) {
+              i = this.UqJ.getMeasuredWidth();
+              paramContext = e.NDU;
+              if (i <= e.gGL().width()) {
                 break label510;
               }
             }
-            paramContext = e.HGz;
-            i = e.fuV().width();
+            paramContext = e.NDU;
+            i = e.gGL().width();
             this.width = i;
-            if (this.NEx.getMeasuredHeight() > 0)
+            if (this.UqJ.getMeasuredHeight() > 0)
             {
-              i = this.NEx.getMeasuredHeight();
-              paramContext = e.HGz;
-              if (i <= e.fuV().height()) {
+              i = this.UqJ.getMeasuredHeight();
+              paramContext = e.NDU;
+              if (i <= e.gGL().height()) {
                 break label521;
               }
             }
-            paramContext = e.HGz;
-            i = e.fuV().height();
+            paramContext = e.NDU;
+            i = e.gGL().height();
             this.height = i;
             if ((this.width > 0) && (this.height > 0)) {
               break label532;
             }
             paramContext = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
             paramString = new Canvas(paramContext);
-            this.NEx.draw(paramString);
+            this.UqJ.draw(paramString);
             paramString.save();
             paramString.translate(j, k);
-            this.NEx.getLayout().draw(paramString);
+            this.UqJ.getLayout().draw(paramString);
             paramString.restore();
-            p.j(paramContext, "bitmap");
-            this.NEw = paramContext;
-            AppMethodBeat.o(228191);
+            s.s(paramContext, "bitmap");
+            this.UqH = paramContext;
+            AppMethodBeat.o(282148);
           }
         }
         else
@@ -122,22 +122,22 @@ public final class b
           i = 0;
           continue;
         }
-        this.NEx.setTypeface(Typeface.DEFAULT);
+        this.UqJ.setTypeface(Typeface.DEFAULT);
         continue;
-        this.NEx.setTypeface(this.NEx.getTypeface(), 1);
+        this.UqJ.setTypeface(this.UqJ.getTypeface(), 1);
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(228191);
+        AppMethodBeat.o(282148);
         return;
       }
       label492:
       continue;
       label510:
-      int i = this.NEx.getMeasuredWidth();
+      int i = this.UqJ.getMeasuredWidth();
       continue;
       label521:
-      i = this.NEx.getMeasuredHeight();
+      i = this.UqJ.getMeasuredHeight();
       continue;
       label532:
       paramContext = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
@@ -153,26 +153,26 @@ public final class b
   
   public final Bitmap getFrame()
   {
-    return this.NEw;
+    return this.UqH;
   }
   
   public final void seekTo(long paramLong) {}
   
   public final Size size()
   {
-    AppMethodBeat.i(228186);
+    AppMethodBeat.i(282187);
     Size localSize = new Size(this.width, this.height);
-    AppMethodBeat.o(228186);
+    AppMethodBeat.o(282187);
     return localSize;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/TextDecoder$Companion;", "", "()V", "BG_COLOR", "", "FONT_COLOR", "FONT_STYLE", "TEXT_SCHEME", "getTextValue", "text", "fontColor", "", "bgColor", "fontStyle", "plugin-vlog_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/vlog/ui/timelineeditor/emojidecoder/TextDecoder$Companion;", "", "()V", "BG_COLOR", "", "FONT_COLOR", "FONT_STYLE", "TEXT_SCHEME", "getTextValue", "text", "fontColor", "", "bgColor", "fontStyle", "plugin-vlog_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class a
   {
-    public static String p(String paramString1, int paramInt1, int paramInt2, String paramString2)
+    public static String q(String paramString1, int paramInt1, int paramInt2, String paramString2)
     {
-      AppMethodBeat.i(227321);
-      p.k(paramString1, "text");
+      AppMethodBeat.i(282151);
+      s.u(paramString1, "text");
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -183,8 +183,8 @@ public final class b
         localJSONObject.put("font_style", paramString2);
         label66:
         paramString1 = localJSONObject.toString();
-        p.j(paramString1, "value.toString()");
-        AppMethodBeat.o(227321);
+        s.s(paramString1, "value.toString()");
+        AppMethodBeat.o(282151);
         return paramString1;
       }
       catch (Exception paramString1)
@@ -196,7 +196,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes13.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.timelineeditor.emojidecoder.b
  * JD-Core Version:    0.7.0.1
  */

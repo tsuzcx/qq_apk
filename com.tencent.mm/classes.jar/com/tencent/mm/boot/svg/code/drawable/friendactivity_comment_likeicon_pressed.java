@@ -77,7 +77,7 @@ public class friendactivity_comment_likeicon_pressed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.friendactivity_comment_likeicon_pressed
  * JD-Core Version:    0.7.0.1
  */

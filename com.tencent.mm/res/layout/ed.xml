@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:id="@id/bfc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="160.0dip" android:layout_marginRight="@dimen/hs" android:text="@string/nu" />
-    <TextView android:textColor="@color/l4" android:gravity="center" android:id="@id/bf2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="15.0dip" android:layout_marginRight="@dimen/hs" android:text="@string/nt" />
+<LinearLayout android:orientation="vertical" android:id="@id/sj" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/j7" android:id="@id/sg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/iq" android:layout_marginRight="@dimen/i6" />
+        <TextView android:textSize="@dimen/m3" android:textStyle="bold" android:id="@id/sk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/iq" android:layout_marginRight="@dimen/i6" android:layout_below="@id/sg" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/a1_" android:id="@id/sl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/iq" android:layout_marginRight="@dimen/i6" android:text="@string/pd" android:layout_toRightOf="@id/sk" android:layout_below="@id/sg" />
+        <com.tencent.mm.ui.base.MMFormVerifyCodeInputView android:id="@id/sh" android:focusableInTouchMode="false" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/iq" android:layout_marginRight="@dimen/i6" android:layout_below="@id/sk" form:form_btn_title="@string/pa" form:form_hint="@string/pe" form:form_layout="@layout/bd3" form:form_title="@string/ph" style="@style/mg" />
+        <Button android:id="@id/s6" android:layout_marginLeft="@dimen/i6" android:layout_marginTop="@dimen/i6" android:layout_marginRight="@dimen/i6" android:layout_marginBottom="@dimen/i6" android:text="@string/p_" android:layout_below="@id/sh" style="@style/og" />
+        <com.tenpay.android.wechat.MyKeyboardWindow android:id="@id/si" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 </LinearLayout>

@@ -1,14 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/da5" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.google.android.material.appbar.AppBarLayout android:background="@color/BW_93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_scrollFlags="c3x|c6i|hci">
-            <include layout="@layout/l" />
-        </LinearLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/a0e">
-        <include layout="@layout/bfe" />
-        <com.tencent.mm.plugin.finder.view.FinderViewPager android:orientation="horizontal" android:id="@id/j7c" android:background="@color/BW_100" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <TextView android:textSize="@dimen/eo" android:textColor="@color/FG_2" android:gravity="center" android:id="@id/c39" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/fak" android:includeFontPadding="false" />
-    </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+<ImageView android:layout_gravity="center|left" android:id="@id/gvd" android:tag="radio_off" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/radio_off"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

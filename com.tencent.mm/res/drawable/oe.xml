@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="4.0dip" />
-            <solid android:color="@color/h6" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@drawable/og" />
+    <item android:drawable="@drawable/of" />
+</selector>

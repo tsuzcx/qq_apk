@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.gallery.model.e;
-import com.tencent.mm.plugin.gallery.model.o;
+import com.tencent.mm.plugin.gallery.model.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public final class GalleryEntryUI
   extends HellActivity
 {
-  private int CaM;
-  private int jQj;
+  private int HMO;
   private boolean mInit = false;
+  private int mpb;
   
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -59,11 +59,11 @@ public final class GalleryEntryUI
     Log.i("MicroMsg.GalleryEntryUI", "on create");
     super.onCreate(paramBundle);
     Log.i("MicroMsg.GalleryEntryUI", "checktask onCreate:%s#0x%x task:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Util.getActivityTaskInfo(this) });
-    this.jQj = getIntent().getIntExtra("query_source_type", 3);
-    this.CaM = getIntent().getIntExtra("query_media_type", 1);
-    Log.i("MicroMsg.GalleryEntryUI", "query souce: " + this.jQj + ", queryType: " + this.CaM);
-    e.etl().setQueryType(this.CaM);
-    e.etl().pag = this.jQj;
+    this.mpb = getIntent().getIntExtra("query_source_type", 3);
+    this.HMO = getIntent().getIntExtra("query_media_type", 1);
+    Log.i("MicroMsg.GalleryEntryUI", "query souce: " + this.mpb + ", queryType: " + this.HMO);
+    e.fAn().setQueryType(this.HMO);
+    e.fAn().sfB = this.mpb;
     AppMethodBeat.o(111501);
   }
   
@@ -102,7 +102,7 @@ public final class GalleryEntryUI
       Intent localIntent = new Intent(this, ImagePreviewUI.class);
       localIntent.addFlags(67108864);
       localIntent.putExtra("max_select_count", ((Intent)localObject).getIntExtra("max_select_count", 9));
-      localIntent.putExtra("query_source_type", this.jQj);
+      localIntent.putExtra("query_source_type", this.mpb);
       localIntent.putExtra("isPreviewPhoto", ((Intent)localObject).getBooleanExtra("isPreviewPhoto", false));
       localIntent.putExtra("preview_image", ((Intent)localObject).getBooleanExtra("preview_image", false));
       localIntent.putExtra("key_force_hide_edit_image_button", getIntent().getBooleanExtra("key_force_hide_edit_image_button", false));
@@ -142,6 +142,7 @@ public final class GalleryEntryUI
       ((Intent)localObject).putExtra("album_business_tag", getIntent().getStringExtra("album_business_tag"));
       ((Intent)localObject).putExtra("album_video_max_duration", getIntent().getIntExtra("album_video_max_duration", 10));
       ((Intent)localObject).putExtra("album_video_min_duration", getIntent().getIntExtra("album_video_min_duration", 0));
+      ((Intent)localObject).putExtra("album_template_info", getIntent().getByteArrayExtra("album_template_info"));
       startActivityForResult((Intent)localObject, 0);
     }
   }
@@ -154,7 +155,7 @@ public final class GalleryEntryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.GalleryEntryUI
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
@@ -18,53 +17,53 @@ import com.tencent.mm.plugin.radar.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DelayShowNoviceEducationTips", "DelayShowSearchingTips", "HideNoviceEducationTips", "HideTips", "ShowNoMemberTips", "gone", "com/tencent/mm/plugin/radar/ui/RadarTipsView$gone$1", "Lcom/tencent/mm/plugin/radar/ui/RadarTipsView$gone$1;", "<set-?>", "", "isPressing", "()Z", "mCurrentTipsPurpose", "mDontHideFlag", "mHasShownNoviceEducation", "mNoMember", "mPressCount", "mPressForShow", "mPressStartAt", "", "mPressTooShortCount", "mStartWithClick", "noviceEducationTips", "Landroid/widget/LinearLayout;", "getNoviceEducationTips", "()Landroid/widget/LinearLayout;", "noviceEducationTips$delegate", "Lkotlin/Lazy;", "textTipsContainer", "Landroid/view/View;", "getTextTipsContainer", "()Landroid/view/View;", "textTipsContainer$delegate", "tipsFadeIn", "Landroid/view/animation/Animation;", "getTipsFadeIn", "()Landroid/view/animation/Animation;", "tipsFadeIn$delegate", "tipsFadeOut", "getTipsFadeOut", "tipsFadeOut$delegate", "tipsHandler", "com/tencent/mm/plugin/radar/ui/RadarTipsView$tipsHandler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarTipsView$tipsHandler$1;", "tvTextTips", "Landroid/widget/TextView;", "getTvTextTips", "()Landroid/widget/TextView;", "tvTextTips$delegate", "hideAll", "", "hideNoviceEducation", "hideRadarTips", "init", "removeShowTipsMessages", "reset", "setNoMember", "noMember", "setPressingDown", "show", "setPressingUp", "showErrMsg", "msg", "", "showNoviceEducation", "showPressTooShortTips", "showRadarTips", "res", "during", "showSearchingTips", "Companion", "plugin-radar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/radar/ui/RadarTipsView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "DelayShowNoviceEducationTips", "DelayShowSearchingTips", "HideNoviceEducationTips", "HideTips", "ShowNoMemberTips", "gone", "com/tencent/mm/plugin/radar/ui/RadarTipsView$gone$1", "Lcom/tencent/mm/plugin/radar/ui/RadarTipsView$gone$1;", "<set-?>", "", "isPressing", "()Z", "mCurrentTipsPurpose", "mDontHideFlag", "mHasShownNoviceEducation", "mNoMember", "mPressCount", "mPressForShow", "mPressStartAt", "", "mPressTooShortCount", "mStartWithClick", "noviceEducationTips", "Landroid/widget/LinearLayout;", "getNoviceEducationTips", "()Landroid/widget/LinearLayout;", "noviceEducationTips$delegate", "Lkotlin/Lazy;", "textTipsContainer", "Landroid/view/View;", "getTextTipsContainer", "()Landroid/view/View;", "textTipsContainer$delegate", "tipsFadeIn", "Landroid/view/animation/Animation;", "getTipsFadeIn", "()Landroid/view/animation/Animation;", "tipsFadeIn$delegate", "tipsFadeOut", "getTipsFadeOut", "tipsFadeOut$delegate", "tipsHandler", "com/tencent/mm/plugin/radar/ui/RadarTipsView$tipsHandler$1", "Lcom/tencent/mm/plugin/radar/ui/RadarTipsView$tipsHandler$1;", "tvTextTips", "Landroid/widget/TextView;", "getTvTextTips", "()Landroid/widget/TextView;", "tvTextTips$delegate", "hideAll", "", "hideNoviceEducation", "hideRadarTips", "init", "removeShowTipsMessages", "reset", "setNoMember", "noMember", "setPressingDown", "show", "setPressingUp", "showErrMsg", "msg", "", "showNoviceEducation", "showPressTooShortTips", "showRadarTips", "res", "during", "showSearchingTips", "Companion", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class RadarTipsView
   extends RelativeLayout
 {
-  private static final int Hwl = 3;
-  private static final int Hwm = 0;
-  static final int Hwn = 1;
-  static final int Hwo = 2;
-  private static final int Hwp = 3;
-  public static final RadarTipsView.a Hwq;
-  static final String TAG = "MicroMsg.RadarTipsView";
-  private final b HvR;
-  private final f HvS;
-  private final f HvT;
-  private final f HvU;
-  private final f HvV;
-  private final f HvW;
-  private final int HvX;
-  final int HvY;
-  final int HvZ;
-  private final int Hwa;
-  private final int Hwb;
-  final f Hwc;
-  boolean Hwd;
-  private boolean Hwe;
-  boolean Hwf;
-  boolean Hwg;
-  private int Hwh;
-  private long Hwi;
-  private boolean Hwj;
-  int Hwk;
+  private static final int NtU;
+  private static final int NtV = 0;
+  static final int NtW;
+  static final int NtX;
+  private static final int NtY;
+  public static final RadarTipsView.a Ntz;
+  static final String TAG;
+  private final b NtA;
+  private final j NtB;
+  private final j NtC;
+  private final j NtD;
+  private final j NtE;
+  private final j NtF;
+  private final int NtG;
+  final int NtH;
+  final int NtI;
+  private final int NtJ;
+  private final int NtK;
+  final e NtL;
+  boolean NtM;
+  private boolean NtN;
+  boolean NtO;
+  boolean NtP;
+  private int NtQ;
+  private long NtR;
+  private boolean NtS;
+  int NtT;
   
   static
   {
     AppMethodBeat.i(138711);
-    Hwq = new RadarTipsView.a((byte)0);
+    Ntz = new RadarTipsView.a((byte)0);
     TAG = "MicroMsg.RadarTipsView";
-    Hwl = 3;
-    Hwn = 1;
-    Hwo = 2;
-    Hwp = 3;
+    NtU = 3;
+    NtW = 1;
+    NtX = 2;
+    NtY = 3;
     AppMethodBeat.o(138711);
   }
   
@@ -72,19 +71,19 @@ public final class RadarTipsView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138725);
-    this.HvR = new b(this);
-    this.HvS = g.ar((kotlin.g.a.a)new d(this));
-    this.HvT = g.ar((kotlin.g.a.a)new e(this));
-    this.HvU = i.au(this, a.d.Hte);
-    this.HvV = i.au(this, a.d.Htc);
-    this.HvW = i.au(this, a.d.Htf);
-    this.HvY = 1;
-    this.HvZ = 2;
-    this.Hwa = 3;
-    this.Hwb = 3;
-    this.Hwc = new f(this, Looper.getMainLooper());
-    this.Hwe = true;
-    this.Hwk = Hwm;
+    this.NtA = new b(this);
+    this.NtB = k.cm((kotlin.g.a.a)new c(this));
+    this.NtC = k.cm((kotlin.g.a.a)new d(this));
+    this.NtD = e.aM((View)this, a.d.NqT);
+    this.NtE = e.aM((View)this, a.d.NqR);
+    this.NtF = e.aM((View)this, a.d.NqU);
+    this.NtH = 1;
+    this.NtI = 2;
+    this.NtJ = 3;
+    this.NtK = 3;
+    this.NtL = new e(this, Looper.getMainLooper());
+    this.NtN = true;
+    this.NtT = NtV;
     AppMethodBeat.o(138725);
   }
   
@@ -92,84 +91,101 @@ public final class RadarTipsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(138726);
-    this.HvR = new b(this);
-    this.HvS = g.ar((kotlin.g.a.a)new d(this));
-    this.HvT = g.ar((kotlin.g.a.a)new e(this));
-    this.HvU = i.au(this, a.d.Hte);
-    this.HvV = i.au(this, a.d.Htc);
-    this.HvW = i.au(this, a.d.Htf);
-    this.HvY = 1;
-    this.HvZ = 2;
-    this.Hwa = 3;
-    this.Hwb = 3;
-    this.Hwc = new f(this, Looper.getMainLooper());
-    this.Hwe = true;
-    this.Hwk = Hwm;
+    this.NtA = new b(this);
+    this.NtB = k.cm((kotlin.g.a.a)new c(this));
+    this.NtC = k.cm((kotlin.g.a.a)new d(this));
+    this.NtD = e.aM((View)this, a.d.NqT);
+    this.NtE = e.aM((View)this, a.d.NqR);
+    this.NtF = e.aM((View)this, a.d.NqU);
+    this.NtH = 1;
+    this.NtI = 2;
+    this.NtJ = 3;
+    this.NtK = 3;
+    this.NtL = new e(this, Looper.getMainLooper());
+    this.NtN = true;
+    this.NtT = NtV;
     AppMethodBeat.o(138726);
   }
   
-  private void fJ(String paramString, int paramInt)
+  private static final void a(RadarTipsView paramRadarTipsView, View paramView)
+  {
+    AppMethodBeat.i(267257);
+    Object localObject = new Object();
+    b localb = new b();
+    localb.cH(paramRadarTipsView);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/radar/ui/RadarTipsView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", localObject, localb.aYj());
+    s.u(paramRadarTipsView, "this$0");
+    Log.d(TAG, "noviceEducationTips onclick");
+    paramRadarTipsView.gFo();
+    com.tencent.mm.hellhoundlib.a.a.a(new Object(), "com/tencent/mm/plugin/radar/ui/RadarTipsView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(267257);
+  }
+  
+  private void gB(String paramString, int paramInt)
   {
     AppMethodBeat.i(138718);
-    p.k(paramString, "msg");
-    this.Hwd = true;
+    s.u(paramString, "msg");
+    this.NtM = true;
     getNoviceEducationTips().setVisibility(8);
     getNoviceEducationTips().clearAnimation();
     getTvTextTips().setText((CharSequence)paramString);
     setVisibility(0);
     getTextTipsContainer().setVisibility(0);
     getTextTipsContainer().startAnimation(getTipsFadeIn());
-    this.Hwc.removeMessages(this.HvX);
-    this.Hwc.removeMessages(this.HvZ);
+    this.NtL.removeMessages(this.NtG);
+    this.NtL.removeMessages(this.NtI);
     if (paramInt > 0) {
-      this.Hwc.sendEmptyMessageDelayed(this.HvX, paramInt);
+      this.NtL.sendEmptyMessageDelayed(this.NtG, paramInt);
     }
     AppMethodBeat.o(138718);
   }
   
-  private void ftD()
+  private void gFq()
   {
     AppMethodBeat.i(138724);
-    this.Hwd = false;
-    f localf = this.Hwc;
-    localf.removeMessages(this.HvY);
-    localf.removeMessages(this.HvZ);
-    localf.removeMessages(this.Hwa);
+    this.NtM = false;
+    e locale = this.NtL;
+    locale.removeMessages(this.NtH);
+    locale.removeMessages(this.NtI);
+    locale.removeMessages(this.NtJ);
     AppMethodBeat.o(138724);
   }
   
   private final Animation getTipsFadeOut()
   {
     AppMethodBeat.i(138713);
-    Animation localAnimation = (Animation)this.HvT.getValue();
+    Object localObject = this.NtC.getValue();
+    s.s(localObject, "<get-tipsFadeOut>(...)");
+    localObject = (Animation)localObject;
     AppMethodBeat.o(138713);
-    return localAnimation;
+    return localObject;
   }
   
   private final TextView getTvTextTips()
   {
     AppMethodBeat.i(138714);
-    TextView localTextView = (TextView)this.HvU.getValue();
+    TextView localTextView = (TextView)this.NtD.getValue();
     AppMethodBeat.o(138714);
     return localTextView;
   }
   
-  public final void aVq(String paramString)
+  public final void aSy(String paramString)
   {
     AppMethodBeat.i(138719);
-    p.k(paramString, "msg");
-    this.Hwk = Hwp;
-    fJ(paramString, 5000);
+    s.u(paramString, "msg");
+    this.NtT = NtY;
+    gB(paramString, 5000);
     AppMethodBeat.o(138719);
   }
   
-  public final void ftB()
+  public final void gFo()
   {
     AppMethodBeat.i(138720);
-    this.Hwd = false;
-    this.Hwk = Hwm;
+    this.NtM = false;
+    this.NtT = NtV;
     Log.d(TAG, "hidNoviceEducation");
-    this.Hwc.removeMessages(this.Hwa);
+    this.NtL.removeMessages(this.NtJ);
     if ((getVisibility() == 0) && (getNoviceEducationTips().getVisibility() == 0))
     {
       getNoviceEducationTips().clearAnimation();
@@ -182,7 +198,7 @@ public final class RadarTipsView
     AppMethodBeat.o(138720);
   }
   
-  public final void ftC()
+  public final void gFp()
   {
     AppMethodBeat.i(138723);
     Log.d(TAG, "hideRadarTips");
@@ -193,8 +209,8 @@ public final class RadarTipsView
       }
       getTextTipsContainer().clearAnimation();
       Log.d(TAG, "hideRadarTips real");
-      this.Hwk = Hwm;
-      this.Hwd = false;
+      this.NtT = NtV;
+      this.NtM = false;
       getTextTipsContainer().startAnimation(getTipsFadeOut());
     }
     AppMethodBeat.o(138723);
@@ -203,7 +219,7 @@ public final class RadarTipsView
   final LinearLayout getNoviceEducationTips()
   {
     AppMethodBeat.i(138716);
-    LinearLayout localLinearLayout = (LinearLayout)this.HvW.getValue();
+    LinearLayout localLinearLayout = (LinearLayout)this.NtF.getValue();
     AppMethodBeat.o(138716);
     return localLinearLayout;
   }
@@ -211,7 +227,7 @@ public final class RadarTipsView
   final View getTextTipsContainer()
   {
     AppMethodBeat.i(138715);
-    View localView = (View)this.HvV.getValue();
+    View localView = (View)this.NtE.getValue();
     AppMethodBeat.o(138715);
     return localView;
   }
@@ -219,20 +235,29 @@ public final class RadarTipsView
   final Animation getTipsFadeIn()
   {
     AppMethodBeat.i(138712);
-    Animation localAnimation = (Animation)this.HvS.getValue();
+    Object localObject = this.NtB.getValue();
+    s.s(localObject, "<get-tipsFadeIn>(...)");
+    localObject = (Animation)localObject;
     AppMethodBeat.o(138712);
-    return localAnimation;
+    return localObject;
+  }
+  
+  public final void init()
+  {
+    AppMethodBeat.i(267272);
+    getNoviceEducationTips().setOnClickListener(new RadarTipsView..ExternalSyntheticLambda0(this));
+    AppMethodBeat.o(267272);
   }
   
   public final void setNoMember(boolean paramBoolean)
   {
     AppMethodBeat.i(138721);
-    this.Hwe = paramBoolean;
-    if (!this.Hwe)
+    this.NtN = paramBoolean;
+    if (!this.NtN)
     {
-      ftC();
-      ftD();
-      ftB();
+      gFp();
+      gFq();
+      gFo();
     }
     AppMethodBeat.o(138721);
   }
@@ -240,112 +265,95 @@ public final class RadarTipsView
   public final void setPressingDown(boolean paramBoolean)
   {
     AppMethodBeat.i(138722);
-    if (this.Hwi != 0L)
+    if (this.NtR != 0L)
     {
-      this.Hwk = Hwm;
-      ftD();
-      ftC();
+      this.NtT = NtV;
+      gFq();
+      gFp();
       getTextTipsContainer().setVisibility(8);
       getNoviceEducationTips().setVisibility(8);
       setVisibility(8);
     }
-    this.Hwg = true;
-    this.Hwi = Util.currentTicks();
-    this.Hwj = paramBoolean;
-    this.Hwh += 1;
+    this.NtP = true;
+    this.NtR = Util.currentTicks();
+    this.NtS = paramBoolean;
+    this.NtQ += 1;
     AppMethodBeat.o(138722);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/radar/ui/RadarTipsView$gone$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/ui/RadarTipsView$gone$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class b
     extends MMHandler
   {
+    b(RadarTipsView paramRadarTipsView) {}
+    
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(138703);
-      p.k(paramMessage, "msg");
-      this.Hwr.setVisibility(8);
+      s.u(paramMessage, "msg");
+      this.NtZ.setVisibility(8);
       AppMethodBeat.o(138703);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class c
-    implements View.OnClickListener
+    extends u
+    implements kotlin.g.a.a<Animation>
   {
-    c(RadarTipsView paramRadarTipsView) {}
-    
-    public final void onClick(View paramView)
+    c(RadarTipsView paramRadarTipsView)
     {
-      AppMethodBeat.i(138704);
-      b localb = new b();
-      localb.bn(paramView);
-      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/radar/ui/RadarTipsView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-      Log.d(RadarTipsView.access$getTAG$cp(), "noviceEducationTips onclick");
-      this.Hwr.ftB();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/radar/ui/RadarTipsView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(138704);
+      super();
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType"}, k=3, mv={1, 5, 1}, xi=48)
   static final class d
-    extends q
+    extends u
     implements kotlin.g.a.a<Animation>
   {
     d(RadarTipsView paramRadarTipsView)
     {
       super();
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class e
-    extends q
-    implements kotlin.g.a.a<Animation>
-  {
-    e(RadarTipsView paramRadarTipsView)
-    {
-      super();
-    }
     
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/radar/ui/RadarTipsView$tipsFadeOut$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+    @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/ui/RadarTipsView$tipsFadeOut$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
     public static final class a
       implements Animation.AnimationListener
     {
-      a(RadarTipsView.e parame) {}
+      a(RadarTipsView paramRadarTipsView) {}
       
       public final void onAnimationEnd(Animation paramAnimation)
       {
-        AppMethodBeat.i(138707);
-        p.k(paramAnimation, "animation");
-        if (!RadarTipsView.a(this.Hws.Hwr)) {
-          RadarTipsView.b(this.Hws.Hwr).sendEmptyMessage(0);
+        AppMethodBeat.i(267251);
+        s.u(paramAnimation, "animation");
+        if (!RadarTipsView.a(this.NtZ)) {
+          RadarTipsView.b(this.NtZ).sendEmptyMessage(0);
         }
-        AppMethodBeat.o(138707);
+        AppMethodBeat.o(267251);
       }
       
       public final void onAnimationRepeat(Animation paramAnimation)
       {
-        AppMethodBeat.i(138708);
-        p.k(paramAnimation, "animation");
-        AppMethodBeat.o(138708);
+        AppMethodBeat.i(267254);
+        s.u(paramAnimation, "animation");
+        AppMethodBeat.o(267254);
       }
       
       public final void onAnimationStart(Animation paramAnimation)
       {
-        AppMethodBeat.i(138706);
-        p.k(paramAnimation, "animation");
-        AppMethodBeat.o(138706);
+        AppMethodBeat.i(267248);
+        s.u(paramAnimation, "animation");
+        AppMethodBeat.o(267248);
       }
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/radar/ui/RadarTipsView$tipsHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
-  public static final class f
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/radar/ui/RadarTipsView$tipsHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
     extends MMHandler
   {
-    f(Looper paramLooper)
+    e(RadarTipsView paramRadarTipsView, Looper paramLooper)
     {
       super();
     }
@@ -353,31 +361,31 @@ public final class RadarTipsView
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(138710);
-      p.k(paramMessage, "msg");
+      s.u(paramMessage, "msg");
       int i = paramMessage.what;
-      if (i == RadarTipsView.c(this.Hwr))
+      if (i == RadarTipsView.c(this.NtZ))
       {
-        this.Hwr.ftC();
+        this.NtZ.gFp();
         AppMethodBeat.o(138710);
         return;
       }
-      if (i == RadarTipsView.d(this.Hwr))
+      if (i == RadarTipsView.d(this.NtZ))
       {
-        if ((RadarTipsView.e(this.Hwr)) && (this.Hwr.Hwg))
+        if ((RadarTipsView.e(this.NtZ)) && (this.NtZ.NtP))
         {
-          RadarTipsView.a(this.Hwr, a.g.Htv);
+          RadarTipsView.a(this.NtZ, a.g.Nrl);
           AppMethodBeat.o(138710);
         }
       }
       else
       {
-        if (i == RadarTipsView.f(this.Hwr))
+        if (i == RadarTipsView.f(this.NtZ))
         {
-          paramMessage = this.Hwr;
-          paramMessage.Hwd = true;
-          paramMessage.Hwk = RadarTipsView.Hwo;
+          paramMessage = this.NtZ;
+          paramMessage.NtM = true;
+          paramMessage.NtT = RadarTipsView.NtX;
           Log.d(RadarTipsView.TAG, "showNoviceEducation");
-          paramMessage.Hwf = true;
+          paramMessage.NtO = true;
           paramMessage.getTextTipsContainer().setVisibility(8);
           paramMessage.getTextTipsContainer().clearAnimation();
           paramMessage.setVisibility(0);
@@ -387,8 +395,8 @@ public final class RadarTipsView
           AppMethodBeat.o(138710);
           return;
         }
-        if (i == RadarTipsView.g(this.Hwr)) {
-          this.Hwr.ftB();
+        if (i == RadarTipsView.g(this.NtZ)) {
+          this.NtZ.gFo();
         }
       }
       AppMethodBeat.o(138710);
@@ -397,7 +405,7 @@ public final class RadarTipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarTipsView
  * JD-Core Version:    0.7.0.1
  */

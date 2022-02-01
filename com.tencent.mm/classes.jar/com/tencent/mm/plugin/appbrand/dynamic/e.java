@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e ogJ;
+  private static volatile e rkn;
   public Map<String, WeakReference<View>> mViewMap;
   
   private e()
@@ -20,16 +20,16 @@ public class e
     AppMethodBeat.o(121159);
   }
   
-  public static e bNe()
+  public static e cnt()
   {
     AppMethodBeat.i(121160);
-    if (ogJ == null) {}
+    if (rkn == null) {}
     try
     {
-      if (ogJ == null) {
-        ogJ = new e();
+      if (rkn == null) {
+        rkn = new e();
       }
-      e locale = ogJ;
+      e locale = rkn;
       AppMethodBeat.o(121160);
       return locale;
     }
@@ -39,7 +39,7 @@ public class e
     }
   }
   
-  public final View afX(String paramString)
+  public final View YT(String paramString)
   {
     AppMethodBeat.i(121162);
     if (Util.isNullOrNil(paramString))
@@ -59,7 +59,7 @@ public class e
     return null;
   }
   
-  public final boolean c(String paramString, View paramView)
+  public final boolean d(String paramString, View paramView)
   {
     AppMethodBeat.i(121161);
     if (Util.isNullOrNil(paramString))
@@ -84,7 +84,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.e
  * JD-Core Version:    0.7.0.1
  */

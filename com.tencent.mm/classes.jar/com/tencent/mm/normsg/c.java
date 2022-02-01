@@ -1,5 +1,8 @@
 package com.tencent.mm.normsg;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.CountDownLatch;
+
 final class c {}
 
 

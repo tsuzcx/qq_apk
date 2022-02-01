@@ -1,298 +1,146 @@
 package com.tencent.mm.plugin.finder.live.plugin;
 
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.c.b.c;
-import com.tencent.mm.live.core.core.model.h;
-import com.tencent.mm.loader.f.e;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.live.model.ah;
-import com.tencent.mm.plugin.finder.loader.w;
-import com.tencent.mm.protocal.protobuf.FinderMedia;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.azd;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ax;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashMap<Ljava.lang.String;Landroid.graphics.Rect;>;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.live.b.a;
+import com.tencent.mm.live.b.b.b;
+import com.tencent.mm.live.b.b.c;
+import com.tencent.mm.plugin.finder.live.component.s.a;
+import com.tencent.mm.plugin.finder.live.component.s.b;
+import com.tencent.mm.plugin.finder.live.component.t;
+import com.tencent.mm.ui.MMActivity;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveAudioModePreviewPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "TAG", "", "audioModePreview", "Landroid/widget/ImageView;", "liveCore", "Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "getLiveCore", "()Lcom/tencent/mm/live/core/core/trtc/AbsLiveTRTCCore;", "checkAudioMode", "", "isAudioMode", "", "fillAudioModeView", "coverUrl", "avatarUrl", "choosePath", "notifyAudioModePreviewReLayout", "userIdList", "", "onMicUserChanged", "micUserMap", "Ljava/util/LinkedHashMap;", "Landroid/graphics/Rect;", "Lkotlin/collections/LinkedHashMap;", "isPkAnchor", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/live/plugin/FinderLiveCastScreenPlugin;", "Lcom/tencent/mm/plugin/finder/live/plugin/FinderBaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "presenter", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$Presenter;", "getPresenter", "()Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$Presenter;", "setPresenter", "(Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$Presenter;)V", "viewCallback", "Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$ViewCallback;", "getViewCallback", "()Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$ViewCallback;", "setViewCallback", "(Lcom/tencent/mm/plugin/finder/live/component/FinderLiveCastScreenContract$ViewCallback;)V", "adjustPanelLayout", "", "mount", "onBackPress", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "stopCastScreen", "unMount", "visibleInCurrentLiveMode", "plugin-finder-live_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class af
-  extends d
+  extends b
 {
-  private final String TAG;
-  private final com.tencent.mm.live.c.b kCL;
-  private final ImageView ynX;
+  private s.b CxI;
+  public s.a CxP;
+  private final com.tencent.mm.live.b.b nfT;
   
-  public af(ViewGroup paramViewGroup, com.tencent.mm.live.c.b paramb)
+  public af(ViewGroup paramViewGroup, com.tencent.mm.live.b.b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(256084);
-    this.kCL = paramb;
-    this.TAG = "Finder.FinderLiveAudioModePreviewPlugin";
-    paramViewGroup = paramViewGroup.findViewById(b.f.finder_live_audio_mode_preview);
-    p.j(paramViewGroup, "root.findViewById(R.id.f…_live_audio_mode_preview)");
-    this.ynX = ((ImageView)paramViewGroup);
-    AppMethodBeat.o(256084);
+    AppMethodBeat.i(355657);
+    this.nfT = paramb;
+    AppMethodBeat.o(355657);
   }
   
-  private final void ad(final String paramString1, final String paramString2, final String paramString3)
+  public final boolean eoJ()
   {
-    AppMethodBeat.i(256079);
-    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this, paramString1, paramString2, paramString3));
-    AppMethodBeat.o(256079);
+    return true;
   }
   
-  public final void a(LinkedHashMap<String, Rect> paramLinkedHashMap, boolean paramBoolean)
+  public final void mount()
   {
-    AppMethodBeat.i(256083);
-    p.k(paramLinkedHashMap, "micUserMap");
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).addAll((Collection)paramLinkedHashMap.keySet());
-    switch (((List)localObject).size())
+    AppMethodBeat.i(355664);
+    super.mount();
+    Object localObject2;
+    if ((this.CxP == null) || (this.CxI == null))
     {
+      this.CxP = ((s.a)new t(getBuContext(), this.nfT));
+      localObject1 = (View)this.mJe;
+      localObject2 = this.nfT;
+      Context localContext = this.mJe.getContext();
+      if (localContext == null)
+      {
+        localObject1 = new NullPointerException("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+        AppMethodBeat.o(355664);
+        throw ((Throwable)localObject1);
+      }
+      this.CxI = ((s.b)new com.tencent.mm.plugin.finder.live.component.u((View)localObject1, (com.tencent.mm.live.b.b)localObject2, (MMActivity)localContext, this.CxP));
     }
-    do
+    Object localObject1 = this.CxP;
+    if (localObject1 != null)
     {
-      AppMethodBeat.o(256083);
+      localObject2 = this.CxI;
+      s.checkNotNull(localObject2);
+      ((s.a)localObject1).onAttach(localObject2);
+    }
+    if (isLandscape())
+    {
+      localObject1 = this.CxI;
+      if (localObject1 != null) {
+        ((s.b)localObject1).ehW();
+      }
+    }
+    for (;;)
+    {
+      localObject1 = this.CxI;
+      if (localObject1 != null) {
+        ((s.b)localObject1).initView();
+      }
+      AppMethodBeat.o(355664);
       return;
-      localObject = this.kiF.getLayoutParams();
-      paramLinkedHashMap = (LinkedHashMap<String, Rect>)localObject;
-      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
-        paramLinkedHashMap = null;
+      localObject1 = this.CxI;
+      if (localObject1 != null) {
+        ((s.b)localObject1).ehX();
       }
-      paramLinkedHashMap = (ViewGroup.MarginLayoutParams)paramLinkedHashMap;
-      if (paramLinkedHashMap != null)
-      {
-        paramLinkedHashMap.width = -1;
-        paramLinkedHashMap.height = -1;
-        this.kiF.requestLayout();
-        AppMethodBeat.o(256083);
-        return;
-      }
-      AppMethodBeat.o(256083);
-      return;
-      localObject = this.kiF.getLayoutParams();
-      paramLinkedHashMap = (LinkedHashMap<String, Rect>)localObject;
-      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
-        paramLinkedHashMap = null;
-      }
-      paramLinkedHashMap = (ViewGroup.MarginLayoutParams)paramLinkedHashMap;
-      if (paramLinkedHashMap != null)
-      {
-        paramLinkedHashMap.width = (ax.au(this.kiF.getContext()).x / 2);
-        paramLinkedHashMap.height = -1;
-        this.kiF.requestLayout();
-        AppMethodBeat.o(256083);
-        return;
-      }
-      AppMethodBeat.o(256083);
-      return;
-      localObject = this.kiF.getLayoutParams();
-      paramLinkedHashMap = (LinkedHashMap<String, Rect>)localObject;
-      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
-        paramLinkedHashMap = null;
-      }
-      paramLinkedHashMap = (ViewGroup.MarginLayoutParams)paramLinkedHashMap;
-      if (paramLinkedHashMap != null)
-      {
-        paramLinkedHashMap.width = (ax.au(this.kiF.getContext()).x / 2);
-        paramLinkedHashMap.height = -1;
-        this.kiF.requestLayout();
-        AppMethodBeat.o(256083);
-        return;
-      }
-      AppMethodBeat.o(256083);
-      return;
-      localObject = this.kiF.getLayoutParams();
-      paramLinkedHashMap = (LinkedHashMap<String, Rect>)localObject;
-      if (!(localObject instanceof ViewGroup.MarginLayoutParams)) {
-        paramLinkedHashMap = null;
-      }
-      paramLinkedHashMap = (ViewGroup.MarginLayoutParams)paramLinkedHashMap;
-    } while (paramLinkedHashMap == null);
-    paramLinkedHashMap.width = (ax.au(this.kiF.getContext()).x / 2);
-    paramLinkedHashMap.height = ((int)(1.777778F * paramLinkedHashMap.width) / 2);
-    this.kiF.requestLayout();
-    AppMethodBeat.o(256083);
+    }
+  }
+  
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(355690);
+    if (this.mJe.getVisibility() == 0)
+    {
+      b.b.a(this.nfT, b.c.neP);
+      AppMethodBeat.o(355690);
+      return true;
+    }
+    AppMethodBeat.o(355690);
+    return false;
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    Object localObject = null;
-    int i = 0;
-    AppMethodBeat.i(256082);
-    p.k(paramc, "status");
-    super.statusChange(paramc, paramBundle);
-    switch (ag.$EnumSwitchMapping$0[paramc.ordinal()])
+    AppMethodBeat.i(355681);
+    s.u(paramc, "status");
+    switch (a.$EnumSwitchMapping$0[paramc.ordinal()])
     {
-    default: 
-      AppMethodBeat.o(256082);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(355681);
       return;
-    }
-    boolean bool;
-    if (paramBundle != null)
-    {
-      bool = paramBundle.getBoolean("PARAM_FINDER_LIVE_AUDIO_MODE", false);
-      label67:
-      paramBundle = this.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("checkAudioMode isAudioMode:").append(bool).append(" business(LiveCommonSlice::class.java).audioModeHolderBm:").append(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgo).append(" liveDesc.cover:");
-      paramc = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zeZ;
-      if (paramc == null) {
-        break label374;
-      }
-      paramc = paramc.objectDesc;
-      if (paramc == null) {
-        break label374;
-      }
-      paramc = paramc.liveDesc;
-      if (paramc == null) {
-        break label374;
-      }
-      paramc = paramc.zfA;
-      label153:
-      localStringBuilder = localStringBuilder.append(paramc).append(" media.url:");
-      paramc = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zeZ;
-      if (paramc == null) {
-        break label379;
-      }
-      paramc = paramc.objectDesc;
-      if (paramc == null) {
-        break label379;
-      }
-      paramc = paramc.media;
-      if (paramc == null) {
-        break label379;
-      }
-      paramc = (FinderMedia)j.lp((List)paramc);
-      if (paramc == null) {
-        break label379;
-      }
-      paramc = paramc.url;
-      label222:
-      Log.i(paramBundle, paramc);
-      paramc = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      if (!com.tencent.mm.plugin.finder.live.utils.a.dEA()) {
-        break label393;
-      }
-      if (!bool) {
-        break label384;
-      }
-      ad(((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgn.coverUrl, ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgn.nfY, ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zgn.zex);
-    }
-    for (;;)
-    {
-      paramc = com.tencent.mm.plugin.finder.live.utils.a.yRm;
-      if (!com.tencent.mm.plugin.finder.live.utils.a.dEA()) {
-        break label559;
-      }
-      paramc = ah.yhC;
-      paramc = (com.tencent.mm.live.core.core.trtc.a)ah.dzB();
-      label320:
+      tO(0);
+      paramc = this.CxI;
       if (paramc != null)
       {
-        paramc = paramc.knA;
-        if ((paramc != null) && (paramc.kmG == true)) {
-          tU(8);
+        paramc.ehV();
+        AppMethodBeat.o(355681);
+        return;
+        paramc = this.CxI;
+        if (paramc != null) {
+          paramc.am((kotlin.g.a.b)new b(this));
         }
       }
-      Log.i(this.TAG, "FINDER_LIVE_MODE_SWITCH isAudioMode:".concat(String.valueOf(bool)));
-      break;
-      bool = false;
-      break label67;
-      label374:
-      paramc = null;
-      break label153;
-      label379:
-      paramc = null;
-      break label222;
-      label384:
-      tU(8);
-    }
-    label393:
-    if (bool)
-    {
-      paramBundle = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zeZ;
-      paramc = localObject;
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.objectDesc;
-        paramc = localObject;
-        if (paramBundle != null)
-        {
-          paramBundle = paramBundle.liveDesc;
-          paramc = localObject;
-          if (paramBundle != null) {
-            paramc = paramBundle.zfA;
-          }
-        }
-      }
-      paramBundle = (CharSequence)paramc;
-      if ((paramBundle == null) || (paramBundle.length() == 0)) {
-        i = 1;
-      }
-      if (i == 0) {
-        break label573;
-      }
-      paramc = ((com.tencent.mm.plugin.finder.live.viewmodel.data.business.b)business(com.tencent.mm.plugin.finder.live.viewmodel.data.business.b.class)).zeZ;
-      if (paramc != null)
-      {
-        paramc = paramc.objectDesc;
-        if (paramc != null)
-        {
-          paramc = paramc.media;
-          if (paramc != null)
-          {
-            paramc = (FinderMedia)j.lp((List)paramc);
-            if (paramc != null)
-            {
-              paramBundle = paramc.url;
-              paramc = paramBundle;
-              if (paramBundle != null) {
-                break label536;
-              }
-            }
-          }
-        }
-      }
-      paramc = "";
-    }
-    label536:
-    label559:
-    label573:
-    for (;;)
-    {
-      ad(paramc, "", "");
-      break;
-      tU(8);
-      break;
-      paramc = ah.yhC;
-      paramc = (com.tencent.mm.live.core.core.trtc.a)ah.dzA();
-      break label320;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void unMount()
   {
-    a(af paramaf, String paramString1, String paramString2, String paramString3)
+    AppMethodBeat.i(355671);
+    super.unMount();
+    s.a locala = this.CxP;
+    if (locala != null) {
+      locala.onDetach();
+    }
+    AppMethodBeat.o(355671);
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "", "visible", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends kotlin.g.b.u
+    implements kotlin.g.a.b<Boolean, ah>
+  {
+    b(af paramaf)
     {
       super();
     }

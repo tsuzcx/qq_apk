@@ -1,35 +1,38 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.cd.a;
-import com.tencent.mm.protocal.protobuf.buk;
-import com.tencent.mm.protocal.protobuf.bul;
-import kotlin.l;
+import com.tencent.mm.loader.c.b.b;
+import com.tencent.mm.loader.e.g;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/CgiGetEmojiWordList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "()V", "plugin-emojisdk_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/emoji/loader/EmojiGroupDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "()V", "downloader", "Lcom/tencent/mm/loader/impr/DefaultImageDownloader;", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-emojisdk_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  extends com.tencent.mm.an.c<bul>
+  extends com.tencent.mm.loader.c.b<a>
 {
+  private final com.tencent.mm.loader.d.b mgg;
+  
   public c()
   {
-    AppMethodBeat.i(229505);
-    buk localbuk = new buk();
-    bul localbul = new bul();
-    d.a locala = new d.a();
-    locala.c((a)localbuk);
-    locala.d((a)localbul);
-    locala.TW("/cgi-bin/micromsg-bin/getemotionwordlist");
-    locala.vD(3628);
-    locala.vF(0);
-    locala.vG(0);
-    c(locala.bgN());
-    AppMethodBeat.o(229505);
+    AppMethodBeat.i(105385);
+    this.mgg = new com.tencent.mm.loader.d.b();
+    AppMethodBeat.o(105385);
+  }
+  
+  public final void a(com.tencent.mm.loader.g.a.a<a> parama, g paramg, b.b paramb)
+  {
+    AppMethodBeat.i(105384);
+    s.u(parama, "url");
+    s.u(paramg, "fileNameCreator");
+    s.u(paramb, "callback");
+    this.mgg.a(new com.tencent.mm.loader.g.a.a(((a)parama.bmg()).mgd.field_packGrayIconUrl), paramg, paramb);
+    AppMethodBeat.o(105384);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.b.c
  * JD-Core Version:    0.7.0.1
  */

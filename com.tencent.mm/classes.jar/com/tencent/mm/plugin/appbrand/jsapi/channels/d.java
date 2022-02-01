@@ -1,77 +1,137 @@
 package com.tencent.mm.plugin.appbrand.jsapi.channels;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
 import com.tencent.mm.plugin.appbrand.ipc.a;
-import com.tencent.mm.plugin.appbrand.jsapi.EmptyResult;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 import org.json.JSONObject;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCreateContact;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
-public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.c<e>
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCommon;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsBase;", "()V", "action", "", "getAction", "()Ljava/lang/String;", "invoke", "", "env", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "privateData", "callbackId", "", "overrideErrMsg", "originErrMsg", "errCode", "preProcessExtInfo", "", "extInfoJsonObj", "provideOpenExtra", "Landroid/content/Intent;", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public abstract class d
+  extends c
 {
-  private static final int CTRL_INDEX = 985;
-  private static final String NAME = "openChannelsCreateContact";
-  public static final d.a oNV;
-  
-  static
-  {
-    AppMethodBeat.i(273099);
-    oNV = new d.a((byte)0);
-    AppMethodBeat.o(273099);
-  }
-  
   public d()
   {
-    AppMethodBeat.i(273098);
-    com.tencent.mm.plugin.appbrand.permission.c.amg("openChannelsCreateContact");
-    AppMethodBeat.o(273098);
+    com.tencent.mm.plugin.appbrand.permission.c.afo(getName());
   }
   
-  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
+  private static final void a(f paramf, int paramInt, d paramd, EnterFinderResult paramEnterFinderResult)
   {
-    AppMethodBeat.i(273096);
-    if (parame == null)
+    s.u(paramd, "this$0");
+    if (paramEnterFinderResult == null)
     {
-      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCreateContact", "invoke, env is null");
-      AppMethodBeat.o(273096);
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCommon", "onReceiveResult#IProcessResultReceiver, result is null");
       return;
     }
-    paramJSONObject = parame.getContext();
-    if (paramJSONObject == null)
+    int i = paramEnterFinderResult.errCode;
+    Log.i("MicroMsg.AppBrand.JsApiOpenChannelsCommon", s.X("onReceiveResult#IProcessResultReceiver, errCode: ", Integer.valueOf(i)));
+    if (i == 0) {}
+    for (paramd = paramd.ZP("ok");; paramd = paramd.ZP(paramd.cF("fail:internal error", i)))
     {
-      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCreateContact", "invoke, context is null");
-      parame.j(paramInt, agS("fail:internal error invalid android context"));
-      AppMethodBeat.o(273096);
+      paramf.callback(paramInt, paramd);
       return;
     }
-    a.a(paramJSONObject, (AppBrandProxyUIProcessTask.ProcessRequest)new OpenChannelsCreateContactRequest(), (AppBrandProxyUIProcessTask.b)b.oNW);
-    parame.j(paramInt, agS("ok"));
-    AppMethodBeat.o(273096);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
-  static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
-    implements AppBrandProxyUIProcessTask.b<EmptyResult>
+  public final void a(f paramf, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt)
   {
-    public static final b oNW;
-    
-    static
+    if (paramf == null) {
+      return;
+    }
+    Context localContext = paramf.getContext();
+    if (localContext == null)
     {
-      AppMethodBeat.i(264865);
-      oNW = new b();
-      AppMethodBeat.o(264865);
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCommon", "invoke, context is null");
+      paramf.callback(paramInt, ZP("fail:internal error invalid android context"));
+      return;
+    }
+    Log.i("MicroMsg.AppBrand.JsApiOpenChannelsCommon", s.X("invoke, data: ", paramJSONObject1));
+    JSONObject localJSONObject = paramJSONObject1;
+    if (paramJSONObject1 == null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("action", getAction());
+      String str1 = paramf.getAppId();
+      if (paramJSONObject2 == null) {
+        paramJSONObject1 = str1;
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.AppBrand.JsApiOpenChannelsCommon", "invoke, privateData: " + paramJSONObject2 + ", envAppId: " + str1 + ", appId: " + paramJSONObject1);
+        localJSONObject.put("sourceId", paramJSONObject1);
+        paramJSONObject1 = new JSONObject();
+        paramJSONObject1.put("appid", paramf.getAppId());
+        if (localJSONObject.has("reportExtraInfo")) {
+          paramJSONObject1.put("passthrough", localJSONObject.opt("reportExtraInfo"));
+        }
+        paramJSONObject2 = new JSONObject();
+        paramJSONObject2.put("weapp_info", paramJSONObject1);
+        Log.i("MicroMsg.AppBrand.JsApiOpenChannelsCommon", s.X("invoke, reportExtInfo: ", paramJSONObject2));
+        localJSONObject.put("reportExtraInfo", paramJSONObject2);
+        if (ai(localJSONObject)) {
+          break;
+        }
+        Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCommon", "invoke, preProcessExtInfo fail");
+        paramf.callback(paramInt, ZP("fail:internal error"));
+        return;
+        String str2 = paramJSONObject2.optString("appId", str1);
+        paramJSONObject1 = str2;
+        if (str2 == null) {
+          paramJSONObject1 = str1;
+        }
+      }
+      paramJSONObject1 = new JSONObject();
+    }
+    catch (Exception paramJSONObject1)
+    {
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCommon", s.X("invoke, put fail since ", paramJSONObject1));
+      paramf.callback(paramInt, ZP("fail:internal error"));
+      return;
+    }
+    try
+    {
+      paramJSONObject1.put("extInfo", localJSONObject);
+      paramJSONObject1 = paramJSONObject1.toString();
+      s.s(paramJSONObject1, "extInfoWrapperJsonObj.toString()");
+      a.a(localContext, (AppBrandProxyUIProcessTask.ProcessRequest)new EnterFinderRequest(paramJSONObject1), new d..ExternalSyntheticLambda0(paramf, paramInt, this), eH(localContext));
+      return;
+    }
+    catch (Exception paramJSONObject1)
+    {
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCommon", s.X("invoke, put extInfo fail since ", paramJSONObject1));
+      paramf.callback(paramInt, ZP("fail:internal error"));
     }
   }
+  
+  public boolean ai(JSONObject paramJSONObject)
+  {
+    s.u(paramJSONObject, "extInfoJsonObj");
+    return true;
+  }
+  
+  public String cF(String paramString, int paramInt)
+  {
+    s.u(paramString, "originErrMsg");
+    return paramString;
+  }
+  
+  public Intent eH(Context paramContext)
+  {
+    s.u(paramContext, "context");
+    return null;
+  }
+  
+  public abstract String getAction();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.channels.d
  * JD-Core Version:    0.7.0.1
  */

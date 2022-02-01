@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="@dimen/a1y" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@drawable/emoji_capture_sticker_bg" android:layout_width="@dimen/a1y" android:layout_height="@dimen/a1y" />
-    <ImageView android:id="@id/bze" android:padding="@dimen/cb" android:layout_width="@dimen/a1y" android:layout_height="@dimen/a1y" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/k6" android:textColor="?a28" android:gravity="center_horizontal" android:id="@id/bzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/brq" android:maxLines="2" android:layout_below="@id/bze" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/lz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/kbs" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="hr_" layout="@layout/a1j" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cf6" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/jep" app:layout_constraintTop_toTopOf="hr_" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/jep" android:background="?uz" android:padding="@dimen/m2" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="hr_">
+        <Button android:textColor="@color/gj" android:gravity="center" android:id="@id/jer" android:background="@drawable/ah8" android:minWidth="@dimen/j2" android:text="@string/c_w" android:layout_alignParentLeft="true" style="@style/od" />
+        <Button android:textColor="@color/a_0" android:gravity="center" android:id="@id/jeq" android:background="@drawable/ah8" android:minWidth="@dimen/j2" android:text="@string/x0" android:layout_alignParentRight="true" style="@style/od" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,10 +13,10 @@ import java.util.concurrent.Executors;
 public abstract class zzb
   extends Service
 {
-  final ExecutorService bJF;
-  private Binder bJG;
-  private int bJH;
-  private int bJI;
+  final ExecutorService dDn;
+  private Binder dDo;
+  private int dDp;
+  private int dDq;
   private final Object lock;
   
   public zzb()
@@ -25,36 +25,36 @@ public abstract class zzb
     if (str.length() != 0) {}
     for (str = "Firebase-".concat(str);; str = new String("Firebase-"))
     {
-      this.bJF = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
+      this.dDn = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
       this.lock = new Object();
-      this.bJI = 0;
+      this.dDq = 0;
       return;
     }
   }
   
-  private final void g(Intent arg1)
+  private final void h(Intent arg1)
   {
     if (??? != null) {
       WakefulBroadcastReceiver.completeWakefulIntent(???);
     }
     synchronized (this.lock)
     {
-      this.bJI -= 1;
-      if (this.bJI == 0) {
-        stopSelfResult(this.bJH);
+      this.dDq -= 1;
+      if (this.dDq == 0) {
+        stopSelfResult(this.dDp);
       }
       return;
     }
   }
   
-  protected Intent e(Intent paramIntent)
+  protected Intent f(Intent paramIntent)
   {
     return paramIntent;
   }
   
-  public abstract void f(Intent paramIntent);
+  public abstract void g(Intent paramIntent);
   
-  public boolean h(Intent paramIntent)
+  public boolean i(Intent paramIntent)
   {
     return false;
   }
@@ -64,10 +64,10 @@ public abstract class zzb
     try
     {
       Log.isLoggable("EnhancedIntentService", 3);
-      if (this.bJG == null) {
-        this.bJG = new w(this);
+      if (this.dDo == null) {
+        this.dDo = new w(this);
       }
-      paramIntent = this.bJG;
+      paramIntent = this.dDo;
       return paramIntent;
     }
     finally {}
@@ -77,27 +77,27 @@ public abstract class zzb
   {
     synchronized (this.lock)
     {
-      this.bJH = paramInt2;
-      this.bJI += 1;
-      ??? = e(paramIntent);
+      this.dDp = paramInt2;
+      this.dDq += 1;
+      ??? = f(paramIntent);
       if (??? == null)
       {
-        g(paramIntent);
+        h(paramIntent);
         return 2;
       }
     }
-    if (h((Intent)???))
+    if (i((Intent)???))
     {
-      g(paramIntent);
+      h(paramIntent);
       return 2;
     }
-    this.bJF.execute(new t(this, (Intent)???, paramIntent));
+    this.dDn.execute(new t(this, (Intent)???, paramIntent));
     return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.zzb
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,6 @@ import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.ReflectedParcelable;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedOutputStream;
 import java.io.Closeable;
@@ -24,17 +19,13 @@ import java.io.IOException;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
-@SafeParcelable.Class(creator="BitmapTeleporterCreator")
 public class BitmapTeleporter
   extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<BitmapTeleporter> CREATOR;
-  @SafeParcelable.Field(id=3)
   private final int zzac;
-  @SafeParcelable.VersionField(id=1)
   private final int zzal;
-  @SafeParcelable.Field(id=2)
   private ParcelFileDescriptor zznb;
   private Bitmap zznc;
   private boolean zznd;
@@ -47,8 +38,7 @@ public class BitmapTeleporter
     AppMethodBeat.o(11508);
   }
   
-  @SafeParcelable.Constructor
-  BitmapTeleporter(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) ParcelFileDescriptor paramParcelFileDescriptor, @SafeParcelable.Param(id=3) int paramInt2)
+  BitmapTeleporter(int paramInt1, ParcelFileDescriptor paramParcelFileDescriptor, int paramInt2)
   {
     this.zzal = paramInt1;
     this.zznb = paramParcelFileDescriptor;
@@ -86,61 +76,61 @@ public class BitmapTeleporter
   {
     // Byte code:
     //   0: sipush 11506
-    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 80	com/google/android/gms/common/data/BitmapTeleporter:zzne	Ljava/io/File;
+    //   7: getfield 67	com/google/android/gms/common/data/BitmapTeleporter:zzne	Ljava/io/File;
     //   10: ifnonnull +21 -> 31
-    //   13: new 82	java/lang/IllegalStateException
+    //   13: new 69	java/lang/IllegalStateException
     //   16: dup
-    //   17: ldc 84
-    //   19: invokespecial 87	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   17: ldc 71
+    //   19: invokespecial 74	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   22: astore_1
     //   23: sipush 11506
-    //   26: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: aload_1
     //   30: athrow
-    //   31: ldc 89
-    //   33: ldc 91
+    //   31: ldc 76
+    //   33: ldc 78
     //   35: aload_0
-    //   36: getfield 80	com/google/android/gms/common/data/BitmapTeleporter:zzne	Ljava/io/File;
-    //   39: invokestatic 97	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
+    //   36: getfield 67	com/google/android/gms/common/data/BitmapTeleporter:zzne	Ljava/io/File;
+    //   39: invokestatic 84	java/io/File:createTempFile	(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
     //   42: astore_1
-    //   43: new 99	java/io/FileOutputStream
+    //   43: new 86	java/io/FileOutputStream
     //   46: dup
     //   47: aload_1
-    //   48: invokespecial 102	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   51: astore_2
     //   52: aload_0
     //   53: aload_1
-    //   54: ldc 103
-    //   56: invokestatic 109	android/os/ParcelFileDescriptor:open	(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;
-    //   59: putfield 56	com/google/android/gms/common/data/BitmapTeleporter:zznb	Landroid/os/ParcelFileDescriptor;
+    //   54: ldc 90
+    //   56: invokestatic 96	android/os/ParcelFileDescriptor:open	(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;
+    //   59: putfield 45	com/google/android/gms/common/data/BitmapTeleporter:zznb	Landroid/os/ParcelFileDescriptor;
     //   62: aload_1
-    //   63: invokevirtual 113	java/io/File:delete	()Z
+    //   63: invokevirtual 100	java/io/File:delete	()Z
     //   66: pop
     //   67: sipush 11506
-    //   70: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   73: aload_2
     //   74: areturn
     //   75: astore_1
-    //   76: new 82	java/lang/IllegalStateException
+    //   76: new 69	java/lang/IllegalStateException
     //   79: dup
-    //   80: ldc 115
+    //   80: ldc 102
     //   82: aload_1
-    //   83: invokespecial 118	java/lang/IllegalStateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   83: invokespecial 105	java/lang/IllegalStateException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   86: astore_1
     //   87: sipush 11506
-    //   90: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: aload_1
     //   94: athrow
     //   95: astore_1
-    //   96: new 82	java/lang/IllegalStateException
+    //   96: new 69	java/lang/IllegalStateException
     //   99: dup
-    //   100: ldc 120
-    //   102: invokespecial 87	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   100: ldc 107
+    //   102: invokespecial 74	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   105: astore_1
     //   106: sipush 11506
-    //   109: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: aload_1
     //   113: athrow
     // Local variable table:
@@ -269,7 +259,7 @@ public class BitmapTeleporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.BitmapTeleporter
  * JD-Core Version:    0.7.0.1
  */

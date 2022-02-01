@@ -1,6 +1,5 @@
 package com.tencent.mm.ui.transmit;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,9 +16,9 @@ import com.tencent.mm.ui.MMActivity;
 public class SelectNoSupportUI
   extends MMActivity
 {
-  private String XYq = "friend";
-  private TextView XYr;
-  private TextView XYs;
+  private String afOY = "friend";
+  private TextView afOZ;
+  private TextView afPa;
   
   public int getLayoutId()
   {
@@ -29,15 +28,15 @@ public class SelectNoSupportUI
   public void initView()
   {
     AppMethodBeat.i(39412);
-    setMMTitle(getString(R.l.eRX));
-    this.XYr = ((TextView)findViewById(R.h.no_share_title_tx));
-    this.XYs = ((TextView)findViewById(R.h.no_share_detail_tv));
-    this.XYr.setText(getString(R.l.select_no_support_no_share_to_wechat));
+    setMMTitle(getString(R.l.gUG));
+    this.afOZ = ((TextView)findViewById(R.h.no_share_title_tx));
+    this.afPa = ((TextView)findViewById(R.h.no_share_detail_tv));
+    this.afOZ.setText(getString(R.l.select_no_support_no_share_to_wechat));
     String str;
     int i;
-    if (!Util.isNullOrNil(this.XYq))
+    if (!Util.isNullOrNil(this.afOY))
     {
-      str = this.XYq;
+      str = this.afOY;
       i = -1;
       switch (str.hashCode())
       {
@@ -74,9 +73,9 @@ public class SelectNoSupportUI
       }
       i = 1;
       break;
-      this.XYs.setText(getString(R.l.select_no_support_share_excced_pricture_to_friend));
+      this.afPa.setText(getString(R.l.select_no_support_share_excced_pricture_to_friend));
       continue;
-      this.XYs.setText(getString(R.l.select_no_support_share_multi_pricture_to_sns));
+      this.afPa.setText(getString(R.l.select_no_support_share_multi_pricture_to_sns));
     }
   }
   
@@ -85,7 +84,7 @@ public class SelectNoSupportUI
     AppMethodBeat.i(39411);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.SelectNoSupportUI", "onCreate!");
-    this.XYq = getIntent().getStringExtra("sharePictureTo");
+    this.afOY = getIntent().getStringExtra("sharePictureTo");
     Log.i("MicroMsg.SelectNoSupportUI", "initData done!");
     initView();
     Log.i("MicroMsg.SelectNoSupportUI", "initView done!");

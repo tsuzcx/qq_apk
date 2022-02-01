@@ -2,51 +2,51 @@ package com.tencent.mm.plugin.backup.g;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ar;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.vfs.y;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class g
 {
   static long endTime;
-  static long rRO;
-  static long rRP;
   static long startTime;
-  private SimpleDateFormat rOV;
-  MTimerHandler rRQ;
+  static long vde;
+  static long vdf;
+  private SimpleDateFormat vaj;
+  MTimerHandler vdg;
   
   public g()
   {
     AppMethodBeat.i(21726);
-    this.rOV = new SimpleDateFormat("yyyyMMdd");
+    this.vaj = new SimpleDateFormat("yyyyMMdd");
     AppMethodBeat.o(21726);
   }
   
-  private void ER(final int paramInt)
+  private void Fs(final int paramInt)
   {
     AppMethodBeat.i(21728);
     final Long localLong1 = Long.valueOf(Util.nowMilliSecond());
-    final Long localLong2 = Long.valueOf(HJ(Util.nowMilliSecond()));
+    final Long localLong2 = Long.valueOf(ka(Util.nowMilliSecond()));
     if ((localLong1.longValue() == 0L) || (localLong2.longValue() == 0L))
     {
       Log.e("MicroMsg.BackupLogManager", "startLogAfterTimeHandler is zero, startAfterLogTime[%d], startAfterLogSize[%d], skip", new Object[] { localLong1, localLong2 });
       AppMethodBeat.o(21728);
       return;
     }
-    this.rRQ = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.vdg = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(21725);
         Long localLong1 = Long.valueOf(Util.nowMilliSecond());
-        Long localLong2 = Long.valueOf(g.this.L(localLong1.longValue(), localLong1.longValue()));
+        Long localLong2 = Long.valueOf(g.this.aj(localLong1.longValue(), localLong1.longValue()));
         Log.i("MicroMsg.BackupLogManager", "backupAfterLogTimeHandler, backupMode[%d], endAfterLogTime[%d], startAfterLogTime[%d], endAfterLogSize[%d], startAfterLogSize[%d]", new Object[] { Integer.valueOf(paramInt), localLong1, localLong1, localLong2, localLong2 });
         if ((localLong2.longValue() != 0L) && (localLong2.longValue() > localLong2.longValue())) {
           g.this.a(paramInt, localLong1.longValue() - localLong1.longValue(), localLong2.longValue() - localLong2.longValue(), true);
@@ -55,7 +55,7 @@ public final class g
         return false;
       }
     }, false);
-    this.rRQ.startTimer(300000L);
+    this.vdg.startTimer(300000L);
     AppMethodBeat.o(21728);
   }
   
@@ -63,43 +63,8 @@ public final class g
   {
     startTime = 0L;
     endTime = 0L;
-    rRO = 0L;
-    rRP = 0L;
-  }
-  
-  final long HJ(long paramLong)
-  {
-    AppMethodBeat.i(21730);
-    String str1 = this.rOV.format(new Date(paramLong));
-    String str2 = ar.Vgc + "/MM_" + str1 + ".xlog";
-    if (u.agG(str2))
-    {
-      paramLong = u.bBQ(str2);
-      AppMethodBeat.o(21730);
-      return paramLong;
-    }
-    str1 = b.aSS() + "/MM_" + str1 + ".xlog";
-    if (u.agG(str1))
-    {
-      paramLong = u.bBQ(str1);
-      AppMethodBeat.o(21730);
-      return paramLong;
-    }
-    AppMethodBeat.o(21730);
-    return 0L;
-  }
-  
-  final long L(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(21729);
-    long l = 0L;
-    while (paramLong1 <= paramLong2 + 86400000L)
-    {
-      l += HJ(paramLong1);
-      paramLong1 += 86400000L;
-    }
-    AppMethodBeat.o(21729);
-    return l;
+    vde = 0L;
+    vdf = 0L;
   }
   
   final void a(int paramInt, long paramLong1, long paramLong2, boolean paramBoolean)
@@ -122,55 +87,90 @@ public final class g
       return;
       if (!paramBoolean)
       {
-        h.IzE.idkeyStat(400L, 81L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(400L, 81L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.IzE.idkeyStat(400L, 82L, l, false);
+          h.OAn.idkeyStat(400L, 82L, l, false);
         }
-        ER(paramInt);
+        Fs(paramInt);
         AppMethodBeat.o(21727);
         return;
       }
-      h.IzE.idkeyStat(400L, 83L, paramLong2 / 1024L, false);
+      h.OAn.idkeyStat(400L, 83L, paramLong2 / 1024L, false);
       AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.IzE.idkeyStat(400L, 86L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(400L, 86L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.IzE.idkeyStat(400L, 87L, l, false);
+          h.OAn.idkeyStat(400L, 87L, l, false);
         }
-        ER(paramInt);
+        Fs(paramInt);
         AppMethodBeat.o(21727);
         return;
       }
-      h.IzE.idkeyStat(400L, 88L, paramLong2 / 1024L, false);
+      h.OAn.idkeyStat(400L, 88L, paramLong2 / 1024L, false);
       AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.IzE.idkeyStat(485L, 91L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(485L, 91L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.IzE.idkeyStat(485L, 92L, l, false);
+          h.OAn.idkeyStat(485L, 92L, l, false);
         }
-        ER(paramInt);
+        Fs(paramInt);
         AppMethodBeat.o(21727);
         return;
       }
-      h.IzE.idkeyStat(485L, 93L, paramLong2 / 1024L, false);
+      h.OAn.idkeyStat(485L, 93L, paramLong2 / 1024L, false);
       AppMethodBeat.o(21727);
       return;
       if (!paramBoolean)
       {
-        h.IzE.idkeyStat(485L, 96L, paramLong2 / 1024L, false);
+        h.OAn.idkeyStat(485L, 96L, paramLong2 / 1024L, false);
         if (paramLong1 != 0L) {
-          h.IzE.idkeyStat(485L, 97L, l, false);
+          h.OAn.idkeyStat(485L, 97L, l, false);
         }
-        ER(paramInt);
+        Fs(paramInt);
         AppMethodBeat.o(21727);
         return;
       }
-      h.IzE.idkeyStat(485L, 98L, paramLong2 / 1024L, false);
+      h.OAn.idkeyStat(485L, 98L, paramLong2 / 1024L, false);
     }
+  }
+  
+  final long aj(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(21729);
+    long l = 0L;
+    while (paramLong1 <= paramLong2 + 86400000L)
+    {
+      l += ka(paramLong1);
+      paramLong1 += 86400000L;
+    }
+    AppMethodBeat.o(21729);
+    return l;
+  }
+  
+  final long ka(long paramLong)
+  {
+    AppMethodBeat.i(21730);
+    String str1 = this.vaj.format(new Date(paramLong));
+    String str2 = at.acHr + "/MM_" + str1 + ".xlog";
+    if (y.ZC(str2))
+    {
+      paramLong = y.bEl(str2);
+      AppMethodBeat.o(21730);
+      return paramLong;
+    }
+    str1 = b.bmG() + "/MM_" + str1 + ".xlog";
+    if (y.ZC(str1))
+    {
+      paramLong = y.bEl(str1);
+      AppMethodBeat.o(21730);
+      return paramLong;
+    }
+    AppMethodBeat.o(21730);
+    return 0L;
   }
 }
 

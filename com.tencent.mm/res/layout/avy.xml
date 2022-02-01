@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/h_3" android:background="@color/a3r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/afy" android:textColor="@drawable/asj" android:gravity="center|left" android:id="@id/aec" android:background="@android:color/transparent" android:paddingLeft="@dimen/ag0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/fms" />
-    <TextView android:textSize="@dimen/ag1" android:textColor="@color/a3u" android:gravity="center" android:id="@id/iwe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/aei" android:layout_toRightOf="@id/aec" android:layout_centerVertical="true" />
-    <Button android:textSize="@dimen/afy" android:textColor="@drawable/asj" android:gravity="center|right" android:id="@id/aei" android:background="@android:color/transparent" android:paddingRight="@dimen/ag0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/fmy" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/b0e" android:layout_width="@dimen/cv" android:layout_height="@dimen/cv" android:layout_marginTop="@dimen/d4" android:scaleType="fitXY" />
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/b3q" />
+    <TextView android:textSize="14.0dip" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/b0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:singleLine="false" android:lineSpacingExtra="10.0dip" />
+</LinearLayout>

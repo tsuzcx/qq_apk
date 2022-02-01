@@ -6,9 +6,9 @@ import com.tencent.mm.plugin.hp.net.SimpleHttpLogic;
 import com.tencent.mm.plugin.hp.net.SimpleHttpLogic.Request;
 import com.tencent.mm.plugin.hp.net.SimpleHttpLogic.TaskCallback;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.dhg;
-import com.tencent.mm.protocal.protobuf.dhh;
-import com.tencent.mm.protocal.protobuf.dhk;
+import com.tencent.mm.protocal.protobuf.dzp;
+import com.tencent.mm.protocal.protobuf.dzq;
+import com.tencent.mm.protocal.protobuf.dzt;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -16,110 +16,110 @@ import java.io.IOException;
 
 public final class a
 {
-  public com.tencent.mm.plugin.hp.net.b.a DMV;
-  SimpleHttpLogic.Request DMW;
-  SimpleHttpLogic.TaskCallback DMX;
-  com.tencent.mm.plugin.hp.net.b.a DMY;
+  public com.tencent.mm.plugin.hp.net.b.a JEj;
+  SimpleHttpLogic.Request JEk;
+  SimpleHttpLogic.TaskCallback JEl;
+  com.tencent.mm.plugin.hp.net.b.a JEm;
   
-  public a(dhg paramdhg)
+  public a(dzp paramdzp)
   {
-    AppMethodBeat.i(202488);
-    this.DMV = new com.tencent.mm.plugin.hp.net.b.a()
+    AppMethodBeat.i(242770);
+    this.JEj = new com.tencent.mm.plugin.hp.net.b.a()
     {
-      public final void a(int paramAnonymousInt, com.tencent.mm.plugin.hp.d.b paramAnonymousb)
+      public final void a(int paramAnonymousInt, com.tencent.mm.plugin.hp.b.b paramAnonymousb)
       {
-        AppMethodBeat.i(202399);
+        AppMethodBeat.i(242765);
         Log.d("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "error%d response:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousb.toString() });
-        AppMethodBeat.o(202399);
+        AppMethodBeat.o(242765);
       }
     };
-    this.DMX = new SimpleHttpLogic.TaskCallback()
+    this.JEl = new SimpleHttpLogic.TaskCallback()
     {
       public final void onCompleted(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
       {
-        AppMethodBeat.i(202271);
+        AppMethodBeat.i(242768);
         Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "onCompleted errorType:%d errorCode:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 200)) {
           try
           {
             Object localObject = new PByteArray();
             Log.e("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "unpack result ".concat(String.valueOf(SimpleHttpLogic.unpackResponse(paramAnonymousArrayOfByte, (PByteArray)localObject))));
-            paramAnonymousArrayOfByte = new dhh();
+            paramAnonymousArrayOfByte = new dzq();
             paramAnonymousArrayOfByte.parseFrom(((PByteArray)localObject).value);
-            localObject = paramAnonymousArrayOfByte.TOs;
+            localObject = paramAnonymousArrayOfByte.abeO;
             if (localObject != null)
             {
-              paramAnonymousArrayOfByte = new com.tencent.mm.plugin.hp.d.b((dhk)localObject);
-              a.this.DMY.a(0, paramAnonymousArrayOfByte);
-              AppMethodBeat.o(202271);
+              paramAnonymousArrayOfByte = new com.tencent.mm.plugin.hp.b.b((dzt)localObject);
+              a.this.JEm.a(0, paramAnonymousArrayOfByte);
+              AppMethodBeat.o(242768);
               return;
             }
-            Log.e("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "empty node. code:%d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.TOu) });
-            a.this.DMY.a(-5, null);
-            AppMethodBeat.o(202271);
+            Log.e("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "empty node. code:%d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.abeQ) });
+            a.this.JEm.a(-5, null);
+            AppMethodBeat.o(242768);
             return;
           }
           catch (Exception paramAnonymousArrayOfByte)
           {
             Log.printErrStackTrace("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", paramAnonymousArrayOfByte, "debugMMTLSCheck", new Object[0]);
-            a.this.DMY.a(-2, null);
-            AppMethodBeat.o(202271);
+            a.this.JEm.a(-2, null);
+            AppMethodBeat.o(242768);
             return;
           }
         }
-        a.this.DMY.a(-1, null);
-        AppMethodBeat.o(202271);
+        a.this.JEm.a(-1, null);
+        AppMethodBeat.o(242768);
       }
     };
-    this.DMY = this.DMV;
-    dhg localdhg = paramdhg;
-    if (paramdhg == null)
+    this.JEm = this.JEj;
+    dzp localdzp = paramdzp;
+    if (paramdzp == null)
     {
-      paramdhg = com.tencent.mm.loader.j.a.aSy();
-      Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "baseTinkerId = ".concat(String.valueOf(paramdhg)));
-      localdhg = new dhg();
-      localdhg.TOo = paramdhg;
-      localdhg.GIL = com.tencent.mm.loader.j.a.aSz();
-      localdhg.TOp = b.eIb();
-      localdhg.TOr = 1;
+      paramdzp = com.tencent.mm.loader.i.a.bmm();
+      Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "baseTinkerId = ".concat(String.valueOf(paramdzp)));
+      localdzp = new dzp();
+      localdzp.abeK = paramdzp;
+      localdzp.ycW = com.tencent.mm.loader.i.a.bmn();
+      localdzp.abeL = b.fPU();
+      localdzp.abeN = 1;
     }
     try
     {
-      this.DMW = new SimpleHttpLogic.Request();
-      this.DMW.cgi = "/cgi-bin/micromsg-bin/mmtlsprconfig";
-      this.DMW.host = MMApplicationContext.getResources().getString(com.tencent.mm.plugin.boots.b.a.host_short_weixin_qq_com);
-      paramdhg = new PByteArray();
-      Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "pack result ".concat(String.valueOf(SimpleHttpLogic.packRequest(localdhg.toByteArray(), paramdhg))));
-      this.DMW.body = paramdhg.value;
-      paramdhg = new StringBuilder();
-      if (localdhg != null)
+      this.JEk = new SimpleHttpLogic.Request();
+      this.JEk.cgi = "/cgi-bin/micromsg-bin/mmtlsprconfig";
+      this.JEk.host = MMApplicationContext.getResources().getString(com.tencent.mm.plugin.boots.b.a.host_short_weixin_qq_com);
+      paramdzp = new PByteArray();
+      Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "pack result ".concat(String.valueOf(SimpleHttpLogic.packRequest(localdzp.toByteArray(), paramdzp))));
+      this.JEk.body = paramdzp.value;
+      paramdzp = new StringBuilder();
+      if (localdzp != null)
       {
-        paramdhg.append("baseId  :").append(localdhg.TOo).append("\n");
-        paramdhg.append("patchId :").append(localdhg.GIL).append("\n");
+        paramdzp.append("baseId  :").append(localdzp.abeK).append("\n");
+        paramdzp.append("patchId :").append(localdzp.ycW).append("\n");
       }
-      Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "prconfig %s", new Object[] { paramdhg.toString() });
-      AppMethodBeat.o(202488);
+      Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "prconfig %s", new Object[] { paramdzp.toString() });
+      AppMethodBeat.o(242770);
       return;
     }
-    catch (IOException paramdhg)
+    catch (IOException paramdzp)
     {
       for (;;)
       {
-        this.DMW = null;
-        Log.printErrStackTrace("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", paramdhg, "mmtls request create failed.", new Object[0]);
+        this.JEk = null;
+        Log.printErrStackTrace("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", paramdzp, "mmtls request create failed.", new Object[0]);
       }
     }
   }
   
   public final void a(com.tencent.mm.plugin.hp.net.b.a parama)
   {
-    AppMethodBeat.i(202491);
-    this.DMY = parama;
-    if (this.DMW == null)
+    AppMethodBeat.i(242772);
+    this.JEm = parama;
+    if (this.JEk == null)
     {
       Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "doScene failed. request is null.");
-      this.DMY.a(-3, null);
-      AppMethodBeat.o(202491);
+      this.JEm.a(-3, null);
+      AppMethodBeat.o(242772);
       return;
     }
     Log.i("MicroMsg.Tinker.NetSceneBaseMMTLSCheckCopycat", "start check");
@@ -127,8 +127,8 @@ public final class a
     if (BuildInfo.DEBUG) {
       parama = "101.227.131.113";
     }
-    SimpleHttpLogic.startRequest(this.DMW, this.DMX, parama);
-    AppMethodBeat.o(202491);
+    SimpleHttpLogic.startRequest(this.JEk, this.JEl, parama);
+    AppMethodBeat.o(242772);
   }
 }
 

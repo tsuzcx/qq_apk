@@ -1,149 +1,173 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.ListView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.plugin.sns.b.f;
+import com.tencent.mm.plugin.sns.b.g;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.ForceGpuUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.af;
 
-public class bw
+public final class bw
 {
-  private SnsCommentFooter KBS;
-  public int KOU;
-  private int KQz;
-  int LfK;
-  int LfL;
-  public int LfM;
-  boolean LfN;
-  private int LfO;
-  protected long LfP;
-  Runnable LfQ;
-  Runnable LfR;
-  Runnable LfS;
-  private ListView list;
-  int position;
+  private bn QBJ;
+  private FrameLayout QBg;
+  SnsCommentShowAbLayout RFT = null;
+  LinearLayout RoE;
+  LinearLayout RoF;
+  private Context mContext;
   
-  public bw(ListView paramListView, SnsCommentFooter paramSnsCommentFooter)
+  public bw(Context paramContext, bn parambn, FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(99754);
-    this.position = -1;
-    this.LfK = -1;
-    this.LfL = -1;
-    this.KOU = -1;
-    this.LfM = 0;
-    this.KQz = -1;
-    this.LfN = false;
-    this.LfQ = new Runnable()
+    this.mContext = paramContext;
+    this.QBJ = parambn;
+    this.QBg = paramFrameLayout;
+  }
+  
+  private void jN(final View paramView)
+  {
+    AppMethodBeat.i(99748);
+    paramView.clearAnimation();
+    paramView.startAnimation(this.QBJ.RoD);
+    this.QBJ.RoD.setAnimationListener(new Animation.AnimationListener()
     {
-      public final void run()
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
-        AppMethodBeat.i(99751);
-        if ((bw.a(bw.this) != null) && (bw.a(bw.this).getCount() > bw.this.position))
-        {
-          int j = bw.b(bw.this).getTop();
-          Log.d("MicroMsg.TimeLineScrollAnimation", "limitCount: " + bw.c(bw.this) + " footerHeight:" + bw.b(bw.this).getHeight() + " listOriginalBottom: " + bw.this.KOU);
-          if ((bw.d(bw.this) > 0) && ((bw.e(bw.this) != j) || (j > bw.this.KOU - 200) || (bw.a(bw.this).getBottom() > bw.this.KOU - bw.b(bw.this).getHeight() - 150)))
-          {
-            i = 10;
-            if (bw.c(bw.this) == 0) {
-              i = 200;
-            }
-            new MMHandler().postDelayed(this, i);
-          }
-          bw.a(bw.this, j);
-          int i = bw.e(bw.this) - bw.this.LfM - bw.this.LfK;
-          Log.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + bw.this.LfK + " footerTop" + bw.e(bw.this) + " list.bottom:" + bw.a(bw.this).getBottom() + " position: " + bw.this.position + " topselection: " + i);
-          Log.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + bw.a(bw.this).getTop() + " marginTop: " + bw.this.LfM + " footerTop " + bw.e(bw.this));
-          bw.a(bw.this).setSelectionFromTop(bw.this.position + bw.a(bw.this).getHeaderViewsCount(), i);
+        AppMethodBeat.i(99747);
+        if (paramView != null) {
+          paramView.setVisibility(8);
         }
-        AppMethodBeat.o(99751);
+        bw.this.hmb();
+        AppMethodBeat.o(99747);
       }
-    };
-    this.LfR = new Runnable()
-    {
-      int offset = 0;
       
-      public final void run()
-      {
-        AppMethodBeat.i(99752);
-        if ((bw.a(bw.this) != null) && (bw.a(bw.this).getCount() > bw.this.position))
-        {
-          bw.a(bw.this, bw.b(bw.this).getTop());
-          int i = bw.e(bw.this) - bw.this.LfM - bw.this.LfK;
-          Log.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + bw.this.LfK + " footerTop" + bw.e(bw.this) + " list.bottom:" + bw.a(bw.this).getBottom() + " position: " + bw.this.position + " topselection: " + i);
-          Log.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + bw.a(bw.this).getTop() + " marginTop: " + bw.this.LfM + " footerTop " + bw.e(bw.this));
-          if (i == this.offset)
-          {
-            bw.a(bw.this).setSelectionFromTop(bw.this.position + bw.a(bw.this).getHeaderViewsCount(), i);
-            this.offset = 0;
-            bw.f(bw.this);
-            AppMethodBeat.o(99752);
-            return;
-          }
-          if (bw.d(bw.this) > 0)
-          {
-            new MMHandler().postDelayed(this, 100L);
-            this.offset = i;
-            AppMethodBeat.o(99752);
-            return;
-          }
-          this.offset = 0;
-          bw.f(bw.this);
-        }
-        AppMethodBeat.o(99752);
-      }
-    };
-    this.LfS = new Runnable()
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      
+      public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+    });
+    AppMethodBeat.o(99748);
+  }
+  
+  public final boolean hmb()
+  {
+    AppMethodBeat.i(99749);
+    if (this.RFT != null)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(99753);
-        Log.d("MicroMsg.TimeLineScrollAnimation", "originalTop:" + bw.this.LfL + " position:" + bw.this.position + " list.bottom:" + bw.a(bw.this).getBottom());
-        AppMethodBeat.o(99753);
-      }
-    };
-    this.list = paramListView;
-    this.KBS = paramSnsCommentFooter;
-    AppMethodBeat.o(99754);
-  }
-  
-  public final void fYg()
-  {
-    AppMethodBeat.i(99755);
-    this.LfN = true;
-    new MMHandler().postDelayed(this.LfQ, 30L);
-    this.LfO = 10;
-    Log.e("MicroMsg.TimeLineScrollAnimation", "footerTop when up :" + this.KBS.getTop());
-    this.LfP = Util.currentTicks();
-    AppMethodBeat.o(99755);
-  }
-  
-  public final void fYh()
-  {
-    AppMethodBeat.i(99756);
-    this.LfN = true;
-    this.LfO = 20;
-    new MMHandler().postDelayed(this.LfR, 100L);
-    AppMethodBeat.o(99756);
-  }
-  
-  public final void fYi()
-  {
-    AppMethodBeat.i(99757);
-    if (!this.LfN)
-    {
-      AppMethodBeat.o(99757);
-      return;
+      Log.i("MicroMsg.TimeLineCommentHelper", "snsCommentFix removeCommentView.");
+      this.QBg.removeView(this.RFT);
+      this.RFT = null;
+      AppMethodBeat.o(99749);
+      return true;
     }
-    this.LfN = false;
-    new MMHandler().postDelayed(this.LfS, 30L);
-    this.LfO = 10;
-    AppMethodBeat.o(99757);
+    AppMethodBeat.o(99749);
+    return false;
+  }
+  
+  public final boolean jG(final View paramView)
+  {
+    AppMethodBeat.i(308323);
+    if (!(paramView.getTag() instanceof BaseTimeLineItem.BaseViewHolder))
+    {
+      Log.e("MicroMsg.TimeLineCommentHelper", "showCommentBtn err2");
+      AppMethodBeat.o(308323);
+      return false;
+    }
+    BaseTimeLineItem.BaseViewHolder localBaseViewHolder = (BaseTimeLineItem.BaseViewHolder)paramView.getTag();
+    Object localObject3 = localBaseViewHolder.hES;
+    if (this.RFT != null)
+    {
+      if ((this.RFT.getTag() instanceof a))
+      {
+        localObject1 = (a)this.RFT.getTag();
+        if (((a)localObject1).QBA.equals(localObject3))
+        {
+          jN(((a)localObject1).MdP);
+          Log.i("MicroMsg.TimeLineCommentHelper", "snsCommentFix closeCommentView.");
+          AppMethodBeat.o(308323);
+          return true;
+        }
+        hmb();
+      }
+      this.RFT = null;
+    }
+    this.RFT = new SnsCommentShowAbLayout(this.mContext);
+    ForceGpuUtil.setLayerType(this.RFT);
+    this.RFT.setId(b.f.address);
+    new FrameLayout.LayoutParams(-1, -1);
+    this.QBg.addView(this.RFT);
+    Log.i("MicroMsg.TimeLineCommentHelper", "snsCommentFix addView(ablayout).");
+    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 76.0F);
+    int j = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 12.0F);
+    int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 40.0F);
+    Object localObject1 = af.mU(this.mContext).inflate(b.g.sns_comment_button, null);
+    int[] arrayOfInt = new int[2];
+    int m = a.fromDPToPix(this.mContext, 1);
+    paramView.getLocationInWindow(arrayOfInt);
+    Object localObject2 = new int[2];
+    this.RFT.getLocationInWindow((int[])localObject2);
+    arrayOfInt[1] -= localObject2[1];
+    Log.i("MicroMsg.TimeLineCommentHelper", "addCommentView getLocationInWindow " + arrayOfInt[0] + "  " + arrayOfInt[1] + " height: " + m + " height_hardcode:" + i);
+    localObject2 = new AbsoluteLayout.LayoutParams(-1, -2, j, arrayOfInt[1] - m - (k / 2 - paramView.getMeasuredHeight() / 2));
+    localObject3 = new a((String)localObject3, (View)localObject1);
+    this.RFT.setTag(localObject3);
+    localObject3 = new LinearLayout(this.mContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    ((LinearLayout)localObject3).setHorizontalGravity(8388613);
+    localLayoutParams.setMarginEnd(BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 16.0F));
+    ((AbsoluteLayout.LayoutParams)localObject2).width = arrayOfInt[0];
+    ((LinearLayout)localObject3).addView((View)localObject1, localLayoutParams);
+    this.RFT.addView((View)localObject3, (ViewGroup.LayoutParams)localObject2);
+    Log.i("MicroMsg.TimeLineCommentHelper", "snsCommentFix addView(commentView, apar).");
+    if (localBaseViewHolder.viewType == 10) {
+      ((View)localObject1).findViewById(b.f.album_comment_container).setBackgroundResource(b.e.friendactivity_comment_frame_bg_golden);
+    }
+    ((View)localObject1).setVisibility(8);
+    Log.i("MicroMsg.TimeLineCommentHelper", "snsCommentFix comment gone.");
+    new MMHandler().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(99746);
+        Log.i("MicroMsg.TimeLineCommentHelper", "snsCommentFix initCommentView.");
+        bw.a(bw.this, paramView, this.RFU);
+        AppMethodBeat.o(99746);
+      }
+    });
+    AppMethodBeat.o(308323);
+    return true;
+  }
+  
+  final class a
+  {
+    View MdP = null;
+    String QBA;
+    
+    public a(String paramString, View paramView)
+    {
+      this.QBA = paramString;
+      this.MdP = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bw
  * JD-Core Version:    0.7.0.1
  */

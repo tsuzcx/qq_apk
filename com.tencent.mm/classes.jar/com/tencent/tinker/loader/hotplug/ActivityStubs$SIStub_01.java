@@ -7,7 +7,7 @@ public final class ActivityStubs$SIStub_01
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.loader.hotplug.ActivityStubs.SIStub_01
  * JD-Core Version:    0.7.0.1
  */

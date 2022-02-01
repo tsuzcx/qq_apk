@@ -11,11 +11,11 @@ import android.view.ViewParent;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.protocal.protobuf.bni;
+import com.tencent.mm.plugin.game.h.b;
+import com.tencent.mm.plugin.game.h.e;
+import com.tencent.mm.plugin.game.h.f;
+import com.tencent.mm.plugin.game.h.i;
+import com.tencent.mm.protocal.protobuf.cbf;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,27 +24,27 @@ public final class s
   extends BaseAdapter
 {
   private Context context;
-  private String fwe;
-  private LinkedList<a> lpz;
+  private String hAB;
+  private LinkedList<a> nUC;
   
   public s(Context paramContext)
   {
     AppMethodBeat.i(42380);
-    this.fwe = "";
-    this.lpz = new LinkedList();
+    this.hAB = "";
+    this.nUC = new LinkedList();
     this.context = paramContext;
     AppMethodBeat.o(42380);
   }
   
-  public final a TV(int paramInt)
+  public final a XP(int paramInt)
   {
     AppMethodBeat.i(42383);
-    a locala = (a)this.lpz.get(paramInt);
+    a locala = (a)this.nUC.get(paramInt);
     AppMethodBeat.o(42383);
     return locala;
   }
   
-  public final void a(String paramString1, String paramString2, LinkedList<bni> paramLinkedList)
+  public final void a(String paramString1, String paramString2, LinkedList<cbf> paramLinkedList)
   {
     AppMethodBeat.i(42384);
     if (Util.isNullOrNil(paramLinkedList))
@@ -52,8 +52,8 @@ public final class s
       AppMethodBeat.o(42384);
       return;
     }
-    this.fwe = paramString1;
-    this.lpz.clear();
+    this.hAB = paramString1;
+    this.nUC.clear();
     a locala;
     if (Util.isNullOrNil(paramString1))
     {
@@ -62,7 +62,7 @@ public final class s
       if (!Util.isNullOrNil(paramString2))
       {
         locala.text = paramString2;
-        this.lpz.add(locala);
+        this.nUC.add(locala);
       }
     }
     else
@@ -72,7 +72,7 @@ public final class s
       if (!paramString2.hasNext()) {
         break label207;
       }
-      paramLinkedList = (bni)paramString2.next();
+      paramLinkedList = (cbf)paramString2.next();
       locala = new a();
       if (!Util.isNullOrNil(paramString1)) {
         break label201;
@@ -82,14 +82,14 @@ public final class s
     for (int i = 2;; i = 3)
     {
       locala.type = i;
-      locala.appId = paramLinkedList.jUi;
-      locala.text = paramLinkedList.SYt;
-      locala.description = paramLinkedList.RIC;
-      locala.actionType = paramLinkedList.RXp;
-      locala.Dax = paramLinkedList.SYm;
-      this.lpz.add(locala);
+      locala.appId = paramLinkedList.muA;
+      locala.text = paramLinkedList.aakv;
+      locala.description = paramLinkedList.crB;
+      locala.actionType = paramLinkedList.YVh;
+      locala.IUL = paramLinkedList.aako;
+      this.nUC.add(locala);
       break label80;
-      locala.text = this.context.getString(g.i.Cko);
+      locala.text = this.context.getString(h.i.HWw);
       break;
     }
     label207:
@@ -100,7 +100,7 @@ public final class s
   public final int getCount()
   {
     AppMethodBeat.i(42382);
-    int i = this.lpz.size();
+    int i = this.nUC.size();
     AppMethodBeat.o(42382);
     return i;
   }
@@ -113,18 +113,18 @@ public final class s
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(42381);
-    Object localObject = TV(paramInt);
+    Object localObject = XP(paramInt);
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, g.f.Cod, null);
+      paramView = View.inflate(this.context, h.f.Ial, null);
       paramViewGroup = new b((byte)0);
-      paramViewGroup.jMg = ((TextView)paramView.findViewById(g.e.Cko));
-      paramViewGroup.Day = ((ViewGroup)paramViewGroup.jMg.getParent());
-      paramViewGroup.Daz = ((TextView)paramView.findViewById(g.e.Ckn));
-      paramViewGroup.DaA = ((TextView)paramView.findViewById(g.e.Ckl));
-      paramViewGroup.DaB = ((ViewGroup)paramViewGroup.Daz.getParent());
-      paramViewGroup.DaC = ((TextView)paramView.findViewById(g.e.Ckm));
-      paramViewGroup.DaD = ((ViewGroup)paramViewGroup.DaC.getParent().getParent());
+      paramViewGroup.mll = ((TextView)paramView.findViewById(h.e.HWw));
+      paramViewGroup.IUM = ((ViewGroup)paramViewGroup.mll.getParent());
+      paramViewGroup.IUN = ((TextView)paramView.findViewById(h.e.HWv));
+      paramViewGroup.IUO = ((TextView)paramView.findViewById(h.e.HWt));
+      paramViewGroup.IUP = ((ViewGroup)paramViewGroup.IUN.getParent());
+      paramViewGroup.IUQ = ((TextView)paramView.findViewById(h.e.HWu));
+      paramViewGroup.IUR = ((ViewGroup)paramViewGroup.IUQ.getParent().getParent());
       paramView.setTag(paramViewGroup);
       switch (((a)localObject).type)
       {
@@ -136,41 +136,41 @@ public final class s
       return paramView;
       paramViewGroup = (b)paramView.getTag();
       break;
-      paramViewGroup.Day.setVisibility(0);
-      paramViewGroup.DaB.setVisibility(8);
-      paramViewGroup.DaD.setVisibility(8);
-      paramViewGroup.Day.setOnClickListener(null);
-      paramViewGroup.jMg.setText(((a)localObject).text);
+      paramViewGroup.IUM.setVisibility(0);
+      paramViewGroup.IUP.setVisibility(8);
+      paramViewGroup.IUR.setVisibility(8);
+      paramViewGroup.IUM.setOnClickListener(null);
+      paramViewGroup.mll.setText(((a)localObject).text);
       continue;
-      paramViewGroup.Day.setVisibility(8);
-      paramViewGroup.DaB.setVisibility(0);
-      paramViewGroup.DaD.setVisibility(8);
-      paramViewGroup.Daz.setText(((a)localObject).text);
-      paramViewGroup.DaA.setText(((a)localObject).description);
+      paramViewGroup.IUM.setVisibility(8);
+      paramViewGroup.IUP.setVisibility(0);
+      paramViewGroup.IUR.setVisibility(8);
+      paramViewGroup.IUN.setText(((a)localObject).text);
+      paramViewGroup.IUO.setText(((a)localObject).description);
       continue;
-      paramViewGroup.Day.setVisibility(8);
-      paramViewGroup.DaB.setVisibility(8);
-      paramViewGroup.DaD.setVisibility(0);
-      paramInt = this.context.getResources().getColor(g.b.normal_text_color);
-      paramViewGroup.DaC.setTextColor(paramInt);
-      paramInt = this.context.getResources().getColor(g.b.CgK);
-      int i = ((a)localObject).text.indexOf(this.fwe);
+      paramViewGroup.IUM.setVisibility(8);
+      paramViewGroup.IUP.setVisibility(8);
+      paramViewGroup.IUR.setVisibility(0);
+      paramInt = this.context.getResources().getColor(h.b.normal_text_color);
+      paramViewGroup.IUQ.setTextColor(paramInt);
+      paramInt = this.context.getResources().getColor(h.b.HST);
+      int i = ((a)localObject).text.indexOf(this.hAB);
       if (i >= 0)
       {
         localObject = new SpannableString(((a)localObject).text);
-        ((Spannable)localObject).setSpan(new ForegroundColorSpan(paramInt), i, this.fwe.length() + i, 33);
-        paramViewGroup.DaC.setText((CharSequence)localObject);
+        ((Spannable)localObject).setSpan(new ForegroundColorSpan(paramInt), i, this.hAB.length() + i, 33);
+        paramViewGroup.IUQ.setText((CharSequence)localObject);
       }
       else
       {
-        paramViewGroup.DaC.setText(((a)localObject).text);
+        paramViewGroup.IUQ.setText(((a)localObject).text);
       }
     }
   }
   
   public static final class a
   {
-    public String Dax;
+    public String IUL;
     public int actionType;
     public String appId;
     public String description;
@@ -180,18 +180,18 @@ public final class s
   
   static final class b
   {
-    TextView DaA;
-    ViewGroup DaB;
-    TextView DaC;
-    ViewGroup DaD;
-    ViewGroup Day;
-    TextView Daz;
-    TextView jMg;
+    ViewGroup IUM;
+    TextView IUN;
+    TextView IUO;
+    ViewGroup IUP;
+    TextView IUQ;
+    ViewGroup IUR;
+    TextView mll;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.s
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 package com.tencent.map.lib.models;
 
-import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@Keep
 public class MapTileID
 {
   private int dataSource;
@@ -65,7 +63,7 @@ public class MapTileID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.map.lib.models.MapTileID
  * JD-Core Version:    0.7.0.1
  */

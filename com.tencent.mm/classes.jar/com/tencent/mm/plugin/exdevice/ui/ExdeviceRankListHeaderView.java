@@ -22,20 +22,20 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class ExdeviceRankListHeaderView
   extends RelativeLayout
 {
-  private View.OnClickListener kte;
   private Context mContext;
   private Runnable mHideRunnable;
-  private TextView vqu;
-  private Animation vqv;
-  private Animation vqw;
-  private boolean vqx;
+  private View.OnClickListener mWW;
+  private TextView yCL;
+  private Animation yCM;
+  private Animation yCN;
+  private boolean yCO;
   
   public ExdeviceRankListHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(24281);
-    this.vqx = true;
-    bv(paramContext);
+    this.yCO = true;
+    ci(paramContext);
     AppMethodBeat.o(24281);
   }
   
@@ -48,26 +48,26 @@ public class ExdeviceRankListHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24280);
-    this.vqx = true;
-    bv(paramContext);
+    this.yCO = true;
+    ci(paramContext);
     AppMethodBeat.o(24280);
   }
   
-  private void bv(Context paramContext)
+  private void ci(Context paramContext)
   {
     AppMethodBeat.i(24282);
     this.mContext = paramContext;
-    this.vqu = ((TextView)LayoutInflater.from(this.mContext).inflate(R.i.egM, this, true).findViewById(R.h.dvm));
-    this.vqu.setVisibility(4);
-    daP();
+    this.yCL = ((TextView)LayoutInflater.from(this.mContext).inflate(R.i.gjI, this, true).findViewById(R.h.fvD));
+    this.yCL.setVisibility(4);
+    dHj();
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24274);
         b localb = new b();
-        localb.bn(paramAnonymousView);
-        a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankListHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        localb.cH(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankListHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
         if (ExdeviceRankListHeaderView.a(ExdeviceRankListHeaderView.this)) {
           ExdeviceRankListHeaderView.b(ExdeviceRankListHeaderView.this);
         }
@@ -81,11 +81,11 @@ public class ExdeviceRankListHeaderView
     AppMethodBeat.o(24282);
   }
   
-  private void daP()
+  private void dHj()
   {
     AppMethodBeat.i(24283);
-    this.vqv = AnimationUtils.loadAnimation(this.mContext, R.a.abc_fade_in);
-    this.vqw = AnimationUtils.loadAnimation(this.mContext, R.a.abc_fade_out);
+    this.yCM = AnimationUtils.loadAnimation(this.mContext, R.a.abc_fade_in);
+    this.yCN = AnimationUtils.loadAnimation(this.mContext, R.a.abc_fade_out);
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -95,7 +95,7 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24275);
       }
     };
-    this.vqv.setAnimationListener(new Animation.AnimationListener()
+    this.yCM.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -114,7 +114,7 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24276);
       }
     });
-    this.vqw.setAnimationListener(new Animation.AnimationListener()
+    this.yCN.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -132,41 +132,41 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24278);
       }
     });
-    this.vqv.setFillAfter(true);
-    this.vqv.setFillEnabled(true);
-    this.vqw.setFillAfter(true);
-    this.vqw.setFillAfter(true);
+    this.yCM.setFillAfter(true);
+    this.yCM.setFillEnabled(true);
+    this.yCN.setFillAfter(true);
+    this.yCN.setFillAfter(true);
     AppMethodBeat.o(24283);
   }
   
   public String getMotto()
   {
     AppMethodBeat.i(24285);
-    String str = Util.nullAs(this.vqu.getText().toString(), "");
+    String str = Util.nullAs(this.yCL.getText().toString(), "");
     AppMethodBeat.o(24285);
     return str;
   }
   
   public void setIsShowTip(boolean paramBoolean)
   {
-    this.vqx = paramBoolean;
+    this.yCO = paramBoolean;
   }
   
   public void setMotto(String paramString)
   {
     AppMethodBeat.i(24284);
-    this.vqu.setText(paramString);
+    this.yCL.setText(paramString);
     AppMethodBeat.o(24284);
   }
   
   public void setOnViewClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.kte = paramOnClickListener;
+    this.mWW = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankListHeaderView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h8z" android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="@dimen/i6"
+<RelativeLayout android:id="@id/i1n" style="@style/nv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/eq9" android:background="@drawable/bpa" android:visibility="gone" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/k5" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/i6" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5">
-        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/eb0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.listview.PullDownListView android:id="@android:id/list" android:cacheColorHint="#00000000" android:layout_alignParentTop="true" android:overScrollMode="never" style="@style/na" />
+    </com.tencent.mm.view.TouchableLayout>
+    <include layout="@layout/c8k" />
+</RelativeLayout>

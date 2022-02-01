@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m {}
 
 

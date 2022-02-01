@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include android:id="@id/ifp" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="g8m" layout="@layout/a1r" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/jvh" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/hme" app:layout_constraintTop_toTopOf="g8m" />
-    <RelativeLayout android:orientation="horizontal" android:id="@id/hme" android:background="?sh" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m">
-        <Button android:textColor="@color/fu" android:gravity="center" android:id="@id/hmh" android:background="@drawable/aij" android:minWidth="@dimen/in" android:text="@string/bwl" android:layout_alignParentLeft="true" style="@style/os" />
-        <Button android:textColor="@color/a5f" android:gravity="center" android:id="@id/hmg" android:background="@drawable/aij" android:minWidth="@dimen/in" android:text="@string/tf" android:layout_alignParentRight="true" style="@style/os" />
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout android:paddingLeft="@dimen/ls" android:paddingRight="@dimen/ls" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="bottom|center|left" android:id="@android:id/title" style="@style/nb" />
+</LinearLayout>

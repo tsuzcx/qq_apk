@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/hpw" android:layout_width="fill_parent" android:layout_height="@dimen/cp"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-    <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="horizontal" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/bottomsheet_icon_moment" android:layout_marginEnd="3.0dip" app:iconColor="@color/ac_" />
-        <TextView android:textSize="@dimen/h_" android:textColor="@color/fq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/co3" android:layout_marginEnd="@dimen/bt" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/fm" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/ab7" />
+    <include android:layout_gravity="left" android:orientation="horizontal" android:id="@id/cza" android:layout_width="wrap_content" android:layout_height="@dimen/d4" android:layout_marginTop="@dimen/bv" layout="@layout/a7z" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aa9" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cyu" android:background="@drawable/tm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/d1" android:layout_marginTop="@dimen/cp">
+        <TextView android:textColor="@color/FG_1" android:id="@id/cyv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/df" android:text="@string/bik" />
     </LinearLayout>
-</FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ab8" />
+</LinearLayout>

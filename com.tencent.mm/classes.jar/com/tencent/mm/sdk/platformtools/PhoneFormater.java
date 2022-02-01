@@ -174,20 +174,20 @@ public class PhoneFormater
   
   public static String pureCountryName(String paramString)
   {
-    AppMethodBeat.i(193868);
+    AppMethodBeat.i(244148);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(193868);
+      AppMethodBeat.o(244148);
       return "";
     }
     int i = paramString.indexOf("（+");
     if (i >= 0)
     {
       paramString = paramString.substring(0, i);
-      AppMethodBeat.o(193868);
+      AppMethodBeat.o(244148);
       return paramString;
     }
-    AppMethodBeat.o(193868);
+    AppMethodBeat.o(244148);
     return paramString;
   }
   
@@ -362,7 +362,7 @@ public class PhoneFormater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.PhoneFormater
  * JD-Core Version:    0.7.0.1
  */

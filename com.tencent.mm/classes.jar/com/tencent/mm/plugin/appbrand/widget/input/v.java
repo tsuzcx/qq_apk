@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import com.tencent.luggage.wxa.b.a.e;
 import com.tencent.luggage.wxa.b.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -17,88 +17,88 @@ public final class v
   extends LinearLayout
   implements ag
 {
-  private static final int cpM = a.e.app_brand_keyboard_number;
+  private static final int ehD = a.e.app_brand_keyboard_number;
   EditText mEditText;
-  View rvY;
-  private boolean rvZ;
-  private a rwa;
-  AppBrandNumberKeyboardView rwb;
-  View rwc;
-  com.tencent.mm.plugin.appbrand.n.a rwd;
-  boolean rwe;
+  View uHf;
+  private boolean uHg;
+  private a uHh;
+  AppBrandNumberKeyboardView uHi;
+  View uHj;
+  com.tencent.mm.plugin.appbrand.o.a uHk;
+  boolean uHl;
   
   private v(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136479);
-    this.rvZ = false;
-    this.rwd = null;
-    this.rwe = false;
+    this.uHg = false;
+    this.uHk = null;
+    this.uHl = false;
     Log.d("MicroMsg.AppBrandNumberKeyboardPanel", "init");
-    super.setId(cpM);
+    super.setId(ehD);
     setOrientation(1);
     setBackgroundColor(-1);
-    if (this.rwe)
+    if (this.uHl)
     {
-      this.rwc = this.rwd;
-      if (this.rwc != null)
+      this.uHj = this.uHk;
+      if (this.uHj != null)
       {
-        paramContext = (ViewGroup)this.rwc.getParent();
+        paramContext = (ViewGroup)this.uHj.getParent();
         if (paramContext != null)
         {
           Log.i("MicroMsg.AppBrandNumberKeyboardPanel", "toolbar is already exsited in a layout,the class of the parent is %s  the id is : %d", new Object[] { paramContext.getClass().toString(), Integer.valueOf(paramContext.getId()) });
-          paramContext.removeView(this.rwc);
+          paramContext.removeView(this.uHj);
         }
       }
-      addView(this.rwc);
+      addView(this.uHj);
     }
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.ci.a.fromDPToPix(getContext(), 30));
-    this.rvY = LayoutInflater.from(getContext()).inflate(a.f.appbrand_keyboard_push_down_layout, null);
-    this.rvY.setOnClickListener(new v.1(this));
-    addView(this.rvY, paramContext);
-    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.ci.a.fromDPToPix(getContext(), 240));
+    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(getContext(), 30));
+    this.uHf = LayoutInflater.from(getContext()).inflate(a.f.appbrand_keyboard_push_down_layout, null);
+    this.uHf.setOnClickListener(new v.1(this));
+    addView(this.uHf, paramContext);
+    paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cd.a.fromDPToPix(getContext(), 240));
     AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = new AppBrandNumberKeyboardView(getContext());
-    this.rwb = localAppBrandNumberKeyboardView;
+    this.uHi = localAppBrandNumberKeyboardView;
     addView(localAppBrandNumberKeyboardView, paramContext);
     AppMethodBeat.o(136479);
   }
   
-  public static v a(View paramView, com.tencent.mm.plugin.appbrand.n.a parama)
+  public static v a(View paramView, com.tencent.mm.plugin.appbrand.o.a parama)
   {
-    AppMethodBeat.i(214225);
-    Object localObject2 = dt(paramView);
+    AppMethodBeat.i(324518);
+    Object localObject2 = eh(paramView);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = n.dp(paramView);
+      localObject2 = n.ed(paramView);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(214225);
+        AppMethodBeat.o(324518);
         return null;
       }
       localObject1 = new v(paramView.getContext());
-      ((n)localObject2).m((View)localObject1, false);
+      ((n)localObject2).n((View)localObject1, false);
     }
-    if (((v)localObject1).rwd != parama)
+    if (((v)localObject1).uHk != parama)
     {
       Log.d("MicroMsg.AppBrandNumberKeyboardPanel", "mComponentView != componentView so we set mComponentView = componentView;");
-      ((v)localObject1).rwd = parama;
+      ((v)localObject1).uHk = parama;
     }
-    AppMethodBeat.o(214225);
+    AppMethodBeat.o(324518);
     return localObject1;
   }
   
-  public static v dt(View paramView)
+  public static v eh(View paramView)
   {
     AppMethodBeat.i(136477);
-    paramView = (v)paramView.getRootView().findViewById(cpM);
+    paramView = (v)paramView.getRootView().findViewById(ehD);
     AppMethodBeat.o(136477);
     return paramView;
   }
   
-  public static void du(View paramView)
+  public static void ei(View paramView)
   {
-    AppMethodBeat.i(214231);
+    AppMethodBeat.i(324530);
     if (paramView != null)
     {
       ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
@@ -106,38 +106,38 @@ public final class v
         localViewGroup.removeView(paramView);
       }
     }
-    AppMethodBeat.o(214231);
+    AppMethodBeat.o(324530);
   }
   
   private void onDone()
   {
     AppMethodBeat.i(136481);
-    if ((!this.rvZ) && (this.rwa != null))
+    if ((!this.uHg) && (this.uHh != null))
     {
-      this.rvZ = true;
-      this.rwa.onDone();
-      this.rvZ = false;
+      this.uHg = true;
+      this.uHh.onDone();
+      this.uHg = false;
     }
     AppMethodBeat.o(136481);
   }
   
-  public final boolean coN()
+  public final boolean cRp()
   {
     AppMethodBeat.i(136480);
-    boolean bool = w.ah(this);
+    boolean bool = z.au(this);
     AppMethodBeat.o(136480);
     return bool;
   }
   
-  final void coO()
+  final void cRq()
   {
     AppMethodBeat.i(136486);
     if (this.mEditText != null)
     {
       this.mEditText.clearFocus();
       this.mEditText = null;
-      this.rwa = null;
-      this.rvZ = false;
+      this.uHh = null;
+      this.uHg = false;
     }
     AppMethodBeat.o(136486);
   }
@@ -150,7 +150,7 @@ public final class v
   public final int getPanelHeight()
   {
     AppMethodBeat.i(136483);
-    int i = com.tencent.mm.ci.a.fromDPToPix(getContext(), 270);
+    int i = com.tencent.mm.cd.a.fromDPToPix(getContext(), 270);
     AppMethodBeat.o(136483);
     return i;
   }
@@ -165,7 +165,7 @@ public final class v
   
   public final void setComponentView(boolean paramBoolean)
   {
-    this.rwe = paramBoolean;
+    this.uHl = paramBoolean;
   }
   
   public final void setId(int paramInt) {}
@@ -174,19 +174,19 @@ public final class v
   {
     AppMethodBeat.i(136484);
     this.mEditText = param_Input;
-    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.rwb;
+    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.uHi;
     param_Input = (com.tencent.mm.plugin.appbrand.widget.input.numberpad.a)param_Input;
-    if (localAppBrandNumberKeyboardView.rwj != param_Input)
+    if (localAppBrandNumberKeyboardView.uHq != param_Input)
     {
       if (param_Input == null)
       {
-        localAppBrandNumberKeyboardView.rwi = null;
+        localAppBrandNumberKeyboardView.uHp = null;
         AppMethodBeat.o(136484);
         return;
       }
       if ((param_Input instanceof View))
       {
-        ah localah = ah.a.eC(((View)param_Input).getContext());
+        ah localah = ah.a.fy(((View)param_Input).getContext());
         if (localah != null) {
           localah.hideVKB();
         }
@@ -199,14 +199,14 @@ public final class v
       if ((param_Input instanceof View)) {
         ((View)param_Input).requestFocus();
       }
-      localAppBrandNumberKeyboardView.rwi = param_Input.coM();
+      localAppBrandNumberKeyboardView.uHp = param_Input.cRo();
     }
     AppMethodBeat.o(136484);
   }
   
   public final void setOnDoneListener(a parama)
   {
-    this.rwa = parama;
+    this.uHh = parama;
   }
   
   public final void setVisibility(int paramInt)
@@ -231,7 +231,7 @@ public final class v
   public final void setXMode(int paramInt)
   {
     AppMethodBeat.i(136485);
-    this.rwb.setXMode(paramInt);
+    this.uHi.setXMode(paramInt);
     AppMethodBeat.o(136485);
   }
   
@@ -242,7 +242,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.v
  * JD-Core Version:    0.7.0.1
  */

@@ -19,20 +19,20 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class ViewTitleWithAnimation
   extends LinearLayout
 {
-  private ViewGroup EMs;
-  private TextView JIh;
-  private ImageView YeA;
-  private TextView YeB;
-  private View YeC;
-  private ImageView Yey;
-  private TextView Yez;
-  private TextView wB;
+  private ViewGroup KGL;
+  private TextView PZh;
+  private ImageView afWt;
+  private TextView afWu;
+  private ImageView afWv;
+  private TextView afWw;
+  private View afWx;
+  private TextView xw;
   
   public ViewTitleWithAnimation(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(143504);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(143504);
   }
   
@@ -40,7 +40,7 @@ public class ViewTitleWithAnimation
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143505);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(143505);
   }
   
@@ -48,46 +48,46 @@ public class ViewTitleWithAnimation
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143506);
-    bv(paramContext);
+    ci(paramContext);
     AppMethodBeat.o(143506);
   }
   
-  private void bv(Context paramContext)
+  private void ci(Context paramContext)
   {
     AppMethodBeat.i(143507);
     LayoutInflater.from(paramContext).inflate(a.h.bottom_sheet_view_title_with_animation, this);
-    this.wB = ((TextView)findViewById(a.g.tv_title));
-    this.YeC = findViewById(a.g.top_gap);
-    this.Yey = ((ImageView)findViewById(a.g.iv_icon));
-    this.JIh = ((TextView)findViewById(a.g.tv_subtitle));
-    this.Yez = ((TextView)findViewById(a.g.tv_extra));
-    this.YeA = ((ImageView)findViewById(a.g.iv_loading));
-    this.YeB = ((TextView)findViewById(a.g.tv_fallback_text));
-    this.EMs = ((ViewGroup)findViewById(a.g.layout_content));
+    this.xw = ((TextView)findViewById(a.g.tv_title));
+    this.afWx = findViewById(a.g.top_gap);
+    this.afWt = ((ImageView)findViewById(a.g.iv_icon));
+    this.PZh = ((TextView)findViewById(a.g.tv_subtitle));
+    this.afWu = ((TextView)findViewById(a.g.tv_extra));
+    this.afWv = ((ImageView)findViewById(a.g.iv_loading));
+    this.afWw = ((TextView)findViewById(a.g.tv_fallback_text));
+    this.KGL = ((ViewGroup)findViewById(a.g.layout_content));
     AppMethodBeat.o(143507);
   }
   
   public ImageView getIconImageView()
   {
-    return this.Yey;
+    return this.afWt;
   }
   
   public final void hideLoading()
   {
     AppMethodBeat.i(143513);
-    this.YeA.clearAnimation();
-    this.YeA.setVisibility(8);
-    this.wB.setVisibility(0);
-    this.Yey.setVisibility(0);
-    this.Yez.setVisibility(0);
+    this.afWv.clearAnimation();
+    this.afWv.setVisibility(8);
+    this.xw.setVisibility(0);
+    this.afWt.setVisibility(0);
+    this.afWu.setVisibility(0);
     AppMethodBeat.o(143513);
   }
   
-  public final void iad()
+  public final void jFk()
   {
     AppMethodBeat.i(143511);
-    this.EMs.setVisibility(4);
-    this.YeB.setVisibility(0);
+    this.KGL.setVisibility(4);
+    this.afWw.setVisibility(0);
     AppMethodBeat.o(143511);
   }
   
@@ -96,55 +96,55 @@ public class ViewTitleWithAnimation
     AppMethodBeat.i(143510);
     if (!Util.isNullOrNil(paramString))
     {
-      this.Yez.setVisibility(0);
-      this.Yez.setText(paramString);
+      this.afWu.setVisibility(0);
+      this.afWu.setText(paramString);
       AppMethodBeat.o(143510);
       return;
     }
-    this.Yez.setVisibility(8);
+    this.afWu.setVisibility(8);
     AppMethodBeat.o(143510);
   }
   
   public void setSubTitle(String paramString)
   {
     AppMethodBeat.i(143509);
-    this.JIh.setText(paramString);
+    this.PZh.setText(paramString);
     AppMethodBeat.o(143509);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(143508);
-    this.wB.setText(paramString);
+    this.xw.setText(paramString);
     AppMethodBeat.o(143508);
   }
   
   public void setTopPaddingVisibility(int paramInt)
   {
     AppMethodBeat.i(175969);
-    this.YeC.setVisibility(paramInt);
+    this.afWx.setVisibility(paramInt);
     AppMethodBeat.o(175969);
   }
   
   public final void startLoading()
   {
     AppMethodBeat.i(143512);
-    this.YeA.clearAnimation();
-    this.wB.setVisibility(8);
-    this.Yez.setVisibility(8);
-    this.Yey.setVisibility(8);
-    this.YeA.setVisibility(0);
+    this.afWv.clearAnimation();
+    this.xw.setVisibility(8);
+    this.afWu.setVisibility(8);
+    this.afWt.setVisibility(8);
+    this.afWv.setVisibility(0);
     RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     localRotateAnimation.setDuration(1000L);
     localRotateAnimation.setRepeatCount(-1);
     localRotateAnimation.setInterpolator(new LinearInterpolator());
-    this.YeA.startAnimation(localRotateAnimation);
+    this.afWv.startAnimation(localRotateAnimation);
     AppMethodBeat.o(143512);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.bottomsheet.ViewTitleWithAnimation
  * JD-Core Version:    0.7.0.1
  */

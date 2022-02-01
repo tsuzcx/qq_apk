@@ -15,15 +15,15 @@ final class f$c
   
   static int b(int paramInt, PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(240744);
+    AppMethodBeat.i(199720);
     int i = paramMode.hashCode();
-    AppMethodBeat.o(240744);
+    AppMethodBeat.o(199720);
     return (paramInt + 31) * 31 + i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     androidx.appcompat.widget.f.c
  * JD-Core Version:    0.7.0.1
  */

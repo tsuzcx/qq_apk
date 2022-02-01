@@ -1,58 +1,24 @@
 package kotlin.l.b.a.b.d.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.j.e.d;
+import kotlin.l.b.a.b.a.i;
 
-public abstract class k
+public abstract interface k<T>
 {
-  public String toString()
-  {
-    return m.aaYD.a(this);
-  }
+  public abstract T bIS(String paramString);
   
-  public static final class a
-    extends k
-  {
-    final k aaYA;
-    
-    public a(k paramk)
-    {
-      super();
-      AppMethodBeat.i(58206);
-      this.aaYA = paramk;
-      AppMethodBeat.o(58206);
-    }
-  }
+  public abstract T bIT(String paramString);
   
-  public static final class b
-    extends k
-  {
-    final String aaYB;
-    
-    public b(String paramString)
-    {
-      super();
-      AppMethodBeat.i(58207);
-      this.aaYB = paramString;
-      AppMethodBeat.o(58207);
-    }
-  }
+  public abstract String ca(T paramT);
   
-  public static final class c
-    extends k
-  {
-    final d aaYC;
-    
-    public c(d paramd)
-    {
-      super();
-      this.aaYC = paramd;
-    }
-  }
+  public abstract T d(i parami);
+  
+  public abstract T hZ(T paramT);
+  
+  public abstract T ksW();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.k
  * JD-Core Version:    0.7.0.1
  */

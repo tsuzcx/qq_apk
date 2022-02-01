@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.an.h.a;
-import com.tencent.mm.an.h.b;
+import com.tencent.mm.am.g.a;
+import com.tencent.mm.am.g.b;
 import java.util.Map;
 
 public abstract interface s
 {
-  public abstract h.b a(String paramString, Map<String, String> paramMap, h.a parama);
+  public abstract g.b a(String paramString, Map<String, String> paramMap, g.a parama);
 }
 
 

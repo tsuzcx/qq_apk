@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.expt.hellhound;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.expt.i.c;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.expt.f.c;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,208 +13,208 @@ import java.util.List;
 
 public final class a
 {
-  private static PBool weA;
-  private static PBool weB;
-  private static PBool weC;
-  private static PBool weD;
-  private static PBool weE;
-  private static PInt weF;
-  private static String weG;
-  private static final List<String> weH;
-  private static boolean weI;
-  private static boolean weJ;
-  private static int weK;
-  private static String weL;
-  public static boolean weM;
-  private static PBool wey;
-  private static PBool wez;
+  private static PBool zAA;
+  private static PBool zAB;
+  private static PInt zAC;
+  private static String zAD;
+  private static final List<String> zAE;
+  private static boolean zAF;
+  private static boolean zAG;
+  private static int zAH;
+  private static String zAI;
+  public static boolean zAJ;
+  private static PBool zAv;
+  private static PBool zAw;
+  private static PBool zAx;
+  private static PBool zAy;
+  private static PBool zAz;
   
   static
   {
-    AppMethodBeat.i(252374);
-    wey = null;
-    wez = null;
-    weA = null;
-    weB = null;
-    weC = null;
-    weD = null;
-    weE = null;
-    weF = null;
-    weG = null;
-    weH = new ArrayList();
-    weI = false;
-    weJ = false;
-    weK = 0;
-    weL = "";
-    weM = false;
-    AppMethodBeat.o(252374);
+    AppMethodBeat.i(300676);
+    zAv = null;
+    zAw = null;
+    zAx = null;
+    zAy = null;
+    zAz = null;
+    zAA = null;
+    zAB = null;
+    zAC = null;
+    zAD = null;
+    zAE = new ArrayList();
+    zAF = false;
+    zAG = false;
+    zAH = 0;
+    zAI = "";
+    zAJ = false;
+    AppMethodBeat.o(300676);
   }
   
-  public static void awu(String paramString)
+  public static void aqx(String paramString)
   {
-    weG = paramString;
+    zAD = paramString;
   }
   
-  public static boolean awv(String paramString)
+  public static boolean aqy(String paramString)
   {
-    AppMethodBeat.i(252362);
-    if (!weI)
+    AppMethodBeat.i(300635);
+    if (!zAF)
     {
-      weH.clear();
-      AppMethodBeat.o(252362);
+      zAE.clear();
+      AppMethodBeat.o(300635);
       return false;
     }
-    if (weH.contains(paramString))
+    if (zAE.contains(paramString))
     {
-      AppMethodBeat.o(252362);
+      AppMethodBeat.o(300635);
       return true;
     }
-    weH.add(paramString);
-    AppMethodBeat.o(252362);
+    zAE.add(paramString);
+    AppMethodBeat.o(300635);
     return false;
   }
   
-  public static void aww(String paramString)
+  public static void aqz(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    weL = str;
+    zAI = str;
   }
   
-  public static String dca()
+  public static String dIE()
   {
-    return weG;
+    return zAD;
   }
   
-  public static boolean dcb()
+  public static boolean dIF()
   {
-    return weJ;
+    return zAG;
   }
   
-  public static void dcc()
+  public static void dIG()
   {
-    weK += 1;
+    zAH += 1;
   }
   
-  public static boolean dcd()
+  public static boolean dIH()
   {
-    return weK > 0;
+    return zAH > 0;
   }
   
-  public static void dce()
+  public static void dII()
   {
-    weK = 0;
+    zAH = 0;
   }
   
-  public static String dcf()
+  public static String dIJ()
   {
-    return weL;
+    return zAI;
   }
   
-  public static boolean dcg()
+  public static boolean dIK()
   {
     boolean bool = false;
     AppMethodBeat.i(121797);
-    if (wey == null)
+    if (zAv == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyN, "1");
+      c.dNK();
+      String str = c.c(c.a.yMu, "1");
       PBool localPBool = new PBool();
-      wey = localPBool;
+      zAv = localPBool;
       if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!wey.value) {
+    if (!zAv.value) {
       Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, hellhoundSwitch: [false]");
     }
-    bool = wey.value;
+    bool = zAv.value;
     AppMethodBeat.o(121797);
     return bool;
   }
   
-  public static boolean dch()
+  public static boolean dIL()
   {
     boolean bool = false;
     AppMethodBeat.i(121798);
-    if (wez == null)
+    if (zAw == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyO, "1");
+      c.dNK();
+      String str = c.c(c.a.yMv, "1");
       PBool localPBool = new PBool();
-      wez = localPBool;
+      zAw = localPBool;
       if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!wez.value) {
+    if (!zAw.value) {
       Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, frontbackSwitch: [false]");
     }
-    bool = wez.value;
+    bool = zAw.value;
     AppMethodBeat.o(121798);
     return bool;
   }
   
-  public static boolean dci()
+  public static boolean dIM()
   {
     boolean bool = false;
     AppMethodBeat.i(121799);
-    if (weA == null)
+    if (zAx == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyO, "1");
+      c.dNK();
+      String str = c.c(c.a.yMv, "1");
       PBool localPBool = new PBool();
-      weA = localPBool;
+      zAx = localPBool;
       if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!weA.value) {
+    if (!zAx.value) {
       Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, sessionSwitch: [false]");
     }
-    bool = weA.value;
+    bool = zAx.value;
     AppMethodBeat.o(121799);
     return bool;
   }
   
-  public static boolean dcj()
+  public static boolean dIN()
   {
     boolean bool = false;
     AppMethodBeat.i(169255);
-    if (weC == null)
+    if (zAz == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyR, "1");
+      c.dNK();
+      String str = c.c(c.a.yMy, "1");
       PBool localPBool = new PBool();
-      weC = localPBool;
+      zAz = localPBool;
       if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!weC.value) {
+    if (!zAz.value) {
       Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchFinderSwitch: [false]");
     }
-    bool = weC.value;
+    bool = zAz.value;
     AppMethodBeat.o(169255);
     return bool;
   }
   
-  public static boolean dck()
+  public static boolean dIO()
   {
     AppMethodBeat.i(121800);
     PBool localPBool;
-    if (weB == null)
+    if (zAy == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyQ, "1");
+      c.dNK();
+      String str = c.c(c.a.yMx, "1");
       localPBool = new PBool();
-      weB = localPBool;
+      zAy = localPBool;
       if (Util.getInt(str, 0) <= 0) {
         break label83;
       }
@@ -224,94 +224,71 @@ public final class a
     {
       localPBool.value = bool;
       if (Build.BRAND.equalsIgnoreCase("meizu")) {
-        weB.value = false;
+        zAy.value = false;
       }
-      bool = weB.value;
+      bool = zAy.value;
       AppMethodBeat.o(121800);
       return bool;
     }
   }
   
-  public static boolean dcl()
+  public static boolean dIP()
   {
     boolean bool = false;
     AppMethodBeat.i(121801);
-    if (weD == null)
+    if (zAA == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyS, "1");
+      c.dNK();
+      String str = c.c(c.a.yMz, "1");
       PBool localPBool = new PBool();
-      weD = localPBool;
+      zAA = localPBool;
       if (Util.getInt(str, 0) > 0) {
         bool = true;
       }
       localPBool.value = bool;
     }
-    if (!weD.value) {
+    if (!zAA.value) {
       Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchAsyncEventSwitch: [false]");
     }
-    bool = weD.value;
+    bool = zAA.value;
     AppMethodBeat.o(121801);
     return bool;
   }
   
-  public static boolean dcm()
+  public static int dIQ()
   {
-    boolean bool = false;
-    AppMethodBeat.i(252370);
-    if (weE == null)
+    AppMethodBeat.i(300670);
+    if (zAC == null)
     {
-      c.dgZ();
-      String str = c.c(b.a.vyT, "1");
-      PBool localPBool = new PBool();
-      weE = localPBool;
-      if (Util.getInt(str, 0) > 0) {
-        bool = true;
-      }
-      localPBool.value = bool;
-    }
-    if (!weE.value) {
-      Log.i("HABBYGE-MALI.HellhoundConfig", "HellhoundConfig, fetchHellCgiSwitch: [false]");
-    }
-    bool = weE.value;
-    AppMethodBeat.o(252370);
-    return bool;
-  }
-  
-  public static int dcn()
-  {
-    AppMethodBeat.i(252372);
-    if (weF == null)
-    {
-      c.dgZ();
-      String str = c.c(b.a.vyU, "50");
+      c.dNK();
+      String str = c.c(c.a.yMB, "50");
       PInt localPInt = new PInt();
-      weF = localPInt;
+      zAC = localPInt;
       localPInt.value = Util.getInt(str, 50);
     }
-    int i = weF.value;
-    AppMethodBeat.o(252372);
+    int i = zAC.value;
+    AppMethodBeat.o(300670);
     return i;
   }
   
-  public static void ni(boolean paramBoolean)
+  public static void oI(boolean paramBoolean)
   {
-    AppMethodBeat.i(252361);
-    weI = paramBoolean;
+    AppMethodBeat.i(300632);
+    zAF = paramBoolean;
     if (!paramBoolean) {
-      weH.clear();
+      zAE.clear();
     }
-    AppMethodBeat.o(252361);
+    AppMethodBeat.o(300632);
   }
   
-  public static void nj(boolean paramBoolean)
+  public static void oJ(boolean paramBoolean)
   {
-    weJ = paramBoolean;
+    zAG = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a
  * JD-Core Version:    0.7.0.1
  */

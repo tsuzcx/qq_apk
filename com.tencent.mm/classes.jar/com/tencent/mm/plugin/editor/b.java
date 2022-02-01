@@ -15,46 +15,31 @@ import com.tencent.mm.plugin.editor.model.a.i;
 import com.tencent.mm.plugin.editor.model.a.j;
 import com.tencent.mm.plugin.editor.model.a.l;
 import com.tencent.mm.plugin.editor.model.a.m;
-import com.tencent.mm.plugin.fav.a.ap;
+import com.tencent.mm.plugin.fav.a.aq;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.LongBitmapHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class b
 {
-  public static b upt;
-  private static f<String, Integer> upu;
+  public static b xvQ;
+  private static f<String, Integer> xvR;
   
   static
   {
     AppMethodBeat.i(181633);
-    upt = null;
-    upu = new c(30);
+    xvQ = null;
+    xvR = new c(30);
     AppMethodBeat.o(181633);
   }
   
-  public static float GW(long paramLong)
-  {
-    float f1 = 1.0F;
-    AppMethodBeat.i(181627);
-    float f2 = (float)paramLong / 1000.0F;
-    if (f2 < 1.0F) {}
-    for (;;)
-    {
-      f1 = Math.round(f1);
-      AppMethodBeat.o(181627);
-      return f1;
-      f1 = f2;
-    }
-  }
-  
-  private static int H(char paramChar)
+  private static int A(char paramChar)
   {
     if (paramChar <= '') {
       return 1;
@@ -62,7 +47,7 @@ public final class b
     return 2;
   }
   
-  public static CharSequence N(Context paramContext, int paramInt)
+  public static CharSequence Q(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(181628);
     if (paramInt <= 0)
@@ -102,31 +87,31 @@ public final class b
       ((j)localObject1).content = ((j)parama).content;
       continue;
       localObject1 = new h();
-      ((h)localObject1).urR = ((h)parama).urR;
+      ((h)localObject1).xym = ((h)parama).xym;
       continue;
       localObject1 = new l();
       Object localObject2 = (l)localObject1;
       Object localObject3 = (l)parama;
       ((l)localObject2).thumbPath = ((l)localObject3).thumbPath;
       ((l)localObject2).duration = ((l)localObject3).duration;
-      ((l)localObject2).urV = ((l)localObject3).urV;
+      ((l)localObject2).xyq = ((l)localObject3).xyq;
       continue;
       localObject1 = new m();
       localObject2 = (m)localObject1;
       localObject3 = (m)parama;
-      ((m)localObject2).urY = ((m)localObject3).urY;
+      ((m)localObject2).xyu = ((m)localObject3).xyu;
       ((m)localObject2).length = ((m)localObject3).length;
-      ((m)localObject2).urX = ((m)localObject3).urX;
-      ((m)localObject2).oYm = ((m)localObject3).oYm;
-      ((m)localObject2).fEj = ((m)localObject3).fEj;
-      ((m)localObject2).fEi = ((m)localObject3).fEi;
-      ((m)localObject2).urV = ((m)localObject3).urV;
+      ((m)localObject2).xyt = ((m)localObject3).xyt;
+      ((m)localObject2).sdM = ((m)localObject3).sdM;
+      ((m)localObject2).hIZ = ((m)localObject3).hIZ;
+      ((m)localObject2).hIY = ((m)localObject3).hIY;
+      ((m)localObject2).xyq = ((m)localObject3).xyq;
       continue;
       localObject1 = new i();
     }
     ((d)localObject1).type = ((d)parama).type;
-    ((d)localObject1).urU = ((d)parama).urU;
-    ((d)localObject1).fNU = ((d)parama).fNU;
+    ((d)localObject1).xyp = ((d)parama).xyp;
+    ((d)localObject1).hTM = ((d)parama).hTM;
     AppMethodBeat.o(181618);
     return localObject1;
   }
@@ -148,31 +133,31 @@ public final class b
     }
     if (i == 3)
     {
-      paramContext = paramContext.getString(d.h.uqc);
+      paramContext = paramContext.getString(d.h.xwz);
       AppMethodBeat.o(181625);
       return paramContext;
     }
     if (i == 2)
     {
-      paramContext = paramContext.getString(d.h.uqb);
+      paramContext = paramContext.getString(d.h.xwy);
       AppMethodBeat.o(181625);
       return paramContext;
     }
     if (i == 6)
     {
-      paramContext = paramContext.getString(d.h.uqd);
+      paramContext = paramContext.getString(d.h.xwA);
       AppMethodBeat.o(181625);
       return paramContext;
     }
     if (i == 4)
     {
-      paramContext = paramContext.getString(d.h.uqe);
+      paramContext = paramContext.getString(d.h.xwB);
       AppMethodBeat.o(181625);
       return paramContext;
     }
     if (i == 5)
     {
-      paramContext = paramContext.getString(d.h.uqa);
+      paramContext = paramContext.getString(d.h.xwx);
       AppMethodBeat.o(181625);
       return paramContext;
     }
@@ -180,10 +165,10 @@ public final class b
     return "";
   }
   
-  public static Bitmap atB(String paramString)
+  public static Bitmap anq(String paramString)
   {
     AppMethodBeat.i(181617);
-    paramString = e.bg(paramString, false);
+    paramString = e.bs(paramString, false);
     if (paramString != null)
     {
       AppMethodBeat.o(181617);
@@ -194,12 +179,12 @@ public final class b
       AppMethodBeat.o(181617);
       return null;
     }
-    paramString = e.bg(null, false);
+    paramString = e.bs(null, false);
     AppMethodBeat.o(181617);
     return paramString;
   }
   
-  public static int atC(String paramString)
+  public static int anr(String paramString)
   {
     AppMethodBeat.i(181621);
     if (Util.isNullOrNil(paramString))
@@ -207,12 +192,12 @@ public final class b
       AppMethodBeat.o(181621);
       return 0;
     }
-    int i = atE(atH(paramString));
+    int i = ant(anw(paramString));
     AppMethodBeat.o(181621);
     return i;
   }
   
-  public static int atD(String paramString)
+  public static int ans(String paramString)
   {
     AppMethodBeat.i(181623);
     if (Util.isNullOrNil(paramString))
@@ -220,19 +205,19 @@ public final class b
       AppMethodBeat.o(181623);
       return 0;
     }
-    if (upu.check(paramString))
+    if (xvR.check(paramString))
     {
-      i = ((Integer)upu.get(paramString)).intValue();
+      i = ((Integer)xvR.get(paramString)).intValue();
       AppMethodBeat.o(181623);
       return i;
     }
-    int i = atE(paramString);
-    upu.put(paramString, Integer.valueOf(i));
+    int i = ant(paramString);
+    xvR.put(paramString, Integer.valueOf(i));
     AppMethodBeat.o(181623);
     return i;
   }
   
-  private static int atE(String paramString)
+  private static int ant(String paramString)
   {
     AppMethodBeat.i(181624);
     if (Util.isNullOrNil(paramString))
@@ -244,14 +229,14 @@ public final class b
     int k;
     for (int i = 0; j < paramString.length(); i = k + i)
     {
-      k = H(paramString.charAt(j));
+      k = A(paramString.charAt(j));
       j += 1;
     }
     AppMethodBeat.o(181624);
     return i;
   }
   
-  public static String atF(String paramString)
+  public static String anu(String paramString)
   {
     AppMethodBeat.i(181626);
     paramString = Pattern.compile("wx-b>", 2).matcher(paramString).replaceAll("wa-b>");
@@ -263,7 +248,7 @@ public final class b
     return paramString;
   }
   
-  public static ArrayList<String> atG(String paramString)
+  public static ArrayList<String> anv(String paramString)
   {
     AppMethodBeat.i(181629);
     if ((Util.isNullOrNil(paramString)) || (paramString.length() == 0))
@@ -301,7 +286,7 @@ public final class b
     return localArrayList;
   }
   
-  public static String atH(String paramString)
+  public static String anw(String paramString)
   {
     AppMethodBeat.i(181630);
     if ((Util.isNullOrNil(paramString)) || (paramString.length() == 0))
@@ -322,7 +307,7 @@ public final class b
     return paramString;
   }
   
-  public static boolean atI(String paramString)
+  public static boolean anx(String paramString)
   {
     AppMethodBeat.i(181631);
     int k = "<br/>".length();
@@ -350,10 +335,10 @@ public final class b
     return true;
   }
   
-  public static String atJ(String paramString)
+  public static String any(String paramString)
   {
     AppMethodBeat.i(181632);
-    paramString = atH(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
+    paramString = anw(Pattern.compile("<object[^>]*>", 2).matcher(paramString).replaceAll("#WNNoteNode#<ThisisNoteNodeObj>#WNNoteNode#"));
     if ((Util.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(181632);
@@ -372,7 +357,7 @@ public final class b
       AppMethodBeat.o(181622);
       return 0;
     }
-    paramString = com.tencent.mm.plugin.editor.model.nativenote.a.a.atL(paramString);
+    paramString = com.tencent.mm.plugin.editor.model.nativenote.a.a.anA(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(181622);
@@ -392,7 +377,7 @@ public final class b
       AppMethodBeat.o(181622);
       return 0;
     }
-    paramInt1 = atE(paramString.toString());
+    paramInt1 = ant(paramString.toString());
     AppMethodBeat.o(181622);
     return paramInt1;
   }
@@ -407,11 +392,11 @@ public final class b
     }
     if (parama.getType() == 2)
     {
-      parama = ((h)parama).urR;
+      parama = ((h)parama).xym;
       AppMethodBeat.o(181619);
       return parama;
     }
-    parama = ((d)parama).fNU;
+    parama = ((d)parama).hTM;
     AppMethodBeat.o(181619);
     return parama;
   }
@@ -426,7 +411,7 @@ public final class b
     }
     if (parama.getType() == 2)
     {
-      parama = ((h)parama).fNU;
+      parama = ((h)parama).hTM;
       AppMethodBeat.o(181620);
       return parama;
     }
@@ -440,21 +425,21 @@ public final class b
     return "";
   }
   
-  public static String fX(String paramString1, String paramString2)
+  public static String gA(String paramString1, String paramString2)
   {
     int j = 1280;
     AppMethodBeat.i(181615);
     if (Util.isNullOrNil(paramString2))
     {
       paramString2 = g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_HD";
-      paramString2 = ap.dkq() + "/" + paramString2;
+      paramString2 = aq.dRc() + "/" + paramString2;
     }
     for (;;)
     {
       BitmapFactory.Options localOptions;
       int k;
       int i;
-      if (!u.agG(paramString2))
+      if (!y.ZC(paramString2))
       {
         localOptions = BitmapUtil.getImageOptions(paramString1);
         if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
@@ -498,14 +483,14 @@ public final class b
     }
   }
   
-  public static String fY(String paramString1, String paramString2)
+  public static String gB(String paramString1, String paramString2)
   {
     int m = 800;
     AppMethodBeat.i(181616);
     if (Util.isNullOrNil(paramString2))
     {
       paramString2 = g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_TH";
-      paramString2 = ap.dkq() + "/" + paramString2;
+      paramString2 = aq.dRc() + "/" + paramString2;
     }
     for (;;)
     {
@@ -513,7 +498,7 @@ public final class b
       int j;
       int k;
       int i;
-      if (!u.agG(paramString2))
+      if (!y.ZC(paramString2))
       {
         localOptions = BitmapUtil.getImageOptions(paramString1);
         if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
@@ -556,10 +541,25 @@ public final class b
       }
     }
   }
+  
+  public static float jh(long paramLong)
+  {
+    float f1 = 1.0F;
+    AppMethodBeat.i(181627);
+    float f2 = (float)paramLong / 1000.0F;
+    if (f2 < 1.0F) {}
+    for (;;)
+    {
+      f1 = Math.round(f1);
+      AppMethodBeat.o(181627);
+      return f1;
+      f1 = f2;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.b
  * JD-Core Version:    0.7.0.1
  */

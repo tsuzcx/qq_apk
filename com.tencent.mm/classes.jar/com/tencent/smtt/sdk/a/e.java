@@ -24,10 +24,10 @@ public class e
   
   static
   {
-    AppMethodBeat.i(194228);
+    AppMethodBeat.i(219692);
     a = "EmergencyManager";
     f = new Object();
-    AppMethodBeat.o(194228);
+    AppMethodBeat.o(219692);
   }
   
   public e(Context paramContext, String paramString1, String paramString2)
@@ -37,17 +37,17 @@ public class e
   
   public e(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(194220);
+    AppMethodBeat.i(219681);
     this.b = paramString1;
     this.c = paramString2;
     this.d = paramString3;
     this.e = new Handler(paramContext.getMainLooper());
-    AppMethodBeat.o(194220);
+    AppMethodBeat.o(219681);
   }
   
   private static Handler b()
   {
-    AppMethodBeat.i(194221);
+    AppMethodBeat.i(219684);
     synchronized (f)
     {
       if (h == null)
@@ -58,14 +58,14 @@ public class e
         h = new Handler(g.getLooper());
       }
       Object localObject2 = h;
-      AppMethodBeat.o(194221);
+      AppMethodBeat.o(219684);
       return localObject2;
     }
   }
   
   public String a(String paramString)
   {
-    AppMethodBeat.i(194227);
+    AppMethodBeat.i(219699);
     TbsLog.e(a, "Request url: " + this.b + ",params: " + this.c);
     int i;
     ByteArrayOutputStream localByteArrayOutputStream;
@@ -92,7 +92,7 @@ public class e
           localByteArrayOutputStream.write(arrayOfByte, 0, i);
           localByteArrayOutputStream.flush();
         }
-        AppMethodBeat.o(194227);
+        AppMethodBeat.o(219699);
       }
     }
     catch (Exception paramString)
@@ -103,7 +103,7 @@ public class e
     {
       return null;
       paramString = localByteArrayOutputStream.toString("utf-8");
-      AppMethodBeat.o(194227);
+      AppMethodBeat.o(219699);
       return paramString;
       TbsLog.e(a, "Bad http request, code: ".concat(String.valueOf(i)));
     }
@@ -111,12 +111,12 @@ public class e
   
   public void a(final a parama)
   {
-    AppMethodBeat.i(194223);
+    AppMethodBeat.i(219695);
     b().post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(194141);
+        AppMethodBeat.i(219685);
         final String str = e.this.a(e.a(e.this));
         if (str != null)
         {
@@ -124,21 +124,21 @@ public class e
           {
             public void run()
             {
-              AppMethodBeat.i(194194);
+              AppMethodBeat.i(219673);
               if (e.1.this.a != null) {
                 e.1.this.a.a(str);
               }
-              AppMethodBeat.o(194194);
+              AppMethodBeat.o(219673);
             }
           });
-          AppMethodBeat.o(194141);
+          AppMethodBeat.o(219685);
           return;
         }
         TbsLog.e(e.a(), "Unexpected result for an empty http response: " + e.a(e.this));
-        AppMethodBeat.o(194141);
+        AppMethodBeat.o(219685);
       }
     });
-    AppMethodBeat.o(194223);
+    AppMethodBeat.o(219695);
   }
   
   public static abstract interface a
@@ -148,7 +148,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.e
  * JD-Core Version:    0.7.0.1
  */

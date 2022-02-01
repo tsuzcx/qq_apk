@@ -3,46 +3,43 @@ package com.tencent.mm.plugin.taskbar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.vfs.u;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.vfs.y;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/TaskBarPathRouter;", "", "()V", "taskBarAccPath", "", "getTaskBarAccPath", "()Ljava/lang/String;", "taskBarCoverImgPath", "getTaskBarCoverImgPath", "plugin-taskbar_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/taskbar/TaskBarPathRouter;", "", "()V", "taskBarAccPath", "", "getTaskBarAccPath", "()Ljava/lang/String;", "taskBarCoverImgPath", "getTaskBarCoverImgPath", "plugin-taskbar_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class g
 {
-  private static String Mng;
-  private static final String Mnh;
-  public static final g Mni;
+  private static String SQA;
+  private static final String SQB;
+  public static final g SQz;
   
   static
   {
-    AppMethodBeat.i(215299);
-    Mni = new g();
-    Mng = "";
-    Mnh = giU() + "coverimg/";
-    if (!u.agG(giU())) {
-      u.bBD(giU());
+    AppMethodBeat.i(263982);
+    SQz = new g();
+    SQA = "";
+    SQB = s.X(hCU(), "coverimg/");
+    if (!y.ZC(hCU())) {
+      y.bDX(hCU());
     }
-    if (!u.agG(Mnh)) {
-      u.bBD(Mnh);
+    if (!y.ZC(SQB)) {
+      y.bDX(SQB);
     }
-    AppMethodBeat.o(215299);
+    AppMethodBeat.o(263982);
   }
   
-  private static String giU()
+  private static String hCU()
   {
-    AppMethodBeat.i(215297);
-    Object localObject = new StringBuilder();
-    f localf = h.aHG();
-    p.j(localf, "MMKernel.storage()");
-    localObject = localf.getAccPath() + "taskbar/";
-    AppMethodBeat.o(215297);
-    return localObject;
+    AppMethodBeat.i(263966);
+    String str = s.X(h.baE().mCJ, "taskbar/");
+    AppMethodBeat.o(263966);
+    return str;
   }
   
-  public static String giV()
+  public static String hCV()
   {
-    return Mnh;
+    return SQB;
   }
 }
 

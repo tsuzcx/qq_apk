@@ -12,15 +12,15 @@ import android.view.inputmethod.InputConnection;
 import android.widget.AutoCompleteTextView;
 import androidx.appcompat.a.a;
 import androidx.appcompat.a.a.a;
-import androidx.core.g.u;
-import androidx.core.widget.i;
+import androidx.core.g.x;
+import androidx.core.widget.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppCompatAutoCompleteTextView
   extends AutoCompleteTextView
-  implements u
+  implements x
 {
-  private static final int[] mb = { 16843126 };
+  private static final int[] na = { 16843126 };
   private final d mBackgroundTintHelper;
   private final k mTextHelper;
   
@@ -32,132 +32,132 @@ public class AppCompatAutoCompleteTextView
   public AppCompatAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(z.L(paramContext), paramAttributeSet, paramInt);
-    AppMethodBeat.i(240652);
-    paramContext = ac.a(getContext(), paramAttributeSet, mb, paramInt, 0);
-    if (paramContext.aC(0)) {
+    AppMethodBeat.i(199473);
+    paramContext = ac.a(getContext(), paramAttributeSet, na, paramInt, 0);
+    if (paramContext.az(0)) {
       setDropDownBackgroundDrawable(paramContext.getDrawable(0));
     }
-    paramContext.wA.recycle();
+    paramContext.xv.recycle();
     this.mBackgroundTintHelper = new d(this);
     this.mBackgroundTintHelper.a(paramAttributeSet, paramInt);
     this.mTextHelper = new k(this);
     this.mTextHelper.a(paramAttributeSet, paramInt);
-    this.mTextHelper.du();
-    AppMethodBeat.o(240652);
+    this.mTextHelper.et();
+    AppMethodBeat.o(199473);
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(240662);
+    AppMethodBeat.i(199575);
     super.drawableStateChanged();
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dm();
+      this.mBackgroundTintHelper.el();
     }
     if (this.mTextHelper != null) {
-      this.mTextHelper.du();
+      this.mTextHelper.et();
     }
-    AppMethodBeat.o(240662);
+    AppMethodBeat.o(199575);
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    AppMethodBeat.i(240659);
+    AppMethodBeat.i(199543);
     if (this.mBackgroundTintHelper != null)
     {
       ColorStateList localColorStateList = this.mBackgroundTintHelper.getSupportBackgroundTintList();
-      AppMethodBeat.o(240659);
+      AppMethodBeat.o(199543);
       return localColorStateList;
     }
-    AppMethodBeat.o(240659);
+    AppMethodBeat.o(199543);
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    AppMethodBeat.i(240661);
+    AppMethodBeat.i(199562);
     if (this.mBackgroundTintHelper != null)
     {
       PorterDuff.Mode localMode = this.mBackgroundTintHelper.getSupportBackgroundTintMode();
-      AppMethodBeat.o(240661);
+      AppMethodBeat.o(199562);
       return localMode;
     }
-    AppMethodBeat.o(240661);
+    AppMethodBeat.o(199562);
     return null;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    AppMethodBeat.i(240664);
+    AppMethodBeat.i(199596);
     paramEditorInfo = g.a(super.onCreateInputConnection(paramEditorInfo), paramEditorInfo, this);
-    AppMethodBeat.o(240664);
+    AppMethodBeat.o(199596);
     return paramEditorInfo;
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(240657);
+    AppMethodBeat.i(199517);
     super.setBackgroundDrawable(paramDrawable);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.dl();
+      this.mBackgroundTintHelper.ek();
     }
-    AppMethodBeat.o(240657);
+    AppMethodBeat.o(199517);
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(240656);
+    AppMethodBeat.i(199504);
     super.setBackgroundResource(paramInt);
     if (this.mBackgroundTintHelper != null) {
-      this.mBackgroundTintHelper.ar(paramInt);
+      this.mBackgroundTintHelper.ap(paramInt);
     }
-    AppMethodBeat.o(240656);
+    AppMethodBeat.o(199504);
   }
   
   public void setCustomSelectionActionModeCallback(ActionMode.Callback paramCallback)
   {
-    AppMethodBeat.i(240665);
-    super.setCustomSelectionActionModeCallback(i.a(this, paramCallback));
-    AppMethodBeat.o(240665);
+    AppMethodBeat.i(199611);
+    super.setCustomSelectionActionModeCallback(j.a(this, paramCallback));
+    AppMethodBeat.o(199611);
   }
   
   public void setDropDownBackgroundResource(int paramInt)
   {
-    AppMethodBeat.i(240654);
+    AppMethodBeat.i(199491);
     setDropDownBackgroundDrawable(a.m(getContext(), paramInt));
-    AppMethodBeat.o(240654);
+    AppMethodBeat.o(199491);
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(240658);
+    AppMethodBeat.i(199529);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintList(paramColorStateList);
     }
-    AppMethodBeat.o(240658);
+    AppMethodBeat.o(199529);
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    AppMethodBeat.i(240660);
+    AppMethodBeat.i(199554);
     if (this.mBackgroundTintHelper != null) {
       this.mBackgroundTintHelper.setSupportBackgroundTintMode(paramMode);
     }
-    AppMethodBeat.o(240660);
+    AppMethodBeat.o(199554);
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(240663);
+    AppMethodBeat.i(199585);
     super.setTextAppearance(paramContext, paramInt);
     if (this.mTextHelper != null) {
       this.mTextHelper.s(paramContext, paramInt);
     }
-    AppMethodBeat.o(240663);
+    AppMethodBeat.o(199585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.widget.AppCompatAutoCompleteTextView
  * JD-Core Version:    0.7.0.1
  */

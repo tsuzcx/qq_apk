@@ -8,17 +8,17 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class e
 {
-  private static boolean ERX = false;
+  private static boolean KMy = false;
   
-  public static void eQZ()
+  public static void fZH()
   {
-    ERX = true;
+    KMy = true;
   }
   
-  public static int eRa()
+  public static int fZI()
   {
     AppMethodBeat.i(66145);
-    if (ERX)
+    if (KMy)
     {
       i = MMApplicationContext.getContext().getResources().getColor(a.c.mall_index_new_bg_color);
       AppMethodBeat.o(66145);
@@ -31,7 +31,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.e
  * JD-Core Version:    0.7.0.1
  */

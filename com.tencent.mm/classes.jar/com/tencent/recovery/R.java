@@ -4,12 +4,12 @@ public final class R
 {
   public static final class layout
   {
-    public static final int recovery_ui = 2131496187;
+    public static final int recovery_ui = 2131496275;
   }
   
   public static final class string
   {
-    public static final int recovery_intro = 2131764897;
+    public static final int recovery_intro = 2131766845;
   }
 }
 

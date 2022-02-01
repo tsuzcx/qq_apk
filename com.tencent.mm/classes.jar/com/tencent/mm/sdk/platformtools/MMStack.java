@@ -25,7 +25,7 @@ public class MMStack
       AppMethodBeat.o(157711);
       return localObject;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Log.e("MicroMsg.Util.MMStack", "getCaller e:%s", new Object[] { stackTraceToString(localThrowable) });
       AppMethodBeat.o(157711);
@@ -35,11 +35,11 @@ public class MMStack
   
   public static String getStack(boolean paramBoolean)
   {
-    AppMethodBeat.i(187560);
+    AppMethodBeat.i(243660);
     Object localObject = new Throwable().getStackTrace();
     if ((localObject == null) || (localObject.length < 4))
     {
-      AppMethodBeat.o(187560);
+      AppMethodBeat.o(243660);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -66,7 +66,7 @@ public class MMStack
       }
     }
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(187560);
+    AppMethodBeat.o(243660);
     return localObject;
   }
   
@@ -133,7 +133,7 @@ public class MMStack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMStack
  * JD-Core Version:    0.7.0.1
  */

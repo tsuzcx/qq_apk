@@ -8,37 +8,37 @@ import com.tencent.mm.storagebase.h;
 
 public final class c
 {
-  boolean jVu = false;
-  public long kje = 0L;
-  private long rMI = -1L;
+  public long mJI = 0L;
+  private long uXV = -1L;
+  boolean uXW = false;
   
   public final void begin()
   {
     AppMethodBeat.i(21817);
     Log.d("MicroMsg.Recoverfaster", "begin");
-    if (b.cuH().cuI().kcF != null)
+    if (b.cXr().cXs().mCN != null)
     {
-      this.rMI = b.cuH().cuI().kcF.beginTransaction(Thread.currentThread().getId());
-      this.jVu = true;
+      this.uXV = b.cXr().cXs().mCN.beginTransaction(Thread.currentThread().getId());
+      this.uXW = true;
     }
-    this.kje = Util.nowMilliSecond();
+    this.mJI = Util.nowMilliSecond();
     AppMethodBeat.o(21817);
   }
   
   public final void end()
   {
     AppMethodBeat.i(21818);
-    if ((this.jVu) && (b.cuH().cuI().kcF != null))
+    if ((this.uXW) && (b.cXr().cXs().mCN != null))
     {
-      b.cuH().cuI().kcF.endTransaction(this.rMI);
-      this.jVu = false;
+      b.cXr().cXs().mCN.endTransaction(this.uXV);
+      this.uXW = false;
     }
     AppMethodBeat.o(21818);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.c
  * JD-Core Version:    0.7.0.1
  */

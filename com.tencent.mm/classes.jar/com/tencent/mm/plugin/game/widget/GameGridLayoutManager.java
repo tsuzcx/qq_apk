@@ -22,23 +22,23 @@ public class GameGridLayoutManager
   
   public void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(190863);
+    AppMethodBeat.i(275391);
     try
     {
       super.onLayoutChildren(paramn, params);
-      AppMethodBeat.o(190863);
+      AppMethodBeat.o(275391);
       return;
     }
     catch (IndexOutOfBoundsException paramn)
     {
       Log.e("MicroMsg.GameGridLayoutManager", "meet a IOOBE in RecyclerView");
-      AppMethodBeat.o(190863);
+      AppMethodBeat.o(275391);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameGridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

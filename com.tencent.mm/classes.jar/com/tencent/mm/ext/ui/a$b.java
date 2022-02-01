@@ -9,23 +9,23 @@ import java.lang.reflect.Method;
 final class a$b
   implements InvocationHandler
 {
-  WeakReference<a.a> jRb;
+  WeakReference<a.a> mql;
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(258890);
-    if (this.jRb == null)
+    AppMethodBeat.i(235333);
+    if (this.mql == null)
     {
       b.i("MicroMsg.ActivityUtil", "swipe invoke fail, callbackRef NULL!", new Object[0]);
-      AppMethodBeat.o(258890);
+      AppMethodBeat.o(235333);
       return null;
     }
-    paramObject = (a.a)this.jRb.get();
+    paramObject = (a.a)this.mql.get();
     if (paramObject == null)
     {
       b.i("MicroMsg.ActivityUtil", "swipe invoke fail, callback NULL!", new Object[0]);
-      AppMethodBeat.o(258890);
+      AppMethodBeat.o(235333);
       return null;
     }
     boolean bool1 = bool2;
@@ -40,14 +40,14 @@ final class a$b
         }
       }
     }
-    paramObject.eG(bool1);
-    AppMethodBeat.o(258890);
+    paramObject.onComplete(bool1);
+    AppMethodBeat.o(235333);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ext.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

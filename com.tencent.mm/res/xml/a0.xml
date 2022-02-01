@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/xf" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_mini_shop_helper_header_helper" android:layout="@layout/bnr" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_view_message" android:layout="@layout/b8j" android:title="@string/bhl" />
-    <CheckBoxPreference android:key="contact_info_recommend_qqfriends_to_me" android:title="@string/bem" />
-    <CheckBoxPreference android:key="contact_info_recommend_mobilefriends_to_me" android:title="@string/bel" />
-    <CheckBoxPreference android:key="contact_info_recommend_fbfriends_to_me" android:title="@string/bek" />
-    <Preference android:key="contact_info_bind_mobile_entry" android:layout="@layout/b8j" android:title="@string/gnq" />
-    <Preference android:key="contact_info_bind_mobile_entry_tip" android:layout="@layout/b_7" android:title="@string/b9u" />
-    <Preference android:key="contact_info_bind_qq_entry" android:layout="@layout/b8j" android:title="@string/afs" />
-    <Preference android:key="contact_info_bind_qq_entry_tip" android:layout="@layout/b_7" android:title="@string/b9v" />
-    <Preference android:key="contact_info_bind_fb_entry" android:layout="@layout/b8j" android:title="@string/dxo" />
-    <Preference android:key="contact_info_bind_fb_entry_tip" android:layout="@layout/b_7" android:title="@string/b9t" />
-    <Preference android:key="contact_info_fmessage_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <Preference android:key="contact_info_mini_shop_helper_go_to" android:layout="@layout/bdi" android:title="@string/bo8" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_mini_shop_helper_my" android:layout="@layout/bdi" android:title="@string/bo_" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_mini_shop_helper_top" android:layout="@layout/bdi" android:persistent="false" android:title="@string/boc" />
+    <CheckBoxPreference android:key="contact_info_mini_shop_helper_not_disturb" android:layout="@layout/bdi" android:persistent="false" android:title="@string/boa" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_mini_shop_helper_help" android:layout="@layout/bdi" android:title="@string/bo9" />
+    <Preference android:key="contact_info_mini_shop_helper_clear_data" android:layout="@layout/bdi" android:title="@string/blg" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/iww" android:key="contact_info_mini_shop_helper_install" android:title_color="@color/wv" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/ix1" android:key="contact_info_mini_shop_helper_uninstall" android:layout="@layout/b93" android:title_color="@color/a9z" />
     <PreferenceCategory />
 </PreferenceScreen>

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.finder.nearby.live;
 
 import com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$1", "Lcom/tencent/mm/plugin/finder/view/manager/FinderStaggeredGridLayoutManager;", "supportsPredictiveItemAnimations", "", "plugin-finder-nearby_release"})
+@Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/nearby/live/NearbyLiveViewCallback$initRecyclerView$1", "Lcom/tencent/mm/plugin/finder/view/manager/FinderStaggeredGridLayoutManager;", "supportsPredictiveItemAnimations", "", "plugin-finder-nearby_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class NearbyLiveViewCallback$initRecyclerView$1
   extends FinderStaggeredGridLayoutManager
 {
   NearbyLiveViewCallback$initRecyclerView$1()
   {
-    super(2);
+    super(2, 1);
   }
   
   public final boolean supportsPredictiveItemAnimations()

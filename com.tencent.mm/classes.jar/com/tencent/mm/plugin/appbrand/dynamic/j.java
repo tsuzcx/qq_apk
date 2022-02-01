@@ -15,24 +15,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class j
 {
-  private static j ogT;
-  public Map<String, b> ogL;
+  private static j rkx;
+  public Map<String, b> rkp;
   
   static
   {
     AppMethodBeat.i(121193);
-    ogT = new j();
+    rkx = new j();
     AppMethodBeat.o(121193);
   }
   
   public j()
   {
     AppMethodBeat.i(121187);
-    this.ogL = new ConcurrentHashMap();
+    this.rkp = new ConcurrentHashMap();
     AppMethodBeat.o(121187);
   }
   
-  private String age(String paramString)
+  private String Za(String paramString)
   {
     AppMethodBeat.i(121191);
     if (TextUtils.isEmpty(paramString))
@@ -40,7 +40,7 @@ public final class j
       AppMethodBeat.o(121191);
       return "";
     }
-    Iterator localIterator = this.ogL.entrySet().iterator();
+    Iterator localIterator = this.rkp.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -55,41 +55,41 @@ public final class j
     return "";
   }
   
-  public static j bNj()
+  public static j cny()
   {
-    return ogT;
+    return rkx;
   }
   
-  public final void P(String paramString, int paramInt1, int paramInt2)
+  public final void T(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(121189);
-    b localb = (b)this.ogL.get(paramString);
+    b localb = (b)this.rkp.get(paramString);
     if (localb != null)
     {
       c.i("WidgetReporter_14443", "report %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      h.IzE.a(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.fvc), Integer.valueOf(2), localb.fwv, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.serviceType) });
+      h.OAn.b(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.hzw), Integer.valueOf(2), localb.hAT, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.serviceType) });
     }
     AppMethodBeat.o(121189);
   }
   
-  public final void agd(String paramString)
+  public final void YZ(String paramString)
   {
     AppMethodBeat.i(121190);
-    P(age(paramString), 626, 7);
+    T(Za(paramString), 626, 7);
     AppMethodBeat.o(121190);
   }
   
-  public final void agf(String paramString)
+  public final void Zb(String paramString)
   {
     AppMethodBeat.i(121192);
-    P(paramString, 626, 26);
+    T(paramString, 626, 26);
     AppMethodBeat.o(121192);
   }
   
-  public final void cb(String paramString, int paramInt)
+  public final void cy(String paramString, int paramInt)
   {
     AppMethodBeat.i(121188);
-    P(age(paramString), 626, paramInt);
+    T(Za(paramString), 626, paramInt);
     AppMethodBeat.o(121188);
   }
   
@@ -101,29 +101,29 @@ public final class j
     implements a
   {
     String appId = "";
-    int fvc;
-    String fwv;
-    String ogO = "";
+    String hAT;
+    int hzw;
+    String rks = "";
     int serviceType;
     
     public b() {}
     
     public b(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
     {
-      this.ogO = paramString1;
+      this.rks = paramString1;
       this.appId = paramString2;
-      this.fvc = paramInt1;
-      this.fwv = paramString3;
+      this.hzw = paramInt1;
+      this.hAT = paramString3;
       this.serviceType = paramInt2;
     }
     
     public final void fromBundle(Bundle paramBundle)
     {
       AppMethodBeat.i(121186);
-      this.ogO = paramBundle.getString("widgetId");
+      this.rks = paramBundle.getString("widgetId");
       this.appId = paramBundle.getString("appid");
-      this.fvc = paramBundle.getInt("appState");
-      this.fwv = paramBundle.getString("reqKey");
+      this.hzw = paramBundle.getInt("appState");
+      this.hAT = paramBundle.getString("reqKey");
       this.serviceType = paramBundle.getInt("serviceType");
       AppMethodBeat.o(121186);
     }
@@ -132,10 +132,10 @@ public final class j
     {
       AppMethodBeat.i(121185);
       Bundle localBundle = new Bundle();
-      localBundle.putString("widgetId", this.ogO);
+      localBundle.putString("widgetId", this.rks);
       localBundle.putString("appid", this.appId);
-      localBundle.putInt("appState", this.fvc);
-      localBundle.putString("reqKey", this.fwv);
+      localBundle.putInt("appState", this.hzw);
+      localBundle.putString("reqKey", this.hAT);
       localBundle.putInt("serviceType", this.serviceType);
       AppMethodBeat.o(121185);
       return localBundle;
@@ -144,7 +144,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.j
  * JD-Core Version:    0.7.0.1
  */

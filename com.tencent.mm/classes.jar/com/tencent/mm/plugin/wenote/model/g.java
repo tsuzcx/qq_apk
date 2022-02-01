@@ -4,151 +4,148 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.l;
-import com.tencent.mm.an.q;
-import com.tencent.mm.an.t;
-import com.tencent.mm.by.c;
-import com.tencent.mm.f.a.hi;
-import com.tencent.mm.f.a.hi.b;
+import com.tencent.mm.am.p;
+import com.tencent.mm.autogen.a.ht;
+import com.tencent.mm.autogen.a.ht.b;
+import com.tencent.mm.br.c;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.wenote.model.a.m;
 import com.tencent.mm.plugin.wenote.model.a.o;
-import com.tencent.mm.plugin.wenote.model.a.s;
 import com.tencent.mm.plugin.wenote.model.a.u;
-import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.aoc;
-import com.tencent.mm.protocal.protobuf.aoe;
-import com.tencent.mm.protocal.protobuf.aoi;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.arx;
+import com.tencent.mm.protocal.protobuf.asb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.threadpool.i;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class g
   extends d
-  implements com.tencent.mm.an.i
+  implements com.tencent.mm.am.h
 {
-  private static HashMap<com.tencent.mm.plugin.fav.a.g, m> QGu;
-  public String QGA;
-  public byte[] QGB;
-  public boolean QGC;
-  public String QGs;
-  public String QGt;
-  private int QGv;
-  public String QGw;
-  public int QGx;
-  public long QGy;
-  public String QGz;
-  private aoe fEm;
-  private int fNJ;
-  public boolean fNQ;
-  public long fNV;
-  private com.tencent.mm.plugin.fav.a.g wMe;
+  private static HashMap<com.tencent.mm.plugin.fav.a.g, m> XzS;
+  private com.tencent.mm.plugin.fav.a.g AiB;
+  public boolean XAa;
+  public String XzQ;
+  public String XzR;
+  private int XzT;
+  public String XzU;
+  public int XzV;
+  public long XzW;
+  public String XzX;
+  public String XzY;
+  public byte[] XzZ;
+  private arx hJc;
+  private int hTB;
+  public boolean hTH;
+  public long hTN;
   
   static
   {
     AppMethodBeat.i(30327);
-    QGu = new HashMap();
+    XzS = new HashMap();
     AppMethodBeat.o(30327);
   }
   
   public g()
   {
     AppMethodBeat.i(30313);
-    this.fNV = -1L;
-    this.QGt = "";
-    this.fNQ = true;
-    this.fNJ = 0;
-    this.QGv = 0;
-    this.QGx = 0;
-    this.QGy = 0L;
-    this.fEm = new aoe();
-    this.QGB = null;
-    this.QGC = false;
-    this.QGi.clear();
-    this.QGh = null;
-    urh = "";
-    this.QGn = false;
-    e.dkP();
-    bh.aGY().a(426, this);
+    this.hTN = -1L;
+    this.XzR = "";
+    this.hTH = true;
+    this.hTB = 0;
+    this.XzT = 0;
+    this.XzV = 0;
+    this.XzW = 0L;
+    this.hJc = new arx();
+    this.XzZ = null;
+    this.XAa = false;
+    this.XzG.clear();
+    this.XzF = null;
+    xxE = "";
+    this.XzL = false;
+    e.dRF();
+    bh.aZW().a(426, this);
     AppMethodBeat.o(30313);
   }
   
-  private String bnQ(String paramString)
+  private String bnE(String paramString)
   {
     AppMethodBeat.i(30325);
-    Object localObject = f.Po(this.fNV);
+    Object localObject = f.to(this.hTN);
     if (localObject == null)
     {
-      paramString = ((o)this.QGk.get(paramString)).fEa;
+      paramString = ((o)this.XzI.get(paramString)).hIQ;
       AppMethodBeat.o(30325);
       return paramString;
     }
-    localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.syG.iterator();
+    localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.vEn.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      anm localanm = (anm)((Iterator)localObject).next();
-      if ((!Util.isNullOrNil(localanm.SyO)) && (localanm.SyO.equals(paramString)))
+      arf localarf = (arf)((Iterator)localObject).next();
+      if ((!Util.isNullOrNil(localarf.ZzG)) && (localarf.ZzG.equals(paramString)))
       {
-        paramString = localanm.fEa;
+        paramString = localarf.hIQ;
         AppMethodBeat.o(30325);
         return paramString;
       }
     }
-    paramString = ((o)this.QGk.get(paramString)).fEa;
+    paramString = ((o)this.XzI.get(paramString)).hIQ;
     AppMethodBeat.o(30325);
     return paramString;
   }
   
-  public final String a(anm paramanm)
+  public final String a(arf paramarf)
   {
     AppMethodBeat.i(30318);
-    paramanm = f.a(paramanm);
+    paramarf = f.a(paramarf);
     AppMethodBeat.o(30318);
-    return paramanm;
+    return paramarf;
   }
   
-  public final void a(long paramLong, Context paramContext, Boolean paramBoolean, int paramInt1, int paramInt2, aoe paramaoe, final aoc paramaoc, byte[] paramArrayOfByte)
+  public final void a(long paramLong, Context paramContext, Boolean paramBoolean, int paramInt1, int paramInt2, arx paramarx, final arv paramarv, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(263614);
-    this.fNV = paramLong;
-    this.fNQ = paramBoolean.booleanValue();
-    this.fNJ = paramInt1;
-    this.QGv = paramInt2;
-    this.fEm = paramaoe;
-    this.QGB = paramArrayOfByte;
-    hdp();
-    if ((this.QGx == 0) && (this.QGo.SAB != null)) {
-      this.QGx = this.QGo.SAB.sourceType;
+    AppMethodBeat.i(275155);
+    this.hTN = paramLong;
+    this.hTH = paramBoolean.booleanValue();
+    this.hTB = paramInt1;
+    this.XzT = paramInt2;
+    this.hJc = paramarx;
+    this.XzZ = paramArrayOfByte;
+    iDW();
+    if ((this.XzV == 0) && (this.XzM.ZBt != null)) {
+      this.XzV = this.XzM.ZBt.sourceType;
     }
-    aO(paramContext, 2);
-    com.tencent.e.h.ZvG.be(new Runnable()
+    bh(paramContext, 2);
+    com.tencent.threadpool.h.ahAA.bm(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(30311);
-        if (paramaoc != null)
+        if (paramarv != null)
         {
           com.tencent.mm.plugin.fav.a.g localg = new com.tencent.mm.plugin.fav.a.g();
           localg.field_localId = g.a(g.this);
-          localg.field_favProto = paramaoc;
-          g.this.QGo = localg.field_favProto;
-          g.this.QGh = localg;
+          localg.field_favProto = paramarv;
+          g.this.XzM = localg.field_favProto;
+          g.this.XzF = localg;
           g.a(g.this, localg);
         }
-        if (g.axf().containsKey(g.b(g.this))) {
-          g.this.QGg = ((m)g.axf().get(g.b(g.this)));
+        if (g.aRF().containsKey(g.b(g.this))) {
+          g.this.XzE = ((m)g.aRF().get(g.b(g.this)));
         }
         for (;;)
         {
-          g.this.jh(g.this.QGg.HDy);
-          if (k.hdF() != null) {
-            k.hdJ();
+          g.this.mq(g.this.XzE.NBa);
+          if (com.tencent.mm.plugin.wenote.model.nativenote.manager.k.iEm() != null) {
+            com.tencent.mm.plugin.wenote.model.nativenote.manager.k.iEq();
           }
           AppMethodBeat.o(30311);
           return;
@@ -164,85 +161,85 @@ public final class g
         return str;
       }
     });
-    AppMethodBeat.o(263614);
+    AppMethodBeat.o(275155);
   }
   
-  public final void a(anm paramanm, String paramString)
+  public final void a(arf paramarf, String paramString)
   {
     AppMethodBeat.i(30320);
-    m localm = this.QGg;
-    hi localhi = new hi();
-    localhi.fEb.type = 28;
-    localhi.fEb.fyE = localm.upg.field_localId;
-    localhi.fEb.fEd = paramanm;
-    localhi.fEb.path = paramString;
-    localhi.fEb.fEi = 18;
-    EventCenter.instance.publish(localhi);
+    m localm = this.XzE;
+    ht localht = new ht();
+    localht.hIR.type = 28;
+    localht.hIR.hDn = localm.xvD.field_localId;
+    localht.hIR.hIT = paramarf;
+    localht.hIR.path = paramString;
+    localht.hIR.hIY = 18;
+    localht.publish();
     AppMethodBeat.o(30320);
   }
   
-  public final void aO(Context paramContext, int paramInt)
+  public final void bh(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(30315);
     Intent localIntent = new Intent();
     localIntent.putExtra("note_open_from_scene", paramInt);
     if (paramInt == 4)
     {
-      localIntent.putExtra("fav_note_thumbpath", this.QGz);
-      localIntent.putExtra("fav_note_link_sns_xml", this.QGA);
+      localIntent.putExtra("fav_note_thumbpath", this.XzX);
+      localIntent.putExtra("fav_note_link_sns_xml", this.XzY);
     }
-    localIntent.putExtra("edit_status", this.QGn);
-    localIntent.putExtra("need_save", this.QGC);
-    localIntent.putExtra("show_share", this.fNQ);
-    localIntent.putExtra("note_fav_localid", this.fNV);
-    localIntent.putExtra("note_link_sns_localid", this.QGs);
-    localIntent.putExtra("fav_note_xml", this.QGt);
-    localIntent.putExtra("fav_note_scroll_to_position", this.fNJ);
-    localIntent.putExtra("fav_note_scroll_to_offset", this.QGv);
-    localIntent.putExtra("fav_note_link_source_info", this.QGw);
-    localIntent.putExtra("note_fav_post_scene", this.QGx);
-    localIntent.putExtra("key_detail_fav_scene", this.fEm.scene);
-    localIntent.putExtra("key_detail_fav_sub_scene", this.fEm.wGA);
-    localIntent.putExtra("key_detail_fav_index", this.fEm.index);
-    localIntent.putExtra("key_detail_fav_query", this.fEm.query);
-    localIntent.putExtra("key_detail_fav_sessionid", this.fEm.sessionId);
-    localIntent.putExtra("key_detail_fav_tags", this.fEm.wGC);
-    localIntent.putExtra("key_multi_task_common_info", this.QGB);
+    localIntent.putExtra("edit_status", this.XzL);
+    localIntent.putExtra("need_save", this.XAa);
+    localIntent.putExtra("show_share", this.hTH);
+    localIntent.putExtra("note_fav_localid", this.hTN);
+    localIntent.putExtra("note_link_sns_localid", this.XzQ);
+    localIntent.putExtra("fav_note_xml", this.XzR);
+    localIntent.putExtra("fav_note_scroll_to_position", this.hTB);
+    localIntent.putExtra("fav_note_scroll_to_offset", this.XzT);
+    localIntent.putExtra("fav_note_link_source_info", this.XzU);
+    localIntent.putExtra("note_fav_post_scene", this.XzV);
+    localIntent.putExtra("key_detail_fav_scene", this.hJc.scene);
+    localIntent.putExtra("key_detail_fav_sub_scene", this.hJc.AcJ);
+    localIntent.putExtra("key_detail_fav_index", this.hJc.index);
+    localIntent.putExtra("key_detail_fav_query", this.hJc.query);
+    localIntent.putExtra("key_detail_fav_sessionid", this.hJc.sessionId);
+    localIntent.putExtra("key_detail_fav_tags", this.hJc.AcL);
+    localIntent.putExtra("key_multi_task_common_info", this.XzZ);
     c.b(paramContext, "wenote", ".ui.nativenote.NoteEditorUI", localIntent);
     AppMethodBeat.o(30315);
   }
   
-  public final void bnO(String paramString)
+  public final void bnC(String paramString)
   {
-    this.QGt = paramString;
+    this.XzR = paramString;
   }
   
-  public final void cj(Context paramContext, String paramString)
+  public final void cu(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30321);
-    u localu = (u)this.QGk.get(paramString);
+    u localu = (u)this.XzI.get(paramString);
     Intent localIntent = new Intent();
     localIntent.putExtra("fav_open_from_wnnote", true);
-    localIntent.putExtra("fav_note_xml", this.QGt);
+    localIntent.putExtra("fav_note_xml", this.XzR);
     if (localu != null) {
-      localIntent.putExtra("key_detail_data_id", bnQ(paramString));
+      localIntent.putExtra("key_detail_data_id", bnE(paramString));
     }
     localIntent.putExtra("key_detail_can_delete", false);
-    localIntent.putExtra("key_detail_info_id", this.fNV);
-    localIntent.putExtra("key_detail_fav_scene", this.fEm.scene);
-    localIntent.putExtra("key_detail_fav_sub_scene", this.fEm.wGA);
-    localIntent.putExtra("key_detail_fav_index", this.fEm.index);
+    localIntent.putExtra("key_detail_info_id", this.hTN);
+    localIntent.putExtra("key_detail_fav_scene", this.hJc.scene);
+    localIntent.putExtra("key_detail_fav_sub_scene", this.hJc.AcJ);
+    localIntent.putExtra("key_detail_fav_index", this.hJc.index);
     b.a(paramContext, ".ui.detail.FavoriteFileDetailUI", localIntent, 1);
     AppMethodBeat.o(30321);
   }
   
-  public final void ck(Context paramContext, String paramString)
+  public final void cv(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30323);
-    paramString = (s)this.QGk.get(paramString);
+    paramString = (com.tencent.mm.plugin.wenote.model.a.s)this.XzI.get(paramString);
     if (paramString == null)
     {
-      com.tencent.mm.ui.base.h.cO(paramContext, MMApplicationContext.getContext().getString(R.l.favorite_record_loc_error));
+      com.tencent.mm.ui.base.k.cZ(paramContext, MMApplicationContext.getContext().getString(R.l.favorite_record_loc_error));
       AppMethodBeat.o(30323);
       return;
     }
@@ -250,122 +247,122 @@ public final class g
     localIntent.putExtra("kwebmap_slat", paramString.lat);
     localIntent.putExtra("kwebmap_lng", paramString.lng);
     localIntent.putExtra("kPoiName", paramString.poiName);
-    localIntent.putExtra("Kwebmap_locaion", paramString.lLg);
-    if (paramString.QHt >= 0.0D) {
-      localIntent.putExtra("kwebmap_scale", paramString.QHt);
+    localIntent.putExtra("Kwebmap_locaion", paramString.oDI);
+    if (paramString.XAR >= 0.0D) {
+      localIntent.putExtra("kwebmap_scale", paramString.XAR);
     }
     localIntent.putExtra("kisUsername", "");
     localIntent.putExtra("kwebmap_from_to", true);
     localIntent.putExtra("KFavLocSigleView", true);
     localIntent.putExtra("map_view_type", 2);
-    localIntent.putExtra("kFavInfoLocalId", this.fNV);
+    localIntent.putExtra("kFavInfoLocalId", this.hTN);
     localIntent.putExtra("kFavCanDel", false);
     localIntent.putExtra("kFavCanRemark", false);
     c.b(paramContext, "location", ".ui.RedirectUI", localIntent, 1);
     AppMethodBeat.o(30323);
   }
   
-  public final void cl(Context paramContext, String paramString)
+  public final void cw(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30322);
     Intent localIntent = new Intent();
     localIntent.putExtra("fav_open_from_wnnote", true);
-    localIntent.putExtra("fav_note_xml", this.QGt);
-    if (this.QGk.get(paramString) != null) {
-      localIntent.putExtra("key_detail_data_id", ((o)this.QGk.get(paramString)).fEa);
+    localIntent.putExtra("fav_note_xml", this.XzR);
+    if (this.XzI.get(paramString) != null) {
+      localIntent.putExtra("key_detail_data_id", ((o)this.XzI.get(paramString)).hIQ);
     }
-    localIntent.putExtra("key_detail_info_id", this.fNV);
-    localIntent.putExtra("key_detail_fav_scene", this.fEm.scene);
-    localIntent.putExtra("key_detail_fav_sub_scene", this.fEm.wGA);
-    localIntent.putExtra("key_detail_fav_index", this.fEm.index);
+    localIntent.putExtra("key_detail_info_id", this.hTN);
+    localIntent.putExtra("key_detail_fav_scene", this.hJc.scene);
+    localIntent.putExtra("key_detail_fav_sub_scene", this.hJc.AcJ);
+    localIntent.putExtra("key_detail_fav_index", this.hJc.index);
     b.a(paramContext, ".ui.FavImgGalleryUI", localIntent, 1);
     AppMethodBeat.o(30322);
   }
   
-  public final String d(anm paramanm)
+  public final String d(arf paramarf)
   {
     AppMethodBeat.i(30317);
-    paramanm = f.b(paramanm);
+    paramarf = f.b(paramarf);
     AppMethodBeat.o(30317);
-    return paramanm;
+    return paramarf;
   }
   
-  public final String hdn()
+  public final String iDU()
   {
-    return this.QGt;
+    return this.XzR;
   }
   
-  public final void hdp()
+  public final void iDW()
   {
     AppMethodBeat.i(30316);
-    this.wMe = f.Po(this.fNV);
-    if (this.wMe == null)
+    this.AiB = f.to(this.hTN);
+    if (this.AiB == null)
     {
       AppMethodBeat.o(30316);
       return;
     }
-    if (this.QGy <= 0L) {
-      this.QGy = this.wMe.field_updateTime;
+    if (this.XzW <= 0L) {
+      this.XzW = this.AiB.field_updateTime;
     }
-    this.QGo = this.wMe.field_favProto;
-    this.QGh = this.wMe;
+    this.XzM = this.AiB.field_favProto;
+    this.XzF = this.AiB;
     AppMethodBeat.o(30316);
   }
   
-  public final void hdq()
+  public final void iDX()
   {
-    AppMethodBeat.i(263618);
-    this.QGg = new m();
-    this.QGg.upg = this.wMe;
-    this.QGg.fNV = this.fNV;
-    this.QGg.dataType = 1;
-    if ((this.wMe == null) || (this.wMe.field_favProto == null))
+    AppMethodBeat.i(275160);
+    this.XzE = new m();
+    this.XzE.xvD = this.AiB;
+    this.XzE.hTN = this.hTN;
+    this.XzE.dataType = 1;
+    if ((this.AiB == null) || (this.AiB.field_favProto == null))
     {
-      AppMethodBeat.o(263618);
+      AppMethodBeat.o(275160);
       return;
     }
-    this.QGg.QHi = this.QGy;
-    this.QGg.HDy = this.wMe.field_favProto.syG;
-    QGu.put(this.wMe, this.QGg);
-    AppMethodBeat.o(263618);
+    this.XzE.XAG = this.XzW;
+    this.XzE.NBa = this.AiB.field_favProto.vEn;
+    XzS.put(this.AiB, this.XzE);
+    AppMethodBeat.o(275160);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, p paramp)
   {
     AppMethodBeat.i(30324);
-    if (paramq.getType() == 426)
+    if (paramp.getType() == 426)
     {
-      paramString = new hi();
-      paramString.fEb.fzz = paramq;
-      paramString.fEb.type = 31;
-      EventCenter.instance.publish(paramString);
-      if ((!Util.isNullOrNil(paramString.fEc.path)) && (paramInt2 == -435)) {
+      paramString = new ht();
+      paramString.hIR.hEi = paramp;
+      paramString.hIR.type = 31;
+      paramString.publish();
+      if ((!Util.isNullOrNil(paramString.hIS.path)) && (paramInt2 == -435)) {
         Log.e("MicroMsg.WNNoteFavProcess", "wenote conflict when commit");
       }
-      bh.aGY().b(426, this);
+      bh.aZW().b(426, this);
       AppMethodBeat.o(30324);
       return;
     }
     AppMethodBeat.o(30324);
   }
   
-  public final void p(anm paramanm)
+  public final void p(arf paramarf)
   {
     AppMethodBeat.i(30319);
-    m localm = this.QGg;
-    hi localhi = new hi();
-    localhi.fEb.type = 28;
-    localhi.fEb.fyE = localm.upg.field_localId;
-    localhi.fEb.fEd = paramanm;
-    localhi.fEb.path = "";
-    localhi.fEb.fEi = 18;
-    EventCenter.instance.publish(localhi);
+    m localm = this.XzE;
+    ht localht = new ht();
+    localht.hIR.type = 28;
+    localht.hIR.hDn = localm.xvD.field_localId;
+    localht.hIR.hIT = paramarf;
+    localht.hIR.path = "";
+    localht.hIR.hIY = 18;
+    localht.publish();
     AppMethodBeat.o(30319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.g
  * JD-Core Version:    0.7.0.1
  */

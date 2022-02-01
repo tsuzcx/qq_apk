@@ -4,114 +4,128 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.preload.model.b;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.bhh;
+import com.tencent.mm.protocal.protobuf.btc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/preload/FinderPreloadTransform;", "", "()V", "TAG", "", "buildPreloadInfo", "Lcom/tencent/mm/protocal/protobuf/FinderPreloadInfo;", "info", "transform", "", "list", "", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "source", "", "print", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/preload/FinderPreloadTransform;", "", "()V", "TAG", "", "buildPreloadInfo", "Lcom/tencent/mm/protocal/protobuf/FinderPreloadInfo;", "info", "transform", "", "list", "", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "source", "", "print", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
 {
-  public static final a zKe;
+  public static final a EUs;
   
   static
   {
-    AppMethodBeat.i(268471);
-    zKe = new a();
-    AppMethodBeat.o(268471);
+    AppMethodBeat.i(346259);
+    EUs = new a();
+    AppMethodBeat.o(346259);
   }
   
-  public static bhh a(bhh parambhh)
+  public static btc a(btc parambtc)
   {
     int i = 1;
-    AppMethodBeat.i(268470);
-    Object localObject = parambhh;
-    if (parambhh == null)
+    AppMethodBeat.i(346254);
+    if (parambtc == null)
     {
-      parambhh = h.aHG();
-      p.j(parambhh, "MMKernel.storage()");
-      parambhh = parambhh.aHp().get(ar.a.VzU, "");
-      if (parambhh == null)
+      parambtc = h.baE().ban().get(at.a.adcj, "");
+      if (parambtc == null)
       {
-        parambhh = new t("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(268470);
-        throw parambhh;
+        parambtc = new NullPointerException("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(346254);
+        throw parambtc;
       }
-      parambhh = Util.decodeHexString((String)parambhh);
-      localObject = new StringBuilder("[buildPreloadInfo] buffer isEmpty? ");
-      p.j(parambhh, "buffer");
+      parambtc = Util.decodeHexString((String)parambtc);
+      s.s(parambtc, "buffer");
       boolean bool;
-      if (parambhh.length == 0)
+      if (parambtc.length == 0)
       {
         bool = true;
-        Log.i("Finder.PreloadTransform", bool);
-        if (parambhh.length != 0) {
-          break label130;
+        Log.i("Finder.PreloadTransform", s.X("[buildPreloadInfo] buffer isEmpty? ", Boolean.valueOf(bool)));
+        if (parambtc.length != 0) {
+          break label111;
         }
       }
       for (;;)
       {
         if (i == 0) {
-          break label135;
+          break label116;
         }
-        parambhh = new bhh();
-        AppMethodBeat.o(268470);
-        return parambhh;
+        parambtc = new btc();
+        AppMethodBeat.o(346254);
+        return parambtc;
         bool = false;
         break;
-        label130:
+        label111:
         i = 0;
       }
-      label135:
-      localObject = new bhh();
-      ((bhh)localObject).parseFrom(parambhh);
+      label116:
+      btc localbtc = new btc();
+      localbtc.parseFrom(parambtc);
+      AppMethodBeat.o(346254);
+      return localbtc;
     }
-    AppMethodBeat.o(268470);
-    return localObject;
+    AppMethodBeat.o(346254);
+    return parambtc;
   }
   
-  public static void a(bhh parambhh, List<? extends FinderObject> paramList, int paramInt)
+  public static void a(btc parambtc, List<? extends FinderObject> paramList, int paramInt)
   {
-    AppMethodBeat.i(268469);
-    p.k(paramList, "list");
+    AppMethodBeat.i(346243);
+    s.u(paramList, "list");
     Object localObject2 = new StringBuilder("[transform] info=");
-    if (parambhh != null) {
-      p.k(parambhh, "$this$print");
-    }
-    for (Object localObject1 = "[preloadId=" + parambhh.zKM + " hotFeed=" + parambhh.SRU.size() + ']';; localObject1 = null)
+    Object localObject1;
+    if (parambtc == null)
     {
-      Log.i("Finder.PreloadTransform", (String)localObject1 + " list=" + paramList.size() + " source=" + paramInt);
-      localObject1 = ((PluginFinder)h.ag(PluginFinder.class)).getMediaPreloadModel();
-      parambhh = a(parambhh);
+      localObject1 = null;
+      Log.i("Finder.PreloadTransform", localObject1 + " list=" + paramList.size() + " source=" + paramInt);
+      localObject1 = ((PluginFinder)h.az(PluginFinder.class)).getMediaPreloadModel();
+      parambtc = a(parambtc);
       localObject2 = new HashMap();
       paramList = ((Iterable)paramList).iterator();
-      while (paramList.hasNext())
+    }
+    label224:
+    for (;;)
+    {
+      label101:
+      if (!paramList.hasNext()) {
+        break label226;
+      }
+      FinderObject localFinderObject = (FinderObject)paramList.next();
+      FinderObjectDesc localFinderObjectDesc = localFinderObject.objectDesc;
+      if ((localFinderObjectDesc != null) && (localFinderObjectDesc.mediaType == 4)) {}
+      for (paramInt = 1;; paramInt = 0)
       {
-        FinderObject localFinderObject = (FinderObject)paramList.next();
-        FinderObjectDesc localFinderObjectDesc = localFinderObject.objectDesc;
-        if ((localFinderObjectDesc != null) && (localFinderObjectDesc.mediaType == 4)) {
-          ((Map)localObject2).put(Long.valueOf(localFinderObject.id), localFinderObject);
+        if (paramInt == 0) {
+          break label224;
         }
+        ((Map)localObject2).put(Long.valueOf(localFinderObject.id), localFinderObject);
+        break label101;
+        s.u(parambtc, "<this>");
+        localObject1 = "[preloadId=" + parambtc.EVt + " hotFeed=" + parambtc.aaaX.size() + ']';
+        break;
       }
     }
-    ((com.tencent.mm.plugin.finder.preload.model.a)localObject1).a(parambhh, (HashMap)localObject2);
-    AppMethodBeat.o(268469);
+    label226:
+    paramList = ah.aiuX;
+    ((b)localObject1).a(parambtc, (HashMap)localObject2);
+    AppMethodBeat.o(346243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.a
  * JD-Core Version:    0.7.0.1
  */

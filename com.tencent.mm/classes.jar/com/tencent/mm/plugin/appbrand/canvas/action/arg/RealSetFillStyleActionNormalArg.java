@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import java.util.Objects;
@@ -34,7 +34,7 @@ public class RealSetFillStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145055);
-    paramd = paramd.nTx;
+    paramd = paramd.qTj;
     paramd.setShader(null);
     paramd.setColor(this.color);
     AppMethodBeat.o(145055);
@@ -74,20 +74,6 @@ public class RealSetFillStyleActionNormalArg
     return false;
   }
   
-  public final void f(JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(145058);
-    super.f(paramJSONArray);
-    paramJSONArray = paramJSONArray.optJSONArray(1);
-    if ((paramJSONArray == null) || (paramJSONArray.length() < 4))
-    {
-      AppMethodBeat.o(145058);
-      return;
-    }
-    this.color = g.r(paramJSONArray);
-    AppMethodBeat.o(145058);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145060);
@@ -96,10 +82,24 @@ public class RealSetFillStyleActionNormalArg
     return i;
   }
   
-  public final void i(Parcel paramParcel)
+  public final void i(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(145058);
+    super.i(paramJSONArray);
+    paramJSONArray = paramJSONArray.optJSONArray(1);
+    if ((paramJSONArray == null) || (paramJSONArray.length() < 4))
+    {
+      AppMethodBeat.o(145058);
+      return;
+    }
+    this.color = i.u(paramJSONArray);
+    AppMethodBeat.o(145058);
+  }
+  
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(145056);
-    super.i(paramParcel);
+    super.k(paramParcel);
     this.color = paramParcel.readInt();
     AppMethodBeat.o(145056);
   }
@@ -121,7 +121,7 @@ public class RealSetFillStyleActionNormalArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionNormalArg
  * JD-Core Version:    0.7.0.1
  */

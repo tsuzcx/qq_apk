@@ -26,7 +26,7 @@ public class SubCoreKinda
     baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("KindaCacheTable".hashCode()), new h.b()
     {
-      public final String[] getSQLs()
+      public String[] getSQLs()
       {
         return KindaCacheStg.SQL_CREATE;
       }
@@ -36,15 +36,15 @@ public class SubCoreKinda
   
   public SubCoreKinda()
   {
-    AppMethodBeat.i(264414);
+    AppMethodBeat.i(226417);
     this.jsInvokeListener = new KindaJSInvokeListener();
-    AppMethodBeat.o(264414);
+    AppMethodBeat.o(226417);
   }
   
   public static SubCoreKinda getCore()
   {
     AppMethodBeat.i(18563);
-    SubCoreKinda localSubCoreKinda = (SubCoreKinda)y.as(SubCoreKinda.class);
+    SubCoreKinda localSubCoreKinda = (SubCoreKinda)y.aL(SubCoreKinda.class);
     AppMethodBeat.o(18563);
     return localSubCoreKinda;
   }
@@ -59,14 +59,14 @@ public class SubCoreKinda
   public KindaCacheStg getCacheStg()
   {
     AppMethodBeat.i(18565);
-    if (!h.aHB())
+    if (!h.baz())
     {
       localObject = new b();
       AppMethodBeat.o(18565);
       throw ((Throwable)localObject);
     }
     if (getCore().cacheStg == null) {
-      getCore().cacheStg = new KindaCacheStg(h.aHG().kcF);
+      getCore().cacheStg = new KindaCacheStg(h.baE().mCN);
     }
     Object localObject = getCore().cacheStg;
     AppMethodBeat.o(18565);
@@ -76,14 +76,14 @@ public class SubCoreKinda
   public KindaConfigCacheStg getConfigCacheStg()
   {
     AppMethodBeat.i(18564);
-    if (!h.aHB())
+    if (!h.baz())
     {
       localObject = new b();
       AppMethodBeat.o(18564);
       throw ((Throwable)localObject);
     }
     if (getCore().configCacheStg == null) {
-      getCore().configCacheStg = new KindaConfigCacheStg(h.aHG().kcF);
+      getCore().configCacheStg = new KindaConfigCacheStg(h.baE().mCN);
     }
     Object localObject = getCore().configCacheStg;
     AppMethodBeat.o(18564);
@@ -92,18 +92,18 @@ public class SubCoreKinda
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(264416);
+    AppMethodBeat.i(226430);
     this.jsInvokeListener.alive();
-    AppMethodBeat.o(264416);
+    AppMethodBeat.o(226430);
   }
   
   public void onAccountRelease() {}
   
   public void onSdcardMount(boolean paramBoolean)
   {
-    AppMethodBeat.i(264417);
+    AppMethodBeat.i(226434);
     this.jsInvokeListener.dead();
-    AppMethodBeat.o(264417);
+    AppMethodBeat.o(226434);
   }
 }
 

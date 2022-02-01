@@ -25,7 +25,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.a;
 import androidx.coordinatorlayout.widget.CoordinatorLayout.d;
-import androidx.core.g.w;
+import androidx.core.g.z;
 import androidx.customview.view.AbsSavedState;
 import com.google.android.material.a.b;
 import com.google.android.material.a.d;
@@ -45,15 +45,15 @@ public class BottomAppBar
   extends Toolbar
   implements CoordinatorLayout.a
 {
-  private final int bwl;
-  private final c bwm;
-  private final a bwn;
-  private Animator bwo;
-  private Animator bwp;
-  private Animator bwq;
-  private boolean bwr;
-  private boolean bws;
-  AnimatorListenerAdapter bwt;
+  private final int dpo;
+  private final c dpp;
+  private final a dpq;
+  private Animator dpr;
+  private Animator dps;
+  private Animator dpt;
+  private boolean dpu;
+  private boolean dpv;
+  AnimatorListenerAdapter dpw;
   private int fabAlignmentMode;
   
   public BottomAppBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -64,16 +64,16 @@ public class BottomAppBar
   public BottomAppBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(235018);
-    this.bws = true;
-    this.bwt = new AnimatorListenerAdapter()
+    AppMethodBeat.i(209552);
+    this.dpv = true;
+    this.dpw = new AnimatorListenerAdapter()
     {
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(234920);
+        AppMethodBeat.i(209536);
         BottomAppBar.a(BottomAppBar.this, BottomAppBar.f(BottomAppBar.this));
         BottomAppBar.a(BottomAppBar.this, BottomAppBar.g(BottomAppBar.this), BottomAppBar.f(BottomAppBar.this));
-        AppMethodBeat.o(234920);
+        AppMethodBeat.o(209536);
       }
     };
     paramAttributeSet = k.a(paramContext, paramAttributeSet, a.k.BottomAppBar, paramInt, a.j.Widget_MaterialComponents_BottomAppBar, new int[0]);
@@ -82,35 +82,137 @@ public class BottomAppBar
     float f2 = paramAttributeSet.getDimensionPixelOffset(a.k.BottomAppBar_fabCradleRoundedCornerRadius, 0);
     float f3 = paramAttributeSet.getDimensionPixelOffset(a.k.BottomAppBar_fabCradleVerticalOffset, 0);
     this.fabAlignmentMode = paramAttributeSet.getInt(a.k.BottomAppBar_fabAlignmentMode, 0);
-    this.bwr = paramAttributeSet.getBoolean(a.k.BottomAppBar_hideOnScroll, false);
+    this.dpu = paramAttributeSet.getBoolean(a.k.BottomAppBar_hideOnScroll, false);
     paramAttributeSet.recycle();
-    this.bwl = getResources().getDimensionPixelOffset(a.d.mtrl_bottomappbar_fabOffsetEndMode);
-    this.bwn = new a(f1, f2, f3);
+    this.dpo = getResources().getDimensionPixelOffset(a.d.mtrl_bottomappbar_fabOffsetEndMode);
+    this.dpq = new a(f1, f2, f3);
     paramAttributeSet = new e();
-    paramAttributeSet.bEt = this.bwn;
-    this.bwm = new c(paramAttributeSet);
-    paramAttributeSet = this.bwm;
-    paramAttributeSet.bEc = true;
+    paramAttributeSet.dxu = this.dpq;
+    this.dpp = new c(paramAttributeSet);
+    paramAttributeSet = this.dpp;
+    paramAttributeSet.dxd = true;
     paramAttributeSet.invalidateSelf();
-    paramAttributeSet = this.bwm;
-    paramAttributeSet.bEg = Paint.Style.FILL;
+    paramAttributeSet = this.dpp;
+    paramAttributeSet.dxh = Paint.Style.FILL;
     paramAttributeSet.invalidateSelf();
-    androidx.core.graphics.drawable.a.a(this.bwm, paramContext);
-    w.a(this, this.bwm);
-    AppMethodBeat.o(235018);
+    androidx.core.graphics.drawable.a.a(this.dpp, paramContext);
+    z.a(this, this.dpp);
+    AppMethodBeat.o(209552);
+  }
+  
+  private void E(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(209584);
+    if (!z.au(this))
+    {
+      AppMethodBeat.o(209584);
+      return;
+    }
+    if (this.dpt != null) {
+      this.dpt.cancel();
+    }
+    ArrayList localArrayList = new ArrayList();
+    if (!VH())
+    {
+      paramBoolean = false;
+      paramInt = 0;
+    }
+    a(paramInt, paramBoolean, localArrayList);
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.playTogether(localArrayList);
+    this.dpt = localAnimatorSet;
+    this.dpt.addListener(new AnimatorListenerAdapter()
+    {
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(209563);
+        BottomAppBar.d(BottomAppBar.this);
+        AppMethodBeat.o(209563);
+      }
+    });
+    this.dpt.start();
+    AppMethodBeat.o(209584);
+  }
+  
+  private FloatingActionButton VG()
+  {
+    AppMethodBeat.i(209564);
+    if (!(getParent() instanceof CoordinatorLayout))
+    {
+      AppMethodBeat.o(209564);
+      return null;
+    }
+    Object localObject = ((CoordinatorLayout)getParent()).H(this).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      View localView = (View)((Iterator)localObject).next();
+      if ((localView instanceof FloatingActionButton))
+      {
+        localObject = (FloatingActionButton)localView;
+        AppMethodBeat.o(209564);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(209564);
+    return null;
+  }
+  
+  private boolean VH()
+  {
+    AppMethodBeat.i(209576);
+    FloatingActionButton localFloatingActionButton = VG();
+    if ((localFloatingActionButton != null) && (localFloatingActionButton.getImpl().WD()))
+    {
+      AppMethodBeat.o(209576);
+      return true;
+    }
+    AppMethodBeat.o(209576);
+    return false;
+  }
+  
+  private void VI()
+  {
+    AppMethodBeat.i(209673);
+    this.dpq.dpG = getFabTranslationX();
+    Object localObject = VG();
+    c localc = this.dpp;
+    if ((this.dpv) && (VH())) {}
+    for (float f = 1.0F;; f = 0.0F)
+    {
+      localc.ba(f);
+      if (localObject != null)
+      {
+        ((FloatingActionButton)localObject).setTranslationY(getFabTranslationY());
+        ((FloatingActionButton)localObject).setTranslationX(getFabTranslationX());
+      }
+      localObject = getActionMenuView();
+      if (localObject == null) {
+        break label121;
+      }
+      ((ActionMenuView)localObject).setAlpha(1.0F);
+      if (VH()) {
+        break;
+      }
+      a((ActionMenuView)localObject, 0, false);
+      AppMethodBeat.o(209673);
+      return;
+    }
+    a((ActionMenuView)localObject, this.fabAlignmentMode, this.dpv);
+    label121:
+    AppMethodBeat.o(209673);
   }
   
   private void a(final int paramInt, final boolean paramBoolean, List<Animator> paramList)
   {
-    AppMethodBeat.i(235029);
+    AppMethodBeat.i(209599);
     Object localObject = getActionMenuView();
     if (localObject == null)
     {
-      AppMethodBeat.o(235029);
+      AppMethodBeat.o(209599);
       return;
     }
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 1.0F });
-    if (((this.bws) || ((paramBoolean) && (wi()))) && ((this.fabAlignmentMode == 1) || (paramInt == 1)))
+    if (((this.dpv) || ((paramBoolean) && (VH()))) && ((this.fabAlignmentMode == 1) || (paramInt == 1)))
     {
       ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F });
       localObjectAnimator2.addListener(new AnimatorListenerAdapter()
@@ -124,36 +226,36 @@ public class BottomAppBar
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(234911);
+          AppMethodBeat.i(209557);
           if (!this.cancelled) {
-            BottomAppBar.a(BottomAppBar.this, this.bwv, paramInt, paramBoolean);
+            BottomAppBar.a(BottomAppBar.this, this.dpy, paramInt, paramBoolean);
           }
-          AppMethodBeat.o(234911);
+          AppMethodBeat.o(209557);
         }
       });
       localObject = new AnimatorSet();
       ((AnimatorSet)localObject).setDuration(150L);
       ((AnimatorSet)localObject).playSequentially(new Animator[] { localObjectAnimator2, localObjectAnimator1 });
       paramList.add(localObject);
-      AppMethodBeat.o(235029);
+      AppMethodBeat.o(209599);
       return;
     }
     if (((ActionMenuView)localObject).getAlpha() < 1.0F) {
       paramList.add(localObjectAnimator1);
     }
-    AppMethodBeat.o(235029);
+    AppMethodBeat.o(209599);
   }
   
   private void a(ActionMenuView paramActionMenuView, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(235039);
+    AppMethodBeat.i(209662);
     int i;
     int k;
     int j;
     label23:
     View localView;
     int n;
-    if (w.I(this) == 1)
+    if (z.U(this) == 1)
     {
       i = 1;
       k = 0;
@@ -162,7 +264,7 @@ public class BottomAppBar
         break label140;
       }
       localView = getChildAt(k);
-      if ((!(localView.getLayoutParams() instanceof Toolbar.LayoutParams)) || ((((Toolbar.LayoutParams)localView.getLayoutParams()).ek & 0x800007) != 8388611)) {
+      if ((!(localView.getLayoutParams() instanceof Toolbar.LayoutParams)) || ((((Toolbar.LayoutParams)localView.getLayoutParams()).fl & 0x800007) != 8388611)) {
         break label124;
       }
       n = 1;
@@ -199,24 +301,24 @@ public class BottomAppBar
     for (float f = j - i;; f = 0.0F)
     {
       paramActionMenuView.setTranslationX(f);
-      AppMethodBeat.o(235039);
+      AppMethodBeat.o(209662);
       return;
       i = paramActionMenuView.getLeft();
       break;
     }
   }
   
-  private float bc(boolean paramBoolean)
+  private float bK(boolean paramBoolean)
   {
-    AppMethodBeat.i(235030);
-    FloatingActionButton localFloatingActionButton = wh();
+    AppMethodBeat.i(209609);
+    FloatingActionButton localFloatingActionButton = VG();
     if (localFloatingActionButton == null)
     {
-      AppMethodBeat.o(235030);
+      AppMethodBeat.o(209609);
       return 0.0F;
     }
     Rect localRect = new Rect();
-    localFloatingActionButton.i(localRect);
+    localFloatingActionButton.o(localRect);
     float f2 = localRect.height();
     float f1 = f2;
     if (f2 == 0.0F) {
@@ -231,35 +333,15 @@ public class BottomAppBar
     if (paramBoolean) {}
     for (;;)
     {
-      AppMethodBeat.o(235030);
+      AppMethodBeat.o(209609);
       return f1 + f3;
       f1 = f2 - f4;
     }
   }
   
-  private int fU(int paramInt)
-  {
-    int j = 1;
-    AppMethodBeat.i(235034);
-    if (w.I(this) == 1) {}
-    for (int i = 1; paramInt == 1; i = 0)
-    {
-      int k = getMeasuredWidth() / 2;
-      int m = this.bwl;
-      paramInt = j;
-      if (i != 0) {
-        paramInt = -1;
-      }
-      AppMethodBeat.o(235034);
-      return paramInt * (k - m);
-    }
-    AppMethodBeat.o(235034);
-    return 0;
-  }
-  
   private ActionMenuView getActionMenuView()
   {
-    AppMethodBeat.i(235037);
+    AppMethodBeat.i(209652);
     int i = 0;
     while (i < getChildCount())
     {
@@ -267,149 +349,67 @@ public class BottomAppBar
       if ((localObject instanceof ActionMenuView))
       {
         localObject = (ActionMenuView)localObject;
-        AppMethodBeat.o(235037);
+        AppMethodBeat.o(209652);
         return localObject;
       }
       i += 1;
     }
-    AppMethodBeat.o(235037);
+    AppMethodBeat.o(209652);
     return null;
   }
   
   private float getFabTranslationX()
   {
-    AppMethodBeat.i(235035);
-    float f = fU(this.fabAlignmentMode);
-    AppMethodBeat.o(235035);
+    AppMethodBeat.i(209642);
+    float f = jj(this.fabAlignmentMode);
+    AppMethodBeat.o(209642);
     return f;
   }
   
   private float getFabTranslationY()
   {
-    AppMethodBeat.i(235032);
-    float f = bc(this.bws);
-    AppMethodBeat.o(235032);
+    AppMethodBeat.i(209616);
+    float f = bK(this.dpv);
+    AppMethodBeat.o(209616);
     return f;
   }
   
-  private void q(int paramInt, boolean paramBoolean)
+  private int jj(int paramInt)
   {
-    AppMethodBeat.i(235028);
-    if (!w.ah(this))
+    int j = 1;
+    AppMethodBeat.i(209628);
+    if (z.U(this) == 1) {}
+    for (int i = 1; paramInt == 1; i = 0)
     {
-      AppMethodBeat.o(235028);
-      return;
-    }
-    if (this.bwq != null) {
-      this.bwq.cancel();
-    }
-    ArrayList localArrayList = new ArrayList();
-    if (!wi())
-    {
-      paramBoolean = false;
-      paramInt = 0;
-    }
-    a(paramInt, paramBoolean, localArrayList);
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    localAnimatorSet.playTogether(localArrayList);
-    this.bwq = localAnimatorSet;
-    this.bwq.addListener(new AnimatorListenerAdapter()
-    {
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(234906);
-        BottomAppBar.d(BottomAppBar.this);
-        AppMethodBeat.o(234906);
+      int k = getMeasuredWidth() / 2;
+      int m = this.dpo;
+      paramInt = j;
+      if (i != 0) {
+        paramInt = -1;
       }
-    });
-    this.bwq.start();
-    AppMethodBeat.o(235028);
-  }
-  
-  private FloatingActionButton wh()
-  {
-    AppMethodBeat.i(235026);
-    if (!(getParent() instanceof CoordinatorLayout))
-    {
-      AppMethodBeat.o(235026);
-      return null;
+      AppMethodBeat.o(209628);
+      return paramInt * (k - m);
     }
-    Object localObject = ((CoordinatorLayout)getParent()).y(this).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      View localView = (View)((Iterator)localObject).next();
-      if ((localView instanceof FloatingActionButton))
-      {
-        localObject = (FloatingActionButton)localView;
-        AppMethodBeat.o(235026);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(235026);
-    return null;
-  }
-  
-  private boolean wi()
-  {
-    AppMethodBeat.i(235027);
-    FloatingActionButton localFloatingActionButton = wh();
-    if ((localFloatingActionButton != null) && (localFloatingActionButton.getImpl().xf()))
-    {
-      AppMethodBeat.o(235027);
-      return true;
-    }
-    AppMethodBeat.o(235027);
-    return false;
-  }
-  
-  private void wj()
-  {
-    AppMethodBeat.i(235044);
-    this.bwn.bwD = getFabTranslationX();
-    Object localObject = wh();
-    c localc = this.bwm;
-    if ((this.bws) && (wi())) {}
-    for (float f = 1.0F;; f = 0.0F)
-    {
-      localc.Z(f);
-      if (localObject != null)
-      {
-        ((FloatingActionButton)localObject).setTranslationY(getFabTranslationY());
-        ((FloatingActionButton)localObject).setTranslationX(getFabTranslationX());
-      }
-      localObject = getActionMenuView();
-      if (localObject == null) {
-        break label121;
-      }
-      ((ActionMenuView)localObject).setAlpha(1.0F);
-      if (wi()) {
-        break;
-      }
-      a((ActionMenuView)localObject, 0, false);
-      AppMethodBeat.o(235044);
-      return;
-    }
-    a((ActionMenuView)localObject, this.fabAlignmentMode, this.bws);
-    label121:
-    AppMethodBeat.o(235044);
+    AppMethodBeat.o(209628);
+    return 0;
   }
   
   public ColorStateList getBackgroundTint()
   {
-    return this.bwm.bEh;
+    return this.dpp.dxi;
   }
   
   public CoordinatorLayout.Behavior<BottomAppBar> getBehavior()
   {
-    AppMethodBeat.i(235047);
+    AppMethodBeat.i(210026);
     Behavior localBehavior = new Behavior();
-    AppMethodBeat.o(235047);
+    AppMethodBeat.o(210026);
     return localBehavior;
   }
   
   public float getCradleVerticalOffset()
   {
-    return this.bwn.bwC;
+    return this.dpq.dpF;
   }
   
   public int getFabAlignmentMode()
@@ -419,165 +419,165 @@ public class BottomAppBar
   
   public float getFabCradleMargin()
   {
-    return this.bwn.bwA;
+    return this.dpq.dpD;
   }
   
   public float getFabCradleRoundedCornerRadius()
   {
-    return this.bwn.bwz;
+    return this.dpq.dpC;
   }
   
   public boolean getHideOnScroll()
   {
-    return this.bwr;
+    return this.dpu;
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(235042);
+    AppMethodBeat.i(210004);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.bwo != null) {
-      this.bwo.cancel();
+    if (this.dpr != null) {
+      this.dpr.cancel();
     }
-    if (this.bwq != null) {
-      this.bwq.cancel();
+    if (this.dpt != null) {
+      this.dpt.cancel();
     }
-    if (this.bwp != null) {
-      this.bwp.cancel();
+    if (this.dps != null) {
+      this.dps.cancel();
     }
-    wj();
-    AppMethodBeat.o(235042);
+    VI();
+    AppMethodBeat.o(210004);
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(235050);
+    AppMethodBeat.i(210050);
     if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(235050);
+      AppMethodBeat.o(210050);
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Rb);
+    super.onRestoreInstanceState(paramParcelable.bxs);
     this.fabAlignmentMode = paramParcelable.fabAlignmentMode;
-    this.bws = paramParcelable.bws;
-    AppMethodBeat.o(235050);
+    this.dpv = paramParcelable.dpv;
+    AppMethodBeat.o(210050);
   }
   
   public Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(235048);
+    AppMethodBeat.i(210035);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.fabAlignmentMode = this.fabAlignmentMode;
-    localSavedState.bws = this.bws;
-    AppMethodBeat.o(235048);
+    localSavedState.dpv = this.dpv;
+    AppMethodBeat.o(210035);
     return localSavedState;
   }
   
   public void setBackgroundTint(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(235020);
-    androidx.core.graphics.drawable.a.a(this.bwm, paramColorStateList);
-    AppMethodBeat.o(235020);
+    AppMethodBeat.i(209888);
+    androidx.core.graphics.drawable.a.a(this.dpp, paramColorStateList);
+    AppMethodBeat.o(209888);
   }
   
   public void setCradleVerticalOffset(float paramFloat)
   {
-    AppMethodBeat.i(235023);
+    AppMethodBeat.i(209962);
     if (paramFloat != getCradleVerticalOffset())
     {
-      this.bwn.bwC = paramFloat;
-      this.bwm.invalidateSelf();
+      this.dpq.dpF = paramFloat;
+      this.dpp.invalidateSelf();
     }
-    AppMethodBeat.o(235023);
+    AppMethodBeat.o(209962);
   }
   
   public void setFabAlignmentMode(int paramInt)
   {
-    AppMethodBeat.i(235019);
-    if ((this.fabAlignmentMode == paramInt) || (!w.ah(this))) {}
+    AppMethodBeat.i(209879);
+    if ((this.fabAlignmentMode == paramInt) || (!z.au(this))) {}
     for (;;)
     {
-      q(paramInt, this.bws);
+      E(paramInt, this.dpv);
       this.fabAlignmentMode = paramInt;
-      AppMethodBeat.o(235019);
+      AppMethodBeat.o(209879);
       return;
-      if (this.bwp != null) {
-        this.bwp.cancel();
+      if (this.dps != null) {
+        this.dps.cancel();
       }
       ArrayList localArrayList = new ArrayList();
-      if (this.bws)
+      if (this.dpv)
       {
-        localObject = ValueAnimator.ofFloat(new float[] { this.bwn.bwD, fU(paramInt) });
+        localObject = ValueAnimator.ofFloat(new float[] { this.dpq.dpG, jj(paramInt) });
         ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            AppMethodBeat.i(234905);
-            BottomAppBar.b(BottomAppBar.this).bwD = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+            AppMethodBeat.i(209555);
+            BottomAppBar.b(BottomAppBar.this).dpG = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
             BottomAppBar.c(BottomAppBar.this).invalidateSelf();
-            AppMethodBeat.o(234905);
+            AppMethodBeat.o(209555);
           }
         });
         ((ValueAnimator)localObject).setDuration(300L);
         localArrayList.add(localObject);
       }
-      Object localObject = ObjectAnimator.ofFloat(wh(), "translationX", new float[] { fU(paramInt) });
+      Object localObject = ObjectAnimator.ofFloat(VG(), "translationX", new float[] { jj(paramInt) });
       ((ObjectAnimator)localObject).setDuration(300L);
       localArrayList.add(localObject);
       localObject = new AnimatorSet();
       ((AnimatorSet)localObject).playTogether(localArrayList);
-      this.bwp = ((Animator)localObject);
-      this.bwp.addListener(new AnimatorListenerAdapter()
+      this.dps = ((Animator)localObject);
+      this.dps.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(234903);
+          AppMethodBeat.i(209560);
           BottomAppBar.a(BottomAppBar.this);
-          AppMethodBeat.o(234903);
+          AppMethodBeat.o(209560);
         }
       });
-      this.bwp.start();
+      this.dps.start();
     }
   }
   
   public void setFabCradleMargin(float paramFloat)
   {
-    AppMethodBeat.i(235021);
+    AppMethodBeat.i(209919);
     if (paramFloat != getFabCradleMargin())
     {
-      this.bwn.bwA = paramFloat;
-      this.bwm.invalidateSelf();
+      this.dpq.dpD = paramFloat;
+      this.dpp.invalidateSelf();
     }
-    AppMethodBeat.o(235021);
+    AppMethodBeat.o(209919);
   }
   
   public void setFabCradleRoundedCornerRadius(float paramFloat)
   {
-    AppMethodBeat.i(235022);
+    AppMethodBeat.i(209939);
     if (paramFloat != getFabCradleRoundedCornerRadius())
     {
-      this.bwn.bwz = paramFloat;
-      this.bwm.invalidateSelf();
+      this.dpq.dpC = paramFloat;
+      this.dpp.invalidateSelf();
     }
-    AppMethodBeat.o(235022);
+    AppMethodBeat.o(209939);
   }
   
   void setFabDiameter(int paramInt)
   {
-    AppMethodBeat.i(235025);
-    if (paramInt != this.bwn.bwB)
+    AppMethodBeat.i(209990);
+    if (paramInt != this.dpq.dpE)
     {
-      this.bwn.bwB = paramInt;
-      this.bwm.invalidateSelf();
+      this.dpq.dpE = paramInt;
+      this.dpp.invalidateSelf();
     }
-    AppMethodBeat.o(235025);
+    AppMethodBeat.o(209990);
   }
   
   public void setHideOnScroll(boolean paramBoolean)
   {
-    this.bwr = paramBoolean;
+    this.dpu = paramBoolean;
   }
   
   public void setSubtitle(CharSequence paramCharSequence) {}
@@ -587,42 +587,42 @@ public class BottomAppBar
   public static class Behavior
     extends HideBottomViewOnScrollBehavior<BottomAppBar>
   {
-    private final Rect bwy;
+    private final Rect dpB;
     
     public Behavior()
     {
-      AppMethodBeat.i(234921);
-      this.bwy = new Rect();
-      AppMethodBeat.o(234921);
+      AppMethodBeat.i(209528);
+      this.dpB = new Rect();
+      AppMethodBeat.o(209528);
     }
     
     public Behavior(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      AppMethodBeat.i(234922);
-      this.bwy = new Rect();
-      AppMethodBeat.o(234922);
+      AppMethodBeat.i(209545);
+      this.dpB = new Rect();
+      AppMethodBeat.o(209545);
     }
     
     private boolean a(CoordinatorLayout paramCoordinatorLayout, BottomAppBar paramBottomAppBar, int paramInt)
     {
-      AppMethodBeat.i(234926);
+      AppMethodBeat.i(209559);
       FloatingActionButton localFloatingActionButton = BottomAppBar.h(paramBottomAppBar);
       if (localFloatingActionButton != null)
       {
         ((CoordinatorLayout.d)localFloatingActionButton.getLayoutParams()).anchorGravity = 17;
         BottomAppBar.a(paramBottomAppBar, localFloatingActionButton);
-        Rect localRect = this.bwy;
+        Rect localRect = this.dpB;
         localRect.set(0, 0, localFloatingActionButton.getMeasuredWidth(), localFloatingActionButton.getMeasuredHeight());
-        localFloatingActionButton.j(localRect);
-        paramBottomAppBar.setFabDiameter(this.bwy.height());
+        localFloatingActionButton.p(localRect);
+        paramBottomAppBar.setFabDiameter(this.dpB.height());
       }
       if (!BottomAppBar.i(paramBottomAppBar)) {
         BottomAppBar.j(paramBottomAppBar);
       }
       paramCoordinatorLayout.h(paramBottomAppBar, paramInt);
       boolean bool = super.a(paramCoordinatorLayout, paramBottomAppBar, paramInt);
-      AppMethodBeat.o(234926);
+      AppMethodBeat.o(209559);
       return bool;
     }
   }
@@ -631,26 +631,26 @@ public class BottomAppBar
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    boolean bws;
+    boolean dpv;
     int fabAlignmentMode;
     
     static
     {
-      AppMethodBeat.i(235015);
+      AppMethodBeat.i(209534);
       CREATOR = new Parcelable.ClassLoaderCreator() {};
-      AppMethodBeat.o(235015);
+      AppMethodBeat.o(209534);
     }
     
     public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
       super(paramClassLoader);
-      AppMethodBeat.i(235013);
+      AppMethodBeat.i(209526);
       this.fabAlignmentMode = paramParcel.readInt();
       if (paramParcel.readInt() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.bws = bool;
-        AppMethodBeat.o(235013);
+        this.dpv = bool;
+        AppMethodBeat.o(209526);
         return;
       }
     }
@@ -662,14 +662,14 @@ public class BottomAppBar
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(235014);
+      AppMethodBeat.i(209549);
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeInt(this.fabAlignmentMode);
-      if (this.bws) {}
+      if (this.dpv) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        AppMethodBeat.o(235014);
+        AppMethodBeat.o(209549);
         return;
       }
     }
@@ -677,7 +677,7 @@ public class BottomAppBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,13 @@ import java.util.Map;
 public final class d
   implements e<Map<String, List<String>>>
 {
-  public final String pyl;
-  public final String pym;
+  public final String sDq;
+  public final String sDr;
   
   public d(String paramString1, String paramString2)
   {
-    this.pym = paramString1;
-    this.pyl = paramString2;
+    this.sDr = paramString1;
+    this.sDq = paramString2;
   }
 }
 

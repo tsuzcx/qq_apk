@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
-import com.tencent.mm.f.c.ax;
+import com.tencent.mm.autogen.b.az;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.z;
 import com.tencent.mm.pluginsdk.ui.ProfileMobilePhoneView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.au;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.util.HashSet;
@@ -23,13 +24,13 @@ public class PhoneNumPreference
   extends Preference
   implements View.OnClickListener
 {
-  private View EQs;
-  public String Rdn;
-  public String Rdo;
-  ProfileMobilePhoneView RqU;
+  private View KKQ;
+  public String XZt;
+  public String XZu;
+  ProfileMobilePhoneView Ynl;
   public Intent intent;
-  public f mrf;
-  public as uNk;
+  public f pkD;
+  public au xVS;
   
   public PhoneNumPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,10 +42,10 @@ public class PhoneNumPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static String b(String paramString, as paramas)
+  public static String c(String paramString, au paramau)
   {
     AppMethodBeat.i(31899);
-    if (paramas.hDw == null)
+    if (paramau.kar == null)
     {
       AppMethodBeat.o(31899);
       return null;
@@ -54,7 +55,7 @@ public class PhoneNumPreference
       localHashSet.add(paramString);
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    String[] arrayOfString = com.tencent.mm.contact.a.e(paramas);
+    String[] arrayOfString = com.tencent.mm.contact.a.f(paramau);
     if (arrayOfString != null)
     {
       int j = arrayOfString.length;
@@ -63,7 +64,7 @@ public class PhoneNumPreference
       {
         String str = arrayOfString[i].trim();
         if ((!localHashSet.contains(str)) && (!Util.isNullOrNil(str))) {
-          localStringBuilder.append(str).append(com.tencent.mm.contact.a.d(paramas));
+          localStringBuilder.append(str).append(com.tencent.mm.contact.a.e(paramau));
         }
         localHashSet.add(str);
         i += 1;
@@ -72,22 +73,22 @@ public class PhoneNumPreference
     if (localStringBuilder.length() > 1) {
       localStringBuilder.subSequence(0, localStringBuilder.length() - 1);
     }
-    Log.i("MicroMsg.PhoneNumPreference", "[filterPhoneList] phoneNumberByMD5:%s phoneList:%s", new Object[] { paramString, paramas.hDw });
+    Log.i("MicroMsg.PhoneNumPreference", "[filterPhoneList] phoneNumberByMD5:%s phoneList:%s", new Object[] { paramString, paramau.kar });
     paramString = localStringBuilder.toString();
     AppMethodBeat.o(31899);
     return paramString;
   }
   
-  public final void hmR()
+  public final void iNH()
   {
     AppMethodBeat.i(31900);
-    if ((this.uNk == null) || (!com.tencent.mm.contact.d.rk(this.uNk.field_type)) || (as.bvK(this.uNk.field_username)) || ((Util.isNullOrNil(this.Rdn)) && (Util.isNullOrNil(this.Rdo))))
+    if ((this.xVS == null) || (!com.tencent.mm.contact.d.rs(this.xVS.field_type)) || (z.Iy(this.xVS.field_username)) || (au.bwO(this.xVS.field_username)) || ((Util.isNullOrNil(this.XZt)) && (Util.isNullOrNil(this.XZu))))
     {
-      this.mrf.dz("contact_profile_phone", true);
+      this.pkD.eh("contact_profile_phone", true);
       AppMethodBeat.o(31900);
       return;
     }
-    this.mrf.dz("contact_profile_phone", false);
+    this.pkD.eh("contact_profile_phone", false);
     AppMethodBeat.o(31900);
   }
   
@@ -95,7 +96,7 @@ public class PhoneNumPreference
   {
     AppMethodBeat.i(31898);
     super.onBindView(paramView);
-    this.RqU.fqK();
+    this.Ynl.gCe();
     AppMethodBeat.o(31898);
   }
   
@@ -103,9 +104,9 @@ public class PhoneNumPreference
   {
     AppMethodBeat.i(31901);
     b localb = new b();
-    localb.bn(paramView);
-    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
-    com.tencent.mm.plugin.profile.d.a(this.intent, 17, 1, this.uNk.field_username);
+    localb.cH(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aYj());
+    com.tencent.mm.plugin.profile.d.b(this.intent, 17, 1, this.xVS.field_username);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(31901);
   }
@@ -113,26 +114,26 @@ public class PhoneNumPreference
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31897);
-    if (this.EQs == null)
+    if (this.KKQ == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
       localViewGroup.removeAllViews();
       ProfileMobilePhoneView localProfileMobilePhoneView = new ProfileMobilePhoneView(paramViewGroup.getContext(), this);
-      this.RqU = localProfileMobilePhoneView;
+      this.Ynl = localProfileMobilePhoneView;
       localViewGroup.addView(localProfileMobilePhoneView, new AbsListView.LayoutParams(-1, -2));
-      this.RqU.uNk = this.uNk;
-      this.RqU.no(this.Rdn, this.Rdo);
-      this.EQs = paramViewGroup;
+      this.Ynl.xVS = this.xVS;
+      this.Ynl.pj(this.XZt, this.XZu);
+      this.KKQ = paramViewGroup;
     }
-    paramViewGroup = this.EQs;
+    paramViewGroup = this.KKQ;
     AppMethodBeat.o(31897);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.PhoneNumPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,82 @@
 package com.tencent.mm.plugin.mv.ui.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.livebase.redux.a;
 import com.tencent.mm.plugin.mv.model.b.e;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.statecenter.BaseStateAction;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/redux/album/SelectAction;", "Lcom/tencent/mm/plugin/livebase/redux/IReduxAction;", "source", "Lcom/tencent/mm/plugin/mv/ui/redux/album/SelectAction$SelectActionSource;", "item", "Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "(Lcom/tencent/mm/plugin/mv/ui/redux/album/SelectAction$SelectActionSource;Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;)V", "getItem", "()Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "getSource", "()Lcom/tencent/mm/plugin/mv/ui/redux/album/SelectAction$SelectActionSource;", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "SelectActionSource", "plugin-mv_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/state/album/SelectAction;", "Lcom/tencent/mm/sdk/statecenter/BaseStateAction;", "source", "Lcom/tencent/mm/plugin/mv/ui/state/album/SelectAction$SelectActionSource;", "item", "Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "(Lcom/tencent/mm/plugin/mv/ui/state/album/SelectAction$SelectActionSource;Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;)V", "getItem", "()Lcom/tencent/mm/plugin/mv/model/preview/MvPreviewLiveItem;", "getSource", "()Lcom/tencent/mm/plugin/mv/ui/state/album/SelectAction$SelectActionSource;", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "", "toString", "", "SelectActionSource", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class c
-  implements a
+  extends BaseStateAction
 {
-  public final a Ghl;
-  public final e Ghm;
+  public final a McY;
+  public final e McZ;
   
   public c(a parama, e parame)
   {
-    AppMethodBeat.i(228097);
-    this.Ghl = parama;
-    this.Ghm = parame;
-    AppMethodBeat.o(228097);
+    AppMethodBeat.i(286468);
+    this.McY = parama;
+    this.McZ = parame;
+    AppMethodBeat.o(286468);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(228104);
-    if (this != paramObject)
+    AppMethodBeat.i(286491);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof c))
-      {
-        paramObject = (c)paramObject;
-        if ((!p.h(this.Ghl, paramObject.Ghl)) || (!p.h(this.Ghm, paramObject.Ghm))) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(228104);
+      AppMethodBeat.o(286491);
       return true;
     }
-    AppMethodBeat.o(228104);
-    return false;
+    if (!(paramObject instanceof c))
+    {
+      AppMethodBeat.o(286491);
+      return false;
+    }
+    paramObject = (c)paramObject;
+    if (this.McY != paramObject.McY)
+    {
+      AppMethodBeat.o(286491);
+      return false;
+    }
+    if (!s.p(this.McZ, paramObject.McZ))
+    {
+      AppMethodBeat.o(286491);
+      return false;
+    }
+    AppMethodBeat.o(286491);
+    return true;
   }
   
   public final int hashCode()
   {
-    int j = 0;
-    AppMethodBeat.i(228102);
-    Object localObject = this.Ghl;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.Ghm;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      AppMethodBeat.o(228102);
-      return i * 31 + j;
-    }
+    AppMethodBeat.i(286483);
+    int i = this.McY.hashCode();
+    int j = this.McZ.hashCode();
+    AppMethodBeat.o(286483);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(228100);
-    String str = "SelectAction(source=" + this.Ghl + ", item=" + this.Ghm + ")";
-    AppMethodBeat.o(228100);
+    AppMethodBeat.i(286475);
+    String str = "SelectAction(source=" + this.McY + ", item=" + this.McZ + ')';
+    AppMethodBeat.o(286475);
     return str;
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/redux/album/SelectAction$SelectActionSource;", "", "(Ljava/lang/String;I)V", "Gallery", "Select", "CheckBox", "plugin-mv_release"})
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/mv/ui/state/album/SelectAction$SelectActionSource;", "", "(Ljava/lang/String;I)V", "Gallery", "Select", "CheckBox", "plugin-mv_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static enum a
   {
     static
     {
-      AppMethodBeat.i(225391);
-      a locala1 = new a("Gallery", 0);
-      Ghn = locala1;
-      a locala2 = new a("Select", 1);
-      Gho = locala2;
-      a locala3 = new a("CheckBox", 2);
-      Ghp = locala3;
-      Ghq = new a[] { locala1, locala2, locala3 };
-      AppMethodBeat.o(225391);
+      AppMethodBeat.i(286488);
+      Mda = new a("Gallery", 0);
+      Mdb = new a("Select", 1);
+      Mdc = new a("CheckBox", 2);
+      Mdd = new a[] { Mda, Mdb, Mdc };
+      AppMethodBeat.o(286488);
     }
     
     private a() {}
@@ -87,7 +84,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.b.a.c
  * JD-Core Version:    0.7.0.1
  */

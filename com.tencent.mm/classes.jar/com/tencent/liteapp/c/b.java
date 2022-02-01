@@ -1,24 +1,24 @@
 package com.tencent.liteapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncher;", "", "startLiteApp", "Lcom/tencent/liteapp/mgr/LauncherStatus;", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "pagePath", "", "query", "config", "startLiteAppAsync", "", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncherCallback;", "Companion", "wxa_lite_app_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncher;", "", "startLiteApp", "Lcom/tencent/liteapp/mgr/LauncherStatus;", "app", "Lcom/tencent/liteapp/storage/WxaLiteAppInfo;", "pagePath", "", "query", "config", "startLiteAppAsync", "", "callback", "Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncherCallback;", "Companion", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
 public abstract interface b
 {
-  public static final a coP = a.coQ;
+  public static final a egb = a.egc;
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncher$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"})
+  @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/liteapp/mgr/IWxaLiteAppLauncher$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"}, k=1, mv={1, 1, 16})
   public static final class a
   {
     private static final String TAG = "WxaLiteApp.IWxaLiteAppLauncher";
     
     static
     {
-      AppMethodBeat.i(259177);
-      coQ = new a();
+      AppMethodBeat.i(219050);
+      egc = new a();
       TAG = "WxaLiteApp.IWxaLiteAppLauncher";
-      AppMethodBeat.o(259177);
+      AppMethodBeat.o(219050);
     }
   }
 }

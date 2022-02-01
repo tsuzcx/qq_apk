@@ -1,44 +1,50 @@
 package com.tencent.map.sdk.utilities.heatmap;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class WeightedLatLng
-  implements Parcelable
+  extends com.tencent.map.sdk.utilities.visualization.datamodels.WeightedLatLng
 {
   public static final Parcelable.Creator<WeightedLatLng> CREATOR;
-  private static final double DEFAULT_INTENSITY = 1.0D;
-  private double mIntensity;
-  private LatLng mPoint;
   
   static
   {
     AppMethodBeat.i(84402);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new Parcelable.Creator()
+    {
+      private static WeightedLatLng a(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(211063);
+        paramAnonymousParcel = new WeightedLatLng(paramAnonymousParcel);
+        AppMethodBeat.o(211063);
+        return paramAnonymousParcel;
+      }
+      
+      private static WeightedLatLng[] a(int paramAnonymousInt)
+      {
+        return new WeightedLatLng[paramAnonymousInt];
+      }
+    };
     AppMethodBeat.o(84402);
   }
   
   protected WeightedLatLng(Parcel paramParcel)
   {
-    AppMethodBeat.i(236197);
-    this.mPoint = ((LatLng)paramParcel.readParcelable(LatLng.class.getClassLoader()));
-    this.mIntensity = paramParcel.readDouble();
-    AppMethodBeat.o(236197);
+    super(paramParcel);
   }
   
   public WeightedLatLng(LatLng paramLatLng)
   {
-    this(paramLatLng, 1.0D);
+    super(paramLatLng);
   }
   
   public WeightedLatLng(LatLng paramLatLng, double paramDouble)
   {
+    super(paramLatLng, paramDouble);
     AppMethodBeat.i(172903);
-    setPoint(paramLatLng);
-    setIntensity(paramDouble);
     AppMethodBeat.o(172903);
   }
   
@@ -49,92 +55,53 @@ public class WeightedLatLng
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(236205);
+    AppMethodBeat.i(211076);
     if (!(paramObject instanceof WeightedLatLng))
     {
-      AppMethodBeat.o(236205);
+      AppMethodBeat.o(211076);
       return false;
     }
     if (paramObject == this)
     {
-      AppMethodBeat.o(236205);
+      AppMethodBeat.o(211076);
       return true;
     }
-    if (this.mPoint != null)
+    LatLng localLatLng = getPoint();
+    double d = getIntensity();
+    if (localLatLng != null)
     {
-      if ((this.mPoint.equals(((WeightedLatLng)paramObject).mPoint)) && (this.mIntensity == ((WeightedLatLng)paramObject).mIntensity))
+      if ((localLatLng.equals(((WeightedLatLng)paramObject).getPoint())) && (d == ((WeightedLatLng)paramObject).getIntensity()))
       {
-        AppMethodBeat.o(236205);
+        AppMethodBeat.o(211076);
         return true;
       }
-      AppMethodBeat.o(236205);
+      AppMethodBeat.o(211076);
       return false;
     }
-    if (((WeightedLatLng)paramObject).mPoint != null)
+    if (((WeightedLatLng)paramObject).getPoint() != null)
     {
-      AppMethodBeat.o(236205);
+      AppMethodBeat.o(211076);
       return false;
     }
-    if (this.mIntensity == ((WeightedLatLng)paramObject).mIntensity)
+    if (d == ((WeightedLatLng)paramObject).getIntensity())
     {
-      AppMethodBeat.o(236205);
+      AppMethodBeat.o(211076);
       return true;
     }
-    AppMethodBeat.o(236205);
+    AppMethodBeat.o(211076);
     return false;
-  }
-  
-  public double getIntensity()
-  {
-    return this.mIntensity;
-  }
-  
-  public LatLng getPoint()
-  {
-    return this.mPoint;
-  }
-  
-  public int hashCode()
-  {
-    AppMethodBeat.i(236207);
-    if (this.mPoint != null)
-    {
-      i = this.mPoint.hashCode();
-      int j = (int)(this.mIntensity * 1000000.0D);
-      AppMethodBeat.o(236207);
-      return i + j;
-    }
-    int i = (int)(this.mIntensity * 1000000.0D);
-    AppMethodBeat.o(236207);
-    return i;
-  }
-  
-  public void setIntensity(double paramDouble)
-  {
-    if (paramDouble >= 0.0D)
-    {
-      this.mIntensity = paramDouble;
-      return;
-    }
-    this.mIntensity = 1.0D;
-  }
-  
-  public void setPoint(LatLng paramLatLng)
-  {
-    this.mPoint = paramLatLng;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(236195);
-    paramParcel.writeParcelable(this.mPoint, paramInt);
-    paramParcel.writeDouble(this.mIntensity);
-    AppMethodBeat.o(236195);
+    AppMethodBeat.i(211070);
+    super.writeToParcel(paramParcel, paramInt);
+    AppMethodBeat.o(211070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.map.sdk.utilities.heatmap.WeightedLatLng
  * JD-Core Version:    0.7.0.1
  */

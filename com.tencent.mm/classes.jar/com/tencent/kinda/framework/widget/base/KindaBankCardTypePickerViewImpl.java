@@ -2,6 +2,7 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
 import android.widget.EditText;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.gen.BankCardType;
 import com.tencent.kinda.gen.KBankCardTypePickerView;
 import com.tencent.kinda.gen.KBankCardTypePickerViewOnSelectCallback;
@@ -43,6 +44,7 @@ public class KindaBankCardTypePickerViewImpl
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
     this.mEditText.setTextSize(16.0F);
+    this.mEditText.setText(R.string.wc_pay_kinda_bankcardtype_picker_view_default_text);
     this.mContext = paramContext;
     paramContext = this.mEditText;
     AppMethodBeat.o(18836);
@@ -65,7 +67,6 @@ public class KindaBankCardTypePickerViewImpl
   public void setBankCardType(ArrayList<BankCardType> paramArrayList)
   {
     AppMethodBeat.i(18837);
-    this.mEditText.setText("");
     this.mBankCardTypeArray = paramArrayList;
     this.mFirstOptionList = new ArrayList();
     this.mSecondOptionMap = new HashMap();
@@ -102,8 +103,8 @@ public class KindaBankCardTypePickerViewImpl
     while (paramArrayList.hasNext())
     {
       localObject = (String)paramArrayList.next();
-      this.mSecondOptionList.add(this.mSecondOptionMap.get(localObject));
-      this.mSecondOptionStringList.add(this.mSecondOptionStringMap.get(localObject));
+      this.mSecondOptionList.add((List)this.mSecondOptionMap.get(localObject));
+      this.mSecondOptionStringList.add((List)this.mSecondOptionStringMap.get(localObject));
     }
     AppMethodBeat.o(18837);
   }
@@ -114,7 +115,7 @@ public class KindaBankCardTypePickerViewImpl
     if (paramBoolean)
     {
       this.mOptionPiker = new b(this.mContext, this.mFirstOptionList, this.mSecondOptionStringList);
-      this.mOptionPiker.YrN = new b.b()
+      this.mOptionPiker.agkc = new b.b()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
@@ -125,12 +126,12 @@ public class KindaBankCardTypePickerViewImpl
             paramAnonymousObject1 = (String)paramAnonymousObject1;
             paramAnonymousObject2 = (String)paramAnonymousObject2;
             KindaBankCardTypePickerViewImpl.this.mEditText.setText(paramAnonymousObject1 + " " + paramAnonymousObject2);
-            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.idp());
+            KindaBankCardTypePickerViewImpl.access$202(KindaBankCardTypePickerViewImpl.this, KindaBankCardTypePickerViewImpl.this.mOptionPiker.jIz());
             paramAnonymousObject1 = KindaBankCardTypePickerViewImpl.this;
             paramAnonymousObject2 = KindaBankCardTypePickerViewImpl.this.mOptionPiker;
             int i = 0;
-            if (paramAnonymousObject2.YrL != null) {
-              i = paramAnonymousObject2.YrL.getValue();
+            if (paramAnonymousObject2.agka != null) {
+              i = paramAnonymousObject2.agka.getValue();
             }
             KindaBankCardTypePickerViewImpl.access$302(paramAnonymousObject1, i);
             if ((KindaBankCardTypePickerViewImpl.this.mFirstSelectedIndex >= 0) && (KindaBankCardTypePickerViewImpl.this.mSecondSelectedIndex >= 0))
@@ -148,7 +149,7 @@ public class KindaBankCardTypePickerViewImpl
         if (this.mSecondSelectedIndex < 0) {
           break label91;
         }
-        this.mOptionPiker.nc(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
+        this.mOptionPiker.oY(this.mFirstSelectedIndex, this.mSecondSelectedIndex);
       }
     }
     for (;;)
@@ -157,7 +158,7 @@ public class KindaBankCardTypePickerViewImpl
       AppMethodBeat.o(18839);
       return;
       label91:
-      this.mOptionPiker.ayK(this.mFirstSelectedIndex);
+      this.mOptionPiker.aFq(this.mFirstSelectedIndex);
     }
   }
   
@@ -207,11 +208,11 @@ public class KindaBankCardTypePickerViewImpl
         this.mSecondSelectedIndex = j;
       }
       if (this.mFirstSelectedIndex < 0) {
-        break label290;
+        break label291;
       }
     }
     label276:
-    label290:
+    label291:
     for (paramBankCardType = (String)this.mFirstOptionList.get(this.mFirstSelectedIndex);; paramBankCardType = "")
     {
       if ((this.mFirstSelectedIndex >= 0) && (this.mSecondSelectedIndex >= 0)) {}
@@ -233,7 +234,7 @@ public class KindaBankCardTypePickerViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaBankCardTypePickerViewImpl
  * JD-Core Version:    0.7.0.1
  */

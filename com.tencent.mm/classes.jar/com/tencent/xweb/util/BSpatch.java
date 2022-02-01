@@ -1,8 +1,8 @@
 package com.tencent.xweb.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.p;
-import com.tencent.xweb.p.a;
+import com.tencent.xweb.r;
+import com.tencent.xweb.r.a;
 import org.xwalk.core.Log;
 
 public class BSpatch
@@ -11,22 +11,26 @@ public class BSpatch
   {
     AppMethodBeat.i(156988);
     BSpatch.class.getClassLoader();
-    if (p.aaaw != null)
+    if (r.aieT != null)
     {
-      p.aaaw.KW("bspatch_utils");
+      r.aieT.DA("bspatch_utils");
       AppMethodBeat.o(156988);
       return;
     }
-    System.loadLibrary("bspatch_utils");
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().cG("bspatch_utils");
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aYi(), "com/tencent/xweb/LibraryLoader", "load", "(Ljava/lang/String;Ljava/lang/ClassLoader;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
+    System.loadLibrary((String)locala.sb(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/xweb/LibraryLoader", "load", "(Ljava/lang/String;Ljava/lang/ClassLoader;)V", "java/lang/System_EXEC_", "loadLibrary", "(Ljava/lang/String;)V");
     AppMethodBeat.o(156988);
   }
   
-  public static int bt(String paramString1, String paramString2, String paramString3)
+  public static int bQ(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(156987);
     Log.i("BSpatch", "doPatch oldFile:" + paramString1 + ",patchFile:" + paramString2 + ",newFile:" + paramString3);
     long l = System.currentTimeMillis();
-    h.iyg();
+    l.kiu();
     int i = 0;
     String str = paramString3;
     if (paramString1.equals(paramString3))
@@ -38,7 +42,7 @@ public class BSpatch
     if (j < 0)
     {
       Log.i("BSpatch", "doPatch failed");
-      h.iyh();
+      l.kiv();
     }
     for (;;)
     {
@@ -47,15 +51,15 @@ public class BSpatch
       Log.i("BSpatch", "doPatch successful");
       if (i != 0)
       {
-        if (!c.copyFile(str, paramString1))
+        if (!g.copyFile(str, paramString1))
         {
           Log.e("BSpatch", "doPatch same path, copy failed");
           AppMethodBeat.o(156987);
           return -1;
         }
-        c.deleteFile(str);
+        g.deleteFile(str);
       }
-      h.Xn(System.currentTimeMillis() - l);
+      l.By(System.currentTimeMillis() - l);
     }
   }
   
@@ -63,7 +67,7 @@ public class BSpatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.util.BSpatch
  * JD-Core Version:    0.7.0.1
  */

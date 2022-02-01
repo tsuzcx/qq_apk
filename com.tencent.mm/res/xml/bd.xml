@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <IconPreference android:icon="@drawable/bnc" android:key="settings_invite_facebook_friends" android:title="@string/gpc" />
-    <IconPreference android:icon="@raw/find_more_friend_qq_icon" android:key="settings_invite_qq_friends" android:title="@string/gpf" />
-    <IconPreference android:icon="@drawable/bgh" android:key="settings_recommend_by_mail" android:title="@string/gt5" />
-    <IconPreference android:icon="@drawable/bnf" android:key="settings_recommend_by_mb" android:title="@string/gt6" />
-    <IconPreference android:icon="@drawable/bgi" android:key="settings_invite_mobile_friends" android:title="@string/gpe" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <Preference mm:layout="@layout/bf0" mm:title="@string/h6y" />
+    <com.tencent.mm.ui.base.preference.ChoicePreference mm:entries="@array/ag" mm:entryValues="@array/ah" mm:key="settings_sex" mm:layout="@layout/bfd" mm:title="@string/iyn" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:key="settings_district" mm:layout="@layout/bdi" mm:title="@string/irj" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:key="settings_signature" mm:layout="@layout/bdi" mm:title="@string/iyv" />
 </PreferenceScreen>

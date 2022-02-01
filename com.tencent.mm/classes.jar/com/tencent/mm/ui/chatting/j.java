@@ -1,120 +1,177 @@
 package com.tencent.mm.ui.chatting;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.l;
-import com.tencent.mm.aj.l;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.aj.z.a;
-import com.tencent.mm.f.a.sc;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.c;
-import com.tencent.mm.modelstat.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
+import com.tencent.mm.modelimage.h;
+import com.tencent.mm.modelimage.r;
+import com.tencent.mm.modelvideo.ab;
+import com.tencent.mm.modelvideo.z;
+import com.tencent.mm.plugin.record.model.q;
+import com.tencent.mm.protocal.b.a.c;
+import com.tencent.mm.protocal.protobuf.arf;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
-import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.base.s;
-import com.tencent.mm.ui.chatting.d.n;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cc;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/ui/chatting/ChattingCheckUtil;", "", "()V", "TAG", "", "checkIfExceedSingleFileLimit", "", "selectItems", "", "Lcom/tencent/mm/storage/MsgInfo;", "maxSingleFileSize", "", "checkIfOverRecordMsgLimit", "maxGroupSize", "sumSelectedMsgFileSize", "app_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class j
 {
-  public static void a(Context paramContext, Set<Long> paramSet, z paramz)
+  private static final String TAG;
+  public static final j aegW;
+  
+  static
   {
-    AppMethodBeat.i(34389);
-    if (paramContext == null)
-    {
-      Log.w("MicroMsg.ChattingEditModeDelMsg", "do delete msg fail, context is null");
-      AppMethodBeat.o(34389);
-      return;
-    }
-    if ((paramSet == null) || (paramSet.isEmpty()))
-    {
-      Log.w("MicroMsg.ChattingEditModeDelMsg", "do delete msg fail, select ids is empty");
-      AppMethodBeat.o(34389);
-      return;
-    }
-    paramContext.getString(R.l.app_tip);
-    paramContext = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(R.l.eBe), false, null);
-    n.WIm.add(new a(paramSet, paramContext, paramz));
-    com.tencent.mm.plugin.report.service.h.IzE.a(10811, new Object[] { Integer.valueOf(4), Integer.valueOf(paramSet.size()) });
-    AppMethodBeat.o(34389);
+    AppMethodBeat.i(253910);
+    aegW = new j();
+    TAG = "MicroMsg.ChattingEditModeRetransmitMsg";
+    AppMethodBeat.o(253910);
   }
   
-  static final class a
-    implements QueueWorkerThread.ThreadObject
+  public static boolean i(List<? extends cc> paramList, long paramLong)
   {
-    private Set<Long> WzD;
-    private s WzE;
-    private z WzF;
-    
-    public a(Set<Long> paramSet, s params, z paramz)
+    AppMethodBeat.i(253903);
+    s.u(paramList, "selectItems");
+    Iterator localIterator = paramList.iterator();
+    long l1 = 0L;
+    int i;
+    if (localIterator.hasNext())
     {
-      this.WzD = paramSet;
-      this.WzE = params;
-      this.WzF = paramz;
-    }
-    
-    public final boolean doInBackground()
-    {
-      AppMethodBeat.i(34387);
-      Object localObject1 = this.WzD;
-      LinkedList localLinkedList = new LinkedList();
-      localObject1 = ((Set)localObject1).iterator();
-      if (((Iterator)localObject1).hasNext())
+      paramList = (cc)localIterator.next();
+      if ((paramList.dSH()) || (paramList.dSJ()))
       {
-        Long localLong = (Long)((Iterator)localObject1).next();
-        bh.beI();
-        Object localObject2 = c.bbO().Oq(localLong.longValue());
-        if (((et)localObject2).field_msgId == localLong.longValue())
-        {
-          if (!((ca)localObject2).erk()) {
-            break label146;
-          }
-          b.mcf.g((ca)localObject2, l.v((ca)localObject2));
+        paramList = ab.Qo(paramList.field_imgPath);
+        if (paramList == null) {
+          break label547;
         }
-        for (;;)
+        i = paramList.osy;
+        if (!ab.bOG()) {
+          break label542;
+        }
+        paramList = ab.Qo(paramList.oYk);
+      }
+    }
+    for (;;)
+    {
+      l1 = i + l1;
+      Log.d(TAG, "sumSelectedMsgFileSize, videoSize:%s", new Object[] { Integer.valueOf(i) });
+      if (paramList != null)
+      {
+        l1 += paramList.osy;
+        Log.d(TAG, "sumSelectedMsgFileSize, after add origin videoSize:%s", new Object[] { Long.valueOf(l1) });
+        break;
+        long l2;
+        if (paramList.iYk())
         {
-          localLinkedList.add(localLong);
-          localObject2 = new sc();
-          ((sc)localObject2).fRw.type = 3;
-          ((sc)localObject2).fRw.msgId = localLong.longValue();
-          EventCenter.instance.publish((IEvent)localObject2);
+          paramList = r.bKa().G(paramList.field_talker, paramList.field_msgSvrId);
+          l2 = paramList.osy;
+          Log.d(TAG, "sumSelectedMsgFileSize, imgSize:%s", new Object[] { Integer.valueOf(paramList.osy) });
+          l1 = l2 + l1;
           break;
-          label146:
-          b.mcf.al((ca)localObject2);
         }
+        if (paramList.fxR())
+        {
+          paramList = k.b.Hf(paramList.field_content);
+          if ((paramList != null) && (paramList.type == 6))
+          {
+            l2 = paramList.nRd;
+            Log.d(TAG, "sumSelectedMsgFileSize, fileSize:%s", new Object[] { Integer.valueOf(paramList.nRd) });
+            l1 = l2 + l1;
+            break;
+          }
+          if ((paramList == null) || ((paramList.type != 24) && (paramList.type != 19))) {
+            break;
+          }
+          paramList = q.aSH(paramList.nRF);
+          if (paramList != null)
+          {
+            paramList = paramList.nUC.iterator();
+            i = 0;
+            for (;;)
+            {
+              j = i;
+              if (!paramList.hasNext()) {
+                break;
+              }
+              Object localObject = (arf)paramList.next();
+              if (((arf)localObject).dataType == 17)
+              {
+                localObject = q.aSH(((arf)localObject).ZzO);
+                if (localObject != null)
+                {
+                  localObject = ((c)localObject).nUC.iterator();
+                  for (j = 0;; j = (int)((arf)((Iterator)localObject).next()).Zza + j)
+                  {
+                    k = j;
+                    if (!((Iterator)localObject).hasNext()) {
+                      break;
+                    }
+                  }
+                }
+                int k = 0;
+                i += k;
+              }
+              else
+              {
+                i = (int)((arf)localObject).Zza + i;
+              }
+            }
+          }
+          int j = 0;
+          l2 = j;
+          Log.d(TAG, "sumSelectedMsgFileSize, noteSize:%s", new Object[] { Integer.valueOf(j) });
+          l1 = l2 + l1;
+          break;
+        }
+        if ((paramList.fxT()) || (!paramList.jbB())) {
+          break;
+        }
+        break;
+        Log.i(TAG, "sumSelectedMsgFileSize, totalSize:%s", new Object[] { Long.valueOf(l1) });
+        if (l1 > paramLong)
+        {
+          AppMethodBeat.o(253903);
+          return true;
+        }
+        AppMethodBeat.o(253903);
+        return false;
       }
-      bq.ap(localLinkedList);
-      if (this.WzF != null) {
-        this.WzF.b(z.a.lqr);
-      }
-      AppMethodBeat.o(34387);
-      return true;
+      break;
+      label542:
+      paramList = null;
+      continue;
+      label547:
+      paramList = null;
+      i = 0;
     }
-    
-    public final boolean onPostExecute()
+  }
+  
+  public static boolean j(List<? extends cc> paramList, long paramLong)
+  {
+    AppMethodBeat.i(253907);
+    s.u(paramList, "selectItems");
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      AppMethodBeat.i(34388);
-      if (this.WzE != null)
+      Object localObject = (cc)paramList.next();
+      if (((cc)localObject).fxR())
       {
-        this.WzE.dismiss();
-        if (this.WzF != null) {
-          this.WzF.c(z.a.lqr);
+        localObject = k.b.Hf(((fi)localObject).field_content);
+        if ((localObject != null) && (((k.b)localObject).type == 6) && (((k.b)localObject).nRd > paramLong))
+        {
+          Log.w(TAG, "file is too large, %s", new Object[] { Util.getSizeKB(((k.b)localObject).nRd) });
+          AppMethodBeat.o(253907);
+          return true;
         }
       }
-      AppMethodBeat.o(34388);
-      return true;
     }
+    AppMethodBeat.o(253907);
+    return false;
   }
 }
 

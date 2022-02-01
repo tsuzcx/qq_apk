@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android1:persistent="true" android:key="settings_active_silence_time" android:summary="@string/gn7" android:title="@string/gn5" />
-    <CheckBoxPreference android1:persistent="true" android:key="settings_active_time_full" android:summary="@string/gn7" android:title="@string/gn6" />
-    <Preference android:key="settings_active_begin_time" android:layout="@layout/b8j" android:title="@string/gn3" />
-    <Preference android:key="settings_active_end_time" android:layout="@layout/b8j" android:title="@string/gn4" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory mm:key="settings_netstat_info" />
+    <Preference mm:key="settings_netstat_mobile" mm:layout="@layout/bdi" mm:title="@string/iv_" />
+    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_mobile_detail" mm:layout="@layout/bdi" mm:srcType="gvw" />
+    <PreferenceCategory />
+    <Preference mm:key="settings_netstat_wifi" mm:layout="@layout/bdi" mm:title="@string/ivd" />
+    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_wifi_detail" mm:layout="@layout/bdi" mm:srcType="kt1" />
+    <Preference mm:key="settings_netstat_tip" mm:layout="@layout/bf0" mm:title="@string/j0y" />
 </PreferenceScreen>

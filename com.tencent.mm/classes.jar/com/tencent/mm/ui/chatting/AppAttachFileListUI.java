@@ -1,7 +1,5 @@
 package com.tencent.mm.ui.chatting;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -20,9 +17,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.h;
 import com.tencent.mm.R.i;
 import com.tencent.mm.R.l;
-import com.tencent.mm.aj.k.b;
-import com.tencent.mm.f.c.et;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.autogen.b.fi;
+import com.tencent.mm.message.k.b;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
@@ -30,11 +26,11 @@ import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.pluginsdk.j.f;
-import com.tencent.mm.pluginsdk.model.v;
+import com.tencent.mm.pluginsdk.model.x;
+import com.tencent.mm.pluginsdk.platformtools.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import java.util.ArrayList;
@@ -47,47 +43,24 @@ public class AppAttachFileListUI
   extends MMActivity
   implements i.a
 {
-  private ArrayList<c> WwP;
-  private HashSet<Long> WwQ;
-  private ListView WwR;
-  private b WwS;
-  private boolean WwT;
-  private boolean WwU;
-  private View WwV;
+  private ArrayList<c> aeeg;
+  private HashSet<Long> aeeh;
+  private ListView aeei;
+  private b aeej;
+  private boolean aeek;
+  private boolean aeel;
+  private View aeem;
   private int startIndex;
-  private AdapterView.OnItemClickListener syv;
-  private AbsListView.OnScrollListener tOW;
+  private AdapterView.OnItemClickListener vEc;
+  private AbsListView.OnScrollListener wSm;
   
   public AppAttachFileListUI()
   {
     AppMethodBeat.i(34189);
-    this.WwT = true;
-    this.WwU = false;
-    this.syv = new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(34182);
-        b localb = new b();
-        localb.bn(paramAnonymousAdapterView);
-        localb.bn(paramAnonymousView);
-        localb.sg(paramAnonymousInt);
-        localb.Fs(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/AppAttachFileListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
-        paramAnonymousView = new Intent();
-        paramAnonymousView.setClassName(AppAttachFileListUI.this, "com.tencent.mm.ui.chatting.AppAttachDownloadUI");
-        paramAnonymousView.putExtra("app_msg_id", ((AppAttachFileListUI.c)AppAttachFileListUI.a(AppAttachFileListUI.this).get(paramAnonymousInt)).fNz.field_msgId);
-        paramAnonymousView.setFlags(67108864);
-        paramAnonymousAdapterView = AppAttachFileListUI.this;
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousAdapterView, paramAnonymousView.aFh(), "com/tencent/mm/ui/chatting/AppAttachFileListUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.sf(0));
-        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousAdapterView, "com/tencent/mm/ui/chatting/AppAttachFileListUI$2", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/AppAttachFileListUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(34182);
-      }
-    };
-    this.tOW = new AbsListView.OnScrollListener()
+    this.aeek = true;
+    this.aeel = false;
+    this.vEc = new AppAttachFileListUI.2(this);
+    this.wSm = new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
@@ -107,53 +80,53 @@ public class AppAttachFileListUI
     AppMethodBeat.o(34189);
   }
   
-  private c bx(ca paramca)
+  private c bK(cc paramcc)
   {
     AppMethodBeat.i(34194);
-    k.b localb = k.b.OQ(paramca.field_content);
+    k.b localb = k.b.Hf(paramcc.field_content);
     if (localb == null)
     {
       AppMethodBeat.o(34194);
       return null;
     }
     c localc = new c((byte)0);
-    localc.fNz = paramca;
-    localc.WwX = localb;
+    localc.hTm = paramcc;
+    localc.aeeo = localb;
     AppMethodBeat.o(34194);
     return localc;
   }
   
-  private void jn(List<ca> paramList)
+  private void my(List<cc> paramList)
   {
     AppMethodBeat.i(34193);
     if (paramList.size() < 20)
     {
-      this.WwT = false;
-      this.WwR.removeFooterView(this.WwV);
+      this.aeek = false;
+      this.aeei.removeFooterView(this.aeem);
     }
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      ca localca = (ca)localIterator.next();
-      c localc = bx(localca);
-      if ((localc != null) && (localc.WwX.type == 6) && (this.WwQ.add(Long.valueOf(localca.field_msgId)))) {
-        this.WwP.add(localc);
+      cc localcc = (cc)localIterator.next();
+      c localc = bK(localcc);
+      if ((localc != null) && (localc.aeeo.type == 6) && (this.aeeh.add(Long.valueOf(localcc.field_msgId)))) {
+        this.aeeg.add(localc);
       }
     }
-    Log.d("MicroMsg.AppAttachFileListUI", "append file item list size %d, current total size is %d", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(this.WwP.size()) });
+    Log.d("MicroMsg.AppAttachFileListUI", "append file item list size %d, current total size is %d", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(this.aeeg.size()) });
     AppMethodBeat.o(34193);
   }
   
   public int getLayoutId()
   {
-    return R.i.ebx;
+    return R.i.gef;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(34190);
     super.onCreate(paramBundle);
-    setMMTitle(R.l.eEQ);
+    setMMTitle(R.l.gHJ);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -164,31 +137,31 @@ public class AppAttachFileListUI
         return true;
       }
     });
-    this.WwR = ((ListView)findViewById(R.h.dGR));
-    this.WwV = getLayoutInflater().inflate(R.i.ebv, null);
-    this.WwR.addFooterView(this.WwV);
-    this.WwV.setVisibility(8);
-    this.WwP = new ArrayList();
-    this.WwQ = new HashSet();
-    paramBundle = z.bcZ();
-    bh.beI();
-    paramBundle = c.bbO().au(paramBundle, 0, 20);
+    this.aeei = ((ListView)findViewById(R.h.fHY));
+    this.aeem = getLayoutInflater().inflate(R.i.ged, null);
+    this.aeei.addFooterView(this.aeem);
+    this.aeem.setVisibility(8);
+    this.aeeg = new ArrayList();
+    this.aeeh = new HashSet();
+    paramBundle = z.bAM();
+    bh.bCz();
+    paramBundle = c.bzD().aB(paramBundle, 0, 20);
     this.startIndex += 20;
-    jn(paramBundle);
-    this.WwS = new b((byte)0);
-    this.WwR.setAdapter(this.WwS);
-    this.WwR.setOnItemClickListener(this.syv);
-    this.WwR.setOnScrollListener(this.tOW);
-    bh.beI();
-    c.bbO().a(this, getMainLooper());
+    my(paramBundle);
+    this.aeej = new b((byte)0);
+    this.aeei.setAdapter(this.aeej);
+    this.aeei.setOnItemClickListener(this.vEc);
+    this.aeei.setOnScrollListener(this.wSm);
+    bh.bCz();
+    c.bzD().a(this, getMainLooper());
     AppMethodBeat.o(34190);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(34192);
-    bh.beI();
-    c.bbO().a(this);
+    bh.bCz();
+    c.bzD().a(this);
     super.onDestroy();
     AppMethodBeat.o(34192);
   }
@@ -196,24 +169,24 @@ public class AppAttachFileListUI
   public void onNotifyChange(i parami, i.c paramc)
   {
     AppMethodBeat.i(34195);
-    if ("insert".equals(paramc.EVM))
+    if ("insert".equals(paramc.KRm))
     {
       Log.d("MicroMsg.AppAttachFileListUI", "reveive a msg");
-      int i = paramc.kvM.size() - 1;
+      int i = paramc.mZo.size() - 1;
       while (i >= 0)
       {
-        parami = (ca)paramc.kvM.get(i);
-        if (parami.erk())
+        parami = (cc)paramc.mZo.get(i);
+        if (parami.fxR())
         {
-          parami = bx(parami);
-          if ((parami != null) && (parami.WwX.type == 6)) {
-            this.WwP.add(0, parami);
+          parami = bK(parami);
+          if ((parami != null) && (parami.aeeo.type == 6)) {
+            this.aeeg.add(0, parami);
           }
         }
         i -= 1;
       }
-      if (this.WwS != null) {
-        this.WwS.notifyDataSetChanged();
+      if (this.aeej != null) {
+        this.aeej.notifyDataSetChanged();
       }
     }
     AppMethodBeat.o(34195);
@@ -233,7 +206,7 @@ public class AppAttachFileListUI
   }
   
   final class a
-    extends AsyncTask<Integer, Integer, List<ca>>
+    extends AsyncTask<Integer, Integer, List<cc>>
   {
     private a() {}
   }
@@ -270,27 +243,27 @@ public class AppAttachFileListUI
       AppAttachFileListUI.c localc;
       if (paramView == null)
       {
-        paramView = AppAttachFileListUI.this.getLayoutInflater().inflate(R.i.ebw, paramViewGroup, false);
+        paramView = AppAttachFileListUI.this.getLayoutInflater().inflate(R.i.gee, paramViewGroup, false);
         Assert.assertNotNull(paramView);
         paramViewGroup = new AppAttachFileListUI.d(AppAttachFileListUI.this, (byte)0);
-        paramViewGroup.WwY = ((MMImageView)paramView.findViewById(R.h.dGO));
-        paramViewGroup.WwZ = ((TextView)paramView.findViewById(R.h.dGQ));
-        paramViewGroup.Wxa = ((TextView)paramView.findViewById(R.h.dGN));
-        paramViewGroup.Wxb = ((TextView)paramView.findViewById(R.h.dGP));
+        paramViewGroup.aeep = ((MMImageView)paramView.findViewById(R.h.fHV));
+        paramViewGroup.aeeq = ((TextView)paramView.findViewById(R.h.fHX));
+        paramViewGroup.aeer = ((TextView)paramView.findViewById(R.h.fHU));
+        paramViewGroup.aees = ((TextView)paramView.findViewById(R.h.fHW));
         paramView.setTag(paramViewGroup);
         Assert.assertNotNull(paramViewGroup);
         localc = (AppAttachFileListUI.c)AppAttachFileListUI.a(AppAttachFileListUI.this).get(paramInt);
-        paramViewGroup.WwZ.setText(localc.WwX.title);
-        if (localc.fNz.field_isSend != 1) {
+        paramViewGroup.aeeq.setText(localc.aeeo.title);
+        if (localc.hTm.field_isSend != 1) {
           break label249;
         }
       }
       label249:
-      for (String str = "自己";; str = aa.PJ(localc.WwX.fLi))
+      for (String str = "自己";; str = aa.getDisplayName(localc.aeeo.hQQ))
       {
-        paramViewGroup.Wxa.setText(String.format("大小：%s，来自：%s", new Object[] { Util.getSizeKB(localc.WwX.llX), str }));
-        paramViewGroup.Wxb.setText(f.d(AppAttachFileListUI.this, localc.fNz.field_createTime, true));
-        paramViewGroup.WwY.setImageResource(v.bpJ(localc.WwX.llY));
+        paramViewGroup.aeer.setText(String.format("大小：%s，来自：%s", new Object[] { Util.getSizeKB(localc.aeeo.nRd), str }));
+        paramViewGroup.aees.setText(f.d(AppAttachFileListUI.this, localc.hTm.getCreateTime(), true));
+        paramViewGroup.aeep.setImageResource(x.bpA(localc.aeeo.nRe));
         AppMethodBeat.o(34188);
         return paramView;
         paramViewGroup = (AppAttachFileListUI.d)paramView.getTag();
@@ -301,25 +274,25 @@ public class AppAttachFileListUI
   
   final class c
   {
-    public k.b WwX;
-    public ca fNz;
+    public k.b aeeo;
+    public cc hTm;
     
     private c() {}
   }
   
   final class d
   {
-    public MMImageView WwY;
-    public TextView WwZ;
-    public TextView Wxa;
-    public TextView Wxb;
+    public MMImageView aeep;
+    public TextView aeeq;
+    public TextView aeer;
+    public TextView aees;
     
     private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachFileListUI
  * JD-Core Version:    0.7.0.1
  */

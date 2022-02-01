@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface c
 {
-  public static final c bdB = new c()
+  public static final c cXv = new c()
   {
     public final boolean g(Format paramAnonymousFormat)
     {
       AppMethodBeat.i(92469);
-      paramAnonymousFormat = paramAnonymousFormat.aMQ;
+      paramAnonymousFormat = paramAnonymousFormat.cGN;
       if (("application/id3".equals(paramAnonymousFormat)) || ("application/x-emsg".equals(paramAnonymousFormat)) || ("application/x-scte35".equals(paramAnonymousFormat)))
       {
         AppMethodBeat.o(92469);
@@ -23,7 +23,7 @@ public abstract interface c
     public final a h(Format paramAnonymousFormat)
     {
       AppMethodBeat.i(92470);
-      paramAnonymousFormat = paramAnonymousFormat.aMQ;
+      paramAnonymousFormat = paramAnonymousFormat.cGN;
       int i = -1;
       switch (paramAnonymousFormat.hashCode())
       {

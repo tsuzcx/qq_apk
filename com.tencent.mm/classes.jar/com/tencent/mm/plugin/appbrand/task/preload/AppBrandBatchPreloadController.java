@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.appbrand.task.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.pm;
+import com.tencent.mm.autogen.mmdata.rpt.tf;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.game.a.o;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
-import com.tencent.mm.plugin.appbrand.service.z;
+import com.tencent.mm.plugin.appbrand.service.ab;
 import com.tencent.mm.plugin.appbrand.task.h.b;
+import com.tencent.mm.plugin.appbrand.task.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +31,7 @@ public class AppBrandBatchPreloadController
   private void dealPreload(c paramc, PreloadAppInfo paramPreloadAppInfo)
   {
     AppMethodBeat.i(48495);
-    switch (AppBrandBatchPreloadController.5.qSp[paramc.ordinal()])
+    switch (AppBrandBatchPreloadController.5.tWU[paramc.ordinal()])
     {
     }
     for (;;)
@@ -65,32 +67,32 @@ public class AppBrandBatchPreloadController
   private void preloadMiniProgramEnv(final int paramInt, PRELOAD_ENV_LEVEL paramPRELOAD_ENV_LEVEL, boolean paramBoolean)
   {
     AppMethodBeat.i(48496);
-    paramPRELOAD_ENV_LEVEL = com.tencent.mm.plugin.appbrand.task.n.qRU;
+    paramPRELOAD_ENV_LEVEL = l.tWy;
     if (paramInt == 1004) {
-      paramPRELOAD_ENV_LEVEL = com.tencent.mm.plugin.appbrand.task.n.qRT;
+      paramPRELOAD_ENV_LEVEL = l.tWx;
     }
-    while ((!com.tencent.mm.plugin.appbrand.game.a.n.bOz()) && (this.mIsGameEnv) && (paramPRELOAD_ENV_LEVEL == com.tencent.mm.plugin.appbrand.task.n.qRT))
+    while ((!o.coO()) && (this.mIsGameEnv) && (paramPRELOAD_ENV_LEVEL == l.tWx))
     {
-      XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, AppBrandBatchPreloadController.a.class, null);
+      XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.mzv, AppBrandBatchPreloadController.a.class, null);
       AppMethodBeat.o(48496);
       return;
       if (paramInt == 1000) {
-        paramPRELOAD_ENV_LEVEL = com.tencent.mm.plugin.appbrand.task.n.qRS;
+        paramPRELOAD_ENV_LEVEL = l.tWw;
       }
     }
     if (com.tencent.mm.plugin.appbrand.task.h.k(paramPRELOAD_ENV_LEVEL))
     {
-      if (paramPRELOAD_ENV_LEVEL == com.tencent.mm.plugin.appbrand.task.n.qRT) {}
+      if (paramPRELOAD_ENV_LEVEL == l.tWx) {}
       for (boolean bool = true;; bool = false)
       {
-        paramInt = e.jB(bool);
-        com.tencent.mm.plugin.report.service.h.IzE.el(paramInt, z.qPb.qPo);
+        paramInt = e.kP(bool);
+        com.tencent.mm.plugin.report.service.h.OAn.kJ(paramInt, ab.tTS.tTC);
         com.tencent.mm.plugin.appbrand.task.h.a(paramPRELOAD_ENV_LEVEL, new h.b()
         {
-          public final void NR()
+          public final void onReady()
           {
             AppMethodBeat.i(48483);
-            com.tencent.mm.plugin.report.service.h.IzE.el(paramInt, z.qPb.qPp);
+            com.tencent.mm.plugin.report.service.h.OAn.kJ(paramInt, ab.tTS.tTD);
             Log.i("MicroMsg.Predownload.AppBrandBatchPreloadController", "preloadMiniProgramEnv success");
             AppMethodBeat.o(48483);
           }
@@ -137,8 +139,8 @@ public class AppBrandBatchPreloadController
           AppMethodBeat.o(48494);
           return "fail:preloadList is empty";
         }
-        b.cjj();
-        localObject1 = b.eV(this.mBusinessScene, k);
+        b.cKj();
+        localObject1 = b.fO(this.mBusinessScene, k);
         if (((localObject1 == null) || (((Map)localObject1).size() <= 0)) && (this.mBusinessScene != 1))
         {
           Log.e("MicroMsg.Predownload.AppBrandBatchPreloadController", "predictRate null businessScene:%d,innerScene:%d", new Object[] { Integer.valueOf(this.mBusinessScene), Integer.valueOf(k) });
@@ -167,15 +169,15 @@ public class AppBrandBatchPreloadController
             localPreloadAppInfo.appId = ((JSONObject)localObject2).optString("appId");
             localPreloadAppInfo.appType = ((JSONObject)localObject2).optInt("appType");
             localPreloadAppInfo.path = ((JSONObject)localObject2).optString("path");
-            localObject2 = new pm();
-            ((pm)localObject2).hfw = j;
-            ((pm)localObject2).hfx = this.mBusinessScene;
-            ((pm)localObject2).hfy = k;
-            ((pm)localObject2).gmF = ((pm)localObject2).z("AppId", localPreloadAppInfo.appId, true);
-            ((pm)localObject2).gYN = localPreloadAppInfo.appType;
-            ((pm)localObject2).hfz = ((pm)localObject2).z("openRate", String.valueOf(localPreloadAppInfo.openRate), true);
-            ((pm)localObject2).hee = ((pm)localObject2).z("path", localPreloadAppInfo.path, true);
-            ((pm)localObject2).bpa();
+            localObject2 = new tf();
+            ((tf)localObject2).jBl = j;
+            ((tf)localObject2).jBm = this.mBusinessScene;
+            ((tf)localObject2).jBn = k;
+            ((tf)localObject2).imT = ((tf)localObject2).F("AppId", localPreloadAppInfo.appId, true);
+            ((tf)localObject2).jax = localPreloadAppInfo.appType;
+            ((tf)localObject2).jBo = ((tf)localObject2).F("openRate", String.valueOf(localPreloadAppInfo.openRate), true);
+            ((tf)localObject2).jzR = ((tf)localObject2).F("path", localPreloadAppInfo.path, true);
+            ((tf)localObject2).bMH();
             if (localPreloadAppInfo.openRate < f3)
             {
               Log.i("MicroMsg.Predownload.AppBrandBatchPreloadController", "preloadAppInfo.openRate:%f < mLowLevelRate:%f", new Object[] { Float.valueOf(localPreloadAppInfo.openRate), Float.valueOf(f3) });
@@ -184,16 +186,16 @@ public class AppBrandBatchPreloadController
           }
           else
           {
-            f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSx.ordinal()))).floatValue();
-            f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSy.ordinal()))).floatValue();
+            f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.tXc.ordinal()))).floatValue();
+            f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.tXd.ordinal()))).floatValue();
             continue;
           }
         }
         else
         {
-          f3 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSw.ordinal()))).floatValue();
-          f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSx.ordinal()))).floatValue();
-          f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSy.ordinal()))).floatValue();
+          f3 = ((Float)((Map)localObject1).get(Integer.valueOf(c.tXb.ordinal()))).floatValue();
+          f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.tXc.ordinal()))).floatValue();
+          f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.tXd.ordinal()))).floatValue();
           continue;
         }
         ((ArrayList)localObject1).add(localPreloadAppInfo);
@@ -213,7 +215,7 @@ public class AppBrandBatchPreloadController
         if (paramJSONObject.openRate < f2) {
           break label800;
         }
-        dealPreload(c.qSy, paramJSONObject);
+        dealPreload(c.tXd, paramJSONObject);
       }
       for (;;)
       {
@@ -221,9 +223,9 @@ public class AppBrandBatchPreloadController
         return "ok";
         label800:
         if (paramJSONObject.openRate >= f1) {
-          dealPreload(c.qSx, paramJSONObject);
+          dealPreload(c.tXc, paramJSONObject);
         } else {
-          dealPreload(c.qSw, paramJSONObject);
+          dealPreload(c.tXb, paramJSONObject);
         }
       }
       label831:
@@ -233,7 +235,7 @@ public class AppBrandBatchPreloadController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.AppBrandBatchPreloadController
  * JD-Core Version:    0.7.0.1
  */

@@ -11,48 +11,47 @@ public final class a
   implements com.tencent.mm.kernel.api.c, Runnable
 {
   private final Runnable mRunnable;
-  private volatile boolean rio;
+  private volatile boolean uqk;
   
   public a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(250569);
-    this.rio = false;
+    AppMethodBeat.i(317396);
+    this.uqk = false;
     this.mRunnable = paramRunnable;
-    com.tencent.mm.kernel.a.c.aHV().add(this);
-    AppMethodBeat.o(250569);
+    com.tencent.mm.kernel.a.c.baR().add(this);
+    AppMethodBeat.o(317396);
   }
   
   public final void onAccountInitialized(f.c paramc) {}
   
   public final void onAccountRelease()
   {
-    this.rio = true;
+    this.uqk = true;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(250574);
+    AppMethodBeat.i(317409);
     try
     {
       this.mRunnable.run();
-      AppMethodBeat.o(250574);
+      AppMethodBeat.o(317409);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       if ((localThrowable instanceof ErrnoException))
       {
-        AppMethodBeat.o(250574);
+        AppMethodBeat.o(317409);
         return;
       }
       Log.printErrStackTrace("MicroMsg.AccountScopedRunnable", localThrowable, "caught exception inside AccountScopedRunnable", new Object[0]);
-      if ((!h.aHE().kbT) || (this.rio))
+      if ((!h.baC().mBZ) || (this.uqk))
       {
-        AppMethodBeat.o(250574);
+        AppMethodBeat.o(317409);
         return;
       }
-      AppMethodBeat.o(250574);
-      throw localThrowable;
+      AppMethodBeat.o(317409);
     }
   }
 }

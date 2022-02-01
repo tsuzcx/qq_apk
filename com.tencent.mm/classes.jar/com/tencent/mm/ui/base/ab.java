@@ -1,152 +1,96 @@
 package com.tencent.mm.ui.base;
 
-import android.os.Build.VERSION;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager.widget.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public abstract class ab
   extends a
 {
-  private final aa WpF;
+  public Queue<View> adVa = new LinkedList();
+  public HashMap<Object, Integer> adVb = new HashMap();
+  public SparseArray<Object> adVc = new SparseArray();
   
-  public ab()
+  public abstract MultiTouchImageView WN(int paramInt);
+  
+  public abstract WxImageView WO(int paramInt);
+  
+  public final View aAZ(int paramInt)
   {
-    this(new aa());
+    Object localObject = this.adVc.get(paramInt);
+    if (localObject != null) {
+      return (View)localObject;
+    }
+    return null;
   }
   
-  private ab(aa paramaa)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    this.WpF = paramaa;
-    SparseArray[] arrayOfSparseArray = new SparseArray[1];
-    int i = 0;
-    while (i <= 0)
-    {
-      arrayOfSparseArray[0] = new SparseArray();
-      i += 1;
-    }
-    paramaa.HyH = 1;
-    paramaa.WpE = arrayOfSparseArray[0];
-    paramaa.WpD = arrayOfSparseArray;
+    Log.d("MicroMsg.MMViewPagerAdapter", "destroyItem position %s", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.MMViewPagerAdapter", "destroyItem object %s", new Object[] { Integer.valueOf(paramObject.hashCode()) });
+    this.adVa.add((View)paramObject);
+    this.adVb.remove(paramObject);
+    this.adVc.remove(paramInt);
   }
   
-  public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void detach()
   {
-    paramObject = (View)paramObject;
-    paramViewGroup.removeView(paramObject);
-    paramViewGroup = this.WpF;
-    if (paramViewGroup.HyH == 1) {
-      paramViewGroup.WpE.put(paramInt, paramObject);
-    }
-    for (;;)
-    {
-      if (Build.VERSION.SDK_INT >= 14) {
-        paramObject.setAccessibilityDelegate(null);
-      }
-      return;
-      paramViewGroup.WpD[0].put(paramInt, paramObject);
-    }
+    reset();
   }
   
-  public abstract View e(int paramInt, View paramView);
-  
-  public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  public int firstItemPosForDetermine()
   {
-    Object localObject = this.WpF;
-    if (((aa)localObject).HyH == 1) {
-      localObject = aa.d(((aa)localObject).WpE, paramInt);
+    return -1;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    if (this.adVb.containsKey(paramObject)) {
+      return ((Integer)this.adVb.get(paramObject)).intValue();
     }
-    for (;;)
-    {
-      localObject = e(paramInt, (View)localObject);
+    return -2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    long l = System.currentTimeMillis();
+    Object localObject = null;
+    if (this.adVa.size() > 0) {
+      localObject = (View)this.adVa.poll();
+    }
+    localObject = p(paramInt, (View)localObject);
+    Log.i("MicroMsg.MMViewPagerAdapter", "instantiateItem object %s, parent %s, position: %s.", new Object[] { Integer.valueOf(localObject.hashCode()), ((View)localObject).getParent(), Integer.valueOf(paramInt) });
+    this.adVb.put(localObject, Integer.valueOf(paramInt));
+    this.adVc.put(paramInt, localObject);
+    if (((View)localObject).getParent() == null) {
       paramViewGroup.addView((View)localObject);
-      return localObject;
-      if (((aa)localObject).WpD.length > 0) {
-        localObject = aa.d(localObject.WpD[0], paramInt);
-      } else {
-        localObject = null;
-      }
     }
+    Log.i("MicroMsg.MMViewPagerAdapter", "instantiateItem spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    return localObject;
   }
   
-  public final boolean isViewFromObject(View paramView, Object paramObject)
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
     return paramView == paramObject;
   }
   
-  public void notifyDataSetChanged()
+  public int lastItemPosForDetermine()
   {
-    aa localaa = this.WpF;
-    View[] arrayOfView = localaa.WpB;
-    int[] arrayOfInt = localaa.WpC;
-    int j;
-    label44:
-    View localView;
-    Object localObject2;
-    if (localaa.HyH > 1)
-    {
-      i = 1;
-      localObject1 = localaa.WpE;
-      j = arrayOfView.length - 1;
-      if (j < 0) {
-        break label159;
-      }
-      localView = arrayOfView[j];
-      localObject2 = localObject1;
-      if (localView != null)
-      {
-        m = arrayOfInt[j];
-        arrayOfView[j] = null;
-        arrayOfInt[j] = -1;
-        if (m < 0) {
-          break label154;
-        }
-      }
-    }
-    label154:
-    for (int k = 1;; k = 0)
-    {
-      localObject2 = localObject1;
-      if (k != 0)
-      {
-        if (i != 0) {
-          localObject1 = localaa.WpD[m];
-        }
-        ((SparseArray)localObject1).put(j, localView);
-        localObject2 = localObject1;
-        if (Build.VERSION.SDK_INT >= 14)
-        {
-          localView.setAccessibilityDelegate(null);
-          localObject2 = localObject1;
-        }
-      }
-      j -= 1;
-      localObject1 = localObject2;
-      break label44;
-      i = 0;
-      break;
-    }
-    label159:
-    int m = localaa.WpB.length;
-    int n = localaa.HyH;
-    Object localObject1 = localaa.WpD;
-    int i = 0;
-    while (i < n)
-    {
-      localObject2 = localObject1[i];
-      int i1 = localObject2.size();
-      j = i1 - 1;
-      k = 0;
-      while (k < i1 - m)
-      {
-        localObject2.remove(localObject2.keyAt(j));
-        k += 1;
-        j -= 1;
-      }
-      i += 1;
-    }
-    super.notifyDataSetChanged();
+    return -1;
+  }
+  
+  public abstract Object p(int paramInt, View paramView);
+  
+  public final void reset()
+  {
+    this.adVa.clear();
+    this.adVb.clear();
+    this.adVc.clear();
   }
 }
 

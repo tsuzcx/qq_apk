@@ -5,25 +5,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   extends h
 {
-  private final boolean aJd;
-  private final boolean aJe;
-  private final boolean aJf;
+  private final boolean cBO;
+  private final boolean cBP;
+  private final boolean cBQ;
   private final String value;
   
   c(String paramString)
   {
     AppMethodBeat.i(74705);
     this.value = paramString;
-    this.aJd = "null".equals(paramString);
-    this.aJe = "true".equals(paramString);
-    this.aJf = "false".equals(paramString);
+    this.cBO = "null".equals(paramString);
+    this.cBP = "true".equals(paramString);
+    this.cBQ = "false".equals(paramString);
     AppMethodBeat.o(74705);
+  }
+  
+  public final boolean Pd()
+  {
+    AppMethodBeat.i(74708);
+    if (this.cBO)
+    {
+      bool = super.Pd();
+      AppMethodBeat.o(74708);
+      return bool;
+    }
+    boolean bool = this.cBP;
+    AppMethodBeat.o(74708);
+    return bool;
   }
   
   final void a(i parami)
   {
     AppMethodBeat.i(74706);
-    parami.bi(this.value);
+    parami.cv(this.value);
     AppMethodBeat.o(74706);
   }
   
@@ -61,21 +75,7 @@ final class c
   
   public final boolean isBoolean()
   {
-    return (this.aJe) || (this.aJf);
-  }
-  
-  public final boolean pS()
-  {
-    AppMethodBeat.i(74708);
-    if (this.aJd)
-    {
-      bool = super.pS();
-      AppMethodBeat.o(74708);
-      return bool;
-    }
-    boolean bool = this.aJe;
-    AppMethodBeat.o(74708);
-    return bool;
+    return (this.cBP) || (this.cBQ);
   }
   
   public final String toString()
@@ -85,7 +85,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.eclipsesource.a.c
  * JD-Core Version:    0.7.0.1
  */

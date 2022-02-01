@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet.a.j;
-import com.tencent.mm.plugin.wallet.a.m;
-import com.tencent.mm.plugin.wallet.a.n;
-import com.tencent.mm.plugin.wallet.a.o;
-import com.tencent.mm.plugin.wallet.a.t;
-import com.tencent.mm.protocal.protobuf.eqh;
+import com.tencent.mm.plugin.wallet.model.j;
+import com.tencent.mm.plugin.wallet.model.k;
+import com.tencent.mm.plugin.wallet.model.l;
+import com.tencent.mm.plugin.wallet.model.m;
+import com.tencent.mm.plugin.wallet.model.q;
+import com.tencent.mm.protocal.protobuf.fll;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import e.a.a.e;
+import g.a.a.e;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -27,189 +27,189 @@ public class Orders
   implements Parcelable
 {
   public static final Parcelable.Creator<Orders> CREATOR;
-  public static int ORC;
-  public static int ORD;
-  public String ByB;
-  public String GHz;
-  public String GtW;
-  public double Imo;
-  public int OIp;
-  public String OMa;
-  public String OPh;
-  public long OQL;
-  public double OQM;
-  public int OQN;
-  public int OQO;
-  public String OQP;
-  public String OQQ;
-  public String OQR;
-  public String OQS;
-  public int OQT;
-  public boolean OQU;
-  public String OQV;
-  public long OQW;
-  public String OQX;
-  public String OQY;
-  public Set<String> OQZ;
-  public int ORA;
-  public SimpleCashierInfo ORB;
-  public int ORa;
-  public boolean ORb;
-  public String ORc;
-  public List<Commodity> ORd;
-  public com.tencent.mm.plugin.wallet.a.h ORe;
-  public int ORf;
-  public String ORg;
-  public String ORh;
-  public DeductInfo ORi;
-  public long ORj;
-  public long ORk;
-  public int ORl;
-  public int ORm;
-  public int ORn;
-  public String ORo;
-  public int ORp;
-  public int ORq;
-  public ArrayList<ShowInfo> ORr;
-  public String ORs;
-  public String ORt;
-  public String ORu;
-  public String ORv;
-  public String ORw;
-  public String ORx;
-  public String ORy;
-  public String ORz;
-  public ArrayList<eqh> field_infos;
-  public String fwv;
-  public double fwy;
+  public static int VHw;
+  public static int VHx;
+  public String Hgd;
+  public String MEq;
+  public String MpW;
+  public double OjF;
+  public String VBL;
+  public String VFb;
+  public long VGF;
+  public double VGG;
+  public int VGH;
+  public int VGI;
+  public String VGJ;
+  public String VGK;
+  public String VGL;
+  public String VGM;
+  public int VGN;
+  public boolean VGO;
+  public String VGP;
+  public long VGQ;
+  public String VGR;
+  public String VGS;
+  public Set<String> VGT;
+  public int VGU;
+  public boolean VGV;
+  public String VGW;
+  public List<Commodity> VGX;
+  public com.tencent.mm.plugin.wallet.model.h VGY;
+  public int VGZ;
+  public String VHa;
+  public String VHb;
+  public DeductInfo VHc;
+  public long VHd;
+  public long VHe;
+  public int VHf;
+  public int VHg;
+  public int VHh;
+  public String VHi;
+  public int VHj;
+  public int VHk;
+  public ArrayList<ShowInfo> VHl;
+  public String VHm;
+  public String VHn;
+  public String VHo;
+  public String VHp;
+  public String VHq;
+  public String VHr;
+  public String VHs;
+  public String VHt;
+  public int VHu;
+  public SimpleCashierInfo VHv;
+  public int Vyb;
+  public ArrayList<fll> field_infos;
+  public String hAT;
+  public double hAW;
   public String nickname;
   public String num;
   public String token;
   public String username;
-  public String vhY;
+  public String ytZ;
   
   static
   {
     AppMethodBeat.i(70364);
     CREATOR = new Parcelable.Creator() {};
-    ORC = 0;
-    ORD = 1;
+    VHw = 0;
+    VHx = 1;
     AppMethodBeat.o(70364);
   }
   
   public Orders()
   {
     AppMethodBeat.i(70352);
-    this.fwv = "";
+    this.hAT = "";
     this.token = "";
     this.num = "0";
-    this.fwy = 0.0D;
-    this.OQM = 0.0D;
-    this.OQU = false;
-    this.OQV = "";
-    this.vhY = "";
-    this.OQW = 0L;
-    this.OQX = "";
-    this.OQZ = new HashSet();
-    this.ORa = 0;
-    this.ORc = "";
-    this.ORd = new ArrayList();
-    this.ORe = new com.tencent.mm.plugin.wallet.a.h();
-    this.ORf = 0;
-    this.ORg = "";
-    this.ORh = "";
-    this.ORl = 0;
-    this.ORm = 0;
-    this.ORn = 0;
-    this.ORo = "";
-    this.ORp = 0;
-    this.ORq = 0;
-    this.ORr = new ArrayList();
-    this.ORs = "";
-    this.ORt = "";
+    this.hAW = 0.0D;
+    this.VGG = 0.0D;
+    this.VGO = false;
+    this.VGP = "";
+    this.ytZ = "";
+    this.VGQ = 0L;
+    this.VGR = "";
+    this.VGT = new HashSet();
+    this.VGU = 0;
+    this.VGW = "";
+    this.VGX = new ArrayList();
+    this.VGY = new com.tencent.mm.plugin.wallet.model.h();
+    this.VGZ = 0;
+    this.VHa = "";
+    this.VHb = "";
+    this.VHf = 0;
+    this.VHg = 0;
+    this.VHh = 0;
+    this.VHi = "";
+    this.VHj = 0;
+    this.VHk = 0;
+    this.VHl = new ArrayList();
+    this.VHm = "";
+    this.VHn = "";
     this.field_infos = new ArrayList();
-    this.ORu = "";
-    this.ORx = "";
+    this.VHo = "";
+    this.VHr = "";
     AppMethodBeat.o(70352);
   }
   
   public Orders(Parcel paramParcel)
   {
     AppMethodBeat.i(70362);
-    this.fwv = "";
+    this.hAT = "";
     this.token = "";
     this.num = "0";
-    this.fwy = 0.0D;
-    this.OQM = 0.0D;
-    this.OQU = false;
-    this.OQV = "";
-    this.vhY = "";
-    this.OQW = 0L;
-    this.OQX = "";
-    this.OQZ = new HashSet();
-    this.ORa = 0;
-    this.ORc = "";
-    this.ORd = new ArrayList();
-    this.ORe = new com.tencent.mm.plugin.wallet.a.h();
-    this.ORf = 0;
-    this.ORg = "";
-    this.ORh = "";
-    this.ORl = 0;
-    this.ORm = 0;
-    this.ORn = 0;
-    this.ORo = "";
-    this.ORp = 0;
-    this.ORq = 0;
-    this.ORr = new ArrayList();
-    this.ORs = "";
-    this.ORt = "";
+    this.hAW = 0.0D;
+    this.VGG = 0.0D;
+    this.VGO = false;
+    this.VGP = "";
+    this.ytZ = "";
+    this.VGQ = 0L;
+    this.VGR = "";
+    this.VGT = new HashSet();
+    this.VGU = 0;
+    this.VGW = "";
+    this.VGX = new ArrayList();
+    this.VGY = new com.tencent.mm.plugin.wallet.model.h();
+    this.VGZ = 0;
+    this.VHa = "";
+    this.VHb = "";
+    this.VHf = 0;
+    this.VHg = 0;
+    this.VHh = 0;
+    this.VHi = "";
+    this.VHj = 0;
+    this.VHk = 0;
+    this.VHl = new ArrayList();
+    this.VHm = "";
+    this.VHn = "";
     this.field_infos = new ArrayList();
-    this.ORu = "";
-    this.ORx = "";
-    this.OQL = paramParcel.readLong();
-    this.fwv = paramParcel.readString();
+    this.VHo = "";
+    this.VHr = "";
+    this.VGF = paramParcel.readLong();
+    this.hAT = paramParcel.readString();
     this.token = paramParcel.readString();
     this.num = paramParcel.readString();
-    this.fwy = paramParcel.readDouble();
-    this.OIp = paramParcel.readInt();
-    this.GHz = paramParcel.readString();
-    this.Imo = paramParcel.readDouble();
-    this.OQM = paramParcel.readDouble();
-    this.OQN = paramParcel.readInt();
-    this.OMa = paramParcel.readString();
-    this.OPh = paramParcel.readString();
-    this.OQO = paramParcel.readInt();
-    this.OQP = paramParcel.readString();
+    this.hAW = paramParcel.readDouble();
+    this.Vyb = paramParcel.readInt();
+    this.MEq = paramParcel.readString();
+    this.OjF = paramParcel.readDouble();
+    this.VGG = paramParcel.readDouble();
+    this.VGH = paramParcel.readInt();
+    this.VBL = paramParcel.readString();
+    this.VFb = paramParcel.readString();
+    this.VGI = paramParcel.readInt();
+    this.VGJ = paramParcel.readString();
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
-    this.GtW = paramParcel.readString();
-    this.OQQ = paramParcel.readString();
-    this.OQR = paramParcel.readString();
-    this.OQS = paramParcel.readString();
-    this.OQT = paramParcel.readInt();
+    this.MpW = paramParcel.readString();
+    this.VGK = paramParcel.readString();
+    this.VGL = paramParcel.readString();
+    this.VGM = paramParcel.readString();
+    this.VGN = paramParcel.readInt();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.OQU = bool1;
-      this.OQV = paramParcel.readString();
-      this.vhY = paramParcel.readString();
-      this.OQW = paramParcel.readLong();
-      this.OQX = paramParcel.readString();
-      paramParcel.readTypedList(this.ORd, Commodity.CREATOR);
-      this.OQY = paramParcel.readString();
-      this.OQZ = bgP(this.OQY);
-      this.ORa = paramParcel.readInt();
-      this.ORc = paramParcel.readString();
-      this.ORi = ((DeductInfo)paramParcel.readParcelable(DeductInfo.class.getClassLoader()));
-      this.ORl = paramParcel.readInt();
-      this.ORm = paramParcel.readInt();
-      this.ORq = paramParcel.readInt();
-      this.ORt = paramParcel.readString();
-      this.ORs = paramParcel.readString();
-      this.ORp = paramParcel.readInt();
-      paramParcel.readTypedList(this.ORr, ShowInfo.CREATOR);
-      this.ORB = ((SimpleCashierInfo)paramParcel.readParcelable(SimpleCashierInfo.class.getClassLoader()));
-      this.ByB = paramParcel.readString();
+      this.VGO = bool1;
+      this.VGP = paramParcel.readString();
+      this.ytZ = paramParcel.readString();
+      this.VGQ = paramParcel.readLong();
+      this.VGR = paramParcel.readString();
+      paramParcel.readTypedList(this.VGX, Commodity.CREATOR);
+      this.VGS = paramParcel.readString();
+      this.VGT = bgw(this.VGS);
+      this.VGU = paramParcel.readInt();
+      this.VGW = paramParcel.readString();
+      this.VHc = ((DeductInfo)paramParcel.readParcelable(DeductInfo.class.getClassLoader()));
+      this.VHf = paramParcel.readInt();
+      this.VHg = paramParcel.readInt();
+      this.VHk = paramParcel.readInt();
+      this.VHn = paramParcel.readString();
+      this.VHm = paramParcel.readString();
+      this.VHj = paramParcel.readInt();
+      paramParcel.readTypedList(this.VHl, ShowInfo.CREATOR);
+      this.VHv = ((SimpleCashierInfo)paramParcel.readParcelable(SimpleCashierInfo.class.getClassLoader()));
+      this.Hgd = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
         break label591;
       }
@@ -217,7 +217,7 @@ public class Orders
     label591:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.ORb = bool1;
+      this.VGV = bool1;
       AppMethodBeat.o(70362);
       return;
       bool1 = false;
@@ -238,14 +238,14 @@ public class Orders
         localObject1 = paramJSONObject.optJSONObject("appservice");
         if (localObject1 != null)
         {
-          paramOrders.OQR = ((JSONObject)localObject1).optString("app_recommend_desc");
-          paramOrders.OQS = ((JSONObject)localObject1).optString("app_telephone");
-          paramOrders.OQT = ((JSONObject)localObject1).optInt("recommend_level", 2);
-          paramOrders.vhY = ((JSONObject)localObject1).optString("share_to_friends_url");
+          paramOrders.VGL = ((JSONObject)localObject1).optString("app_recommend_desc");
+          paramOrders.VGM = ((JSONObject)localObject1).optString("app_telephone");
+          paramOrders.VGN = ((JSONObject)localObject1).optInt("recommend_level", 2);
+          paramOrders.ytZ = ((JSONObject)localObject1).optString("share_to_friends_url");
         }
-        int j = paramOrders.OQT;
-        localObject1 = paramOrders.ORd;
-        paramOrders.OQV = paramJSONObject.optString("pay_result_tips");
+        int j = paramOrders.VGN;
+        localObject1 = paramOrders.VGX;
+        paramOrders.VGP = paramJSONObject.optString("pay_result_tips");
         JSONArray localJSONArray = paramJSONObject.getJSONArray("payresult");
         int k = localJSONArray.length();
         i = 0;
@@ -256,9 +256,9 @@ public class Orders
           if ((localObject1 != null) && (((List)localObject1).size() == 1))
           {
             localObject2 = (Commodity)((List)localObject1).get(0);
-            ((Commodity)localObject2).ORO = new ArrayList();
-            ((Commodity)localObject2).ORH = new ArrayList();
-            ((Commodity)localObject2).fww = localJSONObject.getString("transaction_id");
+            ((Commodity)localObject2).VHJ = new ArrayList();
+            ((Commodity)localObject2).VHB = new ArrayList();
+            ((Commodity)localObject2).hAU = localJSONObject.getString("transaction_id");
             a((Commodity)localObject2, localJSONObject, j);
           }
           else if (localObject1 != null)
@@ -268,7 +268,7 @@ public class Orders
             if (localIterator.hasNext())
             {
               Commodity localCommodity = (Commodity)localIterator.next();
-              if ((localObject2 == null) || (!((String)localObject2).equals(localCommodity.fww))) {
+              if ((localObject2 == null) || (!((String)localObject2).equals(localCommodity.hAU))) {
                 continue;
               }
               a(localCommodity, localJSONObject, j);
@@ -287,14 +287,14 @@ public class Orders
         localObject1 = paramJSONObject.optJSONObject("extinfo");
         if (localObject1 != null)
         {
-          paramOrders.OQW = (((JSONObject)localObject1).optLong("fetch_pre_arrive_time") * 1000L);
-          paramOrders.OQX = ((JSONObject)localObject1).optString("fetch_pre_arrive_time_wording");
+          paramOrders.VGQ = (((JSONObject)localObject1).optLong("fetch_pre_arrive_time") * 1000L);
+          paramOrders.VGR = ((JSONObject)localObject1).optString("fetch_pre_arrive_time_wording");
         }
-        paramOrders.ORn = paramJSONObject.optInt("is_use_new_paid_succ_page", 0);
-        paramOrders.ORo = paramJSONObject.optString("pay_succ_btn_wording");
-        paramOrders.ORq = paramJSONObject.optInt("is_jsapi_close_page");
-        paramOrders.ORs = paramJSONObject.optString("jsapi_tinyapp_username");
-        paramOrders.ORt = paramJSONObject.optString("jsapi_tinyapp_path");
+        paramOrders.VHh = paramJSONObject.optInt("is_use_new_paid_succ_page", 0);
+        paramOrders.VHi = paramJSONObject.optString("pay_succ_btn_wording");
+        paramOrders.VHk = paramJSONObject.optInt("is_jsapi_close_page");
+        paramOrders.VHm = paramJSONObject.optString("jsapi_tinyapp_username");
+        paramOrders.VHn = paramJSONObject.optString("jsapi_tinyapp_path");
         b(paramOrders, paramJSONObject);
         continue;
         Log.w("MicroMsg.Orders", "oldOrders is null");
@@ -307,36 +307,36 @@ public class Orders
   {
     int i = 0;
     AppMethodBeat.i(70356);
-    paramCommodity.GHD = paramJSONObject.optString("discount");
-    paramCommodity.GHs = paramJSONObject.getString("pay_status");
-    paramCommodity.GHt = paramJSONObject.getString("pay_status_name");
-    paramCommodity.GHx = paramJSONObject.optString("buy_bank_name");
-    paramCommodity.GHv = paramJSONObject.optInt("pay_timestamp");
-    paramCommodity.ORG = paramJSONObject.optString("card_tail");
-    paramCommodity.OQT = paramInt;
-    paramCommodity.ORI = paramJSONObject.optString("rateinfo");
-    paramCommodity.ORJ = paramJSONObject.optString("discount_rateinfo");
-    paramCommodity.ORK = paramJSONObject.optString("original_feeinfo");
+    paramCommodity.DUX = paramJSONObject.optString("discount");
+    paramCommodity.MEj = paramJSONObject.getString("pay_status");
+    paramCommodity.MEk = paramJSONObject.getString("pay_status_name");
+    paramCommodity.MEo = paramJSONObject.optString("buy_bank_name");
+    paramCommodity.MEm = paramJSONObject.optInt("pay_timestamp");
+    paramCommodity.VHA = paramJSONObject.optString("card_tail");
+    paramCommodity.VGN = paramInt;
+    paramCommodity.VHC = paramJSONObject.optString("rateinfo");
+    paramCommodity.VHD = paramJSONObject.optString("discount_rateinfo");
+    paramCommodity.VHE = paramJSONObject.optString("original_feeinfo");
     if (paramJSONObject.has("total_fee")) {
-      paramCommodity.tVK = (paramJSONObject.optDouble("total_fee", 0.0D) / 100.0D);
+      paramCommodity.wZe = (paramJSONObject.optDouble("total_fee", 0.0D) / 100.0D);
     }
-    paramCommodity.ORE = (paramJSONObject.optDouble("original_total_fee", -1.0D) / 100.0D);
-    paramCommodity.GHz = paramJSONObject.optString("fee_type", "");
+    paramCommodity.VHy = (paramJSONObject.optDouble("original_total_fee", -1.0D) / 100.0D);
+    paramCommodity.MEq = paramJSONObject.optString("fee_type", "");
     Object localObject1 = paramJSONObject.optJSONObject("subscribe_biz_info");
     Object localObject2;
     if (localObject1 != null)
     {
       localObject2 = new Promotions();
-      ((Promotions)localObject2).type = ORC;
+      ((Promotions)localObject2).type = VHw;
       ((Promotions)localObject2).name = ((JSONObject)localObject1).optString("nickname");
-      ((Promotions)localObject2).fvb = ((JSONObject)localObject1).optString("username");
-      paramCommodity.ORF = ((Promotions)localObject2).fvb;
-      ((Promotions)localObject2).GUf = ((JSONObject)localObject1).optString("logo_round_url");
+      ((Promotions)localObject2).hzv = ((JSONObject)localObject1).optString("username");
+      paramCommodity.VHz = ((Promotions)localObject2).hzv;
+      ((Promotions)localObject2).MRI = ((JSONObject)localObject1).optString("logo_round_url");
       ((Promotions)localObject2).url = ((JSONObject)localObject1).optString("subscribe_biz_url");
       if ((!Util.isNullOrNil(((Promotions)localObject2).name)) && (!Util.isNullOrNil(((Promotions)localObject2).url)))
       {
-        paramCommodity.ORO.add(localObject2);
-        paramCommodity.ORP = true;
+        paramCommodity.VHJ.add(localObject2);
+        paramCommodity.VHK = true;
       }
     }
     localObject1 = paramJSONObject.getJSONArray("activity_info");
@@ -347,34 +347,34 @@ public class Orders
     {
       localObject2 = ((JSONArray)localObject1).getJSONObject(paramInt);
       localObject3 = new Promotions();
-      ((Promotions)localObject3).type = ORD;
-      ((Promotions)localObject3).GUf = ((JSONObject)localObject2).optString("icon");
+      ((Promotions)localObject3).type = VHx;
+      ((Promotions)localObject3).MRI = ((JSONObject)localObject2).optString("icon");
       ((Promotions)localObject3).name = ((JSONObject)localObject2).optString("wording");
       ((Promotions)localObject3).url = ((JSONObject)localObject2).optString("url");
-      ((Promotions)localObject3).OQF = ((JSONObject)localObject2).optString("btn_text");
-      ((Promotions)localObject3).wYj = ((JSONObject)localObject2).optInt("type");
+      ((Promotions)localObject3).VGz = ((JSONObject)localObject2).optString("btn_text");
+      ((Promotions)localObject3).Avy = ((JSONObject)localObject2).optInt("type");
       ((Promotions)localObject3).title = ((JSONObject)localObject2).optString("title");
-      ((Promotions)localObject3).cpu = ((JSONObject)localObject2).optLong("activity_id");
-      ((Promotions)localObject3).SuA = ((JSONObject)localObject2).optInt("activity_type", 0);
-      ((Promotions)localObject3).SuC = ((JSONObject)localObject2).optString("small_title");
-      ((Promotions)localObject3).SuB = ((JSONObject)localObject2).optInt("award_id");
-      ((Promotions)localObject3).OQC = ((JSONObject)localObject2).optInt("send_record_id");
-      ((Promotions)localObject3).OQD = ((JSONObject)localObject2).optInt("user_record_id");
-      ((Promotions)localObject3).SuD = ((JSONObject)localObject2).optString("activity_tinyapp_username");
-      ((Promotions)localObject3).SuE = ((JSONObject)localObject2).optString("activity_tinyapp_path");
-      ((Promotions)localObject3).OQE = ((JSONObject)localObject2).optLong("activity_mch_id");
-      ((Promotions)localObject3).SuF = ((JSONObject)localObject2).optInt("activity_tinyapp_version");
-      ((Promotions)localObject3).SuG = ((JSONObject)localObject2).optString("get_award_params");
-      ((Promotions)localObject3).SuI = ((JSONObject)localObject2).optString("query_award_status_params");
+      ((Promotions)localObject3).ehe = ((JSONObject)localObject2).optLong("activity_id");
+      ((Promotions)localObject3).akjp = ((JSONObject)localObject2).optInt("activity_type", 0);
+      ((Promotions)localObject3).akjr = ((JSONObject)localObject2).optString("small_title");
+      ((Promotions)localObject3).akjq = ((JSONObject)localObject2).optInt("award_id");
+      ((Promotions)localObject3).VGw = ((JSONObject)localObject2).optInt("send_record_id");
+      ((Promotions)localObject3).VGx = ((JSONObject)localObject2).optInt("user_record_id");
+      ((Promotions)localObject3).akjs = ((JSONObject)localObject2).optString("activity_tinyapp_username");
+      ((Promotions)localObject3).akjt = ((JSONObject)localObject2).optString("activity_tinyapp_path");
+      ((Promotions)localObject3).VGy = ((JSONObject)localObject2).optLong("activity_mch_id");
+      ((Promotions)localObject3).akju = ((JSONObject)localObject2).optInt("activity_tinyapp_version");
+      ((Promotions)localObject3).akjv = ((JSONObject)localObject2).optString("get_award_params");
+      ((Promotions)localObject3).akjw = ((JSONObject)localObject2).optString("query_award_status_params");
       a((Promotions)localObject3, ((JSONObject)localObject2).optJSONObject("exposure_info"));
-      paramCommodity.ORO.add(localObject3);
+      paramCommodity.VHJ.add(localObject3);
       paramInt += 1;
     }
     localObject1 = paramJSONObject.optJSONObject("link_ativity_info");
     if (localObject1 != null)
     {
-      paramCommodity.ORQ.text = ((JSONObject)localObject1).optString("text");
-      paramCommodity.ORQ.url = ((JSONObject)localObject1).optString("url");
+      paramCommodity.VHL.text = ((JSONObject)localObject1).optString("text");
+      paramCommodity.VHL.url = ((JSONObject)localObject1).optString("url");
     }
     localObject1 = paramJSONObject.optJSONArray("discount_array");
     if (localObject1 != null)
@@ -387,9 +387,9 @@ public class Orders
         localObject3 = new DiscountInfo();
         if (localObject2 != null)
         {
-          ((DiscountInfo)localObject3).ORZ = ((JSONObject)localObject2).optDouble("payment_amount");
-          ((DiscountInfo)localObject3).Ila = ((JSONObject)localObject2).optString("favor_desc");
-          paramCommodity.ORH.add(localObject3);
+          ((DiscountInfo)localObject3).VHU = ((JSONObject)localObject2).optDouble("payment_amount");
+          ((DiscountInfo)localObject3).OhO = ((JSONObject)localObject2).optString("favor_desc");
+          paramCommodity.VHB.add(localObject3);
         }
         paramInt += 1;
       }
@@ -397,31 +397,31 @@ public class Orders
     localObject1 = paramJSONObject.optJSONObject("tinyapp_info");
     if (localObject1 != null)
     {
-      if (paramCommodity.ORL == null) {
-        paramCommodity.ORL = new RecommendTinyAppInfo();
+      if (paramCommodity.VHF == null) {
+        paramCommodity.VHF = new RecommendTinyAppInfo();
       }
-      paramCommodity.ORL.ODu = ((JSONObject)localObject1).optString("tinyapp_name");
-      paramCommodity.ORL.OQH = ((JSONObject)localObject1).optString("tinyapp_logo");
-      paramCommodity.ORL.OQI = ((JSONObject)localObject1).optString("tinyapp_desc");
-      paramCommodity.ORL.Ooe = ((JSONObject)localObject1).optString("tinyapp_username");
-      paramCommodity.ORL.Oof = ((JSONObject)localObject1).optString("tinyapp_path");
-      paramCommodity.ORL.OQJ = ((JSONObject)localObject1).optString("activity_tinyapp_btn_text");
-      paramCommodity.ORL.OSt = ((JSONObject)localObject1).optLong("activity_id");
-      paramCommodity.ORL.OSu = ((JSONObject)localObject1).optLong("activity_type");
-      paramCommodity.ORL.OSv = ((JSONObject)localObject1).optLong("award_id");
-      paramCommodity.ORL.OSw = ((JSONObject)localObject1).optInt("send_record_id");
-      paramCommodity.ORL.OSx = ((JSONObject)localObject1).optInt("user_record_id");
-      paramCommodity.ORL.OSy = ((JSONObject)localObject1).optLong("activity_mch_id");
-      paramCommodity.ORL.OQK = ((JSONObject)localObject1).optInt("tinyapp_version");
+      paramCommodity.VHF.VsI = ((JSONObject)localObject1).optString("tinyapp_name");
+      paramCommodity.VHF.VGB = ((JSONObject)localObject1).optString("tinyapp_logo");
+      paramCommodity.VHF.VGC = ((JSONObject)localObject1).optString("tinyapp_desc");
+      paramCommodity.VHF.VcU = ((JSONObject)localObject1).optString("tinyapp_username");
+      paramCommodity.VHF.VcV = ((JSONObject)localObject1).optString("tinyapp_path");
+      paramCommodity.VHF.VGD = ((JSONObject)localObject1).optString("activity_tinyapp_btn_text");
+      paramCommodity.VHF.VIA = ((JSONObject)localObject1).optLong("activity_id");
+      paramCommodity.VHF.VIB = ((JSONObject)localObject1).optLong("activity_type");
+      paramCommodity.VHF.VIC = ((JSONObject)localObject1).optLong("award_id");
+      paramCommodity.VHF.VID = ((JSONObject)localObject1).optInt("send_record_id");
+      paramCommodity.VHF.VIE = ((JSONObject)localObject1).optInt("user_record_id");
+      paramCommodity.VHF.VIF = ((JSONObject)localObject1).optLong("activity_mch_id");
+      paramCommodity.VHF.VGE = ((JSONObject)localObject1).optInt("tinyapp_version");
     }
     paramJSONObject = paramJSONObject.optJSONObject("remarks_info");
     if (paramJSONObject != null)
     {
-      if (paramCommodity.ORN == null) {
-        paramCommodity.ORN = new RemarksInfo();
+      if (paramCommodity.VHI == null) {
+        paramCommodity.VHI = new RemarksInfo();
       }
-      paramCommodity.ORN.OSz = paramJSONObject.optString("remark_title");
-      paramCommodity.ORN.OSA = paramJSONObject.optString("remark_desc");
+      paramCommodity.VHI.VIG = paramJSONObject.optString("remark_title");
+      paramCommodity.VHI.VIH = paramJSONObject.optString("remark_desc");
     }
     AppMethodBeat.o(70356);
   }
@@ -432,136 +432,136 @@ public class Orders
     Log.i("MicroMsg.Orders", "parseExposureInfo: %s", new Object[] { paramJSONObject });
     if (paramJSONObject == null)
     {
-      paramPromotions.OSs = null;
+      paramPromotions.VIz = null;
       AppMethodBeat.o(70357);
       return;
     }
     try
     {
-      e.a.a.c localc = new e.a.a.c();
+      g.a.a.c localc = new g.a.a.c();
       Object localObject = paramJSONObject.optJSONArray("single_exposure_info_list");
       if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
-        localc.SvK = new LinkedList();
+        localc.ZvT = new LinkedList();
         int i = 0;
         while (i < ((JSONArray)localObject).length())
         {
           JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          e.a.a.i locali = new e.a.a.i();
-          locali.GUf = localJSONObject.optString("logo");
-          locali.abEZ = localJSONObject.optString("award_name");
-          locali.abFa = localJSONObject.optString("award_description");
-          locali.abFb = localJSONObject.optString("background_img");
-          locali.abFd = localJSONObject.optString("award_description_color");
-          locali.abFc = localJSONObject.optString("award_name_color");
-          localc.SvK.add(locali);
+          g.a.a.i locali = new g.a.a.i();
+          locali.MRI = localJSONObject.optString("logo");
+          locali.ajGc = localJSONObject.optString("award_name");
+          locali.ajGd = localJSONObject.optString("award_description");
+          locali.ajGe = localJSONObject.optString("background_img");
+          locali.ajGg = localJSONObject.optString("award_description_color");
+          locali.ajGf = localJSONObject.optString("award_name_color");
+          localc.ZvT.add(locali);
           i += 1;
         }
       }
-      localc.abEw = paramJSONObject.optInt("is_query_others", 0);
-      localc.Std = paramJSONObject.optString("draw_lottery_params");
-      localc.SvL = paramJSONObject.optInt("is_show_btn");
-      localc.abEA = paramJSONObject.optString("background_img_whole");
+      localc.ajFz = paramJSONObject.optInt("is_query_others", 0);
+      localc.Zsq = paramJSONObject.optString("draw_lottery_params");
+      localc.ZvU = paramJSONObject.optInt("is_show_btn");
+      localc.ajFD = paramJSONObject.optString("background_img_whole");
       localObject = paramJSONObject.optJSONObject("btn_info");
       if (localObject != null)
       {
-        localc.SvM = new e.a.a.a();
-        localc.SvM.abEo = ((JSONObject)localObject).optString("btn_words");
-        localc.SvM.abEp = ((JSONObject)localObject).optString("btn_color");
-        localc.SvM.abEq = ((JSONObject)localObject).optInt("btn_op_type");
-        localc.SvM.url = ((JSONObject)localObject).optString("url");
-        localc.SvM.Thl = ((JSONObject)localObject).optString("get_lottery_params");
+        localc.ZvV = new g.a.a.a();
+        localc.ZvV.ajFr = ((JSONObject)localObject).optString("btn_words");
+        localc.ZvV.ajFs = ((JSONObject)localObject).optString("btn_color");
+        localc.ZvV.ajFt = ((JSONObject)localObject).optInt("btn_op_type");
+        localc.ZvV.url = ((JSONObject)localObject).optString("url");
+        localc.ZvV.aauB = ((JSONObject)localObject).optString("get_lottery_params");
         localObject = ((JSONObject)localObject).optJSONObject("mini_app_info");
         if (localObject != null)
         {
-          localc.SvM.abEr = new e.a.a.g();
-          localc.SvM.abEr.TQP = ((JSONObject)localObject).optString("activity_tinyapp_username");
-          localc.SvM.abEr.TQQ = ((JSONObject)localObject).optString("activity_tinyapp_path");
-          localc.SvM.abEr.TQR = ((JSONObject)localObject).optInt("activity_tinyapp_version");
+          localc.ZvV.ajFu = new g.a.a.g();
+          localc.ZvV.ajFu.abho = ((JSONObject)localObject).optString("activity_tinyapp_username");
+          localc.ZvV.ajFu.abhp = ((JSONObject)localObject).optString("activity_tinyapp_path");
+          localc.ZvV.ajFu.abhq = ((JSONObject)localObject).optInt("activity_tinyapp_version");
         }
       }
-      localc.SvJ = paramJSONObject.optString("exposure_info_modify_params");
-      localc.abEx = paramJSONObject.optInt("user_opertaion_type");
-      localc.abEy = paramJSONObject.optInt("is_show_layer");
+      localc.ZvS = paramJSONObject.optString("exposure_info_modify_params");
+      localc.ajFA = paramJSONObject.optInt("user_opertaion_type");
+      localc.ajFB = paramJSONObject.optInt("is_show_layer");
       localObject = paramJSONObject.optJSONObject("layer_info");
       if (localObject != null)
       {
-        localc.abEz = new e.a.a.f();
-        localc.abEz.abEN = ((JSONObject)localObject).optString("layer_title");
-        localc.abEz.abEO = ((JSONObject)localObject).optString("layer_logo");
-        localc.abEz.abEP = ((JSONObject)localObject).optString("layer_type");
-        localc.abEz.abEQ = ((JSONObject)localObject).optString("layer_name");
-        localc.abEz.abER = ((JSONObject)localObject).optString("layer_description");
-        localc.abEz.abES = ((JSONObject)localObject).optInt("is_show_layer_btn");
+        localc.ajFC = new g.a.a.f();
+        localc.ajFC.ajFQ = ((JSONObject)localObject).optString("layer_title");
+        localc.ajFC.ajFR = ((JSONObject)localObject).optString("layer_logo");
+        localc.ajFC.ajFS = ((JSONObject)localObject).optString("layer_type");
+        localc.ajFC.ajFT = ((JSONObject)localObject).optString("layer_name");
+        localc.ajFC.ajFU = ((JSONObject)localObject).optString("layer_description");
+        localc.ajFC.ajFV = ((JSONObject)localObject).optInt("is_show_layer_btn");
         if (!Util.isNullOrNil(((JSONObject)localObject).optString("voice_url"))) {
-          localc.abEz.abEU = new com.tencent.mm.cd.b(((JSONObject)localObject).optString("voice_url").getBytes());
+          localc.ajFC.ajFX = new com.tencent.mm.bx.b(((JSONObject)localObject).optString("voice_url").getBytes());
         }
         if (!Util.isNullOrNil(((JSONObject)localObject).optString("voice_data"))) {
-          localc.abEz.Scj = new com.tencent.mm.cd.b(((JSONObject)localObject).optString("voice_data").getBytes());
+          localc.ajFC.Zab = new com.tencent.mm.bx.b(((JSONObject)localObject).optString("voice_data").getBytes());
         }
         localObject = ((JSONObject)localObject).optJSONObject("layer_btn_info");
         if (localObject != null)
         {
-          localc.abEz.abET = new e();
-          localc.abEz.abET.abEo = ((JSONObject)localObject).optString("btn_words");
-          localc.abEz.abET.abEp = ((JSONObject)localObject).optString("btn_color");
-          localc.abEz.abET.abEq = ((JSONObject)localObject).optInt("btn_op_type");
-          localc.abEz.abET.Thl = ((JSONObject)localObject).optString("get_lottery_params");
-          localc.abEz.abET.url = ((JSONObject)localObject).optString("url");
+          localc.ajFC.ajFW = new e();
+          localc.ajFC.ajFW.ajFr = ((JSONObject)localObject).optString("btn_words");
+          localc.ajFC.ajFW.ajFs = ((JSONObject)localObject).optString("btn_color");
+          localc.ajFC.ajFW.ajFt = ((JSONObject)localObject).optInt("btn_op_type");
+          localc.ajFC.ajFW.aauB = ((JSONObject)localObject).optString("get_lottery_params");
+          localc.ajFC.ajFW.url = ((JSONObject)localObject).optString("url");
           localObject = ((JSONObject)localObject).optJSONObject("mini_app_info");
           if (localObject != null)
           {
-            localc.abEz.abET.abEr = new e.a.a.g();
-            localc.abEz.abET.abEr.TQP = ((JSONObject)localObject).optString("activity_tinyapp_username");
-            localc.abEz.abET.abEr.TQQ = ((JSONObject)localObject).optString("activity_tinyapp_path");
-            localc.abEz.abET.abEr.TQR = ((JSONObject)localObject).optInt("activity_tinyapp_version");
+            localc.ajFC.ajFW.ajFu = new g.a.a.g();
+            localc.ajFC.ajFW.ajFu.abho = ((JSONObject)localObject).optString("activity_tinyapp_username");
+            localc.ajFC.ajFW.ajFu.abhp = ((JSONObject)localObject).optString("activity_tinyapp_path");
+            localc.ajFC.ajFW.ajFu.abhq = ((JSONObject)localObject).optInt("activity_tinyapp_version");
           }
         }
       }
       localObject = paramJSONObject.optJSONObject("draw_lottery_info");
       if (localObject != null)
       {
-        localc.abEB = new e.a.a.b();
-        localc.abEB.url = ((JSONObject)localObject).optString("url");
-        localc.abEB.abEs = ((JSONObject)localObject).optString("animation_wording");
-        localc.abEB.abEt = ((JSONObject)localObject).optString("animation_wording_color");
-        localc.abEB.abEu = ((JSONObject)localObject).optString("after_animation_wording");
-        localc.abEB.abEv = ((JSONObject)localObject).optString("after_animation_wording_color");
-        localc.abEB.SLl = ((JSONObject)localObject).optInt("op_type");
+        localc.ajFE = new g.a.a.b();
+        localc.ajFE.url = ((JSONObject)localObject).optString("url");
+        localc.ajFE.ajFv = ((JSONObject)localObject).optString("animation_wording");
+        localc.ajFE.ajFw = ((JSONObject)localObject).optString("animation_wording_color");
+        localc.ajFE.ajFx = ((JSONObject)localObject).optString("after_animation_wording");
+        localc.ajFE.ajFy = ((JSONObject)localObject).optString("after_animation_wording_color");
+        localc.ajFE.YAN = ((JSONObject)localObject).optInt("op_type");
         localObject = ((JSONObject)localObject).optJSONObject("mini_app_info");
         if (localObject != null)
         {
-          localc.abEB.abEr = new e.a.a.g();
-          localc.abEB.abEr.TQP = ((JSONObject)localObject).optString("activity_tinyapp_username");
-          localc.abEB.abEr.TQQ = ((JSONObject)localObject).optString("activity_tinyapp_path");
-          localc.abEB.abEr.TQR = ((JSONObject)localObject).optInt("activity_tinyapp_version");
+          localc.ajFE.ajFu = new g.a.a.g();
+          localc.ajFE.ajFu.abho = ((JSONObject)localObject).optString("activity_tinyapp_username");
+          localc.ajFE.ajFu.abhp = ((JSONObject)localObject).optString("activity_tinyapp_path");
+          localc.ajFE.ajFu.abhq = ((JSONObject)localObject).optInt("activity_tinyapp_version");
         }
       }
       paramJSONObject = paramJSONObject.optJSONObject("follow_cardbd_mch_info");
       if (paramJSONObject != null)
       {
-        localc.abEC = new e.a.a.d();
-        localc.abEC.abED = paramJSONObject.optInt("is_followed_cardbd_mch", 0);
-        localc.abEC.abEF = paramJSONObject.optString("follow_logo", "");
-        localc.abEC.abEE = paramJSONObject.optString("follow_tips", "");
-        localc.abEC.abEG = paramJSONObject.optString("follow_tips_color", "");
-        localc.abEC.abEH = paramJSONObject.optLong("follow_tips_size", 0L);
-        localc.abEC.abEK = paramJSONObject.optString("follow_logo_after", "");
-        localc.abEC.abEM = paramJSONObject.optString("follow_tips_after", "");
-        localc.abEC.abEL = paramJSONObject.optString("follow_tips_color_after", "");
-        localc.abEC.Sld = paramJSONObject.optString("follow_param", "");
-        localc.abEC.abEI = paramJSONObject.optInt("is_show_pop_up", 0);
+        localc.ajFF = new g.a.a.d();
+        localc.ajFF.ajFG = paramJSONObject.optInt("is_followed_cardbd_mch", 0);
+        localc.ajFF.ajFI = paramJSONObject.optString("follow_logo", "");
+        localc.ajFF.ajFH = paramJSONObject.optString("follow_tips", "");
+        localc.ajFF.ajFJ = paramJSONObject.optString("follow_tips_color", "");
+        localc.ajFF.ajFK = paramJSONObject.optLong("follow_tips_size", 0L);
+        localc.ajFF.ajFN = paramJSONObject.optString("follow_logo_after", "");
+        localc.ajFF.ajFP = paramJSONObject.optString("follow_tips_after", "");
+        localc.ajFF.ajFO = paramJSONObject.optString("follow_tips_color_after", "");
+        localc.ajFF.Zjn = paramJSONObject.optString("follow_param", "");
+        localc.ajFF.ajFL = paramJSONObject.optInt("is_show_pop_up", 0);
         paramJSONObject = paramJSONObject.optJSONObject("pop_up_window_info");
         if (paramJSONObject != null)
         {
-          localc.abEC.abEJ = new e.a.a.h();
-          localc.abEC.abEJ.abEV = paramJSONObject.optString("pop_up_title");
-          localc.abEC.abEJ.abEW = paramJSONObject.optString("pop_up_text");
-          localc.abEC.abEJ.abEY = paramJSONObject.optString("pop_up_button_text");
-          localc.abEC.abEJ.abEX = paramJSONObject.optString("pop_up_image_url");
+          localc.ajFF.ajFM = new g.a.a.h();
+          localc.ajFF.ajFM.ajFY = paramJSONObject.optString("pop_up_title");
+          localc.ajFF.ajFM.ajFZ = paramJSONObject.optString("pop_up_text");
+          localc.ajFF.ajFM.ajGb = paramJSONObject.optString("pop_up_button_text");
+          localc.ajFF.ajFM.ajGa = paramJSONObject.optString("pop_up_image_url");
         }
       }
-      paramPromotions.OSs = localc;
+      paramPromotions.VIz = localc;
       AppMethodBeat.o(70357);
       return;
     }
@@ -578,22 +578,22 @@ public class Orders
     if (paramJSONObject != null)
     {
       Log.i("MicroMsg.Orders", "parseDeductInfo json is not null");
-      paramOrders.ORi = new DeductInfo();
-      paramOrders.ORi.title = paramJSONObject.optString("contract_title");
-      paramOrders.ORi.desc = paramJSONObject.optString("contract_desc");
-      paramOrders.ORi.Ozp = paramJSONObject.optInt("auto_deduct_flag", 0);
-      paramOrders.ORi.ORR = paramJSONObject.optString("contract_url");
-      paramOrders.ORi.ORT = paramJSONObject.optInt("is_select_pay_way", 0);
-      paramOrders.ORi.OyD = paramJSONObject.optInt("deduct_show_type", 0);
-      paramOrders.ORi.tpM = paramJSONObject.optString("button_wording", "");
-      paramOrders.ORi.OyE = paramJSONObject.optString("deduct_rule_wording", "");
-      paramOrders.ORi.ORU = paramJSONObject.optString("open_deduct_wording", "");
-      paramOrders.ORi.ORV = paramJSONObject.optString("open_deduct_wording_color", "");
+      paramOrders.VHc = new DeductInfo();
+      paramOrders.VHc.title = paramJSONObject.optString("contract_title");
+      paramOrders.VHc.desc = paramJSONObject.optString("contract_desc");
+      paramOrders.VHc.VoA = paramJSONObject.optInt("auto_deduct_flag", 0);
+      paramOrders.VHc.VHM = paramJSONObject.optString("contract_url");
+      paramOrders.VHc.VHO = paramJSONObject.optInt("is_select_pay_way", 0);
+      paramOrders.VHc.VnO = paramJSONObject.optInt("deduct_show_type", 0);
+      paramOrders.VHc.wul = paramJSONObject.optString("button_wording", "");
+      paramOrders.VHc.VnP = paramJSONObject.optString("deduct_rule_wording", "");
+      paramOrders.VHc.VHP = paramJSONObject.optString("open_deduct_wording", "");
+      paramOrders.VHc.VHQ = paramJSONObject.optString("open_deduct_wording_color", "");
       paramJSONObject = paramJSONObject.optJSONArray("show_info");
       int j = paramJSONObject.length();
       if (j > 0)
       {
-        paramOrders.ORi.ORS = new ArrayList();
+        paramOrders.VHc.VHN = new ArrayList();
         int i = 0;
         if (i < j)
         {
@@ -606,12 +606,12 @@ public class Orders
             localJSONObject = localJSONObject.optJSONObject("value_attr");
             if (localJSONObject != null)
             {
-              localDeductShowInfo.jDZ = localJSONObject.optInt("link_type", 0);
-              localDeductShowInfo.ORW = localJSONObject.optString("link_weapp");
-              localDeductShowInfo.ORX = localJSONObject.optString("link_addr");
-              localDeductShowInfo.ORY = localJSONObject.optString("link_url");
+              localDeductShowInfo.mdV = localJSONObject.optInt("link_type", 0);
+              localDeductShowInfo.VHR = localJSONObject.optString("link_weapp");
+              localDeductShowInfo.VHS = localJSONObject.optString("link_addr");
+              localDeductShowInfo.VHT = localJSONObject.optString("link_url");
             }
-            paramOrders.ORi.ORS.add(localDeductShowInfo);
+            paramOrders.VHc.VHN.add(localDeductShowInfo);
           }
           for (;;)
           {
@@ -637,13 +637,13 @@ public class Orders
     if (paramJSONObject != null) {
       try
       {
-        paramOrders.ORp = paramJSONObject.optInt("is_use_show_info", 0);
-        Log.i("MicroMsg.Orders", "is_use_show_info: %s", new Object[] { Integer.valueOf(paramOrders.ORp) });
+        paramOrders.VHj = paramJSONObject.optInt("is_use_show_info", 0);
+        Log.i("MicroMsg.Orders", "is_use_show_info: %s", new Object[] { Integer.valueOf(paramOrders.VHj) });
         paramJSONObject = paramJSONObject.optJSONArray("show_info");
         if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
         {
           Log.i("MicroMsg.Orders", "showInfo size: %s", new Object[] { Integer.valueOf(paramJSONObject.length()) });
-          paramOrders.ORr = new ArrayList();
+          paramOrders.VHl = new ArrayList();
           int i = 0;
           while (i < paramJSONObject.length())
           {
@@ -653,19 +653,19 @@ public class Orders
               ShowInfo localShowInfo = new ShowInfo();
               localShowInfo.name = localJSONObject.optString("name");
               localShowInfo.value = localJSONObject.optString("value");
-              localShowInfo.CIl = localJSONObject.optString("name_color");
-              localShowInfo.OSB = localJSONObject.optString("value_color");
+              localShowInfo.ICv = localJSONObject.optString("name_color");
+              localShowInfo.VII = localJSONObject.optString("value_color");
               localJSONObject = localJSONObject.optJSONObject("value_attr");
               if (localJSONObject != null)
               {
-                localShowInfo.OSC = localJSONObject.optInt("link_type");
-                localShowInfo.OSD = localJSONObject.optString("link_weapp");
-                localShowInfo.OSE = localJSONObject.optString("link_addr");
-                localShowInfo.OSF = localJSONObject.optString("link_url");
-                localShowInfo.OSG = localJSONObject.optInt("text_attr");
+                localShowInfo.VIJ = localJSONObject.optInt("link_type");
+                localShowInfo.VIK = localJSONObject.optString("link_weapp");
+                localShowInfo.VIL = localJSONObject.optString("link_addr");
+                localShowInfo.VIM = localJSONObject.optString("link_url");
+                localShowInfo.VIN = localJSONObject.optInt("text_attr");
               }
               if ((!Util.isNullOrNil(localShowInfo.name)) || (!Util.isNullOrNil(localShowInfo.value))) {
-                paramOrders.ORr.add(localShowInfo);
+                paramOrders.VHl.add(localShowInfo);
               }
             }
             i += 1;
@@ -682,122 +682,150 @@ public class Orders
     AppMethodBeat.o(70359);
   }
   
+  private static HashSet<String> bgw(String paramString)
+  {
+    AppMethodBeat.i(70361);
+    HashSet localHashSet = new HashSet();
+    if (!Util.isNullOrNil(paramString))
+    {
+      paramString = paramString.split("\\|");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        localHashSet.add(paramString[i]);
+        i += 1;
+      }
+      if (localHashSet.size() <= 0) {
+        break label75;
+      }
+      localHashSet.retainAll(localHashSet);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(70361);
+      return localHashSet;
+      label75:
+      localHashSet.clear();
+    }
+  }
+  
   /* Error */
-  public static Orders bJ(JSONObject paramJSONObject)
+  public static Orders ce(JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: ldc_w 1258
-    //   3: invokestatic 148	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1281
+    //   3: invokestatic 153	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aconst_null
     //   7: astore 5
     //   9: aload_0
     //   10: ifnull +900 -> 910
     //   13: new 2	com/tencent/mm/plugin/wallet_core/model/Orders
     //   16: dup
-    //   17: invokespecial 1259	com/tencent/mm/plugin/wallet_core/model/Orders:<init>	()V
+    //   17: invokespecial 1282	com/tencent/mm/plugin/wallet_core/model/Orders:<init>	()V
     //   20: astore 5
     //   22: aload 5
-    //   24: invokestatic 1262	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
-    //   27: putfield 246	com/tencent/mm/plugin/wallet_core/model/Orders:OQL	J
+    //   24: invokestatic 1285	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
+    //   27: putfield 251	com/tencent/mm/plugin/wallet_core/model/Orders:VGF	J
     //   30: aload 5
     //   32: aload_0
-    //   33: ldc_w 501
-    //   36: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   39: ldc_w 1264
+    //   33: ldc_w 506
+    //   36: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: ldc_w 1287
     //   42: iconst_2
-    //   43: getstatic 1270	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
-    //   46: invokestatic 1275	com/tencent/mm/wallet_core/ui/g:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
-    //   49: putfield 175	com/tencent/mm/plugin/wallet_core/model/Orders:fwy	D
+    //   43: getstatic 1293	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
+    //   46: invokestatic 1298	com/tencent/mm/wallet_core/ui/i:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
+    //   49: putfield 180	com/tencent/mm/plugin/wallet_core/model/Orders:hAW	D
     //   52: aload 5
     //   54: aload_0
-    //   55: ldc_w 1276
-    //   58: invokevirtual 383	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 173	com/tencent/mm/plugin/wallet_core/model/Orders:num	Ljava/lang/String;
+    //   55: ldc_w 1299
+    //   58: invokevirtual 388	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   61: putfield 178	com/tencent/mm/plugin/wallet_core/model/Orders:num	Ljava/lang/String;
     //   64: aload 5
     //   66: aload_0
-    //   67: ldc_w 1278
+    //   67: ldc_w 1301
     //   70: iconst_1
-    //   71: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   74: putfield 260	com/tencent/mm/plugin/wallet_core/model/Orders:OIp	I
+    //   71: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   74: putfield 265	com/tencent/mm/plugin/wallet_core/model/Orders:Vyb	I
     //   77: aload 5
     //   79: aload_0
-    //   80: ldc_w 523
-    //   83: ldc 165
-    //   85: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   88: putfield 262	com/tencent/mm/plugin/wallet_core/model/Orders:GHz	Ljava/lang/String;
+    //   80: ldc_w 528
+    //   83: ldc 170
+    //   85: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   88: putfield 267	com/tencent/mm/plugin/wallet_core/model/Orders:MEq	Ljava/lang/String;
     //   91: aload 5
     //   93: aload_0
-    //   94: ldc_w 1280
-    //   97: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   100: ldc_w 1264
+    //   94: ldc_w 1303
+    //   97: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: ldc_w 1287
     //   103: iconst_2
-    //   104: getstatic 1270	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
-    //   107: invokestatic 1275	com/tencent/mm/wallet_core/ui/g:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
-    //   110: putfield 264	com/tencent/mm/plugin/wallet_core/model/Orders:Imo	D
+    //   104: getstatic 1293	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
+    //   107: invokestatic 1298	com/tencent/mm/wallet_core/ui/i:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
+    //   110: putfield 269	com/tencent/mm/plugin/wallet_core/model/Orders:OjF	D
     //   113: aload 5
     //   115: aload_0
-    //   116: ldc_w 1282
-    //   119: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   122: ldc_w 1264
+    //   116: ldc_w 1305
+    //   119: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   122: ldc_w 1287
     //   125: iconst_2
-    //   126: getstatic 1270	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
-    //   129: invokestatic 1275	com/tencent/mm/wallet_core/ui/g:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
-    //   132: putfield 177	com/tencent/mm/plugin/wallet_core/model/Orders:OQM	D
+    //   126: getstatic 1293	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
+    //   129: invokestatic 1298	com/tencent/mm/wallet_core/ui/i:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
+    //   132: putfield 182	com/tencent/mm/plugin/wallet_core/model/Orders:VGG	D
     //   135: aload 5
     //   137: aload_0
-    //   138: ldc_w 1284
-    //   141: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   144: putfield 266	com/tencent/mm/plugin/wallet_core/model/Orders:OQN	I
+    //   138: ldc_w 1307
+    //   141: invokevirtual 443	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   144: putfield 271	com/tencent/mm/plugin/wallet_core/model/Orders:VGH	I
     //   147: aload 5
     //   149: aload_0
-    //   150: ldc_w 1286
-    //   153: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   156: putfield 268	com/tencent/mm/plugin/wallet_core/model/Orders:OMa	Ljava/lang/String;
+    //   150: ldc_w 1309
+    //   153: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   156: putfield 273	com/tencent/mm/plugin/wallet_core/model/Orders:VBL	Ljava/lang/String;
     //   159: aload 5
     //   161: aload_0
-    //   162: ldc_w 1288
-    //   165: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   168: putfield 270	com/tencent/mm/plugin/wallet_core/model/Orders:OPh	Ljava/lang/String;
+    //   162: ldc_w 1311
+    //   165: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   168: putfield 275	com/tencent/mm/plugin/wallet_core/model/Orders:VFb	Ljava/lang/String;
     //   171: aload 5
     //   173: aload_0
-    //   174: ldc_w 1290
-    //   177: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   180: putfield 272	com/tencent/mm/plugin/wallet_core/model/Orders:OQO	I
+    //   174: ldc_w 1313
+    //   177: invokevirtual 443	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   180: putfield 277	com/tencent/mm/plugin/wallet_core/model/Orders:VGI	I
     //   183: aload 5
     //   185: aload_0
-    //   186: ldc_w 1292
-    //   189: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   192: putfield 274	com/tencent/mm/plugin/wallet_core/model/Orders:OQP	Ljava/lang/String;
+    //   186: ldc_w 1315
+    //   189: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   192: putfield 279	com/tencent/mm/plugin/wallet_core/model/Orders:VGJ	Ljava/lang/String;
     //   195: aload_0
-    //   196: ldc_w 1294
-    //   199: invokevirtual 354	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   196: ldc_w 1317
+    //   199: invokevirtual 359	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   202: astore 6
     //   204: aload 5
     //   206: aload_0
-    //   207: ldc_w 1296
-    //   210: invokevirtual 425	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   213: putfield 1298	com/tencent/mm/plugin/wallet_core/model/Orders:ORj	J
+    //   207: ldc_w 1319
+    //   210: invokevirtual 430	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   213: putfield 1321	com/tencent/mm/plugin/wallet_core/model/Orders:VHd	J
     //   216: aload 5
     //   218: aload_0
-    //   219: ldc_w 1300
-    //   222: invokevirtual 425	org/json/JSONObject:optLong	(Ljava/lang/String;)J
-    //   225: putfield 1302	com/tencent/mm/plugin/wallet_core/model/Orders:ORk	J
+    //   219: ldc_w 1323
+    //   222: invokevirtual 430	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   225: putfield 1325	com/tencent/mm/plugin/wallet_core/model/Orders:VHe	J
     //   228: aload 5
     //   230: aload_0
-    //   231: ldc_w 1304
+    //   231: ldc_w 1327
     //   234: iconst_0
-    //   235: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   238: putfield 214	com/tencent/mm/plugin/wallet_core/model/Orders:ORl	I
+    //   235: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   238: putfield 219	com/tencent/mm/plugin/wallet_core/model/Orders:VHf	I
     //   241: aload 5
     //   243: aload_0
-    //   244: ldc_w 1306
+    //   244: ldc_w 1329
     //   247: iconst_0
-    //   248: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   251: putfield 216	com/tencent/mm/plugin/wallet_core/model/Orders:ORm	I
+    //   248: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   251: putfield 221	com/tencent/mm/plugin/wallet_core/model/Orders:VHg	I
     //   254: aload_0
-    //   255: ldc_w 1308
+    //   255: ldc_w 1331
     //   258: iconst_0
-    //   259: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   259: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   262: iconst_1
     //   263: if_icmpne +935 -> 1198
     //   266: iconst_1
@@ -805,12 +833,12 @@ public class Orders
     //   268: iload_1
     //   269: ifeq +15 -> 284
     //   272: aload 5
-    //   274: new 189	java/util/HashSet
+    //   274: new 194	java/util/HashSet
     //   277: dup
-    //   278: invokespecial 190	java/util/HashSet:<init>	()V
-    //   281: putfield 192	com/tencent/mm/plugin/wallet_core/model/Orders:OQZ	Ljava/util/Set;
+    //   278: invokespecial 195	java/util/HashSet:<init>	()V
+    //   281: putfield 197	com/tencent/mm/plugin/wallet_core/model/Orders:VGT	Ljava/util/Set;
     //   284: aload 6
-    //   286: invokevirtual 359	org/json/JSONArray:length	()I
+    //   286: invokevirtual 364	org/json/JSONArray:length	()I
     //   289: istore_3
     //   290: iconst_0
     //   291: istore_2
@@ -819,353 +847,353 @@ public class Orders
     //   294: if_icmpge +280 -> 574
     //   297: aload 6
     //   299: iload_2
-    //   300: invokevirtual 363	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   300: invokevirtual 368	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   303: astore 7
     //   305: new 10	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity
     //   308: dup
-    //   309: invokespecial 1309	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:<init>	()V
+    //   309: invokespecial 1332	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:<init>	()V
     //   312: astore 8
     //   314: aload 8
     //   316: aload 7
-    //   318: ldc_w 1310
-    //   321: invokevirtual 383	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   324: putfield 1311	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:desc	Ljava/lang/String;
+    //   318: ldc_w 1333
+    //   321: invokevirtual 388	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   324: putfield 1334	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:desc	Ljava/lang/String;
     //   327: aload 8
     //   329: aload 7
-    //   331: ldc_w 1313
-    //   334: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   337: ldc_w 1264
+    //   331: ldc_w 1336
+    //   334: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   337: ldc_w 1287
     //   340: iconst_2
-    //   341: getstatic 1270	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
-    //   344: invokestatic 1275	com/tencent/mm/wallet_core/ui/g:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
-    //   347: putfield 514	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:tVK	D
+    //   341: getstatic 1293	java/math/RoundingMode:HALF_UP	Ljava/math/RoundingMode;
+    //   344: invokestatic 1298	com/tencent/mm/wallet_core/ui/i:a	(Ljava/lang/String;Ljava/lang/String;ILjava/math/RoundingMode;)D
+    //   347: putfield 519	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:wZe	D
     //   350: aload 8
-    //   352: new 1315	java/lang/StringBuilder
+    //   352: new 1338	java/lang/StringBuilder
     //   355: dup
-    //   356: invokespecial 1316	java/lang/StringBuilder:<init>	()V
+    //   356: invokespecial 1339	java/lang/StringBuilder:<init>	()V
     //   359: aload 7
-    //   361: ldc_w 1318
+    //   361: ldc_w 1341
     //   364: iconst_1
-    //   365: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   368: invokevirtual 1322	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   371: invokevirtual 1325	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   374: putfield 1328	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHq	Ljava/lang/String;
+    //   365: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   368: invokevirtual 1345	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   371: invokevirtual 1348	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   374: putfield 1351	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEh	Ljava/lang/String;
     //   377: aload 8
     //   379: aload 7
-    //   381: ldc_w 460
-    //   384: invokevirtual 383	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   387: putfield 463	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHs	Ljava/lang/String;
+    //   381: ldc_w 465
+    //   384: invokevirtual 388	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   387: putfield 468	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEj	Ljava/lang/String;
     //   390: aload 8
     //   392: aload 7
-    //   394: ldc_w 470
-    //   397: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   400: putfield 473	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHx	Ljava/lang/String;
+    //   394: ldc_w 475
+    //   397: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   400: putfield 478	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEo	Ljava/lang/String;
     //   403: aload 8
     //   405: aload 7
-    //   407: ldc_w 465
-    //   410: invokevirtual 383	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   413: putfield 468	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHt	Ljava/lang/String;
+    //   407: ldc_w 470
+    //   410: invokevirtual 388	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   413: putfield 473	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEk	Ljava/lang/String;
     //   416: aload 8
     //   418: aload 7
-    //   420: ldc_w 1330
-    //   423: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   426: putfield 1333	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHn	Ljava/lang/String;
+    //   420: ldc_w 1353
+    //   423: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   426: putfield 1356	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEe	Ljava/lang/String;
     //   429: aload 8
     //   431: aload 7
-    //   433: ldc_w 1335
-    //   436: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   439: putfield 1338	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHo	Ljava/lang/String;
+    //   433: ldc_w 1358
+    //   436: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   439: putfield 1361	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEf	Ljava/lang/String;
     //   442: aload 8
     //   444: aload 7
-    //   446: ldc_w 1340
-    //   449: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   452: putfield 478	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHv	I
+    //   446: ldc_w 1363
+    //   449: invokevirtual 443	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   452: putfield 483	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEm	I
     //   455: aload 8
     //   457: aload 7
-    //   459: ldc_w 380
-    //   462: invokevirtual 383	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   465: putfield 386	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:fww	Ljava/lang/String;
+    //   459: ldc_w 385
+    //   462: invokevirtual 388	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   465: putfield 391	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:hAU	Ljava/lang/String;
     //   468: aload 8
     //   470: aload 7
-    //   472: ldc_w 523
-    //   475: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   478: putfield 527	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHz	Ljava/lang/String;
+    //   472: ldc_w 528
+    //   475: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   478: putfield 532	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEq	Ljava/lang/String;
     //   481: aload 5
-    //   483: getfield 262	com/tencent/mm/plugin/wallet_core/model/Orders:GHz	Ljava/lang/String;
-    //   486: invokestatic 559	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   483: getfield 267	com/tencent/mm/plugin/wallet_core/model/Orders:MEq	Ljava/lang/String;
+    //   486: invokestatic 564	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   489: ifeq +13 -> 502
     //   492: aload 5
     //   494: aload 8
-    //   496: getfield 527	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHz	Ljava/lang/String;
-    //   499: putfield 262	com/tencent/mm/plugin/wallet_core/model/Orders:GHz	Ljava/lang/String;
+    //   496: getfield 532	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MEq	Ljava/lang/String;
+    //   499: putfield 267	com/tencent/mm/plugin/wallet_core/model/Orders:MEq	Ljava/lang/String;
     //   502: aload 8
     //   504: aload 7
-    //   506: ldc_w 1342
-    //   509: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   512: putfield 1343	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:fvb	Ljava/lang/String;
+    //   506: ldc_w 1365
+    //   509: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   512: putfield 1366	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:hzv	Ljava/lang/String;
     //   515: aload 8
     //   517: aload 7
-    //   519: ldc_w 338
-    //   522: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   525: putfield 1346	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:GHd	Ljava/lang/String;
+    //   519: ldc_w 343
+    //   522: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   525: putfield 1369	com/tencent/mm/plugin/wallet_core/model/Orders$Commodity:MDU	Ljava/lang/String;
     //   528: aload 5
-    //   530: getfield 201	com/tencent/mm/plugin/wallet_core/model/Orders:ORd	Ljava/util/List;
+    //   530: getfield 206	com/tencent/mm/plugin/wallet_core/model/Orders:VGX	Ljava/util/List;
     //   533: aload 8
-    //   535: invokeinterface 562 2 0
+    //   535: invokeinterface 567 2 0
     //   540: pop
     //   541: iload_1
     //   542: ifne +649 -> 1191
     //   545: aload 5
     //   547: aload 7
-    //   549: ldc_w 1348
-    //   552: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   555: putfield 295	com/tencent/mm/plugin/wallet_core/model/Orders:OQY	Ljava/lang/String;
+    //   549: ldc_w 1371
+    //   552: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   555: putfield 300	com/tencent/mm/plugin/wallet_core/model/Orders:VGS	Ljava/lang/String;
     //   558: aload 5
     //   560: aload 5
-    //   562: getfield 295	com/tencent/mm/plugin/wallet_core/model/Orders:OQY	Ljava/lang/String;
-    //   565: invokestatic 299	com/tencent/mm/plugin/wallet_core/model/Orders:bgP	(Ljava/lang/String;)Ljava/util/HashSet;
-    //   568: putfield 192	com/tencent/mm/plugin/wallet_core/model/Orders:OQZ	Ljava/util/Set;
+    //   562: getfield 300	com/tencent/mm/plugin/wallet_core/model/Orders:VGS	Ljava/lang/String;
+    //   565: invokestatic 304	com/tencent/mm/plugin/wallet_core/model/Orders:bgw	(Ljava/lang/String;)Ljava/util/HashSet;
+    //   568: putfield 197	com/tencent/mm/plugin/wallet_core/model/Orders:VGT	Ljava/util/Set;
     //   571: goto +620 -> 1191
     //   574: aload_0
-    //   575: ldc_w 1350
-    //   578: invokevirtual 505	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   575: ldc_w 1373
+    //   578: invokevirtual 510	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   581: ifeq +338 -> 919
     //   584: aload 5
     //   586: aload_0
-    //   587: ldc_w 1350
-    //   590: invokestatic 1354	com/tencent/mm/wallet_core/ui/g:s	(Lorg/json/JSONObject;Ljava/lang/String;)Z
-    //   593: putfield 179	com/tencent/mm/plugin/wallet_core/model/Orders:OQU	Z
+    //   587: ldc_w 1373
+    //   590: invokestatic 1377	com/tencent/mm/wallet_core/ui/i:u	(Lorg/json/JSONObject;Ljava/lang/String;)Z
+    //   593: putfield 184	com/tencent/mm/plugin/wallet_core/model/Orders:VGO	Z
     //   596: aload 5
     //   598: aload_0
-    //   599: invokestatic 1358	com/tencent/mm/plugin/wallet_core/model/Orders:bW	(Lorg/json/JSONObject;)Lcom/tencent/mm/plugin/wallet/a/h;
-    //   602: putfield 206	com/tencent/mm/plugin/wallet_core/model/Orders:ORe	Lcom/tencent/mm/plugin/wallet/a/h;
+    //   599: invokestatic 1381	com/tencent/mm/plugin/wallet_core/model/Orders:cr	(Lorg/json/JSONObject;)Lcom/tencent/mm/plugin/wallet/model/h;
+    //   602: putfield 211	com/tencent/mm/plugin/wallet_core/model/Orders:VGY	Lcom/tencent/mm/plugin/wallet/model/h;
     //   605: aload_0
-    //   606: ldc_w 1360
-    //   609: invokevirtual 330	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   606: ldc_w 1383
+    //   609: invokevirtual 335	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   612: astore 6
     //   614: aload 6
     //   616: ifnonnull +337 -> 953
-    //   619: ldc_w 411
-    //   622: ldc_w 1362
-    //   625: invokestatic 1204	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   619: ldc_w 416
+    //   622: ldc_w 1385
+    //   625: invokestatic 1209	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   628: aload 5
     //   630: aload_0
-    //   631: ldc_w 1364
-    //   634: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   637: putfield 208	com/tencent/mm/plugin/wallet_core/model/Orders:ORf	I
+    //   631: ldc_w 1387
+    //   634: invokevirtual 443	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   637: putfield 213	com/tencent/mm/plugin/wallet_core/model/Orders:VGZ	I
     //   640: aload 5
     //   642: aload_0
-    //   643: ldc_w 1366
-    //   646: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   649: putfield 210	com/tencent/mm/plugin/wallet_core/model/Orders:ORg	Ljava/lang/String;
+    //   643: ldc_w 1389
+    //   646: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   649: putfield 215	com/tencent/mm/plugin/wallet_core/model/Orders:VHa	Ljava/lang/String;
     //   652: aload 5
     //   654: aload_0
-    //   655: ldc_w 1368
-    //   658: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   661: putfield 212	com/tencent/mm/plugin/wallet_core/model/Orders:ORh	Ljava/lang/String;
+    //   655: ldc_w 1391
+    //   658: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   661: putfield 217	com/tencent/mm/plugin/wallet_core/model/Orders:VHb	Ljava/lang/String;
     //   664: aload 5
     //   666: aload_0
-    //   667: ldc_w 1370
-    //   670: invokevirtual 330	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   673: invokestatic 1372	com/tencent/mm/plugin/wallet_core/model/Orders:a	(Lcom/tencent/mm/plugin/wallet_core/model/Orders;Lorg/json/JSONObject;)V
+    //   667: ldc_w 1393
+    //   670: invokevirtual 335	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   673: invokestatic 1395	com/tencent/mm/plugin/wallet_core/model/Orders:a	(Lcom/tencent/mm/plugin/wallet_core/model/Orders;Lorg/json/JSONObject;)V
     //   676: aload_0
-    //   677: ldc_w 1374
-    //   680: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   677: ldc_w 1397
+    //   680: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   683: astore 6
     //   685: aload 6
-    //   687: invokestatic 559	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   687: invokestatic 564	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   690: ifne +42 -> 732
     //   693: aload 6
     //   695: iconst_0
-    //   696: invokestatic 1380	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   696: invokestatic 1403	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   699: astore 6
-    //   701: new 1382	com/tencent/mm/protocal/protobuf/apb
+    //   701: new 1405	com/tencent/mm/protocal/protobuf/asu
     //   704: dup
-    //   705: invokespecial 1383	com/tencent/mm/protocal/protobuf/apb:<init>	()V
+    //   705: invokespecial 1406	com/tencent/mm/protocal/protobuf/asu:<init>	()V
     //   708: aload 6
-    //   710: invokevirtual 1387	com/tencent/mm/protocal/protobuf/apb:parseFrom	([B)Lcom/tencent/mm/cd/a;
-    //   713: checkcast 1382	com/tencent/mm/protocal/protobuf/apb
+    //   710: invokevirtual 1410	com/tencent/mm/protocal/protobuf/asu:parseFrom	([B)Lcom/tencent/mm/bx/a;
+    //   713: checkcast 1405	com/tencent/mm/protocal/protobuf/asu
     //   716: astore 6
     //   718: aload 5
-    //   720: getfield 232	com/tencent/mm/plugin/wallet_core/model/Orders:field_infos	Ljava/util/ArrayList;
+    //   720: getfield 237	com/tencent/mm/plugin/wallet_core/model/Orders:field_infos	Ljava/util/ArrayList;
     //   723: aload 6
-    //   725: getfield 1390	com/tencent/mm/protocal/protobuf/apb:field_info	Ljava/util/LinkedList;
-    //   728: invokevirtual 1394	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
+    //   725: getfield 1413	com/tencent/mm/protocal/protobuf/asu:field_info	Ljava/util/LinkedList;
+    //   728: invokevirtual 1416	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
     //   731: pop
     //   732: aload 5
     //   734: aload_0
-    //   735: ldc_w 1396
-    //   738: ldc 171
-    //   740: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   743: putfield 234	com/tencent/mm/plugin/wallet_core/model/Orders:ORu	Ljava/lang/String;
+    //   735: ldc_w 1418
+    //   738: ldc 176
+    //   740: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   743: putfield 239	com/tencent/mm/plugin/wallet_core/model/Orders:VHo	Ljava/lang/String;
     //   746: aload 5
     //   748: aload_0
-    //   749: ldc_w 1398
-    //   752: ldc 165
-    //   754: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   757: putfield 1400	com/tencent/mm/plugin/wallet_core/model/Orders:ORv	Ljava/lang/String;
+    //   749: ldc_w 1420
+    //   752: ldc 170
+    //   754: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   757: putfield 1422	com/tencent/mm/plugin/wallet_core/model/Orders:VHp	Ljava/lang/String;
     //   760: aload 5
     //   762: aload_0
-    //   763: ldc_w 1402
-    //   766: ldc 165
-    //   768: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   771: putfield 1404	com/tencent/mm/plugin/wallet_core/model/Orders:ORw	Ljava/lang/String;
+    //   763: ldc_w 1424
+    //   766: ldc 170
+    //   768: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   771: putfield 1426	com/tencent/mm/plugin/wallet_core/model/Orders:VHq	Ljava/lang/String;
     //   774: aload 5
     //   776: aload_0
-    //   777: ldc_w 1406
-    //   780: ldc 171
-    //   782: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   785: putfield 236	com/tencent/mm/plugin/wallet_core/model/Orders:ORx	Ljava/lang/String;
+    //   777: ldc_w 1428
+    //   780: ldc 176
+    //   782: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   785: putfield 241	com/tencent/mm/plugin/wallet_core/model/Orders:VHr	Ljava/lang/String;
     //   788: aload 5
     //   790: aload_0
-    //   791: ldc_w 1408
-    //   794: ldc 165
-    //   796: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   799: putfield 1410	com/tencent/mm/plugin/wallet_core/model/Orders:ORy	Ljava/lang/String;
+    //   791: ldc_w 1430
+    //   794: ldc 170
+    //   796: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   799: putfield 1432	com/tencent/mm/plugin/wallet_core/model/Orders:VHs	Ljava/lang/String;
     //   802: aload 5
     //   804: aload_0
-    //   805: ldc_w 1412
-    //   808: ldc 165
-    //   810: invokevirtual 526	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   813: putfield 1414	com/tencent/mm/plugin/wallet_core/model/Orders:ORz	Ljava/lang/String;
+    //   805: ldc_w 1434
+    //   808: ldc 170
+    //   810: invokevirtual 531	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   813: putfield 1436	com/tencent/mm/plugin/wallet_core/model/Orders:VHt	Ljava/lang/String;
     //   816: aload 5
     //   818: aload_0
-    //   819: ldc_w 1416
+    //   819: ldc_w 1438
     //   822: iconst_0
-    //   823: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   826: putfield 1418	com/tencent/mm/plugin/wallet_core/model/Orders:ORA	I
+    //   823: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   826: putfield 1440	com/tencent/mm/plugin/wallet_core/model/Orders:VHu	I
     //   829: aload_0
-    //   830: ldc_w 1360
-    //   833: invokevirtual 330	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   830: ldc_w 1383
+    //   833: invokevirtual 335	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   836: astore_0
     //   837: aload_0
     //   838: ifnull +72 -> 910
     //   841: aload_0
-    //   842: ldc_w 1420
-    //   845: invokevirtual 330	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   842: ldc_w 1442
+    //   845: invokevirtual 335	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   848: astore_0
     //   849: aload_0
     //   850: ifnull +60 -> 910
     //   853: aload 5
-    //   855: new 55	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo
+    //   855: new 60	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo
     //   858: dup
-    //   859: invokespecial 1421	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:<init>	()V
-    //   862: putfield 314	com/tencent/mm/plugin/wallet_core/model/Orders:ORB	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
+    //   859: invokespecial 1443	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:<init>	()V
+    //   862: putfield 319	com/tencent/mm/plugin/wallet_core/model/Orders:VHv	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
     //   865: aload 5
-    //   867: getfield 314	com/tencent/mm/plugin/wallet_core/model/Orders:ORB	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
+    //   867: getfield 319	com/tencent/mm/plugin/wallet_core/model/Orders:VHv	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
     //   870: aload_0
-    //   871: ldc_w 1423
-    //   874: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   877: putfield 1426	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:OSH	I
+    //   871: ldc_w 1445
+    //   874: invokevirtual 443	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   877: putfield 1448	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:VIO	I
     //   880: aload 5
-    //   882: getfield 314	com/tencent/mm/plugin/wallet_core/model/Orders:ORB	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
+    //   882: getfield 319	com/tencent/mm/plugin/wallet_core/model/Orders:VHv	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
     //   885: aload_0
-    //   886: ldc_w 1428
-    //   889: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   892: putfield 1431	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:fvP	Ljava/lang/String;
+    //   886: ldc_w 1450
+    //   889: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   892: putfield 1453	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:hAk	Ljava/lang/String;
     //   895: aload 5
-    //   897: getfield 314	com/tencent/mm/plugin/wallet_core/model/Orders:ORB	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
+    //   897: getfield 319	com/tencent/mm/plugin/wallet_core/model/Orders:VHv	Lcom/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo;
     //   900: aload_0
-    //   901: ldc_w 1433
-    //   904: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   907: putfield 1436	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:GGC	Ljava/lang/String;
-    //   910: ldc_w 1258
-    //   913: invokestatic 160	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   901: ldc_w 1455
+    //   904: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   907: putfield 1458	com/tencent/mm/plugin/wallet_core/model/Orders$SimpleCashierInfo:MDt	Ljava/lang/String;
+    //   910: ldc_w 1281
+    //   913: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   916: aload 5
     //   918: areturn
     //   919: aload 5
     //   921: aload 5
-    //   923: getfield 260	com/tencent/mm/plugin/wallet_core/model/Orders:OIp	I
+    //   923: getfield 265	com/tencent/mm/plugin/wallet_core/model/Orders:Vyb	I
     //   926: iconst_2
-    //   927: invokestatic 1442	com/tencent/mm/plugin/wallet_core/model/Bankcard:lj	(II)Z
-    //   930: putfield 179	com/tencent/mm/plugin/wallet_core/model/Orders:OQU	Z
+    //   927: invokestatic 1464	com/tencent/mm/plugin/wallet_core/model/Bankcard:mU	(II)Z
+    //   930: putfield 184	com/tencent/mm/plugin/wallet_core/model/Orders:VGO	Z
     //   933: goto -337 -> 596
     //   936: astore_0
-    //   937: ldc_w 411
+    //   937: ldc_w 416
     //   940: aload_0
-    //   941: ldc 165
+    //   941: ldc 170
     //   943: iconst_0
     //   944: anewarray 4	java/lang/Object
-    //   947: invokestatic 417	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   947: invokestatic 422	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   950: goto -40 -> 910
     //   953: aload 6
-    //   955: ldc_w 1444
-    //   958: invokevirtual 330	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   955: ldc_w 1466
+    //   958: invokevirtual 335	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   961: astore 6
     //   963: aload 6
     //   965: ifnonnull +15 -> 980
-    //   968: ldc_w 411
-    //   971: ldc_w 1446
-    //   974: invokestatic 1204	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   968: ldc_w 416
+    //   971: ldc_w 1468
+    //   974: invokestatic 1209	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   977: goto -349 -> 628
     //   980: aload 6
-    //   982: ldc_w 1448
-    //   985: invokevirtual 330	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   982: ldc_w 1470
+    //   985: invokevirtual 335	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   988: astore 6
     //   990: aload 6
     //   992: ifnonnull +15 -> 1007
-    //   995: ldc_w 411
-    //   998: ldc_w 1450
-    //   1001: invokestatic 1204	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   995: ldc_w 416
+    //   998: ldc_w 1472
+    //   1001: invokestatic 1209	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1004: goto -376 -> 628
-    //   1007: ldc_w 1452
-    //   1010: invokestatic 1458	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   1013: checkcast 1452	com/tencent/mm/plugin/fingerprint/b/a/i
-    //   1016: invokeinterface 1461 1 0
+    //   1007: ldc_w 1474
+    //   1010: invokestatic 1480	com/tencent/mm/kernel/h:ax	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   1013: checkcast 1474	com/tencent/mm/plugin/fingerprint/mgr/a/i
+    //   1016: invokeinterface 1483 1 0
     //   1021: ifne +182 -> 1203
-    //   1024: ldc_w 1452
-    //   1027: invokestatic 1458	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   1030: checkcast 1452	com/tencent/mm/plugin/fingerprint/b/a/i
-    //   1033: invokeinterface 1464 1 0
+    //   1024: ldc_w 1474
+    //   1027: invokestatic 1480	com/tencent/mm/kernel/h:ax	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   1030: checkcast 1474	com/tencent/mm/plugin/fingerprint/mgr/a/i
+    //   1033: invokeinterface 1486 1 0
     //   1038: ifeq +170 -> 1208
     //   1041: goto +162 -> 1203
     //   1044: iload_1
     //   1045: ifeq +168 -> 1213
     //   1048: aload 6
-    //   1050: ldc_w 1466
+    //   1050: ldc_w 1488
     //   1053: iconst_0
-    //   1054: invokevirtual 344	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1054: invokevirtual 349	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   1057: istore_1
     //   1058: aload 5
     //   1060: iload_1
-    //   1061: putfield 194	com/tencent/mm/plugin/wallet_core/model/Orders:ORa	I
+    //   1061: putfield 199	com/tencent/mm/plugin/wallet_core/model/Orders:VGU	I
     //   1064: aload 5
     //   1066: aload 6
-    //   1068: ldc_w 1468
-    //   1071: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   1074: putfield 196	com/tencent/mm/plugin/wallet_core/model/Orders:ORc	Ljava/lang/String;
+    //   1068: ldc_w 1490
+    //   1071: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1074: putfield 201	com/tencent/mm/plugin/wallet_core/model/Orders:VGW	Ljava/lang/String;
     //   1077: aload 6
-    //   1079: ldc_w 1470
-    //   1082: invokevirtual 336	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1079: ldc_w 1492
+    //   1082: invokevirtual 341	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   1085: astore 7
     //   1087: iconst_1
     //   1088: aload 6
-    //   1090: ldc_w 1472
-    //   1093: invokevirtual 438	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   1090: ldc_w 1494
+    //   1093: invokevirtual 443	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   1096: if_icmpne +122 -> 1218
     //   1099: iconst_1
     //   1100: istore 4
     //   1102: aload 5
     //   1104: aload 7
-    //   1106: putfield 316	com/tencent/mm/plugin/wallet_core/model/Orders:ByB	Ljava/lang/String;
+    //   1106: putfield 321	com/tencent/mm/plugin/wallet_core/model/Orders:Hgd	Ljava/lang/String;
     //   1109: aload 5
     //   1111: iload 4
-    //   1113: putfield 318	com/tencent/mm/plugin/wallet_core/model/Orders:ORb	Z
-    //   1116: getstatic 1478	com/tencent/mm/plugin/fingerprint/b/p:ByH	Lcom/tencent/mm/plugin/fingerprint/b/p;
+    //   1113: putfield 323	com/tencent/mm/plugin/wallet_core/model/Orders:VGV	Z
+    //   1116: getstatic 1500	com/tencent/mm/plugin/fingerprint/mgr/j:Hgj	Lcom/tencent/mm/plugin/fingerprint/mgr/j;
     //   1119: aload 7
-    //   1121: putfield 1479	com/tencent/mm/plugin/fingerprint/b/p:ByB	Ljava/lang/String;
-    //   1124: getstatic 1478	com/tencent/mm/plugin/fingerprint/b/p:ByH	Lcom/tencent/mm/plugin/fingerprint/b/p;
+    //   1121: putfield 1501	com/tencent/mm/plugin/fingerprint/mgr/j:Hgd	Ljava/lang/String;
+    //   1124: getstatic 1500	com/tencent/mm/plugin/fingerprint/mgr/j:Hgj	Lcom/tencent/mm/plugin/fingerprint/mgr/j;
     //   1127: iload 4
-    //   1129: putfield 1482	com/tencent/mm/plugin/fingerprint/b/p:ByJ	Z
-    //   1132: ldc_w 411
-    //   1135: ldc_w 1484
+    //   1129: putfield 1504	com/tencent/mm/plugin/fingerprint/mgr/j:Hgl	Z
+    //   1132: ldc_w 416
+    //   1135: ldc_w 1506
     //   1138: iconst_3
     //   1139: anewarray 4	java/lang/Object
     //   1142: dup
     //   1143: iconst_0
     //   1144: aload 5
-    //   1146: getfield 194	com/tencent/mm/plugin/wallet_core/model/Orders:ORa	I
-    //   1149: invokestatic 1218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1146: getfield 199	com/tencent/mm/plugin/wallet_core/model/Orders:VGU	I
+    //   1149: invokestatic 1223	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1152: aastore
     //   1153: dup
     //   1154: iconst_1
@@ -1174,17 +1202,17 @@ public class Orders
     //   1158: dup
     //   1159: iconst_2
     //   1160: iload 4
-    //   1162: invokestatic 1489	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1162: invokestatic 1511	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   1165: aastore
-    //   1166: invokestatic 767	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1166: invokestatic 772	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1169: goto -541 -> 628
     //   1172: astore 6
-    //   1174: ldc_w 411
+    //   1174: ldc_w 416
     //   1177: aload 6
-    //   1179: ldc 165
+    //   1179: ldc 170
     //   1181: iconst_0
     //   1182: anewarray 4	java/lang/Object
-    //   1185: invokestatic 417	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1185: invokestatic 422	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1188: goto -456 -> 732
     //   1191: iload_2
     //   1192: iconst_1
@@ -1247,10 +1275,10 @@ public class Orders
     //   701	732	1172	java/io/IOException
   }
   
-  private static com.tencent.mm.plugin.wallet.a.h bW(JSONObject paramJSONObject)
+  private static com.tencent.mm.plugin.wallet.model.h cr(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70354);
-    com.tencent.mm.plugin.wallet.a.h localh = new com.tencent.mm.plugin.wallet.a.h();
+    com.tencent.mm.plugin.wallet.model.h localh = new com.tencent.mm.plugin.wallet.model.h();
     paramJSONObject = paramJSONObject.optJSONObject("favinfo");
     if (paramJSONObject == null)
     {
@@ -1258,18 +1286,18 @@ public class Orders
       AppMethodBeat.o(70354);
       return localh;
     }
-    localh.Owj = (paramJSONObject.optLong("tradeAmount") / 100.0D);
-    localh.Owk = (paramJSONObject.optLong("totalFavAmount") / 100.0D);
-    localh.Owl = (paramJSONObject.optLong("afterFavorTradeAmount") / 100.0D);
-    localh.Owm = paramJSONObject.optString("favorComposeId");
-    localh.Owp = paramJSONObject.optInt("useNaturalDefense");
-    localh.Owq = paramJSONObject.optString("discountWording");
-    localh.Owr = paramJSONObject.optString("favorRuleWording");
-    localh.Ows = (paramJSONObject.optDouble("showFavorAmount", 0.0D) / 100.0D);
-    localh.Owt = (paramJSONObject.optDouble("invariableFavorAmount", 0.0D) / 100.0D);
-    localh.Owu = paramJSONObject.optInt("isVariableFavor");
-    localh.Owv = paramJSONObject.optString("invariableFavorDesc");
-    localh.Oww = paramJSONObject.optString("variableFavorDesc");
+    localh.Vlu = (paramJSONObject.optLong("tradeAmount") / 100.0D);
+    localh.Vlv = (paramJSONObject.optLong("totalFavAmount") / 100.0D);
+    localh.Vlw = (paramJSONObject.optLong("afterFavorTradeAmount") / 100.0D);
+    localh.Vlx = paramJSONObject.optString("favorComposeId");
+    localh.VlA = paramJSONObject.optInt("useNaturalDefense");
+    localh.VlB = paramJSONObject.optString("discountWording");
+    localh.VlC = paramJSONObject.optString("favorRuleWording");
+    localh.VlD = (paramJSONObject.optDouble("showFavorAmount", 0.0D) / 100.0D);
+    localh.VlE = (paramJSONObject.optDouble("invariableFavorAmount", 0.0D) / 100.0D);
+    localh.VlF = paramJSONObject.optInt("isVariableFavor");
+    localh.VlG = paramJSONObject.optString("invariableFavorDesc");
+    localh.VlH = paramJSONObject.optString("variableFavorDesc");
     Object localObject1 = paramJSONObject.optJSONArray("tradeFavList");
     int i = 0;
     Object localObject3;
@@ -1278,22 +1306,22 @@ public class Orders
     while (i < ((JSONArray)localObject1).length())
     {
       localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-      localObject2 = new t();
-      ((t)localObject2).Oxb = ((JSONObject)localObject3).optInt("favType");
-      ((t)localObject2).Oxc = ((JSONObject)localObject3).optInt("favSubType");
-      ((t)localObject2).Oxd = ((JSONObject)localObject3).optLong("favProperty");
-      ((t)localObject2).Oxe = ((JSONObject)localObject3).optString("favorTypeDesc");
-      ((t)localObject2).Owg = ((JSONObject)localObject3).optString("favId");
-      ((t)localObject2).Oxf = ((JSONObject)localObject3).optString("favName");
-      ((t)localObject2).Oxg = ((JSONObject)localObject3).optString("favDesc");
-      ((t)localObject2).Owh = ((JSONObject)localObject3).optString("favorUseManual");
-      ((t)localObject2).Owi = ((JSONObject)localObject3).optString("favorRemarks");
-      ((t)localObject2).Oxh = (((JSONObject)localObject3).optLong("favPrice") / 100.0D);
-      ((t)localObject2).Oxi = (((JSONObject)localObject3).optLong("realFavFee") / 100.0D);
-      ((t)localObject2).Oxj = ((JSONObject)localObject3).optInt("needBankPay");
-      ((t)localObject2).Oxk = ((JSONObject)localObject3).optString("bankNo");
-      ((t)localObject2).GHx = ((JSONObject)localObject3).optString("bankName");
-      ((t)localObject2).Oxl = ((JSONObject)localObject3).optString("bankLogoUrl");
+      localObject2 = new q();
+      ((q)localObject2).Vmm = ((JSONObject)localObject3).optInt("favType");
+      ((q)localObject2).Vmn = ((JSONObject)localObject3).optInt("favSubType");
+      ((q)localObject2).Vmo = ((JSONObject)localObject3).optLong("favProperty");
+      ((q)localObject2).Vmp = ((JSONObject)localObject3).optString("favorTypeDesc");
+      ((q)localObject2).Vlr = ((JSONObject)localObject3).optString("favId");
+      ((q)localObject2).Vmq = ((JSONObject)localObject3).optString("favName");
+      ((q)localObject2).Vmr = ((JSONObject)localObject3).optString("favDesc");
+      ((q)localObject2).Vls = ((JSONObject)localObject3).optString("favorUseManual");
+      ((q)localObject2).Vlt = ((JSONObject)localObject3).optString("favorRemarks");
+      ((q)localObject2).Vms = (((JSONObject)localObject3).optLong("favPrice") / 100.0D);
+      ((q)localObject2).Vmt = (((JSONObject)localObject3).optLong("realFavFee") / 100.0D);
+      ((q)localObject2).Vmu = ((JSONObject)localObject3).optInt("needBankPay");
+      ((q)localObject2).Vmv = ((JSONObject)localObject3).optString("bankNo");
+      ((q)localObject2).MEo = ((JSONObject)localObject3).optString("bankName");
+      ((q)localObject2).Vmw = ((JSONObject)localObject3).optString("bankLogoUrl");
       localObject3 = ((JSONObject)localObject3).optJSONArray("bind_serial_list");
       if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
       {
@@ -1301,49 +1329,49 @@ public class Orders
         while (j < ((JSONArray)localObject3).length())
         {
           localObject4 = ((JSONArray)localObject3).optString(j);
-          ((t)localObject2).Oxm.add(com.tencent.mm.cd.b.cU(((String)localObject4).getBytes()));
+          ((q)localObject2).Vmx.add(com.tencent.mm.bx.b.cX(((String)localObject4).getBytes()));
           j += 1;
         }
       }
-      localh.Own.add(localObject2);
+      localh.Vly.add(localObject2);
       i += 1;
     }
     localObject1 = paramJSONObject.optJSONObject("favorComposeList");
     Object localObject5;
     if (localObject1 != null)
     {
-      localh.Owo = new com.tencent.mm.plugin.wallet.a.i();
+      localh.Vlz = new com.tencent.mm.plugin.wallet.model.i();
       localObject1 = ((JSONObject)localObject1).optJSONArray("favorComposeInfo");
       i = 0;
       while (i < ((JSONArray)localObject1).length())
       {
         localObject3 = ((JSONArray)localObject1).getJSONObject(i);
         localObject2 = new j();
-        ((j)localObject2).OwC = ((JSONObject)localObject3).optString("faovrComposeId");
-        ((j)localObject2).OwD = (((JSONObject)localObject3).optLong("totalFavorAmount") / 100.0D);
-        ((j)localObject2).Owl = (((JSONObject)localObject3).optLong("afterFavorTradeAmount") / 100.0D);
-        ((j)localObject2).Ows = (((JSONObject)localObject3).optDouble("showFavorAmount", 0.0D) / 100.0D);
-        ((j)localObject2).Owt = (((JSONObject)localObject3).optDouble("invariableFavorAmount", 0.0D) / 100.0D);
-        ((j)localObject2).Owu = ((JSONObject)localObject3).optInt("isVariableFavor");
-        ((j)localObject2).Owv = ((JSONObject)localObject3).optString("invariableFavorDesc");
-        ((j)localObject2).Oww = ((JSONObject)localObject3).optString("variableFavorDesc");
+        ((j)localObject2).VlN = ((JSONObject)localObject3).optString("faovrComposeId");
+        ((j)localObject2).VlO = (((JSONObject)localObject3).optLong("totalFavorAmount") / 100.0D);
+        ((j)localObject2).Vlw = (((JSONObject)localObject3).optLong("afterFavorTradeAmount") / 100.0D);
+        ((j)localObject2).VlD = (((JSONObject)localObject3).optDouble("showFavorAmount", 0.0D) / 100.0D);
+        ((j)localObject2).VlE = (((JSONObject)localObject3).optDouble("invariableFavorAmount", 0.0D) / 100.0D);
+        ((j)localObject2).VlF = ((JSONObject)localObject3).optInt("isVariableFavor");
+        ((j)localObject2).VlG = ((JSONObject)localObject3).optString("invariableFavorDesc");
+        ((j)localObject2).VlH = ((JSONObject)localObject3).optString("variableFavorDesc");
         localObject3 = ((JSONObject)localObject3).optJSONArray("composeArray");
         j = 0;
         while (j < ((JSONArray)localObject3).length())
         {
           localObject4 = ((JSONArray)localObject3).getJSONObject(j);
-          localObject5 = new com.tencent.mm.plugin.wallet.a.f();
-          ((com.tencent.mm.plugin.wallet.a.f)localObject5).Owg = ((JSONObject)localObject4).optString("favId");
-          ((com.tencent.mm.plugin.wallet.a.f)localObject5).Owh = ((JSONObject)localObject4).optString("favorUseManual");
-          ((com.tencent.mm.plugin.wallet.a.f)localObject5).Owi = ((JSONObject)localObject4).optString("favorRemarks");
-          ((j)localObject2).OwE.add(localObject5);
+          localObject5 = new com.tencent.mm.plugin.wallet.model.f();
+          ((com.tencent.mm.plugin.wallet.model.f)localObject5).Vlr = ((JSONObject)localObject4).optString("favId");
+          ((com.tencent.mm.plugin.wallet.model.f)localObject5).Vls = ((JSONObject)localObject4).optString("favorUseManual");
+          ((com.tencent.mm.plugin.wallet.model.f)localObject5).Vlt = ((JSONObject)localObject4).optString("favorRemarks");
+          ((j)localObject2).VlP.add(localObject5);
           j += 1;
         }
-        localh.Owo.OwA.add(localObject2);
+        localh.Vlz.VlL.add(localObject2);
         i += 1;
       }
     }
-    localObject1 = new com.tencent.mm.plugin.wallet.a.a();
+    localObject1 = new com.tencent.mm.plugin.wallet.model.a();
     Object localObject2 = paramJSONObject.optJSONObject("bank_card_info");
     if (localObject2 != null)
     {
@@ -1353,42 +1381,42 @@ public class Orders
         i = 0;
         while (i < ((JSONArray)localObject3).length())
         {
-          localObject4 = new com.tencent.mm.plugin.wallet.a.c();
+          localObject4 = new com.tencent.mm.plugin.wallet.model.c();
           localObject5 = ((JSONArray)localObject3).getJSONObject(i);
-          ((com.tencent.mm.plugin.wallet.a.c)localObject4).GGC = ((JSONObject)localObject5).optString("bind_serial");
+          ((com.tencent.mm.plugin.wallet.model.c)localObject4).MDt = ((JSONObject)localObject5).optString("bind_serial");
           localObject5 = ((JSONObject)localObject5).optJSONArray("bind_serial_favor_list");
           if ((localObject5 != null) && (((JSONArray)localObject5).length() > 0))
           {
             j = 0;
             while (j < ((JSONArray)localObject5).length())
             {
-              com.tencent.mm.plugin.wallet.a.d locald = new com.tencent.mm.plugin.wallet.a.d();
+              com.tencent.mm.plugin.wallet.model.d locald = new com.tencent.mm.plugin.wallet.model.d();
               JSONObject localJSONObject = ((JSONArray)localObject5).optJSONObject(j);
-              locald.Ila = localJSONObject.optString("favor_desc");
-              locald.Owe = localJSONObject.optInt("is_default_show", 0);
-              ((com.tencent.mm.plugin.wallet.a.c)localObject4).Owd.add(locald);
+              locald.OhO = localJSONObject.optString("favor_desc");
+              locald.Vlp = localJSONObject.optInt("is_default_show", 0);
+              ((com.tencent.mm.plugin.wallet.model.c)localObject4).Vlo.add(locald);
               j += 1;
             }
           }
-          ((com.tencent.mm.plugin.wallet.a.a)localObject1).OvS.add(localObject4);
+          ((com.tencent.mm.plugin.wallet.model.a)localObject1).Vld.add(localObject4);
           i += 1;
         }
       }
       localObject2 = ((JSONObject)localObject2).optJSONObject("new_bind_card_info").optJSONArray("new_bind_card_favor_list");
       if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
       {
-        ((com.tencent.mm.plugin.wallet.a.a)localObject1).OvT = new n();
+        ((com.tencent.mm.plugin.wallet.model.a)localObject1).Vle = new l();
         i = 0;
         while (i < ((JSONArray)localObject2).length())
         {
-          localObject3 = new o();
-          ((o)localObject3).Ila = ((JSONArray)localObject2).optJSONObject(i).optString("favor_desc");
-          ((com.tencent.mm.plugin.wallet.a.a)localObject1).OvT.OwJ.add(localObject3);
+          localObject3 = new m();
+          ((m)localObject3).OhO = ((JSONArray)localObject2).optJSONObject(i).optString("favor_desc");
+          ((com.tencent.mm.plugin.wallet.model.a)localObject1).Vle.VlU.add(localObject3);
           i += 1;
         }
       }
     }
-    localh.Owx = ((com.tencent.mm.plugin.wallet.a.a)localObject1);
+    localh.VlI = ((com.tencent.mm.plugin.wallet.model.a)localObject1);
     localObject1 = paramJSONObject.optJSONArray("favcombid_forbindcard_list");
     if (localObject1 != null)
     {
@@ -1399,75 +1427,47 @@ public class Orders
         localObject3 = ((JSONArray)localObject1).optJSONObject(i);
         if (localObject3 != null)
         {
-          localObject2 = new com.tencent.mm.plugin.wallet.a.g();
-          ((com.tencent.mm.plugin.wallet.a.g)localObject2).OvW = ((JSONObject)localObject3).optString("default_fav_comb_id");
+          localObject2 = new com.tencent.mm.plugin.wallet.model.g();
+          ((com.tencent.mm.plugin.wallet.model.g)localObject2).Vlh = ((JSONObject)localObject3).optString("default_fav_comb_id");
           localObject3 = ((JSONObject)localObject3).optJSONObject("payment_channel");
           if (localObject3 != null)
           {
-            localObject4 = new m();
-            ((m)localObject4).GGC = ((JSONObject)localObject3).optString("bind_serial");
-            ((m)localObject4).selected = ((JSONObject)localObject3).optInt("selected");
-            ((m)localObject4).OwI = ((JSONObject)localObject3).optString("bankCode");
-            ((com.tencent.mm.plugin.wallet.a.g)localObject2).OvU = ((m)localObject4);
+            localObject4 = new k();
+            ((k)localObject4).MDt = ((JSONObject)localObject3).optString("bind_serial");
+            ((k)localObject4).selected = ((JSONObject)localObject3).optInt("selected");
+            ((k)localObject4).VlT = ((JSONObject)localObject3).optString("bankCode");
+            ((com.tencent.mm.plugin.wallet.model.g)localObject2).Vlf = ((k)localObject4);
           }
-          localh.Owy.add(localObject2);
+          localh.VlJ.add(localObject2);
         }
         i += 1;
       }
     }
-    localObject1 = new com.tencent.mm.plugin.wallet.a.b();
+    localObject1 = new com.tencent.mm.plugin.wallet.model.b();
     paramJSONObject = paramJSONObject.optJSONObject("bank_fav_guide");
     if (paramJSONObject != null)
     {
-      localObject2 = new m();
+      localObject2 = new k();
       localObject3 = paramJSONObject.optJSONObject("payment_channel");
       if (localObject3 != null)
       {
-        ((m)localObject2).OwI = ((JSONObject)localObject3).optString("bankCode");
-        ((m)localObject2).selected = ((JSONObject)localObject3).optInt("selected");
-        ((m)localObject2).GGC = ((JSONObject)localObject3).optString("bind_serial");
-        ((com.tencent.mm.plugin.wallet.a.b)localObject1).OvU = ((m)localObject2);
+        ((k)localObject2).VlT = ((JSONObject)localObject3).optString("bankCode");
+        ((k)localObject2).selected = ((JSONObject)localObject3).optInt("selected");
+        ((k)localObject2).MDt = ((JSONObject)localObject3).optString("bind_serial");
+        ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vlf = ((k)localObject2);
       }
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).OvV = paramJSONObject.optInt("is_show_guide");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).OvW = paramJSONObject.optString("default_fav_comb_id");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).OvX = paramJSONObject.optString("guide_content");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).OvY = paramJSONObject.optString("guide_content_color");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).OvZ = paramJSONObject.optString("guide_btn_text");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).Owa = paramJSONObject.optString("guide_btn_text_color");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).Owb = paramJSONObject.optString("guide_btn_bg_color");
-      ((com.tencent.mm.plugin.wallet.a.b)localObject1).Owc = paramJSONObject.optString("guide_logo");
-      localh.Owz = ((com.tencent.mm.plugin.wallet.a.b)localObject1);
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vlg = paramJSONObject.optInt("is_show_guide");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vlh = paramJSONObject.optString("default_fav_comb_id");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vli = paramJSONObject.optString("guide_content");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vlj = paramJSONObject.optString("guide_content_color");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vlk = paramJSONObject.optString("guide_btn_text");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vll = paramJSONObject.optString("guide_btn_text_color");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vlm = paramJSONObject.optString("guide_btn_bg_color");
+      ((com.tencent.mm.plugin.wallet.model.b)localObject1).Vln = paramJSONObject.optString("guide_logo");
+      localh.VlK = ((com.tencent.mm.plugin.wallet.model.b)localObject1);
     }
     AppMethodBeat.o(70354);
     return localh;
-  }
-  
-  private static HashSet<String> bgP(String paramString)
-  {
-    AppMethodBeat.i(70361);
-    HashSet localHashSet = new HashSet();
-    if (!Util.isNullOrNil(paramString))
-    {
-      paramString = paramString.split("\\|");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        localHashSet.add(paramString[i]);
-        i += 1;
-      }
-      if (localHashSet.size() <= 0) {
-        break label75;
-      }
-      localHashSet.retainAll(localHashSet);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(70361);
-      return localHashSet;
-      label75:
-      localHashSet.clear();
-    }
   }
   
   public int describeContents()
@@ -1479,10 +1479,10 @@ public class Orders
   {
     AppMethodBeat.i(70360);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("reqKey:").append(this.fwv).append("\n");
+    ((StringBuilder)localObject).append("reqKey:").append(this.hAT).append("\n");
     ((StringBuilder)localObject).append("token").append(this.token).append("\n");
     ((StringBuilder)localObject).append("num").append(this.num).append("\n");
-    ((StringBuilder)localObject).append("totalFee").append(this.fwy).append("\n");
+    ((StringBuilder)localObject).append("totalFee").append(this.hAW).append("\n");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(70360);
     return localObject;
@@ -1492,50 +1492,50 @@ public class Orders
   {
     int i = 1;
     AppMethodBeat.i(70363);
-    paramParcel.writeLong(this.OQL);
-    paramParcel.writeString(this.fwv);
+    paramParcel.writeLong(this.VGF);
+    paramParcel.writeString(this.hAT);
     paramParcel.writeString(this.token);
     paramParcel.writeString(this.num);
-    paramParcel.writeDouble(this.fwy);
-    paramParcel.writeInt(this.OIp);
-    paramParcel.writeString(this.GHz);
-    paramParcel.writeDouble(this.Imo);
-    paramParcel.writeDouble(this.OQM);
-    paramParcel.writeInt(this.OQN);
-    paramParcel.writeString(this.OMa);
-    paramParcel.writeString(this.OPh);
-    paramParcel.writeInt(this.OQO);
-    paramParcel.writeString(this.OQP);
+    paramParcel.writeDouble(this.hAW);
+    paramParcel.writeInt(this.Vyb);
+    paramParcel.writeString(this.MEq);
+    paramParcel.writeDouble(this.OjF);
+    paramParcel.writeDouble(this.VGG);
+    paramParcel.writeInt(this.VGH);
+    paramParcel.writeString(this.VBL);
+    paramParcel.writeString(this.VFb);
+    paramParcel.writeInt(this.VGI);
+    paramParcel.writeString(this.VGJ);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
-    paramParcel.writeString(this.GtW);
-    paramParcel.writeString(this.OQQ);
-    paramParcel.writeString(this.OQR);
-    paramParcel.writeString(this.OQS);
-    paramParcel.writeInt(this.OQT);
-    if (this.OQU)
+    paramParcel.writeString(this.MpW);
+    paramParcel.writeString(this.VGK);
+    paramParcel.writeString(this.VGL);
+    paramParcel.writeString(this.VGM);
+    paramParcel.writeInt(this.VGN);
+    if (this.VGO)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.OQV);
-      paramParcel.writeString(this.vhY);
-      paramParcel.writeLong(this.OQW);
-      paramParcel.writeString(this.OQX);
-      paramParcel.writeTypedList(this.ORd);
-      paramParcel.writeString(this.OQY);
-      paramParcel.writeInt(this.ORa);
-      paramParcel.writeString(this.ORc);
-      paramParcel.writeParcelable(this.ORi, 1);
-      paramParcel.writeInt(this.ORl);
-      paramParcel.writeInt(this.ORm);
-      paramParcel.writeInt(this.ORq);
-      paramParcel.writeString(this.ORt);
-      paramParcel.writeString(this.ORs);
-      paramParcel.writeInt(this.ORp);
-      paramParcel.writeTypedList(this.ORr);
-      paramParcel.writeParcelable(this.ORB, 1);
-      paramParcel.writeString(this.ByB);
-      if (!this.ORb) {
+      paramParcel.writeString(this.VGP);
+      paramParcel.writeString(this.ytZ);
+      paramParcel.writeLong(this.VGQ);
+      paramParcel.writeString(this.VGR);
+      paramParcel.writeTypedList(this.VGX);
+      paramParcel.writeString(this.VGS);
+      paramParcel.writeInt(this.VGU);
+      paramParcel.writeString(this.VGW);
+      paramParcel.writeParcelable(this.VHc, 1);
+      paramParcel.writeInt(this.VHf);
+      paramParcel.writeInt(this.VHg);
+      paramParcel.writeInt(this.VHk);
+      paramParcel.writeString(this.VHn);
+      paramParcel.writeString(this.VHm);
+      paramParcel.writeInt(this.VHj);
+      paramParcel.writeTypedList(this.VHl);
+      paramParcel.writeParcelable(this.VHv, 1);
+      paramParcel.writeString(this.Hgd);
+      if (!this.VGV) {
         break label362;
       }
     }
@@ -1554,36 +1554,37 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<Commodity> CREATOR;
-    public String GHD;
-    public String GHd;
-    public String GHl;
-    public String GHm;
-    public String GHn;
-    public String GHo;
-    public String GHq;
-    public String GHs;
-    public String GHt;
-    public int GHv;
-    public String GHx;
-    public String GHz;
-    public int OQT;
-    public double ORE;
-    public String ORF;
-    public String ORG;
-    public List<Orders.DiscountInfo> ORH;
-    public String ORI;
-    public String ORJ;
-    public String ORK;
-    public Orders.RecommendTinyAppInfo ORL;
-    public Orders.FinderInfo ORM;
-    public Orders.RemarksInfo ORN;
-    public List<Orders.Promotions> ORO;
-    public boolean ORP;
-    public Orders.a ORQ;
+    public String DUX;
+    public String MDU;
+    public String MEc;
+    public String MEd;
+    public String MEe;
+    public String MEf;
+    public String MEh;
+    public String MEj;
+    public String MEk;
+    public int MEm;
+    public String MEo;
+    public String MEq;
+    public int VGN;
+    public String VHA;
+    public List<Orders.DiscountInfo> VHB;
+    public String VHC;
+    public String VHD;
+    public String VHE;
+    public Orders.RecommendTinyAppInfo VHF;
+    public Orders.FinderInfo VHG;
+    public Orders.LeadTailViewInfo VHH;
+    public Orders.RemarksInfo VHI;
+    public List<Orders.Promotions> VHJ;
+    public boolean VHK;
+    public Orders.a VHL;
+    public double VHy;
+    public String VHz;
     public String desc;
-    public String fvb;
-    public String fww;
-    public double tVK;
+    public String hAU;
+    public String hzv;
+    public double wZe;
     
     static
     {
@@ -1595,56 +1596,59 @@ public class Orders
     public Commodity()
     {
       AppMethodBeat.i(70314);
-      this.tVK = 0.0D;
-      this.ORE = 0.0D;
-      this.ORH = new ArrayList();
-      this.ORL = null;
-      this.ORM = null;
-      this.ORO = new ArrayList();
-      this.ORP = false;
-      this.ORQ = new Orders.a();
+      this.wZe = 0.0D;
+      this.VHy = 0.0D;
+      this.VHB = new ArrayList();
+      this.VHF = null;
+      this.VHG = null;
+      this.VHH = null;
+      this.VHJ = new ArrayList();
+      this.VHK = false;
+      this.VHL = new Orders.a();
       AppMethodBeat.o(70314);
     }
     
     public Commodity(Parcel paramParcel)
     {
       AppMethodBeat.i(70315);
-      this.tVK = 0.0D;
-      this.ORE = 0.0D;
-      this.ORH = new ArrayList();
-      this.ORL = null;
-      this.ORM = null;
-      this.ORO = new ArrayList();
-      this.ORP = false;
-      this.ORQ = new Orders.a();
-      this.GHl = paramParcel.readString();
-      this.GHm = paramParcel.readString();
-      this.GHn = paramParcel.readString();
-      this.GHo = paramParcel.readString();
+      this.wZe = 0.0D;
+      this.VHy = 0.0D;
+      this.VHB = new ArrayList();
+      this.VHF = null;
+      this.VHG = null;
+      this.VHH = null;
+      this.VHJ = new ArrayList();
+      this.VHK = false;
+      this.VHL = new Orders.a();
+      this.MEc = paramParcel.readString();
+      this.MEd = paramParcel.readString();
+      this.MEe = paramParcel.readString();
+      this.MEf = paramParcel.readString();
       this.desc = paramParcel.readString();
-      this.GHq = paramParcel.readString();
-      this.tVK = paramParcel.readDouble();
-      this.GHs = paramParcel.readString();
-      this.GHt = paramParcel.readString();
-      this.GHv = paramParcel.readInt();
-      this.fww = paramParcel.readString();
-      this.GHx = paramParcel.readString();
-      this.GHz = paramParcel.readString();
-      this.fvb = paramParcel.readString();
-      this.GHd = paramParcel.readString();
-      this.ORG = paramParcel.readString();
-      this.GHD = paramParcel.readString();
-      paramParcel.readTypedList(this.ORH, Orders.DiscountInfo.CREATOR);
-      this.ORI = paramParcel.readString();
-      this.ORK = paramParcel.readString();
-      this.ORL = ((Orders.RecommendTinyAppInfo)paramParcel.readParcelable(Orders.RecommendTinyAppInfo.class.getClassLoader()));
-      this.ORM = ((Orders.FinderInfo)paramParcel.readParcelable(Orders.FinderInfo.class.getClassLoader()));
-      paramParcel.readTypedList(this.ORO, Orders.Promotions.CREATOR);
-      this.ORN = ((Orders.RemarksInfo)paramParcel.readParcelable(Orders.RemarksInfo.class.getClassLoader()));
+      this.MEh = paramParcel.readString();
+      this.wZe = paramParcel.readDouble();
+      this.MEj = paramParcel.readString();
+      this.MEk = paramParcel.readString();
+      this.MEm = paramParcel.readInt();
+      this.hAU = paramParcel.readString();
+      this.MEo = paramParcel.readString();
+      this.MEq = paramParcel.readString();
+      this.hzv = paramParcel.readString();
+      this.MDU = paramParcel.readString();
+      this.VHA = paramParcel.readString();
+      this.DUX = paramParcel.readString();
+      paramParcel.readTypedList(this.VHB, Orders.DiscountInfo.CREATOR);
+      this.VHC = paramParcel.readString();
+      this.VHE = paramParcel.readString();
+      this.VHF = ((Orders.RecommendTinyAppInfo)paramParcel.readParcelable(Orders.RecommendTinyAppInfo.class.getClassLoader()));
+      this.VHG = ((Orders.FinderInfo)paramParcel.readParcelable(Orders.FinderInfo.class.getClassLoader()));
+      this.VHH = ((Orders.LeadTailViewInfo)paramParcel.readParcelable(Orders.LeadTailViewInfo.class.getClassLoader()));
+      paramParcel.readTypedList(this.VHJ, Orders.Promotions.CREATOR);
+      this.VHI = ((Orders.RemarksInfo)paramParcel.readParcelable(Orders.RemarksInfo.class.getClassLoader()));
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.ORP = bool;
+        this.VHK = bool;
         AppMethodBeat.o(70315);
         return;
       }
@@ -1659,31 +1663,32 @@ public class Orders
     {
       byte b = 0;
       AppMethodBeat.i(70316);
-      paramParcel.writeString(this.GHl);
-      paramParcel.writeString(this.GHm);
-      paramParcel.writeString(this.GHn);
-      paramParcel.writeString(this.GHo);
+      paramParcel.writeString(this.MEc);
+      paramParcel.writeString(this.MEd);
+      paramParcel.writeString(this.MEe);
+      paramParcel.writeString(this.MEf);
       paramParcel.writeString(this.desc);
-      paramParcel.writeString(this.GHq);
-      paramParcel.writeDouble(this.tVK);
-      paramParcel.writeString(this.GHs);
-      paramParcel.writeString(this.GHt);
-      paramParcel.writeInt(this.GHv);
-      paramParcel.writeString(this.fww);
-      paramParcel.writeString(this.GHx);
-      paramParcel.writeString(this.GHz);
-      paramParcel.writeString(this.fvb);
-      paramParcel.writeString(this.GHd);
-      paramParcel.writeString(this.ORG);
-      paramParcel.writeString(this.GHD);
-      paramParcel.writeTypedList(this.ORH);
-      paramParcel.writeString(this.ORI);
-      paramParcel.writeString(this.ORK);
-      paramParcel.writeParcelable(this.ORL, 0);
-      paramParcel.writeParcelable(this.ORM, 0);
-      paramParcel.writeTypedList(this.ORO);
-      paramParcel.writeParcelable(this.ORN, 0);
-      if (this.ORP) {
+      paramParcel.writeString(this.MEh);
+      paramParcel.writeDouble(this.wZe);
+      paramParcel.writeString(this.MEj);
+      paramParcel.writeString(this.MEk);
+      paramParcel.writeInt(this.MEm);
+      paramParcel.writeString(this.hAU);
+      paramParcel.writeString(this.MEo);
+      paramParcel.writeString(this.MEq);
+      paramParcel.writeString(this.hzv);
+      paramParcel.writeString(this.MDU);
+      paramParcel.writeString(this.VHA);
+      paramParcel.writeString(this.DUX);
+      paramParcel.writeTypedList(this.VHB);
+      paramParcel.writeString(this.VHC);
+      paramParcel.writeString(this.VHE);
+      paramParcel.writeParcelable(this.VHF, 0);
+      paramParcel.writeParcelable(this.VHG, 0);
+      paramParcel.writeParcelable(this.VHH, 0);
+      paramParcel.writeTypedList(this.VHJ);
+      paramParcel.writeParcelable(this.VHI, 0);
+      if (this.VHK) {
         b = 1;
       }
       paramParcel.writeByte(b);
@@ -1695,17 +1700,17 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<DeductInfo> CREATOR;
-    public String ORR;
-    public List<Orders.DeductShowInfo> ORS;
-    public int ORT;
-    public String ORU;
-    public String ORV;
-    public int OyD;
-    public String OyE;
-    public int Ozp;
+    public String VHM;
+    public List<Orders.DeductShowInfo> VHN;
+    public int VHO;
+    public String VHP;
+    public String VHQ;
+    public int VnO;
+    public String VnP;
+    public int VoA;
     public String desc;
     public String title;
-    public String tpM;
+    public String wul;
     
     static
     {
@@ -1717,25 +1722,25 @@ public class Orders
     public DeductInfo()
     {
       AppMethodBeat.i(70319);
-      this.ORS = new ArrayList();
+      this.VHN = new ArrayList();
       AppMethodBeat.o(70319);
     }
     
     public DeductInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(70320);
-      this.ORS = new ArrayList();
+      this.VHN = new ArrayList();
       this.title = paramParcel.readString();
       this.desc = paramParcel.readString();
-      this.Ozp = paramParcel.readInt();
-      this.ORR = paramParcel.readString();
-      this.ORT = paramParcel.readInt();
-      paramParcel.readTypedList(this.ORS, Orders.DeductShowInfo.CREATOR);
-      this.OyD = paramParcel.readInt();
-      this.tpM = paramParcel.readString();
-      this.OyE = paramParcel.readString();
-      this.ORU = paramParcel.readString();
-      this.ORV = paramParcel.readString();
+      this.VoA = paramParcel.readInt();
+      this.VHM = paramParcel.readString();
+      this.VHO = paramParcel.readInt();
+      paramParcel.readTypedList(this.VHN, Orders.DeductShowInfo.CREATOR);
+      this.VnO = paramParcel.readInt();
+      this.wul = paramParcel.readString();
+      this.VnP = paramParcel.readString();
+      this.VHP = paramParcel.readString();
+      this.VHQ = paramParcel.readString();
       AppMethodBeat.o(70320);
     }
     
@@ -1749,15 +1754,15 @@ public class Orders
       AppMethodBeat.i(70321);
       paramParcel.writeString(this.title);
       paramParcel.writeString(this.desc);
-      paramParcel.writeInt(this.Ozp);
-      paramParcel.writeString(this.ORR);
-      paramParcel.writeInt(this.ORT);
-      paramParcel.writeTypedList(this.ORS);
-      paramParcel.writeInt(this.OyD);
-      paramParcel.writeString(this.tpM);
-      paramParcel.writeString(this.OyE);
-      paramParcel.writeString(this.ORU);
-      paramParcel.writeString(this.ORV);
+      paramParcel.writeInt(this.VoA);
+      paramParcel.writeString(this.VHM);
+      paramParcel.writeInt(this.VHO);
+      paramParcel.writeTypedList(this.VHN);
+      paramParcel.writeInt(this.VnO);
+      paramParcel.writeString(this.wul);
+      paramParcel.writeString(this.VnP);
+      paramParcel.writeString(this.VHP);
+      paramParcel.writeString(this.VHQ);
       AppMethodBeat.o(70321);
     }
   }
@@ -1766,10 +1771,10 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<DeductShowInfo> CREATOR;
-    public String ORW;
-    public String ORX;
-    public String ORY;
-    public int jDZ;
+    public String VHR;
+    public String VHS;
+    public String VHT;
+    public int mdV;
     public String name;
     public String value;
     
@@ -1787,10 +1792,10 @@ public class Orders
       AppMethodBeat.i(70324);
       this.name = paramParcel.readString();
       this.value = paramParcel.readString();
-      this.jDZ = paramParcel.readInt();
-      this.ORW = paramParcel.readString();
-      this.ORX = paramParcel.readString();
-      this.ORY = paramParcel.readString();
+      this.mdV = paramParcel.readInt();
+      this.VHR = paramParcel.readString();
+      this.VHS = paramParcel.readString();
+      this.VHT = paramParcel.readString();
       AppMethodBeat.o(70324);
     }
     
@@ -1804,10 +1809,10 @@ public class Orders
       AppMethodBeat.i(70325);
       paramParcel.writeString(this.name);
       paramParcel.writeString(this.value);
-      paramParcel.writeInt(this.jDZ);
-      paramParcel.writeString(this.ORW);
-      paramParcel.writeString(this.ORX);
-      paramParcel.writeString(this.ORY);
+      paramParcel.writeInt(this.mdV);
+      paramParcel.writeString(this.VHR);
+      paramParcel.writeString(this.VHS);
+      paramParcel.writeString(this.VHT);
       AppMethodBeat.o(70325);
     }
   }
@@ -1816,8 +1821,8 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<DiscountInfo> CREATOR;
-    public String Ila;
-    public double ORZ;
+    public String OhO;
+    public double VHU;
     
     static
     {
@@ -1831,8 +1836,8 @@ public class Orders
     public DiscountInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(70328);
-      this.ORZ = paramParcel.readDouble();
-      this.Ila = paramParcel.readString();
+      this.VHU = paramParcel.readDouble();
+      this.OhO = paramParcel.readString();
       AppMethodBeat.o(70328);
     }
     
@@ -1844,8 +1849,8 @@ public class Orders
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(70329);
-      paramParcel.writeDouble(this.ORZ);
-      paramParcel.writeString(this.Ila);
+      paramParcel.writeDouble(this.VHU);
+      paramParcel.writeString(this.OhO);
       AppMethodBeat.o(70329);
     }
   }
@@ -1854,16 +1859,16 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<FinderInfo> CREATOR;
-    public String OSa;
-    public String OSb;
-    public String OSc;
-    public String OSd;
-    public String OSe;
-    public String OSf;
-    public int OSg;
-    public String OSh;
-    public String OSi;
-    public String OSj;
+    public String VHV;
+    public String VHW;
+    public String VHX;
+    public String VHY;
+    public String VHZ;
+    public String VIa;
+    public int VIb;
+    public String VIc;
+    public String VId;
+    public String VIe;
     public String path;
     public int type;
     public String url;
@@ -1872,32 +1877,32 @@ public class Orders
     
     static
     {
-      AppMethodBeat.i(260940);
+      AppMethodBeat.i(301185);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(260940);
+      AppMethodBeat.o(301185);
     }
     
     public FinderInfo() {}
     
     public FinderInfo(Parcel paramParcel)
     {
-      AppMethodBeat.i(260934);
+      AppMethodBeat.i(301183);
       this.type = paramParcel.readInt();
       this.url = paramParcel.readString();
       this.username = paramParcel.readString();
       this.path = paramParcel.readString();
       this.version = paramParcel.readString();
-      this.OSa = paramParcel.readString();
-      this.OSb = paramParcel.readString();
-      this.OSc = paramParcel.readString();
-      this.OSd = paramParcel.readString();
-      this.OSe = paramParcel.readString();
-      this.OSf = paramParcel.readString();
-      this.OSh = paramParcel.readString();
-      this.OSi = paramParcel.readString();
-      this.OSj = paramParcel.readString();
-      this.OSg = paramParcel.readInt();
-      AppMethodBeat.o(260934);
+      this.VHV = paramParcel.readString();
+      this.VHW = paramParcel.readString();
+      this.VHX = paramParcel.readString();
+      this.VHY = paramParcel.readString();
+      this.VHZ = paramParcel.readString();
+      this.VIa = paramParcel.readString();
+      this.VIc = paramParcel.readString();
+      this.VId = paramParcel.readString();
+      this.VIe = paramParcel.readString();
+      this.VIb = paramParcel.readInt();
+      AppMethodBeat.o(301183);
     }
     
     public int describeContents()
@@ -1907,23 +1912,97 @@ public class Orders
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(260938);
+      AppMethodBeat.i(301186);
       paramParcel.writeInt(this.type);
       paramParcel.writeString(this.url);
       paramParcel.writeString(this.username);
       paramParcel.writeString(this.path);
       paramParcel.writeString(this.version);
-      paramParcel.writeString(this.OSa);
-      paramParcel.writeString(this.OSb);
-      paramParcel.writeString(this.OSc);
-      paramParcel.writeString(this.OSd);
-      paramParcel.writeString(this.OSe);
-      paramParcel.writeString(this.OSf);
-      paramParcel.writeString(this.OSh);
-      paramParcel.writeString(this.OSi);
-      paramParcel.writeString(this.OSj);
-      paramParcel.writeInt(this.OSg);
-      AppMethodBeat.o(260938);
+      paramParcel.writeString(this.VHV);
+      paramParcel.writeString(this.VHW);
+      paramParcel.writeString(this.VHX);
+      paramParcel.writeString(this.VHY);
+      paramParcel.writeString(this.VHZ);
+      paramParcel.writeString(this.VIa);
+      paramParcel.writeString(this.VIc);
+      paramParcel.writeString(this.VId);
+      paramParcel.writeString(this.VIe);
+      paramParcel.writeInt(this.VIb);
+      AppMethodBeat.o(301186);
+    }
+  }
+  
+  public static class LeadTailViewInfo
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<LeadTailViewInfo> CREATOR;
+    public String VIf;
+    public String VIg;
+    public String VIh;
+    public String VIi;
+    public int VIj;
+    public String VIk;
+    public String VIl;
+    public String VIm;
+    public String VIn;
+    public String VIo;
+    public String VIp;
+    public String VIq;
+    public String desc;
+    public int type;
+    
+    static
+    {
+      AppMethodBeat.i(301193);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(301193);
+    }
+    
+    public LeadTailViewInfo() {}
+    
+    public LeadTailViewInfo(Parcel paramParcel)
+    {
+      AppMethodBeat.i(301192);
+      this.desc = paramParcel.readString();
+      this.VIf = paramParcel.readString();
+      this.VIg = paramParcel.readString();
+      this.VIh = paramParcel.readString();
+      this.VIi = paramParcel.readString();
+      this.type = paramParcel.readInt();
+      this.VIj = paramParcel.readInt();
+      this.VIk = paramParcel.readString();
+      this.VIl = paramParcel.readString();
+      this.VIm = paramParcel.readString();
+      this.VIn = paramParcel.readString();
+      this.VIo = paramParcel.readString();
+      this.VIp = paramParcel.readString();
+      this.VIq = paramParcel.readString();
+      AppMethodBeat.o(301192);
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(301199);
+      paramParcel.writeString(this.desc);
+      paramParcel.writeString(this.VIf);
+      paramParcel.writeString(this.VIg);
+      paramParcel.writeString(this.VIh);
+      paramParcel.writeString(this.VIi);
+      paramParcel.writeInt(this.type);
+      paramParcel.writeInt(this.VIj);
+      paramParcel.writeString(this.VIk);
+      paramParcel.writeString(this.VIl);
+      paramParcel.writeString(this.VIm);
+      paramParcel.writeString(this.VIn);
+      paramParcel.writeString(this.VIo);
+      paramParcel.writeString(this.VIp);
+      paramParcel.writeString(this.VIq);
+      AppMethodBeat.o(301199);
     }
   }
   
@@ -1931,27 +2010,27 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<Promotions> CREATOR;
-    public String GUf;
-    public int OQC;
-    public int OQD;
-    public long OQE;
-    public String OQF;
-    public e.a.a.c OSs;
-    public int SuA;
-    public int SuB;
-    public String SuC;
-    public String SuD;
-    public String SuE;
-    public int SuF;
-    public String SuG;
-    public String SuI;
-    public long cpu;
-    public String fvb;
+    public int Avy;
+    public String MRI;
+    public int VGw;
+    public int VGx;
+    public long VGy;
+    public String VGz;
+    public g.a.a.c VIz;
+    public int akjp;
+    public int akjq;
+    public String akjr;
+    public String akjs;
+    public String akjt;
+    public int akju;
+    public String akjv;
+    public String akjw;
+    public long ehe;
+    public String hzv;
     public String name;
     public String title;
     public int type;
     public String url;
-    public int wYj;
     
     static
     {
@@ -1966,23 +2045,23 @@ public class Orders
     {
       AppMethodBeat.i(70332);
       this.type = paramParcel.readInt();
-      this.GUf = paramParcel.readString();
+      this.MRI = paramParcel.readString();
       this.name = paramParcel.readString();
-      this.OQF = paramParcel.readString();
+      this.VGz = paramParcel.readString();
       this.url = paramParcel.readString();
-      this.fvb = paramParcel.readString();
+      this.hzv = paramParcel.readString();
       this.title = paramParcel.readString();
-      this.wYj = paramParcel.readInt();
-      this.cpu = paramParcel.readLong();
-      this.SuA = paramParcel.readInt();
-      this.SuB = paramParcel.readInt();
-      this.OQC = paramParcel.readInt();
-      this.OQD = paramParcel.readInt();
-      this.SuC = paramParcel.readString();
-      this.SuD = paramParcel.readString();
-      this.SuE = paramParcel.readString();
-      this.OQE = paramParcel.readLong();
-      this.SuF = paramParcel.readInt();
+      this.Avy = paramParcel.readInt();
+      this.ehe = paramParcel.readLong();
+      this.akjp = paramParcel.readInt();
+      this.akjq = paramParcel.readInt();
+      this.VGw = paramParcel.readInt();
+      this.VGx = paramParcel.readInt();
+      this.akjr = paramParcel.readString();
+      this.akjs = paramParcel.readString();
+      this.akjt = paramParcel.readString();
+      this.VGy = paramParcel.readLong();
+      this.akju = paramParcel.readInt();
       AppMethodBeat.o(70332);
     }
     
@@ -1995,23 +2074,23 @@ public class Orders
     {
       AppMethodBeat.i(70333);
       paramParcel.writeInt(this.type);
-      paramParcel.writeString(this.GUf);
+      paramParcel.writeString(this.MRI);
       paramParcel.writeString(this.name);
-      paramParcel.writeString(this.OQF);
+      paramParcel.writeString(this.VGz);
       paramParcel.writeString(this.url);
-      paramParcel.writeString(this.fvb);
+      paramParcel.writeString(this.hzv);
       paramParcel.writeString(this.title);
-      paramParcel.writeInt(this.wYj);
-      paramParcel.writeLong(this.cpu);
-      paramParcel.writeInt(this.SuA);
-      paramParcel.writeInt(this.SuB);
-      paramParcel.writeInt(this.OQC);
-      paramParcel.writeInt(this.OQD);
-      paramParcel.writeString(this.SuC);
-      paramParcel.writeString(this.SuD);
-      paramParcel.writeString(this.SuE);
-      paramParcel.writeLong(this.OQE);
-      paramParcel.writeInt(this.SuF);
+      paramParcel.writeInt(this.Avy);
+      paramParcel.writeLong(this.ehe);
+      paramParcel.writeInt(this.akjp);
+      paramParcel.writeInt(this.akjq);
+      paramParcel.writeInt(this.VGw);
+      paramParcel.writeInt(this.VGx);
+      paramParcel.writeString(this.akjr);
+      paramParcel.writeString(this.akjs);
+      paramParcel.writeString(this.akjt);
+      paramParcel.writeLong(this.VGy);
+      paramParcel.writeInt(this.akju);
       AppMethodBeat.o(70333);
     }
   }
@@ -2020,19 +2099,19 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<RecommendTinyAppInfo> CREATOR;
-    public String ODu;
-    public String OQH;
-    public String OQI;
-    public String OQJ;
-    public int OQK;
-    public long OSt;
-    public long OSu;
-    public long OSv;
-    public int OSw;
-    public int OSx;
-    public long OSy;
-    public String Ooe;
-    public String Oof;
+    public String VGB;
+    public String VGC;
+    public String VGD;
+    public int VGE;
+    public long VIA;
+    public long VIB;
+    public long VIC;
+    public int VID;
+    public int VIE;
+    public long VIF;
+    public String VcU;
+    public String VcV;
+    public String VsI;
     
     static
     {
@@ -2046,12 +2125,12 @@ public class Orders
     public RecommendTinyAppInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(70336);
-      this.ODu = paramParcel.readString();
-      this.OQH = paramParcel.readString();
-      this.OQI = paramParcel.readString();
-      this.Ooe = paramParcel.readString();
-      this.Oof = paramParcel.readString();
-      this.OQK = paramParcel.readInt();
+      this.VsI = paramParcel.readString();
+      this.VGB = paramParcel.readString();
+      this.VGC = paramParcel.readString();
+      this.VcU = paramParcel.readString();
+      this.VcV = paramParcel.readString();
+      this.VGE = paramParcel.readInt();
       AppMethodBeat.o(70336);
     }
     
@@ -2063,12 +2142,12 @@ public class Orders
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(70337);
-      paramParcel.writeString(this.ODu);
-      paramParcel.writeString(this.OQH);
-      paramParcel.writeString(this.OQI);
-      paramParcel.writeString(this.Ooe);
-      paramParcel.writeString(this.Oof);
-      paramParcel.writeInt(this.OQK);
+      paramParcel.writeString(this.VsI);
+      paramParcel.writeString(this.VGB);
+      paramParcel.writeString(this.VGC);
+      paramParcel.writeString(this.VcU);
+      paramParcel.writeString(this.VcV);
+      paramParcel.writeInt(this.VGE);
       AppMethodBeat.o(70337);
     }
   }
@@ -2077,8 +2156,8 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<RemarksInfo> CREATOR;
-    public String OSA;
-    public String OSz;
+    public String VIG;
+    public String VIH;
     
     static
     {
@@ -2092,8 +2171,8 @@ public class Orders
     protected RemarksInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(70340);
-      this.OSz = paramParcel.readString();
-      this.OSA = paramParcel.readString();
+      this.VIG = paramParcel.readString();
+      this.VIH = paramParcel.readString();
       AppMethodBeat.o(70340);
     }
     
@@ -2105,8 +2184,8 @@ public class Orders
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(70341);
-      paramParcel.writeString(this.OSz);
-      paramParcel.writeString(this.OSA);
+      paramParcel.writeString(this.VIG);
+      paramParcel.writeString(this.VIH);
       AppMethodBeat.o(70341);
     }
   }
@@ -2115,13 +2194,13 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<ShowInfo> CREATOR;
-    public String CIl;
-    public String OSB;
-    public int OSC;
-    public String OSD;
-    public String OSE;
-    public String OSF;
-    public int OSG;
+    public String ICv;
+    public String VII;
+    public int VIJ;
+    public String VIK;
+    public String VIL;
+    public String VIM;
+    public int VIN;
     public String name;
     public String value;
     
@@ -2139,13 +2218,13 @@ public class Orders
       AppMethodBeat.i(70344);
       this.name = paramParcel.readString();
       this.value = paramParcel.readString();
-      this.CIl = paramParcel.readString();
-      this.OSB = paramParcel.readString();
-      this.OSC = paramParcel.readInt();
-      this.OSD = paramParcel.readString();
-      this.OSE = paramParcel.readString();
-      this.OSF = paramParcel.readString();
-      this.OSG = paramParcel.readInt();
+      this.ICv = paramParcel.readString();
+      this.VII = paramParcel.readString();
+      this.VIJ = paramParcel.readInt();
+      this.VIK = paramParcel.readString();
+      this.VIL = paramParcel.readString();
+      this.VIM = paramParcel.readString();
+      this.VIN = paramParcel.readInt();
       AppMethodBeat.o(70344);
     }
     
@@ -2157,7 +2236,7 @@ public class Orders
     public String toString()
     {
       AppMethodBeat.i(70345);
-      String str = String.format("ShowInfo name:%s, value:%s, nameColor:%s, valueColor:%s, linkType:%s, linkWeApp:%s, linkAddr:%s, linkUrl:%s, textAttr:%s", new Object[] { this.name, this.value, this.CIl, this.OSB, Integer.valueOf(this.OSC), this.OSD, this.OSE, this.OSF, Integer.valueOf(this.OSG) });
+      String str = String.format("ShowInfo name:%s, value:%s, nameColor:%s, valueColor:%s, linkType:%s, linkWeApp:%s, linkAddr:%s, linkUrl:%s, textAttr:%s", new Object[] { this.name, this.value, this.ICv, this.VII, Integer.valueOf(this.VIJ), this.VIK, this.VIL, this.VIM, Integer.valueOf(this.VIN) });
       AppMethodBeat.o(70345);
       return str;
     }
@@ -2167,13 +2246,13 @@ public class Orders
       AppMethodBeat.i(70346);
       paramParcel.writeString(this.name);
       paramParcel.writeString(this.value);
-      paramParcel.writeString(this.CIl);
-      paramParcel.writeString(this.OSB);
-      paramParcel.writeInt(this.OSC);
-      paramParcel.writeString(this.OSD);
-      paramParcel.writeString(this.OSE);
-      paramParcel.writeString(this.OSF);
-      paramParcel.writeInt(this.OSG);
+      paramParcel.writeString(this.ICv);
+      paramParcel.writeString(this.VII);
+      paramParcel.writeInt(this.VIJ);
+      paramParcel.writeString(this.VIK);
+      paramParcel.writeString(this.VIL);
+      paramParcel.writeString(this.VIM);
+      paramParcel.writeInt(this.VIN);
       AppMethodBeat.o(70346);
     }
   }
@@ -2182,9 +2261,9 @@ public class Orders
     implements Parcelable
   {
     public static final Parcelable.Creator<SimpleCashierInfo> CREATOR;
-    public String GGC;
-    public int OSH;
-    public String fvP;
+    public String MDt;
+    public int VIO;
+    public String hAk;
     
     static
     {
@@ -2198,9 +2277,9 @@ public class Orders
     protected SimpleCashierInfo(Parcel paramParcel)
     {
       AppMethodBeat.i(70349);
-      this.OSH = paramParcel.readInt();
-      this.fvP = paramParcel.readString();
-      this.GGC = paramParcel.readString();
+      this.VIO = paramParcel.readInt();
+      this.hAk = paramParcel.readString();
+      this.MDt = paramParcel.readString();
       AppMethodBeat.o(70349);
     }
     
@@ -2212,9 +2291,9 @@ public class Orders
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(70350);
-      paramParcel.writeInt(this.OSH);
-      paramParcel.writeString(this.fvP);
-      paramParcel.writeString(this.GGC);
+      paramParcel.writeInt(this.VIO);
+      paramParcel.writeString(this.hAk);
+      paramParcel.writeString(this.MDt);
       AppMethodBeat.o(70350);
     }
   }
@@ -2227,7 +2306,7 @@ public class Orders
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.Orders
  * JD-Core Version:    0.7.0.1
  */

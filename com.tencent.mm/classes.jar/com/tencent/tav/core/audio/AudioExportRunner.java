@@ -44,7 +44,7 @@ public class AudioExportRunner
   
   AudioExportRunner(IAudioSource<? extends IDecoderTrack> paramIAudioSource, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(189352);
+    AppMethodBeat.i(215470);
     this.mMime = MIME;
     this.mRate = 128000;
     this.mSampleRate = 44100;
@@ -57,20 +57,20 @@ public class AudioExportRunner
     if (paramCMTimeRange == null)
     {
       this.mSelectedTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramIAudioSource.getDuration());
-      AppMethodBeat.o(189352);
+      AppMethodBeat.o(215470);
       return;
     }
     this.mSelectedTimeRange = paramCMTimeRange;
-    AppMethodBeat.o(189352);
+    AppMethodBeat.o(215470);
   }
   
   private int dequeueInputBuffer(MediaCodec paramMediaCodec)
   {
-    AppMethodBeat.i(189389);
+    AppMethodBeat.i(215515);
     try
     {
       int i = paramMediaCodec.dequeueInputBuffer(1000L);
-      AppMethodBeat.o(189389);
+      AppMethodBeat.o(215515);
       return i;
     }
     catch (Exception localException)
@@ -85,7 +85,7 @@ public class AudioExportRunner
           Logger.e("AudioEncoder", "CodecException - isTransient = " + ((MediaCodec.CodecException)localException).isTransient() + " , isRecoverable = " + ((MediaCodec.CodecException)localException).isRecoverable() + " , errorCode = " + ((MediaCodec.CodecException)localException).getErrorCode());
         }
       } while (((MediaCodec.CodecException)localException).isTransient());
-      AppMethodBeat.o(189389);
+      AppMethodBeat.o(215515);
       throw localException;
     }
     catch (Error localError)
@@ -97,35 +97,35 @@ public class AudioExportRunner
   
   private ByteBuffer getInputBuffer(int paramInt)
   {
-    AppMethodBeat.i(189381);
+    AppMethodBeat.i(215499);
     if (Build.VERSION.SDK_INT >= 21)
     {
       localByteBuffer = this.mAudioEncoder.getInputBuffer(paramInt);
-      AppMethodBeat.o(189381);
+      AppMethodBeat.o(215499);
       return localByteBuffer;
     }
     ByteBuffer localByteBuffer = this.mAudioEncoder.getInputBuffers()[paramInt];
-    AppMethodBeat.o(189381);
+    AppMethodBeat.o(215499);
     return localByteBuffer;
   }
   
   private ByteBuffer getOutputBuffer(int paramInt)
   {
-    AppMethodBeat.i(189384);
+    AppMethodBeat.i(215506);
     if (Build.VERSION.SDK_INT >= 21)
     {
       localByteBuffer = this.mAudioEncoder.getOutputBuffer(paramInt);
-      AppMethodBeat.o(189384);
+      AppMethodBeat.o(215506);
       return localByteBuffer;
     }
     ByteBuffer localByteBuffer = this.mAudioEncoder.getOutputBuffers()[paramInt];
-    AppMethodBeat.o(189384);
+    AppMethodBeat.o(215506);
     return localByteBuffer;
   }
   
   private void initAudioDecoder()
   {
-    AppMethodBeat.i(189372);
+    AppMethodBeat.i(215482);
     try
     {
       this.mAudioDecoder = this.mAudioAsset.getSourceAudioDecoder(this.mSelectedTimeRange);
@@ -136,71 +136,70 @@ public class AudioExportRunner
       for (localCMTime = localCMTime.sub(CMTime.fromMs(200L));; localCMTime = CMTime.CMTimeZero)
       {
         localIDecoderTrack.seekTo(localCMTime, false, false);
-        AppMethodBeat.o(189372);
         return;
       }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      AppMethodBeat.o(189372);
+      AppMethodBeat.o(215482);
     }
   }
   
   private void initAudioEncoder()
   {
-    AppMethodBeat.i(189376);
+    AppMethodBeat.i(215489);
     MediaFormat localMediaFormat = MediaFormat.createAudioFormat(MIME, this.mSampleRate, this.mChannelCount);
     localMediaFormat.setInteger("aac-profile", 2);
     localMediaFormat.setInteger("bitrate", this.mRate);
     localMediaFormat.setInteger("max-input-size", 8192);
     this.mAudioEncoder = MediaCodec.createEncoderByType(this.mMime);
     this.mAudioEncoder.configure(localMediaFormat, null, null, 1);
-    AppMethodBeat.o(189376);
+    AppMethodBeat.o(215489);
   }
   
   private boolean isFinish(MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(189422);
+    AppMethodBeat.i(215582);
     if (paramBufferInfo.presentationTimeUs >= this.mSelectedTimeRange.getEndUs())
     {
-      AppMethodBeat.o(189422);
+      AppMethodBeat.o(215582);
       return true;
     }
-    AppMethodBeat.o(189422);
+    AppMethodBeat.o(215582);
     return false;
   }
   
   private boolean isValidBuffer(MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(189424);
+    AppMethodBeat.i(215588);
     if ((paramBufferInfo.size > 0) && (paramBufferInfo.presentationTimeUs >= this.mSelectedTimeRange.getStartUs()) && (paramBufferInfo.presentationTimeUs <= this.mSelectedTimeRange.getEndUs()) && ((paramBufferInfo.flags & 0x2) == 0))
     {
-      AppMethodBeat.o(189424);
+      AppMethodBeat.o(215588);
       return true;
     }
-    AppMethodBeat.o(189424);
+    AppMethodBeat.o(215588);
     return false;
   }
   
   private void notifyProgressUpdate(long paramLong)
   {
-    AppMethodBeat.i(189428);
+    AppMethodBeat.i(215596);
     if ((this.mCallback != null) && (this.mSelectedTimeRange != null))
     {
       long l = this.mSelectedTimeRange.getStartUs();
       this.mCallback.onProgress(this.mStatus, (float)(paramLong - l) * 1.0F / (float)this.mSelectedTimeRange.getDurationUs());
     }
-    AppMethodBeat.o(189428);
+    AppMethodBeat.o(215596);
   }
   
   private void queueInputBuffer(MediaCodec paramMediaCodec, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    AppMethodBeat.i(189399);
+    AppMethodBeat.i(215527);
     try
     {
       paramMediaCodec.queueInputBuffer(paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
-      AppMethodBeat.o(189399);
+      AppMethodBeat.o(215527);
       return;
     }
     catch (Exception localException)
@@ -217,7 +216,7 @@ public class AudioExportRunner
           queueInputBuffer(paramMediaCodec, paramInt1, paramInt2, paramInt3, paramLong, paramInt4);
         }
       }
-      AppMethodBeat.o(189399);
+      AppMethodBeat.o(215527);
       throw localException;
     }
     catch (Error localError)
@@ -229,7 +228,7 @@ public class AudioExportRunner
   
   private void readNextSample()
   {
-    AppMethodBeat.i(189409);
+    AppMethodBeat.i(215539);
     Object localObject = this.mAudioDecoder.readSample();
     CMTime localCMTime = ((CMSampleBuffer)localObject).getTime();
     if ((localCMTime.value > 0L) && (localCMTime.getTimeUs() <= this.mSelectedTimeRange.getEndUs()))
@@ -239,7 +238,7 @@ public class AudioExportRunner
       byte[] arrayOfByte = new byte[i];
       ((ByteBuffer)localObject).get(arrayOfByte);
       writeAudioSample(localCMTime, i, arrayOfByte);
-      AppMethodBeat.o(189409);
+      AppMethodBeat.o(215539);
       return;
     }
     long l = ((CMSampleBuffer)localObject).getState().getStateCode();
@@ -252,14 +251,14 @@ public class AudioExportRunner
     for (int i = 255;; i = this.mStatus)
     {
       this.mStatus = i;
-      AppMethodBeat.o(189409);
+      AppMethodBeat.o(215539);
       return;
     }
   }
   
   private void signalEndOfAudioStream()
   {
-    AppMethodBeat.i(189402);
+    AppMethodBeat.i(215532);
     try
     {
       Logger.d("AudioEncoder", "signalEndOfAudioStream: ");
@@ -267,13 +266,13 @@ public class AudioExportRunner
       if (i >= 0) {
         queueInputBuffer(this.mAudioEncoder, i, 0, 0, 0L, 4);
       }
-      AppMethodBeat.o(189402);
+      AppMethodBeat.o(215532);
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
       Logger.e("AudioEncoder", "signalEndOfAudioStream failed", localThrowable);
-      AppMethodBeat.o(189402);
+      AppMethodBeat.o(215532);
     }
   }
   
@@ -283,40 +282,40 @@ public class AudioExportRunner
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 375
+    //   2: ldc_w 373
     //   5: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 85	com/tencent/tav/core/audio/AudioExportRunner:mStop	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   12: invokevirtual 377	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   12: invokevirtual 375	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   15: ifne +48 -> 63
     //   18: aload_0
     //   19: getfield 85	com/tencent/tav/core/audio/AudioExportRunner:mStop	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   22: iconst_1
-    //   23: invokevirtual 380	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   23: invokevirtual 378	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   26: aload_0
-    //   27: getfield 211	com/tencent/tav/core/audio/AudioExportRunner:mAudioDecoder	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   30: invokeinterface 383 1 0
+    //   27: getfield 209	com/tencent/tav/core/audio/AudioExportRunner:mAudioDecoder	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   30: invokeinterface 381 1 0
     //   35: aload_0
     //   36: getfield 188	com/tencent/tav/core/audio/AudioExportRunner:mAudioEncoder	Landroid/media/MediaCodec;
-    //   39: invokevirtual 385	android/media/MediaCodec:stop	()V
+    //   39: invokevirtual 383	android/media/MediaCodec:stop	()V
     //   42: aload_0
     //   43: getfield 188	com/tencent/tav/core/audio/AudioExportRunner:mAudioEncoder	Landroid/media/MediaCodec;
-    //   46: invokevirtual 386	android/media/MediaCodec:release	()V
+    //   46: invokevirtual 384	android/media/MediaCodec:release	()V
     //   49: aload_0
-    //   50: getfield 388	com/tencent/tav/core/audio/AudioExportRunner:mFos	Ljava/io/FileOutputStream;
-    //   53: invokevirtual 393	java/io/FileOutputStream:flush	()V
+    //   50: getfield 386	com/tencent/tav/core/audio/AudioExportRunner:mFos	Ljava/io/FileOutputStream;
+    //   53: invokevirtual 391	java/io/FileOutputStream:flush	()V
     //   56: aload_0
-    //   57: getfield 388	com/tencent/tav/core/audio/AudioExportRunner:mFos	Ljava/io/FileOutputStream;
-    //   60: invokevirtual 396	java/io/FileOutputStream:close	()V
+    //   57: getfield 386	com/tencent/tav/core/audio/AudioExportRunner:mFos	Ljava/io/FileOutputStream;
+    //   60: invokevirtual 394	java/io/FileOutputStream:close	()V
     //   63: aload_0
     //   64: aload_0
     //   65: getfield 110	com/tencent/tav/core/audio/AudioExportRunner:mSelectedTimeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   68: invokevirtual 275	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
-    //   71: invokespecial 398	com/tencent/tav/core/audio/AudioExportRunner:notifyProgressUpdate	(J)V
+    //   68: invokevirtual 273	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
+    //   71: invokespecial 396	com/tencent/tav/core/audio/AudioExportRunner:notifyProgressUpdate	(J)V
     //   74: aload_0
     //   75: iconst_0
     //   76: putfield 87	com/tencent/tav/core/audio/AudioExportRunner:mCancel	Z
-    //   79: ldc_w 375
+    //   79: ldc_w 373
     //   82: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   85: aload_0
     //   86: monitorexit
@@ -343,32 +342,32 @@ public class AudioExportRunner
   
   private void waitTime(long paramLong)
   {
-    AppMethodBeat.i(189391);
+    AppMethodBeat.i(215522);
     try
     {
       wait(paramLong);
-      AppMethodBeat.o(189391);
+      AppMethodBeat.o(215522);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(189391);
+      AppMethodBeat.o(215522);
     }
   }
   
   private void write(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(189421);
+    AppMethodBeat.i(215572);
     if (this.mFos == null) {
       this.mFos = new FileOutputStream(this.mSavePath);
     }
     this.mFos.write(paramArrayOfByte);
-    AppMethodBeat.o(189421);
+    AppMethodBeat.o(215572);
   }
   
   private void writeAudioSample()
   {
-    AppMethodBeat.i(189419);
+    AppMethodBeat.i(215563);
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
     for (;;)
     {
@@ -394,7 +393,7 @@ public class AudioExportRunner
       }
       while (i < 0)
       {
-        AppMethodBeat.o(189419);
+        AppMethodBeat.o(215563);
         return;
         notifyProgressUpdate(this.mSelectedTimeRange.getEndUs());
         continue;
@@ -417,7 +416,7 @@ public class AudioExportRunner
   
   private void writeAudioSample(CMTime paramCMTime, int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(189415);
+    AppMethodBeat.i(215550);
     int i = 0;
     while (paramInt - i > 0)
     {
@@ -432,7 +431,7 @@ public class AudioExportRunner
         i += k;
       }
     }
-    AppMethodBeat.o(189415);
+    AppMethodBeat.o(215550);
   }
   
   public void cancel()
@@ -471,33 +470,73 @@ public class AudioExportRunner
   
   public void prepare()
   {
-    AppMethodBeat.i(189369);
+    AppMethodBeat.i(215651);
     initAudioDecoder();
     initAudioEncoder();
-    AppMethodBeat.o(189369);
+    AppMethodBeat.o(215651);
   }
   
+  /* Error */
   public void run()
   {
-    AppMethodBeat.i(189434);
-    Logger.d("AudioEncoder", "encoder start - ".concat(String.valueOf(this)));
-    while ((this.mStatus <= 1) && (!this.mCancel)) {
-      try
-      {
-        readNextSample();
-        writeAudioSample();
-      }
-      catch (Throwable localThrowable)
-      {
-        this.mStatus = 255;
-      }
-    }
-    if (this.mCancel) {
-      this.mStatus = 4;
-    }
-    Logger.d("AudioEncoder", "encoder finish - " + this + "  mStatus = " + this.mStatus);
-    stop();
-    AppMethodBeat.o(189434);
+    // Byte code:
+    //   0: ldc_w 493
+    //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 18
+    //   8: ldc_w 495
+    //   11: aload_0
+    //   12: invokestatic 501	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   15: invokevirtual 505	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   18: invokestatic 367	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: aload_0
+    //   22: getfield 78	com/tencent/tav/core/audio/AudioExportRunner:mStatus	I
+    //   25: iconst_1
+    //   26: if_icmpgt +32 -> 58
+    //   29: aload_0
+    //   30: getfield 87	com/tencent/tav/core/audio/AudioExportRunner:mCancel	Z
+    //   33: ifne +25 -> 58
+    //   36: aload_0
+    //   37: invokespecial 507	com/tencent/tav/core/audio/AudioExportRunner:readNextSample	()V
+    //   40: aload_0
+    //   41: invokespecial 509	com/tencent/tav/core/audio/AudioExportRunner:writeAudioSample	()V
+    //   44: goto -23 -> 21
+    //   47: astore_1
+    //   48: aload_0
+    //   49: sipush 255
+    //   52: putfield 78	com/tencent/tav/core/audio/AudioExportRunner:mStatus	I
+    //   55: goto -34 -> 21
+    //   58: aload_0
+    //   59: getfield 87	com/tencent/tav/core/audio/AudioExportRunner:mCancel	Z
+    //   62: ifeq +8 -> 70
+    //   65: aload_0
+    //   66: iconst_4
+    //   67: putfield 78	com/tencent/tav/core/audio/AudioExportRunner:mStatus	I
+    //   70: ldc 18
+    //   72: new 146	java/lang/StringBuilder
+    //   75: dup
+    //   76: ldc_w 511
+    //   79: invokespecial 151	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   82: aload_0
+    //   83: invokevirtual 514	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   86: ldc_w 516
+    //   89: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: aload_0
+    //   93: getfield 78	com/tencent/tav/core/audio/AudioExportRunner:mStatus	I
+    //   96: invokevirtual 176	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   99: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   102: invokestatic 367	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   105: aload_0
+    //   106: invokespecial 517	com/tencent/tav/core/audio/AudioExportRunner:stop	()V
+    //   109: ldc_w 493
+    //   112: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   115: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	116	0	this	AudioExportRunner
+    //   47	1	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   36	44	47	finally
   }
   
   public void setAsset(IAudioSource<? extends IDecoderTrack> paramIAudioSource)
@@ -539,7 +578,7 @@ public class AudioExportRunner
   {
     try
     {
-      AppMethodBeat.i(189379);
+      AppMethodBeat.i(215657);
       if (this.mThread == null)
       {
         this.mAudioEncoder.start();
@@ -550,7 +589,7 @@ public class AudioExportRunner
         this.enOfAudioInputStream = false;
         this.mStatus = 1;
       }
-      AppMethodBeat.o(189379);
+      AppMethodBeat.o(215657);
       return;
     }
     finally {}

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,40 +7,40 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.c;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.emoji.a.a.a;
 import com.tencent.mm.plugin.emoji.a.d;
-import com.tencent.mm.plugin.emoji.i.g;
-import com.tencent.mm.plugin.emoji.i.h;
-import com.tencent.mm.plugin.emoji.model.l;
+import com.tencent.mm.plugin.emoji.h.g;
+import com.tencent.mm.plugin.emoji.h.h;
+import com.tencent.mm.plugin.emoji.model.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorageEventData;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.aq;
 import java.util.ArrayList;
 
 public class EmojiPaidUI
   extends BaseEmojiStoreUI
 {
-  private com.tencent.mm.plugin.emoji.f.h[] uJJ;
+  private com.tencent.mm.plugin.emoji.e.h[] xSz;
   
-  protected final void a(boolean paramBoolean1, l paraml, boolean paramBoolean2, boolean paramBoolean3)
+  protected final void a(boolean paramBoolean1, m paramm, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(108957);
-    if ((paraml != null) && (paramBoolean1) && (this.uEH != null)) {
-      this.uEH.b(paraml);
+    if ((paramm != null) && (paramBoolean1) && (this.xNj != null)) {
+      this.xNj.b(paramm);
     }
-    if ((this.uEH == null) || (paraml == null) || (paraml.uEw <= 0))
+    if ((this.xNj == null) || (paramm == null) || (paramm.xMT <= 0))
     {
-      this.Xd.setVisibility(0);
-      this.uHh.setText(i.h.emoji_no_play_history);
+      this.bEx.setVisibility(0);
+      this.xPN.setText(h.h.emoji_no_play_history);
       this.mListView.setVisibility(8);
       AppMethodBeat.o(108957);
       return;
     }
-    this.Xd.setVisibility(8);
+    this.bEx.setVisibility(8);
     this.mListView.setVisibility(0);
     AppMethodBeat.o(108957);
   }
@@ -54,22 +53,17 @@ public class EmojiPaidUI
     return i;
   }
   
-  protected final int cVA()
-  {
-    return 2;
-  }
-  
-  protected final int cVr()
+  protected final int dAR()
   {
     return 10;
   }
   
-  protected final int cVs()
+  protected final int dAS()
   {
     return 6;
   }
   
-  protected final a cVt()
+  protected final a dAT()
   {
     AppMethodBeat.i(108958);
     d locald = new d(getContext());
@@ -77,24 +71,34 @@ public class EmojiPaidUI
     return locald;
   }
   
-  protected final void cVv() {}
+  protected final void dAV() {}
   
-  protected final boolean cVx()
+  protected final boolean dAX()
   {
     return false;
   }
   
-  protected final void h(com.tencent.mm.plugin.emoji.f.h paramh) {}
+  protected final int dBa()
+  {
+    return 2;
+  }
+  
+  protected final boolean dBj()
+  {
+    return true;
+  }
+  
+  protected final void h(com.tencent.mm.plugin.emoji.e.h paramh) {}
   
   public void initView()
   {
     AppMethodBeat.i(108954);
-    setMMTitle(i.h.emoji_paid);
-    if (z.bdp()) {
-      addIconOptionMenu(0, i.g.icons_outlined_more, new EmojiPaidUI.1(this));
+    setMMTitle(h.h.emoji_paid);
+    if (z.bBh()) {
+      addIconOptionMenu(0, h.g.icons_outlined_more, new EmojiPaidUI.1(this));
     }
     super.initView();
-    this.Xd.setVisibility(8);
+    this.bEx.setVisibility(8);
     this.mListView.setVisibility(8);
     AppMethodBeat.o(108954);
   }
@@ -103,7 +107,7 @@ public class EmojiPaidUI
   {
     AppMethodBeat.i(108956);
     Log.i("MicroMsg.emoji.EmojiPaidUI", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
-    cVG();
+    dismissLoadingDialog();
     String str = "";
     if (paramIntent != null)
     {
@@ -122,10 +126,10 @@ public class EmojiPaidUI
           if ((paramIntent != null) && (paramIntent.size() > 0))
           {
             bD(null);
-            cVI();
-            N(false, false);
-            com.tencent.mm.kernel.h.aHG().aHp().i(208900, Boolean.TRUE);
-            Toast.makeText(this, i.h.emoji_restore_success, 0).show();
+            dBh();
+            R(false, false);
+            com.tencent.mm.kernel.h.baE().ban().B(208900, Boolean.TRUE);
+            Toast.makeText(this, h.h.emoji_restore_success, 0).show();
             AppMethodBeat.o(108956);
             return;
           }
@@ -137,7 +141,7 @@ public class EmojiPaidUI
         AppMethodBeat.o(108956);
         return;
       }
-      Toast.makeText(this, i.h.emoji_restore_failed, 0).show();
+      Toast.makeText(this, h.h.emoji_restore_failed, 0).show();
       AppMethodBeat.o(108956);
       return;
       paramInt1 = 0;
@@ -148,7 +152,7 @@ public class EmojiPaidUI
   {
     AppMethodBeat.i(108952);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.report.service.h.IzE.a(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(10), Integer.valueOf(10) });
+    com.tencent.mm.plugin.report.service.h.OAn.b(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(10), Integer.valueOf(10) });
     AppMethodBeat.o(108952);
   }
   
@@ -156,12 +160,12 @@ public class EmojiPaidUI
   {
     AppMethodBeat.i(108955);
     super.onDestroy();
-    if ((this.uJJ != null) && (this.uJJ.length > 0))
+    if ((this.xSz != null) && (this.xSz.length > 0))
     {
       int i = 0;
-      while (i < this.uJJ.length)
+      while (i < this.xSz.length)
       {
-        com.tencent.mm.kernel.h.aHF().kcd.a(this.uJJ[i]);
+        com.tencent.mm.kernel.h.baD().mCm.a(this.xSz[i]);
         i += 1;
       }
     }
@@ -173,8 +177,8 @@ public class EmojiPaidUI
     AppMethodBeat.i(108959);
     if ((paramString != null) && (paramString.equals("event_update_group")))
     {
-      cVS();
-      fZ(131074, 50);
+      dBx();
+      gS(131074, 50);
     }
     AppMethodBeat.o(108959);
   }

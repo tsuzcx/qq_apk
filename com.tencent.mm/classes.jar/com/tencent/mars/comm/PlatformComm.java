@@ -7,6 +7,7 @@ import android.telephony.TelephonyManager;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
 import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.io.PrintWriter;
@@ -73,7 +74,7 @@ public class PlatformComm
     {
       try
       {
-        Object localObject = ((ConnectivityManager)PlatformComm.context.getSystemService("connectivity")).getActiveNetworkInfo();
+        Object localObject = ((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
         PlatformComm.APNInfo localAPNInfo = new PlatformComm.APNInfo();
         if (localObject != null)
         {
@@ -157,7 +158,7 @@ public class PlatformComm
     {
       try
       {
-        localObject1 = (ConnectivityManager)PlatformComm.context.getSystemService("connectivity");
+        localObject1 = (ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity");
         if (localObject1 == null) {
           return -1;
         }
@@ -294,7 +295,7 @@ public class PlatformComm
       {
         PlatformComm.handler.post(new Runnable()
         {
-          public final void run()
+          public void run()
           {
             PlatformComm.resetprocessimp.restartProcess();
           }
@@ -427,7 +428,7 @@ public class PlatformComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.comm.PlatformComm
  * JD-Core Version:    0.7.0.1
  */

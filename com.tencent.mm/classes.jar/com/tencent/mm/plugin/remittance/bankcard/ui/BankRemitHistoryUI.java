@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -19,23 +18,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.q;
-import com.tencent.mm.plugin.remittance.bankcard.a.e;
-import com.tencent.mm.plugin.remittance.bankcard.a.i;
-import com.tencent.mm.plugin.wallet_core.utils.k;
+import com.tencent.mm.am.p;
+import com.tencent.mm.plugin.remittance.bankcard.b.e;
+import com.tencent.mm.plugin.remittance.bankcard.b.i;
+import com.tencent.mm.plugin.wallet_core.utils.n;
 import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.agz;
-import com.tencent.mm.protocal.protobuf.cjv;
-import com.tencent.mm.protocal.protobuf.drq;
+import com.tencent.mm.protocal.protobuf.dab;
+import com.tencent.mm.protocal.protobuf.ekl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.tools.m;
-import com.tencent.mm.wallet_core.c.r;
-import com.tencent.mm.wallet_core.c.r.a;
+import com.tencent.mm.ui.base.u.i;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.wallet_core.model.r;
+import com.tencent.mm.wallet_core.model.r.a;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,24 +42,24 @@ import java.util.List;
 
 public class BankRemitHistoryUI
   extends BankRemitBaseUI
-  implements q.g
+  implements u.i
 {
-  private ListView IhD;
-  private a IhE;
+  private ListView Oeg;
+  private a Oeh;
   private int limit;
-  private boolean mMj;
-  private boolean mMk;
   private int offset;
-  private m pGE;
-  private View uOi;
-  private List<cjv> umQ;
+  private boolean pIR;
+  private boolean pIS;
+  private l sLE;
+  private View xWS;
+  private List<dab> xti;
   
   public BankRemitHistoryUI()
   {
     AppMethodBeat.i(67534);
-    this.umQ = new ArrayList();
-    this.mMj = false;
-    this.mMk = false;
+    this.xti = new ArrayList();
+    this.pIR = false;
+    this.pIS = false;
     this.limit = 20;
     this.offset = 0;
     AppMethodBeat.o(67534);
@@ -71,9 +69,9 @@ public class BankRemitHistoryUI
   {
     AppMethodBeat.i(67541);
     Log.i("MicroMsg.BankRemitHistoryUI", "fetch data: %s, %s", new Object[] { Integer.valueOf(this.limit), Integer.valueOf(this.offset) });
-    this.mMj = true;
+    this.pIR = true;
     i locali = new i(this.limit, this.offset);
-    locali.u(this);
+    locali.r(this);
     doSceneProgress(locali, false);
     AppMethodBeat.o(67541);
   }
@@ -86,24 +84,24 @@ public class BankRemitHistoryUI
   public void initView()
   {
     AppMethodBeat.i(67536);
-    this.IhD = ((ListView)findViewById(a.f.brhu_lv));
-    this.uOi = LayoutInflater.from(this).inflate(a.g.aa_record_list_loading_more, null);
-    this.pGE = new m(this);
-    this.IhE = new a((byte)0);
-    this.IhD.addFooterView(this.uOi);
-    this.IhD.setAdapter(this.IhE);
-    this.IhD.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.Oeg = ((ListView)findViewById(a.f.brhu_lv));
+    this.xWS = LayoutInflater.from(this).inflate(a.g.aa_record_list_loading_more, null);
+    this.sLE = new l(this);
+    this.Oeh = new a((byte)0);
+    this.Oeg.addFooterView(this.xWS);
+    this.Oeg.setAdapter(this.Oeh);
+    this.Oeg.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(67520);
-        Log.d("MicroMsg.BankRemitHistoryUI", "click item, %s", new Object[] { ((cjv)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).title });
+        Log.d("MicroMsg.BankRemitHistoryUI", "click item, %s", new Object[] { ((dab)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).title });
         BankRemitHistoryUI.a(BankRemitHistoryUI.this).a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, BankRemitHistoryUI.this, BankRemitHistoryUI.this);
         AppMethodBeat.o(67520);
         return false;
       }
     });
-    this.IhD.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.Oeg.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
@@ -151,42 +149,42 @@ public class BankRemitHistoryUI
   {
     AppMethodBeat.i(67538);
     Object localObject = (AdapterView.AdapterContextMenuInfo)paramMenuItem.getMenuInfo();
-    localObject = (cjv)this.IhD.getItemAtPosition(((AdapterView.AdapterContextMenuInfo)localObject).position);
+    localObject = (dab)this.Oeg.getItemAtPosition(((AdapterView.AdapterContextMenuInfo)localObject).position);
     if ((paramMenuItem.getItemId() == 1) && (localObject != null))
     {
-      paramMenuItem = ((cjv)localObject).Saj;
+      paramMenuItem = ((dab)localObject).YYi;
       Log.i("MicroMsg.BankRemitHistoryUI", "delete record: %s", new Object[] { paramMenuItem });
       paramMenuItem = new e(paramMenuItem);
-      paramMenuItem.u(this);
+      paramMenuItem.r(this);
       doSceneProgress(paramMenuItem);
     }
     AppMethodBeat.o(67538);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, p paramp)
   {
     AppMethodBeat.i(67539);
-    if ((paramq instanceof i))
+    if ((paramp instanceof i))
     {
-      paramString = (i)paramq;
+      paramString = (i)paramp;
       paramString.a(new r.a()
       {
-        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, p paramAnonymousp)
         {
           AppMethodBeat.i(67524);
-          if (paramString.IfJ.ToH != null)
+          if (paramString.Oci.aaCO != null)
           {
-            Log.i("MicroMsg.BankRemitHistoryUI", "history size: %s", new Object[] { Integer.valueOf(paramString.IfJ.ToH.size()) });
-            if (paramString.IfJ.ToH.size() < paramString.limit)
+            Log.i("MicroMsg.BankRemitHistoryUI", "history size: %s", new Object[] { Integer.valueOf(paramString.Oci.aaCO.size()) });
+            if (paramString.Oci.aaCO.size() < paramString.limit)
             {
               Log.i("MicroMsg.BankRemitHistoryUI", "is last: %s", new Object[] { Integer.valueOf(BankRemitHistoryUI.f(BankRemitHistoryUI.this)) });
               BankRemitHistoryUI.g(BankRemitHistoryUI.this);
               BankRemitHistoryUI.b(BankRemitHistoryUI.this).removeFooterView(BankRemitHistoryUI.h(BankRemitHistoryUI.this));
             }
-            if (paramString.IfJ.ToH != null)
+            if (paramString.Oci.aaCO != null)
             {
-              BankRemitHistoryUI.a(BankRemitHistoryUI.this, BankRemitHistoryUI.f(BankRemitHistoryUI.this) + paramString.IfJ.ToH.size());
-              BankRemitHistoryUI.i(BankRemitHistoryUI.this).addAll(paramString.IfJ.ToH);
+              BankRemitHistoryUI.a(BankRemitHistoryUI.this, paramString.Oci.aaCO.size());
+              BankRemitHistoryUI.i(BankRemitHistoryUI.this).addAll(paramString.Oci.aaCO);
               BankRemitHistoryUI.j(BankRemitHistoryUI.this).notifyDataSetChanged();
               AppMethodBeat.o(67524);
             }
@@ -199,57 +197,17 @@ public class BankRemitHistoryUI
           }
           AppMethodBeat.o(67524);
         }
-      }).b(new r.a()
-      {
-        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-        {
-          AppMethodBeat.i(67523);
-          Log.e("MicroMsg.BankRemitHistoryUI", "history response error: %s, %s", new Object[] { Integer.valueOf(paramString.IfJ.fwx), paramString.IfJ.tVo });
-          AppMethodBeat.o(67523);
-        }
-      }).c(new r.a()
-      {
-        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-        {
-          AppMethodBeat.i(67522);
-          Log.e("MicroMsg.BankRemitHistoryUI", "net error: %s", new Object[] { paramAnonymousq });
-          AppMethodBeat.o(67522);
-        }
-      });
-      this.mMj = false;
+      }).b(new BankRemitHistoryUI.4(this, paramString)).c(new BankRemitHistoryUI.3(this));
+      this.pIR = false;
     }
     for (;;)
     {
       AppMethodBeat.o(67539);
       return false;
-      if ((paramq instanceof e))
+      if ((paramp instanceof e))
       {
-        paramString = (e)paramq;
-        paramString.a(new r.a()
-        {
-          public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-          {
-            AppMethodBeat.i(67527);
-            BankRemitHistoryUI.a(BankRemitHistoryUI.this, paramString.tUB);
-            AppMethodBeat.o(67527);
-          }
-        }).b(new r.a()
-        {
-          public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-          {
-            AppMethodBeat.i(67526);
-            Log.e("MicroMsg.BankRemitHistoryUI", "history response: %s, %s", new Object[] { Integer.valueOf(paramString.IfF.fwx), paramString.IfF.tVo });
-            AppMethodBeat.o(67526);
-          }
-        }).c(new r.a()
-        {
-          public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
-          {
-            AppMethodBeat.i(67525);
-            Log.e("MicroMsg.BankRemitHistoryUI", "net error: %s", new Object[] { paramAnonymousq });
-            AppMethodBeat.o(67525);
-          }
-        });
+        paramString = (e)paramp;
+        paramString.a(new BankRemitHistoryUI.8(this, paramString)).b(new BankRemitHistoryUI.7(this, paramString)).c(new BankRemitHistoryUI.6(this));
       }
     }
   }
@@ -263,19 +221,19 @@ public class BankRemitHistoryUI
   final class a
     extends BaseAdapter
   {
-    private SimpleDateFormat HCy;
+    private SimpleDateFormat NAb;
     
     private a()
     {
       AppMethodBeat.i(67528);
-      this.HCy = new SimpleDateFormat(BankRemitHistoryUI.this.getContext().getString(a.i.bank_remit_history_date_format_pattern));
+      this.NAb = new SimpleDateFormat(BankRemitHistoryUI.this.getContext().getString(a.i.bank_remit_history_date_format_pattern));
       AppMethodBeat.o(67528);
     }
     
-    private String GN(long paramLong)
+    private String iY(long paramLong)
     {
       AppMethodBeat.i(67532);
-      String str = this.HCy.format(new Date(1000L * paramLong));
+      String str = this.NAb.format(new Date(1000L * paramLong));
       AppMethodBeat.o(67532);
       return str;
     }
@@ -311,8 +269,8 @@ public class BankRemitHistoryUI
         localView.setTag(new BankRemitHistoryUI.b(BankRemitHistoryUI.this, localView));
       }
       paramView = (BankRemitHistoryUI.b)localView.getTag();
-      paramViewGroup = (cjv)getItem(paramInt);
-      String str = GN(paramViewGroup.Trm);
+      paramViewGroup = (dab)getItem(paramInt);
+      String str = iY(paramViewGroup.aaFw);
       if (paramInt == 0) {
         paramInt = 1;
       }
@@ -320,35 +278,35 @@ public class BankRemitHistoryUI
       {
         if (paramInt != 0)
         {
-          paramView.IhI.setText(str);
-          paramView.IhI.setVisibility(0);
+          paramView.DGu.setText(str);
+          paramView.DGu.setVisibility(0);
           label105:
-          paramView.IhK.setUrl(paramViewGroup.IfQ);
-          paramView.kEs.setText(paramViewGroup.title);
-          paramView.IhJ.setText(paramViewGroup.Trn);
-          paramView.mMb.setText(paramViewGroup.Trl);
-          if (Util.isNullOrNil(paramViewGroup.Tro)) {
+          paramView.Oem.setUrl(paramViewGroup.Ocp);
+          paramView.descTv.setText(paramViewGroup.title);
+          paramView.Oel.setText(paramViewGroup.aaFx);
+          paramView.pIJ.setText(paramViewGroup.aaFv);
+          if (Util.isNullOrNil(paramViewGroup.aaFy)) {
             break label253;
           }
-          if (!Util.isNullOrNil(paramViewGroup.Trp)) {
-            paramView.yVc.setTextColor(k.cW(paramViewGroup.Trp, true));
+          if (!Util.isNullOrNil(paramViewGroup.aaFz)) {
+            paramView.Dip.setTextColor(n.dE(paramViewGroup.aaFz, true));
           }
-          paramView.yVc.setText(paramViewGroup.Tro);
-          paramView.yVc.setVisibility(0);
+          paramView.Dip.setText(paramViewGroup.aaFy);
+          paramView.Dip.setVisibility(0);
         }
         for (;;)
         {
           AppMethodBeat.o(67531);
           return localView;
-          if (str.equals(GN(((cjv)getItem(paramInt - 1)).Trm))) {
+          if (str.equals(iY(((dab)getItem(paramInt - 1)).aaFw))) {
             break label265;
           }
           paramInt = 1;
           break;
-          paramView.IhI.setVisibility(8);
+          paramView.DGu.setVisibility(8);
           break label105;
           label253:
-          paramView.yVc.setVisibility(8);
+          paramView.Dip.setVisibility(8);
         }
         label265:
         paramInt = 0;
@@ -358,29 +316,29 @@ public class BankRemitHistoryUI
   
   final class b
   {
-    TextView IhI;
-    TextView IhJ;
-    CdnImageView IhK;
-    TextView kEs;
-    TextView mMb;
-    TextView yVc;
+    TextView DGu;
+    TextView Dip;
+    TextView Oel;
+    CdnImageView Oem;
+    TextView descTv;
+    TextView pIJ;
     
     public b(View paramView)
     {
       AppMethodBeat.i(67533);
-      this.IhI = ((TextView)paramView.findViewById(a.f.brhi_header_tv));
-      this.kEs = ((TextView)paramView.findViewById(a.f.brhi_desc_tv));
-      this.IhJ = ((TextView)paramView.findViewById(a.f.brhi_money_tv));
-      this.mMb = ((TextView)paramView.findViewById(a.f.brhi_date_tv));
-      this.yVc = ((TextView)paramView.findViewById(a.f.brhi_state_tv));
-      this.IhK = ((CdnImageView)paramView.findViewById(a.f.brhi_bank_icon_iv));
+      this.DGu = ((TextView)paramView.findViewById(a.f.brhi_header_tv));
+      this.descTv = ((TextView)paramView.findViewById(a.f.brhi_desc_tv));
+      this.Oel = ((TextView)paramView.findViewById(a.f.brhi_money_tv));
+      this.pIJ = ((TextView)paramView.findViewById(a.f.brhi_date_tv));
+      this.Dip = ((TextView)paramView.findViewById(a.f.brhi_state_tv));
+      this.Oem = ((CdnImageView)paramView.findViewById(a.f.brhi_bank_icon_iv));
       AppMethodBeat.o(67533);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitHistoryUI
  * JD-Core Version:    0.7.0.1
  */

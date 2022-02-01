@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.label.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.widget.a.g.c;
 
 final class ContactLabelManagerUI$14
-  implements MenuItem.OnMenuItemClickListener
+  implements g.c
 {
-  ContactLabelManagerUI$14(ContactLabelManagerUI paramContactLabelManagerUI) {}
+  ContactLabelManagerUI$14(ContactLabelManagerUI paramContactLabelManagerUI, Runnable paramRunnable) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onDialogClick(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(206736);
-    ContactLabelManagerUI.g(this.EdX);
-    AppMethodBeat.o(206736);
-    return true;
+    AppMethodBeat.i(268814);
+    Log.i("MicroMsg.Label.ContactLabelManagerUI", "showTextToast, has shown tip");
+    if (this.JVO != null) {
+      this.JVO.run();
+    }
+    AppMethodBeat.o(268814);
   }
 }
 

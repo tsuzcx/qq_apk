@@ -11,7 +11,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class TalkRoomService
   extends Service
 {
-  private f Mjy;
+  private f SMU;
   
   static
   {
@@ -24,7 +24,7 @@ public class TalkRoomService
   {
     AppMethodBeat.i(29428);
     Log.d("MicroMsg.TalkRoomService", "onBind~~~ threadID:" + Thread.currentThread());
-    paramIntent = this.Mjy;
+    paramIntent = this.SMU;
     AppMethodBeat.o(29428);
     return paramIntent;
   }
@@ -37,8 +37,8 @@ public class TalkRoomService
     if (Build.VERSION.SDK_INT < 18) {
       startForeground(9999, new Notification());
     }
-    if (this.Mjy == null) {
-      this.Mjy = new f();
+    if (this.SMU == null) {
+      this.SMU = new f();
     }
     AppMethodBeat.o(29425);
   }

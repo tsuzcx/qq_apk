@@ -1,65 +1,66 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
+import com.tencent.mm.am.c;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.am.c.b;
+import com.tencent.mm.am.c.c;
+import com.tencent.mm.am.h;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.evs;
-import com.tencent.mm.protocal.protobuf.evt;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.cyj;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.model.r;
 
 public final class ao
   extends r
 {
-  public evt EBk;
+  public cyj Kuh;
+  
+  public ao() {}
   
   public ao(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(268246);
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new evs();
-    ((d.a)localObject).lBV = new evt();
-    ((d.a)localObject).funcId = 5160;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/unionhb/businesscallbackunionhb";
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).bgN();
-    localObject = (evs)d.b.b(this.rr.lBR);
-    ((evs)localObject).ybP = paramString1;
-    ((evs)localObject).tUC = paramString2;
-    ((evs)localObject).EBP = paramString3;
-    ((evs)localObject).Uxm = 0;
-    Log.i("MicroMsg.NetSceneLuckyMoneyBusinessCallbackUnion", "NetSceneLuckyMoneyBusinessCallbackUnion request sendId: %s, %s", new Object[] { paramString1, paramString3 });
-    AppMethodBeat.o(268246);
+    AppMethodBeat.i(65283);
+    Object localObject = new c.a();
+    ((c.a)localObject).otE = new cyi();
+    ((c.a)localObject).otF = new cyj();
+    ((c.a)localObject).funcId = 2929;
+    ((c.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/businesscallbackwxhb";
+    ((c.a)localObject).otG = 0;
+    ((c.a)localObject).respCmdId = 0;
+    this.rr = ((c.a)localObject).bEF();
+    localObject = (cyi)c.b.b(this.rr.otB);
+    ((cyi)localObject).CAf = paramString1;
+    ((cyi)localObject).wXY = paramString2;
+    ((cyi)localObject).KuQ = paramString3;
+    Log.i("MicroMsg.NetSceneLuckyMoneyBusinessCallback", "sendId: %s, %s", new Object[] { paramString1, paramString3 });
+    AppMethodBeat.o(65283);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(268247);
-    this.EBk = ((evt)d.c.b(((d)params).lBS));
-    Log.i("MicroMsg.NetSceneLuckyMoneyBusinessCallbackUnion", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.EBk.fwx), this.EBk.tVo });
+    AppMethodBeat.i(65284);
+    this.Kuh = ((cyj)c.c.b(((c)params).otC));
+    Log.i("MicroMsg.NetSceneLuckyMoneyBusinessCallback", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.Kuh.hAV), this.Kuh.wYI });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(268247);
+    AppMethodBeat.o(65284);
   }
   
   public final void f(s params)
   {
-    AppMethodBeat.i(268248);
-    params = (evt)d.c.b(((d)params).lBS);
-    this.YVy = params.fwx;
-    this.YVz = params.tVo;
-    AppMethodBeat.o(268248);
+    AppMethodBeat.i(283921);
+    params = (cyj)c.c.b(((c)params).otC);
+    this.agTs = params.hAV;
+    this.agTt = params.wYI;
+    AppMethodBeat.o(283921);
   }
   
   public final int getType()
   {
-    return 5160;
+    return 2929;
   }
 }
 

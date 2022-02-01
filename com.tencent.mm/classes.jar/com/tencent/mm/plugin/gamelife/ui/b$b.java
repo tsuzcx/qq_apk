@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.gamelife.ui;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.view.recyclerview.i;
-import kotlin.l;
+import com.tencent.mm.view.recyclerview.j;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$ConversationViewHolder;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-gamelife_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationAdapter$ConversationViewHolder;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-gamelife_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class b$b
-  extends i
+  extends j
 {
   public b$b(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(204318);
-    AppMethodBeat.o(204318);
+    AppMethodBeat.i(267960);
+    AppMethodBeat.o(267960);
   }
 }
 

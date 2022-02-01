@@ -16,6 +16,8 @@ public class TencentMapOptions
   private int mExtSurfaceHeight;
   private int mExtSurfaceWidth;
   private int mMapType = 0;
+  private Object mProtocolDataDesc;
+  private int mProtocolFrom;
   private String mSubId;
   private String mSubKey;
   
@@ -46,6 +48,16 @@ public class TencentMapOptions
   public int getMapType()
   {
     return this.mMapType;
+  }
+  
+  public final Object getProtocolDataDesc()
+  {
+    return this.mProtocolDataDesc;
+  }
+  
+  public final int getProtocolFrom()
+  {
+    return this.mProtocolFrom;
   }
   
   public final String getSubId()
@@ -105,6 +117,12 @@ public class TencentMapOptions
     this.isMutipleInfowindowEnabled = paramBoolean;
   }
   
+  public final void setServiceProtocol(int paramInt, Object paramObject)
+  {
+    this.mProtocolFrom = paramInt;
+    this.mProtocolDataDesc = paramObject;
+  }
+  
   public final void setSubInfo(String paramString1, String paramString2)
   {
     this.mSubId = paramString2;
@@ -113,7 +131,7 @@ public class TencentMapOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

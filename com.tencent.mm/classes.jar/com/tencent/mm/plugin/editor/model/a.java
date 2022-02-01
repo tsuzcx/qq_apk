@@ -6,16 +6,16 @@ import com.tencent.mm.plugin.editor.model.a.c;
 import com.tencent.mm.plugin.editor.model.a.d;
 import com.tencent.mm.plugin.editor.model.a.j;
 import com.tencent.mm.plugin.editor.model.a.l;
-import com.tencent.mm.plugin.fav.a.ap;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.protocal.protobuf.ann;
-import com.tencent.mm.protocal.protobuf.ano;
-import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.plugin.fav.a.aq;
+import com.tencent.mm.protocal.protobuf.arf;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.arh;
+import com.tencent.mm.protocal.protobuf.arv;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,20 +24,20 @@ import org.json.JSONArray;
 
 public abstract class a
 {
-  public static String urh = "";
-  public static HashMap<String, JSONArray> urj = new HashMap();
-  public static String urk = ap.dkm() + "/fav_fileicon_recording.png";
-  private static String urm = ap.dkm() + "/ofm_file_icon.png";
-  private static String urn = ap.dkm() + "/app_attach_file_icon_pic.png";
-  public static String uro = ap.dkm() + "/location_msg.png";
-  public static String urp = ap.dkm() + "/note_fav_not_support.png";
+  public static String xxE = "";
+  public static HashMap<String, JSONArray> xxF = new HashMap();
+  public static String xxG = aq.dQY() + "/fav_fileicon_recording.png";
+  private static String xxH = aq.dQY() + "/ofm_file_icon.png";
+  private static String xxI = aq.dQY() + "/app_attach_file_icon_pic.png";
+  public static String xxJ = aq.dQY() + "/location_msg.png";
+  public static String xxK = aq.dQY() + "/note_fav_not_support.png";
   
-  public static aoc a(String paramString, List<d> paramList, anm paramanm)
+  public static arv a(String paramString, List<d> paramList, arf paramarf)
   {
     LinkedList localLinkedList = new LinkedList();
-    aoc localaoc = new aoc();
-    if (paramanm != null) {
-      localLinkedList.add(paramanm);
+    arv localarv = new arv();
+    if (paramarf != null) {
+      localLinkedList.add(paramarf);
     }
     for (;;)
     {
@@ -47,107 +47,107 @@ public abstract class a
         if (!paramString.hasNext()) {
           break label689;
         }
-        paramanm = (d)paramString.next();
-        if (paramanm != null)
+        paramarf = (d)paramString.next();
+        if (paramarf != null)
         {
-          if (paramanm.urS == null) {
+          if (paramarf.xyn == null) {
             break;
           }
-          localLinkedList.add(paramanm.urS);
+          localLinkedList.add(paramarf.xyn);
         }
       }
       if ((!Util.isNullOrNil(paramString)) && (paramString.length() > 0))
       {
-        paramString = ap.dkp();
-        paramanm = new anm();
-        paramanm.arq(8);
-        paramanm.bsU("WeNoteHtmlFile");
-        paramanm.Ey(true);
-        paramanm.TY(u.bBQ(paramString));
-        paramanm.bsH(".htm");
-        localLinkedList.add(paramanm);
-        localObject1 = b.b(paramanm);
-        if (!u.agG((String)localObject1)) {
-          u.on(paramString, (String)localObject1);
+        paramString = aq.dRb();
+        paramarf = new arf();
+        paramarf.axy(8);
+        paramarf.bsL("WeNoteHtmlFile");
+        paramarf.Kk(true);
+        paramarf.yo(y.bEl(paramString));
+        paramarf.bsy(".htm");
+        localLinkedList.add(paramarf);
+        localObject1 = b.b(paramarf);
+        if (!y.ZC((String)localObject1)) {
+          y.O(paramString, (String)localObject1, false);
         }
-        paramanm.bsL((String)localObject1);
+        paramarf.bsC((String)localObject1);
       }
     }
-    Object localObject1 = new anm();
-    Object localObject2 = new ann();
-    Object localObject3 = new ano();
-    ((ano)localObject3).aru(6);
-    ((ann)localObject2).c((ano)localObject3);
-    ((anm)localObject1).a((ann)localObject2);
-    switch (paramanm.type)
+    Object localObject1 = new arf();
+    Object localObject2 = new arg();
+    Object localObject3 = new arh();
+    ((arh)localObject3).axC(6);
+    ((arg)localObject2).c((arh)localObject3);
+    ((arf)localObject1).a((arg)localObject2);
+    switch (paramarf.type)
     {
     }
     for (;;)
     {
-      ((anm)localObject1).bsU(paramanm.urT);
+      ((arf)localObject1).bsL(paramarf.xyo);
       localLinkedList.add(localObject1);
       break;
-      ((anm)localObject1).arq(2);
-      localObject2 = (c)paramanm;
-      localObject3 = ((c)localObject2).urR;
-      ((anm)localObject1).bsL((String)localObject3);
-      if (!Util.isNullOrNil(((c)paramanm).fEa))
+      ((arf)localObject1).axy(2);
+      localObject2 = (c)paramarf;
+      localObject3 = ((c)localObject2).xym;
+      ((arf)localObject1).bsC((String)localObject3);
+      if (!Util.isNullOrNil(((c)paramarf).hIQ))
       {
-        ((anm)localObject1).bsK(paramanm.fEa);
-        ((anm)localObject1).bsM(((c)localObject2).fNU);
+        ((arf)localObject1).bsB(paramarf.hIQ);
+        ((arf)localObject1).bsD(((c)localObject2).hTM);
       }
       for (;;)
       {
-        ((anm)localObject1).arq(2);
+        ((arf)localObject1).axy(2);
         break;
-        ((anm)localObject1).bsK(b.atK(localObject2.toString()));
-        BitmapUtil.createThumbNail((String)localObject3, 150, 150, Bitmap.CompressFormat.JPEG, 90, b.a((anm)localObject1), true);
-        ((anm)localObject1).bsM(b.a((anm)localObject1));
+        ((arf)localObject1).bsB(b.anz(localObject2.toString()));
+        BitmapUtil.createThumbNail((String)localObject3, 150, 150, Bitmap.CompressFormat.JPEG, 90, b.a((arf)localObject1), true);
+        ((arf)localObject1).bsD(b.a((arf)localObject1));
       }
-      ((anm)localObject1).arq(3);
-      localObject2 = (com.tencent.mm.plugin.editor.model.a.f)paramanm;
-      ((anm)localObject1).bsK(paramanm.fEa);
-      localObject3 = ((com.tencent.mm.plugin.editor.model.a.f)localObject2).fNU;
+      ((arf)localObject1).axy(3);
+      localObject2 = (com.tencent.mm.plugin.editor.model.a.f)paramarf;
+      ((arf)localObject1).bsB(paramarf.hIQ);
+      localObject3 = ((com.tencent.mm.plugin.editor.model.a.f)localObject2).hTM;
       if ((Util.isNullOrNil((String)localObject3)) || (((String)localObject3).length() == 0)) {
         break;
       }
-      ((anm)localObject1).bsL((String)localObject3);
-      ((anm)localObject1).arp(((com.tencent.mm.plugin.editor.model.a.f)localObject2).fEj);
-      ((anm)localObject1).Ey(true);
-      ((anm)localObject1).bsH(((com.tencent.mm.plugin.editor.model.a.f)localObject2).urV);
+      ((arf)localObject1).bsC((String)localObject3);
+      ((arf)localObject1).axx(((com.tencent.mm.plugin.editor.model.a.f)localObject2).hIZ);
+      ((arf)localObject1).Kk(true);
+      ((arf)localObject1).bsy(((com.tencent.mm.plugin.editor.model.a.f)localObject2).xyq);
       continue;
-      ((anm)localObject1).arq(4);
-      localObject2 = (l)paramanm;
-      ((anm)localObject1).bsK(paramanm.fEa);
-      ((anm)localObject1).bsL(((l)localObject2).fNU);
-      ((anm)localObject1).bsM(((l)localObject2).thumbPath);
-      localObject3 = com.tencent.mm.plugin.sight.base.f.aYg(((l)localObject2).fNU);
+      ((arf)localObject1).axy(4);
+      localObject2 = (l)paramarf;
+      ((arf)localObject1).bsB(paramarf.hIQ);
+      ((arf)localObject1).bsC(((l)localObject2).hTM);
+      ((arf)localObject1).bsD(((l)localObject2).thumbPath);
+      localObject3 = com.tencent.mm.plugin.sight.base.f.aVX(((l)localObject2).hTM);
       if (localObject3 != null) {
-        ((anm)localObject1).arp(((com.tencent.mm.plugin.sight.base.b)localObject3).getVideoDuration());
+        ((arf)localObject1).axx(((com.tencent.mm.plugin.sight.base.b)localObject3).getVideoDuration());
       }
       for (;;)
       {
-        ((anm)localObject1).bsH(((l)localObject2).urV);
+        ((arf)localObject1).bsy(((l)localObject2).xyq);
         break;
-        ((anm)localObject1).arp(1);
+        ((arf)localObject1).axx(1);
       }
-      ((anm)localObject1).arq(1);
-      ((anm)localObject1).Ex(true);
-      ((anm)localObject1).Ey(true);
-      localObject2 = (j)paramanm;
-      ((anm)localObject1).bsK(paramanm.fEa);
-      ((anm)localObject1).bsy(com.tencent.mm.plugin.editor.b.atH(((j)localObject2).content));
-      if ((!Util.isNullOrNil(((anm)localObject1).desc)) && (((anm)localObject1).desc.length() > 1000)) {
-        ((anm)localObject1).bsy(((anm)localObject1).desc.substring(0, 1000));
+      ((arf)localObject1).axy(1);
+      ((arf)localObject1).Kj(true);
+      ((arf)localObject1).Kk(true);
+      localObject2 = (j)paramarf;
+      ((arf)localObject1).bsB(paramarf.hIQ);
+      ((arf)localObject1).bsp(com.tencent.mm.plugin.editor.b.anw(((j)localObject2).content));
+      if ((!Util.isNullOrNil(((arf)localObject1).desc)) && (((arf)localObject1).desc.length() > 1000)) {
+        ((arf)localObject1).bsp(((arf)localObject1).desc.substring(0, 1000));
       }
     }
     label689:
     a(localLinkedList, paramList);
-    localaoc.cg(localLinkedList);
-    return localaoc;
+    localarv.cs(localLinkedList);
+    return localarv;
   }
   
-  private static void a(LinkedList<anm> paramLinkedList, List<d> paramList)
+  private static void a(LinkedList<arf> paramLinkedList, List<d> paramList)
   {
     Log.i("MicroMsg.EditorBase", "do EditorBase.setExtraInfo");
     if (paramLinkedList.size() > 0)
@@ -156,12 +156,12 @@ public abstract class a
       int i = 0;
       if (i < j)
       {
-        anm localanm = (anm)paramLinkedList.get(i);
+        arf localarf = (arf)paramLinkedList.get(i);
         String str1;
         Object localObject;
-        if ((i > 0) && (Util.isNullOrNil(localanm.Rwb)))
+        if ((i > 0) && (Util.isNullOrNil(localarf.Ysw)))
         {
-          localanm.bsK(b.atK(localanm.toString()));
+          localarf.bsB(b.anz(localarf.toString()));
           str1 = null;
           localObject = str1;
           if (i - 1 >= 0)
@@ -175,57 +175,57 @@ public abstract class a
               }
             }
           }
-          if ((localObject != null) && (((d)localObject).urT != null) && (((d)localObject).urT.equals(localanm.SyO))) {
-            ((d)localObject).fEa = localanm.fEa;
+          if ((localObject != null) && (((d)localObject).xyo != null) && (((d)localObject).xyo.equals(localarf.ZzG))) {
+            ((d)localObject).hIQ = localarf.hIQ;
           }
         }
-        if ((i > 0) && (!Util.isNullOrNil(localanm.Rwb)) && (!Util.isNullOrNil(localanm.SxP)))
+        if ((i > 0) && (!Util.isNullOrNil(localarf.Ysw)) && (!Util.isNullOrNil(localarf.ZyH)))
         {
-          localanm.Ex(true);
-          localanm.Ey(true);
+          localarf.Kj(true);
+          localarf.Kk(true);
         }
         for (;;)
         {
           i += 1;
           break;
-          Log.i("MicroMsg.EditorBase", "datalist.get[%d].type = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(localanm.dataType) });
-          localObject = localanm.Syl;
+          Log.i("MicroMsg.EditorBase", "datalist.get[%d].type = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(localarf.dataType) });
+          localObject = localarf.Zzd;
           String str2;
-          if (u.agG((String)localObject))
+          if (y.ZC((String)localObject))
           {
             Log.i("MicroMsg.EditorBase", "datapath exist,pathname:%s", new Object[] { localObject });
-            str1 = u.buc((String)localObject);
-            str2 = g.getMessageDigest(u.aY((String)localObject, 0, 256));
-            localanm.bsI(str1);
-            localanm.bsJ(str2);
-            localanm.TY(new q((String)localObject).length());
-            str1 = b.b(localanm);
-            boolean bool = u.agG(str1);
-            if ((!((String)localObject).equals(str1)) && (!bool) && (!"WeNoteHtmlFile".equals(localanm.SyO))) {
-              u.on((String)localObject, str1);
+            str1 = y.bub((String)localObject);
+            str2 = g.getMessageDigest(y.bi((String)localObject, 0, 256));
+            localarf.bsz(str1);
+            localarf.bsA(str2);
+            localarf.yo(new u((String)localObject).length());
+            str1 = b.b(localarf);
+            boolean bool = y.ZC(str1);
+            if ((!((String)localObject).equals(str1)) && (!bool) && (!"WeNoteHtmlFile".equals(localarf.ZzG))) {
+              y.O((String)localObject, str1, false);
             }
           }
           for (;;)
           {
-            localObject = localanm.Syn;
-            if (!u.agG((String)localObject)) {
-              break label516;
+            localObject = localarf.Zzf;
+            if (!y.ZC((String)localObject)) {
+              break label518;
             }
             Log.i("MicroMsg.EditorBase", "thumbPath exist,pathname:%s", new Object[] { localObject });
-            str1 = u.buc((String)localObject);
-            str2 = g.fR((String)localObject);
-            localanm.bsN(str1);
-            localanm.bsO(str2);
-            localanm.TZ(new q((String)localObject).length());
-            str1 = b.a(localanm);
-            if ((((String)localObject).equals(str1)) || (u.agG(str1))) {
+            str1 = y.bub((String)localObject);
+            str2 = g.hu((String)localObject);
+            localarf.bsE(str1);
+            localarf.bsF(str2);
+            localarf.yp(new u((String)localObject).length());
+            str1 = b.a(localarf);
+            if ((((String)localObject).equals(str1)) || (y.ZC(str1))) {
               break;
             }
-            u.on((String)localObject, str1);
+            y.O((String)localObject, str1, false);
             break;
             Log.e("MicroMsg.EditorBase", "datapath not exist, %s not exist!", new Object[] { localObject });
           }
-          label516:
+          label518:
           Log.e("MicroMsg.EditorBase", "thumbPath not exist, pathname:%s", new Object[] { localObject });
         }
       }
@@ -234,7 +234,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a
  * JD-Core Version:    0.7.0.1
  */

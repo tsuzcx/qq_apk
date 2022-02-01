@@ -4,28 +4,30 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.f;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.finder.e.e;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchSafetyHintHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "divider", "safetyText", "Landroid/widget/TextView;", "onBindView", "", "safetyHint", "", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchFeedHeaderHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "headerTips", "", "(Landroid/view/View;Ljava/lang/String;)V", "descTv", "Landroid/widget/TextView;", "divider", "onBindView", "", "needShowDivider", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class e
   extends RecyclerView.v
 {
-  TextView Abs;
-  private View mND;
+  final String FwI;
+  TextView descTv;
+  View pKl;
   
-  public e(View paramView)
+  public e(View paramView, String paramString)
   {
     super(paramView);
-    AppMethodBeat.i(265776);
-    View localView = paramView.findViewById(b.f.divider_view);
-    p.j(localView, "itemView.findViewById(R.id.divider_view)");
-    this.mND = localView;
-    paramView = paramView.findViewById(b.f.finder_feed_search_safety_text);
-    p.j(paramView, "itemView.findViewById(R.…_feed_search_safety_text)");
-    this.Abs = ((TextView)paramView);
-    AppMethodBeat.o(265776);
+    AppMethodBeat.i(342725);
+    this.FwI = paramString;
+    paramString = paramView.findViewById(e.e.divider_view);
+    s.s(paramString, "itemView.findViewById(R.id.divider_view)");
+    this.pKl = paramString;
+    paramView = paramView.findViewById(e.e.desc_tv);
+    s.s(paramView, "itemView.findViewById(R.id.desc_tv)");
+    this.descTv = ((TextView)paramView);
+    AppMethodBeat.o(342725);
   }
 }
 

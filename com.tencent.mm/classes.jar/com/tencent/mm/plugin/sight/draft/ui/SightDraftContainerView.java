@@ -12,14 +12,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.e;
 import com.tencent.mm.R.f;
 import com.tencent.mm.R.l;
-import com.tencent.mm.modelvideo.n;
+import com.tencent.mm.modelvideo.q;
 
 public class SightDraftContainerView
   extends ListView
 {
-  private boolean Jul;
-  private a Jum;
-  b Jun;
+  private boolean PHJ;
+  private a PHK;
+  b PHL;
   
   public SightDraftContainerView(Context paramContext)
   {
@@ -54,7 +54,7 @@ public class SightDraftContainerView
     int j = getResources().getDimensionPixelSize(R.f.LargePadding);
     TextView localTextView = new TextView(getContext());
     localTextView.setText(R.l.sight_draft_tips);
-    localTextView.setTextSize(0, com.tencent.mm.ci.a.aY(getContext(), R.f.HintTextSize));
+    localTextView.setTextSize(0, com.tencent.mm.cd.a.br(getContext(), R.f.HintTextSize));
     localTextView.setGravity(17);
     localTextView.setTextColor(getResources().getColor(R.e.hint_text_color_dark_bg));
     localTextView.setTextSize(1, 11.0F);
@@ -66,11 +66,11 @@ public class SightDraftContainerView
       {
         AppMethodBeat.i(28685);
         paramAnonymousView = SightDraftContainerView.this;
-        if (paramAnonymousView.Jun != null)
+        if (paramAnonymousView.PHL != null)
         {
-          paramAnonymousView = paramAnonymousView.Jun;
+          paramAnonymousView = paramAnonymousView.PHL;
           paramAnonymousView.a(null);
-          paramAnonymousView.JtR.fIY();
+          paramAnonymousView.PHq.gYR();
         }
         AppMethodBeat.o(28685);
         return false;
@@ -79,53 +79,53 @@ public class SightDraftContainerView
     AppMethodBeat.o(28689);
   }
   
-  public final void fIZ()
+  public final void gYS()
   {
     AppMethodBeat.i(28690);
-    if (this.Jul)
+    if (this.PHJ)
     {
-      this.Jun.JtY = 12;
-      this.Jun.a(b.d.Jue, false);
-      this.Jun.onNotifyChange(null, null);
+      this.PHL.PHx = 12;
+      this.PHL.a(b.d.PHC, false);
+      this.PHL.onNotifyChange(null, null);
       setSelection(0);
       AppMethodBeat.o(28690);
       return;
     }
-    this.Jul = true;
-    this.Jun = new b(getContext(), this.Jum);
-    this.Jun.JtY = 12;
-    setAdapter(this.Jun);
+    this.PHJ = true;
+    this.PHL = new b(getContext(), this.PHK);
+    this.PHL.PHx = 12;
+    setAdapter(this.PHL);
     AppMethodBeat.o(28690);
   }
   
-  public n getLastDrafInfo()
+  public q getLastDrafInfo()
   {
-    b localb = this.Jun;
-    if (localb.Juc == null) {
+    b localb = this.PHL;
+    if (localb.PHA == null) {
       return null;
     }
-    return localb.Juc.Juj;
+    return localb.PHA.PHH;
   }
   
   public void setSightDraftCallback(a parama)
   {
-    this.Jum = parama;
-    if (this.Jun != null) {
-      this.Jun.JtW = parama;
+    this.PHK = parama;
+    if (this.PHL != null) {
+      this.PHL.PHv = parama;
     }
   }
   
   public void setTipsResId(int paramInt)
   {
-    if (this.Jun == null) {
+    if (this.PHL == null) {
       return;
     }
-    this.Jun.JtX = paramInt;
+    this.PHL.PHw = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftContainerView
  * JD-Core Version:    0.7.0.1
  */

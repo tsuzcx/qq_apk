@@ -4,8 +4,9 @@ import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.f;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.File;
 
 public final class bt
@@ -13,23 +14,23 @@ public final class bt
   public static void clear(String paramString)
   {
     AppMethodBeat.i(90662);
-    String str2 = h.aHG().cachePath;
+    String str2 = h.baE().cachePath;
     String str1 = str2;
     if (!str2.endsWith("/")) {
       str1 = str2 + "/";
     }
-    paramString = new q(str1 + "appbrand/loadingurl/" + paramString);
-    if ((paramString.ifE()) && (paramString.isDirectory())) {
-      u.deleteDir(paramString.getPath());
+    paramString = new u(str1 + "appbrand/loadingurl/" + paramString);
+    if ((paramString.jKS()) && (paramString.isDirectory())) {
+      y.ew(ah.v(paramString.mUri), true);
     }
     str1 = Environment.getExternalStorageDirectory().getAbsolutePath();
     paramString = str1;
     if (!str1.endsWith("/")) {
       paramString = str1 + "/";
     }
-    paramString = new q(paramString + "tencent/MicroMsg/appbrand/loadingurl");
-    if ((paramString.ifE()) && (paramString.isDirectory())) {
-      u.deleteDir(paramString.getPath());
+    paramString = new u(paramString + "tencent/MicroMsg/appbrand/loadingurl");
+    if ((paramString.jKS()) && (paramString.isDirectory())) {
+      y.ew(ah.v(paramString.mUri), true);
     }
     AppMethodBeat.o(90662);
   }

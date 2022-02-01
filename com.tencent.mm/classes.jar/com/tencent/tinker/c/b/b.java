@@ -31,11 +31,11 @@ public final class b
           return;
         }
       }
-      catch (Throwable paramObject) {}
+      finally {}
     }
   }
   
-  public static void e(InputStream paramInputStream, OutputStream paramOutputStream)
+  public static void g(InputStream paramInputStream, OutputStream paramOutputStream)
   {
     byte[] arrayOfByte = new byte[4096];
     for (;;)
@@ -51,7 +51,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.c.b.b
  * JD-Core Version:    0.7.0.1
  */

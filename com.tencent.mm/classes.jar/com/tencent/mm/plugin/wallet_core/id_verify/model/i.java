@@ -9,11 +9,11 @@ import org.json.JSONObject;
 public final class i
   extends m
 {
-  public String OLR;
-  public String OLS;
-  public String OLT;
-  public String OLU;
-  public String OLV;
+  public String VBC;
+  public String VBD;
+  public String VBE;
+  public String VBF;
+  public String VBG;
   
   public i(String paramString)
   {
@@ -21,7 +21,7 @@ public final class i
     HashMap localHashMap = new HashMap();
     localHashMap.put("channel", "1");
     setRequestData(localHashMap);
-    this.OLV = paramString;
+    this.VBG = paramString;
     AppMethodBeat.o(70154);
   }
   
@@ -45,17 +45,17 @@ public final class i
     AppMethodBeat.i(70155);
     if ((paramInt == 0) && (paramJSONObject != null))
     {
-      this.OLR = paramJSONObject.optString("guide_flag");
-      this.OLS = paramJSONObject.optString("guide_wording");
-      this.OLT = paramJSONObject.optString("left_button_wording");
-      this.OLU = paramJSONObject.optString("right_button_wording");
+      this.VBC = paramJSONObject.optString("guide_flag");
+      this.VBD = paramJSONObject.optString("guide_wording");
+      this.VBE = paramJSONObject.optString("left_button_wording");
+      this.VBF = paramJSONObject.optString("right_button_wording");
     }
     AppMethodBeat.o(70155);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.i
  * JD-Core Version:    0.7.0.1
  */

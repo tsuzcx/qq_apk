@@ -1,422 +1,470 @@
 package com.tencent.mm.plugin.finder.extension;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cm;
+import com.tencent.mm.ae.e.a;
+import com.tencent.mm.autogen.a.jp;
+import com.tencent.mm.autogen.a.jp.b;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.extension.reddot.f.aa;
-import com.tencent.mm.plugin.finder.extension.reddot.m;
-import com.tencent.mm.plugin.finder.storage.logic.g;
-import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.finder.api.k;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.extension.reddot.i;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aqt;
-import com.tencent.mm.protocal.protobuf.arl;
-import com.tencent.mm.protocal.protobuf.aso;
-import com.tencent.mm.protocal.protobuf.ata;
-import com.tencent.mm.protocal.protobuf.atg;
-import com.tencent.mm.protocal.protobuf.axc;
-import com.tencent.mm.protocal.protobuf.bfn;
-import com.tencent.mm.protocal.protobuf.bga;
-import com.tencent.mm.protocal.protobuf.bhf;
-import com.tencent.mm.protocal.protobuf.bho;
-import com.tencent.mm.protocal.protobuf.bhv;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bie;
-import com.tencent.mm.protocal.protobuf.big;
-import com.tencent.mm.protocal.protobuf.bke;
-import com.tencent.mm.protocal.protobuf.bkn;
-import com.tencent.mm.protocal.protobuf.blo;
+import com.tencent.mm.protocal.protobuf.auw;
+import com.tencent.mm.protocal.protobuf.avu;
+import com.tencent.mm.protocal.protobuf.axd;
+import com.tencent.mm.protocal.protobuf.axo;
+import com.tencent.mm.protocal.protobuf.axu;
+import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.protocal.protobuf.bqu;
+import com.tencent.mm.protocal.protobuf.brl;
+import com.tencent.mm.protocal.protobuf.bta;
+import com.tencent.mm.protocal.protobuf.bto;
+import com.tencent.mm.protocal.protobuf.btv;
+import com.tencent.mm.protocal.protobuf.buj;
+import com.tencent.mm.protocal.protobuf.bul;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.protocal.protobuf.bze;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import kotlin.Metadata;
+import kotlin.a.p;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "()V", "TAG", "", "finderSyncReportHandler", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncReportHandler;", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "selector", "", "scene", "processFansCount", "processFinderAliasSync", "processFollowCount", "processGetFollower", "processGetMentionCount", "processGetRedDot", "processGetWxMentionCount", "processNotInterestedConfig", "processObjectWordingConfig", "processPreFetch", "processReInit", "processRevokeRedDot", "processRevokeTabTips", "processSpamObj", "processTabRedDot", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "()V", "TAG", "", "finderSyncReportHandler", "Lcom/tencent/mm/plugin/finder/extension/FinderSyncReportHandler;", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "selector", "", "scene", "processFansCount", "processFinderAliasSync", "processFollowCount", "processGetFollower", "processGetMentionCount", "processGetRedDot", "processGetWxMentionCount", "processNotInterestedConfig", "processObjectWordingConfig", "processPreFetch", "processReInit", "processRevokeRedDot", "processRevokeTabTips", "processSpamObj", "processTabRedDot", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
-  implements com.tencent.mm.plugin.finder.api.h
+  implements k
 {
+  private final e APv;
   final String TAG;
-  private final e xsl;
   
   public d()
   {
-    AppMethodBeat.i(277818);
+    AppMethodBeat.i(366635);
     this.TAG = "Finder.SyncFinderSyncHandler";
-    this.xsl = new e();
-    AppMethodBeat.o(277818);
+    this.APv = new e();
+    AppMethodBeat.o(366635);
   }
   
-  private final void a(aqt paramaqt)
+  private final void a(auw paramauw)
   {
-    AppMethodBeat.i(165602);
-    atg localatg = new atg();
-    paramaqt = paramaqt.SDX;
-    if (paramaqt != null)
+    AppMethodBeat.i(165598);
+    axd localaxd = new axd();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
     {
-      localatg.parseFrom(paramaqt.toByteArray());
-      paramaqt = localatg.SGk;
-      p.j(paramaqt, "follower.followers");
-      paramaqt = ((Iterable)paramaqt).iterator();
-      while (paramaqt.hasNext())
+      localaxd.parseFrom(paramauw);
+      Log.i(this.TAG, "redDotEvent save svr_fans count " + localaxd.fans_count + " svr_fans_add_count:" + localaxd.ZFU);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcQ, Integer.valueOf(localaxd.ZFU));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcP, Integer.valueOf(localaxd.fans_count));
+      ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().Nt(localaxd.ZFU);
+      AppMethodBeat.o(165598);
+      return;
+    }
+  }
+  
+  private final void a(auw paramauw, int paramInt)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(366698);
+    long l = Util.currentTicks();
+    Object localObject2 = new jp();
+    ((jp)localObject2).hLg.hLi = paramauw;
+    ((jp)localObject2).hLg.scene = paramInt;
+    ((jp)localObject2).publish();
+    Log.i(this.TAG, "process tab red dot scene:" + paramInt + " isHitExpt:" + ((jp)localObject2).hLh.hLj + " cost:" + Util.ticksToNow(l));
+    if (!((jp)localObject2).hLh.hLj)
+    {
+      localObject2 = new bxh();
+      if (paramauw.ZFn != null)
       {
-        Object localObject1 = (FinderContact)paramaqt.next();
-        Object localObject2 = com.tencent.mm.plugin.finder.api.d.wZQ;
-        localObject2 = com.tencent.mm.plugin.finder.api.d.a.aAK(((FinderContact)localObject1).username);
-        Log.i(this.TAG, "sync follow contact " + localatg.SGk.size() + "  username=" + ((FinderContact)localObject1).username + " nickname=" + ((FinderContact)localObject1).nickname + " followFlag=" + ((FinderContact)localObject1).followFlag + ' ');
+        paramauw = paramauw.ZFn;
+        if (paramauw == null) {}
+        for (paramauw = localObject1;; paramauw = paramauw.toByteArray())
+        {
+          ((bxh)localObject2).parseFrom(paramauw);
+          ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().a((bxh)localObject2, "processTabRedDot", paramInt);
+          AppMethodBeat.o(366698);
+          return;
+        }
+      }
+      e.a.a((com.tencent.mm.ae.e)com.tencent.mm.plugin.findersdk.b.HbT, "FinderTabTips_Null", false, null, false, null, 60);
+    }
+    AppMethodBeat.o(366698);
+  }
+  
+  private final void b(auw paramauw)
+  {
+    AppMethodBeat.i(165599);
+    axo localaxo = new axo();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localaxo.parseFrom(paramauw);
+      Log.i(this.TAG, s.X("save svr_follow count ", Integer.valueOf(localaxo.ZFT)));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcN, Integer.valueOf(localaxo.ZFT));
+      AppMethodBeat.o(165599);
+      return;
+    }
+  }
+  
+  private final void c(auw paramauw)
+  {
+    AppMethodBeat.i(165600);
+    avu localavu = new avu();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localavu.parseFrom(paramauw);
+      Log.i(this.TAG, "redDotEvent new count info, msg count:" + localavu.count + ", normalCount:" + localavu.oRy + ", systemCount:" + localavu.ZFV);
+      Log.i(this.TAG, "redDotEvent new count info, msg like count:" + localavu.ZFQ + ", mentioncommentCount:" + localavu.ZFR + ", followcount:" + localavu.ZFW);
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.addK, Integer.valueOf(localavu.oRy));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.addL, Integer.valueOf(localavu.ZFV));
+      ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().aw(localavu.ZFQ, localavu.ZFR, localavu.ZFW);
+      if (localavu.ZFV > 0) {
+        ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().AQv.dZb();
+      }
+      AppMethodBeat.o(165600);
+      return;
+    }
+  }
+  
+  private final void d(auw paramauw)
+  {
+    AppMethodBeat.i(165601);
+    Object localObject1 = new axu();
+    paramauw = paramauw.ZFn;
+    if (paramauw != null)
+    {
+      ((axu)localObject1).parseFrom(paramauw.toByteArray());
+      paramauw = ((axu)localObject1).ZIU;
+      s.s(paramauw, "follower.followers");
+      paramauw = (Iterable)paramauw;
+      int i = 0;
+      paramauw = paramauw.iterator();
+      while (paramauw.hasNext())
+      {
+        localObject1 = paramauw.next();
+        int j = i + 1;
+        if (i < 0) {
+          p.kkW();
+        }
+        localObject1 = (FinderContact)localObject1;
+        Object localObject2 = com.tencent.mm.plugin.finder.api.d.AwY;
+        localObject2 = com.tencent.mm.plugin.finder.api.d.a.auT(((FinderContact)localObject1).username);
+        Log.i(this.TAG, "sync follow contact index=" + i + " username=" + ((FinderContact)localObject1).username + " nickname=" + ((FinderContact)localObject1).nickname + " followFlag=" + ((FinderContact)localObject1).followFlag + " user_flag=" + ((FinderContact)localObject1).user_flag + " avatarUrl=" + ((FinderContact)localObject1).headUrl);
         if (localObject2 != null)
         {
-          ((i)localObject2).field_follow_Flag = ((FinderContact)localObject1).followFlag;
-          localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
-          com.tencent.mm.plugin.finder.api.d.a.d((i)localObject2);
+          ((m)localObject2).field_nickname = ((FinderContact)localObject1).nickname;
+          ((m)localObject2).field_user_flag = ((FinderContact)localObject1).user_flag;
+          ((m)localObject2).field_follow_Flag = ((FinderContact)localObject1).followFlag;
+          ((m)localObject2).field_authInfo = ((FinderContact)localObject1).authInfo;
+          ((m)localObject2).field_avatarUrl = ((FinderContact)localObject1).headUrl;
+          localObject1 = com.tencent.mm.plugin.finder.api.d.AwY;
+          com.tencent.mm.plugin.finder.api.d.a.e((m)localObject2);
+          i = j;
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.finder.api.d.wZQ;
-          p.j(localObject1, "follow");
-          com.tencent.mm.plugin.finder.api.d.a.a((FinderContact)localObject1);
+          localObject2 = com.tencent.mm.plugin.finder.api.d.AwY;
+          s.s(localObject1, "follow");
+          com.tencent.mm.plugin.finder.api.d.a.d((FinderContact)localObject1);
+          i = j;
         }
       }
+    }
+    AppMethodBeat.o(165601);
+  }
+  
+  private final void e(auw paramauw)
+  {
+    AppMethodBeat.i(165602);
+    bze localbze = new bze();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localbze.parseFrom(paramauw);
+      int i = localbze.ZFR + localbze.ZFQ + localbze.aain + localbze.aaio + localbze.aaip;
+      Log.i(this.TAG, "redDotEvent new wx count info, msg count:" + localbze.count + ", comment:" + localbze.ZFR + ", like:" + localbze.ZFQ + ", objectlike_like:" + localbze.aain + ", objectrecommend_like:" + localbze.aaio + ", follow_accepted_count:" + localbze.aaip + ", headUrl:" + localbze.nVs + " totalCount=" + i + " mentionMentionedCount:" + localbze.aair);
+      if (i > 0) {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adcU, Boolean.TRUE);
+      }
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcq, Integer.valueOf(localbze.ZFR));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcs, Integer.valueOf(localbze.ZFQ));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adct, Integer.valueOf(localbze.aain));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcu, Integer.valueOf(localbze.aaio));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcv, Integer.valueOf(localbze.aaip));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcw, Integer.valueOf(localbze.aair));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcx, localbze.nVs);
+      ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().a(localbze);
+      paramauw = ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager();
+      i = localbze.ZFQ;
+      int j = localbze.aain;
+      int k = localbze.aaio;
+      int m = localbze.ZFR;
+      paramauw.hs(i + j + k, localbze.aair + m);
       AppMethodBeat.o(165602);
       return;
     }
-    AppMethodBeat.o(165602);
   }
   
-  public final void a(final aqt paramaqt, int paramInt1, int paramInt2)
+  private final void f(auw paramauw)
   {
-    Object localObject5 = null;
-    Object localObject6 = null;
-    com.tencent.mm.cd.b localb = null;
-    Object localObject7 = null;
-    Object localObject8 = null;
-    Object localObject9 = null;
-    Object localObject10 = null;
-    Object localObject11 = null;
-    Object localObject12 = null;
-    Object localObject1 = null;
-    AppMethodBeat.i(277817);
-    p.k(paramaqt, "cmdItem");
-    int i = paramaqt.cmdId;
-    Log.i(this.TAG, "cmdId ".concat(String.valueOf(i)));
+    AppMethodBeat.i(165603);
+    com.tencent.mm.ae.d.d("processSpamObj", (a)new a(paramauw, this));
+    AppMethodBeat.o(165603);
+  }
+  
+  private final void g(auw paramauw)
+  {
+    AppMethodBeat.i(165604);
+    bqu localbqu = new bqu();
+    if (paramauw.ZFn != null)
+    {
+      paramauw = paramauw.ZFn;
+      if (paramauw != null) {
+        break label81;
+      }
+    }
+    label81:
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localbqu.parseFrom(paramauw);
+      Log.i(this.TAG, s.X("processNotInterestedConfig config:", localbqu.ZpP));
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcJ, Util.encodeHexString(localbqu.toByteArray()));
+      AppMethodBeat.o(165604);
+      return;
+    }
+  }
+  
+  private final void h(auw paramauw)
+  {
+    AppMethodBeat.i(165605);
+    Log.i(this.TAG, "[processReInit] ...");
+    bto localbto = new bto();
+    paramauw = paramauw.ZFn;
+    int i;
+    if (paramauw != null)
+    {
+      localbto.parseFrom(paramauw.toByteArray());
+      if (localbto.aabs != 0)
+      {
+        com.tencent.mm.plugin.report.service.h.OAn.p(1279L, 20L, 1L);
+        paramauw = localbto.aabr;
+        s.s(paramauw, "newSelf.self");
+        if (((Collection)paramauw).isEmpty()) {
+          break label257;
+        }
+        i = 1;
+        if (i == 0) {
+          break label262;
+        }
+        Log.i(this.TAG, "replace new finder username %s", new Object[] { ((FinderContact)localbto.aabr.get(0)).username });
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adcX, ((FinderContact)localbto.aabr.get(0)).username);
+      }
+    }
+    for (;;)
+    {
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcW, Integer.valueOf(localbto.ZEp));
+      i = com.tencent.mm.kernel.h.baE().ban().getInt(at.a.adcY, 0);
+      Log.i(this.TAG, "[processReInit] userVersion=" + i + " userVersion=" + localbto.ZEp);
+      if ((i != localbto.ZEp) && (localbto.ZEp != 0)) {
+        com.tencent.mm.kernel.h.baE().ban().set(at.a.adcZ, Integer.valueOf(1));
+      }
+      AppMethodBeat.o(165605);
+      return;
+      label257:
+      i = 0;
+      break;
+      label262:
+      com.tencent.mm.kernel.h.baE().ban().set(at.a.adcX, "");
+    }
+  }
+  
+  private final void i(auw paramauw)
+  {
+    AppMethodBeat.i(165606);
+    btv localbtv = new btv();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localbtv.parseFrom(paramauw);
+      Log.i(this.TAG, s.X("redDotEvent get red dot, showRed:", Integer.valueOf(localbtv.aabw)));
+      ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().a(localbtv);
+      AppMethodBeat.o(165606);
+      return;
+    }
+  }
+  
+  private final void j(auw paramauw)
+  {
+    AppMethodBeat.i(178142);
+    bta localbta = new bta();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localbta.parseFrom(paramauw);
+      Log.i(this.TAG, "processPreFetch needPrefetch:" + localbta.aaaJ + " needShowRedDot:" + localbta.aaaK);
+      AppMethodBeat.o(178142);
+      return;
+    }
+  }
+  
+  private final void k(auw paramauw)
+  {
+    AppMethodBeat.i(366703);
+    try
+    {
+      bul localbul = new bul();
+      paramauw = paramauw.ZFn;
+      if (paramauw == null) {}
+      for (paramauw = null;; paramauw = paramauw.toByteArray())
+      {
+        localbul.parseFrom(paramauw);
+        ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().a(localbul);
+        AppMethodBeat.o(366703);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramauw)
+    {
+      Log.printDebugStack(this.TAG, "", new Object[] { paramauw });
+      AppMethodBeat.o(366703);
+    }
+  }
+  
+  private final void l(auw paramauw)
+  {
+    AppMethodBeat.i(366710);
+    try
+    {
+      buj localbuj = new buj();
+      paramauw = paramauw.ZFn;
+      if (paramauw == null) {}
+      for (paramauw = null;; paramauw = paramauw.toByteArray())
+      {
+        localbuj.parseFrom(paramauw);
+        ((PluginFinder)com.tencent.mm.kernel.h.az(PluginFinder.class)).getRedDotManager().a(localbuj);
+        AppMethodBeat.o(366710);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramauw)
+    {
+      Log.printDebugStack(this.TAG, "", new Object[] { paramauw });
+      AppMethodBeat.o(366710);
+    }
+  }
+  
+  private final void m(auw paramauw)
+  {
+    AppMethodBeat.i(366716);
+    try
+    {
+      brl localbrl = new brl();
+      paramauw = paramauw.ZFn;
+      if (paramauw == null) {}
+      for (paramauw = null;; paramauw = paramauw.toByteArray())
+      {
+        localbrl.parseFrom(paramauw);
+        paramauw = com.tencent.mm.plugin.finder.storage.logic.h.FNM;
+        com.tencent.mm.plugin.finder.storage.logic.h.a(localbrl);
+        AppMethodBeat.o(366716);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramauw)
+    {
+      Log.printDebugStack(this.TAG, "", new Object[] { paramauw });
+      AppMethodBeat.o(366716);
+    }
+  }
+  
+  private static void n(auw paramauw)
+  {
+    AppMethodBeat.i(366723);
+    bcz localbcz = new bcz();
+    paramauw = paramauw.ZFn;
+    if (paramauw == null) {}
+    for (paramauw = null;; paramauw = paramauw.toByteArray())
+    {
+      localbcz.parseFrom(paramauw);
+      av.a(av.GiL, localbcz, "FinderSyncHandler");
+      AppMethodBeat.o(366723);
+      return;
+    }
+  }
+  
+  public final void a(auw paramauw, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(366732);
+    s.u(paramauw, "cmdItem");
+    int i = paramauw.cmdId;
+    Log.i(this.TAG, s.X("cmdId ", Integer.valueOf(i)));
     switch (i)
     {
     }
     for (;;)
     {
-      this.xsl.a(paramaqt, paramInt1, paramInt2);
-      AppMethodBeat.o(277817);
+      this.APv.a(paramauw, paramInt1, paramInt2);
+      AppMethodBeat.o(366732);
       return;
-      localObject5 = new arl();
-      localObject6 = paramaqt.SDX;
-      if (localObject6 != null) {
-        localObject1 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-      }
-      ((arl)localObject5).parseFrom((byte[])localObject1);
-      Log.i(this.TAG, "redDotEvent new count info, msg count:" + ((arl)localObject5).count + ", normalCount:" + ((arl)localObject5).lYt + ", systemCount:" + ((arl)localObject5).SEv);
-      Log.i(this.TAG, "redDotEvent new count info, msg like count:" + ((arl)localObject5).SEq + ", mentioncommentCount:" + ((arl)localObject5).SEr + ", followcount:" + ((arl)localObject5).SEw);
-      localObject1 = com.tencent.mm.kernel.h.aHG();
-      p.j(localObject1, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VBo, Integer.valueOf(((arl)localObject5).lYt));
-      localObject1 = com.tencent.mm.kernel.h.aHG();
-      p.j(localObject1, "MMKernel.storage()");
-      ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VBp, Integer.valueOf(((arl)localObject5).SEv));
-      localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-      p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-      ((PluginFinder)localObject1).getRedDotManager().af(((arl)localObject5).SEq, ((arl)localObject5).SEr, ((arl)localObject5).SEw);
-      if (((arl)localObject5).SEv > 0)
-      {
-        localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-        p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-        ((PluginFinder)localObject1).getRedDotManager().xsM.dqu();
-        continue;
-        a(paramaqt);
-        continue;
-        localObject5 = new blo();
-        localObject1 = paramaqt.SDX;
-        if (localObject1 != null) {}
-        long l;
-        for (localObject1 = ((com.tencent.mm.cd.b)localObject1).toByteArray();; localObject1 = null)
-        {
-          ((blo)localObject5).parseFrom((byte[])localObject1);
-          i = ((blo)localObject5).SEr + ((blo)localObject5).SEq + ((blo)localObject5).SWB + ((blo)localObject5).SWC + ((blo)localObject5).SWD;
-          Log.i(this.TAG, "redDotEvent new wx count info, msg count:" + ((blo)localObject5).count + ", comment:" + ((blo)localObject5).SEr + ", like:" + ((blo)localObject5).SEq + ", objectlike_like:" + ((blo)localObject5).SWB + ", objectrecommend_like:" + ((blo)localObject5).SWC + ", follow_accepted_count:" + ((blo)localObject5).SWD + ", headUrl:" + ((blo)localObject5).lqp + " totalCount=" + i);
-          if (i > 0)
-          {
-            localObject1 = com.tencent.mm.kernel.h.aHG();
-            p.j(localObject1, "MMKernel.storage()");
-            ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAC, Boolean.TRUE);
-          }
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAb, Integer.valueOf(((blo)localObject5).SEr));
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAc, Integer.valueOf(((blo)localObject5).SEq));
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAd, Integer.valueOf(((blo)localObject5).SWB));
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAe, Integer.valueOf(((blo)localObject5).SWC));
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAf, Integer.valueOf(((blo)localObject5).SWD));
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAg, ((blo)localObject5).lqp);
-          localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-          p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-          localObject1 = ((PluginFinder)localObject1).getRedDotManager();
-          p.k(localObject5, "wxMention");
-          l = cm.bfE();
-          localObject6 = m.xuU;
-          l -= m.drZ();
-          if ((((blo)localObject5).count > 0) || (((blo)localObject5).SWC > 0) || (((blo)localObject5).SWB > 0) || (((blo)localObject5).SEr > 0) || (((blo)localObject5).SEq > 0) || (((blo)localObject5).SWA > 0) || (((blo)localObject5).SWD > 0)) {
-            break label1000;
-          }
-          Log.e("Finder.RedDotManager", "[notifyWxMentionCount] server error.");
-          break;
-        }
-        label1000:
-        Log.i("Finder.RedDotManager", "[notifyWxMentionCount] diffTime=" + l + ' ' + com.tencent.mm.plugin.finder.extension.reddot.f.c(((blo)localObject5).SVk) + " count=" + ((blo)localObject5).count);
-        if (l < m.xuU.drS())
-        {
-          com.tencent.mm.plugin.finder.extension.reddot.f.d(((blo)localObject5).SVk);
-          localObject6 = ((blo)localObject5).SVk;
-          if (localObject6 != null)
-          {
-            localObject6 = ((bhw)localObject6).MFx;
-            if (localObject6 != null) {
-              com.tencent.mm.ae.d.a((LinkedList)localObject6, (kotlin.g.a.b)f.aa.xtE);
-            }
-          }
-        }
-        com.tencent.mm.plugin.finder.extension.reddot.f.a((com.tencent.mm.plugin.finder.extension.reddot.f)localObject1, ((blo)localObject5).SVk, "notifyWxMentionCount", null, true, null, null, 52);
-        continue;
-        com.tencent.mm.ae.d.b("processSpamObj", (kotlin.g.a.a)new a(this, paramaqt));
-        continue;
-        localObject5 = new aso();
-        localObject1 = paramaqt.SDX;
-        if (localObject1 != null) {}
-        for (localObject1 = ((com.tencent.mm.cd.b)localObject1).toByteArray();; localObject1 = null)
-        {
-          ((aso)localObject5).parseFrom((byte[])localObject1);
-          Log.i(this.TAG, "redDotEvent save svr_fans count " + ((aso)localObject5).fans_count + " svr_fans_add_count:" + ((aso)localObject5).SEu);
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAy, Integer.valueOf(((aso)localObject5).SEu));
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAx, Integer.valueOf(((aso)localObject5).fans_count));
-          localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-          p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-          localObject1 = ((PluginFinder)localObject1).getRedDotManager();
-          i = ((aso)localObject5).SEu;
-          if (i > 0) {
-            break label1351;
-          }
-          Log.i("Finder.RedDotManager", "[notifyFinderFansAddCount] server error.");
-          break;
-        }
-        label1351:
-        Log.i("Finder.RedDotManager", "[notifyFinderFansAddCount] count = ".concat(String.valueOf(i)));
-        localObject5 = new bhw();
-        ((bhw)localObject5).SQm = String.valueOf(cm.bfE());
-        ((bhw)localObject5).priority = 100000;
-        ((bhw)localObject5).type = 2;
-        localObject6 = new bkn();
-        ((bkn)localObject6).CKC = 2;
-        ((bkn)localObject6).SVs = 1;
-        ((bkn)localObject6).path = "AuthorProfileFans";
-        ((bkn)localObject6).count = i;
-        ((bhw)localObject5).MFx.add(localObject6);
-        com.tencent.mm.plugin.finder.extension.reddot.f.a((com.tencent.mm.plugin.finder.extension.reddot.f)localObject1, (bhw)localObject5, "notifyFinderFansAddCount", null, true, null, null, 52);
-        continue;
-        localObject6 = new ata();
-        localb = paramaqt.SDX;
-        localObject1 = localObject5;
-        if (localb != null) {
-          localObject1 = localb.toByteArray();
-        }
-        ((ata)localObject6).parseFrom((byte[])localObject1);
-        Log.i(this.TAG, "save svr_follow count " + ((ata)localObject6).SEt);
-        localObject1 = com.tencent.mm.kernel.h.aHG();
-        p.j(localObject1, "MMKernel.storage()");
-        ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAv, Integer.valueOf(((ata)localObject6).SEt));
-        continue;
-        localObject5 = new bfn();
-        if (paramaqt.SDX != null)
-        {
-          localb = paramaqt.SDX;
-          localObject1 = localObject6;
-          if (localb != null) {
-            localObject1 = localb.toByteArray();
-          }
-          ((bfn)localObject5).parseFrom((byte[])localObject1);
-          Log.i(this.TAG, "processNotInterestedConfig config:" + ((bfn)localObject5).SqO);
-          localObject1 = com.tencent.mm.kernel.h.aHG();
-          p.j(localObject1, "MMKernel.storage()");
-          ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAs, Util.encodeHexString(((bfn)localObject5).toByteArray()));
-          continue;
-          localObject5 = new bhv();
-          localObject6 = paramaqt.SDX;
-          localObject1 = localb;
-          if (localObject6 != null) {
-            localObject1 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-          }
-          ((bhv)localObject5).parseFrom((byte[])localObject1);
-          Log.i(this.TAG, "redDotEvent get red dot, showRed:" + ((bhv)localObject5).SSi);
-          localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-          p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-          ((PluginFinder)localObject1).getRedDotManager().a((bhv)localObject5);
-          continue;
-          Log.i(this.TAG, "[processReInit] ...");
-          localObject1 = new bho();
-          localObject5 = paramaqt.SDX;
-          if (localObject5 != null)
-          {
-            ((bho)localObject1).parseFrom(((com.tencent.mm.cd.b)localObject5).toByteArray());
-            if (((bho)localObject1).SSe != 0)
-            {
-              com.tencent.mm.plugin.report.service.h.IzE.p(1279L, 20L, 1L);
-              localObject5 = ((bho)localObject1).SSd;
-              p.j(localObject5, "newSelf.self");
-              if (!((Collection)localObject5).isEmpty())
-              {
-                i = 1;
-                label1872:
-                if (i == 0) {
-                  break label2101;
-                }
-                Log.i(this.TAG, "replace new finder username %s", new Object[] { ((FinderContact)((bho)localObject1).SSd.get(0)).username });
-                localObject5 = com.tencent.mm.kernel.h.aHG();
-                p.j(localObject5, "MMKernel.storage()");
-                ((com.tencent.mm.kernel.f)localObject5).aHp().set(ar.a.VAF, ((FinderContact)((bho)localObject1).SSd.get(0)).username);
-              }
-              for (;;)
-              {
-                localObject5 = com.tencent.mm.kernel.h.aHG();
-                p.j(localObject5, "MMKernel.storage()");
-                ((com.tencent.mm.kernel.f)localObject5).aHp().set(ar.a.VAE, Integer.valueOf(((bho)localObject1).SDr));
-                localObject5 = com.tencent.mm.kernel.h.aHG();
-                p.j(localObject5, "MMKernel.storage()");
-                i = ((com.tencent.mm.kernel.f)localObject5).aHp().getInt(ar.a.VAG, 0);
-                Log.i(this.TAG, "[processReInit] userVersion=" + i + " userVersion=" + ((bho)localObject1).SDr);
-                if ((i == ((bho)localObject1).SDr) || (((bho)localObject1).SDr == 0)) {
-                  break;
-                }
-                localObject1 = com.tencent.mm.kernel.h.aHG();
-                p.j(localObject1, "MMKernel.storage()");
-                ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.VAH, Integer.valueOf(1));
-                break;
-                i = 0;
-                break label1872;
-                label2101:
-                localObject5 = com.tencent.mm.kernel.h.aHG();
-                p.j(localObject5, "MMKernel.storage()");
-                ((com.tencent.mm.kernel.f)localObject5).aHp().set(ar.a.VAF, "");
-              }
-              localObject5 = new bhf();
-              localObject6 = paramaqt.SDX;
-              localObject1 = localObject7;
-              if (localObject6 != null) {
-                localObject1 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-              }
-              ((bhf)localObject5).parseFrom((byte[])localObject1);
-              Log.i(this.TAG, "processPreFetch needPrefetch:" + ((bhf)localObject5).SRK + " needShowRedDot:" + ((bhf)localObject5).SRL);
-              continue;
-              localObject5 = new bke();
-              localObject6 = paramaqt.SDX;
-              localObject1 = localObject8;
-              if (localObject6 != null) {
-                localObject1 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-              }
-              ((bke)localObject5).parseFrom((byte[])localObject1);
-              localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-              p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-              ((PluginFinder)localObject1).getRedDotManager().a((bke)localObject5, "processTabRedDot");
-              continue;
-              try
-              {
-                localObject5 = new big();
-                localObject6 = paramaqt.SDX;
-                localObject1 = localObject9;
-                if (localObject6 != null) {
-                  localObject1 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-                }
-                ((big)localObject5).parseFrom((byte[])localObject1);
-                localObject1 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-                p.j(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
-                ((PluginFinder)localObject1).getRedDotManager().a((big)localObject5);
-              }
-              catch (Exception localException1)
-              {
-                Log.printDebugStack(this.TAG, "", new Object[] { localException1 });
-              }
-              continue;
-              try
-              {
-                localObject5 = new bie();
-                localObject6 = paramaqt.SDX;
-                Object localObject2 = localObject10;
-                if (localObject6 != null) {
-                  localObject2 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-                }
-                ((bie)localObject5).parseFrom((byte[])localObject2);
-                localObject2 = com.tencent.mm.kernel.h.ag(PluginFinder.class);
-                p.j(localObject2, "MMKernel.plugin(PluginFinder::class.java)");
-                ((PluginFinder)localObject2).getRedDotManager().a((bie)localObject5);
-              }
-              catch (Exception localException2)
-              {
-                Log.printDebugStack(this.TAG, "", new Object[] { localException2 });
-              }
-              continue;
-              try
-              {
-                localObject5 = new bga();
-                localObject6 = paramaqt.SDX;
-                Object localObject3 = localObject11;
-                if (localObject6 != null) {
-                  localObject3 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-                }
-                ((bga)localObject5).parseFrom((byte[])localObject3);
-                localObject3 = g.AnT;
-                g.a((bga)localObject5);
-              }
-              catch (Exception localException3)
-              {
-                Log.printDebugStack(this.TAG, "", new Object[] { localException3 });
-              }
-              continue;
-              localObject5 = new axc();
-              localObject6 = paramaqt.SDX;
-              Object localObject4 = localObject12;
-              if (localObject6 != null) {
-                localObject4 = ((com.tencent.mm.cd.b)localObject6).toByteArray();
-              }
-              ((axc)localObject5).parseFrom((byte[])localObject4);
-              aj.a(aj.AGc, (axc)localObject5, "FinderSyncHandler");
-            }
-          }
-        }
-      }
+      c(paramauw);
+      continue;
+      d(paramauw);
+      continue;
+      e(paramauw);
+      continue;
+      f(paramauw);
+      continue;
+      a(paramauw);
+      continue;
+      b(paramauw);
+      continue;
+      g(paramauw);
+      continue;
+      i(paramauw);
+      continue;
+      h(paramauw);
+      continue;
+      j(paramauw);
+      continue;
+      a(paramauw, paramInt2);
+      continue;
+      k(paramauw);
+      continue;
+      l(paramauw);
+      continue;
+      m(paramauw);
+      continue;
+      n(paramauw);
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
-    implements kotlin.g.a.a<x>
+    extends u
+    implements a<ah>
   {
-    a(d paramd, aqt paramaqt)
+    a(auw paramauw, d paramd)
     {
       super();
     }
@@ -424,7 +472,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.d
  * JD-Core Version:    0.7.0.1
  */

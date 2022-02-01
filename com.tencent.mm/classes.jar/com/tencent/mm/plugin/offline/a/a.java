@@ -1,76 +1,49 @@
 package com.tencent.mm.plugin.offline.a;
 
-import android.content.Context;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.an.i;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.protobuf.byz;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.wallet_core.c.w;
-import org.json.JSONObject;
+import com.tencent.mm.am.b;
+import com.tencent.mm.am.c.a;
+import com.tencent.mm.protocal.protobuf.dvp;
+import com.tencent.mm.protocal.protobuf.dvq;
+import kotlin.Metadata;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/offline/model/CgiOfflineEnableToken;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/OfflineEnableResponse;", "password", "", "(Ljava/lang/String;)V", "getPassword", "()Ljava/lang/String;", "Companion", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class a
-  extends w
+  extends b<dvq>
 {
-  public final int doScene(g paramg, i parami)
+  public static final a Myz;
+  private final String hPy;
+  
+  static
   {
-    AppMethodBeat.i(66279);
-    AppMethodBeat.o(66279);
-    throw null;
+    AppMethodBeat.i(269127);
+    Myz = new a((byte)0);
+    AppMethodBeat.o(269127);
   }
   
-  public final int getType()
+  public a(String paramString)
   {
-    return 606;
+    AppMethodBeat.i(269126);
+    this.hPy = paramString;
+    paramString = new dvp();
+    paramString.pRM = this.hPy;
+    c.a locala = new c.a();
+    locala.otE = ((com.tencent.mm.bx.a)paramString);
+    locala.otF = ((com.tencent.mm.bx.a)new dvq());
+    locala.funcId = 10744;
+    locala.uri = "/cgi-bin/mmpay-bin/offlineenable";
+    locala.otG = 0;
+    locala.respCmdId = 0;
+    c(locala.bEF());
+    AppMethodBeat.o(269126);
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
-  {
-    AppMethodBeat.i(66280);
-    if (paramInt2 != 0)
-    {
-      AppMethodBeat.o(66280);
-      throw null;
-    }
-    paramString = (byz)d.c.b(((d)params).lBS);
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      try
-      {
-        if (!TextUtils.isEmpty(paramString.ThY))
-        {
-          paramString = new JSONObject(paramString.ThY);
-          paramString.optInt("InitValue");
-          paramString.optInt("FastChangedLimit");
-          paramString.optString("guide_tips");
-          AppMethodBeat.o(66280);
-          throw null;
-        }
-      }
-      catch (Exception paramString)
-      {
-        Log.printErrStackTrace("MicroMsg.NetSceneGetOffLineInfo", paramString, "", new Object[0]);
-        MMApplicationContext.getContext().getString(a.i.wallet_data_err);
-      }
-    }
-    while (TextUtils.isEmpty(paramString.ThZ))
-    {
-      AppMethodBeat.o(66280);
-      throw null;
-    }
-    new JSONObject(paramString.ThZ);
-    AppMethodBeat.o(66280);
-    throw null;
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/offline/model/CgiOfflineEnableToken$Companion;", "", "()V", "TAG", "", "plugin-wxpay_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.a
  * JD-Core Version:    0.7.0.1
  */

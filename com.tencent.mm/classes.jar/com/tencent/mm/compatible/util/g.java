@@ -1,6 +1,5 @@
 package com.tencent.mm.compatible.util;
 
-import android.annotation.TargetApi;
 import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.af;
@@ -12,94 +11,93 @@ public final class g
 {
   private static Boolean isMIUI = null;
   private static Boolean isMIUIV8 = null;
-  private static Boolean jvC = null;
+  private static Boolean lYT = null;
   
-  @TargetApi(8)
-  public static File KU(String paramString)
+  public static File Dy(String paramString)
   {
     AppMethodBeat.i(155885);
-    if (Util.isNullOrNil(af.juS.jrO))
+    if (Util.isNullOrNil(af.lYj.lVe))
     {
       paramString = Environment.getExternalStoragePublicDirectory(paramString);
       AppMethodBeat.o(155885);
       return paramString;
     }
-    paramString = new File(af.juS.jrO);
+    paramString = new File(af.lYj.lVe);
     AppMethodBeat.o(155885);
     return paramString;
   }
   
-  public static File avF()
+  public static File aPZ()
   {
     AppMethodBeat.i(155884);
-    if (Util.isNullOrNil(af.juS.jrN))
+    if (Util.isNullOrNil(af.lYj.lVd))
     {
       localFile = Environment.getExternalStorageDirectory();
       AppMethodBeat.o(155884);
       return localFile;
     }
-    File localFile = new File(af.juS.jrN);
+    File localFile = new File(af.lYj.lVd);
     AppMethodBeat.o(155884);
     return localFile;
   }
   
-  public static File avG()
+  public static File aQa()
   {
     AppMethodBeat.i(155886);
-    if (Util.isNullOrNil(af.juS.jrP))
+    if (Util.isNullOrNil(af.lYj.lVf))
     {
       localFile = Environment.getDataDirectory();
       AppMethodBeat.o(155886);
       return localFile;
     }
-    File localFile = new File(af.juS.jrP);
+    File localFile = new File(af.lYj.lVf);
     AppMethodBeat.o(155886);
     return localFile;
   }
   
-  public static File avH()
+  public static File aQb()
   {
     AppMethodBeat.i(155887);
-    if (Util.isNullOrNil(af.juS.jrQ))
+    if (Util.isNullOrNil(af.lYj.lVg))
     {
       localFile = Environment.getRootDirectory();
       AppMethodBeat.o(155887);
       return localFile;
     }
-    File localFile = new File(af.juS.jrQ);
+    File localFile = new File(af.lYj.lVg);
     AppMethodBeat.o(155887);
     return localFile;
   }
   
-  public static File avI()
+  public static File aQc()
   {
     AppMethodBeat.i(155888);
-    if (Util.isNullOrNil(af.juS.jrS))
+    if (Util.isNullOrNil(af.lYj.lVi))
     {
       localFile = Environment.getDownloadCacheDirectory();
       AppMethodBeat.o(155888);
       return localFile;
     }
-    File localFile = new File(af.juS.jrS);
+    File localFile = new File(af.lYj.lVi);
     AppMethodBeat.o(155888);
     return localFile;
   }
   
-  public static String avJ()
+  public static String aQd()
   {
     AppMethodBeat.i(155889);
-    if (Util.isNullOrNil(af.juS.jrR))
+    if (Util.isNullOrNil(af.lYj.lVh))
     {
       str = Environment.getExternalStorageState();
       AppMethodBeat.o(155889);
       return str;
     }
-    String str = af.juS.jrR;
+    String str = af.lYj.lVh;
     AppMethodBeat.o(155889);
     return str;
   }
   
-  public static int avK()
+  public static int aQe()
   {
     return 4;
   }
@@ -109,44 +107,44 @@ public final class g
   public static boolean isMIUI()
   {
     // Byte code:
-    //   0: ldc 111
-    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 107
+    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: getstatic 12	com/tencent/mm/compatible/util/g:isMIUI	Ljava/lang/Boolean;
     //   8: ifnonnull +58 -> 66
-    //   11: new 113	java/io/FileInputStream
+    //   11: new 109	java/io/FileInputStream
     //   14: dup
-    //   15: new 57	java/io/File
+    //   15: new 54	java/io/File
     //   18: dup
-    //   19: invokestatic 87	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   22: ldc 115
-    //   24: invokespecial 118	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokespecial 121	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokestatic 83	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 111
+    //   24: invokespecial 114	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokespecial 117	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   30: astore_2
     //   31: aload_2
     //   32: astore_1
-    //   33: new 123	java/util/Properties
+    //   33: new 119	java/util/Properties
     //   36: dup
-    //   37: invokespecial 125	java/util/Properties:<init>	()V
+    //   37: invokespecial 121	java/util/Properties:<init>	()V
     //   40: astore_3
     //   41: aload_2
     //   42: astore_1
     //   43: aload_3
     //   44: aload_2
-    //   45: invokevirtual 129	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   45: invokevirtual 125	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   48: aload_2
     //   49: astore_1
     //   50: aload_3
-    //   51: ldc 131
-    //   53: invokevirtual 135	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
-    //   56: invokestatic 141	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   51: ldc 127
+    //   53: invokevirtual 131	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
+    //   56: invokestatic 137	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   59: putstatic 12	com/tencent/mm/compatible/util/g:isMIUI	Ljava/lang/Boolean;
     //   62: aload_2
-    //   63: invokevirtual 144	java/io/FileInputStream:close	()V
+    //   63: invokevirtual 140	java/io/FileInputStream:close	()V
     //   66: getstatic 12	com/tencent/mm/compatible/util/g:isMIUI	Ljava/lang/Boolean;
-    //   69: invokevirtual 147	java/lang/Boolean:booleanValue	()Z
+    //   69: invokevirtual 143	java/lang/Boolean:booleanValue	()Z
     //   72: istore_0
-    //   73: ldc 111
-    //   75: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: ldc 107
+    //   75: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: iload_0
     //   79: ireturn
     //   80: astore_3
@@ -154,20 +152,20 @@ public final class g
     //   82: astore_2
     //   83: aload_2
     //   84: astore_1
-    //   85: ldc 149
+    //   85: ldc 145
     //   87: aload_3
-    //   88: ldc 151
+    //   88: ldc 147
     //   90: iconst_0
     //   91: anewarray 4	java/lang/Object
-    //   94: invokestatic 157	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   94: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   97: aload_2
     //   98: astore_1
-    //   99: getstatic 160	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   99: getstatic 156	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
     //   102: putstatic 12	com/tencent/mm/compatible/util/g:isMIUI	Ljava/lang/Boolean;
     //   105: aload_2
     //   106: ifnull -40 -> 66
     //   109: aload_2
-    //   110: invokevirtual 144	java/io/FileInputStream:close	()V
+    //   110: invokevirtual 140	java/io/FileInputStream:close	()V
     //   113: goto -47 -> 66
     //   116: astore_1
     //   117: goto -51 -> 66
@@ -177,9 +175,9 @@ public final class g
     //   123: aload_1
     //   124: ifnull +7 -> 131
     //   127: aload_1
-    //   128: invokevirtual 144	java/io/FileInputStream:close	()V
-    //   131: ldc 111
-    //   133: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: invokevirtual 140	java/io/FileInputStream:close	()V
+    //   131: ldc 107
+    //   133: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   136: aload_2
     //   137: athrow
     //   138: astore_1
@@ -225,47 +223,47 @@ public final class g
   public static boolean isMIUIV8()
   {
     // Byte code:
-    //   0: ldc 162
-    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 158
+    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: getstatic 14	com/tencent/mm/compatible/util/g:isMIUIV8	Ljava/lang/Boolean;
     //   8: ifnonnull +65 -> 73
-    //   11: new 113	java/io/FileInputStream
+    //   11: new 109	java/io/FileInputStream
     //   14: dup
-    //   15: new 57	java/io/File
+    //   15: new 54	java/io/File
     //   18: dup
-    //   19: invokestatic 87	android/os/Environment:getRootDirectory	()Ljava/io/File;
-    //   22: ldc 115
-    //   24: invokespecial 118	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokespecial 121	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokestatic 83	android/os/Environment:getRootDirectory	()Ljava/io/File;
+    //   22: ldc 111
+    //   24: invokespecial 114	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokespecial 117	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   30: astore_2
     //   31: aload_2
     //   32: astore_1
-    //   33: new 123	java/util/Properties
+    //   33: new 119	java/util/Properties
     //   36: dup
-    //   37: invokespecial 125	java/util/Properties:<init>	()V
+    //   37: invokespecial 121	java/util/Properties:<init>	()V
     //   40: astore_3
     //   41: aload_2
     //   42: astore_1
     //   43: aload_3
     //   44: aload_2
-    //   45: invokevirtual 129	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   45: invokevirtual 125	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   48: aload_2
     //   49: astore_1
     //   50: aload_3
-    //   51: ldc 131
-    //   53: ldc 164
-    //   55: invokevirtual 168	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   58: ldc 170
-    //   60: invokevirtual 176	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   63: invokestatic 141	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   51: ldc 127
+    //   53: ldc 160
+    //   55: invokevirtual 164	java/util/Properties:getProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   58: ldc 166
+    //   60: invokevirtual 172	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   63: invokestatic 137	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   66: putstatic 14	com/tencent/mm/compatible/util/g:isMIUIV8	Ljava/lang/Boolean;
     //   69: aload_2
-    //   70: invokevirtual 144	java/io/FileInputStream:close	()V
+    //   70: invokevirtual 140	java/io/FileInputStream:close	()V
     //   73: getstatic 14	com/tencent/mm/compatible/util/g:isMIUIV8	Ljava/lang/Boolean;
-    //   76: invokevirtual 147	java/lang/Boolean:booleanValue	()Z
+    //   76: invokevirtual 143	java/lang/Boolean:booleanValue	()Z
     //   79: istore_0
-    //   80: ldc 162
-    //   82: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: ldc 158
+    //   82: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   85: iload_0
     //   86: ireturn
     //   87: astore_3
@@ -273,18 +271,18 @@ public final class g
     //   89: astore_2
     //   90: aload_2
     //   91: astore_1
-    //   92: ldc 149
+    //   92: ldc 145
     //   94: aload_3
-    //   95: invokevirtual 179	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   98: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   95: invokevirtual 175	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   98: invokestatic 179	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   101: aload_2
     //   102: astore_1
-    //   103: getstatic 160	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   103: getstatic 156	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
     //   106: putstatic 14	com/tencent/mm/compatible/util/g:isMIUIV8	Ljava/lang/Boolean;
     //   109: aload_2
     //   110: ifnull -37 -> 73
     //   113: aload_2
-    //   114: invokevirtual 144	java/io/FileInputStream:close	()V
+    //   114: invokevirtual 140	java/io/FileInputStream:close	()V
     //   117: goto -44 -> 73
     //   120: astore_1
     //   121: goto -48 -> 73
@@ -294,9 +292,9 @@ public final class g
     //   127: aload_1
     //   128: ifnull +7 -> 135
     //   131: aload_1
-    //   132: invokevirtual 144	java/io/FileInputStream:close	()V
-    //   135: ldc 162
-    //   137: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: invokevirtual 140	java/io/FileInputStream:close	()V
+    //   135: ldc 158
+    //   137: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   140: aload_2
     //   141: athrow
     //   142: astore_1
@@ -340,7 +338,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.util.g
  * JD-Core Version:    0.7.0.1
  */

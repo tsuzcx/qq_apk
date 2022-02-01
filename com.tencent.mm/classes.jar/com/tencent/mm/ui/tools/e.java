@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 public abstract interface e
 {
-  public abstract void Ha(boolean paramBoolean);
+  public abstract void MV(boolean paramBoolean);
   
-  public abstract void Hb(boolean paramBoolean);
+  public abstract void MW(boolean paramBoolean);
   
   public abstract String getSearchContent();
   
-  public abstract void hYa();
+  public abstract void jCK();
   
-  public abstract boolean hYb();
+  public abstract boolean jCL();
   
-  public abstract boolean hYc();
+  public abstract boolean jCM();
   
   public abstract void setAutoMatchKeywords(boolean paramBoolean);
   
@@ -48,7 +48,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.ui.tools.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,65 +3,70 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dfy
-  extends com.tencent.mm.cd.a
+  extends com.tencent.mm.bx.a
 {
-  public int SEk;
-  public String fHp;
+  public String aaLv;
+  public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152654);
+    AppMethodBeat.i(104373);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.fHp != null) {
-        paramVarArgs.f(1, this.fHp);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.aaLv != null) {
+        paramVarArgs.g(1, this.aaLv);
       }
-      paramVarArgs.aY(2, this.SEk);
-      AppMethodBeat.o(152654);
+      if (this.value != null) {
+        paramVarArgs.g(2, this.value);
+      }
+      AppMethodBeat.o(104373);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.fHp == null) {
-        break label258;
+      if (this.aaLv == null) {
+        break label270;
       }
     }
-    label258:
-    for (paramInt = g.a.a.b.b.a.g(1, this.fHp) + 0;; paramInt = 0)
+    label270:
+    for (paramInt = i.a.a.b.b.a.h(1, this.aaLv) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bM(2, this.SEk);
-      AppMethodBeat.o(152654);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.value != null) {
+        i = paramInt + i.a.a.b.b.a.h(2, this.value);
+      }
+      AppMethodBeat.o(104373);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(152654);
+        AppMethodBeat.o(104373);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        i.a.a.a.a locala = (i.a.a.a.a)paramVarArgs[0];
         dfy localdfy = (dfy)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152654);
+          AppMethodBeat.o(104373);
           return -1;
         case 1: 
-          localdfy.fHp = locala.abFh.readString();
-          AppMethodBeat.o(152654);
+          localdfy.aaLv = locala.ajGk.readString();
+          AppMethodBeat.o(104373);
           return 0;
         }
-        localdfy.SEk = locala.abFh.AK();
-        AppMethodBeat.o(152654);
+        localdfy.value = locala.ajGk.readString();
+        AppMethodBeat.o(104373);
         return 0;
       }
-      AppMethodBeat.o(152654);
+      AppMethodBeat.o(104373);
       return -1;
     }
   }

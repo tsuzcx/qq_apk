@@ -1,502 +1,477 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.text.method.ScrollingMovementMethod;
-import android.view.MenuItem;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.g;
-import com.tencent.mm.by.c;
-import com.tencent.mm.opensdk.modelmsg.WXFileObject;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.b.c;
-import com.tencent.mm.plugin.finder.b.d;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.loader.aa;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bs;
-import com.tencent.mm.plugin.finder.storage.FeedData;
-import com.tencent.mm.plugin.finder.storage.FeedData.a;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.protocal.protobuf.cvy;
-import com.tencent.mm.sdk.crash.CrashReportFactory;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.plugin.finder.e.d;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.feed.model.FinderEmojiListLoader;
+import com.tencent.mm.plugin.finder.feed.model.FinderEmojiListLoader.a;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
+import com.tencent.mm.plugin.finder.feed.ui.FinderEmojiSelectUI;
+import com.tencent.mm.plugin.finder.feed.ui.FinderProfileUI;
+import com.tencent.mm.plugin.finder.model.cc;
+import com.tencent.mm.plugin.finder.model.r;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.protocal.protobuf.bui;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.MMFragmentActivity.b;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.q;
-import com.tencent.mm.vfs.u;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
-import kotlin.t;
-import org.json.JSONObject;
+import com.tencent.mm.ui.component.k.b;
+import com.tencent.mm.view.RefreshLoadMoreLayout;
+import com.tencent.mm.view.RefreshLoadMoreLayout.b;
+import com.tencent.mm.view.b;
+import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
+import com.tencent.mm.view.recyclerview.i.c;
+import com.tencent.threadpool.h;
+import com.tencent.threadpool.i;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderDebugUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "MENU_CHECK_RELEATED_ID", "", "getMENU_CHECK_RELEATED_ID", "()I", "MENU_CHECK_VIDEO", "getMENU_CHECK_VIDEO", "MENU_COPY_ID", "getMENU_COPY_ID", "MENU_FORWARD_VIDEO", "getMENU_FORWARD_VIDEO", "MENU_INFO_ID", "getMENU_INFO_ID", "MENU_LIKE_TIME", "getMENU_LIKE_TIME", "MENU_LIVE_REC_INFO", "getMENU_LIVE_REC_INFO", "createFinderFeedDialog", "", "context", "Landroid/content/Context;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "createLiveDebugInfoDialog", "msg", "", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "createMegaVideoDialog", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "isEnableDebugInfo", "", "Companion", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "actionCallback", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$ViewActionCallback;", "getActionCallback", "()Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$ViewActionCallback;", "actionCallback$delegate", "Lkotlin/Lazy;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "emojiAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "emojiLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderEmojiListLoader;", "getEmojiLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/FinderEmojiListLoader;", "emojiLoader$delegate", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "recyclerView$delegate", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "stateLayout", "Landroid/widget/FrameLayout;", "username", "", "getUsername", "()Ljava/lang/String;", "username$delegate", "getDesignerUin", "", "getLayoutId", "handleOnItemClick", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "initData", "initLoading", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFetchEnd", "Companion", "ViewActionCallback", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class m
   extends UIComponent
 {
-  public static final a BiL;
-  public static final String TAG = "MicroMsg.FinderDebugUIC";
-  final int BiE;
-  final int BiF;
-  final int BiG;
-  final int BiH;
-  final int BiI;
-  final int BiJ;
-  private final int BiK;
+  public static final a GNX;
+  private RefreshLoadMoreLayout ATx;
+  private final bui Auc;
+  private final kotlin.j BlK;
+  private final kotlin.j CNQ;
+  private final kotlin.j FcQ;
+  private FrameLayout FcY;
+  private WxRecyclerAdapter<cc> GNY;
+  private final kotlin.j GNZ;
   
   static
   {
-    AppMethodBeat.i(286132);
-    BiL = new a((byte)0);
-    TAG = "MicroMsg.FinderDebugUIC";
-    AppMethodBeat.o(286132);
+    AppMethodBeat.i(337828);
+    GNX = new a((byte)0);
+    AppMethodBeat.o(337828);
   }
   
   public m(AppCompatActivity paramAppCompatActivity)
   {
     super(paramAppCompatActivity);
-    AppMethodBeat.i(286131);
-    this.BiE = 1;
-    this.BiF = 2;
-    this.BiG = 3;
-    this.BiH = 4;
-    this.BiI = 5;
-    this.BiJ = 6;
-    this.BiK = 7;
-    AppMethodBeat.o(286131);
+    AppMethodBeat.i(337756);
+    this.CNQ = kotlin.k.cm((a)new i(this));
+    this.FcQ = kotlin.k.cm((a)new c(this));
+    paramAppCompatActivity = com.tencent.mm.ui.component.k.aeZF;
+    this.Auc = ((as)com.tencent.mm.ui.component.k.d(getActivity()).q(as.class)).fou();
+    this.GNZ = kotlin.k.cm((a)new d(this));
+    this.BlK = kotlin.k.cm((a)new j(this));
+    AppMethodBeat.o(337756);
   }
   
-  public static boolean eks()
+  public m(Fragment paramFragment)
   {
-    AppMethodBeat.i(286130);
-    if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (CrashReportFactory.hasDebuger()))
-    {
-      AppMethodBeat.o(286130);
-      return true;
-    }
-    AppMethodBeat.o(286130);
-    return false;
+    super(paramFragment);
+    AppMethodBeat.i(337761);
+    this.CNQ = kotlin.k.cm((a)new i(this));
+    this.FcQ = kotlin.k.cm((a)new c(this));
+    paramFragment = com.tencent.mm.ui.component.k.aeZF;
+    this.Auc = ((as)com.tencent.mm.ui.component.k.d(getActivity()).q(as.class)).fou();
+    this.GNZ = kotlin.k.cm((a)new d(this));
+    this.BlK = kotlin.k.cm((a)new j(this));
+    AppMethodBeat.o(337761);
   }
   
-  public final void a(final Context paramContext, final BaseFinderFeed paramBaseFinderFeed, final aa paramaa, final com.tencent.mm.view.recyclerview.i parami)
+  private final b fnr()
   {
-    AppMethodBeat.i(286129);
-    p.k(paramContext, "context");
-    p.k(paramBaseFinderFeed, "item");
-    p.k(parami, "holder");
-    e locale = new e(paramContext, 0, false);
-    paramBaseFinderFeed.mf();
-    Object localObject1 = FeedData.Companion;
-    final csg localcsg = (csg)j.lo((List)FeedData.a.t(paramBaseFinderFeed).getMediaList());
-    final boolean bool;
-    final JSONObject localJSONObject1;
-    Object localObject2;
-    if (localcsg.mediaType == 4)
+    AppMethodBeat.i(337743);
+    b localb = (b)this.FcQ.getValue();
+    AppMethodBeat.o(337743);
+    return localb;
+  }
+  
+  private final FinderEmojiListLoader fns()
+  {
+    AppMethodBeat.i(337748);
+    FinderEmojiListLoader localFinderEmojiListLoader = (FinderEmojiListLoader)this.GNZ.getValue();
+    AppMethodBeat.o(337748);
+    return localFinderEmojiListLoader;
+  }
+  
+  public final int getLayoutId()
+  {
+    return e.f.finder_emoji_list_layout;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(337849);
+    super.onCreate(paramBundle);
+    paramBundle = findViewById(e.e.rl_layout);
+    s.s(paramBundle, "findViewById(R.id.rl_layout)");
+    this.ATx = ((RefreshLoadMoreLayout)paramBundle);
+    paramBundle = findViewById(e.e.emoji_loading_state_container);
+    s.s(paramBundle, "findViewById(R.id.emoji_loading_state_container)");
+    this.FcY = ((FrameLayout)paramBundle);
+    Object localObject = this.ATx;
+    paramBundle = (Bundle)localObject;
+    if (localObject == null)
     {
-      bool = true;
-      localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = localJSONObject1.put("tag", "ClickMoreDebug");
-      localObject1 = paramBaseFinderFeed.feedObject.getFeedObject().contact;
-      if (localObject1 != null)
-      {
-        localObject2 = ((FinderContact)localObject1).nickname;
-        localObject1 = localObject2;
-        if (localObject2 != null) {}
-      }
-      else
-      {
-        localObject1 = "";
-      }
-      localObject1 = localJSONObject2.put("nickname", localObject1).put("feedId", com.tencent.mm.ae.d.Fw(paramBaseFinderFeed.feedObject.getId())).put("signedFeedId", paramBaseFinderFeed.feedObject.getId()).put("feedTime", Util.formatUnixTime(paramBaseFinderFeed.feedObject.getCreateTime() * 1L)).put("videoDuration", localcsg.videoDuration).put("mediaWH", localcsg.width + ':' + localcsg.height).put("mediaRadio", String.valueOf(localcsg.height / kotlin.k.i.aP(1.0F, localcsg.width))).put("description", paramBaseFinderFeed.feedObject.getDescription()).put("isVideo", bool);
-      if (paramaa == null) {
-        break label683;
-      }
+      s.bIx("rlLayout");
+      paramBundle = null;
     }
-    label683:
-    for (paramaa = paramaa.ztP;; paramaa = null)
+    paramBundle.setEnableRefresh(false);
+    localObject = this.ATx;
+    paramBundle = (Bundle)localObject;
+    if (localObject == null)
     {
-      paramaa = ((JSONObject)localObject1).put("file_format", paramaa).put("username", paramBaseFinderFeed.feedObject.field_username);
-      localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
-      localObject2 = paramaa.put("isFollow", d.a.aAN(paramBaseFinderFeed.feedObject.field_username)).put("mediaType", paramBaseFinderFeed.feedObject.getMediaType());
-      localObject1 = localcsg.url;
-      paramaa = (aa)localObject1;
-      if (localObject1 == null) {
-        paramaa = "";
+      s.bIx("rlLayout");
+      paramBundle = null;
+    }
+    paramBundle.setSuperNestedScroll(true);
+    paramBundle = this.ATx;
+    if (paramBundle == null)
+    {
+      s.bIx("rlLayout");
+      paramBundle = null;
+      paramBundle.setActionCallback((RefreshLoadMoreLayout.b)new e(this));
+      paramBundle = this.ATx;
+      if (paramBundle != null) {
+        break label419;
       }
-      localObject2 = ((JSONObject)localObject2).put("mediaId", MD5Util.getMD5String(paramaa)).put("url", localcsg.url).put("thumbUrl", localcsg.thumbUrl).put("thumbUrlToken", localcsg.thumb_url_token).put("fullThumbUrl", localcsg.TzX).put("fullThumbUrlToken", localcsg.TzY).put("coverUrl", localcsg.coverUrl).put("coverUrlToken", localcsg.cover_url_token).put("longUrl", p.I(localcsg.url, Util.nullAsNil(localcsg.url_token))).put("longThumbUrl", p.I(localcsg.thumbUrl, Util.nullAsNil(localcsg.thumb_url_token)));
-      localObject1 = paramBaseFinderFeed.feedObject.getFeedObject().debugMessage;
-      paramaa = (aa)localObject1;
-      if (localObject1 == null) {
-        paramaa = "";
+      s.bIx("rlLayout");
+      paramBundle = null;
+      label154:
+      localObject = af.mU((Context)getActivity()).inflate(e.f.load_more_footer, null);
+      s.s(localObject, "getInflater(activity).in…t.load_more_footer, null)");
+      paramBundle.setLoadMoreFooter((View)localObject);
+      this.GNY = new WxRecyclerAdapter((com.tencent.mm.view.recyclerview.g)new f(), (ArrayList)fns().getDataListJustForAdapter(), true);
+      paramBundle = this.GNY;
+      if (paramBundle != null) {
+        break label422;
       }
-      ((JSONObject)localObject2).put("debugMessage", paramaa);
-      paramaa = n.bHx("content=" + g.bN(paramBaseFinderFeed.feedObject.getFeedObject()));
-      Log.e(TAG, "START####################################################START");
-      Log.e(TAG, "long click more button! ".concat(String.valueOf(localJSONObject1)));
-      Log.e(TAG, "long click more button allInfo! ".concat(String.valueOf(paramaa)));
-      Log.e(TAG, "END  ####################################################  END");
-      if (eks())
+      s.bIx("emojiAdapter");
+      paramBundle = null;
+    }
+    label419:
+    label422:
+    for (;;)
+    {
+      paramBundle.agOe = ((i.c)new g(this));
+      RecyclerView localRecyclerView = (RecyclerView)this.CNQ.getValue();
+      getActivity();
+      localRecyclerView.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+      localObject = this.GNY;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
       {
-        locale.a((q.f)new b(this, bool));
-        locale.a((q.g)new c(this, paramContext, localJSONObject1, paramBaseFinderFeed, localcsg, paramaa, parami));
-        locale.eik();
+        s.bIx("emojiAdapter");
+        paramBundle = null;
       }
-      AppMethodBeat.o(286129);
+      localRecyclerView.setAdapter((RecyclerView.a)paramBundle);
+      fns().BbB = ((a)new h(this));
+      localObject = this.FcY;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("stateLayout");
+        paramBundle = null;
+      }
+      paramBundle.setBackgroundResource(e.d.finder_profile_gradient_bg);
+      localObject = this.FcY;
+      paramBundle = (Bundle)localObject;
+      if (localObject == null)
+      {
+        s.bIx("stateLayout");
+        paramBundle = null;
+      }
+      paramBundle.setVisibility(0);
+      BaseFeedLoader.requestInit$default((BaseFeedLoader)fns(), false, 1, null);
+      fns().requestRefresh();
+      fns().register((com.tencent.mm.view.k)fnr());
+      AppMethodBeat.o(337849);
       return;
-      bool = false;
       break;
+      break label154;
     }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderDebugUIC$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "createDialogInfo", "", "context", "Landroid/content/Context;", "txt", "plugin-finder_release"})
-  public static final class a
+  public final void onDestroy()
   {
-    public static void aN(final Context paramContext, String paramString)
-    {
-      AppMethodBeat.i(268824);
-      p.k(paramContext, "context");
-      p.k(paramString, "txt");
-      TextView localTextView = new TextView(paramContext);
-      localTextView.setText((CharSequence)paramString);
-      localTextView.setGravity(3);
-      localTextView.setTextSize(1, 13.0F);
-      localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      localTextView.setTextColor(paramContext.getResources().getColor(b.c.black_color));
-      localTextView.setTypeface(Typeface.MONOSPACE);
-      int i = paramContext.getResources().getDimensionPixelSize(b.d.SmallestPadding);
-      localTextView.setPadding(i, i, i, i);
-      localTextView.setMovementMethod(ScrollingMovementMethod.getInstance());
-      DialogInterface.OnClickListener localOnClickListener1 = (DialogInterface.OnClickListener)new b(paramString, paramContext);
-      DialogInterface.OnClickListener localOnClickListener2 = (DialogInterface.OnClickListener)a.BiM;
-      Log.i(m.access$getTAG$cp(), "dialog msg ".concat(String.valueOf(paramString)));
-      h.a(paramContext, "视频号测试", (View)localTextView, "copy", "cancel", localOnClickListener1, localOnClickListener2);
-      AppMethodBeat.o(268824);
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-    static final class a
-      implements DialogInterface.OnClickListener
-    {
-      public static final a BiM;
-      
-      static
-      {
-        AppMethodBeat.i(291559);
-        BiM = new a();
-        AppMethodBeat.o(291559);
-      }
-      
-      public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-      {
-        AppMethodBeat.i(291558);
-        paramDialogInterface = m.BiL;
-        Log.i(m.access$getTAG$cp(), "onClickCancel");
-        AppMethodBeat.o(291558);
-      }
-    }
-    
-    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-    static final class b
-      implements DialogInterface.OnClickListener
-    {
-      b(String paramString, Context paramContext) {}
-      
-      public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-      {
-        AppMethodBeat.i(290763);
-        paramDialogInterface = m.BiL;
-        Log.i(m.access$getTAG$cp(), "onClick1");
-        ClipboardHelper.setText((CharSequence)this.BiN);
-        Toast.makeText(paramContext, (CharSequence)"copy done", 0).show();
-        AppMethodBeat.o(290763);
-      }
-    }
+    AppMethodBeat.i(337855);
+    super.onDestroy();
+    fns().unregister((com.tencent.mm.view.k)fnr());
+    AppMethodBeat.o(337855);
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class b
-    implements q.f
-  {
-    b(m paramm, boolean paramBoolean) {}
-    
-    public final void onCreateMMMenu(o paramo)
-    {
-      AppMethodBeat.i(267196);
-      paramo.b(this.BiO.BiE, (CharSequence)"feed信息", b.i.finder_icons_link);
-      paramo.b(this.BiO.BiG, (CharSequence)"强化流检查", b.i.bottomsheet_icon_refresh);
-      if (bool)
-      {
-        paramo.b(this.BiO.BiH, (CharSequence)"VIDEO信息", b.i.bottomsheet_icon_brower);
-        paramo.b(this.BiO.BiI, (CharSequence)"转发视频文件", b.i.bottomsheet_icon_transmit);
-      }
-      paramo.b(this.BiO.BiF, (CharSequence)"拷贝feed全量信息", b.i.bottomsheet_icon_star);
-      paramo.b(this.BiO.BiJ, (CharSequence)"拷贝feed点赞信息", b.i.bottomsheet_icon_star);
-      AppMethodBeat.o(267196);
-    }
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class c
-    implements q.g
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$ViewActionCallback;", "Lcom/tencent/mm/view/BaseViewActionCallback;", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "(Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC;Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "updateState", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public final class b
+    extends b
   {
-    c(m paramm, Context paramContext, JSONObject paramJSONObject, BaseFinderFeed paramBaseFinderFeed, csg paramcsg, String paramString, com.tencent.mm.view.recyclerview.i parami) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+    public b()
     {
-      AppMethodBeat.i(291953);
-      p.j(paramMenuItem, "menuItem");
-      paramInt = paramMenuItem.getItemId();
-      Object localObject1;
-      if (paramInt == this.BiO.BiE)
-      {
-        paramMenuItem = m.BiL;
-        paramMenuItem = paramContext;
-        localObject1 = localJSONObject1.toString();
-        p.j(localObject1, "json.toString()");
-        m.a.aN(paramMenuItem, (String)localObject1);
-        AppMethodBeat.o(291953);
-        return;
-      }
-      if (paramInt == this.BiO.BiG)
-      {
-        paramMenuItem = m.BiL;
-        m.a.aN(paramContext, "后台配置:" + paramBaseFinderFeed.feedObject.getPosTriggerConfig());
-        AppMethodBeat.o(291953);
-        return;
-      }
-      Object localObject2;
-      if (paramInt == this.BiO.BiJ)
-      {
-        paramMenuItem = new StringBuilder("friendLikeCount=" + paramBaseFinderFeed.feedObject.getFeedObject().friendLikeCount + " incFriendLikeCount=" + paramBaseFinderFeed.feedObject.getFeedObject().incFriendLikeCount + '\n');
-        localObject1 = paramBaseFinderFeed.feedObject.getFeedObject().likeList;
-        p.j(localObject1, "item.feedObject.feedObject.likeList");
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (FinderCommentInfo)((Iterator)localObject1).next();
-          paramMenuItem.append(((FinderCommentInfo)localObject2).nickname).append("=").append(Util.formatUnixTime(((FinderCommentInfo)localObject2).createtime)).append("\n");
-        }
-        localObject1 = m.BiL;
-        localObject1 = paramContext;
-        paramMenuItem = paramMenuItem.toString();
-        p.j(paramMenuItem, "ss.toString()");
-        m.a.aN((Context)localObject1, paramMenuItem);
-        AppMethodBeat.o(291953);
-        return;
-      }
-      if (paramInt == this.BiO.BiH)
-      {
-        paramMenuItem = localcsg;
-        paramMenuItem = com.tencent.mm.plugin.finder.storage.logic.d.AnN.b(paramBaseFinderFeed.mf(), paramMenuItem);
-        localObject1 = SightVideoJNI.getSimpleMp4InfoVFS(paramMenuItem.getPath());
-        boolean bool = SightVideoJNI.isH265VideoVFS(paramMenuItem.getPath());
-        paramMenuItem = "path:" + paramMenuItem.getPath() + " \nsize:" + Util.getSizeKB(u.bBQ(paramMenuItem.getPath())) + '\n' + "mediaId:" + paramMenuItem.ztO.mediaId + '\n' + "url=" + localcsg.url + " \n" + (String)localObject1 + " \nisH265:" + bool;
-        localObject1 = m.BiL;
-        m.a.aN(paramContext, paramMenuItem);
-        AppMethodBeat.o(291953);
-        return;
-      }
-      if (paramInt == this.BiO.BiI)
-      {
-        paramMenuItem = localcsg;
-        Object localObject3 = com.tencent.mm.plugin.finder.storage.logic.d.AnN.b(paramBaseFinderFeed.mf(), paramMenuItem);
-        paramMenuItem = "path:" + ((aa)localObject3).getPath() + " \nsize:" + Util.getSizeKB(u.bBQ(((aa)localObject3).getPath())) + '\n' + "mediaId:" + ((aa)localObject3).ztO.mediaId + '\n' + "url=" + localcsg.url;
-        localObject1 = new Intent();
-        WXFileObject localWXFileObject = new WXFileObject();
-        localWXFileObject.setFilePath(((aa)localObject3).getPath());
-        localObject2 = new WXMediaMessage();
-        ((WXMediaMessage)localObject2).mediaObject = ((WXMediaMessage.IMediaObject)localWXFileObject);
-        localObject3 = new q(((aa)localObject3).getPath());
-        ((WXMediaMessage)localObject2).title = ((q)localObject3).getName();
-        ((WXMediaMessage)localObject2).description = Util.getSizeKB(((q)localObject3).length());
-        ((Intent)localObject1).putExtra("Select_Conv_Type", 3);
-        ((Intent)localObject1).putExtra("select_is_ret", true);
-        ((Intent)localObject1).putExtra("Retr_Msg_Type", 2);
-        localObject3 = paramContext;
-        if (localObject3 == null)
-        {
-          paramMenuItem = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMFragmentActivity");
-          AppMethodBeat.o(291953);
-          throw paramMenuItem;
-        }
-        c.a((MMFragmentActivity)localObject3, ".ui.transmit.SelectConversationUI", (Intent)localObject1, 1004, (MMFragmentActivity.b)new m.c.a((WXMediaMessage)localObject2, paramMenuItem));
-        AppMethodBeat.o(291953);
-        return;
-      }
-      if (paramInt == this.BiO.BiF)
-      {
-        ClipboardHelper.setText((CharSequence)paramaa);
-        Toast.makeText(parami.getContext(), (CharSequence)("debug info " + paramaa), 1).show();
-      }
-      AppMethodBeat.o(291953);
+      super();
+      AppMethodBeat.i(337467);
+      AppMethodBeat.o(337467);
     }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  public static final class d
-    implements q.f
-  {
-    public d(m paramm) {}
     
-    public final void onCreateMMMenu(o paramo)
+    private static final void a(m paramm, b paramb)
     {
-      AppMethodBeat.i(289574);
-      paramo.b(this.BiO.BiE, (CharSequence)"feed信息", b.i.finder_icons_link);
-      paramo.b(this.BiO.BiG, (CharSequence)"强化流检查", b.i.bottomsheet_icon_refresh);
-      paramo.b(this.BiO.BiH, (CharSequence)"VIDEO信息", b.i.bottomsheet_icon_brower);
-      paramo.b(this.BiO.BiI, (CharSequence)"转发视频文件", b.i.bottomsheet_icon_transmit);
-      paramo.b(this.BiO.BiF, (CharSequence)"拷贝feed全量信息", b.i.bottomsheet_icon_star);
-      paramo.b(this.BiO.BiJ, (CharSequence)"拷贝feed点赞信息", b.i.bottomsheet_icon_star);
-      AppMethodBeat.o(289574);
-    }
-  }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  public static final class e
-    implements q.g
-  {
-    public e(m paramm, Context paramContext, JSONObject paramJSONObject, bs parambs, long paramLong, String paramString, com.tencent.mm.view.recyclerview.i parami) {}
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-    {
+      Object localObject3 = null;
+      Object localObject4 = null;
+      RefreshLoadMoreLayout localRefreshLoadMoreLayout = null;
+      Object localObject5 = null;
       Object localObject2 = null;
-      Object localObject1 = null;
-      AppMethodBeat.i(289414);
-      p.j(paramMenuItem, "menuItem");
-      paramInt = paramMenuItem.getItemId();
-      if (paramInt == this.BiO.BiE)
+      AppMethodBeat.i(337487);
+      s.u(paramm, "this$0");
+      s.u(paramb, "this$1");
+      Object localObject1 = paramm.getFragment();
+      if ((localObject1 != null) && (((Fragment)localObject1).isDetached() == true)) {}
+      for (int i = 1; (i != 0) || (paramm.getActivity().isDestroyed()) || (paramm.getActivity().isFinishing()); i = 0)
       {
-        paramMenuItem = m.BiL;
-        paramMenuItem = this.$context;
-        localObject1 = this.zLc.toString();
-        p.j(localObject1, "json.toString()");
-        m.a.aN(paramMenuItem, (String)localObject1);
-        AppMethodBeat.o(289414);
+        AppMethodBeat.o(337487);
         return;
       }
-      if (paramInt == this.BiO.BiG)
+      Log.i("FinderEmojiListUIC", "[updateState] state=" + m.a(paramm).Bfm + " cachedState=" + m.a(paramm).Bfn);
+      FrameLayout localFrameLayout = m.d(paramm);
+      localObject1 = localFrameLayout;
+      if (localFrameLayout == null)
       {
-        paramMenuItem = m.BiL;
-        m.a.aN(this.$context, "后台配置:" + this.zwd.getFeedObject().posTriggerConfig);
-        AppMethodBeat.o(289414);
-        return;
+        s.bIx("stateLayout");
+        localObject1 = null;
       }
-      if (paramInt == this.BiO.BiJ)
+      ((FrameLayout)localObject1).setOnClickListener(null);
+      ((FrameLayout)localObject1).setVisibility(8);
+      if (m.a(paramm).Bfn == FinderEmojiListLoader.a.Bfp)
       {
-        localObject1 = new StringBuilder("friendLikeCount=");
-        paramMenuItem = this.zwd.xcy;
-        if (paramMenuItem != null) {}
-        for (paramMenuItem = Integer.valueOf(paramMenuItem.friendLikeCount);; paramMenuItem = null)
+        localRefreshLoadMoreLayout = m.b(paramm);
+        localObject1 = localRefreshLoadMoreLayout;
+        if (localRefreshLoadMoreLayout == null)
         {
-          paramMenuItem = new StringBuilder(paramMenuItem);
-          localObject1 = m.BiL;
-          localObject1 = this.$context;
-          paramMenuItem = paramMenuItem.toString();
-          p.j(paramMenuItem, "ss.toString()");
-          m.a.aN((Context)localObject1, paramMenuItem);
-          AppMethodBeat.o(289414);
-          return;
+          s.bIx("rlLayout");
+          localObject1 = null;
         }
-      }
-      Object localObject3;
-      Object localObject4;
-      if (paramInt == this.BiO.BiH)
-      {
-        paramMenuItem = (csg)j.lp((List)this.zwd.dKV());
-        if (paramMenuItem != null)
+        ((RefreshLoadMoreLayout)localObject1).setSuperNestedScroll(false);
+        localObject1 = m.a(paramm).Bfm;
+        switch (a.$EnumSwitchMapping$0[localObject1.ordinal()])
         {
-          paramMenuItem = com.tencent.mm.plugin.finder.storage.logic.d.AnN.b(this.xhm, paramMenuItem);
-          localObject2 = SightVideoJNI.getSimpleMp4InfoVFS(paramMenuItem.getPath());
-          boolean bool = SightVideoJNI.isH265VideoVFS(paramMenuItem.getPath());
-          localObject3 = new StringBuilder("path:").append(paramMenuItem.getPath()).append(" \nsize:").append(Util.getSizeKB(u.bBQ(paramMenuItem.getPath()))).append('\n').append("mediaId:").append(paramMenuItem.ztO.mediaId).append('\n').append("url=");
-          localObject4 = (csg)j.lp((List)this.zwd.dKV());
-          paramMenuItem = (MenuItem)localObject1;
-          if (localObject4 != null) {
-            paramMenuItem = ((csg)localObject4).url;
-          }
-          paramMenuItem = paramMenuItem + " \n" + (String)localObject2 + " \nisH265:" + bool;
-          localObject1 = m.BiL;
-          m.a.aN(this.$context, paramMenuItem);
-          AppMethodBeat.o(289414);
+        default: 
+          AppMethodBeat.o(337487);
           return;
-        }
-        AppMethodBeat.o(289414);
-        return;
-      }
-      if (paramInt == this.BiO.BiI)
-      {
-        paramMenuItem = (csg)j.lp((List)this.zwd.dKV());
-        if (paramMenuItem != null)
-        {
-          localObject1 = com.tencent.mm.plugin.finder.storage.logic.d.AnN.b(this.xhm, paramMenuItem);
-          localObject3 = new StringBuilder("path:").append(((aa)localObject1).getPath()).append(" \nsize:").append(Util.getSizeKB(u.bBQ(((aa)localObject1).getPath()))).append('\n').append("mediaId:").append(((aa)localObject1).ztO.mediaId).append('\n').append("url=");
-          localObject4 = (csg)j.lp((List)this.zwd.dKV());
-          paramMenuItem = (MenuItem)localObject2;
-          if (localObject4 != null) {
-            paramMenuItem = ((csg)localObject4).url;
-          }
-          paramMenuItem = paramMenuItem;
-          localObject2 = new Intent();
-          localObject4 = new WXFileObject();
-          ((WXFileObject)localObject4).setFilePath(((aa)localObject1).getPath());
-          localObject3 = new WXMediaMessage();
-          ((WXMediaMessage)localObject3).mediaObject = ((WXMediaMessage.IMediaObject)localObject4);
-          localObject1 = new q(((aa)localObject1).getPath());
-          ((WXMediaMessage)localObject3).title = ((q)localObject1).getName();
-          ((WXMediaMessage)localObject3).description = Util.getSizeKB(((q)localObject1).length());
-          ((Intent)localObject2).putExtra("Select_Conv_Type", 3);
-          ((Intent)localObject2).putExtra("select_is_ret", true);
-          ((Intent)localObject2).putExtra("Retr_Msg_Type", 2);
-          localObject1 = this.$context;
-          if (localObject1 == null)
+        case 1: 
+          paramm = m.d(paramm);
+          if (paramm == null)
           {
-            paramMenuItem = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMFragmentActivity");
-            AppMethodBeat.o(289414);
-            throw paramMenuItem;
+            s.bIx("stateLayout");
+            paramm = localObject2;
           }
-          c.a((MMFragmentActivity)localObject1, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1004, (MMFragmentActivity.b)new m.e.a((WXMediaMessage)localObject3, paramMenuItem));
-          AppMethodBeat.o(289414);
+          for (;;)
+          {
+            paramm.setVisibility(0);
+            ((TextView)paramm.findViewById(e.e.tips_no_content)).setVisibility(8);
+            ((TextView)paramm.findViewById(e.e.tips_retry)).setVisibility(8);
+            ((ProgressBar)paramm.findViewById(e.e.tips_loading)).setVisibility(0);
+            AppMethodBeat.o(337487);
+            return;
+          }
+        case 2: 
+          paramm = m.d(paramm);
+          if (paramm == null)
+          {
+            s.bIx("stateLayout");
+            paramm = localObject3;
+          }
+          for (;;)
+          {
+            paramm.setVisibility(0);
+            ((TextView)paramm.findViewById(e.e.tips_no_content)).setVisibility(0);
+            ((TextView)paramm.findViewById(e.e.tips_retry)).setVisibility(8);
+            ((ProgressBar)paramm.findViewById(e.e.tips_loading)).setVisibility(8);
+            AppMethodBeat.o(337487);
+            return;
+          }
+        }
+        localObject1 = m.d(paramm);
+        if (localObject1 == null)
+        {
+          s.bIx("stateLayout");
+          localObject1 = localObject4;
+        }
+        for (;;)
+        {
+          ((FrameLayout)localObject1).setVisibility(0);
+          ((TextView)((FrameLayout)localObject1).findViewById(e.e.tips_no_content)).setVisibility(8);
+          ((TextView)((FrameLayout)localObject1).findViewById(e.e.tips_retry)).setVisibility(0);
+          ((ProgressBar)((FrameLayout)localObject1).findViewById(e.e.tips_loading)).setVisibility(8);
+          ((FrameLayout)localObject1).setOnClickListener(new m.b..ExternalSyntheticLambda0(paramm, paramb));
+          break;
+        }
+      }
+      if ((paramm.getActivity() instanceof FinderProfileUI))
+      {
+        paramm = m.b(paramm);
+        if (paramm == null)
+        {
+          s.bIx("rlLayout");
+          paramm = localRefreshLoadMoreLayout;
+        }
+        for (;;)
+        {
+          paramm.setSuperNestedScroll(true);
+          AppMethodBeat.o(337487);
           return;
         }
-        AppMethodBeat.o(289414);
+      }
+      if ((paramm.getActivity() instanceof FinderEmojiSelectUI))
+      {
+        paramm = m.b(paramm);
+        if (paramm != null) {
+          break label560;
+        }
+        s.bIx("rlLayout");
+        paramm = localObject5;
+      }
+      label560:
+      for (;;)
+      {
+        paramm.setSuperNestedScroll(false);
+        AppMethodBeat.o(337487);
         return;
       }
-      if (paramInt == this.BiO.BiF)
+    }
+    
+    private static final void a(m paramm, b paramb, View paramView)
+    {
+      AppMethodBeat.i(337471);
+      s.u(paramm, "this$0");
+      s.u(paramb, "this$1");
+      paramView = m.b(paramm);
+      paramm = paramView;
+      if (paramView == null)
       {
-        ClipboardHelper.setText((CharSequence)this.BiR);
-        Toast.makeText(this.tDl.getContext(), (CharSequence)("debug info " + this.BiR), 1).show();
+        s.bIx("rlLayout");
+        paramm = null;
       }
-      AppMethodBeat.o(289414);
+      RefreshLoadMoreLayout.a(paramm, 0, 3);
+      paramb.evt();
+      AppMethodBeat.o(337471);
+    }
+    
+    public final void evt()
+    {
+      AppMethodBeat.i(337502);
+      h.ahAA.bk(new m.b..ExternalSyntheticLambda1(m.this, this));
+      AppMethodBeat.o(337502);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$ViewActionCallback;", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements a<m.b>
+  {
+    c(m paramm)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/feed/model/FinderEmojiListLoader;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements a<FinderEmojiListLoader>
+  {
+    d(m paramm)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$initView$1", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback2;", "onLoadMoreBegin", "", "loadMoreType", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class e
+    extends RefreshLoadMoreLayout.b
+  {
+    e(m paramm) {}
+    
+    public final void qI(int paramInt)
+    {
+      AppMethodBeat.i(337476);
+      super.qI(paramInt);
+      BaseFeedLoader.requestLoadMore$default((BaseFeedLoader)m.a(this.GOa), false, 1, null);
+      AppMethodBeat.o(337476);
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$initView$2", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class f
+    implements com.tencent.mm.view.recyclerview.g
+  {
+    public final com.tencent.mm.view.recyclerview.f<?> yF(int paramInt)
+    {
+      AppMethodBeat.i(337457);
+      if (paramInt == r.class.getName().hashCode())
+      {
+        localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.finder.convert.f();
+        AppMethodBeat.o(337457);
+        return localObject;
+      }
+      Object localObject = av.GiL;
+      av.eY("FinderEmojiListUIC", paramInt);
+      localObject = (com.tencent.mm.view.recyclerview.f)new com.tencent.mm.plugin.finder.convert.g();
+      AppMethodBeat.o(337457);
+      return localObject;
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/finder/viewmodel/component/FinderEmojiListUIC$initView$3", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$OnItemClickListener;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "onItemClick", "", "adapter", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "view", "Landroid/view/View;", "position", "", "holder", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class g
+    implements i.c<com.tencent.mm.view.recyclerview.j>
+  {
+    g(m paramm) {}
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class h
+    extends u
+    implements a<ah>
+  {
+    h(m paramm)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", "Landroidx/recyclerview/widget/RecyclerView;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class i
+    extends u
+    implements a<RecyclerView>
+  {
+    i(m paramm)
+    {
+      super();
+    }
+  }
+  
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class j
+    extends u
+    implements a<String>
+  {
+    j(m paramm)
+    {
+      super();
     }
   }
 }

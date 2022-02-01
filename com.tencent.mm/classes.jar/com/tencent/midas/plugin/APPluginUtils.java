@@ -51,18 +51,18 @@ public class APPluginUtils
   
   static
   {
-    AppMethodBeat.i(252628);
+    AppMethodBeat.i(217899);
     HEX_DIGITS = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
     installErrMsg = null;
     emptyResList = null;
     fileList = null;
     copyFileObject = new Object();
-    AppMethodBeat.o(252628);
+    AppMethodBeat.o(217899);
   }
   
   static void backUp(boolean paramBoolean, final String paramString1, final String paramString2, final String paramString3)
   {
-    AppMethodBeat.i(252605);
+    AppMethodBeat.i(217755);
     Object localObject = null;
     try
     {
@@ -76,14 +76,14 @@ public class APPluginUtils
     }
     if (TextUtils.isEmpty(localObject))
     {
-      AppMethodBeat.o(252605);
+      AppMethodBeat.o(217755);
       return;
     }
     new Thread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(252636);
+        AppMethodBeat.i(217453);
         synchronized (APPluginUtils.copyFileObject)
         {
           if (this.val$isNeedCheckMD5Copy)
@@ -98,40 +98,40 @@ public class APPluginUtils
             long l2 = System.currentTimeMillis();
             APLog.i("Times", "File" + str1 + "backup times:" + (l2 - l1));
           }
-          AppMethodBeat.o(252636);
+          AppMethodBeat.o(217453);
           return;
         }
       }
     }).start();
-    AppMethodBeat.o(252605);
+    AppMethodBeat.o(217755);
   }
   
   private static void callbackInMidasPluginWhenRunningInNewProcess(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(252618);
+    AppMethodBeat.i(217865);
     try
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("EXTRA_CALLBACK_RESULT_CODE", paramInt);
       localIntent.putExtra("EXTRA_CALLBACK_RESULT_MSG", paramString);
       APPluginInterfaceManager.initPluginInterface(paramContext, APMidasPayHelper.MIDAS_PLUGIN_NAME, APMidasPayHelper.PKG_DISTRIBUTE, "callbackFromMidasPay", new Object[] { paramContext, localIntent });
-      AppMethodBeat.o(252618);
+      AppMethodBeat.o(217865);
       return;
     }
     catch (Exception paramContext)
     {
       APLog.e("PluginProxyActivity", "openPlugin error:" + paramContext.toString());
-      AppMethodBeat.o(252618);
+      AppMethodBeat.o(217865);
     }
   }
   
   public static void callbackInMidasPluginWithoutCaringAboutNewProcess(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(252616);
+    AppMethodBeat.i(217856);
     if (paramContext == null)
     {
       APLog.e("PluginUtils", "Call back in plugin without caring process fail, null context!");
-      AppMethodBeat.o(252616);
+      AppMethodBeat.o(217856);
       return;
     }
     APLog.d("PluginUtils", "Call back in plugin without caring process, context ok!");
@@ -139,7 +139,7 @@ public class APPluginUtils
     {
       APLog.d("PluginUtils", "Call back in plugin without caring process, is new process!");
       callbackInMidasPluginWhenRunningInNewProcess(paramContext, paramInt, paramString);
-      AppMethodBeat.o(252616);
+      AppMethodBeat.o(217856);
       return;
     }
     APLog.d("PluginUtils", "Call back in plugin without caring process, not new process!");
@@ -147,12 +147,12 @@ public class APPluginUtils
     paramContext.resultCode = paramInt;
     paramContext.resultMsg = paramString;
     APMidasPayHelper.midasCallBack(paramContext);
-    AppMethodBeat.o(252616);
+    AppMethodBeat.o(217856);
   }
   
   public static boolean checkFileMD5(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(252606);
+    AppMethodBeat.i(217768);
     str2 = "";
     try
     {
@@ -163,7 +163,7 @@ public class APPluginUtils
       }
       else
       {
-        AppMethodBeat.o(252606);
+        AppMethodBeat.o(217768);
         return false;
       }
       paramString1 = new FileInputStream(paramString1);
@@ -207,25 +207,25 @@ public class APPluginUtils
       if (!str1.equalsIgnoreCase(paramString2)) {
         continue;
       }
-      AppMethodBeat.o(252606);
+      AppMethodBeat.o(217768);
       return true;
       paramString1.close();
       str1 = toHexString(str1.digest());
     }
-    AppMethodBeat.o(252606);
+    AppMethodBeat.o(217768);
     return false;
   }
   
   public static void clearDirContent(File paramFile)
   {
-    AppMethodBeat.i(252576);
+    AppMethodBeat.i(217550);
     if ((paramFile != null) && ((paramFile.exists() & paramFile.isDirectory())))
     {
       APLog.d("PluginUtils", "About to clear dir, path = " + paramFile.getAbsolutePath());
       paramFile = paramFile.listFiles();
       if ((paramFile == null) || (paramFile.length == 0))
       {
-        AppMethodBeat.o(252576);
+        AppMethodBeat.o(217550);
         return;
       }
       int j = paramFile.length;
@@ -238,22 +238,22 @@ public class APPluginUtils
         }
         i += 1;
       }
-      AppMethodBeat.o(252576);
+      AppMethodBeat.o(217550);
       return;
     }
     APLog.e("PluginUtils", "call clear dir content, but parameter error!");
-    AppMethodBeat.o(252576);
+    AppMethodBeat.o(217550);
   }
   
   static void copyDirect(Context paramContext, File paramFile1, File paramFile2)
   {
-    AppMethodBeat.i(252610);
+    AppMethodBeat.i(217822);
     if ((paramFile1 != null) && (paramFile2 != null))
     {
       paramContext = paramFile1.listFiles();
       if (paramContext == null)
       {
-        AppMethodBeat.o(252610);
+        AppMethodBeat.o(217822);
         return;
       }
       int i = 0;
@@ -265,22 +265,22 @@ public class APPluginUtils
         i += 1;
       }
     }
-    AppMethodBeat.o(252610);
+    AppMethodBeat.o(217822);
   }
   
   static void copyEmtpyResAPKFromAssets(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(252604);
+    AppMethodBeat.i(217744);
     if (!isHasBSL())
     {
-      AppMethodBeat.o(252604);
+      AppMethodBeat.o(217744);
       return;
     }
     String[] arrayOfString = getAssetFileList(paramContext);
     if (arrayOfString == null)
     {
-      AppMethodBeat.o(252604);
+      AppMethodBeat.o(217744);
       return;
     }
     int j = arrayOfString.length;
@@ -319,7 +319,7 @@ public class APPluginUtils
           ((InputStream)localObject1).close();
         }
         catch (IOException localIOException) {}
-        AppMethodBeat.o(252604);
+        AppMethodBeat.o(217744);
         return;
       }
       i += 1;
@@ -805,26 +805,26 @@ public class APPluginUtils
   
   static void deleteBKPlugin(Context paramContext)
   {
-    AppMethodBeat.i(252578);
+    AppMethodBeat.i(217569);
     APLog.i("APPluginUtils", "deleteUpdatePlugin");
     deleteFiles(APPluginConfig.getPluginBackUpPath(paramContext));
-    AppMethodBeat.o(252578);
+    AppMethodBeat.o(217569);
   }
   
   public static void deleteDex(Context paramContext)
   {
-    AppMethodBeat.i(252581);
+    AppMethodBeat.i(217596);
     APLog.i("APPluginUtils", "deleteDex");
     deleteFiles(APPluginConfig.getOptimizedDexPath(paramContext));
-    AppMethodBeat.o(252581);
+    AppMethodBeat.o(217596);
   }
   
   public static void deleteFiles(File paramFile)
   {
-    AppMethodBeat.i(252577);
+    AppMethodBeat.i(217560);
     if (paramFile == null)
     {
-      AppMethodBeat.o(252577);
+      AppMethodBeat.o(217560);
       return;
     }
     if (paramFile.isDirectory())
@@ -832,7 +832,7 @@ public class APPluginUtils
       File[] arrayOfFile = paramFile.listFiles();
       if (arrayOfFile == null)
       {
-        AppMethodBeat.o(252577);
+        AppMethodBeat.o(217560);
         return;
       }
       int i = 0;
@@ -845,35 +845,35 @@ public class APPluginUtils
         i += 1;
       }
       paramFile.delete();
-      AppMethodBeat.o(252577);
+      AppMethodBeat.o(217560);
       return;
     }
     paramFile.delete();
-    AppMethodBeat.o(252577);
+    AppMethodBeat.o(217560);
   }
   
   public static void deleteLibs(Context paramContext)
   {
-    AppMethodBeat.i(252582);
+    AppMethodBeat.i(217604);
     APLog.i("APPluginUtils", "deleteLibs");
     deleteFiles(APPluginConfig.getLibPath(paramContext));
-    AppMethodBeat.o(252582);
+    AppMethodBeat.o(217604);
   }
   
   public static void deletePlugin(Context paramContext)
   {
-    AppMethodBeat.i(252580);
+    AppMethodBeat.i(217587);
     APLog.i("APPluginUtils", "deletePlugin");
     deleteFiles(APPluginConfig.getPluginPath(paramContext));
-    AppMethodBeat.o(252580);
+    AppMethodBeat.o(217587);
   }
   
   public static void deleteUpdatePlugin(Context paramContext)
   {
-    AppMethodBeat.i(252579);
+    AppMethodBeat.i(217578);
     APLog.d("PluginUtils", "Calling into deleteUpdatePlugin " + Thread.currentThread().getStackTrace()[3].toString());
     deleteFiles(APPluginConfig.getPluginUpdatePath(paramContext));
-    AppMethodBeat.o(252579);
+    AppMethodBeat.o(217578);
   }
   
   /* Error */
@@ -1220,7 +1220,7 @@ public class APPluginUtils
   
   private static String[] getAssetFileList(Context paramContext)
   {
-    AppMethodBeat.i(252591);
+    AppMethodBeat.i(217654);
     try
     {
       if (fileList == null)
@@ -1230,7 +1230,7 @@ public class APPluginUtils
         APPluginReportManager.getInstance().insertTimeDataEx(APMidasTools.getCurrentThreadName(Thread.currentThread()), "sdk.plugin.init.getFileListFromAssets.time", l);
       }
       paramContext = fileList;
-      AppMethodBeat.o(252591);
+      AppMethodBeat.o(217654);
       return paramContext;
     }
     catch (IOException paramContext)
@@ -1327,7 +1327,7 @@ public class APPluginUtils
   
   public static File getDataZipFile(Context paramContext)
   {
-    AppMethodBeat.i(252585);
+    AppMethodBeat.i(217617);
     paramContext = APMidasPayAPI.getPath();
     if (!TextUtils.isEmpty(paramContext))
     {
@@ -1335,24 +1335,24 @@ public class APPluginUtils
       paramContext = new File(paramContext);
       if ((paramContext.getName().startsWith("MidasPay")) && (paramContext.getName().endsWith(".zip")))
       {
-        AppMethodBeat.o(252585);
+        AppMethodBeat.o(217617);
         return paramContext;
       }
     }
-    AppMethodBeat.o(252585);
+    AppMethodBeat.o(217617);
     return null;
   }
   
   public static String getExceptionInfo(Throwable paramThrowable)
   {
-    AppMethodBeat.i(252600);
+    AppMethodBeat.i(217706);
     while (paramThrowable.getCause() != null) {
       paramThrowable = paramThrowable.getCause();
     }
     StringWriter localStringWriter = new StringWriter();
     paramThrowable.printStackTrace(new PrintWriter(localStringWriter, true));
     paramThrowable = localStringWriter.getBuffer().toString();
-    AppMethodBeat.o(252600);
+    AppMethodBeat.o(217706);
     return paramThrowable;
   }
   
@@ -1437,31 +1437,31 @@ public class APPluginUtils
   
   public static File getInstallPath(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(252575);
+    AppMethodBeat.i(217540);
     paramContext = APPluginInstallerAndUpdater.getInstallPath(paramContext, paramString);
-    AppMethodBeat.o(252575);
+    AppMethodBeat.o(217540);
     return paramContext;
   }
   
   public static String getInstallPathString(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(252567);
+    AppMethodBeat.i(217505);
     paramContext = APPluginInstallerAndUpdater.getInstallPathString(paramContext, paramString);
-    AppMethodBeat.o(252567);
+    AppMethodBeat.o(217505);
     return paramContext;
   }
   
   public static File getLibPath(Context paramContext)
   {
-    AppMethodBeat.i(252570);
+    AppMethodBeat.i(217516);
     paramContext = APPluginConfig.getLibPath(paramContext);
-    AppMethodBeat.o(252570);
+    AppMethodBeat.o(217516);
     return paramContext;
   }
   
   public static String getMD5FromPath(String paramString)
   {
-    AppMethodBeat.i(252611);
+    AppMethodBeat.i(217829);
     String str2 = "";
     String str1 = str2;
     int i;
@@ -1480,7 +1480,7 @@ public class APPluginUtils
     try
     {
       str1 = paramString.substring(j + 1, i);
-      AppMethodBeat.o(252611);
+      AppMethodBeat.o(217829);
       return str1;
     }
     catch (Exception paramString)
@@ -1494,7 +1494,7 @@ public class APPluginUtils
   
   public static String getMidasCoreVersionName(Context paramContext)
   {
-    AppMethodBeat.i(252595);
+    AppMethodBeat.i(217682);
     Object localObject1 = APPluginConfig.getPluginPath(paramContext);
     int i;
     Object localObject2;
@@ -1518,7 +1518,7 @@ public class APPluginUtils
           break label87;
         }
         paramContext = paramContext.versionName;
-        AppMethodBeat.o(252595);
+        AppMethodBeat.o(217682);
         return paramContext;
       }
       catch (IOException localIOException)
@@ -1537,7 +1537,7 @@ public class APPluginUtils
   
   public static ArrayList<String> getMidasEmptyPaht(Context paramContext)
   {
-    AppMethodBeat.i(252596);
+    AppMethodBeat.i(217691);
     int i;
     if (emptyResList == null)
     {
@@ -1565,7 +1565,7 @@ public class APPluginUtils
         i += 1;
         continue;
         paramContext = emptyResList;
-        AppMethodBeat.o(252596);
+        AppMethodBeat.o(217691);
         return paramContext;
       }
       catch (IOException localIOException)
@@ -1577,11 +1577,11 @@ public class APPluginUtils
   
   public static PackageInfo getPackageInfo(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(252598);
+    AppMethodBeat.i(217698);
     PackageManager localPackageManager = paramContext.getPackageManager();
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(252598);
+      AppMethodBeat.o(217698);
       return null;
     }
     PackageInfo localPackageInfo = (PackageInfo)APPluginInstallerAndUpdater.sPackageInfoMap.get(paramString);
@@ -1596,23 +1596,23 @@ public class APPluginUtils
         paramContext = localPackageInfo;
       }
     }
-    AppMethodBeat.o(252598);
+    AppMethodBeat.o(217698);
     return paramContext;
   }
   
   public static String getProcessName(Context paramContext)
   {
-    AppMethodBeat.i(252623);
+    AppMethodBeat.i(217885);
     if (Build.VERSION.SDK_INT >= 28)
     {
       paramContext = Application.getProcessName();
-      AppMethodBeat.o(252623);
+      AppMethodBeat.o(217885);
       return paramContext;
     }
     paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
     if (paramContext == null)
     {
-      AppMethodBeat.o(252623);
+      AppMethodBeat.o(217885);
       return null;
     }
     paramContext = paramContext.iterator();
@@ -1622,11 +1622,11 @@ public class APPluginUtils
       if (localRunningAppProcessInfo.pid == Process.myPid())
       {
         paramContext = localRunningAppProcessInfo.processName;
-        AppMethodBeat.o(252623);
+        AppMethodBeat.o(217885);
         return paramContext;
       }
     }
-    AppMethodBeat.o(252623);
+    AppMethodBeat.o(217885);
     return null;
   }
   
@@ -1915,7 +1915,7 @@ public class APPluginUtils
   private static boolean isHasBSL()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(252603);
+    AppMethodBeat.i(217729);
     try
     {
       Class.forName("com.tencent.theme.SkinEngine").getMethod("getInstances", new Class[0]);
@@ -1945,38 +1945,38 @@ public class APPluginUtils
           bool1 = false;
         }
       }
-      AppMethodBeat.o(252603);
+      AppMethodBeat.o(217729);
       return bool1;
     }
   }
   
   public static boolean isInNewProcess(Context paramContext)
   {
-    AppMethodBeat.i(252627);
+    AppMethodBeat.i(217889);
     String str = getProcessName(paramContext);
     paramContext = paramContext.getApplicationContext().getPackageName();
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(252627);
+      AppMethodBeat.o(217889);
       return false;
     }
     if (str.startsWith(paramContext + ":"))
     {
-      AppMethodBeat.o(252627);
+      AppMethodBeat.o(217889);
       return true;
     }
     if (!str.equals(paramContext))
     {
-      AppMethodBeat.o(252627);
+      AppMethodBeat.o(217889);
       return true;
     }
-    AppMethodBeat.o(252627);
+    AppMethodBeat.o(217889);
     return false;
   }
   
   static void readSingInfo(HashMap<String, String> paramHashMap, File paramFile)
   {
-    AppMethodBeat.i(252566);
+    AppMethodBeat.i(217496);
     try
     {
       BufferedReader localBufferedReader = new BufferedReader(new FileReader(paramFile.getCanonicalPath()));
@@ -1990,23 +1990,23 @@ public class APPluginUtils
         paramHashMap.put(paramFile.split("\\_")[0], localObject);
       }
       localBufferedReader.close();
-      AppMethodBeat.o(252566);
+      AppMethodBeat.o(217496);
       return;
     }
     catch (FileNotFoundException paramHashMap)
     {
-      AppMethodBeat.o(252566);
+      AppMethodBeat.o(217496);
       return;
     }
     catch (IOException paramHashMap)
     {
-      AppMethodBeat.o(252566);
+      AppMethodBeat.o(217496);
     }
   }
   
   static void readSingInfoItems(HashMap<String, APSignIniItem> paramHashMap, File paramFile)
   {
-    AppMethodBeat.i(252564);
+    AppMethodBeat.i(217485);
     try
     {
       BufferedReader localBufferedReader = new BufferedReader(new FileReader(paramFile.getCanonicalPath()));
@@ -2025,31 +2025,31 @@ public class APPluginUtils
         paramHashMap.put(str2, localAPSignIniItem);
       }
       localBufferedReader.close();
-      AppMethodBeat.o(252564);
+      AppMethodBeat.o(217485);
       return;
     }
     catch (FileNotFoundException paramHashMap)
     {
-      AppMethodBeat.o(252564);
+      AppMethodBeat.o(217485);
       return;
     }
     catch (IOException paramHashMap)
     {
-      AppMethodBeat.o(252564);
+      AppMethodBeat.o(217485);
     }
   }
   
   public static void release()
   {
-    AppMethodBeat.i(252583);
+    AppMethodBeat.i(217610);
     APPluginInstallerAndUpdater.sInstallPathMap.clear();
     APPluginInstallerAndUpdater.sPackageInfoMap.clear();
-    AppMethodBeat.o(252583);
+    AppMethodBeat.o(217610);
   }
   
   static void showLaunchPluginFail(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(252614);
+    AppMethodBeat.i(217850);
     APLog.d("PluginUtils", "Calling into showLaunchPluginFail, needToPureH5Pay = " + paramBoolean + " caller = " + Thread.currentThread().getStackTrace()[3].toString());
     if (!TextUtils.isEmpty(paramString)) {
       APPluginReportManager.getInstance().reportImmediatelyOneRecord("launchpay", "sdk.plugin.launch.error", paramString);
@@ -2058,7 +2058,7 @@ public class APPluginUtils
     {
       if (APWebJSBridgeActivity.startPureH5Pay(paramContext, paramString, "showLaunchPluginFail"))
       {
-        AppMethodBeat.o(252614);
+        AppMethodBeat.o(217850);
         return;
       }
       if ((paramString == null) || ((!paramString.contains("空间")) && (!paramString.contains("Space")))) {
@@ -2069,7 +2069,7 @@ public class APPluginUtils
     for (;;)
     {
       callbackInMidasPluginWithoutCaringAboutNewProcess(paramContext, 100, "Unexpected error!");
-      AppMethodBeat.o(252614);
+      AppMethodBeat.o(217850);
       return;
       label141:
       if ((!TextUtils.isEmpty(paramString)) && ((paramString.contains("webview")) || (paramString.contains("Webview")))) {
@@ -2082,7 +2082,7 @@ public class APPluginUtils
   
   public static String toHexString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(252607);
+    AppMethodBeat.i(217779);
     StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -2092,35 +2092,35 @@ public class APPluginUtils
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString();
-    AppMethodBeat.o(252607);
+    AppMethodBeat.o(217779);
     return paramArrayOfByte;
   }
   
   public static void unInstallPlugin(Context paramContext)
   {
-    AppMethodBeat.i(252573);
+    AppMethodBeat.i(217529);
     APLog.d("PluginUtils", "unInstallPlugin " + Thread.currentThread().getStackTrace()[3].toString());
     APPluginInstallerAndUpdater.unInstallPlugin(paramContext);
-    AppMethodBeat.o(252573);
+    AppMethodBeat.o(217529);
   }
   
   public static void updateLibExtendNum()
   {
-    AppMethodBeat.i(252612);
+    AppMethodBeat.i(217838);
     APPluginConfig.libExtend += 1;
     APLog.i("APPluginUtils", "updateLibExtendNum libExtend:" + APPluginConfig.libExtend);
-    AppMethodBeat.o(252612);
+    AppMethodBeat.o(217838);
   }
   
   public static HashMap<String, String> url2Map(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(252620);
+    AppMethodBeat.i(217875);
     HashMap localHashMap = new HashMap();
     Object localObject = paramString.split("\\?");
     if (localObject == null)
     {
-      AppMethodBeat.o(252620);
+      AppMethodBeat.o(217875);
       return null;
     }
     if (localObject.length == 1) {
@@ -2171,13 +2171,13 @@ public class APPluginUtils
       }
     }
     APLog.i("url2Map", "url后参数为空");
-    AppMethodBeat.o(252620);
+    AppMethodBeat.o(217875);
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginUtils
  * JD-Core Version:    0.7.0.1
  */

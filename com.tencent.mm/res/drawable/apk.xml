@@ -2,6 +2,9 @@
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <rotate android:drawable="@raw/download_loading" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+        <shape android:shape="rectangle">
+            <solid android:color="@color/e" />
+            <corners android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
+        </shape>
     </item>
 </layer-list>

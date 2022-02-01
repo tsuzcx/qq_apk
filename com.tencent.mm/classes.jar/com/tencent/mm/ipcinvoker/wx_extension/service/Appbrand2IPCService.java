@@ -11,9 +11,9 @@ public class Appbrand2IPCService
   
   static
   {
-    AppMethodBeat.i(205229);
+    AppMethodBeat.i(235714);
     PROCESS_NAME = MMApplicationContext.getPackageName() + ":appbrand2";
-    AppMethodBeat.o(205229);
+    AppMethodBeat.o(235714);
   }
   
   public final String getProcessName()

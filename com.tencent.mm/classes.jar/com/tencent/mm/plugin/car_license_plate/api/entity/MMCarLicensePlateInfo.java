@@ -5,26 +5,27 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
-import kotlin.g.b.p;
-import kotlin.l;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo;", "Landroid/os/Parcelable;", "plateNoList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "defaultPlateNo", "isModifyBanned", "", "maxCount", "", "(Ljava/util/ArrayList;Ljava/lang/String;ZI)V", "getDefaultPlateNo", "()Ljava/lang/String;", "setDefaultPlateNo", "(Ljava/lang/String;)V", "()Z", "setModifyBanned", "(Z)V", "getMaxCount", "()I", "setMaxCount", "(I)V", "getPlateNoList", "()Ljava/util/ArrayList;", "setPlateNoList", "(Ljava/util/ArrayList;)V", "component1", "component2", "component3", "component4", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "plugin-car-license-plate_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo;", "Landroid/os/Parcelable;", "plateNoList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "defaultPlateNo", "isModifyBanned", "", "maxCount", "", "(Ljava/util/ArrayList;Ljava/lang/String;ZI)V", "getDefaultPlateNo", "()Ljava/lang/String;", "setDefaultPlateNo", "(Ljava/lang/String;)V", "()Z", "setModifyBanned", "(Z)V", "getMaxCount", "()I", "setMaxCount", "(I)V", "getPlateNoList", "()Ljava/util/ArrayList;", "setPlateNoList", "(Ljava/util/ArrayList;)V", "component1", "component2", "component3", "component4", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "Companion", "plugin-car-license-plate_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class MMCarLicensePlateInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
-  public static final a sXu;
-  private int iWH;
-  public ArrayList<String> sXr;
-  public String sXs;
-  private boolean sXt;
+  public static final Parcelable.Creator<MMCarLicensePlateInfo> CREATOR;
+  public static final MMCarLicensePlateInfo.a wbJ;
+  private int lyL;
+  public ArrayList<String> wbK;
+  public String wbL;
+  private boolean wbM;
   
   static
   {
-    AppMethodBeat.i(187196);
-    sXu = new a((byte)0);
-    CREATOR = new b();
-    AppMethodBeat.o(187196);
+    AppMethodBeat.i(277597);
+    wbJ = new MMCarLicensePlateInfo.a((byte)0);
+    CREATOR = (Parcelable.Creator)new b();
+    AppMethodBeat.o(277597);
   }
   
   private MMCarLicensePlateInfo(byte paramByte)
@@ -34,12 +35,12 @@ public final class MMCarLicensePlateInfo
   
   public MMCarLicensePlateInfo(ArrayList<String> paramArrayList, String paramString, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(187177);
-    this.sXr = paramArrayList;
-    this.sXs = paramString;
-    this.sXt = paramBoolean;
-    this.iWH = paramInt;
-    AppMethodBeat.o(187177);
+    AppMethodBeat.i(277582);
+    this.wbK = paramArrayList;
+    this.wbL = paramString;
+    this.wbM = paramBoolean;
+    this.lyL = paramInt;
+    AppMethodBeat.o(277582);
   }
   
   public final int describeContents()
@@ -49,22 +50,40 @@ public final class MMCarLicensePlateInfo
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(187213);
-    if (this != paramObject)
+    AppMethodBeat.i(277612);
+    if (this == paramObject)
     {
-      if ((paramObject instanceof MMCarLicensePlateInfo))
-      {
-        paramObject = (MMCarLicensePlateInfo)paramObject;
-        if ((!p.h(this.sXr, paramObject.sXr)) || (!p.h(this.sXs, paramObject.sXs)) || (this.sXt != paramObject.sXt) || (this.iWH != paramObject.iWH)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(187213);
+      AppMethodBeat.o(277612);
       return true;
     }
-    AppMethodBeat.o(187213);
-    return false;
+    if (!(paramObject instanceof MMCarLicensePlateInfo))
+    {
+      AppMethodBeat.o(277612);
+      return false;
+    }
+    paramObject = (MMCarLicensePlateInfo)paramObject;
+    if (!s.p(this.wbK, paramObject.wbK))
+    {
+      AppMethodBeat.o(277612);
+      return false;
+    }
+    if (!s.p(this.wbL, paramObject.wbL))
+    {
+      AppMethodBeat.o(277612);
+      return false;
+    }
+    if (this.wbM != paramObject.wbM)
+    {
+      AppMethodBeat.o(277612);
+      return false;
+    }
+    if (this.lyL != paramObject.lyL)
+    {
+      AppMethodBeat.o(277612);
+      return false;
+    }
+    AppMethodBeat.o(277612);
+    return true;
   }
   
   public final int hashCode()
@@ -74,54 +93,36 @@ public final class MMCarLicensePlateInfo
   
   public final String toString()
   {
-    AppMethodBeat.i(187204);
-    String str = "MMCarLicensePlateInfo(plateNoList=" + this.sXr + ", defaultPlateNo=" + this.sXs + ", isModifyBanned=" + this.sXt + ", maxCount=" + this.iWH + ")";
-    AppMethodBeat.o(187204);
+    AppMethodBeat.i(277602);
+    String str = "MMCarLicensePlateInfo(plateNoList=" + this.wbK + ", defaultPlateNo=" + this.wbL + ", isModifyBanned=" + this.wbM + ", maxCount=" + this.lyL + ')';
+    AppMethodBeat.o(277602);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    AppMethodBeat.i(277623);
+    s.u(paramParcel, "out");
+    paramParcel.writeStringList((List)this.wbK);
+    paramParcel.writeString(this.wbL);
+    if (this.wbM) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeInt(this.lyL);
+      AppMethodBeat.o(277623);
+      return;
+    }
   }
   
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo$Companion;", "", "()V", "fromPBObj", "Lcom/tencent/mm/plugin/car_license_plate/api/entity/MMCarLicensePlateInfo;", "pb", "Lcom/tencent/mm/protocal/protobuf/UserPlateInfo;", "plugin-car-license-plate_release"})
-  public static final class a {}
-  
-  @l(iBK={1, 1, 16})
+  @Metadata(k=3, mv={1, 5, 1}, xi=48)
   public static final class b
-    implements Parcelable.Creator
-  {
-    public final Object createFromParcel(Parcel paramParcel)
-    {
-      AppMethodBeat.i(186987);
-      p.k(paramParcel, "in");
-      int i = paramParcel.readInt();
-      ArrayList localArrayList = new ArrayList(i);
-      while (i != 0)
-      {
-        localArrayList.add(paramParcel.readString());
-        i -= 1;
-      }
-      String str = paramParcel.readString();
-      if (paramParcel.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramParcel = new MMCarLicensePlateInfo(localArrayList, str, bool, paramParcel.readInt());
-        AppMethodBeat.o(186987);
-        return paramParcel;
-      }
-    }
-    
-    public final Object[] newArray(int paramInt)
-    {
-      return new MMCarLicensePlateInfo[paramInt];
-    }
-  }
+    implements Parcelable.Creator<MMCarLicensePlateInfo>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.car_license_plate.api.entity.MMCarLicensePlateInfo
  * JD-Core Version:    0.7.0.1
  */

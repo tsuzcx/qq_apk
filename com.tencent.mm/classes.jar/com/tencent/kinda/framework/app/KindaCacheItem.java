@@ -3,11 +3,11 @@ package com.tencent.kinda.framework.app;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.c.ed;
+import com.tencent.mm.autogen.b.er;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public class KindaCacheItem
-  extends ed
+  extends er
 {
   private static final String TAG = "MicroMsg.KindaCacheItem";
   public static IAutoDBItem.MAutoDBInfo info;
@@ -15,7 +15,7 @@ public class KindaCacheItem
   static
   {
     AppMethodBeat.i(18386);
-    info = ed.initAutoDBInfo(ed.class);
+    info = er.initAutoDBInfo(er.class);
     AppMethodBeat.o(18386);
   }
   

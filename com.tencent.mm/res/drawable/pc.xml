@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval" android:innerRadius="@dimen/cf">
-            <solid android:color="@color/Brand" />
-            <size android:height="@dimen/cp" android:width="@dimen/cp" />
+    <item android:left="1.0dip" android:top="1.0dip" android:right="1.0dip" android:bottom="1.0dip">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="4.0dip" android:color="#ffc6dafb" />
         </shape>
     </item>
-</selector>
+    <item android:drawable="@drawable/pd" />
+</layer-list>

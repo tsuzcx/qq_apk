@@ -1,191 +1,147 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import com.tencent.luggage.k.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.i;
-import com.tencent.mm.vfs.q;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-public class j
-  implements r
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/appstorage/AppBrandKVStorageTransferABTest;", "", "()V", "ABTEST_NEED_TRANSFER", "", "ABTEST_PHASES", "ABTEST_SWITCH", "PHASES_FINISH", "", "PHASES_ROLLBACK", "PHASES_TEST", "TAG", "isNeedTransfer", "", "isPerformanceReportOn", "phases", "isFinishPhases", "isRollbackPhases", "isTestPhases", "load", "", "onABTestUpdate", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
+public final class j
 {
-  protected static m h(long paramLong1, long paramLong2, long paramLong3)
+  private static volatile boolean qLL;
+  private static volatile int qLM;
+  public static final j qMg;
+  private static volatile boolean qMh;
+  
+  static
   {
-    m localm = m.nMR;
-    if ((paramLong1 < 0L) || (paramLong1 > paramLong3 - 1L)) {
-      localm = m.nNc;
-    }
-    while ((paramLong2 >= 1L) && (paramLong2 <= paramLong3 - paramLong1)) {
-      return localm;
-    }
-    return m.nNd;
+    AppMethodBeat.i(50219);
+    qMg = new j();
+    qLM = 1;
+    qMg.Td();
+    AppMethodBeat.o(50219);
   }
   
-  public m a(i<String> parami)
+  public final void Td()
   {
-    return m.nNh;
-  }
-  
-  public m a(q paramq, String paramString, i<String> parami)
-  {
-    return m.nNh;
-  }
-  
-  public m a(q paramq, String paramString, boolean paramBoolean, i<String> parami)
-  {
-    return m.nNh;
-  }
-  
-  public m a(String paramString, long paramLong1, long paramLong2, i<ByteBuffer> parami)
-  {
-    return m.nMV;
-  }
-  
-  public m a(String paramString, i<List<k>> parami)
-  {
-    return m.nMV;
-  }
-  
-  public m a(String paramString1, i<Map<String, ByteBuffer>> parami, String paramString2, long paramLong1, long paramLong2)
-  {
-    return m.nMV;
-  }
-  
-  public m a(String paramString, FileStructStat paramFileStructStat)
-  {
-    return m.nMV;
-  }
-  
-  public m a(String paramString, q paramq)
-  {
-    return m.nMV;
-  }
-  
-  public m a(String paramString, q paramq, boolean paramBoolean)
-  {
-    return m.nMV;
-  }
-  
-  public m a(String paramString, InputStream paramInputStream, boolean paramBoolean)
-  {
-    return m.nMV;
-  }
-  
-  public boolean acS(String paramString)
-  {
-    return false;
-  }
-  
-  public m acT(String paramString)
-  {
-    return m.nMV;
-  }
-  
-  public m acV(String paramString)
-  {
-    return m.nMV;
-  }
-  
-  public q adI(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean adJ(String paramString)
-  {
-    return true;
-  }
-  
-  public m adK(String paramString)
-  {
-    return m.nMV;
-  }
-  
-  public q adL(String paramString)
-  {
-    AppMethodBeat.i(174620);
-    paramString = ah(paramString, false);
-    AppMethodBeat.o(174620);
-    return paramString;
-  }
-  
-  public boolean adM(String paramString)
-  {
-    return false;
-  }
-  
-  public q adN(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean adO(String paramString)
-  {
-    return false;
-  }
-  
-  public boolean adP(String paramString)
-  {
-    return false;
-  }
-  
-  public final InputStream adQ(String paramString)
-  {
-    AppMethodBeat.i(140587);
-    i locali = new i();
-    if (b(paramString, locali) == m.nMR)
+    try
     {
-      paramString = new a((ByteBuffer)locali.value);
-      AppMethodBeat.o(140587);
-      return paramString;
+      AppMethodBeat.i(50218);
+      Log.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load]");
+      qLL = true;
+      qLM = 3;
+      qMh = false;
+      Log.i("MicroMsg.AppBrandKVStorageTransferABTest", "[load] isNeedTransfer=" + qLL + "  phases=" + qLM);
+      Log.i("MicroMsg.AppBrandKVStorageTransferABTest", s.X("[load] isPerformanceReportOn=", Boolean.valueOf(qMh)));
+      AppMethodBeat.o(50218);
+      return;
     }
-    AppMethodBeat.o(140587);
-    return null;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public q ah(String paramString, boolean paramBoolean)
+  /* Error */
+  public final boolean chR()
   {
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 55	com/tencent/mm/plugin/appbrand/appstorage/j:qLM	I
+    //   5: istore_1
+    //   6: iload_1
+    //   7: iconst_3
+    //   8: if_icmpne +9 -> 17
+    //   11: iconst_1
+    //   12: istore_2
+    //   13: aload_0
+    //   14: monitorexit
+    //   15: iload_2
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: istore_2
+    //   19: goto -6 -> 13
+    //   22: astore_3
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: aload_3
+    //   26: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	27	0	this	j
+    //   5	4	1	i	int
+    //   12	7	2	bool	boolean
+    //   22	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	6	22	finally
   }
   
-  public m aj(String paramString, boolean paramBoolean)
+  /* Error */
+  public final boolean chS()
   {
-    return m.nMV;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 55	com/tencent/mm/plugin/appbrand/appstorage/j:qLM	I
+    //   5: istore_1
+    //   6: iload_1
+    //   7: iconst_2
+    //   8: if_icmpne +9 -> 17
+    //   11: iconst_1
+    //   12: istore_2
+    //   13: aload_0
+    //   14: monitorexit
+    //   15: iload_2
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: istore_2
+    //   19: goto -6 -> 13
+    //   22: astore_3
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: aload_3
+    //   26: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	27	0	this	j
+    //   5	4	1	i	int
+    //   12	7	2	bool	boolean
+    //   22	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	6	22	finally
   }
   
-  public m ak(String paramString, boolean paramBoolean)
+  public final boolean chT()
   {
-    return m.nMV;
+    try
+    {
+      boolean bool = qLL;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public m b(String paramString, i<ByteBuffer> parami)
+  public final boolean chZ()
   {
-    return m.nMV;
+    try
+    {
+      boolean bool = qMh;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
-  
-  public void bIE() {}
-  
-  public List<? extends r.a> bIG()
-  {
-    return null;
-  }
-  
-  public t bIH()
-  {
-    return null;
-  }
-  
-  public m h(String paramString, List<z> paramList)
-  {
-    return m.nMV;
-  }
-  
-  public void initialize() {}
-  
-  public void release() {}
 }
 
 

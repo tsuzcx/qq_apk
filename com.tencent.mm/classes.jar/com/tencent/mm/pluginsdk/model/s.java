@@ -1,129 +1,180 @@
 package com.tencent.mm.pluginsdk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.d;
-import com.tencent.mm.an.d.a;
-import com.tencent.mm.an.d.b;
-import com.tencent.mm.an.d.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.pluginsdk.model.app.aa;
-import com.tencent.mm.protocal.protobuf.cer;
-import com.tencent.mm.protocal.protobuf.ces;
+import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.modelvideo.d;
+import com.tencent.mm.plugin.expt.b.c.a;
+import com.tencent.mm.plugin.sight.base.SightVideoJNI;
+import com.tencent.mm.plugin.sight.base.f;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.ah.a;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/pluginsdk/model/ImportVideoTransfer;", "", "()V", "TAG", "", "enableAvcHard", "", "transferVideo", "", "inputPath", "outputPath", "videoParam", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "plugin-videologic_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class s
-  extends aa
 {
-  public String appID;
+  public static final s XRo;
   
-  public s(String paramString, LinkedList<String> paramLinkedList)
+  static
   {
-    AppMethodBeat.i(30993);
-    Log.i("MicroMsg.NetSceneGetUserInfoInApp", "appID: %s", new Object[] { paramString });
-    this.appID = paramString;
-    Object localObject = new d.a();
-    ((d.a)localObject).lBU = new cer();
-    ((d.a)localObject).lBV = new ces();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getuserinfoinapp";
-    ((d.a)localObject).funcId = 452;
-    ((d.a)localObject).lBW = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.jTk = ((d.a)localObject).bgN();
-    localObject = (cer)d.b.b(this.jTk.lBR);
-    ((cer)localObject).jUi = paramString;
-    paramString = new LinkedList();
-    Iterator localIterator = paramLinkedList.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(244766);
+    XRo = new s();
+    AppMethodBeat.o(244766);
+  }
+  
+  public static final int d(String paramString1, String paramString2, VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(244761);
+    kotlin.g.b.s.u(paramString1, "inputPath");
+    kotlin.g.b.s.u(paramString2, "outputPath");
+    kotlin.g.b.s.u(paramVideoTransPara, "videoParam");
+    com.tencent.mm.modelvideo.c localc = d.bNM();
+    int j = SightVideoJNI.getMp4RotateVFS(paramString1);
+    label102:
+    com.tencent.mm.modelvideo.b localb;
+    boolean bool;
+    switch (j)
     {
-      String str = (String)localIterator.next();
-      if (!Util.isNullOrNil(str)) {
-        paramString.add(z.ZW(str));
+    default: 
+      i = paramVideoTransPara.height;
+      switch (j)
+      {
+      default: 
+        j = paramVideoTransPara.width;
+        paramVideoTransPara.width = i;
+        paramVideoTransPara.height = j;
+        localb = new com.tencent.mm.modelvideo.b(paramVideoTransPara);
+        localb.oYb = false;
+        if (paramVideoTransPara.oCh == 1) {
+          localb.oYa = true;
+        }
+        if (!localb.oYa) {
+          if (!iHZ())
+          {
+            bool = true;
+            label160:
+            localb.softEncode = bool;
+            if (!localb.softEncode)
+            {
+              Log.i("MicroMsg.ImportVideoTransfer", "report avc hard encode");
+              com.tencent.mm.plugin.report.service.h.OAn.idkeyStat(106L, 52L, 1L, false);
+            }
+            label196:
+            bool = ((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.yWs, false);
+            paramVideoTransPara = f.aVX(paramString1);
+            if (paramVideoTransPara != null) {
+              break label406;
+            }
+          }
+        }
+        break;
       }
+      break;
     }
-    ((cer)localObject).RIj = paramString;
-    ((cer)localObject).Tdc = paramLinkedList.size();
-    AppMethodBeat.o(30993);
+    ah.a locala;
+    label406:
+    for (int i = 0;; i = paramVideoTransPara.videoDuration)
+    {
+      if ((i > 20000) && (bool) && (BuildInfo.IS_ARM64))
+      {
+        localb.oYd.oZL = true;
+        localb.oYd.oZM = 2;
+      }
+      Log.i("MicroMsg.ImportVideoTransfer", "transferVideo softEncode:" + localb.softEncode + " outputHevc:" + localb.oYa + " parallelParam :" + localb.oYd);
+      paramVideoTransPara = new Object();
+      locala = new ah.a();
+      locala.aiwY = localc.a(paramString1, paramString2, localb, (kotlin.g.a.b)new s.a(locala, paramVideoTransPara));
+      if (locala.aiwY) {
+        break label414;
+      }
+      AppMethodBeat.o(244761);
+      return -1;
+      i = paramVideoTransPara.width;
+      break;
+      j = paramVideoTransPara.height;
+      break label102;
+      bool = false;
+      break label160;
+      localb.softEncode = true;
+      break label196;
+    }
+    for (;;)
+    {
+      try
+      {
+        label414:
+        paramVideoTransPara.wait();
+        paramString1 = ah.aiuX;
+        if (locala.aiwY)
+        {
+          paramString1 = f.aVX(paramString2);
+          if (paramString1 != null)
+          {
+            i = paramString1.videoDuration;
+            if (i <= 0) {
+              break;
+            }
+            i = Util.videoMsToSec(i);
+            AppMethodBeat.o(244761);
+            return i;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        Log.printErrStackTrace("MicroMsg.ImportVideoTransfer", (Throwable)paramString1, "", new Object[0]);
+        continue;
+      }
+      finally
+      {
+        AppMethodBeat.o(244761);
+      }
+      i = -1;
+    }
+    AppMethodBeat.o(244761);
+    return -1;
   }
   
-  public final void cS(byte[] paramArrayOfByte)
+  public static boolean iHZ()
   {
-    AppMethodBeat.i(30996);
-    if (paramArrayOfByte == null)
+    boolean bool2 = true;
+    AppMethodBeat.i(244762);
+    boolean bool1;
+    if (((com.tencent.mm.plugin.expt.b.c)com.tencent.mm.kernel.h.ax(com.tencent.mm.plugin.expt.b.c.class)).a(c.a.zwN, 0) == 1)
     {
-      Log.e("MicroMsg.NetSceneGetUserInfoInApp", "buf is null");
-      AppMethodBeat.o(30996);
-      return;
+      bool1 = true;
+      Log.i("MicroMsg.ImportVideoTransfer", "expt enableAvcHard:%s", new Object[] { Boolean.valueOf(bool1) });
+      i locali = i.agtt;
+      int i = i.a(b.a.agrz, 0);
+      if (i == 0) {
+        break label103;
+      }
+      Log.i("MicroMsg.ImportVideoTransfer", kotlin.g.b.s.X("debug repairerConfig:", Integer.valueOf(i)));
+      if (i != 1) {
+        break label98;
+      }
+      bool1 = bool2;
     }
-    d.c localc = this.jTk.lBS;
-    try
+    label98:
+    label103:
+    for (;;)
     {
-      localc.fromProtoBuf(paramArrayOfByte);
-      AppMethodBeat.o(30996);
-      return;
+      AppMethodBeat.o(244762);
+      return bool1;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      Log.e("MicroMsg.NetSceneGetUserInfoInApp", paramArrayOfByte.getMessage());
-      Log.printErrStackTrace("MicroMsg.NetSceneGetUserInfoInApp", paramArrayOfByte, "", new Object[0]);
-      AppMethodBeat.o(30996);
-    }
-  }
-  
-  public final int getType()
-  {
-    return 14;
-  }
-  
-  public final byte[] hha()
-  {
-    AppMethodBeat.i(30995);
-    try
-    {
-      byte[] arrayOfByte = ((d.b)this.jTk.getReqObj()).toProtoBuf();
-      AppMethodBeat.o(30995);
-      return arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.NetSceneGetUserInfoInApp", localException.getMessage());
-      Log.printErrStackTrace("MicroMsg.NetSceneGetUserInfoInApp", localException, "", new Object[0]);
-      AppMethodBeat.o(30995);
-    }
-    return null;
-  }
-  
-  public final ces hhb()
-  {
-    AppMethodBeat.i(291788);
-    if (this.jTk == null)
-    {
-      AppMethodBeat.o(291788);
-      return null;
-    }
-    ces localces = (ces)d.c.b(this.jTk.lBS);
-    AppMethodBeat.o(291788);
-    return localces;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(30994);
-    Log.i("MicroMsg.NetSceneGetUserInfoInApp", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      Log.e("MicroMsg.NetSceneGetUserInfoInApp", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-      AppMethodBeat.o(30994);
-      return;
-    }
-    AppMethodBeat.o(30994);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.s
  * JD-Core Version:    0.7.0.1
  */

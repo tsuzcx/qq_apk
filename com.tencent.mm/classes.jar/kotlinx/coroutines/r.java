@@ -1,85 +1,24 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlinx.coroutines.internal.ac;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ChildContinuation;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/Job;", "parent", "child", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/Job;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@Metadata(d1={""}, d2={"RESUMED", "", "RESUME_TOKEN", "Lkotlinx/coroutines/internal/Symbol;", "getRESUME_TOKEN$annotations", "()V", "SUSPENDED", "UNDECIDED", "kotlinx-coroutines-core"}, k=2, mv={1, 5, 1}, xi=48)
 public final class r
-  extends ca<by>
 {
-  public final n<?> abwl;
+  public static final ac ajvr;
   
-  public r(by paramby, n<?> paramn)
+  static
   {
-    super(paramby);
-    this.abwl = paramn;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118228);
-    String str = "ChildContinuation[" + this.abwl + ']';
-    AppMethodBeat.o(118228);
-    return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118226);
-    n localn = this.abwl;
-    Throwable localThrowable = this.abwl.a(this.Gib);
-    int i;
-    if (localn.abwT != 0) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        localn.A(localThrowable);
-        localn.iQR();
-      }
-      AppMethodBeat.o(118226);
-      return;
-      Object localObject = localn.aaAx;
-      paramThrowable = (Throwable)localObject;
-      if (!(localObject instanceof ax)) {
-        paramThrowable = null;
-      }
-      paramThrowable = (ax)paramThrowable;
-      if (paramThrowable == null)
-      {
-        i = 0;
-      }
-      else
-      {
-        do
-        {
-          do
-          {
-            localObject = paramThrowable._reusableCancellableContinuation;
-            if (!p.h(localObject, ay.abwS)) {
-              break;
-            }
-          } while (!ax.abwO.compareAndSet(paramThrowable, ay.abwS, localThrowable));
-          i = 1;
-          break;
-          if ((localObject instanceof Throwable))
-          {
-            i = 1;
-            break;
-          }
-        } while (!ax.abwO.compareAndSet(paramThrowable, localObject, null));
-        i = 0;
-      }
-    }
+    AppMethodBeat.i(188772);
+    ajvr = new ac("RESUME_TOKEN");
+    AppMethodBeat.o(188772);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.r
  * JD-Core Version:    0.7.0.1
  */

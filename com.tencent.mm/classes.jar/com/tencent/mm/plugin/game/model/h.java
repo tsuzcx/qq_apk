@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public abstract class h
 {
-  private JSONObject CII = new JSONObject();
+  private JSONObject ICT = new JSONObject();
   
   protected h(String paramString)
   {
@@ -20,7 +20,7 @@ public abstract class h
     }
     try
     {
-      this.CII = new JSONObject(paramString);
+      this.ICT = new JSONObject(paramString);
       return;
     }
     catch (JSONException paramString)
@@ -29,16 +29,7 @@ public abstract class h
     }
   }
   
-  private static String l(JSONObject paramJSONObject, String paramString)
-  {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.isNull(paramString)) {
-      return null;
-    }
-    return paramJSONObject.optString(paramString);
-  }
-  
-  protected static LinkedList<c> z(JSONArray paramJSONArray)
+  protected static LinkedList<c> C(JSONArray paramJSONArray)
   {
     LinkedList localLinkedList = new LinkedList();
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
@@ -64,7 +55,7 @@ public abstract class h
         i += 1;
         break;
         JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("YYB");
-        String str = l((JSONObject)localObject, "appID");
+        String str = m((JSONObject)localObject, "appID");
         if (Util.isNullOrNil(str))
         {
           Log.e("MicroMsg.GameServerData", "No AppID field, abort");
@@ -75,46 +66,46 @@ public abstract class h
           Log.i("MicroMsg.GameServerData", "Parsing AppID: %s", new Object[] { str });
           c localc = new c();
           localc.field_appId = str;
-          localc.field_appName = l((JSONObject)localObject, "name");
-          localc.field_appIconUrl = l((JSONObject)localObject, "iconURL");
+          localc.field_appName = m((JSONObject)localObject, "name");
+          localc.field_appIconUrl = m((JSONObject)localObject, "iconURL");
           localc.field_appType = ",1,";
-          localc.field_packageName = l((JSONObject)localObject, "AndroidPackageName");
-          localc.HZ(l((JSONObject)localObject, "downloadURL"));
-          localc.Ic(l((JSONObject)localObject, "AndroidApkMd5"));
-          str = l((JSONObject)localObject, "GooglePlayDownloadUrl");
+          localc.field_packageName = m((JSONObject)localObject, "AndroidPackageName");
+          localc.AE(m((JSONObject)localObject, "downloadURL"));
+          localc.AH(m((JSONObject)localObject, "AndroidApkMd5"));
+          str = m((JSONObject)localObject, "GooglePlayDownloadUrl");
           int j = ((JSONObject)localObject).optInt("GooglePlayDownloadFlag");
-          localc.Id(str);
+          localc.AI(str);
           if (!Util.isNullOrNil(str))
           {
             Log.i("MicroMsg.GameServerData", "GooglePlay URL: %s, Download Flag: %d", new Object[] { str, Integer.valueOf(j) });
-            localc.pm(j);
+            localc.pl(j);
           }
           if (localJSONObject != null) {
-            localc.pm(localJSONObject.optInt("AndroidDownloadFlag"));
+            localc.pl(localJSONObject.optInt("AndroidDownloadFlag"));
           }
           if (localJSONObject != null)
           {
-            localc.Ii(l(localJSONObject, "DownloadUrl"));
-            localc.Ij(l(localJSONObject, "ApkMd5"));
-            localc.Ig(l(localJSONObject, "PreemptiveUrl"));
-            localc.Ih(l(localJSONObject, "ExtInfo"));
-            localc.pn(localJSONObject.optInt("SupportedVersionCode"));
+            localc.AN(m(localJSONObject, "DownloadUrl"));
+            localc.AO(m(localJSONObject, "ApkMd5"));
+            localc.AL(m(localJSONObject, "PreemptiveUrl"));
+            localc.AM(m(localJSONObject, "ExtInfo"));
+            localc.pm(localJSONObject.optInt("SupportedVersionCode"));
           }
-          localc.CHW = l((JSONObject)localObject, "desc");
-          localc.CHV = l((JSONObject)localObject, "brief");
+          localc.ICg = m((JSONObject)localObject, "desc");
+          localc.ICf = m((JSONObject)localObject, "brief");
           localc.type = ((JSONObject)localObject).optInt("type", 0);
           localc.status = ((JSONObject)localObject).optInt("status");
-          localc.CHY = l((JSONObject)localObject, "webURL");
-          localc.CHZ = l((JSONObject)localObject, "adUrl");
-          localc.fwt = l((JSONObject)localObject, "noticeid");
-          localc.moD = ((JSONObject)localObject).optBoolean("isSubscribed");
+          localc.ICi = m((JSONObject)localObject, "webURL");
+          localc.ICj = m((JSONObject)localObject, "adUrl");
+          localc.hAR = m((JSONObject)localObject, "noticeid");
+          localc.piu = ((JSONObject)localObject).optBoolean("isSubscribed");
           localc.versionCode = ((JSONObject)localObject).optInt("versionCode");
           localObject = localc;
           if (localJSONObject != null)
           {
-            localc.CIa = l(localJSONObject, "DownloadTipsWording");
-            localc.CIb = l(localJSONObject, "BackBtnWording");
-            localc.CIc = l(localJSONObject, "DownloadBtnWording");
+            localc.ICk = m(localJSONObject, "DownloadTipsWording");
+            localc.ICl = m(localJSONObject, "BackBtnWording");
+            localc.ICm = m(localJSONObject, "DownloadBtnWording");
             localObject = localc;
           }
         }
@@ -123,19 +114,28 @@ public abstract class h
     return localLinkedList;
   }
   
+  private static String m(JSONObject paramJSONObject, String paramString)
+  {
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.isNull(paramString)) {
+      return null;
+    }
+    return paramJSONObject.optString(paramString);
+  }
+  
   protected final int optInt(String paramString)
   {
-    return this.CII.optInt(paramString);
+    return this.ICT.optInt(paramString);
   }
   
   protected final JSONArray optJSONArray(String paramString)
   {
-    return this.CII.optJSONArray(paramString);
+    return this.ICT.optJSONArray(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.h
  * JD-Core Version:    0.7.0.1
  */

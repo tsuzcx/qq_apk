@@ -1,69 +1,120 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
-import android.net.Uri;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.f;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import android.view.Surface;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/InferContentTypeLogic;", "", "()V", "inferer", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IContentTypeInferer;", "getInferer", "()Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/IContentTypeInferer;", "value", "", "useContentInferer", "getUseContentInferer", "()Z", "setUseContentInferer", "(Z)V", "useNewInputStream", "getUseNewInputStream", "setUseNewInputStream", "infer", "", "videoCacheService", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/IVideoCacheService;", "uri", "Landroid/net/Uri;", "luggage-commons-jsapi-video-ext_release"})
-public final class g
+public abstract interface g
 {
-  private static boolean pzO;
-  private static boolean pzP;
-  public static final g pzQ;
+  public abstract void M(String paramString1, String paramString2, String paramString3);
   
-  static
+  public abstract void a(a parama);
+  
+  public abstract void a(b paramb);
+  
+  public abstract void a(g.d paramd);
+  
+  public abstract void a(e parame);
+  
+  public abstract void a(f paramf);
+  
+  public abstract void a(g paramg);
+  
+  public abstract void a(h paramh);
+  
+  public abstract void a(i parami);
+  
+  public abstract void a(j paramj);
+  
+  public abstract void a(String paramString1, String paramString2, g.c paramc);
+  
+  public abstract <PlayerImpl extends g> PlayerImpl aU(Class<PlayerImpl> paramClass);
+  
+  public abstract boolean bN(float paramFloat);
+  
+  public abstract void cM(String paramString, int paramInt);
+  
+  public abstract void ey(String paramString1, String paramString2);
+  
+  public abstract int getCurrentPosition();
+  
+  public abstract int getDuration();
+  
+  public abstract int getPlayerType();
+  
+  public abstract int getState();
+  
+  public abstract int getVideoHeight();
+  
+  public abstract int getVideoWidth();
+  
+  public abstract boolean isPlaying();
+  
+  public abstract void pause();
+  
+  public abstract void prepareAsync();
+  
+  public abstract void release();
+  
+  public abstract void reset();
+  
+  public abstract void seekTo(long paramLong);
+  
+  public abstract void setDataSource(String paramString);
+  
+  public abstract void setLooping(boolean paramBoolean);
+  
+  public abstract void setMute(boolean paramBoolean);
+  
+  public abstract void setSurface(Surface paramSurface);
+  
+  public abstract void setVolume(float paramFloat1, float paramFloat2);
+  
+  public abstract void start();
+  
+  public abstract void stop();
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(229111);
-    pzQ = new g();
-    pzO = true;
-    AppMethodBeat.o(229111);
+    public abstract void onBufferingUpdate(g paramg, int paramInt);
   }
   
-  public static int a(f paramf, Uri paramUri)
+  public static abstract interface b
   {
-    AppMethodBeat.i(229110);
-    boolean bool = pzO;
-    Log.i("MicroMsg.InferContentTypeLogic", "inferer#get, useContentInferer: ".concat(String.valueOf(bool)));
-    if (bool) {}
-    for (d locald = (d)b.pzD;; locald = (d)j.pAg)
-    {
-      int i = locald.a(paramf, paramUri);
-      AppMethodBeat.o(229110);
-      return i;
-    }
+    public abstract void onCompletion(g paramg);
   }
   
-  public static boolean bWm()
+  public static abstract interface e
   {
-    return pzO;
+    public abstract boolean onError(g paramg, int paramInt1, int paramInt2);
   }
   
-  public static boolean bWn()
+  public static abstract interface f
   {
-    return pzP;
+    public abstract void onHitPreload(Boolean paramBoolean);
   }
   
-  public static void iI(boolean paramBoolean)
+  public static abstract interface g
   {
-    AppMethodBeat.i(229107);
-    Log.i("MicroMsg.InferContentTypeLogic", "useContentInferer#set, value: ".concat(String.valueOf(paramBoolean)));
-    pzO = paramBoolean;
-    AppMethodBeat.o(229107);
+    public abstract boolean onInfo(g paramg, int paramInt1, int paramInt2);
   }
   
-  public static void iJ(boolean paramBoolean)
+  public static abstract interface h
   {
-    AppMethodBeat.i(229109);
-    Log.i("MicroMsg.InferContentTypeLogic", "useNewInputStream#set, value: ".concat(String.valueOf(paramBoolean)));
-    pzP = paramBoolean;
-    AppMethodBeat.o(229109);
+    public abstract void onPrepared(g paramg);
+  }
+  
+  public static abstract interface i
+  {
+    public abstract void onSeekComplete(g paramg);
+  }
+  
+  public static abstract interface j
+  {
+    public abstract void onVideoSizeChanged(g paramg, int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.g
  * JD-Core Version:    0.7.0.1
  */

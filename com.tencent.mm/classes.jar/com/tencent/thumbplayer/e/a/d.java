@@ -7,29 +7,29 @@ import com.tencent.thumbplayer.api.resourceloader.TPAssetResourceLoadingContentI
 public final class d
   implements ITPAssetResourceLoadingRequest
 {
-  private int ZCI;
-  TPAssetResourceLoadingContentInformationRequest ZCK;
-  c ZCX;
-  private boolean ZCY;
-  private boolean vkd;
+  private int ahHL;
+  TPAssetResourceLoadingContentInformationRequest ahHN;
+  c ahIa;
+  private boolean ahIb;
+  private boolean ywb;
   
   public d(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(220724);
-    this.ZCI = 0;
-    this.ZCY = false;
-    this.vkd = false;
-    this.ZCI = paramInt;
-    this.ZCX = new c(paramLong1, paramLong2, paramBoolean);
-    this.ZCX.ZCI = paramInt;
-    AppMethodBeat.o(220724);
+    AppMethodBeat.i(227002);
+    this.ahHL = 0;
+    this.ahIb = false;
+    this.ywb = false;
+    this.ahHL = paramInt;
+    this.ahIa = new c(paramLong1, paramLong2, paramBoolean);
+    this.ahIa.ahHL = paramInt;
+    AppMethodBeat.o(227002);
   }
   
   public final void finishLoading()
   {
     try
     {
-      this.vkd = true;
+      this.ywb = true;
       return;
     }
     finally
@@ -41,28 +41,14 @@ public final class d
   
   public final TPAssetResourceLoadingContentInformationRequest getContentInformation()
   {
-    return this.ZCK;
-  }
-  
-  public final void ire()
-  {
-    try
-    {
-      this.ZCY = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.ahHN;
   }
   
   public final boolean isCancelled()
   {
     try
     {
-      boolean bool = this.ZCY;
+      boolean bool = this.ahIb;
       return bool;
     }
     finally
@@ -76,8 +62,22 @@ public final class d
   {
     try
     {
-      boolean bool = this.vkd;
+      boolean bool = this.ywb;
       return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void kaA()
+  {
+    try
+    {
+      this.ahIb = true;
+      return;
     }
     finally
     {
@@ -88,7 +88,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes12.jar
  * Qualified Name:     com.tencent.thumbplayer.e.a.d
  * JD-Core Version:    0.7.0.1
  */

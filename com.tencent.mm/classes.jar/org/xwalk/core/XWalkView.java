@@ -23,27 +23,25 @@ import android.widget.AbsoluteLayout;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.util.h;
+import com.tencent.xweb.XWebExtendInterface;
+import com.tencent.xweb.util.l;
 import java.util.ArrayList;
 import java.util.Map;
-import org.xwalk.core.extension.XWalkExternalExtensionManagerImpl;
 
 public class XWalkView
   extends AbsoluteLayout
+  implements XWebExtendInterface
 {
   private static final String ANIMATABLE = "animatable";
   public static final int RELOAD_IGNORE_CACHE = 1;
   public static final int RELOAD_NORMAL = 0;
-  public static final String SURFACE_VIEW = "SurfaceView";
   private static final String TAG = "XWalkView";
-  public static final String TEXTURE_VIEW = "TextureView";
   private static final String XWALK_ATTRS_NAMESPACE = "http://schemas.android.com/apk/res-auto";
   private LazyReflectMethod addJavascriptInterfaceObjectStringMethod;
   private LazyReflectMethod adjustSelectPositionlongStringintintMethod;
   private Object bridge;
   private LazyReflectMethod canZoomInMethod;
   private LazyReflectMethod canZoomOutMethod;
-  private LazyReflectMethod captureBitmapAsyncXWalkGetBitmapCallbackInternalMethod;
   private LazyReflectMethod clearCacheForSingleFileStringMethod;
   private LazyReflectMethod clearCachebooleanMethod;
   private LazyReflectMethod clearClientCertPreferencesRunnableMethod;
@@ -84,7 +82,6 @@ public class XWalkView
   private LazyReflectMethod hasEnteredFullscreenMethod;
   private LazyReflectMethod invokeExtensionMethod;
   boolean isInitedBottomHeightMethod;
-  private LazyReflectMethod isSupportExtendPluginForAppbrandMethod;
   private LazyReflectMethod leaveFullscreenMethod;
   private LazyReflectMethod loadAppFromManifestStringStringMethod;
   private LazyReflectMethod loadDataStringStringStringMethod;
@@ -121,7 +118,6 @@ public class XWalkView
   private LazyReflectMethod setBackgroundColorintMethod;
   private LazyReflectMethod setBottomHeightMethod;
   private LazyReflectMethod setDownloadListenerXWalkDownloadListenerInternalMethod;
-  private LazyReflectMethod setExtendCanvasClientXWalkExtendCanvasClientInternalMethod;
   private LazyReflectMethod setExtendInputClientXWalkExtendInputClientInternalMethod;
   private LazyReflectMethod setExtendPluginClientXWalkExtendPluginClientInternalMethod;
   private LazyReflectMethod setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod;
@@ -165,7 +161,6 @@ public class XWalkView
     super(paramContext, null);
     AppMethodBeat.i(155043);
     this.preInitViewSizeMethod = new LazyReflectMethod(null, "preInitViewSize", new Class[0]);
-    this.isSupportExtendPluginForAppbrandMethod = new LazyReflectMethod(null, "isSupportExtendPluginForAppbrand", new Class[0]);
     this.getXWalkContentViewMethod = new LazyReflectMethod(null, "getXWalkContentView", new Class[0]);
     this.loadStringStringMethod = new LazyReflectMethod(null, "load", new Class[0]);
     this.loadStringStringMapMethod = new LazyReflectMethod(null, "load", new Class[0]);
@@ -209,7 +204,6 @@ public class XWalkView
     this.getXWalkVersionMethod = new LazyReflectMethod(null, "getXWalkVersion", new Class[0]);
     this.setUIClientXWalkUIClientInternalMethod = new LazyReflectMethod(null, "setUIClient", new Class[0]);
     this.setExtendPluginClientXWalkExtendPluginClientInternalMethod = new LazyReflectMethod(null, "setExtendPluginClient", new Class[0]);
-    this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod = new LazyReflectMethod(null, "setExtendCanvasClient", new Class[0]);
     this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod = new LazyReflectMethod(null, "setExtendTextAreaClient", new Class[0]);
     this.setExtendInputClientXWalkExtendInputClientInternalMethod = new LazyReflectMethod(null, "setExtendInputClient", new Class[0]);
     this.setWebContentsSizeintintMethod = new LazyReflectMethod(null, "setWebContentsSize", new Class[0]);
@@ -220,7 +214,6 @@ public class XWalkView
     this.setUserAgentStringStringMethod = new LazyReflectMethod(null, "setUserAgentString", new Class[0]);
     this.getUserAgentStringMethod = new LazyReflectMethod(null, "getUserAgentString", new Class[0]);
     this.setAcceptLanguagesStringMethod = new LazyReflectMethod(null, "setAcceptLanguages", new Class[0]);
-    this.captureBitmapAsyncXWalkGetBitmapCallbackInternalMethod = new LazyReflectMethod(null, "captureBitmapAsync", new Class[0]);
     this.getSettingsMethod = new LazyReflectMethod(null, "getSettings", new Class[0]);
     this.setNetworkAvailablebooleanMethod = new LazyReflectMethod(null, "setNetworkAvailable", new Class[0]);
     this.getRemoteDebuggingUrlMethod = new LazyReflectMethod(null, "getRemoteDebuggingUrl", new Class[0]);
@@ -256,10 +249,10 @@ public class XWalkView
     this.findAllAsyncStringMethod = new LazyReflectMethod(null, "findAllAsync", new Class[0]);
     this.findNextbooleanMethod = new LazyReflectMethod(null, "findNext", new Class[0]);
     this.clearMatchesMethod = new LazyReflectMethod(null, "clearMatches", new Class[0]);
+    this.getCompositingSurfaceTypeMethod = new LazyReflectMethod(null, "getCompositingSurfaceType", new Class[0]);
     this.setTranslateModebooleanMethod = new LazyReflectMethod(null, "setTranslateMode", new Class[0]);
     this.getTranslateSampleStringintMethod = new LazyReflectMethod(null, "getTranslateSampleString", new Class[0]);
     this.replaceTranslatedStringMethod = new LazyReflectMethod(null, "replaceTranslatedString", new Class[0]);
-    this.getCompositingSurfaceTypeMethod = new LazyReflectMethod(null, "getCompositingSurfaceType", new Class[0]);
     this.adjustSelectPositionlongStringintintMethod = new LazyReflectMethod(null, "adjustSelectPosition", new Class[0]);
     this.setVerticalScrollBarEnablebooleanMethod = new LazyReflectMethod(null, "setVerticalScrollBarEnable", new Class[0]);
     this.setHorizontalScrollBarEnablebooleanMethod = new LazyReflectMethod(null, "setHorizontalScrollBarEnable", new Class[0]);
@@ -283,7 +276,6 @@ public class XWalkView
     super(paramContext, null);
     AppMethodBeat.i(155047);
     this.preInitViewSizeMethod = new LazyReflectMethod(null, "preInitViewSize", new Class[0]);
-    this.isSupportExtendPluginForAppbrandMethod = new LazyReflectMethod(null, "isSupportExtendPluginForAppbrand", new Class[0]);
     this.getXWalkContentViewMethod = new LazyReflectMethod(null, "getXWalkContentView", new Class[0]);
     this.loadStringStringMethod = new LazyReflectMethod(null, "load", new Class[0]);
     this.loadStringStringMapMethod = new LazyReflectMethod(null, "load", new Class[0]);
@@ -327,7 +319,6 @@ public class XWalkView
     this.getXWalkVersionMethod = new LazyReflectMethod(null, "getXWalkVersion", new Class[0]);
     this.setUIClientXWalkUIClientInternalMethod = new LazyReflectMethod(null, "setUIClient", new Class[0]);
     this.setExtendPluginClientXWalkExtendPluginClientInternalMethod = new LazyReflectMethod(null, "setExtendPluginClient", new Class[0]);
-    this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod = new LazyReflectMethod(null, "setExtendCanvasClient", new Class[0]);
     this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod = new LazyReflectMethod(null, "setExtendTextAreaClient", new Class[0]);
     this.setExtendInputClientXWalkExtendInputClientInternalMethod = new LazyReflectMethod(null, "setExtendInputClient", new Class[0]);
     this.setWebContentsSizeintintMethod = new LazyReflectMethod(null, "setWebContentsSize", new Class[0]);
@@ -338,7 +329,6 @@ public class XWalkView
     this.setUserAgentStringStringMethod = new LazyReflectMethod(null, "setUserAgentString", new Class[0]);
     this.getUserAgentStringMethod = new LazyReflectMethod(null, "getUserAgentString", new Class[0]);
     this.setAcceptLanguagesStringMethod = new LazyReflectMethod(null, "setAcceptLanguages", new Class[0]);
-    this.captureBitmapAsyncXWalkGetBitmapCallbackInternalMethod = new LazyReflectMethod(null, "captureBitmapAsync", new Class[0]);
     this.getSettingsMethod = new LazyReflectMethod(null, "getSettings", new Class[0]);
     this.setNetworkAvailablebooleanMethod = new LazyReflectMethod(null, "setNetworkAvailable", new Class[0]);
     this.getRemoteDebuggingUrlMethod = new LazyReflectMethod(null, "getRemoteDebuggingUrl", new Class[0]);
@@ -374,10 +364,10 @@ public class XWalkView
     this.findAllAsyncStringMethod = new LazyReflectMethod(null, "findAllAsync", new Class[0]);
     this.findNextbooleanMethod = new LazyReflectMethod(null, "findNext", new Class[0]);
     this.clearMatchesMethod = new LazyReflectMethod(null, "clearMatches", new Class[0]);
+    this.getCompositingSurfaceTypeMethod = new LazyReflectMethod(null, "getCompositingSurfaceType", new Class[0]);
     this.setTranslateModebooleanMethod = new LazyReflectMethod(null, "setTranslateMode", new Class[0]);
     this.getTranslateSampleStringintMethod = new LazyReflectMethod(null, "getTranslateSampleString", new Class[0]);
     this.replaceTranslatedStringMethod = new LazyReflectMethod(null, "replaceTranslatedString", new Class[0]);
-    this.getCompositingSurfaceTypeMethod = new LazyReflectMethod(null, "getCompositingSurfaceType", new Class[0]);
     this.adjustSelectPositionlongStringintintMethod = new LazyReflectMethod(null, "adjustSelectPosition", new Class[0]);
     this.setVerticalScrollBarEnablebooleanMethod = new LazyReflectMethod(null, "setVerticalScrollBarEnable", new Class[0]);
     this.setHorizontalScrollBarEnablebooleanMethod = new LazyReflectMethod(null, "setHorizontalScrollBarEnable", new Class[0]);
@@ -402,7 +392,6 @@ public class XWalkView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(155045);
     this.preInitViewSizeMethod = new LazyReflectMethod(null, "preInitViewSize", new Class[0]);
-    this.isSupportExtendPluginForAppbrandMethod = new LazyReflectMethod(null, "isSupportExtendPluginForAppbrand", new Class[0]);
     this.getXWalkContentViewMethod = new LazyReflectMethod(null, "getXWalkContentView", new Class[0]);
     this.loadStringStringMethod = new LazyReflectMethod(null, "load", new Class[0]);
     this.loadStringStringMapMethod = new LazyReflectMethod(null, "load", new Class[0]);
@@ -446,7 +435,6 @@ public class XWalkView
     this.getXWalkVersionMethod = new LazyReflectMethod(null, "getXWalkVersion", new Class[0]);
     this.setUIClientXWalkUIClientInternalMethod = new LazyReflectMethod(null, "setUIClient", new Class[0]);
     this.setExtendPluginClientXWalkExtendPluginClientInternalMethod = new LazyReflectMethod(null, "setExtendPluginClient", new Class[0]);
-    this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod = new LazyReflectMethod(null, "setExtendCanvasClient", new Class[0]);
     this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod = new LazyReflectMethod(null, "setExtendTextAreaClient", new Class[0]);
     this.setExtendInputClientXWalkExtendInputClientInternalMethod = new LazyReflectMethod(null, "setExtendInputClient", new Class[0]);
     this.setWebContentsSizeintintMethod = new LazyReflectMethod(null, "setWebContentsSize", new Class[0]);
@@ -457,7 +445,6 @@ public class XWalkView
     this.setUserAgentStringStringMethod = new LazyReflectMethod(null, "setUserAgentString", new Class[0]);
     this.getUserAgentStringMethod = new LazyReflectMethod(null, "getUserAgentString", new Class[0]);
     this.setAcceptLanguagesStringMethod = new LazyReflectMethod(null, "setAcceptLanguages", new Class[0]);
-    this.captureBitmapAsyncXWalkGetBitmapCallbackInternalMethod = new LazyReflectMethod(null, "captureBitmapAsync", new Class[0]);
     this.getSettingsMethod = new LazyReflectMethod(null, "getSettings", new Class[0]);
     this.setNetworkAvailablebooleanMethod = new LazyReflectMethod(null, "setNetworkAvailable", new Class[0]);
     this.getRemoteDebuggingUrlMethod = new LazyReflectMethod(null, "getRemoteDebuggingUrl", new Class[0]);
@@ -493,10 +480,10 @@ public class XWalkView
     this.findAllAsyncStringMethod = new LazyReflectMethod(null, "findAllAsync", new Class[0]);
     this.findNextbooleanMethod = new LazyReflectMethod(null, "findNext", new Class[0]);
     this.clearMatchesMethod = new LazyReflectMethod(null, "clearMatches", new Class[0]);
+    this.getCompositingSurfaceTypeMethod = new LazyReflectMethod(null, "getCompositingSurfaceType", new Class[0]);
     this.setTranslateModebooleanMethod = new LazyReflectMethod(null, "setTranslateMode", new Class[0]);
     this.getTranslateSampleStringintMethod = new LazyReflectMethod(null, "getTranslateSampleString", new Class[0]);
     this.replaceTranslatedStringMethod = new LazyReflectMethod(null, "replaceTranslatedString", new Class[0]);
-    this.getCompositingSurfaceTypeMethod = new LazyReflectMethod(null, "getCompositingSurfaceType", new Class[0]);
     this.adjustSelectPositionlongStringintintMethod = new LazyReflectMethod(null, "adjustSelectPosition", new Class[0]);
     this.setVerticalScrollBarEnablebooleanMethod = new LazyReflectMethod(null, "setVerticalScrollBarEnable", new Class[0]);
     this.setHorizontalScrollBarEnablebooleanMethod = new LazyReflectMethod(null, "setHorizontalScrollBarEnable", new Class[0]);
@@ -556,6 +543,170 @@ public class XWalkView
     return bool;
   }
   
+  private void reflectionInit()
+  {
+    AppMethodBeat.i(155156);
+    if (XWalkCoreWrapper.getInstance() == null)
+    {
+      XWalkReflectionInitHandler.reserveReflectObject(this);
+      AppMethodBeat.o(155156);
+      return;
+    }
+    this.coreWrapper = XWalkCoreWrapper.getInstance();
+    int j = this.constructorTypes.size();
+    Object localObject1 = new Class[j + 1];
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject2 = this.constructorTypes.get(i);
+      if ((localObject2 instanceof String))
+      {
+        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
+        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
+      }
+      label135:
+      do
+      {
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (!(localObject2 instanceof Class)) {
+            break label135;
+          }
+          localObject1[i] = ((Class)localObject2);
+        }
+      } while ($assertionsDisabled);
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(155156);
+      throw ((Throwable)localObject1);
+    }
+    localObject1[j] = Object.class;
+    this.constructorParams.add(this);
+    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkViewBridge"), (Class[])localObject1);
+    for (;;)
+    {
+      try
+      {
+        this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
+        if (this.postWrapperMethod != null) {
+          this.postWrapperMethod.invoke(new Object[0]);
+        }
+        this.loadStringStringMethod.init(this.bridge, null, "loadSuper", new Class[] { String.class, String.class });
+        this.loadStringStringMapMethod.init(this.bridge, null, "loadSuper", new Class[] { String.class, String.class, Map.class });
+        this.loadDataStringStringStringMethod.init(this.bridge, null, "loadDataSuper", new Class[] { String.class, String.class, String.class });
+        this.loadDataWithBaseURLStringStringStringStringStringMethod.init(this.bridge, null, "loadDataWithBaseURLSuper", new Class[] { String.class, String.class, String.class, String.class, String.class });
+        this.loadUrlStringMethod.init(this.bridge, null, "loadUrlSuper", new Class[] { String.class });
+        this.loadUrlStringMapMethod.init(this.bridge, null, "loadUrlSuper", new Class[] { String.class, Map.class });
+        this.loadAppFromManifestStringStringMethod.init(this.bridge, null, "loadAppFromManifestSuper", new Class[] { String.class, String.class });
+        this.reloadintMethod.init(this.bridge, null, "reloadSuper", new Class[] { Integer.TYPE });
+        this.stopLoadingMethod.init(this.bridge, null, "stopLoadingSuper", new Class[0]);
+        this.getUrlMethod.init(this.bridge, null, "getUrlSuper", new Class[0]);
+        this.savePageMethod.init(this.bridge, null, "savePageSuper", new Class[] { String.class, String.class, Integer.TYPE });
+        this.getHitTestResultMethod.init(this.bridge, null, "getHitTestResultSuper", new Class[0]);
+        this.getContentHeightMethod.init(this.bridge, null, "getContentHeightSuper", new Class[0]);
+        this.getTitleMethod.init(this.bridge, null, "getTitleSuper", new Class[0]);
+        this.getOriginalUrlMethod.init(this.bridge, null, "getOriginalUrlSuper", new Class[0]);
+        this.getNavigationHistoryMethod.init(this.bridge, null, "getNavigationHistorySuper", new Class[0]);
+        this.addJavascriptInterfaceObjectStringMethod.init(this.bridge, null, "addJavascriptInterfaceSuper", new Class[] { Object.class, String.class });
+        this.removeJavascriptInterfaceStringMethod.init(this.bridge, null, "removeJavascriptInterfaceSuper", new Class[] { String.class });
+        this.evaluateJavascriptStringValueCallbackMethod.init(this.bridge, null, "evaluateJavascriptSuper", new Class[] { String.class, ValueCallback.class });
+        this.clearCachebooleanMethod.init(this.bridge, null, "clearCacheSuper", new Class[] { Boolean.TYPE });
+        this.clearCacheForSingleFileStringMethod.init(this.bridge, null, "clearCacheForSingleFileSuper", new Class[] { String.class });
+        this.hasEnteredFullscreenMethod.init(this.bridge, null, "hasEnteredFullscreenSuper", new Class[0]);
+        this.leaveFullscreenMethod.init(this.bridge, null, "leaveFullscreenSuper", new Class[0]);
+        this.pauseTimersMethod.init(this.bridge, null, "pauseTimersSuper", new Class[0]);
+        this.resumeTimersMethod.init(this.bridge, null, "resumeTimersSuper", new Class[0]);
+        this.onHideMethod.init(this.bridge, null, "onHideSuper", new Class[0]);
+        this.onShowMethod.init(this.bridge, null, "onShowSuper", new Class[0]);
+        if (XWalkCoreWrapper.getInstance().hasFeature(1))
+        {
+          this.onPauseMethod.init(this.bridge, null, "onPauseSuper", new Class[0]);
+          this.onResumeMethod.init(this.bridge, null, "onResumeSuper", new Class[0]);
+        }
+        this.onDestroyMethod.init(this.bridge, null, "onDestroySuper", new Class[0]);
+        this.startActivityForResultIntentintBundleMethod.init(this.bridge, null, "startActivityForResultSuper", new Class[] { Intent.class, Integer.TYPE, Bundle.class });
+        this.onActivityResultintintIntentMethod.init(this.bridge, null, "onActivityResultSuper", new Class[] { Integer.TYPE, Integer.TYPE, Intent.class });
+        this.onNewIntentIntentMethod.init(this.bridge, null, "onNewIntentSuper", new Class[] { Intent.class });
+        this.saveStateBundleMethod.init(this.bridge, null, "saveStateSuper", new Class[] { Bundle.class });
+        this.restoreStateBundleMethod.init(this.bridge, null, "restoreStateSuper", new Class[] { Bundle.class });
+        this.getAPIVersionMethod.init(this.bridge, null, "getAPIVersionSuper", new Class[0]);
+        this.getXWalkVersionMethod.init(this.bridge, null, "getXWalkVersionSuper", new Class[0]);
+        this.setUIClientXWalkUIClientInternalMethod.init(this.bridge, null, "setUIClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkUIClientBridge") });
+        this.setExtendPluginClientXWalkExtendPluginClientInternalMethod.init(this.bridge, null, "setExtendPluginClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendPluginClientBridge") });
+        this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod.init(this.bridge, null, "setExtendTextAreaClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendTextAreaClientBridge") });
+        this.setExtendInputClientXWalkExtendInputClientInternalMethod.init(this.bridge, null, "setExtendInputClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendInputClientBridge") });
+        this.setWebContentsSizeintintMethod.init(this.bridge, null, "setWebContentsSizeSuper", new Class[] { Integer.TYPE, Integer.TYPE });
+        this.setResourceClientXWalkResourceClientInternalMethod.init(this.bridge, null, "setResourceClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkResourceClientBridge") });
+        this.setProxyWebViewClientExtensionInternalMethod.init(this.bridge, null, "setProxyWebViewClientExtensionSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkProxyWebViewClientExtensionBridge") });
+        this.setBackgroundColorintMethod.init(this.bridge, null, "setBackgroundColorSuper", new Class[] { Integer.TYPE });
+        this.setOriginAccessWhitelistStringStringArrayMethod.init(this.bridge, null, "setOriginAccessWhitelistSuper", new Class[] { String.class, [Ljava.lang.String.class });
+        this.setUserAgentStringStringMethod.init(this.bridge, null, "setUserAgentStringSuper", new Class[] { String.class });
+        this.getUserAgentStringMethod.init(this.bridge, null, "getUserAgentStringSuper", new Class[0]);
+        this.setAcceptLanguagesStringMethod.init(this.bridge, null, "setAcceptLanguagesSuper", new Class[] { String.class });
+        this.getSettingsMethod.init(this.bridge, null, "getSettingsSuper", new Class[0]);
+        this.setNetworkAvailablebooleanMethod.init(this.bridge, null, "setNetworkAvailableSuper", new Class[] { Boolean.TYPE });
+        this.getRemoteDebuggingUrlMethod.init(this.bridge, null, "getRemoteDebuggingUrlSuper", new Class[0]);
+        this.getScalenMethod.init(this.bridge, null, "getScaleSuper", new Class[0]);
+        this.zoomInMethod.init(this.bridge, null, "zoomInSuper", new Class[0]);
+        this.zoomOutMethod.init(this.bridge, null, "zoomOutSuper", new Class[0]);
+        this.zoomByfloatMethod.init(this.bridge, null, "zoomBySuper", new Class[] { Float.TYPE });
+        this.canZoomInMethod.init(this.bridge, null, "canZoomInSuper", new Class[0]);
+        this.canZoomOutMethod.init(this.bridge, null, "canZoomOutSuper", new Class[0]);
+        this.onCreateInputConnectionEditorInfoMethod.init(this.bridge, null, "onCreateInputConnectionSuper", new Class[] { EditorInfo.class });
+        this.setInitialScaleintMethod.init(this.bridge, null, "setInitialScaleSuper", new Class[] { Integer.TYPE });
+        this.getFaviconMethod.init(this.bridge, null, "getFaviconSuper", new Class[0]);
+        this.setZOrderOnTopbooleanMethod.init(this.bridge, null, "setZOrderOnTopSuper", new Class[] { Boolean.TYPE });
+        this.clearFormDataMethod.init(this.bridge, null, "clearFormDataSuper", new Class[0]);
+        this.setSurfaceViewVisibilityintMethod.init(this.bridge, null, "setSurfaceViewVisibilitySuper", new Class[] { Integer.TYPE });
+        this.setXWalkViewInternalVisibilityintMethod.init(this.bridge, null, "setXWalkViewInternalVisibilitySuper", new Class[] { Integer.TYPE });
+        this.setDownloadListenerXWalkDownloadListenerInternalMethod.init(this.bridge, null, "setDownloadListenerSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkDownloadListenerBridge") });
+        this.onTouchEventMotionEventMethod.init(this.bridge, null, "onTouchEventSuper", new Class[] { MotionEvent.class });
+        this.setOnTouchListenerOnTouchListenerMethod.init(this.bridge, null, "setOnTouchListenerSuper", new Class[] { View.OnTouchListener.class });
+        this.smoothScrollintintMethod.init(this.bridge, null, "smoothScrollSuper", new Class[] { Integer.TYPE, Integer.TYPE, Long.TYPE });
+        this.scrollTointintMethod.init(this.bridge, null, "scrollToSuper", new Class[] { Integer.TYPE, Integer.TYPE });
+        this.scrollByintintMethod.init(this.bridge, null, "scrollBySuper", new Class[] { Integer.TYPE, Integer.TYPE });
+        this.computeHorizontalScrollRangeMethod.init(this.bridge, null, "computeHorizontalScrollRangeSuper", new Class[0]);
+        this.computeHorizontalScrollOffsetMethod.init(this.bridge, null, "computeHorizontalScrollOffsetSuper", new Class[0]);
+        this.computeVerticalScrollRangeMethod.init(this.bridge, null, "computeVerticalScrollRangeSuper", new Class[0]);
+        this.computeVerticalScrollOffsetMethod.init(this.bridge, null, "computeVerticalScrollOffsetSuper", new Class[0]);
+        this.computeVerticalScrollExtentMethod.init(this.bridge, null, "computeVerticalScrollExtentSuper", new Class[0]);
+        this.getExtensionManagerMethod.init(this.bridge, null, "getExtensionManagerSuper", new Class[0]);
+        this.clearSslPreferencesMethod.init(this.bridge, null, "clearSslPreferencesSuper", new Class[0]);
+        this.clearClientCertPreferencesRunnableMethod.init(this.bridge, null, "clearClientCertPreferencesSuper", new Class[] { Runnable.class });
+        this.getCertificateMethod.init(this.bridge, null, "getCertificateSuper", new Class[0]);
+        this.setFindListenerXWalkFindListenerInternalMethod.init(this.bridge, null, "setFindListenerSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkFindListenerBridge") });
+        this.findAllAsyncStringMethod.init(this.bridge, null, "findAllAsyncSuper", new Class[] { String.class });
+        this.findNextbooleanMethod.init(this.bridge, null, "findNextSuper", new Class[] { Boolean.TYPE });
+        this.clearMatchesMethod.init(this.bridge, null, "clearMatchesSuper", new Class[0]);
+        this.getCompositingSurfaceTypeMethod.init(this.bridge, null, "getCompositingSurfaceTypeSuper", new Class[0]);
+        this.getXWalkContentViewMethod.init(this.bridge, null, "getXWalkContentViewSuper", new Class[0]);
+        this.adjustSelectPositionlongStringintintMethod.init(this.bridge, null, "adjustSelectPositionSuper", new Class[] { Long.TYPE, String.class, Integer.TYPE, Integer.TYPE });
+        this.getRefererUrlMethod.init(this.bridge, null, "getRefererUrlSuper", new Class[0]);
+        this.setVerticalScrollBarEnablebooleanMethod.init(this.bridge, null, "setVerticalScrollBarEnableSuper", new Class[] { Boolean.TYPE });
+        this.setHorizontalScrollBarEnablebooleanMethod.init(this.bridge, null, "setHorizontalScrollBarEnableSuper", new Class[] { Boolean.TYPE });
+        this.replaceTranslatedStringMethod.init(this.bridge, null, "replaceTranslatedStringSuper", new Class[] { Map.class });
+        this.setTranslateModebooleanMethod.init(this.bridge, null, "setTranslateModeSuper", new Class[] { Boolean.TYPE });
+        this.getTranslateSampleStringintMethod.init(this.bridge, null, "getTranslateSampleStringSuper", new Class[] { Integer.TYPE });
+        this.getImageBitmapToFileMethod.init(this.bridge, null, "getImageBitmapToFileSuper", new Class[] { String.class, String.class, String.class, this.coreWrapper.getBridgeClass("XWalkGetImageBitmapToFileFinishedCallbackBridge") });
+        if (XWalkCoreWrapper.getInstance().hasFeature(9))
+        {
+          this.invokeExtensionMethod.init(this.bridge, null, "invokeExtension", new Class[] { Integer.TYPE, Object.class });
+          this.preInitViewSizeMethod.init(this.bridge, null, "preInitViewSizeSuper", new Class[] { Integer.TYPE, Integer.TYPE, Boolean.TYPE });
+          AppMethodBeat.o(155156);
+          return;
+        }
+      }
+      catch (UnsupportedOperationException localUnsupportedOperationException)
+      {
+        Log.e("XWalkView", "reflectionInit, error:".concat(String.valueOf(localUnsupportedOperationException)));
+        AppMethodBeat.o(155156);
+        return;
+      }
+      this.invokeExtensionMethod = null;
+    }
+  }
+  
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
     AppMethodBeat.i(155072);
@@ -570,7 +721,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.addJavascriptInterfaceObjectStringMethod.setArguments(new Object[] { paramObject, paramString });
-        XWalkCoreWrapper.reserveReflectMethod(this.addJavascriptInterfaceObjectStringMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.addJavascriptInterfaceObjectStringMethod);
         AppMethodBeat.o(155072);
         return;
       }
@@ -647,28 +798,6 @@ public class XWalkView
       AppMethodBeat.o(155113);
     }
     return false;
-  }
-  
-  public void captureBitmapAsync(XWalkGetBitmapCallback paramXWalkGetBitmapCallback)
-  {
-    AppMethodBeat.i(155104);
-    try
-    {
-      this.captureBitmapAsyncXWalkGetBitmapCallbackInternalMethod.invoke(new Object[] { paramXWalkGetBitmapCallback.getBridge() });
-      AppMethodBeat.o(155104);
-      return;
-    }
-    catch (UnsupportedOperationException paramXWalkGetBitmapCallback)
-    {
-      if (this.coreWrapper == null)
-      {
-        paramXWalkGetBitmapCallback = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(155104);
-        throw paramXWalkGetBitmapCallback;
-      }
-      XWalkCoreWrapper.handleRuntimeError(paramXWalkGetBitmapCallback);
-      AppMethodBeat.o(155104);
-    }
   }
   
   public void clearCache(boolean paramBoolean)
@@ -1167,38 +1296,85 @@ public class XWalkView
     return null;
   }
   
+  /* Error */
   public boolean getImageBitmapToFile(String paramString1, String paramString2, String paramString3, XWalkGetImageBitmapToFileFinishedCallback paramXWalkGetImageBitmapToFileFinishedCallback)
   {
-    AppMethodBeat.i(155154);
-    try
-    {
-      paramString1 = this.getImageBitmapToFileMethod.invoke(new Object[] { paramString1, paramString2, paramString3, paramXWalkGetImageBitmapToFileFinishedCallback.getBridge() });
-      if ((paramString1 instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramString1).booleanValue();
-        AppMethodBeat.o(155154);
-        return bool;
-      }
-    }
-    catch (UnsupportedOperationException paramString1)
-    {
-      if (this.coreWrapper == null)
-      {
-        paramString1 = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(155154);
-        throw paramString1;
-      }
-      XWalkCoreWrapper.handleRuntimeError(paramString1);
-      AppMethodBeat.o(155154);
-      return false;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        Log.e("XWalkView", "getImageBitmapToFile error:" + paramString1.getMessage());
-      }
-    }
+    // Byte code:
+    //   0: ldc_w 1057
+    //   3: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 556	org/xwalk/core/XWalkView:getImageBitmapToFileMethod	Lorg/xwalk/core/LazyReflectMethod;
+    //   10: iconst_4
+    //   11: anewarray 691	java/lang/Object
+    //   14: dup
+    //   15: iconst_0
+    //   16: aload_1
+    //   17: aastore
+    //   18: dup
+    //   19: iconst_1
+    //   20: aload_2
+    //   21: aastore
+    //   22: dup
+    //   23: iconst_2
+    //   24: aload_3
+    //   25: aastore
+    //   26: dup
+    //   27: iconst_3
+    //   28: aload 4
+    //   30: invokevirtual 1061	org/xwalk/core/XWalkGetImageBitmapToFileFinishedCallback:getBridge	()Ljava/lang/Object;
+    //   33: aastore
+    //   34: invokevirtual 711	org/xwalk/core/LazyReflectMethod:invoke	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   37: astore_1
+    //   38: aload_1
+    //   39: instanceof 763
+    //   42: ifeq +52 -> 94
+    //   45: aload_1
+    //   46: checkcast 763	java/lang/Boolean
+    //   49: invokevirtual 1005	java/lang/Boolean:booleanValue	()Z
+    //   52: istore 5
+    //   54: ldc_w 1057
+    //   57: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: iload 5
+    //   62: ireturn
+    //   63: astore_1
+    //   64: aload_0
+    //   65: getfield 664	org/xwalk/core/XWalkView:coreWrapper	Lorg/xwalk/core/XWalkCoreWrapper;
+    //   68: ifnonnull +22 -> 90
+    //   71: new 996	java/lang/RuntimeException
+    //   74: dup
+    //   75: ldc_w 998
+    //   78: invokespecial 1001	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   81: astore_1
+    //   82: ldc_w 1057
+    //   85: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: aload_1
+    //   89: athrow
+    //   90: aload_1
+    //   91: invokestatic 986	org/xwalk/core/XWalkCoreWrapper:handleRuntimeError	(Ljava/lang/Throwable;)V
+    //   94: ldc_w 1057
+    //   97: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: iconst_0
+    //   101: ireturn
+    //   102: astore_1
+    //   103: ldc 26
+    //   105: ldc_w 1063
+    //   108: aload_1
+    //   109: invokestatic 962	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   112: invokevirtual 966	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   115: invokestatic 972	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: goto -24 -> 94
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	121	0	this	XWalkView
+    //   0	121	1	paramString1	String
+    //   0	121	2	paramString2	String
+    //   0	121	3	paramString3	String
+    //   0	121	4	paramXWalkGetImageBitmapToFileFinishedCallback	XWalkGetImageBitmapToFileFinishedCallback
+    //   52	9	5	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	54	63	java/lang/UnsupportedOperationException
+    //   6	54	102	finally
   }
   
   public XWalkNavigationHistory getNavigationHistory()
@@ -1375,7 +1551,7 @@ public class XWalkView
     try
     {
       this.getTranslateSampleStringintMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      h.og(938, 103);
+      l.qf(938, 103);
       AppMethodBeat.o(155149);
       return;
     }
@@ -1513,64 +1689,77 @@ public class XWalkView
     return false;
   }
   
+  /* Error */
   public Object invokeExtension(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(155155);
-    if (this.invokeExtensionMethod == null)
-    {
-      Log.e("XWalkView", "invokeExtension not support this feature:");
-      AppMethodBeat.o(155155);
-      return null;
-    }
-    try
-    {
-      paramObject = this.invokeExtensionMethod.invoke(new Object[] { Integer.valueOf(paramInt), paramObject });
-      AppMethodBeat.o(155155);
-      return paramObject;
-    }
-    catch (UnsupportedOperationException paramObject)
-    {
-      if (this.coreWrapper == null)
-      {
-        paramObject = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(155155);
-        throw paramObject;
-      }
-      XWalkCoreWrapper.handleRuntimeError(paramObject);
-      AppMethodBeat.o(155155);
-      return null;
-    }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        Log.e("XWalkView", "invokeExtension error:" + paramObject.getMessage());
-      }
-    }
-  }
-  
-  public boolean isSupportExtendPluginForAppbrand()
-  {
-    AppMethodBeat.i(155049);
-    try
-    {
-      boolean bool = ((Boolean)this.isSupportExtendPluginForAppbrandMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(155049);
-      return bool;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(155049);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(155049);
-    }
-    return false;
+    // Byte code:
+    //   0: ldc_w 1098
+    //   3: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 560	org/xwalk/core/XWalkView:invokeExtensionMethod	Lorg/xwalk/core/LazyReflectMethod;
+    //   10: ifnonnull +19 -> 29
+    //   13: ldc 26
+    //   15: ldc_w 1100
+    //   18: invokestatic 972	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: ldc_w 1098
+    //   24: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: aconst_null
+    //   28: areturn
+    //   29: aload_0
+    //   30: getfield 560	org/xwalk/core/XWalkView:invokeExtensionMethod	Lorg/xwalk/core/LazyReflectMethod;
+    //   33: iconst_2
+    //   34: anewarray 691	java/lang/Object
+    //   37: dup
+    //   38: iconst_0
+    //   39: iload_1
+    //   40: invokestatic 994	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   43: aastore
+    //   44: dup
+    //   45: iconst_1
+    //   46: aload_2
+    //   47: aastore
+    //   48: invokevirtual 711	org/xwalk/core/LazyReflectMethod:invoke	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   51: astore_2
+    //   52: ldc_w 1098
+    //   55: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   58: aload_2
+    //   59: areturn
+    //   60: astore_2
+    //   61: aload_0
+    //   62: getfield 664	org/xwalk/core/XWalkView:coreWrapper	Lorg/xwalk/core/XWalkCoreWrapper;
+    //   65: ifnonnull +22 -> 87
+    //   68: new 996	java/lang/RuntimeException
+    //   71: dup
+    //   72: ldc_w 998
+    //   75: invokespecial 1001	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   78: astore_2
+    //   79: ldc_w 1098
+    //   82: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: aload_2
+    //   86: athrow
+    //   87: aload_2
+    //   88: invokestatic 986	org/xwalk/core/XWalkCoreWrapper:handleRuntimeError	(Ljava/lang/Throwable;)V
+    //   91: ldc_w 1098
+    //   94: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aconst_null
+    //   98: areturn
+    //   99: astore_2
+    //   100: ldc 26
+    //   102: ldc_w 1102
+    //   105: aload_2
+    //   106: invokestatic 962	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   109: invokevirtual 966	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: invokestatic 972	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: goto -24 -> 91
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	this	XWalkView
+    //   0	118	1	paramInt	int
+    //   0	118	2	paramObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   29	52	60	java/lang/UnsupportedOperationException
+    //   29	52	99	finally
   }
   
   public void leaveFullscreen()
@@ -1869,11 +2058,11 @@ public class XWalkView
   
   public void onOverScrolledDelegate(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
-    AppMethodBeat.i(204757);
+    AppMethodBeat.i(188344);
     if (this.mOverScrolledListener != null) {
       this.mOverScrolledListener.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
     }
-    AppMethodBeat.o(204757);
+    AppMethodBeat.o(188344);
   }
   
   public void onPause()
@@ -1990,14 +2179,14 @@ public class XWalkView
   
   public boolean overScrollByDelegate(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
-    AppMethodBeat.i(204756);
+    AppMethodBeat.i(188334);
     if (this.mOverScrolledListener != null)
     {
       paramBoolean = this.mOverScrolledListener.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
-      AppMethodBeat.o(204756);
+      AppMethodBeat.o(188334);
       return paramBoolean;
     }
-    AppMethodBeat.o(204756);
+    AppMethodBeat.o(188334);
     return false;
   }
   
@@ -2029,7 +2218,6 @@ public class XWalkView
     AppMethodBeat.i(155053);
     addView((FrameLayout)this.bridge, new FrameLayout.LayoutParams(-1, -1));
     removeViewAt(0);
-    new XWalkExternalExtensionManagerImpl(this);
     AppMethodBeat.o(155053);
   }
   
@@ -2038,7 +2226,6 @@ public class XWalkView
     AppMethodBeat.i(155046);
     addView((FrameLayout)this.bridge, new FrameLayout.LayoutParams(-1, -1));
     removeViewAt(0);
-    new XWalkExternalExtensionManagerImpl(this);
     AppMethodBeat.o(155046);
   }
   
@@ -2047,206 +2234,82 @@ public class XWalkView
     AppMethodBeat.i(155044);
     addView((FrameLayout)this.bridge, new FrameLayout.LayoutParams(-1, -1));
     removeViewAt(0);
-    new XWalkExternalExtensionManagerImpl(this);
     AppMethodBeat.o(155044);
   }
   
+  /* Error */
   public boolean preInitViewSize(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(155048);
-    try
-    {
-      paramBoolean = ((Boolean)this.preInitViewSizeMethod.invoke(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
-      AppMethodBeat.o(155048);
-      return paramBoolean;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      RuntimeException localRuntimeException;
-      if (this.coreWrapper == null)
-      {
-        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(155048);
-        throw localRuntimeException;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(155048);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("XWalkView", "fakeViewSizeForPreload error exception:".concat(String.valueOf(localException)));
-      }
-    }
-  }
-  
-  void reflectionInit()
-  {
-    AppMethodBeat.i(155156);
-    XWalkCoreWrapper.initEmbeddedMode();
-    this.coreWrapper = XWalkCoreWrapper.getInstance();
-    if (this.coreWrapper == null)
-    {
-      XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(155156);
-      return;
-    }
-    int j = this.constructorTypes.size();
-    Object localObject1 = new Class[j + 1];
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject2 = this.constructorTypes.get(i);
-      if ((localObject2 instanceof String))
-      {
-        localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
-        this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
-      }
-      label139:
-      do
-      {
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (!(localObject2 instanceof Class)) {
-            break label139;
-          }
-          localObject1[i] = ((Class)localObject2);
-        }
-      } while ($assertionsDisabled);
-      localObject1 = new AssertionError();
-      AppMethodBeat.o(155156);
-      throw ((Throwable)localObject1);
-    }
-    localObject1[j] = Object.class;
-    this.constructorParams.add(this);
-    localObject1 = new ReflectConstructor(this.coreWrapper.getBridgeClass("XWalkViewBridge"), (Class[])localObject1);
-    for (;;)
-    {
-      try
-      {
-        this.bridge = ((ReflectConstructor)localObject1).newInstance(this.constructorParams.toArray());
-        if (this.postWrapperMethod != null) {
-          this.postWrapperMethod.invoke(new Object[0]);
-        }
-        this.loadStringStringMethod.init(this.bridge, null, "loadSuper", new Class[] { String.class, String.class });
-        this.loadStringStringMapMethod.init(this.bridge, null, "loadSuper", new Class[] { String.class, String.class, Map.class });
-        this.loadDataStringStringStringMethod.init(this.bridge, null, "loadDataSuper", new Class[] { String.class, String.class, String.class });
-        this.loadDataWithBaseURLStringStringStringStringStringMethod.init(this.bridge, null, "loadDataWithBaseURLSuper", new Class[] { String.class, String.class, String.class, String.class, String.class });
-        this.loadUrlStringMethod.init(this.bridge, null, "loadUrlSuper", new Class[] { String.class });
-        this.loadUrlStringMapMethod.init(this.bridge, null, "loadUrlSuper", new Class[] { String.class, Map.class });
-        this.loadAppFromManifestStringStringMethod.init(this.bridge, null, "loadAppFromManifestSuper", new Class[] { String.class, String.class });
-        this.reloadintMethod.init(this.bridge, null, "reloadSuper", new Class[] { Integer.TYPE });
-        this.stopLoadingMethod.init(this.bridge, null, "stopLoadingSuper", new Class[0]);
-        this.getUrlMethod.init(this.bridge, null, "getUrlSuper", new Class[0]);
-        this.savePageMethod.init(this.bridge, null, "savePageSuper", new Class[] { String.class, String.class, Integer.TYPE });
-        this.getHitTestResultMethod.init(this.bridge, null, "getHitTestResultSuper", new Class[0]);
-        this.getContentHeightMethod.init(this.bridge, null, "getContentHeightSuper", new Class[0]);
-        this.getTitleMethod.init(this.bridge, null, "getTitleSuper", new Class[0]);
-        this.getOriginalUrlMethod.init(this.bridge, null, "getOriginalUrlSuper", new Class[0]);
-        this.getNavigationHistoryMethod.init(this.bridge, null, "getNavigationHistorySuper", new Class[0]);
-        this.addJavascriptInterfaceObjectStringMethod.init(this.bridge, null, "addJavascriptInterfaceSuper", new Class[] { Object.class, String.class });
-        this.removeJavascriptInterfaceStringMethod.init(this.bridge, null, "removeJavascriptInterfaceSuper", new Class[] { String.class });
-        this.evaluateJavascriptStringValueCallbackMethod.init(this.bridge, null, "evaluateJavascriptSuper", new Class[] { String.class, ValueCallback.class });
-        this.clearCachebooleanMethod.init(this.bridge, null, "clearCacheSuper", new Class[] { Boolean.TYPE });
-        this.clearCacheForSingleFileStringMethod.init(this.bridge, null, "clearCacheForSingleFileSuper", new Class[] { String.class });
-        this.hasEnteredFullscreenMethod.init(this.bridge, null, "hasEnteredFullscreenSuper", new Class[0]);
-        this.leaveFullscreenMethod.init(this.bridge, null, "leaveFullscreenSuper", new Class[0]);
-        this.pauseTimersMethod.init(this.bridge, null, "pauseTimersSuper", new Class[0]);
-        this.resumeTimersMethod.init(this.bridge, null, "resumeTimersSuper", new Class[0]);
-        this.onHideMethod.init(this.bridge, null, "onHideSuper", new Class[0]);
-        this.onShowMethod.init(this.bridge, null, "onShowSuper", new Class[0]);
-        if (XWalkCoreWrapper.getInstance().hasFeature(1))
-        {
-          this.onPauseMethod.init(this.bridge, null, "onPauseSuper", new Class[0]);
-          this.onResumeMethod.init(this.bridge, null, "onResumeSuper", new Class[0]);
-        }
-        this.onDestroyMethod.init(this.bridge, null, "onDestroySuper", new Class[0]);
-        this.startActivityForResultIntentintBundleMethod.init(this.bridge, null, "startActivityForResultSuper", new Class[] { Intent.class, Integer.TYPE, Bundle.class });
-        this.onActivityResultintintIntentMethod.init(this.bridge, null, "onActivityResultSuper", new Class[] { Integer.TYPE, Integer.TYPE, Intent.class });
-        this.onNewIntentIntentMethod.init(this.bridge, null, "onNewIntentSuper", new Class[] { Intent.class });
-        this.saveStateBundleMethod.init(this.bridge, null, "saveStateSuper", new Class[] { Bundle.class });
-        this.restoreStateBundleMethod.init(this.bridge, null, "restoreStateSuper", new Class[] { Bundle.class });
-        this.getAPIVersionMethod.init(this.bridge, null, "getAPIVersionSuper", new Class[0]);
-        this.getXWalkVersionMethod.init(this.bridge, null, "getXWalkVersionSuper", new Class[0]);
-        this.setUIClientXWalkUIClientInternalMethod.init(this.bridge, null, "setUIClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkUIClientBridge") });
-        this.setExtendPluginClientXWalkExtendPluginClientInternalMethod.init(this.bridge, null, "setExtendPluginClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendPluginClientBridge") });
-        this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod.init(this.bridge, null, "setExtendCanvasClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendCanvasClientBridge") });
-        this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod.init(this.bridge, null, "setExtendTextAreaClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendTextAreaClientBridge") });
-        this.setExtendInputClientXWalkExtendInputClientInternalMethod.init(this.bridge, null, "setExtendInputClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkExtendInputClientBridge") });
-        this.setWebContentsSizeintintMethod.init(this.bridge, null, "setWebContentsSizeSuper", new Class[] { Integer.TYPE, Integer.TYPE });
-        this.setResourceClientXWalkResourceClientInternalMethod.init(this.bridge, null, "setResourceClientSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkResourceClientBridge") });
-        this.setProxyWebViewClientExtensionInternalMethod.init(this.bridge, null, "setProxyWebViewClientExtensionSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkProxyWebViewClientExtensionBridge") });
-        this.setBackgroundColorintMethod.init(this.bridge, null, "setBackgroundColorSuper", new Class[] { Integer.TYPE });
-        this.setOriginAccessWhitelistStringStringArrayMethod.init(this.bridge, null, "setOriginAccessWhitelistSuper", new Class[] { String.class, [Ljava.lang.String.class });
-        this.setUserAgentStringStringMethod.init(this.bridge, null, "setUserAgentStringSuper", new Class[] { String.class });
-        this.getUserAgentStringMethod.init(this.bridge, null, "getUserAgentStringSuper", new Class[0]);
-        this.setAcceptLanguagesStringMethod.init(this.bridge, null, "setAcceptLanguagesSuper", new Class[] { String.class });
-        this.captureBitmapAsyncXWalkGetBitmapCallbackInternalMethod.init(this.bridge, null, "captureBitmapAsyncSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkGetBitmapCallbackBridge") });
-        this.getSettingsMethod.init(this.bridge, null, "getSettingsSuper", new Class[0]);
-        this.setNetworkAvailablebooleanMethod.init(this.bridge, null, "setNetworkAvailableSuper", new Class[] { Boolean.TYPE });
-        this.getRemoteDebuggingUrlMethod.init(this.bridge, null, "getRemoteDebuggingUrlSuper", new Class[0]);
-        this.getScalenMethod.init(this.bridge, null, "getScaleSuper", new Class[0]);
-        this.zoomInMethod.init(this.bridge, null, "zoomInSuper", new Class[0]);
-        this.zoomOutMethod.init(this.bridge, null, "zoomOutSuper", new Class[0]);
-        this.zoomByfloatMethod.init(this.bridge, null, "zoomBySuper", new Class[] { Float.TYPE });
-        this.canZoomInMethod.init(this.bridge, null, "canZoomInSuper", new Class[0]);
-        this.canZoomOutMethod.init(this.bridge, null, "canZoomOutSuper", new Class[0]);
-        this.onCreateInputConnectionEditorInfoMethod.init(this.bridge, null, "onCreateInputConnectionSuper", new Class[] { EditorInfo.class });
-        this.setInitialScaleintMethod.init(this.bridge, null, "setInitialScaleSuper", new Class[] { Integer.TYPE });
-        this.getFaviconMethod.init(this.bridge, null, "getFaviconSuper", new Class[0]);
-        this.setZOrderOnTopbooleanMethod.init(this.bridge, null, "setZOrderOnTopSuper", new Class[] { Boolean.TYPE });
-        this.clearFormDataMethod.init(this.bridge, null, "clearFormDataSuper", new Class[0]);
-        this.setSurfaceViewVisibilityintMethod.init(this.bridge, null, "setSurfaceViewVisibilitySuper", new Class[] { Integer.TYPE });
-        this.setXWalkViewInternalVisibilityintMethod.init(this.bridge, null, "setXWalkViewInternalVisibilitySuper", new Class[] { Integer.TYPE });
-        this.setDownloadListenerXWalkDownloadListenerInternalMethod.init(this.bridge, null, "setDownloadListenerSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkDownloadListenerBridge") });
-        this.onTouchEventMotionEventMethod.init(this.bridge, null, "onTouchEventSuper", new Class[] { MotionEvent.class });
-        this.setOnTouchListenerOnTouchListenerMethod.init(this.bridge, null, "setOnTouchListenerSuper", new Class[] { View.OnTouchListener.class });
-        this.smoothScrollintintMethod.init(this.bridge, null, "smoothScrollSuper", new Class[] { Integer.TYPE, Integer.TYPE, Long.TYPE });
-        this.scrollTointintMethod.init(this.bridge, null, "scrollToSuper", new Class[] { Integer.TYPE, Integer.TYPE });
-        this.scrollByintintMethod.init(this.bridge, null, "scrollBySuper", new Class[] { Integer.TYPE, Integer.TYPE });
-        this.computeHorizontalScrollRangeMethod.init(this.bridge, null, "computeHorizontalScrollRangeSuper", new Class[0]);
-        this.computeHorizontalScrollOffsetMethod.init(this.bridge, null, "computeHorizontalScrollOffsetSuper", new Class[0]);
-        this.computeVerticalScrollRangeMethod.init(this.bridge, null, "computeVerticalScrollRangeSuper", new Class[0]);
-        this.computeVerticalScrollOffsetMethod.init(this.bridge, null, "computeVerticalScrollOffsetSuper", new Class[0]);
-        this.computeVerticalScrollExtentMethod.init(this.bridge, null, "computeVerticalScrollExtentSuper", new Class[0]);
-        this.getExtensionManagerMethod.init(this.bridge, null, "getExtensionManagerSuper", new Class[0]);
-        this.clearSslPreferencesMethod.init(this.bridge, null, "clearSslPreferencesSuper", new Class[0]);
-        this.clearClientCertPreferencesRunnableMethod.init(this.bridge, null, "clearClientCertPreferencesSuper", new Class[] { Runnable.class });
-        this.getCertificateMethod.init(this.bridge, null, "getCertificateSuper", new Class[0]);
-        this.setFindListenerXWalkFindListenerInternalMethod.init(this.bridge, null, "setFindListenerSuper", new Class[] { this.coreWrapper.getBridgeClass("XWalkFindListenerBridge") });
-        this.findAllAsyncStringMethod.init(this.bridge, null, "findAllAsyncSuper", new Class[] { String.class });
-        this.findNextbooleanMethod.init(this.bridge, null, "findNextSuper", new Class[] { Boolean.TYPE });
-        this.clearMatchesMethod.init(this.bridge, null, "clearMatchesSuper", new Class[0]);
-        this.getCompositingSurfaceTypeMethod.init(this.bridge, null, "getCompositingSurfaceTypeSuper", new Class[0]);
-        this.getXWalkContentViewMethod.init(this.bridge, null, "getXWalkContentViewSuper", new Class[0]);
-        this.adjustSelectPositionlongStringintintMethod.init(this.bridge, null, "adjustSelectPositionSuper", new Class[] { Long.TYPE, String.class, Integer.TYPE, Integer.TYPE });
-        this.getRefererUrlMethod.init(this.bridge, null, "getRefererUrlSuper", new Class[0]);
-        this.isSupportExtendPluginForAppbrandMethod.init(this.bridge, null, "isSupportExtendPluginForAppbrandSuper", new Class[0]);
-        this.setVerticalScrollBarEnablebooleanMethod.init(this.bridge, null, "setVerticalScrollBarEnableSuper", new Class[] { Boolean.TYPE });
-        this.setHorizontalScrollBarEnablebooleanMethod.init(this.bridge, null, "setHorizontalScrollBarEnableSuper", new Class[] { Boolean.TYPE });
-        this.replaceTranslatedStringMethod.init(this.bridge, null, "replaceTranslatedStringSuper", new Class[] { Map.class });
-        this.setTranslateModebooleanMethod.init(this.bridge, null, "setTranslateModeSuper", new Class[] { Boolean.TYPE });
-        this.getTranslateSampleStringintMethod.init(this.bridge, null, "getTranslateSampleStringSuper", new Class[] { Integer.TYPE });
-        this.getImageBitmapToFileMethod.init(this.bridge, null, "getImageBitmapToFileSuper", new Class[] { String.class, String.class, String.class, this.coreWrapper.getBridgeClass("XWalkGetImageBitmapToFileFinishedCallbackBridge") });
-        if (XWalkCoreWrapper.getInstance().hasFeature(9))
-        {
-          this.invokeExtensionMethod.init(this.bridge, null, "invokeExtension", new Class[] { Integer.TYPE, Object.class });
-          this.preInitViewSizeMethod.init(this.bridge, null, "preInitViewSizeSuper", new Class[] { Integer.TYPE, Integer.TYPE, Boolean.TYPE });
-          AppMethodBeat.o(155156);
-          return;
-        }
-      }
-      catch (UnsupportedOperationException localUnsupportedOperationException)
-      {
-        AppMethodBeat.o(155156);
-        return;
-      }
-      this.invokeExtensionMethod = null;
-    }
+    // Byte code:
+    //   0: ldc_w 1167
+    //   3: invokestatic 151	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 178	org/xwalk/core/XWalkView:preInitViewSizeMethod	Lorg/xwalk/core/LazyReflectMethod;
+    //   10: iconst_3
+    //   11: anewarray 691	java/lang/Object
+    //   14: dup
+    //   15: iconst_0
+    //   16: iload_1
+    //   17: invokestatic 994	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   20: aastore
+    //   21: dup
+    //   22: iconst_1
+    //   23: iload_2
+    //   24: invokestatic 994	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: aastore
+    //   28: dup
+    //   29: iconst_2
+    //   30: iload_3
+    //   31: invokestatic 1010	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   34: aastore
+    //   35: invokevirtual 711	org/xwalk/core/LazyReflectMethod:invoke	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   38: checkcast 763	java/lang/Boolean
+    //   41: invokevirtual 1005	java/lang/Boolean:booleanValue	()Z
+    //   44: istore_3
+    //   45: ldc_w 1167
+    //   48: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   51: iload_3
+    //   52: ireturn
+    //   53: astore 4
+    //   55: aload_0
+    //   56: getfield 664	org/xwalk/core/XWalkView:coreWrapper	Lorg/xwalk/core/XWalkCoreWrapper;
+    //   59: ifnonnull +24 -> 83
+    //   62: new 996	java/lang/RuntimeException
+    //   65: dup
+    //   66: ldc_w 998
+    //   69: invokespecial 1001	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   72: astore 4
+    //   74: ldc_w 1167
+    //   77: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: aload 4
+    //   82: athrow
+    //   83: aload 4
+    //   85: invokestatic 986	org/xwalk/core/XWalkCoreWrapper:handleRuntimeError	(Ljava/lang/Throwable;)V
+    //   88: ldc_w 1167
+    //   91: invokestatic 162	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: iconst_0
+    //   95: ireturn
+    //   96: astore 4
+    //   98: ldc 26
+    //   100: ldc_w 1169
+    //   103: aload 4
+    //   105: invokestatic 962	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   108: invokevirtual 966	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   111: invokestatic 972	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   114: goto -26 -> 88
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	this	XWalkView
+    //   0	117	1	paramInt1	int
+    //   0	117	2	paramInt2	int
+    //   0	117	3	paramBoolean	boolean
+    //   53	1	4	localUnsupportedOperationException	UnsupportedOperationException
+    //   72	12	4	localRuntimeException	RuntimeException
+    //   96	8	4	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   6	45	53	java/lang/UnsupportedOperationException
+    //   6	45	96	finally
   }
   
   public void reload(int paramInt)
@@ -2286,7 +2349,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.removeJavascriptInterfaceStringMethod.setArguments(new Object[] { paramString });
-        XWalkCoreWrapper.reserveReflectMethod(this.removeJavascriptInterfaceStringMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.removeJavascriptInterfaceStringMethod);
         AppMethodBeat.o(155073);
         return;
       }
@@ -2519,7 +2582,7 @@ public class XWalkView
       AppMethodBeat.o(155066);
       return;
     }
-    catch (Exception localException)
+    finally
     {
       RuntimeException localRuntimeException;
       if (this.coreWrapper == null)
@@ -2557,7 +2620,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setDownloadListenerXWalkDownloadListenerInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkDownloadListener, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setDownloadListenerXWalkDownloadListenerInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setDownloadListenerXWalkDownloadListenerInternalMethod);
         AppMethodBeat.o(155122);
         return;
       }
@@ -2566,36 +2629,13 @@ public class XWalkView
     }
   }
   
-  public void setExtendCanvasClient(XWalkExtendCanvasClient paramXWalkExtendCanvasClient)
-  {
-    AppMethodBeat.i(155095);
-    try
-    {
-      this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod.invoke(new Object[] { paramXWalkExtendCanvasClient.getBridge() });
-      AppMethodBeat.o(155095);
-      return;
-    }
-    catch (UnsupportedOperationException localUnsupportedOperationException)
-    {
-      if (this.coreWrapper == null)
-      {
-        this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkExtendCanvasClient, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setExtendCanvasClientXWalkExtendCanvasClientInternalMethod);
-        AppMethodBeat.o(155095);
-        return;
-      }
-      XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(155095);
-    }
-  }
-  
   public void setExtendInputClient(XWalkExtendInputClient paramXWalkExtendInputClient)
   {
-    AppMethodBeat.i(204748);
+    AppMethodBeat.i(188018);
     try
     {
       this.setExtendInputClientXWalkExtendInputClientInternalMethod.invoke(new Object[] { paramXWalkExtendInputClient.getBridge() });
-      AppMethodBeat.o(204748);
+      AppMethodBeat.o(188018);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -2603,12 +2643,12 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setExtendInputClientXWalkExtendInputClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkExtendInputClient, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setExtendInputClientXWalkExtendInputClientInternalMethod);
-        AppMethodBeat.o(204748);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setExtendInputClientXWalkExtendInputClientInternalMethod);
+        AppMethodBeat.o(188018);
         return;
       }
       XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(204748);
+      AppMethodBeat.o(188018);
     }
   }
   
@@ -2626,7 +2666,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setExtendPluginClientXWalkExtendPluginClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkExtendPluginClient, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setExtendPluginClientXWalkExtendPluginClientInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setExtendPluginClientXWalkExtendPluginClientInternalMethod);
         AppMethodBeat.o(155094);
         return;
       }
@@ -2649,7 +2689,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkExtendTextAreaClient, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setExtendTextAreaClientXWalkExtendTextAreaClientInternalMethod);
         AppMethodBeat.o(155096);
         return;
       }
@@ -2672,7 +2712,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setFindListenerXWalkFindListenerInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkFindListener, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setFindListenerXWalkFindListenerInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setFindListenerXWalkFindListenerInternalMethod);
         AppMethodBeat.o(155143);
         return;
       }
@@ -2840,7 +2880,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setProxyWebViewClientExtensionInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkProxyWebViewClientExtension, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setProxyWebViewClientExtensionInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setProxyWebViewClientExtensionInternalMethod);
         AppMethodBeat.o(155098);
         return;
       }
@@ -2863,7 +2903,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setResourceClientXWalkResourceClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkResourceClient, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setResourceClientXWalkResourceClientInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setResourceClientXWalkResourceClientInternalMethod);
         AppMethodBeat.o(155097);
         return;
       }
@@ -2886,7 +2926,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setSurfaceViewVisibilityintMethod.setArguments(new Object[] { Integer.valueOf(paramInt) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setSurfaceViewVisibilityintMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setSurfaceViewVisibilityintMethod);
         AppMethodBeat.o(155120);
         return;
       }
@@ -2932,7 +2972,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setUIClientXWalkUIClientInternalMethod.setArguments(new Object[] { new LazyReflectMethod(paramXWalkUIClient, "getBridge", new Class[0]) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setUIClientXWalkUIClientInternalMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setUIClientXWalkUIClientInternalMethod);
         AppMethodBeat.o(155093);
         return;
       }
@@ -2997,17 +3037,17 @@ public class XWalkView
   
   public void setWebContentsSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204749);
+    AppMethodBeat.i(188030);
     try
     {
       this.setWebContentsSizeintintMethod.invoke(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(204749);
+      AppMethodBeat.o(188030);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
       XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(204749);
+      AppMethodBeat.o(188030);
     }
   }
   
@@ -3025,7 +3065,7 @@ public class XWalkView
       if (this.coreWrapper == null)
       {
         this.setXWalkViewInternalVisibilityintMethod.setArguments(new Object[] { Integer.valueOf(paramInt) });
-        XWalkCoreWrapper.reserveReflectMethod(this.setXWalkViewInternalVisibilityintMethod);
+        XWalkReflectionInitHandler.reserveReflectMethod(this.setXWalkViewInternalVisibilityintMethod);
         AppMethodBeat.o(155121);
         return;
       }
@@ -3213,7 +3253,7 @@ public class XWalkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     org.xwalk.core.XWalkView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,58 @@
 package com.tencent.xweb.b;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.util.c;
-import com.tencent.xweb.util.d;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class b
-  implements e
 {
-  public final OutputStream Te(String paramString)
+  public long ailf;
+  public long ailg;
+  public long ailh;
+  public List<b.a> aili;
+  public List<b.a> ailj;
+  public List<b.a> ailk;
+  public List<b.a> aill;
+  public List<b.a> ailm;
+  public List<b.a> ailn;
+  public List<b.a> ailo;
+  
+  public b()
   {
-    AppMethodBeat.i(183508);
-    paramString = new FileOutputStream(paramString);
-    AppMethodBeat.o(183508);
-    return paramString;
+    AppMethodBeat.i(212516);
+    this.aili = new ArrayList();
+    this.ailj = new ArrayList();
+    this.ailk = new ArrayList();
+    this.aill = new ArrayList();
+    this.ailm = new ArrayList();
+    this.ailn = new ArrayList();
+    this.ailo = new ArrayList();
+    AppMethodBeat.o(212516);
   }
   
-  public final InputStream Tf(String paramString)
+  public static String oB(List<b.a> paramList)
   {
-    AppMethodBeat.i(183507);
-    paramString = new FileInputStream(paramString);
-    AppMethodBeat.o(183507);
-    return paramString;
-  }
-  
-  public final String buc(String paramString)
-  {
-    AppMethodBeat.i(183505);
-    paramString = d.getMD5(paramString);
-    AppMethodBeat.o(183505);
-    return paramString;
-  }
-  
-  public final boolean copyFile(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(183506);
-    boolean bool = c.copyFile(paramString1, paramString2);
-    AppMethodBeat.o(183506);
-    return bool;
+    AppMethodBeat.i(212523);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      AppMethodBeat.o(212523);
+      return "{}";
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(((b.a)paramList.next()).toString());
+    }
+    paramList = "{" + TextUtils.join(";", localArrayList) + "}";
+    AppMethodBeat.o(212523);
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.b.b
  * JD-Core Version:    0.7.0.1
  */

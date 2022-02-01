@@ -1,165 +1,133 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+import android.content.ComponentName;
+import androidx.lifecycle.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ap;
+import com.tencent.mm.plugin.appbrand.b.c;
+import com.tencent.mm.plugin.appbrand.b.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
-import com.tencent.mm.ui.t;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIMoveTaskToBackGuardIPCHelper;", "", "()V", "TAG", "", "register", "", "activity", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUI;", "unregister", "makeKey", "plugin-appbrand-integration_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class x
-  extends t
 {
-  public static void A(Context paramContext, boolean paramBoolean)
+  public static final x uft;
+  
+  static
   {
-    AppMethodBeat.i(176774);
-    Activity localActivity = AndroidContextUtil.castActivityOrNull(paramContext);
-    if ((localActivity != null) && (localActivity.getWindow() != null))
-    {
-      a(localActivity.getWindow(), paramBoolean, false);
-      AppMethodBeat.o(176774);
-      return;
-    }
-    Log.w("MicroMsg.AppBrandUIUtil", "configFullScreen with context(%s), get NULL activity", new Object[] { paramContext });
-    AppMethodBeat.o(176774);
+    AppMethodBeat.i(322167);
+    uft = new x();
+    AppMethodBeat.o(322167);
   }
   
-  static int a(Window paramWindow, boolean paramBoolean)
+  private static final void a(String paramString, WeakReference paramWeakReference, IPCVoid paramIPCVoid)
   {
-    AppMethodBeat.i(135330);
-    int i = paramWindow.getDecorView().getSystemUiVisibility();
-    int j;
-    if (paramBoolean)
+    AppMethodBeat.i(322161);
+    s.u(paramString, "$key");
+    s.u(paramWeakReference, "$ref");
+    Log.i("MicroMsg.AppBrandUIMoveTaskToBackGuardIPCHelper", s.X("callback invoke, key:", paramString));
+    paramString = (AppBrandUI)paramWeakReference.get();
+    if (paramString != null)
     {
-      j = i | 0x400 | 0x100;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j | 0x200 | 0x2;
-      }
-      j = i | 0x4;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j | 0x1000;
-      }
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(135330);
-      return i;
-      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-      }
-      j = i & 0xFFFFFFFB;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j & 0xFFFFEFFF;
-      }
-    }
-  }
-  
-  public static void a(final Window paramWindow, boolean paramBoolean1, final boolean paramBoolean2)
-  {
-    AppMethodBeat.i(176775);
-    if (paramBoolean1)
-    {
-      i = a(paramWindow, true);
-      paramWindow.getDecorView().setSystemUiVisibility(i);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+      switch (AppBrandUI.4.bDA[paramString.getLifecycle().getCurrentState().ordinal()])
       {
-        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
+      default: 
+        if (paramString.mRuntimeContainer != null)
         {
-          AppMethodBeat.i(176773);
-          Log.d("MicroMsg.AppBrandUIUtil", "configFullScreen(fullscreen:%b, consumeCutout:%b), onSystemUiVisibilityChange(%d)", new Object[] { Boolean.valueOf(this.qZE), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramAnonymousInt) });
-          if ((paramAnonymousInt & 0x4) == 0) {
-            paramWindow.getDecorView().setSystemUiVisibility(x.a(paramWindow, true));
+          paramWeakReference = paramString.mRuntimeContainer.getActiveRuntime();
+          if ((paramWeakReference != null) && (!paramWeakReference.qsE.get()) && (!paramWeakReference.ccV)) {
+            break;
           }
-          AppMethodBeat.o(176773);
         }
-      });
-      paramWindow.addFlags(1024);
-      if ((paramBoolean2) && (Build.VERSION.SDK_INT >= 28))
-      {
-        paramWindow.getAttributes().layoutInDisplayCutoutMode = 1;
-        paramWindow.setAttributes(paramWindow.getAttributes());
+        else
+        {
+          paramString.finish();
+          AppMethodBeat.o(322161);
+          return;
+        }
+        break;
+      case 1: 
+      case 2: 
+        Log.w("MicroMsg.AppBrandUI", "forceMoveTaskToBack, hash:%d, name:%s, state:%s, skip.", new Object[] { Integer.valueOf(paramString.hashCode()), paramString.getLocalClassName(), paramString.getLifecycle().getCurrentState() });
+        AppMethodBeat.o(322161);
+        return;
       }
-      AppMethodBeat.o(176775);
-      return;
+      if (paramString.moveTaskToBack(false)) {
+        paramWeakReference.qsB.qKC.a(d.a.qLm);
+      }
     }
-    int i = a(paramWindow, false);
-    paramWindow.getDecorView().setSystemUiVisibility(i);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    try
-    {
-      paramWindow.clearFlags(1024);
-      AppMethodBeat.o(176775);
-      return;
-    }
-    catch (Exception paramWindow)
-    {
-      Log.printErrStackTrace("MicroMsg.AppBrandUIUtil", paramWindow, "[CAUGHT CRASH]", new Object[0]);
-      AppMethodBeat.o(176775);
-    }
+    AppMethodBeat.o(322161);
   }
   
-  public static boolean dc(View paramView)
+  private static final void j(IPCString paramIPCString, f paramf)
   {
-    AppMethodBeat.i(135329);
-    if (Build.VERSION.SDK_INT < 24)
-    {
-      AppMethodBeat.o(135329);
-      return false;
-    }
-    if (paramView == null)
-    {
-      AppMethodBeat.o(135329);
-      return false;
-    }
-    paramView = AndroidContextUtil.castActivityOrNull(paramView.getContext());
-    if ((paramView != null) && (paramView.isInMultiWindowMode()))
-    {
-      AppMethodBeat.o(135329);
-      return true;
-    }
-    AppMethodBeat.o(135329);
-    return false;
+    AppMethodBeat.i(322154);
+    y localy = y.ufu;
+    paramIPCString = paramIPCString.value;
+    s.s(paramIPCString, "data.value");
+    y.o(paramIPCString, (kotlin.g.a.a)new x.a(paramf));
+    AppMethodBeat.o(322154);
   }
   
-  public static boolean eq(Context paramContext)
+  private static String k(AppBrandUI paramAppBrandUI)
   {
-    AppMethodBeat.i(178640);
-    if (!(paramContext instanceof Activity))
+    AppMethodBeat.i(322137);
+    paramAppBrandUI = paramAppBrandUI.getComponentName().getShortClassName() + '@' + paramAppBrandUI.hashCode();
+    AppMethodBeat.o(322137);
+    return paramAppBrandUI;
+  }
+  
+  private static final void k(IPCString paramIPCString, f paramf)
+  {
+    AppMethodBeat.i(322165);
+    y localy = y.ufu;
+    paramIPCString = paramIPCString.value;
+    s.s(paramIPCString, "data.value");
+    y.agh(paramIPCString);
+    s.s(paramf, "callback");
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.b(paramf);
+    AppMethodBeat.o(322165);
+  }
+  
+  public static final void l(AppBrandUI paramAppBrandUI)
+  {
+    AppMethodBeat.i(322143);
+    s.u(paramAppBrandUI, "activity");
+    if ((paramAppBrandUI instanceof AppBrandPluginUI))
     {
-      AppMethodBeat.o(178640);
-      return false;
+      AppMethodBeat.o(322143);
+      return;
     }
-    try
+    WeakReference localWeakReference = new WeakReference(paramAppBrandUI);
+    paramAppBrandUI = k(paramAppBrandUI);
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(paramAppBrandUI), x..ExternalSyntheticLambda1.INSTANCE, new x..ExternalSyntheticLambda2(paramAppBrandUI, localWeakReference));
+    AppMethodBeat.o(322143);
+  }
+  
+  public static final void m(AppBrandUI paramAppBrandUI)
+  {
+    AppMethodBeat.i(322146);
+    s.u(paramAppBrandUI, "activity");
+    if ((paramAppBrandUI instanceof AppBrandPluginUI))
     {
-      if ((((Activity)paramContext).getWindow().getAttributes().flags & 0x400) == 1024)
-      {
-        AppMethodBeat.o(178640);
-        return true;
-      }
-      AppMethodBeat.o(178640);
-      return false;
+      AppMethodBeat.o(322146);
+      return;
     }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(178640);
-    }
-    return false;
+    com.tencent.mm.ipcinvoker.wx_extension.b.a.a(new IPCString(k(paramAppBrandUI)), (com.tencent.mm.ipcinvoker.d)x..ExternalSyntheticLambda0.INSTANCE, null);
+    AppMethodBeat.o(322146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,188 +1,192 @@
 package com.tencent.mm.plugin.finder.conv;
 
-import android.view.View;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.b.e;
-import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.storage.ak;
+import com.tencent.mm.plugin.finder.storage.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.by;
 import java.util.LinkedList;
-import java.util.List;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.ah;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
+import kotlin.k;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationFirstFixAdapter;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "finderConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "getFinderConversation", "()Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "setFinderConversation", "(Lcom/tencent/mm/plugin/finder/conv/FinderConversation;)V", "fixedConversationList", "", "getFixedConversationList", "()Ljava/util/List;", "setFixedConversationList", "(Ljava/util/List;)V", "isOneFixed", "", "getConversation", "index", "", "getDelta", "getFixedConversation", "getItem", "position", "getItemCount", "notifyConvItemChanged", "", "notifyConvItemInserted", "notifyConvItemRangeInserted", "positionStart", "itemCount", "notifyConvItemRangeRemoved", "notifyConvItemRemoved", "onBindViewHolder", "holder", "Lcom/tencent/mm/plugin/finder/conv/ConversationHolder;", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationUpdater;", "Lcom/tencent/mm/plugin/byp/config/BasePrivateMsgConvUpdater;", "Lcom/tencent/mm/plugin/finder/conv/FinderSessionInfo;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "()V", "sessionInfoStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "getSessionInfoStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;", "sessionInfoStorage$delegate", "Lkotlin/Lazy;", "storage", "Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "getStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;", "storage$delegate", "afterConvUpdate", "", "conv", "insertCount", "", "latestMsg", "Lcom/tencent/mm/storage/MsgInfo;", "beforeConvUpdate", "conversation", "notifyInfo", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage$NotifyInfo;", "checkInsertAliasHoder", "checkInsertHolder", "checkInsertHolderInternal", "getConversation", "sessionId", "", "getSessionInfo", "onConversationMsgEmpty", "saveConversationAndNotify", "support", "", "updateConversation", "sessionInfo", "lastMsgInfo", "digestData", "Lcom/tencent/mm/plugin/byp/config/BasePrivateMsgConvUpdater$DigestData;", "Companion", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class h
-  extends e
+  extends com.tencent.mm.plugin.byp.c.a<o, b>
 {
-  private final String TAG = "ConversationFirstFixAdapter";
-  private final boolean xgt = true;
-  public d xgu;
-  private List<d> xgv;
+  public static final a AFT;
+  private final j AFU;
+  private final j sZg;
   
-  private final d Mb(int paramInt)
+  static
   {
-    AppMethodBeat.i(265574);
-    Object localObject = this.xgv;
-    int i;
-    if (localObject != null)
+    AppMethodBeat.i(336087);
+    AFT = new a((byte)0);
+    AppMethodBeat.o(336087);
+  }
+  
+  public h()
+  {
+    AppMethodBeat.i(336020);
+    this.AFU = k.cm((kotlin.g.a.a)c.AFW);
+    this.sZg = k.cm((kotlin.g.a.a)d.AFX);
+    AppMethodBeat.o(336020);
+  }
+  
+  private b avi(String paramString)
+  {
+    AppMethodBeat.i(336069);
+    s.u(paramString, "sessionId");
+    paramString = dWR().aAz(paramString);
+    AppMethodBeat.o(336069);
+    return paramString;
+  }
+  
+  private final void dWP()
+  {
+    AppMethodBeat.i(336031);
+    Object localObject1 = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzG();
+    Object localObject2 = new LinkedList();
+    ((LinkedList)localObject2).add("finderaliassessionholder");
+    ah localah = ah.aiuX;
+    ((by)localObject1).cv((LinkedList)localObject2);
+    localObject1 = dWR().aAz("finderaliassessionholder");
+    if (((b)localObject1).systemRowid < 0L)
     {
-      if ((paramInt < 0) || (paramInt >= ((List)localObject).size())) {
-        break label73;
-      }
-      i = 1;
-      if (i == 0) {
-        break label78;
-      }
+      localObject2 = new b();
+      ((b)localObject2).field_sessionId = "finderaliassessionholder";
+      ((b)localObject2).field_talker = "finderaliassessionholder";
+      ((b)localObject2).field_type = 200;
+      ((b)localObject2).field_scene = 1;
+      ((b)localObject2).field_unReadCount = dWR().im(2, 3);
+      dWR().insert((IAutoDBItem)localObject2);
     }
-    for (;;)
+    Log.i("Finder.ConversationUpdater", s.X("[checkInsertHolder] ", com.tencent.mm.plugin.finder.storage.h.a((b)localObject1)));
+    AppMethodBeat.o(336031);
+  }
+  
+  private final void dWQ()
+  {
+    AppMethodBeat.i(336042);
+    Object localObject1 = ((n)com.tencent.mm.kernel.h.ax(n.class)).bzG();
+    Object localObject2 = new LinkedList();
+    ((LinkedList)localObject2).add("findersessionholder");
+    ah localah = ah.aiuX;
+    ((by)localObject1).cv((LinkedList)localObject2);
+    localObject1 = dWR().aAz("findersayhisessionholder");
+    if (((b)localObject1).systemRowid < 0L)
     {
-      if (localObject != null)
-      {
-        d locald = (d)((List)localObject).get(paramInt);
-        localObject = locald;
-        if (locald != null) {}
-      }
-      else
-      {
-        localObject = new d();
-      }
-      AppMethodBeat.o(265574);
-      return localObject;
-      label73:
-      i = 0;
-      break;
-      label78:
-      localObject = null;
+      localObject2 = new b();
+      ((b)localObject2).field_sessionId = "findersayhisessionholder";
+      ((b)localObject2).field_talker = "findersayhisessionholder";
+      ((b)localObject2).field_placedFlag = 1000L;
+      ((b)localObject2).field_type = 100;
+      ((b)localObject2).field_scene = 2;
+      ((b)localObject2).field_unReadCount = dWR().im(2, 1);
+      dWR().insert((IAutoDBItem)localObject2);
     }
+    Log.i("Finder.ConversationUpdater", s.X("[checkInsertHolder] ", com.tencent.mm.plugin.finder.storage.h.a((b)localObject1)));
+    AppMethodBeat.o(336042);
   }
   
-  private final int dpn()
+  private final g dWR()
   {
-    AppMethodBeat.i(265573);
-    List localList = this.xgv;
-    if (localList != null)
+    AppMethodBeat.i(336064);
+    g localg = (g)this.sZg.getValue();
+    AppMethodBeat.o(336064);
+    return localg;
+  }
+  
+  private final ak getSessionInfoStorage()
+  {
+    AppMethodBeat.i(336052);
+    ak localak = (ak)this.AFU.getValue();
+    AppMethodBeat.o(336052);
+    return localak;
+  }
+  
+  public final boolean akf(String paramString)
+  {
+    AppMethodBeat.i(336099);
+    s.u(paramString, "sessionId");
+    boolean bool = au.aAy(paramString);
+    AppMethodBeat.o(336099);
+    return bool;
+  }
+  
+  public final void aki(String paramString)
+  {
+    AppMethodBeat.i(336106);
+    s.u(paramString, "sessionId");
+    paramString = avi(paramString);
+    Log.i("Finder.ConversationUpdater", s.X("[onConversationMsgEmpty] ", Long.valueOf(paramString.systemRowid)));
+    if (paramString.systemRowid > 0L)
     {
-      int i = localList.size();
-      AppMethodBeat.o(265573);
-      return i;
+      paramString.field_digest = "";
+      dWR().update(paramString.systemRowid, (IAutoDBItem)paramString, false);
+      dWR().doNotify(paramString.field_sessionId, 1, paramString);
     }
-    AppMethodBeat.o(265573);
-    return 1;
+    AppMethodBeat.o(336106);
   }
   
-  public final void LW(int paramInt)
-  {
-    AppMethodBeat.i(265567);
-    super.LW(dpn() + paramInt);
-    AppMethodBeat.o(265567);
-  }
+  @Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/conv/FinderConversationUpdater$Companion;", "", "()V", "TAG", "", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
+  public static final class a {}
   
-  public final void LX(int paramInt)
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
+  static final class b
+    extends u
+    implements kotlin.g.a.a<ah>
   {
-    AppMethodBeat.i(265568);
-    if (paramInt >= 0)
+    b(h paramh)
     {
-      super.LX(dpn() + paramInt);
-      AppMethodBeat.o(265568);
-      return;
+      super();
     }
-    super.LX(1);
-    AppMethodBeat.o(265568);
   }
   
-  public final void LY(int paramInt)
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderSessionInfoStorage;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class c
+    extends u
+    implements kotlin.g.a.a<ak>
   {
-    AppMethodBeat.i(265570);
-    super.LY(dpn() + paramInt);
-    AppMethodBeat.o(265570);
-  }
-  
-  public final d LZ(int paramInt)
-  {
-    AppMethodBeat.i(265564);
-    d locald1;
-    if ((paramInt >= 0) && (paramInt < dpn()))
+    public static final c AFW;
+    
+    static
     {
-      if (this.xgt)
-      {
-        d locald2 = this.xgu;
-        locald1 = locald2;
-        if (locald2 == null)
-        {
-          locald1 = new d();
-          AppMethodBeat.o(265564);
-          return locald1;
-        }
-      }
-      else
-      {
-        locald1 = Mb(paramInt);
-        AppMethodBeat.o(265564);
-        return locald1;
-      }
+      AppMethodBeat.i(336157);
+      AFW = new c();
+      AppMethodBeat.o(336157);
     }
-    else {
-      locald1 = super.LZ(paramInt - dpn());
-    }
-    AppMethodBeat.o(265564);
-    return locald1;
-  }
-  
-  public final d Ma(int paramInt)
-  {
-    AppMethodBeat.i(265572);
-    if ((paramInt >= 0) && (paramInt < dpn()))
+    
+    c()
     {
-      if (this.xgt)
-      {
-        locald = this.xgu;
-        AppMethodBeat.o(265572);
-        return locald;
-      }
-      locald = Mb(paramInt);
-      AppMethodBeat.o(265572);
-      return locald;
+      super();
     }
-    d locald = (d)this.syG.get(paramInt - dpn());
-    AppMethodBeat.o(265572);
-    return locald;
   }
   
-  public final void a(a parama, int paramInt)
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderConversationStorage;"}, k=3, mv={1, 5, 1}, xi=48)
+  static final class d
+    extends u
+    implements kotlin.g.a.a<g>
   {
-    AppMethodBeat.i(265565);
-    p.k(parama, "holder");
-    super.a(parama, paramInt);
-    if (paramInt == 0)
+    public static final d AFX;
+    
+    static
     {
-      parama = parama.amk;
-      p.j(parama, "holder.itemView");
-      ((ImageView)parama.findViewById(b.f.avatarIv)).setImageResource(b.e.finder_msg_sys_icon);
+      AppMethodBeat.i(336159);
+      AFX = new d();
+      AppMethodBeat.o(336159);
     }
-    AppMethodBeat.o(265565);
-  }
-  
-  public final int getItemCount()
-  {
-    AppMethodBeat.i(265563);
-    int i = super.getItemCount();
-    int j = dpn();
-    AppMethodBeat.o(265563);
-    return i + j;
-  }
-  
-  public final void gw(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(265569);
-    super.gw(dpn() + paramInt1, paramInt2);
-    AppMethodBeat.o(265569);
-  }
-  
-  public final void gx(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(265571);
-    super.gx(dpn() + paramInt1, paramInt2);
-    AppMethodBeat.o(265571);
+    
+    d()
+    {
+      super();
+    }
   }
 }
 

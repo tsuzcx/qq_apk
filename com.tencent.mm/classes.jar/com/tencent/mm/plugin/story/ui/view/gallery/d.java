@@ -8,27 +8,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.k;
 import com.tencent.mm.ui.o.a;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.Metadata;
+import kotlin.g.b.s;
 
-@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "currScrollType", "", "downX", "", "downY", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "getGalleryView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "setGalleryView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;)V", "totalScrollY", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "showExitHint", "", "Companion", "plugin-story_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "()V", "currScrollType", "", "downX", "", "downY", "galleryView", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "getGalleryView", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;", "setGalleryView", "(Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView;)V", "totalScrollY", "dispatchTouchEvent", "", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "showExitHint", "", "Companion", "plugin-story_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class d
   extends a
 {
-  public static final a LZa;
-  private static final String TAG = "MicroMsg.GalleryOverScrollConsumer";
-  StoryGalleryView LQO;
-  private int LYZ;
-  private int LcP;
-  private float dit;
-  private float diu;
+  public static final d.a SAw;
+  private static final String TAG;
+  private int SAx;
+  StoryGalleryView StB;
+  private float fif;
+  private float fig;
+  private int uiX;
   
   static
   {
     AppMethodBeat.i(120351);
-    LZa = new a((byte)0);
+    SAw = new d.a((byte)0);
     TAG = "MicroMsg.GalleryOverScrollConsumer";
     AppMethodBeat.o(120351);
   }
@@ -38,7 +38,7 @@ public final class d
     boolean bool2 = true;
     boolean bool1 = false;
     AppMethodBeat.i(120350);
-    p.k(paramMotionEvent, "event");
+    s.u(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -46,35 +46,33 @@ public final class d
     {
       AppMethodBeat.o(120350);
       return bool1;
-      this.dit = paramMotionEvent.getX();
-      this.diu = paramMotionEvent.getY();
+      this.fif = paramMotionEvent.getX();
+      this.fig = paramMotionEvent.getY();
       continue;
       if (paramBoolean)
       {
-        this.LYZ = paramInt;
+        this.SAx = paramInt;
         if (paramInt == 1) {}
         for (paramBoolean = bool2;; paramBoolean = false)
         {
-          float f = paramMotionEvent.getY() - this.diu;
+          float f = paramMotionEvent.getY() - this.fig;
           if (f > 0.0F) {
-            break label315;
+            break label307;
           }
-          paramMotionEvent = this.LQO;
+          paramMotionEvent = this.StB;
           if (paramMotionEvent == null) {
-            break label157;
+            break label307;
           }
-          this.LcP = (-(int)f);
+          this.uiX = (-(int)f);
           paramMotionEvent.animate().cancel();
           paramMotionEvent.setTranslationY(f / 2.0F);
           bool1 = paramBoolean;
           break;
         }
-        label157:
-        bool1 = paramBoolean;
-        continue;
-        if ((this.LcP > 0) && (this.LYZ == 1))
+        Context localContext;
+        if ((this.uiX > 0) && (this.SAx == 1))
         {
-          paramMotionEvent = this.LQO;
+          paramMotionEvent = this.StB;
           if (paramMotionEvent != null)
           {
             paramMotionEvent = paramMotionEvent.animate();
@@ -86,46 +84,45 @@ public final class d
               }
             }
           }
-          this.LYZ = 0;
-          Context localContext = MMApplicationContext.getContext();
-          Object localObject = localContext.getSystemService("vibrator");
-          paramMotionEvent = localObject;
-          if (!(localObject instanceof Vibrator)) {
-            paramMotionEvent = null;
+          this.SAx = 0;
+          localContext = MMApplicationContext.getContext();
+          paramMotionEvent = localContext.getSystemService("vibrator");
+          if (!(paramMotionEvent instanceof Vibrator)) {
+            break label267;
           }
-          paramMotionEvent = (Vibrator)paramMotionEvent;
+        }
+        label267:
+        for (paramMotionEvent = (Vibrator)paramMotionEvent;; paramMotionEvent = null)
+        {
           if (paramMotionEvent != null) {
             paramMotionEvent.vibrate(10L);
           }
-          h.cL(localContext, localContext.getString(a.g.LDP));
+          k.cZ(localContext, localContext.getString(a.g.ShA));
+          this.uiX = 0;
+          break;
         }
-        this.LcP = 0;
-        continue;
         Log.i(TAG, "LogStory: touch cancel");
-        this.LYZ = 0;
-        paramMotionEvent = this.LQO;
+        this.SAx = 0;
+        paramMotionEvent = this.StB;
         if (paramMotionEvent != null) {
           paramMotionEvent.setTranslationY(0.0F);
         }
-        this.LcP = 0;
+        this.uiX = 0;
         continue;
-        label315:
+        label307:
         bool1 = paramBoolean;
       }
     }
   }
   
-  public final int ggJ()
+  public final int hAc()
   {
     return 1;
   }
-  
-  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryOverScrollConsumer$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.d
  * JD-Core Version:    0.7.0.1
  */

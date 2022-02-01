@@ -1,182 +1,321 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.f.b.a.dx;
+import com.tencent.mm.autogen.mmdata.rpt.fh;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.model.cm;
-import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.api.d.a;
-import com.tencent.mm.plugin.finder.api.i;
-import com.tencent.mm.plugin.finder.b.f;
-import com.tencent.mm.plugin.finder.b.g;
-import com.tencent.mm.plugin.finder.b.i;
-import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.api.m;
+import com.tencent.mm.plugin.finder.e.e;
+import com.tencent.mm.plugin.finder.e.f;
+import com.tencent.mm.plugin.finder.e.g;
+import com.tencent.mm.plugin.finder.e.h;
 import com.tencent.mm.plugin.finder.gallery.b.a;
-import com.tencent.mm.plugin.finder.gallery.c;
-import com.tencent.mm.plugin.finder.gallery.f;
-import com.tencent.mm.plugin.finder.loader.t;
-import com.tencent.mm.plugin.finder.loader.t.a;
-import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.finder.gallery.j;
+import com.tencent.mm.plugin.finder.gallery.k;
+import com.tencent.mm.plugin.finder.loader.p.a;
+import com.tencent.mm.plugin.finder.report.v;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.finder.utils.av;
 import com.tencent.mm.plugin.finder.view.FinderViewPager;
-import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
-import com.tencent.mm.plugin.findersdk.a.ae;
-import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.finder.viewmodel.component.as;
+import com.tencent.mm.plugin.finder.viewmodel.component.as.a;
+import com.tencent.mm.plugin.findersdk.a.bw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ad;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.q.f;
-import com.tencent.mm.ui.base.q.g;
-import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.ui.af;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import kotlin.g.b.p;
+import kotlin.Metadata;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGalleryUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "MENU_POST", "", "MENU_SEARCH_ID", "TAG", "", "galleryConfig", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "getGalleryConfig", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "setGalleryConfig", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;)V", "galleryCore", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "getGalleryCore", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "setGalleryCore", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;)V", "checkPermission", "", "checkShowPostBtn", "", "getLayoutId", "hasExtStatusFlag", "flag", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-finder_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderGalleryUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "MENU_POST", "", "MENU_SEARCH_ID", "TAG", "", "galleryConfig", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "getGalleryConfig", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;", "setGalleryConfig", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryConfig;)V", "galleryCore", "Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "getGalleryCore", "()Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;", "setGalleryCore", "(Lcom/tencent/mm/plugin/finder/gallery/FinderGalleryCore;)V", "checkPermission", "", "checkShowPostBtn", "", "getLayoutId", "hasExtStatusFlag", "flag", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-finder_release"}, k=1, mv={1, 5, 1}, xi=48)
 public final class FinderGalleryUI
   extends MMFinderUI
 {
+  public com.tencent.mm.plugin.finder.gallery.c BnP;
+  private final int BnQ = 1;
+  private final int BnR = 2;
+  public com.tencent.mm.plugin.finder.gallery.b Bnx;
   private final String TAG = "Finder.FinderGalleryUI";
-  private HashMap _$_findViewCache;
-  public com.tencent.mm.plugin.finder.gallery.b xNB;
-  public c xNK;
-  private final int xNL = 1;
-  private final int xNM = 2;
   
-  public final void _$_clearFindViewByIdCache()
+  private static final void a(FinderGalleryUI paramFinderGalleryUI, com.tencent.mm.ui.base.s params)
   {
-    AppMethodBeat.i(280663);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(280663);
-  }
-  
-  public final View _$_findCachedViewById(int paramInt)
-  {
-    AppMethodBeat.i(280661);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
+    Object localObject = null;
+    AppMethodBeat.i(365606);
+    kotlin.g.b.s.u(paramFinderGalleryUI, "this$0");
+    if (params.jmw())
     {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+      params.oh(1001, e.h.app_field_mmsight);
+      params.oh(1002, e.h.app_field_select_new_pic);
     }
-    AppMethodBeat.o(280661);
-    return localView1;
+    params = com.tencent.mm.plugin.finder.report.z.FrZ;
+    params = as.GSQ;
+    params = paramFinderGalleryUI.getContext();
+    kotlin.g.b.s.s(params, "context");
+    params = as.a.hu((Context)params);
+    if (params == null)
+    {
+      params = null;
+      com.tencent.mm.plugin.finder.report.z.b(0, "post_acionsheet_camera", "", params);
+      params = com.tencent.mm.plugin.finder.report.z.FrZ;
+      params = as.GSQ;
+      paramFinderGalleryUI = paramFinderGalleryUI.getContext();
+      kotlin.g.b.s.s(paramFinderGalleryUI, "context");
+      paramFinderGalleryUI = as.a.hu((Context)paramFinderGalleryUI);
+      if (paramFinderGalleryUI != null) {
+        break label140;
+      }
+    }
+    label140:
+    for (paramFinderGalleryUI = localObject;; paramFinderGalleryUI = paramFinderGalleryUI.fou())
+    {
+      com.tencent.mm.plugin.finder.report.z.b(0, "post_actionsheet_album", "", paramFinderGalleryUI);
+      AppMethodBeat.o(365606);
+      return;
+      params = params.fou();
+      break;
+    }
   }
+  
+  private static final void a(FinderGalleryUI paramFinderGalleryUI, String paramString, AppCompatActivity paramAppCompatActivity, MenuItem paramMenuItem, int paramInt)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(365615);
+    kotlin.g.b.s.u(paramFinderGalleryUI, "this$0");
+    kotlin.g.b.s.u(paramString, "$postId");
+    Intent localIntent = new Intent();
+    if (paramMenuItem.getItemId() == 1001)
+    {
+      localIntent.putExtra("key_finder_post_router", 2);
+      paramMenuItem = com.tencent.mm.plugin.finder.report.z.FrZ;
+      paramMenuItem = as.GSQ;
+      paramFinderGalleryUI = paramFinderGalleryUI.getContext();
+      kotlin.g.b.s.s(paramFinderGalleryUI, "context");
+      paramFinderGalleryUI = as.a.hu((Context)paramFinderGalleryUI);
+      if (paramFinderGalleryUI == null)
+      {
+        paramFinderGalleryUI = null;
+        com.tencent.mm.plugin.finder.report.z.b(1, "post_acionsheet_camera", "", paramFinderGalleryUI);
+      }
+    }
+    while (paramMenuItem.getItemId() != 1002) {
+      for (;;)
+      {
+        localIntent.putExtra("key_finder_post_from", 12);
+        localIntent.putExtra("key_finder_post_id", paramString);
+        paramFinderGalleryUI = com.tencent.mm.plugin.finder.utils.a.GfO;
+        kotlin.g.b.s.s(paramAppCompatActivity, "activity");
+        com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)paramAppCompatActivity, localIntent);
+        paramFinderGalleryUI = v.FrN;
+        v.aP(14, false);
+        AppMethodBeat.o(365615);
+        return;
+        paramFinderGalleryUI = paramFinderGalleryUI.fou();
+      }
+    }
+    localIntent.putExtra("key_finder_post_router", 3);
+    paramMenuItem = com.tencent.mm.plugin.finder.report.z.FrZ;
+    paramMenuItem = as.GSQ;
+    paramFinderGalleryUI = paramFinderGalleryUI.getContext();
+    kotlin.g.b.s.s(paramFinderGalleryUI, "context");
+    paramFinderGalleryUI = as.a.hu((Context)paramFinderGalleryUI);
+    if (paramFinderGalleryUI == null) {}
+    for (paramFinderGalleryUI = localObject;; paramFinderGalleryUI = paramFinderGalleryUI.fou())
+    {
+      com.tencent.mm.plugin.finder.report.z.b(1, "post_actionsheet_album", "", paramFinderGalleryUI);
+      break;
+    }
+  }
+  
+  private static final boolean a(FinderGalleryUI paramFinderGalleryUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(365586);
+    kotlin.g.b.s.u(paramFinderGalleryUI, "this$0");
+    paramFinderGalleryUI.eeT();
+    paramFinderGalleryUI.finish();
+    AppMethodBeat.o(365586);
+    return true;
+  }
+  
+  private static final boolean b(FinderGalleryUI paramFinderGalleryUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(365597);
+    kotlin.g.b.s.u(paramFinderGalleryUI, "this$0");
+    paramMenuItem = new Intent(paramFinderGalleryUI.getIntent());
+    com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.GfO;
+    com.tencent.mm.plugin.finder.utils.a.ap((Context)paramFinderGalleryUI, paramMenuItem);
+    paramFinderGalleryUI = com.tencent.mm.plugin.finder.gallery.f.BuT;
+    paramFinderGalleryUI = new fh();
+    paramFinderGalleryUI.pO(com.tencent.mm.plugin.finder.gallery.f.sessionId);
+    paramFinderGalleryUI.iGT = com.tencent.mm.plugin.finder.gallery.f.BuU;
+    paramFinderGalleryUI.iFe = 2L;
+    paramFinderGalleryUI.pP("search_icon");
+    paramFinderGalleryUI.iGV = com.tencent.mm.plugin.finder.gallery.f.BuV;
+    paramFinderGalleryUI.pQ("");
+    paramFinderGalleryUI.pR(String.valueOf(com.tencent.mm.model.cn.bDw()));
+    paramFinderGalleryUI.bMH();
+    com.tencent.mm.plugin.finder.gallery.f.a((com.tencent.mm.plugin.report.a)paramFinderGalleryUI);
+    AppMethodBeat.o(365597);
+    return true;
+  }
+  
+  private static final boolean c(FinderGalleryUI paramFinderGalleryUI, MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(365645);
+    kotlin.g.b.s.u(paramFinderGalleryUI, "this$0");
+    paramMenuItem = paramFinderGalleryUI.getContext();
+    Object localObject1 = new StringBuilder();
+    h.baC();
+    localObject1 = com.tencent.mm.kernel.b.aZs() + '_' + Util.nowMilliSecond();
+    com.tencent.mm.ui.widget.a.f localf = new com.tencent.mm.ui.widget.a.f((Context)paramMenuItem, 1, true);
+    Object localObject2 = av.GiL;
+    if (av.ffR())
+    {
+      localObject2 = af.mU((Context)paramMenuItem).inflate(e.f.finder_sheet_header, null);
+      Object localObject5 = (TextView)((View)localObject2).findViewById(e.e.nickname);
+      Object localObject3 = (ImageView)((View)localObject2).findViewById(e.e.avatar);
+      Object localObject4 = com.tencent.mm.plugin.finder.api.d.AwY;
+      localObject4 = d.a.auT(com.tencent.mm.model.z.bAW());
+      if (localObject4 != null)
+      {
+        ((TextView)localObject5).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.p.b((Context)paramMenuItem, (CharSequence)((m)localObject4).getNickname()));
+        localObject5 = com.tencent.mm.plugin.finder.loader.p.ExI;
+        localObject5 = com.tencent.mm.plugin.finder.loader.p.eCp();
+        com.tencent.mm.plugin.finder.loader.b localb = new com.tencent.mm.plugin.finder.loader.b(((m)localObject4).field_avatarUrl);
+        kotlin.g.b.s.s(localObject3, "avatarIv");
+        com.tencent.mm.plugin.finder.loader.p localp = com.tencent.mm.plugin.finder.loader.p.ExI;
+        ((com.tencent.mm.loader.d)localObject5).a(localb, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.p.a(p.a.ExM));
+        localObject3 = av.GiL;
+        kotlin.g.b.s.s(localObject2, "headerView");
+        av.a((m)localObject4, (View)localObject2);
+      }
+      localf.af((View)localObject2, true);
+    }
+    localObject2 = v.FrN;
+    v.azP((String)localObject1);
+    localf.Vtg = new FinderGalleryUI..ExternalSyntheticLambda3(paramFinderGalleryUI);
+    localf.GAC = new FinderGalleryUI..ExternalSyntheticLambda4(paramFinderGalleryUI, (String)localObject1, paramMenuItem);
+    localf.aeLi = FinderGalleryUI..ExternalSyntheticLambda5.INSTANCE;
+    localf.dDn();
+    AppMethodBeat.o(365645);
+    return true;
+  }
+  
+  private com.tencent.mm.plugin.finder.gallery.b eeT()
+  {
+    AppMethodBeat.i(365582);
+    com.tencent.mm.plugin.finder.gallery.b localb = this.Bnx;
+    if (localb != null)
+    {
+      AppMethodBeat.o(365582);
+      return localb;
+    }
+    kotlin.g.b.s.bIx("galleryConfig");
+    AppMethodBeat.o(365582);
+    return null;
+  }
+  
+  private static final void eeW()
+  {
+    AppMethodBeat.i(365624);
+    v localv = v.FrN;
+    v.SA(6);
+    AppMethodBeat.o(365624);
+  }
+  
+  public final void _$_clearFindViewByIdCache() {}
   
   public final int getLayoutId()
   {
-    return b.g.finder_gallery_common_ui;
+    return e.f.finder_gallery_common_ui;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(280659);
+    AppMethodBeat.i(365719);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.plugin.finder.gallery.b localb = this.xNB;
-    if (localb == null) {
-      p.bGy("galleryConfig");
-    }
-    localb.a((MMActivity)this, paramInt1, paramInt2, paramIntent, com.tencent.mm.plugin.finder.gallery.b.b.xTz);
-    AppMethodBeat.o(280659);
+    eeT().a((MMActivity)this, paramInt1, paramInt2, paramIntent, com.tencent.mm.plugin.finder.gallery.b.b.Buu);
+    AppMethodBeat.o(365719);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     int k = 0;
-    AppMethodBeat.i(280658);
+    AppMethodBeat.i(365707);
     super.onCreate(paramBundle);
     hideActionbarLine();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
+    setBackBtn(new FinderGalleryUI..ExternalSyntheticLambda2(this));
     Object localObject = getIntent().getStringExtra("TITLE");
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = "";
     }
-    Log.i(this.TAG, "onCreate, title:".concat(String.valueOf(paramBundle)));
+    Log.i(this.TAG, kotlin.g.b.s.X("onCreate, title:", paramBundle));
     int i;
-    label95:
+    label92:
     boolean bool3;
-    label313:
+    label311:
     boolean bool2;
-    label320:
+    label318:
     boolean bool1;
-    label456:
+    label444:
     int j;
     if (((CharSequence)paramBundle).length() == 0)
     {
       i = 1;
       if (i == 0) {
-        break label502;
+        break label488;
       }
-      setMMTitle(b.j.finder_title);
-      paramBundle = (ViewGroup)findViewById(b.f.gallery_core_root);
-      localObject = com.tencent.mm.plugin.finder.gallery.b.xTy;
+      setMMTitle(e.h.finder_select_from_finder);
+      paramBundle = (ViewGroup)findViewById(e.e.gallery_core_root);
+      localObject = com.tencent.mm.plugin.finder.gallery.b.Bus;
       localObject = getIntent();
-      p.j(localObject, "intent");
-      this.xNB = b.a.aj((Intent)localObject);
+      kotlin.g.b.s.s(localObject, "intent");
+      localObject = b.a.au((Intent)localObject);
+      kotlin.g.b.s.u(localObject, "<set-?>");
+      this.Bnx = ((com.tencent.mm.plugin.finder.gallery.b)localObject);
       localObject = (MMActivity)this;
-      p.j(paramBundle, "coreRoot");
-      com.tencent.mm.plugin.finder.gallery.b localb = this.xNB;
-      if (localb == null) {
-        p.bGy("galleryConfig");
-      }
-      this.xNK = new c((MMActivity)localObject, paramBundle, localb);
-      localObject = this.xNB;
-      if (localObject == null) {
-        p.bGy("galleryConfig");
-      }
-      if (((com.tencent.mm.plugin.finder.gallery.b)localObject).dwb())
+      kotlin.g.b.s.s(paramBundle, "coreRoot");
+      localObject = new com.tencent.mm.plugin.finder.gallery.c((MMActivity)localObject, paramBundle, eeT());
+      kotlin.g.b.s.u(localObject, "<set-?>");
+      this.BnP = ((com.tencent.mm.plugin.finder.gallery.c)localObject);
+      if (eeT().egw())
       {
         setActionbarColor(getResources().getColor(com.tencent.mm.plugin.gallery.b.b.Dark_5));
         paramBundle.setBackgroundColor(getResources().getColor(com.tencent.mm.plugin.gallery.b.b.Dark_5));
       }
-      addIconOptionMenu(this.xNL, -1, b.i.icons_outlined_search, (MenuItem.OnMenuItemClickListener)new c(this));
-      paramBundle = this.xNB;
-      if (paramBundle == null) {
-        p.bGy("galleryConfig");
+      if (((bw)h.ax(bw.class)).aBu()) {
+        break label564;
       }
-      if (paramBundle.xTx.xTu.contains(Integer.valueOf(5)))
+      addIconOptionMenu(this.BnQ, -1, e.g.icons_outlined_search, new FinderGalleryUI..ExternalSyntheticLambda1(this));
+      if (eeT().But.BsZ.contains(Integer.valueOf(5)))
       {
-        bool3 = ((ak)h.ag(ak.class)).showFinderEntry();
-        if ((z.bde() & 0x0) == 0L) {
-          break label510;
+        bool3 = ((com.tencent.mm.plugin.findersdk.a.cn)h.az(com.tencent.mm.plugin.findersdk.a.cn.class)).showFinderEntry();
+        if ((com.tencent.mm.model.z.bAR() & 0x0) == 0L) {
+          break label496;
         }
         i = 1;
         if (i != 0) {
-          break label515;
+          break label501;
         }
         bool2 = true;
-        paramBundle = com.tencent.mm.plugin.finder.utils.aj.AGc;
-        i = com.tencent.mm.plugin.finder.utils.aj.eei();
-        paramBundle = h.ae(ae.class);
-        p.j(paramBundle, "MMKernel.service(IFinder…enModeConfig::class.java)");
-        bool1 = ((ae)paramBundle).dYT();
+        paramBundle = av.GiL;
+        i = av.fgg();
+        bool1 = ((bw)h.ax(bw.class)).aBu();
         Log.i(this.TAG, "checkPermission show:" + bool3 + ", open:" + bool2 + ", state:" + i + ", teenMode:" + bool1);
-        paramBundle = com.tencent.mm.plugin.finder.storage.d.AjH;
-        switch (((Number)com.tencent.mm.plugin.finder.storage.d.dTZ().aSr()).intValue())
+        paramBundle = com.tencent.mm.plugin.finder.storage.d.FAy;
+        switch (((Number)com.tencent.mm.plugin.finder.storage.d.eSs().bmg()).intValue())
         {
         default: 
           if (!bool3) {
@@ -189,29 +328,29 @@ public final class FinderGalleryUI
     for (;;)
     {
       if (j != 0) {
-        addIconOptionMenu(this.xNM, -1, b.i.icons_outlined_camera, (MenuItem.OnMenuItemClickListener)new a(this));
+        addIconOptionMenu(this.BnR, -1, e.g.icons_outlined_camera, new FinderGalleryUI..ExternalSyntheticLambda0(this));
       }
-      AppMethodBeat.o(280658);
+      AppMethodBeat.o(365707);
       return;
       i = 0;
       break;
-      label502:
+      label488:
       setMMTitle(paramBundle);
-      break label95;
-      label510:
+      break label92;
+      label496:
       i = 0;
-      break label313;
-      label515:
+      break label311;
+      label501:
       bool2 = false;
-      break label320;
+      break label318;
       bool3 = false;
-      break label456;
+      break label444;
       i = 1;
-      break label456;
+      break label444;
       bool2 = false;
-      break label456;
+      break label444;
       bool1 = true;
-      break label456;
+      break label444;
       j = k;
       if (bool2) {
         if (i != 2)
@@ -228,37 +367,53 @@ public final class FinderGalleryUI
         }
       }
     }
+    label564:
+    Log.i(this.TAG, "onCreate isTeenMode:" + ((bw)h.ax(bw.class)).aBu() + " isTeenModeAndViewAll:" + ((bw)h.ax(bw.class)).eZE());
+    AppMethodBeat.o(365707);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(280660);
-    Object localObject = this.xNK;
-    if (localObject == null) {
-      p.bGy("galleryCore");
-    }
-    f localf = f.xUa;
-    localObject = (com.tencent.mm.plugin.finder.gallery.k)kotlin.a.j.M((List)((c)localObject).xTC, ((c)localObject).xTD.getCurrentItem());
+    AppMethodBeat.i(365728);
+    Object localObject = this.BnP;
+    int i;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.finder.gallery.k)localObject).xUh;
-      if (localObject == null) {}
+      if (((com.tencent.mm.plugin.finder.gallery.c)localObject).BuA >= 0) {
+        ((com.tencent.mm.plugin.finder.publish.c)h.az(com.tencent.mm.plugin.finder.publish.c.class)).finderPostManager().b(((com.tencent.mm.plugin.finder.gallery.c)localObject).BuC);
+      }
+      com.tencent.mm.plugin.finder.gallery.f localf = com.tencent.mm.plugin.finder.gallery.f.BuT;
+      localObject = (k)kotlin.a.p.ae((List)((com.tencent.mm.plugin.finder.gallery.c)localObject).Buy, ((com.tencent.mm.plugin.finder.gallery.c)localObject).BsX.getCurrentItem());
+      if (localObject != null) {
+        break label175;
+      }
+      i = 0;
     }
-    for (int i = ((com.tencent.mm.plugin.finder.gallery.j)localObject).fXY;; i = 0)
+    for (;;)
     {
-      localObject = new dx();
-      ((dx)localObject).qZ(f.sessionId);
-      ((dx)localObject).kd(f.xTY);
-      ((dx)localObject).ke(3L);
-      ((dx)localObject).ra(f.MS(i));
-      ((dx)localObject).kf(f.MR(i));
-      ((dx)localObject).rb("");
-      ((dx)localObject).rc(String.valueOf(cm.bfE()));
-      ((dx)localObject).bpa();
-      f.a((com.tencent.mm.plugin.report.a)localObject);
+      localObject = new fh();
+      ((fh)localObject).pO(com.tencent.mm.plugin.finder.gallery.f.sessionId);
+      ((fh)localObject).iGT = com.tencent.mm.plugin.finder.gallery.f.BuU;
+      ((fh)localObject).iFe = 3L;
+      ((fh)localObject).pP(com.tencent.mm.plugin.finder.gallery.f.Ov(i));
+      ((fh)localObject).iGV = com.tencent.mm.plugin.finder.gallery.f.Ou(i);
+      ((fh)localObject).pQ("");
+      ((fh)localObject).pR(String.valueOf(com.tencent.mm.model.cn.bDw()));
+      ((fh)localObject).bMH();
+      com.tencent.mm.plugin.finder.gallery.f.a((com.tencent.mm.plugin.report.a)localObject);
       super.onDestroy();
-      AppMethodBeat.o(280660);
+      AppMethodBeat.o(365728);
       return;
+      kotlin.g.b.s.bIx("galleryCore");
+      localObject = null;
+      break;
+      label175:
+      localObject = ((k)localObject).Bvc;
+      if (localObject == null) {
+        i = 0;
+      } else {
+        i = ((j)localObject).idY;
+      }
     }
   }
   
@@ -266,182 +421,6 @@ public final class FinderGalleryUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
-  {
-    a(FinderGalleryUI paramFinderGalleryUI) {}
-    
-    public final boolean onMenuItemClick(final MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(290123);
-      paramMenuItem = this.xNN.getContext();
-      Object localObject1 = new StringBuilder();
-      p.j(h.aHE(), "MMKernel.account()");
-      localObject1 = com.tencent.mm.kernel.b.aGq() + '_' + Util.nowMilliSecond();
-      com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)paramMenuItem, 1, true);
-      Object localObject2 = com.tencent.mm.plugin.finder.utils.aj.AGc;
-      if (com.tencent.mm.plugin.finder.utils.aj.edY())
-      {
-        localObject2 = ad.kS((Context)paramMenuItem).inflate(b.g.finder_sheet_header, null);
-        Object localObject4 = (TextView)((View)localObject2).findViewById(b.f.nickname);
-        ImageView localImageView = (ImageView)((View)localObject2).findViewById(b.f.avatar);
-        Object localObject3 = com.tencent.mm.plugin.finder.api.d.wZQ;
-        localObject3 = d.a.aAK(z.bdh());
-        if (localObject3 != null)
-        {
-          p.j(localObject4, "nicknameTv");
-          ((TextView)localObject4).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)paramMenuItem, (CharSequence)((i)localObject3).getNickname()));
-          localObject4 = t.ztT;
-          localObject4 = t.dJh();
-          localObject3 = new com.tencent.mm.plugin.finder.loader.e(((i)localObject3).field_avatarUrl);
-          p.j(localImageView, "avatarIv");
-          t localt = t.ztT;
-          ((com.tencent.mm.loader.d)localObject4).a(localObject3, localImageView, t.a(t.a.ztX));
-        }
-        locale.Z((View)localObject2, true);
-      }
-      localObject2 = com.tencent.mm.plugin.finder.report.k.zWs;
-      com.tencent.mm.plugin.finder.report.k.aEa((String)localObject1);
-      locale.a((q.f)new q.f()
-      {
-        public final void onCreateMMMenu(o paramAnonymouso)
-        {
-          Object localObject = null;
-          AppMethodBeat.i(282868);
-          p.j(paramAnonymouso, "it");
-          if (paramAnonymouso.hJO())
-          {
-            paramAnonymouso.mn(1001, b.j.app_field_mmsight);
-            paramAnonymouso.mn(1002, b.j.app_field_select_new_pic);
-          }
-          paramAnonymouso = n.zWF;
-          paramAnonymouso = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-          paramAnonymouso = this.xNO.xNN.getContext();
-          p.j(paramAnonymouso, "context");
-          paramAnonymouso = aj.a.fZ((Context)paramAnonymouso);
-          if (paramAnonymouso != null) {}
-          for (paramAnonymouso = paramAnonymouso.ekY();; paramAnonymouso = null)
-          {
-            n.b(0, "post_acionsheet_camera", "", paramAnonymouso);
-            paramAnonymouso = n.zWF;
-            paramAnonymouso = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-            paramAnonymouso = this.xNO.xNN.getContext();
-            p.j(paramAnonymouso, "context");
-            com.tencent.mm.plugin.finder.viewmodel.component.aj localaj = aj.a.fZ((Context)paramAnonymouso);
-            paramAnonymouso = localObject;
-            if (localaj != null) {
-              paramAnonymouso = localaj.ekY();
-            }
-            n.b(0, "post_actionsheet_album", "", paramAnonymouso);
-            AppMethodBeat.o(282868);
-            return;
-          }
-        }
-      });
-      locale.a((q.g)new q.g()
-      {
-        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-        {
-          Object localObject = null;
-          AppMethodBeat.i(274294);
-          Intent localIntent = new Intent();
-          p.j(paramAnonymousMenuItem, "menuItem");
-          if (paramAnonymousMenuItem.getItemId() == 1001)
-          {
-            localIntent.putExtra("key_finder_post_router", 2);
-            paramAnonymousMenuItem = n.zWF;
-            paramAnonymousMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-            paramAnonymousMenuItem = this.xNO.xNN.getContext();
-            p.j(paramAnonymousMenuItem, "context");
-            paramAnonymousMenuItem = aj.a.fZ((Context)paramAnonymousMenuItem);
-            if (paramAnonymousMenuItem != null)
-            {
-              paramAnonymousMenuItem = paramAnonymousMenuItem.ekY();
-              n.b(1, "post_acionsheet_camera", "", paramAnonymousMenuItem);
-            }
-          }
-          for (;;)
-          {
-            localIntent.putExtra("key_finder_post_from", 12);
-            localIntent.putExtra("key_finder_post_id", this.xNP);
-            paramAnonymousMenuItem = com.tencent.mm.plugin.finder.utils.a.ACH;
-            paramAnonymousMenuItem = paramMenuItem;
-            p.j(paramAnonymousMenuItem, "activity");
-            com.tencent.mm.plugin.finder.utils.a.enterFinderPostRouterUI((Context)paramAnonymousMenuItem, localIntent);
-            paramAnonymousMenuItem = com.tencent.mm.plugin.finder.report.k.zWs;
-            com.tencent.mm.plugin.finder.report.k.av(14, false);
-            AppMethodBeat.o(274294);
-            return;
-            paramAnonymousMenuItem = null;
-            break;
-            if (paramAnonymousMenuItem.getItemId() == 1002)
-            {
-              localIntent.putExtra("key_finder_post_router", 3);
-              paramAnonymousMenuItem = n.zWF;
-              paramAnonymousMenuItem = com.tencent.mm.plugin.finder.viewmodel.component.aj.Bnu;
-              paramAnonymousMenuItem = this.xNO.xNN.getContext();
-              p.j(paramAnonymousMenuItem, "context");
-              com.tencent.mm.plugin.finder.viewmodel.component.aj localaj = aj.a.fZ((Context)paramAnonymousMenuItem);
-              paramAnonymousMenuItem = localObject;
-              if (localaj != null) {
-                paramAnonymousMenuItem = localaj.ekY();
-              }
-              n.b(1, "post_actionsheet_album", "", paramAnonymousMenuItem);
-            }
-          }
-        }
-      });
-      locale.b((e.b)3.xNQ);
-      locale.eik();
-      AppMethodBeat.o(290123);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class b
-    implements MenuItem.OnMenuItemClickListener
-  {
-    b(FinderGalleryUI paramFinderGalleryUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(286192);
-      this.xNN.finish();
-      AppMethodBeat.o(286192);
-      return true;
-    }
-  }
-  
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class c
-    implements MenuItem.OnMenuItemClickListener
-  {
-    c(FinderGalleryUI paramFinderGalleryUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(274989);
-      paramMenuItem = new Intent(this.xNN.getIntent());
-      com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.ACH;
-      com.tencent.mm.plugin.finder.utils.a.Z((Context)this.xNN, paramMenuItem);
-      paramMenuItem = f.xUa;
-      paramMenuItem = new dx();
-      paramMenuItem.qZ(f.sessionId);
-      paramMenuItem.kd(f.xTY);
-      paramMenuItem.ke(2L);
-      paramMenuItem.ra("search_icon");
-      paramMenuItem.kf(0L);
-      paramMenuItem.rb("");
-      paramMenuItem.rc(String.valueOf(cm.bfE()));
-      paramMenuItem.bpa();
-      f.a((com.tencent.mm.plugin.report.a)paramMenuItem);
-      AppMethodBeat.o(274989);
-      return true;
-    }
   }
 }
 

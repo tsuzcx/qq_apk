@@ -14,33 +14,33 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.g;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.t;
 
 public class GameMenuView
   extends LinearLayout
 {
-  private View QpB;
-  private LinearLayout QpC;
-  private LinearLayout QpD;
-  private f QpE;
-  private b.c QpF;
-  private b.a QpG;
+  private View XhP;
+  private LinearLayout XhQ;
+  private LinearLayout XhR;
+  private f XhS;
+  private b.c XhT;
+  private b.a XhU;
   private Context mContext;
   private LayoutInflater mInflater;
-  private boolean pMD;
+  private boolean sRw;
   
   public GameMenuView(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(80983);
-    this.pMD = false;
+    this.sRw = false;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
     paramContext = this.mContext.getResources().getDisplayMetrics();
     if (paramContext.widthPixels > paramContext.heightPixels) {
       bool = true;
     }
-    this.pMD = bool;
+    this.sRw = bool;
     initView();
     AppMethodBeat.o(80983);
   }
@@ -49,7 +49,7 @@ public class GameMenuView
   {
     super(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(80985);
-    this.pMD = false;
+    this.sRw = false;
     this.mContext = paramContext;
     initView();
     AppMethodBeat.o(80985);
@@ -58,16 +58,16 @@ public class GameMenuView
   private void initView()
   {
     AppMethodBeat.i(80986);
-    if (this.pMD)
+    if (this.sRw)
     {
       setOrientation(0);
       this.mInflater.inflate(c.g.game_menu_split_style_landscape, this, true);
     }
     for (View localView = this.mInflater.inflate(c.g.game_menu_layout_landscape, this, true);; localView = this.mInflater.inflate(c.g.game_menu_layout_portrait, this, true))
     {
-      this.QpB = localView.findViewById(c.f.game_menu_layout);
-      this.QpC = ((LinearLayout)localView.findViewById(c.f.game_menu_first_line));
-      this.QpD = ((LinearLayout)localView.findViewById(c.f.game_menu_second_line));
+      this.XhP = localView.findViewById(c.f.game_menu_layout);
+      this.XhQ = ((LinearLayout)localView.findViewById(c.f.game_menu_first_line));
+      this.XhR = ((LinearLayout)localView.findViewById(c.f.game_menu_second_line));
       AppMethodBeat.o(80986);
       return;
       setOrientation(1);
@@ -78,7 +78,7 @@ public class GameMenuView
   public void setAdapter(f paramf)
   {
     AppMethodBeat.i(80984);
-    this.QpE = paramf;
+    this.XhS = paramf;
     paramf.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()
@@ -101,12 +101,12 @@ public class GameMenuView
   
   public void setDismissListener(b.a parama)
   {
-    this.QpG = parama;
+    this.XhU = parama;
   }
   
   public void setGameMenuItemSelectedListener(b.c paramc)
   {
-    this.QpF = paramc;
+    this.XhT = paramc;
   }
 }
 

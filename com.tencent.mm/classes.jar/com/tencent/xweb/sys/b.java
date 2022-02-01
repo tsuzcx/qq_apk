@@ -8,27 +8,27 @@ import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 public final class b
   implements CookieInternal.ICookieSyncManagerInternal
 {
-  CookieSyncManager aaff;
+  private CookieSyncManager aima;
   
   public final void init(Context paramContext)
   {
     AppMethodBeat.i(153655);
-    this.aaff = CookieSyncManager.createInstance(paramContext);
+    this.aima = CookieSyncManager.createInstance(paramContext);
     AppMethodBeat.o(153655);
   }
   
   public final void sync()
   {
     AppMethodBeat.i(153656);
-    if (this.aaff != null) {
-      this.aaff.sync();
+    if (this.aima != null) {
+      this.aima.sync();
     }
     AppMethodBeat.o(153656);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.xweb.sys.b
  * JD-Core Version:    0.7.0.1
  */

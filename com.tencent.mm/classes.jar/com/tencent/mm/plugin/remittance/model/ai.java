@@ -2,76 +2,52 @@ package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.b.a.a;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class ai
-  extends a
+  extends m
 {
-  public String InC;
-  public String InD;
-  public String mKL;
-  public String mKM;
-  public int tVx;
-  
-  public ai(int paramInt)
+  public ai(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67899);
-    this.tVx = 0;
-    this.InC = "";
-    this.InD = "";
-    Log.i("MicroMsg.NetSceneTenpayh5Index", "NetSceneTenpayh5Index create");
+    AppMethodBeat.i(67897);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("wallet_type", String.valueOf(paramInt));
+    localHashMap.put("trans_id", paramString1);
+    localHashMap.put("transfer_id", paramString2);
+    localHashMap.put("receiver_name", paramString3);
+    localHashMap.put("from", String.valueOf(paramInt2));
+    localHashMap.put("invalid_time", String.valueOf(paramInt1));
     setRequestData(localHashMap);
-    AppMethodBeat.o(67899);
+    AppMethodBeat.o(67897);
   }
   
-  public final String cOd()
+  public final int getFuncId()
   {
-    return "/cgi-bin/mmpay-bin/h5transferoperate";
+    return 1545;
   }
   
-  public final int cOe()
+  public final int getTenpayCgicmd()
   {
     return 0;
   }
   
-  public final int getType()
+  public final String getUri()
   {
-    return 1574;
+    return "/cgi-bin/mmpay-bin/transferresendmsg";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(67900);
-    Log.i("MicroMsg.NetSceneTenpayh5Index", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
-    {
-      Log.i("MicroMsg.NetSceneTenpayh5Index", "NetSceneTransferChargeQuery request error");
-      AppMethodBeat.o(67900);
-      return;
-    }
-    paramString = new StringBuffer();
-    this.tVx = paramJSONObject.optInt("currency");
-    this.InC = paramJSONObject.optString("currencyUint");
-    this.InD = paramJSONObject.optString("currencyWording");
-    this.mKL = paramJSONObject.optString("notice");
-    this.mKM = paramJSONObject.optString("notice_url");
-    paramString.append("currency:" + this.tVx);
-    paramString.append(" currencyuint:" + this.InC);
-    paramString.append(" currencywording:" + this.InD);
-    paramString.append(" notice:" + this.mKL);
-    paramString.append(" notice_url:" + this.mKM);
-    Log.i("MicroMsg.NetSceneTenpayh5Index", "resp " + paramString.toString());
-    AppMethodBeat.o(67900);
+    AppMethodBeat.i(67898);
+    Log.d("Micromsg.NetSceneTenpayRemittanceResendMsg", "errCode " + paramInt + " errMsg: " + paramString);
+    AppMethodBeat.o(67898);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.ai
  * JD-Core Version:    0.7.0.1
  */

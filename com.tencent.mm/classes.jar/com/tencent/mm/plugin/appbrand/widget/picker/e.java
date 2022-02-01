@@ -5,17 +5,17 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
-  public static boolean Ed(int paramInt)
+  public static boolean ED(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 59);
   }
   
-  public static boolean Ee(int paramInt)
+  public static boolean EE(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 23);
   }
   
-  public static int[] anJ(String paramString)
+  public static int[] ahh(String paramString)
   {
     AppMethodBeat.i(138087);
     if (Util.isNullOrNil(paramString))
@@ -29,9 +29,9 @@ public final class e
       AppMethodBeat.o(138087);
       return null;
     }
-    int i = anK(paramString[0]);
-    int j = anK(paramString[1]);
-    if ((!Ee(i)) || (!Ed(j)))
+    int i = ahi(paramString[0]);
+    int j = ahi(paramString[1]);
+    if ((!EE(i)) || (!ED(j)))
     {
       AppMethodBeat.o(138087);
       return null;
@@ -40,7 +40,7 @@ public final class e
     return new int[] { i, j };
   }
   
-  private static int anK(String paramString)
+  private static int ahi(String paramString)
   {
     AppMethodBeat.i(138088);
     try
@@ -58,7 +58,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,88 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bx.b;
+import java.util.LinkedList;
 
 public final class cob
-  extends com.tencent.mm.cd.a
+  extends esc
 {
-  public String RUB;
-  public int Twl;
-  public String url;
+  public b aavn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(265935);
+    AppMethodBeat.i(125735);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.url != null) {
-        paramVarArgs.f(1, this.url);
+      paramVarArgs = (i.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.qD(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.RUB != null) {
-        paramVarArgs.f(2, this.RUB);
+      if (this.aavn != null) {
+        paramVarArgs.d(2, this.aavn);
       }
-      paramVarArgs.aY(3, this.Twl);
-      AppMethodBeat.o(265935);
+      AppMethodBeat.o(125735);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.url == null) {
-        break label318;
+      if (this.BaseResponse == null) {
+        break label344;
       }
     }
-    label318:
-    for (paramInt = g.a.a.b.b.a.g(1, this.url) + 0;; paramInt = 0)
+    label344:
+    for (paramInt = i.a.a.a.qC(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.RUB != null) {
-        i = paramInt + g.a.a.b.b.a.g(2, this.RUB);
+      if (this.aavn != null) {
+        i = paramInt + i.a.a.b.b.a.c(2, this.aavn);
       }
-      paramInt = g.a.a.b.b.a.bM(3, this.Twl);
-      AppMethodBeat.o(265935);
-      return i + paramInt;
+      AppMethodBeat.o(125735);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new i.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = esc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = esc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.iUs();
+            paramVarArgs.kFT();
           }
         }
-        AppMethodBeat.o(265935);
+        AppMethodBeat.o(125735);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (i.a.a.a.a)paramVarArgs[0];
         cob localcob = (cob)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(265935);
+          AppMethodBeat.o(125735);
           return -1;
         case 1: 
-          localcob.url = locala.abFh.readString();
-          AppMethodBeat.o(265935);
-          return 0;
-        case 2: 
-          localcob.RUB = locala.abFh.readString();
-          AppMethodBeat.o(265935);
+          paramVarArgs = ((i.a.a.a.a)localObject).aMP(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            kd localkd = new kd();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localkd.parseFrom((byte[])localObject);
+            }
+            localcob.BaseResponse = localkd;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(125735);
           return 0;
         }
-        localcob.Twl = locala.abFh.AK();
-        AppMethodBeat.o(265935);
+        localcob.aavn = ((i.a.a.a.a)localObject).ajGk.kFX();
+        AppMethodBeat.o(125735);
         return 0;
       }
-      AppMethodBeat.o(265935);
+      AppMethodBeat.o(125735);
       return -1;
     }
   }

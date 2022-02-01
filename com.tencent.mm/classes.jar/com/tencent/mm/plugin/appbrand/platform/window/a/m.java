@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.appbrand.platform.window.a;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
-import com.tencent.luggage.k.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
@@ -16,17 +15,7 @@ final class m
     this.mActivity = paramActivity;
   }
   
-  public final void c(Configuration paramConfiguration) {}
-  
-  public final int chc()
-  {
-    AppMethodBeat.i(176757);
-    int i = j.cEc.aM(this.mActivity);
-    AppMethodBeat.o(176757);
-    return i;
-  }
-  
-  public final boolean xJ()
+  public final boolean Xg()
   {
     AppMethodBeat.i(176756);
     if (Build.VERSION.SDK_INT < 21)
@@ -34,14 +23,24 @@ final class m
       AppMethodBeat.o(176756);
       return false;
     }
-    boolean bool = j.cEc.aN(this.mActivity);
+    boolean bool = com.tencent.luggage.l.k.exm.bx(this.mActivity);
     AppMethodBeat.o(176756);
     return bool;
   }
+  
+  public final int cHZ()
+  {
+    AppMethodBeat.i(176757);
+    int i = com.tencent.luggage.l.k.exm.bw(this.mActivity);
+    AppMethodBeat.o(176757);
+    return i;
+  }
+  
+  public final void e(Configuration paramConfiguration) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.m
  * JD-Core Version:    0.7.0.1
  */

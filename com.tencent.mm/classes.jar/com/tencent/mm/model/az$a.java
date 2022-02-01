@@ -2,19 +2,14 @@ package com.tencent.mm.model;
 
 public final class az$a
 {
-  public static az.b ltq;
-  public static az.e lts;
-  public static az.c ltt;
-  public static az.f ltu;
+  public static az.b okP;
+  public static az.e okQ;
+  public static az.c okR;
+  public static az.f okS;
   
-  public static az.b ber()
+  public static az.b bCk()
   {
-    return ltq;
-  }
-  
-  public static az.c bes()
-  {
-    return ltt;
+    return okP;
   }
 }
 

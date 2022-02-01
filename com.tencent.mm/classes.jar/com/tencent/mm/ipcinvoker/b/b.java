@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface b
   extends IInterface
 {
-  public abstract void C(Bundle paramBundle);
+  public abstract void J(Bundle paramBundle);
   
   public static abstract class a
     extends Binder
@@ -22,9 +22,9 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.ipcinvoker.aidl.AIDL_IPCInvokeCallback");
     }
     
-    public static b aFB()
+    public static b aYA()
     {
-      return a.jZg;
+      return a.mze;
     }
     
     public IBinder asBinder()
@@ -46,7 +46,7 @@ public abstract interface b
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        C(paramParcel1);
+        J(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -55,7 +55,7 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b jZg;
+      public static b mze;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -63,7 +63,7 @@ public abstract interface b
         this.mRemote = paramIBinder;
       }
       
-      public final void C(Bundle paramBundle)
+      public final void J(Bundle paramBundle)
       {
         AppMethodBeat.i(158783);
         Parcel localParcel1 = Parcel.obtain();
@@ -76,9 +76,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.aFB() != null))
+          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.aYA() != null))
           {
-            b.a.aFB().C(paramBundle);
+            b.a.aYA().J(paramBundle);
             return;
             localParcel1.writeInt(0);
           }

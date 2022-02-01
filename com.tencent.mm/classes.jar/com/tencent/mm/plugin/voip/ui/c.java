@@ -2,16 +2,17 @@ package com.tencent.mm.plugin.voip.ui;
 
 import com.tencent.mm.plugin.voip.video.render.VoIPRenderSurfaceView;
 import com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView;
+import kotlin.ah;
 
 public abstract interface c
 {
-  public abstract void AM(boolean paramBoolean);
+  public abstract void Gl(boolean paramBoolean);
   
-  public abstract void AN(boolean paramBoolean);
+  public abstract void Gm(boolean paramBoolean);
   
-  public abstract boolean AP(boolean paramBoolean);
+  public abstract boolean Gn(boolean paramBoolean);
   
-  public abstract void XB(int paramInt);
+  public abstract void VW(int paramInt);
   
   public abstract void a(b paramb);
   
@@ -25,58 +26,59 @@ public abstract interface c
   
   public abstract void a(VoIPRenderTextureView paramVoIPRenderTextureView, int paramInt);
   
-  public abstract void aQ(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void aF(boolean paramBoolean, String paramString);
   
-  @Deprecated
-  public abstract void aq(long paramLong, int paramInt);
+  public abstract boolean aL(kotlin.g.a.b<Boolean, ah> paramb);
   
-  public abstract boolean gxG();
+  public abstract void apT(int paramInt);
   
-  public abstract boolean gxH();
+  public abstract void b(b paramb);
   
-  public abstract boolean gxI();
+  public abstract void bn(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean gxJ();
+  public abstract boolean hVH();
   
-  public abstract boolean gxK();
+  public abstract boolean hVI();
   
-  public abstract boolean gxL();
+  public abstract boolean hVJ();
   
-  public abstract boolean gxM();
+  public abstract boolean hVK();
   
-  public abstract boolean gxN();
+  public abstract boolean hVL();
   
-  public abstract void gxO();
+  public abstract boolean hVM();
   
-  public abstract void gxP();
+  public abstract boolean hVN();
   
-  public abstract void gxR();
+  public abstract boolean hVO();
   
-  public abstract void gxS();
+  public abstract void hVP();
   
-  public abstract void gxT();
+  public abstract void hVQ();
   
-  public abstract void gxU();
+  public abstract void hVU();
   
-  public abstract void gxV();
+  public abstract void hVV();
   
-  public abstract void gxW();
+  public abstract void hVW();
   
-  public abstract boolean gxX();
+  public abstract void hVX();
   
-  public abstract void gyk();
+  public abstract boolean hVZ();
   
-  public abstract void gyl();
+  public abstract void hWh();
   
-  public abstract void kM(int paramInt1, int paramInt2);
+  public abstract void hWi();
+  
+  public abstract void hWj();
   
   public abstract void setVoicePlayDevice(int paramInt);
   
-  public abstract void uy(boolean paramBoolean);
+  public abstract void yN(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.c
  * JD-Core Version:    0.7.0.1
  */

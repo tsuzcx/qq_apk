@@ -21,9 +21,7 @@ import androidx.appcompat.widget.AppCompatRatingBar;
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.z;
 import androidx.b.a;
-import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Constructor;
 import java.util.Map;
@@ -39,28 +37,28 @@ public class AppCompatViewInflater
   
   static
   {
-    AppMethodBeat.i(238413);
+    AppMethodBeat.i(200431);
     sConstructorSignature = new Class[] { Context.class, AttributeSet.class };
     sOnClickAttrs = new int[] { 16843375 };
     sClassPrefixList = new String[] { "android.widget.", "android.view.", "android.webkit." };
     sConstructorMap = new a();
-    AppMethodBeat.o(238413);
+    AppMethodBeat.o(200431);
   }
   
   public AppCompatViewInflater()
   {
-    AppMethodBeat.i(238367);
+    AppMethodBeat.i(200373);
     this.mConstructorArgs = new Object[2];
-    AppMethodBeat.o(238367);
+    AppMethodBeat.o(200373);
   }
   
   private void checkOnClickListener(View paramView, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238408);
+    AppMethodBeat.i(200402);
     Object localObject = paramView.getContext();
-    if ((!(localObject instanceof ContextWrapper)) || ((Build.VERSION.SDK_INT >= 15) && (!w.am(paramView))))
+    if ((!(localObject instanceof ContextWrapper)) || ((Build.VERSION.SDK_INT >= 15) && (!androidx.core.g.z.az(paramView))))
     {
-      AppMethodBeat.o(238408);
+      AppMethodBeat.o(200402);
       return;
     }
     paramAttributeSet = ((Context)localObject).obtainStyledAttributes(paramAttributeSet, sOnClickAttrs);
@@ -69,12 +67,12 @@ public class AppCompatViewInflater
       paramView.setOnClickListener(new AppCompatViewInflater.a(paramView, (String)localObject));
     }
     paramAttributeSet.recycle();
-    AppMethodBeat.o(238408);
+    AppMethodBeat.o(200402);
   }
   
   private View createViewByPrefix(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(238410);
+    AppMethodBeat.i(200416);
     Constructor localConstructor = (Constructor)sConstructorMap.get(paramString1);
     Object localObject = localConstructor;
     if (localConstructor == null) {}
@@ -88,20 +86,20 @@ public class AppCompatViewInflater
         sConstructorMap.put(paramString1, localObject);
         ((Constructor)localObject).setAccessible(true);
         paramContext = (View)((Constructor)localObject).newInstance(this.mConstructorArgs);
-        AppMethodBeat.o(238410);
+        AppMethodBeat.o(200416);
         return paramContext;
       }
       return null;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(238410);
+      AppMethodBeat.o(200416);
     }
   }
   
   private View createViewFromTag(Context paramContext, String paramString, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238407);
+    AppMethodBeat.i(200390);
     String str = paramString;
     if (paramString.equals("view")) {
       str = paramAttributeSet.getAttributeValue(null, "class");
@@ -134,13 +132,13 @@ public class AppCompatViewInflater
     {
       this.mConstructorArgs[0] = null;
       this.mConstructorArgs[1] = null;
-      AppMethodBeat.o(238407);
+      AppMethodBeat.o(200390);
     }
   }
   
   private static Context themifyContext(Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(238411);
+    AppMethodBeat.i(200425);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.View, 0, 0);
     if (paramBoolean1) {}
     for (int i = paramAttributeSet.getResourceId(a.j.View_android_theme, 0);; i = 0)
@@ -156,14 +154,14 @@ public class AppCompatViewInflater
           if ((paramContext instanceof d))
           {
             paramAttributeSet = paramContext;
-            if (((d)paramContext).jM == i) {}
+            if (((d)paramContext).kI == i) {}
           }
           else
           {
             paramAttributeSet = new d(paramContext, i);
           }
         }
-        AppMethodBeat.o(238411);
+        AppMethodBeat.o(200425);
         return paramAttributeSet;
       }
     }
@@ -171,117 +169,117 @@ public class AppCompatViewInflater
   
   private void verifyNotNull(View paramView, String paramString)
   {
-    AppMethodBeat.i(238406);
+    AppMethodBeat.i(200381);
     if (paramView == null)
     {
       paramView = new IllegalStateException(getClass().getName() + " asked to inflate view for <" + paramString + ">, but returned null");
-      AppMethodBeat.o(238406);
+      AppMethodBeat.o(200381);
       throw paramView;
     }
-    AppMethodBeat.o(238406);
+    AppMethodBeat.o(200381);
   }
   
   protected AppCompatAutoCompleteTextView createAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238397);
+    AppMethodBeat.i(200520);
     paramContext = new AppCompatAutoCompleteTextView(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238397);
+    AppMethodBeat.o(200520);
     return paramContext;
   }
   
   protected AppCompatButton createButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238379);
+    AppMethodBeat.i(200470);
     paramContext = new AppCompatButton(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238379);
+    AppMethodBeat.o(200470);
     return paramContext;
   }
   
   protected AppCompatCheckBox createCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238390);
+    AppMethodBeat.i(200500);
     paramContext = new AppCompatCheckBox(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238390);
+    AppMethodBeat.o(200500);
     return paramContext;
   }
   
   protected AppCompatCheckedTextView createCheckedTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238394);
+    AppMethodBeat.i(200512);
     paramContext = new AppCompatCheckedTextView(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238394);
+    AppMethodBeat.o(200512);
     return paramContext;
   }
   
   protected AppCompatEditText createEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238381);
+    AppMethodBeat.i(200478);
     paramContext = new AppCompatEditText(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238381);
+    AppMethodBeat.o(200478);
     return paramContext;
   }
   
   protected AppCompatImageButton createImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238387);
+    AppMethodBeat.i(200494);
     paramContext = new AppCompatImageButton(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238387);
+    AppMethodBeat.o(200494);
     return paramContext;
   }
   
   protected AppCompatImageView createImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238377);
+    AppMethodBeat.i(200463);
     paramContext = new AppCompatImageView(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238377);
+    AppMethodBeat.o(200463);
     return paramContext;
   }
   
   protected AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238400);
+    AppMethodBeat.i(200535);
     paramContext = new AppCompatMultiAutoCompleteTextView(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238400);
+    AppMethodBeat.o(200535);
     return paramContext;
   }
   
   protected AppCompatRadioButton createRadioButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238392);
+    AppMethodBeat.i(200507);
     paramContext = new AppCompatRadioButton(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238392);
+    AppMethodBeat.o(200507);
     return paramContext;
   }
   
   protected AppCompatRatingBar createRatingBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238402);
+    AppMethodBeat.i(200543);
     paramContext = new AppCompatRatingBar(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238402);
+    AppMethodBeat.o(200543);
     return paramContext;
   }
   
   protected AppCompatSeekBar createSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238404);
+    AppMethodBeat.i(200549);
     paramContext = new AppCompatSeekBar(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238404);
+    AppMethodBeat.o(200549);
     return paramContext;
   }
   
   protected AppCompatSpinner createSpinner(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238384);
+    AppMethodBeat.i(200488);
     paramContext = new AppCompatSpinner(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238384);
+    AppMethodBeat.o(200488);
     return paramContext;
   }
   
   protected AppCompatTextView createTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(238374);
+    AppMethodBeat.i(200455);
     paramContext = new AppCompatTextView(paramContext, paramAttributeSet);
-    AppMethodBeat.o(238374);
+    AppMethodBeat.o(200455);
     return paramContext;
   }
   
@@ -292,7 +290,7 @@ public class AppCompatViewInflater
   
   final View createView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(238372);
+    AppMethodBeat.i(200447);
     if ((paramBoolean1) && (paramView != null)) {}
     for (Object localObject = paramView.getContext();; localObject = paramContext)
     {
@@ -307,7 +305,7 @@ public class AppCompatViewInflater
       }
       localObject = paramView;
       if (paramBoolean4) {
-        localObject = z.L(paramView);
+        localObject = androidx.appcompat.widget.z.L(paramView);
       }
       int i = -1;
       switch (paramString.hashCode())
@@ -330,7 +328,7 @@ public class AppCompatViewInflater
         if (paramView != null) {
           checkOnClickListener(paramView, paramAttributeSet);
         }
-        AppMethodBeat.o(238372);
+        AppMethodBeat.o(200447);
         return paramView;
         if (!paramString.equals("TextView")) {
           break;
@@ -442,7 +440,7 @@ public class AppCompatViewInflater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     androidx.appcompat.app.AppCompatViewInflater
  * JD-Core Version:    0.7.0.1
  */

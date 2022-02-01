@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.plugin.card.c.l;
+import com.tencent.mm.plugin.card.ui.e.b;
+import com.tencent.mm.protocal.protobuf.ws;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
@@ -15,34 +15,10 @@ public final class e
     super(paramMMActivity);
   }
   
-  public final boolean cJY()
-  {
-    AppMethodBeat.i(113646);
-    if ((super.cJY()) && (this.tmU.cGn()) && (!cJq()) && (!cJV()) && (!cJW()))
-    {
-      AppMethodBeat.o(113646);
-      return true;
-    }
-    AppMethodBeat.o(113646);
-    return false;
-  }
-  
-  public final boolean cKh()
-  {
-    AppMethodBeat.i(113641);
-    if ((this.tmU.cFY()) && (!l.Ik(this.tvQ.jaR)) && (this.tmU.cGn()) && (!cJq()))
-    {
-      AppMethodBeat.o(113641);
-      return false;
-    }
-    AppMethodBeat.o(113641);
-    return true;
-  }
-  
-  public final boolean cKl()
+  public final boolean dnB()
   {
     AppMethodBeat.i(113642);
-    if ((this.tmU.cFY()) && (!l.Ik(this.tvQ.jaR)) && (this.tmU.cGn()) && (!cJq()))
+    if ((this.wru.djq()) && (!l.IN(this.wAo.lCR)) && (this.wru.djF()) && (!dmH()))
     {
       AppMethodBeat.o(113642);
       return true;
@@ -51,18 +27,18 @@ public final class e
     return false;
   }
   
-  public final boolean cKm()
+  public final boolean dnC()
   {
-    AppMethodBeat.i(250681);
-    boolean bool = cJq();
-    AppMethodBeat.o(250681);
+    AppMethodBeat.i(293804);
+    boolean bool = dmH();
+    AppMethodBeat.o(293804);
     return bool;
   }
   
-  public final boolean cKo()
+  public final boolean dnE()
   {
     AppMethodBeat.i(113647);
-    if ((this.tmU.cGs() != null) && (this.tmU.cGs().Sgu))
+    if ((this.wru.djK() != null) && (this.wru.djK().Zep))
     {
       AppMethodBeat.o(113647);
       return true;
@@ -71,10 +47,10 @@ public final class e
     return false;
   }
   
-  public final boolean cKp()
+  public final boolean dnF()
   {
     AppMethodBeat.i(113643);
-    if ((super.cKp()) || ((this.tmU.cGn()) && (!cJq()) && ((cJV()) || (cJW()))))
+    if ((super.dnF()) || ((this.wru.djF()) && (!dmH()) && ((dnl()) || (dnm()))))
     {
       AppMethodBeat.o(113643);
       return true;
@@ -83,10 +59,10 @@ public final class e
     return false;
   }
   
-  public final boolean cKu()
+  public final boolean dnK()
   {
     AppMethodBeat.i(113645);
-    if ((this.tmU.cGn()) && (super.cKu()) && (!cKo()))
+    if ((this.wru.djF()) && (super.dnK()) && (!dnE()))
     {
       AppMethodBeat.o(113645);
       return true;
@@ -95,10 +71,10 @@ public final class e
     return false;
   }
   
-  public final boolean cKy()
+  public final boolean dnO()
   {
     AppMethodBeat.i(113644);
-    if ((this.tmU.cFY()) && (this.tmU.cGs().Sgg != null) && (this.tmU.cGn()) && (!cJq()) && (!cJV()) && (!cJW()))
+    if ((this.wru.djq()) && (this.wru.djK().Zeb != null) && (this.wru.djF()) && (!dmH()) && (!dnl()) && (!dnm()))
     {
       AppMethodBeat.o(113644);
       return true;
@@ -106,10 +82,34 @@ public final class e
     AppMethodBeat.o(113644);
     return false;
   }
+  
+  public final boolean dno()
+  {
+    AppMethodBeat.i(113646);
+    if ((super.dno()) && (this.wru.djF()) && (!dmH()) && (!dnl()) && (!dnm()))
+    {
+      AppMethodBeat.o(113646);
+      return true;
+    }
+    AppMethodBeat.o(113646);
+    return false;
+  }
+  
+  public final boolean dnx()
+  {
+    AppMethodBeat.i(113641);
+    if ((this.wru.djq()) && (!l.IN(this.wAo.lCR)) && (this.wru.djF()) && (!dmH()))
+    {
+      AppMethodBeat.o(113641);
+      return false;
+    }
+    AppMethodBeat.o(113641);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

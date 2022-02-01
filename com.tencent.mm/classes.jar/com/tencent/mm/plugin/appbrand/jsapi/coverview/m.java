@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
 import org.json.JSONObject;
 
 public final class m
@@ -13,7 +13,7 @@ public final class m
   private static final int CTRL_INDEX = 448;
   public static final String NAME = "removeScrollView";
   
-  public final int K(JSONObject paramJSONObject)
+  public final int V(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137538);
     int i = paramJSONObject.getInt("viewId");
@@ -21,18 +21,18 @@ public final class m
     return i;
   }
   
-  public final boolean b(g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean b(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137539);
-    paramg.hl(paramJSONObject.optBoolean("independent", false)).zR(paramInt);
-    boolean bool = super.b(paramg, paramInt, paramView, paramJSONObject);
+    paramh.ic(paramJSONObject.optBoolean("independent", false)).Aj(paramInt);
+    boolean bool = super.b(paramh, paramInt, paramView, paramJSONObject);
     AppMethodBeat.o(137539);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="#ffede6d3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <View android:background="@drawable/af1" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/aar" android:layout_marginRight="@dimen/aar" android:layout_alignParentBottom="true" />
-        <RelativeLayout android:background="@color/yf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aap" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/aap">
-            <ImageView android:id="@id/afr" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cc4" />
-            <ListView android:id="@id/ag6" android:background="@color/yf" android:paddingLeft="@dimen/aaq" android:paddingRight="@dimen/aaq" android:paddingBottom="30.0dip" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="46.0dip" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" android:footerDividersEnabled="false" />
-        </RelativeLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/afq" android:background="@drawable/aeq" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/aan" android:layout_marginLeft="@dimen/aar" android:layout_marginRight="@dimen/aar" android:layout_alignParentBottom="true">
-            <ImageView android:background="@drawable/cc0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/d_"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:id="@id/g30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/eau" />
+    <RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/ff6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/c8">
+        <LinearLayout android:orientation="horizontal" android:id="@id/knu" android:padding="@dimen/cd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/cd" android:textColor="@color/Link" android:gravity="center" android:layout_gravity="center" android:id="@id/knv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ent" style="@style/zo" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/df" android:layout_height="@dimen/cp" android:src="@raw/icons_filled_arrow" android:layout_marginStart="@dimen/bv" app:iconColor="@color/Link" />
         </LinearLayout>
     </RelativeLayout>
-    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/aga" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.tencent.mm.ui.KeyboardLinearLayout>
+</LinearLayout>

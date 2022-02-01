@@ -12,8 +12,8 @@ public class AppBrandBatchPreloadController$TaskParamsCallPredownload
   String appId;
   int appType;
   String path;
-  boolean qSs;
   int scene;
+  boolean tWX;
   
   static
   {
@@ -32,7 +32,7 @@ public class AppBrandBatchPreloadController$TaskParamsCallPredownload
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.qSs = bool;
+      this.tWX = bool;
       AppMethodBeat.o(48492);
       return;
       bool = false;
@@ -45,7 +45,7 @@ public class AppBrandBatchPreloadController$TaskParamsCallPredownload
     this.appType = paramInt1;
     this.path = paramString2;
     this.scene = paramInt2;
-    this.qSs = paramBoolean;
+    this.tWX = paramBoolean;
   }
   
   public int describeContents()
@@ -60,7 +60,7 @@ public class AppBrandBatchPreloadController$TaskParamsCallPredownload
     paramParcel.writeInt(this.appType);
     paramParcel.writeString(this.path);
     paramParcel.writeInt(this.scene);
-    if (this.qSs) {}
+    if (this.tWX) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -71,7 +71,7 @@ public class AppBrandBatchPreloadController$TaskParamsCallPredownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.AppBrandBatchPreloadController.TaskParamsCallPredownload
  * JD-Core Version:    0.7.0.1
  */

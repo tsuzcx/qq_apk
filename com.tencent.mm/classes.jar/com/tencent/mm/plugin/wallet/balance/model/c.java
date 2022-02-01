@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.balance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.c.z;
+import com.tencent.mm.wallet_core.model.aa;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,14 +11,14 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public boolean OkD;
-  public String fHb;
+  public boolean UZg;
+  public String hMy;
   
   public c(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4)
   {
-    AppMethodBeat.i(267199);
-    this.fHb = null;
-    this.OkD = false;
+    AppMethodBeat.i(316080);
+    this.hMy = null;
+    this.UZg = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("flag", String.valueOf(paramInt1));
     localHashMap.put("passwd", paramString1);
@@ -27,17 +27,17 @@ public final class c
     localHashMap.put("pay_scene", String.valueOf(paramInt2));
     localHashMap.put("ignore_bind", paramString4);
     if ("0".equals(paramString4)) {
-      this.OkD = true;
+      this.UZg = true;
     }
     setRequestData(localHashMap);
     paramString1 = new HashMap();
-    if (z.iiS())
+    if (aa.jOO())
     {
-      paramString1.put("uuid_for_bindcard", z.getBindCardUuid());
-      paramString1.put("bindcard_scene", z.iiT());
+      paramString1.put("uuid_for_bindcard", aa.getBindCardUuid());
+      paramString1.put("bindcard_scene", aa.jOP());
     }
     setWXRequestData(paramString1);
-    AppMethodBeat.o(267199);
+    AppMethodBeat.o(316080);
   }
   
   public final int getFuncId()
@@ -64,13 +64,13 @@ public final class c
       AppMethodBeat.o(68393);
       return;
     }
-    this.fHb = paramJSONObject.optString("req_key");
+    this.hMy = paramJSONObject.optString("req_key");
     AppMethodBeat.o(68393);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.c
  * JD-Core Version:    0.7.0.1
  */

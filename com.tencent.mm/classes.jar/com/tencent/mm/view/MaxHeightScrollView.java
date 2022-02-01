@@ -11,28 +11,31 @@ import com.tencent.mm.ah.a.m;
 public class MaxHeightScrollView
   extends ScrollView
 {
-  private int EK;
+  private final String TAG;
+  private int bkR;
   
   public MaxHeightScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(210000);
+    AppMethodBeat.i(234845);
+    this.TAG = ("MicroMsg.MaxHeightScrollView@" + hashCode());
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(210000);
+    AppMethodBeat.o(234845);
   }
   
   public MaxHeightScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(210001);
+    AppMethodBeat.i(234855);
+    this.TAG = ("MicroMsg.MaxHeightScrollView@" + hashCode());
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(210001);
+    AppMethodBeat.o(234855);
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     int i = 0;
-    AppMethodBeat.i(210002);
+    AppMethodBeat.i(234865);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.MaxHeightScrollView, 0, 0);
     try
     {
@@ -50,31 +53,31 @@ public class MaxHeightScrollView
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(210002);
+      AppMethodBeat.o(234865);
     }
   }
   
   public int getMaxHeight()
   {
-    return this.EK;
+    return this.bkR;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(210005);
+    AppMethodBeat.i(234880);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.EK > 0) && (getMeasuredHeight() > this.EK)) {
-      setMeasuredDimension(paramInt1, View.MeasureSpec.makeMeasureSpec(this.EK, -2147483648));
+    if ((this.bkR > 0) && (getMeasuredHeight() > this.bkR)) {
+      setMeasuredDimension(paramInt1, View.MeasureSpec.makeMeasureSpec(this.bkR, -2147483648));
     }
-    AppMethodBeat.o(210005);
+    AppMethodBeat.o(234880);
   }
   
   public void setMaxHeight(int paramInt)
   {
-    AppMethodBeat.i(210003);
-    this.EK = paramInt;
+    AppMethodBeat.i(234872);
+    this.bkR = paramInt;
     requestLayout();
-    AppMethodBeat.o(210003);
+    AppMethodBeat.o(234872);
   }
 }
 

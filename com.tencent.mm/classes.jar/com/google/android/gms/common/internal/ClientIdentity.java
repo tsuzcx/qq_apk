@@ -4,22 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@SafeParcelable.Class(creator="ClientIdentityCreator")
-@SafeParcelable.Reserved({1000})
 public class ClientIdentity
   extends AbstractSafeParcelable
 {
   public static final Parcelable.Creator<ClientIdentity> CREATOR;
-  @SafeParcelable.Field(defaultValueUnchecked="null", id=2)
   public final String packageName;
-  @SafeParcelable.Field(defaultValueUnchecked="0", id=1)
   public final int uid;
   
   static
@@ -29,8 +20,7 @@ public class ClientIdentity
     AppMethodBeat.o(11804);
   }
   
-  @SafeParcelable.Constructor
-  public ClientIdentity(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString)
+  public ClientIdentity(int paramInt, String paramString)
   {
     this.uid = paramInt;
     this.packageName = paramString;
@@ -86,7 +76,7 @@ public class ClientIdentity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ClientIdentity
  * JD-Core Version:    0.7.0.1
  */

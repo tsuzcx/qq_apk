@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/cua" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@id/ix5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulSuitView android:id="@id/kwi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.finder.live.view.FinderLiveCameraOptBeautyPowerfulDetailsView android:id="@id/kwc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <RelativeLayout android:gravity="center" android:id="@id/kwb" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginLeft="12.0dip" android:layout_marginTop="12.0dip" android:contentDescription="@string/k4y">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@drawable/d3i" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/BW_100_Alpha_0_5" />
-    </RelativeLayout>
-</RelativeLayout>
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/e56" android:layout_width="@dimen/dc" android:layout_height="@dimen/dc" app:layout_constraintStart_toStartOf="hr_" app:layout_constraintTop_toTopOf="hr_">
+        <ImageView android:layout_gravity="center" android:id="@id/e55" android:layout_width="@dimen/db" android:layout_height="@dimen/db" />
+    </FrameLayout>
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/e57" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="@dimen/d1" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/df" app:layout_constraintBottom_toTopOf="@id/e57" app:layout_constraintStart_toEndOf="@id/e56">
+        <TextView android:textSize="@dimen/j7" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/e67" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/e54" android:visibility="gone" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_marginStart="@dimen/bv" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bv" android:minHeight="@dimen/cp" app:layout_constraintStart_toStartOf="@id/e66" app:layout_constraintTop_toBottomOf="@id/e57">
+        <TextView android:textSize="@dimen/m_" android:textColor="@color/BW_100_Alpha_0_5" android:layout_gravity="center_vertical" android:id="@id/hpl" android:background="@drawable/a5w" android:paddingLeft="@dimen/bv" android:paddingRight="@dimen/bv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ege" android:layout_marginEnd="@dimen/cd" />
+        <TextView android:textSize="@dimen/m3" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/l2v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="广州" android:includeFontPadding="false" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,221 +1,185 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.core.i;
-import com.tencent.mm.plugin.webview.core.j;
-import com.tencent.mm.plugin.webview.core.k;
+import com.tencent.mm.plugin.webview.core.l;
+import com.tencent.mm.plugin.webview.core.m;
+import com.tencent.mm.plugin.webview.core.n;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.floatball.d;
-import com.tencent.mm.protocal.protobuf.ese;
+import com.tencent.mm.plugin.webview.ui.tools.p;
+import com.tencent.mm.protocal.protobuf.fnn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMWebView;
-import java.util.HashMap;
-import kotlin.f;
-import kotlin.g;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
+import kotlin.Metadata;
+import kotlin.g.b.s;
+import kotlin.g.b.u;
+import kotlin.j;
 
-@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;", "Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;", "()V", "SHOW_PROGRESS_TIME", "", "TAG", "", "destroyed", "", "isForceUrl", "()Z", "isForceUrl$delegate", "Lkotlin/Lazy;", "mpController", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "getTmplParams", "()Lcom/tencent/mm/protocal/protobuf/TmplParams;", "tmplParams$delegate", "webViewControllerListener", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$webViewControllerListener$1", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$webViewControllerListener$1;", "canTryPreloadNextWebView", "createWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "createWebViewController", "Lcom/tencent/mm/plugin/webview/core/WebViewController;", "enableMinimize", "getMPController", "isPageCache", "loadForceUrl", "", "forceUrl", "fullScreen", "modifyForceUrl", "url", "onDestroy", "onPageReady", "onResetAfterCreate", "shouldInterceptProgressShow", "tryPreloadNextWebView", "plugin-brandservice_release"})
+@Metadata(d1={""}, d2={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;", "Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;", "()V", "SHOW_PROGRESS_TIME", "", "TAG", "", "destroyed", "", "isForceUrl", "()Z", "isForceUrl$delegate", "Lkotlin/Lazy;", "mpController", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/MpWebViewController;", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "getTmplParams", "()Lcom/tencent/mm/protocal/protobuf/TmplParams;", "tmplParams$delegate", "webViewControllerListener", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$webViewControllerListener$1", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$webViewControllerListener$1;", "canTryPreloadNextWebView", "createWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "createWebViewController", "Lcom/tencent/mm/plugin/webview/core/WebViewController;", "enableMinimize", "getMPController", "isPageCache", "loadForceUrl", "", "forceUrl", "fullScreen", "modifyForceUrl", "url", "onDestroy", "onPageReady", "onResetAfterCreate", "shouldInterceptProgressShow", "tryPreloadNextWebView", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
 public class TmplWebViewToolUI
   extends WebViewUI
 {
   private final String TAG;
-  private HashMap _$_findViewCache;
-  private final long sRQ;
-  private boolean sRR;
-  private final f sRS;
-  private final f sRT;
-  private MpWebViewController sRU;
-  private final c sRV;
+  private final long vXl;
+  private boolean vXm;
+  private final j vXn;
+  private final j vXo;
+  private MpWebViewController vXp;
+  private final c vXq;
   
   public TmplWebViewToolUI()
   {
     AppMethodBeat.i(7019);
     this.TAG = "MicroMsg.TmplWebViewToolUI";
-    this.sRQ = 500L;
-    this.sRS = g.ar((kotlin.g.a.a)new b(this));
-    this.sRT = g.ar((kotlin.g.a.a)new a(this));
-    this.sRV = new c(this);
+    this.vXl = 500L;
+    this.vXn = kotlin.k.cm((kotlin.g.a.a)new b(this));
+    this.vXo = kotlin.k.cm((kotlin.g.a.a)new a(this));
+    this.vXq = new c(this);
     AppMethodBeat.o(7019);
   }
   
-  private final ese cDR()
+  private final fnn dfa()
   {
-    AppMethodBeat.i(262588);
-    ese localese = (ese)this.sRS.getValue();
-    AppMethodBeat.o(262588);
-    return localese;
+    AppMethodBeat.i(303405);
+    fnn localfnn = (fnn)this.vXn.getValue();
+    AppMethodBeat.o(303405);
+    return localfnn;
   }
   
-  private final boolean cDS()
+  private final boolean dhu()
   {
-    AppMethodBeat.i(262590);
-    boolean bool = ((Boolean)this.sRT.getValue()).booleanValue();
-    AppMethodBeat.o(262590);
+    AppMethodBeat.i(303412);
+    boolean bool = ((Boolean)this.vXo.getValue()).booleanValue();
+    AppMethodBeat.o(303412);
     return bool;
   }
   
-  public void _$_clearFindViewByIdCache()
-  {
-    AppMethodBeat.i(262617);
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
-    }
-    AppMethodBeat.o(262617);
-  }
+  public void _$_clearFindViewByIdCache() {}
   
-  public View _$_findCachedViewById(int paramInt)
+  public final void dhv()
   {
-    AppMethodBeat.i(262615);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(paramInt);
-      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
-    }
-    AppMethodBeat.o(262615);
-    return localView1;
-  }
-  
-  public final void cDT()
-  {
-    Object localObject3 = null;
     Object localObject2 = null;
     AppMethodBeat.i(7000);
     Object localObject1;
-    if (!cDS())
+    if (!dhu())
     {
-      localObject1 = localObject3;
-      if (d.gZN())
+      localObject1 = localObject2;
+      if (d.izQ())
       {
         String str = getIntent().getStringExtra("float_ball_key");
-        localObject1 = localObject3;
+        localObject1 = localObject2;
         if (!Util.isNullOrNil(str))
         {
-          localObject1 = d.Qkh;
-          p.j(str, "floatBallKey");
-          localObject1 = d.bmB(str);
-          if ((localObject1 instanceof MpWebViewController)) {
-            break label289;
+          localObject1 = d.XbW;
+          s.checkNotNull(str);
+          localObject1 = d.bmc(str);
+          if (!(localObject1 instanceof MpWebViewController)) {
+            break label193;
           }
-          localObject1 = localObject2;
+          localObject1 = (MpWebViewController)localObject1;
         }
       }
+      if (localObject1 == null) {
+        break label198;
+      }
+      this.vXp = ((MpWebViewController)localObject1);
+      this.WXJ = true;
     }
-    label289:
     for (;;)
     {
-      localObject1 = (MpWebViewController)localObject1;
-      if ((localObject1 != null) && ((localObject1 instanceof MpWebViewController)))
+      Log.i(this.TAG, s.X("onResetAfterCreate isForceUrl=", Boolean.valueOf(dhu())));
+      super.dhv();
+      if (this.vXp != null)
       {
-        this.sRU = ((MpWebViewController)localObject1);
-        this.QfL = true;
-      }
-      for (;;)
-      {
-        Log.i(this.TAG, "onResetAfterCreate isForceUrl=" + cDS());
-        super.cDT();
-        if (this.sRU != null)
+        localObject1 = this.vXp;
+        s.checkNotNull(localObject1);
+        Log.i(this.TAG, "Abe-Debug createWebViewController");
+        if (!this.WXJ)
         {
-          localObject1 = this.sRU;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          Log.i(this.TAG, "Abe-Debug createWebViewController");
-          if (!this.QfL)
-          {
-            localObject2 = this.QgS;
-            p.j(localObject2, "defaultWebViewInterceptor");
-            ((MpWebViewController)localObject1).a((k)localObject2);
-          }
-          ((MpWebViewController)localObject1).a((j)this.sRV);
-          localObject1 = this.sRU;
-          if (localObject1 == null) {
-            p.iCn();
-          }
-          ((BaseWebViewController)localObject1).PFX.TA(this.sRQ);
+          localObject2 = this.WYQ;
+          s.s(localObject2, "defaultWebViewInterceptor");
+          ((MpWebViewController)localObject1).a((m)localObject2);
         }
-        AppMethodBeat.o(7000);
-        return;
+        ((MpWebViewController)localObject1).a((l)this.vXq);
+        localObject1 = this.vXp;
+        s.checkNotNull(localObject1);
+        ((BaseWebViewController)localObject1).WwK.xK(this.vXl);
+      }
+      AppMethodBeat.o(7000);
+      return;
+      label193:
+      localObject1 = null;
+      break;
+      label198:
+      localObject1 = getContext();
+      s.s(localObject1, "context");
+      localObject2 = a.a((Context)localObject1, dfa(), getIntent());
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
         localObject1 = getContext();
-        p.j(localObject1, "context");
-        localObject2 = a.a((Context)localObject1, cDR(), getIntent());
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = getContext();
-          p.j(localObject1, "context");
-          localObject1 = a.a((Context)localObject1, cDR());
-        }
-        this.sRU = ((MpWebViewController)localObject1);
+        s.s(localObject1, "context");
+        localObject1 = a.a((Context)localObject1, dfa());
       }
+      this.vXp = ((MpWebViewController)localObject1);
     }
   }
   
-  public final MMWebView cDU()
+  public final MMWebView dhw()
   {
     AppMethodBeat.i(7002);
-    if (this.QfL)
+    if (this.WXJ)
     {
-      localObject = super.cDU();
+      localObject = super.dhw();
       AppMethodBeat.o(7002);
       return localObject;
     }
-    if (!(this.sRU instanceof MpWebViewController))
+    if (this.vXp == null)
     {
-      localObject = super.cDU();
+      localObject = super.dhw();
       AppMethodBeat.o(7002);
       return localObject;
     }
-    Object localObject = this.sRU;
-    if (localObject == null) {
-      p.iCn();
-    }
-    localObject = ((BaseWebViewController)localObject).pHS;
+    Object localObject = this.vXp;
+    s.checkNotNull(localObject);
+    localObject = ((BaseWebViewController)localObject).sMP;
     AppMethodBeat.o(7002);
     return localObject;
   }
   
-  public final i cDV()
+  public final com.tencent.mm.plugin.webview.core.k dhx()
   {
-    AppMethodBeat.i(262598);
-    Object localObject = this.sRU;
-    if (localObject != null)
+    AppMethodBeat.i(303439);
+    Object localObject = this.vXp;
+    if (localObject == null)
     {
-      localObject = (i)localObject;
-      AppMethodBeat.o(262598);
+      localObject = super.dhx();
+      s.s(localObject, "super.createWebViewController()");
+      AppMethodBeat.o(303439);
       return localObject;
     }
-    localObject = super.cDV();
-    p.j(localObject, "super.createWebViewController()");
-    AppMethodBeat.o(262598);
+    localObject = (com.tencent.mm.plugin.webview.core.k)localObject;
+    AppMethodBeat.o(303439);
     return localObject;
   }
   
-  public final boolean cDW()
+  public final boolean dhy()
   {
-    AppMethodBeat.i(262602);
-    if (!cDS())
+    AppMethodBeat.i(303448);
+    if (!dhu())
     {
-      AppMethodBeat.o(262602);
+      AppMethodBeat.o(303448);
       return true;
     }
-    AppMethodBeat.o(262602);
+    AppMethodBeat.o(303448);
     return false;
   }
   
-  public final boolean cDX()
+  public final boolean dhz()
   {
     return true;
   }
@@ -223,11 +187,11 @@ public class TmplWebViewToolUI
   public void onDestroy()
   {
     AppMethodBeat.i(7003);
-    MpWebViewController localMpWebViewController = this.sRU;
+    MpWebViewController localMpWebViewController = this.vXp;
     if (localMpWebViewController != null) {
-      localMpWebViewController.b((j)this.sRV);
+      localMpWebViewController.b((l)this.vXq);
     }
-    this.sRR = true;
+    this.vXm = true;
     super.onDestroy();
     AppMethodBeat.o(7003);
   }
@@ -238,9 +202,9 @@ public class TmplWebViewToolUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", ""}, k=3, mv={1, 5, 1}, xi=48)
   static final class a
-    extends q
+    extends u
     implements kotlin.g.a.a<Boolean>
   {
     a(TmplWebViewToolUI paramTmplWebViewToolUI)
@@ -249,10 +213,10 @@ public class TmplWebViewToolUI
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "invoke"})
+  @Metadata(d1={""}, d2={"<anonymous>", "Lcom/tencent/mm/protocal/protobuf/TmplParams;"}, k=3, mv={1, 5, 1}, xi=48)
   static final class b
-    extends q
-    implements kotlin.g.a.a<ese>
+    extends u
+    implements kotlin.g.a.a<fnn>
   {
     b(TmplWebViewToolUI paramTmplWebViewToolUI)
     {
@@ -260,170 +224,171 @@ public class TmplWebViewToolUI
     }
     
     /* Error */
-    private ese cDY()
+    private fnn dhA()
     {
       // Byte code:
-      //   0: ldc 36
-      //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   0: ldc 39
+      //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 27	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:sRW	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
-      //   9: invokevirtual 45	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:getIntent	()Landroid/content/Intent;
+      //   6: getfield 30	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:vXr	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
+      //   9: invokevirtual 48	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:getIntent	()Landroid/content/Intent;
       //   12: astore_2
-      //   13: getstatic 51	com/tencent/mm/ui/f$r:VSE	Ljava/lang/String;
+      //   13: getstatic 54	com/tencent/mm/ui/f$s:adwN	Ljava/lang/String;
       //   16: astore_3
       //   17: aload_3
-      //   18: ldc 53
-      //   20: invokestatic 59	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   18: ldc 56
+      //   20: invokestatic 62	kotlin/g/b/s:s	(Ljava/lang/Object;Ljava/lang/String;)V
       //   23: aload_2
       //   24: aload_3
-      //   25: invokevirtual 65	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
+      //   25: invokevirtual 68	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
       //   28: astore_2
       //   29: aload_2
-      //   30: ifnull +208 -> 238
+      //   30: ifnull +205 -> 235
       //   33: aload_2
       //   34: arraylength
       //   35: istore_1
       //   36: iload_1
-      //   37: ifne +175 -> 212
+      //   37: ifne +172 -> 209
       //   40: iconst_1
       //   41: istore_1
       //   42: iload_1
-      //   43: ifne +174 -> 217
+      //   43: ifne +171 -> 214
       //   46: iconst_1
       //   47: istore_1
       //   48: iload_1
-      //   49: ifeq +189 -> 238
-      //   52: ldc 67
-      //   54: invokevirtual 73	java/lang/Class:newInstance	()Ljava/lang/Object;
+      //   49: ifeq +186 -> 235
+      //   52: ldc 70
+      //   54: invokevirtual 76	java/lang/Class:newInstance	()Ljava/lang/Object;
       //   57: astore_3
       //   58: aload_3
-      //   59: checkcast 75	com/tencent/mm/cd/a
+      //   59: checkcast 78	com/tencent/mm/bx/a
       //   62: aload_2
-      //   63: invokevirtual 79	com/tencent/mm/cd/a:parseFrom	([B)Lcom/tencent/mm/cd/a;
+      //   63: invokevirtual 82	com/tencent/mm/bx/a:parseFrom	([B)Lcom/tencent/mm/bx/a;
       //   66: pop
       //   67: aload_3
-      //   68: checkcast 75	com/tencent/mm/cd/a
+      //   68: checkcast 78	com/tencent/mm/bx/a
       //   71: astore_2
       //   72: aload_2
-      //   73: checkcast 67	com/tencent/mm/protocal/protobuf/ese
+      //   73: checkcast 70	com/tencent/mm/protocal/protobuf/fnn
       //   76: astore_3
       //   77: aload_3
       //   78: astore_2
       //   79: aload_3
-      //   80: ifnonnull +125 -> 205
-      //   83: new 81	android/content/res/Resources$NotFoundException
+      //   80: ifnonnull +122 -> 202
+      //   83: new 84	android/content/res/Resources$NotFoundException
       //   86: dup
-      //   87: ldc 83
-      //   89: invokespecial 86	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
-      //   92: checkcast 88	java/lang/Throwable
-      //   95: astore_2
-      //   96: ldc 36
-      //   98: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   101: aload_2
-      //   102: athrow
-      //   103: astore_2
-      //   104: aload_0
-      //   105: getfield 27	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:sRW	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
-      //   108: invokestatic 95	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:a	(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;)Ljava/lang/String;
-      //   111: new 97	java/lang/StringBuilder
-      //   114: dup
-      //   115: ldc 99
-      //   117: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   120: aload_2
-      //   121: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   124: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   127: bipush 32
-      //   129: invokevirtual 111	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-      //   132: aload_0
-      //   133: getfield 27	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:sRW	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
-      //   136: invokevirtual 45	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:getIntent	()Landroid/content/Intent;
-      //   139: invokestatic 117	com/tencent/mm/plugin/brandservice/ui/timeline/preload/f:ae	(Landroid/content/Intent;)Ljava/lang/String;
-      //   142: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   145: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   148: invokestatic 126	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   151: sipush 150
-      //   154: invokestatic 131	com/tencent/mm/plugin/webview/h/a:anX	(I)V
-      //   157: getstatic 137	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
-      //   160: sipush 17260
-      //   163: iconst_2
-      //   164: anewarray 139	java/lang/Object
-      //   167: dup
-      //   168: iconst_0
-      //   169: iconst_2
-      //   170: invokestatic 145	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   173: aastore
-      //   174: dup
-      //   175: iconst_1
-      //   176: aload_0
-      //   177: getfield 27	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:sRW	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
-      //   180: invokevirtual 45	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:getIntent	()Landroid/content/Intent;
-      //   183: invokestatic 117	com/tencent/mm/plugin/brandservice/ui/timeline/preload/f:ae	(Landroid/content/Intent;)Ljava/lang/String;
-      //   186: aastore
-      //   187: invokevirtual 148	com/tencent/mm/plugin/report/service/h:a	(I[Ljava/lang/Object;)V
-      //   190: aload_0
-      //   191: getfield 27	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:sRW	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
-      //   194: invokevirtual 151	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:finish	()V
-      //   197: new 67	com/tencent/mm/protocal/protobuf/ese
-      //   200: dup
-      //   201: invokespecial 152	com/tencent/mm/protocal/protobuf/ese:<init>	()V
-      //   204: astore_2
-      //   205: ldc 36
-      //   207: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   210: aload_2
-      //   211: areturn
-      //   212: iconst_0
-      //   213: istore_1
-      //   214: goto -172 -> 42
-      //   217: iconst_0
-      //   218: istore_1
-      //   219: goto -171 -> 48
-      //   222: astore_2
-      //   223: ldc 154
-      //   225: aload_2
-      //   226: checkcast 88	java/lang/Throwable
-      //   229: ldc 156
-      //   231: iconst_0
-      //   232: anewarray 139	java/lang/Object
-      //   235: invokestatic 160	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   238: aconst_null
-      //   239: astore_2
-      //   240: goto -168 -> 72
+      //   87: ldc 86
+      //   89: invokespecial 89	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+      //   92: astore_2
+      //   93: ldc 39
+      //   95: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   98: aload_2
+      //   99: athrow
+      //   100: astore_2
+      //   101: aload_0
+      //   102: getfield 30	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:vXr	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
+      //   105: invokestatic 96	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:a	(Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;)Ljava/lang/String;
+      //   108: new 98	java/lang/StringBuilder
+      //   111: dup
+      //   112: ldc 100
+      //   114: invokespecial 101	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   117: aload_2
+      //   118: invokevirtual 105	java/lang/Exception:getMessage	()Ljava/lang/String;
+      //   121: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      //   124: bipush 32
+      //   126: invokevirtual 112	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+      //   129: aload_0
+      //   130: getfield 30	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:vXr	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
+      //   133: invokevirtual 48	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:getIntent	()Landroid/content/Intent;
+      //   136: invokestatic 118	com/tencent/mm/plugin/brandservice/ui/timeline/preload/f:ai	(Landroid/content/Intent;)Ljava/lang/String;
+      //   139: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   142: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   145: invokestatic 130	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   148: sipush 150
+      //   151: invokestatic 135	com/tencent/mm/plugin/webview/g/a:atP	(I)V
+      //   154: getstatic 141	com/tencent/mm/plugin/report/service/h:OAn	Lcom/tencent/mm/plugin/report/service/h;
+      //   157: sipush 17260
+      //   160: iconst_2
+      //   161: anewarray 143	java/lang/Object
+      //   164: dup
+      //   165: iconst_0
+      //   166: iconst_2
+      //   167: invokestatic 149	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   170: aastore
+      //   171: dup
+      //   172: iconst_1
+      //   173: aload_0
+      //   174: getfield 30	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:vXr	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
+      //   177: invokevirtual 48	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:getIntent	()Landroid/content/Intent;
+      //   180: invokestatic 118	com/tencent/mm/plugin/brandservice/ui/timeline/preload/f:ai	(Landroid/content/Intent;)Ljava/lang/String;
+      //   183: aastore
+      //   184: invokevirtual 153	com/tencent/mm/plugin/report/service/h:b	(I[Ljava/lang/Object;)V
+      //   187: aload_0
+      //   188: getfield 30	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$b:vXr	Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;
+      //   191: invokevirtual 156	com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI:finish	()V
+      //   194: new 70	com/tencent/mm/protocal/protobuf/fnn
+      //   197: dup
+      //   198: invokespecial 157	com/tencent/mm/protocal/protobuf/fnn:<init>	()V
+      //   201: astore_2
+      //   202: ldc 39
+      //   204: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   207: aload_2
+      //   208: areturn
+      //   209: iconst_0
+      //   210: istore_1
+      //   211: goto -169 -> 42
+      //   214: iconst_0
+      //   215: istore_1
+      //   216: goto -168 -> 48
+      //   219: astore_2
+      //   220: ldc 159
+      //   222: aload_2
+      //   223: checkcast 161	java/lang/Throwable
+      //   226: ldc 163
+      //   228: iconst_0
+      //   229: anewarray 143	java/lang/Object
+      //   232: invokestatic 167	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   235: aconst_null
+      //   236: astore_2
+      //   237: goto -165 -> 72
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	243	0	this	b
-      //   35	184	1	i	int
-      //   12	90	2	localObject1	Object
-      //   103	18	2	localException1	java.lang.Exception
-      //   204	7	2	localese	ese
-      //   222	4	2	localException2	java.lang.Exception
-      //   239	1	2	localObject2	Object
+      //   0	240	0	this	b
+      //   35	181	1	i	int
+      //   12	87	2	localObject1	Object
+      //   100	18	2	localException1	java.lang.Exception
+      //   201	7	2	localfnn	fnn
+      //   219	4	2	localException2	java.lang.Exception
+      //   236	1	2	localObject2	Object
       //   16	64	3	localObject3	Object
       // Exception table:
       //   from	to	target	type
-      //   5	29	103	java/lang/Exception
-      //   33	36	103	java/lang/Exception
-      //   72	77	103	java/lang/Exception
-      //   83	103	103	java/lang/Exception
-      //   223	238	103	java/lang/Exception
-      //   52	72	222	java/lang/Exception
+      //   5	29	100	java/lang/Exception
+      //   33	36	100	java/lang/Exception
+      //   72	77	100	java/lang/Exception
+      //   83	100	100	java/lang/Exception
+      //   220	235	100	java/lang/Exception
+      //   52	72	219	java/lang/Exception
     }
   }
   
-  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$webViewControllerListener$1", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "onJsReady", "", "plugin-brandservice_release"})
+  @Metadata(d1={""}, d2={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI$webViewControllerListener$1", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "onJsReady", "", "plugin-brandservice_release"}, k=1, mv={1, 5, 1}, xi=48)
   public static final class c
-    extends j
+    extends l
   {
-    public final void bXI()
+    c(TmplWebViewToolUI paramTmplWebViewToolUI) {}
+    
+    public final void cxT()
     {
-      AppMethodBeat.i(258319);
-      super.bXI();
-      com.tencent.mm.plugin.webview.ui.tools.l locall = TmplWebViewToolUI.b(this.sRW);
-      Object localObject = TmplWebViewToolUI.c(this.sRW);
-      if (localObject != null) {}
-      for (localObject = ((MpWebViewController)localObject).getCurrentUrl();; localObject = null)
+      AppMethodBeat.i(303400);
+      super.cxT();
+      p localp = TmplWebViewToolUI.b(this.vXr);
+      Object localObject = TmplWebViewToolUI.c(this.vXr);
+      if (localObject == null) {}
+      for (localObject = null;; localObject = ((MpWebViewController)localObject).getCurrentUrl())
       {
-        locall.bmj((String)localObject);
-        AppMethodBeat.o(258319);
+        localp.blL((String)localObject);
+        AppMethodBeat.o(303400);
         return;
       }
     }

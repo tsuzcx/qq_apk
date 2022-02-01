@@ -11,22 +11,22 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader_app.e.b;
 import com.tencent.mm.plugin.downloader_app.e.d;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 
 public class ProgressImageView
   extends AppCompatImageView
 {
-  private int IB;
+  private int boE;
   private Paint mPaint;
-  private boolean unM;
-  boolean unN;
-  private int unO;
+  private boolean xui;
+  boolean xuj;
+  private int xuk;
   
   public ProgressImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(183821);
-    this.IB = -1;
+    this.boE = -1;
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStyle(Paint.Style.STROKE);
@@ -34,26 +34,26 @@ public class ProgressImageView
     AppMethodBeat.o(183821);
   }
   
-  public final void cQT()
+  public final void dvm()
   {
     AppMethodBeat.i(183823);
-    this.unM = true;
-    this.unN = false;
-    if (ar.isDarkMode())
+    this.xui = true;
+    this.xuj = false;
+    if (aw.isDarkMode())
     {
-      setImageResource(e.d.ujM);
+      setImageResource(e.d.xpS);
       AppMethodBeat.o(183823);
       return;
     }
-    setImageResource(e.d.ujN);
+    setImageResource(e.d.xpT);
     AppMethodBeat.o(183823);
   }
   
-  public final void cQU()
+  public final void dvn()
   {
     AppMethodBeat.i(184793);
-    this.unN = true;
-    this.unM = false;
+    this.xuj = true;
+    this.xui = false;
     setImageResource("download_wait_wifi");
     AppMethodBeat.o(184793);
   }
@@ -62,20 +62,20 @@ public class ProgressImageView
   {
     AppMethodBeat.i(183826);
     super.onDraw(paramCanvas);
-    if ((this.unM) || (this.IB == -1) || (this.unO == 0))
+    if ((this.xui) || (this.boE == -1) || (this.xuk == 0))
     {
       AppMethodBeat.o(183826);
       return;
     }
-    float f3 = com.tencent.mm.ci.a.fromDPToPix(getContext(), 2);
+    float f3 = com.tencent.mm.cd.a.fromDPToPix(getContext(), 2);
     this.mPaint.setStrokeWidth(f3);
     float f1 = getWidth() / 2;
     float f2 = getHeight() / 2;
     f3 = getWidth() / 2 - f3 / 2.0F;
     this.mPaint.setColor(androidx.core.content.a.w(getContext(), e.b.FG_3));
     paramCanvas.drawCircle(f1, f2, f3, this.mPaint);
-    this.mPaint.setColor(androidx.core.content.a.w(getContext(), this.unO));
-    paramCanvas.drawArc(f1 - f3, f2 - f3, f1 + f3, f2 + f3, -90.0F, this.IB / 100.0F * 360.0F, false, this.mPaint);
+    this.mPaint.setColor(androidx.core.content.a.w(getContext(), this.xuk));
+    paramCanvas.drawArc(f1 - f3, f2 - f3, f1 + f3, f2 + f3, -90.0F, this.boE / 100.0F * 360.0F, false, this.mPaint);
     AppMethodBeat.o(183826);
   }
   
@@ -90,7 +90,7 @@ public class ProgressImageView
   {
     AppMethodBeat.i(183824);
     String str = paramString;
-    if (ar.isDarkMode()) {
+    if (aw.isDarkMode()) {
       str = paramString + "_dark";
     }
     setImageResource(getResources().getIdentifier(str, "raw", getContext().getPackageName()));
@@ -100,16 +100,16 @@ public class ProgressImageView
   public void setProgress(int paramInt)
   {
     AppMethodBeat.i(183822);
-    this.IB = paramInt;
-    this.unM = false;
-    this.unN = false;
+    this.boE = paramInt;
+    this.xui = false;
+    this.xuj = false;
     postInvalidate();
     AppMethodBeat.o(183822);
   }
   
   public void setProgressColor(int paramInt)
   {
-    this.unO = paramInt;
+    this.xuk = paramInt;
   }
 }
 

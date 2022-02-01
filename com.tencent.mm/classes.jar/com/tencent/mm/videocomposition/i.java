@@ -1,22 +1,22 @@
 package com.tencent.mm.videocomposition;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import kotlin.Metadata;
 
-@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/videocomposition/VideoClipInfo;", "", "width", "", "height", "rotate", "durationMs", "(IIII)V", "getDurationMs", "()I", "getHeight", "getRotate", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "video_composition_release"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mm/videocomposition/VideoClipInfo;", "", "width", "", "height", "rotate", "durationMs", "(IIII)V", "getDurationMs", "()I", "getHeight", "getRotate", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "video_composition_release"}, k=1, mv={1, 1, 15})
 public final class i
 {
-  private final int fSM;
+  private final int hYK;
   public final int height;
-  public final int maT;
+  public final int oTN;
   public final int width;
   
   public i(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.width = paramInt1;
     this.height = paramInt2;
-    this.fSM = paramInt3;
-    this.maT = paramInt4;
+    this.hYK = paramInt3;
+    this.oTN = paramInt4;
   }
   
   public final boolean equals(Object paramObject)
@@ -47,7 +47,7 @@ public final class i
       if (i == 0) {
         break label105;
       }
-      if (this.fSM != paramObject.fSM) {
+      if (this.hYK != paramObject.hYK) {
         break label117;
       }
       i = 1;
@@ -56,7 +56,7 @@ public final class i
       if (i == 0) {
         break label105;
       }
-      if (this.maT != paramObject.maT) {
+      if (this.oTN != paramObject.oTN) {
         break label122;
       }
     }
@@ -83,20 +83,20 @@ public final class i
   
   public final int hashCode()
   {
-    return ((this.width * 31 + this.height) * 31 + this.fSM) * 31 + this.maT;
+    return ((this.width * 31 + this.height) * 31 + this.hYK) * 31 + this.oTN;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(247986);
-    String str = "VideoClipInfo(width=" + this.width + ", height=" + this.height + ", rotate=" + this.fSM + ", durationMs=" + this.maT + ")";
-    AppMethodBeat.o(247986);
+    AppMethodBeat.i(233481);
+    String str = "VideoClipInfo(width=" + this.width + ", height=" + this.height + ", rotate=" + this.hYK + ", durationMs=" + this.oTN + ")";
+    AppMethodBeat.o(233481);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.videocomposition.i
  * JD-Core Version:    0.7.0.1
  */

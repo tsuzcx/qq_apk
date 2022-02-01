@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:scrollbars="none" style="@style/rj"
+<FrameLayout android:background="@drawable/arl" android:paddingLeft="@dimen/anf" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" style="@style/lz">
-        <TextView android:gravity="center" android:id="@id/hkq" android:text="@string/gag" style="@style/no" />
-        <TextView android:gravity="center" android:id="@id/fh4" android:layout_marginTop="5.0dip" style="@style/no" />
-        <EditText android:gravity="center" android:id="@id/a4e" android:layout_width="180.0dip" android:layout_marginTop="5.0dip" android:hint="@string/ga7" android:inputType="phone" style="@style/nn" />
-        <TextView android:gravity="center" android:id="@id/h40" android:layout_marginTop="10.0dip" android:text="@string/gad" style="@style/no" />
-        <Button android:id="@id/h3z" android:visibility="gone" android:layout_marginTop="15.0dip" android:text="@string/gad" style="@style/ou" />
-        <Button android:layout_gravity="center" android:id="@id/b44" android:text="@string/gac" style="@style/l5" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fpf" android:background="@drawable/b7q" android:layout_width="fill_parent" android:layout_height="@dimen/m1">
+        <TextView android:textSize="@dimen/anl" android:textColor="@color/a7b" android:gravity="center|left" android:id="@id/hvy" android:layout_width="@dimen/anq" android:layout_height="wrap_content" android:singleLine="false" />
+        <TextView android:textSize="@dimen/anl" android:textColor="@color/a1_" android:gravity="center_vertical" android:id="@id/hvx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ano" android:singleLine="true" />
     </LinearLayout>
-</ScrollView>
+</FrameLayout>

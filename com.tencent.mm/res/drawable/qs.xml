@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/b8y" />
-    <item android:left="-36.0dip">
-        <bitmap android:gravity="center|left" android:src="@drawable/b9m" />
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@color/UN_BW_0_Alpha_0_1" />
+    <item android:drawable="@color/ahb" />
+</selector>

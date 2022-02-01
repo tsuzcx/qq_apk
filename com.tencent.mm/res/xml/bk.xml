@@ -1,18 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.matrix.MatrixSettingHeaderPreference android:key="matrix_header_pref" android:layout="@layout/b6u" android:persistent="false" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="anr_preference" android:persistent="false" android:title="@string/eyq" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="startup_preference" android:persistent="false" android:title="@string/ez0" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="jank_preference" android:persistent="false" android:title="@string/eyu" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="fps_preference" android:persistent="false" android:title="@string/eys" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="false" android:key="fps_decorator_preference" android:persistent="false" android:title="@string/eyt" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="battery_preference" android:persistent="false" android:title="@string/eyr" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="thread_preference" android:persistent="false" android:title="@string/ez1" />
-    <com.tencent.mm.ui.matrix.MatrixSettingSeekBarPreference android:key="matrix_jank_seek_bar" android:layout="@layout/b6v" android:persistent="false" />
-    <Preference android:key="dump_hprof" android:layout="@layout/b8j" android:persistent="false" android:title="@string/eyn" />
-    <PreferenceTitleCategory android:key="matrix_dev_wording" android:persistent="false" android:title="@string/eym" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="make_leak_preference" android:persistent="false" android:title="@string/eyx" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="methodBeat_preference" android:persistent="false" android:summary="@string/eyz" android:title="@string/eyy" />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="false" android:key="trace_dev_log_preference" android:persistent="false" android:summary="@string/ez3" android:title="@string/ez2" />
-    <PreferenceCategory />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

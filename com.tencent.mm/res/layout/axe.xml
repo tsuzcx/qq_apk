@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" style="@style/rj"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/al2" android:padding="@dimen/i6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:background="@drawable/bpv" android:padding="@dimen/ir" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/iq">
-        <ProgressBar android:id="@id/fgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" style="@style/a61" />
-        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/fgd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:minWidth="150.0dip" android:text="@string/hvf" />
-    </LinearLayout>
+    <Button android:id="@id/em3" android:layout_width="128.0dip" android:text="@string/f9w" style="@style/or" />
 </LinearLayout>

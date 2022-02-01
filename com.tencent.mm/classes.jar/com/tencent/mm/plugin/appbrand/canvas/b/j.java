@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.b;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.af.i;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathRectActionArg;
 import org.json.JSONArray;
@@ -41,12 +41,12 @@ public final class j
       AppMethodBeat.o(145379);
       return false;
     }
-    boolean bool = a(paramPath, g.f(paramJSONArray, 0), g.f(paramJSONArray, 1), g.f(paramJSONArray, 2), g.f(paramJSONArray, 3));
+    boolean bool = a(paramPath, i.f(paramJSONArray, 0), i.f(paramJSONArray, 1), i.f(paramJSONArray, 2), i.f(paramJSONArray, 3));
     AppMethodBeat.o(145379);
     return bool;
   }
   
-  public final BasePathActionArg bKK()
+  public final BasePathActionArg ckk()
   {
     AppMethodBeat.i(145382);
     PathRectActionArg localPathRectActionArg = new PathRectActionArg();
@@ -61,7 +61,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.j
  * JD-Core Version:    0.7.0.1
  */

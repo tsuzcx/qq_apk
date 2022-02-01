@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/b6u"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<ScrollView android:background="@color/a6w" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/r8">
+        <ImageView android:id="@id/lbd" android:background="@raw/success_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/e_6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/lbd" android:layout_centerHorizontal="true">
+            <TextView android:textSize="@dimen/s" android:textColor="@color/a7b" android:gravity="center" android:id="@id/lbe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:text="{title}" />
+            <TextView android:textSize="@dimen/j7" android:textColor="@color/a7b" android:gravity="center" android:id="@id/lbg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i6" android:text="{title_tip}" />
+        </LinearLayout>
+        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_below="@id/e_6">
+            <Button android:textSize="@dimen/l" android:id="@id/itm" android:padding="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i6" android:layout_marginRight="@dimen/i6" android:text="@string/z9" style="@style/og" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

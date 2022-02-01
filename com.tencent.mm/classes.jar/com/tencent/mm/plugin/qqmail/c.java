@@ -10,8 +10,8 @@ import java.util.Set;
 
 public abstract class c
 {
-  public static String Hlb = "weixin/android";
-  protected static String Hlc = "";
+  public static String NiO = "weixin/android";
+  protected static String NiP = "";
   protected static String host = "";
   protected static int timeout = 0;
   
@@ -90,33 +90,33 @@ public abstract class c
   
   public static final class c
   {
-    public c.b Hlg;
-    public c.e Hlh;
-    public c.f Hli;
-    public Map<String, String> Hlj;
-    public c.a Hlk;
+    public c.b NiT;
+    public c.e NiU;
+    public c.f NiV;
+    public Map<String, String> NiW;
+    public c.a NiX;
     public long id;
     public String uri;
     
     public c(String paramString, c.e parame, c.a parama)
     {
-      AppMethodBeat.i(251235);
+      AppMethodBeat.i(266880);
       this.id = System.currentTimeMillis();
       this.uri = paramString;
-      this.Hlh = parame;
-      this.Hlk = parama;
-      AppMethodBeat.o(251235);
+      this.NiU = parame;
+      this.NiX = parama;
+      AppMethodBeat.o(266880);
     }
   }
   
   public static abstract interface d
   {
-    public abstract void fsk();
+    public abstract void gDS();
   }
   
   public static final class e
   {
-    public c.g Hll;
+    public c.g NiY;
     public Map<String, String> cookie;
     public int method;
     public Map<String, String> params;
@@ -126,12 +126,12 @@ public abstract class c
       this.method = paramInt;
       this.params = paramMap1;
       this.cookie = paramMap2;
-      this.Hll = null;
+      this.NiY = null;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(250239);
+      AppMethodBeat.i(266886);
       StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.method).append(", params:");
       if (this.params != null)
       {
@@ -145,7 +145,7 @@ public abstract class c
       for (Object localObject = this.cookie;; localObject = "")
       {
         localObject = localObject;
-        AppMethodBeat.o(250239);
+        AppMethodBeat.o(266886);
         return localObject;
         localObject = "";
         break;
@@ -168,7 +168,7 @@ public abstract class c
     
     public final String toString()
     {
-      AppMethodBeat.i(249712);
+      AppMethodBeat.i(266884);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
       if (this.cookie != null)
@@ -183,7 +183,7 @@ public abstract class c
       for (int i = this.content.length();; i = 0)
       {
         localObject = i;
-        AppMethodBeat.o(249712);
+        AppMethodBeat.o(266884);
         return localObject;
         localObject = "";
         break;
@@ -195,7 +195,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.c
  * JD-Core Version:    0.7.0.1
  */

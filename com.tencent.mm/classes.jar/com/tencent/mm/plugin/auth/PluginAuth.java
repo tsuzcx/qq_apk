@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.auth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cw.a;
-import com.tencent.mm.cw.a.a;
+import com.tencent.mm.cp.a;
+import com.tencent.mm.cp.a.a;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.aj;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bi.a;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bj.a;
 import com.tencent.mm.plugin.auth.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.protocal.j.h;
@@ -18,30 +18,30 @@ public class PluginAuth
   extends f
   implements c
 {
-  private static int GWw = -1;
-  private final a EVr;
+  private static int Crw = -1;
+  private final a Cpv;
   
   public PluginAuth()
   {
     AppMethodBeat.i(134223);
-    this.EVr = new a((byte)0);
+    this.Cpv = new a((byte)0);
     AppMethodBeat.o(134223);
   }
   
   public static int getUserInfoPluginSwitch()
   {
-    return GWw;
+    return Crw;
   }
   
   public static void setUserInfoPluginSwitch(int paramInt)
   {
-    GWw = paramInt;
+    Crw = paramInt;
   }
   
   public com.tencent.mm.vending.b.b addHandleAuthResponse(com.tencent.mm.plugin.auth.a.b paramb)
   {
     AppMethodBeat.i(134227);
-    paramb = this.EVr.add(paramb);
+    paramb = this.Cpv.add(paramb);
     AppMethodBeat.o(134227);
     return paramb;
   }
@@ -49,13 +49,13 @@ public class PluginAuth
   public void configure(g paramg)
   {
     AppMethodBeat.i(134226);
-    bi.a(new bi.a()
+    bj.a(new bj.a()
     {
       public final void a(j.h paramAnonymoush, j.i paramAnonymousi)
       {
         AppMethodBeat.i(134218);
-        aj.a(paramAnonymousi.RBm, true);
-        PluginAuth.this.getHandleAuthResponseCallbacks().a(paramAnonymoush, paramAnonymousi, true);
+        aj.a(paramAnonymousi.YxP, true);
+        PluginAuth.this.getHandleAuthResponseCallbacks().onAuthResponse(paramAnonymoush, paramAnonymousi, true);
         AppMethodBeat.o(134218);
       }
     });
@@ -73,7 +73,7 @@ public class PluginAuth
   
   public com.tencent.mm.plugin.auth.a.b getHandleAuthResponseCallbacks()
   {
-    return this.EVr;
+    return this.Cpv;
   }
   
   public void installed()
@@ -92,14 +92,14 @@ public class PluginAuth
     extends a<com.tencent.mm.plugin.auth.a.b>
     implements com.tencent.mm.plugin.auth.a.b
   {
-    public final void a(final j.h paramh, final j.i parami, final boolean paramBoolean)
+    public final void onAuthResponse(final j.h paramh, final j.i parami, final boolean paramBoolean)
     {
       AppMethodBeat.i(134221);
       a(new a.a() {});
       AppMethodBeat.o(134221);
     }
     
-    public final void a(final x.b paramb, final String paramString1, final int paramInt1, final String paramString2, final String paramString3, final int paramInt2)
+    public final void onRegResponse(final x.b paramb, final String paramString1, final int paramInt1, final String paramString2, final String paramString3, final int paramInt2)
     {
       AppMethodBeat.i(134222);
       a(new a.a() {});
@@ -109,7 +109,7 @@ public class PluginAuth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.auth.PluginAuth
  * JD-Core Version:    0.7.0.1
  */

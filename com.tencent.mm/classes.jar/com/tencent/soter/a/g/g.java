@@ -8,27 +8,27 @@ import com.tencent.soter.core.c.d;
 
 public class g
 {
-  private static volatile g ZtP = null;
-  private Handler ZsL;
-  HandlerThread ZtQ;
-  Handler ZtR;
+  private static volatile g ahyI = null;
+  private Handler ahxy;
+  HandlerThread ahyJ;
+  Handler ahyK;
   
   private g()
   {
     AppMethodBeat.i(40);
-    this.ZtR = null;
-    this.ZsL = null;
-    if (this.ZtQ == null)
+    this.ahyK = null;
+    this.ahxy = null;
+    if (this.ahyJ == null)
     {
-      this.ZtQ = new HandlerThread("SoterGenKeyHandlerThreadName");
-      this.ZtQ.start();
-      if (this.ZtQ.getLooper() == null) {
+      this.ahyJ = new HandlerThread("SoterGenKeyHandlerThreadName");
+      this.ahyJ.start();
+      if (this.ahyJ.getLooper() == null) {
         break label94;
       }
     }
-    for (this.ZtR = new Handler(this.ZtQ.getLooper());; this.ZtR = new Handler(Looper.getMainLooper()))
+    for (this.ahyK = new Handler(this.ahyJ.getLooper());; this.ahyK = new Handler(Looper.getMainLooper()))
     {
-      this.ZsL = new Handler(Looper.getMainLooper());
+      this.ahxy = new Handler(Looper.getMainLooper());
       AppMethodBeat.o(40);
       return;
       label94:
@@ -36,16 +36,16 @@ public class g
     }
   }
   
-  public static g ipq()
+  public static g jYG()
   {
     AppMethodBeat.i(41);
-    if (ZtP == null) {
+    if (ahyI == null) {
       try
       {
-        if (ZtP == null) {
-          ZtP = new g();
+        if (ahyI == null) {
+          ahyI = new g();
         }
-        g localg1 = ZtP;
+        g localg1 = ahyI;
         return localg1;
       }
       finally
@@ -53,35 +53,35 @@ public class g
         AppMethodBeat.o(41);
       }
     }
-    g localg2 = ZtP;
+    g localg2 = ahyI;
     AppMethodBeat.o(41);
     return localg2;
   }
   
-  public final void am(Runnable paramRunnable)
+  public final void au(Runnable paramRunnable)
   {
     AppMethodBeat.i(42);
-    this.ZtR.post(paramRunnable);
+    this.ahyK.post(paramRunnable);
     AppMethodBeat.o(42);
   }
   
-  public final void l(Runnable paramRunnable, long paramLong)
+  public final void m(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(43);
-    this.ZtR.postDelayed(paramRunnable, paramLong);
+    this.ahyK.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(43);
   }
   
   public final void postToMainThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(44);
-    this.ZsL.post(paramRunnable);
+    this.ahxy.post(paramRunnable);
     AppMethodBeat.o(44);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes11.jar
  * Qualified Name:     com.tencent.soter.a.g.g
  * JD-Core Version:    0.7.0.1
  */

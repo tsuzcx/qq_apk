@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.q;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -11,20 +11,20 @@ import java.io.OutputStream;
 public class f
   extends c
 {
-  private OutputStream UE;
-  protected q mFile;
+  private OutputStream NY;
+  protected u mFile;
   
-  private boolean akG(String paramString)
+  private boolean adM(String paramString)
   {
     AppMethodBeat.i(146353);
     try
     {
-      this.mFile = new q(paramString);
-      if (this.mFile.ifE()) {
-        this.mFile.cFq();
+      this.mFile = new u(paramString);
+      if (this.mFile.jKS()) {
+        this.mFile.diJ();
       }
-      this.mFile.ifM();
-      this.UE = new DataOutputStream(u.Te(paramString));
+      this.mFile.jKZ();
+      this.NY = new DataOutputStream(y.ev(paramString, false));
       AppMethodBeat.o(146353);
       return true;
     }
@@ -42,8 +42,8 @@ public class f
     d(paramArrayOfByte, paramInt, paramBoolean);
     try
     {
-      if (this.UE != null) {
-        this.UE.write(paramArrayOfByte);
+      if (this.NY != null) {
+        this.NY.write(paramArrayOfByte);
       }
       label27:
       AppMethodBeat.o(146350);
@@ -58,13 +58,13 @@ public class f
   public void close()
   {
     AppMethodBeat.i(146352);
-    if (this.UE != null) {}
+    if (this.NY != null) {}
     try
     {
-      this.UE.flush();
-      this.UE.close();
+      this.NY.flush();
+      this.NY.close();
       label26:
-      this.UE = null;
+      this.NY = null;
       AppMethodBeat.o(146352);
       return;
     }
@@ -84,7 +84,7 @@ public class f
   public boolean j(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(146349);
-    akG(paramString);
+    adM(paramString);
     AppMethodBeat.o(146349);
     return true;
   }

@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.protocal.protobuf.aju;
-import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.anj;
 
 public final class b
 {
-  public ajw uDW;
-  public aju uDX;
-  public boolean uDY = false;
+  public anj xMn;
+  public anh xMo;
+  public boolean xMp = false;
   
-  public b(aju paramaju, ajw paramajw, boolean paramBoolean)
+  public b(anh paramanh, anj paramanj, boolean paramBoolean)
   {
-    this.uDX = paramaju;
-    this.uDW = paramajw;
-    this.uDY = paramBoolean;
+    this.xMo = paramanh;
+    this.xMn = paramanj;
+    this.xMp = paramBoolean;
   }
 }
 

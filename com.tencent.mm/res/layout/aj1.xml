@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ig9" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/bt"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/h_" android:textColor="@color/l4" android:ellipsize="end" android:gravity="center" android:id="@id/ifz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
-        <ImageView android:id="@id/ig3" android:visibility="invisible" android:layout_width="@dimen/ct" android:layout_height="@dimen/ct" android:layout_marginTop="-2.0dip" android:layout_alignTop="@id/ifz" android:layout_toEndOf="@id/ifz" style="@style/zs" />
-    </RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/e0g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="number" />
+    <TextView android:gravity="center" android:id="@id/e0h" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="aaa" />
 </LinearLayout>

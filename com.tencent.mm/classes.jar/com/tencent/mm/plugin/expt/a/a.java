@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.expt.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.t;
+import com.tencent.mm.am.s;
 import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.at.a;
 
 public final class a
 {
-  private static a vtr = null;
-  long vts;
+  private static a yFP = null;
+  long yFQ;
   
   private a()
   {
-    AppMethodBeat.i(256737);
-    this.vts = 0L;
-    if (h.aHB())
+    AppMethodBeat.i(299826);
+    this.yFQ = 0L;
+    if (h.baz())
     {
-      this.vts = h.aHG().aHp().a(ar.a.VuX, Util.nowMilliSecond());
-      AppMethodBeat.o(256737);
+      this.yFQ = h.baE().ban().a(at.a.acWG, Util.nowMilliSecond());
+      AppMethodBeat.o(299826);
       return;
     }
-    this.vts = Util.nowMilliSecond();
-    AppMethodBeat.o(256737);
+    this.yFQ = Util.nowMilliSecond();
+    AppMethodBeat.o(299826);
   }
   
-  public static boolean Ks(int paramInt)
+  public static boolean Lr(int paramInt)
   {
-    AppMethodBeat.i(256740);
+    AppMethodBeat.i(299834);
     if (paramInt < 0)
     {
       Log.e("MicroMsg.ExptIdCount", "exptid err  less than  0 :  [%d]", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(256740);
+      AppMethodBeat.o(299834);
       return false;
     }
-    Object localObject = b.dbn();
+    Object localObject = b.dHJ();
     if (paramInt < 0) {
       Log.e(b.TAG, "exptid or exptidcount less than 0 [%d] [%d] ", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(863L, 163L, 1L, false);
-      AppMethodBeat.o(256740);
+      com.tencent.mm.plugin.report.f.Ozc.idkeyStat(863L, 163L, 1L, false);
+      AppMethodBeat.o(299834);
       return true;
       if (paramInt >= 0)
       {
-        localObject = ((b)localObject).bcJ();
+        localObject = ((b)localObject).atj();
         if (localObject != null) {
           break;
         }
@@ -67,48 +67,48 @@ public final class a
     }
   }
   
-  public static a dbl()
+  public static a dHH()
   {
-    AppMethodBeat.i(256733);
-    if (vtr == null) {
-      vtr = new a();
+    AppMethodBeat.i(299819);
+    if (yFP == null) {
+      yFP = new a();
     }
-    a locala = vtr;
-    AppMethodBeat.o(256733);
+    a locala = yFP;
+    AppMethodBeat.o(299819);
     return locala;
   }
   
-  public static void dbm()
+  public static void dHI()
   {
-    AppMethodBeat.i(256743);
-    h.aGY().a(new c(), 0);
-    AppMethodBeat.o(256743);
+    AppMethodBeat.i(299840);
+    h.aZW().a(new c(), 0);
+    AppMethodBeat.o(299840);
   }
   
-  public final boolean Jz(long paramLong)
+  public final boolean lQ(long paramLong)
   {
-    AppMethodBeat.i(256742);
+    AppMethodBeat.i(299853);
     if (paramLong <= 0L)
     {
       Log.e("MicroMsg.ExptIdCount", "acquisition time is less than 0  [%d]", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(256742);
+      AppMethodBeat.o(299853);
       return false;
     }
-    if (h.aHB())
+    if (h.baz())
     {
-      Log.i("MicroMsg.ExptIdCount", "last begin time and last end time [%d], [%d]", new Object[] { Long.valueOf(h.aHG().aHp().a(ar.a.VuX, 0L)), Long.valueOf(paramLong) });
-      h.aHG().aHp().set(ar.a.VuX, Long.valueOf(paramLong));
-      this.vts = paramLong;
-      AppMethodBeat.o(256742);
+      Log.i("MicroMsg.ExptIdCount", "last begin time and last end time [%d], [%d]", new Object[] { Long.valueOf(h.baE().ban().a(at.a.acWG, 0L)), Long.valueOf(paramLong) });
+      h.baE().ban().set(at.a.acWG, Long.valueOf(paramLong));
+      this.yFQ = paramLong;
+      AppMethodBeat.o(299853);
       return true;
     }
-    AppMethodBeat.o(256742);
+    AppMethodBeat.o(299853);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.a.a
  * JD-Core Version:    0.7.0.1
  */

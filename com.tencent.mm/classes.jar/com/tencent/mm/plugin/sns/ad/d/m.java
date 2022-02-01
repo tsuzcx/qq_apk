@@ -1,134 +1,138 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.AnimatorSet.Builder;
-import android.animation.ObjectAnimator;
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
+import android.os.CountDownTimer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class m
+public class m
 {
-  protected View Dbo;
-  protected View JzE;
-  protected AnimatorSet JzF;
-  protected AnimatorSet JzG;
-  protected boolean JzH;
-  protected boolean JzI;
-  private int JzJ;
-  private int eYt;
-  protected Context mContext;
-  protected boolean qov;
+  protected final long POg;
+  final int POh;
+  public b POi;
+  public a POj;
+  protected final long mStartTime;
   
-  public m(View paramView1, View paramView2, Context paramContext, boolean paramBoolean)
+  public m(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(234575);
-    this.qov = false;
-    this.JzE = paramView1;
-    this.Dbo = paramView2;
-    this.mContext = paramContext;
-    this.JzI = paramBoolean;
-    this.eYt = 500;
-    this.JzJ = -3000;
-    paramContext = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
-    paramContext.setDuration(0L);
-    if (this.JzI)
+    this(paramLong1, paramLong2, (byte)0);
+  }
+  
+  private m(long paramLong1, long paramLong2, byte paramByte)
+  {
+    this.mStartTime = paramLong1;
+    this.POg = paramLong2;
+    this.POh = 1000;
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(309971);
+    if (isValid())
     {
-      paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -180.0F, 10.0F });
-      paramView1.setDuration(this.eYt);
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(null, "alpha", new float[] { 0.0F, 1.0F });
-      localObjectAnimator.setDuration(0L);
-      localObjectAnimator.setStartDelay(this.eYt / 2);
-      if (!this.JzI) {
-        break label429;
+      if ((this.POi != null) && (!this.POi.mFinished))
+      {
+        this.POi.cancel();
+        this.POi = null;
       }
-      paramView2 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 10.0F, 0.0F });
-      label174:
-      paramView2.setDuration(this.eYt);
-      AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.play(paramContext).with(paramView1).with(localObjectAnimator);
-      localAnimatorSet.play(paramView2).after(paramView1);
-      this.JzF = localAnimatorSet;
-      if (!this.JzI) {
-        break label451;
+      this.POj = parama;
+      l = gZR();
+      if (l < this.mStartTime) {
+        break label100;
       }
     }
-    label429:
-    label451:
-    for (paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, 190.0F });; paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, -190.0F }))
+    label100:
+    for (long l = this.POg - l;; l = -1L)
     {
-      paramView1.setDuration(this.eYt);
-      paramView2 = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
-      paramView2.setDuration(0L);
-      paramView2.setStartDelay(this.eYt / 2);
-      paramContext = new AnimatorSet();
-      paramContext.play(paramView1).with(paramView2);
-      this.JzG = paramContext;
-      this.JzF.addListener(new AnimatorListenerAdapter()
+      if (l > 0L)
       {
-        public final void onAnimationStart(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(224211);
-          super.onAnimationStart(paramAnonymousAnimator);
-          m.this.qov = true;
-          AppMethodBeat.o(224211);
-        }
-      });
-      this.JzG.addListener(new AnimatorListenerAdapter()
-      {
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(270283);
-          super.onAnimationEnd(paramAnonymousAnimator);
-          m.this.qov = false;
-          AppMethodBeat.o(270283);
-        }
-      });
-      int i = this.JzJ;
-      float f = this.JzE.getContext().getResources().getDisplayMetrics().density;
-      f = i * f;
-      this.JzE.setCameraDistance(f);
-      this.Dbo.setCameraDistance(f);
-      AppMethodBeat.o(234575);
+        this.POi = new b(this, l);
+        this.POi.start();
+      }
+      AppMethodBeat.o(309971);
       return;
-      paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 180.0F, -10.0F });
-      break;
-      paramView2 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -10.0F, 0.0F });
-      break label174;
     }
   }
   
-  public final void fKa()
+  protected long gZR()
   {
-    AppMethodBeat.i(234577);
-    if (!this.qov)
+    AppMethodBeat.i(309963);
+    long l = System.currentTimeMillis();
+    AppMethodBeat.o(309963);
+    return l;
+  }
+  
+  protected boolean isValid()
+  {
+    AppMethodBeat.i(309956);
+    if ((gZR() <= this.POg) && (this.POg > this.mStartTime) && (this.mStartTime >= 0L))
     {
-      if (!this.JzH)
-      {
-        this.JzF.setTarget(this.JzE);
-        this.JzG.setTarget(this.Dbo);
-        this.JzF.start();
-        this.JzG.start();
-        this.JzH = true;
-        AppMethodBeat.o(234577);
-        return;
-      }
-      this.JzF.setTarget(this.Dbo);
-      this.JzG.setTarget(this.JzE);
-      this.JzF.start();
-      this.JzG.start();
-      this.JzH = false;
+      AppMethodBeat.o(309956);
+      return true;
     }
-    AppMethodBeat.o(234577);
+    AppMethodBeat.o(309956);
+    return false;
+  }
+  
+  final void onTick(long paramLong)
+  {
+    AppMethodBeat.i(309975);
+    Log.d("SnsAd.CountDownTimer", "the millisUntilFinished is ".concat(String.valueOf(paramLong)));
+    a locala = this.POj;
+    if (locala != null) {
+      locala.uo(paramLong);
+    }
+    AppMethodBeat.o(309975);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void uo(long paramLong);
+  }
+  
+  public static final class b
+    extends CountDownTimer
+  {
+    m POk;
+    boolean mFinished = false;
+    
+    private b(long paramLong1, long paramLong2)
+    {
+      super(paramLong2);
+    }
+    
+    b(m paramm, long paramLong)
+    {
+      this(paramLong, paramm.POh);
+      AppMethodBeat.i(309979);
+      this.POk = paramm;
+      AppMethodBeat.o(309979);
+    }
+    
+    public final void onFinish()
+    {
+      AppMethodBeat.i(309989);
+      this.mFinished = true;
+      m localm = this.POk;
+      if (localm != null) {
+        localm.onTick(0L);
+      }
+      AppMethodBeat.o(309989);
+    }
+    
+    public final void onTick(long paramLong)
+    {
+      AppMethodBeat.i(309984);
+      m localm = this.POk;
+      if (localm != null) {
+        localm.onTick(paramLong);
+      }
+      AppMethodBeat.o(309984);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.d.m
  * JD-Core Version:    0.7.0.1
  */

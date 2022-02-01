@@ -163,11 +163,11 @@ public final class ReportLogRequest
     this.logType = paramJceInputStream.read(this.logType, 0, false);
     if (cache_logData == null)
     {
-      byte[] arrayOfByte = (byte[])new byte[1];
+      byte[] arrayOfByte = new byte[1];
       cache_logData = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
+      arrayOfByte[0] = 0;
     }
-    this.logData = ((byte[])paramJceInputStream.read(cache_logData, 1, false));
+    this.logData = paramJceInputStream.read(cache_logData, 1, false);
     this.hostUserId = paramJceInputStream.readString(2, false);
     this.hostAppPackageName = paramJceInputStream.readString(3, false);
     this.hostAppVersion = paramJceInputStream.read(this.hostAppVersion, 4, false);
@@ -218,7 +218,7 @@ public final class ReportLogRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.ReportLogRequest
  * JD-Core Version:    0.7.0.1
  */

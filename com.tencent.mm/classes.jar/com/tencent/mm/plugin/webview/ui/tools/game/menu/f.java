@@ -9,30 +9,30 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.ay.a.a.c;
-import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.b.g;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.i.b;
+import com.tencent.mm.modelimage.loader.a;
+import com.tencent.mm.modelimage.loader.a.c;
+import com.tencent.mm.modelimage.loader.a.c.a;
 import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.g;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 import java.util.List;
 
 public class f
   extends BaseAdapter
 {
-  private static final String CIv;
-  o ODY;
+  private static final String ICF;
+  s Vtk;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(81003);
-    CIv = b.aSL() + "Game/HvMenu/";
+    ICF = b.bmz() + "Game/HvMenu/";
     AppMethodBeat.o(81003);
   }
   
@@ -41,23 +41,15 @@ public class f
     this.mContext = paramContext;
   }
   
-  public final void c(o paramo)
-  {
-    AppMethodBeat.i(80999);
-    this.ODY = paramo;
-    notifyDataSetChanged();
-    AppMethodBeat.o(80999);
-  }
-  
   public int getCount()
   {
     AppMethodBeat.i(81000);
-    if (this.ODY == null)
+    if (this.Vtk == null)
     {
       AppMethodBeat.o(81000);
       return 0;
     }
-    int i = this.ODY.size();
+    int i = this.Vtk.size();
     AppMethodBeat.o(81000);
     return i;
   }
@@ -72,18 +64,18 @@ public class f
     AppMethodBeat.i(81001);
     paramView = LayoutInflater.from(this.mContext).inflate(c.g.game_menu_item_view, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    p localp = (p)this.ODY.WkP.get(paramInt);
+    t localt = (t)this.Vtk.adRW.get(paramInt);
     Object localObject1;
-    if ((localp != null) && (localp.getItemId() != -1))
+    if ((localt != null) && (localt.getItemId() != -1))
     {
-      localObject1 = localp.getTitle().toString();
+      localObject1 = localt.getTitle().toString();
       if (!Util.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split("__", 2);
         if (localObject1.length == 1)
         {
-          paramViewGroup.jMg.setText(localObject1[0]);
-          paramView.setTag(localp);
+          paramViewGroup.mll.setText(localObject1[0]);
+          paramView.setTag(localt);
         }
       }
     }
@@ -91,34 +83,42 @@ public class f
     {
       AppMethodBeat.o(81001);
       return paramView;
-      paramViewGroup.jMg.setText(localObject1[0]);
+      paramViewGroup.mll.setText(localObject1[0]);
       localObject1 = localObject1[1];
       if (((String)localObject1).startsWith("http"))
       {
-        Object localObject2 = CIv + g.getMessageDigest(((String)localObject1).getBytes());
+        Object localObject2 = ICF + g.getMessageDigest(((String)localObject1).getBytes());
         c.a locala = new c.a();
-        locala.lRD = true;
+        locala.oKp = true;
         locala.fullPath = ((String)localObject2);
-        localObject2 = locala.bmL();
-        a.bms().a((String)localObject1, paramViewGroup.bwJ, (c)localObject2);
+        localObject2 = locala.bKx();
+        a.bKl().a((String)localObject1, paramViewGroup.dpM, (c)localObject2);
         break;
       }
-      paramViewGroup.bwJ.setImageResource(MMApplicationContext.getResources().getIdentifier((String)localObject1, "drawable", MMApplicationContext.getPackageName()));
+      paramViewGroup.dpM.setImageResource(MMApplicationContext.getResources().getIdentifier((String)localObject1, "drawable", MMApplicationContext.getPackageName()));
       break;
       paramView.setTag(null);
     }
   }
   
+  public final void v(s params)
+  {
+    AppMethodBeat.i(80999);
+    this.Vtk = params;
+    notifyDataSetChanged();
+    AppMethodBeat.o(80999);
+  }
+  
   public final class a
   {
-    ImageView bwJ;
-    TextView jMg;
+    ImageView dpM;
+    TextView mll;
     
     public a(View paramView)
     {
       AppMethodBeat.i(80998);
-      this.jMg = ((TextView)paramView.findViewById(c.f.title));
-      this.bwJ = ((ImageView)paramView.findViewById(c.f.icon));
+      this.mll = ((TextView)paramView.findViewById(c.f.title));
+      this.dpM = ((ImageView)paramView.findViewById(c.f.icon));
       AppMethodBeat.o(80998);
     }
   }

@@ -5,31 +5,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.ah;
 import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 import java.io.IOException;
 
 public final class b
 {
-  public static void bnW()
+  public static void bLJ()
   {
     AppMethodBeat.i(20588);
-    q localq = new q(MMApplicationContext.getContext().getFilesDir(), "/recovery/recovery.log");
+    u localu = new u(MMApplicationContext.getContext().getFilesDir(), "/recovery/recovery.log");
     String str = null;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localq.ifE())
+    if (localu.jKS())
     {
       localObject1 = localObject2;
-      if (localq.length() > 0L) {
+      if (localu.length() > 0L) {
         localObject1 = str;
       }
     }
     try
     {
-      localObject2 = u.bBS(localq.bOF());
+      localObject2 = y.bEn(ah.v(localu.jKT()));
       localObject1 = localObject2;
-      localq.cFq();
+      localu.diJ();
       localObject1 = localObject2;
     }
     catch (IOException localIOException)
@@ -61,7 +62,7 @@ public final class b
       for (;;)
       {
         if (i >= k) {
-          break label255;
+          break label259;
         }
         str = localObject1[i];
         localObject2 = str.split("​");
@@ -83,7 +84,7 @@ public final class b
         }
       }
     }
-    label255:
+    label259:
     Log.i("MicroMsg.Recovery.RecoveryLogUtil", "not found recovery log");
     AppMethodBeat.o(20588);
   }

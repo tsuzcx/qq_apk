@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hld;
 
 public final class a$k
 {
-  public static final int BottomToTopAnimation = 2131820792;
-  public static final int smallCustomProgressBar = 2131821848;
+  public static final int BottomToTopAnimation = 2131820795;
+  public static final int smallCustomProgressBar = 2131821845;
 }
 
 

@@ -12,25 +12,25 @@ import com.tencent.mm.plugin.patmsg.a.c.a;
 
 public final class s
 {
-  private final View.OnTouchListener RgJ;
-  int RgO;
-  b RgP;
-  boolean Rgb;
-  r Rgc;
-  a Rgi;
+  private final View.OnTouchListener YcM;
+  int YcR;
+  b YcS;
+  boolean Ycd;
+  r Yce;
+  a Ycl;
   private int background;
-  View.OnClickListener bwV;
-  boolean iYp;
+  View.OnClickListener dpY;
   int index;
-  View oFW;
+  boolean lAh;
+  View rootView;
   int row;
   
   public s()
   {
     AppMethodBeat.i(152233);
     this.background = -1;
-    this.RgJ = new s.1(this);
-    this.bwV = new s.2(this);
+    this.YcM = new s.1(this);
+    this.dpY = new s.2(this);
     AppMethodBeat.o(152233);
   }
   
@@ -41,12 +41,12 @@ public final class s
   
   public static abstract interface b
   {
-    public abstract boolean qx(int paramInt);
+    public abstract boolean qy(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.s
  * JD-Core Version:    0.7.0.1
  */
